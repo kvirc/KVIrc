@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: register_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-20 23:15+0100\n"
+"POT-Creation-Date: 2010-01-21 19:02+0100\n"
 "PO-Revision-Date: 2009-11-29 14:20+0100\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -17,322 +17,70 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/regchan/libkviregchan.cpp:120
-#: src/modules/regchan/libkviregchan.cpp:177
-msgid "No such channel/netmask entry in the database"
-msgstr ""
+#: src/modules/reguser/libkvireguser.cpp:820
+msgid "    Mask: %Q!%Q@%Q"
+msgstr "    Máscara: %Q!%Q@%Q"
 
-#: src/modules/regchan/libkviregchan.cpp:197
-msgid "Registered channel list:"
-msgstr "Lista de canales registrados:"
+#: src/modules/reguser/libkvireguser.cpp:834
+msgid "    No properties"
+msgstr "    Sin propiedades"
 
-#: src/modules/regchan/libkviregchan.cpp:207
-#, c-format
-msgid "Channel: %c%s@%s"
-msgstr "Canal: %c%s@%s"
+#: src/modules/reguser/libkvireguser.cpp:831
+msgid "    Property: %Q=%Q"
+msgstr "    Propiedad: %Q=%Q"
 
 #: src/modules/regchan/libkviregchan.cpp:212
 #, c-format
 msgid "    Property: %s=%s"
 msgstr "    Propiedad: %s=%s"
 
-#: src/modules/regchan/libkviregchan.cpp:219
-#, c-format
-msgid "Total %d channels"
-msgstr "Total %d canales"
-
-#: src/modules/reguser/dialog.cpp:81
-msgid "Name"
-msgstr "Nombre"
-
-#: src/modules/reguser/dialog.cpp:81
-msgid "Flags"
-msgstr "Opciones"
-
-#: src/modules/reguser/dialog.cpp:93
-msgid ""
-"<center>This is the list of registered users. KVIrc can automatically "
-"recognize and associate properties to them.<br>Use the buttons on the right "
-"to add, edit and remove entries. The \"notify\" column allows you to quickly "
-"add users to the notify list. Notify list fine-tuning can be performed by "
-"editing the entry properties.</center>"
-msgstr ""
-"<center>Esta es la lista de usuarios registrados. KVIrc puede reconocer "
-"y asociar propiedades a ellos automáticamente.<br>Usa los botones a la "
-"derecha para añadir, editar y eliminar entradas. La columna \"notificar\" te "
-"permite añadir usuarios rápidamente a la lista de notificaciones. Una "
-"configuración más cuidadosa puede ser hecha editando las propiedades "
-"de la entrada.</center>"
-
-#: src/modules/reguser/dialog.cpp:120
-msgid "Notify disabled"
-msgstr "Notificación desactivada"
-
-#: src/modules/reguser/dialog.cpp:122
-msgid "Notify as:"
-msgstr "Notificar como:"
-
-#: src/modules/reguser/dialog.cpp:132
-msgid "No comment set"
-msgstr "No hay comentario"
-
-#: src/modules/reguser/dialog.cpp:134
-#: src/modules/reguser/edituser.cpp:348
-msgid "Comment:"
-msgstr "Comentario:"
-
-#: src/modules/reguser/dialog.cpp:218
-msgid "Registered Users - KVIrc"
-msgstr "Usuarios registrados - KVIrc"
-
-#: src/modules/reguser/dialog.cpp:235
-msgid "Add (Wizard)..."
-msgstr "Añadir (asistente)..."
-
-#: src/modules/reguser/dialog.cpp:237
-msgid "Add a registered user by means of a user-friendly wizard."
-msgstr "Añadir un usuario registrado mediante un asistente amigable."
-
-#: src/modules/reguser/dialog.cpp:241
-#: src/modules/reguser/edituser.cpp:371
-msgid "&Add..."
-msgstr "&Añadir..."
-
-#: src/modules/reguser/dialog.cpp:243
-msgid "Open the edit dialog to create a new user entry."
-msgstr "Abre el diálogo de edición para crear una nueva entrada de usuario."
-
-#: src/modules/reguser/dialog.cpp:246
-msgid "&Add Group..."
-msgstr "&Añadir grupo..."
-
-#: src/modules/reguser/dialog.cpp:248
-msgid "Adds a new group"
-msgstr "Añade un nuevo grupo"
-
-#: src/modules/reguser/dialog.cpp:251
-#: src/modules/reguser/edituser.cpp:375
-msgid "Re&move"
-msgstr "Eli&minar"
-
-#: src/modules/reguser/dialog.cpp:254
-msgid "Remove the currently selected entries."
-msgstr "Elimina las entradas seleccionadas actualmente."
-
-#: src/modules/reguser/dialog.cpp:258
-msgid "&Edit..."
-msgstr "&Editar..."
-
-#: src/modules/reguser/dialog.cpp:261
-msgid "Edit the first selected entry."
-msgstr "Edita la entrada seleccionada primero."
-
-#: src/modules/reguser/dialog.cpp:267
-msgid "Export To..."
-msgstr "Exportar a..."
-
-#: src/modules/reguser/dialog.cpp:270
-msgid ""
-"Export the selected entries to a file.<br>All the data associated with the "
-"selected registered users will be exported.<br>You (or anyone else) can "
-"later import the entries by using the \"Import\" button."
-msgstr ""
-"Exporta las entradas seleccionadas a un archivo.<br>Todos los datos "
-"asociados con los usuarios registrados serán exportados.<br>Tú (o "
-"cualquier otra persona) pueden importar las entradas más tarde usando "
-"el botón \"Importar\"."
-
-#: src/modules/reguser/dialog.cpp:274
-msgid "Import From..."
-msgstr "Importar desde..."
-
-#: src/modules/reguser/dialog.cpp:276
-msgid ""
-"Import entries from a file exported earlier by the \"export\" function of "
-"this dialog."
-msgstr ""
-"Importar las entradas desde un archivo exportado anteriormente mediante la "
-"función \"exportar\" de este diálogo."
-
-#: src/modules/reguser/dialog.cpp:287
-#: src/modules/reguser/edituser.cpp:113
-#: src/modules/reguser/edituser.cpp:274
-#: src/modules/reguser/edituser.cpp:487
-msgid "&OK"
-msgstr "A&ceptar"
-
-#: src/modules/reguser/dialog.cpp:292
-#: src/modules/reguser/edituser.cpp:117
-#: src/modules/reguser/edituser.cpp:278
-#: src/modules/reguser/edituser.cpp:486
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: src/modules/reguser/dialog.cpp:397
-#: src/modules/reguser/dialog.cpp:410
-msgid "Group name:"
-msgstr "Nombre del grupo:"
-
-#: src/modules/reguser/dialog.cpp:453
-msgid "Move to group"
-msgstr "Mover al grupo"
-
-#: src/modules/reguser/dialog.cpp:494
-#: src/modules/reguser/dialog.cpp:497
-#: src/modules/reguser/dialog.cpp:498
-#: src/modules/reguser/dialog.cpp:500
-#: src/modules/reguser/dialog.cpp:502
-msgid "Default"
-msgstr "Por defecto"
-
-#: src/modules/reguser/dialog.cpp:685
-msgid "No entries selected."
-msgstr "No hay entradas seleccionadas."
-
-#: src/modules/reguser/dialog.cpp:691
-#: src/modules/reguser/dialog.cpp:791
-msgid "Choose a Filename - KVIrc"
-msgstr "Elige un nombre de archivo - KVIrc"
-
-#: src/modules/reguser/dialog.cpp:698
-msgid "Can't open file %Q for writing."
-msgstr "No pude abrir el archivo %Q para escritura."
-
-#: src/modules/reguser/dialog.cpp:777
-msgid "Can't export the registered users database: Write error."
-msgstr ""
-"No pude exportar la base de datos de usuarios registrados: "
-"error de escritura."
-
-#: src/modules/reguser/dialog.cpp:798
-#, c-format
-msgid "Can't open file %s for reading."
-msgstr "No pude abrir el archivo %s para lectura."
-
-#: src/modules/reguser/dialog.cpp:809
-#, c-format
-msgid "The file %s doesn't appear to be a valid registered users database."
-msgstr ""
-"El archivo %s no parece ser una base de datos de usuarios registrados válida."
-
-#: src/modules/reguser/dialog.cpp:816
-#, c-format
-msgid "The file %s contains an invalid registered users database version."
-msgstr ""
-"El archivo %s contiene una versión de la base de datos de usuarios "
-"registrados no válida."
-
-#: src/modules/reguser/dialog.cpp:884
-msgid "Can't import the registered users database: Read error."
-msgstr ""
-"No pude importar la base de datos de usuarios registrados: "
-"error de lectura."
-
-#: src/modules/reguser/libkvireguser.cpp:188
-#: src/modules/reguser/libkvireguser.cpp:268
-#: src/modules/reguser/libkvireguser.cpp:331
-#: src/modules/reguser/libkvireguser.cpp:451
-#: src/modules/reguser/libkvireguser.cpp:516
-#: src/modules/reguser/libkvireguser.cpp:690
-msgid "No name specified"
-msgstr "Ningún nombre especificado"
-
-#: src/modules/reguser/libkvireguser.cpp:208
-msgid "User already registered: found exact name match"
-msgstr "Usuario ya registrado: encontrado coincidencia de nombre exacta"
-
-#: src/modules/reguser/libkvireguser.cpp:221
-msgid "Mask %Q is already used to identify user %s"
-msgstr "La máscara %Q ya está en uso por el usuario %s"
-
-#: src/modules/reguser/libkvireguser.cpp:274
-msgid "User not found (%Q)"
-msgstr "Usuario no encontrado (%Q) "
-
-#: src/modules/reguser/libkvireguser.cpp:337
-#: src/modules/reguser/libkvireguser.cpp:402
-msgid "No mask specified"
-msgstr "No se especificó máscara"
-
-#: src/modules/reguser/libkvireguser.cpp:344
-#: src/modules/reguser/libkvireguser.cpp:458
-#: src/modules/reguser/libkvireguser.cpp:523
-#: src/modules/reguser/libkvireguser.cpp:703
-msgid "User %Q not found"
-msgstr "Usuario %Q no encontrado"
-
-#: src/modules/reguser/libkvireguser.cpp:354
-msgid "Mask %Q already used to identify user %Q"
-msgstr "La máscara %Q ya está en uso para identificar al usuario %Q"
-
-#: src/modules/reguser/libkvireguser.cpp:409
-msgid "Mask %Q not found"
-msgstr "Máscara %Q no encontrada"
-
-#: src/modules/reguser/libkvireguser.cpp:696
-msgid "No property specified"
-msgstr "No se especificó propiedad"
-
-#: src/modules/reguser/libkvireguser.cpp:801
-msgid "Registered users database dump:"
-msgstr "Dump de la base de datos de usuarios registrados:"
+#: src/modules/reguser/libkvireguser.cpp:816
+msgid "    Warning: this user has no registration masks"
+msgstr "    Atención: este usuario no tiene máscaras de registro"
 
 #: src/modules/reguser/libkvireguser.cpp:812
 msgid " User: %c%Q"
 msgstr " Usuario: %c%Q"
 
-#: src/modules/reguser/libkvireguser.cpp:816
-msgid "    Warning: this user has no registration masks"
-msgstr "    Atención: este usuario no tiene máscaras de registro"
+#: src/modules/reguser/dialog.cpp:246
+msgid "&Add Group..."
+msgstr "&Añadir grupo..."
 
-#: src/modules/reguser/libkvireguser.cpp:820
-msgid "    Mask: %Q!%Q@%Q"
-msgstr "    Máscara: %Q!%Q@%Q"
+#: src/modules/reguser/edituser.cpp:371
+#: src/modules/reguser/dialog.cpp:241
+msgid "&Add..."
+msgstr "&Añadir..."
 
-#: src/modules/reguser/libkvireguser.cpp:831
-msgid "    Property: %Q=%Q"
-msgstr "    Propiedad: %Q=%Q"
+#: src/modules/reguser/edituser.cpp:380
+msgid "&Edit"
+msgstr "&Editar"
 
-#: src/modules/reguser/libkvireguser.cpp:834
-msgid "    No properties"
-msgstr "    Sin propiedades"
-
-#: src/modules/reguser/libkvireguser.cpp:840
-#, c-format
-msgid "Total: %d matching users (of %d in the database)"
-msgstr "Total: %d usuarios coincidentes (de %d en la base de datos)"
-
-#: src/modules/reguser/edituser.cpp:78
-msgid "Property Editor"
-msgstr "Editor de propiedades"
-
-#: src/modules/reguser/edituser.cpp:90
-msgid "Property"
-msgstr "Propiedad"
-
-#: src/modules/reguser/edituser.cpp:91
-msgid "Value"
-msgstr "Valor"
+#: src/modules/reguser/dialog.cpp:258
+msgid "&Edit..."
+msgstr "&Editar..."
 
 #: src/modules/reguser/edituser.cpp:101
 msgid "&New"
 msgstr "&Nuevo"
 
+#: src/modules/reguser/edituser.cpp:113
+#: src/modules/reguser/edituser.cpp:274
+#: src/modules/reguser/edituser.cpp:487
+#: src/modules/reguser/dialog.cpp:287
+msgid "&OK"
+msgstr "A&ceptar"
+
 #: src/modules/reguser/edituser.cpp:105
 msgid "&Remove"
 msgstr "Elimina&r"
 
-#: src/modules/reguser/edituser.cpp:228
-msgid "Mask Editor"
-msgstr "Editor de máscaras"
-
-#: src/modules/reguser/edituser.cpp:232
+#: src/modules/reguser/edituser.cpp:260
 msgid ""
-"Insert a mask for this user.<br>It can contain the wildcard characters '*' "
-"and '?'."
+"<center>This is the <b>hostname</b> that will match this user. <b>*</b> will "
+"match any hostname.</center>"
 msgstr ""
-"Inserta una máscara para este usuario.<br>Puede contener los comodines "
-"'*' y '?'."
+"<center>Este es el <b>host</b> con el que coincidirá este usuario. <b>*</b> "
+"coincidirá con cualquier host."
 
 #: src/modules/reguser/edituser.cpp:242
 msgid ""
@@ -348,106 +96,83 @@ msgid ""
 "match any username.</center>"
 msgstr ""
 "<center>Este es el <b>nombre de usuario</b> con el que coincidirá este "
-"usuario. "
-"<b>*</b> coincidirá con cualquier nombre de usuario."
+"usuario. <b>*</b> coincidirá con cualquier nombre de usuario."
 
-#: src/modules/reguser/edituser.cpp:260
+#: src/modules/reguser/dialog.cpp:93
 msgid ""
-"<center>This is the <b>hostname</b> that will match this user. <b>*</b> will "
-"match any hostname.</center>"
+"<center>This is the list of registered users. KVIrc can automatically "
+"recognize and associate properties to them.<br>Use the buttons on the right "
+"to add, edit and remove entries. The \"notify\" column allows you to quickly "
+"add users to the notify list. Notify list fine-tuning can be performed by "
+"editing the entry properties.</center>"
 msgstr ""
-"<center>Este es el <b>host</b> con el que coincidirá este usuario. "
-"<b>*</b> coincidirá con cualquier host."
-
-#: src/modules/reguser/edituser.cpp:336
-msgid "Registered User Entry"
-msgstr "Entrada de usuario registrado "
-
-#: src/modules/reguser/edituser.cpp:342
-msgid "Name:"
-msgstr "Nombre:"
-
-#: src/modules/reguser/edituser.cpp:358
-msgid "Masks:"
-msgstr "Máscaras:"
-
-#: src/modules/reguser/edituser.cpp:380
-msgid "&Edit"
-msgstr "&Editar"
-
-#: src/modules/reguser/edituser.cpp:388
-msgid "Identity"
-msgstr "Identidad"
-
-#: src/modules/reguser/edituser.cpp:394
-msgid "Notify when user is online"
-msgstr "Notificar cuandl el usuario se conecte"
-
-#: src/modules/reguser/edituser.cpp:397
-msgid "Notify nicknames:"
-msgstr "Nicks a notificar:"
+"<center>Esta es la lista de usuarios registrados. KVIrc puede reconocer y "
+"asociar propiedades a ellos automáticamente.<br>Usa los botones a la derecha "
+"para añadir, editar y eliminar entradas. La columna \"notificar\" te permite "
+"añadir usuarios rápidamente a la lista de notificaciones. Una configuración "
+"más cuidadosa puede ser hecha editando las propiedades de la entrada.</"
+"center>"
 
 #: src/modules/reguser/edituser.cpp:401
 msgid "<center>You can enter a space separated list of nicknames.</center>"
 msgstr ""
-"<center>Aquí puedes introducir una lista de nicks separados por "
-"espacios.</center>"
+"<center>Aquí puedes introducir una lista de nicks separados por espacios.</"
+"center>"
 
-#: src/modules/reguser/edituser.cpp:426
-msgid "Avatar"
-msgstr "Avatar"
+#: src/modules/reguser/wizard.cpp:112
+msgid ""
+"<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
+"mask must be in the following form:<br><b>nickname!username@hostname</"
+"b><br>and can contain wildcard characters '*' and '?'. Be careful in "
+"choosing the masks, as they are the only way to verify the identity of a "
+"registered user.<br><br>You can enter at most two masks here, if you wish to "
+"add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
+"dialog. You must enter at least one mask.</p>"
+msgstr ""
+"<p>Un usuario registrado es identificado por una o más <b>máscaras de IRC</"
+"b>. <br>Una máscara debe ser de la siguiente forma:<br><b>nick!usuario@host</"
+"b> <br>y puede contener los caracteres comodín '*' y '?'. Ten cuidado al "
+"elegir las máscaras, ya que son la única manera de verificar e identificar a "
+"un usuario registrado.<br><br>Puedes introducir como mucho dos máscaras "
+"aquí, si quieres añadir más máscaras, usa el botón \"<b>Editar</b>\" en el "
+"diálogo de usuarios registrados. Debes introducir como mínimo una máscara.</"
+"p>"
 
-#: src/modules/reguser/edituser.cpp:433
-msgid "Use custom color in userlist"
-msgstr "Usar color personalizado en la lista de usuarios"
+#: src/modules/reguser/wizard.cpp:208
+msgid ""
+"<p>If you want to be notified when this user is online or goes offline, you "
+"must specify the list of nicknames that KVIrc will look for.<br><br>You can "
+"enter at most two nicknames here, if you wish to add more nicknames, use the "
+"\"<b>Edit</b>\" button in the Registered Users dialog.</p>"
+msgstr ""
+"<p>Si quieres ser notificado cuando este usuario esté conectado o se "
+"desconecte, debes especificar la lista de nicks que KVIrc buscará."
+"<br><br>Puedes introducir como mucho dos nicks aquí, si quieres añadir más, "
+"usa el botón \"<b>Editar</b>\" en el diálogo de usuarios registrados.</p>"
 
-#: src/modules/reguser/edituser.cpp:441
-msgid "All Properties..."
-msgstr "Todas las propiedades..."
+#: src/modules/reguser/wizard.cpp:183
+msgid ""
+"<p>If you want to store an avatar image for this user, you can set it here. "
+"KVIrc will show the avatar in the userlist next to the user's nickname."
+"<br>An avatar can be in any supported image format (PNG is recommended). "
+"Keep in mind that KVIrc stores avatars in memory and has to resize them to "
+"fit in the userlist, thus it's better to use small, low-resolution images.</"
+"p>"
+msgstr ""
+"<p>Si quieres guardar un avatar para este usuario, puedes ponerlo aquí. "
+"KVIrc lo mostrará en la lista de usuarios al lado del nick.<br>Un avatar "
+"puede estar en cualquier formato de imagen soportado (se recomienda PNG). "
+"Ten en cuenta que KVIrc guarda los avatares en memoria y tiene que "
+"redimensionarlos para que quepan en la lista de usuarios, por lo que es "
+"mejor usar imágenenes pequeñas y de baja resolución.</p>"
 
-#: src/modules/reguser/edituser.cpp:448
-msgid "Properties"
-msgstr "Propiedades"
-
-#: src/modules/reguser/edituser.cpp:454
-msgid "Enable ignore for this user"
-msgstr "Activar ignorar para este usuario"
-
-#: src/modules/reguser/edituser.cpp:456
-msgid "Ignore features"
-msgstr "Opciones de ignorar"
-
-#: src/modules/reguser/edituser.cpp:463
-msgid "Ignore query messages"
-msgstr "Ignorar privados"
-
-#: src/modules/reguser/edituser.cpp:466
-msgid "Ignore channel messages"
-msgstr "Ignorar mensajes en canales"
-
-#: src/modules/reguser/edituser.cpp:469
-msgid "Ignore notice messages"
-msgstr "Ignorar notices"
-
-#: src/modules/reguser/edituser.cpp:472
-msgid "Ignore CTCP messages"
-msgstr "Ignorar CTCPs"
-
-#: src/modules/reguser/edituser.cpp:475
-msgid "Ignore invites"
-msgstr "Ignorar invitaciones"
-
-#: src/modules/reguser/edituser.cpp:478
-msgid "Ignore DCCs"
-msgstr "Ignorar DCCs"
-
-#: src/modules/reguser/edituser.cpp:484
-msgid "Ignore"
-msgstr "Ignorar"
-
-#: src/modules/reguser/wizard.cpp:77
-msgid "User Registration Wizard - KVIrc"
-msgstr "Asistente de registro de usuarios - KVIrc"
+#: src/modules/reguser/wizard.cpp:254
+msgid ""
+"<p>That's it. The user registration has been completed.<br><br>Click "
+"\"<b>Finish</b>\" to close this dialog.</p>"
+msgstr ""
+"<p>Pues ya está. El registro del usuario ha sido completado.<br><br>Haz clic "
+"en \"<b>Finalizar</b>\" para cerrar este diálogo.</p>"
 
 #: src/modules/reguser/wizard.cpp:88
 msgid ""
@@ -465,112 +190,373 @@ msgstr ""
 "permite añadir un usuario de IRC a la base de datos y configurar sus "
 "propiedades. KVIrc será (con suerte) capaz de reconocer al usuario, añadirle "
 "a la lista de notificaciones, y mostrar el avatar asociado.<br><br>Lo "
-"primero "
-"de todo, debes añadir un <b>nombre para la entrada o un nombre real</b> "
-"para el usuario que vas a registrar. El nombre será usado para identificar "
-"la "
-"entrada en la base de datos y no tiene requisitos específicos, puede ser "
-"cualquier "
-"nombre, nick, o algún texto para recordarte a la persona real.<br>Ejemplos: "
-"\"George W Bush\", \"Dubya\".\n"
+"primero de todo, debes añadir un <b>nombre para la entrada o un nombre real</"
+"b> para el usuario que vas a registrar. El nombre será usado para "
+"identificar la entrada en la base de datos y no tiene requisitos "
+"específicos, puede ser cualquier nombre, nick, o algún texto para recordarte "
+"a la persona real.<br>Ejemplos: \"George W Bush\", \"Dubya\".\n"
 "</p>"
 
-#: src/modules/reguser/wizard.cpp:97
-msgid "Step 1: Entry Name"
-msgstr "Paso 1: nombre de la entrada"
+#: src/modules/reguser/dialog.cpp:235
+msgid "Add (Wizard)..."
+msgstr "Añadir (asistente)..."
 
-#: src/modules/reguser/wizard.cpp:112
-msgid ""
-"<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
-"mask must be in the following form:<br><b>nickname!username@hostname</"
-"b><br>and can contain wildcard characters '*' and '?'. Be careful in "
-"choosing the masks, as they are the only way to verify the identity of a "
-"registered user.<br><br>You can enter at most two masks here, if you wish to "
-"add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
-"dialog. You must enter at least one mask.</p>"
-msgstr ""
-"<p>Un usuario registrado es identificado por una o más <b>máscaras de IRC</b>"
-". "
-"<br>Una máscara debe ser de la siguiente forma:<br><b>nick!usuario@host</b> "
-"<br>y puede contener los caracteres comodín '*' y '?'. Ten cuidado al elegir "
-"las máscaras, ya que son la única manera de verificar e identificar a un "
-"usuario "
-"registrado.<br><br>Puedes introducir como mucho dos máscaras aquí, si "
-"quieres "
-"añadir más máscaras, usa el botón \"<b>Editar</b>\" en el diálogo de "
-"usuarios registrados. "
-"Debes introducir como mínimo una máscara.</p>"
-
-#: src/modules/reguser/wizard.cpp:171
-msgid "Step 2: Mask Selection"
-msgstr "Paso 2: selección de la máscara"
-
-#: src/modules/reguser/wizard.cpp:183
-msgid ""
-"<p>If you want to store an avatar image for this user, you can set it here. "
-"KVIrc will show the avatar in the userlist next to the user's nickname."
-"<br>An avatar can be in any supported image format (PNG is recommended). "
-"Keep in mind that KVIrc stores avatars in memory and has to resize them to "
-"fit in the userlist, thus it's better to use small, low-resolution images.</"
-"p>"
-msgstr ""
-"<p>Si quieres guardar un avatar para este usuario, puedes ponerlo aquí. "
-"KVIrc lo mostrará en la lista de usuarios al lado del nick.<br>Un avatar "
-"puede "
-"estar en cualquier formato de imagen soportado (se recomienda PNG). Ten "
-"en cuenta que KVIrc guarda los avatares en memoria y tiene que "
-"redimensionarlos "
-"para que quepan en la lista de usuarios, por lo que es mejor usar imágenenes "
-"pequeñas y de baja resolución.</p>"
-
-#: src/modules/reguser/wizard.cpp:192
-msgid "Store an avatar for this user"
-msgstr "Guardar un avatar para este usuario"
-
-#: src/modules/reguser/wizard.cpp:197
-msgid "Step 3: Avatar Selection"
-msgstr "Paso 3: elección del avatar"
-
-#: src/modules/reguser/wizard.cpp:208
-msgid ""
-"<p>If you want to be notified when this user is online or goes offline, you "
-"must specify the list of nicknames that KVIrc will look for.<br><br>You can "
-"enter at most two nicknames here, if you wish to add more nicknames, use the "
-"\"<b>Edit</b>\" button in the Registered Users dialog.</p>"
-msgstr ""
-"<p>Si quieres ser notificado cuando este usuario esté conectado o se "
-"desconecte, "
-"debes especificar la lista de nicks que KVIrc buscará.<br><br>Puedes "
-"introducir como "
-"mucho dos nicks aquí, si quieres añadir más, usa el botón \"<b>Editar</b>\" "
-"en el "
-"diálogo de usuarios registrados.</p>"
+#: src/modules/reguser/dialog.cpp:237
+msgid "Add a registered user by means of a user-friendly wizard."
+msgstr "Añadir un usuario registrado mediante un asistente amigable."
 
 #: src/modules/reguser/wizard.cpp:218
 msgid "Add this user to the notify list"
 msgstr "Añadir este usuario a la lista de notificación"
 
-#: src/modules/reguser/wizard.cpp:224
-msgid "Nickname:"
-msgstr "Nick:"
+#: src/modules/reguser/dialog.cpp:248
+msgid "Adds a new group"
+msgstr "Añade un nuevo grupo"
+
+#: src/modules/reguser/edituser.cpp:441
+msgid "All Properties..."
+msgstr "Todas las propiedades..."
+
+#: src/modules/reguser/edituser.cpp:426
+msgid "Avatar"
+msgstr "Avatar"
+
+#: src/modules/reguser/dialog.cpp:777
+msgid "Can't export the registered users database: Write error."
+msgstr ""
+"No pude exportar la base de datos de usuarios registrados: error de "
+"escritura."
+
+#: src/modules/reguser/dialog.cpp:884
+msgid "Can't import the registered users database: Read error."
+msgstr ""
+"No pude importar la base de datos de usuarios registrados: error de lectura."
+
+#: src/modules/reguser/dialog.cpp:698
+msgid "Can't open file %Q for writing."
+msgstr "No pude abrir el archivo %Q para escritura."
+
+#: src/modules/reguser/dialog.cpp:798
+#, c-format
+msgid "Can't open file %s for reading."
+msgstr "No pude abrir el archivo %s para lectura."
+
+#: src/modules/reguser/edituser.cpp:117
+#: src/modules/reguser/edituser.cpp:278
+#: src/modules/reguser/edituser.cpp:486
+#: src/modules/reguser/dialog.cpp:292
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/modules/regchan/libkviregchan.cpp:207
+#, c-format
+msgid "Channel: %c%s@%s"
+msgstr "Canal: %c%s@%s"
+
+#: src/modules/reguser/dialog.cpp:691
+#: src/modules/reguser/dialog.cpp:791
+msgid "Choose a Filename - KVIrc"
+msgstr "Elige un nombre de archivo - KVIrc"
+
+#: src/modules/reguser/edituser.cpp:348
+#: src/modules/reguser/dialog.cpp:134
+msgid "Comment:"
+msgstr "Comentario:"
+
+#: src/modules/reguser/dialog.cpp:494
+#: src/modules/reguser/dialog.cpp:497
+#: src/modules/reguser/dialog.cpp:498
+#: src/modules/reguser/dialog.cpp:500
+#: src/modules/reguser/dialog.cpp:502
+msgid "Default"
+msgstr "Por defecto"
+
+#: src/modules/reguser/dialog.cpp:261
+msgid "Edit the first selected entry."
+msgstr "Edita la entrada seleccionada primero."
+
+#: src/modules/reguser/edituser.cpp:454
+msgid "Enable ignore for this user"
+msgstr "Activar ignorar para este usuario"
+
+#: src/modules/reguser/dialog.cpp:267
+msgid "Export To..."
+msgstr "Exportar a..."
+
+#: src/modules/reguser/dialog.cpp:270
+msgid ""
+"Export the selected entries to a file.<br>All the data associated with the "
+"selected registered users will be exported.<br>You (or anyone else) can "
+"later import the entries by using the \"Import\" button."
+msgstr ""
+"Exporta las entradas seleccionadas a un archivo.<br>Todos los datos "
+"asociados con los usuarios registrados serán exportados.<br>Tú (o cualquier "
+"otra persona) pueden importar las entradas más tarde usando el botón "
+"\"Importar\"."
+
+#: src/modules/reguser/dialog.cpp:81
+msgid "Flags"
+msgstr "Opciones"
+
+#: src/modules/reguser/dialog.cpp:397
+#: src/modules/reguser/dialog.cpp:410
+msgid "Group name:"
+msgstr "Nombre del grupo:"
+
+#: src/modules/reguser/edituser.cpp:388
+msgid "Identity"
+msgstr "Identidad"
+
+#: src/modules/reguser/edituser.cpp:484
+msgid "Ignore"
+msgstr "Ignorar"
+
+#: src/modules/reguser/edituser.cpp:472
+msgid "Ignore CTCP messages"
+msgstr "Ignorar CTCPs"
+
+#: src/modules/reguser/edituser.cpp:478
+msgid "Ignore DCCs"
+msgstr "Ignorar DCCs"
+
+#: src/modules/reguser/edituser.cpp:466
+msgid "Ignore channel messages"
+msgstr "Ignorar mensajes en canales"
+
+#: src/modules/reguser/edituser.cpp:456
+msgid "Ignore features"
+msgstr "Opciones de ignorar"
+
+#: src/modules/reguser/edituser.cpp:475
+msgid "Ignore invites"
+msgstr "Ignorar invitaciones"
+
+#: src/modules/reguser/edituser.cpp:469
+msgid "Ignore notice messages"
+msgstr "Ignorar notices"
+
+#: src/modules/reguser/edituser.cpp:463
+msgid "Ignore query messages"
+msgstr "Ignorar privados"
+
+#: src/modules/reguser/dialog.cpp:274
+msgid "Import From..."
+msgstr "Importar desde..."
+
+#: src/modules/reguser/dialog.cpp:276
+msgid ""
+"Import entries from a file exported earlier by the \"export\" function of "
+"this dialog."
+msgstr ""
+"Importar las entradas desde un archivo exportado anteriormente mediante la "
+"función \"exportar\" de este diálogo."
+
+#: src/modules/reguser/edituser.cpp:232
+msgid ""
+"Insert a mask for this user.<br>It can contain the wildcard characters '*' "
+"and '?'."
+msgstr ""
+"Inserta una máscara para este usuario.<br>Puede contener los comodines '*' y "
+"'?'."
+
+#: src/modules/reguser/libkvireguser.cpp:354
+msgid "Mask %Q already used to identify user %Q"
+msgstr "La máscara %Q ya está en uso para identificar al usuario %Q"
+
+#: src/modules/reguser/libkvireguser.cpp:221
+msgid "Mask %Q is already used to identify user %s"
+msgstr "La máscara %Q ya está en uso por el usuario %s"
+
+#: src/modules/reguser/libkvireguser.cpp:409
+msgid "Mask %Q not found"
+msgstr "Máscara %Q no encontrada"
+
+#: src/modules/reguser/edituser.cpp:228
+msgid "Mask Editor"
+msgstr "Editor de máscaras"
+
+#: src/modules/reguser/edituser.cpp:358
+msgid "Masks:"
+msgstr "Máscaras:"
+
+#: src/modules/reguser/dialog.cpp:453
+msgid "Move to group"
+msgstr "Mover al grupo"
+
+#: src/modules/reguser/dialog.cpp:81
+msgid "Name"
+msgstr "Nombre"
+
+#: src/modules/reguser/edituser.cpp:342
+msgid "Name:"
+msgstr "Nombre:"
 
 #: src/modules/reguser/wizard.cpp:228
 msgid "Nickname 2:"
 msgstr "Nick 2:"
 
-#: src/modules/reguser/wizard.cpp:242
-msgid "Step 4: Notify List"
-msgstr "Paso 4: lista de notificación"
+#: src/modules/reguser/wizard.cpp:224
+msgid "Nickname:"
+msgstr "Nick:"
 
-#: src/modules/reguser/wizard.cpp:254
-msgid ""
-"<p>That's it. The user registration has been completed.<br><br>Click "
-"\"<b>Finish</b>\" to close this dialog.</p>"
+#: src/modules/reguser/dialog.cpp:132
+msgid "No comment set"
+msgstr "No hay comentario"
+
+#: src/modules/reguser/dialog.cpp:685
+msgid "No entries selected."
+msgstr "No hay entradas seleccionadas."
+
+#: src/modules/reguser/libkvireguser.cpp:337
+#: src/modules/reguser/libkvireguser.cpp:402
+msgid "No mask specified"
+msgstr "No se especificó máscara"
+
+#: src/modules/reguser/libkvireguser.cpp:188
+#: src/modules/reguser/libkvireguser.cpp:268
+#: src/modules/reguser/libkvireguser.cpp:331
+#: src/modules/reguser/libkvireguser.cpp:451
+#: src/modules/reguser/libkvireguser.cpp:516
+#: src/modules/reguser/libkvireguser.cpp:690
+msgid "No name specified"
+msgstr "Ningún nombre especificado"
+
+#: src/modules/reguser/libkvireguser.cpp:696
+msgid "No property specified"
+msgstr "No se especificó propiedad"
+
+#: src/modules/regchan/libkviregchan.cpp:120
+#: src/modules/regchan/libkviregchan.cpp:177
+msgid "No such channel/netmask entry in the database"
 msgstr ""
-"<p>Pues ya está. El registro del usuario ha sido completado.<br><br>Haz "
-"clic en \"<b>Finalizar</b>\" para cerrar este diálogo.</p>"
+
+#: src/modules/reguser/dialog.cpp:122
+msgid "Notify as:"
+msgstr "Notificar como:"
+
+#: src/modules/reguser/dialog.cpp:120
+msgid "Notify disabled"
+msgstr "Notificación desactivada"
+
+#: src/modules/reguser/edituser.cpp:397
+msgid "Notify nicknames:"
+msgstr "Nicks a notificar:"
+
+#: src/modules/reguser/edituser.cpp:394
+msgid "Notify when user is online"
+msgstr "Notificar cuandl el usuario se conecte"
+
+#: src/modules/reguser/dialog.cpp:243
+msgid "Open the edit dialog to create a new user entry."
+msgstr "Abre el diálogo de edición para crear una nueva entrada de usuario."
+
+#: src/modules/reguser/edituser.cpp:448
+msgid "Properties"
+msgstr "Propiedades"
+
+#: src/modules/reguser/edituser.cpp:90
+msgid "Property"
+msgstr "Propiedad"
+
+#: src/modules/reguser/edituser.cpp:78
+msgid "Property Editor"
+msgstr "Editor de propiedades"
+
+#: src/modules/reguser/edituser.cpp:375
+#: src/modules/reguser/dialog.cpp:251
+msgid "Re&move"
+msgstr "Eli&minar"
+
+#: src/modules/reguser/edituser.cpp:336
+msgid "Registered User Entry"
+msgstr "Entrada de usuario registrado "
+
+#: src/modules/reguser/dialog.cpp:218
+msgid "Registered Users - KVIrc"
+msgstr "Usuarios registrados - KVIrc"
+
+#: src/modules/regchan/libkviregchan.cpp:197
+msgid "Registered channel list:"
+msgstr "Lista de canales registrados:"
+
+#: src/modules/reguser/libkvireguser.cpp:801
+msgid "Registered users database dump:"
+msgstr "Dump de la base de datos de usuarios registrados:"
 
 #: src/modules/reguser/wizard.cpp:258
 msgid "Registration Complete"
 msgstr "Registro completado"
 
+#: src/modules/reguser/dialog.cpp:254
+msgid "Remove the currently selected entries."
+msgstr "Elimina las entradas seleccionadas actualmente."
+
+#: src/modules/reguser/wizard.cpp:97
+msgid "Step 1: Entry Name"
+msgstr "Paso 1: nombre de la entrada"
+
+#: src/modules/reguser/wizard.cpp:171
+msgid "Step 2: Mask Selection"
+msgstr "Paso 2: selección de la máscara"
+
+#: src/modules/reguser/wizard.cpp:197
+msgid "Step 3: Avatar Selection"
+msgstr "Paso 3: elección del avatar"
+
+#: src/modules/reguser/wizard.cpp:242
+msgid "Step 4: Notify List"
+msgstr "Paso 4: lista de notificación"
+
+#: src/modules/reguser/wizard.cpp:192
+msgid "Store an avatar for this user"
+msgstr "Guardar un avatar para este usuario"
+
+#: src/modules/reguser/dialog.cpp:816
+#, c-format
+msgid "The file %s contains an invalid registered users database version."
+msgstr ""
+"El archivo %s contiene una versión de la base de datos de usuarios "
+"registrados no válida."
+
+#: src/modules/reguser/dialog.cpp:809
+#, c-format
+msgid "The file %s doesn't appear to be a valid registered users database."
+msgstr ""
+"El archivo %s no parece ser una base de datos de usuarios registrados válida."
+
+#: src/modules/regchan/libkviregchan.cpp:219
+#, c-format
+msgid "Total %d channels"
+msgstr "Total %d canales"
+
+#: src/modules/reguser/libkvireguser.cpp:840
+#, c-format
+msgid "Total: %d matching users (of %d in the database)"
+msgstr "Total: %d usuarios coincidentes (de %d en la base de datos)"
+
+#: src/modules/reguser/edituser.cpp:433
+msgid "Use custom color in userlist"
+msgstr "Usar color personalizado en la lista de usuarios"
+
+#: src/modules/reguser/libkvireguser.cpp:344
+#: src/modules/reguser/libkvireguser.cpp:458
+#: src/modules/reguser/libkvireguser.cpp:523
+#: src/modules/reguser/libkvireguser.cpp:703
+msgid "User %Q not found"
+msgstr "Usuario %Q no encontrado"
+
+#: src/modules/reguser/wizard.cpp:77
+msgid "User Registration Wizard - KVIrc"
+msgstr "Asistente de registro de usuarios - KVIrc"
+
+#: src/modules/reguser/libkvireguser.cpp:208
+msgid "User already registered: found exact name match"
+msgstr "Usuario ya registrado: encontrado coincidencia de nombre exacta"
+
+#: src/modules/reguser/libkvireguser.cpp:274
+msgid "User not found (%Q)"
+msgstr "Usuario no encontrado (%Q) "
+
+#: src/modules/reguser/edituser.cpp:91
+msgid "Value"
+msgstr "Valor"

@@ -8,86 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-07 21:10+0100\n"
+"POT-Creation-Date: 2010-01-21 19:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/modules/theme/managementdialog.cpp:86
-msgid "by"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:113
-msgid "Manage Themes - KVIrc"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:133
-msgid "Save Current Theme..."
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:144
-msgid "Export Selected Themes to a Distributable Package"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:150
-msgid "Delete Selected Themes"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:160
-msgid "Install Theme Package From Disk"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:166
-msgid "Get More Themes..."
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:262
-msgid "&Remove Theme"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:263
-msgid "&Apply Theme"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:279
-#: src/modules/theme/managementdialog.cpp:292
-msgid "Apply theme - KVIrc"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:280
-msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:291
-msgid "Failed to apply the specified theme: %Q"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:305
-msgid "Delete Theme - KVIrc"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:306
-msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:319
-msgid "Open Theme - KVIrc"
-msgstr ""
-
-#: src/modules/theme/libkvitheme.cpp:72
-msgid "Error installing theme package: %Q"
-msgstr ""
-
-#: src/modules/theme/libkvitheme.cpp:109
-msgid "Choose a file to save the screenshot to"
-msgstr ""
-
-#: src/modules/theme/libkvitheme.cpp:124
-msgid "Error making screenshot"
-msgstr ""
 
 #: src/modules/theme/themefunctions.cpp:47
 msgid "The selected file does not seem to be a valid KVIrc theme package"
@@ -162,85 +89,89 @@ msgstr ""
 msgid "Subdirectory"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:79
-msgid "Your name here"
-msgstr ""
-
-#: src/modules/theme/packthemedialog.cpp:81
-msgid "Put a package description here..."
-msgstr ""
-
-#: src/modules/theme/packthemedialog.cpp:111
-#: src/modules/theme/packthemedialog.cpp:344
-#: src/modules/theme/packthemedialog.cpp:378
-#: src/modules/theme/packthemedialog.cpp:462
-#: src/modules/theme/packthemedialog.cpp:474
-#: src/modules/theme/packthemedialog.cpp:482
+#: src/modules/theme/packthemedialog.cpp:63
+#: src/modules/theme/packthemedialog.cpp:322
+#: src/modules/theme/packthemedialog.cpp:400
+#: src/modules/theme/packthemedialog.cpp:484
+#: src/modules/theme/packthemedialog.cpp:496
+#: src/modules/theme/packthemedialog.cpp:504
 msgid "Export Theme - KVIrc"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:120
+#: src/modules/theme/packthemedialog.cpp:71
+#: src/modules/theme/savethemedialog.cpp:85
+msgid "Welcome"
+msgstr ""
+
+#: src/modules/theme/packthemedialog.cpp:74
 msgid ""
 "This procedure allows you to export the selected themes to a single package. "
 "It is useful when you want to distribute your themes to the public."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:122
+#: src/modules/theme/packthemedialog.cpp:76
 msgid ""
 "You will be asked to provide a package name, a description and, if you want, "
 "an icon/screenshot."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:124
+#: src/modules/theme/packthemedialog.cpp:78
 #: src/modules/theme/savethemedialog.cpp:78
 msgid "Hit the \"Next\" button to begin."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:132
-#: src/modules/theme/savethemedialog.cpp:85
-msgid "Welcome"
+#: src/modules/theme/packthemedialog.cpp:109
+msgid "Theme Data"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:145
+#: src/modules/theme/packthemedialog.cpp:110
 msgid ""
 "This is the information list for the themes you're packaging. If it looks OK "
 "press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
 "themes first."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:199
-msgid "Theme Data"
+#: src/modules/theme/packthemedialog.cpp:128
+msgid "Your name here"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:212
+#: src/modules/theme/packthemedialog.cpp:130
+msgid "Put a package description here..."
+msgstr ""
+
+#: src/modules/theme/packthemedialog.cpp:222
+msgid "Package Information"
+msgstr ""
+
+#: src/modules/theme/packthemedialog.cpp:223
 msgid ""
 "Here you need to provide information about you (the packager) and a short "
 "description of the package you're creating."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:218
+#: src/modules/theme/packthemedialog.cpp:228
 msgid "Package Name:"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:227
+#: src/modules/theme/packthemedialog.cpp:237
 #: src/modules/theme/savethemedialog.cpp:111
 msgid "Version:"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:235
+#: src/modules/theme/packthemedialog.cpp:246
 #: src/modules/theme/savethemedialog.cpp:119
 msgid "Description:"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:243
+#: src/modules/theme/packthemedialog.cpp:255
 msgid "Package Author:"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:254
-msgid "Package Information"
+#: src/modules/theme/packthemedialog.cpp:281
+msgid "Icon/Screenshot"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:266
+#: src/modules/theme/packthemedialog.cpp:282
 msgid ""
 "Here you can choose the image that will appear in the installation dialog "
 "for your theme package. It can be an icon, a logo or a screenshot and it "
@@ -248,36 +179,105 @@ msgid ""
 "default icon will be used at installation stage."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:283
-msgid "Icon/Screenshot"
+#: src/modules/theme/packthemedialog.cpp:322
+#: src/modules/theme/savethemedialog.cpp:198
+msgid "Failed to load the selected image"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:295
+#: src/modules/theme/packthemedialog.cpp:333
+msgid "Package Path"
+msgstr ""
+
+#: src/modules/theme/packthemedialog.cpp:334
 msgid ""
 "Here you must choose the file name for the theme package. It should have a *%"
 "1 extension."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:306
+#: src/modules/theme/packthemedialog.cpp:345
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:313
-msgid "Package Path"
-msgstr ""
-
-#: src/modules/theme/packthemedialog.cpp:344
-#: src/modules/theme/savethemedialog.cpp:198
-msgid "Failed to load the selected image"
-msgstr ""
-
-#: src/modules/theme/packthemedialog.cpp:378
+#: src/modules/theme/packthemedialog.cpp:400
 msgid "Failed to load the selected image: please fix it"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:459
-#: src/modules/theme/packthemedialog.cpp:471
+#: src/modules/theme/packthemedialog.cpp:481
+#: src/modules/theme/packthemedialog.cpp:493
 msgid "Packaging failed"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:72
+msgid "Error installing theme package: %Q"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:109
+msgid "Choose a file to save the screenshot to"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:124
+msgid "Error making screenshot"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:86
+msgid "by"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:113
+msgid "Manage Themes - KVIrc"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:133
+msgid "Save Current Theme..."
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:144
+msgid "Export Selected Themes to a Distributable Package"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:150
+msgid "Delete Selected Themes"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:160
+msgid "Install Theme Package From Disk"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:166
+msgid "Get More Themes..."
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:262
+msgid "&Remove Theme"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:263
+msgid "&Apply Theme"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:279
+#: src/modules/theme/managementdialog.cpp:292
+msgid "Apply theme - KVIrc"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:280
+msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:291
+msgid "Failed to apply the specified theme: %Q"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:305
+msgid "Delete Theme - KVIrc"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:306
+msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:319
+msgid "Open Theme - KVIrc"
 msgstr ""
 
 #: src/modules/theme/savethemedialog.cpp:64

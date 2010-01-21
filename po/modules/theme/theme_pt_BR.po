@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-30 15:41+0100\n"
+"POT-Creation-Date: 2010-01-21 19:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Delete Theme - KVIrc"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:235
+#: src/modules/theme/packthemedialog.cpp:246
 #: src/modules/theme/savethemedialog.cpp:119
 msgid "Description:"
 msgstr ""
@@ -93,12 +93,12 @@ msgstr ""
 msgid "Export Selected Themes to a Distributable Package"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:111
-#: src/modules/theme/packthemedialog.cpp:344
-#: src/modules/theme/packthemedialog.cpp:378
-#: src/modules/theme/packthemedialog.cpp:462
-#: src/modules/theme/packthemedialog.cpp:474
-#: src/modules/theme/packthemedialog.cpp:482
+#: src/modules/theme/packthemedialog.cpp:63
+#: src/modules/theme/packthemedialog.cpp:322
+#: src/modules/theme/packthemedialog.cpp:400
+#: src/modules/theme/packthemedialog.cpp:484
+#: src/modules/theme/packthemedialog.cpp:496
+#: src/modules/theme/packthemedialog.cpp:504
 msgid "Export Theme - KVIrc"
 msgstr ""
 
@@ -106,12 +106,12 @@ msgstr ""
 msgid "Failed to apply the specified theme: %Q"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:344
+#: src/modules/theme/packthemedialog.cpp:322
 #: src/modules/theme/savethemedialog.cpp:198
 msgid "Failed to load the selected image"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:378
+#: src/modules/theme/packthemedialog.cpp:400
 msgid "Failed to load the selected image: please fix it"
 msgstr ""
 
@@ -127,7 +127,7 @@ msgstr ""
 msgid "Failed to unpack the selected file: %Q"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:306
+#: src/modules/theme/packthemedialog.cpp:345
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr ""
 
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Go Back to Package Data"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:266
+#: src/modules/theme/packthemedialog.cpp:282
 msgid ""
 "Here you can choose the image that will appear in the installation dialog "
 "for your theme package. It can be an icon, a logo or a screenshot and it "
@@ -155,7 +155,7 @@ msgid ""
 "export the theme to a distributable package."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:295
+#: src/modules/theme/packthemedialog.cpp:334
 msgid ""
 "Here you must choose the file name for the theme package. It should have a *%"
 "1 extension."
@@ -167,18 +167,18 @@ msgid ""
 "description of the theme you're creating."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:212
+#: src/modules/theme/packthemedialog.cpp:223
 msgid ""
 "Here you need to provide information about you (the packager) and a short "
 "description of the package you're creating."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:124
+#: src/modules/theme/packthemedialog.cpp:78
 #: src/modules/theme/savethemedialog.cpp:78
 msgid "Hit the \"Next\" button to begin."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:283
+#: src/modules/theme/packthemedialog.cpp:281
 msgid "Icon/Screenshot"
 msgstr ""
 
@@ -202,28 +202,28 @@ msgstr ""
 msgid "Open Theme - KVIrc"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:243
+#: src/modules/theme/packthemedialog.cpp:255
 msgid "Package Author:"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:254
+#: src/modules/theme/packthemedialog.cpp:222
 msgid "Package Information"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:218
+#: src/modules/theme/packthemedialog.cpp:228
 msgid "Package Name:"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:313
+#: src/modules/theme/packthemedialog.cpp:333
 msgid "Package Path"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:459
-#: src/modules/theme/packthemedialog.cpp:471
+#: src/modules/theme/packthemedialog.cpp:481
+#: src/modules/theme/packthemedialog.cpp:493
 msgid "Packaging failed"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:81
+#: src/modules/theme/packthemedialog.cpp:130
 msgid "Put a package description here..."
 msgstr ""
 
@@ -268,7 +268,7 @@ msgstr ""
 msgid "Theme Author:"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:199
+#: src/modules/theme/packthemedialog.cpp:109
 msgid "Theme Data"
 msgstr ""
 
@@ -288,14 +288,14 @@ msgstr ""
 msgid "Theme saved successfully to "
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:145
+#: src/modules/theme/packthemedialog.cpp:110
 msgid ""
 "This is the information list for the themes you're packaging. If it looks OK "
 "press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
 "themes first."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:120
+#: src/modules/theme/packthemedialog.cpp:74
 msgid ""
 "This procedure allows you to export the selected themes to a single package. "
 "It is useful when you want to distribute your themes to the public."
@@ -318,7 +318,7 @@ msgstr ""
 msgid "Unable to save theme: %Q"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:227
+#: src/modules/theme/packthemedialog.cpp:237
 #: src/modules/theme/savethemedialog.cpp:111
 msgid "Version:"
 msgstr ""
@@ -333,7 +333,7 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:132
+#: src/modules/theme/packthemedialog.cpp:71
 #: src/modules/theme/savethemedialog.cpp:85
 msgid "Welcome"
 msgstr ""
@@ -346,7 +346,7 @@ msgstr ""
 msgid "You must choose a theme name!"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:122
+#: src/modules/theme/packthemedialog.cpp:76
 msgid ""
 "You will be asked to provide a package name, a description and, if you want, "
 "an icon/screenshot."
@@ -362,7 +362,7 @@ msgstr ""
 msgid "You're about to install the following theme package"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:79
+#: src/modules/theme/packthemedialog.cpp:128
 msgid "Your name here"
 msgstr ""
 
