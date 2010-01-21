@@ -225,7 +225,6 @@ void KviMdiChild::setClient(QWidget * w)
         {
             KviIrcConnection * pConnection=((KviWindow*)w)->connection();
             if (pConnection) tmp1.append(pConnection->target()->network()->name()+"_");
-
         }
 
         KviStr tmp(KviStr::Format,"mdi_child_%s%s",tmp1.toUtf8().data(),w->objectName().toUtf8().data());

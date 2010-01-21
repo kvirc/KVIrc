@@ -76,7 +76,7 @@ const char * const itemflags_tbl[] = {
                 To use this class you must instantiate it with another listviewitem or a [class]listview[/class]
 		as parent. The item will be automatically displayed.
 		You can set the text and a pixmap in each column and you can make it checkable
-		with [classfnc:treewidgetitem]$setCheckable[/classfnc]().
+                with [classfnc:listviewitem]$setCheckable[/classfnc]().
                 A checkable listviewitem will display a small check mark in the first column.
 	@functions:
 		!fn: $setText(<column:integer>,<text:string>)

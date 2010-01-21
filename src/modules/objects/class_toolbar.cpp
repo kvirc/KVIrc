@@ -60,7 +60,7 @@
 */
 
 
-KVSO_BEGIN_REGISTERCLASS(KviKvsObject_toolbar,"toolbar","object")
+KVSO_BEGIN_REGISTERCLASS(KviKvsObject_toolbar,"toolbar","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbar,addSeparator)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbar,setLabel)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbar,label)

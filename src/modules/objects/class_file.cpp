@@ -147,8 +147,6 @@ const QIODevice::OpenMode mod_cod[] = {
 		Appends a line of text to the end of the file.
 		$readBlock()
 		$writeBlock()
-		$writeHex()
-		$readHex()
 */
 
 
