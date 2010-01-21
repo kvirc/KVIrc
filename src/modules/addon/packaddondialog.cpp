@@ -463,7 +463,7 @@ KviPackAddonInfoPackageWidget::KviPackAddonInfoPackageWidget(KviPackAddonDialog 
 : QWizardPage(pParent)
 {
 	setObjectName("addon_package_info_page");
-	setTitle(__tr2qs_ctx("Package Informations","addon"));
+	setTitle(__tr2qs_ctx("Package Information","addon"));
 	setSubTitle(__tr2qs_ctx("Here you need to provide information about you (the packager) and a short description of the package you're creating.","addon"));
 
 	QGridLayout * pLayout = new QGridLayout(this);
@@ -595,7 +595,7 @@ KviPackAddonSummaryInfoWidget::KviPackAddonSummaryInfoWidget(KviPackAddonDialog 
 : QWizardPage(pParent)
 {
 	setObjectName("addon_package_summary_info_page");
-	setTitle(__tr2qs_ctx("Final Informations","addon"));
+	setTitle(__tr2qs_ctx("Final Information","addon"));
 	setSubTitle(__tr2qs_ctx("Here there are the information you provided. If these information are correct, hit the \"Finish\" button to complete the packaging operations.","addon"));
 
 	QVBoxLayout * pLayout = new QVBoxLayout(this);

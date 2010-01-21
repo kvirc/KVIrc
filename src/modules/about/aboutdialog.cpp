@@ -179,7 +179,7 @@ KviAboutDialog::KviAboutDialog()
 
 	v->setText(infoString);
 
-	addTab(w,__tr2qs_ctx("Executable Informations","about"));
+	addTab(w,__tr2qs_ctx("Executable Information","about"));
 
 
 	// Honor & Glory tab

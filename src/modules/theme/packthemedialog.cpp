@@ -251,7 +251,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLayout->setRowStretch(3,1);
 	pLayout->setColumnStretch(1,1);
 
-	addPage(pPage,__tr2qs_ctx("Package Informations","theme"));
+	addPage(pPage,__tr2qs_ctx("Package Information","theme"));
 	setBackEnabled(pPage,true);
 	setHelpEnabled(pPage,false);
 	setNextEnabled(pPage,true);
