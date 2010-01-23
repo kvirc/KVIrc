@@ -2,6 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Valerius <valeragir@mail.ru>, 2005.
+# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010
 #
 msgid ""
 msgstr ""
@@ -17,31 +18,28 @@ msgstr ""
 "X-Generator: KBabel 1.10.2\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:470
-#, fuzzy
 msgid ""
 "An interface to Amarok2.\n"
 "Download it from http://amarok.kde.org\n"
 msgstr ""
-"Интерфейс к популярному в UNIX медиаплееру xmms.\n"
-"Вы можете загрузить его с http://www.xmms.org\n"
+"Интерфейс к Amarok2.\n"
+"Вы можете загрузить его с http://amarok.kde.org\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:446
-#, fuzzy
 msgid ""
 "An interface to BMPx.\n"
 "Download it from http://bmpx.backtrace.info\n"
 msgstr ""
-"Интерфейс к популярному в UNIX медиаплееру xmms.\n"
-"Вы можете загрузить его с http://www.xmms.org\n"
+"Интерфейс к BMPx.\n"
+"Вы можете загрузить его с http://bmpx.backtrace.info\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:488
-#, fuzzy
 msgid ""
 "An interface to Qmmp.\n"
 "Download it from http://qmmp.ylsoftware.com\n"
 msgstr ""
-"Интерфейс к популярному в UNIX медиаплееру xmms.\n"
-"Вы можете загрузить его с http://www.xmms.org\n"
+"Интерфейс к Qmmp.\n"
+"Вы можете загрузить его с http://qmmp.ylsoftware.com\n"
 
 #: src/modules/mediaplayer/mp_amipinterface.cpp:108
 msgid ""
@@ -49,6 +47,10 @@ msgid ""
 "You can download it from http://amip.tools-for.net.\n"
 "To use this interface you must install AMIP plug-in for your player."
 msgstr ""
+"Интерфейс к плагину AMIP.\n"
+"Вы можете загрузить его с http://amip.tools-for.net.\n"
+"Для использования этого интерфейса вы должны установить плагин AMIP для "
+"вашего проигрывателя."
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:523
 msgid ""
@@ -57,24 +59,26 @@ msgid ""
 "To use it you have to install also the MPRIS addon available at http://"
 "addons.songbirdnest.com/addon/1626.\n"
 msgstr ""
+"Интерфейс к медиапрогрывателю Mozilla Songbird.\n"
+"Вы можете загрузить его с http://www.getsongbird.com.\n"
+"Для использования вам также придётся установить дополнение MPRIS доступное "
+"по адресу http://addons.songbirdnest.com/addon/1626.\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:506
-#, fuzzy
 msgid ""
 "An interface to the Xmms2 media player.\n"
 "Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
 msgstr ""
-"Интерфейс к популярному в UNIX медиаплееру xmms.\n"
-"Вы можете загрузить его с http://www.xmms.org\n"
+"Интерфейс к медиаплееру Xmms2.\n"
+"Вы можете загрузить его с http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
 
 #: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
-#, fuzzy
 msgid ""
 "An interface to the popular UNIX audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
 msgstr ""
-"Интерфейс к популярному в UNIX медиаплееру xmms.\n"
-"Вы можете загрузить его с http://www.xmms.org\n"
+"Интерфейс к популярному в UNIX медиаплееру audacious.\n"
+"Вы можете загрузить его с http://audacious-media-player.org\n"
 
 #: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
 msgid ""
@@ -85,13 +89,12 @@ msgstr ""
 "Вы можете загрузить его с http://www.xmms.org\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:320
-#, fuzzy
 msgid ""
 "An interface to the popular audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
 msgstr ""
-"Интерфейс к популярному в UNIX медиаплееру xmms.\n"
-"Вы можете загрузить его с http://www.xmms.org\n"
+"Интерфейс к популярному в UNIX медиаплееру audacious.\n"
+"Вы можете загрузить его с http://audacious-media-player.org\n"
 
 #: src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
@@ -112,14 +115,12 @@ msgid "Can't find a running winamp window"
 msgstr "Не могу найти запущенное окно winamp"
 
 #: src/modules/mediaplayer/mp_xmmsinterface.cpp:145
-#, fuzzy
 msgid "Can't find symbol %s in %Q"
-msgstr "Не найден символ %s в libxmms.so"
+msgstr "Не найден символ %s в %Q"
 
 #: src/modules/mediaplayer/mp_xmmsinterface.cpp:136
-#, fuzzy
 msgid "Can't load the player library (%Q)"
-msgstr "Не могу загрузить библиотеку xmms (libxmms.so)"
+msgstr "Не могу загрузить библиотеку проигрывателя (%Q)"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:100
 msgid "Choosing media player interface \"%Q\""
@@ -127,7 +128,7 @@ msgstr "Выбран интерфейс медиаплеера \"%Q\""
 
 #: src/modules/mediaplayer/mp_interface.cpp:43
 msgid "Function not implemented"
-msgstr ""
+msgstr "Функция не реализована"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:133
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:570
@@ -185,10 +186,3 @@ msgstr ""
 msgid "Trying media player interface \"%Q\": score %d"
 msgstr "Ищу интерфейс медиаплеера \"%Q\": score %d"
 
-#~ msgid "An interface to the AmaroK KDE media player."
-#~ msgstr ""
-#~ "Интерфейс для медиаплеера КДЕ AmaroK.\n"
-#~ "Вы можете загрузить его с http://amarok.kde.org"
-
-#~ msgid "An interface to the Juk KDE media player."
-#~ msgstr "Интерфейс к медиаплееру КДЕ Juk."
