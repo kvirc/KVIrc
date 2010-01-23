@@ -3,18 +3,22 @@
 # Italian translation file for KVIrc 4.0
 # Copyright (C) Szymon Stefanek
 # This file is distributed under the same license as the KVIrc package.
-# Elvio Basello <hellvis69 at netsons dot org>, 2009
 #
+# Elvio Basello <hellvis69 at netsons dot org>, 2009.
+# HelLViS69, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: editor_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-23 15:23+0100\n"
-"Last-Translator: Elvio Basello <hellvis69@netsons.org>\n"
-"Language-Team: Italian <it@li.org>\n"
+"Last-Translator: HelLViS69\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2010-01-23 15:31+0100\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/eventeditor/eventeditor.cpp:393
 #, c-format
@@ -242,6 +246,8 @@ msgid ""
 "An external script has changed the alias you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
+"Uno script esterno ha cambiato l'alias mentre lo stavi modificando. "
+"Vuoi accettare i cambiamenti esterni?"
 
 #: src/modules/actioneditor/actioneditor.cpp:869
 msgid "Apply"
@@ -416,7 +422,7 @@ msgstr "Conferma l'eliminazione della ToolBar"
 
 #: src/modules/editor/scripteditor.cpp:249
 msgid "Context sensitive help"
-msgstr ""
+msgstr "Aiuto contestuale"
 
 #: src/modules/popupeditor/popupeditor.cpp:425
 msgid "Cu&t"
@@ -843,7 +849,7 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:460
 msgid "OverWrite Current Alias"
-msgstr ""
+msgstr "Sovrascivi l'alias corrente"
 
 #: src/modules/popupeditor/popupeditor.cpp:440
 msgid "Paste Above"
