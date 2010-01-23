@@ -1,11 +1,9 @@
 # translation of dcc_ru.po to russian
-# translation of dcc_ru.po to русский
-# translation of dcc.po to русский
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Valerius <valeragir@mail.ru>, 2004, 2005.
 # Valeriy Girchenko <valeragir@mail.ru>, 2005.
-#
+# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ru\n"
@@ -28,13 +26,12 @@ msgstr "\"любой\""
 
 #: src/modules/dcc/send.cpp:1270
 msgid "%1"
-msgstr ""
+msgstr "%1"
 
 #: src/modules/dcc/send.cpp:1259
 #: src/modules/dcc/send.cpp:1266
-#, fuzzy
 msgid "%1 of %2 (%3%)"
-msgstr "%1 к %2 байт (%3%)"
+msgstr "%1 из %2 (%3%)"
 
 #: src/modules/dcc/requests.cpp:697
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
@@ -73,9 +70,8 @@ msgid "&Pentagon"
 msgstr "&Пятиугольник"
 
 #: src/modules/dcc/canvaswidget.cpp:1481
-#, fuzzy
 msgid "&Pie"
-msgstr "&Pie"
+msgstr ""
 
 #: src/modules/dcc/canvaswidget.cpp:1493
 msgid "&Polygons"
@@ -136,13 +132,12 @@ msgstr ""
 "режиме.<br>Целью соединения является хост <b>%4</b> через порт <b>%5</b><br>"
 
 #: src/modules/dcc/broker.cpp:417
-#, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VIDEO</"
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
 "b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> запрос <br><b>Direct Client Connection</b> в <b>VOICE</b> "
+"<b>%1 [%2@%3]</b> запрос <br><b>Direct Client Connection</b> в <b>VIDEO</b> "
 "режиме.<br> Целью соединения является хост <b>%4</b> через порт <b>%5</b><br>"
 
 #: src/modules/dcc/broker.cpp:347
@@ -155,22 +150,20 @@ msgstr ""
 "режиме.<br> Целью соединения является хост <b>%4</b> через порт <b>%5</b><br>"
 
 #: src/modules/dcc/broker.cpp:585
-#, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> хочет выслать вам файл '<b>%4</b>', размером <b>%5</b> "
-"байт.<br>Целью соединения является хост <b>%6</b> через порт <b>%7</b><br>"
+"<b>%1 [%2@%3]</b> хочет отправить вам файл '<b>%4</b>', размером <b>%5</b>."
+"<br>Целью соединения является хост <b>%6</b> через порт <b>%7</b><br>"
 
 #: src/modules/dcc/broker.cpp:598
-#, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>You will be the passive side of the connection.<br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> хочет выслать вам файл '<b>%4</b>', размером <b>%5</b> "
-"байт.<br> Вы будете пассивной стороной соединения.<br>"
+"<b>%1 [%2@%3]</b> хочет отправить вам файл '<b>%4</b>', размером <b>%5</b>."
+"<br> Вы будете пассивной стороной соединения.<br>"
 
 #: src/modules/dcc/broker.cpp:611
 msgid ""
@@ -246,9 +239,8 @@ msgid "Attempting a passive DCC CANVAS connection"
 msgstr "Попытка пассивного DCC CANVAS соединения"
 
 #: src/modules/dcc/video.cpp:800
-#, fuzzy
 msgid "Attempting a passive DCC VIDEO connection"
-msgstr "Попытка пассивного соединения DCC VOICE"
+msgstr "Попытка пассивного соединения DCC VIDEO"
 
 #: src/modules/dcc/voice.cpp:740
 msgid "Attempting a passive DCC VOICE connection"
@@ -268,9 +260,8 @@ msgid "Attempting an active DCC CANVAS connection"
 msgstr "Попытка активного DCC CANVAS соединения"
 
 #: src/modules/dcc/video.cpp:805
-#, fuzzy
 msgid "Attempting an active DCC VIDEO connection"
-msgstr "Попытка активного соединения DCC VOICE"
+msgstr "Попытка активного соединения DCC VIDEO"
 
 #: src/modules/dcc/voice.cpp:745
 msgid "Attempting an active DCC VOICE connection"
@@ -338,9 +329,8 @@ msgid "Cannot send data: No active connection"
 msgstr "Невозможно отослать данные: Нет активных соединений"
 
 #: src/modules/dcc/broker.cpp:706
-#, fuzzy
 msgid "Choose Files to Save - KVIrc"
-msgstr "Выберите файл для передачи - KVIrc"
+msgstr "Выберите файлы для сохранения - KVIrc"
 
 #: src/modules/dcc/broker.cpp:167
 #: src/modules/dcc/broker.cpp:872
@@ -419,19 +409,16 @@ msgid "DCC Failed: %Q"
 msgstr "Ошибка DCC: %Q"
 
 #: src/modules/dcc/broker.cpp:423
-#, fuzzy
 msgid "DCC VIDEO request"
-msgstr "Запрос DCC VOICE"
+msgstr "Запрос DCC VIDEO"
 
 #: src/modules/dcc/video.cpp:837
-#, fuzzy
 msgid "DCC VIDEO request not sent: awaiting manual connections"
-msgstr "Запрос DCC VOICE не отослан: ожидается ручное соединение"
+msgstr "Запрос DCC VIDEO не отослан: ожидается ручное соединение"
 
 #: src/modules/dcc/libkvidcc.cpp:1193
-#, fuzzy
 msgid "DCC VIDEO support not enabled at compilation time"
-msgstr "Поддержка DCC VOICE не включена во время компиляции"
+msgstr "Поддержка DCC VIDEO не включена во время компиляции"
 
 #: src/modules/dcc/broker.cpp:353
 msgid "DCC VOICE request"
@@ -503,7 +490,7 @@ msgstr "Входной буфер: %d байт"
 
 #: src/modules/dcc/video.cpp:708
 msgid "Input:"
-msgstr ""
+msgstr "Вход:"
 
 #: src/modules/dcc/send.cpp:1798
 msgid "Internal error in RESUME request"
@@ -533,9 +520,8 @@ msgid "Invalid codec specified, defaulting to 'adpcm'"
 msgstr "Недействительный кодек, принимается по умолчанию 'adpcm'"
 
 #: src/modules/dcc/libkvidcc.cpp:1214
-#, fuzzy
 msgid "Invalid codec specified, defaulting to 'sjpeg'"
-msgstr "Недействительный кодек, принимается по умолчанию 'adpcm'"
+msgstr "Недействительный кодек, принимается по умолчанию 'sjpeg'"
 
 #: src/modules/dcc/requests.cpp:163
 #, c-format
@@ -557,11 +543,11 @@ msgstr "Похоже, что вы не запрашивали этот dcc ча�
 
 #: src/modules/dcc/send.cpp:1838
 msgid "Limit download bandwidth to"
-msgstr "Предел при загрузке"
+msgstr "Ограничение скорости загрузки"
 
 #: src/modules/dcc/send.cpp:1838
 msgid "Limit upload bandwidth to"
-msgstr "Предел при передаче"
+msgstr "Ограничение скорости отправки"
 
 #: src/modules/dcc/send.cpp:1495
 msgid "Listening on interface %1 port %2"
@@ -668,12 +654,11 @@ msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "Отослан DCC RESUME запрос %1, ожидаю ACCEPT"
 
 #: src/modules/dcc/video.cpp:835
-#, fuzzy
 msgid ""
 "Sent DCC VIDEO (%s) request to %Q, waiting for the remote client to "
 "connect..."
 msgstr ""
-"Отослан DCC VOICE (%s) запрос %Q, ожидаю соединение удалённого клиента..."
+"Отослан DCC VIDEO (%s) запрос %Q, ожидаю соединение удалённого клиента..."
 
 #: src/modules/dcc/voice.cpp:775
 msgid ""
@@ -697,7 +682,7 @@ msgstr "Скорость:"
 
 #: src/modules/dcc/video.cpp:715
 msgid "Standard:"
-msgstr ""
+msgstr "Стандарт:"
 
 #: src/modules/dcc/chat.cpp:247
 #: src/modules/dcc/send.cpp:1583
@@ -719,12 +704,11 @@ msgstr ""
 "умолчанию 8000"
 
 #: src/modules/dcc/requests.cpp:1071
-#, fuzzy
 msgid ""
 "The above request cannot be accepted: DCC VIDEO support not enabled at "
 "compilation time "
 msgstr ""
-"Невозможно принять указанный запрос: Поддержка DCC VOICE не включена во "
+"Невозможно принять указанный запрос: Поддержка DCC VIDEO не включена во "
 "время компиляции"
 
 #: src/modules/dcc/requests.cpp:997
@@ -798,12 +782,11 @@ msgid "The connection will be secured using SSL.<br>"
 msgstr "Соединение будет использовать SSL.<br>"
 
 #: src/modules/dcc/chat.cpp:339
-#, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
 msgstr ""
-"Крипто машина не способна зашифровать текущее сообщение(%Q): %s, никакие "
+"Крипто машина не способна зашифровать текущее сообщение(%Q): %Q, никакие "
 "данные не отосланы"
 
 #: src/modules/dcc/libkvidcc.cpp:1643
@@ -813,18 +796,16 @@ msgid "The current window has no associated DCC session"
 msgstr "Текущее окно не ассоциируется с DCC сессией"
 
 #: src/modules/dcc/broker.cpp:752
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
 "file, or<br><b>resume</b> an incomplete download?"
 msgstr ""
-"Файл '<b>%1</b>' уже существует, размер - <b>%2</b> байт.<br>Вы хотите "
+"Файл '<b>%1</b>' уже существует, размер - <b>%2</b>.<br>Вы хотите "
 "<br><b>переписать</b> существующий файл,<br> <b>автоматически переименовать</"
 "b> новый файл, или<br><b>продолжить</b> незавершённую загрузку?"
 
 #: src/modules/dcc/broker.cpp:764
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is larger than the offered one."
 "<br>Do you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-"
@@ -835,13 +816,12 @@ msgstr ""
 "переименовать</b> новый файл?"
 
 #: src/modules/dcc/chat.cpp:467
-#, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
 msgstr ""
 "Следующее сообщение зашифровано, но криптовальная машина не может его "
-"расшифровать: %s"
+"расшифровать: %Q"
 
 #: src/modules/dcc/chat.cpp:213
 #: src/modules/dcc/send.cpp:1523
@@ -883,7 +863,7 @@ msgstr "Заданный идентификатор окна недействи�
 
 #: src/modules/dcc/libkvidcc.cpp:1728
 msgid "This DCC session is not a DCC transfer session"
-msgstr ""
+msgstr "Это сессия DCC не является сессией передачи"
 
 #: src/modules/dcc/libkvidcc.cpp:891
 msgid "This executable has been built without SSL support, -s switch ignored"
@@ -1019,7 +999,6 @@ msgstr "ПРЕДУПРЕЖДЕНИЕ: Собеседник посылает ка
 
 #: src/modules/dcc/video.cpp:168
 #: src/modules/dcc/voice.cpp:162
-#, fuzzy
 msgid ""
 "WARNING: failed to check the soundcard duplex capabilities: if this is a "
 "half-duplex soundcard, use the DCC VOICE option to force half-duplex "
@@ -1084,23 +1063,3 @@ msgstr "байт/сек"
 msgid "unknown"
 msgstr "неизвестный"
 
-#~ msgid "%1 bytes"
-#~ msgstr "%1 байт"
-
-#~ msgid "Choose Save Location - KVIrc"
-#~ msgstr "Выберите путь сохранения - KVIrc"
-
-#~ msgid "Contacting host %s on port %s"
-#~ msgstr "Подключение к хосту %s на порт %s"
-
-#~ msgid "Invalid file size specified, no message sent"
-#~ msgstr "Задан недействительный размер файла, сообщение не отослано"
-
-#~ msgid "Missing filename"
-#~ msgstr "Отсутствует имя файла"
-
-#~ msgid "Missing target nickname"
-#~ msgstr "Целевой ник потерян"
-
-#~ msgid "The file size is not an positive number"
-#~ msgstr "Размер файла не является положительным числом"
