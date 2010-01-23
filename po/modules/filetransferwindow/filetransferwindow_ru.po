@@ -1,12 +1,10 @@
-# translation of filetransferwindow_ru.po to
 # translation of filetransferwindow_ru.po to russian
-# translation of filetransferwindow_ru.po to русский
-# translation of filetransferwindow.po to русский
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Valerius <valeragir@mail.ru>, 2004.
 # Valeriy Girchenko <valeragir@mail.ru>, 2005.
 # root <wizard@opendoor.ru>, 2006.
+# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010
 #
 msgid ""
 msgstr ""
@@ -86,7 +84,7 @@ msgstr "Локальный &файл"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:474
 msgid "MS-DOS Prompt at Location"
-msgstr "Открыть командную строку в папке файла"
+msgstr "Открыть командную строку в папке назначения"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:612
 #: src/modules/filetransferwindow/filetransferwindow.cpp:780
@@ -112,13 +110,12 @@ msgid "Progress"
 msgstr "Прогресс"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:416
-#, fuzzy
 msgid "Size: %1"
-msgstr "Размер: %1 байт"
+msgstr "Размер: %1"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:462
 msgid "Terminal at Location"
-msgstr "Открыть терминал в папке файла"
+msgstr "Открыть терминал в папке назначения"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:134
 msgid "Type"
@@ -129,6 +126,3 @@ msgstr "Тип"
 msgid "Yes"
 msgstr "Да"
 
-#, fuzzy
-#~ msgid "Manage File &Transfers"
-#~ msgstr "Передачи файлов"
