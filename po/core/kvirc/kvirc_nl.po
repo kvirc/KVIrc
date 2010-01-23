@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 19:02+0100\n"
+"POT-Creation-Date: 2010-01-23 15:23+0100\n"
 "PO-Revision-Date: 2010-01-20 00:11+0100\n"
 "Language-Team: Nederlands <kvirc-subscribe@lists.omnikron.net>\n"
 "MIME-Version: 1.0\n"
@@ -608,10 +608,6 @@ msgstr "&Verwijderen"
 msgid "&Remove Selected"
 msgstr "&Verwijder geselecteerde"
 
-#: src/modules/editor/scripteditor.cpp:250
-msgid "&Replace"
-msgstr "&Vervang"
-
 #: src/kvirc/ui/kvi_window.cpp:748
 msgid "&Restore"
 msgstr "He&rstellen"
@@ -1207,12 +1203,6 @@ msgstr "Ik ben de userop'd"
 #: src/kvirc/kernel/kvi_options.cpp:809
 msgid "Am voiced"
 msgstr "Ik ben stemhebbend"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:461
-msgid ""
-"An external script has changed the alias you are currently editing. Do you "
-"want to accept the external changes?"
-msgstr ""
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:234
 msgid "Anodine's Full Grid"
@@ -2174,10 +2164,6 @@ msgstr "Contacteer host %Q op poort %u"
 #: src/modules/trayicon/libkvitrayicon.cpp:94
 msgid "Context"
 msgstr "Inhoud"
-
-#: src/modules/editor/scripteditor.cpp:249
-msgid "Context sensitive help"
-msgstr "Context gevoelige hulp"
 
 #: src/kvirc/ui/kvi_topicw.cpp:508
 msgid "Copy to clipboard"
@@ -4684,10 +4670,6 @@ msgstr "Uitgaand ICQ gebruiker-bericht"
 msgid "Outgoing traffic"
 msgstr "Uitgaand verkeer"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:460
-msgid "OverWrite Current Alias"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_options.cpp:854
 msgid "Own IRC Op status set"
 msgstr "Eigen kanaal administrator status ingesteld"
@@ -4720,7 +4702,7 @@ msgstr "Eigen versleuteld privaat bericht"
 msgid "Own private message"
 msgstr "Eigen privaat bericht"
 
-#: src/modules/theme/packthemedialog.cpp:504
+#: src/modules/theme/packthemedialog.cpp:559
 msgid "Package saved successfully"
 msgstr "Pakket succesvol bewaard"
 
@@ -8046,11 +8028,17 @@ msgstr "z: Ontvanger voor oper wallop berichten"
 #~ msgid "&Module"
 #~ msgstr "&Module"
 
+#~ msgid "&Replace"
+#~ msgstr "&Vervang"
+
 #~ msgid "&Save"
 #~ msgstr "Op&slaan"
 
 #~ msgid "Clo&se"
 #~ msgstr "&Sluiten"
+
+#~ msgid "Context sensitive help"
+#~ msgstr "Context gevoelige hulp"
 
 #~ msgid "Help Browser (&Window)"
 #~ msgstr "Help Browser (&Venster)"

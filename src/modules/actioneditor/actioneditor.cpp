@@ -731,7 +731,7 @@ void KviActionEditor::deleteActions()
 
 	if(l.isEmpty())return;
 
-	//if(QMessageBox::question(this,__tr2qsf("Confirm Deletion"),__tr2qsf("Do you really want to delete the selected actions ?"),__tr2qsf("Yes"),__tr2qsf("No")) != 0)
+	//if(QMessageBox::question(this,__tr2qs_ctx("Confirm Deletion","editor"),__tr2qs_ctx("Do you really want to delete the selected actions ?","editor"),__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("No","editor")) != 0)
 	//	return;
 
 	for(KviActionEditorTreeWidgetItem * i = l.first();i;i = l.next())

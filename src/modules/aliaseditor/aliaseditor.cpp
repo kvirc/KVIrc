@@ -457,8 +457,8 @@ void KviAliasEditor::aliasRefresh(const QString &szName)
 		return;
 	}
 	if(
-		QMessageBox::warning(0,__tr2qs("OverWrite Current Alias"),
-				__tr2qs("An external script has changed the alias you are currently editing. Do you want to accept the external changes?"),
+		QMessageBox::warning(0,__tr2qs_ctx("OverWrite Current Alias","editor"),
+				__tr2qs_ctx("An external script has changed the alias you are currently editing. Do you want to accept the external changes?","editor"),
 				QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes
 		)
 		return;
@@ -738,7 +738,7 @@ void KviAliasEditor::exportSelectionInSinglesFiles(KviPointerList<KviAliasTreeWi
 	if (!l->first())
 	{
 		g_pAliasEditorModule->lock();
-		QMessageBox::warning(this,__tr2qs_ctx("Alias Export","editor"),__tr2qs_ctx("There is no selection!","editor"),__tr2qs_ctx("Ok","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Alias Export","editor"),__tr2qs_ctx("There is no selection!","editor"),__tr2qs_ctx("OK","editor"));
 		g_pAliasEditorModule->unlock();
 		return;
 	}
@@ -812,7 +812,7 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 	if(out.isEmpty())
 	{
 		g_pAliasEditorModule->lock();
-		QMessageBox::warning(this,__tr2qs_ctx("Alias Export","editor"),__tr2qs_ctx("The exported file would be empty: cowardly refusing to write it","editor"),__tr2qs_ctx("Ok","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Alias Export","editor"),__tr2qs_ctx("The exported file would be empty: cowardly refusing to write it","editor"),__tr2qs_ctx("OK","editor"));
 		g_pAliasEditorModule->unlock();
 		return;
 	}
@@ -842,7 +842,7 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 	if(!KviFileUtils::writeFile(szFile,out))
 	{
 		g_pAliasEditorModule->lock();
-		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the alias file.","editor"),__tr2qs_ctx("Ok","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the alias file.","editor"),__tr2qs_ctx("OK","editor"));
 		g_pAliasEditorModule->unlock();
 	}
 }

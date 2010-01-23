@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 19:02+0100\n"
+"POT-Creation-Date: 2010-01-23 15:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -617,10 +617,6 @@ msgstr "&Poista"
 msgid "&Remove Selected"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:250
-msgid "&Replace"
-msgstr ""
-
 #: src/kvirc/ui/kvi_window.cpp:748
 msgid "&Restore"
 msgstr "P&alauta"
@@ -1165,12 +1161,6 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_options.cpp:809
 msgid "Am voiced"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:461
-msgid ""
-"An external script has changed the alias you are currently editing. Do you "
-"want to accept the external changes?"
 msgstr ""
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:234
@@ -2142,11 +2132,6 @@ msgstr ""
 #, fuzzy
 msgid "Context"
 msgstr "IRC -konteksti"
-
-#: src/modules/editor/scripteditor.cpp:249
-#, fuzzy
-msgid "Context sensitive help"
-msgstr "&Riippuu kirjainkoosta"
 
 #: src/kvirc/ui/kvi_topicw.cpp:508
 msgid "Copy to clipboard"
@@ -4601,10 +4586,6 @@ msgstr ""
 msgid "Outgoing traffic"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:460
-msgid "OverWrite Current Alias"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_options.cpp:854
 msgid "Own IRC Op status set"
 msgstr ""
@@ -4637,7 +4618,7 @@ msgstr ""
 msgid "Own private message"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:504
+#: src/modules/theme/packthemedialog.cpp:559
 msgid "Package saved successfully"
 msgstr ""
 
@@ -8108,6 +8089,10 @@ msgstr "z: Vastaanottaja operin wallop-viesteille"
 #, fuzzy
 #~ msgid "Colors"
 #~ msgstr "Sulje"
+
+#, fuzzy
+#~ msgid "Context sensitive help"
+#~ msgstr "&Riippuu kirjainkoosta"
 
 #~ msgid ""
 #~ "Couldn't find a suitable IRC context for the connection, try using -n or -"

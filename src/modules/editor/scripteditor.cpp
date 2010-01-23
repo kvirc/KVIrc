@@ -246,8 +246,8 @@ void KviScriptEditorWidget::insertCompletion(const QString & szCompletion)
 void KviScriptEditorWidget::contextMenuEvent(QContextMenuEvent * e)
 {
 	QMenu * pMenu = createStandardContextMenu();
-	pMenu->addAction(__tr2qs("Context sensitive help"),this,SLOT(slotHelp()),Qt::CTRL+Qt::Key_H);
-	pMenu->addAction(__tr2qs("&Replace"),this,SLOT(slotReplace()),Qt::CTRL+Qt::Key_R);
+	pMenu->addAction(__tr2qs_ctx("Context sensitive help","editor"),this,SLOT(slotHelp()),Qt::CTRL+Qt::Key_H);
+	pMenu->addAction(__tr2qs_ctx("&Replace","editor"),this,SLOT(slotReplace()),Qt::CTRL+Qt::Key_R);
 	pMenu->exec(e->globalPos());
 	delete pMenu;
 }

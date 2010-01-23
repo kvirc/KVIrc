@@ -1124,7 +1124,7 @@ void KviPopupEditor::exportCurrentPopup()
 
 	if(!KviFileUtils::writeFile(szFile,szOut))
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the popup file.","editor"),__tr2qs_ctx("Ok","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the popup file.","editor"),__tr2qs_ctx("OK","editor"));
 	}
 }
 
@@ -1171,7 +1171,7 @@ void KviPopupEditor::exportPopups(bool bSelectedOnly)
 
 	if(!KviFileUtils::writeFile(szFile,out))
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the alias file.","editor"),__tr2qs_ctx("Ok","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the alias file.","editor"),__tr2qs_ctx("OK","editor"));
 	}
 }
 

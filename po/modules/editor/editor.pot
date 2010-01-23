@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 19:02+0100\n"
+"POT-Creation-Date: 2010-01-23 15:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -242,7 +242,14 @@ msgstr ""
 
 #: src/modules/actioneditor/actioneditor.cpp:717
 #: src/modules/actioneditor/actioneditor.cpp:864
+#: src/modules/aliaseditor/aliaseditor.cpp:741
+#: src/modules/aliaseditor/aliaseditor.cpp:815
+#: src/modules/aliaseditor/aliaseditor.cpp:845
 #: src/modules/editor/scripteditor.cpp:528
+#: src/modules/eventeditor/eventeditor.cpp:491
+#: src/modules/popupeditor/popupeditor.cpp:1127
+#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/raweditor/raweditor.cpp:466
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:247
 #: src/modules/toolbareditor/toolbareditor.cpp:457
@@ -295,6 +302,16 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:267
 msgid "Edit the alias or namespace name"
+msgstr ""
+
+#: src/modules/aliaseditor/aliaseditor.cpp:460
+msgid "OverWrite Current Alias"
+msgstr ""
+
+#: src/modules/aliaseditor/aliaseditor.cpp:461
+msgid ""
+"An external script has changed the alias you are currently editing. Do you "
+"want to accept the external changes?"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:477
@@ -353,16 +370,6 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:741
 msgid "There is no selection!"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:741
-#: src/modules/aliaseditor/aliaseditor.cpp:815
-#: src/modules/aliaseditor/aliaseditor.cpp:845
-#: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1127
-#: src/modules/popupeditor/popupeditor.cpp:1174
-#: src/modules/raweditor/raweditor.cpp:466
-msgid "Ok"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:747
@@ -549,6 +556,15 @@ msgstr ""
 msgid "&Apply"
 msgstr ""
 
+#: src/modules/editor/scripteditor.cpp:249
+msgid "Context sensitive help"
+msgstr ""
+
+#: src/modules/editor/scripteditor.cpp:250
+#: src/modules/editor/scripteditor.cpp:1012
+msgid "&Replace"
+msgstr ""
+
 #: src/modules/editor/scripteditor.cpp:263
 msgid "Find & Replace"
 msgstr ""
@@ -658,10 +674,6 @@ msgstr ""
 
 #: src/modules/editor/scripteditor.cpp:1007
 msgid "&Cancel"
-msgstr ""
-
-#: src/modules/editor/scripteditor.cpp:1012
-msgid "&Replace"
 msgstr ""
 
 #: src/modules/eventeditor/eventeditor.cpp:104

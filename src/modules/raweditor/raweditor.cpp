@@ -463,7 +463,7 @@ void KviRawEditor::exportAllEvents()
 
 	if(!KviFileUtils::writeFile(szFile,out))
 	{
-		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the raw events file.","editor"),__tr2qs_ctx("Ok","editor"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the raw events file.","editor"),__tr2qs_ctx("OK","editor"));
 	}
 }
 

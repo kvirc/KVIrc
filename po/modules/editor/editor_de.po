@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 19:02+0100\n"
+"POT-Creation-Date: 2010-01-23 15:23+0100\n"
 "PO-Revision-Date: 2009-02-10 20:09+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -124,6 +124,7 @@ msgstr "&Öffnen..."
 msgid "&Paste Below"
 msgstr "&Unten einfügen"
 
+#: src/modules/editor/scripteditor.cpp:250
 #: src/modules/editor/scripteditor.cpp:1012
 msgid "&Replace"
 msgstr "E&rsetzen"
@@ -237,6 +238,12 @@ msgid ""
 msgstr ""
 "Aliasnamen können nur Buchstaben, Ziffern, Unterstriche und '::'-"
 "Namensraumseparatoren beinhalten"
+
+#: src/modules/aliaseditor/aliaseditor.cpp:461
+msgid ""
+"An external script has changed the alias you are currently editing. Do you "
+"want to accept the external changes?"
+msgstr ""
 
 #: src/modules/actioneditor/actioneditor.cpp:869
 msgid "Apply"
@@ -407,6 +414,10 @@ msgstr "Bedingung:"
 #: src/modules/toolbareditor/toolbareditor.cpp:376
 msgid "Confirm ToolBar Deletion"
 msgstr "Löschen der Werkzeugleiste bestätigen"
+
+#: src/modules/editor/scripteditor.cpp:249
+msgid "Context sensitive help"
+msgstr "Kontextsensitive Hilfe"
 
 #: src/modules/popupeditor/popupeditor.cpp:425
 msgid "Cu&t"
@@ -781,22 +792,19 @@ msgstr "Normaler Text:"
 
 #: src/modules/actioneditor/actioneditor.cpp:717
 #: src/modules/actioneditor/actioneditor.cpp:864
+#: src/modules/aliaseditor/aliaseditor.cpp:741
+#: src/modules/aliaseditor/aliaseditor.cpp:815
+#: src/modules/aliaseditor/aliaseditor.cpp:845
 #: src/modules/editor/scripteditor.cpp:528
+#: src/modules/eventeditor/eventeditor.cpp:491
+#: src/modules/popupeditor/popupeditor.cpp:1127
+#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/raweditor/raweditor.cpp:466
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:247
 #: src/modules/toolbareditor/toolbareditor.cpp:457
 msgid "OK"
 msgstr "OK"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:741
-#: src/modules/aliaseditor/aliaseditor.cpp:815
-#: src/modules/aliaseditor/aliaseditor.cpp:845
-#: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1127
-#: src/modules/popupeditor/popupeditor.cpp:1174
-#: src/modules/raweditor/raweditor.cpp:466
-msgid "Ok"
-msgstr "Ok"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1143
 #: src/modules/aliaseditor/aliaseditor.cpp:1156
@@ -834,6 +842,10 @@ msgstr ""
 "Tasten-Codes beschreibt, die letztlich mit Modifizierern wie \"Strg\", "
 "\"Shift\", \"Alt\" und \"Meta\" kombiniert werden können.<br>Beispiele "
 "solchen Sequenzen sind \"Strg+X\", \"Strg+Alt+Z\", \"Strg+X, Strg+C\"..."
+
+#: src/modules/aliaseditor/aliaseditor.cpp:460
+msgid "OverWrite Current Alias"
+msgstr ""
 
 #: src/modules/popupeditor/popupeditor.cpp:440
 msgid "Paste Above"
@@ -1179,5 +1191,5 @@ msgstr "kein"
 msgid "unnamed"
 msgstr "unbenannt"
 
-#~ msgid "Context sensitive help"
-#~ msgstr "Kontextsensitive Hilfe"
+#~ msgid "Ok"
+#~ msgstr "Ok"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 19:02+0100\n"
+"POT-Creation-Date: 2010-01-23 15:23+0100\n"
 "PO-Revision-Date: 2005-12-27 23:04+0200\n"
 "Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: russian\n"
@@ -126,6 +126,7 @@ msgstr "&Открыть..."
 msgid "&Paste Below"
 msgstr "&Вставить снизу"
 
+#: src/modules/editor/scripteditor.cpp:250
 #: src/modules/editor/scripteditor.cpp:1012
 msgid "&Replace"
 msgstr "Заменить"
@@ -238,6 +239,12 @@ msgid ""
 msgstr ""
 "Имя алиаса может содержать только цифры, буквы, нижние подчеркивания и '::' "
 "как разделитель пространств имён"
+
+#: src/modules/aliaseditor/aliaseditor.cpp:461
+msgid ""
+"An external script has changed the alias you are currently editing. Do you "
+"want to accept the external changes?"
+msgstr ""
 
 #: src/modules/actioneditor/actioneditor.cpp:869
 msgid "Apply"
@@ -408,6 +415,10 @@ msgstr "Условие:"
 #: src/modules/toolbareditor/toolbareditor.cpp:376
 msgid "Confirm ToolBar Deletion"
 msgstr "Подтвердите удаление панели инструментов"
+
+#: src/modules/editor/scripteditor.cpp:249
+msgid "Context sensitive help"
+msgstr ""
 
 #: src/modules/popupeditor/popupeditor.cpp:425
 msgid "Cu&t"
@@ -781,22 +792,19 @@ msgstr "Обычный текст:"
 
 #: src/modules/actioneditor/actioneditor.cpp:717
 #: src/modules/actioneditor/actioneditor.cpp:864
+#: src/modules/aliaseditor/aliaseditor.cpp:741
+#: src/modules/aliaseditor/aliaseditor.cpp:815
+#: src/modules/aliaseditor/aliaseditor.cpp:845
 #: src/modules/editor/scripteditor.cpp:528
+#: src/modules/eventeditor/eventeditor.cpp:491
+#: src/modules/popupeditor/popupeditor.cpp:1127
+#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/raweditor/raweditor.cpp:466
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:247
 #: src/modules/toolbareditor/toolbareditor.cpp:457
 msgid "OK"
 msgstr "OK"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:741
-#: src/modules/aliaseditor/aliaseditor.cpp:815
-#: src/modules/aliaseditor/aliaseditor.cpp:845
-#: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1127
-#: src/modules/popupeditor/popupeditor.cpp:1174
-#: src/modules/raweditor/raweditor.cpp:466
-msgid "Ok"
-msgstr "Ok"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1143
 #: src/modules/aliaseditor/aliaseditor.cpp:1156
@@ -834,6 +842,10 @@ msgstr ""
 "объединённых с модификаторами \"Ctrl\",\"Shift\",\"Alt\" и \"Meta\". Если вы "
 "задаёте несколько комбинаций, их нужно разделить запятыми.<br>Примеры таких "
 "комбинаций: \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
+
+#: src/modules/aliaseditor/aliaseditor.cpp:460
+msgid "OverWrite Current Alias"
+msgstr ""
 
 #: src/modules/popupeditor/popupeditor.cpp:440
 msgid "Paste Above"
@@ -1176,3 +1188,6 @@ msgstr "нет"
 #: src/modules/raweditor/raweditor.cpp:199
 msgid "unnamed"
 msgstr "без имени"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"

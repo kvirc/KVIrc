@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 19:02+0100\n"
+"POT-Creation-Date: 2010-01-23 15:23+0100\n"
 "PO-Revision-Date: 2008-02-14 02:10+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -611,10 +611,6 @@ msgstr "Uklo&ni"
 msgid "&Remove Selected"
 msgstr "&Ukloni Odabrano"
 
-#: src/modules/editor/scripteditor.cpp:250
-msgid "&Replace"
-msgstr "&Zamijeni"
-
 #: src/kvirc/ui/kvi_window.cpp:748
 msgid "&Restore"
 msgstr "&Vrati"
@@ -1168,12 +1164,6 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_options.cpp:809
 msgid "Am voiced"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:461
-msgid ""
-"An external script has changed the alias you are currently editing. Do you "
-"want to accept the external changes?"
 msgstr ""
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:234
@@ -2139,11 +2129,6 @@ msgstr "Kontaktiram host %Q na portu %u"
 #: src/modules/trayicon/libkvitrayicon.cpp:94
 msgid "Context"
 msgstr "Kontekst"
-
-#: src/modules/editor/scripteditor.cpp:249
-#, fuzzy
-msgid "Context sensitive help"
-msgstr "Ignoriraj veličinu Slova"
 
 #: src/kvirc/ui/kvi_topicw.cpp:508
 msgid "Copy to clipboard"
@@ -4584,10 +4569,6 @@ msgstr ""
 msgid "Outgoing traffic"
 msgstr "Izlazni promet"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:460
-msgid "OverWrite Current Alias"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_options.cpp:854
 msgid "Own IRC Op status set"
 msgstr ""
@@ -4620,7 +4601,7 @@ msgstr ""
 msgid "Own private message"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:504
+#: src/modules/theme/packthemedialog.cpp:559
 msgid "Package saved successfully"
 msgstr "Paket uspješno pohranjen"
 
@@ -7981,6 +7962,9 @@ msgstr ""
 #~ msgid "&Query"
 #~ msgstr "&Razgovor s"
 
+#~ msgid "&Replace"
+#~ msgstr "&Zamijeni"
+
 #~ msgid "&Replace in all Aliases"
 #~ msgstr "&Zamijeni u svim Aliasima"
 
@@ -8195,6 +8179,10 @@ msgstr ""
 
 #~ msgid "Confirm ToolBar Deletion"
 #~ msgstr "Potvrdite Brisanje Alatne Trake"
+
+#, fuzzy
+#~ msgid "Context sensitive help"
+#~ msgstr "Ignoriraj veličinu Slova"
 
 #~ msgid "Copy Channel Address"
 #~ msgstr "Kopiraj adresu Sobe"

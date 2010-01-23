@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 19:02+0100\n"
+"POT-Creation-Date: 2010-01-23 15:23+0100\n"
 "PO-Revision-Date: 2009-12-30 16:18+0100\n"
 "Last-Translator: HelLViS69\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -615,10 +615,6 @@ msgstr "&Rimuovi"
 msgid "&Remove Selected"
 msgstr "&Rimuovi Selezione"
 
-#: src/modules/editor/scripteditor.cpp:250
-msgid "&Replace"
-msgstr "Sostituisci"
-
 #: src/kvirc/ui/kvi_window.cpp:748
 msgid "&Restore"
 msgstr "&Ripristina"
@@ -1212,12 +1208,6 @@ msgstr "Sono stato Oppato"
 #: src/kvirc/kernel/kvi_options.cpp:809
 msgid "Am voiced"
 msgstr "Sono stato Voiced"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:461
-msgid ""
-"An external script has changed the alias you are currently editing. Do you "
-"want to accept the external changes?"
-msgstr ""
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:234
 msgid "Anodine's Full Grid"
@@ -2188,10 +2178,6 @@ msgstr "Contatto l'Host %Q sulla porta %u"
 #: src/modules/trayicon/libkvitrayicon.cpp:94
 msgid "Context"
 msgstr "Contesto"
-
-#: src/modules/editor/scripteditor.cpp:249
-msgid "Context sensitive help"
-msgstr "Aiuto contestuale"
 
 #: src/kvirc/ui/kvi_topicw.cpp:508
 msgid "Copy to clipboard"
@@ -4706,10 +4692,6 @@ msgstr "Messaggio utente ICQ in uscita"
 msgid "Outgoing traffic"
 msgstr "Traffico in uscita"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:460
-msgid "OverWrite Current Alias"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_options.cpp:854
 msgid "Own IRC Op status set"
 msgstr "Stato di IRC Op impostato"
@@ -4742,7 +4724,7 @@ msgstr "Proprio messaggio privato criptato"
 msgid "Own private message"
 msgstr "Proprio messaggio privato"
 
-#: src/modules/theme/packthemedialog.cpp:504
+#: src/modules/theme/packthemedialog.cpp:559
 msgid "Package saved successfully"
 msgstr "Pacchetto salvato con successo"
 
@@ -8091,6 +8073,9 @@ msgstr "z: destinatario dei messaggi Wallop per Operatori"
 #~ msgid "&Module"
 #~ msgstr "&Modulo"
 
+#~ msgid "&Replace"
+#~ msgstr "Sostituisci"
+
 #~ msgid "&Save"
 #~ msgstr "&Salva"
 
@@ -8127,6 +8112,9 @@ msgstr "z: destinatario dei messaggi Wallop per Operatori"
 
 #~ msgid "Clo&se"
 #~ msgstr "Chiudi"
+
+#~ msgid "Context sensitive help"
+#~ msgstr "Aiuto contestuale"
 
 #~ msgid "Help Browser (&Window)"
 #~ msgstr "Browser Aiuto (&Finestra)"

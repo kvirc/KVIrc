@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 19:02+0100\n"
+"POT-Creation-Date: 2010-01-23 15:23+0100\n"
 "PO-Revision-Date: 2007-10-27 22:44+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -116,6 +116,7 @@ msgstr "Megnyitás"
 msgid "&Paste Below"
 msgstr ""
 
+#: src/modules/editor/scripteditor.cpp:250
 #: src/modules/editor/scripteditor.cpp:1012
 msgid "&Replace"
 msgstr ""
@@ -213,6 +214,12 @@ msgstr ""
 msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
+msgstr ""
+
+#: src/modules/aliaseditor/aliaseditor.cpp:461
+msgid ""
+"An external script has changed the alias you are currently editing. Do you "
+"want to accept the external changes?"
 msgstr ""
 
 #: src/modules/actioneditor/actioneditor.cpp:869
@@ -369,6 +376,10 @@ msgstr "Függvények: "
 
 #: src/modules/toolbareditor/toolbareditor.cpp:376
 msgid "Confirm ToolBar Deletion"
+msgstr ""
+
+#: src/modules/editor/scripteditor.cpp:249
+msgid "Context sensitive help"
 msgstr ""
 
 #: src/modules/popupeditor/popupeditor.cpp:425
@@ -743,23 +754,20 @@ msgstr "Normál szöveg"
 
 #: src/modules/actioneditor/actioneditor.cpp:717
 #: src/modules/actioneditor/actioneditor.cpp:864
+#: src/modules/aliaseditor/aliaseditor.cpp:741
+#: src/modules/aliaseditor/aliaseditor.cpp:815
+#: src/modules/aliaseditor/aliaseditor.cpp:845
 #: src/modules/editor/scripteditor.cpp:528
+#: src/modules/eventeditor/eventeditor.cpp:491
+#: src/modules/popupeditor/popupeditor.cpp:1127
+#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/raweditor/raweditor.cpp:466
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:247
 #: src/modules/toolbareditor/toolbareditor.cpp:457
 #, fuzzy
 msgid "OK"
 msgstr "&OK"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:741
-#: src/modules/aliaseditor/aliaseditor.cpp:815
-#: src/modules/aliaseditor/aliaseditor.cpp:845
-#: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1127
-#: src/modules/popupeditor/popupeditor.cpp:1174
-#: src/modules/raweditor/raweditor.cpp:466
-msgid "Ok"
-msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1143
 #: src/modules/aliaseditor/aliaseditor.cpp:1156
@@ -791,6 +799,10 @@ msgid ""
 "eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta"
 "\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
 "Ctrl+C\" ..."
+msgstr ""
+
+#: src/modules/aliaseditor/aliaseditor.cpp:460
+msgid "OverWrite Current Alias"
 msgstr ""
 
 #: src/modules/popupeditor/popupeditor.cpp:440

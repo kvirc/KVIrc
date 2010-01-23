@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 19:02+0100\n"
+"POT-Creation-Date: 2010-01-23 15:23+0100\n"
 "PO-Revision-Date: 2009-12-21 22:11+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -617,10 +617,6 @@ msgstr "&Usuń"
 msgid "&Remove Selected"
 msgstr "&Usuń wybrane"
 
-#: src/modules/editor/scripteditor.cpp:250
-msgid "&Replace"
-msgstr "&Zastąp"
-
 #: src/kvirc/ui/kvi_window.cpp:748
 msgid "&Restore"
 msgstr "&Przywróc okno"
@@ -1184,12 +1180,6 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_options.cpp:809
 msgid "Am voiced"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:461
-msgid ""
-"An external script has changed the alias you are currently editing. Do you "
-"want to accept the external changes?"
 msgstr ""
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:234
@@ -2149,10 +2139,6 @@ msgstr "Łączenie do %Q na porcie %u"
 #: src/modules/trayicon/libkvitrayicon.cpp:94
 msgid "Context"
 msgstr "Kontekst"
-
-#: src/modules/editor/scripteditor.cpp:249
-msgid "Context sensitive help"
-msgstr ""
 
 #: src/kvirc/ui/kvi_topicw.cpp:508
 msgid "Copy to clipboard"
@@ -4613,10 +4599,6 @@ msgstr ""
 msgid "Outgoing traffic"
 msgstr "Ruch wychodzący"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:460
-msgid "OverWrite Current Alias"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_options.cpp:854
 msgid "Own IRC Op status set"
 msgstr ""
@@ -4649,7 +4631,7 @@ msgstr ""
 msgid "Own private message"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:504
+#: src/modules/theme/packthemedialog.cpp:559
 msgid "Package saved successfully"
 msgstr "Pakiet zapisany pomyślnie"
 
@@ -7895,6 +7877,9 @@ msgstr ""
 
 #~ msgid "%s established [%s (%s:%u)]"
 #~ msgstr "%s ustanowiono [%s (%s:%u)]"
+
+#~ msgid "&Replace"
+#~ msgstr "&Zastąp"
 
 #~ msgid "Help Browser (&Window)"
 #~ msgstr "Przeglądaj pom&oc (Okno)"

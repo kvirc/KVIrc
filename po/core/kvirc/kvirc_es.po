@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-21 19:02+0100\n"
+"POT-Creation-Date: 2010-01-23 15:23+0100\n"
 "PO-Revision-Date: 2009-11-29 15:27+0100\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -617,10 +617,6 @@ msgstr "Elimina&r"
 msgid "&Remove Selected"
 msgstr "Elimina&r seleccionadas"
 
-#: src/modules/editor/scripteditor.cpp:250
-msgid "&Replace"
-msgstr "&Reemplazar"
-
 #: src/kvirc/ui/kvi_window.cpp:748
 msgid "&Restore"
 msgstr "&Restaurar"
@@ -1218,12 +1214,6 @@ msgstr "Se me dio user-op"
 #: src/kvirc/kernel/kvi_options.cpp:809
 msgid "Am voiced"
 msgstr "Se me dio voz"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:461
-msgid ""
-"An external script has changed the alias you are currently editing. Do you "
-"want to accept the external changes?"
-msgstr ""
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:234
 msgid "Anodine's Full Grid"
@@ -2192,10 +2182,6 @@ msgstr "Contactando con %Q en el puerto %u"
 #: src/modules/trayicon/libkvitrayicon.cpp:94
 msgid "Context"
 msgstr "Contexto"
-
-#: src/modules/editor/scripteditor.cpp:249
-msgid "Context sensitive help"
-msgstr "Ayuda sensible al contexto"
 
 #: src/kvirc/ui/kvi_topicw.cpp:508
 msgid "Copy to clipboard"
@@ -4710,10 +4696,6 @@ msgstr "Mensaje saliente de usuario ICQ"
 msgid "Outgoing traffic"
 msgstr "Tráfico saliente"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:460
-msgid "OverWrite Current Alias"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_options.cpp:854
 msgid "Own IRC Op status set"
 msgstr "Puesto modo de OPerador de IRC"
@@ -4746,7 +4728,7 @@ msgstr "Mensaje cifrado privado propio"
 msgid "Own private message"
 msgstr "Mensaje privado propio"
 
-#: src/modules/theme/packthemedialog.cpp:504
+#: src/modules/theme/packthemedialog.cpp:559
 msgid "Package saved successfully"
 msgstr "Paquete guardado correctamente"
 
@@ -8084,6 +8066,12 @@ msgstr "z: Destinatario de mensajes oper wallop"
 
 #~ msgid "%s established [%s (%s:%u)]"
 #~ msgstr "%s establecida [%s (%s:%u)]"
+
+#~ msgid "&Replace"
+#~ msgstr "&Reemplazar"
+
+#~ msgid "Context sensitive help"
+#~ msgstr "Ayuda sensible al contexto"
 
 #~ msgid "Help Browser (&Window)"
 #~ msgstr "Ayuda (&ventana)"
