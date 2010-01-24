@@ -90,5 +90,6 @@ KVIRC_MODULE(
 	toolbareditor_module_init,
 	toolbareditor_module_can_unload,
 	0,
-	toolbareditor_module_cleanup
+	toolbareditor_module_cleanup,
+	"editor"
 )

@@ -226,5 +226,6 @@ KVIRC_MODULE(
 	help_module_init,
 	help_module_can_unload,
 	0,
-	help_module_cleanup
+	help_module_cleanup,
+	0
 )

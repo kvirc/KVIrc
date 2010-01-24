@@ -95,5 +95,6 @@ KVIRC_MODULE(
 	list_module_init,
 	list_module_can_unload,
 	0,
-	list_module_cleanup
+	list_module_cleanup,
+	0
 )

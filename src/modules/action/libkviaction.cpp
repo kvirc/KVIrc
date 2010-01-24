@@ -529,5 +529,6 @@ KVIRC_MODULE(
 	action_module_init,
 	0,
 	0,
-	action_module_cleanup
+	action_module_cleanup,
+	0
 )

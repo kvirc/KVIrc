@@ -2829,5 +2829,6 @@ KVIRC_MODULE(
 	dcc_module_init,
 	dcc_module_can_unload,
 	0,
-	dcc_module_cleanup
+	dcc_module_cleanup,
+	"dcc"
 )

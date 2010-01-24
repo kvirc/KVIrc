@@ -311,7 +311,7 @@ static bool iograph_module_init(KviModule *m)
 
 	KviModuleExtensionDescriptor * d = m->registerExtension("tool",
 							IOGRAPH_MODULE_EXTENSION_NAME,
-							__tr2qs_ctx("Show I/O &Traffic graph","iograph"),
+							__tr2qs("Show I/O &Traffic graph"),
 							iograph_extension_alloc);
 
 	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYICON)));
@@ -340,7 +340,8 @@ KVIRC_MODULE(
 	iograph_module_init,
 	iograph_module_can_unload,
 	0,
-	iograph_module_cleanup
+	iograph_module_cleanup,
+	0
 )
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

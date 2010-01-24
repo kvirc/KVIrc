@@ -1743,5 +1743,6 @@ KVIRC_MODULE(
 	mediaplayer_module_init,
 	mediaplayer_module_can_unload,
 	mediaplayer_module_ctrl,
-	mediaplayer_module_cleanup
+	mediaplayer_module_cleanup,
+	"mediaplayer"
 )

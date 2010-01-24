@@ -425,5 +425,6 @@ KVIRC_MODULE(
 	perlcore_module_init,
 	perlcore_module_can_unload,
 	perlcore_module_ctrl,
-	perlcore_module_cleanup
+	perlcore_module_cleanup,
+	"perl"
 )

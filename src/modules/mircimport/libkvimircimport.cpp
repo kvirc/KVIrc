@@ -372,7 +372,8 @@ KVIRC_MODULE(
 	mircimport_module_init,
 	mircimport_module_can_unload,
 	0,
-	mircimport_module_cleanup
+	mircimport_module_cleanup,
+	0
 )
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

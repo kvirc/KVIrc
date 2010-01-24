@@ -150,5 +150,6 @@ KVIRC_MODULE(
 	sharedfileswindow_module_init,
 	sharedfileswindow_module_can_unload,
 	0,
-	sharedfileswindow_module_cleanup
+	sharedfileswindow_module_cleanup,
+	"sharedfileswindow"
 )

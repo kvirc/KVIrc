@@ -752,15 +752,15 @@ static bool objects_module_init(KviModule * m)
 
 	KviKvsObject_buttongroup::registerSelf();
 
-            KviKvsObject_sql::registerSelf();
-            KviKvsObject_list::registerSelf();
-            KviKvsObject_widget::registerSelf();
-            KviKvsObject_tablewidget::registerSelf();
-            KviKvsObject_datetimeedit::registerSelf();
-            KviKvsObject_button::registerSelf();
+	KviKvsObject_sql::registerSelf();
+	KviKvsObject_list::registerSelf();
+	KviKvsObject_widget::registerSelf();
+	KviKvsObject_tablewidget::registerSelf();
+	KviKvsObject_datetimeedit::registerSelf();
+	KviKvsObject_button::registerSelf();
 	KviKvsObject_textedit::registerSelf();
 	KviKvsObject_textbrowser::registerSelf();
-            KviKvsObject_checkbox::registerSelf();
+	KviKvsObject_checkbox::registerSelf();
 	KviKvsObject_dialog::registerSelf();
 	KviKvsObject_groupbox::registerSelf();
 	KviKvsObject_label::registerSelf();
@@ -814,5 +814,6 @@ KVIRC_MODULE(
 	objects_module_init,
 	objects_module_can_unload,
 	0,
-	objects_module_cleanup
+	objects_module_cleanup,
+	"objects"
 )

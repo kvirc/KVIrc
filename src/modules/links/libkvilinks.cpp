@@ -108,5 +108,6 @@ KVIRC_MODULE(
 	links_module_init,
 	links_module_can_unload,
 	0,
-	links_module_cleanup
+	links_module_cleanup,
+	0
 )

@@ -88,7 +88,8 @@ KVIRC_MODULE(
 	editor_module_init,
 	editor_module_can_unload,
 	0,
-	editor_module_cleanup
+	editor_module_cleanup,
+	"editor"
 )
 
 // We want C linkage on this one: we want to be able to dlsym() it with a simple name

@@ -594,5 +594,6 @@ KVIRC_MODULE(
 	toolbar_module_init,
 	0,
 	0,
-	toolbar_module_cleanup
+	toolbar_module_cleanup,
+	0
 )

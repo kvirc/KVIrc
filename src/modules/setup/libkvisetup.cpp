@@ -154,5 +154,6 @@ KVIRC_MODULE(
 	setup_module_init ,
 	setup_module_can_unload,
 	0,
-	setup_module_cleanup
+	setup_module_cleanup,
+	0
 )

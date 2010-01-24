@@ -156,5 +156,6 @@ KVIRC_MODULE(
 	texticons_module_init,
 	0,
 	0,
-	texticons_module_cleanup
+	texticons_module_cleanup,
+	0
 )

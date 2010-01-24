@@ -691,5 +691,6 @@ KVIRC_MODULE(
 	addon_module_init,
 	addon_module_can_unload,
 	0,
-	addon_module_cleanup
+	addon_module_cleanup,
+	0
 )

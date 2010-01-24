@@ -86,5 +86,6 @@ KVIRC_MODULE(
 	codetester_module_init,
 	codetester_module_can_unload,
 	0,
-	codetester_module_cleanup
+	codetester_module_cleanup,
+	"editor"
 )

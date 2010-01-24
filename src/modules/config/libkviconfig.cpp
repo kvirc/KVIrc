@@ -875,5 +875,6 @@ KVIRC_MODULE(
 	config_module_init,
 	config_module_can_unload,
 	0,
-	config_module_cleanup
+	config_module_cleanup,
+	0
 )

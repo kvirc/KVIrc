@@ -880,7 +880,8 @@ KVIRC_MODULE(
 	dialog_module_init ,
 	dialog_module_can_unload,
 	0,
-	dialog_module_cleanup
+	dialog_module_cleanup,
+	0
 )
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

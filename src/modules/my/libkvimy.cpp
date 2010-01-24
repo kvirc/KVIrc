@@ -428,5 +428,6 @@ KVIRC_MODULE(
 	my_module_init,
 	my_module_can_unload,
 	0,
-	my_module_cleanup
+	my_module_cleanup,
+	0
 )

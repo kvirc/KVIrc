@@ -194,5 +194,6 @@ KVIRC_MODULE(
 	mask_module_init,
 	0,
 	0,
-	mask_module_cleanup
+	mask_module_cleanup,
+	0
 )

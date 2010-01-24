@@ -212,19 +212,23 @@ bool KviModuleManager::loadModule(const QString &modName)
 	KviModule * module = new KviModule(pLibrary,info,modName,szName.toUtf8().data());
 
 	// the module is probably up.. the only thing can fail is the init_routine now
+	
 	// load the message catalogue if any
-	QString szDir;
-	// it's more probable to have the translations in the global directory
-	// try it as first... (yes, catalogue overriding is impossible this way.. but , anybody cares ?)
-	g_pApp->getGlobalKvircDirectory(szDir,KviApp::Locale);
-
-	if(!KviLocale::loadCatalogue(modName,szDir))
+	if(info->szModuleContext)
 	{
-		// try the local directory then
-		g_pApp->getLocalKvircDirectory(szDir,KviApp::Locale);
-		KviLocale::loadCatalogue(modName,szDir);
-	}
+		QString szDir;
+		// it's more probable to have the translations in the global directory
+		// try it as first... (yes, catalogue overriding is impossible this way.. but , anybody cares ?)
+		g_pApp->getGlobalKvircDirectory(szDir,KviApp::Locale);
 
+		if(!KviLocale::loadCatalogue(info->szModuleContext,szDir))
+		{
+			// try the local directory then
+			g_pApp->getLocalKvircDirectory(szDir,KviApp::Locale);
+			KviLocale::loadCatalogue(info->szModuleContext,szDir);
+		}
+	}
+	
 	if(info->init_routine)
 	{
 		if(!((info->init_routine)(module)))

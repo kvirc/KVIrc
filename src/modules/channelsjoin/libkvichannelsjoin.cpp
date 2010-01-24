@@ -102,5 +102,6 @@ KVIRC_MODULE(
 	channelsjoin_module_init,
 	channelsjoin_module_can_unload,
 	0,
-	channelsjoin_module_cleanup
+	channelsjoin_module_cleanup,
+	0
 )

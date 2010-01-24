@@ -88,5 +88,6 @@ KVIRC_MODULE(
 	socketspy_module_init,
 	socketspy_module_can_unload,
 	0,
-	socketspy_module_cleanup
+	socketspy_module_cleanup,
+	0
 )

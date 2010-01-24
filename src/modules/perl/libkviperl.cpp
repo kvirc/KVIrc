@@ -592,5 +592,6 @@ KVIRC_MODULE(
 	perl_module_init,
 	0,
 	0,
-	perl_module_cleanup
+	perl_module_cleanup,
+	"perl"
 )

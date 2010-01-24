@@ -2448,5 +2448,6 @@ KVIRC_MODULE(
 	str_module_init,
 	0,
 	0,
-	str_module_cleanup
+	str_module_cleanup,
+	0
 )

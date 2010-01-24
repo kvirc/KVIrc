@@ -328,5 +328,6 @@ KVIRC_MODULE(
 	tmphighlight_module_init,
 	tmphighlight_module_can_unload,
 	0,
-	tmphighlight_module_cleanup
+	tmphighlight_module_cleanup,
+	0
 )

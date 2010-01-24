@@ -980,7 +980,8 @@ KVIRC_MODULE(
 	url_module_init,
 	url_module_can_unload,
 	0,
-	url_module_cleanup
+	url_module_cleanup,
+	0
 )
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

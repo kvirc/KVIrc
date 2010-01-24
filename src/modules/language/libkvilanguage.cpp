@@ -123,5 +123,6 @@ KVIRC_MODULE(
 	language_module_init,
 	0,
 	0,
-	language_module_cleanup
+	language_module_cleanup,
+	0
 )

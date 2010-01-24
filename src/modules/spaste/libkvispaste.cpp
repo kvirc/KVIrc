@@ -333,5 +333,6 @@ KVIRC_MODULE(
 	spaste_module_init,
 	spaste_module_can_unload,
 	0,
-	spaste_module_cleanup
+	spaste_module_cleanup,
+	0
 )

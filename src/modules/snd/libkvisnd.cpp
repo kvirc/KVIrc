@@ -710,7 +710,8 @@ KVIRC_MODULE(
 	snd_module_init,
 	snd_module_can_unload,
 	snd_module_ctrl,
-	snd_module_cleanup
+	snd_module_cleanup,
+	0
 )
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

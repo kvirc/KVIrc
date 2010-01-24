@@ -12,8 +12,10 @@ SUBDIRS(
 	objects
 	options
 	perl
+	python
 	register
 	serverdb
+	sharedfile
 	sharedfileswindow
 	theme
 	torrent

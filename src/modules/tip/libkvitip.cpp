@@ -301,7 +301,8 @@ KVIRC_MODULE(
 	tip_module_init,
 	tip_module_can_unload,
 	0,
-	tip_module_cleanup
+	tip_module_cleanup,
+	0
 )
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

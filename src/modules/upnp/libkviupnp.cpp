@@ -223,5 +223,6 @@ KVIRC_MODULE(
 	upnp_module_init,
 	upnp_module_can_unload,
 	0,
-	upnp_module_cleanup
+	upnp_module_cleanup,
+	0
 )

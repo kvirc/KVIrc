@@ -735,5 +735,6 @@ KVIRC_MODULE(
 	proxydb_module_init,
 	proxydb_module_can_unload,
 	0,
-	proxydb_module_cleanup
+	proxydb_module_cleanup,
+	"serverdb"
 )

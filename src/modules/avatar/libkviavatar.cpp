@@ -590,5 +590,6 @@ KVIRC_MODULE(
 	avatar_module_init,
 	avatar_module_can_unload,
 	0,
-	avatar_module_cleanup
+	avatar_module_cleanup,
+	0
 )

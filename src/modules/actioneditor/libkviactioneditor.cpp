@@ -85,5 +85,6 @@ KVIRC_MODULE(
 	actioneditor_module_init,
 	actioneditor_module_can_unload,
 	0,
-	actioneditor_module_cleanup
+	actioneditor_module_cleanup,
+	"editor"
 )

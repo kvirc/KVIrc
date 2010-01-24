@@ -86,5 +86,6 @@ KVIRC_MODULE(
 	popupeditor_module_init,
 	popupeditor_module_can_unload,
 	0,
-	popupeditor_module_cleanup
+	popupeditor_module_cleanup,
+	"editor"
 )

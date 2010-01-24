@@ -1623,5 +1623,6 @@ KVIRC_MODULE(
 	window_module_init,
 	window_module_can_unload,
 	0,
-	window_module_cleanup
+	window_module_cleanup,
+	0
 )

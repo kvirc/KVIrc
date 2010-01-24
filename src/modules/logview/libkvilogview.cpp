@@ -166,5 +166,6 @@ KVIRC_MODULE(
 	logview_module_init,
 	logview_module_can_unload,
 	0,
-	logview_module_cleanup
+	logview_module_cleanup,
+	"logview"
 )

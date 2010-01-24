@@ -87,5 +87,6 @@ KVIRC_MODULE(
 	eventeditor_module_init,
 	eventeditor_module_can_unload,
 	0,
-	eventeditor_module_cleanup
+	eventeditor_module_cleanup,
+	"editor"
 )

@@ -85,5 +85,6 @@ KVIRC_MODULE(
 	raweditor_module_init,
 	raweditor_module_can_unload,
 	0,
-	raweditor_module_cleanup
+	raweditor_module_cleanup,
+	"editor"
 )

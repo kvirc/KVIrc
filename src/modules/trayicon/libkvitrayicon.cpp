@@ -715,7 +715,8 @@ KVIRC_MODULE(
 	trayicon_module_init ,
 	trayicon_module_can_unload,
 	0,
-	trayicon_module_cleanup
+	trayicon_module_cleanup,
+	0
 )
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

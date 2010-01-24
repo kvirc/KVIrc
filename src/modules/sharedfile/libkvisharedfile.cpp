@@ -274,5 +274,6 @@ KVIRC_MODULE(
 	sharedfile_module_init,
 	sharedfile_module_can_unload,
 	0,
-	sharedfile_module_cleanup
+	sharedfile_module_cleanup,
+	"sharedfile"
 )

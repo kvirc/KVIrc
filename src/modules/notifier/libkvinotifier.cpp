@@ -319,5 +319,6 @@ KVIRC_MODULE(
 	notifier_module_init,
 	notifier_module_can_unload,
 	notifier_module_ctrl,
-	notifier_module_cleanup
+	notifier_module_cleanup,
+	"notifier"
 )

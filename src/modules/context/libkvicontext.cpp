@@ -397,5 +397,6 @@ KVIRC_MODULE(
 	context_module_init,
 	0,
 	0,
-	context_module_cleanup
+	context_module_cleanup,
+	0
 )

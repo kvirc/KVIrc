@@ -316,5 +316,6 @@ KVIRC_MODULE(
 	http_module_init,
 	http_module_can_unload,
 	0,
-	http_module_cleanup
+	http_module_cleanup,
+	"http"
 )

@@ -166,7 +166,8 @@ KVIRC_MODULE(
 	rot13_module_init ,
 	rot13_module_can_unload,
 	0,
-	rot13_module_cleanup
+	rot13_module_cleanup,
+	0
 )
 
 #ifdef COMPILE_CRYPT_SUPPORT

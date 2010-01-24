@@ -27,7 +27,6 @@
 
 #include "kvi_settings.h"
 #include "kvi_string.h"
-//#include "kvi_command.h"
 #include "kvi_parameterlist.h"
 #include <QLibrary>
 #include "kvi_pointerlist.h"
@@ -60,8 +59,9 @@ typedef bool (*KviModuleCtrlRoutine)(KviModule *,const char *,void *);
 
 typedef struct _KviModuleInfo
 {
-	const char * szKVIrcVersion; // must match KVI_VERSION if module version checking is in force
-	const char * szModuleName;
+	const char * szKVIrcVersion;	// must match KVI_VERSION if module version checking is in force
+	const char * szModuleName;	// module name
+	const char * szModuleContext;	// name of the translation catalogue (if any)
 	const char * szVersion;
 	const char * szCopyright;
 	const char * szDescription;
@@ -110,12 +110,13 @@ typedef struct _KviModuleInfo
 
 #define KVIRC_MODULE_STRUCTURE_SYMBOL "KVIrc_module_info"
 
-#define KVIRC_MODULE(_szModuleName,_szVersion,_szCopyright,_szDescription,_init_routine,_can_unload,_ctrl_routine,_cleanup_routine) \
+#define KVIRC_MODULE(_szModuleName,_szVersion,_szCopyright,_szDescription,_init_routine,_can_unload,_ctrl_routine,_cleanup_routine,_szModuleContext) \
 	\
 	KVIMODULEEXPORTDATA KviModuleInfo KVIrc_module_info= \
 	{ \
 		KVI_VERSION, \
 		_szModuleName, \
+		_szModuleContext, \
 		_szVersion, \
 		_szCopyright, \
 		_szDescription, \

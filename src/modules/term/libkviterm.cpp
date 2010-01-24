@@ -119,5 +119,6 @@ KVIRC_MODULE(
 	term_module_init,
 	0,
 	0,
-	term_module_cleanup
+	term_module_cleanup,
+	0
 )

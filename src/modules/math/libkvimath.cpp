@@ -466,5 +466,6 @@ KVIRC_MODULE(
 	math_module_init,
 	0,
 	0,
-	math_module_cleanup
+	math_module_cleanup,
+	0
 )

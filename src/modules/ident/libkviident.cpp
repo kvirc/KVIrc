@@ -618,7 +618,8 @@ KVIRC_MODULE(
 	ident_module_init,
 	ident_module_can_unload,
 	0,
-	ident_module_cleanup
+	ident_module_cleanup,
+	0
 )
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

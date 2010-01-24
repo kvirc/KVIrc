@@ -89,5 +89,6 @@ KVIRC_MODULE(
 	aliaseditor_module_init,
 	aliaseditor_module_can_unload,
 	0,
-	aliaseditor_module_cleanup
+	aliaseditor_module_cleanup,
+	"editor"
 )

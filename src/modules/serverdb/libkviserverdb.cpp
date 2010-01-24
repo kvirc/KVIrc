@@ -1358,5 +1358,6 @@ KVIRC_MODULE(
 	serverdb_module_init,
 	serverdb_module_can_unload,
 	0,
-	serverdb_module_cleanup
+	serverdb_module_cleanup,
+	"serverdb"
 )

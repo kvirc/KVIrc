@@ -320,5 +320,6 @@ KVIRC_MODULE(
 	options_module_init,
 	options_module_can_unload,
 	0,
-	options_module_cleanup
+	options_module_cleanup,
+	"options"
 )

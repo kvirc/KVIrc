@@ -839,7 +839,8 @@ KVIRC_MODULE(
 	rijndael_module_init ,
 	rijndael_module_can_unload,
 	0,
-	rijndael_module_cleanup
+	rijndael_module_cleanup,
+	0
 )
 
 #ifdef COMPILE_CRYPT_SUPPORT

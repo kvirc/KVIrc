@@ -897,5 +897,6 @@ KVIRC_MODULE(
 	torrent_module_init,
 	torrent_module_can_unload,
 	torrent_module_ctrl,
-	torrent_module_cleanup
+	torrent_module_cleanup,
+	"torrent"
 )

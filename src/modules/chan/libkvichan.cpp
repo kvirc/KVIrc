@@ -1671,5 +1671,6 @@ KVIRC_MODULE(
 	chan_module_init,
 	0,
 	0,
-	chan_module_cleanup
+	chan_module_cleanup,
+	0
 )

@@ -207,5 +207,6 @@ KVIRC_MODULE(
 	python_module_init,
 	0,
 	0,
-	python_module_cleanup
+	python_module_cleanup,
+	"python"
 )

@@ -98,5 +98,6 @@ KVIRC_MODULE(
 	about_module_init ,
 	about_module_can_unload,
 	0,
-	about_module_cleanup
+	about_module_cleanup,
+	"about"
 )

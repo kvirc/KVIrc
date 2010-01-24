@@ -301,5 +301,6 @@ KVIRC_MODULE(
 	log_module_init,
 	0,
 	0,
-	log_module_cleanup
+	log_module_cleanup,
+	0
 )

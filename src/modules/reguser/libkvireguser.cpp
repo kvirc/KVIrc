@@ -1229,5 +1229,6 @@ KVIRC_MODULE(
 	reguser_module_init,
 	reguser_module_can_unload,
 	0,
-	reguser_module_cleanup
+	reguser_module_cleanup,
+	"register"
 )

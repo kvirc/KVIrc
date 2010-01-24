@@ -152,5 +152,6 @@ KVIRC_MODULE(
 	filetransferwindow_module_init,
 	filetransferwindow_module_can_unload,
 	0,
-	filetransferwindow_module_cleanup
+	filetransferwindow_module_cleanup,
+	"filetransferwindow"
 )

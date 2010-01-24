@@ -787,5 +787,6 @@ KVIRC_MODULE(
 	system_module_init,
 	system_module_can_unload,
 	0,
-	system_module_cleanup
+	system_module_cleanup,
+	0
 )

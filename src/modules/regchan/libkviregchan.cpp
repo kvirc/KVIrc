@@ -421,5 +421,6 @@ KVIRC_MODULE(
 	regchan_module_init,
 	regchan_module_can_unload,
 	0,
-	regchan_module_cleanup
+	regchan_module_cleanup,
+	"register"
 )

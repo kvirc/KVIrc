@@ -296,5 +296,6 @@ KVIRC_MODULE(
 	pythoncore_module_init,
 	pythoncore_module_can_unload,
 	pythoncore_module_ctrl,
-	pythoncore_module_cleanup
+	pythoncore_module_cleanup,
+	"python"
 )

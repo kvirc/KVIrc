@@ -1243,5 +1243,6 @@ KVIRC_MODULE(
 	file_module_init,
 	0,
 	0,
-	file_module_cleanup
+	file_module_cleanup,
+	0
 )

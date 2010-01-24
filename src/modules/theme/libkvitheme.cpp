@@ -188,5 +188,6 @@ KVIRC_MODULE(
 	theme_module_init,
 	theme_module_can_unload,
 	0,
-	theme_module_cleanup
+	theme_module_cleanup,
+	"theme"
 )
