@@ -1,6 +1,4 @@
-# translation of options_ru.po to Russian
-# translation of options_ru.po to
-# translation of kvirc_ru.po to
+# translation of options_ru.po to russian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
@@ -9,13 +7,15 @@
 # root <wizard@opendoor.ru>, 2005, 2006.
 # Alexey <wizard@opendoor.ru>, 2005.
 # Alexey Uzhva <alexey at kvirc dot ru>, 2007.
+# Igor "BugSlayer" Govorov <govorov.igor at-sing gmail.com>, 2010
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: options_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-23 15:23+0100\n"
-"PO-Revision-Date: 2007-03-31 10:19+0400\n"
-"Last-Translator: Alexey Uzhva <alexey at kvirc dot ru>\n"
+"PO-Revision-Date: 2010-01-24 13:00+0300\n"
+"Last-Translator: Igor Govorov <govorov.igor at-sing gmail.com>\n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,9 +55,8 @@ msgid " msec"
 msgstr " мсек"
 
 #: src/modules/options/optw_ircview.cpp:182
-#, fuzzy
 msgid " pixels"
-msgstr " строк"
+msgstr ""
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:87
 msgid " requests"
@@ -287,7 +286,6 @@ msgstr ""
 "неактивном окне KVIrc</center>"
 
 #: src/modules/options/optw_highlighting.cpp:92
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, KVIrc will alert in the window list only "
 "if a normal message is received in a channel.<br>Actions like joins, parts "
@@ -296,13 +294,12 @@ msgid ""
 "are interesting to you.</center>"
 msgstr ""
 "<center>Если включена эта опция, KVIrc будет подсвечивать панель задач "
-"только если сообщение появилось на канале.<br>Действия типа покидания, "
+"только если появилось сообщение на канале.<br>Действия типа покидания, "
 "присоединения к каналу и изменения режимов будут проигнорированы.<br>Эта "
 "опция полезна если на вашем канале большое движение а вы хотите узнавать "
-"только о новых сообщениях.</center>"
+"только об интересующих вас сообщениях.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:103
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, KVIrc will alert in the window list only "
 "if the specified alert level is reached.</center>"
@@ -337,7 +334,6 @@ msgstr ""
 "запуске KVIrc</center>"
 
 #: src/modules/options/optw_highlighting.cpp:98
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, the window list will also alert for "
 "messages which are shown in queries.</center>"
@@ -346,7 +342,6 @@ msgstr ""
 "сообщениях в приватах.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:95
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, the window list will also alert for "
 "messages which contain a word from the highlighted words list above.</center>"
@@ -389,23 +384,21 @@ msgstr ""
 
 #: src/modules/options/optw_query.cpp:103
 #: src/modules/options/optw_channel.cpp:136
-#, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
 "center>"
 msgstr ""
-"<center>Минимальное значение: <b>0 сек</b><br>Максимальное значение: "
-"<b>86400 сек</b></center>"
+"<center>Минимальное значение: <b>0 дней</b><br>Максимальное значение: "
+"<b>10 дней</b></center>"
 
 #: src/modules/options/optw_query.cpp:99
 #: src/modules/options/optw_channel.cpp:132
-#, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
 "center>"
 msgstr ""
-"<center>Минимальное значение: <b>0 сек</b><br>Максимальное значение: "
-"<b>86400 сек</b></center>"
+"<center>Минимальное значение: <b>0 строк</b><br>Максимальное значение: "
+"<b>50 строк</b></center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:88
 msgid ""
@@ -1041,14 +1034,13 @@ msgstr ""
 "приватов когда вы печатаете что-то в канале. :D</center>"
 
 #: src/modules/options/optw_dcc.cpp:318
-#, fuzzy
 msgid ""
 "<center>This option causes the system taskbar entry for KVIrc to flash when "
 "a new dcc chat message is received and the KVIrc window is not the active.</"
 "center>"
 msgstr ""
 "<center>Эта опция заставит подсвечиваться пункт KVIrc в системной панели "
-"задач при поступлении новых приватных сообщений когда окно KVIrc не активно."
+"задач при поступлении новых сообщений DCC CHAT когда окно KVIrc не активно."
 "</center>"
 
 #: src/modules/options/optw_query.cpp:76
@@ -1618,8 +1610,7 @@ msgid "Add"
 msgstr "Добавить"
 
 #: src/modules/options/optw_identity.cpp:715
-#, fuzzy
-msgid "Add Profile"
+msgid "Добавить профиль"
 msgstr "Профиль"
 
 #: src/modules/options/optw_nickserv.cpp:264
@@ -1686,9 +1677,8 @@ msgid "Allow up to:"
 msgstr "Допускать до:"
 
 #: src/modules/options/optw_identity.cpp:696
-#, fuzzy
 msgid "Alt. Nick"
-msgstr "Альтернативный ник 1:"
+msgstr "Альтернативный ник"
 
 #: src/modules/options/optw_identity.cpp:72
 msgid "Alt. Nickname 1:"
@@ -1703,9 +1693,8 @@ msgid "Alt. Nickname 3:"
 msgstr "Альтернативный ник 3:"
 
 #: src/modules/options/optw_identity.cpp:878
-#, fuzzy
 msgid "Alternative Nickname:"
-msgstr "Альтернативный ник 1:"
+msgstr "Альтернативный ник:"
 
 #: src/modules/options/optw_identity.cpp:313
 msgid "Alternatives..."
@@ -1985,9 +1974,8 @@ msgid "Choose..."
 msgstr "Выбрать..."
 
 #: src/modules/options/optw_ircoutput.cpp:62
-#, fuzzy
 msgid "Classic format"
-msgstr "Классическая панель задач"
+msgstr "Классический формат"
 
 #: src/modules/options/optw_servers.cpp:1477
 msgid "Clear List"
@@ -2101,9 +2089,8 @@ msgid "DashLine"
 msgstr ""
 
 #: src/modules/options/optw_ircoutput.cpp:58
-#, fuzzy
 msgid "Datetime format"
-msgstr "Формат отметки времени"
+msgstr "Формат даты и времени"
 
 #: src/modules/options/optw_servers.cpp:764
 msgid "Default"
@@ -2126,9 +2113,8 @@ msgid "Default ban mask:"
 msgstr "Маска бана по умолчанию:"
 
 #: src/modules/options/optw_textencoding.cpp:45
-#, fuzzy
 msgid "Default server encoding:"
-msgstr "Кодировка текста по умолчанию:"
+msgstr "Кодировка для сервера по умолчанию:"
 
 #: src/modules/options/optw_textencoding.cpp:53
 msgid "Default text encoding:"
@@ -2143,9 +2129,8 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: src/modules/options/optw_identity.cpp:721
-#, fuzzy
 msgid "Delete Profile"
-msgstr "Удалить правило"
+msgstr "Удалить профиль"
 
 #: src/modules/options/optw_nickserv.cpp:272
 #: src/modules/options/optw_servers.cpp:316
@@ -2200,9 +2185,8 @@ msgid "Do not send /WHO request"
 msgstr "Не посылать запросы /WHO"
 
 #: src/modules/options/optw_connection.cpp:202
-#, fuzzy
 msgid "Do not show any identd messages"
-msgstr "Не окрашивать сообщения пользователей"
+msgstr "Не показывать identd сообщения"
 
 #: src/modules/options/optw_messages.cpp:75
 msgid "Don't show colors in user messages"
@@ -2210,7 +2194,7 @@ msgstr "Не окрашивать сообщения пользователей"
 
 #: src/modules/options/optw_ircview.cpp:190
 msgid "DotLine"
-msgstr ""
+msgstr "Точка-линия"
 
 #: src/modules/options/optw_userlist.cpp:99
 msgid "Dotted Grid"
@@ -2218,7 +2202,7 @@ msgstr "Точечная сетка"
 
 #: src/modules/options/optw_urlhandlers.cpp:54
 msgid "Double click"
-msgstr ""
+msgstr "Двойной клик"
 
 #: src/modules/options/optw_identity.cpp:167
 #: src/modules/options/optw_identity.cpp:174
@@ -2242,9 +2226,8 @@ msgid "Echo channel topic"
 msgstr "Показывать тему канала"
 
 #: src/modules/options/optw_identity.cpp:718
-#, fuzzy
 msgid "Edit Profile"
-msgstr "Профиль"
+msgstr "Редактировать профиль"
 
 #: src/modules/options/optw_nickserv.cpp:268
 #: src/modules/options/optw_servers.cpp:312
@@ -2260,9 +2243,8 @@ msgid "Enable Ignore For"
 msgstr "Использовать игнор для"
 
 #: src/modules/options/optw_identity.cpp:681
-#, fuzzy
 msgid "Enable Network Profiles"
-msgstr "Свойства сети"
+msgstr "Включить сетевые профили"
 
 #: src/modules/options/optw_nickserv.cpp:232
 #: src/modules/options/optw_servers.cpp:279
@@ -2274,19 +2256,16 @@ msgid "Enable URL highlighting"
 msgstr "Подсвечивать URL"
 
 #: src/modules/options/optw_userlist.cpp:238
-#, fuzzy
 msgid "Enable animated avatars"
-msgstr "Включить определение задержек"
+msgstr "Включить анимированные аватары"
 
 #: src/modules/options/optw_ircview.cpp:160
-#, fuzzy
 msgid "Enable animated smiles"
-msgstr "Включить определение задержек"
+msgstr "Включить анимированные смайлы"
 
 #: src/modules/options/optw_away.cpp:39
-#, fuzzy
 msgid "Enable default away message"
-msgstr "Сообщение в режиме Отошёл по умолчанию:"
+msgstr "Сообщение в режиме Отошёл по умолчанию"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:67
 msgid "Enable fake transparency"
@@ -2314,9 +2293,8 @@ msgid "Enable notifier window fade effect"
 msgstr "Отключить мерцание окна извещателя"
 
 #: src/modules/options/optw_notifier.cpp:151
-#, fuzzy
 msgid "Enable notifier window flashing"
-msgstr "Отключить мерцание окна извещателя"
+msgstr "Включить мерцание окна извещателя"
 
 #: src/modules/options/optw_connection.cpp:232
 msgid "Enable service for IPv6"
@@ -2332,9 +2310,8 @@ msgid "Enable the input history logging"
 msgstr "Отключить историю ввода и занимаемую ей память"
 
 #: src/modules/options/optw_notifier.cpp:142
-#, fuzzy
 msgid "Enable the notifier"
-msgstr "Включить определение задержек"
+msgstr "Включить извещатель"
 
 #: src/modules/options/optw_tray.cpp:41
 msgid "Enable tray icon"
@@ -2362,7 +2339,7 @@ msgstr "Включить подсветку слов"
 
 #: src/modules/options/optw_input.cpp:147
 msgid "Expand tabulations in input using this amount of spaces:"
-msgstr ""
+msgstr "Заменять вводимую табуляцию этим числом пробелов:"
 
 #: src/modules/options/optw_ircoutput.cpp:71
 msgid "External CTCP replies"
@@ -2407,9 +2384,8 @@ msgid "File pattern:"
 msgstr "Файл образца:"
 
 #: src/modules/options/optw_dcc.cpp:316
-#, fuzzy
 msgid "Flash system taskbar on new dcc chat message"
-msgstr "Подсвечивать системную панель задач при новых приватных сообщениях"
+msgstr "Подсвечивать системную панель задач при новых сообщениях DCC CHAT"
 
 #: src/modules/options/optw_query.cpp:74
 msgid "Flash system taskbar on new query message"
@@ -2594,7 +2570,7 @@ msgstr "Обрабатывать IPv4 как часть пространства
 
 #: src/modules/options/optw_connection.cpp:231
 msgid "IPv6 Settings"
-msgstr "Свойства IPv6"
+msgstr "Настройки IPv6"
 
 #: src/modules/options/optw_userlist.cpp:57
 #, fuzzy
@@ -2670,18 +2646,16 @@ msgstr "Неактивный высоко-контрастный передни�
 
 #: src/modules/options/optw_query.cpp:101
 #: src/modules/options/optw_channel.cpp:134
-#, fuzzy
 msgid "Interval:"
-msgstr "Интерфейс"
+msgstr "Интервал:"
 
 #: src/modules/options/optw_nickserv.cpp:153
 msgid "Invalid NickServ Rule"
 msgstr "Недействительное правило NickServ"
 
 #: src/modules/options/optw_identity.cpp:974
-#, fuzzy
 msgid "Invalid Profile Rule"
-msgstr "Недействительное правило NickServ"
+msgstr "Недействительное правило профиля"
 
 #: src/modules/options/optw_servers.cpp:552
 #: src/modules/options/optw_identity.cpp:635
@@ -2975,9 +2949,8 @@ msgid "Network Interfaces"
 msgstr "Сетевые интерфейсы"
 
 #: src/modules/options/optw_identity.cpp:862
-#, fuzzy
 msgid "Network Name:"
-msgstr "Сеть:"
+msgstr "Имя сети:"
 
 #: src/modules/options/optw_dcc.cpp:72
 msgid "Network Properties"
@@ -3214,9 +3187,8 @@ msgid "Outgoing data queue flush timeout:"
 msgstr "Таймаут сброса исходящих данных:"
 
 #: src/modules/options/optw_connection.cpp:198
-#, fuzzy
 msgid "Output identd messages to:"
-msgstr "При выходе из сети:"
+msgstr "Выводить сообщения identd в:"
 
 #: src/modules/options/optw_ircoutput.cpp:43
 #: src/modules/options/optw_connection.cpp:195
@@ -3597,14 +3569,12 @@ msgid "Save path:"
 msgstr "Путь сохранения:"
 
 #: src/modules/options/optw_avatar.cpp:42
-#, fuzzy
 msgid "Scale avatar images in userlist (recommended)"
-msgstr "Масштабировать аватар (рекомендуется)"
+msgstr "Масштабировать аватары в списке пользователей (рекомендуется)"
 
 #: src/modules/options/optw_avatar.cpp:57
-#, fuzzy
 msgid "Scale avatar images on image load"
-msgstr "Масштабировать аватар (рекомендуется)"
+msgstr "Масштабировать аватар во время загрузки изображения"
 
 #: src/modules/options/optw_avatar.cpp:41
 msgid "Scaling in userlist"
@@ -3659,9 +3629,8 @@ msgstr "Подробности о сервере"
 
 #: src/modules/options/optw_servers.cpp:159
 #: src/modules/options/optw_servers.cpp:665
-#, fuzzy
 msgid "Server Encoding:"
-msgstr "Кодировка:"
+msgstr "Кодировка сервера:"
 
 #: src/modules/options/optw_nickserv.cpp:106
 #: src/modules/options/optw_nickserv.cpp:244
@@ -3859,7 +3828,7 @@ msgstr "Использовать SSL"
 
 #: src/modules/options/optw_ircoutput.cpp:64
 msgid "System locale format"
-msgstr ""
+msgstr "Формат системной локали"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:103
 msgid "TIME"
@@ -3872,7 +3841,6 @@ msgstr "Тест"
 
 #: src/modules/options/optw_servers.cpp:171
 #: src/modules/options/optw_servers.cpp:677
-#, fuzzy
 msgid "Text Encoding:"
 msgstr "Кодировка:"
 
@@ -4495,349 +4463,3 @@ msgstr "без имени"
 msgid "within:"
 msgstr "в течении:"
 
-#~ msgid "Active Background"
-#~ msgstr "Активный фон"
-
-#~ msgid "Active Text (Primary)"
-#~ msgstr "Активный текст (первичный)"
-
-#~ msgid "Active Text (Secondary)"
-#~ msgstr "Активный текст (вторичный)"
-
-#~ msgid "Advanced"
-#~ msgstr "Дополнительно"
-
-#~ msgid "Alert/Highlight"
-#~ msgstr "Предупреждения/Подсветка"
-
-#~ msgid "Anti-spam"
-#~ msgstr "Антиспам"
-
-#~ msgid "Avatar"
-#~ msgstr "Аватар"
-
-#~ msgid "Avatars"
-#~ msgstr "Аватары"
-
-#~ msgid "Away"
-#~ msgstr "Отошёл"
-
-#~ msgid "CTCP"
-#~ msgstr "CTCP"
-
-#~ msgid "Channel"
-#~ msgstr "Канал"
-
-#~ msgid "Chat"
-#~ msgstr "Чат"
-
-#~ msgid "Color Set"
-#~ msgstr "Набор цветов"
-
-#~ msgid "Contacts"
-#~ msgstr "Контакты"
-
-#~ msgid "DCC"
-#~ msgstr "DCC"
-
-#~ msgid "Do not update the away list"
-#~ msgstr "Не запрашивать список людей в режиме \"отошел\""
-
-#~ msgid "Features"
-#~ msgstr "Возможности"
-
-#~ msgid "File Transfer"
-#~ msgstr "Передачи файлов"
-
-#~ msgid "Flood Protection"
-#~ msgstr "Защита от флуда"
-
-#~ msgid "Forcibly and completely disable the notifier"
-#~ msgstr "Полностью выключить всплывающее окно извещателя"
-
-#~ msgid "Foreground"
-#~ msgstr "Передний план"
-
-#~ msgid "General options"
-#~ msgstr "Общие настройки"
-
-#~ msgid "Hide avatars"
-#~ msgstr "Спрятать аватары в списке пользователей"
-
-#~ msgid "Hide users label"
-#~ msgstr "Скрыть метки пользователей"
-
-#~ msgid "Highlight"
-#~ msgstr "Подсветка"
-
-#~ msgid "IRC"
-#~ msgstr "IRC"
-
-#~ msgid "Ident Service"
-#~ msgstr "Сервис идентификации"
-
-#~ msgid "Ignore"
-#~ msgstr "Игнор"
-
-#~ msgid "Inactive Background"
-#~ msgstr "Неактивный фон"
-
-#~ msgid "Inactive Text (Primary)"
-#~ msgstr "Неактивный текст (первичный)"
-
-#~ msgid "Inactive Text (Secondary)"
-#~ msgstr "Неактивный текст (вторичный)"
-
-#~ msgid "Input"
-#~ msgstr "Ввод"
-
-#~ msgid "Interface"
-#~ msgstr "Интерфейс"
-
-#~ msgid "Keep in sync with KDE background changes"
-#~ msgstr "Синхронизировать с изменениями фона рабочего стола КДЕ"
-
-#~ msgid "Labels"
-#~ msgstr "Надписи"
-
-#~ msgid "Lag"
-#~ msgstr "Задержка"
-
-#~ msgid "Language"
-#~ msgstr "Язык"
-
-#~ msgid "Logging"
-#~ msgstr "Логирование"
-
-#~ msgid "Look"
-#~ msgstr "Вид"
-
-#, fuzzy
-#~ msgid "Marker"
-#~ msgstr "Разделительная линия:"
-
-#~ msgid "Media Types"
-#~ msgstr "Медиа типы"
-
-#~ msgid "Message Colors"
-#~ msgstr "Цвета сообщений"
-
-#~ msgid "Message Style"
-#~ msgstr "Стиль сообщений"
-
-#~ msgid "Message Type"
-#~ msgstr "Типы сообщений"
-
-#~ msgid "Minimize in tray"
-#~ msgstr "Сворачиваться в трей при минимизации окна"
-
-#~ msgid "Nickname Grid"
-#~ msgstr "Таблица ников"
-
-#~ msgid "Notifier"
-#~ msgstr "Извещатель"
-
-#~ msgid "Output"
-#~ msgstr "Вывод"
-
-#, fuzzy
-#~ msgid "Output verosity"
-#~ msgstr "Многословность вывода"
-
-#, fuzzy
-#~ msgid "Profiles"
-#~ msgstr "Профиль"
-
-#~ msgid "Protection"
-#~ msgstr "Защита"
-
-#~ msgid "Proxy Hosts"
-#~ msgstr "Прокси серверы"
-
-#~ msgid "Query"
-#~ msgstr "Приват"
-
-#~ msgid "SSL"
-#~ msgstr "SSL"
-
-#~ msgid "Scaling"
-#~ msgstr "Масштабирование"
-
-#~ msgid "Scripting Engine"
-#~ msgstr "Движок скриптинга"
-
-#~ msgid "Socket"
-#~ msgstr "Сокет"
-
-#~ msgid "Sound"
-#~ msgstr "Звук"
-
-#~ msgid "Sounds"
-#~ msgstr "Звуки"
-
-#~ msgid "Taskbar"
-#~ msgstr "Панель задач"
-
-#~ msgid "Taskbar Alert"
-#~ msgstr "Панель задач предупреждений"
-
-#~ msgid "Text"
-#~ msgstr "Текст"
-
-#~ msgid "Text icons"
-#~ msgstr "Текстовые иконки"
-
-#~ msgid ""
-#~ "This section contains irc protection tools<br><p>like<b> flood, ignore, "
-#~ "antispam. </b> </p>"
-#~ msgstr ""
-#~ "Этот раздел содержит утилиты защиты в irc сетях<br><p>такие как<b> "
-#~ "антифлуд, игнорирование, антиспам. </b> </p>"
-
-#~ msgid "Timestamp"
-#~ msgstr "Отметка времени"
-
-#~ msgid "ToolBar Applets"
-#~ msgstr "Апплеты панели инструментов"
-
-#~ msgid "Tools"
-#~ msgstr "Инструменты"
-
-#~ msgid "Transparency"
-#~ msgstr "Прозрачность"
-
-#~ msgid "Tray icon"
-#~ msgstr "Иконка в трее"
-
-#~ msgid "Tree Taskbar"
-#~ msgstr "Дерево панели задач"
-
-#~ msgid "URL handlers"
-#~ msgstr "Обработчики URL"
-
-#~ msgid "Use tree taskbar"
-#~ msgstr "Использовать дерево панели задач"
-
-#~ msgid "Userlist"
-#~ msgstr "Список пользователей"
-
-#~ msgid "Verbosity And Output"
-#~ msgstr "Многословность вывода"
-
-#~ msgid "Voice"
-#~ msgstr "Голос"
-
-#~ msgid "Window Captions"
-#~ msgstr "Заголовки окон"
-
-#, fuzzy
-#~ msgid "Window List"
-#~ msgstr "Заголовки окон"
-
-#~ msgid "Word splitters:"
-#~ msgstr "Разделители слов:"
-
-#~ msgid "Workspace"
-#~ msgstr "Рабочее пространство"
-
-#~ msgid "authentication,identify"
-#~ msgstr "идентификация,аутентификация"
-
-#~ msgid "chat"
-#~ msgstr "чат"
-
-#~ msgid "connection"
-#~ msgstr "соединение"
-
-#~ msgid "connection,servers"
-#~ msgstr "соединение,сервера"
-
-#~ msgid "ctcp,flood"
-#~ msgstr "ctcp,флуд"
-
-#~ msgid "debug"
-#~ msgstr "отладка"
-
-#~ msgid "file,audio,video,programs"
-#~ msgstr "файл,аудио,видео,программы"
-
-#~ msgid "language,encoding,charset,codepage"
-#~ msgstr "язык,кодировка,кодовая страница"
-
-#~ msgid "notify,buddy,buddies,friends"
-#~ msgstr "уведомления,друг,друзья,приятели,контакты"
-
-#~ msgid "popup"
-#~ msgstr "всплывающее меню"
-
-#~ msgid "protection"
-#~ msgstr "защита"
-
-#~ msgid "save,output"
-#~ msgstr "сохранение,вывод"
-
-#~ msgid "scripting,kvs,debug"
-#~ msgstr "скриптинг,kvs,отладка"
-
-#~ msgid "smileys,emoticons"
-#~ msgstr "смайлы,иконки"
-
-#~ msgid "sound,events"
-#~ msgstr "звуки,события"
-
-#~ msgid "sound,xmms,audio,play,amarok"
-#~ msgstr "звук,xmms,аудио,проигрывать,amarok"
-
-#~ msgid "theme"
-#~ msgstr "тема"
-
-#~ msgid "theme,background"
-#~ msgstr "тема, фон"
-
-#~ msgid "theme,colors,messages,output"
-#~ msgstr "тема,цвета,сообщения,вывод"
-
-#~ msgid "theme,colors,output"
-#~ msgstr "тема,цвета,вывод"
-
-#~ msgid "theme,colors,text"
-#~ msgstr "тема,цвета,текст"
-
-#~ msgid "theme,mdi"
-#~ msgstr "тема, mdi"
-
-#~ msgid "theme,privmsg,output,format"
-#~ msgstr "тема,сообщение,формат,вывод"
-
-#~ msgid "theme,toolbar"
-#~ msgstr "тема, панель инструментов"
-
-#~ msgid "theme,topic"
-#~ msgstr "тема,топик"
-
-#~ msgid "theme,userlist,channel"
-#~ msgstr "тема,список пользователей,канал"
-
-#~ msgid "theme,userlist,channel,background"
-#~ msgstr "тема,список пользователей,канал,фон"
-
-#~ msgid "theme,userlist,channel,colors"
-#~ msgstr "тема,список пользователей,канал,цвета"
-
-#~ msgid "theme,userlist,channel,grid"
-#~ msgstr "тема,список пользователей,канал,сетка"
-
-#~ msgid "time,ping"
-#~ msgstr "время,пинг"
-
-#~ msgid "time,timestamp"
-#~ msgstr "время,Отметка времени"
-
-#~ msgid "tray,dockwidget"
-#~ msgstr "трей, иконка, системный лоток"
-
-#~ msgid "url,programs"
-#~ msgstr "url,программы"
-
-#~ msgid "userlist,channel"
-#~ msgstr "список пользователей,канал"
