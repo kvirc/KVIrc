@@ -287,7 +287,7 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 	p.restore();
 
 	p.setClipRect(rect());
-	style()->drawPrimitive(QStyle::PE_PanelLineEdit, &option, &p, this);
+	style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, &p, this);
 }
 
 void KviInputEditor::drawContents(QPainter * p)
