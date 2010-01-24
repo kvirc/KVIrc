@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-23 15:23+0100\n"
+"POT-Creation-Date: 2010-01-24 16:21+0100\n"
 "PO-Revision-Date: 2010-01-24 13:00+0300\n"
 "Last-Translator: Igor Govorov <govorov.igor at-sing gmail.com>\n"
 "Language-Team: Russian\n"
@@ -25,8 +25,7 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " байт"
 
@@ -48,8 +47,7 @@ msgstr " минут"
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
 #: src/modules/options/optw_connection.cpp:151
-#: src/modules/options/optw_dcc.cpp:268
-#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_dcc.cpp:268 src/modules/options/optw_lag.cpp:45
 #: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr " мсек"
@@ -104,8 +102,7 @@ msgstr "&Новый сервер"
 
 #: src/modules/options/optw_servers.cpp:341
 #: src/modules/options/optw_identity.cpp:233
-#: src/modules/options/dialog.cpp:227
-#: src/modules/options/container.cpp:64
+#: src/modules/options/dialog.cpp:227 src/modules/options/container.cpp:64
 msgid "&OK"
 msgstr "&Ok"
 
@@ -388,8 +385,8 @@ msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
 "center>"
 msgstr ""
-"<center>Минимальное значение: <b>0 дней</b><br>Максимальное значение: "
-"<b>10 дней</b></center>"
+"<center>Минимальное значение: <b>0 дней</b><br>Максимальное значение: <b>10 "
+"дней</b></center>"
 
 #: src/modules/options/optw_query.cpp:99
 #: src/modules/options/optw_channel.cpp:132
@@ -397,8 +394,8 @@ msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
 "center>"
 msgstr ""
-"<center>Минимальное значение: <b>0 строк</b><br>Максимальное значение: "
-"<b>50 строк</b></center>"
+"<center>Минимальное значение: <b>0 строк</b><br>Максимальное значение: <b>50 "
+"строк</b></center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:88
 msgid ""
@@ -1003,8 +1000,7 @@ msgstr ""
 "<br>Используйте это только если ваша DCC передача останавливается после "
 "установившегося соединения и никакие данные не передаются.</center>"
 
-#: src/modules/options/optw_query.cpp:82
-#: src/modules/options/optw_dcc.cpp:324
+#: src/modules/options/optw_query.cpp:82 src/modules/options/optw_dcc.cpp:324
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1040,8 +1036,8 @@ msgid ""
 "center>"
 msgstr ""
 "<center>Эта опция заставит подсвечиваться пункт KVIrc в системной панели "
-"задач при поступлении новых сообщений DCC CHAT когда окно KVIrc не активно."
-"</center>"
+"задач при поступлении новых сообщений DCC CHAT когда окно KVIrc не активно.</"
+"center>"
 
 #: src/modules/options/optw_query.cpp:76
 msgid ""
@@ -1610,8 +1606,9 @@ msgid "Add"
 msgstr "Добавить"
 
 #: src/modules/options/optw_identity.cpp:715
-msgid "Добавить профиль"
-msgstr "Профиль"
+#, fuzzy
+msgid "Add Profile"
+msgstr "Редактировать профиль"
 
 #: src/modules/options/optw_nickserv.cpp:264
 #: src/modules/options/optw_servers.cpp:307
@@ -1728,8 +1725,7 @@ msgstr "Добавить к ответу VERSION:"
 msgid "Auto flush logs every"
 msgstr "Автоматически записывать логи каждые"
 
-#: src/modules/options/optw_sound.cpp:68
-#: src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Автоопределение"
 
@@ -1741,8 +1737,7 @@ msgstr "Автоматическое определение"
 msgid "Automatically Log"
 msgstr "Автоматически журналировать"
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:342
 msgid "Automatically accept"
 msgstr "Автоматически принимать"
@@ -1886,8 +1881,7 @@ msgstr "Кешировать IP адрес"
 #: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:238
 #: src/modules/options/optw_identity.cpp:906
-#: src/modules/options/dialog.cpp:242
-#: src/modules/options/container.cpp:72
+#: src/modules/options/dialog.cpp:242 src/modules/options/container.cpp:72
 msgid "Cancel"
 msgstr "О&тмена"
 
@@ -1899,8 +1893,7 @@ msgstr "О&тмена"
 #: src/modules/options/optw_userlist.cpp:149
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 msgid "Center"
 msgstr "По центру"
 
@@ -1985,13 +1978,11 @@ msgstr "Очистить список"
 msgid "Close in tray"
 msgstr "Сворачиваться в трей при закрытии окна"
 
-#: src/modules/options/dialog.cpp:229
-#: src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Закрыть этот диалог, применив все изменения."
 
-#: src/modules/options/dialog.cpp:244
-#: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Закрыть этот диалог, забыв обо всех изменениях."
 
@@ -3169,8 +3160,7 @@ msgstr "Открывать отдельные окна для"
 msgid "Open all minimized"
 msgstr "Открыть всё минимизированным"
 
-#: src/modules/options/optw_dcc.cpp:307
-#: src/modules/options/optw_dcc.cpp:344
+#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:344
 msgid "Open minimized when auto-accepted"
 msgstr "Открывать минимизированным при авто-приёме"
 
@@ -3834,8 +3824,7 @@ msgstr "Формат системной локали"
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Тест"
 
@@ -4066,8 +4055,7 @@ msgstr ""
 #: src/modules/options/optw_userlist.cpp:146
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 msgid "Tile"
 msgstr "Заместить"
 
@@ -4442,8 +4430,7 @@ msgstr "[PREFIX]ник[!user@host][POSTFIX] сообщение"
 msgid "[Unknown Media Type]"
 msgstr "[Неизвестный медиа тип]"
 
-#: src/modules/options/optw_dcc.cpp:235
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "байт/сек"
 
@@ -4463,3 +4450,5 @@ msgstr "без имени"
 msgid "within:"
 msgstr "в течении:"
 
+#~ msgid "Добавить профиль"
+#~ msgstr "Профиль"

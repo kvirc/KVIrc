@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-23 15:23+0100\n"
+"POT-Creation-Date: 2010-01-24 16:21+0100\n"
 "PO-Revision-Date: 2008-11-30 19:56+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -130,8 +130,7 @@ msgstr ""
 "Eigenschaft ist indiziert und definiert, aber die zurückgegebene Variante "
 "ist ungültig"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1110
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1340
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1110 src/kvirc/kvs/kvi_kvs_object.cpp:1340
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed but it doesn't really exist"
@@ -245,8 +244,7 @@ msgstr "Leere 'for'-Endlosschleife: Reparieren Sie das Skript"
 msgid "Empty instruction block for command evaluation"
 msgstr "Leerer Instruktionsblock zur Befehlsauswertung"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:146
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:164
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:146 src/kvirc/kvs/kvi_kvs_parser.cpp:164
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:185
 msgid "Empty script"
 msgstr "Leere Zeichenkette"
@@ -685,8 +683,7 @@ msgstr ""
 "kann mich ein wenig verwirren: Es ist eine gute Idee, dieses in "
 "Anführungszeichen einzuschließen"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1103
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1331
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1103 src/kvirc/kvs/kvi_kvs_object.cpp:1331
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr "Keine Qt-Eigenschaft '%Q' für Objekt '%Q' der Klasse '%Q'"
 
@@ -793,8 +790,7 @@ msgstr ""
 msgid "Properties for Qt class %s"
 msgstr "Eigenschaften für Qt-Klasse %s"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1296
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1439
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1296 src/kvirc/kvs/kvi_kvs_object.cpp:1439
 msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
 "type"
@@ -1168,8 +1164,7 @@ msgstr ""
 msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
 msgstr "Der Menü-Eintrag mit ID \"%Q\" existiert nicht im Popup \"%Q\""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1096
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1318
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1096 src/kvirc/kvs/kvi_kvs_object.cpp:1318
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "Das Objekt '%Q' der Klasse '%Q' hat keine Qt-Eigenschaften"
 
@@ -1529,8 +1524,7 @@ msgstr ""
 "Unerwartetes Zeilenende im Hash-Schlüssel (fehlendes '}'-Zeichen oder nicht "
 "maskierter Zeilenumbruch)"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3022
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3089
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3022 src/kvirc/kvs/kvi_kvs_parser.cpp:3089
 msgid "Unexpected end of line in parameter list"
 msgstr "Unerwartetes Zeilenende in Paramaterliste"
 
@@ -1574,8 +1568,7 @@ msgstr ""
 msgid "Unexpected end of script in multiline comment"
 msgstr "Unerwartetes Skriptende im Mehrzeilenkommentar"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3016
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3083
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3016 src/kvirc/kvs/kvi_kvs_parser.cpp:3083
 msgid "Unexpected end of script in parameter list"
 msgstr "Unerwartetes Skriptende in Parameterliste"
 
@@ -1636,8 +1629,7 @@ msgstr "Unbekannter Operator"
 msgid "Unterminated c-style multiline comment"
 msgstr "Nicht abgeschlossener, mehrzeiliger, C-Stil Kommentar "
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3468
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3475
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3468 src/kvirc/kvs/kvi_kvs_parser.cpp:3475
 msgid "Unterminated hash key"
 msgstr "Nichtterminierter Hash-Schlüssel"
 
@@ -1645,8 +1637,7 @@ msgstr "Nichtterminierter Hash-Schlüssel"
 msgid "Unterminated instruction block"
 msgstr "Nichtterminierter Instruktionsblock"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3754
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3761
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3754 src/kvirc/kvs/kvi_kvs_parser.cpp:3761
 msgid "Unterminated string constant"
 msgstr "Nichtterminierte Zeichenkettenkonstante"
 
@@ -1714,8 +1705,7 @@ msgstr "[KVS]%c Kompilierungsfehler: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Laufzeitfehler: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:193
-#: src/kvirc/kvs/kvi_kvs_report.cpp:201
+#: src/kvirc/kvs/kvi_kvs_report.cpp:193 src/kvirc/kvs/kvi_kvs_report.cpp:201
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Warnung: %Q"
 

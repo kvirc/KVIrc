@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-23 15:23+0100\n"
+"POT-Creation-Date: 2010-01-24 16:21+0100\n"
 "PO-Revision-Date: 2008-08-01 07:46+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Português <pt@li.org>\n"
@@ -24,8 +24,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " bytes"
 
@@ -47,8 +46,7 @@ msgstr " minutos"
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
 #: src/modules/options/optw_connection.cpp:151
-#: src/modules/options/optw_dcc.cpp:268
-#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_dcc.cpp:268 src/modules/options/optw_lag.cpp:45
 #: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr " mseg"
@@ -104,8 +102,7 @@ msgstr "&Novo Servidor"
 
 #: src/modules/options/optw_servers.cpp:341
 #: src/modules/options/optw_identity.cpp:233
-#: src/modules/options/dialog.cpp:227
-#: src/modules/options/container.cpp:64
+#: src/modules/options/dialog.cpp:227 src/modules/options/container.cpp:64
 msgid "&OK"
 msgstr "&OK"
 
@@ -1015,8 +1012,7 @@ msgstr ""
 "erros.<br>Use-o apenas se a sua transferência DCC parar logo a seguir a "
 "estabelecer uma conexão sem enviar quaisquer dados.</center>"
 
-#: src/modules/options/optw_query.cpp:82
-#: src/modules/options/optw_dcc.cpp:324
+#: src/modules/options/optw_query.cpp:82 src/modules/options/optw_dcc.cpp:324
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1758,8 +1754,7 @@ msgstr "Anexar à resposta VERSION:"
 msgid "Auto flush logs every"
 msgstr "Auto esvaziar registos a todos os"
 
-#: src/modules/options/optw_sound.cpp:68
-#: src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Auto detectar"
 
@@ -1771,8 +1766,7 @@ msgstr "Detecção automática"
 msgid "Automatically Log"
 msgstr "Registar Automaticamente"
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:342
 msgid "Automatically accept"
 msgstr "Aceitar automaticamente"
@@ -1916,8 +1910,7 @@ msgstr "Endereço IP em cache"
 #: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:238
 #: src/modules/options/optw_identity.cpp:906
-#: src/modules/options/dialog.cpp:242
-#: src/modules/options/container.cpp:72
+#: src/modules/options/dialog.cpp:242 src/modules/options/container.cpp:72
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1929,8 +1922,7 @@ msgstr "Cancelar"
 #: src/modules/options/optw_userlist.cpp:149
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 msgid "Center"
 msgstr "Centro"
 
@@ -2016,13 +2008,11 @@ msgstr "Limpar Lista"
 msgid "Close in tray"
 msgstr "Fechar no ícone da barra de tarefas"
 
-#: src/modules/options/dialog.cpp:229
-#: src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Fecha esta caixa de diálogo, aceitando todas as alterações."
 
-#: src/modules/options/dialog.cpp:244
-#: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Fecha esta caixa de diálogo, rejeitando todas as alterações."
 
@@ -3211,8 +3201,7 @@ msgstr "Abrir Privado Para"
 msgid "Open all minimized"
 msgstr "Abrir todos minimizados"
 
-#: src/modules/options/optw_dcc.cpp:307
-#: src/modules/options/optw_dcc.cpp:344
+#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:344
 msgid "Open minimized when auto-accepted"
 msgstr "Abrir minimizado quando auto-aceite"
 
@@ -3877,8 +3866,7 @@ msgstr ""
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Teste"
 
@@ -4108,8 +4096,7 @@ msgstr ""
 #: src/modules/options/optw_userlist.cpp:146
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 msgid "Tile"
 msgstr "Lado a lado"
 
@@ -4482,8 +4469,7 @@ msgstr "[PREFIXO]alcunha[!utilizador@endereço][SUFIXO] mensagem"
 msgid "[Unknown Media Type]"
 msgstr "[Tipo de Média Desconhecido}"
 
-#: src/modules/options/optw_dcc.cpp:235
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bytes/seg"
 
