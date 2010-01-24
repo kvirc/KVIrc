@@ -109,12 +109,6 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 
 	setAutoFillBackground(false);
 
-	QPalette pal = palette();
-	pal.setBrush(QPalette::Active, QPalette::Base, Qt::transparent);
-	pal.setBrush(QPalette::Inactive, QPalette::Base, Qt::transparent);
-	pal.setBrush(QPalette::Disabled, QPalette::Base, Qt::transparent);
-	setPalette(pal);
-
 	setFocusPolicy(Qt::StrongFocus);
 	setAcceptDrops(true);
 
@@ -242,6 +236,7 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 		option.state |= QStyle::State_ReadOnly;
 	option.features = QStyleOptionFrameV2::None;
 
+	style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, &p, this);
 	QRect r = style()->subElementRect(QStyle::SE_LineEditContents, &option, this);
 	r.setX(r.x() + KVI_INPUT_MARGIN);
 	r.setY(r.y() + KVI_INPUT_MARGIN);
@@ -281,13 +276,8 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 	r.setBottom(r.bottom() - KVI_INPUT_PADDING);
 	p.setClipRect(r);
 
-	p.save();
 	p.translate(r.topLeft());
 	drawContents(&p);
-	p.restore();
-
-	p.setClipRect(rect());
-	style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, &p, this);
 }
 
 void KviInputEditor::drawContents(QPainter * p)
