@@ -105,7 +105,7 @@ bool KviRijndaelEngine::init(const char *encKey, int encKeyLen, const char *decK
             encKeyLen = decKeyLen;
         } else {
             // both keys missing
-            setLastError(__tr("Missing both encrypt and decrypt key: at least one is needed"));
+            setLastError(__tr("Missing encryption and decryption key: at least one is needed"));
             return false;
         }
     }
@@ -334,7 +334,7 @@ bool KviMircryptionEngine::init(const char * encKey,int encKeyLen,const char * d
             encKeyLen = decKeyLen;
         } else {
             // both keys missing
-            setLastError(__tr("Missing both encrypt and decrypt key: at least one is needed"));
+            setLastError(__tr("Missing encryption and decryption key: at least one is needed"));
             return false;
         }
     }
@@ -510,11 +510,11 @@ static bool rijndael_module_init(KviModule * m)
     "The keys used are %d bit long and will be padded\n" \
     "with zeros if you provide shorter ones.\n" \
     "If only one key is provided, this engine\n" \
-    "will use it for both encrypting and decrypting.\n" \
+    "will use it for both encryption and decryption.\n\n" \
     "This is the Crypto++ implementation which could do\n" \
     "a lot more than the current default engine, but as\n" \
     "this should be a drop-in replacement, it acts just\n" \
-    "like that one.\n" \
+    "like the original one.\n" \
     "Information about the algorithm can be found at\n" \
     "<http://www.cryptolounge.org/wiki/AES>\n");
     
@@ -587,13 +587,13 @@ static bool rijndael_module_init(KviModule * m)
     d->szDescription = __tr("Popular cryptographic engine based on the\n" \
     "old Blowfish encryption algorithm.\n" \
     "The text is first encrypted with Blowfish \n" \
-    "and then converted to base64 notation.\n" \
-    "The keys used have variable length and\n" \
+    "and then base64 encoded.\n" \
+    "Keys of variable length can be used and\n" \
     "are specified as character strings.\n" \
-    "You can specify keys long up to 56 bytes (448 bits).\n" \
+    "Keys can be up to 56 bytes (448 bits) long.\n" \
     "If only one key is provided, this engine\n" \
-    "will use it for both encrypting and decrypting.\n" \
-    "This engine works in ECB mode by default:\n" \
+    "will use it for encryption and decryption.\n" \
+    "This engine works in ECB mode by default,\n" \
     "if you want to use CBC mode you must prefix\n" \
     "your key(s) with \"cbc:\".\n\n" \
     "This is the Crypto++ based version, not relying on embedded code\n");
