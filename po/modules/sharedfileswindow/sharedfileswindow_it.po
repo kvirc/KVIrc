@@ -4,37 +4,39 @@
 # Italian translation file for KVIrc 4.0
 # Copyright (C) Szymon Stefanek
 # This file is distributed under the same license as the KVIrc package.
+#
 # Eva <eva@cyberbeat.it>, 2004.
 # Etherea <cle at virg0 dot org>, 2006.
-# Elvio Basello <hellvis69 at netsons dot org>, 2006-2009
-#
+# Elvio Basello <hellvis69 at netsons dot org>, 2006-2009.
+# HelLViS69, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: sharedfileswindow_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:55+0100\n"
-"PO-Revision-Date: 2008-07-10 01:43+0200\n"
-"Last-Translator: Elvio Basello <hellvis69@netsons.org>\n"
-"Language-Team:  <it@li.org>\n"
+"PO-Revision-Date: 2010-01-25 18:03+0100\n"
+"Last-Translator: HelLViS69\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:232
 #, c-format
 msgid "    Expires in %d hours %d minutes %d seconds"
-msgstr ""
+msgstr "    Scade in %d ore %d minuti %d secondi"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:221
 #, c-format
 msgid "    File: %s (%u bytes)"
-msgstr ""
+msgstr "    File: %s (%u byte)"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:223
 #, c-format
 msgid "    Mask: %s"
-msgstr ""
+msgstr "    Maschera: %s"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:243
 msgid "&Add..."
@@ -90,11 +92,11 @@ msgstr "Nome condiviso non valido"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:101
 msgid "Invalid timeout, ignoring"
-msgstr ""
+msgstr "Timeout invalido, ignoro"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:115
 msgid "Invalid visible name: using default"
-msgstr ""
+msgstr "Nome visibile invalido: uso il predefinito"
 
 #: src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
 msgid "Manage S&hared Files"
@@ -113,13 +115,12 @@ msgid "Never"
 msgstr "Mai"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:242
-#, fuzzy
 msgid "No active file sharedfile"
-msgstr "Scegli il file da condividere"
+msgstr "Nessuna condivisione attiva"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:159
 msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
-msgstr ""
+msgstr "Nessun file condiviso col nome '%Q' e maschera utente '%Q'"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:163
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:171
@@ -129,7 +130,7 @@ msgstr "OK"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:121
 msgid "Ops..failed to add the sharedfile..."
-msgstr ""
+msgstr "Oops.. impossibile aggiungere il file condiviso"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:245
 msgid "Re&move"
@@ -153,7 +154,7 @@ msgstr ""
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:85
 msgid "The file '%Q' is not readable"
-msgstr ""
+msgstr "Il file '%Q' non è leggibile"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:179
 msgid "The file doesn't exist or it is not readable, please check the path"
@@ -167,8 +168,9 @@ msgstr "Il nome condiviso non puo essere nullo, perfavore correggerlo"
 #: src/modules/sharedfile/libkvisharedfile.cpp:243
 #, c-format
 msgid "Total: %d sharedfile"
-msgstr ""
+msgstr "Totale: %d file condivisi"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:80
 msgid "User mask:"
 msgstr "Maschera Utente:"
+

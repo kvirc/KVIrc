@@ -74,7 +74,7 @@ KviKvsTreeNode * KviKvsParser::parseComment()
 				}
 				break;
 				default:
-					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (unicode %x) after a slash (it is a typo or a malformed comment begin?)","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (unicode %x) after a slash (is it a typo or a malformed comment begin?)","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 					return 0;
 				break;
 			}

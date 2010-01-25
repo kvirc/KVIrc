@@ -7,13 +7,13 @@
 # Eva Schaller <eva at cyberbeat dot it>, 2002,2003, 2004.
 # Alessio Paoletti <nate at paranoici dot org>, 2004,2005, 2006;.
 # Elvio Basello <hellvis69 at netsons dot org>, 2005, 2006, 2009.
-# HelLViS69, 2009.
+# HelLViS69, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2009-12-30 16:18+0100\n"
+"PO-Revision-Date: 2010-01-25 18:07+0100\n"
 "Last-Translator: HelLViS69\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2215,7 +2215,7 @@ msgid "Crypto++ threw the following exception: "
 msgstr "Crypto++ ha sollevato la seguente eccezione: "
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:505
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cryptographic engine based on the\n"
 "Advanced Encryption Standard (AES)\n"
@@ -3973,9 +3973,9 @@ msgstr "Manca la parentesi graffa di chiusura"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:108
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:337
-#, fuzzy
 msgid "Missing encryption and decryption key: at least one is needed"
-msgstr "Chiavi di crittazione e decrittazione mancanti: è richiesta almeno una"
+msgstr ""
+"Chiavi di crittazione e decrittazione mancanti: ne è richiesta almeno una"
 
 #: src/kvilib/core/kvi_error.cpp:105
 msgid "Missing object class name"
@@ -4775,7 +4775,6 @@ msgid "Plugin not found. Please check the plugin-name and path."
 msgstr "Plugin non trovato. Controlla il nome e il percorso del plugin."
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:587
-#, fuzzy
 msgid ""
 "Popular cryptographic engine based on the\n"
 "old Blowfish encryption algorithm.\n"
@@ -4796,7 +4795,7 @@ msgstr ""
 "algoritmo di crittazione Blowfish.\n"
 "Il testo viene prima crittato con Blowfish e poi\n"
 "convertito in notazione base64.\n"
-"Le chiavi usate devo avere lunghezza variabile e\n"
+"Le chiavi usate possono avere lunghezza variabile e\n"
 "sono specificate come stringhe di caratteri.\n"
 "Puoi specificare chiavi lunghe fino a 56 byte (448 bit).\n"
 "Se viene fornita solo una chiave, questo motore\n"
@@ -5606,9 +5605,8 @@ msgid "Show History<br>&lt;Ctrl+PageUp&gt;"
 msgstr "Mostra Cronologia<br>&lt;Ctrl+PagS&gt;"
 
 #: src/modules/iograph/libkviiograph.cpp:314
-#, fuzzy
 msgid "Show I/O &Traffic graph"
-msgstr "Grafico Traffico I/O"
+msgstr "Mostra Grafico Traffico I/O"
 
 #: src/kvirc/ui/kvi_input.cpp:126
 msgid "Show Icons Popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"
@@ -6720,9 +6718,8 @@ msgid "Unable to determine input encoding (Hex or Base64)."
 msgstr "Impossibile determinare la cifratura corrente (Hex o Base64)"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:184
-#, fuzzy
 msgid "Unable to determine output encoding (Hex or Base64)."
-msgstr "Impossibile determinare la cifratura corrente"
+msgstr "Impossibile determinare la cifratura corrente (Hex o Base64)"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:1278
 msgid "Unable to determine the current cipher"

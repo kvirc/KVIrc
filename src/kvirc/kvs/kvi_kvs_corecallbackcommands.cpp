@@ -275,7 +275,7 @@ namespace KviKvsCoreCallbackCommands
 			if(!KviKvsAliasManager::instance()->remove(szName))
 			{
 				if(!KVSCCC_pSwitches->find('q',"quiet"))
-					KVSCCC_pContext->warning(__tr2qs_ctx("The alias %Q is not existing","kvs"),&szName);
+					KVSCCC_pContext->warning(__tr2qs_ctx("The alias '%Q' does not exist","kvs"),&szName);
 			}
 		} else {
 			KviKvsScript * pScript = new KviKvsScript(*KVSCCC_pCallback);
