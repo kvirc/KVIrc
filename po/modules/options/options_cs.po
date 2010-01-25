@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-24 16:21+0100\n"
+"POT-Creation-Date: 2010-01-25 17:25+0100\n"
 "PO-Revision-Date: 2008-01-16 08:51+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -18,7 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72
+#: src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " bajtů"
 
@@ -40,7 +41,8 @@ msgstr " min"
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
 #: src/modules/options/optw_connection.cpp:151
-#: src/modules/options/optw_dcc.cpp:268 src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_dcc.cpp:268
+#: src/modules/options/optw_lag.cpp:45
 #: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr " msek"
@@ -96,7 +98,8 @@ msgstr "&Nový server"
 
 #: src/modules/options/optw_servers.cpp:341
 #: src/modules/options/optw_identity.cpp:233
-#: src/modules/options/dialog.cpp:227 src/modules/options/container.cpp:64
+#: src/modules/options/dialog.cpp:227
+#: src/modules/options/container.cpp:64
 msgid "&OK"
 msgstr "&OK"
 
@@ -985,7 +988,8 @@ msgstr ""
 "pokud se DCC přenosy zastaví ihned po navázaní spojení bez zaslání dat.</"
 "center>"
 
-#: src/modules/options/optw_query.cpp:82 src/modules/options/optw_dcc.cpp:324
+#: src/modules/options/optw_query.cpp:82
+#: src/modules/options/optw_dcc.cpp:324
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1699,7 +1703,8 @@ msgstr "Připojit k VERSION odezvě:"
 msgid "Auto flush logs every"
 msgstr "Auto flush logů každý"
 
-#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68
+#: src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Autodetekce"
 
@@ -1711,7 +1716,8 @@ msgstr "Automatická detekce"
 msgid "Automatically Log"
 msgstr "Automaticky logovat"
 
-#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175
+#: src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:342
 msgid "Automatically accept"
 msgstr "Automaticky přijmout"
@@ -1855,7 +1861,8 @@ msgstr "Cache IP adresy"
 #: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:238
 #: src/modules/options/optw_identity.cpp:906
-#: src/modules/options/dialog.cpp:242 src/modules/options/container.cpp:72
+#: src/modules/options/dialog.cpp:242
+#: src/modules/options/container.cpp:72
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -1867,7 +1874,8 @@ msgstr "Zrušit"
 #: src/modules/options/optw_userlist.cpp:149
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59
+#: src/modules/options/optw_input.cpp:64
 msgid "Center"
 msgstr "Centrovat"
 
@@ -1953,11 +1961,13 @@ msgstr "Smazat seznam"
 msgid "Close in tray"
 msgstr "Zavřít v panelu"
 
-#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:229
+#: src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Zavře tento dialog a provede všechny změny."
 
-#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:244
+#: src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Zavře tento dialog, bez provedení změn."
 
@@ -3137,7 +3147,8 @@ msgstr "Otervřít Query pro"
 msgid "Open all minimized"
 msgstr "Otevřít vše minimalizovaně"
 
-#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:344
+#: src/modules/options/optw_dcc.cpp:307
+#: src/modules/options/optw_dcc.cpp:344
 msgid "Open minimized when auto-accepted"
 msgstr "Otevřít minimalizovaně při auto-příjmu"
 
@@ -3808,7 +3819,8 @@ msgstr "Systémová chyba"
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71
+#: src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Testovat"
 
@@ -4024,7 +4036,8 @@ msgstr ""
 #: src/modules/options/optw_userlist.cpp:146
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56
+#: src/modules/options/optw_input.cpp:61
 msgid "Tile"
 msgstr "Dlaždice"
 
@@ -4385,7 +4398,8 @@ msgstr "[PREFIX]přezdívka[!uživatel@hostitel][POSTFIX] zpráva"
 msgid "[Unknown Media Type]"
 msgstr "[Neznámý typ média]"
 
-#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235
+#: src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bajtů/sek"
 

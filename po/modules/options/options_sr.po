@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-24 16:21+0100\n"
+"POT-Creation-Date: 2010-01-25 17:25+0100\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -14,7 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.5\n"
 
-#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72
+#: src/modules/options/optw_dcc.cpp:277
 #, fuzzy
 msgid " bytes"
 msgstr "0 bajtova"
@@ -39,7 +40,8 @@ msgstr "odgovoreno"
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
 #: src/modules/options/optw_connection.cpp:151
-#: src/modules/options/optw_dcc.cpp:268 src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_dcc.cpp:268
+#: src/modules/options/optw_lag.cpp:45
 #: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr ""
@@ -103,7 +105,8 @@ msgstr "Mreža/Server"
 
 #: src/modules/options/optw_servers.cpp:341
 #: src/modules/options/optw_identity.cpp:233
-#: src/modules/options/dialog.cpp:227 src/modules/options/container.cpp:64
+#: src/modules/options/dialog.cpp:227
+#: src/modules/options/container.cpp:64
 #, fuzzy
 msgid "&OK"
 msgstr "OK"
@@ -905,7 +908,8 @@ msgid ""
 "data.</center>"
 msgstr ""
 
-#: src/modules/options/optw_query.cpp:82 src/modules/options/optw_dcc.cpp:324
+#: src/modules/options/optw_query.cpp:82
+#: src/modules/options/optw_dcc.cpp:324
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1623,7 +1627,8 @@ msgstr ""
 msgid "Auto flush logs every"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68
+#: src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr ""
 
@@ -1636,7 +1641,8 @@ msgstr "Automatski prihvati"
 msgid "Automatically Log"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175
+#: src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:342
 #, fuzzy
 msgid "Automatically accept"
@@ -1803,7 +1809,8 @@ msgstr "Keširaj IP adresu"
 #: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:238
 #: src/modules/options/optw_identity.cpp:906
-#: src/modules/options/dialog.cpp:242 src/modules/options/container.cpp:72
+#: src/modules/options/dialog.cpp:242
+#: src/modules/options/container.cpp:72
 msgid "Cancel"
 msgstr "Poništi"
 
@@ -1815,7 +1822,8 @@ msgstr "Poništi"
 #: src/modules/options/optw_userlist.cpp:149
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59
+#: src/modules/options/optw_input.cpp:64
 #, fuzzy
 msgid "Center"
 msgstr "Generalne opcije"
@@ -1917,11 +1925,13 @@ msgstr "Isprazni listu"
 msgid "Close in tray"
 msgstr "M&inimizuj"
 
-#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:229
+#: src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:244
+#: src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr ""
 
@@ -3224,7 +3234,8 @@ msgstr ""
 msgid "Open all minimized"
 msgstr "Kreiraj minimizirano"
 
-#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:344
+#: src/modules/options/optw_dcc.cpp:307
+#: src/modules/options/optw_dcc.cpp:344
 #, fuzzy
 msgid "Open minimized when auto-accepted"
 msgstr "Napravi minimizirano kad automatski-prihvataš"
@@ -3963,7 +3974,8 @@ msgstr "sistemska greška"
 msgid "TIME"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71
+#: src/modules/options/optw_sound.cpp:86
 #, fuzzy
 msgid "Test"
 msgstr "Tester"
@@ -4163,7 +4175,8 @@ msgstr ""
 #: src/modules/options/optw_userlist.cpp:146
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56
+#: src/modules/options/optw_input.cpp:61
 #, fuzzy
 msgid "Tile"
 msgstr "&Parče"
@@ -4560,7 +4573,8 @@ msgstr "[PREFIKS]nadimak[!korisnik@host][POSTFIKS] poruka"
 msgid "[Unknown Media Type]"
 msgstr "Nepoznat tip medija"
 
-#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235
+#: src/modules/options/optw_dcc.cpp:241
 #, fuzzy
 msgid "bytes/sec"
 msgstr "0 bajtova/sek"

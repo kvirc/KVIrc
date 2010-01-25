@@ -82,7 +82,7 @@ static bool sharedfile_kvs_cmd_add(KviKvsModuleCommandCall * c)
 
 	if(!KviFileUtils::isReadable(szFileName))
 	{
-		c->warning(__tr2qs_ctx("The file '%Q' is not readable","sharedfile"),&szFileName);
+		c->warning(__tr2qs_ctx("The file '%Q' is not readable","sharedfileswindow"),&szFileName);
 		return true;
 	}
 
@@ -98,7 +98,7 @@ static bool sharedfile_kvs_cmd_add(KviKvsModuleCommandCall * c)
 	{
 		if(!v->asInteger(timeout))
 		{
-			c->warning(__tr2qs_ctx("Invalid timeout, ignoring","sharedfile"));
+			c->warning(__tr2qs_ctx("Invalid timeout, ignoring","sharedfileswindow"));
 			timeout = 0;
 		}
 	}
@@ -112,13 +112,13 @@ static bool sharedfile_kvs_cmd_add(KviKvsModuleCommandCall * c)
 		n->asString(tmp);
 		if(tmp.isEmpty())
 		{
-			c->warning(__tr2qs_ctx("Invalid visible name: using default","sharedfile"));
+			c->warning(__tr2qs_ctx("Invalid visible name: using default","sharedfileswindow"));
 		} else szVisibleName = tmp;
 	}
 
 	if(!g_pSharedFilesManager->addSharedFile(szVisibleName,szFileName,szUserMask,timeout))
 	{
-		c->warning(__tr2qs_ctx("Ops..failed to add the sharedfile...","sharedfile"));
+		c->warning(__tr2qs_ctx("Ops..failed to add the sharedfile...","sharedfileswindow"));
 	}
 
 	return true;
@@ -156,7 +156,7 @@ static bool sharedfile_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	if(!g_pSharedFilesManager->removeSharedFile(szVisibleName,szUserMask,uSize))
-		c->warning(__tr2qs_ctx("No sharedfile with visible name '%Q' and user mask '%Q'","sharedfile"),&szVisibleName,&szUserMask);
+		c->warning(__tr2qs_ctx("No sharedfile with visible name '%Q' and user mask '%Q'","sharedfileswindow"),&szVisibleName,&szUserMask);
 
 	return true;
 }
@@ -218,9 +218,9 @@ static bool sharedfile_kvs_cmd_list(KviKvsModuleCommandCall * c)
 		{
 			c->window()->output(KVI_OUT_NONE,"%c%d. %s",
 				KVI_TEXT_BOLD,idx + 1,it.currentKey().toUtf8().data());
-			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    File: %s (%u bytes)","sharedfile"),
+			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    File: %s (%u bytes)","sharedfileswindow"),
 				o->absFilePath().toUtf8().data(),o->fileSize());
-			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    Mask: %s","sharedfile"),
+			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    Mask: %s","sharedfileswindow"),
 				o->userMask().toUtf8().data());
 			if(o->expireTime() > 0)
 			{
@@ -229,7 +229,7 @@ static bool sharedfile_kvs_cmd_list(KviKvsModuleCommandCall * c)
 				secs = secs % 3600;
 				int mins = secs / 60;
 				secs = secs % 60;
-				c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    Expires in %d hours %d minutes %d seconds","sharedfile"),
+				c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    Expires in %d hours %d minutes %d seconds","sharedfileswindow"),
 					hour,mins,secs);
 			}
 			++idx;
@@ -239,8 +239,8 @@ static bool sharedfile_kvs_cmd_list(KviKvsModuleCommandCall * c)
 
 	//#warning "FIND A BETTER KVI_OUT_*"
 
-	if(idx == 0)c->window()->outputNoFmt(KVI_OUT_NONE,__tr2qs_ctx("No active file sharedfile","sharedfile"));
-	else c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("Total: %d sharedfile","sharedfile"),idx);
+	if(idx == 0)c->window()->outputNoFmt(KVI_OUT_NONE,__tr2qs_ctx("No active file sharedfile","sharedfileswindow"));
+	else c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("Total: %d sharedfile","sharedfileswindow"),idx);
 
 	return true;
 }
@@ -275,5 +275,5 @@ KVIRC_MODULE(
 	sharedfile_module_can_unload,
 	0,
 	sharedfile_module_cleanup,
-	"sharedfile"
+	"sharedfileswindow"
 )

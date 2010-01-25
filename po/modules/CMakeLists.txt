@@ -15,7 +15,6 @@ SUBDIRS(
 	python
 	register
 	serverdb
-	sharedfile
 	sharedfileswindow
 	theme
 	torrent

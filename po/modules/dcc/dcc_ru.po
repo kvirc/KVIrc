@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-23 15:23+0100\n"
+"POT-Creation-Date: 2010-01-25 17:25+0100\n"
 "PO-Revision-Date: 2010-01-24 11:05+0400\n"
 "Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: russian\n"
@@ -413,7 +413,8 @@ msgid "DCC VIDEO request"
 msgstr "Запрос DCC VIDEO"
 
 #: src/modules/dcc/video.cpp:837
-msgid "DCC VIDEO request not sent: awaiting manual connections"
+#, fuzzy
+msgid "DCC VIDEO request not sent: awaiting manual connection"
 msgstr "Запрос DCC VIDEO не отослан: ожидается ручное соединение"
 
 #: src/modules/dcc/libkvidcc.cpp:1193

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-23 15:23+0100\n"
+"POT-Creation-Date: 2010-01-25 17:25+0100\n"
 "PO-Revision-Date: 2010-01-25 17:04+0100\n"
 "Last-Translator: HelLViS69\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -425,7 +425,8 @@ msgid "DCC VIDEO request"
 msgstr "Richiesta DCC VIDEO"
 
 #: src/modules/dcc/video.cpp:837
-msgid "DCC VIDEO request not sent: awaiting manual connections"
+#, fuzzy
+msgid "DCC VIDEO request not sent: awaiting manual connection"
 msgstr "Richiesta di DCC VIDEO non inviata: attendo una connessione manuale"
 
 #: src/modules/dcc/libkvidcc.cpp:1193
@@ -731,8 +732,7 @@ msgid ""
 "compilation time "
 msgstr ""
 "La richiesta fatta non può essere accettata: supporto DCC VIDEO non "
-"abilitato al "
-"momento della compilazione "
+"abilitato al momento della compilazione "
 
 #: src/modules/dcc/requests.cpp:997
 msgid ""
@@ -838,9 +838,9 @@ msgid ""
 "<br>Do you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-"
 "rename</b> the new file ?"
 msgstr ""
-"Il file '<b>%1</b>' esiste già ed è più grande di quello offerto. "
-"<br>Vuoi <br><b>sovrascrivere</b> il file esistente, o<br> <b>"
-"auto-rinominare</b> quello nuovo?"
+"Il file '<b>%1</b>' esiste già ed è più grande di quello offerto. <br>Vuoi "
+"<br><b>sovrascrivere</b> il file esistente, o<br> <b>auto-rinominare</b> "
+"quello nuovo?"
 
 #: src/modules/dcc/chat.cpp:467
 msgid ""
@@ -1095,4 +1095,3 @@ msgstr "bytes/sec"
 #: src/modules/dcc/requests.cpp:143
 msgid "unknown"
 msgstr "sconosciuto"
-
