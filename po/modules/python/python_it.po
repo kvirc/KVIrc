@@ -1,0 +1,57 @@
+# translation of python_it.po to
+# KVIrc Theme module Italian translation file
+# Italian translation file for KVIrc 4.0
+# Copyright (C) Szymon Stefanek
+# This file is distributed under the same license as the KVIrc package.
+#
+# Elvio Basello <hell at hellvis69 dot netsons dot org>, 2008-2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-24 16:21+0100\n"
+"PO-Revision-Date: 2010-01-25 17:13+0100\n"
+"Last-Translator: Elvio Basello <hell@hellvis69.netsons.org>\n"
+"Language-Team:  <it@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+
+#: /root/prj/kvirc/svn/trunk/kvirc/src/modules/python/libkvipython.cpp:46
+msgid "The pythoncore module can't be loaded: python support not available"
+msgstr ""
+"Il modulo pythoncore non può essere caricato: supporto python non "
+"disponibile"
+
+#: /root/prj/kvirc/svn/trunk/kvirc/src/modules/python/libkvipython.cpp:47
+msgid "To see more details about loading failure try /pythoncore.load"
+msgstr ""
+"Per vedere maggiori dettagli sul fallimento del caricamento prova "
+"/pythoncore.load"
+
+#: /root/prj/kvirc/svn/trunk/kvirc/src/modules/python/libkvipython.cpp:60
+msgid ""
+"This KVIrc executable has been compiled without python scripting support"
+msgstr ""
+"L'eseguibile KVIrc è stato compilato senza il supporto allo scripting in "
+"python"
+
+#: /root/prj/kvirc/svn/trunk/kvirc/src/modules/python/libkvipython.cpp:100
+#: /root/prj/kvirc/svn/trunk/kvirc/src/modules/python/libkvipython.cpp:153
+msgid ""
+"The pythoncore module failed to execute the code: something is wrong with "
+"the python support"
+msgstr ""
+"Il modulo pythoncore non può eseguire il codice: qualcosa è sbagliato nel "
+"supporto python"
+
+#: /root/prj/kvirc/svn/trunk/kvirc/src/modules/python/libkvipython.cpp:117
+#: /root/prj/kvirc/svn/trunk/kvirc/src/modules/python/libkvipython.cpp:121
+msgid "Python execution error:"
+msgstr "Errore esecuzione python:"
+
+#: /root/prj/kvirc/svn/trunk/kvirc/src/modules/pythoncore/libkvipythoncore.cpp:112
+msgid "Internal error: python interpreter not initialized"
+msgstr "Errore interno: interprete python non inizializzato"
+

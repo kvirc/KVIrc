@@ -709,9 +709,9 @@ void KviPackAddonSummaryFilesWidget::showEvent(QShowEvent *)
 	// Iterate through the addon dir and its subdirs
 	while(it.hasNext())
 	{
-                QString szStr=it.next();
-                if(!szStr.contains("/."))
-                    list.append(szStr);
+		QString szStr = it.next();
+		if(!szStr.contains("/."))
+			list.append(szStr);
 	}
 
 	// QDirIterator does not support sorting, so do it manually

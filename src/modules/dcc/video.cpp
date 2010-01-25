@@ -834,7 +834,7 @@ void KviDccVideo::connectionInProgress()
 					&ip,port.ptr(),m_pDescriptor->iSampleRate,0x01);
 			output(KVI_OUT_DCCMSG,__tr2qs_ctx("Sent DCC VIDEO (%s) request to %Q, waiting for the remote client to connect...","dcc"),
 					m_pDescriptor->szCodec.ptr(),&(m_pDescriptor->szNick));
-		} else output(KVI_OUT_DCCMSG,__tr2qs_ctx("DCC VIDEO request not sent: awaiting manual connections","dcc"));
+		} else output(KVI_OUT_DCCMSG,__tr2qs_ctx("DCC VIDEO request not sent: awaiting manual connection","dcc"));
 	}
 }
 
