@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sharedfileswindow_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"POT-Creation-Date: 2010-01-25 17:55+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -21,6 +21,21 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1:2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1:2);\n"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:232
+#, c-format
+msgid "    Expires in %d hours %d minutes %d seconds"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:221
+#, c-format
+msgid "    File: %s (%u bytes)"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:223
+#, c-format
+msgid "    Mask: %s"
+msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:243
 msgid "&Add..."
@@ -74,6 +89,14 @@ msgstr "Недійсний час закінчення"
 msgid "Invalid share name"
 msgstr "Недійсне ім'я загального файлу"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:101
+msgid "Invalid timeout, ignoring"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:115
+msgid "Invalid visible name: using default"
+msgstr ""
+
 #: src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
 msgid "Manage S&hared Files"
 msgstr "Керування &загальними файлами"
@@ -90,11 +113,23 @@ msgstr "Ім'я"
 msgid "Never"
 msgstr "Ніколи"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:242
+msgid "No active file sharedfile"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:159
+msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
+msgstr ""
+
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:163
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:171
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:180
 msgid "OK"
 msgstr "Ок"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:121
+msgid "Ops..failed to add the sharedfile..."
+msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:245
 msgid "Re&move"
@@ -116,6 +151,10 @@ msgstr ""
 "Минула дата/час: будь ласка видалите одне із двох цих значень, перевірте і "
 "вкажіть дату/час для використання в майбутньому"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:85
+msgid "The file '%Q' is not readable"
+msgstr ""
+
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:179
 msgid "The file doesn't exist or it is not readable, please check the path"
 msgstr "Файл не існує або не читаємо, будь ласка перевірте шлях"
@@ -124,6 +163,11 @@ msgstr "Файл не існує або не читаємо, будь ласка
 msgid "The share name can't be empty, please correct it"
 msgstr ""
 "Ім'я загального файлу не може бути порожнім, будь ласка скорегуйте його"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:243
+#, c-format
+msgid "Total: %d sharedfile"
+msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:80
 msgid "User mask:"

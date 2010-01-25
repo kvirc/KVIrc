@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"POT-Creation-Date: 2010-01-25 17:55+0100\n"
 "PO-Revision-Date: 2009-12-06 23:23+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -17,6 +17,21 @@ msgstr ""
 "Plural-Forms: 3\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:232
+#, c-format
+msgid "    Expires in %d hours %d minutes %d seconds"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:221
+#, c-format
+msgid "    File: %s (%u bytes)"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:223
+#, c-format
+msgid "    Mask: %s"
+msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:243
 msgid "&Add..."
@@ -70,6 +85,14 @@ msgstr "Nie poprawny czas wygaśnięcia"
 msgid "Invalid share name"
 msgstr "Nie poprawna nazwa udostępniania"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:101
+msgid "Invalid timeout, ignoring"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:115
+msgid "Invalid visible name: using default"
+msgstr ""
+
 #: src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
 msgid "Manage S&hared Files"
 msgstr "Zarządza&j udostępnianymi plikami"
@@ -86,11 +109,23 @@ msgstr "Nazwa"
 msgid "Never"
 msgstr "Nigdy"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:242
+msgid "No active file sharedfile"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:159
+msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
+msgstr ""
+
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:163
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:171
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:180
 msgid "OK"
 msgstr "OK"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:121
+msgid "Ops..failed to add the sharedfile..."
+msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:245
 msgid "Re&move"
@@ -112,6 +147,10 @@ msgstr ""
 "Data/czas już minął (przeszłość): proszę albo odznacz okienko \"wygasa\" lub "
 "określ datę/czas wygaśnięcia w czas przyszły"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:85
+msgid "The file '%Q' is not readable"
+msgstr ""
+
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:179
 msgid "The file doesn't exist or it is not readable, please check the path"
 msgstr "Plik nie istnieje lub nie da się go odczytać, proszę sprawdź ścieżkę"
@@ -119,6 +158,11 @@ msgstr "Plik nie istnieje lub nie da się go odczytać, proszę sprawdź ścież
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:170
 msgid "The share name can't be empty, please correct it"
 msgstr "Nazwa udostępniania nie może być pusta, proszę popraw to"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:243
+#, c-format
+msgid "Total: %d sharedfile"
+msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:80
 msgid "User mask:"

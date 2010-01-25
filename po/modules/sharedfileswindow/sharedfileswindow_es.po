@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sharedfileswindow_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"POT-Creation-Date: 2010-01-25 17:55+0100\n"
 "PO-Revision-Date: 2009-11-29 14:24+0100\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -14,6 +14,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:232
+#, c-format
+msgid "    Expires in %d hours %d minutes %d seconds"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:221
+#, c-format
+msgid "    File: %s (%u bytes)"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:223
+#, c-format
+msgid "    Mask: %s"
+msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:243
 msgid "&Add..."
@@ -67,6 +82,14 @@ msgstr "Fecha de expiración no válido"
 msgid "Invalid share name"
 msgstr "El nombre de archivo a compartir no es válido"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:101
+msgid "Invalid timeout, ignoring"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:115
+msgid "Invalid visible name: using default"
+msgstr ""
+
 #: src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
 msgid "Manage S&hared Files"
 msgstr "Gestionar arc&hivos compartidos"
@@ -83,11 +106,23 @@ msgstr "Nombre"
 msgid "Never"
 msgstr "Nunca"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:242
+msgid "No active file sharedfile"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:159
+msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
+msgstr ""
+
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:163
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:171
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:180
 msgid "OK"
 msgstr "Aceptar"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:121
+msgid "Ops..failed to add the sharedfile..."
+msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:245
 msgid "Re&move"
@@ -109,6 +144,10 @@ msgstr ""
 "La fecha/hora de expiración pertenece al pasado: por favor, desactiva la "
 "opción \"comprobar expiración\" o especifica una fecha/hora en el futuro"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:85
+msgid "The file '%Q' is not readable"
+msgstr ""
+
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:179
 msgid "The file doesn't exist or it is not readable, please check the path"
 msgstr "El archivo no existe o no se puede leer, por favor, comprueba la ruta"
@@ -117,6 +156,11 @@ msgstr "El archivo no existe o no se puede leer, por favor, comprueba la ruta"
 msgid "The share name can't be empty, please correct it"
 msgstr ""
 "El nombre del archivo compartido no puede estar vacío; por favor, corrígelo"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:243
+#, c-format
+msgid "Total: %d sharedfile"
+msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:80
 msgid "User mask:"

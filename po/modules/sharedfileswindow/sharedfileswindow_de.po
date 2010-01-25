@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sharedfileswindow_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"POT-Creation-Date: 2010-01-25 17:55+0100\n"
 "PO-Revision-Date: 2008-07-10 01:12+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -17,6 +17,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:232
+#, c-format
+msgid "    Expires in %d hours %d minutes %d seconds"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:221
+#, c-format
+msgid "    File: %s (%u bytes)"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:223
+#, c-format
+msgid "    Mask: %s"
+msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:243
 msgid "&Add..."
@@ -70,6 +85,14 @@ msgstr "Ungültige Ablaufzeit"
 msgid "Invalid share name"
 msgstr "Ungültiger Freigabename"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:101
+msgid "Invalid timeout, ignoring"
+msgstr ""
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:115
+msgid "Invalid visible name: using default"
+msgstr ""
+
 #: src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
 msgid "Manage S&hared Files"
 msgstr "&Freigegebene Dateien verwalten"
@@ -86,11 +109,24 @@ msgstr "Name"
 msgid "Never"
 msgstr "Nie"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:242
+#, fuzzy
+msgid "No active file sharedfile"
+msgstr "Wähle die Datei zum Freigeben"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:159
+msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
+msgstr ""
+
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:163
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:171
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:180
 msgid "OK"
 msgstr "OK"
+
+#: src/modules/sharedfile/libkvisharedfile.cpp:121
+msgid "Ops..failed to add the sharedfile..."
+msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:245
 msgid "Re&move"
@@ -112,6 +148,10 @@ msgstr ""
 "Das Ablaufdatum/die Ablaufzeit ist in der Vergangenheit: Bitte \"Läuft ab\"-"
 "Option deaktivieren oder ein Datum/eine Zeit in der Zukunft angeben"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:85
+msgid "The file '%Q' is not readable"
+msgstr ""
+
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:179
 msgid "The file doesn't exist or it is not readable, please check the path"
 msgstr "Die Datei existiert nicht oder ist nicht lesbar, bitte Pfad prüfen"
@@ -120,9 +160,11 @@ msgstr "Die Datei existiert nicht oder ist nicht lesbar, bitte Pfad prüfen"
 msgid "The share name can't be empty, please correct it"
 msgstr "Der Freigabename kann nicht leer sein, bitte korrigieren"
 
+#: src/modules/sharedfile/libkvisharedfile.cpp:243
+#, c-format
+msgid "Total: %d sharedfile"
+msgstr ""
+
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:80
 msgid "User mask:"
 msgstr "Benutzermaske:"
-
-#~ msgid "Choose the file to share"
-#~ msgstr "Wähle die Datei zum Freigeben"
