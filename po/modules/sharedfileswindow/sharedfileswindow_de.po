@@ -3,35 +3,35 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
 # Christoph Thielecke <crissi99@gmx.de>, 2004.
-# Markus Rennings <kvirc@mrmx.de>, 2008.
+# Markus Rennings <kvirc@mrmx.de>, 2008, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: sharedfileswindow_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:55+0100\n"
-"PO-Revision-Date: 2008-07-10 01:12+0200\n"
+"PO-Revision-Date: 2010-01-26 23:09+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
-"Language-Team: german <de@li.org>\n"
+"Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:232
 #, c-format
 msgid "    Expires in %d hours %d minutes %d seconds"
-msgstr ""
+msgstr "    Läuft ab in %d Stunden %d Minuten %d Sekunden"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:221
 #, c-format
 msgid "    File: %s (%u bytes)"
-msgstr ""
+msgstr "    Datei: %s (%u Bytes)"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:223
 #, c-format
 msgid "    Mask: %s"
-msgstr ""
+msgstr "    Maske: %s"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:243
 msgid "&Add..."
@@ -87,11 +87,11 @@ msgstr "Ungültiger Freigabename"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:101
 msgid "Invalid timeout, ignoring"
-msgstr ""
+msgstr "Ungültiger Timeout, wird ignoriert"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:115
 msgid "Invalid visible name: using default"
-msgstr ""
+msgstr "Ungültiger sichtbarer Name: nutze Standard"
 
 #: src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
 msgid "Manage S&hared Files"
@@ -110,13 +110,13 @@ msgid "Never"
 msgstr "Nie"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:242
-#, fuzzy
 msgid "No active file sharedfile"
-msgstr "Wähle die Datei zum Freigeben"
+msgstr "Keine aktive freigegebene Datei"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:159
 msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
 msgstr ""
+"Keine freigegebene Datei mit sichtbarem Namen '%Q' und Benutzermaske '%Q'"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:163
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:171
@@ -126,7 +126,7 @@ msgstr "OK"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:121
 msgid "Ops..failed to add the sharedfile..."
-msgstr ""
+msgstr "Ups... Fehler beim freigeben der Datei..."
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:245
 msgid "Re&move"
@@ -150,7 +150,7 @@ msgstr ""
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:85
 msgid "The file '%Q' is not readable"
-msgstr ""
+msgstr "Die Datei '%Q' ist nicht lesbar"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:179
 msgid "The file doesn't exist or it is not readable, please check the path"
@@ -163,8 +163,9 @@ msgstr "Der Freigabename kann nicht leer sein, bitte korrigieren"
 #: src/modules/sharedfile/libkvisharedfile.cpp:243
 #, c-format
 msgid "Total: %d sharedfile"
-msgstr ""
+msgstr "Gesamt: %d freigegebene Dateien"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:80
 msgid "User mask:"
 msgstr "Benutzermaske:"
+

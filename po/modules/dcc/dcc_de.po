@@ -4,13 +4,13 @@
 #
 # Christoph Thielecke <crissi99@gmx.de>, 2002,2003, 2004, 2005.
 # Christoph Thielecke <u15119@hs-harz.de>, 2003.
-# Markus Rennings <kvirc@mrmx.de>, 2007, 2009.
+# Markus Rennings <kvirc@mrmx.de>, 2007, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: dcc_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2009-12-10 21:27+0100\n"
+"PO-Revision-Date: 2010-01-26 23:01+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -423,9 +423,8 @@ msgid "DCC VIDEO request"
 msgstr "DCC VIDEO-Anfrage"
 
 #: src/modules/dcc/video.cpp:837
-#, fuzzy
 msgid "DCC VIDEO request not sent: awaiting manual connection"
-msgstr "DCC-VIDEO-Anfrage nicht gesendet: erwarte manuelle Verbindungen"
+msgstr "DCC-VIDEO-Anfrage nicht gesendet: erwarte manuelle Verbindung"
 
 #: src/modules/dcc/libkvidcc.cpp:1193
 msgid "DCC VIDEO support not enabled at compilation time"
@@ -1097,3 +1096,4 @@ msgstr "Bytes/Sek"
 #: src/modules/dcc/requests.cpp:143
 msgid "unknown"
 msgstr "unbekannt"
+
