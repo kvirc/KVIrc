@@ -1,0 +1,456 @@
+# translation of addon_it.po to
+# KVIrc About module Italian translation file
+# Italian translation file for KVIrc 4.0
+# Copyright (C) Szymon Stefanek
+# This file is distributed under the same license as the KVirc package.
+#
+# Elvio Basello <hell at hellvis69 dot netsons dot org>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-26 19:15+0100\n"
+"PO-Revision-Date: 2010-01-26 21:42+0100\n"
+"Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
+"Language-Team: Italian <it@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:110
+msgid "Configure Addon..."
+msgstr "Configura Addon..."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:116
+msgid "Show Help"
+msgstr "Mostra Aiuto"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:122
+msgid "Delete Selected Addons"
+msgstr "Cancella Addon Selezionati"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:132
+msgid "Create an Addon as a Distributable Package"
+msgstr "Crea un Addon come Pacchetto Distribuibile"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:142
+msgid "Install Addon Package From Disk"
+msgstr "Installa Pacchetto Addon Dal Disco"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:148
+msgid "Get More Addons..."
+msgstr "Scarica Altri Addon..."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:292
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:306
+msgid "Install Addon - KVIrc"
+msgstr "Installa Addon - KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:47
+msgid "The selected file does not seem to be a valid KVIrc addon package"
+msgstr ""
+"Il file selezionato non sembra essere un valido pacchetto addon di KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:66
+msgid "The selected file does not seem to be a valid KVIrc package: %Q"
+msgstr "Il file selezionato non sembra essere un valido pacchetto KVIrc: %Q"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:94
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:280
+msgid "Author"
+msgstr "Autore"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:95
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:281
+msgid "Created at"
+msgstr "Creato il"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:96
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:282
+msgid "Created with"
+msgstr "Creato con"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:150
+msgid "Warning: The addon might be incompatible with this version of KVIrc"
+msgstr ""
+"Attenzione: l'addon potrebbe essere incompatibile con questa versione di "
+"KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:155
+msgid "Go Back to Package Data"
+msgstr "Torna Indietro ai Dati del Pacchetto"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:159
+msgid "Show Details"
+msgstr "Mostra Dettagli"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:208
+msgid "Install Addon Pack - KVIrc"
+msgstr "Installa Pacchetto Addon - KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:209
+msgid "You're about to install the following addon package"
+msgstr "Stai per installare il seguente pacchetto addon"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:210
+msgid "Do you want to proceed with the installation ?"
+msgstr "Vuoi procedere con l'installazione?"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:211
+msgid "Do Not Install"
+msgstr "Non Installare"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:212
+msgid "Yes, Proceed"
+msgstr "Sì, Procedi"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:245
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:261
+msgid "Failed to unpack the selected file: %Q"
+msgstr "Impossibile spacchettare il file selezionato: %Q"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:260
+msgid "One or more files can't be deleted"
+msgstr "Uno o più file non possono essere cancellati"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:283
+msgid "Addon Engine Version"
+msgstr "Versione Motore Addon"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:284
+msgid "Subdirectory"
+msgstr "Sottodirectory"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:146
+msgid "%cAddon id %Q, version %Q%c"
+msgstr "%cAddon id %Q, versione %Q%c"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:147
+msgid "Name: %Q"
+msgstr "Nome: %Q"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:148
+msgid "Description: %Q"
+msgstr "Descrizione: %Q"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:154
+#, c-format
+msgid "Total: %d addons installed"
+msgstr "Totale: %d addon installati"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:194
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:573
+msgid "Uninstalling existing addon version %Q"
+msgstr "Disinstallo l'addon esistente con versione %Q"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:200
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:246
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:293
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:339
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:386
+msgid "The addon \"%1\" does not exist"
+msgstr "L'addon \"%1\" non esiste"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:240
+msgid "The addon \"%1\" has no configure callback set"
+msgstr "L'addon \"%1\" non ha una funzione di configurazione"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:287
+msgid "The addon \"%1\" has no help callback set"
+msgstr "L'addon \"%1\" non ha una funzione di aiuto"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:529
+msgid "Internal error: call a head-shrinker"
+msgstr "Errore interno: chiamo uno strizzacervelli"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:538
+msgid "The specified version \"%Q\" is not a valid version string"
+msgstr "La versione specificata \"%Q\" non è valida"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:544
+msgid "The specified KVIrc version \"%Q\" is not a valid version string"
+msgstr "La versione specificata di KVIrc \"%Q\" non è valida"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:550
+msgid ""
+"This KVIrc executable is too old to run this addon (minimum version required "
+"is %Q)"
+msgstr ""
+"Questo eseguibile di KVIrc è troppo vecchio per usare questo addon (la "
+"versione minima richiesta è %Q)"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:555
+msgid "Attempting to register addon \"%Q\" with version %Q"
+msgstr "Registro l'addon \"%Q\" con versione %Q"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:567
+msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
+msgstr "L'addon \"%Q\" esiste già con versione %Q che è maggiore di %Q"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:581
+msgid "Addon registration failed"
+msgstr "Registrazione addon fallita"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:586
+msgid "Addon successfully registered"
+msgstr "Addon registrato con successo"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:636
+msgid "Error installing addon package: %Q"
+msgstr "Errore durante l'installazione dell'addon: %Q"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:52
+msgid "Create Addon Package - KVIrc"
+msgstr "Crea Pacchetto Addon - KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:86
+msgid "Welcome"
+msgstr "Benvenuto"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:89
+msgid ""
+"This procedure allows you to export the selected addon to a single package. "
+"It is useful when you want to distribute your addon to the public."
+msgstr ""
+"Questa procedura ti permette di esportare l'addon selezionato in un singolo "
+"pacchetto. "
+"E' utile quando vuoi distribuirlo al pubblico."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:94
+msgid ""
+"You will be asked to provide some information like the package name, the "
+"version, a description and so on."
+msgstr ""
+"Ti verrà chiesto di fornire qualche informazione sul nome del pacchetto, la "
+"versione, "
+"una descrizione e via dicendo."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:96
+msgid "Hit the \"Next\" button to begin."
+msgstr "Premi il pulsante \"Successivo\" per iniziare."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:136
+msgid "The selected directory does not exist."
+msgstr "La directory selezionata non esiste."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:143
+msgid "The sources directory (src) does not exist."
+msgstr "La directory dei sorgenti (src) non esiste."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:150
+msgid "The translations directory (locale) does not exist."
+msgstr "La directory delle traduzioni (locale) non esiste."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:157
+msgid "The sounds directory (sound) does not exist."
+msgstr "La directory dei suoni (sound) non esiste."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:164
+msgid "The pictures directory (pics) does not exist."
+msgstr "La directory delle immagini (pics) non esiste."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:171
+msgid "The configurations directory (config) does not exist."
+msgstr "La directory delle configurazioni (config) non esiste."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:178
+msgid "The help directory (help) does not exist."
+msgstr "La directory dell'aiuto (help) non esiste."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:185
+msgid "The initialization script (init.kvs) does not exist."
+msgstr "Lo script di inizializzazione (init.kvs) non esiste."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:267
+msgid "Cannot open file for writing."
+msgstr "Impossibile aprire il file in lettura."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:274
+msgid "Cannot write to the file descriptor."
+msgstr "Impossibile scrivere sul file."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:299
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:325
+msgid "Addon Packaging Error"
+msgstr "Errore Pacchettizzazione Addon"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:308
+msgid "Addon Packaging Warning"
+msgstr "Warning Pacchettizzazione Addon"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:351
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:361
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:371
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:381
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:391
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:401
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:411
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:421
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:441
+msgid "Packaging failed"
+msgstr "Pacchettizzazione fallita"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:354
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:364
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:374
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:384
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:394
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:404
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:414
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:424
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:444
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:452
+msgid "Export Addon - KVIrc"
+msgstr "Esporta Addon - KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:462
+msgid "Package Information"
+msgstr "Informazioni Pacchetto"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:463
+msgid ""
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
+msgstr ""
+"Qui devi fornire informazioni su di te (il pacchettizzatore) e una breve "
+"descrizione del pacchetto che stai creando."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:468
+msgid "Package &Author:"
+msgstr "&Autore Pacchetto:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:472
+msgid "Your name here"
+msgstr "Il tuo nome qui"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:477
+msgid "Package &Name:"
+msgstr "&Nome Pacchetto:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:481
+msgid "No spaces allowed, like MyAddon"
+msgstr "Niente spazi, come MioAddon"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:486
+msgid "Package &Version:"
+msgstr "&Versione Pacchetto:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:490
+msgid "Version in the form x.y[.z], like 1.0 or 2.0.3"
+msgstr "Versione nella forma x.y[.z], come 1.0 o 2.0.3"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:495
+msgid "Package &Description:"
+msgstr "&Descrizione Pacchetto:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:499
+msgid "Description must be short"
+msgstr "La descrizione deve essere corta"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:504
+msgid "Minimum &KVIrc Version:"
+msgstr "Versione Minima di &KVIrc:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:529
+msgid "Package Files"
+msgstr "File Pacchetto"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:530
+msgid "Here you need to select the directory where the addon files are."
+msgstr "Qui devi selezionare la directory dove ci sono i file dell'addon."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:535
+msgid "Select the source directory:"
+msgstr "Seleziona la directory dei sorgenti:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:539
+msgid "Select the icon file:"
+msgstr "Seleziona il file icona:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:556
+msgid "Save Package"
+msgstr "Salva Pacchetto"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:557
+msgid "Here you need to provide the path where to save the addon package"
+msgstr "Qui devi fornire il percorso dove salvare il pacchetto addon"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:562
+msgid "Select save path:"
+msgstr "Seleziona il percorso di salvataggio:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:594
+msgid "Final Information"
+msgstr "Informazioni Finali"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:595
+msgid ""
+"Here there are the information you provided. If these information are "
+"correct, hit the \"Finish\" button to complete the packaging operations."
+msgstr ""
+"Qui ci sono le informazioni che hai inserito. Se queste informazioni sono "
+"corrette, clicca "
+"sul pulsante \"Fine\" per completare le operazioni di pacchettizzazione."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:618
+msgid "This is what I will check for:"
+msgstr "Questo è quello che controllerò:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:620
+msgid "Package Author"
+msgstr "Autore Pacchetto"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:624
+msgid "Package Name"
+msgstr "Nome Pacchetto"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:628
+msgid "Package Version"
+msgstr "Versione Pacchetto"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:632
+msgid "Package Description"
+msgstr "Descrizione Pacchetto"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:636
+msgid "Minimum KVIrc Version"
+msgstr "Versione Minima di KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:640
+msgid "Icon File"
+msgstr "File Icona"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:644
+msgid "Source Directory"
+msgstr "Directory Sorgenti"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:648
+msgid "Save Path"
+msgstr "Percorso Salvataggio"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:660
+msgid "File Summary"
+msgstr "Sommario File"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:667
+msgid ""
+"Here there are the files I found in the directories you provided.\n"
+"If these and the information showed in the previous page are correct, hit "
+"the \"Finish\" button to complete\n"
+"the packaging operations."
+msgstr ""
+"Qui ci sono i file che ho trovato nelle directory che hai fornito.\n"
+"Se queste e le informazioni mostrate nella pagina precedente sono corrette, "
+"premi il "
+"pulsante \"Fine\" per completare\n"
+"le operazioni di pacchettizzazione."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:676
+msgid "Cancel"
+msgstr "Annulla"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:680
+msgid "Finish"
+msgstr "Fine"
+
