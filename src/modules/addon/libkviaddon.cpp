@@ -564,7 +564,7 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 			// complain unless -f is used
 			if(!c->switches()->find('f',"force"))
 			{
-				c->error(__tr2qs("The script addon \"%Q\" already exists with version %Q which is higher than %Q"),&(rd.szName),&(a->version()),&(rd.szVersion));
+				c->error(__tr2qs("The addon \"%Q\" already exists with version %Q which is higher than %Q"),&(rd.szName),&(a->version()),&(rd.szVersion));
 				return false;
 			}
 		}
@@ -578,12 +578,12 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 
 	if(!KviKvsScriptAddonManager::instance()->registerAddon(&rd))
 	{
-		c->error(__tr2qs("Script registration failed"));
+		c->error(__tr2qs("Addon registration failed"));
 		return false;
 	}
 
 	if(!c->switches()->find('q',"quiet"))
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Script successfully registered"));
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Addon successfully registered"));
 
 	return true;
 }
@@ -686,8 +686,8 @@ KVIRC_MODULE(
 	"Addon",                                                      // module name
 	"4.0.0",                                                        // module version
 	"Copyright (C) 2005 Szymon Stefanek (pragma at kvirc dot net)\n" \
-	"              2008 Elvio Basello (hellvis69 at netsons dot org)", // author & (C)
-	"Script/addon management functions for the KVS engine",
+	"              2008 Elvio Basello (hell at hellvis69 dot netsons dot org)", // author & (C)
+	"Addon management functions for the KVS engine",
 	addon_module_init,
 	addon_module_can_unload,
 	0,
