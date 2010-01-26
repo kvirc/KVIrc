@@ -564,7 +564,7 @@ void KviDccBroker::recvFileManage(KviDccDescriptor * dcc)
 	if(dcc->bIsIncomingAvatar)
 	{
 		bool bOk;
-		unsigned long size = dcc->szFileSize.toULong(&bOk);
+		quint64 size = dcc->szFileSize.toULongLong(&bOk);
 		if(bOk) {
 			if(size>=KVI_OPTION_UINT(KviOption_uintMaximumRequestedAvatarSize)) {
 				cancelDcc(0,dcc);
@@ -589,7 +589,7 @@ void KviDccBroker::recvFileManage(KviDccDescriptor * dcc)
 						"The connection target will be host <b>%6</b> on port <b>%7</b><br>" \
 					,"dcc" \
 				).arg(dcc->szNick).arg(dcc->szUser).arg(dcc->szHost).arg(
-				dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toULong())).arg(
+				dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toULongLong())).arg(
 					dcc->szIp).arg(dcc->szPort);
 
 		} else {
@@ -602,7 +602,7 @@ void KviDccBroker::recvFileManage(KviDccDescriptor * dcc)
 						"You will be the passive side of the connection.<br>" \
 					,"dcc" \
 				).arg(dcc->szNick).arg(dcc->szUser).arg(dcc->szHost).arg(
-					dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toULong()));
+					dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toULongLong()));
 		}
 
 		if(dcc->bIsIncomingAvatar)
@@ -737,7 +737,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 		dcc->szLocalFileSize.setNum(fi.size());
 
 		bool bOk;
-		unsigned long iRemoteSize = dcc->szFileSize.toULong(&bOk);
+		quint64 iRemoteSize = dcc->szFileSize.toULongLong(&bOk);
 		if(!bOk)iRemoteSize = 0;
 
 		if(!dcc->bAutoAccept)
@@ -746,7 +746,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 			bool bDisableResume = false;
 
 			if((bOk) || // remote size is unknown
-				(iRemoteSize > ((unsigned long)(fi.size())))) // or it is larger than the actual size on disk
+				(iRemoteSize > (quint64)fi.size())) // or it is larger than the actual size on disk
 			{
 				tmp = __tr2qs_ctx( \
 							"The file '<b>%1</b>' already exists " \
@@ -784,13 +784,13 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 			// auto resume ?
 			if(KVI_OPTION_BOOL(KviOption_boolAutoResumeDccSendWhenAutoAccepted) &&
 				(bOk) && // only if the remote size is really known
-				(iRemoteSize > ((unsigned long)(fi.size()))) && // only if the remote size is larger than the local size
+				(iRemoteSize > (quint64)fi.size()) && // only if the remote size is larger than the local size
 				(!KviDccFileTransfer::nonFailedTransferWithLocalFileName(dcc->szLocalFileName.toUtf8().data()))) // only if there is no transfer with this local file name yet
 			{
 				// yep, auto resume...
 				dcc->bResume = true;
 				recvFileExecute(0,dcc);
-			} else if((iRemoteSize == ((unsigned long)(fi.size()))))
+			} else if(iRemoteSize == (quint64)fi.size())
 			{ 
 				dcc->console()->output(KVI_OUT_DCCMSG,"Transfer aborted: file %Q already completed",&(dcc->szLocalFileName));
 				cancelDcc(0,dcc);

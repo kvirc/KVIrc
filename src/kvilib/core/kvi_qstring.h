@@ -58,7 +58,7 @@ namespace KviQString
 	* \param size The size of the file
 	* \return QString
 	*/
-	extern KVILIB_API QString makeSizeReadable(size_t size);
+	extern KVILIB_API QString makeSizeReadable(quint64 size);
 	
 	/**
 	* \brief Compares two strings with case sensitive

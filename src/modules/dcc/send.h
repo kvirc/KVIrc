@@ -199,7 +199,7 @@ private:
 	QTimer                 * m_pResumeTimer; // used to signal resume timeout
 public:
 	bool resumeAccepted(const char * filename,const char * port,const char *szZeroPortTag);
-	bool doResume(const char * filename,const char * port,unsigned long filePos);
+	bool doResume(const char * filename,const char * port,quint64 filePos);
 
 	static void init();
 	static void done();
@@ -207,7 +207,7 @@ public:
 	static KviDccFileTransfer * nonFailedTransferWithLocalFileName(const QString &szLocalFileName);
 	static unsigned int transferCount();
 	static bool handleResumeAccepted(const char * filename,const char * port,const char * szZeroPortTag);
-	static bool handleResumeRequest(const char * filename,const char * port,unsigned long filePos);
+	static bool handleResumeRequest(const char * filename,const char * port,quint64 filePos);
 
 	virtual bool event(QEvent *e);
 

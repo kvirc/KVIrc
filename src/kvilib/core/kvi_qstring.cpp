@@ -223,7 +223,7 @@ namespace KviQString
 		return (pC1 == pC1e);
 	}
 
-	QString makeSizeReadable(size_t bytes)
+	QString makeSizeReadable(quint64 bytes)
 	{
 		double dSize = bytes;
 		if(dSize < 1024)

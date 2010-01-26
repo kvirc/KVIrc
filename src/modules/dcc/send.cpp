@@ -1436,7 +1436,7 @@ bool KviDccFileTransfer::handleResumeAccepted(const char * filename,const char *
 	return false;
 }
 
-bool KviDccFileTransfer::handleResumeRequest(const char * filename,const char * port,unsigned long filePos)
+bool KviDccFileTransfer::handleResumeRequest(const char * filename,const char * port,quint64 filePos)
 {
 	if(!g_pDccFileTransfers)return false;
 
@@ -1783,7 +1783,7 @@ bool KviDccFileTransfer::resumeAccepted(const char *filename,const char *port,co
 	return true;
 }
 
-bool KviDccFileTransfer::doResume(const char * filename,const char * port,unsigned long filePos)
+bool KviDccFileTransfer::doResume(const char * filename,const char * port,quint64 filePos)
 {
 	if(KviQString::equalCI(port,m_pMarshal->dccPort()) &&
 		(!m_pSlaveRecvThread) && (!m_pDescriptor->bRecvFile))
