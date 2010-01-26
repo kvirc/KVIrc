@@ -3,6 +3,7 @@
 # Find subdirs
 SUBDIRS(
 	about
+	addon
 	dcc
 	editor
 	filetransferwindow

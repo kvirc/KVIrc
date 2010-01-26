@@ -143,15 +143,15 @@ static bool addon_kvs_cmd_list(KviKvsModuleCommandCall * c)
 	KviPointerHashTableIterator<QString,KviKvsScriptAddon> it(*da);
 	while(KviKvsScriptAddon * a = it.current())
 	{
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("%cAddon id %Q, version %Q%c"),KVI_TEXT_BOLD,&(a->name()),&(a->version()),KVI_TEXT_BOLD);
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Name: %Q"),&(a->visibleName()));
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Description: %Q"),&(a->description()));
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("%cAddon id %Q, version %Q%c","addon"),KVI_TEXT_BOLD,&(a->name()),&(a->version()),KVI_TEXT_BOLD);
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Name: %Q","addon"),&(a->visibleName()));
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Description: %Q","addon"),&(a->description()));
 
 		++it;
 		cnt++;
 	}
 
-	c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Total: %d addons installed"),cnt);
+	c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Total: %d addons installed","addon"),cnt);
 	return true;
 }
 
@@ -191,13 +191,13 @@ static bool addon_kvs_cmd_uninstall(KviKvsModuleCommandCall * c)
 	if(a)
 	{
 		if(!c->switches()->find('q',"quiet"))
-			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Uninstalling existing addon version %Q"),&(a->version()));
+			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Uninstalling existing addon version %Q","addon"),&(a->version()));
 
 		// uninstall the existing version
 		KviKvsScriptAddonManager::instance()->unregisterAddon(szName,c->window(),!c->switches()->find('n',"no-callback"));
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The addon \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
 	}
 
 	return true;
@@ -237,13 +237,13 @@ static bool addon_kvs_cmd_configure(KviKvsModuleCommandCall * c)
 		if(ss.isEmpty())
 		{
 			if(!c->switches()->find('q',"quiet"))
-				c->warning(__tr2qs("The addon \"%1\" has no configure callback set").arg(szName));
+				c->warning(__tr2qs_ctx("The addon \"%1\" has no configure callback set","addon").arg(szName));
 		} else {
 			a->executeConfigureCallback(c->window());
 		}
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The addon \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
 	}
 
 	return true;
@@ -284,13 +284,13 @@ static bool addon_kvs_cmd_help(KviKvsModuleCommandCall * c)
 		if(ss.isEmpty())
 		{
 			if(!c->switches()->find('q',"quiet"))
-				c->warning(__tr2qs("The addon \"%1\" has no help callback set").arg(szName));
+				c->warning(__tr2qs_ctx("The addon \"%1\" has no help callback set","addon").arg(szName));
 		} else {
 			a->executeHelpCallback(c->window());
 		}
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The addon \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
 	}
 
 	return true;
@@ -336,7 +336,7 @@ static bool addon_kvs_cmd_setconfigurecallback(KviKvsModuleCallbackCommandCall *
 		a->setConfigureCallback(c->callback()->code());
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The addon \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
 	}
 
 	return true;
@@ -383,7 +383,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		a->setHelpCallback(c->callback()->code());
 	} else {
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs("The addon \"%1\" does not exist").arg(szName));
+			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
 	}
 
 	return true;
@@ -526,7 +526,7 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 
 	if(!(c->getParameterCode(2,rd.szVisibleNameScript) && c->getParameterCode(3,rd.szDescriptionScript)))
 	{
-		c->error(__tr2qs("Internal error: call a head-shrinker"));
+		c->error(__tr2qs_ctx("Internal error: call a head-shrinker","addon"));
 		return false;
 	}
 
@@ -535,24 +535,24 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 
 	if(!KviMiscUtils::isValidVersionString(rd.szVersion))
 	{
-		c->error(__tr2qs("The specified version \"%Q\" is not a valid version string"),&(rd.szVersion));
+		c->error(__tr2qs_ctx("The specified version \"%Q\" is not a valid version string","addon"),&(rd.szVersion));
 		return false;
 	}
 
 	if(!KviMiscUtils::isValidVersionString(szMinKVIrcVersion))
 	{
-		c->error(__tr2qs("The specified KVIrc version \"%Q\" is not a valid version string"),&szMinKVIrcVersion);
+		c->error(__tr2qs_ctx("The specified KVIrc version \"%Q\" is not a valid version string","addon"),&szMinKVIrcVersion);
 		return false;
 	}
 
 	if(KviMiscUtils::compareVersions(szMinKVIrcVersion,KVI_VERSION "." KVI_SOURCES_DATE) < 0)
 	{
-		c->error(__tr2qs("This KVIrc executable is too old to run this addon (minimum version required is %Q)"),&szMinKVIrcVersion);
+		c->error(__tr2qs_ctx("This KVIrc executable is too old to run this addon (minimum version required is %Q)","addon"),&szMinKVIrcVersion);
 		return false;
 	}
 
 	if(!c->switches()->find('q',"quiet"))
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Attempting to register addon \"%Q\" with version %Q"),&(rd.szName),&(rd.szVersion));
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Attempting to register addon \"%Q\" with version %Q","addon"),&(rd.szName),&(rd.szVersion));
 
 	KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(rd.szName);
 	if(a)
@@ -564,13 +564,13 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 			// complain unless -f is used
 			if(!c->switches()->find('f',"force"))
 			{
-				c->error(__tr2qs("The addon \"%Q\" already exists with version %Q which is higher than %Q"),&(rd.szName),&(a->version()),&(rd.szVersion));
+				c->error(__tr2qs_ctx("The addon \"%Q\" already exists with version %Q which is higher than %Q","addon"),&(rd.szName),&(a->version()),&(rd.szVersion));
 				return false;
 			}
 		}
 
 		if(!c->switches()->find('q',"quiet"))
-			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Uninstalling existing addon version %Q"),&(a->version()));
+			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Uninstalling existing addon version %Q","addon"),&(a->version()));
 
 		// uninstall the existing version
 		KviKvsScriptAddonManager::instance()->unregisterAddon(rd.szName,c->window(),!c->switches()->find('n',"no-uninstall"));
@@ -578,12 +578,12 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 
 	if(!KviKvsScriptAddonManager::instance()->registerAddon(&rd))
 	{
-		c->error(__tr2qs("Addon registration failed"));
+		c->error(__tr2qs_ctx("Addon registration failed","addon"));
 		return false;
 	}
 
 	if(!c->switches()->find('q',"quiet"))
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Addon successfully registered"));
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Addon successfully registered","addon"));
 
 	return true;
 }
@@ -692,5 +692,5 @@ KVIRC_MODULE(
 	addon_module_can_unload,
 	0,
 	addon_module_cleanup,
-	0
+	"addon"
 )
