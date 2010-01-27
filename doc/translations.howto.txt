@@ -3,17 +3,17 @@ This mini-howto describes the procedure for translating KVIrc in a new language.
 
 Step 0: Getting the right sources.
 
-	First of all you need the SVN version of kvirc.
-	To obtain the SVN version you can follow the instructions on
-	http://www.kvirc.net/?id=svn
+First of all you need the SVN version of kvirc.
+To obtain the SVN version you can follow the instructions on
+http://www.kvirc.net/?id=svn
 
-	The translation stuff is in kvirc/po .
+The translation stuff is in kvirc/po .
 
 
 Step 1: Initialize the build environment
 
-Enter the directory containing the kvirc code and follow the doc/INSTALL*
-documentation on how to run cmake to generate the needed Makefiles.
+Enter the directory containing the KVIrc code and follow the doc/INSTALL*
+documentation on how to run CMake to generate the needed Makefiles.
 
 
 
@@ -39,19 +39,19 @@ sources:
 # make messages-extract
 
 A series of .pot files will be created in the subdirs of build_directory/po/
-Each file refers to a specific component of kvirc: eg. the main translation file
+Each file refers to a specific component of KVIrc: eg. the main translation file
 is located in build_directory/po/core/kvirc/kvirc.pot
 Create a copy for each of these files named kvirc_xxx.po where xxx is your
 language code found in step 2.
 
 # cd po/core/kvirc
-# mv kvirc.pot kvirc_xxx.po
+# cp kvirc.pot kvirc_xxx.po
 # cd ../kvs
-# mv kvs.pot kvs_xxx.po
+# cp kvs.pot kvs_xxx.po
 # cd ../../modules/about
-# mv about.pot about_xxx.po
+# cp about.pot about_xxx.po
 # cd ../modules/addon
-# mv addon.pot addon_xxx.po
+# cp addon.pot addon_xxx.po
 
 and so on for all the other modules; you are not forced to translate all the
 files at once, but creating the files skeleton for all components is recommended.
@@ -62,9 +62,9 @@ Step 4: Translating the messages
 
 If you just followed step 3 then you have just created the *_xxx.po (eg.
 kvirc_it.po) files where xxx stands for your language code (found in step 2).
-If you jumped directly here from 2 then you need to find and the existing
+If you jumped directly here from 2 then you need to find the existing
 *_xxx.po files in the kvirc/po subdirectories.
-If no such files exists for your locale, you probably missed to create them in
+If no such files exist for your locale, you probably missed to create them in
 step 3. 
 
 You can translate *.po files using a simple text editor (that _have_ to support
@@ -94,13 +94,13 @@ order or writing a wrong format spec will lead to crashes sooner or later.
 Step 5: Adding the translation to the install system
 
 Once you have translated some strings you can try to run the translation in
-kvirc. If you are updating an existing translation then you can jump
+KVIrc. If you are updating an existing translation then you can jump
 directly to step 6.
 
 You need to force the build system to pick up your newly created translation
 files and compile it. This is again an one time step. You'll just need to
-clean your CMakeCache.txt (located in your build directory) and re-run cmake
-again for it to pick up the new translation file, then build kvirc as usual.
+clean your CMakeCache.txt (located in your build directory) and re-run CMake
+again for it to pick up the new translation file, then build KVIrc as usual.
 When it has finished building, move to the next step.
 
 
@@ -108,8 +108,8 @@ When it has finished building, move to the next step.
 Step 6: Trying the translation
 
 Run make and wait until it finishes.
-Ensure the LANG environmental variable is set to the correct locale, and run
-kvirc
+Ensure the $LANG environment variable is set to the correct locale, and run
+KVIrc
 
 # export LANG="xxx"
 # kvirc
@@ -120,7 +120,7 @@ KVirc should then pick up your translation file and use it.
 
 Step 7: Updating the translation when the sources change
 
-In the process of kvirc development, new message strings gets added inside the
+In the process of KVIrc development, new message strings gets added inside the
 source files, while some others can change or even get removed.
 When you do a svn update to obtain the latest sources you should then enter your
 build directory and run:
@@ -140,7 +140,7 @@ Misc notes:
 If you're in doubt about some translation, you could take a look at how
 similar sentences have been translated in the KDE *.po files, or in other
 softwares. If you need some further help, contact us on our mailing list or on
-irc.
+irc (irc://irc.freenode.net/#KVIrc).
 
 Since many of the modules have their own translation files then
 the procedure above may be repeated for the po/modules/*/ subdirectories.
@@ -148,8 +148,8 @@ Anyway you are not forced to translate all the files at once; a partial
 translation will work anyway.
 
 When you're satisfied with your translation you may send your *.po files to the
-kvirc mailing list asking for inclusion in the svn. If you want to mantain the
-translation in the future then you may also apply for a svn account.
+KVIrc mailing list asking for inclusion in the SVN. If you want to maintain the
+translation in the future then you may also apply for a SVN account.
 
 
 Happy translating :)
