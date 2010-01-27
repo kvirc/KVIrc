@@ -423,7 +423,7 @@ static bool str_kvs_fnc_contains(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("tofind",KVS_PT_STRING,0,szSubString)
 		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
 	KVSM_PARAMETERS_END(c)
-        bIs = bCase ? szString.contains(szSubString,Qt::CaseSensitive) : szString.contains(szSubString,Qt::CaseInsensitive);
+	bIs = bCase ? szString.contains(szSubString,Qt::CaseSensitive) : szString.contains(szSubString,Qt::CaseInsensitive)
 	c->returnValue()->setBoolean(bIs);
 	return true;
 }
@@ -612,7 +612,7 @@ static bool str_kvs_fnc_findlast(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("toFind",KVS_PT_STRING,0,szString2)
 		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
 	KVSM_PARAMETERS_END(c)
-        iIdx = bCase ? szString.lastIndexOf(szString2) : szString.lastIndexOf(szString2,-1,Qt::CaseInsensitive);
+	iIdx = bCase ? szString.lastIndexOf(szString2) : szString.lastIndexOf(szString2,-1,Qt::CaseInsensitive)
 	c->returnValue()->setInteger(iIdx);
 	return true;
 }
@@ -900,7 +900,7 @@ static bool str_kvs_fnc_stripcolors(KviKvsModuleFunctionCall * c)
 		This function returns a string created replacing all ocurrences of the second parameter
 		('toreplace') in the string given as the first parameter ('string') with the string
 		given as the third parameter ('replacewith').
-		If the third parameter is set to true, then the string replacement is case sensitive.
+		If the fourth parameter is set to true, then the string replacement is case sensitive.
 	@examples:
 		[example]
 			echo $str.replace("I like big networks","big","neural")
@@ -914,6 +914,7 @@ static bool str_kvs_fnc_replace(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("toreplace",KVS_PT_STRING,0,szToReplace)
 		KVSM_PARAMETER("newstr",KVS_PT_STRING,0,szNewStr)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
 	KVSM_PARAMETERS_END(c)
 	bCase ? szString.replace(szToReplace,szNewStr) : szString.replace(szToReplace,szNewStr,Qt::CaseInsensitive);
 	c->returnValue()->setString(szString);
@@ -1129,7 +1130,7 @@ static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 	bool bRegExp = (szFlags.indexOf(QChar('r')) != -1) || (szFlags.indexOf(QChar('R')) != -1);
 	bool bExact = (szFlags.indexOf(QChar('e')) != -1) || (szFlags.indexOf(QChar('E')) != -1);
-        bIs = bCase ? KviQString::matchString(szWildcard,szString,bRegExp,bExact,true) : KviQString::matchString(szWildcard,szString,bRegExp,bExact);
+	bIs = bCase ? KviQString::matchString(szWildcard,szString,bRegExp,bExact,true) : KviQString::matchString(szWildcard,szString,bRegExp,bExact)
 	c->returnValue()->setBoolean(bIs);
 	return true;
 }
