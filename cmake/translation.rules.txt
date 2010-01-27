@@ -15,12 +15,17 @@ IF(USE_GETTEXT_TRANSLATIONS)
 			DEPENDS ${_absPotFile} ${_absFile}
 		)
 
-		IF (APPLE)
-			INSTALL(FILES ${_gmoFile} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/locale/ RENAME ${_lang}.mo)
-		ELSE ()
-			# Assume Linux
-			INSTALL(FILES ${_gmoFile} DESTINATION share/${PACKAGE}/${VERSION_BRANCH}/locale/ RENAME ${_lang}.mo)
-		ENDIF ()
+		IF(UNIX)
+			IF (APPLE)
+				INSTALL(FILES ${_gmoFile} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/locale/ RENAME ${_lang}.mo)
+			ELSE ()
+				# Assume Linux
+				INSTALL(FILES ${_gmoFile} DESTINATION share/${PACKAGE}/${VERSION_BRANCH}/locale/ RENAME ${_lang}.mo)
+			ENDIF ()
+		ELSEIF(WIN32)
+			INSTALL(FILES ${_gmoFile} DESTINATION ${CMAKE_INSTALL_PREFIX}/locale/ RENAME ${_lang}.mo)
+		ENDIF()
+
 		LIST(APPEND _gmoFiles ${_gmoFile})
 	ENDFOREACH()
 
