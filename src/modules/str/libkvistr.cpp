@@ -407,7 +407,7 @@ static bool str_kvs_fnc_isempty(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns 1 if the first parameter contains the second
 	@syntax:
-		<bool> $str.contains(<container:string>,<tofind:string>,<case:bool>)
+		<bool> $str.contains(<container:string>,<tofind:string>[,<case:bool>])
 	@description:
 		Returns 1 if the first string parameter contains the second string parameter.
 		If the third parameter is set to true, then the search is case sensitive.
@@ -421,7 +421,7 @@ static bool str_kvs_fnc_contains(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("container",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("tofind",KVS_PT_STRING,0,szSubString)
-		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 	KVSM_PARAMETERS_END(c)
 	bIs = bCase ? szString.contains(szSubString,Qt::CaseSensitive) : szString.contains(szSubString,Qt::CaseInsensitive);
 	c->returnValue()->setBoolean(bIs);
@@ -437,7 +437,7 @@ static bool str_kvs_fnc_contains(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns 1 if the two string parameters are equal
 	@syntax:
-		<bool> $str.equal(<fromcompare:string>,<tocompare:string>,<case:bool>)
+		<bool> $str.equal(<fromcompare:string>,<tocompare:string>[,<case:bool>])
 	@description:
 		Returns 1 if the two string parameters are equal.
 		If the third parameter is set to true, then the search is case sensitive.
@@ -451,7 +451,7 @@ static bool str_kvs_fnc_equal(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("fromcompare",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("tocompare",KVS_PT_STRING,0,szString2)
-		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 	KVSM_PARAMETERS_END(c)
 	bIs = bCase ? KviQString::equalCS(szString,szString2) : KviQString::equalCI(szString,szString2);
 	c->returnValue()->setBoolean(bIs);
@@ -467,7 +467,7 @@ static bool str_kvs_fnc_equal(KviKvsModuleFunctionCall * c)
 	@short:
 		Compare two strings alphabetically
 	@syntax:
-		<bool> $str.cmp(<fromcompare:string>,<tocompare:string>,<case:bool>)
+		<bool> $str.cmp(<fromcompare:string>,<tocompare:string>[,<case:bool>])
 	@description:
 		This function compares two strings alphabetically. If the first string is 'greater' than the second, it will return a positive number, a negative number is the second is greater and 0 if the two strings are equal.
 		If the third parameter is set to true, then the search is case sensitive.
@@ -482,7 +482,7 @@ static bool str_kvs_fnc_cmp(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("fromcompare",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("tocompare",KVS_PT_STRING,0,szString2)
-		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 	KVSM_PARAMETERS_END(c)
 	iCmp = bCase ? KviQString::cmpCS(szString,szString2) : KviQString::cmpCI(szString,szString2);
 	c->returnValue()->setInteger(iCmp);
@@ -565,7 +565,7 @@ static bool str_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 	@short:
 		Find the index of a substring in a string
 	@syntax:
-		<int> $str.findfirst(<findIn:string>,<toFind:string>,<case:bool>[,<from_index:integer>])
+		<int> $str.findfirst(<findIn:string>,<toFind:string>[,<case:bool>[,<from_index:integer>]])
 	@description:
 		This function search in the string given as the first parameter for the string given as his second parameter, and will return the index where is first located or -1 if it's not located. It starts counting at 0.
 		If the third parameter is set to true, then the search is case sensitive.
@@ -579,7 +579,7 @@ static bool str_kvs_fnc_findfirst(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("findIn",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("toFind",KVS_PT_STRING,0,szString2)
-		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 		KVSM_PARAMETER("from_index",KVS_PT_INTEGER,KVS_PF_OPTIONAL,iFromIndex)
 	KVSM_PARAMETERS_END(c)
 	iIdx = bCase ? szString.indexOf(szString2,iFromIndex) : szString.indexOf(szString2,iFromIndex,Qt::CaseInsensitive);
@@ -596,7 +596,7 @@ static bool str_kvs_fnc_findfirst(KviKvsModuleFunctionCall * c)
 	@short:
 		Find the last index of a substring in a string
 	@syntax:
-		<int> $str.findlast(<findIn:string>,<toFind:string>,<case:bool>)
+		<int> $str.findlast(<findIn:string>,<toFind:string>[,<case:bool>])
 	@description:
 		This function search in the string given as the first parameter for the string
 		given as his second parameter, and will return the index where is last located or -1 if it's not located.
@@ -610,7 +610,7 @@ static bool str_kvs_fnc_findlast(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("findIn",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("toFind",KVS_PT_STRING,0,szString2)
-		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 	KVSM_PARAMETERS_END(c)
 	iIdx = bCase ? szString.lastIndexOf(szString2) : szString.lastIndexOf(szString2,-1,Qt::CaseInsensitive);
 	c->returnValue()->setInteger(iIdx);
@@ -895,7 +895,7 @@ static bool str_kvs_fnc_stripcolors(KviKvsModuleFunctionCall * c)
 	@short:
 		Replace substrings in a string
 	@syntax:
-		<string> $str.replace(<string:string>,<toreplace:string>,<replacewith:string>,<case:bool>)
+		<string> $str.replace(<string:string>,<toreplace:string>,<replacewith:string>[,<case:bool>])
 	@description:
 		This function returns a string created replacing all ocurrences of the second parameter
 		('toreplace') in the string given as the first parameter ('string') with the string
@@ -914,7 +914,7 @@ static bool str_kvs_fnc_replace(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("toreplace",KVS_PT_STRING,0,szToReplace)
 		KVSM_PARAMETER("newstr",KVS_PT_STRING,0,szNewStr)
-		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 	KVSM_PARAMETERS_END(c)
 	bCase ? szString.replace(szToReplace,szNewStr) : szString.replace(szToReplace,szNewStr,Qt::CaseInsensitive);
 	c->returnValue()->setString(szString);
@@ -1097,7 +1097,7 @@ static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 	@short:
 		Matches a fixed string against a wildcard expression
 	@syntax:
-		<bool> $str.match(<expression:string>,<string:string>,<case:bool>[,<flags:string>])
+		<bool> $str.match(<expression:string>,<string:string>[,<case:bool>[,<flags:string>]])
 	@description:
 		Returns 1 if the fixed <string> matches the <expression>, 0 otherwise.[br]
 		If <flags> contains the flag 'r' then <expression> is treated as a full
@@ -1125,7 +1125,7 @@ static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("wildcard",KVS_PT_NONEMPTYSTRING,0,szWildcard)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
-		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 		KVSM_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
 	KVSM_PARAMETERS_END(c)
 	bool bRegExp = (szFlags.indexOf(QChar('r')) != -1) || (szFlags.indexOf(QChar('R')) != -1);
