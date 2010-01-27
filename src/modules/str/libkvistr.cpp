@@ -38,42 +38,45 @@
 #include <QClipboard>
 
 #if defined( COMPILE_SSL_SUPPORT ) && !defined( COMPILE_NO_EMBEDDED_CODE )
-    // The current implementation
+	// The current implementation
 	#include <openssl/evp.h>
 #elif defined(COMPILE_NO_EMBEDDED_CODE)
-    // The preferred new implementation (until QCryptographicHash supports all
-    // hashes we want).
-    // As Crypto++ is concerned for security they warn about MD5 and friends,
-    // but we can ignore that and therefore silence the warnings.
-    #define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
-    // Hashes (should cover most cases)
-    #include <cryptopp/md2.h>
-    #include <cryptopp/md4.h>
-    #include <cryptopp/md5.h>
-    #include <cryptopp/sha.h>
-    #include <cryptopp/ripemd.h>
-    #include <cryptopp/crc.h>
-    // Encoding
-    #include <cryptopp/hex.h>
-    // additional
-    #include <string>
-    // template function
-    template <typename T>
-    std::string CryptoPpStrHash(std::string szMessage){
-            T hash;
-            std::string szDigest;
-            CryptoPP::StringSource(szMessage, true, new CryptoPP::HashFilter(
-                                    hash, new CryptoPP::HexEncoder(
-                                            new CryptoPP::StringSink(szDigest)
-                                            )
-                                    )
-                            );
-            return szDigest;
-    }
+	// The preferred new implementation (until QCryptographicHash supports all
+	// hashes we want).
+	// As Crypto++ is concerned for security they warn about MD5 and friends,
+	// but we can ignore that and therefore silence the warnings.
+	#define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
+	// Hashes (should cover most cases)
+	#include <cryptopp/md2.h>
+	#include <cryptopp/md4.h>
+	#include <cryptopp/md5.h>
+	#include <cryptopp/sha.h>
+	#include <cryptopp/ripemd.h>
+	#include <cryptopp/crc.h>
+	// Encoding
+	#include <cryptopp/hex.h>
+	// additional
+	#include <string>
+	// template function
+	template <typename T>
+	std::string CryptoPpStrHash(std::string szMessage){
+		T hash;
+		std::string szDigest;
+		CryptoPP::StringSource(szMessage,
+			true,
+			new CryptoPP::HashFilter(
+				hash,
+				new CryptoPP::HexEncoder(
+					new CryptoPP::StringSink(szDigest)
+				)
+			)
+		);
+		return szDigest;
+	}
 #else
-    // The fallback we can always use, but with very limited set of
-    // functionality.
-    #include <QCryptographicHash>
+	// The fallback we can always use, but with very limited set of
+	// functionality.
+	#include <QCryptographicHash>
 #endif
 
 /*
@@ -97,7 +100,6 @@
 		%s is "surname".
 		[/example]
 */
-
 static bool str_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szSeparator,szSplittedString;
@@ -131,7 +133,6 @@ static bool str_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[cmd]str.toClipboard[/cmd]
 */
-
 static bool str_kvs_fnc_fromclipboard(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -160,7 +161,6 @@ static bool str_kvs_fnc_fromclipboard(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$str.fromClipboard[/fnc]
 */
-
 static bool str_kvs_cmd_toClipboard(KviKvsModuleCommandCall * c)
 {
 	QString szValue;
@@ -186,7 +186,6 @@ static bool str_kvs_cmd_toClipboard(KviKvsModuleCommandCall * c)
 		Returns the length (that is, number of characters) of the given string.
 		This function is internally aliased to [fnc]$str.length[/fnc]() too.
 */
-
 /*
 	@doc: str.length
 	@type:
@@ -201,7 +200,6 @@ static bool str_kvs_cmd_toClipboard(KviKvsModuleCommandCall * c)
 		Returns the length (that is, number of characters) of the given string.
 		This function is internally aliased to [fnc]$str.len[/fnc]() too.
 */
-
 static bool str_kvs_fnc_len(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -228,7 +226,6 @@ static bool str_kvs_fnc_len(KviKvsModuleFunctionCall * c)
 		If you want to use a locale aware translation mapping then please
 		use localelowcase.
 */
-
 static bool str_kvs_fnc_lowcase(KviKvsModuleFunctionCall * c)
 {
 	QString  szString;
@@ -238,6 +235,7 @@ static bool str_kvs_fnc_lowcase(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(KviQString::lowerISO88591(szString));
 	return true;
 }
+
 /*
 	@doc: str.upcase
 	@type:
@@ -254,7 +252,6 @@ static bool str_kvs_fnc_lowcase(KviKvsModuleFunctionCall * c)
 		If you want to use a locale aware translation mapping then please
 		use $str.localeupcase.
 */
-
 static bool str_kvs_fnc_upcase(KviKvsModuleFunctionCall * c)
 {
 	QString  szString;
@@ -264,6 +261,7 @@ static bool str_kvs_fnc_upcase(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(KviQString::upperISO88591(szString));
 	return true;
 }
+
 /*
 	@doc: str.localelowcase
 	@type:
@@ -280,7 +278,6 @@ static bool str_kvs_fnc_upcase(KviKvsModuleFunctionCall * c)
 		results in locales that contain strange exceptions (like Turkish which maps
 		i to Y with an accent). For IRC interaction you might prefer using $str.lowcase
 */
-
 static bool str_kvs_fnc_localelowcase(KviKvsModuleFunctionCall * c)
 {
 	QString  szString;
@@ -307,7 +304,6 @@ static bool str_kvs_fnc_localelowcase(KviKvsModuleFunctionCall * c)
 		results in locales that contain strange exceptions (like Turkish which maps
 		i to Y with an accent). For IRC interaction you might prefer using $str.upcase
 */
-
 static bool str_kvs_fnc_localeupcase(KviKvsModuleFunctionCall * c)
 {
 	QString  szString;
@@ -331,7 +327,6 @@ static bool str_kvs_fnc_localeupcase(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns 1 if the given string represents a number, 0 if not.
 */
-
 static bool str_kvs_fnc_isnumber(KviKvsModuleFunctionCall * c)
 {
 	KviKvsVariant * v;
@@ -357,7 +352,6 @@ static bool str_kvs_fnc_isnumber(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns 1 if the given string represents an unsigned number, 0 if not.
 */
-
 static bool str_kvs_fnc_isunsignednumber(KviKvsModuleFunctionCall * c)
 {
 	KviKvsVariant * v;
@@ -391,7 +385,6 @@ static bool str_kvs_fnc_isunsignednumber(KviKvsModuleFunctionCall * c)
 		This function is almost useless since it is equivalent to the
 		comparison with an empty string...
 */
-
 static bool str_kvs_fnc_isempty(KviKvsModuleFunctionCall * c)
 {
 	QString v;
@@ -414,54 +407,23 @@ static bool str_kvs_fnc_isempty(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns 1 if the first parameter contains the second
 	@syntax:
-		<bool> $str.contains(<container:string>,<tofind:string>)
+		<bool> $str.contains(<container:string>,<tofind:string>,<case:bool>)
 	@description:
 		Returns 1 if the first string parameter contains the second string parameter.
-		This function is case sensitive.
+		If the third parameter is set to true, then the search is case sensitive.
 	@seealso:
-		[fnc]$str.containsnocase[/fnc]()
+		[fnc]$str.match[/fnc]()
 */
-
-
 static bool str_kvs_fnc_contains(KviKvsModuleFunctionCall * c)
 {
-	QString szString,szSubString;
-	bool bIs;
+	QString szString, szSubString;
+	bool bCase, bIs;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("container",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("tofind",KVS_PT_STRING,0,szSubString)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
 	KVSM_PARAMETERS_END(c)
-        bIs=szString.contains(szSubString,Qt::CaseSensitive);
-        c->returnValue()->setBoolean(bIs);
-	return true;
-}
-
-/*
-	@doc: str.containsnocase
-	@type:
-		function
-	@title:
-		$str.containsnocase
-	@short:
-		Returns 1 if the first parameter contains the second, case insensitive
-	@syntax:
-		<bool> $str.containsnocase(<container:string>,<tofind:string>)
-	@description:
-		Returns 1 if the first string parameter contains the second string parameter
-		whithout taking in consideration the case of the characters in the string.
-	@seealso:
-		[fnc]$str.contains[/fnc]
-*/
-
-static bool str_kvs_fnc_containsnocase(KviKvsModuleFunctionCall * c)
-{
-	QString szString,szSubString;
-	bool bIs;
-	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("container",KVS_PT_STRING,0,szString)
-		KVSM_PARAMETER("tofind",KVS_PT_STRING,0,szSubString)
-	KVSM_PARAMETERS_END(c)
-        bIs=szString.contains(szSubString,Qt::CaseInsensitive);
+	bIs = bCase ? szString.contains(szSubString,Qt::CaseSensitive) : szString.contains(szSubString,Qt::CaseInsensitive)
 	c->returnValue()->setBoolean(bIs);
 	return true;
 }
@@ -475,51 +437,23 @@ static bool str_kvs_fnc_containsnocase(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns 1 if the two string parameters are equal
 	@syntax:
-		<bool> $str.equal(<fromcompare:string>,<tocompare:string>)
+		<bool> $str.equal(<fromcompare:string>,<tocompare:string>,<case:bool>)
 	@description:
-		Returns 1 if the two string parameters are equal. This function is case sensitive.
+		Returns 1 if the two string parameters are equal.
+		If the third parameter is set to true, then the search is case sensitive.
 	@seealso:
-		[fnc]$str.equalnocase[/fnc]()
+		[fnc]$str.match[/fnc]()
 */
-
 static bool str_kvs_fnc_equal(KviKvsModuleFunctionCall * c)
 {
-	QString szString,szString2;
-	bool bIs;
+	QString szString, szString2;
+	bool bCase, bIs;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("fromcompare",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("tocompare",KVS_PT_STRING,0,szString2)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
 	KVSM_PARAMETERS_END(c)
-	bIs =  KviQString::equalCS(szString,szString2);
-	c->returnValue()->setBoolean(bIs);
-	return true;
-}
-/*
-	@doc: str.equalnocase
-	@type:
-		function
-	@title:
-		$str.equalnocase
-	@short:
-		Returns 1 if the two string parameters are equal, case insensitive
-	@syntax:
-		<bool> $str.equalnocase(<fromcompare:string>,<tocompare:string>)
-	@description:
-		Returns 1 if the two strngs parameters are equal, without taking the case of the
-		characters in consideration.
-	@seealso:
-		[fnc]$str.equal[/fnc]()
-*/
-
-static bool str_kvs_fnc_equalnocase(KviKvsModuleFunctionCall * c)
-{
-	QString szString,szString2;
-	bool bIs;
-	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("fromcompare",KVS_PT_STRING,0,szString)
-		KVSM_PARAMETER("tocompare",KVS_PT_STRING,0,szString2)
-	KVSM_PARAMETERS_END(c)
-	bIs =  KviQString::equalCI(szString,szString2);
+	bIs = bCase ? KviQString::equalCS(szString,szString2) : KviQString::equalCI(szString,szString2);
 	c->returnValue()->setBoolean(bIs);
 	return true;
 }
@@ -533,54 +467,24 @@ static bool str_kvs_fnc_equalnocase(KviKvsModuleFunctionCall * c)
 	@short:
 		Compare two strings alphabetically
 	@syntax:
-		<bool> $str.cmp(<fromcompare:string>,<tocompare:string>)
+		<bool> $str.cmp(<fromcompare:string>,<tocompare:string>,<case:bool>)
 	@description:
-		This function compares two strings alphabetically. If the first string is 'greater'
-		than the second, it will return a positive number, a negative number is the second is
-		greater and 0 if the two strings are equal.
+		This function compares two strings alphabetically. If the first string is 'greater' than the second, it will return a positive number, a negative number is the second is greater and 0 if the two strings are equal.
+		If the third parameter is set to true, then the search is case sensitive.
 	@seealso:
-		[fnc]$str.cmpnocase[/fnc]()
+		[fnc]$str.match[/fnc]()
 */
-
 static bool str_kvs_fnc_cmp(KviKvsModuleFunctionCall * c)
 {
-	QString szString,szString2;
+	QString szString, szString2;
+	bool bCase;
 	int iCmp;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("fromcompare",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("tocompare",KVS_PT_STRING,0,szString2)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
 	KVSM_PARAMETERS_END(c)
-	iCmp =  KviQString::cmpCS(szString,szString2);
-	c->returnValue()->setInteger(iCmp);
-	return true;
-}
-
-/*
-	@doc: str.cmpnocase
-	@type:
-		function
-	@title:
-		$str.cmpnocase
-	@short:
-		Compare two strings alphabetically, case insensitive.
-	@syntax:
-		<bool> $str.cmpnocase(<fromcompare:string>,<tocompare:string>)
-	@description:
-		This function compares two strings alphabetically. If the first string is 'greater'
-		than the second, it will return a positive number, a negative number is the second is
-		greater and 0 if the two strings are equal. This function is case insensitive.
-	@seealso:
-		[fnc]$str.cmp[/fnc]()
-*/
-static bool str_kvs_fnc_cmpnocase(KviKvsModuleFunctionCall * c)
-{
-	QString szString,szString2;
-	int iCmp;
-	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("fromcompare",KVS_PT_STRING,0,szString)
-		KVSM_PARAMETER("tocompare",KVS_PT_STRING,0,szString2)
-	KVSM_PARAMETERS_END(c)
-	iCmp =  KviQString::cmpCI(szString,szString2);
+	iCmp = bCase ? KviQString::cmpCS(szString,szString2) : KviQString::cmpCI(szString,szString2);
 	c->returnValue()->setInteger(iCmp);
 	return true;
 }
@@ -651,6 +555,7 @@ static bool str_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setInteger(totalIdx);
 	return true;
 }
+
 /*
 	@doc: str.findfirst
 	@type:
@@ -660,51 +565,28 @@ static bool str_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 	@short:
 		Find the index of a substring in a string
 	@syntax:
-		<int> $str.findfirst(<findIn:string>,<toFind:string>,[<start_index:integer>])
+		<int> $str.findfirst(<findIn:string>,<toFind:string>,<case:bool>[,<from_index:integer>])
 	@description:
-		This function search in the string given as the first parameter for the string
-		given as his second parameter, and will return the index where is first located or
-		-1 if it's not located. It starts counting at 0.
+		This function search in the string given as the first parameter for the string given as his second parameter, and will return the index where is first located or -1 if it's not located. It starts counting at 0.
+		If the third parameter is set to true, then the search is case sensitive.
 */
-
 static bool str_kvs_fnc_findfirst(KviKvsModuleFunctionCall * c)
 {
-	QString szString,szString2;
+	QString szString, szString2;
+	bool bCase;
+	int iIdx;
 	kvs_int_t iFromIndex;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("findIn",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("toFind",KVS_PT_STRING,0,szString2)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
 		KVSM_PARAMETER("from_index",KVS_PT_INTEGER,KVS_PF_OPTIONAL,iFromIndex)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setInteger(szString.indexOf(szString2,iFromIndex));
+	iIdx = bCase ? szString.indexOf(szString2,iFromIndex) : szString.indexOf(szString2,iFromIndex,Qt::CaseInsensitive);
+	c->returnValue()->setInteger(iIdx);
 	return true;
 }
-/*
-	@doc: str.findfirstnocase
-	@type:
-		function
-	@title:
-		$str.findfirstnocase
-	@short:
-		Find the index of a substring in a string, case insensitive
-	@syntax:
-		<int> $str.findfirstnocase(<findIn:string>,<toFind:string>)
-	@description:
-		This function search in the string given as the first parameter for the string
-		given as his second parameter, and will return the index where is first located or
-		-1 if it's not located. This function is case insensitive.
-*/
 
-static bool str_kvs_fnc_findfirstnocase(KviKvsModuleFunctionCall * c)
-{
-	QString szString,szString2;
-	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("findIn",KVS_PT_STRING,0,szString)
-		KVSM_PARAMETER("toFind",KVS_PT_STRING,0,szString2)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setInteger(szString.indexOf(szString2,0,Qt::CaseInsensitive));
-	return true;
-}
 /*
 	@doc: str.findlast
 	@type:
@@ -714,49 +596,27 @@ static bool str_kvs_fnc_findfirstnocase(KviKvsModuleFunctionCall * c)
 	@short:
 		Find the last index of a substring in a string
 	@syntax:
-		<int> $str.findlast(<findIn:string>,<toFind:string>)
+		<int> $str.findlast(<findIn:string>,<toFind:string>,<case:bool>)
 	@description:
 		This function search in the string given as the first parameter for the string
-		given as his second parameter, and will return the index where is last located or
-		-1 if it's not located.
+		given as his second parameter, and will return the index where is last located or -1 if it's not located.
+		If the third parameter is set to true, then the search is case sensitive.
 */
-
 static bool str_kvs_fnc_findlast(KviKvsModuleFunctionCall * c)
 {
-	QString szString,szString2;
+	QString szString, szString2;
+	bool bCase;
+	int iIdx;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("findIn",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("toFind",KVS_PT_STRING,0,szString2)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setInteger(szString.lastIndexOf(szString2));
+	iIdx = bCase ? szString.lastIndexOf(szString2) : szString.lastIndexOf(szString2,-1,Qt::CaseInsensitive)
+	c->returnValue()->setInteger(iIdx);
 	return true;
 }
-/*
-	@doc: str.findlastnocase
-	@type:
-		function
-	@title:
-		$str.findlastnocase
-	@short:
-		Find the last index of a substring in a string, case insensitive
-	@syntax:
-		<int> $str.findlastnocase(<findIn:string>,<toFind:string>)
-	@description:
-		This function search in the string given as the first parameter for the string
-		given as his second parameter, and will return the index where is last located or
-		-1 if it's not located. This function is case insensitive.
-*/
 
-static bool str_kvs_fnc_findlastnocase(KviKvsModuleFunctionCall * c)
-{
-	QString szString,szString2;
-	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("findIn",KVS_PT_STRING,0,szString)
-		KVSM_PARAMETER("toFind",KVS_PT_STRING,0,szString2)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setInteger(szString.lastIndexOf(szString2,-1,Qt::CaseInsensitive));
-	return true;
-}
 /*
 	@doc: str.left
 	@type:
@@ -771,7 +631,6 @@ static bool str_kvs_fnc_findlastnocase(KviKvsModuleFunctionCall * c)
 		This function returns a substring of the first string parameter which is the
 		string starting from the left until the index specified in the second parameter.
 */
-
 static bool str_kvs_fnc_left(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -783,6 +642,7 @@ static bool str_kvs_fnc_left(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szString.left(iIdx));
 	return true;
 }
+
 /*
 	@doc: str.right
 	@type:
@@ -798,7 +658,6 @@ static bool str_kvs_fnc_left(KviKvsModuleFunctionCall * c)
 		string starting from the right until the index specified in the second parameter.
 		The index start counting at the last character and increase until the first.
 */
-
 static bool str_kvs_fnc_right(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -810,6 +669,7 @@ static bool str_kvs_fnc_right(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szString.right(iIdx));
 	return true;
 }
+
 /*
 	@doc: str.mid
 	@type:
@@ -825,7 +685,6 @@ static bool str_kvs_fnc_right(KviKvsModuleFunctionCall * c)
 		string starting at the (numeric) index given with startidx and counting nchars
 		forward.
 */
-
 static bool str_kvs_fnc_mid(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -838,6 +697,7 @@ static bool str_kvs_fnc_mid(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szString.mid(iIdx,iNchars));
 	return true;
 }
+
 /*
 	@doc: str.append
 	@type:
@@ -852,7 +712,6 @@ static bool str_kvs_fnc_mid(KviKvsModuleFunctionCall * c)
 		This function returns a string created appending the second string parameter
 		to the end of the first string parameter.
 */
-
 static bool str_kvs_fnc_append(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szString2;
@@ -863,6 +722,7 @@ static bool str_kvs_fnc_append(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szString.append(szString2));
 	return true;
 }
+
 /*
 	@doc: str.prepend
 	@type:
@@ -877,7 +737,6 @@ static bool str_kvs_fnc_append(KviKvsModuleFunctionCall * c)
 		This function returns a string created prepending the second string parameter
 		to the start of the first string parameter.
 */
-
 static bool str_kvs_fnc_prepend(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szString2;
@@ -888,6 +747,7 @@ static bool str_kvs_fnc_prepend(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szString.prepend(szString2));
 	return true;
 }
+
 /*
 	@doc: str.insert
 	@type:
@@ -903,7 +763,6 @@ static bool str_kvs_fnc_prepend(KviKvsModuleFunctionCall * c)
 		first parameter at the index given in the third parameter, then returns the
 		resulting string.
 */
-
 static bool str_kvs_fnc_insert(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szString2;
@@ -916,6 +775,7 @@ static bool str_kvs_fnc_insert(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szString.insert(iIdx,szString2));
 	return true;
 }
+
 /*
 	@doc: str.strip
 	@type:
@@ -930,7 +790,6 @@ static bool str_kvs_fnc_insert(KviKvsModuleFunctionCall * c)
 		Returns a left and right whitespace stripped version of the string given as the
 		first parameter.
 */
-
 static bool str_kvs_fnc_strip(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -940,6 +799,7 @@ static bool str_kvs_fnc_strip(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szString.trimmed());
 	return true;
 }
+
 /*
 	@doc: str.stripleft
 	@type:
@@ -954,7 +814,6 @@ static bool str_kvs_fnc_strip(KviKvsModuleFunctionCall * c)
 		Returns a left whitespace stripped version of the string given as the
 		first parameter.
 */
-
 static bool str_kvs_fnc_stripleft(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -970,6 +829,7 @@ static bool str_kvs_fnc_stripleft(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szString);
 	return true;
 }
+
 /*
 	@doc: str.stripright
 	@type:
@@ -984,7 +844,6 @@ static bool str_kvs_fnc_stripleft(KviKvsModuleFunctionCall * c)
 		Returns a right whitespace stripped version of the string given as the
 		first parameter.
 */
-
 static bool str_kvs_fnc_stripright(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -1017,7 +876,6 @@ static bool str_kvs_fnc_stripright(KviKvsModuleFunctionCall * c)
 		Removes all mirc color codes from a string, including also bold, underline, reverse,
 		icon, crypting and ctcp control codes.
 */
-
 static bool str_kvs_fnc_stripcolors(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -1037,61 +895,27 @@ static bool str_kvs_fnc_stripcolors(KviKvsModuleFunctionCall * c)
 	@short:
 		Replace substrings in a string
 	@syntax:
-		<string> $str.replace(<string:string>,<replacewith:string>,<toreplace:string>)
+		<string> $str.replace(<string:string>,<toreplace:string>,<replacewith:string>,<case:bool>)
 	@description:
-		This function returns a string created replacing all ocurrences of the third parameter
+		This function returns a string created replacing all ocurrences of the second parameter
 		('toreplace') in the string given as the first parameter ('string') with the string
-		given as the second parameter ('replacewith').
-		The string replacement is case sensitive!.
-		FIXME: The order of the parameters in this function is illogical (and probably incompatible
-		with any other scripting language) :D
+		given as the third parameter ('replacewith').
+		If the third parameter is set to true, then the string replacement is case sensitive.
 	@examples:
 		[example]
-			echo $str.replace("I like big networks","neural","big")
+			echo $str.replace("I like big networks","big","neural")
 		[/example]
 */
-
 static bool str_kvs_fnc_replace(KviKvsModuleFunctionCall * c)
 {
-	QString szString,szNewstr,szToreplace;
+	QString szString, szNewStr, szToReplace;
+	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
-		KVSM_PARAMETER("newstr",KVS_PT_STRING,0,szNewstr)
-		KVSM_PARAMETER("toreplace",KVS_PT_STRING,0,szToreplace)
+		KVSM_PARAMETER("toreplace",KVS_PT_STRING,0,szToReplace)
+		KVSM_PARAMETER("newstr",KVS_PT_STRING,0,szNewStr)
 	KVSM_PARAMETERS_END(c)
-	szString.replace(szToreplace,szNewstr);
-	c->returnValue()->setString(szString);
-	return true;
-}
-
-/*
-	@doc: str.replacenocase
-	@type:
-		function
-	@title:
-		$str.replacenocase
-	@short:
-		Replace substrings in a string ignoring case
-	@syntax:
-		<string> $str.replacenocase(<string:string>,<newstr:string>,<toreplace:string>)
-	@description:
-		This function returns a string created replacing all ocurrences of the third parameter
-		('toreplace') in the string given as the first parameter ('string') with the string
-		given as the second parameter ('newstr').[br]
-		The replacement is case insensitive.[br]
-		FIXME: The order of the parameters in this function is illogical (and probably incompatible
-		with any other scripting language) :D
-*/
-
-static bool str_kvs_fnc_replacenocase(KviKvsModuleFunctionCall * c)
-{
-	QString szString,szNewstr,szToreplace;
-	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
-		KVSM_PARAMETER("newstr",KVS_PT_STRING,0,szNewstr)
-		KVSM_PARAMETER("toreplace",KVS_PT_STRING,0,szToreplace)
-	KVSM_PARAMETERS_END(c)
-	szString.replace(szToreplace,szNewstr,Qt::CaseInsensitive);
+	bCase ? szString.replace(szToReplace,szNewStr) : szString.replace(szToReplace,szNewStr,Qt::CaseInsensitive);
 	c->returnValue()->setString(szString);
 	return true;
 }
@@ -1108,11 +932,8 @@ static bool str_kvs_fnc_replacenocase(KviKvsModuleFunctionCall * c)
 		<string> $str.urlencode(<string:string>)
 	@description:
 		This function returns a string created replacing all ocurrences in the parameter ('string') with their respective html entities.[br]
-		The replacement is case insensitive.[br]
-		FIXME: This function use the same replace order as $str.replace so it incompatible
-		with any other scripting language) :D
+		The replacement is case insensitive.
 */
-
 static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -1162,7 +983,6 @@ static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 		parameter is not found, the entire string is returned.
 		The match is case insensitive.
 */
-
 static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szNewstr;
@@ -1176,6 +996,7 @@ static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
 	else c->returnValue()->setString(szString);
 	return true;
 }
+
 /*
 	@doc: str.lefttolast
 	@type:
@@ -1193,7 +1014,6 @@ static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
 		If the second parameter is not found, the entire string is returned.
 		The match is case insensitive
 */
-
 static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szNewstr;
@@ -1206,6 +1026,7 @@ static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 	else c->returnValue()->setString(szString);
 	return true;
 }
+
 /*
 	@doc: str.rightfromfirst
 	@type:
@@ -1223,7 +1044,6 @@ static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 		If the second parameter is not found, an empty string is returned..
 		The match is case insensitive
 */
-
 static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szNewstr;
@@ -1236,6 +1056,7 @@ static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
 	else c->returnValue()->setString("");
 	return true;
 }
+
 /*
 	@doc: str.rightfromlast
 	@type:
@@ -1253,8 +1074,6 @@ static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
 		If the second parameter is not found, an empty string is returned..
 		The match is case insensitive.
 */
-
-
 static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szNewstr;
@@ -1277,7 +1096,7 @@ static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 	@short:
 		Matches a fixed string against a wildcard expression
 	@syntax:
-		<bool> $str.match(<expression:string>,<string:string>[,<flags:string>])
+		<bool> $str.match(<expression:string>,<string:string>,<case:bool>[,<flags:string>])
 	@description:
 		Returns 1 if the fixed <string> matches the <expression>, 0 otherwise.[br]
 		If <flags> contains the flag 'r' then <expression> is treated as a full
@@ -1286,7 +1105,7 @@ static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 		If <flags> contains the flag 'e' then only an exact match is considered (e.g. the full
 		<string> is exactly matched by <expression>), otherwise partial matches are allowed too (e.g.
 		<expression> is found inside <string>).[br]
-		The match is case sensitive.[br]
+		If the third parameter is set to true, then the match is case sensitive.[br]
 	@examples:
 		[example]
 			%test = "Hello! My nickname is Pragma"
@@ -1296,71 +1115,26 @@ static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 			[cmd]if[/cmd]($str.match(H*y*i?K*a,%test))[cmd]echo[/cmd] "Matches H*y*i?K*a"
 		[/example]
 	@seealso:
-		[fnc]$str.matchnocase[/fnc]
+		[fnc]$str.contains[/fnc](),[fnc]$str.equal[/fnc]()
 */
-
 static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 {
-	QString szWildcard,szString,szFlags;
+	QString szWildcard, szString, szFlags;
+	bool bCase, bIs;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("wildcard",KVS_PT_NONEMPTYSTRING,0,szWildcard)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,false,bCase)
 		KVSM_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
 	KVSM_PARAMETERS_END(c)
 	bool bRegExp = (szFlags.indexOf(QChar('r')) != -1) || (szFlags.indexOf(QChar('R')) != -1);
 	bool bExact = (szFlags.indexOf(QChar('e')) != -1) || (szFlags.indexOf(QChar('E')) != -1);
-	c->returnValue()->setBoolean(KviQString::matchString(szWildcard,szString,bRegExp,bExact,true));
+	bIs = bCase ? KviQString::matchString(szWildcard,szString,bRegExp,bExact,true) : KviQString::matchString(szWildcard,szString,bRegExp,bExact)
+	c->returnValue()->setBoolean(bIs);
 	return true;
 }
 
 /*
-	@doc: str.matchnocase
-	@type:
-		function
-	@title:
-		$str.matchnocase
-	@short:
-		Matches a fixed string against a wildcard expression (case insensitive)
-	@syntax:
-		<bool> $str.matchnocase(<expression>,<string:string>[,<flags:string>])
-	@description:
-		Returns 1 if the fixed <string> matches the <expression>, 0 otherwise.[br]
-		If <flags> contains the flag 'r' then <expression> is treated as a full
-		regular expression otherwise it is treated as a simple wildcard expression containing
-		the classic wildcards '*' and '?'.[br]
-		If <flags> contains the flag 'e' then only an exact match is considered (e.g. the full
-		<string> is exactly matched by <expression>), otherwise partial matches are allowed too (e.g.
-		<expression> is found inside <string>).[br]
-		The match is case insensitive.[br]
-	@examples:
-		[example]
-			%test = "Hello! My nickname is Pragma"
-			[cmd]if[/cmd]($str.match(pragma*,%test))[cmd]echo[/cmd] "Matches pragma*"
-			[cmd]if[/cmd]($str.match(*pragma,%test))[cmd]echo[/cmd] "Matches *pragma"
-			[cmd]if[/cmd]($str.match(H*y*i?k*a,%test))[cmd]echo[/cmd] "Matches H*y*i?k*a"
-			[cmd]if[/cmd]($str.match(H*y*i?K*a,%test))[cmd]echo[/cmd] "Matches H*y*i?K*a"
-			[cmd]if[/cmd]($str.match(G*if?sx,%test))[cmd]echo[/cmd] "Matches G*if?sx"
-		[/example]
-	@seealso:
-		[fnc]$str.match[/fnc]
-*/
-
-static bool str_kvs_fnc_matchnocase(KviKvsModuleFunctionCall * c)
-{
-	QString szWildcard,szString,szFlags;
-	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("wildcard",KVS_PT_NONEMPTYSTRING,0,szWildcard)
-		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
-		KVSM_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
-	KVSM_PARAMETERS_END(c)
-	bool bRegExp = (szFlags.indexOf(QChar('r')) != -1) || (szFlags.indexOf(QChar('R')) != -1);
-	bool bExact = (szFlags.indexOf(QChar('e')) != -1) || (szFlags.indexOf(QChar('E')) != -1);
-	c->returnValue()->setBoolean(KviQString::matchString(szWildcard,szString,bRegExp,bExact));
-	return true;
-}
-
-/*
-
 	@doc: str.word
 	@type:
 		function
@@ -1387,7 +1161,6 @@ static bool str_kvs_fnc_matchnocase(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$str.token[/fnc]
 */
-
 static bool str_kvs_fnc_word(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -1424,6 +1197,7 @@ static bool str_kvs_fnc_word(KviKvsModuleFunctionCall * c)
 	return true;
 
 }
+
 /*
 	@doc: str.token
 	@type:
@@ -1453,7 +1227,6 @@ static bool str_kvs_fnc_word(KviKvsModuleFunctionCall * c)
 		[fnc]$str.word[/fnc][br]
 		[fnc]$str.split[/fnc][br]
 */
-
 static bool str_kvs_fnc_token(KviKvsModuleFunctionCall * c)
 {
 	QString szString,sep;
@@ -1513,8 +1286,6 @@ static bool str_kvs_fnc_token(KviKvsModuleFunctionCall * c)
 		If <bCaseInsensitive> is specified and $true then the string
 		will be converted to toLowercase first.
 */
-
-
 static bool str_kvs_fnc_charsum(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -1544,7 +1315,6 @@ static bool str_kvs_fnc_charsum(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-
 /*
 	@doc: str.digest
 	@type:
@@ -1561,8 +1331,6 @@ static bool str_kvs_fnc_charsum(KviKvsModuleFunctionCall * c)
 		Default is md5. Requires OpenSSL support or (better) Crypto++, but
         offers a minimal set of hashes in any case.
 */
-
-
 static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szType,szResult;
@@ -1571,8 +1339,8 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("algorythm",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szType)
 	KVSM_PARAMETERS_END(c)
 
-#if defined( COMPILE_SSL_SUPPORT ) && !defined(COMPILE_NO_EMBEDDED_CODE)
-	if(szType.isEmpty()) szType="md5";
+#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
+	if(szType.isEmpty()) szType = "md5";
 
 	EVP_MD_CTX mdctx;
 	const EVP_MD *md;
@@ -1582,7 +1350,8 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	OpenSSL_add_all_digests();
 
 	md = EVP_get_digestbyname(szType.toUtf8().data());
-	if(!md) {
+	if(!md)
+	{
 		c->warning(__tr2qs("%Q algorytm is not supported"),&szType);
 		return true;
 	}
@@ -1605,72 +1374,72 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 
 	c->returnValue()->setString(szResult);
 #elif defined(COMPILE_NO_EMBEDDED_CODE)
-    // Crypto++ implementation
-    std::string szDigest;
-    std::string szMsg = szString.toLocal8Bit().data();
+	// Crypto++ implementation
+	std::string szDigest;
+	std::string szMsg = szString.toLocal8Bit().data();
 
-    if(szType.toLower() == "sha1" || szType.toLower() == "sha") {
-        szDigest = CryptoPpStrHash<CryptoPP::SHA1>(szMsg);
-    }
-    else if(szType.toLower() == "sha224") {
-        szDigest = CryptoPpStrHash<CryptoPP::SHA224>(szMsg);
-    }
-    else if(szType.toLower() == "sha256") {
-        szDigest = CryptoPpStrHash<CryptoPP::SHA256>(szMsg);
-    }
-    else if(szType.toLower() == "sha384") {
-        szDigest = CryptoPpStrHash<CryptoPP::SHA384>(szMsg);
-    }
-    else if(szType.toLower() == "sha512") {
-        szDigest = CryptoPpStrHash<CryptoPP::SHA512>(szMsg);
-    }
-    else if(szType.toLower() == "ripemd128") {
-        szDigest = CryptoPpStrHash<CryptoPP::RIPEMD128>(szMsg);
-    }
-    else if(szType.toLower() == "ripemd160") {
-        szDigest = CryptoPpStrHash<CryptoPP::RIPEMD160>(szMsg);
-    }
-    else if(szType.toLower() == "ripemd256") {
-        szDigest = CryptoPpStrHash<CryptoPP::RIPEMD256>(szMsg);
-    }
-    else if(szType.toLower() == "ripemd320") {
-        szDigest = CryptoPpStrHash<CryptoPP::RIPEMD320>(szMsg);
-    }
-    else if(szType.toLower() == "crc32") {
-        szDigest = CryptoPpStrHash<CryptoPP::CRC32>(szMsg);
-    }
-    else if(szType.toLower() == "md2") {
-        szDigest = CryptoPpStrHash<CryptoPP::Weak::MD2>(szMsg);
-    }
-    else if(szType.toLower() == "md4") {
-        szDigest = CryptoPpStrHash<CryptoPP::Weak::MD4>(szMsg);
-    }
-    else if(szType.toLower() == "md5" || szType.isEmpty()){
-        szDigest = CryptoPpStrHash<CryptoPP::Weak::MD5>(szMsg);
-    }
-    else {
-        c->warning(__tr2qs("Unsupported message digest."));
-        return true;
-    }
+	if(szType.toLower() == "sha1" || szType.toLower() == "sha")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::SHA1>(szMsg);
+	} else if(szType.toLower() == "sha224")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::SHA224>(szMsg);
+	} else if(szType.toLower() == "sha256")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::SHA256>(szMsg);
+	} else if(szType.toLower() == "sha384")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::SHA384>(szMsg);
+	} else if(szType.toLower() == "sha512")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::SHA512>(szMsg);
+	} else if(szType.toLower() == "ripemd128")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::RIPEMD128>(szMsg);
+	} else if(szType.toLower() == "ripemd160")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::RIPEMD160>(szMsg);
+	} else if(szType.toLower() == "ripemd256")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::RIPEMD256>(szMsg);
+	} else if(szType.toLower() == "ripemd320")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::RIPEMD320>(szMsg);
+	} else if(szType.toLower() == "crc32")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::CRC32>(szMsg);
+	} else if(szType.toLower() == "md2")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::Weak::MD2>(szMsg);
+	} else if(szType.toLower() == "md4")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::Weak::MD4>(szMsg);
+	} else if(szType.toLower() == "md5")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::Weak::MD5>(szMsg);
+	} else {
+		c->warning(__tr2qs("Unsupported message digest."));
+		return true;
+	}
 
-    c->returnValue()->setString(QString(szDigest.c_str()));
+	c->returnValue()->setString(QString(szDigest.c_str()));
 #else // fall back to QCryptographicHash
-    QCryptographicHash::Algorithm qAlgo;
-    if(szType.toLower() == "sha1") {
-            qAlgo = QCryptographicHash::Sha1;
-    }
-    else if(szType.toLower() == "md4") {
-            qAlgo = QCryptographicHash::Md4;
-    }
-    else if(szType.toLower() == "md5" || szType.isEmpty()){
-            qAlgo = QCryptographicHash::Md5;
-    }
-    else {
-	    c->warning(__tr2qs("KVIrc is compiled without Crypto++ or OpenSSL support. $str.digest supports only MD4, MD5 and SHA1."));
-        return true;
-    }
+	QCryptographicHash::Algorithm qAlgo;
+	if(szType.toLower() == "sha1")
+	{
+		qAlgo = QCryptographicHash::Sha1;
+	} else if(szType.toLower() == "md4")
+	{
+		qAlgo = QCryptographicHash::Md4;
+	} else if(szType.toLower() == "md5")
+	{
+		qAlgo = QCryptographicHash::Md5;
+	} else {
+		c->warning(__tr2qs("KVIrc is compiled without Crypto++ or OpenSSL support. $str.digest supports only MD4, MD5 and SHA1."));
+		return true;
+	}
 
-    c->returnValue()->setString(QString(QCryptographicHash::hash(szString.toLocal8Bit(), qAlgo).toHex()).toUpper());
+	c->returnValue()->setString(QString(QCryptographicHash::hash(szString.toLocal8Bit(), qAlgo).toHex()).toUpper());
 #endif
 
 	return true;
@@ -1693,8 +1462,6 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		array are skipped.
 
 */
-
-
 static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 {
 	QString szSep;
@@ -1749,7 +1516,6 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-
 /*
 	@doc: str.grep
 	@type:
@@ -1788,7 +1554,6 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$array[/fnc]
 */
-
 static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 {
 	KviKvsArrayCast ac;
@@ -1860,7 +1625,6 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-
 /*
 	@doc: str.split
 	@type:
@@ -1908,7 +1672,6 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 			[cmd]echo[/cmd] $str.split("[ ]*","Condense spaces and change &nbsp; &nbsp; all &nbsp; &nbsp; &nbsp; it in commas",r)
 		[/example]
 */
-
 static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 {
 	QString szSep,szStr,szFla;
@@ -2059,8 +1822,6 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 			$str.printf("1/3 with a precision of 3 digits is ?.3f, while in scientific notation it's ?e",%val,%val)
 		[/example]
 */
-
-
 static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 {
 	QString szFormat;
@@ -2376,57 +2137,49 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 
 static bool str_module_init(KviModule * m)
 {
-	KVSM_REGISTER_FUNCTION(m,"split",str_kvs_fnc_split);
-	KVSM_REGISTER_FUNCTION(m,"grep",str_kvs_fnc_grep);
+	KVSM_REGISTER_FUNCTION(m,"append",str_kvs_fnc_append);
 	KVSM_REGISTER_FUNCTION(m,"charsum",str_kvs_fnc_charsum);
-	KVSM_REGISTER_FUNCTION(m,"len",str_kvs_fnc_len);
-	KVSM_REGISTER_FUNCTION(m,"length",str_kvs_fnc_len);
-	KVSM_REGISTER_FUNCTION(m,"isempty",str_kvs_fnc_isempty);
-	KVSM_REGISTER_FUNCTION(m,"join",str_kvs_fnc_join);
-
-	KVSM_REGISTER_FUNCTION(m,"section",str_kvs_fnc_section);
-	KVSM_REGISTER_FUNCTION(m,"lowcase",str_kvs_fnc_lowcase);
-	KVSM_REGISTER_FUNCTION(m,"upcase",str_kvs_fnc_upcase);
-	KVSM_REGISTER_FUNCTION(m,"localeupcase",str_kvs_fnc_localeupcase);
-	KVSM_REGISTER_FUNCTION(m,"localelowcase",str_kvs_fnc_localelowcase);
-	KVSM_REGISTER_FUNCTION(m,"isnumber",str_kvs_fnc_isnumber);
-	KVSM_REGISTER_FUNCTION(m,"isunsignednumber",str_kvs_fnc_isunsignednumber);
-	KVSM_REGISTER_FUNCTION(m,"contains",str_kvs_fnc_contains);
-	KVSM_REGISTER_FUNCTION(m,"containsnocase",str_kvs_fnc_containsnocase);
-	KVSM_REGISTER_FUNCTION(m,"equal",str_kvs_fnc_equal);
-	KVSM_REGISTER_FUNCTION(m,"equalnocase",str_kvs_fnc_equalnocase);
 	KVSM_REGISTER_FUNCTION(m,"cmp",str_kvs_fnc_cmp);
-	KVSM_REGISTER_FUNCTION(m,"cmpnocase",str_kvs_fnc_cmpnocase);
+	KVSM_REGISTER_FUNCTION(m,"contains",str_kvs_fnc_contains);
+	KVSM_REGISTER_FUNCTION(m,"digest",str_kvs_fnc_digest);
+	KVSM_REGISTER_FUNCTION(m,"equal",str_kvs_fnc_equal);
 	KVSM_REGISTER_FUNCTION(m,"find",str_kvs_fnc_find);
 	KVSM_REGISTER_FUNCTION(m,"findfirst",str_kvs_fnc_findfirst);
-	KVSM_REGISTER_FUNCTION(m,"findfirstnocase",str_kvs_fnc_findfirstnocase);
 	KVSM_REGISTER_FUNCTION(m,"findlast",str_kvs_fnc_findlast);
-	KVSM_REGISTER_FUNCTION(m,"findlastnocase",str_kvs_fnc_findlastnocase);
-	KVSM_REGISTER_FUNCTION(m,"left",str_kvs_fnc_left);
-	KVSM_REGISTER_FUNCTION(m,"right",str_kvs_fnc_right);
-	KVSM_REGISTER_FUNCTION(m,"mid",str_kvs_fnc_mid);
-	KVSM_REGISTER_FUNCTION(m,"append",str_kvs_fnc_append);
-	KVSM_REGISTER_FUNCTION(m,"prepend",str_kvs_fnc_prepend);
+	KVSM_REGISTER_FUNCTION(m,"fromClipboard",str_kvs_fnc_fromclipboard);
+	KVSM_REGISTER_FUNCTION(m,"grep",str_kvs_fnc_grep);
 	KVSM_REGISTER_FUNCTION(m,"insert",str_kvs_fnc_insert);
-	KVSM_REGISTER_FUNCTION(m,"strip",str_kvs_fnc_strip);
-	KVSM_REGISTER_FUNCTION(m,"stripright",str_kvs_fnc_stripright);
-	KVSM_REGISTER_FUNCTION(m,"stripleft",str_kvs_fnc_stripleft);
-	KVSM_REGISTER_FUNCTION(m,"stripcolors",str_kvs_fnc_stripcolors);
-	KVSM_REGISTER_FUNCTION(m,"replace",str_kvs_fnc_replace);
-	KVSM_REGISTER_FUNCTION(m,"replacenocase",str_kvs_fnc_replacenocase);
-	KVSM_REGISTER_FUNCTION(m,"urlencode",str_kvs_fnc_urlencode);
-	KVSM_REGISTER_FUNCTION(m,"lefttolast",str_kvs_fnc_lefttolast);
+	KVSM_REGISTER_FUNCTION(m,"isempty",str_kvs_fnc_isempty);
+	KVSM_REGISTER_FUNCTION(m,"isnumber",str_kvs_fnc_isnumber);
+	KVSM_REGISTER_FUNCTION(m,"isunsignednumber",str_kvs_fnc_isunsignednumber);
+	KVSM_REGISTER_FUNCTION(m,"join",str_kvs_fnc_join);
+	KVSM_REGISTER_FUNCTION(m,"left",str_kvs_fnc_left);
 	KVSM_REGISTER_FUNCTION(m,"lefttofirst",str_kvs_fnc_lefttofirst);
+	KVSM_REGISTER_FUNCTION(m,"lefttolast",str_kvs_fnc_lefttolast);
+	KVSM_REGISTER_FUNCTION(m,"len",str_kvs_fnc_len);
+	KVSM_REGISTER_FUNCTION(m,"length",str_kvs_fnc_len);
+	KVSM_REGISTER_FUNCTION(m,"localelowcase",str_kvs_fnc_localelowcase);
+	KVSM_REGISTER_FUNCTION(m,"localeupcase",str_kvs_fnc_localeupcase);
+	KVSM_REGISTER_FUNCTION(m,"lowcase",str_kvs_fnc_lowcase);
+	KVSM_REGISTER_FUNCTION(m,"match",str_kvs_fnc_match);
+	KVSM_REGISTER_FUNCTION(m,"mid",str_kvs_fnc_mid);
+	KVSM_REGISTER_FUNCTION(m,"prepend",str_kvs_fnc_prepend);
+	KVSM_REGISTER_FUNCTION(m,"printf",str_kvs_fnc_printf);
+	KVSM_REGISTER_FUNCTION(m,"replace",str_kvs_fnc_replace);
+	KVSM_REGISTER_FUNCTION(m,"right",str_kvs_fnc_right);
 	KVSM_REGISTER_FUNCTION(m,"rightfromfirst",str_kvs_fnc_rightfromfirst);
 	KVSM_REGISTER_FUNCTION(m,"rightfromlast",str_kvs_fnc_rightfromlast);
-	KVSM_REGISTER_FUNCTION(m,"match",str_kvs_fnc_match);
-	KVSM_REGISTER_FUNCTION(m,"matchnocase",str_kvs_fnc_matchnocase);
-	KVSM_REGISTER_FUNCTION(m,"word",str_kvs_fnc_word);
+	KVSM_REGISTER_FUNCTION(m,"section",str_kvs_fnc_section);
+	KVSM_REGISTER_FUNCTION(m,"split",str_kvs_fnc_split);
+	KVSM_REGISTER_FUNCTION(m,"strip",str_kvs_fnc_strip);
+	KVSM_REGISTER_FUNCTION(m,"stripcolors",str_kvs_fnc_stripcolors);
+	KVSM_REGISTER_FUNCTION(m,"stripleft",str_kvs_fnc_stripleft);
+	KVSM_REGISTER_FUNCTION(m,"stripright",str_kvs_fnc_stripright);
 	KVSM_REGISTER_FUNCTION(m,"token",str_kvs_fnc_token);
-	KVSM_REGISTER_FUNCTION(m,"fromClipboard",str_kvs_fnc_fromclipboard);
-	KVSM_REGISTER_FUNCTION(m,"digest",str_kvs_fnc_digest);
-	KVSM_REGISTER_FUNCTION(m,"printf",str_kvs_fnc_printf);
-
+	KVSM_REGISTER_FUNCTION(m,"upcase",str_kvs_fnc_upcase);
+	KVSM_REGISTER_FUNCTION(m,"urlencode",str_kvs_fnc_urlencode);
+	KVSM_REGISTER_FUNCTION(m,"word",str_kvs_fnc_word);
+	
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"toClipboard",str_kvs_cmd_toClipboard);
 	return true;
 }
@@ -2438,12 +2191,13 @@ static bool str_module_cleanup(KviModule *)
 
 KVIRC_MODULE(
 	"Str",                                                 // module name
-	"1.0.1",                                               // module version
+	"4.0.0",                                               // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)"\
-	"          (C) 2002 Juanjo Alvarez (juanjux@yahoo.es)" \
+	"          (C) 2002 Juanjo Alvarez (juanjux at yahoo dot es)" \
 	"          (C) 2005 Tonino Imbesi (grifisx at barmes dot org)" \
 	"          (C) 2005 Alessandro Carbone (elfonol at gmail dot com)" \
-    "           ©  2009 Kai Wasserbäch <debian@carbon-project.org>", // author & (C)
+	"          (C) 2009 Kai Wasserbäch (debian at carbon-project dot org)" \
+	"          (C) 2010 Elvio Basello (hell at hellvis69 dot netsons dot org)", // author & (C)
 	"Interface to the str system",
 	str_module_init,
 	0,
