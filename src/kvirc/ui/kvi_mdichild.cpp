@@ -29,6 +29,7 @@
 */
 
 #define _KVI_DEBUG_CHECK_RANGE_
+#include "kvi_frame.h"
 #include "kvi_debug.h"
 #include "kvi_mdichild.h"
 #include "kvi_mdimanager.h"
@@ -135,17 +136,15 @@ void KviMdiChild::windowStateChangedEvent(Qt::WindowStates oldState, Qt::WindowS
 	{
 		//minimized or unminimized
 		updateCaption();
-		if(newState.testFlag(Qt::WindowMinimized))
-		{
-			//i have just been minimized, but i want another window to get activation
-			m_pManager->focusPreviousTopChild();
-		}
 	}
 
-	if(newState.testFlag(Qt::WindowActive) && diffState.testFlag(Qt::WindowMaximized))
+	if(newState.testFlag(Qt::WindowActive))
 	{
-		//i'm the active window and my maximized state has changed => update sdi mode
-		m_pManager->setIsInSDIMode(newState.testFlag(Qt::WindowMaximized));
+		if(g_pFrame->isVisible() && diffState.testFlag(Qt::WindowActive) && m_pClient->inherits("KviWindow"))
+			((KviWindow *)m_pClient)->activateSelf();
+
+		if(diffState.testFlag(Qt::WindowMaximized))
+			m_pManager->setIsInSDIMode(newState.testFlag(Qt::WindowMaximized));
 	}
 }
 
