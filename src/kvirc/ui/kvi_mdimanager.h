@@ -81,12 +81,6 @@ public:
 			return true;
 		else return QMdiArea::eventFilter(obj, event);
 	};
-protected:
-	/**
-	* \brief Filters out the show event from the QMdiArea handling
-	* \return void
-	*/
-	void showEvent(QShowEvent *showEvent) { QAbstractScrollArea::showEvent(showEvent); };
 private:
 	bool m_bInSDIMode;
 protected:
