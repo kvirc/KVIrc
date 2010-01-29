@@ -3,7 +3,7 @@ This mini-howto describes the procedure for translating KVIrc in a new language.
 
 Step 0: Getting the right sources.
 
-First of all you need the SVN version of kvirc.
+First of all you need the SVN version of KVIrc.
 To obtain the SVN version you can follow the instructions on
 http://www.kvirc.net/?id=svn
 
@@ -30,7 +30,7 @@ Examples of such codes are "it", "en", "hu" or "pt_BR"
 Step 3: Generating the list of messages to translate
 
 You must perform this step only if it is the first time that KVIrc is translated
-to your language. If you're going to update an existing translation then
+into your language. If you're going to update an existing translation then
 you can jump directly to step 4.
 
 Enter your build directory and run this command to extract the messages from the
@@ -144,7 +144,7 @@ irc (irc://irc.freenode.net/#KVIrc).
 
 Since many of the modules have their own translation files then
 the procedure above may be repeated for the po/modules/*/ subdirectories.
-Anyway you are not forced to translate all the files at once; a partial
+Anyway you are not forced to translate all the files at once: a partial
 translation will work anyway.
 
 When you're satisfied with your translation you may send your *.po files to the
