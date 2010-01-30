@@ -2056,8 +2056,9 @@ void KviIrcView::toggleToolWidget()
 {
 	if(m_pToolWidget)
 	{
-		delete m_pToolWidget;
+		KviIrcViewToolWidget *pTmp=m_pToolWidget;
 		m_pToolWidget = 0;
+		delete pTmp;
 		m_pCursorLine = 0;
 		repaint();
 
