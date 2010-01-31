@@ -148,7 +148,8 @@ public slots:
 
 	void oldDirClicked();
 	void newDirClicked();
-
+	void portableClicked();
+	
 	void oldDataTextChanged ( const QString & );
 	void newDataTextChanged ( const QString & );
 	void newIncomingTextChanged ( const QString & );

@@ -295,6 +295,7 @@ KviSetupWizard::KviSetupWizard()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_pDirMakePortable = new QRadioButton(__tr2qs("All settings in shared program folder (portable)")
 			,m_pDirButtonGroup);
+	connect(m_pDirMakePortable,SIGNAL(clicked()),this,SLOT(portableClicked()));
 #endif
 	// Pragma: Unused, takes only space.
 	//m_pDirRestore = new QRadioButton(__tr2qs("Restore from backup archive"),m_pDirButtonGroup);
@@ -723,6 +724,19 @@ void KviSetupWizard::newDirClicked()
 
 	if(m_pDataPathEdit->text().isEmpty() || m_pIncomingPathEdit->text().isEmpty()) setNextEnabled(m_pDirectory,false);
 	else setNextEnabled(m_pDirectory,true);
+}
+
+void KviSetupWizard::portableClicked()
+{
+	m_pOldPathBox->setEnabled(false);
+	m_pNewPathBox->setEnabled(false);
+	m_pNewIncomingBox->setEnabled(false);
+
+	if(m_pIdentity) setPageEnabled(m_pIdentity,true);
+//	if(m_pTheme) setPageEnabled(m_pTheme,true);
+	if(m_pServers) setPageEnabled(m_pServers,true);
+
+	setNextEnabled(m_pDirectory,true);
 }
 
 void KviSetupWizard::chooseOldDataPath()
