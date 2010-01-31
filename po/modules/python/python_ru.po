@@ -1,0 +1,51 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Alexander Antsev <kagami@crossplatform.ru>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"PO-Revision-Date: 2010-01-30 19:45+0300\n"
+"Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
+"Language-Team: Russian <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/modules/python/libkvipython.cpp:46
+msgid "The pythoncore module can't be loaded: python support not available"
+msgstr ""
+"Не возможно загрузить модуль pythoncore: поддержка python не доступна"
+
+#: src/modules/python/libkvipython.cpp:47
+msgid "To see more details about loading failure try /pythoncore.load"
+msgstr ""
+"Более подробная информация об ошибке загрузки модуля /pythoncore.load"
+
+#: src/modules/python/libkvipython.cpp:60
+msgid ""
+"This KVIrc executable has been compiled without python scripting support"
+msgstr "Эта сборка KVIrc не имеет поддержки python"
+
+#: src/modules/python/libkvipython.cpp:100
+#: src/modules/python/libkvipython.cpp:153
+msgid ""
+"The pythoncore module failed to execute the code: something is wrong with "
+"the python support"
+msgstr ""
+"Модуль pythoncore не может выполнить код: проблема с поддержкой python"
+
+#: src/modules/python/libkvipython.cpp:117
+#: src/modules/python/libkvipython.cpp:121
+msgid "Python execution error:"
+msgstr "Ошибка выполнения python:"
+
+#: src/modules/pythoncore/libkvipythoncore.cpp:112
+msgid "Internal error: python interpreter not initialized"
+msgstr "Внутренняя ошибка: интерпретатор python не инициализирован"
+
