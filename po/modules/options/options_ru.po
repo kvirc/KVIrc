@@ -2,27 +2,28 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
+#
 # Valerius <valeragir@mail.ru>, 2004, 2005.
 # Valeriy Girchenko <valeragir@mail.ru>, 2005.
 # root <wizard@opendoor.ru>, 2005, 2006.
 # Alexey <wizard@opendoor.ru>, 2005.
 # Alexey Uzhva <alexey at kvirc dot ru>, 2007.
-# Igor "BugSlayer" Govorov <govorov.igor at-sing gmail.com>, 2010
-#
+# Igor "BugSlayer" Govorov <govorov.igor at-sing gmail.com>, 2010.
+# Alexander Antsev <kagami@crossplatform.ru>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2010-01-24 13:00+0300\n"
-"Last-Translator: Igor Govorov <govorov.igor at-sing gmail.com>\n"
-"Language-Team: Russian\n"
+"PO-Revision-Date: 2010-01-30 19:09+0300\n"
+"Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
+"Language-Team: Russian <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 
 #: src/modules/options/optw_avatar.cpp:72
@@ -56,7 +57,7 @@ msgstr " мсек"
 
 #: src/modules/options/optw_ircview.cpp:182
 msgid " pixels"
-msgstr ""
+msgstr " пикселей"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:87
 msgid " requests"
@@ -520,7 +521,6 @@ msgstr ""
 "значений переменных и т.п.</center>"
 
 #: src/modules/options/optw_servers.cpp:176
-#, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for the servers "
 "in this network. This encoding will be used as the default for text messages."
@@ -529,11 +529,12 @@ msgid ""
 "dialog.</center>"
 msgstr ""
 "<center>Здесь вы можете выбрать предпочтительную кодировку для серверов этой "
-"сети. Если вы выберите \"Использовать кодировку системы\", то установится "
+"сети. Эта кодировка будет использоваться по умолчанию для всех текстовых "
+"сообщений. "
+"Если вы выберите \"Использовать кодировку системы\", то установится "
 "общесистемное значение определённое в секции \"Кодировка\"</center>"
 
 #: src/modules/options/optw_servers.cpp:164
-#, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for the servers "
 "in this network. This encoding will be used for server specific needs, like "
@@ -542,11 +543,14 @@ msgid ""
 "the \"Encoding\" page of the options dialog.</center>"
 msgstr ""
 "<center>Здесь вы можете выбрать предпочтительную кодировку для серверов этой "
-"сети. Если вы выберите \"Использовать кодировку системы\", то установится "
-"общесистемное значение определённое в секции \"Кодировка\"</center>"
+"сети. Эта кодировка будет использована для особых потребностей сервера, "
+"таких как "
+"указание ников и имён каналов. Если вы выберите \"Использовать кодировку "
+"системы\", "
+"то установится общесистемное значение определённое в секции \"Кодировка\"<"
+"/center>"
 
 #: src/modules/options/optw_servers.cpp:682
-#, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
 "server. This encoding will be used as the default for text messages.If you "
@@ -554,11 +558,12 @@ msgid ""
 "network that this server belongs to.</center>"
 msgstr ""
 "<center>Здесь вы можете указать предпочтительную кодировку для этого "
-"сервера. Если вы выберите \"Использовать кодировку сети\", то унаследуется "
+"сервера. Эта кодировка будет использоваться по умолчанию для всех текстовых "
+"сообщений. "
+"Если вы выберите \"Использовать кодировку сети\", то унаследуется "
 "кодировка заданная для сети, к которой принадлежит этот сервер.</center>"
 
 #: src/modules/options/optw_servers.cpp:670
-#, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
 "server. This encoding will be used for server specific needs, like "
@@ -567,8 +572,12 @@ msgid ""
 "belongs to.</center>"
 msgstr ""
 "<center>Здесь вы можете указать предпочтительную кодировку для этого "
-"сервера. Если вы выберите \"Использовать кодировку сети\", то унаследуется "
-"кодировка заданная для сети, к которой принадлежит этот сервер.</center>"
+"сервера. Эта кодировка будет использована для особых потребностей сервера, "
+"таких как "
+"указание ников и имён каналов. Если вы выберите \"Использовать кодировку "
+"сети\", "
+"то унаследуется кодировка заданная для сети, к которой принадлежит этот "
+"сервер.</center>"
 
 #: src/modules/options/optw_servers.cpp:1206
 msgid ""
@@ -596,6 +605,11 @@ msgid ""
 "option in the Connection/SSL tab, the TLS protocol will be used for this "
 "server.</center>"
 msgstr ""
+"<center>Этот переключатель помечает сервер как динамически "
+"поддерживающий протокол <b>Transport Layer Security</b>. Если "
+"вы включите соответствующую глобальную опцию  на вкладке "
+"Соединение/SSL, то для этого сервера будет использоваться "
+"протокол TLS.</center>"
 
 #: src/modules/options/optw_servers.cpp:640
 msgid ""
@@ -730,6 +744,11 @@ msgid ""
 "is useful if a user wants to use different data on different networks "
 "without changing them at every connection attempt."
 msgstr ""
+"<center>Это набор правил по использованию профилей. KVIrc будет "
+"использовать их для обработки соединений пользователей прежде "
+"чем данные будут отосланы IRC серверу.<br> Это полезно если "
+"пользователь хочет использовать разные данные в разных сетях"
+"без их изменения при каждой попытке соединения."
 
 #: src/modules/options/optw_servers.cpp:594
 msgid ""
@@ -746,7 +765,6 @@ msgstr ""
 "возможности не будет искать его снова. </center>"
 
 #: src/modules/options/optw_servers.cpp:760
-#, fuzzy
 msgid ""
 "<center>This is the <b>proxy</b> that KVIrc will use to connect to this "
 "server.\n"
@@ -757,7 +775,7 @@ msgid ""
 msgstr ""
 "<center>Это <b>прокси</b> который KVIrc будет использовать для подключения к "
 "этому серверу.\n"
-"Если эта область будет установлена в значение \"По умолчанию \" то KVirc "
+"Если эта область будет установлена в значение \"По умолчанию\" то KVirc "
 "будет использовать глобальные настройки, если это будет установлено в "
 "\"Прямое подключение\" то KVirc соединится с этим сервером без прокси. Вы "
 "можете определить новый прокси-сервер в глобальных опциях меню \"Прокси "
@@ -1096,7 +1114,6 @@ msgstr ""
 "место</center>"
 
 #: src/modules/options/optw_windowlist.cpp:43
-#, fuzzy
 msgid ""
 "<center>This option enables the usage of the window list activity meter. "
 "Each window entry will have a small indicator of the activity that is going "
@@ -1107,7 +1124,7 @@ msgid ""
 "servers). \"Human\" activity causes the indicator to be shaded red while "
 "automated activity causes the indicator to be shaded blue.</center>"
 msgstr ""
-"<center>Эта опция включит индикатор активности панели задач. Каждое окно "
+"<center>Эта опция включит индикатор активности списка окон. Каждое окно "
 "будет иметь небольшой индикатор активности который будет показываться в этом "
 "окне. Индикатор является небольшим квадратиком который изменяет цвета, "
 "чёрный цвет соответствует низкой активности, тогда как яркие цвета "
@@ -1136,7 +1153,6 @@ msgstr ""
 "должны выбрать ниже подмешиваемое к заднему плану изображение.</center>"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:70
-#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
 "choose a blending background image to below or check the \"Use compositing "
@@ -1144,10 +1160,10 @@ msgid ""
 msgstr ""
 "<center>Эта опция делает все окна KVIrc полупрозрачными.<br>Вы должны "
 "выбрать ниже подмешиваемое к заднему плану изображение или включить опцию "
-"\"Использовать десктоп KDE для полупрозрачности\".</center>"
+"\"Использовать композитное расширение для настоящей полупрозрачности\".<"
+"/center>"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:76
-#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
 "choose a blending background image to below or check the \"Use desktop "
@@ -1155,15 +1171,14 @@ msgid ""
 msgstr ""
 "<center>Эта опция делает все окна KVIrc полупрозрачными.<br>Вы должны "
 "выбрать ниже подмешиваемое к заднему плану изображение или включить опцию "
-"\"Использовать десктоп KDE для полупрозрачности\".</center>"
+"\"Использовать фон десктопа для полупрозрачности\".</center>"
 
 #: src/modules/options/optw_highlighting.cpp:107
-#, fuzzy
 msgid ""
 "<center>This option sets the minimum alert level for the window list.</"
 "center>"
 msgstr ""
-"<center>Эта опция задаёт минимальный уровень предупреждений для панели задач."
+"<center>Эта опция задаёт минимальный уровень предупреждений для списка окон."
 "</center>"
 
 #: src/modules/options/optw_channel.cpp:57
@@ -1295,7 +1310,6 @@ msgstr ""
 "установит аватар и у вас в кеше нет его копии.</center>"
 
 #: src/modules/options/optw_irc.cpp:54
-#, fuzzy
 msgid ""
 "<center>This option will cause KVIrc to show the network name as the console "
 "window list entry instead of the server name. This is nice to keep on unless "
@@ -1303,17 +1317,16 @@ msgid ""
 "servers of the same network.</center>"
 msgstr ""
 "<center>Эта опция заставит KVIrc показывать имя сети вместо имени сервера в "
-"списке опций. Это достаточно удобно до тех пор, пока вы не захотите "
+"списке окон. Это достаточно удобно до тех пор, пока вы не захотите "
 "подключиться к двум разным серверам в одной сети</center>"
 
 #: src/modules/options/optw_connection.cpp:126
-#, fuzzy
 msgid ""
 "<center>This option will cause KVIrc to try to reconnect to the server using "
 "an encrypted connection</center>"
 msgstr ""
-"<center>Эта опция заставит KVIrc подключаться к этому IRC серверу при старте."
-"</center>"
+"<center>Эта опция заставит KVIrc пытаться переподключиться к серверу с "
+"использованием зашифрованного соединения</center>"
 
 #: src/modules/options/optw_dcc.cpp:190
 msgid ""
@@ -1332,6 +1345,12 @@ msgid ""
 "other hand, you might want to disable it if you want to rely on the dns "
 "server to provide the best choice.</center>"
 msgstr ""
+"<center>Эта опция заставит сетевой стэк KVIrc выбирать случайную "
+"запись когда возвращается много IP адресов при запросе адреса сервера "
+"у dns. Это не опасно и может исправить некоторые проблемы с кэширующими "
+"серверами dns, которые не правильно чередуют записи в отличие от "
+"официальных серверов. С другой стороны, вы возможно захотите отключить "
+"это если хотите доверить dns серверу сделать выбор.</center>"
 
 #: src/modules/options/optw_connection.cpp:65
 msgid ""
@@ -1601,18 +1620,16 @@ msgid "Active High-Contrast Foreground (Secondary)"
 msgstr "Активный высоко-контрастный передний план (вторичный)"
 
 #: src/modules/options/optw_connection.cpp:200
-#, fuzzy
 msgid "Active window"
-msgstr "Показывать в активном окне"
+msgstr "Активное окно"
 
 #: src/modules/options/optw_texticons.cpp:117
 msgid "Add"
 msgstr "Добавить"
 
 #: src/modules/options/optw_identity.cpp:715
-#, fuzzy
 msgid "Add Profile"
-msgstr "Редактировать профиль"
+msgstr "Добавить профиль"
 
 #: src/modules/options/optw_nickserv.cpp:264
 #: src/modules/options/optw_servers.cpp:307
@@ -2036,9 +2053,8 @@ msgid "Connection"
 msgstr "Соединение"
 
 #: src/modules/options/optw_connection.cpp:201
-#, fuzzy
 msgid "Console"
-msgstr "Окна терминалов"
+msgstr "Консоль"
 
 #: src/modules/options/optw_logging.cpp:44
 msgid "Console windows"
@@ -2079,15 +2095,15 @@ msgstr "DCC/TDCC"
 
 #: src/modules/options/optw_ircview.cpp:194
 msgid "DashDotDotLine"
-msgstr ""
+msgstr "Пунктирная линия с двумя точками"
 
 #: src/modules/options/optw_ircview.cpp:193
 msgid "DashDotLine"
-msgstr ""
+msgstr "Пунктирная линия с точкой"
 
 #: src/modules/options/optw_ircview.cpp:191
 msgid "DashLine"
-msgstr ""
+msgstr "Пунктирная линия"
 
 #: src/modules/options/optw_ircoutput.cpp:58
 msgid "Datetime format"
@@ -2104,10 +2120,11 @@ msgstr "Сообщения при выходе"
 #: src/modules/options/optw_notifier.cpp:159
 msgid "Default auto hiding time for messages (0 to disable)"
 msgstr ""
+"Время автоматического скрытия сообщения по умолчанию (0 чтобы отключить)"
 
 #: src/modules/options/optw_away.cpp:41
 msgid "Default away message:"
-msgstr "Сообщение в режиме Отошёл по умолчанию:"
+msgstr "Сообщение по умолчанию в режиме Отошёл:"
 
 #: src/modules/options/optw_channel.cpp:101
 msgid "Default ban mask:"
@@ -2289,9 +2306,8 @@ msgid "Enable level-based message notification (not a message-type based)"
 msgstr "Включить поуровневое уведомление (независимое от типов сообщений)"
 
 #: src/modules/options/optw_notifier.cpp:152
-#, fuzzy
 msgid "Enable notifier window fade effect"
-msgstr "Отключить мерцание окна извещателя"
+msgstr "Включить эффект растворения окна извещателя"
 
 #: src/modules/options/optw_notifier.cpp:151
 msgid "Enable notifier window flashing"
@@ -2306,9 +2322,8 @@ msgid "Enable target user tracking"
 msgstr "Включить трассировку пользователя"
 
 #: src/modules/options/optw_input.cpp:144
-#, fuzzy
 msgid "Enable the input history logging"
-msgstr "Отключить историю ввода и занимаемую ей память"
+msgstr "Включить запись истории ввода"
 
 #: src/modules/options/optw_notifier.cpp:142
 msgid "Enable the notifier"
@@ -2521,7 +2536,7 @@ msgstr "Верхний предел:"
 
 #: src/modules/options/optw_highlighting.cpp:61
 msgid "Highlight every occurence of a word inside text"
-msgstr ""
+msgstr "Подсвечивать все вхождения слова внутри текста"
 
 #: src/modules/options/optw_highlighting.cpp:68
 msgid "Highlight messages containing my nickname"
@@ -2530,6 +2545,7 @@ msgstr "Подсвечивать сообщения содержащие мой 
 #: src/modules/options/optw_highlighting.cpp:63
 msgid "Highlight only whole words using these word splitters:"
 msgstr ""
+"Подсвечивать только слова целиком, используя следующие разделители слов:"
 
 #: src/modules/options/optw_sound.cpp:290
 msgid "Highlighted message in inactive window"
@@ -2554,7 +2570,7 @@ msgstr "Горизонтальное расположение:"
 
 #: src/modules/options/optw_urlhandlers.cpp:51
 msgid "How many click to open links?"
-msgstr ""
+msgstr "Сколько надо кликов для открытия ссылок?"
 
 #: src/modules/options/optw_sound.cpp:95
 msgid "ID3 tags' encoding"
@@ -2574,13 +2590,12 @@ msgid "IPv6 Settings"
 msgstr "Настройки IPv6"
 
 #: src/modules/options/optw_userlist.cpp:57
-#, fuzzy
 msgid "IRC Op:"
-msgstr "IRC"
+msgstr "Оператор IRC:"
 
 #: src/modules/options/optw_ircoutput.cpp:63
 msgid "ISO 8601 format"
-msgstr ""
+msgstr "Формат ISO 8601"
 
 #: src/modules/options/optw_notify.cpp:86
 msgid "ISON delay (in seconds)"
@@ -2618,9 +2633,8 @@ msgid "Ignore requests if no avatar is set"
 msgstr "Игнорировать запросы, если аватар отсутствует"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:96
-#, fuzzy
 msgid "Ignored Ctcp Requests"
-msgstr "Игнорировать запросы"
+msgstr "Игнорируемые запросы CTCP"
 
 #: src/modules/options/optw_avatar.cpp:52
 #: src/modules/options/optw_avatar.cpp:61
@@ -2680,6 +2694,8 @@ msgstr "Настройки KVIrc"
 #: src/modules/options/optw_channel.cpp:139
 msgid "Keep away list updated by sending WHO requests"
 msgstr ""
+"Поддерживать актуальность списка людей в режиме "
+"away посылая запросы WHO"
 
 #: src/modules/options/optw_channel.cpp:59
 #: src/modules/options/optw_channel.cpp:68
@@ -2805,19 +2821,16 @@ msgstr ""
 "задерживаете курсор мыши на заголовке."
 
 #: src/modules/options/optw_ircview.cpp:179
-#, fuzzy
 msgid "Marker color:"
-msgstr "Цвет фона:"
+msgstr "Цвет маркера:"
 
 #: src/modules/options/optw_ircview.cpp:181
-#, fuzzy
 msgid "Marker size:"
-msgstr "Размер пакета:"
+msgstr "Размер маркера:"
 
 #: src/modules/options/optw_ircview.cpp:184
-#, fuzzy
 msgid "Marker style:"
-msgstr "Стиль сообщений"
+msgstr "Стиль маркера:"
 
 #: src/modules/options/optw_connection.cpp:77
 msgid "Maximum attempts (0: unlimited):"
@@ -2900,46 +2913,40 @@ msgid "Mixer device:"
 msgstr "Устройство микшера:"
 
 #: src/modules/options/optw_urlhandlers.cpp:49
-#, fuzzy
 msgid "Mouse handler"
-msgstr "Обработчики URL"
+msgstr "Обработчик событий мыши"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
 msgstr "Молчать"
 
 #: src/modules/options/optw_identity.cpp:846
-#, fuzzy
 msgid "MyNetwork"
-msgstr "Сеть:"
+msgstr "МояСеть"
 
 #: src/modules/options/optw_identity.cpp:847
 msgid "MyNick"
-msgstr ""
+msgstr "МойНик"
 
 #: src/modules/options/optw_identity.cpp:848
 msgid "MyNick2"
-msgstr ""
+msgstr "МойНик2"
 
 #: src/modules/options/optw_identity.cpp:850
-#, fuzzy
 msgid "MyRealName"
-msgstr "Реальное имя:"
+msgstr "МоёРеальноеИмя"
 
 #: src/modules/options/optw_identity.cpp:849
-#, fuzzy
 msgid "MyUserName"
-msgstr "Имя пользователя:"
+msgstr "МоёИмяПользователя"
 
 #: src/modules/options/optw_identity.cpp:693
-#, fuzzy
 msgid "Name"
-msgstr "Ник"
+msgstr "Имя"
 
 #: src/modules/options/optw_identity.cpp:694
-#, fuzzy
 msgid "Network"
-msgstr "Сеть:"
+msgstr "Сеть"
 
 #: src/modules/options/optw_servers.cpp:97
 msgid "Network Details"
@@ -3061,11 +3068,11 @@ msgstr "Нормальный:"
 
 #: src/modules/options/optw_notifier.cpp:166
 msgid "Notifier window opacity while active (mouseover)"
-msgstr ""
+msgstr "Прозрачность окна извещателя при активности (наведении мыши)"
 
 #: src/modules/options/optw_notifier.cpp:173
 msgid "Notifier window opacity while inactive"
-msgstr ""
+msgstr "Прозрачность окна извещателя при неактивности"
 
 #: src/modules/options/optw_dcc.cpp:186
 msgid "Notify completion in console"
@@ -3235,19 +3242,17 @@ msgid "Paste Server"
 msgstr "Вставить сервер"
 
 #: src/modules/options/optw_channel.cpp:127
-#, fuzzy
 msgid "Paste last channel log"
-msgstr "список пользователей,канал"
+msgstr "Вставить последний лог канала"
 
 #: src/modules/options/optw_query.cpp:92
-#, fuzzy
 msgid "Paste last query log"
-msgstr "список пользователей,канал"
+msgstr "Вставить последний лог привата"
 
 #: src/modules/options/optw_query.cpp:97
 #: src/modules/options/optw_channel.cpp:130
 msgid "Paste up to:"
-msgstr ""
+msgstr "Вставить в:"
 
 #: src/modules/options/optw_mediatypes.cpp:77
 msgid "Pattern"
@@ -3255,13 +3260,15 @@ msgstr "Образец"
 
 #: src/modules/options/optw_connection.cpp:170
 msgid "Pick Random IP Address for Round-Robin Servers"
-msgstr ""
+msgstr "Выбирать случайный IP адрес для серверов Round-Robin"
 
 #: src/modules/options/optw_userlist.cpp:239
 msgid ""
 "Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the "
 "normal nicks"
 msgstr ""
+"Разместить ники, начинающиеся не с букв (такие как _COOL_BOY_) "
+"после нормальных ников"
 
 #: src/modules/options/optw_userlist.cpp:98
 msgid "Plain Grid"
@@ -3281,9 +3288,8 @@ msgstr ""
 "вручную."
 
 #: src/modules/options/optw_dcc.cpp:322
-#, fuzzy
 msgid "Popup notifier on new dcc chat message"
-msgstr "Всплывающее окно извещателя при новых приватных сообщениях"
+msgstr "Всплывающее окно извещателя при новом сообщении чата dcc"
 
 #: src/modules/options/optw_query.cpp:80
 msgid "Popup notifier on new query message"
@@ -3319,9 +3325,8 @@ msgid "Prefix:"
 msgstr "Префикс:"
 
 #: src/modules/options/optw_irc.cpp:77
-#, fuzzy
 msgid "Prepend avatar info to realname"
-msgstr "Добавить невидимый индикатор пола к реальному имени"
+msgstr "Вставить информацию об аватаре перед реальным именем"
 
 #: src/modules/options/optw_irc.cpp:76
 msgid "Prepend gender info to realname"
@@ -3362,19 +3367,16 @@ msgid "Profile"
 msgstr "Профиль"
 
 #: src/modules/options/optw_identity.cpp:843
-#, fuzzy
 msgid "Profile Editor - KVIrc"
-msgstr "Выбор аватара - KVIrc"
+msgstr "Редактор профиля - KVIrc"
 
 #: src/modules/options/optw_identity.cpp:845
-#, fuzzy
 msgid "Profile Name"
-msgstr "Профиль"
+msgstr "Имя профиля"
 
 #: src/modules/options/optw_identity.cpp:854
-#, fuzzy
 msgid "Profile Name:"
-msgstr "Профиль"
+msgstr "Имя профиля:"
 
 #: src/modules/options/optw_windowlist.cpp:96
 #: src/modules/options/optw_windowlist.cpp:254
@@ -3387,9 +3389,8 @@ msgid "Properties"
 msgstr "Свойства"
 
 #: src/modules/options/optw_urlhandlers.cpp:66
-#, fuzzy
 msgid "Protocol handler"
-msgstr "Протокол:"
+msgstr "Обработчик протокола"
 
 #: src/modules/options/optw_proxy.cpp:121
 msgid "Protocol:"
@@ -3409,32 +3410,31 @@ msgstr "Прокси:"
 
 #: src/modules/options/optw_identity.cpp:882
 msgid "Put here the alternative nickname you want to use"
-msgstr ""
+msgstr "Введите здесь альтернативный ник который хотите использовать"
 
 #: src/modules/options/optw_identity.cpp:866
 msgid "Put here the name of the network"
-msgstr ""
+msgstr "Введите здесь имя сети"
 
 #: src/modules/options/optw_identity.cpp:858
 msgid "Put here the name of the profile"
-msgstr ""
+msgstr "Введите здесь имя профиля"
 
 #: src/modules/options/optw_nickserv.cpp:59
 msgid "Put here the nickname that you have registered with NickServ"
 msgstr "Укажите здесь ники под которыми вы зарегистрированы на NickServ"
 
 #: src/modules/options/optw_identity.cpp:874
-#, fuzzy
 msgid "Put here the nickname you want to use"
-msgstr "Укажите здесь ники под которыми вы зарегистрированы на NickServ"
+msgstr "Введите здесь ник который хотите использовать"
 
 #: src/modules/options/optw_identity.cpp:898
 msgid "Put here the realname you want to use"
-msgstr ""
+msgstr "Введите здесь реальное имя которое хотите использовать"
 
 #: src/modules/options/optw_identity.cpp:890
 msgid "Put here the username you want to use"
-msgstr ""
+msgstr "Введите здесь имя пользователя которое хотите использовать"
 
 #: src/modules/options/optw_logging.cpp:41
 msgid "Query windows"
@@ -3467,12 +3467,10 @@ msgid "Real name:"
 msgstr "Реальное имя:"
 
 #: src/modules/options/optw_identity.cpp:698
-#, fuzzy
 msgid "Realname"
-msgstr "Реальное имя:"
+msgstr "Реальное имя"
 
 #: src/modules/options/optw_identity.cpp:894
-#, fuzzy
 msgid "Realname:"
 msgstr "Реальное имя:"
 
@@ -3563,7 +3561,7 @@ msgstr "Параметры хранения загрузок"
 
 #: src/modules/options/optw_logging.cpp:46
 msgid "Save logs to folder:"
-msgstr ""
+msgstr "Сохранять логи в папку:"
 
 #: src/modules/options/optw_mediatypes.cpp:112
 msgid "Save path:"
@@ -3579,11 +3577,11 @@ msgstr "Масштабировать аватар во время загрузк
 
 #: src/modules/options/optw_avatar.cpp:41
 msgid "Scaling in userlist"
-msgstr ""
+msgstr "Масштабирование в списке пользователей"
 
 #: src/modules/options/optw_avatar.cpp:56
 msgid "Scaling on load (and in user tooltips)"
-msgstr ""
+msgstr "Масштабирование при загрузке (и в всплывающей подсказке пользователя)"
 
 #: src/modules/options/optw_tray.cpp:47
 msgid "Select message levels to notify"
@@ -3669,19 +3667,16 @@ msgid "Set maximum button width"
 msgstr "Установить максимальную ширину кнопки"
 
 #: src/modules/options/optw_windowlist.cpp:50
-#, fuzzy
 msgid "Show IRC context indicator in window list"
-msgstr "Показывать контекстный индикатор"
+msgstr "Показывать индикатор контекста IRC в списке окон"
 
 #: src/modules/options/optw_windowlist.cpp:42
-#, fuzzy
 msgid "Show activity meter in window list"
-msgstr "Показывать индикатор активности"
+msgstr "Показывать индикатор активности в списке окон"
 
 #: src/modules/options/optw_userlist.cpp:237
-#, fuzzy
 msgid "Show avatars in userlist"
-msgstr "Масштабировать аватар (рекомендуется)"
+msgstr "Показывать аватаров в списке пользователей"
 
 #: src/modules/options/optw_messages.cpp:95
 msgid "Show channel mode prefix"
@@ -3712,9 +3707,8 @@ msgid "Show header"
 msgstr "Показать заголовок"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:44
-#, fuzzy
 msgid "Show icons in popup menus"
-msgstr "Скрыть иконки в всплывающем меню"
+msgstr "Показывать иконки в всплывающих меню"
 
 #: src/modules/options/optw_ircoutput.cpp:69
 msgid "Show in active window"
@@ -3726,7 +3720,7 @@ msgstr "Показывать информацию о собеседнике в �
 
 #: src/modules/options/optw_userlist.cpp:235
 msgid "Show label with userlist stats"
-msgstr ""
+msgstr "Показывать метки со статистикой списка пользователя"
 
 #: src/modules/options/optw_lag.cpp:63
 msgid "Show lag in IRC context display"
@@ -3737,9 +3731,8 @@ msgid "Show message icons"
 msgstr "Показывать иконки сообщений"
 
 #: src/modules/options/optw_irc.cpp:53
-#, fuzzy
 msgid "Show network name in console window list entry"
-msgstr "Показывать имя сети вместо имени сервера в списке каналов"
+msgstr "Показывать имя сети в списке окон"
 
 #: src/modules/options/optw_messages.cpp:93
 msgid "Show nicknames in bold"
@@ -3782,9 +3775,8 @@ msgid "Show user channel icons"
 msgstr "Показывать иконки пользователей на канале"
 
 #: src/modules/options/optw_windowlist.cpp:41
-#, fuzzy
 msgid "Show window icons in window list"
-msgstr "Показывать иконки окон в панели задач"
+msgstr "Показывать иконки окон в списке окон"
 
 #: src/modules/options/optw_antispam.cpp:45
 msgid "Silent anti-spam (no warnings)"
@@ -3792,11 +3784,11 @@ msgstr "Молчаливый антиспам (без предупреждени
 
 #: src/modules/options/optw_urlhandlers.cpp:53
 msgid "Single click"
-msgstr ""
+msgstr "Один клик"
 
 #: src/modules/options/optw_ircview.cpp:192
 msgid "SolidLine"
-msgstr ""
+msgstr "Сплошная линия"
 
 #: src/modules/options/optw_dcc.cpp:181
 msgid "Sort saved files by nicknames (create subfolders)"
@@ -3820,12 +3812,11 @@ msgstr "Вырезать цвета в файлах логов"
 
 #: src/modules/options/optw_logging.cpp:47
 msgid "Strip message type numbers in logs"
-msgstr ""
+msgstr "Вырезать номера типа сообщения в файлах логов"
 
 #: src/modules/options/optw_servers.cpp:647
-#, fuzzy
 msgid "Supports STARTTLS protocol"
-msgstr "Использовать SSL"
+msgstr "Поддержка протокола STARTTLS"
 
 #: src/modules/options/optw_ircoutput.cpp:64
 msgid "System locale format"
@@ -3893,7 +3884,7 @@ msgstr "Настройки темы"
 
 #: src/modules/options/optw_identity.cpp:974
 msgid "There is already a profile with that name"
-msgstr ""
+msgstr "Уже есть профиль с таким именем"
 
 #: src/modules/options/optw_sound.cpp:97
 msgid "This allows you to select encoding of mp3 tags."
@@ -3925,7 +3916,7 @@ msgstr "Эта опция включает автоматическую иден
 
 #: src/modules/options/optw_identity.cpp:682
 msgid "This check enables the use of network profiles"
-msgstr ""
+msgstr "Этот переключатель включает использование сетевых профилей"
 
 #: src/modules/options/dialog.cpp:122
 msgid ""
@@ -4034,6 +4025,8 @@ msgid ""
 "This option will force a static font for every widget that has no specific "
 "font setting"
 msgstr ""
+"Эта опция установит шрифт для каждого виджета, у которого нет "
+"указанных настроек шрифта"
 
 #: src/modules/options/optw_tools.cpp:40
 msgid ""
@@ -4082,12 +4075,11 @@ msgstr "Формат отметки времени"
 
 #: src/modules/options/optw_notifier.cpp:41
 msgid "Title Font"
-msgstr ""
+msgstr "Шрифт заголовка"
 
 #: src/modules/options/optw_notifier.cpp:42
-#, fuzzy
 msgid "Title Foreground color"
-msgstr "Цвет переднего плана"
+msgstr "Цвет переднего плана заголовка"
 
 #: src/modules/options/optw_ircview.cpp:70
 #: src/modules/options/optw_notifier.cpp:60
@@ -4203,9 +4195,8 @@ msgid "Use bash-like nick completion"
 msgstr "Использовать bash-стиль завершения ников"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:100
-#, fuzzy
 msgid "Use compositing for real transparency"
-msgstr "Использовать десктоп КДЕ для полупрозрачности"
+msgstr "Использовать композитное расширение для настоящей полупрозрачности"
 
 #: src/modules/options/optw_highlighting.cpp:102
 msgid "Use custom alert level"
@@ -4216,9 +4207,8 @@ msgid "Use default user mode"
 msgstr "Использовать режимы по умолчанию"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:116
-#, fuzzy
 msgid "Use desktop background for transparency"
-msgstr "Использовать десктоп КДЕ для полупрозрачности"
+msgstr "Использовать фон десктопа для полупрозрачности"
 
 #: src/modules/options/optw_userlist.cpp:68
 msgid "Use different color for own nick:"
@@ -4233,9 +4223,8 @@ msgid "Use flat buttons"
 msgstr "Использовать плоские кнопки"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:83
-#, fuzzy
 msgid "Use flood protection for CTCP requests (recommended)"
-msgstr "Использовать защиту от флуда (рекомендуется)"
+msgstr "Использовать защиту от флуда для запросов CTCP (рекомендуется)"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:42
 msgid "Use global application font"
@@ -4262,18 +4251,16 @@ msgid "Use special color for timestamps"
 msgstr "использовать специальный цвет для меток времени"
 
 #: src/modules/options/optw_messages.cpp:83
-#, fuzzy
 msgid "Use specified colors for own nick:"
-msgstr "Использовать другой цвет для своего ника:"
+msgstr "Использовать указанные цвета для своего ника:"
 
 #: src/modules/options/optw_urlhandlers.cpp:69
 msgid "Use system URL handlers"
 msgstr "Использовать системные обработчики URL"
 
 #: src/modules/options/optw_connection.cpp:125
-#, fuzzy
 msgid "Use the STARTTLS security protocol if available"
-msgstr "Использовать WATCH метод если возможно"
+msgstr "Использовать протокол безопасности STARTTLS если возможно"
 
 #: src/modules/options/optw_notify.cpp:75
 msgid "Use the WATCH method if available"
@@ -4284,9 +4271,8 @@ msgid "Use the completion postfix string for the first word only"
 msgstr "Использовать это окончание только если ник - первое слово"
 
 #: src/modules/options/optw_windowlist.cpp:39
-#, fuzzy
 msgid "Use tree window list"
-msgstr "Использовать онлайн список уведомлений"
+msgstr "Использовать список окон в виде дерева"
 
 #: src/modules/options/optw_dcc.cpp:74
 msgid "Use user-defined address or network interface"
@@ -4305,9 +4291,8 @@ msgid "Use workaround for firewall"
 msgstr "Использовать обход для фаервола"
 
 #: src/modules/options/optw_input.cpp:152
-#, fuzzy
 msgid "Use zsh-like nick completion"
-msgstr "Использовать bash-стиль завершения ников"
+msgstr "Использовать zsh-стиль завершения ников"
 
 #: src/modules/options/optw_servers.cpp:541
 #: src/modules/options/optw_identity.cpp:634
@@ -4327,9 +4312,8 @@ msgid "User-op:"
 msgstr "Пользователь-оператор:"
 
 #: src/modules/options/optw_identity.cpp:697
-#, fuzzy
 msgid "Username"
-msgstr "Имя пользователя:"
+msgstr "Имя пользователя"
 
 #: src/modules/options/optw_servers.cpp:130
 #: src/modules/options/optw_servers.cpp:513
