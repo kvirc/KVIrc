@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2010-01-30 20:32+0300\n"
+"PO-Revision-Date: 2010-01-31 19:39+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
 "MIME-Version: 1.0\n"
@@ -294,6 +294,8 @@ msgid ""
 "This looks a lot like an object handle dereferencing operator '->' but in "
 "fact it isn't. Maybe you forgot a '$' just after?"
 msgstr ""
+"Похоже на оператор разыменования указателя но объект '->', но на "
+"самом деле это не так. Возможно вы забыли после него '$'?"
 
 #: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:753
 msgid "Missing right operand for operator '-='"
@@ -568,7 +570,7 @@ msgstr "Неожиданный пустой операнд выражения"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:90
 msgid "say: injected commandline"
-msgstr ""
+msgstr "say: внутрь текста вставлена команда"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:93
 msgid "Say parse error: Broken command"
@@ -618,13 +620,13 @@ msgstr "Не задана маска/канал, и текущее окно не
 msgid ""
 "Empty window identifier specified in the standard rebinding switch: no "
 "rebinding performed"
-msgstr ""
+msgstr "Ошибка команды rebind: указан пустой идентификатор окна"
 
 #: src/kvirc/kvs/kvi_kvs_treenode_rebindingswitch.cpp:89
 msgid ""
 "Invalid window specified in the standard rebinding switch: no rebinding "
 "performed"
-msgstr ""
+msgstr "Ошибка команды rebind: указано недействительное окно"
 
 #: src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:91
 msgid ""
@@ -748,6 +750,8 @@ msgid ""
 "Detected a loop in the inheritance tree of the base class '%Q': redefine "
 "that class first"
 msgstr ""
+"Обнаружен цикл в дереве наследования базового класса '%Q':  "
+"сначала переопределите тот класс"
 
 #: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:144
 msgid "Can't override the builtin class '%Q'"
@@ -1025,6 +1029,8 @@ msgid ""
 "The specified format string wasn't accepted by the underlying system time "
 "formatting function"
 msgstr ""
+"Указанная строка формата не была принята нижележащей функцией "
+"форматирования системного времени"
 
 #: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:59
 msgid "Unterminated c-style multiline comment"

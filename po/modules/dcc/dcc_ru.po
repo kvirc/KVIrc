@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: dcc_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2010-01-30 20:14+0300\n"
+"PO-Revision-Date: 2010-01-31 18:54+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
 "MIME-Version: 1.0\n"
@@ -72,7 +72,7 @@ msgstr "&Пятиугольник"
 
 #: src/modules/dcc/canvaswidget.cpp:1481
 msgid "&Pie"
-msgstr ""
+msgstr "&Сектор"
 
 #: src/modules/dcc/canvaswidget.cpp:1493
 msgid "&Polygons"
@@ -773,6 +773,9 @@ msgid ""
 "The above request is broken: it looks like a zero port tag acknowledge but I "
 "have either never seen this tag or it was sent more than 120 seconds ago"
 msgstr ""
+"Запрос выше сломан: похоже на тэг подтверждения нулевого порта, "
+"но я или не видел этот тэг, или он был послан больше чем 120 секунд "
+"назад"
 
 #: src/modules/dcc/broker.cpp:291
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
@@ -1063,4 +1066,5 @@ msgstr "байт/сек"
 #: src/modules/dcc/requests.cpp:143
 msgid "unknown"
 msgstr "неизвестный"
+
 
