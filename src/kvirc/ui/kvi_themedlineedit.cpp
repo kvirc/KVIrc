@@ -64,7 +64,7 @@ void KviThemedLineEdit::applyOptions()
 
 void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 {
-	QPainter p(this);
+	QPainter *p = new QPainter(this);
 	QRect r = rect();
 	QPalette pal = palette();
 	QStyleOptionFrameV2 option;
@@ -85,35 +85,34 @@ void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 	r.setY(r.y() + top);
 	r.setRight(r.right() - right);
 	r.setBottom(r.bottom() - bottom);
-	p.setClipRect(r);
+	p->setClipRect(r);
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
-		p.save();
-		p.setCompositionMode(QPainter::CompositionMode_Source);
+		p->setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p.fillRect(contentsRect(), col);
-		p.restore();
+		p->fillRect(contentsRect(), col);
+		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = mapToGlobal(contentsRect().topLeft());
-		p.drawTiledPixmap(contentsRect(),*g_pShadedChildGlobalDesktopBackground,pnt);
+		p->drawTiledPixmap(contentsRect(),*g_pShadedChildGlobalDesktopBackground,pnt);
 	} else {
 #endif
 
 		if(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap())
 		{
-			p.drawTiledPixmap(contentsRect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap()));
+			p->drawTiledPixmap(contentsRect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap()));
 		} else {
-			p.fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorLabelBackground));
+			p->fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorLabelBackground));
 		}
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
-
+	delete p;
 	QLineEdit::paintEvent(event);
 }
 
