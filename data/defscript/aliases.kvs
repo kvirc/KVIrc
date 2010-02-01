@@ -204,9 +204,9 @@ alias(q)
 	if(!$0)
 	{
 		echo $tr("Usage:")
-		echo "		/q <nick>"
+		echo "		/q <nicklist> [message]"
 	} else {
-		query $0-
+		query $0 $1-
 	}
 }
 
