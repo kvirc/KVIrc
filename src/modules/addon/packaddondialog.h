@@ -97,11 +97,12 @@ protected:
 	bool packAddon();
 
 	/**
-	* \brief Ensures the source directory is complete
+	* \brief Ensures the sources directory is complete
 	* \param pszError The buffer containing errors
+	* \param pszWarning The buffer containing warnings
 	* \return bool
 	*/
-	bool checkDirTree(QString * pszError);
+	bool checkDirTree(QString * pszError, QString * pszWarning);
 
 	/**
 	* \brief Creates the installer file

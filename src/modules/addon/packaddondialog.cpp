@@ -125,9 +125,10 @@ void KviPackAddonDialog::accept()
 	QWizard::accept();
 }
 
-bool KviPackAddonDialog::checkDirTree(QString * pszError)
+bool KviPackAddonDialog::checkDirTree(QString * pszError, QString * pszWarning)
 {
 	if(pszError) *pszError = "";
+	if(pszWarning) *pszWarning = "";
 
 	QDir addon(m_szDirPath);
 	if(!addon.exists())
@@ -146,36 +147,36 @@ bool KviPackAddonDialog::checkDirTree(QString * pszError)
 	QDir locale(m_szDirPath + "/locale");
 	if(!locale.exists())
 	{
-		*pszError = __tr2qs_ctx("The translations directory (locale) does not exist.","addon");
-		return false;
+		*pszWarning += __tr2qs_ctx("The translations directory (locale) does not exist.","addon");
+		*pszWarning += "\n";
 	}
 
 	QDir sound(m_szDirPath + "/sound");
 	if(!sound.exists())
 	{
-		*pszError = __tr2qs_ctx("The sounds directory (sound) does not exist.","addon");
-		return false;
+		*pszWarning += __tr2qs_ctx("The sounds directory (sound) does not exist.","addon");
+		*pszWarning += "\n";
 	}
 
 	QDir pics(m_szDirPath + "/pics");
 	if(!pics.exists())
 	{
-		*pszError = __tr2qs_ctx("The pictures directory (pics) does not exist.","addon");
-		return false;
+		*pszWarning += __tr2qs_ctx("The pictures directory (pics) does not exist.","addon");
+		*pszWarning += "\n";
 	}
 
 	QDir config(m_szDirPath + "/config");
 	if(!config.exists())
 	{
-		*pszError = __tr2qs_ctx("The configurations directory (config) does not exist.","addon");
-		return false;
+		*pszWarning += __tr2qs_ctx("The configurations directory (config) does not exist.","addon");
+		*pszWarning += "\n";
 	}
 
 	QDir help(m_szDirPath + "/help");
 	if(!help.exists())
 	{
-		*pszError = __tr2qs_ctx("The help directory (help) does not exist.","addon");
-		return false;
+		*pszWarning += __tr2qs_ctx("The help directory (help) does not exist.","addon");
+		*pszWarning += "\n";
 	}
 
 	QFileInfo init(m_szDirPath + "/init.kvs");
@@ -279,8 +280,6 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
 
 bool KviPackAddonDialog::packAddon()
 {
-	QString szError;
-
 	// Get data from registered fields
 	m_szAuthor = field("packageAuthor").toString();
 	m_szName = field("packageName").toString();
@@ -292,7 +291,9 @@ bool KviPackAddonDialog::packAddon()
 	m_szSavePath = field("packageSavePath").toString();
 
 	// Check the addon tree
-	if(!checkDirTree(&szError))
+	QString szError, szWarning;
+	
+	if(!checkDirTree(&szError,&szWarning))
 	{
 		QMessageBox::critical(this,
 			__tr2qs_ctx("Addon Packaging Error","addon"),
@@ -300,7 +301,15 @@ bool KviPackAddonDialog::packAddon()
 		);
 		return false;
 	}
-
+	
+	if(szWarning != "")
+	{
+		QMessageBox::warning(this,
+			__tr2qs_ctx("Addon Packaging Warning","addon"),
+			szWarning,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
+		);
+	}
+	
 	// Raise the files summary dialog
 	m_pPackAddonSummaryFilesWidget = new KviPackAddonSummaryFilesWidget(this);
 	m_pPackAddonSummaryFilesWidget->setPath(m_szDirPath);
@@ -324,21 +333,8 @@ bool KviPackAddonDialog::packAddon()
 	m_szSavePath.replace("\\","/");
 
 	QString szTmp;
-	QDateTime date = QDateTime::currentDateTime();
+	szTmp = QDateTime::currentDateTime().toString();
 
-	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
-	{
-		case 0:
-			szTmp = date.toString();
-			break;
-		case 1:
-			szTmp = date.toString(Qt::ISODate);
-			break;
-		case 2:
-			szTmp = date.toString(Qt::SystemLocaleDate);
-			break;
-	}
-		
 	KviPackageWriter pw;
 	pw.addInfoField("PackageType","AddonPack");
 	pw.addInfoField("AddonPackVersion",KVI_CURRENT_ADDONS_ENGINE_VERSION);
