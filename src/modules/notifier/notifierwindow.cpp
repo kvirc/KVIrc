@@ -89,6 +89,7 @@ KviNotifierWindow::KviNotifierWindow()
 
 	setFocusPolicy(Qt::NoFocus);
 	setMouseTracking(true);
+	setAutoFillBackground(false);
 
 	hide();
 
@@ -548,7 +549,7 @@ void KviNotifierWindow::paintEvent(QPaintEvent *e)
 		p.setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p.fillRect(rect(), col);
+		p.fillRect(e->rect(), col);
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
@@ -558,9 +559,8 @@ void KviNotifierWindow::paintEvent(QPaintEvent *e)
 #endif
 		QPixmap * pPix = KVI_OPTION_PIXMAP(KviOption_pixmapNotifierBackground).pixmap();
 
-		p.fillRect(rect(),KVI_OPTION_COLOR(KviOption_colorNotifierBackground));
-		if(pPix)
-			KviPixmapUtils::drawPixmapWithPainter(&p,pPix,KVI_OPTION_UINT(KviOption_uintNotifierPixmapAlign),rect(),width(),height());
+		if(pPix) KviPixmapUtils::drawPixmapWithPainter(&p,pPix,KVI_OPTION_UINT(KviOption_uintNotifierPixmapAlign),e->rect(),e->rect().width(),e->rect().height());
+		else p.fillRect(e->rect(),KVI_OPTION_COLOR(KviOption_colorNotifierBackground));
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif

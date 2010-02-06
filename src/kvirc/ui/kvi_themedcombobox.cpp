@@ -26,6 +26,7 @@
 #include "kvi_options.h"
 #include "kvi_settings.h"
 #include "kvi_app.h"
+#include "kvi_frame.h"
 #include "kvi_window.h"
 
 #include <QPainter>
@@ -100,18 +101,17 @@ void KviThemedComboBox::paintEvent ( QPaintEvent * event )
 		p->fillRect(contentsRect(), col);
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapToGlobal(contentsRect().topLeft());
-		p->drawTiledPixmap(contentsRect(),*g_pShadedChildGlobalDesktopBackground,pnt);
+		QPoint pnt = mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
-
-		if(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap())
+		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeWindowListBackground).pixmap();
+		if(pix)
 		{
-			p->drawTiledPixmap(contentsRect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap()));
+			KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),contentsRect(),contentsRect().width(),contentsRect().height());
 		} else {
-			p->fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorLabelBackground));
+			p->fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
 		}
-
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif

@@ -192,8 +192,8 @@ void KviFileTransferWidget::paintEvent(QPaintEvent * event)
 		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = viewport()->mapToGlobal(rect.topLeft());
-		p->drawTiledPixmap(rect,*g_pShadedChildGlobalDesktopBackground,pnt);
+		QPoint pnt = viewport()->mapTo(g_pFrame, rect.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		p->drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
 		//FIXME this is not the treewindowlist

@@ -194,16 +194,16 @@ void KviToolBarGraphicalApplet::paintEvent(QPaintEvent *e)
 		pa.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapToGlobal(QPoint(0,0));
-		pa.drawTiledPixmap(e->rect().left(),e->rect().top(),e->rect().width(),e->rect().height(),*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
+		QPoint pnt = mapTo(g_pFrame, rect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		pa.drawTiledPixmap(rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
-		if(KVI_OPTION_PIXMAP(KviOption_pixmapIrcToolBarAppletBackground).pixmap())
+		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapIrcToolBarAppletBackground).pixmap();
+		if(pix)
 		{
-			QPoint pnt = mapToGlobal(QPoint(0,0));
-			pa.drawTiledPixmap(e->rect().left(),e->rect().top(),e->rect().width(),e->rect().height(),*(KVI_OPTION_PIXMAP(KviOption_pixmapIrcToolBarAppletBackground).pixmap()),pnt.x(),pnt.y());
+			KviPixmapUtils::drawPixmapWithPainter(&pa,pix,KVI_OPTION_UINT(KviOption_pixmapIrcToolBarAppletBackground),rect(),rect().width(),rect().height());
 		} else {
-			pa.fillRect(e->rect().left(),e->rect().top(),e->rect().width(),e->rect().height(),KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletBackground));
+			pa.fillRect(rect(),KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletBackground));
 		}
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}

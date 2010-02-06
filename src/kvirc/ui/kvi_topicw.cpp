@@ -59,11 +59,6 @@ extern KviColorWindow * g_pColorWindow;
 #define KVI_LABEL_DEF_BACK 100
 #define KVI_LABEL_DEF_FORE 101
 
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
-#endif
-
-
 extern QStringList  * g_pRecentTopicList;
 
 KviTopicListBoxItemDelegate::KviTopicListBoxItemDelegate(QAbstractItemView * pWidget)

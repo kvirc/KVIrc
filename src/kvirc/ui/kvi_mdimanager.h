@@ -35,6 +35,7 @@
 #include "kvi_mdichild.h"
 
 #include <QMdiArea>
+#include <QScrollBar>
 
 class KviFrame;
 class KviTalPopupMenu;
@@ -151,7 +152,12 @@ public:
 	* \return bool
 	*/
 	inline bool isInSDIMode() { return m_bInSDIMode; };
-	
+
+	/**
+	* \brief Returns the current scrollbar offsets
+	* \return QPoint
+	*/
+	inline QPoint scrollBarsOffset() { return QPoint(horizontalScrollBar()->value(), verticalScrollBar()->value()); };
 protected:
 	/**
 	* \brief Sets if we are in SDI mode

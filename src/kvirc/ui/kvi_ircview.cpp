@@ -1000,11 +1000,9 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	/*
 	 * Profane description: we start the real paint here: set some geometry, a font, and paint the background
 	 */
-	int rectLeft   = r.x();
 	int rectTop    = r.y();
 	int rectHeight = r.height();
 	int rectBottom = rectTop + rectHeight;
-	int rectWidth  = r.width();
 
 	QPainter pa(this);
 
@@ -1030,18 +1028,18 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		pa.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapToGlobal(QPoint(rectLeft,rectTop));
-		pa.drawTiledPixmap(rectLeft,rectTop,rectWidth,rectHeight,*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
+		QPoint pnt = mapTo(g_pFrame, r.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		pa.drawTiledPixmap(r,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
 		QPixmap * pix = m_pPrivateBackgroundPixmap;
 
 		if(!pix)
 			pix = KVI_OPTION_PIXMAP(KviOption_pixmapIrcViewBackground).pixmap();
-
-		pa.fillRect(rectLeft,rectTop,rectWidth,rectHeight,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
 		if(pix)
 			KviPixmapUtils::drawPixmapWithPainter(&pa,pix,KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign),r,widgetWidth,widgetHeight);
+		else 
+			pa.fillRect(r,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif

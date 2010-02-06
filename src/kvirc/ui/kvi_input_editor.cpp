@@ -28,6 +28,7 @@
 #include "kvi_colorwin.h"
 #include "kvi_console.h"
 #include "kvi_fileextensions.h"
+#include "kvi_frame.h"
 #include "kvi_input.h"
 #include "kvi_input_editor.h"
 #include "kvi_input_history.h"
@@ -255,17 +256,17 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapToGlobal(contentsRect().topLeft());
-		p.drawTiledPixmap(r,*g_pShadedChildGlobalDesktopBackground,pnt);
+		QPoint pnt = mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		p.drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
-		if(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap())
+		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap();
+		if(pix)
 		{
-			p.drawTiledPixmap(r,*(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap()));
+			KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),contentsRect(),contentsRect().width(),contentsRect().height());
 		} else {
-			p.fillRect(r,KVI_OPTION_COLOR(KviOption_colorLabelBackground));
+			p.fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorLabelBackground));
 		}
-
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif

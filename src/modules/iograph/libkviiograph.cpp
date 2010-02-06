@@ -106,12 +106,12 @@ void KviIOGraphWindow::paintEvent(QPaintEvent * e)
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapToGlobal(rect.topLeft());
-		p.drawTiledPixmap(rect,*g_pShadedChildGlobalDesktopBackground,pnt);
+		QPoint pnt = mapTo(g_pFrame, rect.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		p.drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
-		p.fillRect(rect, QColor("#000000"));
-//		p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorIOGraphBackground));
+		//FIXME this is not the treewindowlist
+		p.fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif

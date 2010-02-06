@@ -122,8 +122,8 @@ void KviUrlDialogTreeWidget::paintEvent(QPaintEvent * event)
 		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = viewport()->mapToGlobal(rect.topLeft());
-		p->drawTiledPixmap(rect,*g_pShadedChildGlobalDesktopBackground,pnt);
+		QPoint pnt = viewport()->mapTo(g_pFrame, rect.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		p->drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
 		//FIXME this is not the treewindowlist
@@ -131,6 +131,7 @@ void KviUrlDialogTreeWidget::paintEvent(QPaintEvent * event)
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
+
 	delete p;
 
 	//call paint on all childrens

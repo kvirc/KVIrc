@@ -51,7 +51,6 @@
 #include <QLabel>
 #include <QToolButton>
 
-
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	#include <QPixmap>
 	extern QPixmap * g_pShadedParentGlobalDesktopBackground;
@@ -80,6 +79,7 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 	m_pTileMethodPopup = new KviTalPopupMenu(this);
 	connect(m_pTileMethodPopup,SIGNAL(activated(int)),this,SLOT(tileMethodMenuActivated(int)));
 
+	setAutoFillBackground(false);
 	viewport()->setAutoFillBackground(false);
 
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
@@ -101,20 +101,20 @@ void KviMdiManager::paintEvent(QPaintEvent * e)
 		p.setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) / (float)100));
-		p.fillRect(rect(), col);
+		p.fillRect(e->rect(), col);
 		p.restore();
 		return;
 	} else if(g_pShadedParentGlobalDesktopBackground)
 	{
-		QPoint pnt = viewport()->mapToGlobal(e->rect().topLeft());
+		QPoint pnt = viewport()->mapTo(g_pFrame, e->rect().topLeft() + scrollBarsOffset());
 		p.drawTiledPixmap(e->rect(),*(g_pShadedParentGlobalDesktopBackground), pnt);
 		return;
 	}
 #endif
 	if(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap())
 	{
-		QPoint pnt = viewport()->mapToGlobal(e->rect().topLeft());
-		p.drawTiledPixmap(e->rect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap()),pnt);
+		QPoint pnt = viewport()->mapTo(g_pFrame, e->rect().topLeft() + scrollBarsOffset());
+		p.drawTiledPixmap(e->rect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap()), pnt);
 	} else {
 		p.fillRect(e->rect(),KVI_OPTION_COLOR(KviOption_colorMdiBackground));
 	}

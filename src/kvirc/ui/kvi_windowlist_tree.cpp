@@ -265,16 +265,14 @@ void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = viewport()->mapToGlobal(rect.topLeft());
-		p->drawTiledPixmap(rect,*g_pShadedChildGlobalDesktopBackground,pnt);
+		QPoint pnt = mapTo(g_pFrame, rect.topLeft());
+		p->drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
 		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeWindowListBackground).pixmap();
 		if(pix)
 		{
-			QPoint pnt = rect.topLeft();
-
-			KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),rect,viewport()->width(),viewport()->height(),pnt.x(),pnt.y());
+			KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),rect,viewport()->width(),viewport()->height());
 		} else {
 			p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
 		}

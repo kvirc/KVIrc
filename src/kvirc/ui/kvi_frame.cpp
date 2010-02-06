@@ -92,7 +92,8 @@ KviFrame::KviFrame()
 : KviTalMainWindow(0,"kvirc_frame")
 {
 	g_pFrame = this;
-
+	setAutoFillBackground(false);
+	
 	m_pWinList  = new KviPointerList<KviWindow>;
 	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
 	m_pWinList->setAutoDelete(false);

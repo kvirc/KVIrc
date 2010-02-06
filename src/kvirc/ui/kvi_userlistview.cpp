@@ -1712,18 +1712,21 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 		p.setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p.fillRect(rect(), col);
+		p.fillRect(r, col);
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapToGlobal(QPoint(r.left(),r.top()));
-		p.drawTiledPixmap(r.left(),r.top(),width(),r.height(),*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
+		QPoint pnt = mapTo(g_pFrame, r.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		p.drawTiledPixmap(r,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
-		QPixmap * pPix = KVI_OPTION_PIXMAP(KviOption_pixmapUserListViewBackground).pixmap();
-		p.fillRect(r.left(),r.top(),width(),r.height(),KVI_OPTION_COLOR(KviOption_colorUserListViewBackground));
-		if(pPix)
-			KviPixmapUtils::drawPixmapWithPainter(&p,pPix,KVI_OPTION_UINT(KviOption_uintUserListPixmapAlign),r,width(),height());
+		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapUserListViewBackground).pixmap();
+		if(pix)
+		{
+			KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintUserListPixmapAlign),r,r.width(),r.height());
+		} else {
+			p.fillRect(r,KVI_OPTION_COLOR(KviOption_colorUserListViewBackground));
+		}
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
