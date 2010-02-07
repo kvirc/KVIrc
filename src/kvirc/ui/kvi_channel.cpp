@@ -646,6 +646,7 @@ void KviChannel::setDeadChan()
 	m_pBanList->clear();
 	m_pBanExceptionList->clear();
 	m_pInviteList->clear();
+	m_pTopicWidget->reset();
 
 	m_pActionHistory->clear();
 	m_uActionHistoryHotActionCount = 0;

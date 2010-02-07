@@ -114,10 +114,11 @@ KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
 	m_pInput = 0;
 	m_pLabel = 0;
 	setAutoFillBackground(false);
-	reset();
 
 	m_pLabel = new KviThemedLabel(this, "topic_label");
 	connect(m_pLabel,SIGNAL(doubleClicked()),this,SLOT(switchMode()));
+	
+	reset();
 	
 	m_pCompletionBox=new KviTalListWidget(this,"topic_completion_box",Qt::Popup);
 	m_pCompletionBox->setFont( font() );
@@ -150,7 +151,8 @@ void KviTopicWidget::popDownListBox()
 void KviTopicWidget::reset()
 {
 	KviTalToolTip::remove(this);
-	m_szTopic = __tr2qs("Unknown");
+	m_szTopic = "";
+	m_pLabel->setText(KviHtmlGenerator::convertToHtml(__tr2qs("Unknown")));
 	KviTalToolTip::add(this,__tr2qs("No topic message has been received from the server yet"));
 	m_szSetAt = "";
 	m_szSetBy = "";
