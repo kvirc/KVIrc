@@ -1606,6 +1606,13 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 				szBuffer += __tr2qs("Quiet for <b>%1h %2m %3s</b>").arg(iHours).arg(iMins).arg(iSecs);
 				szBuffer += "</font></nobr></td></tr>";
 			}
+			
+			if(pEntry->m_pGlobalData->isIrcOp())
+			{
+				szBuffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
+				szBuffer += __tr2qs("%1 is an <b>IrcOp</b>").arg(pEntry->m_szNick);
+				szBuffer += "</font></nobr></td></tr>";
+			}
 			szBuffer += "</table>";
 
 			pTip->doTip(itRect,szBuffer);
