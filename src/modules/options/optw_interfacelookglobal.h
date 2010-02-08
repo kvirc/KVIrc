@@ -60,8 +60,9 @@ protected:
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	KviPixmapSelector * m_pGlobalBackgroundPixmapSelector;
 	KviBoolSelector * m_pUseTransparencyBoolSelector;
-	KviBoolSelector * m_pUseCompositingForTransparencyBoolSelector;
-	#if defined(COMPILE_ON_MINGW) // || defined(COMPILE_ON_WINDOWS)
+	#ifdef COMPILE_X11_SUPPORT
+		KviBoolSelector * m_pUseCompositingForTransparencyBoolSelector;
+	#elif defined(COMPILE_ON_MINGW) // || defined(COMPILE_ON_WINDOWS)
 		KviBoolSelector * m_pUseWindowsFakeDesktopTransparencyBoolSelector;
 	#endif
 #endif
