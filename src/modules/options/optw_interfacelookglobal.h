@@ -61,7 +61,7 @@ protected:
 	KviPixmapSelector * m_pGlobalBackgroundPixmapSelector;
 	KviBoolSelector * m_pUseTransparencyBoolSelector;
 	KviBoolSelector * m_pUseCompositingForTransparencyBoolSelector;
-	#elif defined(COMPILE_ON_MINGW) // || defined(COMPILE_ON_WINDOWS)
+	#if defined(COMPILE_ON_MINGW) // || defined(COMPILE_ON_WINDOWS)
 		KviBoolSelector * m_pUseWindowsFakeDesktopTransparencyBoolSelector;
 	#endif
 #endif
