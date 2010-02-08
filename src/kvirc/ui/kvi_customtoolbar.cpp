@@ -75,13 +75,15 @@ KviCustomToolBar::~KviCustomToolBar()
 void KviCustomToolBar::paintEvent(QPaintEvent * e)
 {
 	KviToolBar::paintEvent(e);
+
 	if(KviActionManager::customizingToolBars() && (KviActionManager::currentToolBar() == this))
 	{
-		QPainter p(this);
+		QPainter *p = new QPainter(this);
 		QPalette pal=palette();
 		QColor col=pal.highlight().color();
 		col.setAlpha(127);
-		p.fillRect(rect(),QBrush(col));
+		p->fillRect(rect(),QBrush(col));
+		delete p;
 	}
 }
 

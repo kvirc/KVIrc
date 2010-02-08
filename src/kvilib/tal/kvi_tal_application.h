@@ -61,15 +61,6 @@ public:
 	*/
 	KviTalApplication(int & iArgc, char ** ppcArgv);
 
-#ifdef COMPILE_X11_SUPPORT
-	/**
-	* \brief Constructs the application object
-	* \param iArgc The number of arguments
-	* \param ppcArgv The arguments list
-	* \return KviTalApplication
-	*/
-	KviTalApplication(Display * display, int & iArgc, char ** ppcArgv, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
-#endif
 	/**
 	* \brief Destructs the application object
 	*/

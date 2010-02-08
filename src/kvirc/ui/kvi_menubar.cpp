@@ -44,6 +44,7 @@
 KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
       : KviTalMenuBar(par,name)
 {
+	setAutoFillBackground(false);
 	m_pFrm = par;
 
 	m_iNumDefaultItems = 0;

@@ -49,6 +49,10 @@
 	class KviIpcSentinel;
 #endif // !COMPILE_NO_IPC
 
+#ifdef COMPILE_X11_SUPPORT
+	#include <QX11Info>
+#endif
+
 class KviTalPopupMenu;
 class QPixmap;
 class KviTalListBox;
@@ -85,9 +89,6 @@ class KVIRC_API KviApp : public KviTalApplication
 	Q_OBJECT
 public:
 	KviApp(int &argc,char ** argv);
-#ifdef COMPILE_X11_SUPPORT
-	KviApp(Display * display, int & argc, char ** argv, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
-#endif
 	~KviApp();
 
 protected:
@@ -107,7 +108,6 @@ protected:
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	bool                            m_bUpdatePseudoTransparencyPending;
 #endif
-	bool				m_bSupportsCompositing;
 #ifndef COMPILE_NO_IPC
 	KviIpcSentinel                * m_pIpcSentinel;
 #endif
@@ -144,7 +144,20 @@ public:
 	static int getGloballyUniqueId(); // returns an unique integer identifier across the application
 
 	bool firstTimeRun(){ return m_bFirstTimeRun; };
-	bool supportsCompositing() { return m_bSupportsCompositing; };
+	inline bool supportsCompositing()
+	{
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		//we need >= win2000
+		return true;
+#endif
+#ifdef COMPILE_X11_SUPPORT
+		return QX11Info::isCompositingManagerRunning();
+#endif
+#ifdef COMPILE_ON_MAC
+		return true;
+#endif
+		return false;
+	};
 	void setupBegin();
 	void setupFinish();
 
@@ -281,7 +294,6 @@ public slots:
 	void restoreDefaultScript();
 	void addRecentUrl(const QString& text);
 private:
-	void internalInit();
 	void createSplashScreen();
 	void destroySplashScreen();
 

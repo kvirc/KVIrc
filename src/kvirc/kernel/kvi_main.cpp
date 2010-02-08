@@ -41,16 +41,12 @@
 	extern bool kvi_sendIpcMessage(const char * message); // kvi_ipc.cpp
 #endif
 
-#include <qglobal.h> //for qDebug()
-
+#include <QtGlobal> //for qDebug()
 #include <QMessageBox>
 
 #ifdef COMPILE_KDE_SUPPORT
 	#include <KCmdLineArgs>
 	#include <KAboutData>
-#endif
-#ifdef COMPILE_X11_SUPPORT
-	#include <X11/extensions/Xrender.h>
 #endif
 
 #define KVI_ARGS_RETCODE_OK 0
@@ -362,55 +358,7 @@ int main(int argc, char ** argv)
 	KCmdLineArgs::init(1, &argv[0], pAbout);
 #endif
 
-	bool bArgVisual = false;
-
-#ifdef COMPILE_X11_SUPPORT
-	//this makes sure we are running X11 with a compositing manager that supports ARGV visuals
-	//Code taken from an example by Zack Rusin http://zrusin.blogspot.com
-	Display * pDisplay = XOpenDisplay(0); // open default display
-	Colormap colormap = 0;
-	Visual * pVisual = 0;
-
-	if(pDisplay)
-	{
-		int iScreen = DefaultScreen(pDisplay);
-		int iEventBase, iErrorBase;
-
-		if(XRenderQueryExtension(pDisplay, &iEventBase, &iErrorBase))
-		{
-			int iNvi;
-			XVisualInfo templ;
-			templ.screen  = iScreen;
-			templ.depth   = 32;
-			templ.c_class = TrueColor;
-			XVisualInfo * pXvi = XGetVisualInfo(pDisplay, VisualScreenMask |
-							VisualDepthMask |
-							VisualClassMask, &templ, &iNvi);
-
-			for(int i = 0; i < iNvi; ++i)
-			{
-				XRenderPictFormat * pFormat = XRenderFindVisualFormat(pDisplay, pXvi[i].visual);
-				if(pFormat->type == PictTypeDirect && pFormat->direct.alphaMask)
-				{
-					pVisual = pXvi[i].visual;
-					colormap = XCreateColormap(pDisplay, RootWindow(pDisplay, iScreen), pVisual, AllocNone);
-					bArgVisual = true;
-					break;
-				}
-			}
-		}
-	}
-
-	// Need to have the X socket open before IPC startup
-	if(bArgVisual)
-	{
-		pTheApp = new KviApp(pDisplay, argc, argv, Qt::HANDLE(pVisual), Qt::HANDLE(colormap));
-	} else  {
-#endif
-		pTheApp = new KviApp(argc,argv);
-#ifdef COMPILE_X11_SUPPORT
-	}
-#endif
+	pTheApp = new KviApp(argc,argv);
 
 #ifdef COMPILE_DBUS_SUPPORT
 #ifndef COMPILE_KDE_SUPPORT

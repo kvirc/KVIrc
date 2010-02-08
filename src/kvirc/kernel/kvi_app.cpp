@@ -172,21 +172,6 @@ QPixmap                                 * g_pActivityMeterPixmap        = 0;
 KviApp::KviApp(int &argc,char ** argv)
 : KviTalApplication(argc,argv)
 {
-	internalInit();
-	m_bSupportsCompositing=false;
-}
-
-#ifdef COMPILE_X11_SUPPORT
-KviApp::KviApp(Display * display, int & argc, char ** argv, Qt::HANDLE visual, Qt::HANDLE colormap)
-: KviTalApplication(display, argc, argv, visual, colormap)
-{
-	internalInit();
-	m_bSupportsCompositing=true;
-}
-#endif
-
-void KviApp::internalInit()
-{
 	setApplicationName("KVIrc");
 	setApplicationVersion(KVIRC_VERSION_RELEASE);
 	setOrganizationDomain("kvirc.net");

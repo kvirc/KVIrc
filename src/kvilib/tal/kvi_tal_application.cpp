@@ -26,31 +26,15 @@
 #include "kvi_tal_application.h"
 
 #ifdef COMPILE_KDE_SUPPORT
-
 	KviTalApplication::KviTalApplication(int &, char **)
 	: KApplication()
 	{
 	}
-
-	#ifdef COMPILE_X11_SUPPORT
-		KviTalApplication::KviTalApplication(Display * display, int &, char **, Qt::HANDLE visual, Qt::HANDLE colormap)
-		: KApplication(display, visual, colormap)
-		{
-		}
-	#endif
 #else
-
 	KviTalApplication::KviTalApplication(int & iArgc, char ** ppcArgv)
 	: QApplication(iArgc,ppcArgv)
 	{
 	}
-
-	#ifdef COMPILE_X11_SUPPORT
-		KviTalApplication::KviTalApplication(Display * display, int & iArgc, char ** ppcArgv, Qt::HANDLE visual, Qt::HANDLE colormap)
-		: QApplication(display, iArgc, ppcArgv, visual, colormap)
-		{
-		}
-	#endif
 #endif
 
 KviTalApplication::~KviTalApplication()
