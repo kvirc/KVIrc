@@ -55,7 +55,7 @@ namespace KviKvsCoreCallbackCommands
 		@type:
 			command
 		@title:
-			host
+			ahost
 		@syntax:
 			ahost [-i] [-a] (<dnsquery:string>[,<magicdata:variant>]){ <callback command> }
 		@short:
