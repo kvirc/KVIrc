@@ -62,6 +62,7 @@ class KviIrcConnectionAntiCtcpFloodData;
 class KviIrcConnectionNetsplitDetectorData;
 class KviIrcConnectionAsyncWhoisData;
 class KviIrcConnectionStatistics;
+class KviRequestQueue;
 class KviLagMeter;
 class KviNotifyListManager;
 class KviDns;
@@ -176,6 +177,8 @@ private:
 
 	QTextCodec                           * m_pSrvCodec;             // connection codec: never null
 	QTextCodec                           * m_pTextCodec;            // connection codec: never null
+	KviRequestQueue                      * m_pRequestQueue;         // owned, never null
+
 public:
 	/**
 	* \brief Returns a pointer to the owning console
@@ -337,6 +340,12 @@ public:
 	*/
 	inline KviLagMeter * lagMeter(){ return m_pLagMeter; };
 
+	/**
+	* \brief Returns a pointer to the current KviRequestQueue.
+	* \return KviRequestQueue *
+	*/
+	inline KviRequestQueue * requestQueue(){ return m_pRequestQueue; };
+	
 	/**
 	* \brief Returns the list of the channels bound to the current connection.
 	*

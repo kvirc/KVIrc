@@ -37,6 +37,7 @@
 #include "kvi_asynchronousconnectiondata.h"
 #include "kvi_ircconnectionstatedata.h"
 #include "kvi_ircconnectionuserinfo.h"
+#include "kvi_ircconnectionrequestqueue.h"
 #include "kvi_irctoolbar.h"
 #include "kvi_out.h"
 #include "kvi_ircserverdb.h"
@@ -712,6 +713,8 @@ void KviIrcContext::connectionTerminated()
 	pInfo->m_szNick = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
 	pInfo->m_bIsAway = connection()->userInfo()->isAway();
 	pInfo->m_szAwayReason = connection()->userInfo()->awayReason();
+
+	connection()->requestQueue()->clearAll();
 
 	// we consider it unexpected when we haven't sent a QUIT message and we're connected
 	// or alternatively when a simulation of such a termination is requested (this is used to keep the queries open etc..)

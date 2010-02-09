@@ -51,6 +51,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_ircconnectiontarget.h"
+#include "kvi_ircconnectionrequestqueue.h"
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_ircconnectionstatedata.h"
 #include "kvi_ircconnectionnetsplitdetectordata.h"
@@ -241,50 +242,8 @@ void KviServerParser::parseLiteralJoin(KviIrcMessage *msg)
 		// message in KviIrcSocket. See the comment in KviIrcSocket::processData() for more info.
 
 		// FIXME: #warning "IF VERBOSE SAY THAT WE'RE REQUESTING MODES & BAN LIST" (Synching channel)
-
-		if(!msg->connection()->sendFmtData("MODE %s",encodedChan))
-			return; // disconnected
-
-		if(msg->connection()->serverInfo()->supportsModesIe())
-		{
-			if(!KVI_OPTION_BOOL(KviOption_boolDisableBanExceptionListRequestOnJoin))
-			{
-				if(!msg->connection()->sendFmtData("MODE %s e",encodedChan))
-					return; // disconnected
-				chan->setSentBanExceptionListRequest();
-			}
-			if(!KVI_OPTION_BOOL(KviOption_boolDisableInviteListRequestOnJoin))
-			{
-				if(!msg->connection()->sendFmtData("MODE %s I",encodedChan))
-					return; // disconnected
-				chan->setSentInviteListRequest();
-			}
-		}
-
-		// MODE %s b MUST BE THE LAST AUTOMATIC CHANNEL QUERY
-		// so we get RPL_ENDOFBANLIST as the last reply
-		// and we know that the channel is in sync
-
-		if(!KVI_OPTION_BOOL(KviOption_boolDisableWhoRequestOnJoin))
-		{
-			msg->connection()->stateData()->setLastSentChannelWhoRequest(kvi_unixTime());
-			if(msg->connection()->lagMeter())
-			{
-				KviStr tmp(KviStr::Format,"WHO %s",encodedChan);
-				msg->connection()->lagMeter()->lagCheckRegister(tmp.ptr(),60);
-			}
-			if(!msg->connection()->sendFmtData("WHO %s",encodedChan))
-				return; // disconnected
-			chan->setSentWhoRequest();
-		}
-
-		if(!KVI_OPTION_BOOL(KviOption_boolDisableBanListRequestOnJoin))
-		{
-			if(!msg->connection()->sendFmtData("MODE %s b",encodedChan))
-				return; // disconnected
-			chan->setSentBanListRequest();
-		}
-
+		msg->connection()->requestQueue()->enqueueChannel(chan);
+		
 		if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin))
 			chan->pasteLastLog();
 

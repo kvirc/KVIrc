@@ -117,6 +117,10 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
 	m_pBanTypeCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintDefaultBanType));
 
 	KviTalGroupBox * g = addGroupBox(0,2,4,2,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
+	KviUIntSelector *u = addUIntSelector(g,__tr2qs_ctx("Minimum delay between two requests:","options"),KviOption_uintOnJoinRequestsDelay,0,60,2);
+	u->setSuffix(__tr2qs_ctx(" sec","options"));
+	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 secs</b><br>Maximum value: <b>60 secs</b></center>","options"));
+	
 	addBoolSelector(g,__tr2qs_ctx("Do not send /WHO request","options"),KviOption_boolDisableWhoRequestOnJoin);
   	addBoolSelector(g,__tr2qs_ctx("Do not request ban list","options"),KviOption_boolDisableBanListRequestOnJoin);
   	addBoolSelector(g,__tr2qs_ctx("Do not request ban exception list","options"),KviOption_boolDisableBanExceptionListRequestOnJoin);
@@ -127,7 +131,7 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
 	b = addBoolSelector(g,__tr2qs_ctx("Paste last channel log","options"),KviOption_boolPasteLastLogOnChannelJoin);
 
 	KviTalHBox * box = new KviTalHBox(g);
-	KviUIntSelector * u = addUIntSelector(box,__tr2qs_ctx("Paste up to:","options"),KviOption_uintLinesToPasteOnChannelJoin,0,50,10,KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin));
+	u = addUIntSelector(box,__tr2qs_ctx("Paste up to:","options"),KviOption_uintLinesToPasteOnChannelJoin,0,50,10,KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin));
 	u->setSuffix(__tr2qs_ctx(" lines","options"));
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></center>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));

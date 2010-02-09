@@ -32,6 +32,7 @@
 #include "kvi_ircconnectionantictcpflooddata.h"
 #include "kvi_ircconnectionnetsplitdetectordata.h"
 #include "kvi_ircconnectionasyncwhoisdata.h"
+#include "kvi_ircconnectionrequestqueue.h"
 #include "kvi_ircconnectionstatistics.h"
 #include "kvi_irclink.h"
 #include "kvi_ircsocket.h"
@@ -98,6 +99,7 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarg
 	m_pLocalhostDns = 0;
 	m_pLagMeter = 0;
 	m_eState = Idle;
+	m_pRequestQueue = new KviRequestQueue();
 	setupSrvCodec();
 	setupTextCodec();
 }
@@ -151,6 +153,7 @@ KviIrcConnection::~KviIrcConnection()
 	delete m_pAsyncWhoisData;
 	delete m_pStatistics;
 	delete m_pUserIdentity;
+	delete m_pRequestQueue;
 }
 
 void KviIrcConnection::setEncoding(const QString & szEncoding)
@@ -510,6 +513,7 @@ void KviIrcConnection::registerChannel(KviChannel * c)
 void KviIrcConnection::unregisterChannel(KviChannel * c)
 {
 	m_pChannelList->removeRef(c);
+	requestQueue()->dequeueChannel(c);
 	emit(channelUnregistered(c));
 	emit(chanListChanged());
 }

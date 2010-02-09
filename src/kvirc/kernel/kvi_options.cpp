@@ -651,6 +651,7 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("UserIrcViewOwnBackground",8,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	UINT_OPTION("NotifierPixmapAlign",0,KviOption_sectFlagNotifier | KviOption_groupTheme),
 	UINT_OPTION("OutputDatetimeFormat",0,KviOption_sectFlagIrcView),
+	UINT_OPTION("OnJoinRequestsDelay",2,KviOption_sectFlagConnection),
 };
 
 #define FONT_OPTION(_name,_face,_size,_flags) \

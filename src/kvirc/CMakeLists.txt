@@ -85,6 +85,7 @@ SET(kvirc_MOC_HDRS
 	kernel/kvi_iconmanager.h
 	kernel/kvi_ipc.h
 	kernel/kvi_ircconnection.h
+	kernel/kvi_ircconnectionrequestqueue.h
 	kernel/kvi_ircconnectiontargetresolver.h
 	kernel/kvi_irccontext.h
 	kernel/kvi_irclink.h
@@ -291,6 +292,7 @@ SET(kvirc_SRCS
 	kernel/kvi_ircconnectionantictcpflooddata.cpp
 	kernel/kvi_ircconnectionasyncwhoisdata.cpp
 	kernel/kvi_ircconnectionnetsplitdetectordata.cpp
+	kernel/kvi_ircconnectionrequestqueue.cpp
 	kernel/kvi_ircconnectionserverinfo.cpp
 	kernel/kvi_ircconnectionstatedata.cpp
 	kernel/kvi_ircconnectionstatistics.cpp
