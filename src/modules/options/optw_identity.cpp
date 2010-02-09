@@ -249,7 +249,7 @@ KviAvatarSelectionDialog::~KviAvatarSelectionDialog()
 
 void KviAvatarSelectionDialog::okClicked()
 {
-	m_szAvatarName = m_pLineEdit->text();
+	m_szAvatarName = m_pLineEdit->text().trimmed();
 	accept();
 }
 
