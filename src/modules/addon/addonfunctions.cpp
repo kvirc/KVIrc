@@ -255,12 +255,12 @@ namespace KviAddonFunctions
 			debug("Path: %s",szUnpackPath.toUtf8().data());
 			debug("Count: %d",list.count());
 
-			if(!KviFileUtils::deleteDir(szUnpackPath))
+                        if(!KviFileUtils::deleteDir(szUnpackPath))
 			{
 				szErr = __tr2qs_ctx("One or more files can't be deleted","addon");
 				KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","addon"),&szErr);
 				return true;
-			}
+                        }
 		}
 
 		return true;

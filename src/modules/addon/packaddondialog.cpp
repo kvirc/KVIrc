@@ -206,7 +206,9 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
 		.arg(m_szDescription).arg(m_szMinVersion) \
 		.arg(m_szIcon);
 	szTmp += "{\n\t# This is our uninstall callback: it will be called by KVIrc when addon.uninstall is invoked\n\t";
-	szTmp += QString("%1::uninstall::uninstall\n}\n\n").arg(m_szName);
+        szTmp += QString("%1::uninstall::uninstall\n").arg(m_szName);
+        szTmp += QString("\t%1::uninstall::uninstallfiles\n").arg(m_szName);
+        szTmp += QString("\t%1::uninstall::uninstallaliases\n}\n\n").arg(m_szName);
 	szTmp += "# Ok, addon.register succeeded. We can go on with the installation.\n\n";
 
 	// install.kvs: run path
@@ -219,10 +221,15 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
 
 	// install.kvs: copy files
 	szTmp += "# Copy files in each subdirectory\n# the pics\n";
-	szTmp += QString("%installer->$copyFiles(\"%mypath/pics/\",\"*.png\",$file.localdir(\"pics/%1\"))\n\n").arg(m_szName);
+        szTmp += QString("if (!$file.exists($file.localdir(\"pics/%1\"))) file.mkdir $file.localdir(\"pics/%1\")\n\n").arg(m_szName);
+        szTmp += QString("%installer->$copyFiles(\"%mypath/pics/%1\",\"*.png\",$file.localdir(\"pics/%1\"))\n\n").arg(m_szName);
 	szTmp += "# the translations\n";
-	szTmp += "%installer->$copyFiles(\"%mypath/locale/\",\"*.mo\",$file.localdir(\"locale\"))\n\n";
+        szTmp += QString("if (!$file.exists($file.localdir(\"locale/%1\"))) file.mkdir $file.localdir(\"locale/%1\")\n\n").arg(m_szName);
+
+        szTmp += "%installer->$copyFiles(\"%mypath/locale/%1\",\"*.mo\",$file.localdir(\"locale/%1\"))\n\n";
+
 	szTmp += "# the documentation\n";
+        szTmp += QString("if (!$file.exists($file.localdir(\"help/%1\"))) file.mkdir $file.localdir(\"help/en/%1\")\n\n").arg(m_szName);
 	szTmp += QString("%installer->$copyFiles(\"%mypath/help/en/%1/\",\"*.html\",$file.localdir(\"help/en/%1\"))\n\n").arg(m_szName);
 
 	// install.kvs: generate uninstall alias
@@ -240,12 +247,14 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
 	szTmp += QString("%alias = \"alias(%1::uninstall::uninstallaliases){$lf\"\n") \
 		.arg(m_szName);
 	szTmp += "for(%i=0; %i<$length(%files[]); %i++)\n{\n";
-	szTmp += "\tinclude $file.extractpath($0)/src/%files[%i]\n";
-	szTmp += "\t%flt = $str.left(%files[%i],$($str.len(%files[%i])-4))\n";
-	szTmp += "\t%file = $str.replace(%flt,\"::\",\"_\")\n";
-	szTmp += "\t%alias .= \"alias(%file){};$lf\"\n}\n";
-	szTmp += QString("%alias .= \"alias(%1::uninstall::uninstallaliases){};$lf\"\n") \
+        szTmp += "\tinclude $file.extractpath($0)/src/%files[%i]\n";
+        szTmp += "\t%flt = $str.left(%files[%i],$($str.len(%files[%i])-4))\n";
+        szTmp += "\t%file = $str.replace(%flt,\"_\",\"::\")\n";
+        szTmp += "\t%alias .= \"alias(%file){};$lf\"\n}\n";
+        szTmp += QString("\t%alias .= \"alias(%1::uninstall::uninstallfiles){};$lf\"\n") \
 		.arg(m_szName);
+        szTmp += QString("\t%alias .= \"alias(%1::uninstall::uninstallaliases){};$lf\"\n") \
+                .arg(m_szName);
 	szTmp += "%alias .= \"}\"\n";
 	szTmp += "eval %alias\n\n";
 
@@ -262,7 +271,7 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
 
 	// Open file for writing
 	QFile installer(addon.filePath("install.kvs"));
-	if(!installer.open(QIODevice::ReadWrite))
+        if(!installer.open(QIODevice::WriteOnly))
 	{
 		*pszError = __tr2qs_ctx("Cannot open file for writing.","addon");
 		return false;
@@ -446,8 +455,8 @@ bool KviPackAddonDialog::packAddon()
 	}
 
 	// Debug purpose
-	//KviPackageReader pr;
-	//pr.unpack("/home/hellvis69/Test-2.0.3.kva","/home/hellvis69/unpacked_test_kva");
+        //KviPackageReader pr;
+        //pr.unpack("/home/ale/Test-2.0.3.kva","/home/ale/unpacked_test_kva");
 
 	QMessageBox::information(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs("Package saved successfully in ") + m_szSavePath,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
