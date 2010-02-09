@@ -67,7 +67,7 @@ public:
 	KviOptionsDialog(QWidget * par,const QString &szGroup);
 	~KviOptionsDialog();
 private:
-	QTreeWidget             * m_pTreeWidget;
+	QTreeWidget                  * m_pTreeWidget;
 	QLabel                       * m_pCategoryLabel;
 	QStackedWidget               * m_pWidgetStack;
 	KviGeneralOptionsFrontWidget * m_pFrontWidget;
