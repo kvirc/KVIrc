@@ -48,6 +48,8 @@
 	#include "kvi_app.h"  //Needed for g_pApp
 #endif
 
+#include <QTimer>
+
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
@@ -65,7 +67,7 @@ KviMdiChild::KviMdiChild(KviMdiManager * par, const char * name)
 	connect(systemMenu(), SIGNAL(aboutToShow()), this, SLOT(updateSystemPopup()));
 	connect(this, SIGNAL(windowStateChanged(Qt::WindowStates, Qt::WindowStates)), this, SLOT(windowStateChangedEvent(Qt::WindowStates, Qt::WindowStates)));
 
-	setAutoFillBackground(true);
+	QTimer::singleShot( 0, this, SLOT(transparencyWorkaround()));
 }
 
 KviMdiChild::~KviMdiChild()
@@ -78,6 +80,11 @@ KviMdiChild::~KviMdiChild()
 	m_pManager->focusPreviousTopChild();
 }
 
+void KviMdiChild::transparencyWorkaround()
+{
+	setAutoFillBackground(true);
+}
+	
 void KviMdiChild::setRestoredGeometry(const QRect &r)
 {
 	m_restoredGeometry = r;

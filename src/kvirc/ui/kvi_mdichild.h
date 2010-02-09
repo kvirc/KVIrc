@@ -216,6 +216,13 @@ private slots:
 	* \return void
 	*/
 	void updateSystemPopup();
+
+	/**
+	* \brief This is an ugly woraround for qt 4.6.1 that otherway will display the first console window as transparent
+	* \return void
+	*/
+	void transparencyWorkaround();
+	
 };
 
 #endif //_KVI_MDICHILD_H_
