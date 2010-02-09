@@ -44,7 +44,7 @@
 
 /**
 * \class KviTalToolBar
-* \brief Toolkit Abstraction Layer: toolnar class
+* \brief Toolkit Abstraction Layer: toolbar class
 */
 
 #ifdef COMPILE_KDE_SUPPORT
@@ -70,7 +70,7 @@ public:
 	* \brief Constructs a toolbar object
 	* \param szLabel The label of the toolbar
 	* \param pWnd The mainwindow where to attach the toolbar
-	* \param dock The type of the toolbar
+	* \param type The type of the toolbar
 	* \param bNewLine Whether to add a newline
 	* \param pcName The name of the toolbar
 	* \return KviTalToolBar
