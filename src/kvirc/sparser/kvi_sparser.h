@@ -137,6 +137,8 @@ private:
 	void parseNumeric003(KviIrcMessage *msg);
 	void parseNumeric004(KviIrcMessage *msg);
 	void parseNumeric005(KviIrcMessage *msg);
+	void parseNumeric367(KviIrcMessage *msg);
+	void parseNumeric368(KviIrcMessage *msg);
 
 	void parseNumericMotd(KviIrcMessage *msg);
 	void parseNumericNames(KviIrcMessage *msg);
@@ -145,8 +147,6 @@ private:
 	void parseNumericNoTopic(KviIrcMessage *msg);
 	void parseNumericTopicWhoTime(KviIrcMessage *msg);
 	void parseNumericChannelModeIs(KviIrcMessage *msg);
-	void parseNumericBanList(KviIrcMessage *msg);
-	void parseNumericEndOfBanList(KviIrcMessage *msg);
 	void parseNumericInviteList(KviIrcMessage *msg);
 	void parseNumericEndOfInviteList(KviIrcMessage *msg);
 	void parseNumericExceptList(KviIrcMessage *msg);

@@ -174,6 +174,10 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 			txt = __tr2qs("Active Ban Exceptions");
 			m_iIconId = KVI_SMALLICON_BANEXCEPT;
 		break;
+		case 'q':
+			txt = __tr2qs("Active Quiet Bans");
+			m_iIconId = KVI_SMALLICON_BAN;
+		break;
 		default:
 			txt = "?";
 			m_iIconId = KVI_SMALLICON_UNHANDLED;

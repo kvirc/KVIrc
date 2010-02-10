@@ -99,6 +99,16 @@ void KviRequestQueue::timerSlot()
 					if(!chan->connection()->sendFmtData("MODE %s I",encodedChan.data()))
 						clearAll(); // disconnected
 					else chan->setSentInviteListRequest();
+					curType=QuietBanRequest;
+					break;
+				}
+			case QuietBanRequest:
+				if(chan->connection()->serverInfo()->supportsModeq() &&
+					!KVI_OPTION_BOOL(KviOption_boolDisableQuietBanListRequestOnJoin))
+				{
+					if(!chan->connection()->sendFmtData("MODE %s q",encodedChan.data()))
+						clearAll(); // disconnected
+					else chan->setSentQuietBanListRequest();
 					curType=WhoRequest;
 					break;
 				}

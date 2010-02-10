@@ -454,8 +454,8 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericLinks)                         , // 364 RPL_LINKS
 	PTM(parseNumericEndOfLinks)                    , // 365 RPL_ENDOFLINKS
 	PTM(parseNumericEndOfNames)                    , // 366 RPL_ENDOFNAMES
-	PTM(parseNumericBanList)                       , // 367 RPL_BANLIST
-	PTM(parseNumericEndOfBanList)                  , // 368 RPL_ENDOFBANLIST
+	PTM(parseNumeric367)                           , // 367 RPL_BANLIST
+	PTM(parseNumeric368)                           , // 368 RPL_ENDOFBANLIST
 	PTM(parseNumericEndOfWhowas)                   , // 369 RPL_ENDOFWHOWAS
 	0,                                               // 370
 	PTM(parseNumericInfo)                          , // 371 RPL_INFO

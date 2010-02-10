@@ -122,9 +122,10 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 secs</b><br>Maximum value: <b>60 secs</b></center>","options"));
 	
 	addBoolSelector(g,__tr2qs_ctx("Do not send /WHO request","options"),KviOption_boolDisableWhoRequestOnJoin);
-  	addBoolSelector(g,__tr2qs_ctx("Do not request ban list","options"),KviOption_boolDisableBanListRequestOnJoin);
-  	addBoolSelector(g,__tr2qs_ctx("Do not request ban exception list","options"),KviOption_boolDisableBanExceptionListRequestOnJoin);
- 	addBoolSelector(g,__tr2qs_ctx("Do not request invite list","options"),KviOption_boolDisableInviteListRequestOnJoin);
+	addBoolSelector(g,__tr2qs_ctx("Do not request ban list","options"),KviOption_boolDisableBanListRequestOnJoin);
+	addBoolSelector(g,__tr2qs_ctx("Do not request ban exception list","options"),KviOption_boolDisableBanExceptionListRequestOnJoin);
+	addBoolSelector(g,__tr2qs_ctx("Do not request invite list","options"),KviOption_boolDisableInviteListRequestOnJoin);
+	addBoolSelector(g,__tr2qs_ctx("Do not request quiet ban list","options"),KviOption_boolDisableQuietBanListRequestOnJoin);
 	addBoolSelector(g,__tr2qs_ctx("Echo channel topic","options"),KviOption_boolEchoNumericTopic);
 	addBoolSelector(g,__tr2qs_ctx("Show channel sync time","options"),KviOption_boolShowChannelSyncTime);
 

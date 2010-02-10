@@ -636,6 +636,67 @@ void getDateTimeStringFromCharTimeT(QString & szBuffer, const char * time_t_stri
 	} else szBuffer = __tr2qs("(Unknown)");
 }
 
+// Freenode likes it hard, so it's using the same numeric for bans and quiet bans
+void KviServerParser::parseNumeric367(KviIrcMessage *msg)
+{
+	// 367: RPL_BANLIST [I,E,U,D]
+	// :prefix 367 target <channel> <banmask> [bansetby] [bansetat]
+	QString szChan   = msg->connection()->decodeText(msg->safeParam(1));
+	QString banmask  = msg->connection()->decodeText(msg->safeParam(2));
+	QString bansetby = msg->connection()->decodeText(msg->safeParam(3));
+	QString bansetat;
+	getDateTimeStringFromCharTimeT(bansetat,msg->safeParam(4));
+	if(bansetby.isEmpty())bansetby = __tr2qs("(Unknown)");
+	KviChannel * chan = msg->connection()->findChannel(szChan);
+	if(chan)
+	{
+		if(msg->connection()->serverInfo()->supportsModeq() && chan->sentQuietBanListRequest())
+		{
+			chan->setMask('q',banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
+			return;
+		}
+		if(chan->sentBanListRequest())
+		{
+			chan->setMask('b',banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
+			return;
+		}
+	}
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		pOut->output(KVI_OUT_BAN,__tr2qs("%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"),
+			&(__tr2qs("Ban listing")),&szChan,'b',&banmask,&bansetby,&bansetat);
+	}
+}
+
+void KviServerParser::parseNumeric368(KviIrcMessage *msg)
+{
+	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
+	KviChannel * chan = msg->connection()->findChannel(szChan);
+	if(chan)
+	{
+		if(msg->connection()->serverInfo()->supportsModeq() && chan->sentQuietBanListRequest())
+		{
+			chan->setHasQuietBanList();
+			chan->setQuietBanListDone();
+			return;
+		}
+		if(chan->sentBanListRequest())
+		{
+			chan->setHasBanList();
+			chan->setBanListDone();
+			return;
+		}
+	}
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		pOut->output(KVI_OUT_BAN,__tr2qs("End of channel %Q for \r!c\r%Q\r"),&(__tr2qs("ban list")),&szChan);
+	}
+}
+
 #define PARSE_NUMERIC_ENDOFLIST(__funcname,__setGotIt,__didSendRequest,__setDone,__daicon,__szWhatQString) \
 	void KviServerParser::__funcname(KviIrcMessage *msg) \
 	{ \
@@ -658,7 +719,6 @@ void getDateTimeStringFromCharTimeT(QString & szBuffer, const char * time_t_stri
 		} \
 	}
 
-PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfBanList,setHasBanList,sentBanListRequest,setBanListDone,KVI_OUT_BAN,__tr2qs("ban list"))
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfInviteList,setHasInviteList,sentInviteListRequest,setInviteListDone,KVI_OUT_INVITEEXCEPT,__tr2qs("invite list"))
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfExceptList,setHasBanExceptionList,sentBanExceptionListRequest,setBanExceptionListDone,KVI_OUT_BANEXCEPT,__tr2qs("ban exception list"))
 
@@ -686,16 +746,12 @@ PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfExceptList,setHasBanExceptionList,sentB
 		} \
 	}
 
-// 367: RPL_BANLIST [I,E,U,D]
-// :prefix 367 target <channel> <banmask> [bansetby] [bansetat]
-PARSE_NUMERIC_LIST(parseNumericBanList,'b',sentBanListRequest,KVI_OUT_BAN,__tr2qs("Ban listing"))
 // 346: RPL_INVITELIST [I,E,U,D]
 // :prefix 346 target <channel> <invitemask> [invitesetby] [invitesetat]
 PARSE_NUMERIC_LIST(parseNumericInviteList,'I',sentInviteListRequest,KVI_OUT_INVITEEXCEPT,__tr2qs("Invite listing"))
 // 346: RPL_EXCEPTLIST [I,E,U,D]
 // :prefix 346 target <channel> <banmask> [bansetby] [bansetat]
 PARSE_NUMERIC_LIST(parseNumericExceptList,'e',sentBanExceptionListRequest,KVI_OUT_BANEXCEPT,__tr2qs("Ban exception listing"));
-
 
 void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 {

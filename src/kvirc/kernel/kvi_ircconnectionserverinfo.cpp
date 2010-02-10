@@ -65,7 +65,8 @@ void KviIrcConnectionServerInfo::setSupportedChannelModes(const QString &szSuppo
 
 	m_szSupportedChannelModes = szSupportedChannelModes;
 	m_bSupportsModesIe = (szSupportedChannelModes.contains('e') && szSupportedChannelModes.contains('I'));
-
+	m_bSupportsModeq = szSupportedChannelModes.contains('q');
+	
 	QChar* aux=(QChar*)szSupportedChannelModes.utf16();
 	while(aux->unicode())
 	{

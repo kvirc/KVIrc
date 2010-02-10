@@ -1651,13 +1651,6 @@ void KviServerParser::parseLiteralMode(KviIrcMessage *msg)
 
 void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUser,const QString &szHost,KviChannel * chan,KviStr &modefl,KviIrcMessage *msg,int curParam)
 {
-	// FIXME: freenode has two ugly incompatible extensions:
-	// mode e: that is NOT viewable (???)
-	// mode q that stands for "quiet-ban"
-	//    mode #chan +q mask
-	// adds mask to the banlist with the prefix %
-	// and doesn't allow the users matching the mask to talk to the channel
-
 	bool bSet = true;
 	// bIsMultiMode: +snt
 	// bIsMultiSingleMode: +ooo
@@ -1850,12 +1843,72 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 			break;
 
 			CHANUSER_MODE('O',setIrcOp,KviEvent_OnMeIrcOp,KviEvent_OnMeDeIrcOp,KviEvent_OnIrcOp,KviEvent_OnDeIrcOp,KVI_OUT_MEIRCOP,KVI_OUT_MEDEIRCOP,KVI_OUT_IRCOP,KVI_OUT_DEIRCOP)
-			CHANUSER_MODE('q',setChanOwner,KviEvent_OnMeChanOwner,KviEvent_OnMeDeChanOwner,KviEvent_OnChanOwner,KviEvent_OnDeChanOwner,KVI_OUT_MECHANOWNER,KVI_OUT_MEDECHANOWNER,KVI_OUT_CHANOWNER,KVI_OUT_DECHANOWNER)
 			CHANUSER_MODE('a',setChanAdmin,KviEvent_OnMeChanAdmin,KviEvent_OnMeDeChanAdmin,KviEvent_OnChanAdmin,KviEvent_OnDeChanAdmin,KVI_OUT_MECHANADMIN,KVI_OUT_MEDECHANADMIN,KVI_OUT_CHANADMIN,KVI_OUT_DECHANADMIN)
 			CHANUSER_MODE('o',setOp,KviEvent_OnMeOp,KviEvent_OnMeDeOp,KviEvent_OnOp,KviEvent_OnDeOp,KVI_OUT_MEOP,KVI_OUT_MEDEOP,KVI_OUT_OP,KVI_OUT_DEOP)
 			CHANUSER_MODE('h',setHalfOp,KviEvent_OnMeHalfOp,KviEvent_OnMeDeHalfOp,KviEvent_OnHalfOp,KviEvent_OnDeHalfOp,KVI_OUT_MEHALFOP,KVI_OUT_MEDEHALFOP,KVI_OUT_HALFOP,KVI_OUT_HALFDEOP)
 			CHANUSER_MODE('v',setVoice,KviEvent_OnMeVoice,KviEvent_OnMeDeVoice,KviEvent_OnVoice,KviEvent_OnDeVoice,KVI_OUT_MEVOICE,KVI_OUT_MEDEVOICE,KVI_OUT_VOICE,KVI_OUT_DEVOICE)
 			CHANUSER_MODE('u',setUserOp,KviEvent_OnMeUserOp,KviEvent_OnMeDeUserOp,KviEvent_OnUserOp,KviEvent_OnDeUserOp,KVI_OUT_MEUSEROP,KVI_OUT_MEDEUSEROP,KVI_OUT_USEROP,KVI_OUT_USERDEOP)
+
+			case 'q':
+				if(msg->connection()->serverInfo()->supportsModeq())
+				{
+					//freenode's quite ban (channel mode with mask)
+					aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
+					chan->setMask(*aux,aParam,bSet,msg->connection()->decodeText(msg->safePrefix()),QDateTime::currentDateTime().toTime_t());
+					auxMask = new KviIrcMask(aParam);
+					bIsMe = auxMask->matchesFixed(
+								msg->connection()->userInfo()->nickName(),
+								msg->connection()->userInfo()->userName(),
+								msg->connection()->userInfo()->hostName());
+					delete auxMask;
+					if(bIsMe)
+					{
+						if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? KviEvent_OnMeBan : KviEvent_OnMeUnban,chan,szNick,szUser,szHost,aParam))msg->setHaltOutput();
+					} else {
+						if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? KviEvent_OnBan : KviEvent_OnUnban,chan,szNick,szUser,szHost,aParam))msg->setHaltOutput();
+					}
+					if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+					{
+						chan->output(bSet ? (bIsMe ? KVI_OUT_MEBAN : KVI_OUT_BAN) : (bIsMe ? KVI_OUT_MEUNBAN : KVI_OUT_UNBAN),
+							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"),
+							&nickBuffer,&szUser,&hostBuffer,
+							bSet ? '+' : '-','q',bSet ? '-' : '+','q',&aParam);
+					}
+					if(bIsMultiSingleMode)
+						iIconForCompactMode= (bSet ? (bIsMe ? KVI_OUT_MEBAN : KVI_OUT_BAN) : (bIsMe ? KVI_OUT_MEUNBAN : KVI_OUT_UNBAN));
+				} else if(msg->connection()->serverInfo()->isSupportedModeFlag('q')) {
+					//other network's channel ownership flag (channel user mode)
+					aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
+					chan->setChanOwner(aParam,bSet);
+					bIsMe = IS_ME(msg,aParam);
+					if(bIsMe)
+					{
+						if(KVS_TRIGGER_EVENT_3_HALTED(bSet ? KviEvent_OnMeChanOwner : KviEvent_OnMeDeChanOwner,chan,szNick,szUser,szHost))msg->setHaltOutput();
+						chan->updateCaption();
+					} else {
+						if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? KviEvent_OnChanOwner : KviEvent_OnDeChanOwner,chan,szNick,szUser,szHost,aParam))msg->setHaltOutput();
+					}
+					if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+					{
+						chan->output(bSet ? (bIsMe ? KVI_OUT_MECHANOWNER : KVI_OUT_CHANOWNER) : (bIsMe ? KVI_OUT_MEDECHANOWNER : KVI_OUT_DECHANOWNER),
+							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!n\r%Q\r"),
+							&nickBuffer,&szUser,&hostBuffer,bSet ? '+' : '-','q',&aParam);
+					}
+					if(bIsMultiSingleMode)
+						iIconForCompactMode= (bSet ? (bIsMe ? KVI_OUT_MECHANOWNER : KVI_OUT_CHANOWNER) : (bIsMe ? KVI_OUT_MEDECHANOWNER : KVI_OUT_DECHANOWNER));
+				} else {
+					chan->setChannelMode('q',bSet);
+					if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+					{
+						chan->output(KVI_OUT_CHANMODE,
+							__tr2qs("%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"),
+							&nickBuffer,&szUser,&hostBuffer,
+							bSet ? '-' : '+','q',bSet ? '+' : '-','q');
+					}
+					if(bIsMultiSingleMode) 
+						iIconForCompactMode=KVI_OUT_CHANMODE;
+				}
+			break;
 
 #define CHANNEL_MODE(__modefl,__evmeset,__evmeunset,__evset,__evunset,__icomeset,__icomeunset,__icoset,__icounset) \
 			case __modefl: \

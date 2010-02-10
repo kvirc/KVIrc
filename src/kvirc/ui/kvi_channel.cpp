@@ -95,6 +95,8 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	m_pBanExceptionList->setAutoDelete(true);
 	m_pInviteList = new KviPointerList<KviMaskEntry>;
 	m_pInviteList->setAutoDelete(true);
+	m_pQuietBanList        = new KviPointerList<KviMaskEntry>;
+	m_pQuietBanList->setAutoDelete(true);
 	m_pActionHistory = new KviPointerList<KviChannelAction>;
 	m_pActionHistory->setAutoDelete(true);
 	m_uActionHistoryHotActionCount = 0;
@@ -167,6 +169,14 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 		m_pInviteEditorButton = 0;
 	}
 
+	if(m_pConsole->connection()->serverInfo()->supportedListModes().contains('q'))
+	{
+		m_pQuietBanEditorButton =new KviWindowToolPageButton(KVI_SMALLICON_UNBAN,KVI_SMALLICON_BAN,__tr2qs("Quiet Ban Editor"),buttonContainer(),false,"quiet_ban_editor_button");
+		connect(m_pQuietBanEditorButton,SIGNAL(clicked()),this,SLOT(toggleQuietBanEditor()));
+	} else {
+		m_pQuietBanEditorButton = 0;
+	}
+
 	m_pModeEditorButton = new KviWindowToolPageButton(KVI_SMALLICON_CHANMODEHIDE,KVI_SMALLICON_CHANMODE,__tr2qs("Mode Editor"),buttonContainer(),false,"mode_editor_button");
 	connect(m_pModeEditorButton,SIGNAL(clicked()),this,SLOT(toggleModeEditor()));
 	m_pModeEditor = 0;
@@ -195,6 +205,7 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	m_pBanEditor = 0;
 	m_pBanExceptionEditor = 0;
 	m_pInviteEditor = 0;
+	m_pQuietBanEditor = 0;
 	// Ensure proper focusing
 	//setFocusHandler(m_pInput,this);
 	// And turn on the secondary IRC view if needed
@@ -226,6 +237,7 @@ KviChannel::~KviChannel()
 	delete m_pBanList;
 	delete m_pBanExceptionList;
 	delete m_pInviteList;
+	delete m_pQuietBanList;
 	delete m_pTmpHighLighted;
 }
 
@@ -462,6 +474,11 @@ void KviChannel::toggleInviteEditor()
 	toggleEditor(&m_pInviteEditor,&m_pInviteEditorButton,m_pInviteList,'I',"invite_exception_editor");
 }
 
+void KviChannel::toggleQuietBanEditor()
+{
+	toggleEditor(&m_pQuietBanEditor,&m_pQuietBanEditorButton,m_pQuietBanList,'q',"quiet_ban_editor");
+}
+
 void KviChannel::toggleEditor(KviMaskEditor ** ppEd, KviWindowToolPageButton ** ppBtn, KviPointerList<KviMaskEntry> * l, char cFlag, const char * pcEdName)
 {
 	if(*ppEd)
@@ -496,6 +513,13 @@ void KviChannel::toggleEditor(KviMaskEditor ** ppEd, KviWindowToolPageButton ** 
 				{
 					m_pInviteList->clear();
 					setSentInviteListRequest();
+				}
+			break;
+			case 'q':
+				if(!(bHasList = hasQuietBanList()))
+				{
+					m_pQuietBanList->clear();
+					setSentQuietBanListRequest();
 				}
 			break;
 		}
@@ -646,6 +670,7 @@ void KviChannel::setDeadChan()
 	m_pBanList->clear();
 	m_pBanExceptionList->clear();
 	m_pInviteList->clear();
+	m_pQuietBanList->clear();
 	m_pTopicWidget->reset();
 
 	m_pActionHistory->clear();
@@ -1563,17 +1588,22 @@ void KviChannel::setMask(char cFlag, const QString & szMask, bool bAdd, const QS
 	{
 		case 'b':
 			m_iStateFlags ^= KVI_CHANNEL_STATE_HAVEBANLIST;
-		break;
+			break;
 		case 'e':
 			m_iStateFlags ^= KVI_CHANNEL_STATE_HAVEBANEXCEPTIONLIST;
 			list = m_pBanExceptionList;
 			editor = m_pBanExceptionEditor;
-		break;
+			break;
 		case 'I':
 			m_iStateFlags ^= KVI_CHANNEL_STATE_HAVEINVITELIST;
 			list = m_pInviteList;
 			editor = m_pInviteEditor;
-		break;
+			break;
+		case 'q':
+			m_iStateFlags ^= KVI_CHANNEL_STATE_HAVEQUIETBANLIST;
+			list = m_pQuietBanList;
+			editor = m_pQuietBanEditor;
+			break;
 	}
 
 	internalMask(szMask,bAdd,szSetBy,uSetAt,list,&editor);
@@ -1687,6 +1717,12 @@ void KviChannel::checkChannelSync()
 	if(m_iStateFlags & KVI_CHANNEL_STATE_SENTINVITELISTREQUEST)
 	{
 		if(!(m_iStateFlags & KVI_CHANNEL_STATE_HAVEINVITELIST))
+			return;
+	}
+
+	if(m_iStateFlags & KVI_CHANNEL_STATE_SENTQUIETBANLISTREQUEST)
+	{
+		if(!(m_iStateFlags & KVI_CHANNEL_STATE_HAVEQUIETBANLIST))
 			return;
 	}
 

@@ -90,6 +90,7 @@ private:
 	QString m_szSupportedModeFlags;        // the actually used mode flags     ov
 	QString m_szSupportedChannelTypes;     // the supported channel types
 	bool m_bSupportsModesIe;               // supports the channel modes I and e ?
+	bool m_bSupportsModeq;                 // supports the channel mode q
 	bool m_bSupportsWatchList;             // supports the watch list ?
 	bool m_bSupportsCodePages;             // supports the /CODEPAGE command ?
 	int m_iMaxTopicLen;
@@ -107,6 +108,7 @@ public:
 	const QString & supportedListModes(){ return m_szListModes; };
 	const QString & supportedPlainModes(){ return m_szPlainModes; };
 	bool supportsModesIe(){ return m_bSupportsModesIe; };
+	bool supportsModeq(){ return m_bSupportsModeq; };
 	bool supportsWatchList(){ return m_bSupportsWatchList; };
 	bool supportsCodePages(){ return m_bSupportsCodePages; };
 

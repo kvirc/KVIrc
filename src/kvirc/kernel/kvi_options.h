@@ -329,8 +329,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolFlashDccChatWindowOnNewMessages 235              /* dcc:chat */
 #define KviOption_boolPopupNotifierOnNewDccChatMessages 236            /* dcc:chat */
 #define KviOption_boolUseAwayMessage 237                               /* away */
+#define KviOption_boolDisableQuietBanListRequestOnJoin 238       /* channel */
 
-#define KVI_NUM_BOOL_OPTIONS 238
+#define KVI_NUM_BOOL_OPTIONS 239
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

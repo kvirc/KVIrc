@@ -45,7 +45,8 @@ protected:
 		BanERequest = 1,
 		InviRequest = 2,
 		WhoRequest = 3,
-		BanRequest = 4
+		QuietBanRequest = 4,
+		BanRequest = 5
 	};
 	requestTypes curType;
 public:
