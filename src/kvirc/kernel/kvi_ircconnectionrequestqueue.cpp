@@ -33,129 +33,132 @@
 
 KviRequestQueue::KviRequestQueue()
 {
-	curType=ModeRequest;
-	connect(&timer, SIGNAL(timeout()), this, SLOT(timerSlot()));
+	m_curType = Mode;
+	connect(&m_timer, SIGNAL(timeout()), this, SLOT(timerSlot()));
 }
 
 KviRequestQueue::~KviRequestQueue()
 {
-	disconnect(&timer, SIGNAL(timeout()), this, SLOT(timerSlot()));
+	disconnect(&m_timer, SIGNAL(timeout()), this, SLOT(timerSlot()));
 }
 
-void KviRequestQueue::enqueueChannel(KviChannel *pChan)
+void KviRequestQueue::enqueueChannel(KviChannel * pChan)
 {
-	if(!channels.contains(pChan))
+	if(!m_channels.contains(pChan))
 	{
-		channels.enqueue(pChan);
-		if(!timer.isActive()) timer.start(KVI_OPTION_UINT(KviOption_uintOnJoinRequestsDelay)*1000);
+		m_channels.enqueue(pChan);
+		if(!m_timer.isActive())
+		{
+			m_timer.start(KVI_OPTION_UINT(KviOption_uintOnJoinRequestsDelay)*1000);
+		}
 	}
 }
 
-void KviRequestQueue::dequeueChannel(KviChannel *pChan)
+void KviRequestQueue::dequeueChannel(KviChannel * pChan)
 {
-	if(channels.contains(pChan))
+	if(m_channels.contains(pChan))
 	{
-		channels.removeOne(pChan);
-		if(channels.isEmpty())
-			timer.stop();
+		m_channels.removeOne(pChan);
+		if(m_channels.isEmpty())
+			m_timer.stop();
 	}
 }
 
 void KviRequestQueue::clearAll()
 {
-	channels.clear();
-	timer.stop();
-	curType=ModeRequest;
+	m_channels.clear();
+	m_timer.stop();
+	m_curType = Mode;
 }
 
 void KviRequestQueue::timerSlot()
 {
-	if(channels.isEmpty())
+	if(m_channels.isEmpty())
 	{
-		timer.stop();
+		m_timer.stop();
 	} else {
-		KviChannel* chan = channels.head();
-		QByteArray encodedChan = chan->connection()->encodeText(chan->target()).data();
+		KviChannel * pChan = m_channels.head();
+		QByteArray encodedChan = pChan->connection()->encodeText(pChan->target()).data();
 		/* The following switch will let the execution flow pass-trought if any request type
 		 * is currently disabled (or not available on the server). Channel's "MODE" request is
 		 * the only mandatory request.
 		 */
-		switch(curType)
+		switch(m_curType)
 		{
-			case BanERequest:
-				if(chan->connection()->serverInfo()->supportsModesIe() &&
+			case BanException:
+				if(pChan->connection()->serverInfo()->supportsModesIe() &&
 					!KVI_OPTION_BOOL(KviOption_boolDisableBanExceptionListRequestOnJoin))
 				{
-					if(!chan->connection()->sendFmtData("MODE %s e",encodedChan.data()))
+					if(!pChan->connection()->sendFmtData("MODE %s e",encodedChan.data()))
 						clearAll(); // disconnected
-					else chan->setSentBanExceptionListRequest();
-					curType=InviRequest;
+					else pChan->setSentBanExceptionListRequest();
+					m_curType = Invite;
 					break;
 				}
-			case InviRequest:
-				if(chan->connection()->serverInfo()->supportsModesIe() &&
+			case Invite:
+				if(pChan->connection()->serverInfo()->supportsModesIe() &&
 					!KVI_OPTION_BOOL(KviOption_boolDisableInviteListRequestOnJoin))
 				{
-					if(!chan->connection()->sendFmtData("MODE %s I",encodedChan.data()))
+					if(!pChan->connection()->sendFmtData("MODE %s I",encodedChan.data()))
 						clearAll(); // disconnected
-					else chan->setSentInviteListRequest();
-					curType=QuietBanRequest;
+					else pChan->setSentInviteListRequest();
+					m_curType = QuietBan;
 					break;
 				}
-			case QuietBanRequest:
-				if(chan->connection()->serverInfo()->supportsModeq() &&
+			case QuietBan:
+				if(pChan->connection()->serverInfo()->supportsModeq() &&
 					!KVI_OPTION_BOOL(KviOption_boolDisableQuietBanListRequestOnJoin))
 				{
-					if(!chan->connection()->sendFmtData("MODE %s q",encodedChan.data()))
+					if(!pChan->connection()->sendFmtData("MODE %s q",encodedChan.data()))
 						clearAll(); // disconnected
-					else chan->setSentQuietBanListRequest();
-					curType=WhoRequest;
+					else pChan->setSentQuietBanListRequest();
+					m_curType = Who;
 					break;
 				}
-			case WhoRequest:
+			case Who:
 				if(!KVI_OPTION_BOOL(KviOption_boolDisableWhoRequestOnJoin))
 				{
-					chan->connection()->stateData()->setLastSentChannelWhoRequest(kvi_unixTime());
-					if(chan->connection()->lagMeter())
+					pChan->connection()->stateData()->setLastSentChannelWhoRequest(kvi_unixTime());
+					if(pChan->connection()->lagMeter())
 					{
 						KviStr tmp;
 						tmp.sprintf("WHO %s",encodedChan.data());
-						chan->connection()->lagMeter()->lagCheckRegister(tmp.ptr(),60);
+						pChan->connection()->lagMeter()->lagCheckRegister(tmp.ptr(),60);
 					}
-					if(!chan->connection()->sendFmtData("WHO %s",encodedChan.data()))
+					if(!pChan->connection()->sendFmtData("WHO %s",encodedChan.data()))
 						clearAll(); // disconnected
-					else chan->setSentWhoRequest();
-					curType=BanRequest;
+					else pChan->setSentWhoRequest();
+					m_curType = Ban;
 					break;
 				}
-			case BanRequest:
+			case Ban:
 				if(!KVI_OPTION_BOOL(KviOption_boolDisableBanListRequestOnJoin))
 				{
-					if(!chan->connection()->sendFmtData("MODE %s b",encodedChan.data()))
+					if(!pChan->connection()->sendFmtData("MODE %s b",encodedChan.data()))
 						clearAll(); // disconnected
-					else chan->setSentBanListRequest();
-					channels.dequeue();
-					curType=ModeRequest;
+					else pChan->setSentBanListRequest();
+					m_channels.dequeue();
+					m_curType = Mode;
 					break;
 				}
 			default:
-				//we're at the end of the list
-				channels.dequeue();
-				if(channels.isEmpty())
+				// we're at the end of the list
+				m_channels.dequeue();
+				if(m_channels.isEmpty())
 				{
-					timer.stop();
+					m_timer.stop();
 					return;
 				}
-				chan = channels.head();
-				encodedChan = chan->connection()->encodeText(chan->target());
-				curType=ModeRequest;
-			case ModeRequest:
-				if(!chan->connection()->sendFmtData("MODE %s",encodedChan.data()))
+				pChan = m_channels.head();
+				encodedChan = pChan->connection()->encodeText(pChan->target());
+				m_curType = Mode;
+			case Mode:
+				if(!pChan->connection()->sendFmtData("MODE %s",encodedChan.data()))
 				{
 					clearAll(); // disconnected
 					break;
 				}
-				curType=BanERequest;
+				m_curType = BanException;
 				break;
 		}
 	}

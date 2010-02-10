@@ -24,6 +24,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_ircconnectionrequestqueue.h
+* \author Fabio Bas
+* \brief IRC connection request queue
+*/
+
 #include "kvi_settings.h"
 
 #include <QTimer>
@@ -31,32 +37,71 @@
 
 class KviChannel;
 
+/**
+* \class KviRequestQueue
+* \brief Class to enqueue commands to IRC server
+*
+* This class is designed to delay channel requests like MODE and WHO to avoid
+* excess floods on some servers
+*/
 class KVIRC_API KviRequestQueue: public QObject
 {
 	Q_OBJECT
-protected:
-	QQueue<KviChannel *> channels;
-	QTimer timer;
-	// MODE %s b MUST BE THE LAST AUTOMATIC CHANNEL QUERY
-	// so we get RPL_ENDOFBANLIST as the last reply
-	// and we know that the channel is in sync
-	enum requestTypes {
-		ModeRequest = 0,
-		BanERequest = 1,
-		InviRequest = 2,
-		WhoRequest = 3,
-		QuietBanRequest = 4,
-		BanRequest = 5
-	};
-	requestTypes curType;
 public:
+	/**
+	* \brief Constructs the request queue objects
+	* \return KviRequestQueue
+	*/
 	KviRequestQueue();
+	
+	/**
+	* \brief Destroys the request queue objects
+	*/
 	virtual ~KviRequestQueue();
+protected:
+	/**
+	* \enum RequestType
+	*
+	* MODE %s b MUST BE THE LAST AUTOMATIC CHANNEL QUERY so we get
+	* RPL_ENDOFBANLIST as the last reply and we know that the channel is in sync
+	*/
+	enum RequestTypes {
+		Mode = 0,         /**< Channel modes request */
+		BanException = 1, /**< Ban exceptions request */
+		Invite = 2,       /**< Invites request */
+		Who = 3,          /**< Who request */
+		QuietBan = 4,     /**< Quiet ban request */
+		Ban = 5           /**< Ban request */
+	};
+	
+	QQueue<KviChannel *> m_channels;
+	QTimer               m_timer;
+	RequestTypes         m_curType;
 public:
-	void enqueueChannel(KviChannel *pChan);
-	void dequeueChannel(KviChannel *pChan);
+	/**
+	* \brief Enqueues the channel in the queue stack
+	* \param pChan The channel to enqueue
+	* \return void
+	*/
+	void enqueueChannel(KviChannel * pChan);
+	
+	/**
+	* \brief Removes the channel from the queue stack
+	* \param pChan The channel to dequeue
+	* \return void
+	*/
+	void dequeueChannel(KviChannel * pChan);
+	
+	/**
+	* \brief Clears the queue stack
+	* \return void
+	*/
 	void clearAll();
 private slots:
+	/**
+	* \brief Performs time based requests
+	* \return void
+	*/
 	void timerSlot();
 };
 
