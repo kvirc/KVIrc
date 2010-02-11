@@ -45,6 +45,7 @@ KviIOGraphWindow::KviIOGraphWindow(KviModuleExtensionDescriptor * d,KviFrame * l
 : KviWindow(KVI_WINDOW_TYPE_IOGRAPH,lpFrm,name), KviModuleExtension(d)
 {
 	m_pIOGraph = new KviIOGraphWidget(this);
+	setAutoFillBackground(false);
 }
 
 KviIOGraphWindow::~KviIOGraphWindow()
@@ -106,7 +107,7 @@ void KviIOGraphWindow::paintEvent(QPaintEvent * e)
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapTo(g_pFrame, rect.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		QPoint pnt = mdiParent() ? mapTo(g_pFrame, rect.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : rect.topLeft();
 		p.drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif

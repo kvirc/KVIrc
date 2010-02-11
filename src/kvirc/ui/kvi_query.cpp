@@ -73,7 +73,7 @@ KviQuery::KviQuery(KviFrame * lpFrm, KviConsole * lpConsole, const QString & szN
 
 	//m_pTopSplitter = new KviTalSplitter(QSplitter::Horizontal,this,"top_splitter");
 	m_pButtonBox = new KviTalHBox(this);
-	m_pLabel = new KviThemedLabel(m_pButtonBox,"query_label");
+	m_pLabel = new KviThemedLabel(m_pButtonBox, this, "query_label");
 	updateLabelText();
 	m_pButtonBox->setStretchFactor(m_pLabel,1);
 

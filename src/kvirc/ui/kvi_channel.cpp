@@ -119,7 +119,7 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	m_pButtonContainer->setSpacing(0);
 	m_pButtonContainer->setMargin(0);
 	// Topic widget on the left
-	m_pTopicWidget = new KviTopicWidget(m_pTopSplitter,"topic_widget");
+	m_pTopicWidget = new KviTopicWidget(m_pTopSplitter, this, "topic_widget");
 
 	connect(m_pTopicWidget,SIGNAL(topicSelected(const QString &)),
 		this,SLOT(topicSelected(const QString &)));

@@ -67,7 +67,7 @@ class KVIRC_API KviTopicWidget : public QWidget
 	friend class KviChannel;
 	friend class KviTalListWidget;
 public:
-	KviTopicWidget(QWidget * pParent, const char * name);
+	KviTopicWidget(QWidget * pParent, KviChannel* pChannel, const char * name);
 	~KviTopicWidget();
 private:
 	QString                 m_szTopic;
@@ -81,6 +81,7 @@ private:
 	KviThemedLabel        * m_pLabel;
 	KviInputEditor        * m_pInput;
 	KviTalListWidget      * m_pCompletionBox;
+	KviChannel            * m_pKviChannel;
 protected:
 	int m_iCursorPosition;
 private:

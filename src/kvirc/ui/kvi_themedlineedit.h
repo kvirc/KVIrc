@@ -28,13 +28,17 @@
 
 #include <QLineEdit>
 
+class KviWindow;
+
 class KVIRC_API KviThemedLineEdit : public QLineEdit
 {
 	Q_OBJECT
 	Q_PROPERTY(int TransparencyCapable READ dummyRead)
 public:
-	KviThemedLineEdit(QWidget * par,const char * name);
+	KviThemedLineEdit(QWidget * par, KviWindow * pWindow, const char * name);
 	~KviThemedLineEdit();
+private:
+	KviWindow * m_pKviWindow;
 protected:
 	virtual void paintEvent ( QPaintEvent * event );
 public:

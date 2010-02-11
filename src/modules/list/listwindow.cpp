@@ -200,7 +200,7 @@ KviListWindow::KviListWindow(KviFrame * lpFrm, KviConsole * lpConsole)
 
 	connect(m_pParamsEdit,SIGNAL(textEdited(const QString &)),this,SLOT(liveSearch(const QString &)));
 
-	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter,"info_label");
+	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter, this, "info_label");
 
 	m_pTreeWidget  = new QTreeWidget(m_pVertSplitter);
 	m_pTreeWidget->setSelectionBehavior(QAbstractItemView::SelectRows);

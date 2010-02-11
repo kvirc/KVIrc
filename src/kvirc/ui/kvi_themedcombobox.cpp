@@ -37,10 +37,11 @@
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-KviThemedComboBox::KviThemedComboBox(QWidget * par,const char * name)
+KviThemedComboBox::KviThemedComboBox(QWidget * par, KviWindow * pWindow, const char * name)
 : QComboBox(par)
 {
 	setObjectName(name);
+	m_pKviWindow = pWindow;
 	setAutoFillBackground(false);
 
 	QPalette pal = palette();
@@ -101,7 +102,7 @@ void KviThemedComboBox::paintEvent ( QPaintEvent * event )
 		p->fillRect(contentsRect(), col);
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
 		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif

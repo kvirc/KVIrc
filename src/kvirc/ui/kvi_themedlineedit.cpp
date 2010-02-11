@@ -36,10 +36,11 @@
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-KviThemedLineEdit::KviThemedLineEdit(QWidget * par,const char * name)
+KviThemedLineEdit::KviThemedLineEdit(QWidget * par, KviWindow * pWindow,const char * name)
 : QLineEdit(par)
 {
 	setObjectName(name);
+	m_pKviWindow = pWindow;
 	setAutoFillBackground(false);
 	setContentsMargins(2,2,2,2);
 	
@@ -98,7 +99,7 @@ void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
 		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif

@@ -192,7 +192,7 @@ void KviFileTransferWidget::paintEvent(QPaintEvent * event)
 		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = viewport()->mapTo(g_pFrame, rect.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		QPoint pnt = g_pFileTransferWindow->mdiParent() ? viewport()->mapTo(g_pFrame, rect.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : viewport()->mapTo(g_pFileTransferWindow, rect.topLeft());
 		p->drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
@@ -240,7 +240,8 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 : KviWindow(KVI_WINDOW_TYPE_TOOL,lpFrm,"file transfer window",0) , KviModuleExtension(d)
 {
 	g_pFileTransferWindow = this;
-
+	setAutoFillBackground(false);
+	
 	m_pContextPopup = 0;
 	m_pLocalFilePopup = 0;
 	m_pOpenFilePopup = 0;

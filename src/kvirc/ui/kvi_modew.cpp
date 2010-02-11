@@ -33,7 +33,7 @@
 #include <QByteArray>
 
 KviModeWidget::KviModeWidget(QWidget * par,KviChannel* chan,const char * name)
-:KviThemedLineEdit(par, name)
+:KviThemedLineEdit(par, chan, name)
 {
 	m_pChannel=chan;
 	connect(this,SIGNAL(textEdited ( const QString & ) ),this,SLOT(editorTextEdited( const QString & )));

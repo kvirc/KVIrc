@@ -65,7 +65,7 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 
 	QLabel * l = new QLabel(box);
 	box->setStretchFactor(l,1);
-	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter,"info_label");
+	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter, this, "info_label");
 
 	connect(lpConsole->context(),SIGNAL(stateChanged()),
 		this,SLOT(connectionStateChange()));

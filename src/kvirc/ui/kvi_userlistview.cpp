@@ -1723,7 +1723,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapTo(g_pFrame, r.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		QPoint pnt = m_pListView->window()->mdiParent() ? mapTo(g_pFrame, r.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pListView->window(), r.topLeft());
 		p.drawTiledPixmap(r,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif

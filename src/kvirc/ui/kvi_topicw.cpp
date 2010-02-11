@@ -102,10 +102,11 @@ int KviTopicListBoxItem::width ( const KviTalListWidget * lb ) const
 }
 
 
-KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
+KviTopicWidget::KviTopicWidget(QWidget * par, KviChannel * pChannel, const char * name)
 : QWidget(par)
 {
 	setObjectName(name);
+	m_pKviChannel = pChannel;
 	m_pHistory = 0;
 	m_pAccept = 0;
 	m_pDiscard = 0;
@@ -115,7 +116,7 @@ KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
 	m_pLabel = 0;
 	setAutoFillBackground(false);
 
-	m_pLabel = new KviThemedLabel(this, "topic_label");
+	m_pLabel = new KviThemedLabel(this, pChannel, "topic_label");
 	connect(m_pLabel,SIGNAL(doubleClicked()),this,SLOT(switchMode()));
 	
 	reset();
@@ -603,24 +604,7 @@ void KviTopicWidget::deactivate()
 	resizeEvent(0);
 	// try to find a KviWindow parent and give it the focus
 
-	QObject * w = parent();
-	while(w)
-	{
-		if(w->inherits("KviWindow"))
-		{
-			((KviWindow *)w)->setFocus();
-			return;
-		}
-		w = w->parent();
-	}
-
-	// no KviWindow on the path
-	w = parent();
-	if(w)
-	{
-		if(w->inherits("QWidget"))
-			((QWidget *)w)->setFocus();
-	}
+	m_pKviChannel->setFocus();
 }
 
 void KviTopicWidget::discardClicked()

@@ -122,7 +122,7 @@ void KviUrlDialogTreeWidget::paintEvent(QPaintEvent * event)
 		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = viewport()->mapTo(g_pFrame, rect.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		QPoint pnt = ((KviWindow*)parent())->mdiParent() ? viewport()->mapTo(g_pFrame, rect.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : viewport()->mapTo((KviWindow*)parent(), rect.topLeft());
 		p->drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
@@ -171,6 +171,8 @@ QPixmap * KviUrlAction::smallIcon()
 UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
 :KviWindow(KVI_WINDOW_TYPE_TOOL,g_pFrame,"URL List")
 {
+	setAutoFillBackground(false);
+	
 	m_pUrlList = new KviUrlDialogTreeWidget(this);
 
 	m_pMenuBar = new KviTalMenuBar(this,"url menu");

@@ -35,10 +35,11 @@
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-KviThemedLabel::KviThemedLabel(QWidget * par,const char * name)
+KviThemedLabel::KviThemedLabel(QWidget * par, KviWindow * pWindow,const char * name)
 : QLabel(par)
 {
 	setObjectName(name);
+	m_pKviWindow = pWindow;
 	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	setContentsMargins(2,2,2,2);
 	setAutoFillBackground(false);
@@ -77,7 +78,7 @@ void KviThemedLabel::paintEvent(QPaintEvent *e)
 		p->fillRect(contentsRect(), col);
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
 		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif

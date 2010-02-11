@@ -89,7 +89,7 @@ KviDccChat::KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
 {
 	m_pButtonBox = new KviTalHBox(this);
 
-	m_pLabel = new KviThemedLabel(m_pButtonBox,"dcc_chat_label");
+	m_pLabel = new KviThemedLabel(m_pButtonBox, this, "dcc_chat_label");
 	m_pLabel->setText(name);
 	m_pButtonBox->setStretchFactor(m_pLabel,1);
 
