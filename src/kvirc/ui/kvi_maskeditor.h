@@ -52,9 +52,25 @@ public:
 	~KviMaskItem();
 
 	KviMaskEntry* mask() { return &m_Mask; };
-	virtual int compare ( QTreeWidgetItem * i, int col, bool ascending ) const;
 protected:
 	KviMaskEntry m_Mask;
+	bool operator<(const QTreeWidgetItem &other)const
+	{
+		// This is the sorting function for KviMaskItem
+		switch(treeWidget()->sortColumn())
+		{
+			case 0:
+				return m_Mask.szMask < ((KviMaskItem *) &other)->mask()->szMask;
+				break;
+			case 1:
+				return m_Mask.szSetBy < ((KviMaskItem*) &other)->mask()->szSetBy;
+				break;
+			case 2:
+				return m_Mask.uSetAt < ((KviMaskItem*) &other)->mask()->uSetAt;
+				break;
+		}
+		return 0; //make compiler happy
+	}
 
 };
 

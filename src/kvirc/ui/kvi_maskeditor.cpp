@@ -64,18 +64,6 @@ KviMaskItem::~KviMaskItem()
 {
 }
 
-int KviMaskItem::compare ( QTreeWidgetItem * i, int col, bool) const
-{
-	if(col==2)
-	{
-		if( ((KviMaskItem*)i)->mask()->uSetAt > m_Mask.uSetAt )  return -1;
-		if( ((KviMaskItem*)i)->mask()->uSetAt == m_Mask.uSetAt ) return  0;
-		if( ((KviMaskItem*)i)->mask()->uSetAt < m_Mask.uSetAt )  return  1;
-	}
-
-	return text(col).localeAwareCompare(i->text(col));
-}
-
 KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEditor,KviChannel * pChannel)
 :QDialog(pEditor)
 {
