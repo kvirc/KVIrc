@@ -442,7 +442,7 @@ void KviTopicWidget::switchMode()
 	}
 	if(m_pInput == 0)
 	{
-		m_pInput=new KviInputEditor(this,0);
+		m_pInput=new KviInputEditor(this,m_pKviChannel);
 		m_pInput->setObjectName("topicw_inputeditor");
 		m_pInput->setReadOnly(!bCanEdit);
 		m_pInput->setMaxBufferSize(maxlen);
