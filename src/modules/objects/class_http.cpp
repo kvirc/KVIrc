@@ -28,6 +28,7 @@
 #include "class_http.h"
 #include <QHttp>
 #include <QUrl>
+ #include <QUrlInfo>
 #ifndef QT_NO_OPENSSL
 
 #include <QSslError>
@@ -230,6 +231,7 @@ bool  KviKvsObject_http::functionSetProxy(KviKvsObjectFunctionCall *c)
 }
 bool  KviKvsObject_http::functionGet(KviKvsObjectFunctionCall *c)
 {
+
 	CHECK_INTERNAL_POINTER(m_pHttp)
 	QString szPath,szDest;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -252,8 +254,9 @@ bool  KviKvsObject_http::functionGet(KviKvsObjectFunctionCall *c)
 		}
 
 	}
-	if (szPath.isEmpty()) szPath="/";
-	int id=m_pHttp->get(szPath,pFile);
+
+        if (szPath.isEmpty()) szPath="/";
+        int id=m_pHttp->get(szPath,pFile);
 	if (pFile) getDict[id]=pFile;
 	c->returnValue()->setInteger(id);
 	return true;
@@ -312,7 +315,7 @@ bool KviKvsObject_http::functionFollowRedirect(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_http::functionRequestFinishedEvent(KviKvsObjectFunctionCall *c)
 {
-	emitSignal("requestFinished",c,c->params());
+        emitSignal("requestFinished",c,c->params());
 	return true;
 }
 
@@ -320,32 +323,32 @@ void KviKvsObject_http::slotRequestFinished ( int id, bool error )
 {
 
     if (m_bAbort)
-	{
-		m_bAbort=false;
-		QHashIterator<int,QFile *> t(getDict);
-		while (t.hasNext())
-		{
-			t.next();
-			int key=t.key();
-			QFile *pFile=getDict.value(key);
-			pFile->close();
-			delete pFile;
-		}
-		getDict.clear();
-		return;
+    {
+        m_bAbort=false;
+        QHashIterator<int,QFile *> t(getDict);
+        while (t.hasNext())
+        {
+                t.next();
+                int key=t.key();
+                QFile *pFile=getDict.value(key);
+                pFile->close();
+                delete pFile;
+        }
+        getDict.clear();
+        return;
     }
-	QFile *pFile=getDict.value(id);
-	if (pFile)
-	{
-		QString name=pFile->fileName();
-		pFile->close();
-		getDict.remove(id);
-		int res=m_pHttp->lastResponse().statusCode();
-		if ((res==301 || res==302 || res==307) && m_bEnableForceRedirect)
-			redirect(name,m_pHttp->lastResponse());
-		delete pFile;
-	}
-	callFunction(this,"requestFinishedEvent",0,new KviKvsVariantList(new KviKvsVariant((kvs_int_t) id),new KviKvsVariant(error)));
+    QFile *pFile=getDict.value(id);
+    if (pFile)
+    {
+        QString name=pFile->fileName();
+        pFile->close();
+        getDict.remove(id);
+        int res=m_pHttp->lastResponse().statusCode();
+        if ((res==301 || res==302 || res==307) && m_bEnableForceRedirect)
+                redirect(name,m_pHttp->lastResponse());
+        delete pFile;
+    }
+    callFunction(this,"requestFinishedEvent",0,new KviKvsVariantList(new KviKvsVariant((kvs_int_t) id),new KviKvsVariant(error)));
 }
 
 bool KviKvsObject_http::functionRequestStartedEvent(KviKvsObjectFunctionCall *c)
@@ -420,9 +423,13 @@ void KviKvsObject_http::slotResponseHeaderReceived(const QHttpResponseHeader &r)
 		case 303:	szResponse="See Other" ;break;
 		case 307:	szResponse="Temporary Redirect" ;break;
 		default: szResponse=r.reasonPhrase();
-			m_bAbort=true;
+                m_bAbort=true;
 	}
-
+        if (r.statusCode()==400)
+        {
+            m_bAbort=true;
+            m_pHttp->abort();
+        }
 	callFunction(this,"responseHeaderReceivedEvent",0,new KviKvsVariantList(
 		new KviKvsVariant(szResponse)));
 
