@@ -2193,9 +2193,6 @@ void KviServerParser::parseNumericNotRegistered(KviIrcMessage * msg)
 	// 451: ERR_NOTREGISTERED
 	// :prefix 451 PING :You have not registered
 
-	KviIrcConnectionStateData * pStateData = msg->connection()->stateData();
-	#ifdef COMPILE_SSL_SUPPORT
-	if(pStateData->sentStartTls())
-		msg->connection()->enableStartTlsSupport(false);
-	#endif
+	if(msg->connection()->isInsideCapLsRequest())
+		msg->connection()->handleFailedCapLs();
 }

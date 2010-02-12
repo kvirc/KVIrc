@@ -28,6 +28,8 @@
 #include "kvi_qstring.h"
 #include "kvi_inttypes.h"
 
+#include <QStringList>
+
 class KVIRC_API KviBasicIrcServerInfo
 {
 protected:
@@ -97,6 +99,8 @@ private:
 	int m_iMaxModeChanges;
 	QString m_szListModes;
 	QString m_szPlainModes;
+	bool m_bSupportsCap;
+	QStringList m_szaCap;
 public:
 	char  registerModeChar() { return m_pServInfo ?  m_pServInfo->getRegisterModeChar() : 0; };
 	const QString & name(){ return m_szName; };
@@ -109,6 +113,8 @@ public:
 	const QString & supportedPlainModes(){ return m_szPlainModes; };
 	bool supportsModesIe(){ return m_bSupportsModesIe; };
 	bool supportsModeq(){ return m_bSupportsModeq; };
+	bool supportsCap(){ return m_bSupportsCap; };
+	QStringList supportedCaps(){ return m_szaCap; };
 	bool supportsWatchList(){ return m_bSupportsWatchList; };
 	bool supportsCodePages(){ return m_bSupportsCodePages; };
 
@@ -134,6 +140,7 @@ protected:
 	void setSupportedChannelTypes(const QString &szSupportedChannelTypes){ m_szSupportedChannelTypes = szSupportedChannelTypes; };
 	void setSupportsWatchList(bool bSupportsWatchList){ m_bSupportsWatchList = bSupportsWatchList; };
 	void setSupportsCodePages(bool bSupportsCodePages){ m_bSupportsCodePages = bSupportsCodePages; };
+	void setSupportsCaps(QString szCaps);
 	void setMaxTopicLen( int iTopLen ) { m_iMaxTopicLen=iTopLen; };
 	void setMaxModeChanges(int iModes ) { m_iMaxModeChanges=iModes; };
 private:

@@ -666,6 +666,7 @@ enter_idle_state:
 
 void KviIrcContext::connectionEstabilished()
 {
+	qDebug("context::connectionEstabilished");
 	//
 	// The connection has been estabilished, the
 	// KviIrcConnection will attempt to login now

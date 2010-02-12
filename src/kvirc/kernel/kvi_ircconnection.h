@@ -179,6 +179,7 @@ private:
 	QTextCodec                           * m_pTextCodec;            // connection codec: never null
 	KviRequestQueue                      * m_pRequestQueue;         // owned, never null
 
+	bool                                   m_bInsideCapLsRequest;
 public:
 	/**
 	* \brief Returns a pointer to the owning console
@@ -220,6 +221,12 @@ public:
 	*/
 	inline State state(){ return m_eState; };
 
+	/**
+	* \brief Returns true if the connection is waiting for an answer to a "CAP LS" request
+	* \return bool
+	*/
+	inline bool isInsideCapLsRequest(){ return m_bInsideCapLsRequest; };
+	
 	/**
 	* \brief Returns a pointer to the big connection user database.
 	*
@@ -682,18 +689,6 @@ protected:
 	*/
 	void resolveLocalHost();
 
-	/**
-	* \brief Checks if the server supports the CAPabilities protocol
-	* \return void
-	*/
-	void checkCapSupport();
-
-	/**
-	* \brief Called to close the CAPabilities negotiation
-	* \return void
-	*/
-	void closeCap();
-
 #ifdef COMPILE_SSL_SUPPORT
 	void trySTARTTLS();
 	void enableStartTlsSupport(bool bEnable);
@@ -734,6 +729,18 @@ protected:
 	* \return void
 	*/
 	void serverInfoReceived(const QString & szServerName, const QString & szUserModes, const QString & szChanModes);
+
+	/**
+	* \brief Called when CAP LS answer is received
+	* \return void
+	*/
+	void handleCapLs();
+
+	/**
+	* \brief Called when CAP LS negotiation fails
+	* \return void
+	*/
+	void handleFailedCapLs();
 
 	/**
 	* \brief Called to update the away state

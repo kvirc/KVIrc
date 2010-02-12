@@ -40,6 +40,7 @@ KviIrcConnectionServerInfo::KviIrcConnectionServerInfo()
 	m_bSupportsModesIe   = true;
 	m_bSupportsWatchList = false;
 	m_bSupportsCodePages = false;
+	m_bSupportsCap = false;
 	m_iMaxTopicLen=-1;
 	m_szListModes="";
 	m_szPlainModes="";
@@ -51,6 +52,13 @@ KviIrcConnectionServerInfo::~KviIrcConnectionServerInfo()
 {
 	if(m_pServInfo) delete m_pServInfo;
 	if(m_pModePrefixTable) kvi_free(m_pModePrefixTable);
+}
+
+void KviIrcConnectionServerInfo::setSupportsCaps(QString szCaps)
+{
+	m_bSupportsCap=true;
+	qDebug("server support caps: %s",szCaps.toUtf8().data());
+	m_szaCap = szCaps.split(' ', QString::SkipEmptyParts);
 }
 
 void KviIrcConnectionServerInfo::setSupportedChannelModes(const QString &szSupportedChannelModes)

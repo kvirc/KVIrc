@@ -1998,12 +1998,9 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 
 	debug("Prefix: %s\nPar1: %s\nPar2: %s",szPrefix.toUtf8().data(),szCmd.toUtf8().data(),szProtocols.toUtf8().data());
 
-	bool bEnable = false;
 	if(szCmd == "LS")
 	{
-		QStringList szList = szProtocols.split(" ");
-		if(szList.contains("tls")) bEnable = true;
+		msg->connection()->serverInfo()->setSupportsCaps(szProtocols);
+		msg->connection()->handleCapLs();
 	}
-
-	//msg->connection()->checkStartTlsSupport(bEnable);
 }

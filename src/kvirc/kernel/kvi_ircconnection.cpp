@@ -77,6 +77,7 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarg
 : QObject()
 {
 	m_bIdentdAttached = false;
+	m_bInsideCapLsRequest = false;
 	m_pContext = pContext;
 	m_pConsole = pContext->console();
 	m_pTarget = pTarget;
@@ -314,23 +315,45 @@ void KviIrcConnection::linkEstabilished()
 	// FIXME: With STARTTLS this is called TWICE!
 	context()->connectionEstabilished();
 
+	// Ok...we're loggin in now
+	resolveLocalHost();
+
+	// HACK: this is needed to avoid timeouts connecting
+	// This MUST go as one network packet to avoid possible handshake problems
+	// on slow connections.
+
+	// And, probably, NICK hack is better then PING hack as soon as freenode
+	// not answer to ping!
+	m_bInsideCapLsRequest = true;
+	sendFmtData("CAP LS\r\nPING :%s",target()->server()->hostName().data());
+}
+
+void KviIrcConnection::handleCapLs()
+{
+	qDebug("handleCapLs");
+	m_bInsideCapLsRequest = false;
 #ifdef COMPILE_SSL_SUPPORT
 	if(
 		KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable) &&
-		target()->server()->supportsSTARTTLS() &&
-		(!link()->socket()->usingSSL())
+		(!link()->socket()->usingSSL()) &&
+		(serverInfo()->supportedCaps().contains("tls",Qt::CaseInsensitive) ||
+		target()->server()->supportsSTARTTLS())
 	)
 	{
 		trySTARTTLS();
-	} else {
-#endif
-		// Ok...we're loggin in now
-		resolveLocalHost();
-
-		loginToIrcServer();
-#ifdef COMPILE_SSL_SUPPORT
+		return;
 	}
 #endif
+
+	sendFmtData("CAP END");
+	loginToIrcServer();
+}
+
+void KviIrcConnection::handleFailedCapLs()
+{
+	qDebug("handleFailedCapLs");
+	m_bInsideCapLsRequest = false;
+	loginToIrcServer();
 }
 
 void KviIrcConnection::linkTerminated()
@@ -933,57 +956,19 @@ void KviIrcConnection::hostNameLookupTerminated(KviDns *)
 	m_pLocalhostDns = 0;
 }
 
-void KviIrcConnection::checkCapSupport()
-{
-	debug("Sending CAP LS command...");
-
-	// Check if the server supports CAP module to discover protocols
-	if(!sendFmtData("CAP LS"))
-	{
-		// Cannot send command
-		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Impossible to send CAP LS command to the IRC server. Your connection will NOT be encrypted"));
-		return;
-	}
-}
-
-void KviIrcConnection::closeCap()
-{
-	// Closing CAPabilies discovery
-	if(!sendFmtData("CAP END"))
-	{
-		// Cannot send command
-		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Impossible to send CAP END command to the IRC server. Your connection will NOT be encrypted"));
-	}
-
-	// Ok, login the user
-	return loginToIrcServer();
-}
-
 #ifdef COMPILE_SSL_SUPPORT
 void KviIrcConnection::trySTARTTLS()
 {
 	// Check if the server supports STARTTLS protocol and we want to
 	// connect through it
-	debug("Checking STARTTLS support...");
-	KviServer * pServer = target()->server();
-
-	if(pServer->supportsSTARTTLS())
+	debug("Sending STARTTLS command...");
+	if(!sendFmtData("STARTTLS"))
 	{
-		debug("Sending STARTTLS command...");
-		// HACK: this is needed to avoid timeouts connecting
-		// This MUST go as one network packet to avoid possible handshake problems
-		// on slow connections.
-
-		// And, probably, NICK hack is better then PING hack as soon as freenode
-		// not answer to ping!
-		if(!sendFmtData("STARTTLS\n\rPING :%s",pServer->hostName().data()))
-		{
-			// Cannot send command
-			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Impossible to send STARTTLS command to the IRC server. Your connection will NOT be encrypted"));
-			return;
-		}
-		m_pStateData->setSentStartTls();
+		// Cannot send command
+		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Impossible to send STARTTLS command to the IRC server. Your connection will NOT be encrypted"));
+		return;
 	}
+	m_pStateData->setSentStartTls();
 }
 
 void KviIrcConnection::enableStartTlsSupport(bool bEnable)
@@ -997,8 +982,6 @@ void KviIrcConnection::enableStartTlsSupport(bool bEnable)
 	} else {
 		// The server does not support STARTTLS
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("The server does not support STARTTLS command. Your connection will NOT be encrypted"));
-
-		loginToIrcServer();
 	}
 }
 #endif // COMPILE_SSL_SUPPORT
@@ -1108,7 +1091,6 @@ void KviIrcConnection::loginToIrcServer()
 	if(!_OUTPUT_MUTE)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Logging in as %Q!%Q :%Q"),
 			&(m_pUserInfo->nickName()),&(m_pUserInfo->userName()),&(m_pUserInfo->realName()));
-
 
 	// spity, 27.03.2005: follow the RFC2812 suggested order for connection registration
 	// first the PASS, then NICK and then USER
