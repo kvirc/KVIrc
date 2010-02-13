@@ -127,6 +127,7 @@ protected:
 	KviIpEditor           * m_pIpEditor;
 	QCheckBox             * m_pCacheIpCheck;
 	QCheckBox             * m_pUseSSLCheck;
+	QCheckBox             * m_pEnableCAPCheck;
 	QCheckBox             * m_pEnableSTARTTLSCheck;
 	QCheckBox             * m_pEnableSASLCheck;
 	QCheckBox             * m_pUseDefaultInitUMode;

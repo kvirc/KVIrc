@@ -54,6 +54,7 @@ class KviServer;
 #define KVI_IRCSERVER_FLAG_SSL 4
 #define KVI_IRCSERVER_FLAG_STARTTLS 8
 #define KVI_IRCSERVER_FLAG_SASL 16
+#define KVI_IRCSERVER_FLAG_CAP 32
 
 /**
 * \class KviServerReconnectInfo
@@ -290,6 +291,12 @@ public:
 	inline bool useSSL() const { return (m_uFlags & KVI_IRCSERVER_FLAG_SSL); };
 
 	/**
+	* \brief Returns true if the CAP protocol is enabled for this server
+	* \return bool
+	*/
+	inline bool enabledCAP() const { return (m_uFlags & KVI_IRCSERVER_FLAG_CAP); };
+
+	/**
 	* \brief Returns true if the STARTTLS protocol is enabled for this server
 	* \return bool
 	*/
@@ -490,6 +497,17 @@ public:
 	{
 		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_STARTTLS;
 		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_STARTTLS);
+	};
+
+	/**
+	* \brief Sets if CAP support is enabled/disabled for this server
+	* \param bSet Whether to enable the support for CAP
+	* \return void
+	*/
+	inline void setEnabledCAP(bool bSet)
+	{
+		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_CAP;
+		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_CAP);
 	};
 
 	/**

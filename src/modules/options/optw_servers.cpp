@@ -642,8 +642,15 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 #endif
 	m_pUseSSLCheck->setChecked(s->useSSL());
 
+	m_pEnableCAPCheck = new QCheckBox(__tr2qs_ctx("Use CAP protocol","options"),tab);
+	gl->addWidget(m_pEnableCAPCheck,5,0,1,2);
+
+	KviTalToolTip::add(m_pEnableCAPCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Extended Capability</b> " \
+		"support. Obviously, this server must have support for this, too. Disable this for irc bouncers.</center>","options"));
+	m_pEnableCAPCheck->setChecked(s->enabledCAP());
+
 	m_pEnableSTARTTLSCheck = new QCheckBox(__tr2qs_ctx("Enable STARTTLS protocol","options"),tab);
-	gl->addWidget(m_pEnableSTARTTLSCheck,5,0,1,2);
+	gl->addWidget(m_pEnableSTARTTLSCheck,6,0,1,2);
 	KviTalToolTip::add(m_pEnableSTARTTLSCheck,__tr2qs_ctx("<center>This check enables the use of the <b>Transport Layer Security</b> " \
 		"protocol. If you enable the proper global option in the Connection/SSL tab, the TLS protocol will be used for this server if available.</center>","options"));
 #ifndef COMPILE_SSL_SUPPORT
@@ -654,17 +661,17 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	m_pUseAutoConnect = new QCheckBox(__tr2qs_ctx("Connect to this server at startup","options"),tab);
 	m_pUseAutoConnect->setChecked(s->autoConnect());
 
-	gl->addWidget(m_pUseAutoConnect,6,0,1,2);
+	gl->addWidget(m_pUseAutoConnect,7,0,1,2);
 
 	KviTalToolTip::add(m_pUseAutoConnect,__tr2qs_ctx("<center>This option will cause KVIrc to connect to the IRC server when it is started.</center>","options"));
 
 	//server encoding
 
 	l = new QLabel(__tr2qs_ctx("Server Encoding:","options"),tab);
-	gl->addWidget(l,7,0);
+	gl->addWidget(l,8,0);
 	m_pEncodingEditor = new QComboBox(tab);
 	m_pEncodingEditor->setDuplicatesEnabled(false);
-	gl->addWidget(m_pEncodingEditor,7,1);
+	gl->addWidget(m_pEncodingEditor,8,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for this server. " \
 		"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
 		"If you choose \"Use Network Encoding\" then the encoding will be inherited from the " \
@@ -673,10 +680,10 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	//text encoding
 
 	l = new QLabel(__tr2qs_ctx("Text Encoding:","options"),tab);
-	gl->addWidget(l,8,0);
+	gl->addWidget(l,9,0);
 	m_pTextEncodingEditor = new QComboBox(tab);
 	m_pTextEncodingEditor->setDuplicatesEnabled(false);
-	gl->addWidget(m_pTextEncodingEditor,8,1);
+	gl->addWidget(m_pTextEncodingEditor,9,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for this server. " \
 			"This encoding will be used as the default for text messages." \
 			"If you choose \"Use Network Encoding\" then the encoding will be inherited from the " \
@@ -705,11 +712,11 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	m_pTextEncodingEditor->setCurrentIndex(txtcurrent);
 
 	l = new QLabel(__tr2qs_ctx("Link filter:","options"),tab);
-	gl->addWidget(l,9,0);
+	gl->addWidget(l,10,0);
 	m_pLinkFilterEditor = new QComboBox(tab);
 	m_pLinkFilterEditor->setEditable(true);
 	m_pLinkFilterEditor->setDuplicatesEnabled(false);
-	gl->addWidget(m_pLinkFilterEditor,9,1);
+	gl->addWidget(m_pLinkFilterEditor,10,1);
 
 	m_pLinkFilterEditor->addItem("");
 
@@ -741,20 +748,20 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 		"For plain IRC connections, you don't need any link filters; this is used for incompatible protocols.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Id:","options"),tab);
-	gl->addWidget(l,10,0);
+	gl->addWidget(l,11,0);
 	m_pIdEditor = new QLineEdit(tab);
 	if(s->id().isEmpty())s->generateUniqueId();
 	m_pIdEditor->setText(s->id());
-	gl->addWidget(m_pIdEditor,10,1);
+	gl->addWidget(m_pIdEditor,11,1);
 
 	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique id for this server. " \
 		"You will then be able to use /server -x &lt;this_id&gt; to make the connection. This is especially " \
 		"useful when you have multiple server entries with the same hostname and port in different networks (bouncers?)</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Proxy server:","options"),tab);
-	gl->addWidget(l,11,0);
+	gl->addWidget(l,12,0);
 	m_pProxyEditor = new QComboBox(tab);
-	gl->addWidget(m_pProxyEditor,11,1);
+	gl->addWidget(m_pProxyEditor,12,1);
 	KviTalToolTip::add(m_pProxyEditor,__tr2qs_ctx("<center>This is the <b>proxy</b> that KVIrc will use to connect to this server.\n" \
 		"If this field is set in \"Default\" KVirc will use global proxy settings, if it is set in \"Direct connection\" " \
 		"KVirc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
@@ -771,29 +778,29 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 		m_pProxyEditor->setCurrentIndex(s->proxy()+2);
 
 	m_pEnableSASLCheck = new QCheckBox(__tr2qs_ctx("Enable SASL authentication","options"),tab);
-	gl->addWidget(m_pEnableSASLCheck,12,0,1,2);
+	gl->addWidget(m_pEnableSASLCheck,13,0,1,2);
 	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("<center>This check enables the use of the <b>SASL</b> authentication procotol" \
 		"If you enable the proper global option in the Connection/SSL tab and fill the Sasl Nickname and Sasl Password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
 	m_pEnableSASLCheck->setChecked(s->enabledSASL());
 
 	l = new QLabel(__tr2qs_ctx("Sasl Nickname:","options"),tab);
-	gl->addWidget(l,13,0);
+	gl->addWidget(l,14,0);
 	m_pSaslNickEditor = new QLineEdit(tab);
 	m_pSaslNickEditor->setText(s->saslNick());
 	KviTalToolTip::add(m_pSaslNickEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your nickname here.</center>","options"));
-	gl->addWidget(m_pSaslNickEditor,13,1);
+	gl->addWidget(m_pSaslNickEditor,14,1);
 
 	l = new QLabel(__tr2qs_ctx("Sasl Password:","options"),tab);
-	gl->addWidget(l,14,0);
+	gl->addWidget(l,15,0);
 	m_pSaslPassEditor = new KviPasswordLineEdit(tab);
 	m_pSaslPassEditor->setText(s->saslPass());
 	KviTalToolTip::add(m_pSaslPassEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your password here.</center>","options"));
-	gl->addWidget(m_pSaslPassEditor,14,1);
+	gl->addWidget(m_pSaslPassEditor,15,1);
 
 	l = new QLabel("",tab);
-	gl->addWidget(l,15,0,1,2);
+	gl->addWidget(l,16,0,1,2);
 
-	gl->setRowStretch(15,1);
+	gl->setRowStretch(16,1);
 
 	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SOCKETWARNING)),__tr2qs_ctx("Connection","options"));
 
@@ -942,15 +949,18 @@ void KviServerDetailsWidget::fillData(KviServer * s)
 		s->setCacheIp(m_pCacheIpCheck->isChecked());
 	if(m_pUseSSLCheck)
 		s->setUseSSL(m_pUseSSLCheck->isChecked());
+	if(m_pEnableCAPCheck)
+		s->setEnabledCAP(m_pEnableCAPCheck->isChecked());
 	if(m_pEnableSTARTTLSCheck)
 		s->setEnabledSTARTTLS(m_pEnableSTARTTLSCheck->isChecked());
 
 	s->setSaslNick(m_pSaslNickEditor->text());
 	s->setSaslPass(m_pSaslPassEditor->text());
-	s->setEnabledSASL( m_pEnableSASLCheck->isChecked() &&
-			  !m_pSaslNickEditor->text().isEmpty() &&
-			  !m_pSaslPassEditor->text().isEmpty()
-			  );
+	if(m_pEnableSASLCheck)
+		s->setEnabledSASL( m_pEnableSASLCheck->isChecked() &&
+				  !m_pSaslNickEditor->text().isEmpty() &&
+				  !m_pSaslPassEditor->text().isEmpty()
+				  );
 
 	if(m_pIdEditor)
 		s->setId(m_pIdEditor->text());

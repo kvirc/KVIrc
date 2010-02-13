@@ -232,6 +232,8 @@ bool KviServer::load(KviConfig * cfg, const QString & szPrefix)
 	setCacheIp(cfg->readBoolEntry(szTmp,false)); // true ?
 	KviQString::sprintf(szTmp,"%QSSL",&szPrefix);
 	setUseSSL(cfg->readBoolEntry(szTmp,false));
+	KviQString::sprintf(szTmp,"%QEnabledCAP",&szPrefix);
+	setEnabledCAP(cfg->readBoolEntry(szTmp,true));
 	KviQString::sprintf(szTmp,"%QEnabledSTARTTLS",&szPrefix);
 	setEnabledSTARTTLS(cfg->readBoolEntry(szTmp,true));
 	KviQString::sprintf(szTmp,"%QEnabledSASL",&szPrefix);
@@ -349,6 +351,11 @@ void KviServer::save(KviConfig * cfg, const QString & szPrefix)
 	{
 		KviQString::sprintf(szTmp,"%QSSL",&szPrefix);
 		cfg->writeEntry(szTmp,useSSL());
+	}
+	if(!enabledCAP())
+	{
+		KviQString::sprintf(szTmp,"%QEnabledCAP",&szPrefix);
+		cfg->writeEntry(szTmp,enabledCAP());
 	}
 	if(!enabledSTARTTLS())
 	{

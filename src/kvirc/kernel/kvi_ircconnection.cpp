@@ -317,14 +317,33 @@ void KviIrcConnection::linkEstabilished()
 	// Ok...we're loggin in now
 	resolveLocalHost();
 
-	// HACK: this is needed to avoid timeouts connecting
-	// This MUST go as one network packet to avoid possible handshake problems
-	// on slow connections.
+	if(target()->server()->enabledCAP())
+	{
+		/*
+		 * HACK: this is needed to avoid timeouts connecting to server that does not
+		 * support thye CAP extension (yet). Adding a somewhat broken message to a
+		 * CAP LS request will force the server to output an error message.
+		 *
+		 * I'm currently aware of 2 methods:
+		 * 1) using a broken nick (NICK -) to force a 437: ERR_UNAVAILRESOURCE
+		 * 2) ping the server before registration to get a // 451: ERR_NOTREGISTERED
+		 *
+		 * Both method works, but the first method could compromise STARTTLS on some
+		 * server that won't allow you to use tsl if the registration has already started
+		 *
+		 * Please note that irc bouncers are currently broken for this setup: eg. psyBNC
+		 * will let the user login with a "-" (single dash) nickname or executing any
+		 * invalid command without throwing any error at all.
+		 *
+		 * This MUST go as one network packet to avoid possible handshake problems
+		 * on slow connections.
+		 */
 
-	// And, probably, NICK hack is better then PING hack as soon as freenode
-	// not answer to ping!
-	m_pStateData->setInsideCapLs(true);
-	sendFmtData("CAP LS\r\nPING :%s",target()->server()->hostName().data());
+		m_pStateData->setInsideCapLs(true);
+		sendFmtData("CAP LS\r\nPING :%s",target()->server()->hostName().data());
+	} else {
+		loginToIrcServer();
+	}
 }
 
 void KviIrcConnection::handleCapLs()
