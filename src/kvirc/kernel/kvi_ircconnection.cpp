@@ -77,7 +77,6 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarg
 : QObject()
 {
 	m_bIdentdAttached = false;
-	m_bInsideCapLsRequest = false;
 	m_pContext = pContext;
 	m_pConsole = pContext->console();
 	m_pTarget = pTarget;
@@ -324,20 +323,23 @@ void KviIrcConnection::linkEstabilished()
 
 	// And, probably, NICK hack is better then PING hack as soon as freenode
 	// not answer to ping!
-	m_bInsideCapLsRequest = true;
+	m_pStateData->setInsideCapLs(true);
 	sendFmtData("CAP LS\r\nPING :%s",target()->server()->hostName().data());
 }
 
 void KviIrcConnection::handleCapLs()
 {
 	qDebug("handleCapLs");
-	m_bInsideCapLsRequest = false;
+	m_pStateData->setInsideCapLs(false);
+
+	// STARTTLS support: this has to be checked first because it could imply
+	// a full cap renegotiation 
 #ifdef COMPILE_SSL_SUPPORT
 	if(
 		KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable) &&
 		(!link()->socket()->usingSSL()) &&
-		(serverInfo()->supportedCaps().contains("tls",Qt::CaseInsensitive) ||
-		target()->server()->supportsSTARTTLS())
+		target()->server()->enabledSTARTTLS() &&
+		serverInfo()->supportedCaps().contains("tls",Qt::CaseInsensitive)
 	)
 	{
 		trySTARTTLS();
@@ -345,6 +347,54 @@ void KviIrcConnection::handleCapLs()
 	}
 #endif
 
+	QString szRequests;
+
+	//SASL
+	if(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable) &&
+		target()->server()->enabledSASL() &&
+		serverInfo()->supportedCaps().contains("sasl",Qt::CaseInsensitive)
+	)
+	{
+		szRequests.append("sasl ");
+	}
+
+	//TODO MULTI-PREFIX, others goes here
+
+	if(szRequests.isEmpty()) endCapLs();
+	else sendFmtData("CAP REQ :%s",szRequests.trimmed().toUtf8().data());
+}
+
+void KviIrcConnection::handleCapAck()
+{
+	qDebug("handleCapAck");
+
+	//SASL
+	if(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable) &&
+		target()->server()->enabledSASL() &&
+		serverInfo()->enabledCaps().contains("sasl",Qt::CaseInsensitive)
+	)
+	{
+		sendFmtData("AUTHENTICATE PLAIN");
+		//server will send us a "AUTHENTICATE +" answer; we won't wait for this extra step
+		QByteArray szAuth = encodeText(target()->server()->saslNick());
+		szAuth.append('\0');
+		szAuth.append(encodeText(target()->server()->saslNick()));
+		szAuth.append('\0');
+		szAuth.append(encodeText(target()->server()->saslPass()));
+		sendFmtData("AUTHENTICATE %s",szAuth.toBase64().data());
+	}
+
+	endCapLs();
+}
+
+void KviIrcConnection::handleCapNak()
+{
+	qDebug("handleCapNak");
+	endCapLs();
+}
+
+void KviIrcConnection::endCapLs()
+{
 	sendFmtData("CAP END");
 	loginToIrcServer();
 }
@@ -352,7 +402,7 @@ void KviIrcConnection::handleCapLs()
 void KviIrcConnection::handleFailedCapLs()
 {
 	qDebug("handleFailedCapLs");
-	m_bInsideCapLsRequest = false;
+	m_pStateData->setInsideCapLs(false);
 	loginToIrcServer();
 }
 

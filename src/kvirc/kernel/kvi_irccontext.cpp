@@ -570,7 +570,7 @@ void KviIrcContext::connectToCurrentServer()
 	m_pSavedAsynchronousConnectionData->bPortIsOk = true;
 	m_pSavedAsynchronousConnectionData->bUseIPv6 = srv->isIPv6();
 	m_pSavedAsynchronousConnectionData->bUseSSL = srv->useSSL();
-	m_pSavedAsynchronousConnectionData->bSTARTTLS = srv->supportsSTARTTLS();
+	m_pSavedAsynchronousConnectionData->bSTARTTLS = srv->enabledSTARTTLS();
 	m_pSavedAsynchronousConnectionData->szPass = srv->password();
 	m_pSavedAsynchronousConnectionData->szServerId = srv->id();
 	m_pSavedAsynchronousConnectionData->szInitUMode = srv->m_szInitUMode;
@@ -627,7 +627,7 @@ void KviIrcContext::connectionFailed(int iError)
 			d->bPortIsOk = true;
 			d->bUseIPv6 = oldServer.isIPv6();
 			d->bUseSSL = oldServer.useSSL();
-			d->bSTARTTLS = oldServer.supportsSTARTTLS();
+			d->bSTARTTLS = oldServer.enabledSTARTTLS();
 			d->szPass = oldServer.password();
 			d->szNick = oldNickname;
 			d->szInitUMode = oldServer.m_szInitUMode;
@@ -811,7 +811,7 @@ void KviIrcContext::connectionTerminated()
 		d->bPortIsOk = true;
 		d->bUseIPv6 = oldServer.isIPv6();
 		d->bUseSSL = oldServer.useSSL();
-		d->bSTARTTLS = oldServer.supportsSTARTTLS();
+		d->bSTARTTLS = oldServer.enabledSTARTTLS();
 		d->szPass = oldServer.password();
 		d->szInitUMode = oldServer.m_szInitUMode;
 		d->m_pReconnectInfo = new KviServerReconnectInfo(*(pInfo));

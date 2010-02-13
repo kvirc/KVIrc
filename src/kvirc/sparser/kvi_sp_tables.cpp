@@ -29,22 +29,23 @@
 
 KviLiteralMessageParseStruct KviServerParser::m_literalParseProcTable[]=
 {
-	{ "CAP"     , PTM(parseLiteralCap)    },
-	{ "ERROR"   , PTM(parseLiteralError)  },
-	{ "INVITE"  , PTM(parseLiteralInvite) },
-	{ "JOIN"    , PTM(parseLiteralJoin)   },
-	{ "KICK"    , PTM(parseLiteralKick)   },
-	{ "MODE"    , PTM(parseLiteralMode)   },
-	{ "NICK"    , PTM(parseLiteralNick)   },
-	{ "NOTICE"  , PTM(parseLiteralNotice) },
-	{ "PART"    , PTM(parseLiteralPart)   },
-	{ "PING"    , PTM(parseLiteralPing)   },
-	{ "PONG"    , PTM(parseLiteralPong)   },
-	{ "PRIVMSG" , PTM(parseLiteralPrivmsg)},
-	{ "QUIT"    , PTM(parseLiteralQuit)   },
-	{ "TOPIC"   , PTM(parseLiteralTopic)  },
-	{ "WALLOPS" , PTM(parseLiteralWallops)},
-	{ 0         , 0                       }
+	{ "AUTHENTICATE" , PTM(parseLiteralAuthenticate) },
+	{ "CAP"          , PTM(parseLiteralCap)          },
+	{ "ERROR"        , PTM(parseLiteralError)        },
+	{ "INVITE"       , PTM(parseLiteralInvite)       },
+	{ "JOIN"         , PTM(parseLiteralJoin)         },
+	{ "KICK"         , PTM(parseLiteralKick)         },
+	{ "MODE"         , PTM(parseLiteralMode)         },
+	{ "NICK"         , PTM(parseLiteralNick)         },
+	{ "NOTICE"       , PTM(parseLiteralNotice)       },
+	{ "PART"         , PTM(parseLiteralPart)         },
+	{ "PING"         , PTM(parseLiteralPing)         },
+	{ "PONG"         , PTM(parseLiteralPong)         },
+	{ "PRIVMSG"      , PTM(parseLiteralPrivmsg)      },
+	{ "QUIT"         , PTM(parseLiteralQuit)         },
+	{ "TOPIC"        , PTM(parseLiteralTopic)        },
+	{ "WALLOPS"      , PTM(parseLiteralWallops)      },
+	{ 0              , 0                             }
 };
 
 // FIXME: #warning "Merge these two tables into one"
@@ -987,14 +988,14 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 897
 	0,                                               // 898
 	0,                                               // 899
-	0,                                               // 900
-	0,                                               // 901
+	PTM(parseNumericSaslLogin),                      // 900 RPL_SASLLOGIN
+	0,                                               // 901 
 	0,                                               // 902
-	0,                                               // 903
-	0,                                               // 904
-	0,                                               // 905
-	0,                                               // 906
-	0,                                               // 907
+	PTM(parseNumericSaslSuccess),                    // 903 RPL_SASLSUCCESS
+	PTM(parseNumericSaslFail),                       // 904 RPL_SASLFAILED
+	PTM(parseNumericSaslFail),                       // 905 RPL_SASLERROR
+	PTM(parseNumericSaslFail),                       // 906 RPL_SASLABORT
+	PTM(parseNumericSaslFail),                       // 907 RPL_SASLALREADYAUTH
 	0,                                               // 908
 	0,                                               // 909
 	0,                                               // 910

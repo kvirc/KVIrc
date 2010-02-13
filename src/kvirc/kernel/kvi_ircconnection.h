@@ -178,8 +178,6 @@ private:
 	QTextCodec                           * m_pSrvCodec;             // connection codec: never null
 	QTextCodec                           * m_pTextCodec;            // connection codec: never null
 	KviRequestQueue                      * m_pRequestQueue;         // owned, never null
-
-	bool                                   m_bInsideCapLsRequest;
 public:
 	/**
 	* \brief Returns a pointer to the owning console
@@ -220,12 +218,6 @@ public:
 	* \return State
 	*/
 	inline State state(){ return m_eState; };
-
-	/**
-	* \brief Returns true if the connection is waiting for an answer to a "CAP LS" request
-	* \return bool
-	*/
-	inline bool isInsideCapLsRequest(){ return m_bInsideCapLsRequest; };
 	
 	/**
 	* \brief Returns a pointer to the big connection user database.
@@ -741,6 +733,24 @@ protected:
 	* \return void
 	*/
 	void handleFailedCapLs();
+
+	/**
+	* \brief Called when CAP ACK answer is received
+	* \return void
+	*/
+	void handleCapAck();
+
+	/**
+	* \brief Called when CAP NAK answer is received
+	* \return void
+	*/
+	void handleCapNak();
+
+	/**
+	* \brief Called when we want to end CAP negotiation and go on wi the login
+	* \return void
+	*/
+	void endCapLs();
 
 	/**
 	* \brief Called to update the away state

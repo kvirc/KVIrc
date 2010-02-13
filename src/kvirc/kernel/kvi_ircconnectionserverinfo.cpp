@@ -58,9 +58,28 @@ void KviIrcConnectionServerInfo::setSupportsCaps(QString szCaps)
 {
 	m_bSupportsCap=true;
 	qDebug("server support caps: %s",szCaps.toUtf8().data());
-	m_szaCap = szCaps.split(' ', QString::SkipEmptyParts);
+	m_szaSupportedCaps = szCaps.split(' ', QString::SkipEmptyParts);
 }
 
+void KviIrcConnectionServerInfo::setEnableCaps(QString szCaps)
+{
+	qDebug("server enabled caps: %s",szCaps.toUtf8().data());
+	m_szaEnabledCaps.append(szCaps.split(' ', QString::SkipEmptyParts));
+	m_szaEnabledCaps.removeDuplicates();
+}
+
+void KviIrcConnectionServerInfo::setDisableCaps(QString szCaps)
+{
+	qDebug("server disabled caps: %s",szCaps.toUtf8().data());
+	QStringList szaDisabled = szCaps.split(' ', QString::SkipEmptyParts);
+
+	for (int i = 0; i < szaDisabled.size(); ++i)
+	{
+		m_szaEnabledCaps.removeOne(szaDisabled.at(i));
+	}
+}
+
+	
 void KviIrcConnectionServerInfo::setSupportedChannelModes(const QString &szSupportedChannelModes)
 {
 	int pos=-1;

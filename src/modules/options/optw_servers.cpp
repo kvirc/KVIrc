@@ -585,8 +585,6 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	KviTalToolTip::add(m_pPortEditor,__tr2qs_ctx("<center>This is the default <b>port</b> that this server will be contacted on.<br>Usually <b>6667</b> is OK.</center>","options"));
 	connect(m_pPortEditor,SIGNAL(textChanged(const QString &)),this,SLOT(portEditorTextChanged(const QString &)));
 
-
-
 	l = new QLabel(__tr2qs_ctx("IP address:","options"),tab);
 	gl->addWidget(l,1,0);
 	m_pIpEditor = new KviIpEditor(tab,KviIpEditor::IPv4);
@@ -644,14 +642,14 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 #endif
 	m_pUseSSLCheck->setChecked(s->useSSL());
 
-	m_pSupportsSTARTTLSCheck = new QCheckBox(__tr2qs_ctx("Supports STARTTLS protocol","options"),tab);
-	gl->addWidget(m_pSupportsSTARTTLSCheck,5,0,1,2);
-	KviTalToolTip::add(m_pSupportsSTARTTLSCheck,__tr2qs_ctx("<center>This check marks the server as dynamically supporting the <b>Transport Layer Security</b> " \
-		"protocol. If you enable the proper global option in the Connection/SSL tab, the TLS protocol will be used for this server.</center>","options"));
+	m_pEnableSTARTTLSCheck = new QCheckBox(__tr2qs_ctx("Enable STARTTLS protocol","options"),tab);
+	gl->addWidget(m_pEnableSTARTTLSCheck,5,0,1,2);
+	KviTalToolTip::add(m_pEnableSTARTTLSCheck,__tr2qs_ctx("<center>This check enables the use of the <b>Transport Layer Security</b> " \
+		"protocol. If you enable the proper global option in the Connection/SSL tab, the TLS protocol will be used for this server if available.</center>","options"));
 #ifndef COMPILE_SSL_SUPPORT
-	m_pSupportsSTARTTLSCheck->setEnabled(false);
+	m_pEnableSTARTTLSCheck->setEnabled(false);
 #endif
-	m_pSupportsSTARTTLSCheck->setChecked(s->supportsSTARTTLS());
+	m_pEnableSTARTTLSCheck->setChecked(s->enabledSTARTTLS());
 
 	m_pUseAutoConnect = new QCheckBox(__tr2qs_ctx("Connect to this server at startup","options"),tab);
 	m_pUseAutoConnect->setChecked(s->autoConnect());
@@ -772,11 +770,30 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	if(m_pProxyEditor->count() > (s->proxy()+2))
 		m_pProxyEditor->setCurrentIndex(s->proxy()+2);
 
+	m_pEnableSASLCheck = new QCheckBox(__tr2qs_ctx("Enable SASL authentication","options"),tab);
+	gl->addWidget(m_pEnableSASLCheck,12,0,1,2);
+	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("<center>This check enables the use of the <b>SASL</b> authentication procotol" \
+		"If you enable the proper global option in the Connection/SSL tab and fill the Sasl Nickname and Sasl Password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
+	m_pEnableSASLCheck->setChecked(s->enabledSASL());
+
+	l = new QLabel(__tr2qs_ctx("Sasl Nickname:","options"),tab);
+	gl->addWidget(l,13,0);
+	m_pSaslNickEditor = new QLineEdit(tab);
+	m_pSaslNickEditor->setText(s->saslNick());
+	KviTalToolTip::add(m_pSaslNickEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your nickname here.</center>","options"));
+	gl->addWidget(m_pSaslNickEditor,13,1);
+
+	l = new QLabel(__tr2qs_ctx("Sasl Password:","options"),tab);
+	gl->addWidget(l,14,0);
+	m_pSaslPassEditor = new KviPasswordLineEdit(tab);
+	m_pSaslPassEditor->setText(s->saslPass());
+	KviTalToolTip::add(m_pSaslPassEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your password here.</center>","options"));
+	gl->addWidget(m_pSaslPassEditor,14,1);
 
 	l = new QLabel("",tab);
-	gl->addWidget(l,12,0,1,2);
+	gl->addWidget(l,15,0,1,2);
 
-	gl->setRowStretch(12,1);
+	gl->setRowStretch(15,1);
 
 	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SOCKETWARNING)),__tr2qs_ctx("Connection","options"));
 
@@ -925,8 +942,16 @@ void KviServerDetailsWidget::fillData(KviServer * s)
 		s->setCacheIp(m_pCacheIpCheck->isChecked());
 	if(m_pUseSSLCheck)
 		s->setUseSSL(m_pUseSSLCheck->isChecked());
-	if(m_pSupportsSTARTTLSCheck)
-		s->setSupportsSTARTTLS(m_pSupportsSTARTTLSCheck->isChecked());
+	if(m_pEnableSTARTTLSCheck)
+		s->setEnabledSTARTTLS(m_pEnableSTARTTLSCheck->isChecked());
+
+	s->setSaslNick(m_pSaslNickEditor->text());
+	s->setSaslPass(m_pSaslPassEditor->text());
+	s->setEnabledSASL( m_pEnableSASLCheck->isChecked() &&
+			  !m_pSaslNickEditor->text().isEmpty() &&
+			  !m_pSaslPassEditor->text().isEmpty()
+			  );
+
 	if(m_pIdEditor)
 		s->setId(m_pIdEditor->text());
 	if(s->id().isEmpty())s->generateUniqueId();

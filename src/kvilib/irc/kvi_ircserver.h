@@ -32,7 +32,8 @@
 * \def KVI_IRCSERVER_FLAG_IPV6 Defines if the server uses IPv6
 * \def KVI_IRCSERVER_FLAG_CACHEIP Defines if the server caches the IP
 * \def KVI_IRCSERVER_FLAG_SSL Defines if the server uses SSL
-* \def KVI_IRCSERVER_FLAG_STARTTLS Defines if the server uses STARTTLS
+* \def KVI_IRCSERVER_FLAG_STARTTLS Defines if the server can use STARTTLS
+* \def KVI_IRCSERVER_FLAG_SASL Defines if the server can use SASL
 */
 
 #include "kvi_settings.h"
@@ -52,6 +53,7 @@ class KviServer;
 #define KVI_IRCSERVER_FLAG_CACHEIP 2
 #define KVI_IRCSERVER_FLAG_SSL 4
 #define KVI_IRCSERVER_FLAG_STARTTLS 8
+#define KVI_IRCSERVER_FLAG_SASL 16
 
 /**
 * \class KviServerReconnectInfo
@@ -135,6 +137,9 @@ public:
 	bool               m_bAutoConnect;        // autoconnect
 	QString            m_szId;                // the server's may-be-unique id, may be auto-generated
 	int                m_iProxy;              // proxy server's id
+	QString            m_szSaslNick;          // nickname for sasl auth
+	QString            m_szSaslPass;          // password for sasl auth
+
 public:
 	/**
 	* \brief Returns the proxy server's id
@@ -160,6 +165,18 @@ public:
 	* \return const QString &
 	*/
 	inline const QString & password() const { return m_szPass; };
+
+	/**
+	* \brief Returns the nickname used for sasl auth
+	* \return const QString &
+	*/
+	inline const QString & saslNick() const { return m_szSaslNick; };
+
+	/**
+	* \brief Returns the password used for sasl auth
+	* \return const QString &
+	*/
+	inline const QString & saslPass() const { return m_szSaslPass; };
 
 	/**
 	* \brief Returns the nickname of the user associated to the server
@@ -273,10 +290,16 @@ public:
 	inline bool useSSL() const { return (m_uFlags & KVI_IRCSERVER_FLAG_SSL); };
 
 	/**
-	* \brief Returns true if the server supports the STARTTLS protocol
+	* \brief Returns true if the STARTTLS protocol is enabled for this server
 	* \return bool
 	*/
-	inline bool supportsSTARTTLS() const { return (m_uFlags & KVI_IRCSERVER_FLAG_STARTTLS); };
+	inline bool enabledSTARTTLS() const { return (m_uFlags & KVI_IRCSERVER_FLAG_STARTTLS); };
+
+	/**
+	* \brief Returns true if the SASL protocol is enabled for this server
+	* \return bool
+	*/
+	inline bool enabledSASL() const { return (m_uFlags & KVI_IRCSERVER_FLAG_SASL); };
 
 	/**
 	* \brief Returns true if the server caches the IP
@@ -346,6 +369,20 @@ public:
 	* \return void
 	*/
 	inline void setNickName(const QString & szNick){ m_szNick = szNick; };
+
+	/**
+	* \brief Sets the password used for sasl auth
+	* \param szPass The password of the user
+	* \return void
+	*/
+	inline void setSaslPass(const QString & szPass){ m_szSaslPass = szPass; };
+
+	/**
+	* \brief Sets the nickname used for sasl auth
+	* \param szNick The nick name of the user
+	* \return void
+	*/
+	inline void setSaslNick(const QString & szNick){ m_szSaslNick = szNick; };
 
 	/**
 	* \brief Sets the realname of the user associated to the server
@@ -445,14 +482,25 @@ public:
 	};
 
 	/**
-	* \brief Sets if the server supports the STARTTLS protocol
-	* \param bSet Whether to set the support for STARTTLS
+	* \brief Sets if STARTTLS support is enabled/disabled for this server
+	* \param bSet Whether to enable the support for STARTTLS
 	* \return void
 	*/
-	inline void setSupportsSTARTTLS(bool bSet)
+	inline void setEnabledSTARTTLS(bool bSet)
 	{
 		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_STARTTLS;
 		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_STARTTLS);
+	};
+
+	/**
+	* \brief Sets if SASL support is enabled/disabled for this server
+	* \param bSet Whether to enable the support for SASL
+	* \return void
+	*/
+	inline void setEnabledSASL(bool bSet)
+	{
+		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_SASL;
+		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_SASL);
 	};
 
 	/**

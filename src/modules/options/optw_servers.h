@@ -115,7 +115,9 @@ protected:
 	KviScriptEditor       * m_pOnLoginEditor;
 	QLineEdit             * m_pUserEditor;
 	KviPasswordLineEdit   * m_pPassEditor;
+	KviPasswordLineEdit   * m_pSaslPassEditor;
 	QLineEdit             * m_pNickEditor;
+	QLineEdit             * m_pSaslNickEditor;
 	QLineEdit             * m_pRealEditor;
 	QLineEdit             * m_pDescEditor;
 	QLineEdit             * m_pIdEditor;
@@ -125,7 +127,8 @@ protected:
 	KviIpEditor           * m_pIpEditor;
 	QCheckBox             * m_pCacheIpCheck;
 	QCheckBox             * m_pUseSSLCheck;
-	QCheckBox             * m_pSupportsSTARTTLSCheck;
+	QCheckBox             * m_pEnableSTARTTLSCheck;
+	QCheckBox             * m_pEnableSASLCheck;
 	QCheckBox             * m_pUseDefaultInitUMode;
 	QCheckBox             * m_pIMode;
 	QCheckBox             * m_pWMode;

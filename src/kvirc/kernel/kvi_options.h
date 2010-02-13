@@ -330,8 +330,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolPopupNotifierOnNewDccChatMessages 236            /* dcc:chat */
 #define KviOption_boolUseAwayMessage 237                               /* away */
 #define KviOption_boolDisableQuietBanListRequestOnJoin 238       /* channel */
+#define KviOption_boolUseSaslIfAvailable 239
 
-#define KVI_NUM_BOOL_OPTIONS 239
+#define KVI_NUM_BOOL_OPTIONS 240
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"
@@ -631,7 +632,7 @@ namespace KviIdentdOutputMode {
 #define KVI_MSGTYPE_OPTIONS_PREFIX "msgtype"
 #define KVI_MSGTYPE_OPTIONS_PREFIX_LEN 7
 
-#define KVI_NUM_MSGTYPE_OPTIONS 141
+#define KVI_NUM_MSGTYPE_OPTIONS 142
 
 
 

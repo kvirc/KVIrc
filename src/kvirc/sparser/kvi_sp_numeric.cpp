@@ -2193,6 +2193,50 @@ void KviServerParser::parseNumericNotRegistered(KviIrcMessage * msg)
 	// 451: ERR_NOTREGISTERED
 	// :prefix 451 PING :You have not registered
 
-	if(msg->connection()->isInsideCapLsRequest())
+	if(msg->connection()->stateData()->isInsideCapLs())
 		msg->connection()->handleFailedCapLs();
+}
+
+// SASL support
+void KviServerParser::parseNumericSaslLogin(KviIrcMessage * msg)
+{
+	// 900: RPL_SASLLOGIN
+	// :prefix 900 <nickname> <usermask> <authuser>: You are now logged in as <authuser>
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = (KviWindow *)(msg->console());
+		QString szParam=msg->connection()->decodeText(msg->safeParam(2));
+		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("Authenticated as %Q"),
+			     &szParam
+			     );
+	}
+}
+
+void KviServerParser::parseNumericSaslSuccess(KviIrcMessage * msg)
+{
+	// 903: RPL_SASLSUCCESS
+	// :prefix 903 <nickname> :SASL authentication successful
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = (KviWindow *)(msg->console());
+		pOut->outputNoFmt(KVI_OUT_SERVERINFO,__tr2qs("SASL authentication successful"));
+	}
+}
+
+void KviServerParser::parseNumericSaslFail(KviIrcMessage * msg)
+{
+	// 904: RPL_SASLFAILED
+	// :prefix 904 * :SASL authentication failed
+
+	// 906: RPL_SASLBORTED
+	// :prefix 906 <nickname> :SASL authentication aborted
+
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = (KviWindow *)(msg->console());
+		QString szParam=msg->connection()->decodeText(msg->safeTrailing());
+		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("SASL Authentication error: %Q"),
+			     &szParam
+			     );
+	}
 }

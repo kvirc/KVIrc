@@ -368,10 +368,17 @@
 #define RPL_ENDOFWATCH       607 /* :End of WATCH <char l=list s=stats>                         [D] # */
 // STARTTLS extension
 #define RPL_STARTTLSOK       670 /* :test2.chatspike.net 670 nickname :STARTTLS successful, go ahead with TLS handshake */
-#define RPL_STARTTLSFAIL     671 /* :test2.chatspike.net 671 nickname :STARTTLS failure */
+#define RPL_STARTTLSFAIL     691 /* :test2.chatspike.net 671 nickname :STARTTLS failure */
 // WeNet codepage extension
 #define RPL_CODEPAGESET      700 /* :irc.wenet.ru 700 Pragma CP1251 :is now your translation scheme # */
 #define RPL_WHOISSCHEME      703 /* :interdacom.vgd.wenet.ru 703 Alexey Begemot KOI8-R :translation scheme */
+//SASL EXTENSION
+#define RPL_SASLLOGIN        900 /* :jaguar.test 900 jilles jilles!jilles@localhost.stack.nl jilles :You are now logged in as jilles. */
+#define RPL_SASLSUCCESS      903 /* :jaguar.test 903 jilles :SASL authentication successful  */
+#define RPL_SASLFAILED       904 /* :lindbohm.freenode.net 904 * :SASL authentication failed */
+#define RPL_SASLERROR        905 // alternative error message
+#define RPL_SASLABORT        906 // sasl authentication aborted
+#define RPL_SASLALREADYAUTH  907 // can't authenticate: already authenticated
 
 ///* 303 */	RPL_ISON, ":",
 ///* 304 */	RPL_TEXT, (char *)NULL,

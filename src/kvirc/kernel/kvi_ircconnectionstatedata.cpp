@@ -30,6 +30,7 @@ KviIrcConnectionStateData::KviIrcConnectionStateData()
 {
 	m_bSentStartTls = false;
 	m_bSentQuit = false;
+	m_bInsideCapLs = false;
 	m_uLoginNickIndex = 0;
 	m_bSimulateUnexpectedDisconnect = false;
 	m_tLastReceivedChannelWhoReply = kvi_unixTime();

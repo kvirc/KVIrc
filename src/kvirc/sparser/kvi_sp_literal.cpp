@@ -1988,19 +1988,58 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 	// CAP
 	// CAP LS
 	// :prefix CAP * LS :tls userhost-in-names multi-prefix sasl
-	// Other subcommands:
-	// LIST, REQ, ACK, NAK, CLEAR, END
+
+	// Server2client subcommands:
+	// LIST, LS, ACK, NAK
+	// Client2server subcommands:
+	// LIST, LS, REQ, CLEAR, END
 
 	debug("Parsing literal CAP...");
 	QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
 	QString szCmd = msg->connection()->decodeText(msg->safeParam(1));
 	QString szProtocols = msg->connection()->decodeText(msg->safeParam(2));
 
-	debug("Prefix: %s\nPar1: %s\nPar2: %s",szPrefix.toUtf8().data(),szCmd.toUtf8().data(),szProtocols.toUtf8().data());
-
 	if(szCmd == "LS")
 	{
 		msg->connection()->serverInfo()->setSupportsCaps(szProtocols);
 		msg->connection()->handleCapLs();
+	} else if(szCmd == "ACK") {
+		if(!msg->haltOutput())
+		{
+			msg->console()->output(KVI_OUT_CAP,
+				__tr2qs("Enabled CAP Extensions: %Q"),
+				&szProtocols);
+		}
+		msg->connection()->serverInfo()->setEnableCaps(szProtocols);
+		msg->connection()->handleCapAck();
+	} else if(szCmd == "NAK") {
+		if(!msg->haltOutput())
+		{
+			msg->console()->output(KVI_OUT_CAP,
+				__tr2qs("Disabled CAP Extensions: %Q"),
+				&szProtocols);
+		}
+		msg->connection()->serverInfo()->setDisableCaps(szProtocols);
+		msg->connection()->handleCapNak();
+	} else if(szCmd == "LIST") {
+		if(!msg->haltOutput())
+		{
+			msg->console()->output(KVI_OUT_CAP,
+				__tr2qs("Currently enabled CAP Extensions: %Q"),
+				&szProtocols);
+		}
+	} else {
+		if(!msg->haltOutput())
+		{
+			msg->console()->output(KVI_OUT_CAP,
+				__tr2qs("Received unknown extended capability message: %Q %Q"),
+				&szCmd, &szProtocols);
+		}
 	}
+}
+
+void KviServerParser::parseLiteralAuthenticate(KviIrcMessage *)
+{
+	// :prefix AUTHENTICATE  +
+	// we don't wait for this when authenticating, so no real handling is needed here
 }

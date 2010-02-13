@@ -87,6 +87,8 @@ KviServer::KviServer(const KviServer & serv)
 	m_iProxy             = serv.m_iProxy;
 	m_szUserIdentityId   = serv.m_szUserIdentityId;
 	m_bAutoConnect       = serv.m_bAutoConnect;
+	m_szSaslNick         = serv.m_szSaslNick;
+	m_szSaslPass         = serv.m_szSaslPass;
 
 	if(serv.m_pAutoJoinChannelList)
 		m_pAutoJoinChannelList = new QStringList(*(serv.m_pAutoJoinChannelList));
@@ -118,6 +120,8 @@ void KviServer::operator=(const KviServer & serv)
 	m_szUserIdentityId   = serv.m_szUserIdentityId;
 	m_iProxy	     = serv.m_iProxy;
 	m_bAutoConnect       = serv.m_bAutoConnect;
+	m_szSaslNick         = serv.m_szSaslNick;
+	m_szSaslPass         = serv.m_szSaslPass;
 
 	if(m_pAutoJoinChannelList) delete m_pAutoJoinChannelList;
 	if(serv.m_pAutoJoinChannelList)
@@ -154,7 +158,7 @@ void KviServer::generateUniqueId()
 QString KviServer::ircUri()
 {
 	QString szUri("irc");
-	if(useSSL() || supportsSTARTTLS()) szUri += "s";
+	if(useSSL()) szUri += "s";
 	if(isIPv6()) szUri += "6";
 	szUri += "://";
 	szUri += m_szHostname;
@@ -192,6 +196,10 @@ bool KviServer::load(KviConfig * cfg, const QString & szPrefix)
 	m_szPass = cfg->readQStringEntry(szTmp);
 	KviQString::sprintf(szTmp,"%QNick",&szPrefix);
 	m_szNick = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QSaslPass",&szPrefix);
+	m_szSaslPass = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QSaslNick",&szPrefix);
+	m_szSaslNick = cfg->readQStringEntry(szTmp);
 	KviQString::sprintf(szTmp,"%QRealName",&szPrefix);
 	m_szRealName = cfg->readQStringEntry(szTmp);
 	KviQString::sprintf(szTmp,"%QInitUmode",&szPrefix);
@@ -224,8 +232,10 @@ bool KviServer::load(KviConfig * cfg, const QString & szPrefix)
 	setCacheIp(cfg->readBoolEntry(szTmp,false)); // true ?
 	KviQString::sprintf(szTmp,"%QSSL",&szPrefix);
 	setUseSSL(cfg->readBoolEntry(szTmp,false));
-	KviQString::sprintf(szTmp,"%QSupportsSTARTTLS",&szPrefix);
-	setSupportsSTARTTLS(cfg->readBoolEntry(szTmp,false));
+	KviQString::sprintf(szTmp,"%QEnabledSTARTTLS",&szPrefix);
+	setEnabledSTARTTLS(cfg->readBoolEntry(szTmp,true));
+	KviQString::sprintf(szTmp,"%QEnabledSASL",&szPrefix);
+	setEnabledSASL(cfg->readBoolEntry(szTmp,false));
 	KviQString::sprintf(szTmp,"%QProxy",&szPrefix);
 	setProxy(cfg->readIntEntry(szTmp,-2));
 	KviQString::sprintf(szTmp,"%QUserIdentityId",&szPrefix);
@@ -264,6 +274,16 @@ void KviServer::save(KviConfig * cfg, const QString & szPrefix)
 	{
 		KviQString::sprintf(szTmp,"%QNick",&szPrefix);
 		cfg->writeEntry(szTmp,m_szNick);
+	}
+	if(!m_szSaslPass.isEmpty())
+	{
+		KviQString::sprintf(szTmp,"%QSaslPass",&szPrefix);
+		cfg->writeEntry(szTmp,m_szSaslPass);
+	}
+	if(!m_szSaslNick.isEmpty())
+	{
+		KviQString::sprintf(szTmp,"%QSaslNick",&szPrefix);
+		cfg->writeEntry(szTmp,m_szSaslNick);
 	}
 	if(!m_szRealName.isEmpty())
 	{
@@ -330,10 +350,15 @@ void KviServer::save(KviConfig * cfg, const QString & szPrefix)
 		KviQString::sprintf(szTmp,"%QSSL",&szPrefix);
 		cfg->writeEntry(szTmp,useSSL());
 	}
-	if(supportsSTARTTLS())
+	if(!enabledSTARTTLS())
 	{
-		KviQString::sprintf(szTmp,"%QSupportsSTARTTLS",&szPrefix);
-		cfg->writeEntry(szTmp,supportsSTARTTLS());
+		KviQString::sprintf(szTmp,"%QEnabledSTARTTLS",&szPrefix);
+		cfg->writeEntry(szTmp,enabledSTARTTLS());
+	}
+	if(enabledSASL())
+	{
+		KviQString::sprintf(szTmp,"%QEnabledSASL",&szPrefix);
+		cfg->writeEntry(szTmp,enabledSASL());
 	}
 	if(proxy()!=-2)
 	{

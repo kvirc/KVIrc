@@ -86,7 +86,11 @@ KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></center>","options"));
 
-	addRowSpacer(0,2,4,2);
+	b = addBoolSelector(this,__tr2qs_ctx("Use the SASL authentication protocol if available","options"),&(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable)),true);
+	mergeTip(b,__tr2qs_ctx("<center>When available and enabled of the specific server, KVIrc will try to authenticate the user using the SASL procotol</center>","options"));
+	addWidgetToLayout(b,0,2,0,2);
+
+	addRowSpacer(0,3,4,3);
 }
 
 KviConnectionOptionsWidget::~KviConnectionOptionsWidget()
