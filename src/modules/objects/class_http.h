@@ -42,7 +42,6 @@ public:
 protected:
 	QHttp *m_pHttp;
 	QHash<int, QFile*> getDict;
-	int m_id;
 	bool m_bAbort;
 	bool m_bEnableForceRedirect;
 protected:

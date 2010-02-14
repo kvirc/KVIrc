@@ -77,7 +77,7 @@
                 !sg: $commandFinished(<id:integer>,<status:string>,<error:boolean>)
                 This signal is emitted by the default implementation of [classfnc]$commandFinishedEvent[/classfnc]()
                 !sg: $listInfo(<dir_entry_name:string>)
-                This signal is emitted by the default implementation of [classfnc]$listInfoEvent[/classfnc]()
+                This signal is emitted by the default implemenhttation of [classfnc]$listInfoEvent[/classfnc]()
                 !sg: $dataTransferProgress(<done:integer>,<total:integer>)
                 This signal is emitted by the default implementation of [classfnc]$dataTransferProgressEvent[/classfnc]()
 */
@@ -91,13 +91,15 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_ftp,"ftp","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,list)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,commandFinishedEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,listInfoEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,dataTransferProgressEvent)
-KVSO_END_REGISTERCLASS(KviKvsObject_ftp)
+
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,stateChangedEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,dataTransferProgressEvent)
+        KVSO_END_REGISTERCLASS(KviKvsObject_ftp)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_ftp,KviKvsObject)
 	m_pFtp = new QFtp();
-	m_pFile=0;
+        m_bAbort=false;
 	connect(m_pFtp,SIGNAL(commandFinished(int,bool)),this,SLOT(slotCommandFinished(int,bool)));
 	connect(m_pFtp,SIGNAL(commandStarted(int)),this,SLOT(slotCommandStarted(int)));
 	connect(m_pFtp,SIGNAL(dataTransferProgress(qint64,qint64)),this,SLOT(slotDataTransferProgress(qint64,qint64)));
@@ -108,8 +110,17 @@ KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_ftp,KviKvsObject)
 KVSO_END_CONSTRUCTOR(KviKvsObject_ftp)
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_ftp)
-	if (m_pFile) delete m_pFile;
-	delete m_pFtp;
+    QHashIterator<int,QFile *> t(getDict);
+    while (t.hasNext())
+    {
+        t.next();
+        int key=t.key();
+        QFile *pFile=getDict.value(key);
+        pFile->close();
+        delete pFile;
+    }
+    getDict.clear();
+    delete m_pFtp;
 KVSO_END_DESTRUCTOR(KviKvsObject_ftp)
 //----------------------
 
@@ -150,11 +161,12 @@ KVSO_CLASS_FUNCTION(ftp,get)
 		KVSO_PARAMETER("remote_filename",KVS_PT_STRING,0,szFile)
 		KVSO_PARAMETER("local_filename",KVS_PT_STRING,0,szDest)
 	KVSO_PARAMETERS_END(c)
-	if (m_pFile) delete m_pFile;
-	m_pFile=new QFile(szDest);
-	m_pFile->open(QIODevice::WriteOnly);
+        QFile *pFile;
+        pFile=new QFile(szDest);
+        pFile->open(QIODevice::WriteOnly);
 	int id=0;
-	id=m_pFtp->get(szFile,m_pFile);
+        id=m_pFtp->get(szFile,pFile);
+        getDict[id]=pFile;
 	c->returnValue()->setInteger(id);
 	return true;
 }
@@ -183,6 +195,7 @@ KVSO_CLASS_FUNCTION(ftp,list)
 KVSO_CLASS_FUNCTION(ftp,abort)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
+        m_bAbort=true;
 	m_pFtp->abort();
 	return true;
 }
@@ -196,11 +209,29 @@ KVSO_CLASS_FUNCTION(ftp,commandFinishedEvent)
 void KviKvsObject_ftp::slotCommandFinished ( int id, bool error )
 {
 	QString status="";
-	if (m_pFtp->currentCommand()==QFtp::Get){
-		status="Finished to load";
-		m_pFile->close();
-		delete m_pFile;
-	}
+        if (m_bAbort)
+        {
+            m_bAbort=false;
+            QHashIterator<int,QFile *> t(getDict);
+            while (t.hasNext())
+            {
+                    t.next();
+                    int key=t.key();
+                    QFile *pFile=getDict.value(key);
+                    pFile->close();
+                    delete pFile;
+            }
+            getDict.clear();
+            return;
+        }
+        if (m_pFtp->currentCommand()==QFtp::Get)
+        {
+		status="Finished to load";          
+                QFile *pFile=getDict.value(id);
+                pFile->close();
+                delete pFile;
+                getDict.remove(id);
+        }
 	else if (m_pFtp->currentCommand()==QFtp:: ConnectToHost) status="connected";
 	else if (m_pFtp->currentCommand()==QFtp:: Login) status="logged";
 	else if (m_pFtp->currentCommand()==QFtp:: Cd) status="entered";

@@ -162,8 +162,17 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_http)
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_http)
 	QHashIterator<int,QFile *> t(getDict);
+        while (t.hasNext())
+        {
+            t.next();
+            int key=t.key();
+            QFile *pFile=getDict.value(key);
+            pFile->close();
+            delete pFile;
+        }
+        getDict.clear();
 	delete m_pHttp;
-	getDict.clear();
+
 KVSO_END_DESTRUCTOR(KviKvsObject_http)
 //----------------------
 

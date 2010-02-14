@@ -39,7 +39,8 @@ public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_ftp)
 protected:
 	QFtp *m_pFtp;
-	QFile *m_pFile;
+        QHash<int, QFile*> getDict;
+        bool m_bAbort;
 protected:
 	bool functionConnect(KviKvsObjectFunctionCall *c);
 	bool get(KviKvsObjectFunctionCall *c);
