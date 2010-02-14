@@ -77,7 +77,7 @@
                 !sg: $commandFinished(<id:integer>,<status:string>,<error:boolean>)
                 This signal is emitted by the default implementation of [classfnc]$commandFinishedEvent[/classfnc]()
                 !sg: $listInfo(<dir_entry_name:string>)
-                This signal is emitted by the default implemenhttation of [classfnc]$listInfoEvent[/classfnc]()
+                This signal is emitted by the default implementation of [classfnc]$listInfoEvent[/classfnc]()
                 !sg: $dataTransferProgress(<done:integer>,<total:integer>)
                 This signal is emitted by the default implementation of [classfnc]$dataTransferProgressEvent[/classfnc]()
 */
