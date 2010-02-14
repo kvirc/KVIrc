@@ -74,17 +74,6 @@ KviAliasEditorTreeWidgetItem::KviAliasEditorTreeWidgetItem(KviAliasNamespaceTree
 	setFlags(Qt::ItemIsEditable|Qt::ItemIsEnabled|Qt::ItemIsSelectable);
 }
 
-
-
-QString KviAliasEditorTreeWidgetItem::key(int, bool) const
-{
-	QString ret;
-	if(m_eType == Namespace)ret = "1";
-	else ret = "2";
-	ret += m_szName;
-	return ret;
-}
-
 void KviAliasEditorTreeWidgetItem::setName(const QString &szName)
 {
 	m_szName = szName;

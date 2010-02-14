@@ -62,7 +62,6 @@ public:
 	bool isNamespace(){ return m_eType == Namespace; };
 	void setParentNamespaceItem(KviAliasNamespaceTreeWidgetItem* it){ m_pParentNamespaceItem=it; };
 	KviAliasNamespaceTreeWidgetItem * parentNamespaceItem(){ return m_pParentNamespaceItem; };
-	virtual QString key(int column,bool bAsc) const;
 };
 
 
