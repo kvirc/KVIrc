@@ -164,11 +164,13 @@ protected:
 	void oneTimeSetup();
 	void saveLastEditedItem();
 	void getUniqueItemName(KviAliasEditorTreeWidgetItem *item,QString &buffer,KviAliasEditorTreeWidgetItem::Type eType);
-	void appendSelectedItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l);
-	void appendSelectedItemsRecursive(KviPointerList<KviAliasEditorTreeWidgetItem> * l,QTreeWidgetItem *it);
+        void appendSelectedItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l);
+        void appendSelectedAliasItems(KviPointerList<KviAliasTreeWidgetItem> * l);
+        void appendSelectedAliasItemsRecursive(KviPointerList<KviAliasTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
+        void appendSelectedItemsRecursive(KviPointerList<KviAliasEditorTreeWidgetItem> * l,QTreeWidgetItem *it);
 
-	void appendAliasItems(KviPointerList<KviAliasTreeWidgetItem> * l,bool bSelectedOnly);
-	void appendAliasItemsRecursive(KviPointerList<KviAliasTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom,bool bSelectedOnly);
+        void appendAllAliasItems(KviPointerList<KviAliasTreeWidgetItem> * l);
+        void appendAllAliasItemsRecursive(KviPointerList<KviAliasTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
 	void appendNamespaceItemsRecursive(KviPointerList<KviAliasTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom,bool bSelectedOnly);
 	void appendNamespaceItems(KviPointerList<KviAliasTreeWidgetItem> * l,bool bSelectedOnly);
 

@@ -761,20 +761,24 @@ void KviAliasEditor::exportSelectionInSinglesFiles(KviPointerList<KviAliasTreeWi
 		szFileName += ".kvs";
 		szFileName.replace("::","_");
 		QString szCompletePath=m_szDir+szFileName;
-
+              //  debug("saving alias: %s",szCompletePath.toUtf8().data());
 		if (KviFileUtils::fileExists(szCompletePath) && !bReplaceAll)
 		{
 				QString szMsg;
 				KviQString::sprintf(szMsg,__tr2qs_ctx("The file \"%Q\" exists. Do you want to replace it ?","editor"),&szFileName);
 				int ret = QMessageBox::question(this,__tr2qs_ctx("Replace file","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
 				if (ret!=2){
+                                    //    debug("overwrite %s",szCompletePath.toUtf8().data());
 					KviFileUtils::writeFile(szCompletePath,tmp);
 					if (ret==1)	bReplaceAll=true;
 				}
 
 		}
-		else
+                else{
+
+            //    debug("write %s",szCompletePath.toUtf8().data());
 		KviFileUtils::writeFile(szCompletePath,tmp);
+            }
 
 	}
 	g_pAliasEditorModule->unlock();
@@ -789,12 +793,12 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 	l.setAutoDelete(false);
 
 	QString out;
-
-	appendAliasItems(&l,bSelectedOnly);
+        if (bSelectedOnly) appendSelectedAliasItems(&l);
+        else appendAllAliasItems(&l);
 	if (bSingleFiles)
 	{
-			exportSelectionInSinglesFiles(&l);
-			return;
+                exportSelectionInSinglesFiles(&l);
+                return;
 
 	}
 	int count=0;
@@ -868,66 +872,58 @@ void KviAliasEditor::loadProperties(KviConfig *cfg)
 	if(!it)it = findNamespaceItem(tmp);
 	if(it)activateItem(it);
 }
-
-void KviAliasEditor::appendAliasItems(KviPointerList<KviAliasTreeWidgetItem> * l,bool bSelectedOnly)
+void KviAliasEditor::appendSelectedAliasItems(KviPointerList<KviAliasTreeWidgetItem> * l)
 {
-	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+        QList<QTreeWidgetItem *> list=m_pTreeWidget->selectedItems();
+        for(int i=0;i<list.count();i++)
+        {
+            if (((KviAliasTreeWidgetItem *)list.at(i))->isAlias())
+                   l->append((KviAliasTreeWidgetItem *)list.at(i));
+            else
+            {
+                   appendSelectedAliasItemsRecursive(l,list.at(i));
+            }
+        }
+
+}
+void KviAliasEditor::appendSelectedAliasItemsRecursive(KviPointerList<KviAliasTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom)
+{
+        for (int i=0;i<pStartFrom->childCount();i++)
+        {
+
+            if (((KviAliasTreeWidgetItem *)pStartFrom->child(i))->isAlias())
+                    l->append(((KviAliasTreeWidgetItem *)pStartFrom->child(i)));
+            else
+                    appendSelectedAliasItemsRecursive(l,pStartFrom->child(i));
+        }
+}
+void KviAliasEditor::appendAllAliasItems(KviPointerList<KviAliasTreeWidgetItem> * l)
+{
+        for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
 		if (((KviAliasTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->isAlias())
 		{
-			if(bSelectedOnly)
-			{
-				if(m_pTreeWidget->topLevelItem(i)->isSelected())
-					l->append(((KviAliasTreeWidgetItem *)m_pTreeWidget->topLevelItem(i)));
-			}
-			else
-			{
-				l->append(((KviAliasTreeWidgetItem *)m_pTreeWidget->topLevelItem(i)));
-			}
+                        l->append(((KviAliasTreeWidgetItem *)m_pTreeWidget->topLevelItem(i)));
 		}
 		else
-		{
-			if(bSelectedOnly)
-			{
-				if(m_pTreeWidget->topLevelItem(i)->isSelected())
-					appendAliasItemsRecursive(l,m_pTreeWidget->topLevelItem(i),false);
-				else
-					appendAliasItemsRecursive(l,m_pTreeWidget->topLevelItem(i),true);
-			}
-			else
-				appendAliasItemsRecursive(l,m_pTreeWidget->topLevelItem(i),false);
-		}
-	}
+                {
+                        appendAllAliasItemsRecursive(l,m_pTreeWidget->topLevelItem(i));
+                }
+        }
 
 }
 
-void KviAliasEditor::appendAliasItemsRecursive(KviPointerList<KviAliasTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom,bool bSelectedOnly)
+void KviAliasEditor::appendAllAliasItemsRecursive(KviPointerList<KviAliasTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom)
 {
 	for (int i=0;i<pStartFrom->childCount();i++)
 	{
 		if (((KviAliasTreeWidgetItem *)pStartFrom->child(i))->isAlias())
 		{
-			if(bSelectedOnly)
-			{
-				if(pStartFrom->child(i)->isSelected())
-					l->append((KviAliasTreeWidgetItem *)pStartFrom->child(i));
-			}
-			else
-			{
-				l->append((KviAliasTreeWidgetItem *)pStartFrom->child(i));
-			}
+                        l->append((KviAliasTreeWidgetItem *)pStartFrom->child(i));
 		}
 		else
 		{
-			if(bSelectedOnly)
-			{
-				if(pStartFrom->isSelected())
-					appendAliasItemsRecursive(l,pStartFrom->child(i),false);
-				else
-					appendAliasItemsRecursive(l,pStartFrom->child(i),true);
-			}
-			else
-				appendAliasItemsRecursive(l,pStartFrom->child(i),false);
+                        appendAllAliasItemsRecursive(l,pStartFrom->child(i));
 		}
 	}
 
@@ -1009,11 +1005,10 @@ void KviAliasEditor::appendSelectedItemsRecursive(KviPointerList<KviAliasEditorT
 		else
 		{
 			if (it->child(i)->childCount())
-					appendSelectedItemsRecursive(l,it->child(i));
+                            appendSelectedItemsRecursive(l,it->child(i));
 		}
 	}
 }
-
 void KviAliasEditor::appendSelectedItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l)
 {
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
@@ -1082,33 +1077,14 @@ bool KviAliasEditor::removeItem(KviAliasEditorTreeWidgetItem *it,bool * pbYesToA
 		removeItemChildren(it);
 	delete it;
 	return true;
-		/*
-	if(bDeleteEmptyTree)
-	{
-		while(it)
-		{
-			KviAliasEditorTreeWidgetItem * par = (KviAliasEditorTreeWidgetItem *)(it->parent());
-			delete it;
-			if(par)
-			{
-				//if(!par->firstChild())it = par;
-				//else it = 0;
-			} else {
-				it = 0;
-			}
-		}
-	} else {
-		delete it;
-	}
-	return true;
-	*/
 }
 
 void KviAliasEditor::removeSelectedItems()
 {
 	KviPointerList<KviAliasEditorTreeWidgetItem> l;
 	l.setAutoDelete(false);
-	appendSelectedItems(&l);
+        appendSelectedItems(&l);
+
 	bool bYesToAll = false;
 
 	for(KviAliasEditorTreeWidgetItem *it = l.first();it;it = l.next())
@@ -1324,7 +1300,7 @@ bool KviAliasEditor::aliasExists(QString &szFullItemName)
 	KviPointerList<KviAliasTreeWidgetItem> l;
 	l.setAutoDelete(false);
 
-	appendAliasItems(&l,false);
+        appendAllAliasItems(&l);
 	for(KviAliasTreeWidgetItem * it = l.first();it;it = l.next())
 	{
 		if (KviQString::equalCI(buildFullItemName(it),szFullItemName))
@@ -1350,16 +1326,7 @@ bool KviAliasEditor::namespaceExists(QString &szFullItemName)
 	}
 	return false;
 }
-/*
-void KviAliasEditor::appendItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l,QTreeWidgetItem *it)
-{
-	for (int i=0;i<it->childCount();i++)
-	{
-		l->append((KviAliasEditorTreeWidgetItem *) it->child(i);
-		if(it->child(i)->childCount()) appendItemd(it->child(i));
-	}
-}
-*/
+
 void KviAliasEditor::renameItem()
 {
 	if(!m_pLastEditedItem)return;

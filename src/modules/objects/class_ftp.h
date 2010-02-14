@@ -52,7 +52,7 @@ protected:
 	bool commandFinishedEvent(KviKvsObjectFunctionCall *c);
 	bool stateChangedEvent(KviKvsObjectFunctionCall *c);
 	bool abort(KviKvsObjectFunctionCall *c);
-
+        bool close(KviKvsObjectFunctionCall *c);
 protected slots:
 	void slotCommandFinished ( int id, bool error );
 	void slotCommandStarted ( int id );

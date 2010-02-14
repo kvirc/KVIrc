@@ -85,6 +85,8 @@
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_ftp,"ftp","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_ftp,"connect",functionConnect)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,abort)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,close)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,close)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,login)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,get)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,cd)
@@ -199,6 +201,13 @@ KVSO_CLASS_FUNCTION(ftp,abort)
 	m_pFtp->abort();
 	return true;
 }
+KVSO_CLASS_FUNCTION(ftp,close)
+{
+        CHECK_INTERNAL_POINTER(m_pFtp)
+        m_bAbort=true;
+        m_pFtp->close();
+        return true;
+}
 //signals & slots
 KVSO_CLASS_FUNCTION(ftp,commandFinishedEvent)
 {
@@ -226,7 +235,7 @@ void KviKvsObject_ftp::slotCommandFinished ( int id, bool error )
         }
         if (m_pFtp->currentCommand()==QFtp::Get)
         {
-		status="Finished to load";          
+                status="Downloaded";
                 QFile *pFile=getDict.value(id);
                 pFile->close();
                 delete pFile;
