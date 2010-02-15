@@ -26,8 +26,10 @@
 #include "kvi_error.h"
 #include "class_ftp.h"
 #include "kvi_locale.h"
-#include <QFtp>
 
+#include <QFtp>
+#include <QHash>
+#include <QHashIterator>
 
 
 /*
@@ -52,51 +54,50 @@
                 !fn: <id:integer> $connect(<host:string>,<remote_port:integer>)
 		Connects to the FTP server host using port port.The command is scheduled, and its execution is performed asynchronously.
 		The function returns a unique identifier which is passed by commandStarted() and commandFinished().[br]
-                !fn:$abort()
-                Aborts the current command and deletes all scheduled commands.
-                !fn:<id:integer> $login(<user:string>,<pass:string>)
-                Logs in to the FTP server with the username user and the password <pass>.
-                The function returns a unique identifier which is passed by commandStarted() and commandFinished().[br]
-                !fn:<id:integer> $get(<remotefile:string>,<localfile:string>)
-                Downloads the <remotefile> file from the server.
-                !fn:<id:integer> $cd(<remotedir:string>)
-                Changes the working directory of the server to <remotedir>.
-                !fn:<id:integer> $list()
-                Lists the contents of directory dir on the FTP server.
-                !fn: $commandFinishedEvent(<id:integer>,<error:boolean>)
-                Called by KVIrc when the ftp command identified by id has finished.
-                error is true if an error occurred during the processing; otherwise error is false.
-                The default implementation emits the [classfnc]$commandFinished[/classfnc]() signal.
-                !fn: $listInfoEvent(<dir_entry_name:string>)
-                This event is triggered for each directory entry found by [classfnc]$list[/classfnc]() command.
-                The default implementation emits the [classfnc]$listInfo[/classfnc]() signal.
-                !fn: $dataTransferProgressEvent(<done:integer>,<total:integer>)
-                This event is triggered in response to a  [classfnc]get[/classfnc]() or  [classfnc]put[/classfnc]() request to indicate the current progress of the download or upload.
-                The default implementation emits the [classfnc]$dataTransferProgress[/classfnc]() signal.
-        @signals:
-                !sg: $commandFinished(<id:integer>,<status:string>,<error:boolean>)
-                This signal is emitted by the default implementation of [classfnc]$commandFinishedEvent[/classfnc]()
-                !sg: $listInfo(<dir_entry_name:string>)
-                This signal is emitted by the default implementation of [classfnc]$listInfoEvent[/classfnc]()
-                !sg: $dataTransferProgress(<done:integer>,<total:integer>)
-                This signal is emitted by the default implementation of [classfnc]$dataTransferProgressEvent[/classfnc]()
+		!fn:$abort()
+		Aborts the current command and deletes all scheduled commands.
+		!fn:<id:integer> $login(<user:string>,<pass:string>)
+		Logs in to the FTP server with the username user and the password <pass>.
+		The function returns a unique identifier which is passed by commandStarted() and commandFinished().[br]
+		!fn:<id:integer> $get(<remotefile:string>,<localfile:string>)
+		Downloads the <remotefile> file from the server.
+		!fn:<id:integer> $cd(<remotedir:string>)
+		Changes the working directory of the server to <remotedir>.
+		!fn:<id:integer> $list()
+		Lists the contents of directory dir on the FTP server.
+		!fn: $commandFinishedEvent(<id:integer>,<error:boolean>)
+		Called by KVIrc when the ftp command identified by id has finished.
+		error is true if an error occurred during the processing; otherwise error is false.
+		The default implementation emits the [classfnc]$commandFinished[/classfnc]() signal.
+		!fn: $listInfoEvent(<dir_entry_name:string>)
+		This event is triggered for each directory entry found by [classfnc]$list[/classfnc]() command.
+		The default implementation emits the [classfnc]$listInfo[/classfnc]() signal.
+		!fn: $dataTransferProgressEvent(<done:integer>,<total:integer>)
+		This event is triggered in response to a  [classfnc]get[/classfnc]() or  [classfnc]put[/classfnc]() request to indicate the current progress of the download or upload.
+		The default implementation emits the [classfnc]$dataTransferProgress[/classfnc]() signal.
+	@signals:
+		!sg: $commandFinished(<id:integer>,<status:string>,<error:boolean>)
+		This signal is emitted by the default implementation of [classfnc]$commandFinishedEvent[/classfnc]()
+		!sg: $listInfo(<dir_entry_name:string>)
+		This signal is emitted by the default implementation of [classfnc]$listInfoEvent[/classfnc]()
+		!sg: $dataTransferProgress(<done:integer>,<total:integer>)
+		This signal is emitted by the default implementation of [classfnc]$dataTransferProgressEvent[/classfnc]()
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_ftp,"ftp","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_ftp,"connect",functionConnect)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,abort)
-        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,close)
-        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,close)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,close)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,close)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,login)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,get)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,cd)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,list)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,commandFinishedEvent)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,listInfoEvent)
-
-        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,stateChangedEvent)
-KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,dataTransferProgressEvent)
-        KVSO_END_REGISTERCLASS(KviKvsObject_ftp)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,stateChangedEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,dataTransferProgressEvent)
+KVSO_END_REGISTERCLASS(KviKvsObject_ftp)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_ftp,KviKvsObject)
@@ -112,17 +113,17 @@ KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_ftp,KviKvsObject)
 KVSO_END_CONSTRUCTOR(KviKvsObject_ftp)
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_ftp)
-    QHashIterator<int,QFile *> t(getDict);
-    while (t.hasNext())
-    {
-        t.next();
-        int key=t.key();
-        QFile *pFile=getDict.value(key);
-        pFile->close();
-        delete pFile;
-    }
-    getDict.clear();
-    delete m_pFtp;
+	QHashIterator<int,QFile *> t(getDict);
+	while (t.hasNext())
+	{
+		t.next();
+		int key=t.key();
+		QFile *pFile=getDict.value(key);
+		pFile->close();
+		delete pFile;
+	}
+	getDict.clear();
+	delete m_pFtp;
 KVSO_END_DESTRUCTOR(KviKvsObject_ftp)
 //----------------------
 
@@ -134,8 +135,8 @@ KVSO_CLASS_FUNCTION(ftp,functionConnect)
 	QString szHost;
 	kvs_uint_t uRemotePort;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("host",KVS_PT_STRING,0,szHost)
-		KVSO_PARAMETER("remote_port",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uRemotePort)
+	KVSO_PARAMETER("host",KVS_PT_STRING,0,szHost)
+	KVSO_PARAMETER("remote_port",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uRemotePort)
 	KVSO_PARAMETERS_END(c)
 	if (!uRemotePort) uRemotePort=21;
 	kvs_uint_t id=0;
@@ -143,71 +144,78 @@ KVSO_CLASS_FUNCTION(ftp,functionConnect)
 	c->returnValue()->setInteger(id);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(ftp,login)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
 	QString szUser,szPass;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("user",KVS_PT_STRING,0,szUser)
-		KVSO_PARAMETER("password",KVS_PT_STRING,0,szPass)
+	KVSO_PARAMETER("user",KVS_PT_STRING,0,szUser)
+	KVSO_PARAMETER("password",KVS_PT_STRING,0,szPass)
 	KVSO_PARAMETERS_END(c)
 	int id=m_pFtp->login(szUser, szPass);
 	c->returnValue()->setInteger(id);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(ftp,get)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
 	QString szFile,szDest;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("remote_filename",KVS_PT_STRING,0,szFile)
-		KVSO_PARAMETER("local_filename",KVS_PT_STRING,0,szDest)
+	KVSO_PARAMETER("remote_filename",KVS_PT_STRING,0,szFile)
+	KVSO_PARAMETER("local_filename",KVS_PT_STRING,0,szDest)
 	KVSO_PARAMETERS_END(c)
-        QFile *pFile;
-        pFile=new QFile(szDest);
-        pFile->open(QIODevice::WriteOnly);
+	QFile *pFile;
+	pFile=new QFile(szDest);
+	pFile->open(QIODevice::WriteOnly);
 	int id=0;
-        id=m_pFtp->get(szFile,pFile);
-        getDict[id]=pFile;
+	id=m_pFtp->get(szFile,pFile);
+	getDict[id]=pFile;
 	c->returnValue()->setInteger(id);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(ftp,cd)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
 	QString szPath;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("remote_filename",KVS_PT_STRING,0,szPath)
+	KVSO_PARAMETER("remote_filename",KVS_PT_STRING,0,szPath)
 	KVSO_PARAMETERS_END(c)
 	int id=m_pFtp->cd(szPath);
 	c->returnValue()->setInteger(id);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(ftp,list)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
 	QString szPath;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("remote_dir",KVS_PT_STRING,0,szPath)
+	KVSO_PARAMETER("remote_dir",KVS_PT_STRING,0,szPath)
 	KVSO_PARAMETERS_END(c)
 	int id=m_pFtp->list(szPath);
 	c->returnValue()->setInteger(id);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(ftp,abort)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
-        m_bAbort=true;
+	m_bAbort=true;
 	m_pFtp->abort();
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(ftp,close)
 {
-        CHECK_INTERNAL_POINTER(m_pFtp)
-        m_bAbort=true;
-        m_pFtp->close();
-        return true;
+	CHECK_INTERNAL_POINTER(m_pFtp)
+	m_bAbort=true;
+	m_pFtp->close();
+	return true;
 }
+
 //signals & slots
 KVSO_CLASS_FUNCTION(ftp,commandFinishedEvent)
 {
@@ -218,29 +226,29 @@ KVSO_CLASS_FUNCTION(ftp,commandFinishedEvent)
 void KviKvsObject_ftp::slotCommandFinished ( int id, bool error )
 {
 	QString status="";
-        if (m_bAbort)
-        {
-            m_bAbort=false;
-            QHashIterator<int,QFile *> t(getDict);
-            while (t.hasNext())
-            {
-                    t.next();
-                    int key=t.key();
-                    QFile *pFile=getDict.value(key);
-                    pFile->close();
-                    delete pFile;
-            }
-            getDict.clear();
-            return;
-        }
-        if (m_pFtp->currentCommand()==QFtp::Get)
-        {
-                status="Downloaded";
-                QFile *pFile=getDict.value(id);
-                pFile->close();
-                delete pFile;
-                getDict.remove(id);
-        }
+	if (m_bAbort)
+	{
+		m_bAbort=false;
+		QHashIterator<int,QFile *> t(getDict);
+		while (t.hasNext())
+		{
+			t.next();
+			int key=t.key();
+			QFile *pFile=getDict.value(key);
+			pFile->close();
+			delete pFile;
+		}
+		getDict.clear();
+		return;
+	}
+	if (m_pFtp->currentCommand()==QFtp::Get)
+	{
+		status="Downloaded";
+		QFile *pFile=getDict.value(id);
+		pFile->close();
+		delete pFile;
+		getDict.remove(id);
+	}
 	else if (m_pFtp->currentCommand()==QFtp:: ConnectToHost) status="connected";
 	else if (m_pFtp->currentCommand()==QFtp:: Login) status="logged";
 	else if (m_pFtp->currentCommand()==QFtp:: Cd) status="entered";
@@ -258,11 +266,13 @@ void KviKvsObject_ftp::slotDataTransferProgress ( qint64 done, qint64 total )
         callFunction(this,"dataTransferProgressEvent",0,new KviKvsVariantList(
 		new KviKvsVariant((kvs_int_t) done),new KviKvsVariant((kvs_int_t) total)));
 }
+
 KVSO_CLASS_FUNCTION(ftp,dataTransferProgressEvent)
 {
 	emitSignal("dataTransferProgress",c,c->params());
 	return true;
 }
+
 void KviKvsObject_ftp::slotDone ( bool )
 {
 }
@@ -270,8 +280,8 @@ void KviKvsObject_ftp::slotDone ( bool )
 void KviKvsObject_ftp::slotListInfo ( const QUrlInfo & i )
 {
 	callFunction(this,"listInfoEvent",0,new KviKvsVariantList(new KviKvsVariant(i.name())));
-
 }
+
 KVSO_CLASS_FUNCTION(ftp,listInfoEvent)
 {
 	emitSignal("listInfo",c,c->params());
@@ -298,11 +308,13 @@ void KviKvsObject_ftp::slotStateChanged (int state)
 	callFunction(this,"stateChangedEvent",0,new KviKvsVariantList(
 		new KviKvsVariant(szState)));
 }
+
 KVSO_CLASS_FUNCTION(ftp,stateChangedEvent)
 {
 	emitSignal("stateChanged",c,c->params());
 	return true;
 }
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_ftp.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

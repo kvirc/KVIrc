@@ -24,13 +24,12 @@
 //
 //=============================================================================
 
-
-
-
-//===============================================================
 #include "object_macros.h"
+
 #include <QFtp>
 #include <QFile>
+
+class QHash;
 
 class KviKvsObject_ftp : public KviKvsObject
 {
@@ -39,8 +38,8 @@ public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_ftp)
 protected:
 	QFtp *m_pFtp;
-        QHash<int, QFile*> getDict;
-        bool m_bAbort;
+	QHash<int, QFile*> getDict;
+	bool m_bAbort;
 protected:
 	bool functionConnect(KviKvsObjectFunctionCall *c);
 	bool get(KviKvsObjectFunctionCall *c);
@@ -52,7 +51,7 @@ protected:
 	bool commandFinishedEvent(KviKvsObjectFunctionCall *c);
 	bool stateChangedEvent(KviKvsObjectFunctionCall *c);
 	bool abort(KviKvsObjectFunctionCall *c);
-        bool close(KviKvsObjectFunctionCall *c);
+	bool close(KviKvsObjectFunctionCall *c);
 protected slots:
 	void slotCommandFinished ( int id, bool error );
 	void slotCommandStarted ( int id );

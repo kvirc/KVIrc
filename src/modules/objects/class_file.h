@@ -24,11 +24,10 @@
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
 //=============================================================================
-#include "class_widget.h"
-#include "kvi_file.h"
 
 #include "object_macros.h"
-
+#include "class_widget.h"
+#include "kvi_file.h"
 
 
 class KviKvsObject_file : public KviKvsObject_widget
@@ -49,9 +48,9 @@ public:
 	bool size(KviKvsObjectFunctionCall *c);
 
 	bool atEnd(KviKvsObjectFunctionCall *c);
-		// int QFile at() const
+	// int QFile at() const
 	bool where(KviKvsObjectFunctionCall *c);
-		// void QFile at(int)
+	// void QFile at(int)
 	bool seek(KviKvsObjectFunctionCall *c);
 	bool putch(KviKvsObjectFunctionCall *c);
 	bool getch(KviKvsObjectFunctionCall *c);
@@ -68,10 +67,6 @@ public:
 
 	bool write(KviKvsObjectFunctionCall *c);
 	bool read(KviKvsObjectFunctionCall *c);
-
-
-
-
 };
 
 #endif	// !_CLASS_FILE_H_
