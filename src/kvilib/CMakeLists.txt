@@ -105,6 +105,7 @@ SET(kvilib_SRCS
 	net/kvi_dns.cpp
 	net/kvi_http.cpp
 	net/kvi_netutils.cpp
+	net/kvi_sasl.cpp
 	net/kvi_socket.cpp
 	net/kvi_ssl.cpp
 	net/kvi_url.cpp

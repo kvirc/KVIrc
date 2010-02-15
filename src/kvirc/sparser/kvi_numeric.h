@@ -376,9 +376,9 @@
 #define RPL_SASLLOGIN        900 /* :jaguar.test 900 jilles jilles!jilles@localhost.stack.nl jilles :You are now logged in as jilles. */
 #define RPL_SASLSUCCESS      903 /* :jaguar.test 903 jilles :SASL authentication successful  */
 #define RPL_SASLFAILED       904 /* :lindbohm.freenode.net 904 * :SASL authentication failed */
-#define RPL_SASLERROR        905 // alternative error message
+#define RPL_SASLERROR        905 // sasl message too long
 #define RPL_SASLABORT        906 // sasl authentication aborted
-#define RPL_SASLALREADYAUTH  907 // can't authenticate: already authenticated
+#define RPL_SASLALREADYAUTH  907 // You have already completed SASL authentication
 
 ///* 303 */	RPL_ISON, ":",
 ///* 304 */	RPL_TEXT, (char *)NULL,

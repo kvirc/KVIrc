@@ -1994,7 +1994,6 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 	// Client2server subcommands:
 	// LIST, LS, REQ, CLEAR, END
 
-	debug("Parsing literal CAP...");
 	QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
 	QString szCmd = msg->connection()->decodeText(msg->safeParam(1));
 	QString szProtocols = msg->connection()->decodeText(msg->safeParam(2));
@@ -2038,8 +2037,9 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseLiteralAuthenticate(KviIrcMessage *)
+void KviServerParser::parseLiteralAuthenticate(KviIrcMessage *msg)
 {
-	// :prefix AUTHENTICATE  +
-	// we don't wait for this when authenticating, so no real handling is needed here
+	// :AUTHENTICATE +
+	KviStr szAuth(msg->safeParam(0));
+	msg->connection()->handleAuthenticate(szAuth);
 }

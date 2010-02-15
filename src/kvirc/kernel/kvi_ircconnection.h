@@ -68,6 +68,7 @@ class KviNotifyListManager;
 class KviDns;
 class KviUserIdentity;
 class KviIdentityProfileSet;
+class KviStr;
 
 
 /**
@@ -721,6 +722,12 @@ protected:
 	* \return void
 	*/
 	void serverInfoReceived(const QString & szServerName, const QString & szUserModes, const QString & szChanModes);
+
+	/**
+	* \brief Called when AUTHENTICATE answer is received
+	* \return void
+	*/
+	void handleAuthenticate(KviStr & szResponse);
 
 	/**
 	* \brief Called when CAP LS answer is received

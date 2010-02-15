@@ -66,6 +66,7 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_useridentity.h"
 #include "kvi_identityprofile.h"
+#include "kvi_sasl.h"
 
 #include <QTimer>
 #include <QTextCodec>
@@ -348,7 +349,6 @@ void KviIrcConnection::linkEstabilished()
 
 void KviIrcConnection::handleCapLs()
 {
-	qDebug("handleCapLs");
 	m_pStateData->setInsideCapLs(false);
 
 	// STARTTLS support: this has to be checked first because it could imply
@@ -385,7 +385,7 @@ void KviIrcConnection::handleCapLs()
 
 void KviIrcConnection::handleCapAck()
 {
-	qDebug("handleCapAck");
+	bool bUsed=false;
 
 	//SASL
 	if(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable) &&
@@ -393,14 +393,57 @@ void KviIrcConnection::handleCapAck()
 		serverInfo()->enabledCaps().contains("sasl",Qt::CaseInsensitive)
 	)
 	{
+		bUsed=true;
+
+#ifdef COMPILE_SSL_SUPPORT
+		sendFmtData("AUTHENTICATE DH-BLOWFISH");
+#else
 		sendFmtData("AUTHENTICATE PLAIN");
-		//server will send us a "AUTHENTICATE +" answer; we won't wait for this extra step
-		QByteArray szAuth = encodeText(target()->server()->saslNick());
-		szAuth.append('\0');
-		szAuth.append(encodeText(target()->server()->saslNick()));
-		szAuth.append('\0');
-		szAuth.append(encodeText(target()->server()->saslPass()));
-		sendFmtData("AUTHENTICATE %s",szAuth.toBase64().data());
+#endif
+	}
+
+
+	if(!bUsed) endCapLs();
+}
+
+void KviIrcConnection::handleAuthenticate(KviStr & szAuth)
+{
+	//SASL
+	if(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable) &&
+		target()->server()->enabledSASL() &&
+		serverInfo()->enabledCaps().contains("sasl",Qt::CaseInsensitive)
+	)
+	{
+		QByteArray szNick = encodeText(target()->server()->saslNick());
+		QByteArray szPass = encodeText(target()->server()->saslPass());
+		if(szAuth=="+")
+		{
+			//PLAIN
+			KviStr szOut;
+			if(KviSASL::plainMethod(szAuth,
+						szOut,
+						szNick,
+						szPass
+						))
+			{
+				sendFmtData("AUTHENTICATE %s",szOut.ptr());
+			} else {
+				sendFmtData("AUTHENTICATE *");
+			}
+		} else {
+			//DH-BLOWFISH sasl auth
+			KviStr szOut;
+			if(KviSASL::dh_blowfishMethod(szAuth,
+						szOut,
+						szNick,
+						szPass
+						))
+			{
+				sendFmtData("AUTHENTICATE %s",szOut.ptr());
+			} else {
+				sendFmtData("AUTHENTICATE *");
+			}
+		}
 	}
 
 	endCapLs();
@@ -408,19 +451,16 @@ void KviIrcConnection::handleCapAck()
 
 void KviIrcConnection::handleCapNak()
 {
-	qDebug("handleCapNak");
 	endCapLs();
 }
 
 void KviIrcConnection::endCapLs()
 {
-	sendFmtData("CAP END");
 	loginToIrcServer();
 }
 
 void KviIrcConnection::handleFailedCapLs()
 {
-	qDebug("handleFailedCapLs");
 	m_pStateData->setInsideCapLs(false);
 	loginToIrcServer();
 }
