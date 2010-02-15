@@ -456,6 +456,7 @@ void KviIrcConnection::handleCapNak()
 
 void KviIrcConnection::endCapLs()
 {
+	sendFmtData("CAP END");
 	loginToIrcServer();
 }
 
