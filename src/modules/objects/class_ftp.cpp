@@ -28,7 +28,6 @@
 #include "kvi_locale.h"
 
 #include <QFtp>
-#include <QHash>
 #include <QHashIterator>
 
 

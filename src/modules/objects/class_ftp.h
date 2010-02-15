@@ -27,9 +27,8 @@
 #include "object_macros.h"
 
 #include <QFtp>
+#include <QHash>
 #include <QFile>
-
-class QHash;
 
 class KviKvsObject_ftp : public KviKvsObject
 {
