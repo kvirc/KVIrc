@@ -36,9 +36,23 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QTreeWidget>
+#include <QStyledItemDelegate>
+#include <QAbstractItemView>
 
 class QSplitter;
 class KviScriptEditor;
+
+class KVIRC_API KviAliasEditorTreeWidgetItemDelegate : public QStyledItemDelegate
+{
+        Q_OBJECT
+public:
+        KviAliasEditorTreeWidgetItemDelegate(QAbstractItemView * pWidget=0)
+                : QStyledItemDelegate(pWidget) {};
+        ~KviAliasEditorTreeWidgetItemDelegate(){};
+       // QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
+        void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+};
+
 
 class KviAliasEditorTreeWidgetItem : public QTreeWidgetItem, public KviHeapObject
 {
@@ -113,6 +127,7 @@ public:
         void loadProperties(KviConfig *);
 	static void splitFullAliasOrNamespaceName(const QString &szFullName,QStringList &lNamespaces,QString &szName);
 protected slots:
+
         void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *);
         void renameItem();
         void newAlias();
@@ -136,6 +151,7 @@ void newItem(QString &szName,KviAliasEditorTreeWidgetItem::Type eType);
         void aliasRefresh(const QString &szName);
 
 protected:
+        KviAliasEditorTreeWidgetItemDelegate *m_pItemDelegate;
         void recursiveCollapseNamespaces(KviAliasEditorTreeWidgetItem * it);
 	void recursiveSearchReplace(const QString &szSearch,KviAliasEditorTreeWidgetItem * it,bool bReplace=false,const QString &szReplace="n");
 
@@ -144,19 +160,11 @@ protected:
 	void oneTimeSetup();
 	void saveLastEditedItem();
 	void getUniqueItemName(KviAliasEditorTreeWidgetItem *item,QString &buffer,KviAliasEditorTreeWidgetItem::Type eType);
-        void appendSelectedItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l);
         void appendSelectedAliasItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l);
         void appendSelectedAliasItemsRecursive(KviPointerList<KviAliasEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
         void appendAllAliasItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l);
         void appendAllAliasItemsRecursive(KviPointerList<KviAliasEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
 
-       void appendSelectedItemsRecursive(KviPointerList<KviAliasEditorTreeWidgetItem> * l,QTreeWidgetItem *it);
-/*
-        void appendNamespaceItemsRecursive(KviPointerList<KviAliasTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom,bool bSelectedOnly);
-	void appendNamespaceItems(KviPointerList<KviAliasTreeWidgetItem> * l,bool bSelectedOnly);
-
-	//void appendNamespaceItems(KviPointerList<KviAliasTreeWidgetItem> * l,KviAliasEditorTreeWidgetItem * pStartFrom,bool bSelectedOnly);
-*/
 	void openParentItems(QTreeWidgetItem * it);
 	void activateItem(QTreeWidgetItem * it);
 
@@ -173,14 +181,6 @@ protected:
         void appendAllItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l,KviAliasEditorTreeWidgetItem::Type);
         void appendAllItemsRecursive(KviPointerList<KviAliasEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom,KviAliasEditorTreeWidgetItem::Type);
         bool hasSelectedItems();
-        /*bool hasSelectedItemsRecursive(QTreeWidgetItem *);
-        KviAliasNamespaceTreeWidgetItem * findNamespaceItem(const QString &szName);
-	KviAliasNamespaceTreeWidgetItem * getNamespaceItem(const QString &szName);
-	KviAliasTreeWidgetItem * findAliasItem(const QString &szName);
-	KviAliasTreeWidgetItem * findAliasItemRecursive(KviAliasEditorTreeWidgetItem *it,const QString &szName);
-	KviAliasTreeWidgetItem * getAliasItem(const QString &szName);
-        KviAliasTreeWidgetItem * createFullAliasItem(const QString &szFullName);*/
-
         void buildFullItemPath(KviAliasEditorTreeWidgetItem * it,QString &szBuffer);
         KviAliasEditorTreeWidgetItem * findTopLevelItem(const QString &szName);
         KviAliasEditorTreeWidgetItem * createFullItem(const QString &szFullName);
