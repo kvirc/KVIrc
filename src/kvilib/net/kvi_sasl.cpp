@@ -34,7 +34,7 @@
 #include <openssl/bn.h>
 #include <openssl/dh.h>
 #include <openssl/err.h>
-#include <arpa/inet.h>
+#include <kvi_netutils.h>
 
 #endif
 
