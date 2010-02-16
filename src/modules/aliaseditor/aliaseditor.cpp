@@ -57,7 +57,7 @@
 #include <QMouseEvent>
 #include <QList>
 #include <QPainter>
-
+#include <QBrush>
 extern KviAliasEditorWindow * g_pAliasEditorWindow;
 extern KviModule * g_pAliasEditorModule;
 
@@ -66,7 +66,22 @@ void KviAliasEditorTreeWidgetItemDelegate::paint(QPainter * p, const QStyleOptio
         QString szText=index.data(Qt::DisplayRole).toString();
         KviAliasEditorTreeWidgetItem *item=static_cast<KviAliasEditorTreeWidgetItem *>(index.internalPointer());
         int im = option.rect.left();
+
         int yPixmap = (option.rect.top() + (option.rect.height() / 2 - 8));
+        if (option.state & QStyle::State_Selected)
+        {
+            p->setBrush(option.palette.highlight());
+            p->drawRect(option.rect);
+        }
+        else
+        if (option.state & QStyle::State_MouseOver)
+        {
+            QBrush brush=option.palette.highlight();
+            QColor color=brush.color();
+            color.setAlpha(127);
+            brush.setColor(color);
+            p->drawRect(option.rect);
+        }
         QPixmap *pixmap;
         if (item->type()==KviAliasEditorTreeWidgetItem::Alias) pixmap=g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS);
          else  pixmap=g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE);
@@ -79,6 +94,8 @@ KviAliasEditorTreeWidgetItem::KviAliasEditorTreeWidgetItem(QTreeWidget * pTreeWi
 {
 	setName(szName);
         m_cPos=0;
+        if(eType==KviAliasEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
+           else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
 }
 
 KviAliasEditorTreeWidgetItem::KviAliasEditorTreeWidgetItem(KviAliasEditorTreeWidgetItem * pParentItem,Type eType,const QString &szName)
@@ -87,6 +104,8 @@ KviAliasEditorTreeWidgetItem::KviAliasEditorTreeWidgetItem(KviAliasEditorTreeWid
 	setName(szName);
         m_cPos=0;
 	setFlags(Qt::ItemIsEditable|Qt::ItemIsEnabled|Qt::ItemIsSelectable);
+        if(eType==KviAliasEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
+           else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
 }
 
 void KviAliasEditorTreeWidgetItem::setName(const QString &szName)
@@ -97,6 +116,9 @@ void KviAliasEditorTreeWidgetItem::setName(const QString &szName)
 void KviAliasEditorTreeWidgetItem::setType(Type t)
 {
      m_eType=t;
+     if(t==KviAliasEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
+        else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
+     
 }
 
 KviAliasEditorTreeWidget::KviAliasEditorTreeWidget(QWidget * par)
@@ -146,8 +168,8 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 	box->setMargin(0);
 
 	m_pTreeWidget = new KviAliasEditorTreeWidget(box);
-        m_pItemDelegate=new KviAliasEditorTreeWidgetItemDelegate(m_pTreeWidget);
-        m_pTreeWidget->setItemDelegate( m_pItemDelegate);
+//        m_pItemDelegate=new KviAliasEditorTreeWidgetItemDelegate(m_pTreeWidget);
+  //      m_pTreeWidget->setItemDelegate( m_pItemDelegate);
 
 	box = new KviTalVBox(m_pSplitter);
 	KviTalHBox * hbox = new KviTalHBox(box);
@@ -175,7 +197,7 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 KviAliasEditor::~KviAliasEditor()
 {
 	KviScriptEditor::destroyInstance(m_pEditor);
-        delete m_pItemDelegate;
+       // delete m_pItemDelegate;
 }
 
 void KviAliasEditor::buildFullItemPath(KviAliasEditorTreeWidgetItem * it,QString &szBuffer)
