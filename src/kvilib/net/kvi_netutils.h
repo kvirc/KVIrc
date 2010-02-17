@@ -37,6 +37,12 @@
 			//#include <tpipv6.h>
 			#define in6_addr in_addr6
 		#endif
+	#else 
+		#ifdef WIN2K
+			#include <wspiapi.h>
+		#else
+			#include <ws2tcpip.h>
+		#endif	
 	#endif
 #else
 	#include <sys/types.h>

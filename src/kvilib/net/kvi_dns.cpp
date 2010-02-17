@@ -181,7 +181,7 @@ void KviDnsThread::run()
 	{
 		pHostEntry = gethostbyaddr((const char *)&inAddr,sizeof(inAddr),AF_INET);
 	} else {
-		pHostEntry = gethostbyname(m_szQuery);
+		pHostEntry = gethostbyname(m_szQuery.toUtf8().data());
 	}
 
 	if(!pHostEntry)
