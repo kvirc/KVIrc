@@ -44,7 +44,6 @@ class KviScriptEditor;
 
 class KVIRC_API KviAliasEditorTreeWidgetItemDelegate : public QStyledItemDelegate
 {
-        Q_OBJECT
 public:
         KviAliasEditorTreeWidgetItemDelegate(QAbstractItemView * pWidget=0)
                 : QStyledItemDelegate(pWidget) {};
