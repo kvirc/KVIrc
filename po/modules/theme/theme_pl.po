@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"POT-Creation-Date: 2010-02-17 18:09+0100\n"
 "PO-Revision-Date: 2009-12-07 03:30+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -62,7 +62,7 @@ msgstr "Usuń zaznaczone motywy"
 msgid "Delete Theme - KVIrc"
 msgstr "Usuń motyw - KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:280
+#: src/modules/theme/packthemedialog.cpp:235
 #: src/modules/theme/savethemedialog.cpp:119
 msgid "Description:"
 msgstr "Opis:"
@@ -95,12 +95,12 @@ msgstr ""
 msgid "Export Selected Themes to a Distributable Package"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:64
-#: src/modules/theme/packthemedialog.cpp:356
-#: src/modules/theme/packthemedialog.cpp:444
-#: src/modules/theme/packthemedialog.cpp:531
-#: src/modules/theme/packthemedialog.cpp:546
-#: src/modules/theme/packthemedialog.cpp:558
+#: src/modules/theme/packthemedialog.cpp:111
+#: src/modules/theme/packthemedialog.cpp:344
+#: src/modules/theme/packthemedialog.cpp:378
+#: src/modules/theme/packthemedialog.cpp:462
+#: src/modules/theme/packthemedialog.cpp:474
+#: src/modules/theme/packthemedialog.cpp:482
 msgid "Export Theme - KVIrc"
 msgstr "Eksportuj motyw - KVIrc"
 
@@ -108,12 +108,12 @@ msgstr "Eksportuj motyw - KVIrc"
 msgid "Failed to apply the specified theme: %Q"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:356
+#: src/modules/theme/packthemedialog.cpp:344
 #: src/modules/theme/savethemedialog.cpp:198
 msgid "Failed to load the selected image"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:445
+#: src/modules/theme/packthemedialog.cpp:378
 msgid "Failed to load the selected image: please fix it"
 msgstr ""
 
@@ -129,7 +129,7 @@ msgstr "Nie udało się zrobić zrzutu ekranu"
 msgid "Failed to unpack the selected file: %Q"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:379
+#: src/modules/theme/packthemedialog.cpp:306
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr ""
 
@@ -141,7 +141,7 @@ msgstr "Uzyskaj więcej motywów..."
 msgid "Go Back to Package Data"
 msgstr "Wróć do danych pakietu"
 
-#: src/modules/theme/packthemedialog.cpp:316
+#: src/modules/theme/packthemedialog.cpp:266
 msgid ""
 "Here you can choose the image that will appear in the installation dialog "
 "for your theme package. It can be an icon, a logo or a screenshot and it "
@@ -157,7 +157,7 @@ msgid ""
 "export the theme to a distributable package."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:368
+#: src/modules/theme/packthemedialog.cpp:295
 msgid ""
 "Here you must choose the file name for the theme package. It should have a *%"
 "1 extension."
@@ -169,18 +169,18 @@ msgid ""
 "description of the theme you're creating."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:251
+#: src/modules/theme/packthemedialog.cpp:212
 msgid ""
 "Here you need to provide information about you (the packager) and a short "
 "description of the package you're creating."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:108
+#: src/modules/theme/packthemedialog.cpp:124
 #: src/modules/theme/savethemedialog.cpp:78
 msgid "Hit the \"Next\" button to begin."
 msgstr "Naciśnij przycisk \"Dalej\" aby rozpocząć."
 
-#: src/modules/theme/packthemedialog.cpp:315
+#: src/modules/theme/packthemedialog.cpp:283
 msgid "Icon/Screenshot"
 msgstr "Ikona/Zrzut ekranu"
 
@@ -204,28 +204,28 @@ msgstr "Zarządzaj motywami - KVIrc"
 msgid "Open Theme - KVIrc"
 msgstr "Otwórz motyw - KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:289
+#: src/modules/theme/packthemedialog.cpp:243
 msgid "Package Author:"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:250
+#: src/modules/theme/packthemedialog.cpp:254
 msgid "Package Information"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:262
+#: src/modules/theme/packthemedialog.cpp:218
 msgid "Package Name:"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:367
+#: src/modules/theme/packthemedialog.cpp:313
 msgid "Package Path"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:527
-#: src/modules/theme/packthemedialog.cpp:542
+#: src/modules/theme/packthemedialog.cpp:459
+#: src/modules/theme/packthemedialog.cpp:471
 msgid "Packaging failed"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:156
+#: src/modules/theme/packthemedialog.cpp:81
 msgid "Put a package description here..."
 msgstr ""
 
@@ -270,7 +270,7 @@ msgstr ""
 msgid "Theme Author:"
 msgstr "Autor motywu:"
 
-#: src/modules/theme/packthemedialog.cpp:138
+#: src/modules/theme/packthemedialog.cpp:199
 msgid "Theme Data"
 msgstr ""
 
@@ -290,14 +290,14 @@ msgstr "Nazwa motywu:"
 msgid "Theme saved successfully to "
 msgstr "Motyw zapisany pomyślnie w"
 
-#: src/modules/theme/packthemedialog.cpp:139
+#: src/modules/theme/packthemedialog.cpp:145
 msgid ""
 "This is the information list for the themes you're packaging. If it looks OK "
 "press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
 "themes first."
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:104
+#: src/modules/theme/packthemedialog.cpp:120
 msgid ""
 "This procedure allows you to export the selected themes to a single package. "
 "It is useful when you want to distribute your themes to the public."
@@ -320,7 +320,7 @@ msgstr ""
 msgid "Unable to save theme: %Q"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:271
+#: src/modules/theme/packthemedialog.cpp:227
 #: src/modules/theme/savethemedialog.cpp:111
 msgid "Version:"
 msgstr "Wersja:"
@@ -335,7 +335,7 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:101
+#: src/modules/theme/packthemedialog.cpp:132
 #: src/modules/theme/savethemedialog.cpp:85
 msgid "Welcome"
 msgstr "Witamy"
@@ -348,7 +348,7 @@ msgstr "Tak, kontynuuj"
 msgid "You must choose a theme name!"
 msgstr "Musisz wybrać nazwę motywu!"
 
-#: src/modules/theme/packthemedialog.cpp:106
+#: src/modules/theme/packthemedialog.cpp:122
 msgid ""
 "You will be asked to provide a package name, a description and, if you want, "
 "an icon/screenshot."
@@ -364,7 +364,7 @@ msgstr ""
 msgid "You're about to install the following theme package"
 msgstr ""
 
-#: src/modules/theme/packthemedialog.cpp:154
+#: src/modules/theme/packthemedialog.cpp:79
 msgid "Your name here"
 msgstr "Twoja nazwa tutaj"
 

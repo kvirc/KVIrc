@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"POT-Creation-Date: 2010-02-17 18:09+0100\n"
 "PO-Revision-Date: 2009-09-08 23:47+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -76,7 +76,7 @@ msgstr ""
 "$setGeometry() benötigt entweder ein Array alt ersten Parameter oder vier "
 "Integer"
 
-#: src/modules/objects/class_http.cpp:249
+#: src/modules/objects/class_http.cpp:260
 msgid "'%Q' is not a valid file path"
 msgstr "'%Q' ist kein gültiger Dateipfad"
 
@@ -201,10 +201,8 @@ msgstr "Zeitüberschreitung beim Verbindungsaufbau"
 msgid "Connect failure: "
 msgstr "Verbindung fehlgeschlagen: "
 
-#: src/modules/objects/class_sql.cpp:237
-#: src/modules/objects/class_sql.cpp:270
-#: src/modules/objects/class_sql.cpp:287
-#: src/modules/objects/class_sql.cpp:304
+#: src/modules/objects/class_sql.cpp:237 src/modules/objects/class_sql.cpp:270
+#: src/modules/objects/class_sql.cpp:287 src/modules/objects/class_sql.cpp:304
 #: src/modules/objects/class_sql.cpp:321
 msgid "Connection %Q does not exists"
 msgstr "Verbindung %Q existiert nicht"
@@ -278,7 +276,7 @@ msgstr "Einrichtung eines nichtblockierenden Sockets fehlgeschlagen"
 msgid "File is not open!"
 msgstr "Datei ist nicht geöffnet!"
 
-#: src/modules/objects/class_http.cpp:183
+#: src/modules/objects/class_http.cpp:193
 msgid "Host '%Q' is not a valid url"
 msgstr "Host '%Q' ist keine gültige URL"
 

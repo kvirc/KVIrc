@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"POT-Creation-Date: 2010-02-17 18:09+0100\n"
 "PO-Revision-Date: 2010-01-08 19:29+0100\n"
 "Last-Translator: HelLViS69\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -75,7 +75,7 @@ msgid ""
 msgstr ""
 "$setGeometry() richiede sia un array come primo parametro o quattro interi"
 
-#: src/modules/objects/class_http.cpp:249
+#: src/modules/objects/class_http.cpp:260
 msgid "'%Q' is not a valid file path"
 msgstr "'%Q' non è un percorso valido per il file"
 
@@ -200,10 +200,8 @@ msgstr "Tentativo di connessione scaduto"
 msgid "Connect failure: "
 msgstr "Connessione fallita: "
 
-#: src/modules/objects/class_sql.cpp:237
-#: src/modules/objects/class_sql.cpp:270
-#: src/modules/objects/class_sql.cpp:287
-#: src/modules/objects/class_sql.cpp:304
+#: src/modules/objects/class_sql.cpp:237 src/modules/objects/class_sql.cpp:270
+#: src/modules/objects/class_sql.cpp:287 src/modules/objects/class_sql.cpp:304
 #: src/modules/objects/class_sql.cpp:321
 msgid "Connection %Q does not exists"
 msgstr "La connessione %Q non esiste"
@@ -276,7 +274,7 @@ msgstr "Creazione della socket non bloccante fallita"
 msgid "File is not open!"
 msgstr "Il file non è aperto!"
 
-#: src/modules/objects/class_http.cpp:183
+#: src/modules/objects/class_http.cpp:193
 msgid "Host '%Q' is not a valid url"
 msgstr "Host '%Q' non è un url valido"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"POT-Creation-Date: 2010-02-17 18:09+0100\n"
 "PO-Revision-Date: 2008-03-03 08:56+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -16,19 +16,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " bájt"
 
 #: src/modules/options/optw_query.cpp:102
-#: src/modules/options/optw_channel.cpp:135
+#: src/modules/options/optw_channel.cpp:140
 msgid " days"
 msgstr ""
 
 #: src/modules/options/optw_ircview.cpp:155
 #: src/modules/options/optw_query.cpp:98
-#: src/modules/options/optw_channel.cpp:131
+#: src/modules/options/optw_channel.cpp:136
 msgid " lines"
 msgstr " sor"
 
@@ -38,9 +37,8 @@ msgstr " perc"
 
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
-#: src/modules/options/optw_connection.cpp:151
-#: src/modules/options/optw_dcc.cpp:268
-#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_connection.cpp:155
+#: src/modules/options/optw_dcc.cpp:268 src/modules/options/optw_lag.cpp:45
 #: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr "miliszek"
@@ -57,12 +55,13 @@ msgstr "kérés"
 #: src/modules/options/optw_avatar.cpp:96
 #: src/modules/options/optw_ctcpfloodprotection.cpp:92
 #: src/modules/options/optw_connection.cpp:85
-#: src/modules/options/optw_connection.cpp:149
+#: src/modules/options/optw_connection.cpp:153
+#: src/modules/options/optw_channel.cpp:121
 #: src/modules/options/optw_dcc.cpp:140
 msgid " sec"
 msgstr " mp"
 
-#: src/modules/options/optw_connection.cpp:155
+#: src/modules/options/optw_connection.cpp:159
 msgid " usec"
 msgstr "mikroszek"
 
@@ -78,7 +77,7 @@ msgstr "&Alkalmaz"
 msgid "&Browse..."
 msgstr "Tallózás"
 
-#: src/modules/options/optw_servers.cpp:1470
+#: src/modules/options/optw_servers.cpp:1505
 msgid "&Copy Server"
 msgstr "Szerver másolása"
 
@@ -90,18 +89,17 @@ msgstr "Új"
 msgid "&New Proxy"
 msgstr "Új Proxy"
 
-#: src/modules/options/optw_servers.cpp:1467
+#: src/modules/options/optw_servers.cpp:1502
 msgid "&New Server"
 msgstr "Új szerver"
 
 #: src/modules/options/optw_servers.cpp:341
 #: src/modules/options/optw_identity.cpp:233
-#: src/modules/options/dialog.cpp:227
-#: src/modules/options/container.cpp:64
+#: src/modules/options/dialog.cpp:227 src/modules/options/container.cpp:64
 msgid "&OK"
 msgstr "&Ok"
 
-#: src/modules/options/optw_servers.cpp:1472
+#: src/modules/options/optw_servers.cpp:1507
 msgid "&Paste Server"
 msgstr "Szerver beillesztése"
 
@@ -151,7 +149,7 @@ msgstr ""
 "keresztül. Ezek az üzenetek tartalmazhatnak információ kéréseket a "
 "klienstől, vagy fájl kapcsolatok egyeztetésében segíthetnek.<br><br></p>"
 
-#: src/modules/options/optw_servers.cpp:1189
+#: src/modules/options/optw_servers.cpp:1224
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 "<center>Kattints ide, hogy a haladó beállításokat elérd ehhez az elemhez.</"
@@ -235,7 +233,7 @@ msgstr ""
 "létrehozta a kapcsolatot a szerverrel. Csatorna hozzáadásához írd be a "
 "csatorna nevét és kattints a \"<b>Hozzád</b>\" gombra.</center>"
 
-#: src/modules/options/optw_servers.cpp:792
+#: src/modules/options/optw_servers.cpp:816
 msgid ""
 "<center>Here you can set a list of channels to be joined automatically after "
 "a connection to this server has been established. To add a channel, type its "
@@ -245,7 +243,7 @@ msgstr ""
 "létrehozta a kapcsolatot a szerverrel. Csatorna hozzáadásához írd be a "
 "csatorna nevét és kattints a \"<b>Hozzád</b>\" gombra.</center>"
 
-#: src/modules/options/optw_servers.cpp:1195
+#: src/modules/options/optw_servers.cpp:1230
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -323,7 +321,7 @@ msgstr ""
 "jobb alsó sarokban, amikor kiemelt szöveget észlel, és a KVIrc ablaka éppen "
 "nem aktív.</center>"
 
-#: src/modules/options/optw_servers.cpp:1210
+#: src/modules/options/optw_servers.cpp:1245
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -370,7 +368,19 @@ msgstr ""
 "valamilyen oknál fogva a floodellenörző rendszer nem lenne bekapcsolva, és "
 "gyakran vagy kitéve CTCP flood támadásoknak. </center>"
 
-#: src/modules/options/optw_channel.cpp:141
+#: src/modules/options/optw_servers.cpp:790
+msgid ""
+"<center>If you want to enable SASL authentication, insert your nickname here."
+"</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:797
+msgid ""
+"<center>If you want to enable SASL authentication, insert your password here."
+"</center>"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:146
 msgid ""
 "<center>KVIrc sends out a channel /WHO message every now and then to keep "
 "the channel away list in sync. Use this option to disable this feature (and "
@@ -382,7 +392,7 @@ msgstr ""
 "lényeges)</center>"
 
 #: src/modules/options/optw_query.cpp:103
-#: src/modules/options/optw_channel.cpp:136
+#: src/modules/options/optw_channel.cpp:141
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
@@ -390,7 +400,7 @@ msgid ""
 msgstr "<center>Minimum: <b>0 mp</b><br>Maximum: <b>86400 mp</b></center>"
 
 #: src/modules/options/optw_query.cpp:99
-#: src/modules/options/optw_channel.cpp:132
+#: src/modules/options/optw_channel.cpp:137
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
@@ -410,13 +420,20 @@ msgid ""
 "center>"
 msgstr "<center>Minimum: <b>0 mp</b><br>Maximum: <b>86400 mp</b></center>"
 
+#: src/modules/options/optw_channel.cpp:122
+#, fuzzy
+msgid ""
+"<center>Minimum value: <b>0 secs</b><br>Maximum value: <b>60 secs</b></"
+"center>"
+msgstr "<center>Minimum: <b>0 mp</b><br>Maximum: <b>86400 mp</b></center>"
+
 #: src/modules/options/optw_ctcpfloodprotection.cpp:93
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
 msgstr "<center>Minimum: <b>1 mp</b><br>Maximum: <b>3600 mp</b></center>"
 
-#: src/modules/options/optw_connection.cpp:156
+#: src/modules/options/optw_connection.cpp:160
 msgid ""
 "<center>Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</"
 "b></center>"
@@ -452,7 +469,7 @@ msgstr ""
 "legtöbb kliens kezeli ezt, tehát akkor tiltsd le ha problémáid vannak a DCC "
 "kapcsolatokkal.</center>"
 
-#: src/modules/options/optw_servers.cpp:808
+#: src/modules/options/optw_servers.cpp:832
 msgid ""
 "<center>The following commands will be executed after a connection has been "
 "established.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -499,7 +516,7 @@ msgstr ""
 "titkos</tt> helyett!)<br> Ezzel például automatikusan megnyithatsz "
 "privátokat, definiálhatsz változókat.</center>"
 
-#: src/modules/options/optw_servers.cpp:827
+#: src/modules/options/optw_servers.cpp:851
 msgid ""
 "<center>The following commands will be executed after a successful login to "
 "this server.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -539,7 +556,7 @@ msgstr ""
 "a karakterkódolást. Ha a \"Renszerbeállítások szerint\" opció él, a KVIrc a "
 "\"Kódolás\" résznél megadottat használja.</center>"
 
-#: src/modules/options/optw_servers.cpp:682
+#: src/modules/options/optw_servers.cpp:687
 #, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
@@ -552,7 +569,7 @@ msgstr ""
 "kódolást a hálózati beállításoknál megadottra állítja, amihez a szerver "
 "tartozik.</center>"
 
-#: src/modules/options/optw_servers.cpp:670
+#: src/modules/options/optw_servers.cpp:675
 #, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
@@ -566,7 +583,7 @@ msgstr ""
 "kódolást a hálózati beállításoknál megadottra állítja, amihez a szerver "
 "tartozik.</center>"
 
-#: src/modules/options/optw_servers.cpp:1206
+#: src/modules/options/optw_servers.cpp:1241
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -574,7 +591,22 @@ msgstr ""
 "<center>Ez egy lista a mostanában használt szerverekről. Így könnyedén "
 "megtalálhatod ezeket a listában.</center>"
 
-#: src/modules/options/optw_servers.cpp:634
+#: src/modules/options/optw_servers.cpp:782
+msgid ""
+"<center>This check enables the use of the <b>SASL</b> authentication "
+"procotolIf you enable the proper global option in the Connection/SSL tab and "
+"fill the Sasl Nickname and Sasl Password fields in this page, the SASL "
+"protocol will be used for this server if available.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:654
+msgid ""
+"<center>This check enables the use of the <b>Transport Layer Security</b> "
+"protocol. If you enable the proper global option in the Connection/SSL tab, "
+"the TLS protocol will be used for this server if available.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:632
 msgid ""
 "<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will "
 "attempt to use the IPv6 protocol (thus your OS <b>must</b> have a working "
@@ -584,15 +616,17 @@ msgstr ""
 "van, a KVIrc IPv6 protokollal próbál kapcsolódni. (ehhez a rendszerednek ezt "
 "támogatnia<b>kell</b>, illetve létező IPv6 kapcsolatnak <b>kell</b> lennie.)"
 
-#: src/modules/options/optw_servers.cpp:649
+#: src/modules/options/optw_servers.cpp:648
+#, fuzzy
 msgid ""
-"<center>This check marks the server as dynamically supporting the "
-"<b>Transport Layer Security</b> protocol. If you enable the proper global "
-"option in the Connection/SSL tab, the TLS protocol will be used for this "
-"server.</center>"
+"<center>This check will cause the connection to use the <b>Extended "
+"Capability</b> support. Obviously, this server must have support for this, "
+"too. Disable this for irc bouncers.</center>"
 msgstr ""
+"<center>Ezzel a kapcsolat <b>Secure Socket Layer</b> titkosítással fog "
+"létrejönni. Nyilván a szervernek is támogatnia kell ezt. :)</center>"
 
-#: src/modules/options/optw_servers.cpp:640
+#: src/modules/options/optw_servers.cpp:638
 msgid ""
 "<center>This check will cause the connection to use the <b>Secure Socket "
 "Layer</b> encryption support. Obviously, this server must have support for "
@@ -601,7 +635,7 @@ msgstr ""
 "<center>Ezzel a kapcsolat <b>Secure Socket Layer</b> titkosítással fog "
 "létrejönni. Nyilván a szervernek is támogatnia kell ezt. :)</center>"
 
-#: src/modules/options/optw_servers.cpp:616
+#: src/modules/options/optw_servers.cpp:614
 msgid ""
 "<center>This check will enable <b>IP address caching</b> for this server:"
 "<br>DNS lookups can be time-consuming and might be blocking on some "
@@ -626,7 +660,7 @@ msgstr ""
 "<center>Ezzel engedélyezheted a lagmérő motort, ami ellenőrzi az általános "
 "időeltolódást, ami a szerver és közötted van.</center>"
 
-#: src/modules/options/optw_servers.cpp:752
+#: src/modules/options/optw_servers.cpp:757
 msgid ""
 "<center>This field allows you to specify a really unique id for this server. "
 "You will then be able to use /server -x &lt;this_id&gt; to make the "
@@ -655,7 +689,7 @@ msgstr ""
 "<center>Ez a mező tartalmazza a parancsot, amivel megnyitod a beérkezett "
 "fájlt.<br><tt>$0</tt> a fájlnév helyét jelöli</center>"
 
-#: src/modules/options/optw_servers.cpp:742
+#: src/modules/options/optw_servers.cpp:747
 msgid ""
 "<center>This field specifies the name of a module that exports a link filter "
 "for this type of server.<br>For plain IRC connections, you don't need any "
@@ -722,7 +756,7 @@ msgid ""
 "without changing them at every connection attempt."
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:594
+#: src/modules/options/optw_servers.cpp:592
 msgid ""
 "<center>This is the <b>IP address</b> of this server, it is here for caching "
 "purposes.<br>If you leave this field empty, KVIrc will fill it in the first "
@@ -735,7 +769,7 @@ msgstr ""
 "az \"IP cím tárolása\" opciót, a KVIrc úgy fogja értelmezni mint \"korábban "
 "tárolt eredmény\" és nem ellenőrzi le.</center>"
 
-#: src/modules/options/optw_servers.cpp:760
+#: src/modules/options/optw_servers.cpp:765
 #, fuzzy
 msgid ""
 "<center>This is the <b>proxy</b> that KVIrc will use to connect to this "
@@ -871,7 +905,7 @@ msgstr ""
 "<center>Ez az a cím, amit a KVIrc elküld minden DCC kérésnél, ha a fenti "
 "opciót engedélyezed.</center>"
 
-#: src/modules/options/optw_servers.cpp:1105
+#: src/modules/options/optw_servers.cpp:1140
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
@@ -917,7 +951,7 @@ msgstr ""
 "<br>Ésszerű ennek az értéknek körülbelül 102400 bájtnak lennie (100 K).</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:1169
+#: src/modules/options/optw_servers.cpp:1204
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Ez a kiválasztott szerver vagy hálózat neve.</center>"
@@ -988,8 +1022,7 @@ msgstr ""
 "adatátvitel-megkezdődhessen néhány hibás kliensnél.<br>Csak akkor használd, "
 "ha a DCC kapcsolat csak áll, miután létrejött, de adatot nem küld.</center>"
 
-#: src/modules/options/optw_query.cpp:82
-#: src/modules/options/optw_dcc.cpp:324
+#: src/modules/options/optw_query.cpp:82 src/modules/options/optw_dcc.cpp:324
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1186,7 +1219,7 @@ msgstr ""
 "amikor egy meghívás (INVITE) érkezik. <br><b>Figyelmeztetés:</b> Ezzel az "
 "opcióval könnyen a spammelők áldozata lehetsz.</center>"
 
-#: src/modules/options/optw_servers.cpp:661
+#: src/modules/options/optw_servers.cpp:666
 msgid ""
 "<center>This option will cause KVIrc to connect to the IRC server when it is "
 "started.</center>"
@@ -1292,7 +1325,7 @@ msgstr ""
 "hálózatokhoz vannak kapcsolva, és ugyanazon hálózatra nem kapcsolódsz több "
 "szerverrel.</center>"
 
-#: src/modules/options/optw_connection.cpp:126
+#: src/modules/options/optw_connection.cpp:130
 #, fuzzy
 msgid ""
 "<center>This option will cause KVIrc to try to reconnect to the server using "
@@ -1309,7 +1342,7 @@ msgstr ""
 "<center> Ezzel az opcióval minden megszakított átvitel automatikusan el lesz "
 "távolítva az átvitel ablakból.</center>"
 
-#: src/modules/options/optw_connection.cpp:171
+#: src/modules/options/optw_connection.cpp:175
 msgid ""
 "<center>This option will cause the KVIrc networking stack to pick up a "
 "random entry when multiple IP address are retrieved for a server dns lookup. "
@@ -1422,6 +1455,12 @@ msgstr ""
 "<center>Használd a felhasználó legutolsó ismert avatarját "
 "alapértelmezettként (csak ha a felhasználó regisztrált)</center>"
 
+#: src/modules/options/optw_connection.cpp:90
+msgid ""
+"<center>When available and enabled of the specific server, KVIrc will try to "
+"authenticate the user using the SASL procotol</center>"
+msgstr ""
+
 #: src/modules/options/optw_dcc.cpp:121
 msgid ""
 "<center>When you're behind a dialup router and also tunneling through a "
@@ -1523,7 +1562,7 @@ msgstr ""
 "<p><b>Figyelem:</b><br>Az értesítési lista a  \"Regisztrált Felhasználók\" "
 "beállításai szerint működik.</p>"
 
-#: src/modules/options/optw_connection.cpp:248
+#: src/modules/options/optw_connection.cpp:252
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
@@ -1534,7 +1573,7 @@ msgstr ""
 "Protokollok terén. Amennyiben lehetséges, telepíts egy valós azonosító "
 "démont.</p>"
 
-#: src/modules/options/optw_connection.cpp:253
+#: src/modules/options/optw_connection.cpp:257
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
@@ -1576,7 +1615,7 @@ msgstr "Megszakít"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr "Hibás Folytatás kérés elfogadása (mIRC file.kit)"
 
-#: src/modules/options/optw_servers.cpp:1165
+#: src/modules/options/optw_servers.cpp:1200
 msgid "Active Configuration"
 msgstr "Aktív Konfiguráció"
 
@@ -1588,7 +1627,7 @@ msgstr "Aktív Magas Kontrasztú Előtér (Elsődleges)"
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr "Aktív Magas Kontrasztú Előtér (Másodlagos)"
 
-#: src/modules/options/optw_connection.cpp:200
+#: src/modules/options/optw_connection.cpp:204
 msgid "Active window"
 msgstr "Aktív ablakban"
 
@@ -1611,7 +1650,7 @@ msgstr "Szabály Hozzáadása"
 msgid "Advanced configuration"
 msgstr "Haladó Beállítások"
 
-#: src/modules/options/optw_servers.cpp:1187
+#: src/modules/options/optw_servers.cpp:1222
 msgid "Advanced..."
 msgstr "Haladó..."
 
@@ -1718,8 +1757,7 @@ msgstr "Hozzáfűzés a VERZIÓ válaszhoz: "
 msgid "Auto flush logs every"
 msgstr "Naplófájlok mentése minden"
 
-#: src/modules/options/optw_sound.cpp:68
-#: src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Auto-Felismerés"
 
@@ -1731,8 +1769,7 @@ msgstr "Automatikus felismerés"
 msgid "Automatically Log"
 msgstr "Automatikus Naplózás"
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:342
 msgid "Automatically accept"
 msgstr "Automatikus fogadás"
@@ -1830,11 +1867,11 @@ msgstr "Háttér: "
 msgid "Basic Properties"
 msgstr "Alapvető Tulajdonságok"
 
-#: src/modules/options/optw_connection.cpp:161
+#: src/modules/options/optw_connection.cpp:165
 msgid "Bind IPv4 connections to:"
 msgstr "IPv4 kapcsolat hozzárendelése: "
 
-#: src/modules/options/optw_connection.cpp:165
+#: src/modules/options/optw_connection.cpp:169
 msgid "Bind IPv6 connections to:"
 msgstr "IPv6 kapcsolat hozzárendelése: "
 
@@ -1866,18 +1903,17 @@ msgstr "CLIENTINFO"
 msgid "CTCP Replies"
 msgstr "CTCP Válaszok"
 
-#: src/modules/options/optw_servers.cpp:613
+#: src/modules/options/optw_servers.cpp:611
 msgid "Cache IP address"
 msgstr "Ip cím tárolása"
 
 #: src/modules/options/optw_nickserv.cpp:128
 #: src/modules/options/optw_servers.cpp:347
-#: src/modules/options/optw_servers.cpp:839
+#: src/modules/options/optw_servers.cpp:863
 #: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:238
 #: src/modules/options/optw_identity.cpp:906
-#: src/modules/options/dialog.cpp:242
-#: src/modules/options/container.cpp:72
+#: src/modules/options/dialog.cpp:242 src/modules/options/container.cpp:72
 msgid "Cancel"
 msgstr "Mégsem"
 
@@ -1889,20 +1925,19 @@ msgstr "Mégsem"
 #: src/modules/options/optw_userlist.cpp:149
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 msgid "Center"
 msgstr "Közép"
 
-#: src/modules/options/optw_connection.cpp:104
+#: src/modules/options/optw_connection.cpp:108
 msgid "Certificate"
 msgstr "Hitelesítés"
 
-#: src/modules/options/optw_connection.cpp:108
+#: src/modules/options/optw_connection.cpp:112
 msgid "Certificate location:"
 msgstr "Hitelesítés helye: "
 
-#: src/modules/options/optw_connection.cpp:111
+#: src/modules/options/optw_connection.cpp:115
 msgid "Certificate password:"
 msgstr "Hitelesítés jelszava: "
 
@@ -1927,7 +1962,7 @@ msgid "Channel windows"
 msgstr "Csatorna ablakok"
 
 #: src/modules/options/optw_servers.cpp:227
-#: src/modules/options/optw_servers.cpp:791
+#: src/modules/options/optw_servers.cpp:815
 msgid "Channels to join automatically upon connect:"
 msgstr "Csatornák, amire automatikusan fellép kapcsolódáskor:"
 
@@ -1968,7 +2003,7 @@ msgstr "Kiválaszás..."
 msgid "Classic format"
 msgstr "Klasszikus lista"
 
-#: src/modules/options/optw_servers.cpp:1477
+#: src/modules/options/optw_servers.cpp:1512
 msgid "Clear List"
 msgstr "Lista Törlése"
 
@@ -1976,13 +2011,11 @@ msgstr "Lista Törlése"
 msgid "Close in tray"
 msgstr "Bezárásnál a KVIrcet tegye a tálcára"
 
-#: src/modules/options/dialog.cpp:229
-#: src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Párbeszédablak bezárása, összes változás érvényesítése."
 
-#: src/modules/options/dialog.cpp:244
-#: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Párbeszédablak bezárása, összes változás elvetése."
 
@@ -1996,7 +2029,7 @@ msgstr "Minden változás alkalmazása azonnal."
 
 #: src/modules/options/optw_notify.cpp:41
 #: src/modules/options/optw_proxy.cpp:106
-#: src/modules/options/optw_connection.cpp:217
+#: src/modules/options/optw_connection.cpp:221
 #: src/modules/options/optw_lag.cpp:43
 msgid "Configuration"
 msgstr "Beállítások"
@@ -2005,11 +2038,11 @@ msgstr "Beállítások"
 msgid "Confirm quit with active connections"
 msgstr "Kilépés megerősítése aktív kapcsolatnál"
 
-#: src/modules/options/optw_servers.cpp:1191
+#: src/modules/options/optw_servers.cpp:1226
 msgid "Connect &Now"
 msgstr "Kapcsolódás"
 
-#: src/modules/options/optw_connection.cpp:148
+#: src/modules/options/optw_connection.cpp:152
 msgid "Connect timeout:"
 msgstr "Kapcsolat időtúllépése"
 
@@ -2017,15 +2050,15 @@ msgstr "Kapcsolat időtúllépése"
 msgid "Connect to this network at startup"
 msgstr "Kapcsolódás erre a hálózatra indításkor"
 
-#: src/modules/options/optw_servers.cpp:656
+#: src/modules/options/optw_servers.cpp:661
 msgid "Connect to this server at startup"
 msgstr "Kapcsolódás indításkor"
 
-#: src/modules/options/optw_servers.cpp:781
+#: src/modules/options/optw_servers.cpp:805
 msgid "Connection"
 msgstr "Kapcsolat"
 
-#: src/modules/options/optw_connection.cpp:201
+#: src/modules/options/optw_connection.cpp:205
 msgid "Console"
 msgstr "Konzol"
 
@@ -2037,7 +2070,7 @@ msgstr "Konzol ablakok"
 msgid "Control char color"
 msgstr "Vezérlő karakter szín"
 
-#: src/modules/options/optw_servers.cpp:1142
+#: src/modules/options/optw_servers.cpp:1177
 msgid "Copy Server"
 msgstr "Szerver Másolása"
 
@@ -2086,7 +2119,7 @@ msgstr ""
 msgid "Datetime format"
 msgstr "Időbélyeg formátum:"
 
-#: src/modules/options/optw_servers.cpp:764
+#: src/modules/options/optw_servers.cpp:769
 msgid "Default"
 msgstr "Alapértelmezett"
 
@@ -2133,7 +2166,7 @@ msgstr "Szabály törlése"
 msgid "Delete Rule"
 msgstr "Szabály törlése"
 
-#: src/modules/options/optw_servers.cpp:1086
+#: src/modules/options/optw_servers.cpp:1121
 #: src/modules/options/optw_mediatypes.cpp:79
 msgid "Description"
 msgstr "Meghatározás "
@@ -2144,7 +2177,7 @@ msgstr "Meghatározás "
 msgid "Description:"
 msgstr "Meghatározás: "
 
-#: src/modules/options/optw_servers.cpp:765
+#: src/modules/options/optw_servers.cpp:770
 msgid "Direct connection"
 msgstr "Közvetlen kapcsolat"
 
@@ -2160,27 +2193,32 @@ msgstr "Értelmező figyelmeztetéseinek tiltása"
 msgid "Disable splash screen"
 msgstr "Indítóképernyő tiltása"
 
-#: src/modules/options/optw_channel.cpp:122
+#: src/modules/options/optw_channel.cpp:126
 msgid "Do not request ban exception list"
 msgstr "Ne kérje le a tiltó-kivétel listát"
 
-#: src/modules/options/optw_channel.cpp:121
+#: src/modules/options/optw_channel.cpp:125
 msgid "Do not request ban list"
 msgstr "Ne küldje a tiltólistát"
 
-#: src/modules/options/optw_channel.cpp:123
+#: src/modules/options/optw_channel.cpp:127
 msgid "Do not request invite list"
 msgstr "Ne kérje a meghívó listát"
+
+#: src/modules/options/optw_channel.cpp:128
+#, fuzzy
+msgid "Do not request quiet ban list"
+msgstr "Ne küldje a tiltólistát"
 
 #: src/modules/options/optw_avatar.cpp:48
 msgid "Do not scale avatar if it is less than required size"
 msgstr "Ne méretezd az avatart, ha az kissebb mint a szükséges méret"
 
-#: src/modules/options/optw_channel.cpp:120
+#: src/modules/options/optw_channel.cpp:124
 msgid "Do not send /WHO request"
 msgstr "Ne küldjön /WHO kérést"
 
-#: src/modules/options/optw_connection.cpp:202
+#: src/modules/options/optw_connection.cpp:206
 msgid "Do not show any identd messages"
 msgstr "Ne mutass identd üzeneteket"
 
@@ -2217,7 +2255,7 @@ msgstr "Név Rács rajzolása"
 msgid "Draw some emoticons (smileys) as pictures"
 msgstr "Hangulatjelek (smiley) rajzolása, mint képek"
 
-#: src/modules/options/optw_channel.cpp:124
+#: src/modules/options/optw_channel.cpp:129
 msgid "Echo channel topic"
 msgstr "Csatorna topic kiírása"
 
@@ -2249,6 +2287,16 @@ msgstr "Hálózati Tulajdonságok"
 msgid "Enable NickServ Identification"
 msgstr "NickServ Azonosítás engedélyezése"
 
+#: src/modules/options/optw_servers.cpp:780
+#, fuzzy
+msgid "Enable SASL authentication"
+msgstr "NickServ Azonosítás engedélyezése"
+
+#: src/modules/options/optw_servers.cpp:652
+#, fuzzy
+msgid "Enable STARTTLS protocol"
+msgstr "SSL protokol használata"
+
 #: src/modules/options/optw_ircview.cpp:152
 msgid "Enable URL highlighting"
 msgstr "URL (webcím) kiemelés"
@@ -2272,11 +2320,11 @@ msgstr "Alapértelmezett Távol üzenet"
 msgid "Enable fake transparency"
 msgstr "Hamis átlátszóság engedélyezése"
 
-#: src/modules/options/optw_connection.cpp:192
+#: src/modules/options/optw_connection.cpp:196
 msgid "Enable ident service (bad practice on UNIX!)"
 msgstr "Azonosító szolgáltatás engedélyezése (UNIX-on nem túl jó ötlet)"
 
-#: src/modules/options/optw_connection.cpp:219
+#: src/modules/options/optw_connection.cpp:223
 msgid "Enable ident service only while connecting to server"
 msgstr "Azonosító szolgáltatás csak szerverhez kapcsolódás közben"
 
@@ -2298,7 +2346,7 @@ msgstr "Értesítő ablak halványulásának tiltása"
 msgid "Enable notifier window flashing"
 msgstr "Értesítő ablak villogásának kikapcsolása"
 
-#: src/modules/options/optw_connection.cpp:232
+#: src/modules/options/optw_connection.cpp:236
 msgid "Enable service for IPv6"
 msgstr "Szolgáltatások engedélyezése IPv6-ra"
 
@@ -2560,16 +2608,16 @@ msgstr ""
 msgid "ID3 tags' encoding"
 msgstr "ID3 tagok kódolása"
 
-#: src/modules/options/optw_servers.cpp:590
+#: src/modules/options/optw_servers.cpp:588
 #: src/modules/options/optw_proxy.cpp:115
 msgid "IP address:"
 msgstr "IP cím: "
 
-#: src/modules/options/optw_connection.cpp:241
+#: src/modules/options/optw_connection.cpp:245
 msgid "IP stack treats IPv4 as part of IPv6 namespace"
 msgstr "IP"
 
-#: src/modules/options/optw_connection.cpp:231
+#: src/modules/options/optw_connection.cpp:235
 msgid "IPv6 Settings"
 msgstr "IPv6 Beállítások"
 
@@ -2590,11 +2638,11 @@ msgstr "ISON késleltetés (mpben)"
 msgid "Icon"
 msgstr "Ikon"
 
-#: src/modules/options/optw_servers.cpp:745
+#: src/modules/options/optw_servers.cpp:750
 msgid "Id:"
 msgstr "Azonosító:"
 
-#: src/modules/options/optw_connection.cpp:222
+#: src/modules/options/optw_connection.cpp:226
 msgid "Ident username:"
 msgstr "Azonosító felhasználónév: "
 
@@ -2632,8 +2680,8 @@ msgstr "Kép magassága:"
 msgid "Image width:"
 msgstr "Kép szélessége:"
 
-#: src/modules/options/optw_servers.cpp:1160
-#: src/modules/options/optw_servers.cpp:1479
+#: src/modules/options/optw_servers.cpp:1195
+#: src/modules/options/optw_servers.cpp:1514
 msgid "Import List"
 msgstr "Lista Importálása"
 
@@ -2646,7 +2694,7 @@ msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Inaktív Magas Kontrasztú Előtér (Elsődleges)"
 
 #: src/modules/options/optw_query.cpp:101
-#: src/modules/options/optw_channel.cpp:134
+#: src/modules/options/optw_channel.cpp:139
 #, fuzzy
 msgid "Interval:"
 msgstr "Eszközök"
@@ -2670,7 +2718,7 @@ msgid "Invite messages"
 msgstr "Meghívó üzeneteket"
 
 #: src/modules/options/optw_servers.cpp:235
-#: src/modules/options/optw_servers.cpp:797
+#: src/modules/options/optw_servers.cpp:821
 #: src/modules/options/optw_interfacefeatures.cpp:63
 msgid "Join Channels"
 msgstr "Csatlakozás csatornákhoz"
@@ -2679,7 +2727,7 @@ msgstr "Csatlakozás csatornákhoz"
 msgid "KVIrc Preferences"
 msgstr "KVIrc Beállítások"
 
-#: src/modules/options/optw_channel.cpp:139
+#: src/modules/options/optw_channel.cpp:144
 msgid "Keep away list updated by sending WHO requests"
 msgstr ""
 
@@ -2722,11 +2770,11 @@ msgstr "Bal"
 msgid "Limit download bandwidth to"
 msgstr "Letöltési sebesség korlátozása"
 
-#: src/modules/options/optw_connection.cpp:152
+#: src/modules/options/optw_connection.cpp:156
 msgid "Limit outgoing traffic"
 msgstr "Kimenő forgalom korlátozása"
 
-#: src/modules/options/optw_connection.cpp:153
+#: src/modules/options/optw_connection.cpp:157
 msgid "Limit to 1 message every:"
 msgstr "1 üzenet minden: "
 
@@ -2738,7 +2786,7 @@ msgstr "Feltöltési sebesség korlátozása"
 msgid "Limits"
 msgstr "Korlát"
 
-#: src/modules/options/optw_servers.cpp:709
+#: src/modules/options/optw_servers.cpp:714
 msgid "Link filter:"
 msgstr "Kapcsolat szűrő:"
 
@@ -2881,6 +2929,11 @@ msgstr "Minimalizált: "
 msgid "Minimum alert level:"
 msgstr "Minimális figyelmeztetési szint: "
 
+#: src/modules/options/optw_channel.cpp:120
+#, fuzzy
+msgid "Minimum delay between two requests:"
+msgstr "Késleltetés a próbálkozások között: "
+
 #: src/modules/options/optw_tray.cpp:53
 msgid "Minimum level for high-priority message"
 msgstr "Minimális szint a magas prioritású üzeneteknek"
@@ -2947,7 +3000,7 @@ msgstr "Hálózat: "
 msgid "Network Details"
 msgstr "Hálózat Tulajdonságai"
 
-#: src/modules/options/optw_connection.cpp:159
+#: src/modules/options/optw_connection.cpp:163
 msgid "Network Interfaces"
 msgstr "Hálózati Eszközök"
 
@@ -2960,7 +3013,7 @@ msgstr "Hálózat: "
 msgid "Network Properties"
 msgstr "Hálózati Tulajdonságok"
 
-#: src/modules/options/optw_servers.cpp:1370
+#: src/modules/options/optw_servers.cpp:1405
 msgid "Network:"
 msgstr "Hálózat: "
 
@@ -2968,9 +3021,9 @@ msgstr "Hálózat: "
 msgid "New Media Type"
 msgstr "Új Médiatípus"
 
-#: src/modules/options/optw_servers.cpp:1119
-#: src/modules/options/optw_servers.cpp:1463
-#: src/modules/options/optw_servers.cpp:1589
+#: src/modules/options/optw_servers.cpp:1154
+#: src/modules/options/optw_servers.cpp:1498
+#: src/modules/options/optw_servers.cpp:1624
 msgid "New Network"
 msgstr "Új Hálózat"
 
@@ -2982,7 +3035,7 @@ msgstr "Új Proxy"
 msgid "New Query opened"
 msgstr "Új Privát nyílt"
 
-#: src/modules/options/optw_servers.cpp:1125
+#: src/modules/options/optw_servers.cpp:1160
 msgid "New Server"
 msgstr "Új Szerver"
 
@@ -3042,7 +3095,7 @@ msgstr "Név: "
 msgid "Nicknames"
 msgstr "Nicknevek"
 
-#: src/modules/options/optw_servers.cpp:1380
+#: src/modules/options/optw_servers.cpp:1415
 msgid "No selection"
 msgstr "Nincs kijelölt"
 
@@ -3084,7 +3137,7 @@ msgstr "Távoli kliens értesítésítése DCC kézfogás sikertelenségéről"
 
 #: src/modules/options/optw_nickserv.cpp:133
 #: src/modules/options/optw_nickserv.cpp:154
-#: src/modules/options/optw_servers.cpp:833
+#: src/modules/options/optw_servers.cpp:857
 #: src/modules/options/optw_identity.cpp:910
 #: src/modules/options/optw_identity.cpp:974
 msgid "OK"
@@ -3112,7 +3165,7 @@ msgid "On Chat Request"
 msgstr "Beszélgetés kérésekor"
 
 #: src/modules/options/optw_servers.cpp:250
-#: src/modules/options/optw_servers.cpp:813
+#: src/modules/options/optw_servers.cpp:837
 msgid "On Connect"
 msgstr "Kapcsolódás után"
 
@@ -3129,7 +3182,7 @@ msgid "On Incoming File"
 msgstr "Bejövő fájlnál"
 
 #: src/modules/options/optw_servers.cpp:268
-#: src/modules/options/optw_servers.cpp:831
+#: src/modules/options/optw_servers.cpp:855
 msgid "On Login"
 msgstr "Belépéskor"
 
@@ -3141,7 +3194,7 @@ msgstr "Váratlan Kapcsolatbontáskor"
 msgid "On Voice Request"
 msgstr "Hangos beszélgetéskor"
 
-#: src/modules/options/optw_servers.cpp:1516
+#: src/modules/options/optw_servers.cpp:1551
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3149,7 +3202,7 @@ msgstr ""
 "Hűha, valami furcsa történt: <br>Nem találok kezelőmodult, ami importálni "
 "tudna szervereket."
 
-#: src/modules/options/optw_servers.cpp:1533
+#: src/modules/options/optw_servers.cpp:1568
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3173,8 +3226,7 @@ msgstr "Privát nyitása"
 msgid "Open all minimized"
 msgstr "Minden kicsinyített megnyitása"
 
-#: src/modules/options/optw_dcc.cpp:307
-#: src/modules/options/optw_dcc.cpp:344
+#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:344
 msgid "Open minimized when auto-accepted"
 msgstr "Megnyitás a háttérben automatikus fogadásnál"
 
@@ -3186,16 +3238,16 @@ msgstr "Átviteli ablak minimalizálása automatikus elfogadásnál"
 msgid "Other:"
 msgstr "Egyéb:"
 
-#: src/modules/options/optw_connection.cpp:150
+#: src/modules/options/optw_connection.cpp:154
 msgid "Outgoing data queue flush timeout:"
 msgstr "Kimenő adatírási időtúllépés:"
 
-#: src/modules/options/optw_connection.cpp:198
+#: src/modules/options/optw_connection.cpp:202
 msgid "Output identd messages to:"
 msgstr "Identd üzenetek küldése:"
 
 #: src/modules/options/optw_ircoutput.cpp:43
-#: src/modules/options/optw_connection.cpp:195
+#: src/modules/options/optw_connection.cpp:199
 msgid "Output verbosity"
 msgstr "\"Beszédesség\" a felhasználó felé"
 
@@ -3233,11 +3285,11 @@ msgstr "Lelépő üzenet (csat):"
 msgid "Password:"
 msgstr "Jelszó: "
 
-#: src/modules/options/optw_servers.cpp:1149
+#: src/modules/options/optw_servers.cpp:1184
 msgid "Paste Server"
 msgstr "Szerver Beillesztése"
 
-#: src/modules/options/optw_channel.cpp:127
+#: src/modules/options/optw_channel.cpp:132
 #, fuzzy
 msgid "Paste last channel log"
 msgstr "felhasználólista,csatorna"
@@ -3248,7 +3300,7 @@ msgid "Paste last query log"
 msgstr "felhasználólista,csatorna"
 
 #: src/modules/options/optw_query.cpp:97
-#: src/modules/options/optw_channel.cpp:130
+#: src/modules/options/optw_channel.cpp:135
 msgid "Paste up to:"
 msgstr ""
 
@@ -3256,7 +3308,7 @@ msgstr ""
 msgid "Pattern"
 msgstr "Minta"
 
-#: src/modules/options/optw_connection.cpp:170
+#: src/modules/options/optw_connection.cpp:174
 msgid "Pick Random IP Address for Round-Robin Servers"
 msgstr ""
 
@@ -3330,15 +3382,15 @@ msgstr "Nem beszúrása a valós név elé"
 msgid "Prepend gender info to realname"
 msgstr "Nem beszúrása a valós név elé"
 
-#: src/modules/options/optw_connection.cpp:115
+#: src/modules/options/optw_connection.cpp:119
 msgid "Private Key"
 msgstr "Privát Kulcs"
 
-#: src/modules/options/optw_connection.cpp:118
+#: src/modules/options/optw_connection.cpp:122
 msgid "Private key location:"
 msgstr "Privát kulcs helye: "
 
-#: src/modules/options/optw_connection.cpp:121
+#: src/modules/options/optw_connection.cpp:125
 msgid "Private key password:"
 msgstr "Privát kulcs jelszava: "
 
@@ -3402,7 +3454,7 @@ msgstr "Protokoll:"
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/modules/options/optw_servers.cpp:756
+#: src/modules/options/optw_servers.cpp:761
 msgid "Proxy server:"
 msgstr "Proxy szerver:"
 
@@ -3459,7 +3511,7 @@ msgstr "Eltávolítás"
 msgid "Re&move Proxy"
 msgstr "Proxy Eltávolítása"
 
-#: src/modules/options/optw_servers.cpp:1468
+#: src/modules/options/optw_servers.cpp:1503
 msgid "Re&move Server"
 msgstr "Szerver eltávolítása"
 
@@ -3511,11 +3563,11 @@ msgstr "Emlékezzen az ablakbeállításokra"
 msgid "Remote open command:"
 msgstr "Távoli megnyitás parancsa: "
 
-#: src/modules/options/optw_servers.cpp:1464
+#: src/modules/options/optw_servers.cpp:1499
 msgid "Remove Network"
 msgstr "Hálózat Eltávolítása"
 
-#: src/modules/options/optw_servers.cpp:1132
+#: src/modules/options/optw_servers.cpp:1167
 msgid "Remove Network/Server"
 msgstr "Hálózat/Szerver eltávolítása"
 
@@ -3554,6 +3606,16 @@ msgstr "Jobb"
 #: src/modules/options/optw_ctcpfloodprotection.cpp:102
 msgid "SOURCE"
 msgstr "SOURCE"
+
+#: src/modules/options/optw_servers.cpp:786
+#, fuzzy
+msgid "Sasl Nickname:"
+msgstr "Név: "
+
+#: src/modules/options/optw_servers.cpp:793
+#, fuzzy
+msgid "Sasl Password:"
+msgstr "Jelszó: "
 
 #: src/modules/options/optw_messages.cpp:414
 msgid "Save As..."
@@ -3622,7 +3684,7 @@ msgstr "Adott cím küldése:"
 msgid "Send unknown commands as /RAW"
 msgstr "Ismeretlen parancs küldése /RAW -ként"
 
-#: src/modules/options/optw_servers.cpp:1085
+#: src/modules/options/optw_servers.cpp:1120
 msgid "Server"
 msgstr "Szerver"
 
@@ -3631,7 +3693,7 @@ msgid "Server Details"
 msgstr "Szerver Tulajdonságai"
 
 #: src/modules/options/optw_servers.cpp:159
-#: src/modules/options/optw_servers.cpp:665
+#: src/modules/options/optw_servers.cpp:670
 #, fuzzy
 msgid "Server Encoding:"
 msgstr "Kódolás:"
@@ -3654,8 +3716,8 @@ msgstr "Szerver értesítők (+s)"
 msgid "Server replies"
 msgstr "Szerver válaszokat"
 
-#: src/modules/options/optw_servers.cpp:1166
-#: src/modules/options/optw_servers.cpp:1367
+#: src/modules/options/optw_servers.cpp:1201
+#: src/modules/options/optw_servers.cpp:1402
 msgid "Server:"
 msgstr "Szerver: "
 
@@ -3663,7 +3725,7 @@ msgstr "Szerver: "
 msgid "Servers"
 msgstr "Szerverek"
 
-#: src/modules/options/optw_connection.cpp:226
+#: src/modules/options/optw_connection.cpp:230
 msgid "Service port:"
 msgstr "Szervíz portja: "
 
@@ -3690,7 +3752,7 @@ msgstr "Átméretezés felhasználólistában"
 msgid "Show channel mode prefix"
 msgstr "Jog mutatása névben"
 
-#: src/modules/options/optw_channel.cpp:125
+#: src/modules/options/optw_channel.cpp:130
 msgid "Show channel sync time"
 msgstr "Csatorna Szinkronizálási ideje"
 
@@ -3764,7 +3826,7 @@ msgstr "Szerver pingelésének megjelenítése"
 msgid "Show the CTCP replies in the active window"
 msgstr "Mutasd a CTCP válaszokat az aktív ablakban"
 
-#: src/modules/options/optw_servers.cpp:1208
+#: src/modules/options/optw_servers.cpp:1243
 msgid "Show this dialog at startup"
 msgstr "Párbeszédablak megjelenítése indításkor"
 
@@ -3825,11 +3887,6 @@ msgstr "Színeket ne logoljon"
 msgid "Strip message type numbers in logs"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:647
-#, fuzzy
-msgid "Supports STARTTLS protocol"
-msgstr "SSL protokol használata"
-
 #: src/modules/options/optw_ircoutput.cpp:64
 msgid "System locale format"
 msgstr ""
@@ -3838,13 +3895,12 @@ msgstr ""
 msgid "TIME"
 msgstr "IDŐ"
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Teszt"
 
 #: src/modules/options/optw_servers.cpp:171
-#: src/modules/options/optw_servers.cpp:677
+#: src/modules/options/optw_servers.cpp:682
 #, fuzzy
 msgid "Text Encoding:"
 msgstr "Kódolás:"
@@ -3939,7 +3995,7 @@ msgstr ""
 "lévő szövegdoboz egy gyorskereső, amivel könnyebben rátalálhatsz egy "
 "funkcióra, ha beírod a nevét."
 
-#: src/modules/options/optw_connection.cpp:131
+#: src/modules/options/optw_connection.cpp:135
 msgid "This executable has no SSL support."
 msgstr "Ez a verzió nem rendelkezik SSL támogatással"
 
@@ -4067,12 +4123,11 @@ msgstr ""
 #: src/modules/options/optw_userlist.cpp:146
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 msgid "Tile"
 msgstr "Rendezés"
 
-#: src/modules/options/optw_connection.cpp:147
+#: src/modules/options/optw_connection.cpp:151
 msgid "Timeout Values"
 msgstr "Időtúllépés értékek "
 
@@ -4135,7 +4190,7 @@ msgstr "Nyelv információinak írása írása sikertelen: "
 msgid "Unknown protocol handler command:"
 msgstr "Ismeretlen protokollt kezelő parancs:"
 
-#: src/modules/options/optw_servers.cpp:1397
+#: src/modules/options/optw_servers.cpp:1432
 msgid "UnknownNet"
 msgstr "IsmertelenHálózat"
 
@@ -4152,7 +4207,12 @@ msgstr "\"hibás BNC hack\" használata a cím felderítésére"
 msgid "Use \"smart\" notify list manager"
 msgstr "\"Okos\" értesítési lista kezelő"
 
-#: src/modules/options/optw_servers.cpp:624
+#: src/modules/options/optw_servers.cpp:645
+#, fuzzy
+msgid "Use CAP protocol"
+msgstr "IPv6 Protokoll használata"
+
+#: src/modules/options/optw_servers.cpp:622
 #: src/modules/options/optw_proxy.cpp:129
 msgid "Use IPv6 protocol"
 msgstr "IPv6 Protokoll használata"
@@ -4164,20 +4224,20 @@ msgstr "IPv6 Protokoll használata"
 msgid "Use Language Encoding"
 msgstr "Nyelv kódolásának használata"
 
-#: src/modules/options/optw_servers.cpp:693
-#: src/modules/options/optw_servers.cpp:694
+#: src/modules/options/optw_servers.cpp:698
+#: src/modules/options/optw_servers.cpp:699
 msgid "Use Network Encoding"
 msgstr "Hálózati kódolás használata"
 
-#: src/modules/options/optw_connection.cpp:106
+#: src/modules/options/optw_connection.cpp:110
 msgid "Use SSL certificate (PEM format only)"
 msgstr "SSL hitelesítés használata (csak PEM formátum)"
 
-#: src/modules/options/optw_connection.cpp:116
+#: src/modules/options/optw_connection.cpp:120
 msgid "Use SSL private key"
 msgstr "Pirvát kulcsú SSL használata"
 
-#: src/modules/options/optw_servers.cpp:637
+#: src/modules/options/optw_servers.cpp:635
 msgid "Use SSL protocol"
 msgstr "SSL protokol használata"
 
@@ -4270,7 +4330,12 @@ msgstr "Saját Névhez eltérő szín használata:"
 msgid "Use system URL handlers"
 msgstr "Rendszer URL kezelőinek használata"
 
-#: src/modules/options/optw_connection.cpp:125
+#: src/modules/options/optw_connection.cpp:89
+#, fuzzy
+msgid "Use the SASL authentication protocol if available"
+msgstr "Használd a WATCH eljárást, ha elérhető"
+
+#: src/modules/options/optw_connection.cpp:129
 #, fuzzy
 msgid "Use the STARTTLS security protocol if available"
 msgstr "Használd a WATCH eljárást, ha elérhető"
@@ -4443,8 +4508,7 @@ msgstr "[ELŐTAG]név[!felhasználónév@hoszt][UTÓTAG] üzenet"
 msgid "[Unknown Media Type]"
 msgstr "[Ismeretlen Médiatípus]"
 
-#: src/modules/options/optw_dcc.cpp:235
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bájt/mp"
 
@@ -4452,7 +4516,7 @@ msgstr "bájt/mp"
 msgid "en"
 msgstr "en"
 
-#: src/modules/options/optw_servers.cpp:1610
+#: src/modules/options/optw_servers.cpp:1645
 msgid "irc.unknown.net"
 msgstr "irc.ismeretlen.net"
 

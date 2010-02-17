@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"POT-Creation-Date: 2010-02-17 18:09+0100\n"
 "PO-Revision-Date: 2008-03-06 18:30+0100\n"
 "Last-Translator: Elephantman <elephantman@europnet.org>\n"
 "Language-Team: Français <en@li.org>\n"
@@ -19,19 +19,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " octets"
 
 #: src/modules/options/optw_query.cpp:102
-#: src/modules/options/optw_channel.cpp:135
+#: src/modules/options/optw_channel.cpp:140
 msgid " days"
 msgstr ""
 
 #: src/modules/options/optw_ircview.cpp:155
 #: src/modules/options/optw_query.cpp:98
-#: src/modules/options/optw_channel.cpp:131
+#: src/modules/options/optw_channel.cpp:136
 msgid " lines"
 msgstr " lignes"
 
@@ -41,9 +40,8 @@ msgstr " min"
 
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
-#: src/modules/options/optw_connection.cpp:151
-#: src/modules/options/optw_dcc.cpp:268
-#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_connection.cpp:155
+#: src/modules/options/optw_dcc.cpp:268 src/modules/options/optw_lag.cpp:45
 #: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr " msec"
@@ -60,12 +58,13 @@ msgstr " requêtes"
 #: src/modules/options/optw_avatar.cpp:96
 #: src/modules/options/optw_ctcpfloodprotection.cpp:92
 #: src/modules/options/optw_connection.cpp:85
-#: src/modules/options/optw_connection.cpp:149
+#: src/modules/options/optw_connection.cpp:153
+#: src/modules/options/optw_channel.cpp:121
 #: src/modules/options/optw_dcc.cpp:140
 msgid " sec"
 msgstr " sec"
 
-#: src/modules/options/optw_connection.cpp:155
+#: src/modules/options/optw_connection.cpp:159
 msgid " usec"
 msgstr " usec"
 
@@ -81,7 +80,7 @@ msgstr "&Appliquer"
 msgid "&Browse..."
 msgstr "&Parcourir..."
 
-#: src/modules/options/optw_servers.cpp:1470
+#: src/modules/options/optw_servers.cpp:1505
 msgid "&Copy Server"
 msgstr "&Copier Serveur"
 
@@ -93,18 +92,17 @@ msgstr "&Nouveau"
 msgid "&New Proxy"
 msgstr "&Nouveau Serveur se Proximité"
 
-#: src/modules/options/optw_servers.cpp:1467
+#: src/modules/options/optw_servers.cpp:1502
 msgid "&New Server"
 msgstr "&Nouveau Serveur"
 
 #: src/modules/options/optw_servers.cpp:341
 #: src/modules/options/optw_identity.cpp:233
-#: src/modules/options/dialog.cpp:227
-#: src/modules/options/container.cpp:64
+#: src/modules/options/dialog.cpp:227 src/modules/options/container.cpp:64
 msgid "&OK"
 msgstr "&Valider"
 
-#: src/modules/options/optw_servers.cpp:1472
+#: src/modules/options/optw_servers.cpp:1507
 msgid "&Paste Server"
 msgstr "C&oller Serveur"
 
@@ -155,7 +153,7 @@ msgstr ""
 "peuvent permettre d'obtenir des informations sur les clients ou négocier des "
 "transferts de fichiers.<br><br></p>"
 
-#: src/modules/options/optw_servers.cpp:1189
+#: src/modules/options/optw_servers.cpp:1224
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 "<center>Cliquez ici pour éditer les options avancées de cette entrée</center>"
@@ -239,7 +237,7 @@ msgstr ""
 "établie. Pour ajouter un salon, entrez son nom dans le champ ci-dessous et "
 "cliquez sur \"<b>Ajouter</b>\".</center>"
 
-#: src/modules/options/optw_servers.cpp:792
+#: src/modules/options/optw_servers.cpp:816
 msgid ""
 "<center>Here you can set a list of channels to be joined automatically after "
 "a connection to this server has been established. To add a channel, type its "
@@ -250,7 +248,7 @@ msgstr ""
 "ajouter un salon, entrez son nom dans le champ ci-dessous et cliquez sur "
 "\"<b>Ajouter</b>\".</center>"
 
-#: src/modules/options/optw_servers.cpp:1195
+#: src/modules/options/optw_servers.cpp:1230
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -328,7 +326,7 @@ msgstr ""
 "notificatrice dans le coin en bas à droite de votre bureau quand un message "
 "surligné est affiché et que KVIrc n'est pas la fenêtre active</center>"
 
-#: src/modules/options/optw_servers.cpp:1210
+#: src/modules/options/optw_servers.cpp:1245
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -378,7 +376,19 @@ msgstr ""
 "que;conque : dans ce cas désactivez cette option si vous êtes régulièrement "
 "attaqué par des submersions de CTCP.</center>"
 
-#: src/modules/options/optw_channel.cpp:141
+#: src/modules/options/optw_servers.cpp:790
+msgid ""
+"<center>If you want to enable SASL authentication, insert your nickname here."
+"</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:797
+msgid ""
+"<center>If you want to enable SASL authentication, insert your password here."
+"</center>"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:146
 msgid ""
 "<center>KVIrc sends out a channel /WHO message every now and then to keep "
 "the channel away list in sync. Use this option to disable this feature (and "
@@ -389,7 +399,7 @@ msgstr ""
 "désactiver cette fonction (et préserver votre bande passante).</center>"
 
 #: src/modules/options/optw_query.cpp:103
-#: src/modules/options/optw_channel.cpp:136
+#: src/modules/options/optw_channel.cpp:141
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
@@ -399,7 +409,7 @@ msgstr ""
 "b></center>"
 
 #: src/modules/options/optw_query.cpp:99
-#: src/modules/options/optw_channel.cpp:132
+#: src/modules/options/optw_channel.cpp:137
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
@@ -424,6 +434,15 @@ msgstr ""
 "<center>Valeur minimale : <b>0 sec</b><br>Valeur maximale : <b>86400 sec</"
 "b></center>"
 
+#: src/modules/options/optw_channel.cpp:122
+#, fuzzy
+msgid ""
+"<center>Minimum value: <b>0 secs</b><br>Maximum value: <b>60 secs</b></"
+"center>"
+msgstr ""
+"<center>Valeur minimale : <b>0 sec</b><br>Valeur maximale : <b>86400 sec</"
+"b></center>"
+
 #: src/modules/options/optw_ctcpfloodprotection.cpp:93
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
@@ -432,7 +451,7 @@ msgstr ""
 "<center>Valeur minimale : <b>1 sec</b><br>Valeur maximale : <b>3600 sec</b></"
 "center>"
 
-#: src/modules/options/optw_connection.cpp:156
+#: src/modules/options/optw_connection.cpp:160
 msgid ""
 "<center>Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</"
 "b></center>"
@@ -468,7 +487,7 @@ msgstr ""
 "original<br>.La plupart des clients supporte de type d'optimisation, donc "
 "désactivez cette option seulement en cas de problème.</center>"
 
-#: src/modules/options/optw_servers.cpp:808
+#: src/modules/options/optw_servers.cpp:832
 msgid ""
 "<center>The following commands will be executed after a connection has been "
 "established.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -516,7 +535,7 @@ msgstr ""
 "<br>C'est utile pour ouvrir automatiquement des privés, définir des "
 "variables, etc.</center>"
 
-#: src/modules/options/optw_servers.cpp:827
+#: src/modules/options/optw_servers.cpp:851
 msgid ""
 "<center>The following commands will be executed after a successful login to "
 "this server.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -558,7 +577,7 @@ msgstr ""
 "l'encodage va être défini à la valeure système choisie dans la page "
 "\"Encodage\" de la boîte de dialogue des options.</center>"
 
-#: src/modules/options/optw_servers.cpp:682
+#: src/modules/options/optw_servers.cpp:687
 #, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
@@ -570,7 +589,7 @@ msgstr ""
 "serveur. Si vous utilisez \"Utiliser l'Encodage du Réseau\", l'encodage va "
 "être défini par celui du réseau dont le serveur dépend.</center>"
 
-#: src/modules/options/optw_servers.cpp:670
+#: src/modules/options/optw_servers.cpp:675
 #, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
@@ -583,7 +602,7 @@ msgstr ""
 "serveur. Si vous utilisez \"Utiliser l'Encodage du Réseau\", l'encodage va "
 "être défini par celui du réseau dont le serveur dépend.</center>"
 
-#: src/modules/options/optw_servers.cpp:1206
+#: src/modules/options/optw_servers.cpp:1241
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -591,7 +610,22 @@ msgstr ""
 "<center>Ce bouton montre une liste de serveurs récemment utilisés. Elle vous "
 "permet de rapidement les y trouver.</center>"
 
-#: src/modules/options/optw_servers.cpp:634
+#: src/modules/options/optw_servers.cpp:782
+msgid ""
+"<center>This check enables the use of the <b>SASL</b> authentication "
+"procotolIf you enable the proper global option in the Connection/SSL tab and "
+"fill the Sasl Nickname and Sasl Password fields in this page, the SASL "
+"protocol will be used for this server if available.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:654
+msgid ""
+"<center>This check enables the use of the <b>Transport Layer Security</b> "
+"protocol. If you enable the proper global option in the Connection/SSL tab, "
+"the TLS protocol will be used for this server if available.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:632
 msgid ""
 "<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will "
 "attempt to use the IPv6 protocol (thus your OS <b>must</b> have a working "
@@ -601,15 +635,18 @@ msgstr ""
 "tenter d'utiliser le protocole IPv6 (donc votre système <b>doit</b> avoir "
 "une pile IPv6  et vous <b>devez</b> avoir une conexion IPv6).</center>"
 
-#: src/modules/options/optw_servers.cpp:649
+#: src/modules/options/optw_servers.cpp:648
+#, fuzzy
 msgid ""
-"<center>This check marks the server as dynamically supporting the "
-"<b>Transport Layer Security</b> protocol. If you enable the proper global "
-"option in the Connection/SSL tab, the TLS protocol will be used for this "
-"server.</center>"
+"<center>This check will cause the connection to use the <b>Extended "
+"Capability</b> support. Obviously, this server must have support for this, "
+"too. Disable this for irc bouncers.</center>"
 msgstr ""
+"<center>Cette option va forcer une connexion à utiliser le support de "
+"cryptage par <b>Couche de socket sécurisée (SSL)</b>. Évidemment, ce serveur "
+"doit le supporter. :)</center>"
 
-#: src/modules/options/optw_servers.cpp:640
+#: src/modules/options/optw_servers.cpp:638
 msgid ""
 "<center>This check will cause the connection to use the <b>Secure Socket "
 "Layer</b> encryption support. Obviously, this server must have support for "
@@ -619,7 +656,7 @@ msgstr ""
 "cryptage par <b>Couche de socket sécurisée (SSL)</b>. Évidemment, ce serveur "
 "doit le supporter. :)</center>"
 
-#: src/modules/options/optw_servers.cpp:616
+#: src/modules/options/optw_servers.cpp:614
 msgid ""
 "<center>This check will enable <b>IP address caching</b> for this server:"
 "<br>DNS lookups can be time-consuming and might be blocking on some "
@@ -645,7 +682,7 @@ msgstr ""
 "<center>Cela active le moteur de mesure du retard, qui évalue à intervalles "
 "reguliers le retard (latence) que le serveur a.</center>"
 
-#: src/modules/options/optw_servers.cpp:752
+#: src/modules/options/optw_servers.cpp:757
 msgid ""
 "<center>This field allows you to specify a really unique id for this server. "
 "You will then be able to use /server -x &lt;this_id&gt; to make the "
@@ -676,7 +713,7 @@ msgstr ""
 "automatique d'un fichier reçu.<br><tt>$0</tt> est utilisé à la place du nom "
 "du fichier</center>"
 
-#: src/modules/options/optw_servers.cpp:742
+#: src/modules/options/optw_servers.cpp:747
 msgid ""
 "<center>This field specifies the name of a module that exports a link filter "
 "for this type of server.<br>For plain IRC connections, you don't need any "
@@ -747,7 +784,7 @@ msgid ""
 "without changing them at every connection attempt."
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:594
+#: src/modules/options/optw_servers.cpp:592
 msgid ""
 "<center>This is the <b>IP address</b> of this server, it is here for caching "
 "purposes.<br>If you leave this field empty, KVIrc will fill it in the first "
@@ -761,7 +798,7 @@ msgstr ""
 "\" ci-dessous, KVIrc va l'utiliser comme un \"résultat de cache\" et ne va "
 "donc pas la résoudre de nouveau.</center>"
 
-#: src/modules/options/optw_servers.cpp:760
+#: src/modules/options/optw_servers.cpp:765
 #, fuzzy
 msgid ""
 "<center>This is the <b>proxy</b> that KVIrc will use to connect to this "
@@ -900,7 +937,7 @@ msgstr ""
 "<center>Il s'agit de l'adresse fixe qui sera envoyée pour toute requête DCC "
 "si vous avez choisi l'option ci-dessus.</center>"
 
-#: src/modules/options/optw_servers.cpp:1105
+#: src/modules/options/optw_servers.cpp:1140
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
@@ -947,7 +984,7 @@ msgstr ""
 "automatiquement recquise.<br>Une valeur raisonnable peut être de 102400 "
 "octets (100 K).</center>"
 
-#: src/modules/options/optw_servers.cpp:1169
+#: src/modules/options/optw_servers.cpp:1204
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
@@ -1025,8 +1062,7 @@ msgstr ""
 "l'utilisez que si vos transferts DCC cale juste après avoir établi la "
 "connexion et sans avoir envoyé de données.</center>"
 
-#: src/modules/options/optw_query.cpp:82
-#: src/modules/options/optw_dcc.cpp:324
+#: src/modules/options/optw_query.cpp:82 src/modules/options/optw_dcc.cpp:324
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1230,7 +1266,7 @@ msgstr ""
 "quand un message d'INVITE pour un salon est reçu.<br><b>Attention :</b> cela "
 "peut inciter les spammeurs à vous harasser. :)</center>"
 
-#: src/modules/options/optw_servers.cpp:661
+#: src/modules/options/optw_servers.cpp:666
 msgid ""
 "<center>This option will cause KVIrc to connect to the IRC server when it is "
 "started.</center>"
@@ -1334,7 +1370,7 @@ msgstr ""
 "à part si vos serveurs ne sont pas organisés en réseaux, ou si vous vous "
 "connectez souvent à plusieurs serveurs sur le même réseau.</center>"
 
-#: src/modules/options/optw_connection.cpp:126
+#: src/modules/options/optw_connection.cpp:130
 #, fuzzy
 msgid ""
 "<center>This option will cause KVIrc to try to reconnect to the server using "
@@ -1351,7 +1387,7 @@ msgstr ""
 "<center>Cette option retire automatiquement les transferts terminés de la "
 "fenêtre de transfert.</center>"
 
-#: src/modules/options/optw_connection.cpp:171
+#: src/modules/options/optw_connection.cpp:175
 msgid ""
 "<center>This option will cause the KVIrc networking stack to pick up a "
 "random entry when multiple IP address are retrieved for a server dns lookup. "
@@ -1470,6 +1506,12 @@ msgstr ""
 "<center>Utilise le dernier avatar connu de l'utilisateur (seulement pour les "
 "utilisateurs enregistrés).</center>"
 
+#: src/modules/options/optw_connection.cpp:90
+msgid ""
+"<center>When available and enabled of the specific server, KVIrc will try to "
+"authenticate the user using the SASL procotol</center>"
+msgstr ""
+
 #: src/modules/options/optw_dcc.cpp:121
 msgid ""
 "<center>When you're behind a dialup router and also tunneling through a "
@@ -1576,7 +1618,7 @@ msgstr ""
 "<p><b>Note :</b><br>La liste de notification est gérée est via les "
 "paramètres des \"Utilisateurs Enregistrés\".</p>"
 
-#: src/modules/options/optw_connection.cpp:248
+#: src/modules/options/optw_connection.cpp:252
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
@@ -1587,7 +1629,7 @@ msgstr ""
 "d'Identification. Installer un véritable démon d'ident dans la mesure du "
 "possible.</p>"
 
-#: src/modules/options/optw_connection.cpp:253
+#: src/modules/options/optw_connection.cpp:257
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
@@ -1629,7 +1671,7 @@ msgstr "Interrompre"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr "Accepter les RESUME cassés (fichier.ext mIRC)"
 
-#: src/modules/options/optw_servers.cpp:1165
+#: src/modules/options/optw_servers.cpp:1200
 msgid "Active Configuration"
 msgstr "Connexion active"
 
@@ -1641,7 +1683,7 @@ msgstr "Avant-plan à fort contraste (primaire)"
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr "Avant-plan à fort contraste (secondaire)"
 
-#: src/modules/options/optw_connection.cpp:200
+#: src/modules/options/optw_connection.cpp:204
 msgid "Active window"
 msgstr "Fenêtre active"
 
@@ -1664,7 +1706,7 @@ msgstr "Ajouter une Règle"
 msgid "Advanced configuration"
 msgstr "Configuration avancée"
 
-#: src/modules/options/optw_servers.cpp:1187
+#: src/modules/options/optw_servers.cpp:1222
 msgid "Advanced..."
 msgstr "Avancée..."
 
@@ -1771,8 +1813,7 @@ msgstr "À ajouter à la réponse à VERSION :"
 msgid "Auto flush logs every"
 msgstr "Sauvegarder les journaux chaque"
 
-#: src/modules/options/optw_sound.cpp:68
-#: src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Détection auto"
 
@@ -1784,8 +1825,7 @@ msgstr "Détection automatique"
 msgid "Automatically Log"
 msgstr "Journalisation automatique"
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:342
 msgid "Automatically accept"
 msgstr "Accepter automatiquement"
@@ -1883,11 +1923,11 @@ msgstr "Arrière plan :"
 msgid "Basic Properties"
 msgstr "Propriétés de base"
 
-#: src/modules/options/optw_connection.cpp:161
+#: src/modules/options/optw_connection.cpp:165
 msgid "Bind IPv4 connections to:"
 msgstr "Lier les connexion IPv4 à :"
 
-#: src/modules/options/optw_connection.cpp:165
+#: src/modules/options/optw_connection.cpp:169
 msgid "Bind IPv6 connections to:"
 msgstr "Lier les connexion IPv6 à :"
 
@@ -1919,18 +1959,17 @@ msgstr "CLIENTINFO"
 msgid "CTCP Replies"
 msgstr "Réponses CTCP"
 
-#: src/modules/options/optw_servers.cpp:613
+#: src/modules/options/optw_servers.cpp:611
 msgid "Cache IP address"
 msgstr "Adresse IP en cache"
 
 #: src/modules/options/optw_nickserv.cpp:128
 #: src/modules/options/optw_servers.cpp:347
-#: src/modules/options/optw_servers.cpp:839
+#: src/modules/options/optw_servers.cpp:863
 #: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:238
 #: src/modules/options/optw_identity.cpp:906
-#: src/modules/options/dialog.cpp:242
-#: src/modules/options/container.cpp:72
+#: src/modules/options/dialog.cpp:242 src/modules/options/container.cpp:72
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -1942,20 +1981,19 @@ msgstr "Annuler"
 #: src/modules/options/optw_userlist.cpp:149
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 msgid "Center"
 msgstr "Centré"
 
-#: src/modules/options/optw_connection.cpp:104
+#: src/modules/options/optw_connection.cpp:108
 msgid "Certificate"
 msgstr "Certificat"
 
-#: src/modules/options/optw_connection.cpp:108
+#: src/modules/options/optw_connection.cpp:112
 msgid "Certificate location:"
 msgstr "Localisation du certificat :"
 
-#: src/modules/options/optw_connection.cpp:111
+#: src/modules/options/optw_connection.cpp:115
 msgid "Certificate password:"
 msgstr "Mot de pass du certificat :"
 
@@ -1980,7 +2018,7 @@ msgid "Channel windows"
 msgstr "Fenêtres des salons"
 
 #: src/modules/options/optw_servers.cpp:227
-#: src/modules/options/optw_servers.cpp:791
+#: src/modules/options/optw_servers.cpp:815
 msgid "Channels to join automatically upon connect:"
 msgstr "Salons à joindre automatiquement à la connexion :"
 
@@ -2021,7 +2059,7 @@ msgstr "Choisir..."
 msgid "Classic format"
 msgstr "Barre de tâches classique"
 
-#: src/modules/options/optw_servers.cpp:1477
+#: src/modules/options/optw_servers.cpp:1512
 msgid "Clear List"
 msgstr "Effacer la liste"
 
@@ -2029,13 +2067,11 @@ msgstr "Effacer la liste"
 msgid "Close in tray"
 msgstr "Fermer dans la barre de tâche"
 
-#: src/modules/options/dialog.cpp:229
-#: src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Fermer la boîte de dialogue en acceptant tous les changements."
 
-#: src/modules/options/dialog.cpp:244
-#: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Fermer la boîte de dialogue en oubliant tous les changements."
 
@@ -2049,7 +2085,7 @@ msgstr "Appliquer tous les changements immédiatement."
 
 #: src/modules/options/optw_notify.cpp:41
 #: src/modules/options/optw_proxy.cpp:106
-#: src/modules/options/optw_connection.cpp:217
+#: src/modules/options/optw_connection.cpp:221
 #: src/modules/options/optw_lag.cpp:43
 msgid "Configuration"
 msgstr "Configuration"
@@ -2058,11 +2094,11 @@ msgstr "Configuration"
 msgid "Confirm quit with active connections"
 msgstr "Confirmer un quit avec connexions actives"
 
-#: src/modules/options/optw_servers.cpp:1191
+#: src/modules/options/optw_servers.cpp:1226
 msgid "Connect &Now"
 msgstr "Se Connecter &Maintenant"
 
-#: src/modules/options/optw_connection.cpp:148
+#: src/modules/options/optw_connection.cpp:152
 msgid "Connect timeout:"
 msgstr "Temps d'expiration de connexion :"
 
@@ -2070,15 +2106,15 @@ msgstr "Temps d'expiration de connexion :"
 msgid "Connect to this network at startup"
 msgstr "Se connecter à ce réseau au démarrage"
 
-#: src/modules/options/optw_servers.cpp:656
+#: src/modules/options/optw_servers.cpp:661
 msgid "Connect to this server at startup"
 msgstr "Se connnecter à ce serveur au lancement"
 
-#: src/modules/options/optw_servers.cpp:781
+#: src/modules/options/optw_servers.cpp:805
 msgid "Connection"
 msgstr "Connexion"
 
-#: src/modules/options/optw_connection.cpp:201
+#: src/modules/options/optw_connection.cpp:205
 msgid "Console"
 msgstr "Console"
 
@@ -2090,7 +2126,7 @@ msgstr "Fenêtres des consoles"
 msgid "Control char color"
 msgstr "Couleur du caractère Contrôle"
 
-#: src/modules/options/optw_servers.cpp:1142
+#: src/modules/options/optw_servers.cpp:1177
 msgid "Copy Server"
 msgstr "Copier Serveur"
 
@@ -2136,7 +2172,7 @@ msgstr ""
 msgid "Datetime format"
 msgstr "Format de l'horodateur :"
 
-#: src/modules/options/optw_servers.cpp:764
+#: src/modules/options/optw_servers.cpp:769
 msgid "Default"
 msgstr "Défaut"
 
@@ -2183,7 +2219,7 @@ msgstr "Effacer une Règle"
 msgid "Delete Rule"
 msgstr "Effacer une Règle"
 
-#: src/modules/options/optw_servers.cpp:1086
+#: src/modules/options/optw_servers.cpp:1121
 #: src/modules/options/optw_mediatypes.cpp:79
 msgid "Description"
 msgstr "Description"
@@ -2194,7 +2230,7 @@ msgstr "Description"
 msgid "Description:"
 msgstr "Description :"
 
-#: src/modules/options/optw_servers.cpp:765
+#: src/modules/options/optw_servers.cpp:770
 msgid "Direct connection"
 msgstr "Connexion directe"
 
@@ -2210,27 +2246,32 @@ msgstr "Désactiver les avertissements de l'analyseur"
 msgid "Disable splash screen"
 msgstr "Désactiver l'image de démarrage"
 
-#: src/modules/options/optw_channel.cpp:122
+#: src/modules/options/optw_channel.cpp:126
 msgid "Do not request ban exception list"
 msgstr "Ne pas demander la liste des exceptions de ban"
 
-#: src/modules/options/optw_channel.cpp:121
+#: src/modules/options/optw_channel.cpp:125
 msgid "Do not request ban list"
 msgstr "Ne pas demander la liste des bans"
 
-#: src/modules/options/optw_channel.cpp:123
+#: src/modules/options/optw_channel.cpp:127
 msgid "Do not request invite list"
 msgstr "Ne pas demander la liste des invitations"
+
+#: src/modules/options/optw_channel.cpp:128
+#, fuzzy
+msgid "Do not request quiet ban list"
+msgstr "Ne pas demander la liste des bans"
 
 #: src/modules/options/optw_avatar.cpp:48
 msgid "Do not scale avatar if it is less than required size"
 msgstr "Ne pas redimensionner un avatar plus petit que la taille recquise"
 
-#: src/modules/options/optw_channel.cpp:120
+#: src/modules/options/optw_channel.cpp:124
 msgid "Do not send /WHO request"
 msgstr "Ne pas envoyer une requête /WHO"
 
-#: src/modules/options/optw_connection.cpp:202
+#: src/modules/options/optw_connection.cpp:206
 msgid "Do not show any identd messages"
 msgstr "Ne montrer aucun message d'identd"
 
@@ -2267,7 +2308,7 @@ msgstr "Afficher la grille"
 msgid "Draw some emoticons (smileys) as pictures"
 msgstr "Afficher certains émoticônes (smileys) sous forme d'image"
 
-#: src/modules/options/optw_channel.cpp:124
+#: src/modules/options/optw_channel.cpp:129
 msgid "Echo channel topic"
 msgstr "Afficher le sujet du salon"
 
@@ -2299,6 +2340,16 @@ msgstr "Propriétés de réseau"
 msgid "Enable NickServ Identification"
 msgstr "Activer l'Authentification à NickServ"
 
+#: src/modules/options/optw_servers.cpp:780
+#, fuzzy
+msgid "Enable SASL authentication"
+msgstr "Activer l'Authentification à NickServ"
+
+#: src/modules/options/optw_servers.cpp:652
+#, fuzzy
+msgid "Enable STARTTLS protocol"
+msgstr "Utiliser le protocole SSL"
+
 #: src/modules/options/optw_ircview.cpp:152
 msgid "Enable URL highlighting"
 msgstr "Activer le surlignage des URL"
@@ -2322,11 +2373,11 @@ msgstr "Message d'absence par défaut :"
 msgid "Enable fake transparency"
 msgstr "Activer la fausse transparence"
 
-#: src/modules/options/optw_connection.cpp:192
+#: src/modules/options/optw_connection.cpp:196
 msgid "Enable ident service (bad practice on UNIX!)"
 msgstr "Utiliser le service ident (mauvaise pratique sous UNIX !)"
 
-#: src/modules/options/optw_connection.cpp:219
+#: src/modules/options/optw_connection.cpp:223
 msgid "Enable ident service only while connecting to server"
 msgstr "Activer le service d'ident pendant la connexion au serveur"
 
@@ -2348,7 +2399,7 @@ msgstr "Désactiver l'effet de fondu de la fenêtre de notification"
 msgid "Enable notifier window flashing"
 msgstr "Désactiver le clignotement de la fenêtre du notifieur"
 
-#: src/modules/options/optw_connection.cpp:232
+#: src/modules/options/optw_connection.cpp:236
 msgid "Enable service for IPv6"
 msgstr "Activer le service pour IPV6"
 
@@ -2613,17 +2664,17 @@ msgstr ""
 msgid "ID3 tags' encoding"
 msgstr "Encodage des étiquettes ID3"
 
-#: src/modules/options/optw_servers.cpp:590
+#: src/modules/options/optw_servers.cpp:588
 #: src/modules/options/optw_proxy.cpp:115
 msgid "IP address:"
 msgstr "Adresse IP :"
 
-#: src/modules/options/optw_connection.cpp:241
+#: src/modules/options/optw_connection.cpp:245
 msgid "IP stack treats IPv4 as part of IPv6 namespace"
 msgstr ""
 "La pile d'IP considère IPV4 comme une partie de l'espace de noms d'IPV6"
 
-#: src/modules/options/optw_connection.cpp:231
+#: src/modules/options/optw_connection.cpp:235
 msgid "IPv6 Settings"
 msgstr "Réglages IPV6"
 
@@ -2644,11 +2695,11 @@ msgstr "Delai entre les ISON (en secondes)"
 msgid "Icon"
 msgstr "Icône"
 
-#: src/modules/options/optw_servers.cpp:745
+#: src/modules/options/optw_servers.cpp:750
 msgid "Id:"
 msgstr "Identifiant :"
 
-#: src/modules/options/optw_connection.cpp:222
+#: src/modules/options/optw_connection.cpp:226
 msgid "Ident username:"
 msgstr "Nom d'utilisateur pour ident :"
 
@@ -2686,8 +2737,8 @@ msgstr "Hauteur de l'image :"
 msgid "Image width:"
 msgstr "Largeur de l'image :"
 
-#: src/modules/options/optw_servers.cpp:1160
-#: src/modules/options/optw_servers.cpp:1479
+#: src/modules/options/optw_servers.cpp:1195
+#: src/modules/options/optw_servers.cpp:1514
 msgid "Import List"
 msgstr "Importer Liste"
 
@@ -2700,7 +2751,7 @@ msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Avant-plan inactif à fort contraste (secondaire)"
 
 #: src/modules/options/optw_query.cpp:101
-#: src/modules/options/optw_channel.cpp:134
+#: src/modules/options/optw_channel.cpp:139
 #, fuzzy
 msgid "Interval:"
 msgstr "Interface"
@@ -2724,7 +2775,7 @@ msgid "Invite messages"
 msgstr "Messages d'invitation"
 
 #: src/modules/options/optw_servers.cpp:235
-#: src/modules/options/optw_servers.cpp:797
+#: src/modules/options/optw_servers.cpp:821
 #: src/modules/options/optw_interfacefeatures.cpp:63
 msgid "Join Channels"
 msgstr "Joindre les Salons"
@@ -2733,7 +2784,7 @@ msgstr "Joindre les Salons"
 msgid "KVIrc Preferences"
 msgstr "Préférences KVIrc"
 
-#: src/modules/options/optw_channel.cpp:139
+#: src/modules/options/optw_channel.cpp:144
 msgid "Keep away list updated by sending WHO requests"
 msgstr ""
 
@@ -2776,11 +2827,11 @@ msgstr "À gauche"
 msgid "Limit download bandwidth to"
 msgstr "Limiter la bande passante de téléchargement à"
 
-#: src/modules/options/optw_connection.cpp:152
+#: src/modules/options/optw_connection.cpp:156
 msgid "Limit outgoing traffic"
 msgstr "Limiter le traffic sortant"
 
-#: src/modules/options/optw_connection.cpp:153
+#: src/modules/options/optw_connection.cpp:157
 msgid "Limit to 1 message every:"
 msgstr "Limiter à 1 message toutes les :"
 
@@ -2792,7 +2843,7 @@ msgstr "Limite la bande passante d'envoi à"
 msgid "Limits"
 msgstr "Limites"
 
-#: src/modules/options/optw_servers.cpp:709
+#: src/modules/options/optw_servers.cpp:714
 msgid "Link filter:"
 msgstr "Filtre de Lien :"
 
@@ -2935,6 +2986,11 @@ msgstr "Réduit :"
 msgid "Minimum alert level:"
 msgstr "Niveau d'alerte minimal :"
 
+#: src/modules/options/optw_channel.cpp:120
+#, fuzzy
+msgid "Minimum delay between two requests:"
+msgstr "Délai entre deux tentatives :"
+
 #: src/modules/options/optw_tray.cpp:53
 msgid "Minimum level for high-priority message"
 msgstr "Niveau minimal pour les messages à forte priorité"
@@ -3001,7 +3057,7 @@ msgstr "Réseau :"
 msgid "Network Details"
 msgstr "Détails du Réseau"
 
-#: src/modules/options/optw_connection.cpp:159
+#: src/modules/options/optw_connection.cpp:163
 msgid "Network Interfaces"
 msgstr "Interfaces réseau"
 
@@ -3014,7 +3070,7 @@ msgstr "Réseau :"
 msgid "Network Properties"
 msgstr "Propriétés de réseau"
 
-#: src/modules/options/optw_servers.cpp:1370
+#: src/modules/options/optw_servers.cpp:1405
 msgid "Network:"
 msgstr "Réseau :"
 
@@ -3022,9 +3078,9 @@ msgstr "Réseau :"
 msgid "New Media Type"
 msgstr "Nouveau type de média"
 
-#: src/modules/options/optw_servers.cpp:1119
-#: src/modules/options/optw_servers.cpp:1463
-#: src/modules/options/optw_servers.cpp:1589
+#: src/modules/options/optw_servers.cpp:1154
+#: src/modules/options/optw_servers.cpp:1498
+#: src/modules/options/optw_servers.cpp:1624
 msgid "New Network"
 msgstr "Nouveau Réseau"
 
@@ -3036,7 +3092,7 @@ msgstr "Nouveau Serveur"
 msgid "New Query opened"
 msgstr "Privés nouvellement ouverts"
 
-#: src/modules/options/optw_servers.cpp:1125
+#: src/modules/options/optw_servers.cpp:1160
 msgid "New Server"
 msgstr "Nouveau Serveur"
 
@@ -3096,7 +3152,7 @@ msgstr "Pseudo :"
 msgid "Nicknames"
 msgstr "Pseudos"
 
-#: src/modules/options/optw_servers.cpp:1380
+#: src/modules/options/optw_servers.cpp:1415
 msgid "No selection"
 msgstr "Aucune selection"
 
@@ -3139,7 +3195,7 @@ msgstr ""
 
 #: src/modules/options/optw_nickserv.cpp:133
 #: src/modules/options/optw_nickserv.cpp:154
-#: src/modules/options/optw_servers.cpp:833
+#: src/modules/options/optw_servers.cpp:857
 #: src/modules/options/optw_identity.cpp:910
 #: src/modules/options/optw_identity.cpp:974
 msgid "OK"
@@ -3167,7 +3223,7 @@ msgid "On Chat Request"
 msgstr "En cas de requête Chat"
 
 #: src/modules/options/optw_servers.cpp:250
-#: src/modules/options/optw_servers.cpp:813
+#: src/modules/options/optw_servers.cpp:837
 msgid "On Connect"
 msgstr "À la Connexion"
 
@@ -3184,7 +3240,7 @@ msgid "On Incoming File"
 msgstr "À propos des fichiers entrants"
 
 #: src/modules/options/optw_servers.cpp:268
-#: src/modules/options/optw_servers.cpp:831
+#: src/modules/options/optw_servers.cpp:855
 msgid "On Login"
 msgstr "À l'Enregistrement"
 
@@ -3196,7 +3252,7 @@ msgstr "En cas de Déconnexion Imprevue"
 msgid "On Voice Request"
 msgstr "En cas de requête Voice"
 
-#: src/modules/options/optw_servers.cpp:1516
+#: src/modules/options/optw_servers.cpp:1551
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3204,7 +3260,7 @@ msgstr ""
 "Oups... un truc étrange vient de se produire :<br>Impossible de trouver un "
 "module capable d'importer des serveurs."
 
-#: src/modules/options/optw_servers.cpp:1533
+#: src/modules/options/optw_servers.cpp:1568
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3228,8 +3284,7 @@ msgstr "Ouvrir un Privé en cas de"
 msgid "Open all minimized"
 msgstr "Réduire systématiquement à l'ouverture"
 
-#: src/modules/options/optw_dcc.cpp:307
-#: src/modules/options/optw_dcc.cpp:344
+#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:344
 msgid "Open minimized when auto-accepted"
 msgstr "Reduire quand accepté automatiquement"
 
@@ -3241,16 +3296,16 @@ msgstr "Reduire la fenêtre de transfert quand accepté automatiquement"
 msgid "Other:"
 msgstr "Autre :"
 
-#: src/modules/options/optw_connection.cpp:150
+#: src/modules/options/optw_connection.cpp:154
 msgid "Outgoing data queue flush timeout:"
 msgstr "Temps d'expiration du vidage de la queue des données :"
 
-#: src/modules/options/optw_connection.cpp:198
+#: src/modules/options/optw_connection.cpp:202
 msgid "Output identd messages to:"
 msgstr "Afficher les messages d'identd dans :"
 
 #: src/modules/options/optw_ircoutput.cpp:43
-#: src/modules/options/optw_connection.cpp:195
+#: src/modules/options/optw_connection.cpp:199
 msgid "Output verbosity"
 msgstr "Verbosité des sorties"
 
@@ -3288,11 +3343,11 @@ msgstr "Message de départ :"
 msgid "Password:"
 msgstr "Mot de Pass :"
 
-#: src/modules/options/optw_servers.cpp:1149
+#: src/modules/options/optw_servers.cpp:1184
 msgid "Paste Server"
 msgstr "Coller Serveur"
 
-#: src/modules/options/optw_channel.cpp:127
+#: src/modules/options/optw_channel.cpp:132
 #, fuzzy
 msgid "Paste last channel log"
 msgstr "utilisateurs,salon"
@@ -3303,7 +3358,7 @@ msgid "Paste last query log"
 msgstr "utilisateurs,salon"
 
 #: src/modules/options/optw_query.cpp:97
-#: src/modules/options/optw_channel.cpp:130
+#: src/modules/options/optw_channel.cpp:135
 msgid "Paste up to:"
 msgstr ""
 
@@ -3311,7 +3366,7 @@ msgstr ""
 msgid "Pattern"
 msgstr "Format"
 
-#: src/modules/options/optw_connection.cpp:170
+#: src/modules/options/optw_connection.cpp:174
 msgid "Pick Random IP Address for Round-Robin Servers"
 msgstr ""
 
@@ -3385,15 +3440,15 @@ msgstr "Mettre le sexe en début de realname"
 msgid "Prepend gender info to realname"
 msgstr "Mettre le sexe en début de realname"
 
-#: src/modules/options/optw_connection.cpp:115
+#: src/modules/options/optw_connection.cpp:119
 msgid "Private Key"
 msgstr "Clé privée"
 
-#: src/modules/options/optw_connection.cpp:118
+#: src/modules/options/optw_connection.cpp:122
 msgid "Private key location:"
 msgstr "Localisation de la clé privée :"
 
-#: src/modules/options/optw_connection.cpp:121
+#: src/modules/options/optw_connection.cpp:125
 msgid "Private key password:"
 msgstr "Mot de pass de la clée privée :"
 
@@ -3457,7 +3512,7 @@ msgstr "Protocole :"
 msgid "Proxy"
 msgstr "Serveur de priximité"
 
-#: src/modules/options/optw_servers.cpp:756
+#: src/modules/options/optw_servers.cpp:761
 msgid "Proxy server:"
 msgstr "Serveur de proximité :"
 
@@ -3514,7 +3569,7 @@ msgstr "Suppri&mer"
 msgid "Re&move Proxy"
 msgstr "Su&pprimer Alias"
 
-#: src/modules/options/optw_servers.cpp:1468
+#: src/modules/options/optw_servers.cpp:1503
 msgid "Re&move Server"
 msgstr "Suppri&mer Serveur"
 
@@ -3566,11 +3621,11 @@ msgstr "Se rappeler des propriétés des fenêtres"
 msgid "Remote open command:"
 msgstr "Commande d'ouverture à distance :"
 
-#: src/modules/options/optw_servers.cpp:1464
+#: src/modules/options/optw_servers.cpp:1499
 msgid "Remove Network"
 msgstr "Supprimer Réseau"
 
-#: src/modules/options/optw_servers.cpp:1132
+#: src/modules/options/optw_servers.cpp:1167
 msgid "Remove Network/Server"
 msgstr "Supprimer Réseau/Serveur"
 
@@ -3611,6 +3666,16 @@ msgstr "À droite"
 #: src/modules/options/optw_ctcpfloodprotection.cpp:102
 msgid "SOURCE"
 msgstr "SOURCE"
+
+#: src/modules/options/optw_servers.cpp:786
+#, fuzzy
+msgid "Sasl Nickname:"
+msgstr "Pseudo :"
+
+#: src/modules/options/optw_servers.cpp:793
+#, fuzzy
+msgid "Sasl Password:"
+msgstr "Mot de Pass :"
 
 #: src/modules/options/optw_messages.cpp:414
 msgid "Save As..."
@@ -3680,7 +3745,7 @@ msgstr "Envoyer l'adresse/interface :"
 msgid "Send unknown commands as /RAW"
 msgstr "Envoyer les commandes inconnues via /RAW"
 
-#: src/modules/options/optw_servers.cpp:1085
+#: src/modules/options/optw_servers.cpp:1120
 msgid "Server"
 msgstr "Serveur"
 
@@ -3689,7 +3754,7 @@ msgid "Server Details"
 msgstr "Détails du Serveur"
 
 #: src/modules/options/optw_servers.cpp:159
-#: src/modules/options/optw_servers.cpp:665
+#: src/modules/options/optw_servers.cpp:670
 #, fuzzy
 msgid "Server Encoding:"
 msgstr "Encodage du Texte :"
@@ -3712,8 +3777,8 @@ msgstr "Notices de serveur (+s)"
 msgid "Server replies"
 msgstr "Réponses du serveur"
 
-#: src/modules/options/optw_servers.cpp:1166
-#: src/modules/options/optw_servers.cpp:1367
+#: src/modules/options/optw_servers.cpp:1201
+#: src/modules/options/optw_servers.cpp:1402
 msgid "Server:"
 msgstr "Serveur :"
 
@@ -3721,7 +3786,7 @@ msgstr "Serveur :"
 msgid "Servers"
 msgstr "Les serveurs"
 
-#: src/modules/options/optw_connection.cpp:226
+#: src/modules/options/optw_connection.cpp:230
 msgid "Service port:"
 msgstr "Port du service :"
 
@@ -3748,7 +3813,7 @@ msgstr "Mise à l'échelle dans la liste d'utilisateurs"
 msgid "Show channel mode prefix"
 msgstr "Montrer le préfixe de mode de salon"
 
-#: src/modules/options/optw_channel.cpp:125
+#: src/modules/options/optw_channel.cpp:130
 msgid "Show channel sync time"
 msgstr "Afficher le temps de synchronisation du salon"
 
@@ -3822,7 +3887,7 @@ msgstr "Montrer les pings du serveur"
 msgid "Show the CTCP replies in the active window"
 msgstr "Montrer les réponses aux CTCP dans la fenêtre active"
 
-#: src/modules/options/optw_servers.cpp:1208
+#: src/modules/options/optw_servers.cpp:1243
 msgid "Show this dialog at startup"
 msgstr "Montrer cette boîte de dialogue au démarrage"
 
@@ -3883,11 +3948,6 @@ msgstr "Supprimer des couleurs dans les journaux"
 msgid "Strip message type numbers in logs"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:647
-#, fuzzy
-msgid "Supports STARTTLS protocol"
-msgstr "Utiliser le protocole SSL"
-
 #: src/modules/options/optw_ircoutput.cpp:64
 msgid "System locale format"
 msgstr ""
@@ -3896,13 +3956,12 @@ msgstr ""
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Test"
 
 #: src/modules/options/optw_servers.cpp:171
-#: src/modules/options/optw_servers.cpp:677
+#: src/modules/options/optw_servers.cpp:682
 #, fuzzy
 msgid "Text Encoding:"
 msgstr "Encodage du Texte :"
@@ -4000,7 +4059,7 @@ msgstr ""
 "bas à gauche est un petit moteur de recherche. Il mettra en surbrillance les "
 "pages qui contiennent des options liées à votre recherche."
 
-#: src/modules/options/optw_connection.cpp:131
+#: src/modules/options/optw_connection.cpp:135
 msgid "This executable has no SSL support."
 msgstr "Cet executable n'a pas de support SSL."
 
@@ -4129,12 +4188,11 @@ msgstr ""
 #: src/modules/options/optw_userlist.cpp:146
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 msgid "Tile"
 msgstr "Mosaïque"
 
-#: src/modules/options/optw_connection.cpp:147
+#: src/modules/options/optw_connection.cpp:151
 msgid "Timeout Values"
 msgstr "Temps d'Expirations"
 
@@ -4197,7 +4255,7 @@ msgstr "Impossible d'écrire les infos sur la langue dans"
 msgid "Unknown protocol handler command:"
 msgstr "Commande pour gérer les protocoles inconnus :"
 
-#: src/modules/options/optw_servers.cpp:1397
+#: src/modules/options/optw_servers.cpp:1432
 msgid "UnknownNet"
 msgstr "RéseauInconnu"
 
@@ -4214,7 +4272,12 @@ msgstr "Utiliser une faille de rebondisseur pour détecter l'adresse"
 msgid "Use \"smart\" notify list manager"
 msgstr "Utiliser le gestionnaire \"intelligent\" de liste de notifications"
 
-#: src/modules/options/optw_servers.cpp:624
+#: src/modules/options/optw_servers.cpp:645
+#, fuzzy
+msgid "Use CAP protocol"
+msgstr "Utiliser le protocole IPV6"
+
+#: src/modules/options/optw_servers.cpp:622
 #: src/modules/options/optw_proxy.cpp:129
 msgid "Use IPv6 protocol"
 msgstr "Utiliser le protocole IPV6"
@@ -4226,20 +4289,20 @@ msgstr "Utiliser le protocole IPV6"
 msgid "Use Language Encoding"
 msgstr "Utiliser l'Encodage du Texte"
 
-#: src/modules/options/optw_servers.cpp:693
-#: src/modules/options/optw_servers.cpp:694
+#: src/modules/options/optw_servers.cpp:698
+#: src/modules/options/optw_servers.cpp:699
 msgid "Use Network Encoding"
 msgstr "Utiliser l'Encodage propre au Réseau"
 
-#: src/modules/options/optw_connection.cpp:106
+#: src/modules/options/optw_connection.cpp:110
 msgid "Use SSL certificate (PEM format only)"
 msgstr "Utiliser un certificat SSL (format PEM seulement)"
 
-#: src/modules/options/optw_connection.cpp:116
+#: src/modules/options/optw_connection.cpp:120
 msgid "Use SSL private key"
 msgstr "Utiliser une clé SSL privée"
 
-#: src/modules/options/optw_servers.cpp:637
+#: src/modules/options/optw_servers.cpp:635
 msgid "Use SSL protocol"
 msgstr "Utiliser le protocole SSL"
 
@@ -4332,7 +4395,12 @@ msgstr "Utiliser une couleur différente pour son propre pseudo"
 msgid "Use system URL handlers"
 msgstr "Utiliser l'intercepteur d'URL du système"
 
-#: src/modules/options/optw_connection.cpp:125
+#: src/modules/options/optw_connection.cpp:89
+#, fuzzy
+msgid "Use the SASL authentication protocol if available"
+msgstr "Utiliser la méthode WATCH si disponible"
+
+#: src/modules/options/optw_connection.cpp:129
 #, fuzzy
 msgid "Use the STARTTLS security protocol if available"
 msgstr "Utiliser la méthode WATCH si disponible"
@@ -4509,8 +4577,7 @@ msgstr "[PRÉFIXE]pseudo[!num_d_utilisateur@machine][SUFFIXE] message"
 msgid "[Unknown Media Type]"
 msgstr "[Type de Média Inconnu]"
 
-#: src/modules/options/optw_dcc.cpp:235
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "octets/sec"
 
@@ -4518,7 +4585,7 @@ msgstr "octets/sec"
 msgid "en"
 msgstr "fr"
 
-#: src/modules/options/optw_servers.cpp:1610
+#: src/modules/options/optw_servers.cpp:1645
 msgid "irc.unknown.net"
 msgstr "irc.inconnu.net"
 
