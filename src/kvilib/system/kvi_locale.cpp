@@ -812,12 +812,12 @@ namespace KviLocale
 			{
 				//debug("KviLocale: loaded catalogue %s",name);
 				g_pCatalogueDict->insert(KviQString::toUtf8(name).data(),c);
-                delete c;
-                c = 0;
+				delete c;
+				c = 0;
 				return true;
 			}
-            delete c;
-            c = 0;
+			delete c;
+			c = 0;
 		}
 		return false;
 	}
