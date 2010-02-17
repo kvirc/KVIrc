@@ -1034,14 +1034,14 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		pa.drawTiledPixmap(r,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
+		pa.fillRect(r,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
+		
 		QPixmap * pix = m_pPrivateBackgroundPixmap;
 
 		if(!pix)
 			pix = KVI_OPTION_PIXMAP(KviOption_pixmapIrcViewBackground).pixmap();
 		if(pix)
 			KviPixmapUtils::drawPixmapWithPainter(&pa,pix,KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign),r,widgetWidth,widgetHeight);
-		else 
-			pa.fillRect(r,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
