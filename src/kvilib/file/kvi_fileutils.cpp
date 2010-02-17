@@ -322,13 +322,14 @@ namespace KviFileUtils
 		char * buf = new char[f.size() + 1];
 		if(f.readBlock(buf,f.size()) != ((long int)f.size()))
 		{
-			delete buf;
+			delete[] buf;
             buf = 0;
 			return false;
 		}
 		buf[f.size()] = '\0';
 		szBuffer = QString::fromUtf8(buf);
 		delete[] buf;
+        buf = 0;
 		return true;
 	}
 

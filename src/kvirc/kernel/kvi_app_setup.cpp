@@ -706,7 +706,11 @@ bool KviApp::findLocalKvircDirectory()
 
 				unsigned int uSourcesDate = cfgMainGroup->readEntry("SourcesDate").toInt();
 				if(uSourcesDate < KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP)
-					return false; // we force a setup anyway
+                {
+                        delete cfgMainGroup;
+                        cfgMainGroup = 0;
+    					return false; // we force a setup anyway
+                }
 
 				// If we have it , ok...done
 				if(checkLocalKvircDirectory(m_szLocalKvircDir))return true;
@@ -903,6 +907,8 @@ void KviApp::saveKvircDirectory()
 				cfgMainGroup->writeEntry("LocalKvircDirectory",m_szLocalKvircDir);
 				cfgMainGroup->writeEntry("SourcesDate",KVI_SOURCES_DATE_NUMERIC);
 				cfg->sync();
+                delete cfgMainGroup;
+                cfgMainGroup = 0;
 				return;
 			}
 		}
