@@ -100,10 +100,10 @@ namespace KviFileUtils
 
 	/**
 	* \brief Removes a file
-	* \param path The file to remove
+	* \param pcPath The file to remove
 	* \return bool
 	*/
-	extern KVILIB_API bool removeFile(const char * path);
+	extern KVILIB_API bool removeFile(const char * pcPath);
 
 	/**
 	* \brief Removes a dir (must be empty)
@@ -114,10 +114,10 @@ namespace KviFileUtils
 
 	/**
 	* \brief Removes a dir (must be empty)
-	* \param path The directory to remove
+	* \param pcPath The directory to remove
 	* \return bool
 	*/
-	extern KVILIB_API bool removeDir(const char * path);
+	extern KVILIB_API bool removeDir(const char * pcPath);
 
 	/**
 	* \brief Removes a dir recursively
@@ -137,12 +137,12 @@ namespace KviFileUtils
 
 	/**
 	* \brief Writes a complete file (UTF-8 version)
-	* \param path The path to the file
+	* \param pcPath The path to the file
 	* \param szData The data to write
 	* \param bAppend If we want to append data or overwrite
 	* \return bool
 	*/
-	extern KVILIB_API bool writeFile(const char * path, const QString & szData, bool bAppend = false);
+	extern KVILIB_API bool writeFile(const char * pcPath, const QString & szData, bool bAppend = false);
 
 	/**
 	* \brief Writes a complete file (local 8 bit version)
@@ -155,12 +155,12 @@ namespace KviFileUtils
 
 	/**
 	* \brief Writes a complete file (local 8 bit version)
-	* \param path The path to the file
+	* \param pcPath The path to the file
 	* \param szData The data to write
 	* \param bAppend If we want to append data or overwrite
 	* \return bool
 	*/
-	extern KVILIB_API bool writeFileLocal8Bit(const char * path, const QString & szData, bool bAppend = false);
+	extern KVILIB_API bool writeFileLocal8Bit(const char * pcPath, const QString & szData, bool bAppend = false);
 
 	/**
 	* \brief Reads a complete file and puts it in the string szBuffer
@@ -177,12 +177,12 @@ namespace KviFileUtils
 	* \brief Reads a complete file and puts it in the string szBuffer
 	*
 	* The file must be smaller than uMaxSize bytes
-	* \param path The path to the file to read
+	* \param pcPath The path to the file to read
 	* \param szBuffer The buffer where to load the file
 	* \param uMaxSize The maximum size of the file to read
 	* \return bool
 	*/
-	extern KVILIB_API bool readFile(const char * path, QString & szBuffer, unsigned int uMaxSize = 65535);
+	extern KVILIB_API bool readFile(const char * pcPath, QString & szBuffer, unsigned int uMaxSize = 65535);
 
 	/**
 	* \brief Extracts the filename from a complete path (strips leading path)
@@ -208,11 +208,11 @@ namespace KviFileUtils
 
 	/**
 	* \brief Copy the file (cp -f)
-	* \param src The source file
-	* \param dst The destination file
+	* \param pcSrc The source file
+	* \param pcDst The destination file
 	* \return bool
 	*/
-	extern KVILIB_API bool copyFile(const char * src, const char * dst);
+	extern KVILIB_API bool copyFile(const char * pcSrc, const char * pcDst);
 
 	/**
 	* \brief Rename or move the file (mv)
@@ -224,11 +224,11 @@ namespace KviFileUtils
 
 	/**
 	* \brief Rename or move the file (mv)
-	* \param src The source file
-	* \param dst The destination file
+	* \param pcSrc The source file
+	* \param pcDst The destination file
 	* \return bool
 	*/
-	extern KVILIB_API bool renameFile(const char * src, const char * dst);
+	extern KVILIB_API bool renameFile(const char * pcSrc, const char * pcDst);
 
 	/**
 	* \brief Create a directory (mkdir)
@@ -239,30 +239,30 @@ namespace KviFileUtils
 
 	/**
 	* \brief Create a directory (mkdir)
-	* \param path The path to the directory
+	* \param pcPath The path to the directory
 	* \return bool
 	*/
-	extern KVILIB_API bool makeDir(const char * path);
+	extern KVILIB_API bool makeDir(const char * pcPath);
 
 	/**
 	* \brief Reads a text line, returns false if EOF is reached
-	* \param f The source file
+	* \param pFile The source file
 	* \param szBuffer The buffer where to store the line read
 	* \param bUtf8 If we want to convert from UTF-8
 	* \return bool
 	*/
-	extern KVILIB_API bool readLine(QFile * f, QString & szBuffer, bool bUtf8 = true);
+	extern KVILIB_API bool readLine(QFile * pFile, QString & szBuffer, bool bUtf8 = true);
 
 	/**
 	* \brief Reads text lines, returns false if EOF is reached
-	* \param f The source file
+	* \param pFile The source file
 	* \param buffer The buffer where to store the lines read
 	* \param iStartLine The number of the first line to read
 	* \param iCount The number of lines to read
 	* \param bUtf8 If we want to convert from UTF-8
 	* \return bool
 	*/
-	extern KVILIB_API bool readLines(QFile * f, QStringList & buffer, int iStartLine = 0, int iCount = -1, bool bUtf8 = true);
+	extern KVILIB_API bool readLines(QFile * pFile, QStringList & buffer, int iStartLine = 0, int iCount = -1, bool bUtf8 = true);
 
 	/**
 	* \brief Returns true if the file is readable, false otherwise
@@ -283,20 +283,20 @@ namespace KviFileUtils
 	*
 	* There is NO way to come back to the original string the algo is
 	* one-way only
-	* \param path
+	* \param szPath
 	* \return void
 	*/
-	KVILIB_API extern void encodeFileName(QString & path);
+	KVILIB_API extern void encodeFileName(QString & szPath);
 
 	/**
 	* \brief Removes any unusable character from a filename (with no path!)
 	*
 	* There is NO way to come back to the original string the algo is
 	* one-way only
-	* \param path
+	* \param szPath
 	* \return void
 	*/
-	KVILIB_API extern void cleanFileName(QString & path);
+	KVILIB_API extern void cleanFileName(QString & szPath);
 }
 
 #endif //_KVI_FILEUTILS_H
