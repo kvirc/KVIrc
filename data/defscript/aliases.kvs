@@ -220,7 +220,7 @@ alias(names)
 		{
 		        echo $tr("Usage:") "/names <channel>"
 		} else {
-			raw names $active
+			raw names $chan.name($active)
 		}
 	} else {
 		raw names $0-
