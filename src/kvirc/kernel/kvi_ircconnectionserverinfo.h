@@ -107,6 +107,17 @@ public:
 	virtual bool getNeedsOpToListModeseI() { return true; };
 };
 
+class KVIRC_API KviInspIRCdIrcServerInfo : public KviBasicIrcServerInfo
+{
+	//chatspike
+public:
+	KviInspIRCdIrcServerInfo(const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(version) {;};
+	virtual char getRegisterModeChar() { return 'r'; };
+	virtual const char * getSoftware() { return "InspIRCd"; };
+	virtual bool getNeedsOpToListModeseI() { return true; };
+};
+
 class KVIRC_API KviIrcConnectionServerInfo
 {
 	friend class KviConsole; // for now

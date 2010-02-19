@@ -227,6 +227,8 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviIrcdSevenIrcServerInfo(version);
 	else if(version.contains("ratbox",Qt::CaseInsensitive))
 		m_pServInfo = new KviIrcdRatboxIrcServerInfo(version);
+	else if(version.contains("inspircd",Qt::CaseInsensitive))
+		m_pServInfo = new KviInspIRCdIrcServerInfo(version);
 	else
 		m_pServInfo = new KviBasicIrcServerInfo(version);
 }
