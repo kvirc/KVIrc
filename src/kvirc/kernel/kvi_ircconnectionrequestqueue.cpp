@@ -87,7 +87,11 @@ void KviRequestQueue::timerSlot()
 		{
 			case BanException:
 				if(pChan->connection()->serverInfo()->supportsModesIe() &&
-					!KVI_OPTION_BOOL(KviOption_boolDisableBanExceptionListRequestOnJoin))
+					!KVI_OPTION_BOOL(KviOption_boolDisableBanExceptionListRequestOnJoin) &&
+					!(	pChan->connection()->serverInfo()->getNeedsOpToListModeseI() &&
+						!pChan->isMeOp()
+					 )
+				)
 				{
 					if(!pChan->connection()->sendFmtData("MODE %s e",encodedChan.data()))
 						clearAll(); // disconnected
@@ -97,7 +101,11 @@ void KviRequestQueue::timerSlot()
 				}
 			case Invite:
 				if(pChan->connection()->serverInfo()->supportsModesIe() &&
-					!KVI_OPTION_BOOL(KviOption_boolDisableInviteListRequestOnJoin))
+					!KVI_OPTION_BOOL(KviOption_boolDisableInviteListRequestOnJoin) &&
+					!(	pChan->connection()->serverInfo()->getNeedsOpToListModeseI() &&
+						!pChan->isMeOp()
+					 )
+				)
 				{
 					if(!pChan->connection()->sendFmtData("MODE %s I",encodedChan.data()))
 						clearAll(); // disconnected
