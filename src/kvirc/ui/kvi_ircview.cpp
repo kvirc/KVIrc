@@ -1635,8 +1635,8 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 				curBlockLen--;
 				curLineWidth-=IRCVIEW_WCHARWIDTH(*p);
 			}
-			//Now look for a space
-			while((*p != ' ') && (curBlockLen > 0))
+			//Now look for a space (ar a tabulation)
+			while((*p != ' ' && *p != 9) && (curBlockLen > 0))
 			{
 				p--;
 				curBlockLen--;
@@ -1664,15 +1664,21 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 				//Go ahead up to the biggest possible string
 				if(maxBlockLen > 0)
 				{
+					//avoid a loop when IRCVIEW_WCHARWIDTH(*p) > maxWidth
+					uint uLoopedChars=0;
 					do
 					{
 						curBlockLen++;
 						p++;
 						curLineWidth+=IRCVIEW_WCHARWIDTH(*p);
+						uLoopedChars++;
 					} while((curLineWidth < maxWidth) && (curBlockLen < maxBlockLen));
-					//Now overrunned , go back 1 char
-					p--;
-					curBlockLen--;
+					//Now overrunned , go back 1 char (if we ran over at least 2 chars)
+					if(uLoopedChars>1)
+					{
+						p--;
+						curBlockLen--;
+					}
 				}
 				//K...wrap
 			} else {
