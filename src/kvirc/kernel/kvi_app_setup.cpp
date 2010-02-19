@@ -143,7 +143,7 @@ bool KviApp::checkFileAssociations()
 		free(pcBuffer);
 		return false;
 	} else {
-		if(!kvi_strEqualCI(__tr2qs("KVIrc KVS Script").toLocal8Bit().data(),buffer))
+		if(!kvi_strEqualCI(__tr2qs("KVIrc KVS Script").toLocal8Bit().data(),pcBuffer))
 		{
 			free(pcBuffer);
 			return false;
