@@ -206,6 +206,7 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 							case 'b':
 							case 'I':
 							case 'e':
+							case 'q':
 							case 'f':
 							case 'k':
 								KviQString::sprintf(cmd,"mode %Q %c%c %Q",&target,plmn.toLatin1(),flag.toLatin1(),&linkText);
@@ -946,6 +947,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 							case 'b':
 							case 'I':
 							case 'e':
+							case 'q':
 							case 'f':
 							case 'k':
 								KviQString::appendFormatted(tip,QString("<b>mode %Q %c%c %Q</b>"),&(m_pKviWindow->windowName()),plmn.toLatin1(),flag.toLatin1(),&linkText);
