@@ -47,6 +47,7 @@ public:
 	const QString & getChannelModeDescription(QChar mode);
 	const QString & getUserModeDescription(QChar mode);
 	virtual char getRegisterModeChar() { return 0; };
+	virtual const char * getSoftware() { return "Ircd"; };
 };
 
 class KVIRC_API KviUnrealIrcServerInfo : public KviBasicIrcServerInfo
@@ -55,6 +56,7 @@ public:
 	KviUnrealIrcServerInfo(const QString & version = KviQString::Empty)
 		:KviBasicIrcServerInfo(version) {;};
 	virtual char getRegisterModeChar() { return 'r'; };
+	virtual const char * getSoftware() { return "Unreal"; };
 };
 
 class KVIRC_API KviBahamutIrcServerInfo : public KviBasicIrcServerInfo
@@ -63,6 +65,7 @@ public:
 	KviBahamutIrcServerInfo(const QString & version = KviQString::Empty)
 		:KviBasicIrcServerInfo(version) {;};
 	virtual char getRegisterModeChar() { return 'r'; };
+	virtual const char * getSoftware() { return "Bahamut"; };
 };
 
 class KVIRC_API KviHyperionIrcServerInfo : public KviBasicIrcServerInfo
@@ -71,6 +74,16 @@ public:
 	KviHyperionIrcServerInfo(const QString & version = KviQString::Empty)
 		:KviBasicIrcServerInfo(version) {;};
 	virtual char getRegisterModeChar() { return 'e'; };
+	virtual const char * getSoftware() { return "Hyperion"; };
+};
+
+class KVIRC_API KviIrcdSevenIrcServerInfo : public KviBasicIrcServerInfo
+{
+public:
+	KviIrcdSevenIrcServerInfo(const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(version) {;};
+	virtual char getRegisterModeChar() { return 0; };
+	virtual const char * getSoftware() { return "Ircd-seven"; };
 };
 
 class KVIRC_API KviIrcConnectionServerInfo
@@ -104,6 +117,7 @@ private:
 	QStringList m_szaEnabledCaps;
 public:
 	char  registerModeChar() { return m_pServInfo ?  m_pServInfo->getRegisterModeChar() : 0; };
+	const char * software(){ return m_pServInfo ? m_pServInfo->getSoftware() : 0; };
 	const QString & name(){ return m_szName; };
 	const QString & supportedUserModes(){ return m_szSupportedUserModes; };
 	const QString & supportedChannelModes(){ return m_szSupportedChannelModes; };

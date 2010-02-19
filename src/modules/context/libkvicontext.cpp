@@ -72,6 +72,22 @@
 		return true; \
 	}
 
+#define STANDARD_SERVERINFO_TARGET_PARAMETER(_fncName,_setCall) \
+	static bool _fncName(KviKvsModuleFunctionCall * c) \
+	{ \
+		GET_CONNECTION_FROM_STANDARD_PARAMS \
+		if(pConnection) \
+		{ \
+			if(pConnection->serverInfo()) \
+			{ \
+				_setCall; \
+				return true; \
+			} \
+		} \
+		c->returnValue()->setNothing(); \
+		return true; \
+	}
+
 /*
 	@doc: context.networkName
 	@type:
@@ -216,6 +232,36 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		context_kvs_fnc_serverIsSSL,
 		c->returnValue()->setBoolean(pConnection->target()->server()->useSSL())
+	)
+
+/*
+	@doc: context.serverSoftware
+	@type:
+		function
+	@title:
+		$context.serverSoftware
+	@short:
+		Returns the software running on the irc server, if recognized
+	@syntax:
+		<string> $context.serverSoftware
+		<string> $context.serverSoftware(<irc_context_id:uint>)
+	@description:
+		Returns the software running on the irc server, if it has been
+		recognized at connection time.
+		If no irc_context_id is specified then the current irc_context is used.
+		If the irc_context_id specification is not valid then this function
+		returns nothing (that evaluates to false). If the specified IRC context
+		is not currently connected then this function returns nothing (that
+		evaluates to false).
+	@seealso:
+		[fnc]$context.serverPort[/fnc],
+		[fnc]$context.serverHostName[/fnc],
+		[fnc]$context.serverPassword[/fnc]
+*/
+
+STANDARD_SERVERINFO_TARGET_PARAMETER(
+		context_kvs_fnc_serverSoftware,
+		c->returnValue()->setString(pConnection->serverInfo()->software())
 	)
 
 /*
@@ -380,6 +426,7 @@ static bool context_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"networkName",context_kvs_fnc_networkName);
 	KVSM_REGISTER_FUNCTION(m,"state",context_kvs_fnc_state);
 	KVSM_REGISTER_FUNCTION(m,"list",context_kvs_fnc_list);
+	KVSM_REGISTER_FUNCTION(m,"serverSoftware",context_kvs_fnc_serverSoftware);
 
 	return true;
 }

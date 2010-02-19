@@ -223,6 +223,8 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviBahamutIrcServerInfo(version);
 	else if(version.contains("hyperion",Qt::CaseInsensitive))
 		m_pServInfo = new KviHyperionIrcServerInfo(version);
+	else if(version.contains("ircd-seven",Qt::CaseInsensitive))
+		m_pServInfo = new KviIrcdSevenIrcServerInfo(version);
 	else
 		m_pServInfo = new KviBasicIrcServerInfo(version);
 }
