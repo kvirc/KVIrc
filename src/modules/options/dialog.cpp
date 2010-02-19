@@ -248,7 +248,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	g1->addWidget(b,1,4);
 
-	g1->setRowStretch(1,1);
+	g1->setRowStretch(0,1);
 	g1->setColumnStretch(1,1);
 
 
