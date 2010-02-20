@@ -106,11 +106,11 @@ KviUserListEntry::KviUserListEntry(KviUserListView * pParent, const QString & sz
 
 KviUserListEntry::~KviUserListEntry()
 {
-	if(m_pConnectedAnimation)
+	/*if(m_pConnectedAnimation)
 	{
 		m_pConnectedAnimation->disconnect(SIGNAL(frameChanged()),
 			m_pListView,SLOT(animatedAvatarUpdated()));
-	}
+	}*/
 }
 
 void KviUserListEntry::resetAvatarConnection()
@@ -1299,11 +1299,11 @@ bool KviUserListView::nickChange(const QString & szOldNick, const QString & szNe
 		int iFlags        = pEntry->m_iFlags;
 		kvi_time_t joint  = pEntry->m_joinTime;
 		bool bSelect      = pEntry->m_bSelected;
-		if(pEntry->m_pConnectedAnimation)
+		/*if(pEntry->m_pConnectedAnimation)
 		{
 			pEntry->m_pConnectedAnimation->disconnect(SIGNAL(frameChanged()),
 				this,SLOT(animatedAvatarUpdated()));
-		}
+		}*/
 		KviAvatar * pAv   = pEntry->m_pGlobalData->forgetAvatar();
 
 		KviIrcUserEntry::Gender gender = pEntry->m_pGlobalData->gender();
