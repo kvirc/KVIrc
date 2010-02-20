@@ -1,4 +1,47 @@
-   October 2009
+This is KVIrc's changelog. It tipically lists new added features and changes that modify
+kvirc's previous behaviour. For a more detailed (and up to date) log, point your browser at:
+  https://svn.kvirc.de/kvirc/timeline
+
+
+February 2010
+   [CtrlAltCa]
+   - Avoid the use of X11 api to get an ARGB visual; use Qt::WA_TranslucentBackground instead
+   - Better support for freenode's ircd-seven:
+     introduce a delayed queue for requests, to avoid excess floods
+     full support for +q (quiet ban) mode
+   - added support for CAP (extended capabilities)
+   - added support for SASL (plain and dh-blowfish methods)
+   [Noldor]
+   - Rewrote the aliaseditor module
+
+
+January 2010
+   [CtrlAltCa]
+   - Added realtime filtering for channels list (request #60)
+   - Kde4 emoticon theme
+   [Noldor]
+   - Fixed installing script while aliaseditor is open 
+   - Ported Newsticker script
+   - KVS improvements/cleaning
+   - Ported Objectsdumptree script
+   - Ported Twins Media Player, Twinslagbar and Twinsquotes scripts
+
+December 2009
+   [CtrlAltCa]
+   - Support for -fvisibility=hidden compilation flag
+   - Switched license to GPL2 or later
+   [HelLViS69]
+   - Added function $chan.common
+   - Added Mozilla Songbird support
+   - Added ISO 8601 and system locale datetime formats configurable from options 
+
+November 2009
+   [CtrlAltCa]
+   - first shy implementation of dcc video
+   [Curan]
+   - merged the no_embedded branch to trunk
+
+October 2009
    [HelLViS69]
    - Reworked the whole addon system: the new packaging handler with a simple wizard will guide
      you during the addon creation process. Moreover now you need to follow a strict set of rules
@@ -12,6 +55,7 @@
    - Improved url module
    - Removed KviTalTreeWidget class
    - More work on Phonon
+   - Created documentation file on keyboard shortcuts
 
 26 August 2009
    [CtrlAltCa]
