@@ -36,21 +36,11 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QTreeWidget>
-#include <QStyledItemDelegate>
-#include <QAbstractItemView>
+
 
 class QSplitter;
 class KviScriptEditor;
 
-class KVIRC_API KviAliasEditorTreeWidgetItemDelegate : public QStyledItemDelegate
-{
-public:
-        KviAliasEditorTreeWidgetItemDelegate(QAbstractItemView * pWidget=0)
-                : QStyledItemDelegate(pWidget) {};
-        ~KviAliasEditorTreeWidgetItemDelegate(){};
-       // QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
-        void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
-};
 
 
 class KviAliasEditorTreeWidgetItem : public QTreeWidgetItem, public KviHeapObject
@@ -150,7 +140,7 @@ void newItem(QString &szName,KviAliasEditorTreeWidgetItem::Type eType);
         void aliasRefresh(const QString &szName);
 
 protected:
-        KviAliasEditorTreeWidgetItemDelegate *m_pItemDelegate;
+
         void recursiveCollapseNamespaces(KviAliasEditorTreeWidgetItem * it);
 	void recursiveSearchReplace(const QString &szSearch,KviAliasEditorTreeWidgetItem * it,bool bReplace=false,const QString &szReplace="n");
 
@@ -184,9 +174,7 @@ protected:
         KviAliasEditorTreeWidgetItem * findTopLevelItem(const QString &szName);
         KviAliasEditorTreeWidgetItem * createFullItem(const QString &szFullName);
         KviAliasEditorTreeWidgetItem * findItem(const QString &szName);
-        KviAliasEditorTreeWidgetItem * createFullItemRecursive(QTreeWidgetItem *pCurrent,QStringList & lNameSpaces,int & iLevel);
-        KviAliasEditorTreeWidgetItem * findItemRecursive(QTreeWidgetItem *it,QStringList & lNameSpaces,int & iLevel);
-	QString buildFullItemName(KviAliasEditorTreeWidgetItem * it);
+        QString buildFullItemName(KviAliasEditorTreeWidgetItem * it);
 };
 
 
