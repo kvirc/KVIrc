@@ -28,6 +28,7 @@
 #include "kvi_app.h"
 #include "kvi_frame.h"
 #include "kvi_window.h"
+#include "kvi_out.h"
 
 #include <QPainter>
 
@@ -60,7 +61,7 @@ KviThemedLabel::~KviThemedLabel()
 void KviThemedLabel::applyOptions()
 {
 	QPalette pal = palette();
-	pal.setBrush(QLabel::foregroundRole(),KVI_OPTION_COLOR(KviOption_colorLabelForeground));
+	pal.setBrush(QLabel::foregroundRole(),KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()));
 	setPalette(pal);
 
 	setFont(KVI_OPTION_FONT(KviOption_fontLabel));
@@ -82,13 +83,7 @@ void KviThemedLabel::paintEvent(QPaintEvent *e)
 		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
-		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeWindowListBackground).pixmap();
-		if(pix)
-		{
-			KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),contentsRect(),contentsRect().width(),contentsRect().height());
-		} else {
-			p->fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
-		}
+	p->fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif

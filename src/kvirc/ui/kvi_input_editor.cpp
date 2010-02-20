@@ -260,13 +260,11 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 		p.drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
+		p.fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorInputBackground));
+		
 		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap();
 		if(pix)
-		{
 			KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),contentsRect(),contentsRect().width(),contentsRect().height());
-		} else {
-			p.fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorLabelBackground));
-		}
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
