@@ -29,6 +29,8 @@
 	: KToolBar(pcName,pWnd,type,bNewLine)
 	{
 		setWindowTitle(szLabel);
+		//toolbars are locked by default
+		setToolBarsLocked(false);
 	}
 #else
 	KviTalToolBar::KviTalToolBar(const QString & szLabel, QMainWindow * pWnd, Qt::ToolBarArea type, bool bNewLine, const char * pcName)
@@ -60,6 +62,7 @@
 	{
 		this->setLayout(pLayout);
 	}
+#endif // COMPILE_KDE_SUPPORT
 
 	bool KviTalToolBar::usesBigPixmaps()
 	{
@@ -73,7 +76,6 @@
 		else
 			setIconSize(QSize(22,22));
 	}
-#endif // COMPILE_KDE_SUPPORT
 
 KviTalToolBar::~KviTalToolBar()
 {

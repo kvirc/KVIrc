@@ -34,14 +34,7 @@ public:
 	~KviToolBar();
 protected:
 	virtual void mousePressEvent(QMouseEvent * e);
-	void moveTo(Qt::ToolBarArea type);
 public slots:
-	void moveToTop();
-	void moveToLeft();
-	void moveToRight();
-	void moveToBottom();
-	void moveToMinimized();
-	void moveToTornOff();
 	void setBigIcons();
 	void setSmallIcons();
 };

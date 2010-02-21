@@ -1169,6 +1169,35 @@ void KviFrame::switchToNextWindowInContext(void)
 	m_pWindowList->switchWindow(true,true);
 }
 
+void KviFrame::setUsesBigPixmaps(bool bUse)
+{
+	KviTalMainWindow::setUsesBigPixmaps(bUse);
+
+	KviPointerListIterator<KviMexToolBar> it(*(m_pModuleExtensionToolBarList));
+	if(it.current())
+	{
+		while(KviMexToolBar * t = it.current())
+		{
+			t->setUsesBigPixmaps(bUse);
+			t->update();
+			++it;
+		}
+	}
+
+	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it2(*(KviCustomToolBarManager::instance()->descriptors()));
+	if(it2.current())
+	{
+		while(KviCustomToolBarDescriptor * d = it2.current())
+		{
+			if(d->toolBar())
+			{
+				d->toolBar()->setUsesBigPixmaps(bUse);
+				d->toolBar()->update();
+			}
+			++it2;
+		}
+	}
+}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_frame.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

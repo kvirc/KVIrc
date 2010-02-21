@@ -52,7 +52,7 @@ KviCustomToolBar::KviCustomToolBar(KviCustomToolBarDescriptor * pDesc, const QSt
 	setAcceptDrops(true);
 	connect(KviActionManager::instance(),SIGNAL(beginCustomizeToolBars()),this,SLOT(beginCustomize()));
 	connect(KviActionManager::instance(),SIGNAL(endCustomizeToolBars()),this,SLOT(endCustomize()));
-	setMinimumSize(20,20);
+// 	setMinimumSize(20,20);
 	pDesc->registerToolBar(this);
 	if(KviActionManager::customizingToolBars())
 		beginCustomize(); // because we will not get the signal

@@ -34,15 +34,6 @@
 #include "kvi_settings.h"
 
 /**
-* \def QT_TOOLBAR_MINIMIZED Defines 'Minimized' as it was 'Top'
-* \def QT_TOOLBAR_TORNOFF Defines 'Tornoff' as it was 'Top'
-*/
-// THESE ARE UNSUPPORTED UNDER QT4!
-#define QT_TOOLBAR_MINIMIZED Qt::TopToolBarArea
-#define QT_TOOLBAR_TORNOFF Qt::TopToolBarArea
-
-
-/**
 * \class KviTalToolBar
 * \brief Toolkit Abstraction Layer: toolbar class
 */
@@ -103,7 +94,7 @@ public:
 	* \return void
 	*/
 	void setBoxLayout(QBoxLayout * pLayout);
-
+#endif // COMPILE_KDE_SUPPORT
 	/**
 	* \brief Returns true if the toolbar uses big pixmaps
 	* \return bool
@@ -116,7 +107,6 @@ public:
 	* \return void
 	*/
 	void setUsesBigPixmaps(bool bUse);
-#endif // COMPILE_KDE_SUPPORT
 };
 
 #endif //_KVI_TAL_TOOLBAR_H_

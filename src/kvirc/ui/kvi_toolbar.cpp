@@ -85,59 +85,12 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 	g_pFrame->fillToolBarsPopup(g_pToolBarWindowsPopup);
 	g_pToolBarContextPopup->insertItem(__tr2qs("Toolbars"),g_pToolBarWindowsPopup);
 
-	g_pToolBarContextPopup->insertItem(__tr2qs("Orientation"),g_pToolBarPositionsPopup);
-
-	g_pToolBarPositionsPopup->insertItem(__tr2qs("Top"),this,SLOT(moveToTop()));
-	g_pToolBarPositionsPopup->insertItem(__tr2qs("Left"),this,SLOT(moveToLeft()));
-	g_pToolBarPositionsPopup->insertItem(__tr2qs("Right"),this,SLOT(moveToRight()));
-	g_pToolBarPositionsPopup->insertItem(__tr2qs("Bottom"),this,SLOT(moveToBottom()));
-	g_pToolBarPositionsPopup->insertSeparator();
-	g_pToolBarPositionsPopup->insertItem(__tr2qs("Detached"),this,SLOT(moveToTornOff()));
-	g_pToolBarPositionsPopup->insertItem(__tr2qs("Flat"),this,SLOT(moveToMinimized()));
-
 	g_pToolBarContextPopup->insertItem(__tr2qs("Icon Size"),g_pToolBarIconSizesPopup);
 
 	g_pToolBarIconSizesPopup->insertItem(__tr2qs("Small (22x22)"),this,SLOT(setSmallIcons()));
 	g_pToolBarIconSizesPopup->insertItem(__tr2qs("Large (32x32)"),this,SLOT(setBigIcons()));
 
 	g_pToolBarContextPopup->popup(QCursor::pos());
-}
-
-void KviToolBar::moveTo(Qt::ToolBarArea type)
-{
-	// FIXME: this should be hidden in Tal
-	g_pFrame->removeToolBar(this);
-	g_pFrame->addToolBar(type,this);
-}
-
-void KviToolBar::moveToTop()
-{
-	moveTo(Qt::TopToolBarArea);
-}
-
-void KviToolBar::moveToLeft()
-{
-	moveTo(Qt::LeftToolBarArea);
-}
-
-void KviToolBar::moveToRight()
-{
-	moveTo(Qt::RightToolBarArea);
-}
-
-void KviToolBar::moveToBottom()
-{
-	moveTo(Qt::BottomToolBarArea);
-}
-
-void KviToolBar::moveToMinimized()
-{
-	moveTo(QT_TOOLBAR_MINIMIZED);
-}
-
-void KviToolBar::moveToTornOff()
-{
-	moveTo(QT_TOOLBAR_TORNOFF);
 }
 
 void KviToolBar::setBigIcons()
