@@ -60,9 +60,6 @@ KviTreeWindowListItem::KviTreeWindowListItem(KviTreeWindowListItem * par,KviWind
 
 KviTreeWindowListItem::~KviTreeWindowListItem()
 {
-	KviTreeWindowListTreeWidget* pView= (KviTreeWindowListTreeWidget*)treeWidget();
-	if(pView)
-		if(pView->m_pPrevItem==this) pView->m_pPrevItem=0;
 }
 
 void KviTreeWindowListItem::applyOptions()
@@ -118,7 +115,7 @@ void KviTreeWindowListItem::unhighlight()
 void KviTreeWindowListItem::highlight(int iLevel)
 {
 	if(iLevel <= m_iHighlightLevel)return;
-	if(isSelected() && g_pFrame->isActiveWindow())return;
+	if(treeWidget()->currentItem() == this && g_pFrame->isActiveWindow())return;
 	m_iHighlightLevel = iLevel;
 	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
 
@@ -139,7 +136,7 @@ void KviTreeWindowListItem::setActive(bool bActive)
 	{
 		unhighlight();
 		treeWidget()->setCurrentItem(this);
-		treeWidget()->scrollToItem(this);
+// 		treeWidget()->scrollToItem(this);
 	}
 }
 
@@ -164,14 +161,13 @@ KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
 {
 	setObjectName("tree_windowlist");
 	setRootIsDecorated(true);
-	setSelectionMode(QAbstractItemView::SingleSelection);
+	setSelectionMode(QAbstractItemView::NoSelection);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setFont(KVI_OPTION_FONT(KviOption_fontTreeWindowList));
 	setFocusPolicy(Qt::NoFocus);
 	setFrameShape(NoFrame);
 	setAutoFillBackground(false);
 	viewport()->setAutoFillBackground(false);
-	m_pPrevItem=0;
 }
 
 KviTreeWindowListTreeWidget::~KviTreeWindowListTreeWidget()
@@ -201,7 +197,6 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 				if((g_pActiveWindow != wnd) || (wnd->isMinimized()))
 				{
 					g_pFrame->setActiveWindow(wnd);
-					QTreeWidget::mousePressEvent(e);
 				} else wnd->minimize();
 			}
 
@@ -402,20 +397,12 @@ void KviTreeWindowList::setActiveItem(KviWindowListItem * it)
 {
 	if(it)
 	{
-		KviTreeWindowListItem * cur = (KviTreeWindowListItem *)m_pTreeWidget->currentItem();
-		if(cur && (cur != (KviTreeWindowListItem *)it))
-		{
-			cur->setActive(false);
-		}
 		if(((KviTreeWindowListItem *)it)->parent())
 		{
 			if(!((KviTreeWindowListItem *)it)->parent()->isExpanded())((KviTreeWindowListItem *)it)->parent()->setExpanded(true);
 		}
 
-		//default selectionModel doesn't enforce singleselection if done from the code
-		m_pTreeWidget->selectionModel()->clearSelection();
 		((KviTreeWindowListItem *)it)->setActive(true);
-		((KviTreeWindowListItem *)it)->setSelected(true); // this MUST go after it->setActive()
 		if(g_pFrame->dockExtension())g_pFrame->dockExtension()->refresh();
 	}
 }
@@ -495,10 +482,11 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 
 	//FIXME not exactly model/view coding style.. but we need to access data on the associated window
 	KviTreeWindowListTreeWidget* treeWidget = (KviTreeWindowListTreeWidget*)parent();
-	KviWindow* pWindow = ((KviTreeWindowListItem*)treeWidget->itemFromIndex(index))->kviWindow();
+	KviTreeWindowListItem * item = (KviTreeWindowListItem*)treeWidget->itemFromIndex(index);
+	KviWindow* pWindow = item->kviWindow();
 
 	//paint cell background
-	if (option.state & QStyle::State_Selected)
+	if(treeWidget->currentItem() == item)
 	{
 		//selection colored background
 		p->fillRect(option.rect, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
@@ -585,7 +573,7 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	}
 
 	//choose window name font color (highlighting)
-	if (option.state & QStyle::State_Selected)
+	if(treeWidget->currentItem() == item)
 	{
 		p->setPen(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground));
 	} else {

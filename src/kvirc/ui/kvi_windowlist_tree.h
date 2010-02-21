@@ -62,20 +62,16 @@ class KVIRC_API KviTreeWindowListTreeWidget : public QTreeWidget
 	friend class KviTreeWindowListItem;
 	friend class KviTreeWindowListItemDelegate;
 	Q_OBJECT
-	KviTreeWindowListItem* m_pPrevItem;
 public:
 	KviTreeWindowListTreeWidget(QWidget * par);
 	~KviTreeWindowListTreeWidget();
 protected:
-	virtual void mousePressEvent(QMouseEvent *e);
-	virtual void mouseMoveEvent(QMouseEvent *e);
+	virtual void mousePressEvent(QMouseEvent * e);
+	virtual void mouseMoveEvent(QMouseEvent * e);
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void paintEvent(QPaintEvent * event);
 private:
 	KviWindowListItem * lastItem();
-signals:
-	void leftMousePress(QTreeWidgetItem * it);
-	void rightMousePress(QTreeWidgetItem * it);
 public slots:
 	void sort();
 	void reverseSort();
@@ -97,10 +93,10 @@ public:
 	KviTreeWindowList();
 	~KviTreeWindowList();
 private:
-	KviTreeWindowListTreeWidget * m_pTreeWidget;
-	KviTreeWindowListItem * m_pCurrentItem;
-	KviDynamicToolTip  * m_pToolTip;
-	QStyledItemDelegate* m_pItemDelegate;
+	KviTreeWindowListTreeWidget   * m_pTreeWidget;
+	KviTreeWindowListItem         * m_pCurrentItem;
+	KviDynamicToolTip             * m_pToolTip;
+	QStyledItemDelegate           * m_pItemDelegate;
 	KviTreeWindowListTitleWidget  * m_pTitleWidget;
 public:
 	virtual KviWindowListItem * addItem(KviWindow *);
