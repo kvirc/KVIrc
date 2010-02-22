@@ -1145,10 +1145,10 @@ void KviWindow::maximize()
 	{
 		if(!isMaximized())
 			mdiParent()->maximize();
-	}
-	else
+	} else {
 		showMaximized();
-	autoRaise();
+		autoRaise();
+	}
 }
 
 bool KviWindow::isMinimized()

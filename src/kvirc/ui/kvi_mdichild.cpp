@@ -142,17 +142,6 @@ void KviMdiChild::windowStateChangedEvent(Qt::WindowStates oldState, Qt::WindowS
 	{
 		//minimized or unminimized
 		updateCaption();
-		if(newState.testFlag(Qt::WindowMinimized))
-		{
-			//i have just been minimized, but i want another window to get activation
-			m_pManager->focusPreviousTopChild();
-		}
-	}
-
-	if(newState.testFlag(Qt::WindowActive) && diffState.testFlag(Qt::WindowMaximized))
-	{
-		//i'm the active window and my maximized state has changed => update sdi mode
-		m_pManager->setIsInSDIMode(newState.testFlag(Qt::WindowMaximized));
 	}
 }
 
@@ -182,18 +171,12 @@ void KviMdiChild::restore()
 
 void KviMdiChild::maximize()
 {
-	if(isVisible())
-		showMaximized();
-	else
-		setWindowState(windowState() & ~Qt::WindowMaximized);
+	showMaximized();
 }
 
 void KviMdiChild::minimize()
 {
-	if(isVisible())
-		showMinimized();
-	else
-		setWindowState(windowState() & ~Qt::WindowMinimized);
+	showMinimized();
 }
 
 void KviMdiChild::updateCaption()

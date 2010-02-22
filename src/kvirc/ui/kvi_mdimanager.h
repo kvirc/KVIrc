@@ -82,8 +82,6 @@ public:
 			return true;
 		else return QMdiArea::eventFilter(obj, event);
 	};
-private:
-	bool m_bInSDIMode;
 protected:
 	/// Holds the specialized window popup
 	KviTalPopupMenu * m_pWindowPopup;
@@ -151,7 +149,7 @@ public:
 	* \brief Check if we are in SDI mode
 	* \return bool
 	*/
-	inline bool isInSDIMode() { return m_bInSDIMode; };
+	inline bool isInSDIMode() { return currentSubWindow() ? currentSubWindow()->isMaximized() : false; };
 
 	/**
 	* \brief Returns the current scrollbar offsets
@@ -159,11 +157,6 @@ public:
 	*/
 	inline QPoint scrollBarsOffset() { return QPoint(horizontalScrollBar()->value(), verticalScrollBar()->value()); };
 protected:
-	/**
-	* \brief Sets if we are in SDI mode
-	*/
-	void setIsInSDIMode(bool bMode);
-
 	/**
 	 * \brief Repaints the transparent backgrounds if activated
 	 */
