@@ -1144,40 +1144,18 @@ void  KviAliasEditor::newItem(QString &szName,KviAliasEditorTreeWidgetItem::Type
 	activateItem(it);
 }
 
-void KviAliasEditor::recursiveCommit(KviAliasEditorTreeWidgetItem * it)
-{
-	if(!it)
-		return;
-	if(it->isAlias())
-	{
-                        QString szName = buildFullItemName(it);
-//                      debug("Commit alias %s",szName.toUtf8().data());
-                        //debug("ADDING %s",szName.latin1());
-                        // WARNING: On MSVC operator new here is valid ONLY because
-                        // KviKvsScript has a non virtual detructor!
-                        KviKvsScript * a = new KviKvsScript(szName,((KviAliasEditorTreeWidgetItem *)it)->buffer());
-                        KviKvsAliasManager::instance()->add(szName,a);
-		return;
-	}
-
-	for (int i=0;i<it->childCount();i++)
-		recursiveCommit((KviAliasEditorTreeWidgetItem *) it->child(i));
-}
-
 void KviAliasEditor::commit()
 {
 	m_bSaving = true;
 	saveLastEditedItem();
-
  	KviKvsAliasManager::instance()->clear();
-
-	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+        for(unsigned int i=0;i<m_pAliases->count();i++)
 	{
-		KviAliasEditorTreeWidgetItem *item=(KviAliasEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
-		recursiveCommit(item);
+                QString szName = buildFullItemName(m_pAliases->at(i));
+                KviKvsScript * a = new KviKvsScript(szName,m_pAliases->at(i)->buffer());
+                KviKvsAliasManager::instance()->add(szName,a);
 	}
 	g_pApp->saveAliases();
-
 	m_bSaving = false;
 }
 

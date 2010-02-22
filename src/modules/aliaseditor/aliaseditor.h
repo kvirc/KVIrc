@@ -144,8 +144,7 @@ protected:
         void recursiveCollapseNamespaces(KviAliasEditorTreeWidgetItem * it);
         void searchReplace(const QString &szSearch,bool bReplace=false,const QString &szReplace="n");
 
-	void recursiveCommit(KviAliasEditorTreeWidgetItem * it);
-        void getExportAliasBuffer(QString &buffer,KviAliasEditorTreeWidgetItem * it);
+       void getExportAliasBuffer(QString &buffer,KviAliasEditorTreeWidgetItem * it);
 	void oneTimeSetup();
 	void saveLastEditedItem();
 	void getUniqueItemName(KviAliasEditorTreeWidgetItem *item,QString &buffer,KviAliasEditorTreeWidgetItem::Type eType);
