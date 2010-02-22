@@ -1,33 +1,37 @@
-# translation of notifier_pt.po to Português
-# This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Translation of KVIrc notifier messages to Portuguese
+# Copyright (C) 2010 the KVIrc's copyright holder
+# This file is distributed under the same license as the KVIrc package.
 #
-# Szymon Stefanek <pragma@kvirc.dontforgettoremovethispart.net>, 2004.
-# Zé <mmodem00@netvisao.pt>, 2004.
-# José Melo <mmodem00@netvisao.pt>, 2005, 2006.
-# Zé <mmodem00@gmail.com>, 2007.
+# Américo Monteiro <a_monteiro@netcabo.pt>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: notifier_pt\n"
+"Project-Id-Version: kvirc_notifier \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-17 18:09+0100\n"
-"PO-Revision-Date: 2007-02-06 01:20+0000\n"
-"Last-Translator: Zé <mmodem00@gmail.com>\n"
-"Language-Team: Português <pt@li.org>\n"
+"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"PO-Revision-Date: 2010-02-14 00:31+0000\n"
+"Last-Translator: Américo Monteiro <a_monteiro@netcabo.pt>\n"
+"Language-Team: Portuguese <traduz@debianpt.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"net>\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/notifier/notifierwindow.cpp:897
-msgid "1 Hour"
-msgstr "1 Hora"
+#: src/modules/notifier/notifierwindow.cpp:889
+msgid "Show/Hide input line"
+msgstr "Mostrar/Esconder linha de entrada"
+
+#: src/modules/notifier/notifierwindow.cpp:890
+msgid "Hide"
+msgstr "Esconder"
 
 #: src/modules/notifier/notifierwindow.cpp:893
 msgid "1 Minute"
 msgstr "1 Minuto"
+
+#: src/modules/notifier/notifierwindow.cpp:894
+msgid "5 Minutes"
+msgstr "5 Minutos"
 
 #: src/modules/notifier/notifierwindow.cpp:895
 msgid "15 Minutes"
@@ -37,45 +41,35 @@ msgstr "15 Minutos"
 msgid "30 Minutes"
 msgstr "30 Minutos"
 
-#: src/modules/notifier/notifierwindow.cpp:894
-msgid "5 Minutes"
-msgstr "5 Minutos"
+#: src/modules/notifier/notifierwindow.cpp:897
+msgid "1 Hour"
+msgstr "1 Hora"
+
+#: src/modules/notifier/notifierwindow.cpp:899
+msgid "Until KVIrc is Restarted"
+msgstr "Até o KVIrc ser Reiniciado"
+
+#: src/modules/notifier/notifierwindow.cpp:900
+msgid "Permanently (Until Explicitly Enabled)"
+msgstr "Permanentemente (Até Activado Explicitamente)"
 
 #: src/modules/notifier/notifierwindow.cpp:902
 msgid "Disable"
 msgstr "Desactivar"
 
-#: src/modules/notifier/notifierwindow.cpp:890
-msgid "Hide"
-msgstr "Ocultar"
-
-#: src/modules/notifier/notifierwindow.cpp:900
-msgid "Permanently (Until Explicitly Enabled)"
-msgstr "Permanentemente (Até ser Activado Explícitamente)"
-
-#: src/modules/notifier/notifierwindow.cpp:889
-msgid "Show/Hide input line"
-msgstr ""
-
-#: src/modules/notifier/libkvinotifier.cpp:154
-msgid "The -t switch expects a timeout in seconds"
-msgstr "A opção -t espera um intervalo de tempo em segundos"
-
-#: src/modules/notifier/libkvinotifier.cpp:151
-msgid "The specified timeout is not valid, assuming 0"
-msgstr "O intervalo de tempo indicado não é válido, a assumir 0"
-
-#: src/modules/notifier/libkvinotifier.cpp:137
-msgid "The specified window does not exist"
-msgstr "A janela indicada não existe"
-
-#: src/modules/notifier/notifierwindow.cpp:899
-msgid "Until KVIrc is Restarted"
-msgstr "Até o KVirc ser Reiniciado"
-
 #: src/modules/notifier/notifierwindow.cpp:974
 msgid "Write text or commands to window"
 msgstr "Escrever texto ou comandos para a janela"
 
-#~ msgid "Close tab"
-#~ msgstr "Fechar separador"
+#: src/modules/notifier/libkvinotifier.cpp:137
+msgid "The specified window does not exist"
+msgstr "A janela especificada não existe"
+
+#: src/modules/notifier/libkvinotifier.cpp:151
+msgid "The specified timeout is not valid, assuming 0"
+msgstr "O timeout especificado não é válido, a assumir 0"
+
+#: src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
+msgstr "O switch -t espera um timeout em segundos"
+
