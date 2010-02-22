@@ -227,14 +227,17 @@ KviAliasEditorTreeWidgetItem * KviAliasEditor::findItem(const QString &szFullNam
         KviAliasEditorTreeWidgetItem *pItem=findTopLevelItem(lNamespaces.at(0));
         if (!pItem) return 0;
         bool bFound;
-        for(int i=1;i<lNamespaces.count()-1;i++)
+        int i;
+        int j;
+        for(i=1;i<lNamespaces.count();i++)
         {
+
             bFound=false;
-            for(int j=0;j<pItem->childCount();j++)
+            for(j=0;j<pItem->childCount();j++)
             {
                 if (KviQString::equalCI(pItem->child(j)->text(0),lNamespaces.at(i)))
                 {
-                    pItem=( KviAliasEditorTreeWidgetItem *)pItem->child(j);
+                     pItem=( KviAliasEditorTreeWidgetItem *)pItem->child(j);
                     bFound=true;
                     break;
                 }
