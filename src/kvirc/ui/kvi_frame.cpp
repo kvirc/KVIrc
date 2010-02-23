@@ -60,6 +60,7 @@
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_texticonmanager.h"
+#include "kvi_shortcuts.h"
 
 #include <QSplitter>
 #include <QVariant>
@@ -283,80 +284,16 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 	return 0;
 }
 
-/*
-	@doc: keyboard
-	@type:
-		generic
-	@title:
-		Keyboard shortcuts
-	@keyterms:
-		Keyboard shortcuts
-	@short:
-		The list of the common keyboard shortcuts
-	@body:
-		[b]Ctrl+LeftArrow[/b]: Selection left to the previous word[br]
-		[b]Ctrl+RightArrow[/b]: Selection right to the next word[br]
-		[b]Ctrl+Shift+LeftArrow[/b]: Previous word[br]
-		[b]Ctrl+Shift+RightArrow[/b]: Next word[br]
-		[b]Alt+UpArrow[/b]: Previous window[br]
-		[b]Alt+DownArrow[/b]: Next window[br]
-		[b]Alt+Shift+UpArrow[/b]: Previous window in the same IRC context[br]
-		[b]Alt+Shift+DownArrow[/b]: Next window in the same IRC context[br]
-		[b]Alt+PageUp[/b]: Previous highlighted window[br]
-		[b]Alt+PageDown[/b]: Next highlighted window[br]
-		[b]Ctrl+UpArrow[/b]: Maximize current window[br]
-		[b]Ctrl+DownArrow[/b] or [b]ESC[/b]: Minimize current window[br]
-		[b]Ctrl+&lt;digit&gt;[/b], [b]F1-F12[/b], [b]Shift+(F1-F12)[/b]: Script accelerators (see [event:onaccelkeypressed]OnAccelKeyPressed[/event])[br]
-		[b]Shift+&lt;F1-F12&gt;[/b] window switch[br]
-		[b]Tab in the first word of input[/b]: Completes nicknames in the current channel or query[br]
-		[b]Tab after a leading /[/b]: Completes commands[br]
-		[b]Tab after a / in the middle of input[/b]: Completes directories[br]
-		[b]Tab after a $[/b]: Completes function names[br]
-		[b]Shift+Tab after the first word of input[/b]: completes masks in the current channel or query[br]
-		[b]Ctrl+B[/b]: Inserts the 'bold' mIRC text control character[br]
-		[b]Ctrl+K[/b]: Inserts the 'color' mIRC text control character[br]
-		[b]Ctrl+R[/b]: Inserts the 'reverse' mIRC text control character[br]
-		[b]Ctrl+U[/b]: Inserts the 'underline' mIRC text control character[br]
-		[b]Ctrl+O[/b]: Inserts the 'reset' mIRC text control character[br]
-		[b]Ctrl+P[/b]: Inserts the 'non-crypt' (plain text) KVIrc control character used to disable encryption of the current text line[br]
-		[b]Ctrl+C[/b]: Copies the selected text to clipboard[br]
-		[b]Ctrl+X[/b]: Cuts the selected text[br]
-		[b]Ctrl+V[/b]: Pastes the clipboard contents (same as middle mouse click)[br]
-		[b]Ctrl+I[/b]: Inserts the 'icon' control code and pops up the icon list box[br]
-		[b]CursorUp[/b]: Moves backward in the command history[br]
-		[b]CursorDown[/b]: Moves forward in the command history[br]
-		[b]Ctrl+PageUp[/b]: Opens the history popup[br]
-		[b]CursorRight[/b]: Moves the cursor to the right[br]
-		[b]CursorLeft[/b]: Moves the cursor to the left :)[br]
-		[b]Shift+CursorLeft[/b]: Moves the selection to the left[br]
-		[b]Shift+RightCursor[/b]: Moves the selection to the right[br]
-		[b]PageUp[/b]: Scrolls the output window up one page[br]
-		[b]PageDown[/b]: Scrolls the output window down one page[br]
-		[b]Shift+PageUp[/b]: Scrolls the output window up one line[br]
-		[b]Shift+PageDown[/b]: Scrolls the output window down one line[br]
-		[b]Alt+Enter[/b]: Shows or hides the multiline editor[br]
-		[b]Ctrl+W[/b]: Closes the current window[br]
-		[b]Alt+&lt;numeric_sequence&gt;[/b]: Inserts the character by ASCII/Unicode code
-		[example]
-			Alt+32: Inserts ASCII/Unicode character 32: ' ' (a space)
-			Alt+00032: Same as above :)
-			Alt+13: Inserts the Carriage Return (CR) control character
-			Alt+77: Inserts ASCII/Unicode character 77: 'M'
-			Alt+23566: Inserts Unicode character 23566 (an ideogram)
-		[/example]
-*/
-
 void KviFrame::installAccelerators()
 {
-	new QShortcut(QKeySequence(Qt::Key_Up + Qt::ALT) , this, SLOT(switchToPrevWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(Qt::Key_Down + Qt::ALT), this, SLOT(switchToNextWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(Qt::Key_Up + Qt::ALT + Qt::SHIFT), this, SLOT(switchToPrevWindowInContext()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(Qt::Key_Down + Qt::ALT + Qt::SHIFT), this, SLOT(switchToNextWindowInContext()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(Qt::Key_PageUp + Qt::ALT) , this, SLOT(switchToPrevHighlightedWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(Qt::Key_PageDown + Qt::ALT), this, SLOT(switchToNextHighlightedWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(Qt::Key_Up + Qt::CTRL), this, SLOT(maximizeWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(Qt::Key_Down + Qt::CTRL), this, SLOT(minimizeWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(Qt::Key_Escape +Qt::CTRL), this, SLOT(minimizeWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_PREV) , this, SLOT(switchToPrevWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_NEXT), this, SLOT(switchToNextWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_CONTEXT_WIN_PREV), this, SLOT(switchToPrevWindowInContext()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_CONTEXT_WIN_NEXT), this, SLOT(switchToNextWindowInContext()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_HIGHLIGHT_WIN_PREV) , this, SLOT(switchToPrevHighlightedWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_HIGHLIGHT_WIN_NEXT), this, SLOT(switchToNextHighlightedWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_MAXIMIZE), this, SLOT(maximizeWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_MINIMIZE), this, SLOT(minimizeWindow()), 0, Qt::ApplicationShortcut);
 
 	static int accel_table[] = {
 		Qt::Key_1 + Qt::CTRL ,       // script accels...

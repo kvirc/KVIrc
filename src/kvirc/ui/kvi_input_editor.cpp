@@ -2279,41 +2279,7 @@ void KviInputEditor::addCommand(const Command& cmd)
 		scripting languages. Please note that in the user-friendly mode you're not allowed
 		to type multiple commands at once :).
 		[/p]
-		[big]Default Key Bindings:[/big][br]
-		Ctrl+B: Inserts the 'bold' mIRC text control character[br]
-		Ctrl+K: Inserts the 'color' mIRC text control character[br]
-		Ctrl+R: Inserts the 'reverse' mIRC text control character[br]
-		Ctrl+U: Inserts the 'underline' mIRC text control character[br]
-		Ctrl+O: Inserts the 'reset' mIRC text control character[br]
-		Ctrl+P: Inserts the 'non-crypt' (plain text) KVIrc control character used to disable encryption of the current text line[br]
-		Ctrl+Z: Undo the last action[br]
-		Ctrl+Y: Redo the last undoed action[br]
-		Ctrl+C: Copies the selected text to clipboard[br]
-		Ctrl+X: Cuts the selected text[br]
-		Ctrl+V: Pastes the clipboard contents (same as middle mouse click)[br]
-		Ctrl+I: Inserts the 'icon' control code and pops up the icon list box[br]
-		Ctrl+A: Select all[br]
-		Ctrl+L: Paste file[br]
-		CursorUp: Moves backward in the command history[br]
-		CursorDown: Moves forward in the command history[br]
-		CursorRight: Moves the cursor to the right[br]
-		CursorLeft: Moves the cursor to the left :)[br]
-		Shift+CursorLeft: Moves the selection to the left[br]
-		Shift+RightCursor: Moves the selection to the right[br]
-		Ctrl+CursorLeft: Moves the cursor one word left[br]
-		Ctrl+CursorRight: Moves the cursor one word right[br]
-		Ctrl+Shift+CursorLeft: Moves the selection one word left[br]
-		Ctrl+Shift+CursorRight: Moves the selection one word right[br]
-		Tab: Nickname, function/command, or filename completion (see below)[br]
-		Shift+Tab: Hostmask or function/command completion (see below)[br]
-		Alt+&lt;numeric_sequence&gt;: Inserts the character by ASCII/Unicode code
-		[example]
-		Alt+32: Inserts ASCII/Unicode character 32: ' ' (a space)
-		Alt+00032: Same as above :)
-		Alt+13: Inserts the Carriage Return (CR) control character
-		Alt+77: Inserts ASCII/Unicode character 77: 'M'
-		Alt+23566: Inserts Unicode character 23566 (an ideogram)
-		[/example]
+		[p]
 		Also look at the [doc:keyboard]keyboard shortcuts[/doc] reference.[br]
 		If you drop a file on this widget, a <a href="parse.kvihelp">/PARSE &lt;filename&gt;</a> will be executed.[br]
 		You can enable word substitution in the preferences dialog.[br]
@@ -2335,4 +2301,5 @@ void KviInputEditor::addCommand(const Command& cmd)
 			$sel&lt;Tab;&gt; will find multiple matches and produce $selected
 		[/example]
 		Experiment with that too :)
+		[/p]
 */

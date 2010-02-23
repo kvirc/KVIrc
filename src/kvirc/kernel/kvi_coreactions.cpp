@@ -97,7 +97,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_servers.png",
 		KVI_SMALLICON_SERVER,
 		0,
-		"Ctrl+S");
+		KVI_SHORTCUTS_SERVERS);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_MANAGEADDONS,
@@ -119,7 +119,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_regusers.png",
 		KVI_SMALLICON_REGUSERS,
 		0,
-		"Ctrl+Shift+U");
+		KVI_SHORTCUTS_USERS);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_IDENTITYOPTIONS,
@@ -130,7 +130,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_identity.png",
 		KVI_SMALLICON_WHO,
 		0,
-		"Ctrl+Shift+I");
+		KVI_SHORTCUTS_IDENTITY);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_SOCKETSPY,
@@ -174,7 +174,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_settings.png",
 		KVI_SMALLICON_OPTIONS,
 		0,
-		"Ctrl+Shift+O");
+		KVI_SHORTCUTS_OPTIONS);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_THEMEOPTIONS,
@@ -185,7 +185,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_themeoptions.png",
 		KVI_SMALLICON_THEMEOPTIONS,
 		0,
-		"Ctrl+Shift+T");
+		KVI_SHORTCUTS_THEME);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_MANAGETHEMES,
@@ -207,8 +207,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_toolbareditor.png",
 		KVI_SMALLICON_TOOLBAR,
 		0,
-		"Ctrl+Shift+B");
-
+		KVI_SHORTCUTS_EDITOR_TOOLBAR);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_JOINCHANNELS,
@@ -219,7 +218,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_channels.png",
 		KVI_SMALLICON_CHANNEL,
 		KviKvsAction::NeedsConnection | KviKvsAction::NeedsContext,
-		"Ctrl+J");
+		KVI_SHORTCUTS_JOIN);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_ACTIONEDITOR,
@@ -230,7 +229,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_actioneditor.png",
 		KVI_SMALLICON_SCRIPTACTION,
 		0,
-		"Ctrl+Shift+Q");
+		KVI_SHORTCUTS_EDITOR_ACTION);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_ALIASEDITOR,
@@ -241,7 +240,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_aliaseditor.png",
 		KVI_SMALLICON_ALIAS,
 		0,
-		"Ctrl+Shift+L");
+		KVI_SHORTCUTS_EDITOR_ALIAS);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_CLASSEDITOR,
@@ -252,7 +251,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_aliaseditor.png",
 		KVI_SMALLICON_ALIAS,
 		0,
-		"Ctrl+Shift+D");
+		KVI_SHORTCUTS_EDITOR_CLASS);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_EVENTEDITOR,
@@ -263,7 +262,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_eventeditor.png",
 		KVI_SMALLICON_EVENT,
 		0,
-		"Ctrl+Shift+E");
+		KVI_SHORTCUTS_EDITOR_EVENT);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_POPUPEDITOR,
@@ -274,7 +273,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_popupeditor.png",
 		KVI_SMALLICON_POPUP,
 		0,
-		"Ctrl+Shift+P");
+		KVI_SHORTCUTS_EDITOR_POPUP);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_RAWEDITOR,
@@ -285,7 +284,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_raweditor.png",
 		KVI_SMALLICON_RAWEVENT,
 		0,
-		"Ctrl+Shift+R");
+		KVI_SHORTCUTS_EDITOR_RAW);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_CODETESTER,
@@ -296,7 +295,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_codetester.png",
 		KVI_SMALLICON_BOMB,
 		0,
-		"Ctrl+Shift+S");
+		KVI_SHORTCUTS_EDITOR_TESTER);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_EXECUTEKVS,
@@ -307,7 +306,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_folder.png",
 		KVI_SMALLICON_FOLDER,
 		0,
-		"Ctrl+Shift+X");
+		KVI_SHORTCUTS_EXEC);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_HELPINDEX,
@@ -318,7 +317,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_help.png",
 		KVI_SMALLICON_HELP,
 		0,
-		"F1");
+		KVI_SHORTCUTS_HELP);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_KVIRCMAILINGLIST,
@@ -411,7 +410,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_newirccontext.png",
 		KVI_SMALLICON_CONSOLE,
 		0,
-		"Ctrl+N");
+		KVI_SHORTCUTS_CONTEXT);
 
 	SLOT_ACTION(
 		KVI_COREACTION_QUITKVIRC,
@@ -425,8 +424,6 @@ void register_core_actions(KviActionManager * m)
 		0,
 		QString());
 }
-
-
 
 
 KviIrcContextDisplayAction::KviIrcContextDisplayAction(QObject * pParent)
@@ -459,7 +456,7 @@ bool KviIrcContextDisplayAction::addToPopupMenu(KviTalPopupMenu *)
 
 QWidget * KviIrcContextDisplayAction::addToCustomToolBar(KviCustomToolBar *t)
 {
-	if(!setupDone())setup();
+	if(!setupDone()) setup();
 	KviIrcContextDisplay * w = new KviIrcContextDisplay(t,"kvirc.irccontextdisplay");
 	t->addWidget(w);
 	registerWidget(w);
@@ -505,16 +502,16 @@ KviSeparatorAction::KviSeparatorAction(QObject * pParent)
 }
 
 
-bool KviSeparatorAction::addToPopupMenu(KviTalPopupMenu *p)
+bool KviSeparatorAction::addToPopupMenu(KviTalPopupMenu * p)
 {
-	if(!setupDone())setup();
+	if(!setupDone()) setup();
 	p->insertSeparator();
 	return true;
 }
 
-QWidget * KviSeparatorAction::addToCustomToolBar(KviCustomToolBar *t)
+QWidget * KviSeparatorAction::addToCustomToolBar(KviCustomToolBar * t)
 {
-	if(!setupDone())setup();
+	if(!setupDone()) setup();
 	QWidget * w = new KviCustomToolBarSeparator(t,"kvirc.separator");
 	registerWidget(w);
 	t->addWidget(w);
@@ -531,7 +528,7 @@ KviConnectAction::KviConnectAction(QObject * pParent)
 	KVI_BIGICON_CONNECTED,
 	KVI_SMALLICON_NONE, // no small icon for now
 	NeedsContext | NeedsConnection,
-	QString("Ctrl+Shift+C"))
+	QString(KVI_SHORTCUTS_CONNECT))
 {
 }
 
@@ -679,7 +676,7 @@ KviSubmenuAction::KviSubmenuAction(QObject * pParent,
 		const QString &szBigIcon,
 		int iSmallIconId,
 		unsigned int uFlags)
-	: KviKvsAction(pParent,
+: KviKvsAction(pParent,
 		szName,
 		szScriptCode,
 		szVisibleName,
@@ -718,15 +715,15 @@ void KviSubmenuAction::popupActivated(int)
 
 bool KviSubmenuAction::addToPopupMenu(KviTalPopupMenu *p)
 {
-	if(!setupDone())setup();
+	if(!setupDone()) setup();
 	int id = p->insertItem(*(smallIcon()),visibleName(),m_pPopup);
-	if(!isEnabled())p->setItemEnabled(id,false);
+	if(!isEnabled()) p->setItemEnabled(id,false);
 	return true;
 }
 
 QWidget * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 {
-	if(!setupDone())setup();
+	if(!setupDone()) setup();
 	QToolButton * b = new QToolButton(t);
 	b->setIcon(*(bigIcon()));
 	b->setText(visibleName());
@@ -739,7 +736,7 @@ QWidget * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 	b->setPopupMode( scriptCode().isEmpty() ? QToolButton::InstantPopup :  QToolButton::MenuButtonPopup);
 	t->addWidget(b);
 	registerWidget(b);
-	if(!isEnabled())b->setEnabled(false);
+	if(!isEnabled()) b->setEnabled(false);
 	return b;
 }
 
@@ -760,7 +757,7 @@ KviJoinChannelAction::KviJoinChannelAction(QObject * pParent)
 void KviJoinChannelAction::popupAboutToShow()
 {
 	KviConsole * c = g_pActiveWindow->console();
-	if(!c)return;
+	if(!c) return;
 
 	g_pApp->fillRecentChannelsPopup(m_pPopup,c);
 
@@ -972,7 +969,7 @@ KviGoAwayAction::KviGoAwayAction(QObject * pParent)
 	"kvi_bigicon_nokeyboard.png",
 	KVI_SMALLICON_NOTAWAY,
 	KviKvsAction::NeedsContext | KviKvsAction::NeedsConnection,
-	"Ctrl+Shift+A")
+	KVI_SHORTCUTS_AWAY)
 {
 }
 

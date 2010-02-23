@@ -39,8 +39,8 @@ protected:
 	QString m_szAbortConnectionString;
 	QString m_szDisconnectString;
 public:
-	virtual bool addToPopupMenu(KviTalPopupMenu *p);
-	virtual QWidget * addToCustomToolBar(KviCustomToolBar *t);
+	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
+	virtual QWidget * addToCustomToolBar(KviCustomToolBar * pTool);
 protected:
 	virtual void setup();
 	virtual void reloadImages();
@@ -55,8 +55,8 @@ class KviSeparatorAction : public KviAction
 public:
 	KviSeparatorAction(QObject * pParent);
 public:
-	virtual bool addToPopupMenu(KviTalPopupMenu *p);
-	virtual QWidget * addToCustomToolBar(KviCustomToolBar *t);
+	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
+	virtual QWidget * addToCustomToolBar(KviCustomToolBar * pTool);
 };
 
 class KviTalPopupMenu;
@@ -65,26 +65,18 @@ class KviSubmenuAction : public KviKvsAction
 {
 	Q_OBJECT
 public:
-	KviSubmenuAction(QObject * pParent,
-		const QString &szName,
-		const QString &szScriptCode,
-		const QString &szVisibleName,
-		const QString &szDescription,
-		KviActionCategory * pCategory = 0,
-		const QString &szBigIcon = QString(),
-		int iSmallIconId = 0,
-		unsigned int uFlags = 0);
+	KviSubmenuAction(QObject * pParent, const QString & szName, const QString & szScriptCode, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory = 0, const QString & szBigIcon = QString(), int iSmallIconId = 0, unsigned int uFlags = 0);
 	~KviSubmenuAction();
 protected:
 	KviTalPopupMenu * m_pPopup;
 protected:
 	virtual void setup();
 public:
-	virtual bool addToPopupMenu(KviTalPopupMenu *p);
-	virtual QWidget * addToCustomToolBar(KviCustomToolBar *t);
+	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
+	virtual QWidget * addToCustomToolBar(KviCustomToolBar * pTool);
 protected slots:
 	virtual void popupAboutToShow();
-	virtual void popupActivated(int id);
+	virtual void popupActivated(int iId);
 };
 
 class KviJoinChannelAction : public KviSubmenuAction
@@ -156,8 +148,8 @@ class KviIrcContextDisplayAction : public KviAction
 public:
 	KviIrcContextDisplayAction(QObject * pParent);
 public:
-	virtual bool addToPopupMenu(KviTalPopupMenu *p);
-	virtual QWidget * addToCustomToolBar(KviCustomToolBar *t);
+	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
+	virtual QWidget * addToCustomToolBar(KviCustomToolBar * pTool);
 	virtual void activeContextStateChanged();
 	virtual void activeContextChanged();
 	virtual void setEnabled(bool);
@@ -174,8 +166,8 @@ protected:
 	QString m_szAwayString;
 	QString m_szBackString;
 public:
-	virtual bool addToPopupMenu(KviTalPopupMenu *p);
-	virtual QWidget * addToCustomToolBar(KviCustomToolBar *t);
+	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
+	virtual QWidget * addToCustomToolBar(KviCustomToolBar * pTool);
 protected:
 	virtual void setup();
 	virtual void reloadImages();
@@ -183,4 +175,4 @@ protected:
 	virtual void activeContextStateChanged();
 };
 
-#endif //!_KVI_COREACTIONS_H_
+#endif //_KVI_COREACTIONS_H_
