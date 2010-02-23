@@ -59,7 +59,7 @@ bool g_bFoundMirc;
 
 // libkvisetup.cpp
 extern QString g_szChoosenIncomingDirectory;
-//extern int g_iThemeToApply;
+extern int g_iThemeToApply;
 extern bool bNeedToApplyDefaults;
 extern unsigned int uPort;
 extern QString szHost;
@@ -420,7 +420,7 @@ KviSetupWizard::KviSetupWizard()
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Default theme
-/*	m_pTheme = new KviSetupPage(this);
+	m_pTheme = new KviSetupPage(this);
 	m_pTheme->m_pTextLabel->setText(__tr2qs( \
 		"<p>Here you can choose the default appearance of KVIrc.<br><br>" \
 		"The Fancy Theme uses icons, a transparent background and a lot of colors. " \
@@ -430,11 +430,10 @@ KviSetupWizard::KviSetupWizard()
 		"in order to preserve your current visual settings.<br><br>" \
 		"If you don't know what to choose, just use the default.</p>"));
 
-	m_pThemeButtonGroup = new KviTalVButtonGroup(m_pTheme->m_pVBox);
+	m_pThemeButtonGroup = new  QGroupBox(m_pTheme->m_pVBox);
 
-	KviTalHBox* pThemesHb = new KviTalHBox(m_pThemeButtonGroup);
-
-	KviTalVBox* pThemesVb = new KviTalVBox(pThemesHb);
+	QGridLayout *pThemeGrid = new QGridLayout(m_pThemeButtonGroup);
+	m_pThemeButtonGroup->setLayout(pThemeGrid);
 
 	QString szThemeImagePath;
 	g_pApp->getGlobalKvircDirectory(szThemeImagePath,KviApp::Pics,"kvi_setup_theme_hires.png");
@@ -443,19 +442,20 @@ KviSetupWizard::KviSetupWizard()
 	if(pHiResPixmap->isNull())
 	{
 		delete pHiResPixmap;
-		pHiResPixmap= new QPixmap(250,200);
+		pHiResPixmap= new QPixmap(200,118);
 	}
 
-	QLabel* pPixmapLabelHiRes = new QLabel(pThemesVb);
+	QLabel* pPixmapLabelHiRes = new QLabel(m_pThemeButtonGroup);
 
 	pPixmapLabelHiRes->setPixmap(*pHiResPixmap);
 	pPixmapLabelHiRes->setFixedSize(pHiResPixmap->size());
 	pPixmapLabelHiRes->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	pPixmapLabelHiRes->setMargin(0);
+	pThemeGrid->addWidget(pPixmapLabelHiRes, 1,1);
+	
+	m_pThemeHiRes = new QRadioButton(__tr2qs("&Fancy Theme"),m_pThemeButtonGroup);
+	pThemeGrid->addWidget(m_pThemeHiRes, 2,1);
 
-	m_pThemeHiRes = new QRadioButton(__tr2qs("&Fancy Theme"),pThemesVb);
-
-	pThemesVb = new KviTalVBox(pThemesHb);
 	g_pApp->getGlobalKvircDirectory(szThemeImagePath,KviApp::Pics,"kvi_setup_theme_lowres.png");
 	QPixmap* pLowResPixmap = new QPixmap(szThemeImagePath);
 	if(pLowResPixmap->isNull())
@@ -464,23 +464,24 @@ KviSetupWizard::KviSetupWizard()
 		pLowResPixmap= new QPixmap(250,200);
 	}
 
-	QLabel* pPixmapLabelLowRes = new QLabel(pThemesVb);
-
+	QLabel* pPixmapLabelLowRes = new QLabel(m_pThemeButtonGroup);
+	
 	pPixmapLabelLowRes->setPixmap(*pLowResPixmap);
 	pPixmapLabelLowRes->setFixedSize(pLowResPixmap->size());
 	pPixmapLabelLowRes->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	pPixmapLabelLowRes->setMargin(0);
-
-	m_pThemeLoRes  = new QRadioButton(__tr2qs("&Minimalist Theme"),pThemesVb);
+	pThemeGrid->addWidget(pPixmapLabelLowRes, 1,2);
+	
+	m_pThemeLoRes = new QRadioButton(__tr2qs("&Minimalist Theme"),m_pThemeButtonGroup);
+	pThemeGrid->addWidget(m_pThemeLoRes, 2,2);
 	m_pThemeNone = new QRadioButton(__tr2qs("&Don't apply any theme"),m_pThemeButtonGroup);
-	m_pThemeButtonGroup->insert(m_pThemeHiRes);
-	m_pThemeButtonGroup->insert(m_pThemeLoRes);
-
+	pThemeGrid->addWidget(m_pThemeNone, 3,1);
+	
 	m_pThemeHiRes->setChecked(true);
 
 	addPage(m_pTheme,__tr2qs("Default Theme"));
 
-	setHelpEnabled(m_pTheme,false);*/
+	setHelpEnabled(m_pTheme,false);
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Desktop integration
@@ -525,7 +526,7 @@ KviSetupWizard::KviSetupWizard()
 			"Now you should specify an IRC server, to be connected to it"));
 
 
-	m_pServersButtonGroup = new KviTalVButtonGroup(__tr2qs("Choose a server to connect"),m_pServers->m_pVBox);
+	m_pServersButtonGroup = new KviTalGroupBox(__tr2qs("Choose a server to connect"),m_pServers->m_pVBox);
 
 	m_pServersChooseFromList = new QRadioButton(__tr2qs("Choose from built-in server list"),m_pServersButtonGroup);
 
@@ -690,7 +691,7 @@ void KviSetupWizard::oldDirClicked()
 	m_pNewIncomingBox->setEnabled(false);
 
 	if(m_pIdentity) setPageEnabled(m_pIdentity,false);
-//	if(m_pTheme) setPageEnabled(m_pTheme,false);
+	if(m_pTheme) setPageEnabled(m_pTheme,false);
 	if(m_pServers) setPageEnabled(m_pServers,false);
 
 	if(m_pOldDataPathEdit->text().isEmpty()) setNextEnabled(m_pDirectory,false);
@@ -719,7 +720,7 @@ void KviSetupWizard::newDirClicked()
 	m_pNewIncomingBox->setEnabled(true);
 
 	if(m_pIdentity) setPageEnabled(m_pIdentity,true);
-//	if(m_pTheme) setPageEnabled(m_pTheme,true);
+	if(m_pTheme) setPageEnabled(m_pTheme,true);
 	if(m_pServers) setPageEnabled(m_pServers,true);
 
 	if(m_pDataPathEdit->text().isEmpty() || m_pIncomingPathEdit->text().isEmpty()) setNextEnabled(m_pDirectory,false);
@@ -733,7 +734,7 @@ void KviSetupWizard::portableClicked()
 	m_pNewIncomingBox->setEnabled(false);
 
 	if(m_pIdentity) setPageEnabled(m_pIdentity,true);
-//	if(m_pTheme) setPageEnabled(m_pTheme,true);
+	if(m_pTheme) setPageEnabled(m_pTheme,true);
 	if(m_pServers) setPageEnabled(m_pServers,true);
 
 	setNextEnabled(m_pDirectory,true);
@@ -779,7 +780,6 @@ void KviSetupWizard::chooseDataPath()
 
 void KviSetupWizard::chooseIncomingPath()
 {
-	//QString szBuffer = QFileDialog::getExistingDirectory(m_pIncomingPathEdit->text(),0,0,__tr2qs("Choose the download folder"));
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(m_pIncomingPathEdit->text(),__tr2qs("Choose a Download Folder - KVIrc Setup"),0);
 	KviFileUtils::adjustFilePath(szBuffer);
 	if(!szBuffer.isEmpty())
@@ -1039,19 +1039,19 @@ void KviSetupWizard::accept()
 			setUrlHandlers();
 #endif
 
-/*		if(m_pTheme)
+		if(m_pTheme)
 		{
-			if(m_pThemeButtonGroup->selected() == m_pThemeHiRes)
+			if(m_pThemeHiRes->isChecked())
 			{
 				g_iThemeToApply = THEME_APPLY_HIRES;
-			} else if(m_pThemeButtonGroup->selected() == m_pThemeLoRes)
+			} else if(m_pThemeLoRes->isChecked())
 			{
 				g_iThemeToApply = THEME_APPLY_LORES;
 			} else {
 				g_iThemeToApply = THEME_APPLY_NONE;
 			}
 		}
-*/
+
 		if(m_pIdentity)
 		{
 			m_pNickSelector->commit();

@@ -1,5 +1,5 @@
 # CMakeLists for data/deftheme
 
 # Find subdirs
-SUBDIRS(YellowIRC-1.0.0)
+SUBDIRS(MinimalDark-1.0.0 YellowIRC-1.0.0)
 

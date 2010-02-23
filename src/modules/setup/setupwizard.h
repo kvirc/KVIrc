@@ -38,8 +38,7 @@
 #include <QRadioButton>
 #include <QComboBox>
 #include <QCheckBox>
-#include <QGroupBox>
-#define KviTalVButtonGroup QGroupBox
+#include <QGridLayout>
 
 class KviSetupWizard;
 
@@ -74,12 +73,12 @@ public:
 	KviSetupPage  * m_pLicense;
 	KviSetupPage  * m_pDirectory;
 	KviSetupPage  * m_pIdentity;
-//	KviSetupPage  * m_pTheme;
+	KviSetupPage  * m_pTheme;
 	KviSetupPage  * m_pDesktopIntegration;
 	KviSetupPage  * m_pServers;
 
 	// Theme
-	//KviTalGroupBox  * m_pThemeButtonGroup;
+	QGroupBox  * m_pThemeButtonGroup;
 
 	QRadioButton  * m_pThemeHiRes;
 	QRadioButton  * m_pThemeLoRes;
@@ -115,7 +114,7 @@ public:
 	//KviStringSelector * m_pOtherInfoSelector;
 
 	//Servers
-	//KviTalVButtonGroup * m_pServersButtonGroup;
+	//KviTalGroupBox * m_pServersButtonGroup;
 	//QRadioButton  * m_pServersChooseFromList;
 	//QRadioButton  * m_pServersSpecifyManually;
 	//QRadioButton  * m_pServersOpenIrcUrl;

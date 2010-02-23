@@ -40,7 +40,7 @@
 
 // this will be chosen during the setup process
 QString g_szChoosenIncomingDirectory;
-//int g_iThemeToApply = THEME_APPLY_NONE;
+int g_iThemeToApply = THEME_APPLY_NONE;
 bool bNeedToApplyDefaults;
 unsigned int uPort;
 QString szHost;
@@ -87,22 +87,19 @@ KVIMODULEEXPORTFUNC void setup_finish()
 
 		// Apply the chosen default theme
 		QString szDir;
-/*		switch(g_iThemeToApply)
+		KviThemeInfo out;
+		switch(g_iThemeToApply)
 		{
 			case THEME_APPLY_HIRES:
-				g_pApp->getGlobalKvircDirectory(szDir,KviApp::Themes,"default.hires");
-				g_pApp->loadTheme(szDir);
+				g_pApp->getGlobalKvircDirectory(szDir,KviApp::Themes,"YellowIRC-1.0.0");
+				KviTheme::load(szDir,out);
 			break;
 			case THEME_APPLY_LORES:
-				g_pApp->getGlobalKvircDirectory(szDir,KviApp::Themes,"default.lores");
-				g_pApp->loadTheme(szDir);
+				g_pApp->getGlobalKvircDirectory(szDir,KviApp::Themes,"MinimalDark-1.0.0");
+				KviTheme::load(szDir,out);
 			break;
 			// default: no theme
-		}*/
-
-		g_pApp->getGlobalKvircDirectory(szDir,KviApp::Themes,"YellowIRC-1.0.0");
-		KviThemeInfo out;
-		KviTheme::load(szDir,out);
+		}
 
 		if(!szMircServers.isEmpty())
 		{
