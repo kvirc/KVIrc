@@ -1125,8 +1125,8 @@ static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("wildcard",KVS_PT_NONEMPTYSTRING,0,szWildcard)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
-		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 		KVSM_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
+		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 	KVSM_PARAMETERS_END(c)
 	bool bRegExp = (szFlags.indexOf(QChar('r')) != -1) || (szFlags.indexOf(QChar('R')) != -1);
 	bool bExact = (szFlags.indexOf(QChar('e')) != -1) || (szFlags.indexOf(QChar('E')) != -1);
