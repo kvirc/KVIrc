@@ -25,6 +25,7 @@
 
 
 #include "kvi_coreactions.h"
+#include "kvi_shortcuts.h"
 #include "kvi_frame.h"
 #include "kvi_locale.h"
 #include "kvi_irccontext.h"
