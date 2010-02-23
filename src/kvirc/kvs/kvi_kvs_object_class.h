@@ -75,6 +75,12 @@ public:
 	void clearDirtyFlag(){ m_bDirty = false; };
 	bool isDirty(){ return m_bDirty; };
 	bool isBuiltin(){ return m_bBuiltin; };
+        bool isScriptHandler(const QString & szFunctionName)
+        {
+            KviKvsObjectFunctionHandler *pFunctionHandler=m_pFunctionHandlers->find(szFunctionName);
+            if (pFunctionHandler) return pFunctionHandler->isScriptHandler();
+            else return false;
+        };
 	const QString & name(){ return m_szName; };
 	KviKvsObjectClass * parentClass(){ return m_pParentClass; };
 	// pProc CAN'T be zero here!

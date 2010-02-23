@@ -243,6 +243,17 @@ void register_core_actions(KviActionManager * m)
 		0,
 		"Ctrl+Shift+L");
 
+        SCRIPT_ACTION(
+                KVI_COREACTION_CLASSEDITOR,
+                "classeditor.open",
+                __tr2qs("Edit Classes..."),
+                __tr2qs("Shows a window that allows editing classes"),
+                KviActionManager::categoryScripting(),
+                "kvi_bigicon_aliaseditor.png",
+                KVI_SMALLICON_ALIAS,
+                0,
+                "Ctrl+Shift+C");
+
 	SCRIPT_ACTION(
 		KVI_COREACTION_EVENTEDITOR,
 		"eventeditor.open",
