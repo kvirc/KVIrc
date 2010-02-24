@@ -352,11 +352,8 @@ bool KviAliasEditor::hasSelectedItems()
 bool KviAliasEditor::itemExists(QTreeWidgetItem *pSearchFor)
 {
         if(!pSearchFor)return false;
-        for(unsigned int i=0;i<m_pAliases->count();i++)
-        {
-            if (m_pAliases->at(i)==(KviAliasEditorTreeWidgetItem*) pSearchFor) return true;
-        }
-        return false;
+        if (m_pAliases->findRef((KviAliasEditorTreeWidgetItem*) pSearchFor)!=-1) return true;
+        else return false;
 }
 
 void KviAliasEditor::appendAllItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l,KviAliasEditorTreeWidgetItem::Type eType)
