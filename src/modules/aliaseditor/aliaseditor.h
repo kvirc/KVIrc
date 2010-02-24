@@ -120,7 +120,8 @@ protected slots:
         void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *);
         void renameItem();
         void newAlias();
-        void itemPressed(QTreeWidgetItem *,QPoint);
+        void customContextMenuRequested(const QPoint pnt);
+
 void newNamespace();
 void newItem(QString &szName,KviAliasEditorTreeWidgetItem::Type eType);
 
@@ -150,6 +151,8 @@ protected:
 	void getUniqueItemName(KviAliasEditorTreeWidgetItem *item,QString &buffer,KviAliasEditorTreeWidgetItem::Type eType);
         void appendSelectedAliasItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l);
         void appendSelectedAliasItemsRecursive(KviPointerList<KviAliasEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
+        void appendSelectedItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l);
+        void appendSelectedItemsRecursive(KviPointerList<KviAliasEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
 
 	void openParentItems(QTreeWidgetItem * it);
 	void activateItem(QTreeWidgetItem * it);
