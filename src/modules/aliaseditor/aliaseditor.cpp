@@ -111,16 +111,6 @@ KviAliasEditorTreeWidget::~KviAliasEditorTreeWidget()
 	clear();
 }
 
-void KviAliasEditorTreeWidget::mousePressEvent (QMouseEvent *e)
-{
-        if (e->button() == Qt::RightButton)
-        {
-                QTreeWidgetItem *i=itemAt(e->pos());
-                if (i) emit rightButtonPressed(i,QCursor::pos());
-        }
-        QTreeWidget::mousePressEvent(e);
-}
-
 
 KviAliasEditor::KviAliasEditor(QWidget * par)
 : QWidget(par)
@@ -144,10 +134,8 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 	box->setMargin(0);
 
 	m_pTreeWidget = new KviAliasEditorTreeWidget(box);
-        //m_pItemDelegate=new KviAliasEditorTreeWidgetItemDelegate(m_pTreeWidget);
-        //m_pTreeWidget->setItemDelegate( m_pItemDelegate);
 
-	box = new KviTalVBox(m_pSplitter);
+        box = new KviTalVBox(m_pSplitter);
 	KviTalHBox * hbox = new KviTalHBox(box);
 	hbox->setSpacing(0);
 	hbox->setMargin(0);
@@ -289,13 +277,11 @@ void KviAliasEditor::oneTimeSetup()
 		KviKvsScript * alias = it.current();
                 item = createFullItem(alias->name());
 		item->setBuffer(alias->code());
-                debug("append item %s",alias->name().toUtf8().data());
                 m_pAliases->append(item);
 		++it;
 	}
 
         connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
-        //connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
         m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
         connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(customContextMenuRequested(const QPoint &)));
 	connect(m_pTreeWidget,SIGNAL(itemChanged(QTreeWidgetItem *,int)),this,SLOT(itemRenamed(QTreeWidgetItem *,int)));
