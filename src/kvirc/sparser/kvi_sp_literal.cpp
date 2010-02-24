@@ -1783,28 +1783,33 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 				if(bIsMultiSingleMode)
 					iIconForCompactMode=KVI_OUT_LIMIT;
 			break;
-			case 'f':
-				//flood mode with parameter like "[5m#M4]:5", see bug #505
-				aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
-				chan->setChannelMode(*aux,bSet);
-				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
-				{
-					if(aParam.isEmpty())
-					{
-						chan->output(KVI_OUT_CHANMODE,
-							__tr2qs("%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"),
-							&nickBuffer,&szUser,&hostBuffer,
-							bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux);
-					} else {
-						chan->output(KVI_OUT_CHANMODE,
-							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"),
-							&nickBuffer,&szUser,&hostBuffer,
-							bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam);
-					}
-				}
-				if(bIsMultiSingleMode)
-					iIconForCompactMode=KVI_OUT_CHANMODE;
-			break;
+#define CHANUSER_MODE_PARAM(__modechar) \
+			case __modechar: \
+			aParam = msg->connection()->decodeText(msg->safeParam(curParam++)); \
+			chan->setChannelMode(*aux,bSet); \
+			if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode))) \
+			{ \
+				if(aParam.isEmpty()) \
+				{ \
+					chan->output(KVI_OUT_CHANMODE, \
+						__tr2qs("%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"), \
+						&nickBuffer,&szUser,&hostBuffer, \
+						bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux); \
+				} else { \
+					chan->output(KVI_OUT_CHANMODE, \
+						__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"), \
+						&nickBuffer,&szUser,&hostBuffer, \
+						bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam); \
+				} \
+			} \
+			if(bIsMultiSingleMode) \
+				iIconForCompactMode=KVI_OUT_CHANMODE; \
+		break;
+
+			//flood mode with parameter like "[5m#M4]:5", see bug #505
+			CHANUSER_MODE_PARAM('f');
+			//Channel join throttling like "4:5", see bug #731
+			CHANUSER_MODE_PARAM('j');
 
 #define CHANUSER_MODE(__modechar,__chanfunc,__evmeset,__evmeunset,__evset,__evunset,__icomeset,__icomeunset,__icoset,__icounset) \
 			case __modechar: \
