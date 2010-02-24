@@ -382,13 +382,13 @@ void KviClassEditor::itemRenamed(QTreeWidgetItem *it,int col)
         m_pClassNameLabel->setText(szLabelText);
 }
 
-
+*/
 
 bool KviClassEditor::hasSelectedItems()
 {
     return m_pTreeWidget->selectedItems().count()?1:0;
 }
-*/
+
 bool KviClassEditor::itemExists(QTreeWidgetItem *pSearchFor)
 {
     if(!pSearchFor)return false;
@@ -590,7 +590,7 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
         m_pClassNameLabel->setText(szLabelText);
         m_pClassNameRenameButton->setEnabled(true);
 
-        szLabelText = __tr2qs_ctx("Member Function:","editor");
+        szLabelText = __tr2qs_ctx("Function Member:","editor");
         if(m_pLastEditedItem->isMethod()){
             szLabelText += ": <b>";
             szLabelText += m_pLastEditedItem->text(0);
@@ -614,21 +614,31 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 
 void KviClassEditor::itemPressed(QTreeWidgetItem *it,QPoint pnt)
 {
-/*        m_pContextPopup->clear();
+        m_pContextPopup->clear();
 
         m_pLastClickedItem = (KviClassEditorTreeWidgetItem *)it;
 
         int id;
 
-        m_pContextPopup->insertItem(
-                        *(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
-                        __tr2qs_ctx("Add Class","editor"),
-                        this,SLOT(newClass()));
-
-        m_pContextPopup->insertItem(
+        id = m_pContextPopup->insertItem(
                         *(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
                         __tr2qs_ctx("Add Namespace","editor"),
                         this,SLOT(newNamespace()));
+        m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isNamespace());
+
+        id = m_pContextPopup->insertItem(
+                        *(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
+                        __tr2qs_ctx("Add Class","editor"),
+                        this,SLOT(newClass()));
+        m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isNamespace());
+
+
+        id = m_pContextPopup->insertItem(
+                        *(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
+                        __tr2qs_ctx("Add Function Member","editor"),
+                        this,SLOT(newFunctionMember()));
+        m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isClass()| m_pLastClickedItem->isMethod());
+
 
         bool bHasItems = m_pTreeWidget->topLevelItemCount();
         bool bHasSelected = hasSelectedItems();
@@ -677,7 +687,7 @@ void KviClassEditor::itemPressed(QTreeWidgetItem *it,QPoint pnt)
 
         m_pContextPopup->setItemEnabled(id,bHasItems);
         m_pContextPopup->popup(pnt);
-        */
+
 }
 /*
 void KviClassEditor::recursiveSearchReplace(const QString &szSearch,KviClassEditorTreeWidgetItem * it,bool bReplace,const QString &szReplace)
@@ -1220,24 +1230,31 @@ void KviClassEditor::activateItem(QTreeWidgetItem * it)
         openParentItems(it);
         m_pTreeWidget->setCurrentItem(it);
 }
-/*
+
 void KviClassEditor::newClass()
 {
-        QString szNewName = askForClassName(__tr2qs_ctx("Add Class","editor"),__tr2qs_ctx("Please enter the name for the new class","editor"),"myfunction");
+        /*QString szNewName = askForClassName(__tr2qs_ctx("Add Member Function","editor"),__tr2qs_ctx("Please enter the name for the new function","editor"),"myfunction");
         if(szNewName.isEmpty())return;
-        newItem(szNewName,KviClassEditorTreeWidgetItem::Class);
+        newItem(szNewName,KviClassEditorTreeWidgetItem::Class);*/
 }
 
 void KviClassEditor::newNamespace()
 {
-        QString szName = askForNamespaceName(__tr2qs_ctx("Add Namespace","editor"),__tr2qs_ctx("Please enter the name for the new namespace","editor"),"mynamespace");
+/*        QString szName = askForNamespaceName(__tr2qs_ctx("Add Namespace","editor"),__tr2qs_ctx("Please enter the name for the new namespace","editor"),"mynamespace");
         if(szName.isEmpty())return;
-        newItem(szName,KviClassEditorTreeWidgetItem::Namespace);
+        newItem(szName,KviClassEditorTreeWidgetItem::Namespace);*/
+}
+
+void KviClassEditor::newFunctionMember()
+{
+/*        QString szName = askForNamespaceName(__tr2qs_ctx("Add Namespace","editor"),__tr2qs_ctx("Please enter the name for the new namespace","editor"),"mynamespace");
+        if(szName.isEmpty())return;
+        newItem(szName,KviClassEditorTreeWidgetItem::Namespace);*/
 }
 
 void  KviClassEditor::newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType)
 {
-      /*  if(m_pLastClickedItem)
+        if(m_pLastClickedItem)
                 if(!itemExists(m_pLastClickedItem)) m_pLastClickedItem=0;
         if(m_pLastClickedItem) buildFullItemPath(m_pLastClickedItem,szName);
         int idx=1;
@@ -1255,10 +1272,10 @@ void  KviClassEditor::newItem(QString &szName,KviClassEditorTreeWidgetItem::Type
         it->setType(eType);
         activateItem(it);
 }
-
+/*
 void KviClassEditor::recursiveCommit(KviClassEditorTreeWidgetItem * it)
 {
-    /*    if(!it)
+        if(!it)
                 return;
         if(it->isClass())
         {

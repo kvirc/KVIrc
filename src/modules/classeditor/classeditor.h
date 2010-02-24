@@ -149,6 +149,8 @@ protected slots:
        void itemPressed(QTreeWidgetItem *,QPoint);
        void newClass();
        void newNamespace();
+       void newFunctionMember();
+
        void newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType);
      /*   void renameItem();
 
@@ -187,6 +189,7 @@ protected:
 */
 	void openParentItems(QTreeWidgetItem * it);
 	void activateItem(QTreeWidgetItem * it);
+        bool hasSelectedItems();
 /*
         bool removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
         void removeItemChildren(KviClassEditorTreeWidgetItem *it);
@@ -199,7 +202,7 @@ protected:
 	bool classExists(QString &szFullItemName);
         void appendAllItems(KviPointerList<KviClassEditorTreeWidgetItem> * l,KviClassEditorTreeWidgetItem::Type);
         void appendAllItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom,KviClassEditorTreeWidgetItem::Type);
-        bool hasSelectedItems();
+
 
 
         KviClassEditorTreeWidgetItem * createFullItemRecursive(QTreeWidgetItem *pCurrent,QStringList & lNameSpaces,int & iLevel);
