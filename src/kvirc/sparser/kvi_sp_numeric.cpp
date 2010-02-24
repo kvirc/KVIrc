@@ -2202,6 +2202,7 @@ void KviServerParser::parseNumericSaslLogin(KviIrcMessage * msg)
 {
 	// 900: RPL_SASLLOGIN
 	// :prefix 900 <nickname> <usermask> <authuser>: You are now logged in as <authuser>
+
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
@@ -2210,17 +2211,24 @@ void KviServerParser::parseNumericSaslLogin(KviIrcMessage * msg)
 			     &szParam
 			     );
 	}
+
+	if(msg->connection()->stateData()->isInsideAuthenticate())
+		msg->connection()->endCapLs();
 }
 
 void KviServerParser::parseNumericSaslSuccess(KviIrcMessage * msg)
 {
 	// 903: RPL_SASLSUCCESS
 	// :prefix 903 <nickname> :SASL authentication successful
+	
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 		pOut->outputNoFmt(KVI_OUT_SERVERINFO,__tr2qs("SASL authentication successful"));
 	}
+
+	if(msg->connection()->stateData()->isInsideAuthenticate())
+		msg->connection()->endCapLs();
 }
 
 void KviServerParser::parseNumericSaslFail(KviIrcMessage * msg)
@@ -2239,4 +2247,7 @@ void KviServerParser::parseNumericSaslFail(KviIrcMessage * msg)
 			     &szParam
 			     );
 	}
+
+	if(msg->connection()->stateData()->isInsideAuthenticate())
+		msg->connection()->endCapLs();
 }

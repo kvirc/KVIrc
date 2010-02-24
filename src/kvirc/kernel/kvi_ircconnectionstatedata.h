@@ -45,6 +45,7 @@ public:
 	~KviIrcConnectionStateData();
 protected:
 	bool         m_bInsideCapLs;                  // true if there's a CAP LS request pending
+	bool         m_bInsideAuthenticate;           // true if there's a AUTHENTICATE request pending
 	bool         m_bSentStartTls;                 // the state of STARTTLS protocol
 	bool         m_bSentQuit;                     // have we sent the quit message for this connection ?
 	unsigned int m_uLoginNickIndex;               // the index of the identity nicknames used until now (see KviIrcConnection::loginToIrcServer())
@@ -56,6 +57,9 @@ protected:
 public:
 	bool sentStartTls(){ return m_bSentStartTls; };
 	void setSentStartTls(){ m_bSentStartTls = true; };
+
+	bool isInsideAuthenticate(){ return m_bInsideAuthenticate; };
+	void setInsideAuthenticate(bool bInside){ m_bInsideAuthenticate = bInside; };
 
 	bool isInsideCapLs(){ return m_bInsideCapLs; };
 	void setInsideCapLs(bool bInside){ m_bInsideCapLs = bInside; };

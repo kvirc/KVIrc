@@ -393,6 +393,7 @@ void KviIrcConnection::handleCapAck()
 		serverInfo()->enabledCaps().contains("sasl",Qt::CaseInsensitive)
 	)
 	{
+		m_pStateData->setInsideAuthenticate(true);
 		bUsed=true;
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -409,10 +410,7 @@ void KviIrcConnection::handleCapAck()
 void KviIrcConnection::handleAuthenticate(KviStr & szAuth)
 {
 	//SASL
-	if(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable) &&
-		target()->server()->enabledSASL() &&
-		serverInfo()->enabledCaps().contains("sasl",Qt::CaseInsensitive)
-	)
+	if(m_pStateData->isInsideAuthenticate())
 	{
 		QByteArray szNick = encodeText(target()->server()->saslNick());
 		QByteArray szPass = encodeText(target()->server()->saslPass());
@@ -445,8 +443,6 @@ void KviIrcConnection::handleAuthenticate(KviStr & szAuth)
 			}
 		}
 	}
-
-	endCapLs();
 }
 
 void KviIrcConnection::handleCapNak()
@@ -456,6 +452,7 @@ void KviIrcConnection::handleCapNak()
 
 void KviIrcConnection::endCapLs()
 {
+	m_pStateData->setInsideAuthenticate(false);
 	sendFmtData("CAP END");
 	loginToIrcServer();
 }
