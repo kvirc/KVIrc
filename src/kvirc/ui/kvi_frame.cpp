@@ -587,9 +587,6 @@ KviConsole * KviFrame::createNewConsole(bool bFirstInFrame)
 		KviCustomToolBarManager::instance()->createToolBarsVisibleAtStartup();
 		KviActionManager::instance()->delayedRegisterAccelerators();
 		restoreToolBarPositions();
-
-		if(KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode))
-			c->maximize();
 	}
 
 	return c;

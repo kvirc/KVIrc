@@ -70,6 +70,7 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 : QMdiArea(parent)
 {
 	setFrameShape(NoFrame);
+	m_bInSDIMode = KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode);
 	m_pFrm = pFrm;
 
 	m_pWindowPopup = new KviTalPopupMenu(this);
@@ -123,7 +124,7 @@ void KviMdiManager::manageChild(KviMdiChild * lpC, bool, QRect *)
 {
 	addSubWindow((QMdiSubWindow*)lpC);
 
-	if(!isInSDIMode())
+	if(!m_bInSDIMode)
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 }
 
@@ -131,7 +132,7 @@ void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 {
 	setTopChild(lpC);
 
-	if(isInSDIMode())
+	if(m_bInSDIMode)
 	{
 		lpC->showMaximized();
 	} else {
@@ -149,9 +150,6 @@ KviMdiChild * KviMdiManager::topChild()
 void KviMdiManager::setTopChild(KviMdiChild *lpC)
 {
 	setActiveSubWindow((QMdiSubWindow*) lpC);
-	
-	if(!isInSDIMode())
-		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 }
 
 void KviMdiManager::destroyChild(KviMdiChild *lpC, bool bFocusTopChild)
@@ -162,9 +160,17 @@ void KviMdiManager::destroyChild(KviMdiChild *lpC, bool bFocusTopChild)
 	if(bFocusTopChild)
 		focusPreviousTopChild();
 	
-	if(!isInSDIMode())
+	if(!m_bInSDIMode)
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 }
+
+void KviMdiManager::setIsInSDIMode(bool bMode)
+{
+// 	qDebug("Sdi Mode %d", bMode);
+	m_bInSDIMode = bMode;
+	if(!m_bInSDIMode)
+		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+};
 
 void KviMdiManager::focusPreviousTopChild()
 {
@@ -350,7 +356,7 @@ void KviMdiManager::tileMethodMenuActivated(int id)
 
 	KVI_OPTION_UINT(KviOption_uintTileMethod) = idx;
 
-	//we don't check the isInSDIMode() value here, since it was
+	//we don't check the m_bInSDIMode value here, since it was
 	//the user forcing windows to be tiled
 
 	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows)) tile();

@@ -585,6 +585,11 @@ KviChannel * KviIrcConnection::createChannel(const QString & szName)
 	if(c)
 	{
 		c->setAliveChan();
+		if(!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels))
+		{
+			c->raise();
+			c->setFocus();
+		}
 	} else {
 		c = new KviChannel(m_pConsole->frame(),m_pConsole,szName);
 		m_pConsole->frame()->addWindow(c,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels));
@@ -604,6 +609,11 @@ KviQuery * KviIrcConnection::createQuery(const QString & szNick)
 	if(q)
 	{
 		q->setAliveQuery();
+		if(!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery))
+		{
+			q->raise();
+			q->setFocus();
+		}
 	} else {
 		q = new KviQuery(m_pConsole->frame(),m_pConsole,szNick);
 		m_pConsole->frame()->addWindow(q,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery));
