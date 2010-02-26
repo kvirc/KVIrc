@@ -96,11 +96,19 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 		c->error(this,__tr2qs_ctx("Missing class name","kvs"));
 		return false;
 	}
-	KviKvsVariant * pBaseClassName = l.next();
+
+
+        KviKvsVariant * pBaseClassName = l.next();
 
 	QString szClassName;
 	QString szBaseClassName;
 	pClassName->asString(szClassName);
+        QRegExp re("[\\w:]+");
+        if(!re.exactMatch(szClassName))
+        {
+                 c->error(this,__tr2qs_ctx("Class names can contain only letters, digits, underscores and '::' namespace separators","kvs"));
+                 return false;
+        }
 	if(pBaseClassName)
 		pBaseClassName->asString(szBaseClassName);
 
