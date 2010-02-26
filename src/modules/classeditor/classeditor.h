@@ -71,8 +71,10 @@ protected:
 	QString m_szName;
         QString m_szBuffer;
         bool m_bClassModified;
+        QString m_szInerithClassName;
         int  m_cPos;
 public:
+        void setInerithClass(QString szInerithClassName){m_szInerithClassName=szInerithClassName;};
 	const QString & name(){ return m_szName; };
 	void setName(const QString &szName);
         void setClassModified(bool bModified){m_bClassModified=bModified;};
@@ -151,7 +153,7 @@ protected slots:
        void newNamespace();
        void newFunctionMember();
 
-       void newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType);
+       KviClassEditorTreeWidgetItem * newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType);
      /*   void renameItem();
 
 
@@ -190,11 +192,12 @@ protected:
 	void openParentItems(QTreeWidgetItem * it);
 	void activateItem(QTreeWidgetItem * it);
         bool hasSelectedItems();
+        void askForClassName(QString &szClassName,QString &szInerithClassName);
 /*
         bool removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
         void removeItemChildren(KviClassEditorTreeWidgetItem *it);
 
-        QString askForClassName(const QString &szAction,const QString &szText,const QString &szInitialText);
+
 	QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
 
 
@@ -240,7 +243,7 @@ protected slots:
 	void okClicked();
 	void applyClicked();
 };
-/*
+
 class KviClassEditorDialog: public QDialog
 {
         Q_OBJECT
@@ -249,11 +252,12 @@ public:
 
         ~KviClassEditorDialog();
 public:
-        QLineEdit * m_pClassNameLineEdit;
-        QComboBox * m_pInerithClassComboBox;
+        QString getClassName(){return m_pClassNameLineEdit->text();};
+        QString getInerithClassName(){return m_pInerithClassComboBox->currentText();};
 protected:
         QPushButton * m_pNewClassButton;
-
+        QLineEdit * m_pClassNameLineEdit;
+        QComboBox * m_pInerithClassComboBox;
         QWidget     * m_pParent;
 protected slots:
         void textChanged(const QString &);
@@ -262,7 +266,7 @@ protected slots:
         void replaceAll(const QString &, const QString &);
         void initFind();
         void nextFind(const QString &);
-
-};*/
+*/
+};
 
 #endif //_ALIASEDITOR_H_
