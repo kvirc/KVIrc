@@ -165,21 +165,21 @@ KviClassEditor::KviClassEditor(QWidget * par)
     hbox = new KviTalHBox(box);
     hbox->setSpacing(0);
     hbox->setMargin(0);
-    m_pFunctionMemberNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
-    m_pFunctionMemberNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
-    m_pFunctionMemberNameRenameButton->setEnabled(false);
-    connect(m_pFunctionMemberNameRenameButton,SIGNAL(clicked()),this,SLOT(renameMember()));
-    hbox->setStretchFactor(m_pFunctionMemberNameLabel,2);
-    m_pFunctionMemberNameRenameButton->setToolTip(__tr2qs_ctx("Edit the function member name","editor"));
+    m_pMemberFunctionNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
+    m_pMemberFunctionNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
+    m_pMemberFunctionNameRenameButton->setEnabled(false);
+    connect(m_pMemberFunctionNameRenameButton,SIGNAL(clicked()),this,SLOT(renameMember()));
+    hbox->setStretchFactor(m_pMemberFunctionNameLabel,2);
+    m_pMemberFunctionNameRenameButton->setToolTip(__tr2qs_ctx("Edit the function member name","editor"));
 
 
 
     m_pEditor = KviScriptEditor::createInstance(box);
     m_pEditor->setFocus();
 
-    connect(m_pEditor,SIGNAL(find(const QString &)),this,SLOT(slotFindWord(const QString &)));
+  /*  connect(m_pEditor,SIGNAL(find(const QString &)),this,SLOT(slotFindWord(const QString &)));
     connect(m_pEditor,SIGNAL(replaceAll(const QString &,const QString &)),this,SLOT(slotReplaceAll(const QString &,const QString &)));
-
+*/
     m_pContextPopup = new KviTalPopupMenu(this);
 
     oneTimeSetup();
@@ -341,7 +341,9 @@ void KviClassEditor::oneTimeSetup()
             ++it;
     }
     connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
-    connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
+    //connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
+    m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(customContextMenuRequested(const QPoint &)));
 
 }
 /*
@@ -578,30 +580,30 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
                 szLabelText += "</b>";
                 m_pClassNameLabel->setText(szLabelText);
                 m_pClassNameRenameButton->setEnabled(true);
-                m_pFunctionMemberNameRenameButton->setEnabled(false);
+                m_pMemberFunctionNameRenameButton->setEnabled(false);
                 m_pEditor->setText("");
                 m_pEditor->setEnabled(false);
                 m_pTreeWidget->setFocus();
                 return;
         }
 
-        QString szLabelText = __tr2qs_ctx("Class","editor");
+        QString szLabelText = __tr2qs_ctx("Class","classeditor");
         szLabelText += ": <b>";
         szLabelText += szClassName;
         szLabelText += "</b>";
         m_pClassNameLabel->setText(szLabelText);
         m_pClassNameRenameButton->setEnabled(true);
 
-        szLabelText = __tr2qs_ctx("Function Member:","editor");
+        szLabelText = __tr2qs_ctx("Member Function:","classeditor");
         if(m_pLastEditedItem->isMethod()){
             szLabelText += ": <b>";
             szLabelText += m_pLastEditedItem->text(0);
             szLabelText += "</b>";
-            m_pFunctionMemberNameRenameButton->setEnabled(true);
+            m_pMemberFunctionNameRenameButton->setEnabled(true);
         }
         else
-            m_pFunctionMemberNameRenameButton->setEnabled(false);
-        m_pFunctionMemberNameLabel->setText(szLabelText);
+            m_pMemberFunctionNameRenameButton->setEnabled(false);
+        m_pMemberFunctionNameLabel->setText(szLabelText);
 
 
 
@@ -614,11 +616,11 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 }
 
 
-void KviClassEditor::itemPressed(QTreeWidgetItem *it,QPoint pnt)
+void KviClassEditor::customContextMenuRequested(QPoint pnt)
 {
         m_pContextPopup->clear();
 
-        m_pLastClickedItem = (KviClassEditorTreeWidgetItem *)it;
+        m_pLastClickedItem = (KviClassEditorTreeWidgetItem *)m_pTreeWidget->itemAt(pnt);
 
         int id;
 
@@ -626,20 +628,23 @@ void KviClassEditor::itemPressed(QTreeWidgetItem *it,QPoint pnt)
                         *(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
                         __tr2qs_ctx("Add Namespace","editor"),
                         this,SLOT(newNamespace()));
-        m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isNamespace());
+        if (!m_pLastClickedItem)m_pContextPopup->setItemEnabled(id,true);
+        else m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isNamespace());
 
         id = m_pContextPopup->insertItem(
                         *(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
-                        __tr2qs_ctx("Add Class","editor"),
+                        __tr2qs_ctx("Add Class","classeditor"),
                         this,SLOT(newClass()));
-        m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isNamespace());
+        if (!m_pLastClickedItem)m_pContextPopup->setItemEnabled(id,true);
+        else m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isNamespace());
 
 
         id = m_pContextPopup->insertItem(
                         *(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
-                        __tr2qs_ctx("Add Function Member","editor"),
-                        this,SLOT(newFunctionMember()));
-        m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isClass()| m_pLastClickedItem->isMethod());
+                        __tr2qs_ctx("Add Member Function","classeditor"),
+                        this,SLOT(newMemberFunction()));
+        if (!m_pLastClickedItem)m_pContextPopup->setItemEnabled(id,false);
+        else m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isClass()| m_pLastClickedItem->isMethod());
 
 
         bool bHasItems = m_pTreeWidget->topLevelItemCount();
@@ -688,7 +693,7 @@ void KviClassEditor::itemPressed(QTreeWidgetItem *it,QPoint pnt)
                         this,SLOT(slotCollapseNamespaces()));
 
         m_pContextPopup->setItemEnabled(id,bHasItems);
-        m_pContextPopup->popup(pnt);
+        m_pContextPopup->popup( m_pTreeWidget->mapToGlobal(pnt));
 
 }
 /*
@@ -1131,7 +1136,7 @@ void KviClassEditor::askForClassName(QString &szClassName,QString &szInerithClas
         }
         delete pDialog;
 }
-/*
+
 QString KviClassEditor::askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText)
 {
         bool bOk = false;
@@ -1199,7 +1204,7 @@ QString KviClassEditor::askForNamespaceName(const QString &szAction,const QStrin
         }
         return szNewName;
 }
-*/
+
 void KviClassEditor::openParentItems(QTreeWidgetItem * it)
 {
         if(it->parent())
@@ -1231,12 +1236,12 @@ void KviClassEditor::newClass()
 }
 void KviClassEditor::newNamespace()
 {
-/*        QString szName = askForNamespaceName(__tr2qs_ctx("Add Namespace","editor"),__tr2qs_ctx("Please enter the name for the new namespace","editor"),"mynamespace");
+       QString szName = askForNamespaceName(__tr2qs_ctx("Add Namespace","editor"),__tr2qs_ctx("Please enter the name for the new namespace","editor"),"mynamespace");
         if(szName.isEmpty())return;
-        newItem(szName,KviClassEditorTreeWidgetItem::Namespace);*/
+        newItem(szName,KviClassEditorTreeWidgetItem::Namespace);
 }
 
-void KviClassEditor::newFunctionMember()
+void KviClassEditor::newMemberFunction()
 {
 /*        QString szName = askForNamespaceName(__tr2qs_ctx("Add Namespace","editor"),__tr2qs_ctx("Please enter the name for the new namespace","editor"),"mynamespace");
         if(szName.isEmpty())return;
@@ -1247,9 +1252,9 @@ KviClassEditorTreeWidgetItem *  KviClassEditor::newItem(QString &szName,KviClass
 {
         if(m_pLastClickedItem)
         buildFullItemPath(m_pLastClickedItem,szName);
-           int idx=1;
         QString szTmp;
         if(findItem(szName)) szName.append("1");
+        int idx=2;
         while(findItem(szName))
         {
               szTmp.setNum(idx);

@@ -121,8 +121,8 @@ public:
 	KviClassEditorTreeWidget     * m_pTreeWidget;
         QLabel                       * m_pClassNameLabel;
         QPushButton                  * m_pClassNameRenameButton;
-        QLabel                       * m_pFunctionMemberNameLabel;
-        QPushButton                  * m_pFunctionMemberNameRenameButton;
+        QLabel                       * m_pMemberFunctionNameLabel;
+        QPushButton                  * m_pMemberFunctionNameRenameButton;
 
 	KviClassEditorTreeWidgetItem * m_pLastEditedItem;
 	KviClassEditorTreeWidgetItem * m_pLastClickedItem;
@@ -148,10 +148,10 @@ public:
 protected slots:
 
        void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *);
-       void itemPressed(QTreeWidgetItem *,QPoint);
+       void customContextMenuRequested(QPoint);
        void newClass();
        void newNamespace();
-       void newFunctionMember();
+       void newMemberFunction();
 
        KviClassEditorTreeWidgetItem * newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType);
      /*   void renameItem();
@@ -193,12 +193,13 @@ protected:
 	void activateItem(QTreeWidgetItem * it);
         bool hasSelectedItems();
         void askForClassName(QString &szClassName,QString &szInerithClassName);
+        QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
 /*
         bool removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
         void removeItemChildren(KviClassEditorTreeWidgetItem *it);
 
 
-	QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
+
 
 
         bool namespaceExists(QString &szFullItemName);
