@@ -78,7 +78,8 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 	connect(m_pWindowPopup,SIGNAL(aboutToShow()),this,SLOT(fillWindowPopup()));
 	m_pTileMethodPopup = new KviTalPopupMenu(this);
 	connect(m_pTileMethodPopup,SIGNAL(activated(int)),this,SLOT(tileMethodMenuActivated(int)));
-
+	connect(this, SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(slotSubWindowActivated(QMdiSubWindow *)));
+	
 	setAutoFillBackground(false);
 	viewport()->setAutoFillBackground(false);
 
@@ -597,4 +598,21 @@ void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds
 void KviMdiManager::tileAnodine()
 {
 	this->tileSubWindows();
+}
+
+void KviMdiManager::slotSubWindowActivated(QMdiSubWindow * pMdiChild)
+{
+	if(pMdiChild)
+	{
+		if(((KviMdiChild*)pMdiChild)->client() && g_pFrame->isActiveWindow())
+		{
+			qDebug("subwindowactivated %p %s",pMdiChild, ((KviMdiChild*)pMdiChild)->plainCaption().toUtf8().data());
+			g_pFrame->childWindowActivated((KviWindow *)((KviMdiChild*)pMdiChild)->client());
+		} else {
+			qDebug("(inactive) subwindowactivated %p %s",pMdiChild, ((KviMdiChild*)pMdiChild)->plainCaption().toUtf8().data());
+		}
+	} else {
+		//last subwindow deactivated
+		qDebug("subwindowactivated 0x0");
+	}
 }

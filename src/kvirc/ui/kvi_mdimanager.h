@@ -200,6 +200,7 @@ protected slots:
 	void menuActivated(int id);
 	void tileMethodMenuActivated(int id);
 	void fillWindowPopup();
+	void slotSubWindowActivated(QMdiSubWindow * pMdiChild);
 };
 
 #endif //_KVI_MDIMANAGER_H_
