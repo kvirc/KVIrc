@@ -1250,6 +1250,7 @@ void KviClassEditor::newNamespace()
 void KviClassEditor::newMemberFunction()
 {
         QString szFunctionName,szClassName;
+        if(m_pLastClickedItem->isMethod()) m_pLastClickedItem=m_pLastClickedItem->parentItem();
         szClassName=buildFullClassName(m_pLastClickedItem);
         bool bInternal;
         askForFunction(szFunctionName, &bInternal,szClassName);
