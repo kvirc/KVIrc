@@ -1091,6 +1091,7 @@ void KviClassEditor::askForClassName(QString &szClassName,QString &szInerithClas
         KviClassEditorDialog *pDialog=new KviClassEditorDialog(this,"classdialog",m_pClasses);
         while(1)
         {
+            szClassName="";
             g_pClassEditorModule->lock();
             bool bOk=pDialog->exec();
             g_pClassEditorModule->unlock();
@@ -1098,39 +1099,44 @@ void KviClassEditor::askForClassName(QString &szClassName,QString &szInerithClas
             szClassName=pDialog->getClassName();
             szInerithClassName=pDialog->getInerithClassName();
             // we allow only [\w:]+
-            QRegExp re("[\\w:]+");
+            QRegExp re("[\\w]+");
             if(!re.exactMatch(szClassName))
             {
                 g_pClassEditorModule->lock();
                 QMessageBox::information(this,
-                   __tr2qs_ctx("Bad Class Name","editor"),
-                   __tr2qs_ctx("Class names can contain only letters, digits, underscores and '::' namespace separators","editor"),
+                   __tr2qs_ctx("Bad Class Name","classeditor"),
+                   __tr2qs_ctx("Class names can contain only letters, digits and underscores","classeditor"),
                    __tr2qs_ctx("Ok, Let me try again...","editor"));
                  g_pClassEditorModule->unlock();
                  continue;
             }
-            // make sure that we have only doubled "::" and not ":" or ":::..."
-            QString tmp = szClassName;
-            tmp.replace("::","@"); // @ is not allowed by the rule above
-            if(tmp.indexOf(":",Qt::CaseInsensitive) != -1)
+            break;
+        }
+        delete pDialog;
+}
+void KviClassEditor::askForFunction(QString &szFunctionName,bool * bInternal,const QString &szClassName)
+{
+        KviClassEditorFunctionDialog *pDialog=new KviClassEditorFunctionDialog(this,"function",szClassName);
+        while(1)
+        {
+            szFunctionName="";
+            g_pClassEditorModule->lock();
+            bool bOk=pDialog->exec();
+            g_pClassEditorModule->unlock();
+            if(!bOk) break;
+            szFunctionName=pDialog->getFunctionName();
+            *bInternal=pDialog->isInternalFunction();
+            // we allow only [\w:]+
+            QRegExp re("[\\w]+");
+            if(!re.exactMatch(szFunctionName))
             {
-                  g_pClassEditorModule->lock();
-                  QMessageBox::information(this,
-                     __tr2qs_ctx("Bad Class Name","editor"),
-                     __tr2qs_ctx("Stray ':' character in class name: did you mean ...<namespace>::<name> ?","editor"),
-                     __tr2qs_ctx("Ok, Let me try again...","editor"));
-                  g_pClassEditorModule->unlock();
-                  continue;
-            }
-            if(tmp.indexOf("@@",Qt::CaseInsensitive) != -1)
-            {
-                  g_pClassEditorModule->lock();
-                  QMessageBox::information(this,
-                      __tr2qs_ctx("Bad Class Name","editor"),
-                      __tr2qs_ctx("Found an empty namespace in class name","editor"),
-                      __tr2qs_ctx("Ok, Let me try again...","editor"));
-                  g_pClassEditorModule->unlock();
-                  continue;
+                g_pClassEditorModule->lock();
+                QMessageBox::information(this,
+                   __tr2qs_ctx("Bad Function Name","editor"),
+                   __tr2qs_ctx("Function names can contain only letters, digits and underscores","editor"),
+                   __tr2qs_ctx("Ok, Let me try again...","editor"));
+                 g_pClassEditorModule->unlock();
+                 continue;
             }
             break;
         }
@@ -1236,16 +1242,20 @@ void KviClassEditor::newClass()
 }
 void KviClassEditor::newNamespace()
 {
-       QString szName = askForNamespaceName(__tr2qs_ctx("Add Namespace","editor"),__tr2qs_ctx("Please enter the name for the new namespace","editor"),"mynamespace");
-        if(szName.isEmpty())return;
-        newItem(szName,KviClassEditorTreeWidgetItem::Namespace);
+       QString szName = askForNamespaceName(__tr2qs_ctx("Add Namespace","editor"),__tr2qs_ctx("Please enter the name for the new namespace","editor"),"mynamespace");   
+       if(szName.isEmpty())return;
+       newItem(szName,KviClassEditorTreeWidgetItem::Namespace);
 }
 
 void KviClassEditor::newMemberFunction()
 {
-/*        QString szName = askForNamespaceName(__tr2qs_ctx("Add Namespace","editor"),__tr2qs_ctx("Please enter the name for the new namespace","editor"),"mynamespace");
-        if(szName.isEmpty())return;
-        newItem(szName,KviClassEditorTreeWidgetItem::Namespace);*/
+        QString szFunctionName,szClassName;
+        szClassName=buildFullClassName(m_pLastClickedItem);
+        bool bInternal;
+        askForFunction(szFunctionName, &bInternal,szClassName);
+        if(szFunctionName.isEmpty())return;
+        KviClassEditorTreeWidgetItem *it=newItem(szFunctionName,KviClassEditorTreeWidgetItem::Method);
+        it->setInternalFunction(bInternal);
 }
 
 KviClassEditorTreeWidgetItem *  KviClassEditor::newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType)
@@ -1401,7 +1411,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 
         QLabel * pClassNameLabel = new QLabel(hbox);
         pClassNameLabel->setObjectName("classnamelabel");
-        // __tr2qs_ctx("Please enter the name for the new function","editor")
+
         pClassNameLabel->setText(__tr2qs_ctx("Please enter the name for the new class:","classeditor"));
 
         m_pClassNameLineEdit = new QLineEdit(hbox);
@@ -1464,4 +1474,88 @@ KviClassEditorDialog::~KviClassEditorDialog()
 void KviClassEditorDialog::textChanged(const QString & szText)
 {
     m_pNewClassButton->setEnabled(!szText.isEmpty());
+}
+
+KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString &szClassName)
+: QDialog(pParent)
+{
+        setObjectName(szName);
+
+        m_pParent = pParent;
+        QPalette p = palette();
+        p.setColor(foregroundRole(),QColor( 0, 0, 0 ));
+        p.setColor(backgroundRole(),QColor( 236, 233, 216 ));
+        setPalette(p);
+
+        QGridLayout * pLayout = new QGridLayout(this);
+
+        KviTalHBox * hbox = new KviTalHBox(this);
+        hbox->setSpacing(0);
+        hbox->setMargin(0);
+        pLayout->addWidget(hbox,0,0);
+
+        QLabel * pClassNameLabel = new QLabel(hbox);
+        pClassNameLabel->setObjectName("classnamelabel");
+        pClassNameLabel->setText("Class: <b>"+szClassName+"</b>");
+
+        hbox = new KviTalHBox(this);
+        hbox->setSpacing(0);
+        hbox->setMargin(0);
+        pLayout->addWidget(hbox,1,0);
+
+        QLabel * pFunctionNameLabel = new QLabel(hbox);
+        pFunctionNameLabel->setObjectName("functionnamelabel");
+        pFunctionNameLabel->setText(__tr2qs_ctx("Please enter the name for the new member function:","classeditor"));
+
+        m_pFunctionNameLineEdit = new QLineEdit(hbox);
+        m_pFunctionNameLineEdit->setObjectName("functionameineedit");
+
+
+        hbox = new KviTalHBox(this);
+        hbox->setSpacing(0);
+        hbox->setMargin(0);
+        pLayout->addWidget(hbox,2,0);
+
+
+        QLabel * pFunctionInternalLabel = new QLabel(hbox);
+        pFunctionInternalLabel->setObjectName("functionnamelabel");
+        pFunctionInternalLabel->setText(__tr2qs_ctx("Set as <b>Internal</b> Function: ","classeditor"));
+
+        m_pInternalCheckBox=new QCheckBox(hbox);
+        m_pInternalCheckBox->setChecked(false);
+        m_pFunctionNameLineEdit->setFocus();
+        hbox->setAlignment(m_pInternalCheckBox,Qt::AlignLeft);
+        hbox->setStretchFactor(m_pInternalCheckBox,70);
+        hbox->setStretchFactor(pFunctionInternalLabel,30);
+
+
+        hbox = new KviTalHBox(this);
+        hbox->setSpacing(0);
+        hbox->setMargin(0);
+        pLayout->addWidget(hbox,3,0);
+
+        m_pNewFunctionButton = new QPushButton(hbox);
+        m_pNewFunctionButton->setObjectName("newfunctionbutton");
+        m_pNewFunctionButton->setText(__tr2qs_ctx("&Add","classeditor"));
+        m_pNewFunctionButton->setEnabled(false);
+
+        QPushButton * pCancelButton = new QPushButton(hbox);
+        pCancelButton->setObjectName("cancelButton");
+        pCancelButton->setText(__tr2qs_ctx("&Cancel","editor"));
+
+        setLayout(pLayout);
+
+        // signals and slots connections
+        connect(pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
+        connect(m_pNewFunctionButton, SIGNAL(clicked()), this, SLOT(accept()));
+        connect(m_pFunctionNameLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(textChanged(const QString &)));
+}
+
+KviClassEditorFunctionDialog::~KviClassEditorFunctionDialog()
+{
+}
+
+void KviClassEditorFunctionDialog::textChanged(const QString & szText)
+{
+    m_pNewFunctionButton->setEnabled(!szText.isEmpty());
 }

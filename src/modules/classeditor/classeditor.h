@@ -37,6 +37,7 @@
 #include <QLineEdit>
 #include <QStringList>
 #include <QPushButton>
+#include <QCheckBox>
 #include <QLabel>
 #include <QTreeWidget>
 //#include <QItemDelegate>
@@ -70,7 +71,7 @@ protected:
         KviClassEditorTreeWidgetItem * m_pParentItem;
 	QString m_szName;
         QString m_szBuffer;
-        bool m_bClassModified;
+        bool m_bClassModified, m_bInternal;
         QString m_szInerithClassName;
         int  m_cPos;
 public:
@@ -79,7 +80,8 @@ public:
 	void setName(const QString &szName);
         void setClassModified(bool bModified){m_bClassModified=bModified;};
         bool classIsModified(){return m_bClassModified;};
-
+        void setInternalFunction(bool bInternal){m_bInternal=bInternal;};
+        bool isInternalFunction(){return m_bInternal;};
 	Type type(){ return m_eType; };
         void setType(Type t);
 	bool isClass(){ return m_eType == Class; };
@@ -194,6 +196,8 @@ protected:
         bool hasSelectedItems();
         void askForClassName(QString &szClassName,QString &szInerithClassName);
         QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
+        void askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName);
+
 /*
         bool removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
         void removeItemChildren(KviClassEditorTreeWidgetItem *it);
@@ -270,4 +274,28 @@ protected slots:
 */
 };
 
+class KviClassEditorFunctionDialog: public QDialog
+{
+        Q_OBJECT
+public:
+        KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString & szClassName);
+
+        ~KviClassEditorFunctionDialog();
+public:
+        QString getFunctionName(){return m_pFunctionNameLineEdit->text();};
+        bool isInternalFunction(){return m_pInternalCheckBox->isChecked();};
+protected:
+        QPushButton * m_pNewFunctionButton;
+        QLineEdit * m_pFunctionNameLineEdit;
+        QCheckBox * m_pInternalCheckBox;
+        QWidget     * m_pParent;
+protected slots:
+        void textChanged(const QString &);
+        void newClass();
+/*signals:
+        void replaceAll(const QString &, const QString &);
+        void initFind();
+        void nextFind(const QString &);
+*/
+};
 #endif //_ALIASEDITOR_H_
