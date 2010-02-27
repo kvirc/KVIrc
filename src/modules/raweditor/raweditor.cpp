@@ -62,6 +62,13 @@ KviRawTreeWidgetItem::KviRawTreeWidgetItem(QTreeWidget *par,int idx,bool bEnable
 	setText(0,m_szName);
 	setEnabled(bEnabled);
 }
+
+void KviRawHandlerTreeWidgetItem::setName(const QString &szName)
+{
+	m_szName = szName;
+	setText(0,m_szName);
+}
+
 /*
 const QPixmap * KviRawTreeWidgetItem::pixmap(int col) const
 {
@@ -236,12 +243,16 @@ void KviRawEditor::addRaw()
 		it=(KviRawTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		if(((KviRawTreeWidgetItem *)it)->m_iIdx == iIdx)
 		{
+			m_pTreeWidget->setCurrentItem(it);
+			m_pTreeWidget->clearSelection();
 			it->setSelected(true);
 			goto add_handler;
 		}
 	}
 
 	it = new KviRawTreeWidgetItem(m_pTreeWidget,iIdx,true);
+	m_pTreeWidget->setCurrentItem(it);
+	m_pTreeWidget->clearSelection();
 	it->setSelected(true);
 
 add_handler:
@@ -261,7 +272,9 @@ void KviRawEditor::addHandlerForCurrentRaw()
 			QString buffer = __tr2qs_ctx("default","editor");
 			getUniqueHandlerName((KviRawTreeWidgetItem *)it,buffer);
 			QTreeWidgetItem * ch = new KviRawHandlerTreeWidgetItem(it,buffer,"",true);
-			it->setExpanded(true);
+// 			it->setExpanded(true);
+			m_pTreeWidget->setCurrentItem(ch);
+			m_pTreeWidget->clearSelection();
 			ch->setSelected(true);
 		}
 	}
@@ -337,12 +350,11 @@ void KviRawEditor::saveLastEditedItem()
 	debug("Check lineedit name %s and internal %s",buffer.toUtf8().data(),m_pLastEditedItem->m_szName.toUtf8().data());
 	if(!KviQString::equalCI(buffer,m_pLastEditedItem->m_szName))
 	{
-
 		getUniqueHandlerName((KviRawTreeWidgetItem *)(m_pLastEditedItem->parent()),buffer);
 		debug("Change name %s",buffer.toUtf8().data());
 	}
 
-	m_pLastEditedItem->m_szName = buffer;
+	m_pLastEditedItem->setName(buffer);
 	QString tmp;
 	m_pEditor->getText(tmp);
 
@@ -365,6 +377,10 @@ void KviRawEditor::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *)
 		m_pNameEditor->setEnabled(false);
 		m_pNameEditor->setText("");
 		m_pEditor->setEnabled(false);
+		QString tmp;
+		KviQString::sprintf(tmp,__tr2qs_ctx("\n\nRaw Event:\n%s","editor"),
+			((KviRawHandlerTreeWidgetItem *)it)->m_szName.toUtf8().data());
+		m_pEditor->setText(tmp);
 	}
 }
 

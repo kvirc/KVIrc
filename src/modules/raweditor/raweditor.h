@@ -85,6 +85,7 @@ public:
 	QString m_szName;
 	QString m_szBuffer;
 	bool   m_bEnabled;
+	void setName(const QString &szName);
 };
 
 class KviRawEditor : public QWidget
