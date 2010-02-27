@@ -288,7 +288,9 @@ void KviInput::multiLinePaste(const QString & szText)
 {
 	if(!m_pMultiLineEditor)
 		multilineEditorButtonToggled(true);
-	m_pMultiLineEditor->setText(szText);
+	QString szCompleteText = m_pInputEditor->text();
+	szCompleteText.append(szText);
+	m_pMultiLineEditor->setText(szCompleteText);
 }
 
 void KviInput::multilineEditorButtonToggled(bool bOn)
