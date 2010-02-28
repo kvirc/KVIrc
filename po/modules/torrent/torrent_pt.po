@@ -4,14 +4,15 @@
 #
 # Zé <ze@mandriva.org>, 2007-2008.
 # Américo Monteiro <a_monteiro@netcabo.pt>, 2010.
+# Zé <mmodem00@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_torrent \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2010-02-12 01:39+0000\n"
-"Last-Translator: Américo Monteiro <a_monteiro@netcabo.pt>\n"
-"Language-Team: Portuguese <traduz@debianpt.org>\n"
+"PO-Revision-Date: 2010-02-28 07:49+0000\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
+"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,11 +29,11 @@ msgstr "Nenhum cliente seleccionado!"
 
 #: src/modules/torrent/libkvitorrent.cpp:62
 msgid "Trying torrent client interface \"%Q\": score %d"
-msgstr "A tentar a interface do cliente torrent \"%Q\": pontuação %d"
+msgstr "A tentar o interface do cliente torrent \"%Q\": pontuação %d"
 
 #: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
-msgstr "A escolher a interface de cliente torrent \"%Q\""
+msgstr "A escolher o interface de cliente torrent \"%Q\""
 
 #: src/modules/torrent/libkvitorrent.cpp:109
 msgid "Seems that there is no usable torrent client on this machine"
@@ -42,7 +43,7 @@ msgstr ""
 #: src/modules/torrent/libkvitorrent.cpp:118
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr ""
-"Nenhuma interface de cliente torrent seleccionada. Tente /torrent."
+"Nenhum interface de cliente torrent seleccionada. Tente /torrent."
 "detect"
 
 #: src/modules/torrent/libkvitorrent.cpp:128
@@ -50,26 +51,27 @@ msgid ""
 "The selected torrent client interface failed to execute the requested "
 "function"
 msgstr ""
-"A interface de cliente torrent seleccionada falhou ao executar a "
+"O interface do cliente torrent seleccionada falhou ao executar a "
 "função pedida"
 
 #: src/modules/torrent/libkvitorrent.cpp:129
 msgid "Last interface error: "
-msgstr "Último erro da interface: "
+msgstr "Último erro do interface: "
 
 #: src/modules/torrent/libkvitorrent.cpp:711
 msgid "Using client interface \"%Q\"."
-msgstr "A usar interface cliente \"%Q\"."
+msgstr "A usar o interface cliente \"%Q\"."
 
 #: src/modules/torrent/libkvitorrent.cpp:719
 msgid "Invalid client interface \"%Q\"!"
-msgstr "Interface cliente inválida \"%Q\"!"
+msgstr "Interface de cliente inválido \"%Q\"!"
 
 #: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
 msgstr ""
-"Uma interface para o excelente cliente KTorrent do KDE.\n"
-"Descarregue-a de http://www.ktorrent.org\n"
+"Um interface para o excelente cliente KTorrent do KDE.\n"
+"Transfira-o de http://www.ktorrent.org\n"
+
 
