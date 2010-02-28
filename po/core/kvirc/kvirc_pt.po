@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-17 18:09+0100\n"
-"PO-Revision-Date: 2010-02-22 12:00+0000\n"
-"Last-Translator: Zé <ze@mandriva.org>\n"
+"PO-Revision-Date: 2010-02-28 09:06+0000\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -449,7 +449,7 @@ msgstr "&Adicionar"
 
 #: src/modules/url/libkviurl.cpp:515
 msgid "&Add Ban"
-msgstr "&Adicionar Ban"
+msgstr "&Adicionar Banimento"
 
 #: src/kvilib/system/kvi_locale.cpp:1036
 msgid "&Add to Custom Colors"
@@ -2393,7 +2393,7 @@ msgstr "Directório"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2018
 msgid "Disabled CAP Extensions: %Q"
-msgstr ""
+msgstr "Desactivar Extensões CAP: %Q"
 
 #: src/kvirc/ui/kvi_topicw.cpp:476
 msgid "Discard Changes"
@@ -2560,7 +2560,7 @@ msgstr "Activar encriptação"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2009
 msgid "Enabled CAP Extensions: %Q"
-msgstr ""
+msgstr "Activar Extensões CAP: %Q"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:106
 msgid "Encrypt key:"
@@ -3172,11 +3172,11 @@ msgstr "Conexão do identd fechada por endereço remoto"
 
 #: src/modules/ident/libkviident.cpp:472
 msgid "Identd processing request"
-msgstr ""
+msgstr "A processar pedido de identificação"
 
 #: src/modules/ident/libkviident.cpp:446
 msgid "Identd socket error : dropping connection"
-msgstr ""
+msgstr "Erro de identificação do 'socket': a desligar conexão"
 
 #: src/modules/setup/setupwizard.cpp:414
 msgid "Identity"
@@ -3234,15 +3234,15 @@ msgstr "Importar Lista"
 
 #: src/modules/mircimport/libkvimircimport.cpp:326
 msgid "Import from http://www.mirc.co.uk/servers.ini"
-msgstr ""
+msgstr "Importar de http://www.mirc.co.uk/servers.ini"
 
 #: src/modules/mircimport/libkvimircimport.cpp:319
 msgid "Import from servers.ini"
-msgstr ""
+msgstr "Importar de servers.ini"
 
 #: src/modules/setup/setupwizard.cpp:513
 msgid "Import server list from mIRC"
-msgstr ""
+msgstr "Importar lista de servidor do mIRC"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:278
 msgid "Impossible to change nick if not authenticated with NickServ"
@@ -3253,6 +3253,8 @@ msgid ""
 "Impossible to send STARTTLS command to the IRC server. Your connection will "
 "NOT be encrypted"
 msgstr ""
+"Impossível enviar comando STARTTLS para o servidor IRC. A sua conexão NÃO "
+"será encriptada"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:277
 msgid "Impossible to speak and change nick if not authenticated with NickServ"
@@ -3273,7 +3275,7 @@ msgstr "Tráfego recebido"
 
 #: src/modules/links/linkswindow.cpp:299
 msgid "Incomplete LINKS result, no stats available"
-msgstr ""
+msgstr "Resultado LINKS incompleto, nenhuma estatística disponível"
 
 #: src/modules/help/helpwindow.cpp:78
 msgid "Index"
@@ -3323,7 +3325,7 @@ msgstr "Erro interno: não estou na base de dados de utilizadores?"
 
 #: src/modules/action/libkviaction.cpp:377
 msgid "Internal error: call a head-shrinker"
-msgstr ""
+msgstr "Erro interno: chame um psiquiatra"
 
 #: src/modules/system/libkvisystem.cpp:469
 msgid "Invalid DBus interface"
@@ -3352,23 +3354,24 @@ msgstr "URL inválido: falta o nome do endereço"
 
 #: src/modules/str/libkvistr.cpp:2011
 msgid "Invalid argument for ?X escape sequence, 0 assumed"
-msgstr ""
+msgstr "Argumento inválido para a sequência de escape ?X, assumir 0"
 
 #: src/modules/str/libkvistr.cpp:1913
 msgid "Invalid argument for ?d escape sequence, 0 assumed"
-msgstr ""
+msgstr "Argumento inválido para a sequência de escape ?d, assumir 0"
 
 #: src/modules/str/libkvistr.cpp:1949
 msgid "Invalid argument for ?u escape sequence, 0 assumed"
-msgstr ""
+msgstr "Argumento inválido para a sequência de escape ?u, assumir 0"
 
 #: src/modules/str/libkvistr.cpp:1980
 msgid "Invalid argument for ?x escape sequence, 0 assumed"
-msgstr ""
+msgstr "Argumento inválido para a sequência de escape ?x, assumir 0"
 
 #: src/modules/str/libkvistr.cpp:2072
 msgid "Invalid argument for a floating point escape sequence, 0.0 assumed"
 msgstr ""
+"Argumento inválido par a sequência de escape do ponto flutuante, assumir 0.0"
 
 #: src/kvilib/core/kvi_error.cpp:161
 msgid "Invalid array index: positive integer expected"
@@ -3830,7 +3833,7 @@ msgstr "Editor de máscaras - KVirc"
 #: src/modules/links/linkswindow.cpp:295
 #, c-format
 msgid "Maximum hops: %d [%s]"
-msgstr ""
+msgstr "Hops máximo: %d [%s]"
 
 #: src/modules/links/linkswindow.cpp:293
 #, c-format
@@ -4722,15 +4725,17 @@ msgstr ""
 
 #: src/modules/addon/managementdialog.cpp:279
 msgid "Please select the addon installation file"
-msgstr ""
+msgstr "Por favor escolha o ficheiro de instalação do extra"
 
 #: src/modules/mircimport/libkvimircimport.cpp:169
 msgid "Please wait while the list is being downloaded"
-msgstr ""
+msgstr "Por favor aguarde enquanto a lista está a ser transferida"
 
 #: src/modules/system/plugin.cpp:234
 msgid "Plugin not found. Please check the plugin-name and path."
 msgstr ""
+"'Plugin' não encontrado. Por favor verifique o nome do 'plugin' e "
+"localização."
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:586
 msgid ""
@@ -5263,7 +5268,7 @@ msgstr "Acções relacionadas de scripting"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:838
 msgid "Scroll up to read from the last read line"
-msgstr ""
+msgstr "Rode para cima para ler da última linha"
 
 #: src/kvirc/kernel/kvi_options.cpp:826 src/modules/help/helpwindow.cpp:99
 msgid "Search"
@@ -5976,7 +5981,7 @@ msgstr "O parâmetro acção não avaliou para um índice"
 
 #: src/modules/help/helpwindow.cpp:190
 msgid "The closing quotation mark is missing."
-msgstr ""
+msgstr "Faltam as aspas de fecho."
 
 #: src/modules/config/libkviconfig.cpp:537
 msgid ""
@@ -6052,7 +6057,7 @@ msgstr ""
 
 #: src/modules/window/libkviwindow.cpp:1441
 msgid "The encrypt key wasn't a valid hexadecimal string"
-msgstr ""
+msgstr "A chave de encriptação não era uma 'string' hexadecimal válida"
 
 #: src/kvirc/ui/kvi_filedialog.cpp:120 src/kvirc/ui/kvi_filedialog.cpp:165
 #, c-format
@@ -6103,16 +6108,16 @@ msgstr "O endereço local IP visto pelo servidor IRC é %Q"
 
 #: src/modules/rijndael/libkvirijndael.cpp:670
 msgid "The message doesn't seem to be encoded with CBC Mircryption"
-msgstr ""
+msgstr "A mensagem não parece estar codificada com CBC Mircryption"
 
 #: src/modules/rijndael/libkvirijndael.cpp:300
 #: src/modules/rijndael/libkvirijndael.cpp:665
 msgid "The message is not a base64 string: this is not my stuff"
-msgstr ""
+msgstr "A mensagem não é uma 'string' base64: isto não é a minha cena"
 
 #: src/modules/rijndael/libkvirijndael.cpp:274
 msgid "The message is not a hexadecimal string: this is not my stuff"
-msgstr ""
+msgstr "A mensagem não é uma 'string' hexadecimal: isto não é a minha cena"
 
 #: src/kvilib/file/kvi_packagefile.cpp:695
 msgid ""
@@ -6133,6 +6138,8 @@ msgstr ""
 msgid ""
 "The plugin has no function to free memory. This can result in Memory Leaks!"
 msgstr ""
+"O 'plugin' não tem função para libertar memória. Isto pode resultar em "
+"Perdas de Memória!"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:658
 msgid "The problem *might* be caused by an updated DNS entry"
@@ -6167,6 +6174,7 @@ msgid ""
 "The server does not support STARTTLS command. Your connection will NOT be "
 "encrypted"
 msgstr ""
+"O servidor não suporta o comando STARTTLS. A sua conexão NÃO será encriptada"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:975
 msgid ""
@@ -6388,6 +6396,7 @@ msgstr "Este executável foi compilado sem suporte de encriptação"
 msgid ""
 "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
+"Este campo é opcional e aparecerá como parte da resposta CTCP USERINFO."
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:452
 msgid ""
@@ -6415,7 +6424,7 @@ msgstr "Esta opção está também disponível como"
 
 #: src/modules/system/plugin.cpp:305
 msgid "This plugin does not export the desired function."
-msgstr ""
+msgstr "O 'plugin' não exporta a função desejada."
 
 #: src/kvirc/ui/kvi_query.cpp:543 src/kvirc/ui/kvi_query.cpp:717
 msgid "This query has no active targets, no message sent"
@@ -6467,7 +6476,7 @@ msgstr "Arranja as janelas MDI com o actual método lado-a-lado seleccionado"
 
 #: src/modules/ident/libkviident.cpp:511
 msgid "Timed out while waiting for the request : dropping connection"
-msgstr ""
+msgstr "Tempo esgotado enquanto esperavapelo pedido: a fechar a conexão"
 
 #: src/modules/url/libkviurl.cpp:202
 msgid "Timestamp"
@@ -6608,7 +6617,7 @@ msgstr "Não é possível determinar a cifra actual"
 #: src/modules/tmphighlight/libkvitmphighlight.cpp:195
 #: src/modules/tmphighlight/libkvitmphighlight.cpp:283
 msgid "Unable to find a window with the specified window id"
-msgstr ""
+msgstr "Não é possível encontrar a janela com o id de janela indicado"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:894
 msgid "Unable to look it up hostname: Hostname appears to be masked"
@@ -6632,7 +6641,7 @@ msgstr ""
 
 #: src/modules/snd/libkvisnd.cpp:576
 msgid "Unable to play sound '%Q'"
-msgstr ""
+msgstr "Não é possível reproduzir o som '%Q'"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1785
 msgid "Unable to process the above request: Cannot load DCC module (%Q)"
@@ -6816,12 +6825,12 @@ msgstr "Não indicado"
 #: src/modules/system/libkvisystem.cpp:571
 #, c-format
 msgid "Unsupported DBus call return type %s"
-msgstr ""
+msgstr "Tipo de retorno de chamada DBus %s não suportado"
 
 #: src/modules/system/libkvisystem.cpp:520
 #, c-format
 msgid "Unsupported DBus parameter type %s"
-msgstr ""
+msgstr "Tipo de parametro DBus %s não suportado"
 
 #: src/modules/rijndael/libkvirijndael.cpp:166
 msgid "Unsupported crypt mode"
@@ -6889,7 +6898,7 @@ msgstr "Usar pasta de definições nova"
 
 #: src/modules/setup/setupwizard.cpp:232
 msgid "Use settings folder from previous installation"
-msgstr ""
+msgstr "Use as definições de pasta da instalação anterior"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:85
 msgid "Use the crypt engine"
@@ -6954,7 +6963,7 @@ msgstr "A usar protocolo SOCKSv5."
 
 #: src/modules/help/helpwindow.cpp:181
 msgid "Using a wildcard within phrases is not allowed."
-msgstr ""
+msgstr "A usar um asterisco dentro de frases não é permitido."
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:198
 #, c-format
@@ -7075,6 +7084,8 @@ msgstr "Aviso - KVirc"
 #: src/modules/links/linkswindow.cpp:244
 msgid "Warning: No root link was sent by the server, the stats may be invalid."
 msgstr ""
+"Aviso: Não foi enviada nenhuma ligação de raiz pelo servidor, as "
+"estatísticas podem ser inválidas."
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:811
 msgid "We can accept auth method 0 (no auth)"
@@ -7138,7 +7149,7 @@ msgstr "Lista de Janelas"
 #: src/modules/window/libkviwindow.cpp:1241
 #: src/modules/window/libkviwindow.cpp:1286
 msgid "Window doesn't have input widget"
-msgstr ""
+msgstr "A janela não tem um elemento de entrada"
 
 #: src/modules/url/libkviurl.cpp:355
 msgid "Window not found."
@@ -7146,7 +7157,7 @@ msgstr "Janela não encontrada"
 
 #: src/modules/window/libkviwindow.cpp:941
 msgid "Window type or 'all' expected as first parameter"
-msgstr ""
+msgstr "Tipo de janela ou 'tudo' esperado como primeiro parametro"
 
 #: src/modules/spaste/libkvispaste.cpp:64
 msgid "Window with ID '%Q' not found"
