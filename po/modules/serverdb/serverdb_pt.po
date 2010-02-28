@@ -4,14 +4,15 @@
 #
 # Zé <ze@mandriva.org>, 2008, 2010.
 # Américo Monteiro <a_monteiro@netcabo.pt>, 2010.
+# Zé <mmodem00@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_serverdb \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2010-02-23 23:40+0000\n"
-"Last-Translator: Américo Monteiro <a_monteiro@netcabo.pt>\n"
-"Language-Team: Portuguese <traduz@debianpt.org>\n"
+"PO-Revision-Date: 2010-02-28 07:35+0000\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
+"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,7 +27,7 @@ msgstr ""
 #: src/modules/proxydb/libkviproxydb.cpp:552
 #: src/modules/proxydb/libkviproxydb.cpp:596
 msgid "You must provide the proxy hostname as parameter"
-msgstr "Você tem de fornecer o nome de máquina do proxy como parâmetro"
+msgstr "Deve indicar o endereço da máquina proxy como parâmetro"
 
 #: src/modules/proxydb/libkviproxydb.cpp:70
 #: src/modules/proxydb/libkviproxydb.cpp:113
@@ -36,42 +37,42 @@ msgstr "Você tem de fornecer o nome de máquina do proxy como parâmetro"
 #: src/modules/proxydb/libkviproxydb.cpp:569
 #: src/modules/proxydb/libkviproxydb.cpp:613
 msgid "The specified proxy does not exist"
-msgstr "O proxy especificado não existe"
+msgstr "O proxy indicado não existe"
 
 #: src/modules/proxydb/libkviproxydb.cpp:273
 msgid "You must provide the proxy name as parameter"
-msgstr "Você tem de fornecer o nome do proxy como parâmetro"
+msgstr "Deve indicar o nome do proxy como parâmetro"
 
 #: src/modules/proxydb/libkviproxydb.cpp:284
 msgid "The specified proxy already exists"
-msgstr "O proxy especificado já existe"
+msgstr "O proxy indicado já existe"
 
 #: src/modules/proxydb/libkviproxydb.cpp:311
 #: src/modules/proxydb/libkviproxydb.cpp:577
 msgid "The specified protocol does not exist"
-msgstr "O protocolo especificado não existe"
+msgstr "O protocolo indicado não existe"
 
 #: src/modules/proxydb/libkviproxydb.cpp:363
 msgid "You must provide the port number as parameter"
-msgstr "Você tem de fornecer o número do porto como parâmetro"
+msgstr "Deve indicar o número do porto como parâmetro"
 
 #: src/modules/proxydb/libkviproxydb.cpp:434
 msgid "You must provide the IP as parameter"
-msgstr "Você tem de fornecer o IP como parâmetro"
+msgstr "Deve indicar o IP como parâmetro"
 
 #: src/modules/proxydb/libkviproxydb.cpp:453
 msgid "The specified IP is not valid"
-msgstr "O IP especificado não é válido"
+msgstr "O IP indicado não é válido"
 
 #: src/modules/proxydb/libkviproxydb.cpp:558
 msgid "You must provide the protocol as parameter"
-msgstr "Você tem de fornecer o protocolo como parâmetro"
+msgstr "Deve indicar o protocolo como parâmetro"
 
 #: src/modules/proxydb/libkviproxydb.cpp:602
 #: src/modules/serverdb/libkviserverdb.cpp:818
 #: src/modules/serverdb/libkviserverdb.cpp:860
 msgid "You must provide the value as parameter"
-msgstr "Você tem de fornecer o valor como parâmetro"
+msgstr "Deve indicar o valor como parâmetro"
 
 #: src/modules/serverdb/libkviserverdb.cpp:61
 #: src/modules/serverdb/libkviserverdb.cpp:162
@@ -81,14 +82,14 @@ msgstr "Você tem de fornecer o valor como parâmetro"
 #: src/modules/serverdb/libkviserverdb.cpp:812
 #: src/modules/serverdb/libkviserverdb.cpp:848
 msgid "You must provide the network name as parameter"
-msgstr "Você tem de fornecer o nome da rede como parâmetro"
+msgstr "Deve indicar o nome da rede como parâmetro"
 
 #: src/modules/serverdb/libkviserverdb.cpp:104
 #: src/modules/serverdb/libkviserverdb.cpp:196
 #: src/modules/serverdb/libkviserverdb.cpp:754
 #: src/modules/serverdb/libkviserverdb.cpp:854
 msgid "You must provide the server name as parameter"
-msgstr "Você tem de fornecer o nome do servidor como parâmetro"
+msgstr "Deve indicar o nome do servidor como parâmetro"
 
 #: src/modules/serverdb/libkviserverdb.cpp:169
 #: src/modules/serverdb/libkviserverdb.cpp:203
@@ -96,18 +97,19 @@ msgstr "Você tem de fornecer o nome do servidor como parâmetro"
 #: src/modules/serverdb/libkviserverdb.cpp:826
 #: src/modules/serverdb/libkviserverdb.cpp:868
 msgid "The specified network does not exist"
-msgstr "A rede especificada não existe"
+msgstr "A rede indicada não existe"
 
 #: src/modules/serverdb/libkviserverdb.cpp:210
 #: src/modules/serverdb/libkviserverdb.cpp:876
 msgid "The specified server does not exist"
-msgstr "O servidor especificado não existe"
+msgstr "O servidor indicado não existe"
 
 #: src/modules/serverdb/libkviserverdb.cpp:685
 msgid "The network specified already exists"
-msgstr "A rede especificada já existe"
+msgstr "A rede indicada já existe"
 
 #: src/modules/serverdb/libkviserverdb.cpp:773
 msgid "The specified server already exists"
-msgstr "O servidor especificado já existe"
+msgstr "O servidor indicado já existe"
+
 
