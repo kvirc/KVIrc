@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-17 18:09+0100\n"
-"PO-Revision-Date: 2010-02-28 22:23+0000\n"
+"PO-Revision-Date: 2010-02-28 22:50+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr " linhas"
 
 #: src/modules/options/optw_logging.cpp:50
 msgid " min"
-msgstr " minutos"
+msgstr " min"
 
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
@@ -611,6 +611,10 @@ msgid ""
 "fill the Sasl Nickname and Sasl Password fields in this page, the SASL "
 "protocol will be used for this server if available.</center>"
 msgstr ""
+"<center>Esta verificação activa o uso do protocolo de autenticação "
+"<b>SASL</b>. Se activar a opção global correcta no separador "
+"Conexão/SSL e preencher os campos da Alcunha e Senha Sasl nesta "
+"página, o protoclo SASL será usado para este servidor se disponível.</center>"
 
 #: src/modules/options/optw_servers.cpp:654
 msgid ""
@@ -779,6 +783,11 @@ msgid ""
 "is useful if a user wants to use different data on different networks "
 "without changing them at every connection attempt."
 msgstr ""
+"<center>Isto é um conjunto de regras para usar perfis. O KVIrc irá usá-los "
+"para manipular os dados da conexão do utilizador antes de os dados serem "
+"enviados para o servidor IRC..<br>Isto é útil se um utilizador quiser usar "
+"dados diferentes em diferentes redes sem as mudar em todas as tentativas "
+"de se conectar."
 
 #: src/modules/options/optw_servers.cpp:592
 msgid ""
@@ -3614,7 +3623,7 @@ msgstr "Direita"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:102
 msgid "SOURCE"
-msgstr "SOURCE"
+msgstr "FONTE"
 
 #: src/modules/options/optw_servers.cpp:786
 msgid "Sasl Nickname:"
@@ -3853,7 +3862,7 @@ msgstr "Mostrar ícones da janela na lista da janela"
 
 #: src/modules/options/optw_antispam.cpp:45
 msgid "Silent anti-spam (no warnings)"
-msgstr "Anti-spam Silencioso (sem avisos)"
+msgstr "Anti-lixo ('spam') Silencioso (sem avisos)"
 
 #: src/modules/options/optw_urlhandlers.cpp:53
 msgid "Single click"
@@ -3907,7 +3916,7 @@ msgstr "Codificação do Texto:"
 #: src/modules/options/optw_windowlist.cpp:86
 #: src/modules/options/optw_windowlist.cpp:246
 msgid "Text/Alert Colors"
-msgstr "Cores Texto/Alerta"
+msgstr "Cores de Texto/Alerta"
 
 #: src/modules/options/optw_nickserv.cpp:188
 msgid "The Identify Command can't be empty!"
@@ -4325,7 +4334,7 @@ msgstr "Usar cores indicadas para a própria alcunha:"
 
 #: src/modules/options/optw_urlhandlers.cpp:69
 msgid "Use system URL handlers"
-msgstr "Usar executáveis URL do sistema"
+msgstr "Usar manipuladores URL do sistema"
 
 #: src/modules/options/optw_connection.cpp:89
 msgid "Use the SASL authentication protocol if available"
