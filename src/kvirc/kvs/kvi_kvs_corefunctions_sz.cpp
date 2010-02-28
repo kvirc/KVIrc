@@ -1067,6 +1067,8 @@ namespace KviKvsCoreFunctions
 				szRetValue = KviBuildInfo::buildRevision();
 			else if(szType.indexOf('s') != -1)
 				szRetValue = KviBuildInfo::buildSourcesDate();
+			else if(szType.indexOf('v') != -1)
+				szRetValue = KVI_VERSION;
 			else szRetValue = szVersion;
 
 			KVSCF_pRetBuffer->setString(szRetValue);
