@@ -8,15 +8,15 @@
 # Zé <mmodem00@netvisao.pt>, 2004, 2005, 2006.
 # José Melo <mmodem00@gmail.com>, 2005.
 # Zé <mmodem@netcabo.pt>, 2005.
-# Zé <mmodem00@gmail.com>, 2006, 2007, 2008.
+# Zé <mmodem00@gmail.com>, 2006, 2007, 2008, 2010.
 # Zé <ze@mandriva.org>, 2008, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-17 18:09+0100\n"
-"PO-Revision-Date: 2010-02-22 14:42+0000\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2010-02-28 07:13+0000\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1149,7 +1149,6 @@ msgstr ""
 "privado</center>"
 
 #: src/modules/options/optw_windowlist.cpp:43
-#, fuzzy
 msgid ""
 "<center>This option enables the usage of the window list activity meter. "
 "Each window entry will have a small indicator of the activity that is going "
@@ -1160,15 +1159,17 @@ msgid ""
 "servers). \"Human\" activity causes the indicator to be shaded red while "
 "automated activity causes the indicator to be shaded blue.</center>"
 msgstr ""
-"<center>Esta opção permite o uso do medidor de actividade da barra de "
-"tarefas. Cada janela irá ter um pequeno indicador da actividade que está "
+"<center>Esta opção permite o uso do medidor de actividade de lista da janela."
+" "
+"Cada entrada de janela terá um pequeno indicador da actividade que está "
 "haver nessa janela. O indicador é um pequeno quadrado que muda as cores, "
-"cores escuras querem dizer baixa actividade, enquanto cores brilhantes "
-"indicam grande actividade. O KVirc também usa algumas heurísticas para "
-"determinar se a actividade é de alguma maneira \"humana\" ou é gerada por "
-"entidades automatizadas (tais como bots ou servidores IRC). A actividade "
-"\"humana\" faz com que o indicador seja sombreado de vermelho enquanto as "
-"actividades automatizadas fazem com que o indicador seja sombreado de azul.</"
+"cores escuras indicam baixa actividade, enquanto cores brilhantes indicam "
+"grande actividade. O KVirc também usa algumas heurísticas para determinar "
+"se a actividade é de alguma maneira \"humana\" ou é gerada por entidades "
+"automatizadas (tais como bots ou servidores IRC). A actividade \"humana\" "
+"faz "
+"com que o indicador seja sombreado a vermelho enquanto as actividades "
+"automatizadas fazem com que o indicador seja sombreado a azul.</"
 "center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:84
@@ -1387,6 +1388,13 @@ msgid ""
 "other hand, you might want to disable it if you want to rely on the dns "
 "server to provide the best choice.</center>"
 msgstr ""
+"<center>Esta opção faz com que a pilha de rede do KVIrc escolha uma "
+"entrada aleatória quando múltiplos endereços IP são obtidos para uma "
+"procura de dns de um servidor. Isto é inofensivo e pode corrigir alguns "
+"problemas ao obter servidores de dns que não rodam correctamente as "
+"gravações como os autorizados fariam. Por outro lado, pode querer "
+"desactivar esta opção se deseja confiar no servidor dns para indicar "
+"a melhor escolha.</center>"
 
 #: src/modules/options/optw_connection.cpp:65
 msgid ""
