@@ -4,14 +4,15 @@
 #
 # Zé <ze@mandriva.org>, 2004-2006, 2008.
 # Américo Monteiro <a_monteiro@netcabo.pt>, 2010.
+# Zé <mmodem00@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_filetransferwindow \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2010-02-14 00:24+0000\n"
-"Last-Translator: Américo Monteiro <a_monteiro@netcabo.pt>\n"
-"Language-Team: Portuguese <traduz@debianpt.org>\n"
+"PO-Revision-Date: 2010-02-28 06:31+0000\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
+"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -59,11 +60,11 @@ msgstr "Terminal na Localização"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:474
 msgid "MS-DOS Prompt at Location"
-msgstr "Aviso de MS-DOS na Localização"
+msgstr "Aviso MS-DOS na Localização"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:479
 msgid "&Copy Path to Clipboard"
-msgstr "&Copiar Caminho para a Área de Transferência"
+msgstr "&Copiar Localização para a Área de Transferência"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:481
 msgid "&Delete file"
@@ -87,7 +88,7 @@ msgstr "Deseja realmente apagar o ficheiro %Q?"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:611
 msgid "Confirm delete"
-msgstr "Confirmar apagar"
+msgstr "Confirmar remoção"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:612
 #: src/modules/filetransferwindow/filetransferwindow.cpp:780
@@ -101,11 +102,11 @@ msgstr "Não"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:616
 msgid "Delete failed"
-msgstr "Apagar falhou"
+msgstr "Remoção falhada"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:617
 msgid "Failed to remove the file"
-msgstr "Falhou ao remover o ficheiro"
+msgstr "Falha ao remover o ficheiro"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:618
 msgid "OK"
@@ -122,4 +123,5 @@ msgstr "Limpar Todas as Transferências? - KVIrc"
 #: src/modules/filetransferwindow/filetransferwindow.cpp:813
 msgid "File Transfers"
 msgstr "Transferências de Ficheiros"
+
 
