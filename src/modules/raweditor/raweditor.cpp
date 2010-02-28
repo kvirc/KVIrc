@@ -264,7 +264,7 @@ void KviRawEditor::addHandlerForCurrentRaw()
 {
 	__range_valid(m_pOneTimeSetupDone);
 
-	QTreeWidgetItem * it = (QTreeWidgetItem *) m_pTreeWidget->currentItem();
+	KviRawTreeWidgetItem * it = (KviRawTreeWidgetItem *) m_pTreeWidget->currentItem();
 	if(it)
 	{
 		if(it->parent() == 0)
@@ -272,7 +272,8 @@ void KviRawEditor::addHandlerForCurrentRaw()
 			QString buffer = __tr2qs_ctx("default","editor");
 			getUniqueHandlerName((KviRawTreeWidgetItem *)it,buffer);
 			QTreeWidgetItem * ch = new KviRawHandlerTreeWidgetItem(it,buffer,"",true);
-// 			it->setExpanded(true);
+			it->setEnabled(true);
+			it->setExpanded(true);
 			m_pTreeWidget->setCurrentItem(ch);
 			m_pTreeWidget->clearSelection();
 			ch->setSelected(true);
@@ -447,26 +448,21 @@ void KviRawEditor::exportAllEvents()
 {
 	saveLastEditedItem();
 
-	KviRawTreeWidgetItem * it;// = (KviRawTreeWidgetItem *)m_pTreeWidget->firstChild();
-
+	KviRawTreeWidgetItem * it;
 	QString out;
 
-	//while(it)
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
 		it=(KviRawTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
-		KviRawHandlerTreeWidgetItem * item;// = (KviRawHandlerTreeWidgetItem *)it->firstChild();
-		//while(item)
+		KviRawHandlerTreeWidgetItem * item;
 		for (int j=0;j<it->childCount();j++)
 		{
 			QString tmp;
-			item=(KviRawHandlerTreeWidgetItem *)it->child(i);
+			item=(KviRawHandlerTreeWidgetItem *)it->child(j);
 			getExportEventBuffer(tmp,item);
 			out += tmp;
 			out += "\n";
-			//item = (KviRawHandlerTreeWidgetItem *)item->nextSibling();
 		}
-		//it = (KviRawTreeWidgetItem *)it->nextSibling();
 	}
 
 	QString szName = QDir::homePath();
