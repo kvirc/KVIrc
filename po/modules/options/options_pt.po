@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-17 18:09+0100\n"
-"PO-Revision-Date: 2010-02-28 07:13+0000\n"
+"PO-Revision-Date: 2010-02-28 22:23+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -284,7 +284,6 @@ msgstr ""
 "KVirc não está activa.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:92
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, KVIrc will alert in the window list only "
 "if a normal message is received in a channel.<br>Actions like joins, parts "
@@ -292,10 +291,11 @@ msgid ""
 "with a high rate of traffic and only want to be alerted for messages that "
 "are interesting to you.</center>"
 msgstr ""
-"<center>Se esta opção está activada, o KVirc irá alertar na barra de tarefas "
-"apenas se uma mensagem normal for recebida num canal.<br>Acções como entrar, "
-"partir e mudança de modos irão ser ignoradas.<br> Isto é útil se está em "
-"canais com uma taxa alta de tráfego e apenas quer ser alertado por mensagens "
+"<center>Se esta opção está activada, o KVirc irá alertar na lista da janela "
+"apenas se uma mensagem normal for recebida num canal.<br>Acções como "
+"entrar, sair e mudança de modos irão ser ignoradas.<br> Isto é útil se está "
+"em "
+"canais com uma taxa alta de tráfego e apenas quer ser alertado das mensagens "
 "que lhe interessam.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:103
@@ -333,21 +333,19 @@ msgstr ""
 "aparecer sempre que iniciar o KVirc</center>"
 
 #: src/modules/options/optw_highlighting.cpp:98
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, the window list will also alert for "
 "messages which are shown in queries.</center>"
 msgstr ""
-"<center>Se esta opção estiver activada, a barra de tarefas irá também "
+"<center>Se esta opção estiver activada, a lista da janela irá também "
 "alertar para as mensagens que são mostradas nos privados.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:95
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, the window list will also alert for "
 "messages which contain a word from the highlighted words list above.</center>"
 msgstr ""
-"<center>Se esta opção estiver activada, a barra de tarefas irá também "
+"<center>Se esta opção estiver activada, a lista da janela irá também "
 "alertar para mensagens que contenham uma palavra da lista de palavras "
 "destacadas.</center>"
 
@@ -543,7 +541,6 @@ msgstr ""
 "abrir privados, definir variáveis, etc.</center>"
 
 #: src/modules/options/optw_servers.cpp:176
-#, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for the servers "
 "in this network. This encoding will be used as the default for text messages."
@@ -552,12 +549,12 @@ msgid ""
 "dialog.</center>"
 msgstr ""
 "<center>Esta caixa permite-lhe escolher a codificação preferida para os "
-"servidores nesta rede. Se escolher \"Usar Codificação do Sistema\" então a "
-"codificação irá ser definida para o valor geral do sistema que escolheu no "
+"servidores nesta rede. Esta codificação derá usada como a predefinida para "
+"mensagens de texto. Se escolheu \"Usar Codificação do Sistema\" então a "
+"codificação será definida para o valor geral do sistema que escolheu no "
 "diálogo de opções da página de \"Codificação\".</center>"
 
 #: src/modules/options/optw_servers.cpp:164
-#, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for the servers "
 "in this network. This encoding will be used for server specific needs, like "
@@ -566,12 +563,14 @@ msgid ""
 "the \"Encoding\" page of the options dialog.</center>"
 msgstr ""
 "<center>Esta caixa permite-lhe escolher a codificação preferida para os "
-"servidores nesta rede. Se escolher \"Usar Codificação do Sistema\" então a "
-"codificação irá ser definida para o valor geral do sistema que escolheu no "
-"diálogo de opções da página de \"Codificação\".</center>"
+"servidores nesta rede. Esta codificação será usada para as necessidades "
+"especificas do servidor, como referenciar alcunhas e nomes de canais. Se "
+"escolher \"Usar Codificação do Sistema\" então a codificação irá ser "
+"definida "
+"para o valor geral do sistema que escolheu no diálogo de opções da página "
+"de \"Codificação\".</center>"
 
 #: src/modules/options/optw_servers.cpp:687
-#, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
 "server. This encoding will be used as the default for text messages.If you "
@@ -579,8 +578,9 @@ msgid ""
 "network that this server belongs to.</center>"
 msgstr ""
 "<center>Esta caixa permite-lhe escolher a codificação preferida para este "
-"servidor. Se escolher \"Usar Codificação da Rede\" então a codificação irá "
-"ser herdada da rede onde este servidor pertence.</center>"
+"servidor. Esta codificação será usada como a predefinida para mensagens "
+"de texto. Se escolher \"Usar Codificação da Rede\" então a codificação será "
+"herdada da rede onde este servidor pertence.</center>"
 
 #: src/modules/options/optw_servers.cpp:675
 msgid ""
@@ -795,7 +795,6 @@ msgstr ""
 "e evitar de o procurar outra vez.</center>"
 
 #: src/modules/options/optw_servers.cpp:765
-#, fuzzy
 msgid ""
 "<center>This is the <b>proxy</b> that KVIrc will use to connect to this "
 "server.\n"
@@ -804,12 +803,12 @@ msgid ""
 "proxy. You can define new proxy server in global options' \"Proxy servers\" "
 "menu.</center>"
 msgstr ""
-"<center>Este é o <b>proxy</b> que o KVirc irá usar para se ligar nesse "
+"<center>Este é o <b>proxy</b> que o KVirc irá usar para se ligar neste "
 "servidor.\n"
 "Se este campo estiver definido na configuração \"Predefinida\", o KVirc irá "
-"usar as configurações globais, se estiver definido em \"Conexão directa\", o "
-"KVirc irá conectar-se neste servidor sem proxy. Pode definir um novo "
-"servidor proxy no meu de opções globais \"Servidores Proxy\".</center>"
+"usar as configurações de proxy globais, se estiver definido na \"Conexão "
+"directa\", o KVirc irá conectar-se neste servidor sem proxy. Pode definir um "
+"novo servidor proxy no meu de opções globais \"Servidores Proxy\".</center>"
 
 #: src/modules/options/optw_servers.cpp:134
 msgid ""
@@ -1191,26 +1190,26 @@ msgstr ""
 "escolher imagem de fundo que se misture para ficar por baixo.</center>"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:70
-#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
 "choose a blending background image to below or check the \"Use compositing "
 "for real transparency\" option.</center>"
 msgstr ""
-"<center>Esta opção torna todas as janelas do KVirc transparentes.<br>Deve "
-"escolher uma imagem de fundo que se misture para ficar por baixo ou marque a "
-"opção \"Usar ecrã KDE para transparência.</center>"
+"<center>Esta opção faz com que todas as janelas do KVirc apareçam "
+"transparentes."
+"<br>Deve escolher uma imagem de fundo que se misture para ficar por baixo ou "
+"marque a opção \"Usar composição para transparência real\".</center>"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:76
-#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
 "choose a blending background image to below or check the \"Use desktop "
 "background for transparency\" option.</center>"
 msgstr ""
-"<center>Esta opção torna todas as janelas do KVirc transparentes.<br>Deve "
-"escolher uma imagem de fundo que se misture para ficar por baixo ou marque a "
-"opção \"Usar ecrã KDE para transparência.</center>"
+"<center>Esta opção faz com que todas as janelas do KVirc apareçam "
+"transparentes."
+"<br>Deve escolher uma imagem de fundo que se misture para ficar por baixo ou"
+"marque a opção \"Usar ecrã de fundo para transparência.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:107
 msgid ""
