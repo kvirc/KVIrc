@@ -10,13 +10,14 @@
 # Zé <mmodem@netcabo.pt>, 2005.
 # Zé <mmodem00@gmail.com>, 2006, 2007, 2008, 2010.
 # Zé <ze@mandriva.org>, 2008, 2010.
+# Gmail <mmodem00@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-17 18:09+0100\n"
-"PO-Revision-Date: 2010-02-28 22:50+0000\n"
-"Last-Translator: Zé <mmodem00@gmail.com>\n"
+"PO-Revision-Date: 2010-03-01 15:57+0000\n"
+"Last-Translator: Gmail <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -94,7 +95,7 @@ msgstr "&Novo"
 
 #: src/modules/options/optw_proxy.cpp:325
 msgid "&New Proxy"
-msgstr "&Novo Proxy"
+msgstr "&Novo 'Proxy'"
 
 #: src/modules/options/optw_servers.cpp:1502
 msgid "&New Server"
@@ -188,7 +189,7 @@ msgid ""
 "<center>Enable this option if you want specify a local port range for DCC.</"
 "center>"
 msgstr ""
-"<center>Active esta opção se quiser especificar um alcance de porta local "
+"<center>Active esta opção se quiser especificar um alcance de porto local "
 "para DCC.</center>"
 
 #: src/modules/options/optw_dcc.cpp:103
@@ -667,7 +668,7 @@ msgid ""
 "server is temporairly unreachable or you want to avoid the round-robin "
 "lookups.</center>"
 msgstr ""
-"<center>Esta marca irá activar o <b>endereço IP em cache</b> para este "
+"<center>Esta marca irá activar o <b>endereço IP em 'cache'</b> para este "
 "servidor: as procuras de DNS podem consumir muito tempo e podem estar a "
 "bloquear em algumas plataformas; esta opção irá fazer com que o KVirc "
 "procure o nome do endereço do servidor apenas uma vez.<br><br>Avançado: "
@@ -681,8 +682,8 @@ msgid ""
 "<center>This enables the lag meter engine, which checks at regular intervals "
 "how much lag (latency) the server has.</center>"
 msgstr ""
-"<center>Isto activa o motor da medição de lag, que verifica em intervalos "
-"regulares quanto lag (latência) o servidor tem.</center>"
+"<center>Isto activa o motor da medição de 'lag', que verifica em intervalos "
+"regulares quanto 'lag' (latência) o servidor tem.</center>"
 
 #: src/modules/options/optw_servers.cpp:757
 msgid ""
@@ -694,7 +695,7 @@ msgstr ""
 "<center>Este campo permite-lhe indicar um id realmente único para este "
 "servidor. Poderá então usar /server -x &lt;este_id&gt; para efectuar a "
 "conexão. Isto é especialmente útil quando tem várias entradas de servidores "
-"com o mesmo nome de endereço e a porta em diferentes redes (bouncers?)</"
+"com o mesmo nome de endereço e o porto em diferentes redes (bouncers?)</"
 "center>"
 
 #: src/modules/options/optw_mediatypes.cpp:123
@@ -770,11 +771,12 @@ msgid ""
 msgstr ""
 "<center>Esta é a lista das regras de identificação do NickServ. O KVirc irá "
 "usá-las para modelar a sua interacção automática com o NickServ.<br>Por "
-"favor tenha atenção porque esta característica pode causar que a sua senha "
-"do NickServ seja roubada se usada imprópriamente. Certifique-se que "
-"compreendeu completamente o protocolo de autenticação do NickServ. <br>Por "
-"outras palavras, tenha a certeza do que está a fazer. <br>Note também que a "
-"senha que forneceu é guardada como<b>TEXTO SIMPLES</b></center>"
+"favor tenha atenção porque esta característica pode fazer com que sua senha "
+"do NickServ seja roubada se usada impropriamente. Certifique-se que "
+"compreendeu completamente o protocolo de autenticação do NickServ."
+"<br>Por outras palavras, tenha a certeza do que está a fazer. <br>Note "
+"também "
+"que a senha que indicou é guardada como<b>TEXTO SIMPLES</b></center>"
 
 #: src/modules/options/optw_identity.cpp:702
 msgid ""
@@ -787,7 +789,7 @@ msgstr ""
 "para manipular os dados da conexão do utilizador antes de os dados serem "
 "enviados para o servidor IRC..<br>Isto é útil se um utilizador quiser usar "
 "dados diferentes em diferentes redes sem as mudar em todas as tentativas "
-"de se conectar."
+"de conexão."
 
 #: src/modules/options/optw_servers.cpp:592
 msgid ""
@@ -798,10 +800,10 @@ msgid ""
 "up again.</center>"
 msgstr ""
 "<center>Este é o <b>endereço IP</b> deste servidor, está aqui para "
-"propósitos de cache. <br>Se deixar este campo vazio, o KVirc irá preenche-lo "
-"na primeira vez que se conectar ao servidor. Se activar a opção em baixo "
-"\"endereço IP em cache\", o KVirc irá usá-lo como um \"resultado em cache\" "
-"e evitar de o procurar outra vez.</center>"
+"propósitos de 'cache'. <br>Se deixar este campo vazio, o KVirc irá "
+"preenche-lo na primeira vez que se conectar ao servidor. Se activar a "
+"opção em baixo \"endereço IP em 'cache'\", o KVirc irá usá-lo como um "
+"\"resultado em 'cache'\" e evitar de o procurar novamente.</center>"
 
 #: src/modules/options/optw_servers.cpp:765
 msgid ""
@@ -812,12 +814,14 @@ msgid ""
 "proxy. You can define new proxy server in global options' \"Proxy servers\" "
 "menu.</center>"
 msgstr ""
-"<center>Este é o <b>proxy</b> que o KVirc irá usar para se ligar neste "
+"<center>Este é o <b>'proxy'</b> que o KVirc irá usar para se ligar neste "
 "servidor.\n"
 "Se este campo estiver definido na configuração \"Predefinida\", o KVirc irá "
-"usar as configurações de proxy globais, se estiver definido na \"Conexão "
-"directa\", o KVirc irá conectar-se neste servidor sem proxy. Pode definir um "
-"novo servidor proxy no meu de opções globais \"Servidores Proxy\".</center>"
+"usar as configurações de 'proxy' globais, se estiver definido na \"Conexão "
+"directa\", o KVirc irá conectar-se neste servidor sem 'proxy'. Pode definir "
+"um "
+"novo servidor 'proxy' no menu de opções globais \"Servidores 'Proxy'\".<"
+"/center>"
 
 #: src/modules/options/optw_servers.cpp:134
 msgid ""
@@ -911,8 +915,8 @@ msgid ""
 "<center>This is the default <b>port</b> that this server will be contacted "
 "on.<br>Usually <b>6667</b> is OK.</center>"
 msgstr ""
-"<center>Esta é a <b>porta</b> padrão por onde este servidor será contactado."
-"<br>Geralmente a porta <b>6667</b> está bem.</center>"
+"<center>Esta é o <b>porto</b> predefinido onde este servidor será contactado."
+"<br>Geralmente o porto <b>6667</b> está bem.</center>"
 
 #: src/modules/options/optw_identity.cpp:644
 msgid ""
@@ -955,8 +959,8 @@ msgid ""
 "<center>This is the list of available proxy servers.<br>Right-click on the "
 "list to add or remove proxies.</center>"
 msgstr ""
-"<center>Esta é a lista dos servidores proxy disponiveis.<br>Clique direito "
-"na lista para adicionar ou remover proxies.</center>"
+"<center>Esta é a lista dos servidores 'proxy' disponíveis.<br>Clique direito "
+"na lista para adicionar ou remover 'proxies'.</center>"
 
 #: src/modules/options/optw_dcc.cpp:135
 msgid ""
@@ -997,7 +1001,8 @@ msgid ""
 "<center>This makes the IRC context display applet show the current lag after "
 "the user's nickname (in seconds)</center>"
 msgstr ""
-"<center>Isto faz com que a 'applet' para mostrar o contexto IRC exiba o lag "
+"<center>Isto faz com que a 'applet' para mostrar o contexto IRC exiba o "
+"'lag' "
 "actual após o nick do utilizador (em segundos)</center>"
 
 #: src/modules/options/optw_lag.cpp:47
@@ -1010,8 +1015,9 @@ msgid ""
 "reasonable value.</center>"
 msgstr ""
 "<center>Esta opção permite-lhe definir o intervalo de batimento medidor do "
-"lag.<br>Quanto mais baixo for o intervalo de batimento maior será a "
-"exactidão da verificação do lag mas também maior será o uso do CPU e tráfego "
+"'lag'.<br>Quanto mais baixo for o intervalo de batimento maior será a "
+"exactidão da verificação do 'lag' mas também maior será o uso do CPU e "
+"tráfego "
 "de dados para o servidor.<br>Por favor note que NÃO é o intervalo entre os "
 "pings enviados para o servidor: os pings (se algum) serão enviados com muito "
 "menos frequência. 5000 é o valor razoável .</center>"
@@ -1119,8 +1125,10 @@ msgid ""
 "threshold then OnLagAlarmTimeDown will be triggered</center>"
 msgstr ""
 "<center>Esta opção controla o ponto inicial para os eventos do Alarme "
-"Superior do Lag e do Alarme Inferior do Lag. Quando o lag vai acima do ponto "
-"inicial o Alarme Superior do Lag será disparado e quando o lag cai abaixo do "
+"Superior do Lag e do Alarme Inferior do Lag. Quando o 'lag' vai acima do "
+"ponto "
+"inicial o Alarme Superior do Lag será disparado e quando o 'lag' cai abaixo "
+"do "
 "ponto inicial então o Alarme Inferior do Lag será disparado</center>"
 
 #: src/modules/options/optw_query.cpp:45
@@ -1354,7 +1362,7 @@ msgid ""
 "sets an avatar and there is no cached copy available.</center>"
 msgstr ""
 "<center>Esta opção faz com que o KVIrc envie um pedido DCC GET quando alguém "
-"tem uma avatar e não há uma cópia em cache disponível.</center>"
+"tem uma avatar e não há uma cópia em 'cache' disponível.</center>"
 
 #: src/modules/options/optw_irc.cpp:54
 msgid ""
@@ -1645,7 +1653,7 @@ msgstr ""
 "<p><b>Aviso:</b><br>Isto é um serviço de identificação (daemon ident) <b>não "
 "RFC 1413 complacente</b> que implementa apenas um limite de subdefinições "
 "das especificações do Protocolo de Identificação. <br>Em UNIX, pode também "
-"precisar de privilégios root para ligar à porta de autenticação (113).<br>É "
+"precisar de privilégios root para ligar ao porto de autenticação (113).<br>É "
 "<b>altamente recomendado</b> que um servidor de identificação <b>real</b> do "
 "sistema geral seja usado, ou nenhum se o identificador não é pedido.</p>"
 
@@ -1962,7 +1970,7 @@ msgstr "Respostas CTCP"
 
 #: src/modules/options/optw_servers.cpp:611
 msgid "Cache IP address"
-msgstr "Endereço IP em cache"
+msgstr "Endereço IP em 'cache'"
 
 #: src/modules/options/optw_nickserv.cpp:128
 #: src/modules/options/optw_servers.cpp:347
@@ -2374,7 +2382,7 @@ msgstr "Activar serviço de identidade apenas ao conectar no servidor"
 
 #: src/modules/options/optw_lag.cpp:41
 msgid "Enable lag meter"
-msgstr "Activar medição de lag"
+msgstr "Activar medição de 'lag'"
 
 #: src/modules/options/optw_tray.cpp:45
 msgid "Enable level-based message notification (not a message-type based)"
@@ -2607,7 +2615,7 @@ msgstr "Esconder entrada de botões na barra por predefinição"
 
 #: src/modules/options/optw_dcc.cpp:98
 msgid "Highest port:"
-msgstr "Porta mais alta:"
+msgstr "Porto mais alto:"
 
 #: src/modules/options/optw_highlighting.cpp:61
 msgid "Highlight every occurence of a word inside text"
@@ -2789,7 +2797,7 @@ msgstr "Matar/Kill temporizadores danificados"
 
 #: src/modules/options/optw_lag.cpp:44
 msgid "Lag meter heartbeat:"
-msgstr "Medição da frequência do lag:"
+msgstr "Medição da frequência do 'lag':"
 
 #: src/modules/options/optw_identity.cpp:394
 msgid "Languages:"
@@ -2865,7 +2873,7 @@ msgstr "Contraste Baixo do Primeiro Plano"
 
 #: src/modules/options/optw_dcc.cpp:95
 msgid "Lowest port:"
-msgstr "Porta mais baixa:"
+msgstr "Porto mais baixo:"
 
 #: src/modules/options/optw_mediatypes.cpp:78
 msgid "MIME Type"
@@ -3055,7 +3063,7 @@ msgstr "Nova Rede"
 
 #: src/modules/options/optw_proxy.cpp:93
 msgid "New Proxy"
-msgstr "Novo Proxy"
+msgstr "Novo 'Proxy'"
 
 #: src/modules/options/optw_sound.cpp:284
 msgid "New Query opened"
@@ -3380,7 +3388,7 @@ msgstr "Mostrar janela de notificação nas mensagens destacadas"
 #: src/modules/options/optw_servers.cpp:576
 #: src/modules/options/optw_proxy.cpp:113
 msgid "Port:"
-msgstr "Porta:"
+msgstr "Porto:"
 
 #: src/modules/options/optw_messages.cpp:117
 msgid "Postfix:"
@@ -3472,15 +3480,15 @@ msgstr "Protocolo:"
 
 #: src/modules/options/optw_proxy.cpp:70
 msgid "Proxy"
-msgstr "Proxy"
+msgstr "'Proxy'"
 
 #: src/modules/options/optw_servers.cpp:761
 msgid "Proxy server:"
-msgstr "Servidor proxy:"
+msgstr "Servidor 'proxy':"
 
 #: src/modules/options/optw_proxy.cpp:111
 msgid "Proxy:"
-msgstr "Proxy:"
+msgstr "'Proxy':"
 
 #: src/modules/options/optw_identity.cpp:882
 msgid "Put here the alternative nickname you want to use"
@@ -3528,7 +3536,7 @@ msgstr "Re&mover"
 
 #: src/modules/options/optw_proxy.cpp:326
 msgid "Re&move Proxy"
-msgstr "Re&mover Proxy"
+msgstr "Re&mover 'Proxy'"
 
 #: src/modules/options/optw_servers.cpp:1503
 msgid "Re&move Server"
@@ -3590,7 +3598,7 @@ msgstr "Remover Rede/Servidor"
 
 #: src/modules/options/optw_proxy.cpp:100
 msgid "Remove Proxy"
-msgstr "Remover Proxy"
+msgstr "Remover 'Proxy'"
 
 #: src/modules/options/optw_connection.cpp:60
 msgid "Reopen queries after reconnect"
@@ -3742,7 +3750,7 @@ msgstr "Servidores"
 
 #: src/modules/options/optw_connection.cpp:230
 msgid "Service port:"
-msgstr "Porta de serviço:"
+msgstr "Porto de serviço:"
 
 #: src/modules/options/optw_windowlist.cpp:257
 msgid "Set maximum button width"
@@ -3806,7 +3814,7 @@ msgstr "Mostrar etiqueta com estatísticas na lista de utilizadores"
 
 #: src/modules/options/optw_lag.cpp:63
 msgid "Show lag in IRC context display"
-msgstr "Mostrar lag no indicador do contexto IRC"
+msgstr "Mostrar 'lag' no indicador do contexto IRC"
 
 #: src/modules/options/optw_messages.cpp:73
 msgid "Show message icons"
@@ -4108,7 +4116,8 @@ msgid ""
 "This section contains irc tools<br><p>like<b> away, lag and logging system. "
 "</b> </p>"
 msgstr ""
-"Esta secção contém ferramentas irc<br><p>como<b> ausência, lag e sistema de "
+"Esta secção contém ferramentas irc<br><p>como<b> ausência, 'lag' e sistema "
+"de "
 "registos.</b></p>"
 
 #: src/modules/options/optw_generalopt.cpp:39
@@ -4179,7 +4188,7 @@ msgstr "Transparente"
 
 #: src/modules/options/optw_lag.cpp:55
 msgid "Trigger event if lag exceeds:"
-msgstr "Correr evento se o lag exceder:"
+msgstr "Correr evento se o 'lag' exceder:"
 
 #: src/modules/options/optw_dcc.cpp:249
 msgid "Tweaks"
@@ -4199,7 +4208,7 @@ msgstr "Não é possível escrever informação da língua para"
 
 #: src/modules/options/optw_urlhandlers.cpp:77
 msgid "Unknown protocol handler command:"
-msgstr "Comando para protocolo desconhecido:"
+msgstr "Comando de manipulador de protocolo desconhecido:"
 
 #: src/modules/options/optw_servers.cpp:1432
 msgid "UnknownNet"
@@ -4216,7 +4225,7 @@ msgstr "Usar \"broken bouncer hack\" para detectar endereços"
 
 #: src/modules/options/optw_notify.cpp:70
 msgid "Use \"smart\" notify list manager"
-msgstr "Usar gestor \"inteligente\"da lista de notificação"
+msgstr "Usar gestor da lista de notificação \"inteligente\""
 
 #: src/modules/options/optw_servers.cpp:645
 msgid "Use CAP protocol"
@@ -4318,7 +4327,7 @@ msgstr "Usar lista de notificação"
 
 #: src/modules/options/optw_proxy.cpp:66
 msgid "Use proxy"
-msgstr "Usar proxy"
+msgstr "Usar 'proxy'"
 
 #: src/modules/options/optw_messages.cpp:90
 msgid "Use same colors as in the userlist"
@@ -4362,15 +4371,15 @@ msgstr "Usar endereço definido de utilizador ou um interface de rede"
 
 #: src/modules/options/optw_dcc.cpp:89
 msgid "Use user-defined port range"
-msgstr "Usar o alcance definido da porta"
+msgstr "Usar o alcance do porto definido pelo utilizador"
 
 #: src/modules/options/optw_ignore.cpp:46
 msgid "Use verbose ignore (show messages in console)"
-msgstr "Usar ignorar detalhado (mostrar mensagens na consola)"
+msgstr "Usar ignore detalhado (mostrar mensagens na consola)"
 
 #: src/modules/options/optw_dcc.cpp:51
 msgid "Use workaround for firewall"
-msgstr "Usar Método para Firewall"
+msgstr "Contornar 'firewall'"
 
 #: src/modules/options/optw_input.cpp:152
 msgid "Use zsh-like nick completion"
@@ -4383,7 +4392,7 @@ msgstr "Modo de Utilizador"
 
 #: src/modules/options/optw_away.cpp:43
 msgid "User input exits away mode"
-msgstr "Sair de \"ausente\" ao digitar algo"
+msgstr "Sair do modo ausente ao digitar algo"
 
 #: src/modules/options/optw_messages.cpp:96
 msgid "User-defined prefix and postfix"
@@ -4461,7 +4470,7 @@ msgstr "Codificação de mensagens winamp"
 
 #: src/modules/options/optw_antispam.cpp:46
 msgid "Words considered spam:"
-msgstr "Palavras consideradas spam:"
+msgstr "Palavras consideradas lixo (spam):"
 
 #: src/modules/options/optw_highlighting.cpp:57
 msgid "Words to highlight:"
@@ -4477,7 +4486,7 @@ msgstr ""
 "Aqui pode descrever aproximadamente a sua localização física. Algo do tipo "
 "\"Região, País\". Por favor note que esta informação será vista por qualquer "
 "pessoa, como tal adicionar mais informações (como o endereço exacto), "
-"geralmente <b>ão é boa ideia</b>."
+"geralmente <b>não é boa ideia</b>."
 
 #: src/modules/options/optw_identity.cpp:401
 msgid ""
@@ -4486,7 +4495,7 @@ msgid ""
 "anyone so <b>don't put any sensible data</b> (passwords, telephone or credit "
 "card numbers)."
 msgstr ""
-"pode indicar aqui algumas informações pessoais adicionaos. Pode ser uma "
+"Pode indicar aqui algumas informações pessoais adicionais. Pode ser uma "
 "frase engraçada ou a sua página pessoal... Por favor note que esta "
 "informação será vista por qualquer pessoa, portanto <b>não ponha qualquer "
 "informação</b> (senhas, telefone ou números de cartões de crédito)."

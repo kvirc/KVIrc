@@ -5,13 +5,14 @@
 # José Luis Sánchez <jsanchezv@teleline.es>, 2004.
 # Zé <mmodem00@gmail.com>, 2004-2007, 2010.
 # Américo Monteiro <a_monteiro@netcabo.pt>, 2010.
+# Gmail <mmodem00@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_dcc \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2010-02-28 23:41+0000\n"
-"Last-Translator: Zé <mmodem00@gmail.com>\n"
+"PO-Revision-Date: 2010-03-01 16:35+0000\n"
+"Last-Translator: Gmail <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +37,7 @@ msgid ""
 "Half duplex soundcard detected, you will not be able to talk and listen at "
 "the same time"
 msgstr ""
-"Placa de som de meio duplex detectada, você não poderá de falar e ouvir ao "
+"Placa de som de meio duplex detectada, não poderá falar e ouvir ao "
 "mesmo tempo"
 
 #: src/modules/dcc/video.cpp:217
@@ -46,8 +47,9 @@ msgid ""
 "WARNING: failed to set the requested sample rate (%d): the device used "
 "closest match (%d)"
 msgstr ""
-"AVISO: falha ao definir a amostragem pedida (%d): a correspondência mais "
-"aproximada do dispositivo é (%d)"
+"AVISO: falha ao definir a taxe de amostra pedida (%d): a correspondência "
+"mais "
+"aproximada do dispositivo (%d)"
 
 #: src/modules/dcc/video.cpp:275
 #: src/modules/dcc/voice.cpp:269
@@ -179,7 +181,7 @@ msgstr ""
 
 #: src/modules/dcc/broker.cpp:281
 msgid "The connection will be secured using SSL.<br>"
-msgstr "A ligação estará segura usando SSL.<br>"
+msgstr "A ligação estará segura ao usar SSL.<br>"
 
 #: src/modules/dcc/broker.cpp:287
 msgid "You will be the passive side of the connection.<br>"
@@ -187,7 +189,7 @@ msgstr "Será o lado passivo da ligação<br>"
 
 #: src/modules/dcc/broker.cpp:291
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
-msgstr "O destino de ligação será a máquina <b>%1</b> no porto <b>%2</b><br>"
+msgstr "O destino da ligação será a máquina <b>%1</b> no porto <b>%2</b><br>"
 
 #: src/modules/dcc/broker.cpp:296
 #: src/modules/dcc/broker.cpp:626
@@ -200,7 +202,7 @@ msgid ""
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
 "b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> pede uma <br><b>Ligação Cliente Directa</b> em modo <b>"
+"<b>%1 [%2@%3]</b> pede uma <br><b>Ligação Directa ao Cliente</b> em modo <b>"
 "VOZ</b>. <br>O destino da ligação será a máquina <b>%4</b> no porto <b>%5</b>"
 "<br>"
 
@@ -214,7 +216,7 @@ msgid ""
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
 "b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> pede uma <br><b>Ligação Cliente Directa</b> em modo <b>"
+"<b>%1 [%2@%3]</b> pede uma <br><b>Ligação Directa ao Cliente</b> em modo <b>"
 "VIDEO</b>. <br>O destino da ligação será a máquina <b>%4</b> no porto <b>%5<"
 "/b><br>"
 
@@ -228,7 +230,7 @@ msgid ""
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
 "<b>%5</b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> pede uma <br><b>Ligação Cliente Directa</b> em modo <b>"
+"<b>%1 [%2@%3]</b> pede uma <br><b>Ligação Directa ao Cliente</b> em modo <b>"
 "CANVAS</b>. <br>O destino da ligação será a máquina <b>%4</b> no porto <b>"
 "%5</b><br>"
 
@@ -250,7 +252,7 @@ msgid ""
 "<br>You will be the passive side of the connection.<br>"
 msgstr ""
 "<b>%1 [%2@%3]</b> quer envia-lhe o ficheiro '<b>%4</b>', de tamanho <b>%5</b>"
-". <br>Você será o lado passivo da ligação.<br>"
+". <br>Será o lado passivo da ligação.<br>"
 
 #: src/modules/dcc/broker.cpp:611
 msgid ""
@@ -264,18 +266,16 @@ msgid ""
 msgstr ""
 "<center><b>Nota:</b></center>O ficheiro parece ser um avatar que "
 "requisitou. Não deve alterar o nome do ficheiro. Grave-o numa localização "
-"onde o KVIrc o possa encontrar, como nos directórios 'avatars', "
-"'incoming', ou 'pics', na sua pasta pessoal, ou no directório de gravação "
-"para "
-"os tipos de ficheiros recebidos. A localização de gravação predefinida irá "
+"onde o KVIrc o possa encontrar, como nos directórios 'avatars', 'incoming', "
+"ou 'pics', na sua pasta pessoal, ou no directório de gravação para os tipos"
+"de ficheiros recebidos. A localização de gravação predefinida irá "
 "provavelmente funcionar. Pode instruir o KVIrc para aceitar automaticamente "
 "os 'avatars' recebidos ao definir a opção <tt>boolAutoAcceptIncomingAvatars<"
-"/tt> "
-"para verdadeiro (true).<br>"
+"/tt>para verdadeiro (true).<br>"
 
 #: src/modules/dcc/broker.cpp:639
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
-msgstr "A auto-aceitar pedido DCC %Q de %Q!%Q@%Q para o ficheiro %Q"
+msgstr "A auto-aceitar o pedido DCC %Q de %Q!%Q@%Q para o ficheiro %Q"
 
 #: src/modules/dcc/broker.cpp:706
 msgid "Choose Files to Save - KVIrc"
@@ -291,7 +291,7 @@ msgid ""
 "to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
 "file, or<br><b>resume</b> an incomplete download?"
 msgstr ""
-"O ficheiro '<b>%1</b>' já existe e tem <b>%2</b> de tamanho.<br>Deseja <br><"
+"O ficheiro '<b>%1</b>' já existe e tem <b>%2</b> de tamanho.<br>Deseja<br><"
 "b>substituir</b> o ficheiro existente,<br> <b>auto-renomear</b> o novo "
 "ficheiro, ou<br><b>resumir</b> uma transferência incompleta?"
 
@@ -307,7 +307,7 @@ msgstr ""
 
 #: src/modules/dcc/broker.cpp:838
 msgid "File %s exists, auto-renaming to %Q"
-msgstr "Ficheiro %s existe, a auto-renomear para %Q"
+msgstr "O ficheiro %s existe, a auto-renomear para %Q"
 
 #: src/modules/dcc/chat.cpp:161
 #, c-format
@@ -377,8 +377,7 @@ msgid ""
 "data was sent to the remote end"
 msgstr ""
 "O motor de encriptação não foi capaz de encriptar a mensagem actual (%Q): "
-"%Q, "
-"nenhuns dados enviados para o lado remoto"
+"%Q, nenhuns dados enviados para o lado remoto"
 
 #: src/modules/dcc/chat.cpp:467
 msgid ""
@@ -386,8 +385,7 @@ msgid ""
 "to decode it: %Q"
 msgstr ""
 "A seguinte mensagem parece estar encriptada, mas o motor de encriptação "
-"falhou ao "
-"descodificá-la: %Q"
+"falhou ao descodificá-la: %Q"
 
 #: src/modules/dcc/chat.cpp:527
 msgid "DCC %Q failed: %Q"
@@ -525,14 +523,14 @@ msgstr "O identificador de janela especificado não é válido"
 
 #: src/modules/dcc/send.cpp:260
 msgid "WARNING: The peer is sending garbage data past the end of the file"
-msgstr "AVISO: O peer está a enviar dados de lixo para lá do final do ficheiro"
+msgstr "AVISO: O ponto ('peer') está a enviar lixo após o final do ficheiro"
 
 #: src/modules/dcc/send.cpp:261
 msgid ""
 "WARNING: Ignoring data past the declared end of file and closing the "
 "connection"
 msgstr ""
-"AVISO: A ignorar os dados para lá do final declarado do ficheiro e a fechar "
+"AVISO: A ignorar os dados após o final declarado do ficheiro e a fechar "
 "a ligação"
 
 #: src/modules/dcc/send.cpp:362
@@ -540,8 +538,8 @@ msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
 msgstr ""
-"A transferência de dados terminou, a aguardar 30 segundos para o peer fechar "
-"a ligação..."
+"A transferência de dados terminou, a aguardar 30 segundos para o ponto "
+"('peer') fechar a ligação..."
 
 #: src/modules/dcc/send.cpp:369
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
@@ -551,7 +549,7 @@ msgstr ""
 #: src/modules/dcc/send.cpp:630
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
-"AVISO: Dados recebidos numa DCC TSEND, não deverão existir reconhecimentos"
+"AVISO: Dados recebidos numa DCC TSEND, não deve haver nenhum reconhecimento"
 
 #: src/modules/dcc/send.cpp:762
 #, c-format
@@ -572,7 +570,7 @@ msgstr "A tentar uma ligação DCC %1 activa"
 
 #: src/modules/dcc/send.cpp:874
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
-msgstr "Pedido DCC RESUMIR enviado para %1, a aguardar pelo ACEITE"
+msgstr "Pedido DCC RESUMIR enviado para %1, a aguardar por ACEITE"
 
 #: src/modules/dcc/send.cpp:941
 #: src/modules/dcc/send.cpp:952
@@ -632,11 +630,11 @@ msgstr "Média:"
 
 #: src/modules/dcc/send.cpp:1359
 msgid "Transfer Log"
-msgstr "Relatório de Transferências"
+msgstr "Registo de Transferências"
 
 #: src/modules/dcc/send.cpp:1488
 msgid "Contacting host %1 on port %2"
-msgstr "A contactar máquina %1 no porto %2"
+msgstr "A contactar a máquina %1 no porto %2"
 
 #: src/modules/dcc/send.cpp:1495
 msgid "Listening on interface %1 port %2"
@@ -682,7 +680,7 @@ msgstr "A transferir dados"
 
 #: src/modules/dcc/send.cpp:1767
 msgid "RESUME accepted, transfer will begin at position %1"
-msgstr "RESUMIR aceite, a transferência irá começar na posição %1"
+msgstr "RESUMO aceite, a transferência irá começar na posição %1"
 
 #: src/modules/dcc/send.cpp:1798
 msgid "Internal error in RESUME request"
@@ -871,7 +869,7 @@ msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number, trying to continue"
 msgstr ""
-"O pedido acima está enganado: O quarto parâmetro deveria ser o tamanho do "
+"O pedido acima está inválido: O quarto parâmetro deveria ser o tamanho do "
 "ficheiro mas não parece ser um número não sinalizado; a tentar continuar"
 
 #: src/modules/dcc/requests.cpp:462
@@ -881,7 +879,7 @@ msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
 msgstr ""
-"O pedido acima está enganado: O nome de ficheiro contém componentes do "
+"O pedido acima está inválido: O nome de ficheiro contém componentes do "
 "caminho, a retirar o caminho inicial e a tentar continuar"
 
 #: src/modules/dcc/requests.cpp:476
@@ -950,7 +948,7 @@ msgid ""
 "to send the file (or double-click on the socket)"
 msgstr ""
 "Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
-"para enviar o ficheiro (ou faça duplo-clique no soquete)"
+"para enviar o ficheiro (ou faça duplo-clique no 'socket')"
 
 #: src/modules/dcc/requests.cpp:742
 msgid ""
@@ -1003,7 +1001,7 @@ msgid ""
 "DCC %s since we can't accept incoming connections (user option)"
 msgstr ""
 "A aceitar pedido de ficheiro de %Q [%Q@%Q] para '%s' (ficheiro real: %Q), a "
-"oferecer DCC %s porque não podemos aceitar ligações recebidas (opção do "
+"oferecer DCC %s já que não podemos aceitar ligações recebidas (opção do "
 "utilizador)"
 
 #: src/modules/dcc/requests.cpp:963
@@ -1035,15 +1033,15 @@ msgid ""
 "to 8000"
 msgstr ""
 "O pedido acima parece estar inválido. Taxa de amostra inválida '%s', "
-"predefinir para 8000"
+"a predefinir para 8000"
 
 #: src/modules/dcc/requests.cpp:1071
 msgid ""
 "The above request cannot be accepted: DCC VIDEO support not enabled at "
 "compilation time "
 msgstr ""
-"O pedido acima não pode ser aceite: Suporte DCC VIDEO não activado durante "
-"a compilação "
+"O pedido acima não pode ser aceite: Suporte DCC VIDEO não activado "
+"durante a compilação "
 
 #: src/modules/dcc/requests.cpp:1240
 #, c-format
@@ -1085,7 +1083,6 @@ msgid ""
 "disabling the option (so the next dcc will work)"
 msgstr ""
 "Não é possível escutar no interface predefinido '%s': corrija isto no "
-"diálogo "
-"das opções, desactivar a opção (para que o próximo dcc funcione)"
+"diálogo das opções, desactivar a opção (para que o próximo dcc funcione)"
 
 

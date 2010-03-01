@@ -3,13 +3,14 @@
 # Zé <mmodem00@netvisao.pt>, 2004, 2005.
 # Zé <mmodem00@gmail.com>, 2006, 2007, 2008, 2010.
 # Zé <ze@mandriva.org>, 2008.
+# Gmail <mmodem00@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-17 18:09+0100\n"
-"PO-Revision-Date: 2010-03-01 00:54+0000\n"
-"Last-Translator: Zé <mmodem00@gmail.com>\n"
+"PO-Revision-Date: 2010-03-01 15:31+0000\n"
+"Last-Translator: Gmail <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1239,7 +1240,7 @@ msgstr "A tentar %Q para %Q (%Q) na porta %u"
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:169
 #, c-format
 msgid "Attempting to 'bounce' on proxy %s on port %u (protocol %s)"
-msgstr "A tentar 'bounce' no proxy %s na porta %u (protocolo %s)"
+msgstr "A tentar 'bounce' no proxy %s no porto %u (protocolo %s)"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:608
 msgid "Attempting to rejoin \r!c\r%Q\r..."
@@ -2154,7 +2155,7 @@ msgstr "Tempo de conexão esgotado"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:371
 msgid "Contacting %Q %s (%s) on port %u"
-msgstr "A contactar %Q %s (%s) na porta %u"
+msgstr "A contactar %Q %s (%s) no porto %u"
 
 #: src/kvilib/net/kvi_http.cpp:251
 msgid "Contacting host %Q on port %u"
@@ -3450,7 +3451,7 @@ msgstr "Parâmetro inválido"
 
 #: src/kvilib/core/kvi_error.cpp:133
 msgid "Invalid port number"
-msgstr "Número de porta inválido"
+msgstr "Número de porto inválido"
 
 #: src/kvilib/core/kvi_error.cpp:97
 msgid "Invalid proxy address"
@@ -6917,7 +6918,7 @@ msgstr "Tipo de retorno de chamada DBus %s não suportado"
 #: src/modules/system/libkvisystem.cpp:520
 #, c-format
 msgid "Unsupported DBus parameter type %s"
-msgstr "Tipo de parametro DBus %s não suportado"
+msgstr "Tipo de parâmetro DBus %s não suportado"
 
 #: src/modules/rijndael/libkvirijndael.cpp:166
 msgid "Unsupported crypt mode"

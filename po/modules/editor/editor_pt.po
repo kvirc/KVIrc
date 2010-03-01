@@ -7,13 +7,14 @@
 # José Melo <mmodem00@gmail.com>, 2005.
 # Zé <ze@mandriva.org>, 2008.
 # Zé <mmodem00@gmail.com>, 2010.
+# Gmail <mmodem00@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: editor_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-17 18:09+0100\n"
-"PO-Revision-Date: 2010-02-28 22:42+0000\n"
-"Last-Translator: Zé <mmodem00@gmail.com>\n"
+"PO-Revision-Date: 2010-03-01 16:04+0000\n"
+"Last-Translator: Gmail <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -156,9 +157,9 @@ msgid ""
 "popup menus. The popup menu with the specified name will be looked up at "
 "menu setup time.</center>"
 msgstr ""
-"<center><b>Nome de menu externo</b><br>Isto permite juntar externamente "
+"<center><b>Nome do menu externo</b><br>Isto permite juntar externamente "
 "menus 'popup' definidos. O menu 'popup' com o nome indicado será procurado "
-"ao definir a hora do menu.</center>"
+"na hora de configuração do menu.</center>"
 
 #: src/modules/popupeditor/popupeditor.cpp:251
 msgid ""
@@ -168,7 +169,7 @@ msgid ""
 msgstr ""
 "<center><b>Identificador de ícone</b><br>Pode ser um ID de ícone interno, "
 "um caminho absoluto ou um caminho relativo.<br>Os 'scripts' portáteis "
-"nunca devem ser usar caminhos absolutos"
+"nunca devem usar caminhos absolutos"
 
 #: src/modules/popupeditor/popupeditor.cpp:270
 msgid ""
@@ -203,7 +204,7 @@ msgstr "Código da acção"
 #: src/modules/aliaseditor/aliaseditor.cpp:622
 #: src/modules/aliaseditor/aliaseditor.cpp:1220
 msgid "Add Alias"
-msgstr "Adicionar Alias"
+msgstr "Adicionar 'Alias'"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:627
 #: src/modules/aliaseditor/aliaseditor.cpp:1227
@@ -219,35 +220,35 @@ msgstr "Avançado..."
 #: src/modules/aliaseditor/aliaseditor.cpp:368
 #: src/modules/aliaseditor/aliaseditor.cpp:597
 msgid "Alias"
-msgstr "Alias"
+msgstr "'Alias'"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1296
 msgid "Alias Editor"
-msgstr "Editor de Alias"
+msgstr "Editor de 'Alias'"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:810
 #: src/modules/aliaseditor/aliaseditor.cpp:883
 msgid "Alias Export"
-msgstr "Exportar Alias"
+msgstr "Exportar 'Alias'"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:501
 msgid "Alias already exists"
-msgstr "A alias já existe"
+msgstr "A 'alias' já existe"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1100
 msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
 msgstr ""
-"Os nomes das alias podem conter apenas letras, dígitos, sublinhado e "
-"'::' separadores de nomes de espaços"
+"Os nomes das 'alias' podem conter apenas letras, dígitos, sublinhado e "
+"separadores de nomes de espaços '::'"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:351
 msgid ""
 "An external script has changed the alias you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
-"Um 'script' externo mudou a alias que está actualmente a editar. Deseja "
+"Um 'script' externo mudou a 'alias' que está actualmente a editar. Deseja "
 "aceitar as mudanças externas?"
 
 #: src/modules/actioneditor/actioneditor.cpp:869
@@ -266,7 +267,7 @@ msgstr "Fundo:"
 #: src/modules/aliaseditor/aliaseditor.cpp:1113
 #: src/modules/aliaseditor/aliaseditor.cpp:1124
 msgid "Bad Alias Name"
-msgstr "Nome de Alias Inválido"
+msgstr "Nome de 'Alias' Inválido"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1167
 #: src/modules/aliaseditor/aliaseditor.cpp:1181
@@ -451,7 +452,7 @@ msgstr "Deseja realmente apagar a barra de ferramentas \"%1\"?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1017
 msgid "Do you really want to remove the alias \"%Q\" ?"
-msgstr "Deseja realmente remover a alias \"%Q\" ?"
+msgstr "Deseja realmente remover a 'alias' \"%Q\" ?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1019
 msgid "Do you really want to remove the namespace \"%Q\" ?"
@@ -476,7 +477,7 @@ msgstr "Editar Barra de Ferramentas"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:183
 msgid "Edit the alias or namespace name"
-msgstr "Editar os nomes das alias ou dos nomesdeespaços"
+msgstr "Editar os nomes das 'alias' ou dos nomesdeespaços"
 
 #: src/modules/eventeditor/eventeditor.cpp:115
 msgid "Edit the event handler name."
@@ -584,7 +585,7 @@ msgstr "Tipo de Letra:"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1125
 msgid "Found an empty namespace in alias name"
-msgstr "Encontrado um nomedeespaço vazio no nome da alias"
+msgstr "Encontrado um nomedeespaço vazio no nome da 'alias'"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1193
 msgid "Found an empty namespace in namespace name"
@@ -654,7 +655,7 @@ msgstr "Manualmente"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1086
 msgid "Missing Alias Name"
-msgstr "Nome de Alias em Falta"
+msgstr "Nome de 'Alias' em Falta"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1154
 msgid "Missing Namespace Name"
@@ -851,7 +852,7 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:350
 msgid "OverWrite Current Alias"
-msgstr "Substituir Alias Actual"
+msgstr "Substituir 'Alias' Actual"
 
 #: src/modules/popupeditor/popupeditor.cpp:440
 msgid "Paste Above"
@@ -867,7 +868,7 @@ msgstr "Por favor escolha o ícone para a barra de ferramentas"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1220
 msgid "Please enter the name for the new alias"
-msgstr "Por favor indique o nome para a nova alias"
+msgstr "Por favor indique o nome para a nova 'alias'"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1227
 msgid "Please enter the name for the new namespace"
@@ -875,7 +876,7 @@ msgstr "Por favor indique o nome para o novo nomedeespaço"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:487
 msgid "Please enter the new name for the alias"
-msgstr "Por favor indique o novo nome para a alias"
+msgstr "Por favor indique o novo nome para a 'alias'"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:489
 msgid "Please enter the new name for the namespace"
@@ -886,7 +887,7 @@ msgid ""
 "Please enter the text to be searched for. The matching aliases will be "
 "highlighted."
 msgstr ""
-"Por favor indique o texto a ser procurado. A alias correspondente será "
+"Por favor indique o texto a ser procurado. A 'alias' correspondente será "
 "destacada."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1021
@@ -964,7 +965,7 @@ msgstr "Renomear"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:487
 msgid "Rename Alias"
-msgstr "Renomear Alias"
+msgstr "Renomear 'Alias'"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:489
 msgid "Rename Namespace"
@@ -976,7 +977,7 @@ msgstr "Substituir ficheiro"
 
 #: src/modules/editor/scripteditor.cpp:990
 msgid "Replace with"
-msgstr "Substituir com"
+msgstr "Substituir por"
 
 #: src/modules/editor/scripteditor.cpp:918
 #, c-format
@@ -999,7 +1000,8 @@ msgstr "Ícone Pequeno:"
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
-"Caracter ':' perdido no nome da alias: queria dizer ...<nomedeespaço>::<nome>"
+"Caracter ':' perdido no nome da 'alias': queria dizer ...<nomedeespaço>::<"
+"nome>"
 " ?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1182
@@ -1099,7 +1101,7 @@ msgstr "Não é possível escrever para o ficheiro de acções."
 #: src/modules/aliaseditor/aliaseditor.cpp:913
 #: src/modules/popupeditor/popupeditor.cpp:1174
 msgid "Unable to write to the alias file."
-msgstr "Não é possível escrever para o ficheiro de alias."
+msgstr "Não é possível escrever para o ficheiro da 'alias'."
 
 #: src/modules/eventeditor/eventeditor.cpp:453
 msgid "Unable to write to the event file."
@@ -1175,7 +1177,7 @@ msgstr "Sim a Tudo"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1087
 msgid "You must specify a valid name for the alias"
-msgstr "Deve indicar um nome válido para a alias"
+msgstr "Deve indicar um nome válido para a 'alias'"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1155
 msgid "You must specify a valid name for the namespace"
