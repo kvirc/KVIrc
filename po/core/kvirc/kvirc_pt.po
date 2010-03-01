@@ -2,15 +2,15 @@
 # Ze <mmodem00@netvisao.pt>, 2003.
 # Zé <mmodem00@netvisao.pt>, 2004, 2005.
 # Zé <mmodem00@gmail.com>, 2006, 2007, 2008, 2010.
-# Zé <ze@mandriva.org>, 2008.
+# Zé <ze@mandriva.org>, 2008, 2010.
 # Gmail <mmodem00@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-01 21:54+0100\n"
-"PO-Revision-Date: 2010-03-01 17:33+0000\n"
-"Last-Translator: Gmail <mmodem00@gmail.com>\n"
+"PO-Revision-Date: 2010-03-01 21:35+0000\n"
+"Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -513,7 +513,7 @@ msgstr "&Acoplar"
 
 #: src/modules/setup/setupwizard.cpp:477
 msgid "&Don't apply any theme"
-msgstr ""
+msgstr "&Não aplicar qualquer tema"
 
 #: src/kvilib/system/kvi_locale.cpp:1057
 msgid "&Edit Bookmarks"
@@ -521,7 +521,7 @@ msgstr "&Editar Favoritos"
 
 #: src/modules/setup/setupwizard.cpp:456
 msgid "&Fancy Theme"
-msgstr ""
+msgstr "Tema &Engraçado"
 
 #: src/kvilib/system/kvi_locale.cpp:1088
 msgid "&Filter:"
@@ -561,7 +561,7 @@ msgstr "&Localização:"
 
 #: src/modules/setup/setupwizard.cpp:475
 msgid "&Minimalist Theme"
-msgstr ""
+msgstr "Tema &Minimalista"
 
 #: src/modules/setup/setupwizard.cpp:85
 msgid "&Next >"
@@ -1007,6 +1007,13 @@ msgid ""
 "any theme in order to preserve your current visual settings.<br><br>If you "
 "don't know what to choose, just use the default.</p>"
 msgstr ""
+"<p>Aqui pode escolher a aparência predefinida do KVIrc.<br><br>O Tema "
+"Engraçado usa ícones, um fundo transparente e muitas cores. O Tema "
+"Minimalista é desenhado para mostrar cores-baixas ou para extremistas da "
+"\"consola\"; é mais ou menos com texto branco num fundo preto.<br><br>Se "
+"teve uma versão KVIrc anterior instalada, pode escolher não aplicar qualquer "
+"tema para poder preservar as suas definições visuais.<br><br>Se não sabe "
+"o que escolher, use apenas o predefinido.</p>"
 
 #: src/modules/setup/setupwizard.cpp:218
 msgid ""
@@ -2393,9 +2400,8 @@ msgid "Default"
 msgstr "Predefinido"
 
 #: src/modules/setup/setupwizard.cpp:482
-#, fuzzy
 msgid "Default Theme"
-msgstr "Predefinido"
+msgstr "Tema Predefinido"
 
 #: src/kvilib/system/kvi_locale.cpp:1080
 msgid "Delete"
@@ -2573,9 +2579,8 @@ msgid "Edit Aliases..."
 msgstr "Editar 'Alias'..."
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:249
-#, fuzzy
 msgid "Edit Classes..."
-msgstr "Editar 'Alias'..."
+msgstr "Editar Classes..."
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:260
 msgid "Edit Events..."
@@ -5719,9 +5724,8 @@ msgid "Shows a window that allows editing aliases"
 msgstr "Mostra uma janela que permite editar ''alias''"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:250
-#, fuzzy
 msgid "Shows a window that allows editing classes"
-msgstr "Mostra uma janela que permite editar ''alias''"
+msgstr "Mostra uma janela que permite editar classes"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:272
 msgid "Shows a window that allows editing popup menus"
@@ -7928,7 +7932,7 @@ msgstr "estiveram a falar recentemente"
 
 #: src/kvirc/ui/kvi_windowlist.cpp:64
 msgid "windowlist"
-msgstr "listadejanelas"
+msgstr "lista de janelas"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:314
 msgid "y: Spy :)"
@@ -7936,7 +7940,7 @@ msgstr "y: Espião :)"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:310
 msgid "z: Recipient for oper wallop messages"
-msgstr "z: Recipiente para mensagens wallop do operador"
+msgstr "z: Recipiente para mensagens 'wallop' do operador"
 
 #, fuzzy
 #~ msgid "    No properties"
