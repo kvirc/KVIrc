@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-17 18:09+0100\n"
-"PO-Revision-Date: 2010-03-01 15:31+0000\n"
+"PO-Revision-Date: 2010-03-01 17:33+0000\n"
 "Last-Translator: Gmail <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -695,7 +695,7 @@ msgstr "(DNS Interno) Família de endereços não suportada"
 
 #: src/kvilib/core/kvi_error.cpp:81
 msgid "(DNS Internal) Unsupported socket type"
-msgstr "(DNS Interno) Tipo de socket não suportado"
+msgstr "(DNS Interno) Tipo de 'socket' não suportado"
 
 #: src/kvirc/ui/kvi_console.cpp:338
 msgid "(Matched by"
@@ -1622,7 +1622,7 @@ msgstr ""
 
 #: src/kvilib/core/kvi_error.cpp:136
 msgid "Can't setup a listening socket : bind failed"
-msgstr "Não é possível configurar um socket de escuta: ligação falhada"
+msgstr "Não é possível configurar um 'socket' de escuta: ligação falhada"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1029
 msgid "Can't start the DNS slave thread"
@@ -2734,7 +2734,7 @@ msgstr "Falha ao copiar de %Q para %Q"
 
 #: src/kvilib/net/kvi_http.cpp:992
 msgid "Failed to create the socket"
-msgstr "Falha ao criar o socket"
+msgstr "Falha ao criar o 'socket'"
 
 #: src/kvilib/file/kvi_packagefile.cpp:721
 msgid "Failed to create the target directory"
@@ -2792,7 +2792,7 @@ msgstr "Não é possível abrir o ficheiro fonte para leitura"
 
 #: src/kvilib/core/kvi_error.cpp:89
 msgid "Failed to put the socket in non blocking mode"
-msgstr "Falha ao colocar o socket em modo não bloquear"
+msgstr "Falha ao colocar o 'socket' em modo não bloquear"
 
 #: src/modules/file/libkvifile.cpp:369
 msgid "Failed to remove the directory %Q"
@@ -3719,7 +3719,7 @@ msgstr "Ligação"
 
 #: src/kvirc/kernel/kvi_options.cpp:717
 msgid "Link overlay foreground"
-msgstr "Primeiro plano da ligação overlay"
+msgstr "Primeiro plano da ligação 'overlay'"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1749
 msgid "Link: %Q"
@@ -4715,7 +4715,7 @@ msgstr "Mensagem de saída de canal"
 #: src/kvirc/kernel/kvi_ircsocket.cpp:1817
 #: src/kvirc/kernel/kvi_ircsocket.cpp:1837
 msgid "Partial socket write: packet broken into smaller pieces."
-msgstr "Escrita parcial no socket: pacote dividido em partes mais pequenas."
+msgstr "Escrita parcial no 'socket': pacote dividido em partes mais pequenas."
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:84
 msgid "Password"
@@ -5363,7 +5363,7 @@ msgstr "Secreto"
 
 #: src/kvilib/core/kvi_error.cpp:164
 msgid "Secure Socket Layer error"
-msgstr "Erro no Layer Seguro do Socket"
+msgstr "Erro da Disposição Segura do 'Socket' (SSL)"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:685
 msgid "Secure connection"
@@ -5636,7 +5636,7 @@ msgstr "Mostrar Painel de Navegação Rápida"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:138
 msgid "Show SocketSpy..."
-msgstr "Mostrar Socket Espião..."
+msgstr "Mostrar 'Socket' Espião..."
 
 #: src/kvirc/ui/kvi_menubar.cpp:178
 msgid "Show StatusBar"
@@ -5735,7 +5735,7 @@ msgstr "Mostra uma janela que permite listar os canais da rede"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:139
 msgid "Shows a window that allows monitoring the socket traffic"
-msgstr "Mostra uma janela que permite monitorizar o tráfego do socket"
+msgstr "Mostra uma janela que permite monitorizar o tráfego do 'socket'"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:150
 msgid "Shows a window that allows viewing the network links"
@@ -5803,40 +5803,40 @@ msgstr "Inteligente (Enviar UTF-8)"
 
 #: src/kvilib/ext/kvi_mediatype.cpp:311
 msgid "Socket"
-msgstr "Socket"
+msgstr "'Socket'"
 
 #: src/modules/socketspy/socketspywindow.cpp:80
 #, c-format
 msgid "Socket Spy [IRC Context %u]"
-msgstr "Socket Espião [Contexto IRC %u]"
+msgstr "'Socket' Espião [Contexto IRC %u]"
 
 #: src/modules/socketspy/socketspywindow.cpp:103
 msgid "Socket closed"
-msgstr "Socket fechado"
+msgstr "'Socket' fechado"
 
 #: src/kvilib/core/kvi_error.cpp:88
 msgid "Socket creation failed"
-msgstr "Criação de socket falhada"
+msgstr "Criação de 'socket' falhada"
 
 #: src/kvirc/kernel/kvi_options.cpp:723
 msgid "Socket error"
-msgstr "Erro do socket"
+msgstr "Erro do 'socket'"
 
 #: src/kvirc/kernel/kvi_options.cpp:721
 msgid "Socket message"
-msgstr "Mensagem do socket"
+msgstr "Mensagem do 'socket'"
 
 #: src/kvilib/core/kvi_error.cpp:134
 msgid "Socket not connected"
-msgstr "Socket não conectado"
+msgstr "'Socket' não conectado"
 
 #: src/modules/socketspy/socketspywindow.cpp:98
 msgid "Socket open"
-msgstr "Socket aberto"
+msgstr "'Socket' aberto"
 
 #: src/kvirc/kernel/kvi_options.cpp:722
 msgid "Socket warning"
-msgstr "Aviso do socket"
+msgstr "Aviso do 'socket'"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:970
 msgid ""
@@ -5876,19 +5876,21 @@ msgstr "Sistema de som detectado para: %s"
 msgid ""
 "Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
 msgstr ""
-"Noticia lixo de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (palavra lixo correspondente "
+"Noticia de lixo ('spam') de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (palavra 'spam' "
+"correspondente "
 "\"%Q\")"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:818
 msgid ""
 "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
 msgstr ""
-"Lixo privmsg de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (palavra lixo correspondente  "
+"Lixo ('spam') privmsg de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (palavra 'spam' "
+"correspondente  "
 "\"%s\")"
 
 #: src/kvirc/kernel/kvi_options.cpp:786
 msgid "Spam report"
-msgstr "Relatório spam"
+msgstr "Relatório de lixo ('spam')"
 
 #: src/kvirc/ui/kvi_channel.cpp:148
 msgid "Split View"
@@ -5896,7 +5898,7 @@ msgstr "Vista Separada"
 
 #: src/kvirc/kernel/kvi_options.cpp:748
 msgid "Split message"
-msgstr "Mensagem de separação"
+msgstr "Mensagem separada"
 
 #: src/modules/mircimport/libkvimircimport.cpp:100
 #: src/kvilib/irc/kvi_ircserverdb.cpp:290
@@ -5910,7 +5912,7 @@ msgstr "Padrão"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:382
 msgid "Starting Secure Socket Layer handshake"
-msgstr "Iniciar Negociação Segura do Socket Layer"
+msgstr "Iniciar Negociação da Disposição Segura do 'Socket' (SSL)"
 
 #: src/modules/ident/libkviident.cpp:330
 msgid "Starting identd service (IPv4)"
@@ -5963,11 +5965,11 @@ msgstr "&Rasurado"
 
 #: src/kvirc/kernel/kvi_options.cpp:1255
 msgid "String list options (comma separated list of strings)"
-msgstr "Opções da lista de string (lista de strings separadas por vírgulas)"
+msgstr "Opções da lista 'string' (lista de 'strings' separadas por vírgulas)"
 
 #: src/kvirc/kernel/kvi_options.cpp:1247
 msgid "String options (string value)"
-msgstr "Opções de string (valor da string)"
+msgstr "Opções de 'string' (valor da 'string')"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:284
 msgid "Strip colors"
@@ -6319,7 +6321,7 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:498
 msgid "The specified bind address (%Q) is not valid"
-msgstr "O endereço indicado da ligação (%Q) não é valido"
+msgstr "O endereço indicado de ligação (%Q) não é valido"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:503
 msgid ""
@@ -6804,7 +6806,7 @@ msgstr "Fim de comando inesperado nos parênteses"
 
 #: src/kvilib/core/kvi_error.cpp:55
 msgid "Unexpected end of command in string"
-msgstr "Fim de comando inesperado na string"
+msgstr "Fim de comando inesperado na 'string'"
 
 #: src/kvilib/core/kvi_error.cpp:168
 msgid "Unexpected token"
@@ -6871,7 +6873,7 @@ msgstr "Servidor desconhecido<br>"
 
 #: src/kvilib/core/kvi_error.cpp:166
 msgid "Unknown string manipulation operation"
-msgstr "Operação de string desconhecida"
+msgstr "Operação de manipulador de 'string' desconhecida"
 
 #: src/kvirc/ui/kvi_selectors.cpp:360
 msgid "Unloadable"
@@ -7065,7 +7067,7 @@ msgstr "A usar o endereço IP em cache do servidor (%s)"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:138
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
-msgstr "A usar protocolo IRC filtrado: o filtro da ligação é \"%Q\""
+msgstr "A usar protocolo IRC filtrado: o filtro de ligação é \"%Q\""
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1158
 msgid "Using network specific nickname (%Q)"
@@ -7172,7 +7174,7 @@ msgstr "Aviso - KVirc"
 #: src/modules/links/linkswindow.cpp:244
 msgid "Warning: No root link was sent by the server, the stats may be invalid."
 msgstr ""
-"Aviso: Não foi enviada nenhuma ligação de raiz pelo servidor, as "
+"Aviso: Não foi enviada nenhuma ligação de raíz pelo servidor, as "
 "estatísticas podem ser inválidas."
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:811
@@ -7253,7 +7255,7 @@ msgstr "Janela com ID '%Q' não encontrada"
 
 #: src/modules/log/libkvilog.cpp:271
 msgid "Window with id '%Q' not found, returning empty string"
-msgstr "Janela com id '%Q' não encontrado, retornar string vazia"
+msgstr "Janela com id '%Q' não encontrado, retornar 'string' vazia"
 
 #: src/kvilib/file/kvi_packagefile.cpp:522
 msgid "Writing informational fields"
@@ -7456,7 +7458,7 @@ msgstr "[IDENT]: %s"
 #: src/kvirc/kernel/kvi_ircconnection.cpp:731
 #: src/kvirc/kernel/kvi_ircconnection.cpp:763
 msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
-msgstr "[AVISO DE LIGAÇÃO]: Mensagem do socket truncada para 512 bytes."
+msgstr "[AVISO DE LIGAÇÃO]: Mensagem do 'socket' truncada para 512 bytes."
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1793
 msgid "[Leaving away status after %ud %uh %um %us]: %Q"

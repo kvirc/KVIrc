@@ -4,13 +4,14 @@
 #
 # Américo Monteiro <a_monteiro@netcabo.pt>, 2010.
 # Zé <mmodem00@gmail.com>, 2010.
+# Gmail <mmodem00@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_objects \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2010-02-28 23:15+0000\n"
-"Last-Translator: Zé <mmodem00@gmail.com>\n"
+"PO-Revision-Date: 2010-03-01 17:16+0000\n"
+"Last-Translator: Gmail <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -500,7 +501,7 @@ msgstr "'Plugin' Qt para base de dados %Q em falta"
 
 #: src/modules/objects/class_sql.cpp:207
 msgid "Duplicate connection name '%Q', old query connection removed"
-msgstr "Nome de ligação '%Q' em duplicado, ligação de consulta antiga removida"
+msgstr "Nome da conexão duplicada '%Q', conexão de consulta antiga removida"
 
 #: src/modules/objects/class_sql.cpp:237
 #: src/modules/objects/class_sql.cpp:270
@@ -508,19 +509,19 @@ msgstr "Nome de ligação '%Q' em duplicado, ligação de consulta antiga removi
 #: src/modules/objects/class_sql.cpp:304
 #: src/modules/objects/class_sql.cpp:321
 msgid "Connection %Q does not exists"
-msgstr "A ligação %Q não existe"
+msgstr "A conexão %Q não existe"
 
 #: src/modules/objects/class_sql.cpp:343
 msgid "Connection query %Q does not exists"
-msgstr "A ligação de consulta %Q não existe"
+msgstr "A conexão de consulta %Q não existe"
 
 #: src/modules/objects/class_sql.cpp:361
 msgid "No query connection is open"
-msgstr "Nenhuma ligação de consulta aberta"
+msgstr "Nenhuma conexão de consulta aberta"
 
 #: src/modules/objects/class_sql.cpp:370
 msgid "Query for connection %Q does not exists"
-msgstr "Consulta para ligação %Q não existe"
+msgstr "A consulta para a conexão %Q não existe"
 
 #: src/modules/objects/class_sql.cpp:395
 msgid "Query %Q already initialized"
@@ -528,7 +529,7 @@ msgstr "Consulta %Q já inicializada"
 
 #: src/modules/objects/class_sql.cpp:400
 msgid "Connection %Q is not open!"
-msgstr "A ligação %Q não está aberta!"
+msgstr "A conexão %Q não está aberta!"
 
 #: src/modules/objects/class_sql.cpp:461
 msgid "Only memorybuffer class object is supported"
@@ -570,7 +571,7 @@ msgstr "O objecto 'socket' especificado é inválido (não herda do 'socket')"
 
 #: src/modules/objects/class_socket.cpp:590
 msgid "There is no connection to accept!"
-msgstr "Não existe nenhuma ligação para aceitar!"
+msgstr "Não existe nenhuma conexão para aceitar!"
 
 #: src/modules/objects/class_socket.cpp:616
 msgid "The hex string length is not a multiple of 2"
@@ -591,7 +592,7 @@ msgstr ""
 #: src/modules/objects/class_socket.cpp:663
 #: src/modules/objects/class_socket.cpp:694
 msgid "Another connection in progress"
-msgstr "Outra ligação em progresso"
+msgstr "Outra conexão em progresso"
 
 #: src/modules/objects/class_socket.cpp:711
 msgid "No IPv6 support in this executable"
@@ -634,11 +635,11 @@ msgstr "Falha ao configurar um 'socket' não-bloqueador"
 
 #: src/modules/objects/class_socket.cpp:1002
 msgid "Connect failure: "
-msgstr "Falha de ligação: "
+msgstr "Falha de conexão: "
 
 #: src/modules/objects/class_socket.cpp:1029
 msgid "Connect attempt timed out"
-msgstr "A tentativa de ligação expirou o tempo"
+msgstr "A tentativa de conexão expirou o tempo"
 
 #: src/modules/objects/class_socket.cpp:1058
 msgid "Can't start the DNS thread"

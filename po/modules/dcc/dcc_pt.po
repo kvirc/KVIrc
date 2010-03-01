@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kvirc_dcc \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2010-03-01 16:35+0000\n"
+"PO-Revision-Date: 2010-03-01 17:11+0000\n"
 "Last-Translator: Gmail <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -71,11 +71,11 @@ msgstr "Padrão:"
 
 #: src/modules/dcc/video.cpp:800
 msgid "Attempting a passive DCC VIDEO connection"
-msgstr "A tentar uma ligação DCC VIDEO passiva"
+msgstr "A tentar uma conexão DCC VIDEO passiva"
 
 #: src/modules/dcc/video.cpp:805
 msgid "Attempting an active DCC VIDEO connection"
-msgstr "A tentar uma ligação DCC VIDEO activa"
+msgstr "A tentar uma conexão DCC VIDEO activa"
 
 #: src/modules/dcc/video.cpp:815
 #: src/modules/dcc/chat.cpp:184
@@ -101,7 +101,7 @@ msgstr ""
 
 #: src/modules/dcc/video.cpp:837
 msgid "DCC VIDEO request not sent: awaiting manual connection"
-msgstr "Pedido DCC VIDEO não enviado: a aguardar ligação manual"
+msgstr "Pedido DCC VIDEO não enviado: a aguardar conexão manual"
 
 #: src/modules/dcc/video.cpp:880
 #: src/modules/dcc/chat.cpp:407
@@ -164,7 +164,7 @@ msgstr "Escolher Ficheiros para Enviar - KVIrc"
 #: src/modules/dcc/broker.cpp:197
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr ""
-"Não é possível enviar o pedido DCC %Q para %Q: A ligação IRC foi terminada"
+"Não é possível enviar o pedido DCC %Q para %Q: A conexão IRC foi terminada"
 
 #: src/modules/dcc/broker.cpp:207
 #: src/modules/dcc/broker.cpp:909
@@ -176,20 +176,21 @@ msgid ""
 "<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
 "mode.<br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> pede uma <b>Ligação Cliente Directa</b> em modo <b>%4</b>."
+"<b>%1 [%2@%3]</b> pede uma <b>Conexão Directa ao Cliente</b> em modo <b>%4<"
+"/b>."
 "<br>"
 
 #: src/modules/dcc/broker.cpp:281
 msgid "The connection will be secured using SSL.<br>"
-msgstr "A ligação estará segura ao usar SSL.<br>"
+msgstr "A conexão estará segura ao usar SSL.<br>"
 
 #: src/modules/dcc/broker.cpp:287
 msgid "You will be the passive side of the connection.<br>"
-msgstr "Será o lado passivo da ligação<br>"
+msgstr "Será o lado passivo da conexão<br>"
 
 #: src/modules/dcc/broker.cpp:291
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
-msgstr "O destino da ligação será a máquina <b>%1</b> no porto <b>%2</b><br>"
+msgstr "O destino da conexão será a máquina <b>%1</b> no porto <b>%2</b><br>"
 
 #: src/modules/dcc/broker.cpp:296
 #: src/modules/dcc/broker.cpp:626
@@ -202,8 +203,8 @@ msgid ""
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
 "b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> pede uma <br><b>Ligação Directa ao Cliente</b> em modo <b>"
-"VOZ</b>. <br>O destino da ligação será a máquina <b>%4</b> no porto <b>%5</b>"
+"<b>%1 [%2@%3]</b> pede uma <br><b>Conexão Directa ao Cliente</b> em modo <b>"
+"VOZ</b>. <br>O destino da conexão será a máquina <b>%4</b> no porto <b>%5</b>"
 "<br>"
 
 #: src/modules/dcc/broker.cpp:353
@@ -216,8 +217,8 @@ msgid ""
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
 "b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> pede uma <br><b>Ligação Directa ao Cliente</b> em modo <b>"
-"VIDEO</b>. <br>O destino da ligação será a máquina <b>%4</b> no porto <b>%5<"
+"<b>%1 [%2@%3]</b> pede uma <br><b>Conexão Directa ao Cliente</b> em modo <b>"
+"VIDEO</b>. <br>O destino da conexão será a máquina <b>%4</b> no porto <b>%5<"
 "/b><br>"
 
 #: src/modules/dcc/broker.cpp:423
@@ -230,8 +231,8 @@ msgid ""
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
 "<b>%5</b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> pede uma <br><b>Ligação Directa ao Cliente</b> em modo <b>"
-"CANVAS</b>. <br>O destino da ligação será a máquina <b>%4</b> no porto <b>"
+"<b>%1 [%2@%3]</b> pede uma <br><b>Conexão Directa ao Cliente</b> em modo <b>"
+"CANVAS</b>. <br>O destino da conexão será a máquina <b>%4</b> no porto <b>"
 "%5</b><br>"
 
 #: src/modules/dcc/broker.cpp:499
@@ -244,7 +245,7 @@ msgid ""
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
 msgstr ""
 "<b>%1 [%2@%3]</b> quer envia-lhe o ficheiro '<b>%4</b>', de tamanho <b>%5</b>"
-". <br>O destino da ligação será a máquina <b>%6</b> no porto <b>%7</b><br>"
+". <br>O destino da conexão será a máquina <b>%6</b> no porto <b>%7</b><br>"
 
 #: src/modules/dcc/broker.cpp:598
 msgid ""
@@ -252,7 +253,7 @@ msgid ""
 "<br>You will be the passive side of the connection.<br>"
 msgstr ""
 "<b>%1 [%2@%3]</b> quer envia-lhe o ficheiro '<b>%4</b>', de tamanho <b>%5</b>"
-". <br>Será o lado passivo da ligação.<br>"
+". <br>Será o lado passivo da conexão.<br>"
 
 #: src/modules/dcc/broker.cpp:611
 msgid ""
@@ -312,12 +313,12 @@ msgstr "O ficheiro %s existe, a auto-renomear para %Q"
 #: src/modules/dcc/chat.cpp:161
 #, c-format
 msgid "Attempting a passive DCC %s connection"
-msgstr "A tentar uma ligação DCC %s passiva"
+msgstr "A tentar uma conexão DCC %s passiva"
 
 #: src/modules/dcc/chat.cpp:170
 #, c-format
 msgid "Attempting an active DCC %s connection"
-msgstr "A tentar uma ligação DCC %s activa"
+msgstr "A tentar uma conexão DCC %s activa"
 
 #: src/modules/dcc/chat.cpp:208
 #, c-format
@@ -349,12 +350,12 @@ msgstr ""
 
 #: src/modules/dcc/chat.cpp:238
 msgid "DCC %Q request not sent, awaiting manual connection"
-msgstr "Pedido DCC %Q não enviado, a aguardar ligação manual"
+msgstr "Pedido DCC %Q não enviado, a aguardar conexão manual"
 
 #: src/modules/dcc/chat.cpp:246
 #: src/modules/dcc/send.cpp:1582
 msgid "Low-level transport connection established"
-msgstr "Ligação de transporte de baixo-nível estabelecida"
+msgstr "Conexão de transporte de baixo-nível estabelecida"
 
 #: src/modules/dcc/chat.cpp:247
 #: src/modules/dcc/send.cpp:1583
@@ -369,7 +370,7 @@ msgstr "[ERRO SSL]: %s"
 #: src/modules/dcc/chat.cpp:297
 #: src/modules/dcc/chat.cpp:392
 msgid "Cannot send data: No active connection"
-msgstr "Não é possível enviar dados. Nenhuma ligação activa"
+msgstr "Não é possível enviar dados. Nenhuma conexão activa"
 
 #: src/modules/dcc/chat.cpp:339
 msgid ""
@@ -401,11 +402,11 @@ msgstr "'Buffer' de saída"
 
 #: src/modules/dcc/voice.cpp:740
 msgid "Attempting a passive DCC VOICE connection"
-msgstr "A tentar uma ligação DCC VOICE passiva"
+msgstr "A tentar uma conexão DCC VOICE passiva"
 
 #: src/modules/dcc/voice.cpp:745
 msgid "Attempting an active DCC VOICE connection"
-msgstr "A tentar uma ligação DCC VOICE activa"
+msgstr "A tentar uma conexão DCC VOICE activa"
 
 #: src/modules/dcc/voice.cpp:775
 msgid ""
@@ -447,7 +448,7 @@ msgid ""
 "You're not connected to a server (an active connection is required unless -c "
 "or -n are passed)"
 msgstr ""
-"Não está ligado a um servidor (é necessária uma ligação activa a menos "
+"Não está ligado a um servidor (é necessária uma conexão activa a menos "
 "que use -c ou -n)"
 
 #: src/modules/dcc/libkvidcc.cpp:130
@@ -531,7 +532,7 @@ msgid ""
 "connection"
 msgstr ""
 "AVISO: A ignorar os dados após o final declarado do ficheiro e a fechar "
-"a ligação"
+"a conexão"
 
 #: src/modules/dcc/send.cpp:362
 msgid ""
@@ -539,12 +540,12 @@ msgid ""
 "connection..."
 msgstr ""
 "A transferência de dados terminou, a aguardar 30 segundos para o ponto "
-"('peer') fechar a ligação..."
+"('peer') fechar a conexão..."
 
 #: src/modules/dcc/send.cpp:369
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr ""
-"A transferência de dados terminou à 30 segundos atrás, a fechar a ligação"
+"A transferência de dados terminou à 30 segundos atrás, a fechar a conexão"
 
 #: src/modules/dcc/send.cpp:630
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
@@ -558,15 +559,15 @@ msgstr "TRANSFERIR %d"
 
 #: src/modules/dcc/send.cpp:785
 msgid "Setting up the connection"
-msgstr "A configurar a ligação"
+msgstr "A configurar a conexão"
 
 #: src/modules/dcc/send.cpp:844
 msgid "Attempting a passive DCC %1 connection"
-msgstr "A tentar uma ligação DCC %1 passiva"
+msgstr "A tentar uma conexão DCC %1 passiva"
 
 #: src/modules/dcc/send.cpp:848
 msgid "Attempting an active DCC %1 connection"
-msgstr "A tentar uma ligação DCC %1 activa"
+msgstr "A tentar uma conexão DCC %1 activa"
 
 #: src/modules/dcc/send.cpp:874
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
@@ -652,7 +653,7 @@ msgstr ""
 
 #: src/modules/dcc/send.cpp:1571
 msgid "DCC %1 request not sent, awaiting manual connection"
-msgstr "Pedido DCC %1 não enviado: a aguardar ligação manual"
+msgstr "Pedido DCC %1 não enviado: a aguardar conexão manual"
 
 #: src/modules/dcc/send.cpp:1590
 msgid "[SSL ERROR]: %1"
@@ -722,7 +723,7 @@ msgstr "Cancelar"
 
 #: src/modules/dcc/canvas.cpp:79
 msgid "Attempting a passive DCC CANVAS connection"
-msgstr "A tentar uma ligação DCC CANVAS passiva"
+msgstr "A tentar uma conexão DCC CANVAS passiva"
 
 #: src/modules/dcc/canvas.cpp:99
 msgid ""
@@ -737,7 +738,7 @@ msgstr "Pedido DCC CANVAS não enviado: a aguardar ligações manuais"
 
 #: src/modules/dcc/canvas.cpp:105
 msgid "Attempting an active DCC CANVAS connection"
-msgstr "A tentar uma ligação DCC CANVAS activa"
+msgstr "A tentar uma conexão DCC CANVAS activa"
 
 #: src/modules/dcc/canvaswidget.cpp:1478
 msgid "&Line"
