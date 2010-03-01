@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kvirc_objects \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2010-02-28 07:05+0000\n"
+"PO-Revision-Date: 2010-02-28 23:15+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -91,8 +91,7 @@ msgstr ""
 
 #: src/modules/objects/class_painter.cpp:566
 msgid " requires either an array as first parameter or four integers"
-msgstr ""
-" requer ou uma matriz como primeiro parâmetro ou quatro números inteiros"
+msgstr " requer uma matriz como primeiro parâmetro ou quatro números inteiros"
 
 #: src/modules/objects/class_painter.cpp:572
 #: src/modules/objects/class_painter.cpp:606
@@ -105,8 +104,7 @@ msgstr ""
 #: src/modules/objects/class_multilineedit.cpp:855
 #: src/modules/objects/class_multilineedit.cpp:1055
 msgid "The first parameter didn't evaluate to an array nor an integer"
-msgstr ""
-"O primeiro parâmetro não foi avaliado a uma matriz nem a um número inteiro"
+msgstr "O primeiro parâmetro não avaliou para uma matriz nem para inteiro"
 
 #: src/modules/objects/class_painter.cpp:582
 #: src/modules/objects/class_widget.cpp:1583
@@ -379,11 +377,11 @@ msgstr ""
 #: src/modules/objects/class_pixmap.cpp:224
 #: src/modules/objects/class_tbrowser.cpp:103
 msgid "I can't find the specified file '%Q'."
-msgstr "Incapaz de encontrar o ficheiro especificado '%Q'."
+msgstr "Não é possível encontrar o ficheiro indicado '%Q'."
 
 #: src/modules/objects/class_multilineedit.cpp:1089
 msgid "I cannot read the file '%Q'."
-msgstr "Incapaz de ler o ficheiro '%Q'."
+msgstr "Não é possível ler o ficheiro '%Q'."
 
 #: src/modules/objects/class_popupmenu.cpp:214
 msgid "Icon '%Q' doesn't exist"
@@ -429,7 +427,8 @@ msgstr "Nenhuma 'string' de parâmetro indicada - a usar 'string' vazia"
 #, c-format
 msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
 msgstr ""
-"O índice do item [%d] é muito grande - a predefinir para $count() - 1 [%d]"
+"O índice do item [%d] é demasiado grande - a predefinir para $count() - 1 "
+"[%d]"
 
 #: src/modules/objects/class_combobox.cpp:331
 msgid "Invalid insertion Policy '%Q'"
@@ -643,7 +642,7 @@ msgstr "A tentativa de ligação expirou o tempo"
 
 #: src/modules/objects/class_socket.cpp:1058
 msgid "Can't start the DNS thread"
-msgstr "Incapaz de iniciar o processo DNS"
+msgstr "Não é possível iniciar o processo DNS"
 
 #: src/modules/objects/class_socket.cpp:1204
 msgid ""
@@ -690,11 +689,11 @@ msgstr "OS dados não são um 'buffer' de memória ou 'string'"
 #: src/modules/objects/class_tabwidget.cpp:298
 #: src/modules/objects/class_tabwidget.cpp:353
 msgid "Can't find the tab "
-msgstr "Incapaz de encontrar o separador "
+msgstr "Não é possível encontrar o separador "
 
 #: src/modules/objects/class_tabwidget.cpp:376
 msgid "Can't find the tab"
-msgstr "Incapaz de encontrar o separador"
+msgstr "Não é possível encontrar o separador"
 
 #: src/modules/objects/class_tabwidget.cpp:396
 msgid "Unknown position '%Q'"
@@ -786,7 +785,8 @@ msgstr "Objecto em estado inválido"
 #: src/modules/objects/class_dockwindow.cpp:115
 msgid "Can't set a non-widget object to be the main widget of a dock window"
 msgstr ""
-"Não pode definir um objecto não-'widget' para ser a 'widget' principal duma "
+"Não é possível definir um objecto não-'widget' para ser a 'widget' principal "
+"duma "
 "janela de acoplamento"
 
 #: src/modules/objects/class_dockwindow.cpp:121
@@ -795,7 +795,7 @@ msgstr "A 'widget' adicionada não é uma filha desta janela de acoplamento"
 
 #: src/modules/objects/class_dockwindow.cpp:170
 msgid "Invalid dock area specified"
-msgstr "Área de acoplamento especificada é inválida"
+msgstr "Área de acoplamento indicada inválida"
 
 #: src/modules/objects/libkviobjects.cpp:189
 msgid "Class '%Q' is not defined"
@@ -803,11 +803,11 @@ msgstr "A classe '%Q' não está definida"
 
 #: src/modules/objects/libkviobjects.cpp:263
 msgid "Inexisting target object for objects.connect"
-msgstr "Objecto destino para objectos.ligar é inexistente"
+msgstr "O objecto destino para objectos.ligar não existe"
 
 #: src/modules/objects/libkviobjects.cpp:268
 msgid "Inexisting source object for objects.connect"
-msgstr "Objecto fonte para objectos.ligar é inexistente"
+msgstr "O objecto fonte para objectos.ligar não existe"
 
 #: src/modules/objects/libkviobjects.cpp:273
 msgid "Inexisting target slot '%Q' for objects.connect"
@@ -840,11 +840,11 @@ msgstr "O ficheiro '%Q' não existe"
 
 #: src/modules/objects/class_memorybuffer.cpp:116
 msgid "Cannot open file '%Q' for writing"
-msgstr "Incapaz de abrir o ficheiro '%Q' para escrita"
+msgstr "Não é possível abrir o ficheiro '%Q' para escrita"
 
 #: src/modules/objects/class_file.cpp:227
 msgid "Empty filename string"
-msgstr "Texto de nome de ficheiro vazia"
+msgstr "Texto do nome de ficheiro vazio"
 
 #: src/modules/objects/class_file.cpp:250
 msgid "No such open mode '%Q'"
@@ -852,7 +852,7 @@ msgstr "Não existe tal modo de abertura '%Q'"
 
 #: src/modules/objects/class_file.cpp:321
 msgid "Argument too long, using only first char"
-msgstr "Argumento muito longo, a usar apenas o primeiro caracter"
+msgstr "Argumento demasiado longo, a usar apenas o primeiro caracter"
 
 #: src/modules/objects/class_file.cpp:323
 msgid "Write error occured!"
@@ -864,7 +864,7 @@ msgstr "Ocorreu um erro de leitura!"
 
 #: src/modules/objects/class_file.cpp:346
 msgid "Argument too long, using only the first char"
-msgstr "Argumento muito longo, a usar apenas o primeiro caracter"
+msgstr "Argumento demasiado longo, a usar apenas o primeiro caracter"
 
 #: src/modules/objects/class_file.cpp:421
 msgid "The incoming data isn't an array"

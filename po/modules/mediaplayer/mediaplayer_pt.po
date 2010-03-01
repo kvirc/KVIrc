@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kvirc_mediaplayer \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2010-02-28 07:53+0000\n"
+"PO-Revision-Date: 2010-02-28 23:48+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -73,7 +73,7 @@ msgstr ""
 
 #: src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
-msgstr "Não é possível de encontrar uma janela do winamp em funcionamento"
+msgstr "Não é possível encontrar uma janela do winamp em funcionamento"
 
 #: src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
@@ -84,11 +84,10 @@ msgid ""
 "folder and restart winamp."
 msgstr ""
 "Um interface para o popular reprodutor de médias Winamp.\n"
-"Pode descarregá-la a partir de http://www.winamp.com.\n"
-"Para usar todas as funcionalidades desto interface, tem de copiar o "
+"Pode-o transferir a partir de http://www.winamp.com.\n"
+"Para usar todas as funcionalidades deste interface, tem de copiar o "
 "'plugin' gen_kvirc.dll encontrado no directório da distribuição do KVIrc "
-"para "
-"a pasta de 'plugins' do Winamp e reiniciar o winamp."
+"para a pasta de 'plugins' do Winamp e reiniciar o winamp."
 
 #: src/modules/mediaplayer/mp_winampinterface.cpp:316
 #: src/modules/mediaplayer/mp_winampinterface.cpp:350
@@ -134,8 +133,8 @@ msgid ""
 "To use this interface you must install AMIP plug-in for your player."
 msgstr ""
 "Um interface para o 'plug-in' AMIP.\n"
-"Pode descarregá-la a partir de http://amip.tools-for.net.\n"
-"Para usar esto interface tem de instalar o 'plug-in' AMIP para o seu "
+"Pode-o transferir a partir de http://amip.tools-for.net.\n"
+"Para usar este interface tem de instalar o 'plug-in' AMIP para o seu "
 "reprodutor."
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:64
@@ -147,8 +146,8 @@ msgstr "A tentar o interface de reprodutor de média \"%Q\": pontuação %d"
 msgid ""
 "Not sure about the results, trying a second, more agressive detection pass"
 msgstr ""
-"Sem certeza sobre os resultados, a tentar um segundo passo de detecção mais "
-"agressivo"
+"Sem certeza acerca dos resultados, a tentar um segundo passo de detecção "
+"mais agressivo"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:100
 msgid "Choosing media player interface \"%Q\""
@@ -161,7 +160,7 @@ msgstr "Parece que não existe um reprodutor de média utilizável nesta máquin
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:113
 msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
 msgstr ""
-"NenhUm interface de reprodutor de média seleccionada. Tente /médiaplayer."
+"Nenhum interface de reprodutor de média seleccionado. Tente /médiaplayer."
 "detect"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:132
@@ -177,7 +176,7 @@ msgstr ""
 msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr ""
-"O interface de reprodução de média seleccionada falhou ao executar a função "
+"O interface de reprodução da média seleccionada falhou ao executar a função "
 "pedida"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:133

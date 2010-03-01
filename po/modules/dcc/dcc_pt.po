@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kvirc_dcc \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-25 17:25+0100\n"
-"PO-Revision-Date: 2010-02-28 06:04+0000\n"
+"PO-Revision-Date: 2010-02-28 23:41+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -87,7 +87,7 @@ msgstr "A contactar a máquina %Q no porto %Q"
 #: src/modules/dcc/voice.cpp:758
 #: src/modules/dcc/canvas.cpp:84
 msgid "Listening on interface %Q port %Q"
-msgstr "A escutar na interface %Q no porto %Q"
+msgstr "A escutar no interface %Q no porto %Q"
 
 #: src/modules/dcc/video.cpp:835
 msgid ""
@@ -161,12 +161,13 @@ msgstr "Escolher Ficheiros para Enviar - KVIrc"
 
 #: src/modules/dcc/broker.cpp:197
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
-msgstr "Incapaz de enviar pedido DCC %Q para %Q: A ligação IRC foi terminada"
+msgstr ""
+"Não é possível enviar o pedido DCC %Q para %Q: A ligação IRC foi terminada"
 
 #: src/modules/dcc/broker.cpp:207
 #: src/modules/dcc/broker.cpp:909
 msgid "Can't open file %Q for reading"
-msgstr "Incapaz de abrir %Q para leitura"
+msgstr "Não é possível abrir o ficheiro %Q para leitura"
 
 #: src/modules/dcc/broker.cpp:276
 msgid ""
@@ -368,7 +369,7 @@ msgstr "[ERRO SSL]: %s"
 #: src/modules/dcc/chat.cpp:297
 #: src/modules/dcc/chat.cpp:392
 msgid "Cannot send data: No active connection"
-msgstr "Incapaz de enviar dados. Nenhuma ligação activa"
+msgstr "Não é possível enviar dados. Nenhuma ligação activa"
 
 #: src/modules/dcc/chat.cpp:339
 msgid ""
@@ -453,11 +454,11 @@ msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:130
 msgid "Unable to get address of interface %Q"
-msgstr "Incapaz de obter o endereço da interface %Q"
+msgstr "Não é possível obter o endereço do interface %Q"
 
 #: src/modules/dcc/libkvidcc.cpp:140
 msgid "No suitable interfaces to listen on, use -i"
-msgstr "Nenhuma interface apropriada para escutar, use -i"
+msgstr "Nenhum interface apropriado para escutar, use -i"
 
 #: src/modules/dcc/libkvidcc.cpp:173
 msgid "This executable was built without SSL support, -s switch ignored"
@@ -639,7 +640,7 @@ msgstr "A contactar máquina %1 no porto %2"
 
 #: src/modules/dcc/send.cpp:1495
 msgid "Listening on interface %1 port %2"
-msgstr "A escutar na interface %1 no porto %2"
+msgstr "A escutar no interface %1 no porto %2"
 
 #: src/modules/dcc/send.cpp:1518
 msgid "The local IP address is private, determining from IRC server: %1"
@@ -795,7 +796,7 @@ msgstr "&Inserir"
 
 #: src/modules/dcc/requests.cpp:82
 msgid "Unable to process the above request: %Q, %Q"
-msgstr "Incapaz de processar o pedido acima: %Q, %Q"
+msgstr "Não é possível processar o pedido acima: %Q, %Q"
 
 #: src/modules/dcc/requests.cpp:84
 msgid "Ignoring and notifying failure"
@@ -896,8 +897,8 @@ msgstr ""
 msgid ""
 "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
 msgstr ""
-"Incapaz de prosseguir com o DCC RECV: Transferência não iniciada para "
-"ficheiro %s no porto %s"
+"Não é possível prosseguir com o DCC RECV: Transferência não iniciada para "
+"o ficheiro %s no porto %s"
 
 #: src/modules/dcc/requests.cpp:565
 #, c-format
@@ -910,8 +911,8 @@ msgid ""
 "Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
 "or invalid resume size"
 msgstr ""
-"Incapaz de prosseguir com o DCC SEND: Transferência não iniciada para "
-"ficheiro %s no porto %s, ou tamanho de resumir inválido"
+"Não é possível prosseguir com o DCC SEND: Transferência não iniciada para "
+"o ficheiro %s no porto %s, ou tamanho de resumo inválido"
 
 #: src/modules/dcc/requests.cpp:603
 msgid ""
@@ -941,7 +942,7 @@ msgstr "%Q [%Q@%Q] está pronto para receber o ficheiro \"%s\""
 #: src/modules/dcc/requests.cpp:703
 #, c-format
 msgid "The remote client is listening on interface %s and port %s"
-msgstr "O cliente remoto está a escutar na interface %s no porto %s"
+msgstr "O cliente remoto está a escutar no interface %s no porto %s"
 
 #: src/modules/dcc/requests.cpp:710
 msgid ""
@@ -976,7 +977,7 @@ msgstr "(desconhecido)"
 #: src/modules/dcc/requests.cpp:933
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr ""
-"Nenhuma interface apropriada onde escutar, a tentar continuar de "
+"Nenhum interface apropriado onde escutar, a tentar continuar de "
 "qualquer modo..."
 
 #: src/modules/dcc/requests.cpp:849
@@ -1075,7 +1076,7 @@ msgstr "O Ficheiro Já Existe - KVIrc"
 
 #: src/modules/dcc/utils.cpp:124
 msgid "Can't retrieve a suitable local IPV4 address"
-msgstr "Incapaz de obter um endereço IPV4 local apropriado"
+msgstr "Não é possível obter um endereço IPV4 local apropriado"
 
 #: src/modules/dcc/utils.cpp:142
 #, c-format
@@ -1083,7 +1084,8 @@ msgid ""
 "Can't listen on default interface '%s': fix it in the options dialog, "
 "disabling the option (so the next dcc will work)"
 msgstr ""
-"Incapaz de escutar na interface predefinida '%s': corrija isto no diálogo "
-"das opções, a desactivar a opção (para que o próximo dcc funcione)"
+"Não é possível escutar no interface predefinido '%s': corrija isto no "
+"diálogo "
+"das opções, desactivar a opção (para que o próximo dcc funcione)"
 
 

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-17 18:09+0100\n"
-"PO-Revision-Date: 2010-02-28 09:06+0000\n"
+"PO-Revision-Date: 2010-03-01 00:54+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -99,11 +99,11 @@ msgstr " ligado "
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:242
 msgid "### End of existing data buffer."
-msgstr "### Fim do buffer de dados existente."
+msgstr "### Fim do 'buffer' de dados existente."
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:238
 msgid "### Existing data buffer:"
-msgstr "### Buffer de dados existente:"
+msgstr "### 'Buffer' de dados existente:"
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:234
 msgid "### Log session started at %1 ###"
@@ -920,6 +920,11 @@ msgid ""
 "strings like <b>c&lt;n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or "
 "maximum of users on the channel.</center>"
 msgstr ""
+"<center><b>Parâmetros do comando /LIST:</b><br>Muitos servidores aceitam "
+"parâmetros especiais que lhe permitem filtrar as entradas retornadas.<br>"
+"Geralmente, os nomes de canais mascarados (*kvirc*) são aceites como "
+"parâmetros, assim como também 'strings' como <b>c&lt;n</b> ou <b>c&gt;n</b> "
+"onde <b>n</b> é o mínimo ou máximo de utilizadores no canal.</center>"
 
 #: src/modules/mircimport/libkvimircimport.cpp:151
 msgid ""
@@ -2242,6 +2247,23 @@ msgid ""
 "Information about the algorithm can be found at\n"
 "<http://www.cryptolounge.org/wiki/AES>\n"
 msgstr ""
+"Motor criptográfico baseado no algoritmo\n"
+"Padrão de Encriptação Avançado (AES)\n"
+"chamado Rijndael.\n"
+"O testo é primeiro encriptado com Rijndael\n"
+"e depois convertido para a notação %s.\n"
+"As chaves usadas têm de comprimento %d bit\n"
+"e serão preenchidas com zeros se indicar "
+"mais pequenas.\n"
+"Se apenas for indicada uma chave, este motor\n"
+"irá usá-la tanto para encriptar e desencriptar.\n"
+"\n"
+"Esta é a implementação Crypto++ que pode\n"
+"fazer muito mais que o seu motor predefinido, mas\n"
+"este deve ser um substituto, actua apenas como\n"
+"o original.\n"
+"Informação acerca do algoritmo pode ser\n"
+"encontrado em <http://www.cryptolounge.org/wiki/AES>\n"
 
 #: src/modules/rijndael/libkvirijndael.cpp:706
 #, c-format
@@ -2258,6 +2280,18 @@ msgid ""
 "See the rijndael module documentation\n"
 "for more info on the algorithm used.\n"
 msgstr ""
+"Motor criptográfico baseado no algoritmo\n"
+"Padrão de Encriptação Avançado (AES)\n"
+"chamado Rijndael.\n"
+"O testo é primeiro encriptado com rijndael\n"
+"e depois convertido para a notação %s.\n"
+"As chaves usadas têm de comprimento %d bit\n"
+"e serão preenchidas com zeros se indicar "
+"mais pequenas.\n"
+"Se apenas for indicada uma chave, este motor\n"
+"irá usá-la tanto para encriptar e desencriptar.\n"
+"Veja o módulo de documentação rijndael para\n"
+"mais informação acerca do algoritmo usado.\n"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:78
 msgid "Cryptography/text transformation"
@@ -2287,7 +2321,7 @@ msgstr "A janela actual não é um canal"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2027
 msgid "Currently enabled CAP Extensions: %Q"
-msgstr ""
+msgstr "Extensões CAP actualmente disponíveis: %Q"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:204
 msgid "Customize Toolbars..."
@@ -2300,6 +2334,7 @@ msgstr "Personalizar..."
 #: src/modules/system/libkvisystem.cpp:577
 msgid "DBus calls are available only when KDE support is compiled in"
 msgstr ""
+"As chamadas DBus estão disponíveis apenas quando o suporte KDE é compilado"
 
 #: src/kvirc/kernel/kvi_options.cpp:781
 msgid "DCC chat message"
@@ -2320,7 +2355,7 @@ msgstr "Pedido DCC"
 #: src/modules/rijndael/libkvirijndael.cpp:206
 #: src/modules/rijndael/libkvirijndael.cpp:414
 msgid "Data buffer too long"
-msgstr ""
+msgstr "'Buffer' de dados demasiado longo"
 
 #: src/kvirc/ui/kvi_channel.cpp:787
 msgid "Dead channel"
@@ -2496,7 +2531,7 @@ msgstr ""
 
 #: src/modules/setup/setupwizard.cpp:207
 msgid "Dreaded License Agreement"
-msgstr ""
+msgstr "Acordo de Licença Temido"
 
 #: src/modules/ident/libkviident.cpp:498
 msgid "Dropping connection (request too long)"
@@ -2884,7 +2919,7 @@ msgstr "Procurar Texto"
 
 #: src/modules/setup/setupwizard.cpp:86 src/kvilib/tal/kvi_tal_wizard.cpp:234
 msgid "Finish"
-msgstr "Finalizar"
+msgstr "Terminar"
 
 #: src/kvirc/ui/kvi_toolbar.cpp:96
 msgid "Flat"
@@ -4714,6 +4749,13 @@ msgid ""
 "be able to change it later in the Identity properties, or with the /NICK "
 "command."
 msgstr ""
+"Por favor escolha uma Alcunha.<br><br>A sua alcunha é o nome que outros "
+"utilizadores IRC o irão conhecer. Não pode conter espaços ou pontuação. "
+"Algumas redes IRC irão encurtar a sua alcunha se tiver mais que 32 "
+"caracteres. "
+"<br><br>Em caso de dúvida, indique apenas a primeira alcunha que lhe vier "
+"à cabeça. Irá poder alterá-la posteriormente nas propriedades da Identidade, "
+"ou com o comando /NICK."
 
 #: src/modules/avatar/libkviavatar.cpp:73
 msgid ""
@@ -4722,6 +4764,11 @@ msgid ""
 "\"<b>Browse</b>\"button to browse local folders.<br>The full URL for an "
 "image (including <b>http://</b>) can be entered manually."
 msgstr ""
+"Por favor escolha a imagem avatar. Pode usar a localização completa para "
+"um ficheiro local ou uma imagem da Web.<br>Se deseja usar um ficheiro "
+"de imagem local, clique no botão \"<b>Procurar</b>\" para procurar pastas "
+"locais.<br>O URL completo para uma imagem (incluindo <b>http://</b>) "
+"pode ser indicado manualmente."
 
 #: src/modules/addon/managementdialog.cpp:279
 msgid "Please select the addon installation file"
@@ -4754,6 +4801,23 @@ msgid ""
 "\n"
 "This is the Crypto++ based version, not relying on embedded code\n"
 msgstr ""
+"Motor de criptografia popular baseado no\n"
+"algoritmo de encriptação Blowfish.\n"
+"O texto é primeiro encriptado com Blowfish \n"
+"e depois codificado com base64.\n"
+"Chaves de comprimento variável podem ser\n"
+"usadas e são indicadas como 'strings' de\n"
+"caracteres.\n"
+"As chaves podem ir até 65 bytes (448 bits) de\n"
+"comprimento. Se apenas uma chave é indicada,\n"
+"este motor irá usá-la tanto para encriptar e\n"
+"desencriptar.\n"
+"Este motor funciona em modo ECB por predefinição,\n"
+"de deseja usar o modo CBC deve adicionar o\n"
+"prefixo \"cbc:\" às suas chaves.\n"
+"\n"
+"Esta é a versão baseada em Crypto++,\n"
+"não contando com o código incorporado.\n"
 
 #: src/modules/rijndael/libkvirijndael.cpp:784
 msgid ""
@@ -4770,6 +4834,20 @@ msgid ""
 "if you want to use CBC mode you must prefix\n"
 "your key(s) with \"cbc:\".\n"
 msgstr ""
+"Motor de criptografia popular baseado no\n"
+"algoritmo de encriptação Blowfish.\n"
+"O texto é primeiro encriptado com Blowfish \n"
+"e depois convertido na notação base64.\n"
+"As chaves usadas são de comprimento\n"
+"variável e são indicadas como 'strings' de\n"
+"caracteres.\n"
+"Pode indicar chaves  com comprimento até\n"
+"56 bytes (448 bits).\n"
+"Se apenas uma chave é indicada, este motor\n"
+"irá usá-la tanto para encriptar e desencriptar.\n"
+"Este motor funciona em modo ECB por predefinição:\n"
+"de deseja usar o modo CBC deve adicionar o\n"
+"prefixo \"cbc:\" às suas chaves.\n"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2180 src/kvirc/ui/kvi_ircview.cpp:2233
 #, c-format
@@ -5960,12 +6038,14 @@ msgstr "A acção \"%1\" não existe"
 
 #: src/modules/action/libkviaction.cpp:255
 msgid "The action \"%1\" is a core action and cannot be destroyed"
-msgstr ""
+msgstr "A acção\"%1\" é uma acção de núcleo e não pode ser destruída"
 
 #: src/modules/action/libkviaction.cpp:420
 msgid ""
 "The action \"%1\" is already defined as core action and cannot be overridden"
 msgstr ""
+"A acção \"%1\" já está definida como uma acção de núcleo e não pode ser "
+"substituída"
 
 #: src/modules/action/libkviaction.cpp:112
 msgid "The action \"%1\" is disabled"
@@ -6053,7 +6133,7 @@ msgstr "A janela actual não é um canal"
 
 #: src/modules/window/libkviwindow.cpp:1455
 msgid "The decrypt key wasn't a valid hexadecimal string"
-msgstr ""
+msgstr "A chave de desencriptação não era uma 'string' hexadecimal válida"
 
 #: src/modules/window/libkviwindow.cpp:1441
 msgid "The encrypt key wasn't a valid hexadecimal string"
@@ -6223,6 +6303,13 @@ msgid ""
 "in a sealed wrapper that the reader must choose to open - e.g. for posting "
 "things that might offend some readers, or spoilers."
 msgstr ""
+"A cifra Caesar de encriptação simples que substitui cada letra por 13 "
+"lugares "
+" para a frente ou para trás ao longo do alfabeto; é usada para incluir o "
+"texto"
+"num invólucro lacrado que o leitor deve optar por abrir - por exemplo, para "
+"o "
+"lançamento de coisas que possam ofender alguns leitores, ou 'spoilers'."
 
 #: src/modules/window/libkviwindow.cpp:1135
 msgid "The specified IRC context is not valid: creating a context free window"
@@ -7126,7 +7213,7 @@ msgstr "Resposta whois do utilizador"
 #: src/modules/links/linkswindow.cpp:287
 #, c-format
 msgid "Wildcard servers (hubs?): %d"
-msgstr ""
+msgstr "Servidores asterisco (hubs?): %d"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:608
 #, c-format
@@ -7231,6 +7318,8 @@ msgid ""
 "You have chosen to abort the setup.<br>KVIrc cannot run until you complete "
 "this procedure.<br><br>Do you really wish to abort?"
 msgstr ""
+"Escolheu abortar a configuração.<br>O KVIrc não pode correr até que "
+"complete este procedimento.<br><br>Deseja realmente abortar?"
 
 #: src/kvirc/ui/kvi_console.cpp:503
 msgid ""
@@ -7716,11 +7805,11 @@ msgstr "operadores"
 
 #: src/kvirc/ui/kvi_imagedialog.cpp:293
 msgid "pixels"
-msgstr "pixels"
+msgstr "pontos"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1190
 msgid "possible watch list desync"
-msgstr "possível 'desync' na lista vigiar"
+msgstr "possível dessincronização da lista de observação"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1593
 msgid "private"
@@ -7752,7 +7841,7 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1200
 msgid "registration mask changed or desync with the watch service"
-msgstr "máscara de registo modificada ou 'desync' com o serviço vigiar"
+msgstr "máscara de registo modificada ou dessincronização com o serviço vigiar"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:695
 msgid "registration mask changed, or nickname is being used by someone else"
@@ -7761,7 +7850,7 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1260
 msgid "removed from watch list"
-msgstr "removido da lista de vigiar"
+msgstr "removido da lista de vigia"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1031
 msgid "replied"
@@ -7782,15 +7871,15 @@ msgstr "conexão segura"
 #: src/modules/objects/class_socket.cpp:870
 #: src/modules/objects/class_socket.cpp:875
 msgid "unknown"
-msgstr "Desconhecido"
+msgstr "desconhecido"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1282
 msgid "unmatched watch list entry"
-msgstr "entrada na lista de vigiar não correspondente"
+msgstr "entrada na lista de vigia não correspondente"
 
 #: src/kvirc/ui/kvi_channel.cpp:950
 msgid "user total"
-msgstr "total de utilizador"
+msgstr "total de utilizadores"
 
 #: src/kvirc/ui/kvi_channel.cpp:941
 msgid "user-operator"
@@ -7822,11 +7911,11 @@ msgstr "vigiar"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1222
 msgid "watch entry added by user"
-msgstr "entrada de vigiar adicionada pelo utilizador"
+msgstr "entrada de vigia adicionada pelo utilizador"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1186
 msgid "watch entry listing requested by user"
-msgstr "listagem das entrada da vigia pedida pelo utilizador"
+msgstr "listagem das entrada de vigia pedida pelo utilizador"
 
 #: src/kvirc/ui/kvi_channel.cpp:738 src/kvirc/ui/kvi_channel.cpp:759
 msgid "were talking recently"
@@ -7834,11 +7923,11 @@ msgstr "estiveram a falar recentemente"
 
 #: src/kvirc/ui/kvi_windowlist.cpp:64
 msgid "windowlist"
-msgstr "Lista de janelas"
+msgstr "listadejanelas"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:308
 msgid "y: Spy :)"
-msgstr "y: Espia :)"
+msgstr "y: Espião :)"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:304
 msgid "z: Recipient for oper wallop messages"
