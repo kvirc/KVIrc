@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-17 18:09+0100\n"
+"POT-Creation-Date: 2010-03-01 21:54+0100\n"
 "PO-Revision-Date: 2005-11-24 19:14+0100\n"
 "Last-Translator: Dušan Hokův <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -29,6 +29,15 @@ msgid ""
 "%s"
 msgstr ""
 
+#: src/modules/raweditor/raweditor.cpp:382
+#, c-format
+msgid ""
+"\n"
+"\n"
+"Raw Event:\n"
+"%s"
+msgstr ""
+
 #: src/modules/popupeditor/popupeditor.cpp:96
 msgid "### Epilogue ###"
 msgstr ""
@@ -37,14 +46,14 @@ msgstr ""
 msgid "### Prologue ###"
 msgstr ""
 
-#: src/modules/raweditor/raweditor.cpp:188
+#: src/modules/raweditor/raweditor.cpp:195
 msgid "&Add Raw Event..."
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1308
+#: src/modules/aliaseditor/aliaseditor.cpp:1193
 #: src/modules/eventeditor/eventeditor.cpp:510
 #: src/modules/popupeditor/popupeditor.cpp:1315
-#: src/modules/raweditor/raweditor.cpp:486
+#: src/modules/raweditor/raweditor.cpp:498
 msgid "&Apply"
 msgstr ""
 
@@ -62,23 +71,23 @@ msgid "&Copy"
 msgstr ""
 
 #: src/modules/eventeditor/eventeditor.cpp:201
-#: src/modules/raweditor/raweditor.cpp:167
+#: src/modules/raweditor/raweditor.cpp:174
 msgid "&Disable Handler"
 msgstr ""
 
 #: src/modules/eventeditor/eventeditor.cpp:197
-#: src/modules/raweditor/raweditor.cpp:163
+#: src/modules/raweditor/raweditor.cpp:170
 msgid "&Enable Handler"
 msgstr ""
 
 #: src/modules/eventeditor/eventeditor.cpp:104
 #: src/modules/popupeditor/popupeditor.cpp:1019
-#: src/modules/raweditor/raweditor.cpp:106
+#: src/modules/raweditor/raweditor.cpp:113
 msgid "&Export All To..."
 msgstr ""
 
 #: src/modules/eventeditor/eventeditor.cpp:209
-#: src/modules/raweditor/raweditor.cpp:175
+#: src/modules/raweditor/raweditor.cpp:182
 msgid "&Export Handler To..."
 msgstr ""
 
@@ -91,7 +100,7 @@ msgid "&Export selected To..."
 msgstr ""
 
 #: src/modules/eventeditor/eventeditor.cpp:214
-#: src/modules/raweditor/raweditor.cpp:180
+#: src/modules/raweditor/raweditor.cpp:187
 msgid "&New Handler"
 msgstr ""
 
@@ -100,12 +109,12 @@ msgstr ""
 msgid "&New Popup"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1303
+#: src/modules/aliaseditor/aliaseditor.cpp:1188
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:505
 #: src/modules/popupeditor/popupeditor.cpp:1310
-#: src/modules/raweditor/raweditor.cpp:426
-#: src/modules/raweditor/raweditor.cpp:481
+#: src/modules/raweditor/raweditor.cpp:443
+#: src/modules/raweditor/raweditor.cpp:493
 msgid "&OK"
 msgstr "&OK"
 
@@ -177,13 +186,13 @@ msgstr ""
 msgid "Action code"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:622
-#: src/modules/aliaseditor/aliaseditor.cpp:1220
+#: src/modules/aliaseditor/aliaseditor.cpp:553
+#: src/modules/aliaseditor/aliaseditor.cpp:1126
 msgid "Add Alias"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:627
-#: src/modules/aliaseditor/aliaseditor.cpp:1227
+#: src/modules/aliaseditor/aliaseditor.cpp:558
+#: src/modules/aliaseditor/aliaseditor.cpp:1133
 msgid "Add Namespace"
 msgstr ""
 
@@ -192,32 +201,32 @@ msgstr ""
 msgid "Advanced..."
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:128
-#: src/modules/aliaseditor/aliaseditor.cpp:368
-#: src/modules/aliaseditor/aliaseditor.cpp:597
+#: src/modules/aliaseditor/aliaseditor.cpp:101
+#: src/modules/aliaseditor/aliaseditor.cpp:324
+#: src/modules/aliaseditor/aliaseditor.cpp:528
 msgid "Alias"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1296
+#: src/modules/aliaseditor/aliaseditor.cpp:1181
 msgid "Alias Editor"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:810
-#: src/modules/aliaseditor/aliaseditor.cpp:883
+#: src/modules/aliaseditor/aliaseditor.cpp:718
+#: src/modules/aliaseditor/aliaseditor.cpp:789
 msgid "Alias Export"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:501
+#: src/modules/aliaseditor/aliaseditor.cpp:432
 msgid "Alias already exists"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1100
+#: src/modules/aliaseditor/aliaseditor.cpp:1006
 msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:351
+#: src/modules/aliaseditor/aliaseditor.cpp:307
 msgid ""
 "An external script has changed the alias you are currently editing. Do you "
 "want to accept the external changes?"
@@ -235,15 +244,15 @@ msgstr ""
 msgid "Background:"
 msgstr "Pozadí:"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1099
-#: src/modules/aliaseditor/aliaseditor.cpp:1113
-#: src/modules/aliaseditor/aliaseditor.cpp:1124
+#: src/modules/aliaseditor/aliaseditor.cpp:1005
+#: src/modules/aliaseditor/aliaseditor.cpp:1019
+#: src/modules/aliaseditor/aliaseditor.cpp:1030
 msgid "Bad Alias Name"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1167
-#: src/modules/aliaseditor/aliaseditor.cpp:1181
-#: src/modules/aliaseditor/aliaseditor.cpp:1192
+#: src/modules/aliaseditor/aliaseditor.cpp:1073
+#: src/modules/aliaseditor/aliaseditor.cpp:1087
+#: src/modules/aliaseditor/aliaseditor.cpp:1098
 msgid "Bad Namespace Name"
 msgstr ""
 
@@ -266,11 +275,11 @@ msgid "Can't open the file %s for writing."
 msgstr "Nelze otevřít soubor %s pro zápis."
 
 #: src/modules/actioneditor/actioneditor.cpp:874
-#: src/modules/aliaseditor/aliaseditor.cpp:1313
+#: src/modules/aliaseditor/aliaseditor.cpp:1198
 #: src/modules/editor/scripteditor.cpp:532
 #: src/modules/eventeditor/eventeditor.cpp:515
 #: src/modules/popupeditor/popupeditor.cpp:1320
-#: src/modules/raweditor/raweditor.cpp:491
+#: src/modules/raweditor/raweditor.cpp:503
 #: src/modules/toolbareditor/toolbareditor.cpp:188
 #: src/modules/toolbareditor/toolbareditor.cpp:404
 msgid "Cancel"
@@ -328,20 +337,20 @@ msgid ""
 "window is of a specified type"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:816
+#: src/modules/aliaseditor/aliaseditor.cpp:724
 #, fuzzy
 msgid "Choose a Directory - KVIrc"
 msgstr "Vyberte soubor - KVIrc"
 
 #: src/modules/actioneditor/actioneditor.cpp:692
-#: src/modules/aliaseditor/aliaseditor.cpp:902
+#: src/modules/aliaseditor/aliaseditor.cpp:808
 #: src/modules/editor/scripteditor.cpp:855
 #: src/modules/eventeditor/eventeditor.cpp:446
 #: src/modules/eventeditor/eventeditor.cpp:487
 #: src/modules/popupeditor/popupeditor.cpp:1120
 #: src/modules/popupeditor/popupeditor.cpp:1170
-#: src/modules/raweditor/raweditor.cpp:419
-#: src/modules/raweditor/raweditor.cpp:462
+#: src/modules/raweditor/raweditor.cpp:436
+#: src/modules/raweditor/raweditor.cpp:474
 #: src/modules/toolbareditor/toolbareditor.cpp:395
 msgid "Choose a Filename - KVIrc"
 msgstr "Vyberte soubor - KVIrc"
@@ -358,7 +367,7 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:672
+#: src/modules/aliaseditor/aliaseditor.cpp:603
 msgid "Collapse All Namespaces"
 msgstr ""
 
@@ -407,11 +416,11 @@ msgstr ""
 msgid "Do you really want to delete toolbar \"%1\" ?"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1017
+#: src/modules/aliaseditor/aliaseditor.cpp:924
 msgid "Do you really want to remove the alias \"%Q\" ?"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1019
+#: src/modules/aliaseditor/aliaseditor.cpp:926
 msgid "Do you really want to remove the namespace \"%Q\" ?"
 msgstr ""
 
@@ -431,7 +440,7 @@ msgstr ""
 msgid "Edit ToolBar"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:183
+#: src/modules/aliaseditor/aliaseditor.cpp:147
 msgid "Edit the alias or namespace name"
 msgstr ""
 
@@ -439,7 +448,7 @@ msgstr ""
 msgid "Edit the event handler name."
 msgstr ""
 
-#: src/modules/raweditor/raweditor.cpp:111
+#: src/modules/raweditor/raweditor.cpp:118
 msgid "Edit the raw event handler name."
 msgstr ""
 
@@ -467,7 +476,7 @@ msgstr ""
 msgid "Enable in Query Windows"
 msgstr ""
 
-#: src/modules/raweditor/raweditor.cpp:229
+#: src/modules/raweditor/raweditor.cpp:236
 msgid "Enter the numeric code of the message (0-999)"
 msgstr ""
 
@@ -487,15 +496,15 @@ msgstr ""
 msgid "Export Actions..."
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:658
+#: src/modules/aliaseditor/aliaseditor.cpp:589
 msgid "Export All..."
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:651
+#: src/modules/aliaseditor/aliaseditor.cpp:582
 msgid "Export Selected in singles files..."
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:645
+#: src/modules/aliaseditor/aliaseditor.cpp:576
 msgid "Export Selected..."
 msgstr ""
 
@@ -520,11 +529,11 @@ msgstr "Hledat:"
 msgid "Find & Replace"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:710
+#: src/modules/aliaseditor/aliaseditor.cpp:634
 msgid "Find In Aliases"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:666
+#: src/modules/aliaseditor/aliaseditor.cpp:597
 msgid "Find In Aliases..."
 msgstr ""
 
@@ -540,11 +549,11 @@ msgstr ""
 msgid "Font:"
 msgstr "Font:"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1125
+#: src/modules/aliaseditor/aliaseditor.cpp:1031
 msgid "Found an empty namespace in alias name"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1193
+#: src/modules/aliaseditor/aliaseditor.cpp:1099
 msgid "Found an empty namespace in namespace name"
 msgstr ""
 
@@ -611,11 +620,11 @@ msgstr "Otevřít soubor skriptu - KVIrc"
 msgid "Manually"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1086
+#: src/modules/aliaseditor/aliaseditor.cpp:992
 msgid "Missing Alias Name"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1154
+#: src/modules/aliaseditor/aliaseditor.cpp:1060
 msgid "Missing Namespace Name"
 msgstr ""
 
@@ -633,16 +642,16 @@ msgstr ""
 msgid "Name:"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:366
-#: src/modules/aliaseditor/aliaseditor.cpp:585
+#: src/modules/aliaseditor/aliaseditor.cpp:322
+#: src/modules/aliaseditor/aliaseditor.cpp:516
 msgid "Namespace"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:513
+#: src/modules/aliaseditor/aliaseditor.cpp:444
 msgid "Namespace already exists"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1168
+#: src/modules/aliaseditor/aliaseditor.cpp:1074
 msgid ""
 "Namespace names can contain only letters, digits, underscores and '::' "
 "namespace separators"
@@ -716,7 +725,7 @@ msgstr ""
 msgid "New Menu Prologue"
 msgstr ""
 
-#: src/modules/raweditor/raweditor.cpp:229
+#: src/modules/raweditor/raweditor.cpp:236
 msgid "New Raw Event"
 msgstr ""
 
@@ -736,15 +745,15 @@ msgstr ""
 msgid "New ToolBar"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:837
-#: src/modules/aliaseditor/aliaseditor.cpp:1025
+#: src/modules/aliaseditor/aliaseditor.cpp:745
+#: src/modules/aliaseditor/aliaseditor.cpp:932
 #: src/modules/toolbareditor/toolbareditor.cpp:378
 #: src/modules/toolbareditor/toolbareditor.cpp:403
 msgid "No"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:178
-#: src/modules/aliaseditor/aliaseditor.cpp:575
+#: src/modules/aliaseditor/aliaseditor.cpp:142
+#: src/modules/aliaseditor/aliaseditor.cpp:506
 #: src/modules/eventeditor/eventeditor.cpp:368
 msgid "No item selected"
 msgstr ""
@@ -755,14 +764,14 @@ msgstr "Normální text:"
 
 #: src/modules/actioneditor/actioneditor.cpp:717
 #: src/modules/actioneditor/actioneditor.cpp:864
-#: src/modules/aliaseditor/aliaseditor.cpp:810
-#: src/modules/aliaseditor/aliaseditor.cpp:883
-#: src/modules/aliaseditor/aliaseditor.cpp:913
+#: src/modules/aliaseditor/aliaseditor.cpp:718
+#: src/modules/aliaseditor/aliaseditor.cpp:789
+#: src/modules/aliaseditor/aliaseditor.cpp:819
 #: src/modules/editor/scripteditor.cpp:528
 #: src/modules/eventeditor/eventeditor.cpp:491
 #: src/modules/popupeditor/popupeditor.cpp:1127
 #: src/modules/popupeditor/popupeditor.cpp:1174
-#: src/modules/raweditor/raweditor.cpp:466
+#: src/modules/raweditor/raweditor.cpp:478
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:247
 #: src/modules/toolbareditor/toolbareditor.cpp:457
@@ -770,16 +779,16 @@ msgstr "Normální text:"
 msgid "OK"
 msgstr "&OK"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:503
-#: src/modules/aliaseditor/aliaseditor.cpp:515
-#: src/modules/aliaseditor/aliaseditor.cpp:1088
-#: src/modules/aliaseditor/aliaseditor.cpp:1101
-#: src/modules/aliaseditor/aliaseditor.cpp:1115
-#: src/modules/aliaseditor/aliaseditor.cpp:1126
-#: src/modules/aliaseditor/aliaseditor.cpp:1156
-#: src/modules/aliaseditor/aliaseditor.cpp:1169
-#: src/modules/aliaseditor/aliaseditor.cpp:1183
-#: src/modules/aliaseditor/aliaseditor.cpp:1194
+#: src/modules/aliaseditor/aliaseditor.cpp:434
+#: src/modules/aliaseditor/aliaseditor.cpp:446
+#: src/modules/aliaseditor/aliaseditor.cpp:994
+#: src/modules/aliaseditor/aliaseditor.cpp:1007
+#: src/modules/aliaseditor/aliaseditor.cpp:1021
+#: src/modules/aliaseditor/aliaseditor.cpp:1032
+#: src/modules/aliaseditor/aliaseditor.cpp:1062
+#: src/modules/aliaseditor/aliaseditor.cpp:1075
+#: src/modules/aliaseditor/aliaseditor.cpp:1089
+#: src/modules/aliaseditor/aliaseditor.cpp:1100
 msgid "Ok, Let me try again..."
 msgstr ""
 
@@ -802,7 +811,7 @@ msgid ""
 "Ctrl+C\" ..."
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:350
+#: src/modules/aliaseditor/aliaseditor.cpp:306
 msgid "OverWrite Current Alias"
 msgstr ""
 
@@ -818,29 +827,29 @@ msgstr ""
 msgid "Please choose the icon for the ToolBar"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1220
+#: src/modules/aliaseditor/aliaseditor.cpp:1126
 msgid "Please enter the name for the new alias"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1227
+#: src/modules/aliaseditor/aliaseditor.cpp:1133
 msgid "Please enter the name for the new namespace"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:487
+#: src/modules/aliaseditor/aliaseditor.cpp:418
 msgid "Please enter the new name for the alias"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:489
+#: src/modules/aliaseditor/aliaseditor.cpp:420
 msgid "Please enter the new name for the namespace"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:711
+#: src/modules/aliaseditor/aliaseditor.cpp:635
 msgid ""
 "Please enter the text to be searched for. The matching aliases will be "
 "highlighted."
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1021
+#: src/modules/aliaseditor/aliaseditor.cpp:928
 msgid "Please note that all the children items will be deleted too."
 msgstr ""
 
@@ -884,16 +893,16 @@ msgstr "Interpunkce:"
 msgid "Put here a short description of your action"
 msgstr ""
 
-#: src/modules/raweditor/raweditor.cpp:529
+#: src/modules/raweditor/raweditor.cpp:541
 msgid "Raw Editor"
 msgstr ""
 
-#: src/modules/raweditor/raweditor.cpp:94
+#: src/modules/raweditor/raweditor.cpp:101
 msgid "Raw Event"
 msgstr ""
 
 #: src/modules/eventeditor/eventeditor.cpp:205
-#: src/modules/raweditor/raweditor.cpp:171
+#: src/modules/raweditor/raweditor.cpp:178
 msgid "Re&move Handler"
 msgstr ""
 
@@ -901,27 +910,27 @@ msgstr ""
 msgid "Re&move Popup"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:637
+#: src/modules/aliaseditor/aliaseditor.cpp:568
 msgid "Remove Selected"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1025
+#: src/modules/aliaseditor/aliaseditor.cpp:932
 msgid "Remove item"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:179
+#: src/modules/aliaseditor/aliaseditor.cpp:143
 msgid "Rename"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:487
+#: src/modules/aliaseditor/aliaseditor.cpp:418
 msgid "Rename Alias"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:489
+#: src/modules/aliaseditor/aliaseditor.cpp:420
 msgid "Rename Namespace"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:837
+#: src/modules/aliaseditor/aliaseditor.cpp:745
 msgid "Replace file"
 msgstr ""
 
@@ -946,12 +955,12 @@ msgstr ""
 msgid "Small Icon:"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1114
+#: src/modules/aliaseditor/aliaseditor.cpp:1020
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1182
+#: src/modules/aliaseditor/aliaseditor.cpp:1088
 msgid ""
 "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
 msgstr ""
@@ -978,11 +987,11 @@ msgid ""
 "toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:883
+#: src/modules/aliaseditor/aliaseditor.cpp:789
 msgid "The exported file would be empty: cowardly refusing to write it"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:836
+#: src/modules/aliaseditor/aliaseditor.cpp:744
 msgid "The file \"%Q\" exists. Do you want to replace it ?"
 msgstr ""
 
@@ -999,12 +1008,12 @@ msgid ""
 "prefer to do it manually ?"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:810
+#: src/modules/aliaseditor/aliaseditor.cpp:718
 msgid "There is no selection!"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:502
-#: src/modules/aliaseditor/aliaseditor.cpp:514
+#: src/modules/aliaseditor/aliaseditor.cpp:433
+#: src/modules/aliaseditor/aliaseditor.cpp:445
 msgid "This name is already in use. Please choose another one."
 msgstr ""
 
@@ -1032,7 +1041,7 @@ msgstr ""
 msgid "Unable to write to the actions file."
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:913
+#: src/modules/aliaseditor/aliaseditor.cpp:819
 #: src/modules/popupeditor/popupeditor.cpp:1174
 msgid "Unable to write to the alias file."
 msgstr ""
@@ -1049,11 +1058,11 @@ msgstr ""
 msgid "Unable to write to the popup file."
 msgstr ""
 
-#: src/modules/raweditor/raweditor.cpp:426
+#: src/modules/raweditor/raweditor.cpp:443
 msgid "Unable to write to the raw event file."
 msgstr ""
 
-#: src/modules/raweditor/raweditor.cpp:466
+#: src/modules/raweditor/raweditor.cpp:478
 msgid "Unable to write to the raw events file."
 msgstr ""
 
@@ -1082,40 +1091,40 @@ msgid "Word to Find"
 msgstr ""
 
 #: src/modules/actioneditor/actioneditor.cpp:717
-#: src/modules/aliaseditor/aliaseditor.cpp:913
+#: src/modules/aliaseditor/aliaseditor.cpp:819
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:491
 #: src/modules/popupeditor/popupeditor.cpp:1127
 #: src/modules/popupeditor/popupeditor.cpp:1174
-#: src/modules/raweditor/raweditor.cpp:426
-#: src/modules/raweditor/raweditor.cpp:466
+#: src/modules/raweditor/raweditor.cpp:443
+#: src/modules/raweditor/raweditor.cpp:478
 #: src/modules/toolbareditor/toolbareditor.cpp:457
 #, fuzzy
 msgid "Write Failed - KVIrc"
 msgstr "Otevření selhalo - KVIrc"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:837
-#: src/modules/aliaseditor/aliaseditor.cpp:1025
+#: src/modules/aliaseditor/aliaseditor.cpp:745
+#: src/modules/aliaseditor/aliaseditor.cpp:932
 #: src/modules/toolbareditor/toolbareditor.cpp:379
 #: src/modules/toolbareditor/toolbareditor.cpp:402
 msgid "Yes"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:837
-#: src/modules/aliaseditor/aliaseditor.cpp:1025
+#: src/modules/aliaseditor/aliaseditor.cpp:745
+#: src/modules/aliaseditor/aliaseditor.cpp:932
 msgid "Yes to All"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1087
+#: src/modules/aliaseditor/aliaseditor.cpp:993
 msgid "You must specify a valid name for the alias"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1155
+#: src/modules/aliaseditor/aliaseditor.cpp:1061
 msgid "You must specify a valid name for the namespace"
 msgstr ""
 
 #: src/modules/eventeditor/eventeditor.cpp:265
-#: src/modules/raweditor/raweditor.cpp:261
+#: src/modules/raweditor/raweditor.cpp:272
 msgid "default"
 msgstr ""
 
@@ -1125,6 +1134,6 @@ msgstr ""
 
 #: src/modules/eventeditor/eventeditor.cpp:227
 #: src/modules/popupeditor/popupeditor.cpp:1271
-#: src/modules/raweditor/raweditor.cpp:199
+#: src/modules/raweditor/raweditor.cpp:206
 msgid "unnamed"
 msgstr ""

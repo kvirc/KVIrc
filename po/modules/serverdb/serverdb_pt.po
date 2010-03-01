@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_serverdb \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"POT-Creation-Date: 2010-03-01 21:54+0100\n"
 "PO-Revision-Date: 2010-03-01 16:53+0000\n"
 "Last-Translator: Gmail <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -20,15 +20,30 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/proxydb/libkviproxydb.cpp:60
-#: src/modules/proxydb/libkviproxydb.cpp:103
-#: src/modules/proxydb/libkviproxydb.cpp:357
-#: src/modules/proxydb/libkviproxydb.cpp:428
-#: src/modules/proxydb/libkviproxydb.cpp:497
-#: src/modules/proxydb/libkviproxydb.cpp:552
-#: src/modules/proxydb/libkviproxydb.cpp:596
-msgid "You must provide the proxy hostname as parameter"
-msgstr "Deve indicar o nome do endereço 'proxy' como parâmetro"
+#: src/modules/serverdb/libkviserverdb.cpp:685
+msgid "The network specified already exists"
+msgstr "A rede indicada já existe"
+
+#: src/modules/proxydb/libkviproxydb.cpp:453
+msgid "The specified IP is not valid"
+msgstr "O IP indicado não é válido"
+
+#: src/modules/serverdb/libkviserverdb.cpp:169
+#: src/modules/serverdb/libkviserverdb.cpp:203
+#: src/modules/serverdb/libkviserverdb.cpp:762
+#: src/modules/serverdb/libkviserverdb.cpp:826
+#: src/modules/serverdb/libkviserverdb.cpp:868
+msgid "The specified network does not exist"
+msgstr "A rede indicada não existe"
+
+#: src/modules/proxydb/libkviproxydb.cpp:311
+#: src/modules/proxydb/libkviproxydb.cpp:577
+msgid "The specified protocol does not exist"
+msgstr "O protocolo indicado não existe"
+
+#: src/modules/proxydb/libkviproxydb.cpp:284
+msgid "The specified proxy already exists"
+msgstr "O 'proxy' indicado já existe"
 
 #: src/modules/proxydb/libkviproxydb.cpp:70
 #: src/modules/proxydb/libkviproxydb.cpp:113
@@ -40,40 +55,18 @@ msgstr "Deve indicar o nome do endereço 'proxy' como parâmetro"
 msgid "The specified proxy does not exist"
 msgstr "O 'proxy' indicado não existe"
 
-#: src/modules/proxydb/libkviproxydb.cpp:273
-msgid "You must provide the proxy name as parameter"
-msgstr "Deve indicar o nome do 'proxy' como parâmetro"
+#: src/modules/serverdb/libkviserverdb.cpp:773
+msgid "The specified server already exists"
+msgstr "O servidor indicado já existe"
 
-#: src/modules/proxydb/libkviproxydb.cpp:284
-msgid "The specified proxy already exists"
-msgstr "O 'proxy' indicado já existe"
-
-#: src/modules/proxydb/libkviproxydb.cpp:311
-#: src/modules/proxydb/libkviproxydb.cpp:577
-msgid "The specified protocol does not exist"
-msgstr "O protocolo indicado não existe"
-
-#: src/modules/proxydb/libkviproxydb.cpp:363
-msgid "You must provide the port number as parameter"
-msgstr "Deve indicar o número do porto como parâmetro"
+#: src/modules/serverdb/libkviserverdb.cpp:210
+#: src/modules/serverdb/libkviserverdb.cpp:876
+msgid "The specified server does not exist"
+msgstr "O servidor indicado não existe"
 
 #: src/modules/proxydb/libkviproxydb.cpp:434
 msgid "You must provide the IP as parameter"
 msgstr "Deve indicar o IP como parâmetro"
-
-#: src/modules/proxydb/libkviproxydb.cpp:453
-msgid "The specified IP is not valid"
-msgstr "O IP indicado não é válido"
-
-#: src/modules/proxydb/libkviproxydb.cpp:558
-msgid "You must provide the protocol as parameter"
-msgstr "Deve indicar o protocolo como parâmetro"
-
-#: src/modules/proxydb/libkviproxydb.cpp:602
-#: src/modules/serverdb/libkviserverdb.cpp:818
-#: src/modules/serverdb/libkviserverdb.cpp:860
-msgid "You must provide the value as parameter"
-msgstr "Deve indicar o valor como parâmetro"
 
 #: src/modules/serverdb/libkviserverdb.cpp:61
 #: src/modules/serverdb/libkviserverdb.cpp:162
@@ -85,6 +78,28 @@ msgstr "Deve indicar o valor como parâmetro"
 msgid "You must provide the network name as parameter"
 msgstr "Deve indicar o nome da rede como parâmetro"
 
+#: src/modules/proxydb/libkviproxydb.cpp:363
+msgid "You must provide the port number as parameter"
+msgstr "Deve indicar o número do porto como parâmetro"
+
+#: src/modules/proxydb/libkviproxydb.cpp:558
+msgid "You must provide the protocol as parameter"
+msgstr "Deve indicar o protocolo como parâmetro"
+
+#: src/modules/proxydb/libkviproxydb.cpp:60
+#: src/modules/proxydb/libkviproxydb.cpp:103
+#: src/modules/proxydb/libkviproxydb.cpp:357
+#: src/modules/proxydb/libkviproxydb.cpp:428
+#: src/modules/proxydb/libkviproxydb.cpp:497
+#: src/modules/proxydb/libkviproxydb.cpp:552
+#: src/modules/proxydb/libkviproxydb.cpp:596
+msgid "You must provide the proxy hostname as parameter"
+msgstr "Deve indicar o nome do endereço 'proxy' como parâmetro"
+
+#: src/modules/proxydb/libkviproxydb.cpp:273
+msgid "You must provide the proxy name as parameter"
+msgstr "Deve indicar o nome do 'proxy' como parâmetro"
+
 #: src/modules/serverdb/libkviserverdb.cpp:104
 #: src/modules/serverdb/libkviserverdb.cpp:196
 #: src/modules/serverdb/libkviserverdb.cpp:754
@@ -92,25 +107,8 @@ msgstr "Deve indicar o nome da rede como parâmetro"
 msgid "You must provide the server name as parameter"
 msgstr "Deve indicar o nome do servidor como parâmetro"
 
-#: src/modules/serverdb/libkviserverdb.cpp:169
-#: src/modules/serverdb/libkviserverdb.cpp:203
-#: src/modules/serverdb/libkviserverdb.cpp:762
-#: src/modules/serverdb/libkviserverdb.cpp:826
-#: src/modules/serverdb/libkviserverdb.cpp:868
-msgid "The specified network does not exist"
-msgstr "A rede indicada não existe"
-
-#: src/modules/serverdb/libkviserverdb.cpp:210
-#: src/modules/serverdb/libkviserverdb.cpp:876
-msgid "The specified server does not exist"
-msgstr "O servidor indicado não existe"
-
-#: src/modules/serverdb/libkviserverdb.cpp:685
-msgid "The network specified already exists"
-msgstr "A rede indicada já existe"
-
-#: src/modules/serverdb/libkviserverdb.cpp:773
-msgid "The specified server already exists"
-msgstr "O servidor indicado já existe"
-
-
+#: src/modules/proxydb/libkviproxydb.cpp:602
+#: src/modules/serverdb/libkviserverdb.cpp:818
+#: src/modules/serverdb/libkviserverdb.cpp:860
+msgid "You must provide the value as parameter"
+msgstr "Deve indicar o valor como parâmetro"

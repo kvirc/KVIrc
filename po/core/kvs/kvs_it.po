@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-17 18:09+0100\n"
+"POT-Creation-Date: 2010-03-01 21:54+0100\n"
 "PO-Revision-Date: 2010-01-25 19:10+0100\n"
 "Last-Translator: HelLViS69\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -32,7 +32,7 @@ msgstr "Comando 'unset' usato senza una lista di variabili"
 msgid "/me can be used only in channels, queries and DCC chat windows"
 msgstr "/me può essere usato solo nei canali, query e finestre DCC chat"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:118
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:126
 msgid "A class can't be a subclass of itself"
 msgstr "Una classe non può essere sottoclasse di sè stessa"
 
@@ -167,7 +167,7 @@ msgstr "Non trovo l'immagine richiesta"
 msgid "Can't kill the timer '%Q' since it is not running"
 msgstr "Non posso uccidere il timer '%Q' dal momento che non è attivo"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:144
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:152
 msgid "Can't override the builtin class '%Q'"
 msgstr "Non posso sovrascrivere la classe incorporata '%Q'"
 
@@ -200,13 +200,22 @@ msgstr "Scegli un file da analizzare"
 msgid "Class '%Q' is not defined"
 msgstr "Classe '%Q' non definita"
 
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:109
+#, fuzzy
+msgid ""
+"Class names can contain only letters, digits, underscores and '::' namespace "
+"separators"
+msgstr ""
+"I nomi degli alias possono contenere solo lettere, numeri, _ e il separatore "
+"dei namespace '::'"
+
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:249
 msgid ""
 "Couldn't find a suitable IRC context for the connection, try using -n or -u"
 msgstr ""
 "Non trovo un contesto IRC adatto per la connessione, prova ad usare -n o -u"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:125
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:133
 msgid "Couln't find base class named '%Q'"
 msgstr "Non trovo la classe base '%Q'"
 
@@ -215,7 +224,7 @@ msgstr "Non trovo la classe base '%Q'"
 msgid "DNS Lookup result for query \"%Q\""
 msgstr "Risultati della richiesta DNS per la query \"%Q\""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:135
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:143
 msgid ""
 "Detected a loop in the inheritance tree of the base class '%Q': redefine "
 "that class first"
@@ -223,14 +232,14 @@ msgstr ""
 "Trovato un ciclo nell'albero di ereditarietà della classe base '%Q': "
 "ridefinisci quella classe prima"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:499
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:507
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:527
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:535
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:329
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:341
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:412
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:424
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:499
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:507
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:527
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:535
 msgid "Division by zero"
 msgstr "Divisione per zero"
 
@@ -555,7 +564,7 @@ msgid "Missing channel list"
 msgstr "Manca la lista dei canali"
 
 #: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:96
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:109
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:117
 msgid "Missing class name"
 msgstr "Manca il nome della classe"
 
@@ -616,8 +625,8 @@ msgstr "Manca il tempo di scadenza"
 msgid "Missing timer name"
 msgstr "Manca il nome del timer"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:67
 #: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:68
+#: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:67
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr ""
 "Chiamata al comando del modulo fallita: impossibile caricare il modulo '%Q': "
@@ -713,10 +722,10 @@ msgstr "Nessun elemento del menu col testo '%Q'"
 msgid "No such IRC context (%u)"
 msgstr "Nessun contesto IRC (%u)"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
 #: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:567
 #: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:575
+#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
+#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1414
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1422
 msgid "No such event (%Q)"
@@ -831,13 +840,13 @@ msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:93
 #: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:187
+#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:93
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:85
 #: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:179
+#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:85
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr ""
 
@@ -1274,8 +1283,8 @@ msgstr ""
 "Questo sembra molto un operatore di dereferenziazione a un oggetto '->' ma "
 "in effetti non lo è. Forse hai dimenticato un '$' subito dopo?"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:297
 #: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:297
 msgid "This window has no associated IRC context"
 msgstr "Questa finestra non ha un contesto IRC associato"
 
@@ -1635,8 +1644,8 @@ msgstr "[KVS]%c Errore di Esecuzione: %Q"
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Attenzione: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1196
 #: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:99
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1196
 msgid "[RAW]: %Q"
 msgstr "[RAW]: %Q"
 
@@ -1669,8 +1678,8 @@ msgstr "trovata la stringa \"%Q\" quando mi aspettavo il tipo '%s'"
 msgid "found type %Q where type '%s' was expected"
 msgstr "trovato il tipo %Q quando mi aspettavo il tipo '%s'"
 
-#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:108
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:95
+#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:108
 #, c-format
 msgid "line %d, near character %d"
 msgstr "linea %d, vicino al carattere %d"

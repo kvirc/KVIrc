@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_theme \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-25 17:25+0100\n"
+"POT-Creation-Date: 2010-03-01 21:54+0100\n"
 "PO-Revision-Date: 2010-03-01 16:47+0000\n"
 "Last-Translator: Gmail <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -20,18 +20,31 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/theme/themefunctions.cpp:47
-msgid "The selected file does not seem to be a valid KVIrc theme package"
-msgstr "O ficheiro seleccionado não parece ser um pacote de tema KVIrc válido"
+#: src/modules/theme/managementdialog.cpp:263
+msgid "&Apply Theme"
+msgstr "&Aplicar Tema"
 
-#: src/modules/theme/themefunctions.cpp:67
-msgid "The selected file does not seem to be a valid KVIrc package: %Q"
-msgstr "O ficheiro seleccionado não parece ser um pacote KVIrc válido: %Q"
+#: src/modules/theme/managementdialog.cpp:262
+msgid "&Remove Theme"
+msgstr "&Remover Tema"
+
+#: src/modules/theme/savethemedialog.cpp:217
+msgid "Acquire Screenshot - KVIrc"
+msgstr "Adquirir Captura de Ecrã - KVIrc"
+
+#: src/modules/theme/managementdialog.cpp:279
+#: src/modules/theme/managementdialog.cpp:292
+msgid "Apply theme - KVIrc"
+msgstr "Aplicar tema - KVIrc"
 
 #: src/modules/theme/themefunctions.cpp:115
 #: src/modules/theme/themefunctions.cpp:312
 msgid "Author"
 msgstr "Autor"
+
+#: src/modules/theme/libkvitheme.cpp:109
+msgid "Choose a file to save the screenshot to"
+msgstr "Escolha um ficheiro para gravar a captura de ecrã"
 
 #: src/modules/theme/themefunctions.cpp:116
 #: src/modules/theme/themefunctions.cpp:313
@@ -43,152 +56,96 @@ msgstr "Criado em"
 msgid "Created with"
 msgstr "Criado com"
 
-#: src/modules/theme/themefunctions.cpp:197
-msgid "Warning: The theme might be incompatible with this version of KVIrc"
-msgstr "Aviso: O tema pode ser incompatível com esta versão do KVIrc"
+#: src/modules/theme/managementdialog.cpp:150
+msgid "Delete Selected Themes"
+msgstr "Apagar Temas Seleccionados"
 
-#: src/modules/theme/themefunctions.cpp:206
-msgid "Go Back to Package Data"
-msgstr "Voltar aos Dados do Pacote"
+#: src/modules/theme/managementdialog.cpp:305
+msgid "Delete Theme - KVIrc"
+msgstr "Apagar Tema - KVIrc"
 
-#: src/modules/theme/themefunctions.cpp:213
-msgid ""
-"Warning: Some of the theme contained in this package might be either "
-"corrupted or incompatible with this version of KVIrc"
-msgstr ""
-"Aviso: Alguns dos temas contidos neste pacote podem estar corrompidos ou "
-"podem ser incompatíveis com esta versão do KVIrc"
-
-#: src/modules/theme/themefunctions.cpp:217
-msgid "Show Details"
-msgstr "Mostrar Detalhes"
-
-#: src/modules/theme/themefunctions.cpp:267
-msgid "Install Theme Pack - KVIrc"
-msgstr "Instalar Pacote de Tema - KVIrc"
-
-#: src/modules/theme/themefunctions.cpp:268
-msgid "You're about to install the following theme package"
-msgstr "Está prestes a instalar o seguinte pacote de tema"
-
-#: src/modules/theme/themefunctions.cpp:269
-msgid "Do you want to proceed with the installation ?"
-msgstr "Deseja prosseguir com a instalação ?"
+#: src/modules/theme/packthemedialog.cpp:235
+#: src/modules/theme/savethemedialog.cpp:119
+msgid "Description:"
+msgstr "Descrição:"
 
 #: src/modules/theme/themefunctions.cpp:270
 msgid "Do Not Install"
 msgstr "Não Instalar"
 
-#: src/modules/theme/themefunctions.cpp:271
-msgid "Yes, Proceed"
-msgstr "Sim, Prosseguir"
+#: src/modules/theme/managementdialog.cpp:306
+msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
+msgstr "Deseja realmente apagar o tema \"%Q\" (versão %Q)?"
+
+#: src/modules/theme/themefunctions.cpp:269
+msgid "Do you want to proceed with the installation ?"
+msgstr "Deseja prosseguir com a instalação ?"
+
+#: src/modules/theme/managementdialog.cpp:280
+msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
+msgstr "Deseja aplicar o tema \"%Q\" (versão %Q)?"
+
+#: src/modules/theme/libkvitheme.cpp:72
+msgid "Error installing theme package: %Q"
+msgstr "Erro ao instalar o pacote de tema: %Q"
+
+#: src/modules/theme/libkvitheme.cpp:124
+msgid "Error making screenshot"
+msgstr "Erro ao criar a captura de ecrã"
+
+#: src/modules/theme/managementdialog.cpp:144
+msgid "Export Selected Themes to a Distributable Package"
+msgstr "Exportar Temas Seleccionados para um Pacote de Distribuição"
+
+#: src/modules/theme/packthemedialog.cpp:111
+#: src/modules/theme/packthemedialog.cpp:344
+#: src/modules/theme/packthemedialog.cpp:378
+#: src/modules/theme/packthemedialog.cpp:462
+#: src/modules/theme/packthemedialog.cpp:474
+#: src/modules/theme/packthemedialog.cpp:482
+msgid "Export Theme - KVIrc"
+msgstr "Exportar Tema - KVIrc"
+
+#: src/modules/theme/managementdialog.cpp:291
+msgid "Failed to apply the specified theme: %Q"
+msgstr "Falha ao aplicar o tema especificado: %Q"
+
+#: src/modules/theme/packthemedialog.cpp:344
+#: src/modules/theme/savethemedialog.cpp:198
+msgid "Failed to load the selected image"
+msgstr "Falha ao carregar a imagem seleccionada"
+
+#: src/modules/theme/packthemedialog.cpp:378
+msgid "Failed to load the selected image: please fix it"
+msgstr "Falha ao carregar a imagem seleccionada: por favor corrija-a"
+
+#: src/modules/theme/savethemedialog.cpp:292
+msgid "Failed to load the selected screenshot image: please fix it"
+msgstr "Falha ao carregar a captura de ecrã seleccionada: por favor corrija-a"
+
+#: src/modules/theme/savethemedialog.cpp:217
+msgid "Failed to make screenshot"
+msgstr "Falha ao capturar ecrã"
 
 #: src/modules/theme/themefunctions.cpp:288
 msgid "Failed to unpack the selected file: %Q"
 msgstr "Falhou ao desempacotar o ficheiro seleccionado: %Q"
 
-#: src/modules/theme/themefunctions.cpp:315
-msgid "Theme Engine Version"
-msgstr "Versão do Motor de Temas"
-
-#: src/modules/theme/themefunctions.cpp:316
-msgid "Subdirectory"
-msgstr "Subdirectório"
-
-#: src/modules/theme/packthemedialog.cpp:64
-#: src/modules/theme/packthemedialog.cpp:356
-#: src/modules/theme/packthemedialog.cpp:444
-#: src/modules/theme/packthemedialog.cpp:531
-#: src/modules/theme/packthemedialog.cpp:546
-#: src/modules/theme/packthemedialog.cpp:558
-msgid "Export Theme - KVIrc"
-msgstr "Exportar Tema - KVIrc"
-
-#: src/modules/theme/packthemedialog.cpp:101
-#: src/modules/theme/savethemedialog.cpp:85
-msgid "Welcome"
-msgstr "Bem vindo"
-
-#: src/modules/theme/packthemedialog.cpp:104
-msgid ""
-"This procedure allows you to export the selected themes to a single package. "
-"It is useful when you want to distribute your themes to the public."
+#: src/modules/theme/packthemedialog.cpp:306
+msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr ""
-"Este procedimento permite-lhe exportar os temas seleccionados para um único "
-"pacote. É útil quando quer distribuir os seus temas ao público."
+"Finalmente clique no botão \"Terminar\" para finalizar a operação de "
+"empacotamento."
 
-#: src/modules/theme/packthemedialog.cpp:106
-msgid ""
-"You will be asked to provide a package name, a description and, if you want, "
-"an icon/screenshot."
-msgstr ""
-"Será-lhe pedido para fornecer um nome ao pacote, uma descrição e, se "
-"desejar, um ícone/captura de ecrã."
+#: src/modules/theme/managementdialog.cpp:166
+msgid "Get More Themes..."
+msgstr "Obter Mais Temas..."
 
-#: src/modules/theme/packthemedialog.cpp:108
-#: src/modules/theme/savethemedialog.cpp:78
-msgid "Hit the \"Next\" button to begin."
-msgstr "Clique no botão \"Próximo\" para começar."
+#: src/modules/theme/themefunctions.cpp:206
+msgid "Go Back to Package Data"
+msgstr "Voltar aos Dados do Pacote"
 
-# Data = dados
-# Date = Data
-#: src/modules/theme/packthemedialog.cpp:138
-msgid "Theme Data"
-msgstr "Dados do Tema"
-
-#: src/modules/theme/packthemedialog.cpp:139
-msgid ""
-"This is the information list for the themes you're packaging. If it looks OK "
-"press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
-"themes first."
-msgstr ""
-"Esta é a lista de informação para os temas que está a empacotar. Se lhe "
-"parece estar bem clique em \"Próximo\" para continuar. caso contrário clique "
-"em \"Cancelar\" e rever primeiro os seus temas."
-
-#: src/modules/theme/packthemedialog.cpp:154
-msgid "Your name here"
-msgstr "O seu nome aqui"
-
-#: src/modules/theme/packthemedialog.cpp:156
-msgid "Put a package description here..."
-msgstr "Coloque uma descrição do pacote aqui..."
-
-#: src/modules/theme/packthemedialog.cpp:250
-msgid "Package Information"
-msgstr "Informação do Pacote"
-
-#: src/modules/theme/packthemedialog.cpp:251
-msgid ""
-"Here you need to provide information about you (the packager) and a short "
-"description of the package you're creating."
-msgstr ""
-"Aqui precisa fornecer informação acerca de si (o empacotador) e uma "
-"breve descrição do pacote que está a criar."
-
-#: src/modules/theme/packthemedialog.cpp:262
-msgid "Package Name:"
-msgstr "Nome do Pacote:"
-
-#: src/modules/theme/packthemedialog.cpp:271
-#: src/modules/theme/savethemedialog.cpp:111
-msgid "Version:"
-msgstr "Versão:"
-
-#: src/modules/theme/packthemedialog.cpp:280
-#: src/modules/theme/savethemedialog.cpp:119
-msgid "Description:"
-msgstr "Descrição:"
-
-#: src/modules/theme/packthemedialog.cpp:289
-msgid "Package Author:"
-msgstr "Autor do Pacote:"
-
-#: src/modules/theme/packthemedialog.cpp:315
-msgid "Icon/Screenshot"
-msgstr "Ícone/Captura de ecrã"
-
-#: src/modules/theme/packthemedialog.cpp:316
+#: src/modules/theme/packthemedialog.cpp:266
 msgid ""
 "Here you can choose the image that will appear in the installation dialog "
 "for your theme package. It can be an icon, a logo or a screenshot and it "
@@ -199,162 +156,6 @@ msgstr ""
 "pacote de tema. Pode ser um ícone, um logotipo ou uma captura de ecrã e não "
 "deve ser maior que 300x225. Se não fornecer uma imagem, um simples ícone "
 "predefinido irá ser usado durante a instalação."
-
-#: src/modules/theme/packthemedialog.cpp:356
-#: src/modules/theme/savethemedialog.cpp:198
-msgid "Failed to load the selected image"
-msgstr "Falha ao carregar a imagem seleccionada"
-
-#: src/modules/theme/packthemedialog.cpp:367
-msgid "Package Path"
-msgstr "Localização do Pacote"
-
-#: src/modules/theme/packthemedialog.cpp:368
-msgid ""
-"Here you must choose the file name for the theme package. It should have a *%"
-"1 extension."
-msgstr ""
-"Aqui deve escolher o nome do ficheiro para o pacote do tema. Deve ter "
-"uma extensão *%1."
-
-#: src/modules/theme/packthemedialog.cpp:379
-msgid "Finally hit the \"Finish\" button to complete the packaging operation."
-msgstr ""
-"Finalmente clique no botão \"Terminar\" para finalizar a operação de "
-"empacotamento."
-
-#: src/modules/theme/packthemedialog.cpp:445
-msgid "Failed to load the selected image: please fix it"
-msgstr "Falha ao carregar a imagem seleccionada: por favor corrija-a"
-
-#: src/modules/theme/packthemedialog.cpp:527
-#: src/modules/theme/packthemedialog.cpp:542
-msgid "Packaging failed"
-msgstr "Empacotamento falhado"
-
-#: src/modules/theme/libkvitheme.cpp:72
-msgid "Error installing theme package: %Q"
-msgstr "Erro ao instalar o pacote de tema: %Q"
-
-#: src/modules/theme/libkvitheme.cpp:109
-msgid "Choose a file to save the screenshot to"
-msgstr "Escolha um ficheiro para gravar a captura de ecrã"
-
-#: src/modules/theme/libkvitheme.cpp:124
-msgid "Error making screenshot"
-msgstr "Erro ao criar a captura de ecrã"
-
-#: src/modules/theme/managementdialog.cpp:86
-msgid "by"
-msgstr "por"
-
-#: src/modules/theme/managementdialog.cpp:113
-msgid "Manage Themes - KVIrc"
-msgstr "Gerir Temas - KVIrc"
-
-#: src/modules/theme/managementdialog.cpp:133
-msgid "Save Current Theme..."
-msgstr "Gravar Tema Actual..."
-
-#: src/modules/theme/managementdialog.cpp:144
-msgid "Export Selected Themes to a Distributable Package"
-msgstr "Exportar Temas Seleccionados para um Pacote de Distribuição"
-
-#: src/modules/theme/managementdialog.cpp:150
-msgid "Delete Selected Themes"
-msgstr "Apagar Temas Seleccionados"
-
-#: src/modules/theme/managementdialog.cpp:160
-msgid "Install Theme Package From Disk"
-msgstr "Instalar Pacote de Tema A Partir de Disco"
-
-#: src/modules/theme/managementdialog.cpp:166
-msgid "Get More Themes..."
-msgstr "Obter Mais Temas..."
-
-#: src/modules/theme/managementdialog.cpp:262
-msgid "&Remove Theme"
-msgstr "&Remover Tema"
-
-#: src/modules/theme/managementdialog.cpp:263
-msgid "&Apply Theme"
-msgstr "&Aplicar Tema"
-
-#: src/modules/theme/managementdialog.cpp:279
-#: src/modules/theme/managementdialog.cpp:292
-msgid "Apply theme - KVIrc"
-msgstr "Aplicar tema - KVIrc"
-
-#: src/modules/theme/managementdialog.cpp:280
-msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
-msgstr "Deseja aplicar o tema \"%Q\" (versão %Q)?"
-
-#: src/modules/theme/managementdialog.cpp:291
-msgid "Failed to apply the specified theme: %Q"
-msgstr "Falha ao aplicar o tema especificado: %Q"
-
-#: src/modules/theme/managementdialog.cpp:305
-msgid "Delete Theme - KVIrc"
-msgstr "Apagar Tema - KVIrc"
-
-#: src/modules/theme/managementdialog.cpp:306
-msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
-msgstr "Deseja realmente apagar o tema \"%Q\" (versão %Q)?"
-
-#: src/modules/theme/managementdialog.cpp:319
-msgid "Open Theme - KVIrc"
-msgstr "Abrir Tema - KVIrc"
-
-#: src/modules/theme/savethemedialog.cpp:64
-#: src/modules/theme/savethemedialog.cpp:198
-#: src/modules/theme/savethemedialog.cpp:233
-#: src/modules/theme/savethemedialog.cpp:270
-#: src/modules/theme/savethemedialog.cpp:282
-#: src/modules/theme/savethemedialog.cpp:292
-msgid "Save Current Theme - KVIrc"
-msgstr "Gravar Tema Actual - KVIrc"
-
-#: src/modules/theme/savethemedialog.cpp:74
-msgid ""
-"This procedure allows you to save the current theme settings to a single "
-"directory. It is useful if you want to apply other themes or play with the "
-"theme settings and later come back to this theme with a single click. It "
-"will also allow you to manually modify the theme settings and later export "
-"them to a distributable package."
-msgstr ""
-"Este procedimento permite-lhe gravar as definições actuais do tema num "
-"único directório. É útil se quiser aplicar outros temas ou brincar com as "
-"definições do tema e mais tarde voltar a este tema com um simples clique. "
-"Também lhe permite modificar manualmente as definições do tema e mais "
-"tarde exporta-las para um pacote de distribuição."
-
-#: src/modules/theme/savethemedialog.cpp:76
-msgid ""
-"You will be asked to provide a theme name, a description and, if you want, a "
-"screenshot."
-msgstr ""
-"Será-lhe pedido para indicar um nome ao tema, uma descrição e, se desejar, "
-"uma captura de ecrã."
-
-#: src/modules/theme/savethemedialog.cpp:97
-msgid ""
-"Here you need to provide information about you (the author) and a short "
-"description of the theme you're creating."
-msgstr ""
-"Aqui precisa fornecer informação acerca de si (o autor) e uma breve "
-"descrição do tema que está a criar."
-
-#: src/modules/theme/savethemedialog.cpp:103
-msgid "Theme Name:"
-msgstr "Nome do Tema:"
-
-#: src/modules/theme/savethemedialog.cpp:127
-msgid "Theme Author:"
-msgstr "Autor do Tema:"
-
-#: src/modules/theme/savethemedialog.cpp:138
-msgid "Theme Information"
-msgstr "Informação do Tema"
 
 #: src/modules/theme/savethemedialog.cpp:150
 msgid ""
@@ -368,25 +169,178 @@ msgstr ""
 "temas e será também visível no diálogo de instalação do pacote se exportar o "
 "tema para um pacote de distribuição."
 
+#: src/modules/theme/packthemedialog.cpp:295
+msgid ""
+"Here you must choose the file name for the theme package. It should have a *%"
+"1 extension."
+msgstr ""
+"Aqui deve escolher o nome do ficheiro para o pacote do tema. Deve ter uma "
+"extensão *%1."
+
+#: src/modules/theme/savethemedialog.cpp:97
+msgid ""
+"Here you need to provide information about you (the author) and a short "
+"description of the theme you're creating."
+msgstr ""
+"Aqui precisa fornecer informação acerca de si (o autor) e uma breve "
+"descrição do tema que está a criar."
+
+#: src/modules/theme/packthemedialog.cpp:212
+msgid ""
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
+msgstr ""
+"Aqui precisa fornecer informação acerca de si (o empacotador) e uma breve "
+"descrição do pacote que está a criar."
+
+#: src/modules/theme/packthemedialog.cpp:124
+#: src/modules/theme/savethemedialog.cpp:78
+msgid "Hit the \"Next\" button to begin."
+msgstr "Clique no botão \"Próximo\" para começar."
+
+#: src/modules/theme/packthemedialog.cpp:283
+msgid "Icon/Screenshot"
+msgstr "Ícone/Captura de ecrã"
+
+#: src/modules/theme/themefunctions.cpp:267
+msgid "Install Theme Pack - KVIrc"
+msgstr "Instalar Pacote de Tema - KVIrc"
+
+#: src/modules/theme/managementdialog.cpp:160
+msgid "Install Theme Package From Disk"
+msgstr "Instalar Pacote de Tema A Partir de Disco"
+
 #: src/modules/theme/savethemedialog.cpp:166
 msgid "Make Screenshot Now"
 msgstr "Capturar Ecrã Agora"
+
+#: src/modules/theme/managementdialog.cpp:113
+msgid "Manage Themes - KVIrc"
+msgstr "Gerir Temas - KVIrc"
+
+#: src/modules/theme/managementdialog.cpp:319
+msgid "Open Theme - KVIrc"
+msgstr "Abrir Tema - KVIrc"
+
+#: src/modules/theme/packthemedialog.cpp:243
+msgid "Package Author:"
+msgstr "Autor do Pacote:"
+
+#: src/modules/theme/packthemedialog.cpp:254
+msgid "Package Information"
+msgstr "Informação do Pacote"
+
+#: src/modules/theme/packthemedialog.cpp:218
+msgid "Package Name:"
+msgstr "Nome do Pacote:"
+
+#: src/modules/theme/packthemedialog.cpp:313
+msgid "Package Path"
+msgstr "Localização do Pacote"
+
+#: src/modules/theme/packthemedialog.cpp:459
+#: src/modules/theme/packthemedialog.cpp:471
+msgid "Packaging failed"
+msgstr "Empacotamento falhado"
+
+#: src/modules/theme/packthemedialog.cpp:81
+msgid "Put a package description here..."
+msgstr "Coloque uma descrição do pacote aqui..."
+
+#: src/modules/theme/savethemedialog.cpp:64
+#: src/modules/theme/savethemedialog.cpp:198
+#: src/modules/theme/savethemedialog.cpp:233
+#: src/modules/theme/savethemedialog.cpp:270
+#: src/modules/theme/savethemedialog.cpp:282
+#: src/modules/theme/savethemedialog.cpp:292
+msgid "Save Current Theme - KVIrc"
+msgstr "Gravar Tema Actual - KVIrc"
+
+#: src/modules/theme/managementdialog.cpp:133
+msgid "Save Current Theme..."
+msgstr "Gravar Tema Actual..."
+
+#: src/modules/theme/savethemedialog.cpp:302
+msgid "Save Theme - KVIrc"
+msgstr "Gravar Tema - KVIrc"
 
 #: src/modules/theme/savethemedialog.cpp:173
 msgid "Screenshot"
 msgstr "Captura de ecrã"
 
-#: src/modules/theme/savethemedialog.cpp:217
-msgid "Acquire Screenshot - KVIrc"
-msgstr "Adquirir Captura de Ecrã - KVIrc"
+#: src/modules/theme/themefunctions.cpp:217
+msgid "Show Details"
+msgstr "Mostrar Detalhes"
 
-#: src/modules/theme/savethemedialog.cpp:217
-msgid "Failed to make screenshot"
-msgstr "Falha ao capturar ecrã"
+#: src/modules/theme/themefunctions.cpp:316
+msgid "Subdirectory"
+msgstr "Subdirectório"
 
-#: src/modules/theme/savethemedialog.cpp:233
-msgid "You must choose a theme name!"
-msgstr "Deve escolher um nome do tema!"
+#: src/modules/theme/themefunctions.cpp:67
+msgid "The selected file does not seem to be a valid KVIrc package: %Q"
+msgstr "O ficheiro seleccionado não parece ser um pacote KVIrc válido: %Q"
+
+#: src/modules/theme/themefunctions.cpp:47
+msgid "The selected file does not seem to be a valid KVIrc theme package"
+msgstr "O ficheiro seleccionado não parece ser um pacote de tema KVIrc válido"
+
+#: src/modules/theme/savethemedialog.cpp:127
+msgid "Theme Author:"
+msgstr "Autor do Tema:"
+
+# Data = dados
+# Date = Data
+#: src/modules/theme/packthemedialog.cpp:199
+msgid "Theme Data"
+msgstr "Dados do Tema"
+
+#: src/modules/theme/themefunctions.cpp:315
+msgid "Theme Engine Version"
+msgstr "Versão do Motor de Temas"
+
+#: src/modules/theme/savethemedialog.cpp:138
+msgid "Theme Information"
+msgstr "Informação do Tema"
+
+#: src/modules/theme/savethemedialog.cpp:103
+msgid "Theme Name:"
+msgstr "Nome do Tema:"
+
+#: src/modules/theme/savethemedialog.cpp:299
+msgid "Theme saved successfully to "
+msgstr "Tema gravado com sucesso para "
+
+#: src/modules/theme/packthemedialog.cpp:145
+msgid ""
+"This is the information list for the themes you're packaging. If it looks OK "
+"press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
+"themes first."
+msgstr ""
+"Esta é a lista de informação para os temas que está a empacotar. Se lhe "
+"parece estar bem clique em \"Próximo\" para continuar. caso contrário clique "
+"em \"Cancelar\" e rever primeiro os seus temas."
+
+#: src/modules/theme/packthemedialog.cpp:120
+msgid ""
+"This procedure allows you to export the selected themes to a single package. "
+"It is useful when you want to distribute your themes to the public."
+msgstr ""
+"Este procedimento permite-lhe exportar os temas seleccionados para um único "
+"pacote. É útil quando quer distribuir os seus temas ao público."
+
+#: src/modules/theme/savethemedialog.cpp:74
+msgid ""
+"This procedure allows you to save the current theme settings to a single "
+"directory. It is useful if you want to apply other themes or play with the "
+"theme settings and later come back to this theme with a single click. It "
+"will also allow you to manually modify the theme settings and later export "
+"them to a distributable package."
+msgstr ""
+"Este procedimento permite-lhe gravar as definições actuais do tema num único "
+"directório. É útil se quiser aplicar outros temas ou brincar com as "
+"definições do tema e mais tarde voltar a este tema com um simples clique. "
+"Também lhe permite modificar manualmente as definições do tema e mais tarde "
+"exporta-las para um pacote de distribuição."
 
 #: src/modules/theme/savethemedialog.cpp:270
 msgid "Unable to create theme directory."
@@ -396,16 +350,60 @@ msgstr "Não é possível de criar o directório do tema."
 msgid "Unable to save theme: %Q"
 msgstr "Não é possível gravar o tema: %Q"
 
-#: src/modules/theme/savethemedialog.cpp:292
-msgid "Failed to load the selected screenshot image: please fix it"
-msgstr "Falha ao carregar a captura de ecrã seleccionada: por favor corrija-a"
+#: src/modules/theme/packthemedialog.cpp:227
+#: src/modules/theme/savethemedialog.cpp:111
+msgid "Version:"
+msgstr "Versão:"
 
-#: src/modules/theme/savethemedialog.cpp:299
-msgid "Theme saved successfully to "
-msgstr "Tema gravado com sucesso para "
+#: src/modules/theme/themefunctions.cpp:213
+msgid ""
+"Warning: Some of the theme contained in this package might be either "
+"corrupted or incompatible with this version of KVIrc"
+msgstr ""
+"Aviso: Alguns dos temas contidos neste pacote podem estar corrompidos ou "
+"podem ser incompatíveis com esta versão do KVIrc"
 
-#: src/modules/theme/savethemedialog.cpp:302
-msgid "Save Theme - KVIrc"
-msgstr "Gravar Tema - KVIrc"
+#: src/modules/theme/themefunctions.cpp:197
+msgid "Warning: The theme might be incompatible with this version of KVIrc"
+msgstr "Aviso: O tema pode ser incompatível com esta versão do KVIrc"
 
+#: src/modules/theme/packthemedialog.cpp:132
+#: src/modules/theme/savethemedialog.cpp:85
+msgid "Welcome"
+msgstr "Bem vindo"
 
+#: src/modules/theme/themefunctions.cpp:271
+msgid "Yes, Proceed"
+msgstr "Sim, Prosseguir"
+
+#: src/modules/theme/savethemedialog.cpp:233
+msgid "You must choose a theme name!"
+msgstr "Deve escolher um nome do tema!"
+
+#: src/modules/theme/packthemedialog.cpp:122
+msgid ""
+"You will be asked to provide a package name, a description and, if you want, "
+"an icon/screenshot."
+msgstr ""
+"Será-lhe pedido para fornecer um nome ao pacote, uma descrição e, se "
+"desejar, um ícone/captura de ecrã."
+
+#: src/modules/theme/savethemedialog.cpp:76
+msgid ""
+"You will be asked to provide a theme name, a description and, if you want, a "
+"screenshot."
+msgstr ""
+"Será-lhe pedido para indicar um nome ao tema, uma descrição e, se desejar, "
+"uma captura de ecrã."
+
+#: src/modules/theme/themefunctions.cpp:268
+msgid "You're about to install the following theme package"
+msgstr "Está prestes a instalar o seguinte pacote de tema"
+
+#: src/modules/theme/packthemedialog.cpp:79
+msgid "Your name here"
+msgstr "O seu nome aqui"
+
+#: src/modules/theme/managementdialog.cpp:86
+msgid "by"
+msgstr "por"

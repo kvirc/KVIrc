@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-17 18:09+0100\n"
+"POT-Creation-Date: 2010-03-01 21:54+0100\n"
 "PO-Revision-Date: 2005-02-24 23:18+0100\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -217,7 +217,7 @@ msgstr ""
 "Acceptant una petició d'arxiu des de %Q [%Q@%Q] per a '%s' (arxiu real: %Q), "
 "oferint DCC %s perque no podem acceptar connexions entrants (opció d'usuari)"
 
-#: src/modules/dcc/video.cpp:960 src/modules/dcc/voice.cpp:930
+#: src/modules/dcc/voice.cpp:930 src/modules/dcc/video.cpp:960
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "El còdec actual és '%s'"
@@ -323,7 +323,7 @@ msgstr ""
 "No he pogut enviar la petició DCC %s a %s: la connexió IRC ha estat "
 "finalitzada"
 
-#: src/modules/dcc/send.cpp:1866 src/modules/dcc/dialogs.cpp:158
+#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:1866
 msgid "Cancel"
 msgstr "Cancel·lar"
 
@@ -359,8 +359,8 @@ msgstr ""
 msgid "Connected to %1:%2"
 msgstr "Conectat a %1:%2"
 
-#: src/modules/dcc/video.cpp:940 src/modules/dcc/chat.cpp:555
-#: src/modules/dcc/voice.cpp:910 src/modules/dcc/canvas.cpp:282
+#: src/modules/dcc/voice.cpp:910 src/modules/dcc/video.cpp:940
+#: src/modules/dcc/canvas.cpp:282 src/modules/dcc/chat.cpp:555
 #, fuzzy
 msgid "Connected to %Q:%Q"
 msgstr "Conectat a %s:%s"
@@ -369,8 +369,8 @@ msgstr "Conectat a %s:%s"
 msgid "Contacting host %1 on port %2"
 msgstr "Contactant amb la màquina %1 en el port %2"
 
-#: src/modules/dcc/video.cpp:815 src/modules/dcc/chat.cpp:184
-#: src/modules/dcc/voice.cpp:755 src/modules/dcc/canvas.cpp:108
+#: src/modules/dcc/voice.cpp:755 src/modules/dcc/video.cpp:815
+#: src/modules/dcc/canvas.cpp:108 src/modules/dcc/chat.cpp:184
 #, fuzzy
 msgid "Contacting host %Q on port %Q"
 msgstr "Contactant amb la màquina %s en el port %s"
@@ -406,7 +406,7 @@ msgstr "Petició de DCC CANVAS"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "Petició DCC CANVAS no enviada; esperant connexions manuals"
 
-#: src/modules/dcc/video.cpp:931 src/modules/dcc/voice.cpp:901
+#: src/modules/dcc/voice.cpp:901 src/modules/dcc/video.cpp:931
 #: src/modules/dcc/canvas.cpp:277
 msgid "DCC Failed: %Q"
 msgstr "Ha fallat el DCC: %Q"
@@ -450,8 +450,8 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "La transferència de dades ha acabat fa 30 segons, tancant la connexió"
 
-#: src/modules/dcc/video.cpp:880 src/modules/dcc/chat.cpp:407
-#: src/modules/dcc/voice.cpp:818
+#: src/modules/dcc/voice.cpp:818 src/modules/dcc/video.cpp:880
+#: src/modules/dcc/chat.cpp:407
 msgid "ERROR: %Q"
 msgstr "ERROR: %Q"
 
@@ -468,7 +468,7 @@ msgstr "L'Arxiu Ja Existeix - KVIrc"
 msgid "From: "
 msgstr "Des de: "
 
-#: src/modules/dcc/video.cpp:176 src/modules/dcc/voice.cpp:170
+#: src/modules/dcc/voice.cpp:170 src/modules/dcc/video.cpp:176
 msgid ""
 "Half duplex soundcard detected, you will not be able to talk and listen at "
 "the same time"
@@ -563,8 +563,8 @@ msgstr ""
 msgid "Listening on interface %1 port %2"
 msgstr "Escoltant en la interfície %1 port %2"
 
-#: src/modules/dcc/video.cpp:818 src/modules/dcc/chat.cpp:186
-#: src/modules/dcc/voice.cpp:758 src/modules/dcc/canvas.cpp:84
+#: src/modules/dcc/voice.cpp:758 src/modules/dcc/video.cpp:818
+#: src/modules/dcc/canvas.cpp:84 src/modules/dcc/chat.cpp:186
 #, fuzzy
 msgid "Listening on interface %Q port %Q"
 msgstr "Escoltant en la interfície %s port %s"
@@ -573,8 +573,8 @@ msgstr "Escoltant en la interfície %s port %s"
 msgid "Local end is %1:%2"
 msgstr "El extrem local és %1:%2"
 
-#: src/modules/dcc/video.cpp:942 src/modules/dcc/chat.cpp:557
-#: src/modules/dcc/voice.cpp:912 src/modules/dcc/canvas.cpp:284
+#: src/modules/dcc/voice.cpp:912 src/modules/dcc/video.cpp:942
+#: src/modules/dcc/canvas.cpp:284 src/modules/dcc/chat.cpp:557
 #, fuzzy
 msgid "Local end is %Q:%Q"
 msgstr "El extrem final és %s:%s"
@@ -602,7 +602,7 @@ msgstr "No hi ha interfícies adequades per a escoltar, empra -i"
 msgid "OK"
 msgstr ""
 
-#: src/modules/dcc/video.cpp:275 src/modules/dcc/voice.cpp:269
+#: src/modules/dcc/voice.cpp:269 src/modules/dcc/video.cpp:275
 msgid "Ops...failed to test the soundcard capabilities...expect problems..."
 msgstr ""
 "Ups...ha fallat la prova de les capacitats de la tarja de so...pots esperar "
@@ -1018,7 +1018,7 @@ msgstr ""
 "ATENCIO: El altre extrem està enviant dades escombraria passant el final de "
 "l'arxiu"
 
-#: src/modules/dcc/video.cpp:168 src/modules/dcc/voice.cpp:162
+#: src/modules/dcc/voice.cpp:162 src/modules/dcc/video.cpp:168
 #, fuzzy
 msgid ""
 "WARNING: failed to check the soundcard duplex capabilities: if this is a "
@@ -1029,7 +1029,7 @@ msgstr ""
 "so: si aquesta és una tarja half-duplex, empra l'opció DCC VOICE per a "
 "forçar l'algoritme half-duplex"
 
-#: src/modules/dcc/video.cpp:217 src/modules/dcc/voice.cpp:211
+#: src/modules/dcc/voice.cpp:211 src/modules/dcc/video.cpp:217
 #, c-format
 msgid ""
 "WARNING: failed to set the requested sample rate (%d): the device used "
@@ -1064,14 +1064,14 @@ msgstr "[ERROR SSL]: %s"
 msgid "bytes/sec"
 msgstr "Mitja: ? bytes/seg"
 
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/libkvidcc.cpp:112
+#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/libkvidcc.cpp:112
 #: src/modules/dcc/libkvidcc.cpp:409 src/modules/dcc/libkvidcc.cpp:444
 #: src/modules/dcc/libkvidcc.cpp:643 src/modules/dcc/libkvidcc.cpp:667
 #: src/modules/dcc/libkvidcc.cpp:804 src/modules/dcc/libkvidcc.cpp:806
 #: src/modules/dcc/libkvidcc.cpp:1122 src/modules/dcc/libkvidcc.cpp:1172
 #: src/modules/dcc/libkvidcc.cpp:1200 src/modules/dcc/libkvidcc.cpp:1239
-#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
-#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/requests.cpp:141
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/requests.cpp:141
 #: src/modules/dcc/requests.cpp:142 src/modules/dcc/requests.cpp:143
 msgid "unknown"
 msgstr "desconegut"
