@@ -291,7 +291,7 @@ protected:
         QWidget     * m_pParent;
 protected slots:
         void textChanged(const QString &);
-        void newClass();
+       // void newClass();
 /*signals:
         void replaceAll(const QString &, const QString &);
         void initFind();

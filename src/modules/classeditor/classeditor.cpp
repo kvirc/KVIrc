@@ -1249,20 +1249,20 @@ void KviClassEditor::newNamespace()
 
 void KviClassEditor::newMemberFunction()
 {
-        QString szFunctionName,szClassName;
-        if(m_pLastClickedItem->isMethod()) m_pLastClickedItem=m_pLastClickedItem->parentItem();
-        szClassName=buildFullClassName(m_pLastClickedItem);
-        bool bInternal;
-        askForFunction(szFunctionName, &bInternal,szClassName);
-        if(szFunctionName.isEmpty())return;
-        KviClassEditorTreeWidgetItem *it=newItem(szFunctionName,KviClassEditorTreeWidgetItem::Method);
-        it->setInternalFunction(bInternal);
+       QString szFunctionName,szClassName;
+       if(m_pLastClickedItem->isMethod()) m_pLastClickedItem=m_pLastClickedItem->parentItem();
+       szClassName=buildFullClassName(m_pLastClickedItem);
+       bool bInternal;
+       askForFunction(szFunctionName, &bInternal,szClassName);
+       if(szFunctionName.isEmpty())return;
+       KviClassEditorTreeWidgetItem *it=newItem(szFunctionName,KviClassEditorTreeWidgetItem::Method);
+      //  it->setInternalFunction(bInternal);
 }
 
 KviClassEditorTreeWidgetItem *  KviClassEditor::newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType)
 {
         if(m_pLastClickedItem)
-        buildFullItemPath(m_pLastClickedItem,szName);
+            buildFullItemPath(m_pLastClickedItem,szName);
         QString szTmp;
         if(findItem(szName)) szName.append("1");
         int idx=2;
