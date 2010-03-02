@@ -266,12 +266,6 @@ protected:
         QWidget     * m_pParent;
 protected slots:
         void textChanged(const QString &);
-        void newClass();
-/*signals:
-        void replaceAll(const QString &, const QString &);
-        void initFind();
-        void nextFind(const QString &);
-*/
 };
 
 class KviClassEditorFunctionDialog: public QDialog
@@ -291,11 +285,5 @@ protected:
         QWidget     * m_pParent;
 protected slots:
         void textChanged(const QString &);
-       // void newClass();
-/*signals:
-        void replaceAll(const QString &, const QString &);
-        void initFind();
-        void nextFind(const QString &);
-*/
 };
 #endif //_ALIASEDITOR_H_
