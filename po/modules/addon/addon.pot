@@ -8,13 +8,89 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-01 21:54+0100\n"
+"POT-Creation-Date: 2010-03-02 01:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/addon/libkviaddon.cpp:146
+msgid "%cAddon id %Q, version %Q%c"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:147
+msgid "Name: %Q"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:148
+msgid "Description: %Q"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:154
+#, c-format
+msgid "Total: %d addons installed"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
+msgid "Uninstalling existing addon version %Q"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+msgid "The addon \"%1\" does not exist"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:240
+msgid "The addon \"%1\" has no configure callback set"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:287
+msgid "The addon \"%1\" has no help callback set"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:529
+msgid "Internal error: call a head-shrinker"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:538
+msgid "The specified version \"%Q\" is not a valid version string"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:544
+msgid "The specified KVIrc version \"%Q\" is not a valid version string"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:550
+msgid ""
+"This KVIrc executable is too old to run this addon (minimum version required "
+"is %Q)"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:555
+msgid "Attempting to register addon \"%Q\" with version %Q"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:567
+msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:581
+msgid "Addon registration failed"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:586
+msgid "Addon successfully registered"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:636
+msgid "Error installing addon package: %Q"
+msgstr ""
 
 #: src/modules/addon/managementdialog.cpp:110
 msgid "Configure Addon..."
@@ -281,82 +357,6 @@ msgstr ""
 
 #: src/modules/addon/packaddondialog.cpp:689
 msgid "Finish"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:146
-msgid "%cAddon id %Q, version %Q%c"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:147
-msgid "Name: %Q"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:148
-msgid "Description: %Q"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:154
-#, c-format
-msgid "Total: %d addons installed"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
-msgid "Uninstalling existing addon version %Q"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-msgid "The addon \"%1\" does not exist"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:240
-msgid "The addon \"%1\" has no configure callback set"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:287
-msgid "The addon \"%1\" has no help callback set"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:529
-msgid "Internal error: call a head-shrinker"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:538
-msgid "The specified version \"%Q\" is not a valid version string"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:544
-msgid "The specified KVIrc version \"%Q\" is not a valid version string"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:550
-msgid ""
-"This KVIrc executable is too old to run this addon (minimum version required "
-"is %Q)"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:555
-msgid "Attempting to register addon \"%Q\" with version %Q"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:567
-msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:581
-msgid "Addon registration failed"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:586
-msgid "Addon successfully registered"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:636
-msgid "Error installing addon package: %Q"
 msgstr ""
 
 #: src/modules/addon/addonfunctions.cpp:47

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-01 21:54+0100\n"
+"POT-Creation-Date: 2010-03-02 01:57+0100\n"
 "PO-Revision-Date: 2010-01-30 19:43+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -46,7 +46,8 @@ msgstr " Пользователь: %c%Q"
 msgid "&Add Group..."
 msgstr "&Добавить группу..."
 
-#: src/modules/reguser/dialog.cpp:241 src/modules/reguser/edituser.cpp:371
+#: src/modules/reguser/dialog.cpp:241
+#: src/modules/reguser/edituser.cpp:371
 msgid "&Add..."
 msgstr "&Добавить..."
 
@@ -62,8 +63,10 @@ msgstr "&Редактировать..."
 msgid "&New"
 msgstr "&Новый"
 
-#: src/modules/reguser/dialog.cpp:287 src/modules/reguser/edituser.cpp:113
-#: src/modules/reguser/edituser.cpp:274 src/modules/reguser/edituser.cpp:487
+#: src/modules/reguser/dialog.cpp:287
+#: src/modules/reguser/edituser.cpp:113
+#: src/modules/reguser/edituser.cpp:274
+#: src/modules/reguser/edituser.cpp:487
 msgid "&OK"
 msgstr "&Ok"
 
@@ -236,8 +239,10 @@ msgstr "Невозможно открыть файл %Q на запись."
 msgid "Can't open file %s for reading."
 msgstr "Невозможно открыть файл %s на чтение."
 
-#: src/modules/reguser/dialog.cpp:292 src/modules/reguser/edituser.cpp:117
-#: src/modules/reguser/edituser.cpp:278 src/modules/reguser/edituser.cpp:486
+#: src/modules/reguser/dialog.cpp:292
+#: src/modules/reguser/edituser.cpp:117
+#: src/modules/reguser/edituser.cpp:278
+#: src/modules/reguser/edituser.cpp:486
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -246,16 +251,20 @@ msgstr "Отмена"
 msgid "Channel: %c%s@%s"
 msgstr "Канал: %c%s@%s"
 
-#: src/modules/reguser/dialog.cpp:691 src/modules/reguser/dialog.cpp:791
+#: src/modules/reguser/dialog.cpp:691
+#: src/modules/reguser/dialog.cpp:791
 msgid "Choose a Filename - KVIrc"
 msgstr "Выберите имя файла - KVIrc"
 
-#: src/modules/reguser/dialog.cpp:134 src/modules/reguser/edituser.cpp:348
+#: src/modules/reguser/dialog.cpp:134
+#: src/modules/reguser/edituser.cpp:348
 msgid "Comment:"
 msgstr "Комментарий:"
 
-#: src/modules/reguser/dialog.cpp:494 src/modules/reguser/dialog.cpp:497
-#: src/modules/reguser/dialog.cpp:498 src/modules/reguser/dialog.cpp:500
+#: src/modules/reguser/dialog.cpp:494
+#: src/modules/reguser/dialog.cpp:497
+#: src/modules/reguser/dialog.cpp:498
+#: src/modules/reguser/dialog.cpp:500
 #: src/modules/reguser/dialog.cpp:502
 msgid "Default"
 msgstr "По умолчанию"
@@ -286,7 +295,8 @@ msgstr ""
 msgid "Flags"
 msgstr "Флаги"
 
-#: src/modules/reguser/dialog.cpp:397 src/modules/reguser/dialog.cpp:410
+#: src/modules/reguser/dialog.cpp:397
+#: src/modules/reguser/dialog.cpp:410
 msgid "Group name:"
 msgstr "Имя группы:"
 
@@ -449,7 +459,8 @@ msgstr "Свойство"
 msgid "Property Editor"
 msgstr "Редактор свойств"
 
-#: src/modules/reguser/dialog.cpp:251 src/modules/reguser/edituser.cpp:375
+#: src/modules/reguser/dialog.cpp:251
+#: src/modules/reguser/edituser.cpp:375
 msgid "Re&move"
 msgstr "&Удалить"
 
