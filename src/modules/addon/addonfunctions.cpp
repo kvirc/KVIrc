@@ -247,7 +247,11 @@ namespace KviAddonFunctions
 			}
 
 			// Now we have all stuff in ~/.config/KVIrc/tmp/$rand
-			KviKvsScript::run("parse " + szUnpackPath + "/install.kvs",g_pActiveWindow);
+
+                        QString szParse="parse \"" + szUnpackPath + "\\install.kvs"+"\"";
+                        szParse.replace("\\","\\\\");
+                        KviKvsScript::run(szParse,g_pActiveWindow);
+
 
 			// Remove all files
 			QDir * pDir = new QDir(szUnpackPath);
