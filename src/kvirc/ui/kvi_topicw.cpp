@@ -53,6 +53,7 @@
 #include <QClipboard>
 #include <QEvent>
 #include <QMouseEvent>
+#include <QTextDocument> // for Qt::escape
 
 extern KviColorWindow * g_pColorWindow;
 
@@ -117,6 +118,7 @@ KviTopicWidget::KviTopicWidget(QWidget * par, KviChannel * pChannel, const char 
 	setAutoFillBackground(false);
 
 	m_pLabel = new KviThemedLabel(this, pChannel, "topic_label");
+	m_pLabel->setTextFormat(Qt::RichText);
 	connect(m_pLabel,SIGNAL(doubleClicked()),this,SLOT(switchMode()));
 	
 	reset();
@@ -307,7 +309,7 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 void KviTopicWidget::setTopic(const QString & topic)
 {
 	m_szTopic = topic;
-	m_pLabel->setText(KviHtmlGenerator::convertToHtml(m_szTopic));
+	m_pLabel->setText(KviHtmlGenerator::convertToHtml(Qt::escape(m_szTopic)));
 	
 	bool bFound = false;
 	for(QStringList::Iterator it=g_pRecentTopicList->begin();it != g_pRecentTopicList->end(); ++it)
@@ -357,14 +359,7 @@ void KviTopicWidget::updateToolTip()
 
 		txt +=          "<tr><td><center>";
 
-		QString tmp = m_szTopic;
-
-		tmp.replace('&',"&amp;");
-		tmp.replace('<',"&lt;");
-		tmp.replace('>',"&gt;");
-		tmp = KviHtmlGenerator::convertToHtml(tmp);
-
-		txt += tmp;
+		txt += KviHtmlGenerator::convertToHtml(Qt::escape(m_szTopic));
 		txt +=          "</center></td></tr>";
 
 		//FIXME hardcoding styles sucks

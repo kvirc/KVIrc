@@ -65,9 +65,22 @@ namespace KviHtmlGenerator
 					((c != '=') || bIgnoreIcons)
 				)
 			{
-				uIdx++;
 				bIgnoreIcons=FALSE;
-				if(uIdx >= (unsigned int)szText.length())break;
+				if(c == '&')
+				{
+					//look for an html entity
+					QString szEntity = szText.mid((int)uIdx,5);
+					if(szEntity=="&amp;")
+					{
+						uIdx+=4;
+					} else {
+						szEntity.truncate(4);
+						if(szEntity=="&lt;" || szEntity=="&gt;") uIdx+=3;
+					}
+				}
+
+				uIdx++;
+				if(uIdx >= (unsigned int)szText.length()) break;
 				else c = szText[(int)uIdx].unicode();
 			}
 
