@@ -53,13 +53,24 @@ KviThemedComboBox::~KviThemedComboBox()
 
 void KviThemedComboBox::applyOptions()
 {
-	QString szStyle = QString("QComboBox { background: transparent; color: %1; font-family: %2; font-size: %3pt; font-weight: %4; font-style: %5;}")
-	.arg(KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name())
-	.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
-	.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
-	.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
-	.arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
-	setStyleSheet(szStyle);
+	if(style()->objectName() == "oxygen")
+	{
+		//workaround for broken oxygen in kde4.4: use palette() instead that stylesheet
+		setFont(KVI_OPTION_FONT(KviOption_fontLabel));
+		QPalette pal = palette();
+		pal.setBrush(QPalette::Base, Qt::transparent);
+		//qcombobox forces QPalette::Text as its forecolor
+		pal.setBrush(QPalette::Text,KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()));
+		setPalette(pal);
+	} else {
+		QString szStyle = QString("QComboBox { background: transparent; color: %1; font-family: %2; font-size: %3pt; font-weight: %4; font-style: %5;}")
+		.arg(KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name())
+		.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
+		.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
+		.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
+		.arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
+		setStyleSheet(szStyle);
+	}
 	update();
 }
 
