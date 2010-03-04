@@ -44,14 +44,6 @@ KviThemedLineEdit::KviThemedLineEdit(QWidget * par, KviWindow * pWindow,const ch
 	m_pKviWindow = pWindow;
 	setAutoFillBackground(false);
 	setContentsMargins(2,2,2,2);
-	
-	QPalette pal = palette();
-	pal.setBrush(QPalette::Active, QPalette::Base, Qt::transparent);
-	pal.setBrush(QPalette::Inactive, QPalette::Base, Qt::transparent);
-	pal.setBrush(QPalette::Disabled, QPalette::Base, Qt::transparent);
-
-	setPalette(pal);
-
 	applyOptions();
 }
 
@@ -61,11 +53,13 @@ KviThemedLineEdit::~KviThemedLineEdit()
 
 void KviThemedLineEdit::applyOptions()
 {
-	setFont(KVI_OPTION_FONT(KviOption_fontLabel));
-	QPalette pal = palette();
-	pal.setBrush(QLineEdit::foregroundRole(),KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()));
-	setPalette(pal);
-
+	QString szStyle = QString("QLineEdit { background: transparent; color: %1; font-family: %2; font-size: %3pt; font-weight: %4; font-style: %5;}")
+	.arg(KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name())
+	.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
+	.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
+	.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
+	.arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
+	setStyleSheet(szStyle);
 	update();
 }
 

@@ -1071,6 +1071,7 @@ void KviConsole::setAvatarFromOptions()
 
 void KviConsole::applyOptions()
 {
+	m_pAddressEdit->applyOptions();
 	m_pNotifyListView->applyOptions();
 	m_pInput->applyOptions();
 	m_pIrcView->applyOptions();
