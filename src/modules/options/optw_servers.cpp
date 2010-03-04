@@ -1234,10 +1234,12 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	connect(m_pRecentPopup,SIGNAL(activated(int)),this,SLOT(recentServersPopupClicked(int)));
 
 	QToolButton * tb = new QToolButton(this);
-	addWidgetToLayout(tb,1,2,1,2);
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME))));
 	tb->setMenu(m_pRecentPopup);
-//	tb->setPopupDelay(1);
+	tb->setAutoRaise(true);
+	tb->setPopupMode(QToolButton::InstantPopup);
+	addWidgetToLayout(tb,1,2,1,2);
+	
 	KviTalToolTip::add(tb,__tr2qs_ctx("<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>","options"));
 
 	KviBoolSelector * b = addBoolSelector(0,3,1,3,__tr2qs_ctx("Show this dialog at startup","options"),KviOption_boolShowServersConnectDialogOnStart);
@@ -1274,63 +1276,30 @@ KviServerOptionsWidget::~KviServerOptionsWidget()
 void KviServerOptionsWidget::recentServersPopupAboutToShow()
 {
 	g_pApp->fillRecentServersPopup(m_pRecentPopup);
+	m_pRecentPopup->insertSeparator();
+	m_pRecentPopup->insertItem(__tr2qs("Clear Recent Servers List"));
 }
 
 void KviServerOptionsWidget::recentServersPopupClicked(int id)
 {
-	KviStr data = m_pRecentPopup->text(id);
-	data.cutToFirst('/');
-	while(data.firstCharIs('/'))data.cutLeft(1);
-	data.cutFromLast(':');
-	data.replaceAll("/","");
-	// we should have a full server name now , with no port
+	KviConsole * c = g_pActiveWindow->console();
+	if(!c)return;
 
-	KviStr port = m_pRecentPopup->text(id);
-	port.cutToLast(':');
-	bool bOk;
-	kvi_u32_t uPort = port.toUInt(&bOk);
-	// we have the port too
-
-	QTreeWidgetItem * pFoundNet = 0;
-	QTreeWidgetItem * pFoundSrv = 0;
-
-	QTreeWidgetItem * net;
-	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+	QString szItemText = m_pRecentPopup->text(id);
+	szItemText.remove(QChar('&'));
+	if(!szItemText.isEmpty())
 	{
-		net=(QTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
-		QTreeWidgetItem * srv;
-		for (int j=0;j<net->childCount();j++)
+		if(szItemText == __tr2qs("Clear Recent Servers List"))
 		{
-			srv=(QTreeWidgetItem *)net->child(i);
-			KviStr tmp = ((KviServerOptionsTreeWidgetItem *)srv)->m_pServerData->hostName();
-			if(kvi_strEqualCI(tmp.ptr(),data.ptr()))
+			KviKvsScript::run("option stringlistRecentServers",c);
+		} else {
+			KviStr szCommand;
+			QString szText = szItemText;
+			if(KviIrcUrl::parse(szText.toUtf8().data(),szCommand,KVI_IRCURL_CONTEXT_THIS))
 			{
-				if(((KviServerOptionsTreeWidgetItem *)srv)->m_pServerData->port() == uPort)
-				{
-					net->setExpanded(true);
-					m_pTreeWidget->setCurrentItem(srv);
-					m_pTreeWidget->scrollToItem(srv);
-					return;
-				} else {
-					if(!pFoundNet)
-					{
-						// the port doesn't match.. check for
-						// another entry with the correct port
-						// but keep track of this entry in case we don't find it
-						pFoundNet = srv;
-						pFoundSrv = net;
-					}
-				}
+				KviKvsScript::run(szCommand.ptr(),c);
 			}
 		}
-	}
-
-	// fallback to the server with the wrong port
-	if(pFoundNet)
-	{
-		pFoundNet->setExpanded(true);
-		m_pTreeWidget->setCurrentItem(pFoundSrv);
-		m_pTreeWidget->scrollToItem(pFoundSrv);
 	}
 }
 

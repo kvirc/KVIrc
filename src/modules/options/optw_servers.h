@@ -164,17 +164,17 @@ public:
 	KviServerOptionsWidget(QWidget * parent);
 	~KviServerOptionsWidget();
 protected:
-	QTreeWidget                    * m_pTreeWidget;
+	QTreeWidget                  * m_pTreeWidget;
 	QLabel                       * m_pSrvNetLabel;
 	QLineEdit                    * m_pSrvNetEdit;
-	//QLabel                       * m_pPortLabel;
-	//QLineEdit                    * m_pPortEdit;
+	//QLabel                     * m_pPortLabel;
+	//QLineEdit                  * m_pPortEdit;
 	QPushButton                  * m_pDetailsButton;
-	KviTalPopupMenu                   * m_pRecentPopup;
-	KviTalPopupMenu                   * m_pContextPopup;
-	KviTalPopupMenu                   * m_pImportPopup;
-	KviServer                 * m_pClipboard;
-	//QCheckBox                    * m_pIPv6Check;
+	KviTalPopupMenu              * m_pRecentPopup;
+	KviTalPopupMenu              * m_pContextPopup;
+	KviTalPopupMenu              * m_pImportPopup;
+	KviServer                    * m_pClipboard;
+	//QCheckBox                  * m_pIPv6Check;
 	QPushButton                  * m_pConnectCurrent;
 	QPushButton                  * m_pConnectNew;
 	KviServerOptionsTreeWidgetItem * m_pLastEditedItem;
