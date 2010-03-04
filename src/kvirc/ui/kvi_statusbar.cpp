@@ -101,9 +101,6 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	setPermanentMessage();
 
 	m_bStopLayoutOnAddRemove = false;
-
-
-	//updateLayout();
 }
 
 
@@ -236,12 +233,6 @@ void KviStatusBar::save()
 
 bool KviStatusBar::event(QEvent * e)
 {
-	if(e->type() == QEvent::LayoutRequest)
-	{
-		//updateLayout();
-		return false; // send to parents too!
-	}
-
 	if (e->type() == QEvent::ToolTip)
 	{
 		QHelpEvent * pHelpEvent = (QHelpEvent *)e;
@@ -275,7 +266,6 @@ void KviStatusBar::recalcMinimumHeight()
 			if(l->inherits("QBoxLayout"))
 				((QBoxLayout *)l)->addStrut(iSize);
 		}
-		// FIXME: do QMainWindow need setUpLayout() here ?
 	}
 }
 
@@ -467,7 +457,6 @@ void KviStatusBar::appletsPopupActivated(int iId)
 					m_pAppletList->removeRef(pApplet);
 					m_pAppletList->inSort(pApplet);
 					m_bStopLayoutOnAddRemove = bSave;
-					//if(!m_bStopLayoutOnAddRemove)updateLayout();
 					showLayoutHelp();
 					return;
 				}
@@ -490,7 +479,6 @@ void KviStatusBar::registerApplet(KviStatusBarApplet * pApplet)
 	m_pAppletList->inSort(pApplet);
 	if(!pApplet->isVisible())
 		pApplet->show();
-	//if(!m_bStopLayoutOnAddRemove)updateLayout();
 }
 
 void KviStatusBar::unregisterApplet(KviStatusBarApplet * pApplet)
@@ -501,7 +489,6 @@ void KviStatusBar::unregisterApplet(KviStatusBarApplet * pApplet)
 	m_pAppletList->removeRef(pApplet);
 	if(pApplet->isVisible())
 		pApplet->hide();
-	//if(!m_bStopLayoutOnAddRemove)updateLayout();
 }
 
 int KviStatusBar::insertPermanentWidgetAtTheEnd(QWidget * widget, int stretch)

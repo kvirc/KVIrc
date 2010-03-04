@@ -220,10 +220,6 @@ protected:
 	*/
 	void recalcMinimumHeight();
 
-	//void layoutChildren();
-
-	//void updateLayout(){ recalcMinimumHeight(); layoutChildren(); };
-
 	/**
 	* \brief Saves the statusbar stack
 	* \return void
