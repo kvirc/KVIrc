@@ -60,6 +60,7 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	m_pFrame = pFrame;
 	// ugh :D
 	setSizeGripEnabled(false);
+	setAcceptDrops(true);
 
 	m_pContextPopup = 0;
 	m_pAppletsPopup = 0;
@@ -105,6 +106,62 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	//updateLayout();
 }
 
+
+void KviStatusBar::dropEvent(QDropEvent *de)
+{
+	de->accept();
+	m_pClickedApplet=0;
+}
+
+void KviStatusBar::dragEnterEvent(QDragEnterEvent *event)
+{
+	event->acceptProposedAction();
+}
+
+void KviStatusBar::dragMoveEvent(QDragMoveEvent *de)
+{
+	// Unpack dropped data and handle it the way you want
+	if(de->mimeData()->hasFormat("kvirc/statusbarapplet") &&
+		de->source() != 0 &&
+		m_pClickedApplet &&
+		appletExists(m_pClickedApplet)
+	)
+	{
+		KviStatusBarApplet * pApplet = m_pAppletList->last();
+		int oldIndex = m_pClickedApplet->index();
+		int newIndex=pApplet->index();
+
+		// move!
+		while(pApplet)
+		{
+			if(de->pos().x() < (pApplet->x() + pApplet->width() - m_pClickedApplet->width()))
+			{
+				pApplet = m_pAppletList->prev();
+			} else {
+				newIndex = pApplet->index();
+				break;
+			}
+		}
+		if(!pApplet)
+		{
+			pApplet=m_pAppletList->first();
+			newIndex = pApplet->index();
+		}
+		
+		//swap indexes
+		if(newIndex!=oldIndex)
+		{
+			m_pClickedApplet->setIndex(newIndex);
+			pApplet->setIndex(oldIndex);
+
+			removeWidget(m_pClickedApplet); //Note: This function does not delete the widget but hides it. To add the widget again, you must call both the addWidget() and show() functions.
+			insertPermanentWidget(newIndex, m_pClickedApplet);
+			m_pClickedApplet->show();
+
+			m_pAppletList->sort();
+		}
+	}
+}
 
 KviStatusBar::~KviStatusBar()
 {
@@ -176,29 +233,7 @@ void KviStatusBar::save()
 		i++;
 	}
 }
-/*
-void KviStatusBar::layoutChildren()
-{
-	int x = width() - HMARGIN;
-	int h = height() - (VMARGIN * 2);
-	for(KviStatusBarApplet * a = m_pAppletList->last();a;a = m_pAppletList->prev())
-	{
-		int w = a->KviStatusBarApplet::sizeHint().width();
-		//debug("width %d",w);
-		x -= w;
-		a->setGeometry(x,VMARGIN,w,h);
-		x -= SPACING;
-	}
 
-	// trick to center vertically the rich text label: make it some pixels smaller
-	m_pMessageLabel->setGeometry(HMARGIN,VMARGIN,x - HMARGIN,h - RICHTEXTLABELTRICK);
-}
-
-void KviStatusBar::resizeEvent(QResizeEvent * e)
-{
-	layoutChildren();
-}
-*/
 bool KviStatusBar::event(QEvent * e)
 {
 	if(e->type() == QEvent::LayoutRequest)
@@ -430,7 +465,7 @@ void KviStatusBar::appletsPopupActivated(int iId)
 					m_bStopLayoutOnAddRemove = true;
 					KviStatusBarApplet * pApplet = d->create(this);
 					m_pAppletList->removeRef(pApplet);
-					m_pAppletList->insert(pApplet->index(),pApplet);
+					m_pAppletList->inSort(pApplet);
 					m_bStopLayoutOnAddRemove = bSave;
 					//if(!m_bStopLayoutOnAddRemove)updateLayout();
 					showLayoutHelp();
@@ -452,7 +487,7 @@ void KviStatusBar::registerAppletDescriptor(KviStatusBarAppletDescriptor * d)
 
 void KviStatusBar::registerApplet(KviStatusBarApplet * pApplet)
 {
-	m_pAppletList->append(pApplet);
+	m_pAppletList->inSort(pApplet);
 	if(!pApplet->isVisible())
 		pApplet->show();
 	//if(!m_bStopLayoutOnAddRemove)updateLayout();
@@ -483,53 +518,20 @@ void KviStatusBar::mousePressEvent(QMouseEvent * e)
 		m_pClickedApplet = (KviStatusBarApplet*) childAt(e->pos());
 		if(m_pClickedApplet)
 		{
-			m_pClickedApplet->select();
-			g_pApp->setOverrideCursor(Qt::SizeAllCursor);
-		}
-	}
-}
-
-void KviStatusBar::mouseReleaseEvent(QMouseEvent * e)
-{
-	if(e->button() == Qt::LeftButton)
-	{
-		if(m_pClickedApplet && appletExists(m_pClickedApplet))
-		{
-			KviStatusBarApplet * pApplet = (KviStatusBarApplet *) childAt(e->pos());
-
-			if(pApplet == m_pClickedApplet)
-				return;
-
-			// move!
-			if(!pApplet)
-			{
-				pApplet = m_pAppletList->first();
-				while(pApplet)
-				{
-					if(e->pos().x() < (pApplet->x()+pApplet->width()))
-					{
-						break;
-					} else {
-						pApplet = m_pAppletList->next();
-					}
-				}
-				if(!pApplet || pApplet == m_pClickedApplet)
-					return; // no way to move
-			}
-
-			//swap indexes
-			int oldIndex = m_pClickedApplet->index();
-			int newIndex = pApplet->index();
-			m_pClickedApplet->setIndex(newIndex);
-			pApplet->setIndex(oldIndex);
-
-			removeWidget(m_pClickedApplet); //Note: This function does not delete the widget but hides it. To add the widget again, you must call both the addWidget() and show() functions.
-			insertPermanentWidget(newIndex, m_pClickedApplet);
-			m_pClickedApplet->show();
-
-			m_pClickedApplet->select(false);
-			g_pApp->restoreOverrideCursor();
-			m_pClickedApplet = 0;
+			QDrag *dr = new QDrag(this);
+			// The data to be transferred by the drag and drop operation is contained in a QMimeData object
+			QMimeData *data = new QMimeData;
+			QString szIndex;
+			szIndex.setNum(m_pClickedApplet->index());
+			data->setData("kvirc/statusbarapplet", szIndex.toUtf8());
+			// Assign ownership of the QMimeData object to the QDrag object.
+			dr->setMimeData(data);
+			QPixmap pixmap(m_pClickedApplet->size());
+			m_pClickedApplet->render(&pixmap);
+			dr->setPixmap(pixmap);
+			// Start the drag and drop operation
+			m_pAppletList->sort();
+			dr->start();
 		}
 	}
 }

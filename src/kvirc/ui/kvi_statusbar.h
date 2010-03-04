@@ -311,12 +311,12 @@ protected slots:
 	*/
 	void setPermanentMessage();
 protected:
-	//virtual void paintEvent(QPaintEvent * e);
 	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseReleaseEvent(QMouseEvent * e);
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
-	//virtual void resizeEvent(QResizeEvent * e);
 	virtual bool event(QEvent * e);
+	void dropEvent(QDropEvent *de);
+	void dragMoveEvent(QDragMoveEvent *de);
+	void dragEnterEvent(QDragEnterEvent *event);
 };
 
 #endif // _KVI_STATUSBAR_H_

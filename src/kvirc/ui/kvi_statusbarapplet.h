@@ -80,7 +80,6 @@ protected:
 	void unregisterApplet(KviStatusBarApplet * a);
 };
 
-
 class KVIRC_API KviStatusBarApplet : public QLabel
 {
 	friend class KviStatusBar;
@@ -88,7 +87,6 @@ class KVIRC_API KviStatusBarApplet : public QLabel
 protected:
 	KviStatusBar                 * m_pStatusBar;
 	KviStatusBarAppletDescriptor * m_pDescriptor;
-	bool                           m_bSelected;
 	int mIndex;
 public:
 	KviStatusBarApplet(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
@@ -97,18 +95,20 @@ public:
 	KviStatusBar * statusBar(){ return m_pStatusBar; };
 	KviFrame * frame(){ return m_pStatusBar->frame(); };
 	KviStatusBarAppletDescriptor * descriptor(){ return m_pDescriptor; };
-	void setIndex(int i){ mIndex=i; };
-	int index(){ return mIndex; };
-	void select(bool bSelect = true);
-	bool isSelected(){ return m_bSelected; };
+	inline void setIndex(int i){ mIndex=i; };
+	inline int index() const { return mIndex; };
 protected:
-	virtual void paintEvent(QPaintEvent * e);
-
 	virtual void fillContextPopup(KviTalPopupMenu *){};
 	virtual void loadState(const char *, KviConfig *){};
 	virtual void saveState(const char *, KviConfig *){};
 	virtual QString tipText(const QPoint &);
 };
+
+//this is needed to sort a KviPointerList<KviStatusBarApplet *>
+inline int kvi_compare(const KviStatusBarApplet * p1, const KviStatusBarApplet * p2)
+{
+	return p1->index() > p2->index();
+}
 
 
 class KviStatusBarClock : public KviStatusBarApplet

@@ -103,9 +103,9 @@ void KviStatusBarAppletDescriptor::unregisterApplet(KviStatusBarApplet * a)
 KviStatusBarApplet::KviStatusBarApplet(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
 : QLabel(pParent), m_pStatusBar(pParent), m_pDescriptor(pDescriptor)
 {
+	setAutoFillBackground(false);
 	m_pDescriptor->registerApplet(this);
 	m_pStatusBar->registerApplet(this);
-	m_bSelected = false;
 }
 
 KviStatusBarApplet::~KviStatusBarApplet()
@@ -118,28 +118,6 @@ QString KviStatusBarApplet::tipText(const QPoint &)
 {
 	return QString();
 }
-
-void KviStatusBarApplet::paintEvent(QPaintEvent * e)
-{
-	QLabel::paintEvent(e);
-	setFont(KVI_OPTION_FONT(KviOption_fontIrcToolBarApplet));
-	if(m_bSelected)
-	{
-		QPainter p(this);
-		QPalette pal=palette();
-		QColor col=pal.highlight().color();
-		col.setAlpha(127);
-		p.fillRect(rect(),QBrush(col));
-	}
-}
-
-void KviStatusBarApplet::select(bool bSelect)
-{
-	if(m_bSelected == bSelect)return;
-	m_bSelected = bSelect;
-	update();
-}
-
 
 // Away applet
 KviStatusBarAwayIndicator::KviStatusBarAwayIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
