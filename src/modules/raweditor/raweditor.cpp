@@ -194,8 +194,7 @@ void KviRawEditor::customContextMenuRequested(const QPoint &pos)
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENT)),
 			__tr2qs_ctx("&Add Raw Event...","editor"),
 			this,SLOT(addRaw()));
-
-	m_pContextPopup->popup(mapToGlobal(pos));
+        m_pContextPopup->popup(mapToGlobal(QPoint(pos.x()+15,pos.y())));
 }
 
 void KviRawEditor::getUniqueHandlerName(KviRawTreeWidgetItem *it,QString &buffer)
