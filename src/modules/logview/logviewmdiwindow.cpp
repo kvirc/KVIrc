@@ -139,9 +139,9 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	connect(m_pEnableToFilter,SIGNAL(toggled(bool)),m_pToDateEdit,SLOT(setEnabled(bool)));
 	m_pToDateEdit->setEnabled(false);
 
-	QPushButton *pb = new QPushButton(__tr2qs_ctx("Apply filter","logview"),m_pSearchTab);
-	connect(pb,SIGNAL(clicked()),this,SLOT(applyFilter()));
-	layout->addWidget(pb,10,1);
+	m_pFilterButton = new QPushButton(__tr2qs_ctx("Apply filter","logview"),m_pSearchTab);
+	connect(m_pFilterButton,SIGNAL(clicked()),this,SLOT(applyFilter()));
+	layout->addWidget(m_pFilterButton,10,1);
 
 	QWidget *w = new QWidget(m_pSearchTab);
 	w->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored);
@@ -215,6 +215,7 @@ QSize KviLogViewMDIWindow::sizeHint() const
 
 void KviLogViewMDIWindow::setupItemList()
 {
+	m_pFilterButton->setEnabled(false);
 	m_pListView->clear();
 	KviLogFile *pFile;
 	KviLogListViewItem *pLastCategory=0;
@@ -305,6 +306,7 @@ void KviLogViewMDIWindow::setupItemList()
 	}
 	progress.setValue( m_logList.count() );
 	m_pListView->sortItems(0, Qt::AscendingOrder);
+	m_pFilterButton->setEnabled(true);
 }
 
 void KviLogViewMDIWindow::cacheFileList()

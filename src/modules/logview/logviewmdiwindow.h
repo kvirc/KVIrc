@@ -118,6 +118,7 @@ protected:
 	QTabWidget         * m_pTabWidget;
 	KviTalVBox         * m_pIndexTab;
 	QWidget            * m_pSearchTab;
+	QPushButton        * m_pFilterButton;
 protected:
 	QStringList getFileNames();
 
