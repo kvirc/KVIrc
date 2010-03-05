@@ -1407,6 +1407,7 @@ void KviClassEditor::build()
         }
          ++it;
     }
+    KviKvsKernel::instance()->objectController()->flushUserClasses();
 
 }
 void KviClassEditor::searchInerithedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInerithedClasses)
