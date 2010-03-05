@@ -246,13 +246,6 @@ KviStatusBarLagIndicator::KviStatusBarLagIndicator(KviStatusBar * pParent, KviSt
 	connect(pParent->frame(),SIGNAL(activeConnectionLagChanged()),this,SLOT(updateDisplay()));
 
 	updateDisplay();
-
-	QFont f = font();
-	f.setFixedPitch(true);
-	f.setFamily("fixed");
-	setFont(f);
-
-	updateDisplay();
 }
 
 KviStatusBarLagIndicator::~KviStatusBarLagIndicator()
@@ -370,16 +363,25 @@ KviStatusBarClock::KviStatusBarClock(KviStatusBar * pParent, KviStatusBarAppletD
 	m_b24h  = true;
 	m_iType = KviStatusBarClock::HMS;
 
+	adjustMinWidth();
 	startTimer(1000);
-
-	QFont f = font();
-	f.setFixedPitch(true);
-	f.setFamily("fixed");
-	setFont(f);
 }
 
 KviStatusBarClock::~KviStatusBarClock()
 {
+}
+
+void KviStatusBarClock::adjustMinWidth()
+{
+	QFontMetrics fm(font());
+	if(m_b24h)
+	{
+		if(m_iType==KviStatusBarClock::HMS) setFixedWidth(fm.width("00:00:00"));
+		else setFixedWidth(fm.width("00:00"));
+	} else {
+		if(m_iType==KviStatusBarClock::HMS) setFixedWidth(fm.width("00:00:00 AM"));
+		else setFixedWidth(fm.width("00:00 AM"));
+	}
 }
 
 void KviStatusBarClock::timerEvent(QTimerEvent *)
@@ -476,6 +478,7 @@ void KviStatusBarClock::toggleUtc()
 void KviStatusBarClock::toggle24h()
 {
 	m_b24h = !m_b24h;
+	adjustMinWidth();
 	timerEvent(0);
 }
 
@@ -483,6 +486,7 @@ void KviStatusBarClock::changeFormat(QAction * pAct)
 {
 	bool bOk;
 	m_iType = pAct->data().toInt(&bOk);
+	adjustMinWidth();
 	if(!bOk) return;
 }
 
@@ -527,6 +531,9 @@ KviStatusBarConnectionTimer::KviStatusBarConnectionTimer(KviStatusBar * pParent,
 {
 	startTimer(1000);
 	m_bTotal=0;
+
+	QFontMetrics fm(font());
+	setFixedWidth(fm.width("000 d 00 h 00 m 00 s"));
 }
 
 KviStatusBarConnectionTimer::~KviStatusBarConnectionTimer()

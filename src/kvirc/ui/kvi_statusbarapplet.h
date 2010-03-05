@@ -130,6 +130,7 @@ protected:
 
 	virtual void loadState(const char * pcPrefix, KviConfig * pCfg);
 	virtual void saveState(const char * pcPrefix, KviConfig * pCfg);
+	void adjustMinWidth();
 protected slots:
 	void toggleUtc();
 	void toggle24h();
