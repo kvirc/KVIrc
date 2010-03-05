@@ -63,7 +63,7 @@ class KviClassEditorTreeWidgetItem : public QTreeWidgetItem, public KviHeapObjec
 public:
         enum Type { Class, Namespace, Method };
 public:
-	KviClassEditorTreeWidgetItem(QTreeWidget * pTreeWidget,Type eType,const QString &szName);
+        KviClassEditorTreeWidgetItem(QTreeWidget * pTreeWidget,Type eType,const QString &szName);
         KviClassEditorTreeWidgetItem(KviClassEditorTreeWidgetItem * pParentItem,Type eType,const QString &szName);
 	~KviClassEditorTreeWidgetItem(){};
 protected:
@@ -76,6 +76,7 @@ protected:
         int  m_cPos;
 public:
         void setInerithClass(QString szInerithClassName){m_szInerithClassName=szInerithClassName;};
+        QString inerithClass(){return m_szInerithClassName;};
 	const QString & name(){ return m_szName; };
 	void setName(const QString &szName);
         void setClassModified(bool bModified){m_bClassModified=bModified;};
@@ -122,6 +123,7 @@ public:
 	KviScriptEditor              * m_pEditor;
 	KviClassEditorTreeWidget     * m_pTreeWidget;
         QLabel                       * m_pClassNameLabel;
+        QLabel                       * m_pInerithClassNameLabel;
         QPushButton                  * m_pClassNameRenameButton;
         QLabel                       * m_pMemberFunctionNameLabel;
         QPushButton                  * m_pMemberFunctionNameRenameButton;
@@ -138,7 +140,8 @@ public:
         void loadProperties(KviConfig *);
         void loadUnbuildedFunctions();
         KviClassEditorTreeWidgetItem * findHandler(KviClassEditorTreeWidgetItem *pItemClass,const QString &szFunctionName);
-        void commit();
+        void build();
+        void save();
 
     /*
         void exportClasses(bool,bool=false);
@@ -197,6 +200,7 @@ protected:
         void askForClassName(QString &szClassName,QString &szInerithClassName);
         QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
         void askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName);
+        void searchInerithedClasses(const QString szClass,QStringList & szInerithed);
 
 /*
         bool removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
@@ -245,8 +249,8 @@ protected:
 	virtual void loadProperties(KviConfig *);
 protected slots:
 	void cancelClicked();
-	void okClicked();
-	void applyClicked();
+        void buildClicked();
+        void saveClicked();
 };
 
 class KviClassEditorDialog: public QDialog
