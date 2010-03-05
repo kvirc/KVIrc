@@ -27,6 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_pointerlist.h"
+#include "kvi_ircconnectionasynctemplatedata.h"
 
 class KviWindow;
 class KviKvsScript;
@@ -43,7 +44,7 @@ public:
 	QString szIdle;
 	QString szSignon;
 	QString szChannels;
-	QString szSpecial;
+	QString szAway;	// The szSpecial member is renamed szAway as its sole purpose is to tell whether the user is away or not
 	KviKvsScript * pCallback;
 	KviKvsVariant * pMagic;
 	KviWindow * pWindow;
@@ -54,17 +55,12 @@ public:
 
 
 
-class KVIRC_API KviIrcConnectionAsyncWhoisData
+// KviIrcConnectionAsyncWhoisData is now recreated using a template
+// I'm using inheritance as i haven't been able to use a typedef
+// This line didn't build
+// 	typedef KviIrcConnectionAsyncTemplateData<KviAsyncWhoisInfo> KviIrcConnectionAsyncWhoisData
+class KVIRC_API KviIrcConnectionAsyncWhoisData : public KviIrcConnectionAsyncTemplateData<KviAsyncWhoisInfo>
 {
-public:
-	KviIrcConnectionAsyncWhoisData();
-	~KviIrcConnectionAsyncWhoisData();
-protected:
-	KviPointerList<KviAsyncWhoisInfo> * m_pWhoisInfoList; // awhois pending stuff
-public:
-	void add(KviAsyncWhoisInfo * i);
-	KviAsyncWhoisInfo * lookup(const QString &nick);
-	void remove(KviAsyncWhoisInfo * i);
 };
 
 #endif //!_KVI_IRCCONNECTIONASYNCWHOISDATA_H_

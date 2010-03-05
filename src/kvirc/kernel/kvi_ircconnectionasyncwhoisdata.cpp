@@ -39,43 +39,4 @@ KviAsyncWhoisInfo::~KviAsyncWhoisInfo()
 	if(pMagic)delete pMagic;
 }
 
-KviIrcConnectionAsyncWhoisData::KviIrcConnectionAsyncWhoisData()
-{
-	m_pWhoisInfoList = 0;
-}
 
-KviIrcConnectionAsyncWhoisData::~KviIrcConnectionAsyncWhoisData()
-{
-	if(m_pWhoisInfoList)delete m_pWhoisInfoList;
-}
-
-void KviIrcConnectionAsyncWhoisData::add(KviAsyncWhoisInfo * i)
-{
-	if(!m_pWhoisInfoList)
-	{
-		m_pWhoisInfoList = new KviPointerList<KviAsyncWhoisInfo>;
-		m_pWhoisInfoList->setAutoDelete(true);
-	}
-	m_pWhoisInfoList->append(i);
-}
-
-KviAsyncWhoisInfo * KviIrcConnectionAsyncWhoisData::lookup(const QString &nick)
-{
-	if(!m_pWhoisInfoList)return 0;
-	for(KviAsyncWhoisInfo * i = m_pWhoisInfoList->first();i;i = m_pWhoisInfoList->next())
-	{
-		if(KviQString::equalCI(nick,i->szNick))return i;
-	}
-	return 0;
-}
-
-void KviIrcConnectionAsyncWhoisData::remove(KviAsyncWhoisInfo * i)
-{
-	if(!m_pWhoisInfoList)return;
-	m_pWhoisInfoList->removeRef(i);
-	if(m_pWhoisInfoList->isEmpty())
-	{
-		delete m_pWhoisInfoList;
-		m_pWhoisInfoList = 0;
-	}
-}

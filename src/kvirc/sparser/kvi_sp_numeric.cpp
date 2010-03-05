@@ -1141,20 +1141,20 @@ void KviServerParser::parseNumericWhoisAway(KviIrcMessage * msg)
 	if(e)e->setAway(true);
 	KviQuery * q = msg->connection()->findQuery(szNk);
 	if(q) q->updateLabelText();
+	QString szWText = msg->connection()->decodeText(msg->safeTrailing());
 
 	KviAsyncWhoisInfo * i = msg->connection()->asyncWhoisData()->lookup(szNk);
 	if(i)
 	{
-		if(!i->szSpecial.isEmpty())
-			i->szSpecial.append(",");
-		i->szSpecial.append("away");
+		// The szAway (previously szSpecial) is only modified by parseNumericWhoisAway
+		// So no use appending here
+		i->szAway = szWText ;
 		return;
 	}
 
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->connection()->findQuery(szNk));
-		QString szWText = pOut ? pOut->decodeText(msg->safeTrailing()) : msg->connection()->decodeText(msg->safeTrailing());
 
 		if(!pOut)pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
@@ -1398,7 +1398,11 @@ void KviServerParser::parseNumericWhoisServer(KviIrcMessage *msg)
 	KviAsyncWhoisInfo * i = msg->connection()->asyncWhoisData()->lookup(msg->safeParam(1));
 	if(i)
 	{
-		i->szServer = szServ;
+		// assigning to i->szServer erases everything that was previously appended in parseNumericWhoisOther
+		// this causes the lost of "is registered nick" info on unrealircd servers
+		// prepending solves the problem
+		if(!(i->szServer.isEmpty()))i->szServer.prepend(',');
+		i->szServer.prepend(szServ);
 		return;
 	}
 
@@ -1493,7 +1497,7 @@ void KviServerParser::parseNumericEndOfWhois(KviIrcMessage *msg)
 		vl.append(new KviKvsVariant(i->szSignon));
 		vl.append(new KviKvsVariant(i->szChannels));
 		vl.append(new KviKvsVariant(QString(msg->safePrefix())));
-		vl.append(new KviKvsVariant(i->szSpecial));
+		vl.append(new KviKvsVariant(i->szAway)); // szSpecial is renamed szAway
 		vl.append(new KviKvsVariant(*(i->pMagic)));
 		i->pCallback->run(i->pWindow,&vl,0,KviKvsScript::PreserveParams);
 		msg->connection()->asyncWhoisData()->remove(i);

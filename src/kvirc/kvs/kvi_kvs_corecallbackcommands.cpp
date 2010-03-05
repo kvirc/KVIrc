@@ -322,7 +322,7 @@ namespace KviKvsCoreCallbackCommands
 			$6 = signon time (may be empty)[br]
 			$7 = channels (may be empty)[br]
 			$8 = server that provided the information[br]
-			$9 = special information (may be empty)[br]
+			$9 = away message (empty if user hasn't set an away message)[br]
 			$10 = magic string evaluated at awhois call (may be empty)[br]
 			If the -i switch is specified , the whois message is sent to the server
 			that the <nickname> user is connected to; in this way you will probably
