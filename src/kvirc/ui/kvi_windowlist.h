@@ -31,6 +31,7 @@
 #include <QPushButton>
 #include <QFrame>
 #include <QDockWidget>
+#include <QLabel>
 
 class QPixmap;
 class KviWindow;
@@ -65,6 +66,15 @@ public:
 	int highlightLevel(){ return m_iHighlightLevel; };
 };
 
+class KVIRC_API KviWindowListTitleWidget : public QLabel
+{
+	Q_OBJECT
+public:
+	KviWindowListTitleWidget() {};
+	~KviWindowListTitleWidget() {};
+	QSize sizeHint() const { return text().isEmpty() ? QSize(4,4): QLabel::sizeHint(); };
+};
+
 //
 // KviWindowListBase
 //
@@ -81,6 +91,7 @@ public:
 protected:
 	KviFrame * m_pFrm;
 	QTimer   * m_pActivityMeterTimer;
+	KviWindowListTitleWidget  * m_pTitleWidget;
 	Qt::DockWidgetArea currentArea;
 public:
 	virtual KviWindowListItem * addItem(KviWindow *){ return 0; };
@@ -94,7 +105,7 @@ public:
 	virtual bool setIterationPointer(KviWindowListItem *){ return false; };
 	virtual void switchWindow(bool bNext,bool bInContextOnly,bool bHighlightedOnly=false);
 	virtual void updatePseudoTransparency(){};
-	virtual void applyOptions(){};
+	virtual void applyOptions();
 	virtual void wheelEvent(QWheelEvent *e);
 	static void getTextForConsole(QString &szText,KviConsole * pConsole);
 	Qt::DockWidgetArea currentDockArea() { return currentArea; };

@@ -63,6 +63,11 @@ KviWindowListBase::KviWindowListBase()
 	// FIXME: this timer should be started only if KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)
 	setObjectName(__tr2qs("windowlist"));
 	setFeatures(QDockWidget::DockWidgetMovable);
+
+	// to hide the title bar completely must replace the default widget with a generic one
+	m_pTitleWidget = new KviWindowListTitleWidget();
+	setTitleBarWidget( m_pTitleWidget );
+
 	m_pActivityMeterTimer = new QTimer();
 	connect(m_pActivityMeterTimer,SIGNAL(timeout()),this,SLOT(updateActivityMeter()));
 	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),this, SLOT(updateDockLocation(Qt::DockWidgetArea)));
@@ -71,6 +76,9 @@ KviWindowListBase::KviWindowListBase()
 
 KviWindowListBase::~KviWindowListBase()
 {
+	if(m_pTitleWidget)
+		delete m_pTitleWidget;
+
 	delete m_pActivityMeterTimer;
 }
 
@@ -151,6 +159,18 @@ void KviWindowListBase::wheelEvent(QWheelEvent *e)
 void KviWindowListBase::updateDockLocation(Qt::DockWidgetArea newArea)
 {
 	currentArea = newArea;
+}
+
+void KviWindowListBase::applyOptions()
+{
+	if(KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHeader))
+	{
+		m_pTitleWidget->setText(__tr2qs("Window List"));
+		m_pTitleWidget->setMargin(2);
+		m_pTitleWidget->setIndent(4);
+	} else {
+		m_pTitleWidget->setText("");
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -637,6 +657,8 @@ void KviClassicWindowList::doLayout()
 
 void KviClassicWindowList::applyOptions()
 {
+	KviWindowListBase::applyOptions();
+
 	for(KviWindowListButton * b = m_pButtonList->first();b;b = m_pButtonList->next())
 	{
 		b->setFlat(KVI_OPTION_BOOL(KviOption_boolUseFlatClassicWindowListButtons));
