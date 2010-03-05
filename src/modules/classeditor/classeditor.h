@@ -200,7 +200,7 @@ protected:
         void askForClassName(QString &szClassName,QString &szInerithClassName);
         QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
         void askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName);
-        void searchInerithedClasses(const QString szClass,QStringList & szInerithed);
+        void searchInerithedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInerithedClasses);
 
 /*
         bool removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);

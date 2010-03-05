@@ -1334,11 +1334,12 @@ void KviClassEditor::build()
     KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> it (*m_pClasses);
     KviPointerList<KviClassEditorTreeWidgetItem> pLinkedClasses;
     pLinkedClasses.setAutoDelete(false);
-    QStringList szClassesError;
+    KviPointerList<KviClassEditorTreeWidgetItem> pSkipClasses;
+    pSkipClasses.setAutoDelete(false);
     while(it.current())
     {
         KviClassEditorTreeWidgetItem *pClass=it.current();
-        if (szClassesError.indexOf(it.currentKey())!=-1){
+        if (pSkipClasses.findRef(it.current())!=-1){
             ++it;
             continue;
         }
@@ -1351,9 +1352,9 @@ void KviClassEditor::build()
             pLinkedClasses.append(pClass);
             while(pParentClass)
             {
-                if (pParentClass->classIsModified()){
+                if (pParentClass->classIsModified())
+                {
                     debug("append to build parent class %s",pParentClass->name().toUtf8().data());
-
                     pLinkedClasses.append(pParentClass);
                 }
                 pParentClass=m_pClasses->find(pParentClass->inerithClass());
@@ -1379,53 +1380,41 @@ void KviClassEditor::build()
                 debug ("class %s",szClass.toUtf8().data());
                 KviKvsScript::run(szClass,g_pActiveWindow);
                 pClass = KviKvsKernel::instance()->objectController()->lookupClass(pLinkedClasses.at(i)->name());
-
-                if (!pClass){
-                    QString szError=__tr2qs_ctx("Unable to compile  the class: ","classeditor");
+                if (!pClass)
+                {
+                    QString szError=__tr2qs_ctx("Unable to compile class: ","classeditor");
                     szError+=pLinkedClasses.at(i)->name()+"\n";
-                    QStringList szInerithedClasses;
-                    searchInerithedClasses(pLinkedClasses.at(i)->name(),szInerithedClasses);
-                    if (szInerithedClasses.count())
+                    KviPointerList<KviClassEditorTreeWidgetItem> pInerithedClasses;
+                    searchInerithedClasses(pLinkedClasses.at(i)->name(),pInerithedClasses);
+                    if (pInerithedClasses.count())
                     {
-
-                        szError+=__tr2qs_ctx("These inerithed classes will be not compiled:","classeditor");
+                        szError+=__tr2qs_ctx("These inerithed classes will be not compiled too:","classeditor");
                         szError+="\n";
-                        for(int j=0;j<szInerithedClasses.count();j++)
+                        for(unsigned int j=0;j<pInerithedClasses.count();j++)
                         {
-                            szError+=szInerithedClasses.at(j)+"\n";
-                            szClassesError.append(szInerithedClasses.at(j));
+                            szError+=pInerithedClasses.at(j)->name()+"\n";
+                            pInerithedClasses.at(j)->setClassModified(true);
+                            pSkipClasses.append(pInerithedClasses.at(j));
                         }
                     }
                     QMessageBox::critical(this,__tr2qs_ctx("Compilation error - KVIrc","classeditor"),szError,
                             QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
                     break;
                 }
-
+                pLinkedClasses.at(i)->setClassModified(false);
             }
 
         }
          ++it;
     }
-    /*    m_bSaving = true;
-        saveLastEditedItem();
 
-        KviKvsClassManager::instance()->clear();
-
-        for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
-        {
-                KviClassEditorTreeWidgetItem *item=(KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
-                recursiveCommit(item);
-        }
-        g_pApp->saveClasses();
-
-        m_bSaving = false;*/
 }
-void KviClassEditor::searchInerithedClasses(const QString szClass,QStringList & szInerithed)
+void KviClassEditor::searchInerithedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInerithedClasses)
 {
         KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> it (*m_pClasses);
         while(it.current())
         {
-            if (KviQString::equalCI(szClass,it.current()->inerithClass())) szInerithed.append(it.currentKey());
+            if (KviQString::equalCI(szClass,it.current()->inerithClass())) pInerithedClasses.append(it.current());
             ++it;
         }
 }
@@ -1435,7 +1424,7 @@ KviClassEditorWindow::KviClassEditorWindow(KviFrame * lpFrm)
 {
         g_pClassEditorWindow = this;
 
-        setFixedCaption(__tr2qs_ctx("Class Editor","editor"));
+        setFixedCaption(__tr2qs_ctx("Class Editor","classeditor"));
 
         QGridLayout * g = new QGridLayout();
 
