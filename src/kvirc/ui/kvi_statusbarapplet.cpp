@@ -498,6 +498,7 @@ void KviStatusBarClock::loadState(const char * pcPrefix, KviConfig * pCfg)
 	m_b24h = pCfg->readBoolEntry(tmp2.ptr(),false);
 	KviStr tmp3(KviStr::Format,"%s_Format",pcPrefix);
 	m_iType = pCfg->readIntEntry(tmp3.ptr(),KviStatusBarClock::HMS);
+	adjustMinWidth();
 }
 
 void KviStatusBarClock::saveState(const char * pcPrefix, KviConfig * pCfg)
