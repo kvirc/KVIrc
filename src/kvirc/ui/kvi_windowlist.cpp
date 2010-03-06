@@ -437,18 +437,17 @@ KviClassicWindowList::KviClassicWindowList()
 	m_pButtonList = new KviPointerList<KviWindowListButton>;
 	m_pButtonList->setAutoDelete(true);
 
+	setFont(KVI_OPTION_FONT(KviOption_fontWindowList));
 	calcButtonHeight();
 
 	m_pBase = new QWidget(this);
 	setWidget(m_pBase);
 
 	m_pBase->setMinimumWidth(KVI_WINDOWLIST_MIN_WIDTH);
-	setMinimumWidth(KVI_WINDOWLIST_MIN_WIDTH);
-	//m_pBase->setMinimumWidth(KVI_WINDOWLIST_MIN_WIDTH);
-	//setMinimumWidth(KVI_WINDOWLIST_MIN_WIDTH);
+	m_pBase->setMinimumHeight(m_iButtonHeight);
 
-	m_pBase->setMinimumHeight(m_iButtonHeight+5);
-	setMinimumHeight(m_iButtonHeight+5);
+	applyOptions();
+	QTimer::singleShot( 0, this, SLOT(doLayout()));
 }
 
 KviClassicWindowList::~KviClassicWindowList()
@@ -473,7 +472,7 @@ void KviClassicWindowList::updateActivityMeter()
 
 void KviClassicWindowList::calcButtonHeight()
 {
-	QFontMetrics fm(KVI_OPTION_FONT(KviOption_fontWindowList));
+	QFontMetrics fm(font());
 	m_iButtonHeight = fm.lineSpacing() + 6;
 	if(m_iButtonHeight < 22)m_iButtonHeight = 22;
 	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIrcContextIndicator))
@@ -567,7 +566,6 @@ void KviClassicWindowList::setActiveItem(KviWindowListItem * it)
 	}
 }
 
-
 void KviClassicWindowList::doLayout()
 {
 	if(!m_pButtonList->count())return;
@@ -619,8 +617,6 @@ void KviClassicWindowList::doLayout()
 	btnsInRow = totCount / rows;
 	if(totCount % rows)btnsInRow++;
 
-	//m_pBase->setMinimumHeight(rows * m_iButtonHeight);
-
 	int theWidth      = 0;
 	int theX          = 0;
 	int theY          = -m_iButtonHeight;
@@ -668,15 +664,6 @@ void KviClassicWindowList::applyOptions()
 
 void KviClassicWindowList::resizeEvent(QResizeEvent *e)
 {
-/*
-	if(orientation() == Qt::Horizontal)
-	{
-		int iRows = height()/m_iButtonHeight;
-		if(!iRows) iRows=1;
-		debug("%i %i",height(),iRows);
-		resize(width(),iRows*m_iButtonHeight);
-	}
-*/
 	KviWindowListBase::resizeEvent(e);
 	doLayout();
 }

@@ -162,7 +162,6 @@ protected:
 	QWidget                 * m_pBase;
 protected:
 	void calcButtonHeight();
-	void doLayout(); // called by KviFrame to adjust a bug on WIndows
 	void insertButton(KviWindowListButton * b);
 public:
 //	virtual void fontChange(const QFont & old);
@@ -180,6 +179,7 @@ public:
 	virtual void applyOptions();
 protected slots:
 	void orientationChangedSlot(Qt::Orientation o);
+	void doLayout();
 };
 
 #endif //_KVI_WINDOWLIST_H_
