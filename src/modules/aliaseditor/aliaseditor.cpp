@@ -543,7 +543,6 @@ void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 void KviAliasEditor::customContextMenuRequested(const QPoint pnt)
 {
 	m_pContextPopup->clear();
-          debug("item pressed");
         m_pLastClickedItem = (KviAliasEditorTreeWidgetItem *)m_pTreeWidget->itemAt(pnt);
 
         int id;

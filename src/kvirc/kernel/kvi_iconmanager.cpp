@@ -357,7 +357,10 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 	"ninja", // 305
 	"pirate", // 306
 	"puke", // 307
-	"rage" // 308
+        "rage", // 308
+        "class", // 309
+        "classnotbuilt", // 310
+        "function" // 311
 };
 
 KviIconWidget::KviIconWidget()

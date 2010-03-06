@@ -71,7 +71,7 @@ KviClassEditorTreeWidgetItem::KviClassEditorTreeWidgetItem(QTreeWidget * pTreeWi
         m_cPos=0;
 
         if(eType==KviClassEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
-           else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
+           else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS))));
         m_bClassModified=false;
 
 }
@@ -83,16 +83,16 @@ KviClassEditorTreeWidgetItem::KviClassEditorTreeWidgetItem(KviClassEditorTreeWid
         m_cPos=0;
 	setFlags(Qt::ItemIsEditable|Qt::ItemIsEnabled|Qt::ItemIsSelectable);
         if(eType==KviClassEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
-           else if(eType==KviClassEditorTreeWidgetItem::Class) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
-        else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SPAM))));
+           else if(eType==KviClassEditorTreeWidgetItem::Class) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS))));
+        else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FUNCTION))));
         m_bClassModified=false;
 }
 
 void KviClassEditorTreeWidgetItem::setClassNotBuilt(bool bModified)
 {
         m_bClassModified=bModified;
-        if (bModified) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ICQ))));
-        else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
+        if (bModified) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASSNOTBUILT))));
+        else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS))));
 }
 void KviClassEditorTreeWidgetItem::setName(const QString &szName)
 {
@@ -973,7 +973,7 @@ void KviClassEditor::saveProperties(KviConfig *cfg)
 
 void KviClassEditor::loadProperties(KviConfig *cfg)
 {
-       QList<int> def;
+        QList<int> def;
         def.append(20);
         def.append(80);
         m_pSplitter->setSizes(cfg->readIntListEntry("Sizes",def));
