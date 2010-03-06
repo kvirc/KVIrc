@@ -79,8 +79,8 @@ public:
         QString inerithClass(){return m_szInerithClassName;};
 	const QString & name(){ return m_szName; };
 	void setName(const QString &szName);
-        void setClassModified(bool bModified){m_bClassModified=bModified;};
-        bool classIsModified(){return m_bClassModified;};
+        void setClassNotBuilt(bool bModified);
+        bool classNotBuilt(){return m_bClassModified;};
         void setInternalFunction(bool bInternal){m_bInternal=bInternal;};
         bool isInternalFunction(){return m_bInternal;};
 	Type type(){ return m_eType; };
@@ -141,8 +141,8 @@ public:
         void loadUnbuildedFunctions();
         KviClassEditorTreeWidgetItem * findHandler(KviClassEditorTreeWidgetItem *pItemClass,const QString &szFunctionName);
         void build();
-        void save();
-
+        void saveNotBuiltClasses();
+        void loadNotBuiltClasses();
     /*
         void exportClasses(bool,bool=false);
         void exportSelectionInSinglesFiles(KviPointerList<KviClassEditorTreeWidgetItem> *l);

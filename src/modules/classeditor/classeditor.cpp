@@ -86,8 +86,14 @@ KviClassEditorTreeWidgetItem::KviClassEditorTreeWidgetItem(KviClassEditorTreeWid
            else if(eType==KviClassEditorTreeWidgetItem::Class) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
         else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SPAM))));
         m_bClassModified=false;
-     }
+}
 
+void KviClassEditorTreeWidgetItem::setClassNotBuilt(bool bModified)
+{
+        m_bClassModified=bModified;
+        if (bModified) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ICQ))));
+        else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
+}
 void KviClassEditorTreeWidgetItem::setName(const QString &szName)
 {
 	m_szName = szName;
@@ -348,6 +354,7 @@ void KviClassEditor::oneTimeSetup()
             if (pClass->isBuiltin())m_pClasses->insert(it.currentKey(),0);
             ++it;
     }
+    loadNotBuiltClasses();
     connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
     //connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
     m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -560,7 +567,7 @@ void KviClassEditor::saveLastEditedItem()
         QString newCode;
         m_pEditor->getText(newCode);
         ((KviClassEditorTreeWidgetItem *)m_pLastEditedItem)->setBuffer(newCode);
-        ((KviClassEditorTreeWidgetItem *)m_pLastEditedItem)->parentItem()->setClassModified(true);
+        ((KviClassEditorTreeWidgetItem *)m_pLastEditedItem)->parentItem()->setClassNotBuilt(true);
 }
 
 void KviClassEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
@@ -1281,6 +1288,7 @@ void KviClassEditor::newMemberFunction()
        KviClassEditorTreeWidgetItem *it=newItem(szFunctionName,KviClassEditorTreeWidgetItem::Method);
        it->setInternalFunction(bInternal);
        activateItem(it);
+       it->parentItem()->setClassNotBuilt(true);
 }
 
 KviClassEditorTreeWidgetItem *  KviClassEditor::newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType)
@@ -1303,31 +1311,7 @@ KviClassEditorTreeWidgetItem *  KviClassEditor::newItem(QString &szName,KviClass
 
         return it;
 }
-/*
-void KviClassEditor::recursiveCommit(KviClassEditorTreeWidgetItem * it)
-{
-        if(!it)
-                return;
-        if(it->isClass())
-        {
-                        QString szName = buildFullItemName(it);
-//                      debug("Commit class %s",szName.toUtf8().data());
-                        //debug("ADDING %s",szName.latin1());
-                        // WARNING: On MSVC operator new here is valid ONLY because
-                        // KviKvsScript has a non virtual detructor!
-                        KviKvsScript * a = new KviKvsScript(szName,((KviClassEditorTreeWidgetItem *)it)->buffer());
-                        KviKvsClassManager::instance()->add(szName,a);
-                return;
-        }
 
-        for (int i=0;i<it->childCount();i++)
-                recursiveCommit((KviClassEditorTreeWidgetItem *) it->child(i));
-
-}*/
-
-void KviClassEditor::save()
-{
-}
 void KviClassEditor::build()
 {
     saveLastEditedItem();
@@ -1339,11 +1323,12 @@ void KviClassEditor::build()
     while(it.current())
     {
         KviClassEditorTreeWidgetItem *pClass=it.current();
-        if (pSkipClasses.findRef(it.current())!=-1){
+        if (pSkipClasses.findRef(it.current())!=-1)
+        {
             ++it;
             continue;
         }
-        if (pClass->classIsModified())
+        if (pClass->classNotBuilt())
         {
             KviClassEditorTreeWidgetItem *pParentClass=m_pClasses->find(pClass->inerithClass());
             debug("append to build last class %s",pClass->name().toUtf8().data());
@@ -1352,7 +1337,7 @@ void KviClassEditor::build()
             pLinkedClasses.append(pClass);
             while(pParentClass)
             {
-                if (pParentClass->classIsModified())
+                if (pParentClass->classNotBuilt())
                 {
                     debug("append to build parent class %s",pParentClass->name().toUtf8().data());
                     pLinkedClasses.append(pParentClass);
@@ -1393,7 +1378,7 @@ void KviClassEditor::build()
                         for(unsigned int j=0;j<pInerithedClasses.count();j++)
                         {
                             szError+=pInerithedClasses.at(j)->name()+"\n";
-                            pInerithedClasses.at(j)->setClassModified(true);
+                            pInerithedClasses.at(j)->setClassNotBuilt(true);
                             pSkipClasses.append(pInerithedClasses.at(j));
                         }
                     }
@@ -1401,7 +1386,7 @@ void KviClassEditor::build()
                             QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
                     break;
                 }
-                pLinkedClasses.at(i)->setClassModified(false);
+                pLinkedClasses.at(i)->setClassNotBuilt(false);
             }
 
         }
@@ -1410,6 +1395,76 @@ void KviClassEditor::build()
     KviKvsKernel::instance()->objectController()->flushUserClasses();
 
 }
+void KviClassEditor::loadNotBuiltClasses()
+{
+        QString szFileName = "libkviclasseditortmp.kvc";
+        QString szBuffer;
+        g_pApp->getLocalKvircDirectory(szBuffer,KviApp::ConfigPlugins,szFileName);
+        KviConfig cfg(szBuffer,KviConfig::Read);
+        KviConfigIterator it(*(cfg.dict()));
+
+        KviPointerList<QString> l;
+        l.setAutoDelete(true);
+
+        while(it.current())
+        {
+                l.append(new QString(it.currentKey()));
+                ++it;
+        }
+
+        for(QString * s = l.first();s;s = l.next())
+        {
+                cfg.setGroup(*s);
+                KviClassEditorTreeWidgetItem *pClassItem = createFullItem(*s);
+                 m_pClasses->insert(*s,pClassItem);
+                pClassItem->setClassNotBuilt(true);
+                KviConfigGroup * pDict = cfg.dict()->find(*s);
+                if(pDict)
+                {
+                        KviConfigGroupIterator it(*pDict);
+                        KviPointerList<QString> names;
+                        names.setAutoDelete(true);
+
+                        while(it.current())
+                        {
+                                names.append(new QString(it.currentKey()));
+                                ++it;
+                        }
+                        for(QString * s = names.first(); s; s = names.next())
+                        {
+                                QString szCode = cfg.readQStringEntry(*s,"");
+                                KviClassEditorTreeWidgetItem *pFunctionItem=new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,*s);
+                                pFunctionItem->setBuffer(szCode);
+                        }
+                }
+        }
+}
+
+void KviClassEditor::saveNotBuiltClasses()
+{
+        saveLastEditedItem();
+        KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> it (*m_pClasses);
+        QString szFileName = "libkviclasseditortmp.kvc";
+        QString szBuffer;
+        g_pApp->getLocalKvircDirectory(szBuffer,KviApp::ConfigPlugins,szFileName);
+        KviConfig cfg(szBuffer,KviConfig::Write);
+        int iCount=0;
+        while(it.current())
+        {
+            if (it.current()->classNotBuilt())
+            {
+                debug("saving class %s",it.currentKey().toUtf8().data());
+                cfg.setGroup(it.currentKey());
+                for(int i=0;i<it.current()->childCount();i++)
+                {
+                    cfg.writeEntry(((KviClassEditorTreeWidgetItem*)it.current()->child(i))->name(),((KviClassEditorTreeWidgetItem*)it.current()->child(i))->buffer());
+                }
+                iCount++;
+            }
+            ++it;
+        }
+}
+
 void KviClassEditor::searchInerithedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInerithedClasses)
 {
         KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> it (*m_pClasses);
@@ -1464,7 +1519,7 @@ void KviClassEditorWindow::buildClicked()
 
 void KviClassEditorWindow::saveClicked()
 {
-        m_pEditor->save();
+        m_pEditor->saveNotBuiltClasses();
 }
 
 void KviClassEditorWindow::cancelClicked()
