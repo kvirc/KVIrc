@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : classeditor.cpp
-//   Creation date : Mon Dec 23 2002 14:36:18 by Szymon Stefanek
+//   Creation date : Mon Feb 15 2010 14:35:55 CEST by Carbone Alessandro
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2010 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -37,7 +37,6 @@
 #include "kvi_app.h"
 #include "kvi_frame.h"
 #include "kvi_qstring.h"
-
 #include "kvi_kvs_kernel.h"
 #include "kvi_kvs_object_class.h"
 #include "kvi_kvs_object_controller.h"
@@ -61,6 +60,7 @@
 #include <QList>
 #include <QPainter>
 #include <QBrush>
+
 extern KviClassEditorWindow * g_pClassEditorWindow;
 extern KviModule * g_pClassEditorModule;
 
@@ -68,489 +68,493 @@ KviClassEditorTreeWidgetItem::KviClassEditorTreeWidgetItem(QTreeWidget * pTreeWi
 : QTreeWidgetItem(pTreeWidget), KviHeapObject(), m_eType(eType), m_pParentItem(0)
 {
 	setName(szName);
-        m_cPos=0;
+	m_cPos=0;
 
-        if(eType==KviClassEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
-           else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS))));
-        m_bClassModified=false;
-
+	if(eType==KviClassEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
+	else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS))));
+	m_bClassModified=false;
 }
 
 KviClassEditorTreeWidgetItem::KviClassEditorTreeWidgetItem(KviClassEditorTreeWidgetItem * pParentItem,Type eType,const QString &szName)
 : QTreeWidgetItem(pParentItem), m_eType(eType), m_pParentItem(pParentItem)
 {
 	setName(szName);
-        m_cPos=0;
+	m_cPos=0;
 	setFlags(Qt::ItemIsEditable|Qt::ItemIsEnabled|Qt::ItemIsSelectable);
-        if(eType==KviClassEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
-           else if(eType==KviClassEditorTreeWidgetItem::Class) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS))));
-        else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FUNCTION))));
-        m_bClassModified=false;
+	if(eType==KviClassEditorTreeWidgetItem::Namespace)
+		setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
+	else if(eType==KviClassEditorTreeWidgetItem::Class)
+		setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS))));
+	else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FUNCTION))));
+	m_bClassModified=false;
 }
 
 void KviClassEditorTreeWidgetItem::setClassNotBuilt(bool bModified)
 {
-        m_bClassModified=bModified;
-        if (bModified) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASSNOTBUILT))));
-        else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS))));
+	m_bClassModified=bModified;
+	if (bModified)
+		setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASSNOTBUILT))));
+	else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS))));
 }
-void KviClassEditorTreeWidgetItem::setName(const QString &szName)
+
+void KviClassEditorTreeWidgetItem::setName(const QString & szName)
 {
 	m_szName = szName;
 	setText(0,m_szName);
 }
+
 void KviClassEditorTreeWidgetItem::setType(Type t)
 {
-     m_eType=t;
-     if(t==KviClassEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
-        else if(t==KviClassEditorTreeWidgetItem::Class) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
-     else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SPAM))));
-
-     
+	m_eType=t;
+	if(t==KviClassEditorTreeWidgetItem::Namespace)
+		setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
+	else if(t==KviClassEditorTreeWidgetItem::Class)
+		setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
+	else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SPAM))));
 }
 
 KviClassEditorTreeWidget::KviClassEditorTreeWidget(QWidget * par)
 : QTreeWidget(par)
 {
-        setColumnCount (1);
-        setHeaderLabel(__tr2qs_ctx("Class","classeditor"));
-        setSelectionMode(QAbstractItemView::ExtendedSelection);
-        setSortingEnabled(true);
-        setRootIsDecorated(true);
-        setAnimated(true);
+	setColumnCount (1);
+	setHeaderLabel(__tr2qs_ctx("Class","editor"));
+	setSelectionMode(QAbstractItemView::ExtendedSelection);
+	setSortingEnabled(true);
+	setRootIsDecorated(true);
+	setAnimated(true);
 }
 
 KviClassEditorTreeWidget::~KviClassEditorTreeWidget()
 {
-        //remove and delete all items
-        clear();
+	//remove and delete all items
+	clear();
 }
 
-void KviClassEditorTreeWidget::mousePressEvent (QMouseEvent *e)
+void KviClassEditorTreeWidget::mousePressEvent (QMouseEvent * e)
 {
-        if (e->button() == Qt::RightButton)
-        {
-                QTreeWidgetItem *i=itemAt(e->pos());
-                if (i) emit rightButtonPressed(i,QCursor::pos());
-        }
-        QTreeWidget::mousePressEvent(e);
+	if (e->button() == Qt::RightButton)
+	{
+		QTreeWidgetItem *i=itemAt(e->pos());
+		if (i) emit rightButtonPressed(i,QCursor::pos());
+	}
+	QTreeWidget::mousePressEvent(e);
 }
 KviClassEditor::KviClassEditor(QWidget * par)
 : QWidget(par)
 {
-    m_pClasses=new KviPointerHashTable<QString,KviClassEditorTreeWidgetItem>(100,false);
-    m_pClasses->setAutoDelete(false);
-   // m_bSaving = false;
-    m_pLastEditedItem = 0;
-    m_pLastClickedItem = 0;
-    m_szDir = QDir::homePath();
+	m_pClasses=new KviPointerHashTable<QString,KviClassEditorTreeWidgetItem>(100,false);
+	m_pClasses->setAutoDelete(false);
+	// m_bSaving = false;
+	m_pLastEditedItem = 0;
+	m_pLastClickedItem = 0;
+	m_szDir = QDir::homePath();
 
-    QGridLayout * l = new QGridLayout(this);
+	QGridLayout * l = new QGridLayout(this);
 
-    m_pSplitter = new QSplitter(Qt::Horizontal,this);
-    m_pSplitter->setOpaqueResize(false);
-    l->addWidget(m_pSplitter,0,0);
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter->setOpaqueResize(false);
+	l->addWidget(m_pSplitter,0,0);
 
-    KviTalVBox * box = new KviTalVBox(m_pSplitter);
-    box->setSpacing(0);
-    box->setMargin(0);
-    m_pTreeWidget = new KviClassEditorTreeWidget(box);
+	KviTalVBox * box = new KviTalVBox(m_pSplitter);
+	box->setSpacing(0);
+	box->setMargin(0);
+	m_pTreeWidget = new KviClassEditorTreeWidget(box);
 
-    box = new KviTalVBox(m_pSplitter);
+	box = new KviTalVBox(m_pSplitter);
 
-    KviTalHBox * hbox = new KviTalHBox(box);
-    hbox->setSpacing(0);
-    hbox->setMargin(0);
-    m_pClassNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
-    m_pClassNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
-    m_pClassNameRenameButton->setEnabled(false);
-    connect(m_pClassNameRenameButton,SIGNAL(clicked()),this,SLOT(renameItem()));
-    hbox->setStretchFactor(m_pClassNameLabel,2);
-    m_pClassNameRenameButton->setToolTip(__tr2qs_ctx("Edit the class or namespace name","editor"));
+	KviTalHBox * hbox = new KviTalHBox(box);
+	hbox->setSpacing(0);
+	hbox->setMargin(0);
+	m_pClassNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
+	m_pClassNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
+	m_pClassNameRenameButton->setEnabled(false);
+	connect(m_pClassNameRenameButton,SIGNAL(clicked()),this,SLOT(renameItem()));
+	hbox->setStretchFactor(m_pClassNameLabel,2);
+	m_pClassNameRenameButton->setToolTip(__tr2qs_ctx("Edit the class or namespace name","editor"));
 
-    hbox = new KviTalHBox(box);
-    hbox->setSpacing(0);
-    hbox->setMargin(0);
+	hbox = new KviTalHBox(box);
+	hbox->setSpacing(0);
+	hbox->setMargin(0);
 
-    m_pInerithClassNameLabel=new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
+	m_pInerithClassNameLabel=new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
 
-    hbox = new KviTalHBox(box);
-    hbox->setSpacing(0);
-    hbox->setMargin(0);
-    m_pMemberFunctionNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
-    m_pMemberFunctionNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
-    m_pMemberFunctionNameRenameButton->setEnabled(false);
-    connect(m_pMemberFunctionNameRenameButton,SIGNAL(clicked()),this,SLOT(renameMember()));
-    hbox->setStretchFactor(m_pMemberFunctionNameLabel,2);
-    m_pMemberFunctionNameRenameButton->setToolTip(__tr2qs_ctx("Edit the function member name","editor"));
+	hbox = new KviTalHBox(box);
+	hbox->setSpacing(0);
+	hbox->setMargin(0);
+	m_pMemberFunctionNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
+	m_pMemberFunctionNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
+	m_pMemberFunctionNameRenameButton->setEnabled(false);
+	connect(m_pMemberFunctionNameRenameButton,SIGNAL(clicked()),this,SLOT(renameMember()));
+	hbox->setStretchFactor(m_pMemberFunctionNameLabel,2);
+	m_pMemberFunctionNameRenameButton->setToolTip(__tr2qs_ctx("Edit the function member name","editor"));
 
 
 
-    m_pEditor = KviScriptEditor::createInstance(box);
-    m_pEditor->setFocus();
+	m_pEditor = KviScriptEditor::createInstance(box);
+	m_pEditor->setFocus();
 
-  /*  connect(m_pEditor,SIGNAL(find(const QString &)),this,SLOT(slotFindWord(const QString &)));
-    connect(m_pEditor,SIGNAL(replaceAll(const QString &,const QString &)),this,SLOT(slotReplaceAll(const QString &,const QString &)));
-*/
-    m_pContextPopup = new KviTalPopupMenu(this);
+	/*  connect(m_pEditor,SIGNAL(find(const QString &)),this,SLOT(slotFindWord(const QString &)));
+	connect(m_pEditor,SIGNAL(replaceAll(const QString &,const QString &)),this,SLOT(slotReplaceAll(const QString &,const QString &)));
+	*/
+	m_pContextPopup = new KviTalPopupMenu(this);
 
-    oneTimeSetup();
+	oneTimeSetup();
 
-    currentItemChanged(0,0);
+	currentItemChanged(0,0);
 }
 KviClassEditor::~KviClassEditor()
 {
-   // KviScriptEditor::destroyInstance(m_pEditor);
-    //m_pClasses->clear();
-    //delete m_pClasses;
+	// KviScriptEditor::destroyInstance(m_pEditor);
+	//m_pClasses->clear();
+	//delete m_pClasses;
 }
 
-void KviClassEditor::buildFullItemPath(KviClassEditorTreeWidgetItem * it,QString &szBuffer)
+void KviClassEditor::buildFullItemPath(KviClassEditorTreeWidgetItem * it, QString & szBuffer)
 {
-        if (!it) return;
-        debug("base %s",szBuffer.toUtf8().data());
-        szBuffer.prepend(it->name()+"::");
-        it=it->parentItem();
-        while(it)
-        {
-            QString tmp = it->name();
-            if(!tmp.isEmpty())
-            {
-                    szBuffer.prepend("::");
-                    szBuffer.prepend(tmp);
-            }
-            it = it->parentItem();
-        }
+	if (!it) return;
+	debug("base %s",szBuffer.toUtf8().data());
+	szBuffer.prepend(it->name()+"::");
+	it=it->parentItem();
+	while(it)
+	{
+		QString tmp = it->name();
+		if(!tmp.isEmpty())
+		{
+			szBuffer.prepend("::");
+			szBuffer.prepend(tmp);
+		}
+		it = it->parentItem();
+	}
 }
 
 QString KviClassEditor::buildFullClassName(KviClassEditorTreeWidgetItem * it)
 {
-        if(!it) return QString();
-        QString szName = it->name();
-        KviClassEditorTreeWidgetItem * nit = it->parentItem();
+	if(!it) return QString();
+	QString szName = it->name();
+	KviClassEditorTreeWidgetItem * nit = it->parentItem();
 
-        while(nit)
-        {
-                QString tmp = nit->name();
-                if(!tmp.isEmpty())
-                {
-                        szName.prepend("::");
-                        szName.prepend(tmp);
-                }
-                nit = nit->parentItem();
-        }
-        return szName;
-}
-
-KviClassEditorTreeWidgetItem * KviClassEditor::findTopLevelItem(const QString &szName)
-{
-        for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
-        {
-            if (KviQString::equalCI(m_pTreeWidget->topLevelItem(i)->text(0),szName))
-                return (KviClassEditorTreeWidgetItem*)m_pTreeWidget->topLevelItem(i);
-        }
-        return 0;
+	while(nit)
+	{
+		QString tmp = nit->name();
+		if(!tmp.isEmpty())
+		{
+			szName.prepend("::");
+			szName.prepend(tmp);
+		}
+		nit = nit->parentItem();
+	}
+	return szName;
 }
 
-KviClassEditorTreeWidgetItem * KviClassEditor::findItem(const QString &szFullName)
+KviClassEditorTreeWidgetItem * KviClassEditor::findTopLevelItem(const QString & szName)
 {
-        QStringList lNamespaces=szFullName.split("::");
-        if(!lNamespaces.count()) return 0;
-        KviClassEditorTreeWidgetItem *pItem=findTopLevelItem(lNamespaces.at(0));
-        if (!pItem) return 0;
-        bool bFound;
-        for(int i=1;i<lNamespaces.count();i++)
-        {
-            bFound=false;
-            for(int j=0;j<pItem->childCount();j++)
-            {
-                if (KviQString::equalCI(pItem->child(j)->text(0),lNamespaces.at(i)))
-                {
-                    pItem=( KviClassEditorTreeWidgetItem *)pItem->child(j);
-                    bFound=true;
-                    break;
-                }
-            }
-            if (!bFound) return 0;
-        }
-        return  (KviClassEditorTreeWidgetItem *)pItem;
-}
-bool KviClassEditor::itemExists(const QString &szFullName)
-{
-    if (findItem(szFullName)) return true;
-    else return false;
+	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+	{
+	if (KviQString::equalCI(m_pTreeWidget->topLevelItem(i)->text(0),szName))
+		return (KviClassEditorTreeWidgetItem*)m_pTreeWidget->topLevelItem(i);
+	}
+	return 0;
 }
 
-KviClassEditorTreeWidgetItem * KviClassEditor::createFullItem(const QString &szFullName)
+KviClassEditorTreeWidgetItem * KviClassEditor::findItem(const QString & szFullName)
 {
-    QStringList lNamespaces=szFullName.split("::");
-    if(!lNamespaces.count()) return 0;
-    if (lNamespaces.count()==1) return new KviClassEditorTreeWidgetItem(m_pTreeWidget,KviClassEditorTreeWidgetItem::Class,lNamespaces.at(0));
-    KviClassEditorTreeWidgetItem *pItem=findTopLevelItem(lNamespaces.at(0));
-    if (!pItem) pItem=new KviClassEditorTreeWidgetItem(m_pTreeWidget,KviClassEditorTreeWidgetItem::Namespace,lNamespaces.at(0));
-    bool bFound;
-    int i;
-    for(i=1;i<lNamespaces.count()-1;i++)
-    {
-        bFound=false;
-        for(int j=0;j<pItem->childCount();j++)
-        {
-            if (KviQString::equalCI(pItem->child(j)->text(0),lNamespaces.at(i)))
-            {
-                 pItem=( KviClassEditorTreeWidgetItem *)pItem->child(j);
-                 bFound=true;
-                 break;
-            }
-        }
-        if (!bFound)
-             pItem=new KviClassEditorTreeWidgetItem(pItem,KviClassEditorTreeWidgetItem::Namespace,lNamespaces.at(i));
-    }
-    return new KviClassEditorTreeWidgetItem(pItem,KviClassEditorTreeWidgetItem::Class,lNamespaces.at(i));
+	QStringList lNamespaces=szFullName.split("::");
+	if(!lNamespaces.count()) return 0;
+	KviClassEditorTreeWidgetItem *pItem=findTopLevelItem(lNamespaces.at(0));
+	if (!pItem) return 0;
+	bool bFound;
+	for(int i=1;i<lNamespaces.count();i++)
+	{
+		bFound=false;
+		for(int j=0;j<pItem->childCount();j++)
+		{
+			if (KviQString::equalCI(pItem->child(j)->text(0),lNamespaces.at(i)))
+			{
+				pItem=( KviClassEditorTreeWidgetItem *)pItem->child(j);
+				bFound=true;
+				break;
+			}
+		}
+		if (!bFound) return 0;
+	}
+	return  (KviClassEditorTreeWidgetItem *)pItem;
 }
+
+bool KviClassEditor::itemExists(const QString & szFullName)
+{
+	if (findItem(szFullName)) return true;
+	else return false;
+}
+
+KviClassEditorTreeWidgetItem * KviClassEditor::createFullItem(const QString & szFullName)
+{
+	QStringList lNamespaces=szFullName.split("::");
+	if(!lNamespaces.count()) return 0;
+	if (lNamespaces.count()==1) return new KviClassEditorTreeWidgetItem(m_pTreeWidget,KviClassEditorTreeWidgetItem::Class,lNamespaces.at(0));
+	KviClassEditorTreeWidgetItem *pItem=findTopLevelItem(lNamespaces.at(0));
+	if (!pItem) pItem=new KviClassEditorTreeWidgetItem(m_pTreeWidget,KviClassEditorTreeWidgetItem::Namespace,lNamespaces.at(0));
+	bool bFound;
+	int i;
+	for(i=1;i<lNamespaces.count()-1;i++)
+	{
+		bFound=false;
+		for(int j=0;j<pItem->childCount();j++)
+		{
+			if (KviQString::equalCI(pItem->child(j)->text(0),lNamespaces.at(i)))
+			{
+				pItem=( KviClassEditorTreeWidgetItem *)pItem->child(j);
+				bFound=true;
+				break;
+			}
+		}
+		if (!bFound)
+		pItem=new KviClassEditorTreeWidgetItem(pItem,KviClassEditorTreeWidgetItem::Namespace,lNamespaces.at(i));
+	}
+	return new KviClassEditorTreeWidgetItem(pItem,KviClassEditorTreeWidgetItem::Class,lNamespaces.at(i));
+}
+
 void KviClassEditor::oneTimeSetup()
 {
-    QString szPath;
-    g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes);
-    QDir d(szPath);
-    QStringList sl;
-    sl = d.entryList(QDir::Files);
-    KviKvsObjectClass *pClass;
-    KviClassEditorTreeWidgetItem *pClassItem;
-    for(int i=0;i<sl.count();i++)
-    {
-            QString szClassName=sl.at(i);
-            szClassName.replace("--","::");
-            if (szClassName!=".." && szClassName!=".")
-            {
-                    szClassName.chop(4);
-                    pClassItem = createFullItem(szClassName);
-                    pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
-                    KviClassEditorTreeWidgetItem *pFunctionItem;
-                    if (pClass)
-                    {
-                          KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
-                          m_pClasses->insert(szClassName,pClassItem);
-                          KviKvsObjectClass *pParentClass=pClass->parentClass();
-                          pClassItem->setInerithClass(pParentClass->name());
-                          while(it.current())
-                          {
-                                  QString szCode;
-                                  KviKvsObjectFunctionHandler *handler=pClass->lookupFunctionHandler(it.currentKey());
-                                  if (pClass->isScriptHandler(it.currentKey()))
-                                  {
-                                      pFunctionItem=new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,it.currentKey());
-                                      pClass->getFunctionCode(szCode,*handler);
-                                      pFunctionItem->setBuffer(szCode);
-                                  }
-                                  ++it;
-                          }
-                     }
-             }
-    }
+	QString szPath;
+	g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes);
+	QDir d(szPath);
+	QStringList sl;
+	sl = d.entryList(QDir::Files);
+	KviKvsObjectClass *pClass;
+	KviClassEditorTreeWidgetItem *pClassItem;
+	for(int i=0;i<sl.count();i++)
+	{
+		QString szClassName=sl.at(i);
+		szClassName.replace("--","::");
+		if (szClassName!=".." && szClassName!=".")
+		{
+			szClassName.chop(4);
+			pClassItem = createFullItem(szClassName);
+			pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
+			KviClassEditorTreeWidgetItem *pFunctionItem;
+			if (pClass)
+			{
+				KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
+				m_pClasses->insert(szClassName,pClassItem);
+				KviKvsObjectClass *pParentClass=pClass->parentClass();
+				pClassItem->setInerithClass(pParentClass->name());
+				while(it.current())
+				{
+					QString szCode;
+					KviKvsObjectFunctionHandler *handler=pClass->lookupFunctionHandler(it.currentKey());
+					if (pClass->isScriptHandler(it.currentKey()))
+					{
+						pFunctionItem=new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,it.currentKey());
+						pClass->getFunctionCode(szCode,*handler);
+						pFunctionItem->setBuffer(szCode);
+					}
+					++it;
+				}
+			}
+		}
+	}
 
-    KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
-    while(KviKvsObjectClass * pClass=it.current())
-    {
-            if (pClass->isBuiltin())m_pClasses->insert(it.currentKey(),0);
-            ++it;
-    }
-    loadNotBuiltClasses();
-    connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
-    //connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
-    m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(customContextMenuRequested(const QPoint &)));
-
+	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
+	while(KviKvsObjectClass * pClass=it.current())
+	{
+		if (pClass->isBuiltin())m_pClasses->insert(it.currentKey(),0);
+		++it;
+	}
+	loadNotBuiltClasses();
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
+	//connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
+	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(customContextMenuRequested(const QPoint &)));
 }
+
 /*
-void KviClassEditor::classRefresh(const QString &szName)
+void KviClassEditor::classRefresh(const QString & szName)
 {
-        if(m_bSaving)
-                return;
-        KviClassEditorTreeWidgetItem * item;
-        KviKvsScript * class = KviKvsClassManager::instance()->classDict()->find(szName);
-        item = createFullItem(szName);
-        if(item!=m_pLastEditedItem)
-        {
-                item->setBuffer(class->code());
-                return;
-        }
-        if(
-                QMessageBox::warning(0,__tr2qs_ctx("OverWrite Current Class","editor"),
-                                __tr2qs_ctx("An external script has changed the class you are currently editing. Do you want to accept the external changes?","editor"),
-                                QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes
-                )
-                return;
-        item->setBuffer(class->code());
-        m_pEditor->setText(class->code());
-}
-void KviClassEditor::itemRenamed(QTreeWidgetItem *it,int col)
-{
-        if(it!=m_pLastEditedItem) return;
-
-        ((KviClassEditorTreeWidgetItem *)it)->setName(it->text(col));
-        QString szNam = buildFullItemName((KviClassEditorTreeWidgetItem *)it);
-        QString szLabelText;
-        if(((KviClassEditorTreeWidgetItem *)it)->isNamespace())
-                szLabelText = __tr2qs_ctx("Namespace","editor");
-        else
-                szLabelText = __tr2qs_ctx("Class","editor");
-        szLabelText += ": <b>";
-        szLabelText += szNam;
-        szLabelText += "</b>";
-        m_pClassNameLabel->setText(szLabelText);
+	if(m_bSaving)
+		return;
+	KviClassEditorTreeWidgetItem * item;
+	KviKvsScript * class = KviKvsClassManager::instance()->classDict()->find(szName);
+	item = createFullItem(szName);
+	if(item!=m_pLastEditedItem)
+	{
+		item->setBuffer(class->code());
+		return;
+	}
+	if(
+		QMessageBox::warning(0,__tr2qs_ctx("OverWrite Current Class","editor"),
+				__tr2qs_ctx("An external script has changed the class you are currently editing. Do you want to accept the external changes?","editor"),
+				QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes
+		)
+		return;
+	item->setBuffer(class->code());
+	m_pEditor->setText(class->code());
 }
 
+void KviClassEditor::itemRenamed(QTreeWidgetItem * it, int col)
+{
+	if(it!=m_pLastEditedItem) return;
+
+	((KviClassEditorTreeWidgetItem *)it)->setName(it->text(col));
+	QString szNam = buildFullItemName((KviClassEditorTreeWidgetItem *)it);
+	QString szLabelText;
+	if(((KviClassEditorTreeWidgetItem *)it)->isNamespace())
+		szLabelText = __tr2qs_ctx("Namespace","editor");
+	else
+		szLabelText = __tr2qs_ctx("Class","editor");
+	szLabelText += ": <b>";
+	szLabelText += szNam;
+	szLabelText += "</b>";
+	m_pClassNameLabel->setText(szLabelText);
+}
 */
 
 bool KviClassEditor::hasSelectedItems()
 {
-    return m_pTreeWidget->selectedItems().count()?1:0;
+	return m_pTreeWidget->selectedItems().count() ? 1 : 0;
 }
 
-bool KviClassEditor::itemExists(QTreeWidgetItem *pSearchFor)
+bool KviClassEditor::itemExists(QTreeWidgetItem * pSearchFor)
 {
-    if(!pSearchFor) return false;
-    if(m_pClasses->findRef((KviClassEditorTreeWidgetItem*) pSearchFor)) return true;
-    else return false;
+	if(!pSearchFor) return false;
+	if(m_pClasses->findRef((KviClassEditorTreeWidgetItem*) pSearchFor)) return true;
+	else return false;
 }
 
 /*
-void KviClassEditor::appendAllItems(KviPointerList<KviClassEditorTreeWidgetItem> * l,KviClassEditorTreeWidgetItem::Type eType)
+void KviClassEditor::appendAllItems(KviPointerList<KviClassEditorTreeWidgetItem> * l, KviClassEditorTreeWidgetItem::Type eType)
 {
-        for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
-        {
-                if (((KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->type()==eType)
-                {
-                        l->append(((KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i)));
-                }
-                else
-                {
-                        appendAllItemsRecursive(l,m_pTreeWidget->topLevelItem(i),eType);
-                }
-        }
-
+	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+	{
+		if (((KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->type()==eType)
+		{
+			l->append(((KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i)));
+		}
+		else
+		{
+			appendAllItemsRecursive(l,m_pTreeWidget->topLevelItem(i),eType);
+		}
+	}
 }
 
-void KviClassEditor::appendAllItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom,KviClassEditorTreeWidgetItem::Type eType)
+void KviClassEditor::appendAllItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l, QTreeWidgetItem * pStartFrom, KviClassEditorTreeWidgetItem::Type eType)
 {
-        for (int i=0;i<pStartFrom->childCount();i++)
-        {
-                if (((KviClassEditorTreeWidgetItem *)pStartFrom->child(i))->type()==eType)
-                {
-                        l->append((KviClassEditorTreeWidgetItem *)pStartFrom->child(i));
-                }
-                else
-                {
-                        appendAllItemsRecursive(l,pStartFrom->child(i),eType);
-                }
-        }
-
+	for (int i=0;i<pStartFrom->childCount();i++)
+	{
+		if (((KviClassEditorTreeWidgetItem *)pStartFrom->child(i))->type()==eType)
+		{
+			l->append((KviClassEditorTreeWidgetItem *)pStartFrom->child(i));
+		}
+		else
+		{
+			appendAllItemsRecursive(l,pStartFrom->child(i),eType);
+		}
+	}
 }
 
-bool KviClassEditor::classExists(QString &szFullItemName)
+bool KviClassEditor::classExists(QString & szFullItemName)
 {
-        KviPointerList<KviClassEditorTreeWidgetItem> l;
-        l.setAutoDelete(false);
-        appendAllItems(&l,KviClassEditorTreeWidgetItem::Class);
-        for(KviClassEditorTreeWidgetItem * it = l.first();it;it = l.next())
-        {
-                if (KviQString::equalCI(buildFullItemName(it),szFullItemName))
-                {
-                        return true;
-                }
-        }
-        return false;
+	KviPointerList<KviClassEditorTreeWidgetItem> l;
+	l.setAutoDelete(false);
+	appendAllItems(&l,KviClassEditorTreeWidgetItem::Class);
+	for(KviClassEditorTreeWidgetItem * it = l.first();it;it = l.next())
+	{
+		if (KviQString::equalCI(buildFullItemName(it),szFullItemName))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
-bool KviClassEditor::namespaceExists(QString &szFullItemName)
+bool KviClassEditor::namespaceExists(QString & szFullItemName)
 {
-        KviPointerList<KviClassEditorTreeWidgetItem> l;
-        l.setAutoDelete(false);
+	KviPointerList<KviClassEditorTreeWidgetItem> l;
+	l.setAutoDelete(false);
 
-        appendAllItems(&l,KviClassEditorTreeWidgetItem::Namespace);
-        for(KviClassEditorTreeWidgetItem * it = l.first();it;it = l.next())
-        {
-                if (KviQString::equalCI(buildFullItemName(it),szFullItemName))
-                {
-                        return true;
-                }
-        }
-        return false;
+	appendAllItems(&l,KviClassEditorTreeWidgetItem::Namespace);
+	for(KviClassEditorTreeWidgetItem * it = l.first();it;it = l.next())
+	{
+		if (KviQString::equalCI(buildFullItemName(it),szFullItemName))
+		{
+			return true;
+		}
+	}
+	return false;
 }
+
 void KviClassEditor::renameItem()
 {
-        if(!m_pLastEditedItem)return;
-        if(!itemExists(m_pLastEditedItem))return; // dead ?
+	if(!m_pLastEditedItem)return;
+	if(!itemExists(m_pLastEditedItem))return; // dead ?
 
-        QString szName = buildFullItemName(m_pLastEditedItem);
-        QString szNewName;
+	QString szName = buildFullItemName(m_pLastEditedItem);
+	QString szNewName;
 
-        bool bClass = m_pLastEditedItem->isClass();
+	bool bClass = m_pLastEditedItem->isClass();
 
-        if(bClass)
-                szNewName = askForClassName(__tr2qs_ctx("Rename Class","editor"),__tr2qs_ctx("Please enter the new name for the class","editor"),szName);
-        else
-                szNewName = askForNamespaceName(__tr2qs_ctx("Rename Namespace","editor"),__tr2qs_ctx("Please enter the new name for the namespace","editor"),szName);
-        if(szNewName.isEmpty())return;
+	if(bClass)
+		szNewName = askForClassName(__tr2qs_ctx("Rename Class","editor"),__tr2qs_ctx("Please enter the new name for the class","editor"),szName);
+	else
+		szNewName = askForNamespaceName(__tr2qs_ctx("Rename Namespace","editor"),__tr2qs_ctx("Please enter the new name for the namespace","editor"),szName);
+	if(szNewName.isEmpty())return;
 
-        if(szName == szNewName)return;
+	if(szName == szNewName)return;
 
-        // check if there is already an class with this name
-        if (bClass)
-        {
-                if (classExists(szNewName))
-                {
-                        g_pClassEditorModule->lock();
-                        QMessageBox::information(this,
-                                __tr2qs_ctx("Class already exists","editor"),
-                                __tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
-                                __tr2qs_ctx("Ok, Let me try again...","editor"));
-                        g_pClassEditorModule->unlock();
-                        return;
-                }
-        } else {
-        // check if there is already a namespace with this name
-                if (namespaceExists(szNewName))
-                {
-                        g_pClassEditorModule->lock();
-                        QMessageBox::information(this,
-                                __tr2qs_ctx("Namespace already exists","editor"),
-                                __tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
-                                __tr2qs_ctx("Ok, Let me try again...","editor"));
-                        g_pClassEditorModule->unlock();
-                        return;
-                }
-        }
+	// check if there is already an class with this name
+	if (bClass)
+	{
+		if (classExists(szNewName))
+		{
+			g_pClassEditorModule->lock();
+			QMessageBox::information(this,
+				__tr2qs_ctx("Class already exists","editor"),
+				__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
+				__tr2qs_ctx("Ok, Let me try again...","editor"));
+			g_pClassEditorModule->unlock();
+			return;
+		}
+	} else {
+	// check if there is already a namespace with this name
+		if (namespaceExists(szNewName))
+		{
+			g_pClassEditorModule->lock();
+			QMessageBox::information(this,
+				__tr2qs_ctx("Namespace already exists","editor"),
+				__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
+				__tr2qs_ctx("Ok, Let me try again...","editor"));
+			g_pClassEditorModule->unlock();
+			return;
+		}
+	}
 
-        QString szCode;
-        int pntCursor;
-        if(bClass)
-        {
-                m_pEditor->getText(szCode);
-                pntCursor = m_pEditor->getCursor();
-        }
-        QList<QTreeWidgetItem*> lChildren= m_pLastEditedItem->takeChildren();
-        bool bYesToAll = true;
-        removeItem(m_pLastEditedItem,&bYesToAll,true);
+	QString szCode;
+	int pntCursor;
+	if(bClass)
+	{
+		m_pEditor->getText(szCode);
+		pntCursor = m_pEditor->getCursor();
+	}
+	QList<QTreeWidgetItem*> lChildren= m_pLastEditedItem->takeChildren();
+	bool bYesToAll = true;
+	removeItem(m_pLastEditedItem,&bYesToAll,true);
 
-        m_pLastEditedItem = 0; // make sure it's true (but it already should be because of removeItem())
-        m_pLastClickedItem = 0; // make sure it's true (but it already should be because of removeItem())
-         KviClassEditorTreeWidgetItem * pItem = createFullItem(szNewName);
-        if(bClass)
-        {
-                pItem->setBuffer(szCode);
-                pItem->setCursorPosition(pntCursor);
+	m_pLastEditedItem = 0; // make sure it's true (but it already should be because of removeItem())
+	m_pLastClickedItem = 0; // make sure it's true (but it already should be because of removeItem())
+	KviClassEditorTreeWidgetItem * pItem = createFullItem(szNewName);
+	if(bClass)
+	{
+		pItem->setBuffer(szCode);
+		pItem->setCursorPosition(pntCursor);
 
-        } else {
-                for(int i=0;i<lChildren.count();i++)
-                {
-                        ((KviClassEditorTreeWidgetItem*)lChildren.at(i))->setParentItem(pItem);
-                        pItem->insertChild(pItem->childCount(),lChildren.at(i));
-                }
+	} else {
+		for(int i=0;i<lChildren.count();i++)
+		{
+			((KviClassEditorTreeWidgetItem*)lChildren.at(i))->setParentItem(pItem);
+			pItem->insertChild(pItem->childCount(),lChildren.at(i));
+		}
 
-        }
-        activateItem(pItem);
-
+	}
+	activateItem(pItem);
 }*/
 
 // warning: this saves ONLY the body, not the name!
@@ -558,168 +562,165 @@ void KviClassEditor::renameItem()
 
 void KviClassEditor::saveLastEditedItem()
 {
-       if(!m_pLastEditedItem)
-                return;
-       if(!m_pEditor->isModified() || m_pLastEditedItem->isNamespace() || m_pLastEditedItem->isClass())
-                return;
+	if(!m_pLastEditedItem)
+		return;
+	if(!m_pEditor->isModified() || m_pLastEditedItem->isNamespace() || m_pLastEditedItem->isClass())
+		return;
 
-        ((KviClassEditorTreeWidgetItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
-        QString newCode;
-        m_pEditor->getText(newCode);
-        ((KviClassEditorTreeWidgetItem *)m_pLastEditedItem)->setBuffer(newCode);
-        ((KviClassEditorTreeWidgetItem *)m_pLastEditedItem)->parentItem()->setClassNotBuilt(true);
+	((KviClassEditorTreeWidgetItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
+	QString newCode;
+	m_pEditor->getText(newCode);
+	((KviClassEditorTreeWidgetItem *)m_pLastEditedItem)->setBuffer(newCode);
+	((KviClassEditorTreeWidgetItem *)m_pLastEditedItem)->parentItem()->setClassNotBuilt(true);
 }
 
-void KviClassEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
+void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 {
-        saveLastEditedItem();
-        debug("current changed");
-        m_pLastEditedItem = (KviClassEditorTreeWidgetItem *)it;
+	saveLastEditedItem();
+	debug("current changed");
+	m_pLastEditedItem = (KviClassEditorTreeWidgetItem *)it;
 
-        if(!m_pLastEditedItem)
-        {
-                m_pClassNameLabel->setText(__tr2qs_ctx("No item selected","editor"));
-                m_pClassNameRenameButton->setEnabled(false);
-                m_pEditor->setText("");
-                m_pEditor->setEnabled(false);
-                return;
-        }
-        KviClassEditorTreeWidgetItem * pClassItem;
-        if(m_pLastEditedItem->isMethod()) pClassItem=m_pLastEditedItem->parentItem();
-        else pClassItem=m_pLastEditedItem;
-        QString szClassName = buildFullClassName(pClassItem);
-        if(m_pLastEditedItem->isNamespace())
-        {
-                QString szLabelText = __tr2qs_ctx("Namespace","editor");
-                szLabelText += ": <b>";
-                szLabelText += szClassName;
-                szLabelText += "</b>";
-                m_pClassNameLabel->setText(szLabelText);
-                m_pClassNameRenameButton->setEnabled(true);
-                m_pMemberFunctionNameRenameButton->setEnabled(false);
-                m_pEditor->setText("");
-                m_pEditor->setEnabled(false);
-                m_pTreeWidget->setFocus();
-                return;
-        }
-        debug("is class");
-        QString szLabelText = __tr2qs_ctx("Class","classeditor");
-        szLabelText += ": <b>";
-        szLabelText += szClassName;
-        szLabelText += "</b>";
-        m_pClassNameLabel->setText(szLabelText);
+	if(!m_pLastEditedItem)
+	{
+		m_pClassNameLabel->setText(__tr2qs_ctx("No item selected","editor"));
+		m_pClassNameRenameButton->setEnabled(false);
+		m_pEditor->setText("");
+		m_pEditor->setEnabled(false);
+		return;
+	}
+	KviClassEditorTreeWidgetItem * pClassItem;
+	if(m_pLastEditedItem->isMethod()) pClassItem=m_pLastEditedItem->parentItem();
+	else pClassItem=m_pLastEditedItem;
+	QString szClassName = buildFullClassName(pClassItem);
+	if(m_pLastEditedItem->isNamespace())
+	{
+		QString szLabelText = __tr2qs_ctx("Namespace","editor");
+		szLabelText += ": <b>";
+		szLabelText += szClassName;
+		szLabelText += "</b>";
+		m_pClassNameLabel->setText(szLabelText);
+		m_pClassNameRenameButton->setEnabled(true);
+		m_pMemberFunctionNameRenameButton->setEnabled(false);
+		m_pEditor->setText("");
+		m_pEditor->setEnabled(false);
+		m_pTreeWidget->setFocus();
+		return;
+	}
+	debug("is class");
+	QString szLabelText = __tr2qs_ctx("Class","editor");
+	szLabelText += ": <b>";
+	szLabelText += szClassName;
+	szLabelText += "</b>";
+	m_pClassNameLabel->setText(szLabelText);
 
-        szLabelText = __tr2qs_ctx("Inerith Class","classeditor");
-        szLabelText += ": <b>";
-        szLabelText += pClassItem->inerithClass();
-        szLabelText += "</b>";
-        m_pInerithClassNameLabel->setText(szLabelText);
+	szLabelText = __tr2qs_ctx("Inerith Class","editor");
+	szLabelText += ": <b>";
+	szLabelText += pClassItem->inerithClass();
+	szLabelText += "</b>";
+	m_pInerithClassNameLabel->setText(szLabelText);
 
-        szLabelText = __tr2qs_ctx("Member Function:","classeditor");
-        if(m_pLastEditedItem->isMethod()){
-            szLabelText += ": <b>";
-            szLabelText += m_pLastEditedItem->text(0);
-            szLabelText += "</b>";
-            m_pMemberFunctionNameRenameButton->setEnabled(true);
-        }
-        else m_pClassNameRenameButton->setEnabled(true);
-        m_pMemberFunctionNameLabel->setText(szLabelText);
-        if(m_pLastEditedItem->isClass())
-        {
-           m_pMemberFunctionNameRenameButton->setEnabled(false);
-           m_pEditor->setText("");
-           m_pEditor->setEnabled(false);
-           m_pTreeWidget->setFocus();
-           return;
-        }
+	szLabelText = __tr2qs_ctx("Member Function:","editor");
+	if(m_pLastEditedItem->isMethod()){
+	szLabelText += ": <b>";
+	szLabelText += m_pLastEditedItem->text(0);
+	szLabelText += "</b>";
+	m_pMemberFunctionNameRenameButton->setEnabled(true);
+	}
+	else m_pClassNameRenameButton->setEnabled(true);
+	m_pMemberFunctionNameLabel->setText(szLabelText);
+	if(m_pLastEditedItem->isClass())
+	{
+	m_pMemberFunctionNameRenameButton->setEnabled(false);
+	m_pEditor->setText("");
+	m_pEditor->setEnabled(false);
+	m_pTreeWidget->setFocus();
+	return;
+	}
 
-        m_pEditor->setText(((KviClassEditorTreeWidgetItem *)it)->buffer());
-        m_pEditor->setFocus();
-        m_pEditor->setCursorPosition(((KviClassEditorTreeWidgetItem *)it)->cursorPosition());
-        m_pEditor->setEnabled(true);
-
+	m_pEditor->setText(((KviClassEditorTreeWidgetItem *)it)->buffer());
+	m_pEditor->setFocus();
+	m_pEditor->setCursorPosition(((KviClassEditorTreeWidgetItem *)it)->cursorPosition());
+	m_pEditor->setEnabled(true);
 }
-
 
 void KviClassEditor::customContextMenuRequested(QPoint pnt)
 {
-        m_pContextPopup->clear();
+	m_pContextPopup->clear();
 
-        m_pLastClickedItem = (KviClassEditorTreeWidgetItem *)m_pTreeWidget->itemAt(pnt);
+	m_pLastClickedItem = (KviClassEditorTreeWidgetItem *)m_pTreeWidget->itemAt(pnt);
 
-        int id;
+	int id;
 
-        id = m_pContextPopup->insertItem(
-                        *(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
-                        __tr2qs_ctx("Add Namespace","editor"),
-                        this,SLOT(newNamespace()));
-        if (!m_pLastClickedItem)m_pContextPopup->setItemEnabled(id,true);
-        else m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isNamespace());
+	id = m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
+			__tr2qs_ctx("Add Namespace","editor"),
+			this,SLOT(newNamespace()));
+	if (!m_pLastClickedItem)m_pContextPopup->setItemEnabled(id,true);
+	else m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isNamespace());
 
-        id = m_pContextPopup->insertItem(
-                        *(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
-                        __tr2qs_ctx("Add Class","classeditor"),
-                        this,SLOT(newClass()));
-        if (!m_pLastClickedItem)m_pContextPopup->setItemEnabled(id,true);
-        else m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isNamespace());
-
-
-        id = m_pContextPopup->insertItem(
-                        *(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
-                        __tr2qs_ctx("Add Member Function","classeditor"),
-                        this,SLOT(newMemberFunction()));
-        if (!m_pLastClickedItem)m_pContextPopup->setItemEnabled(id,false);
-        else m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isClass()| m_pLastClickedItem->isMethod());
+	id = m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
+			__tr2qs_ctx("Add Class","editor"),
+			this,SLOT(newClass()));
+	if (!m_pLastClickedItem)m_pContextPopup->setItemEnabled(id,true);
+	else m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isNamespace());
 
 
-        bool bHasItems = m_pTreeWidget->topLevelItemCount();
-        bool bHasSelected = hasSelectedItems();
+	id = m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
+			__tr2qs_ctx("Add Member Function","editor"),
+			this,SLOT(newMemberFunction()));
+	if (!m_pLastClickedItem)m_pContextPopup->setItemEnabled(id,false);
+	else m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isClass()| m_pLastClickedItem->isMethod());
 
-        m_pContextPopup->insertSeparator();
 
-        id = m_pContextPopup->insertItem(
-                        *(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
-                        __tr2qs_ctx("Remove Selected","editor"),
-                        this,SLOT(removeSelectedItems()));
-        m_pContextPopup->setItemEnabled(id,bHasSelected);
+	bool bHasItems = m_pTreeWidget->topLevelItemCount();
+	bool bHasSelected = hasSelectedItems();
 
-        m_pContextPopup->insertSeparator();
+	m_pContextPopup->insertSeparator();
 
-        m_pContextPopup->insertItem(
-                        *(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
-                        __tr2qs_ctx("Export Selected...","editor"),
-                        this,SLOT(exportSelected()));
-        m_pContextPopup->setItemEnabled(id,bHasSelected);
+	id = m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
+			__tr2qs_ctx("Remove Selected","editor"),
+			this,SLOT(removeSelectedItems()));
+	m_pContextPopup->setItemEnabled(id,bHasSelected);
 
-        m_pContextPopup->insertItem(
-                        *(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
-                        __tr2qs_ctx("Export Selected in singles files...","editor"),
-                        this,SLOT(exportSelectedSepFiles()));
+	m_pContextPopup->insertSeparator();
 
-        m_pContextPopup->setItemEnabled(id,bHasSelected);
+	m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+			__tr2qs_ctx("Export Selected...","editor"),
+			this,SLOT(exportSelected()));
+	m_pContextPopup->setItemEnabled(id,bHasSelected);
 
-        m_pContextPopup->insertItem(
-                        *(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
-                        __tr2qs_ctx("Export All...","editor"),
-                        this,SLOT(exportAll()));
-        m_pContextPopup->setItemEnabled(id,bHasItems);
+	m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+			__tr2qs_ctx("Export Selected in singles files...","editor"),
+			this,SLOT(exportSelectedSepFiles()));
 
-        m_pContextPopup->insertSeparator();
+	m_pContextPopup->setItemEnabled(id,bHasSelected);
 
-        m_pContextPopup->insertItem(
-                        *(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)),
-                        __tr2qs_ctx("Find In Classes...","editor"),
-                        this,SLOT(slotFind()));
-        m_pContextPopup->setItemEnabled(id,bHasItems);
+	m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+			__tr2qs_ctx("Export All...","editor"),
+			this,SLOT(exportAll()));
+	m_pContextPopup->setItemEnabled(id,bHasItems);
 
-        m_pContextPopup->insertItem(
-                        *(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE)),
-                        __tr2qs_ctx("Collapse All Namespaces","editor"),
-                        this,SLOT(slotCollapseNamespaces()));
+	m_pContextPopup->insertSeparator();
 
-        m_pContextPopup->setItemEnabled(id,bHasItems);
-        m_pContextPopup->popup( m_pTreeWidget->mapToGlobal(pnt));
+	m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)),
+			__tr2qs_ctx("Find In Classes...","editor"),
+			this,SLOT(slotFind()));
+	m_pContextPopup->setItemEnabled(id,bHasItems);
 
+	m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE)),
+			__tr2qs_ctx("Collapse All Namespaces","editor"),
+			this,SLOT(slotCollapseNamespaces()));
+
+	m_pContextPopup->setItemEnabled(id,bHasItems);
+	m_pContextPopup->popup( m_pTreeWidget->mapToGlobal(pnt));
 }
 /*
 void KviClassEditor::recursiveSearchReplace(const QString &szSearch,KviClassEditorTreeWidgetItem * it,bool bReplace,const QString &szReplace)
@@ -782,220 +783,218 @@ void KviClassEditor::slotFind()
 
 void KviClassEditor::slotFindWord(const QString &szSearch)
 {
-        m_pEditor->setFindText(szSearch);
+	m_pEditor->setFindText(szSearch);
 }
 
 void KviClassEditor::recursiveCollapseNamespaces(KviClassEditorTreeWidgetItem * it)
 {
-        if(!it)return;
-        for (int i=0;i<it->childCount();i++)
-        {
-                if(it->child(i)->childCount())
-                {
-                        it->child(i)->setExpanded(false);
-                        recursiveCollapseNamespaces((KviClassEditorTreeWidgetItem *)it->child(i));
-                }
-        }
+	if(!it)return;
+	for (int i=0;i<it->childCount();i++)
+	{
+		if(it->child(i)->childCount())
+		{
+			it->child(i)->setExpanded(false);
+			recursiveCollapseNamespaces((KviClassEditorTreeWidgetItem *)it->child(i));
+		}
+	}
 }
 
 void KviClassEditor::slotCollapseNamespaces()
 {
-        for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
-        {
-                if (m_pTreeWidget->topLevelItem(i)->childCount()){
-                        m_pTreeWidget->topLevelItem(i)->setExpanded(false);
-                        recursiveCollapseNamespaces((KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i));
-                }
-        }
+	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+	{
+		if (m_pTreeWidget->topLevelItem(i)->childCount()){
+			m_pTreeWidget->topLevelItem(i)->setExpanded(false);
+			recursiveCollapseNamespaces((KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i));
+		}
+	}
 }
 
 void KviClassEditor::slotReplaceAll(const QString &szFind,const QString &szReplace)
 {
-        m_pEditor->setFindText(szReplace);
+	m_pEditor->setFindText(szReplace);
 
-        for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
-        {
-                recursiveSearchReplace(szFind,(KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i),true,szReplace);
-        }
+	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+	{
+		recursiveSearchReplace(szFind,(KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i),true,szReplace);
+	}
 }
 
 void KviClassEditor::getExportClassBuffer(QString &buffer,KviClassEditorTreeWidgetItem * it)
 {
-        QString szBuf = it->buffer();
-        KviCommandFormatter::blockFromBuffer(szBuf);
-        QString szNam = buildFullItemName(it);
+	QString szBuf = it->buffer();
+	KviCommandFormatter::blockFromBuffer(szBuf);
+	QString szNam = buildFullItemName(it);
 
-        buffer = "class(";
-        buffer += szNam;
-        buffer += ")\n";
-        buffer += szBuf;
-        buffer += "\n";
+	buffer = "class(";
+	buffer += szNam;
+	buffer += ")\n";
+	buffer += szBuf;
+	buffer += "\n";
 }
 
 void KviClassEditor::exportAll()
 {
-        exportClasses(false);
+	exportClasses(false);
 }
 
 void KviClassEditor::exportSelectedSepFiles()
 {
-        exportClasses (true,true);
+	exportClasses (true,true);
 }
 
 void KviClassEditor::exportSelected()
 {
-        exportClasses(true);
+	exportClasses(true);
 }
 
 void KviClassEditor::exportSelectionInSinglesFiles(KviPointerList<KviClassEditorTreeWidgetItem> *l)
 {
-        if(!m_szDir.endsWith(QString(KVI_PATH_SEPARATOR)))m_szDir += KVI_PATH_SEPARATOR;
-        if (!l->first())
-        {
-                g_pClassEditorModule->lock();
-                QMessageBox::warning(this,__tr2qs_ctx("Class Export","editor"),__tr2qs_ctx("There is no selection!","editor"),__tr2qs_ctx("OK","editor"));
-                g_pClassEditorModule->unlock();
-                return;
-        }
-        g_pClassEditorModule->lock();
+	if(!m_szDir.endsWith(QString(KVI_PATH_SEPARATOR)))m_szDir += KVI_PATH_SEPARATOR;
+	if (!l->first())
+	{
+		g_pClassEditorModule->lock();
+		QMessageBox::warning(this,__tr2qs_ctx("Class Export","editor"),__tr2qs_ctx("There is no selection!","editor"),__tr2qs_ctx("OK","editor"));
+		g_pClassEditorModule->unlock();
+		return;
+	}
+	g_pClassEditorModule->lock();
 
-        if(!KviFileDialog::askForDirectoryName(m_szDir,__tr2qs_ctx("Choose a Directory - KVIrc","editor"),m_szDir)){
-                g_pClassEditorModule->unlock();
-                return;
-        }
+	if(!KviFileDialog::askForDirectoryName(m_szDir,__tr2qs_ctx("Choose a Directory - KVIrc","editor"),m_szDir)){
+		g_pClassEditorModule->unlock();
+		return;
+	}
 
-        if(!m_szDir.endsWith(QString(KVI_PATH_SEPARATOR)))m_szDir += KVI_PATH_SEPARATOR;
+	if(!m_szDir.endsWith(QString(KVI_PATH_SEPARATOR)))m_szDir += KVI_PATH_SEPARATOR;
 
-        bool bReplaceAll=false;
+	bool bReplaceAll=false;
 
-        for(KviClassEditorTreeWidgetItem * it = l->first();it;it = l->next())
-        {
-                QString tmp;
-                getExportClassBuffer(tmp,it);
-                QString szFileName=buildFullItemName(it);
-                szFileName += ".kvs";
-                szFileName.replace("::","_");
-                QString szCompletePath=m_szDir+szFileName;
-                if (KviFileUtils::fileExists(szCompletePath) && !bReplaceAll)
-                {
-                    QString szMsg;
-                    KviQString::sprintf(szMsg,__tr2qs_ctx("The file \"%Q\" exists. Do you want to replace it ?","editor"),&szFileName);
-                    int ret = QMessageBox::question(this,__tr2qs_ctx("Replace file","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
-                    if (ret!=2)
-                    {
-                        KviFileUtils::writeFile(szCompletePath,tmp);
-                        if (ret==1) bReplaceAll=true;
-                    }
+	for(KviClassEditorTreeWidgetItem * it = l->first();it;it = l->next())
+	{
+		QString tmp;
+		getExportClassBuffer(tmp,it);
+		QString szFileName=buildFullItemName(it);
+		szFileName += ".kvs";
+		szFileName.replace("::","_");
+		QString szCompletePath=m_szDir+szFileName;
+		if (KviFileUtils::fileExists(szCompletePath) && !bReplaceAll)
+		{
+		QString szMsg;
+		KviQString::sprintf(szMsg,__tr2qs_ctx("The file \"%Q\" exists. Do you want to replace it ?","editor"),&szFileName);
+		int ret = QMessageBox::question(this,__tr2qs_ctx("Replace file","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
+		if (ret!=2)
+		{
+			KviFileUtils::writeFile(szCompletePath,tmp);
+			if (ret==1) bReplaceAll=true;
+		}
 
-                }
-                else
-                    KviFileUtils::writeFile(szCompletePath,tmp);
-          }
-          g_pClassEditorModule->unlock();
-
+		}
+		else
+		KviFileUtils::writeFile(szCompletePath,tmp);
+	}
+	g_pClassEditorModule->unlock();
 }
 
-void KviClassEditor::exportClasses(bool bSelectedOnly,bool bSingleFiles)
+void KviClassEditor::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 {
-        saveLastEditedItem();
+	saveLastEditedItem();
 
-        KviPointerList<KviClassEditorTreeWidgetItem> l;
-        l.setAutoDelete(false);
+	KviPointerList<KviClassEditorTreeWidgetItem> l;
+	l.setAutoDelete(false);
 
-        QString out;
-        if (bSelectedOnly) appendSelectedClassItems(&l);
-        else appendAllClassItems(&l);
-        if (bSingleFiles)
-        {
-                exportSelectionInSinglesFiles(&l);
-                return;
-
+	QString out;
+	if (bSelectedOnly) appendSelectedClassItems(&l);
+	else appendAllClassItems(&l);
+	if (bSingleFiles)
+	{
+		exportSelectionInSinglesFiles(&l);
+		return;
         }
-        int count=0;
-        KviClassEditorTreeWidgetItem * tempitem=0;
-        for(KviClassEditorTreeWidgetItem * it = l.first();it;it = l.next())
-        {
-                tempitem=it;
-                count ++;
-                QString tmp;
-                getExportClassBuffer(tmp,it);
-                out += tmp;
-                out += "\n";
-        }
-        QString szNameFile;
-        if(out.isEmpty())
-        {
-                g_pClassEditorModule->lock();
-                QMessageBox::warning(this,__tr2qs_ctx("Class Export","editor"),__tr2qs_ctx("The exported file would be empty: cowardly refusing to write it","editor"),__tr2qs_ctx("OK","editor"));
-                g_pClassEditorModule->unlock();
-                return;
-        }
+	int count=0;
+	KviClassEditorTreeWidgetItem * tempitem=0;
+	for(KviClassEditorTreeWidgetItem * it = l.first();it;it = l.next())
+	{
+		tempitem=it;
+		count ++;
+		QString tmp;
+		getExportClassBuffer(tmp,it);
+		out += tmp;
+		out += "\n";
+	}
+	QString szNameFile;
+	if(out.isEmpty())
+	{
+		g_pClassEditorModule->lock();
+		QMessageBox::warning(this,__tr2qs_ctx("Class Export","editor"),__tr2qs_ctx("The exported file would be empty: cowardly refusing to write it","editor"),__tr2qs_ctx("OK","editor"));
+		g_pClassEditorModule->unlock();
+		return;
+	}
 
-        QString szName = m_szDir;
+	QString szName = m_szDir;
 
-        if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
-        QString szFile;
-        g_pClassEditorModule->lock();
+	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
+	QString szFile;
+	g_pClassEditorModule->lock();
 
-        if (count==1)
-        {
-                        QString tmp=buildFullItemName(tempitem);
-                        szNameFile = tmp.replace("::","_");
-        }
-        else szNameFile="classes";
-        szName += szNameFile;
-        szName += ".kvs";
-        if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,false,true,true))
-        {
-                g_pClassEditorModule->unlock();
-                return;
-        }
-        m_szDir=QFileInfo(szFile).absolutePath();
-        g_pClassEditorModule->unlock();
+	if (count==1)
+	{
+			QString tmp=buildFullItemName(tempitem);
+			szNameFile = tmp.replace("::","_");
+	}
+	else szNameFile="classes";
+	szName += szNameFile;
+	szName += ".kvs";
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,false,true,true))
+	{
+		g_pClassEditorModule->unlock();
+		return;
+	}
+	m_szDir=QFileInfo(szFile).absolutePath();
+	g_pClassEditorModule->unlock();
 
-        if(!KviFileUtils::writeFile(szFile,out))
-        {
-                g_pClassEditorModule->lock();
-                QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the class file.","editor"),__tr2qs_ctx("OK","editor"));
-                g_pClassEditorModule->unlock();
-        }
+	if(!KviFileUtils::writeFile(szFile,out))
+	{
+		g_pClassEditorModule->lock();
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the class file.","editor"),__tr2qs_ctx("OK","editor"));
+		g_pClassEditorModule->unlock();
+	}
 }
 */
-void KviClassEditor::saveProperties(KviConfig *cfg)
-{
-        cfg->writeEntry("Sizes",m_pSplitter->sizes());
-        QString szName;
-        if(m_pLastEditedItem)
-                szName = buildFullClassName(m_pLastEditedItem);
-        cfg->writeEntry("LastClass",szName);
 
+void KviClassEditor::saveProperties(KviConfig * cfg)
+{
+	cfg->writeEntry("Sizes",m_pSplitter->sizes());
+	QString szName;
+	if(m_pLastEditedItem)
+		szName = buildFullClassName(m_pLastEditedItem);
+	cfg->writeEntry("LastClass",szName);
 }
 
-void KviClassEditor::loadProperties(KviConfig *cfg)
+void KviClassEditor::loadProperties(KviConfig * cfg)
 {
-        QList<int> def;
-        def.append(20);
-        def.append(80);
-        m_pSplitter->setSizes(cfg->readIntListEntry("Sizes",def));
-        QString tmp = cfg->readEntry("LastClass",QString());
+	QList<int> def;
+	def.append(20);
+	def.append(80);
+	m_pSplitter->setSizes(cfg->readIntListEntry("Sizes",def));
+	QString tmp = cfg->readEntry("LastClass",QString());
 
-        KviClassEditorTreeWidgetItem * it = findItem(tmp);
-        activateItem(it);
+	KviClassEditorTreeWidgetItem * it = findItem(tmp);
+	activateItem(it);
 }
+
 /*
 void KviClassEditor::appendSelectedClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l)
 {
-        QList<QTreeWidgetItem *> list=m_pTreeWidget->selectedItems();
-        for(int i=0;i<list.count();i++)
-        {
-            if (((KviClassEditorTreeWidgetItem *)list.at(i))->isClass())
-                   l->append((KviClassEditorTreeWidgetItem *)list.at(i));
-            else
-            {
-                   appendSelectedClassItemsRecursive(l,list.at(i));
-            }
-        }
-
+	QList<QTreeWidgetItem *> list=m_pTreeWidget->selectedItems();
+	for(int i=0;i<list.count();i++)
+	{
+		if (((KviClassEditorTreeWidgetItem *)list.at(i))->isClass())
+			l->append((KviClassEditorTreeWidgetItem *)list.at(i));
+		else
+		{
+			appendSelectedClassItemsRecursive(l,list.at(i));
+		}
+	}
 }
 void KviClassEditor::appendSelectedClassItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom)
 {
@@ -1129,8 +1128,8 @@ void KviClassEditor::askForClassName(QString &szClassName,QString &szInerithClas
             {
                 g_pClassEditorModule->lock();
                 QMessageBox::information(this,
-                   __tr2qs_ctx("Bad Class Name","classeditor"),
-                   __tr2qs_ctx("Class names can contain only letters, digits and underscores","classeditor"),
+                   __tr2qs_ctx("Bad Class Name","editor"),
+                   __tr2qs_ctx("Class names can contain only letters, digits and underscores","editor"),
                    __tr2qs_ctx("Ok, Let me try again...","editor"));
                  g_pClassEditorModule->unlock();
                  continue;
@@ -1367,13 +1366,13 @@ void KviClassEditor::build()
                 pClass = KviKvsKernel::instance()->objectController()->lookupClass(pLinkedClasses.at(i)->name());
                 if (!pClass)
                 {
-                    QString szError=__tr2qs_ctx("Unable to compile class: ","classeditor");
+                    QString szError=__tr2qs_ctx("Unable to compile class: ","editor");
                     szError+=pLinkedClasses.at(i)->name()+"\n";
                     KviPointerList<KviClassEditorTreeWidgetItem> pInerithedClasses;
                     searchInerithedClasses(pLinkedClasses.at(i)->name(),pInerithedClasses);
                     if (pInerithedClasses.count())
                     {
-                        szError+=__tr2qs_ctx("These inerithed classes will be not compiled too:","classeditor");
+                        szError+=__tr2qs_ctx("These inerithed classes will be not compiled too:","editor");
                         szError+="\n";
                         for(unsigned int j=0;j<pInerithedClasses.count();j++)
                         {
@@ -1382,7 +1381,7 @@ void KviClassEditor::build()
                             pSkipClasses.append(pInerithedClasses.at(j));
                         }
                     }
-                    QMessageBox::critical(this,__tr2qs_ctx("Compilation error - KVIrc","classeditor"),szError,
+                    QMessageBox::critical(this,__tr2qs_ctx("Compilation error - KVIrc","editor"),szError,
                             QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
                     break;
                 }
@@ -1480,19 +1479,19 @@ KviClassEditorWindow::KviClassEditorWindow(KviFrame * lpFrm)
 {
         g_pClassEditorWindow = this;
 
-        setFixedCaption(__tr2qs_ctx("Class Editor","classeditor"));
+        setFixedCaption(__tr2qs_ctx("Class Editor","editor"));
 
         QGridLayout * g = new QGridLayout();
 
         m_pEditor = new KviClassEditor(this);
         g->addWidget(m_pEditor,0,0,1,4);
 
-        QPushButton * btn = new QPushButton(__tr2qs_ctx("&Build","classeditor"),this);
+        QPushButton * btn = new QPushButton(__tr2qs_ctx("&Build","editor"),this);
         connect(btn,SIGNAL(clicked()),this,SLOT(buildClicked()));
         btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
         g->addWidget(btn,1,1);
 
-        btn = new QPushButton(__tr2qs_ctx("&Save","classeditor"),this);
+        btn = new QPushButton(__tr2qs_ctx("&Save","editor"),this);
         connect(btn,SIGNAL(clicked()),this,SLOT(saveClicked()));
         btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
         g->addWidget(btn,1,2);
@@ -1568,7 +1567,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
         QLabel * pClassNameLabel = new QLabel(hbox);
         pClassNameLabel->setObjectName("classnamelabel");
 
-        pClassNameLabel->setText(__tr2qs_ctx("Please enter the name for the new class:","classeditor"));
+        pClassNameLabel->setText(__tr2qs_ctx("Please enter the name for the new class:","editor"));
 
         m_pClassNameLineEdit = new QLineEdit(hbox);
         m_pClassNameLineEdit->setObjectName("classnameineedit");
@@ -1581,7 +1580,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 
         QLabel * pInerithClassLabel = new QLabel(hbox);
         pInerithClassLabel->setObjectName("inerithclasslabel");
-        pInerithClassLabel->setText(__tr2qs_ctx("Inerith Class:","classeditor"));
+        pInerithClassLabel->setText(__tr2qs_ctx("Inerith Class:","editor"));
 
         m_pInerithClassComboBox=new QComboBox(hbox);
         KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> pClassesIt(*pClasses);
@@ -1616,7 +1615,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 
         m_pNewClassButton = new QPushButton(hbox);
         m_pNewClassButton->setObjectName("newclassbutton");
-        m_pNewClassButton->setText(__tr2qs_ctx("&Create Class","classeditor"));
+        m_pNewClassButton->setText(__tr2qs_ctx("&Create Class","editor"));
         m_pNewClassButton->setEnabled(false);
 
         QPushButton * pCancelButton = new QPushButton(hbox);
@@ -1669,7 +1668,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 
         QLabel * pFunctionNameLabel = new QLabel(hbox);
         pFunctionNameLabel->setObjectName("functionnamelabel");
-        pFunctionNameLabel->setText(__tr2qs_ctx("Please enter the name for the new member function:","classeditor"));
+        pFunctionNameLabel->setText(__tr2qs_ctx("Please enter the name for the new member function:","editor"));
 
         m_pFunctionNameLineEdit = new QLineEdit(hbox);
         m_pFunctionNameLineEdit->setObjectName("functionameineedit");
@@ -1683,7 +1682,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 
         QLabel * pFunctionInternalLabel = new QLabel(hbox);
         pFunctionInternalLabel->setObjectName("functionnamelabel");
-        pFunctionInternalLabel->setText(__tr2qs_ctx("Set as <b>Internal</b> Function: ","classeditor"));
+        pFunctionInternalLabel->setText(__tr2qs_ctx("Set as <b>Internal</b> Function: ","editor"));
 
         m_pInternalCheckBox=new QCheckBox(hbox);
         m_pInternalCheckBox->setChecked(false);
@@ -1700,7 +1699,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 
         m_pNewFunctionButton = new QPushButton(hbox);
         m_pNewFunctionButton->setObjectName("newfunctionbutton");
-        m_pNewFunctionButton->setText(__tr2qs_ctx("&Add","classeditor"));
+        m_pNewFunctionButton->setText(__tr2qs_ctx("&Add","editor"));
         m_pNewFunctionButton->setEnabled(false);
 
         QPushButton * pCancelButton = new QPushButton(hbox);

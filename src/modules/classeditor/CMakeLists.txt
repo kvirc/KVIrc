@@ -1,4 +1,4 @@
-# CMakeLists for src/modules/aliaseditor
+# CMakeLists for src/modules/classeditor
 
 SET(kviclasseditor_MOC_HDRS
 	classeditor.h
