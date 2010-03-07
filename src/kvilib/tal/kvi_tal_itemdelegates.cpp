@@ -26,10 +26,11 @@
 
 #include <QListWidget>
 #include <QPainter>
+#include <QApplication>
 #include <QAbstractTextDocumentLayout>
 
 KviTalIconAndRichTextItemDelegate::KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget)
-: QItemDelegate(pWidget), m_pParent(pWidget), m_pDefaultPix(0)
+: QStyledItemDelegate(pWidget), m_pParent(pWidget), m_pDefaultPix(0)
 {
 }
 
@@ -40,23 +41,16 @@ KviTalIconAndRichTextItemDelegate::~KviTalIconAndRichTextItemDelegate()
 void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
 	pPainter->save();
-	if(option.state & QStyle::State_Selected)
-	{
-		QPalette pal = option.palette;
-		QBrush brush = pal.highlight();
-		QColor col = brush.color();
-		col.setAlpha(127);
-		brush.setColor(col);
-		pPainter->fillRect(option.rect,brush);
-	}
+	QStyleOptionViewItemV4 opt = option;
+	initStyleOption(&opt, index);
+
+	if (opt.state & QStyle::State_Selected)
+		QApplication::style()->drawPrimitive(QStyle::PE_PanelItemViewItem,&opt, pPainter);
 
 	QString szText = index.data(Qt::DisplayRole).toString();
 	QPixmap pixmap;
 	QRect decorationRect;
 	QVariant value = index.data(Qt::DecorationRole);
-	QStyle::State state = option.state;
-	QRect rect = option.rect;
-	int iAfterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
 
 	QIcon ico;
 	if(value.canConvert<QIcon>())
@@ -65,21 +59,21 @@ void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleO
 		if(ico.isNull())
 		{
 			if(m_pDefaultPix)
-				pPainter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,*m_pDefaultPix);
+				pPainter->drawPixmap(opt.rect.x()+LVI_BORDER,opt.rect.y()+LVI_BORDER,*m_pDefaultPix);
 		} else {
-			pPainter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,ico.pixmap(LVI_ICON_SIZE,LVI_ICON_SIZE));
+			pPainter->drawPixmap(opt.rect.x()+LVI_BORDER,opt.rect.y()+LVI_BORDER,ico.pixmap(LVI_ICON_SIZE,LVI_ICON_SIZE));
 		}
 	} else {
 		if(m_pDefaultPix)
-			pPainter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,*m_pDefaultPix);
+			pPainter->drawPixmap(opt.rect.x()+LVI_BORDER,opt.rect.y()+LVI_BORDER,*m_pDefaultPix);
 	}
 
 	QTextDocument doc;
 	doc.setHtml(szText);
-	doc.setDefaultFont(option.font);
-	pPainter->translate(option.rect.x()+iAfterIcon,option.rect.y()+LVI_BORDER);
-	doc.setTextWidth(option.rect.width()-32);
-	QRect cliprect = QRect(QPoint(0,0),QSize(option.rect.width()-iAfterIcon,option.rect.height()));
+	doc.setDefaultFont(opt.font);
+	pPainter->translate(opt.rect.x()+LVI_AFTER_ICON,opt.rect.y()+LVI_BORDER);
+	doc.setTextWidth(opt.rect.width()-LVI_AFTER_ICON);
+	QRect cliprect = QRect(QPoint(0,0),QSize(opt.rect.width()-LVI_AFTER_ICON,opt.rect.height()));
 	doc.drawContents(pPainter,cliprect);
 	pPainter->restore();
 }
@@ -90,7 +84,7 @@ QSize KviTalIconAndRichTextItemDelegate::sizeHint(const QStyleOptionViewItem &op
 	QTextDocument doc;
 	doc.setHtml(szText);
 	doc.setDefaultFont(option.font);
-	doc.setTextWidth(option.rect.width()-32);
+	doc.setTextWidth(option.rect.width()-LVI_AFTER_ICON);
 	int iHeight = doc.documentLayout()->documentSize().toSize().height();
 	if(iHeight < (LVI_ICON_SIZE+(2 * LVI_BORDER)))
 		iHeight = LVI_ICON_SIZE;

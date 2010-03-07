@@ -33,7 +33,7 @@
 
 #include "kvi_settings.h"
 
-#include <QItemDelegate>
+#include <QStyledItemDelegate>
 #include <QListWidget>
 #include <QTreeWidget>
 #include <QAbstractItemView>
@@ -44,11 +44,12 @@
 #define LVI_MINIMUM_TEXT_WIDTH 300
 #define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
 
+#define LVI_AFTER_ICON (LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING)
 /**
 * \class KviTalIconAndRichTextItemDelegate
 * \brief Toolkit Abstraction Layer: itemdelegate class
 */
-class KVILIB_API KviTalIconAndRichTextItemDelegate : public QItemDelegate
+class KVILIB_API KviTalIconAndRichTextItemDelegate : public QStyledItemDelegate
 {
 public:
 	/**
