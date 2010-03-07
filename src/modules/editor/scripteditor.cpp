@@ -281,11 +281,11 @@ void KviScriptEditorWidget::updateOptions()
 	setPalette(p);
 	setFont(g_fntNormal);
 	setTextColor(g_clrNormalText);
-	// this will rehighlight everything
-	setText(toPlainText()); // an "hack" to ensure Update all in the editor
-	if (!m_pSyntaxHighlighter)  m_pSyntaxHighlighter = new KviScriptEditorSyntaxHighlighter(this);
-	else m_pSyntaxHighlighter->updateSyntaxtTextFormat();
-	//(void)h;
+	// we currently delete and re-create the m_pSyntaxHighlighter
+	// as a trick to ensure proper re-highlightning to occur
+	if (m_pSyntaxHighlighter) delete m_pSyntaxHighlighter;
+	m_pSyntaxHighlighter = new KviScriptEditorSyntaxHighlighter(this);
+
 	p = ((KviScriptEditorImplementation*)m_pParent)->findLineEdit()->palette();
 	p.setColor(foregroundRole(),g_clrFind);
 	((KviScriptEditorImplementation*)m_pParent)->findLineEdit()->setPalette(p);
@@ -604,27 +604,12 @@ KviScriptEditorSyntaxHighlighter::~KviScriptEditorSyntaxHighlighter()
 void KviScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 {
 	punctuationFormat.setForeground(g_clrPunctuation);
-	punctuationFormat.setFont(g_fntNormal);
-
 	keywordFormat.setForeground(g_clrKeyword);
-	keywordFormat.setFont(g_fntNormal);
-
 	functionFormat.setForeground(g_clrFunction);
-	functionFormat.setFont(g_fntNormal);
-
-
 	variableFormat.setForeground(g_clrVariable);
-	variableFormat.setFont(g_fntNormal);
-
-
 	bracketFormat.setForeground(g_clrBracket);
-	bracketFormat.setFont(g_fntNormal);
-
-	commentFormat.setFont(g_fntNormal);
 	commentFormat.setForeground(g_clrComment);
-
 	findFormat.setForeground(g_clrFind);
-	findFormat.setFont(g_fntNormal);
 }
 
 void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
