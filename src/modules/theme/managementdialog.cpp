@@ -179,7 +179,7 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 
 	m_pListWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pListWidget->setSortingEnabled(true);
-	connect(m_pListWidget,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(applyTheme(QListWidgetItem *)));
+	connect(m_pListWidget,SIGNAL(itemDoubleClicked(QListWidgetItem *)),this,SLOT(applyTheme(QListWidgetItem *)));
 
 	//FIXME tooltip
 	//connect(m_pListWidget,SIGNAL(tipRequest(QListWidgetItem *,const QPoint &)),this,SLOT(tipRequest(QListWidgetItem *,const QPoint &)));

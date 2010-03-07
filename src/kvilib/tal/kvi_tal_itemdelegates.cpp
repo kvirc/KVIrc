@@ -76,20 +76,21 @@ void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleO
 
 	QTextDocument doc;
 	doc.setHtml(szText);
-	doc.setDefaultFont(pPainter->font());
+	doc.setDefaultFont(option.font);
 	pPainter->translate(option.rect.x()+iAfterIcon,option.rect.y()+LVI_BORDER);
 	doc.setTextWidth(option.rect.width()-32);
-	QRect cliprect = QRect(QPoint(0,0),QSize(option.rect.width()-iAfterIcon,option.rect.height()-(LVI_BORDER*2)-4));
+	QRect cliprect = QRect(QPoint(0,0),QSize(option.rect.width()-iAfterIcon,option.rect.height()));
 	doc.drawContents(pPainter,cliprect);
 	pPainter->restore();
 }
 
-QSize KviTalIconAndRichTextItemDelegate::sizeHint(const QStyleOptionViewItem &, const QModelIndex & index) const
+QSize KviTalIconAndRichTextItemDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex & index) const
 {
 	QString szText = index.data(Qt::DisplayRole).toString();
 	QTextDocument doc;
 	doc.setHtml(szText);
-
+	doc.setDefaultFont(option.font);
+	doc.setTextWidth(option.rect.width()-32);
 	int iHeight = doc.documentLayout()->documentSize().toSize().height();
 	if(iHeight < (LVI_ICON_SIZE+(2 * LVI_BORDER)))
 		iHeight = LVI_ICON_SIZE;
