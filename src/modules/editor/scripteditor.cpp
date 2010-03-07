@@ -730,7 +730,8 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	g->setRowStretch(0,1);
 
 	QToolButton * b = new QToolButton(this);
-	b->setArrowType(Qt::DownArrow);
+	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_OPTIONS)));
+
 	b->setObjectName("ToolButtonEditor");
 	b->setMinimumWidth(24);
 	g->addWidget(b,1,0);

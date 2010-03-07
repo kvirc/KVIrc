@@ -26,10 +26,10 @@
 
 #include "kvi_optionswidget.h"
 #include "kvi_msgtype.h"
-#include <QTreeWidget>
-#include "kvi_tal_listwidget.h"
 #include "kvi_tal_popupmenu.h"
 
+#include <QTreeWidget>
+#include <QItemDelegate>
 #include <QCheckBox>
 #include <QToolButton>
 #include <QPainter>
