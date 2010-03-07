@@ -383,7 +383,7 @@ namespace KviThemeFunctions
 		if(pix.isNull())
 			bResult = false;
 		else {
-			if(!pix.save(szSavePngFilePath,"PNG",100))
+			if(!pix.save(szSavePngFilePath,"PNG"))
 				bResult = false;
 		}
 
