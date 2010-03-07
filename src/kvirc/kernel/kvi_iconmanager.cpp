@@ -330,7 +330,7 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 	"chanadminaway", // 278
 	"useropaway", // 279
 	"halfopaway", // 280
-	"aliashighlighted", // 281
+	"classeditor", // 281
 	"demoralized", // 282
 	"slurp", // 283
 	"namespace",  // 284

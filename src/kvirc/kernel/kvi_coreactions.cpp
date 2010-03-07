@@ -249,8 +249,8 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Edit Classes..."),
 		__tr2qs("Shows a window that allows editing classes"),
 		KviActionManager::categoryScripting(),
-		"kvi_bigicon_aliaseditor.png",
-		KVI_SMALLICON_ALIAS,
+		"kvi_bigicon_classeditor.png",
+		KVI_SMALLICON_CLASSEDITOR,
 		0,
 		KVI_SHORTCUTS_EDITOR_CLASS);
 

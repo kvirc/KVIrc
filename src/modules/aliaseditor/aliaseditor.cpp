@@ -603,11 +603,11 @@ void KviAliasEditor::searchReplace(const QString &szSearch,bool bReplace,const Q
 		KviAliasEditorTreeWidgetItem *pItem=m_pAliases->at(i);
 		if(pItem->buffer().indexOf(szSearch,0,Qt::CaseInsensitive) != -1)
 		{
-			pItem->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIASHIGHLIGHTED))));
+			pItem->setBackground(0, QColor(255,0,0,128));
 			if (bReplace) ((QString &)pItem->buffer()).replace(szSearch,szReplace,Qt::CaseInsensitive);
 			openParentItems(pItem);
 		} else {
-			pItem->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
+			pItem->setBackground(0, QColor(255,255,255));
 		}
 	}
 }

@@ -652,14 +652,14 @@ void KviClassEditor::customContextMenuRequested(QPoint pnt)
 	int id;
 
 	id = m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE)),
 			__tr2qs_ctx("Add Namespace","editor"),
 			this,SLOT(newNamespace()));
 	if (!m_pLastClickedItem)m_pContextPopup->setItemEnabled(id,true);
 	else m_pContextPopup->setItemEnabled(id,m_pLastClickedItem->isNamespace());
 
 	id = m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS)),
 			__tr2qs_ctx("Add Class","editor"),
 			this,SLOT(newClass()));
 	if (!m_pLastClickedItem)m_pContextPopup->setItemEnabled(id,true);
@@ -667,7 +667,7 @@ void KviClassEditor::customContextMenuRequested(QPoint pnt)
 
 
 	id = m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FUNCTION)),
 			__tr2qs_ctx("Add Member Function","editor"),
 			this,SLOT(newMemberFunction()));
 	if (!m_pLastClickedItem)m_pContextPopup->setItemEnabled(id,false);
@@ -1528,7 +1528,7 @@ void KviClassEditorWindow::cancelClicked()
 
 QPixmap * KviClassEditorWindow::myIconPtr()
 {
-        return g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS);
+        return g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASSEDITOR);
 }
 
 void KviClassEditorWindow::getConfigGroupName(QString &szName)
