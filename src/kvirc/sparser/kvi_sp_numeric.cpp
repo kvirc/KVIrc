@@ -2015,6 +2015,33 @@ void KviServerParser::parseNumericTime(KviIrcMessage * msg)
 void KviServerParser::parseNumericNoSuchServer(KviIrcMessage * msg)
 {
 	//ERR_NOSUCHSERVER     402
+
+	//this can be an "awhois -i" reply for a nickname that's not connected
+	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
+	
+	KviAsyncWhoisInfo * i = msg->connection()->asyncWhoisData()->lookup(szNick);
+	if(i)
+	{
+		if(!g_pApp->windowExists(i->pWindow))i->pWindow = msg->console();
+		// that's the new KVS engine!
+		KviKvsVariantList vl;
+		vl.setAutoDelete(true);
+		vl.append(new KviKvsVariant(i->szNick));
+		vl.append(new KviKvsVariant());
+		vl.append(new KviKvsVariant());
+		vl.append(new KviKvsVariant());
+		vl.append(new KviKvsVariant());
+		vl.append(new KviKvsVariant());
+		vl.append(new KviKvsVariant());
+		vl.append(new KviKvsVariant());
+		vl.append(new KviKvsVariant());
+		vl.append(new KviKvsVariant());
+		vl.append(new KviKvsVariant(*(i->pMagic)));
+		i->pCallback->run(i->pWindow,&vl,0,KviKvsScript::PreserveParams);
+		msg->connection()->asyncWhoisData()->remove(i);
+		return;
+	}
+
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
