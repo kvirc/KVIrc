@@ -537,7 +537,6 @@ void KviFileTransferWindow::openFilePopupActivated(int id)
 #ifdef COMPILE_KDE_SUPPORT
 	int ip = m_pOpenFilePopup->itemParameter(id);
 	if(ip < 0)return;
-	QString txt = m_pOpenFilePopup->text(id);
 
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)return;
@@ -547,11 +546,12 @@ void KviFileTransferWindow::openFilePopupActivated(int id)
 
 	QString mimetype = KMimeType::findByPath(tmp)->name();
 	KService::List offers = KMimeTypeTrader::self()->query(mimetype,"Application");
-
+	
+	int idx = 0;
 	for(KService::List::Iterator itOffers = offers.begin();
 	   				itOffers != offers.end(); ++itOffers)
 	{
-		if(txt == (*itOffers).data()->name())
+		if(idx == ip)
 		{
 			KUrl::List lst;
 			KUrl url;
@@ -560,6 +560,7 @@ void KviFileTransferWindow::openFilePopupActivated(int id)
 			KRun::run(*((*itOffers).data()),lst,g_pFrame);
 			break;
 		}
+		idx++;
 	}
 #endif //COMPILE_KDE_SUPPORT
 }
