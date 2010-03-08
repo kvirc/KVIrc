@@ -136,6 +136,16 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 			{
 				szDoc=QUrl(g_pDocIndex->documentList()[ i ]).toLocalFile();
 				f->setFile(szDoc);
+			} else {
+				QString szTmpDocName(".*/doc_");
+				szTmpDocName.append(QRegExp::escape(szParam));
+				szTmpDocName.append("\\.html");
+				i=g_pDocIndex->documentList().indexOf(QRegExp(szTmpDocName));
+				if (i!=-1)
+				{
+					szDoc=QUrl(g_pDocIndex->documentList()[ i ]).toLocalFile();
+					f->setFile(szDoc);
+				}
 			}
 		}
 	}
