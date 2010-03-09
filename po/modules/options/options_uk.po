@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-02 01:57+0100\n"
+"POT-Creation-Date: 2010-03-09 04:29+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -26,14 +26,14 @@ msgstr ""
 msgid " bytes"
 msgstr " байт"
 
-#: src/modules/options/optw_channel.cpp:140
 #: src/modules/options/optw_query.cpp:102
+#: src/modules/options/optw_channel.cpp:140
 msgid " days"
 msgstr ""
 
 #: src/modules/options/optw_ircview.cpp:155
-#: src/modules/options/optw_channel.cpp:136
 #: src/modules/options/optw_query.cpp:98
+#: src/modules/options/optw_channel.cpp:136
 msgid " lines"
 msgstr " рядків"
 
@@ -41,12 +41,12 @@ msgstr " рядків"
 msgid " min"
 msgstr " хвилин"
 
-#: src/modules/options/optw_connection.cpp:155
-#: src/modules/options/optw_lag.cpp:45
-#: src/modules/options/optw_lag.cpp:56
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
+#: src/modules/options/optw_connection.cpp:155
 #: src/modules/options/optw_dcc.cpp:268
+#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr " мсек"
 
@@ -59,11 +59,11 @@ msgstr " рядків"
 msgid " requests"
 msgstr " запитів"
 
+#: src/modules/options/optw_avatar.cpp:96
+#: src/modules/options/optw_ctcpfloodprotection.cpp:92
 #: src/modules/options/optw_connection.cpp:85
 #: src/modules/options/optw_connection.cpp:153
 #: src/modules/options/optw_channel.cpp:121
-#: src/modules/options/optw_avatar.cpp:96
-#: src/modules/options/optw_ctcpfloodprotection.cpp:92
 #: src/modules/options/optw_dcc.cpp:140
 msgid " sec"
 msgstr " сек"
@@ -84,7 +84,7 @@ msgstr "&Застосувати"
 msgid "&Browse..."
 msgstr "&Вибрати..."
 
-#: src/modules/options/optw_servers.cpp:1505
+#: src/modules/options/optw_servers.cpp:1474
 msgid "&Copy Server"
 msgstr "&Копіювати сервер"
 
@@ -96,18 +96,18 @@ msgstr "&Новий"
 msgid "&New Proxy"
 msgstr "&Новий Проксі"
 
-#: src/modules/options/optw_servers.cpp:1502
+#: src/modules/options/optw_servers.cpp:1471
 msgid "&New Server"
 msgstr "&Новий сервер"
 
 #: src/modules/options/optw_servers.cpp:341
-#: src/modules/options/container.cpp:64
-#: src/modules/options/dialog.cpp:227
 #: src/modules/options/optw_identity.cpp:233
+#: src/modules/options/dialog.cpp:227
+#: src/modules/options/container.cpp:64
 msgid "&OK"
 msgstr "&Ok"
 
-#: src/modules/options/optw_servers.cpp:1507
+#: src/modules/options/optw_servers.cpp:1476
 msgid "&Paste Server"
 msgstr "&Вставити сервер"
 
@@ -324,7 +324,7 @@ msgstr ""
 "извещателя в правому нижньому куті десктопа коли виділене повідомлення "
 "з'явилося в неактивному вікні KVIrc</center>"
 
-#: src/modules/options/optw_servers.cpp:1245
+#: src/modules/options/optw_servers.cpp:1247
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -395,8 +395,8 @@ msgstr ""
 "вибрати цю опцію щоб скасувати відновлення списку отошедших людей і зберегти "
 "IRC трафік</center>"
 
-#: src/modules/options/optw_channel.cpp:141
 #: src/modules/options/optw_query.cpp:103
+#: src/modules/options/optw_channel.cpp:141
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
@@ -405,8 +405,8 @@ msgstr ""
 "<center>Мінімальне значення: <b>0 сек</b><br>Максимальне значення: <b>86400 "
 "сек</b></center>"
 
-#: src/modules/options/optw_channel.cpp:137
 #: src/modules/options/optw_query.cpp:99
+#: src/modules/options/optw_channel.cpp:137
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
@@ -594,7 +594,7 @@ msgstr ""
 "виберіть \"Використати кодування мережі\", то унаслідується кодування задана "
 "для мережі, до якого належить цей сервер</center>"
 
-#: src/modules/options/optw_servers.cpp:1241
+#: src/modules/options/optw_servers.cpp:1243
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -1655,8 +1655,8 @@ msgstr "Додати"
 msgid "Add Profile"
 msgstr "Профіль"
 
-#: src/modules/options/optw_servers.cpp:307
 #: src/modules/options/optw_nickserv.cpp:264
+#: src/modules/options/optw_servers.cpp:307
 msgid "Add Rule"
 msgstr "Додати правило"
 
@@ -1673,28 +1673,28 @@ msgstr "Додатково..."
 msgid "Age:"
 msgstr "Вік:"
 
-#: src/modules/options/optw_windowlist.cpp:90
-#: src/modules/options/optw_windowlist.cpp:249
+#: src/modules/options/optw_windowlist.cpp:91
+#: src/modules/options/optw_windowlist.cpp:248
 msgid "Alert Level 1:"
 msgstr "Рівень попереджень 1:"
 
-#: src/modules/options/optw_windowlist.cpp:91
-#: src/modules/options/optw_windowlist.cpp:250
+#: src/modules/options/optw_windowlist.cpp:92
+#: src/modules/options/optw_windowlist.cpp:249
 msgid "Alert Level 2:"
 msgstr "Рівень попереджень 2:"
 
-#: src/modules/options/optw_windowlist.cpp:92
-#: src/modules/options/optw_windowlist.cpp:251
+#: src/modules/options/optw_windowlist.cpp:93
+#: src/modules/options/optw_windowlist.cpp:250
 msgid "Alert Level 3:"
 msgstr "Рівень попереджень 3:"
 
-#: src/modules/options/optw_windowlist.cpp:93
-#: src/modules/options/optw_windowlist.cpp:252
+#: src/modules/options/optw_windowlist.cpp:94
+#: src/modules/options/optw_windowlist.cpp:251
 msgid "Alert Level 4:"
 msgstr "Рівень попереджень 4:"
 
-#: src/modules/options/optw_windowlist.cpp:94
-#: src/modules/options/optw_windowlist.cpp:253
+#: src/modules/options/optw_windowlist.cpp:95
+#: src/modules/options/optw_windowlist.cpp:252
 msgid "Alert Level 5:"
 msgstr "Рівень попереджень 5:"
 
@@ -1845,7 +1845,7 @@ msgid "Background"
 msgstr "Тло"
 
 #: src/modules/options/optw_userlist.cpp:126
-#: src/modules/options/optw_windowlist.cpp:118
+#: src/modules/options/optw_windowlist.cpp:119
 msgid "Background Colors"
 msgstr "Кольори тла"
 
@@ -1854,8 +1854,8 @@ msgstr "Кольори тла"
 msgid "Background Image"
 msgstr "Фонове зображення"
 
-#: src/modules/options/optw_notifier.cpp:39
 #: src/modules/options/optw_topiclabel.cpp:38
+#: src/modules/options/optw_notifier.cpp:39
 #: src/modules/options/optw_input.cpp:39
 msgid "Background color"
 msgstr "Кольори тла"
@@ -1864,15 +1864,15 @@ msgstr "Кольори тла"
 msgid "Background color:"
 msgstr "Кольори тла:"
 
-#: src/modules/options/optw_notifier.cpp:44
 #: src/modules/options/optw_topiclabel.cpp:39
+#: src/modules/options/optw_notifier.cpp:44
 #: src/modules/options/optw_input.cpp:46
 msgid "Background image"
 msgstr "Фонове зображення"
 
 #: src/modules/options/optw_ircview.cpp:54
 #: src/modules/options/optw_userlist.cpp:131
-#: src/modules/options/optw_windowlist.cpp:122
+#: src/modules/options/optw_windowlist.cpp:123
 msgid "Background image:"
 msgstr "Фонове зображення:"
 
@@ -1896,11 +1896,11 @@ msgstr "Використати адресу для IPv6 з'єднань:"
 msgid "Blend color:"
 msgstr "Підміли цвет, що:"
 
-#: src/modules/options/optw_notifier.cpp:61
 #: src/modules/options/optw_ircview.cpp:71
-#: src/modules/options/optw_input.cpp:63
+#: src/modules/options/optw_notifier.cpp:61
 #: src/modules/options/optw_userlist.cpp:148
-#: src/modules/options/optw_windowlist.cpp:139
+#: src/modules/options/optw_windowlist.cpp:140
+#: src/modules/options/optw_input.cpp:63
 msgid "Bottom"
 msgstr "Знизу"
 
@@ -1924,27 +1924,27 @@ msgstr "CTCP відповіді"
 msgid "Cache IP address"
 msgstr "Кеширувати IP адреса"
 
+#: src/modules/options/optw_nickserv.cpp:128
 #: src/modules/options/optw_servers.cpp:347
 #: src/modules/options/optw_servers.cpp:863
-#: src/modules/options/container.cpp:72
-#: src/modules/options/dialog.cpp:242
 #: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:238
 #: src/modules/options/optw_identity.cpp:906
-#: src/modules/options/optw_nickserv.cpp:128
+#: src/modules/options/dialog.cpp:242
+#: src/modules/options/container.cpp:72
 msgid "Cancel"
 msgstr "О&тмена"
 
-#: src/modules/options/optw_notifier.cpp:57
-#: src/modules/options/optw_notifier.cpp:62
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_notifier.cpp:57
+#: src/modules/options/optw_notifier.cpp:62
 #: src/modules/options/optw_userlist.cpp:144
 #: src/modules/options/optw_userlist.cpp:149
-#: src/modules/options/optw_windowlist.cpp:135
-#: src/modules/options/optw_windowlist.cpp:140
+#: src/modules/options/optw_windowlist.cpp:136
+#: src/modules/options/optw_windowlist.cpp:141
+#: src/modules/options/optw_input.cpp:59
+#: src/modules/options/optw_input.cpp:64
 msgid "Center"
 msgstr "По центрі"
 
@@ -2022,7 +2022,7 @@ msgstr "Вибрати..."
 msgid "Classic format"
 msgstr "Класична панель завдань"
 
-#: src/modules/options/optw_servers.cpp:1512
+#: src/modules/options/optw_servers.cpp:1481
 msgid "Clear List"
 msgstr "Очистити список"
 
@@ -2030,13 +2030,13 @@ msgstr "Очистити список"
 msgid "Close in tray"
 msgstr "Згортатись в трей при закритті вікна"
 
-#: src/modules/options/container.cpp:65
 #: src/modules/options/dialog.cpp:229
+#: src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Закрити цей діалог, застосувавши всі зміни."
 
-#: src/modules/options/container.cpp:73
 #: src/modules/options/dialog.cpp:244
+#: src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Закрити цей діалог, забувши про всі зміни."
 
@@ -2048,10 +2048,10 @@ msgstr "Дружній режим командного рядка"
 msgid "Commit all changes immediately."
 msgstr "Застосувати всі зміни негайно."
 
-#: src/modules/options/optw_connection.cpp:221
-#: src/modules/options/optw_proxy.cpp:106
-#: src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_notify.cpp:41
+#: src/modules/options/optw_proxy.cpp:106
+#: src/modules/options/optw_connection.cpp:221
+#: src/modules/options/optw_lag.cpp:43
 msgid "Configuration"
 msgstr "Конфігурація"
 
@@ -2180,19 +2180,19 @@ msgstr "Видалити"
 msgid "Delete Profile"
 msgstr "Видалити правило"
 
-#: src/modules/options/optw_servers.cpp:316
 #: src/modules/options/optw_nickserv.cpp:272
+#: src/modules/options/optw_servers.cpp:316
 msgid "Delete Rule"
 msgstr "Видалити правило"
 
-#: src/modules/options/optw_mediatypes.cpp:79
 #: src/modules/options/optw_servers.cpp:1121
+#: src/modules/options/optw_mediatypes.cpp:79
 msgid "Description"
 msgstr "Опис"
 
-#: src/modules/options/optw_mediatypes.cpp:88
 #: src/modules/options/optw_servers.cpp:111
 #: src/modules/options/optw_servers.cpp:493
+#: src/modules/options/optw_mediatypes.cpp:88
 msgid "Description:"
 msgstr "Опис:"
 
@@ -2284,8 +2284,8 @@ msgstr "Показувати тему каналу"
 msgid "Edit Profile"
 msgstr "Профіль"
 
-#: src/modules/options/optw_servers.cpp:312
 #: src/modules/options/optw_nickserv.cpp:268
+#: src/modules/options/optw_servers.cpp:312
 msgid "Edit Rule"
 msgstr "Редагувати правило"
 
@@ -2302,8 +2302,8 @@ msgstr "Використати ігнор для"
 msgid "Enable Network Profiles"
 msgstr "Властивості мережі"
 
-#: src/modules/options/optw_servers.cpp:279
 #: src/modules/options/optw_nickserv.cpp:232
+#: src/modules/options/optw_servers.cpp:279
 msgid "Enable NickServ Identification"
 msgstr "Включити ідентифікацію NickServ"
 
@@ -2471,17 +2471,17 @@ msgstr "Подсвечивати системну панель завдань і
 msgid "Flash window when users are going online"
 msgstr "Подсвечивать вікно коли користувачі з'являються в онлайн"
 
-#: src/modules/options/optw_notifier.cpp:38
 #: src/modules/options/optw_topiclabel.cpp:36
-#: src/modules/options/optw_input.cpp:38
+#: src/modules/options/optw_notifier.cpp:38
 #: src/modules/options/optw_interfacelookglobal.cpp:178
+#: src/modules/options/optw_input.cpp:38
 msgid "Font"
 msgstr "Шрифт"
 
 #: src/modules/options/optw_ircview.cpp:51
 #: src/modules/options/optw_userlist.cpp:52
-#: src/modules/options/optw_windowlist.cpp:84
-#: src/modules/options/optw_windowlist.cpp:245
+#: src/modules/options/optw_windowlist.cpp:85
+#: src/modules/options/optw_windowlist.cpp:244
 msgid "Font:"
 msgstr "Шрифт:"
 
@@ -2501,8 +2501,8 @@ msgstr "Форсувати негайний вихід"
 msgid "Force language:"
 msgstr "Примусово вказати мова програми за замовчуванням:"
 
-#: src/modules/options/optw_notifier.cpp:40
 #: src/modules/options/optw_topiclabel.cpp:37
+#: src/modules/options/optw_notifier.cpp:40
 #: src/modules/options/optw_input.cpp:40
 msgid "Foreground color"
 msgstr "Кольори переднього плану"
@@ -2515,8 +2515,8 @@ msgstr "Передній план:"
 msgid "Gender:"
 msgstr "Стать:"
 
-#: src/modules/options/optw_messages.cpp:71
 #: src/modules/options/optw_servers.cpp:217
+#: src/modules/options/optw_messages.cpp:71
 msgid "General"
 msgstr "Загальні"
 
@@ -2616,10 +2616,10 @@ msgstr ""
 msgid "Horizontal Alignment:"
 msgstr "Горизонтальне розташування:"
 
-#: src/modules/options/optw_notifier.cpp:46
 #: src/modules/options/optw_ircview.cpp:56
+#: src/modules/options/optw_notifier.cpp:46
+#: src/modules/options/optw_windowlist.cpp:125
 #: src/modules/options/optw_input.cpp:48
-#: src/modules/options/optw_windowlist.cpp:124
 msgid "Horizontal align:"
 msgstr "Горизонтальне розташування:"
 
@@ -2631,8 +2631,8 @@ msgstr ""
 msgid "ID3 tags' encoding"
 msgstr "Кодування ID3 тегів"
 
-#: src/modules/options/optw_proxy.cpp:115
 #: src/modules/options/optw_servers.cpp:588
+#: src/modules/options/optw_proxy.cpp:115
 msgid "IP address:"
 msgstr "IP адреса:"
 
@@ -2669,9 +2669,9 @@ msgstr "Id:"
 msgid "Ident username:"
 msgstr "Ідентифікаційне ім'я:"
 
-#: src/modules/options/optw_servers.cpp:294
 #: src/modules/options/optw_nickserv.cpp:89
 #: src/modules/options/optw_nickserv.cpp:247
+#: src/modules/options/optw_servers.cpp:294
 msgid "Identify Command"
 msgstr "Команда ідентифікації"
 
@@ -2704,7 +2704,7 @@ msgid "Image width:"
 msgstr "Ширина картинки:"
 
 #: src/modules/options/optw_servers.cpp:1195
-#: src/modules/options/optw_servers.cpp:1514
+#: src/modules/options/optw_servers.cpp:1483
 msgid "Import List"
 msgstr "Імпортувати список"
 
@@ -2716,8 +2716,8 @@ msgstr "Неактивний високо-контрастний передні�
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Неактивний високо-контрастний передній план (вторинний)"
 
-#: src/modules/options/optw_channel.cpp:139
 #: src/modules/options/optw_query.cpp:101
+#: src/modules/options/optw_channel.cpp:139
 #, fuzzy
 msgid "Interval:"
 msgstr "Інтерфейс"
@@ -2781,11 +2781,11 @@ msgstr "Інтервал виміру затримки:"
 msgid "Languages:"
 msgstr "Мови:"
 
-#: src/modules/options/optw_notifier.cpp:55
 #: src/modules/options/optw_ircview.cpp:65
-#: src/modules/options/optw_input.cpp:57
+#: src/modules/options/optw_notifier.cpp:55
 #: src/modules/options/optw_userlist.cpp:142
-#: src/modules/options/optw_windowlist.cpp:133
+#: src/modules/options/optw_windowlist.cpp:134
+#: src/modules/options/optw_input.cpp:57
 msgid "Left"
 msgstr "Ліворуч"
 
@@ -2912,11 +2912,11 @@ msgstr "Максимальна кількість DCC передач"
 msgid "Maximum requested file size:"
 msgstr "Максимальний запитуваний розмір файлу:"
 
-#: src/modules/options/optw_windowlist.cpp:258
+#: src/modules/options/optw_windowlist.cpp:257
 msgid "Maximum width of buttons:"
 msgstr "Максимальна ширина кнопок:"
 
-#: src/modules/options/optw_windowlist.cpp:225
+#: src/modules/options/optw_windowlist.cpp:224
 msgid "Maximum width:"
 msgstr "Максимальна ширина:"
 
@@ -2944,7 +2944,7 @@ msgstr "Мінімізувати консоль після вдалого вхо
 msgid "Minimize on startup"
 msgstr "Згортатись в трей при старті програми"
 
-#: src/modules/options/optw_windowlist.cpp:248
+#: src/modules/options/optw_windowlist.cpp:247
 msgid "Minimized:"
 msgstr "Мінімізований:"
 
@@ -2965,11 +2965,11 @@ msgstr "Мінімальний рівень для високо-пріорите
 msgid "Minimum level for low-priority messages"
 msgstr "Мінімальний рівень для низьких-пріоритетних повідомлень"
 
-#: src/modules/options/optw_windowlist.cpp:255
+#: src/modules/options/optw_windowlist.cpp:254
 msgid "Minimum width of buttons:"
 msgstr "Мінімальна ширина кнопок:"
 
-#: src/modules/options/optw_windowlist.cpp:224
+#: src/modules/options/optw_windowlist.cpp:223
 msgid "Minimum width:"
 msgstr "Мінімальна ширина:"
 
@@ -3036,7 +3036,7 @@ msgstr "Мережа:"
 msgid "Network Properties"
 msgstr "Властивості мережі"
 
-#: src/modules/options/optw_servers.cpp:1405
+#: src/modules/options/optw_servers.cpp:1374
 msgid "Network:"
 msgstr "Мережа:"
 
@@ -3045,8 +3045,8 @@ msgid "New Media Type"
 msgstr "Новий медіа тип"
 
 #: src/modules/options/optw_servers.cpp:1154
-#: src/modules/options/optw_servers.cpp:1498
-#: src/modules/options/optw_servers.cpp:1624
+#: src/modules/options/optw_servers.cpp:1467
+#: src/modules/options/optw_servers.cpp:1593
 msgid "New Network"
 msgstr "Нова мережа"
 
@@ -3082,20 +3082,20 @@ msgstr "NickServ"
 msgid "NickServ Authentication Rule"
 msgstr "Правило ідентифікації NickServ"
 
-#: src/modules/options/optw_servers.cpp:292
 #: src/modules/options/optw_nickserv.cpp:63
 #: src/modules/options/optw_nickserv.cpp:245
+#: src/modules/options/optw_servers.cpp:292
 msgid "NickServ Mask"
 msgstr "Маска NickServ"
 
-#: src/modules/options/optw_servers.cpp:293
 #: src/modules/options/optw_nickserv.cpp:246
+#: src/modules/options/optw_servers.cpp:293
 msgid "NickServ Request Mask"
 msgstr "Запит маски NickServ"
 
+#: src/modules/options/optw_nickserv.cpp:243
 #: src/modules/options/optw_servers.cpp:291
 #: src/modules/options/optw_identity.cpp:695
-#: src/modules/options/optw_nickserv.cpp:243
 msgid "Nickname"
 msgstr "Нік"
 
@@ -3118,7 +3118,7 @@ msgstr "Нік:"
 msgid "Nicknames"
 msgstr "Нікі"
 
-#: src/modules/options/optw_servers.cpp:1415
+#: src/modules/options/optw_servers.cpp:1384
 msgid "No selection"
 msgstr "Не обрано"
 
@@ -3132,9 +3132,9 @@ msgstr "Нормально"
 
 #: src/modules/options/optw_userlist.cpp:55
 #: src/modules/options/optw_userlist.cpp:127
-#: src/modules/options/optw_windowlist.cpp:88
-#: src/modules/options/optw_windowlist.cpp:119
-#: src/modules/options/optw_windowlist.cpp:247
+#: src/modules/options/optw_windowlist.cpp:89
+#: src/modules/options/optw_windowlist.cpp:120
+#: src/modules/options/optw_windowlist.cpp:246
 msgid "Normal:"
 msgstr "Нормальний:"
 
@@ -3158,16 +3158,16 @@ msgstr "Вивести повідомлення в извещателе"
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr "Повідомляти про невдалі передачі DCC вилучену сторону"
 
+#: src/modules/options/optw_nickserv.cpp:133
+#: src/modules/options/optw_nickserv.cpp:154
 #: src/modules/options/optw_servers.cpp:857
 #: src/modules/options/optw_identity.cpp:910
 #: src/modules/options/optw_identity.cpp:974
-#: src/modules/options/optw_nickserv.cpp:133
-#: src/modules/options/optw_nickserv.cpp:154
 msgid "OK"
 msgstr "Ok"
 
-#: src/modules/options/optw_textencoding.cpp:160
 #: src/modules/options/optw_identity.cpp:98
+#: src/modules/options/optw_textencoding.cpp:160
 msgid "Ok"
 msgstr "Ок"
 
@@ -3217,7 +3217,7 @@ msgstr "При несподіваному роз'єднанні"
 msgid "On Voice Request"
 msgstr "Запити розмови"
 
-#: src/modules/options/optw_servers.cpp:1551
+#: src/modules/options/optw_servers.cpp:1520
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3225,7 +3225,7 @@ msgstr ""
 "Упс... відбулося щось дивне:<br>Не можу знайти жодного модуля здатного "
 "імпортувати сервера."
 
-#: src/modules/options/optw_servers.cpp:1568
+#: src/modules/options/optw_servers.cpp:1537
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3271,8 +3271,8 @@ msgstr "Таймаут скидання вихідних даних:"
 msgid "Output identd messages to:"
 msgstr "При виході з мережі:"
 
-#: src/modules/options/optw_connection.cpp:199
 #: src/modules/options/optw_ircoutput.cpp:43
+#: src/modules/options/optw_connection.cpp:199
 msgid "Output verbosity"
 msgstr "Багатослівність висновку"
 
@@ -3304,9 +3304,9 @@ msgstr "Затемненность батьківських вікон:"
 msgid "Part message:"
 msgstr "При виході з каналу"
 
-#: src/modules/options/optw_proxy.cpp:119
 #: src/modules/options/optw_servers.cpp:138
 #: src/modules/options/optw_servers.cpp:521
+#: src/modules/options/optw_proxy.cpp:119
 msgid "Password:"
 msgstr "Пароль:"
 
@@ -3324,8 +3324,8 @@ msgstr "список користувачів,канал"
 msgid "Paste last query log"
 msgstr "список користувачів,канал"
 
-#: src/modules/options/optw_channel.cpp:135
 #: src/modules/options/optw_query.cpp:97
+#: src/modules/options/optw_channel.cpp:135
 msgid "Paste up to:"
 msgstr ""
 
@@ -3376,8 +3376,8 @@ msgstr "Спливаюче вікно извещателя, коли корис�
 msgid "Popup the notifier window on highlighted messages"
 msgstr "Спливаюче вікно извещателя для подсвечиваємих повідомлень"
 
-#: src/modules/options/optw_proxy.cpp:113
 #: src/modules/options/optw_servers.cpp:576
+#: src/modules/options/optw_proxy.cpp:113
 msgid "Port:"
 msgstr "Порт:"
 
@@ -3455,8 +3455,8 @@ msgstr "Профіль"
 msgid "Profile Name:"
 msgstr "Профіль"
 
-#: src/modules/options/optw_windowlist.cpp:96
-#: src/modules/options/optw_windowlist.cpp:254
+#: src/modules/options/optw_windowlist.cpp:97
+#: src/modules/options/optw_windowlist.cpp:253
 msgid "Progress bar color:"
 msgstr "Кольори смуги прогресу:"
 
@@ -3535,7 +3535,7 @@ msgstr "&Видалити"
 msgid "Re&move Proxy"
 msgstr "Уда&лити Проксі"
 
-#: src/modules/options/optw_servers.cpp:1503
+#: src/modules/options/optw_servers.cpp:1472
 msgid "Re&move Server"
 msgstr "Уда&лити сервер"
 
@@ -3587,7 +3587,7 @@ msgstr "Запам'ятовувати стан вікон"
 msgid "Remote open command:"
 msgstr "Команда вилученого відкриття:"
 
-#: src/modules/options/optw_servers.cpp:1499
+#: src/modules/options/optw_servers.cpp:1468
 msgid "Remove Network"
 msgstr "Видалити мережа"
 
@@ -3620,11 +3620,11 @@ msgstr "Запитувати відсутні аватари"
 msgid "Restrict alert"
 msgstr "Обмежити попередження"
 
-#: src/modules/options/optw_notifier.cpp:56
 #: src/modules/options/optw_ircview.cpp:66
-#: src/modules/options/optw_input.cpp:58
+#: src/modules/options/optw_notifier.cpp:56
 #: src/modules/options/optw_userlist.cpp:143
-#: src/modules/options/optw_windowlist.cpp:134
+#: src/modules/options/optw_windowlist.cpp:135
+#: src/modules/options/optw_input.cpp:58
 msgid "Right"
 msgstr "Праворуч"
 
@@ -3682,8 +3682,8 @@ msgstr "Вибрати рівні повідомлення для повідом
 
 #: src/modules/options/optw_userlist.cpp:56
 #: src/modules/options/optw_userlist.cpp:128
-#: src/modules/options/optw_windowlist.cpp:89
-#: src/modules/options/optw_windowlist.cpp:120
+#: src/modules/options/optw_windowlist.cpp:90
+#: src/modules/options/optw_windowlist.cpp:121
 msgid "Selected:"
 msgstr "Обраний:"
 
@@ -3744,7 +3744,7 @@ msgid "Server replies"
 msgstr "Відповіді сервера"
 
 #: src/modules/options/optw_servers.cpp:1201
-#: src/modules/options/optw_servers.cpp:1402
+#: src/modules/options/optw_servers.cpp:1371
 msgid "Server:"
 msgstr "Сервер:"
 
@@ -3756,7 +3756,7 @@ msgstr "Список серверів"
 msgid "Service port:"
 msgstr "Порт сервісу:"
 
-#: src/modules/options/optw_windowlist.cpp:257
+#: src/modules/options/optw_windowlist.cpp:256
 msgid "Set maximum button width"
 msgstr "Установити максимальну ширину кнопки"
 
@@ -3799,7 +3799,7 @@ msgstr "Показувати докладну інформацію від сер
 msgid "Show gender icons"
 msgstr "Показувати іконки статі"
 
-#: src/modules/options/optw_windowlist.cpp:222
+#: src/modules/options/optw_windowlist.cpp:52
 msgid "Show header"
 msgstr "Показати заголовок"
 
@@ -3853,7 +3853,7 @@ msgstr "Показувати пінги сервера"
 msgid "Show the CTCP replies in the active window"
 msgstr "Показувати відповіді CTCP в активному вікні"
 
-#: src/modules/options/optw_servers.cpp:1243
+#: src/modules/options/optw_servers.cpp:1245
 msgid "Show this dialog at startup"
 msgstr "Показати цей діалог при старті"
 
@@ -3933,8 +3933,8 @@ msgstr "Тест"
 msgid "Text Encoding:"
 msgstr "Кодування:"
 
-#: src/modules/options/optw_windowlist.cpp:86
-#: src/modules/options/optw_windowlist.cpp:246
+#: src/modules/options/optw_windowlist.cpp:87
+#: src/modules/options/optw_windowlist.cpp:245
 msgid "Text/Alert Colors"
 msgstr "Кольори тексту/попереджень"
 
@@ -4004,8 +4004,8 @@ msgid "This allows you to select the sound system to be used with KVIrc."
 msgstr ""
 "Ця опція дозволяє вам вибрати звукову систему, що буде використана в KVirc"
 
-#: src/modules/options/optw_servers.cpp:283
 #: src/modules/options/optw_nickserv.cpp:235
+#: src/modules/options/optw_servers.cpp:283
 msgid "This check enables the automatic identification with NickServ"
 msgstr "Ця опція включає автоматичну ідентифікацію на NickServ"
 
@@ -4143,16 +4143,16 @@ msgstr ""
 "Ця таблиця містить текстові іконки<br>KVirc will use them to display the CTRL"
 "+I escape sequences and eventually the emoticons."
 
-#: src/modules/options/optw_notifier.cpp:54
-#: src/modules/options/optw_notifier.cpp:59
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_notifier.cpp:54
+#: src/modules/options/optw_notifier.cpp:59
 #: src/modules/options/optw_userlist.cpp:141
 #: src/modules/options/optw_userlist.cpp:146
-#: src/modules/options/optw_windowlist.cpp:132
-#: src/modules/options/optw_windowlist.cpp:137
+#: src/modules/options/optw_windowlist.cpp:133
+#: src/modules/options/optw_windowlist.cpp:138
+#: src/modules/options/optw_input.cpp:56
+#: src/modules/options/optw_input.cpp:61
 msgid "Tile"
 msgstr "Замістити"
 
@@ -4173,11 +4173,11 @@ msgstr ""
 msgid "Title Foreground color"
 msgstr "Кольори переднього плану"
 
-#: src/modules/options/optw_notifier.cpp:60
 #: src/modules/options/optw_ircview.cpp:70
-#: src/modules/options/optw_input.cpp:62
+#: src/modules/options/optw_notifier.cpp:60
 #: src/modules/options/optw_userlist.cpp:147
-#: src/modules/options/optw_windowlist.cpp:138
+#: src/modules/options/optw_windowlist.cpp:139
+#: src/modules/options/optw_input.cpp:62
 msgid "Top"
 msgstr "Зверху"
 
@@ -4219,7 +4219,7 @@ msgstr "Не можу записати інформацію про мову в"
 msgid "Unknown protocol handler command:"
 msgstr "Команда обробки невідомих протоколів:"
 
-#: src/modules/options/optw_servers.cpp:1432
+#: src/modules/options/optw_servers.cpp:1401
 msgid "UnknownNet"
 msgstr "Невідома Мережа"
 
@@ -4241,15 +4241,15 @@ msgstr "Використати \"розумний\" менеджер списк�
 msgid "Use CAP protocol"
 msgstr "Використати IPv6 протокол"
 
-#: src/modules/options/optw_proxy.cpp:129
 #: src/modules/options/optw_servers.cpp:622
+#: src/modules/options/optw_proxy.cpp:129
 msgid "Use IPv6 protocol"
 msgstr "Використати IPv6 протокол"
 
-#: src/modules/options/optw_sound.cpp:102
-#: src/modules/options/optw_sound.cpp:126
 #: src/modules/options/optw_textencoding.cpp:50
 #: src/modules/options/optw_textencoding.cpp:58
+#: src/modules/options/optw_sound.cpp:102
+#: src/modules/options/optw_sound.cpp:126
 msgid "Use Language Encoding"
 msgstr "Використати кодування мови"
 
@@ -4317,7 +4317,7 @@ msgstr "Використати інші кольори для свого ник�
 msgid "Use fast send (send ahead)"
 msgstr "Використати швидку передачу (передачу з випередженням)"
 
-#: src/modules/options/optw_windowlist.cpp:259
+#: src/modules/options/optw_windowlist.cpp:258
 msgid "Use flat buttons"
 msgstr "Використати плоскі кнопки"
 
@@ -4425,11 +4425,11 @@ msgstr "Користувач-оператор:"
 msgid "Username"
 msgstr "Ім'я користувача:"
 
-#: src/modules/options/optw_proxy.cpp:117
 #: src/modules/options/optw_servers.cpp:130
 #: src/modules/options/optw_servers.cpp:513
 #: src/modules/options/optw_identity.cpp:316
 #: src/modules/options/optw_identity.cpp:886
+#: src/modules/options/optw_proxy.cpp:117
 msgid "Username:"
 msgstr "Ім'я користувача:"
 
@@ -4445,10 +4445,10 @@ msgstr "Багатослівний"
 msgid "Vertical Alignment:"
 msgstr "Вертикальне розташування:"
 
-#: src/modules/options/optw_notifier.cpp:50
 #: src/modules/options/optw_ircview.cpp:60
+#: src/modules/options/optw_notifier.cpp:50
+#: src/modules/options/optw_windowlist.cpp:129
 #: src/modules/options/optw_input.cpp:52
-#: src/modules/options/optw_windowlist.cpp:128
 msgid "Vertical align:"
 msgstr "Вертикальне розташування:"
 
@@ -4545,7 +4545,7 @@ msgstr "байт/сек"
 msgid "en"
 msgstr "en"
 
-#: src/modules/options/optw_servers.cpp:1645
+#: src/modules/options/optw_servers.cpp:1614
 msgid "irc.unknown.net"
 msgstr "irc.сервер.net"
 

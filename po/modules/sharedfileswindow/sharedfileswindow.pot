@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 01:38+0100\n"
+"POT-Creation-Date: 2010-03-09 04:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,150 +16,150 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:85
+#: src/modules/sharedfile/libkvisharedfile.cpp:85
 msgid "The file '%Q' is not readable"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:101
+#: src/modules/sharedfile/libkvisharedfile.cpp:101
 msgid "Invalid timeout, ignoring"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:115
+#: src/modules/sharedfile/libkvisharedfile.cpp:115
 msgid "Invalid visible name: using default"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:121
+#: src/modules/sharedfile/libkvisharedfile.cpp:121
 msgid "Ops..failed to add the sharedfile..."
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:159
+#: src/modules/sharedfile/libkvisharedfile.cpp:159
 msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:221
+#: src/modules/sharedfile/libkvisharedfile.cpp:221
 #, c-format
 msgid "    File: %s (%u bytes)"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:223
+#: src/modules/sharedfile/libkvisharedfile.cpp:223
 #, c-format
 msgid "    Mask: %s"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:232
+#: src/modules/sharedfile/libkvisharedfile.cpp:232
 #, c-format
 msgid "    Expires in %d hours %d minutes %d seconds"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:242
+#: src/modules/sharedfile/libkvisharedfile.cpp:242
 msgid "No active file sharedfile"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfile/libkvisharedfile.cpp:243
+#: src/modules/sharedfile/libkvisharedfile.cpp:243
 #, c-format
 msgid "Total: %d sharedfile"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:60
+#: src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
+msgid "Manage S&hared Files"
+msgstr ""
+
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:60
 msgid "Edit Shared File - KVIrc"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:62
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:62
 msgid "Share name:"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:69
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:69
 msgid "File path:"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:76
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:76
 msgid "&Browse..."
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:80
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:80
 msgid "User mask:"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:87
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:87
 msgid "Expire at:"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:98
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:98
 msgid "&OK"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:102
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:102
 msgid "Cancel"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:160
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:160
 msgid "Invalid expire time"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:161
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:161
 msgid ""
 "The expire date/time is in the past: please either remove the \"expires"
 "\"check mark or specify a expire date/time in the future"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:163
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:171
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:180
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:163
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:171
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:180
 msgid "OK"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:169
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:169
 msgid "Invalid share name"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:170
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:170
 msgid "The share name can't be empty, please correct it"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:178
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:178
 msgid "Can't open the file"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:179
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:179
 msgid "The file doesn't exist or it is not readable, please check the path"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:200
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:200
 msgid "Never"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:223
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:223
 msgid "Name"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:224
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:224
 msgid "Filename"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:225
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:225
 msgid "Mask"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:227
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:227
 msgid "Expires"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:243
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:243
 msgid "&Add..."
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:245
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:245
 msgid "Re&move"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:247
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:247
 msgid "&Edit"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:702
+#: src/modules/sharedfileswindow/sharedfileswindow.cpp:702
 msgid "Shared Files"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
-msgid "Manage S&hared Files"
 msgstr ""

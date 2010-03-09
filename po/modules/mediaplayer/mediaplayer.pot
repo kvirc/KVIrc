@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 01:38+0100\n"
+"POT-Creation-Date: 2010-03-09 04:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,97 +16,37 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:64
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:90
-msgid "Trying media player interface \"%Q\": score %d"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:72
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:100
-msgid "Choosing media player interface \"%Q\""
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:103
-msgid "Seems that there is no usable media player on this machine"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:113
-msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:132
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:569
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:592
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:634
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:673
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1181
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1317
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1361
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1550
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1593
-msgid ""
-"The selected media player interface failed to execute the requested function"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:133
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:570
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:593
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:635
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:674
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1182
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1318
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1362
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1551
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1594
-msgid "Last interface error: "
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:43
-msgid "Function not implemented"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:108
-msgid ""
-"An interface to the AMIP plug-in.\n"
-"You can download it from http://amip.tools-for.net.\n"
-"To use this interface you must install AMIP plug-in for your player."
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:320
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:320
 msgid ""
 "An interface to the popular audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:446
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:446
 msgid ""
 "An interface to BMPx.\n"
 "Download it from http://bmpx.backtrace.info\n"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:470
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:470
 msgid ""
 "An interface to Amarok2.\n"
 "Download it from http://amarok.kde.org\n"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:488
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:488
 msgid ""
 "An interface to Qmmp.\n"
 "Download it from http://qmmp.ylsoftware.com\n"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:506
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:506
 msgid ""
 "An interface to the Xmms2 media player.\n"
 "Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:523
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:523
 msgid ""
 "An interface to the Mozilla Songbird media player.\n"
 "Download it from http://www.getsongbird.com.\n"
@@ -114,31 +54,11 @@ msgid ""
 "addons.songbirdnest.com/addon/1626.\n"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:38
-msgid ""
-"An interface to the popular UNIX xmms media player.\n"
-"Download it from http://www.xmms.org\n"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:49
-msgid ""
-"An interface to the popular UNIX audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:136
-msgid "Can't load the player library (%Q)"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:145
-msgid "Can't find symbol %s in %Q"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
+#: src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:194
+#: src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
 "An interface to the popupar Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
@@ -147,9 +67,89 @@ msgid ""
 "folder and restart winamp."
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:316
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:350
+#: src/modules/mediaplayer/mp_winampinterface.cpp:316
+#: src/modules/mediaplayer/mp_winampinterface.cpp:350
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_interface.cpp:43
+msgid "Function not implemented"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://www.xmms.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
+msgid ""
+"An interface to the popular UNIX audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:136
+msgid "Can't load the player library (%Q)"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:145
+msgid "Can't find symbol %s in %Q"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_amipinterface.cpp:108
+msgid ""
+"An interface to the AMIP plug-in.\n"
+"You can download it from http://amip.tools-for.net.\n"
+"To use this interface you must install AMIP plug-in for your player."
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:64
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:90
+msgid "Trying media player interface \"%Q\": score %d"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:72
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:100
+msgid "Choosing media player interface \"%Q\""
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:103
+msgid "Seems that there is no usable media player on this machine"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:113
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:132
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:569
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:592
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:634
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:673
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1181
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1317
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1361
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1550
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1593
+msgid ""
+"The selected media player interface failed to execute the requested function"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:133
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:570
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:593
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:635
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:674
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1182
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1318
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1551
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1594
+msgid "Last interface error: "
 msgstr ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-02 01:57+0100\n"
+"POT-Creation-Date: 2010-03-09 04:29+0100\n"
 "PO-Revision-Date: 2008-01-16 08:51+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -23,14 +23,14 @@ msgstr ""
 msgid " bytes"
 msgstr " bajtů"
 
-#: src/modules/options/optw_channel.cpp:140
 #: src/modules/options/optw_query.cpp:102
+#: src/modules/options/optw_channel.cpp:140
 msgid " days"
 msgstr ""
 
 #: src/modules/options/optw_ircview.cpp:155
-#: src/modules/options/optw_channel.cpp:136
 #: src/modules/options/optw_query.cpp:98
+#: src/modules/options/optw_channel.cpp:136
 msgid " lines"
 msgstr " řádků"
 
@@ -38,12 +38,12 @@ msgstr " řádků"
 msgid " min"
 msgstr " min"
 
-#: src/modules/options/optw_connection.cpp:155
-#: src/modules/options/optw_lag.cpp:45
-#: src/modules/options/optw_lag.cpp:56
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
+#: src/modules/options/optw_connection.cpp:155
 #: src/modules/options/optw_dcc.cpp:268
+#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr " msek"
 
@@ -56,11 +56,11 @@ msgstr "pixelů"
 msgid " requests"
 msgstr " požadavků"
 
+#: src/modules/options/optw_avatar.cpp:96
+#: src/modules/options/optw_ctcpfloodprotection.cpp:92
 #: src/modules/options/optw_connection.cpp:85
 #: src/modules/options/optw_connection.cpp:153
 #: src/modules/options/optw_channel.cpp:121
-#: src/modules/options/optw_avatar.cpp:96
-#: src/modules/options/optw_ctcpfloodprotection.cpp:92
 #: src/modules/options/optw_dcc.cpp:140
 msgid " sec"
 msgstr " sek"
@@ -81,7 +81,7 @@ msgstr "&Použít"
 msgid "&Browse..."
 msgstr "&Procházet..."
 
-#: src/modules/options/optw_servers.cpp:1505
+#: src/modules/options/optw_servers.cpp:1474
 msgid "&Copy Server"
 msgstr "&Kopírovat server"
 
@@ -93,18 +93,18 @@ msgstr "&Nový"
 msgid "&New Proxy"
 msgstr "&Nová Proxy"
 
-#: src/modules/options/optw_servers.cpp:1502
+#: src/modules/options/optw_servers.cpp:1471
 msgid "&New Server"
 msgstr "&Nový server"
 
 #: src/modules/options/optw_servers.cpp:341
-#: src/modules/options/container.cpp:64
-#: src/modules/options/dialog.cpp:227
 #: src/modules/options/optw_identity.cpp:233
+#: src/modules/options/dialog.cpp:227
+#: src/modules/options/container.cpp:64
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/options/optw_servers.cpp:1507
+#: src/modules/options/optw_servers.cpp:1476
 msgid "&Paste Server"
 msgstr "&Vložit server"
 
@@ -321,7 +321,7 @@ msgstr ""
 "okno v dolním rohu vaší obrazovky, když je zobrazena zvýrazňovaná zpráva a "
 "okno KVIrc není aktivní</center>"
 
-#: src/modules/options/optw_servers.cpp:1245
+#: src/modules/options/optw_servers.cpp:1247
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -389,8 +389,8 @@ msgid ""
 "to save your IRC bandwidth.</center>"
 msgstr ""
 
-#: src/modules/options/optw_channel.cpp:141
 #: src/modules/options/optw_query.cpp:103
+#: src/modules/options/optw_channel.cpp:141
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
@@ -399,8 +399,8 @@ msgstr ""
 "<center>Minimální hodnota: <b>0 sek</b><br>Maximální hodnota: <b>86400 sek</"
 "b></center>"
 
-#: src/modules/options/optw_channel.cpp:137
 #: src/modules/options/optw_query.cpp:99
+#: src/modules/options/optw_channel.cpp:137
 #, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
@@ -588,7 +588,7 @@ msgstr ""
 "vyberete \"Použít kódování sítě\" bude kódování zvoleno podle sítě, ve které "
 "se server nachází.</center>"
 
-#: src/modules/options/optw_servers.cpp:1241
+#: src/modules/options/optw_servers.cpp:1243
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -1632,8 +1632,8 @@ msgstr "Přidat"
 msgid "Add Profile"
 msgstr "Profil"
 
-#: src/modules/options/optw_servers.cpp:307
 #: src/modules/options/optw_nickserv.cpp:264
+#: src/modules/options/optw_servers.cpp:307
 msgid "Add Rule"
 msgstr "Přidat pravidlo"
 
@@ -1650,28 +1650,28 @@ msgstr "Pokročilé..."
 msgid "Age:"
 msgstr "Věk:"
 
-#: src/modules/options/optw_windowlist.cpp:90
-#: src/modules/options/optw_windowlist.cpp:249
+#: src/modules/options/optw_windowlist.cpp:91
+#: src/modules/options/optw_windowlist.cpp:248
 msgid "Alert Level 1:"
 msgstr "Výstraha 1:"
 
-#: src/modules/options/optw_windowlist.cpp:91
-#: src/modules/options/optw_windowlist.cpp:250
+#: src/modules/options/optw_windowlist.cpp:92
+#: src/modules/options/optw_windowlist.cpp:249
 msgid "Alert Level 2:"
 msgstr "Výstraha 2:"
 
-#: src/modules/options/optw_windowlist.cpp:92
-#: src/modules/options/optw_windowlist.cpp:251
+#: src/modules/options/optw_windowlist.cpp:93
+#: src/modules/options/optw_windowlist.cpp:250
 msgid "Alert Level 3:"
 msgstr "Výstraha 3:"
 
-#: src/modules/options/optw_windowlist.cpp:93
-#: src/modules/options/optw_windowlist.cpp:252
+#: src/modules/options/optw_windowlist.cpp:94
+#: src/modules/options/optw_windowlist.cpp:251
 msgid "Alert Level 4:"
 msgstr "Výstraha 4:"
 
-#: src/modules/options/optw_windowlist.cpp:94
-#: src/modules/options/optw_windowlist.cpp:253
+#: src/modules/options/optw_windowlist.cpp:95
+#: src/modules/options/optw_windowlist.cpp:252
 msgid "Alert Level 5:"
 msgstr "Výstraha 5:"
 
@@ -1823,7 +1823,7 @@ msgid "Background"
 msgstr "Pozadí"
 
 #: src/modules/options/optw_userlist.cpp:126
-#: src/modules/options/optw_windowlist.cpp:118
+#: src/modules/options/optw_windowlist.cpp:119
 msgid "Background Colors"
 msgstr "Barvy pozadí"
 
@@ -1832,8 +1832,8 @@ msgstr "Barvy pozadí"
 msgid "Background Image"
 msgstr "Obrázek na pozadí"
 
-#: src/modules/options/optw_notifier.cpp:39
 #: src/modules/options/optw_topiclabel.cpp:38
+#: src/modules/options/optw_notifier.cpp:39
 #: src/modules/options/optw_input.cpp:39
 msgid "Background color"
 msgstr "Barva pozadí"
@@ -1842,15 +1842,15 @@ msgstr "Barva pozadí"
 msgid "Background color:"
 msgstr "Barva pozadí:"
 
-#: src/modules/options/optw_notifier.cpp:44
 #: src/modules/options/optw_topiclabel.cpp:39
+#: src/modules/options/optw_notifier.cpp:44
 #: src/modules/options/optw_input.cpp:46
 msgid "Background image"
 msgstr "Obrázek na pozadí"
 
 #: src/modules/options/optw_ircview.cpp:54
 #: src/modules/options/optw_userlist.cpp:131
-#: src/modules/options/optw_windowlist.cpp:122
+#: src/modules/options/optw_windowlist.cpp:123
 msgid "Background image:"
 msgstr "Obrázek na pozadí:"
 
@@ -1874,11 +1874,11 @@ msgstr "Vázat IPv6 spojení k:"
 msgid "Blend color:"
 msgstr "Míchaná barva:"
 
-#: src/modules/options/optw_notifier.cpp:61
 #: src/modules/options/optw_ircview.cpp:71
-#: src/modules/options/optw_input.cpp:63
+#: src/modules/options/optw_notifier.cpp:61
 #: src/modules/options/optw_userlist.cpp:148
-#: src/modules/options/optw_windowlist.cpp:139
+#: src/modules/options/optw_windowlist.cpp:140
+#: src/modules/options/optw_input.cpp:63
 msgid "Bottom"
 msgstr "Dole"
 
@@ -1902,27 +1902,27 @@ msgstr "CTCP Odezvy"
 msgid "Cache IP address"
 msgstr "Cache IP adresy"
 
+#: src/modules/options/optw_nickserv.cpp:128
 #: src/modules/options/optw_servers.cpp:347
 #: src/modules/options/optw_servers.cpp:863
-#: src/modules/options/container.cpp:72
-#: src/modules/options/dialog.cpp:242
 #: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:238
 #: src/modules/options/optw_identity.cpp:906
-#: src/modules/options/optw_nickserv.cpp:128
+#: src/modules/options/dialog.cpp:242
+#: src/modules/options/container.cpp:72
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/modules/options/optw_notifier.cpp:57
-#: src/modules/options/optw_notifier.cpp:62
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_notifier.cpp:57
+#: src/modules/options/optw_notifier.cpp:62
 #: src/modules/options/optw_userlist.cpp:144
 #: src/modules/options/optw_userlist.cpp:149
-#: src/modules/options/optw_windowlist.cpp:135
-#: src/modules/options/optw_windowlist.cpp:140
+#: src/modules/options/optw_windowlist.cpp:136
+#: src/modules/options/optw_windowlist.cpp:141
+#: src/modules/options/optw_input.cpp:59
+#: src/modules/options/optw_input.cpp:64
 msgid "Center"
 msgstr "Centrovat"
 
@@ -2000,7 +2000,7 @@ msgstr "Vyberte..."
 msgid "Classic format"
 msgstr "Klasická lišta"
 
-#: src/modules/options/optw_servers.cpp:1512
+#: src/modules/options/optw_servers.cpp:1481
 msgid "Clear List"
 msgstr "Smazat seznam"
 
@@ -2008,13 +2008,13 @@ msgstr "Smazat seznam"
 msgid "Close in tray"
 msgstr "Zavřít v panelu"
 
-#: src/modules/options/container.cpp:65
 #: src/modules/options/dialog.cpp:229
+#: src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Zavře tento dialog a provede všechny změny."
 
-#: src/modules/options/container.cpp:73
 #: src/modules/options/dialog.cpp:244
+#: src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Zavře tento dialog, bez provedení změn."
 
@@ -2026,10 +2026,10 @@ msgstr ""
 msgid "Commit all changes immediately."
 msgstr "Provede všechny změny okamžitě."
 
-#: src/modules/options/optw_connection.cpp:221
-#: src/modules/options/optw_proxy.cpp:106
-#: src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_notify.cpp:41
+#: src/modules/options/optw_proxy.cpp:106
+#: src/modules/options/optw_connection.cpp:221
+#: src/modules/options/optw_lag.cpp:43
 msgid "Configuration"
 msgstr "Nastavení"
 
@@ -2157,19 +2157,19 @@ msgstr "Smazat"
 msgid "Delete Profile"
 msgstr "Smazat pravidlo"
 
-#: src/modules/options/optw_servers.cpp:316
 #: src/modules/options/optw_nickserv.cpp:272
+#: src/modules/options/optw_servers.cpp:316
 msgid "Delete Rule"
 msgstr "Smazat pravidlo"
 
-#: src/modules/options/optw_mediatypes.cpp:79
 #: src/modules/options/optw_servers.cpp:1121
+#: src/modules/options/optw_mediatypes.cpp:79
 msgid "Description"
 msgstr "Popis"
 
-#: src/modules/options/optw_mediatypes.cpp:88
 #: src/modules/options/optw_servers.cpp:111
 #: src/modules/options/optw_servers.cpp:493
+#: src/modules/options/optw_mediatypes.cpp:88
 msgid "Description:"
 msgstr "Popis:"
 
@@ -2261,8 +2261,8 @@ msgstr "Vypsat téma kanálu"
 msgid "Edit Profile"
 msgstr "Profil"
 
-#: src/modules/options/optw_servers.cpp:312
 #: src/modules/options/optw_nickserv.cpp:268
+#: src/modules/options/optw_servers.cpp:312
 msgid "Edit Rule"
 msgstr "Upravit pravidlo"
 
@@ -2279,8 +2279,8 @@ msgstr "Povolit ignorování pro"
 msgid "Enable Network Profiles"
 msgstr "Vlastnosti sítě"
 
-#: src/modules/options/optw_servers.cpp:279
 #: src/modules/options/optw_nickserv.cpp:232
+#: src/modules/options/optw_servers.cpp:279
 msgid "Enable NickServ Identification"
 msgstr "Povolit identifikaci NickServ"
 
@@ -2448,17 +2448,17 @@ msgstr "Blikající systémová lišta při zvýrazněných zprávách"
 msgid "Flash window when users are going online"
 msgstr "Blikající okno, když je uživatel online"
 
-#: src/modules/options/optw_notifier.cpp:38
 #: src/modules/options/optw_topiclabel.cpp:36
-#: src/modules/options/optw_input.cpp:38
+#: src/modules/options/optw_notifier.cpp:38
 #: src/modules/options/optw_interfacelookglobal.cpp:178
+#: src/modules/options/optw_input.cpp:38
 msgid "Font"
 msgstr "Font"
 
 #: src/modules/options/optw_ircview.cpp:51
 #: src/modules/options/optw_userlist.cpp:52
-#: src/modules/options/optw_windowlist.cpp:84
-#: src/modules/options/optw_windowlist.cpp:245
+#: src/modules/options/optw_windowlist.cpp:85
+#: src/modules/options/optw_windowlist.cpp:244
 msgid "Font:"
 msgstr "Font:"
 
@@ -2478,8 +2478,8 @@ msgstr "Provést opuštění okamžitě"
 msgid "Force language:"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:40
 #: src/modules/options/optw_topiclabel.cpp:37
+#: src/modules/options/optw_notifier.cpp:40
 #: src/modules/options/optw_input.cpp:40
 msgid "Foreground color"
 msgstr "Barva popředí"
@@ -2492,8 +2492,8 @@ msgstr "Popředí:"
 msgid "Gender:"
 msgstr "Pohlaví:"
 
-#: src/modules/options/optw_messages.cpp:71
 #: src/modules/options/optw_servers.cpp:217
+#: src/modules/options/optw_messages.cpp:71
 msgid "General"
 msgstr "Hlavní"
 
@@ -2583,10 +2583,10 @@ msgstr "Tip: Přesuňte myš nad políčka pro získání nápovědy"
 msgid "Horizontal Alignment:"
 msgstr "Horizontální zarovnání:"
 
-#: src/modules/options/optw_notifier.cpp:46
 #: src/modules/options/optw_ircview.cpp:56
+#: src/modules/options/optw_notifier.cpp:46
+#: src/modules/options/optw_windowlist.cpp:125
 #: src/modules/options/optw_input.cpp:48
-#: src/modules/options/optw_windowlist.cpp:124
 msgid "Horizontal align:"
 msgstr "Horizontální zarovnání:"
 
@@ -2599,8 +2599,8 @@ msgstr "Dvojklikem navštívíte odkaz"
 msgid "ID3 tags' encoding"
 msgstr "kódování ID3 tagů"
 
-#: src/modules/options/optw_proxy.cpp:115
 #: src/modules/options/optw_servers.cpp:588
+#: src/modules/options/optw_proxy.cpp:115
 msgid "IP address:"
 msgstr "IP adresa:"
 
@@ -2637,9 +2637,9 @@ msgstr "Id:"
 msgid "Ident username:"
 msgstr "Ident:"
 
-#: src/modules/options/optw_servers.cpp:294
 #: src/modules/options/optw_nickserv.cpp:89
 #: src/modules/options/optw_nickserv.cpp:247
+#: src/modules/options/optw_servers.cpp:294
 msgid "Identify Command"
 msgstr "Příkaz identifikace"
 
@@ -2672,7 +2672,7 @@ msgid "Image width:"
 msgstr "Šířka obrázku:"
 
 #: src/modules/options/optw_servers.cpp:1195
-#: src/modules/options/optw_servers.cpp:1514
+#: src/modules/options/optw_servers.cpp:1483
 msgid "Import List"
 msgstr "Importovat seznam"
 
@@ -2684,8 +2684,8 @@ msgstr "Neaktivní vysoce kontrastní popředí (primární)"
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Neaktivní vysoce kontrastní popředí (sekundární)"
 
-#: src/modules/options/optw_channel.cpp:139
 #: src/modules/options/optw_query.cpp:101
+#: src/modules/options/optw_channel.cpp:139
 #, fuzzy
 msgid "Interval:"
 msgstr "Interval nečinnosti:"
@@ -2749,11 +2749,11 @@ msgstr "Měřič lagu tlukot:"
 msgid "Languages:"
 msgstr "Jazyky:"
 
-#: src/modules/options/optw_notifier.cpp:55
 #: src/modules/options/optw_ircview.cpp:65
-#: src/modules/options/optw_input.cpp:57
+#: src/modules/options/optw_notifier.cpp:55
 #: src/modules/options/optw_userlist.cpp:142
-#: src/modules/options/optw_windowlist.cpp:133
+#: src/modules/options/optw_windowlist.cpp:134
+#: src/modules/options/optw_input.cpp:57
 msgid "Left"
 msgstr "Vlevo"
 
@@ -2878,11 +2878,11 @@ msgstr "Maximální počet DCC přenosů"
 msgid "Maximum requested file size:"
 msgstr "Maximální požadovaná velikost souboru:"
 
-#: src/modules/options/optw_windowlist.cpp:258
+#: src/modules/options/optw_windowlist.cpp:257
 msgid "Maximum width of buttons:"
 msgstr "Maximální šířka tlačítek:"
 
-#: src/modules/options/optw_windowlist.cpp:225
+#: src/modules/options/optw_windowlist.cpp:224
 msgid "Maximum width:"
 msgstr "Maximální šířka:"
 
@@ -2910,7 +2910,7 @@ msgstr "Minimalizovat konzoli po úspěšném přihlášení"
 msgid "Minimize on startup"
 msgstr "Minimalizovat při spuštění"
 
-#: src/modules/options/optw_windowlist.cpp:248
+#: src/modules/options/optw_windowlist.cpp:247
 msgid "Minimized:"
 msgstr "Minimalizovaný:"
 
@@ -2931,11 +2931,11 @@ msgstr ""
 msgid "Minimum level for low-priority messages"
 msgstr ""
 
-#: src/modules/options/optw_windowlist.cpp:255
+#: src/modules/options/optw_windowlist.cpp:254
 msgid "Minimum width of buttons:"
 msgstr "Minimální šířka tlačítek:"
 
-#: src/modules/options/optw_windowlist.cpp:224
+#: src/modules/options/optw_windowlist.cpp:223
 msgid "Minimum width:"
 msgstr "Minimální šířka:"
 
@@ -3000,7 +3000,7 @@ msgstr "Síť:"
 msgid "Network Properties"
 msgstr "Vlastnosti sítě"
 
-#: src/modules/options/optw_servers.cpp:1405
+#: src/modules/options/optw_servers.cpp:1374
 msgid "Network:"
 msgstr "Síť:"
 
@@ -3009,8 +3009,8 @@ msgid "New Media Type"
 msgstr "Nový typ média"
 
 #: src/modules/options/optw_servers.cpp:1154
-#: src/modules/options/optw_servers.cpp:1498
-#: src/modules/options/optw_servers.cpp:1624
+#: src/modules/options/optw_servers.cpp:1467
+#: src/modules/options/optw_servers.cpp:1593
 msgid "New Network"
 msgstr "Nová Síť"
 
@@ -3046,20 +3046,20 @@ msgstr "NickServ"
 msgid "NickServ Authentication Rule"
 msgstr "Autentifikační pravidlo NIckServ"
 
-#: src/modules/options/optw_servers.cpp:292
 #: src/modules/options/optw_nickserv.cpp:63
 #: src/modules/options/optw_nickserv.cpp:245
+#: src/modules/options/optw_servers.cpp:292
 msgid "NickServ Mask"
 msgstr "NickServ Maska"
 
-#: src/modules/options/optw_servers.cpp:293
 #: src/modules/options/optw_nickserv.cpp:246
+#: src/modules/options/optw_servers.cpp:293
 msgid "NickServ Request Mask"
 msgstr "NickServ Maska požadavku"
 
+#: src/modules/options/optw_nickserv.cpp:243
 #: src/modules/options/optw_servers.cpp:291
 #: src/modules/options/optw_identity.cpp:695
-#: src/modules/options/optw_nickserv.cpp:243
 msgid "Nickname"
 msgstr "Přezdívka"
 
@@ -3082,7 +3082,7 @@ msgstr "Přezdívka:"
 msgid "Nicknames"
 msgstr "Přezdívky"
 
-#: src/modules/options/optw_servers.cpp:1415
+#: src/modules/options/optw_servers.cpp:1384
 msgid "No selection"
 msgstr "Žádný výběr"
 
@@ -3097,9 +3097,9 @@ msgstr "Normální"
 
 #: src/modules/options/optw_userlist.cpp:55
 #: src/modules/options/optw_userlist.cpp:127
-#: src/modules/options/optw_windowlist.cpp:88
-#: src/modules/options/optw_windowlist.cpp:119
-#: src/modules/options/optw_windowlist.cpp:247
+#: src/modules/options/optw_windowlist.cpp:89
+#: src/modules/options/optw_windowlist.cpp:120
+#: src/modules/options/optw_windowlist.cpp:246
 msgid "Normal:"
 msgstr "Normální:"
 
@@ -3123,16 +3123,16 @@ msgstr "Oznámit dokončení v oznamovači"
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr "Oznámit selhanou DCC komunikaci vzdálenému konci"
 
+#: src/modules/options/optw_nickserv.cpp:133
+#: src/modules/options/optw_nickserv.cpp:154
 #: src/modules/options/optw_servers.cpp:857
 #: src/modules/options/optw_identity.cpp:910
 #: src/modules/options/optw_identity.cpp:974
-#: src/modules/options/optw_nickserv.cpp:133
-#: src/modules/options/optw_nickserv.cpp:154
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/options/optw_textencoding.cpp:160
 #: src/modules/options/optw_identity.cpp:98
+#: src/modules/options/optw_textencoding.cpp:160
 msgid "Ok"
 msgstr "Ok"
 
@@ -3182,7 +3182,7 @@ msgstr "Při neočekávaném odpojení"
 msgid "On Voice Request"
 msgstr "Při Hlasovém požadavku"
 
-#: src/modules/options/optw_servers.cpp:1551
+#: src/modules/options/optw_servers.cpp:1520
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3190,7 +3190,7 @@ msgstr ""
 "Oops... něco zvláštního se stalo:<br>Nelze nalézt žádný modul pro import "
 "serverů."
 
-#: src/modules/options/optw_servers.cpp:1568
+#: src/modules/options/optw_servers.cpp:1537
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3235,8 +3235,8 @@ msgstr "Prodleva fronty odchozích dat:"
 msgid "Output identd messages to:"
 msgstr "Výstup identd zpráv do:"
 
-#: src/modules/options/optw_connection.cpp:199
 #: src/modules/options/optw_ircoutput.cpp:43
+#: src/modules/options/optw_connection.cpp:199
 msgid "Output verbosity"
 msgstr "Upovídanost výstupu"
 
@@ -3268,9 +3268,9 @@ msgstr "Neprůsvitnost zdrojového okna:"
 msgid "Part message:"
 msgstr "Odchodová zpráva:"
 
-#: src/modules/options/optw_proxy.cpp:119
 #: src/modules/options/optw_servers.cpp:138
 #: src/modules/options/optw_servers.cpp:521
+#: src/modules/options/optw_proxy.cpp:119
 msgid "Password:"
 msgstr "Heslo:"
 
@@ -3288,8 +3288,8 @@ msgstr "seznam uživatelů,kanál"
 msgid "Paste last query log"
 msgstr "seznam uživatelů,kanál"
 
-#: src/modules/options/optw_channel.cpp:135
 #: src/modules/options/optw_query.cpp:97
+#: src/modules/options/optw_channel.cpp:135
 #, fuzzy
 msgid "Paste up to:"
 msgstr "Vložit nahoru"
@@ -3341,8 +3341,8 @@ msgstr "Zobrazit Oznamovač, když je uživatel online"
 msgid "Popup the notifier window on highlighted messages"
 msgstr "Zobrazit okno oznamovače při zvýrazeněných zprávách"
 
-#: src/modules/options/optw_proxy.cpp:113
 #: src/modules/options/optw_servers.cpp:576
+#: src/modules/options/optw_proxy.cpp:113
 msgid "Port:"
 msgstr "Port:"
 
@@ -3419,8 +3419,8 @@ msgstr "Profil"
 msgid "Profile Name:"
 msgstr "Profil"
 
-#: src/modules/options/optw_windowlist.cpp:96
-#: src/modules/options/optw_windowlist.cpp:254
+#: src/modules/options/optw_windowlist.cpp:97
+#: src/modules/options/optw_windowlist.cpp:253
 msgid "Progress bar color:"
 msgstr "Barva ukazatele průběhu:"
 
@@ -3500,7 +3500,7 @@ msgstr "Ode&brat"
 msgid "Re&move Proxy"
 msgstr "Ode&brat proxy"
 
-#: src/modules/options/optw_servers.cpp:1503
+#: src/modules/options/optw_servers.cpp:1472
 msgid "Re&move Server"
 msgstr "S&mazat server"
 
@@ -3552,7 +3552,7 @@ msgstr "Zapamatovat vlastnosti okna"
 msgid "Remote open command:"
 msgstr "Otevřít vzdáleně pomocí:"
 
-#: src/modules/options/optw_servers.cpp:1499
+#: src/modules/options/optw_servers.cpp:1468
 msgid "Remove Network"
 msgstr "Smazat Síť"
 
@@ -3584,11 +3584,11 @@ msgstr "Požadovat chybějící avatary"
 msgid "Restrict alert"
 msgstr "Omezit výstrahu"
 
-#: src/modules/options/optw_notifier.cpp:56
 #: src/modules/options/optw_ircview.cpp:66
-#: src/modules/options/optw_input.cpp:58
+#: src/modules/options/optw_notifier.cpp:56
 #: src/modules/options/optw_userlist.cpp:143
-#: src/modules/options/optw_windowlist.cpp:134
+#: src/modules/options/optw_windowlist.cpp:135
+#: src/modules/options/optw_input.cpp:58
 msgid "Right"
 msgstr "Vpravo"
 
@@ -3649,8 +3649,8 @@ msgstr ""
 
 #: src/modules/options/optw_userlist.cpp:56
 #: src/modules/options/optw_userlist.cpp:128
-#: src/modules/options/optw_windowlist.cpp:89
-#: src/modules/options/optw_windowlist.cpp:120
+#: src/modules/options/optw_windowlist.cpp:90
+#: src/modules/options/optw_windowlist.cpp:121
 msgid "Selected:"
 msgstr "Vybraný:"
 
@@ -3711,7 +3711,7 @@ msgid "Server replies"
 msgstr "Odezvy serveru"
 
 #: src/modules/options/optw_servers.cpp:1201
-#: src/modules/options/optw_servers.cpp:1402
+#: src/modules/options/optw_servers.cpp:1371
 msgid "Server:"
 msgstr "Server:"
 
@@ -3723,7 +3723,7 @@ msgstr "Servery"
 msgid "Service port:"
 msgstr "port:"
 
-#: src/modules/options/optw_windowlist.cpp:257
+#: src/modules/options/optw_windowlist.cpp:256
 msgid "Set maximum button width"
 msgstr "Nastavit maximální šířku tlačítek"
 
@@ -3766,7 +3766,7 @@ msgstr "Zobrazit rozšířené informace serveru"
 msgid "Show gender icons"
 msgstr "Zobrazit ikony pohlaví"
 
-#: src/modules/options/optw_windowlist.cpp:222
+#: src/modules/options/optw_windowlist.cpp:52
 msgid "Show header"
 msgstr "Zobrazit hlavičku"
 
@@ -3820,7 +3820,7 @@ msgstr "Zobrazit pingy serveru"
 msgid "Show the CTCP replies in the active window"
 msgstr "Zobrazit CTCP odezvy v aktivním okně"
 
-#: src/modules/options/optw_servers.cpp:1243
+#: src/modules/options/optw_servers.cpp:1245
 msgid "Show this dialog at startup"
 msgstr "Zobrazit tento dialog při spuštění"
 
@@ -3902,8 +3902,8 @@ msgstr "Testovat"
 msgid "Text Encoding:"
 msgstr "Kódo&vání textu"
 
-#: src/modules/options/optw_windowlist.cpp:86
-#: src/modules/options/optw_windowlist.cpp:246
+#: src/modules/options/optw_windowlist.cpp:87
+#: src/modules/options/optw_windowlist.cpp:245
 msgid "Text/Alert Colors"
 msgstr "Barvy textu výstrah"
 
@@ -3967,8 +3967,8 @@ msgstr ""
 msgid "This allows you to select the sound system to be used with KVIrc."
 msgstr "Toto umožňuje výběr zvukového systému použitého s KVIrc."
 
-#: src/modules/options/optw_servers.cpp:283
 #: src/modules/options/optw_nickserv.cpp:235
+#: src/modules/options/optw_servers.cpp:283
 msgid "This check enables the automatic identification with NickServ"
 msgstr "Toto povolí automatickou identifikaci s NickServ"
 
@@ -4100,16 +4100,16 @@ msgstr ""
 "Tato tabulka obsahuje asociace textu a ikon.<br>KVirc je používá k zobrazení "
 "pomocí CTRL+I escape sekvence a také smajlíků."
 
-#: src/modules/options/optw_notifier.cpp:54
-#: src/modules/options/optw_notifier.cpp:59
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_notifier.cpp:54
+#: src/modules/options/optw_notifier.cpp:59
 #: src/modules/options/optw_userlist.cpp:141
 #: src/modules/options/optw_userlist.cpp:146
-#: src/modules/options/optw_windowlist.cpp:132
-#: src/modules/options/optw_windowlist.cpp:137
+#: src/modules/options/optw_windowlist.cpp:133
+#: src/modules/options/optw_windowlist.cpp:138
+#: src/modules/options/optw_input.cpp:56
+#: src/modules/options/optw_input.cpp:61
 msgid "Tile"
 msgstr "Dlaždice"
 
@@ -4131,11 +4131,11 @@ msgstr "Vyberte Font"
 msgid "Title Foreground color"
 msgstr "Barva popředí"
 
-#: src/modules/options/optw_notifier.cpp:60
 #: src/modules/options/optw_ircview.cpp:70
-#: src/modules/options/optw_input.cpp:62
+#: src/modules/options/optw_notifier.cpp:60
 #: src/modules/options/optw_userlist.cpp:147
-#: src/modules/options/optw_windowlist.cpp:138
+#: src/modules/options/optw_windowlist.cpp:139
+#: src/modules/options/optw_input.cpp:62
 msgid "Top"
 msgstr "Nahoře"
 
@@ -4177,7 +4177,7 @@ msgstr "Nelze zapsat jazykové informace do"
 msgid "Unknown protocol handler command:"
 msgstr "Příkaz handleru neznámého protokolu:"
 
-#: src/modules/options/optw_servers.cpp:1432
+#: src/modules/options/optw_servers.cpp:1401
 msgid "UnknownNet"
 msgstr "NeznámáSíť"
 
@@ -4199,15 +4199,15 @@ msgstr "Použít \"smart\" seznam oznamování"
 msgid "Use CAP protocol"
 msgstr "Použít IPv6 protokol"
 
-#: src/modules/options/optw_proxy.cpp:129
 #: src/modules/options/optw_servers.cpp:622
+#: src/modules/options/optw_proxy.cpp:129
 msgid "Use IPv6 protocol"
 msgstr "Použít IPv6 protokol"
 
-#: src/modules/options/optw_sound.cpp:102
-#: src/modules/options/optw_sound.cpp:126
 #: src/modules/options/optw_textencoding.cpp:50
 #: src/modules/options/optw_textencoding.cpp:58
+#: src/modules/options/optw_sound.cpp:102
+#: src/modules/options/optw_sound.cpp:126
 msgid "Use Language Encoding"
 msgstr "Použít kódování jazyka"
 
@@ -4275,7 +4275,7 @@ msgstr "Použít odlišnou barvu pro vlastní přezdívku:"
 msgid "Use fast send (send ahead)"
 msgstr "Použít rychlé poslání (posílání dopředu)"
 
-#: src/modules/options/optw_windowlist.cpp:259
+#: src/modules/options/optw_windowlist.cpp:258
 msgid "Use flat buttons"
 msgstr "Použít plochá tlačítka"
 
@@ -4383,11 +4383,11 @@ msgstr "Uživ. op:"
 msgid "Username"
 msgstr "Uživatelské jméno:"
 
-#: src/modules/options/optw_proxy.cpp:117
 #: src/modules/options/optw_servers.cpp:130
 #: src/modules/options/optw_servers.cpp:513
 #: src/modules/options/optw_identity.cpp:316
 #: src/modules/options/optw_identity.cpp:886
+#: src/modules/options/optw_proxy.cpp:117
 msgid "Username:"
 msgstr "Uživatelské jméno:"
 
@@ -4403,10 +4403,10 @@ msgstr "Hlasitý"
 msgid "Vertical Alignment:"
 msgstr "Vertikální zarovnání:"
 
-#: src/modules/options/optw_notifier.cpp:50
 #: src/modules/options/optw_ircview.cpp:60
+#: src/modules/options/optw_notifier.cpp:50
+#: src/modules/options/optw_windowlist.cpp:129
 #: src/modules/options/optw_input.cpp:52
-#: src/modules/options/optw_windowlist.cpp:128
 msgid "Vertical align:"
 msgstr "Vertikální zarovnání:"
 
@@ -4489,7 +4489,7 @@ msgstr "bajtů/sek"
 msgid "en"
 msgstr "en"
 
-#: src/modules/options/optw_servers.cpp:1645
+#: src/modules/options/optw_servers.cpp:1614
 msgid "irc.unknown.net"
 msgstr "irc.neznama.sit"
 

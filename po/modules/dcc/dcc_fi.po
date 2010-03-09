@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-02 01:57+0100\n"
+"POT-Creation-Date: 2010-03-09 04:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -191,8 +191,8 @@ msgid ""
 "DCC %s since we can't accept incoming connections (user option)"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:930
 #: src/modules/dcc/video.cpp:960
+#: src/modules/dcc/voice.cpp:930
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr ""
@@ -320,10 +320,10 @@ msgstr ""
 msgid "Connected to %1:%2"
 msgstr ""
 
-#: src/modules/dcc/canvas.cpp:282
+#: src/modules/dcc/video.cpp:940
 #: src/modules/dcc/chat.cpp:555
 #: src/modules/dcc/voice.cpp:910
-#: src/modules/dcc/video.cpp:940
+#: src/modules/dcc/canvas.cpp:282
 msgid "Connected to %Q:%Q"
 msgstr ""
 
@@ -331,10 +331,10 @@ msgstr ""
 msgid "Contacting host %1 on port %2"
 msgstr ""
 
-#: src/modules/dcc/canvas.cpp:108
+#: src/modules/dcc/video.cpp:815
 #: src/modules/dcc/chat.cpp:184
 #: src/modules/dcc/voice.cpp:755
-#: src/modules/dcc/video.cpp:815
+#: src/modules/dcc/canvas.cpp:108
 msgid "Contacting host %Q on port %Q"
 msgstr ""
 
@@ -367,9 +367,9 @@ msgstr ""
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr ""
 
-#: src/modules/dcc/canvas.cpp:277
-#: src/modules/dcc/voice.cpp:901
 #: src/modules/dcc/video.cpp:931
+#: src/modules/dcc/voice.cpp:901
+#: src/modules/dcc/canvas.cpp:277
 msgid "DCC Failed: %Q"
 msgstr ""
 
@@ -407,9 +407,9 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr ""
 
+#: src/modules/dcc/video.cpp:880
 #: src/modules/dcc/chat.cpp:407
 #: src/modules/dcc/voice.cpp:818
-#: src/modules/dcc/video.cpp:880
 msgid "ERROR: %Q"
 msgstr ""
 
@@ -425,8 +425,8 @@ msgstr ""
 msgid "From: "
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:170
 #: src/modules/dcc/video.cpp:176
+#: src/modules/dcc/voice.cpp:170
 msgid ""
 "Half duplex soundcard detected, you will not be able to talk and listen at "
 "the same time"
@@ -514,10 +514,10 @@ msgstr ""
 msgid "Listening on interface %1 port %2"
 msgstr ""
 
-#: src/modules/dcc/canvas.cpp:84
+#: src/modules/dcc/video.cpp:818
 #: src/modules/dcc/chat.cpp:186
 #: src/modules/dcc/voice.cpp:758
-#: src/modules/dcc/video.cpp:818
+#: src/modules/dcc/canvas.cpp:84
 msgid "Listening on interface %Q port %Q"
 msgstr ""
 
@@ -525,10 +525,10 @@ msgstr ""
 msgid "Local end is %1:%2"
 msgstr ""
 
-#: src/modules/dcc/canvas.cpp:284
+#: src/modules/dcc/video.cpp:942
 #: src/modules/dcc/chat.cpp:557
 #: src/modules/dcc/voice.cpp:912
-#: src/modules/dcc/video.cpp:942
+#: src/modules/dcc/canvas.cpp:284
 msgid "Local end is %Q:%Q"
 msgstr ""
 
@@ -554,8 +554,8 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:269
 #: src/modules/dcc/video.cpp:275
+#: src/modules/dcc/voice.cpp:269
 msgid "Ops...failed to test the soundcard capabilities...expect problems..."
 msgstr ""
 
@@ -907,16 +907,16 @@ msgstr ""
 msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:162
 #: src/modules/dcc/video.cpp:168
+#: src/modules/dcc/voice.cpp:162
 msgid ""
 "WARNING: failed to check the soundcard duplex capabilities: if this is a "
 "half-duplex soundcard, use the DCC VOICE option to force half-duplex "
 "algorithm"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:211
 #: src/modules/dcc/video.cpp:217
+#: src/modules/dcc/voice.cpp:211
 #, c-format
 msgid ""
 "WARNING: failed to set the requested sample rate (%d): the device used "
@@ -946,6 +946,7 @@ msgstr ""
 msgid "bytes/sec"
 msgstr ""
 
+#: src/modules/dcc/descriptor.cpp:65
 #: src/modules/dcc/libkvidcc.cpp:112
 #: src/modules/dcc/libkvidcc.cpp:409
 #: src/modules/dcc/libkvidcc.cpp:444
@@ -963,6 +964,5 @@ msgstr ""
 #: src/modules/dcc/requests.cpp:141
 #: src/modules/dcc/requests.cpp:142
 #: src/modules/dcc/requests.cpp:143
-#: src/modules/dcc/descriptor.cpp:65
 msgid "unknown"
 msgstr ""

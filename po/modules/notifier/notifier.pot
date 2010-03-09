@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 01:38+0100\n"
+"POT-Creation-Date: 2010-03-09 04:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,58 +16,58 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:137
-msgid "The specified window does not exist"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:151
-msgid "The specified timeout is not valid, assuming 0"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:154
-msgid "The -t switch expects a timeout in seconds"
-msgstr ""
-
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:889
+#: src/modules/notifier/notifierwindow.cpp:889
 msgid "Show/Hide input line"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:890
+#: src/modules/notifier/notifierwindow.cpp:890
 msgid "Hide"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:893
+#: src/modules/notifier/notifierwindow.cpp:893
 msgid "1 Minute"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:894
+#: src/modules/notifier/notifierwindow.cpp:894
 msgid "5 Minutes"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:895
+#: src/modules/notifier/notifierwindow.cpp:895
 msgid "15 Minutes"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:896
+#: src/modules/notifier/notifierwindow.cpp:896
 msgid "30 Minutes"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:897
+#: src/modules/notifier/notifierwindow.cpp:897
 msgid "1 Hour"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:899
+#: src/modules/notifier/notifierwindow.cpp:899
 msgid "Until KVIrc is Restarted"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:900
+#: src/modules/notifier/notifierwindow.cpp:900
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:902
+#: src/modules/notifier/notifierwindow.cpp:902
 msgid "Disable"
 msgstr ""
 
-#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:974
+#: src/modules/notifier/notifierwindow.cpp:974
 msgid "Write text or commands to window"
+msgstr ""
+
+#: src/modules/notifier/libkvinotifier.cpp:137
+msgid "The specified window does not exist"
+msgstr ""
+
+#: src/modules/notifier/libkvinotifier.cpp:151
+msgid "The specified timeout is not valid, assuming 0"
+msgstr ""
+
+#: src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
 msgstr ""
