@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-02 01:57+0100\n"
+"POT-Creation-Date: 2010-03-09 01:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,334 +16,334 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/addon/libkviaddon.cpp:146
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:146
 msgid "%cAddon id %Q, version %Q%c"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:147
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:147
 msgid "Name: %Q"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:148
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:148
 msgid "Description: %Q"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:154
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:154
 #, c-format
 msgid "Total: %d addons installed"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:194
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:200
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:246
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:293
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:339
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:386
 msgid "The addon \"%1\" does not exist"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:240
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:240
 msgid "The addon \"%1\" has no configure callback set"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:287
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:287
 msgid "The addon \"%1\" has no help callback set"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:529
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:529
 msgid "Internal error: call a head-shrinker"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:538
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:538
 msgid "The specified version \"%Q\" is not a valid version string"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:544
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:544
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:550
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:550
 msgid ""
 "This KVIrc executable is too old to run this addon (minimum version required "
 "is %Q)"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:555
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:555
 msgid "Attempting to register addon \"%Q\" with version %Q"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:567
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:567
 msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:581
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:581
 msgid "Addon registration failed"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:586
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:586
 msgid "Addon successfully registered"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:636
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:636
 msgid "Error installing addon package: %Q"
 msgstr ""
 
-#: src/modules/addon/managementdialog.cpp:110
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:110
 msgid "Configure Addon..."
 msgstr ""
 
-#: src/modules/addon/managementdialog.cpp:116
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:116
 msgid "Show Help"
 msgstr ""
 
-#: src/modules/addon/managementdialog.cpp:122
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:122
 msgid "Delete Selected Addons"
 msgstr ""
 
-#: src/modules/addon/managementdialog.cpp:132
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:132
 msgid "Create an Addon as a Distributable Package"
 msgstr ""
 
-#: src/modules/addon/managementdialog.cpp:142
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:142
 msgid "Install Addon Package From Disk"
 msgstr ""
 
-#: src/modules/addon/managementdialog.cpp:148
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:148
 msgid "Get More Addons..."
 msgstr ""
 
-#: src/modules/addon/managementdialog.cpp:292
-#: src/modules/addon/managementdialog.cpp:306
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:292
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:306
 msgid "Install Addon - KVIrc"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:52
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:52
 msgid "Create Addon Package - KVIrc"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:86
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:86
 msgid "Welcome"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:89
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:89
 msgid ""
 "This procedure allows you to export the selected addon to a single package. "
 "It is useful when you want to distribute your addon to the public."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:94
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:94
 msgid ""
 "You will be asked to provide some information like the package name, the "
 "version, a description and so on."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:96
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:96
 msgid "Hit the \"Next\" button to begin."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:136
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:136
 msgid "The selected directory does not exist."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:143
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:143
 msgid "The sources directory (src) does not exist."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:150
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:150
 msgid "The translations directory (locale) does not exist."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:157
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:157
 msgid "The sounds directory (sound) does not exist."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:164
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:164
 msgid "The pictures directory (pics) does not exist."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:171
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:171
 msgid "The configurations directory (config) does not exist."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:178
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:178
 msgid "The help directory (help) does not exist."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:185
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:185
 msgid "The initialization script (init.kvs) does not exist."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:276
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:276
 msgid "Cannot open file for writing."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:283
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:283
 msgid "Cannot write to the file descriptor."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:308
-#: src/modules/addon/packaddondialog.cpp:334
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:308
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:334
 msgid "Addon Packaging Error"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:317
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:317
 msgid "Addon Packaging Warning"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:360
-#: src/modules/addon/packaddondialog.cpp:370
-#: src/modules/addon/packaddondialog.cpp:380
-#: src/modules/addon/packaddondialog.cpp:390
-#: src/modules/addon/packaddondialog.cpp:400
-#: src/modules/addon/packaddondialog.cpp:410
-#: src/modules/addon/packaddondialog.cpp:420
-#: src/modules/addon/packaddondialog.cpp:430
-#: src/modules/addon/packaddondialog.cpp:450
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:360
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:370
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:380
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:390
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:400
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:410
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:420
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:430
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:450
 msgid "Packaging failed"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:363
-#: src/modules/addon/packaddondialog.cpp:373
-#: src/modules/addon/packaddondialog.cpp:383
-#: src/modules/addon/packaddondialog.cpp:393
-#: src/modules/addon/packaddondialog.cpp:403
-#: src/modules/addon/packaddondialog.cpp:413
-#: src/modules/addon/packaddondialog.cpp:423
-#: src/modules/addon/packaddondialog.cpp:433
-#: src/modules/addon/packaddondialog.cpp:453
-#: src/modules/addon/packaddondialog.cpp:461
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:363
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:373
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:383
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:393
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:403
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:413
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:423
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:433
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:453
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:461
 msgid "Export Addon - KVIrc"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:471
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:471
 msgid "Package Information"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:472
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:472
 msgid ""
 "Here you need to provide information about you (the packager) and a short "
 "description of the package you're creating."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:477
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:477
 msgid "Package &Author:"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:481
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:481
 msgid "Your name here"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:486
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:486
 msgid "Package &Name:"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:490
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:490
 msgid "No spaces allowed, like MyAddon"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:495
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:495
 msgid "Package &Version:"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:499
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:499
 msgid "Version in the form x.y[.z], like 1.0 or 2.0.3"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:504
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:504
 msgid "Package &Description:"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:508
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:508
 msgid "Description must be short"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:513
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:513
 msgid "Minimum &KVIrc Version:"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:538
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:538
 msgid "Package Files"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:539
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:539
 msgid "Here you need to select the directory where the addon files are."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:544
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:544
 msgid "Select the source directory:"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:548
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:548
 msgid "Select the icon file:"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:565
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:565
 msgid "Save Package"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:566
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:566
 msgid "Here you need to provide the path where to save the addon package"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:571
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:571
 msgid "Select save path:"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:603
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:603
 msgid "Final Information"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:604
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:604
 msgid ""
 "Here there are the information you provided. If these information are "
 "correct, hit the \"Finish\" button to complete the packaging operations."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:627
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:627
 msgid "This is what I will check for:"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:629
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:629
 msgid "Package Author"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:633
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:633
 msgid "Package Name"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:637
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:637
 msgid "Package Version"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:641
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:641
 msgid "Package Description"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:645
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:645
 msgid "Minimum KVIrc Version"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:649
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:649
 msgid "Icon File"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:653
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:653
 msgid "Source Directory"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:657
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:657
 msgid "Save Path"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:669
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:669
 msgid "File Summary"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:676
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:676
 msgid ""
 "Here there are the files I found in the directories you provided.\n"
 "If these and the information showed in the previous page are correct, hit "
@@ -351,82 +351,82 @@ msgid ""
 "the packaging operations."
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:685
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:685
 msgid "Cancel"
 msgstr ""
 
-#: src/modules/addon/packaddondialog.cpp:689
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/packaddondialog.cpp:689
 msgid "Finish"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:47
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:47
 msgid "The selected file does not seem to be a valid KVIrc addon package"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:66
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:66
 msgid "The selected file does not seem to be a valid KVIrc package: %Q"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:94
-#: src/modules/addon/addonfunctions.cpp:280
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:94
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:284
 msgid "Author"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:95
-#: src/modules/addon/addonfunctions.cpp:281
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:95
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:285
 msgid "Created at"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:96
-#: src/modules/addon/addonfunctions.cpp:282
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:96
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:286
 msgid "Created with"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:150
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:150
 msgid "Warning: The addon might be incompatible with this version of KVIrc"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:155
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:155
 msgid "Go Back to Package Data"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:159
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:159
 msgid "Show Details"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:208
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:208
 msgid "Install Addon Pack - KVIrc"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:209
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:209
 msgid "You're about to install the following addon package"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:210
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:210
 msgid "Do you want to proceed with the installation ?"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:211
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:211
 msgid "Do Not Install"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:212
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:212
 msgid "Yes, Proceed"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:245
-#: src/modules/addon/addonfunctions.cpp:261
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:245
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:265
 msgid "Failed to unpack the selected file: %Q"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:260
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:264
 msgid "One or more files can't be deleted"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:283
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:287
 msgid "Addon Engine Version"
 msgstr ""
 
-#: src/modules/addon/addonfunctions.cpp:284
+#: /usr/build/pragma/svn.kvirc.de/svn/trunk/kvirc/src/modules/addon/addonfunctions.cpp:288
 msgid "Subdirectory"
 msgstr ""

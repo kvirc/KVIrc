@@ -1,6 +1,6 @@
 # Default toolbars file
 
-toolbar.create irccontext $tr("IRC Context") $icon("irc4")
+toolbar.create irccontext $tr("IRC Context","defscript") $icon("irc4")
 # toolbar.additem irccontext kvirc.irccontextdisplay - info dublicated with te status line
 toolbar.additem irccontext kvirc.connect
 toolbar.additem irccontext kvirc.servermenu
@@ -12,14 +12,14 @@ toolbar.additem irccontext kvirc.ircactions
 toolbar.additem irccontext kvirc.usermodemenu
 toolbar.show irccontext
 
-toolbar.create options $tr("Options") $icon("options")
+toolbar.create options $tr("Options","defscript") $icon("options")
 toolbar.additem irccontext kvirc.serveroptions
 toolbar.additem options kvirc.identityoptions
 toolbar.additem options kvirc.generaloptions
 toolbar.additem options kvirc.themeoptions
 toolbar.show options
 
-toolbar.create help $tr("Help") 49
+toolbar.create help $tr("Help","defscript") 49
 toolbar.additem help kvirc.helpindex
 if($lang(short)==ru)
 	toolbar.additem help kvirc.kvircruhomepage
@@ -27,7 +27,7 @@ else
 	toolbar.additem help kvirc.kvirchomepage
 toolbar.show help
 
-toolbar.create scripting $tr("Scripting") $icon("binarytext")
+toolbar.create scripting $tr("Scripting","defscript") $icon("binarytext")
 toolbar.additem scripting kvirc.actioneditor
 toolbar.additem scripting kvirc.aliaseditor
 toolbar.additem scripting kvirc.eventeditor
@@ -37,7 +37,7 @@ toolbar.additem scripting kvirc.codetester
 toolbar.additem scripting kvirc.separator
 toolbar.additem scripting kvirc.executekvs
 
-toolbar.create winops $tr("Window operations") $icon("cascadewindows")
+toolbar.create winops $tr("Window operations","defscript") $icon("cascadewindows")
 toolbar.additem winops kvirc.cascadewindows
 toolbar.additem winops kvirc.tilewindows
 toolbar.additem winops kvirc.minimizeallwindows

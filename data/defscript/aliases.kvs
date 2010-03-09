@@ -97,13 +97,13 @@ alias(gnotice)
 	%szChan = $0
 	if(!%szChan)
 	{
-		echo $tr("Usage"): /gnotice [-mwaohvq] <$tr("channel")> <$tr("message")>
-		echo $tr("-m: send a message instead of a notice")
-		echo $tr("-w: send notice to all channel owners")
-		echo $tr("-a: send notice to all channel admins")
-		echo $tr("-o: send notice to all channel ops")
-		echo $tr("-h: send notice to all channel halfops")
-		echo $tr("-v: send notice to all channel voices")
+		echo $tr("Usage","defscript"): /gnotice [-mwaohvq] <$tr("channel","defscript")> <$tr("message","defscript")>
+		echo $tr("-m: send a message instead of a notice","defscript")
+		echo $tr("-w: send notice to all channel owners","defscript")
+		echo $tr("-a: send notice to all channel admins","defscript")
+		echo $tr("-o: send notice to all channel ops","defscript")
+		echo $tr("-h: send notice to all channel halfops","defscript")
+		echo $tr("-v: send notice to all channel voices","defscript")
 		echo $tr("-q: quiet mode")
 		halt
 	}
@@ -112,8 +112,8 @@ alias(gnotice)
 	%szMsg = $1-
 	if($str.length(%szMsg) == 0)
 	{
-		echo $tr("Parameter message missing")
-		echo $tr("Type /gnotice for help")
+		echo $tr("Parameter message missing","defscript")
+		echo $tr("Type /gnotice for help","defscript")
 		halt
 	}
 
@@ -142,12 +142,12 @@ alias(gnotice)
 alias(wallop)
 {
 	if(!$0){
-		echo $tr("Usage"): /wallop <$tr("message")>
+		echo $tr("Usage","defscript"): /wallop <$tr("message","defscript")>
 		halt
 	}
 
 	# Due to server flood, timing may be very high
-	echo -w=$active $tr("Sending wallop to") $chan.name($active)
+	echo -w=$active $tr("Sending wallop to","defscript") $chan.name($active)
 	timer(wallop,5000,$chan.users(,,o),$0-){
 		if(%:localOps == ""){ %:localOps = $chan.users(,,o); %:curIndex = 0; }
 		if(%:curIndex == %:localOps[]#){ killtimer wallop; return; }
@@ -179,7 +179,7 @@ alias(j)
 	#first we do a test if a chan is given as parameter
 	if(!$0)
 	{
-		echo $tr("Usage:")
+		echo $tr("Usage:","defscript")
 		echo "	  /j <chan>"
 	} else {
 		join $0-
@@ -191,7 +191,7 @@ alias(s)
 {
 	if(!$0)
 	{
-		echo $tr("Usage:")
+		echo $tr("Usage:","defscript")
 		echo "		/s <server>"
 	} else {
 		server $0-
@@ -203,7 +203,7 @@ alias(q)
 {
 	if(!$0)
 	{
-		echo $tr("Usage:")
+		echo $tr("Usage:","defscript")
 		echo "		/q <nicklist> [message]"
 	} else {
 		query $0 $1-
@@ -218,7 +218,7 @@ alias(names)
 	{
 		if($window.type($active)!="channel")
 		{
-		        echo $tr("Usage:") "/names <channel>"
+		        echo $tr("Usage:","defscript") "/names <channel>"
 		} else {
 			raw names $chan.name($active)
 		}
@@ -232,14 +232,14 @@ alias(kb)
 {
 	if(!$0)
 	{
-		echo $tr("Usage:")
+		echo $tr("Usage:","defscript")
 		echo "	  /kb <nick_list> [" $tr("reason") "]"
 		halt;
 	}
 
 	if(!$channel)
 	{
-		echo "[KB]: " $tr("This is not a channel window")
+		echo "[KB]: " $tr("This is not a channel window","defscript")
 		halt;
 	}
 
@@ -311,7 +311,7 @@ alias(notify)
 
 	if(!$0)
 	{
-		echo $tr("Usage:")
+		echo $tr("Usage:","defscript")
 		echo "	  /notify <nick> [mask]"
 		halt
 	}
@@ -353,7 +353,7 @@ alias(ignore)
 
 	if(!$0)
 	{
-		echo $tr("Usage:")
+		echo $tr("Usage:","defscript")
 		echo "	  /ignore [-r] <nick>"
 		halt
 	}
@@ -399,7 +399,7 @@ alias(dcc)
 		}
 		default:
 		{
-			echo "[DCC]: " $tr("Unsupported type: $0")
+			echo "[DCC]: " $tr("Unsupported type:","defscript") $0
 		}
 	}
 }
@@ -411,30 +411,30 @@ alias(usermodename)
 {
 	if(!$0)
 	{
-		echo $tr("Usage:")
+		echo $tr("Usage:","defscript")
 		echo "	  /usermodename <nick>"
 		halt;
 	}
 	if(!$channel)
 	{
-		echo "[USERMODENAME]: " $tr("This is not a channel window")
+		echo "[USERMODENAME]: " $tr("This is not a channel window","defscript")
 		halt;
 	}
 
 	if($chan.isOwner($0,$channel)){
-		return $tr("Channel Owner")
+		return $tr("Channel Owner","defscript")
 	} elseif($chan.isAdmin($0,$channel)){
-		return $tr("Channel Administrator")
+		return $tr("Channel Administrator","defscript")
 	} elseif($chan.isOp($0,$channel)){
-		return $tr("Channel Operator")
+		return $tr("Channel Operator","defscript")
 	} elseif($chan.isHalfOp($0,$channel)){
-		return $tr("Half Operator")
+		return $tr("Half Operator","defscript")
 	} elseif($chan.isVoice($0,$channel)){
-		return $tr("Voice")
+		return $tr("Voice","defscript")
 	} elseif($chan.isUserOp($0,$channel)){
-		return $tr("User Operator")
+		return $tr("User Operator","defscript")
 	} else {
-		return $tr("Normal User")
+		return $tr("Normal User","defscript")
 	}
 }
 
@@ -459,19 +459,19 @@ alias(dns)
 {
 	if(!$context)
 	{
-		echo "[DNS]: " $tr("You must use DNS in an IRC context")
+		echo "[DNS]: " $tr("You must use DNS in an IRC context","defscript")
 		halt
 	}
 
 	if(!$server)
 	{
-		echo "[DNS]: " $tr("You must be connected to a server")
+		echo "[DNS]: " $tr("You must be connected to a server","defscript")
 		halt
 	}
 
 	if(!$0)
 	{
-		echo $tr("Usage:")
+		echo $tr("Usage:","defscript")
 		echo echo "  /dns <nickname>"
 		halt
 	}
@@ -482,7 +482,7 @@ alias(dns)
 		{
 			if(!$2)
 			{
-				echo "[DNS]: " $tr("No such user: $0")
+				echo "[DNS]: " $tr("No such user:","defscript") $0
 			} else {
 				host -a $2
 			}

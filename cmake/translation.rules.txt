@@ -63,6 +63,12 @@ IF(USE_GETTEXT_TRANSLATIONS)
 				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr -k__tr_no_lookup -k__tr2qs -k__tr2wc -k__tr2ws -ktr -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
 				TARGET messages-extract-${_potBasename}
 			)
+		ELSEIF(TRANSLATION_DEFSCRIPT)
+			ADD_CUSTOM_COMMAND(
+				COMMENT "Extracting ctx messages for default script ${_potBasename}"
+				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} --language=C -ktr -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
+				TARGET messages-extract-${_potBasename}
+			)		
 		ELSE()
 			ADD_CUSTOM_COMMAND(
 				COMMENT "Extracting ctx messages for ${_potBasename}"

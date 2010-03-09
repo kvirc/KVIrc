@@ -15,55 +15,55 @@ defpopup(highlight)
 		}
 	}
 
-	item($tr("Stop Highlighting (Local)")) (%:beingHlTmp && !%:beingHl)
+	item($tr("Stop Highlighting (Local)","defscript")) (%:beingHlTmp && !%:beingHl)
 	{
 		tmphighlight.removeNick $0
 	}
 
-	item($tr("Start Highlighting (Local)")) (!%:beingHlTmp && !%:beingHl)
+	item($tr("Start Highlighting (Local)","defscript")) (!%:beingHlTmp && !%:beingHl)
 	{
 		tmphighlight.addNick $0
 	}
 
-	popup($tr("Always Highlight")) (!%:beingHl && !%:regName)
+	popup($tr("Always Highlight","defscript")) (!%:beingHl && !%:regName)
 	{
-		item($tr("Highlight as") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
+		item($tr("Highlight as","defscript") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
 		{
 			reguser.add $0 $mask($0,11); reguser.setproperty $0 highlight 1;
 		}
 
-		item($tr("Highlight as") $0 "("$mask($0,12)")") ("$reguser.exactMatch($mask($0,12))" == "")
+		item($tr("Highlight as","defscript") $0 "("$mask($0,12)")") ("$reguser.exactMatch($mask($0,12))" == "")
 		{
 			reguser.add $0 $mask($0,12); reguser.setproperty $0 highlight 1;
 		}
 
-		item($tr("Highlight as") $0 "("$mask($0,13)")") ("$reguser.exactMatch($mask($0,13))" == "")
+		item($tr("Highlight as","defscript") $0 "("$mask($0,13)")") ("$reguser.exactMatch($mask($0,13))" == "")
 		{
 			reguser.add $0 $mask($0,13); reguser.setproperty $0 highlight 1;
 		}
 
-		item($tr("Highlight as") $0 "("$mask($0,3)")") ("$reguser.exactMatch($mask($0,3))" == "")
+		item($tr("Highlight as","defscript") $0 "("$mask($0,3)")") ("$reguser.exactMatch($mask($0,3))" == "")
 		{
 			reguser.add $0 $mask($0,3); reguser.setproperty $0 highlight 1;
 		}
 
-		item($tr("Highlight as") $0 "("$mask($0,4)")") ("$reguser.exactMatch($mask($0,4))" == "")
+		item($tr("Highlight as","defscript") $0 "("$mask($0,4)")") ("$reguser.exactMatch($mask($0,4))" == "")
 		{
 			reguser.add $0 $mask($0,4); reguser.setproperty $0 highlight 1;
 		}
 
-		item($tr("Highlight as") $0 "("$mask($0,5)")") ("$reguser.exactMatch($mask($0,5))" == "")
+		item($tr("Highlight as","defscript") $0 "("$mask($0,5)")") ("$reguser.exactMatch($mask($0,5))" == "")
 		{
 			reguser.add $0 $mask($0,5); reguser.setproperty $0 highlight 1;
 		}
 	}
 
-	item($tr("Always Highlight")) (!%:beingHl && %:regName)
+	item($tr("Always Highlight","defscript")) (!%:beingHl && %:regName)
 	{
 		reguser.setproperty $0 highlight 1
 	}
 
-	item($tr("Stop Highlighting")) (%:beingHl)
+	item($tr("Stop Highlighting","defscript")) (%:beingHl)
 	{
 		reguser.setproperty $0 highlight 0
 	}
@@ -78,12 +78,12 @@ defpopup(channelhighlight)
 		}
 	}
 
-	item($tr("Stop Highlighting (Local)")) (%:beingHlTmp)
+	item($tr("Stop Highlighting (Local)","defscript")) (%:beingHlTmp)
 	{
 		tmphighlight.removeChannel $window
 	}
 
-	item($tr("Start Highlighting (Local)")) (!%:beingHlTmp)
+	item($tr("Start Highlighting (Local)","defscript")) (!%:beingHlTmp)
 	{
 		tmphighlight.addChannel $window
 	}
@@ -110,196 +110,196 @@ defpopup(ignore)
 
 	label(%:ignLabelText)
 
-	item($tr("Enable Ignore"),168) (!%:inIgnoreList && %:regName)
+	item($tr("Enable Ignore","defscript"),168) (!%:inIgnoreList && %:regName)
 	{
 		reguser.setIgnoreEnabled %:regName 1;
 	}
 
-	popup($tr("Ignore as..."),44) (!%:inIgnoreList)
+	popup($tr("Ignore as...","defscript"),44) (!%:inIgnoreList)
 	{
-		item($tr("Ignore as") $0 "("$mask($0,0)")") ("$reguser.exactMatch($mask($0,0))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,0)")") ("$reguser.exactMatch($mask($0,0))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,0);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,1)")") ("$reguser.exactMatch($mask($0,1))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,1)")") ("$reguser.exactMatch($mask($0,1))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,1);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,2)")") ("$reguser.exactMatch($mask($0,2))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,2)")") ("$reguser.exactMatch($mask($0,2))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,2);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,3)")") ("$reguser.exactMatch($mask($0,3))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,3)")") ("$reguser.exactMatch($mask($0,3))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,3);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,4)")") ("$reguser.exactMatch($mask($0,4))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,4)")") ("$reguser.exactMatch($mask($0,4))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,4);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,5)")") ("$reguser.exactMatch($mask($0,5))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,5)")") ("$reguser.exactMatch($mask($0,5))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,5);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,6)")") ("$reguser.exactMatch($mask($0,6))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,6)")") ("$reguser.exactMatch($mask($0,6))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,6);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,7)")") ("$reguser.exactMatch($mask($0,7))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,7)")") ("$reguser.exactMatch($mask($0,7))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,7);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,8)")") ("$reguser.exactMatch($mask($0,8))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,8)")") ("$reguser.exactMatch($mask($0,8))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,8);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,9)")") ("$reguser.exactMatch($mask($0,9))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,9)")") ("$reguser.exactMatch($mask($0,9))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,9);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,10)")") ("$reguser.exactMatch($mask($0,10))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,10)")") ("$reguser.exactMatch($mask($0,10))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,10);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,11);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,12)")") ("$reguser.exactMatch($mask($0,12))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,12)")") ("$reguser.exactMatch($mask($0,12))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,12);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,13)")") ("$reguser.exactMatch($mask($0,13))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,13)")") ("$reguser.exactMatch($mask($0,13))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,13);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,14)")") ("$reguser.exactMatch($mask($0,14))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,14)")") ("$reguser.exactMatch($mask($0,14))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,14);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,15)")") ("$reguser.exactMatch($mask($0,15))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,15)")") ("$reguser.exactMatch($mask($0,15))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,15);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,16)")") ("$reguser.exactMatch($mask($0,16))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,16)")") ("$reguser.exactMatch($mask($0,16))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,16);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,17)")") ("$reguser.exactMatch($mask($0,17))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,17)")") ("$reguser.exactMatch($mask($0,17))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,17);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,18)")") ("$reguser.exactMatch($mask($0,18))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,18)")") ("$reguser.exactMatch($mask($0,18))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,18);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,19)")") ("$reguser.exactMatch($mask($0,19))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,19)")") ("$reguser.exactMatch($mask($0,19))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,19);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,20)")") ("$reguser.exactMatch($mask($0,20))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,20)")") ("$reguser.exactMatch($mask($0,20))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,20);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,21)")") ("$reguser.exactMatch($mask($0,21))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,21)")") ("$reguser.exactMatch($mask($0,21))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,21);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,22)")") ("$reguser.exactMatch($mask($0,22))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,22)")") ("$reguser.exactMatch($mask($0,22))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,22);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,23)")") ("$reguser.exactMatch($mask($0,23))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,23)")") ("$reguser.exactMatch($mask($0,23))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,23);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,24)")") ("$reguser.exactMatch($mask($0,24))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,24)")") ("$reguser.exactMatch($mask($0,24))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,24);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,25)")") ("$reguser.exactMatch($mask($0,25))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,25)")") ("$reguser.exactMatch($mask($0,25))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,25);
 			reguser.setIgnoreEnabled $0 1;
 			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
 
-		item($tr("Ignore as") $0 "("$mask($0,26)")") ("$reguser.exactMatch($mask($0,26))" == "")
+		item($tr("Ignore as","defscript") $0 "("$mask($0,26)")") ("$reguser.exactMatch($mask($0,26))" == "")
 		{
 			if(!%:regName) reguser.add $0 $mask($0,26);
 			reguser.setIgnoreEnabled $0 1;
@@ -307,7 +307,7 @@ defpopup(ignore)
 		}
 	}
 
-	item($tr("Unignore"),217) (%:inIgnoreList)
+	item($tr("Unignore","defscript"),217) (%:inIgnoreList)
 	{
 		reguser.setIgnoreEnabled %:regName 0;
 	}
@@ -325,13 +325,13 @@ defpopup(registration)
 		%:labelText = "<p><b>$0</b>";
 		if(%:regName)
 		{
-			%:labelText << $tr("is registered as") ": <b>"%:regName"</b>"
+			%:labelText << $tr("is registered as","defscript") ": <b>"%:regName"</b>"
 			# We want to display masks here!!!
 			%:inNotifyList = $reguser.property(%:regName,notify);
-			if(%:inNotifyList)%:labelText << "<br><b>$0</b>" $tr("is in the notify list")
+			if(%:inNotifyList)%:labelText << "<br><b>$0</b>" $tr("is in the notify list","defscript")
 			%:curAvatar = $avatar.name($0);
 			%:defAvatar = $reguser.property(%:regName,avatar);
-			if(%:defAvatar)%:labelText << "<br><b>$0</b>" $tr("has a default avatar")
+			if(%:defAvatar)%:labelText << "<br><b>$0</b>" $tr("has a default avatar","defscript")
 			%:labelText << "</p>"
 		} else {
 			%:labelText << $tr("is not registered")"</p>"
@@ -340,71 +340,71 @@ defpopup(registration)
 
 	label(%:labelText)
 
-	item($tr("Register")"...") (!%:regName)
+	item($tr("Register...","defscript")) (!%:regName)
 	{
 		reguser.wizard $mask($0)
 	}
 
-	popup($tr("Quick Registration")) (!%:regName)
+	popup($tr("Quick Registration","defscript")) (!%:regName)
 	{
 		item($tr("Register as") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
 		{
 			reguser.add $0 $mask($0,11)
 		}
 
-		item($tr("Register as") $0 "("$mask($0,12)")") ("$reguser.exactMatch($mask($0,12))" == "")
+		item($tr("Register as","defscript") $0 "("$mask($0,12)")") ("$reguser.exactMatch($mask($0,12))" == "")
 		{
 			reguser.add $0 $mask($0,12)
 		}
 
-		item($tr("Register as") $0 "("$mask($0,13)")") ("$reguser.exactMatch($mask($0,13))" == "")
+		item($tr("Register as","defscript") $0 "("$mask($0,13)")") ("$reguser.exactMatch($mask($0,13))" == "")
 		{
 			reguser.add $0 $mask($0,13)
 		}
 
-		item($tr("Register as") $0 "("$mask($0,3)")") ("$reguser.exactMatch($mask($0,3))" == "")
+		item($tr("Register as","defscript") $0 "("$mask($0,3)")") ("$reguser.exactMatch($mask($0,3))" == "")
 		{
 			reguser.add $0 $mask($0,3)
 		}
 
-		item($tr("Register as") $0 "("$mask($0,4)")") ("$reguser.exactMatch($mask($0,4))" == "")
+		item($tr("Register as","defscript") $0 "("$mask($0,4)")") ("$reguser.exactMatch($mask($0,4))" == "")
 		{
 			reguser.add $0 $mask($0,4)
 		}
 
-		item($tr("Register as") $0 "("$mask($0,5)")") ("$reguser.exactMatch($mask($0,5))" == "")
+		item($tr("Register as","defscript") $0 "("$mask($0,5)")") ("$reguser.exactMatch($mask($0,5))" == "")
 		{
 			reguser.add $0 $mask($0,5)
 		}
 	}
 
-	item($tr("Edit Registration")"...",113) (%:regName)
+	item($tr("Edit Registration...","defscript"),113) (%:regName)
 	{
 		reguser.edit "%:regName"
 	}
 
-	item($tr("Unregister") %:regName) (%:regName)
+	item($tr("Unregister","defscript") %:regName) (%:regName)
 	{
 		reguser.remove "%:regName"
 	}
 
 	separator
 
-	item($tr("Add to Notify")) (%:regName && !%:inNotifyList)
+	item($tr("Add to Notify","defscript")) (%:regName && !%:inNotifyList)
 	{
 		reguser.setproperty -n "%:regName" notify $0
 	}
 
-	item($tr("Remove from Notify")) (%:regName && %:inNotifyList)
+	item($tr("Remove from Notify","defscript")) (%:regName && %:inNotifyList)
 	{
 		reguser.setproperty -n "%:regName" notify
 	}
 
-	popup($tr("Avatar")) (%:regName)
+	popup($tr("Avatar","defscript")) (%:regName)
 	{
-		item($tr("Choose")"...") (%:regName)
+		item($tr("Choose...","defscript")) (%:regName)
 		{
-			dialog.image(f,$tr("Choose Avatar Image File"),"","",$0,"%:regName")
+			dialog.image(f,$tr("Choose Avatar Image File","defscript"),"","",$0,"%:regName")
 			{
 				if($0)
 				{
@@ -413,12 +413,12 @@ defpopup(registration)
 			}
 		}
 
-		item($tr("Set as Default")) (%:curAvatar && ("%:curAvatar" != "%:defAvatar"))
+		item($tr("Set as Default","defscript")) (%:curAvatar && ("%:curAvatar" != "%:defAvatar"))
 		{
 			reguser.setproperty "%:regName" avatar %:curAvatar
 		}
 
-		item($tr("Clear Default")) (%:defAvatar)
+		item($tr("Clear Default","defscript")) (%:defAvatar)
 		{
 			reguser.setproperty %:regName avatar
 			# Force the avatar to update
@@ -429,7 +429,7 @@ defpopup(registration)
 
 defpopup("urlpopup")
 {
-	item($tr("Copy To Clipboard"),259)
+	item($tr("Copy To Clipboard","defscript"),259)
 	{
 		str.toClipboard $0
 	}
@@ -454,7 +454,7 @@ defpopup(channel)
 		if($str.findfirst(%:visible,",") != -1)
 		{
 			# found a comma in the $0 parameter...we have multiple nicknames
-			%:visible = "("$tr("Multiple Users")")"
+			%:visible = "("$tr("Multiple Users","defscript")")"
 			%:multiple = 1
 			%:itemBanMask = "*!user@*.host.tld"
 			%:itemBanNick = "nick"
@@ -484,7 +484,7 @@ defpopup(channel)
 		}
 	}
 
-	item("/WHOIS" %:visible "("$tr("idle time")")",75,whois_item)
+	item("/WHOIS" %:visible "("$tr("idle time","defscript")")",75,whois_item)
 	{
 		foreach(%i,$str.split(",",$0))
 			whois %i %i
@@ -492,7 +492,7 @@ defpopup(channel)
 
 	separator
 
-	popup($tr("&Information"),49,"information_popup")
+	popup($tr("&Information","defscript"),49,"information_popup")
 	{
 		item("/WHOIS" %:visible,75,"whois_item")
 		{
@@ -511,81 +511,81 @@ defpopup(channel)
 
 		separator
 
-		item($tr("DNS for") %:visible,75)
+		item($tr("DNS for","defscript") %:visible,75)
 		{
 			foreach(%i,$str.split(",",$0))dns %i
 		}
 
-		item($tr("Mask for") %:visible,75) (!%:multiple)
+		item($tr("Mask for","defscript") %:visible,75) (!%:multiple)
 		{
 			echo $mask($0,11)
 		}
 	}
 
-	popup($tr("&Control"),9,"control_popup") (%:isMeHalfOp)
+	popup($tr("&Control","defscript"),9,"control_popup") (%:isMeHalfOp)
 	{
 		label($usermodename($me()))
 
-		item($tr("O&wner") %:visible,260) (%:isMeOwner)
+		item($tr("O&wner","defscript") %:visible,260) (%:isMeOwner)
 		{
 			chanowner $0
 		}
 
-		item($tr("&Deowner") %:visible,261) (%:isMeOwner)
+		item($tr("&Deowner","defscript") %:visible,261) (%:isMeOwner)
 		{
 			dechanowner $0
 		}
 
-		item($tr("&Administrator") %:visible,242) (%:isMeAdmin)
+		item($tr("&Administrator","defscript") %:visible,242) (%:isMeAdmin)
 		{
 			chanadmin $0
 		}
 
-		item($tr("&Deadministrator") %:visible,243) (%:isMeAdmin)
+		item($tr("&Deadministrator","defscript") %:visible,243) (%:isMeAdmin)
 		{
 			dechanadmin $0
 		}
 
-		item($tr("&Op") %:visible,34) (%:isMeOp)
+		item($tr("&Op","defscript") %:visible,34) (%:isMeOp)
 		{
 			op $0
 		}
 
-		item($tr("&Deop") %:visible,62) (%:isMeOp)
+		item($tr("&Deop","defscript") %:visible,62) (%:isMeOp)
 		{
 			deop $0
 		}
 
-		item($tr("&Halfop") %:visible,174) (%:isMeOp)
+		item($tr("&Halfop","defscript") %:visible,174) (%:isMeOp)
 		{
 			halfop $0
 		}
 
-		item($tr("&Dehalfop") %:visible,175) (%:isMeOp)
+		item($tr("&Dehalfop","defscript") %:visible,175) (%:isMeOp)
 		{
 			dehalfop $0
 		}
 
-		item($tr("&Voice") %:visible,35) (%:isMeHalfOp)
+		item($tr("&Voice","defscript") %:visible,35) (%:isMeHalfOp)
 		{
 			voice $0
 		}
 
-		item($tr("D&evoice") %:visible,63) (%:isMeHalfOp)
+		item($tr("D&evoice","defscript") %:visible,63) (%:isMeHalfOp)
 		{
 			devoice $0
 		}
 
 		separator
 
-		item($tr("&Kick") %:visible,110) (%:bCanKB)
+		item($tr("&Kick","defscript") %:visible,110) (%:bCanKB)
 		{
 			foreach(%i,$str.split(",",$0))kick %i
 		}
 
-		item($tr("K&ick") %:visible $tr("With..."),110) (%:bCanKB)
+		item($tr("K&ick","defscript") %:visible $tr("With...","defscript"),110) (%:bCanKB)
 		{
-			dialog.textinput -d="$me" -i=110 ($tr("Kick Reason"),$tr("Enter a kick reason"),$tr("&Kick"),$tr("Cancel"),,$0)
+			dialog.textinput -d="$me" -i=110 ($tr("Kick Reason","defscript"),$tr("Enter a kick reason","defscript"),$tr("&Kick","defscript"),$tr("Cancel","defscript"),,$0)
 			{
 				if($0 == 0)
 				{
@@ -594,7 +594,7 @@ defpopup(channel)
 			}
 		}
 
-		item($tr("&Ban") %:visible "("%:itemBanMask")",67) (("%:itemBanMask" != "*!*@*") && %:bCanKB)
+		item($tr("&Ban","defscript") %:visible "("%:itemBanMask")",67) (("%:itemBanMask" != "*!*@*") && %:bCanKB)
 		{
 			ban $mask($0,$option(uintDefaultBanType))
 		}
@@ -604,14 +604,14 @@ defpopup(channel)
 			ban $0
 		}
 
-		item($tr("Kick/Ban") %:visible,110) (%:bCanKB)
+		item($tr("Kick/Ban","defscript") %:visible,110) (%:bCanKB)
 		{
 			kb $0
 		}
 
-		item($tr("Kick/Ban") %:visible $tr("With..."),110) (%:bCanKB)
+		item($tr("Kick/Ban","defscript") %:visible $tr("With...","defscript"),110) (%:bCanKB)
 		{
-			dialog.textinput -d="$me" -i=110 ($tr("Kick/Ban Reason"),$tr("Enter a kick/ban reason"),$tr("&Kick/Ban"),$tr("Cancel"),,$0)
+			dialog.textinput -d="$me" -i=110 ($tr("Kick/Ban Reason","defscript"),$tr("Enter a kick/ban reason","defscript"),$tr("&Kick/Ban","defscript"),$tr("Cancel","defscript"),,$0)
 			{
 				if($0 == 0)
 				{
@@ -621,7 +621,7 @@ defpopup(channel)
 		}
 		separator
 
-		item($tr("Configure ban mask..."),20)
+		item($tr("Configure ban mask...","defscript"),20)
 		{
 			options.edit KviChannelAdvancedOptionsWidget
 		}
@@ -629,7 +629,7 @@ defpopup(channel)
 
 	separator
 
-	item($tr("&Query") %:visible,47)
+	item($tr("&Query","defscript") %:visible,47)
 	{
 		query $0
 	}
@@ -642,13 +642,13 @@ defpopup(channel)
 
 	separator
 
-	extpopup($tr("&Registration"),registration,111) (!%:multiple)
+	extpopup($tr("&Registration","defscript"),registration,111) (!%:multiple)
 
-	extpopup($tr("&Highlight"),highlight,181) (!%:multiple)
+	extpopup($tr("&Highlight","defscript"),highlight,181) (!%:multiple)
 
-	extpopup($tr("Ig&nore"),ignore,203) (!%:multiple)
+	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple)
 
-	item($tr("Notify Avatar"),57)
+	item($tr("Notify Avatar","defscript"),57)
 	{
 		avatar.notify $0
 	}
@@ -658,12 +658,12 @@ defpopup(channel)
 #
 defpopup(channelpopup)
 {
-	item($tr("&Join") $0,145)
+	item($tr("&Join","defscript") $0,145)
 	{
 		hop $0
 	}
 
-	item($tr("&Part") $0,40)
+	item($tr("&Part","defscript") $0,40)
 	{
 		if($channel($0)) eval "part $0 $option(stringPartMessage)";
 	}
@@ -681,7 +681,7 @@ defpopup(channelpopup)
 	}
 	separator
 
-	item($tr("Copy Channel Address"),259)
+	item($tr("Copy Channel Address","defscript"),259)
 	{
 		str.toClipboard $chan.getUrl($0)
 	}
@@ -708,21 +708,21 @@ defpopup(channels)
 
 defpopup(channeltextview)
 {
-	extpopup($tr("Channels"),channels,46)
+	extpopup($tr("Channels","defscript"),channels,46)
 
-	item($tr("&Join Channels..."),46) ($server)
+	item($tr("&Join Channels...","defscript"),46) ($server)
 	{
 		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
 	}
 
 	separator
 
-	item($tr("&Hop") $0,145)
+	item($tr("&Hop","defscript") $0,145)
 	{
 		hop $0
 	}
 
-	item($tr("&Part") $0,40)
+	item($tr("&Part","defscript") $0,40)
 	{
 		if($channel($0)) eval "part $0 $option(stringPartMessage)";
 	}
@@ -743,21 +743,21 @@ defpopup(channeltextview)
 		who $0;
 	}
 
-	item($tr("Notify Avatar"),57)
+	item($tr("Notify Avatar","defscript"),57)
 	{
 		avatar.notify $0
 	}
 
 	separator
 
-	extpopup($tr("&Highlight"),channelhighlight,181)
+	extpopup($tr("&Highlight","defscript"),channelhighlight,181)
 
-	item($tr("Copy Channel URL to Clipboard"),259)
+	item($tr("Copy Channel URL to Clipboard","defscript"),259)
 	{
 		str.toClipboard $chan.getUrl
 	}
 
-	item($tr("Clear Buffer"),121)
+	item($tr("Clear Buffer","defscript"),121)
 	{
 		clear;
 	}
@@ -766,18 +766,18 @@ defpopup(channeltextview)
 
 defpopup(consoletextview)
 {
-	label($tr("You're not connected to a server")) (!$server)
+	label($tr("You're not connected to a server","defscript")) (!$server)
 
-	extpopup($tr("Channels"),channels,46)
+	extpopup($tr("Channels","defscript"),channels,46)
 
 	separator
 
-	item($tr("&Join Channels..."),46) ($server)
+	item($tr("&Join Channels...","defscript"),46) ($server)
 	{
 		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
 	}
 
-	popup($tr("&Information"),13) ($server)
+	popup($tr("&Information","defscript"),13) ($server)
 	{
 		item(/MOTD,30)
 		{
@@ -801,37 +801,37 @@ defpopup(consoletextview)
 				stats d
 			}
 
-			item($tr("l (Connections)"))
+			item($tr("l (Connections)","defscript"))
 			{
 				stats l
 			}
 
-			item($tr("m (Command Usage)"))
+			item($tr("m (Command Usage)","defscript"))
 			{
 				stats m
 			}
 
-			item($tr("o (Operators)"))
+			item($tr("o (Operators)","defscript"))
 			{
 				stats o
 			}
 
-			item($tr("t (Connection stats ?)"),23)
+			item($tr("t (Connection stats ?)","defscript"),23)
 			{
 				stats t
 			}
 
-			item($tr("u (Uptime)"),93)
+			item($tr("u (Uptime)","defscript"),93)
 			{
 				stats u
 			}
 
-			item($tr("y (y-Lines)"))
+			item($tr("y (y-Lines)","defscript"))
 			{
 				stats y
 			}
 
-			item($tr("z (Debug Stats?)"),11)
+			item($tr("z (Debug Stats?)","defscript"),11)
 			{
 				stats z
 			}
@@ -860,7 +860,7 @@ defpopup(consoletextview)
 
 	separator
 
-	item($tr("Clear Buffer"),121)
+	item($tr("Clear Buffer","defscript"),121)
 	{
 		clear;
 	}
@@ -906,8 +906,8 @@ defpopup(ctcp)
 
 	item(PAGE...,223)
 	{
-		#dialog.textinput -d="Wakeup!" ($tr("CTCP Page to") $0,$tr("Enter the message text"),$tr("Ok"),$tr("Cancel"))
-		dialog.textinput(CTCP Page $0,Enter the message text,&Page,Cancel,"",$0)
+		#dialog.textinput -d=$tr("Wakeup!","defscript") ($tr("CTCP Page to","defscript") $0,$tr("Enter the message text","defscript"),$tr("Ok","defscript"),$tr("Cancel","defscript"))
+		dialog.textinput(CTCP Page $0,$tr("Enter the message text","defscript"),$tr("&Page","defscript"),$tr("Cancel","defscript"),"",$0)
 		{
 			if($0 == 0)ctcp $2 PAGE $1
 		}
@@ -928,60 +928,60 @@ defpopup(dcc)
 		else %:bHaveSSL=0
 	}
 
-	item($tr("Chat with") $0,78)
+	item($tr("Chat with","defscript") $0,78)
 	{
 		dcc.chat $0
 	}
 
-	item($tr("Reverse Chat with") $0,78)
+	item($tr("Reverse Chat with","defscript") $0,78)
 	{
 		dcc.chat -z $0
 	}
 
-	item($tr("Secure Chat with") $0,78) (%:bHaveSSL)
+	item($tr("Secure Chat with","defscript") $0,78) (%:bHaveSSL)
 	{
 		dcc.chat -s $0
 	}
 
 	separator
 
-	item($tr("Send to") $0,79)
+	item($tr("Send to","defscript") $0,79)
 	{
 		dcc.send $0
 	}
 
-	item($tr("Secure send to") $0,79)
+	item($tr("Secure send to","defscript") $0,79)
 	{
 		dcc.send -s $0
 	}
 
-	item($tr("Reverse Send to") $0,79)
+	item($tr("Reverse Send to","defscript") $0,79)
 	{
 		dcc.rsend -z $0
 	}
 
-	item($tr("Secure Reverse Send to") $0,79)
+	item($tr("Secure Reverse Send to","defscript") $0,79)
 	{
 		dcc.rsend -z -s $0
 	}
 
 	separator
 
-	item($tr("TDCC Send to") $0,77)
+	item($tr("TDCC Send to","defscript") $0,77)
 	{
 		dcc.send -t $0
 	}
 
-	item($tr("TDCC Reverse Send to") $0,77)
+	item($tr("TDCC Reverse Send to","defscript") $0,77)
 	{
 		dcc.rsend -t $0
 	}
 
 	separator
 
-	popup($tr("Voice Chat"),166)
+	popup($tr("Voice Chat","defscript"),166)
 	{
-		item($tr("Default")": ADPCM 8 KHz (32 kbps)")
+		item($tr("Default","defscript")": ADPCM 8 KHz (32 kbps)")
 		{
 			dcc.voice $0
 		}
@@ -1056,7 +1056,7 @@ defpopup(dccchat)
 		if($str.findfirst(%:visible,",") != -1)
 		{
 			# found a comma in the $0 parameter...we have multiple nicknames
-			%:visible = "("$tr("Multiple Users")")"
+			%:visible = "("$tr("Multiple Users","defscript")")"
 			%:multiple = 1
 		}
 	}
@@ -1069,14 +1069,14 @@ defpopup(dccchat)
 
 	separator
 
-	item($tr("Notify Avatar"),57)
+	item($tr("Notify Avatar","defscript"),57)
 	{
 		avatar.notify $0
 	}
 
 	separator
 
-	item($tr("Clear Buffer"),121)
+	item($tr("Clear Buffer","defscript"),121)
 	{
 		clear
 	}
@@ -1103,19 +1103,19 @@ defpopup(querytextview)
 		if($str.findfirst(%:visible,",") != -1)
 		{
 			# found a comma in the $0 parameter...we have multiple nicknames
-			%:visible = "("$tr("Multiple Users")")"
+			%:visible = "("$tr("Multiple Users","defscript")")"
 			%:multiple = 1
 		}
 	}
 
-	item(/WHOIS $0 "("$tr("idle time")")",75) (!%:multiple)
+	item(/WHOIS $0 "("$tr("idle time","defscript")")",75) (!%:multiple)
 	{
 		whois $0 $0
 	}
 
 	separator
 
-	popup($tr("&Information"),49)
+	popup($tr("&Information","defscript"),49)
 	{
 		item(/WHOIS $0,75)
 		{
@@ -1134,12 +1134,12 @@ defpopup(querytextview)
 
 		separator
 
-		item($tr("DNS for") $0,75)
+		item($tr("DNS for","defscript") $0,75)
 		{
 			foreach(%i,$str.split(",",$0))dns %i
 		}
 
-		item($tr("Mask for") $0,75) (!%:multiple)
+		item($tr("Mask for","defscript") $0,75) (!%:multiple)
 		{
 			echo $mask($0,11)
 		}
@@ -1153,18 +1153,18 @@ defpopup(querytextview)
 
 	separator
 
-	extpopup($tr("&Ignore"),ignore,203) (!%:multiple)
+	extpopup($tr("&Ignore","defscript"),ignore,203) (!%:multiple)
 
-	extpopup($tr("&Registration"),registration,111) (!%:multiple)
+	extpopup($tr("&Registration","defscript"),registration,111) (!%:multiple)
 
-	item($tr("Notify Avatar"),57)
+	item($tr("Notify Avatar","defscript"),57)
 	{
 		avatar.notify $0
 	}
 
 	separator
 
-	item($tr("Clear Buffer"),121)
+	item($tr("Clear Buffer","defscript"),121)
 	{
 		clear
 	}
@@ -1184,43 +1184,43 @@ defpopup(logging)
 		%:logfile = $file.extractfilename($log.file)
 	}
 
-	label($tr("Logging to"):<br><b>%:logfile</b>) ("%:logfile" != "")
+	label($tr("Logging to","defscript"):<br><b>%:logfile</b>) ("%:logfile" != "")
 
-	item($tr("Flush Log File"),19) (%:logfile)
+	item($tr("Flush Log File","defscript"),19) (%:logfile)
 	{
 		log.flush
 	}
 
 	separator
 
-	item($tr("Stop Logging"),58) (%:logfile)
+	item($tr("Stop Logging","defscript"),58) (%:logfile)
 	{
 		log.stop
 	}
 
-	label($tr("Not Logging")) (!%:logfile)
+	label($tr("Not Logging","defscript")) (!%:logfile)
 
-	item($tr("Log To Default File"),119) (!%:logfile)
+	item($tr("Log To Default File,"defscript""),119) (!%:logfile)
 	{
 		log.start
 	}
 
-	item($tr("Log To Default File") "("$tr("Include Existing Buffer")")",119) (!%:logfile)
+	item($tr("Log To Default File","defscript") "("$tr("Include Existing Buffer","defscript")")",119) (!%:logfile)
 	{
 		log.start -p
 	}
 
-	item($tr("Log To..."),119) (!%:logfile)
+	item($tr("Log To...","defscript"),119) (!%:logfile)
 	{
-		dialog.file(save,$tr("Choose Log Filename"))
+		dialog.file(save,$tr("Choose Log Filename","defscript"))
 		{
 			if($0)log.start  $0
 		}
 	}
 
-	item($tr("Log To...") "("$tr("Include Existing Buffer")")",119) (!%:logfile)
+	item($tr("Log To...","defscript") "("$tr("Include Existing Buffer","defscript")")",119) (!%:logfile)
 	{
-		dialog.file(save,$tr("Choose Log Filename"))
+		dialog.file(save,$tr("Choose Log Filename","defscript"))
 		{
 			if($0)log.start -p $0
 		}
@@ -1243,19 +1243,19 @@ defpopup(defaulttextview)
 		if($str.findfirst(%:visible,",") != -1)
 		{
 			# found a comma in the $0 parameter...we have multiple nicknames
-			%:visible = "("$tr("Multiple Users")")"
+			%:visible = "("$tr("Multiple Users","defscript")")"
 			%:multiple = 1
 		}
 	}
 
-	item(/WHOIS $0 "("$tr("idle time")")",75) (!%:multiple)
+	item(/WHOIS $0 "("$tr("idle time","defscript")")",75) (!%:multiple)
 	{
 		whois $0 $0
 	}
 
 	separator
 
-	popup($tr("&Information"),49)
+	popup($tr("&Information","defscript"),49)
 	{
 		item(/WHOIS $0,75)
 		{
@@ -1282,7 +1282,7 @@ defpopup(defaulttextview)
 
 	separator
 
-	item($tr("&Query") %:visible,47)
+	item($tr("&Query","defscript") %:visible,47)
 	{
 		query $0
 	}
@@ -1295,20 +1295,20 @@ defpopup(defaulttextview)
 
 	separator
 
-	extpopup($tr("&Registration"),registration,111) (!%:multiple)
+	extpopup($tr("&Registration","defscript"),registration,111) (!%:multiple)
 
-	extpopup($tr("&Highlight"),highlight,181) (!%:multiple)
+	extpopup($tr("&Highlight","defscript"),highlight,181) (!%:multiple)
 
-	extpopup($tr("Ig&nore"),ignore,203) (!%:multiple)
+	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple)
 
-	item($tr("Notify avatar"),57)
+	item($tr("Notify avatar","defscript"),57)
 	{
 		avatar.notify $0
 	}
 
 	separator
 
-	item($tr("Clear Buffer"),121)
+	item($tr("Clear Buffer","defscript"),121)
 	{
 		clear
 	}
@@ -1364,37 +1364,38 @@ defpopup(hostpopup)
 
 	separator
 
-	item(Open ftp://$0/,145) ("$system.ostype" == "unix")
+	item($tr("Open ","defscript")"ftp://"$0"/",145) ("$system.ostype" == "unix")
 	{
-		openurl ftp://$0/
+		openurl "ftp://$0/"
 	}
 
-	item(Telnet to $0,25)
+	item($tr("Telnet to ","defscript")$0,25)
 	{
 		system.runcmd telnet $0
 	}
 
 	separator
 
-	item(Traceroute $0,42)
+	item($tr("Traceroute to ","defscript")$0,42)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute $0
 		else system.runcmd tracert $0
 	}
 
-	item(Traceroute6 $0,42)
+	item($tr("Traceroute6 to ","defscript")$0,42)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute6 $0
 		else system.runcmd tracert6 $0
 	}
 
-	item(Ping $0,147)
+	item("Ping "$0,147)
 	{
 		system.runcmd ping $0
 	}
 
-	item(Ping6 $0,147)
+	item("Ping6 "$0,147)
 	{
 		system.runcmd ping6 $0
 	}
 }
+

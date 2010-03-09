@@ -1,4 +1,4 @@
 # CMakeLists for po/
 
 # Find subdirs
-SUBDIRS(core modules)
+SUBDIRS(core defscript modules)

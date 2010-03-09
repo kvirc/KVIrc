@@ -31,8 +31,8 @@ option stringlistSpamWords "http:","#","www.","auto","query","ftp:","sex","free"
 
 options.save
 
-echo $tr("The default script has been successfully installed.")
-echo $tr("To connect to a server, type /server <server name>")
+echo $tr("The default script has been successfully installed.","defscript")
+echo $tr("To connect to a server, type /server <server name>","defscript")
 echo "---"
-echo $tr("Happy ircing :)")
-echo "- Szymon Stefanek $tr("and the KVIrc Development Team")"
+echo $tr("Happy ircing :)","defscript")
+echo "- Szymon Stefanek $tr("and the KVIrc Development Team","defscript")"
