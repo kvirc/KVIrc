@@ -72,11 +72,11 @@ protected:
 	QString m_szName;
         QString m_szBuffer;
         bool m_bClassModified, m_bInternal;
-        QString m_szInerithClassName;
+	QString m_szInheritsClassName;
         int  m_cPos;
 public:
-        void setInerithClass(QString szInerithClassName){m_szInerithClassName=szInerithClassName;};
-        QString inerithClass(){return m_szInerithClassName;};
+	void setInheritsClass(QString szInheritsClassName){m_szInheritsClassName=szInheritsClassName;};
+	QString InheritsClass(){return m_szInheritsClassName;};
 	const QString & name(){ return m_szName; };
 	void setName(const QString &szName);
         void setClassNotBuilt(bool bModified);
@@ -123,7 +123,7 @@ public:
 	KviScriptEditor              * m_pEditor;
 	KviClassEditorTreeWidget     * m_pTreeWidget;
         QLabel                       * m_pClassNameLabel;
-        QLabel                       * m_pInerithClassNameLabel;
+	QLabel                       * m_pInheritsClassNameLabel;
         QPushButton                  * m_pClassNameRenameButton;
         QLabel                       * m_pMemberFunctionNameLabel;
         QPushButton                  * m_pMemberFunctionNameRenameButton;
@@ -159,6 +159,7 @@ protected slots:
        void newMemberFunction();
 
        KviClassEditorTreeWidgetItem * newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType);
+       void renameClassOrNamespace();
      /*   void renameItem();
 
 
@@ -197,10 +198,15 @@ protected:
 	void openParentItems(QTreeWidgetItem * it);
 	void activateItem(QTreeWidgetItem * it);
         bool hasSelectedItems();
-        void askForClassName(QString &szClassName,QString &szInerithClassName);
+	void askForClassName(QString &szClassName,QString &szInheritsClassName,bool bEdit);
         QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
         void askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName);
-        void searchInerithedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInerithedClasses);
+	void searchInheritsedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInheritsedClasses);
+	bool classExists(QString &szFullItemName);
+	//void renameClassOrNamespace();
+	void renameClass(KviClassEditorTreeWidgetItem *pClassItem);
+	void renameNamespace(KviClassEditorTreeWidgetItem *pNamespaceItem);
+bool namespaceExists(QString &szFullItemName);
 
 /*
         bool removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
@@ -210,8 +216,8 @@ protected:
 
 
 
-        bool namespaceExists(QString &szFullItemName);
-	bool classExists(QString &szFullItemName);
+
+
         void appendAllItems(KviPointerList<KviClassEditorTreeWidgetItem> * l,KviClassEditorTreeWidgetItem::Type);
         void appendAllItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom,KviClassEditorTreeWidgetItem::Type);
 
@@ -257,16 +263,16 @@ class KviClassEditorDialog: public QDialog
 {
         Q_OBJECT
 public:
-        KviClassEditorDialog(QWidget * pParent, const QString & szName, KviPointerHashTable<QString,KviClassEditorTreeWidgetItem> *pClasses);
+	KviClassEditorDialog(QWidget * pParent, const QString & szName, KviPointerHashTable<QString,KviClassEditorTreeWidgetItem> *pClasses, const QString &szClassName, const QString &szInheritsClassName,bool bRenameMode=false);
 
         ~KviClassEditorDialog();
 public:
         QString getClassName(){return m_pClassNameLineEdit->text();};
-        QString getInerithClassName(){return m_pInerithClassComboBox->currentText();};
+	QString getInheritsClassName(){return m_pInheritsClassComboBox->currentText();};
 protected:
         QPushButton * m_pNewClassButton;
         QLineEdit * m_pClassNameLineEdit;
-        QComboBox * m_pInerithClassComboBox;
+	QComboBox * m_pInheritsClassComboBox;
         QWidget     * m_pParent;
 protected slots:
         void textChanged(const QString &);
