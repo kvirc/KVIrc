@@ -2,17 +2,14 @@
 # Copyright (C) 2010 the KVIrc's copyright holder
 # This file is distributed under the same license as the KVIrc package.
 #
-# José Luis Sánchez <jsanchezv@teleline.es>, 2004.
 # Zé <mmodem00@gmail.com>, 2004-2007, 2010.
-# Américo Monteiro <a_monteiro@netcabo.pt>, 2010.
-# Gmail <mmodem00@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_dcc \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-09 04:29+0100\n"
-"PO-Revision-Date: 2010-03-01 17:11+0000\n"
-"Last-Translator: Gmail <mmodem00@gmail.com>\n"
+"PO-Revision-Date: 2010-03-10 02:55+0000\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -100,7 +97,7 @@ msgstr "&Contorno"
 
 #: src/modules/dcc/canvaswidget.cpp:1486
 msgid "&Triangle"
-msgstr "&triângulo"
+msgstr "&Triângulo"
 
 #: src/modules/dcc/requests.cpp:777
 #: src/modules/dcc/requests.cpp:947
@@ -180,12 +177,15 @@ msgid ""
 msgstr ""
 "<center><b>Nota:</b></center>O ficheiro parece ser um avatar que requisitou. "
 "Não deve alterar o nome do ficheiro. Grave-o numa localização onde o KVIrc o "
-"possa encontrar, como nos directórios 'avatars', 'incoming', ou 'pics', na "
-"sua pasta pessoal, ou no directório de gravação para os tiposde ficheiros "
-"recebidos. A localização de gravação predefinida irá provavelmente "
-"funcionar. Pode instruir o KVIrc para aceitar automaticamente os 'avatars' "
-"recebidos ao definir a opção <tt>boolAutoAcceptIncomingAvatars</tt>para "
-"verdadeiro (true).<br>"
+"possa encontrar, tais como os directórios 'avatars', 'incoming', ou 'pics', "
+"na "
+"sua pasta pessoal, ou o directório de gravação para os tipos de ficheiros "
+"recebidos. "
+"A localização de gravação predefinida irá provavelmente funcionar. Pode "
+"instruir "
+"o KVIrc para aceitar automaticamente os 'avatars' recebidos ao definir a "
+"opção "
+"<tt>boolAutoAcceptIncomingAvatars</tt>para verdadeiro (true).<br>"
 
 #: src/modules/dcc/libkvidcc.cpp:635
 #: src/modules/dcc/requests.cpp:454
@@ -1047,8 +1047,8 @@ msgid ""
 "You're not connected to a server (an active connection is required unless -c "
 "or -n are passed)"
 msgstr ""
-"Não está ligado a um servidor (é necessária uma conexão activa a menos que "
-"use -c ou -n)"
+"Não está conectado a um servidor (é necessária uma conexão activa a "
+"menos que use -c ou -n)"
 
 #: src/modules/dcc/send.cpp:1590
 msgid "[SSL ERROR]: %1"
@@ -1083,3 +1083,4 @@ msgstr "bytes/segundo"
 #: src/modules/dcc/requests.cpp:143
 msgid "unknown"
 msgstr "desconhecido"
+

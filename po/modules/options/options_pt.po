@@ -10,14 +10,13 @@
 # Zé <mmodem@netcabo.pt>, 2005.
 # Zé <mmodem00@gmail.com>, 2006, 2007, 2008, 2010.
 # Zé <ze@mandriva.org>, 2008, 2010.
-# Gmail <mmodem00@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-09 04:29+0100\n"
-"PO-Revision-Date: 2010-03-01 17:14+0000\n"
-"Last-Translator: Gmail <mmodem00@gmail.com>\n"
+"PO-Revision-Date: 2010-03-10 03:46+0000\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -725,7 +724,7 @@ msgstr ""
 "<center>Este campo especifica o nome de um módulo que exporta um filtro de "
 "ligação para este tipo de servidor.<br>Para conexões IRC simples, não "
 "precisa de qualquer filtro de ligação; isto é usado para protocolos "
-"incompativeis.</center>"
+"incompatíveis.</center>"
 
 #: src/modules/options/optw_servers.cpp:499
 msgid ""
@@ -1090,9 +1089,9 @@ msgid ""
 "minimized.<br>Enable this if you don't like queries popping up while you're "
 "typing something in a channel. :D</center>"
 msgstr ""
-"<center>Esta opção faz com que as novas janelas de privados criadas sejam "
-"imediatamente minimizadas.<br>Active esta opção se não quer janelas de "
-"privados aparecerem enquanto escreve algo num canal. :D</center>"
+"<center>Esta opção faz com que as novas janelas privadas criadas sejam "
+"imediatamente minimizadas.<br>Active esta opção se não quer janelas "
+"privadas a aparecerem enquanto escreve algo num canal. :D</center>"
 
 #: src/modules/options/optw_dcc.cpp:318
 msgid ""
@@ -1133,7 +1132,7 @@ msgid ""
 "(PRIVMSG) is received.<br>If you disable this, private messages will be "
 "shown in the active window or a common channel.</center>"
 msgstr ""
-"<center>Esta opção activa a criação de uma janela de privado quando uma "
+"<center>Esta opção activa a criação de uma janela privada quando uma "
 "mensagem privada (PRIVMSG) é recebida..<br>Se desactivar esta opção, as "
 "mensagens privadas serão mostradas na janela activa ou numa janela comum.</"
 "center>"
@@ -1144,7 +1143,7 @@ msgid ""
 "(NOTICE) is received.<br>If you disable this, private notices will be shown "
 "in the active window or a common channel.</center>"
 msgstr ""
-"<center>Esta opção activa a criação de uma janela de privado quando uma "
+"<center>Esta opção activa a criação de uma janela privada quando uma "
 "noticia privada (NOTICE) é recebida..<br>Se desactivar esta opção, as "
 "noticias privadas serão mostradas na janela activa ou numa janela comum.</"
 "center>"
@@ -1155,10 +1154,10 @@ msgid ""
 "known information about query target at the top of the window.<br>Uncheck if "
 "you think,that it wastes your query space/</center>"
 msgstr ""
-"<center>Esta opção permite mostrar informação na janela do privado. Pode "
-"mostrar informação acerca do privado de destino no topo da janela."
-"<br>Desmarque esta opção se pensa que ocupa demasiado espaço na janela de "
-"privado</center>"
+"<center>Esta opção permite a etiqueta de informação na janela privada. Pode "
+"mostrar a sua informação acerca do privado de destino no topo da janela."
+"<br>Desmarque esta opção se acha que ocupa demasiado espaço na janela "
+"privada</center>"
 
 #: src/modules/options/optw_windowlist.cpp:43
 msgid ""
@@ -1347,8 +1346,8 @@ msgid ""
 "<center>This option will cause KVIrc to reopen query windows after a "
 "successful reconnect attempt.</center>"
 msgstr ""
-"<center>Esta opção irá fazer com que o KVIrc reabra as janelas de privados "
-"após uma nova tentativa de conexão bem sucedida.</center>"
+"<center>Esta opção irá fazer com que o KVIrc reabra as janelas privadas "
+"após uma tentativa de nova conexão bem sucedida.</center>"
 
 #: src/modules/options/optw_avatar.cpp:70
 msgid ""
@@ -1418,18 +1417,18 @@ msgid ""
 "before the \"quit\" command.<br><tt>alias(bncdetach){ raw bouncer detach; "
 "quit; }</tt></p></center>"
 msgstr ""
-"<center>Esta opção activa a auto-reconexão após uma desconectar inesperada. "
+"<center>Esta opção activa a auto-conexão após uma desconectar inesperada. "
 "Uma desconexão inesperada é o <b>fim</b> de uma<b> sessão IRC activa</b> que "
 "não foi <b>pedida pelo utilizador</b> através de uma mensagem QUIT. "
 "<p><b>Aviso:</b> se usar /RAW para enviar uma mensagem QUIT para o servidor, "
 "esta opção não será feita correctamente, isto porque não detecta a saída de "
-"uma mensagem QUIT e tenta reconectar após o servidor fechar a conexão. Por "
-"esta razão, use sempre o comando /QUIT para fechar as suas ligações. Esta "
-"opção também pode ter um comportamento incorrecto com 'bouncers' que "
-"suportem desanexamento, neste caso a solução pode passar por preparar uma "
-"'alias' que envie o comando \"detach\" do 'bouncer' imediatamente antes do "
-"comando \"quit\". <br><tt>alias(bncdetach){ raw bouncer detach; quit; }</"
-"tt></p></center>"
+"uma mensagem QUIT e tenta conectar novamente após o servidor fechar a "
+"conexão. Por esta razão, use sempre o comando /QUIT para fechar as suas "
+"conexões. Esta opção também pode ter um comportamento incorrecto com "
+"'bouncers' que suportem desanexamento, neste caso a solução pode passar "
+"por preparar uma 'alias' que envie o comando \"detach\" do 'bouncer' "
+"imediatamente antes do comando \"quit\". <br><tt>alias(bncdetach){ raw "
+"bouncer detach; quit; }</tt></p></center>"
 
 #: src/modules/options/optw_query.cpp:69
 msgid ""
@@ -1524,11 +1523,11 @@ msgid ""
 "DCC connections to the dialup router's address.<br>It's an ugly hack - use "
 "it only if nothing else works.</center>"
 msgstr ""
-"<center>Quando está atrás de um router que se conecta por modem  telefónico, "
-"e também passar através de um bouncer psyBNC, pode usar um erro no bouncer "
-"para forçar o KVirc a juntar as ligações DCC ao endereço do modem onde o "
-"router se liga.<br>É um hack feio, use-o apenas se mais nada resultar.</"
-"center>"
+"<center>Quando está atrás de um roteador que se conecta por 'modem' "
+"telefónico, e também passar através de um 'bouncer' psyBNC, pode usar "
+"um erro no 'bouncer' para forçar o KVirc a juntar as conexões DCC ao "
+"endereço do 'modem' onde o roteador se liga.<br>É um 'hack' feio, use-o "
+"apenas se mais nada resultar.</center>"
 
 #: src/modules/options/optw_dcc.cpp:115
 msgid ""
@@ -1751,7 +1750,7 @@ msgstr "Alerta para palavras destacadas"
 
 #: src/modules/options/optw_highlighting.cpp:97
 msgid "Alert for query messages"
-msgstr "Alerta para mensagens nos privados"
+msgstr "Alerta para mensagens privadas"
 
 #: src/modules/options/optw_messages.cpp:387
 msgid "Alert level:"
@@ -1927,11 +1926,11 @@ msgstr "Propriedades Básicas"
 
 #: src/modules/options/optw_connection.cpp:165
 msgid "Bind IPv4 connections to:"
-msgstr "Juntar ligações IPv4 para:"
+msgstr "Juntar conexões IPv4 para:"
 
 #: src/modules/options/optw_connection.cpp:169
 msgid "Bind IPv6 connections to:"
-msgstr "Juntar ligações IPv6 para:"
+msgstr "Juntar conexões IPv6 para:"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:95
 msgid "Blend color:"
@@ -3076,11 +3075,11 @@ msgstr "Nova mensagem em privado inactivo"
 
 #: src/modules/options/optw_input.cpp:149
 msgid "Nick completion"
-msgstr "Completação da alcunha"
+msgstr "Completação de alcunha"
 
 #: src/modules/options/optw_input.cpp:156
 msgid "Nick completion postfix string"
-msgstr "Testo de sufixo para completar a alcunha"
+msgstr "Texto de sufixo de completação de alcunha"
 
 #: src/modules/options/optw_servers.cpp:339
 msgid "NickServ"
@@ -3340,7 +3339,8 @@ msgstr "Padrão"
 
 #: src/modules/options/optw_connection.cpp:174
 msgid "Pick Random IP Address for Round-Robin Servers"
-msgstr "Escolher Endereço IP Aleatório para Servidores 'Round-Robin'"
+msgstr ""
+"Escolher Endereço IP Aleatório para Servidores de algoritmo 'Round-Robin'"
 
 #: src/modules/options/optw_userlist.cpp:239
 msgid ""
@@ -3518,7 +3518,7 @@ msgstr "Indique aqui o nomedeutilizador que deseja usar"
 
 #: src/modules/options/optw_logging.cpp:41
 msgid "Query windows"
-msgstr "Janelas de privados"
+msgstr "Janelas privadas"
 
 #: src/modules/options/optw_ircoutput.cpp:48
 msgid "Quiet"
@@ -3804,7 +3804,7 @@ msgstr "Mostrar na janela activa"
 
 #: src/modules/options/optw_query.cpp:85
 msgid "Show information about query target at the top of the query"
-msgstr "Mostrar informação acerca do privado de destino no topo da janela"
+msgstr "Mostrar informação acerca do destino do privado no topo da janela"
 
 #: src/modules/options/optw_userlist.cpp:235
 msgid "Show label with userlist stats"

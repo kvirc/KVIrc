@@ -2,17 +2,15 @@
 # Copyright (C) 2010 the KVIrc's copyright holder
 # This file is distributed under the same license as the KVIrc package.
 #
-# Américo Monteiro <a_monteiro@netcabo.pt>, 2010.
 # Zé <mmodem00@gmail.com>, 2010.
-# Gmail <mmodem00@gmail.com>, 2010.
 # Zé <ze@mandriva.org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_objects \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-09 04:29+0100\n"
-"PO-Revision-Date: 2010-03-02 03:06+0000\n"
-"Last-Translator: Zé <ze@mandriva.org>\n"
+"PO-Revision-Date: 2010-03-10 03:17+0000\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -774,7 +772,7 @@ msgstr "Alinhamento desconhecido: '%Q'"
 #: src/modules/objects/class_pixmap.cpp:173
 msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
 msgstr ""
-"Rácio de aspecto %Q desconhecido - A mudar para o rácio ManterRáciodeAspecto"
+"Rácio de aspecto %Q desconhecido - A mudar para o rácio ManterRáciodoAspecto"
 
 #: src/modules/objects/class_painter.cpp:1489
 msgid "Unknown brush style '%Q'"
@@ -842,7 +840,7 @@ msgstr ""
 
 #: src/modules/objects/class_file.cpp:441
 msgid "Unsupported datatype '%Q'"
-msgstr "Tipo de dados não suportados '%Q'"
+msgstr "Tipo de dados não suportado '%Q'"
 
 #: src/modules/objects/class_socket.cpp:658
 #, c-format
@@ -875,14 +873,14 @@ msgstr "'Widget' ou 'Pixmap' requerido "
 #: src/modules/objects/class_toolbutton.cpp:269
 #: src/modules/objects/object_macros.h:115
 msgid "Widget parameter is not a valid object"
-msgstr "O parâmetro de elemento (widget) não é um objecto válido"
+msgstr "O parâmetro do elemento (widget) não é um objecto válido"
 
 #: src/modules/objects/class_mainwindow.cpp:87
 #: src/modules/objects/class_widget.cpp:1761
 #: src/modules/objects/class_toolbutton.cpp:264
 #: src/modules/objects/object_macros.h:110
 msgid "Widget parameter is not an object"
-msgstr "O parâmetro de elemento (widget) não é um objecto"
+msgstr "O parâmetro do elemento (widget) não é um objecto"
 
 #: src/modules/objects/class_file.cpp:323
 msgid "Write error occured!"
@@ -891,3 +889,4 @@ msgstr "Ocorreu um erro de escrita!"
 #: src/modules/objects/class_xmlreader.cpp:315
 msgid "XML support not available in the Qt library"
 msgstr "Suporte XML não disponível na biblioteca Qt"
+
