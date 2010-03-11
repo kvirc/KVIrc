@@ -169,7 +169,7 @@ KviClassEditor::KviClassEditor(QWidget * par)
 	m_pClassNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
 	m_pClassNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
 	m_pClassNameRenameButton->setEnabled(false);
-	connect(m_pClassNameRenameButton,SIGNAL(clicked()),this,SLOT(renameClassOrNamespace()));
+	connect(m_pClassNameRenameButton,SIGNAL(clicked()),this,SLOT(renameItem()));
 	hbox->setStretchFactor(m_pClassNameLabel,2);
 	m_pClassNameRenameButton->setToolTip(__tr2qs_ctx("Edit the class or namespace name","editor"));
 
@@ -185,7 +185,7 @@ KviClassEditor::KviClassEditor(QWidget * par)
 	m_pMemberFunctionNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
 	m_pMemberFunctionNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
 	m_pMemberFunctionNameRenameButton->setEnabled(false);
-	connect(m_pMemberFunctionNameRenameButton,SIGNAL(clicked()),this,SLOT(renameFunction()));
+	connect(m_pMemberFunctionNameRenameButton,SIGNAL(clicked()),this,SLOT(renameItem()));
 	hbox->setStretchFactor(m_pMemberFunctionNameLabel,2);
 	m_pMemberFunctionNameRenameButton->setToolTip(__tr2qs_ctx("Edit the function member name","editor"));
 
@@ -490,15 +490,53 @@ bool KviClassEditor::namespaceExists(QString & szFullItemName)
 }
 void KviClassEditor::renameFunction()
 {
+	KviClassEditorTreeWidgetItem *pFunction=m_pLastEditedItem;
+
+	QString szClassName = pFunction->parentItem()->name();
+	QString szFunctionName = pFunction->name();
+	KviClassEditorTreeWidgetItem *pParentClass =  pFunction->parentItem();
+
+	QString szNewFunctionName = szFunctionName;
+	bool bInternal;
+	bool bOldinternal=bInternal;
+	askForFunction(szNewFunctionName, &bInternal,szClassName);
+	if (KviQString::equalCI(szFunctionName,szNewFunctionName) && (bInternal==bOldinternal)) return;
+	if (functionExists(szNewFunctionName,pParentClass))
+	{
+		g_pClassEditorModule->lock();
+		QMessageBox::information(this,
+			__tr2qs_ctx("Function already exists","editor"),
+			__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
+			__tr2qs_ctx("Ok, Let me try again...","editor"));
+		g_pClassEditorModule->unlock();
+		return;
+	}
+	pFunction->setName(szNewFunctionName);
+
+	pParentClass->setClassNotBuilt(true);
+	KviPointerList<KviClassEditorTreeWidgetItem> pInheritsedClasses;
+	searchInheritsedClasses(szClassName,pInheritsedClasses);
+	for(unsigned int i=0;i<pInheritsedClasses.count();i++)
+		pInheritsedClasses.at(i)->setClassNotBuilt(true);
+	activateItem(pFunction);
 
 }
+bool KviClassEditor::functionExists(const QString &szFunctionName, KviClassEditorTreeWidgetItem *pClass)
+{
+	for(int i=0;i<pClass->childCount();i++)
+	{
+		if(KviQString::equalCI(szFunctionName,((KviClassEditorTreeWidgetItem *)pClass->child(i))->name())) return true;
+	}
+	return false;
+}
 
-void KviClassEditor::renameClassOrNamespace()
+void KviClassEditor::renameItem()
 {
 	if(!m_pLastEditedItem)return;
 	if(!itemExists(m_pLastEditedItem))return; // dead ?
 	if(m_pLastEditedItem->isClass()) renameClass(m_pLastEditedItem);
-	else renameNamespace(m_pLastEditedItem);
+	else if(m_pLastEditedItem->isNamespace()) renameNamespace(m_pLastEditedItem);
+	else renameFunction();
 }
 void KviClassEditor::renameClass(KviClassEditorTreeWidgetItem *pClassItem)
 {
@@ -1249,13 +1287,14 @@ bool KviClassEditor::askForClassName(QString &szClassName,QString &szInheritsCla
 	{
 		szClassName=pDialog->getClassName();
 		szInheritsClassName=pDialog->getInheritsClassName();
+		delete pDialog;
 		return true;
 	}
         delete pDialog;
 	return false;
 }
 
-void KviClassEditor::askForFunction(QString &szFunctionName,bool * bInternal,const QString &szClassName)
+bool KviClassEditor::askForFunction(QString &szFunctionName,bool * bInternal,const QString &szClassName)
 {
 	KviClassEditorFunctionDialog *pDialog=new KviClassEditorFunctionDialog(this,"function",szClassName,szFunctionName);
 	szFunctionName="";
@@ -1266,8 +1305,11 @@ void KviClassEditor::askForFunction(QString &szFunctionName,bool * bInternal,con
 	{
 		szFunctionName=pDialog->getFunctionName();
 		*bInternal=pDialog->isInternalFunction();
+		delete pDialog;
+		return true;
 	}
 	delete pDialog;
+	return false;
 }
 
 QString KviClassEditor::askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText)

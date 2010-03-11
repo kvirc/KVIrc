@@ -144,6 +144,7 @@ public:
         void build();
         void saveNotBuiltClasses();
         void loadNotBuiltClasses();
+	bool functionExists(const QString &szFunctionName, KviClassEditorTreeWidgetItem *pClass);
     /*
         void exportClasses(bool,bool=false);
         void exportSelectionInSinglesFiles(KviPointerList<KviClassEditorTreeWidgetItem> *l);
@@ -160,9 +161,9 @@ protected slots:
        void newMemberFunction();
        void renameFunction();
        KviClassEditorTreeWidgetItem * newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType);
-       void renameClassOrNamespace();
-     /*   void renameItem();
 
+	 void renameItem();
+/*
 
 	void exportAll();
 	void exportSelectedSepFiles();
@@ -201,7 +202,7 @@ protected:
         bool hasSelectedItems();
 	bool askForClassName(QString &szClassName,QString &szInheritsClassName,bool bEdit);
         QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
-        void askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName);
+	bool askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName);
 	void searchInheritsedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInheritsedClasses);
 	bool classExists(QString &szFullItemName);
 	//void renameClassOrNamespace();
