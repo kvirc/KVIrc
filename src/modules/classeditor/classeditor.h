@@ -198,7 +198,7 @@ protected:
 	void openParentItems(QTreeWidgetItem * it);
 	void activateItem(QTreeWidgetItem * it);
         bool hasSelectedItems();
-	void askForClassName(QString &szClassName,QString &szInheritsClassName,bool bEdit);
+	bool askForClassName(QString &szClassName,QString &szInheritsClassName,bool bEdit);
         QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
         void askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName);
 	void searchInheritsedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInheritsedClasses);
