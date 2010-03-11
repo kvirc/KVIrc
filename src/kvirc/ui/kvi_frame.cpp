@@ -97,6 +97,7 @@ KviFrame::KviFrame()
 	setAttribute(Qt::WA_TranslucentBackground);
 	//disable this flag that gets enabled by qt when using Qt::WA_TranslucentBackground
 	setAttribute(Qt::WA_NoSystemBackground, false);
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
 	
 	m_pWinList  = new KviPointerList<KviWindow>;
 	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);

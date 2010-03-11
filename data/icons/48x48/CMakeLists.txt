@@ -19,6 +19,8 @@ IF(UNIX)
 		# Assume linux
 		INSTALL(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/48x48/apps/)
 		INSTALL(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/48x48/mimetypes/)
+		#this is needed for .desktop files to find the icon
+		INSTALL(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/pixmaps/)
 	ENDIF()
 ELSEIF(WIN32)
 	INSTALL(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/48x48/apps/)
