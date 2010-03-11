@@ -1522,6 +1522,11 @@ void KviClassEditor::loadNotBuiltClasses()
                         }
                         for(QString * s = names.first(); s; s = names.next())
                         {
+				if (KviQString::equalCI(*s,"@inherits"))
+				{
+					pClassItem->setInheritsClass(cfg.readQStringEntry(*s,""));
+					continue;
+				}
                                 QString szCode = cfg.readQStringEntry(*s,"");
                                 KviClassEditorTreeWidgetItem *pFunctionItem=new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,*s);
                                 pFunctionItem->setBuffer(szCode);
@@ -1538,20 +1543,17 @@ void KviClassEditor::saveNotBuiltClasses()
         QString szBuffer;
         g_pApp->getLocalKvircDirectory(szBuffer,KviApp::ConfigPlugins,szFileName);
         KviConfig cfg(szBuffer,KviConfig::Write);
-        int iCount=0;
-        while(it.current())
+	while(it.current())
         {
-            if (it.current()->classNotBuilt())
-            {
-                debug("saving class %s",it.currentKey().toUtf8().data());
-                cfg.setGroup(it.currentKey());
-                for(int i=0;i<it.current()->childCount();i++)
-                {
-                    cfg.writeEntry(((KviClassEditorTreeWidgetItem*)it.current()->child(i))->name(),((KviClassEditorTreeWidgetItem*)it.current()->child(i))->buffer());
-                }
-                iCount++;
-            }
-            ++it;
+		if (it.current()->classNotBuilt())
+		{
+			debug("saving class %s",it.currentKey().toUtf8().data());
+			cfg.setGroup(it.currentKey());
+			cfg.writeEntry("@inheriths",it.current()->InheritsClass());
+			for(int i=0;i<it.current()->childCount();i++)
+				cfg.writeEntry(((KviClassEditorTreeWidgetItem*)it.current()->child(i))->name(),((KviClassEditorTreeWidgetItem*)it.current()->child(i))->buffer());
+		}
+		++it;
         }
 }
 
