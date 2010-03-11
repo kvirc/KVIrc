@@ -136,6 +136,7 @@ public:
 	bool                           m_bSaving;
 public:
 	//bool modified(){ return m_bModified; };
+	//void setInheritedClassesNotBuilt(const QString &szInheritsClassName);
         void saveProperties(KviConfig *);
         void loadProperties(KviConfig *);
         void loadUnbuildedFunctions();
@@ -157,7 +158,7 @@ protected slots:
        void newClass();
        void newNamespace();
        void newMemberFunction();
-
+       void renameFunction();
        KviClassEditorTreeWidgetItem * newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType);
        void renameClassOrNamespace();
      /*   void renameItem();
@@ -282,7 +283,7 @@ class KviClassEditorFunctionDialog: public QDialog
 {
         Q_OBJECT
 public:
-        KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString & szClassName);
+	KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString & szClassName,const QString &szFunctionName);
 
         ~KviClassEditorFunctionDialog();
 public:

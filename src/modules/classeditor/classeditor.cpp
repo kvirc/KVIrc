@@ -185,7 +185,7 @@ KviClassEditor::KviClassEditor(QWidget * par)
 	m_pMemberFunctionNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
 	m_pMemberFunctionNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
 	m_pMemberFunctionNameRenameButton->setEnabled(false);
-	connect(m_pMemberFunctionNameRenameButton,SIGNAL(clicked()),this,SLOT(renameMember()));
+	connect(m_pMemberFunctionNameRenameButton,SIGNAL(clicked()),this,SLOT(renameFunction()));
 	hbox->setStretchFactor(m_pMemberFunctionNameLabel,2);
 	m_pMemberFunctionNameRenameButton->setToolTip(__tr2qs_ctx("Edit the function member name","editor"));
 
@@ -488,6 +488,11 @@ bool KviClassEditor::namespaceExists(QString & szFullItemName)
 	}*/
 	return false;
 }
+void KviClassEditor::renameFunction()
+{
+
+}
+
 void KviClassEditor::renameClassOrNamespace()
 {
 	if(!m_pLastEditedItem)return;
@@ -566,6 +571,11 @@ void KviClassEditor::renameClass(KviClassEditorTreeWidgetItem *pClassItem)
 	if (pNewItem) activateItem(pNewItem);
 	else activateItem(pClassItem);
 }
+/*void KviClassEditor::setInheritedClassesNotBuilt(const QString &szInheritsClassName)
+{
+
+}
+*/
 void KviClassEditor::renameNamespace(KviClassEditorTreeWidgetItem *pNamespaceItem)
 {
 /*	QString szName = buildFullItemName(pNamespaceItem);
@@ -1247,7 +1257,7 @@ bool KviClassEditor::askForClassName(QString &szClassName,QString &szInheritsCla
 
 void KviClassEditor::askForFunction(QString &szFunctionName,bool * bInternal,const QString &szClassName)
 {
-        KviClassEditorFunctionDialog *pDialog=new KviClassEditorFunctionDialog(this,"function",szClassName);
+	KviClassEditorFunctionDialog *pDialog=new KviClassEditorFunctionDialog(this,"function",szClassName,szFunctionName);
 	szFunctionName="";
 	g_pClassEditorModule->lock();
 	bool bOk=pDialog->exec();
@@ -1522,12 +1532,12 @@ void KviClassEditor::loadNotBuiltClasses()
                         }
                         for(QString * s = names.first(); s; s = names.next())
                         {
-				if (KviQString::equalCI(*s,"@inheriths"))
+				if (KviQString::equalCI(*s,"@Inherits"))
 				{
 					pClassItem->setInheritsClass(cfg.readQStringEntry(*s,""));
 					continue;
 				}
-                                QString szCode = cfg.readQStringEntry(*s,"");
+				QString szCode = cfg.readQStringEntry(*s,"");
                                 KviClassEditorTreeWidgetItem *pFunctionItem=new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,*s);
                                 pFunctionItem->setBuffer(szCode);
                         }
@@ -1549,7 +1559,7 @@ void KviClassEditor::saveNotBuiltClasses()
 		{
 			debug("saving class %s",it.currentKey().toUtf8().data());
 			cfg.setGroup(it.currentKey());
-			cfg.writeEntry("@inheriths",it.current()->InheritsClass());
+			cfg.writeEntry("@Inherits",it.current()->InheritsClass());
 			for(int i=0;i<it.current()->childCount();i++)
 				cfg.writeEntry(((KviClassEditorTreeWidgetItem*)it.current()->child(i))->name(),((KviClassEditorTreeWidgetItem*)it.current()->child(i))->buffer());
 		}
@@ -1762,7 +1772,7 @@ void KviClassEditorDialog::textChanged(const QString & szText)
     m_pNewClassButton->setEnabled(!szText.isEmpty());
 }
 
-KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString &szClassName)
+KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString &szClassName, const QString &szFunctionName)
 : QDialog(pParent)
 {
         setObjectName(szName);
@@ -1801,7 +1811,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 	m_pFunctionNameLineEdit->setValidator(pValidator);
         m_pFunctionNameLineEdit->setObjectName("functionameineedit");
 	m_pFunctionNameLineEdit->setToolTip(__tr2qs_ctx("Function names can contain only letters, digits and underscores","editor"));
-
+	m_pFunctionNameLineEdit->setText(szFunctionName);
 
         hbox = new KviTalHBox(this);
         hbox->setSpacing(0);
@@ -1829,7 +1839,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
         m_pNewFunctionButton = new QPushButton(hbox);
         m_pNewFunctionButton->setObjectName("newfunctionbutton");
         m_pNewFunctionButton->setText(__tr2qs_ctx("&Add","editor"));
-        m_pNewFunctionButton->setEnabled(false);
+	if (szFunctionName.isEmpty()) m_pNewFunctionButton->setEnabled(false);
 
         QPushButton * pCancelButton = new QPushButton(hbox);
         pCancelButton->setObjectName("cancelButton");
