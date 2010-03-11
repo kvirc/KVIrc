@@ -1522,7 +1522,7 @@ void KviClassEditor::loadNotBuiltClasses()
                         }
                         for(QString * s = names.first(); s; s = names.next())
                         {
-				if (KviQString::equalCI(*s,"@inherits"))
+				if (KviQString::equalCI(*s,"@inheriths"))
 				{
 					pClassItem->setInheritsClass(cfg.readQStringEntry(*s,""));
 					continue;
