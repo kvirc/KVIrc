@@ -490,6 +490,7 @@ bool KviClassEditor::namespaceExists(QString & szFullItemName)
 }
 void KviClassEditor::renameFunction()
 {
+	debug("rename function %s",m_pLastEditedItem->name().toUtf8().data());
 	KviClassEditorTreeWidgetItem *pFunction=m_pLastEditedItem;
 
 	QString szClassName = pFunction->parentItem()->name();
@@ -519,6 +520,9 @@ void KviClassEditor::renameFunction()
 	for(unsigned int i=0;i<pInheritsedClasses.count();i++)
 		pInheritsedClasses.at(i)->setClassNotBuilt(true);
 	activateItem(pFunction);
+	KviKvsObjectClass *pClass;
+	pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
+	if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
 
 }
 bool KviClassEditor::functionExists(const QString &szFunctionName, KviClassEditorTreeWidgetItem *pClass)
@@ -532,8 +536,11 @@ bool KviClassEditor::functionExists(const QString &szFunctionName, KviClassEdito
 
 void KviClassEditor::renameItem()
 {
+	debug("rename item");
 	if(!m_pLastEditedItem)return;
-	if(!itemExists(m_pLastEditedItem))return; // dead ?
+	debug("check exists");
+	//if(!itemExists(m_pLastEditedItem))return; // dead ?
+	debug("Exists");
 	if(m_pLastEditedItem->isClass()) renameClass(m_pLastEditedItem);
 	else if(m_pLastEditedItem->isNamespace()) renameNamespace(m_pLastEditedItem);
 	else renameFunction();
