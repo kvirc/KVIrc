@@ -658,68 +658,52 @@ public:
 	bool avatarChanged(const QString & szNick){ return m_pUserListView->avatarChanged(szNick); };
 
 	/**
-	* \brief Sets the ircop mode
-	* \param szNick The nick to moderate
-	* \param bIrcOp Whether to moderate the user
-	* \return bool
-	*/
-	bool setIrcOp(const QString & szNick, bool bIrcOp){ return m_pUserListView->setIrcOp(szNick,bIrcOp); };
-
-	/**
 	* \brief Sets the chan owner mode
-	* \param szNick The nick to moderate
-	* \param bChanOwner Whether to moderate the user
+	* \param szNick The nick to set the mode on
+	* \param bChanOwner Whether to set or unset the mode on the user
 	* \return bool
 	*/
 	bool setChanOwner(const QString & szNick, bool bChanOwner){ return m_pUserListView->setChanOwner(szNick,bChanOwner); };
 
 	/**
 	* \brief Sets the chan admin mode
-	* \param szNick The nick to moderate
-	* \param bChanAdmin Whether to moderate the user
+	* \param szNick The nick to set the mode on
+	* \param bChanAdmin Whether to set or unset the mode on the user
 	* \return bool
 	*/
 	bool setChanAdmin(const QString & szNick, bool bChanAdmin){ return m_pUserListView->setChanAdmin(szNick,bChanAdmin); };
 
 	/**
 	* \brief Sets the operator mode
-	* \param szNick The nick to moderate
-	* \param bOp Whether to moderate the user
+	* \param szNick The nick to set the mode on
+	* \param bOp Whether to set or unset the mode on the user
 	* \return bool
 	*/
 	bool setOp(const QString & szNick, bool bOp){ return m_pUserListView->setOp(szNick,bOp); };
 
 	/**
 	* \brief Sets the half operator mode
-	* \param szNick The nick to moderate
-	* \param bHalfOp Whether to moderate the user
+	* \param szNick The nick to set the mode on
+	* \param bHalfOp Whether to set or unset the mode on the user
 	* \return bool
 	*/
 	bool setHalfOp(const QString & szNick, bool bHalfOp){ return m_pUserListView->setHalfOp(szNick,bHalfOp); };
 
 	/**
 	* \brief Sets the voice mode
-	* \param szNick The nick to moderate
-	* \param bVoice Whether to moderate the user
+	* \param szNick The nick to set the mode on
+	* \param bVoice Whether to set or unset the mode on the user
 	* \return bool
 	*/
 	bool setVoice(const QString & szNick, bool bVoice){ return m_pUserListView->setVoice(szNick,bVoice); };
 
 	/**
 	* \brief Sets the user operator mode
-	* \param szNick The nick to moderate
-	* \param bUserOp Whether to moderate the user
+	* \param szNick The nick to set the mode on
+	* \param bUserOp Whether to set or unset the mode on the user
 	* \return bool
 	*/
 	bool setUserOp(const QString & szNick, bool bUserOp){ return m_pUserListView->setUserOp(szNick,bUserOp); };
-
-	/**
-	* \brief Returns true if the user is an ircop
-	* \param szNick The nickname of the user to check
-	* \param bAtLeast Whether the user is at least an ircop
-	* \return bool
-	*/
-	bool isIrcOp(const QString & szNick, bool bAtLeast = false){ return m_pUserListView->isIrcOp(szNick,bAtLeast); };
 
 	/**
 	* \brief Returns true if the user is a chan owner

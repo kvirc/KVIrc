@@ -876,6 +876,17 @@ void KviChannel::getWindowListTipText(QString & szBuffer)
 
 	///////////////////
 
+	if(s.uIrcOp > 0)
+	{
+		szBuffer += szHtmlTab;
+		szBuffer += szHtmlBold;
+		szNum.setNum(s.uIrcOp);
+		szBuffer += szNum;
+		szBuffer += szHtmlBoldEnd;
+		szBuffer += (s.uIrcOp == 1 ? __tr2qs("irc operator") : __tr2qs("irc operators"));
+		szBuffer += p10;
+	}
+
 	if(s.uChanOwner > 0)
 	{
 		szBuffer += szHtmlTab;
@@ -1561,7 +1572,6 @@ bool KviChannel::__name(bool bAtLeast) \
 	return m_pUserListView->__ulvname(connection()->currentNickName(),bAtLeast); \
 }
 
-IS_FNC(isMeIrcOp,isIrcOp)
 IS_FNC(isMeChanOwner,isChanOwner)
 IS_FNC(isMeChanAdmin,isChanAdmin)
 IS_FNC(isMeOp,isOp)

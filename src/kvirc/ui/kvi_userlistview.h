@@ -552,14 +552,6 @@ public:
 	int flags(const QString & szNick);
 
 	/**
-	* \brief Returns true if the user is an ircop
-	* \param szNick The nick to moderate
-	* \param bAtLeast Whether the user is at least a chan owner
-	* \return bool
-	*/
-	bool isIrcOp(const QString & szNick, bool bAtLeast = false);
-
-	/**
 	* \brief Returns true if the user is a chan owner
 	* \param szNick The nick to moderate
 	* \param bAtLeast Whether the user is at least a chan owner
@@ -606,14 +598,6 @@ public:
 	* \return bool
 	*/
 	bool isUserOp(const QString & szNick, bool bAtLeast = false);
-
-	/**
-	* \brief Sets the ircop mode
-	* \param szNick The nick to moderate
-	* \param bIrcOp Whether to moderate the user
-	* \return bool
-	*/
-	bool setIrcOp(const QString & szNick, bool bIrcOp);
 
 	/**
 	* \brief Sets the chan owner mode

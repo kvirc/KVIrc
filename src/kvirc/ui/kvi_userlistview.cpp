@@ -634,7 +634,6 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 	//FIXME this should probably be handled in a different way (place)
 	if(pUserEntry->globalData()->isIrcOp())
 	{
-		iFlag = KVI_USERFLAG_IRCOP;
 		m_iIrcOpCount++;
 	}
 
@@ -642,90 +641,78 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 	{
 		KviUserListEntry * pEntry = m_pHeadItem;
 
-		if(!(pUserEntry->m_iFlags & KVI_USERFLAG_IRCOP))
+		if(!(pUserEntry->m_iFlags & KVI_USERFLAG_CHANOWNER))
 		{
-			// the new user is not an ircop...
-			// skip the ircops
-			while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_IRCOP))
+			// the new user is not a channel owner...
+			// skip the channel owners
+			while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER))
 			{
 				if(pEntry == m_pTopItem)
 					bGotTopItem = true;
 				pEntry = pEntry->m_pNext;
 			}
 
-			if(!(pUserEntry->m_iFlags & KVI_USERFLAG_CHANOWNER))
+			if(!(pUserEntry->m_iFlags & KVI_USERFLAG_CHANADMIN))
 			{
-				// the new user is not a channel owner...
-				// skip the channel owners
-				while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER))
+				// the new user is not a channel admin...
+				// skip chan admins
+				while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN))
 				{
 					if(pEntry == m_pTopItem)
 						bGotTopItem = true;
 					pEntry = pEntry->m_pNext;
 				}
 
-				if(!(pUserEntry->m_iFlags & KVI_USERFLAG_CHANADMIN))
+				// is operator ?
+				if(!(pUserEntry->m_iFlags & KVI_USERFLAG_OP))
 				{
-					// the new user is not a channel admin...
-					// skip chan admins
-					while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN))
+					// the new user is not an op...
+					// skip ops
+					while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_OP))
 					{
 						if(pEntry == m_pTopItem)
 							bGotTopItem = true;
 						pEntry = pEntry->m_pNext;
 					}
 
-					// is operator ?
-					if(!(pUserEntry->m_iFlags & KVI_USERFLAG_OP))
+					// is half oped ?
+					if(!(pUserEntry->m_iFlags & KVI_USERFLAG_HALFOP))
 					{
-						// the new user is not an op...
-						// skip ops
-						while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_OP))
+						// nope , skip halfops
+						while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_HALFOP))
 						{
 							if(pEntry == m_pTopItem)
 								bGotTopItem = true;
 							pEntry = pEntry->m_pNext;
 						}
 
-						// is half oped ?
-						if(!(pUserEntry->m_iFlags & KVI_USERFLAG_HALFOP))
+						// is voiced ?
+						if(!(pUserEntry->m_iFlags & KVI_USERFLAG_VOICE))
 						{
-							// nope , skip halfops
-							while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_HALFOP))
+							// nope , not voiced so skip voiced users
+							while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_VOICE))
 							{
 								if(pEntry == m_pTopItem)
 									bGotTopItem = true;
 								pEntry = pEntry->m_pNext;
 							}
 
-							// is voiced ?
-							if(!(pUserEntry->m_iFlags & KVI_USERFLAG_VOICE))
+							// is userop'd?
+							if(!(pUserEntry->m_iFlags & KVI_USERFLAG_USEROP))
 							{
-								// nope , not voiced so skip voiced users
-								while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_VOICE))
+								// nope , skip userops
+								while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_USEROP))
 								{
 									if(pEntry == m_pTopItem)
 										bGotTopItem = true;
 									pEntry = pEntry->m_pNext;
 								}
-
-								// is userop'd?
-								if(!(pUserEntry->m_iFlags & KVI_USERFLAG_USEROP))
-								{
-									// nope , skip userops
-									while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_USEROP))
-									{
-										if(pEntry == m_pTopItem)
-											bGotTopItem = true;
-										pEntry = pEntry->m_pNext;
-									}
-								} // else is userop, ops, halfops, and voiced are skipped
-							} // else it is voiced , ops and halfops are skipped
-						} // else it is halfop ,  ops are skipped
-					} // else it is op , chan admins are skipped
-				} // else it is chan admin , chan owners are skipped
-			} // else it is chan owner, ircops are skipped
-		} // else it is an ircop, so nothing to skip: the ircops are first in the list
+							} // else is userop, ops, halfops, and voiced are skipped
+						} // else it is voiced , ops and halfops are skipped
+					} // else it is halfop ,  ops are skipped
+				} // else it is op , chan admins are skipped
+			} // else it is chan admin , chan owners are skipped
+		} // else it is chan owner, so nothing to skip: they are first in the list
 
 		// now strcmp within the current user-flag group...
 		while(pEntry && (KviQString::cmpCI(pEntry->m_szNick,pUserEntry->m_szNick,
@@ -818,9 +805,6 @@ KviUserListEntry * KviUserListView::join(const QString & szNick, const QString &
 			if(iFlags != pEntry->m_iFlags)
 			{
 //// FIXME: #warning "Maybe say to the channel that we're oped : and the op is guessed from the names reply"
-				if((iFlags & KVI_USERFLAG_IRCOP) != (pEntry->m_iFlags & KVI_USERFLAG_IRCOP))
-					setIrcOp(szNick,iFlags & KVI_USERFLAG_IRCOP);
-
 				if((iFlags & KVI_USERFLAG_CHANOWNER) != (pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER))
 					setChanOwner(szNick,iFlags & KVI_USERFLAG_CHANOWNER);
 
@@ -1044,8 +1028,6 @@ int KviUserListView::getUserModeLevel(const QString & szNick)
 
 	if(pEntry->m_iFlags & KVI_USERFLAG_MODEMASK)
 	{
-		if(pEntry->m_iFlags & KVI_USERFLAG_IRCOP)
-			return 100;
 		if(pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
 			return 60;
 		if(pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN)
@@ -1106,7 +1088,6 @@ int KviUserListView::flags(const QString & szNick)
 		return true; \
 	}
 
-SET_FLAG_FUNC(setIrcOp,KVI_USERFLAG_IRCOP)
 SET_FLAG_FUNC(setChanOwner,KVI_USERFLAG_CHANOWNER)
 SET_FLAG_FUNC(setChanAdmin,KVI_USERFLAG_CHANADMIN)
 SET_FLAG_FUNC(setOp,KVI_USERFLAG_OP)
@@ -1121,7 +1102,6 @@ SET_FLAG_FUNC(setVoice,KVI_USERFLAG_VOICE)
 		return pEntry ? (bAtLeast ? (pEntry->m_iFlags >= __flag) : (pEntry->m_iFlags & __flag)) : false; \
 	}
 
-GET_FLAG_FUNC(isIrcOp,KVI_USERFLAG_IRCOP)
 GET_FLAG_FUNC(isChanOwner,KVI_USERFLAG_CHANOWNER)
 GET_FLAG_FUNC(isChanAdmin,KVI_USERFLAG_CHANADMIN)
 GET_FLAG_FUNC(isOp,KVI_USERFLAG_OP)
@@ -1226,7 +1206,7 @@ bool KviUserListView::partInternal(const QString & szNick, bool bRemove)
 		}
 
 		// now just remove it
-		if(pUserEntry->m_iFlags & KVI_USERFLAG_IRCOP)
+		if(pUserEntry->m_pGlobalData->isIrcOp())
 			m_iIrcOpCount--;
 		if(pUserEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
 			m_iChanOwnerCount--;
@@ -1494,6 +1474,7 @@ void KviUserListView::userStats(KviUserListViewUserStats * pStats)
 	pStats->uVoiced = 0;
 	pStats->uHalfOp = 0;
 	pStats->uUserOp = 0;
+	pStats->uIrcOp = 0;
 
 	KviUserListEntry * pEntry = m_pHeadItem;
 
@@ -1507,7 +1488,7 @@ void KviUserListView::userStats(KviUserListViewUserStats * pStats)
 			if(uTimeDiff < 10)
 			{
 				pStats->uActive++; // the user was alive in the last ~16 mins
-				if(pEntry->m_iFlags & (KVI_USERFLAG_OP | KVI_USERFLAG_CHANADMIN | KVI_USERFLAG_CHANOWNER | KVI_USERFLAG_IRCOP))
+				if(pEntry->m_iFlags & (KVI_USERFLAG_OP | KVI_USERFLAG_CHANADMIN | KVI_USERFLAG_CHANOWNER))
 				{
 					pStats->uActiveOp++;
 					if(pEntry->m_iTemperature > 0)
@@ -1523,27 +1504,26 @@ void KviUserListView::userStats(KviUserListViewUserStats * pStats)
 			}
 		}
 
-		if(pEntry->m_iFlags & KVI_USERFLAG_IRCOP)
+		if(pEntry->m_pGlobalData->isIrcOp())
 			pStats->uIrcOp++;
+		
+		if(pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
+			pStats->uChanOwner++;
 		else {
-			if(pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
-				pStats->uChanOwner++;
+			if(pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN)
+				pStats->uChanAdmin++;
 			else {
-				if(pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN)
-					pStats->uChanAdmin++;
+				if(pEntry->m_iFlags & KVI_USERFLAG_OP)
+					pStats->uOp++;
 				else {
-					if(pEntry->m_iFlags & KVI_USERFLAG_OP)
-						pStats->uOp++;
+					if(pEntry->m_iFlags & KVI_USERFLAG_HALFOP)
+						pStats->uHalfOp++;
 					else {
-						if(pEntry->m_iFlags & KVI_USERFLAG_HALFOP)
-							pStats->uHalfOp++;
+						if(pEntry->m_iFlags & KVI_USERFLAG_VOICE)
+							pStats->uVoiced++;
 						else {
-							if(pEntry->m_iFlags & KVI_USERFLAG_VOICE)
-								pStats->uVoiced++;
-							else {
-								if(pEntry->m_iFlags & KVI_USERFLAG_USEROP)
-									pStats->uUserOp++;
-							}
+							if(pEntry->m_iFlags & KVI_USERFLAG_USEROP)
+								pStats->uUserOp++;
 						}
 					}
 				}
