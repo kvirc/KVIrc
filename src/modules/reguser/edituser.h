@@ -106,7 +106,8 @@ protected:
 
 	QCheckBox          * m_pNotifyCheck;
 	QLineEdit          * m_pNotifyNick;
-
+	QLabel             * m_pNotifyLabel;
+	
 	KviPixmap          * m_pAvatar;
 	KviPixmapSelector  * m_pAvatarSelector;
 
@@ -133,6 +134,7 @@ protected slots:
 	void editMaskClicked();
 	void editAllPropertiesClicked();
 	void maskCurrentChanged();
+	void notifyCheckClicked(bool bChecked);
 };
 
 #endif //_EDITUSER_H_

@@ -158,33 +158,38 @@ void KviRegisteredUsersDialogItemDelegate::paint( QPainter * p, const QStyleOpti
 	if(item->type()==KviRegisteredUsersDialogItemBase::Group)
 	{
 		//groups
-		QItemDelegate::paint(p, option, index);
+		QStyledItemDelegate::paint(p, option, index);
 	} else {
-		if (option.state & QStyle::State_Selected)
-			p->fillRect(option.rect, option.palette.brush( QPalette::Highlight ) );
+		QStyleOptionViewItemV4 opt = option;
+		initStyleOption(&opt, index);
+
+		if (opt.state & QStyle::State_Selected)
+			QApplication::style()->drawPrimitive(QStyle::PE_PanelItemViewItem,&opt, p);
 
 		KviRegisteredUsersDialogItem *it=(KviRegisteredUsersDialogItem*)item;
 
 		if(index.column()==0)
 		{
-			QPoint pt=option.rect.topLeft();
+			QPoint pt=opt.rect.topLeft();
 			pt.setX(pt.x()+LVI_BORDER);
 			pt.setY(pt.y()+LVI_BORDER);
 
 			p->drawPixmap(pt, *(g_pIconManager->getBigIcon(KVI_BIGICON_REGUSERS)));
-			QRect cliprect=QRect(QPoint(0,0),QSize(option.rect.width()-(LVI_ICON_SIZE+LVI_SPACING+LVI_BORDER),option.rect.height()));
+			QRect cliprect=QRect(QPoint(0,0),QSize(opt.rect.width()-(LVI_ICON_SIZE+LVI_SPACING+LVI_BORDER),opt.rect.height()));
 			p->save();
 
-			p->translate(option.rect.x()+LVI_ICON_SIZE+LVI_SPACING, option.rect.y());
+			p->translate(opt.rect.x()+LVI_ICON_SIZE+LVI_SPACING, opt.rect.y());
 			it->m_pText.drawContents(p, cliprect);
 			p->restore();
 		} else {
 			if(it->user())
 			{
 				if(!it->user()->getProperty("notify").isEmpty())
-					p->drawPixmap(option.rect.topLeft().x()+LVI_BORDER,option.rect.topLeft().y()+LVI_BORDER,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTIFYONLINE)));
+					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+LVI_BORDER,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTIFYONLINE)));
+				else
+					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+LVI_BORDER,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTIFYOFFLINE)));
 				if(it->user()->ignoreEnagled())
-					p->drawPixmap(option.rect.topLeft().x()+LVI_BORDER,option.rect.topLeft().y()+2*LVI_BORDER+16,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IGNORE)));
+					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+2*LVI_BORDER+16,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IGNORE)));
 			}
 		}
 	}
@@ -197,7 +202,7 @@ QSize KviRegisteredUsersDialogItemDelegate::sizeHint( const QStyleOptionViewItem
 	if(item->type()==KviRegisteredUsersDialogItemBase::Group)
 	{
 		//groups
-		return QItemDelegate::sizeHint(option, index);
+		return QStyledItemDelegate::sizeHint(option, index);
 	} else {
 		//users
 // 		KviRegisteredUsersDialogItem *it=(KviRegisteredUsersDialogItem*)item;
@@ -264,6 +269,11 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	QFrame * f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 
+	m_pSelectAllButton = new QPushButton(__tr2qs_ctx("Select all","register"),vbox);
+	connect(m_pSelectAllButton,SIGNAL(clicked()),this,SLOT(selectAllClicked()));
+	m_pSelectAllButton->setToolTip(__tr2qs_ctx("Select all the entries","register"));
+	m_pSelectAllButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PLUS)));
+
 	m_pExportButton = new QPushButton(__tr2qs_ctx("Export To...","register"),vbox);
 	m_pExportButton->setEnabled(false);
 	connect(m_pExportButton,SIGNAL(clicked()),this,SLOT(exportClicked()));
@@ -276,7 +286,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	m_pImportButton->setToolTip(__tr2qs_ctx("Import entries from a file exported earlier by the \"export\" function of this dialog.","register"));
 	m_pImportButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)));
 
-
+	
 	KviTalHBox * hbox = new KviTalHBox(this);
 	hbox->setSpacing(4);
 	g->addWidget(hbox,3,1,1,2);
@@ -349,8 +359,6 @@ void KviRegisteredUsersDialog::itemPressed(QTreeWidgetItem *it,int c)
 			// notify list toggle
 			if(i->user()->getProperty("notify").isEmpty())
 			{
-				i->user()->setProperty("notify",""); // kill that
-			} else {
 				// try to find the nicknames to be notified
 				QString szMask;
 
@@ -364,15 +372,21 @@ void KviRegisteredUsersDialog::itemPressed(QTreeWidgetItem *it,int c)
 					}
 				}
 				// if the nickname list is still empty , build a dummy nick to notify
-				szMask = i->user()->name();
-				szMask.replace(" ","");
-				szMask.replace("'","");
-				szMask.replace("&","");
-				szMask.replace(",","");
+				if(szMask.isEmpty())
+				{
+					szMask = i->user()->name();
+					szMask.replace(" ","");
+					szMask.replace("'","");
+					szMask.replace("&","");
+					szMask.replace(",","");
+				}
 
 				i->user()->setProperty("notify",szMask);
+			} else {
+				i->user()->setProperty("notify",QString("")); // kill that
 			}
-			m_pListView->update();
+
+			m_pListView->repaint(r);
 		}
 	}
 }
@@ -426,6 +440,18 @@ void KviRegisteredUsersDialog::editGroup(KviRegisteredUserGroup* group)
 		}
 
 		fillList();
+
+		// select the last edited item
+		for(int c=0;c<m_pListView->topLevelItemCount();c++)
+		{
+			QTreeWidgetItem * pGroup = m_pListView->topLevelItem(c);
+			if(KviQString::equalCI(pGroup->text(0),text))
+			{
+				pGroup->setSelected(true);
+				m_pListView->setCurrentItem(pGroup);
+				break;
+			}
+		}	
 	}
 }
 
@@ -627,16 +653,18 @@ void KviRegisteredUsersDialog::editItem(KviRegisteredUsersDialogItem * i)
 		fillList();
 
 		// select the last edited item
-		int count = m_pListView->topLevelItemCount();
-		for(int c=0;c<count;c++)
+		for(int c=0;c<m_pListView->topLevelItemCount();c++)
 		{
-			QTreeWidgetItem * i = m_pListView->topLevelItem(c);
-			QString szTmp = i->text(0);
-			if(KviQString::equalCI(szTmp,szName))
+			QTreeWidgetItem * pGroup = m_pListView->topLevelItem(c);
+			for(int d=0;d<pGroup->childCount();d++)
 			{
-				i->setSelected(true);
-				m_pListView->setCurrentItem(i);
-				break;
+				KviRegisteredUsersDialogItem * pUser = (KviRegisteredUsersDialogItem*) pGroup->child(d);
+				if(KviQString::equalCI(pUser->user()->name(),szName))
+				{
+					pUser->setSelected(true);
+					m_pListView->setCurrentItem(pUser);
+					break;
+				}
 			}
 		}
 
@@ -662,9 +690,9 @@ void KviRegisteredUsersDialog::selectionChanged()
 
 typedef struct _KviReguserDbFileHeader
 {
-	unsigned int magic;
-	unsigned int version;
-	unsigned int nentries;
+	kvi_u32_t magic;
+	kvi_u32_t version;
+	kvi_u32_t nentries;
 } KviReguserDbFileHeader;
 
 void KviRegisteredUsersDialog::exportClicked()
@@ -712,11 +740,10 @@ void KviRegisteredUsersDialog::exportClicked()
 		if(pBase->type()!=KviRegisteredUsersDialogItemBase::User)
 			continue;
 
-		QString szName = list.at(i)->text(0);
 		KviRegisteredUser * u = ((KviRegisteredUsersDialogItem *)list.at(i))->user();
 		if(u)
 		{
-			if(!f.save(szName))goto write_error;
+			if(!f.save(u->name()))goto write_error;
 			KviPointerHashTable<QString,QString> * pd = u->propertyDict();
 			if(pd)
 			{
@@ -783,6 +810,11 @@ succesfull_export:
 	f.close();
 }
 
+void KviRegisteredUsersDialog::selectAllClicked()
+{
+	m_pListView->selectAll();
+}
+
 void KviRegisteredUsersDialog::importClicked()
 {
 	//KviStr buffer;
@@ -823,6 +855,7 @@ void KviRegisteredUsersDialog::importClicked()
 		QString szName;
 		if(!f.load(szName))goto read_error;
 		KviRegisteredUser * u = g_pLocalRegisteredUserDataBase->getUser(szName);
+		if(!u) goto read_error;
 		unsigned int count = 0;
 		if(!f.load(count))goto read_error;
 		for(unsigned int up = 0;up < count;up++)

@@ -35,7 +35,7 @@
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QItemDelegate>
+#include <QStyledItemDelegate>
 #include <QMultiHash>
 #include <QTextDocument>
 
@@ -51,11 +51,11 @@ signals:
 	void rightButtonPressed(QTreeWidgetItem *,QPoint);
 };
 
-class KviRegisteredUsersDialogItemDelegate : public QItemDelegate
+class KviRegisteredUsersDialogItemDelegate : public QStyledItemDelegate
 {
 public:
 	KviRegisteredUsersDialogItemDelegate(KviRegisteredUsersListView * pWidget=0)
-		: QItemDelegate(pWidget) {};
+		: QStyledItemDelegate(pWidget) {};
 	~KviRegisteredUsersDialogItemDelegate(){};
 	QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
 	void paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
@@ -131,6 +131,7 @@ public:
 	QPushButton * m_pImportButton;
 	QPushButton * m_pExportButton;
 	QPushButton * m_pAddGroupButton;
+	QPushButton * m_pSelectAllButton;
 	QMultiHash<int, KviRegisteredUserGroup*> m_TmpDict;
 protected:
 	void fillList();
@@ -148,6 +149,7 @@ protected slots:
 	void exportClicked();
 	void addWizardClicked();
 	void addGroupClicked();
+	void selectAllClicked();
 	void itemPressed(QTreeWidgetItem *it,int c);
 	void itemDoubleClicked(QTreeWidgetItem *it, int);
 	void rightButtonPressed ( QTreeWidgetItem *, QPoint);

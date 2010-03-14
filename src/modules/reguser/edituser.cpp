@@ -84,7 +84,8 @@ KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviPointerHas
 	//g->addMultiCellWidget(m_pTable,0,1,0,1);
 	g->addWidget(m_pTable,0,0);
 	m_pTable->setColumnCount(2);
-	m_pTable->setSelectionMode(QTableWidget::NoSelection);
+	m_pTable->setSelectionMode(QAbstractItemView::SingleSelection);
+	m_pTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 
 	QStringList header;
 	header.append(__tr2qs_ctx("Property","register"));
@@ -142,10 +143,10 @@ void KviReguserPropertiesDialog::fillData()
 	while(it.current())
 	{
 		QTableWidgetItem * m_pTableItem1 = new QTableWidgetItem(it.currentKey(),QTableWidgetItem::Type);
-		m_pTableItem1->setFlags(Qt::ItemIsEditable);
+		m_pTableItem1->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemIsSelectable);
 
 		QTableWidgetItem * m_pTableItem2 = new QTableWidgetItem(*(it.current()),QTableWidgetItem::Type);
-		m_pTableItem2->setFlags(Qt::ItemIsEditable);
+		m_pTableItem2->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemIsSelectable);
 
 		m_pTable->setItem(row,0,m_pTableItem1);
 		m_pTable->setItem(row,1,m_pTableItem2);
@@ -178,10 +179,10 @@ void KviReguserPropertiesDialog::addClicked()
 	m_pTable->setRowCount(m_pTable->rowCount() + 1);
 
 	QTableWidgetItem * m_pTableItem1 = new QTableWidgetItem("",QTableWidgetItem::Type);
-	m_pTableItem1->setFlags(Qt::ItemIsEditable);
+	m_pTableItem1->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemIsSelectable);
 
 	QTableWidgetItem * m_pTableItem2 = new QTableWidgetItem("",QTableWidgetItem::Type);
-	m_pTableItem2->setFlags(Qt::ItemIsEditable);
+	m_pTableItem2->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemIsSelectable);
 
 	m_pTable->setItem(m_pTable->rowCount() - 1,0,m_pTableItem1);
 	m_pTable->setItem(m_pTable->rowCount() - 1,1,m_pTableItem2);
@@ -195,24 +196,7 @@ void KviReguserPropertiesDialog::delClicked()
 	if((i > -1) && (i < m_pTable->rowCount()))
 	{
 		// remove row i
-		m_pTable->takeItem(i,0);
-		m_pTable->takeItem(i,1);
-
-		for(;i < (m_pTable->rowCount() - 1);i++)
-		{
-			// Get first row's data
-			QString cellText1 = m_pTable->item(i,0)->text();
-			QString cellText2 = m_pTable->item(i,1)->text();
-
-			// Copy second row's data into the first one
-			m_pTable->item(i,0)->setText(m_pTable->item(i+1,0)->text());
-			m_pTable->item(i,1)->setText(m_pTable->item(i+1,1)->text());
-
-			// Set first row's data into the second one
-			m_pTable->item(i+1,0)->setText(cellText1);
-			m_pTable->item(i+1,1)->setText(cellText2);
-		}
-		m_pTable->setRowCount(m_pTable->rowCount() - 1);
+		m_pTable->removeRow(i);
 		if(m_pTable->rowCount() == 0)m_pDelButton->setEnabled(false);
 	}
 }
@@ -394,10 +378,9 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	m_pNotifyCheck = new QCheckBox(__tr2qs_ctx("Notify when user is online","register"),p2);
 	g->addWidget(m_pNotifyCheck,0,0,1,3);
 
-	l = new QLabel(__tr2qs_ctx("Notify nicknames:","register"),p2);
-	l->setEnabled(m_pNotifyCheck->isChecked());
-	g->addWidget(l,1,0);
-	connect(m_pNotifyCheck,SIGNAL(toggled(bool)),l,SLOT(setEnabled(bool)));
+	m_pNotifyLabel = new QLabel(__tr2qs_ctx("Notify nicknames:","register"),p2);
+	m_pNotifyLabel->setEnabled(m_pNotifyCheck->isChecked());
+	g->addWidget(m_pNotifyLabel,1,0);
 	m_pNotifyCheck->setToolTip(__tr2qs_ctx("<center>You can enter a space separated list of nicknames.</center>","register"));
 
 
@@ -405,7 +388,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	m_pNotifyNick->setEnabled(false);
 
 	g->addWidget(m_pNotifyNick,1,1,1,2);
-	connect(m_pNotifyCheck,SIGNAL(toggled(bool)),m_pNotifyNick,SLOT(setEnabled(bool)));
+	connect(m_pNotifyCheck,SIGNAL(toggled(bool)),this,SLOT(notifyCheckClicked(bool)));
 
 
 	f = new QFrame(p2);
@@ -553,6 +536,37 @@ KviRegisteredUserEntryDialog::~KviRegisteredUserEntryDialog()
 	delete m_pCustomColor;
 }
 
+void KviRegisteredUserEntryDialog::notifyCheckClicked(bool bChecked)
+{
+	m_pNotifyNick->setEnabled(bChecked);
+	m_pNotifyLabel->setEnabled(bChecked);
+	if(bChecked and m_pNotifyNick->text().isEmpty())
+	{
+		QString szMask;
+
+		for(KviIrcMask * m = m_pUser->maskList()->first();m;m = m_pUser->maskList()->next())
+		{
+			QString tmp = m->nick();
+			if((tmp.indexOf('*') == -1) && (tmp.indexOf('?') == -1) && (!tmp.isEmpty()))
+			{
+				if(!szMask.isEmpty())szMask.append(' ');
+				szMask.append(tmp);
+			}
+		}
+		// if the nickname list is still empty , build a dummy nick to notify
+		if(szMask.isEmpty())
+		{
+			szMask = m_pUser->name();
+			szMask.replace(" ","");
+			szMask.replace("'","");
+			szMask.replace("&","");
+			szMask.replace(",","");
+		}
+
+		m_pNotifyNick->setText(szMask);
+	}
+}
+
 void KviRegisteredUserEntryDialog::maskCurrentChanged()
 {
 	bool bHaveSelected = !m_pMaskListBox->selectedItems().empty();
@@ -627,11 +641,16 @@ void KviRegisteredUserEntryDialog::okClicked()
 	{
 		QString szNicks = m_pNotifyNick->text();
 
-		if(!szNicks.isEmpty())
+		if(szNicks.isEmpty())
 		{
+			u->setProperty("notify",QString(""));
+		} else {
 			u->setProperty("notify",szNicks);
 		}
+	} else {
+		u->setProperty("notify",QString(""));
 	}
+	
 
 	m_pPropertyDict->remove("notify");
 	m_pPropertyDict->remove("avatar");
