@@ -206,7 +206,6 @@ void KviStatusBar::load()
 
 void KviStatusBar::save()
 {
-	// FIXME: This will preserve the settings of the last saved KviFrame's statusbar only :/
 	QString szBuf;
 	g_pApp->getLocalKvircDirectory(szBuf,KviApp::Config,"statusbar.kvc");
 
@@ -216,7 +215,7 @@ void KviStatusBar::save()
 	cfg.writeEntry("Count",m_pAppletList->count());
 
 	int i = 0;
-	for(KviStatusBarApplet * pApplet = m_pAppletList->first(); pApplet; pApplet = m_pAppletList->next())
+	for(KviStatusBarApplet * pApplet = m_pAppletList->last(); pApplet; pApplet = m_pAppletList->prev())
 	{
 		KviStr prefix(KviStr::Format,"Applet%d",i);
 		KviStr tmp(KviStr::Format,"%s_InternalName",prefix.ptr());
