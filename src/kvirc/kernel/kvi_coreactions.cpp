@@ -883,7 +883,7 @@ void KviConnectToServerAction::popupActivated(int id)
 		} else {
 			KviStr szCommand;
 			QString szText = szItemText;
-			if(KviIrcUrl::parse(szText.toUtf8().data(),szCommand,KVI_IRCURL_CONTEXT_THIS))
+			if(KviIrcUrl::parse(szText.toUtf8().data(),szCommand,KVI_IRCURL_CONTEXT_FIRSTFREE))
 			{
 				KviKvsScript::run(szCommand.ptr(),c);
 			}
