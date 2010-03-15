@@ -1476,7 +1476,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 		}
 		delete target()->server()->m_pReconnectInfo;
 		target()->server()->m_pReconnectInfo=0;
-	}else {
+	} else {
 		if(target()->network()->autoJoinChannelList())
 		{
 			if(_OUTPUT_VERBOSE)
@@ -1493,14 +1493,14 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 						if(!szChannels.isEmpty())
 							szChannels.append(",");
 						szCurChan = (*it).section(':',0,0);
-						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
+						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'  || szCurChan[0]=='+'))
 							szCurChan.prepend('#');
 						szChannels.append(szCurChan);
 					} else {
 						if(!szProtectedChannels.isEmpty())
 							szProtectedChannels.append(",");
 						szCurChan = (*it).section(':',0,0);
-						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
+						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'  || szCurChan[0]=='+'))
 							szCurChan.prepend('#');
 						szProtectedChannels.append(szCurChan);
 						if(!szPasswords.isEmpty())
@@ -1527,14 +1527,14 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 						if(!szChannels.isEmpty())
 							szChannels.append(",");
 						szCurChan = (*it).section(':',0,0);
-						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
-							szCurChan.prepend(':');
+						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!' || szCurChan[0]=='+'))
+							szCurChan.prepend('#');
 						szChannels.append(szCurChan);
 					} else {
 						if(!szProtectedChannels.isEmpty())
 							szProtectedChannels.append(",");
 						szCurChan = (*it).section(':',0,0);
-						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
+						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!' || szCurChan[0]=='+'))
 							szCurChan.prepend('#');
 						szProtectedChannels.append(szCurChan);
 						if(!szPasswords.isEmpty())
