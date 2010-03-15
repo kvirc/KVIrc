@@ -265,6 +265,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Here you can choose the image that will appear in the installation dialog for your theme package. It can be an icon, a logo or a screenshot and it should be not larger than 300x225. If you don't provide an image a simple default icon will be used at installation stage.","theme"));
 	pLabel->setTextFormat(Qt::RichText);
+	pLabel->setWordWrap(true);
 	pLayout->addWidget(pLabel,0,0);
 
 	m_pImageLabel = new QLabel(pPage);
