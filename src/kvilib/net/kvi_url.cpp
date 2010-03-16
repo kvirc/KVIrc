@@ -59,6 +59,11 @@ void KviUrl::parse()
 	m_szProtocol = url.scheme();
 	m_szHost = url.host();
 	m_szPath = url.path();
+	if(url.hasQuery())
+	{
+		m_szPath.append(QChar('?'));
+		m_szPath.append(url.encodedQuery());
+	}
 	m_szUser = url.userName();
 	m_szPass = url.password();
 	m_uPort = url.port() > 0 ? url.port() : 80 ;
