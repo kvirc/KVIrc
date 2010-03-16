@@ -41,6 +41,7 @@
 #include "kvi_pointerlist.h"
 #include "kvi_frame.h"
 #include "kvi_sharedfiles.h"
+#include "kvi_sparser.h"
 #include "kvi_out.h"
 #include "kvi_ircmask.h"
 #include "kvi_tal_hbox.h"
@@ -373,13 +374,19 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 	if(e->avatar())
 	{
 		absPath = e->avatar()->localPath();
-		avatar = e->avatar()->name();
+		QString szTmp = e->avatar()->name();
+
+		if(KVI_OPTION_BOOL(KviOption_boolDCCFileTransferReplaceOutgoingSpacesWithUnderscores))
+			szTmp.replace(" ","_");
+
+		// escape the spaces with the right octal code
+		KviServerParser::encodeCtcpParameter(szTmp.toUtf8().data(),avatar);
 	}
 
 	KviSharedFile * o = 0;
 	if((!absPath.isEmpty()) && (!avatar.isEmpty()))
 	{
-		bool bTargetIsChan = (szTarget.contains('#') || szTarget.contains('&') || szTarget.contains('!'));
+		bool bTargetIsChan = (szTarget.contains('#') || szTarget.contains('&') || szTarget.contains('!') || szTarget.contains('+'));
 		if(bTargetIsChan)o = g_pSharedFilesManager->lookupSharedFile(avatar,0);
 		else {
 			KviIrcMask u(szTarget);
