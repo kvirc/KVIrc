@@ -54,6 +54,7 @@
 #include <QShortcut>
 #include <QMouseEvent>
 #include <QByteArray>
+#include <QMessageBox>
 
 #ifdef COMPILE_ZLIB_SUPPORT
 	#include <zlib.h>
@@ -366,9 +367,11 @@ void KviLogViewMDIWindow::rightButtonClicked ( QTreeWidgetItem * it, const QPoin
 	if(!it) return;
 	m_pListView->setCurrentItem(it);
 
-	if(((KviLogListViewItem *)it)->fileName().isEmpty()) return;
 	KviTalPopupMenu* popup = new KviTalPopupMenu(this);
-	popup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),__tr2qs_ctx("Remove file","logview"),this,SLOT(deleteCurrent()));
+	if(((KviLogListViewItem *)it)->childCount())
+		popup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),__tr2qs_ctx("Remove all this channel/query logs file","logview"),this,SLOT(deleteCurrent()));
+	else popup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),__tr2qs_ctx("Remove file","logview"),this,SLOT(deleteCurrent()));
+
 	popup->exec( QCursor::pos() );
 }
 
@@ -377,6 +380,27 @@ void KviLogViewMDIWindow::deleteCurrent()
 	KviLogListViewItem* pItem = (KviLogListViewItem *)(m_pListView->currentItem());
 	if(pItem)
 	{
+		if (pItem->childCount())
+		{
+			if(QMessageBox::question(
+				this,
+				__tr2qs("Confirm current user logs delete"),
+			"Do you really wish to delete all this channel/query logs", __tr2qs("&Yes"), __tr2qs("&No"),0,1
+			) != 0) return;
+			for(int i=0;i<pItem->childCount();i++)
+			{
+				KviLogListViewItem *pCurItem=(KviLogListViewItem *)pItem->child(i);
+				if(!pCurItem->fileName().isNull())
+				{
+					QString szFname;
+					g_pApp->getLocalKvircDirectory(szFname,KviApp::Log,pCurItem->fileName());
+					KviFileUtils::removeFile(szFname);
+					delete pCurItem;
+				}
+			}
+			delete pItem;
+			return;
+		}
 		if(!pItem->fileName().isNull())
 		{
 			QString szFname;
@@ -384,6 +408,7 @@ void KviLogViewMDIWindow::deleteCurrent()
 			KviFileUtils::removeFile(szFname);
 			delete pItem;
 			m_pIrcView->clearBuffer();
+			if (!pItem->parent()->childCount()) delete pItem->parent();
 		}
 	}
 }
