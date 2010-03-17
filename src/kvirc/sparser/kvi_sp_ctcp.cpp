@@ -839,8 +839,6 @@ void KviServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 		}
 	}
 
-	bool bCtcpVersion = KviQString::equalCI(msg->szTag,"VERSION");
-
 	for(int i=0;m_ctcpRequestParseProcTable[i].msgName;i++)
 	{
 		if(KviQString::equalCI(msg->szTag,m_ctcpRequestParseProcTable[i].msgName))
@@ -855,7 +853,7 @@ void KviServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 					msg->pSource->host(), \
 					msg->szTarget, \
 					msg->szTag, \
-					szData) && !bCtcpVersion)return;
+					szData))return;
 			}
 			(this->*(m_ctcpRequestParseProcTable[i].proc))(msg);
 			return;
