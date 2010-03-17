@@ -492,7 +492,7 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 				KviMdiChild * lpC = dockWindow(wnd,bGroupSettings,&rect);
 				lpC->setRestoredGeometry(rect);
 				wnd->triggerCreationEvents();
-				if(bShow)
+				if(bShow && isActiveWindow())
 				{
 					m_pMdi->showAndActivate(lpC);
 					// Handle the special case of this top level widget not being the active one.
@@ -527,7 +527,7 @@ default_docking:
 	{
 		KviMdiChild * lpC = dockWindow(wnd); //cascade it
 		wnd->triggerCreationEvents();
-		if(bShow)
+		if(bShow && isActiveWindow())
 		{
 			m_pMdi->showAndActivate(lpC);
 			// Handle the special case of this top level widget not being the active one.
