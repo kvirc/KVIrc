@@ -348,12 +348,18 @@ void KviTrayIcon::toggleParentFrame()
 	if(m_pFrm->isMinimized())
 	{
 		m_pFrm->setWindowState(m_pFrm->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
-		m_pFrm->show();
+
+		if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
+			m_pFrm->showMaximized();
+		else m_pFrm->show();
 	} else if(!m_pFrm->isVisible())
 	{
 		//restore mainwindow
-		m_pFrm->show();
+		if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
+			m_pFrm->showMaximized();
+		else m_pFrm->show();
 	} else {
+		KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = m_pFrm->isMaximized();
 		m_pFrm->hide();
 	}
 }
