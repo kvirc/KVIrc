@@ -387,9 +387,13 @@ void KviLogViewMDIWindow::deleteCurrent()
 				__tr2qs("Confirm current user logs delete"),
 			"Do you really wish to delete all this channel/query logs", __tr2qs("&Yes"), __tr2qs("&No"),0,1
 			) != 0) return;
+			KviPointerList <KviLogListViewItem> itemsList;
+
 			for(int i=0;i<pItem->childCount();i++)
+				itemsList.append((KviLogListViewItem*)pItem->child(i));
+			for(unsigned int i=0;i<itemsList.count();i++)
 			{
-				KviLogListViewItem *pCurItem=(KviLogListViewItem *)pItem->child(i);
+				KviLogListViewItem *pCurItem=itemsList.at(i);
 				if(!pCurItem->fileName().isNull())
 				{
 					QString szFname;
