@@ -616,3 +616,39 @@ void KviMdiManager::slotSubWindowActivated(QMdiSubWindow * pMdiChild)
 		qDebug("subwindowactivated 0x0");
 	}
 }
+
+bool KviMdiManager::eventFilter(QObject *obj, QEvent *event)
+{
+	if(	((event->type() == QEvent::KeyPress) ||
+		(event->type() == QEvent::KeyRelease)) &&
+		m_bInSDIMode
+	)
+	{
+		QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+		if (	(keyEvent->modifiers() & Qt::MetaModifier) ||
+			(keyEvent->modifiers() & Qt::ControlModifier)
+		)
+		{
+			// While in sdi mode, avoid qt4's internal window switching
+			if(keyEvent->key() == Qt::Key_Tab)
+			{
+				if(event->type() == QEvent::KeyRelease) g_pFrame->switchToNextWindow();
+				return true;
+			}
+			if(keyEvent->key() == Qt::Key_Backtab)
+			{
+				if(event->type() == QEvent::KeyRelease) g_pFrame->switchToPrevWindow();
+				return true;
+			}
+		}
+	} else {
+		/*
+		 * Filter out some (de)activation events from the QMdiArea handling
+	         * this fixed #425 and #519 (unwanted mdichild activation when KviFrame is not the active window)
+		 */
+		if(	event->type() == QEvent::ApplicationActivate ||
+			event->type() == QEvent::ApplicationDeactivate
+		) return true;
+	}
+	return QMdiArea::eventFilter(obj, event);
+}
