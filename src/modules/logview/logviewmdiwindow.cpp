@@ -369,7 +369,7 @@ void KviLogViewMDIWindow::rightButtonClicked ( QTreeWidgetItem * it, const QPoin
 
 	KviTalPopupMenu* popup = new KviTalPopupMenu(this);
 	if(((KviLogListViewItem *)it)->childCount())
-		popup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),__tr2qs_ctx("Remove all this channel/query logs file","logview"),this,SLOT(deleteCurrent()));
+		popup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),__tr2qs_ctx("Remove all these channel/query log files","logview"),this,SLOT(deleteCurrent()));
 	else popup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),__tr2qs_ctx("Remove file","logview"),this,SLOT(deleteCurrent()));
 
 	popup->exec( QCursor::pos() );
@@ -385,7 +385,7 @@ void KviLogViewMDIWindow::deleteCurrent()
 			if(QMessageBox::question(
 				this,
 				__tr2qs("Confirm current user logs delete"),
-			"Do you really wish to delete all this channel/query logs", __tr2qs("&Yes"), __tr2qs("&No"),0,1
+			"Do you really wish to delete all these channel/query logs?", __tr2qs("&Yes"), __tr2qs("&No"),0,1
 			) != 0) return;
 			KviPointerList <KviLogListViewItem> itemsList;
 
