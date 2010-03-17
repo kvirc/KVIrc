@@ -160,6 +160,8 @@ KviFrame::KviFrame()
 	move(KVI_OPTION_RECT(KviOption_rectFrameGeometry).x(),
 		KVI_OPTION_RECT(KviOption_rectFrameGeometry).y());
 
+	if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized)) showMaximized();
+
 	applyOptions();
 
 	installAccelerators();
@@ -167,6 +169,7 @@ KviFrame::KviFrame()
 
 KviFrame::~KviFrame()
 {
+	KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = isMaximized();
 	KVI_OPTION_RECT(KviOption_rectFrameGeometry) = QRect(pos().x(),pos().y(),
 			size().width(),size().height());
 
