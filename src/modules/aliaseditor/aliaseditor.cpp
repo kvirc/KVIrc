@@ -291,10 +291,27 @@ void KviAliasEditor::aliasRefresh(const QString &szName)
 {
 	if(m_bSaving)
 		return;
-	KviAliasEditorTreeWidgetItem * item;
+	KviAliasEditorTreeWidgetItem * item=0;
 	KviKvsScript * alias = KviKvsAliasManager::instance()->aliasDict()->find(szName);
-	item = createFullItem(szName);
-	m_pAliases->append(item);
+
+	// search for old alias with same name
+	KviPointerList<KviAliasEditorTreeWidgetItem> l;
+	l.setAutoDelete(false);
+	appendAllItems(&l,KviAliasEditorTreeWidgetItem::Alias);
+	for(KviAliasEditorTreeWidgetItem * it = l.first();it;it = l.next())
+	{
+		if (KviQString::equalCI(buildFullItemName(it),szName))
+		{
+			item=it;
+			break;
+		}
+	}
+	if(!item)
+	{
+		item = createFullItem(szName);
+		m_pAliases->append(item);
+	}
+
 	if(item!=m_pLastEditedItem)
 	{
 		item->setBuffer(alias->code());
