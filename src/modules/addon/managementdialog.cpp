@@ -92,7 +92,7 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	setWindowTitle(__tr2qs("Manage Script-Based Addons"));
 	setObjectName("Addon manager");
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ADDONS)));
-	setModal(true);
+
 	m_pInstance = this;
 	QGridLayout * g = new QGridLayout(this);
 
