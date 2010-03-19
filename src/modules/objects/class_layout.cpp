@@ -33,25 +33,25 @@
 
 // Tables used in $setAlignment & $alignment
 const char * const align_tbl[] = {
-			"Left",
-			"Right",
-			"HCenter",
-			"VCenter",
-			"Center",
-			"Top",
-			"Bottom",
-			   };
+				"Left",
+				"Right",
+				"HCenter",
+				"VCenter",
+				"Center",
+				"Top",
+				"Bottom",
+				};
 
 
 
 const int align_cod[] = {
-                Qt::AlignLeft,
-		Qt::AlignRight,
-	    Qt::AlignHCenter,
-	    Qt::AlignVCenter,
-	    Qt::AlignCenter,
-	 	Qt::AlignTop,
-	    Qt::AlignBottom,
+			Qt::AlignLeft,
+			Qt::AlignRight,
+			Qt::AlignHCenter,
+			Qt::AlignVCenter,
+			Qt::AlignCenter,
+			Qt::AlignTop,
+			Qt::AlignBottom,
 	};
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
 /*
@@ -138,6 +138,8 @@ bool KviKvsObject_layout::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 		pContext->warning(__tr2qs_ctx("The parent of a layout must be a widget!","objects"));
 		return false;
 	}
+	// If there already is a layout manager installed on this widget, QWidget won't let you install another.
+	if(w->layout()) delete w->layout();
 	setObject(new QGridLayout(w));
 	((QGridLayout *)object())->setVerticalSpacing(0);
 	((QGridLayout *)object())->setHorizontalSpacing(0);
