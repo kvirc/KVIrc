@@ -47,11 +47,11 @@
 		It can display a number in just about any size. It can display decimal,
 		hexadecimal, octal or binary numbers.
 	@functions:
-		!fn: $setDisplayStr(<number:string>)
+		!fn: $displayStr(<number:string>)
 		Displays the number represented by the string s.
-		!fn: $setDisplayInt(<number:integer>)
+		!fn: $displayInt(<number:integer>)
 		Sets the displayed value rounded to the nearest integer to number.
-		!fn: $setDisplayDouble(<number:double>)
+		!fn: $displayDouble(<number:double>)
 		Sets the displayed value to number (double).
 		!fn: $setMode(<mode:string>)
 		Sets the current display mode (number base): valid mode are HEX,BIN,OCT,DEC.

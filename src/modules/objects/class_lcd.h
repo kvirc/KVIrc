@@ -40,13 +40,13 @@ protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
 	bool displayStr(KviKvsObjectFunctionCall *c);
-    bool setMode(KviKvsObjectFunctionCall *c);
-    bool setSegmentStyle(KviKvsObjectFunctionCall *c);
-    bool setNumDigits(KviKvsObjectFunctionCall *c);
-    bool setSmallDecimalPoint(KviKvsObjectFunctionCall *c);
-    bool checkOverflow(KviKvsObjectFunctionCall *c);
-    bool displayInt(KviKvsObjectFunctionCall *c);
-    bool displayDouble(KviKvsObjectFunctionCall *c);
+	bool setMode(KviKvsObjectFunctionCall *c);
+	bool setSegmentStyle(KviKvsObjectFunctionCall *c);
+	bool setNumDigits(KviKvsObjectFunctionCall *c);
+	bool setSmallDecimalPoint(KviKvsObjectFunctionCall *c);
+	bool checkOverflow(KviKvsObjectFunctionCall *c);
+	bool displayInt(KviKvsObjectFunctionCall *c);
+	bool displayDouble(KviKvsObjectFunctionCall *c);
 };
 
 #endif        // !_CLASS_LCD_H_

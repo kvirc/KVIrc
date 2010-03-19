@@ -90,31 +90,47 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szParam)
 	KVSM_PARAMETERS_END(c)
 
-	szDoc=szParam;
-	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
-        dirHelp = QDir(szHelpDir);
-
 	// no document => index
-	if(szDoc.isEmpty())
+	if(szParam.isEmpty())
 	{
-		szDoc = dirHelp.absoluteFilePath("index.html");
-		//qDebug ("No file, use default at path %s",szDoc.toUtf8().data());
+		szParam = dirHelp.absoluteFilePath("index.html");
+		qDebug ("No file, use default at path %s",szDoc.toUtf8().data());
 	}
 
+	/*
+	 * Path checking order:
+	 * 1) absolute path
+	 * 2) local help (in user directory)
+	 * 3) global help (in kvirc directory)
+	 */
+	
 	// try absolute path
-	QFileInfo * f= new QFileInfo(szDoc);
+	QFileInfo * f= new QFileInfo(szParam);
 	if(!f->exists())
 	{
-		//try relative path
-		szDoc = dirHelp.absoluteFilePath(szDoc);
-		//qDebug("No abs path, trying relative path: %s",szDoc.toUtf8().data());
+		// try relative path (to local help)
+		g_pApp->getLocalKvircDirectory(szHelpDir,KviApp::Help);
+		dirHelp = QDir(szHelpDir);
+		szDoc = dirHelp.absoluteFilePath(szParam);
+		qDebug("No abs path, trying local relative path: %s",szDoc.toUtf8().data());
 		f->setFile(szDoc);
+
+		if(!f->exists())
+		{
+			//try relative path (to global help)
+			g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
+			dirHelp = QDir(szHelpDir);
+
+			szDoc = dirHelp.absoluteFilePath(szParam);
+			qDebug("No local relative, trying global relative path: %s",szDoc.toUtf8().data());
+			f->setFile(szDoc);
+		}
 	}
 
+	// Search in help
 	if(!f->exists())
 	{
-		//try search
-		//qDebug("No rel path, trying search..");
+		qDebug("No path, trying search..");
 		if(g_pDocIndex)
 		{
 			if (!g_pDocIndex->documentList().count())
@@ -150,12 +166,12 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		}
 	}
 
+	// Everything failed => error
 	if(!f->exists())
 	{
-		//everything failed => error
 		szDoc = dirHelp.absoluteFilePath("nohelpavailable.html");
 
-		//qDebug("Document not found, defaulting to error page: %s",szDoc.toUtf8().data());
+		qDebug("Document not found, defaulting to error page: %s",szDoc.toUtf8().data());
 		f->setFile(szDoc);
 	}
 
