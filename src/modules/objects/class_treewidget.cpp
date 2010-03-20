@@ -100,6 +100,12 @@
                 !fn: <listviewitem> $firstChild()
                 Returns the first child [class]listviewitem[/class] of this listview or $null if there are no items at all.
 
+                !fn: <listviewitem> $topLevelItem(<index:int>)
+                Returns the <index> child [class]listviewitem[/class] of this listview or $null if it does not exists.
+
+                !fn: <int> $topLevelItemCount()
+                Returns the number of top level items of this listview.
+
                 !fn: setAcceptDrops(<benabled:boolean>)
                 If <bEnabled> is true, user can drop files for this listview. The default value is true.
 
@@ -201,7 +207,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,showListViewHeader)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,firstChild)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,topLevelItem)
-
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,topLevelItemCount)
 
 
 
@@ -280,13 +286,20 @@ KVSO_CLASS_FUNCTION(treewidget,setColumnText)
 KVSO_CLASS_FUNCTION(treewidget,topLevelItem)
 {
         if (!widget()) return true;
-         kvs_int_t iIdx;
+        kvs_int_t iIdx;
         KVSO_PARAMETERS_BEGIN(c)
-                KVSO_PARAMETER("column",KVS_PT_INT,0,iIdx)
+                KVSO_PARAMETER("index",KVS_PT_INT,0,iIdx)
         KVSO_PARAMETERS_END(c)
         QTreeWidgetItem *pItem=((QTreeWidget *)widget())->topLevelItem(iIdx);
         if (!pItem) c->returnValue()->setHObject((kvs_hobject_t)0);
         else  c->returnValue()->setHObject(KviKvsObject_treewidgetitem::itemToHandle(pItem));
+        return true;
+}
+
+KVSO_CLASS_FUNCTION(treewidget,topLevelItemCount)
+{
+        if (!widget()) return true;
+	c->returnValue()->setInteger(((QTreeWidget *)widget())->topLevelItemCount());
         return true;
 }
 

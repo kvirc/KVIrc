@@ -387,7 +387,7 @@ namespace KviKvsCoreFunctions
 
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("switch_name",KVS_PT_STRING,0,szSwitch)
-			KVSCF_PARAMETER("long_name",KVS_PT_STRING | KVS_PF_OPTIONAL ,0,szLongSwitch)
+			KVSCF_PARAMETER("long_name",KVS_PT_STRING, KVS_PF_OPTIONAL, szLongSwitch)
 		KVSCF_PARAMETERS_END
 
 		KviKvsSwitchList * sl = KVSCF_pContext->aliasSwitchList();
