@@ -785,6 +785,7 @@ void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 		e->setServer(szServ);
 		e->setAway(bAway);
 		e->setIrcOp(bIrcOp);
+		e->setUserFlags(szFlag);
 
 		KviQuery * q = msg->connection()->findQuery(szNick);
 		if(q) q->updateLabelText();

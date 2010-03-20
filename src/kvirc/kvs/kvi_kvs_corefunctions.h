@@ -134,6 +134,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(trueCKEYWORDWORKAROUND);
 	KVSCF(typeofCKEYWORDWORKAROUND);
 	KVSCF(u);
+	KVSCF(uflags);
 	KVSCF(unicode);
 	KVSCF(unixtime);
 	KVSCF(unserialize);

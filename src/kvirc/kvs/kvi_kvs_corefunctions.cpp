@@ -123,6 +123,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("true",trueCKEYWORDWORKAROUND)
 		_REGFNC("typeof",typeofCKEYWORDWORKAROUND)
 		_REGFNC("u",u)
+		_REGFNC("uflags",uflags)
 		_REGFNC("unicode",unicode)
 		_REGFNC("unixtime",unixtime)
 		_REGFNC("unserialize",unserialize)

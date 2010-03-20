@@ -94,6 +94,7 @@ protected:
 	QString     m_szRealName;
 	int         m_iHops;
 	Gender      m_eGender;
+	QString     m_szUserFlags;
 	
 	bool        m_bAway;
 	bool        m_bIrcOp;
@@ -189,6 +190,13 @@ public:
 	void setAvatar(KviAvatar * av = 0);
 
 	/**
+	* \brief Sets the user global flags (eg: "G*")
+	* \param flags
+	* \return void
+	*/
+	void setUserFlags(const QString & userFlags) { m_szUserFlags = userFlags; };
+	
+	/**
 	* \brief Returns true if the user is marked as a bot
 	* \return bool
 	*/
@@ -259,6 +267,12 @@ public:
 	* \return const QString &
 	*/
 	const QString & realName() { return m_szRealName; };
+
+	/**
+	* \brief Returns the user flags
+	* \return const QString &
+	*/
+	const QString & userFlags() { return m_szUserFlags; };
 
 	/**
 	* \brief Returns the number of hops

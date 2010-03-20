@@ -847,6 +847,49 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
+	/*
+		@doc: uflags
+		@type:
+			function
+		@title:
+			$uflags
+		@short:
+			Retrieves the user flags of a user
+		@syntax:
+			$uflags[(<nickname>)]
+		@description:
+			Returns the user flags of the user with <nickname>.[br]
+			If the <nickname> is not given it is assumed to be the current nickname.[br]
+			If this information is not known yet or the user with <nickname> is not found
+			in the current IRC context user database, an empty string is returned.[br]
+		@examples:
+		@seealso:
+	*/
+
+	KVSCF(uflags)
+	{
+		QString szNick;
+
+		KVSCF_PARAMETERS_BEGIN
+			KVSCF_PARAMETER("nickname",KVS_PT_STRING,KVS_PF_OPTIONAL,szNick)
+		KVSCF_PARAMETERS_END
+
+		if(KVSCF_pContext->window()->console())
+		{
+			if(KVSCF_pContext->window()->console()->isConnected())
+			{
+				KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick.isEmpty() ? KVSCF_pContext->window()->connection()->currentNickName() : szNick);
+				if(e)
+				{
+					KVSCF_pRetBuffer->setString(e->userFlags());
+					return true;
+				}
+			}
+		}
+		KVSCF_pRetBuffer->setNothing();
+		return true;
+	}
+
 	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
