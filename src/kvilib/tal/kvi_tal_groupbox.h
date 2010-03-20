@@ -90,7 +90,6 @@ public:
 	~KviTalGroupBox();
 protected:
 	Qt::Orientation mOrientation;
-private:
 	QLayout * m_pLayout;
 public:
 	/**
@@ -99,7 +98,7 @@ public:
 	* \return void
 	*/
 	void setInsideMargin(int iMargin)
-		{ if(m_pLayout) m_pLayout->setMargin(iMargin); };
+		{ if(layout()) layout()->setMargin(iMargin); };
 
 	/**
 	* \brief Sets the inside spacing
@@ -107,21 +106,21 @@ public:
 	* \return void
 	*/
 	void setInsideSpacing(int iSpacing)
-		{ if(m_pLayout) m_pLayout->setSpacing(iSpacing); };
+		{ if(layout()) layout()->setSpacing(iSpacing); };
 
 	/**
 	* \brief Returns the inside margin
 	* \return int
 	*/
 	int insideMargin()
-		{ if(m_pLayout) return m_pLayout->margin(); return 0; };
+		{ if(layout()) return layout()->margin(); return 0; };
 
 	/**
 	* \brief Returns the inside spacing
 	* \return int
 	*/
 	int insideSpacing()
-		{ if(m_pLayout) return m_pLayout->spacing(); return 0; };
+		{ if(layout()) return layout()->spacing(); return 0; };
 
 	/**
 	* \brief Adds a space
@@ -136,6 +135,13 @@ public:
 	* \return void
 	*/
 	void setOrientation(Qt::Orientation orientation);
+
+	/**
+	* \brief Sets a new layout
+	* \param layout The new layout
+	* \return void
+	*/
+	void setLayout(QLayout * newLayout);
 protected:
 	virtual void childEvent(QChildEvent * e);
 };
