@@ -58,7 +58,7 @@ void KviUrl::parse()
 	QUrl url(m_szUrl);
 	m_szProtocol = url.scheme();
 	m_szHost = url.host();
-	m_szPath = url.path();
+	m_szPath = url.encodedPath();
 	if(url.hasQuery())
 	{
 		m_szPath.append(QChar('?'));
