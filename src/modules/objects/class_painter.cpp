@@ -1149,14 +1149,16 @@ KVSO_CLASS_FUNCTION(painter,drawText)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	QString szText,szMode;
-	kvs_int_t iX,iY;
+	kvs_int_t iX,iY,iN=-1;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x",KVS_PT_INT,0,iX)
 		KVSO_PARAMETER("y",KVS_PT_INT,0,iY)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+		KVSO_PARAMETER("num_chars",KVS_PT_INT,KVS_PF_OPTIONAL,iN)
 		KVSO_PARAMETER("mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szMode)
 	KVSO_PARAMETERS_END(c)
-	if (!szMode.isEmpty()){
+	if (!szMode.isEmpty() && !KviQString::equalCI(szMode,"Auto"))
+	{
 		if(KviQString::equalCI(szMode,"RTL"))m_pPainter->setLayoutDirection(Qt::RightToLeft);
 		else if(KviQString::equalCI(szMode,"LTR"))m_pPainter->setLayoutDirection(Qt::LeftToRight);
 		else
@@ -1165,7 +1167,7 @@ KVSO_CLASS_FUNCTION(painter,drawText)
 				return true;
 		}
 	}
-	m_pPainter->drawText(iX,iY,szText);
+	m_pPainter->drawText(iX,iY,szText.left(iN));
 	return true;
 }
 

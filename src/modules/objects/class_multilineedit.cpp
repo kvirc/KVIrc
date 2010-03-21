@@ -33,29 +33,9 @@
 #include <QTextDocument>
 #include <QTextEdit>
 #include <QTextStream>
- #include <QTextCursor>
+#include <QTextCursor>
 
 #include "class_multilineedit.h"
-
-
-//->Tables for Text Format
-static const char * const mod_tbl[] = {
-	"PlainText",
-	"RichText",
-	"AutoText",
-	"LogText"
-};
-/*
-static int mod_cod[] = {
-	Qt::PlainText,
-	Qt::RichText,
-	Qt::AutoText,
-	Qt::LogText
-};
-*/
-#define mod_num		(sizeof(mod_tbl) / sizeof(mod_tbl[0]))
-
-
 
 /*
 	@doc: multilineedit
@@ -191,10 +171,9 @@ static int mod_cod[] = {
 		!fn: $setOverwriteMode(<bOverwrite:boolean>)
 		Sets the Multilineedit edit's overwrite mode to b (1=Enabled or 0=Disabled) .
 		!fn: $setTextFormat(<textformat:string>)
-		Sets the text format. Correct values are RichText, PlainText, LogText or AutoText.
+		Sets the text format. Correct values are RichText, PlainText.
 		!fn: <string> $textFormat()
-		Returns the text format: rich text, plain text, log text or auto text.
-		// findme
+		Returns the text format: rich text or plain text.
 		!fn: $setParagraphBackgroundColor(<paragraph:integer>,<exadecimal color value>)
 		Sets the background color of the paragraph <paragraph> to color value specified.[br]
 		Example: %mymultiline->$setParagraphBackgroundColor(2,0C686F)
@@ -305,9 +284,10 @@ KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 	*/
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setPointSize", functionsetPointSize)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setReadOnly",functionSetReadOnly)
-	/*
+	
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setTextFormat" , functionsetTextFormat)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"textFormat" , functiontextFormat)
+	/*
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setParagraphBackgroundColor", functionsetParagraphBackgroundColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"clearParagraphBackgroundColor", functionsetParagraphBackgroundColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"loadFile" , functionloadFile); // let's fantasy
@@ -948,21 +928,13 @@ bool KviKvsObject_textedit::functionsetOverwriteMode(KviKvsObjectFunctionCall * 
 	return true;
 }
 
-bool KviKvsObject_textedit::functiontextFormat(KviKvsObjectFunctionCall *)
+bool KviKvsObject_textedit::functiontextFormat(KviKvsObjectFunctionCall *c)
 {
 	if(!widget())return true;
-	/*
-	int fstyle = ((QTextEdit *)widget())->textFormat();
-	QString format="";
-	for(unsigned int i = 0; i < mod_num; i++)
-	{
-		if(fstyle & mod_cod[i])
-		{
-			format=mod_tbl[i];
-		}
-	}
-	c->returnValue()->setString(format);
-	*/
+	if(((QTextEdit *)widget())->acceptRichText())
+		c->returnValue()->setString(QString("RichText"));
+	else
+		c->returnValue()->setString(QString("PlainText"));
 	return true;
 }
 
@@ -973,17 +945,11 @@ bool KviKvsObject_textedit::functionsetTextFormat(KviKvsObjectFunctionCall * c)
 		KVSO_PARAMETER("textformat",KVS_PT_STRING,0,szFormat)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-	/*
 	if(KviQString::equalCI(szFormat,"PlainText"))
-		((QTextEdit *)widget())->setTextFormat(Qt::PlainText);
+		((QTextEdit *)widget())->setAcceptRichText(false);
 	else if(KviQString::equalCI(szFormat,"RichText"))
-		((QTextEdit *)widget())->setTextFormat(Qt::RichText);
-	else if(KviQString::equalCI(szFormat,"LogText"))
-		((QTextEdit *)widget())->setTextFormat(Qt::LogText);
-	else if(KviQString::equalCI(szFormat,"AutoText"))
-		((QTextEdit *)widget())->setTextFormat(Qt::AutoText);
+		((QTextEdit *)widget())->setAcceptRichText(true);
         else c->warning(__tr2qs_ctx("Unknown text format '%Q'","objects"),&szFormat);
-	*/
 	return true;
 }
 

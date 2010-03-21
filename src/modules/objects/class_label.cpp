@@ -208,6 +208,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_label)
 bool KviKvsObject_label::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QLabel)
+	((QLabel *)widget())->setWordWrap(true);
 	return true;
 }
 
