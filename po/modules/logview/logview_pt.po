@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_logview \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 04:29+0100\n"
+"POT-Creation-Date: 2010-03-21 14:37+0100\n"
 "PO-Revision-Date: 2010-03-10 03:07+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/logview/logviewmdiwindow.cpp:297
+#: src/modules/logview/logviewmdiwindow.cpp:298
 msgid "%Q on %Q"
 msgstr "%Q em %Q"
 
-#: src/modules/logview/logviewmdiwindow.cpp:245
+#: src/modules/logview/logviewmdiwindow.cpp:246
 msgid "Abort filtering"
 msgstr "Abortar filtragem"
 
-#: src/modules/logview/logviewmdiwindow.cpp:142
+#: src/modules/logview/logviewmdiwindow.cpp:143
 msgid "Apply filter"
 msgstr "Aplicar filtro"
 
@@ -42,7 +42,7 @@ msgstr "Canal"
 msgid "Console"
 msgstr "Consola"
 
-#: src/modules/logview/logviewmdiwindow.cpp:111
+#: src/modules/logview/logviewmdiwindow.cpp:112
 msgid "Contents filter"
 msgstr "Filtro de conteúdos"
 
@@ -50,39 +50,39 @@ msgstr "Filtro de conteúdos"
 msgid "DCC Chat"
 msgstr "Conversa DCC"
 
-#: src/modules/logview/logviewmdiwindow.cpp:86
+#: src/modules/logview/logviewmdiwindow.cpp:87
 msgid "Filter"
 msgstr "Filtro"
 
-#: src/modules/logview/logviewmdiwindow.cpp:244
+#: src/modules/logview/logviewmdiwindow.cpp:245
 msgid "Filtering files..."
 msgstr "A filtrar ficheiros..."
 
-#: src/modules/logview/logviewmdiwindow.cpp:77
+#: src/modules/logview/logviewmdiwindow.cpp:78
 msgid "Index"
 msgstr "Índice"
 
-#: src/modules/logview/logviewmdiwindow.cpp:487
+#: src/modules/logview/logviewmdiwindow.cpp:516
 msgid "Log File"
 msgstr "Ficheiro de Registo"
 
-#: src/modules/logview/logviewmdiwindow.cpp:202
+#: src/modules/logview/logviewmdiwindow.cpp:203
 msgid "Log Viewer"
 msgstr "Visualizador de Registos"
 
-#: src/modules/logview/logviewmdiwindow.cpp:120
+#: src/modules/logview/logviewmdiwindow.cpp:121
 msgid "Log contents mask:"
 msgstr "Máscara de conteúdos do registo:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:114
+#: src/modules/logview/logviewmdiwindow.cpp:115
 msgid "Log name mask:"
 msgstr "Máscara de nome do registo:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:134
+#: src/modules/logview/logviewmdiwindow.cpp:135
 msgid "Only newier than"
 msgstr "Apenas mais recente que"
 
-#: src/modules/logview/logviewmdiwindow.cpp:126
+#: src/modules/logview/logviewmdiwindow.cpp:127
 msgid "Only older than"
 msgstr "Apenas mais antigo que"
 
@@ -94,27 +94,30 @@ msgstr "Outro"
 msgid "Query"
 msgstr "Pesquisar"
 
-#: src/modules/logview/logviewmdiwindow.cpp:371
+#: src/modules/logview/logviewmdiwindow.cpp:372
+msgid "Remove all these channel/query log files"
+msgstr ""
+
+#: src/modules/logview/logviewmdiwindow.cpp:373
 msgid "Remove file"
 msgstr "Remover ficheiro"
 
-#: src/modules/logview/logviewmdiwindow.cpp:102
+#: src/modules/logview/logviewmdiwindow.cpp:103
 msgid "Show DCC chat logs"
 msgstr "Mostrar registos de conversas DCC"
 
-#: src/modules/logview/logviewmdiwindow.cpp:90
+#: src/modules/logview/logviewmdiwindow.cpp:91
 msgid "Show channel logs"
 msgstr "Mostrar registos de canal"
 
-#: src/modules/logview/logviewmdiwindow.cpp:98
+#: src/modules/logview/logviewmdiwindow.cpp:99
 msgid "Show console logs"
 msgstr "Mostrar registos de consola"
 
-#: src/modules/logview/logviewmdiwindow.cpp:106
+#: src/modules/logview/logviewmdiwindow.cpp:107
 msgid "Show other logs"
 msgstr "Mostrar outros registos"
 
-#: src/modules/logview/logviewmdiwindow.cpp:94
+#: src/modules/logview/logviewmdiwindow.cpp:95
 msgid "Show query logs"
 msgstr "Mostrar registos de privado"
-

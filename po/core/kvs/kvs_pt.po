@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 04:29+0100\n"
+"POT-Creation-Date: 2010-03-21 14:37+0100\n"
 "PO-Revision-Date: 2010-03-10 04:49+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -39,8 +39,8 @@ msgid ""
 "A pixmap object, an image_id or an image file path is required for this "
 "property"
 msgstr ""
-"É requerido para esta propriedade um objecto 'pixmap', um id de imagem "
-"ou o caminho de um ficheiro de imagem"
+"É requerido para esta propriedade um objecto 'pixmap', um id de imagem ou o "
+"caminho de um ficheiro de imagem"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:876
 msgid "A popup menu cannot be popped up twice"
@@ -214,14 +214,14 @@ msgid ""
 "that class first"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:499
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:507
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:527
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:535
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:329
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:341
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:412
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:424
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:499
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:507
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:527
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:535
 msgid "Division by zero"
 msgstr "Divisão por zero"
 
@@ -575,8 +575,8 @@ msgstr ""
 msgid "Missing timer name"
 msgstr "Nome do temporizador em falta"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:67
 #: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:68
+#: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:67
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr ""
 
@@ -660,10 +660,10 @@ msgstr "Nenhum item da barra de menu com texto '%Q'"
 msgid "No such IRC context (%u)"
 msgstr "Nenhum contexto IRC (%u)"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
 #: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:567
 #: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:575
+#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
+#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1414
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1422
 msgid "No such event (%Q)"
@@ -766,13 +766,13 @@ msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:93
 #: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:187
+#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:93
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:85
 #: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:179
+#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:85
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr ""
 
@@ -1166,8 +1166,8 @@ msgid ""
 "fact it isn't. Maybe you forgot a '$' just after?"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:297
 #: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:297
 msgid "This window has no associated IRC context"
 msgstr ""
 
@@ -1509,8 +1509,8 @@ msgstr "[KVS]%c Erro na Execução: %Q"
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Aviso: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1196
 #: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:99
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1196
 msgid "[RAW]: %Q"
 msgstr "[RAW]: %Q"
 
@@ -1541,8 +1541,8 @@ msgstr ""
 msgid "found type %Q where type '%s' was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:108
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:95
+#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:108
 #, c-format
 msgid "line %d, near character %d"
 msgstr "linha %d, perto do caracter %d"
@@ -1550,4 +1550,3 @@ msgstr "linha %d, perto do caracter %d"
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:90
 msgid "say: injected commandline"
 msgstr "diga: linhadecomando injectada"
-

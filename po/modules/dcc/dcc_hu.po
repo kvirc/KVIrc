@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 04:29+0100\n"
+"POT-Creation-Date: 2010-03-21 14:37+0100\n"
 "PO-Revision-Date: 2007-10-27 23:04+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -219,8 +219,8 @@ msgstr ""
 "felajánlás DCC %s mióta nincs engedélyezve a bejövő kapcsolat (felhasználói "
 "beállítás)"
 
-#: src/modules/dcc/video.cpp:960
 #: src/modules/dcc/voice.cpp:930
+#: src/modules/dcc/video.cpp:960
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Aktuális codec: %s"
@@ -320,8 +320,8 @@ msgstr "Nincs megfelelő helyi IPv4 cím"
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Nem lehet DCC %Q kérést küldeni %Q: felé, IRC kapcsolat megszakadt"
 
-#: src/modules/dcc/send.cpp:1866
 #: src/modules/dcc/dialogs.cpp:158
+#: src/modules/dcc/send.cpp:1866
 msgid "Cancel"
 msgstr "Mégsem"
 
@@ -356,10 +356,10 @@ msgstr "Sávszélesség beállítása DCC %1 átvitelhez"
 msgid "Connected to %1:%2"
 msgstr "Kapcsolódva %1:%2"
 
-#: src/modules/dcc/video.cpp:940
-#: src/modules/dcc/chat.cpp:555
 #: src/modules/dcc/voice.cpp:910
+#: src/modules/dcc/video.cpp:940
 #: src/modules/dcc/canvas.cpp:282
+#: src/modules/dcc/chat.cpp:555
 msgid "Connected to %Q:%Q"
 msgstr "Kapcsolódva %Q:%Q"
 
@@ -367,10 +367,10 @@ msgstr "Kapcsolódva %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Kapcsolódás a %1 hosthoz %2 porton keresztül"
 
-#: src/modules/dcc/video.cpp:815
-#: src/modules/dcc/chat.cpp:184
 #: src/modules/dcc/voice.cpp:755
+#: src/modules/dcc/video.cpp:815
 #: src/modules/dcc/canvas.cpp:108
+#: src/modules/dcc/chat.cpp:184
 msgid "Contacting host %Q on port %Q"
 msgstr "Kapcsolódás %Q -ra/re %Q porton keresztül"
 
@@ -404,8 +404,8 @@ msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr ""
 "DCC CANVAS (vászon) kérés nem lett elküldve, manuális csatlakozás szükséges"
 
-#: src/modules/dcc/video.cpp:931
 #: src/modules/dcc/voice.cpp:901
+#: src/modules/dcc/video.cpp:931
 #: src/modules/dcc/canvas.cpp:277
 msgid "DCC Failed: %Q"
 msgstr "DCC Sikertelen %Q"
@@ -449,9 +449,9 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Adatátvitel megszakítva 30 másodperce, kapcsolat zárása"
 
+#: src/modules/dcc/voice.cpp:818
 #: src/modules/dcc/video.cpp:880
 #: src/modules/dcc/chat.cpp:407
-#: src/modules/dcc/voice.cpp:818
 msgid "ERROR: %Q"
 msgstr "HIBA: %Q"
 
@@ -467,8 +467,8 @@ msgstr "Fájl Már Létezik - KVirc"
 msgid "From: "
 msgstr "Feladó: "
 
-#: src/modules/dcc/video.cpp:176
 #: src/modules/dcc/voice.cpp:170
+#: src/modules/dcc/video.cpp:176
 msgid ""
 "Half duplex soundcard detected, you will not be able to talk and listen at "
 "the same time"
@@ -560,10 +560,10 @@ msgstr "Feltöltési sávszélesség korlátozása "
 msgid "Listening on interface %1 port %2"
 msgstr "Hallgatózás %1 eszközön %2 porton keresztül"
 
-#: src/modules/dcc/video.cpp:818
-#: src/modules/dcc/chat.cpp:186
 #: src/modules/dcc/voice.cpp:758
+#: src/modules/dcc/video.cpp:818
 #: src/modules/dcc/canvas.cpp:84
+#: src/modules/dcc/chat.cpp:186
 msgid "Listening on interface %Q port %Q"
 msgstr "Hallgatózás %Q eszközön, %Q porton"
 
@@ -571,10 +571,10 @@ msgstr "Hallgatózás %Q eszközön, %Q porton"
 msgid "Local end is %1:%2"
 msgstr ""
 
-#: src/modules/dcc/video.cpp:942
-#: src/modules/dcc/chat.cpp:557
 #: src/modules/dcc/voice.cpp:912
+#: src/modules/dcc/video.cpp:942
 #: src/modules/dcc/canvas.cpp:284
+#: src/modules/dcc/chat.cpp:557
 msgid "Local end is %Q:%Q"
 msgstr "Local end is %Q:%Q"
 
@@ -600,8 +600,8 @@ msgstr "Nincs hallgatásra alkalmas eszköz, használd: -i"
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/dcc/video.cpp:275
 #: src/modules/dcc/voice.cpp:269
+#: src/modules/dcc/video.cpp:275
 msgid "Ops...failed to test the soundcard capabilities...expect problems..."
 msgstr ""
 "Hoppá, hangkártya képességeinek tesztelése sikertelen... várhatóak "
@@ -1011,8 +1011,8 @@ msgstr ""
 msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr "FIGYELMEZTETÉS: A peer szemét adatot küldött a fájl végén"
 
-#: src/modules/dcc/video.cpp:168
 #: src/modules/dcc/voice.cpp:162
+#: src/modules/dcc/video.cpp:168
 #, fuzzy
 msgid ""
 "WARNING: failed to check the soundcard duplex capabilities: if this is a "
@@ -1023,8 +1023,8 @@ msgstr ""
 "meghatározásnál: ha ez a kártya half-duplex hangkártya, használd a DCC VOICE "
 "opciót kényszerített half-duplex algoritmussal"
 
-#: src/modules/dcc/video.cpp:217
 #: src/modules/dcc/voice.cpp:211
+#: src/modules/dcc/video.cpp:217
 #, c-format
 msgid ""
 "WARNING: failed to set the requested sample rate (%d): the device used "
@@ -1058,7 +1058,9 @@ msgstr "[SSL HIBA]: %s"
 msgid "bytes/sec"
 msgstr "bájt/másodperc "
 
-#: src/modules/dcc/descriptor.cpp:65
+#: src/modules/dcc/marshal.cpp:490
+#: src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525
 #: src/modules/dcc/libkvidcc.cpp:112
 #: src/modules/dcc/libkvidcc.cpp:409
 #: src/modules/dcc/libkvidcc.cpp:444
@@ -1070,9 +1072,7 @@ msgstr "bájt/másodperc "
 #: src/modules/dcc/libkvidcc.cpp:1172
 #: src/modules/dcc/libkvidcc.cpp:1200
 #: src/modules/dcc/libkvidcc.cpp:1239
-#: src/modules/dcc/marshal.cpp:490
-#: src/modules/dcc/marshal.cpp:520
-#: src/modules/dcc/marshal.cpp:525
+#: src/modules/dcc/descriptor.cpp:65
 #: src/modules/dcc/requests.cpp:141
 #: src/modules/dcc/requests.cpp:142
 #: src/modules/dcc/requests.cpp:143

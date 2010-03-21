@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 04:29+0100\n"
+"POT-Creation-Date: 2010-03-21 14:37+0100\n"
 "PO-Revision-Date: 2009-11-29 11:10+0100\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -220,8 +220,8 @@ msgstr ""
 "Q), ofreciendo DCC %s porque no podemos aceptar conexiones entrantes (opción "
 "de usuario)"
 
-#: src/modules/dcc/video.cpp:960
 #: src/modules/dcc/voice.cpp:930
+#: src/modules/dcc/video.cpp:960
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "El cédec actual es '%s'"
@@ -322,8 +322,8 @@ msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr ""
 "No pude enviar la petición DCC %Q a %Q: la conexión IRC ha sido finalizada"
 
-#: src/modules/dcc/send.cpp:1866
 #: src/modules/dcc/dialogs.cpp:158
+#: src/modules/dcc/send.cpp:1866
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -360,10 +360,10 @@ msgstr "Configurar el caudal para la transferencia DCC %1"
 msgid "Connected to %1:%2"
 msgstr "Conectado a %1:%2"
 
-#: src/modules/dcc/video.cpp:940
-#: src/modules/dcc/chat.cpp:555
 #: src/modules/dcc/voice.cpp:910
+#: src/modules/dcc/video.cpp:940
 #: src/modules/dcc/canvas.cpp:282
+#: src/modules/dcc/chat.cpp:555
 msgid "Connected to %Q:%Q"
 msgstr "Conectado a %Q:%Q"
 
@@ -371,10 +371,10 @@ msgstr "Conectado a %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Contactando con la máquina %1 en el puerto %2"
 
-#: src/modules/dcc/video.cpp:815
-#: src/modules/dcc/chat.cpp:184
 #: src/modules/dcc/voice.cpp:755
+#: src/modules/dcc/video.cpp:815
 #: src/modules/dcc/canvas.cpp:108
+#: src/modules/dcc/chat.cpp:184
 msgid "Contacting host %Q on port %Q"
 msgstr "Contactando con la máquina %Q en el puerto %Q"
 
@@ -407,8 +407,8 @@ msgstr "Petición de DCC CANVAS"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "Petición DCC CANVAS no enviada; esperando conexiones manuales"
 
-#: src/modules/dcc/video.cpp:931
 #: src/modules/dcc/voice.cpp:901
+#: src/modules/dcc/video.cpp:931
 #: src/modules/dcc/canvas.cpp:277
 msgid "DCC Failed: %Q"
 msgstr "Falló el DCC: %Q"
@@ -451,9 +451,9 @@ msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr ""
 "La transferencia de datos terminó hace 30 segundos, cerrando la conexión"
 
+#: src/modules/dcc/voice.cpp:818
 #: src/modules/dcc/video.cpp:880
 #: src/modules/dcc/chat.cpp:407
-#: src/modules/dcc/voice.cpp:818
 msgid "ERROR: %Q"
 msgstr "ERROR: %Q"
 
@@ -469,8 +469,8 @@ msgstr "El archivo ya existe - KVIrc"
 msgid "From: "
 msgstr "Desde: "
 
-#: src/modules/dcc/video.cpp:176
 #: src/modules/dcc/voice.cpp:170
+#: src/modules/dcc/video.cpp:176
 msgid ""
 "Half duplex soundcard detected, you will not be able to talk and listen at "
 "the same time"
@@ -562,10 +562,10 @@ msgstr "Limitar el ancho de banda de subida a"
 msgid "Listening on interface %1 port %2"
 msgstr "Escuchando en el interfaz %1 puerto %2"
 
-#: src/modules/dcc/video.cpp:818
-#: src/modules/dcc/chat.cpp:186
 #: src/modules/dcc/voice.cpp:758
+#: src/modules/dcc/video.cpp:818
 #: src/modules/dcc/canvas.cpp:84
+#: src/modules/dcc/chat.cpp:186
 msgid "Listening on interface %Q port %Q"
 msgstr "Escuchando en el interfaz %Q puerto %Q"
 
@@ -573,10 +573,10 @@ msgstr "Escuchando en el interfaz %Q puerto %Q"
 msgid "Local end is %1:%2"
 msgstr "El extremo local es %1:%2"
 
-#: src/modules/dcc/video.cpp:942
-#: src/modules/dcc/chat.cpp:557
 #: src/modules/dcc/voice.cpp:912
+#: src/modules/dcc/video.cpp:942
 #: src/modules/dcc/canvas.cpp:284
+#: src/modules/dcc/chat.cpp:557
 msgid "Local end is %Q:%Q"
 msgstr "El extremo final es %Q:%Q"
 
@@ -605,8 +605,8 @@ msgstr "No hay interfaces adecuados para escuchar, use -i"
 msgid "OK"
 msgstr "Aceptar"
 
-#: src/modules/dcc/video.cpp:275
 #: src/modules/dcc/voice.cpp:269
+#: src/modules/dcc/video.cpp:275
 msgid "Ops...failed to test the soundcard capabilities...expect problems..."
 msgstr ""
 "Ups... falló la prueba de las capacidades de la tarjeta de sonido... "
@@ -1032,8 +1032,8 @@ msgstr ""
 "ATENCIÓN: El otro extremo está enviando datos basura pasado el final del "
 "archivo"
 
-#: src/modules/dcc/video.cpp:168
 #: src/modules/dcc/voice.cpp:162
+#: src/modules/dcc/video.cpp:168
 #, fuzzy
 msgid ""
 "WARNING: failed to check the soundcard duplex capabilities: if this is a "
@@ -1044,8 +1044,8 @@ msgstr ""
 "sonido: si esta es una tarjeta half-duplex, usa la opción DCC VOICE para "
 "forzar el algoritmo half-duplex"
 
-#: src/modules/dcc/video.cpp:217
 #: src/modules/dcc/voice.cpp:211
+#: src/modules/dcc/video.cpp:217
 #, c-format
 msgid ""
 "WARNING: failed to set the requested sample rate (%d): the device used "
@@ -1079,7 +1079,9 @@ msgstr "[ERROR SSL]: %s"
 msgid "bytes/sec"
 msgstr "bytes/seg"
 
-#: src/modules/dcc/descriptor.cpp:65
+#: src/modules/dcc/marshal.cpp:490
+#: src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525
 #: src/modules/dcc/libkvidcc.cpp:112
 #: src/modules/dcc/libkvidcc.cpp:409
 #: src/modules/dcc/libkvidcc.cpp:444
@@ -1091,9 +1093,7 @@ msgstr "bytes/seg"
 #: src/modules/dcc/libkvidcc.cpp:1172
 #: src/modules/dcc/libkvidcc.cpp:1200
 #: src/modules/dcc/libkvidcc.cpp:1239
-#: src/modules/dcc/marshal.cpp:490
-#: src/modules/dcc/marshal.cpp:520
-#: src/modules/dcc/marshal.cpp:525
+#: src/modules/dcc/descriptor.cpp:65
 #: src/modules/dcc/requests.cpp:141
 #: src/modules/dcc/requests.cpp:142
 #: src/modules/dcc/requests.cpp:143

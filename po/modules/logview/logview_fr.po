@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 04:29+0100\n"
+"POT-Creation-Date: 2010-03-21 14:37+0100\n"
 "PO-Revision-Date: 2008-03-06 17:54+0100\n"
 "Last-Translator: Elephantman <elephantman@europnet.org>\n"
 "Language-Team: Français <en@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/logview/logviewmdiwindow.cpp:297
+#: src/modules/logview/logviewmdiwindow.cpp:298
 msgid "%Q on %Q"
 msgstr "%Q sur %Q"
 
-#: src/modules/logview/logviewmdiwindow.cpp:245
+#: src/modules/logview/logviewmdiwindow.cpp:246
 msgid "Abort filtering"
 msgstr "Annuler le filtrage"
 
-#: src/modules/logview/logviewmdiwindow.cpp:142
+#: src/modules/logview/logviewmdiwindow.cpp:143
 msgid "Apply filter"
 msgstr "Appliquer le filtre"
 
@@ -41,7 +41,7 @@ msgstr "Salon"
 msgid "Console"
 msgstr "Console"
 
-#: src/modules/logview/logviewmdiwindow.cpp:111
+#: src/modules/logview/logviewmdiwindow.cpp:112
 msgid "Contents filter"
 msgstr "Filtre de contenu"
 
@@ -49,39 +49,39 @@ msgstr "Filtre de contenu"
 msgid "DCC Chat"
 msgstr "DCC Chat"
 
-#: src/modules/logview/logviewmdiwindow.cpp:86
+#: src/modules/logview/logviewmdiwindow.cpp:87
 msgid "Filter"
 msgstr "Filtre"
 
-#: src/modules/logview/logviewmdiwindow.cpp:244
+#: src/modules/logview/logviewmdiwindow.cpp:245
 msgid "Filtering files..."
 msgstr "Filtrage des fichiers..."
 
-#: src/modules/logview/logviewmdiwindow.cpp:77
+#: src/modules/logview/logviewmdiwindow.cpp:78
 msgid "Index"
 msgstr "Index"
 
-#: src/modules/logview/logviewmdiwindow.cpp:487
+#: src/modules/logview/logviewmdiwindow.cpp:516
 msgid "Log File"
 msgstr "Journal"
 
-#: src/modules/logview/logviewmdiwindow.cpp:202
+#: src/modules/logview/logviewmdiwindow.cpp:203
 msgid "Log Viewer"
 msgstr "Visualiseur de Journaux"
 
-#: src/modules/logview/logviewmdiwindow.cpp:120
+#: src/modules/logview/logviewmdiwindow.cpp:121
 msgid "Log contents mask:"
 msgstr "Masque de contenu de log"
 
-#: src/modules/logview/logviewmdiwindow.cpp:114
+#: src/modules/logview/logviewmdiwindow.cpp:115
 msgid "Log name mask:"
 msgstr "Masque de nom de log"
 
-#: src/modules/logview/logviewmdiwindow.cpp:134
+#: src/modules/logview/logviewmdiwindow.cpp:135
 msgid "Only newier than"
 msgstr "Seulement plus récents que"
 
-#: src/modules/logview/logviewmdiwindow.cpp:126
+#: src/modules/logview/logviewmdiwindow.cpp:127
 msgid "Only older than"
 msgstr "Seulement plus anciens que"
 
@@ -93,26 +93,30 @@ msgstr ""
 msgid "Query"
 msgstr "Privé"
 
-#: src/modules/logview/logviewmdiwindow.cpp:371
+#: src/modules/logview/logviewmdiwindow.cpp:372
+msgid "Remove all these channel/query log files"
+msgstr ""
+
+#: src/modules/logview/logviewmdiwindow.cpp:373
 msgid "Remove file"
 msgstr "Supprimer le fichier"
 
-#: src/modules/logview/logviewmdiwindow.cpp:102
+#: src/modules/logview/logviewmdiwindow.cpp:103
 msgid "Show DCC chat logs"
 msgstr "Afficher les logs de DCC chat"
 
-#: src/modules/logview/logviewmdiwindow.cpp:90
+#: src/modules/logview/logviewmdiwindow.cpp:91
 msgid "Show channel logs"
 msgstr "Afficher les logs de salons"
 
-#: src/modules/logview/logviewmdiwindow.cpp:98
+#: src/modules/logview/logviewmdiwindow.cpp:99
 msgid "Show console logs"
 msgstr "Afficher les logs de console"
 
-#: src/modules/logview/logviewmdiwindow.cpp:106
+#: src/modules/logview/logviewmdiwindow.cpp:107
 msgid "Show other logs"
 msgstr "Afficher les autres logs"
 
-#: src/modules/logview/logviewmdiwindow.cpp:94
+#: src/modules/logview/logviewmdiwindow.cpp:95
 msgid "Show query logs"
 msgstr "Afficher les logs de privés"

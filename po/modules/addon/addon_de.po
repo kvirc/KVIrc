@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-17 18:09+0100\n"
+"POT-Creation-Date: 2010-03-21 14:37+0100\n"
 "PO-Revision-Date: 2010-01-26 23:01+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "%cAddon id %Q, version %Q%c"
 msgstr "%cErweiterung Id %Q, Version %Q%c"
 
-#: src/modules/addon/addonfunctions.cpp:283
+#: src/modules/addon/addonfunctions.cpp:287
 msgid "Addon Engine Version"
 msgstr "Erweiterungsroutinenversion"
 
@@ -46,7 +46,7 @@ msgid "Attempting to register addon \"%Q\" with version %Q"
 msgstr "Es wird versucht, die Erweiterung »%Q« in Version %Q zu registrieren"
 
 #: src/modules/addon/addonfunctions.cpp:94
-#: src/modules/addon/addonfunctions.cpp:280
+#: src/modules/addon/addonfunctions.cpp:284
 msgid "Author"
 msgstr "Autor"
 
@@ -75,12 +75,12 @@ msgid "Create an Addon as a Distributable Package"
 msgstr "Erweiterung als distributierbares Paket erstellen"
 
 #: src/modules/addon/addonfunctions.cpp:95
-#: src/modules/addon/addonfunctions.cpp:281
+#: src/modules/addon/addonfunctions.cpp:285
 msgid "Created at"
 msgstr "Erstellt am"
 
 #: src/modules/addon/addonfunctions.cpp:96
-#: src/modules/addon/addonfunctions.cpp:282
+#: src/modules/addon/addonfunctions.cpp:286
 msgid "Created with"
 msgstr "Erstellt mit"
 
@@ -122,7 +122,7 @@ msgid "Export Addon - KVIrc"
 msgstr "Erweiterung exportieren - KVIrc"
 
 #: src/modules/addon/addonfunctions.cpp:245
-#: src/modules/addon/addonfunctions.cpp:261
+#: src/modules/addon/addonfunctions.cpp:265
 msgid "Failed to unpack the selected file: %Q"
 msgstr "Entpacken der ausgewählten Datei fehlgeschlagen: %Q"
 
@@ -153,8 +153,7 @@ msgid ""
 "the \"Finish\" button to complete\n"
 "the packaging operations."
 msgstr ""
-"Folgende Dateien wurden in dem angegebenen Quellverzeichnis gefunden "
-"habe.\n"
+"Folgende Dateien wurden in dem angegebenen Quellverzeichnis gefunden habe.\n"
 "Wenn diese und die Informationen auf der vorherigen Seite korrekt sind, auf "
 "»Abschließen« klicken, um\n"
 "die Paketierung abzuschließen."
@@ -227,7 +226,7 @@ msgstr "Name: %Q"
 msgid "No spaces allowed, like MyAddon"
 msgstr "Keine Leerzeichen erlaubt, z. B. MeineErweiterung"
 
-#: src/modules/addon/addonfunctions.cpp:260
+#: src/modules/addon/addonfunctions.cpp:264
 msgid "One or more files can't be deleted"
 msgstr "Eine oder mehrere Dateien konnten nicht gelöscht werden"
 
@@ -315,12 +314,14 @@ msgstr "Hilfe anzeigen"
 msgid "Source Directory"
 msgstr "Quellverzeichnis"
 
-#: src/modules/addon/addonfunctions.cpp:284
+#: src/modules/addon/addonfunctions.cpp:288
 msgid "Subdirectory"
 msgstr "Unterverzeichnis"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
 #: src/modules/addon/libkviaddon.cpp:386
 msgid "The addon \"%1\" does not exist"
 msgstr "Die Erweiterung »%1« existiert nicht"
@@ -336,8 +337,7 @@ msgstr "Die Erweiterung »%1« hat kein Hilfe-Callback angegeben"
 #: src/modules/addon/libkviaddon.cpp:567
 msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
 msgstr ""
-"Die Erweiterung »%Q« existiert bereits in Version %Q, welche neuer ist als "
-"%Q"
+"Die Erweiterung »%Q« existiert bereits in Version %Q, welche neuer ist als %Q"
 
 #: src/modules/addon/packaddondialog.cpp:171
 msgid "The configurations directory (config) does not exist."
@@ -415,7 +415,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Gesamt: %d Erweiterungen installiert"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Deinstallieren der bestehenden Erweiterung Version %Q"
 

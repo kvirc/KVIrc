@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 04:29+0100\n"
+"POT-Creation-Date: 2010-03-21 14:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <FI@li.org>\n"
@@ -60,7 +60,7 @@ msgstr "Poista valitut teemat"
 msgid "Delete Theme - KVIrc"
 msgstr "Poista teema - KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:280
+#: src/modules/theme/packthemedialog.cpp:235
 #: src/modules/theme/savethemedialog.cpp:119
 msgid "Description:"
 msgstr "Kuvaus:"
@@ -93,12 +93,12 @@ msgstr "Virhe kuvakaappausta tehdessä"
 msgid "Export Selected Themes to a Distributable Package"
 msgstr "Vie valitut teemat jaettavaan pakettiin"
 
-#: src/modules/theme/packthemedialog.cpp:64
-#: src/modules/theme/packthemedialog.cpp:356
-#: src/modules/theme/packthemedialog.cpp:444
-#: src/modules/theme/packthemedialog.cpp:531
-#: src/modules/theme/packthemedialog.cpp:546
-#: src/modules/theme/packthemedialog.cpp:558
+#: src/modules/theme/packthemedialog.cpp:111
+#: src/modules/theme/packthemedialog.cpp:345
+#: src/modules/theme/packthemedialog.cpp:379
+#: src/modules/theme/packthemedialog.cpp:463
+#: src/modules/theme/packthemedialog.cpp:475
+#: src/modules/theme/packthemedialog.cpp:483
 msgid "Export Theme - KVIrc"
 msgstr "Vie teema - KVIrc"
 
@@ -106,12 +106,12 @@ msgstr "Vie teema - KVIrc"
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Ei voitu ottaa teemaa käyttöön: %Q"
 
-#: src/modules/theme/packthemedialog.cpp:356
+#: src/modules/theme/packthemedialog.cpp:345
 #: src/modules/theme/savethemedialog.cpp:198
 msgid "Failed to load the selected image"
 msgstr "Ei voitu ladata valittua kuvaa"
 
-#: src/modules/theme/packthemedialog.cpp:445
+#: src/modules/theme/packthemedialog.cpp:379
 msgid "Failed to load the selected image: please fix it"
 msgstr "Ei voitu ladata valittua kuvaa: ole hyvä ja korjaa se"
 
@@ -127,7 +127,7 @@ msgstr "Ei voitu ottaa kuvakaappausta"
 msgid "Failed to unpack the selected file: %Q"
 msgstr "Ei voitu purkaa valittua tiedostoa: %Q"
 
-#: src/modules/theme/packthemedialog.cpp:379
+#: src/modules/theme/packthemedialog.cpp:307
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr "Lopulta, paina \"Valmis\" -nappia saadaksesi paketoinnin tehdyksi."
 
@@ -139,7 +139,7 @@ msgstr "Hae lisää teemoja..."
 msgid "Go Back to Package Data"
 msgstr "Mene takaisin paketoidaksesi dataa"
 
-#: src/modules/theme/packthemedialog.cpp:316
+#: src/modules/theme/packthemedialog.cpp:266
 msgid ""
 "Here you can choose the image that will appear in the installation dialog "
 "for your theme package. It can be an icon, a logo or a screenshot and it "
@@ -162,7 +162,7 @@ msgstr ""
 "Kuvakaappaustanäytetään teemanhallinta-ikkunan työkaluvihjeissä ja "
 "paketinasennusikkunassa jos haluat viedä teeman jaettavaan pakettiin."
 
-#: src/modules/theme/packthemedialog.cpp:368
+#: src/modules/theme/packthemedialog.cpp:296
 #, fuzzy
 msgid ""
 "Here you must choose the file name for the theme package. It should have a *%"
@@ -179,7 +179,7 @@ msgstr ""
 "Tänne sinun täytyy antaa tietoja sinusta (tekijästä) ja lyhyt kuvaus "
 "teemasta jota olet luomassa."
 
-#: src/modules/theme/packthemedialog.cpp:251
+#: src/modules/theme/packthemedialog.cpp:212
 msgid ""
 "Here you need to provide information about you (the packager) and a short "
 "description of the package you're creating."
@@ -187,12 +187,12 @@ msgstr ""
 "Tänne sinun on annettava tietoja sinusta (paketoija) ja lyhyt kuvaus "
 "paketista jonka luot"
 
-#: src/modules/theme/packthemedialog.cpp:108
+#: src/modules/theme/packthemedialog.cpp:124
 #: src/modules/theme/savethemedialog.cpp:78
 msgid "Hit the \"Next\" button to begin."
 msgstr "Paina \"Seuraava\" -nappia aloittaaksesi."
 
-#: src/modules/theme/packthemedialog.cpp:315
+#: src/modules/theme/packthemedialog.cpp:284
 msgid "Icon/Screenshot"
 msgstr "Kuvake/Kuvakaappaus"
 
@@ -216,28 +216,28 @@ msgstr "Järjestä teemat - KVIrc"
 msgid "Open Theme - KVIrc"
 msgstr "Avaa teema - KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:289
+#: src/modules/theme/packthemedialog.cpp:243
 msgid "Package Author:"
 msgstr "Tekijä:"
 
-#: src/modules/theme/packthemedialog.cpp:250
+#: src/modules/theme/packthemedialog.cpp:254
 msgid "Package Information"
 msgstr "Paketin tietoja"
 
-#: src/modules/theme/packthemedialog.cpp:262
+#: src/modules/theme/packthemedialog.cpp:218
 msgid "Package Name:"
 msgstr "Paketin nimi:"
 
-#: src/modules/theme/packthemedialog.cpp:367
+#: src/modules/theme/packthemedialog.cpp:314
 msgid "Package Path"
 msgstr "Paketin polku"
 
-#: src/modules/theme/packthemedialog.cpp:527
-#: src/modules/theme/packthemedialog.cpp:542
+#: src/modules/theme/packthemedialog.cpp:460
+#: src/modules/theme/packthemedialog.cpp:472
 msgid "Packaging failed"
 msgstr "Paketointi epäonnistui"
 
-#: src/modules/theme/packthemedialog.cpp:156
+#: src/modules/theme/packthemedialog.cpp:81
 msgid "Put a package description here..."
 msgstr "Laita tähän kuvaus..."
 
@@ -282,7 +282,7 @@ msgstr "Valittu tiedosto ei näytä olevan kelvollinen KVIrc -teemapaketti"
 msgid "Theme Author:"
 msgstr "Teeman tekijä:"
 
-#: src/modules/theme/packthemedialog.cpp:138
+#: src/modules/theme/packthemedialog.cpp:199
 msgid "Theme Data"
 msgstr "Teeman tietoja"
 
@@ -302,7 +302,7 @@ msgstr "Teeman nimi:"
 msgid "Theme saved successfully to "
 msgstr "Teema asennettu kansioon "
 
-#: src/modules/theme/packthemedialog.cpp:139
+#: src/modules/theme/packthemedialog.cpp:145
 msgid ""
 "This is the information list for the themes you're packaging. If it looks OK "
 "press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
@@ -312,7 +312,7 @@ msgstr ""
 "\"Seuraava\" -nappia jatkaaksesi, muutoin paina \"Peruuta\" ja käy läpi "
 "teemasi ensin"
 
-#: src/modules/theme/packthemedialog.cpp:104
+#: src/modules/theme/packthemedialog.cpp:120
 msgid ""
 "This procedure allows you to export the selected themes to a single package. "
 "It is useful when you want to distribute your themes to the public."
@@ -342,7 +342,7 @@ msgstr "Ei voitu luoda teemakansiota."
 msgid "Unable to save theme: %Q"
 msgstr "Ei voitu tallentaa teemaa: %Q"
 
-#: src/modules/theme/packthemedialog.cpp:271
+#: src/modules/theme/packthemedialog.cpp:227
 #: src/modules/theme/savethemedialog.cpp:111
 msgid "Version:"
 msgstr "Versio:"
@@ -360,7 +360,7 @@ msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr ""
 "Varoitus: Tämä teema saattaa olla ei-yhteensopiva tämän KVIrc -version kanssa"
 
-#: src/modules/theme/packthemedialog.cpp:101
+#: src/modules/theme/packthemedialog.cpp:132
 #: src/modules/theme/savethemedialog.cpp:85
 msgid "Welcome"
 msgstr "Tervetuloa"
@@ -373,7 +373,7 @@ msgstr "Kyllä, jatka"
 msgid "You must choose a theme name!"
 msgstr "Sinun on valittava teeman nimi!"
 
-#: src/modules/theme/packthemedialog.cpp:106
+#: src/modules/theme/packthemedialog.cpp:122
 msgid ""
 "You will be asked to provide a package name, a description and, if you want, "
 "an icon/screenshot."
@@ -392,7 +392,7 @@ msgstr ""
 msgid "You're about to install the following theme package"
 msgstr "Aiot asentaa seuraavan teemapaketin"
 
-#: src/modules/theme/packthemedialog.cpp:154
+#: src/modules/theme/packthemedialog.cpp:79
 msgid "Your name here"
 msgstr "Sinun nimi tähän"
 

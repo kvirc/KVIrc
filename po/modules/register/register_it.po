@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: register_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 04:29+0100\n"
+"POT-Creation-Date: 2010-03-21 14:37+0100\n"
 "PO-Revision-Date: 2009-05-27 01:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -45,39 +45,39 @@ msgstr "    Attenzione: questo utente non ha maschere registrate"
 msgid " User: %c%Q"
 msgstr " Utente: %c%Q"
 
-#: src/modules/reguser/dialog.cpp:246
+#: src/modules/reguser/dialog.cpp:251
 msgid "&Add Group..."
 msgstr "&Aggiungi Gruppo..."
 
-#: src/modules/reguser/edituser.cpp:371
-#: src/modules/reguser/dialog.cpp:241
+#: src/modules/reguser/dialog.cpp:246
+#: src/modules/reguser/edituser.cpp:355
 msgid "&Add..."
 msgstr "&Aggiungi..."
 
-#: src/modules/reguser/edituser.cpp:380
+#: src/modules/reguser/edituser.cpp:364
 msgid "&Edit"
 msgstr "Modifica"
 
-#: src/modules/reguser/dialog.cpp:258
+#: src/modules/reguser/dialog.cpp:263
 msgid "&Edit..."
 msgstr "Modifica..."
 
-#: src/modules/reguser/edituser.cpp:101
+#: src/modules/reguser/edituser.cpp:102
 msgid "&New"
 msgstr "&Nuovo"
 
-#: src/modules/reguser/edituser.cpp:113
-#: src/modules/reguser/edituser.cpp:274
-#: src/modules/reguser/edituser.cpp:487
-#: src/modules/reguser/dialog.cpp:287
+#: src/modules/reguser/dialog.cpp:297
+#: src/modules/reguser/edituser.cpp:114
+#: src/modules/reguser/edituser.cpp:258
+#: src/modules/reguser/edituser.cpp:470
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/reguser/edituser.cpp:105
+#: src/modules/reguser/edituser.cpp:106
 msgid "&Remove"
 msgstr "&Rimuovi"
 
-#: src/modules/reguser/edituser.cpp:260
+#: src/modules/reguser/edituser.cpp:244
 msgid ""
 "<center>This is the <b>hostname</b> that will match this user. <b>*</b> will "
 "match any hostname.</center>"
@@ -85,7 +85,7 @@ msgstr ""
 "<center>Questo è l'<b>hostname</b> che matcherà questo utente. <b>*</b> "
 "matcherà qualsiasi hostname.</center>"
 
-#: src/modules/reguser/edituser.cpp:242
+#: src/modules/reguser/edituser.cpp:226
 msgid ""
 "<center>This is the <b>nickname</b> that will match this user, default value "
 "is the registered name.</center>"
@@ -93,7 +93,7 @@ msgstr ""
 "<center>Questo è il <b>nickname</b> che matcherà questo utente, il valore "
 "predefinito è il nome registrato.</center>"
 
-#: src/modules/reguser/edituser.cpp:251
+#: src/modules/reguser/edituser.cpp:235
 msgid ""
 "<center>This is the <b>username</b> that will match this user. <b>*</b> will "
 "match any username.</center>"
@@ -116,7 +116,7 @@ msgstr ""
 "lista di notifica può essere perfezionata modificando le proprietà delle "
 "voci.</center>"
 
-#: src/modules/reguser/edituser.cpp:401
+#: src/modules/reguser/edituser.cpp:384
 msgid "<center>You can enter a space separated list of nicknames.</center>"
 msgstr ""
 "<center>Puoi inserire una lista di nickname separati da spazio.</center>"
@@ -199,11 +199,11 @@ msgstr ""
 "\"George W Bush\", \"Dubya\".\n"
 "</p>"
 
-#: src/modules/reguser/dialog.cpp:235
+#: src/modules/reguser/dialog.cpp:240
 msgid "Add (Wizard)..."
 msgstr "Aggiungi (Wizard)..."
 
-#: src/modules/reguser/dialog.cpp:237
+#: src/modules/reguser/dialog.cpp:242
 msgid "Add a registered user by means of a user-friendly wizard."
 msgstr "Aggiungi un utente registrato usando il wizard."
 
@@ -211,42 +211,42 @@ msgstr "Aggiungi un utente registrato usando il wizard."
 msgid "Add this user to the notify list"
 msgstr "Aggiungi questo utente alla notify list"
 
-#: src/modules/reguser/dialog.cpp:248
+#: src/modules/reguser/dialog.cpp:253
 msgid "Adds a new group"
 msgstr "Aggiunge un nuovo gruppo"
 
-#: src/modules/reguser/edituser.cpp:441
+#: src/modules/reguser/edituser.cpp:424
 msgid "All Properties..."
 msgstr "Tutte le Proprietà..."
 
-#: src/modules/reguser/edituser.cpp:426
+#: src/modules/reguser/edituser.cpp:409
 msgid "Avatar"
 msgstr "Avatar"
 
-#: src/modules/reguser/dialog.cpp:777
+#: src/modules/reguser/dialog.cpp:804
 msgid "Can't export the registered users database: Write error."
 msgstr ""
 "Impossibile esportare il database degli utenti registrati: errore di "
 "scrittura."
 
-#: src/modules/reguser/dialog.cpp:884
+#: src/modules/reguser/dialog.cpp:917
 msgid "Can't import the registered users database: Read error."
 msgstr ""
 "Impossibile esportare il database degli utenti registrati: errore di lettura."
 
-#: src/modules/reguser/dialog.cpp:698
+#: src/modules/reguser/dialog.cpp:726
 msgid "Can't open file %Q for writing."
 msgstr "Impossibile aprire il file %Q in scrittura."
 
-#: src/modules/reguser/dialog.cpp:798
+#: src/modules/reguser/dialog.cpp:830
 #, c-format
 msgid "Can't open file %s for reading."
 msgstr "Impossibile aprire il file %s in lettura."
 
-#: src/modules/reguser/edituser.cpp:117
-#: src/modules/reguser/edituser.cpp:278
-#: src/modules/reguser/edituser.cpp:486
-#: src/modules/reguser/dialog.cpp:292
+#: src/modules/reguser/dialog.cpp:302
+#: src/modules/reguser/edituser.cpp:118
+#: src/modules/reguser/edituser.cpp:262
+#: src/modules/reguser/edituser.cpp:469
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -255,37 +255,37 @@ msgstr "Annulla"
 msgid "Channel: %c%s@%s"
 msgstr "Canale: %c%s@%s"
 
-#: src/modules/reguser/dialog.cpp:691
-#: src/modules/reguser/dialog.cpp:791
+#: src/modules/reguser/dialog.cpp:719
+#: src/modules/reguser/dialog.cpp:823
 msgid "Choose a Filename - KVIrc"
 msgstr "Scegli un File - KVIrc"
 
-#: src/modules/reguser/edituser.cpp:348
 #: src/modules/reguser/dialog.cpp:134
+#: src/modules/reguser/edituser.cpp:332
 msgid "Comment:"
 msgstr "Commento:"
 
-#: src/modules/reguser/dialog.cpp:494
-#: src/modules/reguser/dialog.cpp:497
-#: src/modules/reguser/dialog.cpp:498
-#: src/modules/reguser/dialog.cpp:500
-#: src/modules/reguser/dialog.cpp:502
+#: src/modules/reguser/dialog.cpp:520
+#: src/modules/reguser/dialog.cpp:523
+#: src/modules/reguser/dialog.cpp:524
+#: src/modules/reguser/dialog.cpp:526
+#: src/modules/reguser/dialog.cpp:528
 msgid "Default"
 msgstr "Predefinito"
 
-#: src/modules/reguser/dialog.cpp:261
+#: src/modules/reguser/dialog.cpp:266
 msgid "Edit the first selected entry."
 msgstr "Modifica la prima voce selezionata."
 
-#: src/modules/reguser/edituser.cpp:454
+#: src/modules/reguser/edituser.cpp:437
 msgid "Enable ignore for this user"
 msgstr "Abilita ignore per questo utente"
 
-#: src/modules/reguser/dialog.cpp:267
+#: src/modules/reguser/dialog.cpp:277
 msgid "Export To..."
 msgstr "Esporta Su..."
 
-#: src/modules/reguser/dialog.cpp:270
+#: src/modules/reguser/dialog.cpp:280
 msgid ""
 "Export the selected entries to a file.<br>All the data associated with the "
 "selected registered users will be exported.<br>You (or anyone else) can "
@@ -299,52 +299,52 @@ msgstr ""
 msgid "Flags"
 msgstr "Parametri"
 
-#: src/modules/reguser/dialog.cpp:397
-#: src/modules/reguser/dialog.cpp:410
+#: src/modules/reguser/dialog.cpp:411
+#: src/modules/reguser/dialog.cpp:424
 msgid "Group name:"
 msgstr "Nome gruppo:"
 
-#: src/modules/reguser/edituser.cpp:388
+#: src/modules/reguser/edituser.cpp:372
 msgid "Identity"
 msgstr "Identità"
 
-#: src/modules/reguser/edituser.cpp:484
+#: src/modules/reguser/edituser.cpp:467
 msgid "Ignore"
 msgstr "Ignora"
 
-#: src/modules/reguser/edituser.cpp:472
+#: src/modules/reguser/edituser.cpp:455
 msgid "Ignore CTCP messages"
 msgstr "Ignora messaggi CTCP"
 
-#: src/modules/reguser/edituser.cpp:478
+#: src/modules/reguser/edituser.cpp:461
 msgid "Ignore DCCs"
 msgstr "Ignora DCC"
 
-#: src/modules/reguser/edituser.cpp:466
+#: src/modules/reguser/edituser.cpp:449
 msgid "Ignore channel messages"
 msgstr "Ignora messaggi del canale"
 
-#: src/modules/reguser/edituser.cpp:456
+#: src/modules/reguser/edituser.cpp:439
 msgid "Ignore features"
 msgstr "Caratteristiche ignore"
 
-#: src/modules/reguser/edituser.cpp:475
+#: src/modules/reguser/edituser.cpp:458
 msgid "Ignore invites"
 msgstr "Ignora inviti"
 
-#: src/modules/reguser/edituser.cpp:469
+#: src/modules/reguser/edituser.cpp:452
 msgid "Ignore notice messages"
 msgstr "Ignora messaggi notice"
 
-#: src/modules/reguser/edituser.cpp:463
+#: src/modules/reguser/edituser.cpp:446
 msgid "Ignore query messages"
 msgstr "Ignora i messaggi in query"
 
-#: src/modules/reguser/dialog.cpp:274
+#: src/modules/reguser/dialog.cpp:284
 msgid "Import From..."
 msgstr "Importa Da..."
 
-#: src/modules/reguser/dialog.cpp:276
+#: src/modules/reguser/dialog.cpp:286
 msgid ""
 "Import entries from a file exported earlier by the \"export\" function of "
 "this dialog."
@@ -352,7 +352,7 @@ msgstr ""
 "Importa le voci da un file precedentemente esportato dalla funzione \"esporta"
 "\" di questo dialog."
 
-#: src/modules/reguser/edituser.cpp:232
+#: src/modules/reguser/edituser.cpp:216
 msgid ""
 "Insert a mask for this user.<br>It can contain the wildcard characters '*' "
 "and '?'."
@@ -372,15 +372,15 @@ msgstr "Maschera %Q già usata per identificare l'utente %s"
 msgid "Mask %Q not found"
 msgstr "Maschera %Q non trovata"
 
-#: src/modules/reguser/edituser.cpp:228
+#: src/modules/reguser/edituser.cpp:212
 msgid "Mask Editor"
 msgstr "Editor Maschera"
 
-#: src/modules/reguser/edituser.cpp:358
+#: src/modules/reguser/edituser.cpp:342
 msgid "Masks:"
 msgstr "Maschere:"
 
-#: src/modules/reguser/dialog.cpp:453
+#: src/modules/reguser/dialog.cpp:479
 msgid "Move to group"
 msgstr "Sposta nel gruppo"
 
@@ -388,7 +388,7 @@ msgstr "Sposta nel gruppo"
 msgid "Name"
 msgstr "Nome"
 
-#: src/modules/reguser/edituser.cpp:342
+#: src/modules/reguser/edituser.cpp:326
 msgid "Name:"
 msgstr "Nome:"
 
@@ -404,7 +404,7 @@ msgstr "Nickname:"
 msgid "No comment set"
 msgstr "Nessun commento impostato"
 
-#: src/modules/reguser/dialog.cpp:685
+#: src/modules/reguser/dialog.cpp:713
 msgid "No entries selected."
 msgstr "Nessuna voce selezionata."
 
@@ -439,23 +439,23 @@ msgstr "Notifica come:"
 msgid "Notify disabled"
 msgstr "Notifica disabilitata"
 
-#: src/modules/reguser/edituser.cpp:397
+#: src/modules/reguser/edituser.cpp:381
 msgid "Notify nicknames:"
 msgstr "Notifica i nickname:"
 
-#: src/modules/reguser/edituser.cpp:394
+#: src/modules/reguser/edituser.cpp:378
 msgid "Notify when user is online"
 msgstr "Notifica quando l'utente è online"
 
-#: src/modules/reguser/dialog.cpp:243
+#: src/modules/reguser/dialog.cpp:248
 msgid "Open the edit dialog to create a new user entry."
 msgstr "Apri il dialog di modifica per creare una nuova voce utente."
 
-#: src/modules/reguser/edituser.cpp:448
+#: src/modules/reguser/edituser.cpp:431
 msgid "Properties"
 msgstr "Proprietà"
 
-#: src/modules/reguser/edituser.cpp:90
+#: src/modules/reguser/edituser.cpp:91
 msgid "Property"
 msgstr "Proprietà"
 
@@ -463,16 +463,16 @@ msgstr "Proprietà"
 msgid "Property Editor"
 msgstr "Editor Proprietà"
 
-#: src/modules/reguser/edituser.cpp:375
-#: src/modules/reguser/dialog.cpp:251
+#: src/modules/reguser/dialog.cpp:256
+#: src/modules/reguser/edituser.cpp:359
 msgid "Re&move"
 msgstr "Rimuovi"
 
-#: src/modules/reguser/edituser.cpp:336
+#: src/modules/reguser/edituser.cpp:320
 msgid "Registered User Entry"
 msgstr "Voce Utente Registrato"
 
-#: src/modules/reguser/dialog.cpp:218
+#: src/modules/reguser/dialog.cpp:223
 msgid "Registered Users - KVIrc"
 msgstr "Utenti Registrati - KVIrc"
 
@@ -488,9 +488,17 @@ msgstr "Esportazione del database degli utenti registrati:"
 msgid "Registration Complete"
 msgstr "Registrazione Completata"
 
-#: src/modules/reguser/dialog.cpp:254
+#: src/modules/reguser/dialog.cpp:259
 msgid "Remove the currently selected entries."
 msgstr "Rimuovi le voci selezionate."
+
+#: src/modules/reguser/dialog.cpp:272
+msgid "Select all"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:274
+msgid "Select all the entries"
+msgstr ""
 
 #: src/modules/reguser/wizard.cpp:97
 msgid "Step 1: Entry Name"
@@ -512,14 +520,14 @@ msgstr "Passo 4: Lista di Notifica"
 msgid "Store an avatar for this user"
 msgstr "Imposta un avatar per questo utente"
 
-#: src/modules/reguser/dialog.cpp:816
+#: src/modules/reguser/dialog.cpp:848
 #, c-format
 msgid "The file %s contains an invalid registered users database version."
 msgstr ""
 "Il file %s contiene una versione invalida del database degli utenti "
 "registrati."
 
-#: src/modules/reguser/dialog.cpp:809
+#: src/modules/reguser/dialog.cpp:841
 #, c-format
 msgid "The file %s doesn't appear to be a valid registered users database."
 msgstr "Il file %s non sembra un valido database degli utenti registrati."
@@ -534,7 +542,7 @@ msgstr "%d canali totali"
 msgid "Total: %d matching users (of %d in the database)"
 msgstr "Totale: %d utenti matchano (di %d nel database)"
 
-#: src/modules/reguser/edituser.cpp:433
+#: src/modules/reguser/edituser.cpp:416
 msgid "Use custom color in userlist"
 msgstr "Usa colori personalizzati nella lista utenti"
 
@@ -557,6 +565,6 @@ msgstr "Utente già registrato: trovato lo stesso nome"
 msgid "User not found (%Q)"
 msgstr "Utente non trovato (%Q)"
 
-#: src/modules/reguser/edituser.cpp:91
+#: src/modules/reguser/edituser.cpp:92
 msgid "Value"
 msgstr "Valore"

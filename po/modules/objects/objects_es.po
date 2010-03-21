@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-09 04:29+0100\n"
+"POT-Creation-Date: 2010-03-21 14:37+0100\n"
 "PO-Revision-Date: 2009-11-29 12:18+0100\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -106,10 +106,10 @@ msgid "Block parameter must be a string or a memorybuffer object"
 msgstr ""
 "El parámetro de bloque debe ser una cadena o un objeto de búfer de memoria"
 
-#: src/modules/objects/class_pixmap.cpp:279
 #: src/modules/objects/class_socket.cpp:438
 #: src/modules/objects/class_file.cpp:374
 #: src/modules/objects/class_file.cpp:508
+#: src/modules/objects/class_pixmap.cpp:279
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr "El parámetro de búfer no es un objeto de búfer de memoria"
 
@@ -117,11 +117,11 @@ msgstr "El parámetro de búfer no es un objeto de búfer de memoria"
 msgid "Buffer parameter is not a memorybuffer or file object"
 msgstr "El parámetro de búfer no es un búfer de memoria o un objeto de archivo"
 
-#: src/modules/objects/class_pixmap.cpp:274
 #: src/modules/objects/class_socket.cpp:433
 #: src/modules/objects/class_socket.cpp:504
 #: src/modules/objects/class_file.cpp:369
 #: src/modules/objects/class_file.cpp:489
+#: src/modules/objects/class_pixmap.cpp:274
 msgid "Buffer parameter is not an object"
 msgstr "El parámetro de búfer no es un objeto"
 
@@ -133,11 +133,11 @@ msgstr "Buttongroup sólo soporta objetos checkbox y radiobox"
 msgid "Can't add a non-popupmenu object"
 msgstr "No se puede añadir un objeto que no sea un popupmenu"
 
-#: src/modules/objects/class_widget.cpp:1777
 #: src/modules/objects/class_wizard.cpp:146
 #: src/modules/objects/class_wizard.cpp:168
 #: src/modules/objects/class_window.cpp:143
 #: src/modules/objects/class_window.cpp:148
+#: src/modules/objects/class_widget.cpp:1777
 msgid "Can't add a non-widget object"
 msgstr "No se puede añadir un objeto que no sea un widget"
 
@@ -281,9 +281,9 @@ msgid "Host '%Q' is not a valid url"
 msgstr "El host '%Q' no es una url válida"
 
 #: src/modules/objects/class_multilineedit.cpp:1082
+#: src/modules/objects/class_tbrowser.cpp:103
 #: src/modules/objects/class_pixmap.cpp:188
 #: src/modules/objects/class_pixmap.cpp:224
-#: src/modules/objects/class_tbrowser.cpp:103
 msgid "I can't find the specified file '%Q'."
 msgstr "No puedo encontrar el archivo '%Q'."
 
@@ -356,11 +356,11 @@ msgstr ""
 msgid "Invalid parameters"
 msgstr "Parámetros no válidos"
 
-#: src/modules/objects/class_layout.cpp:267
+#: src/modules/objects/class_layout.cpp:269
 msgid "Invalid resize mode defaulting to Auto"
 msgstr "Modo de redimensionado no válido, poniendo Auto"
 
-#: src/modules/objects/class_treewidget.cpp:401
+#: src/modules/objects/class_treewidget.cpp:414
 msgid "Invalid selection mode '%Q'"
 msgstr "Modo de selección '%Q' no válido"
 
@@ -377,10 +377,10 @@ msgstr "Dirección de socket no válida"
 msgid "Invalid socket object specified (it doesn't inherit from socket)"
 msgstr "Objeto de socket no válido (no hereda del socket)"
 
-#: src/modules/objects/class_combobox.cpp:175
-#: src/modules/objects/class_combobox.cpp:192
 #: src/modules/objects/class_listwidget.cpp:188
 #: src/modules/objects/class_listwidget.cpp:206
+#: src/modules/objects/class_combobox.cpp:175
+#: src/modules/objects/class_combobox.cpp:192
 #, c-format
 msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
 msgstr ""
@@ -422,9 +422,9 @@ msgstr "No hay petición de conexión abierta"
 msgid "No socket object specified"
 msgstr "Ningún objeto de socket especificado"
 
+#: src/modules/objects/class_listwidget.cpp:185
 #: src/modules/objects/class_combobox.cpp:172
 #: src/modules/objects/class_combobox.cpp:280
-#: src/modules/objects/class_listwidget.cpp:185
 msgid "No string parameter given - using empty string"
 msgstr "Ningun parámetro de cadena dado - usando una cadena vacía"
 
@@ -495,13 +495,13 @@ msgstr "Uno de los parámetros del array de colores no es un entero"
 msgid "One of the colors array parameters is empty"
 msgstr "Uno de los parámetros del array de colores está vacío"
 
-#: src/modules/objects/class_painter.cpp:560
 #: src/modules/objects/class_widget.cpp:1145
+#: src/modules/objects/class_painter.cpp:560
 msgid "One of the geometry array parameters didn't evaluate to an integer"
 msgstr "Uno de los parámetros del array geométrico no es un entero"
 
-#: src/modules/objects/class_painter.cpp:555
 #: src/modules/objects/class_widget.cpp:1140
+#: src/modules/objects/class_painter.cpp:555
 msgid "One of the geometry array parameters is empty"
 msgstr "Uno de los parámetros del array geométrico está vacío"
 
@@ -540,8 +540,8 @@ msgstr "El padre debe ser un objeto widget"
 msgid "Pixmap object or image Id required"
 msgstr "Objeto pixmap o ID de imagen requerida"
 
-#: src/modules/objects/class_painter.cpp:1198
 #: src/modules/objects/class_widget.cpp:1871
+#: src/modules/objects/class_painter.cpp:1198
 msgid "Pixmap object required"
 msgstr "Objeto pixmap requerido"
 
@@ -549,8 +549,8 @@ msgstr "Objeto pixmap requerido"
 msgid "Pixmap or Widget parameter is not an object"
 msgstr "El parámetro widget o el pixmap no son un objeto"
 
-#: src/modules/objects/class_painter.cpp:1193
 #: src/modules/objects/class_widget.cpp:1866
+#: src/modules/objects/class_painter.cpp:1193
 msgid "Pixmap parameter is not an object"
 msgstr "El parámetro pixmap no es un objeto"
 
@@ -587,22 +587,22 @@ msgstr "Error en la creación del socket"
 msgid "The added widget is not a child of this dock window"
 msgstr "El widget añadido no es hijo de esta ventana dock"
 
-#: src/modules/objects/class_painter.cpp:582
 #: src/modules/objects/class_widget.cpp:1583
 #: src/modules/objects/class_widget.cpp:1640
+#: src/modules/objects/class_painter.cpp:582
 msgid "The array passed as parameter must contain at least 2 elements"
 msgstr "El array pasado debe contener al menos 2 elementos"
 
-#: src/modules/objects/class_painter.cpp:616
 #: src/modules/objects/class_widget.cpp:1225
 #: src/modules/objects/class_widget.cpp:1307
 #: src/modules/objects/class_multilineedit.cpp:805
 #: src/modules/objects/class_multilineedit.cpp:1005
+#: src/modules/objects/class_painter.cpp:616
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr "El array pasado debe contener al menos 3 elementos"
 
-#: src/modules/objects/class_painter.cpp:546
 #: src/modules/objects/class_widget.cpp:1127
+#: src/modules/objects/class_painter.cpp:546
 msgid "The array passed as parameter must contain at least 4 elements"
 msgstr "El array pasado debe contener al menos 4 elementos"
 
@@ -615,9 +615,6 @@ msgstr "La clase '%Q' no existe"
 msgid "The file '%Q' does not exist"
 msgstr "El archivo '%Q' no existe"
 
-#: src/modules/objects/class_painter.cpp:572
-#: src/modules/objects/class_painter.cpp:606
-#: src/modules/objects/class_painter.cpp:650
 #: src/modules/objects/class_widget.cpp:1160
 #: src/modules/objects/class_widget.cpp:1282
 #: src/modules/objects/class_widget.cpp:1364
@@ -625,6 +622,9 @@ msgstr "El archivo '%Q' no existe"
 #: src/modules/objects/class_widget.cpp:1664
 #: src/modules/objects/class_multilineedit.cpp:855
 #: src/modules/objects/class_multilineedit.cpp:1055
+#: src/modules/objects/class_painter.cpp:572
+#: src/modules/objects/class_painter.cpp:606
+#: src/modules/objects/class_painter.cpp:650
 msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr "El primer parámetro no es ni un array ni un entero"
 
@@ -692,7 +692,7 @@ msgstr "¡La barra de herramientas no puede ser un widget padre!"
 msgid "The widget must be a child of this hbox"
 msgstr "El widget debe ser hijo de este hbox"
 
-#: src/modules/objects/class_layout.cpp:288
+#: src/modules/objects/class_layout.cpp:290
 msgid "The widget must be a child of this layout"
 msgstr "El widget debe ser hijo de este layout"
 
@@ -731,7 +731,7 @@ msgstr "Valor de tipo %Q no soportado"
 msgid "Unknown '%Q' background mode"
 msgstr "Modo de fondo '%Q' desconocido"
 
-#: src/modules/objects/class_treewidget.cpp:416
+#: src/modules/objects/class_treewidget.cpp:429
 msgid "Unknown '%Q' sort order: switching to ascending order"
 msgstr "Modo de orden '%Q' desconocido: cambiando a orden ascendente"
 
@@ -743,15 +743,15 @@ msgstr "Grupo de colores '%Q'"
 msgid "Unknown Color Role '%Q'"
 msgstr "Regla de colores '%Q' desconocida"
 
-#: src/modules/objects/class_label.cpp:272
 #: src/modules/objects/class_multilineedit.cpp:1117
-#: src/modules/objects/class_hbox.cpp:197
 #: src/modules/objects/class_groupbox.cpp:315
+#: src/modules/objects/class_hbox.cpp:197
+#: src/modules/objects/class_label.cpp:272
 msgid "Unknown alignment '%Q'"
 msgstr "Alineamiento desconocido '%Q'"
 
+#: src/modules/objects/class_layout.cpp:309
 #: src/modules/objects/class_vbox.cpp:203
-#: src/modules/objects/class_layout.cpp:307
 msgid "Unknown alignment: '%Q'"
 msgstr "Alineamiento desconocido: '%Q'"
 
@@ -776,8 +776,8 @@ msgstr "Opción de objeto '%Q' desconocido"
 msgid "Unknown mode '%Q'"
 msgstr "Modo '%Q' desconocido"
 
-#: src/modules/objects/class_slider.cpp:282
 #: src/modules/objects/class_groupbox.cpp:348
+#: src/modules/objects/class_slider.cpp:282
 msgid "Unknown orientation '%Q'"
 msgstr "Orientación '%Q' desconocido"
 
@@ -793,8 +793,8 @@ msgstr "Posición '%Q' desconocida"
 msgid "Unknown segment style '%Q'"
 msgstr "Estilo del segmento '%Q' desconocido"
 
-#: src/modules/objects/class_label.cpp:326
 #: src/modules/objects/class_widget.cpp:1742
+#: src/modules/objects/class_label.cpp:326
 msgid "Unknown style '%Q'"
 msgstr "Estilo '%Q' desconocido"
 
@@ -840,12 +840,12 @@ msgstr ""
 msgid "Warning near line %d, column %d"
 msgstr "Atención cerca de la línea %d, columna %d"
 
-#: src/modules/objects/class_mainwindow.cpp:97
 #: src/modules/objects/class_wizard.cpp:189
 #: src/modules/objects/class_wizard.cpp:208
 #: src/modules/objects/class_wizard.cpp:229
 #: src/modules/objects/class_wizard.cpp:249
 #: src/modules/objects/class_wizard.cpp:269
+#: src/modules/objects/class_mainwindow.cpp:97
 #: src/modules/objects/object_macros.h:120
 msgid "Widget object required"
 msgstr "Objeto widget requerido "
