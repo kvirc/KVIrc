@@ -61,7 +61,7 @@
 	#define KVI_HOME_CONFIG_FILE_NAME ".kvirc4.rc"
 #endif
 
-#define KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME "download"
+#define KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME "Downloads"
 
 #define KVI_DEFAULT_NICKNAME1 "newbie"
 #define KVI_DEFAULT_NICKNAME2 "%nick%|2"
