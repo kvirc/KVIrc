@@ -1058,20 +1058,20 @@ static bool chan_kvs_fnc_users(KviKvsModuleFunctionCall * c)
 	KviUserListEntry * e = ch->userListView()->firstItem(); // Thnx Julien :)
 
 	bool bCheckMask = !szMask.isEmpty();
-	bool bOp = szFlags.indexOf('o',Qt::CaseSensitive) != -1;
-	bool bVoice = szFlags.indexOf('v',Qt::CaseSensitive) != -1;
-	bool bHalfOp = szFlags.indexOf('h',Qt::CaseSensitive) != -1;
-	bool bChanAdmins = szFlags.indexOf('a',Qt::CaseSensitive) != -1;
-	bool bUserOp = szFlags.indexOf('u',Qt::CaseSensitive) != -1;
-	bool bNone = szFlags.indexOf('n',Qt::CaseSensitive) != -1;
+	bool bOp = szFlags.contains(QChar('o'),Qt::CaseSensitive);
+	bool bVoice = szFlags.contains(QChar('v'),Qt::CaseSensitive);
+	bool bHalfOp = szFlags.contains(QChar('h'),Qt::CaseSensitive);
+	bool bChanAdmins = szFlags.contains(QChar('a'),Qt::CaseSensitive);
+	bool bUserOp = szFlags.contains(QChar('u'),Qt::CaseSensitive);
+	bool bNone = szFlags.contains(QChar('n'),Qt::CaseSensitive);
 	bool bCheckFlags = bOp || bVoice || bHalfOp || bNone || bChanAdmins || bUserOp;
-	bool bAddMask = szFlags.indexOf('m',Qt::CaseSensitive) != -1;
+	bool bAddMask = szFlags.contains(QChar('m'),Qt::CaseSensitive);
 
 	int idx = 0;
 
 	if(bAddMask || bCheckFlags || bCheckMask)
 	{
-		bool bMaskMustMatch = szFlags.indexOf('i',Qt::CaseSensitive) == -1;
+		bool bMaskMustMatch = szFlags.contains(QChar('i'),Qt::CaseSensitive);
 		KviIrcMask mask(szMask);
 
 		while(e)
