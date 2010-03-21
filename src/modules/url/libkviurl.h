@@ -139,12 +139,6 @@ class KviUrlAction : public KviKvsAction
 public:
 	KviUrlAction(QObject * pParent);
 	~KviUrlAction();
-protected:
-	QPixmap * m_pBigIcon;
-	QPixmap * m_pSmallIcon;
-public:
-	virtual QPixmap * bigIcon();
-	virtual QPixmap * smallIcon();
 };
 
 #endif

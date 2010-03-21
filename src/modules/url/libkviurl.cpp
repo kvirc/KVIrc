@@ -23,7 +23,6 @@
 //=============================================================================
 
 #include "libkviurl.h"
-#include "icons.h"
 
 #include "kvi_module.h"
 #include "kvi_app.h"
@@ -50,7 +49,6 @@
 #include <QMouseEvent>
 #include <QPainter>
 
-static QPixmap * g_pUrlIconPixmap = 0;
 static KviUrlAction * g_pUrlAction = 0;
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -144,26 +142,15 @@ KviUrlAction::KviUrlAction(QObject * pParent)
 	"url.list",
 	__tr2qs("Show URL List"),
 	__tr2qs("Shows the URL list window"),
-	KviActionManager::categoryGeneric())
+	KviActionManager::categoryGeneric(),
+	"kvi_bigicon_www.png",
+	KVI_SMALLICON_URL
+	)
 {
-	m_pBigIcon = new QPixmap(url_toolbar_xpm);
-	m_pSmallIcon = new QPixmap(url_icon_xpm);
 }
 
 KviUrlAction::~KviUrlAction()
 {
-	delete m_pBigIcon;
-	delete m_pSmallIcon;
-}
-
-QPixmap * KviUrlAction::bigIcon()
-{
-	return m_pBigIcon;
-}
-
-QPixmap * KviUrlAction::smallIcon()
-{
-	return m_pSmallIcon;
 }
 
 // ---------------------------- CLASS URLDIALOG ------------------------begin //
@@ -357,9 +344,7 @@ void UrlDialog::sayToWin(QAction * act)
 
 QPixmap *UrlDialog::myIconPtr()
 {
-	//QPixmap *icon = new QPixmap(url_icon_xpm);
-	//return icon;
-	return g_pUrlIconPixmap;
+	return g_pIconManager->getSmallIcon(KVI_SMALLICON_URL);
 }
 
 void UrlDialog::addUrl(QString url, QString window, QString count, QString timestamp)
@@ -886,8 +871,6 @@ static bool url_module_init(KviModule *m)
 	g_pBanList = new KviPointerList<QString>;
 	g_pBanList->setAutoDelete(true);
 
-	g_pUrlIconPixmap = new QPixmap(url_icon_xpm);
-
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"list",url_kvs_cmd_list);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"config",url_kvs_cmd_config);
 	g_pUrlAction = new KviUrlAction(KviActionManager::instance());
@@ -925,10 +908,6 @@ static bool url_module_cleanup(KviModule *)
 	g_pUrlDlgList = 0;
 	delete g_pUrlAction;
 	g_pUrlAction = 0;
-
-
-	delete g_pUrlIconPixmap;
-	g_pUrlIconPixmap = 0;
 
 	return true;
 }
