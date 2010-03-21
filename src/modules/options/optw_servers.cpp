@@ -779,7 +779,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 	m_pEnableSASLCheck = new QCheckBox(__tr2qs_ctx("Enable SASL authentication","options"),tab);
 	gl->addWidget(m_pEnableSASLCheck,13,0,1,2);
-	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("<center>This check enables the use of the <b>SASL</b> authentication procotol" \
+	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("<center>This check enables the use of the <b>SASL</b> authentication procotol " \
 		"If you enable the proper global option in the Connection/SSL tab and fill the Sasl Nickname and Sasl Password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
 	m_pEnableSASLCheck->setChecked(s->enabledSASL());
 
