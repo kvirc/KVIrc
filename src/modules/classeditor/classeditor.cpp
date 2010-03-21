@@ -1056,9 +1056,14 @@ void KviClassEditor::getExportClassBuffer(QString &buffer,KviClassEditorTreeWidg
 	KviCommandFormatter::blockFromBuffer(szBuf);
 	QString szNam = buildFullClassName(it);
 
-	buffer = "class(";
+	buffer = "class(\"";
 	buffer += szNam;
-	buffer += ")\n{\n";
+	if(!it->InheritsClass().isEmpty())
+	{
+		buffer+="\",\"";
+		buffer+=it->InheritsClass();
+	}
+	buffer += "\")\n{\n";
 	for(int i=0;i<it->childCount();i++)
 	{
 		KviClassEditorTreeWidgetItem * pFunction= (KviClassEditorTreeWidgetItem *)it->child(i);
