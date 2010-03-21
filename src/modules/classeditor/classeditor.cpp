@@ -1049,18 +1049,30 @@ void KviClassEditor::slotReplaceAll(const QString &szFind,const QString &szRepla
 		recursiveSearchReplace(szFind,(KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i),true,szReplace);
 	}
 }
-
+*/
 void KviClassEditor::getExportClassBuffer(QString &buffer,KviClassEditorTreeWidgetItem * it)
 {
 	QString szBuf = it->buffer();
 	KviCommandFormatter::blockFromBuffer(szBuf);
-	QString szNam = buildFullItemName(it);
+	QString szNam = buildFullClassName(it);
 
 	buffer = "class(";
 	buffer += szNam;
-	buffer += ")\n";
-	buffer += szBuf;
-	buffer += "\n";
+	buffer += ")\n{\n";
+	for(int i=0;i<it->childCount();i++)
+	{
+		KviClassEditorTreeWidgetItem * pFunction= (KviClassEditorTreeWidgetItem *)it->child(i);
+		if(pFunction->isMethod())
+		{
+			buffer += "\tfunction ";
+			buffer += pFunction->name();
+			buffer += "\n\t{\n";
+			buffer += pFunction->buffer();
+			buffer += "\n\t}\n";
+		}
+		i++;
+	}
+	buffer += "}\n";
 }
 
 void KviClassEditor::exportAll()
@@ -1103,21 +1115,20 @@ void KviClassEditor::exportSelectionInSinglesFiles(KviPointerList<KviClassEditor
 	{
 		QString tmp;
 		getExportClassBuffer(tmp,it);
-		QString szFileName=buildFullItemName(it);
+		QString szFileName=buildFullClassName(it);
 		szFileName += ".kvs";
 		szFileName.replace("::","_");
 		QString szCompletePath=m_szDir+szFileName;
 		if (KviFileUtils::fileExists(szCompletePath) && !bReplaceAll)
 		{
-		QString szMsg;
-		KviQString::sprintf(szMsg,__tr2qs_ctx("The file \"%Q\" exists. Do you want to replace it ?","editor"),&szFileName);
-		int ret = QMessageBox::question(this,__tr2qs_ctx("Replace file","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
-		if (ret!=2)
-		{
-			KviFileUtils::writeFile(szCompletePath,tmp);
-			if (ret==1) bReplaceAll=true;
-		}
-
+			QString szMsg;
+			KviQString::sprintf(szMsg,__tr2qs_ctx("The file \"%Q\" exists. Do you want to replace it ?","editor"),&szFileName);
+			int ret = QMessageBox::question(this,__tr2qs_ctx("Replace file","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
+			if (ret!=2)
+			{
+				KviFileUtils::writeFile(szCompletePath,tmp);
+				if (ret==1) bReplaceAll=true;
+			}
 		}
 		else
 		KviFileUtils::writeFile(szCompletePath,tmp);
@@ -1168,7 +1179,7 @@ void KviClassEditor::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 
 	if (count==1)
 	{
-			QString tmp=buildFullItemName(tempitem);
+			QString tmp=buildFullClassName(tempitem);
 			szNameFile = tmp.replace("::","_");
 	}
 	else szNameFile="classes";
@@ -1189,7 +1200,6 @@ void KviClassEditor::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 		g_pClassEditorModule->unlock();
 	}
 }
-*/
 
 void KviClassEditor::saveProperties(KviConfig * cfg)
 {
@@ -1212,7 +1222,6 @@ void KviClassEditor::loadProperties(KviConfig * cfg)
 	activateItem(it);
 }
 
-/*
 void KviClassEditor::appendSelectedClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l)
 {
 	QList<QTreeWidgetItem *> list=m_pTreeWidget->selectedItems();
@@ -1269,7 +1278,7 @@ void KviClassEditor::appendAllClassItemsRecursive(KviPointerList<KviClassEditorT
         }
 
 }
-
+/*
 void KviClassEditor::removeItemChildren(KviClassEditorTreeWidgetItem *it)
 {
         while(it->childCount() > 0)

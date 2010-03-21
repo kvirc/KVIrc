@@ -145,31 +145,30 @@ public:
         void saveNotBuiltClasses();
         void loadNotBuiltClasses();
 	bool functionExists(const QString &szFunctionName, KviClassEditorTreeWidgetItem *pClass);
-    /*
+
         void exportClasses(bool,bool=false);
         void exportSelectionInSinglesFiles(KviPointerList<KviClassEditorTreeWidgetItem> *l);
 
+	//static void splitFullClassOrNamespaceName(const QString &szFullName,QStringList &lNamespaces,QString &szName);
 
-	static void splitFullClassOrNamespaceName(const QString &szFullName,QStringList &lNamespaces,QString &szName);
-        */
 protected slots:
 
-       void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *);
-       void customContextMenuRequested(QPoint);
-       void newClass();
-       void newNamespace();
-       void newMemberFunction();
-       void renameFunction();
-       KviClassEditorTreeWidgetItem * newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType);
+	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *);
+	void customContextMenuRequested(QPoint);
+	void newClass();
+	void newNamespace();
+	void newMemberFunction();
+	void renameFunction();
+	KviClassEditorTreeWidgetItem * newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType);
 
 	 void renameItem();
-/*
+
 
 	void exportAll();
 	void exportSelectedSepFiles();
 	void exportSelected();
         void removeSelectedItems();
-
+/*
 
 
 	void slotFind();
@@ -187,16 +186,17 @@ protected:
 	void recursiveSearchReplace(const QString &szSearch,KviClassEditorTreeWidgetItem * it,bool bReplace=false,const QString &szReplace="n");
 
 	void recursiveCommit(KviClassEditorTreeWidgetItem * it);
-        void getExportClassBuffer(QString &buffer,KviClassEditorTreeWidgetItem * it);
         */
+	void getExportClassBuffer(QString &buffer,KviClassEditorTreeWidgetItem * it);
+
 	void oneTimeSetup();
 	void saveLastEditedItem();
-        /*void getUniqueItemName(KviClassEditorTreeWidgetItem *item,QString &buffer,KviClassEditorTreeWidgetItem::Type eType);
-        void appendSelectedClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
-        void appendSelectedClassItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
-        void appendAllClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
-        void appendAllClassItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
-*/
+	//void getUniqueItemName(KviClassEditorTreeWidgetItem *item,QString &buffer,KviClassEditorTreeWidgetItem::Type eType);
+	void appendSelectedClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
+	void appendSelectedClassItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
+	void appendAllClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
+	void appendAllClassItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
+
 	void openParentItems(QTreeWidgetItem * it);
 	void activateItem(QTreeWidgetItem * it);
         bool hasSelectedItems();
