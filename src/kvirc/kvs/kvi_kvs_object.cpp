@@ -511,8 +511,6 @@
 		will be called at each <timeout>. The <timeout> is in milliseconds.
 		!fn: $killTimer(<timer id>)
 		Stops the timer specified by <timer id>.
-		!fn: $killTimers()
-		Stops all the builtin timers running.
 		!fn: $className()
 		Returns the class name of this object instance
 		!fn: $findChild(<class>,<name>)
