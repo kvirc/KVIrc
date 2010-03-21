@@ -2,19 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Markus Rennings <kvirc@mrmx.de>, 2008.
+# Markus Rennings <kvirc@mrmx.de>, 2008, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-21 14:37+0100\n"
-"PO-Revision-Date: 2008-11-30 19:56+0100\n"
+"PO-Revision-Date: 2010-03-21 14:57+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
-"Language-Team: german <de@li.org>\n"
+"Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/kvirc/kvs/kvi_kvs_object.cpp:1078
@@ -203,12 +203,11 @@ msgid "Class '%Q' is not defined"
 msgstr "Klasse '%Q' ist nicht definiert"
 
 #: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:109
-#, fuzzy
 msgid ""
 "Class names can contain only letters, digits, underscores and '::' namespace "
 "separators"
 msgstr ""
-"Aliasnamen können nur Buchstaben, Ziffern, Unterstriche und ::-"
+"Klassennamen können nur Buchstaben, Ziffern, Unterstriche und ::-"
 "Namensraumseperatoren enthalten"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:249
@@ -982,9 +981,8 @@ msgstr ""
 "Gleichheitszeichen gehören"
 
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:278
-#, fuzzy
 msgid "The alias '%Q' does not exist"
-msgstr "Das Alias %Q existiert nicht"
+msgstr "Das Alias ›%Q‹ existiert nicht"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1086
 msgid ""
@@ -1424,12 +1422,11 @@ msgid "Unexpected character '%q' (unicode %x)"
 msgstr "Unerwartetes Zeichen '%q' (Unicode %x)"
 
 #: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:77
-#, fuzzy
 msgid ""
 "Unexpected character '%q' (unicode %x) after a slash (is it a typo or a "
 "malformed comment begin?)"
 msgstr ""
-"Unerwartetes Zeichen '%q' (Unicode %x) nach einem Schrägstrich (ist es ein "
+"Unerwartetes Zeichen ›%q‹ (Unicode %x) nach einem Schrägstrich (ist es ein "
 "Tippfehler oder ein fehlerhafter Kommentarbeginn?)"
 
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:2913

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kvirc_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-21 14:37+0100\n"
-"PO-Revision-Date: 2010-01-26 21:52+0100\n"
+"PO-Revision-Date: 2010-03-21 14:53+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -153,9 +153,8 @@ msgid "%1 is %2 (%3)"
 msgstr "%1 ist %2 (%3)"
 
 #: src/kvirc/ui/kvi_userlistview.cpp:1593
-#, fuzzy
 msgid "%1 is an <b>IrcOp</b>"
-msgstr "<b>KVIrc</b>"
+msgstr "%1 ist ein <b>IrcOp</b>"
 
 #: src/kvirc/ui/kvi_query.cpp:201
 msgid "%1 is probably away"
@@ -525,7 +524,7 @@ msgstr "I&n Kontrollleiste einbinden"
 
 #: src/modules/setup/setupwizard.cpp:477
 msgid "&Don't apply any theme"
-msgstr ""
+msgstr "Kein Thema anwen&den"
 
 #: src/kvilib/system/kvi_locale.cpp:1057
 msgid "&Edit Bookmarks"
@@ -533,7 +532,7 @@ msgstr "Lesezeichen be&arbeiten"
 
 #: src/modules/setup/setupwizard.cpp:456
 msgid "&Fancy Theme"
-msgstr ""
+msgstr "ausge&fallenes Thema"
 
 #: src/kvilib/system/kvi_locale.cpp:1088
 msgid "&Filter:"
@@ -573,7 +572,7 @@ msgstr "&Ort:"
 
 #: src/modules/setup/setupwizard.cpp:475
 msgid "&Minimalist Theme"
-msgstr ""
+msgstr "&Minimalistisches Thema"
 
 #: src/modules/setup/setupwizard.cpp:85
 msgid "&Next >"
@@ -1034,6 +1033,16 @@ msgid ""
 "any theme in order to preserve your current visual settings.<br><br>If you "
 "don't know what to choose, just use the default.</p>"
 msgstr ""
+"<p>Hier kann das Standarderscheinungsbild von KVIrc gewählt werden.<br><br> "
+"Das ausgefallene "
+"Thema nutzt Icons, einen transparenten Hintergrund und viele Farben. Das "
+"minimalistische Thema ist ausgelegt für Displays mit wenigen Farben oder "
+"»Konsolenextremisten«; "
+"es ist mehr oder weniger weißer Text auf schwarzem Hintergrund.<br><br>Wenn "
+"eine vorherige Version von KVIrc installiert war, können die aktuellen "
+"visuellen Eigenschaften "
+"erhalten werden, indem kein Thema angewandt wird.<br><br>Im Zweifelsfall "
+"einfach die Standardeinstellung wählen.</p>"
 
 #: src/modules/setup/setupwizard.cpp:218
 msgid ""
@@ -1131,9 +1140,8 @@ msgid "Active Invite Exceptions"
 msgstr "Aktive Einladungsausnahmen"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:166
-#, fuzzy
 msgid "Active Quiet Bans"
-msgstr "Aktive Banns"
+msgstr "Aktive Quit-Bans"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:497
 msgid "Acts as a separator for other items: performs no action"
@@ -1304,9 +1312,8 @@ msgid "Attempting to rejoin \r!c\r%Q\r..."
 msgstr "Versuche, \r!c\r%Q\r erneut zu betreten ..."
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2242
-#, fuzzy
 msgid "Authenticated as %Q"
-msgstr "%c\r!n\r%Q\r%c ist authentifiziert als %Q"
+msgstr "Authentifiziert als %Q"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1483
 msgid "Auto-joining network specific channels"
@@ -2133,7 +2140,7 @@ msgstr "Addon-Deinstallation bestätigen"
 
 #: src/modules/logview/logviewmdiwindow.cpp:387
 msgid "Confirm current user logs delete"
-msgstr ""
+msgstr "Löschen der aktuellen Benutzer-Logs bestätigen"
 
 #: src/kvirc/ui/kvi_frame.cpp:798
 #: src/kvirc/ui/kvi_console.cpp:502
@@ -2386,7 +2393,7 @@ msgstr "Aktuelles Fenster ist kein Channel"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2031
 msgid "Currently enabled CAP Extensions: %Q"
-msgstr ""
+msgstr "Aktuell aktivierte CAP-Erweiterungen: %Q"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:205
 msgid "Customize Toolbars..."
@@ -2441,9 +2448,8 @@ msgid "Default"
 msgstr "Voreinstellungen"
 
 #: src/modules/setup/setupwizard.cpp:482
-#, fuzzy
 msgid "Default Theme"
-msgstr "Voreinstellungen"
+msgstr "Standardthema"
 
 #: src/kvilib/system/kvi_locale.cpp:1080
 msgid "Delete"
@@ -2495,7 +2501,7 @@ msgstr "Verzeichnis"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2022
 msgid "Disabled CAP Extensions: %Q"
-msgstr ""
+msgstr "Deaktivierte CAP-Erweiterungen: %Q"
 
 #: src/kvirc/ui/kvi_topicw.cpp:471
 msgid "Discard Changes"
@@ -2623,9 +2629,8 @@ msgid "Edit Aliases..."
 msgstr "Aliasse bearbeiten..."
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:249
-#, fuzzy
 msgid "Edit Classes..."
-msgstr "Aliasse bearbeiten..."
+msgstr "Klasse editieren …"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:260
 msgid "Edit Events..."
@@ -2670,7 +2675,7 @@ msgstr "Verschlüsselung aktivieren"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2013
 msgid "Enabled CAP Extensions: %Q"
-msgstr ""
+msgstr "Aktivierte CAP-Erweiterungen: %Q"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:106
 msgid "Encrypt key:"
@@ -2800,9 +2805,8 @@ msgid "Export List"
 msgstr "Liste exportieren"
 
 #: src/kvirc/kernel/kvi_options.cpp:860
-#, fuzzy
 msgid "Extended capability message"
-msgstr "Verschlüsselte DCC-CHAT-Nachricht"
+msgstr "Erweiterte Capability-Nachricht"
 
 #: src/modules/file/libkvifile.cpp:83
 msgid "Failed to copy from %Q to %Q"
@@ -5074,7 +5078,7 @@ msgstr "Proxy-Antwort: Authentifizierung OK: Zugriff gewährt"
 #: src/kvilib/core/kvi_error.cpp:119
 msgid "Proxy response: auth failed: access denied"
 msgstr ""
-"Proxy-Antwort: Die Authentifizieung ist fehlgeschlagen: Der Zugriff wurde "
+"Proxy-Antwort: Die Authentifizierung ist fehlgeschlagen: Der Zugriff wurde "
 "verweigert"
 
 #: src/kvilib/core/kvi_error.cpp:130
@@ -5159,9 +5163,8 @@ msgid "Query with %1!%2 (%3)"
 msgstr "Anfrage mit %1!%2 (%3)"
 
 #: src/kvirc/ui/kvi_channel.cpp:174
-#, fuzzy
 msgid "Quiet Ban Editor"
-msgstr "Bann-Editor"
+msgstr "Quit-Ban-Editor"
 
 #: src/kvirc/ui/kvi_userlistview.cpp:1586
 msgid "Quiet for <b>%1h %2m %3s</b>"
@@ -5291,7 +5294,7 @@ msgstr "Ein Pong wurde von \r!s\r%s\r empfangen (PONG %s) "
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2038
 msgid "Received unknown extended capability message: %Q %Q"
-msgstr ""
+msgstr "Unbekannte erweiterte-Capability-Nachricht erhalten: %Q %Q"
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:163
 msgid "Recent Channels"
@@ -5415,11 +5418,11 @@ msgstr "Das KVS-Skript ausführen"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2278
 msgid "SASL Authentication error: %Q"
-msgstr ""
+msgstr "SASL-Authentifizierungsfehler: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2259
 msgid "SASL authentication successful"
-msgstr ""
+msgstr "SASL-Authentifizierung erfolgreich"
 
 #: src/kvirc/kernel/kvi_options.cpp:826
 msgid "SSL message"
@@ -5851,9 +5854,8 @@ msgid "Shows a window that allows editing aliases"
 msgstr "Zeigt ein Fenster zum Bearbeiten von Aliassen an"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:250
-#, fuzzy
 msgid "Shows a window that allows editing classes"
-msgstr "Zeigt ein Fenster zum Bearbeiten von Aliassen an"
+msgstr "Zeigt ein Fenster zum Bearbeiten von Klassen an"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:272
 msgid "Shows a window that allows editing popup menus"
@@ -7352,7 +7354,7 @@ msgstr ""
 #: src/kvirc/kernel/kvi_ircsocket.cpp:811
 msgid "We can accept auth method 0 (no auth)"
 msgstr ""
-"Wir können die Authentifizierungsmethode 0 (keine Authentifizieung) "
+"Wir können die Authentifizierungsmethode 0 (keine Authentifizierung) "
 "akzeptieren"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:819
@@ -7962,14 +7964,12 @@ msgid "invite list"
 msgstr "Einladungs-Liste"
 
 #: src/kvirc/ui/kvi_channel.cpp:886
-#, fuzzy
 msgid "irc operator"
-msgstr "Operator"
+msgstr "Irc-Operator"
 
 #: src/kvirc/ui/kvi_channel.cpp:886
-#, fuzzy
 msgid "irc operators"
-msgstr "Operatoren"
+msgstr "Irc-Operatoren"
 
 #: src/kvirc/ui/kvi_channel.cpp:727
 msgid "is talking"

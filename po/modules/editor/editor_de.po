@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: editor_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-21 14:37+0100\n"
-"PO-Revision-Date: 2010-01-23 15:36+0100\n"
+"PO-Revision-Date: 2010-03-21 14:58+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -38,13 +38,17 @@ msgstr ""
 "%s"
 
 #: src/modules/raweditor/raweditor.cpp:381
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "\n"
 "\n"
 "Raw Event:\n"
 "%s"
-msgstr "Raw-Ereignis"
+msgstr ""
+"\n"
+"\n"
+"Raw-Ereignis:\n"
+"%s"
 
 #: src/modules/popupeditor/popupeditor.cpp:96
 msgid "### Epilogue ###"
