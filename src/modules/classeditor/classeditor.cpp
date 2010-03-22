@@ -603,24 +603,28 @@ void KviClassEditor::renameClass(KviClassEditorTreeWidgetItem *pClassItem)
 	for(unsigned int i=0;i<pInheritedClasses.count();i++)
 	{
 		pInheritedClasses.at(i)->setClassNotBuilt(true);
+		pInheritedClasses.at(i)->setExpanded(true);
 		pInheritedClasses.at(i)->setInheritsClass(szNewClassName);
 	}
-	if (pNewItem) activateItem(pNewItem);
-	else activateItem(pClassItem);
+	if (pNewItem){
+		activateItem(pNewItem);
+		pNewItem->setExpanded(true);
+	}
+	else{
+		activateItem(pClassItem);
+		pClassItem->setExpanded(true);
+	}
 }
 void KviClassEditor::cutItem(KviClassEditorTreeWidgetItem *pItem)
 {
 	int iIdx=m_pTreeWidget->indexOfTopLevelItem(pItem);
 	if (iIdx!=-1){
 		m_pTreeWidget->takeTopLevelItem(iIdx);
-	debug("remove toplevel item %s",pItem->name().toUtf8().data());
 	}
 	else
 	{
 		KviClassEditorTreeWidgetItem *pParent=pItem->parentItem();
-		debug("remove child %s",pItem->name().toUtf8().data());
 		pParent->removeChild(pItem);
-		debug("child full name %s",buildFullClassName(pItem).toUtf8().data());
 	}
 }
 
@@ -654,7 +658,6 @@ void KviClassEditor::renameNamespace(KviClassEditorTreeWidgetItem *pOldNamespace
 	pList.setAutoDelete(false);
 	appendAllClassItemsRecursive(&pList,pOldNamespaceItem);
 	cutItem(pOldNamespaceItem);
-	debug("new namespace name %s",szNewNameSpaceName.toUtf8().data());
 	if(szNewNameSpaceName.contains("::"))
 	{
 		pNewItem=createFullNamespace(szNewNameSpaceName.left(szNewNameSpaceName.lastIndexOf("::")));
