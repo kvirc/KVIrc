@@ -150,6 +150,7 @@ public:
         void exportSelectionInSinglesFiles(KviPointerList<KviClassEditorTreeWidgetItem> *l);
 
 	//static void splitFullClassOrNamespaceName(const QString &szFullName,QStringList &lNamespaces,QString &szName);
+	void cutItem(KviClassEditorTreeWidgetItem *pItem);
 
 protected slots:
 
@@ -204,7 +205,7 @@ protected:
 	bool askForClassName(QString &szClassName,QString &szInheritsClassName,bool bEdit);
 	bool askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText, QString &szNameBuffer);
 	bool askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName);
-	void searchInheritsedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInheritsedClasses);
+	void searchInheritedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInheritsedClasses);
 	bool classExists(QString &szFullItemName);
 	//void renameClassOrNamespace();
 	void renameClass(KviClassEditorTreeWidgetItem *pClassItem);
