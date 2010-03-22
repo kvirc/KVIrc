@@ -34,6 +34,7 @@
 #include "kvi_options.h"
 #include "kvi_locale.h"
 #include "kvi_out.h"
+#include <QUrl>
 
 static KviPointerList<KviMediaPlayerInterfaceDescriptor> * g_pDescriptorList = 0;
 
