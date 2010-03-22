@@ -311,6 +311,33 @@ KviClassEditorTreeWidgetItem * KviClassEditor::createFullItem(const QString & sz
 	}
 	return new KviClassEditorTreeWidgetItem(pItem,KviClassEditorTreeWidgetItem::Class,lNamespaces.at(i));
 }
+KviClassEditorTreeWidgetItem * KviClassEditor::createFullNamespace(const QString & szFullName)
+{
+	QStringList lNamespaces=szFullName.split("::");
+	debug("createfullnamespace %s",szFullName.toUtf8().data());
+	if(!lNamespaces.count()) return 0;
+	KviClassEditorTreeWidgetItem *pItem=findTopLevelItem(lNamespaces.at(0));
+	if (!pItem) pItem=new KviClassEditorTreeWidgetItem(m_pTreeWidget,KviClassEditorTreeWidgetItem::Namespace,lNamespaces.at(0));
+	if (lNamespaces.count()==1) return pItem;
+	bool bFound;
+	int i;
+	for(i=1;i<lNamespaces.count()-1;i++)
+	{
+		bFound=false;
+		for(int j=0;j<pItem->childCount();j++)
+		{
+			if (KviQString::equalCI(pItem->child(j)->text(0),lNamespaces.at(i)))
+			{
+				pItem=( KviClassEditorTreeWidgetItem *)pItem->child(j);
+				bFound=true;
+				break;
+			}
+		}
+		if (!bFound)
+			pItem=new KviClassEditorTreeWidgetItem(pItem,KviClassEditorTreeWidgetItem::Namespace,lNamespaces.at(i));
+	}
+	return new KviClassEditorTreeWidgetItem(pItem,KviClassEditorTreeWidgetItem::Namespace,lNamespaces.at(i));
+}
 
 void KviClassEditor::oneTimeSetup()
 {
@@ -559,8 +586,7 @@ void KviClassEditor::renameClass(KviClassEditorTreeWidgetItem *pClassItem)
 	cutItem(pClassItem);
 	if(szNewClassName.contains("::"))
 	{
-		pNewItem=createFullItem(szNewClassName.left(szNewClassName.lastIndexOf("::")));
-		pNewItem->setType(KviClassEditorTreeWidgetItem::Namespace);
+		pNewItem=createFullNamespace(szNewClassName.left(szNewClassName.lastIndexOf("::")));
 		pClassItem->setName(szNewClassName.section("::",-1,-1));
 		pNewItem->addChild(pClassItem);
 		m_pClasses->insert(szNewClassName,pNewItem);
@@ -571,9 +597,6 @@ void KviClassEditor::renameClass(KviClassEditorTreeWidgetItem *pClassItem)
 		m_pTreeWidget->addTopLevelItem(pClassItem);
 		m_pClasses->insert(szNewClassName,pClassItem);
 	}
-	//KviKvsObjectClass *pClass;
-	//pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
-	//if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
 	pClassItem->setInheritsClass(szNewInheritsClassName);
 	pClassItem->setClassNotBuilt(true);
 	KviPointerList<KviClassEditorTreeWidgetItem> pInheritedClasses;
@@ -630,8 +653,7 @@ void KviClassEditor::renameNamespace(KviClassEditorTreeWidgetItem *pOldNamespace
 	cutItem(pOldNamespaceItem);
 	if(szNewNameSpaceName.contains("::"))
 	{
-		pNewItem=createFullItem(szNewNameSpaceName.left(szNewNameSpaceName.lastIndexOf("::")));
-		pNewItem->setType(KviClassEditorTreeWidgetItem::Namespace);
+		pNewItem=createFullNamespace(szNewNameSpaceName.left(szNewNameSpaceName.lastIndexOf("::")));
 		pOldNamespaceItem->setName(szNewNameSpaceName.section("::",-1,-1));
 		pNewItem->addChild(pOldNamespaceItem);
 	}

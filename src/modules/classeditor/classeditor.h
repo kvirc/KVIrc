@@ -238,6 +238,8 @@ bool namespaceExists(QString &szFullItemName);
         void buildFullItemPath(KviClassEditorTreeWidgetItem * it,QString &szBuffer);
         QString buildFullClassName(KviClassEditorTreeWidgetItem * it);
         KviClassEditorTreeWidgetItem * createFullItem(const QString &szFullName);
+	KviClassEditorTreeWidgetItem * createFullNamespace(const QString & szFullName);
+
         KviClassEditorTreeWidgetItem * findItem(const QString &szName);
         KviClassEditorTreeWidgetItem * findTopLevelItem(const QString &szName);
         KviClassEditorTreeWidgetItem * createFullItemRecursive(QTreeWidgetItem *pCurrent,QStringList & lNameSpaces,int & iLevel,bool bCreateNameSpace=0);
