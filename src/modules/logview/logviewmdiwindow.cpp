@@ -388,7 +388,7 @@ void KviLogViewMDIWindow::deleteCurrent()
 			"Do you really wish to delete all these channel/query logs?", __tr2qs("&Yes"), __tr2qs("&No"),0,1
 			) != 0) return;
 			KviPointerList <KviLogListViewItem> itemsList;
-
+			itemsList.setAutoDelete(false);
 			for(int i=0;i<pItem->childCount();i++)
 				itemsList.append((KviLogListViewItem*)pItem->child(i));
 			for(unsigned int i=0;i<itemsList.count();i++)
