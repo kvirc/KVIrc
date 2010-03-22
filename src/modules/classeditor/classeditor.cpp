@@ -1069,7 +1069,9 @@ void KviClassEditor::getExportClassBuffer(QString &buffer,KviClassEditorTreeWidg
 		KviClassEditorTreeWidgetItem * pFunction= (KviClassEditorTreeWidgetItem *)it->child(i);
 		if(pFunction->isMethod())
 		{
-			buffer += "\tfunction ";
+			buffer += "\t";
+			if (pFunction->isInternalFunction()) buffer+="internal ";
+			buffer += "function ";
 			buffer += pFunction->name();
 			buffer += "\n\t{\n";
 			buffer += pFunction->buffer();
