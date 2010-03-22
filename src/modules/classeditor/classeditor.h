@@ -68,7 +68,6 @@ public:
 	~KviClassEditorTreeWidgetItem(){};
 protected:
 	Type m_eType;
-        KviClassEditorTreeWidgetItem * m_pParentItem;
 	QString m_szName;
         QString m_szBuffer;
         bool m_bClassModified, m_bInternal;
@@ -88,8 +87,6 @@ public:
 	bool isClass(){ return m_eType == Class; };
 	bool isNamespace(){ return m_eType == Namespace; };
         bool isMethod(){ return m_eType == Method;};
-        void setParentItem(KviClassEditorTreeWidgetItem* it){ m_pParentItem=it; };
-        KviClassEditorTreeWidgetItem * parentItem(){ return m_pParentItem; };
         void setBuffer(const QString &szBuffer){ m_szBuffer = szBuffer; };
         const QString & buffer(){ return m_szBuffer; };
         const int & cursorPosition(){return m_cPos; };
@@ -279,7 +276,6 @@ protected:
         QPushButton * m_pNewClassButton;
         QLineEdit * m_pClassNameLineEdit;
 	QComboBox * m_pInheritsClassComboBox;
-        QWidget     * m_pParent;
 protected slots:
         void textChanged(const QString &);
 };
@@ -298,7 +294,6 @@ protected:
         QPushButton * m_pNewFunctionButton;
         QLineEdit * m_pFunctionNameLineEdit;
         QCheckBox * m_pInternalCheckBox;
-        QWidget     * m_pParent;
 protected slots:
         void textChanged(const QString &);
 };

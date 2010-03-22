@@ -66,7 +66,7 @@ extern KviClassEditorWindow * g_pClassEditorWindow;
 extern KviModule * g_pClassEditorModule;
 
 KviClassEditorTreeWidgetItem::KviClassEditorTreeWidgetItem(QTreeWidget * pTreeWidget,Type eType,const QString &szName)
-: QTreeWidgetItem(pTreeWidget), KviHeapObject(), m_eType(eType), m_pParentItem(0)
+: QTreeWidgetItem(pTreeWidget), KviHeapObject(), m_eType(eType)
 {
 	setName(szName);
 	m_cPos=0;
@@ -77,7 +77,7 @@ KviClassEditorTreeWidgetItem::KviClassEditorTreeWidgetItem(QTreeWidget * pTreeWi
 }
 
 KviClassEditorTreeWidgetItem::KviClassEditorTreeWidgetItem(KviClassEditorTreeWidgetItem * pParentItem,Type eType,const QString &szName)
-: QTreeWidgetItem(pParentItem), m_eType(eType), m_pParentItem(pParentItem)
+: QTreeWidgetItem(pParentItem), m_eType(eType)
 {
 	setName(szName);
 	m_cPos=0;
@@ -213,7 +213,7 @@ void KviClassEditor::buildFullItemPath(KviClassEditorTreeWidgetItem * it, QStrin
 {
 	if (!it) return;
 	szBuffer.prepend(it->name()+"::");
-	it=it->parentItem();
+	it=(KviClassEditorTreeWidgetItem*)it->parent();
 	while(it)
 	{
 		QString tmp = it->name();
@@ -222,7 +222,7 @@ void KviClassEditor::buildFullItemPath(KviClassEditorTreeWidgetItem * it, QStrin
 			szBuffer.prepend("::");
 			szBuffer.prepend(tmp);
 		}
-		it = it->parentItem();
+		it = (KviClassEditorTreeWidgetItem*)it->parent();
 	}
 }
 
@@ -501,9 +501,9 @@ bool KviClassEditor::namespaceExists(QString & szFullItemName)
 void KviClassEditor::renameFunction()
 {
 	KviClassEditorTreeWidgetItem *pFunction=m_pLastEditedItem;
-	QString szClassName = pFunction->parentItem()->name();
+	QString szClassName = ((KviClassEditorTreeWidgetItem*)pFunction->parent())->name();
 	QString szFunctionName = pFunction->name();
-	KviClassEditorTreeWidgetItem *pParentClass =  pFunction->parentItem();
+	KviClassEditorTreeWidgetItem *pParentClass = (KviClassEditorTreeWidgetItem*) pFunction->parent();
 
 	QString szNewFunctionName = szFunctionName;
 	bool bInternal;
@@ -623,7 +623,7 @@ void KviClassEditor::cutItem(KviClassEditorTreeWidgetItem *pItem)
 	}
 	else
 	{
-		KviClassEditorTreeWidgetItem *pParent=pItem->parentItem();
+		KviClassEditorTreeWidgetItem *pParent= (KviClassEditorTreeWidgetItem*)pItem->parent();
 		pParent->removeChild(pItem);
 	}
 }
@@ -1409,7 +1409,7 @@ void KviClassEditor::newNamespace()
 void KviClassEditor::newMemberFunction()
 {
        QString szFunctionName,szClassName;
-       if(m_pLastClickedItem->isMethod()) m_pLastClickedItem=m_pLastClickedItem->parentItem();
+       if(m_pLastClickedItem->isMethod()) m_pLastClickedItem= (KviClassEditorTreeWidgetItem*)m_pLastClickedItem->parent();
        szClassName=buildFullClassName(m_pLastClickedItem);
        bool bInternal;
        askForFunction(szFunctionName, &bInternal,szClassName);
@@ -1417,7 +1417,7 @@ void KviClassEditor::newMemberFunction()
        KviClassEditorTreeWidgetItem *it=newItem(szFunctionName,KviClassEditorTreeWidgetItem::Method);
        it->setInternalFunction(bInternal);
        activateItem(it);
-       it->parentItem()->setClassNotBuilt(true);
+       ((KviClassEditorTreeWidgetItem*)it->parent())->setClassNotBuilt(true);
 }
 
 KviClassEditorTreeWidgetItem *  KviClassEditor::newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType)
@@ -1687,7 +1687,6 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 {
         setObjectName(szName);
 
-        m_pParent = pParent;
         QPalette p = palette();
         p.setColor(foregroundRole(),QColor( 0, 0, 0 ));
         p.setColor(backgroundRole(),QColor( 236, 233, 216 ));
@@ -1806,7 +1805,6 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 {
         setObjectName(szName);
 
-        m_pParent = pParent;
         QPalette p = palette();
         p.setColor(foregroundRole(),QColor( 0, 0, 0 ));
         p.setColor(backgroundRole(),QColor( 236, 233, 216 ));
