@@ -167,8 +167,9 @@ protected slots:
 	void exportAll();
 	void exportSelectedSepFiles();
 	void exportSelected();
-        void removeSelectedItems();
 /*
+        void removeSelectedItems();
+
 
 
 	void slotFind();
