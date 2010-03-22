@@ -348,6 +348,7 @@ void KviClassEditor::oneTimeSetup()
 						pFunctionItem=new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,it.currentKey());
 						pClass->getFunctionCode(szCode,*handler);
 						pFunctionItem->setBuffer(szCode);
+						if(handler->flags() & KviKvsObjectFunctionHandler::Internal) pFunctionItem->setInternalFunction(true);
 					}
 					++it;
 				}
