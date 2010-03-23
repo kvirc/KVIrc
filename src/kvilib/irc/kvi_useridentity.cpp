@@ -174,9 +174,10 @@ const KviUserIdentity * KviUserIdentityManager::defaultIdentity()
 
 	ret->setId(__tr2qs("Default"));
 	ret->setNickName(KVI_DEFAULT_NICKNAME1);
-	ret->setAltNickName1(KVI_DEFAULT_NICKNAME2);
-	ret->setAltNickName2(KVI_DEFAULT_NICKNAME3);
-	ret->setAltNickName3(KVI_DEFAULT_NICKNAME4);
+
+	ret->setAltNickName1(QString(KVI_DEFAULT_NICKNAME2).replace(KVI_DEFAULT_NICKNAME_TOKEN, KVI_DEFAULT_NICKNAME1));
+	ret->setAltNickName2(QString(KVI_DEFAULT_NICKNAME3).replace(KVI_DEFAULT_NICKNAME_TOKEN, KVI_DEFAULT_NICKNAME1));
+	ret->setAltNickName3(QString(KVI_DEFAULT_NICKNAME4).replace(KVI_DEFAULT_NICKNAME_TOKEN, KVI_DEFAULT_NICKNAME1));
 	ret->setUserName(KVI_DEFAULT_USERNAME);
 	ret->setRealName(KVI_DEFAULT_REALNAME);
 	ret->setPartMessage(KVI_DEFAULT_PART_MESSAGE);

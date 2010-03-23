@@ -34,10 +34,11 @@
 *
 * \def KVI_HOME_CONFIG_FILE_NAME Configuration file in home directory
 * \def KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME Directory for incoming DCC files
-* \def KVI_DEFAULT_NICKNAME1 Nickname
-* \def KVI_DEFAULT_NICKNAME2 Alternative nickname 2
-* \def KVI_DEFAULT_NICKNAME3 Alternative nickname 3
-* \def KVI_DEFAULT_NICKNAME4 Alternative nickname 4
+* \def KVI_DEFAULT_NICKNAME_TOKEN The substitution token for default nicknames
+* \def KVI_DEFAULT_NICKNAME1 Default Nickname
+* \def KVI_DEFAULT_NICKNAME2 Alternative nickname 2 token
+* \def KVI_DEFAULT_NICKNAME3 Alternative nickname 3 token
+* \def KVI_DEFAULT_NICKNAME4 Alternative nickname 4 token
 * \def KVI_DEFAULT_USERNAME Username
 * \def KVI_DEFAULT_REALNAME Realname
 * \def KVI_DEFAULT_PART_MESSAGE Part message
@@ -62,6 +63,8 @@
 #endif
 
 #define KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME "Downloads"
+
+#define KVI_DEFAULT_NICKNAME_TOKEN "%nick%"
 
 #define KVI_DEFAULT_NICKNAME1 "newbie"
 #define KVI_DEFAULT_NICKNAME2 "%nick%|2"

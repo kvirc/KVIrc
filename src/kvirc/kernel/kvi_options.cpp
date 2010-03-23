@@ -349,9 +349,9 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS]=
 {
 	STRING_OPTION("UNUSED:FrameCaption","",KviOption_sectFlagFrame),
 	STRING_OPTION("Nickname1",KVI_DEFAULT_NICKNAME1,KviOption_sectFlagUser),
-	STRING_OPTION("Nickname2",KVI_DEFAULT_NICKNAME2,KviOption_sectFlagUser),
-	STRING_OPTION("Nickname3",KVI_DEFAULT_NICKNAME3,KviOption_sectFlagUser),
-	STRING_OPTION("Nickname4",KVI_DEFAULT_NICKNAME4,KviOption_sectFlagUser),
+	STRING_OPTION("Nickname2","",KviOption_sectFlagUser),
+	STRING_OPTION("Nickname3","",KviOption_sectFlagUser),
+	STRING_OPTION("Nickname4","",KviOption_sectFlagUser),
 	STRING_OPTION("Username",KVI_DEFAULT_USERNAME,KviOption_sectFlagUser),
 	STRING_OPTION("Realname",KVI_DEFAULT_REALNAME,KviOption_sectFlagUser),
 	STRING_OPTION("LocalHostIp","127.0.0.1",KviOption_sectFlagIrcSocket),

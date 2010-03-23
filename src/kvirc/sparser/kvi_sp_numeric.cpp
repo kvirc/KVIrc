@@ -921,41 +921,39 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 		{
 			case 0:
 				// used a server specific nickname
-				KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
-				if(KVI_OPTION_STRING(KviOption_stringNickname1).isEmpty())
+				;
+				if(KVI_OPTION_STRING(KviOption_stringNickname1).trimmed().isEmpty())
 					KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
-				szNextNick = KVI_OPTION_STRING(KviOption_stringNickname1);
+				szNextNick = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
 				uNickCnt = 1;
+				break;
 			case 1:
 				// used the first nickname of the identity
-				KVI_OPTION_STRING(KviOption_stringNickname2).trimmed();
-				if(KVI_OPTION_STRING(KviOption_stringNickname2).isEmpty())
-					KVI_OPTION_STRING(KviOption_stringNickname2) = KVI_DEFAULT_NICKNAME2;
-				szNextNick = KVI_OPTION_STRING(KviOption_stringNickname2);
 				uNickCnt = 2;
-			break;
+				if(!KVI_OPTION_STRING(KviOption_stringNickname2).trimmed().isEmpty())
+				{
+					szNextNick = KVI_OPTION_STRING(KviOption_stringNickname2).trimmed();
+					break;
+				}
 			case 2:
-				// used the second nickname of the identity
-				KVI_OPTION_STRING(KviOption_stringNickname3).trimmed();
-				if(KVI_OPTION_STRING(KviOption_stringNickname3).isEmpty())
-					KVI_OPTION_STRING(KviOption_stringNickname3) = KVI_DEFAULT_NICKNAME3;
-				szNextNick = KVI_OPTION_STRING(KviOption_stringNickname3);
 				uNickCnt = 3;
-			break;
+				// used the second nickname of the identity
+				if(!KVI_OPTION_STRING(KviOption_stringNickname3).trimmed().isEmpty())
+				{
+					szNextNick = KVI_OPTION_STRING(KviOption_stringNickname3).trimmed();
+					break;
+				}
 			default:
-			{
 				// used all the nicknames of the identity
 				// fall back to a random string...
 				szNextNick = msg->safeParam(1);
-				szNextNick.trimmed();
-				if(szNextNick.isEmpty()) szNextNick = KVI_DEFAULT_NICKNAME1;
-				szNextNick = szNextNick.left(7);
+				if(szNextNick.trimmed().isEmpty()) szNextNick = KVI_DEFAULT_NICKNAME1;
+				szNextNick = szNextNick.trimmed().left(7);
 				QString num;
 				num.setNum(msg->connection()->stateData()->loginNickIndex());
 				szNextNick.append(num);
 				uNickCnt = msg->connection()->stateData()->loginNickIndex() + 1;
-			}
-			break;
+				break;
 		}
 	}
 

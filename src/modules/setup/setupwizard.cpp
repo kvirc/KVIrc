@@ -1060,16 +1060,13 @@ void KviSetupWizard::accept()
 			m_pLanguagesSelector->commit();
 			//m_pOtherInfoSelector->commit();
 
-			KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
-			KVI_OPTION_STRING(KviOption_stringNickname1).replace(" ","");
+			KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
 
 			if(KVI_OPTION_STRING(KviOption_stringNickname1).length() > 32)
-			{
-				QString tmp = KVI_OPTION_STRING(KviOption_stringNickname1).left(32);
-				KVI_OPTION_STRING(KviOption_stringNickname1) = tmp;
-			}
+				KVI_OPTION_STRING(KviOption_stringNickname1).truncate(32);
 
-			if(KVI_OPTION_STRING(KviOption_stringNickname1).isEmpty())KVI_OPTION_STRING(KviOption_stringNickname1) = "newbie";
+			if(KVI_OPTION_STRING(KviOption_stringNickname1).isEmpty())
+				KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
 
 			QString szNickPart;
 			if(KVI_OPTION_STRING(KviOption_stringNickname1).length() < 31)
@@ -1079,18 +1076,11 @@ void KviSetupWizard::accept()
 				szNickPart = KVI_OPTION_STRING(KviOption_stringNickname1).left(30);
 			}
 
-			QString alt = szNickPart;
-			alt.prepend("|"); // <-- this is an erroneous nickname on IrcNet :/
-			alt.append("|");
 			if(!g_bFoundMirc)
-				KVI_OPTION_STRING(KviOption_stringNickname2) = alt;
-			alt = szNickPart;
-			alt.prepend("_");
-			alt.append("_");
-			KVI_OPTION_STRING(KviOption_stringNickname3) = alt;
-			alt = szNickPart;
-			alt.append("2");
-			KVI_OPTION_STRING(KviOption_stringNickname4) = alt;
+				KVI_OPTION_STRING(KviOption_stringNickname2) = QString(KVI_DEFAULT_NICKNAME2).replace(KVI_DEFAULT_NICKNAME_TOKEN, szNickPart);
+
+			KVI_OPTION_STRING(KviOption_stringNickname3) = QString(KVI_DEFAULT_NICKNAME3).replace(KVI_DEFAULT_NICKNAME_TOKEN, szNickPart);
+			KVI_OPTION_STRING(KviOption_stringNickname4) = QString(KVI_DEFAULT_NICKNAME4).replace(KVI_DEFAULT_NICKNAME_TOKEN, szNickPart);
 
 			int i = m_pAgeCombo->currentIndex();
 			if(i < 0)i = 0;

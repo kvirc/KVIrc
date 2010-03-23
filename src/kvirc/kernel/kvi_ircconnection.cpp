@@ -1156,21 +1156,19 @@ void KviIrcConnection::loginToIrcServer()
 			m_pUserInfo->setNickName(pNet->nickName());
 			m_pStateData->setLoginNickIndex(0);
 		} else {
-			KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
-			if(KVI_OPTION_STRING(KviOption_stringNickname1).isEmpty())
+			if(KVI_OPTION_STRING(KviOption_stringNickname1).trimmed().isEmpty())
 				KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
-			m_pUserInfo->setNickName(KVI_OPTION_STRING(KviOption_stringNickname1));
+			m_pUserInfo->setNickName(KVI_OPTION_STRING(KviOption_stringNickname1).trimmed());
 			m_pStateData->setLoginNickIndex(1);
 		}
 	}
 
 	// Real name
-	pServer->m_szRealName.trimmed();
-	if(!pServer->m_szRealName.isEmpty())
+	if(!pServer->m_szRealName.trimmed().isEmpty())
 	{
 		if(!_OUTPUT_MUTE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific real name (%Q)"),&(pServer->m_szRealName));
-		m_pUserInfo->setRealName(pServer->m_szRealName);
+		m_pUserInfo->setRealName(pServer->m_szRealName.trimmed());
 	} else {
 		if(!pNet->realName().isEmpty())
 		{
