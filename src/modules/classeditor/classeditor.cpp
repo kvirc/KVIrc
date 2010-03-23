@@ -581,21 +581,20 @@ void KviClassEditor::renameClass(KviClassEditorTreeWidgetItem *pClassItem)
 		continue;
 	}*/
 	KviClassEditorTreeWidgetItem *pNewItem=0;
-	m_pClasses->remove(szClassName);
+	m_pClasses->removeRef(pClassItem);
 	cutItem(pClassItem);
 	if(szNewClassName.contains("::"))
 	{
 		pNewItem=createFullNamespace(szNewClassName.left(szNewClassName.lastIndexOf("::")));
 		pClassItem->setName(szNewClassName.section("::",-1,-1));
 		pNewItem->addChild(pClassItem);
-		m_pClasses->insert(szNewClassName,pNewItem);
 	}
 	else
 	{
 		pClassItem->setName(szNewClassName);
 		m_pTreeWidget->addTopLevelItem(pClassItem);
-		m_pClasses->insert(szNewClassName,pClassItem);
 	}
+	m_pClasses->insert(szNewClassName,pClassItem);
 	pClassItem->setInheritsClass(szNewInheritsClassName);
 	pClassItem->setClassNotBuilt(true);
 	KviPointerList<KviClassEditorTreeWidgetItem> pInheritedClasses;
