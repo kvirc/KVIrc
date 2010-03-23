@@ -64,6 +64,7 @@ protected:
 	void paintEvent(QPaintEvent * event);
 signals:
 	void rightButtonPressed(QTreeWidgetItem *,QPoint);
+	void contextMenuRequested(QPoint);
 };
 
 class UrlDialog : public KviWindow
@@ -94,6 +95,7 @@ protected slots:
 	void findtext();
 	void dblclk_url(QTreeWidgetItem *item, int);
 	void popup(QTreeWidgetItem *item, const QPoint &p);
+	void contextMenu(const QPoint &p);
 	void sayToWin(QAction * act);
 };
 
@@ -103,7 +105,7 @@ class BanFrame : public QFrame
 public:
 	BanFrame(QWidget *parent=0, const char *name=0, bool banEnable = false);
 	~BanFrame();
-	void saveBans();
+	void saveBans(KviConfig *cfg);
 private:
 	QCheckBox     *m_pEnable;
 	QListWidget   *m_pBanList;

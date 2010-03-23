@@ -99,6 +99,7 @@ void KviUrlDialogTreeWidget::mousePressEvent (QMouseEvent *e)
 	{
 		QTreeWidgetItem *i= itemAt(e->pos());
 		if (i) emit rightButtonPressed(i,QCursor::pos());
+		else emit contextMenuRequested(QCursor::pos());
 	}
 	QTreeWidget::mousePressEvent(e);
 }
@@ -197,7 +198,7 @@ UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
 */
 	connect(m_pUrlList,SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),SLOT(dblclk_url(QTreeWidgetItem *, int)));
 	connect(m_pUrlList,SIGNAL(rightButtonPressed(QTreeWidgetItem *, const QPoint &)),SLOT(popup(QTreeWidgetItem *, const QPoint &)));
-
+	connect(m_pUrlList,SIGNAL(contextMenuRequested(const QPoint &)),SLOT(contextMenu(const QPoint &)));
 //	setFocusHandlerNoChildren(m_pUrlList);
 	m_pUrlList->setFocusPolicy(Qt::StrongFocus);
 	m_pUrlList->setFocus();
@@ -331,6 +332,13 @@ void UrlDialog::popup(QTreeWidgetItem *item, const QPoint &point)
 	p.exec(point);
 }
 
+void UrlDialog::contextMenu(const QPoint &point)
+{
+	KviTalPopupMenu p(0,"contextmenu");
+	p.insertItem(__tr2qs("Configure"),this,SLOT(config()));
+	p.exec(point);
+}
+
 void UrlDialog::sayToWin(QAction * act)
 {
 	KviWindow *wnd = g_pApp->findWindowByCaption(act->text());
@@ -448,10 +456,11 @@ void ConfigDialog::discardbtn()
 
 void ConfigDialog::acceptbtn()
 {
-	if (m_pBanFrame) m_pBanFrame->saveBans();
-
 	KviConfig *cfg = new KviConfig(szConfigPath,KviConfig::Write);
 	cfg->setGroup("ConfigDialog");
+
+	if (m_pBanFrame) m_pBanFrame->saveBans(cfg);
+
 	cfg->writeEntry("SaveUrlListOnUnload",cb[0]->isChecked());
 	cfg->writeEntry("SaveColumnWidthOnClose",cb[1]->isChecked());
 	delete cfg;
@@ -551,13 +560,10 @@ void BanFrame::removeBan()
 
 }
 
-void BanFrame::saveBans()
+void BanFrame::saveBans(KviConfig *cfg)
 {
-	if (m_pEnable->isChecked()) saveBanList();
-	KviConfig *cfg = new KviConfig(szConfigPath,KviConfig::Write);
-	cfg->setGroup("ConfigDialog");
 	cfg->writeEntry("BanEnabled",m_pEnable->isChecked());
-	delete cfg;
+	if (m_pEnable->isChecked()) saveBanList();
 }
 
 BanFrame::~BanFrame()
@@ -645,7 +651,7 @@ void saveBanList()
 	stream << g_pBanList->count() << endl;
 	for(QString *tmp=g_pBanList->first();tmp;tmp=g_pBanList->next())
 	{
-		stream << tmp << endl;
+		stream << *tmp << endl;
 	}
 	file.flush();
 	file.close();
@@ -750,8 +756,7 @@ bool urllist()
 	@description:
 		This command opens a configuration window where it is possible
 		to setup plugin's parameters. You can also open this window by
-		using popup menu in the url list window or by clicking on the "configure plugin" button
-		in plugins options.<BR><BR>
+		using popup menu in the url list window<BR><BR>
 		<H3>Configure dialog options:</H3>
 		There is also a ban list widget, which allows to have a list of words that plugin mustn't catch.<BR><BR>
 		<I>E.g.<BR>
