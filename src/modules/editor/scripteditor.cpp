@@ -679,17 +679,19 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 	// 'found matches' highlighting
 	KviScriptEditorWidget * pEditor = ((KviScriptEditorWidget *)textEdit());
 	QString szFind = pEditor->m_szFind;
+	debug("find %s",szFind.toUtf8().data());
+
 	if (!szFind.isEmpty())
 	{
-		QRegExp regFind(szFind);
-		index = szText.indexOf(regFind);
+		index = szText.indexOf(szFind);
+		int length=szFind.length();
 		while (index >= 0)
 		{
-			int length = regFind.matchedLength();
 			setFormat(index, length, findFormat);
-			index = szText.indexOf(regFind, index + length);
+			index = szText.indexOf(szFind,index + length);
 		}
 	}
+	debug("exit loop");
 
 }
 
