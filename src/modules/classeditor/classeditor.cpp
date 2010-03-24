@@ -277,13 +277,13 @@ KviClassEditorTreeWidgetItem * KviClassEditor::findItem(const QString & szFullNa
 	}
 	return  (KviClassEditorTreeWidgetItem *)pItem;
 }
-
+/*
 bool KviClassEditor::itemExists(const QString & szFullName)
 {
 	if (findItem(szFullName)) return true;
 	else return false;
 }
-
+*/
 KviClassEditorTreeWidgetItem * KviClassEditor::createFullItem(const QString & szFullName)
 {
 	QStringList lNamespaces=szFullName.split("::");
@@ -416,88 +416,29 @@ void KviClassEditor::classRefresh(const QString & szName)
 	m_pEditor->setText(class->code());
 }
 
-void KviClassEditor::itemRenamed(QTreeWidgetItem * it, int col)
-{
-	if(it!=m_pLastEditedItem) return;
 
-	((KviClassEditorTreeWidgetItem *)it)->setName(it->text(col));
-	QString szNam = buildFullItemName((KviClassEditorTreeWidgetItem *)it);
-	QString szLabelText;
-	if(((KviClassEditorTreeWidgetItem *)it)->isNamespace())
-		szLabelText = __tr2qs_ctx("Namespace","editor");
-	else
-		szLabelText = __tr2qs_ctx("Class","editor");
-	szLabelText += ": <b>";
-	szLabelText += szNam;
-	szLabelText += "</b>";
-	m_pClassNameLabel->setText(szLabelText);
-}
 */
 
 bool KviClassEditor::hasSelectedItems()
 {
 	return m_pTreeWidget->selectedItems().count() ? 1 : 0;
 }
-
+/*
 bool KviClassEditor::itemExists(QTreeWidgetItem * pSearchFor)
 {
 	if(!pSearchFor) return false;
 	if(m_pClasses->findRef((KviClassEditorTreeWidgetItem*) pSearchFor)) return true;
 	else return false;
 }
-
-/*
-void KviClassEditor::appendAllItems(KviPointerList<KviClassEditorTreeWidgetItem> * l, KviClassEditorTreeWidgetItem::Type eType)
-{
-	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
-	{
-		if (((KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->type()==eType)
-		{
-			l->append(((KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i)));
-		}
-		else
-		{
-			appendAllItemsRecursive(l,m_pTreeWidget->topLevelItem(i),eType);
-		}
-	}
-}
-
-void KviClassEditor::appendAllItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l, QTreeWidgetItem * pStartFrom, KviClassEditorTreeWidgetItem::Type eType)
-{
-	for (int i=0;i<pStartFrom->childCount();i++)
-	{
-		if (((KviClassEditorTreeWidgetItem *)pStartFrom->child(i))->type()==eType)
-		{
-			l->append((KviClassEditorTreeWidgetItem *)pStartFrom->child(i));
-		}
-		else
-		{
-			appendAllItemsRecursive(l,pStartFrom->child(i),eType);
-		}
-	}
-}
 */
+
 bool KviClassEditor::classExists(QString & szFullItemName)
 {
 	if (m_pClasses->find(szFullItemName)) return true;
 	else return false;
 }
 
-bool KviClassEditor::namespaceExists(QString & szFullItemName)
-{
-	/*KviPointerList<KviClassEditorTreeWidgetItem> l;
-	l.setAutoDelete(false);
 
-	appendAllItems(&l,KviClassEditorTreeWidgetItem::Namespace);
-	for(KviClassEditorTreeWidgetItem * it = l.first();it;it = l.next())
-	{
-		if (KviQString::equalCI(buildFullItemName(it),szFullItemName))
-		{
-			return true;
-		}
-	}*/
-	return false;
-}
 void KviClassEditor::renameFunction()
 {
 	KviClassEditorTreeWidgetItem *pFunction=m_pLastEditedItem;
@@ -528,10 +469,10 @@ void KviClassEditor::renameFunction()
 	for(unsigned int i=0;i<pInheritedClasses.count();i++)
 		pInheritedClasses.at(i)->setClassNotBuilt(true);
 	activateItem(pFunction);
-	KviKvsObjectClass *pClass;
+/*	KviKvsObjectClass *pClass;
 	pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
-	//if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
-
+	if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
+*/
 }
 bool KviClassEditor::functionExists(const QString &szFunctionName, KviClassEditorTreeWidgetItem *pClass)
 {
@@ -1138,17 +1079,12 @@ void KviClassEditor::loadProperties(KviConfig * cfg)
 	activateItem(it);
 }
 
-void KviClassEditor::appendSelectedClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l)
+void KviClassEditor::appendSelectedItems(KviPointerList<KviClassEditorTreeWidgetItem> * l)
 {
 	QList<QTreeWidgetItem *> list=m_pTreeWidget->selectedItems();
 	for(int i=0;i<list.count();i++)
 	{
-		if (((KviClassEditorTreeWidgetItem *)list.at(i))->isClass())
-			l->append((KviClassEditorTreeWidgetItem *)list.at(i));
-		else
-		{
-			appendSelectedClassItemsRecursive(l,list.at(i));
-		}
+		l->append((KviClassEditorTreeWidgetItem *)list.at(i));
 	}
 }
 void KviClassEditor::appendSelectedClassItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom)
@@ -1190,7 +1126,7 @@ void KviClassEditor::appendAllClassItemsRecursive(KviPointerList<KviClassEditorT
         }
 
 }
-/*
+
 void KviClassEditor::removeItemChildren(KviClassEditorTreeWidgetItem *it)
 {
         while(it->childCount() > 0)
@@ -1212,10 +1148,12 @@ bool KviClassEditor::removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToA
         {
                 if(it->isClass())
                         KviQString::sprintf(szMsg,__tr2qs_ctx("Do you really want to remove the class \"%Q\" ?","editor"),&szName);
-                else {
+		else
+		if(it->isNamespace())
+		{
                         KviQString::sprintf(szMsg,__tr2qs_ctx("Do you really want to remove the namespace \"%Q\" ?","editor"),&szName);
                         szMsg += "<br>";
-                        szMsg += __tr2qs_ctx("Please note that all the children items will be deleted too.","editor");
+			szMsg += __tr2qs_ctx("Please note that all the children classes/functions will be deleted too.","editor");
                 }
 
                 g_pClassEditorModule->lock();
@@ -1260,7 +1198,7 @@ void KviClassEditor::removeSelectedItems()
 
 
 }
-*/
+
 
 bool KviClassEditor::askForClassName(QString &szClassName,QString &szInheritsClassName, bool bEdit)
 {

@@ -133,7 +133,6 @@ public:
 	bool                           m_bSaving;
 public:
 	//bool modified(){ return m_bModified; };
-	//void setInheritedClassesNotBuilt(const QString &szInheritsClassName);
         void saveProperties(KviConfig *);
         void loadProperties(KviConfig *);
         void loadUnbuildedFunctions();
@@ -145,8 +144,6 @@ public:
 
         void exportClasses(bool,bool=false);
         void exportSelectionInSinglesFiles(KviPointerList<KviClassEditorTreeWidgetItem> *l);
-
-	//static void splitFullClassOrNamespaceName(const QString &szFullName,QStringList &lNamespaces,QString &szName);
 	void cutItem(KviClassEditorTreeWidgetItem *pItem);
 
 protected slots:
@@ -166,7 +163,7 @@ protected slots:
 	void exportSelectedSepFiles();
 	void exportSelected();
 /*
-        void removeSelectedItems();
+
 
 
 
@@ -174,7 +171,6 @@ protected slots:
 	void slotCollapseNamespaces();
 	void slotFindWord(const QString &);
 	void slotReplaceAll(const QString &before,const QString &after);
-	void itemRenamed(QTreeWidgetItem *it,int col);
         void classRefresh(const QString &szName);
         */
 
@@ -184,13 +180,11 @@ protected:
       /*  void recursiveCollapseNamespaces(KviClassEditorTreeWidgetItem * it);
 	void recursiveSearchReplace(const QString &szSearch,KviClassEditorTreeWidgetItem * it,bool bReplace=false,const QString &szReplace="n");
 
-	void recursiveCommit(KviClassEditorTreeWidgetItem * it);
         */
 	void getExportClassBuffer(QString &buffer,KviClassEditorTreeWidgetItem * it);
 
 	void oneTimeSetup();
 	void saveLastEditedItem();
-	//void getUniqueItemName(KviClassEditorTreeWidgetItem *item,QString &buffer,KviClassEditorTreeWidgetItem::Type eType);
 	void appendSelectedClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
 	void appendSelectedClassItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
 	void appendAllClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
@@ -204,34 +198,14 @@ protected:
 	bool askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName);
 	void searchInheritedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInheritsedClasses);
 	bool classExists(QString &szFullItemName);
-	//void renameClassOrNamespace();
 	void renameClass(KviClassEditorTreeWidgetItem *pClassItem);
 	void renameNamespace(KviClassEditorTreeWidgetItem *pNamespaceItem);
-bool namespaceExists(QString &szFullItemName);
+	void removeSelectedItems();
 
-/*
         bool removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
         void removeItemChildren(KviClassEditorTreeWidgetItem *it);
-
-
-
-
-
-
-
+	void appendSelectedItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
         void appendAllItems(KviPointerList<KviClassEditorTreeWidgetItem> * l,KviClassEditorTreeWidgetItem::Type);
-        void appendAllItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom,KviClassEditorTreeWidgetItem::Type);
-
-
-
-        KviClassEditorTreeWidgetItem * createFullItemRecursive(QTreeWidgetItem *pCurrent,QStringList & lNameSpaces,int & iLevel);
-        KviClassEditorTreeWidgetItem * findItemRecursive(QTreeWidgetItem *it,QStringList & lNameSpaces,int & iLevel);
-
-        */
-     //   bool itemExistsRecursive(QTreeWidgetItem *pSearchFor,QTreeWidgetItem * pSearchAt);
-        bool itemExists(QTreeWidgetItem *pSearchFor);
-        bool itemExists(const QString &szFullName);
-
         void buildFullItemPath(KviClassEditorTreeWidgetItem * it,QString &szBuffer);
         QString buildFullClassName(KviClassEditorTreeWidgetItem * it);
         KviClassEditorTreeWidgetItem * createFullItem(const QString &szFullName);
