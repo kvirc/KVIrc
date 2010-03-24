@@ -835,6 +835,7 @@ void KviClassEditor::searchReplace(const QString &szSearch,bool bReplace,const Q
 		KviClassEditorTreeWidgetItem *pItem=it.current();
 		for(int j=0;j<pItem->childCount();j++)
 		{
+			bool bOpened=false;
 			if(((KviClassEditorTreeWidgetItem *)pItem->child(j))->buffer().indexOf(szSearch,0,Qt::CaseInsensitive) != -1)
 			{
 				pItem->child(j)->setBackground(0, QColor(255,0,0,128));
@@ -842,7 +843,11 @@ void KviClassEditor::searchReplace(const QString &szSearch,bool bReplace,const Q
 					QString &buffer=(QString &)((KviClassEditorTreeWidgetItem *)pItem->child(j))->buffer();
 					buffer.replace(szSearch,szReplace,Qt::CaseInsensitive);
 				}
-				openParentItems(pItem);
+				if (!bOpened)
+				{
+					openParentItems(pItem->child(j));
+					bOpened=true;
+				}
 			} else {
 				pItem->child(j)->setBackground(0, QColor(255,255,255));
 			}
