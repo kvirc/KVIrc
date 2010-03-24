@@ -826,46 +826,54 @@ void KviClassEditor::recursiveSearchReplace(const QString &szSearch,KviClassEdit
         }
 
 }
-
+*/
+void KviClassEditor::searchReplace(const QString &szSearch,bool bReplace,const QString &szReplace)
+{
+	KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> it (*m_pClasses);
+	while(it.current())
+	{
+		KviClassEditorTreeWidgetItem *pItem=it.current();
+		for(int j=0;j<pItem->childCount();j++)
+		{
+			if(((KviClassEditorTreeWidgetItem *)pItem->child(j))->buffer().indexOf(szSearch,0,Qt::CaseInsensitive) != -1)
+			{
+				pItem->child(j)->setBackground(0, QColor(255,0,0,128));
+				if (bReplace){
+					QString &buffer=(QString &)((KviClassEditorTreeWidgetItem *)pItem->child(j))->buffer();
+					buffer.replace(szSearch,szReplace,Qt::CaseInsensitive);
+				}
+				openParentItems(pItem);
+			} else {
+				pItem->child(j)->setBackground(0, QColor(255,255,255));
+			}
+		}
+		++it;
+	}
+}
 void KviClassEditor::slotFind()
 {
 
-        g_pClassEditorModule->lock();
-        bool bOk;
+	g_pClassEditorModule->lock();
+	bool bOk;
 
-        QString szSearch = QInputDialog::getText(this,
-                __tr2qs_ctx("Find In Classes","editor"),
-                __tr2qs_ctx("Please enter the text to be searched for. The matching classes will be highlighted.","editor"),
-                QLineEdit::Normal,
-                "",
-                &bOk);
+	QString szSearch = QInputDialog::getText(this,
+		__tr2qs_ctx("Find In Classes","editor"),
+		__tr2qs_ctx("Please enter the text to be searched for. The matching function will be highlighted.","editor"),
+		QLineEdit::Normal,
+		"",
+		&bOk);
 
-
-        g_pClassEditorModule->unlock();
-        if(!bOk)return;
-        if(szSearch.isEmpty())return;
-        m_pEditor->setFindText(szSearch);
-        for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
-        {
-                if(((KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->isClass())
-                {
-                        if(((KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->buffer().indexOf(szSearch,0,Qt::CaseInsensitive) != -1)
-                        {
-                                m_pTreeWidget->topLevelItem(i)->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIASHIGHLIGHTED))));
-                        } else {
-                                m_pTreeWidget->topLevelItem(i)->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
-                        }
-                } else {
-                        recursiveSearchReplace(szSearch,(KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i));
-                }
-        }
+	g_pClassEditorModule->unlock();
+	if(!bOk)return;
+	if(szSearch.isEmpty())return;
+	m_pEditor->setFindText(szSearch);
+	searchReplace(szSearch);
 }
-
 void KviClassEditor::slotFindWord(const QString &szSearch)
 {
 	m_pEditor->setFindText(szSearch);
 }
-
+/*
 void KviClassEditor::recursiveCollapseNamespaces(KviClassEditorTreeWidgetItem * it)
 {
 	if(!it)return;

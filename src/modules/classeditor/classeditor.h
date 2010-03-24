@@ -162,6 +162,9 @@ protected slots:
 	void exportAll();
 	void exportSelectedSepFiles();
 	void exportSelected();
+	void slotFind();
+	void slotFindWord(const QString &);
+	void searchReplace(const QString &szSearch,bool bReplace=false,const QString &szReplace="n");
 /*
 
 
@@ -169,7 +172,7 @@ protected slots:
 
 	void slotFind();
 	void slotCollapseNamespaces();
-	void slotFindWord(const QString &);
+
 	void slotReplaceAll(const QString &before,const QString &after);
         void classRefresh(const QString &szName);
         */
