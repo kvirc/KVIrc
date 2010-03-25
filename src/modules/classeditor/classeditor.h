@@ -165,13 +165,15 @@ protected slots:
 	void slotFind();
 	void slotFindWord(const QString &);
 	void searchReplace(const QString &szSearch,bool bReplace=false,const QString &szReplace="n");
+	void slotCollapseItems();
+	 void recursiveCollapseItems(KviClassEditorTreeWidgetItem * it);
 /*
 
 
 
 
 	void slotFind();
-	void slotCollapseNamespaces();
+
 
 	void slotReplaceAll(const QString &before,const QString &after);
         void classRefresh(const QString &szName);
@@ -180,7 +182,7 @@ protected slots:
 protected:
        KviPointerHashTable<QString,KviClassEditorTreeWidgetItem> *m_pClasses;
      //   KviClassEditorTreeWidgetItemDelegate *m_pItemDelegate;
-      /*  void recursiveCollapseNamespaces(KviClassEditorTreeWidgetItem * it);
+      /*
 	void recursiveSearchReplace(const QString &szSearch,KviClassEditorTreeWidgetItem * it,bool bReplace=false,const QString &szReplace="n");
 
         */

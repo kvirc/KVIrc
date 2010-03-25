@@ -796,37 +796,13 @@ void KviClassEditor::customContextMenuRequested(QPoint pnt)
 
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE)),
-			__tr2qs_ctx("Collapse All Namespaces","editor"),
-			this,SLOT(slotCollapseNamespaces()));
+			__tr2qs_ctx("Collapse All Items","editor"),
+			this,SLOT(slotCollapseItems()));
 
 	m_pContextPopup->setItemEnabled(id,bHasItems);
 	m_pContextPopup->popup( m_pTreeWidget->mapToGlobal(pnt));
 }
-/*
-void KviClassEditor::recursiveSearchReplace(const QString &szSearch,KviClassEditorTreeWidgetItem * it,bool bReplace,const QString &szReplace)
-{
 
-        if(!it)return;
-        for(int i=0;i< it->childCount();i++)
-        {
-                if(((KviClassEditorTreeWidgetItem *)it->child(i))->isClass())
-                {
-                        if(((KviClassEditorTreeWidgetItem *)it->child(i))->buffer().indexOf(szSearch,0,Qt::CaseInsensitive) != -1)
-                        {
-                                it->child(i)->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIASHIGHLIGHTED))));
-                                if (bReplace) ((QString &)((KviClassEditorTreeWidgetItem *)it->child(i))->buffer()).replace(szSearch,szReplace,Qt::CaseInsensitive);
-                                it->setExpanded(true);
-                        }
-                        else
-                        it->child(i)->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
-                }
-                else {
-                        recursiveSearchReplace(szSearch,(KviClassEditorTreeWidgetItem *)(it->child(i)),bReplace,szReplace);
-                }
-        }
-
-}
-*/
 void KviClassEditor::searchReplace(const QString &szSearch,bool bReplace,const QString &szReplace)
 {
 	KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> it (*m_pClasses);
@@ -878,8 +854,8 @@ void KviClassEditor::slotFindWord(const QString &szSearch)
 {
 	m_pEditor->setFindText(szSearch);
 }
-/*
-void KviClassEditor::recursiveCollapseNamespaces(KviClassEditorTreeWidgetItem * it)
+
+void KviClassEditor::recursiveCollapseItems(KviClassEditorTreeWidgetItem * it)
 {
 	if(!it)return;
 	for (int i=0;i<it->childCount();i++)
@@ -887,22 +863,22 @@ void KviClassEditor::recursiveCollapseNamespaces(KviClassEditorTreeWidgetItem * 
 		if(it->child(i)->childCount())
 		{
 			it->child(i)->setExpanded(false);
-			recursiveCollapseNamespaces((KviClassEditorTreeWidgetItem *)it->child(i));
+			recursiveCollapseItems((KviClassEditorTreeWidgetItem *)it->child(i));
 		}
 	}
 }
 
-void KviClassEditor::slotCollapseNamespaces()
+void KviClassEditor::slotCollapseItems()
 {
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
 		if (m_pTreeWidget->topLevelItem(i)->childCount()){
 			m_pTreeWidget->topLevelItem(i)->setExpanded(false);
-			recursiveCollapseNamespaces((KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i));
+			recursiveCollapseItems((KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i));
 		}
 	}
 }
-
+/*
 void KviClassEditor::slotReplaceAll(const QString &szFind,const QString &szReplace)
 {
 	m_pEditor->setFindText(szReplace);
