@@ -1071,7 +1071,7 @@ static bool chan_kvs_fnc_users(KviKvsModuleFunctionCall * c)
 
 	if(bAddMask || bCheckFlags || bCheckMask)
 	{
-		bool bMaskMustMatch = szFlags.contains(QChar('i'),Qt::CaseSensitive);
+		bool bMaskMustMatch = !szFlags.contains(QChar('i'),Qt::CaseSensitive);
 		KviIrcMask mask(szMask);
 
 		while(e)
