@@ -56,30 +56,16 @@ KviRawTreeWidgetItem::KviRawTreeWidgetItem(QTreeWidget *par,int idx,bool bEnable
 : QTreeWidgetItem(par)
 {
 	m_iIdx = idx;
- 	m_szName.setNum(idx);
-	if(idx < 100)m_szName.prepend('0');
-	if(idx < 10)m_szName.prepend('0');
-	setText(0,m_szName);
+ 	QString szName;
+	szName.sprintf("%03d", idx);
+	setText(0,szName);
 	setEnabled(bEnabled);
 }
 
 void KviRawHandlerTreeWidgetItem::setName(const QString &szName)
 {
-	m_szName = szName;
-	setText(0,m_szName);
+	setText(0,szName);
 }
-
-/*
-const QPixmap * KviRawTreeWidgetItem::pixmap(int col) const
-{
-	return g_pIconManager->getSmallIcon(firstChild() ? KVI_SMALLICON_RAWEVENT : KVI_SMALLICON_RAWEVENTNOHANDLERS);
-}
-
-const QPixmap * KviRawHandlerTreeWidgetItem::pixmap(int col) const
-{
-	return g_pIconManager->getSmallIcon(m_bEnabled ? KVI_SMALLICON_HANDLER : KVI_SMALLICON_HANDLERDISABLED);
-}
-*/
 
 KviRawEditor::KviRawEditor(QWidget * par)
 : QWidget(par)
@@ -214,7 +200,7 @@ void KviRawEditor::getUniqueHandlerName(KviRawTreeWidgetItem *it,QString &buffer
 		for (int i=0;i<it->childCount();i++)
 		{
 			KviRawHandlerTreeWidgetItem * ch =(KviRawHandlerTreeWidgetItem *) it->child(i);
-			if(KviQString::equalCI(newName,ch->m_szName))
+			if(KviQString::equalCI(newName,ch->text(0)))
 			{
 				bFound = true;
 				KviQString::sprintf(newName,"%Q_%d",&buffer,idx);
@@ -323,11 +309,11 @@ void KviRawEditor::commit()
 			for (int j=0;j<it->childCount();j++)
 			{
 				ch=(QTreeWidgetItem *)it->child(j);
-				debug("Commit handler %s",((KviRawHandlerTreeWidgetItem *)ch)->m_szBuffer.toUtf8().data());
+				debug("Commit handler %s",((KviRawHandlerTreeWidgetItem *)ch)->text(0).toUtf8().data());
 				//int a=(KviRawTreeWidgetItem *)it)->m_iIdx;
-				KviQString::sprintf(szContext,"RawEvent%d::%Q",&(((KviRawTreeWidgetItem *)it)->m_iIdx),&(((KviRawHandlerTreeWidgetItem *)ch)->m_szName));
+				KviQString::sprintf(szContext,"RawEvent%d::%s",&(((KviRawTreeWidgetItem *)it)->m_iIdx),(((KviRawHandlerTreeWidgetItem *)ch)->text(0)).toUtf8().data());
 				KviKvsScriptEventHandler * s = new KviKvsScriptEventHandler(
-						((KviRawHandlerTreeWidgetItem *)ch)->m_szName,
+						((KviRawHandlerTreeWidgetItem *)ch)->text(0),
 						szContext,
 						((KviRawHandlerTreeWidgetItem *)ch)->m_szBuffer,
 						((KviRawHandlerTreeWidgetItem *)ch)->m_bEnabled
@@ -347,8 +333,8 @@ void KviRawEditor::saveLastEditedItem()
 	if(!m_pLastEditedItem)return;
 
 	QString buffer = m_pNameEditor->text();
-	debug("Check lineedit name %s and internal %s",buffer.toUtf8().data(),m_pLastEditedItem->m_szName.toUtf8().data());
-	if(!KviQString::equalCI(buffer,m_pLastEditedItem->m_szName))
+	debug("Check lineedit name %s and internal %s",buffer.toUtf8().data(),m_pLastEditedItem->text(0).toUtf8().data());
+	if(!KviQString::equalCI(buffer,m_pLastEditedItem->text(0)))
 	{
 		getUniqueHandlerName((KviRawTreeWidgetItem *)(m_pLastEditedItem->parent()),buffer);
 		debug("Change name %s",buffer.toUtf8().data());
@@ -379,7 +365,7 @@ void KviRawEditor::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *)
 		m_pEditor->setEnabled(false);
 		QString tmp;
 		KviQString::sprintf(tmp,__tr2qs_ctx("\n\nRaw Event:\n%s","editor"),
-			((KviRawHandlerTreeWidgetItem *)it)->m_szName.toUtf8().data());
+			((KviRawHandlerTreeWidgetItem *)it)->text(0).toUtf8().data());
 		m_pEditor->setText(tmp);
 	}
 }
@@ -399,9 +385,9 @@ void KviRawEditor::getExportEventBuffer(QString &buffer,KviRawHandlerTreeWidgetI
 	KviCommandFormatter::blockFromBuffer(szBuf);
 
 	buffer = "event(";
-	buffer += ((KviRawTreeWidgetItem *)(it->parent()))->m_szName;
+	buffer += ((KviRawTreeWidgetItem *)(it->parent()))->text(0);
 	buffer += ",";
-	buffer += it->m_szName;
+	buffer += it->text(0);
 	buffer += ")\n";
 	buffer += szBuf;
 	buffer += "\n";
@@ -410,9 +396,9 @@ void KviRawEditor::getExportEventBuffer(QString &buffer,KviRawHandlerTreeWidgetI
 	{
 		buffer += "\n";
 		buffer += "eventctl -d ";
-		buffer += ((KviRawTreeWidgetItem *)(it->parent()))->m_szName;
+		buffer += ((KviRawTreeWidgetItem *)(it->parent()))->text(0);
 		buffer += " ";
-		buffer += it->m_szName;
+		buffer += it->text(0);
 	}
 }
 
@@ -425,9 +411,9 @@ void KviRawEditor::exportCurrentHandler()
 	QString szName = QDir::homePath();
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
 	szName += "raw";
-	szName += ((KviRawTreeWidgetItem *)(m_pLastEditedItem->parent()))->m_szName;
+	szName += ((KviRawTreeWidgetItem *)(m_pLastEditedItem->parent()))->text(0);
 	szName += ".";
-	szName += m_pLastEditedItem->m_szName;
+	szName += m_pLastEditedItem->text(0);
 	szName += ".kvs";
 
 	QString szFile;

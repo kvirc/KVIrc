@@ -51,7 +51,6 @@ class KviRawTreeWidgetItem : public QTreeWidgetItem
 {
 public:
 	int m_iIdx;
-	QString m_szName;
 public:
 	KviRawTreeWidgetItem(QTreeWidget * par,int idx,bool bEnabled);
 	~KviRawTreeWidgetItem() {};
@@ -62,14 +61,13 @@ public:
 			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENTNOHANDLERS)));
 			((KviRawTreeWidget*)treeWidget())->updateItem(this);
 	};
-	virtual QString text(int) const { return m_szName; };
 };
 
 class KviRawHandlerTreeWidgetItem : public QTreeWidgetItem
 {
 public:
 	KviRawHandlerTreeWidgetItem(QTreeWidgetItem * par,const QString & name,const QString & buffer,bool bEnabled)
-	: QTreeWidgetItem(par), m_szName(name) , m_szBuffer(buffer) , m_bEnabled(bEnabled)
+	: QTreeWidgetItem(par), m_szBuffer(buffer) , m_bEnabled(bEnabled)
 	{
 		setText(0,name);
 		setEnabled(bEnabled);
@@ -82,7 +80,6 @@ public:
 			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLERDISABLED)));
 			((KviRawTreeWidget*)treeWidget())->updateItem(this);
 	};
-	QString m_szName;
 	QString m_szBuffer;
 	bool   m_bEnabled;
 	void setName(const QString &szName);
