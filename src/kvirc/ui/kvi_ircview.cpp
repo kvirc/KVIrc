@@ -2346,6 +2346,9 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 
 				if(xPos < iLeft) return 0; // Mouse is out of this row boundaries
 
+				if(i >= l->iBlockCount)
+					return l->szText.size();
+					
 				//run up to the chunk containing the mouse position
 				for(;iLeft + l->pBlocks[i].block_width < xPos;)
 				{
