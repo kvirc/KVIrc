@@ -1068,7 +1068,7 @@ void KviClassEditor::loadProperties(KviConfig * cfg)
 	activateItem(it);
 }
 
-void KviClassEditor::appendSelectedItems(KviPointerList<KviClassEditorTreeWidgetItem> * l)
+void KviClassEditor::appendSelectedClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l)
 {
 	QList<QTreeWidgetItem *> list=m_pTreeWidget->selectedItems();
 	for(int i=0;i<list.count();i++)

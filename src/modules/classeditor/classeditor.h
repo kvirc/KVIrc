@@ -209,8 +209,6 @@ protected:
 
         bool removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
         void removeItemChildren(KviClassEditorTreeWidgetItem *it);
-	void appendSelectedItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
-        void appendAllItems(KviPointerList<KviClassEditorTreeWidgetItem> * l,KviClassEditorTreeWidgetItem::Type);
         void buildFullItemPath(KviClassEditorTreeWidgetItem * it,QString &szBuffer);
         QString buildFullClassName(KviClassEditorTreeWidgetItem * it);
         KviClassEditorTreeWidgetItem * createFullItem(const QString &szFullName);
