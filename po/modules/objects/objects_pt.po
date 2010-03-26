@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kvirc_objects \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-21 14:37+0100\n"
-"PO-Revision-Date: 2010-03-10 03:17+0000\n"
+"PO-Revision-Date: 2010-03-26 01:12+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -705,27 +705,27 @@ msgstr "A barra de ferramentas não pode ser um elemento-pai!"
 #: src/modules/objects/class_hbox.cpp:178
 #: src/modules/objects/class_vbox.cpp:183
 msgid "The widget must be a child of this hbox"
-msgstr "A 'widget' tem ser um filho desta 'hbox'"
+msgstr "A 'widget' tem que ser um filho desta 'hbox'"
 
 #: src/modules/objects/class_layout.cpp:290
 msgid "The widget must be a child of this layout"
-msgstr "A 'widget' deve ser uma filha desta disposição"
+msgstr "A 'widget' tem que ser uma filha desta disposição"
 
 #: src/modules/objects/class_vbox.cpp:153
 msgid "The widget must be a child of this vbox"
-msgstr "A 'widget' tem ser um filho desta vbox"
+msgstr "A 'widget' tem que ser um filho desta vbox"
 
 #: src/modules/objects/class_workspace.cpp:229
 msgid "The widget must be a subwindow of this workspace"
-msgstr "A 'widget' tem de ser uma sub-janela deste espaço de trabalho"
+msgstr "A 'widget' tem que ser uma sub-janela deste espaço de trabalho"
 
 #: src/modules/objects/class_wrapper.cpp:146
 msgid ""
 "The window identifier preceded by WinId must be the first object in the "
 "search path"
 msgstr ""
-"O identificador de janela precedido por WinId tem ser ser o primeiro objecto "
-"na localização de procura"
+"O identificador de janela precedido por WinId tem que ser o primeiro objecto "
+"no caminho de procura"
 
 #: src/modules/objects/class_socket.cpp:590
 msgid "There is no connection to accept!"
@@ -735,15 +735,15 @@ msgstr "Não existe nenhuma conexão para aceitar!"
 msgid ""
 "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 msgstr ""
-"A receber demasiados dados descomprimidos (deixou este socket sem gestão?)"
+"A receber demasiados dados descomprimidos (deixou este 'socket' sem gestão?)"
 
 #: src/modules/objects/class_sql.cpp:467
 msgid "Type value %Q not supported"
-msgstr "Valor tipo %Q não suportado"
+msgstr "Valor do tipo %Q não suportado"
 
 #: src/modules/objects/class_painter.cpp:700
 msgid "Unknown '%Q' background mode"
-msgstr "Modo de fundo '%Q' desconhecido"
+msgstr "Modo do fundo '%Q' desconhecido"
 
 #: src/modules/objects/class_treewidget.cpp:429
 msgid "Unknown '%Q' sort order: switching to ascending order"
@@ -751,7 +751,7 @@ msgstr "Ordem de organização '%Q' desconhecida: a mudar para ordem ascendente"
 
 #: src/modules/objects/class_widget.cpp:1934
 msgid "Unknown Color Group '%Q'"
-msgstr "Grupo de Cor Desconhecida '%Q'"
+msgstr "Grupo de Cor Desconhecido '%Q'"
 
 #: src/modules/objects/class_widget.cpp:1925
 msgid "Unknown Color Role '%Q'"
@@ -831,12 +831,13 @@ msgstr "Opção 'widget' '%Q' desconhecida"
 
 #: src/modules/objects/class_multilineedit.cpp:508
 msgid "Unknown word wrap '%Q'"
-msgstr "Envolvimento de palavra desconhecido '%Q'"
+msgstr "Envolvimento de palavra '%Q' desconhecido"
 
 #: src/modules/objects/class_lineedit.cpp:471
 msgid "Unkonwn '%Q' completition mode, switching to default popupCompletition"
 msgstr ""
-"Modo de conclusão '%Q' desconhecido, a mudar para a Conclusãopopuppredefinida"
+"Modo de conclusão '%Q' desconhecido, a mudar para a popupCompletition "
+"predefinida"
 
 #: src/modules/objects/class_file.cpp:441
 msgid "Unsupported datatype '%Q'"
@@ -889,3 +890,4 @@ msgstr "Ocorreu um erro de escrita!"
 #: src/modules/objects/class_xmlreader.cpp:315
 msgid "XML support not available in the Qt library"
 msgstr "Suporte XML não disponível na biblioteca Qt"
+

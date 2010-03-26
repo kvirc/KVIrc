@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-21 14:37+0100\n"
-"PO-Revision-Date: 2010-03-10 10:49+0000\n"
+"PO-Revision-Date: 2010-03-26 01:34+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2128,7 +2128,7 @@ msgstr "Confirmar desinstalação do extra"
 
 #: src/modules/logview/logviewmdiwindow.cpp:387
 msgid "Confirm current user logs delete"
-msgstr ""
+msgstr "Confirmar remoção actual de registos de utilizador"
 
 #: src/kvirc/ui/kvi_frame.cpp:798
 #: src/kvirc/ui/kvi_console.cpp:502
@@ -3564,7 +3564,7 @@ msgstr "Mensagem de convite"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:274
 msgid "Invite only"
-msgstr "Apenas por convite"
+msgstr "Apenas convite"
 
 #: src/kvirc/kernel/kvi_options.cpp:823
 msgid "Invite unexception matching my mask"
@@ -3600,23 +3600,23 @@ msgstr "Entrar em Canais..."
 
 #: src/kvirc/ui/kvi_menubar.cpp:159
 msgid "Join KVIrc French Channel on EuropNet"
-msgstr "Entrar no Canal KVirc Francês no EuropNet"
+msgstr "Entrar no Canal KVirc Francês em EuropNet"
 
 #: src/kvirc/ui/kvi_menubar.cpp:156
 msgid "Join KVIrc French Channel on Freenode"
-msgstr "Entrar no Canal KVirc Francês no Freenode"
+msgstr "Entrar no Canal KVirc Francês em Freenode"
 
 #: src/kvirc/ui/kvi_menubar.cpp:143
 msgid "Join KVIrc International Channel on Freenode"
-msgstr "Entrar no Canal KVirc Internacional no Freenode"
+msgstr "Entrar no Canal KVirc Internacional em Freenode"
 
 #: src/kvirc/ui/kvi_menubar.cpp:145
 msgid "Join KVIrc International Channel on IRCNet"
-msgstr "Entrar no Canal KVirc Internacional no IRCNet"
+msgstr "Entrar no Canal KVirc Internacional em IRCNet"
 
 #: src/kvirc/ui/kvi_menubar.cpp:150
 msgid "Join KVIrc Italian Channel on AzzurraNet"
-msgstr "Entrar no Canal KVirc Internacional no AzzurraNet"
+msgstr "Entrar no Canal KVirc Internacional em AzzurraNet"
 
 #: src/kvirc/kernel/kvi_options.cpp:808
 msgid "Join error message"
@@ -5317,7 +5317,7 @@ msgstr "Remover %Q"
 
 #: src/kvirc/ui/kvi_menubar.cpp:140
 msgid "Report a Bug / Propose Improvements"
-msgstr "Comunicar um Erro/Propor melhorias"
+msgstr "Comunicar Erro/Propor melhorias"
 
 #: src/modules/links/linkswindow.cpp:64
 msgid "Request Links"
@@ -7881,14 +7881,12 @@ msgid "invite list"
 msgstr "Lista de convites"
 
 #: src/kvirc/ui/kvi_channel.cpp:886
-#, fuzzy
 msgid "irc operator"
-msgstr "operador"
+msgstr "operador irc"
 
 #: src/kvirc/ui/kvi_channel.cpp:886
-#, fuzzy
 msgid "irc operators"
-msgstr "operadores"
+msgstr "operadores irc"
 
 #: src/kvirc/ui/kvi_channel.cpp:727
 msgid "is talking"
