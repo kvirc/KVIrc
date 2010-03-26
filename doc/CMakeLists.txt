@@ -1,5 +1,4 @@
 # CMakeLists for doc/
-SUBDIRS(scriptexamples)
 
 SET(license
 	COPYING
