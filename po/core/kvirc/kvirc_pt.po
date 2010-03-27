@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-21 14:37+0100\n"
-"PO-Revision-Date: 2010-03-26 01:34+0000\n"
+"PO-Revision-Date: 2010-03-27 06:44+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1808,7 +1808,7 @@ msgstr "Mensagem Chanserv"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:800
 msgid "Change Nickname"
-msgstr "Mudar Apelido"
+msgstr "Mudar Alcunha"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:178
 #: src/kvirc/kernel/kvi_ircconnection.cpp:188
@@ -2398,7 +2398,7 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_options.cpp:782
 msgid "DCC chat message"
-msgstr "Mensagem DCC chat"
+msgstr "Mensagem DCC de Conversa"
 
 #: src/kvirc/kernel/kvi_options.cpp:769
 msgid "DCC error"
@@ -2669,7 +2669,7 @@ msgstr "Chave de encriptação:"
 
 #: src/kvirc/kernel/kvi_options.cpp:783
 msgid "Encrypted DCC chat message"
-msgstr "Mensagem DCC chat encriptada"
+msgstr "Mensagem DCC de conversa encriptada"
 
 #: src/kvirc/kernel/kvi_options.cpp:792
 msgid "Encrypted channel notice"
@@ -3360,7 +3360,8 @@ msgid ""
 "Impossible to send STARTTLS command to the IRC server. Your connection will "
 "NOT be encrypted"
 msgstr ""
-"Impossível enviar comando STARTTLS para o servidor IRC. A sua conexão NÃO "
+"É impossível enviar o comando STARTTLS para o servidor IRC. A sua conexão "
+"NÃO "
 "será encriptada"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:283
@@ -3370,7 +3371,7 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:295
 msgid "Impossible to use both 7-bit and 8-bit letters in nicknames"
-msgstr "Não é possível usar ambas as letras de 7-bit e 8-bit nos apelidos"
+msgstr "Não é possível usar ambas as letras de 7-bit e 8-bit nas alcunhas"
 
 #: src/kvirc/ui/kvi_irctoolbar.cpp:400
 msgid "In progress..."
@@ -4588,7 +4589,7 @@ msgstr "Conectado por"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:294
 msgid "Only 7-bit letters in nicknames allowed"
-msgstr "Apenas letras de 7-bit são permitidas nos apelidos"
+msgstr "Apenas letras de 7-bit são permitidas nas alcunhas"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:285
 msgid "Only registered nicks can join"
@@ -5888,7 +5889,7 @@ msgstr "Ícones pequenos"
 
 #: src/kvirc/ui/kvi_window.cpp:701
 msgid "Smart (Send Local)"
-msgstr "Inteligente (Enviar Localmente)"
+msgstr "Inteligente (Enviar Local)"
 
 #: src/kvirc/ui/kvi_window.cpp:702
 msgid "Smart (Send UTF-8)"
@@ -5937,7 +5938,7 @@ msgid ""
 "nicknames..."
 msgstr ""
 "Alguma coisa muito estranha está a acontecer: o servidor está a recusar a "
-"autenticação de todos os apelidos..."
+"autenticação de todas as alcunhas..."
 
 #: src/modules/snd/libkvisnd.cpp:587
 msgid "Sorry, I can't find a sound system to use on this machine"
@@ -6359,8 +6360,8 @@ msgid ""
 "The server is refusing all the login nicknames: giving up, you must send the "
 "nickname manually"
 msgstr ""
-"O servidor está a recusar a autenticação de todos os apelidos: a desistir, "
-"tem que enviar o apelido manualmente"
+"O servidor está a recusar a autenticação de todos as alcunhas: a desistir, "
+"tem que enviar a alcunha manualmente"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1375
 #, c-format
@@ -7910,7 +7911,7 @@ msgstr "Falha na chamada de escuta"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:316
 msgid "n: Recipient for nick changes"
-msgstr "n: Recipiente para mudanças de apelidos"
+msgstr "n: Recipiente para mudanças de alcunha"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1592
 msgid "notification"
