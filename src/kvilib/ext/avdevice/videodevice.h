@@ -28,6 +28,7 @@
     videodevice.h  -  Kopete Video Device Low-level Support
 
     Copyright (c) 2005-2006 by Cláudio da Silveira Pinheiro   <taupter@gmail.com>
+    Copyright (c) 2010      by Frank Schaefer                 <fschaefer.oss@googlemail.com>
 
     Kopete    (c) 2002-2003      by the Kopete developers  <kopete-devel@kde.org>
 
@@ -87,6 +88,7 @@
 #endif // __linux__
 
 #include <QString>
+#include <QStringList>
 #include <QFile>
 #include <QImage>
 
@@ -215,7 +217,6 @@ typedef enum
 	STANDARD_ALL		= ( STANDARD_525_60  | STANDARD_625_50)
 } signal_standard;
 
-
 typedef enum
 {
 	IO_METHOD_NONE,
@@ -231,6 +232,7 @@ struct imagebuffer
 	pixel_format pixelformat;
 	QVector <uchar> data; // maybe it should be a rawbuffer instead of it? It could make us avoid a memory copy
 };
+
 struct rawbuffer // raw buffer
 {
 	uchar * start;
@@ -238,17 +240,65 @@ struct rawbuffer // raw buffer
 };
 
 
+/*!
+    \class ActionVideoControl
+    Data structure for action-video-controls
+*/
+class ActionVideoControl
+{
+public:
+	quint32 id;		/*!< The ID of the control */
+	QString name;		/*!< The name/title of the control */
+};
+
+/*!
+    \class BooleanVideoControl
+    Data structure for boolean video-controls
+*/
+class BooleanVideoControl : public ActionVideoControl
+{
+public:
+	qint32 value_default;	/*!< The default value for the control */
+};
+
+/*!
+    \class NumericVideoControl
+    Data structure for numeric video-controls
+*/
+class NumericVideoControl : public BooleanVideoControl
+{
+public:
+	qint32 value_min;	/*!< The minimum value for the control */
+	qint32 value_max;	/*!< The maximum value allowed for the control */
+	qint32 value_step;	/*!< The step-size which has to be considered when changing the value of the control */
+};
+
+/*!
+    \class MenuVideoControl
+    Data structure for menu-video-controls
+*/
+class MenuVideoControl : public ActionVideoControl
+{
+public:
+	qint32 index_default;	/*!< The index of the default option for this control */
+	QStringList options;	/*!< The list of options provided by the control */
+};
+
+
+
 class VideoDevice{
 public:
 	VideoDevice();
 	virtual ~VideoDevice();
 	int setFileName(QString filename);
+	QString fileName();
+	void setUdi( const QString & );
+	QString udi() const;
 	virtual int open();
 	virtual bool isOpen();
-	virtual int checkDevice();
+
 	int showDeviceCapabilities();
-	virtual int initDevice();
-	int inputs();
+
 	int width();
 	int minWidth();
 	int maxWidth();
@@ -270,9 +320,10 @@ public:
 	QString signalStandardName(int standard);
 	int detectSignalStandards();
 
+	int inputs();
 	int currentInput();
 	int selectInput(int input);
-	int setInputParameters();
+
 	virtual int startCapturing();
 	virtual int getFrame();
 	virtual int getFrame(imagebuffer *imgbuffer);
@@ -280,23 +331,13 @@ public:
 	virtual int stopCapturing();
 	virtual int close();
 
-	float getBrightness();
-	float setBrightness(float brightness);
-	float getContrast();
-	float setContrast(float contrast);
-	float getSaturation();
-	float setSaturation(float saturation);
-	float getWhiteness();
-	float setWhiteness(float whiteness);
-	float getHue();
-	float setHue(float Hue);
+	QList<NumericVideoControl> getSupportedNumericControls();
+	QList<BooleanVideoControl> getSupportedBooleanControls();
+	QList<MenuVideoControl> getSupportedMenuControls();
+	QList<ActionVideoControl> getSupportedActionControls();
 
-	bool getAutoBrightnessContrast();
-	bool setAutoBrightnessContrast(bool brightnesscontrast);
-	bool getAutoColorCorrection();
-	bool setAutoColorCorrection(bool colorcorrection);
-	bool getImageAsMirror();
-	bool setImageAsMirror(bool imageasmirror);
+	int getControlValue(quint32 ctrl_id, qint32 * value);
+	int setControlValue(quint32 ctrl_id, qint32 value);
 
 	bool canCapture();
 	bool canChromakey();
@@ -306,35 +347,48 @@ public:
 	bool canAsyncIO();
 	bool canStream();
 
-	void setUdi( const QString & );
-	QString udi() const;
-	QString m_model;
 	QString m_name;
-	size_t m_modelindex; // Defines what's the number of a device when more than 1 device of a given model is present;
-	QString full_filename;
-	videodev_driver m_driver;
-	int descriptor;
+	QVector<Kopete::AV::VideoInput> m_input;
 
-//protected:
+protected:
+#ifndef COMPILE_DISABLE_AVDEVICE
+	/*!
+	    \enum VideoDevice::imgctrl_id Control-IDs used for V4L1- and software-controls
+	 */
+	typedef enum
+	{
+		IMGCTRL_ID_V4L1_BRIGHTNESS,
+		IMGCTRL_ID_V4L1_HUE,
+		IMGCTRL_ID_V4L1_COLOR,
+		IMGCTRL_ID_V4L1_CONTRAST,
+		IMGCTRL_ID_V4L1_WHITENESS,
+		IMGCTRL_ID_SOFT_AUTOBRIGHTNESSCONTRASTCORR,
+		IMGCTRL_ID_SOFT_AUTOCOLORCORR,
+		IMGCTRL_ID_SOFT_VFLIP,
+		IMGCTRL_ID_SOFT_HFLIP
+	} imgctrl_id;
+	/* NOTE: V4L2_CID_BASE = 0x980900 */
+#endif
+
+	QList<NumericVideoControl> m_numericCtrls;	/*!< Supported muneric controls for the current input */
+	QList<BooleanVideoControl> m_booleanCtrls;	/*!< Supported boolean controls for the current input */
+	QList<MenuVideoControl> m_menuCtrls;		/*!< Supported menu-controls for the current input */
+	QList<ActionVideoControl> m_actionCtrls;	/*!< Supported action-controls for the current input */
+
+	QString full_filename;
+	QString m_udi;
+	int descriptor;
+	videodev_driver m_driver;
+	QString m_model;
 #ifndef COMPILE_DISABLE_AVDEVICE
 #ifdef V4L2_CAP_VIDEO_CAPTURE
 	struct v4l2_capability V4L2_capabilities;
-	struct v4l2_cropcap cropcap;
-	struct v4l2_crop crop;
 	struct v4l2_format fmt;
-	struct v4l2_fmtdesc fmtdesc; // Not sure if it must be here or inside detectPixelFormats(). Should inve
 //	struct v4l2_input m_input;
-	struct v4l2_queryctrl queryctrl;
-	struct v4l2_querymenu querymenu;
-	void enumerateControls (void);
-	void enumerateMenu (void);
 #endif
 	struct video_capability V4L_capabilities;
 	struct video_buffer V4L_videobuffer;
 #endif	
-	QVector<Kopete::AV::VideoInput> m_input;
-//	QFile file;
-protected:
 	int currentwidth, minwidth, maxwidth, currentheight, minheight, maxheight;
 
 	QVector<rawbuffer> m_rawbuffers;
@@ -354,13 +408,21 @@ protected:
 	bool m_videoasyncio;
 	bool m_videostream;
 
+	virtual int checkDevice();
+	virtual int initDevice();
+
+	void setupControls();
+#if !defined(COMPILE_DISABLE_AVDEVICE) && defined(V4L2_CAP_VIDEO_CAPTURE)
+	bool getMenuCtrlOptions(quint32 id, quint32 maxindex, QStringList * options);
+	void saveV4L2ControlData(struct v4l2_queryctrl qctrl);
+	const char *getUnifiedV4L2StdCtrlName(quint32 std_ctrl_id);
+#endif
 	int xioctl(int request, void *arg);
 	int errnoReturn(const char* s);
 	int initRead();
 	int initMmap();
 	int initUserptr();
 
-	QString m_udi;
 };
 
 }

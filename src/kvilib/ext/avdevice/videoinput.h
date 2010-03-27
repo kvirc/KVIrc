@@ -68,36 +68,10 @@ public:
 	QString name;
 	int  hastuner;
 	__u64 m_standards;
-	float getBrightness();
-	float setBrightness(float brightness);
-	float getContrast();
-	float setContrast(float contrast);
-	float getSaturation();
-	float setSaturation(float saturation);
-	float getWhiteness();
-	float setWhiteness(float whiteness);
-	float getHue();
-	float setHue(float Hue);
-	bool getAutoBrightnessContrast();
-	bool setAutoBrightnessContrast(bool brightnesscontrast);
-	bool getAutoColorCorrection();
-	bool setAutoColorCorrection(bool colorcorrection);
-	bool getImageAsMirror();
-	bool setImageAsMirror(bool imageasmirror);
-
-protected:
-// this block must be changed to use a vector of controls instead of fixed ones
-	float m_brightness;
-	float m_contrast;
-	float m_saturation;
-	float m_whiteness;
-	float m_hue;
-
-	bool m_autobrightnesscontrast;
-	bool m_autocolorcorrection;
-	bool m_imageasmirror;
-
-
+	bool img_softcorr_autobrightnesscontrast;
+	bool img_softcorr_autocolor;
+	bool img_softcorr_vflip;
+	bool img_softcorr_hflip;
 };
 
 }

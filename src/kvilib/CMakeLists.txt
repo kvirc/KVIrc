@@ -138,7 +138,6 @@ IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
 		ext/avdevice/dummyvideodevice.cpp
 		ext/avdevice/videodevicevector.cpp
 		ext/avdevice/videodevicepool.cpp 
-		ext/avdevice/videodevicemodelpool.cpp
 		ext/avdevice/bayer.cpp
 		ext/avdevice/sonix_compress.cpp
 	)

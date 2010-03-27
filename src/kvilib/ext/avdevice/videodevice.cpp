@@ -28,6 +28,7 @@
     videodevice.cpp  -  Kopete Video Device Low-level Support
 
     Copyright (c) 2005-2006 by Cláudio da Silveira Pinheiro   <taupter@gmail.com>
+    Copyright (c) 2010      by Frank Schaefer                 <fschaefer.oss@googlemail.com>
 
     Kopete    (c) 2002-2003      by the Kopete developers  <kopete-devel@kde.org>
 
@@ -53,6 +54,8 @@
 #include "bayer.h"
 #include "sonix_compress.h"
 
+#include "kvi_locale.h"
+
 #define CLEAR(x) memset (&(x), 0, sizeof (x))
 
 namespace Kopete {
@@ -61,107 +64,237 @@ namespace AV {
 
 VideoDevice::VideoDevice()
 {
-//	qDebug() << "libkopete (avdevice): VideoDevice() called";
 	descriptor = -1;
 	m_streambuffers  = 0;
 	m_current_input = 0;
-//	qDebug() << "libkopete (avdevice): VideoDevice() exited successfuly";
 }
 
 
 VideoDevice::~VideoDevice()
 {
+	close();
 }
 
+/*!
+    \fn void VideoDevice::setupControls()
+    \brief Sets up the supported video-controls for the current input
+    
+    Determines which video-controls are supported for the current input,
+    reads all needed informations about them and stores the data to the local members
+ */
+void VideoDevice::setupControls()
+{
+#ifndef COMPILE_DISABLE_AVDEVICE
+	bool driver_vflip = false;
+	bool driver_hflip = false;
+#endif
+	m_numericCtrls.clear();
+	m_booleanCtrls.clear();
+	m_menuCtrls.clear();
+	m_actionCtrls.clear();
+
+	switch(m_driver)
+	{
+#ifndef COMPILE_DISABLE_AVDEVICE
 #ifdef V4L2_CAP_VIDEO_CAPTURE
-
-void VideoDevice::enumerateControls (void)
-{
-// -----------------------------------------------------------------------------------------------------------------
-// This must turn up to be a proper method to check for controls' existence.
-	CLEAR (queryctrl);
-// v4l2_queryctrl may zero the .id in some cases, even if the IOCTL returns EXIT_SUCCESS (tested with a bttv card, when testing for V4L2_CID_AUDIO_VOLUME).
-// As of 6th Aug 2007, according to the V4L2 specification version 0.21, this behavior is undocumented, and the example 1-8 code found at
-// http://www.linuxtv.org/downloads/video4linux/API/V4L2_API/spec/x519.htm fails because of this behavior with a bttv card.
-
-	int currentid = V4L2_CID_BASE;
-
-qDebug() << "Checking CID controls";
-
-	for (currentid = V4L2_CID_BASE; currentid < V4L2_CID_LASTP1; currentid++)
-//for (queryctrl.id = 9963776; queryctrl.id < 9963800; queryctrl.id++)
-	{
-		queryctrl.id = currentid;
-		if (0 == xioctl (VIDIOC_QUERYCTRL, &queryctrl))
-		{
-			if (queryctrl.flags & V4L2_CTRL_FLAG_DISABLED)
-				continue;
-
-qDebug() <<  " Control: " << QString::fromLocal8Bit((const char*)queryctrl.name) << " Values from " << queryctrl.minimum << " to " << queryctrl.maximum << " with steps of " << queryctrl.step << ". Default: " << queryctrl.default_value;
-
-//			switch (queryctrl.type)
-//			{
-//				case V4L2_CTRL_TYPE_INTEGER : 
-//			}
-			if (queryctrl.type == V4L2_CTRL_TYPE_MENU)
-				enumerateMenu ();
-		}
-		else
-		{
-			if (errno == EINVAL)
-				continue;
-
-			perror ("VIDIOC_QUERYCTRL");
-//			exit (EXIT_FAILURE);
-		}
+		case VIDEODEV_DRIVER_V4L2:
+			struct v4l2_queryctrl qctrl;
+			CLEAR (qctrl);
+			// Get standard controls:
+			for (quint32 k = V4L2_CID_BASE; k < V4L2_CID_LASTP1; k++) // NOTE: DO NOT USE qctrl.id DIRECTLY !
+			{
+				qctrl.id = k;
+				if (0 == xioctl(VIDIOC_QUERYCTRL, &qctrl))
+				{
+					if (qctrl.flags & V4L2_CTRL_FLAG_DISABLED)
+						continue;
+					if (qctrl.id == V4L2_CID_VFLIP)
+						driver_vflip = true;
+					if (qctrl.id == V4L2_CID_HFLIP)
+						driver_hflip = true;
+					const char *name_uni = getUnifiedV4L2StdCtrlName(qctrl.id);
+					if (name_uni && strlen(name_uni))
+						strncpy((char*)qctrl.name, name_uni, 32); // NOTE: v4l2_queryctrl.name is _u8[32]
+					saveV4L2ControlData(qctrl);
+				}
+				else
+				{
+					if (errno == EINVAL)
+						continue;
+					qDebug() << "VIDIOC_QUERYCTRL failed (" << errno << ").";
+				}
+			}
+			// Get custom controls:
+			for (quint32 k = V4L2_CID_PRIVATE_BASE; ; k++)
+			{
+				qctrl.id = k;
+				if (0 == xioctl(VIDIOC_QUERYCTRL, &qctrl))
+				{
+					if (qctrl.flags & V4L2_CTRL_FLAG_DISABLED)
+						continue;
+					saveV4L2ControlData(qctrl);
+				}
+				else
+				{
+					if (errno == EINVAL)
+						break;
+					qDebug() << "VIDIOC_QUERYCTRL failed (" << errno << ").";
+				}
+			}
+			break;
+#endif
+		VIDEODEV_DRIVER_V4L:
+			{
+				NumericVideoControl numCtrl;
+				numCtrl.value_min = 0;
+				numCtrl.value_max = 65535;
+				numCtrl.value_step = 1;
+				numCtrl.value_default = 32767;
+				numCtrl.id = IMGCTRL_ID_V4L1_BRIGHTNESS;
+				numCtrl.name = __tr("Brightness");
+				m_numericCtrls.push_back( numCtrl );
+				numCtrl.id = IMGCTRL_ID_V4L1_HUE;
+				numCtrl.name = __tr("Hue");
+				m_numericCtrls.push_back( numCtrl );
+				numCtrl.id = IMGCTRL_ID_V4L1_COLOR;
+				numCtrl.name = __tr("Color");
+				m_numericCtrls.push_back( numCtrl );
+				numCtrl.id = IMGCTRL_ID_V4L1_CONTRAST;
+				numCtrl.name = __tr("Contrast");
+				m_numericCtrls.push_back( numCtrl );
+				numCtrl.id = IMGCTRL_ID_V4L1_WHITENESS;
+				numCtrl.name = __tr("Whiteness");
+				m_numericCtrls.push_back( numCtrl );
+			}
+			break;
+#endif
+		VIDEODEV_DRIVER_NONE:
+		default:
+			break;
 	}
-
-qDebug() << "Checking CID private controls";
-
-	for (currentid = V4L2_CID_PRIVATE_BASE;; currentid++)
+	
+#ifndef COMPILE_DISABLE_AVDEVICE
+	// Software controls:
+	BooleanVideoControl boolCtrl;
+	boolCtrl.value_default = 0;
+	boolCtrl.id = IMGCTRL_ID_SOFT_AUTOBRIGHTNESSCONTRASTCORR;
+	boolCtrl.name = __tr("Automatic Brightness/Contrast Correction");
+	m_booleanCtrls.push_back( boolCtrl );
+	boolCtrl.id = IMGCTRL_ID_SOFT_AUTOCOLORCORR;
+	boolCtrl.name = __tr("Automatic Color Correction");
+	m_booleanCtrls.push_back( boolCtrl );
+	if (!driver_vflip)
 	{
-		queryctrl.id = currentid;
-		if ( 0 == xioctl (VIDIOC_QUERYCTRL, &queryctrl))
-		{
-			if (queryctrl.flags & V4L2_CTRL_FLAG_DISABLED)
-				continue;
-
-qDebug() << " Control: " << QString::fromLocal8Bit((const char*)queryctrl.name) << " Values from " << queryctrl.minimum << " to " << queryctrl.maximum << " with steps of " << queryctrl.step << ". Default: " << queryctrl.default_value;
-
-			if (queryctrl.type == V4L2_CTRL_TYPE_MENU)
-				enumerateMenu ();
-		}
-		else
-		{
-			if (errno == EINVAL)
-				break;
-
-			perror ("VIDIOC_QUERYCTRL");
-//			exit (EXIT_FAILURE);
-		}
+		boolCtrl.id = IMGCTRL_ID_SOFT_VFLIP;
+		boolCtrl.name = __tr("Vertical Flip");
+		m_booleanCtrls.push_back( boolCtrl );
 	}
+	if (!driver_hflip)
+	{
+		boolCtrl.id = IMGCTRL_ID_SOFT_HFLIP;
+		boolCtrl.name = __tr("Horizontal Flip");
+		m_booleanCtrls.push_back( boolCtrl );
+	}
+#endif
 }
 
-void VideoDevice::enumerateMenu (void)
+#ifndef COMPILE_DISABLE_AVDEVICE
+#ifdef V4L2_CAP_VIDEO_CAPTURE
+/*!
+    \fn bool VideoDevice::getMenuCtrlOptions(quint32 id, quint32 maxindex, QStringList * options)
+    \param id ID of the video-control
+    \param maxindex Highest menu index
+    \param options Pointer to the QStringList which will recieve the option-strings of the video-control
+    \return The success of the operation
+    \brief Reads the available options provided by a menu-video-control
+ */
+bool VideoDevice::getMenuCtrlOptions(quint32 id, quint32 maxindex, QStringList * options)
 {
-	qDebug() <<  "  Menu items:";
-
-	memset (&querymenu, 0, sizeof (querymenu));
-	querymenu.id = queryctrl.id;
-
-	for (querymenu.index = queryctrl.minimum; querymenu.index <= (unsigned int) queryctrl.maximum; ++querymenu.index)
+	QStringList opt;
+	struct v4l2_querymenu ctrlmenu;
+	CLEAR (ctrlmenu);
+	options->clear();
+	ctrlmenu.id = id;
+	for (quint32 k = 0; k <= maxindex; k++)	// DO NOT USE ctrlmenu.index DIRECTLY !
 	{
-		if (0 == xioctl (VIDIOC_QUERYMENU, &querymenu))
+		ctrlmenu.index = k;
+		if (0 == xioctl(VIDIOC_QUERYMENU, &ctrlmenu))
 		{
-			qDebug() <<  "  " << QString::fromLocal8Bit((const char*)querymenu.name);
-                }
+			opt.push_back( __tr( (char*)(ctrlmenu.name) ) );
+			qDebug() << "option" << k << ":" << (char*)(ctrlmenu.name);
+		}
 		else
 		{
-			perror ("VIDIOC_QUERYMENU");
-			exit (EXIT_FAILURE);
+			qDebug() << "VIDIOC_QUERYMENU failed (" << errno << ").";
+			return false;
 		}
 	}
+	*options = opt;
+	return true;
+	/* NOTE: According to V4L2-spec v0.24:
+	         v4l2_querymenu.minimum = start-index = 0, v4l2_querymenu.maximum = last index
+	         => DO DRIVERS REALLY SET THESE VALUES CORRECTLY ???
+	 */
 }
+
+
+/*!
+    \fn void VideoDevice::saveV4L2ControlData(struct v4l2_queryctrl qctrl)
+    \param qctrl The struct v4l2_queryctrl of the V4L2-control that should be saved
+    \brief Saves the data of a V4L2-video-control
+ */
+void VideoDevice::saveV4L2ControlData(struct v4l2_queryctrl qctrl)
+{
+	NumericVideoControl numericCtrl;
+	BooleanVideoControl booleanCtrl;
+	MenuVideoControl menuCtrl;
+	ActionVideoControl actionCtrl;
+	QStringList options;
+	switch (qctrl.type)
+	{
+		case V4L2_CTRL_TYPE_INTEGER:
+			numericCtrl.id = qctrl.id;
+			numericCtrl.name = __tr((char*)qctrl.name);
+			numericCtrl.value_min = qctrl.minimum;
+			numericCtrl.value_max = qctrl.maximum;
+			numericCtrl.value_default = qctrl.default_value;
+			numericCtrl.value_step = qctrl.step;
+			m_numericCtrls.push_back( numericCtrl );
+			break;
+		case V4L2_CTRL_TYPE_BOOLEAN:
+			booleanCtrl.id = qctrl.id;
+			booleanCtrl.name = __tr((char*)qctrl.name);
+			booleanCtrl.value_default = qctrl.default_value;
+			m_booleanCtrls.push_back( booleanCtrl );
+			break;
+		case V4L2_CTRL_TYPE_MENU:
+			if (getMenuCtrlOptions( qctrl.id, qctrl.maximum, &options ))
+			{
+				menuCtrl.id = qctrl.id;
+				menuCtrl.name = __tr((char*)qctrl.name);
+				menuCtrl.index_default = qctrl.default_value;
+				menuCtrl.options = options;
+				m_menuCtrls.push_back( menuCtrl );
+			}
+			break;
+		case V4L2_CTRL_TYPE_BUTTON:
+			actionCtrl.id = qctrl.id;
+			actionCtrl.name = __tr((char*)qctrl.name);
+			m_actionCtrls.push_back( actionCtrl );
+			break;
+		// Since kernel 2.6.18:
+#ifdef V4L2_CTRL_TYPE_INTEGER64
+		case V4L2_CTRL_TYPE_INTEGER64:
+#endif
+#ifdef V4L2_CTRL_TYPE_CTRL_CLASS
+		case V4L2_CTRL_TYPE_CTRL_CLASS:
+#endif
+		default:
+			break;
+	}
+// TODO	V4L2_CTRL_TYPE_INTEGER64, V4L2_CTRL_TYPE_CTRL_CLASS
+}
+#endif
 #endif
 
 /*!
@@ -198,6 +331,14 @@ int VideoDevice::setFileName(QString filename)
     /// @todo implement me
 	full_filename=filename;
 	return EXIT_SUCCESS;
+}
+
+/*!
+    \fn QString VideoDevice::fileName()
+ */
+QString VideoDevice::fileName()
+{
+	return full_filename;
 }
 
 /*!
@@ -438,9 +579,6 @@ detectSignalStandards();
 		m_name=m_model; // Take care about changing the name to be different from the model itself...
 
 		detectPixelFormats();
-#ifdef V4L2_CAP_VIDEO_CAPTURE
-		enumerateControls();
-#endif
 // TODO: Now we must execute the proper initialization according to the type of the driver.
 		qDebug() << "checkDevice() exited successfuly.";
 		return EXIT_SUCCESS;
@@ -586,6 +724,11 @@ int VideoDevice::initDevice()
 // Select video input, video standard and tune here.
 #ifndef COMPILE_DISABLE_AVDEVICE
 #ifdef V4L2_CAP_VIDEO_CAPTURE
+	struct v4l2_cropcap cropcap;
+	struct v4l2_crop crop;
+	CLEAR (cropcap);
+	CLEAR (crop);
+	
 	cropcap.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
 	if (-1 == xioctl (VIDIOC_CROPCAP, &cropcap))
 	{ // Errors ignored.
@@ -652,34 +795,35 @@ qDebug() << "setSize(" << newwidth << ", " << newheight << ") called.";
 // It should not be there. It must remain in a completely distict place, cause this method should not change the pixelformat.
 // It shouldn't try to find a suitable pixel format this way. It should use values discovered by - detectPixelFormats() - to choose a valid one.
 		qDebug() <<  "Trying YUY422P";
-		if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_YUV422P))
+		errno = 0;
+		if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_YUV422P) && errno != EBUSY)
 		{
 			qDebug() <<  "Device doesn't seem to support YUV422P format. Trying YUYV.";
-			if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_YUYV))
+			if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_YUYV) && errno != EBUSY)
 			{
 				qDebug() <<  "Device doesn't seem to support YUYV format. Trying UYVY.";
-				if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_UYVY))
+				if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_UYVY) && errno != EBUSY)
 				{
 					qDebug() <<  "Device doesn't seem to support UYVY format. Trying YUV420P.";
-					if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_YUV420P))
+					if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_YUV420P) && errno != EBUSY)
 					{
 						qDebug() <<  "Device doesn't seem to support YUV420P format. Trying RGB24.";
-						if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_RGB24))
+						if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_RGB24) && errno != EBUSY)
 						{
 							qDebug() <<  "Device doesn't seem to support RGB24 format. Trying BGR24.";
-							if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_BGR24))
+							if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_BGR24) && errno != EBUSY)
 							{
 								qDebug() <<  "Device doesn't seem to support RGB24 format. Trying RGB32.";
-								if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_RGB32))
+								if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_RGB32) && errno != EBUSY)
 								{
 									qDebug() <<  "Device doesn't seem to support RGB32 format. Trying BGR32.";
-									if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_BGR32))
+									if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_BGR32) && errno != EBUSY)
 									{
 										qDebug() <<  "Device doesn't seem to support BGR32 format. Trying SBGGR8.";
-										if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_SBGGR8))
+										if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_SBGGR8) && errno != EBUSY)
 										{
 											qDebug() <<  "Device doesn't seem to support SBGGR8 format. Trying SN9C10X.";
-											if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_SN9C10X))
+											if(PIXELFORMAT_NONE == setPixelFormat(PIXELFORMAT_SN9C10X) && errno != EBUSY)
 											{
 												qDebug() <<  "Device doesn't seem to support BGR32 format. Fallback to it is not yet implemented.";
 											}
@@ -691,6 +835,10 @@ qDebug() << "setSize(" << newwidth << ", " << newheight << ") called.";
 					}
 				}
 			}
+		}
+		if (errno == EBUSY) {
+			qDebug() << "Can't change the video size: device in use";
+			return EXIT_FAILURE;
 		}
 
 		if(newwidth  > maxwidth ) newwidth  = maxwidth;
@@ -912,6 +1060,7 @@ int VideoDevice::selectInput(int newinput)
 					perror ("VIDIOC_S_INPUT");
 					return EXIT_FAILURE;
 				}
+				setupControls();
 				break;
 #endif
 			case VIDEODEV_DRIVER_V4L:
@@ -923,6 +1072,7 @@ int VideoDevice::selectInput(int newinput)
 					perror ("ioctl (VIDIOCSCHAN)");
 					return EXIT_FAILURE;
 				}
+				setupControls();
 				break;
 #endif
 			case VIDEODEV_DRIVER_NONE:
@@ -931,25 +1081,6 @@ int VideoDevice::selectInput(int newinput)
 		}
 		qDebug() << "Selected input " << newinput << " (" << m_input[newinput].name << ")";
 		m_current_input = newinput;
-		setInputParameters();
-		return EXIT_SUCCESS;
-	}
-	return EXIT_FAILURE;
-}
-
-/*!
-    \fn Kopete::AV::VideoDevice::setInputParameters()
- */
-int VideoDevice::setInputParameters()
-{
-    /// @todo implement me
-	if( (isOpen()) && (m_current_input < inputs() ) )
-	{
-		setBrightness( getBrightness() );
-		setContrast( getContrast() );
-		setSaturation( getSaturation() );
-		setWhiteness( getWhiteness() );
-		setHue( getHue() );
 		return EXIT_SUCCESS;
 	}
 	return EXIT_FAILURE;
@@ -1100,6 +1231,12 @@ int VideoDevice::getFrame()
 //					v4l2buffer.index < 0 ||  	// is always false: v4l2buffer.index is unsigned
 					(uint) m_rawbuffers.size() <= v4l2buffer.index)
 					return EXIT_FAILURE;
+
+				if (m_rawbuffers[v4l2buffer.index].length < m_currentbuffer.data.size())
+				{
+					qDebug() <<  "Buffer size mismatch: expecting raw buffer length to be" << m_currentbuffer.data.size() << "but it was" << m_rawbuffers[v4l2buffer.index].length;
+					return EXIT_FAILURE;
+				}
 
 				memcpy(&m_currentbuffer.data[0], m_rawbuffers[v4l2buffer.index].start, m_currentbuffer.data.size());
 				if (-1 == xioctl (VIDIOC_QBUF, &v4l2buffer))
@@ -1413,8 +1550,11 @@ int VideoDevice::getImage(QImage *qimage)
 		case PIXELFORMAT_YYUV	: break;
 	}
 
+	if (m_current_input >= m_input.size() )
+		return EXIT_SUCCESS;
+
 // Proccesses image for automatic Brightness/Contrast/Color correction
-	if (getAutoBrightnessContrast()||getAutoColorCorrection())
+	if (m_input[m_current_input].img_softcorr_autobrightnesscontrast || m_input[m_current_input].img_softcorr_autocolor)
 	{
 		unsigned long long R=0, G=0, B=0, A=0, global=0;
 		int Rmax=0, Gmax=0, Bmax=0, Amax=0, globalmax=0;
@@ -1444,7 +1584,7 @@ int VideoDevice::getImage(QImage *qimage)
 // If no color correction should be performed, simply level all the intensities so they're just the same.
 // In fact color correction should use the R, G and B variables to detect color deviation and "bump up" the saturation,
 // but it's computationally more expensive and the current way returns better results to the user.
-		if(!getAutoColorCorrection())
+		if(!m_input[m_current_input].img_softcorr_autocolor)
 		{
 			Rmin = globalmin ; Rmax = globalmax;
 			Gmin = globalmin ; Gmax = globalmax;
@@ -1469,6 +1609,10 @@ int VideoDevice::getImage(QImage *qimage)
 //			bits[loop+3] = (bits[loop+3] - Amin) * 255 / (Arange);
 		}
 	}
+
+	if (m_input[m_current_input].img_softcorr_vflip || m_input[m_current_input].img_softcorr_hflip)
+		*qimage = qimage->mirrored(m_input[m_current_input].img_softcorr_vflip, m_input[m_current_input].img_softcorr_hflip);
+  
 	return EXIT_SUCCESS;
 }
 
@@ -1523,39 +1667,140 @@ int VideoDevice::stopCapturing()
 
 
 /*!
-    \fn VideoDevice::close()
+    \fn int VideoDevice::close()
+    \return The success of the operation: EXIT_SUCCESS or EXIT_FAILURE
+    \brief Closes the device
+    
+    Stops capturing, resets internal data and closes the device.
  */
 int VideoDevice::close()
 {
-    /// @todo implement me
-	qDebug() << " called.";
-	if(isOpen())
+	qDebug() << "called.";
+	if (isOpen())
 	{
-		qDebug() << " Device is open. Trying to properly shutdown the device.";
+		qDebug() << "Device is open. Trying to properly shutdown the device.";
 		stopCapturing();
 #ifdef HAVE_LIBV4L2
 		int ret = ::v4l2_close(descriptor);
 #else
 		int ret = ::close(descriptor);
 #endif
-		qDebug() << "::close() returns " << ret;
+		if (ret == -1)
+		{
+			qDebug() << "::close() failed with errno" << errno << strerror(errno);
+			return EXIT_FAILURE;
+		}
+		else
+			qDebug() << "Device successfully closed.";
 	}
 	descriptor = -1;
+	m_numericCtrls.clear();
+	m_booleanCtrls.clear();
+	m_menuCtrls.clear();
+	m_actionCtrls.clear();
+	m_driver=VIDEODEV_DRIVER_NONE;
 	return EXIT_SUCCESS;
 }
 
-float VideoDevice::getBrightness()
+
+/*!
+    \fn QList<NumericVideoControl> VideoDevice::getSupportedNumericControls()
+    \return A list of all supported numeric controls for the current input
+    \brief Returns the supported numeric controls for the current input
+ */
+QList<NumericVideoControl> VideoDevice::getSupportedNumericControls()
 {
-  if (m_current_input < m_input.size() )
-	return m_input[m_current_input].getBrightness();
-  else
-	return 0;
+	return m_numericCtrls;
 }
 
-float VideoDevice::setBrightness(float brightness)
+/*!
+    \fn QList<BooleanVideoControl> VideoDevice::getSupportedBooleanControls()
+    \return A list of all supported boolean controls for the current input
+    \brief Returns the supported boolean controls for the current input
+ */
+QList<BooleanVideoControl> VideoDevice::getSupportedBooleanControls()
 {
-	qDebug() << "(" << brightness << ") called.";
-	m_input[m_current_input].setBrightness(brightness); // Just to check bounds
+	return m_booleanCtrls;
+}
+
+/*!
+    \fn QList<MenuVideoControl> VideoDevice::getSupportedMenuControls()
+    \return A list of all supported menu-controls for the current input
+    \brief Returns the supported menu-controls for the current input
+ */
+QList<MenuVideoControl> VideoDevice::getSupportedMenuControls()
+{
+	return m_menuCtrls;
+}
+
+/*!
+    \fn QList<ActionVideoControl> VideoDevice::getSupportedActionControls()
+    \return A list of all supported action-controls for the current input
+    \brief Returns the supported action-controls for the current input
+ */
+QList<ActionVideoControl> VideoDevice::getSupportedActionControls()
+{
+	return m_actionCtrls;
+}
+
+/*!
+    \fn int VideoDevice::getControlValue(quint32 ctrl_id, qint32 * value)
+    \param ctrl_id ID of the video-control
+    \param value Pointer to the variable, which recieves the value of the querried video-control.
+                 For boolean controls, the value is 0 or 1.
+                 For menu-controls, the value is the index of the currently selected option.
+    \return The result-code, currently EXIT_SUCCESS or EXIT_FAILURE
+    \brief Reads the value of a video-control
+ */
+int VideoDevice::getControlValue(quint32 ctrl_id, qint32 * value)
+{
+	qDebug() << "Control-ID" << ctrl_id << ", Value" << &value;
+
+	if (!isOpen())
+		return EXIT_FAILURE;
+
+#ifndef COMPILE_DISABLE_AVDEVICE
+	if (ctrl_id == IMGCTRL_ID_SOFT_AUTOBRIGHTNESSCONTRASTCORR)
+	{
+		if (m_current_input < m_input.size() )
+		{
+			*value = m_input[m_current_input].img_softcorr_autobrightnesscontrast;
+			return EXIT_SUCCESS;
+		}
+		else
+			return EXIT_FAILURE;
+	}
+	else if (ctrl_id == IMGCTRL_ID_SOFT_AUTOCOLORCORR)
+	{
+		if (m_current_input < m_input.size() )
+		{
+			*value = m_input[m_current_input].img_softcorr_autocolor;
+			return EXIT_SUCCESS;
+		}
+		else
+			return EXIT_FAILURE;
+	}
+	else if (ctrl_id == IMGCTRL_ID_SOFT_VFLIP)
+	{
+		if (m_current_input < m_input.size() )
+		{
+			*value = m_input[m_current_input].img_softcorr_vflip;
+			return EXIT_SUCCESS;
+		}
+		else
+			return EXIT_FAILURE;
+	}
+	else if (ctrl_id == IMGCTRL_ID_SOFT_HFLIP)
+	{
+		if (m_current_input < m_input.size() )
+		{
+			*value = m_input[m_current_input].img_softcorr_hflip;
+			return EXIT_SUCCESS;
+		}
+		else
+			return EXIT_FAILURE;
+	}
+#endif
 
 	switch(m_driver)
 	{
@@ -1567,70 +1812,131 @@ float VideoDevice::setBrightness(float brightness)
 				struct v4l2_control control;
 
 				CLEAR (queryctrl);
-				queryctrl.id = V4L2_CID_BRIGHTNESS;
+				queryctrl.id = ctrl_id;
 
-				if (-1 == xioctl (VIDIOC_QUERYCTRL, &queryctrl))
+				if (-1 == xioctl(VIDIOC_QUERYCTRL, &queryctrl))
 				{
 					if (errno != EINVAL)
-					{
-						qDebug() <<  "VIDIOC_QUERYCTRL failed (" << errno << ").";
-					} else
-					{
-						qDebug() << "Device doesn't support the Brightness control.";
-					}
-				} else
-				if (queryctrl.flags & V4L2_CTRL_FLAG_DISABLED)
+						qDebug() << "VIDIOC_QUERYCTRL failed (" << errno << ").";
+					else
+						qDebug() << "Device doesn't support the control.";
+				}
+				else if (queryctrl.flags & V4L2_CTRL_FLAG_DISABLED)
 				{
-					qDebug() << "Brightness control is disabled.";
-				} else
+					qDebug() << "Control is disabled.";
+				}
+				else
 				{
 					CLEAR (control);
-					control.id = V4L2_CID_BRIGHTNESS;
-					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getBrightness());
-					control.value += queryctrl.minimum;
-
-					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
+					control.id = ctrl_id;
+					if (-1 == xioctl(VIDIOC_G_CTRL, &control))
+						qDebug() <<  "VIDIOC_G_CTRL failed (" << errno << ").";
+					else
 					{
-						qDebug() <<  "VIDIOC_S_CTRL failed (" << errno << ").";
+						*value = control.value;
+						qDebug() << "Reported current value is" << control.value << ".";
+						return EXIT_SUCCESS;
 					}
 				}
 			}
 			break;
 #endif
 		case VIDEODEV_DRIVER_V4L:
+			struct video_picture V4L_picture;
+			if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
 			{
-				struct video_picture V4L_picture;
-				if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
-				{
-					qDebug() << "VIDIOCGPICT failed (" << errno << ").";
-				}
-				V4L_picture.brightness = uint(65535 * getBrightness());
-				if(-1 == xioctl(VIDIOCSPICT,&V4L_picture))
-				{
-					qDebug() << "Device seems to not support adjusting image brightness. Fallback to it is not yet implemented.";
-				}
+				qDebug() << "VIDIOCGPICT failed (" << errno << ").";
+				return EXIT_FAILURE;
 			}
-			break;
+			switch (ctrl_id)
+			{
+				case IMGCTRL_ID_V4L1_BRIGHTNESS:
+					*value = V4L_picture.brightness;
+					break;
+				case IMGCTRL_ID_V4L1_HUE:
+					*value = V4L_picture.hue;
+					break;
+				case IMGCTRL_ID_V4L1_COLOR:
+					*value = V4L_picture.colour;
+					break;
+				case IMGCTRL_ID_V4L1_CONTRAST:
+					*value = V4L_picture.contrast;
+					break;
+				case IMGCTRL_ID_V4L1_WHITENESS:
+					*value = V4L_picture.whiteness;
+					break;
+				default:
+					return EXIT_FAILURE;
+			}
+			qDebug() << "Reported current value is" << *value << ".";
+			return EXIT_SUCCESS;
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
 			break;
 	}
-	return getBrightness();
+	return EXIT_FAILURE;
 }
 
-float VideoDevice::getContrast()
+/*!
+    \fn int VideoDevice::setControlValue(quint32 ctrl_id, qint32 value)
+    \param ctrl_id ID of the video-control
+    \param value The value that should be set.
+                 For boolean controls, the value must be 0 or 1.
+                 For menu-controls, the value must be the index of the option.
+                 For action-controls, the value is ignored.
+    \return The result-code, currently EXIT_SUCCESS or EXIT_FAILURE
+    \brief Sets the value of a video-control
+ */
+int VideoDevice::setControlValue(quint32 ctrl_id, qint32 value)
 {
-  if (m_current_input < m_input.size() )
-	return m_input[m_current_input].getContrast();
-  else
-	return 0;
-}
+	qDebug() << "Control-ID" << ctrl_id << ", Value" << value;
 
-float VideoDevice::setContrast(float contrast)
-{
-	qDebug() << "(" << contrast << ") called.";
-	m_input[m_current_input].setContrast(contrast); // Just to check bounds
+	if (!isOpen())
+		return EXIT_FAILURE;
+
+#ifndef COMPILE_DISABLE_AVDEVICE
+	if (ctrl_id == IMGCTRL_ID_SOFT_AUTOBRIGHTNESSCONTRASTCORR)
+	{
+		if (m_current_input < m_input.size() )
+		{
+			m_input[m_current_input].img_softcorr_autobrightnesscontrast = value;
+			return EXIT_SUCCESS;
+		}
+		else
+			return EXIT_FAILURE;
+	}
+	else if (ctrl_id == IMGCTRL_ID_SOFT_AUTOCOLORCORR)
+	{
+		if (m_current_input < m_input.size() )
+		{
+			m_input[m_current_input].img_softcorr_autocolor = value;
+			return EXIT_SUCCESS;
+		}
+		else
+			return EXIT_FAILURE;
+	}
+	else if (ctrl_id == IMGCTRL_ID_SOFT_VFLIP)
+	{
+		if (m_current_input < m_input.size() )
+		{
+			m_input[m_current_input].img_softcorr_vflip = value;
+			return EXIT_SUCCESS;
+		}
+		else
+			return EXIT_FAILURE;
+	}
+	else if (ctrl_id == IMGCTRL_ID_SOFT_HFLIP)
+	{
+		if (m_current_input < m_input.size() )
+		{
+			m_input[m_current_input].img_softcorr_hflip = value;
+			return EXIT_SUCCESS;
+		}
+		else
+			return EXIT_FAILURE;
+	}
+#endif
 
 	switch(m_driver)
 	{
@@ -1642,343 +1948,95 @@ float VideoDevice::setContrast(float contrast)
 				struct v4l2_control control;
 
 				CLEAR (queryctrl);
-				queryctrl.id = V4L2_CID_CONTRAST;
+				queryctrl.id = ctrl_id;
 
-				if (-1 == xioctl (VIDIOC_QUERYCTRL, &queryctrl))
+				if (-1 == xioctl(VIDIOC_QUERYCTRL, &queryctrl))
 				{
 					if (errno != EINVAL)
-					{
-						qDebug() <<  "VIDIOC_QUERYCTRL failed (" << errno << ").";
-					} else
-					{
-						qDebug() << "Device doesn't support the Contrast control.";
-					}
-				} else
-				if (queryctrl.flags & V4L2_CTRL_FLAG_DISABLED)
+						qDebug() << "VIDIOC_QUERYCTRL failed (" << errno << ").";
+					else
+						qDebug() << "Device doesn't support the control.";
+				}
+				else if (queryctrl.flags & V4L2_CTRL_FLAG_DISABLED)
 				{
-					qDebug() << "Contrast control is disabled.";
-				} else
+					qDebug() << "Control is disabled.";
+				}
+				else
 				{
 					CLEAR (control);
-					control.id = V4L2_CID_CONTRAST;
-					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getContrast());
-					control.value += queryctrl.minimum;
-
-					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
+					control.id = ctrl_id;
+					if (value < queryctrl.minimum)
 					{
-						qDebug() <<  "VIDIOC_S_CTRL failed (" << errno << ").";
+						control.value = queryctrl.minimum;
+						qDebug() << "Value exceeds lower limit ! Setting to minimum:" << control.value;
 					}
+					else if (value > queryctrl.maximum)
+					{
+						control.value = queryctrl.maximum;
+						qDebug() << "Value exceeds upper limit ! Setting to maximum:" << control.value;
+					}
+					else
+					{
+						control.value = value;
+					}
+					if (-1 == xioctl(VIDIOC_S_CTRL, &control))
+						qDebug() <<  "VIDIOC_S_CTRL failed (" << errno << ").";
+					else
+						return EXIT_SUCCESS;
 				}
 			}
 			break;
 #endif
 		case VIDEODEV_DRIVER_V4L:
+			struct video_picture V4L_picture;
+			if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
 			{
-				struct video_picture V4L_picture;
-				if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
-				{
-					qDebug() << "VIDIOCGPICT failed (" << errno << ").";
-				}
-				V4L_picture.contrast = uint(65535*getContrast());
-				if(-1 == xioctl(VIDIOCSPICT,&V4L_picture)) 
-				{
-					qDebug() << "Device seems to not support adjusting image contrast. Fallback to it is not yet implemented.";
-				}
+				qDebug() << "VIDIOCGPICT failed (" << errno << ").";
+				return EXIT_FAILURE;
 			}
-		break;
+			if (value < 0)
+			{
+				value = 0;
+				qDebug() << "Value exceeds lower limit ! Setting to minimum: 0";
+			}
+			else if (value > 65535)
+			{
+				value = 65535;
+				qDebug() << "Value exceeds upper limit ! Setting to maximum: 65535";
+			}
+			// TODO: consider step, too ?
+			switch (ctrl_id)
+			{
+				case IMGCTRL_ID_V4L1_BRIGHTNESS:
+					V4L_picture.brightness = value;
+					break;
+				case IMGCTRL_ID_V4L1_HUE:
+					V4L_picture.hue = value;
+					break;
+				case IMGCTRL_ID_V4L1_COLOR:
+					V4L_picture.colour = value;
+					break;
+				case IMGCTRL_ID_V4L1_CONTRAST:
+					V4L_picture.contrast = value;
+					break;
+				case IMGCTRL_ID_V4L1_WHITENESS:
+					V4L_picture.whiteness = value;
+					break;
+				default:
+					return EXIT_FAILURE;
+			}
+			if(-1 == xioctl(VIDIOCSPICT,&V4L_picture))
+			{
+				qDebug() << "Device seems to not support adjusting image brightness. Fallback to it is not yet implemented.";
+				return EXIT_FAILURE;
+			}
+			return EXIT_SUCCESS;
 #endif
 		case VIDEODEV_DRIVER_NONE:
 		default:
 			break;
 	}
-	return getContrast();
-}
-
-float VideoDevice::getSaturation()
-{
-  if (m_current_input < m_input.size() )
-	return m_input[m_current_input].getSaturation();
-  else
-	return 0;
-}
-
-float VideoDevice::setSaturation(float saturation)
-{
-	qDebug() << "(" << saturation << ") called.";
-	m_input[m_current_input].setSaturation(saturation); // Just to check bounds
-
-	switch(m_driver)
-	{
-#ifndef COMPILE_DISABLE_AVDEVICE
-#ifdef V4L2_CAP_VIDEO_CAPTURE
-		case VIDEODEV_DRIVER_V4L2:
-			{
-				struct v4l2_queryctrl queryctrl;
-				struct v4l2_control control;
-
-				CLEAR (queryctrl);
-				queryctrl.id = V4L2_CID_SATURATION;
-
-				if (-1 == xioctl (VIDIOC_QUERYCTRL, &queryctrl))
-				{
-					if (errno != EINVAL)
-					{
-						qDebug() <<  "VIDIOC_QUERYCTRL failed (" << errno << ").";
-					} else
-					{
-						qDebug() << "Device doesn't support the Saturation control.";
-					}
-				} else
-				if (queryctrl.flags & V4L2_CTRL_FLAG_DISABLED)
-				{
-					qDebug() << "Saturation control is disabled.";
-				} else
-				{
-					CLEAR (control);
-					control.id = V4L2_CID_SATURATION;
-					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getSaturation());
-					control.value += queryctrl.minimum;
-
-					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
-					{
-						qDebug() <<  "VIDIOC_S_CTRL failed (" << errno << ").";
-					}
-				}
-			}
-			break;
-#endif
-		case VIDEODEV_DRIVER_V4L:
-			{
-				struct video_picture V4L_picture;
-				if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
-				{
-					qDebug() << "VIDIOCGPICT failed (" << errno << ").";
-				}
-				V4L_picture.colour = uint(65535*getSaturation());
-				if(-1 == xioctl(VIDIOCSPICT,&V4L_picture))
-				{
-					qDebug() << "Device seems to not support adjusting image saturation. Fallback to it is not yet implemented.";
-				}
-			}
-		break;
-#endif
-		case VIDEODEV_DRIVER_NONE:
-		default:
-			break;
-	}
-	return getSaturation();
-}
-
-float VideoDevice::getWhiteness()
-{
-  if (m_current_input < m_input.size() )
-	return m_input[m_current_input].getWhiteness();
-  else
-	return 0;
-}
-
-float VideoDevice::setWhiteness(float whiteness)
-{
-	qDebug() << "(" << whiteness << ") called.";
-	m_input[m_current_input].setWhiteness(whiteness); // Just to check bounds
-
-	switch(m_driver)
-	{
-#ifndef COMPILE_DISABLE_AVDEVICE
-#ifdef V4L2_CAP_VIDEO_CAPTURE
-		case VIDEODEV_DRIVER_V4L2:
-			{
-				struct v4l2_queryctrl queryctrl;
-				struct v4l2_control control;
-
-				CLEAR (queryctrl);
-				queryctrl.id = V4L2_CID_WHITENESS;
-
-				if (-1 == xioctl (VIDIOC_QUERYCTRL, &queryctrl))
-				{
-					if (errno != EINVAL)
-					{
-						qDebug() <<  "VIDIOC_QUERYCTRL failed (" << errno << ").";
-					} else
-					{
-						qDebug() << "Device doesn't support the Whiteness control.";
-					}
-				} else
-				if (queryctrl.flags & V4L2_CTRL_FLAG_DISABLED)
-				{
-					qDebug() << "Whiteness control is disabled.";
-				} else
-				{
-					CLEAR (control);
-					control.id = V4L2_CID_WHITENESS;
-					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getWhiteness());
-					control.value += queryctrl.minimum;
-
-					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
-					{
-						qDebug() <<  "VIDIOC_S_CTRL failed (" << errno << ").";
-					}
-				}
-			}
-			break;
-#endif
-		case VIDEODEV_DRIVER_V4L:
-			{
-				struct video_picture V4L_picture;
-				if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
-				{
-					qDebug() << "VIDIOCGPICT failed (" << errno << ").";
-				}
-				V4L_picture.whiteness = uint(65535*getWhiteness());
-				if(-1 == xioctl(VIDIOCSPICT,&V4L_picture))
-				{
-					qDebug() << "Device seems to not support adjusting white level. Fallback to it is not yet implemented.";
-				}
-			}
-		break;
-#endif
-		case VIDEODEV_DRIVER_NONE:
-		default:
-			break;
-	}
-	return getWhiteness();
-}
-
-float VideoDevice::getHue()
-{
-  if (m_current_input < m_input.size() )
-	return m_input[m_current_input].getHue();
-  else
-	return 0;
-}
-
-float VideoDevice::setHue(float hue)
-{
-	qDebug() << "(" << hue << ") called.";
-	m_input[m_current_input].setHue(hue); // Just to check bounds
-
-	switch(m_driver)
-	{
-#ifndef COMPILE_DISABLE_AVDEVICE
-#ifdef V4L2_CAP_VIDEO_CAPTURE
-		case VIDEODEV_DRIVER_V4L2:
-			{
-				struct v4l2_queryctrl queryctrl;
-				struct v4l2_control control;
-
-				CLEAR (queryctrl);
-				queryctrl.id = V4L2_CID_HUE;
-
-				if (-1 == xioctl (VIDIOC_QUERYCTRL, &queryctrl))
-				{
-					if (errno != EINVAL)
-					{
-						qDebug() <<  "VIDIOC_QUERYCTRL failed (" << errno << ").";
-					} else
-					{
-						qDebug() << "Device doesn't support the Hue control.";
-					}
-				} else
-				if (queryctrl.flags & V4L2_CTRL_FLAG_DISABLED)
-				{
-					qDebug() << "Hue control is disabled.";
-				} else
-				{
-					CLEAR (control);
-					control.id = V4L2_CID_HUE;
-					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getHue());
-					control.value += queryctrl.minimum;
-
-					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
-					{
-						qDebug() <<  "VIDIOC_S_CTRL failed (" << errno << ").";
-					}
-				}
-			}
-			break;
-#endif
-		case VIDEODEV_DRIVER_V4L:
-			{
-				struct video_picture V4L_picture;
-				if(-1 == xioctl(VIDIOCGPICT, &V4L_picture))
-				{
-					qDebug() << "VIDIOCGPICT failed (" << errno << ").";
-				}
-				V4L_picture.hue = uint(65535*getHue());
-				if(-1 == xioctl(VIDIOCSPICT,&V4L_picture))
-				{
-					qDebug() << "Device seems to not support adjusting image hue. Fallback to it is not yet implemented.";
-				}
-			}
-		break;
-#endif
-		case VIDEODEV_DRIVER_NONE:
-		default:
-			break;
-	}
-	return getHue();
-}
-
-
-bool VideoDevice::getAutoBrightnessContrast()
-{
-  if (m_current_input < m_input.size() )
-	return m_input[m_current_input].getAutoBrightnessContrast();
-  else
-	return false;
-}
-
-bool VideoDevice::setAutoBrightnessContrast(bool brightnesscontrast)
-{
-	qDebug() << "VideoDevice::setAutoBrightnessContrast(" << brightnesscontrast << ") called.";
-	if (m_current_input < m_input.size() ) 
-	  {
-		m_input[m_current_input].setAutoBrightnessContrast(brightnesscontrast);
-		return m_input[m_current_input].getAutoBrightnessContrast();
-	  }
-	else
-	  return false;
-   
-}
-
-bool VideoDevice::getAutoColorCorrection()
-{
-  if (m_current_input < m_input.size() )
-	return m_input[m_current_input].getAutoColorCorrection();
-  else
-	return false;
-}
-
-bool VideoDevice::setAutoColorCorrection(bool colorcorrection)
-{
-	qDebug() << "VideoDevice::setAutoColorCorrection(" << colorcorrection << ") called.";
-	if (m_current_input < m_input.size() )
-	  {
-		m_input[m_current_input].setAutoColorCorrection(colorcorrection);
-		return m_input[m_current_input].getAutoColorCorrection();
-	  }
-	else
-	  return false;
-}
-
-bool VideoDevice::getImageAsMirror()
-{
-  if (m_current_input < m_input.size() )
-	return m_input[m_current_input].getImageAsMirror();
-  else
-	return false;
-}
-
-bool VideoDevice::setImageAsMirror(bool imageasmirror)
-{
-	qDebug() << "VideoDevice::setImageAsMirror(" << imageasmirror << ") called.";
-	if (m_current_input < m_input.size() ) 
-	  {
-		m_input[m_current_input].setImageAsMirror(imageasmirror);
-		return m_input[m_current_input].getImageAsMirror();
-	  }
-	else
-	  return false;
+	return EXIT_FAILURE;
 }
 
 pixel_format VideoDevice::pixelFormatForPalette( int palette )
@@ -2354,6 +2412,7 @@ int VideoDevice::detectPixelFormats()
 #ifndef COMPILE_DISABLE_AVDEVICE
 #ifdef V4L2_CAP_VIDEO_CAPTURE
 		case VIDEODEV_DRIVER_V4L2:
+			struct v4l2_fmtdesc fmtdesc;
 			fmtdesc.index = 0;
 			fmtdesc.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
 
@@ -2961,13 +3020,80 @@ bool VideoDevice::canStream()
 
 void VideoDevice::setUdi( const QString & udi )
 {
-    m_udi = udi;
+	m_udi = udi;
 }
 
 QString VideoDevice::udi() const
 {
-    return m_udi;
+	return m_udi;
 }
+
+
+#if !defined(COMPILE_DISABLE_AVDEVICE) && defined(V4L2_CAP_VIDEO_CAPTURE)
+/*!
+    \fn const char * VideoDevice::getUnifiedV4L2StdCtrlName(quint32 std_ctrl_id)
+    \param std_ctrl_id ID of the V4L2 standard video control
+    \return The unified title of the V4L2 video control
+    \brief Returns a unified title of a V4L2-(standard-)video-control and makes it translatable
+ */
+const char *VideoDevice::getUnifiedV4L2StdCtrlName(quint32 std_ctrl_id)
+{
+	switch (std_ctrl_id)
+	{
+		/* USER controls */
+		case V4L2_CID_BRIGHTNESS: 		return __tr("Brightness");
+		case V4L2_CID_CONTRAST: 		return __tr("Contrast");
+		case V4L2_CID_SATURATION: 		return __tr("Saturation");
+		case V4L2_CID_HUE: 			return __tr("Hue");
+		case V4L2_CID_AUDIO_VOLUME: 		return __tr("Volume");
+		case V4L2_CID_AUDIO_BALANCE: 		return __tr("Balance");
+		case V4L2_CID_AUDIO_BASS: 		return __tr("Bass");
+		case V4L2_CID_AUDIO_TREBLE: 		return __tr("Treble");
+		case V4L2_CID_AUDIO_MUTE: 		return __tr("Mute");
+		case V4L2_CID_AUDIO_LOUDNESS: 		return __tr("Loudness");
+		case V4L2_CID_BLACK_LEVEL:		return __tr("Black Level");
+		case V4L2_CID_AUTO_WHITE_BALANCE:	return __tr("Automatic White Balance");
+		case V4L2_CID_DO_WHITE_BALANCE:		return __tr("Do White Balance");
+		case V4L2_CID_RED_BALANCE:		return __tr("Red Balance");
+		case V4L2_CID_BLUE_BALANCE:		return __tr("Blue Balance");
+		case V4L2_CID_GAMMA:			return __tr("Gamma");
+		case V4L2_CID_EXPOSURE:			return __tr("Exposure");
+		case V4L2_CID_AUTOGAIN:			return __tr("Automatic Gain");
+		case V4L2_CID_GAIN:			return __tr("Gain");
+		case V4L2_CID_HFLIP:			return __tr("Horizontal Flip");
+		case V4L2_CID_VFLIP:			return __tr("Vertical Flip");
+		case V4L2_CID_HCENTER:			return __tr("Horizontal Center");
+		case V4L2_CID_VCENTER:			return __tr("Vertical Center");
+#ifdef V4L2_CID_POWER_LINE_FREQUENCY	// since kernel 2.6.25
+		case V4L2_CID_POWER_LINE_FREQUENCY:	return __tr("Power Line Frequency");
+		case V4L2_CID_HUE_AUTO:			return __tr("Automatic Hue");
+		case V4L2_CID_WHITE_BALANCE_TEMPERATURE: return __tr("White Balance Temperature");
+		case V4L2_CID_SHARPNESS:		return __tr("Sharpness");
+		case V4L2_CID_BACKLIGHT_COMPENSATION:	return __tr("Backlight Compensation");
+#endif
+#ifdef V4L2_CID_CHROMA_AGC		// since kernel 2.6.26
+		case V4L2_CID_CHROMA_AGC:		return __tr("Chroma AGC");
+		case V4L2_CID_COLOR_KILLER:		return __tr("Color Killer");
+#endif
+#ifdef V4L2_CID_COLORFX			// since kernel 2.6.30
+		case V4L2_CID_COLORFX:			return __tr("Color Effects");
+#endif
+#ifdef V4L2_CID_ROTATE			// since kernel 2.6.33
+		case V4L2_CID_ROTATE:			return __tr("Rotate");
+		case V4L2_CID_BG_COLOR:			return __tr("Background color");
+#endif
+		default:
+			return NULL;
+	}
+	/* NOTE: Unification is necessary for translation, because drivers use individual descriptions
+	         (different uppercase/lowercase combinations but also some strange interpretations).
+	         Otherwise we would end up with too many different (or even untranslated !)strings.
+	 */
+	/* NOTE: We only mark the strings for translation, the translation is done for ALL controls
+	         (including custom controls) at a common place
+	 */
+}
+#endif
 
 }
 
