@@ -543,27 +543,28 @@ void KviRegisteredUserEntryDialog::notifyCheckClicked(bool bChecked)
 	if(bChecked and m_pNotifyNick->text().isEmpty())
 	{
 		QString szMask;
-
-		for(KviIrcMask * m = m_pUser->maskList()->first();m;m = m_pUser->maskList()->next())
+		if(m_pUser)
 		{
-			QString tmp = m->nick();
-			if((tmp.indexOf('*') == -1) && (tmp.indexOf('?') == -1) && (!tmp.isEmpty()))
+			for(KviIrcMask * m = m_pUser->maskList()->first();m;m = m_pUser->maskList()->next())
 			{
-				if(!szMask.isEmpty())szMask.append(' ');
-				szMask.append(tmp);
+				QString tmp = m->nick();
+				if((tmp.indexOf('*') == -1) && (tmp.indexOf('?') == -1) && (!tmp.isEmpty()))
+				{
+					if(!szMask.isEmpty())szMask.append(' ');
+					szMask.append(tmp);
+				}
 			}
+			// if the nickname list is still empty , build a dummy nick to notify
+			if(szMask.isEmpty())
+			{
+				szMask = m_pUser->name();
+				szMask.replace(" ","");
+				szMask.replace("'","");
+				szMask.replace("&","");
+				szMask.replace(",","");
+			}
+			m_pNotifyNick->setText(szMask);
 		}
-		// if the nickname list is still empty , build a dummy nick to notify
-		if(szMask.isEmpty())
-		{
-			szMask = m_pUser->name();
-			szMask.replace(" ","");
-			szMask.replace("'","");
-			szMask.replace("&","");
-			szMask.replace(",","");
-		}
-
-		m_pNotifyNick->setText(szMask);
 	}
 }
 
