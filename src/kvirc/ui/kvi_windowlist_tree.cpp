@@ -587,8 +587,14 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 QSize KviTreeWindowListItemDelegate::sizeHint( const QStyleOptionViewItem &, const QModelIndex &) const
 {
 	KviTreeWindowListTreeWidget* treeWidget = (KviTreeWindowListTreeWidget*)parent();
+	int iHeight=treeWidget->fontMetrics().lineSpacing();
 
-	return QSize(treeWidget->viewport()->size().width(), qMax(20, treeWidget->fontMetrics().lineSpacing()));
+	if((KVI_OPTION_BOOL(KviOption_boolUseWindowListIrcContextIndicator) ||
+		KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons) ||
+		KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)) &&
+		iHeight < 20
+		) iHeight = 20;
+	return QSize(treeWidget->viewport()->size().width(), iHeight);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
