@@ -40,23 +40,10 @@
 #include <QCheckBox>
 #include <QLabel>
 #include <QTreeWidget>
-//#include <QItemDelegate>
-#include <QAbstractItemView>
 
 class QSplitter;
 class KviScriptEditor;
 class KviClassEditorTreeWidget;
-/*
-class KVIRC_API KviClassEditorTreeWidgetItemDelegate : public QItemDelegate//QStyledItemDelegate
-{
-public:
-        KviClassEditorTreeWidgetItemDelegate(QAbstractItemView * pWidget=0)
-                : QItemDelegate(pWidget) {};
-        ~KviClassEditorTreeWidgetItemDelegate(){};
-       // QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
-        void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
-};
-*/
 
 class KviClassEditorTreeWidgetItem : public QTreeWidgetItem, public KviHeapObject
 {
@@ -132,7 +119,6 @@ public:
 	QString                        m_szDir;
 	bool                           m_bSaving;
 public:
-	//bool modified(){ return m_bModified; };
         void saveProperties(KviConfig *);
         void loadProperties(KviConfig *);
         void loadUnbuildedFunctions();
@@ -156,8 +142,7 @@ protected slots:
 	void renameFunction();
 	KviClassEditorTreeWidgetItem * newItem(QString &szName,KviClassEditorTreeWidgetItem::Type eType);
 
-	 void renameItem();
-
+	void renameItem();
 
 	void exportAll();
 	void exportSelectedSepFiles();
@@ -166,26 +151,20 @@ protected slots:
 	void slotFindWord(const QString &);
 	void searchReplace(const QString &szSearch,bool bReplace=false,const QString &szReplace="n");
 	void slotCollapseItems();
-	 void recursiveCollapseItems(KviClassEditorTreeWidgetItem * it);
+	void recursiveCollapseItems(KviClassEditorTreeWidgetItem * it);
+
+	void removeSelectedItems();
 /*
-
-
-
-
 	void slotFind();
 
-
 	void slotReplaceAll(const QString &before,const QString &after);
-        void classRefresh(const QString &szName);
-        */
+	void classRefresh(const QString &szName);
+*/
 
 protected:
        KviPointerHashTable<QString,KviClassEditorTreeWidgetItem> *m_pClasses;
-     //   KviClassEditorTreeWidgetItemDelegate *m_pItemDelegate;
-      /*
-	void recursiveSearchReplace(const QString &szSearch,KviClassEditorTreeWidgetItem * it,bool bReplace=false,const QString &szReplace="n");
+	//void recursiveSearchReplace(const QString &szSearch,KviClassEditorTreeWidgetItem * it,bool bReplace=false,const QString &szReplace="n");
 
-        */
 	void getExportClassBuffer(QString &buffer,KviClassEditorTreeWidgetItem * it);
 
 	void oneTimeSetup();
@@ -205,7 +184,6 @@ protected:
 	bool classExists(QString &szFullItemName);
 	void renameClass(KviClassEditorTreeWidgetItem *pClassItem);
 	void renameNamespace(KviClassEditorTreeWidgetItem *pNamespaceItem);
-	void removeSelectedItems();
 
         bool removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
         void removeItemChildren(KviClassEditorTreeWidgetItem *it);
@@ -274,4 +252,4 @@ protected:
 protected slots:
         void textChanged(const QString &);
 };
-#endif //_ALIASEDITOR_H_
+#endif //_CLASSEDITOR_H_
