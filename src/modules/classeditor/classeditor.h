@@ -126,7 +126,7 @@ public:
         void build();
         void saveNotBuiltClasses();
         void loadNotBuiltClasses();
-	bool functionExists(const QString &szFunctionName, KviClassEditorTreeWidgetItem *pClass);
+	KviClassEditorTreeWidgetItem * findFunction(const QString &szFunctionName, KviClassEditorTreeWidgetItem *pClass);
 
         void exportClasses(bool,bool=false);
         void exportSelectionInSinglesFiles(KviPointerList<KviClassEditorTreeWidgetItem> *l);
@@ -179,7 +179,7 @@ protected:
         bool hasSelectedItems();
 	bool askForClassName(QString &szClassName,QString &szInheritsClassName,bool bEdit);
 	bool askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText, QString &szNameBuffer);
-	bool askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName);
+	bool askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName, bool bRenameMode);
 	void searchInheritedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInheritsedClasses);
 	bool classExists(QString &szFullItemName);
 	void renameClass(KviClassEditorTreeWidgetItem *pClassItem);
@@ -239,7 +239,7 @@ class KviClassEditorFunctionDialog: public QDialog
 {
         Q_OBJECT
 public:
-	KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString & szClassName,const QString &szFunctionName);
+	KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString & szClassName,const QString &szFunctionName, bool bIsInternal, bool bRenameMode=false);
 
         ~KviClassEditorFunctionDialog();
 public:
