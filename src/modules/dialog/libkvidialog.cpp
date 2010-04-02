@@ -69,9 +69,10 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	setIcon(QMessageBox::NoIcon);
 	QMessageBox::StandardButtons buttons;
 	bool btn=false;
-	if (!szButton0.isEmpty()) {btn=true;buttons=QMessageBox::Ok | QMessageBox::Default;}
+	if (!szButton0.isEmpty()) {btn=true;buttons=QMessageBox::Yes | QMessageBox::Default;}
+	if (!szButton1.isEmpty()) {btn=true;buttons|=QMessageBox::No;}
 	if (!szButton2.isEmpty()) {btn=true;buttons|=QMessageBox::Cancel | QMessageBox::Escape;}
-	else if(!szButton1.isEmpty()) {btn=true;buttons|=QMessageBox::No | QMessageBox::Escape;}
+
 	if (!btn) buttons=QMessageBox::Ok;
 	setStandardButtons(buttons);
 	g_pDialogModuleDialogList->append(this);
@@ -84,7 +85,7 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 		else if(KviQString::equalCI(szIcon,"warning"))setIcon(QMessageBox::Warning);
 		else if(KviQString::equalCI(szIcon,"critical"))setIcon(QMessageBox::Critical);
 	}
-	if(!szButton0.isEmpty())setButtonText(QMessageBox::Ok,szButton0);
+	if(!szButton0.isEmpty())setButtonText(QMessageBox::Yes,szButton0);
 	if(!szButton1.isEmpty())setButtonText(QMessageBox::No,szButton1);
 	if(!szButton2.isEmpty())setButtonText(QMessageBox::Cancel,szButton2);
 }
