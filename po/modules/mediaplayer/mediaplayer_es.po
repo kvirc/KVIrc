@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-21 14:37+0100\n"
+"POT-Creation-Date: 2010-04-03 16:47+0200\n"
 "PO-Revision-Date: 2009-11-29 11:45+0100\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -117,13 +117,40 @@ msgstr "No pude encontrar el símbolo %s en %Q"
 msgid "Can't load the player library (%Q)"
 msgstr "No pude cargar la librería del reproductor (%Q)"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:100
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
 msgid "Choosing media player interface \"%Q\""
 msgstr "Eligiendo la interfaz de reproductor multimedia \"%Q\""
 
 #: src/modules/mediaplayer/mp_interface.cpp:43
 msgid "Function not implemented"
 msgstr "Función no implementada"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:134
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:571
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:594
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:636
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:675
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1183
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1319
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1553
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1596
+msgid "Last interface error: "
+msgstr "Último error de la interfaz:"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr "No hay ningún reproductor seleccionado. Prueba /mediaplayer.detect"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:73
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr ""
+"No estoy seguro de los resultados, intentando una segunda pasada más agresiva"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:104
+msgid "Seems that there is no usable media player on this machine"
+msgstr "Parece que no hay ningún reproductor de medios usable en esta máquina"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:133
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:570
@@ -135,33 +162,6 @@ msgstr "Función no implementada"
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1552
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1595
-msgid "Last interface error: "
-msgstr "Último error de la interfaz:"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:113
-msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr "No hay ningún reproductor seleccionado. Prueba /mediaplayer.detect"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:72
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr ""
-"No estoy seguro de los resultados, intentando una segunda pasada más agresiva"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:103
-msgid "Seems that there is no usable media player on this machine"
-msgstr "Parece que no hay ningún reproductor de medios usable en esta máquina"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:132
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:569
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:592
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:634
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:673
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1181
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1317
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1361
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1551
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1594
 msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr ""
@@ -177,7 +177,7 @@ msgstr ""
 "El plugin de winamp no ha sido instalado apropiadamente. Mira /help "
 "mediaplayer. nowplaying"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:64
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:90
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
 msgid "Trying media player interface \"%Q\": score %d"
 msgstr "Probando la interfaz \"%Q\": puntuación %d"

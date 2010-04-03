@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-21 14:37+0100\n"
+"POT-Creation-Date: 2010-04-03 16:47+0200\n"
 "PO-Revision-Date: 2010-01-31 19:39+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1078
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1076
 #, c-format
 msgid "%d properties listed"
 msgstr "%d свойств"
@@ -35,7 +35,7 @@ msgstr ""
 msgid "A class can't be a subclass of itself"
 msgstr "Класс не может быть подклассом для самого себя"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1268
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1266
 msgid ""
 "A pixmap object, an image_id or an image file path is required for this "
 "property"
@@ -89,7 +89,7 @@ msgstr "Битый аргумент иконки: проигнорировано
 msgid "Broken prologue in popup menu '%Q': ignoring"
 msgstr "Битое начало во всплывающего меню '%Q': проигнорировано"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:866
+#: src/kvirc/kvs/kvi_kvs_object.cpp:864
 msgid ""
 "Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from "
 "object '%Q::%Q': disconnecting"
@@ -118,7 +118,7 @@ msgstr "Невозможно удалить ссылку на нулевой о�
 msgid "Can't delete an inexisting object"
 msgstr "Невозможно удалить несуществующий объект"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1348
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1346
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed and defined but the returned variant is not valid"
@@ -127,8 +127,7 @@ msgstr ""
 "свойство приндексировано и определено, но возвращаемое значение не "
 "действительно"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1110
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1340
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1108 src/kvirc/kvs/kvi_kvs_object.cpp:1338
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed but it doesn't really exist"
@@ -136,7 +135,7 @@ msgstr ""
 "Невозможно найти свойство с именем '%Q' для объекта '%Q' класса '%Q': "
 "свойство проиндексировано, но в действительности не существует"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1117
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1115
 msgid ""
 "Can't find property named '%Q' for object named '%Q'of class '%Q': the "
 "property is indexed and defined but the returned variant is not valid"
@@ -158,7 +157,7 @@ msgstr "Не найдена иконка '%Q"
 msgid "Can't find the icon '%Q': ignoring"
 msgstr "Не могу найти иконку '%Q': проигнорировано"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1289
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1287
 msgid "Can't find the requested image"
 msgstr "Не могу найти запрошенное изображение"
 
@@ -174,7 +173,7 @@ msgstr "Невозможно отменить встроенный класс '%
 msgid "Can't unload the module: it has locked itself in memory"
 msgstr "Невозможно выгрузить модуль: модуль заблокировал свою память"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1600
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1598
 msgid ""
 "Cannot call internal object function $%Q (for object named '%Q' of class '%"
 "Q') from this context"
@@ -182,11 +181,11 @@ msgstr ""
 "Не могу найти объект функции $%Q (для объекта с именем '%Q' класса '%Q') из "
 "этого контекста"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1590
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1588
 msgid "Cannot find object function $%Q for object named '%Q' of class '%Q'"
 msgstr "Не могу найти объект функции $%Q для объекта с именем '%Q' класса '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1592
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1590
 msgid "Cannot find object function $%Q::%Q for object named '%Q' of class '%Q'"
 msgstr ""
 "Не могу найти объект функции $%Q::%Q для объекта с именем '%Q' класса '%Q'"
@@ -232,14 +231,14 @@ msgstr ""
 "Обнаружен цикл в дереве наследования базового класса '%Q':  сначала "
 "переопределите тот класс"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:329
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:341
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:412
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:424
 #: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:499
 #: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:507
 #: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:527
 #: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:535
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:329
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:341
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:412
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:424
 msgid "Division by zero"
 msgstr "Деление на нуль"
 
@@ -251,8 +250,7 @@ msgstr "Пустой бесконечный цикл 'for': исправьте �
 msgid "Empty instruction block for command evaluation"
 msgstr "Пустой блок инструкций для оценки команды"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:146
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:164
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:146 src/kvirc/kvs/kvi_kvs_parser.cpp:164
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:185
 msgid "Empty script"
 msgstr "Сценарий пуст"
@@ -548,7 +546,7 @@ msgstr "Левый операнд не определён как число"
 msgid "List of active timers"
 msgstr "Список активных таймеров"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1028
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1026
 msgid "Listing Qt properties for object named '%Q' of KVS class %Q"
 msgstr "Список Qt-свойств для объекта \"'%Q\" KVS класса %Q"
 
@@ -622,8 +620,8 @@ msgstr "Отсутствует задержка времени"
 msgid "Missing timer name"
 msgstr "Отсутствует имя таймера"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:68
 #: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:67
+#: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:68
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr "Ошибка команды вызова модуля: не возможно загрузить модуль '%Q': %Q"
 
@@ -676,8 +674,7 @@ msgstr ""
 "Вложенный символ %q соответствует ожидаемому признаку окончания, лучше "
 "заключать это в кавычки"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1103
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1331
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1101 src/kvirc/kvs/kvi_kvs_object.cpp:1329
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr "Нет Qt-свойства с именем '%Q' для объекта '%Q' класса '%Q'"
 
@@ -716,10 +713,10 @@ msgstr "Нет пункта меню с текстом '%Q'"
 msgid "No such IRC context (%u)"
 msgstr "Нет такого контекста IRC (%u)"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:567
-#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:575
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
+#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:567
+#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:575
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1414
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1422
 msgid "No such event (%Q)"
@@ -777,20 +774,19 @@ msgstr ""
 "Самомодификация всплывающего меню не допускается (всплывающее меню вероятно "
 "открыто)"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1034
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1032
 #, c-format
 msgid "Properties for Qt class %s"
 msgstr "Свойства Qt-класса %s"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1296
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1439
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1294 src/kvirc/kvs/kvi_kvs_object.cpp:1437
 msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
 "type"
 msgstr ""
 "Свойство '%Q' для объекта '%Q' класса '%Q' имеет не поддерживаемый тип даты"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1046
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1044
 msgid "Property: %c%Q%c, type %Q"
 msgstr "Свойство: %c%Q%c, тип %Q"
 
@@ -820,7 +816,7 @@ msgstr "Одноразовый режим"
 msgid "Skipping nested terminator character %q"
 msgstr "Пропуск вложенного символа окончания %q"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:884
+#: src/kvirc/kvs/kvi_kvs_object.cpp:882
 msgid ""
 "Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
 msgstr ""
@@ -833,15 +829,15 @@ msgid ""
 msgstr ""
 "Одинокое ':' в имени алиаса. Может быть вы имели ввиду <namespace>::<name> ?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:187
 #: src/kvirc/kvs/kvi_kvs_parser_command.cpp:93
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:187
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr ""
 "Символ ':' не на своём месте: он должен быть в середине выражения ."
 "<namespace>::<alias_name>'"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:179
 #: src/kvirc/kvs/kvi_kvs_parser_command.cpp:85
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:179
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr ""
 "Потерянная последовательность '::' или недопустимое последующее имя алиаса"
@@ -1134,8 +1130,7 @@ msgstr ""
 msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
 msgstr "Пункт меню с ID \"%Q\" не существует во всплывающем меню \"%Q\""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1096
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1318
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1094 src/kvirc/kvs/kvi_kvs_object.cpp:1316
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "Объект \"''%Q\" класса %Q не является Qt-свойством"
 
@@ -1149,7 +1144,7 @@ msgid "The popup '%s' is actually locked: 'self-modifications' are not allowed"
 msgstr ""
 "Всплывающее меню '%s' фактически заблокировано: самомодификация не допустима"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1133
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1131
 #, c-format
 msgid ""
 "The property is of type %s but the supplied argument can't be converted to "
@@ -1279,8 +1274,8 @@ msgstr ""
 "Похоже на оператор разыменования указателя но объект '->', но на самом деле "
 "это не так. Возможно вы забыли после него '$'?"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:297
+#: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
 msgid "This window has no associated IRC context"
 msgstr "Это окно не связано с IRC контекстом"
 
@@ -1465,8 +1460,7 @@ msgstr ""
 "Неожиданный конец строки в хеше ключа (не хватает символа '}' или новой "
 "строки)"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3022
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3089
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3022 src/kvirc/kvs/kvi_kvs_parser.cpp:3089
 msgid "Unexpected end of line in parameter list"
 msgstr "Неожиданный конец строки в списке параметров"
 
@@ -1508,8 +1502,7 @@ msgstr "Неожиданный конец сценария в блоке инс�
 msgid "Unexpected end of script in multiline comment"
 msgstr "Неожиданный конец сценария в многострочном комментарии"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3016
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3083
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3016 src/kvirc/kvs/kvi_kvs_parser.cpp:3083
 msgid "Unexpected end of script in parameter list"
 msgstr "Неожиданный конец сценария в списке параметров"
 
@@ -1567,8 +1560,7 @@ msgstr "Неизвестный оператор"
 msgid "Unterminated c-style multiline comment"
 msgstr "С-стиль многострочных комментариев"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3468
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3475
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3468 src/kvirc/kvs/kvi_kvs_parser.cpp:3475
 msgid "Unterminated hash key"
 msgstr "Не закрытый хеш ключа"
 
@@ -1576,8 +1568,7 @@ msgstr "Не закрытый хеш ключа"
 msgid "Unterminated instruction block"
 msgstr "Незаконченный блок инструкций"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3754
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3761
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3754 src/kvirc/kvs/kvi_kvs_parser.cpp:3761
 msgid "Unterminated string constant"
 msgstr "Строка с константой не закрыта"
 
@@ -1645,13 +1636,12 @@ msgstr "[KVS]%c Ошибка при компиляции: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Ошибка при выполнении: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:193
-#: src/kvirc/kvs/kvi_kvs_report.cpp:201
+#: src/kvirc/kvs/kvi_kvs_report.cpp:193 src/kvirc/kvs/kvi_kvs_report.cpp:201
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Предупреждение: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:99
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1196
+#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:99
 msgid "[RAW]: %Q"
 msgstr "[RAW]: %Q"
 
@@ -1682,8 +1672,8 @@ msgstr "найдена строка \"%Q\" там где ожидается ти
 msgid "found type %Q where type '%s' was expected"
 msgstr "найден тип %Q там где ожидается тип '%s'"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:95
 #: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:108
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:95
 #, c-format
 msgid "line %d, near character %d"
 msgstr "Строка %d, около символа %d"

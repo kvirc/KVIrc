@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-21 14:37+0100\n"
+"POT-Creation-Date: 2010-04-03 16:47+0200\n"
 "PO-Revision-Date: 2010-03-22 12:28+0100\n"
 "Last-Translator: Fabio Bas <ctrlaltca@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 "Parametri:\n"
 "%s"
 
-#: src/modules/raweditor/raweditor.cpp:381
+#: src/modules/raweditor/raweditor.cpp:367
 #, c-format
 msgid ""
 "\n"
@@ -60,22 +60,22 @@ msgstr "### Epilogo ###"
 msgid "### Prologue ###"
 msgstr "### Prologo ###"
 
-#: src/modules/raweditor/raweditor.cpp:195
+#: src/modules/raweditor/raweditor.cpp:181
 msgid "&Add Raw Event..."
 msgstr "&Aggiungi Evento Raw"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1190
 #: src/modules/eventeditor/eventeditor.cpp:510
 #: src/modules/popupeditor/popupeditor.cpp:1315
-#: src/modules/raweditor/raweditor.cpp:497
+#: src/modules/raweditor/raweditor.cpp:483
 msgid "&Apply"
 msgstr "&Applica"
 
-#: src/modules/editor/scripteditor.cpp:993
+#: src/modules/editor/scripteditor.cpp:995
 msgid "&Cancel"
 msgstr "Annulla"
 
-#: src/modules/editor/scripteditor.cpp:728
+#: src/modules/editor/scripteditor.cpp:730
 msgid "&Configure Editor..."
 msgstr "&Configura Editor..."
 
@@ -84,23 +84,23 @@ msgid "&Copy"
 msgstr "&Copia"
 
 #: src/modules/eventeditor/eventeditor.cpp:201
-#: src/modules/raweditor/raweditor.cpp:174
+#: src/modules/raweditor/raweditor.cpp:160
 msgid "&Disable Handler"
 msgstr "&Disabilita Gestore"
 
 #: src/modules/eventeditor/eventeditor.cpp:197
-#: src/modules/raweditor/raweditor.cpp:170
+#: src/modules/raweditor/raweditor.cpp:156
 msgid "&Enable Handler"
 msgstr "Abilita Gestore"
 
 #: src/modules/eventeditor/eventeditor.cpp:104
 #: src/modules/popupeditor/popupeditor.cpp:1019
-#: src/modules/raweditor/raweditor.cpp:113
+#: src/modules/raweditor/raweditor.cpp:99
 msgid "&Export All To..."
 msgstr "&Esporta Tutto Su..."
 
 #: src/modules/eventeditor/eventeditor.cpp:209
-#: src/modules/raweditor/raweditor.cpp:182
+#: src/modules/raweditor/raweditor.cpp:168
 msgid "&Export Handler To..."
 msgstr "&Esporta Gestore Su..."
 
@@ -113,7 +113,7 @@ msgid "&Export selected To..."
 msgstr "&Esporta Selezione Su..."
 
 #: src/modules/eventeditor/eventeditor.cpp:214
-#: src/modules/raweditor/raweditor.cpp:187
+#: src/modules/raweditor/raweditor.cpp:173
 msgid "&New Handler"
 msgstr "&Nuovo Gestore"
 
@@ -126,12 +126,12 @@ msgstr "&Nuovo Popup"
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:505
 #: src/modules/popupeditor/popupeditor.cpp:1310
-#: src/modules/raweditor/raweditor.cpp:442
-#: src/modules/raweditor/raweditor.cpp:492
+#: src/modules/raweditor/raweditor.cpp:428
+#: src/modules/raweditor/raweditor.cpp:478
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/editor/scripteditor.cpp:725
+#: src/modules/editor/scripteditor.cpp:727
 msgid "&Open..."
 msgstr "&Apri..."
 
@@ -140,37 +140,65 @@ msgid "&Paste Below"
 msgstr "Incolla Sotto"
 
 #: src/modules/editor/scripteditor.cpp:250
-#: src/modules/editor/scripteditor.cpp:998
+#: src/modules/editor/scripteditor.cpp:1000
 msgid "&Replace"
 msgstr "Sostituisci"
 
-#: src/modules/editor/scripteditor.cpp:988
+#: src/modules/editor/scripteditor.cpp:990
 msgid "&Replace in all Aliases"
 msgstr "Sostituisci in tutti gli Alias"
 
-#: src/modules/editor/scripteditor.cpp:726
+#: src/modules/editor/scripteditor.cpp:728
 msgid "&Save As..."
 msgstr "&Salva con nome..."
 
 #: src/modules/popupeditor/popupeditor.cpp:242
-msgid "<center><b>Boolean condition</b><br>Will be evaluated at popup call time in order to decide if this entry has to be shown.<br>An empty condition evaluates to true.</center>"
-msgstr "<center><b>Condizione Booleana</b><br>Verrà valutata alla chiamata del popup per decidere se questa voce va mostrata.<br>Una condizione vuota viene valutata come vera.</center>"
+msgid ""
+"<center><b>Boolean condition</b><br>Will be evaluated at popup call time in "
+"order to decide if this entry has to be shown.<br>An empty condition "
+"evaluates to true.</center>"
+msgstr ""
+"<center><b>Condizione Booleana</b><br>Verrà valutata alla chiamata del popup "
+"per decidere se questa voce va mostrata.<br>Una condizione vuota viene "
+"valutata come vera.</center>"
 
 #: src/modules/popupeditor/popupeditor.cpp:260
-msgid "<center><b>External menu name</b><br>This allows to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.</center>"
-msgstr "<center><b>Nome del menu esterno</b><br>Questo permette di innestare un popup definito esternamente. Il popup col nome specificato sarà cercato all'avvio del menu.</center>"
+msgid ""
+"<center><b>External menu name</b><br>This allows to nest externally defined "
+"popup menus. The popup menu with the specified name will be looked up at "
+"menu setup time.</center>"
+msgstr ""
+"<center><b>Nome del menu esterno</b><br>Questo permette di innestare un "
+"popup definito esternamente. Il popup col nome specificato sarà cercato "
+"all'avvio del menu.</center>"
 
 #: src/modules/popupeditor/popupeditor.cpp:251
-msgid "<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute path or a relative path.<br>Portable scripts should never use absolute paths.</center>"
-msgstr "<center><b>Identificatore Icona</b><br>Può essere un ID icona interna, un percorso assoluto o relativo.<br>Script portabili non dovrebbero mai usare percorsi assoluti.</center>"
+msgid ""
+"<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
+"path or a relative path.<br>Portable scripts should never use absolute paths."
+"</center>"
+msgstr ""
+"<center><b>Identificatore Icona</b><br>Può essere un ID icona interna, un "
+"percorso assoluto o relativo.<br>Script portabili non dovrebbero mai usare "
+"percorsi assoluti.</center>"
 
 #: src/modules/popupeditor/popupeditor.cpp:270
-msgid "<center><b>Item id</b><br>This will allow you to use delpopupitem later.</center>"
-msgstr "<center><b>ID Elemento</b><br>Questo ti permette di usare delpopupitem in seguito.</center>"
+msgid ""
+"<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
+"center>"
+msgstr ""
+"<center><b>ID Elemento</b><br>Questo ti permette di usare delpopupitem in "
+"seguito.</center>"
 
 #: src/modules/popupeditor/popupeditor.cpp:233
-msgid "<center><b>Visible text</b><br>May contain identifiers that will be evaluated at popup call time.<br>For labels, this text can contain also limited HTML tags.</center>"
-msgstr "<center><b>Testo Visibile</b><br>Può contenere identificatori che verranno valutati alla chiamata del popup.<br>Per le etichette, questo testo può contenere anche un set limitato di tag HTML.</center>"
+msgid ""
+"<center><b>Visible text</b><br>May contain identifiers that will be "
+"evaluated at popup call time.<br>For labels, this text can contain also "
+"limited HTML tags.</center>"
+msgstr ""
+"<center><b>Testo Visibile</b><br>Può contenere identificatori che verranno "
+"valutati alla chiamata del popup.<br>Per le etichette, questo testo può "
+"contenere anche un set limitato di tag HTML.</center>"
 
 #: src/modules/actioneditor/actioneditor.cpp:586
 msgid "Action"
@@ -219,12 +247,20 @@ msgid "Alias already exists"
 msgstr "L'alias esiste già"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1003
-msgid "Alias names can contain only letters, digits, underscores and '::' namespace separators"
-msgstr "I nomi degli alias possono contenere solo lettere, numeri, trattini bassi e separatori di namespace '::'"
+msgid ""
+"Alias names can contain only letters, digits, underscores and '::' namespace "
+"separators"
+msgstr ""
+"I nomi degli alias possono contenere solo lettere, numeri, trattini bassi e "
+"separatori di namespace '::'"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:322
-msgid "An external script has changed the alias you are currently editing. Do you want to accept the external changes?"
-msgstr "Uno script esterno ha cambiato l'alias mentre lo stavi modificando. Vuoi accettare i cambiamenti esterni?"
+msgid ""
+"An external script has changed the alias you are currently editing. Do you "
+"want to accept the external changes?"
+msgstr ""
+"Uno script esterno ha cambiato l'alias mentre lo stavi modificando. Vuoi "
+"accettare i cambiamenti esterni?"
 
 #: src/modules/actioneditor/actioneditor.cpp:869
 msgid "Apply"
@@ -258,12 +294,12 @@ msgstr "Icona Grande:"
 msgid "Brackets:"
 msgstr "Parentesi graffe:"
 
-#: src/modules/editor/scripteditor.cpp:935
+#: src/modules/editor/scripteditor.cpp:937
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "Impossibile aprire il file %s in lettura."
 
-#: src/modules/editor/scripteditor.cpp:854
+#: src/modules/editor/scripteditor.cpp:856
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Impossible aprire il file %s in scrittura."
@@ -273,7 +309,7 @@ msgstr "Impossible aprire il file %s in scrittura."
 #: src/modules/editor/scripteditor.cpp:532
 #: src/modules/eventeditor/eventeditor.cpp:515
 #: src/modules/popupeditor/popupeditor.cpp:1320
-#: src/modules/raweditor/raweditor.cpp:502
+#: src/modules/raweditor/raweditor.cpp:488
 #: src/modules/toolbareditor/toolbareditor.cpp:188
 #: src/modules/toolbareditor/toolbareditor.cpp:404
 msgid "Cancel"
@@ -284,36 +320,69 @@ msgid "Category:"
 msgstr "Categoria:"
 
 #: src/modules/actioneditor/actioneditor.cpp:229
-msgid "Check this option if this action should be enabled also during the login operations (so when the logical IRC connection hasn't been estabilished yet)"
-msgstr "Spunta questa opzione se questa azione dovrebbe essere abilitata anche durante le operazioni di login (quando la connessione IRC non è ancora stabilita)"
+msgid ""
+"Check this option if this action should be enabled also during the login "
+"operations (so when the logical IRC connection hasn't been estabilished yet)"
+msgstr ""
+"Spunta questa opzione se questa azione dovrebbe essere abilitata anche "
+"durante le operazioni di login (quando la connessione IRC non è ancora "
+"stabilita)"
 
 #: src/modules/actioneditor/actioneditor.cpp:208
-msgid "Check this option if this action should be enabled only when the active window belongs to an irc context"
-msgstr "Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando la finestra attiva appartiene a un contesto IRC"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window belongs to an irc context"
+msgstr ""
+"Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando "
+"la finestra attiva appartiene a un contesto IRC"
 
 #: src/modules/actioneditor/actioneditor.cpp:219
-msgid "Check this option if this action should be enabled only when the active window has an active IRC connection"
-msgstr "Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando la finestra attiva ha una connessione IRC attiva"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window has an active IRC connection"
+msgstr ""
+"Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando "
+"la finestra attiva ha una connessione IRC attiva"
 
 #: src/modules/actioneditor/actioneditor.cpp:252
-msgid "Check this option if this action should be enabled only when the active window is a channel"
-msgstr "Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando la finestra attiva è un canale"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a channel"
+msgstr ""
+"Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando "
+"la finestra attiva è un canale"
 
 #: src/modules/actioneditor/actioneditor.cpp:241
-msgid "Check this option if this action should be enabled only when the active window is a console"
-msgstr "Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando la finestra attiva è una console"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a console"
+msgstr ""
+"Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando "
+"la finestra attiva è una console"
 
 #: src/modules/actioneditor/actioneditor.cpp:274
-msgid "Check this option if this action should be enabled only when the active window is a dcc chat"
-msgstr "Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando la finestra attiva è una DCC chat"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a dcc chat"
+msgstr ""
+"Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando "
+"la finestra attiva è una DCC chat"
 
 #: src/modules/actioneditor/actioneditor.cpp:263
-msgid "Check this option if this action should be enabled only when the active window is a query"
-msgstr "Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando la finestra attiva è una query"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a query"
+msgstr ""
+"Spunta questa opzione se questa azione dovrebbe essere abilitata solo quando "
+"la finestra attiva è una query"
 
 #: src/modules/actioneditor/actioneditor.cpp:235
-msgid "Check this option if this action should be enabled only when the active window is of a specified type"
-msgstr "Spunta questa opzione se questa azione dovrebbe essere abilitata la finestra attiva è di un tipo specificato"
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is of a specified type"
+msgstr ""
+"Spunta questa opzione se questa azione dovrebbe essere abilitata la finestra "
+"attiva è di un tipo specificato"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:727
 msgid "Choose a Directory - KVIrc"
@@ -321,13 +390,13 @@ msgstr "Scegli una Directory - KVIrc"
 
 #: src/modules/actioneditor/actioneditor.cpp:692
 #: src/modules/aliaseditor/aliaseditor.cpp:809
-#: src/modules/editor/scripteditor.cpp:841
+#: src/modules/editor/scripteditor.cpp:843
 #: src/modules/eventeditor/eventeditor.cpp:446
 #: src/modules/eventeditor/eventeditor.cpp:487
 #: src/modules/popupeditor/popupeditor.cpp:1120
 #: src/modules/popupeditor/popupeditor.cpp:1170
-#: src/modules/raweditor/raweditor.cpp:435
-#: src/modules/raweditor/raweditor.cpp:473
+#: src/modules/raweditor/raweditor.cpp:421
+#: src/modules/raweditor/raweditor.cpp:459
 #: src/modules/toolbareditor/toolbareditor.cpp:395
 msgid "Choose a Filename - KVIrc"
 msgstr "Scegli un Nome - KVIrc"
@@ -424,7 +493,7 @@ msgstr "Modifica il nome dell'alias o del namespace"
 msgid "Edit the event handler name."
 msgstr "Modifica il nome del gestore dell'evento."
 
-#: src/modules/raweditor/raweditor.cpp:118
+#: src/modules/raweditor/raweditor.cpp:104
 msgid "Edit the raw event handler name."
 msgstr "Modifica il nome del gestore dell'evento raw."
 
@@ -452,7 +521,7 @@ msgstr "Abilita nelle Finestre DCC Chat"
 msgid "Enable in Query Windows"
 msgstr "Abilita nelle Finestre Query"
 
-#: src/modules/raweditor/raweditor.cpp:235
+#: src/modules/raweditor/raweditor.cpp:221
 msgid "Enter the numeric code of the message (0-999)"
 msgstr "Abilita il codice numerico del messaggio (0-999)"
 
@@ -496,7 +565,7 @@ msgstr "Menu Esterno"
 msgid "External menu:"
 msgstr "Menu esterno:"
 
-#: src/modules/editor/scripteditor.cpp:737
+#: src/modules/editor/scripteditor.cpp:739
 msgid "Find"
 msgstr "Cerca"
 
@@ -586,7 +655,7 @@ msgstr "Etichetta"
 msgid "Label:"
 msgstr "Etichetta:"
 
-#: src/modules/editor/scripteditor.cpp:921
+#: src/modules/editor/scripteditor.cpp:923
 msgid "Load Script File - KVIrc"
 msgstr "Caricare lo Script - KVIrc"
 
@@ -626,8 +695,12 @@ msgid "Namespace already exists"
 msgstr "Il namespace esiste già"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1071
-msgid "Namespace names can contain only letters, digits, underscores and '::' namespace separators"
-msgstr "I nomi dei namespace possono contenere solo lettere, numeri, trattini bassi e separatori di namespace '::'"
+msgid ""
+"Namespace names can contain only letters, digits, underscores and '::' "
+"namespace separators"
+msgstr ""
+"I nomi dei namespace possono contenere solo lettere, numeri, trattini bassi "
+"e separatori di namespace '::'"
 
 #: src/modules/actioneditor/actioneditor.cpp:217
 msgid "Needs IRC Connection"
@@ -697,7 +770,7 @@ msgstr "Nuovo Menu Dentro"
 msgid "New Menu Prologue"
 msgstr "Nuovo Prologo Menu"
 
-#: src/modules/raweditor/raweditor.cpp:235
+#: src/modules/raweditor/raweditor.cpp:221
 msgid "New Raw Event"
 msgstr "Nuovo Evento Raw"
 
@@ -743,7 +816,7 @@ msgstr "Testo normale:"
 #: src/modules/eventeditor/eventeditor.cpp:491
 #: src/modules/popupeditor/popupeditor.cpp:1127
 #: src/modules/popupeditor/popupeditor.cpp:1174
-#: src/modules/raweditor/raweditor.cpp:477
+#: src/modules/raweditor/raweditor.cpp:463
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:247
 #: src/modules/toolbareditor/toolbareditor.cpp:457
@@ -769,13 +842,23 @@ msgstr "Ok, fammi provare ancora..."
 msgid "Only If There Are Selected Users"
 msgstr "Solo Se Ci Sono Utenti Selezionati"
 
-#: src/modules/editor/scripteditor.cpp:934
+#: src/modules/editor/scripteditor.cpp:936
 msgid "Open Failed - KVIrc"
 msgstr "Apertura Fallita - KVIrc"
 
 #: src/modules/actioneditor/actioneditor.cpp:184
-msgid "Optional keyboard sequence that will activate this action.<br>The sequence has to be expressed as a string of up to four key codes separated by commas eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
-msgstr "Combinazione di tasti opzionale per abilitare questa azione.<br>La combinazione deve essere espressa come stringa di massimo 4 tasti separati da virgole eventualmente combinati coi modificatori \"Ctrl\", \"Shift\", \"Alt\" e \"Meta\".<br>Esempi di queste combinazioni sono \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
+msgid ""
+"Optional keyboard sequence that will activate this action.<br>The sequence "
+"has to be expressed as a string of up to four key codes separated by commas "
+"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta"
+"\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
+"Ctrl+C\" ..."
+msgstr ""
+"Combinazione di tasti opzionale per abilitare questa azione.<br>La "
+"combinazione deve essere espressa come stringa di massimo 4 tasti separati "
+"da virgole eventualmente combinati coi modificatori \"Ctrl\", \"Shift\", "
+"\"Alt\" e \"Meta\".<br>Esempi di queste combinazioni sono \"Ctrl+X\", \"Ctrl"
+"+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:321
 msgid "OverWrite Current Alias"
@@ -810,8 +893,12 @@ msgid "Please enter the new name for the namespace"
 msgstr "Inserisci il nuovo nome per il namespace"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:640
-msgid "Please enter the text to be searched for. The matching aliases will be highlighted."
-msgstr "Inserisci il testo da cercare. Gli alias che lo contengono saranno evidenziati."
+msgid ""
+"Please enter the text to be searched for. The matching aliases will be "
+"highlighted."
+msgstr ""
+"Inserisci il testo da cercare. Gli alias che lo contengono saranno "
+"evidenziati."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:927
 msgid "Please note that all the children items will be deleted too."
@@ -857,16 +944,16 @@ msgstr "Punteggiatura:"
 msgid "Put here a short description of your action"
 msgstr "Inserisci una breve descrizione della tua azione"
 
-#: src/modules/raweditor/raweditor.cpp:540
+#: src/modules/raweditor/raweditor.cpp:526
 msgid "Raw Editor"
 msgstr "Editor Raw"
 
-#: src/modules/raweditor/raweditor.cpp:101
+#: src/modules/raweditor/raweditor.cpp:87
 msgid "Raw Event"
 msgstr "Evento Raw"
 
 #: src/modules/eventeditor/eventeditor.cpp:205
-#: src/modules/raweditor/raweditor.cpp:178
+#: src/modules/raweditor/raweditor.cpp:164
 msgid "Re&move Handler"
 msgstr "Rimuovi Gestore"
 
@@ -898,16 +985,16 @@ msgstr "Rinomina Namespace"
 msgid "Replace file"
 msgstr "Sostituisci file"
 
-#: src/modules/editor/scripteditor.cpp:976
+#: src/modules/editor/scripteditor.cpp:978
 msgid "Replace with"
 msgstr "Sostituisci con"
 
-#: src/modules/editor/scripteditor.cpp:904
+#: src/modules/editor/scripteditor.cpp:906
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Riga: %d Colonna: %d"
 
-#: src/modules/editor/scripteditor.cpp:853
+#: src/modules/editor/scripteditor.cpp:855
 msgid "Save Failed - KVIrc"
 msgstr "Impossibile Salvare - KVIrc"
 
@@ -920,12 +1007,18 @@ msgid "Small Icon:"
 msgstr "Icona Piccola:"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1017
-msgid "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
-msgstr "Carattere ':' spurio nel nome dell'alias: volevi mettere ...<namespace>::<name> ?"
+msgid ""
+"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
+msgstr ""
+"Carattere ':' spurio nel nome dell'alias: volevi mettere ...<namespace>::"
+"<name> ?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1085
-msgid "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
-msgstr "Carattere ':' spurio nel nome del namespace: volevi mettere ...<namespace>::<name> ?"
+msgid ""
+"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
+msgstr ""
+"Carattere ':' spurio nel nome del namespace: volevi mettere ...<namespace>::"
+"<name> ?"
 
 #: src/modules/popupeditor/popupeditor.cpp:83
 msgid "Submenu"
@@ -944,8 +1037,12 @@ msgid "The ToolBar Label can't be empty!"
 msgstr "L'etichetta della ToolBar non può essere vuota!"
 
 #: src/modules/actioneditor/actioneditor.cpp:172
-msgid "The big icon associated to this action.<br>It will appear at least in the toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
-msgstr "L'icona grande associata a questa azione.<br>Apparirà nei pulsanti della toolbar quando questa azione verrà inserita.<br>Deve essere di 32x32 pixel."
+msgid ""
+"The big icon associated to this action.<br>It will appear at least in the "
+"toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
+msgstr ""
+"L'icona grande associata a questa azione.<br>Apparirà nei pulsanti della "
+"toolbar quando questa azione verrà inserita.<br>Deve essere di 32x32 pixel."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:789
 msgid "The exported file would be empty: cowardly refusing to write it"
@@ -956,12 +1053,22 @@ msgid "The file \"%Q\" exists. Do you want to replace it ?"
 msgstr "Il file \"%Q\" esiste. Vuoi sovrascriverlo ?"
 
 #: src/modules/actioneditor/actioneditor.cpp:156
-msgid "The small icon associated to this action.<br>It will appear at least in the popup menus when this action is inserted.<br>It has to be 16x16 pixels."
-msgstr "L'icona piccola associata a questa azione.<br>Apparirà nei menu popup quando questa azione verrà inserita.<br>Deve essere di 16x16 pixel."
+msgid ""
+"The small icon associated to this action.<br>It will appear at least in the "
+"popup menus when this action is inserted.<br>It has to be 16x16 pixels."
+msgstr ""
+"L'icona piccola associata a questa azione.<br>Apparirà nei menu popup quando "
+"questa azione verrà inserita.<br>Deve essere di 16x16 pixel."
 
 #: src/modules/toolbareditor/toolbareditor.cpp:261
-msgid "The specified ToolBar Id already exists.<br>Would you like KVIrc to assign it automatically (so it doesn't collide with any other toolbar) or you prefer to do it manually ?"
-msgstr "L'ID della ToolBar specificata esistegià.<br>Vuoi che KVIrc lo assegnerà automaticamente (così non colliderà con nessun'altra toolbar) o preferisci farlo manualmente ?"
+msgid ""
+"The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
+"it automatically (so it doesn't collide with any other toolbar) or you "
+"prefer to do it manually ?"
+msgstr ""
+"L'ID della ToolBar specificata esistegià.<br>Vuoi che KVIrc lo assegnerà "
+"automaticamente (così non colliderà con nessun'altra toolbar) o preferisci "
+"farlo manualmente ?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:721
 msgid "There is no selection!"
@@ -975,8 +1082,12 @@ msgstr "Questo nome è già in uso. Scegline un altro."
 #: src/modules/actioneditor/actioneditor.cpp:247
 #: src/modules/actioneditor/actioneditor.cpp:258
 #: src/modules/actioneditor/actioneditor.cpp:269
-msgid "This will enable the action only if there are selected users in the active window"
-msgstr "Questo abiliterà l'azione solo se ci sono utenti selezionati nella finestra attiva"
+msgid ""
+"This will enable the action only if there are selected users in the active "
+"window"
+msgstr ""
+"Questo abiliterà l'azione solo se ci sono utenti selezionati nella finestra "
+"attiva"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:400
 msgid "ToolBar Export"
@@ -1011,11 +1122,11 @@ msgstr "Impossibile scrivere sul file degli eventi."
 msgid "Unable to write to the popup file."
 msgstr "Impossibile scrivere sul file del popup."
 
-#: src/modules/raweditor/raweditor.cpp:442
+#: src/modules/raweditor/raweditor.cpp:428
 msgid "Unable to write to the raw event file."
 msgstr "Impossibile scrivere sul file dell'evento raw."
 
-#: src/modules/raweditor/raweditor.cpp:477
+#: src/modules/raweditor/raweditor.cpp:463
 msgid "Unable to write to the raw events file."
 msgstr "Impossibile scrivere sul file degli eventi raw."
 
@@ -1028,14 +1139,22 @@ msgid "Variables:"
 msgstr "Variabili:"
 
 #: src/modules/actioneditor/actioneditor.cpp:113
-msgid "Visible name for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"
-msgstr "Nome visibile per questa azione.<br>Questa stringa verrà mostrata all'utente quindi è una buona idea usare $tr() qui"
+msgid ""
+"Visible name for this action.<br>This string will be displayed to the user "
+"so it is a good idea to use $tr() here"
+msgstr ""
+"Nome visibile per questa azione.<br>Questa stringa verrà mostrata all'utente "
+"quindi è una buona idea usare $tr() qui"
 
 #: src/modules/actioneditor/actioneditor.cpp:146
-msgid "Visible short description for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"
-msgstr "Breve descrizione visibile per questa azione.<br>Questa stringa verrà mostrata all'utente quindi è una buona idea usare $tr() qui"
+msgid ""
+"Visible short description for this action.<br>This string will be displayed "
+"to the user so it is a good idea to use $tr() here"
+msgstr ""
+"Breve descrizione visibile per questa azione.<br>Questa stringa verrà "
+"mostrata all'utente quindi è una buona idea usare $tr() qui"
 
-#: src/modules/editor/scripteditor.cpp:967
+#: src/modules/editor/scripteditor.cpp:969
 msgid "Word to Find"
 msgstr "Parola da Trovare"
 
@@ -1045,8 +1164,8 @@ msgstr "Parola da Trovare"
 #: src/modules/eventeditor/eventeditor.cpp:491
 #: src/modules/popupeditor/popupeditor.cpp:1127
 #: src/modules/popupeditor/popupeditor.cpp:1174
-#: src/modules/raweditor/raweditor.cpp:442
-#: src/modules/raweditor/raweditor.cpp:477
+#: src/modules/raweditor/raweditor.cpp:428
+#: src/modules/raweditor/raweditor.cpp:463
 #: src/modules/toolbareditor/toolbareditor.cpp:457
 msgid "Write Failed - KVIrc"
 msgstr "Scrittura Fallita - KVIrc"
@@ -1072,7 +1191,7 @@ msgid "You must specify a valid name for the namespace"
 msgstr "Devi specificare un nome valido per il namespace"
 
 #: src/modules/eventeditor/eventeditor.cpp:265
-#: src/modules/raweditor/raweditor.cpp:271
+#: src/modules/raweditor/raweditor.cpp:257
 msgid "default"
 msgstr "predefinito"
 
@@ -1082,7 +1201,7 @@ msgstr "niente"
 
 #: src/modules/eventeditor/eventeditor.cpp:227
 #: src/modules/popupeditor/popupeditor.cpp:1271
-#: src/modules/raweditor/raweditor.cpp:205
+#: src/modules/raweditor/raweditor.cpp:191
 msgid "unnamed"
 msgstr "senza nome"
 

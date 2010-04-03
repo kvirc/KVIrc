@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-21 14:37+0100\n"
+"POT-Creation-Date: 2010-04-03 16:47+0200\n"
 "PO-Revision-Date: 2010-03-21 16:03+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -16,653 +16,652 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:100
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:145
-msgid "Usage"
-msgstr "Benutzung"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:100
-msgid "channel"
-msgstr "Channel"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:100
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:145
-msgid "message"
-msgstr "Nachricht"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:101
-msgid "-m: send a message instead of a notice"
-msgstr "-m: Sende Nachricht anstatt einer Notiz"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:102
-msgid "-w: send notice to all channel owners"
-msgstr "-w: Sende Notiz an alle Channel-Besitzer"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:103
-msgid "-a: send notice to all channel admins"
-msgstr "-a: Sende Notiz an alle Channel-Administratoren"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:104
-msgid "-o: send notice to all channel ops"
-msgstr "-o: Sende Notiz an alle Channel-Operatoren"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:105
-msgid "-h: send notice to all channel halfops"
-msgstr "-h: Sende Notiz an alle Channel-Halboperatoren"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:106
-msgid "-v: send notice to all channel voices"
-msgstr "-v: Sende Notiz an alle Channel-Voices"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:107
-msgid "-q: quiet mode"
-msgstr "-q: Ruhig-Modus"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:115
-msgid "Parameter message missing"
-msgstr "Parameter-Nachricht fehlt"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:116
-msgid "Type /gnotice for help"
-msgstr "Für Hilfe, /gnotice eingeben"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:150
-msgid "Sending wallop to"
-msgstr "Sende Wallop an"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:182
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:194
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:206
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:221
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:235
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:314
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:356
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:414
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:474
-msgid "Usage:"
-msgstr "Benutzung:"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:236
-msgid "reason"
-msgstr "Grund"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:242
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:420
-msgid "This is not a channel window"
-msgstr "Dies ist kein Channel-Fenster"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:402
-msgid "Unsupported type:"
-msgstr "Nicht unterstützter Typ:"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:425
-msgid "Channel Owner"
-msgstr "Channel-Besitzer"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:427
-msgid "Channel Administrator"
-msgstr "Channel-Administrator"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:429
-msgid "Channel Operator"
-msgstr "Channel-Operator"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:431
-msgid "Half Operator"
-msgstr "Halb-Operator"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:433
-msgid "Voice"
-msgstr "Voice"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:435
-msgid "User Operator"
-msgstr "Benutzer-Operator"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:437
-msgid "Normal User"
-msgstr "Normaler Benutzer"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:462
-msgid "You must use DNS in an IRC context"
-msgstr "DNS muss in einem IRC-Kontext benutzt werden"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:468
-msgid "You must be connected to a server"
-msgstr "Es muss eine Verbindung zu einem Server bestehen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/aliases.kvs:485
-msgid "No such user:"
-msgstr "Kein solcher Benutzer:"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/default.kvs:34
-msgid "The default script has been successfully installed."
-msgstr "Das Standardskript wurde erfolgreich installiert."
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/default.kvs:35
-msgid "To connect to a server, type /server <server name>"
-msgstr "Um eine Server-Verbindung herzustellen, »/server <Servername>« eingeben"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/default.kvs:37
-msgid "Happy ircing :)"
-msgstr "Fröhliches Chatten :)"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:18
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:81
-msgid "Stop Highlighting (Local)"
-msgstr "Hervorheben (lokal) stoppen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:23
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:86
-msgid "Start Highlighting (Local)"
-msgstr "Hervorheben (lokal) starten"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:28
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:61
-msgid "Always Highlight"
-msgstr "Immer hervorheben"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:30
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:35
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:40
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:45
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:50
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:55
-msgid "Highlight as"
-msgstr "Hervorheben als"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:66
-msgid "Stop Highlighting"
-msgstr "Hervorheben stoppen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:102
-msgid "is being ignored"
-msgstr "wird ignoriert"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:103
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:107
-msgid "is not being ignored"
-msgstr "wird nicht ignoriert"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:113
-msgid "Enable Ignore"
-msgstr "Ignorieren aktivieren"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:118
-msgid "Ignore as..."
-msgstr "Ignoriere als …"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:120
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:127
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:134
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:141
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:148
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:155
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:162
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:169
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:176
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:183
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:190
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:197
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:204
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:211
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:218
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:225
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:232
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:239
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:246
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:253
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:260
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:267
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:274
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:281
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:288
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:295
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:302
-msgid "Ignore as"
-msgstr "Ignoriere als"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:310
-msgid "Unignore"
-msgstr "Nicht mehr ignorieren"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:328
-msgid "is registered as"
-msgstr "ist registriert als"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:331
-msgid "is in the notify list"
-msgstr "ist in der Benachrichtigungsliste"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:334
-msgid "has a default avatar"
-msgstr "hat ein Standard-Benutzerbild"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:337
-msgid "is not registered"
-msgstr "ist nicht registriert"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:343
-msgid "Register..."
-msgstr "Registrieren …"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:348
-msgid "Quick Registration"
-msgstr "Schnelle Registrierung"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:350
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:355
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:360
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:365
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:370
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:375
-msgid "Register as"
-msgstr "Registriere als"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:381
-msgid "Edit Registration..."
-msgstr "Registrierung bearbeiten"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:386
-msgid "Unregister"
-msgstr "Deregistrieren"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:393
-msgid "Add to Notify"
-msgstr "Zur Benachrichtigungsliste hinzufügen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:398
-msgid "Remove from Notify"
-msgstr "Von der Benachrichtigungsliste entfernen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:403
-msgid "Avatar"
-msgstr "Benutzerbild"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:405
-msgid "Choose..."
-msgstr "Auswählen …"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:407
-msgid "Choose Avatar Image File"
-msgstr "Ein Benutzerbild auswählen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:416
-msgid "Set as Default"
-msgstr "Als Standard setzen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:421
-msgid "Clear Default"
-msgstr "Standard löschen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:432
-msgid "Copy To Clipboard"
-msgstr "Zur Zwischenablage kopieren"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:453
-msgid "Ban"
-msgstr "Ban"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:457
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1059
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1106
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1246
-msgid "Multiple Users"
-msgstr "Mehrere Benutzer"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:463
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:597
-msgid "&Ban"
-msgstr "&Ban"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:487
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1111
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1251
-msgid "idle time"
-msgstr "Leerlaufzeit"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:495
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:780
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1118
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1258
-msgid "&Information"
-msgstr "&Information"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:514
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1137
-msgid "DNS for"
-msgstr "DNS für"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:519
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1142
-msgid "Mask for"
-msgstr "Maske für"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:525
-msgid "&Control"
-msgstr "&Kontrolle"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:529
-msgid "O&wner"
-msgstr "O&wner"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:534
-msgid "&Deowner"
-msgstr "&Deowner"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:539
+#: data/defscript/popups.kvs:539
 msgid "&Administrator"
 msgstr "&Administrator"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:544
+#: data/defscript/popups.kvs:463
+#: data/defscript/popups.kvs:597
+msgid "&Ban"
+msgstr "&Ban"
+
+#: data/defscript/popups.kvs:525
+msgid "&Control"
+msgstr "&Kontrolle"
+
+#: data/defscript/popups.kvs:544
 msgid "&Deadministrator"
 msgstr "&Deadministrator"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:549
-msgid "&Op"
-msgstr "&Op"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:554
-msgid "&Deop"
-msgstr "&Deop"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:559
-msgid "&Halfop"
-msgstr "&Halfop"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:564
+#: data/defscript/popups.kvs:564
 msgid "&Dehalfop"
 msgstr "&Dehalfop"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:569
-msgid "&Voice"
-msgstr "&Voice"
+#: data/defscript/popups.kvs:554
+msgid "&Deop"
+msgstr "&Deop"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:574
-msgid "D&evoice"
-msgstr "D&evoice"
+#: data/defscript/popups.kvs:534
+msgid "&Deowner"
+msgstr "&Deowner"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:581
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:588
-msgid "&Kick"
-msgstr "&Kick"
+#: data/defscript/popups.kvs:559
+msgid "&Halfop"
+msgstr "&Halfop"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:586
-msgid "K&ick"
-msgstr "K&ick"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:586
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:612
-msgid "With..."
-msgstr "Mit …"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:588
-msgid "Kick Reason"
-msgstr "Grund für den Kick"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:588
-msgid "Enter a kick reason"
-msgstr "Kick-Grund eingeben"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:588
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:614
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:910
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:607
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:612
-msgid "Kick/Ban"
-msgstr "Kicken/Bannen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:614
-msgid "Kick/Ban Reason"
-msgstr "Kick/Ban-Grund"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:614
-msgid "Enter a kick/ban reason"
-msgstr "Kick/Ban-Grund eingeben"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:614
-msgid "&Kick/Ban"
-msgstr "&Kick/Ban"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:624
-msgid "Configure ban mask..."
-msgstr "Ban-Maske einrichten …"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:632
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1285
-msgid "&Query"
-msgstr "&Query"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:645
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1158
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1298
-msgid "&Registration"
-msgstr "&Registrieren"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:647
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:753
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1300
+#: data/defscript/popups.kvs:647
+#: data/defscript/popups.kvs:753
+#: data/defscript/popups.kvs:1300
 msgid "&Highlight"
 msgstr "&Hervorheben"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:649
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1302
-msgid "Ig&nore"
-msgstr "Ig&norieren"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:651
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:746
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1072
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1160
-msgid "Notify Avatar"
-msgstr "Benutzerbild bekanntgeben"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:661
-msgid "&Join"
-msgstr "Bet&reten"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:666
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:725
-msgid "&Part"
-msgstr "&Verlassen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:684
-msgid "Copy Channel Address"
-msgstr "Channel-Adresse kopieren"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:711
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:771
-msgid "Channels"
-msgstr "Channels"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:713
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:775
-msgid "&Join Channels..."
-msgstr "Channels betreten …"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:720
+#: data/defscript/popups.kvs:720
 msgid "&Hop"
 msgstr "&Hop"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:755
-msgid "Copy Channel URL to Clipboard"
-msgstr "Channel-URL zur Zwischenablage kopieren"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:760
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:863
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1079
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1167
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1311
-msgid "Clear Buffer"
-msgstr "Puffer löschen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:769
-msgid "You're not connected to a server"
-msgstr "Es besteht keine Server-Verbindung"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:804
-msgid "l (Connections)"
-msgstr "l (Verbindungen)"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:809
-msgid "m (Command Usage)"
-msgstr "m (Befehlsbenutzungen)"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:814
-msgid "o (Operators)"
-msgstr "o (Operatoren)"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:819
-msgid "t (Connection stats ?)"
-msgstr "t (Verbindungsstatistiken?)"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:824
-msgid "u (Uptime)"
-msgstr "u (Uptime)"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:829
-msgid "y (y-Lines)"
-msgstr "y (y-Lines)"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:834
-msgid "z (Debug Stats?)"
-msgstr "z (Debug-Statistiken?)"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:910
-msgid "Enter the message text"
-msgstr "Nachrichtentext eingeben"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:910
-msgid "&Page"
-msgstr "&Rufen"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:931
-msgid "Chat with"
-msgstr "Chatte mit"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:936
-msgid "Reverse Chat with"
-msgstr "Umgekehrter Chat mit"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:941
-msgid "Secure Chat with"
-msgstr "Sicherer Chat mit"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:948
-msgid "Send to"
-msgstr "Senden an"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:953
-msgid "Secure send to"
-msgstr "Sicheres Senden an"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:958
-msgid "Reverse Send to"
-msgstr "Umgekehrtes Senden an"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:963
-msgid "Secure Reverse Send to"
-msgstr "Sicheres umgekehrtes Senden an"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:970
-msgid "TDCC Send to"
-msgstr "TDCC Senden an"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:975
-msgid "TDCC Reverse Send to"
-msgstr "TDCC umgekehrtes Senden an"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:982
-msgid "Voice Chat"
-msgstr "Sprachunterhaltung"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:984
-msgid "Default"
-msgstr "Standard"
-
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1156
+#: data/defscript/popups.kvs:1156
 msgid "&Ignore"
 msgstr "&Ignorieren"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1187
-msgid "Logging to"
-msgstr "Logge nach"
+#: data/defscript/popups.kvs:495
+#: data/defscript/popups.kvs:780
+#: data/defscript/popups.kvs:1118
+#: data/defscript/popups.kvs:1258
+msgid "&Information"
+msgstr "&Information"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1189
-msgid "Flush Log File"
-msgstr "Logdateien schreiben"
+#: data/defscript/popups.kvs:661
+msgid "&Join"
+msgstr "Bet&reten"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1196
-msgid "Stop Logging"
-msgstr "Loggen stoppen"
+#: data/defscript/popups.kvs:713
+#: data/defscript/popups.kvs:775
+msgid "&Join Channels..."
+msgstr "Channels betreten …"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1201
-msgid "Not Logging"
-msgstr "Logge nicht"
+#: data/defscript/popups.kvs:581
+#: data/defscript/popups.kvs:588
+msgid "&Kick"
+msgstr "&Kick"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1203
-msgid "Log To Default File,"
-msgstr "Loggen zur Standarddatei,"
+#: data/defscript/popups.kvs:614
+msgid "&Kick/Ban"
+msgstr "&Kick/Ban"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1208
-msgid "Log To Default File"
-msgstr "Loggen zur Standarddatei"
+#: data/defscript/popups.kvs:549
+msgid "&Op"
+msgstr "&Op"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1208
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1221
-msgid "Include Existing Buffer"
-msgstr "Existierenden Puffer einschließen"
+#: data/defscript/popups.kvs:910
+msgid "&Page"
+msgstr "&Rufen"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1213
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1221
-msgid "Log To..."
-msgstr "Logge nach …"
+#: data/defscript/popups.kvs:666
+#: data/defscript/popups.kvs:725
+msgid "&Part"
+msgstr "&Verlassen"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1215
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1223
+#: data/defscript/popups.kvs:632
+#: data/defscript/popups.kvs:1285
+msgid "&Query"
+msgstr "&Query"
+
+#: data/defscript/popups.kvs:645
+#: data/defscript/popups.kvs:1158
+#: data/defscript/popups.kvs:1298
+msgid "&Registration"
+msgstr "&Registrieren"
+
+#: data/defscript/popups.kvs:569
+msgid "&Voice"
+msgstr "&Voice"
+
+#: data/defscript/aliases.kvs:103
+msgid "-a: send notice to all channel admins"
+msgstr "-a: Sende Notiz an alle Channel-Administratoren"
+
+#: data/defscript/aliases.kvs:105
+msgid "-h: send notice to all channel halfops"
+msgstr "-h: Sende Notiz an alle Channel-Halboperatoren"
+
+#: data/defscript/aliases.kvs:101
+msgid "-m: send a message instead of a notice"
+msgstr "-m: Sende Nachricht anstatt einer Notiz"
+
+#: data/defscript/aliases.kvs:104
+msgid "-o: send notice to all channel ops"
+msgstr "-o: Sende Notiz an alle Channel-Operatoren"
+
+#: data/defscript/aliases.kvs:107
+msgid "-q: quiet mode"
+msgstr "-q: Ruhig-Modus"
+
+#: data/defscript/aliases.kvs:106
+msgid "-v: send notice to all channel voices"
+msgstr "-v: Sende Notiz an alle Channel-Voices"
+
+#: data/defscript/aliases.kvs:102
+msgid "-w: send notice to all channel owners"
+msgstr "-w: Sende Notiz an alle Channel-Besitzer"
+
+#: data/defscript/popups.kvs:393
+msgid "Add to Notify"
+msgstr "Zur Benachrichtigungsliste hinzufügen"
+
+#: data/defscript/popups.kvs:28
+#: data/defscript/popups.kvs:61
+msgid "Always Highlight"
+msgstr "Immer hervorheben"
+
+#: data/defscript/popups.kvs:403
+msgid "Avatar"
+msgstr "Benutzerbild"
+
+#: data/defscript/popups.kvs:453
+msgid "Ban"
+msgstr "Ban"
+
+#: data/defscript/popups.kvs:588
+#: data/defscript/popups.kvs:614
+#: data/defscript/popups.kvs:910
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: data/defscript/aliases.kvs:427
+msgid "Channel Administrator"
+msgstr "Channel-Administrator"
+
+#: data/defscript/aliases.kvs:429
+msgid "Channel Operator"
+msgstr "Channel-Operator"
+
+#: data/defscript/aliases.kvs:425
+msgid "Channel Owner"
+msgstr "Channel-Besitzer"
+
+#: data/defscript/popups.kvs:711
+#: data/defscript/popups.kvs:771
+msgid "Channels"
+msgstr "Channels"
+
+#: data/defscript/popups.kvs:931
+msgid "Chat with"
+msgstr "Chatte mit"
+
+#: data/defscript/popups.kvs:407
+msgid "Choose Avatar Image File"
+msgstr "Ein Benutzerbild auswählen"
+
+#: data/defscript/popups.kvs:1215
+#: data/defscript/popups.kvs:1223
 msgid "Choose Log Filename"
 msgstr "Log-Dateiname wählen"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1304
-msgid "Notify avatar"
-msgstr "Benutzerbild bekannt machen"
+#: data/defscript/popups.kvs:405
+msgid "Choose..."
+msgstr "Auswählen …"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1367
-msgid "Open "
-msgstr "Öffnen "
+#: data/defscript/popups.kvs:760
+#: data/defscript/popups.kvs:863
+#: data/defscript/popups.kvs:1079
+#: data/defscript/popups.kvs:1167
+#: data/defscript/popups.kvs:1311
+msgid "Clear Buffer"
+msgstr "Puffer löschen"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1372
-msgid "Telnet to "
-msgstr "Telnet zu "
+#: data/defscript/popups.kvs:421
+msgid "Clear Default"
+msgstr "Standard löschen"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1379
-msgid "Traceroute to "
-msgstr "Traceroute zu "
+#: data/defscript/popups.kvs:624
+msgid "Configure ban mask..."
+msgstr "Ban-Maske einrichten …"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/popups.kvs:1385
-msgid "Traceroute6 to "
-msgstr "Traceroute6 zu "
+#: data/defscript/popups.kvs:684
+msgid "Copy Channel Address"
+msgstr "Channel-Adresse kopieren"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/toolbars.kvs:3
-msgid "IRC Context"
-msgstr "IRC-Kontext"
+#: data/defscript/popups.kvs:755
+msgid "Copy Channel URL to Clipboard"
+msgstr "Channel-URL zur Zwischenablage kopieren"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/toolbars.kvs:15
-msgid "Options"
-msgstr "Optionen"
+#: data/defscript/popups.kvs:432
+msgid "Copy To Clipboard"
+msgstr "Zur Zwischenablage kopieren"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/toolbars.kvs:22
+#: data/defscript/popups.kvs:574
+msgid "D&evoice"
+msgstr "D&evoice"
+
+#: data/defscript/popups.kvs:514
+#: data/defscript/popups.kvs:1137
+msgid "DNS for"
+msgstr "DNS für"
+
+#: data/defscript/popups.kvs:984
+msgid "Default"
+msgstr "Standard"
+
+#: data/defscript/popups.kvs:381
+msgid "Edit Registration..."
+msgstr "Registrierung bearbeiten"
+
+#: data/defscript/popups.kvs:113
+msgid "Enable Ignore"
+msgstr "Ignorieren aktivieren"
+
+#: data/defscript/popups.kvs:588
+msgid "Enter a kick reason"
+msgstr "Kick-Grund eingeben"
+
+#: data/defscript/popups.kvs:614
+msgid "Enter a kick/ban reason"
+msgstr "Kick/Ban-Grund eingeben"
+
+#: data/defscript/popups.kvs:910
+msgid "Enter the message text"
+msgstr "Nachrichtentext eingeben"
+
+#: data/defscript/popups.kvs:1189
+msgid "Flush Log File"
+msgstr "Logdateien schreiben"
+
+#: data/defscript/aliases.kvs:431
+msgid "Half Operator"
+msgstr "Halb-Operator"
+
+#: data/defscript/default.kvs:37
+msgid "Happy ircing :)"
+msgstr "Fröhliches Chatten :)"
+
+#: data/defscript/toolbars.kvs:22
 msgid "Help"
 msgstr "Hilfe"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/toolbars.kvs:30
+#: data/defscript/popups.kvs:30
+#: data/defscript/popups.kvs:35
+#: data/defscript/popups.kvs:40
+#: data/defscript/popups.kvs:45
+#: data/defscript/popups.kvs:50
+#: data/defscript/popups.kvs:55
+msgid "Highlight as"
+msgstr "Hervorheben als"
+
+#: data/defscript/toolbars.kvs:3
+msgid "IRC Context"
+msgstr "IRC-Kontext"
+
+#: data/defscript/popups.kvs:649
+#: data/defscript/popups.kvs:1302
+msgid "Ig&nore"
+msgstr "Ig&norieren"
+
+#: data/defscript/popups.kvs:120
+#: data/defscript/popups.kvs:127
+#: data/defscript/popups.kvs:134
+#: data/defscript/popups.kvs:141
+#: data/defscript/popups.kvs:148
+#: data/defscript/popups.kvs:155
+#: data/defscript/popups.kvs:162
+#: data/defscript/popups.kvs:169
+#: data/defscript/popups.kvs:176
+#: data/defscript/popups.kvs:183
+#: data/defscript/popups.kvs:190
+#: data/defscript/popups.kvs:197
+#: data/defscript/popups.kvs:204
+#: data/defscript/popups.kvs:211
+#: data/defscript/popups.kvs:218
+#: data/defscript/popups.kvs:225
+#: data/defscript/popups.kvs:232
+#: data/defscript/popups.kvs:239
+#: data/defscript/popups.kvs:246
+#: data/defscript/popups.kvs:253
+#: data/defscript/popups.kvs:260
+#: data/defscript/popups.kvs:267
+#: data/defscript/popups.kvs:274
+#: data/defscript/popups.kvs:281
+#: data/defscript/popups.kvs:288
+#: data/defscript/popups.kvs:295
+#: data/defscript/popups.kvs:302
+msgid "Ignore as"
+msgstr "Ignoriere als"
+
+#: data/defscript/popups.kvs:118
+msgid "Ignore as..."
+msgstr "Ignoriere als …"
+
+#: data/defscript/popups.kvs:1208
+#: data/defscript/popups.kvs:1221
+msgid "Include Existing Buffer"
+msgstr "Existierenden Puffer einschließen"
+
+#: data/defscript/popups.kvs:586
+msgid "K&ick"
+msgstr "K&ick"
+
+#: data/defscript/popups.kvs:588
+msgid "Kick Reason"
+msgstr "Grund für den Kick"
+
+#: data/defscript/popups.kvs:607
+#: data/defscript/popups.kvs:612
+msgid "Kick/Ban"
+msgstr "Kicken/Bannen"
+
+#: data/defscript/popups.kvs:614
+msgid "Kick/Ban Reason"
+msgstr "Kick/Ban-Grund"
+
+#: data/defscript/popups.kvs:1208
+msgid "Log To Default File"
+msgstr "Loggen zur Standarddatei"
+
+#: data/defscript/popups.kvs:1203
+msgid "Log To Default File,"
+msgstr "Loggen zur Standarddatei,"
+
+#: data/defscript/popups.kvs:1213
+#: data/defscript/popups.kvs:1221
+msgid "Log To..."
+msgstr "Logge nach …"
+
+#: data/defscript/popups.kvs:1187
+msgid "Logging to"
+msgstr "Logge nach"
+
+#: data/defscript/popups.kvs:519
+#: data/defscript/popups.kvs:1142
+msgid "Mask for"
+msgstr "Maske für"
+
+#: data/defscript/popups.kvs:457
+#: data/defscript/popups.kvs:1059
+#: data/defscript/popups.kvs:1106
+#: data/defscript/popups.kvs:1246
+msgid "Multiple Users"
+msgstr "Mehrere Benutzer"
+
+#: data/defscript/aliases.kvs:485
+msgid "No such user:"
+msgstr "Kein solcher Benutzer:"
+
+#: data/defscript/aliases.kvs:437
+msgid "Normal User"
+msgstr "Normaler Benutzer"
+
+#: data/defscript/popups.kvs:1201
+msgid "Not Logging"
+msgstr "Logge nicht"
+
+#: data/defscript/popups.kvs:651
+#: data/defscript/popups.kvs:746
+#: data/defscript/popups.kvs:1072
+#: data/defscript/popups.kvs:1160
+msgid "Notify Avatar"
+msgstr "Benutzerbild bekanntgeben"
+
+#: data/defscript/popups.kvs:1304
+msgid "Notify avatar"
+msgstr "Benutzerbild bekannt machen"
+
+#: data/defscript/popups.kvs:529
+msgid "O&wner"
+msgstr "O&wner"
+
+#: data/defscript/popups.kvs:1367
+msgid "Open "
+msgstr "Öffnen "
+
+#: data/defscript/toolbars.kvs:15
+msgid "Options"
+msgstr "Optionen"
+
+#: data/defscript/aliases.kvs:115
+msgid "Parameter message missing"
+msgstr "Parameter-Nachricht fehlt"
+
+#: data/defscript/popups.kvs:348
+msgid "Quick Registration"
+msgstr "Schnelle Registrierung"
+
+#: data/defscript/popups.kvs:350
+#: data/defscript/popups.kvs:355
+#: data/defscript/popups.kvs:360
+#: data/defscript/popups.kvs:365
+#: data/defscript/popups.kvs:370
+#: data/defscript/popups.kvs:375
+msgid "Register as"
+msgstr "Registriere als"
+
+#: data/defscript/popups.kvs:343
+msgid "Register..."
+msgstr "Registrieren …"
+
+#: data/defscript/popups.kvs:398
+msgid "Remove from Notify"
+msgstr "Von der Benachrichtigungsliste entfernen"
+
+#: data/defscript/popups.kvs:936
+msgid "Reverse Chat with"
+msgstr "Umgekehrter Chat mit"
+
+#: data/defscript/popups.kvs:958
+msgid "Reverse Send to"
+msgstr "Umgekehrtes Senden an"
+
+#: data/defscript/toolbars.kvs:30
 msgid "Scripting"
 msgstr "Skripte"
 
-#: /home/mr/Projekte/kvirc/trunk/data/defscript/toolbars.kvs:40
+#: data/defscript/popups.kvs:941
+msgid "Secure Chat with"
+msgstr "Sicherer Chat mit"
+
+#: data/defscript/popups.kvs:963
+msgid "Secure Reverse Send to"
+msgstr "Sicheres umgekehrtes Senden an"
+
+#: data/defscript/popups.kvs:953
+msgid "Secure send to"
+msgstr "Sicheres Senden an"
+
+#: data/defscript/popups.kvs:948
+msgid "Send to"
+msgstr "Senden an"
+
+#: data/defscript/aliases.kvs:150
+msgid "Sending wallop to"
+msgstr "Sende Wallop an"
+
+#: data/defscript/popups.kvs:416
+msgid "Set as Default"
+msgstr "Als Standard setzen"
+
+#: data/defscript/popups.kvs:23
+#: data/defscript/popups.kvs:86
+msgid "Start Highlighting (Local)"
+msgstr "Hervorheben (lokal) starten"
+
+#: data/defscript/popups.kvs:66
+msgid "Stop Highlighting"
+msgstr "Hervorheben stoppen"
+
+#: data/defscript/popups.kvs:18
+#: data/defscript/popups.kvs:81
+msgid "Stop Highlighting (Local)"
+msgstr "Hervorheben (lokal) stoppen"
+
+#: data/defscript/popups.kvs:1196
+msgid "Stop Logging"
+msgstr "Loggen stoppen"
+
+#: data/defscript/popups.kvs:975
+msgid "TDCC Reverse Send to"
+msgstr "TDCC umgekehrtes Senden an"
+
+#: data/defscript/popups.kvs:970
+msgid "TDCC Send to"
+msgstr "TDCC Senden an"
+
+#: data/defscript/popups.kvs:1372
+msgid "Telnet to "
+msgstr "Telnet zu "
+
+#: data/defscript/default.kvs:34
+msgid "The default script has been successfully installed."
+msgstr "Das Standardskript wurde erfolgreich installiert."
+
+#: data/defscript/aliases.kvs:242
+#: data/defscript/aliases.kvs:420
+msgid "This is not a channel window"
+msgstr "Dies ist kein Channel-Fenster"
+
+#: data/defscript/default.kvs:35
+msgid "To connect to a server, type /server <server name>"
+msgstr "Um eine Server-Verbindung herzustellen, »/server <Servername>« eingeben"
+
+#: data/defscript/popups.kvs:1379
+msgid "Traceroute to "
+msgstr "Traceroute zu "
+
+#: data/defscript/popups.kvs:1385
+msgid "Traceroute6 to "
+msgstr "Traceroute6 zu "
+
+#: data/defscript/aliases.kvs:116
+msgid "Type /gnotice for help"
+msgstr "Für Hilfe, /gnotice eingeben"
+
+#: data/defscript/popups.kvs:310
+msgid "Unignore"
+msgstr "Nicht mehr ignorieren"
+
+#: data/defscript/popups.kvs:386
+msgid "Unregister"
+msgstr "Deregistrieren"
+
+#: data/defscript/aliases.kvs:402
+msgid "Unsupported type:"
+msgstr "Nicht unterstützter Typ:"
+
+#: data/defscript/aliases.kvs:100
+#: data/defscript/aliases.kvs:145
+msgid "Usage"
+msgstr "Benutzung"
+
+#: data/defscript/aliases.kvs:182
+#: data/defscript/aliases.kvs:194
+#: data/defscript/aliases.kvs:206
+#: data/defscript/aliases.kvs:221
+#: data/defscript/aliases.kvs:235
+#: data/defscript/aliases.kvs:314
+#: data/defscript/aliases.kvs:356
+#: data/defscript/aliases.kvs:414
+#: data/defscript/aliases.kvs:474
+msgid "Usage:"
+msgstr "Benutzung:"
+
+#: data/defscript/aliases.kvs:435
+msgid "User Operator"
+msgstr "Benutzer-Operator"
+
+#: data/defscript/aliases.kvs:433
+msgid "Voice"
+msgstr "Voice"
+
+#: data/defscript/popups.kvs:982
+msgid "Voice Chat"
+msgstr "Sprachunterhaltung"
+
+#: data/defscript/toolbars.kvs:40
 msgid "Window operations"
 msgstr "Fensteroperationen"
 
+#: data/defscript/popups.kvs:586
+#: data/defscript/popups.kvs:612
+msgid "With..."
+msgstr "Mit …"
+
+#: data/defscript/aliases.kvs:468
+msgid "You must be connected to a server"
+msgstr "Es muss eine Verbindung zu einem Server bestehen"
+
+#: data/defscript/aliases.kvs:462
+msgid "You must use DNS in an IRC context"
+msgstr "DNS muss in einem IRC-Kontext benutzt werden"
+
+#: data/defscript/popups.kvs:769
+msgid "You're not connected to a server"
+msgstr "Es besteht keine Server-Verbindung"
+
+#: data/defscript/aliases.kvs:100
+msgid "channel"
+msgstr "Channel"
+
+#: data/defscript/popups.kvs:334
+msgid "has a default avatar"
+msgstr "hat ein Standard-Benutzerbild"
+
+#: data/defscript/popups.kvs:487
+#: data/defscript/popups.kvs:1111
+#: data/defscript/popups.kvs:1251
+msgid "idle time"
+msgstr "Leerlaufzeit"
+
+#: data/defscript/popups.kvs:102
+msgid "is being ignored"
+msgstr "wird ignoriert"
+
+#: data/defscript/popups.kvs:331
+msgid "is in the notify list"
+msgstr "ist in der Benachrichtigungsliste"
+
+#: data/defscript/popups.kvs:103
+#: data/defscript/popups.kvs:107
+msgid "is not being ignored"
+msgstr "wird nicht ignoriert"
+
+#: data/defscript/popups.kvs:337
+msgid "is not registered"
+msgstr "ist nicht registriert"
+
+#: data/defscript/popups.kvs:328
+msgid "is registered as"
+msgstr "ist registriert als"
+
+#: data/defscript/popups.kvs:804
+msgid "l (Connections)"
+msgstr "l (Verbindungen)"
+
+#: data/defscript/popups.kvs:809
+msgid "m (Command Usage)"
+msgstr "m (Befehlsbenutzungen)"
+
+#: data/defscript/aliases.kvs:100
+#: data/defscript/aliases.kvs:145
+msgid "message"
+msgstr "Nachricht"
+
+#: data/defscript/popups.kvs:814
+msgid "o (Operators)"
+msgstr "o (Operatoren)"
+
+#: data/defscript/aliases.kvs:236
+msgid "reason"
+msgstr "Grund"
+
+#: data/defscript/popups.kvs:819
+msgid "t (Connection stats ?)"
+msgstr "t (Verbindungsstatistiken?)"
+
+#: data/defscript/popups.kvs:824
+msgid "u (Uptime)"
+msgstr "u (Uptime)"
+
+#: data/defscript/popups.kvs:829
+msgid "y (y-Lines)"
+msgstr "y (y-Lines)"
+
+#: data/defscript/popups.kvs:834
+msgid "z (Debug Stats?)"
+msgstr "z (Debug-Statistiken?)"

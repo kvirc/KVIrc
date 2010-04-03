@@ -102,7 +102,7 @@ IF(USE_GETTEXT_TRANSLATIONS)
 			FOREACH(curFile ${FILES_TO_TIDY})
 				ADD_CUSTOM_COMMAND(TARGET messages-tidy-${_potBasename}
 				COMMENT "Tidying ${curFile}..."
-				COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
+				COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(${TRANSLATION_BASEDIR}/.*\\)$|#: \\1|g" "${curFile}"
 				VERBATIM
 				DEPENDS ${curFile}
 				)
@@ -111,7 +111,7 @@ IF(USE_GETTEXT_TRANSLATIONS)
 			FOREACH(curFile ${FILES_TO_TIDY})
 				ADD_CUSTOM_COMMAND(TARGET messages-update-${_potBasename}
 				COMMENT "Tidying ${curFile}..."
-				COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
+				COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(${TRANSLATION_BASEDIR}/.*\\)$|#: \\1|g" "${curFile}"
 				VERBATIM
 				DEPENDS ${curFile}
 				)
