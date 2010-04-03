@@ -7,6 +7,7 @@
 //
 //   This file is part of the KVIrc IRC Client distribution
 //   Copyright (C) 2007-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2010 Elvio Basello <hell at hellvis69 dot netsons dot org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,39 +28,97 @@
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
 #include "kvi_theme.h"
-#include "kvi_tal_wizard.h"
 
-#include <QDialog>
+#include <QWizard>
+#include <QWizardPage>
 
 class QLineEdit;
 class QLabel;
 class QTextEdit;
 class KviFileSelector;
 
+class KviPackThemeDataWidget;
+class KviPackThemeInfoWidget;
+class KviPackThemeImageWidget;
+class KviPackThemeSaveWidget;
 
-class KviPackThemeDialog : public KviTalWizard
+class KviPackThemeDialog : public QWizard
 {
 	Q_OBJECT
 public:
-	KviPackThemeDialog(QWidget * pParent,KviPointerList<KviThemeInfo> * pThemeInfoList);
-	virtual ~KviPackThemeDialog();
+	KviPackThemeDialog(QWidget * pParent, KviPointerList<KviThemeInfo> * pThemeInfoList);
+	~KviPackThemeDialog();
 protected:
-	QString                        m_szImagePath;
-	KviFileSelector              * m_pImageSelector;
-	QString                        m_szPackagePath;
-	KviFileSelector              * m_pPathSelector;
-	QLabel                       * m_pImageLabel;
+	KviPackThemeDataWidget       * m_pPackThemeDataWidget;
+	KviPackThemeInfoWidget       * m_pPackThemeInfoWidget;
+	KviPackThemeImageWidget      * m_pPackThemeImageWidget;
+	KviPackThemeSaveWidget       * m_pPackThemeSaveWidget;
 	KviPointerList<KviThemeInfo> * m_pThemeInfoList;
-	QLineEdit                    * m_pPackageNameEdit;
-	QTextEdit                    * m_pPackageDescriptionEdit;
-	QLineEdit                    * m_pPackageVersionEdit;
-	QLineEdit                    * m_pPackagerNameEdit;
-	QWidget                      * m_pImageSelectionPage;
+	
+	QString                        m_szAuthor;
+	QString                        m_szName;
+	QString                        m_szVersion;
+	QString                        m_szDescription;
+	QString                        m_szImagePath;
+	QString                        m_szPackagePath;
+	QString                        m_szSavePath;
+
+	//QWidget                      * m_pImageSelectionPage;
 protected:
 	virtual void accept();
 	bool packTheme();
+};
+
+class KviPackThemeDataWidget : public QWizardPage
+{
+	Q_OBJECT
+public:
+	KviPackThemeDataWidget(KviPackThemeDialog * pParent);
+	~KviPackThemeDataWidget();
+public:
+	void parseThemes(KviPointerList<KviThemeInfo> * pThemeInfoList);
+};
+
+class KviPackThemeInfoWidget : public QWizardPage
+{
+	Q_OBJECT
+public:
+	KviPackThemeInfoWidget(KviPackThemeDialog * pParent);
+	~KviPackThemeInfoWidget();
+public:
+	QLineEdit * m_pPackageNameEdit;
+	QTextEdit * m_pPackageDescriptionEdit;
+	QLineEdit * m_pPackageVersionEdit;
+	QLineEdit * m_pPackageAuthorEdit;
+protected:
+	virtual void initializePage();
+};
+
+class KviPackThemeImageWidget : public QWizardPage
+{
+	Q_OBJECT
+public:
+	KviPackThemeImageWidget(KviPackThemeDialog * pParent);
+	~KviPackThemeImageWidget();
+protected:
+	KviFileSelector * m_pImageSelector;
+	QLabel          * m_pImageLabel;
+	QString           m_szImagePath;
 protected slots:
-	void imageSelectionChanged(const QString &szImagePath);
+	void imageSelectionChanged(const QString & szImagePath);
+};
+
+class KviPackThemeSaveWidget : public QWizardPage
+{
+	Q_OBJECT
+public:
+	KviPackThemeSaveWidget(KviPackThemeDialog * pParent);
+	~KviPackThemeSaveWidget();
+protected:
+	KviFileSelector * m_pSavePathSelector;
+	QString           m_szPackagePath;
+protected:
+	virtual void initializePage();
 };
 
 #endif //!_PACKTHEMEDIALOG_H_

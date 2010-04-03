@@ -61,8 +61,10 @@ namespace KviThemeFunctions
 
 		// check if it is a valid theme file
 		KviPackageReader r;
+		debug("check file");
 		if(!r.readHeader(szThemePackageFileName))
 		{
+			debug("Error!");
 			QString szErr = r.lastError();
 			KviQString::sprintf(szError,__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %Q","theme"),&szErr);
 			return false;
@@ -72,12 +74,16 @@ namespace KviThemeFunctions
 
 		pValue = pInfoFields->find("PackageType");
 		if(!pValue)return notAValidThemePackage(szError);
+		debug("pValue themepack= %s",pValue->toUtf8().data());
 		if(!KviQString::equalCI(*pValue,"ThemePack"))return notAValidThemePackage(szError);
 		pValue = pInfoFields->find("ThemePackVersion");
+		debug("pValue theme version %s",pValue->toUtf8().data());
+
 		if(!pValue)return notAValidThemePackage(szError);
-		if(!KviQString::equalCI(*pValue,"1"))return notAValidThemePackage(szError);
+		if(!KviQString::equalCI(*pValue,KVI_CURRENT_THEME_ENGINE_VERSION))return notAValidThemePackage(szError);
 
 		// make sure the default fields exist
+		debug("check defaults fields");
 		for(int i=0;i<6;i++)
 		{
 			pValue = pInfoFields->find(check_fields[i]);
@@ -85,6 +91,7 @@ namespace KviThemeFunctions
 		}
 
 		pValue = pInfoFields->find("ThemeCount");
+		debug("pValue theme count %s",pValue->toUtf8().data());
 		if(!pValue)return notAValidThemePackage(szError);
 		bool bOk;
 		int iThemeCount = pValue->toInt(&bOk);
@@ -277,11 +284,12 @@ namespace KviThemeFunctions
 		hd.iFlags = KviHtmlDialogData::ForceMinimumSize;
 
 		bInstall = KviHtmlDialog::display(pDialogParent,&hd) == 2;
-
+		debug("installint %d",bInstall);
 		if(bInstall)
 		{
 			QString szUnpackPath;
 			g_pApp->getLocalKvircDirectory(szUnpackPath,KviApp::Themes);
+			debug("unpack theme %s in  %s",szThemePackageFileName.toUtf8().data(),szUnpackPath.toUtf8().data());
 			if(!r.unpack(szThemePackageFileName,szUnpackPath))
 			{
 				QString szErr2 = r.lastError();

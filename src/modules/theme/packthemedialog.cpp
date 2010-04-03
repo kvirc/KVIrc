@@ -5,6 +5,7 @@
 //
 //   This file is part of the KVIrc IRC Client distribution
 //   Copyright (C) 2007-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2010 Elvio Basello <hell at hellvis69 dot netsons dot org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -35,87 +36,70 @@
 #include "kvi_packagefile.h"
 #include "kvi_fileextensions.h"
 #include "kvi_filedialog.h"
-#include "kvi_msgbox.h"
+//#include "kvi_msgbox.h"
 #include "kvi_selectors.h"
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
 
-#include <QTextEdit>
-#include <QLayout>
-#include <QPushButton>
 #include <QLineEdit>
+#include <QLabel>
+#include <QTextEdit>
+
 #include <QRegExp>
 #include <QMessageBox>
 #include <QDir>
-#include <QComboBox>
-#include <QPainter>
-#include <QToolTip>
-#include <QImage>
 #include <QDateTime>
+#include <QPainter>
+#include <QImage>
 #include <QBuffer>
-#include <QLabel>
+//#include <QComboBox>
+//#include <QToolTip>
+//#include <QPushButton>
 
 
 
-KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviThemeInfo> * pThemeInfoList)
-: KviTalWizard(pParent)
+KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent, KviPointerList<KviThemeInfo> * pThemeInfoList)
+: QWizard(pParent)
 {
-	m_pThemeInfoList = pThemeInfoList;
-
-	KviThemeInfo * pThemeInfo;
-	QString szPackageName;
-	QString szPackageAuthor;
-	QString szPackageDescription;
-	QString szPackageVersion;
-
-	m_szPackagePath = QDir::homePath();
-	KviQString::ensureLastCharIs(m_szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
-
-	bool bPackagePathSet = false;
-
-	if(m_pThemeInfoList->count() > 1)
-	{
-		szPackageName = "MyThemes";
-		szPackageAuthor = __tr2qs_ctx("Your name here","theme");
-		szPackageVersion = "1.0.0";
-		szPackageDescription = __tr2qs_ctx("Put a package description here...","theme");
-	} else {
-		if(m_pThemeInfoList->count() > 0)
-		{
-			pThemeInfo = m_pThemeInfoList->first();
-			szPackageName = pThemeInfo->subdirectory();
-			szPackageAuthor = pThemeInfo->author();
-			szPackageDescription = pThemeInfo->description();
-			szPackageVersion = pThemeInfo->version();
-
-			m_szPackagePath += pThemeInfo->subdirectory();
-			if(m_szPackagePath.indexOf(QRegExp("[0-9]\\.[0-9]")) == -1)
-			{
-				m_szPackagePath += "-";
-				m_szPackagePath += szPackageVersion;
-			}
-			m_szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
-
-			bPackagePathSet = true;
-		}
-	}
-
-	if(!bPackagePathSet)
-	{
-		m_szPackagePath += szPackageName;
-		m_szPackagePath += "-";
-		m_szPackagePath += szPackageVersion;
-		m_szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
-	}
-
 	setWindowTitle(__tr2qs_ctx("Export Theme - KVIrc","theme"));
 	setMinimumSize(400,350);
+	setDefaultProperty("QTextEdit","plainText",SIGNAL(textChanged()));
+	m_pThemeInfoList = pThemeInfoList;
+	
+	QPixmap * pSide = g_pIconManager->getBigIcon("kvi_setup_label.png");
+	QPixmap * pLogo = g_pIconManager->getBigIcon("kvi_bigicon_addons.png");
 
-	// welcome page ==================================================================================
-	QWidget * pPage = new QWidget(this);
-	QGridLayout * pLayout = new QGridLayout(pPage);
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	#if (_WIN32_WINNT >= 0x0600)
+		// We are on a Windows Vista / Seven
+		// It will fallback to XP if alpha compositing is disabled
+		setWizardStyle(QWizard::AeroStyle);
+	#else
+		// Windows XP
+		setWizardStyle(QWizard::ModernStyle);
+		setPixmap(QWizard::WatermarkPixmap,*pSide);
+		setPixmap(QWizard::LogoPixmap,*pLogo);
+	#endif
+#elif defined(COMPILE_ON_MAC)
+	setWizardStyle(QWizard::MacStyle);
+	setPixmap(QWizard::BackgroundPixmap,*pSide);
+#else
+	// All other systems
+	setWizardStyle(QWizard::ClassicStyle);
+	setPixmap(QWizard::WatermarkPixmap,*pSide);
+	setPixmap(QWizard::LogoPixmap,*pLogo);
+#endif
 
-	QLabel * pLabel = new QLabel(pPage);
+	// Add a default property for file selectors
+	setDefaultProperty("KviFileSelector","tmpFile",SIGNAL(selectionChanged(const QString &)));
+
+	// Welcome page
+	QWizardPage * pPage = new QWizardPage(this);
+	QVBoxLayout * pLayout = new QVBoxLayout(pPage);
+
+	pPage->setLayout(pLayout);
+	pPage->setTitle(__tr2qs_ctx("Welcome","theme"));
+	
 	QString szText = "<p>";
 	szText += __tr2qs_ctx("This procedure allows you to export the selected themes to a single package. It is useful when you want to distribute your themes to the public.","theme");
 	szText += "</p><p>";
@@ -124,27 +108,89 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	szText += __tr2qs_ctx("Hit the \"Next\" button to begin.","theme");
 	szText += "<p>";
 
+	QLabel * pLabel = new QLabel(pPage);
 	pLabel->setWordWrap(true);
 	pLabel->setText(szText);
-	pLayout->addWidget(pLabel,0,0);
-	pLayout->setRowStretch(1,1);
+	pLayout->addWidget(pLabel);
+	addPage(pPage);
 
-	addPage(pPage,__tr2qs_ctx("Welcome","theme"));
-	setBackEnabled(pPage,false);
-	setNextEnabled(pPage,true);
-	setHelpEnabled(pPage,false);
-	setFinishEnabled(pPage,false);
+	// Theme data
+	m_pPackThemeDataWidget = new KviPackThemeDataWidget(this);
+	addPage(m_pPackThemeDataWidget);
 
-	// theme data name ================================================================================
+	// Packager information
+	m_pPackThemeInfoWidget = new KviPackThemeInfoWidget(this);
+	addPage(m_pPackThemeInfoWidget);
+	
+	// Screenshot/logo/icon
+	m_pPackThemeImageWidget = new KviPackThemeImageWidget(this);
+	addPage(m_pPackThemeImageWidget);
+	
+	// Save file name
+	m_pPackThemeSaveWidget = new KviPackThemeSaveWidget(this);
+	addPage(m_pPackThemeSaveWidget);
 
-	pPage = new QWidget(this);
-	pLayout = new QGridLayout(pPage);
+	//last thing to do before starting
+	m_pPackThemeDataWidget->parseThemes(m_pThemeInfoList);
+}
 
-	pLabel = new QLabel(pPage);
-	pLabel->setWordWrap(true);
-	pLabel->setText(__tr2qs_ctx("This is the information list for the themes you're packaging. If it looks OK press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your themes first.","theme"));
-	pLabel->setTextFormat(Qt::RichText);
-	pLayout->addWidget(pLabel,0,0);
+KviPackThemeDataWidget::KviPackThemeDataWidget(KviPackThemeDialog * pParent)
+: QWizardPage(pParent)
+{
+	setObjectName("theme_package_data_page");
+	setTitle(__tr2qs_ctx("Theme Data","theme"));
+	setSubTitle(__tr2qs_ctx("This is the information list for the themes you're packaging. If it looks OK press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your themes first.","theme"));
+}
+
+void KviPackThemeDataWidget::parseThemes(KviPointerList<KviThemeInfo> * pThemeInfoList)
+{
+	QString szPackageName;
+	QString szPackageAuthor;
+	QString szPackageDescription;
+	QString szPackageVersion;
+	KviThemeInfo * pThemeInfo = 0;
+	bool bPackagePathSet = false;
+
+	
+	QString szPackagePath = QDir::homePath();
+	KviQString::ensureLastCharIs(szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
+	
+	if(pThemeInfoList->count() > 1)
+	{
+		szPackageName = "MyThemes";
+		szPackageAuthor = __tr2qs_ctx("Your name here","theme");
+		szPackageVersion = "1.0.0";
+		szPackageDescription = __tr2qs_ctx("Put a package description here...","theme");
+	} else {
+		if(pThemeInfoList->count() > 0)
+		{
+			pThemeInfo = pThemeInfoList->first();
+			szPackageName = pThemeInfo->subdirectory();
+			szPackageAuthor = pThemeInfo->author();
+			szPackageDescription = pThemeInfo->description();
+			szPackageVersion = pThemeInfo->version();
+
+			szPackagePath += pThemeInfo->subdirectory();
+			if(szPackagePath.indexOf(QRegExp("[0-9]\\.[0-9]")) == -1)
+			{
+				szPackagePath += "-";
+				szPackagePath += szPackageVersion;
+			}
+			szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
+
+			bPackagePathSet = true;
+		}
+	}
+	
+	if(!bPackagePathSet)
+	{
+		szPackagePath += szPackageName;
+		szPackagePath += "-";
+		szPackagePath += szPackageVersion;
+		szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
+	}
+
+	QVBoxLayout * pLayout = new QVBoxLayout(this);
 
 	QString szThemesDescription = "<html><body bgcolor=\"#ffffff\">";
 
@@ -152,7 +198,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	QPixmap pixScreenshot;
 	QString szScreenshotPath;
 
-	for(pThemeInfo = m_pThemeInfoList->first();pThemeInfo;pThemeInfo = m_pThemeInfoList->next())
+	for(pThemeInfo = pThemeInfoList->first(); pThemeInfo; pThemeInfo = pThemeInfoList->next())
 	{
 		QString szThemeDescription;
 
@@ -185,159 +231,137 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 
 	szThemesDescription += "</body></html>";
 
-	QTextEdit * pTextEdit = new QTextEdit(pPage);
+	QTextEdit * pTextEdit = new QTextEdit(this);
 	pTextEdit->setBackgroundRole(QPalette::Window);
 	pTextEdit->setReadOnly(true);
-	QTextDocument *doc=new QTextDocument(pTextEdit);
-	debug("Create dialog html");
-	doc->setHtml(szThemesDescription);
-	pTextEdit->setDocument(doc);
-	//pTextEdit->setText(szThemesDescription);
-	pLayout->addWidget(pTextEdit,1,0);
-	pLayout->setRowStretch(1,1);
+	QTextDocument * pDoc = new QTextDocument(pTextEdit);
+	pDoc->setHtml(szThemesDescription);
+	pTextEdit->setDocument(pDoc);
+	pLayout->addWidget(pTextEdit);
 
-	addPage(pPage,__tr2qs_ctx("Theme Data","theme"));
-	setBackEnabled(pPage,true);
-	setHelpEnabled(pPage,false);
-	setNextEnabled(pPage,true);
-	setFinishEnabled(pPage,false);
-
-	// packager information ================================================================================
-
-	pPage = new QWidget(this);
-	pLayout = new QGridLayout(pPage);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setWordWrap(true);
-	pLabel->setText(__tr2qs_ctx("Here you need to provide information about you (the packager) and a short description of the package you're creating.","theme"));
-	pLabel->setTextFormat(Qt::RichText);
-	pLayout->addWidget(pLabel,0,0,1,2);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setWordWrap(true);
-	pLabel->setText(__tr2qs_ctx("Package Name:","theme"));
-	pLayout->addWidget(pLabel,1,0);
-
-	m_pPackageNameEdit = new QLineEdit(pPage);
-	m_pPackageNameEdit->setText(szPackageName);
-	pLayout->addWidget(m_pPackageNameEdit,1,1);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setWordWrap(true);
-	pLabel->setText(__tr2qs_ctx("Version:","theme"));
-	pLayout->addWidget(pLabel,2,0);
-
-	m_pPackageVersionEdit = new QLineEdit(pPage);
-	m_pPackageVersionEdit->setText(szPackageVersion);
-	pLayout->addWidget(m_pPackageVersionEdit,2,1);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Description:","theme"));
-	pLayout->addWidget(pLabel,3,0);
-
-	m_pPackageDescriptionEdit = new QTextEdit(pPage);
-	m_pPackageDescriptionEdit->setText(szPackageDescription);
-	pLayout->addWidget(m_pPackageDescriptionEdit,3,1);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Package Author:","theme"));
-	pLayout->addWidget(pLabel,4,0);
-
-	m_pPackagerNameEdit = new QLineEdit(pPage);
-	m_pPackagerNameEdit->setText(szPackageAuthor);
-	pLayout->addWidget(m_pPackagerNameEdit,4,1);
-
-
-	pLayout->setRowStretch(3,1);
-	pLayout->setColumnStretch(1,1);
-
-	addPage(pPage,__tr2qs_ctx("Package Information","theme"));
-	setBackEnabled(pPage,true);
-	setHelpEnabled(pPage,false);
-	setNextEnabled(pPage,true);
-	setFinishEnabled(pPage,false);
-
-	// screenshot/logo/icon ================================================================================
-
-	pPage = new QWidget(this);
-	pLayout = new QGridLayout(pPage);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Here you can choose the image that will appear in the installation dialog for your theme package. It can be an icon, a logo or a screenshot and it should be not larger than 300x225. If you don't provide an image a simple default icon will be used at installation stage.","theme"));
-	pLabel->setTextFormat(Qt::RichText);
-	pLabel->setWordWrap(true);
-	pLayout->addWidget(pLabel,0,0);
-
-	m_pImageLabel = new QLabel(pPage);
-	m_pImageLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
-	m_pImageLabel->setMinimumSize(300,225);
-	m_pImageLabel->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
-	pLayout->addWidget(m_pImageLabel,1,0);
-
-	QString szFilter = "*.png *.jpg *.xpm";
-	m_pImageSelector = new KviFileSelector(pPage,"",&m_szImagePath,true,0,szFilter);
-	connect(m_pImageSelector,SIGNAL(selectionChanged(const QString &)),this,SLOT(imageSelectionChanged(const QString &)));
-	pLayout->addWidget(m_pImageSelector,2,0);
-	pLayout->setRowStretch(1,1);
-
-	m_pImageSelectionPage = pPage;
-	addPage(pPage,__tr2qs_ctx("Icon/Screenshot","theme"));
-	setBackEnabled(pPage,true);
-	setHelpEnabled(pPage,false);
-	setNextEnabled(pPage,true);
-	setFinishEnabled(pPage,false);
-
-	// save file name ================================================================================
-
-	pPage = new QWidget(this);
-	pLayout = new QGridLayout(pPage);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Here you must choose the file name for the theme package. It should have a *%1 extension.","theme").arg(KVI_FILEEXTENSION_THEMEPACKAGE));
-		pLabel->setWordWrap(true);
-	pLabel->setTextFormat(Qt::RichText);
-	pLayout->addWidget(pLabel,0,0);
-
-	szFilter = "*";
-	szFilter += KVI_FILEEXTENSION_THEMEPACKAGE;
-	m_pPathSelector = new KviFileSelector(pPage,"",&m_szPackagePath,true,KviFileSelector::ChooseSaveFileName,szFilter);
-	pLayout->addWidget(m_pPathSelector,1,0);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Finally hit the \"Finish\" button to complete the packaging operation.","theme"));
-		pLabel->setWordWrap(true);
-	pLabel->setTextFormat(Qt::RichText);
-	pLayout->addWidget(pLabel,3,0);
-
-	pLayout->setRowStretch(2,1);
-
-	addPage(pPage,__tr2qs_ctx("Package Path","theme"));
-	setBackEnabled(pPage,true);
-	setHelpEnabled(pPage,false);
-	setNextEnabled(pPage,false);
-	setFinishEnabled(pPage,true);
-
-	if(!szScreenshotPath.isEmpty())
-	{
-		m_pImageSelector->setSelection(szScreenshotPath);
-		imageSelectionChanged(szScreenshotPath);
-	}
+	setField("packageName",QVariant(szPackageName));
+	setField("packageVersion",szPackageVersion);
+	setField("packageDescription",szPackageDescription);
+	setField("packageAuthor",szPackageAuthor);
 }
 
-KviPackThemeDialog::~KviPackThemeDialog()
+KviPackThemeDataWidget::~KviPackThemeDataWidget()
 {
 }
 
-void KviPackThemeDialog::imageSelectionChanged(const QString &szImagePath)
+KviPackThemeInfoWidget::KviPackThemeInfoWidget(KviPackThemeDialog * pParent)
+: QWizardPage(pParent)
+{
+	setObjectName("theme_package_info_page");
+	setTitle(__tr2qs_ctx("Package Information","theme"));
+	setSubTitle(__tr2qs_ctx("Here you need to provide information about you (the packager) and a short description of the package you're creating.","theme"));
+	
+
+	QGridLayout * pLayout = new QGridLayout(this);
+
+	QLabel * pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Package Name:","theme"));
+	pLayout->addWidget(pLabel,1,0);
+
+	m_pPackageNameEdit = new QLineEdit(this);
+
+	pLabel->setBuddy(m_pPackageNameEdit);
+	pLayout->addWidget(m_pPackageNameEdit,1,1);
+
+	pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Version:","theme"));
+	pLayout->addWidget(pLabel,2,0);
+
+	m_pPackageVersionEdit = new QLineEdit(this);
+
+	pLabel->setBuddy(m_pPackageVersionEdit);
+	pLayout->addWidget(m_pPackageVersionEdit,2,1);
+
+	pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Description:","theme"));
+	pLayout->addWidget(pLabel,3,0);
+
+	m_pPackageDescriptionEdit = new QTextEdit(this);
+
+	pLabel->setBuddy(m_pPackageDescriptionEdit);
+	pLayout->addWidget(m_pPackageDescriptionEdit,3,1);
+
+	pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Package Author:","theme"));
+	pLayout->addWidget(pLabel,4,0);
+
+	m_pPackageAuthorEdit = new QLineEdit(this);
+
+	pLabel->setBuddy(m_pPackageAuthorEdit);
+	pLayout->addWidget(m_pPackageAuthorEdit,4,1);
+
+	pLayout->setRowStretch(3,1);
+	pLayout->setColumnStretch(1,1);
+	
+	// Store data in the fields
+	registerField("packageName*",m_pPackageNameEdit);
+	registerField("packageVersion*",m_pPackageVersionEdit);
+	registerField("packageDescription*",m_pPackageDescriptionEdit);
+	registerField("packageAuthor*",m_pPackageAuthorEdit);
+
+}
+void KviPackThemeInfoWidget::initializePage()
+{
+	QString szPackageName = field("packageName").toString();
+	QString szPackageVersion = field("packageVersion").toString();
+	QString szPackageDescription = field("packageDescription").toString();
+	QString szPackageAuthor = field("packageAuthor").toString();
+	m_pPackageNameEdit->setText(szPackageName);
+	m_pPackageVersionEdit->setText(szPackageVersion);
+	m_pPackageDescriptionEdit->setText(szPackageDescription);
+	m_pPackageAuthorEdit->setText(szPackageAuthor);
+}
+
+KviPackThemeInfoWidget::~KviPackThemeInfoWidget()
+{
+}
+
+KviPackThemeImageWidget::KviPackThemeImageWidget(KviPackThemeDialog * pParent)
+: QWizardPage(pParent)
+{
+	setObjectName("theme_package_image_page");
+	setTitle(__tr2qs_ctx("Icon/Screenshot","theme"));
+	setSubTitle(__tr2qs_ctx("Here you can choose the image that will appear in the installation dialog for your theme package. It can be an icon, a logo or a screenshot and it should be not larger than 300x225. If you don't provide an image a simple default icon will be used at installation stage.","theme"));
+
+	QVBoxLayout * pLayout = new QVBoxLayout(this);
+
+	m_pImageLabel = new QLabel(this);
+	m_pImageLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
+	m_pImageLabel->setMinimumSize(300,225);
+	m_pImageLabel->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
+	pLayout->addWidget(m_pImageLabel);
+
+	m_pImageSelector = new KviFileSelector(this,"",&m_szImagePath,true,0,KVI_FILTER_IMAGE);
+	connect(m_pImageSelector,SIGNAL(selectionChanged(const QString &)),this,SLOT(imageSelectionChanged(const QString &)));
+	pLayout->addWidget(m_pImageSelector);
+	// Store data in the fields
+	registerField("packageImagePath*",m_pImageSelector);
+
+	//m_pImageSelectionPage = pPage;
+}
+
+KviPackThemeImageWidget::~KviPackThemeImageWidget()
+{
+}
+
+void KviPackThemeImageWidget::imageSelectionChanged(const QString & szImagePath)
 {
 	QImage pix(szImagePath);
 	if(!pix.isNull())
 	{
 		QPixmap out;
 		if(pix.width() > 300 || pix.height() > 225)
-			out.fromImage(pix.scaled(300,225,Qt::KeepAspectRatio,Qt::SmoothTransformation));
-		else
-			out.fromImage(pix);
+		{
+			pix=pix.scaled(300,225,Qt::KeepAspectRatio,Qt::SmoothTransformation);
+			out=out.fromImage(pix);
+		} else {
+			out=out.fromImage(pix);
+		}
 		m_pImageLabel->setPixmap(out);
 		return;
 	}
@@ -349,36 +373,92 @@ void KviPackThemeDialog::imageSelectionChanged(const QString &szImagePath)
 	m_pImageLabel->setPixmap(QPixmap());
 }
 
+KviPackThemeSaveWidget::KviPackThemeSaveWidget(KviPackThemeDialog * pParent)
+: QWizardPage(pParent)
+{
+	setObjectName("theme_package_save_page");
+	setTitle(__tr2qs_ctx("Package Path","theme"));
+	setSubTitle(__tr2qs_ctx("Here you must choose the file name for the theme package. It should have a *%1 extension.","theme").arg(KVI_FILEEXTENSION_THEMEPACKAGE));
+
+	QVBoxLayout * pLayout = new QVBoxLayout(this);
+
+	QString szFilter = "*";
+	szFilter += KVI_FILEEXTENSION_THEMEPACKAGE;
+	m_pSavePathSelector = new KviFileSelector(this,"",&m_szPackagePath,true,KviFileSelector::ChooseSaveFileName,szFilter);
+	pLayout->addWidget(m_pSavePathSelector);
+
+	QLabel * pLabel = new QLabel(this);
+	pLabel->setWordWrap(true);
+	pLabel->setText(__tr2qs_ctx("Finally hit the \"Finish\" button to complete the packaging operation.","theme"));
+	pLayout->addWidget(pLabel);
+	
+	// Store data in the fields
+	registerField("packageSavePath*",m_pSavePathSelector);
+}
+
+KviPackThemeSaveWidget::~KviPackThemeSaveWidget()
+{
+}
+
+void KviPackThemeSaveWidget::initializePage()
+{
+	m_szPackagePath = field("packageSavePath").toString();
+}
+#if 0
+	if(!szScreenshotPath.isEmpty())
+	{
+		m_pImageSelector->setSelection(szScreenshotPath);
+		imageSelectionChanged(szScreenshotPath);
+	}
+}
+#endif
+
+KviPackThemeDialog::~KviPackThemeDialog()
+{
+}
+
 void KviPackThemeDialog::accept()
 {
-	if(!packTheme())return;
-	KviTalWizard::accept();
+	if(!packTheme()) return;
+	QWizard::accept();
 }
 
 bool KviPackThemeDialog::packTheme()
 {
-	m_pImageSelector->commit();
-	m_pPathSelector->commit();
+	//m_pImageSelector->commit();
+	//m_pPathSelector->commit();
 
-	QString szPackageAuthor = m_pPackagerNameEdit->text();
-	QString szPackageName = m_pPackageNameEdit->text();
-	QString szPackageDescription = m_pPackageDescriptionEdit->toPlainText();
-	QString szPackageVersion = m_pPackageVersionEdit->text();
+	// Get data from registered fields
+	m_szAuthor = field("packageAuthor").toString();
+	m_szName = field("packageName").toString();
+	m_szVersion = field("packageVersion").toString();
+	m_szDescription = field("packageDescription").toString();
+	m_szImagePath = field("packageImagePath").toString();
+	m_szPackagePath = field("packageSavePath").toString();
+	//m_szSavePath = field("packageSavePath").toString();
+
+	debug("author: %s, name: %s, version: %s, desc: %s, image: %s, save: %s, engine: %s\n",m_szAuthor.toUtf8().data(),m_szName.toUtf8().data(),m_szVersion.toUtf8().data(),m_szDescription.toUtf8().data(),m_szImagePath.toUtf8().data(),m_szPackagePath.toUtf8().data(),KVI_CURRENT_THEME_ENGINE_VERSION);
+	//return false;
 
 	QImage pix(m_szImagePath);
 	QPixmap out;
 	if(!pix.isNull())
 	{
-		if(pix.width() > 300 || pix.height() > 225)
-			out.fromImage(pix.scaled(300,225,Qt::KeepAspectRatio));
-		else
-			out.fromImage(pix);
+		if((pix.width() > 300) || (pix.height() > 225))
+		{
+			out=out.fromImage(pix.scaled(300,225,Qt::KeepAspectRatio));
+		} else {
+			out=out.fromImage(pix);
+		}
 	} else {
 		if(!m_szImagePath.isEmpty())
 		{
-			QMessageBox::critical(this,__tr2qs_ctx("Export Theme - KVIrc","theme"),__tr2qs_ctx("Failed to load the selected image: please fix it","theme"),
-				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-			setCurrentPage(m_pImageSelectionPage);
+			QMessageBox::critical(this,
+				__tr2qs_ctx("Export Theme - KVIrc","theme"),
+				__tr2qs_ctx("Failed to load the selected image: please fix it","theme"),
+				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
+				);
+			//setCurrentPage(m_pImageSelectionPage);
 			return false;
 		}
 	}
@@ -403,10 +483,10 @@ bool KviPackThemeDialog::packTheme()
 
 	f.addInfoField("PackageType","ThemePack");
 	f.addInfoField("ThemePackVersion",KVI_CURRENT_THEME_ENGINE_VERSION);
-	f.addInfoField("Name",szPackageName);
-	f.addInfoField("Version",szPackageVersion);
-	f.addInfoField("Author",szPackageAuthor);
-	f.addInfoField("Description",szPackageDescription);
+	f.addInfoField("Name",m_szName);
+	f.addInfoField("Version",m_szVersion);
+	f.addInfoField("Author",m_szAuthor);
+	f.addInfoField("Description",m_szDescription);
 	f.addInfoField("Date",szTmp);
 	f.addInfoField("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
 
@@ -424,7 +504,7 @@ bool KviPackThemeDialog::packTheme()
 	f.addInfoField("ThemeCount",szTmp);
 
 	int iIdx = 0;
-	for(KviThemeInfo * pInfo = m_pThemeInfoList->first();pInfo;pInfo = m_pThemeInfoList->next())
+	for(KviThemeInfo * pInfo = m_pThemeInfoList->first(); pInfo; pInfo = m_pThemeInfoList->next())
 	{
 		KviQString::sprintf(szTmp,"Theme%dName",iIdx);
 		f.addInfoField(szTmp,pInfo->name());
@@ -457,11 +537,15 @@ bool KviPackThemeDialog::packTheme()
 
 		if(!f.addDirectory(pInfo->absoluteDirectory(),pInfo->subdirectory()))
 		{
+			debug("error abs %s - sub %s",pInfo->absoluteDirectory().toUtf8().data(),pInfo->subdirectory().toUtf8().data());
 			szTmp = __tr2qs_ctx("Packaging failed","theme");
 			szTmp += ": ";
 			szTmp += f.lastError();
-			QMessageBox::critical(this,__tr2qs_ctx("Export Theme - KVIrc","theme"),szTmp,
-					QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+			QMessageBox::critical(this,
+				__tr2qs_ctx("Export Theme - KVIrc","theme"),
+				szTmp,
+				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
+				);
 		}
 
 		iIdx++;
@@ -469,19 +553,28 @@ bool KviPackThemeDialog::packTheme()
 
 	if(!f.pack(m_szPackagePath))
 	{
+		debug("error package path %s",m_szPackagePath.toUtf8().data());
+
 		szTmp = __tr2qs_ctx("Packaging failed","theme");
 		szTmp += ": ";
 		szTmp += f.lastError();
-		QMessageBox::critical(this,__tr2qs_ctx("Export Theme - KVIrc","theme"),szTmp,
-				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+		QMessageBox::critical(this,
+			__tr2qs_ctx("Export Theme - KVIrc","theme"),
+			szTmp,
+			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
+			);
+			
 		return false;
 	}
 
 	//KviPackageReader r;
 	//r.unpack("/root/test.kvt","/root/unpacked_test_kvt");
 
-	QMessageBox::information(this,__tr2qs_ctx("Export Theme - KVIrc","theme"),__tr2qs("Package saved successfully"),
-				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-
+	QMessageBox::information(this,
+		__tr2qs_ctx("Export Theme - KVIrc","theme"),
+		__tr2qs("Package saved successfully"),
+		QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
+		);
+		
 	return true;
 }
