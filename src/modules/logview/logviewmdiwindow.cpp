@@ -179,8 +179,10 @@ void KviLogViewMDIWindow::keyPressEvent(QKeyEvent *e)
 		if(e->key() == Qt::Key_F)
 		{
 			m_pIrcView->toggleToolWidget();
+			return;
 		}
 	}
+	KviWindow::keyPressEvent(e);
 }
 
 void KviLogViewMDIWindow::applyFilter()
