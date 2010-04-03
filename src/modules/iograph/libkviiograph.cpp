@@ -146,6 +146,8 @@ KviIOGraphWidget::KviIOGraphWidget(QWidget * par)
 
 void KviIOGraphWidget::timerEvent(QTimerEvent *)
 {
+	static int uLastResize=0;
+
 	kvi_u64_t sB = g_uOutgoingTraffic;
 	kvi_u64_t rB = g_uIncomingTraffic;
 
@@ -153,8 +155,25 @@ void KviIOGraphWidget::timerEvent(QTimerEvent *)
 	unsigned int rDiff = rB - m_uLastRecvBytes;
 
 	unsigned int iMax = qMax(sDiff, rDiff);
-	while(iMax > m_maxRate)
-		m_maxRate*=2;
+
+	if(uLastResize == 0)
+	{
+		if(m_maxRate > 1)
+		{
+			m_maxRate=1;
+			for(int i=0;i<m_sendRates.count();++i)
+				while(m_sendRates.at(i) > m_maxRate) m_maxRate*=2;
+			for(int i=0;i<m_recvRates.count();++i)
+				while(m_recvRates.at(i) > m_maxRate) m_maxRate*=2;
+		}
+	} else uLastResize--;
+
+	if(iMax > m_maxRate)
+	{
+		while(iMax > m_maxRate)
+			m_maxRate*=2;
+		uLastResize=KVI_IOGRAPH_NUMBER_POINTS;
+	}
 
 	m_uLastSentBytes = sB;
 	m_uLastRecvBytes = rB;
