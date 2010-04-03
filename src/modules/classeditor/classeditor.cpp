@@ -185,7 +185,7 @@ KviClassEditor::KviClassEditor(QWidget * par)
 	m_pMemberFunctionNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
 	m_pMemberFunctionNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
 	m_pMemberFunctionNameRenameButton->setEnabled(false);
-	connect(m_pMemberFunctionNameRenameButton,SIGNAL(clicked()),this,SLOT(renameItem()));
+	connect(m_pMemberFunctionNameRenameButton,SIGNAL(clicked()),this,SLOT(renameFunction()));
 	hbox->setStretchFactor(m_pMemberFunctionNameLabel,2);
 	m_pMemberFunctionNameRenameButton->setToolTip(__tr2qs_ctx("Edit the function member name","editor"));
 
@@ -313,19 +313,18 @@ KviClassEditorTreeWidgetItem * KviClassEditor::createFullItem(const QString & sz
 KviClassEditorTreeWidgetItem * KviClassEditor::createFullNamespace(const QString & szFullName)
 {
 	QStringList lNamespaces=szFullName.split("::");
-	debug("createfullnamespace %s",szFullName.toUtf8().data());
 	if(!lNamespaces.count()) return 0;
 	KviClassEditorTreeWidgetItem *pItem=findTopLevelItem(lNamespaces.at(0));
 	if (!pItem) pItem=new KviClassEditorTreeWidgetItem(m_pTreeWidget,KviClassEditorTreeWidgetItem::Namespace,lNamespaces.at(0));
 	if (lNamespaces.count()==1) return pItem;
 	bool bFound;
 	int i;
-	for(i=1;i<lNamespaces.count()-1;i++)
+	for(i=1;i<lNamespaces.count();i++)
 	{
 		bFound=false;
 		for(int j=0;j<pItem->childCount();j++)
 		{
-			if (KviQString::equalCI(pItem->child(j)->text(0),lNamespaces.at(i)))
+			if (KviQString::equalCI(pItem->child(j)->text(0),lNamespaces.at(i)) && (( KviClassEditorTreeWidgetItem *)pItem->child(j))->isNamespace())
 			{
 				pItem=( KviClassEditorTreeWidgetItem *)pItem->child(j);
 				bFound=true;
@@ -335,7 +334,7 @@ KviClassEditorTreeWidgetItem * KviClassEditor::createFullNamespace(const QString
 		if (!bFound)
 			pItem=new KviClassEditorTreeWidgetItem(pItem,KviClassEditorTreeWidgetItem::Namespace,lNamespaces.at(i));
 	}
-	return new KviClassEditorTreeWidgetItem(pItem,KviClassEditorTreeWidgetItem::Namespace,lNamespaces.at(i));
+	return pItem;
 }
 
 void KviClassEditor::oneTimeSetup()
@@ -344,39 +343,37 @@ void KviClassEditor::oneTimeSetup()
 	g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes);
 	QDir d(szPath);
 	QStringList sl;
-	sl = d.entryList(QDir::Files);
+	QString extension = QString("*%1").arg(KVI_FILEEXTENSION_SCRIPT); // *.kvs
+	sl = d.entryList(QStringList(extension), QDir::Files | QDir::NoDotAndDotDot);
 	KviKvsObjectClass *pClass;
 	KviClassEditorTreeWidgetItem *pClassItem;
 	for(int i=0;i<sl.count();i++)
 	{
 		QString szClassName=sl.at(i);
 		szClassName.replace("--","::");
-		if (szClassName!=".." && szClassName!=".")
+		szClassName.chop(4);
+		pClassItem = createFullItem(szClassName);
+		pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
+		KviClassEditorTreeWidgetItem *pFunctionItem;
+		if (pClass)
 		{
-			szClassName.chop(4);
-			pClassItem = createFullItem(szClassName);
-			pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
-			KviClassEditorTreeWidgetItem *pFunctionItem;
-			if (pClass)
+			KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
+			m_pClasses->insert(szClassName,pClassItem);
+			KviKvsObjectClass *pParentClass=pClass->parentClass();
+			pClassItem->setInheritsClass(pParentClass->name());
+			while(it.current())
 			{
-				KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
-				m_pClasses->insert(szClassName,pClassItem);
-				KviKvsObjectClass *pParentClass=pClass->parentClass();
-				pClassItem->setInheritsClass(pParentClass->name());
-				while(it.current())
+				QString szCode;
+				KviKvsObjectFunctionHandler *handler=pClass->lookupFunctionHandler(it.currentKey());
+				if (pClass->isScriptHandler(it.currentKey()))
 				{
-					QString szCode;
-					KviKvsObjectFunctionHandler *handler=pClass->lookupFunctionHandler(it.currentKey());
-					if (pClass->isScriptHandler(it.currentKey()))
-					{
-						pFunctionItem=findFunction(it.currentKey(), pClassItem);
-						if(!pFunctionItem) pFunctionItem = new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,it.currentKey());
-						pClass->getFunctionCode(szCode,*handler);
-						pFunctionItem->setBuffer(szCode);
-						if(handler->flags() & KviKvsObjectFunctionHandler::Internal) pFunctionItem->setInternalFunction(true);
-					}
-					++it;
+					pFunctionItem=findFunction(it.currentKey(), pClassItem);
+					if(!pFunctionItem) pFunctionItem = new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,it.currentKey());
+					pClass->getFunctionCode(szCode,*handler);
+					pFunctionItem->setBuffer(szCode);
+					if(handler->flags() & KviKvsObjectFunctionHandler::Internal) pFunctionItem->setInternalFunction(true);
 				}
+				++it;
 			}
 		}
 	}
@@ -433,6 +430,7 @@ bool KviClassEditor::classExists(QString & szFullItemName)
 
 void KviClassEditor::renameFunction()
 {
+	if(!m_pLastEditedItem)return;
 	KviClassEditorTreeWidgetItem *pFunction=m_pLastEditedItem;
 	QString szClassName = ((KviClassEditorTreeWidgetItem*)pFunction->parent())->name();
 	QString szFunctionName = pFunction->name();
@@ -460,10 +458,6 @@ void KviClassEditor::renameFunction()
 	for(unsigned int i=0;i<pInheritedClasses.count();i++)
 		pInheritedClasses.at(i)->setClassNotBuilt(true);
 	activateItem(pFunction);
-/*	KviKvsObjectClass *pClass;
-	pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
-	if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
-*/
 }
 
 KviClassEditorTreeWidgetItem * KviClassEditor::findFunction(const QString &szFunctionName, KviClassEditorTreeWidgetItem *pClass)
@@ -481,7 +475,11 @@ void KviClassEditor::renameItem()
 	if(!m_pLastEditedItem)return;
 	if(m_pLastEditedItem->isClass()) renameClass(m_pLastEditedItem);
 	else if(m_pLastEditedItem->isNamespace()) renameNamespace(m_pLastEditedItem);
-	else renameFunction();
+	else {
+		// is function
+		KviClassEditorTreeWidgetItem *pParent = (KviClassEditorTreeWidgetItem*)m_pLastEditedItem->parent();
+		if(pParent->isClass()) renameClass(pParent);
+	}
 }
 
 void KviClassEditor::renameClass(KviClassEditorTreeWidgetItem *pClassItem)
@@ -523,9 +521,7 @@ void KviClassEditor::renameClass(KviClassEditorTreeWidgetItem *pClassItem)
 		pNewItem=createFullNamespace(szNewClassName.left(szNewClassName.lastIndexOf("::")));
 		pClassItem->setName(szNewClassName.section("::",-1,-1));
 		pNewItem->addChild(pClassItem);
-	}
-	else
-	{
+	} else {
 		pClassItem->setName(szNewClassName);
 		m_pTreeWidget->addTopLevelItem(pClassItem);
 	}
@@ -540,35 +536,37 @@ void KviClassEditor::renameClass(KviClassEditorTreeWidgetItem *pClassItem)
 		pInheritedClasses.at(i)->setExpanded(true);
 		pInheritedClasses.at(i)->setInheritsClass(szNewClassName);
 	}
-	if (pNewItem){
+	if (pNewItem)
+	{
 		activateItem(pNewItem);
 		pNewItem->setExpanded(true);
-	}
-	else{
+	} else {
 		activateItem(pClassItem);
 		pClassItem->setExpanded(true);
 	}
+qDebug("causa rename deleto classe %s",szClassName.toUtf8().data());
+	KviKvsObjectClass *pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
+	if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
 }
 
 void KviClassEditor::cutItem(KviClassEditorTreeWidgetItem *pItem)
 {
 	int iIdx=m_pTreeWidget->indexOfTopLevelItem(pItem);
-	if (iIdx!=-1){
-		m_pTreeWidget->takeTopLevelItem(iIdx);
-	}
-	else
+	if (iIdx!=-1)
 	{
-		KviClassEditorTreeWidgetItem *pParent= (KviClassEditorTreeWidgetItem*)pItem->parent();
+		m_pTreeWidget->takeTopLevelItem(iIdx);
+	} else {
+		KviClassEditorTreeWidgetItem *pParent = (KviClassEditorTreeWidgetItem*)pItem->parent();
 		pParent->removeChild(pItem);
 	}
 }
 
 void KviClassEditor::renameNamespace(KviClassEditorTreeWidgetItem *pOldNamespaceItem)
 {
-	QString szName = buildFullClassName(m_pLastEditedItem);
+	QString szOldNameSpaceName = buildFullClassName(m_pLastEditedItem);
 	QString szNewNameSpaceName;
-	if (!askForNamespaceName(__tr2qs_ctx("Rename Namespace","editor"),__tr2qs_ctx("Please enter the new name for the namespace","editor"),szName,szNewNameSpaceName)) return;
-	if (KviQString::equalCI(szName,szNewNameSpaceName)) return;
+	if (!askForNamespaceName(__tr2qs_ctx("Rename Namespace","editor"),__tr2qs_ctx("Please enter the new name for the namespace","editor"),szOldNameSpaceName,szNewNameSpaceName)) return;
+	if (KviQString::equalCI(szOldNameSpaceName,szNewNameSpaceName)) return;
 	KviClassEditorTreeWidgetItem *pNewItem=findItem(szNewNameSpaceName);
 	if (pNewItem)
 	{
@@ -588,6 +586,7 @@ void KviClassEditor::renameNamespace(KviClassEditorTreeWidgetItem *pOldNamespace
 			__tr2qs_ctx("Ok, Let me try again...","editor"));
 		}
 		g_pClassEditorModule->unlock();
+		return;
 	}
 	KviPointerList<KviClassEditorTreeWidgetItem> pList;
 	pList.setAutoDelete(false);
@@ -608,8 +607,9 @@ void KviClassEditor::renameNamespace(KviClassEditorTreeWidgetItem *pOldNamespace
 		if (entry)
 		{
 			KviPointerList<KviClassEditorTreeWidgetItem> pInheritedClasses;
-			searchInheritedClasses(entry->key(),pInheritedClasses);
+			QString szOldName = entry->key();
 			QString szNewName = buildFullClassName(pList.at(i));
+			searchInheritedClasses(szOldName,pInheritedClasses);
 			for(unsigned int j=0;j<pInheritedClasses.count();j++)
 			{
 				pInheritedClasses.at(j)->setClassNotBuilt(true);
@@ -619,6 +619,9 @@ void KviClassEditor::renameNamespace(KviClassEditorTreeWidgetItem *pOldNamespace
 			m_pClasses->removeRef(pList.at(i));
 			m_pClasses->insert(szNewName,pList.at(i));
 			pList.at(i)->setClassNotBuilt(true);
+
+			KviKvsObjectClass *pClass = KviKvsKernel::instance()->objectController()->lookupClass(szOldName);
+			if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
 		}
 	}
 
@@ -1106,7 +1109,7 @@ void KviClassEditor::removeItemChildren(KviClassEditorTreeWidgetItem *it)
 	if(it->isClass())
 	{
 		KviPointerList<KviClassEditorTreeWidgetItem> pInheritedClasses;
-		searchInheritedClasses(it->name(),pInheritedClasses);
+		searchInheritedClasses(buildFullClassName(it),pInheritedClasses);
 		for(unsigned int i=0;i<pInheritedClasses.count();i++)
 		{
 			pInheritedClasses.at(i)->setClassNotBuilt(true);
@@ -1120,8 +1123,14 @@ void KviClassEditor::removeItemChildren(KviClassEditorTreeWidgetItem *it)
 		KviClassEditorTreeWidgetItem * pChild = (KviClassEditorTreeWidgetItem *)(it->child(0));
 		if(pChild->childCount())
 			removeItemChildren(pChild);
+		if(pChild->isClass())
+		{
+			m_pClasses->removeRef(pChild);
+			KviKvsObjectClass *pClass = KviKvsKernel::instance()->objectController()->lookupClass(buildFullClassName(pChild));
+			if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
+			qDebug("rimuovo class %s %p",buildFullClassName(pChild).toUtf8().data(), pClass);
+		}
 		it->removeChild(pChild);
-		if(it->isClass()) m_pClasses->removeRef(pChild);
 		delete pChild;
 	}
 }
@@ -1169,7 +1178,12 @@ bool KviClassEditor::removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToA
 	if (it->childCount())
 		removeItemChildren(it);
 	if(it->isClass())
+	{
 		m_pClasses->removeRef(it);
+		KviKvsObjectClass *pClass = KviKvsKernel::instance()->objectController()->lookupClass(buildFullClassName(it));
+		qDebug("rimuovo class %s %p",buildFullClassName(it).toUtf8().data(), pClass);
+		if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
+	}
 	if(it->isMethod())
 	{
 		KviClassEditorTreeWidgetItem* pClass = (KviClassEditorTreeWidgetItem*)it->parent();
@@ -1396,7 +1410,6 @@ void KviClassEditor::build()
 		}
 		if (pClass->classNotBuilt())
 		{
-			debug("append to build last class %s",pClass->name().toUtf8().data());
 			KviClassEditorTreeWidgetItem *pParentClass=m_pClasses->find(pClass->InheritsClass());
 
 			pLinkedClasses.append(pClass);
@@ -1411,28 +1424,27 @@ void KviClassEditor::build()
 			}
 			for(int i=pLinkedClasses.count()-1;i>=0;i--)
 			{
-				KviKvsObjectClass *pClass;
-				debug("parsing class %s",pLinkedClasses.at(i)->name().toUtf8().data());
-				pClass = KviKvsKernel::instance()->objectController()->lookupClass(pLinkedClasses.at(i)->name());
+				QString szFullClassName = buildFullClassName(pLinkedClasses.at(i));
+				debug("parsing class %s",szFullClassName.toUtf8().data());
+				KviKvsObjectClass *pClass = KviKvsKernel::instance()->objectController()->lookupClass(szFullClassName);
 				if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
 				QString szClass;
 				getExportClassBuffer(szClass, pLinkedClasses.at(i));
-				debug ("class %s",szClass.toUtf8().data());
 				KviKvsScript::run(szClass,g_pActiveWindow);
-				pClass = KviKvsKernel::instance()->objectController()->lookupClass(pLinkedClasses.at(i)->name());
+				pClass = KviKvsKernel::instance()->objectController()->lookupClass(szFullClassName);
 				if (!pClass)
 				{
 					QString szError=__tr2qs_ctx("Unable to compile class: ","editor");
-					szError+=pLinkedClasses.at(i)->name()+"\n";
+					szError+=szFullClassName+"\n";
 					KviPointerList<KviClassEditorTreeWidgetItem> pInheritedClasses;
-					searchInheritedClasses(pLinkedClasses.at(i)->name(),pInheritedClasses);
+					searchInheritedClasses(szFullClassName,pInheritedClasses);
 					if (pInheritedClasses.count())
 					{
 						szError+=__tr2qs_ctx("These Inherited classes will be not compiled too:","editor");
 						szError+="\n";
 						for(unsigned int j=0;j<pInheritedClasses.count();j++)
 						{
-							szError+=pInheritedClasses.at(j)->name()+"\n";
+							szError+=buildFullClassName(pInheritedClasses.at(j))+"\n";
 							pInheritedClasses.at(j)->setClassNotBuilt(true);
 							pSkipClasses.append(pInheritedClasses.at(j));
 						}
@@ -1508,11 +1520,15 @@ void KviClassEditor::saveNotBuiltClasses()
 	QString szBuffer;
 	g_pApp->getLocalKvircDirectory(szBuffer,KviApp::ConfigPlugins,szFileName);
 	KviConfig cfg(szBuffer,KviConfig::Write);
+	cfg.clear();
+
 	while(it.current())
 	{
 		if (it.current()->classNotBuilt())
 		{
-			debug("saving class %s",it.currentKey().toUtf8().data());
+			KviKvsObjectClass *pClass = KviKvsKernel::instance()->objectController()->lookupClass(it.currentKey());
+			if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
+
 			cfg.setGroup(it.currentKey());
 			cfg.writeEntry("@Inherits",it.current()->InheritsClass());
 			for(int i=0;i<it.current()->childCount();i++)
@@ -1520,12 +1536,13 @@ void KviClassEditor::saveNotBuiltClasses()
 		}
 		++it;
         }
+        cfg.sync();
 }
 
 void KviClassEditor::searchInheritedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInheritedClasses)
 {
 	KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> it (*m_pClasses);
-	debug("into searchInherits");
+	debug("into searchInherited");
 	while(it.current())
 	{
 		//debug("class %s",it.current()->name().toUtf8().data());
@@ -1576,6 +1593,7 @@ KviClassEditorWindow::~KviClassEditorWindow()
 void KviClassEditorWindow::buildClicked()
 {
 	m_pEditor->build();
+	m_pEditor->saveNotBuiltClasses();
 }
 
 void KviClassEditorWindow::saveClicked()
@@ -1623,14 +1641,13 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 	QLabel * pClassNameLabel = new QLabel(hbox);
 	pClassNameLabel->setObjectName("classnamelabel");
 
-	pClassNameLabel->setText(__tr2qs_ctx("Please enter the name for the new class:","editor"));
+	pClassNameLabel->setText(__tr2qs_ctx("Please enter the name for the class:","editor"));
 
 	m_pClassNameLineEdit = new QLineEdit(hbox);
 	m_pClassNameLineEdit->setObjectName("classnameineedit");
 	m_pClassNameLineEdit->setText(szClassName);
 	if (!bRenameMode)
 	{
-		debug(" normal mode");
 		// we allow only [\w:]+ class name
 		QRegExp re("[\\w]+");
 		QRegExpValidator *pValidator=new QRegExpValidator(re,this);
@@ -1640,7 +1657,6 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 	}
 	else
 	{
-		debug(" rename mode");
 		// in editor mode we allow [\w:]+ and namespace separator
 		QRegExp re("[\\w]+(::[\\w]+)+");
 		QRegExpValidator *pValidator=new QRegExpValidator(re,this);
@@ -1658,27 +1674,27 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 	pInheritsClassLabel->setText(__tr2qs_ctx("Inherits Class:","editor"));
 
 	m_pInheritsClassComboBox=new QComboBox(hbox);
+
 	KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> pClassesIt(*pClasses);
 
-/*	m_pInheritsClassComboBox->addItem("Object");
-	m_pInheritsClassComboBox->addItem("Widget");
-*/
 	QStringList szClasses;
 	while(pClassesIt.current())
 	{
-	szClasses.append(pClassesIt.currentKey());
-	++pClassesIt;
+		if(!KviQString::equalCI(pClassesIt.currentKey(),szClassName))
+			szClasses.append(pClassesIt.currentKey());
+		++pClassesIt;
 	}
 	KviPointerHashTableIterator<QString,KviKvsObjectClass> pBuiltinClasses(*KviKvsKernel::instance()->objectController()->classDict());
 	while(pBuiltinClasses.current())
 	{
-	if (pBuiltinClasses.current()->isBuiltin())
-		szClasses.append(pBuiltinClasses.currentKey());
-	++pBuiltinClasses;
+		if (pBuiltinClasses.current()->isBuiltin())
+			szClasses.append(pBuiltinClasses.currentKey());
+		++pBuiltinClasses;
 	}
+	
 	szClasses.sort();
 	for(int i=0;i<szClasses.count();i++)
-	    m_pInheritsClassComboBox->addItem(szClasses.at(i));
+		m_pInheritsClassComboBox->addItem(szClasses.at(i));
 	if (!szInheritsClassName.isEmpty())
 	{
 		int iCurrentIdx=m_pInheritsClassComboBox->findText(szInheritsClassName);
@@ -1725,11 +1741,6 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 : QDialog(pParent)
 {
 	setObjectName(szName);
-
-	QPalette p = palette();
-	p.setColor(foregroundRole(),QColor( 0, 0, 0 ));
-	p.setColor(backgroundRole(),QColor( 236, 233, 216 ));
-	setPalette(p);
 
 	QGridLayout * pLayout = new QGridLayout(this);
 
