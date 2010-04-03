@@ -390,7 +390,23 @@ void KviLogViewMDIWindow::deleteCurrent()
 			KviPointerList <KviLogListViewItem> itemsList;
 			itemsList.setAutoDelete(false);
 			for(int i=0;i<pItem->childCount();i++)
-				itemsList.append((KviLogListViewItem*)pItem->child(i));
+			{
+				if (!pItem->child(i)->childCount())
+				{
+					itemsList.append((KviLogListViewItem*)pItem->child(i));
+					continue;
+				}
+				KviLogListViewItem* pChild=(KviLogListViewItem*)pItem->child(i);
+				for(int j=0;j<pChild->childCount();j++)
+				{
+					if (!(KviLogListViewItem*)pChild->child(j))
+					{
+						debug ("Null pointer in logviewitem");
+						continue;
+					}
+					itemsList.append((KviLogListViewItem*)pChild->child(j));
+				}
+			}
 			for(unsigned int i=0;i<itemsList.count();i++)
 			{
 				KviLogListViewItem *pCurItem=itemsList.at(i);
@@ -399,13 +415,12 @@ void KviLogViewMDIWindow::deleteCurrent()
 					QString szFname;
 					g_pApp->getLocalKvircDirectory(szFname,KviApp::Log,pCurItem->fileName());
 					KviFileUtils::removeFile(szFname);
-					delete pCurItem;
 				}
 			}
 			delete pItem;
 			return;
 		}
-		if(!pItem->fileName().isNull())
+			if(!pItem->fileName().isNull())
 		{
 			QString szFname;
 			g_pApp->getLocalKvircDirectory(szFname,KviApp::Log,pItem->fileName());
