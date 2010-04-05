@@ -394,7 +394,14 @@ void KviUserListView::applyOptions()
 	}
 	updateScrollBarRange();
 	m_pUsersLabel->setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
-	setMinimumWidth(100);
+
+	/*
+	* Lowered this value trying to avoid a bad effect when the window gets resized to its
+	* minimum size: the splitter will return the widgets minimumSize(). We enforce the same
+	* default proportions of 82/18 (ircview/userlist) used in KviChannel::loadProperties
+	*/
+
+	setMinimumWidth(18);
 	resizeEvent(0); // this will call update() too
 	repaint();
 }
