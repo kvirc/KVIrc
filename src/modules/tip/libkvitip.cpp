@@ -33,117 +33,78 @@
 
 #include <QPushButton>
 #include <QFont>
-#include <QTextCodec>
 #include <QPainter>
 #include <QDesktopWidget>
 #include <QCloseEvent>
-#include <QTextDocument>
-
 
 KviTipWindow * g_pTipWindow = 0;
-
-#define KVI_TIP_WINDOW_HEIGHT 200
-#define KVI_TIP_WINDOW_WIDTH 500
-#define KVI_TIP_WINDOW_BUTTON_WIDTH 80
-#define KVI_TIP_WINDOW_BUTTON_HEIGHT 30
-#define KVI_TIP_WINDOW_BORDER 5
-#define KVI_TIP_WINDOW_DOUBLE_BORDER 10
-#define KVI_TIP_WINDOW_SPACING 2
-
 
 KviTipFrame::KviTipFrame(QWidget * par)
 : QFrame(par)
 {
-	m_pText=0;
 	QString buffer;
+	m_pLabel1 = new QLabel(this);
+	m_pLabel2 = new QLabel(this);
 	g_pApp->findImage(buffer,"kvi_tip.png");
-	m_pTipPixmap = new QPixmap(buffer);
+	m_pLabel1->setPixmap(buffer);
+	setStyleSheet("QFrame { background: black; }");
+	m_pLabel1->setStyleSheet("QLabel { background: black; }");
+	m_pLabel2->setStyleSheet("QLabel { background: black; color: white; }");
+	m_pLabel2->setWordWrap(true);
+	m_pLabel2->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum);
 	setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
+	QGridLayout *layout = new QGridLayout(this);
+	layout->addWidget(m_pLabel1,0,0,1,1);
+	layout->addWidget(m_pLabel2,0,1,1,1);
+	layout->setColumnStretch(1,1);
+	setLayout(layout);
 }
 
 KviTipFrame::~KviTipFrame()
 {
-	if (m_pText) delete m_pText;
-	delete m_pTipPixmap;
 }
 
 void KviTipFrame::setText(const QString &text)
 {
-	QString szText= "<center><font color=\"#FFFFFF\">";
+	QString szText= "<center>";
 	szText += text;
-	szText += "</font></center>";
-	if (m_pText) delete m_pText;
-	m_pText = new QTextDocument();
-	QFont f = font();
-	f.setStyleHint(QFont::SansSerif);
-	f.setPointSize(12);
-	m_pText->setHtml(szText);
-	m_pText->setDefaultFont(f);
+	szText += "</center>";
+	m_pLabel2->setText(szText);
 	update();
-}
-
-void KviTipFrame::paintEvent(QPaintEvent *)
-{
-	QPainter p(this);
-	SET_ANTI_ALIASING(p);
-	p.fillRect(contentsRect(),QColor(0,0,0));
-	p.drawPixmap(5,(height() - m_pTipPixmap->height()) / 2,*m_pTipPixmap);
-
-	int www = width() -  m_pTipPixmap->width();
-	p.translate(m_pTipPixmap->width(),5);
-	m_pText->setPageSize(QSizeF(www,height() /2));
-	m_pText->drawContents(&p);
-
 }
 
 KviTipWindow::KviTipWindow()
 {
 	setObjectName("kvirc_tip_window");
-	/*,WStyle_Customize | WStyle_Title | WStyle_DialogBorder | WStyle_StaysOnTop*/
 	m_pConfig = 0;
 
 	m_pTipFrame = new KviTipFrame(this);
-	m_pTipFrame->setGeometry(
-		KVI_TIP_WINDOW_BORDER,
-		KVI_TIP_WINDOW_BORDER,
-		KVI_TIP_WINDOW_WIDTH - KVI_TIP_WINDOW_DOUBLE_BORDER,
-		KVI_TIP_WINDOW_HEIGHT - (KVI_TIP_WINDOW_DOUBLE_BORDER + KVI_TIP_WINDOW_BUTTON_HEIGHT + KVI_TIP_WINDOW_SPACING));
+	QPushButton * pb = new QPushButton("<<",this);
+	connect(pb,SIGNAL(clicked()),this,SLOT(prevTip()));
 
-	QPushButton * pb = new QPushButton(">>",this);
-	pb->setGeometry(
-		KVI_TIP_WINDOW_WIDTH - ((KVI_TIP_WINDOW_BUTTON_WIDTH * 2)+ KVI_TIP_WINDOW_BORDER + KVI_TIP_WINDOW_SPACING),
-		KVI_TIP_WINDOW_HEIGHT - (KVI_TIP_WINDOW_BUTTON_HEIGHT + KVI_TIP_WINDOW_BORDER),
-		KVI_TIP_WINDOW_BUTTON_WIDTH,
-		KVI_TIP_WINDOW_BUTTON_HEIGHT
-		);
-	connect(pb,SIGNAL(clicked()),this,SLOT(nextTip()));
+	QPushButton * pb2 = new QPushButton(">>",this);
+	connect(pb2,SIGNAL(clicked()),this,SLOT(nextTip()));
 
-	pb = new QPushButton(__tr2qs("Close"),this);
-	pb->setGeometry(
-		KVI_TIP_WINDOW_WIDTH - (KVI_TIP_WINDOW_BUTTON_WIDTH + KVI_TIP_WINDOW_BORDER),
-		KVI_TIP_WINDOW_HEIGHT - (KVI_TIP_WINDOW_BUTTON_HEIGHT + KVI_TIP_WINDOW_BORDER),
-		KVI_TIP_WINDOW_BUTTON_WIDTH,
-		KVI_TIP_WINDOW_BUTTON_HEIGHT
-		);
-	connect(pb,SIGNAL(clicked()),this,SLOT(close()));
-	pb->setDefault(true);
+	QPushButton * pb3 = new QPushButton(__tr2qs("Close"),this);
+	connect(pb3,SIGNAL(clicked()),this,SLOT(close()));
+	pb3->setDefault(true);
 
 	m_pShowAtStartupCheck = new QCheckBox(__tr2qs("Show at startup"),this);
 	m_pShowAtStartupCheck->setChecked(KVI_OPTION_BOOL(KviOption_boolShowTipAtStartup));
-	m_pShowAtStartupCheck->setGeometry(
-		KVI_TIP_WINDOW_BORDER,
-		KVI_TIP_WINDOW_HEIGHT - (KVI_TIP_WINDOW_BUTTON_HEIGHT + KVI_TIP_WINDOW_BORDER),
-		KVI_TIP_WINDOW_WIDTH - ((KVI_TIP_WINDOW_BORDER + KVI_TIP_WINDOW_BUTTON_WIDTH + KVI_TIP_WINDOW_SPACING) * 2),
-		KVI_TIP_WINDOW_BUTTON_HEIGHT
-		);
-
-	setFixedSize(KVI_TIP_WINDOW_WIDTH,KVI_TIP_WINDOW_HEIGHT);
 
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IDEA)));
 
 	setWindowTitle(__tr2qs("Did you know..."));
 
-	pb->setFocus();
+	QGridLayout *layout = new QGridLayout(this);
+	layout->addWidget(m_pTipFrame,0,0,1,5);
+	layout->addWidget(m_pShowAtStartupCheck,1,0,1,1);
+	layout->addWidget(pb,1,2,1,1);
+	layout->addWidget(pb2,1,3,1,1);
+	layout->addWidget(pb3,1,4,1,1);
+	setLayout(layout);
+
+	pb3->setFocus();
 
 }
 
@@ -151,6 +112,12 @@ KviTipWindow::~KviTipWindow()
 {
 	KVI_OPTION_BOOL(KviOption_boolShowTipAtStartup) = m_pShowAtStartupCheck->isChecked();
 	if(m_pConfig)closeConfig();
+}
+
+void KviTipWindow::showEvent(QShowEvent *)
+{
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	move((rect.width() - width())/2,(rect.height() - height())/2);
 }
 
 bool KviTipWindow::openConfig(QString filename,bool bEnsureExists)
@@ -203,29 +170,56 @@ void KviTipWindow::nextTip()
 	}
 
 	unsigned int uNumTips = m_pConfig->readUIntEntry("uNumTips",0);
-	unsigned int uNextTip = m_pConfig->readUIntEntry("uNextTip",0);
+	unsigned int uCurTip = m_pConfig->readUIntEntry("uCurTip",0);
 
+	uCurTip++;
+	if(uCurTip >= uNumTips)uCurTip = 0;
 
-	KviStr tmp(KviStr::Format,"%u",uNextTip);
+	KviStr tmp(KviStr::Format,"%u",uCurTip);
 	QString szTip = m_pConfig->readEntry(tmp.ptr(),__tr2qs("<b>Can't find any tip... :(</b>"));
 
 	//qDebug("REDECODED=%s",szTip.toUtf8().data());
 
-	uNextTip++;
-	if(uNextTip >= uNumTips)uNextTip = 0;
-	m_pConfig->writeEntry("uNextTip",uNextTip);
+	m_pConfig->writeEntry("uCurTip",uCurTip);
 
 	m_pTipFrame->setText(szTip);
 }
 
-void KviTipWindow::showEvent(QShowEvent *e)
+void KviTipWindow::prevTip()
 {
-	resize(KVI_TIP_WINDOW_WIDTH,KVI_TIP_WINDOW_HEIGHT);
+	if(!m_pConfig)
+	{
+		KviStr szLocale = KviLocale::localeName();
+		KviStr szFile;
+		szFile.sprintf("libkvitip_%s.kvc",szLocale.ptr());
+		if(!openConfig(szFile.ptr(),true))
+		{
+			szLocale.cutFromFirst('.');
+			szLocale.cutFromFirst('_');
+			szLocale.cutFromFirst('@');
+			szFile.sprintf("libkvitip_%s.kvc",szLocale.ptr());
+			if(!openConfig(szFile.ptr(),true))
+			{
+				openConfig("libkvitip.kvc",false);
+			}
+		}
+	}
 
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-	move((rect.width() - KVI_TIP_WINDOW_WIDTH)/2,(rect.height() - KVI_TIP_WINDOW_HEIGHT)/2);
+	unsigned int uNumTips = m_pConfig->readUIntEntry("uNumTips",0);
+	unsigned int uCurTip = m_pConfig->readUIntEntry("uCurTip",0);
 
-	QWidget::showEvent(e);
+	
+	if(uCurTip == 0)uCurTip = uNumTips-1;
+	else uCurTip--;
+
+	KviStr tmp(KviStr::Format,"%u",uCurTip);
+	QString szTip = m_pConfig->readEntry(tmp.ptr(),__tr2qs("<b>Can't find any tip... :(</b>"));
+
+	//qDebug("REDECODED=%s",szTip.toUtf8().data());
+
+	m_pConfig->writeEntry("uCurTip",uCurTip);
+
+	m_pTipFrame->setText(szTip);
 }
 
 void KviTipWindow::closeEvent(QCloseEvent *e)
@@ -265,12 +259,8 @@ static bool tip_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	if(!g_pTipWindow)g_pTipWindow = new KviTipWindow();
 	bool error=false;
-	if (!szTipfilename.isEmpty()){
-		debug("Loading config tip");
+	if (!szTipfilename.isEmpty())
 		error=g_pTipWindow->openConfig(szTipfilename);
-		if (!error) debug ("Not opened");
-		else debug("Opened");
-	}
 	g_pTipWindow->nextTip();
 	g_pTipWindow->show();
 	return true;

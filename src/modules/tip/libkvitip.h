@@ -29,10 +29,8 @@
 
 #include <QWidget>
 #include <QFrame>
-#include <QPixmap>
+#include <QLabel>
 #include <QCheckBox>
-#include <QTextDocument>
-
 
 class KviTipFrame : public QFrame
 {
@@ -40,11 +38,9 @@ class KviTipFrame : public QFrame
 public:
 	KviTipFrame(QWidget * par);
 	~KviTipFrame();
-protected:
-	QTextDocument *m_pText;
-	QPixmap * m_pTipPixmap;
-protected:
-	virtual void paintEvent(QPaintEvent * );
+private:
+	QLabel *m_pLabel1;
+	QLabel *m_pLabel2;
 public:
 	void setText(const QString &text);
 };
@@ -61,13 +57,14 @@ protected:
 	KviConfig   * m_pConfig;
 	QString        m_szConfigFileName; // no path!
 protected:
-	virtual void showEvent(QShowEvent *e);
 	virtual void closeEvent(QCloseEvent *e);
+	virtual void showEvent(QShowEvent *e);
 public:
 	bool openConfig(QString  filename,bool bEnsureExists = true);
 	void closeConfig();
 public slots:
 	void nextTip();
+	void prevTip();
 };
 
 #endif //_LIBKVITIP_H_
