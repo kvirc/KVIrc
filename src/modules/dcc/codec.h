@@ -65,8 +65,8 @@ protected:
 public:
 	const char * name();
 	virtual void encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream);
-	virtual void encodeAudio(KviDataBuffer * audioSignal, KviDataBuffer * stream);
-	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
+	virtual void encodeText(KviDataBuffer * textSignal, KviDataBuffer * stream);
+	virtual void decode(KviDataBuffer * stream,KviDataBuffer * videoSignal,KviDataBuffer * textSignal);
 	virtual int encodedFrameSize();
 	virtual int decodedFrameSize();
 };
@@ -78,8 +78,8 @@ public:
 	virtual ~KviDccVideoSJpegCodec();
 public:
 	virtual void encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream);
-	virtual void encodeAudio(KviDataBuffer * audioSignal, KviDataBuffer * stream);
-	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
+	virtual void encodeText(KviDataBuffer * textSignal, KviDataBuffer * stream);
+	virtual void decode(KviDataBuffer * stream,KviDataBuffer * videoSignal,KviDataBuffer * textSignal);
 	virtual int encodedFrameSize();
 	virtual int decodedFrameSize();
 };
@@ -92,8 +92,8 @@ public:
 	virtual ~KviDccVideoTheoraCodec();
 public:
 	virtual void encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream);
-	virtual void encodeAudio(KviDataBuffer * audioSignal, KviDataBuffer * stream);
-	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
+	virtual void encodeText(KviDataBuffer * textSignal, KviDataBuffer * stream);
+	virtual void decode(KviDataBuffer * stream,KviDataBuffer * videoSignal,KviDataBuffer * textSignal);
 	virtual int encodedFrameSize();
 	virtual int decodedFrameSize();
 private:

@@ -1210,7 +1210,7 @@ static bool dcc_kvs_cmd_video(KviKvsModuleCommandCall * c)
 
 		if(!kvi_dcc_video_is_valid_codec(szCodec.toUtf8().data()))
 		{
-			c->warning(__tr2qs_ctx("Invalid codec specified, defaulting to 'sjpeg'","dcc"));
+			c->warning(__tr2qs_ctx("Invalid codec specified","dcc"));
 			d->szCodec = "sjpeg";
 		} else {
 			d->szCodec = szCodec;

@@ -22,13 +22,15 @@
 //
 //=============================================================================
 
+#include "kvi_settings.h"
+
 #include "video.h"
 #include "marshal.h"
 #include "broker.h"
 
-#include "kvi_settings.h"
 #include "kvi_iconmanager.h"
 #include "kvi_ircview.h"
+#include "kvi_kvs_eventtriggers.h"
 #include "kvi_locale.h"
 #include "kvi_out.h"
 #include "kvi_error.h"
@@ -39,10 +41,22 @@
 #include "kvi_socket.h"
 #include "kvi_ircconnection.h"
 #include "kvi_tal_vbox.h"
+#include "kvi_mirccntrl.h"
+#include "kvi_frame.h"
 
 #include <QToolTip>
 #include <QByteArray>
 #include <QBuffer>
+#include <QTextDocument> //for Qt::escape
+
+#ifdef COMPILE_CRYPT_SUPPORT
+	#include "kvi_crypt.h"
+	#include "kvi_cryptcontroller.h"
+#endif
+
+#ifdef COMPILE_SSL_SUPPORT
+	#include "kvi_sslmaster.h"
+#endif
 
 #include <sys/ioctl.h>
 
@@ -52,36 +66,6 @@ extern KviDccBroker * g_pDccBroker;
 	Kopete::AV::VideoDevicePool *g_pVideoDevicePool=0;
 	int g_iVideoDevicePoolInstances=0;
 #endif
-
-//Check for the *SS Api....we don't want to fail here...
-
-#ifndef COMPILE_DISABLE_DCC_VOICE
-	#ifdef HAVE_LINUX_SOUNDCARD_H
-		#include <linux/soundcard.h>
-	#else
-		#ifdef HAVE_SYS_SOUNDCARD_H
-			#include <sys/soundcard.h>
-		#else
-			#ifdef HAVE_SOUNDCARD_H
-				#include <soundcard.h>
-			#else
-				//CAN NOT COMPILE :(
-				#define COMPILE_DISABLE_DCC_VOICE
-				#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-					#warning "Cannot find the soundcard.h header; you will NOT be able to use DCC Voice"
-				#endif
-			#endif
-		#endif
-	#endif
-#endif
-
-
-//#define KVI_AUDIO_DEVICE "/dev/dsp"
-// 32 fragments , 512 bytes
-#define KVI_SNDCTL_FRAG_SIZE 0x00B00009
-#define KVI_FRAGMENT_SIZE_IN_BYTES 512
-#define KVI_FORMAT AFMT_S16_LE
-#define KVI_NUM_CHANNELS 1
 
 bool kvi_dcc_video_is_valid_codec(const char * codecName)
 {
@@ -111,11 +95,6 @@ KviDccVideoThread::KviDccVideoThread(KviWindow * wnd,kvi_socket_t fd,KviDccVideo
 	m_pInfoMutex = new KviMutex();
 	m_bRecordingRequestPending = false;
 
-#ifndef COMPILE_DISABLE_DCC_VOICE
-	m_bSoundcardChecked = false;
-	m_soundFd = -1;
-	m_soundFdMode = 0;
-#endif
 	//local video input
 	if(!g_pVideoDevicePool)
 	{
@@ -146,163 +125,6 @@ KviDccVideoThread::~KviDccVideoThread()
 #endif
 }
 
-
-bool KviDccVideoThread::checkSoundcard()
-{
-#ifdef COMPILE_DISABLE_DCC_VOICE
-	return false;
-#else
-	bool bOpened = false;
-	if(m_soundFd == -1)
-	{
-		if(!openSoundcard(O_RDONLY))return false;
-		bOpened = true;
-	}
-
-	int caps;
-
-	m_bSoundcardChecked = true;
-
-	if(ioctl(m_soundFd,SNDCTL_DSP_GETCAPS,&caps) < 0)
-	{
-		postMessageEvent(__tr2qs_ctx("WARNING: failed to check the soundcard duplex capabilities: if this is a half-duplex soundcard, use the DCC VOICE option to force half-duplex algorithm","dcc").toUtf8().data());
-		if(bOpened)closeSoundcard();
-		return false;
-	}
-
-	if(!(caps & DSP_CAP_DUPLEX))
-	{
-		m_pOpt->bForceHalfDuplex = true; // the device is half duplex...use it in that way
-		postMessageEvent(__tr2qs_ctx("Half duplex soundcard detected, you will not be able to talk and listen at the same time","dcc").toUtf8().data());
-	}
-
-	if(bOpened)closeSoundcard();
-
-	return true;
-#endif
-}
-
-
-bool KviDccVideoThread::openSoundcard(int mode)
-{
-#ifdef COMPILE_DISABLE_DCC_VOICE
-	return false;
-#else
-	int speed = m_pOpt->iSampleRate;
-	static int chans=KVI_NUM_CHANNELS;
-	static int fmt=KVI_FORMAT;
-	static int frag = KVI_SNDCTL_FRAG_SIZE;
-
-
-	if(m_soundFd != -1)
-	{
-		if(m_soundFdMode == mode)return true; // already open
-		closeSoundcard();
-	}
-
-	m_soundFd = ::open(m_pOpt->szSoundDevice.ptr(),mode | O_NONBLOCK);
-	if(m_soundFd < 0)return false;
-
-	if(!m_pOpt->bForceHalfDuplex)
-	{
-		if(ioctl(m_soundFd,SNDCTL_DSP_SETDUPLEX,0) < 0)goto exit_false;
-	}
-
-	if(ioctl(m_soundFd,SNDCTL_DSP_SETFRAGMENT,&frag)<0)goto exit_false;
-	if(ioctl(m_soundFd,SNDCTL_DSP_SETFMT,&fmt)<0)goto exit_false;
-	if(ioctl(m_soundFd,SNDCTL_DSP_CHANNELS,&chans)<0)goto exit_false;
-	if(ioctl(m_soundFd,SNDCTL_DSP_SPEED,&speed)<0)goto exit_false;
-	if(speed != m_pOpt->iSampleRate)
-	{
-		KviStr tmp(KviStr::Format,__tr2qs_ctx("WARNING: failed to set the requested sample rate (%d): the device used closest match (%d)","dcc").toUtf8().data(),
-						m_pOpt->iSampleRate,speed);
-		postMessageEvent(tmp.ptr());
-	}
-
-	//  TODO: #warning "We could also support blocking operations mode"
-
-	m_soundFdMode = mode;
-
-
-	return true;
-
-exit_false:
-	closeSoundcard();
-	return false;
-#endif
-}
-
-bool KviDccVideoThread::openSoundcardForWriting()
-{
-#ifndef COMPILE_DISABLE_DCC_VOICE
-	return openSoundcardWithDuplexOption(O_WRONLY,O_RDONLY);
-#else
-	return false;
-#endif
-}
-
-bool KviDccVideoThread::openSoundcardForReading()
-{
-#ifndef COMPILE_DISABLE_DCC_VOICE
-	return openSoundcardWithDuplexOption(O_RDONLY,O_WRONLY);
-#else
-	return false;
-#endif
-}
-
-bool KviDccVideoThread::openSoundcardWithDuplexOption(int openMode,int failMode)
-{
-#ifndef COMPILE_DISABLE_DCC_VOICE
-	if(m_soundFd == -1)
-	{
-		// soundcard not open yet...open for write (at least)
-		if(m_pOpt->bForceHalfDuplex)
-		{
-			// Forcing half duplex... (user option or the card does not support full duplex mode)
-			if(!openSoundcard(openMode))return false;
-		} else {
-			// Try read/write open
-			if(!openSoundcard(O_RDWR))
-			{
-				// half-duplex sound card ?
-				if(!m_bSoundcardChecked)
-				{
-					// We haven't checked the full-duplex support yet...
-					// Try to open in RDONLY o WRONLY mode
-					if(!openSoundcard(openMode))return false;
-					if(!checkSoundcard())
-					{
-						postMessageEvent(__tr2qs_ctx("Ops...failed to test the soundcard capabilities...expect problems...","dcc").toUtf8().data());
-					}
-				} // else the test has been done and it is a full duplex card that is just busy
-			}
-		}
-	} else {
-		// Hmmm...already open
-		// If it is open in O_RDWR or O_WRONLY mode...it is ok for us
-		// but if it is open in O_RDONLY mode...we can do nothing...just wait
-		return (m_soundFdMode != failMode);
-	}
-
-	return true;
-#else
-	return false;
-#endif
-}
-
-void KviDccVideoThread::closeSoundcard()
-{
-#ifndef COMPILE_DISABLE_DCC_VOICE
-	if(m_soundFd != -1)
-	{
-		::close(m_soundFd);
-		m_soundFd = -1;
-		m_soundFdMode = 0;
-	}
-#endif
-}
-
-
 bool KviDccVideoThread::readWriteStep()
 {
 #ifndef COMPILE_DISABLE_DCC_VIDEO
@@ -320,7 +142,7 @@ bool KviDccVideoThread::readWriteStep()
 			if(readLen > 0)
 			{
 				if(readLen < 4096)m_inFrameBuffer.resize(actualSize + readLen);
-				m_pOpt->pCodec->decode(&m_inFrameBuffer,&m_inSignalBuffer);
+				m_pOpt->pCodec->decode(&m_inFrameBuffer,&m_videoInSignalBuffer,&m_textInSignalBuffer);
 //#warning "A maximum length for the signal buffer is actually needed!!!"
 			} else {
 				bCanRead=false;
@@ -355,10 +177,10 @@ bool KviDccVideoThread::videoStep()
 	// Are we playing ?
 	if(m_bPlaying)
 	{
-		if(m_inSignalBuffer.size() > 0)
+		if(m_videoInSignalBuffer.size() > 0)
 		{
-			QImage img(m_inSignalBuffer.data(), 320, 240, 1280, QImage::Format_ARGB32);
-// 			qDebug("IMG data %p size %d", m_inSignalBuffer.data(), m_inSignalBuffer.size());
+			QImage img(m_videoInSignalBuffer.data(), 320, 240, 1280, QImage::Format_ARGB32);
+// 			qDebug("IMG data %p size %d", m_videoInSignalBuffer.data(), m_videoInSignalBuffer.size());
 			if(!img.isNull())
 				m_inImage = img;
 		}
@@ -381,167 +203,100 @@ bool KviDccVideoThread::videoStep()
 	return true;
 }
 
-bool KviDccVideoThread::audioStep()
+bool KviDccVideoThread::textStep()
 {
 #ifndef COMPILE_DISABLE_DCC_VIDEO
-#ifndef COMPILE_DISABLE_DCC_VOICE
 	// Are we playing ?
-/*
 	if(m_bPlaying)
 	{
-		// Do we have something to write ?
-		audio_buf_info info;
-		if(m_inSignalBuffer.size() > 0)
+		if(m_textInSignalBuffer.size() > 0)
 		{
-			// Get the number of fragments that can be written to the soundcard without blocking
+			KviDccThreadIncomingData data;
+			data.iLen = m_textInSignalBuffer.size();
+			data.buffer = (char*) kvi_malloc(data.iLen);
+			memcpy(data.buffer, m_textInSignalBuffer.data(), data.iLen);
+			handleIncomingData(&data,false);
 
-			if(ioctl(m_soundFd,SNDCTL_DSP_GETOSPACE,&info) < 0)
-			{
-				debug("get o space failed");
-				info.bytes = KVI_FRAGMENT_SIZE_IN_BYTES; // dummy... if this is not correct...well...we will block for 1024/16000 of a sec
-				info.fragments = 1;
-				info.fragsize = KVI_FRAGMENT_SIZE_IN_BYTES;
-			}
-			if(info.fragments > 0)
-			{
-				int toWrite = info.fragments * info.fragsize;
-				//debug("Can write %d bytes",toWrite);
-				if(m_inSignalBuffer.size() < toWrite)toWrite = m_inSignalBuffer.size();
-				int written = write(m_soundFd,m_inSignalBuffer.data(),toWrite);
-				if(written > 0)m_inSignalBuffer.remove(written);
-				else {
-//#warning "Do something for -1 here ?"
-//#warning "Usleep ?"
-				}
-			} //else {
-				// No stuff can be written...we are running too fast ?
-			//	m_uSleepTime += 100; // sleep for a while
-			//}
-		} else {
-			// hmmmm....playing , but nothing to write , possible underrun or EOF
-			// a nice idea would be to use SNDCTL_DSP_GETODELAY here...
-			// but it appears to be broken on some audio devices
-			if(ioctl(m_soundFd,SNDCTL_DSP_GETOSPACE,&info) < 0)info.fragstotal = info.fragments; // dummy...but what should we do ?
-			if(info.fragstotal == info.fragments)
-			{
-				// underrun or EOF: close the device
-				stopPlaying();
-			}
-		}
-	} else {
-		// do we have anything to play ?
-		if(m_inSignalBuffer.size() > 0)
-		{
-			if(m_inSignalBuffer.size() >= m_pOpt->iPreBufferSize)
-			{
-				// yep...stuff to play... open the soundcard , if possible
-				startPlaying();
-
-				m_iLastSignalBufferSize = m_inSignalBuffer.size();
-			} else {
-				// have stuff to play , but it's not enough to fill the pre-buffer
-				//
-				struct timeval tv;
-				gettimeofday(&tv,0);
-
-				long int sigBufferTime = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
-
-				if(m_inSignalBuffer.size() == m_iLastSignalBufferSize)
-				{
-					// the same signal buffer size... check the time
-					// m_pOpt->iPreBufferSize / 16 gives us the preBufferTime in msecs
-					// we calc the remaining preBufferTime by subtracting the
-					// size of buffer already filled and we also add 50 milliseconds... smart heuristic
-					int preBufferTime = ((m_pOpt->iPreBufferSize - m_iLastSignalBufferSize) / 16) + 50;
-					// if the buffer size hasn't changed since preBufferTime
-					// it's time to start playing anyway, since there is
-					// either a network stall or it was just a really short data stream
-					if((sigBufferTime - m_iLastSignalBufferTime) > preBufferTime)
-					{
-						startPlaying();
-						if(m_bPlaying)m_iLastSignalBufferSize = 0;
-					}
-				} else {
-					// signal buffer size differs...we have received new packets
-					// and still pre-buffering
-					m_iLastSignalBufferSize = m_inSignalBuffer.size();
-					m_iLastSignalBufferTime = sigBufferTime;
-				}
-			}
-
+			m_textInSignalBuffer.clear();
 		}
 	}
-*/
+
 	// Are we recording ?
 	if(m_bRecording)
 	{
-		fd_set rs;
-		FD_ZERO(&rs);
-		FD_SET(m_soundFd,&rs);
-		struct timeval tv;
-		tv.tv_sec = 0;
-		tv.tv_usec = 10;
-		int ret = select(m_soundFd + 1,&rs,0,0,&tv);
-		if(ret > 0)
+		if(((KviDccVideo*)parent())->m_tmpTextDataOut.size())
 		{
-			// This is rather easy...
-			audio_buf_info info;
-			if(ioctl(m_soundFd,SNDCTL_DSP_GETISPACE,&info) < 0)
-			{
-				debug("Ispace failed");
-				info.fragments = 0; // dummy...
-				info.bytes = 0;
-			}
+			m_textOutSignalBuffer.append((const unsigned char*) ((KviDccVideo*)parent())->m_tmpTextDataOut.constData(), ((KviDccVideo*)parent())->m_tmpTextDataOut.size());
+			((KviDccVideo*)parent())->m_tmpTextDataOut.clear();
+		}
 
-			//debug("INFO: fragments: %d, fragstotal: %d, fragsize: %d, bytes: %d",info.fragments,info.fragstotal,info.fragsize,info.bytes);
-
-			if(info.fragments == 0 && info.bytes == 0)
-			{
-				// force a dummy read: the device needs to be triggered
-				info.fragments = 1;
-			}
-
-			if(info.fragments > 0)
-			{
-				int oldSize = m_audioOutSignalBuffer.size();
-				int available = info.fragments * info.fragsize;
-				m_audioOutSignalBuffer.addSize(available);
-				int readed = read(m_soundFd,m_audioOutSignalBuffer.data() + oldSize,available);
-
-				if(readed < available)
-				{
-					// huh ? ...error ?
-					if(readed >= 0)m_audioOutSignalBuffer.resize(oldSize + readed);
-					else {
-						if((errno == EINTR) || (errno == EAGAIN))
-						{
-							m_audioOutSignalBuffer.resize(oldSize);
-						} else {
-//#warning "Critical error...do something reasonable!"
-							m_audioOutSignalBuffer.resize(oldSize);
-						}
-					}
-				}
-/*
-				debug("Signal buffer:");
-				for(int i=0;i<200;i+=2)
-				{
-					if(i >= m_outSignalBuffer.size())break;
-					printf("%04x ",*(((unsigned short *)(m_outSignalBuffer.data() + i))));
-					if((i % 6) == 0)printf("\n");
-				}
-				debug("END\n");
-*/
-				m_pOpt->pCodec->encodeAudio(&m_audioOutSignalBuffer,&m_outFrameBuffer);
-			}
-		}// else {
-			// Nothing to read
-	//		m_uSleepTime += 100;
-	//	}
+		if(m_textOutSignalBuffer.size())
+			m_pOpt->pCodec->encodeText(&m_textOutSignalBuffer,&m_outFrameBuffer);
 	}
 
-#endif // !COMPILE_DISABLE_DCC_VOICE
 #endif // !COMPILE_DISABLE_DCC_VIDEO
+	return true;
+}
+
+bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool bCritical)
+{
+	__range_valid(data->iLen);
+	__range_valid(data->buffer);
+	char * aux = data->buffer;
+	char * end = data->buffer + data->iLen;
+	while(aux != end)
+	{
+		if((*aux == '\n') || (*aux == '\0'))
+		{
+			KviThreadDataEvent<KviStr> * e = new KviThreadDataEvent<KviStr>(KVI_DCC_THREAD_EVENT_DATA);
+			// The left part is len chars long
+			int len = aux - data->buffer;
+//			debug("LEN = %d, iLen = %d",len,data->iLen);
+//#warning "DO IT BETTER (the \r cutting)"
+			KviStr * s = new KviStr(data->buffer,len);
+			if(s->lastCharIs('\r'))s->cutRight(1);
+			e->setData(s);
+			// but we cut also \n (or \0)
+			++aux;
+			// so len += 1; --> new data->iLen -= len;
+			data->iLen -= (len + 1);
+//			debug("iLen now = %d",data->iLen);
+			__range_valid(data->iLen >= 0);
+			if(data->iLen > 0)
+			{
+				// memmove the remaining part to the beginning
+				// aux points after \n or \0
+				kvi_memmove(data->buffer,aux,data->iLen);
+				data->buffer = (char *)kvi_realloc(data->buffer,data->iLen);
+				end = data->buffer + data->iLen;
+				aux = data->buffer;
+			} else {
+				// no more data in the buffer
+				__range_valid(data->iLen == 0);
+				kvi_free(data->buffer);
+				data->buffer = end = aux = 0;
+			}
+			postEvent(parent(),e);
+		} else aux++;
+//		debug("PASSING CHAR %c",*aux);
+	}
+	// now aux == end
+	if(bCritical)
+	{
+		// need to flush everything...
+		if(data->iLen > 0)
+		{
+			// in the last part there are no NULL and \n chars
+			KviThreadDataEvent<KviStr> * e = new KviThreadDataEvent<KviStr>(KVI_DCC_THREAD_EVENT_DATA);
+			KviStr * s = new KviStr(data->buffer,data->iLen);
+			if(s->lastCharIs('\r'))s->cutRight(1);
+			e->setData(s);
+			data->iLen = 0;
+			kvi_free(data->buffer);
+			data->buffer = 0;
+			postEvent(parent(),e);
+		}
+	}
 	return true;
 }
 
@@ -550,10 +305,6 @@ void KviDccVideoThread::startRecording()
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	//debug("Start recording");
 	if(m_bRecording)return; // already started
-
-	//FIXME this is mandatory only for audio!
-	openSoundcardForReading();
-
 	
 	{
 //		debug("Posting event");
@@ -581,8 +332,6 @@ void KviDccVideoThread::stopRecording()
 	postEvent(KviDccThread::parent(),e);
 
 	m_bRecording = false;
-	//FIXME this is mandatory only if we are using audio
-	if(!m_bPlaying)closeSoundcard();
 #endif
 }
 
@@ -591,15 +340,12 @@ void KviDccVideoThread::startPlaying()
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	//debug("Start playing");
 	if(m_bPlaying)return;
-	//FIXME this is mandatory only if we are using audio
-	openSoundcardForWriting();
-	//if()
-	{
-		KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
-		e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_START_PLAYING));
-		postEvent(KviDccThread::parent(),e);
-		m_bPlaying = true;
-	}
+
+	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
+	e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_START_PLAYING));
+	postEvent(KviDccThread::parent(),e);
+	m_bPlaying = true;
+
 #endif
 }
 
@@ -612,10 +358,7 @@ void KviDccVideoThread::stopPlaying()
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
 	e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_STOP_PLAYING));
 	postEvent(KviDccThread::parent(),e);
-
 	m_bPlaying = false;
-	//FIXME this is mandatory only if we are using audio
-	if(!m_bRecording)closeSoundcard();
 #endif
 }
 
@@ -647,14 +390,14 @@ void KviDccVideoThread::run()
 		}
 
 		if(!readWriteStep())goto exit_dcc;
-		//if(!videoStep() || !audioStep())goto exit_dcc;
 		if(!videoStep())goto exit_dcc;
-
+		if(!textStep())goto exit_dcc;
+		
 		m_pInfoMutex->lock();
 		m_pInfoMutex->unlock();
 
 		//if(m_uSleepTime)usleep(m_uSleepTime);
-// 		qDebug("in %d out %d in_sig %d out_sig %d", m_inFrameBuffer.size(), m_outFrameBuffer.size(), m_inSignalBuffer.size(), m_videoOutSignalBuffer.size());
+// 		qDebug("in %d out %d in_sig %d out_sig %d", m_inFrameBuffer.size(), m_outFrameBuffer.size(), m_videoInSignalBuffer.size(), m_videoOutSignalBuffer.size());
 		usleep(200);
 
 		// Start recording if the request was not fulfilled yet
@@ -670,13 +413,31 @@ exit_dcc:
 }
 
 KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
-: KviDccWindow(KVI_WINDOW_TYPE_DCCVOICE,pFrm,name,dcc)
+: KviDccWindow(KVI_WINDOW_TYPE_DCCVIDEO,pFrm,name,dcc)
 {
 	m_pDescriptor = dcc;
 	m_pSlaveThread = 0;
 	m_pszTarget = 0;
 
-	m_pLayout = new QGridLayout();
+	m_pLayout = new QGridLayout(this);
+	
+	m_pButtonBox = new KviTalHBox(this);
+
+	m_pLabel = new KviThemedLabel(m_pButtonBox, this, "dcc_chat_label");
+	m_pLabel->setText(name);
+	m_pButtonBox->setStretchFactor(m_pLabel,1);
+
+	m_pButtonContainer= new KviTalHBox(m_pButtonBox);
+	createTextEncodingButton(m_pButtonContainer);
+
+#ifdef COMPILE_CRYPT_SUPPORT
+	createCryptControllerButton(m_pButtonContainer);
+#endif
+	m_pLayout->addWidget(m_pButtonBox, 0, 0, 1, 3);
+
+	m_pIrcView  = new KviIrcView(this,pFrm,this);
+	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
+	m_pInput    = new KviInput(this);
 
 	//remote video
 	m_pInVideoLabel = new QLabel();
@@ -685,7 +446,7 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pInVideoLabel->setFrameShape(QFrame::Box);
 	m_pInVideoLabel->setScaledContents(true);
 	m_pInVideoLabel->setAlignment(Qt::AlignCenter);
-	m_pLayout->addWidget(m_pInVideoLabel, 0, 0, 10, 1);
+	m_pLayout->addWidget(m_pInVideoLabel, 1, 0, 6, 1);
 	
 	//local video
 	m_pOutVideoLabel = new QLabel();
@@ -694,31 +455,37 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pOutVideoLabel->setFrameShape(QFrame::Box);
 	m_pOutVideoLabel->setScaledContents(true);
 	m_pOutVideoLabel->setAlignment(Qt::AlignCenter);
-	m_pLayout->addWidget(m_pOutVideoLabel, 11, 0, 10, 1);
+	m_pLayout->addWidget(m_pOutVideoLabel, 1, 1, 6, 1);
 
 	//local video input: config
-	m_pLabel[0] = new QLabel();
-	m_pLabel[0]->setText(__tr2qs_ctx("Video device:","dcc"));
-	m_pLayout->addWidget(m_pLabel[0], 11, 1, 1, 1);
+	m_pVideoLabel[0] = new QLabel();
+	m_pVideoLabel[0]->setText(__tr2qs_ctx("Video device:","dcc"));
+	m_pLayout->addWidget(m_pVideoLabel[0], 1, 2, 1, 1);
 	
 	m_pCDevices = new QComboBox();
-	m_pLayout->addWidget(m_pCDevices, 12, 1, 1, 1);
+	m_pLayout->addWidget(m_pCDevices, 2, 2, 1, 1);
 
-	m_pLabel[1] = new QLabel();
-	m_pLabel[1]->setText(__tr2qs_ctx("Input:","dcc"));
-	m_pLayout->addWidget(m_pLabel[1], 13, 1, 1, 1);
+	m_pVideoLabel[1] = new QLabel();
+	m_pVideoLabel[1]->setText(__tr2qs_ctx("Input:","dcc"));
+	m_pLayout->addWidget(m_pVideoLabel[1], 3, 2, 1, 1);
 
 	m_pCInputs = new QComboBox();
-	m_pLayout->addWidget(m_pCInputs, 14, 1, 1, 1);
+	m_pLayout->addWidget(m_pCInputs, 4, 2, 1, 1);
 
-	m_pLabel[2] = new QLabel();
-	m_pLabel[2]->setText(__tr2qs_ctx("Standard:","dcc"));
-	m_pLayout->addWidget(m_pLabel[2], 15, 1, 1, 1);
+	m_pVideoLabel[2] = new QLabel();
+	m_pVideoLabel[2]->setText(__tr2qs_ctx("Standard:","dcc"));
+	m_pLayout->addWidget(m_pVideoLabel[2], 5, 2, 1, 1);
 
 	m_pCStandards = new QComboBox();
-	m_pLayout->addWidget(m_pCStandards, 16, 1, 1, 1);
+	m_pLayout->addWidget(m_pCStandards, 6, 2, 1, 1);
+
+	m_pLayout->addWidget(m_pIrcView, 7, 0, 1, 3);
+	m_pLayout->addWidget(m_pInput, 8, 0, 1, 3);
+	m_pLayout->setRowStretch(7,1);
 
 	setLayout(m_pLayout);
+
+	if(KVI_OPTION_BOOL(KviOption_boolAutoLogDccChat))m_pIrcView->startLogging();
 
 	connect(&m_Timer, SIGNAL(timeout()), this, SLOT(slotUpdateImage()) );
 
@@ -759,14 +526,14 @@ KviDccVideo::~KviDccVideo()
 		delete m_pCStandards;
 		m_pCStandards=0;
 	}
-	if(m_pLabel[0])
+	if(m_pVideoLabel[0])
 	{
-		delete m_pLabel[2];
-		delete m_pLabel[1];
-		delete m_pLabel[0];
-		m_pLabel[2] = 0;
-		m_pLabel[1] = 0;
-		m_pLabel[0] = 0;
+		delete m_pVideoLabel[2];
+		delete m_pVideoLabel[1];
+		delete m_pVideoLabel[0];
+		m_pVideoLabel[2] = 0;
+		m_pVideoLabel[1] = 0;
+		m_pVideoLabel[0] = 0;
 	}
 	if(m_pLayout)
 	{
@@ -790,6 +557,21 @@ KviDccVideo::~KviDccVideo()
 		delete m_pszTarget;
 		m_pszTarget = 0;
 	}
+}
+
+void KviDccVideo::textViewRightClicked()
+{
+	KVS_TRIGGER_EVENT_1(KviEvent_OnDCCChatPopupRequest,this,m_pDescriptor->idString());
+}
+
+void KviDccVideo::triggerCreationEvents()
+{
+	KVS_TRIGGER_EVENT_1(KviEvent_OnDCCChatWindowCreated,this,m_pDescriptor->idString());
+}
+
+void KviDccVideo::triggerDestructionEvents()
+{
+	KVS_TRIGGER_EVENT_1(KviEvent_OnDCCChatWindowClosing,this,m_pDescriptor->idString());
 }
 
 void KviDccVideo::startConnection()
@@ -867,6 +649,109 @@ QPixmap * KviDccVideo::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCVOICE);
 }
 
+void KviDccVideo::ownMessage(const QString &text)
+{
+	if(!m_pSlaveThread)
+	{
+		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Cannot send data: No active connection","dcc"));
+		return;
+	}
+
+	QByteArray szData = encodeText(text);
+	const char * d = szData.data();
+	if(!d)return;
+
+#ifdef COMPILE_CRYPT_SUPPORT
+	if(cryptSessionInfo())
+	{
+		if(cryptSessionInfo()->bDoEncrypt)
+		{
+			if(*d != KVI_TEXT_CRYPTESCAPE)
+			{
+				KviStr encrypted;
+				cryptSessionInfo()->pEngine->setMaxEncryptLen(-1);
+				switch(cryptSessionInfo()->pEngine->encrypt(d,encrypted))
+				{
+					case KviCryptEngine::Encrypted:
+					{
+						KviStr buf(KviStr::Format,"%s\r\n",encrypted.ptr());
+						m_tmpTextDataOut.append(buf.ptr(), buf.len());
+						m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
+							m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
+							m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsole::NoNotifications);
+					}
+					break;
+					case KviCryptEngine::Encoded:
+					{
+						KviStr buf(KviStr::Format,"%s\r\n",encrypted.ptr());
+						m_tmpTextDataOut.append(buf.ptr(), buf.len());
+						QString encr = decodeText(encrypted.ptr());
+						m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+							m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
+							m_pDescriptor->szLocalHost.toUtf8().data(),encr,KviConsole::NoNotifications);
+					}
+					break;
+					default: // also case KviCryptEngine::EncryptError
+					{
+						QString szErr = cryptSessionInfo()->pEngine->lastError();
+						output(KVI_OUT_SYSTEMERROR,
+							__tr2qs_ctx("The crypto engine was not able to encrypt the current message (%Q): %Q, no data was sent to the remote end","dcc"),
+							&text,&szErr);
+					}
+					break;
+				}
+				return;
+			} else {
+				d++; //eat the escape code
+				KviStr buf(KviStr::Format,"%s\r\n",d);
+				QString tmp = text.right(text.length() - 1);
+				m_tmpTextDataOut.append(buf.ptr(), buf.len());
+				m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+					m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
+					m_pDescriptor->szLocalHost.toUtf8().data(),tmp,KviConsole::NoNotifications);
+				return;
+			}
+		}
+	}
+#endif
+	KviStr buf(KviStr::Format,"%s\r\n",d);
+	m_tmpTextDataOut.append(buf.ptr(), buf.len());
+	m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+		m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
+		m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsole::NoNotifications);
+}
+
+const QString & KviDccVideo::localNick()
+{
+	// FIXME: This is just a complete HACK
+	m_szLocalNick = m_pDescriptor->szLocalNick;
+	return m_szLocalNick;
+}
+
+void KviDccVideo::ownAction(const QString &text)
+{
+	if(m_pSlaveThread)
+	{
+		QString szTmpBuffer;
+		//see bug ticket #220
+		if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
+		{
+			szTmpBuffer = KviMircCntrl::stripControlBytes(text);
+		} else {
+			szTmpBuffer = text;
+		}
+
+		QByteArray szData = encodeText(szTmpBuffer);
+		const char * d = szData.data();
+		if(!d)return;
+		KviStr buf(KviStr::Format,"%cACTION %s%c\r\n",0x01,d,0x01);
+		m_tmpTextDataOut.append(buf.ptr(), buf.len());
+		output(KVI_OUT_ACTION,"%Q %Q",&(m_pDescriptor->szLocalNick),&szTmpBuffer);
+	} else {
+		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Cannot send data: No active connection","dcc"));
+	}
+}
+
 bool KviDccVideo::event(QEvent *e)
 {
 	if(e->type() == KVI_THREAD_EVENT)
@@ -879,12 +764,98 @@ bool KviDccVideo::event(QEvent *e)
 				QString ssss = KviError::getDescription(*err);
 				output(KVI_OUT_DCCERROR,__tr2qs_ctx("ERROR: %Q","dcc"),&(ssss));
 				delete err;
-/*				m_pTalkButton->setEnabled(false);
-				m_pRecordingLabel->setEnabled(false);
-				m_pPlayingLabel->setEnabled(false);*/
 				return true;
 			}
 			break;
+			case KVI_DCC_THREAD_EVENT_DATA:
+			{
+				KviStr * encoded = ((KviThreadDataEvent<KviStr> *)e)->getData();
+				KviStr d=KviStr(decodeText(encoded->ptr()));
+				if(d.firstCharIs(0x01))
+				{
+					d.cutLeft(1);
+					if(d.lastCharIs(0x01))d.cutRight(1);
+					if(kvi_strEqualCIN("ACTION",d.ptr(),6))d.cutLeft(6);
+					d.stripLeftWhiteSpace();
+					output(KVI_OUT_ACTION,"%Q %s",&(m_pDescriptor->szNick),d.ptr());
+					if(!hasAttention())
+					{
+						if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
+						{
+							demandAttention();
+						}
+						if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
+						{
+							QString szMsg = "<b>";
+							szMsg += m_pDescriptor->szNick;
+							szMsg += "</b> ";
+							szMsg += Qt::escape(QString(d.ptr()));
+							//debug("kvi_sp_ctcp.cpp:975 debug: %s",szMsg.data());
+							g_pApp->notifierMessage(this,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+						}
+					}
+				} else {
+
+#ifdef COMPILE_CRYPT_SUPPORT
+					if(KviCryptSessionInfo * cinf = cryptSessionInfo())
+					{
+						if(cinf->bDoDecrypt)
+						{
+							KviStr decryptedStuff;
+							switch(cinf->pEngine->decrypt(d.ptr(),decryptedStuff))
+							{
+								case KviCryptEngine::DecryptOkWasEncrypted:
+								case KviCryptEngine::DecryptOkWasEncoded:
+								case KviCryptEngine::DecryptOkWasPlainText:
+									if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage,this,QString(decryptedStuff.ptr()),m_pDescriptor->idString()))
+									{
+										m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,
+											m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szUser.toUtf8().data(),
+											m_pDescriptor->szHost.toUtf8().data(),decryptedStuff.ptr());
+									}
+									delete encoded;
+									return true;
+								break;
+
+								default: // also case KviCryptEngine::DecryptError
+								{
+									QString szErr = cinf->pEngine->lastError();
+									output(KVI_OUT_SYSTEMERROR,
+										__tr2qs_ctx("The following message appears to be encrypted, but the crypto engine failed to decode it: %Q","dcc"),
+										&szErr);
+								}
+								break;
+							}
+						}
+					} else {
+#endif
+						// FIXME!
+						if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage,this,QString(d.ptr()),m_pDescriptor->idString()))
+						{
+							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,
+								m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szUser.toUtf8().data(),
+								m_pDescriptor->szHost.toUtf8().data(),d.ptr());
+							if(!hasAttention())
+							{
+								if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
+								{
+									demandAttention();
+								}
+								if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
+								{
+									QString szMsg = Qt::escape(QString(d.ptr()));
+									g_pApp->notifierMessage(this,KVI_SMALLICON_DCCCHATMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+								}
+							}
+						}
+#ifdef COMPILE_CRYPT_SUPPORT
+					}
+#endif
+				}
+				delete encoded;
+				return true;
+			}
+
 			case KVI_DCC_THREAD_EVENT_MESSAGE:
 			{
 				KviStr * str = ((KviThreadDataEvent<KviStr> *)e)->getData();
@@ -929,10 +900,6 @@ void KviDccVideo::handleMarshalError(int err)
 {
 	QString ssss = KviError::getDescription(err);
 	output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC Failed: %Q","dcc"),&ssss);
-/*	m_pTalkButton->setEnabled(false);
-	m_pTalkButton->setChecked(false);
-	m_pRecordingLabel->setEnabled(false);
-	m_pPlayingLabel->setEnabled(false);*/
 }
 
 void KviDccVideo::connected()
@@ -952,10 +919,6 @@ void KviDccVideo::connected()
 	KviDccVideoThreadOptions * opt = new KviDccVideoThreadOptions;
 
 	opt->pCodec = kvi_dcc_video_get_codec(m_pDescriptor->szCodec.ptr());
-	opt->bForceHalfDuplex = KVI_OPTION_BOOL(KviOption_boolDccVoiceForceHalfDuplex);
-	opt->iPreBufferSize = KVI_OPTION_UINT(KviOption_uintDccVoicePreBufferSize);
-	opt->szSoundDevice = KVI_OPTION_STRING(KviOption_stringDccVoiceSoundDevice).toUtf8().data();
-	opt->iSampleRate = 8000;
 
 	output(KVI_OUT_DCCMSG,__tr2qs_ctx("Actual codec used is '%s'","dcc"),opt->pCodec->name());
 
@@ -974,8 +937,6 @@ void KviDccVideo::connected()
 #endif
 
 	m_pSlaveThread->start();
-
-// 	m_pTalkButton->setEnabled(true);
 }
 
 void KviDccVideo::stopTalking()
@@ -1011,7 +972,7 @@ void KviDccVideo::slotUpdateImage()
 
 void KviDccVideo::deviceRegistered(const QString &)
 {
-	/*
+
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	g_pVideoDevicePool->fillDeviceQComboBox(m_pCDevices);
 	g_pVideoDevicePool->fillInputQComboBox(m_pCInputs);
@@ -1029,19 +990,16 @@ void KviDccVideo::deviceRegistered(const QString &)
 // 		m_Timer.start(200); //5fps
 // 	}
 #endif
-#*/
 }
 
 
 void KviDccVideo::deviceUnregistered(const QString & )
 {
-/*
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	g_pVideoDevicePool->fillDeviceQComboBox(m_pCDevices);
 	g_pVideoDevicePool->fillInputQComboBox(m_pCInputs);
 	g_pVideoDevicePool->fillStandardQComboBox(m_pCStandards);
 #endif
-*/
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

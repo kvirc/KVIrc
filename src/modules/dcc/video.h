@@ -33,6 +33,7 @@
 #include "kvi_databuffer.h"
 #include "kvi_sockettype.h"
 #include "kvi_tal_hbox.h"
+#include "kvi_themedlabel.h"
 
 #include <QLabel>
 #include <QToolButton>
@@ -62,10 +63,6 @@ typedef struct _KviDccVideoThreadOptions
 {
 	QString            szVideoDevice;
 	KviDccVideoCodec * pCodec;
-	bool               bForceHalfDuplex;
-	int                iPreBufferSize;
-	int                iSampleRate;
-	KviStr             szSoundDevice;
 } KviDccVideoThreadOptions;
 
 class KviDccVideoThread : public KviDccThread
@@ -78,9 +75,10 @@ protected:
 	KviDccVideoThreadOptions * m_pOpt;
 	KviDataBuffer              m_outFrameBuffer;
 	KviDataBuffer              m_inFrameBuffer;
-	KviDataBuffer              m_inSignalBuffer;
+	KviDataBuffer              m_videoInSignalBuffer;
+	KviDataBuffer              m_textInSignalBuffer;
 	KviDataBuffer              m_videoOutSignalBuffer;
-	KviDataBuffer              m_audioOutSignalBuffer;
+	KviDataBuffer              m_textOutSignalBuffer;
 	bool                       m_bPlaying;
 	bool                       m_bRecording;
 	bool                       m_bRecordingRequestPending;
@@ -89,30 +87,20 @@ protected:
 	// stuff protected by the mutex:
 	int                        m_iInputBufferSize;
 	int                        m_iOutputBufferSize;
-	//audio
-	int                        m_soundFd;
-	int                        m_soundFdMode;
-	bool                       m_bSoundcardChecked;
 protected:
 	QImage                     m_inImage;
 	QImage                     m_outImage;
 protected:
 	bool readWriteStep();
 	bool videoStep();
-	bool audioStep();
+	bool textStep();
 	void startRecording();
 	void stopRecording();
 	void startPlaying();
 	void stopPlaying();
 	inline bool isPlaying() { return m_bPlaying; };
 	virtual void run();
-	//audio
-	bool checkSoundcard();
-	bool openSoundcardWithDuplexOption(int openMode,int failMode);
-	bool openSoundcard(int mode);
-	bool openSoundcardForWriting();
-	bool openSoundcardForReading();
-	void closeSoundcard();
+	virtual bool handleIncomingData(KviDccThreadIncomingData *data,bool bCritical);
 };
 
 
@@ -124,6 +112,10 @@ public:
 	KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name);
 	~KviDccVideo();
 protected:
+	KviThemedLabel         * m_pLabel;
+	KviTalHBox             * m_pButtonBox;
+	KviTalHBox             * m_pButtonContainer;
+	
 	QLabel *m_pInVideoLabel;
 	QLabel *m_pOutVideoLabel;
 	QComboBox *m_pCDevices;
@@ -131,35 +123,34 @@ protected:
 	QComboBox *m_pCStandards;
 	QGridLayout *m_pLayout;
 	QTimer m_Timer;
-	QLabel * m_pLabel[2];
+	QLabel * m_pVideoLabel[2];
 	QString                * m_pszTarget;
 	KviDccVideoThread      * m_pSlaveThread;
+	QByteArray m_tmpTextDataOut;
+	QString                  m_szLocalNick;
 protected:
-//	virtual void focusInEvent(QFocusEvent *);
+	virtual void triggerCreationEvents();
+	virtual void triggerDestructionEvents();
 	virtual const QString & target();
 	virtual void fillCaptionBuffers();
 	virtual QPixmap * myIconPtr();
-/*
-	virtual void resizeEvent(QResizeEvent *e);
-	virtual QSize sizeHint() const;
-*/
 	virtual bool event(QEvent *e);
 	virtual void getBaseLogFileName(QString &buffer);
 	void startTalking();
 	void stopTalking();
 	void startConnection();
-//	int getMixerVolume(void) const;
+	virtual const QString & localNick();
+	virtual void ownMessage(const QString &text);
+	virtual void ownAction(const QString &text);
 protected slots:
 	void handleMarshalError(int err);
 	void connected();
 	void startOrStopTalking(bool bStart);
-/*
-	void setMixerVolume(int);
-*/
 	void connectionInProgress();
 	void slotUpdateImage();
 	void deviceRegistered(const QString &);
 	void deviceUnregistered(const QString &);
+	void textViewRightClicked();
 };
 
 

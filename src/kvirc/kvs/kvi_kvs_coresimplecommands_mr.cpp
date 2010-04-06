@@ -89,6 +89,7 @@ namespace KviKvsCoreSimpleCommands
 			case KVI_WINDOW_TYPE_QUERY:
 				KVSCSC_REQUIRE_CONNECTION
 			case KVI_WINDOW_TYPE_DCCCHAT:
+			case KVI_WINDOW_TYPE_DCCVIDEO:
 				KVSCSC_pWindow->ownAction(szText);
 			break;
 			default:

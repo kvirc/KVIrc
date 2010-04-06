@@ -109,11 +109,11 @@ void KviDccVideoCodec::encodeVideo(KviDataBuffer *,KviDataBuffer *)
 {
 }
 
-void KviDccVideoCodec::encodeAudio(KviDataBuffer *,KviDataBuffer *)
+void KviDccVideoCodec::encodeText(KviDataBuffer *,KviDataBuffer *)
 {
 }
 
-void KviDccVideoCodec::decode(KviDataBuffer *,KviDataBuffer *)
+void KviDccVideoCodec::decode(KviDataBuffer *,KviDataBuffer *,KviDataBuffer *)
 {
 }
 
@@ -162,39 +162,89 @@ void KviDccVideoSJpegCodec::encodeVideo(KviDataBuffer * videoSignal,KviDataBuffe
 	videoSignal->clear();
 }
 
-void KviDccVideoSJpegCodec::encodeAudio(KviDataBuffer * audioSignal,KviDataBuffer * stream)
+void KviDccVideoSJpegCodec::encodeText(KviDataBuffer * textSignal, KviDataBuffer * stream)
 {
-	//no audio support
-	Q_UNUSED(stream);
-	if(audioSignal->size() < 1) return;
+	static unsigned const char *irct_magic_init = (unsigned const char*) "\0<text>\0";
+	static unsigned const char *irct_magic_end = (unsigned const char*) "\0</text>\0";
 
-	audioSignal->clear();
+	qDebug("encodeText %s %d",textSignal->data(), textSignal->size());
+	if(textSignal->size() < 1) return;
+	stream->append(irct_magic_init,8);
+	stream->append((const unsigned char*)textSignal->data(),textSignal->size());
+	stream->append(irct_magic_end,9);
+	textSignal->clear();
 	return;
 }
 
-void KviDccVideoSJpegCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
+void KviDccVideoSJpegCodec::decode(KviDataBuffer * stream,KviDataBuffer * videoSignal,KviDataBuffer * textSignal)
 {
 	static unsigned const char jpg_magic_init[4] = { 0xFF, 0xD8, 0xFF, 0xE0}; //SOI + APP0
 	static unsigned const char jpg_magic_end[2] = { 0xFF, 0xD9}; //EOI
 
+	static unsigned const char *irct_magic_init = (unsigned const char*) "\0<text>\0";
+	static unsigned const char *irct_magic_end = (unsigned const char*) "\0</text>\0";
+
 	if(stream->size() < 1)return;
 
-	int start = stream->find(jpg_magic_init, 4);
-	int end = stream->find(jpg_magic_end, 2);
-	if(start != -1 && end != -1)
+
+	int txtStart = stream->find(irct_magic_init, 8);
+	int txtEnd = stream->find(irct_magic_end, 9);
+
+	int jpgStart = stream->find(jpg_magic_init, 4);
+		
+	if(txtStart!=-1 && txtEnd !=-1 && txtStart<jpgStart)
 	{
+		qDebug("a txtStart %d txtEnd %d",txtStart,txtEnd);
+		stream->remove(txtStart+8);
+		int len = txtEnd - txtStart -8; //-8 irct_magic_init
+		if(len>0)
+		{
+			textSignal->append(stream->data(), len);
+			char*txt=(char*)malloc(len+1);
+			memcpy(txt,stream->data(), len);
+			txt[len]='\0';
+			qDebug("a recv |%s| %d",txt,len);
+		}
+		stream->remove(len+9);
+	}
+
+	jpgStart = stream->find(jpg_magic_init, 4);
+	int jpgEnd = stream->find(jpg_magic_end, 2);
+
+	if(jpgStart != -1 && jpgEnd != -1)
+	{
+// 		qDebug("jpgStart %d jpgEnd %d",jpgStart,jpgEnd);
 		QImage img;
 		//remove junk before jpeg start
-		stream->remove(start);
-		int len = end - start + 1;
+		stream->remove(jpgStart);
+		int len = jpgEnd - jpgStart + 1;
 		
 		img.loadFromData(stream->data(), stream->size());
 		if(!img.isNull())
 		{
-			signal->clear();
-			signal->append(img.bits(),img.numBytes());
+			videoSignal->clear();
+			videoSignal->append(img.bits(),img.numBytes());
 		}
 		stream->remove(len);
+	}
+
+	txtStart = stream->find(irct_magic_init, 8);
+	txtEnd = stream->find(irct_magic_end, 9);
+
+	if(txtStart!=-1 && txtEnd !=-1)
+	{
+		qDebug("b txtStart %d txtEnd %d",txtStart,txtEnd);
+		stream->remove(txtStart+8);
+		int len = txtEnd - txtStart -8; //-8 irct_magic_init
+		if(len>0)
+		{
+			textSignal->append(stream->data(), len);
+			char*txt=(char*)malloc(len+1);
+			memcpy(txt,stream->data(), len);
+			txt[len]='\0';
+			qDebug("b recv |%s| %d",txt,len);
+		}
+		stream->remove(len+9);
 	}
 }
 
@@ -240,23 +290,23 @@ void KviDccVideoTheoraCodec::encodeVideo(KviDataBuffer * videoSignal,KviDataBuff
 	videoSignal->clear();
 }
 
-void KviDccVideoTheoraCodec::encodeAudio(KviDataBuffer * audioSignal,KviDataBuffer * stream)
+void KviDccVideoTheoraCodec::encodeText(KviDataBuffer * textSignal, KviDataBuffer * stream)
 {
-	if(audioSignal->size() < 1) return;
+	if(textSignal->size() < 1) return;
 
 	if(!m_pEncoder)
 		m_pEncoder = new KviTheoraEncoder(stream);
 
-	m_pEncoder->addAudioFrame(audioSignal->data(),audioSignal->size());
-	audioSignal->clear();
+	m_pEncoder->addTextFrame(textSignal->data(),textSignal->size());
+	textSignal->clear();
 }
 
-void KviDccVideoTheoraCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
+void KviDccVideoTheoraCodec::decode(KviDataBuffer * stream,KviDataBuffer * videoSignal,KviDataBuffer * textSignal)
 {
 	if(stream->size() < 1)return;
 
 	if(!m_pDecoder)
-		m_pDecoder = new KviTheoraDecoder(signal);
+		m_pDecoder = new KviTheoraDecoder(videoSignal);
 
 	m_pDecoder->addData(stream);
 }

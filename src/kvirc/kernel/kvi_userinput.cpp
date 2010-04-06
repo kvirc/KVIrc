@@ -152,6 +152,7 @@ namespace KviUserInput
 					pWindow->ownMessage(buf);
 				break;
 				case KVI_WINDOW_TYPE_DCCCHAT:
+				case KVI_WINDOW_TYPE_DCCVIDEO:
 					pWindow->ownMessage(buf);
 				break;
 				default:

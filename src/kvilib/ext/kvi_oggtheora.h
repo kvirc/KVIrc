@@ -27,6 +27,7 @@
 #ifndef COMPILE_DISABLE_OGG_THEORA
 
 #include "kvi_settings.h"
+#include "kvi_malloc.h"
 
 #include "theora/theoradec.h"
 #include "theora/theoraenc.h"
@@ -56,12 +57,98 @@ typedef struct _KviTheoraGeometry {
 	int pic_y;
 } KviTheoraGeometry;
 
-class KVILIB_API KviTheoraEncoder {
+class KVILIB_API KviOggIrcText
+{
+private:
+	static void _tp_readbuffer(oggpack_buffer *opb, char *buf, const long len)
+	{
+		long i;
+
+		for (i = 0; i < len; i++)
+			*buf++=oggpack_read(opb,8);
+	}
+
+	static void _tp_writebuffer(oggpack_buffer *opb, const char *buf, const long len)
+	{
+		long i;
+
+		for (i = 0; i < len; i++)
+			oggpack_write(opb, *buf++, 8);
+	}
+
+public:
+	static int irct_encode_init()
+	{
+		return 0;
+	};
+
+	static int irct_encode_clear()
+	{
+		return 0;
+	};
+
+	static int irct_encode_headerout(ogg_packet *op) {
+		oggpack_buffer ob;
+		oggpack_writeinit(&ob);
+		oggpack_write(&ob, 0, 8);			//header init
+		_tp_writebuffer(&ob, "irct", 32);
+		oggpack_write(&ob, 0, 8);			//version 0
+		oggpack_write(&ob, 1, 8);			//subversion 1
+		int bytes=oggpack_bytes(&ob);
+		op->packet= (unsigned char*) kvi_malloc(bytes);
+		memcpy(op->packet, oggpack_get_buffer(&ob), bytes);
+		op->bytes=bytes;
+		oggpack_writeclear(&ob);
+		op->b_o_s=1;  //begins a logical bitstream
+		op->e_o_s=0;
+		op->packetno=0;
+		op->granulepos=0;
+
+		return 0;
+	}
+	static int irct_encode_packetout(const char* textPkt, int textSize, int last_p, ogg_packet *op) {
+		if(!textSize)return(0);
+
+		oggpack_buffer ob;
+		oggpack_writeinit(&ob);
+		_tp_writebuffer(&ob, textPkt, textSize); //pre-encoded text
+		int bytes=oggpack_bytes(&ob);
+		op->packet= (unsigned char *)kvi_malloc(bytes);
+		memcpy(op->packet, oggpack_get_buffer(&ob), bytes);
+		op->bytes=bytes;
+		oggpack_writeclear(&ob);
+		op->b_o_s=0;
+		op->e_o_s=last_p;
+
+		op->packetno=last_p;
+		op->granulepos=0;
+
+		return 0;
+	}
+	static int irct_decode_headerin(ogg_packet *op) {
+		oggpack_buffer ob;
+		oggpack_readinit(&ob, op->packet, op->bytes);
+		quint8 ret, version, subversion;
+		ret = oggpack_read(&ob,8);
+		if(ret!=0) return 1;
+		char * buf = (char*) kvi_malloc(4);
+		_tp_readbuffer(&ob, buf, 4);
+		if(strncmp(buf, "irct", 4)!=0) return 1;
+		version = oggpack_read(&ob,8);
+		subversion = oggpack_read(&ob,8);
+		qDebug("irct stream version %d.%d", version, subversion);
+		return 0;
+	}
+};
+
+class KVILIB_API KviTheoraEncoder
+{
 public:
 	KviTheoraEncoder(KviDataBuffer * stream, int iWidth=320, int iHeight=240, int iFpsN=5, int iFpsD=1, int iParN=4, int iParD=3);
 	virtual ~KviTheoraEncoder();
 	void addVideoFrame(QRgb * rgb32, int videoSize);
 	void addAudioFrame(unsigned char* audioPkt, int audioSize);
+	void addTextFrame(unsigned char* textPkt, int textSize);
 private:
 	int fetch_and_process_video(quint8 * videoYuv,ogg_page *videopage,ogg_stream_state *to,th_enc_ctx *td,int videoflag);
 	int fetch_and_process_video_packet(quint8 * videoYuv,th_enc_ctx *td,ogg_packet *op);
@@ -71,12 +158,15 @@ private:
 	KviDataBuffer * m_pStream;
 	quint8 * videoYuv;
 
+	bool text;
+
 	bool audio;
 	int audio_ch;
 	int audio_hz;
 	float audio_q;
 	ogg_int64_t samples_sofar;
-
+	ogg_int64_t text_sofar;
+	
 	int                 frame_state;
 	ogg_int64_t         frames;
 	unsigned char      *yuvframe[3];
@@ -90,6 +180,7 @@ private:
 	// The amount to read into the auxilliary buffer.
 	size_t y4m_aux_buf_read_sz;
 
+	ogg_stream_state zo; // take physical pages, weld into a logical stream of packets
 	ogg_stream_state to; // take physical pages, weld into a logical stream of packets
 	ogg_stream_state vo; // take physical pages, weld into a logical stream of packets
 	ogg_page         og; // one Ogg bitstream page.  Vorbis packets are inside
@@ -104,6 +195,7 @@ private:
 	vorbis_dsp_state vd; // central working state for the packet->PCM decoder
 	vorbis_block     vb; // local working space for packet->PCM decode
 
+	int textflag;
 	int audioflag;
 	int videoflag;
 private:
@@ -130,6 +222,7 @@ private:
 	ogg_page         og;
 	ogg_stream_state vo;
 	ogg_stream_state to;
+	ogg_stream_state zo;
 	th_info          ti;
 	th_comment       tc;
 	th_dec_ctx       *td;
@@ -142,6 +235,7 @@ private:
 
 	int              theora_p;
 	int              vorbis_p;
+	int              irct_p;
 	int              stateflag;
 
 	int lu_Y[256];

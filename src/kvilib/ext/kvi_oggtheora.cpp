@@ -79,6 +79,10 @@ KviTheoraEncoder::KviTheoraEncoder(KviDataBuffer * stream, int iWidth, int iHeig
 	audio_q=.6f;
 	samples_sofar=0;
 
+	//text
+	text=true;
+	text_sofar=0;
+
 	//user settings
 	m_pStream=stream;
 	geometry.pic_w=iWidth;
@@ -123,6 +127,18 @@ KviTheoraEncoder::KviTheoraEncoder(KviDataBuffer * stream, int iWidth, int iHeig
 		vorbis_comment_init(&vc);
 		vorbis_analysis_init(&vd,&vi);
 		vorbis_block_init(&vd,&vb);
+	}
+
+	// initialize out text codec
+	if(text)
+	{
+		ogg_stream_init(&zo,rand());
+		ret = KviOggIrcText::irct_encode_init();
+		if(ret)
+		{
+			qDebug("error initializing irctext");
+			return;
+		}
 	}
 
 	// Set up Theora encoder
@@ -196,7 +212,8 @@ KviTheoraEncoder::KviTheoraEncoder(KviDataBuffer * stream, int iWidth, int iHeig
 		ogg_stream_packetin(&to,&op);
 	}
 
-	if(audio){
+	if(audio)
+	{
 		ogg_packet header;
 		ogg_packet header_comm;
 		ogg_packet header_code;
@@ -211,6 +228,19 @@ KviTheoraEncoder::KviTheoraEncoder(KviDataBuffer * stream, int iWidth, int iHeig
 		// remaining vorbis header packets
 		ogg_stream_packetin(&vo,&header_comm);
 		ogg_stream_packetin(&vo,&header_code);
+	}
+
+	if(text)
+	{
+		ogg_packet header;
+		KviOggIrcText::irct_encode_headerout(&header);
+		ogg_stream_packetin(&zo,&header); // automatically placed in its own page
+		if(ogg_stream_pageout(&zo,&og)!=1){
+			qDebug("Internal Ogg library error (irct).");
+			return;
+		}
+		m_pStream->append(og.header,og.header_len);
+		m_pStream->append(og.body,og.body_len);
 	}
 
 	// Flush the rest of our headers. This ensures the actual data in each stream
@@ -318,6 +348,31 @@ void KviTheoraEncoder::addAudioFrame(unsigned char* audioPkt, int audioSize)
 	m_pStream->append(audiopage.header,audiopage.header_len);
 	m_pStream->append(audiopage.body,audiopage.body_len);
 	audioflag=0;
+}
+
+void KviTheoraEncoder::addTextFrame(unsigned char* textPkt, int textSize)
+{
+	if(!text)
+		return;
+
+	ogg_page textpage;
+	ogg_packet op;
+
+	text_sofar++;
+
+	// is there an audio page flushed?  If not, fetch one if possible
+	textflag=KviOggIrcText::irct_encode_packetout((char *) textPkt, textSize, text_sofar,&op);
+	ogg_stream_packetin(&zo, &op);
+	ogg_stream_pageout(&zo, &textpage);
+
+
+
+	// no pages?  Must be end of stream.
+	if(!textflag) return;
+
+	m_pStream->append(textpage.header,textpage.header_len);
+	m_pStream->append(textpage.body,textpage.body_len);
+	textflag=0;
 }
 
 int KviTheoraEncoder::fetch_and_process_video_packet(quint8 * videoYuv,th_enc_ctx *td,ogg_packet *op)
@@ -589,15 +644,20 @@ void KviTheoraDecoder::addData(KviDataBuffer * stream)
 
 			/* identify the codec: try theora */
 			if(!theora_p && th_decode_headerin(&ti,&tc,&ts,&op)>=0){
-// 				qDebug("is theora, ts=%p &ts=%p",ts, &ts);
+				qDebug("is theora, ts=%p &ts=%p",ts, &ts);
 				/* it is theora */
 				memcpy(&to,&test,sizeof(test));
 				theora_p=1;
 			}else if(!vorbis_p && vorbis_synthesis_headerin(&vi,&vc,&op)>=0){
-// 				qDebug("is vorbis");
+				qDebug("is vorbis");
 				/* it is vorbis */
 				memcpy(&vo,&test,sizeof(test));
 				vorbis_p=1;
+			}else if(!irct_p && KviOggIrcText::irct_decode_headerin(&op)>=0){
+				qDebug("is irct");
+				/* it is irct */
+				memcpy(&zo,&test,sizeof(test));
+				irct_p=1;
 			}else{
 // 				qDebug("is other");
 				/* whatever it is, we don't care about it */
@@ -885,6 +945,7 @@ int KviTheoraDecoder::queue_page(ogg_page *page)
 {
 	if(theora_p)ogg_stream_pagein(&to,page);
 	if(vorbis_p)ogg_stream_pagein(&vo,page);
+	if(irct_p)ogg_stream_pagein(&zo,page);
 	return 0;
 }
 
