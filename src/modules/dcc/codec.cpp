@@ -306,7 +306,7 @@ void KviDccVideoTheoraCodec::decode(KviDataBuffer * stream,KviDataBuffer * video
 	if(stream->size() < 1)return;
 
 	if(!m_pDecoder)
-		m_pDecoder = new KviTheoraDecoder(videoSignal);
+		m_pDecoder = new KviTheoraDecoder(videoSignal, textSignal);
 
 	m_pDecoder->addData(stream);
 }

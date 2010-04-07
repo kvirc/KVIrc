@@ -31,8 +31,6 @@
 
 #include "theora/theoradec.h"
 #include "theora/theoraenc.h"
-#include "vorbis/codec.h"
-#include "vorbis/vorbisenc.h"
 
 #include <QColor>
 
@@ -111,10 +109,12 @@ public:
 
 		oggpack_buffer ob;
 		oggpack_writeinit(&ob);
+
 		_tp_writebuffer(&ob, textPkt, textSize); //pre-encoded text
 		int bytes=oggpack_bytes(&ob);
 		op->packet= (unsigned char *)kvi_malloc(bytes);
 		memcpy(op->packet, oggpack_get_buffer(&ob), bytes);
+		qDebug("irct_encode_packetout bytes=%d |%s", bytes, textPkt);
 		op->bytes=bytes;
 		oggpack_writeclear(&ob);
 		op->b_o_s=0;
@@ -136,7 +136,15 @@ public:
 		if(strncmp(buf, "irct", 4)!=0) return 1;
 		version = oggpack_read(&ob,8);
 		subversion = oggpack_read(&ob,8);
-		qDebug("irct stream version %d.%d", version, subversion);
+		return 0;
+	}
+	static int irct_decode_packetin(char* textPkt, int textSize, ogg_packet *op)
+	{
+		oggpack_buffer ob;
+		oggpack_readinit(&ob, op->packet, op->bytes);
+		textSize = op->bytes;
+		textPkt=(char*)kvi_malloc(textSize);
+		_tp_readbuffer(&ob, textPkt, textSize);
 		return 0;
 	}
 };
@@ -147,24 +155,15 @@ public:
 	KviTheoraEncoder(KviDataBuffer * stream, int iWidth=320, int iHeight=240, int iFpsN=5, int iFpsD=1, int iParN=4, int iParD=3);
 	virtual ~KviTheoraEncoder();
 	void addVideoFrame(QRgb * rgb32, int videoSize);
-	void addAudioFrame(unsigned char* audioPkt, int audioSize);
 	void addTextFrame(unsigned char* textPkt, int textSize);
 private:
 	int fetch_and_process_video(quint8 * videoYuv,ogg_page *videopage,ogg_stream_state *to,th_enc_ctx *td,int videoflag);
 	int fetch_and_process_video_packet(quint8 * videoYuv,th_enc_ctx *td,ogg_packet *op);
-	int fetch_and_process_audio(quint8 * audio, int size, ogg_page *audiopage, ogg_stream_state *vo, vorbis_dsp_state *vd, vorbis_block *vb, int audioflag);
 private:
 	KviTheoraGeometry geometry;
 	KviDataBuffer * m_pStream;
 	quint8 * videoYuv;
 
-	bool text;
-
-	bool audio;
-	int audio_ch;
-	int audio_hz;
-	float audio_q;
-	ogg_int64_t samples_sofar;
 	ogg_int64_t text_sofar;
 	
 	int                 frame_state;
@@ -182,7 +181,6 @@ private:
 
 	ogg_stream_state zo; // take physical pages, weld into a logical stream of packets
 	ogg_stream_state to; // take physical pages, weld into a logical stream of packets
-	ogg_stream_state vo; // take physical pages, weld into a logical stream of packets
 	ogg_page         og; // one Ogg bitstream page.  Vorbis packets are inside
 	ogg_packet       op; // one raw packet of data for decode
 
@@ -190,22 +188,17 @@ private:
 	th_info          ti;
 	th_comment       tc;
 
-	vorbis_info      vi; // struct that stores all the static vorbis bitstream settings
-	vorbis_comment   vc; // struct that stores all the user comments
-	vorbis_dsp_state vd; // central working state for the packet->PCM decoder
-	vorbis_block     vb; // local working space for packet->PCM decode
-
 	int textflag;
-	int audioflag;
 	int videoflag;
 private:
 	static int ilog(unsigned _v);
 };
 
 
-class KVILIB_API KviTheoraDecoder {
+class KVILIB_API KviTheoraDecoder
+{
 public:
-	KviTheoraDecoder(KviDataBuffer * signal);
+	KviTheoraDecoder(KviDataBuffer * videoSignal,KviDataBuffer * textSignal);
 	virtual ~KviTheoraDecoder();
 	void addData(KviDataBuffer * stream);
 private:
@@ -213,28 +206,23 @@ private:
 	double get_time();
 	void video_write(void);
 private:
-	KviDataBuffer * m_pSignal;
+	KviDataBuffer * m_pVideoSignal;
+	KviDataBuffer * m_pTextSignal;
 	KviTheoraGeometry geometry;
 	unsigned char * RGBbuffer;
 
 	// Ogg and codec state for demux/decode
 	ogg_sync_state   oy;
 	ogg_page         og;
-	ogg_stream_state vo;
 	ogg_stream_state to;
 	ogg_stream_state zo;
 	th_info          ti;
 	th_comment       tc;
 	th_dec_ctx       *td;
 	th_setup_info    *ts;
-	vorbis_info      vi;
-	vorbis_dsp_state vd;
-	vorbis_block     vb;
-	vorbis_comment   vc;
 	th_pixel_fmt     px_fmt;
 
 	int              theora_p;
-	int              vorbis_p;
 	int              irct_p;
 	int              stateflag;
 
@@ -249,12 +237,6 @@ private:
 	ogg_int64_t  videobuf_granulepos;
 	double       videobuf_time;
 
-	// single audio fragment audio buffering
-	int          audiobuf_fill;
-	int          audiobuf_ready;
-	ogg_int16_t *audiobuf;
-	ogg_int64_t  audiobuf_granulepos; // time position of last sample
-
 	int pp_level_max;
 	int pp_level;
 	int pp_inc;
@@ -264,13 +246,6 @@ private:
 	int frames;
 	int dropped;
 
-	long         audiofd_totalsize;
-	int          audiofd_fragsize;      /* read and write only complete fragments
-					so that SNDCTL_DSP_GETOSPACE is
-					accurate immediately after a bank
-					switch */
-	int          audiofd;
-	ogg_int64_t  audiofd_timer_calibrate;
 	bool thda;
 	bool thtic;
 
