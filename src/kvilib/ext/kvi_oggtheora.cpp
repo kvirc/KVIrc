@@ -44,9 +44,11 @@
 #include <math.h>
 
 #include "kvi_oggtheora.h"
+#include "kvi_oggirct.h"
 
 #include "kvi_databuffer.h"
 
+using namespace KviOggIrcText;
 
 static void rgb32toyuv444(QRgb * rgbPt, unsigned char *yuvPt, int w, int h)
 {
@@ -69,7 +71,6 @@ KviTheoraEncoder::KviTheoraEncoder(KviDataBuffer * stream, int iWidth, int iHeig
 	videoflag=0;
 	videoYuv=0;
 	frame_state=-1;
-	frames=0;
 
 	//text
 	text_sofar=0;
@@ -104,7 +105,7 @@ KviTheoraEncoder::KviTheoraEncoder(KviDataBuffer * stream, int iWidth, int iHeig
 	ogg_stream_init(&to,rand());
 
 	ogg_stream_init(&zo,rand());
-	ret = KviOggIrcText::irct_encode_init();
+	ret = irct_encode_init();
 	if(ret)
 	{
 		qDebug("error initializing irctext");
@@ -185,7 +186,7 @@ KviTheoraEncoder::KviTheoraEncoder(KviDataBuffer * stream, int iWidth, int iHeig
 
 	//irct
 	ogg_packet header;
-	KviOggIrcText::irct_encode_headerout(&header);
+	irct_encode_headerout(&header);
 	ogg_stream_packetin(&zo,&header); // automatically placed in its own page
 	if(ogg_stream_pageout(&zo,&og)!=1){
 		qDebug("Internal Ogg library error (irct).");
@@ -218,6 +219,8 @@ KviTheoraEncoder::~KviTheoraEncoder()
 
 	ogg_stream_clear(&to);
 	th_comment_clear(&tc);
+
+	irct_encode_clear();
 }
 
 void KviTheoraEncoder::addVideoFrame(QRgb * rgb32, int)
@@ -259,7 +262,7 @@ void KviTheoraEncoder::addTextFrame(unsigned char* textPkt, int textSize)
 	text_sofar++;
 
 	// is there an audio page flushed?  If not, fetch one if possible
-	textflag=KviOggIrcText::irct_encode_packetout((char *) textPkt, textSize, text_sofar,&op);
+	textflag=irct_encode_packetout((char *) textPkt, textSize, text_sofar,&op);
 	ogg_stream_packetin(&zo, &op);
 	ogg_stream_pageout(&zo, &textpage);
 
@@ -298,7 +301,6 @@ int KviTheoraEncoder::fetch_and_process_video_packet(quint8 * videoYuv,th_enc_ct
 		memcpy(yuvframe[frame_state],videoYuv,y4m_dst_buf_read_sz);
 		/*Read the frame data that does need conversion.*/
 		memcpy(yuvframe[2],videoYuv,y4m_aux_buf_read_sz);
-		frames++;
 		frame_state++;
 	}
 	/* check to see if there are dupes to flush */
@@ -343,11 +345,13 @@ int KviTheoraEncoder::fetch_and_process_video_packet(quint8 * videoYuv,th_enc_ct
 }
 
 int KviTheoraEncoder::fetch_and_process_video(quint8 * videoYuv,ogg_page *videopage,
-ogg_stream_state *to,th_enc_ctx *td,int videoflag){
+ogg_stream_state *to,th_enc_ctx *td,int videoflag)
+{
 	ogg_packet op;
 	int ret;
 	/* is there a video page flushed?  If not, work until there is. */
-	while(!videoflag){
+	while(!videoflag)
+	{
 		if(ogg_stream_pageout(to,videopage)>0) return 1;
 		if(ogg_stream_eos(to)) return 0;
 		ret=fetch_and_process_video_packet(videoYuv,td,&op);
@@ -385,9 +389,6 @@ KviTheoraDecoder::KviTheoraDecoder(KviDataBuffer * videoSignal,KviDataBuffer * t
 	videobuf_granulepos=-1;
 	videobuf_time=0;
 
-	frames = 0;
-	dropped = 0;
-
 	/* start up Ogg stream synchronization layer */
 	ogg_sync_init(&oy);
 
@@ -415,7 +416,10 @@ KviTheoraDecoder::~KviTheoraDecoder()
 	}
 
 	if(irct_p)
+	{
 		ogg_stream_clear(&zo);
+		irct_encode_clear();
+	}
 
 	ogg_sync_clear(&oy);
 }
@@ -459,7 +463,7 @@ void KviTheoraDecoder::addData(KviDataBuffer * stream)
 				/* it is theora */
 				memcpy(&to,&test,sizeof(test));
 				theora_p=1;
-			}else if(!irct_p && KviOggIrcText::irct_decode_headerin(&op)>=0){
+			}else if(!irct_p && irct_decode_headerin(&op)>=0){
 				qDebug("is irct");
 				/* it is irct */
 				memcpy(&zo,&test,sizeof(test));
@@ -556,12 +560,10 @@ void KviTheoraDecoder::addData(KviDataBuffer * stream)
 	{
 		if(ogg_stream_packetout(&zo,&op)>0)
 		{
-			qDebug("irct::ogg_stream_packetout");
 			char * textPkt=0;
 			int textSize=0;
-			if(KviOggIrcText::irct_decode_packetin(textPkt, textSize, &op)==0)
+			if(irct_decode_packetin(&textPkt, &textSize, &op)==0)
 			{
-				qDebug("irct stream recv %d bytes", textSize);
 				m_pTextSignal->append((unsigned char *)textPkt, textSize);
 			}
 		}

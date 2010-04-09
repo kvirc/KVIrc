@@ -53,12 +53,6 @@ IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
 	)
 ENDIF()
 
-IF(NOT DEFINED COMPILE_DISABLE_OGG_THEORA)
-	LIST(APPEND kvilib_MOC_HDRS
-		ext/kvi_oggtheora.h
-	)
-ENDIF()
-
 # Please note that the sources have alphabetic order here
 
 SET(kvilib_SRCS
