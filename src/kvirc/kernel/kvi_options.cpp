@@ -324,7 +324,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("UseAwayMessage",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("DisableQuietBanListRequestOnJoin",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("UseSaslIfAvailable",true,KviOption_sectFlagConnection),
-	BOOL_OPTION("FrameIsMaximized",false,KviOption_sectFlagGeometry)
+	BOOL_OPTION("FrameIsMaximized",false,KviOption_sectFlagGeometry),
+	BOOL_OPTION("PrependNickColorInfoToRealname",true,KviOption_sectFlagConnection)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)

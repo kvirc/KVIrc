@@ -75,7 +75,8 @@ KviIrcAdvancedOptionsWidget::KviIrcAdvancedOptionsWidget(QWidget * parent)
 		"Note that if you use this, your QUIT message may be not displayed.</center>","options"));
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Prepend gender info to realname","options"),KviOption_boolPrependGenderInfoToRealname);
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Prepend avatar info to realname","options"),KviOption_boolPrependAvatarInfoToRealname);
-	addRowSpacer(0,3,0,3);
+	addBoolSelector(0,3,0,3,__tr2qs_ctx("Prepend smart nick color info to realname","options"),KviOption_boolPrependNickColorInfoToRealname);
+	addRowSpacer(0,4,0,4);
 }
 
 KviIrcAdvancedOptionsWidget::~KviIrcAdvancedOptionsWidget()

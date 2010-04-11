@@ -29,6 +29,7 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_qstring.h"
 #include "kvi_stringconversion.h"
+#include "kvi_nickcolors.h"
 
 //static int cacheHit = 0;
 //static int cacheMiss = 0;
@@ -46,33 +47,51 @@ KviIrcUserEntry::KviIrcUserEntry(const QString &user,const QString &host)
 	m_bBot = false;
 	m_bNotFoundRegUserLoockup=false;
 	m_bUseCustomColor=false;
+	m_iSmartNickColor=-1;
 }
 
 void KviIrcUserEntry::setRealName(const QString &rn)
 {
-	m_szRealName = rn;
-	m_szRealName = KviQString::trimmed(m_szRealName);
+	m_szRealName = rn.trimmed();
 	if(m_szRealName.length()>=3)
 	{
 		if( (m_szRealName[0].unicode()==KVI_TEXT_COLOR) && (m_szRealName[2].unicode()==KVI_TEXT_RESET) )
 		{
 			// hum.. encoded as hidden color code eh ? publish is somewhere, so others might implement this...
 			// for backwards compatibily, 3=bot
-			if(m_szRealName[1].unicode() & 1 && m_szRealName[1].unicode() & 2)
+			if(m_szRealName[1].unicode() == '3')
 			{
 				setBot(true); //3
 			} else {
-				if(m_szRealName[1].unicode() & 1)
+				if(m_szRealName[1].unicode() == '1')
 				{
 					setGender(Male); //1
 				} else {
-					if(m_szRealName[1].unicode() & 2)
+					if(m_szRealName[1].unicode()  == '2')
 					{
 						setGender(Female); //2
 					}
 				}
 			}
 			m_szRealName.remove(0,3);
+		}
+	}
+	
+	// smart nick color code
+	if(m_szRealName.length()>=7)
+	{
+		if((m_szRealName[0].unicode()==KVI_TEXT_COLOR))
+		{
+			unsigned char iFore, iBack;
+			int iPos=getUnicodeColorBytes(m_szRealName, 1, &iFore, &iBack);
+			// extract smart nick color code
+			if(iPos > 1 && m_szRealName[iPos]==KVI_TEXT_RESET)
+			{
+				m_szRealName.truncate(iPos);
+				int color = KviNickColors::getSmartColorIntByMircColor(iFore, iBack);
+				if(color>=0) setSmartNickColor(color);
+				m_szRealName.remove(0,iPos+1);
+			}
 		}
 	}
 }

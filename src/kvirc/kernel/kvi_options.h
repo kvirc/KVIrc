@@ -332,8 +332,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolDisableQuietBanListRequestOnJoin 238       /* channel */
 #define KviOption_boolUseSaslIfAvailable 239
 #define KviOption_boolFrameIsMaximized 240                             /* internal */
+#define KviOption_boolPrependNickColorInfoToRealname 241
 
-#define KVI_NUM_BOOL_OPTIONS 241
+#define KVI_NUM_BOOL_OPTIONS 242
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

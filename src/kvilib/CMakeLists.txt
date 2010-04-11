@@ -77,6 +77,7 @@ SET(kvilib_SRCS
 	ext/kvi_pixmap.cpp
 	ext/kvi_animatedpixmap.cpp
 	ext/kvi_animatedpixmapcache.cpp
+	ext/kvi_nickcolors.cpp
 	ext/kvi_proxydb.cpp
 	ext/kvi_regchan.cpp
 	ext/kvi_regusersdb.cpp

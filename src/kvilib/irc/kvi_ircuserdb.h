@@ -111,7 +111,22 @@ protected:
 
 	QColor      m_cachedColor;
 	bool        m_bUseCustomColor;
+
+	int         m_iSmartNickColor;
 public:
+	/**
+	* \brief Returns the ircview smart nick color of the user
+	* \return int
+	*/
+	int smartNickColor() { return m_iSmartNickColor; };
+
+	/**
+	* \brief Sets the gender of the user
+	* \param g The gender
+	* \return void
+	*/
+	void setSmartNickColor(const int iColor) { m_iSmartNickColor=iColor; };
+
 	/**
 	* \brief Returns the gender of the user
 	* \return Gender

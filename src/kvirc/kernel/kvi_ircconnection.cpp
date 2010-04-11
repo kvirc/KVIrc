@@ -67,6 +67,7 @@
 #include "kvi_useridentity.h"
 #include "kvi_identityprofile.h"
 #include "kvi_sasl.h"
+#include "kvi_nickcolors.h"
 
 #include <QTimer>
 #include <QTextCodec>
@@ -1237,8 +1238,8 @@ void KviIrcConnection::loginToIrcServer()
 		return;
 	}
 
-	QString szGenderAvatarTag;
-	int iGenderAvatarTag=0;
+	unsigned int iGenderAvatarTag=0;
+	
 	if(KVI_OPTION_BOOL(KviOption_boolPrependGenderInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).isEmpty())
 	{
 		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",Qt::CaseInsensitive))
@@ -1255,10 +1256,26 @@ void KviIrcConnection::loginToIrcServer()
 		iGenderAvatarTag|=4;
 	}
 
+	if(KVI_OPTION_BOOL(KviOption_boolPrependNickColorInfoToRealname) &&
+		KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
+	{
+		QString szTags;
+		szTags.sprintf("%c%d,%d%c",
+				KVI_TEXT_COLOR,
+				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground),
+				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground),
+				KVI_TEXT_RESET);
+		szReal.prepend(KviQString::toUtf8(szTags));
+	}
+
 	if(iGenderAvatarTag!=0)
 	{
-		szGenderAvatarTag.sprintf("%c%d%c",KVI_TEXT_COLOR,iGenderAvatarTag,KVI_TEXT_RESET);
-		szReal.prepend(KviQString::toUtf8(szGenderAvatarTag));
+		QString szTags;
+		szTags.sprintf("%c%d%c",
+			       KVI_TEXT_COLOR,
+			       iGenderAvatarTag,
+			       KVI_TEXT_RESET);
+		szReal.prepend(KviQString::toUtf8(szTags));
 	}
 
 	if(!sendFmtData("USER %s 0 %s :%s",szUser.data(),

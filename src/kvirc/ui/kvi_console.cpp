@@ -71,6 +71,7 @@
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_popupmenu.h"
+#include "kvi_nickcolors.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_sslmaster.h"
@@ -149,7 +150,8 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	applyOptions();
 }
 
-void KviConsole::recentUrlsChanged(){
+void KviConsole::recentUrlsChanged()
+{
 	QString cur = m_pAddressEdit->currentText();
 	m_pAddressEdit->clear();
 	for (
@@ -667,42 +669,6 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 	return type;
 }
 
-#define KVI_NUM_NICK_COLORS 95
-
-static const char * g_nickColors[KVI_NUM_NICK_COLORS]=
-{
-	"0,1"  ,"0,2"  ,"0,3"  ,"0,4"  ,"0,5"  ,"0,6"  ,"0,10" ,"0,12" ,"0,14" , //9
-	"1,0"  ,"1,4"  ,"1,7"  ,"1,8"  ,"1,9"  ,"1,11" ,"1,15" ,  //7
-	"2,0"  ,"2,4"  ,"2,7"  ,"2,8"  ,"2,9"  ,"2,11" ,"2,15" ,  //7
-	"3,8"  ,"3,9"  ,"3,0"  ,"3,15" , //4
-	"4,0"  ,"4,1"  ,"4,8"  ,"4,9"  ,"4,11" ,"4,15" , //6
-	"5,0"  ,"5,7"  ,"5,8"  ,"5,15" , //4
-	"6,0"  ,"6,7"  ,"6,8"  ,"6,9"  ,"6,10" ,"6,11" ,"6,15" , //7
-	"7,1"  ,"7,2"  ,"7,5"  ,"7,6"  ,"7,14" , //5
-	"8,1"  ,"8,2"  ,"8,3"  ,"8,4"  ,"8,5"  ,"8,6"  ,"8,7"  ,"8,10" ,"8,12" ,"8,14" , //10
-	"9,1"  ,"9,2"  ,"9,3"  ,"9,5"  ,"9,6"  ,"9,14" , //6
-	"10,1" ,"10,2" , //2
-	"11,1" ,"11,2" ,"11,3" ,"11,5" ,"11,6" ,"11,14", //6
-	"12,0" ,"12,7" ,"12,8" ,"12,9" ,"12,10","12,11","12,15", //7
-	"13,0" ,"13,1" ,"13,6" ,"13,8" ,"13,11","13,15", //6
-	"14,0" ,"14,8" ,"14,11","14,15", //4
-	"15,1" ,"15,2" ,"15,3" ,"15,6" ,"15,14" //5
-};
-
-inline static int getSmartColorForNick(QString *szNick)
-{
-	int sum = 0;
-	int i = szNick->length();
-	const QChar * aux = szNick->unicode();
-	// FIXME: Shouldn't this be case insensitive ?
-	while(i > 0)
-	{
-		sum += aux->unicode();
-		aux++;
-		i--;
-	}
-	return sum;
-}
 
 void KviConsole::outputPrivmsg(KviWindow *wnd,
 	int type,
@@ -778,22 +744,37 @@ void KviConsole::outputPrivmsg(KviWindow *wnd,
 	if(bIsChan && KVI_OPTION_BOOL(KviOption_boolShowChannelUserFlagInPrivmsgView))
 		((KviChannel *)wnd)->prependUserFlag(nick,szNick);
 
-	if(KVI_OPTION_BOOL(KviOption_boolColorNicks))
+	if(KVI_OPTION_BOOL(KviOption_boolColorNicks) && connection())
 	{
-		if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick) && connection())
+		if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick) &&
+			QString::compare(nick,connection()->userInfo()->nickName(),Qt::CaseSensitive)==0)
 		{
-			if(QString::compare(nick,connection()->userInfo()->nickName(),Qt::CaseSensitive)==0)
-			{
-				szNick.prepend(m_szOwnSmartColor);
-			} else {
-				int sum=getSmartColorForNick(&nick);
-				//avoid the use of teh color specifier for own nickname
-				if(m_szOwnSmartColor==g_nickColors[sum % KVI_NUM_NICK_COLORS])
-					sum++;
-				szNick.prepend(g_nickColors[sum % KVI_NUM_NICK_COLORS]);
-			}
+			// it's me
+			szNick.prepend(m_szOwnSmartColor);
 		} else {
-			szNick.prepend(g_nickColors[getSmartColorForNick(&nick) % KVI_NUM_NICK_COLORS]);
+			//search for a cached entry
+			KviIrcUserEntry * pUserEntry = connection()->userDataBase()->find(nick);
+			if(pUserEntry)
+			{
+				int sum=pUserEntry->smartNickColor();
+				if(sum < 0)
+				{
+					// cache miss, create entry
+					sum=KviNickColors::getSmartColorForNick(&nick);
+					if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
+					{
+						//avoid the use of teh color specifier for own nickname
+						if(m_szOwnSmartColor==KviNickColors::getSmartColor(sum))
+							sum++;
+					}
+					pUserEntry->setSmartNickColor(sum);
+				}
+				
+				szNick.prepend(KviNickColors::getSmartColor(sum));
+			} else {
+				// how can this happen? better fallback than wrong
+				qDebug("BUG Trying to get smart color for a nickname not in userdb (%s)!",szNick.toUtf8().data());
+			}
 		}
 		szNick.prepend(KVI_TEXT_COLOR);
 		szNick.append(KVI_TEXT_COLOR);
