@@ -50,8 +50,8 @@ class KVIRC_API KviMdiChild : public QMdiSubWindow
 public:
 	/**
 	* \brief Constructs the Mdi child object
-	* \param par The mdi-manager the mdi-child belongs to.
-	* \param name The name of the mdi-child
+	* \param pPar The mdi-manager the mdi-child belongs to.
+	* \param pcName The name of the mdi-child
 	* \return KviMdiChild
 	*/
 	KviMdiChild(KviMdiManager * pPar, const char * pcName = 0);
@@ -140,7 +140,7 @@ public:
 
 	/**
 	* \brief Sets the window title
-	* \param plain Plain text of caption
+	* \param szPlain Plain text of caption
 	* \return void
 	*/
 	void setWindowTitle(const QString & szPlain);

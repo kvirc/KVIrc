@@ -28,7 +28,7 @@
 /**
 * \file kvi_bswap.h
 * \author Szymon Stefanek
-* \brief Bit Swap
+* \brief Bit Swap functions
 */
 
 #include "kvi_settings.h"
@@ -37,6 +37,12 @@
 // KVILIB_API has been removed from these two functions
 // these should always go inlined
 
+/**
+* \brief Swaps the endianess of a kvi_u64_t
+*
+* \param i the original value
+* \return kvi_u64_t
+*/
 inline kvi_u64_t kvi_swap64(kvi_u64_t i)
 {
 	// abcdefgh to hgfedcba
@@ -50,12 +56,24 @@ inline kvi_u64_t kvi_swap64(kvi_u64_t i)
 		(i >> 56));                /* a to h */
 }
 
+/**
+* \brief Swaps the endianess of a kvi_u32_t
+*
+* \param i the original value
+* \return kvi_u32_t
+*/
 inline kvi_u32_t kvi_swap32(kvi_u32_t i)
 {
 	// abcd to dcba
 	return ((i << 24) | ((i & 0xff00) << 8) | ((i >> 8) & 0xff00) | (i >> 24));
 }
 
+/**
+* \brief Swaps the endianess of a kvi_u16_t
+*
+* \param i the original value
+* \return kvi_u16_t
+*/
 inline kvi_u16_t kvi_swap16(kvi_u16_t i)
 {
 	// ab to ba

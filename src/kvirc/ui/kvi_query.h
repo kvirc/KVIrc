@@ -58,6 +58,7 @@ public:
 	/**
 	* \brief Constructs the query object
 	* \param lpFrm The parent frame
+	* \param lpConsole The associated console
 	* \param szNick The nickname with who we open a query
 	* \return KviQuery
 	*/
@@ -242,9 +243,9 @@ protected:
 	* \param szOldNick The old nickname of the target
 	* \param szOldUser The old username of the target
 	* \param szOldHost The old hostname of the target
-	* \param szNewNick The new nickname of the target
-	* \param szNewUser The new username of the target
-	* \param szNewHost The new hostname of the target
+	* \param szNick The new nickname of the target
+	* \param szUser The new username of the target
+	* \param szHost The new hostname of the target
 	* \return void
 	*/
 	void notifyTargetChange(const QString & szOldNick, const QString & szOldUser, const QString & szOldHost, const QString & szNick, const QString & szUser, const QString & szHost);

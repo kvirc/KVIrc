@@ -43,6 +43,9 @@
 /// Hash functions for various data types
 ///
 
+/**
+* \brief Hash function for the char * data type
+*/
 inline unsigned int kvi_hash_hash(const char * szKey,bool bCaseSensitive)
 {
 	unsigned int uResult = 0;
@@ -63,6 +66,9 @@ inline unsigned int kvi_hash_hash(const char * szKey,bool bCaseSensitive)
 	return uResult;
 }
 
+/**
+* \brief Hash key compare function for the char * data type
+*/
 inline bool kvi_hash_key_equal(const char * szKey1,const char * szKey2,bool bCaseSensitive)
 {
 	if(bCaseSensitive)
@@ -89,6 +95,9 @@ inline bool kvi_hash_key_equal(const char * szKey1,const char * szKey2,bool bCas
 	return true;
 }
 
+/**
+* \brief Hash key copy function for the char * data type
+*/
 inline void kvi_hash_key_copy(const char * const &szFrom,const char * &szTo,bool bDeepCopy)
 {
 	if(bDeepCopy)
@@ -102,18 +111,27 @@ inline void kvi_hash_key_copy(const char * const &szFrom,const char * &szTo,bool
 	}
 }
 
+/**
+* \brief Hash key destruction function for the char * data type
+*/
 inline void kvi_hash_key_destroy(const char * &szKey,bool bDeepCopy)
 {
 	if(bDeepCopy)
 		kvi_free(szKey);
 }
 
+/**
+* \brief Default (empty) hash key for the char * data type
+*/
 inline const char * & kvi_hash_key_default(const char **)
 {
 	static const char * static_null = NULL;
 	return static_null;
 }
 
+/**
+* \brief Hash function for the KviStr data type
+*/
 inline unsigned int kvi_hash_hash(const KviStr &szKey,bool bCaseSensitive)
 {
 	unsigned int uResult = 0;
@@ -135,75 +153,120 @@ inline unsigned int kvi_hash_hash(const KviStr &szKey,bool bCaseSensitive)
 	return uResult;
 }
 
+/**
+* \brief Hash key compare function for the KviStr data type
+*/
 inline bool kvi_hash_key_equal(const KviStr &szKey1,const KviStr &szKey2)
 {
 	return kvi_hash_key_equal(szKey1.ptr(),szKey2.ptr());
 }
 
+/**
+* \brief Hash key copy function for the KviStr data type
+*/
 inline void kvi_hash_key_copy(const KviStr &szFrom,KviStr &szTo,bool)
 {
 	szTo = szFrom;
 }
 
+/**
+* \brief Hash key destruction function for the KviStr data type
+*/
 inline void kvi_hash_key_destroy(KviStr &,bool)
 {
 }
 
+/**
+* \brief Default (empty) hash key for the KviStr data type
+*/
 inline const KviStr & kvi_hash_key_default(KviStr *)
 {
 	return KviStr::emptyString();
 }
 
+/**
+* \brief Hash function for the int data type
+*/
 inline unsigned int kvi_hash_hash(const int &iKey,bool)
 {
 	return (unsigned int)iKey;
 }
 
+/**
+* \brief Hash key compare function for the int data type
+*/
 inline bool kvi_hash_key_equal(const int &iKey1,const int &iKey2,bool)
 {
 	return iKey1 == iKey2;
 }
 
+/**
+* \brief Hash key copy function for the int data type
+*/
 inline void kvi_hash_key_copy(const int &iKeyFrom,int &iKeyTo,bool)
 {
 	iKeyTo = iKeyFrom;
 }
 
+/**
+* \brief Hash key destruction function for the int data type
+*/
 inline void kvi_hash_key_destroy(int &,bool)
 {
 }
 
+/**
+* \brief Default (empty) hash key for the int data type
+*/
 inline const int & kvi_hash_key_default(int *)
 {
 	static int static_default = 0;
 	return static_default;
 }
 
+/**
+* \brief Hash function for the unsigned short data type
+*/
 inline unsigned int kvi_hash_hash(const unsigned short &iKey,bool)
 {
 	return (unsigned int)iKey;
 }
 
+/**
+* \brief Hash key compare function for the unsigned short data type
+*/
 inline bool kvi_hash_key_equal(const unsigned short &iKey1,const unsigned short &iKey2,bool)
 {
 	return iKey1 == iKey2;
 }
 
+/**
+* \brief Hash key copy function for the unsigned short data type
+*/
 inline void kvi_hash_key_copy(const unsigned short &iKeyFrom,unsigned short &iKeyTo,bool)
 {
 	iKeyTo = iKeyFrom;
 }
 
+/**
+* \brief Hash key destruction function for the unsigned short data type
+*/
 inline void kvi_hash_key_destroy(unsigned short &,bool)
 {
 }
 
+/**
+* \brief Default (empty) hash key for the unsigned short data type
+*/
 inline const unsigned short & kvi_hash_key_default(unsigned short *)
 {
 	static unsigned short static_default = 0;
 	return static_default;
 }
 
+/**
+* \brief Hash function for the void * data type
+*/
 inline unsigned int kvi_hash_hash(void * pKey,bool)
 {
 	unsigned char * pBytes = (unsigned char *)&(pKey);
@@ -217,26 +280,41 @@ inline unsigned int kvi_hash_hash(void * pKey,bool)
 	return uSum;
 }
 
+/**
+* \brief Hash key compare function for the void * data type
+*/
 inline bool kvi_hash_key_equal(void *pKey1,void *pKey2,bool)
 {
 	return pKey1 == pKey2;
 }
 
+/**
+* \brief Hash key copy function for the void * data type
+*/
 inline void kvi_hash_key_copy(void * const &pKeyFrom,void *&pKeyTo,bool)
 {
 	pKeyTo = pKeyFrom;
 }
 
+/**
+* \brief Hash key destruction function for the void * data type
+*/
 inline void kvi_hash_key_destroy(void *,bool)
 {
 }
 
+/**
+* \brief Default (empty) hash key for the void * data type
+*/
 inline void * & kvi_hash_key_default(void *)
 {
 	static void * static_default = NULL;
 	return static_default;
 }
 
+/**
+* \brief Hash function for the QString data type
+*/
 inline unsigned int kvi_hash_hash(const QString &szKey,bool bCaseSensitive)
 {
 	unsigned int uResult = 0;
@@ -259,6 +337,9 @@ inline unsigned int kvi_hash_hash(const QString &szKey,bool bCaseSensitive)
 	return uResult;
 }
 
+/**
+* \brief Hash key compare function for the QString data type
+*/
 inline bool kvi_hash_key_equal(const QString &szKey1,const QString &szKey2,bool bCaseSensitive)
 {
 	if(bCaseSensitive)
@@ -266,15 +347,24 @@ inline bool kvi_hash_key_equal(const QString &szKey1,const QString &szKey2,bool 
 	return KviQString::equalCI(szKey1,szKey2);
 }
 
+/**
+* \brief Hash key copy function for the QString data type
+*/
 inline void kvi_hash_key_copy(const QString &szFrom,QString &szTo,bool)
 {
 	szTo = szFrom;
 }
 
+/**
+* \brief Hash key destruction function for the QString data type
+*/
 inline void kvi_hash_key_destroy(QString &,bool)
 {
 }
 
+/**
+* \brief Default (empty) hash key for the QString data type
+*/
 inline const QString & kvi_hash_key_default(QString *)
 {
 	return KviQString::Empty;

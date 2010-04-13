@@ -274,7 +274,8 @@ private:
 	/**
 	* \brief Draws a block of text
 	* \param pa The pointer to the painter
-	* \param fm The font metrics to use
+	* \param iTop The top coordinate of the block
+	* \param iBottom The top coordinate of the block
 	* \param iCurXPos The current X posistion
 	* \param iTextBaseline The current Y position
 	* \param iIdx The index of the character to start crop

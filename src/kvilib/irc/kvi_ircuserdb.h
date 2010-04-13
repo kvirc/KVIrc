@@ -121,8 +121,8 @@ public:
 	int smartNickColor() { return m_iSmartNickColor; };
 
 	/**
-	* \brief Sets the gender of the user
-	* \param g The gender
+	* \brief Sets the ircview smart nick color of the user
+	* \param iColor The color value
 	* \return void
 	*/
 	void setSmartNickColor(const int iColor) { m_iSmartNickColor=iColor; };
@@ -206,7 +206,7 @@ public:
 
 	/**
 	* \brief Sets the user global flags (eg: "G*")
-	* \param flags
+	* \param userFlags
 	* \return void
 	*/
 	void setUserFlags(const QString & userFlags) { m_szUserFlags = userFlags; };

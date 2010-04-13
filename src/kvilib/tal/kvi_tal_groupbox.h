@@ -73,7 +73,7 @@ public:
 	* \param pParent The parent object
 	* \return KviTalGroupBox
 	*/
-	KviTalGroupBox(Qt::Orientation orientation, QWidget * parent = 0);
+	KviTalGroupBox(Qt::Orientation orientation, QWidget * pParent = 0);
 
 	/**
 	* \brief Constructs the groupbox object
@@ -82,7 +82,7 @@ public:
 	* \param pParent The parent object
 	* \return KviTalGroupBox
 	*/
-	KviTalGroupBox(Qt::Orientation orientation, const QString & szTitle, QWidget * parent = 0);
+	KviTalGroupBox(Qt::Orientation orientation, const QString & szTitle, QWidget * pParent = 0);
 
 	/**
 	* \brief Destroys the groupbox object
@@ -138,7 +138,7 @@ public:
 
 	/**
 	* \brief Sets a new layout
-	* \param layout The new layout
+	* \param newLayout The new layout
 	* \return void
 	*/
 	void setLayout(QLayout * newLayout);

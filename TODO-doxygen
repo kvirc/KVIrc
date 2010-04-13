@@ -37,7 +37,6 @@ net/kvi_http.h
 net/kvi_socket.h
 tal/kvi_tal_windowstate.h
 tal/kvi_tal_scrollview.h
-tal/kvi_tal_treewidget.h - incomplete
 tal/kvi_tal_tablewidget.h
 tal/kvi_tal_tooltip.h
 tal/kvi_tal_tabdialog.h
@@ -46,12 +45,7 @@ tal/kvi_tal_listwidget.h - incomplete lines 150 and 228
 tal/kvi_tal_wizard.h
 tal/kvi_tal_textedit.h
 tal/kvi_tal_widgetstack.h
-core/kvi_memmove.h
 core/kvi_inttypes.h
-core/kvi_pointerhashtable.h - incomplete from line 42 to 283
-core/kvi_malloc.h
-core/kvi_bswap.h - incomplete from line 40
-core/kvi_heapobject.h - incomplete from line 75 to 80
 core/kvi_strasm.h
 core/kvi_string.h
 core/kvi_error.h - incomplete from line 36 to 185
@@ -61,8 +55,6 @@ system/kvi_time.h
 system/kvi_stdarg.h
 system/kvi_byteorder.h
 system/kvi_thread.h
-config/kvi_settings.h
-config/kvi_debug.h
 
 kvirc:
 ui/kvi_optionswidget.h

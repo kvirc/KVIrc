@@ -236,7 +236,7 @@ public:
 	* current nickname, username, flags and other stuff that KviUserIdentity
 	* actually doesn't contain (or has only "default" values for).
 	* The returned pointer is never NULL.
-	* Use #include "kvi_ircconnectionuserinfo.h" as the class is only
+	* Include "kvi_ircconnectionuserinfo.h" as the class is only
 	* forwarded here.
 	* \return KviIrcConnectionUserInfo *
 	*/
@@ -250,7 +250,7 @@ public:
 	* KviConnectionTarget actually doesn't contain (or has only "default"
 	* values for).
 	* The returned pointer is never NULL.
-	* Use #include "kvi_ircconnectionserverinfo.h" as the class is only
+	* Include "kvi_ircconnectionserverinfo.h" as the class is only
 	* forwarded here.
 	* \return KviIrcConnectionServerInfo *
 	*/
@@ -264,7 +264,7 @@ public:
 	* This data *could* be part of KviIrcConnection itself but we prefer to
 	* keep it in a separate class in order to cleanup the implementation.
 	* The returned pointer is never NULL.
-	* Use #include "kvi_ircconnectionstatedata.h" as the class is only
+	* Include "kvi_ircconnectionstatedata.h" as the class is only
 	* forwarded here.
 	* \return KviIrcConnectionStateData *
 	*/
@@ -276,7 +276,7 @@ public:
 	* It contains data private to the Anti CTCP Flood engine. Very similar
 	* to KviIrcConnectionStateData but dedicated to Ctcp flood.
 	* The returned pointer is never NULL.
-	* Use #include "kvi_ircconnectionantictcpflooddata.h" as the class is
+	* Include "kvi_ircconnectionantictcpflooddata.h" as the class is
 	* only forwarded here.
 	* \return KviIrcConnectionAntiCtcpFloodData *
 	*/
@@ -289,7 +289,7 @@ public:
 	* It contains data private to the netsplit detector engine. Very similar
 	* to KviIrcConnectionStateData but dedicated to netsplit detection.
 	* The returned pointer is never NULL.
-	* Use #include "kvi_ircconnectionnetsplitdetectordata.h" as the class is
+	* Include "kvi_ircconnectionnetsplitdetectordata.h" as the class is
 	* only forwarded here.
 	* \return KviIrcConnectionNetsplitDetectorData *
 	*/
@@ -302,7 +302,7 @@ public:
 	* It contains data private to the async whois engine. Very similar to
 	* KviIrcConnectionStateData but dedicated to async whois.
 	* The returned pointer is never NULL.
-	* Use #include "kvi_ircconnectionasyncwhoisdata.h" as the class is only
+	* Include "kvi_ircconnectionasyncwhoisdata.h" as the class is only
 	* forwarded here.
 	* \return KviIrcConnectionAsyncWhoisData *
 	*/
@@ -315,7 +315,7 @@ public:
 	* It contains runtime statistics about the connection. Very similar to
 	* KviIrcConnectionStateData but dedicated to statistics.
 	* The returned pointer is never NULL.
-	* Use #include "kvi_ircconnectionstatistics.h" as the class is only
+	* Include "kvi_ircconnectionstatistics.h" as the class is only
 	* forwarded here.
 	* \return KviIrcConnectionStatistics *
 	*/

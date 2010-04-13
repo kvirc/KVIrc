@@ -60,7 +60,7 @@ public:
 	virtual ~KviRequestQueue();
 protected:
 	/**
-	* \enum RequestType
+	* \enum RequestTypes
 	*
 	* \warning MODE %s b MUST BE THE LAST AUTOMATIC CHANNEL QUERY so we get
 	* RPL_ENDOFBANLIST as the last reply and we know that the channel is in sync

@@ -51,7 +51,7 @@ public:
 	* \param pParams The parameters' list
 	* \return KviKvsTreeNodeAliasSimpleCommand
 	*/
-	KviKvsTreeNodeAliasSimpleCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params);
+	KviKvsTreeNodeAliasSimpleCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * pParams);
 
 	/**
 	* \brief Destroys the treenode alias simple command call object

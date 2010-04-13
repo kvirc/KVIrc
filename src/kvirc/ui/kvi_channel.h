@@ -840,7 +840,7 @@ public:
 	/**
 	* \brief Called when someone changes his nick
 	* \param szOldNick The old nickname of the user
-	* \param szOldNick The new nickname of the user
+	* \param szNewNick The new nickname of the user
 	* \return bool
 	*/
 	bool nickChange(const QString & szOldNick, const QString & szNewNick);
@@ -930,7 +930,7 @@ public:
 
 	/**
 	* \brief Returns true if the channel has a limit set
-	* \eturn bool
+	* \return bool
 	*/
 	bool hasChannelLimit(){ return !m_szChannelLimit.isEmpty(); };
 

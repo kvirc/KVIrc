@@ -95,8 +95,9 @@ public slots:
 	void ownerDead();
 
 	/**
-	* \brief Called when an item is selected
-	* \param pItem The selected item
+	* \brief Called when a cell is selected
+	* \param row The row containing selected item
+	* \param column The column containing selected item
 	* \return void
 	*/
 	void cellSelected(int row, int column);

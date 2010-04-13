@@ -41,8 +41,19 @@
 
 // FIXME: Once we have a stable CMake build system, this section needs a cleanup.
 #if (defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)) && !defined(MINGW)
+
+	/**
+	 * \def COMPILE_WITH_SYSTEM_MEMMOVE This flag will disable kvirc's internal optimized memmove functions
+	 * \def COMPILE_ON_WINDOWS This flag will enable specific code for windows/visual studio compilation
+	 */
+	
 	#define COMPILE_WITH_SYSTEM_MEMMOVE
 	#define COMPILE_ON_WINDOWS
+
+	/**
+	 * \def KVILIB_API This prefix before a class name or function enables the export of its symbols outside kvilib; needed for win32/visual studio, win32/mingw, linux/gcc.
+	 * \def KVILIB_API_TYPEDEF This prefix before a typedef enables the export of its symbol outside kvilib; needed for win32/visual studio, win32/mingw
+	 */
 
 	#ifdef __KVILIB__
 		#define KVILIB_API __declspec(dllexport) __attribute__((visibility("default")))
@@ -51,6 +62,11 @@
 		#define KVILIB_API __declspec(dllimport) __attribute__((visibility("default")))
 		#define KVILIB_API_TYPEDEF __declspec(dllimport)
 	#endif
+
+	/**
+	 * \def KVIRC_API This prefix before a class name or function enables the export of its symbols outside kvirc; needed for win32/visual studio, win32/mingw, linux/gcc.
+	 * \def KVIRC_API_TYPEDEF This prefix before a typedef enables the export of its symbol outside kvirc; needed for win32/visual studio, win32/mingw
+	 */
 
         #ifdef __KVIRC__
 		#define KVIRC_API __declspec(dllexport) __attribute__((visibility("default")))
@@ -61,6 +77,11 @@
 	#endif
 #else
 	#ifdef MINGW
+
+	/**
+	 * \def COMPILE_ON_MINGW This flag will enable specific code for windows/mingw compilation
+	 * \def COMPILE_NO_X This flag forces X11 support to be disabled
+	 */
 		#define COMPILE_ON_MINGW
 		#define COMPILE_NO_X
 		#define COMPILE_WITH_SYSTEM_MEMMOVE
@@ -81,6 +102,7 @@
 			#define KVIRC_API_TYPEDEF __declspec(dllimport)
 		#endif
 	#else
+
 		#define KVILIB_API __attribute__((visibility("default")))
 		#define KVILIB_API_TYPEDEF
 		
@@ -89,10 +111,27 @@
 	#endif
 
 	#ifdef Q_OS_MACX
+		/**
+		* \def COMPILE_ON_MAC This flag will enable specific code for mac compilation
+		*/
+
 		#define COMPILE_ON_MAC
 	#endif
 
 #endif
+
+
+/**
+* \def KVI_VERSION Defines the current kvirc version
+* \def KVIRC_VERSION_BRANCH Defines the kvirc version of the current branch
+* \def KVI_RELEASE_NAME Defines the codename for the current kvirc release
+* \def _GNU_SOURCE Enables _GNU_SOURCE features
+* \def KVI_PTR2MEMBER Cross-platform macro that returns a member from its pointer
+* \def COMPILE_NO_X_BELL Enasures X bell is disabled if X is disabled
+* \def KVI_DEPRECATED Prefix for deprecated objects inside kvirc code (currently unused)
+* \def debug Internal debug function; default to qt4's qDebug implementation
+* \def BIG_ENDIAN_MACHINE_BYTE_ORDER If defined, the current target processor is big endian, little endian otherwise
+*/
 
 #define KVI_VERSION KVIRC_VERSION_RELEASE
 
@@ -103,6 +142,7 @@
 #endif
 
 #define KVI_RELEASE_NAME "Insomnia"
+
 
 // We want _GNU_SOURCE features
 #ifndef _GNU_SOURCE

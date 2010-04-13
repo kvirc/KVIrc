@@ -345,7 +345,8 @@ protected:
 
 	/**
 	* \brief Gets the final HTTP reply and handles it
-	* \param cReply The proxy reply
+	* \param pcBuffer The buffer containing the proxy reply
+	* \param iBufLen Size of the buffer containing the proxy reply
 	* \return void
 	*/
 	void proxyHandleHttpFinalReply(const char * pcBuffer, int iBufLen);

@@ -93,7 +93,6 @@ public:
 	/**
 	* \brief Evaluates the array in read-write mode
 	* \param c The context where the alias is bound to
-	* \param pBuffer The data buffer
 	* \return KviKvsRWEvaluationResult *
 	*/
 	virtual KviKvsRWEvaluationResult * evaluateReadWrite(KviKvsRunTimeContext * c);

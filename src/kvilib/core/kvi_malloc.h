@@ -33,14 +33,46 @@
 
 #include <stdlib.h>
 
+/**
+* \file kvi_malloc.h
+* \author Szymon Stefanek
+* \brief This file contains an internal implementation of the malloc/free functions
+*
+* If COMPILE_MEMORY_PROFILE is enabled, kvirc will use its internal implementation that includes a memory profiler.
+* If COMPILE_MEMORY_CHECKS is enabled, kvirc will check and report memory exhaustion problems.
+* If none of the previous is enabled, this will just bind the kvi_malloc and kvi_free functions to the proper
+* functions of the underlaying system.
+*/
+
 #ifdef COMPILE_MEMORY_PROFILE
 
 	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		#error "This stuff should be never compiled on Windows"
 	#endif
 
+	/**
+	* \brief Allocates size bytes of memory
+	*
+	* \param size number of bytes
+	* \return void *
+	*/
 	extern void * kvi_malloc(int size);
+
+	/**
+	* \brief Changes the size of the memory block pointed to by ptr to size bytes
+	*
+	* \param ptr pointer to the memory block
+	* \param size number of bytes
+	* \return void *
+	*/
 	extern void * kvi_realloc(void * ptr,int size);
+
+	/**
+	* \brief Frees the memory space pointed to by ptr
+	*
+	* \param ptr pointer to the memory block
+	* \return void
+	*/
 	extern void   kvi_free(void * ptr);
 
 #else
@@ -62,9 +94,18 @@
 		#define kvi_realloc(__ptr_,__size_) kvi_safe_realloc((void *)__ptr_,__size_)
 
 		#ifndef _KVI_MALLOC_CPP_
+			/**
+			* \brief Prints a warning then a memory allocation fails
+			*/
 			extern void outOfMemory();
 		#endif
 
+		/**
+		* \brief Allocates size bytes of memory, checking for failures
+		*
+		* \param size number of bytes
+		* \return void *
+		*/
 		inline void * kvi_safe_malloc(int size)
 		{
 			void * ptr = malloc(size);
@@ -72,6 +113,13 @@
 			return ptr;
 		}
 
+		/**
+		* \brief Changes the size of the memory block pointed to by ptr to size bytes, checking for failures
+		*
+		* \param ptr pointer to the memory block
+		* \param size number of bytes
+		* \return void *
+		*/
 		inline void * kvi_safe_realloc(void * ptr,int size)
 		{
 			ptr = realloc(ptr,size);

@@ -248,7 +248,7 @@ public:
 
 	/**
 	* \brief Sets the avatar of the user
-	* \param piz The avatar of the user
+	* \param pix The avatar of the user
 	* \return void
 	*/
 	void setAvatar(const KviPixmap & pix){ m_pixAvatar = pix; };

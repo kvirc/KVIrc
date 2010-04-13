@@ -72,11 +72,52 @@
 	class KVILIB_API KviHeapObject
 	{
 	public:
+		/**
+		* \brief Overloading of the new operator 
+		*
+		* \param size_t size in bytes of the memory that has to be allocated
+		* \return void *
+		*/
 		void * operator new(size_t uSize);
+
+		/**
+		* \brief Overloading of the delete operator
+		*
+		* \param pData pointer to the objet that needs to be freed
+		* \return void
+		*/
 		void operator delete(void * pData);
+
+		/**
+		* \brief Overloading of the new[] operator
+		*
+		* \param size_t size in bytes of the memory that has to be allocated
+		* \return void *
+		*/
 		void * operator new[](size_t uSize);
+
+		/**
+		* \brief Overloading of the delete[] operator
+		*
+		* \param pData pointer to the objet that needs to be freed
+		* \return void
+		*/
 		void operator delete[](void * pData);
+
+		/**
+		* \brief Overloading of the new operator (debug version)
+		*
+		* \param size_t size in bytes of the memory that has to be allocated
+		* \return void *
+		*/
 		void * operator new(size_t uSize,const char *,int);
+
+		/**
+		* \brief Overloading of the delete operator (debug version)
+		*
+		* \param pData pointer to the objet that needs to be freed
+		* \return void
+		*/
 		void operator delete(void * pData,const char *,int);
 	};
 #else //COMPILE_ON_WINDOWS

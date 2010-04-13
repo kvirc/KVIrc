@@ -82,6 +82,7 @@ public:
 	* \param szInitial The initial directory
 	* \param szFilter The filter to use
 	* \param bShowHidden Whether to show hidden files
+	* \param bConfirmOverwrite Whether to avoid the check for an already existing file being overwritten
 	* \param bShowNative Whether to show native dialogs
 	* \param pParent The parent widget
 	* \return bool

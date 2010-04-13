@@ -193,21 +193,21 @@ public:
 
 	/**
 	* \brief Adds a channel to the highlight list
-	* \param szChannel The channel name
+	* \param szChan The channel name
 	* \return void
 	*/
 	void addHighlightedChannel(const QString & szChan);
 
 	/**
 	* \brief Removes a channel from the highlight list
-	* \param szChannel The channel name
+	* \param szChan The channel name
 	* \return void
 	*/
 	void removeHighlightedChannel(const QString & szChan);
 
 	/**
 	* \brief Returns true if the channel is highlighted
-	* \param szChannel The channel name
+	* \param szChan The channel name
 	* \return bool
 	*/
 	bool isHighlightedChannel(const QString & szChan) { return m_pTmpHighLightedChannels->contains(szChan,Qt::CaseInsensitive); };

@@ -27,13 +27,28 @@
 
 #include <QtGlobal>
 
+/**
+* \file kvi_debug.h
+* \author Szymon Stefanek
+* \brief This file contains the definition of the debug macros;
+*        You can enable ALL the debugging output by uncommenting the line that defines _KVI_DEBUG_CHECK_RANGE_
+*/
+
 //=============================================================================
-// This file contains the definition of the debug macros
-// You can enable ALL the debugging output by uncommenting the next line
 //
+// You can enable ALL the debugging output by uncommenting the next line
 // #define _KVI_DEBUG_CHECK_RANGE_
 //
 //=============================================================================
+
+/**
+* \brief Debug macros
+*
+* \def __range_valid Assert that ensures that its parameter is true
+* \def __range_invalid Assert that ensures that its parameter is false
+* \def __ASSERT Assert that ensures that its parameter is true; enabled only if _KVI_DEBUG_or __KVI_DEBUG__ is defined
+*/
+
 
 #ifdef _KVI_DEBUG_CHECK_RANGE_
 	#define __range_valid(_expr) if(!(_expr))debug("[kvirc]: ASSERT FAILED: \"%s\" is false in %s (%d)",#_expr,__FILE__,__LINE__)

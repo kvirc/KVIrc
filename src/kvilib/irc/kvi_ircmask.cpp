@@ -314,7 +314,7 @@ bool KviIrcMask::hasNumericHost() const
 
 
 /**
-* Retuns in szMask the specified (if possible) mask of this user.<br>
+* Returns in szMask the specified (if possible) mask of this user.<br>
 * If the host or username are not known , the mask may contain less information
 * than requested.<br>
 * Mask types:<br>

@@ -850,7 +850,7 @@ QRect KviConfig::readRectEntry(const QString & szKey,const QRect &rct)
 
 ////////////////////////////////// unsigned short
 
-void KviConfig::writeEntry(const QString & szKey,unsigned short usValue)
+void KviConfig::writeEntry(const QString & szKey,unsigned short int usValue)
 {
 	m_bDirty = true;
 	KviConfigGroup * p_group = getCurrentGroup();
