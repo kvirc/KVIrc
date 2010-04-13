@@ -317,7 +317,9 @@ bool KviOptionsDialog::searchInSelectors(KviOptionsWidget *pOptionsWidget,const 
 			QString szText=selectors->at(i)->textForSearch();
 			QWidget* pWidget=selectors->at(i)->widgetToHighlight();
 			if (!pWidget) continue;
-			szText.append(pWidget->toolTip());
+			QString szTmp=pWidget->toolTip();
+			szTmp=szTmp.replace(QRegExp("<[^<>]+>"),"");
+			szText.append(szTmp);
 			if(!szText.isEmpty())
 			{
 				bool bOk = true;
@@ -331,8 +333,10 @@ bool KviOptionsDialog::searchInSelectors(KviOptionsWidget *pOptionsWidget,const 
 				}
 				if(bOk)
 				{
+					debug("found in %s",szText.toUtf8().data());
 					bFoundSomethingHere = true;
 				}
+				else 	debug("NOT found in %s",szText.toUtf8().data());
 
 				QFont font = pWidget->font();
 				font.setBold(bOk);
