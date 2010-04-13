@@ -316,8 +316,8 @@ bool KviOptionsDialog::searchInSelectors(KviOptionsWidget *pOptionsWidget,const 
 		{
 			QString szText=selectors->at(i)->textForSearch();
 			QWidget* pWidget=selectors->at(i)->widgetToHighlight();
-			if (pWidget)
-				szText.append(pWidget->toolTip());
+			if (!pWidget) continue;
+			szText.append(pWidget->toolTip());
 			if(!szText.isEmpty())
 			{
 				bool bOk = true;
@@ -397,7 +397,6 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsTreeWidgetItem * pItem,const QS
 		for(int j=0;j<ccount;j++)
 		{
 			KviOptionsTreeWidgetItem * pChild = (KviOptionsTreeWidgetItem *)pItem->child(j);
-			//debug("search in %s",pChild->text(0).toUtf8().data());
 			bool bRet = recursiveSearch(pChild,lKeywords);
 			if(bRet)bFoundSomethingInside = true;
 		}
