@@ -58,6 +58,7 @@ protected:
 	void commitOptionsReset();
 public:
 	void mergeTip(QWidget * w,const QString &tip);
+	KviPointerList<KviSelectorInterface> *selectors(){return m_pSelectorInterfaceList;};
 
 	// tabbed page paradigm
 	void createTabbedPage();

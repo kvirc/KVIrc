@@ -73,6 +73,8 @@ public:
 	virtual ~KviSelectorInterface(){};
 public:
 	virtual void commit(){};
+	virtual QString textForSearch(){return QString();};
+	virtual QWidget *widgetToHighlight(){return 0;};
 };
 
 class KVIRC_API KviBoolSelector : public QCheckBox, public KviSelectorInterface
@@ -85,9 +87,12 @@ private:
 	bool * m_pOption;
 public:
 	virtual void commit();
+	QString textForSearch(){return text();};
+	QWidget *widgetToHighlight(){return (QWidget *)this;};
 public slots:
 	void setNotEnabled(bool bNotEnabled);
 	void setEnabled(bool bEnabled);
+
 };
 
 class KVIRC_API KviStringSelector : public KviTalHBox, public KviSelectorInterface
@@ -105,6 +110,8 @@ public:
 	void setMinimumLabelWidth(unsigned int uWidth){ m_pLabel->setMinimumWidth(uWidth); };
 	virtual void commit();
 	void setText(const QString& text);
+	QString textForSearch(){return m_pLabel->text();};
+	QWidget *widgetToHighlight(){return (QWidget *)m_pLabel;};
 public slots:
 	virtual void setEnabled(bool bEnabled);
 };
@@ -117,6 +124,8 @@ public:
 	~KviPasswordSelector();
 protected:
 	QLabel    * m_pLabel;
+	QString textForSearch(){return m_pLabel->text();};
+	QWidget *widgetToHighlight(){return (QWidget *)m_pLabel;};
 	QLineEdit * m_pLineEdit;
 	QCheckBox * m_pCheckBox;
 	QString   * m_pOption;
@@ -142,6 +151,8 @@ protected:
 	QCheckBox * m_pCheckBox;
 public:
 	QString text();
+	//QString textForSearch(){return text();};
+	//QWidget *widgetToHighlight(){return (QWidget *)m_pLabel;};
 	void setText(const QString& text);
 public slots:
 	virtual void setEnabled(bool bEnabled);
@@ -192,6 +203,7 @@ public:
 	~KviUIntSelector(){};
 private:
 	QLabel       * m_pLabel;
+
 	QSpinBox     * m_pSpinBox;
 	unsigned int * m_pOption;
 	unsigned int   m_uLowBound;
@@ -199,6 +211,8 @@ private:
 	unsigned int   m_uDefault;
 	bool           m_bIsShortInt;
 public:
+	QString textForSearch(){return m_pLabel->text();};
+	QWidget *widgetToHighlight(){return (QWidget *)m_pLabel;};
 	virtual void setPrefix(const QString & txt);
 	virtual void setSuffix(const QString & txt);
 	virtual void commit();
@@ -264,6 +278,7 @@ private:
 	QColor        m_memColor;
 	QPushButton * m_pButton;
 public:
+	QString textForSearch(){return m_pLabel->text();};
 	virtual void commit();
 	QColor getColor(){ return m_memColor; };
 	void forceColor(QColor clr);
@@ -287,6 +302,8 @@ private:
 	QPushButton * m_pButton;
 public:
 	virtual void commit();
+	QString textForSearch(){return m_pLabel->text();};
+	QWidget *widgetToHighlight(){return (QWidget *)m_pLabel;};
 private:
 	void setButtonFont(QFont * pOption);
 public slots:
@@ -310,6 +327,8 @@ private:
 	QStringList * m_pOption;
 public:
 	virtual void commit();
+	QString textForSearch(){return m_pLabel->text();};
+	QWidget *widgetToHighlight(){return (QWidget *)m_pLabel;};
 	virtual void setEnabled(bool bEnabled);
 private slots:
 	void textChanged(const QString &str);
@@ -389,6 +408,8 @@ private:
 	QStringList  * m_pOption;
 public:
 	virtual void commit();
+	QString textForSearch(){return m_pLabel->text();};
+	QWidget *widgetToHighlight(){return (QWidget *)m_pLabel;};
 	virtual void setEnabled(bool bEnabled);
 private slots:
 	void textChanged(const QString &str);

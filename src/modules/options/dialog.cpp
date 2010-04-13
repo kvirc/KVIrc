@@ -306,37 +306,18 @@ void KviOptionsDialog::searchLineEditTextChanged(const QString &)
 	QString txt = m_pSearchLineEdit->text().trimmed();
 	m_pSearchButton->setEnabled(txt.length() > 0);
 }
-
-bool KviOptionsDialog::recursiveSearch(KviOptionsTreeWidgetItem * pItem,const QStringList &lKeywords)
+bool KviOptionsDialog::searchInSelectors(KviOptionsWidget *pOptionsWidget,const QStringList &lKeywords)
 {
-	//qDebug("recursive search:");
-	if(!pItem)return false;
-
-	if(!pItem->m_pOptionsWidget)
+	KviPointerList<KviSelectorInterface> *selectors=pOptionsWidget->selectors();
+	bool bFoundSomethingHere=false;
+	if(selectors->count()>0)
 	{
-		pItem->m_pOptionsWidget = g_pOptionsInstanceManager->getInstance(pItem->m_pInstanceEntry,m_pWidgetStack);
-		m_pWidgetStack->addWidget(pItem->m_pOptionsWidget);
-	}
-
-	bool bFoundSomethingHere = false;
-	KviPointerHashTable<void *,bool> lOptionWidgetsToMark;
-	lOptionWidgetsToMark.setAutoDelete(true);
-	QTabWidget * pTabWidgetToMark = 0;
-
-	QObject * o;
-	QObjectList ol = pItem->m_pOptionsWidget->children();
-	if(ol.count() > 0)
-	{
-		for(QObjectList::Iterator it = ol.begin();it != ol.end();++it)
+		for(unsigned int i=0;i<selectors->count();i++)
 		{
-			o = *it;
-			QString szText;
-			if(o->inherits("QLabel"))szText = ((QLabel *)o)->text();
-			else if(o->inherits("QCheckBox"))szText = ((QCheckBox *)o)->text();
-			else if(o->inherits("KviTalGroupBox"))szText = ((KviTalGroupBox *)o)->title();
-
-			if(o->inherits("QWidget"))
-				szText.append(((QWidget *)o)->toolTip());
+			QString szText=selectors->at(i)->textForSearch();
+			QWidget* pWidget=selectors->at(i)->widgetToHighlight();
+			if (pWidget)
+				szText.append(pWidget->toolTip());
 			if(!szText.isEmpty())
 			{
 				bool bOk = true;
@@ -353,72 +334,51 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsTreeWidgetItem * pItem,const QS
 					bFoundSomethingHere = true;
 				}
 
-				if(o->inherits("QWidget"))
-				{
-					QWidget* pWidget=(QWidget*)o;
-					QFont font = pWidget->font();
-					font.setBold(bOk);
-					font.setUnderline(bOk);
-					pWidget->setFont(font);
-
-					// if there is a QTabWidget in the parent chain, signal it in the tab text
-					QObject * pParent = pWidget->parent();
-					while(pParent)
-					{
-						if(pParent->inherits("QTabWidget"))
-						{
-							pTabWidgetToMark = (QTabWidget *)pParent;
-							break;
-						}
-						pParent = pParent->parent();
-					}
-
-					if(pTabWidgetToMark)
-					{
-						// lookup the KviOptionsWidget parent
-						pParent = pWidget->parent();
-						while(pParent)
-						{
-							if(pParent->inherits("KviOptionsWidget"))
-							{
-								bool * pExistingBool = lOptionWidgetsToMark.find(pParent);
-								if(pExistingBool)
-								{
-									if(bOk)
-										*pExistingBool = true;
-								} else {
-									lOptionWidgetsToMark.insert(pParent,new bool(bOk));
-								}
-								break;
-							}
-							pParent = pParent->parent();
-						}
-					}
-				}
+				QFont font = pWidget->font();
+				font.setBold(bOk);
+				font.setUnderline(bOk);
+				pWidget->setFont(font);
 			}
 		}
 	}
+	return bFoundSomethingHere;
+}
 
-	if(pTabWidgetToMark)
+bool KviOptionsDialog::recursiveSearch(KviOptionsTreeWidgetItem * pItem,const QStringList &lKeywords)
+{
+	if(!pItem)return false;
+	if(!pItem->m_pOptionsWidget)
 	{
-		KviPointerHashTableIterator<void *,bool> it(lOptionWidgetsToMark);
-		while(bool * pBool = it.current())
+		pItem->m_pOptionsWidget = g_pOptionsInstanceManager->getInstance(pItem->m_pInstanceEntry,m_pWidgetStack);
+		m_pWidgetStack->addWidget(pItem->m_pOptionsWidget);
+	}
+
+	bool bFoundSomethingHere = false;
+	KviOptionsWidget *pOptionsWidget=pItem->m_pOptionsWidget;
+	QTabWidget *pTab= pOptionsWidget->tabWidget();
+	if (pTab)
+	{
+		for(int i=0;i<pTab->count();i++)
 		{
-			KviOptionsWidget * pOptionsWidget = (KviOptionsWidget *)it.currentKey();
-			QString szTxt = pTabWidgetToMark->tabText(pTabWidgetToMark->indexOf(pOptionsWidget));
+			QString szTxt = pTab->tabText(i);
 			if(KviQString::equalCIN(szTxt,">>> ",4))
 			{
 				szTxt.replace(">>> ","");
 				szTxt.replace(" <<<","");
 			}
-			if(*pBool)
+			if (searchInSelectors((KviOptionsWidget*)pTab->widget(i),lKeywords))
 			{
+				bFoundSomethingHere = true;
 				szTxt.insert(0,">>> ");
 				szTxt += QString(" <<<");
 			}
-			pTabWidgetToMark->setTabText(pTabWidgetToMark->indexOf(pOptionsWidget), szTxt);
-			++it;
+			pTab->setTabText(i,szTxt);
 		}
+	}
+	else
+	{
+		if (searchInSelectors(pOptionsWidget,lKeywords))
+			bFoundSomethingHere = true;
 	}
 
 	if(bFoundSomethingHere)
@@ -437,7 +397,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsTreeWidgetItem * pItem,const QS
 		for(int j=0;j<ccount;j++)
 		{
 			KviOptionsTreeWidgetItem * pChild = (KviOptionsTreeWidgetItem *)pItem->child(j);
-
+			//debug("search in %s",pChild->text(0).toUtf8().data());
 			bool bRet = recursiveSearch(pChild,lKeywords);
 			if(bRet)bFoundSomethingInside = true;
 		}
