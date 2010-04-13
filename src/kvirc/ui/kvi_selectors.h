@@ -279,6 +279,7 @@ private:
 	QPushButton * m_pButton;
 public:
 	QString textForSearch(){return m_pLabel->text();};
+	QWidget *widgetToHighlight(){return (QWidget *)m_pLabel;};
 	virtual void commit();
 	QColor getColor(){ return m_memColor; };
 	void forceColor(QColor clr);
