@@ -187,6 +187,7 @@ void KviStatusBar::load()
 		KviStr prefix(KviStr::Format,"Applet%d",i);
 		KviStr tmp(KviStr::Format,"%s_InternalName",prefix.ptr());
 		QString szInternalName = cfg.readEntry(tmp.ptr(),"");
+// 		qDebug("load applet %d %s",i,szInternalName.toUtf8().data());
 		if(!szInternalName.isEmpty())
 		{
 			tmp.sprintf("%s_PreloadModule",prefix.ptr());
@@ -214,9 +215,13 @@ void KviStatusBar::save()
 
 	cfg.writeEntry("Count",m_pAppletList->count());
 
+	//ensure the applets are correctly ordered
+	m_pAppletList->sort();
+	
 	int i = 0;
-	for(KviStatusBarApplet * pApplet = m_pAppletList->last(); pApplet; pApplet = m_pAppletList->prev())
+	for(KviStatusBarApplet * pApplet = m_pAppletList->first(); pApplet; pApplet = m_pAppletList->next())
 	{
+// 		qDebug("save applet %d %s index %d",i,pApplet->descriptor()->internalName().toUtf8().data(),pApplet->index());
 		KviStr prefix(KviStr::Format,"Applet%d",i);
 		KviStr tmp(KviStr::Format,"%s_InternalName",prefix.ptr());
 		cfg.writeEntry(tmp.ptr(),pApplet->descriptor()->internalName());
