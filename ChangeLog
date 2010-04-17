@@ -2,6 +2,21 @@ This is KVIrc's changelog. It tipically lists new added features and changes tha
 kvirc's previous behaviour. For a more detailed (and up to date) log, point your browser at:
   https://svn.kvirc.de/kvirc/timeline
 
+April 2010
+   [CtrlAltCa]
+   - added text to dcc video
+   - moved the "smart nick colors" functions to their own file and added the ability to expose your current personalized nick colors to others
+
+March 2010
+   [Pragma]
+   - Make the default script translatable again. This time in its own set of po
+   [Noldor]
+   - Improved the logview module
+   [Noldor and HelLViS69]
+   - Improvements in theme manager
+   [CtrlAltCa]
+   - Ported the old scripts to kvirc4's kvs
+   - added $uflags()
 
 February 2010
    [CtrlAltCa]
@@ -11,9 +26,13 @@ February 2010
      full support for +q (quiet ban) mode
    - added support for CAP (extended capabilities)
    - added support for SASL (plain and dh-blowfish methods)
+   - Readded the theme choice on first setup
    [Noldor]
    - Rewrote the aliaseditor module
-
+   - kvirc theme manager script
+   - Created classeditor module
+   [HelLViS69]
+   - Readded the ability to customize CTCP version reply
 
 January 2010
    [CtrlAltCa]
