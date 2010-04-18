@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-03 16:47+0200\n"
-"PO-Revision-Date: 2009-12-07 03:30+0100\n"
+"PO-Revision-Date: 2010-04-09 19:53+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgstr "Czy napewno chcesz usunąć motyw \"%Q\" (wersja %Q)?"
 
 #: src/modules/theme/themefunctions.cpp:276
 msgid "Do you want to proceed with the installation ?"
-msgstr ""
+msgstr "Czy chcesz kontynuować z instalacją ?"
 
 #: src/modules/theme/managementdialog.cpp:280
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
@@ -142,37 +142,23 @@ msgid "Go Back to Package Data"
 msgstr "Wróć do danych pakietu"
 
 #: src/modules/theme/packthemedialog.cpp:329
-msgid ""
-"Here you can choose the image that will appear in the installation dialog "
-"for your theme package. It can be an icon, a logo or a screenshot and it "
-"should be not larger than 300x225. If you don't provide an image a simple "
-"default icon will be used at installation stage."
+msgid "Here you can choose the image that will appear in the installation dialog for your theme package. It can be an icon, a logo or a screenshot and it should be not larger than 300x225. If you don't provide an image a simple default icon will be used at installation stage."
 msgstr ""
 
 #: src/modules/theme/savethemedialog.cpp:150
-msgid ""
-"Here you can either choose a screenshot image from disk or make one now. The "
-"screenshot will be displayed in the tooltips of the theme management dialog "
-"and will be also visible in the package installation dialog if you will "
-"export the theme to a distributable package."
+msgid "Here you can either choose a screenshot image from disk or make one now. The screenshot will be displayed in the tooltips of the theme management dialog and will be also visible in the package installation dialog if you will export the theme to a distributable package."
 msgstr ""
 
 #: src/modules/theme/packthemedialog.cpp:381
-msgid ""
-"Here you must choose the file name for the theme package. It should have a *%"
-"1 extension."
+msgid "Here you must choose the file name for the theme package. It should have a *%1 extension."
 msgstr ""
 
 #: src/modules/theme/savethemedialog.cpp:97
-msgid ""
-"Here you need to provide information about you (the author) and a short "
-"description of the theme you're creating."
+msgid "Here you need to provide information about you (the author) and a short description of the theme you're creating."
 msgstr ""
 
 #: src/modules/theme/packthemedialog.cpp:257
-msgid ""
-"Here you need to provide information about you (the packager) and a short "
-"description of the package you're creating."
+msgid "Here you need to provide information about you (the packager) and a short description of the package you're creating."
 msgstr ""
 
 #: src/modules/theme/packthemedialog.cpp:108
@@ -288,28 +274,18 @@ msgstr "Nazwa motywu:"
 
 #: src/modules/theme/savethemedialog.cpp:299
 msgid "Theme saved successfully to "
-msgstr "Motyw zapisany pomyślnie w"
+msgstr "Motyw zapisany pomyślnie w "
 
 #: src/modules/theme/packthemedialog.cpp:142
-msgid ""
-"This is the information list for the themes you're packaging. If it looks OK "
-"press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
-"themes first."
+msgid "This is the information list for the themes you're packaging. If it looks OK press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your themes first."
 msgstr ""
 
 #: src/modules/theme/packthemedialog.cpp:104
-msgid ""
-"This procedure allows you to export the selected themes to a single package. "
-"It is useful when you want to distribute your themes to the public."
+msgid "This procedure allows you to export the selected themes to a single package. It is useful when you want to distribute your themes to the public."
 msgstr ""
 
 #: src/modules/theme/savethemedialog.cpp:74
-msgid ""
-"This procedure allows you to save the current theme settings to a single "
-"directory. It is useful if you want to apply other themes or play with the "
-"theme settings and later come back to this theme with a single click. It "
-"will also allow you to manually modify the theme settings and later export "
-"them to a distributable package."
+msgid "This procedure allows you to save the current theme settings to a single directory. It is useful if you want to apply other themes or play with the theme settings and later come back to this theme with a single click. It will also allow you to manually modify the theme settings and later export them to a distributable package."
 msgstr ""
 
 #: src/modules/theme/savethemedialog.cpp:270
@@ -326,9 +302,7 @@ msgid "Version:"
 msgstr "Wersja:"
 
 #: src/modules/theme/themefunctions.cpp:220
-msgid ""
-"Warning: Some of the theme contained in this package might be either "
-"corrupted or incompatible with this version of KVIrc"
+msgid "Warning: Some of the theme contained in this package might be either corrupted or incompatible with this version of KVIrc"
 msgstr ""
 
 #: src/modules/theme/themefunctions.cpp:204
@@ -349,20 +323,16 @@ msgid "You must choose a theme name!"
 msgstr "Musisz wybrać nazwę motywu!"
 
 #: src/modules/theme/packthemedialog.cpp:106
-msgid ""
-"You will be asked to provide a package name, a description and, if you want, "
-"an icon/screenshot."
+msgid "You will be asked to provide a package name, a description and, if you want, an icon/screenshot."
 msgstr ""
 
 #: src/modules/theme/savethemedialog.cpp:76
-msgid ""
-"You will be asked to provide a theme name, a description and, if you want, a "
-"screenshot."
+msgid "You will be asked to provide a theme name, a description and, if you want, a screenshot."
 msgstr ""
 
 #: src/modules/theme/themefunctions.cpp:275
 msgid "You're about to install the following theme package"
-msgstr ""
+msgstr "Zamierzasz zainstalować następujący pakiet motywu"
 
 #: src/modules/theme/packthemedialog.cpp:161
 msgid "Your name here"
@@ -371,3 +341,4 @@ msgstr "Twoja nazwa tutaj"
 #: src/modules/theme/managementdialog.cpp:86
 msgid "by"
 msgstr "przez"
+
