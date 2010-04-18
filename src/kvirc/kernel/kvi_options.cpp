@@ -193,7 +193,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("UserDefinedPortRange",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateQueryOnPrivmsg",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("CreateQueryOnNotice",false,KviOption_sectFlagConnection),
-	BOOL_OPTION("CreateMinimizedQuery",false,KviOption_sectFlagConnection),
+	BOOL_OPTION("CreateMinimizedQuery",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("AutoJoinOnInvite",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("ShowServersConnectDialogOnStart",true, KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowServersConnectDialogAsToplevel",true,KviOption_sectFlagFrame),
