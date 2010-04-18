@@ -81,12 +81,6 @@ protected:
 	KviDataBuffer              m_textOutSignalBuffer;
 	bool                       m_bPlaying;
 	bool                       m_bRecording;
-	bool                       m_bRecordingRequestPending;
-	unsigned  int              m_uSleepTime;
-	KviMutex                 * m_pInfoMutex;
-	// stuff protected by the mutex:
-	int                        m_iInputBufferSize;
-	int                        m_iOutputBufferSize;
 protected:
 	QImage                     m_inImage;
 	QImage                     m_outImage;

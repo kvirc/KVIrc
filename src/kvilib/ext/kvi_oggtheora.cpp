@@ -197,7 +197,8 @@ KviTheoraEncoder::KviTheoraEncoder(KviDataBuffer * stream, int iWidth, int iHeig
 
 	// Flush the rest of our headers. This ensures the actual data in each stream
 	// will start on a new page, as per spec.
-	for(;;){
+	for(;;)
+	{
 		int result = ogg_stream_flush(&to,&og);
 		if(result<0){
 			// can't get here
@@ -243,7 +244,7 @@ void KviTheoraEncoder::addVideoFrame(QRgb * rgb32, int)
 	// is there a video page flushed?  If not, fetch one if possible
 	videoflag=fetch_and_process_video(videoYuv,&videopage,&to,td,videoflag);
 
-	// no pages?  Must be end of stream.
+	// no pages?
 	if(!videoflag) return;
 
 	videotime=videoflag?th_granule_time(td,ogg_page_granulepos(&videopage)):-1;
@@ -287,10 +288,6 @@ int KviTheoraEncoder::fetch_and_process_video_packet(quint8 * videoYuv,th_enc_ct
 		frame_state=0;
 	}
 	/* read and process more video */
-	/* video strategy reads one frame ahead so we know when we're
-	at end of stream and can mark last video frame as such
-	(vorbis audio has to flush one frame past last video frame
-	due to overlap and thus doesn't need this extra work */
 
 	/* have two frame buffers full (if possible) before
 	proceeding.  after first pass and until eos, one will
@@ -352,6 +349,7 @@ ogg_stream_state *to,th_enc_ctx *td,int videoflag)
 	/* is there a video page flushed?  If not, work until there is. */
 	while(!videoflag)
 	{
+		//qDebug("fetch_and_process_video loop");
 		if(ogg_stream_pageout(to,videopage)>0) return 1;
 		if(ogg_stream_eos(to)) return 0;
 		ret=fetch_and_process_video_packet(videoYuv,td,&op);
@@ -553,7 +551,6 @@ void KviTheoraDecoder::addData(KviDataBuffer * stream)
 
 		th_setup_free(ts);
 	}
-// 	qDebug("debug4");
 //	 stateflag=0; /* playback has not begun */
 
 	if(irct_p)

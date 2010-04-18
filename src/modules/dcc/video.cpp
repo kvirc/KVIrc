@@ -60,6 +60,8 @@
 
 #include <sys/ioctl.h>
 
+#define FRAME_DURATION 200 // 1 / 5fps = 200msec
+
 extern KviDccBroker * g_pDccBroker;
 
 #ifndef COMPILE_DISABLE_DCC_VIDEO
@@ -92,8 +94,6 @@ KviDccVideoThread::KviDccVideoThread(KviWindow * wnd,kvi_socket_t fd,KviDccVideo
 	m_pOpt = opt;
 	m_bPlaying = false;
 	m_bRecording = false;
-	m_pInfoMutex = new KviMutex();
-	m_bRecordingRequestPending = false;
 
 	//local video input
 	if(!g_pVideoDevicePool)
@@ -121,12 +121,12 @@ KviDccVideoThread::~KviDccVideoThread()
 
 	delete m_pOpt->pCodec;
 	delete m_pOpt;
-	delete m_pInfoMutex;
 #endif
 }
 
 bool KviDccVideoThread::readWriteStep()
 {
+//	qDebug("KviDccVideoThread::readWriteStep()");
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	// Socket management
 	bool bCanRead;
@@ -137,13 +137,12 @@ bool KviDccVideoThread::readWriteStep()
 		while(bCanRead)
 		{
 			unsigned int actualSize = m_inFrameBuffer.size();
-			m_inFrameBuffer.resize(actualSize + 4096);
-			int readLen = kvi_socket_recv(m_fd,(void *)(m_inFrameBuffer.data() + actualSize),4096);
+			m_inFrameBuffer.resize(actualSize + 16384);
+			int readLen = kvi_socket_recv(m_fd,(void *)(m_inFrameBuffer.data() + actualSize),16384);
 			if(readLen > 0)
 			{
-				if(readLen < 4096)m_inFrameBuffer.resize(actualSize + readLen);
+				if(readLen < 16384)m_inFrameBuffer.resize(actualSize + readLen);
 				m_pOpt->pCodec->decode(&m_inFrameBuffer,&m_videoInSignalBuffer,&m_textInSignalBuffer);
-//#warning "A maximum length for the signal buffer is actually needed!!!"
 			} else {
 				bCanRead=false;
 // 				if(!handleInvalidSocketRead(readLen))return false;
@@ -165,7 +164,6 @@ bool KviDccVideoThread::readWriteStep()
 				}
 			}
 		}
-//#warning "Usleep here ?"
 	}
 #endif // !COMPILE_DISABLE_DCC_VOICE
 	return true;
@@ -173,6 +171,7 @@ bool KviDccVideoThread::readWriteStep()
 
 bool KviDccVideoThread::videoStep()
 {
+//	qDebug("KviDccVideoThread::videoStep()");
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	// Are we playing ?
 	if(m_bPlaying)
@@ -205,6 +204,7 @@ bool KviDccVideoThread::videoStep()
 
 bool KviDccVideoThread::textStep()
 {
+//	qDebug("KviDccVideoThread::textStep()");
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	// Are we playing ?
 	if(m_bPlaying)
@@ -240,6 +240,7 @@ bool KviDccVideoThread::textStep()
 
 bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool bCritical)
 {
+//	qDebug("KviDccVideoThread::handleIncomingData");
 	__range_valid(data->iLen);
 	__range_valid(data->buffer);
 	char * aux = data->buffer;
@@ -306,17 +307,12 @@ void KviDccVideoThread::startRecording()
 	//debug("Start recording");
 	if(m_bRecording)return; // already started
 	
-	{
-//		debug("Posting event");
-		KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
-		e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_START_RECORDING));
-		postEvent(KviDccThread::parent(),e);
+//	debug("Posting event");
+	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
+	e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_START_RECORDING));
+	postEvent(KviDccThread::parent(),e);
 
-		m_bRecording = true;
-		m_bRecordingRequestPending = false;
-// 	} else {
-// 		m_bRecordingRequestPending = true;
-	}
+	m_bRecording = true;
 #endif
 }
 
@@ -324,7 +320,6 @@ void KviDccVideoThread::stopRecording()
 {
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	//debug("Stop recording");
-	m_bRecordingRequestPending = false;
 	if(!m_bRecording)return; // already stopped
 
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
@@ -364,11 +359,10 @@ void KviDccVideoThread::stopPlaying()
 
 void KviDccVideoThread::run()
 {
+// qDebug("KviDccVideoThread::run()");
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	for(;;)
 	{
-		m_uSleepTime = 0;
-
 		// Dequeue events
 		while(KviThreadEvent * e = dequeueEvent())
 		{
@@ -393,15 +387,8 @@ void KviDccVideoThread::run()
 		if(!videoStep())goto exit_dcc;
 		if(!textStep())goto exit_dcc;
 		
-		m_pInfoMutex->lock();
-		m_pInfoMutex->unlock();
-
-		//if(m_uSleepTime)usleep(m_uSleepTime);
+		usleep(FRAME_DURATION*1000);
 // 		qDebug("in %d out %d in_sig %d out_sig %d", m_inFrameBuffer.size(), m_outFrameBuffer.size(), m_videoInSignalBuffer.size(), m_videoOutSignalBuffer.size());
-		usleep(200);
-
-		// Start recording if the request was not fulfilled yet
-		if(m_bRecordingRequestPending)startRecording();
 	}
 
 
@@ -489,7 +476,7 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 
 	connect(&m_Timer, SIGNAL(timeout()), this, SLOT(slotUpdateImage()) );
 
-	m_Timer.start(200); //5fps
+	m_Timer.start(FRAME_DURATION);
 
 	m_pMarshal = new KviDccMarshal(this);
 	connect(m_pMarshal,SIGNAL(error(int)),this,SLOT(handleMarshalError(int)));
