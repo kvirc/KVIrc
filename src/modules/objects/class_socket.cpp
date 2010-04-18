@@ -511,7 +511,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 		}
 		else if (pObject->inheritsClass("file"))
 		{
-			KviFile *pFile=((KviKvsObject_file *)pObject)->pFile();
+			KviFile *pFile=((KviKvsObject_file *)pObject)->file();
 			if (!pFile->isOpen())
 			{
 				c->warning(__tr2qs_ctx("File is not open!","objects"));

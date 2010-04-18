@@ -280,7 +280,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 
 
 	KviFile source(pDataField->m_szFileLocalName);
-	if(!source.openForReading())
+	if(!source.open(QFile::ReadOnly))
 	{
 		setLastError(__tr2qs("Failed to open a source file for reading"));
 		return false;
@@ -318,7 +318,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 		unsigned char ibuffer[BUFFER_SIZE];
 		unsigned char obuffer[BUFFER_SIZE];
 
-		kvi_i32_t iReaded = source.readBlock((char *)ibuffer,BUFFER_SIZE);
+		kvi_i32_t iReaded = source.read((char *)ibuffer,BUFFER_SIZE);
 		if(iReaded < 0)
 			return readError();
 
@@ -352,7 +352,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 			{
 				int iCompressed = zstr.next_out - obuffer;
 				pDataField->m_uWrittenFieldLength += iCompressed;
-				if(pFile->writeBlock((char *)obuffer,iCompressed) != iCompressed)
+				if(pFile->write((char *)obuffer,iCompressed) != iCompressed)
 				{
 					deflateEnd(&zstr);
 					return writeError();
@@ -371,7 +371,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 						memmove(ibuffer,zstr.next_in,zstr.avail_in);
 					}
 				}
-				iReaded = source.readBlock((char *)(ibuffer + zstr.avail_in),iDataToRead);
+				iReaded = source.read((char *)(ibuffer + zstr.avail_in),iDataToRead);
 				if(iReaded < 0)
 				{
 					deflateEnd(&zstr);
@@ -406,7 +406,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 				{
 					int iCompressed = zstr.next_out - obuffer;
 					pDataField->m_uWrittenFieldLength += iCompressed;
-					if(pFile->writeBlock((char *)obuffer,iCompressed) != iCompressed)
+					if(pFile->write((char *)obuffer,iCompressed) != iCompressed)
 					{
 						deflateEnd(&zstr);
 						return writeError();
@@ -442,7 +442,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 #endif
 		unsigned char buffer[BUFFER_SIZE];
 		int iTotalFileSize = 0;
-		kvi_i32_t iReaded = source.readBlock((char *)buffer,BUFFER_SIZE);
+		kvi_i32_t iReaded = source.read((char *)buffer,BUFFER_SIZE);
 		if(iReaded < 0)
 			return readError();
 		while(iReaded > 0)
@@ -457,9 +457,9 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 					return false; // aborted
 			}
 			pDataField->m_uWrittenFieldLength += iReaded;
-			if(pFile->writeBlock((char *)buffer,iReaded) != iReaded)
+			if(pFile->write((char *)buffer,iReaded) != iReaded)
 				return writeError();
-			iReaded = source.readBlock((char *)buffer,BUFFER_SIZE);
+			iReaded = source.read((char *)buffer,BUFFER_SIZE);
 		}
 #ifdef COMPILE_ZLIB_SUPPORT
 	}
@@ -488,7 +488,7 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 {
 
 	KviFile f(szFileName);
-	if(!f.openForWriting())
+	if(!f.open(QFile::WriteOnly | QFile::Truncate))
 	{
 		setLastError(__tr2qs("Can't open file for writing"));
 		return false;
@@ -502,7 +502,7 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 	magic[1] = 'V';
 	magic[2] = 'P';
 	magic[3] = 'F';
-	if(f.writeBlock(magic,4) != 4)return writeError();
+	if(f.write(magic,4) != 4)return writeError();
 
 	// Version
 	kvi_u32_t uVersion = 0x1;
@@ -604,7 +604,7 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 	// Magic
 	char magic[4];
 
-	if(pFile->readBlock(magic,4) != 4)return readError();
+	if(pFile->read(magic,4) != 4) return readError();
 	if((magic[0] != 'K') || (magic[1] != 'V') || (magic[2] != 'P') || (magic[3] != 'F'))
 	{
 		setLastError(__tr2qs("The file specified is not a valid KVIrc package"));
@@ -674,7 +674,7 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 bool KviPackageReader::readHeader(const QString &szLocalFileName)
 {
 	KviFile f(szLocalFileName);
-	if(!f.openForReading())
+	if(!f.open(QFile::ReadOnly))
 	{
 		setLastError(__tr2qs("Can't open file for reading"));
 		return false;
@@ -724,7 +724,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 	}
 
 	KviFile dest(szFileName);
-	if(!dest.openForWriting())
+	if(!dest.open(QFile::WriteOnly | QFile::Truncate))
 	{
 		setLastError(__tr2qs("Failed to open a source file for reading"));
 		return false;
@@ -750,7 +750,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 		int iToRead = iRemainingSize;
 		if(iToRead > BUFFER_SIZE)iToRead = BUFFER_SIZE;
-		int iReaded = pFile->readBlock((char *)ibuffer,iToRead);
+		int iReaded = pFile->read((char *)ibuffer,iToRead);
 		iRemainingSize -= iReaded;
 
 		z_stream zstr;
@@ -782,7 +782,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 			if(zstr.avail_out < BUFFER_SIZE)
 			{
 				int iDecompressed = zstr.next_out - obuffer;
-				if(dest.writeBlock((char *)obuffer,iDecompressed) != iDecompressed)
+				if(dest.write((char *)obuffer,iDecompressed) != iDecompressed)
 				{
 					inflateEnd(&zstr);
 					return writeError();
@@ -805,7 +805,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 				if(iDataToRead > iRemainingSize)
 					iDataToRead = iRemainingSize;
 
-				iReaded = pFile->readBlock((char *)(ibuffer + zstr.avail_in),iDataToRead);
+				iReaded = pFile->read((char *)(ibuffer + zstr.avail_in),iDataToRead);
 				if(iReaded < 0)
 				{
 					inflateEnd(&zstr);
@@ -841,7 +841,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 				if(zstr.avail_out < BUFFER_SIZE)
 				{
 					int iDecompressed = zstr.next_out - obuffer;
-					if(dest.writeBlock((char *)obuffer,iDecompressed) != iDecompressed)
+					if(dest.write((char *)obuffer,iDecompressed) != iDecompressed)
 					{
 						inflateEnd(&zstr);
 						return writeError();
@@ -878,7 +878,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 		while((iReaded > 0) && (iToRead > 0))
 		{
-			iReaded = pFile->readBlock((char *)buffer,iToRead);
+			iReaded = pFile->read((char *)buffer,iToRead);
 			if(iReaded > 0)
 			{
 				iTotalFileSize += iReaded;
@@ -893,7 +893,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 						return false; // aborted
 				}
 
-				if(dest.writeBlock((char *)buffer,iReaded) != iReaded)
+				if(dest.write((char *)buffer,iReaded) != iReaded)
 					return writeError();
 			}
 
@@ -927,7 +927,7 @@ bool KviPackageReader::unpackInternal(const QString &szLocalFileName,const QStri
 {
 
 	KviFile f(szLocalFileName);
-	if(!f.openForReading())
+	if(!f.open(QFile::ReadOnly))
 	{
 		setLastError(__tr2qs("Can't open file for reading"));
 		return false;

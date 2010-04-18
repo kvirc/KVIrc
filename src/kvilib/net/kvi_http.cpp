@@ -308,7 +308,7 @@ bool KviHttpRequest::event(QEvent *e)
 					break;
 					case StoreToFile:
 						// same as above... should never happen.. but well :D
-						if(m_pFile && m_pBuffer->size() > 0)m_pFile->writeBlock((const char *)(m_pBuffer->data()),m_pBuffer->size());
+						if(m_pFile && m_pBuffer->size() > 0)m_pFile->write((const char *)(m_pBuffer->data()),m_pBuffer->size());
 					break;
 					default:
 						// nothing... just make gcc happy
@@ -437,7 +437,7 @@ bool KviHttpRequest::openFile()
 
 	m_pFile = new KviFile(m_szFileName);
 
-	if(!m_pFile->openForWriting(bAppend))
+	if(!m_pFile->open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 	{
 		resetInternalStatus();
 		KviQString::sprintf(m_szLastError,__tr2qs("Can't open file \"%Q\" for writing"),&m_szFileName);
@@ -693,7 +693,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 					emit binaryData(*data);
 				break;
 				case StoreToFile:
-					m_pFile->writeBlock((const char *)(data->data()),data->size());
+					m_pFile->write((const char *)(data->data()),data->size());
 				break;
 				default:
 				break;
@@ -759,7 +759,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 						}
 					break;
 					case StoreToFile:
-						m_pFile->writeBlock((const char *)(m_pBuffer->data()),uProcessSize);
+						m_pFile->write((const char *)(m_pBuffer->data()),uProcessSize);
 						m_pBuffer->remove(uProcessSize);
 					break;
 					default:
@@ -830,7 +830,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 				if(m_pBuffer->size() > 0)emitLines(m_pBuffer);
 			break;
 			case StoreToFile:
-				m_pFile->writeBlock((const char *)(m_pBuffer->data()),m_pBuffer->size());
+				m_pFile->write((const char *)(m_pBuffer->data()),m_pBuffer->size());
 				m_pBuffer->clear();
 			break;
 			default:

@@ -380,9 +380,9 @@ KviMediaType * KviMediaManager::findMediaTypeForRegularFile(const char * szFullP
 	{
 		QString szTmp=QString::fromUtf8(szFullPath);
 		KviFile f(szTmp);
-		if(f.openForReading())
+		if(f.open(QFile::ReadOnly))
 		{
-			len = f.readBlock(buffer,16);
+			len = f.read(buffer,16);
 			if(len > 0)
 			{
 				buffer[len] = '\0';

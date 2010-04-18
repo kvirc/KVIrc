@@ -93,7 +93,7 @@
 		CursorLeft:[/b] Move the cursor to the left :)[br]
 		Shift+CursorLeft:[/b] Move the selection to the left[br]
 		Shift+RightCursor:[/b] Move the selection to the right[br]
-		Alt+Enter:[/b] Show/hide the multiline editor[br]
+* \def KVI_SHORTCUTS_MULTILINE Show/hide the multiline editor
 		Ctrl+Enter:[/b] Send message as plain text, ignoring / commands[br]
 		Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code[br]
 			[example]
@@ -143,14 +143,14 @@
 #define KVI_SHORTCUTS_THEME "Ctrl+Shift+T"
 #define KVI_SHORTCUTS_USERS "Ctrl+Shift+U"
 #define KVI_SHORTCUTS_EXEC "Ctrl+Shift+X"
-#define KVI_SHORTCUTS_WIN_PREV Qt::ALT + Qt::Key_Up
-#define KVI_SHORTCUTS_WIN_NEXT Qt::ALT + Qt::Key_Down
-#define KVI_SHORTCUTS_CONTEXT_WIN_PREV Qt::ALT + Qt::SHIFT + Qt::Key_Up
-#define KVI_SHORTCUTS_CONTEXT_WIN_NEXT Qt::ALT + Qt::SHIFT + Qt::Key_Down
-#define KVI_SHORTCUTS_HIGHLIGHT_WIN_PREV Qt::ALT + Qt::Key_PageUp
-#define KVI_SHORTCUTS_HIGHLIGHT_WIN_NEXT Qt::ALT + Qt::Key_PageDown
-#define KVI_SHORTCUTS_WIN_MAXIMIZE Qt::CTRL + Qt::Key_Up
-#define KVI_SHORTCUTS_WIN_MINIMIZE Qt::CTRL + Qt::Key_Down
+#define KVI_SHORTCUTS_WIN_PREV Qt::AltModifier + Qt::Key_Up
+#define KVI_SHORTCUTS_WIN_NEXT Qt::AltModifier + Qt::Key_Down
+#define KVI_SHORTCUTS_CONTEXT_WIN_PREV Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Up
+#define KVI_SHORTCUTS_CONTEXT_WIN_NEXT Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Down
+#define KVI_SHORTCUTS_HIGHLIGHT_WIN_PREV Qt::AltModifier + Qt::Key_PageUp
+#define KVI_SHORTCUTS_HIGHLIGHT_WIN_NEXT Qt::AltModifier + Qt::Key_PageDown
+#define KVI_SHORTCUTS_WIN_MAXIMIZE Qt::ControlModifier + Qt::Key_Up
+#define KVI_SHORTCUTS_WIN_MINIMIZE Qt::ControlModifier + Qt::Key_Down
 //	Shift+<F1-F12>:[/b] window switch[br]
 //	PageUp:[/b] Scroll the output window up one page[br]
 //	PageDown:[/b] Scroll the output window down one page[br]
@@ -169,7 +169,7 @@
 //	CursorLeft:[/b] Move the cursor to the left :)[br]
 //	Shift+CursorLeft:[/b] Move the selection to the left[br]
 //	Shift+RightCursor:[/b] Move the selection to the right[br]
-//	Alt+Enter:[/b] Show/hide the multiline editor[br]
+#define KVI_SHORTCUTS_MULTILINE Qt::AltModifier + Qt::Key_Return
 //	Ctrl+Enter:[/b] Send message as plain text, ignoring / commands[br]
 //	Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code[br]
 //		[example]

@@ -153,10 +153,10 @@ namespace KviFileUtils
 	bool copyFile(const QString & szSrc, const QString & szDst)
 	{
 		KviFile f1(szSrc);
-		if(!f1.openForReading())
+		if(!f1.open(QFile::ReadOnly))
 			return false;
 		KviFile f2(szDst);
-		if(!f2.openForWriting())
+		if(!f2.open(QFile::WriteOnly | QFile::Truncate))
 		{
 			f1.close();
 			return false;
@@ -164,14 +164,14 @@ namespace KviFileUtils
 		char cBuffer[1024];
 		while(!f1.atEnd())
 		{
-			int iLen = f1.readBlock(cBuffer,1024);
+			int iLen = f1.read(cBuffer,1024);
 			if(iLen <= 0)
 			{
 				f1.close();
 				f2.close();
 				return false; //"serious error"
 			}
-			f2.writeBlock(cBuffer,iLen);
+			f2.write(cBuffer,iLen);
 		}
 		f1.close();
 		f2.close();
@@ -188,7 +188,7 @@ namespace KviFileUtils
 	bool loadFile(const QString & szPath, QString & szBuffer, bool bUtf8)
 	{
 		KviFile f(szPath);
-		if(!f.openForReading())
+		if(!f.open(QFile::ReadOnly))
 			return false;
 		if(bUtf8)
 		{
@@ -283,12 +283,12 @@ namespace KviFileUtils
 	bool writeFile(const QString & szPath, const QString & szData, bool bAppend)
 	{
 		KviFile f(szPath);
-		if(!f.openForWriting(bAppend))
+		if(!f.open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 			return false;
 		QByteArray szTmp = KviQString::toUtf8(szData);
 		if(!szTmp.data())
 			return true;
-		if(f.writeBlock(szTmp.data(),szTmp.length()) != ((unsigned int)(szTmp.length())))
+		if(f.write(szTmp.data(),szTmp.length()) != ((unsigned int)(szTmp.length())))
 			return false;
 		return true;
 	}
@@ -302,12 +302,12 @@ namespace KviFileUtils
 	bool writeFileLocal8Bit(const QString & szPath, const QString & szData, bool bAppend)
 	{
 		KviFile f(szPath);
-		if(!f.openForWriting(bAppend))
+		if(!f.open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 			return false;
 		QByteArray szTmp = QTextCodec::codecForLocale()->fromUnicode(szData);
 		if(!szTmp.data())
 			return true;
-		if(f.writeBlock(szTmp.data(),szTmp.length()) != ((unsigned int)(szTmp.length())))
+		if(f.write(szTmp.data(),szTmp.length()) != ((unsigned int)(szTmp.length())))
 			return false;
 		return true;
 	}
@@ -321,7 +321,7 @@ namespace KviFileUtils
 	bool readFile(const QString & szPath, QString & szBuffer, unsigned int uMaxSize)
 	{
 		KviFile f(szPath);
-		if(!f.openForReading())
+		if(!f.open(QFile::ReadOnly))
 			return false;
 		if(f.size() < 1)
 		{
@@ -332,7 +332,7 @@ namespace KviFileUtils
 		if(f.size() > uMaxSize)
 			return false;
 		char * pcBuf = new char[f.size() + 1];
-		if(f.readBlock(pcBuf,f.size()) != ((long int)f.size()))
+		if(f.read(pcBuf,f.size()) != ((long int)f.size()))
 		{
 			delete[] pcBuf;
 			pcBuf = 0;

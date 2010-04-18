@@ -136,7 +136,7 @@ bool KviConfig::load()
 
 	// open the file
 	KviFile f(m_szFileName);
-	if(!f.openForReading())return false;
+	if(!f.open(QFile::ReadOnly)) return false;
 
 	KviStr tmp;
 	KviConfigGroup * p_group = 0;
@@ -165,7 +165,7 @@ bool KviConfig::load()
 		}
 
 		// do read
-		readedLen = f.readBlock(p,toRead);
+		readedLen = f.read(p,toRead);
 		if(readedLen < toRead)
 		{
 			// check for errors
@@ -490,11 +490,11 @@ bool KviConfig::save()
 	};
 
 
-	if(m_bReadOnly)return false;
+	if(m_bReadOnly) return false;
 
 	KviFile f(m_szFileName);
-	if(!f.openForWriting())return false;
-	if(f.writeBlock("# KVIrc configuration file\n",27) != 27)return false;
+	if(!f.open(QFile::WriteOnly | QFile::Truncate)) return false;
+	if(f.write("# KVIrc configuration file\n",27) != 27) return false;
 
 	KviPointerHashTableIterator<QString,KviConfigGroup> it(*m_pDict);
 	while (it.current())
@@ -505,8 +505,8 @@ bool KviConfig::save()
 			group.hexEncodeWithTable(encode_table);
 
 			if(!f.putChar('['))return false;
-			if(f.writeBlock(group.ptr(),group.len()) < (unsigned int) group.len())return false;
-			if(f.writeBlock("]\n",2) < 2)return false;
+			if(f.write(group.ptr(),group.len()) < (unsigned int) group.len())return false;
+			if(f.write("]\n",2) < 2)return false;
 
 			KviConfigGroup * dict = (KviConfigGroup *)it.current();
 			KviConfigGroupIterator it2(*dict);
@@ -519,9 +519,9 @@ bool KviConfig::save()
 				szName.hexEncodeWithTable(encode_table);
 				szValue.hexEncodeWhiteSpace();
 
-				if(f.writeBlock(szName.ptr(),szName.len()) < (unsigned int) szName.len())return false;
+				if(f.write(szName.ptr(),szName.len()) < (unsigned int) szName.len())return false;
 				if(!f.putChar('='))return false;
-				if(f.writeBlock(szValue.ptr(),szValue.len()) < (unsigned int) szValue.len())return false;
+				if(f.write(szValue.ptr(),szValue.len()) < (unsigned int) szValue.len())return false;
 				if(!f.putChar('\n'))return false;
 				++it2;
 			}

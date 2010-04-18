@@ -427,7 +427,7 @@ bool KviMessageCatalogue::load(const QString& name)
 
 	// Try to load the header
 	KviFile f(szCatalogueFile);
-	if(!f.openForReading())
+	if(!f.open(QFile::ReadOnly))
 	{
 		debug("[KviLocale]: Failed to open the messages file %s: probably doesn't exist",KviQString::toUtf8(szCatalogueFile).data());
 		return false;
@@ -435,7 +435,7 @@ bool KviMessageCatalogue::load(const QString& name)
 
 	GnuMoFileHeader hdr;
 
-	if(f.readBlock((char *)&hdr,sizeof(GnuMoFileHeader)) < (int)sizeof(GnuMoFileHeader))
+	if(f.read((char *)&hdr,sizeof(GnuMoFileHeader)) < (int)sizeof(GnuMoFileHeader))
 	{
 		debug("KviLocale: Failed to read header of %s",KviQString::toUtf8(szCatalogueFile).data());
 		f.close();
@@ -486,7 +486,7 @@ bool KviMessageCatalogue::load(const QString& name)
 	char * buffer = (char *)kvi_malloc(fSize);
 
 	// FIXME: maybe read it in blocks eh ?
-	if(f.readBlock(buffer,fSize) < (int)fSize)
+	if(f.read(buffer,fSize) < (int)fSize)
 	{
 		debug("KviLocale: Error while reading the translation file %s",KviQString::toUtf8(szCatalogueFile).data());
 		kvi_free(buffer);

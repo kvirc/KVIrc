@@ -696,7 +696,7 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 		An empty string is returned if a serious error occures.[br]
 		The <filename> is adjusted according to the system that KVIrc is running on.[br]
 		Flags are actually limited to the single letter 'l'. By default the file
-		is decoded from the ut8 characters set. If 'l' is present the the file
+		is decoded from the utf8 characters set. If 'l' is present the the file
 		is decoded by using the local 8 bit character set instead.
 	@examples:
 		[example]
@@ -904,16 +904,17 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 
 	KviFile f(szFile);
 
-	if(!f.openForWriting(c->switches()->find('a',"append")))
+	bool bAppend = c->switches()->find('a',"append");
+	bool bLocal8Bit = c->switches()->find('l',"local-8-bit");
+	bool bNoSeparator = c->switches()->find('n',"no-separator");
+	bool bAddCR = c->switches()->find('c',"crlf");
+	
+	if(!f.open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 	{
 		if(!c->switches()->find('q',"quiet"))
 			c->warning(__tr2qs("Can't open the file \"%Q\" for writing"),&szFile);
 		return true;
 	}
-
-	bool bLocal8Bit = c->switches()->find('l',"local-8-bit");
-	bool bNoSeparator = c->switches()->find('n',"no-separator");
-	bool bAddCR = c->switches()->find('c',"crlf");
 
 	unsigned int u = 0;
 	while(u < a.array()->size())
@@ -931,7 +932,7 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 				if(bAddCR)dat += "\r\n";
 				else dat += '\n';
 			}
-			f.writeBlock(dat.data(),dat.length());
+			f.write(dat.data(),dat.length());
 		}
 		u++;
 	}

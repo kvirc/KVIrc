@@ -732,7 +732,7 @@ void KviRegisteredUsersDialog::exportClicked()
 	hf.version = KVI_REGUSER_DB_FILE_VERSION;
 	hf.nentries = nEntries;
 
-	if(f.writeBlock((const char *)&hf,sizeof(KviReguserDbFileHeader)) != sizeof(KviReguserDbFileHeader))goto write_error;
+	if(f.write((const char *)&hf,sizeof(KviReguserDbFileHeader)) != sizeof(KviReguserDbFileHeader))goto write_error;
 
 	for(int i=0; i<list.count(); i++)
 	{
@@ -834,7 +834,7 @@ void KviRegisteredUsersDialog::importClicked()
 	KviReguserDbFileHeader hf;
 	unsigned int idx;
 
-	if(f.readBlock((char *)&hf,sizeof(KviReguserDbFileHeader)) != sizeof(KviReguserDbFileHeader))goto read_error;
+	if(f.read((char *)&hf,sizeof(KviReguserDbFileHeader)) != sizeof(KviReguserDbFileHeader))goto read_error;
 
 	if(hf.magic != KVI_REGUSER_DB_FILE_MAGIC)
 	{

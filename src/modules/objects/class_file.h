@@ -35,10 +35,10 @@ class KviKvsObject_file : public KviKvsObject_widget
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_file)
 protected:
-	KviFile* m_pFile;
+	KviFile * m_pFile;
 public:
 
-	KviFile *pFile(){return m_pFile;};
+	KviFile * file(){ return m_pFile; };
 	bool setName(KviKvsObjectFunctionCall *c);
 	bool name(KviKvsObjectFunctionCall *c);
 	bool open(KviKvsObjectFunctionCall *c);
