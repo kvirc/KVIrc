@@ -93,7 +93,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	// no document => index
 	if(szParam.isEmpty())
 	{
-		szParam = dirHelp.absoluteFilePath("index.html");
+		szParam = QString("index.html");
 		qDebug ("No file, use default at path %s",szDoc.toUtf8().data());
 	}
 
