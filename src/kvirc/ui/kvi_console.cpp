@@ -772,8 +772,20 @@ void KviConsole::outputPrivmsg(KviWindow *wnd,
 				
 				szNick.prepend(KviNickColors::getSmartColor(sum));
 			} else {
-				// how can this happen? better fallback than wrong
-				qDebug("BUG Trying to get smart color for a nickname not in userdb (%s)!",szNick.toUtf8().data());
+				/*
+				 * Received a message from an user not in userDataBase: how can this happen?
+				 * - services replaying some log
+				 * - user non joined msging a channel -n
+				 * anyway, better fallback than wrong
+				 */
+				int sum=KviNickColors::getSmartColorForNick(&nick);
+				if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
+				{
+					//avoid the use of teh color specifier for own nickname
+					if(m_szOwnSmartColor==KviNickColors::getSmartColor(sum))
+					sum++;
+				}
+				szNick.prepend(KviNickColors::getSmartColor(sum));
 			}
 		}
 		szNick.prepend(KVI_TEXT_COLOR);
