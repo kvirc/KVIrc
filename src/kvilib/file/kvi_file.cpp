@@ -23,11 +23,11 @@
 //
 //=============================================================================
 
-
-
 #include "kvi_file.h"
 #include "kvi_byteorder.h"
+#include "kvi_qstring.h"
 
+#include <QByteArray>
 
 KviFile::KviFile()
 : QFile()
@@ -43,52 +43,17 @@ KviFile::~KviFile()
 {
 }
 
-bool KviFile::save(const QByteArray &bData)
+bool KviFile::save(kvi_u8_t t)
 {
-	if(!save((kvi_u32_t)(bData.size())))return false;
-	return (write(bData.data(),bData.size()) == ((unsigned int)(bData.size())));
+	return (write((const char *)(&t),sizeof(kvi_u8_t)) == sizeof(kvi_u8_t));
 }
 
-bool KviFile::load(QByteArray &bData)
+bool KviFile::save(kvi_u16_t t)
 {
-	kvi_u32_t iLen;
-	if(!load(iLen))return false;
-	bData.resize(iLen); // it is automatically null terminated in Qt 4.x... BLEAH :D
-	if(read((char *)(bData.data()),iLen) != iLen)return false;
-	return true;
-}
-
-bool KviFile::save(const QString &szData)
-{
-	QByteArray c = KviQString::toUtf8(szData);
-	if(!save((kvi_u32_t)(c.length())))return false;
-	return (write(c.data(),c.length()) == ((unsigned int)(c.length())));
-}
-
-bool KviFile::load(QString &szData)
-{
-	kvi_u32_t iLen;
-	if(!load(iLen))return false;
-	QByteArray tmp;
-	tmp.resize(iLen + 1);
-	if(read((char *)(tmp.data()),iLen) != iLen)return false;
-	*(tmp.data() + iLen) = 0;
-	szData = QString::fromUtf8(tmp.data());
-	return true;
-}
-
-bool KviFile::save(const KviStr &szData)
-{
-	if(!save((kvi_u32_t)(szData.len())))return false;
-	return (write(szData.ptr(),szData.len()) == (unsigned int) szData.len());
-}
-
-bool KviFile::load(KviStr &szData)
-{
-	kvi_u32_t iLen;
-	if(!load(iLen))return false;
-	szData.setLength(iLen);
-	return (read((char *)(szData.ptr()),iLen) == iLen);
+#ifndef LOCAL_CPU_LITTLE_ENDIAN
+	t = kvi_localCpuToLittleEndian16(t);
+#endif
+	return (write((const char *)(&t),sizeof(kvi_u16_t)) == sizeof(kvi_u16_t));
 }
 
 bool KviFile::save(kvi_u32_t t)
@@ -99,15 +64,6 @@ bool KviFile::save(kvi_u32_t t)
 	return (write((const char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t));
 }
 
-bool KviFile::load(kvi_u32_t &t)
-{
-	if(!(read((char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t)))return false;
-#ifndef LOCAL_CPU_LITTLE_ENDIAN
-	t = kvi_littleEndianToLocalCpu32(t);
-#endif
-	return true;
-}
-
 bool KviFile::save(kvi_u64_t t)
 {
 #ifndef LOCAL_CPU_LITTLE_ENDIAN
@@ -116,21 +72,38 @@ bool KviFile::save(kvi_u64_t t)
 	return (write((const char *)(&t),sizeof(kvi_u64_t)) == sizeof(kvi_u64_t));
 }
 
-bool KviFile::load(kvi_u64_t &t)
+bool KviFile::save(const QByteArray & data)
 {
-	if(!(read((char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t)))return false;
-#ifndef LOCAL_CPU_LITTLE_ENDIAN
-	t = kvi_littleEndianToLocalCpu32(t);
-#endif
+	if(!save((kvi_u32_t)(data.size())))return false;
+	return (write(data.data(),data.size()) == ((unsigned int)(data.size())));
+}
+
+bool KviFile::save(const QString & szData)
+{
+	QByteArray c = KviQString::toUtf8(szData);
+	if(!save((kvi_u32_t)(c.length())))return false;
+	return (write(c.data(),c.length()) == ((unsigned int)(c.length())));
+}
+
+bool KviFile::save(const KviStr & szData)
+{
+	if(!save((kvi_u32_t)(szData.len())))return false;
+	return (write(szData.ptr(),szData.len()) == (unsigned int) szData.len());
+}
+
+bool KviFile::save(KviPointerList<KviStr> * pData)
+{
+	if(!save((int)(pData->count())))return false;
+	for(KviStr * s = pData->first();s;s = pData->next())
+	{
+		if(!save(*s))return false;
+	}
 	return true;
 }
 
-bool KviFile::save(kvi_u16_t t)
+bool KviFile::load(kvi_u8_t &t)
 {
-#ifndef LOCAL_CPU_LITTLE_ENDIAN
-	t = kvi_localCpuToLittleEndian16(t);
-#endif
-	return (write((const char *)(&t),sizeof(kvi_u16_t)) == sizeof(kvi_u16_t));
+	return (read((char *)(&t),sizeof(kvi_u8_t)) == sizeof(kvi_u8_t));
 }
 
 bool KviFile::load(kvi_u16_t &t)
@@ -142,24 +115,51 @@ bool KviFile::load(kvi_u16_t &t)
 	return true;
 }
 
-bool KviFile::save(kvi_u8_t t)
+bool KviFile::load(kvi_u32_t &t)
 {
-	return (write((const char *)(&t),sizeof(kvi_u8_t)) == sizeof(kvi_u8_t));
-}
-
-bool KviFile::load(kvi_u8_t &t)
-{
-	return (read((char *)(&t),sizeof(kvi_u8_t)) == sizeof(kvi_u8_t));
-}
-
-bool KviFile::save(KviPointerList<KviStr> * pData)
-{
-	if(!save((int)(pData->count())))return false;
-	for(KviStr * s = pData->first();s;s = pData->next())
-	{
-		if(!save(*s))return false;
-	}
+	if(!(read((char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t)))return false;
+#ifndef LOCAL_CPU_LITTLE_ENDIAN
+	t = kvi_littleEndianToLocalCpu32(t);
+#endif
 	return true;
+}
+
+bool KviFile::load(kvi_u64_t &t)
+{
+	if(!(read((char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t)))return false;
+#ifndef LOCAL_CPU_LITTLE_ENDIAN
+	t = kvi_littleEndianToLocalCpu32(t);
+#endif
+	return true;
+}
+
+bool KviFile::load(QByteArray & data)
+{
+	kvi_u32_t iLen;
+	if(!load(iLen))return false;
+	data.resize(iLen); // it is automatically null terminated in Qt 4.x... BLEAH :D
+	if(read((char *)(data.data()),iLen) != iLen)return false;
+	return true;
+}
+
+bool KviFile::load(QString & szData)
+{
+	kvi_u32_t iLen;
+	if(!load(iLen))return false;
+	QByteArray tmp;
+	tmp.resize(iLen + 1);
+	if(read((char *)(tmp.data()),iLen) != iLen)return false;
+	*(tmp.data() + iLen) = 0;
+	szData = QString::fromUtf8(tmp.data());
+	return true;
+}
+
+bool KviFile::load(KviStr & szData)
+{
+	kvi_u32_t iLen;
+	if(!load(iLen))return false;
+	szData.setLength(iLen);
+	return (read((char *)(szData.ptr()),iLen) == iLen);
 }
 
 bool KviFile::load(KviPointerList<KviStr> * pData)
@@ -181,33 +181,33 @@ bool KviFile::load(KviPointerList<KviStr> * pData)
 	return true;
 }
 
-bool KviFile::skipFirst(char t,unsigned int maxdist)
+bool KviFile::skipFirst(char t, unsigned int uMaxDist)
 {
-	while(maxdist > 0)
+	while(uMaxDist > 0)
 	{
 		char c;
 		if(!getChar(&c))return false;
 		if(((char)c) == t)return true;
-		maxdist--;
+		uMaxDist--;
 	}
 	return false;
 }
 
-bool KviFile::skipFirst(const KviStr &t,unsigned int maxdist)
+bool KviFile::skipFirst(const KviStr & szT, unsigned int uMaxDist)
 {
-	char * ptr = t.ptr();
-	while(maxdist > 0)
+	char * pcPtr = szT.ptr();
+	while(uMaxDist > 0)
 	{
 		char c;
 		if(!getChar(&c))return false;
-		if(c == *ptr)
+		if(c == *pcPtr)
 		{
-			ptr++;
-			if(!*ptr)return true;
+			pcPtr++;
+			if(!*pcPtr)return true;
 		} else {
-			ptr = t.ptr();
+			pcPtr = szT.ptr();
 		}
-		maxdist--;
+		uMaxDist--;
 	}
 	return false;
 }

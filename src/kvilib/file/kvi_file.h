@@ -33,15 +33,15 @@
 
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"
-#include "kvi_qstring.h"
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
 #include "kvi_inttypes.h"
 
 #include <QFile>
-#include <QByteArray>
 
 #include <time.h>
+
+class QByteArray;
 
 #define kvi_file_offset_t qlonglong
 
@@ -262,9 +262,21 @@ public:
 	*/
 	bool load(KviPointerList<KviStr> * pData);
 
-	bool skipFirst(char t,unsigned int maxdist = 0xffffffff);
-	bool skipFirst(const KviStr &t,unsigned int maxdist = 0xffffffff);
-};
+	/**
+	* \brief Skips the first occurrence of the given char for a given dimension
+	* \param t The char to find and skip
+	* \param uMaxDist The dimension of the search field
+	* \return bool
+	*/
+	bool skipFirst(char t, unsigned int uMaxDist = 0xffffffff);
 
+	/**
+	* \brief Skips the first occurrence of the given string for a given dimension
+	* \param t The string to find and skip
+	* \param uMaxDist The dimension of the search field
+	* \return bool
+	*/
+	bool skipFirst(const KviStr & szT, unsigned int uMaxDist = 0xffffffff);
+};
 
 #endif //_KVI_FILE_H_
