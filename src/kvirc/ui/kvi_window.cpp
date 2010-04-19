@@ -576,7 +576,8 @@ void KviWindow::saveProperties(KviConfig *cfg)
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
 	cfg->writeEntry(szKey,szCodec);
-	if(m_pInput) {
+	if(m_pInput)
+	{
 		cfg->writeEntry("inputToolButtonsHidden",m_pInput->isButtonsHidden());
 		cfg->writeEntry("commandLineIsUserFriendly",m_pInput->isUserFriendly());
 	}
@@ -593,7 +594,8 @@ void KviWindow::loadProperties(KviConfig *cfg)
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
 	setTextEncoding(cfg->readQStringEntry(szKey,KviQString::Empty).toUtf8().data());
-	if(m_pInput) {
+	if(m_pInput)
+	{
 		m_pInput->setButtonsHidden(cfg->readBoolEntry("inputToolButtonsHidden",KVI_OPTION_BOOL(KviOption_boolHideInputToolButtons)));
 		m_pInput->setUserFriendly(cfg->readBoolEntry("commandLineIsUserFriendly",KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault)));
 	}

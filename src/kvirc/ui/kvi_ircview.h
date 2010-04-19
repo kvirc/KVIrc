@@ -173,8 +173,7 @@ public:
 	void stopLogging();
 	bool isLogging(){ return (m_pLogFile != 0); };
 	void getLogFileName(QString &buffer);
-	//void add2Log(const char *buffer,int buf_len=-1);
-	void add2Log(const QString &szBuffer,int iMsgType=0);
+	void add2Log(const QString &szBuffer,int iMsgType = 0,bool bPrependDate = false);
 
 	//==============================================================================================
 	// Channel view splitting

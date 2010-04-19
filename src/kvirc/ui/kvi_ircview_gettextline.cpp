@@ -69,6 +69,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 					bool bEnableTimeStamp)
 {
 	const kvi_wchar_t* pUnEscapeAt = 0;
+
 	// Splits the text data in lines (separated by '\n')
 
 	// NOTE: This function may be NOT reentrant
@@ -413,6 +414,12 @@ check_escape_switch:
 found_end_of_buffer:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 			APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
+			if(pUnEscapeAt)
+			{
+				// empty unescape block needed
+				NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE);
+				// no need to append more data
+			}
 			return p;
 			break;
 		case '\n':
@@ -420,7 +427,13 @@ found_end_of_buffer:
 found_end_of_line:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 			// Found the end of a line
-			APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
+			APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr);
+			if(pUnEscapeAt)
+			{
+				// empty unescape block needed
+				NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE);
+				// no need to append more data
+			}
 			// terminate the string
 			// move the current pointer to the next character...
 			// if it is '\0' we will simply stop
@@ -431,7 +444,10 @@ found_end_of_line:
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 found_command_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
-			if (p==pUnEscapeAt) {
+
+			if(p == pUnEscapeAt)
+			{
+				// This is the terminator of an escape
 				APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr);
 				NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE);
 				pUnEscapeAt = 0;
@@ -439,6 +455,7 @@ found_command_escape:
 				data_ptr=p;
 				break;
 			}
+
 			// Command escape sequence
 			// \r!<escape_cmd>\r<visible parameters string>\r
 			p++;
@@ -446,12 +463,16 @@ found_command_escape:
 			{
 				const kvi_wchar_t * next_cr = p;
 				// lookup the next carriage return
-				while(*next_cr && (*next_cr != '\r'))next_cr++;
+				while(*next_cr && (*next_cr != '\r'))
+					next_cr++;
+
 				if(*next_cr)
 				{
 					const kvi_wchar_t * term_cr = next_cr;
 					term_cr++;
-					while(*term_cr && (*term_cr != '\r'))term_cr++;
+					while(*term_cr && (*term_cr != '\r'))
+						term_cr++;
+
 					if(*term_cr)
 					{
 						// ok....the format is right:
@@ -473,9 +494,7 @@ found_command_escape:
 
 						++next_cr; //point after the middle \r
 
-						pUnEscapeAt = term_cr;
-
-						bool bColorSetted=false;
+						bool bColorSet=false;
 						if((line_ptr->pChunks[iCurChunk].szPayload[0]=='n') && KVI_OPTION_BOOL(KviOption_boolUseUserListColorsAsNickColors) && (!KVI_OPTION_BOOL(KviOption_boolColorNicks)))
 						{
 							if(m_pKviWindow->type()==KVI_WINDOW_TYPE_CHANNEL && m_pKviWindow)
@@ -486,28 +505,36 @@ found_command_escape:
 									if(e)
 									{
 										line_ptr->pChunks[iCurChunk].colors.fore = KVI_COLOR_CUSTOM; e->color(line_ptr->pChunks[iCurChunk].customFore);
-										bColorSetted=true;
+										bColorSet=true;
 									}
 								}
 							}
 							else if(m_pKviWindow->type()==KVI_WINDOW_TYPE_QUERY && m_pKviWindow && line_ptr->pChunks[iCurChunk].szPayload[1]=='c')
 							{
 								QString m_szNick = QString((QChar*)next_cr,term_cr-next_cr);
-								if(m_szNick==m_pKviWindow->connection()->currentNickName()) {
+								if(m_szNick==m_pKviWindow->connection()->currentNickName())
+								{
 									line_ptr->pChunks[iCurChunk].colors.fore = KVI_COLOR_OWN;
-									bColorSetted=true;
+									bColorSet=true;
 								}
 							}
 						}
-						if(!bColorSetted)
-						{
+						if(!bColorSet)
 							line_ptr->pChunks[iCurChunk].colors.fore=KVI_NOCHANGE;
-						}
 
-						/*APPEND_LAST_TEXT_BLOCK(next_cr,term_cr - next_cr)
-						NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE)*/
+#if 0
+						APPEND_LAST_TEXT_BLOCK(next_cr,term_cr - next_cr)
+						NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE)
+
+						p=term_cr;
+#else
+						pUnEscapeAt = term_cr;
+
+						//APPEND_LAST_TEXT_BLOCK(next_cr,term_cr - next_cr)
+						//NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE)
 
 						p=next_cr;
+#endif
 						data_ptr=p;
 					}
 				}
@@ -607,37 +634,37 @@ found_mirc_escape:
 
 check_http_url:
 	p++;
-if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
-{
-	/*
-	 * Profane description: we found an 'h' using the "jump/check table", now check for a 't' (we don't want to search directly for the
-	 * "http://" tag, it takes us more cpu time)
-	 */
-
-	//
-	if((*p == 't') || (*p == 'T'))
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 	{
 		/*
-		 * Profane description: we found it! now there's an high probability we're in front of an http url. Relax, rewind the last
-		 * character and try to match the complete url protocol tag
- 		 */
-		p--;
-		if(kvi_hstrEqualCIN(p,"http://",7))
+		 * Profane description: we found an 'h' using the "jump/check table", now check for a 't' (we don't want to search directly for the
+		 * "http://" tag, it takes us more cpu time)
+		 */
+	
+		//
+		if((*p == 't') || (*p == 'T'))
 		{
-			partLen = 7;
 			/*
-			* Profane description: we got it; save in partLen the length of the tag and jump to the got_url label.
-			*/
-			goto got_url;
+			 * Profane description: we found it! now there's an high probability we're in front of an http url. Relax, rewind the last
+			 * character and try to match the complete url protocol tag
+	 		 */
+			p--;
+			if(kvi_hstrEqualCIN(p,"http://",7))
+			{
+				partLen = 7;
+				/*
+				* Profane description: we got it; save in partLen the length of the tag and jump to the got_url label.
+				*/
+				goto got_url;
+			}
+			if(kvi_hstrEqualCIN(p,"https://",8))
+			{
+				partLen = 8;
+				goto got_url;
+			}
+			p++;
 		}
-		if(kvi_hstrEqualCIN(p,"https://",8))
-		{
-			partLen = 8;
-			goto got_url;
-		}
-		p++;
 	}
-}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -647,33 +674,33 @@ if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 
 check_file_or_ftp_url:
 	p++;
-if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
-{
-	if((*p == 'i') || (*p == 'I'))
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 	{
-		p--;
-		if(kvi_hstrEqualCIN(p,"file://",7))
+		if((*p == 'i') || (*p == 'I'))
 		{
-			partLen = 7;
-			goto got_url;
-		}
-		p++;
-	} else if((*p == 't') || (*p == 'T'))
-	{
-		p--;
-		if(kvi_hstrEqualCIN(p,"ftp://",6))
+			p--;
+			if(kvi_hstrEqualCIN(p,"file://",7))
+			{
+				partLen = 7;
+				goto got_url;
+			}
+			p++;
+		} else if((*p == 't') || (*p == 'T'))
 		{
-			partLen = 6;
-			goto got_url;
+			p--;
+			if(kvi_hstrEqualCIN(p,"ftp://",6))
+			{
+				partLen = 6;
+				goto got_url;
+			}
+			if(kvi_hstrEqualCIN(p,"ftp.",4))
+			{
+				partLen = 4;
+				goto got_url;
+			}
+			p++;
 		}
-		if(kvi_hstrEqualCIN(p,"ftp.",4))
-		{
-			partLen = 4;
-			goto got_url;
-		}
-		p++;
 	}
-}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -682,19 +709,19 @@ if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 
 check_e2k_url:
 	p++;
-if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
-{
-	if((*p == 'd') || (*p == 'D'))
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 	{
-		p--;
-		if(kvi_hstrEqualCIN(p,"ed2k://",7))
+		if((*p == 'd') || (*p == 'D'))
 		{
-			partLen = 7;
-			goto got_url;
+			p--;
+			if(kvi_hstrEqualCIN(p,"ed2k://",7))
+			{
+				partLen = 7;
+				goto got_url;
+			}
+			p++;
 		}
-		p++;
 	}
-}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -703,19 +730,19 @@ if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 
 check_www_url:
 	p++;
-if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
-{
-	if((*p == 'w') || (*p == 'W'))
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 	{
-		p--;
-		if(kvi_hstrEqualCIN(p,"www.",4))
+		if((*p == 'w') || (*p == 'W'))
 		{
-			partLen = 4;
-			goto got_url;
+			p--;
+			if(kvi_hstrEqualCIN(p,"www.",4))
+			{
+				partLen = 4;
+				goto got_url;
+			}
+			p++;
 		}
-		p++;
 	}
-}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -724,34 +751,34 @@ if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 
 check_irc_url:
 	p++;
-if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
-{
-	if((*p == 'r') || (*p == 'R'))
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 	{
-		p--;
-		if(kvi_hstrEqualCIN(p,"irc://",6))
+		if((*p == 'r') || (*p == 'R'))
 		{
-			partLen = 6;
-			goto got_url;
+			p--;
+			if(kvi_hstrEqualCIN(p,"irc://",6))
+			{
+				partLen = 6;
+				goto got_url;
+			}
+			if(kvi_hstrEqualCIN(p,"irc6://",7))
+			{
+				partLen = 7;
+				goto got_url;
+			}
+			if(kvi_hstrEqualCIN(p,"ircs://",7))
+			{
+				partLen = 7;
+				goto got_url;
+			}
+			if(kvi_hstrEqualCIN(p,"ircs6://",8))
+			{
+				partLen = 8;
+				goto got_url;
+			}
+			p++;
 		}
-		if(kvi_hstrEqualCIN(p,"irc6://",7))
-		{
-			partLen = 7;
-			goto got_url;
-		}
-		if(kvi_hstrEqualCIN(p,"ircs://",7))
-		{
-			partLen = 7;
-			goto got_url;
-		}
-		if(kvi_hstrEqualCIN(p,"ircs6://",8))
-		{
-			partLen = 8;
-			goto got_url;
-		}
-		p++;
 	}
-}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -760,19 +787,19 @@ if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 
 check_mailto_url:
 	p++;
-if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
-{
-	if((*p == 'a') || (*p == 'A'))
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 	{
-		p--;
-		if(kvi_hstrEqualCIN(p,"mailto:",7))
+		if((*p == 'a') || (*p == 'A'))
 		{
-			partLen = 7;
-			goto got_url;
+			p--;
+			if(kvi_hstrEqualCIN(p,"mailto:",7))
+			{
+				partLen = 7;
+				goto got_url;
+			}
+			p++;
 		}
-		p++;
 	}
-}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -983,12 +1010,28 @@ check_emoticon_char:
 
 }
 
+
+
 void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 {
 	//appends a text string to the buffer list
 	//splits the lines
 	__range_valid(data_ptr);
 	m_pLastLinkUnderMouse = 0;
+
+	//qDebug("APP [[%s]] PPA",QString::fromUtf16(data_ptr).replace(QChar('\r'),QString::fromAscii("<r>")).toUtf8().data());
+
+	if(!KVI_OPTION_BOOL(KviOption_boolStripControlCodesInLogs))
+	{
+		// Looks like the user wants to keep the control codes in the log file: we just dump everything inside (including newlines...)
+		if(m_pLogFile && KVI_OPTION_MSGTYPE(iMsgType).logEnabled())
+		{
+			add2Log(QString::fromUtf16(data_ptr),iMsgType,true);
+		} else if(m_pMasterView) {
+			if(m_pMasterView->m_pLogFile && KVI_OPTION_MSGTYPE(iMsgType).logEnabled())
+				m_pMasterView->add2Log(QString::fromUtf16(data_ptr),iMsgType,true);
+		}
+	}
 
 	while(*data_ptr)
 	{                                         //Have more data
@@ -998,38 +1041,10 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 		line_ptr->iBlockCount=0;
 		line_ptr->uLineWraps=0;
 
-		if(!KVI_OPTION_BOOL(KviOption_boolStripControlCodesInLogs))
-		{
-			QString szBuffer, szDate;
-			
-			QDateTime date = QDateTime::currentDateTime();
-			switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
-			{
-				case 0:
-					szDate = date.toString("[hh:mm:ss] ");
-					break;
-				case 1:
-					szDate = date.toString(Qt::ISODate);
-					break;
-				case 2:
-					szDate = date.toString(Qt::SystemLocaleDate);
-					break;
-			}
-			kvi_appendWCharToQStringWithLength(&szBuffer,data_ptr,kvi_wstrlen(data_ptr));
-			szBuffer.prepend(szDate);
-			if(m_pLogFile && KVI_OPTION_MSGTYPE(iMsgType).logEnabled())
-			{
-				add2Log(szBuffer,iMsgType);
-			} else if(m_pMasterView) {
-				if(m_pMasterView->m_pLogFile && KVI_OPTION_MSGTYPE(iMsgType).logEnabled())
-				{
-					m_pMasterView->add2Log(szBuffer,iMsgType);
-				}
-			}
-		}
+		data_ptr = getTextLine(iMsgType,data_ptr,line_ptr,!(iFlags & NoTimestamp));
 
-		data_ptr=getTextLine(iMsgType,data_ptr,line_ptr,!(iFlags & NoTimestamp));
 		appendLine(line_ptr,!(iFlags & NoRepaint));
+
 		if(iFlags & SetLineMark)
 		{
 			if(KVI_OPTION_BOOL(KviOption_boolTrackLastReadTextViewLine))

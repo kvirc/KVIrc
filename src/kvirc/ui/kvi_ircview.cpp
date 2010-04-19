@@ -630,7 +630,7 @@ void KviIrcView::appendLine(KviIrcViewLine *ptr,bool bRepaint)
 		// a slave view has no log files!
 		if(KVI_OPTION_MSGTYPE(ptr->iMsgType).logEnabled())
 		{
-			add2Log(ptr->szText,ptr->iMsgType);
+			add2Log(ptr->szText,ptr->iMsgType,false);
 			// If we fail...this has been already reported!
 		}
 		// mmh.. when this overflows... we have problems (find doesn't work anymore :()
@@ -650,9 +650,7 @@ void KviIrcView::appendLine(KviIrcViewLine *ptr,bool bRepaint)
 			if(m_pMasterView->m_pLogFile && KVI_OPTION_BOOL(KviOption_boolStripControlCodesInLogs))
 			{
 				if(KVI_OPTION_MSGTYPE(ptr->iMsgType).logEnabled())
-				{
-					m_pMasterView->add2Log(ptr->szText,ptr->iMsgType);
-				}
+					m_pMasterView->add2Log(ptr->szText,ptr->iMsgType,false);
 			}
 			ptr->uIndex = m_pMasterView->m_uNextLineIndex;
 			m_pMasterView->m_uNextLineIndex++;
@@ -2481,12 +2479,14 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 				if(iTop != firstRowTop)
 					if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))iLeft+=m_iWrapMargin;
 
-				if(xPos < iLeft) return 0; // Mouse is out of this row boundaries
+				if(xPos < iLeft)
+					return 0; // Mouse is out of this row boundaries
 				for(;;)
 				{
 					int iLastLeft = iLeft;
 					//we've run till the end of the line, go away
-					if(i >= l->iBlockCount)return 0;
+					if(i >= l->iBlockCount)
+						return 0;
 					//we try to save the position of the last "text escape" tag we find
 					if(l->pBlocks[i].pChunk)
 						if(l->pBlocks[i].pChunk->type == KVI_TEXT_ESCAPE)

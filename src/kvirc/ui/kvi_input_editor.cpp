@@ -1712,23 +1712,25 @@ void KviInputEditor::getWordBeforeCursor(QString & szBuffer, bool * bIsFirstWord
 void KviInputEditor::completion(bool bShift)
 {
 	// FIXME: Spaces in directory completion can mess everything completely
-	//        On windows the KVI_PATH_SEPARATOR_CHARacters are breaking everything...
+	//        On windows the characters are breaking everything...
 	//        Well.... :D
 
 	QString szWord;
 	QString szMatch;
 	bool bFirstWordInLine;
 
+	bool bInCommand = m_szTextBuffer.trimmed().indexOf('/') == 0;
+
 	getWordBeforeCursor(szWord,&bFirstWordInLine);
 	if(szWord.isEmpty())
 	{
-		if(m_szLastCompletedNick.isEmpty()) return; // nothing to complete
-		else {
-			// this is standard nick completion continued
-			standardNickCompletion(bShift,szWord,bFirstWordInLine);
-			repaintWithCursorOn();
-			return;
-		}
+		if(m_szLastCompletedNick.isEmpty())
+			return; // nothing to complete
+
+		// this is standard nick completion continued
+		standardNickCompletion(bShift,szWord,bFirstWordInLine,bInCommand);
+		repaintWithCursorOn();
+		return;
 	}
 	int iOffset;
 	if(KviQString::equalCI(m_szTextBuffer.left(5),"/help") || KviQString::equalCI(m_szTextBuffer.left(5),"/help.open")) iOffset=1;
@@ -1811,7 +1813,7 @@ void KviInputEditor::completion(bool bShift)
 					bIsNick = true;
 					m_szLastCompletedNick=szWord;
 				} else {
-					standardNickCompletion(bShift,szWord,bFirstWordInLine);
+					standardNickCompletion(bShift,szWord,bFirstWordInLine,bInCommand);
 					repaintWithCursorOn();
 					return;
 				}
@@ -1820,7 +1822,7 @@ void KviInputEditor::completion(bool bShift)
 				m_pUserListView->completeNickBashLike(szWord,&tmp,bShift);
 				bIsNick = true;
 			} else {
-				standardNickCompletion(bShift,szWord,bFirstWordInLine);
+				standardNickCompletion(bShift,szWord,bFirstWordInLine,bInCommand);
 				repaintWithCursorOn();
 				return;
 			}
@@ -1842,6 +1844,11 @@ void KviInputEditor::completion(bool bShift)
 				{
 					if(bFirstWordInLine || (!KVI_OPTION_BOOL(KviOption_boolUseNickCompletionPostfixForFirstWordOnly)))
 						szMatch.append(KVI_OPTION_STRING(KviOption_stringNickCompletionPostfix));
+				}
+				if(bInCommand)
+				{
+					// escape crazy things like Nick\nquit
+					szMatch.replace(QChar('\\'),QString::fromAscii("\\\\"));
 				}
 			}
 		} else {
@@ -1884,28 +1891,50 @@ void KviInputEditor::completion(bool bShift)
 	repaintWithCursorOn();
 }
 
-void KviInputEditor::replaceWordBeforeCursor(const QString & szWord, const QString & szRreplacement, bool bRepaint)
+void KviInputEditor::replaceWordBeforeCursor(const QString & szWord, const QString & szReplacement, bool bRepaint)
 {
 	selectOneChar(-1);
 	m_iCursorPosition -= szWord.length();
 	m_szTextBuffer.remove(m_iCursorPosition,szWord.length());
-	m_szTextBuffer.insert(m_iCursorPosition,szRreplacement);
+	m_szTextBuffer.insert(m_iCursorPosition,szReplacement);
 	m_szTextBuffer.truncate(m_iMaxBufferSize);
-	moveCursorTo(m_iCursorPosition + szRreplacement.length());
-	if(bRepaint)repaintWithCursorOn();
+	moveCursorTo(m_iCursorPosition + szReplacement.length());
+	if(bRepaint)
+		repaintWithCursorOn();
 }
 
-void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, bool bFirstWordInLine)
+void KviInputEditor::standardNickCompletionInsertCompletedText(const QString &szReplacedWord,const QString &szCompletedText,bool bFirstWordInLine,bool bInCommand)
+{
+	QString szBuffer = szCompletedText;
+
+	if(!KVI_OPTION_STRING(KviOption_stringNickCompletionPostfix).isEmpty())
+	{
+		if(bFirstWordInLine || (!KVI_OPTION_BOOL(KviOption_boolUseNickCompletionPostfixForFirstWordOnly)))
+			szBuffer.append(KVI_OPTION_STRING(KviOption_stringNickCompletionPostfix));
+	}
+	if(bInCommand)
+	{
+		// escape crazy things like Nick\nquit
+		szBuffer.replace(QChar('\\'),QString::fromAscii("\\\\"));
+	}
+	replaceWordBeforeCursor(szReplacedWord,szBuffer,false);
+}
+
+void KviInputEditor::standardNickCompletion(bool bAddMask,QString & szWord,bool bFirstWordInLine,bool bInCommand)
 {
 	// FIXME: this could be really simplified...
-	if(!m_pUserListView) return;
+	if(!m_pUserListView)
+		return;
+
 	selectOneChar(-1);
 
 	QString szBuffer;
 	if(m_szLastCompletedNick.isEmpty())
 	{
 		// New completion session: we NEED sth to complete
-		if(szWord.isEmpty()) return;
+		if(szWord.isEmpty())
+			return;
+
 		if(m_pUserListView->completeNickStandard(szWord,m_szLastCompletedNick,szBuffer,bAddMask))
 		{
 			// completed: save the buffer
@@ -1914,16 +1943,16 @@ void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, boo
 			m_iLastCompletionCursorXPosition  = m_iLastCursorXPosition;
 			m_iLastCompletionFirstVisibleChar = m_iFirstVisibleChar;
 			m_szLastCompletedNick             = szBuffer;
-			if(!KVI_OPTION_STRING(KviOption_stringNickCompletionPostfix).isEmpty())
-			{
-				if(bFirstWordInLine || (!KVI_OPTION_BOOL(KviOption_boolUseNickCompletionPostfixForFirstWordOnly)))
-					szBuffer.append(KVI_OPTION_STRING(KviOption_stringNickCompletionPostfix));
-			}
-			replaceWordBeforeCursor(szWord,szBuffer,false);
+			standardNickCompletionInsertCompletedText(szWord,szBuffer,bFirstWordInLine,bInCommand);
 			m_bLastCompletionFinished=0;
 			// REPAINT CALLED FROM OUTSIDE!
 		} // else no match at all
-	} else  if(!m_bLastCompletionFinished) {
+		
+		return;
+	}
+	
+	if(!m_bLastCompletionFinished)
+	{
 		// Old session
 		// swap the buffers
 		m_szTextBuffer                        = m_szLastCompletionBuffer;
@@ -1939,44 +1968,36 @@ void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, boo
 		{
 			// completed
 			m_szLastCompletedNick             = szBuffer;
-			if(!KVI_OPTION_STRING(KviOption_stringNickCompletionPostfix).isEmpty())
-			{
-				if(bFirstWordInLine || (!KVI_OPTION_BOOL(KviOption_boolUseNickCompletionPostfixForFirstWordOnly)))
-					szBuffer.append(KVI_OPTION_STRING(KviOption_stringNickCompletionPostfix));
-			}
-			replaceWordBeforeCursor(szWord,szBuffer,false);
+			standardNickCompletionInsertCompletedText(szWord,szBuffer,bFirstWordInLine,bInCommand);
 			m_bLastCompletionFinished=0;
 			// REPAINT CALLED FROM OUTSIDE!
 		} else {
 			m_bLastCompletionFinished=1;
 			m_szLastCompletedNick = "";
 		}
+		
+		return;
+	}
+	
+	// Old session finished
+	// re-extract
+	//word = m_szTextBuffer.left(m_iCursorPosition);
+	//getWordBeforeCursor(word,&bFirstWordInLine);
+	if(szWord.isEmpty())return;
+	if(m_pUserListView->completeNickStandard(szWord,"",szBuffer,bAddMask))
+	{
+		// completed
+		m_szLastCompletionBuffer          = m_szTextBuffer;
+		m_iLastCompletionCursorPosition   = m_iCursorPosition;
+		m_iLastCompletionCursorXPosition  = m_iLastCursorXPosition;
+		m_iLastCompletionFirstVisibleChar = m_iFirstVisibleChar;
+		m_szLastCompletedNick             = szBuffer;
+		standardNickCompletionInsertCompletedText(szWord,szBuffer,bFirstWordInLine,bInCommand);
+		m_bLastCompletionFinished=0;
+		// REPAINT CALLED FROM OUTSIDE!
 	} else {
-		// Old session finished
-		// re-extract
-		//word = m_szTextBuffer.left(m_iCursorPosition);
-		//getWordBeforeCursor(word,&bFirstWordInLine);
-		if(szWord.isEmpty())return;
-		if(m_pUserListView->completeNickStandard(szWord,"",szBuffer,bAddMask))
-		{
-			// completed
-			m_szLastCompletionBuffer          = m_szTextBuffer;
-			m_iLastCompletionCursorPosition   = m_iCursorPosition;
-			m_iLastCompletionCursorXPosition  = m_iLastCursorXPosition;
-			m_iLastCompletionFirstVisibleChar = m_iFirstVisibleChar;
-			m_szLastCompletedNick             = szBuffer;
-			if(!KVI_OPTION_STRING(KviOption_stringNickCompletionPostfix).isEmpty())
-			{
-				if(bFirstWordInLine || (!KVI_OPTION_BOOL(KviOption_boolUseNickCompletionPostfixForFirstWordOnly)))
-					szBuffer.append(KVI_OPTION_STRING(KviOption_stringNickCompletionPostfix));
-			}
-			replaceWordBeforeCursor(szWord,szBuffer,false);
-			m_bLastCompletionFinished=0;
-			// REPAINT CALLED FROM OUTSIDE!
-		} else {
-			m_bLastCompletionFinished=1;
-			m_szLastCompletedNick = "";
-		}
+		m_bLastCompletionFinished=1;
+		m_szLastCompletedNick = "";
 	}
 }
 

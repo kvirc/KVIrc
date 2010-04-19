@@ -246,17 +246,47 @@ bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 	return true;
 }
 
-void KviIrcView::add2Log(const QString &szBuffer,int iMsgType)
+
+void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 {
 	QByteArray szTmp;
-	QString szToWrite;
-	if(KVI_OPTION_BOOL(KviOption_boolStripMsgTypeInLogs))
+
+	if(!KVI_OPTION_BOOL(KviOption_boolStripMsgTypeInLogs))
 	{
-		szToWrite = QString("%1\n").arg(szBuffer);
-	} else {
-		szToWrite = QString("%1 %2\n").arg(iMsgType).arg(szBuffer);
+		QString szMessageType = QString("%1 \n").arg(iMsgType);
+
+		szTmp = KviQString::toUtf8(szMessageType);
+
+		if(m_pLogFile->write(szTmp.data(),szTmp.length())==-1)
+			debug("WARNING : Can not write to the log file.");
 	}
-	szTmp = KviQString::toUtf8(szToWrite);
+	
+	if(bPrependDate)
+	{
+		QString szDate;
+		QDateTime date = QDateTime::currentDateTime();
+		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+		{
+			case 0:
+				szDate = date.toString("[hh:mm:ss] ");
+			break;
+			case 1:
+				szDate = date.toString(Qt::ISODate);
+			break;
+			case 2:
+				szDate = date.toString(Qt::SystemLocaleDate);
+			break;
+		}
+
+		szTmp = KviQString::toUtf8(szDate);
+
+		if(m_pLogFile->write(szTmp.data(),szTmp.length())==-1)
+			debug("WARNING : Can not write to the log file.");
+	}
+	
+	szTmp = KviQString::toUtf8(szBuffer);
+
 	if(m_pLogFile->write(szTmp.data(),szTmp.length())==-1)
 		debug("WARNING : Can not write to the log file.");
 }
+

@@ -383,13 +383,19 @@ private:
 	void completion(bool bShift);
 
 	/**
-	* \brief Completes the nickname
+	* \brief Completes the nickname specified by szWord (inserts the completed text to the input line)
 	* \param bAddMask Whether to complete with the mask of the nickname
 	* \param szWord The nickname to complete
-	* \param bFirstWordInLine Whether to add the suffix from option panel
+	* \param bFirstWordInLine Whether the word to complete is the first word in the text line (so the suffix from option panel is added)
+	* \param bInCommand true if the completion happens inside a kvs command (and thus the completed word should be kvs-escaped)
 	* \return void
 	*/
-	void standardNickCompletion(bool bAddMask, QString & szWord, bool bFirstWordInLine);
+	void standardNickCompletion(bool bAddMask, QString & szWord, bool bFirstWordInLine, bool bInCommand);
+
+	/**
+	* Internal helper for standardNickCompletion()
+	*/
+	void standardNickCompletionInsertCompletedText(const QString &szReplacedWord,const QString &szCompletedText,bool bFirstWordInLine,bool bInCommand);
 
 	/**
 	* \brief Moves the cursor one character to the right
@@ -438,26 +444,23 @@ private:
 	inline static QFontMetrics * getLastFontMetrics(const QFont & font)
 	{
 		if(g_pLastFontMetrics)
+			return g_pLastFontMetrics;
+		g_pLastFontMetrics = new QFontMetrics(font);
+		unsigned short u;
+		for(u=1; u<32; u++)
 		{
-			return g_pLastFontMetrics;
-		} else {
-			g_pLastFontMetrics = new QFontMetrics(font);
-			unsigned short u;
-			for(u=1; u<32; u++)
-			{
-				QChar c = getSubstituteChar(u);
-				KviInputEditor::g_iInputFontCharWidth[u] = g_pLastFontMetrics->width(c);
-				if(c != QChar(u))
-					KviInputEditor::g_iInputFontCharWidth[u] += 4;
-			}
-
-			for(u=32; u<256; u++)
-			{
-				KviInputEditor::g_iInputFontCharWidth[u] = g_pLastFontMetrics->width(QChar(u));
-			}
-
-			return g_pLastFontMetrics;
+			QChar c = getSubstituteChar(u);
+			KviInputEditor::g_iInputFontCharWidth[u] = g_pLastFontMetrics->width(c);
+			if(c != QChar(u))
+				KviInputEditor::g_iInputFontCharWidth[u] += 4;
 		}
+
+		for(u=32; u<256; u++)
+		{
+			KviInputEditor::g_iInputFontCharWidth[u] = g_pLastFontMetrics->width(QChar(u));
+		}
+
+		return g_pLastFontMetrics;
 	}
 
 public slots:
