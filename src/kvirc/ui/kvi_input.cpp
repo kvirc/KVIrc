@@ -42,7 +42,6 @@
 #include "kvi_userinput.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h"
-#include "kvi_tal_vbox.h"
 #include "kvi_tal_tooltip.h"
 
 #include <QLabel>
@@ -57,8 +56,7 @@
 #include <QEvent>
 #include <QMouseEvent>
 #include <QUrl>
-//#include <QHBoxLayout>
-//#include <QSplitter>
+#include <QHBoxLayout>
 
 #include <ctype.h>
 #include <stdlib.h>
@@ -73,41 +71,40 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 : QWidget(pPar)
 {
 	setObjectName("input_widget");
-	
-	m_pLayout = new QGridLayout(this);
+	m_pLayout=new QGridLayout(this);
+
 	m_pLayout->setMargin(0);
 	m_pLayout->setSpacing(0);
 
 	m_pWindow = pPar;
 	m_pMultiLineEditor = 0;
-	//m_pSplitter = 0;
 
 	m_pHideToolsButton = new QToolButton(this);
 	m_pHideToolsButton->setObjectName("hide_container_button");
+
 	m_pHideToolsButton->setIconSize(QSize(22,22));
 	m_pHideToolsButton->setFixedWidth(16);
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
-	{
 		m_pHideToolsButton->setIcon(QIcon(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))));
-	}
 
 	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
 
 	m_pButtonContainer = new KviTalHBox(this);
 	m_pButtonContainer->setSpacing(0);
 	m_pButtonContainer->setMargin(0);
+
 	m_pButtonContainer->setSizePolicy(QSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum));
 	//if(m_pButtonContainer->layout())
 	// m_pButtonContainer->layout()->setSizeConstraint(QLayout::SetMinimumSize);
 
 	m_pHistoryButton = new QToolButton(m_pButtonContainer);
 	m_pHistoryButton->setObjectName("historybutton");
+
 	m_pHistoryButton->setIconSize(QSize(22,22));
 	//m_pHistoryButton->setUpdatesEnabled(TRUE); ???
-	
 	QIcon is1;
-	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))
+	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))//G&N mar 2005
 	{
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
 		m_pHistoryButton->setIcon(is1);
@@ -121,8 +118,8 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 
 	m_pIconButton = new QToolButton(m_pButtonContainer);
 	m_pIconButton->setObjectName("iconbutton");
+
 	m_pIconButton->setIconSize(QSize(22,22));
-	
 	QIcon is3;
 	is3.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BIGGRIN)));
 	m_pIconButton->setIcon(is3);
@@ -131,35 +128,36 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 
 	m_pCommandlineModeButton = new QToolButton(m_pButtonContainer);
 	m_pCommandlineModeButton->setObjectName("commandlinemodebutton");
+
 	m_pCommandlineModeButton->setIconSize(QSize(22,22));
 	m_pCommandlineModeButton->setCheckable(true);
-	
 	QIcon is0;
 	is0.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYSMILE)),QIcon::Normal,QIcon::On);
 	is0.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYKVS)),QIcon::Normal,QIcon::Off);
 	m_pCommandlineModeButton->setIcon(is0);
 	KviTalToolTip::add(m_pCommandlineModeButton,__tr2qs("User friendly commandline mode<br>See also /help commandline"));
-	
 	if(KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault))
 		m_pCommandlineModeButton->setChecked(true);
 
 
 	m_pMultiEditorButton = new QToolButton(m_pButtonContainer);
 	m_pMultiEditorButton->setObjectName("multieditorbutton");
+
 	m_pMultiEditorButton->setCheckable(true);
 	m_pMultiEditorButton->setIconSize(QSize(22,22));
-	
 	QIcon is2;
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIcon::Normal,QIcon::On);
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIcon::Normal,QIcon::Off);
 	m_pMultiEditorButton->setIcon(is2);
 	QString szTip = __tr2qs("Multi-line Editor<br>&lt;Alt+Return&gt;");
 	KviTalToolTip::add(m_pMultiEditorButton,szTip);
+
 	connect(m_pMultiEditorButton,SIGNAL(toggled(bool)),this,SLOT(multilineEditorButtonToggled(bool)));
 
 	m_pInputEditor = new KviInputEditor(this,pPar,pView);
-	m_pInputEditor->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Ignored));
 	connect(m_pInputEditor,SIGNAL(enterPressed()),this,SLOT(inputEditorEnterPressed()));
+	m_pInputEditor->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Ignored));
+
 
 	m_pMultiEditorButton->setAutoRaise(true);
 	m_pCommandlineModeButton->setAutoRaise(true);
@@ -187,12 +185,10 @@ void KviInput::setButtonsHidden(bool bHidden)
 {
 	if(!m_pHideToolsButton || !m_pButtonContainer)
 		return;
-	
-	if(bHidden == m_pButtonContainer->isHidden())
+	if(bHidden==m_pButtonContainer->isHidden())
 		return;
-	
 	m_pButtonContainer->setHidden(bHidden);
-	QPixmap * pix = bHidden ?
+	QPixmap * pix= bHidden ?
 		g_pIconManager->getBigIcon("kvi_horizontal_right.png") :
 		g_pIconManager->getBigIcon("kvi_horizontal_left.png");
 	if(pix)
@@ -211,9 +207,9 @@ void KviInput::inputEditorEnterPressed()
 	m_pInputEditor->setText("");
 }
 
-void KviInput::keyPressEvent(QKeyEvent * e)
+void KviInput::keyPressEvent(QKeyEvent *e)
 {
-	debug("KviInput::keyPressEvent(key:%d,text:%s)",e->key(),e->text().isEmpty() ? "empty" : e->text().toUtf8().data());
+	//debug("KviInput::keyPressEvent(key:%d,state:%d,text:%s)",e->key(),e->state(),e->text().isEmpty() ? "empty" : e->text().toUtf8().data());
 
 	if(e->modifiers() & Qt::AltModifier)
 	{
@@ -311,9 +307,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 		m_pMultiLineEditor = 0;
 
 		delete m_pHelpLabel;
-		//delete m_pSplitter;
 		m_pHelpLabel = 0;
-		//m_pSplitter = 0;
 
 		szTmp.replace(QRegExp("[\a\f\n\r\v]"), QString(" "));
 		szTmp.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
@@ -326,25 +320,14 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 		if(!bOn) return;
 		m_pInputEditor->hide();
 
-		//m_pSplitter = new QSplitter(Qt::Vertical,this);
-		//m_pSplitter->setObjectName("multiline_splitter");
-		//m_pLayout->addWidget(m_pSplitter,0,0,1,1);
-		//m_pLayout->addWidget(m_pSplitter,0,0);
-
-		KviTalVBox * pBox = new KviTalVBox(this);
-		//KviTalVBox * pBox = new KviTalVBox(m_pSplitter);
-		
-		m_pHelpLabel = new QLabel(pBox);
+		m_pHelpLabel = new QLabel();
 		m_pHelpLabel->setIndent(5); // we only want a left margin here
 		m_pHelpLabel->setText(__tr2qs("<Ctrl+Return>; submits, <Alt+Return>; hides this editor"));
 		m_pLayout->addWidget(m_pHelpLabel,0,0,1,1);
-		//m_pSplitter->addWidget(m_pHelpLabel);
 
-		m_pMultiLineEditor = KviScriptEditor::createInstance(pBox);
+		m_pMultiLineEditor = KviScriptEditor::createInstance(this);
 		m_pMultiLineEditor->setText(m_pInputEditor->text());
 		m_pLayout->addWidget(m_pMultiLineEditor,1,0,1,1);
-		//m_pSplitter->addWidget(m_pMultiLineEditor);
-		//m_pSplitter->addWidget(pBox);
 
 		m_pWindow->childrenTreeChanged(m_pMultiLineEditor);
 		m_pMultiLineEditor->setFocus();
@@ -371,9 +354,9 @@ void KviInput::historyButtonClicked()
 	g_pHistoryWindow->popup(this);
 }
 
-/*#define BUTTON_WIDTH 20
+#define BUTTON_WIDTH 20
 
-void KviInput::resizeEvent(QResizeEvent *e)
+/*void KviInput::resizeEvent(QResizeEvent *e)
 {
 	//m_pButtonContainer
 	m_pInputEditor->setGeometry(0,0,m_pButtonContainer->isVisible() ? width() - (BUTTON_WIDTH * 4)-10 : width() - 10,height());
@@ -401,7 +384,7 @@ void KviInput::focusInEvent(QFocusEvent *)
 
 int KviInput::heightHint() const
 {
-	return m_pMultiLineEditor ? 150 : m_pInputEditor->heightHint();
+	return m_pMultiLineEditor ? 120 : m_pInputEditor->heightHint();
 }
 
 void KviInput::setText(const QString & szText)
@@ -440,12 +423,12 @@ void KviInput::applyOptions()
 
 	m_pInputEditor->applyOptions();
 }
-#if 0
+
 void KviInput::setFocusProxy(QWidget *)
 {
 	/* do nothing */
 }
-#endif
+
 QString KviInput::text()
 {
 	QString szText;

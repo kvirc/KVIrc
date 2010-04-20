@@ -1343,33 +1343,34 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 
 static bool file_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"addimagepath",file_kvs_cmd_addimagepath);
+
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"copy",file_kvs_cmd_copy);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"delimagepath",file_kvs_cmd_delimagepath);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"mkdir",file_kvs_cmd_mkdir);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"remove",file_kvs_cmd_remove);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"rename",file_kvs_cmd_rename);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"rmdir",file_kvs_cmd_rmdir);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"mkdir",file_kvs_cmd_mkdir);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"write",file_kvs_cmd_write);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"remove",file_kvs_cmd_remove);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"rmdir",file_kvs_cmd_rmdir);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"addimagepath",file_kvs_cmd_addimagepath);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"delimagepath",file_kvs_cmd_delimagepath);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"writeLines",file_kvs_cmd_writeLines);
 
-	KVSM_REGISTER_FUNCTION(m,"allsizes",file_kvs_fnc_allSizes);
-	KVSM_REGISTER_FUNCTION(m,"cwd",file_kvs_fnc_cwd);
 	KVSM_REGISTER_FUNCTION(m,"digest",file_kvs_fnc_digest);
 	KVSM_REGISTER_FUNCTION(m,"exists",file_kvs_fnc_exists);
-	KVSM_REGISTER_FUNCTION(m,"extractfilename",file_kvs_fnc_extractfilename);
-	KVSM_REGISTER_FUNCTION(m,"extractpath",file_kvs_fnc_extractpath);
+	KVSM_REGISTER_FUNCTION(m,"type",file_kvs_fnc_type);
+	KVSM_REGISTER_FUNCTION(m,"size",file_kvs_fnc_size);
+	KVSM_REGISTER_FUNCTION(m,"allsizes",file_kvs_fnc_allSizes);
 	KVSM_REGISTER_FUNCTION(m,"fixpath",file_kvs_fnc_fixpath);
-	KVSM_REGISTER_FUNCTION(m,"globaldir",file_kvs_fnc_globaldir);
-	KVSM_REGISTER_FUNCTION(m,"homedir",file_kvs_fnc_homedir);
-	KVSM_REGISTER_FUNCTION(m,"localdir",file_kvs_fnc_localdir);
-	KVSM_REGISTER_FUNCTION(m,"ls",file_kvs_fnc_ls);
 	KVSM_REGISTER_FUNCTION(m,"ps",file_kvs_fnc_ps);
 	KVSM_REGISTER_FUNCTION(m,"read",file_kvs_fnc_read);
-	KVSM_REGISTER_FUNCTION(m,"readLines",file_kvs_fnc_readLines);
+	KVSM_REGISTER_FUNCTION(m,"localdir",file_kvs_fnc_localdir);
+	KVSM_REGISTER_FUNCTION(m,"homedir",file_kvs_fnc_homedir);
 	KVSM_REGISTER_FUNCTION(m,"rootdir",file_kvs_fnc_rootdir);
-	KVSM_REGISTER_FUNCTION(m,"size",file_kvs_fnc_size);
-	KVSM_REGISTER_FUNCTION(m,"type",file_kvs_fnc_type);
+	KVSM_REGISTER_FUNCTION(m,"cwd",file_kvs_fnc_cwd);
+	KVSM_REGISTER_FUNCTION(m,"globaldir",file_kvs_fnc_globaldir);
+	KVSM_REGISTER_FUNCTION(m,"extractpath",file_kvs_fnc_extractpath);
+	KVSM_REGISTER_FUNCTION(m,"extractfilename",file_kvs_fnc_extractfilename);
+	KVSM_REGISTER_FUNCTION(m,"ls",file_kvs_fnc_ls);
+	KVSM_REGISTER_FUNCTION(m,"readLines",file_kvs_fnc_readLines);
 
 	return true;
 }
@@ -1382,8 +1383,7 @@ static bool file_module_cleanup(KviModule *)
 KVIRC_MODULE(
 	"File",                                                 // module name
 	"4.0.0",                                                // module version
-	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)" \
-	"          (C) 2010 Elvio Basello (hell at hellvis69 dot netsons dot org)", // author & (C)
+	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Interface to the file system",
 	file_module_init,
 	0,
