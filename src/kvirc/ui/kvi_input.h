@@ -39,6 +39,8 @@
 #include <QLabel>
 
 class QGridLayout;
+//class QSplitter;
+
 class KviUserListView;
 class KviWindow;
 class KviInputEditor;
@@ -76,8 +78,10 @@ public:
 	QToolButton     * m_pIconButton;
 	QToolButton     * m_pCommandlineModeButton;
 	QToolButton     * m_pHideToolsButton;
+protected:
 	QGridLayout     * m_pLayout;
 	QLabel          * m_pHelpLabel;
+	//QSplitter       * m_pSplitter;
 public:
 	/**
 	* \brief Sets the focus to the input line
@@ -96,14 +100,14 @@ public:
 	* \brief Returns true if the input line is in user-friendly mode
 	* \return bool
 	*/
-	bool isUserFriendly() { return m_pCommandlineModeButton->isChecked(); };
+	bool isUserFriendly(){ return m_pCommandlineModeButton->isChecked(); };
 
 	/**
 	* \brief Sets the user-friendly mode to the input line
 	* \param bSet Whether to set the user-friendly mode
 	* \return void
 	*/
-	void setUserFriendly(bool bSet) { m_pCommandlineModeButton->setChecked(bSet); };
+	void setUserFriendly(bool bSet){ m_pCommandlineModeButton->setChecked(bSet); };
 
 	/**
 	* \brief Returns the height of the input line
@@ -156,7 +160,6 @@ public:
 	* \return QString
 	*/
 	QString text();
-	//const QString & text();
 
 	/**
 	* \brief Return the instance of the input editor
@@ -203,7 +206,7 @@ public slots:
 protected:
 	//virtual void resizeEvent(QResizeEvent * e);
 	virtual void focusInEvent(QFocusEvent * e);
-	virtual void setFocusProxy(QWidget * w);
+	//virtual void setFocusProxy(QWidget * w);
 	virtual void keyPressEvent(QKeyEvent * e);
 };
 
