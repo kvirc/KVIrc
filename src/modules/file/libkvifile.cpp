@@ -37,6 +37,50 @@
 #include <QTextCodec>
 #include <QByteArray>
 
+#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
+	// The current implementation
+	#include <openssl/evp.h>
+/*
+#elif defined(COMPILE_NO_EMBEDDED_CODE)
+	// The preferred new implementation (until QCryptographicHash supports all
+	// hashes we want).
+	// As Crypto++ is concerned for security they warn about MD5 and friends,
+	// but we can ignore that and therefore silence the warnings.
+	#define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
+	// Hashes (should cover most cases)
+	#include <cryptopp/md2.h>
+	#include <cryptopp/md4.h>
+	#include <cryptopp/md5.h>
+	#include <cryptopp/sha.h>
+	#include <cryptopp/ripemd.h>
+	#include <cryptopp/crc.h>
+	// Encoding
+	#include <cryptopp/hex.h>
+	// additional
+	#include <string>
+	// template function
+	template <typename T>
+	std::string CryptoPpStrHash(std::string szMessage){
+		T hash;
+		std::string szDigest;
+		CryptoPP::StringSource(szMessage,
+			true,
+			new CryptoPP::HashFilter(
+				hash,
+				new CryptoPP::HexEncoder(
+					new CryptoPP::StringSink(szDigest)
+				)
+			)
+		);
+		return szDigest;
+	}
+*/
+#else
+	// The fallback we can always use, but with very limited set of
+	// functionality.
+	#include <QCryptographicHash>
+#endif
+
 /*
 	@doc: file.copy
 	@type:
@@ -63,7 +107,6 @@
 	@seealso:
 		[cmd]file.rename[/cmd], [fnc]$file.exists[/fnc]
 */
-
 static bool file_kvs_cmd_copy(KviKvsModuleCommandCall * c)
 {
 	QString szSrc,szDst;
@@ -86,7 +129,6 @@ static bool file_kvs_cmd_copy(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
 /*
 	@doc: file.addimagepath
 	@type:
@@ -104,7 +146,6 @@ static bool file_kvs_cmd_copy(KviKvsModuleCommandCall * c)
 	@seealso:
 		[cmd]file.delimagepath[/cmd]
 */
-
 static bool file_kvs_cmd_addimagepath(KviKvsModuleCommandCall * c)
 {
 	QString szDst;
@@ -120,8 +161,6 @@ static bool file_kvs_cmd_addimagepath(KviKvsModuleCommandCall * c)
 		KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).append(szDst);
 	return true;
 }
-
-
 
 /*
 	@doc: file.delimagepath
@@ -139,7 +178,6 @@ static bool file_kvs_cmd_addimagepath(KviKvsModuleCommandCall * c)
 	@seealso:
 		[cmd]file.addimagepath[/cmd]
 */
-
 static bool file_kvs_cmd_delimagepath(KviKvsModuleCommandCall * c)
 {
 	QString szDst;
@@ -155,7 +193,6 @@ static bool file_kvs_cmd_delimagepath(KviKvsModuleCommandCall * c)
 		KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).removeAt(index);
 	return true;
 }
-
 
 /*
 	@doc: file.write
@@ -187,7 +224,6 @@ static bool file_kvs_cmd_delimagepath(KviKvsModuleCommandCall * c)
 	@seealso:
 		[cmd]file.rename[/cmd], [fnc]$file.exists[/fnc]
 */
-
 static bool file_kvs_cmd_write(KviKvsModuleCommandCall * c)
 {
 	QString szFileName,szData;
@@ -208,7 +244,6 @@ static bool file_kvs_cmd_write(KviKvsModuleCommandCall * c)
 
 	return true;
 }
-
 
 /*
 	@doc: file.rename
@@ -232,7 +267,6 @@ static bool file_kvs_cmd_write(KviKvsModuleCommandCall * c)
 	@seealso:
 		[cmd]file.copy[/cmd], [fnc]$file.exists[/fnc]
 */
-
 static bool file_kvs_cmd_rename(KviKvsModuleCommandCall * c)
 {
 	QString szOld,szNew;
@@ -251,7 +285,6 @@ static bool file_kvs_cmd_rename(KviKvsModuleCommandCall * c)
 		c->warning(__tr2qs("Failed to rename %Q to %Q"),&szOld,&szNew);
 	return true;
 }
-
 
 /*
 	@doc: file.mkdir
@@ -273,7 +306,6 @@ static bool file_kvs_cmd_rename(KviKvsModuleCommandCall * c)
 	@seealso:
 		[fnc]$file.exists[/fnc]
 */
-
 static bool file_kvs_cmd_mkdir(KviKvsModuleCommandCall * c)
 {
 	QString szDir;
@@ -285,8 +317,6 @@ static bool file_kvs_cmd_mkdir(KviKvsModuleCommandCall * c)
 		c->warning(__tr2qs("Failed to make the directory %Q"),&szDir);
 	return true;
 }
-
-
 
 /*
 	@doc: file.remove
@@ -312,7 +342,6 @@ static bool file_kvs_cmd_mkdir(KviKvsModuleCommandCall * c)
 	@seealso:
 		[fnc]$file.exists[/fnc]
 */
-
 static bool file_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 {
 	QString szName;
@@ -327,7 +356,6 @@ static bool file_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 	}
 	return true;
 }
-
 
 /*
 	@doc: file.rmdir
@@ -355,7 +383,6 @@ static bool file_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 		[fnc]$file.exists[/fnc]
 		[cmd]file.remove[/cmd]
 */
-
 static bool file_kvs_cmd_rmdir(KviKvsModuleCommandCall * c)
 {
 	QString szName;
@@ -371,7 +398,6 @@ static bool file_kvs_cmd_rmdir(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
 /*
 	@doc: file.exists
 	@type:
@@ -386,7 +412,6 @@ static bool file_kvs_cmd_rmdir(KviKvsModuleCommandCall * c)
 		Returns true if the file <filename> exists (this is also valid for directories!).[br]
 		The <filename> should be an unix-style file path and is adjusted according to the system that KVIrc is running on.[br]
 */
-
 static bool file_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -398,7 +423,6 @@ static bool file_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setBoolean(f.exists());
 	return true;
 }
-
 
 /*
 	@doc: file.type
@@ -415,7 +439,6 @@ static bool file_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 		is the name of a directory or "l" if it is a symbolic link.[br]
 		The <filename> should be an unix-style file path and is adjusted according to the system that KVIrc is running on.[br]
 */
-
 static bool file_kvs_fnc_type(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -429,7 +452,6 @@ static bool file_kvs_fnc_type(KviKvsModuleFunctionCall * c)
 	else if(f.isSymLink())c->returnValue()->setString("l");
 	return true;
 }
-
 
 /*
 	@doc: file.size
@@ -446,7 +468,6 @@ static bool file_kvs_fnc_type(KviKvsModuleFunctionCall * c)
 		If the file does not exist , this function returns 0.[br]
 		The <filename> should be an unix-style file path and is adjusted according to the system that KVIrc is running on.[br]
 */
-
 static bool file_kvs_fnc_size(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -458,6 +479,7 @@ static bool file_kvs_fnc_size(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setInteger(f.size());
 	return true;
 }
+
 /*
 	@doc: file.allSizes
 	@type:
@@ -471,7 +493,6 @@ static bool file_kvs_fnc_size(KviKvsModuleFunctionCall * c)
 	@description:
 	Returns the size of every files of the specified directory as an array.[br]
 */
-
 static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
 {
 	QString szDir;
@@ -531,8 +552,6 @@ static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$file.ps[/fnc]
 */
-
-
 static bool file_kvs_fnc_fixpath(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -543,7 +562,6 @@ static bool file_kvs_fnc_fixpath(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szName);
 	return true;
 }
-
 
 /*
 	@doc: file.ps
@@ -561,13 +579,11 @@ static bool file_kvs_fnc_fixpath(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$file.fixpath[/fnc]
 */
-
 static bool file_kvs_fnc_ps(KviKvsModuleFunctionCall * c)
 {
 	c->returnValue()->setString(QString(QChar(KVI_PATH_SEPARATOR_CHAR)));
 	return true;
 }
-
 
 /*
 	@doc: file.ls
@@ -611,7 +627,6 @@ static bool file_kvs_fnc_ps(KviKvsModuleFunctionCall * c)
 			[cmd]foreach[/cmd](%f,%dir[])echo %f
 		[/example]
 */
-
 static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 {
 	QString szDir,szFlags,szFilter;
@@ -705,7 +720,6 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$file.readbinary[/fnc]
 */
-
 static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 {
 	QString szNameZ;
@@ -763,7 +777,6 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-
 /*
 	@doc: file.readLines
 	@type:
@@ -795,7 +808,6 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$file.read[/fnc], [cmd]file.writeLines[/cmd], [fnc]$lf[/fnc]
 */
-
 static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -851,7 +863,6 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-
 /*
 	@doc: file.writelines
 	@type:
@@ -889,8 +900,6 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$file.readLines[/fnc]
 */
-
-
 static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 {
 	QString szFile,szFlags;
@@ -942,7 +951,6 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
 /*
 	@doc: file.localdir
 	@type:
@@ -969,7 +977,6 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 			echo panic.png would be translated to $file.localdir(pics/panic.png)
 		[/example]
 */
-
 static bool file_kvs_fnc_localdir(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -983,8 +990,6 @@ static bool file_kvs_fnc_localdir(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szPath);
 	return true;
 }
-
-
 
 /*
 	@doc: file.homedir
@@ -1004,7 +1009,6 @@ static bool file_kvs_fnc_localdir(KviKvsModuleFunctionCall * c)
 		that KVIrc is atually running on (thus you not need to care about path
 		separators in the <relative_path> , KVIrc will adjust them).[br]
 */
-
 static bool file_kvs_fnc_homedir(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -1019,8 +1023,6 @@ static bool file_kvs_fnc_homedir(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szPath);
 	return true;
 }
-
-
 
 /*
 	@doc: file.rootdir
@@ -1041,7 +1043,6 @@ static bool file_kvs_fnc_homedir(KviKvsModuleFunctionCall * c)
 		that KVIrc is atually running on (thus you not need to care about path
 		separators in the <relative_path> , KVIrc will adjust them).[br]
 */
-
 static bool file_kvs_fnc_rootdir(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -1056,7 +1057,6 @@ static bool file_kvs_fnc_rootdir(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szPath);
 	return true;
 }
-
 
 /*
 	@doc: file.cwd
@@ -1076,7 +1076,6 @@ static bool file_kvs_fnc_rootdir(KviKvsModuleFunctionCall * c)
 		that KVIrc is atually running on (thus you not need to care about path
 		separators in the <relative_path> , KVIrc will adjust them).[br]
 */
-
 static bool file_kvs_fnc_cwd(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -1091,7 +1090,6 @@ static bool file_kvs_fnc_cwd(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szPath);
 	return true;
 }
-
 
 /*
 	@doc: file.globaldir
@@ -1120,7 +1118,6 @@ static bool file_kvs_fnc_cwd(KviKvsModuleFunctionCall * c)
 			echo panic.png would be translated to $file.globaldir(pics/panic.png)
 		[/example]
 */
-
 static bool file_kvs_fnc_globaldir(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -1154,7 +1151,6 @@ static bool file_kvs_fnc_globaldir(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$file.extractFileName[/fnc]
 */
-
 static bool file_kvs_fnc_extractpath(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -1164,7 +1160,6 @@ static bool file_kvs_fnc_extractpath(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(QFileInfo(szName).absolutePath());
 	return true;
 }
-
 
 /*
 	@doc: file.extractfilename
@@ -1184,7 +1179,6 @@ static bool file_kvs_fnc_extractpath(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$file.extractfilename[/fnc]
 */
-
 static bool file_kvs_fnc_extractfilename(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -1197,6 +1191,155 @@ static bool file_kvs_fnc_extractfilename(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+/*
+	@doc: file.digest
+	@type:
+		function
+	@title:
+		$file.digest
+	@short:
+		Returns the sum of the character codes of the file
+	@syntax:
+		<string> $file.digest(<file:string>[,<algorithm:string>])
+	@description:
+		Calculates digest for the file identified by the given string using algorithm
+		passed as 2nd argument.
+		Currently supported: md5, md4, md2, sha1, mdc2, ripemd160, dss1
+		Default is md5. Requires OpenSSL support or (better) Crypto++, but offers a
+		minimal set of hashes in any case.
+*/
+static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
+{
+	QString szFile,szAlgo,szResult;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("data",KVS_PT_NONEMPTYSTRING,0,szFile)
+		KVSM_PARAMETER("algorythm",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szAlgo)
+	KVSM_PARAMETERS_END(c)
+
+	KviFileUtils::adjustFilePath(szFile);
+
+	QFile file(szFile);
+	if(!file.open(QIODevice::ReadOnly))
+	{
+		c->warning(__tr2qs("Can't open the file \"%Q\" for reading"),&szFile);
+		return true;
+	}
+	
+	QByteArray content = file.readAll();
+	if(content.isEmpty())
+	{
+		c->warning(__tr2qs("Can't read data from file"));
+		return true;
+	}
+
+#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
+	if(szAlgo.isEmpty()) szAlgo = "md5";
+
+	EVP_MD_CTX mdctx;
+	const EVP_MD * pMD;
+	unsigned char ucMDValue[EVP_MAX_MD_SIZE];
+	unsigned int uMDLen, u;
+	char cBuffer[3];
+	OpenSSL_add_all_digests();
+
+	pMD = EVP_get_digestbyname(szAlgo.toUtf8().data());
+	if(!pMD)
+	{
+		c->warning(__tr2qs("%Q algorytm is not supported"),&szAlgo);
+		return true;
+	}
+
+	EVP_MD_CTX_init(&mdctx);
+	EVP_DigestInit_ex(&mdctx, pMD, NULL);
+	EVP_DigestUpdate(&mdctx, content.constData(), content.size());
+	EVP_DigestFinal_ex(&mdctx, ucMDValue, &uMDLen);
+	EVP_MD_CTX_cleanup(&mdctx);
+
+	for(u = 0; u < uMDLen; u++)
+	{
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		_snprintf(cBuffer,3,"%02x",ucMDValue[u]);
+#else
+		snprintf(cBuffer,3,"%02x",ucMDValue[u]);
+#endif
+		szResult.append(cBuffer);
+	}
+/*
+#elif defined(COMPILE_NO_EMBEDDED_CODE)
+	// Crypto++ implementation
+	std::string szDigest;
+	std::string szMsg = szFile.toLocal8Bit().data();
+
+	if(szAlgo.toLower() == "sha1" || szAlgo.toLower() == "sha")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::SHA1>(szMsg);
+	} else if(szAlgo.toLower() == "sha224")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::SHA224>(szMsg);
+	} else if(szAlgo.toLower() == "sha256")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::SHA256>(szMsg);
+	} else if(szAlgo.toLower() == "sha384")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::SHA384>(szMsg);
+	} else if(szAlgo.toLower() == "sha512")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::SHA512>(szMsg);
+	} else if(szAlgo.toLower() == "ripemd128")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::RIPEMD128>(szMsg);
+	} else if(szAlgo.toLower() == "ripemd160")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::RIPEMD160>(szMsg);
+	} else if(szAlgo.toLower() == "ripemd256")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::RIPEMD256>(szMsg);
+	} else if(szAlgo.toLower() == "ripemd320")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::RIPEMD320>(szMsg);
+	} else if(szAlgo.toLower() == "crc32")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::CRC32>(szMsg);
+	} else if(szAlgo.toLower() == "md2")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::Weak::MD2>(szMsg);
+	} else if(szAlgo.toLower() == "md4")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::Weak::MD4>(szMsg);
+	} else if(szAlgo.toLower() == "md5")
+	{
+		szDigest = CryptoPpStrHash<CryptoPP::Weak::MD5>(szMsg);
+	} else {
+		c->warning(__tr2qs("Unsupported message digest."));
+		return true;
+	}
+
+	szResult.append(szDigest.c_str());
+*/
+#else // fall back to QCryptographicHash
+	QCryptographicHash::Algorithm qAlgo;
+	if(szType.toLower() == "sha1")
+	{
+		qAlgo = QCryptographicHash::Sha1;
+	} else if(szType.toLower() == "md4")
+	{
+		qAlgo = QCryptographicHash::Md4;
+	} else if(szType.toLower() == "md5")
+	{
+		qAlgo = QCryptographicHash::Md5;
+	} else {
+		c->warning(__tr2qs("KVIrc is compiled without Crypto++ or OpenSSL support. $file.digest supports only MD4, MD5 and SHA1."));
+		return true;
+	}
+
+	szResult.append(QCryptographicHash::hash(content,qAlgo).toHex());
+#endif
+
+	c->returnValue()->setString(szResult);
+
+	return true;
+}
 
 static bool file_module_init(KviModule * m)
 {
@@ -1211,6 +1354,7 @@ static bool file_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"delimagepath",file_kvs_cmd_delimagepath);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"writeLines",file_kvs_cmd_writeLines);
 
+	KVSM_REGISTER_FUNCTION(m,"digest",file_kvs_fnc_digest);
 	KVSM_REGISTER_FUNCTION(m,"exists",file_kvs_fnc_exists);
 	KVSM_REGISTER_FUNCTION(m,"type",file_kvs_fnc_type);
 	KVSM_REGISTER_FUNCTION(m,"size",file_kvs_fnc_size);
