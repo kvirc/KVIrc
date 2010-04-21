@@ -1592,7 +1592,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 
 		if(KVSP_curCharPointer == pLabelBegin)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a 'prologue','separator','label','popup','item','extpopup' or 'epilogue' label was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a 'prologue', 'separator', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 			delete pPopup;
 			return 0;
 		}
