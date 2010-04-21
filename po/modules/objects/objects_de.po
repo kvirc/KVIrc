@@ -78,7 +78,7 @@ msgstr ""
 
 #: src/modules/objects/class_http.cpp:260
 msgid "'%Q' is not a valid file path"
-msgstr "'%Q' ist kein gültiger Dateipfad"
+msgstr "›%Q‹ ist kein gültiger Dateipfad"
 
 #: src/modules/objects/class_multilineedit.cpp:811
 #: src/modules/objects/class_multilineedit.cpp:997
@@ -101,7 +101,7 @@ msgstr "Argument zu lang, nutze nur das erste Zeichen"
 #: src/modules/objects/class_socket.cpp:777
 #: src/modules/objects/class_socket.cpp:798
 msgid "Bind failure"
-msgstr "\"Bind\" fehlgeschlagen"
+msgstr "»Bind« fehlgeschlagen"
 
 #: src/modules/objects/class_file.cpp:516
 msgid "Block parameter must be a string or a memorybuffer object"
@@ -178,11 +178,11 @@ msgstr "Kann den DNS-Thread nicht starten"
 
 #: src/modules/objects/class_memorybuffer.cpp:116
 msgid "Cannot open file '%Q' for writing"
-msgstr "Kann Datei '%Q' nicht zum Schreiben öffnen"
+msgstr "Kann Datei ›%Q‹ nicht zum Schreiben öffnen"
 
 #: src/modules/objects/libkviobjects.cpp:189
 msgid "Class '%Q' is not defined"
-msgstr "Klasse '%Q' ist nicht definiert"
+msgstr "Klasse ›%Q‹ ist nicht definiert"
 
 #: src/modules/objects/class_painter.cpp:1557
 msgid "Color name or triplette RGB/HSV values required"
@@ -230,7 +230,7 @@ msgstr "Datenparameter ist kein Objekt"
 #: src/modules/objects/class_sql.cpp:207
 msgid "Duplicate connection name '%Q', old query connection removed"
 msgstr ""
-"Dupliziere Verbindungsnamen '%Q', die alte Query-Verbindung wurde entfernt"
+"Dupliziere Verbindungsnamen ›%Q‹, die alte Query-Verbindung wurde entfernt"
 
 #: src/modules/objects/class_file.cpp:227
 msgid "Empty filename string"
@@ -251,7 +251,7 @@ msgid ""
 "Error occured: the suitable file '%Q' is not of the correct format or it is "
 "not a valid icon number."
 msgstr ""
-"Fehler aufgetreten: Die entsprechende Datei '%Q' hat nicht das richtige "
+"Fehler aufgetreten: Die entsprechende Datei ›%Q‹ hat nicht das richtige "
 "Format oder ist keine gültige Icon-Nummer."
 
 #: src/modules/objects/class_socket.cpp:969
@@ -260,11 +260,11 @@ msgstr "Erstellung des Sockets fehlgeschlagen"
 
 #: src/modules/objects/class_wrapper.cpp:167
 msgid "Failed to find one of the wrap path widgets ('%Q::%Q')"
-msgstr "Konnte eines der \"Wrap-Path-Widgets\" ('%Q::%Q') nicht finden"
+msgstr "Konnte eines der »Wrap-Path-Widgets« (›%Q::%Q‹) nicht finden"
 
 #: src/modules/objects/class_wrapper.cpp:175
 msgid "Failed to find the widget to wrap"
-msgstr "Konnte das Widget für \"wrap\" nicht finden"
+msgstr "Konnte das Widget für »wrap« nicht finden"
 
 #: src/modules/objects/class_socket.cpp:981
 msgid "Failed to setup a nonblocking socket"
@@ -278,22 +278,22 @@ msgstr "Datei ist nicht geöffnet!"
 
 #: src/modules/objects/class_http.cpp:193
 msgid "Host '%Q' is not a valid url"
-msgstr "Host '%Q' ist keine gültige URL"
+msgstr "Host ›%Q‹ ist keine gültige URL"
 
 #: src/modules/objects/class_multilineedit.cpp:1048
 #: src/modules/objects/class_tbrowser.cpp:103
 #: src/modules/objects/class_pixmap.cpp:188
 #: src/modules/objects/class_pixmap.cpp:224
 msgid "I can't find the specified file '%Q'."
-msgstr "Kann die angegebene Datei '%Q' nicht finden."
+msgstr "Kann die angegebene Datei ›%Q‹ nicht finden."
 
 #: src/modules/objects/class_multilineedit.cpp:1055
 msgid "I cannot read the file '%Q'."
-msgstr "Kann die Datei '%Q' nicht lesen."
+msgstr "Kann die Datei ›%Q‹ nicht lesen."
 
 #: src/modules/objects/class_popupmenu.cpp:214
 msgid "Icon '%Q' doesn't exist"
-msgstr "Icon '%Q' existiert nicht"
+msgstr "Icon ›%Q‹ existiert nicht"
 
 #: src/modules/objects/libkviobjects.cpp:559
 msgid "Inexisting class object for objects.name"
@@ -317,7 +317,7 @@ msgstr "Nichtexistierendes Zielobjekt für objects.disconnect"
 
 #: src/modules/objects/libkviobjects.cpp:273
 msgid "Inexisting target slot '%Q' for objects.connect"
-msgstr "Nichtexistierender Ziel-Slot '%Q' für objects.connect"
+msgstr "Nichtexistierender Ziel-Slot ›%Q‹ für objects.connect"
 
 #: src/modules/objects/object_macros.h:104
 msgid "Internal error: no valid pointer for this object"
@@ -338,11 +338,11 @@ msgstr "Ungültiger Dock-Bereich angegeben"
 
 #: src/modules/objects/class_combobox.cpp:331
 msgid "Invalid insertion Policy '%Q'"
-msgstr "Ungültige Einfüge-Policy '%Q'"
+msgstr "Ungültige Einfüge-Policy ›%Q‹"
 
 #: src/modules/objects/class_painter.cpp:1166
 msgid "Invalid mode '%Q'"
-msgstr "Ungültiger Modus '%Q'"
+msgstr "Ungültiger Modus ›%Q‹"
 
 #: src/modules/objects/class_dockwindow.cpp:103
 msgid ""
@@ -362,11 +362,11 @@ msgstr "Ungültiger Größenänderungsmodus, nutze Auto als Standard"
 
 #: src/modules/objects/class_treewidget.cpp:414
 msgid "Invalid selection mode '%Q'"
-msgstr "Ungültiger Auswahlmodus '%Q'"
+msgstr "Ungültiger Auswahlmodus ›%Q‹"
 
 #: src/modules/objects/class_listwidget.cpp:269
 msgid "Invalid selection mode '%Q' assuming single"
-msgstr "Ungültige Auswahlmethode '%Q', nehme einzeln an"
+msgstr "Ungültige Auswahlmethode ›%Q‹, nehme einzeln an"
 
 #: src/modules/objects/class_socket.cpp:769
 #: src/modules/objects/class_socket.cpp:790
@@ -395,7 +395,7 @@ msgstr "Länge der Hex-Zeichenkette ist kein Vielfaches von 2"
 
 #: src/modules/objects/class_socket.cpp:808
 msgid "Listen failure"
-msgstr "\"Listen\" fehlgeschlagen"
+msgstr "»Listen« fehlgeschlagen"
 
 #: src/modules/objects/class_sql.cpp:200
 msgid "Missing Qt plugin for database %Q"
@@ -430,11 +430,11 @@ msgstr "Kein Zeichenketten-Parameter gegeben - nutze leere Zeichenkette"
 #: src/modules/objects/class_multilineedit.cpp:377
 #, c-format
 msgid "No such line '%d'"
-msgstr "Keine solche Zeile '%d'"
+msgstr "Keine solche Zeile ›%d‹"
 
 #: src/modules/objects/class_file.cpp:250
 msgid "No such open mode '%Q'"
-msgstr "Kein solcher Öffnen-Modus '%Q'"
+msgstr "Kein solcher Öffnen-Modus ›%Q‹"
 
 #: src/modules/objects/class_painter.cpp:1059
 #: src/modules/objects/class_painter.cpp:1084
@@ -621,11 +621,11 @@ msgstr ""
 #: src/modules/objects/libkviobjects.cpp:358
 #: src/modules/objects/libkviobjects.cpp:457
 msgid "The class '%Q' does not exist"
-msgstr "Die Klasse '%Q' existiert nicht"
+msgstr "Die Klasse ›%Q‹ existiert nicht"
 
 #: src/modules/objects/class_memorybuffer.cpp:98
 msgid "The file '%Q' does not exist"
-msgstr "Die Datei '%Q' existiert nicht"
+msgstr "Die Datei ›%Q‹ existiert nicht"
 
 #: src/modules/objects/class_widget.cpp:1160
 #: src/modules/objects/class_widget.cpp:1282
@@ -743,32 +743,32 @@ msgstr "Typ-Wert %Q nicht unterstützt"
 
 #: src/modules/objects/class_painter.cpp:700
 msgid "Unknown '%Q' background mode"
-msgstr "Unbekannter '%Q' Hintergrundmodus"
+msgstr "Unbekannter ›%Q‹ Hintergrundmodus"
 
 #: src/modules/objects/class_treewidget.cpp:429
 msgid "Unknown '%Q' sort order: switching to ascending order"
 msgstr ""
-"Unbekannte '%Q' Sortierreihenfolge: Wechsle zur aufsteigenden Reihenfolge"
+"Unbekannte ›%Q‹ Sortierreihenfolge: Wechsle zur aufsteigenden Reihenfolge"
 
 #: src/modules/objects/class_widget.cpp:1934
 msgid "Unknown Color Group '%Q'"
-msgstr "Unbekannte Farbgruppe '%Q'"
+msgstr "Unbekannte Farbgruppe ›%Q‹"
 
 #: src/modules/objects/class_widget.cpp:1925
 msgid "Unknown Color Role '%Q'"
-msgstr "Unbekannte Farbrolle '%Q'"
+msgstr "Unbekannte Farbrolle ›%Q‹"
 
 #: src/modules/objects/class_multilineedit.cpp:1083
 #: src/modules/objects/class_groupbox.cpp:315
 #: src/modules/objects/class_hbox.cpp:197
 #: src/modules/objects/class_label.cpp:273
 msgid "Unknown alignment '%Q'"
-msgstr "Unbekannte Justierung '%Q'"
+msgstr "Unbekannte Justierung ›%Q‹"
 
 #: src/modules/objects/class_layout.cpp:309
 #: src/modules/objects/class_vbox.cpp:203
 msgid "Unknown alignment: '%Q'"
-msgstr "Unbekannte Justierung: '%Q'"
+msgstr "Unbekannte Justierung: ›%Q‹"
 
 #: src/modules/objects/class_pixmap.cpp:173
 msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
@@ -778,66 +778,66 @@ msgstr ""
 
 #: src/modules/objects/class_painter.cpp:1491
 msgid "Unknown brush style '%Q'"
-msgstr "Unbekannter Pinsel-Stil '%Q'"
+msgstr "Unbekannter Pinsel-Stil ›%Q‹"
 
 #: src/modules/objects/class_lineedit.cpp:407
 msgid "Unknown echo mode '%Q'"
-msgstr "Unbekannter Echo-Modus '%Q'"
+msgstr "Unbekannter Echo-Modus ›%Q‹"
 
 #: src/modules/objects/class_tablewidget.cpp:492
 #: src/modules/objects/class_treewidgetitem.cpp:287
 msgid "Unknown item flag '%Q'"
-msgstr "Unbekanntes Elementen-Flag '%Q'"
+msgstr "Unbekanntes Elementen-Flag ›%Q‹"
 
 #: src/modules/objects/class_lcd.cpp:142
 msgid "Unknown mode '%Q'"
-msgstr "Unbekannter Modus '%Q'"
+msgstr "Unbekannter Modus ›%Q‹"
 
 #: src/modules/objects/class_groupbox.cpp:348
 #: src/modules/objects/class_slider.cpp:282
 msgid "Unknown orientation '%Q'"
-msgstr "Unbekannte Ausrichtung '%Q'"
+msgstr "Unbekannte Ausrichtung ›%Q‹"
 
 #: src/modules/objects/class_painter.cpp:1465
 msgid "Unknown pen style '%Q'"
-msgstr "Unbekannter Stift-Stil '%Q'"
+msgstr "Unbekannter Stift-Stil ›%Q‹"
 
 #: src/modules/objects/class_tabwidget.cpp:396
 msgid "Unknown position '%Q'"
-msgstr "Unbekannte Position '%Q'"
+msgstr "Unbekannte Position ›%Q‹"
 
 #: src/modules/objects/class_lcd.cpp:156
 msgid "Unknown segment style '%Q'"
-msgstr "Unbekannter Segmentstil '%Q'"
+msgstr "Unbekannter Segmentstil ›%Q‹"
 
 #: src/modules/objects/class_widget.cpp:1742
 #: src/modules/objects/class_label.cpp:327
 msgid "Unknown style '%Q'"
-msgstr "Unbekannter Stil '%Q'"
+msgstr "Unbekannter Stil ›%Q‹"
 
 #: src/modules/objects/class_multilineedit.cpp:952
 msgid "Unknown text format '%Q'"
-msgstr "Unbekanntes Textformat '%Q'"
+msgstr "Unbekanntes Textformat ›%Q‹"
 
 #: src/modules/objects/class_toolbutton.cpp:316
 msgid "Unknown text position '%Q'"
-msgstr "Unbekannte Textposition '%Q'"
+msgstr "Unbekannte Textposition ›%Q‹"
 
 #: src/modules/objects/class_slider.cpp:268
 msgid "Unknown tickmark '%Q'"
-msgstr "Unbekanntes Häkchen '%Q'"
+msgstr "Unbekanntes Häkchen ›%Q‹"
 
 #: src/modules/objects/class_widget.cpp:1901
 msgid "Unknown widget attribute '%Q'"
-msgstr "Unbekanntes Widget-Attribut '%Q'"
+msgstr "Unbekanntes Widget-Attribut ›%Q‹"
 
 #: src/modules/objects/class_widget.cpp:1717
 msgid "Unknown widget flag '%Q'"
-msgstr "Unbekanntes Widget-Flag ''%Q'"
+msgstr "Unbekanntes Widget-Flag ›%Q‹"
 
 #: src/modules/objects/class_multilineedit.cpp:488
 msgid "Unknown word wrap '%Q'"
-msgstr "Unbekannter Wortumbruch '%Q'"
+msgstr "Unbekannter Wortumbruch ›%Q‹"
 
 #: src/modules/objects/class_lineedit.cpp:471
 msgid "Unkonwn '%Q' completition mode, switching to default popupCompletition"
@@ -847,7 +847,7 @@ msgstr ""
 
 #: src/modules/objects/class_file.cpp:441
 msgid "Unsupported datatype '%Q'"
-msgstr "Nicht unterstützter Datentyp '%Q'"
+msgstr "Nicht unterstützter Datentyp ›%Q‹"
 
 #: src/modules/objects/class_socket.cpp:658
 #, c-format

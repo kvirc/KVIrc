@@ -249,7 +249,7 @@ msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
 msgstr ""
-"Aliasnamen können nur Buchstaben, Ziffern, Unterstriche und '::'-"
+"Aliasnamen können nur Buchstaben, Ziffern, Unterstriche und ›::‹-"
 "Namensraumseparatoren beinhalten"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:322
@@ -456,15 +456,15 @@ msgstr "Beschreibung:"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:377
 msgid "Do you really want to delete toolbar \"%1\" ?"
-msgstr "Wollen Sie wirklich die Werkzeugleiste \"%1\" löschen?"
+msgstr "Wollen Sie wirklich die Werkzeugleiste »%1« löschen?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:923
 msgid "Do you really want to remove the alias \"%Q\" ?"
-msgstr "Wollen Sie wirklich das Alias \"%Q\" löschen?"
+msgstr "Wollen Sie wirklich das Alias »%Q« löschen?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:925
 msgid "Do you really want to remove the namespace \"%Q\" ?"
-msgstr "Wollen Sie wirklich den Namensraum \"%Q\" löschen?"
+msgstr "Wollen Sie wirklich den Namensraum »%Q« löschen?"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:401
 msgid "Do you want the associated actions to be exported with the toolbar ?"
@@ -697,7 +697,7 @@ msgid ""
 "Namespace names can contain only letters, digits, underscores and '::' "
 "namespace separators"
 msgstr ""
-"Namensraumnamen können nur Buchstaben, Ziffern, Unterstriche und '::'-"
+"Namensraumnamen können nur Buchstaben, Ziffern, Unterstriche und ›::‹-"
 "Namensraumseparatoren enthalten"
 
 #: src/modules/actioneditor/actioneditor.cpp:217
@@ -1009,13 +1009,13 @@ msgstr "Kleines Symbol:"
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
-"Einzelnes ':'-Zeichen im Aliasnamen: Meinten Sie ...<namensraum>::<name>?"
+"Einzelnes ›:‹-Zeichen im Aliasnamen: Meinten Sie ...<namensraum>::<name>?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1085
 msgid ""
 "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
 msgstr ""
-"Einzelnes ':'-Zeichen im Namensraumnamen: Meinten Sie ...<namensraum>::"
+"Einzelnes ›:‹-Zeichen im Namensraumnamen: Meinten Sie ...<namensraum>::"
 "<name>?"
 
 #: src/modules/popupeditor/popupeditor.cpp:83
@@ -1050,7 +1050,7 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:747
 msgid "The file \"%Q\" exists. Do you want to replace it ?"
-msgstr "Die Datei \"%Q\" existiert. Soll sie überschrieben werden?"
+msgstr "Die Datei »%Q« existiert. Soll sie überschrieben werden?"
 
 #: src/modules/actioneditor/actioneditor.cpp:156
 msgid ""

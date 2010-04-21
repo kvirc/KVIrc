@@ -33,7 +33,7 @@ msgstr "%1 von %2 (%3%)"
 
 #: src/modules/dcc/requests.cpp:697
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
-msgstr "%Q [%Q@%Q] ist bereit, die Datei \"%s\" zu empfangen"
+msgstr "%Q [%Q@%Q] ist bereit, die Datei »%s« zu empfangen"
 
 #: src/modules/dcc/dialogs.cpp:75
 msgid "&Accept"
@@ -151,7 +151,7 @@ msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> möchte die Datei<br>'<b>%4</b>' senden, die <b>%5</b> "
+"<b>%1 [%2@%3]</b> möchte die Datei<br>›<b>%4</b>‹ senden, die <b>%5</b> "
 "gross ist. <br>Das Verbindungsziel wird Host <b>%6</b>, Port <b>%7</b> "
 "sein.<br>"
 
@@ -160,7 +160,7 @@ msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>You will be the passive side of the connection.<br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> möchte die Datei '<b>%4</b>' senden, die <b>%5</b> groß "
+"<b>%1 [%2@%3]</b> möchte die Datei ›<b>%4</b>‹ senden, die <b>%5</b> groß "
 "ist. <br>Sie werden die passive Seite der Verbindung sein.<br>"
 
 #: src/modules/dcc/broker.cpp:611
@@ -176,7 +176,7 @@ msgstr ""
 "<center><b>Hinweis:</b><center>Die Datei scheint ein Avatar zu sein, den Sie "
 "angefordert haben. Der Dateiname sollte nicht geändert werden. Die Datei "
 "sollte an einem Ort gespeichert werden, wo KVIrc sie finden kann, z.B. im "
-"'avatars'-, 'incoming'- oder 'pics'-Verzeichnis, im Heimatverzeichnis oder am "
+"›avatars‹-, ›incoming‹- oder ›pics‹-Verzeichnis, im Heimatverzeichnis oder am "
 "Speicherort für den ankommenden Dateityp. Der Standard-Speicherpfad wird "
 "wahrscheinlich funktionieren. KVIrc kann auch angewiesen werden, ankommende "
 "Avatare automatisch zu akzeptieren, in dem die Option "
@@ -205,7 +205,7 @@ msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %Q"
 msgstr ""
-"Dateianfrage von %Q [%Q@%Q] für '%s' (reale Datei: %Q) wird akzeptiert: DCC %"
+"Dateianfrage von %Q [%Q@%Q] für ›%s‹ (reale Datei: %Q) wird akzeptiert: DCC %"
 "Q wird angeboten"
 
 #: src/modules/dcc/requests.cpp:906
@@ -213,14 +213,14 @@ msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %s since we can't accept incoming connections (user option)"
 msgstr ""
-"Dateianfrage von %Q [%Q@%Q] für '%s' (reale Datei: %Q) wird akzeptiert: DCC %"
+"Dateianfrage von %Q [%Q@%Q] für ›%s‹ (reale Datei: %Q) wird akzeptiert: DCC %"
 "s wird angeboten, da keine ankommenden Verbindungen angenommen werden können "
 "(Benutzeroption)"
 
 #: src/modules/dcc/voice.cpp:930 src/modules/dcc/video.cpp:910
 #, c-format
 msgid "Actual codec used is '%s'"
-msgstr "Aktueller benutzter Codec ist '%s'"
+msgstr "Aktueller benutzter Codec ist ›%s‹"
 
 #: src/modules/dcc/send.cpp:844
 msgid "Attempting a passive DCC %1 connection"
@@ -282,7 +282,7 @@ msgid ""
 "Can't listen on default interface '%s': fix it in the options dialog, "
 "disabling the option (so the next dcc will work)"
 msgstr ""
-"Es kann nicht an Schnittstelle '%s' auf eine Verbindung gewartet werden: "
+"Es kann nicht an Schnittstelle ›%s‹ auf eine Verbindung gewartet werden: "
 "bitte im Optionen-Dialog ändern, Option wird deaktiviert (so dass nächster "
 "DCC funktionieren wird)"
 
@@ -512,7 +512,7 @@ msgstr "Ungültiger Codec angegeben"
 
 #: src/modules/dcc/libkvidcc.cpp:1148
 msgid "Invalid codec specified, defaulting to 'adpcm'"
-msgstr "Ungültiger Codec angegeben: Wird auf Voreinstellung 'adpcm' gesetzt"
+msgstr "Ungültiger Codec angegeben: Wird auf Voreinstellung ›adpcm‹ gesetzt"
 
 #: src/modules/dcc/requests.cpp:163
 #, c-format
@@ -522,7 +522,7 @@ msgstr "Ungültige Portnummer %s"
 #: src/modules/dcc/requests.cpp:565
 #, c-format
 msgid "Invalid resume position argument '%s'"
-msgstr "Ungültiges Argument '%s' für Resume-Position"
+msgstr "Ungültiges Argument ›%s‹ für Resume-Position"
 
 #: src/modules/dcc/libkvidcc.cpp:1132
 msgid "Invalid sample rate specified, defaulting to 8000"
@@ -565,7 +565,7 @@ msgstr "Verbindung auf niedriger Ebene hergestellt"
 #: src/modules/dcc/requests.cpp:861
 msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
 msgstr ""
-"Kein Dateiangebot mit Namen '%s' (mit Größe %s) verfügbar für %Q [%Q@%Q]"
+"Kein Dateiangebot mit Namen ›%s‹ (mit Größe %s) verfügbar für %Q [%Q@%Q]"
 
 #: src/modules/dcc/requests.cpp:783 src/modules/dcc/requests.cpp:933
 msgid "No suitable interface to listen on, trying to continue anyway..."
@@ -691,7 +691,7 @@ msgid ""
 "The above request appears to be broken: Invalid sample-rate '%s', defaulting "
 "to 8000"
 msgstr ""
-"Die obige Anfrage scheint fehlerhaft zu sein: Ungültige Sample-Rate '%s': "
+"Die obige Anfrage scheint fehlerhaft zu sein: Ungültige Sample-Rate ›%s‹: "
 "wird auf Voreinstellung 8000 gesetzt"
 
 #: src/modules/dcc/requests.cpp:1071
@@ -714,8 +714,8 @@ msgstr ""
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
 msgstr ""
-"Die obige Anfrage kann nicht akzeptiert werden: Nicht unterstützter Codec '%"
-"s'"
+"Die obige Anfrage kann nicht akzeptiert werden: Nicht unterstützter Codec ›%"
+"s‹"
 
 #: src/modules/dcc/requests.cpp:603
 msgid ""
@@ -758,8 +758,8 @@ msgid ""
 "The above request is broken: The second parameter is '%s' and should be "
 "'chat', trying to continue"
 msgstr ""
-"Die obige Anfrage ist fehlerhaft: Der zweite Parameter ist '%s' und sollte "
-"'chat' sein; es wird versucht, die Anfrage fortzusetzen"
+"Die obige Anfrage ist fehlerhaft: Der zweite Parameter ist ›%s‹ und sollte "
+"›chat‹ sein; es wird versucht, die Anfrage fortzusetzen"
 
 #: src/modules/dcc/requests.cpp:331
 msgid ""
@@ -797,7 +797,7 @@ msgid ""
 "to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
 "file, or<br><b>resume</b> an incomplete download?"
 msgstr ""
-"Die Datei '<b>%1</b>' existiert bereits und ist <b>%2</b> groß.<br>Soll "
+"Die Datei ›<b>%1</b>‹ existiert bereits und ist <b>%2</b> groß.<br>Soll "
 "<br>die Datei <b>überschrieben</b><br>, die ankommende Datei <b>automatisch "
 "umbenannt</b><br> oder ein unfertiger Download <b>fortgesetzt</b> werden?"
 
@@ -807,7 +807,7 @@ msgid ""
 "<br>Do you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-"
 "rename</b> the new file ?"
 msgstr ""
-"Die Datei '<b>%1</b>' existiert bereits und ist größer als die angebotene."
+"Die Datei ›<b>%1</b>‹ existiert bereits und ist größer als die angebotene."
 "<br>Soll die existierende Datei<br><b>überschrieben</b> oder die ankommende "
 "Datei <br><b>automatisch umbenannt</b> werden?"
 
@@ -961,7 +961,7 @@ msgstr "Die obige Anfrage konnte nicht verarbeitet werden: %Q, %Q"
 #: src/modules/dcc/requests.cpp:1240
 #, c-format
 msgid "Unknown DCC type '%s'"
-msgstr "Unbekannter DCC-Typ '%s'"
+msgstr "Unbekannter DCC-Typ ›%s‹"
 
 #: src/modules/dcc/requests.cpp:710
 msgid ""
@@ -1055,4 +1055,4 @@ msgid "unknown"
 msgstr "unbekannt"
 
 #~ msgid "Invalid codec specified, defaulting to 'sjpeg'"
-#~ msgstr "Ungültiger Codec angegeben: Wird auf Voreinstellung 'sjpeg' gesetzt"
+#~ msgstr "Ungültiger Codec angegeben: Wird auf Voreinstellung ›sjpeg‹ gesetzt"

@@ -1,4 +1,4 @@
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+ Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Markus Rennings <kvirc@mrmx.de>, 2009, 2010.
@@ -127,11 +127,11 @@ msgid ""
 msgstr ""
 "<p>Ein registrierter Benutzer wird durch eine oder mehrere <b>IRC Masken</b> "
 "identifiziert.<br>Eine Maske muss die Form <br><b>nickname!username@hostname "
-"</b><br>haben und kann die Jokerzeichen '*' und '?' enthalten. Wählen Sie "
+"</b><br>haben und kann die Jokerzeichen ›*‹ und ›?‹ enthalten. Wählen Sie "
 "die Masken vorsichtig, da sie der einzige Weg sind, die Identität eines "
 "registrierten Benutzers zu prüfen.<br><br>Sie können hier maximal zwei "
 "Masken eingeben, wenn Sie mehr Masken eingeben möchten, nutzen Sie den "
-"\"<b>Editieren</b>\"-Knopf im Dialog Registrierte Benutzer. Sie müssen "
+"»<b>Editieren</b>«-Knopf im Dialog Registrierte Benutzer. Sie müssen "
 "mindestens eine Maske angeben.</p>"
 
 #: src/modules/reguser/wizard.cpp:208
@@ -144,7 +144,7 @@ msgstr ""
 "<p>Wenn Sie benachrichtigt werden wollen, wenn dieser Benutzer on- oder "
 "offline geht, müssen Sie eine Liste der zu beachtenden Nicknames angeben."
 "<br><br> Sie können hier maximal zwei Nicknames angeben, wenn Sie mehrere "
-"Nicknames hinzufügen möchten, nutzen Sie den \"<b>Editieren</b>\"-Knopf im "
+"Nicknames hinzufügen möchten, nutzen Sie den »<b>Editieren</b>«-Knopf im "
 "Dialog Registrierte Benutzer.</p>"
 
 #: src/modules/reguser/wizard.cpp:183
@@ -169,7 +169,7 @@ msgid ""
 "\"<b>Finish</b>\" to close this dialog.</p>"
 msgstr ""
 "<p>Das war's. Die Registrierung dieses Benutzers ist vollständig.<br><br> "
-"Klicken Sie auf \"<b>Beenden</b>\", um diesen Dialog zu schließen.</p>"
+"Klicken Sie auf »<b>Beenden</b>«, um diesen Dialog zu schließen.</p>"
 
 #: src/modules/reguser/wizard.cpp:88
 msgid ""
@@ -191,8 +191,8 @@ msgstr ""
 "den einzutragenden Benutzer eingeben. Dieser Name wird genutzt, um den "
 "Eintrag in der Datenbank zu identifizieren; er hat keine speziellen "
 "Voraussetzungen, es kann der echte Name, ein Nickname oder ein sonstiger "
-"Text sein, der Sie an diese Person erinnert.<br>Beispiele: \"George W. Bush"
-"\", \"Dubya\".\n"
+"Text sein, der Sie an diese Person erinnert.<br>Beispiele: »George W. Bush«,"
+" »Dubya«.\n"
 "</p>"
 
 #: src/modules/reguser/dialog.cpp:240
@@ -284,7 +284,7 @@ msgid ""
 msgstr ""
 "Exportiert die ausgewählten Eintrge in eine Datei.<br>Alle Daten der "
 "ausgewählten Eintrge werden exportiert.<br>Sie (oder andere) können diese "
-"Einträge später wieder mit dem \"Importieren\"-Knopf importieren."
+"Einträge später wieder mit dem »Importieren«-Knopf importieren."
 
 #: src/modules/reguser/dialog.cpp:81
 msgid "Flags"
@@ -348,7 +348,7 @@ msgid ""
 "and '?'."
 msgstr ""
 "Fügen Sie eine Maske für diesen Benutzer ein.<br>Sie kann die Platzhalter "
-"'*' und '?' enthalten."
+"›*‹ und ›?‹ enthalten."
 
 #: src/modules/reguser/libkvireguser.cpp:354
 msgid "Mask %Q already used to identify user %Q"

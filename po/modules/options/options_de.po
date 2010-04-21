@@ -69,7 +69,7 @@ msgstr " µs"
 
 #: src/modules/options/optw_messages.cpp:79
 msgid "\"Smart\" nickname colors"
-msgstr "\"Elegante\" Nick-Farben"
+msgstr "»Elegante« Nick-Farben"
 
 #: src/modules/options/dialog.cpp:235
 msgid "&Apply"
@@ -164,7 +164,7 @@ msgid ""
 "<br>This is especially useful when you use IPv6 and IPv4 addresses.<br>You "
 "can force KVIrc to always choose the IPv4 interface.</center>"
 msgstr ""
-"<center>Diese Option aktivieren, wenn einen Rechner mit mehreren IP's "
+"<center>Diese Option aktivieren, wenn ein Rechner mit mehreren IP-Adressen "
 "benutzt wird und die IP für ausgehende DCC's erzwungen werden soll.<br>Dies "
 "ist besonders nützlich, wenn IPv6 und IPv4-Adressen benutzt werden.<br>KVIrc "
 "kann gezwungen werden, immer die IPv4-Schnittstelle zu verwenden.</center>"
@@ -262,7 +262,7 @@ msgid ""
 "initial user mode for this server"
 msgstr ""
 "<center>Wenn Sie dies aktivieren, wird der globale erste <b>Benutzermodus</"
-"b> benutzt (dies kann im 'Indentität'-Dialog konfiguriert werden). Wenn Sie "
+"b> benutzt (dies kann im ›Indentität‹-Dialog konfiguriert werden). Wenn Sie "
 "diese Option deaktivieren, können Sie hier den standardmässigen ersten "
 "Benutzermodus für diesen Server angeben"
 
@@ -814,9 +814,9 @@ msgid ""
 msgstr ""
 "<center>Dies ist die <b>IP-Adresse</b> des Servers, diese wird für "
 "Zwischenspeicherzwecke benutzt.<br>Wenn dieses Feld leergelassen wird, wird "
-"KVIrc es bei der ersten Verbindung zum Server füllen. Wenn \"IP-Adresse "
-"zwischenspeichern\" unten aktiviert ist, wird KVIrc diese als "
-"\"zwischengespeichertes Ergebnis\" benutzen und das erneute Auflösen "
+"KVIrc es bei der ersten Verbindung zum Server füllen. Wenn »IP-Adresse "
+"zwischenspeichern« unten aktiviert ist, wird KVIrc diese als "
+"»zwischengespeichertes Ergebnis« benutzen und das erneute Auflösen "
 "vermeiden.</center>"
 
 #: src/modules/options/optw_servers.cpp:765
@@ -830,10 +830,10 @@ msgid ""
 msgstr ""
 "<center>Dies ist der <b>Proxy</b>, den KVIrc nutzt, um sich zu diesem Server "
 "zu verbinden.\n"
-"Wenn dieses Feld auf \"Voreinstellung\" steht, wird KVIrc die globalen Proxy-"
-"Einstellungen nutzen, wenn es auf \"Direkte Verbindung\" steht, wird sich "
+"Wenn dieses Feld auf »Voreinstellung« steht, wird KVIrc die globalen Proxy-"
+"Einstellungen nutzen, wenn es auf »Direkte Verbindung« steht, wird sich "
 "KVIrc zum Server ohne Proxy verbinden. Neue Proxy-Server können in den "
-"globalen Optionen unter \"Proxy Server\" definiert werden.</center>"
+"globalen Optionen unter »Proxy Server«definiert werden.</center>"
 
 #: src/modules/options/optw_servers.cpp:134
 msgid ""
@@ -1886,7 +1886,7 @@ msgstr "Avatarangebot-Zeitablauf:"
 
 #: src/modules/options/optw_away.cpp:45
 msgid "Away Nickname"
-msgstr "\"Abwesend\"-Nick"
+msgstr "»Abwesend«-Nick"
 
 #: src/modules/options/optw_userlist.cpp:64
 msgid "Away:"
@@ -2017,7 +2017,7 @@ msgstr "ChanServ- und NickServ-Notizen"
 
 #: src/modules/options/optw_away.cpp:46
 msgid "Change nickname on away"
-msgstr "Nick bei \"Abwesend\" ändern"
+msgstr "Nick bei »Abwesend« ändern"
 
 #: src/modules/options/optw_userlist.cpp:59
 msgid "Channel admin:"
@@ -2199,7 +2199,7 @@ msgstr ""
 
 #: src/modules/options/optw_away.cpp:41
 msgid "Default away message:"
-msgstr "Standard \"Abwesend\"-Nachricht:"
+msgstr "Standard »Abwesend«-Nachricht:"
 
 #: src/modules/options/optw_channel.cpp:101
 msgid "Default ban mask:"
@@ -2370,7 +2370,7 @@ msgstr "Animierte Smilies aktivieren"
 
 #: src/modules/options/optw_away.cpp:39
 msgid "Enable default away message"
-msgstr "Standard \"Abwesend\"-Nachricht aktivieren"
+msgstr "Standard »Abwesend«-Nachricht aktivieren"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:67
 msgid "Enable fake transparency"
@@ -3419,7 +3419,7 @@ msgstr "Geschlechtsinformationen vor Realnamen stellen"
 
 #: src/modules/options/optw_irc.cpp:78
 msgid "Prepend smart nick color info to realname"
-msgstr "'Smart Nick'-Farbinformationen dem Realnamen voranstellen"
+msgstr "›Smart Nick‹-Farbinformationen dem Realnamen voranstellen"
 
 #: src/modules/options/optw_connection.cpp:119
 msgid "Private Key"
@@ -4061,8 +4061,8 @@ msgstr ""
 "<center>Dies ist das Kommando, welches ausgeführt wird, wenn NickServ die "
 "Authentifizierung für den Nick, der in dieser Regel beschrieben ist (und die "
 "Server- und NickServ-Maske stimmt), anfordert. Das wird gewöhnlich soetwas "
-"wie <b>msg NickServ identify &lt;ihrpasswort&gt;</b> sein. Es kann \"msg -q"
-"\" benutzt werden, falls nicht gewünscht ist, dass das Passwort auf dem "
+"wie <b>msg NickServ identify &lt;ihrpasswort&gt;</b> sein. Es kann <b>msg -q"
+"</b> benutzt werden, falls nicht gewünscht ist, dass das Passwort auf dem "
 "Bildschirm angezeigt wird. Bitte beachten, dass dabei kein führender "
 "Schrägstrich in diesem Kommando vorkommen darf.</center>"
 
@@ -4080,7 +4080,7 @@ msgstr ""
 "muss. Das wird gewöhnlich etwas wie <b>Nickserv!service@services.dalnet</b> "
 "sein.<br>Es können Wildcards für dieses Feld benutzt werden, aber "
 "grundsätzlich ist dies eine Sicherheitslücke. Wenn man zu 100%% sicher ist, "
-"dass KEIN Benutzer im Netzwerk den Nick \"NickServ\" benutzen kann, dann "
+"dass KEIN Benutzer im Netzwerk den Nick »NickServ« benutzen kann, dann "
 "kann möglicherweise <b>Nickserv!*@*</b> für dieses Feld sicher sein."
 
 #: src/modules/options/optw_nickserv.cpp:111
@@ -4090,7 +4090,7 @@ msgid ""
 "here..."
 msgstr ""
 "Dies ist die Maske, auf welche der aktuelle Server für diese Regel passen "
-"muss. Sie kann * und ?-Metazeichen enthalten.<br>Bitte kein einfaches \"*\" "
+"muss. Sie kann * und ?-Metazeichen enthalten.<br>Bitte kein einfaches »*« "
 "hier verwenden..."
 
 #: src/modules/options/optw_nickserv.cpp:84
@@ -4103,8 +4103,8 @@ msgid ""
 msgstr ""
 "Dies ist der einfache reguläre Ausdruck, auf die die Indentifikationsanfrage "
 "passen von NickServ zum korrekten Erkennen muß.<br>Die Nachricht ist "
-"üblicherweise soetwas wie \"To identify yourself please use /ns IDENTIFY "
-"password\" und wird gesendet, wenn der NickServ die Authorisierung "
+"üblicherweise soetwas wie »To identify yourself please use /ns IDENTIFY "
+"password« und wird gesendet, wenn der NickServ die Authorisierung "
 "anfordert. Es können *- und ?-Platzhalter benutzt werden."
 
 #: src/modules/options/optw_avatar.cpp:107
@@ -4236,11 +4236,11 @@ msgstr "Nicht angegeben"
 
 #: src/modules/options/optw_dcc.cpp:120
 msgid "Use \"broken bouncer hack\" to detect address"
-msgstr "\"Hack für fehlerhaften Bouncer\" zum Erkennen der Adresse benutzen"
+msgstr "»Hack für fehlerhaften Bouncer« zum Erkennen der Adresse benutzen"
 
 #: src/modules/options/optw_notify.cpp:70
 msgid "Use \"smart\" notify list manager"
-msgstr "\"Intelligenten\"-Benachrichtungslistenmanager benutzen"
+msgstr "»Intelligenten«-Benachrichtungslistenmanager benutzen"
 
 #: src/modules/options/optw_servers.cpp:645
 msgid "Use CAP protocol"
@@ -4287,7 +4287,7 @@ msgstr "UTC-Zeit für Zeitstempel benutzen"
 #: src/modules/options/optw_away.cpp:49
 msgid "Use automatic nickname ([5 letters]AWAY)"
 msgstr ""
-"Automatisch gernerierten \"Abwesend\"-Nick benutzen ([5 Buchstaben]AWAY)"
+"Automatisch gernerierten »Abwesend«-Nick benutzen ([5 Buchstaben]AWAY)"
 
 #: src/modules/options/optw_identity.cpp:474
 msgid "Use avatar"
@@ -4371,7 +4371,7 @@ msgstr "Nutze das STARTTLS-Protokoll, wenn verfügbar"
 
 #: src/modules/options/optw_notify.cpp:75
 msgid "Use the WATCH method if available"
-msgstr "Die \"WATCH\"-Methode benutzen, wenn verfügbar"
+msgstr "Die »WATCH«-Methode benutzen, wenn verfügbar"
 
 #: src/modules/options/optw_input.cpp:157
 msgid "Use the completion postfix string for the first word only"
@@ -4408,7 +4408,7 @@ msgstr "Benutzermodus"
 
 #: src/modules/options/optw_away.cpp:43
 msgid "User input exits away mode"
-msgstr "Benutzereingabe beendet \"weg\"-Modus"
+msgstr "Benutzereingabe beendet »Abwesend«-Modus"
 
 #: src/modules/options/optw_messages.cpp:96
 msgid "User-defined prefix and postfix"
@@ -4472,8 +4472,8 @@ msgid ""
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
 "your changes without closing the window."
 msgstr ""
-"Wenn Du fertig bist, klicke \"<b>Ok</b>\", um die Änderungen zu übernehmen "
-"oder \"<b>Abbrechen</b>\", um sie zu verwerfen. Klicke \"<b>Anwenden</b>\" "
+"Wenn Du fertig bist, klicke »<b>Ok</b>«, um die Änderungen zu übernehmen "
+"oder »<b>Abbrechen</b>«, um sie zu verwerfen. Klicke »<b>Anwenden</b>« "
 "um die Änderungen zu übernehmen, ohne das Fenster zu schließen."
 
 #: src/modules/options/optw_ircoutput.cpp:72
@@ -4499,8 +4499,8 @@ msgid ""
 "viewable by anyone so putting more data (like the exact address), generally, "
 "<b>is not a good idea</b>."
 msgstr ""
-"Hier kannst Du Deinen ungefähren Aufenthaltsort angeben. Etwas wie \"Stadt/"
-"Region, Land\" ist ok. Bitte beachte, dass diese Information von jedem "
+"Hier kannst Du Deinen ungefähren Aufenthaltsort angeben. Etwas wie »Stadt/"
+"Region, Land« ist ok. Bitte beachte, dass diese Information von jedem "
 "eingesehen werden kann, daher ist es <b>keine gute Idee</b>, mehr Daten (wie "
 "z.B. exakte Adresse) einzutragen."
 
@@ -4522,7 +4522,7 @@ msgid ""
 "might be \"EN,IT\" that would mean that you speak both Italian and English."
 msgstr ""
 "Hier kannst Du die Kurzformen der Sprachen eintragen, die Du sprichst. Ein "
-"Beispiel wäre \"DE,EN\" für Deutsch und Englisch."
+"Beispiel wäre »DE,EN« für Deutsch und Englisch."
 
 #: src/modules/options/optw_messages.cpp:98
 msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
