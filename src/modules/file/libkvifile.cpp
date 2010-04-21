@@ -40,7 +40,6 @@
 #if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
 	// The current implementation
 	#include <openssl/evp.h>
-/*
 #elif defined(COMPILE_NO_EMBEDDED_CODE)
 	// The preferred new implementation (until QCryptographicHash supports all
 	// hashes we want).
@@ -57,13 +56,14 @@
 	// Encoding
 	#include <cryptopp/hex.h>
 	// additional
+	#include <cryptopp/files.h>
 	#include <string>
 	// template function
 	template <typename T>
-	std::string CryptoPpStrHash(std::string szMessage){
+	std::string CryptoPpFileHash(std::string szFileName){
 		T hash;
 		std::string szDigest;
-		CryptoPP::StringSource(szMessage,
+		CryptoPP::FileSource(szFileName.c_str(),
 			true,
 			new CryptoPP::HashFilter(
 				hash,
@@ -74,7 +74,6 @@
 		);
 		return szDigest;
 	}
-*/
 #else
 	// The fallback we can always use, but with very limited set of
 	// functionality.
@@ -1265,7 +1264,6 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 #endif
 		szResult.append(cBuffer);
 	}
-/*
 #elif defined(COMPILE_NO_EMBEDDED_CODE)
 	// Crypto++ implementation
 	std::string szDigest;
@@ -1273,50 +1271,49 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 
 	if(szAlgo.toLower() == "sha1" || szAlgo.toLower() == "sha")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::SHA1>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::SHA1>(szMsg);
 	} else if(szAlgo.toLower() == "sha224")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::SHA224>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::SHA224>(szMsg);
 	} else if(szAlgo.toLower() == "sha256")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::SHA256>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::SHA256>(szMsg);
 	} else if(szAlgo.toLower() == "sha384")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::SHA384>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::SHA384>(szMsg);
 	} else if(szAlgo.toLower() == "sha512")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::SHA512>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::SHA512>(szMsg);
 	} else if(szAlgo.toLower() == "ripemd128")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::RIPEMD128>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::RIPEMD128>(szMsg);
 	} else if(szAlgo.toLower() == "ripemd160")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::RIPEMD160>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::RIPEMD160>(szMsg);
 	} else if(szAlgo.toLower() == "ripemd256")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::RIPEMD256>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::RIPEMD256>(szMsg);
 	} else if(szAlgo.toLower() == "ripemd320")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::RIPEMD320>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::RIPEMD320>(szMsg);
 	} else if(szAlgo.toLower() == "crc32")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::CRC32>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::CRC32>(szMsg);
 	} else if(szAlgo.toLower() == "md2")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::Weak::MD2>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::Weak::MD2>(szMsg);
 	} else if(szAlgo.toLower() == "md4")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::Weak::MD4>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::Weak::MD4>(szMsg);
 	} else if(szAlgo.toLower() == "md5")
 	{
-		szDigest = CryptoPpStrHash<CryptoPP::Weak::MD5>(szMsg);
+		szDigest = CryptoPpFileHash<CryptoPP::Weak::MD5>(szMsg);
 	} else {
 		c->warning(__tr2qs("Unsupported message digest."));
 		return true;
 	}
 
 	szResult.append(szDigest.c_str());
-*/
 #else // fall back to QCryptographicHash
 	QCryptographicHash::Algorithm qAlgo;
 	if(szType.toLower() == "sha1")
