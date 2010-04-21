@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-21 10:05+0200\n"
-"PO-Revision-Date: 2010-03-27 06:49+0000\n"
+"PO-Revision-Date: 2010-04-21 05:16+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -604,7 +604,6 @@ msgstr ""
 "Permite-lhe rápidamente encontrá-los nesta lista.</center>"
 
 #: src/modules/options/optw_servers.cpp:782
-#, fuzzy
 msgid ""
 "<center>This check enables the use of the <b>SASL</b> authentication "
 "procotol If you enable the proper global option in the Connection/SSL tab "
@@ -613,7 +612,7 @@ msgid ""
 msgstr ""
 "<center>Esta verificação activa o uso do protocolo de autenticação <b>SASL</"
 "b>. Se activar a opção global correcta no separador Conexão/SSL e preencher "
-"os campos da Alcunha e Senha Sasl nesta página, o protoclo SASL será usado "
+"os campos da Alcunha e Senha Sasl nesta página, o protocolo SASL será usado "
 "para este servidor se disponível.</center>"
 
 #: src/modules/options/optw_servers.cpp:654
@@ -2133,9 +2132,9 @@ msgid "Cursor color"
 msgstr "Cor do Cursor"
 
 #: src/modules/options/optw_away.cpp:53
-#, fuzzy, c-format
+#, c-format
 msgid "Custom nickname (%nick% means a current nick):"
-msgstr "Alcunha personalizada (%%nick%% significa uma alcunha actual):"
+msgstr "Alcunha personalizada (%nick% significa uma alcunha actual):"
 
 #: src/modules/options/optw_logging.cpp:43
 msgid "DCC Chat windows"
