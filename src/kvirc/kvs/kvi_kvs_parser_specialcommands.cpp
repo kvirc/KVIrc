@@ -1842,7 +1842,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			delete pParameters;
 		} else {
 			/////////////////////////////////////////////////////////////////////////////////////////////////
-			error(pLabelBegin,__tr2qs_ctx("Found token '%Q' where a 'prologue','separator','label','popup','item','extpopup' or 'epilogue' label was expected","kvs"),&szLabel);
+			error(pLabelBegin,__tr2qs_ctx("Found token '%Q' where a 'prologue', 'separator', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected","kvs"),&szLabel);
 			delete pPopup;
 			return 0;
 		}
