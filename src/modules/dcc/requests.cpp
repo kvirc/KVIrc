@@ -449,7 +449,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-				__tr2qs_ctx("The above request is broken: The fourth parameter should be the file size but does not appear to be an unsigned number, trying to continue","dcc"),dcc->szParam4.ptr());
+				__tr2qs_ctx("The above request is broken: The fourth parameter should be the file size but does not appear to be an unsigned number; trying to continue","dcc"),dcc->szParam4.ptr());
 		}
 		dcc->szParam4 = __tr2qs_ctx("<unknown size>","dcc");
 	}
