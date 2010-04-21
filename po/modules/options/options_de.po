@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-21 10:05+0200\n"
-"PO-Revision-Date: 2010-03-21 15:13+0100\n"
+"PO-Revision-Date: 2010-04-21 10:55+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -613,17 +613,16 @@ msgstr ""
 "Server, dies erlaubt Ihnen, diese schnell in der Liste zu finden.</center>"
 
 #: src/modules/options/optw_servers.cpp:782
-#, fuzzy
 msgid ""
 "<center>This check enables the use of the <b>SASL</b> authentication "
 "procotol If you enable the proper global option in the Connection/SSL tab "
 "and fill the Sasl Nickname and Sasl Password fields in this page, the SASL "
 "protocol will be used for this server if available.</center>"
 msgstr ""
-"<center>Diese Option  aktiviert das <b>SASL-</b>Authentifizierungsprotokoll "
+"<center>Diese Option  aktiviert das <b>SASL-</b>Authentifizierungsprotokoll. "
 "Wenn die entsprechende  globale Option im Verbindung/SSL-Tab gesetzt ist und "
 "der SASL-Nick und -Passwort auf dieser Seite eingetragen ist, wird für "
-"diesen Server das TLS-Protokoll verwendet.</center>"
+"diesen Server – wenn verfügbar – das TLS-Protokoll verwendet.</center>"
 
 #: src/modules/options/optw_servers.cpp:654
 msgid ""
@@ -2152,9 +2151,9 @@ msgid "Cursor color"
 msgstr "Cursorfarbe"
 
 #: src/modules/options/optw_away.cpp:53
-#, fuzzy, c-format
+#, c-format
 msgid "Custom nickname (%nick% means a current nick):"
-msgstr "eigener Nick (%%nick%% heißt aktueller Nick):"
+msgstr "eigener Nick (%nick% heißt aktueller Nick):"
 
 #: src/modules/options/optw_logging.cpp:43
 msgid "DCC Chat windows"
@@ -3419,9 +3418,8 @@ msgid "Prepend gender info to realname"
 msgstr "Geschlechtsinformationen vor Realnamen stellen"
 
 #: src/modules/options/optw_irc.cpp:78
-#, fuzzy
 msgid "Prepend smart nick color info to realname"
-msgstr "Avatar-Informationen dem Realnamen voranstellen"
+msgstr "'Smart Nick'-Farbinformationen dem Realnamen voranstellen"
 
 #: src/modules/options/optw_connection.cpp:119
 msgid "Private Key"

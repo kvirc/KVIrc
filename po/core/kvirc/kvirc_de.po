@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kvirc_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-21 10:04+0200\n"
-"PO-Revision-Date: 2010-03-21 14:53+0100\n"
+"PO-Revision-Date: 2010-04-21 10:51+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -1310,25 +1310,23 @@ msgstr "Serverspezifische Channel werden nun automatisch betreten"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:181
 msgid "Automatic Brightness/Contrast Correction"
-msgstr ""
+msgstr "Automatische Helligkeits-/Kontrastkorrektur"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:184
 msgid "Automatic Color Correction"
-msgstr ""
+msgstr "Automatische Farbkorrektur"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3061
-#, fuzzy
 msgid "Automatic Gain"
-msgstr "&Automatische Vorschau"
+msgstr "Automatische Verstärkung (Gain)"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3069
-#, fuzzy
 msgid "Automatic Hue"
-msgstr "&Automatische Vorschau"
+msgstr "Automatische Farbschattierung (hue)"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3055
 msgid "Automatic White Balance"
-msgstr ""
+msgstr "Automatischer Weißabgleich"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:179
 msgid "Available channel modes:"
@@ -1397,13 +1395,12 @@ msgid "Background"
 msgstr "Hintergrund"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3083
-#, fuzzy
 msgid "Background color"
-msgstr "Hintergrund"
+msgstr "Hintergrundfarbe"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3072
 msgid "Backlight Compensation"
-msgstr ""
+msgstr "Hintergrundlichtausgleich"
 
 #: src/kvilib/core/kvi_error.cpp:90
 msgid "Bad file descriptor"
@@ -1414,9 +1411,8 @@ msgid "Bad key data"
 msgstr "Schlechte Schlüsseldaten"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3049
-#, fuzzy
 msgid "Balance"
-msgstr "Abbrechen"
+msgstr "Balance"
 
 #: src/kvirc/ui/kvi_channel.cpp:153
 msgid "Ban Editor"
@@ -1455,9 +1451,8 @@ msgid "Ban unexception matching my mask"
 msgstr "Der Bann passt auf meine Maske"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3050
-#, fuzzy
 msgid "Bass"
-msgstr "Bannmasken"
+msgstr "Bass"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:350
 #, c-format
@@ -1482,9 +1477,8 @@ msgid "Bl&ue"
 msgstr "Bla&u"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3054
-#, fuzzy
 msgid "Black Level"
-msgstr "Blockgerät"
+msgstr "Schwarzwert"
 
 #: src/kvilib/ext/kvi_mediatype.cpp:345
 msgid "Block device"
@@ -1492,7 +1486,7 @@ msgstr "Blockgerät"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3058
 msgid "Blue Balance"
-msgstr ""
+msgstr "Blau-Balance"
 
 #: src/kvilib/system/kvi_locale.cpp:1055
 msgid "Bookmarks"
@@ -1509,7 +1503,7 @@ msgstr "Sowohl -n als auch -m Schalter angegeben, -n hat Vorrang"
 #: src/kvilib/ext/avdevice/videodevice.cpp:154
 #: src/kvilib/ext/avdevice/videodevice.cpp:3044
 msgid "Brightness"
-msgstr ""
+msgstr "Helligkeit"
 
 #: src/kvirc/kernel/kvi_options.cpp:811
 msgid "Broadcast notice"
@@ -1679,9 +1673,8 @@ msgid "Can't open the filter file %s for reading."
 msgstr "Kann die Filterdatei %s nicht zum Lesen öffnen"
 
 #: src/modules/file/libkvifile.cpp:1232
-#, fuzzy
 msgid "Can't read data from file"
-msgstr "Kann keine 0-Byte-Datei senden"
+msgstr "Daten können nicht aus Datei gelesen werden"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:903
 msgid "Can't resolve local host address, using default 127.0.0.1"
@@ -2039,7 +2032,7 @@ msgstr "Datei zum Freigeben auswählen"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3075
 msgid "Chroma AGC"
-msgstr ""
+msgstr "Chroma AGC"
 
 #: src/kvilib/net/kvi_http.cpp:813
 msgid "Chunk header too long: exceeded 4096 bytes"
@@ -2099,18 +2092,16 @@ msgid "Close this window"
 msgstr "Dieses Fenster schließen"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:160
-#, fuzzy
 msgid "Color"
-msgstr "Leeren"
+msgstr "Farbe"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3079
-#, fuzzy
 msgid "Color Effects"
-msgstr "Effekte"
+msgstr "Farbeffekte"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3076
 msgid "Color Killer"
-msgstr ""
+msgstr "Farbkiller"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:268
 msgid "Color free (no ANSI colors)"
@@ -2289,9 +2280,8 @@ msgstr "Kontext"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:163
 #: src/kvilib/ext/avdevice/videodevice.cpp:3045
-#, fuzzy
 msgid "Contrast"
-msgstr "Kontext"
+msgstr "Kontrast"
 
 #: src/kvirc/ui/kvi_topicw.cpp:501
 msgid "Copy to clipboard"
@@ -2583,7 +2573,7 @@ msgstr "Temporäre DNS-Fehlfunktion (versuchen Sie es doch bitte erneut)"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3056
 msgid "Do White Balance"
-msgstr ""
+msgstr "Weißbalance anwenden"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:169
 msgid "Do not disturb... watching TV"
@@ -2862,7 +2852,7 @@ msgstr "Liste exportieren"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3060
 msgid "Exposure"
-msgstr ""
+msgstr "Belichtung"
 
 #: src/kvirc/kernel/kvi_options.cpp:861
 msgid "Extended capability message"
@@ -3117,11 +3107,11 @@ msgstr "Grafische Benutzeroberfläche"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3062
 msgid "Gain"
-msgstr ""
+msgstr "Verstärkung (Gain)"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3059
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 #: src/kvirc/ui/kvi_console.cpp:323 src/modules/setup/setupwizard.cpp:385
 msgid "Gender:"
@@ -3260,13 +3250,12 @@ msgstr "Hops"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3065
 msgid "Horizontal Center"
-msgstr ""
+msgstr "Horizontale Mitte"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:195
 #: src/kvilib/ext/avdevice/videodevice.cpp:3063
-#, fuzzy
 msgid "Horizontal Flip"
-msgstr "&Horizontal ausdehnen"
+msgstr "Horizontal drehen"
 
 #: src/kvilib/net/kvi_http.cpp:210
 msgid "Host %Q resolved to %Q"
@@ -3294,9 +3283,8 @@ msgstr "Auflösen des Hostnamens abgebrochen"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:157
 #: src/kvilib/ext/avdevice/videodevice.cpp:3047
-#, fuzzy
 msgid "Hue"
-msgstr "Hexadezimal"
+msgstr "Farbschattierung (Hue)"
 
 #: src/modules/spaste/libkvispaste.cpp:114
 msgid "I can't open that file"
@@ -3789,12 +3777,11 @@ msgstr ""
 "es erneut."
 
 #: src/modules/file/libkvifile.cpp:1332
-#, fuzzy
 msgid ""
 "KVIrc is compiled without Crypto++ or OpenSSL support. $file.digest supports "
 "only MD4, MD5 and SHA1."
 msgstr ""
-"KVIrc wurde ohne OpenSSL- oder Crypto++-Unterstützung kompiliert. $str."
+"KVIrc wurde ohne OpenSSL- oder Crypto++-Unterstützung kompiliert. $file."
 "digest-Funktion unterstützt nur MD4, MD5 und SHA1."
 
 #: src/modules/str/libkvistr.cpp:1439
@@ -4002,7 +3989,7 @@ msgstr "Hostname des Servers (%s) wird aufgelöst..."
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3053
 msgid "Loudness"
-msgstr ""
+msgstr "Lautstärke"
 
 #: src/kvirc/ui/kvi_channel.cpp:1001
 msgid "Low activity"
@@ -4220,7 +4207,7 @@ msgstr "Multiple Benutzermodiänderungen"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3052
 msgid "Mute"
-msgstr ""
+msgstr "Stummschalten"
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:76
 msgid "Name"
@@ -5043,7 +5030,7 @@ msgstr "Pos. %d"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3068
 msgid "Power Line Frequency"
-msgstr ""
+msgstr "Netzfrequenz"
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:237
 msgid "Pragma's Horizontal 4-Grid"
@@ -5385,9 +5372,8 @@ msgid "Rectangle options (x,y,width,height)"
 msgstr "Rechteck-Optionen (x,y,Breite,Höhe)"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3057
-#, fuzzy
 msgid "Red Balance"
-msgstr "E&rsetzen"
+msgstr "Rotbalance"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:291
 msgid "Redirect on channel full"
@@ -5492,7 +5478,7 @@ msgstr "Der rechte Operand ist keine Zahl"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3082
 msgid "Rotate"
-msgstr ""
+msgstr "rotieren"
 
 #: src/kvirc/kernel/kvi_app_setup.cpp:186
 #: src/kvirc/kernel/kvi_app_setup.cpp:475
@@ -5520,9 +5506,8 @@ msgid "Sample Text"
 msgstr "Beispielstext"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3046
-#, fuzzy
 msgid "Saturation"
-msgstr "Trenner"
+msgstr "Sättigung"
 
 #: src/modules/url/libkviurl.cpp:421
 msgid "Save URL list on module unload"
@@ -5814,7 +5799,7 @@ msgstr "Einrichtung abgebrochen"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3071
 msgid "Sharpness"
-msgstr ""
+msgstr "Schärfe"
 
 #: src/kvilib/system/kvi_locale.cpp:1067
 msgid "Short View"
@@ -6885,9 +6870,8 @@ msgid "Transparent"
 msgstr "Transparent"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3051
-#, fuzzy
 msgid "Treble"
-msgstr "beantwortet"
+msgstr "Höhen"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:659
 msgid "Try reconnecting with caching disabled"
@@ -7383,12 +7367,12 @@ msgstr "Informativ/Debug"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3066
 msgid "Vertical Center"
-msgstr ""
+msgstr "Vertikale Mitte"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:189
 #: src/kvilib/ext/avdevice/videodevice.cpp:3064
 msgid "Vertical Flip"
-msgstr ""
+msgstr "Vertikal drehen"
 
 #: src/kvirc/ui/kvi_channel.cpp:1007
 msgid "Very high activity"
@@ -7408,7 +7392,7 @@ msgstr "Benutzer mit Voice-Status"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3048
 msgid "Volume"
-msgstr ""
+msgstr "Lautstärke"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1572
 msgid "WALLOPS from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -7461,11 +7445,11 @@ msgstr "Willkommen bei KVIrc"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3070
 msgid "White Balance Temperature"
-msgstr ""
+msgstr "Weißabgleichtemperatur"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:166
 msgid "Whiteness"
-msgstr ""
+msgstr "Weiße"
 
 #: src/kvirc/kernel/kvi_options.cpp:767
 msgid "Who reply"

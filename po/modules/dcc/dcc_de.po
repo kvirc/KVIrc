@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: dcc_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-21 10:04+0200\n"
-"PO-Revision-Date: 2010-01-26 23:01+0100\n"
+"PO-Revision-Date: 2010-04-21 10:51+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -507,9 +507,8 @@ msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr "Ungültige RESUME-Anfrage: Position %1 ist größer als Dateigröße"
 
 #: src/modules/dcc/libkvidcc.cpp:1213
-#, fuzzy
 msgid "Invalid codec specified"
-msgstr "Ungültiger Codec angegeben: Wird auf Voreinstellung 'adpcm' gesetzt"
+msgstr "Ungültiger Codec angegeben"
 
 #: src/modules/dcc/libkvidcc.cpp:1148
 msgid "Invalid codec specified, defaulting to 'adpcm'"
