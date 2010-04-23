@@ -25,6 +25,7 @@
 #include "managementdialog.h"
 #include "themefunctions.h"
 
+#include "kvi_msgbox.h"
 #include "kvi_module.h"
 #include "kvi_locale.h"
 #include "kvi_qstring.h"
@@ -38,8 +39,10 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_fileutils.h"
 #include "kvi_filedialog.h"
+#include "kvi_theme.h"
 
 #include <QFileInfo>
+#include <QMessageBox>
 
 QRect g_rectManagementDialogGeometry(0,0,0,0);
 
@@ -73,6 +76,85 @@ static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
+	return true;
+}
+/*
+	@doc: theme.apply
+	@type:
+		command
+	@title:
+		theme.apply
+	@short:
+		Apply a theme.
+	@syntax:
+		theme.apply <package_name:string>
+	@description:
+		Attempts to apply the theme specified by <package_name>.
+*/
+static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
+{
+	QString szThemePackFile;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("package_name",KVS_PT_STRING,0,szThemePackFile)
+	KVSM_PARAMETERS_END(c)
+	QString szDir;
+	g_pApp->getLocalKvircDirectory(szDir,KviApp::Themes);
+	szDir += KVI_PATH_SEPARATOR_CHAR;
+	szDir += szThemePackFile;
+	KviThemeInfo * themeInfo = new KviThemeInfo();
+	if(themeInfo->loadFromDirectory(szDir))
+	{
+		themeInfo->setSubdirectory(szThemePackFile);
+		if(KviMessageBox::yesNo(__tr2qs_ctx("Apply theme - KVIrc","theme"),
+		__tr2qs_ctx("Do you wish to apply theme \"%Q\" (version %Q)?","theme"),
+		&(themeInfo->name()),&(themeInfo->version())))
+		{
+			QString szPath = themeInfo->absoluteDirectory();
+			if(szPath.isEmpty())return true;
+
+			KviThemeInfo out;
+
+			if(!KviTheme::load(szPath,out))
+			{
+				QString szErr = out.lastError();
+				QString szMsg;
+				KviQString::sprintf(szMsg,__tr2qs_ctx("Failed to apply the specified theme: %Q","theme"),&szErr);
+				QMessageBox::critical(0,__tr2qs_ctx("Apply theme - KVIrc","theme"),szMsg,
+				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+			}
+		}
+	}
+	c->warning(__tr2qs_ctx("The theme package  %Q does not exists","theme"),&szThemePackFile);
+	return true;
+}
+/*
+	@doc: theme.list
+	@type:
+		function
+	@title:
+		theme.list
+	@short:
+		Return a list of the installed themes.
+	@syntax:
+		<themes_list:string> $theme.list
+	@description:
+		Returns a comma separated string list of the KVIrc installed themes.
+*/
+static bool theme_kvs_fnc_list(KviKvsModuleFunctionCall * c)
+{
+	QString szDir;
+	g_pApp->getLocalKvircDirectory(szDir,KviApp::Themes);
+	QDir d(szDir);
+	QStringList sl = d.entryList(QDir::Dirs);
+	QStringList szThemes;
+	for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
+	{
+		if(*it == ".")continue;
+		if(*it == "..")continue;
+		szThemes.append(*it);
+	}
+	c->returnValue()->setString(szThemes.join(","));
 	return true;
 }
 
@@ -152,8 +234,10 @@ static bool theme_module_init(KviModule *m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"dialog",theme_kvs_cmd_dialog);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"install",theme_kvs_cmd_install);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"apply",theme_kvs_cmd_apply);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"screenshot",theme_kvs_cmd_screenshot);
 
+	KVSM_REGISTER_FUNCTION(m,"list",theme_kvs_fnc_list);
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);
 	KviConfig cfg(szBuf,KviConfig::Read);
