@@ -77,38 +77,74 @@ const char * const ssl_errors_tbl[] = {
 	@description:
 		This class provides a standard HTTP functionality.[br]
 	@functions:
-		!fn: <id:integer>$get(<remote_path:string>,<local_file: string>)
-
-		!fn: <id:integer>$post(<remote_path:string>,<post_data:string>,<local_file: string>)
+		!fn: <id:integer>$get(<remote_path:string>,[<local_file: string>])
+		Sends a get request for path to the server set by [classfnc]$setHost[/classfnc].
+		If local_file is not specified readyRead() signal is emitted every time new content data is available to read.
+		!fn: <id:integer>$post(<remote_path:string>,<post_data:string>,<local_file: string>
+		Sends a post request for path to the server set by [classfnc]$setHost[/classfnc].
+		If local_file is not specified readyRead() signal is emitted every time new content data is available to read.
 		!fn: $abort()
+		Aborts the current request and deletes all scheduled requests.
 		!fn: <id:integer>$setHost(<host:string>,<remote_port:unsigned_integer>)
-
+		Sets the HTTP server that is used for requests to hostName on port port.
+		The function does not block: the request is scheduled, and its execution is performed asynchronously.
+		The function returns a unique identifier which is passed by [classfnc]requestStartedEvent()[/classfnc] and [classfnc]requestFinishedEvent()[/classfnc].
+		When the request is started the requestStarted() signal is emitted. When it is finished the requestFinished() signal is emitted.
 		!fn: <id:integer>$currentId()
-                !fn: $setProxy(<host:string>,<port:integer>,[<user:string>,<password:string>])
-		!fn: $setUser(<user:string>,<password:string>)
-		!fn: $readAll()
+		Returns the identifier of the HTTP request being executed or 0 if there is no request being executed.
+		!fn: <id:integer> $setProxy(<host:string>,<port:integer>,[<user:string>,<password:string>])
+		Enables HTTP proxy support, using the proxy server host on port port.
+		Optionals parameters user and password can be provided if the proxy server requires authentication.
+		!fn: <id:integer> $setUser(<user:string>,<password:string>)
+		This function sets the user name userName and password password for web pages that require authentication.
+		!fn: <string> $readAll()
+		Reads all the bytes from the response content and returns them as string.
 		!fn: <error:string> $errorString()
+		Returns a human-readable description of the last error that occurred.
 		!fn: $ignoreSslErrors()
 		!fn: $requestFinishedEvent(<id:integer>,<error:boolean>)
+		This event is triggered by KVIrc when the request identified by <id> has finished.
 		!fn: $requestStartedEvent(<id:integer>,<error:boolean>)
-		!fn: $responseHeaderReceivedEvent(
-		!fn: $doneEvent(<id:integer>,<error:boolean>)
+		This event is triggered by KVIrc when the request identified by <id> has started.
+		!fn: $responseHeaderReceivedEvent(<response:string>)
+		This event is triggered by KVIrc when he HTTP header of a server response is available.
+		The response is passed ad string.
+		!fn: $doneEvent(<error:boolean>)
+		This event is triggered when the last pending request has finished; (it is emitted after the last request's requestFinished() signal).
 		!fn: $dataReadProgressEvent(<done:integer>,<total:integer>)
+		This event is triggered when reads data from a HTTP server.
+		<done> is the amount of data has already arrived and <total> is the total amount of data.
 		!fn: $dataSendProgressEvent(<done:integer>,<total:integer>)
+		This event is triggered when sends data to a HTTP server.
+		<done> is the amount of data has already arrived and <total> is the total amount of data.
 		!fn: $stateChangedEvent(<connection_state:string>)
-		!fn: $responseHeaderReceived(
-		!fn: $readyReadEvent()
-		!fn: $sslErrorsEvent(
+		This event is triggered by the framework when the state of the connection changes.
+		!fn: $readyReadEvent(<response:string>)
+		This event is triggered by the framework when there is new data read and there is not file specified in [classfnc]get[/classfunc] or [classfnc]post[/classfunc].
+		You can call [classfnc]readAll[/classfnc] to reads all the bytes from the response data.
+		!fn: $sslErrorsEvent(<sslerrors:string>)
+		Returns the list of errors that occurred during the SSL handshake.
+		Unless you call ignoreSslErrors() from within a slot connected to the signal emited by this event,
+		the framwork will tear down the connection immediately after emitting the signal.
 	@signals:
-		!sg: $requestStarted(
-		!sg: $requestFinished(
-		!sg: $dataSendProgress(
-		!sg: $dataReadProgress(
-		!sg: $done(
-		!sg: $readyRead(
-		!sg: $sslErrors(
-		!sg: $stateChanged(
-		!sg: $responseHeaderReceived(
+		!sg: $requestStarted()
+		This signal is emitted by the default implementation of [classfnc]$requestStartedEvent[/classfnc].
+		!sg: $requestFinished()
+		This signal is emitted by the default implementation of [classfnc]$requestFinishedEvent[/classfnc].
+		!sg: $dataSendProgress()
+		This signal is emitted by the default implementation of [classfnc]$dataSendProgressEvent[/classfnc].
+		!sg: $dataReadProgress()
+		This signal is emitted by the default implementation of [classfnc]$dataReadProgressEvent[/classfnc].
+		!sg: $done()
+		This signal is emitted by the default implementation of [classfnc]$doneEvent[/classfnc].
+		!sg: $readyRead()
+		This signal is emitted by the default implementation of [classfnc]$readyReadEvent[/classfnc].
+		!sg: $sslErrors()
+		This signal is emitted by the default implementation of [classfnc]$sslErrorsEvent[/classfnc].
+		!sg: $stateChanged()
+		This signal is emitted by the default implementation of [classfnc]$stateChangedEvent[/classfnc].
+		!sg: $responseHeaderReceived()
+		This signal is emitted by the default implementation of [classfnc]$responseHeaderReceivedEvent[/classfnc].
 
 
 		*/
