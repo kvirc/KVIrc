@@ -53,8 +53,6 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_mainwindow,"mainwindow","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_mainwindow,setCentralWidget)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_mainwindow,setDockEnabled)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_mainwindow,isDockEnabled)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_mainwindow)
 
@@ -100,35 +98,4 @@ KVSO_CLASS_FUNCTION(mainwindow,setCentralWidget)
 	((KviTalMainWindow *)widget())->setCentralWidget(((QWidget  *)(pObject->object())));
 	return true;
 }
-//FIX ME
-KVSO_CLASS_FUNCTION(mainwindow,setDockEnabled)
-{
-	CHECK_INTERNAL_POINTER(widget())
-	QString szDockarea;
-	bool bFlag;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("dock area",KVS_PT_STRING,0,szDockarea)
-		KVSO_PARAMETER("bool enabled",KVS_PT_BOOL,0,bFlag)
-	KVSO_PARAMETERS_END(c)
-/*	if(widget())
-	{
 
-	}
-*/
-	return true;
-
-}
-
-//FIX ME
-KVSO_CLASS_FUNCTION(mainwindow,isDockEnabled)
-{
-	CHECK_INTERNAL_POINTER(widget())
-	QString szDockarea;
-	bool bFlag = false;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("dock_area",KVS_PT_STRING,0,szDockarea)
-	KVSO_PARAMETERS_END(c)
-   c->returnValue()->setBoolean(bFlag);
-	return true;
-
-}

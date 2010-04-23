@@ -70,8 +70,8 @@
 		Toggles the state of the tool button.
 		!fn:$setOn(<bEnabled:boolean>)
 		Sets whether the tool button is on to the bool value: 1 enable, 0 disable.
-		// findme
-		!fn:$setPopup (<toolbutton:object>)
+		!fn:$setPopup (<popupmenu:object>)
+		Associates the given <popupmenu> with this tool button.
 		!fn:$openPopup()
 		Opens the associated popup menu. If there is no such menu, this function does nothing.
 		!fn:setTextPosition(<text_position:string>)

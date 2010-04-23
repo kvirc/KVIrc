@@ -87,20 +87,6 @@ QSize KviKvsWidget::sizeHint() const
 }
 
 
-// FIXME: WFLAGS
-const char * const widgettypes_tbl[] = {
-	"TopLevel",
-	"Dialog",
-	"Popup",
-	"Desktop",
-	"Title",
-	"StaysOnTop",
-	"SysMenu",
-	"Minimize",
-	"Maximize",
-	"Subwindow",
-	"FramelessWindow"
-};
 
 const Qt::WidgetAttribute widgetattributes_cod[] = {
 	Qt::WA_OpaquePaintEvent,
@@ -165,13 +151,29 @@ const Qt::WindowType widgettypes_cod[] = {
 	Qt::FramelessWindowHint
 };
 
+
+const char * const widgettypes_tbl[] = {
+	"Window",
+	"Dialog",
+	"Popup",
+	"Desktop",
+	"Title",
+	"StaysOnTop",
+	"SysMenu",
+	"Minimize",
+	"Maximize",
+	"Subwindow",
+	"FramelessWindow"
+};
+
+
+#define widgettypes_num	(sizeof(widgettypes_tbl) / sizeof(widgettypes_tbl[0]))
+
+
 #define QT_WIDGET_TABFOCUS Qt::TabFocus
 #define QT_WIDGET_CLICKFOCUS Qt::ClickFocus
 #define QT_WIDGET_STRONGFOCUS Qt::StrongFocus
 #define QT_WIDGET_NOFOCUS Qt::NoFocus
-
-#define widgettypes_num	(sizeof(widgettypes_tbl) / sizeof(widgettypes_tbl[0]))
-
 /*
 	@doc: widget
 	@keyterms:

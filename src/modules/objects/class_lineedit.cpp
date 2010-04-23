@@ -245,7 +245,7 @@ bool KviKvsObject_lineedit::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	SET_OBJECT(QLineEdit)
 
 	connect(widget(),SIGNAL(returnPressed()),this,SLOT(slotreturnPressed()));
-	connect(widget(),SIGNAL(lostFocus()),this,SLOT(slotlostFocus()));
+	connect(widget(),SIGNAL(editFinished()),this,SLOT(slotlostFocus()));
 	connect(widget(),SIGNAL(textChanged(const QString & )),this,SLOT(slottextChanged(const QString & )));
 	return true;
 }
@@ -509,7 +509,7 @@ void KviKvsObject_lineedit::slotreturnPressed()
 	callFunction(this,"returnPressedEvent",params);
 
 }
-// FIND ME
+
 KVSO_CLASS_FUNCTION(lineedit,lostFocusEvent)
 {
 	emitSignal("lostFocus",c);
@@ -521,7 +521,7 @@ void KviKvsObject_lineedit::slotlostFocus()
 	KviKvsVariantList * params = 0;
 	callFunction(this,"lostFocusEvent",params);
 }
-/////
+
 KVSO_CLASS_FUNCTION(lineedit,textChangedEvent)
 {
 	emitSignal("textChanged",c,c->params());

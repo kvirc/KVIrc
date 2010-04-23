@@ -537,7 +537,6 @@ bool KviKvsObject_textedit::functionisUndoRedoEnabled(KviKvsObjectFunctionCall *
 
 
 //-->Text & Color & Family
-// Findme
 bool KviKvsObject_textedit::functionsetText(KviKvsObjectFunctionCall * c)
 {
 	QString szText;

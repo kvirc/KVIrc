@@ -155,11 +155,6 @@
                 By default this function can deal ascii data only: NULL characters are transformed to
                 ASCII characters 255. You can pass a [class]memorybuffer[/class] object to read binary data.
 
-		!fn: $readHex(<length>)
-		Reads at most <length> bytes of data from the socket. If <length> is anything "outside" the
-		available data range (<length> < 0 or <length> > available_data_length), this function
-		returns all the available data.[br]
-		Returns the data encoded as hexadecimal digit string: this function can deal with binary data too.
 
                 !fn: $write(<data, files or hobject>[,length])
 		Writes <data> to the socket.[br]
@@ -170,17 +165,6 @@
 		If you're going to [cmd]delete[/cmd] this object just after the $write call, you should
 		call [classfnc:socket]$close[/classfnc]() just before [cmd]delete[/cmd] to ensure the data delivery.
 
-		!fn: $writeHex(<hex_data>)
-		Writes <data> to the socket.[br]
-		<data> is expected to be a hexadecimal rappresentation of the bytes to be sent (two HEX characters
-		for each byte). This means that the length of <hex_data> string must be a multiple of 2.[br]
-		Returns the length of the actually decoded and sent data in bytes or -1 in case of error (the string
-		was not a valid hexadecimla rappresentation).[br]
-		Please note that when this function finishes it does not mean that the data has reached the remote end.[br]
-		Basically it does not even mean that the data has been sent to the remote host.[br]
-		The data is enqueued for sending and will be sent as soon as possible.[br]
-		If you're going to [cmd]delete[/cmd] this object just after the $writeHex call, you should
-		call [classfnc:socket]$close[/classfnc]() just before [cmd]delete[/cmd] to ensure the data delivery.
 
 		!fn: $close()
 		Resets this socket state: kills any pending or active connection. After a close() call
@@ -292,9 +276,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_socket,"socket","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,setConnectTimeout)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,close)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,read)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,readHex)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,write)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,writeHex)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,setProtocol)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,listen)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,accept)
@@ -461,29 +443,6 @@ KVSO_CLASS_FUNCTION(socket,read)
 	return true;
 }
 
-// FIXME: obsolete?
-KVSO_CLASS_FUNCTION(socket,readHex)
-{
-	unsigned int uLen = readGetLength(c);
-	char * str = new char[(uLen*2) + 1];
-	int index=0;
-	unsigned char byte,msb,lsb=0;
-	for (unsigned int i=0;i<uLen;i++)
-	{
-		byte=(unsigned char)m_pInBuffer[i];
-		lsb=byte & 0x0f;
-		msb=byte>>4;
-		msb>9?msb+='7':msb+='0';
-		lsb>9?lsb+='7':lsb+='0';
-		str[index++]=msb;
-		str[index++]=lsb;
-	}
-	str[index]='\0';
-	c->returnValue()->setString(str);
-	eatInData(uLen);
-	delete str;
-	return true;
-}
 
 KVSO_CLASS_FUNCTION(socket,write)
 {
@@ -604,44 +563,6 @@ KVSO_CLASS_FUNCTION(socket,setProtocol)
 	return false;
 }
 
-// FIXME: obsolete?
-KVSO_CLASS_FUNCTION(socket,writeHex)
-{
-	QString m_szHex;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("hex_string",KVS_PT_STRING,0,m_szHex)
-	KVSO_PARAMETERS_END(c)
-	if (m_szHex.length()%2)
-	{
-		c->warning(__tr2qs_ctx("The hex string length is not a multiple of 2","objects"));
-		return true;
-	}
-	unsigned char byte,lsb,msb;
-	char * buff = new char[(m_szHex.length()/2) + 1];
-	int index=0;
-	m_szHex.toUpper();
-	for(int i=0;i<m_szHex.length();i+=2)
-	{
-		msb=m_szHex.at(i).toAscii();
-		lsb=m_szHex.at(i+1).toAscii();
-		if (((msb>='A' && msb<='F')||(msb>='0' && msb<='9')) && ((lsb>='A' && lsb<='F')|| (lsb>='0' && lsb<='9')))
-		{
-					msb>='A'?msb-='7':msb-='0';
-					lsb>='A'?lsb-='7':lsb-='0';
-		}
-		else{
-			c->warning(__tr2qs_ctx("The hex string is not correct!","objects"));
-			return true;
-		}
-		byte=(msb*16)+lsb;
-		buff[index++]=byte;
-	}
-	m_pOutBuffer->append((const unsigned char *)buff,m_szHex.length()/2);
-	delayedFlush(0);
-	c->returnValue()->setInteger(index);
-	delete buff;
-	return true;
-}
 
 
 KVSO_CLASS_FUNCTION(socket,functionConnect)

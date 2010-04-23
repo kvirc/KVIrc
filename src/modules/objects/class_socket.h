@@ -82,9 +82,8 @@ protected:
 
 	bool close(KviKvsObjectFunctionCall *c);
 	bool read(KviKvsObjectFunctionCall *c);
-	bool readHex(KviKvsObjectFunctionCall *c);
 	bool write(KviKvsObjectFunctionCall *c);
-	bool writeHex(KviKvsObjectFunctionCall *c);
+
 
 	bool setProtocol(KviKvsObjectFunctionCall *c);
 

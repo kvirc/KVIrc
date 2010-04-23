@@ -141,6 +141,9 @@ const char * const brushstyles_tbl[] = {
 		!fn: $begin(<paint_device:object>)
 		Begins painting the paint device <paint_device>: the parameter MUST be a widget or a pixmap.[br]
 		Warning: A paint device can only be painted by one painter at a time.
+		!fn: $beginPdf(<file_name:string>)
+		Begins painting on a file using the pdf format.
+		At present the pdf support is in experimental state.
 		!fn: $end()
 		Ends painting. Any resources used while painting are released.
 		!fn: $setPen(<rgb or hsv array value or [<red>,<green>,<blue>][<hue>,<saturation>,<value>],[system color:RGB or HSV)
@@ -508,7 +511,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,end)
 
 	// extra
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,beginPdf)// FIXME: needs doc!
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,beginPdf)
 
 
 KVSO_END_REGISTERCLASS(KviKvsObject_painter)
@@ -1140,7 +1143,7 @@ KVSO_CLASS_FUNCTION(painter,beginPdf)
 	KVSO_PARAMETERS_END(c)
 	if (m_pPrinter) delete m_pPrinter;
 	m_pPrinter=new QPrinter();//QPrinter::HighResolution);
-            m_pPrinter->setOutputFormat(QPrinter::PdfFormat);
+	m_pPrinter->setOutputFormat(QPrinter::PdfFormat);
 	m_pPrinter->setOutputFileName(szFileName);
 	m_pPainter->begin(m_pPrinter);
 	return true;
