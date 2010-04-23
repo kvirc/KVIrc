@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2010-03-21 14:57+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -97,8 +97,8 @@ msgid ""
 "Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from "
 "object '%Q::%Q': disconnecting"
 msgstr ""
-"Kaputter Slot ›%Q‹ in Zielobjekt ›%Q::%Q‹, während des Sendes des Signals ›"
-"%Q‹ von Objekt ›%Q::%Q‹: Trenne die Verbindung"
+"Kaputter Slot ›%Q‹ in Zielobjekt ›%Q::%Q‹, während des Sendes des Signals ›%"
+"Q‹ von Objekt ›%Q::%Q‹: Trenne die Verbindung"
 
 #: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:242
 msgid "Broken text parameter: assuming empty string"
@@ -343,10 +343,10 @@ msgstr ""
 "›default‹- oder ›break‹-Label erwartet wurde"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1595
+#, fuzzy
 msgid ""
-"Found character %q (unicode %x) where a "
-"'prologue','separator','label','popup','item','extpopup' or 'epilogue' label "
-"was expected"
+"Found character %q (unicode %x) where a 'prologue', 'separator', 'label', "
+"'popup', 'item', 'extpopup' or 'epilogue' label was expected"
 msgstr ""
 "Zeichen %q (Unicode %x) gefunden, wo ein ›prologue‹-, ›separator‹-, "
 "›label‹-, ›popup‹-, ›item‹-, ›extpopup‹- oder ›epilogue‹-Label erwartet wurde"
@@ -431,8 +431,8 @@ msgid ""
 "Found end of input where character '%c' was expected: see \"/help %s\" for "
 "the command syntax"
 msgstr ""
-"Eingabeende gefunden, wo Zeichen ›%c‹ erwartet wurde: Schauen Sie in »/help "
-"%s« nach der Befehlssyntax"
+"Eingabeende gefunden, wo Zeichen ›%c‹ erwartet wurde: Schauen Sie in »/help %"
+"s« nach der Befehlssyntax"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1491
 msgid ""
@@ -443,10 +443,10 @@ msgstr ""
 "›break‹-Label erwartet wurde"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1845
+#, fuzzy
 msgid ""
-"Found token '%Q' where a "
-"'prologue','separator','label','popup','item','extpopup' or 'epilogue' label "
-"was expected"
+"Found token '%Q' where a 'prologue', 'separator', 'label', 'popup', 'item', "
+"'extpopup' or 'epilogue' label was expected"
 msgstr ""
 "Token ›%Q‹ gefunden, wo ein ›prologue‹-, ›separator‹-, ›label‹-, ›popup‹-, "
 "›item‹-, ›extpopup‹- oder ›epilogue‹-Label erwartet wurde"
@@ -941,8 +941,9 @@ msgstr ""
 "ersten Parameter"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1208
-msgid "The ›foreach‹ command needs an expression enclosed in parenthesis"
-msgstr "Der ›foreach‹-Befehl benötigt einen Ausdruck in runden Klammers"
+#, fuzzy
+msgid "The 'foreach' command needs an expression enclosed in parenthesis"
+msgstr "Der ›for‹-Befehl benötigt einen Ausdruck in runden Klammern"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:312
 msgid "The 'global' command needs a variable list"
@@ -1183,14 +1184,13 @@ msgstr "Das Popup ›%Q‹ ist nicht definiert"
 #: src/kvirc/kvs/kvi_kvs_treenode_specialcommanddefpopup.cpp:318
 #, c-format
 msgid "The popup '%s' is actually locked: 'self-modifications' are not allowed"
-msgstr ""
-"Das Popup ›%s‹ gesperrt: Selbstmodifikation ist nicht erlaubt"
+msgstr "Das Popup ›%s‹ gesperrt: Selbstmodifikation ist nicht erlaubt"
 
 #: src/kvirc/kvs/kvi_kvs_object.cpp:1131
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "The property is of type %s but the supplied argument can't be converted to "
-"that type (expecting ›%s‹)"
+"that type (expecting '%s')"
 msgstr ""
 "Die Eigenschaft ist vom Typ %s, aber das zur Verfügung gestellte Argument "
 "kann nicht zu diesem Typ konvertiert werden (erwarte ›%s‹)"
@@ -1763,9 +1763,9 @@ msgstr "say: eingespeiste Kommandozeile"
 #~ "Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the "
 #~ "property is indexed and defined but the returned variant is not valid"
 #~ msgstr ""
-#~ "Kann Eigenschaft »%Q« für das Objekt »%Q« der Klasse %Q nicht finden: "
-#~ "Die Eigenschaft ist indiziert und definiert, aber die zurückgegebene "
-#~ "Variante ist ungültig"
+#~ "Kann Eigenschaft »%Q« für das Objekt »%Q« der Klasse %Q nicht finden: Die "
+#~ "Eigenschaft ist indiziert und definiert, aber die zurückgegebene Variante "
+#~ "ist ungültig"
 
 #~ msgid ""
 #~ "Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the "
@@ -1776,6 +1776,9 @@ msgstr "say: eingespeiste Kommandozeile"
 
 #~ msgid "No Qt property named \"%Q\" for object named \"%Q\" of class %Q"
 #~ msgstr "Keine Qt-Eigenschaft »%Q« für Objekt »%Q« der Klasse %Q"
+
+#~ msgid "The ›foreach‹ command needs an expression enclosed in parenthesis"
+#~ msgstr "Der ›foreach‹-Befehl benötigt einen Ausdruck in runden Klammers"
 
 #~ msgid ""
 #~ "Unexpected end of command buffer while looking for the \"##__name##.end\" "

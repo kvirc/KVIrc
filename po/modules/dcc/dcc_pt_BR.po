@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_pt_BR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2004-11-15 19:17+0000\n"
 "Last-Translator: \n"
 "Language-Team:  <pt@li.org>\n"
@@ -749,15 +749,7 @@ msgstr ""
 "O seguinte pedido esta quebrado: o nome do arquivo contém um caminho de "
 "componentes, tirando o caminho indicado e tentando continuar"
 
-#: src/modules/dcc/requests.cpp:452
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number, trying to continue"
-msgstr ""
-"O seguinte pedido esta quebrado: o quarto parâmetro deveria ser o tamanhodo "
-"arquivo, mas não parece ser um número sem sinal, tentando continuar"
-
-#: src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/requests.cpp:452 src/modules/dcc/requests.cpp:742
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -1091,6 +1083,14 @@ msgstr "desconhecido"
 
 #~ msgid "Missing target nickname"
 #~ msgstr "Faltando apelido de destino"
+
+#~ msgid ""
+#~ "The above request is broken: The fourth parameter should be the file size "
+#~ "but does not appear to be an unsigned number, trying to continue"
+#~ msgstr ""
+#~ "O seguinte pedido esta quebrado: o quarto parâmetro deveria ser o "
+#~ "tamanhodo arquivo, mas não parece ser um número sem sinal, tentando "
+#~ "continuar"
 
 #~ msgid "The file size is not an positive number"
 #~ msgstr "O tamanho do arquivo não é um número positivo"

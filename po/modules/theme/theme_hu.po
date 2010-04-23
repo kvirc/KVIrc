@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:05+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2008-03-03 10:04+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -30,6 +30,7 @@ msgstr "Képernyőkép Készítése - KVIrc"
 
 #: src/modules/theme/managementdialog.cpp:279
 #: src/modules/theme/managementdialog.cpp:292
+#: src/modules/theme/libkvitheme.cpp:109 src/modules/theme/libkvitheme.cpp:123
 msgid "Apply theme - KVIrc"
 msgstr "Kinézet Alkalmazása - KVIrc"
 
@@ -38,7 +39,7 @@ msgstr "Kinézet Alkalmazása - KVIrc"
 msgid "Author"
 msgstr "Készítő"
 
-#: src/modules/theme/libkvitheme.cpp:109
+#: src/modules/theme/libkvitheme.cpp:191
 msgid "Choose a file to save the screenshot to"
 msgstr "Add meg a fájlt, ahova a képernyőképet mentsem"
 
@@ -78,14 +79,15 @@ msgid "Do you want to proceed with the installation ?"
 msgstr "Szeretnéd folytatni a telepítéssel?"
 
 #: src/modules/theme/managementdialog.cpp:280
+#: src/modules/theme/libkvitheme.cpp:110
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Szeretnéd alkalmazni a \"%Q\" Kinézetet (%Q verzió)"
 
-#: src/modules/theme/libkvitheme.cpp:72
+#: src/modules/theme/libkvitheme.cpp:75
 msgid "Error installing theme package: %Q"
 msgstr "Hiba a kinézet-csomag telepítésekor: %Q"
 
-#: src/modules/theme/libkvitheme.cpp:124
+#: src/modules/theme/libkvitheme.cpp:206
 msgid "Error making screenshot"
 msgstr "Képernyőkép készítése sikertelen"
 
@@ -103,6 +105,7 @@ msgid "Export Theme - KVIrc"
 msgstr "Kinézet Exportálása - KVIrc"
 
 #: src/modules/theme/managementdialog.cpp:291
+#: src/modules/theme/libkvitheme.cpp:122
 msgid "Failed to apply the specified theme: %Q"
 msgstr "A megadott kinézet alkalmazása sikertelen: Q"
 
@@ -279,6 +282,10 @@ msgstr "A kiválasztott fájl valószínűleg nem érvényes KVIrc kinézet csom
 #: src/modules/theme/themefunctions.cpp:47
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "A kiválasztott fájl valószínűleg nem érvényes KVIrc kinézet csomag"
+
+#: src/modules/theme/libkvitheme.cpp:128
+msgid "The theme package  %Q does not exists"
+msgstr ""
 
 #: src/modules/theme/savethemedialog.cpp:127
 msgid "Theme Author:"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2010-04-09 14:28+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -734,13 +734,7 @@ msgid ""
 "stripping the leading path and trying to continue"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:452
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number, trying to continue"
-msgstr ""
-
-#: src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/requests.cpp:452 src/modules/dcc/requests.cpp:742
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:54+0200\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -239,7 +239,7 @@ msgstr "%Q [%Q@%Q] je sklonio klju�kanala"
 msgid "%Q [%Q@%Q] has unset the channel limit"
 msgstr "%Q [%Q@%Q] je uklonio ograni�nje kanala"
 
-#: src/modules/file/libkvifile.cpp:1249 src/modules/str/libkvistr.cpp:1356
+#: src/modules/file/libkvifile.cpp:1248 src/modules/str/libkvistr.cpp:1356
 msgid "%Q algorytm is not supported"
 msgstr ""
 
@@ -1732,13 +1732,13 @@ msgstr "Ne mogu da otvorim fajl za �tanje"
 msgid "Can't open file for writing"
 msgstr "Ne mogu da otvorim fajl za upisivanje"
 
-#: src/modules/file/libkvifile.cpp:738 src/modules/file/libkvifile.cpp:828
-#: src/modules/file/libkvifile.cpp:1225
+#: src/modules/file/libkvifile.cpp:737 src/modules/file/libkvifile.cpp:827
+#: src/modules/file/libkvifile.cpp:1224
 #, fuzzy
 msgid "Can't open the file \"%Q\" for reading"
 msgstr "Ne mogu da otvorim fajl \"%s\" za �tanje"
 
-#: src/modules/file/libkvifile.cpp:924
+#: src/modules/file/libkvifile.cpp:923
 #, fuzzy
 msgid "Can't open the file \"%Q\" for writing"
 msgstr "Ne mogu da otvorim fajl %s za upisivanje"
@@ -1753,7 +1753,7 @@ msgstr "Ne mogu da otvorim filter fajl %s za pisanje"
 msgid "Can't open the filter file %s for reading."
 msgstr "Ne mogu da otvorim filter fajla %s za �tanje"
 
-#: src/modules/file/libkvifile.cpp:1232
+#: src/modules/file/libkvifile.cpp:1231
 #, fuzzy
 msgid "Can't read data from file"
 msgstr "Ne mogu da poaljem prazan fajl"
@@ -2671,12 +2671,12 @@ msgstr "Link radne povrine"
 msgid "Desktop Integration"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:282
+#: src/modules/file/libkvifile.cpp:281
 #, fuzzy
 msgid "Destination file exists: file not renamed"
 msgstr "Specifi�a bind adresa (%Q) nije validna"
 
-#: src/modules/file/libkvifile.cpp:121
+#: src/modules/file/libkvifile.cpp:120
 #, fuzzy
 msgid "Destination file exists: no copy made"
 msgstr "Specifi�a bind adresa (%Q) nije validna"
@@ -2867,7 +2867,7 @@ msgstr "Sirovi doga�ji..."
 msgid "Effects"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:127
+#: src/modules/file/libkvifile.cpp:126
 msgid "Either the source doesn't exist or the destination can not be created"
 msgstr ""
 
@@ -3050,7 +3050,7 @@ msgstr "### Zaklju�k ###"
 msgid "Extended capability message"
 msgstr "ifrovana poruka DCC razgovora"
 
-#: src/modules/file/libkvifile.cpp:126
+#: src/modules/file/libkvifile.cpp:125
 msgid "Failed to copy from %Q to %Q"
 msgstr ""
 
@@ -3110,7 +3110,7 @@ msgstr "Ne mogu da otvorim fajl %Q"
 msgid "Failed to load the specified screenshot image"
 msgstr "Ne mogu da otvorim fajl %Q"
 
-#: src/modules/file/libkvifile.cpp:317
+#: src/modules/file/libkvifile.cpp:316
 #, fuzzy
 msgid "Failed to make the directory %Q"
 msgstr "Neuspeno uklanjanje direktorijuma %s"
@@ -3125,17 +3125,17 @@ msgstr "Ne mogu da otvorim fajl za �tanje"
 msgid "Failed to put the socket in non blocking mode"
 msgstr "Nisam uspeo da stavim priklju�k u ne blokiraju� mod"
 
-#: src/modules/file/libkvifile.cpp:396
+#: src/modules/file/libkvifile.cpp:395
 #, fuzzy
 msgid "Failed to remove the directory %Q"
 msgstr "Neuspeno uklanjanje direktorijuma %s"
 
-#: src/modules/file/libkvifile.cpp:355
+#: src/modules/file/libkvifile.cpp:354
 #, fuzzy
 msgid "Failed to remove the file %Q"
 msgstr "Ne mogu da napravim priklju�k"
 
-#: src/modules/file/libkvifile.cpp:285
+#: src/modules/file/libkvifile.cpp:284
 #, fuzzy
 msgid "Failed to rename %Q to %Q"
 msgstr "Ne mogu da napravim priklju�k"
@@ -3178,7 +3178,7 @@ msgstr "Ne mogu da po�em da sluam"
 msgid "Failed to write the filter file %Q (IO Error)"
 msgstr "Neuspeno pisanje filter fajla %s (IO greka)"
 
-#: src/modules/file/libkvifile.cpp:243
+#: src/modules/file/libkvifile.cpp:242
 msgid "Failed to write to file %Q: the destination couldn't be opened"
 msgstr ""
 
@@ -4053,7 +4053,7 @@ msgid ""
 "Your URL is invalid. Check spelling and try again"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:1332
+#: src/modules/file/libkvifile.cpp:1329
 msgid ""
 "KVIrc is compiled without Crypto++ or OpenSSL support. $file.digest supports "
 "only MD4, MD5 and SHA1."
@@ -5593,12 +5593,12 @@ msgstr "sirovi podaci ka serveru"
 msgid "Re&move"
 msgstr "Ukloni"
 
-#: src/modules/file/libkvifile.cpp:754
+#: src/modules/file/libkvifile.cpp:753
 #, fuzzy
 msgid "Read error for file %Q"
 msgstr "Ne mogu da logujem u fajl %s"
 
-#: src/modules/file/libkvifile.cpp:762
+#: src/modules/file/libkvifile.cpp:761
 msgid ""
 "Read error for file %Q (have been unable to read the requested size in 1000 "
 "retries)"
@@ -6948,7 +6948,7 @@ msgid ""
 msgstr ""
 "Specifi�a bind adresa (%Q) nije validna (interfejs izgleda da je otkazao)"
 
-#: src/modules/file/libkvifile.cpp:507 src/modules/file/libkvifile.cpp:644
+#: src/modules/file/libkvifile.cpp:506 src/modules/file/libkvifile.cpp:643
 #, fuzzy
 msgid "The specified directory does not exist '%Q'"
 msgstr "Nevedeno unix vreme nije ispravno (%s)"
@@ -7601,7 +7601,7 @@ msgstr "Nepodran format slike"
 msgid "Unsupported key length"
 msgstr "Nepodran format slike"
 
-#: src/modules/str/libkvistr.cpp:1422
+#: src/modules/file/libkvifile.cpp:1312 src/modules/str/libkvistr.cpp:1422
 #, fuzzy
 msgid "Unsupported message digest."
 msgstr "Nepodran format slike"
@@ -8633,8 +8633,8 @@ msgstr "Proksi govori neto o \""
 msgid "secure connection"
 msgstr "sigurna konekcija"
 
-#: src/modules/objects/class_socket.cpp:870
-#: src/modules/objects/class_socket.cpp:875
+#: src/modules/objects/class_socket.cpp:791
+#: src/modules/objects/class_socket.cpp:796
 #, fuzzy
 msgid "unknown"
 msgstr "(Nepoznat)"

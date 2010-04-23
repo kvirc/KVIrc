@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:54+0200\n"
 "PO-Revision-Date: 2008-03-07 09:56+0100\n"
 "Last-Translator: Elephantman <elephantman@europnet.org>\n"
 "Language-Team: Français <en@li.org>\n"
@@ -235,7 +235,7 @@ msgstr "%Q [%Q@%Q] a supprimé la clé de salon"
 msgid "%Q [%Q@%Q] has unset the channel limit"
 msgstr "%Q [%Q@%Q] a supprimé la limite du salon"
 
-#: src/modules/file/libkvifile.cpp:1249 src/modules/str/libkvistr.cpp:1356
+#: src/modules/file/libkvifile.cpp:1248 src/modules/str/libkvistr.cpp:1356
 msgid "%Q algorytm is not supported"
 msgstr "L'algorythme %Q n'est pas disponible"
 
@@ -1660,12 +1660,12 @@ msgstr "Impossible d'ouvrir le fichier en lecture"
 msgid "Can't open file for writing"
 msgstr "Impossible d'ouvrir le fichier en écriture"
 
-#: src/modules/file/libkvifile.cpp:738 src/modules/file/libkvifile.cpp:828
-#: src/modules/file/libkvifile.cpp:1225
+#: src/modules/file/libkvifile.cpp:737 src/modules/file/libkvifile.cpp:827
+#: src/modules/file/libkvifile.cpp:1224
 msgid "Can't open the file \"%Q\" for reading"
 msgstr "Impossible d'ouvrir le fichier \"%Q\" en lecture"
 
-#: src/modules/file/libkvifile.cpp:924
+#: src/modules/file/libkvifile.cpp:923
 msgid "Can't open the file \"%Q\" for writing"
 msgstr "Impossible d'ouvrir le fichier \"%Q\" en écriture"
 
@@ -1678,7 +1678,7 @@ msgstr "Impossible d'ouvrir le fichier de filtre %Q en écriture"
 msgid "Can't open the filter file %s for reading."
 msgstr "Impossible de fichier de filtre %s en lecture."
 
-#: src/modules/file/libkvifile.cpp:1232
+#: src/modules/file/libkvifile.cpp:1231
 #, fuzzy
 msgid "Can't read data from file"
 msgstr "Impossible d'envoyer un fichier vide"
@@ -2536,11 +2536,11 @@ msgstr "Bureau"
 msgid "Desktop Integration"
 msgstr "Intégration au bureau"
 
-#: src/modules/file/libkvifile.cpp:282
+#: src/modules/file/libkvifile.cpp:281
 msgid "Destination file exists: file not renamed"
 msgstr "Le fichier destinataire existe : le fichier n'a pas été renomé"
 
-#: src/modules/file/libkvifile.cpp:121
+#: src/modules/file/libkvifile.cpp:120
 #, fuzzy
 msgid "Destination file exists: no copy made"
 msgstr "Le fichier destinataire existe : aucune copie effectuée"
@@ -2721,7 +2721,7 @@ msgstr "Éditer les Événements Raw..."
 msgid "Effects"
 msgstr "Effets"
 
-#: src/modules/file/libkvifile.cpp:127
+#: src/modules/file/libkvifile.cpp:126
 msgid "Either the source doesn't exist or the destination can not be created"
 msgstr ""
 "Soit la source n'existe pas, soit les destination de ne peut être créée"
@@ -2898,7 +2898,7 @@ msgstr "Épilogue"
 msgid "Extended capability message"
 msgstr "Message chiffré en DCC chat"
 
-#: src/modules/file/libkvifile.cpp:126
+#: src/modules/file/libkvifile.cpp:125
 msgid "Failed to copy from %Q to %Q"
 msgstr "Copie impossible de %Q vers %Q"
 
@@ -2950,7 +2950,7 @@ msgstr "Impossible de charger l'image sélectionnée"
 msgid "Failed to load the specified screenshot image"
 msgstr "Impossible de charger la capture d'écran sélectionnée"
 
-#: src/modules/file/libkvifile.cpp:317
+#: src/modules/file/libkvifile.cpp:316
 msgid "Failed to make the directory %Q"
 msgstr "Impossible de créer le répertoire %Q"
 
@@ -2963,15 +2963,15 @@ msgstr "Impossible d'ouvrir un fichier source en lecture"
 msgid "Failed to put the socket in non blocking mode"
 msgstr "Impossible de mettre le socket en mode non bloquant"
 
-#: src/modules/file/libkvifile.cpp:396
+#: src/modules/file/libkvifile.cpp:395
 msgid "Failed to remove the directory %Q"
 msgstr "Impossible de supprimer le répertoire %Q"
 
-#: src/modules/file/libkvifile.cpp:355
+#: src/modules/file/libkvifile.cpp:354
 msgid "Failed to remove the file %Q"
 msgstr "Impossible de supprimer le fichier %Q"
 
-#: src/modules/file/libkvifile.cpp:285
+#: src/modules/file/libkvifile.cpp:284
 msgid "Failed to rename %Q to %Q"
 msgstr "Impossible de renommer %Q en %Q"
 
@@ -3013,7 +3013,7 @@ msgstr "Impossible de commencer le transfert de liste :("
 msgid "Failed to write the filter file %Q (IO Error)"
 msgstr "Impossible d'ecrire le fichier de filtre %Q (Erreur d'ES)"
 
-#: src/modules/file/libkvifile.cpp:243
+#: src/modules/file/libkvifile.cpp:242
 msgid "Failed to write to file %Q: the destination couldn't be opened"
 msgstr ""
 "Impossible d'écrire dans le fichier %Q : la destination ne peut être ouverte"
@@ -3824,7 +3824,7 @@ msgstr ""
 "irc6s://\n"
 "Votre URL est invalide. Vérifiez la syntaxe puis essayez à nouveau"
 
-#: src/modules/file/libkvifile.cpp:1332
+#: src/modules/file/libkvifile.cpp:1329
 #, fuzzy
 msgid ""
 "KVIrc is compiled without Crypto++ or OpenSSL support. $file.digest supports "
@@ -5320,11 +5320,11 @@ msgstr "Données brutes (raw)"
 msgid "Re&move"
 msgstr "Suppri&mer"
 
-#: src/modules/file/libkvifile.cpp:754
+#: src/modules/file/libkvifile.cpp:753
 msgid "Read error for file %Q"
 msgstr "Erreur de lecture du fichier %Q"
 
-#: src/modules/file/libkvifile.cpp:762
+#: src/modules/file/libkvifile.cpp:761
 msgid ""
 "Read error for file %Q (have been unable to read the requested size in 1000 "
 "retries)"
@@ -6615,7 +6615,7 @@ msgstr ""
 "L'adresse de lien spécifiée (%Q) n'est pas valable (l'interface associée "
 "semble désactivée)"
 
-#: src/modules/file/libkvifile.cpp:507 src/modules/file/libkvifile.cpp:644
+#: src/modules/file/libkvifile.cpp:506 src/modules/file/libkvifile.cpp:643
 msgid "The specified directory does not exist '%Q'"
 msgstr "Le répertoire spécifié n'existe pas (%Q)"
 
@@ -7230,7 +7230,7 @@ msgstr "Format d'image non supporté"
 msgid "Unsupported key length"
 msgstr "Longueur de clé non supportée"
 
-#: src/modules/str/libkvistr.cpp:1422
+#: src/modules/file/libkvifile.cpp:1312 src/modules/str/libkvistr.cpp:1422
 #, fuzzy
 msgid "Unsupported message digest."
 msgstr "Format d'image non supporté"
@@ -8209,8 +8209,8 @@ msgstr "a dit quelque chose récemment"
 msgid "secure connection"
 msgstr "connexion sécurisée"
 
-#: src/modules/objects/class_socket.cpp:870
-#: src/modules/objects/class_socket.cpp:875
+#: src/modules/objects/class_socket.cpp:791
+#: src/modules/objects/class_socket.cpp:796
 msgid "unknown"
 msgstr "inconnu"
 

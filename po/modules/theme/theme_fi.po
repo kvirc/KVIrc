@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:05+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <FI@li.org>\n"
@@ -30,6 +30,7 @@ msgstr "Ota kuvakaappaus - KVIrc"
 
 #: src/modules/theme/managementdialog.cpp:279
 #: src/modules/theme/managementdialog.cpp:292
+#: src/modules/theme/libkvitheme.cpp:109 src/modules/theme/libkvitheme.cpp:123
 msgid "Apply theme - KVIrc"
 msgstr "Ota teema käyttöön - KVIrc"
 
@@ -38,7 +39,7 @@ msgstr "Ota teema käyttöön - KVIrc"
 msgid "Author"
 msgstr "Tekijä"
 
-#: src/modules/theme/libkvitheme.cpp:109
+#: src/modules/theme/libkvitheme.cpp:191
 msgid "Choose a file to save the screenshot to"
 msgstr "Valitse tiedosto mihin kuvakaappaus tallennetaan"
 
@@ -78,14 +79,15 @@ msgid "Do you want to proceed with the installation ?"
 msgstr "Haluatko jatkaa asennusta ?"
 
 #: src/modules/theme/managementdialog.cpp:280
+#: src/modules/theme/libkvitheme.cpp:110
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Haluatko ottaa teeman \"%Q\"n (versio %Q) käyttöön?"
 
-#: src/modules/theme/libkvitheme.cpp:72
+#: src/modules/theme/libkvitheme.cpp:75
 msgid "Error installing theme package: %Q"
 msgstr "Virhe asentaessa teemapakettia: %Q"
 
-#: src/modules/theme/libkvitheme.cpp:124
+#: src/modules/theme/libkvitheme.cpp:206
 msgid "Error making screenshot"
 msgstr "Virhe kuvakaappausta tehdessä"
 
@@ -103,6 +105,7 @@ msgid "Export Theme - KVIrc"
 msgstr "Vie teema - KVIrc"
 
 #: src/modules/theme/managementdialog.cpp:291
+#: src/modules/theme/libkvitheme.cpp:122
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Ei voitu ottaa teemaa käyttöön: %Q"
 
@@ -277,6 +280,10 @@ msgstr "Valittu tiedosto ei näytä olevan kelvollinen KVIrc -teemapaketti: %Q"
 #: src/modules/theme/themefunctions.cpp:47
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "Valittu tiedosto ei näytä olevan kelvollinen KVIrc -teemapaketti"
+
+#: src/modules/theme/libkvitheme.cpp:128
+msgid "The theme package  %Q does not exists"
+msgstr ""
 
 #: src/modules/theme/savethemedialog.cpp:127
 msgid "Theme Author:"

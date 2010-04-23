@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2007-10-27 23:04+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -726,16 +726,7 @@ msgstr ""
 "Az alábbi kérés hibás. A fájlnév tartalmaz elérési út elemeket, a fő rész "
 "kivágása, és folytatási próbálkozás"
 
-#: src/modules/dcc/requests.cpp:452
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number, trying to continue"
-msgstr ""
-"Az alábbi kérés hibás. A negyedik paraméternek a fájl méretének kellene "
-"lennie, de ez nem úgy néz ki, mint egy előjel nélküli szám, megpróbálom "
-"folytatni"
-
-#: src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/requests.cpp:452 src/modules/dcc/requests.cpp:742
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -1038,3 +1029,11 @@ msgstr "ismertelen"
 #, fuzzy
 #~ msgid "Invalid codec specified, defaulting to 'sjpeg'"
 #~ msgstr "Helytelen kodek meghatározása, váltás 'adpcm'-re"
+
+#~ msgid ""
+#~ "The above request is broken: The fourth parameter should be the file size "
+#~ "but does not appear to be an unsigned number, trying to continue"
+#~ msgstr ""
+#~ "Az alábbi kérés hibás. A negyedik paraméternek a fájl méretének kellene "
+#~ "lennie, de ez nem úgy néz ki, mint egy előjel nélküli szám, megpróbálom "
+#~ "folytatni"

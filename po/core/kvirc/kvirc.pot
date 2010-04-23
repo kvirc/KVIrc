@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6277,77 +6277,82 @@ msgstr ""
 msgid "Processing list: %Q"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:121
+#: src/modules/file/libkvifile.cpp:120
 msgid "Destination file exists: no copy made"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:126
+#: src/modules/file/libkvifile.cpp:125
 msgid "Failed to copy from %Q to %Q"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:127
+#: src/modules/file/libkvifile.cpp:126
 msgid "Either the source doesn't exist or the destination can not be created"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:243
+#: src/modules/file/libkvifile.cpp:242
 msgid "Failed to write to file %Q: the destination couldn't be opened"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:282
+#: src/modules/file/libkvifile.cpp:281
 msgid "Destination file exists: file not renamed"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:285
+#: src/modules/file/libkvifile.cpp:284
 msgid "Failed to rename %Q to %Q"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:317
+#: src/modules/file/libkvifile.cpp:316
 msgid "Failed to make the directory %Q"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:355
+#: src/modules/file/libkvifile.cpp:354
 msgid "Failed to remove the file %Q"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:396
+#: src/modules/file/libkvifile.cpp:395
 msgid "Failed to remove the directory %Q"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:507
-#: src/modules/file/libkvifile.cpp:644
+#: src/modules/file/libkvifile.cpp:506
+#: src/modules/file/libkvifile.cpp:643
 msgid "The specified directory does not exist '%Q'"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:738
-#: src/modules/file/libkvifile.cpp:828
-#: src/modules/file/libkvifile.cpp:1225
+#: src/modules/file/libkvifile.cpp:737
+#: src/modules/file/libkvifile.cpp:827
+#: src/modules/file/libkvifile.cpp:1224
 msgid "Can't open the file \"%Q\" for reading"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:754
+#: src/modules/file/libkvifile.cpp:753
 msgid "Read error for file %Q"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:762
+#: src/modules/file/libkvifile.cpp:761
 msgid ""
 "Read error for file %Q (have been unable to read the requested size in 1000 "
 "retries)"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:924
+#: src/modules/file/libkvifile.cpp:923
 msgid "Can't open the file \"%Q\" for writing"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:1232
+#: src/modules/file/libkvifile.cpp:1231
 msgid "Can't read data from file"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:1249
+#: src/modules/file/libkvifile.cpp:1248
 #: src/modules/str/libkvistr.cpp:1356
 msgid "%Q algorytm is not supported"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:1332
+#: src/modules/file/libkvifile.cpp:1312
+#: src/modules/str/libkvistr.cpp:1422
+msgid "Unsupported message digest."
+msgstr ""
+
+#: src/modules/file/libkvifile.cpp:1329
 msgid ""
 "KVIrc is compiled without Crypto++ or OpenSSL support. $file.digest supports "
 "only MD4, MD5 and SHA1."
@@ -6997,8 +7002,8 @@ msgstr ""
 msgid "Terminal"
 msgstr ""
 
-#: src/modules/objects/class_socket.cpp:870
-#: src/modules/objects/class_socket.cpp:875
+#: src/modules/objects/class_socket.cpp:791
+#: src/modules/objects/class_socket.cpp:796
 msgid "unknown"
 msgstr ""
 
@@ -7148,10 +7153,6 @@ msgstr ""
 
 #: src/modules/trayicon/libkvitrayicon.cpp:322
 msgid "Away on %1"
-msgstr ""
-
-#: src/modules/str/libkvistr.cpp:1422
-msgid "Unsupported message digest."
 msgstr ""
 
 #: src/modules/str/libkvistr.cpp:1439

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:05+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,14 +54,18 @@ msgstr ""
 
 #: src/modules/theme/managementdialog.cpp:279
 #: src/modules/theme/managementdialog.cpp:292
+#: src/modules/theme/libkvitheme.cpp:109
+#: src/modules/theme/libkvitheme.cpp:123
 msgid "Apply theme - KVIrc"
 msgstr ""
 
 #: src/modules/theme/managementdialog.cpp:280
+#: src/modules/theme/libkvitheme.cpp:110
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr ""
 
 #: src/modules/theme/managementdialog.cpp:291
+#: src/modules/theme/libkvitheme.cpp:122
 msgid "Failed to apply the specified theme: %Q"
 msgstr ""
 
@@ -77,15 +81,19 @@ msgstr ""
 msgid "Open Theme - KVIrc"
 msgstr ""
 
-#: src/modules/theme/libkvitheme.cpp:72
+#: src/modules/theme/libkvitheme.cpp:75
 msgid "Error installing theme package: %Q"
 msgstr ""
 
-#: src/modules/theme/libkvitheme.cpp:109
+#: src/modules/theme/libkvitheme.cpp:128
+msgid "The theme package  %Q does not exists"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:191
 msgid "Choose a file to save the screenshot to"
 msgstr ""
 
-#: src/modules/theme/libkvitheme.cpp:124
+#: src/modules/theme/libkvitheme.cpp:206
 msgid "Error making screenshot"
 msgstr ""
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2007-12-05 17:57+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -719,15 +719,7 @@ msgstr ""
 "Předchozí požadavek je přerušený: Název souboru obsahuje cestu, odstraňuji "
 "počáteční cestu a snažím se pokračovat"
 
-#: src/modules/dcc/requests.cpp:452
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number, trying to continue"
-msgstr ""
-"Předchozí požadavek je přerušený: Čtvrtý parametr by měl být velikost "
-"souboru, ale nevypadá jako neoznačené číslo, pokouším se pokračovat"
-
-#: src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/requests.cpp:452 src/modules/dcc/requests.cpp:742
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -1053,6 +1045,13 @@ msgstr "neznámý"
 
 #~ msgid "Missing target nickname"
 #~ msgstr "Chybí přezdívka cíle"
+
+#~ msgid ""
+#~ "The above request is broken: The fourth parameter should be the file size "
+#~ "but does not appear to be an unsigned number, trying to continue"
+#~ msgstr ""
+#~ "Předchozí požadavek je přerušený: Čtvrtý parametr by měl být velikost "
+#~ "souboru, ale nevypadá jako neoznačené číslo, pokouším se pokračovat"
 
 #~ msgid "The file size is not an positive number"
 #~ msgstr "Velikost souboru není kladné číslo"

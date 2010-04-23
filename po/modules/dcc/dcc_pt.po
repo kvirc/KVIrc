@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_dcc \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2010-03-10 02:55+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -725,15 +725,7 @@ msgstr ""
 "O pedido acima está inválido: O nome de ficheiro contém componentes do "
 "caminho, a retirar o caminho inicial e a tentar continuar"
 
-#: src/modules/dcc/requests.cpp:452
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number, trying to continue"
-msgstr ""
-"O pedido acima está inválido: O quarto parâmetro deveria ser o tamanho do "
-"ficheiro mas não parece ser um número não sinalizado; a tentar continuar"
-
-#: src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/requests.cpp:452 src/modules/dcc/requests.cpp:742
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -1040,3 +1032,10 @@ msgstr "desconhecido"
 
 #~ msgid "Invalid codec specified, defaulting to 'sjpeg'"
 #~ msgstr "Codificador inválido especificado, a predefinir para 'sjpeg'"
+
+#~ msgid ""
+#~ "The above request is broken: The fourth parameter should be the file size "
+#~ "but does not appear to be an unsigned number, trying to continue"
+#~ msgstr ""
+#~ "O pedido acima está inválido: O quarto parâmetro deveria ser o tamanho do "
+#~ "ficheiro mas não parece ser um número não sinalizado; a tentar continuar"

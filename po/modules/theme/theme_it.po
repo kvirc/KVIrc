@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:05+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2009-12-30 16:04+0100\n"
 "Last-Translator: Elvio Basello <hell@hellvis69.netsons.org>\n"
 "Language-Team:  <it@li.org>\n"
@@ -33,6 +33,7 @@ msgstr "Acquisisci Screenshot - KVIrc"
 
 #: src/modules/theme/managementdialog.cpp:279
 #: src/modules/theme/managementdialog.cpp:292
+#: src/modules/theme/libkvitheme.cpp:109 src/modules/theme/libkvitheme.cpp:123
 msgid "Apply theme - KVIrc"
 msgstr "Applica tema - KVIrc"
 
@@ -41,7 +42,7 @@ msgstr "Applica tema - KVIrc"
 msgid "Author"
 msgstr "Autore"
 
-#: src/modules/theme/libkvitheme.cpp:109
+#: src/modules/theme/libkvitheme.cpp:191
 msgid "Choose a file to save the screenshot to"
 msgstr "Scegli un file per salvare lo screenshot"
 
@@ -81,14 +82,15 @@ msgid "Do you want to proceed with the installation ?"
 msgstr "Vuoi procedere con l'installazione?"
 
 #: src/modules/theme/managementdialog.cpp:280
+#: src/modules/theme/libkvitheme.cpp:110
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Vuoi applicare il tema \"%Q\" (versione %Q)?"
 
-#: src/modules/theme/libkvitheme.cpp:72
+#: src/modules/theme/libkvitheme.cpp:75
 msgid "Error installing theme package: %Q"
 msgstr "Errore durante l'installazione del tema: %Q"
 
-#: src/modules/theme/libkvitheme.cpp:124
+#: src/modules/theme/libkvitheme.cpp:206
 msgid "Error making screenshot"
 msgstr "Errore nella creazione dello screenshot"
 
@@ -106,6 +108,7 @@ msgid "Export Theme - KVIrc"
 msgstr "Esporta Tema - KVIrc"
 
 #: src/modules/theme/managementdialog.cpp:291
+#: src/modules/theme/libkvitheme.cpp:122
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Applicazione del tema specificato fallita: %Q"
 
@@ -282,6 +285,10 @@ msgstr "Il file selezionato non sembra essere un valido pacchetto KVIrc: %Q"
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr ""
 "Il file selezionato non sembra essere un valido pacchetto tema per KVIrc"
+
+#: src/modules/theme/libkvitheme.cpp:128
+msgid "The theme package  %Q does not exists"
+msgstr ""
 
 #: src/modules/theme/savethemedialog.cpp:127
 msgid "Theme Author:"

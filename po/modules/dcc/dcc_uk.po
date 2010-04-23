@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: about_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -729,15 +729,7 @@ msgstr ""
 "Зазначений запит є битим: Ім'я файлу містить компоненти шляху, видаляю їх і "
 "намагаюся продовжити"
 
-#: src/modules/dcc/requests.cpp:452
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number, trying to continue"
-msgstr ""
-"Зазначений запит є битим: Четвертий параметр повинен бути розміром файлу але "
-"він не є беззнаковим числом, намагаюся продовжити"
-
-#: src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/requests.cpp:452 src/modules/dcc/requests.cpp:742
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -1053,6 +1045,13 @@ msgstr "невідомий"
 
 #~ msgid "Missing target nickname"
 #~ msgstr "Цільовий никнув загублений"
+
+#~ msgid ""
+#~ "The above request is broken: The fourth parameter should be the file size "
+#~ "but does not appear to be an unsigned number, trying to continue"
+#~ msgstr ""
+#~ "Зазначений запит є битим: Четвертий параметр повинен бути розміром файлу "
+#~ "але він не є беззнаковим числом, намагаюся продовжити"
 
 #~ msgid "The file size is not an positive number"
 #~ msgstr "Розмір файлу не є позитивним числом"

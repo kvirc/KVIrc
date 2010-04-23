@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2009-11-29 11:10+0100\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -731,16 +731,7 @@ msgstr ""
 "La petición anterior no es correcta: el nombre del archivo contiene una "
 "ruta, quitando la ruta e intentando continuar"
 
-#: src/modules/dcc/requests.cpp:452
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number, trying to continue"
-msgstr ""
-"La petición anterior no es correcta: el cuarto parámetro debería ser el "
-"tamaño del archivo pero no parece ser un número entero sin signo, intentando "
-"continuar"
-
-#: src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/requests.cpp:452 src/modules/dcc/requests.cpp:742
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -1059,3 +1050,11 @@ msgstr "desconocido"
 
 #~ msgid "Invalid codec specified, defaulting to 'sjpeg'"
 #~ msgstr "Codec especificado no válido, poniendo por defecto 'jpeg'"
+
+#~ msgid ""
+#~ "The above request is broken: The fourth parameter should be the file size "
+#~ "but does not appear to be an unsigned number, trying to continue"
+#~ msgstr ""
+#~ "La petición anterior no es correcta: el cuarto parámetro debería ser el "
+#~ "tamaño del archivo pero no parece ser un número entero sin signo, "
+#~ "intentando continuar"

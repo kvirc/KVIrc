@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2010-04-21 10:51+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -113,8 +113,8 @@ msgid ""
 "<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
 "mode.<br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> fordert eine <br><b>DCC-Verbindung</b> im <b>%4</b>-Modus an."
-"<br>"
+"<b>%1 [%2@%3]</b> fordert eine <br><b>DCC-Verbindung</b> im <b>%4</b>-Modus "
+"an.<br>"
 
 #: src/modules/dcc/broker.cpp:493
 msgid ""
@@ -152,8 +152,8 @@ msgid ""
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
 msgstr ""
 "<b>%1 [%2@%3]</b> möchte die Datei<br>›<b>%4</b>‹ senden, die <b>%5</b> "
-"gross ist. <br>Das Verbindungsziel wird Host <b>%6</b>, Port <b>%7</b> "
-"sein.<br>"
+"gross ist. <br>Das Verbindungsziel wird Host <b>%6</b>, Port <b>%7</b> sein."
+"<br>"
 
 #: src/modules/dcc/broker.cpp:598
 msgid ""
@@ -176,8 +176,8 @@ msgstr ""
 "<center><b>Hinweis:</b><center>Die Datei scheint ein Avatar zu sein, den Sie "
 "angefordert haben. Der Dateiname sollte nicht geändert werden. Die Datei "
 "sollte an einem Ort gespeichert werden, wo KVIrc sie finden kann, z.B. im "
-"›avatars‹-, ›incoming‹- oder ›pics‹-Verzeichnis, im Heimatverzeichnis oder am "
-"Speicherort für den ankommenden Dateityp. Der Standard-Speicherpfad wird "
+"›avatars‹-, ›incoming‹- oder ›pics‹-Verzeichnis, im Heimatverzeichnis oder "
+"am Speicherort für den ankommenden Dateityp. Der Standard-Speicherpfad wird "
 "wahrscheinlich funktionieren. KVIrc kann auch angewiesen werden, ankommende "
 "Avatare automatisch zu akzeptieren, in dem die Option "
 "<tt>boolAutoAcceptIncomingAvatars</tt> auf true gesetzt wird.<br>"
@@ -295,8 +295,8 @@ msgstr "Datei %Q kann nicht zum Lesen geöffnet werden"
 msgid ""
 "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
 msgstr ""
-"DCC-RECV kann nicht ausgeführt werden: Übertragung für Datei %s an Port %s nicht "
-"initiiert"
+"DCC-RECV kann nicht ausgeführt werden: Übertragung für Datei %s an Port %s "
+"nicht initiiert"
 
 #: src/modules/dcc/requests.cpp:578
 #, c-format
@@ -304,8 +304,8 @@ msgid ""
 "Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
 "or invalid resume size"
 msgstr ""
-"DCC-SEND kann nicht ausgeführt werden: Übertragung für Datei %s an Port %s nicht "
-"initiiert oder Größe zum Fortsetzen ungültig"
+"DCC-SEND kann nicht ausgeführt werden: Übertragung für Datei %s an Port %s "
+"nicht initiiert oder Größe zum Fortsetzen ungültig"
 
 #: src/modules/dcc/utils.cpp:124
 msgid "Can't retrieve a suitable local IPV4 address"
@@ -385,8 +385,7 @@ msgstr "DCC %Q-Anfrage nicht gesendet, erwarte manuelle Verbindung"
 
 #: src/modules/dcc/send.cpp:1633
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
-msgstr ""
-"DCC %s-Übertragung mit %Q@%Q:%Q abgeschlossen: \r![!dbl]play $0\r%s\r"
+msgstr "DCC %s-Übertragung mit %Q@%Q:%Q abgeschlossen: \r![!dbl]play $0\r%s\r"
 
 #: src/modules/dcc/broker.cpp:499
 msgid "DCC CANVAS request"
@@ -435,7 +434,8 @@ msgstr ""
 
 #: src/modules/dcc/send.cpp:369
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
-msgstr "Datenübertragung wurde vor 30 Sekunden beendet, schließe die Verbindung"
+msgstr ""
+"Datenübertragung wurde vor 30 Sekunden beendet, schließe die Verbindung"
 
 #: src/modules/dcc/voice.cpp:818 src/modules/dcc/video.cpp:752
 #: src/modules/dcc/chat.cpp:407
@@ -575,7 +575,8 @@ msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:139
 msgid "No suitable interfaces to listen on, use -i"
-msgstr "Keine passende Schnittstelle für eine Verbindung gefunden, bitte -i benutzen"
+msgstr ""
+"Keine passende Schnittstelle für eine Verbindung gefunden, bitte -i benutzen"
 
 #: src/modules/dcc/send.cpp:1861
 msgid "OK"
@@ -623,8 +624,8 @@ msgstr "Sende TDCC erneut"
 #: src/modules/dcc/send.cpp:1569
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
-"DCC %1-Anfrage wird an %2 gesendet... Darauf warten, dass sich der Client auf der "
-"anderen Seite verbindet ..."
+"DCC %1-Anfrage wird an %2 gesendet... Darauf warten, dass sich der Client "
+"auf der anderen Seite verbindet ..."
 
 #: src/modules/dcc/chat.cpp:235
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
@@ -636,8 +637,8 @@ msgstr ""
 msgid ""
 "Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
 msgstr ""
-"DCC CANVAS-Anfrage an %Q gesendet; darauf warten, dass sich der Client auf der "
-"anderen Seite verbindet ..."
+"DCC CANVAS-Anfrage an %Q gesendet; darauf warten, dass sich der Client auf "
+"der anderen Seite verbindet ..."
 
 #: src/modules/dcc/send.cpp:874
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
@@ -734,23 +735,14 @@ msgstr ""
 "Die obige Anfrage ist fehlerhaft: Der Dateiname enthält Pfadkomponenten, "
 "führender Pfad wird entfernt und es wird versucht, die Anfrage fortzusetzen"
 
-#: src/modules/dcc/requests.cpp:452
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number, trying to continue"
-msgstr ""
-"Die obige Anfrage ist fehlerhaft: Der vierte Parameter sollte die Dateigröße "
-"sein, aber dieser sieht nicht wie eine vorzeichenlose Zahl aus; es wird versucht, "
-"die Anfrage fortzusetzen"
-
-#: src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/requests.cpp:452 src/modules/dcc/requests.cpp:742
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
 msgstr ""
 "Die obige Anfrage ist fehlerhaft: Der vierte Parameter sollte die Dateigröße "
-"sein, aber dieser sieht nicht wie eine vorzeichenlose Zahl aus; es wird versucht, "
-"die Anfrage fortzusetzen"
+"sein, aber dieser sieht nicht wie eine vorzeichenlose Zahl aus; es wird "
+"versucht, die Anfrage fortzusetzen"
 
 #: src/modules/dcc/requests.cpp:268
 #, c-format
@@ -766,9 +758,9 @@ msgid ""
 "The above request is broken: it looks like a zero port tag acknowledge but I "
 "have either never seen this tag or it was sent more than 120 seconds ago"
 msgstr ""
-"Die obige Anfrage ist fehlerhaft: Sie sieht aus wie ein »zero port tag acknowledge«, "
-"aber entweder ist dieser Tag noch nie empfangen worden oder er ist vor mehr als "
-"120 Sekunden gesendet worden"
+"Die obige Anfrage ist fehlerhaft: Sie sieht aus wie ein »zero port tag "
+"acknowledge«, aber entweder ist dieser Tag noch nie empfangen worden oder er "
+"ist vor mehr als 120 Sekunden gesendet worden"
 
 #: src/modules/dcc/broker.cpp:291
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
@@ -816,8 +808,8 @@ msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
 msgstr ""
-"Die folgende Nachricht scheint verschlüsselt zu sein, aber sie konnte "
-"durch die Verschlüsselungsroutine nicht dekodiert werden: %Q"
+"Die folgende Nachricht scheint verschlüsselt zu sein, aber sie konnte durch "
+"die Verschlüsselungsroutine nicht dekodiert werden: %Q"
 
 #: src/modules/dcc/chat.cpp:213 src/modules/dcc/send.cpp:1523
 msgid ""
@@ -831,8 +823,8 @@ msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr ""
-"Die lokale IP-Adresse ist privat, sie kann aber nicht vom IRC-Server ermittelt "
-"werden"
+"Die lokale IP-Adresse ist privat, sie kann aber nicht vom IRC-Server "
+"ermittelt werden"
 
 #: src/modules/dcc/send.cpp:1518
 msgid "The local IP address is private, determining from IRC server: %1"
@@ -846,7 +838,9 @@ msgstr "Die lokale IP-Adresse ist privat, vom IRC-Server ermittelt: %s"
 #: src/modules/dcc/requests.cpp:703
 #, c-format
 msgid "The remote client is listening on interface %s and port %s"
-msgstr "Der entfernte Client wartet an Schnittstelle %s und Port %s auf eine Verbindung"
+msgstr ""
+"Der entfernte Client wartet an Schnittstelle %s und Port %s auf eine "
+"Verbindung"
 
 #: src/modules/dcc/libkvidcc.cpp:1646
 msgid "The specified parameter is not a valid DCC identifier"
@@ -863,8 +857,8 @@ msgstr "Diese DCC-Sitzung ist keine DCC-Übertragungs- (transfer)-Sitzung"
 #: src/modules/dcc/libkvidcc.cpp:890
 msgid "This executable has been built without SSL support, -s switch ignored"
 msgstr ""
-"Diese Version von KVirc ist ohne SSL-Unterstützung kompiliert worden, "
-" Schalter -s wird ignoriert"
+"Diese Version von KVirc ist ohne SSL-Unterstützung kompiliert worden,  "
+"Schalter -s wird ignoriert"
 
 #: src/modules/dcc/requests.cpp:280
 msgid ""
@@ -909,7 +903,8 @@ msgstr ""
 #: src/modules/dcc/libkvidcc.cpp:960
 msgid "This executable has no SSL support, -s switch ignored"
 msgstr ""
-"Diese Version von KVirc enthält keine SSL-Unterstützung, Schalter -s wird ignoriert"
+"Diese Version von KVirc enthält keine SSL-Unterstützung, Schalter -s wird "
+"ignoriert"
 
 #: src/modules/dcc/libkvidcc.cpp:172
 msgid "This executable was built without SSL support, -s switch ignored"
@@ -922,8 +917,8 @@ msgid ""
 "This window has no associated IRC context (an IRC context is required unless "
 "-c or -n are passed)"
 msgstr ""
-"Für dieses Fenster exisitiert kein zugeordneter IRC-Kontext (Es wird einer benötigt, "
-"wenn -c oder -n nicht übergeben werden)"
+"Für dieses Fenster exisitiert kein zugeordneter IRC-Kontext (Es wird einer "
+"benötigt, wenn -c oder -n nicht übergeben werden)"
 
 #: src/modules/dcc/send.cpp:1158
 msgid "To: "
@@ -1056,3 +1051,11 @@ msgstr "unbekannt"
 
 #~ msgid "Invalid codec specified, defaulting to 'sjpeg'"
 #~ msgstr "Ungültiger Codec angegeben: Wird auf Voreinstellung ›sjpeg‹ gesetzt"
+
+#~ msgid ""
+#~ "The above request is broken: The fourth parameter should be the file size "
+#~ "but does not appear to be an unsigned number, trying to continue"
+#~ msgstr ""
+#~ "Die obige Anfrage ist fehlerhaft: Der vierte Parameter sollte die "
+#~ "Dateigröße sein, aber dieser sieht nicht wie eine vorzeichenlose Zahl "
+#~ "aus; es wird versucht, die Anfrage fortzusetzen"

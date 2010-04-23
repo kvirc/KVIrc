@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2008-03-06 17:50+0100\n"
 "Last-Translator: Elephantman <elephantman@europnet.org>\n"
 "Language-Team: Français <en@li.org>\n"
@@ -744,16 +744,7 @@ msgstr ""
 "La requête ci-dessus est brisée : le fichier contient éléments de chemin, on "
 "supprime la partie répertoire et on essaie de poursuivre"
 
-#: src/modules/dcc/requests.cpp:452
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number, trying to continue"
-msgstr ""
-"La requête ci-dessus est brisée : le quatrième paramètre doit être la taille "
-"du fichier, mais il semble que ce ne soit pas un nombre positif, on essaie "
-"de poursuivre"
-
-#: src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/requests.cpp:452 src/modules/dcc/requests.cpp:742
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -1069,3 +1060,11 @@ msgstr "inconnu"
 #, fuzzy
 #~ msgid "Invalid codec specified, defaulting to 'sjpeg'"
 #~ msgstr "Le codec spécifié est invalide, celui par défaut 'adpcm' est choisi"
+
+#~ msgid ""
+#~ "The above request is broken: The fourth parameter should be the file size "
+#~ "but does not appear to be an unsigned number, trying to continue"
+#~ msgstr ""
+#~ "La requête ci-dessus est brisée : le quatrième paramètre doit être la "
+#~ "taille du fichier, mais il semble que ce ne soit pas un nombre positif, "
+#~ "on essaie de poursuivre"

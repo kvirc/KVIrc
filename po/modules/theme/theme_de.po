@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:05+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2009-10-20 22:43+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -31,6 +31,7 @@ msgstr "Bildschirmabbild erfassen - KVIrc"
 
 #: src/modules/theme/managementdialog.cpp:279
 #: src/modules/theme/managementdialog.cpp:292
+#: src/modules/theme/libkvitheme.cpp:109 src/modules/theme/libkvitheme.cpp:123
 msgid "Apply theme - KVIrc"
 msgstr "Thema anwenden - KVIrc"
 
@@ -39,7 +40,7 @@ msgstr "Thema anwenden - KVIrc"
 msgid "Author"
 msgstr "Autor"
 
-#: src/modules/theme/libkvitheme.cpp:109
+#: src/modules/theme/libkvitheme.cpp:191
 msgid "Choose a file to save the screenshot to"
 msgstr "Datei zum Speichern des Bildschirmabbildes wählen"
 
@@ -79,14 +80,15 @@ msgid "Do you want to proceed with the installation ?"
 msgstr "Mit der Installation fortfahren?"
 
 #: src/modules/theme/managementdialog.cpp:280
+#: src/modules/theme/libkvitheme.cpp:110
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Soll das Thema »%Q« (Version %Q) verwendet werden?"
 
-#: src/modules/theme/libkvitheme.cpp:72
+#: src/modules/theme/libkvitheme.cpp:75
 msgid "Error installing theme package: %Q"
 msgstr "Fehler beim Installieren des Themenpakets: %Q"
 
-#: src/modules/theme/libkvitheme.cpp:124
+#: src/modules/theme/libkvitheme.cpp:206
 msgid "Error making screenshot"
 msgstr "Fehler beim Erstellen des Bildschirmabbildes"
 
@@ -104,6 +106,7 @@ msgid "Export Theme - KVIrc"
 msgstr "Thema exportieren - KVIrc"
 
 #: src/modules/theme/managementdialog.cpp:291
+#: src/modules/theme/libkvitheme.cpp:122
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Anwenden des angegebenen Themas fehlgeschlagen: %Q"
 
@@ -281,6 +284,10 @@ msgstr "Die ausgewählte Datei scheint kein gültiges KVIrc-Paket zu sein: %Q"
 #: src/modules/theme/themefunctions.cpp:47
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "Die ausgewählte Datei scheint kein gültiges KVIrc-Themenpaket zu sein"
+
+#: src/modules/theme/libkvitheme.cpp:128
+msgid "The theme package  %Q does not exists"
+msgstr ""
 
 #: src/modules/theme/savethemedialog.cpp:127
 msgid "Theme Author:"

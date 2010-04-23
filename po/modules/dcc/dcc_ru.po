@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-21 10:04+0200\n"
+"POT-Creation-Date: 2010-04-23 23:55+0200\n"
 "PO-Revision-Date: 2010-01-31 18:54+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -715,15 +715,7 @@ msgstr ""
 "Указанный запрос является битым: Имя файла содержит компоненты пути, удаляю "
 "их и пытаюсь продолжить"
 
-#: src/modules/dcc/requests.cpp:452
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number, trying to continue"
-msgstr ""
-"Указанный запрос является битым: Четвёртый параметр должен быть размером "
-"файла но он не является беззнаковым числом, пытаюсь продолжить"
-
-#: src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/requests.cpp:452 src/modules/dcc/requests.cpp:742
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -1025,3 +1017,10 @@ msgstr "неизвестный"
 
 #~ msgid "Invalid codec specified, defaulting to 'sjpeg'"
 #~ msgstr "Недействительный кодек, принимается по умолчанию 'sjpeg'"
+
+#~ msgid ""
+#~ "The above request is broken: The fourth parameter should be the file size "
+#~ "but does not appear to be an unsigned number, trying to continue"
+#~ msgstr ""
+#~ "Указанный запрос является битым: Четвёртый параметр должен быть размером "
+#~ "файла но он не является беззнаковым числом, пытаюсь продолжить"
