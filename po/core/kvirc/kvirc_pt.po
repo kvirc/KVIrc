@@ -3,13 +3,14 @@
 # Zé <mmodem00@netvisao.pt>, 2004, 2005.
 # Zé <mmodem00@gmail.com>, 2006, 2007, 2008, 2010.
 # Zé <ze@mandriva.org>, 2008, 2010.
+# Zé <mmodem00@gmal.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-21 10:04+0200\n"
-"PO-Revision-Date: 2010-04-21 05:42+0100\n"
-"Last-Translator: Zé <mmodem00@gmail.com>\n"
+"PO-Revision-Date: 2010-04-23 21:14+0100\n"
+"Last-Translator: Zé <mmodem00@gmal.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1656,9 +1657,8 @@ msgid "Can't open the filter file %s for reading."
 msgstr "Não é possível abrir o ficheiro filtro %s para leitura."
 
 #: src/modules/file/libkvifile.cpp:1232
-#, fuzzy
 msgid "Can't read data from file"
-msgstr "Não é possível enviar um ficheiro de tamanho zero"
+msgstr "Não é possível ler dados do ficheiro"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:903
 msgid "Can't resolve local host address, using default 127.0.0.1"
@@ -3756,13 +3756,12 @@ msgstr ""
 "O seu URL é inválido. Verifique a ortografia a tente novamente"
 
 #: src/modules/file/libkvifile.cpp:1332
-#, fuzzy
 msgid ""
 "KVIrc is compiled without Crypto++ or OpenSSL support. $file.digest supports "
 "only MD4, MD5 and SHA1."
 msgstr ""
-"O KVIrc está compilado sen suporte Crypto++ ou OpenSSL. $str.digest suporta "
-"apenas MD4, MD5 e SHA1."
+"O KVIrc está compilado sem suporte Crypto++ ou OpenSSL. "
+"$file.digest suporta apenas MD4, MD5 e SHA1."
 
 #: src/modules/str/libkvistr.cpp:1439
 msgid ""
