@@ -7,6 +7,7 @@ SET(TRANSLATION_BASEDIR "src")
 SUBDIRS(
 	about
 	addon
+	classeditor
 	dcc
 	editor
 	filetransferwindow
