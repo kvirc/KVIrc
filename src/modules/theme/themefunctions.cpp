@@ -80,7 +80,6 @@ namespace KviThemeFunctions
 		debug("pValue theme version %s",pValue->toUtf8().data());
 
 		if(!pValue)return notAValidThemePackage(szError);
-		if(!KviQString::equalCI(*pValue,KVI_CURRENT_THEME_ENGINE_VERSION))return notAValidThemePackage(szError);
 
 		// make sure the default fields exist
 		debug("check defaults fields");
