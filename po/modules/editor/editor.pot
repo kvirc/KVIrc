@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-23 23:55+0200\n"
+"POT-Creation-Date: 2010-04-24 10:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -213,6 +213,7 @@ msgstr ""
 
 #: src/modules/actioneditor/actioneditor.cpp:692
 #: src/modules/aliaseditor/aliaseditor.cpp:809
+#: src/modules/classeditor/classeditor.cpp:1028
 #: src/modules/editor/scripteditor.cpp:843
 #: src/modules/eventeditor/eventeditor.cpp:446
 #: src/modules/eventeditor/eventeditor.cpp:487
@@ -226,6 +227,7 @@ msgstr ""
 
 #: src/modules/actioneditor/actioneditor.cpp:717
 #: src/modules/aliaseditor/aliaseditor.cpp:820
+#: src/modules/classeditor/classeditor.cpp:1039
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:491
 #: src/modules/popupeditor/popupeditor.cpp:1127
@@ -245,6 +247,9 @@ msgstr ""
 #: src/modules/aliaseditor/aliaseditor.cpp:721
 #: src/modules/aliaseditor/aliaseditor.cpp:789
 #: src/modules/aliaseditor/aliaseditor.cpp:820
+#: src/modules/classeditor/classeditor.cpp:939
+#: src/modules/classeditor/classeditor.cpp:1009
+#: src/modules/classeditor/classeditor.cpp:1039
 #: src/modules/editor/scripteditor.cpp:528
 #: src/modules/eventeditor/eventeditor.cpp:491
 #: src/modules/popupeditor/popupeditor.cpp:1127
@@ -275,6 +280,7 @@ msgstr ""
 
 #: src/modules/actioneditor/actioneditor.cpp:874
 #: src/modules/aliaseditor/aliaseditor.cpp:1195
+#: src/modules/classeditor/classeditor.cpp:1578
 #: src/modules/editor/scripteditor.cpp:532
 #: src/modules/eventeditor/eventeditor.cpp:515
 #: src/modules/popupeditor/popupeditor.cpp:1320
@@ -292,11 +298,17 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:141
 #: src/modules/aliaseditor/aliaseditor.cpp:514
+#: src/modules/classeditor/classeditor.cpp:169
+#: src/modules/classeditor/classeditor.cpp:180
+#: src/modules/classeditor/classeditor.cpp:185
+#: src/modules/classeditor/classeditor.cpp:658
 #: src/modules/eventeditor/eventeditor.cpp:368
 msgid "No item selected"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:142
+#: src/modules/classeditor/classeditor.cpp:170
+#: src/modules/classeditor/classeditor.cpp:186
 msgid "Rename"
 msgstr ""
 
@@ -316,6 +328,7 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:337
 #: src/modules/aliaseditor/aliaseditor.cpp:524
+#: src/modules/classeditor/classeditor.cpp:670
 msgid "Namespace"
 msgstr ""
 
@@ -328,10 +341,12 @@ msgid "Please enter the new name for the alias"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:429
+#: src/modules/classeditor/classeditor.cpp:568
 msgid "Rename Namespace"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:429
+#: src/modules/classeditor/classeditor.cpp:568
 msgid "Please enter the new name for the namespace"
 msgstr ""
 
@@ -341,6 +356,9 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:442
 #: src/modules/aliaseditor/aliaseditor.cpp:454
+#: src/modules/classeditor/classeditor.cpp:448
+#: src/modules/classeditor/classeditor.cpp:500
+#: src/modules/classeditor/classeditor.cpp:585
 msgid "This name is already in use. Please choose another one."
 msgstr ""
 
@@ -354,10 +372,19 @@ msgstr ""
 #: src/modules/aliaseditor/aliaseditor.cpp:1072
 #: src/modules/aliaseditor/aliaseditor.cpp:1086
 #: src/modules/aliaseditor/aliaseditor.cpp:1097
+#: src/modules/classeditor/classeditor.cpp:449
+#: src/modules/classeditor/classeditor.cpp:501
+#: src/modules/classeditor/classeditor.cpp:579
+#: src/modules/classeditor/classeditor.cpp:586
+#: src/modules/classeditor/classeditor.cpp:1273
+#: src/modules/classeditor/classeditor.cpp:1286
+#: src/modules/classeditor/classeditor.cpp:1300
+#: src/modules/classeditor/classeditor.cpp:1311
 msgid "Ok, Let me try again..."
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:453
+#: src/modules/classeditor/classeditor.cpp:584
 msgid "Namespace already exists"
 msgstr ""
 
@@ -368,22 +395,28 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:564
 #: src/modules/aliaseditor/aliaseditor.cpp:1130
+#: src/modules/classeditor/classeditor.cpp:731
+#: src/modules/classeditor/classeditor.cpp:1354
 msgid "Add Namespace"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:574
+#: src/modules/classeditor/classeditor.cpp:759
 msgid "Remove Selected"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:582
+#: src/modules/classeditor/classeditor.cpp:767
 msgid "Export Selected..."
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:588
+#: src/modules/classeditor/classeditor.cpp:773
 msgid "Export Selected in singles files..."
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:595
+#: src/modules/classeditor/classeditor.cpp:780
 msgid "Export All..."
 msgstr ""
 
@@ -411,23 +444,29 @@ msgid "Alias Export"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:721
+#: src/modules/classeditor/classeditor.cpp:939
 msgid "There is no selection!"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:727
+#: src/modules/classeditor/classeditor.cpp:945
 msgid "Choose a Directory - KVIrc"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:747
+#: src/modules/classeditor/classeditor.cpp:965
 msgid "The file \"%Q\" exists. Do you want to replace it ?"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:748
+#: src/modules/classeditor/classeditor.cpp:966
 msgid "Replace file"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:748
 #: src/modules/aliaseditor/aliaseditor.cpp:931
+#: src/modules/classeditor/classeditor.cpp:966
+#: src/modules/classeditor/classeditor.cpp:1158
 #: src/modules/toolbareditor/toolbareditor.cpp:379
 #: src/modules/toolbareditor/toolbareditor.cpp:402
 msgid "Yes"
@@ -435,17 +474,22 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:748
 #: src/modules/aliaseditor/aliaseditor.cpp:931
+#: src/modules/classeditor/classeditor.cpp:966
+#: src/modules/classeditor/classeditor.cpp:1158
 msgid "Yes to All"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:748
 #: src/modules/aliaseditor/aliaseditor.cpp:931
+#: src/modules/classeditor/classeditor.cpp:966
+#: src/modules/classeditor/classeditor.cpp:1158
 #: src/modules/toolbareditor/toolbareditor.cpp:378
 #: src/modules/toolbareditor/toolbareditor.cpp:403
 msgid "No"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:789
+#: src/modules/classeditor/classeditor.cpp:1009
 msgid "The exported file would be empty: cowardly refusing to write it"
 msgstr ""
 
@@ -459,6 +503,7 @@ msgid "Do you really want to remove the alias \"%Q\" ?"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:925
+#: src/modules/classeditor/classeditor.cpp:1150
 msgid "Do you really want to remove the namespace \"%Q\" ?"
 msgstr ""
 
@@ -467,6 +512,7 @@ msgid "Please note that all the children items will be deleted too."
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:931
+#: src/modules/classeditor/classeditor.cpp:1158
 msgid "Remove item"
 msgstr ""
 
@@ -500,31 +546,39 @@ msgid "Found an empty namespace in alias name"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1057
+#: src/modules/classeditor/classeditor.cpp:1271
 msgid "Missing Namespace Name"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1058
+#: src/modules/classeditor/classeditor.cpp:1272
 msgid "You must specify a valid name for the namespace"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1070
 #: src/modules/aliaseditor/aliaseditor.cpp:1084
 #: src/modules/aliaseditor/aliaseditor.cpp:1095
+#: src/modules/classeditor/classeditor.cpp:1284
+#: src/modules/classeditor/classeditor.cpp:1298
+#: src/modules/classeditor/classeditor.cpp:1309
 msgid "Bad Namespace Name"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1071
+#: src/modules/classeditor/classeditor.cpp:1285
 msgid ""
 "Namespace names can contain only letters, digits, underscores and '::' "
 "namespace separators"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1085
+#: src/modules/classeditor/classeditor.cpp:1299
 msgid ""
 "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1096
+#: src/modules/classeditor/classeditor.cpp:1310
 msgid "Found an empty namespace in namespace name"
 msgstr ""
 
@@ -533,6 +587,7 @@ msgid "Please enter the name for the new alias"
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1130
+#: src/modules/classeditor/classeditor.cpp:1354
 msgid "Please enter the name for the new namespace"
 msgstr ""
 
@@ -554,6 +609,167 @@ msgstr ""
 #: src/modules/popupeditor/popupeditor.cpp:1315
 #: src/modules/raweditor/raweditor.cpp:483
 msgid "&Apply"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:121
+#: src/modules/classeditor/classeditor.cpp:684
+msgid "Class"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:174
+msgid "Edit the class or namespace name"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:190
+msgid "Edit the function member name"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:447
+msgid "Function already exists"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:499
+msgid "Class already exists"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:577
+msgid "Name already exists as Class name"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:578
+msgid "This name is already in use as Class name. Please choose another one."
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:690
+msgid "Inherits Class"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:696
+msgid "Member Function:"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:738
+msgid "Add Class"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:746
+msgid "Add Member Function"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:788
+msgid "Find In Classes..."
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:794
+msgid "Collapse All Items"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:836
+msgid "Find In Classes"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:837
+msgid ""
+"Please enter the text to be searched for. The matching function will be "
+"highlighted."
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:939
+#: src/modules/classeditor/classeditor.cpp:1009
+msgid "Class Export"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1039
+msgid "Unable to write to the class file."
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1148
+msgid "Do you really want to remove the class \"%Q\" ?"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1152
+msgid ""
+"Please note that all the children classes/functions will be deleted too."
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1154
+msgid "Do you really want to remove the function \"%Q\" ?"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1437
+msgid "Unable to compile class: "
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1443
+msgid "These Inherited classes will be not compiled too:"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1452
+msgid "Compilation error - KVIrc"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1561
+msgid "Class Editor"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1568
+msgid "&Build"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1573
+msgid "&Save"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1644
+msgid "Please enter the name for the class:"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1656
+msgid "Class names can contain only letters, digits and underscores"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1665
+msgid ""
+"In rename mode class names can contain only letters, digits and underscores "
+"and namespaces :: separator"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1674
+msgid "Inherits Class:"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1714
+msgid "&Create Class"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1717
+msgid "&Rename Class"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1721
+#: src/modules/classeditor/classeditor.cpp:1807
+#: src/modules/editor/scripteditor.cpp:995
+msgid "&Cancel"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1763
+msgid "Please enter the name for the member function:"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1772
+msgid "Function names can contain only letters, digits and underscores"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1783
+msgid "Set as <b>Internal</b> Function: "
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1800
+msgid "&Add"
+msgstr ""
+
+#: src/modules/classeditor/classeditor.cpp:1801
+msgid "&Rename"
 msgstr ""
 
 #: src/modules/editor/scripteditor.cpp:249
@@ -670,10 +886,6 @@ msgstr ""
 
 #: src/modules/editor/scripteditor.cpp:990
 msgid "&Replace in all Aliases"
-msgstr ""
-
-#: src/modules/editor/scripteditor.cpp:995
-msgid "&Cancel"
 msgstr ""
 
 #: src/modules/eventeditor/eventeditor.cpp:104

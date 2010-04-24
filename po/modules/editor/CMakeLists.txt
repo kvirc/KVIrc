@@ -2,6 +2,7 @@
 # Includes:
 # src/modules/actioneditor
 # src/modules/aliaseditor
+# src/modules/classeditor
 # src/modules/editor
 # src/modules/eventeditor
 # src/modules/popupeditor
@@ -15,6 +16,7 @@ SET(POTFILE editor.pot)
 SET(XGETTEXT_SOURCESDIR)
 LIST(APPEND XGETTEXT_SOURCESDIR ${CMAKE_SOURCE_DIR}/src/modules/actioneditor)
 LIST(APPEND XGETTEXT_SOURCESDIR ${CMAKE_SOURCE_DIR}/src/modules/aliaseditor)
+LIST(APPEND XGETTEXT_SOURCESDIR ${CMAKE_SOURCE_DIR}/src/modules/classeditor)
 LIST(APPEND XGETTEXT_SOURCESDIR ${CMAKE_SOURCE_DIR}/src/modules/editor)
 LIST(APPEND XGETTEXT_SOURCESDIR ${CMAKE_SOURCE_DIR}/src/modules/eventeditor)
 LIST(APPEND XGETTEXT_SOURCESDIR ${CMAKE_SOURCE_DIR}/src/modules/popupeditor)
