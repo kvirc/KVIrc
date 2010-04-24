@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-24 10:36+0200\n"
-"PO-Revision-Date: 2010-03-21 14:57+0100\n"
+"PO-Revision-Date: 2010-04-24 19:57+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -345,7 +345,6 @@ msgstr ""
 "›default‹- oder ›break‹-Label erwartet wurde"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1595
-#, fuzzy
 msgid ""
 "Found character %q (unicode %x) where a 'prologue', 'separator', 'label', "
 "'popup', 'item', 'extpopup' or 'epilogue' label was expected"
@@ -445,7 +444,6 @@ msgstr ""
 "›break‹-Label erwartet wurde"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1845
-#, fuzzy
 msgid ""
 "Found token '%Q' where a 'prologue', 'separator', 'label', 'popup', 'item', "
 "'extpopup' or 'epilogue' label was expected"
@@ -945,9 +943,8 @@ msgstr ""
 "ersten Parameter"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1208
-#, fuzzy
 msgid "The 'foreach' command needs an expression enclosed in parenthesis"
-msgstr "Der ›for‹-Befehl benötigt einen Ausdruck in runden Klammern"
+msgstr "Der ›foreach‹-Befehl benötigt einen Ausdruck in runden Klammern"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:312
 msgid "The 'global' command needs a variable list"
@@ -1192,7 +1189,7 @@ msgid "The popup '%s' is actually locked: 'self-modifications' are not allowed"
 msgstr "Das Popup ›%s‹ gesperrt: Selbstmodifikation ist nicht erlaubt"
 
 #: src/kvirc/kvs/kvi_kvs_object.cpp:1131
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The property is of type %s but the supplied argument can't be converted to "
 "that type (expecting '%s')"
