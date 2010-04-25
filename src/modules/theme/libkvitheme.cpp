@@ -129,6 +129,50 @@ static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 	return true;
 }
 /*
+	@doc: theme.info
+	@type:
+		function
+	@title:
+		theme.info
+	@short:
+		Return info about a theme.
+	@syntax:
+		<themes_list:string> $theme.info(<theme_name:string>)
+	@description:
+		Returns as hash the info about a theme.
+		Hash keys are: name, version, author, description.
+*/
+static bool theme_kvs_fnc_info(KviKvsModuleFunctionCall * c)
+{
+	QString szThemePackFile;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("package_name",KVS_PT_STRING,0,szThemePackFile)
+	KVSM_PARAMETERS_END(c)
+	QString szDir;
+	g_pApp->getLocalKvircDirectory(szDir,KviApp::Themes);
+	szDir += KVI_PATH_SEPARATOR_CHAR;
+	szDir += szThemePackFile;
+	KviThemeInfo * themeInfo = new KviThemeInfo();
+	if(themeInfo->loadFromDirectory(szDir))
+	{
+		KviKvsHash *pHash=new KviKvsHash();
+		KviKvsVariant *name=new KviKvsVariant(themeInfo->name());
+		pHash->set("name",name);
+		KviKvsVariant *version=new KviKvsVariant(themeInfo->version());
+		pHash->set("version",version);
+		KviKvsVariant *author=new KviKvsVariant(themeInfo->author());
+		pHash->set("author",author);
+		KviKvsVariant *description=new KviKvsVariant(themeInfo->description());
+		pHash->set("description",description);
+		c->returnValue()->setHash(pHash);
+		return true;
+	}
+	c->warning(__tr2qs_ctx("The theme package  %Q does not exists","theme"),&szThemePackFile);
+	return true;
+}
+
+/*
 	@doc: theme.list
 	@type:
 		function
@@ -238,6 +282,8 @@ static bool theme_module_init(KviModule *m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"screenshot",theme_kvs_cmd_screenshot);
 
 	KVSM_REGISTER_FUNCTION(m,"list",theme_kvs_fnc_list);
+	KVSM_REGISTER_FUNCTION(m,"info",theme_kvs_fnc_info);
+
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);
 	KviConfig cfg(szBuf,KviConfig::Read);
