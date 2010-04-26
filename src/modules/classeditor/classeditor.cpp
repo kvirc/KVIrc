@@ -347,49 +347,70 @@ void KviClassEditor::oneTimeSetup()
 	sl = d.entryList(QStringList(extension), QDir::Files | QDir::NoDotAndDotDot);
 	KviKvsObjectClass *pClass;
 	KviClassEditorTreeWidgetItem *pClassItem;
+	g_pModuleManager->getModule("objects");
+	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
+	KviPointerList <KviKvsObjectClass> pList;
+	QString szClassName;
+	while(KviKvsObjectClass * pClass=it.current())
+	{
+		if (pClass->isBuiltin())m_pClasses->insert(it.currentKey(),0);
+		else
+		{
+			szClassName=it.currentKey();
+			if (sl.indexOf(szClassName)==-1)
+			{
+				pClassItem = createFullItem(szClassName);
+				createFullClass(it.current(),pClassItem,szClassName);
+			}
+		}
+		++it;
+	}
+
 	for(int i=0;i<sl.count();i++)
 	{
-		QString szClassName=sl.at(i);
+		szClassName=sl.at(i);
 		szClassName.replace("--","::");
 		szClassName.chop(4);
 		pClassItem = createFullItem(szClassName);
 		pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
-		KviClassEditorTreeWidgetItem *pFunctionItem;
-		if (pClass)
-		{
-			KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
-			m_pClasses->insert(szClassName,pClassItem);
-			KviKvsObjectClass *pParentClass=pClass->parentClass();
-			pClassItem->setInheritsClass(pParentClass->name());
-			while(it.current())
-			{
-				QString szCode;
-				KviKvsObjectFunctionHandler *handler=pClass->lookupFunctionHandler(it.currentKey());
-				if (pClass->isScriptHandler(it.currentKey()))
-				{
-					pFunctionItem=findFunction(it.currentKey(), pClassItem);
-					if(!pFunctionItem) pFunctionItem = new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,it.currentKey());
-					pClass->getFunctionCode(szCode,*handler);
-					pFunctionItem->setBuffer(szCode);
-					if(handler->flags() & KviKvsObjectFunctionHandler::Internal) pFunctionItem->setInternalFunction(true);
-				}
-				++it;
-			}
-		}
+		if (pClass) createFullClass(pClass, pClassItem, szClassName);
 	}
-
-	g_pModuleManager->getModule("objects");
-	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
-	while(KviKvsObjectClass * pClass=it.current())
+/*	for(int i=0;i<pList.count();i++)
 	{
-		if (pClass->isBuiltin())m_pClasses->insert(it.currentKey(),0);
-		++it;
-	}
+		szClassName=pList.at(i)->name();
+		pClassItem = createFullItem(szClassName);
+		createFullClass(pList.at(i),pClassItem,szClassName);
+	}*/
+
 	loadNotBuiltClasses();
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(customContextMenuRequested(const QPoint &)));
 }
+void KviClassEditor::createFullClass(KviKvsObjectClass *pClass, KviClassEditorTreeWidgetItem *pClassItem, const QString &szClassName)
+{
+	KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
+	KviClassEditorTreeWidgetItem *pFunctionItem;
+	m_pClasses->insert(szClassName,pClassItem);
+	KviKvsObjectClass *pParentClass=pClass->parentClass();
+	pClassItem->setInheritsClass(pParentClass->name());
+	while(it.current())
+	{
+		QString szCode;
+		KviKvsObjectFunctionHandler *handler=pClass->lookupFunctionHandler(it.currentKey());
+		if (pClass->isScriptHandler(it.currentKey()))
+		{
+			pFunctionItem=findFunction(it.currentKey(), pClassItem);
+			if(!pFunctionItem) pFunctionItem = new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,it.currentKey());
+			pClass->getFunctionCode(szCode,*handler);
+			pFunctionItem->setBuffer(szCode);
+			if(handler->flags() & KviKvsObjectFunctionHandler::Internal) pFunctionItem->setInternalFunction(true);
+		}
+		++it;
+	}
+
+}
+
 
 /*
 void KviClassEditor::classRefresh(const QString & szName)

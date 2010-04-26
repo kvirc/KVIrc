@@ -29,7 +29,7 @@
 #include "kvi_pointerlist.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_heapobject.h"
-
+#include "kvi_kvs_object_class.h"
 
 #include <QWidget>
 #include <QComboBox>
@@ -168,6 +168,8 @@ protected:
 	void getExportClassBuffer(QString &buffer,KviClassEditorTreeWidgetItem * it);
 
 	void oneTimeSetup();
+	void createFullClass(KviKvsObjectClass *pClass, KviClassEditorTreeWidgetItem *pItemClass, const QString &szClassName);
+
 	void saveLastEditedItem();
 	void appendSelectedClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
 	void appendSelectedClassItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
