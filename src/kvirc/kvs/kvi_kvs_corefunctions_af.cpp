@@ -5,6 +5,7 @@
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright ©        2010 Kai Wasserbäch <debian@carbon-project.org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -36,9 +37,13 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_avatar.h"
 #include "kvi_ircuserdb.h"
-#include "kvi_time.h"
 #include "kvi_frame.h"
 #include "kvi_statusbar.h"
+
+// date includes
+#include <QDateTime>
+#include <QString>
+#include <QChar>
 
 
 namespace KviKvsCoreFunctions
@@ -740,13 +745,7 @@ namespace KviKvsCoreFunctions
 			[tr][td][b]D[/b][/td][td]Equivalent to m/d/y.[/td][/tr]
 			[tr][td][b]e[/b][/td][td]Like d, the day of the month as a decimal number, but a leading
 			zero is replaced by a space. (SU)[/td][/tr]
-			[tr][td][b]E[/b][/td][td]Modifier: use alternative format, see below. (SU)[/td][/tr]
 			[tr][td][b]F[/b][/td][td]Equivalent to Y-m-d (the ISO 8601 date format). (C99)[/td][/tr]
-			[tr][td][b]G[/b][/td][td]The ISO 8601 year with century as a decimal number. The 4-digit
-			year corresponding  to the ISO week number (see V). This has the
-			same format and value as y, except that if the ISO week number
-			belongs to the previous or next year, that year is used instead.[/td][/tr]
-			[tr][td][b]g[/b][/td][td]Like G, but without century, i.e., with a 2-digit year (00-99).[/td][/tr]
 			[tr][td][b]h[/b][/td][td]Equivalent to b.[/td][/tr]
 			[tr][td][b]H[/b][/td][td]The hour as a decimal number using a 24-hour clock (range 00 to 23).[/td][/tr]
 			[tr][td][b]I[/b][/td][td]The hour as a decimal number using a 12-hour clock (range 01 to 12).[/td][/tr]
@@ -770,8 +769,6 @@ namespace KviKvsCoreFunctions
 			[tr][td][b]T[/b][/td][td]The time in 24-hour notation (H:M:S). (SU)[/td][/tr]
 			[tr][td][b]u[/b][/td][td]The day of the week as a decimal, range 1 to  7,  Monday  being  1.
 			See also w.[/td][/tr]
-			[tr][td][b]U[/b][/td][td]The week number of the current year as a decimal number, range 00
-			to 53, starting with the first Sunday as the first day of week  01. See also V and W.[/td][/tr]
 			[tr][td][b]V[/b][/td][td]The ISO 8601:1988 week number of the current year as a decimal num-
 			ber, range 01 to 53, where week 1 is the first  week  that  has  at
 			least  4 days in the current year, and with Monday as the first day
@@ -779,25 +776,20 @@ namespace KviKvsCoreFunctions
 			[tr][td][b]w[/b][/td][td]The day of the week as a decimal, range 0 to  6,  Sunday  being  0.[/td][/tr]
 			[tr][td][b]W[/b][/td][td]The week number of the current year as a decimal number, range 00
 			to 53, starting with the first Monday as the first day of week  01.[/td][/tr]
-			[tr][td][b]x[/b][/td][td]The  preferred  date  representation for the current locale without
-			the time.[/td][/tr]
-			[tr][td][b]X[/b][/td][td]The preferred time representation for the  current  locale  without
-			the date.[/td][/tr]
 			[tr][td][b]y[/b][/td][td]The year as a decimal number without a century (range 00 to 99).[/td][/tr]
 			[tr][td][b]Y[/b][/td][td]The year as a decimal number including the century.[/td][/tr]
 			[tr][td][b]z[/b][/td][td]The   time-zone   as  hour  offset  from  GMT.   Required  to  emit
               RFC822-conformant dates (using "a, d b Y H:M:S z").[/td][/tr]
-			[tr][td][b]Z[/b][/td][td]The time zone or name or abbreviation.[/td][/tr]
-			[tr][td][b]+[/b][/td][td]The date and time in date(1) format. (TZ)[/td][/tr]
+			[tr][td][b]Z[/b][/td][td]The time zone or name or abbreviation (not implemented yet).[/td][/tr]
 			[/table]
-			WARNING: Please note that this list is taken from the unix version of the strftime
-			function and not all the escape codes may be supported by other platforms.
 		@examples:
 			[example]
 				[cmd]echo[/cmd] $date("d/m/Y H:M:S")
 			[/example]
 		@seealso:
 			[fnc]$unixtime[/fnc], [fnc]$hptimestamp[/fnc]
+        @author:
+            Kai Wasserbäch <debian@carbon-project.org>
 	*/
 
 	KVSCF(date)
@@ -809,47 +801,194 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("unixtime",KVS_PT_INT,KVS_PF_OPTIONAL,iTime)
 		KVSCF_PARAMETERS_END
 
-		KviStr tmpFormat("");
+        // strftime() is not sufficient, as shown by #769, the following is
+        // derived from KDateTime (not a copy, but the structure is similar,
+        // which isn't surprising), but limited/extended to the required set of
+        // functionality.
+        // The reason for this is platform independency.
+        QDateTime qDt;
+        QString szFmtTime;
+        int iLength, iVal, temp;
+        QChar cDiv;
+        qint8 localTz, utc, tzOffset;
 
-		#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-			QString szAllowedCharacters;
-			//windows version of strftime()
-			//kvirc crashes if other then these characters get an % character in front of them
-			szAllowedCharacters = "AaBbcdHIjMmpSUWwXxYyZz";
-		#endif
+        if(KVSCF_pParams->count() > 1)
+                qDt.setTime_t(iTime);
+        else
+                qDt = QDateTime::currentDateTime();
 
-		const QChar * c = KviQString::nullTerminatedArray(szFormat);
-		if(c)
-		{
-			while(c->unicode())
-			{
-				//Check for right Characters
-				#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-					if (szAllowedCharacters.indexOf((char)(c->unicode()),0,Qt::CaseSensitive) >= 0)	tmpFormat += '%';
-				#else
-					if (c->isLetter()) tmpFormat += '%';
-				#endif
-				tmpFormat += (char)(c->unicode());
-				c++;
-			}
-		}
+        if(!qDt.isValid()) {
+			KVSCF_pContext->warning(__tr2qs_ctx("Couldn't construct QDateTime object.","kvs"));
+            goto leavenow;
+        }
 
-		kvi_time_t t;
-		if(KVSCF_pParams->count() > 1)
-			t = (kvi_time_t)iTime;
-		else
-			t = kvi_unixTime();
+        for(int i = 0; i < szFormat.size(); i++) {
+                ushort ch = szFormat.at(i).unicode();
+                iLength = 2;
+                iVal = 0x8000000;
+                cDiv = ' ';
 
-		char buf[256];
-		if(strftime(buf,255,tmpFormat.ptr(),localtime(&t))> 0)
-		{
-			KviStr tmp = buf;
-			if(tmp.lastCharIs('\n'))tmp.cutRight(1);
-			KVSCF_pRetBuffer->setString(QString(buf));
-		} else {
-			KVSCF_pContext->warning(__tr2qs_ctx("The specified format string wasn't accepted by the underlying system time formatting function","kvs"));
-		}
+                switch(ch) {
+                        // FIXME: G, g, U, x, X, Z not implemented yet.
+                        //
+                        // E and O probably never will be implemented.
+                        case 'a':   // the abbreviated localized day name (e.g.
+                                    // 'Mon' to 'Sun'). Uses
+                                    // QDate::shortDayName().
+                            szFmtTime += qDt.toString("ddd");
+                            break;
+                        case 'A':   // the long localized day name (e.g.
+                                    // 'Monday' to 'Qt::Sunday'). Uses
+                                    // QDate::longDayName().
+                            szFmtTime += qDt.toString("dddd");
+                            break;
+                        case 'b':   // the abbreviated localized month name
+                        case 'h':   // (e.g. 'Jan' to 'Dec'). Uses
+                                    // QDate::shortMonthName().
+                            szFmtTime += qDt.toString("MMM");
+                            break;
+                        case 'B':   // the long localized month name (e.g.
+                                    // 'January' to 'December'). Uses
+                                    // QDate::longMonthName().
+                            szFmtTime += qDt.toString("MMMM");
+                            break;
+                        case 'c':   // If the format is Qt::TextDate, the string
+                                    // is formatted in the default way.
+                            szFmtTime += qDt.toString(Qt::TextDate);
+                            break;
+                        case 'C':   // 2-digit "century" (yyyy/100)
+                            iVal = qDt.date().year() / 100;
+                            break;
+                        case 'd':   // the day as number with a leading zero
+                                    // (01 to 31)
+                            cDiv = '0';
+                            // break omitted on purpose, NEXT MUST BE 'e'
+                        case 'e':   // 2-character wide day representation,
+                                    // space padded
+                            iVal = qDt.date().day();
+                            break;
+                        case 'D':   // American formatting
+                            szFmtTime += qDt.toString("MM/dd/yy");
+                            break;
+                        case 'F':   // yyyy-MM-dd (ISO 8601)
+                            szFmtTime += qDt.date().toString(Qt::ISODate);
+                            break;
+                        case 'H':   // the hour with a leading zero (00 to 23)
+                            cDiv = '0';
+                            // no break; on purpose (NEXT MUST BE case 'k')
+                        case 'k':   // same as H, only that single-character values
+                                    // are prefixed with a space
+                            iVal = qDt.time().hour();
+                            break;
+                        case 'I':   // hour, 01 - 12
+                            cDiv = '0';
+                            // fall through to 'l'
+                        case 'l':   // hour, 1 - 12
+                            iVal = (qDt.time().hour() + 11) % 12 + 1;
+                            break;
+                        case 'j':   // day of the year (001 to 365/366)
+                            iVal = qDt.date().dayOfYear();
+                            iLength = 3;
+                            cDiv = '0';
+                            break;
+                        case 'M':   // minutes (00 to 59)
+                            szFmtTime += qDt.toString("mm");
+                            break;
+                        case 'm':   // month (01-12)
+                            szFmtTime += qDt.toString("MM");
+                            break;
+                        case 'n':   // newline
+                            szFmtTime += "\n";
+                            break;
+                        case 'p':   // AM/PM
+                                    // FIXME: l10n for the am/pm? Maybe we can
+                                    //        draw it from a different source?
+                                    //        Qt doesn't offer l10n strings
+                                    //        for this.
+                            if(qDt.time().hour() < 12)
+                                    szFmtTime += "AM";
+                            else
+                                    szFmtTime += "PM";
+                            break;
+                        case 'P':   // am/pm, the same FIXME as for p applies.
+                            if(qDt.time().hour() < 12)
+                                    szFmtTime += "am";
+                            else
+                                    szFmtTime += "pm";
+                            break;
+                        case 'r':   // "I:M:S p"
+                            szFmtTime += qDt.toString("hh:mm:ss AP");
+                            break;
+                        case 'R':   // "H:M"
+                            szFmtTime += qDt.toString("hh:mm");
+                            break;
+                        case 's':   // seconds since epoch (currently 1970-01-01 00:00:00 UTC)
+                            szFmtTime += QString::number(qDt.toTime_t());
+                            break;
+                        case 'S':   // seconds (00-60)
+                            cDiv = '0';
+                            iVal = qDt.time().second();
+                            break;
+                        case 't':   // Tab
+                            szFmtTime += "\t";
+                            break;
+                        case 'T':   // H:M:S
+                            szFmtTime += qDt.toString("hh:mm:ss");
+                            break;
+                        case 'u':   // day of the week (1-7)
+                            iVal = qDt.date().dayOfWeek();
+                            iLength = 1;
+                            break;
+                        case 'V':   // week of the year (ISO 8601)
+                        case 'W':   // W is not entirely correct, but that's a
+                                    // lot easier this way.
+                            iVal = qDt.date().weekNumber();
+                            cDiv = '0';
+                            break;
+                        case 'w':   // day of week (0-6, 0==Sunday)
+                            temp = qDt.date().dayOfWeek();
+                            if(temp == Qt::Sunday)
+                                    temp = 0;
+                            szFmtTime += QString::number(temp);
+                            break;
+                        case 'y':   // year (2-character)
+                            szFmtTime += qDt.toString("yy");
+                            break;
+                        case 'Y':   // year (4-character)
+                            szFmtTime += qDt.toString("yyyy");
+                            break;
+                        case 'z':   // numerical timezone offset
+                            localTz = qDt.toString("hhmm").toInt();
+                            utc = qDt.toUTC().toString("hhmm").toInt();
+                            tzOffset = localTz - utc;
 
+                            if(tzOffset > 0)
+                                    szFmtTime += "+";
+
+                            szFmtTime += tzOffset;
+                            break;
+                        // FIXME
+                        // The abbrev. time zone name is a little bit trickier,
+                        // as I don't want to reimplement KTimeZone, but can't
+                        // use KTimeZone. I'll need to do some research on this.
+                        //case 'Z':   // TZ abbrev.
+                        //    szFmtTime += 
+                        default:
+                            szFmtTime += szFormat.at(i);
+                }
+
+                if(iVal != 0x8000000) {
+                        if(iVal < 0) {
+                                iVal = -iVal;
+                                szFmtTime += "-";
+                        }
+                        szFmtTime += QString("%1").arg(iVal, iLength, 10, cDiv);
+                }
+        }
+	    
+        KVSCF_pRetBuffer->setString(szFmtTime);
+
+        leavenow:
 		return true;
 	}
 
