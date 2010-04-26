@@ -808,9 +808,9 @@ namespace KviKvsCoreFunctions
         // The reason for this is platform independency.
         QDateTime qDt;
         QString szFmtTime;
-        int iLength, iVal, temp;
+        int iLength, iVal, iTemp, iLocalTzH, iLocalTzM, iUtcH, iUtcM, iTzOffset;
+        int iTzOffsetH, iTzOffsetM;
         QChar cDiv;
-        qint8 localTz, utc, tzOffset;
 
         if(KVSCF_pParams->count() > 1)
                 qDt.setTime_t(iTime);
@@ -946,10 +946,10 @@ namespace KviKvsCoreFunctions
                             cDiv = '0';
                             break;
                         case 'w':   // day of week (0-6, 0==Sunday)
-                            temp = qDt.date().dayOfWeek();
-                            if(temp == Qt::Sunday)
-                                    temp = 0;
-                            szFmtTime += QString::number(temp);
+                            iTemp = qDt.date().dayOfWeek();
+                            if(iTemp == Qt::Sunday)
+                                    iTemp = 0;
+                            szFmtTime += QString::number(iTemp);
                             break;
                         case 'y':   // year (2-character)
                             szFmtTime += qDt.toString("yy");
@@ -958,14 +958,18 @@ namespace KviKvsCoreFunctions
                             szFmtTime += qDt.toString("yyyy");
                             break;
                         case 'z':   // numerical timezone offset
-                            localTz = qDt.toString("hhmm").toInt();
-                            utc = qDt.toUTC().toString("hhmm").toInt();
-                            tzOffset = localTz - utc;
+                            iLocalTzH = qDt.time().hour();
+                            iLocalTzM = qDt.time().minute();
+                            iUtcH     = qDt.toUTC().time().hour();
+                            iUtcM     = qDt.toUTC().time().minute();
+                            iTzOffsetH = iLocalTzH - iUtcH;
+                            iTzOffsetM = iLocalTzM - iUtcM;
+                            iTzOffset = iTzOffsetH * 100 + iTzOffsetM;
 
-                            if(tzOffset > 0)
+                            if(iTzOffset > 0)
                                     szFmtTime += "+";
 
-                            szFmtTime += tzOffset;
+                            szFmtTime += QString("%1").arg(iTzOffset, 4, 10, QChar('0'));
                             break;
                         // FIXME
                         // The abbrev. time zone name is a little bit trickier,
