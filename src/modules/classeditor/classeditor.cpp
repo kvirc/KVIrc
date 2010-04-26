@@ -349,16 +349,22 @@ void KviClassEditor::oneTimeSetup()
 	KviClassEditorTreeWidgetItem *pClassItem;
 	g_pModuleManager->getModule("objects");
 	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
-	KviPointerList <KviKvsObjectClass> pList;
 	QString szClassName;
 	while(KviKvsObjectClass * pClass=it.current())
 	{
 		if (pClass->isBuiltin())m_pClasses->insert(it.currentKey(),0);
 		else
 		{
-			szClassName=it.currentKey();
-			if (sl.indexOf(szClassName)==-1)
+			QString szTmp;
+			szTmp=it.currentKey();
+			szTmp.replace("::","--");
+			szTmp.append(".kvs");
+			if (sl.indexOf(szTmp)==-1)
 			{
+				//QString szTmp;
+				//szTmp=sl.join(",");
+				szClassName=it.currentKey();
+				//debug("not found %s in %s",szClassName.toUtf8().data(),szTmp.toUtf8().data());
 				pClassItem = createFullItem(szClassName);
 				createFullClass(it.current(),pClassItem,szClassName);
 			}
@@ -375,13 +381,6 @@ void KviClassEditor::oneTimeSetup()
 		pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
 		if (pClass) createFullClass(pClass, pClassItem, szClassName);
 	}
-/*	for(int i=0;i<pList.count();i++)
-	{
-		szClassName=pList.at(i)->name();
-		pClassItem = createFullItem(szClassName);
-		createFullClass(pList.at(i),pClassItem,szClassName);
-	}*/
-
 	loadNotBuiltClasses();
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -1511,7 +1510,6 @@ void KviClassEditor::loadNotBuiltClasses()
 			KviConfigGroupIterator it(*pDict);
 			KviPointerList<QString> names;
 			names.setAutoDelete(true);
-
 			while(it.current())
 			{
 				names.append(new QString(it.currentKey()));
