@@ -361,10 +361,7 @@ void KviClassEditor::oneTimeSetup()
 			szTmp.append(".kvs");
 			if (sl.indexOf(szTmp)==-1)
 			{
-				//QString szTmp;
-				//szTmp=sl.join(",");
 				szClassName=it.currentKey();
-				//debug("not found %s in %s",szClassName.toUtf8().data(),szTmp.toUtf8().data());
 				pClassItem = createFullItem(szClassName);
 				createFullClass(it.current(),pClassItem,szClassName);
 			}
@@ -1087,7 +1084,9 @@ void KviClassEditor::appendSelectedClassItems(KviPointerList<KviClassEditorTreeW
 	QList<QTreeWidgetItem *> list=m_pTreeWidget->selectedItems();
 	for(int i=0;i<list.count();i++)
 	{
-		l->append((KviClassEditorTreeWidgetItem *)list.at(i));
+		if (((KviClassEditorTreeWidgetItem *)list.at(i))->isClass())
+			l->append((KviClassEditorTreeWidgetItem *)list.at(i));
+		else appendSelectedClassItemsRecursive(l,list.at(i));
 	}
 }
 void KviClassEditor::appendSelectedClassItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom)
