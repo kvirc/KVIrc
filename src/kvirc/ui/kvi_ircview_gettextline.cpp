@@ -847,8 +847,26 @@ got_url:
 
 		// These characters are "{", "}", "|", "\", "^", "~", "[", "]", and "`". (RFC1738)
 		while((*p > 32) && (*p != '[') && (*p != '|') && (*p != '{') && (*p != '>') &&
-				(*p != ']')  && (*p != '}') && (*p != '<') && (*p != '"') && (*p != '(') && (*p != ')'))p++;
-
+				(*p != ']')  && (*p != '}') && (*p != '<') && (*p != '"')&& (*p != '(') && (*p != ')'))p++;
+		// Handler for link like: http://it.wikipedia.org/wiki/Pagina_Principale_(mobile)
+		if(*p == '(')
+		{
+			int iCount=1;
+			p++;
+			while(1)
+			{
+				while((*p > 32) && (*p != '[') && (*p != '|') && (*p != '{') && (*p != '>') &&
+					(*p != ']')  && (*p != '}') && (*p != '<') && (*p != '"'))
+				{
+					if (*p=='(') iCount++;
+					else if (*p==')') iCount--;
+					p++;
+					if (!iCount) break;
+				}
+				if ((*p < 32) || (*p == '[') || (*p == '|') || (*p == '{') || (*p == '>') ||
+					(*p == ']')  || (*p == '}') || (*p == '<') || (*p == '"') || (*p == ')')) break;
+			}
+		}
 		if(m_pKviWindow)
 		{
 			QString tmp;
