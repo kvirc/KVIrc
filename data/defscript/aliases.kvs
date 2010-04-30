@@ -512,7 +512,7 @@ alias(hop)
 {
 	// Retrieve channel
 	%chan=$0
-	if(!%chan) %chan=$chan.name($active)
+	if(!%chan) %chan=$chan.name
 
 	// Retrieve channel key
 	if($channel(%chan)!=0)
