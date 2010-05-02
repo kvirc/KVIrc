@@ -40,9 +40,8 @@ KviTorrentStatusBarApplet::KviTorrentStatusBarApplet(KviStatusBar *parent, KviSt
 	timer->setInterval(250);
 	timer->setSingleShot(false);
 	timer->start(250);
-//	updateDisplay();
-//
-	setText("torrent client");
+
+	setText(__tr2qs_ctx("Torrent Client","torrent"));
 }
 
 KviTorrentStatusBarApplet::~KviTorrentStatusBarApplet()
@@ -51,8 +50,9 @@ KviTorrentStatusBarApplet::~KviTorrentStatusBarApplet()
 
 static KviStatusBarApplet *CreateTorrentClientApplet(KviStatusBar *bar, KviStatusBarAppletDescriptor *desc)
 {
-	qDebug("CreateTorrentClientApplet");
-	return new KviTorrentStatusBarApplet(bar, desc);
+	KviStatusBarApplet * pApplet = new KviTorrentStatusBarApplet(bar, desc);
+	pApplet->setIndex(bar->insertPermanentWidgetAtTheEnd(pApplet));
+	return pApplet;
 }
 
 void KviTorrentStatusBarApplet::selfRegister(KviStatusBar *bar)

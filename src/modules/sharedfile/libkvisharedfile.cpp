@@ -64,7 +64,7 @@ extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 		be automatically set to '*!*@*'.[br]
 		If the 't' switch is used, the sharedfile will be removed after
 		<timeout> seconds. If the 'n' switch is used, the sharedfile
-		will be visible to the oter users as <visible name> instead
+		will be visible to the other users as <visible name> instead
 		of the real <filename> (stripped of the leading path).
 		<filename> must be an absolute path.
 	@seealso:
