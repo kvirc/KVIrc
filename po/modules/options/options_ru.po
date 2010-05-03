@@ -8,22 +8,23 @@
 # root <wizard@opendoor.ru>, 2005, 2006.
 # Alexey <wizard@opendoor.ru>, 2005.
 # Alexey Uzhva <alexey at kvirc dot ru>, 2007.
-# Igor "BugSlayer" Govorov <govorov.igor at-sing gmail.com>, 2010.
+# Igor "BugSlayer" Govorov <govorov.igor at-sign gmail.com>, 2010.
 # Alexander Antsev <kagami@crossplatform.ru>, 2010.
+
 msgid ""
 msgstr ""
 "Project-Id-Version: options_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-24 10:36+0200\n"
-"PO-Revision-Date: 2010-01-30 19:09+0300\n"
-"Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
-"Language-Team: Russian <>\n"
+"PO-Revision-Date: 2010-05-03 19:52+0400\n"
+"Last-Translator: Govorov Igor\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 
 #: src/modules/options/optw_avatar.cpp:72
@@ -431,13 +432,12 @@ msgstr ""
 "<b>86400 сек</b></center>"
 
 #: src/modules/options/optw_channel.cpp:122
-#, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 secs</b><br>Maximum value: <b>60 secs</b></"
 "center>"
 msgstr ""
-"<center>Минимальное значение: <b>0 сек</b><br>Максимальное значение: "
-"<b>86400 сек</b></center>"
+"<center>Минимальное значение: <b>0 сек</b><br>Максимальное значение: <b>60 "
+"сек</b></center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:93
 msgid ""
@@ -2121,9 +2121,9 @@ msgid "Cursor color"
 msgstr "Цвет курсора"
 
 #: src/modules/options/optw_away.cpp:53
-#, fuzzy, c-format
+#, c-format
 msgid "Custom nickname (%nick% means a current nick):"
-msgstr "Другой ник( %%nick%% означает текущий ник):"
+msgstr "Другой ник (%nick% означает текущий ник):"
 
 #: src/modules/options/optw_logging.cpp:43
 msgid "DCC Chat windows"
@@ -2319,14 +2319,12 @@ msgid "Enable NickServ Identification"
 msgstr "Включить идентификацию NickServ"
 
 #: src/modules/options/optw_servers.cpp:780
-#, fuzzy
 msgid "Enable SASL authentication"
-msgstr "Включить идентификацию NickServ"
+msgstr "Включить аутентификацию SALS"
 
 #: src/modules/options/optw_servers.cpp:652
-#, fuzzy
 msgid "Enable STARTTLS protocol"
-msgstr "Поддержка протокола STARTTLS"
+msgstr "Разрешить протокол STARTTLS"
 
 #: src/modules/options/optw_ircview.cpp:152
 msgid "Enable URL highlighting"
@@ -2951,9 +2949,8 @@ msgid "Minimum alert level:"
 msgstr "Минимальный уровень предупреждений:"
 
 #: src/modules/options/optw_channel.cpp:120
-#, fuzzy
 msgid "Minimum delay between two requests:"
-msgstr "Задержка между попытками:"
+msgstr "Задержка между запросами:"
 
 #: src/modules/options/optw_tray.cpp:53
 msgid "Minimum level for high-priority message"
@@ -3620,14 +3617,12 @@ msgid "SOURCE"
 msgstr "SOURCE"
 
 #: src/modules/options/optw_servers.cpp:786
-#, fuzzy
 msgid "Sasl Nickname:"
-msgstr "Ник:"
+msgstr "Ник SASL:"
 
 #: src/modules/options/optw_servers.cpp:793
-#, fuzzy
 msgid "Sasl Password:"
-msgstr "Пароль:"
+msgstr "Пароль SASL:"
 
 #: src/modules/options/optw_messages.cpp:414
 msgid "Save As..."
@@ -4219,9 +4214,8 @@ msgid "Use \"smart\" notify list manager"
 msgstr "Использовать \"умный\" менеджер списка уведомлений"
 
 #: src/modules/options/optw_servers.cpp:645
-#, fuzzy
 msgid "Use CAP protocol"
-msgstr "Использовать IPv6 протокол"
+msgstr "Использовать протокол CAP"
 
 #: src/modules/options/optw_servers.cpp:622
 #: src/modules/options/optw_proxy.cpp:129
@@ -4338,9 +4332,8 @@ msgid "Use system URL handlers"
 msgstr "Использовать системные обработчики URL"
 
 #: src/modules/options/optw_connection.cpp:89
-#, fuzzy
 msgid "Use the SASL authentication protocol if available"
-msgstr "Использовать протокол безопасности STARTTLS если возможно"
+msgstr "Использовать протокол аутентификации SASL если возможно"
 
 #: src/modules/options/optw_connection.cpp:129
 msgid "Use the STARTTLS security protocol if available"

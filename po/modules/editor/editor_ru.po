@@ -6,20 +6,21 @@
 # Valeriy Girchenko <valeragir@mail.ru>, 2005.
 # Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010.
 # Alexander Antsev <kagami@crossplatform.ru>, 2010.
+
 msgid ""
 msgstr ""
 "Project-Id-Version: editor_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-24 10:36+0200\n"
-"PO-Revision-Date: 2010-01-30 20:15+0300\n"
-"Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
-"Language-Team: Russian <>\n"
+"PO-Revision-Date: 2010-05-03 19:52+0400\n"
+"Last-Translator: Govorov Igor\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/modules/eventeditor/eventeditor.cpp:393
 #, c-format
@@ -41,13 +42,17 @@ msgstr ""
 "%s"
 
 #: src/modules/raweditor/raweditor.cpp:367
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "\n"
 "\n"
 "Raw Event:\n"
 "%s"
-msgstr "Низкоуровневое событие"
+msgstr ""
+"\n"
+"\n"
+"Низкоуровневое событие:\n"
+"%s"
 
 #: src/modules/popupeditor/popupeditor.cpp:96
 msgid "### Epilogue ###"
@@ -151,14 +156,12 @@ msgid "&Paste Below"
 msgstr "&Вставить снизу"
 
 #: src/modules/classeditor/classeditor.cpp:1801
-#, fuzzy
 msgid "&Rename"
 msgstr "Переименовать"
 
 #: src/modules/classeditor/classeditor.cpp:1717
-#, fuzzy
 msgid "&Rename Class"
-msgstr "Переименовать алиас"
+msgstr "Переименовать класс"
 
 #: src/modules/editor/scripteditor.cpp:250
 #: src/modules/editor/scripteditor.cpp:1000
@@ -170,9 +173,8 @@ msgid "&Replace in all Aliases"
 msgstr "Заменить во всех алиасах"
 
 #: src/modules/classeditor/classeditor.cpp:1573
-#, fuzzy
 msgid "&Save"
-msgstr "&Сохранить как..."
+msgstr "Сохранить"
 
 #: src/modules/editor/scripteditor.cpp:728
 msgid "&Save As..."
@@ -243,9 +245,8 @@ msgid "Add Alias"
 msgstr "Добавить алиас"
 
 #: src/modules/classeditor/classeditor.cpp:738
-#, fuzzy
 msgid "Add Class"
-msgstr "Добавить алиас"
+msgstr "Добавить класс"
 
 #: src/modules/classeditor/classeditor.cpp:746
 msgid "Add Member Function"
@@ -448,32 +449,25 @@ msgstr "Выберите категорию, наиболее пригодную
 
 #: src/modules/classeditor/classeditor.cpp:121
 #: src/modules/classeditor/classeditor.cpp:684
-#, fuzzy
 msgid "Class"
-msgstr "Алиас"
+msgstr "Класс"
 
 #: src/modules/classeditor/classeditor.cpp:1561
-#, fuzzy
 msgid "Class Editor"
-msgstr "Редактор алиасов"
+msgstr "Редактор классов"
 
 #: src/modules/classeditor/classeditor.cpp:939
 #: src/modules/classeditor/classeditor.cpp:1009
-#, fuzzy
 msgid "Class Export"
-msgstr "Экспорт алиаса"
+msgstr "Экспорт класса"
 
 #: src/modules/classeditor/classeditor.cpp:499
-#, fuzzy
 msgid "Class already exists"
-msgstr "Алиас уже существует"
+msgstr "Класс уже существует"
 
 #: src/modules/classeditor/classeditor.cpp:1656
-#, fuzzy
 msgid "Class names can contain only letters, digits and underscores"
-msgstr ""
-"Имя алиаса может содержать только цифры, буквы, нижние подчеркивания и '::' "
-"как разделитель пространств имён"
+msgstr "Имя класса может содержать только буквы, цифры, и нижние подчеркивания"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:324
 msgid "Close"
@@ -484,9 +478,8 @@ msgid "Code"
 msgstr "Код"
 
 #: src/modules/classeditor/classeditor.cpp:794
-#, fuzzy
 msgid "Collapse All Items"
-msgstr "Свернуть все пространства имён"
+msgstr "Свернуть все элементы"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:609
 msgid "Collapse All Namespaces"
@@ -545,14 +538,12 @@ msgid "Do you really want to remove the alias \"%Q\" ?"
 msgstr "Вы действительно хотите удалить алиас \"%Q\"?"
 
 #: src/modules/classeditor/classeditor.cpp:1148
-#, fuzzy
 msgid "Do you really want to remove the class \"%Q\" ?"
-msgstr "Вы действительно хотите удалить алиас \"%Q\"?"
+msgstr "Вы действительно хотите удалить класс \"%Q\"?"
 
 #: src/modules/classeditor/classeditor.cpp:1154
-#, fuzzy
 msgid "Do you really want to remove the function \"%Q\" ?"
-msgstr "Вы действительно хотите удалить алиас \"%Q\"?"
+msgstr "Вы действительно хотите удалить функцию \"%Q\"?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:925
 #: src/modules/classeditor/classeditor.cpp:1150
@@ -580,18 +571,16 @@ msgid "Edit the alias or namespace name"
 msgstr "Редактировать имя алиаса или пространства имён"
 
 #: src/modules/classeditor/classeditor.cpp:174
-#, fuzzy
 msgid "Edit the class or namespace name"
-msgstr "Редактировать имя алиаса или пространства имён"
+msgstr "Редактировать имя класса или пространства имён"
 
 #: src/modules/eventeditor/eventeditor.cpp:115
 msgid "Edit the event handler name."
 msgstr "Редактировать имя обработчика события."
 
 #: src/modules/classeditor/classeditor.cpp:190
-#, fuzzy
 msgid "Edit the function member name"
-msgstr "Редактировать имя обработчика события."
+msgstr "Редактировать имя функции-члена"
 
 #: src/modules/raweditor/raweditor.cpp:104
 msgid "Edit the raw event handler name."
@@ -685,14 +674,12 @@ msgid "Find In Aliases..."
 msgstr "Найти в алиасах..."
 
 #: src/modules/classeditor/classeditor.cpp:836
-#, fuzzy
 msgid "Find In Classes"
-msgstr "Найти в алиасах"
+msgstr "Найти в классах"
 
 #: src/modules/classeditor/classeditor.cpp:788
-#, fuzzy
 msgid "Find In Classes..."
-msgstr "Найти в алиасах..."
+msgstr "Найти в классах..."
 
 #: src/modules/editor/scripteditor.cpp:524
 msgid "Find:"
@@ -716,16 +703,13 @@ msgid "Found an empty namespace in namespace name"
 msgstr "Найдена пустая строка в имени пространства имён"
 
 #: src/modules/classeditor/classeditor.cpp:447
-#, fuzzy
 msgid "Function already exists"
-msgstr "Алиас уже существует"
+msgstr "Функция уже существует"
 
 #: src/modules/classeditor/classeditor.cpp:1772
-#, fuzzy
 msgid "Function names can contain only letters, digits and underscores"
 msgstr ""
-"Имя алиаса может содержать только цифры, буквы, нижние подчеркивания и '::' "
-"как разделитель пространств имён"
+"Имя функции может содержать только буквы, цифры, и нижние подчеркивания"
 
 #: src/modules/editor/scripteditor.cpp:520
 msgid "Functions:"
@@ -748,13 +732,12 @@ msgid "Id"
 msgstr "Идентификатор"
 
 #: src/modules/classeditor/classeditor.cpp:1665
-#, fuzzy
 msgid ""
 "In rename mode class names can contain only letters, digits and underscores "
 "and namespaces :: separator"
 msgstr ""
-"Имя алиаса может содержать только цифры, буквы, нижние подчеркивания и '::' "
-"как разделитель пространств имён"
+"В режиме переименования имя класса может содержать только буквы, цифры, "
+"нижние подчеркивания и '::' как разделитель пространств имён"
 
 #: src/modules/classeditor/classeditor.cpp:690
 msgid "Inherits Class"
@@ -807,9 +790,8 @@ msgid "Manually"
 msgstr "Вручную"
 
 #: src/modules/classeditor/classeditor.cpp:696
-#, fuzzy
 msgid "Member Function:"
-msgstr "Функции:"
+msgstr "Функции-члены:"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:989
 msgid "Missing Alias Name"
@@ -831,9 +813,8 @@ msgid "My ToolBar"
 msgstr "Моя панель инструментов"
 
 #: src/modules/classeditor/classeditor.cpp:577
-#, fuzzy
 msgid "Name already exists as Class name"
-msgstr "Пространство имён уже существует"
+msgstr "Имя уже используется как имя класса "
 
 #: src/modules/actioneditor/actioneditor.cpp:103
 msgid "Name:"
@@ -1051,14 +1032,12 @@ msgid "Please choose the icon for the ToolBar"
 msgstr "Пожалуйста выберите иконку для панели инструментов"
 
 #: src/modules/classeditor/classeditor.cpp:1644
-#, fuzzy
 msgid "Please enter the name for the class:"
-msgstr "Пожалуйста введите имя нового алиаса"
+msgstr "Пожалуйста введите имя класса:"
 
 #: src/modules/classeditor/classeditor.cpp:1763
-#, fuzzy
 msgid "Please enter the name for the member function:"
-msgstr "Пожалуйста введите имя нового алиаса"
+msgstr "Пожалуйста введите имя функции-члена:"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1123
 msgid "Please enter the name for the new alias"
@@ -1087,19 +1066,18 @@ msgstr ""
 "текст, будут подсвечены."
 
 #: src/modules/classeditor/classeditor.cpp:837
-#, fuzzy
 msgid ""
 "Please enter the text to be searched for. The matching function will be "
 "highlighted."
 msgstr ""
-"Пожалуйста, введите текст, который нужно найти. Алиасы, содержащие этот "
+"Пожалуйста, введите текст, который нужно найти. Функции, содержащие этот "
 "текст, будут подсвечены."
 
 #: src/modules/classeditor/classeditor.cpp:1152
-#, fuzzy
 msgid ""
 "Please note that all the children classes/functions will be deleted too."
-msgstr "Пожалуйста учтите, что все дочерние элементы будут тоже удалены."
+msgstr ""
+"Пожалуйста учтите, что все дочерние классы и функции тоже будут удалены."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:927
 msgid "Please note that all the children items will be deleted too."
@@ -1295,9 +1273,8 @@ msgid "These Inherited classes will be not compiled too:"
 msgstr ""
 
 #: src/modules/classeditor/classeditor.cpp:578
-#, fuzzy
 msgid "This name is already in use as Class name. Please choose another one."
-msgstr "Это имя уже используется. Пожалуйста выберите другое."
+msgstr "Это имя уже используется как имя класса. Пожалуйста выберите другое."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:442
 #: src/modules/aliaseditor/aliaseditor.cpp:454
@@ -1343,9 +1320,8 @@ msgid "Unable to write to the alias file."
 msgstr "Невозможно записать файл с алиасами."
 
 #: src/modules/classeditor/classeditor.cpp:1039
-#, fuzzy
 msgid "Unable to write to the class file."
-msgstr "Невозможно записать файл с алиасами."
+msgstr "Невозможно записать файл класса."
 
 #: src/modules/eventeditor/eventeditor.cpp:453
 msgid "Unable to write to the event file."
