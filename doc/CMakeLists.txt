@@ -23,9 +23,9 @@ SET(howto
 # User documentation
 IF(PERL_FOUND)
 	SET(USERDOCS_INDEX ${CMAKE_CURRENT_BINARY_DIR}/help/en/index.html)
-	ADD_CUSTOM_TARGET("kvirc-userdocs" ALL)
-	ADD_CUSTOM_TARGET(kvirc-userdocs-en DEPENDS ${USERDOCS_INDEX})
-	ADD_DEPENDENCIES(kvirc-userdocs kvirc-userdocs-en)
+	ADD_CUSTOM_TARGET("userdocs" ALL)
+	ADD_CUSTOM_TARGET(userdocs-en DEPENDS ${USERDOCS_INDEX})
+	ADD_DEPENDENCIES(userdocs userdocs-en)
 
 	IF(UNIX)
 		ADD_CUSTOM_COMMAND(
