@@ -155,7 +155,7 @@ KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 	u->setSuffix(__tr2qs_ctx(" msec","options"));
 	KviBoolSelector * b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Limit outgoing traffic","options"),KviOption_boolLimitOutgoingTraffic);
 	u = addUIntSelector(0,2,0,2,__tr2qs_ctx("Limit to 1 message every:","options"),
-			KviOption_uintOutgoingTrafficLimitUSeconds,10000,2000000,10000000,KVI_OPTION_BOOL(KviOption_boolLimitOutgoingTraffic));
+			KviOption_uintOutgoingTrafficLimitUSeconds,10000,2000000,10000001,KVI_OPTION_BOOL(KviOption_boolLimitOutgoingTraffic));
 	u->setSuffix(__tr2qs_ctx(" usec","options"));
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</b></center>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
