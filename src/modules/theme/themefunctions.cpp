@@ -293,7 +293,7 @@ namespace KviThemeFunctions
 			{
 				QString szErr2 = r.lastError();
 				KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","theme"),&szErr2);
-				return true;
+				return false;
 			}
 		}
 

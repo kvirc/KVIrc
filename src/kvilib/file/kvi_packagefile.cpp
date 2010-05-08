@@ -846,13 +846,14 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 						inflateEnd(&zstr);
 						return writeError();
 					}
-				} /* else { THIS HAPPENS FOR ZERO SIZE FILES
+				} else {
+					//THIS HAPPENS FOR ZERO SIZE FILES
 					debug("hum.... internal, rEWq (ret = %d) (avail_out = %d)",ret,zstr.avail_out);
 
 					inflateEnd(&zstr);
 					setLastError(__tr2qs("Compression library internal error"));
 					return false;
-				} */
+				}
 				zstr.next_out = obuffer;
 				zstr.avail_out = BUFFER_SIZE;
 			}
