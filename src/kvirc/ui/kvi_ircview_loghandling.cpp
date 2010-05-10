@@ -253,7 +253,7 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 
 	if(!KVI_OPTION_BOOL(KviOption_boolStripMsgTypeInLogs))
 	{
-		QString szMessageType = QString("%1 \n").arg(iMsgType);
+		QString szMessageType = QString("%1 ").arg(iMsgType);
 
 		szTmp = KviQString::toUtf8(szMessageType);
 
@@ -285,6 +285,7 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 	}
 	
 	szTmp = KviQString::toUtf8(szBuffer);
+	szTmp.append('\n');
 
 	if(m_pLogFile->write(szTmp.data(),szTmp.length())==-1)
 		debug("WARNING : Can not write to the log file.");
