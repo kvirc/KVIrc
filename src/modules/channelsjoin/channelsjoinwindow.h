@@ -71,6 +71,7 @@ protected:
 	QCheckBox        * m_pCloseAfterJoinCheck;
 	QPushButton      * m_pJoinButton;
 	QPushButton      * m_pRegButton;
+	QPushButton      * m_pClearButton;
 	KviConsole       * m_pConsole;
 public:
 	virtual void closeEvent(QCloseEvent * e);
@@ -145,6 +146,14 @@ protected slots:
 	* \return void
 	*/
 	void regClicked();
+
+	/**
+	* \brief Called when the clear button is pressed
+	*
+	* It clears the list of recent channels
+	* \return void
+	*/
+	void clearClicked();
 
 	//void whoClicked();
 	//void namesClicked();

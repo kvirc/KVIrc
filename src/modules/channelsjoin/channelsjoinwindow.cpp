@@ -104,6 +104,9 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	// Join on return pressed
 	connect(m_pRegButton,SIGNAL(clicked()),this,SLOT(regClicked()));
 
+	m_pClearButton = new QPushButton(__tr2qs("Clear Recent"),hb);
+	connect(m_pClearButton,SIGNAL(clicked()),this,SLOT(clearClicked()));
+
 	m_pShowAtStartupCheck = new QCheckBox(__tr2qs("Show this window after connecting"),this);
 	m_pShowAtStartupCheck->setChecked(KVI_OPTION_BOOL(KviOption_boolShowChannelsJoinOnIrc));
 	g->addWidget(m_pShowAtStartupCheck,3,0);
@@ -307,6 +310,22 @@ void KviChannelsJoinWindow::regClicked()
 		m_pTreeWidget->setCurrentItem(items.first());
 		m_pTreeWidget->scrollToItem(items.first());
 	}
+}
+
+void KviChannelsJoinWindow::clearClicked()
+{
+	QString szCmd = "option stringlistRecentChannels";
+
+	KviConsole * c = g_pApp->topmostConnectedConsole();
+	if(!c)
+		return; // no connection
+
+	KviWindow * w = g_pActiveWindow;
+	if(w->console() != c)
+		w = c;
+
+	KviKvsScript::run(szCmd,w);
+	fillListView();
 }
 
 /*
