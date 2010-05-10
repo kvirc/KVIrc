@@ -117,10 +117,20 @@ KviServer * KviNetwork::findServer(const KviServer * pServer)
 {
 	for (KviServer *s = m_pServerList->first(); s; s = m_pServerList->next())
 	{
-		if (KviQString::equalCI(s->m_szHostname, pServer->m_szHostname)
-				&& (s->m_uPort == pServer->m_uPort) && (s->useSSL()
-				== pServer->useSSL()) && (s->isIPv6() == pServer->isIPv6()))
-			return s;
+		// we better go with the unique id first
+		if(!s->m_szId.isEmpty())
+		{
+			// at least one of the 2 id is not empty, so if they match we're done
+			if(KviQString::equalCI(s->m_szId, pServer->m_szId))
+				return s;
+		} else {
+			// failback on the "check everything" method
+
+			if (KviQString::equalCI(s->m_szHostname, pServer->m_szHostname)
+					&& (s->m_uPort == pServer->m_uPort) && (s->useSSL()
+					== pServer->useSSL()) && (s->isIPv6() == pServer->isIPv6()))
+				return s;
+		}
 	}
 	return 0;
 }
