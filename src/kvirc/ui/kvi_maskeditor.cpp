@@ -312,6 +312,16 @@ void KviMaskEditor::removeMask(KviMaskEntry *e)
 	}
 }
 
+void KviMaskEditor::clear()
+{
+	KviMaskItem * it;
+	while(m_pMaskBox->topLevelItemCount()>0)
+	{
+		it=(KviMaskItem *)m_pMaskBox->topLevelItem(0);
+		if(it) delete it;
+	}
+}
+
 void KviMaskEditor::itemDoubleClicked( QTreeWidgetItem * pItem, int )
 {
 	if(pItem)

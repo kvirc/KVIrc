@@ -671,7 +671,14 @@ void KviChannel::setDeadChan()
 	m_pBanExceptionList->clear();
 	m_pInviteList->clear();
 	m_pQuietBanList->clear();
+
+	if(m_pBanEditor) m_pBanEditor->clear();
+	if(m_pBanExceptionEditor) m_pBanExceptionEditor->clear();
+	if(m_pInviteEditor) m_pInviteEditor->clear();
+	if(m_pQuietBanEditor) m_pQuietBanEditor->clear();
+
 	m_pTopicWidget->reset();
+
 
 	m_pActionHistory->clear();
 	m_uActionHistoryHotActionCount = 0;

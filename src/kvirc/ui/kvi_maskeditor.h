@@ -109,6 +109,7 @@ public:
 	char flag(){ return m_cFlag; };
 	void addMask(KviMaskEntry *e);
 	void removeMask(KviMaskEntry *e);
+	void clear();
 protected slots:
 	void removeClicked();
 	void addClicked();

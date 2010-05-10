@@ -147,7 +147,7 @@ QString KviTreeWindowListItem::key() const
 	QString ret;
 	if(m_pWindow->type()==KVI_WINDOW_TYPE_CONSOLE)
 	{
-		ret.sprintf("%d%lu",m_pWindow->type(),((KviConsole*)m_pWindow)->context() ? ((KviConsole*)m_pWindow)->context()->id() : 9999);
+		ret.sprintf("%d%u",m_pWindow->type(),((KviConsole*)m_pWindow)->context() ? ((KviConsole*)m_pWindow)->context()->id() : 9999);
 	} else {
 		ret.sprintf("%d%s",m_pWindow->type(),m_pWindow->windowName().toLower().toUtf8().data());
 	}
