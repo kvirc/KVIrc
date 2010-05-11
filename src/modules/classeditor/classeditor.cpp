@@ -657,7 +657,6 @@ void KviClassEditor::saveLastEditedItem()
 		return;
 	if(!m_pEditor->isModified() || m_pLastEditedItem->isNamespace() || m_pLastEditedItem->isClass())
 		return;
-
 	((KviClassEditorTreeWidgetItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
 	QString newCode;
 	m_pEditor->getText(newCode);
@@ -906,6 +905,7 @@ void KviClassEditor::getExportClassBuffer(QString &buffer,KviClassEditorTreeWidg
 	QString szBuf = it->buffer();
 	KviCommandFormatter::blockFromBuffer(szBuf);
 	QString szNam = buildFullClassName(it);
+	debug("export buffer");
 
 	buffer = "class(\"";
 	buffer += szNam;
@@ -920,6 +920,7 @@ void KviClassEditor::getExportClassBuffer(QString &buffer,KviClassEditorTreeWidg
 		KviClassEditorTreeWidgetItem * pFunction= (KviClassEditorTreeWidgetItem *)it->child(i);
 		if(pFunction->isMethod())
 		{
+			debug("append %s",pFunction->name().toUtf8().data());
 			buffer += "\t";
 			if (pFunction->isInternalFunction()) buffer+="internal ";
 			buffer += "function ";
@@ -1419,6 +1420,7 @@ void KviClassEditor::build()
 	pLinkedClasses.setAutoDelete(false);
 	KviPointerList<KviClassEditorTreeWidgetItem> pSkipClasses;
 	pSkipClasses.setAutoDelete(false);
+	bool bErrorWhilecompiling=false;
 	while(it.current())
 	{
 		KviClassEditorTreeWidgetItem *pClass=it.current();
@@ -1434,17 +1436,12 @@ void KviClassEditor::build()
 			pLinkedClasses.append(pClass);
 			while(pParentClass)
 			{
-				if (pParentClass->classNotBuilt())
-				{
-					debug("append to build parent class %s",pParentClass->name().toUtf8().data());
-					pLinkedClasses.append(pParentClass);
-				}
+				if (pParentClass->classNotBuilt()) pLinkedClasses.append(pParentClass);
 				pParentClass=m_pClasses->find(pParentClass->InheritsClass());
 			}
 			for(int i=pLinkedClasses.count()-1;i>=0;i--)
 			{
 				QString szFullClassName = buildFullClassName(pLinkedClasses.at(i));
-				debug("parsing class %s",szFullClassName.toUtf8().data());
 				KviKvsObjectClass *pClass = KviKvsKernel::instance()->objectController()->lookupClass(szFullClassName);
 				if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
 				QString szClass;
@@ -1453,6 +1450,7 @@ void KviClassEditor::build()
 				pClass = KviKvsKernel::instance()->objectController()->lookupClass(szFullClassName);
 				if (!pClass)
 				{
+					bErrorWhilecompiling=true;
 					QString szError=__tr2qs_ctx("Unable to compile class: ","editor");
 					szError+=szFullClassName+"\n";
 					KviPointerList<KviClassEditorTreeWidgetItem> pInheritedClasses;
@@ -1477,6 +1475,7 @@ void KviClassEditor::build()
 		}
 		++it;
 	}
+	if (bErrorWhilecompiling) saveNotBuiltClasses();
 	KviKvsKernel::instance()->objectController()->flushUserClasses();
 }
 
@@ -1593,7 +1592,7 @@ KviClassEditorWindow::KviClassEditorWindow(KviFrame * lpFrm)
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g->addWidget(btn,1,2);
 
-	btn = new QPushButton(__tr2qs_ctx("Cancel","editor"),this);
+	btn = new QPushButton(__tr2qs_ctx("Close","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	g->addWidget(btn,1,3);
@@ -1611,7 +1610,6 @@ KviClassEditorWindow::~KviClassEditorWindow()
 void KviClassEditorWindow::buildClicked()
 {
 	m_pEditor->build();
-	m_pEditor->saveNotBuiltClasses();
 }
 
 void KviClassEditorWindow::saveClicked()
