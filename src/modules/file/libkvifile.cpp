@@ -1316,13 +1316,13 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	szResult.append(szDigest.c_str());
 #else // fall back to QCryptographicHash
 	QCryptographicHash::Algorithm qAlgo;
-	if(szType.toLower() == "sha1")
+	if(szAlgo.toLower() == "sha1")
 	{
 		qAlgo = QCryptographicHash::Sha1;
-	} else if(szType.toLower() == "md4")
+	} else if(szAlgo.toLower() == "md4")
 	{
 		qAlgo = QCryptographicHash::Md4;
-	} else if(szType.toLower() == "md5")
+	} else if(szAlgo.toLower() == "md5")
 	{
 		qAlgo = QCryptographicHash::Md5;
 	} else {
