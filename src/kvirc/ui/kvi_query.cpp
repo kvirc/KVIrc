@@ -173,9 +173,9 @@ QString KviQuery::getInfoLabelTipText()
 			szText +=          "<tr><td>";
 
 			if(e->hasRealName())
-				szTmp = __tr2qs("%1 is %2 (%3)").arg(m_szName).arg(szMask).arg(KviMircCntrl::stripControlBytes(e->realName()));
+				szTmp = __tr2qs("%1 is %2 (%3)").arg(m_szName, szMask, KviMircCntrl::stripControlBytes(e->realName()));
 			else
-				szTmp = __tr2qs("%1 is %2").arg(m_szName).arg(szMask);
+				szTmp = __tr2qs("%1 is %2").arg(m_szName, szMask);
 
 			szTmp.replace('&',"&amp;");
 			szTmp.replace('<',"&lt;");
@@ -189,9 +189,9 @@ QString KviQuery::getInfoLabelTipText()
 			{
 				szText += "<tr><td>";
 				if(e->hasHops())
-					szText += __tr2qs("%1 is using irc server: %2 (%3 hops)").arg(m_szName).arg(e->server()).arg(e->hops());
+					szText += __tr2qs("%1 is using irc server: %2 (%3 hops)").arg(m_szName, e->server()).arg(e->hops());
 				else
-					szText += __tr2qs("%1 is using irc server: %2").arg(m_szName).arg(e->server());
+					szText += __tr2qs("%1 is using irc server: %2").arg(m_szName, e->server());
 				szText += "</td></tr>";
 			}
 
@@ -203,7 +203,7 @@ QString KviQuery::getInfoLabelTipText()
 			}
 
 			szText += "<tr><td>";
-			szTmp = __tr2qs("Common channels with %1: %2").arg(m_szName).arg(szChans);
+			szTmp = __tr2qs("Common channels with %1: %2").arg(m_szName, szChans);
 
 			szTmp.replace('&',"&amp;");
 			szTmp.replace('<',"&lt;");
@@ -246,9 +246,9 @@ QString KviQuery::getInfoLabelText()
 					szMask += "*";
 
 				if(e->hasRealName())
-					szTmp = __tr2qs("Query with %1!%2 (%3)").arg(m_szName).arg(szMask).arg(KviMircCntrl::stripControlBytes(e->realName()));
+					szTmp = __tr2qs("Query with %1!%2 (%3)").arg(m_szName, szMask, KviMircCntrl::stripControlBytes(e->realName()));
 				else
-					szTmp = __tr2qs("Query with %1!%2").arg(m_szName).arg(szMask);
+					szTmp = __tr2qs("Query with %1!%2").arg(m_szName, szMask);
 
 				if(e->hasServer())
 					szTmp += __tr2qs(", using server %1").arg(e->server());

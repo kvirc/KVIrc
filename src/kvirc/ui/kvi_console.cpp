@@ -307,7 +307,7 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 
 	if(e->avatar())
 	{
-		buffer += QString("<tr><td><center><img src=\"%1\" width=\"%2\"></center></td></tr>").arg(e->avatar()->localPath()).arg(e->avatar()->size().width());
+		buffer += QString("<tr><td><center><img src=\"%1\" width=\"%2\"></center></td></tr>").arg(e->avatar()->localPath(), e->avatar()->size().width());
 	}
 
 	if(e->hasRealName())

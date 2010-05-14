@@ -1358,7 +1358,7 @@ void KviWindow::preprocessMessage(QString & szMessage)
 					{
 						*it=QString("\r!c\r%1\r").arg(*it);
 					} else {
-						*it=QString("\r!c%1\r%2\r").arg(tmp).arg(*it);
+						*it=QString("\r!c%1\r%2\r").arg(tmp, *it);
 					}
 				}
 			}

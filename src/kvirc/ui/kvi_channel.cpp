@@ -1788,7 +1788,7 @@ void KviChannel::preprocessMessage(QString & szMessage)
 					if((*it) == szTmp)
 						*it = QString("\r!c\r%1\r").arg(*it);
 					else
-						*it = QString("\r!c%1\r%2\r").arg(szTmp).arg(*it);
+						*it = QString("\r!c%1\r%2\r").arg(szTmp, *it);
 				}
 			}
 		}

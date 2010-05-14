@@ -342,7 +342,7 @@ void UrlDialog::contextMenu(const QPoint &point)
 void UrlDialog::sayToWin(QAction * act)
 {
 	KviWindow *wnd = g_pApp->findWindowByCaption(act->text());
-	QString say=QString("PRIVMSG %1 %2").arg(wnd->windowName()).arg(m_szUrl);
+	QString say=QString("PRIVMSG %1 %2").arg(wnd->windowName(), m_szUrl);
 	if(wnd)
 	{
 		KviKvsScript::run(say,wnd);

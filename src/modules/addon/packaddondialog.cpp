@@ -196,15 +196,11 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
 	// Start creating install.kvs: header
 	QString szTmp;
 	szTmp += QString("# This file is generated automatically. Do NOT touch unless you know what are you doing\n#\n");
-	szTmp += QString("# %1 %2\n# Written by %3\n# %4\n\n").arg(m_szName) \
-		.arg(m_szVersion).arg(m_szAuthor).arg(m_szDescription);
+	szTmp += QString("# %1 %2\n# Written by %3\n# %4\n\n").arg(m_szName, m_szVersion, m_szAuthor, m_szDescription);
 	szTmp += "# Register the script: this must be the first instruction executed\n# since it will abort with an error when a greater version is already installed\n";
 
 	// install.kvs: addon registration
-	szTmp += QString("addon.register(\"%1\",\"%2\",\"%1\",\"%3\",\"%4\",\"%5\")\n") \
-		.arg(m_szName).arg(m_szVersion) \
-		.arg(m_szDescription).arg(m_szMinVersion) \
-		.arg(m_szIcon);
+	szTmp += QString("addon.register(\"%1\",\"%2\",\"%1\",\"%3\",\"%4\",\"%5\")\n").arg(m_szName, m_szVersion, m_szDescription, m_szMinVersion, m_szIcon);
 	szTmp += "{\n\t# This is our uninstall callback: it will be called by KVIrc when addon.uninstall is invoked\n\t";
         szTmp += QString("%1::uninstall::uninstall\n").arg(m_szName);
         szTmp += QString("\t%1::uninstall::uninstallfiles\n").arg(m_szName);

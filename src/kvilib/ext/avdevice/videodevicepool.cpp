@@ -733,7 +733,7 @@ void VideoDevicePool::loadDeviceConfig()
 		qint32 ctrl_value;
 		QString ctrl_key;
 		bool ok = false;
-		const QString key_control_start = QString::fromLocal8Bit( "Device %1 Input %2 Control " ).arg( m_videodevice[m_current_device].udi() ).arg( m_videodevice[m_current_device].currentInput() );
+		const QString key_control_start = QString::fromLocal8Bit( "Device %1 Input %2 Control " ).arg( m_videodevice[m_current_device].udi() ,  m_videodevice[m_current_device].currentInput() );
 		QStringList ctrl_keys = config.keyList().filter(key_control_start);
 		qDebug() << "Found" << ctrl_keys.size() << "saved values for video-controls";
 		foreach (ctrl_key, ctrl_keys)
@@ -800,7 +800,7 @@ void VideoDevicePool::saveCurrentDeviceConfig()
 		config.writeEntry( key_currentinput, m_videodevice[m_current_device].currentInput() );
 		// --- Save values of the controls ---:
 		qint32 ctrl_value;
-		const QString key_control_start = QString::fromLocal8Bit( "Device %1 Input %2 Control " ).arg( m_videodevice[m_current_device].udi() ).arg( m_videodevice[m_current_device].currentInput() );
+		const QString key_control_start = QString::fromLocal8Bit( "Device %1 Input %2 Control " ).arg( m_videodevice[m_current_device].udi() ,  m_videodevice[m_current_device].currentInput() );
 		// Save values of the numeric controls:
 		QList<NumericVideoControl> numCtrls = m_videodevice[m_current_device].getSupportedNumericControls();
 		NumericVideoControl numCtrl;

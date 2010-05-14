@@ -208,8 +208,8 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 				//iR = iW - iL;
 				p->fillRect(rect.left() + 5, rect.top() + 5,iL,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
 
-				txt = QString(__tr2qs_ctx("%1 of %2 (%3 %)","http")).arg(KviQString::makeSizeReadable(uRecvd))
-					.arg(KviQString::makeSizeReadable(uTotal)).arg(dPerc,0,'f',2);
+				txt = QString(__tr2qs_ctx("%1 of %2 (%3 %)","http")).arg(KviQString::makeSizeReadable(uRecvd),
+					KviQString::makeSizeReadable(uTotal)).arg(dPerc,0,'f',2);
 			} else {
 				txt = KviQString::makeSizeReadable(m_pHttpRequest->receivedSize());
 			}
@@ -260,17 +260,17 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 			{
 				KviTimeUtils::secondsToDaysHoursMinsSecs(kvi_timeSpan(m_tTransferEndTime,m_tTransferStartTime),&uD,&uH,&uM,&uS);
 				txt = "TOT: ";
-				if(uD > 0)txt += QString(__tr2qs_ctx("%1d %2h %3m %4s","http")).arg(uD).arg(uH).arg(uM).arg(uS);
-				else if(uH > 0)txt += QString(__tr2qs_ctx("%2h %3m %4s","http")).arg(uH).arg(uM).arg(uS);
-				else txt += QString(__tr2qs_ctx("%3m %4s","http")).arg(uM).arg(uS);
+				if(uD > 0)txt += QString(__tr2qs_ctx("%1d %2h %3m %4s","http")).arg(uD, uH, uM, uS);
+				else if(uH > 0)txt += QString(__tr2qs_ctx("%2h %3m %4s","http")).arg(uH, uM, uS);
+				else txt += QString(__tr2qs_ctx("%3m %4s","http")).arg(uM, uS);
 			} else {
 				if(iEta >= 0)
 				{
 					KviTimeUtils::secondsToDaysHoursMinsSecs(iEta,&uD,&uH,&uM,&uS);
 					txt = "ETA: ";
-					if(uD > 0)txt += QString(__tr2qs_ctx("%1d %2h %3m %4s","http")).arg(uD).arg(uH).arg(uM).arg(uS);
-					else if(uH > 0)txt += QString(__tr2qs_ctx("%2h %3m %4s","http")).arg(uH).arg(uM).arg(uS);
-					else txt += QString(__tr2qs_ctx("%3m %4s","http")).arg(uM).arg(uS);
+					if(uD > 0)txt += QString(__tr2qs_ctx("%1d %2h %3m %4s","http")).arg(uD, uH, uM, uS);
+					else if(uH > 0)txt += QString(__tr2qs_ctx("%2h %3m %4s","http")).arg(uH, uM, uS);
+					else txt += QString(__tr2qs_ctx("%3m %4s","http")).arg(uM, uS);
 				} else {
 					txt = "ETA: Unknown";
 				}

@@ -1256,14 +1256,14 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 					if(iW2 > 0)p->fillRect(rect.left() + 5 + iL2,rect.top() + 5,iW2,10,bIsTerminated ? QColor(150,130,110) : QColor(220,170,100));
 					p->fillRect(rect.left() + 5,rect.top() + 5,iL2,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
 
-					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)","dcc")).arg(KviQString::makeSizeReadable(uAckedBytes)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc2,0,'f',2);
+					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)","dcc")).arg(KviQString::makeSizeReadable(uAckedBytes), KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc2,0,'f',2);
 				} else {
 					// we are receiving a file or not sending acks
 					double dPerc = (double)(((double)uTransferred) * 100.0) / (double)m_uTotalFileSize;
 					int iL = (int) ((((double)iW) * dPerc) / 100.0);
 					p->fillRect(rect.left() + 5,rect.top() + 5,iL,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
 
-					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)","dcc")).arg(KviQString::makeSizeReadable(uTransferred)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc,0,'f',2);
+					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)","dcc")).arg(KviQString::makeSizeReadable(uTransferred), KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc,0,'f',2);
 				}
 
 			} else {
@@ -1353,7 +1353,7 @@ QString KviDccFileTransfer::tipText()
 {
 	QString s;
 
-	s = QString("<table><tr><td bgcolor=\"#000000\"><font color=\"#FFFFFF\"><b>DCC %1 (ID %2)</b></font></td></tr>").arg(m_szDccType.ptr()).arg(id());
+	s = QString("<table><tr><td bgcolor=\"#000000\"><font color=\"#FFFFFF\"><b>DCC %1 (ID %2)</b></font></td></tr>").arg(m_szDccType.ptr(), id());
 
 	s += "<tr><td bgcolor=\"#404040\"><font color=\"#FFFFFF\">";
 	s += __tr2qs_ctx("Transfer Log","dcc");
@@ -1485,14 +1485,14 @@ void KviDccFileTransfer::connectionInProgress()
 //			if(TRIGGER_EVENT_5PARAM_RETVALUE(KviEvent_OnDCCSendConnected,this,m_pDescriptor->szPort.ptr(),m_pDescriptor->szFileName.ptr(),m_pDescriptor->szNick.ptr(),m_pDescriptor->szUser.ptr(),m_pDescriptor->szHost.ptr()));
 //		}
 //
-		m_szStatusString = __tr2qs_ctx("Contacting host %1 on port %2","dcc").arg(m_pDescriptor->szIp).arg(m_pDescriptor->szPort);
+		m_szStatusString = __tr2qs_ctx("Contacting host %1 on port %2","dcc").arg(m_pDescriptor->szIp, m_pDescriptor->szPort);
 		outputAndLog(m_szStatusString);
 		displayUpdate();
 		return;
 	}
 
 	// PASSIVE CONNECTION
-	m_szStatusString = __tr2qs_ctx("Listening on interface %1 port %2","dcc").arg(m_pMarshal->localIp()).arg(m_pMarshal->localPort());
+	m_szStatusString = __tr2qs_ctx("Listening on interface %1 port %2","dcc").arg(m_pMarshal->localIp(), m_pMarshal->localPort());
 	outputAndLog(m_szStatusString);
 
 	if(m_pDescriptor->bSendRequest)
@@ -1566,7 +1566,7 @@ void KviDccFileTransfer::connectionInProgress()
 					ip.toUtf8().data(),port.ptr(),
 					&(m_pDescriptor->szLocalFileSize),0x01);
 		}
-		outputAndLog(__tr2qs_ctx("Sent DCC %1 request to %2, waiting for remote client to connect...","dcc").arg(szReq.ptr()).arg(m_pDescriptor->szNick));
+		outputAndLog(__tr2qs_ctx("Sent DCC %1 request to %2, waiting for remote client to connect...","dcc").arg(szReq.ptr(), m_pDescriptor->szNick));
 	} else {
 		outputAndLog(__tr2qs_ctx("DCC %1 request not sent, awaiting manual connection","dcc").arg(m_szDccType.ptr()));
 	}
@@ -1693,8 +1693,8 @@ void KviDccFileTransfer::handleMarshalError(int err)
 
 void KviDccFileTransfer::connected()
 {
-	outputAndLog(__tr2qs_ctx("Connected to %1:%2","dcc").arg(m_pMarshal->remoteIp()).arg(m_pMarshal->remotePort()));
-	outputAndLog(__tr2qs_ctx("Local end is %1:%2","dcc").arg(m_pMarshal->localIp()).arg(m_pMarshal->localPort()));
+	outputAndLog(__tr2qs_ctx("Connected to %1:%2","dcc").arg(m_pMarshal->remoteIp(), m_pMarshal->remotePort()));
+	outputAndLog(__tr2qs_ctx("Local end is %1:%2","dcc").arg(m_pMarshal->localIp(), m_pMarshal->localPort()));
 
 	m_tTransferStartTime = kvi_unixTime();
 
@@ -1774,7 +1774,7 @@ bool KviDccFileTransfer::resumeAccepted(const char *filename,const char *port,co
 
 	if(ret != KviError_success)handleMarshalError(ret);
 	else {
-		m_szStatusString = __tr2qs_ctx("Contacting host %1 on port %2","dcc").arg(m_pDescriptor->szIp).arg(m_pDescriptor->szPort);
+		m_szStatusString = __tr2qs_ctx("Contacting host %1 on port %2","dcc").arg(m_pDescriptor->szIp, m_pDescriptor->szPort);
 		outputAndLog(m_szStatusString);
 		displayUpdate();
 	}

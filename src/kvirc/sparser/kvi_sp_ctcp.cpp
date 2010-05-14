@@ -1148,9 +1148,9 @@ void KviServerParser::parseCtcpRequestVersion(KviCtcpMessage *msg)
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			szVersion.append(QString(" - %1").arg(KviOsInfo::version()));
 #else
-			szVersion.append(QString(" - %1 (%2)").arg(KviOsInfo::name()).arg(KviOsInfo::release()));
+			szVersion.append(QString(" - %1 (%2)").arg(KviOsInfo::name(), KviOsInfo::release()));
 #endif
-			//szVersion.append(QString(" - QT Version: %1 - %2").arg(qVersion()).arg(__tr2qs("http://www.kvirc.net/")));
+			//szVersion.append(QString(" - QT Version: %1 - %2").arg(qVersion(), __tr2qs("http://www.kvirc.net/")));
 			if(!KVI_OPTION_STRING(KviOption_stringCtcpVersionPostfix).isEmpty())
 			{
 				QString sz = KVI_OPTION_STRING(KviOption_stringCtcpVersionPostfix);

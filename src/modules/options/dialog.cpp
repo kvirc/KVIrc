@@ -158,7 +158,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 					"</td>" \
 				"</tr>" \
 			"</table>"
-		).arg(szDialogTitle).arg(szDialog).arg(szInfoTips).arg(szOkCancelButtons);
+		).arg(szDialogTitle, szDialog, szInfoTips, szOkCancelButtons);
 
 	QString szCaption = szDialogTitle + " - KVIrc";
 	setWindowTitle(szCaption);
