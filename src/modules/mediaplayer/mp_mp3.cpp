@@ -242,7 +242,7 @@ int get_mp3_info(mp3info *mp3)
 int get_first_header(mp3info *mp3, long startpos)
 {
 	int k, l=0,c;
-	mp3header h, h2=0;
+	mp3header h, h2;
 	long valid_start=0;
 
 	fseek(mp3->file,startpos,SEEK_SET);
