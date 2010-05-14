@@ -1026,7 +1026,7 @@ void KviSetupWizard::accept()
 		// Make local->global link
 		QString localPath = QString("%1/global").arg(g_pApp->m_szLocalKvircDir);
 		unlink(QTextCodec::codecForLocale()->fromUnicode(localPath).data());
-		symlink(QTextCodec::codecForLocale()->fromUnicode(g_pApp->m_szGlobalKvircDir).data(),QTextCodec::codecForLocale()->fromUnicode(localPath).data());
+		int dummy = symlink(QTextCodec::codecForLocale()->fromUnicode(g_pApp->m_szGlobalKvircDir).data(),QTextCodec::codecForLocale()->fromUnicode(localPath).data());
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT
