@@ -311,7 +311,7 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsole* pConsole)
 			szCommand.append(szJoinCommand);
 			szCommand.append("\" ");
 		}
-		szCommand.append(QString("%1 %2 ").arg(parts.szHost, parts.iPort));
+		szCommand.append(QString("%1 %2 ").arg(parts.szHost).arg(parts.iPort);
 
 		if(pConsole->connection()) {
 			KviServer* server = pConsole->connection()->target()->server();

@@ -357,7 +357,7 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 		szSteps = "<nobr><font color=\"";
 		szSteps += clrMid.name();
 		szSteps += "\"><b>[";
-		szSteps += QString("Step %1 of %2").arg(pData->iVisibleIndex, m_p->iEnabledPageCount);
+		szSteps += QString("Step %1 of %2").arg(pData->iVisibleIndex).arg(m_p->iEnabledPageCount);
 		szSteps += "]</b></font></nobr>";
 	}
 

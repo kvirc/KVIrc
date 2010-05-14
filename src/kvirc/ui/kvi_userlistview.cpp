@@ -1590,7 +1590,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 				int iHours = iMins / 60;
 				iMins = iMins % 60;
 				szBuffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
-				szBuffer += __tr2qs("Quiet for <b>%1h %2m %3s</b>").arg(iHours, iMins, iSecs);
+				szBuffer += __tr2qs("Quiet for <b>%1h %2m %3s</b>").arg(iHours).arg(iMins).arg(iSecs);
 				szBuffer += "</font></nobr></td></tr>";
 			}
 			
