@@ -49,16 +49,22 @@ void KviKvsTreeNodeLocalVariable::dump(const char * prefix)
 bool KviKvsTreeNodeLocalVariable::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
 	KviKvsVariant * v = c->localVariables()->find(m_szIdentifier);
+
 	if(v)
-	{
 		pBuffer->copyFrom(v);
-	} else {
+	else
 		pBuffer->setNothing();
-	}
+
 	return true;
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeLocalVariable::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
-	return new KviKvsHashElement(0,c->localVariables()->get(m_szIdentifier),c->localVariables(),m_szIdentifier);
+	return new KviKvsHashElement(
+			0,
+			c->localVariables()->get(m_szIdentifier),
+			c->localVariables(),
+			m_szIdentifier
+		);
 }
+

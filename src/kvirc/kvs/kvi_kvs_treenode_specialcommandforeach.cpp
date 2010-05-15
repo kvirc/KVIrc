@@ -65,21 +65,16 @@ void KviKvsTreeNodeSpecialCommandForeach::dump(const char * prefix)
 
 bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 {
-	KviKvsRWEvaluationResult * v = m_pIterationVariable->evaluateReadWrite(c);
-	if(!v)return false;
-
 	KviKvsVariantList l;
 	l.setAutoDelete(true);
 	if(!m_pIterationData->evaluate(c,&l))
-	{
-		delete v;
 		return false;
-	}
 
 	KviKvsSwitchList swl;
 	if(m_pSwitches)
 	{
-		if(!(m_pSwitches->evaluate(c,&swl)))return false;
+		if(!(m_pSwitches->evaluate(c,&swl)))
+			return false;
 	}
 
 	bool bIncludeEmptyScalars = swl.find('a',"all") != 0;
@@ -94,27 +89,28 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 				unsigned int idx = 0;
 				while(idx < uCnt)
 				{
+					// we evaluate this each time (as it may actually be killed at each iteration)
+					// FIXME: maybe some kind of reference counting or a observer pattern might be a bit more efficient here
+					//        (but might be far less efficient everywhere else...)
+					KviKvsRWEvaluationResult * v = m_pIterationVariable->evaluateReadWrite(c);
+					if(!v)
+						return false;
 					KviKvsVariant * pOne = pArg->array()->at(idx);
 					if(pOne)
-					{
 						v->result()->copyFrom(*pOne);
-					} else {
+					else
 						v->result()->setNothing();
-					}
+					delete v; // we're done with it for this iteration
 
 					if(!m_pLoop->execute(c))
 					{
 						if(c->error())
-						{
-							delete v;
 							return false;
-						}
 
 						// break allowed!
 						if(c->breakPending())
 						{
 							c->handleBreak();
-							delete v;
 							return true;
 						}
 
@@ -125,7 +121,6 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 							continue;
 						}
 
-						delete v;
 						return false; // propagate the false return value
 					}
 
@@ -138,21 +133,24 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 				KviKvsHashIterator it(*(pArg->hash()->dict()));
 				while(KviKvsVariant * pOne = it.current())
 				{
+					// we evaluate this each time (as it may actually be killed at each iteration)
+					// FIXME: maybe some kind of reference counting or a observer pattern might be a bit more efficient here
+					//        (but might be far less efficient everywhere else...)
+					KviKvsRWEvaluationResult * v = m_pIterationVariable->evaluateReadWrite(c);
+					if(!v)
+						return false;
 					v->result()->copyFrom(*pOne);
+					delete v; // we're done with it for this iteration
 
 					if(!m_pLoop->execute(c))
 					{
 						if(c->error())
-						{
-							delete v;
 							return false;
-						}
 
 						// break allowed!
 						if(c->breakPending())
 						{
 							c->handleBreak();
-							delete v;
 							return true;
 						}
 
@@ -163,7 +161,6 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 							continue;
 						}
 
-						delete v;
 						return false; // propagate the false return value
 					}
 
@@ -174,20 +171,24 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 			default:
 				if(bIncludeEmptyScalars || (!pArg->isNothing()))
 				{
+					// we evaluate this each time (as it may actually be killed at each iteration)
+					// FIXME: maybe some kind of reference counting or a observer pattern might be a bit more efficient here
+					//        (but might be far less efficient everywhere else...)
+					KviKvsRWEvaluationResult * v = m_pIterationVariable->evaluateReadWrite(c);
+					if(!v)
+						return false;
 					v->result()->copyFrom(*pArg);
+					delete v; // we're done with it for this iteration
+
 					if(!m_pLoop->execute(c))
 					{
 						if(c->error())
-						{
-							delete v;
 							return false;
-						}
 
 						// break allowed!
 						if(c->breakPending())
 						{
 							c->handleBreak();
-							delete v;
 							return true;
 						}
 
@@ -197,13 +198,13 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 							continue;
 						}
 
-						delete v;
 						return false; // propagate the false return value
 					}
 				}
 			break;
 		}
 	}
-	delete v;
+
 	return true;
 }
+

@@ -47,8 +47,10 @@ KviKvsArrayElement::KviKvsArrayElement(KviKvsRWEvaluationResult *pParent,KviKvsV
 
 KviKvsArrayElement::~KviKvsArrayElement()
 {
-	if(m_pVariant->isEmpty())m_pArray->unset(m_iKey);
-	if(m_pParent)delete m_pParent;
+	if(m_pVariant->isEmpty())
+		m_pArray->unset(m_iKey);
+	if(m_pParent)
+		delete m_pParent;
 }
 
 KviKvsHashElement::KviKvsHashElement(KviKvsRWEvaluationResult *pParent,KviKvsVariant *pVariant,KviKvsHash *pHash,const QString &szKey)
@@ -60,6 +62,9 @@ KviKvsHashElement::KviKvsHashElement(KviKvsRWEvaluationResult *pParent,KviKvsVar
 
 KviKvsHashElement::~KviKvsHashElement()
 {
-	if(m_pVariant->isEmpty())m_pHash->unset(m_szKey);
-	if(m_pParent)delete m_pParent;
+	if(m_pVariant->isEmpty())
+		m_pHash->unset(m_szKey);
+	if(m_pParent)
+		delete m_pParent;
 }
+
