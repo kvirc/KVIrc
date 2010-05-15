@@ -173,7 +173,7 @@ bool KviFile::load(KviPointerList<KviStr> * pData)
 		if(!load(*s))
 		{
 			delete s;
-            s = 0;
+			s = 0;
 			return false;
 		}
 		pData->append(s);
