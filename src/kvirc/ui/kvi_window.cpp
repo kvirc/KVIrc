@@ -219,7 +219,7 @@ void KviWindow::demandAttention()
 	if(mdiParent())
 	{
 		if(frame()->isActiveWindow())return;
-#if defined(COMPILE_ON_WINDOWS)
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		FLASHWINFO fwi;
 		fwi.cbSize = sizeof(fwi);
 		fwi.hwnd = (HWND)(frame()->winId());
@@ -234,7 +234,7 @@ void KviWindow::demandAttention()
 #endif
 	} else {
 		if(isActiveWindow())return;
-#if defined(COMPILE_ON_WINDOWS)
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		FLASHWINFO fwi;
 		fwi.cbSize = sizeof(fwi);
 		fwi.hwnd = (HWND)winId();
