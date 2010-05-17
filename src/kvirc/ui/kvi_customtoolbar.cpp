@@ -451,7 +451,7 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 
 	if(e->type() == QEvent::MouseButtonPress)
 	{
-		qDebug("");
+		qDebug("mouse button pressed");
 		KviActionManager::instance()->setCurrentToolBar(this);
 		QMouseEvent * pEvent = (QMouseEvent *)e;
 		if(pEvent->button() & Qt::LeftButton)
