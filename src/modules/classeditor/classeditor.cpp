@@ -1474,6 +1474,14 @@ void KviClassEditor::build()
 		++it;
 	}
 	if (bErrorWhilecompiling) saveNotBuiltClasses();
+	else{
+		QString szFileName = "libkviclasseditortmp.kvc";
+		QString szBuffer;
+		g_pApp->getLocalKvircDirectory(szBuffer,KviApp::ConfigPlugins,szFileName);
+		KviConfig cfg(szBuffer,KviConfig::Write);
+		cfg.clear();
+		cfg.sync();
+	}
 	KviKvsKernel::instance()->objectController()->flushUserClasses();
 }
 
