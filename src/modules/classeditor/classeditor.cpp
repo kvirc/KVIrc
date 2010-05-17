@@ -1469,6 +1469,7 @@ void KviClassEditor::build()
 					break;
 				}
 				pLinkedClasses.at(i)->setClassNotBuilt(false);
+				m_pEditor->setModified(false);
 			}
 		}
 		++it;

@@ -61,7 +61,7 @@ public:
 	virtual int getCursor();
 	virtual void setFindLineeditReadOnly(bool b);
 	virtual bool isModified();
-
+	virtual void setModified(bool){};
 	static KviScriptEditor * getDummyEditor(QWidget * par);
 	static KviScriptEditor * createInstance(QWidget * par);
 	static void destroyInstance(KviScriptEditor * e);

@@ -159,6 +159,8 @@ public:
 	virtual void setEnabled(bool bEnabled);
 	virtual void setFocus();
 	virtual bool isModified();
+	virtual void setModified(bool);
+
 	int getCursor(){return m_pEditor->textCursor().position();};
 	void setCursorPosition(int iPos);
 	int cursor(){ return m_lastCursorPos; };

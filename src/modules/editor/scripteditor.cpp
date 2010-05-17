@@ -780,7 +780,10 @@ bool KviScriptEditorImplementation::isModified()
 {
 	return m_pEditor->document()->isModified();
 }
-
+void KviScriptEditorImplementation::setModified(bool bModified)
+{
+	return m_pEditor->document()->setModified(bModified);
+}
 void KviScriptEditorImplementation::slotFind()
 {
 	emit find(m_pFindLineEdit->text());

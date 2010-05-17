@@ -1316,6 +1316,33 @@ static bool str_kvs_fnc_charsum(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+
+/*
+	@doc: str.chop
+	@type:
+		function
+	@title:
+		$str.chop
+	@short:
+		Returns a string removing n characters from the end of it.
+	@syntax:
+		<string> $str.chop(<data:string>,<n:integer>)
+	@description:
+		Returns a string removing n characters from the end of it.
+*/
+static bool str_kvs_fnc_chop(KviKvsModuleFunctionCall * c)
+{
+	QString szString,sep;
+	kvs_uint_t n;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("data",KVS_PT_NONEMPTYSTRING,0,szString)
+		KVSM_PARAMETER("n",KVS_PT_UINT,0,n)
+	KVSM_PARAMETERS_END(c)
+	szString.chop(n);
+	c->returnValue()->setString(szString);
+	return true;
+}
+
 /*
 	@doc: str.digest
 	@type:
@@ -1526,7 +1553,7 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 	@short:
 		Emulates the GNU Regular Expression Parser
 	@syntax:
-		<array> $str.grep(<match:string>,<strings:array>[,<flags:string>])
+		<array> $str.grep(<match:string>,<strings:array>[,<flags:string>,<offset:integer>])
 	@description:
 		Returns an array with the elements of <strings> which match the string <match>.
 		<flags> can be any combination of the characters 's','w','r' and 'p'.[br]
@@ -1540,6 +1567,8 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 		the text that matched the full pattern, and in the following array indexes
 		the captured texts that matched each parenthesized subpattern.[br]
 		The 'p' flag has effect only if used toghether with the 'r' flag.[br]
+		If the offset is specified attempts to find a match in from position offset in every array's item. [br]
+		If offset is -1, the search starts at the last character; if -2, at the next to last character; etc. [br]
 		Note that since almost any other variable type can be automatically cast
 		to an array, then you can use this function also on scalars or hashes.
 	@examples:
@@ -1559,10 +1588,12 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 {
 	KviKvsArrayCast ac;
 	QString szMatch,szFlags;
+	kvs_int_t iOffset;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("match",KVS_PT_STRING,0,szMatch)
 		KVSM_PARAMETER("strings",KVS_PT_ARRAYCAST,0,ac)
 		KVSM_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
+		KVSM_PARAMETER("offset",KVS_PT_INTEGER,KVS_PF_OPTIONAL,iOffset)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsArray * n = new KviKvsArray();
@@ -1573,7 +1604,10 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 	bool bCaseSensitive = szFlags.indexOf('s',0,Qt::CaseInsensitive) != -1;
 	bool bRegexp = szFlags.indexOf('r',0,Qt::CaseInsensitive) != -1;
 	bool bSubPatterns = szFlags.indexOf('p',0,Qt::CaseInsensitive) != -1;
+	bool bExcludeCompleteMatch = szFlags.indexOf('x',0,Qt::CaseInsensitive) != -1;
+
 	bool bWild = szFlags.indexOf('w',0,Qt::CaseInsensitive) != -1;
+
 	int idx = 0;
 	int cnt = a->size();
 
@@ -1588,13 +1622,21 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 			{
 				QString sz;
 				v->asString(sz);
-				if(re.indexIn(sz) != -1)
+				int index=re.indexIn(sz,iOffset);
+				if( index != -1)
 				{
 					if(bSubPatterns)
 					{
-						for (int j = 0; j < re.capturedTexts().size(); ++j)
+						int start=0;
+						if (cnt==1){
+							start=1;
+							n->set(i,new KviKvsVariant((kvs_int_t) (index+re.matchedLength())));
+							i++;
+						}
+						if (bExcludeCompleteMatch) start=1;
+						for (int j = start; j < re.capturedTexts().size(); ++j)
 						{
-							n->set(i,new KviKvsVariant(re.capturedTexts().at(i)));
+							n->set(i,new KviKvsVariant(re.capturedTexts().at(j)));
 							i++;
 						}
 					} else {
@@ -2140,6 +2182,7 @@ static bool str_module_init(KviModule * m)
 {
 	KVSM_REGISTER_FUNCTION(m,"append",str_kvs_fnc_append);
 	KVSM_REGISTER_FUNCTION(m,"charsum",str_kvs_fnc_charsum);
+	KVSM_REGISTER_FUNCTION(m,"chop",str_kvs_fnc_chop);
 	KVSM_REGISTER_FUNCTION(m,"cmp",str_kvs_fnc_cmp);
 	KVSM_REGISTER_FUNCTION(m,"contains",str_kvs_fnc_contains);
 	KVSM_REGISTER_FUNCTION(m,"digest",str_kvs_fnc_digest);

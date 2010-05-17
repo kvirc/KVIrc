@@ -416,8 +416,7 @@ bool KviAliasEditor::namespaceExists(QString &szFullItemName)
 void KviAliasEditor::renameItem()
 {
 	if(!m_pLastEditedItem)return;
-	if(!itemExists(m_pLastEditedItem))return; // dead ?
-
+	//if(itemExists(m_pLastEditedItem))return; // dead ?
 	QString szName = buildFullItemName(m_pLastEditedItem);
 	QString szNewName;
 
