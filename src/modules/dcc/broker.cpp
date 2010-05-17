@@ -268,7 +268,7 @@ void KviDccBroker::handleChatRequest(KviDccDescriptor * dcc)
 		QString tmp = __tr2qs_ctx( \
 				"<b>%1 [%2@%3]</b> requests a " \
 				"<b>Direct Client Connection</b> in <b>%4</b> mode.<br>", \
-				"dcc").arg(dcc->szNick).arg(dcc->szUser).arg(dcc->szHost).arg(dcc->szType);
+				"dcc").arg(dcc->szNick, dcc->szUser, dcc->szHost, dcc->szType);
 
 #ifdef COMPILE_SSL_SUPPORT
 		if(dcc->bIsSSL)tmp += __tr2qs_ctx("The connection will be secured using SSL.<br>","dcc");
@@ -282,7 +282,7 @@ void KviDccBroker::handleChatRequest(KviDccDescriptor * dcc)
 		} else {
 			tmp += __tr2qs_ctx( \
 					"The connection target will be host <b>%1</b> on port <b>%2</b><br>" \
-					,"dcc").arg(dcc->szIp).arg(dcc->szPort);
+					,"dcc").arg(dcc->szIp, dcc->szPort);
 		}
 
 
@@ -315,7 +315,7 @@ void KviDccBroker::executeChat(KviDccBox *box,KviDccDescriptor * dcc)
 	KviStr szSubProto = dcc->szType;
 	szSubProto.toLower();
 
-	QString tmp = QString("dcc: %1 %2@%3:%4").arg(szSubProto.ptr()).arg(dcc->szNick).arg(dcc->szIp).arg(dcc->szPort);
+	QString tmp = QString("dcc: %1 %2@%3:%4").arg(szSubProto.ptr(), dcc->szNick, dcc->szIp, dcc->szPort);
 	KviDccChat * chat = new KviDccChat(dcc->console()->frame(),dcc,tmp.utf8().data());
 
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : \
@@ -341,7 +341,7 @@ void KviDccBroker::activeVoiceManage(KviDccDescriptor * dcc)
 					"<b>Direct Client Connection</b> in <b>VOICE</b> mode.<br>" \
 					"The connection target will be host <b>%4</b> on port <b>%5</b><br>" \
 				,"dcc" \
-			).arg(dcc->szNick).arg(dcc->szUser).arg(dcc->szHost).arg(dcc->szIp).arg(dcc->szPort);
+			).arg(dcc->szNick, dcc->szUser, dcc->szHost, dcc->szIp).arg(dcc->szPort);
 
 		KviDccAcceptBox * box = new KviDccAcceptBox(this,dcc,tmp,__tr2qs_ctx("DCC VOICE request","dcc"));
 		m_pBoxList->append(box);
@@ -412,7 +412,7 @@ void KviDccBroker::activeCanvasManage(KviDccDescriptor * dcc)
 					"<b>Direct Client Connection</b> in <b>CANVAS</b> mode.<br>" \
 					"The connection target will be host <b>%4</b> on port <b>%5</b><br>" \
 				,"dcc" \
-			).arg(dcc->szNick).arg(dcc->szUser).arg(dcc->szHost).arg(dcc->szIp).arg(dcc->szPort);
+			).arg(dcc->szNick, dcc->szUser, dcc->szHost, dcc->szIp).arg(dcc->szPort);
 
 		KviDccAcceptBox * box = new KviDccAcceptBox(this,dcc,tmp,__tr2qs_ctx("DCC CANVAS request","dcc"));
 		m_pBoxList->append(box);
@@ -505,9 +505,9 @@ void KviDccBroker::recvFileManage(KviDccDescriptor * dcc)
 						"<b>%5</b> large.<br>" \
 						"The connection target will be host <b>%6</b> on port <b>%7</b><br>" \
 					,"dcc" \
-				).arg(dcc->szNick).arg(dcc->szUser).arg(dcc->szHost).arg(
-				dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toULong())).arg(
-					dcc->szIp).arg(dcc->szPort);
+				).arg(dcc->szNick, dcc->szUser, dcc->szHost, 
+				dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toULong()), 
+					dcc->szIp, dcc->szPort);
 
 		} else {
 			// passive: we will be listening!
@@ -518,7 +518,7 @@ void KviDccBroker::recvFileManage(KviDccDescriptor * dcc)
 						"<b>%5</b> large.<br>" \
 						"You will be the passive side of the connection.<br>" \
 					,"dcc" \
-				).arg(dcc->szNick).arg(dcc->szUser).arg(dcc->szHost).arg(
+				).arg(dcc->szNick, dcc->szUser, dcc->szHost, 
 					dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toULong()));
 		}
 
@@ -669,7 +669,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 							"<b>auto-rename</b> the new file, or<br>" \
 							"<b>resume</b> an incomplete download?" \
 						,"dcc" \
-					).arg(dcc->szLocalFileName).arg(KviQString::makeSizeReadable(fi.size()));
+					).arg(dcc->szLocalFileName, KviQString::makeSizeReadable(fi.size()));
 			} else {
 				bDisableResume = true;
 				// the file on disk is larger or equal to the remote one

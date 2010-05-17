@@ -231,7 +231,7 @@ void KviDccChat::connectionInProgress()
 			struct in_addr a;
 			if(kvi_stringIpToBinaryIp(ip.ptr(),&a))ip.setNum(htonl(a.s_addr));
 
-			QString szReq = QString("PRIVMSG %1 :%2DCC %3 chat %4 %5").arg(m_pDescriptor->szNick).arg((char)0x01).arg(m_pDescriptor->szType).arg(ip.ptr()).arg(port);
+			QString szReq = QString("PRIVMSG %1 :%2DCC %3 chat %4 %5").arg(m_pDescriptor->szNick, QChar(0x01), m_pDescriptor->szType, ip.ptr()).arg(port);
 
 			if(m_pDescriptor->isZeroPortRequest())	
 			{
@@ -280,11 +280,11 @@ void KviDccChat::fillCaptionBuffers()
 {
 	QString tmp = QString("DCC %1 %2@%3:%4").arg(
 #ifdef COMPILE_SSL_SUPPORT
-		m_pDescriptor->bIsSSL ? "SChat" : "Chat").arg(
+		m_pDescriptor->bIsSSL ? "SChat" : "Chat", 
 #else
-		"Chat").arg(
+		"Chat", 
 #endif
-		m_pDescriptor->szNick).arg(m_pDescriptor->szIp).arg(m_pDescriptor->szPort);
+		m_pDescriptor->szNick, m_pDescriptor->szIp, m_pDescriptor->szPort);
 
 	m_szPlainTextCaption = tmp;
 

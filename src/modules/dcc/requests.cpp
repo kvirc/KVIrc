@@ -80,7 +80,7 @@ static void dcc_module_request_error(KviDccRequest * dcc,const QString& errText)
 
 	if(KVI_OPTION_BOOL(KviOption_boolNotifyFailedDccHandshakes))
 	{
-		QString szError = QString("Sorry, your DCC %1 request can't be satisfied: %2").arg(dcc->szType.ptr()).arg(errText);
+		QString szError = QString("Sorry, your DCC %1 request can't be satisfied: %2").arg(dcc->szType.ptr(), errText);
 		dcc_module_reply_errmsg(dcc,szError);
 	}
 }
@@ -452,6 +452,16 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 				__tr2qs_ctx("The above request is broken: The filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
 		}		
 		dcc->szParam1.cutToLast('/');
+	}
+
+	if(dcc->szParam1.contains("%2F"))
+	{
+		if(!dcc->ctcpMsg->msg->haltOutput())
+		{
+			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
+				__tr2qs_ctx("The above request is broken: The filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
+		}		
+		dcc->szParam1.cutToLast("%2F");
 	}
 
 	KviStr szExtensions = dcc->szType;
