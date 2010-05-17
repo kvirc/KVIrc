@@ -70,7 +70,7 @@ KviClassEditorTreeWidgetItem::KviClassEditorTreeWidgetItem(QTreeWidget * pTreeWi
 {
 	setName(szName);
 	m_cPos=0;
-
+	m_bInternal=false;
 	if(eType==KviClassEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
 	else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS))));
 	m_bClassModified=false;
@@ -80,6 +80,7 @@ KviClassEditorTreeWidgetItem::KviClassEditorTreeWidgetItem(KviClassEditorTreeWid
 : QTreeWidgetItem(pParentItem), m_eType(eType)
 {
 	setName(szName);
+	m_bInternal=false;
 	m_cPos=0;
 	setFlags(Qt::ItemIsEditable|Qt::ItemIsEnabled|Qt::ItemIsSelectable);
 	if(eType==KviClassEditorTreeWidgetItem::Namespace)
@@ -905,7 +906,6 @@ void KviClassEditor::getExportClassBuffer(QString &buffer,KviClassEditorTreeWidg
 	QString szBuf = it->buffer();
 	KviCommandFormatter::blockFromBuffer(szBuf);
 	QString szNam = buildFullClassName(it);
-	debug("export buffer");
 
 	buffer = "class(\"";
 	buffer += szNam;
@@ -920,7 +920,6 @@ void KviClassEditor::getExportClassBuffer(QString &buffer,KviClassEditorTreeWidg
 		KviClassEditorTreeWidgetItem * pFunction= (KviClassEditorTreeWidgetItem *)it->child(i);
 		if(pFunction->isMethod())
 		{
-			debug("append %s",pFunction->name().toUtf8().data());
 			buffer += "\t";
 			if (pFunction->isInternalFunction()) buffer+="internal ";
 			buffer += "function ";
@@ -1365,7 +1364,6 @@ void KviClassEditor::newClass()
 	it->setInheritsClass(szInheritsClassName);
 	activateItem(it);
 	m_pClasses->insert(szClassName,it);
-	debug("run class script");
 	KviKvsScript::run(szClass,g_pActiveWindow);
 }
 void KviClassEditor::newNamespace()
@@ -1559,12 +1557,8 @@ void KviClassEditor::saveNotBuiltClasses()
 void KviClassEditor::searchInheritedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInheritedClasses)
 {
 	KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> it (*m_pClasses);
-	debug("into searchInherited");
 	while(it.current())
 	{
-		//debug("class %s",it.current()->name().toUtf8().data());
-		//debug("inerits class %s",it.current()->InheritsClass().toUtf8().data());
-
 		if (KviQString::equalCI(szClass,it.current()->InheritsClass())) pInheritedClasses.append(it.current());
 		++it;
 	}
