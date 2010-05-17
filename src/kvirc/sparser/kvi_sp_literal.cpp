@@ -1419,6 +1419,10 @@ void KviServerParser::parseLiteralNick(KviIrcMessage *msg)
 				msg->setHaltOutput();
 	}
 
+	// reset any cached smart nick color information
+	KviIrcUserEntry * pUserEntry = msg->connection()->userDataBase()->find(szNick);
+	if(pUserEntry) pUserEntry->setSmartNickColor(-1);
+
 	for(KviChannel * c = console->connection()->channelList()->first();c;c = console->connection()->channelList()->next())
 	{
 		if(c->nickChange(szNick,szNewNick))
