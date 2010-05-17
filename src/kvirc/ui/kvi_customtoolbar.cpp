@@ -49,6 +49,7 @@ KviCustomToolBar::KviCustomToolBar(KviCustomToolBarDescriptor * pDesc, const QSt
 	m_pMovedChild = 0;
 	m_pMovedAction = 0;
 	m_pDraggedChild = 0;
+	m_pFilteredChildren = 0;
 	setAcceptDrops(true);
 	connect(KviActionManager::instance(),SIGNAL(beginCustomizeToolBars()),this,SLOT(beginCustomize()));
 	connect(KviActionManager::instance(),SIGNAL(endCustomizeToolBars()),this,SLOT(endCustomize()));
@@ -70,6 +71,8 @@ KviCustomToolBar::~KviCustomToolBar()
 			KviActionManager::instance()->setCurrentToolBar(0);
 	}
 
+	if(m_pFilteredChildren) 
+		delete m_pFilteredChildren;
 }
 
 void KviCustomToolBar::paintEvent(QPaintEvent * e)
@@ -87,12 +90,73 @@ void KviCustomToolBar::paintEvent(QPaintEvent * e)
 	}
 }
 
+void KviCustomToolBar::filteredChildDestroyed()
+{
+	if(!m_pFilteredChildren)
+		return;
+	const QObject * o = sender();
+	m_pFilteredChildren->remove((void *)o);
+}
+
+void KviCustomToolBar::filterChild(QObject * o)
+{
+	bool * pBool = new bool(((QWidget *)o)->isEnabled());
+	if(m_pFilteredChildren)
+		m_pFilteredChildren->insert(o,pBool);
+	if(!*pBool)
+		((QWidget *)o)->setEnabled(true);
+	o->installEventFilter(this);
+	connect(o,SIGNAL(destroyed()),this,SLOT(filteredChildDestroyed()));
+}
+
+void KviCustomToolBar::unfilterChild(QObject * o)
+{
+	if(m_pFilteredChildren)
+	{
+		bool * pBool = m_pFilteredChildren->find(o);
+		if(pBool)
+		{
+			if(!*pBool)
+				((QWidget *)o)->setEnabled(false);
+			o->removeEventFilter(this);
+			disconnect(o,SIGNAL(destroyed()),this,SLOT(filteredChildDestroyed()));
+		}
+	}
+}
+
 void KviCustomToolBar::beginCustomize()
 {
+	if(m_pFilteredChildren)
+		delete m_pFilteredChildren;
+
+	m_pFilteredChildren = new KviPointerHashTable<void *,bool>;
+	m_pFilteredChildren->setAutoDelete(true);
+	// filter the events for all the children
+	QList<QObject *> list = children();
+	for(QList<QObject *>::Iterator it = list.begin(); it != list.end(); ++it)
+	{
+		if((*it)->isWidgetType())
+			filterChild(*it);
+	}
 }
 
 void KviCustomToolBar::endCustomize()
 {
+	// stop filtering events
+	QList<QObject *> list = children();
+	for(QList<QObject *>::Iterator it = list.begin(); it != list.end(); ++it)
+	{
+		if((*it)->isWidgetType())
+			unfilterChild(*it);
+	}
+
+	// FIXME: We SHOULD MAKE SURE that the children are re-enabled...
+	// this could be done by calling setEnabled(isEnabled()) on each action ?
+	if(m_pFilteredChildren)
+	{
+		delete m_pFilteredChildren;
+		m_pFilteredChildren = 0;
+	}
 	syncDescriptor();
 }
 
@@ -109,6 +173,29 @@ void KviCustomToolBar::syncDescriptor()
 	}
 }
 
+void KviCustomToolBar::childEvent(QChildEvent * e)
+{
+	if(KviActionManager::customizingToolBars())
+	{
+		// this is useful for droppped and dragged-out children
+		if(e->type() == QEvent::ChildAdded)
+		{
+			if(e->child()->isWidgetType())
+				filterChild(e->child());
+			goto done;
+		}
+
+		if(e->type() == QEvent::ChildRemoved)
+		{
+			if(e->child()->isWidgetType())
+				unfilterChild(e->child());
+			goto done;
+		}
+	}
+done:
+	KviToolBar::childEvent(e);
+}
+ 
 void KviCustomToolBar::dragEnterEvent(QDragEnterEvent * e)
 {
 	if(!KviActionManager::customizingToolBars())
@@ -182,6 +269,8 @@ void KviCustomToolBar::dragLeaveEvent(QDragLeaveEvent *)
 {
 	if(m_pDraggedChild)
 	{
+		if(m_pFilteredChildren)
+			m_pFilteredChildren->remove(m_pDraggedChild); // just to be sure
 		delete m_pDraggedChild;
 		m_pDraggedChild = 0;
 	}
@@ -362,6 +451,7 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 
 	if(e->type() == QEvent::MouseButtonPress)
 	{
+		qDebug("");
 		KviActionManager::instance()->setCurrentToolBar(this);
 		QMouseEvent * pEvent = (QMouseEvent *)e;
 		if(pEvent->button() & Qt::LeftButton)

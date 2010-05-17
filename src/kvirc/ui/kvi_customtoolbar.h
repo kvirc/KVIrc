@@ -47,6 +47,7 @@ protected:
 	QWidget                          * m_pMovedChild;
 	QAction                          * m_pMovedAction;
 	QWidget                          * m_pDraggedChild;
+	KviPointerHashTable<void *,bool> * m_pFilteredChildren;
 public:
 	KviCustomToolBarDescriptor * descriptor(){ return m_pDescriptor; };
 protected:
@@ -55,16 +56,20 @@ protected:
 	virtual void dragMoveEvent(QDragMoveEvent * e);
 	virtual void dragLeaveEvent(QDragLeaveEvent * e);
 	virtual void dropEvent(QDropEvent * e);
+	virtual void childEvent(QChildEvent * e);
 	virtual bool eventFilter(QObject * o, QEvent * e);
 	int dropIndexAt(const QPoint & pnt, QWidget * pExclude, int * piExcludeIdx);
 	QWidget * widgetAt(int iIndex);
 	QAction * actionForWidget(QWidget * pWidget);
 	void drag(QWidget * pChild, const QPoint & pnt);
+	void filterChild(QObject * o); 
+	void unfilterChild(QObject * o); 
 	virtual void paintEvent(QPaintEvent * e);
 	void syncDescriptor();
 protected slots:
 	void beginCustomize();
 	void endCustomize();
+	void filteredChildDestroyed(); 
 };
 
 class KviCustomToolBarSeparator : public QWidget
