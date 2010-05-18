@@ -169,13 +169,18 @@ public:
 	* \return KviInputHistory *
 	*/
 	inline KviInputHistory * history(){ return KviInputHistory::instance(); };
+protected:
+	//virtual void resizeEvent(QResizeEvent * e);
+	virtual void focusInEvent(QFocusEvent * e);
+	virtual void setFocusProxy(QWidget * w);
+	virtual void keyPressEvent(QKeyEvent * e);
 public slots:
 	/**
 	* \brief Toggles the multiline editor
 	* \param bOn Whether to activate the multiline editor
 	* \return void
 	*/
-	void multilineEditorButtonToggled(bool bOn);
+	void multiLineEditorButtonToggled(bool bOn);
 
 	/**
 	* \brief Shows the history popup
@@ -200,11 +205,6 @@ public slots:
 	* \return void
 	*/
 	void toggleToolButtons();
-protected:
-	//virtual void resizeEvent(QResizeEvent * e);
-	virtual void focusInEvent(QFocusEvent * e);
-	virtual void setFocusProxy(QWidget * w);
-	virtual void keyPressEvent(QKeyEvent * e);
 };
 
 #endif //_KVI_INPUT_H_

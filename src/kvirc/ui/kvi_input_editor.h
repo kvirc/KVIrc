@@ -555,19 +555,147 @@ public slots:
 	* \return void
 	*/
 	void clear();
-signals:
+private slots:
 	/**
-	* \brief Called when the user press escape
+	* \brief Opens the history popup
 	* \return void
 	*/
-	void escapePressed();
+	void openHistory();
+	
+	/**
+	* \brief Toggles the multiline editor
+	* \return void
+	*/
+	void toggleMultiLineEditor();
+	
+	/**
+	* \brief Moves to the previous character
+	* \return void
+	*/
+	void previousChar();
+	
+	/**
+	* \brief Moves to the next character
+	* \return void
+	*/
+	void nextChar();
+	
+	/**
+	* \brief Selects up to the previous character
+	* \return void
+	*/
+	void previousCharSelection();
+	
+	/**
+	* \brief Selects up to the next character
+	* \return void
+	*/
+	void nextCharSelection();
+	
+	/**
+	* \brief Moves to the beginning of the previous word
+	* \return void
+	*/
+	void previousWord();
+	
+	/**
+	* \brief Moves to the end of the next word
+	* \return void
+	*/
+	void nextWord();
+	
+	/**
+	* \brief Selects up to the beginning of the previous word
+	* \return void
+	*/
+	void previousWordSelection();
+	
+	/**
+	* \brief Selects up to the end of the next word
+	* \return void
+	*/
+	void nextWordSelection();
+	
+	/**
+	* \brief Inserts bold control character
+	* \return void
+	*/
+	void insertBold();
+	
+	/**
+	* \brief Inserts reset control character
+	* \return void
+	*/
+	void insertReset();
+	
+	/**
+	* \brief Inserts underline control character
+	* \return void
+	*/
+	void insertUnderline();
+	
+	/**
+	* \brief Inserts reverse control character
+	* \return void
+	*/
+	void insertReverse();
+	
+	/**
+	* \brief Inserts non-crypt (plain text) control character
+	* \return void
+	*/
+	void insertPlainText();
+	
+	/**
+	* \brief Inserts icon control character
+	* \return void
+	*/
+	void insertIcon();
+	
+	/**
+	* \brief Inserts color control character
+	* \return void
+	*/
+	void insertColor();
+	
+	/**
+	* \brief Copies to clipboard
+	* \return void
+	*/
+	void copyInternal();
+	
+	/**
+	* \brief Cuts to clipboard
+	* \return void
+	*/
+	void cutInternal();
+	
+	/**
+	* \brief Pastes clipboard contents
+	* \return void
+	*/
+	void pasteInternal();
+	
+	/**
+	* \brief Undoes last action
+	* \return void
+	*/
+	void undoInternal();
+	
+	/**
+	* \brief Redoes last action
+	* \return void
+	*/
+	void redoInternal();
+	
+	/**
+	* \brief Select all
+	* \return void
+	*/
+	void selectAllInternal();
 
-	/**
-	* \brief Called when the user press enter/return
-	* \return void
-	*/
-	void enterPressed();
 protected:
+	void installShortcuts();
 	virtual void drawContents(QPainter *);
 	//virtual void resizeEvent(QResizeEvent * e);
 	virtual void timerEvent(QTimerEvent * e);
@@ -582,6 +710,18 @@ protected:
 	virtual void dropEvent(QDropEvent * e);
 	virtual void inputMethodEvent(QInputMethodEvent * e) ;
 	virtual void paintEvent(QPaintEvent * e);
+signals:
+	/**
+	* \brief Called when the user press escape
+	* \return void
+	*/
+	void escapePressed();
+
+	/**
+	* \brief Called when the user press enter/return
+	* \return void
+	*/
+	void enterPressed();
 };
 
 #endif //_KVI_INPUT_EDITOR_H_

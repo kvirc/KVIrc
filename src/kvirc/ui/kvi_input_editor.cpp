@@ -44,6 +44,7 @@
 #include "kvi_texticonmanager.h"
 #include "kvi_userinput.h"
 #include "kvi_userlistview.h"
+#include "kvi_shortcuts.h"
 
 #include <QClipboard>
 #include <QLabel>
@@ -57,6 +58,7 @@
 #include <QKeyEvent>
 #include <QDragEnterEvent>
 #include <QInputContext>
+#include <QShortcut>
 
 // from kvi_app.cpp
 extern KviTalPopupMenu         * g_pInputPopup;
@@ -121,6 +123,8 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	setContentsMargins(KVI_INPUT_MARGIN,KVI_INPUT_MARGIN,KVI_INPUT_MARGIN,KVI_INPUT_MARGIN);
 	//set the font and font metrics
 	applyOptions();
+	
+	installShortcuts();
 }
 
 KviInputEditor::~KviInputEditor()
@@ -1256,6 +1260,33 @@ void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 	repaintWithCursorOn();
 }
 
+void KviInputEditor::installShortcuts()
+{
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_MULTILINE_OPEN),this,SLOT(toggleMultiLineEditor()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_HISTORY),this,SLOT(openHistory()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PREV_CHAR),this,SLOT(previousChar()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_NEXT_CHAR),this,SLOT(nextChar()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PREV_CHAR_SELECT),this,SLOT(previousCharSelection()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_NEXT_CHAR_SELECT),this,SLOT(nextCharSelection()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PREV_WORD),this,SLOT(previousWord()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_NEXT_WORD),this,SLOT(nextWord()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PREV_WORD_SELECT),this,SLOT(previousWordSelection()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_NEXT_WORD_SELECT),this,SLOT(nextWordSelection()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_BOLD),this,SLOT(insertBold()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_RESET),this,SLOT(insertReset()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_UNDERLINE),this,SLOT(insertUnderline()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_REVERSE),this,SLOT(insertReverse()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PLAINTEXT),this,SLOT(insertPlainText()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_ICON),this,SLOT(insertIcon()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_COLOR),this,SLOT(insertColor()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_COPY),this,SLOT(copyInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_CUT),this,SLOT(cutInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PASTE),this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_UNDO),this,SLOT(undoInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_REDO),this,SLOT(redoInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_SELECTALL),this,SLOT(selectAllInternal()),0,Qt::WidgetShortcut);
+}
+
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
 {
 	// disable the keyPress handling when IM is in composition.
@@ -1283,22 +1314,6 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 		return;
 	}
 
-	if((e->modifiers() & Qt::AltModifier))
-	{
-		switch(e->key())
-		{
-			case Qt::Key_Enter:
-			case Qt::Key_Return:
-				if(m_pInputParent->inherits("KviInput"))
-				{
-					((KviInput*)(m_pInputParent))->multiLinePaste(m_szTextBuffer);
-					clear();
-					return;
-				}
-				break;
-		}
-	}
-
 
 //Make CtrlKey and CommandKey ("Apple") behave equally on MacOSX.
 //This way typical X11 and Apple shortcuts can be used simultanously within the input line.
@@ -1310,109 +1325,11 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 	{
 		switch(e->key())
 		{
-			case Qt::Key_Right:
-				if(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
-				{
-					// skip whitespace
-					while(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
-					{
-						if(!m_szTextBuffer.at(m_iCursorPosition).isSpace())break;
-						internalCursorRight(e->modifiers() & Qt::ShiftModifier);
-					}
-					// skip nonwhitespace
-					while(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
-					{
-						if(m_szTextBuffer.at(m_iCursorPosition).isSpace())break;
-						internalCursorRight(e->modifiers() & Qt::ShiftModifier);
-					}
-					repaintWithCursorOn();
-				}
-			break;
-			case Qt::Key_Left:
-				if(m_iCursorPosition > 0)
-				{
-					// skip whitespace
-					while(m_iCursorPosition > 0)
-					{
-						if(!m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())break;
-						internalCursorLeft(e->modifiers() & Qt::ShiftModifier);
-					}
-					// skip nonwhitespace
-					while(m_iCursorPosition > 0)
-					{
-						if(m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())break;
-						internalCursorLeft(e->modifiers() & Qt::ShiftModifier);
-					}
-					repaintWithCursorOn();
-				}
-			break;
 			case Qt::Key_J:
 			{
 				//avoid Ctrl+J from inserting a linefeed
 				break;
 			}
-			case Qt::Key_K:
-			{
-				if(!m_bReadOnly)
-				{
-					insertChar(KVI_TEXT_COLOR);
-					int xPos = xPositionFromCharIndex(m_iCursorPosition);
-					if(xPos > 24)xPos-=24;
-					if(!g_pColorWindow)g_pColorWindow = new KviColorWindow();
-					if(xPos+g_pColorWindow->width() > width())xPos = width()-(g_pColorWindow->width()+2);
-					g_pColorWindow->move(mapToGlobal(QPoint(xPos,-35)));
-					g_pColorWindow->popup(this);
-				}
-			}
-			break;
-			case Qt::Key_B:
-				if(!m_bReadOnly) insertChar(KVI_TEXT_BOLD);
-			break;
-			case Qt::Key_O:
-				if(!m_bReadOnly) insertChar(KVI_TEXT_RESET);
-			break;
-			case Qt::Key_U:
-				if(!m_bReadOnly) insertChar(KVI_TEXT_UNDERLINE);
-			break;
-			case Qt::Key_R:
-				if(!m_bReadOnly) insertChar(KVI_TEXT_REVERSE);
-			break;
-			case Qt::Key_P:
-				if(!m_bReadOnly) insertChar(KVI_TEXT_CRYPTESCAPE); // DO NOT CRYPT THIS STUFF
-			break;
-			case Qt::Key_I:
-			{
-				if(!m_bReadOnly)
-				{
-					insertChar(KVI_TEXT_ICON); // THE NEXT WORD IS AN ICON NAME
-					int iXPos = xPositionFromCharIndex(m_iCursorPosition);
-					if(iXPos > 24)
-						iXPos-=24;
-					if(!g_pTextIconWindow)
-						g_pTextIconWindow = new KviTextIconWindow();
-
-					if(iXPos+g_pTextIconWindow->width() > width())
-						iXPos = width()-(g_pTextIconWindow->width()+2);
-					g_pTextIconWindow->move(mapToGlobal(QPoint(iXPos,-KVI_TEXTICON_WIN_HEIGHT)));
-					g_pTextIconWindow->popup(this,false);
-				}
-			}
-			break;
-			case Qt::Key_C:
-				copyToClipboard();
-			break;
-			case Qt::Key_X:
-				if(!m_bReadOnly) cut();
-			break;
-			case Qt::Key_V:
-				if(!m_bReadOnly) pasteClipboardWithConfirmation();
-			break;
-			case Qt::Key_Z:
-				if(!m_bReadOnly) undo();
-			break;
-			case Qt::Key_Y:
-				if(!m_bReadOnly) redo();
-			break;
 			case Qt::Key_Backspace:
 				//delete last word
 				if(m_iCursorPosition > 0 && !m_bReadOnly && !hasSelection())
@@ -1440,21 +1357,9 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 					repaintWithCursorOn();
 				}
 			break;
-			case Qt::Key_PageUp:
-				if(!KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))
-					break;
-				if(m_pInputParent->inherits("KviInput"))
-					((KviInput*)(m_pInputParent))->historyButtonClicked();
-			break;
 			case Qt::Key_F:
 				if(m_pKviWindow)
 					if(m_pKviWindow->view())m_pKviWindow->view()->toggleToolWidget();
-			break;
-			case Qt::Key_A:
-				m_iSelectionBegin=0;
-				m_iSelectionEnd=m_szTextBuffer.length()-1;
-				m_iCursorPosition=m_szTextBuffer.length();
-				repaintWithCursorOn();
 			break;
 			case Qt::Key_Return:
 			case Qt::Key_Enter:
@@ -1529,20 +1434,6 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 
 	switch(e->key())
 	{
-		case Qt::Key_Right:
-			if(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
-			{
-				internalCursorRight(e->modifiers() & Qt::ShiftModifier);
-				repaintWithCursorOn();
-			}
-			break;
-		case Qt::Key_Left:
-			if(m_iCursorPosition > 0)
-			{
-				internalCursorLeft(e->modifiers() & Qt::ShiftModifier);
-				repaintWithCursorOn();
-			}
-			break;
 		case Qt::Key_Backspace:
 			if(!m_bReadOnly)
 			{
@@ -2212,16 +2103,249 @@ void KviInputEditor::redo()
 	}
 }
 
-void KviInputEditor::addCommand(const Command& cmd)
+void KviInputEditor::addCommand(const Command & cmd)
 {
-    if (separator && undoState && history[undoState-1].type != Separator) {
-        history.resize(undoState + 2);
-        history[undoState++] = Command(Separator, m_iCursorPosition, 0, m_iSelectionBegin, m_iSelectionEnd);
-    } else {
-        history.resize(undoState + 1);
-    }
-    separator = false;
-    history[undoState++] = cmd;
+	if (separator && undoState && history[undoState-1].type != Separator)
+	{
+		history.resize(undoState + 2);
+		history[undoState++] = Command(Separator, m_iCursorPosition, 0, m_iSelectionBegin, m_iSelectionEnd);
+	} else {
+		history.resize(undoState + 1);
+	}
+	separator = false;
+	history[undoState++] = cmd;
+}
+
+void KviInputEditor::openHistory()
+{
+	if(!KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))
+		return;
+	if(m_pInputParent->inherits("KviInput"))
+		((KviInput*)(m_pInputParent))->historyButtonClicked();
+}
+
+void KviInputEditor::toggleMultiLineEditor()
+{
+	if(m_pInputParent->inherits("KviInput"))
+	{
+		((KviInput*)(m_pInputParent))->multiLinePaste(m_szTextBuffer);
+		clear();
+		return;
+	}
+}
+
+void KviInputEditor::previousChar()
+{
+	if(m_iCursorPosition > 0)
+	{
+		internalCursorLeft(false);
+		repaintWithCursorOn();
+	}
+}
+
+void KviInputEditor::nextChar()
+{
+	if(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
+	{
+		internalCursorRight(false);
+		repaintWithCursorOn();
+	}
+}
+
+void KviInputEditor::previousCharSelection()
+{
+	if(m_iCursorPosition > 0)
+	{
+		internalCursorLeft(true);
+		repaintWithCursorOn();
+	}
+}
+
+void KviInputEditor::nextCharSelection()
+{
+	if(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
+	{
+		internalCursorRight(true);
+		repaintWithCursorOn();
+	}
+}
+
+void KviInputEditor::previousWord()
+{
+	if(m_iCursorPosition > 0)
+	{
+		// skip whitespace
+		while(m_iCursorPosition > 0)
+		{
+			if(!m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
+				break;
+			internalCursorLeft(false);
+		}
+		// skip nonwhitespace
+		while(m_iCursorPosition > 0)
+		{
+			if(m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
+				break;
+			internalCursorLeft(false);
+		}
+		repaintWithCursorOn();
+	}
+}
+
+void KviInputEditor::nextWord()
+{
+	if(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
+	{
+		// skip whitespace
+		while(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
+		{
+			if(!m_szTextBuffer.at(m_iCursorPosition).isSpace())
+				break;
+			internalCursorRight(false);
+		}
+		// skip nonwhitespace
+		while(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
+		{
+			if(m_szTextBuffer.at(m_iCursorPosition).isSpace())
+				break;
+			internalCursorRight(false);
+		}
+		repaintWithCursorOn();
+	}
+}
+
+void KviInputEditor::previousWordSelection()
+{
+	if(m_iCursorPosition > 0)
+	{
+		// skip whitespace
+		while(m_iCursorPosition > 0)
+		{
+			if(!m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
+				break;
+			internalCursorLeft(true);
+		}
+		// skip nonwhitespace
+		while(m_iCursorPosition > 0)
+		{
+			if(m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
+				break;
+			internalCursorLeft(true);
+		}
+		repaintWithCursorOn();
+	}
+}
+
+void KviInputEditor::nextWordSelection()
+{
+	if(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
+	{
+		// skip whitespace
+		while(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
+		{
+			if(!m_szTextBuffer.at(m_iCursorPosition).isSpace())
+				break;
+			internalCursorRight(true);
+		}
+		// skip nonwhitespace
+		while(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
+		{
+			if(m_szTextBuffer.at(m_iCursorPosition).isSpace())
+				break;
+			internalCursorRight(true);
+		}
+		repaintWithCursorOn();
+	}
+}
+
+void KviInputEditor::insertBold()
+{
+	if(!m_bReadOnly) insertChar(KVI_TEXT_BOLD);
+}
+
+void KviInputEditor::insertReset()
+{
+	if(!m_bReadOnly) insertChar(KVI_TEXT_RESET);
+}
+
+void KviInputEditor::insertUnderline()
+{
+	if(!m_bReadOnly) insertChar(KVI_TEXT_UNDERLINE);
+}
+
+void KviInputEditor::insertReverse()
+{
+	if(!m_bReadOnly) insertChar(KVI_TEXT_REVERSE);
+}
+
+void KviInputEditor::insertPlainText()
+{
+	if(!m_bReadOnly) insertChar(KVI_TEXT_CRYPTESCAPE); // DO NOT CRYPT THIS STUFF
+}
+
+void KviInputEditor::insertIcon()
+{
+	if(!m_bReadOnly)
+	{
+		insertChar(KVI_TEXT_ICON); // THE NEXT WORD IS AN ICON NAME
+		int iXPos = xPositionFromCharIndex(m_iCursorPosition);
+		if(iXPos > 24)
+			iXPos-=24;
+		if(!g_pTextIconWindow)
+			g_pTextIconWindow = new KviTextIconWindow();
+
+		if(iXPos+g_pTextIconWindow->width() > width())
+			iXPos = width()-(g_pTextIconWindow->width()+2);
+		g_pTextIconWindow->move(mapToGlobal(QPoint(iXPos,-KVI_TEXTICON_WIN_HEIGHT)));
+		g_pTextIconWindow->popup(this,false);
+	}
+}
+
+void KviInputEditor::insertColor()
+{
+	if(!m_bReadOnly)
+	{
+		insertChar(KVI_TEXT_COLOR);
+		int xPos = xPositionFromCharIndex(m_iCursorPosition);
+		if(xPos > 24)xPos-=24;
+		if(!g_pColorWindow)g_pColorWindow = new KviColorWindow();
+		if(xPos+g_pColorWindow->width() > width())xPos = width()-(g_pColorWindow->width()+2);
+		g_pColorWindow->move(mapToGlobal(QPoint(xPos,-35)));
+		g_pColorWindow->popup(this);
+	}
+}
+
+void KviInputEditor::copyInternal()
+{
+	copyToClipboard();
+}
+
+void KviInputEditor::cutInternal()
+{
+	if(!m_bReadOnly) cut();
+}
+
+void KviInputEditor::pasteInternal()
+{
+	if(!m_bReadOnly) pasteClipboardWithConfirmation();
+}
+
+void KviInputEditor::undoInternal()
+{
+	if(!m_bReadOnly) undo();
+}
+
+void KviInputEditor::redoInternal()
+{
+	if(!m_bReadOnly) redo();
+}
+
+void KviInputEditor::selectAllInternal()
+{
+	m_iSelectionBegin=0;
+	m_iSelectionEnd=m_szTextBuffer.length()-1;
+	m_iCursorPosition=m_szTextBuffer.length();
+	repaintWithCursorOn();
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

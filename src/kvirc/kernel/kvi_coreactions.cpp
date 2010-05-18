@@ -208,7 +208,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_toolbareditor.png",
 		KVI_SMALLICON_TOOLBAR,
 		0,
-		KVI_SHORTCUTS_EDITOR_TOOLBAR);
+		KVI_SHORTCUTS_EDITORS_TOOLBAR);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_JOINCHANNELS,
@@ -230,7 +230,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_actioneditor.png",
 		KVI_SMALLICON_SCRIPTACTION,
 		0,
-		KVI_SHORTCUTS_EDITOR_ACTION);
+		KVI_SHORTCUTS_EDITORS_ACTION);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_ALIASEDITOR,
@@ -241,7 +241,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_aliaseditor.png",
 		KVI_SMALLICON_ALIAS,
 		0,
-		KVI_SHORTCUTS_EDITOR_ALIAS);
+		KVI_SHORTCUTS_EDITORS_ALIAS);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_CLASSEDITOR,
@@ -252,7 +252,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_classeditor.png",
 		KVI_SMALLICON_CLASSEDITOR,
 		0,
-		KVI_SHORTCUTS_EDITOR_CLASS);
+		KVI_SHORTCUTS_EDITORS_CLASS);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_EVENTEDITOR,
@@ -263,7 +263,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_eventeditor.png",
 		KVI_SMALLICON_EVENT,
 		0,
-		KVI_SHORTCUTS_EDITOR_EVENT);
+		KVI_SHORTCUTS_EDITORS_EVENT);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_POPUPEDITOR,
@@ -274,7 +274,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_popupeditor.png",
 		KVI_SMALLICON_POPUP,
 		0,
-		KVI_SHORTCUTS_EDITOR_POPUP);
+		KVI_SHORTCUTS_EDITORS_POPUP);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_RAWEDITOR,
@@ -285,7 +285,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_raweditor.png",
 		KVI_SMALLICON_RAWEVENT,
 		0,
-		KVI_SHORTCUTS_EDITOR_RAW);
+		KVI_SHORTCUTS_EDITORS_RAW);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_CODETESTER,
@@ -296,7 +296,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_codetester.png",
 		KVI_SMALLICON_BOMB,
 		0,
-		KVI_SHORTCUTS_EDITOR_TESTER);
+		KVI_SHORTCUTS_EDITORS_TESTER);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_EXECUTEKVS,

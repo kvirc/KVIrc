@@ -40,6 +40,7 @@
 #include "kvi_scripteditor.h"
 #include "kvi_historywin.h"
 #include "kvi_userinput.h"
+#include "kvi_shortcuts.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_tooltip.h"
@@ -57,6 +58,7 @@
 #include <QMouseEvent>
 #include <QUrl>
 #include <QHBoxLayout>
+#include <QShortcut>
 
 #include <ctype.h>
 #include <stdlib.h>
@@ -217,7 +219,7 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 		{
 			case Qt::Key_Enter:
 			case Qt::Key_Return:
-				multilineEditorButtonToggled(!m_pMultiLineEditor);
+				multiLineEditorButtonToggled(!m_pMultiLineEditor);
 			break;
 		}
 	}
@@ -277,9 +279,6 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 				}
 			}
 			break;
-			case Qt::Key_PageUp:
-				historyButtonClicked();
-			break;
 		}
 	}
 }
@@ -287,13 +286,13 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 void KviInput::multiLinePaste(const QString & szText)
 {
 	if(!m_pMultiLineEditor)
-		multilineEditorButtonToggled(true);
+		multiLineEditorButtonToggled(true);
 	QString szCompleteText = m_pInputEditor->text();
 	szCompleteText.append(szText);
 	m_pMultiLineEditor->setText(szCompleteText);
 }
 
-void KviInput::multilineEditorButtonToggled(bool bOn)
+void KviInput::multiLineEditorButtonToggled(bool bOn)
 {
 	if(m_pMultiLineEditor)
 	{
