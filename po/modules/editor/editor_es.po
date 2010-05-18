@@ -1,20 +1,15 @@
 # translation of editor_es.po to spanish
 #
-# egns <grannost@gmail.com>, 2009.
+# egns <grannost@gmail.com>, 2009-2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: editor_es\n"
-"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-24 10:36+0200\n"
-"PO-Revision-Date: 2009-11-29 11:29+0100\n"
+"PO-Revision-Date: 2010-05-18 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/eventeditor/eventeditor.cpp:393
 #, c-format
@@ -36,13 +31,17 @@ msgstr ""
 "%s"
 
 #: src/modules/raweditor/raweditor.cpp:367
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "\n"
 "\n"
 "Raw Event:\n"
 "%s"
-msgstr "Evento en bruto"
+msgstr ""
+"\n"
+"\n"
+"Evento en bruto:\n"
+"%s"
 
 #: src/modules/popupeditor/popupeditor.cpp:96
 msgid "### Epilogue ###"
@@ -54,7 +53,7 @@ msgstr "### Prólogo ###"
 
 #: src/modules/classeditor/classeditor.cpp:1800
 msgid "&Add"
-msgstr ""
+msgstr "&Añadir"
 
 #: src/modules/raweditor/raweditor.cpp:181
 msgid "&Add Raw Event..."
@@ -69,7 +68,7 @@ msgstr "&Aplicar"
 
 #: src/modules/classeditor/classeditor.cpp:1568
 msgid "&Build"
-msgstr ""
+msgstr "&Compilar"
 
 #: src/modules/classeditor/classeditor.cpp:1721
 #: src/modules/classeditor/classeditor.cpp:1807
@@ -87,7 +86,7 @@ msgstr "&Copy"
 
 #: src/modules/classeditor/classeditor.cpp:1714
 msgid "&Create Class"
-msgstr ""
+msgstr "&Crear clase"
 
 #: src/modules/eventeditor/eventeditor.cpp:201
 #: src/modules/raweditor/raweditor.cpp:160
@@ -146,14 +145,12 @@ msgid "&Paste Below"
 msgstr "&Pegar debajo"
 
 #: src/modules/classeditor/classeditor.cpp:1801
-#, fuzzy
 msgid "&Rename"
-msgstr "Renombrar"
+msgstr "&Renombrar"
 
 #: src/modules/classeditor/classeditor.cpp:1717
-#, fuzzy
 msgid "&Rename Class"
-msgstr "Renombrar alias"
+msgstr "&Renombrar clase"
 
 #: src/modules/editor/scripteditor.cpp:250
 #: src/modules/editor/scripteditor.cpp:1000
@@ -165,9 +162,8 @@ msgid "&Replace in all Aliases"
 msgstr "&Reemplazar en todos los aliases"
 
 #: src/modules/classeditor/classeditor.cpp:1573
-#, fuzzy
 msgid "&Save"
-msgstr "&Guardar como..."
+msgstr "&Guardar..."
 
 #: src/modules/editor/scripteditor.cpp:728
 msgid "&Save As..."
@@ -239,13 +235,12 @@ msgid "Add Alias"
 msgstr "Añadir alias"
 
 #: src/modules/classeditor/classeditor.cpp:738
-#, fuzzy
 msgid "Add Class"
-msgstr "Añadir alias"
+msgstr "Añadir clase"
 
 #: src/modules/classeditor/classeditor.cpp:746
 msgid "Add Member Function"
-msgstr ""
+msgstr "Añadir función miembro"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:564
 #: src/modules/aliaseditor/aliaseditor.cpp:1130
@@ -291,6 +286,8 @@ msgid ""
 "An external script has changed the alias you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
+"Un script externo ha cambiado el alias que estás editando actualmente. ¿Quieres "
+"aceptar los cambios externos?"
 
 #: src/modules/actioneditor/actioneditor.cpp:869
 msgid "Apply"
@@ -443,32 +440,27 @@ msgstr "Elige la categoría que mejor defina esta acción"
 
 #: src/modules/classeditor/classeditor.cpp:121
 #: src/modules/classeditor/classeditor.cpp:684
-#, fuzzy
 msgid "Class"
-msgstr "Alias"
+msgstr "Clase"
 
 #: src/modules/classeditor/classeditor.cpp:1561
-#, fuzzy
 msgid "Class Editor"
-msgstr "Editor de aliases"
+msgstr "Editor de clases"
 
 #: src/modules/classeditor/classeditor.cpp:939
 #: src/modules/classeditor/classeditor.cpp:1009
-#, fuzzy
 msgid "Class Export"
-msgstr "Exportar alias"
+msgstr "Exportar clase"
 
 #: src/modules/classeditor/classeditor.cpp:499
-#, fuzzy
 msgid "Class already exists"
-msgstr "El alias ya existe"
+msgstr "La clase ya existe"
 
 #: src/modules/classeditor/classeditor.cpp:1656
-#, fuzzy
 msgid "Class names can contain only letters, digits and underscores"
 msgstr ""
-"Los nombres de los alias sólo pueden contener letras, dígitos, barras bajas "
-"y separadores de espacio de nombres '::'"
+"El nombre de la clase sólo puede contener letras, dígitos y barras "
+"bajas"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:324
 msgid "Close"
@@ -479,9 +471,8 @@ msgid "Code"
 msgstr "Código"
 
 #: src/modules/classeditor/classeditor.cpp:794
-#, fuzzy
 msgid "Collapse All Items"
-msgstr "Cerrar todos los espacios de nombres"
+msgstr "Cerrar todos los items"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:609
 msgid "Collapse All Namespaces"
@@ -497,7 +488,7 @@ msgstr "Comentarios:"
 
 #: src/modules/classeditor/classeditor.cpp:1452
 msgid "Compilation error - KVIrc"
-msgstr ""
+msgstr "Error de compilación - KVIrc"
 
 #: src/modules/popupeditor/popupeditor.cpp:236
 msgid "Condition:"
@@ -509,7 +500,7 @@ msgstr "Confirmar eliminación de la barra de herramientas"
 
 #: src/modules/editor/scripteditor.cpp:249
 msgid "Context sensitive help"
-msgstr ""
+msgstr "Ayuda sensible al contexto"
 
 #: src/modules/popupeditor/popupeditor.cpp:425
 msgid "Cu&t"
@@ -540,14 +531,12 @@ msgid "Do you really want to remove the alias \"%Q\" ?"
 msgstr "¿Realmente quieres eliminar el alias \"%Q\"?"
 
 #: src/modules/classeditor/classeditor.cpp:1148
-#, fuzzy
 msgid "Do you really want to remove the class \"%Q\" ?"
-msgstr "¿Realmente quieres eliminar el alias \"%Q\"?"
+msgstr "¿Realmente quieres eliminar la clase \"%Q\"?"
 
 #: src/modules/classeditor/classeditor.cpp:1154
-#, fuzzy
 msgid "Do you really want to remove the function \"%Q\" ?"
-msgstr "¿Realmente quieres eliminar el alias \"%Q\"?"
+msgstr "¿Realmente quieres eliminar la función \"%Q\"?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:925
 #: src/modules/classeditor/classeditor.cpp:1150
@@ -577,18 +566,16 @@ msgid "Edit the alias or namespace name"
 msgstr "Editar el alias o el nombre del espacio de nombres"
 
 #: src/modules/classeditor/classeditor.cpp:174
-#, fuzzy
 msgid "Edit the class or namespace name"
-msgstr "Editar el alias o el nombre del espacio de nombres"
+msgstr "Editar la clase o el nombre del espacio de nombres"
 
 #: src/modules/eventeditor/eventeditor.cpp:115
 msgid "Edit the event handler name."
 msgstr "Editar el nombre del manejador de eventos."
 
 #: src/modules/classeditor/classeditor.cpp:190
-#, fuzzy
 msgid "Edit the function member name"
-msgstr "Editar el nombre del manejador de eventos."
+msgstr "Editar el nombre de la función miembro"
 
 #: src/modules/raweditor/raweditor.cpp:104
 msgid "Edit the raw event handler name."
@@ -682,14 +669,12 @@ msgid "Find In Aliases..."
 msgstr "Buscar en aliases..."
 
 #: src/modules/classeditor/classeditor.cpp:836
-#, fuzzy
 msgid "Find In Classes"
-msgstr "Buscar en aliases"
+msgstr "Buscar en clases"
 
 #: src/modules/classeditor/classeditor.cpp:788
-#, fuzzy
 msgid "Find In Classes..."
-msgstr "Buscar en aliases..."
+msgstr "Buscar en clases..."
 
 #: src/modules/editor/scripteditor.cpp:524
 msgid "Find:"
@@ -714,16 +699,14 @@ msgstr ""
 "Se encontró un espacio de nombres vacío en el nombre del espacio de nombres"
 
 #: src/modules/classeditor/classeditor.cpp:447
-#, fuzzy
 msgid "Function already exists"
-msgstr "El alias ya existe"
+msgstr "La función ya existe"
 
 #: src/modules/classeditor/classeditor.cpp:1772
-#, fuzzy
 msgid "Function names can contain only letters, digits and underscores"
 msgstr ""
-"Los nombres de los alias sólo pueden contener letras, dígitos, barras bajas "
-"y separadores de espacio de nombres '::'"
+"Los nombres de las funciones sólo pueden contener letras, dígitos y "
+"barras bajas"
 
 #: src/modules/editor/scripteditor.cpp:520
 msgid "Functions:"
@@ -746,21 +729,20 @@ msgid "Id"
 msgstr "ID"
 
 #: src/modules/classeditor/classeditor.cpp:1665
-#, fuzzy
 msgid ""
 "In rename mode class names can contain only letters, digits and underscores "
 "and namespaces :: separator"
 msgstr ""
-"Los nombres de los alias sólo pueden contener letras, dígitos, barras bajas "
+"Los nombres de las clases sólo pueden contener letras, dígitos, barras bajas "
 "y separadores de espacio de nombres '::'"
 
 #: src/modules/classeditor/classeditor.cpp:690
 msgid "Inherits Class"
-msgstr ""
+msgstr "Hereda la clase"
 
 #: src/modules/classeditor/classeditor.cpp:1674
 msgid "Inherits Class:"
-msgstr ""
+msgstr "Hereda la clase:"
 
 #: src/modules/actioneditor/actioneditor.cpp:107
 msgid "Internal unique name for the action"
@@ -805,9 +787,8 @@ msgid "Manually"
 msgstr "Manualmente"
 
 #: src/modules/classeditor/classeditor.cpp:696
-#, fuzzy
 msgid "Member Function:"
-msgstr "Funciones:"
+msgstr "Funciones miembro:"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:989
 msgid "Missing Alias Name"
@@ -829,9 +810,8 @@ msgid "My ToolBar"
 msgstr "Mi barra de herramientas"
 
 #: src/modules/classeditor/classeditor.cpp:577
-#, fuzzy
 msgid "Name already exists as Class name"
-msgstr "El espacio de nombres ya existe"
+msgstr "El nombre ya existe como una clase"
 
 #: src/modules/actioneditor/actioneditor.cpp:103
 msgid "Name:"
@@ -1034,7 +1014,7 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:321
 msgid "OverWrite Current Alias"
-msgstr ""
+msgstr "Sobreescribir el alias actual"
 
 #: src/modules/popupeditor/popupeditor.cpp:440
 msgid "Paste Above"
@@ -1049,14 +1029,12 @@ msgid "Please choose the icon for the ToolBar"
 msgstr "Por favor elige el icono para la barra de herramientas"
 
 #: src/modules/classeditor/classeditor.cpp:1644
-#, fuzzy
 msgid "Please enter the name for the class:"
-msgstr "Por favor introduce el nombre para el nuevo alias"
+msgstr "Por favor introduce el nombre para la clase:"
 
 #: src/modules/classeditor/classeditor.cpp:1763
-#, fuzzy
 msgid "Please enter the name for the member function:"
-msgstr "Por favor introduce el nombre para el nuevo alias"
+msgstr "Por favor introduce el nombre para la nueva función:"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1123
 msgid "Please enter the name for the new alias"
@@ -1085,20 +1063,18 @@ msgstr ""
 "marcados."
 
 #: src/modules/classeditor/classeditor.cpp:837
-#, fuzzy
 msgid ""
 "Please enter the text to be searched for. The matching function will be "
 "highlighted."
 msgstr ""
-"Por favor introduce el texto a ser buscado. Los aliases coincidentes serán "
-"marcados."
+"Por favor introduce el texto a ser buscado. Las funciones coincidentes serán "
+"marcadas."
 
 #: src/modules/classeditor/classeditor.cpp:1152
-#, fuzzy
 msgid ""
 "Please note that all the children classes/functions will be deleted too."
 msgstr ""
-"Por favor, ten en cuenta que los objetos hijo serán eliminados también."
+"Por favor, ten en cuenta que las clases/funciones hijas serán eliminadas también."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:927
 msgid "Please note that all the children items will be deleted too."
@@ -1213,7 +1189,7 @@ msgstr "Separador"
 
 #: src/modules/classeditor/classeditor.cpp:1783
 msgid "Set as <b>Internal</b> Function: "
-msgstr ""
+msgstr "Configurar como función <b>interna</b>: "
 
 #: src/modules/actioneditor/actioneditor.cpp:148
 msgid "Small Icon:"
@@ -1296,12 +1272,11 @@ msgstr "¡No hay nada seleccionado!"
 
 #: src/modules/classeditor/classeditor.cpp:1443
 msgid "These Inherited classes will be not compiled too:"
-msgstr ""
+msgstr "Estas clases heredadas no serán compiladas tampoco:"
 
 #: src/modules/classeditor/classeditor.cpp:578
-#, fuzzy
 msgid "This name is already in use as Class name. Please choose another one."
-msgstr "Este nombre ya está en uso. Por favor, elige otro."
+msgstr "Este nombre ya está en uso como el nombre de clase. Por favor, elige otro."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:442
 #: src/modules/aliaseditor/aliaseditor.cpp:454
@@ -1335,7 +1310,7 @@ msgstr "Tipo"
 
 #: src/modules/classeditor/classeditor.cpp:1437
 msgid "Unable to compile class: "
-msgstr ""
+msgstr "No se pudo compilar la clase: "
 
 #: src/modules/actioneditor/actioneditor.cpp:717
 msgid "Unable to write to the actions file."
@@ -1347,9 +1322,8 @@ msgid "Unable to write to the alias file."
 msgstr "No se pudo escribir al archivo de alias."
 
 #: src/modules/classeditor/classeditor.cpp:1039
-#, fuzzy
 msgid "Unable to write to the class file."
-msgstr "No se pudo escribir al archivo de alias."
+msgstr "No se pudo escribir al archivo de clases."
 
 #: src/modules/eventeditor/eventeditor.cpp:453
 msgid "Unable to write to the event file."

@@ -1,21 +1,16 @@
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Translation of register_es.po to spanish
 #
-# egns <grannost@gmail.com>, 2009.
+# egns <grannost@gmail.com>, 2009-2010
 msgid ""
 msgstr ""
 "Project-Id-Version: register_es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-24 10:36+0200\n"
-"PO-Revision-Date: 2009-11-29 14:20+0100\n"
-"Last-Translator: egns <grannost@gmail.com>\n"
-"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2010-05-18 13:03+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: egns <grannost@gmail.com>\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/reguser/libkvireguser.cpp:820
 msgid "    Mask: %Q!%Q@%Q"
@@ -428,7 +423,7 @@ msgstr "No se especificó propiedad"
 #: src/modules/regchan/libkviregchan.cpp:120
 #: src/modules/regchan/libkviregchan.cpp:177
 msgid "No such channel/netmask entry in the database"
-msgstr ""
+msgstr "No existe esa entrada de canal/máscara en la base de datos"
 
 #: src/modules/reguser/dialog.cpp:122
 msgid "Notify as:"
@@ -493,11 +488,11 @@ msgstr "Elimina las entradas seleccionadas actualmente."
 
 #: src/modules/reguser/dialog.cpp:272
 msgid "Select all"
-msgstr ""
+msgstr "Seleccionar todo"
 
 #: src/modules/reguser/dialog.cpp:274
 msgid "Select all the entries"
-msgstr ""
+msgstr "Seleccionar todas las entradas"
 
 #: src/modules/reguser/wizard.cpp:97
 msgid "Step 1: Entry Name"

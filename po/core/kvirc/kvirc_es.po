@@ -5,14 +5,15 @@
 # Roberto Ciria <rciria@gmail.com>, 2007.
 # Armando Camarero <arcepi@arcepi.net>, 2009.
 # egns <grannost@gmail.com>, 2009.
+# Neiko, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-24 10:36+0200\n"
-"PO-Revision-Date: 2009-11-29 15:27+0100\n"
-"Last-Translator: egns <grannost@gmail.com>\n"
-"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2010-05-18 11:47+0200\n"
+"Last-Translator: \n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -118,22 +119,18 @@ msgid "### Log session terminated at %1 ###"
 msgstr "### Sesión de registro terminada a las %1 ###"
 
 #: src/kvilib/core/kvi_qstring.cpp:250
-#, fuzzy
 msgid "%1 GiB"
 msgstr "%1 GB"
 
 #: src/kvilib/core/kvi_qstring.cpp:237
-#, fuzzy
 msgid "%1 KiB"
 msgstr "%1 KB"
 
 #: src/kvilib/core/kvi_qstring.cpp:243
-#, fuzzy
 msgid "%1 MiB"
 msgstr "%1 MB"
 
 #: src/kvilib/core/kvi_qstring.cpp:255
-#, fuzzy
 msgid "%1 TiB"
 msgstr "%1 TB"
 
@@ -154,9 +151,8 @@ msgid "%1 is %2 (%3)"
 msgstr "%1 es %2 (%3)"
 
 #: src/kvirc/ui/kvi_userlistview.cpp:1600
-#, fuzzy
 msgid "%1 is an <b>IrcOp</b>"
-msgstr "<b>KVIrc</b>"
+msgstr "%1 es un <b>IrcOp</b>"
 
 #: src/kvirc/ui/kvi_query.cpp:201
 msgid "%1 is probably away"
@@ -526,7 +522,7 @@ msgstr "Anclar"
 
 #: src/modules/setup/setupwizard.cpp:477
 msgid "&Don't apply any theme"
-msgstr ""
+msgstr "&No aplicar ningún tema"
 
 #: src/kvilib/system/kvi_locale.cpp:1057
 msgid "&Edit Bookmarks"
@@ -534,7 +530,7 @@ msgstr "&Editar marcadores"
 
 #: src/modules/setup/setupwizard.cpp:456
 msgid "&Fancy Theme"
-msgstr ""
+msgstr "Tema &bonito"
 
 #: src/kvilib/system/kvi_locale.cpp:1088
 msgid "&Filter:"
@@ -574,7 +570,7 @@ msgstr "&Localización:"
 
 #: src/modules/setup/setupwizard.cpp:475
 msgid "&Minimalist Theme"
-msgstr ""
+msgstr "Tema &minimalista"
 
 #: src/modules/setup/setupwizard.cpp:85
 msgid "&Next >"
@@ -837,8 +833,8 @@ msgstr ""
 msgid ""
 ": No valid local copy of avatar available; flood limit exceeded, ignoring"
 msgstr ""
-": No hay disponible una copia local válida avatar; límite de saturación "
-"excedido: ignorando"
+": No hay disponible una copia local válida del avatar; límite de saturación "
+"excedido, ignorando"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:171
 msgid ": Unknown user mode"
@@ -1034,6 +1030,15 @@ msgid ""
 "any theme in order to preserve your current visual settings.<br><br>If you "
 "don't know what to choose, just use the default.</p>"
 msgstr ""
+"<p>Aquí puedes elegir la apariencia por defecto de KVIrc.<br><br>El tema "
+"bonito usa iconos, un fondo transparente y un montón de colores. El tema "
+"minimalista está diseñado para pantallas con pocos colores o para "
+"extremistas "
+"de la \"consola\"; es más o menos texto blanco sobre negro.<br><br>Si tenías "
+"instalada una versión previa de KVIrc, puedes elegir no aplicar ningún tema "
+"para preservar la configuración actual.<br><br>Si no sabes qué elegir, "
+"simplemente "
+"usa la opción por defecto."
 
 #: src/modules/setup/setupwizard.cpp:218
 msgid ""
@@ -1132,9 +1137,8 @@ msgid "Active Invite Exceptions"
 msgstr "Excepciones a invitación activas"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:166
-#, fuzzy
 msgid "Active Quiet Bans"
-msgstr "Bans activos"
+msgstr "Bans quiet activos"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:497
 msgid "Acts as a separator for other items: performs no action"
@@ -1296,9 +1300,8 @@ msgid "Attempting to rejoin \r!c\r%Q\r..."
 msgstr "Intentando volver a entrar a \r!c\r%Q\r..."
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2240
-#, fuzzy
 msgid "Authenticated as %Q"
-msgstr "%c\r!n\r%Q\r%c está autentificado como %Q"
+msgstr "Autenticado como %Q"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1498
 msgid "Auto-joining network specific channels"
@@ -1310,25 +1313,23 @@ msgstr "Entrando automáticamente en canales específicos del servidor"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:181
 msgid "Automatic Brightness/Contrast Correction"
-msgstr ""
+msgstr "Corrección de contraste/brillo automática"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:184
 msgid "Automatic Color Correction"
-msgstr ""
+msgstr "Corrección de color automática"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3061
-#, fuzzy
 msgid "Automatic Gain"
-msgstr "Previsualización &automática"
+msgstr "Ganancia automática"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3069
-#, fuzzy
 msgid "Automatic Hue"
-msgstr "Previsualización &automática"
+msgstr "Tono automático"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3055
 msgid "Automatic White Balance"
-msgstr ""
+msgstr "Balance de blancos automático"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:179
 msgid "Available channel modes:"
@@ -1398,13 +1399,12 @@ msgid "Background"
 msgstr "Fondo"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3083
-#, fuzzy
 msgid "Background color"
-msgstr "Fondo"
+msgstr "Color de fondo"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3072
 msgid "Backlight Compensation"
-msgstr ""
+msgstr "Compensación de la luz trasera"
 
 #: src/kvilib/core/kvi_error.cpp:90
 msgid "Bad file descriptor"
@@ -1415,9 +1415,8 @@ msgid "Bad key data"
 msgstr "Datos de clave erróneos"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3049
-#, fuzzy
 msgid "Balance"
-msgstr "Cancelar"
+msgstr "Balance"
 
 #: src/kvirc/ui/kvi_channel.cpp:153
 msgid "Ban Editor"
@@ -1456,9 +1455,8 @@ msgid "Ban unexception matching my mask"
 msgstr "Ban sin excepción concuerda con mi máscara"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3050
-#, fuzzy
 msgid "Bass"
-msgstr "Máscaras de prohibición"
+msgstr "Bajos"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:350
 #, c-format
@@ -1483,9 +1481,8 @@ msgid "Bl&ue"
 msgstr "Az&ul"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3054
-#, fuzzy
 msgid "Black Level"
-msgstr "Dispositivo de bloques"
+msgstr "Nivel de negros"
 
 #: src/kvilib/ext/kvi_mediatype.cpp:345
 msgid "Block device"
@@ -1493,7 +1490,7 @@ msgstr "Dispositivo de bloques"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3058
 msgid "Blue Balance"
-msgstr ""
+msgstr "Balance de azules"
 
 #: src/kvilib/system/kvi_locale.cpp:1055
 msgid "Bookmarks"
@@ -1510,7 +1507,7 @@ msgstr "Se especificaron los modificadores -n y -m, -n tiene preferencia"
 #: src/kvilib/ext/avdevice/videodevice.cpp:154
 #: src/kvilib/ext/avdevice/videodevice.cpp:3044
 msgid "Brightness"
-msgstr ""
+msgstr "Brillo"
 
 #: src/kvirc/kernel/kvi_options.cpp:811
 msgid "Broadcast notice"
@@ -1683,9 +1680,8 @@ msgid "Can't open the filter file %s for reading."
 msgstr "No puedo abrir el archivo de filtro %s para lectura."
 
 #: src/modules/file/libkvifile.cpp:1231
-#, fuzzy
 msgid "Can't read data from file"
-msgstr "No puedo enviar un archivo de tamaño cero"
+msgstr "No se puede leer datos del archivo"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:903
 msgid "Can't resolve local host address, using default 127.0.0.1"
@@ -2050,7 +2046,7 @@ msgstr "Escoge el archivo a compartir"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3075
 msgid "Chroma AGC"
-msgstr ""
+msgstr "Croma AGC"
 
 #: src/kvilib/net/kvi_http.cpp:813
 msgid "Chunk header too long: exceeded 4096 bytes"
@@ -2112,18 +2108,16 @@ msgid "Close this window"
 msgstr "Cerrar esta ventana"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:160
-#, fuzzy
 msgid "Color"
-msgstr "Limpiar"
+msgstr "Color"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3079
-#, fuzzy
 msgid "Color Effects"
-msgstr "Efectos"
+msgstr "Efectos de color"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3076
 msgid "Color Killer"
-msgstr ""
+msgstr "Quitar colores"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:268
 msgid "Color free (no ANSI colors)"
@@ -2206,7 +2200,7 @@ msgstr "Confirmar la desinstalación de la funcionalidad adicional"
 
 #: src/modules/logview/logviewmdiwindow.cpp:389
 msgid "Confirm current user logs delete"
-msgstr ""
+msgstr "Confirmar la eliminación de logs del usuario actual"
 
 #: src/kvirc/ui/kvi_frame.cpp:797
 #: src/kvirc/ui/kvi_console.cpp:504
@@ -2306,9 +2300,8 @@ msgstr "Contexto"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:163
 #: src/kvilib/ext/avdevice/videodevice.cpp:3045
-#, fuzzy
 msgid "Contrast"
-msgstr "Contexto"
+msgstr "Contraste"
 
 #: src/kvirc/ui/kvi_topicw.cpp:501
 msgid "Copy to clipboard"
@@ -2369,10 +2362,10 @@ msgstr "Cifrado"
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:464
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:481
 msgid "Crypto++ threw the following exception: "
-msgstr ""
+msgstr "Crypto++ lanzó la siguiente excepción: "
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:504
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cryptographic engine based on the\n"
 "Advanced Encryption Standard (AES)\n"
@@ -2392,16 +2385,21 @@ msgid ""
 "<http://www.cryptolounge.org/wiki/AES>\n"
 msgstr ""
 "Motor criptográfico basado en el\n"
-"Advanced Encryption Standard (AES)\n"
-"algoritmo llamado Rijndael.\n"
+"algoritmo de Advanced Encryption\n"
+"Standard (AES) llamado Rijndael.\n"
 "El texto es cifrado primero con rijndael\n"
 "y después convertido a notación %s.\n"
 "Las claves usadas son de longitud %d bits y serán rellenadas\n"
 "con ceros si se proporciona una más corta.\n"
 "Si solo se proporciona una clave, este motor\n"
 "la usará para el cifrado y descifrado.\n"
-"Léase la documentación del módulo rijndael\n"
-"para obtener más información acerca del algoritmo usado.\n"
+"\n"
+"Ésta es la implementación de Crypto++ que podría\n"
+"hacer mucho más que el mecanismo actual por defecto,\n"
+"pero como sólo debería ser usado como un reemplazo\n"
+"de emergencia, funciona tal y como el mecanismo original.\n"
+"Más información sobre el algoritmo puede ser encontrada en\n"
+"<http://www.cryptolounge.org/wiki/AES>\n"
 
 #: src/modules/rijndael/libkvirijndael.cpp:706
 #, c-format
@@ -2458,7 +2456,7 @@ msgstr "La ventana actual no es un canal"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2031
 msgid "Currently enabled CAP Extensions: %Q"
-msgstr ""
+msgstr "Extensiones CAP activadas actualmente: %Q"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:205
 msgid "Customize Toolbars..."
@@ -2514,9 +2512,8 @@ msgid "Default"
 msgstr "Por defecto"
 
 #: src/modules/setup/setupwizard.cpp:482
-#, fuzzy
 msgid "Default Theme"
-msgstr "Por defecto"
+msgstr "Tema por defecto"
 
 #: src/kvilib/system/kvi_locale.cpp:1080
 msgid "Delete"
@@ -2568,7 +2565,7 @@ msgstr "Directorio"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2022
 msgid "Disabled CAP Extensions: %Q"
-msgstr ""
+msgstr "Extensiones CAP desactivadas: %Q"
 
 #: src/kvirc/ui/kvi_topicw.cpp:471
 msgid "Discard Changes"
@@ -2597,7 +2594,7 @@ msgstr "Fallo temporal de DNS (inténtalo otra vez)"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3056
 msgid "Do White Balance"
-msgstr ""
+msgstr "Hacer balance de blancos"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:169
 msgid "Do not disturb... watching TV"
@@ -2700,9 +2697,8 @@ msgid "Edit Aliases..."
 msgstr "Editar alias..."
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:249
-#, fuzzy
 msgid "Edit Classes..."
-msgstr "Editar alias..."
+msgstr "Editar clases..."
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:260
 msgid "Edit Events..."
@@ -2746,7 +2742,7 @@ msgstr "Activar cifrado"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2013
 msgid "Enabled CAP Extensions: %Q"
-msgstr ""
+msgstr "Extensiones CAP activadas: %Q"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:106
 msgid "Encrypt key:"
@@ -2881,12 +2877,11 @@ msgstr "Exportar lista"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3060
 msgid "Exposure"
-msgstr ""
+msgstr "Exposición"
 
 #: src/kvirc/kernel/kvi_options.cpp:861
-#, fuzzy
 msgid "Extended capability message"
-msgstr "Mensaje cifrado de DCC chat"
+msgstr "Mensaje de capacidad extendida"
 
 #: src/modules/file/libkvifile.cpp:125
 msgid "Failed to copy from %Q to %Q"
@@ -3139,11 +3134,11 @@ msgstr "GUI"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3062
 msgid "Gain"
-msgstr ""
+msgstr "Ganancia"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3059
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 #: src/kvirc/ui/kvi_console.cpp:323
 #: src/modules/setup/setupwizard.cpp:385
@@ -3284,13 +3279,12 @@ msgstr "Saltos"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3065
 msgid "Horizontal Center"
-msgstr ""
+msgstr "Centro horizontal"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:195
 #: src/kvilib/ext/avdevice/videodevice.cpp:3063
-#, fuzzy
 msgid "Horizontal Flip"
-msgstr "Expandir &horizontalmente"
+msgstr "Invertir horizontalmente"
 
 #: src/kvilib/net/kvi_http.cpp:210
 msgid "Host %Q resolved to %Q"
@@ -3318,9 +3312,8 @@ msgstr "Cancelada la resolución del nombre de máquina"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:157
 #: src/kvilib/ext/avdevice/videodevice.cpp:3047
-#, fuzzy
 msgid "Hue"
-msgstr "Hex"
+msgstr "Tono"
 
 #: src/modules/spaste/libkvispaste.cpp:114
 msgid "I can't open that file"
@@ -3409,7 +3402,7 @@ msgstr "Identidad"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:384
 msgid "If this server is an IPv6 one, try /server -i %Q"
-msgstr "Si este server utiliza IPv6, intente /server -i %Q"
+msgstr "Si este servidor utiliza IPv6, intenta /server -i %Q"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:192
 msgid ""
@@ -3811,12 +3804,11 @@ msgstr ""
 "Tu URL no es válida. Compruébala y vuelve a intentarlo"
 
 #: src/modules/file/libkvifile.cpp:1329
-#, fuzzy
 msgid ""
 "KVIrc is compiled without Crypto++ or OpenSSL support. $file.digest supports "
 "only MD4, MD5 and SHA1."
 msgstr ""
-"KVIrc fue compilado sin soporte de Crypto++ u OpenSSL. $str.digest soporta "
+"KVIrc fue compilado sin soporte de Crypto++ u OpenSSL. $file.digest soporta "
 "sólo MD4, MD5 y SHA1."
 
 #: src/modules/str/libkvistr.cpp:1439
@@ -4024,7 +4016,7 @@ msgstr "Resolviendo el nombre del servidor (%s)..."
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3053
 msgid "Loudness"
-msgstr ""
+msgstr "Fuerza del sonido"
 
 #: src/kvirc/ui/kvi_channel.cpp:1001
 msgid "Low activity"
@@ -4189,7 +4181,6 @@ msgstr "Falta la llave de cierre"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:107
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:336
-#, fuzzy
 msgid "Missing encryption and decryption key: at least one is needed"
 msgstr ""
 "Faltan tanto la clave de cifrado como la de descifrado: se necesita al menos "
@@ -4247,7 +4238,7 @@ msgstr "Cambio múltiple del modo de usuario"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3052
 msgid "Mute"
-msgstr ""
+msgstr "Silenciar"
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:76
 msgid "Name"
@@ -5006,7 +4997,6 @@ msgstr ""
 "Plugin no encontrado. Por favor, comprueba el nombre y la ruta del plugin."
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:586
-#, fuzzy
 msgid ""
 "Popular cryptographic engine based on the\n"
 "old Blowfish encryption algorithm.\n"
@@ -5036,6 +5026,9 @@ msgstr ""
 "Este motor funciona en modo ECB por defecto:\n"
 "si quieres usar el modo CBC debes preceder tu(s)\n"
 "clave(s) con \"cbc:\".\n"
+"\n"
+"Ésta es la versión basada en Crypto++, que no depende\n"
+"de código embebido.\n"
 
 #: src/modules/rijndael/libkvirijndael.cpp:784
 msgid ""
@@ -5074,7 +5067,7 @@ msgstr "Pos %d"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3068
 msgid "Power Line Frequency"
-msgstr ""
+msgstr "Frecuencia de la línea"
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:237
 msgid "Pragma's Horizontal 4-Grid"
@@ -5265,9 +5258,8 @@ msgid "Query with %1!%2 (%3)"
 msgstr "Privado con %1!%2 (%3)"
 
 #: src/kvirc/ui/kvi_channel.cpp:174
-#, fuzzy
 msgid "Quiet Ban Editor"
-msgstr "Editor de bans"
+msgstr "Editor de quiet bans"
 
 #: src/kvirc/ui/kvi_userlistview.cpp:1593
 msgid "Quiet for <b>%1h %2m %3s</b>"
@@ -5385,7 +5377,7 @@ msgstr "Recibido pong de \r!s\r%s\r (PONG %s)"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2038
 msgid "Received unknown extended capability message: %Q %Q"
-msgstr ""
+msgstr "Recibido mensaje de capacidad extendida desconocida: %Q %Q"
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:163
 msgid "Recent Channels"
@@ -5400,9 +5392,8 @@ msgid "Rectangle options (x,y,width,height)"
 msgstr "Opciones para el rectángulo (x,y,ancho,alto)"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3057
-#, fuzzy
 msgid "Red Balance"
-msgstr "&Reemplazar"
+msgstr "Balance de rojos"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:291
 msgid "Redirect on channel full"
@@ -5508,7 +5499,7 @@ msgstr "El operando de la derecha no es un número"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3082
 msgid "Rotate"
-msgstr ""
+msgstr "Rotar"
 
 #: src/kvirc/kernel/kvi_app_setup.cpp:186
 #: src/kvirc/kernel/kvi_app_setup.cpp:475
@@ -5517,11 +5508,11 @@ msgstr "Ejecutar Script KVS"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2276
 msgid "SASL Authentication error: %Q"
-msgstr ""
+msgstr "Error de autenticación SASL: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2257
 msgid "SASL authentication successful"
-msgstr ""
+msgstr "Autenticación SASL correcta"
 
 #: src/kvirc/kernel/kvi_options.cpp:827
 msgid "SSL message"
@@ -5536,9 +5527,8 @@ msgid "Sample Text"
 msgstr "Texto de ejemplo"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3046
-#, fuzzy
 msgid "Saturation"
-msgstr "Separador"
+msgstr "Saturación"
 
 #: src/modules/url/libkviurl.cpp:421
 msgid "Save URL list on module unload"
@@ -5826,7 +5816,7 @@ msgstr "Configuración interrumpida"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3071
 msgid "Sharpness"
-msgstr ""
+msgstr "Nitidez"
 
 #: src/kvilib/system/kvi_locale.cpp:1067
 msgid "Short View"
@@ -5859,9 +5849,8 @@ msgid "Show History<br>&lt;Ctrl+PageUp&gt;"
 msgstr "Mostrar historial<br>&lt;Ctrl+RePág&gt;"
 
 #: src/modules/iograph/libkviiograph.cpp:334
-#, fuzzy
 msgid "Show I/O &Traffic graph"
-msgstr "Gráfico de E/S de tráfico"
+msgstr "Mostrar gráfico de &tráfico E/S"
 
 #: src/kvirc/ui/kvi_input.cpp:126
 msgid "Show Icons Popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"
@@ -5960,9 +5949,8 @@ msgid "Shows a window that allows editing aliases"
 msgstr "Muestra una ventana que permite editar los alias"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:250
-#, fuzzy
 msgid "Shows a window that allows editing classes"
-msgstr "Muestra una ventana que permite editar los alias"
+msgstr "Muestra una ventana que permite editar las clases de alias"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:272
 msgid "Shows a window that allows editing popup menus"
@@ -6899,9 +6887,8 @@ msgid "Transparent"
 msgstr "Transparente"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3051
-#, fuzzy
 msgid "Treble"
-msgstr "respondida"
+msgstr "Agudos"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:659
 msgid "Try reconnecting with caching disabled"
@@ -6953,14 +6940,12 @@ msgstr ""
 "No puedo añadir un ofrecimiento de archivo para %Q (Archivo no legible?)"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:251
-#, fuzzy
 msgid "Unable to determine input encoding (Hex or Base64)."
-msgstr "Incapaz de determinar el cifrador actual"
+msgstr "Incapaz de determinar el cifrador actual de entrada (Hex o Base64)."
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:183
-#, fuzzy
 msgid "Unable to determine output encoding (Hex or Base64)."
-msgstr "Incapaz de determinar el cifrador actual"
+msgstr "Incapaz de determinar el cifrador actual de salida (Hex o Base64)."
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:1278
 msgid "Unable to determine the current cipher"
@@ -7397,12 +7382,12 @@ msgstr "Detallado/Depuración"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3066
 msgid "Vertical Center"
-msgstr ""
+msgstr "Centro vertical"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:189
 #: src/kvilib/ext/avdevice/videodevice.cpp:3064
 msgid "Vertical Flip"
-msgstr ""
+msgstr "Girar verticalmente"
 
 #: src/kvirc/ui/kvi_channel.cpp:1007
 msgid "Very high activity"
@@ -7422,7 +7407,7 @@ msgstr "Usuarios con voz"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3048
 msgid "Volume"
-msgstr ""
+msgstr "Volumen"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1572
 msgid "WALLOPS from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -7473,11 +7458,11 @@ msgstr "Bienvenido a KVirc"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3070
 msgid "White Balance Temperature"
-msgstr ""
+msgstr "Temperatura del balance de blancos"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:166
 msgid "Whiteness"
-msgstr ""
+msgstr "Blancura"
 
 #: src/kvirc/kernel/kvi_options.cpp:767
 msgid "Who reply"
@@ -8073,14 +8058,12 @@ msgid "invite list"
 msgstr "lista de invitados"
 
 #: src/kvirc/ui/kvi_channel.cpp:886
-#, fuzzy
 msgid "irc operator"
-msgstr "operador"
+msgstr "operador de irc"
 
 #: src/kvirc/ui/kvi_channel.cpp:886
-#, fuzzy
 msgid "irc operators"
-msgstr "operadores"
+msgstr "operadores de irc"
 
 #: src/kvirc/ui/kvi_channel.cpp:727
 msgid "is talking"

@@ -3,18 +3,13 @@
 # egns <grannost@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: dcc_es\n"
-"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-24 10:36+0200\n"
-"PO-Revision-Date: 2009-11-29 11:10+0100\n"
+"PO-Revision-Date: 2010-05-18 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/dcc/requests.cpp:862
 msgid "\"any\""
@@ -420,9 +415,8 @@ msgid "DCC VIDEO request"
 msgstr "Petición de DCC VIDEO"
 
 #: src/modules/dcc/video.cpp:606
-#, fuzzy
 msgid "DCC VIDEO request not sent: awaiting manual connection"
-msgstr "No se envió la petición DCC VIDEO: esperando conexiones manuales"
+msgstr "No se envió la petición DCC VIDEO: esperando conexión manual"
 
 #: src/modules/dcc/libkvidcc.cpp:1192
 msgid "DCC VIDEO support not enabled at compilation time"
@@ -526,9 +520,8 @@ msgstr ""
 "Petición RESUME no válida: la posición %1 es mayor que el tamaño del archivo"
 
 #: src/modules/dcc/libkvidcc.cpp:1213
-#, fuzzy
 msgid "Invalid codec specified"
-msgstr "Codec especificado no válido, poniendo por defecto 'adpcm'"
+msgstr "Códec especificado no válido"
 
 #: src/modules/dcc/libkvidcc.cpp:1148
 msgid "Invalid codec specified, defaulting to 'adpcm'"
@@ -824,14 +817,13 @@ msgstr ""
 "transferencia incompleta?"
 
 #: src/modules/dcc/broker.cpp:764
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is larger than the offered one."
 "<br>Do you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-"
 "rename</b> the new file ?"
 msgstr ""
-"El archivo '<b>%1</b>' ya existe y es más largo que el ofrecido."
-"<br>¿Desea<br><b>sobreescribir</b> el archivo existente o<br> <b>renombrar "
+"El archivo '<b>%1</b>' ya existe y es más grande que el ofrecido."
+"<br>¿Desea<br><b>sobreescribir</b> el archivo existente, o<br> <b>renombrar "
 "automaticamente</b> el nuevo archivo?"
 
 #: src/modules/dcc/video.cpp:811
@@ -1028,13 +1020,12 @@ msgstr ""
 "archivo"
 
 #: src/modules/dcc/voice.cpp:162
-#, fuzzy
 msgid ""
 "WARNING: failed to check the soundcard duplex capabilities: if this is a "
 "half-duplex soundcard, use the DCC VOICE option to force half-duplex "
 "algorithm"
 msgstr ""
-"ATENCIÓN: falló la comprobación de la característica duplex de la tarjeta de "
+"ATENCIÓN: falló la comprobación de las características duplex de la tarjeta de "
 "sonido: si esta es una tarjeta half-duplex, usa la opción DCC VOICE para "
 "forzar el algoritmo half-duplex"
 
@@ -1092,14 +1083,3 @@ msgstr "bytes/seg"
 #: src/modules/dcc/requests.cpp:143
 msgid "unknown"
 msgstr "desconocido"
-
-#~ msgid "Invalid codec specified, defaulting to 'sjpeg'"
-#~ msgstr "Codec especificado no válido, poniendo por defecto 'jpeg'"
-
-#~ msgid ""
-#~ "The above request is broken: The fourth parameter should be the file size "
-#~ "but does not appear to be an unsigned number, trying to continue"
-#~ msgstr ""
-#~ "La petición anterior no es correcta: el cuarto parámetro debería ser el "
-#~ "tamaño del archivo pero no parece ser un número entero sin signo, "
-#~ "intentando continuar"
