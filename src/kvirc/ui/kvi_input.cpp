@@ -154,7 +154,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	QString szTip = __tr2qs("Multi-line Editor<br>&lt;Alt+Return&gt;");
 	KviTalToolTip::add(m_pMultiEditorButton,szTip);
 
-	connect(m_pMultiEditorButton,SIGNAL(toggled(bool)),this,SLOT(multilineEditorButtonToggled(bool)));
+	connect(m_pMultiEditorButton,SIGNAL(toggled(bool)),this,SLOT(multiLineEditorButtonToggled(bool)));
 
 	m_pInputEditor = new KviInputEditor(this,pPar,pView);
 	connect(m_pInputEditor,SIGNAL(enterPressed()),this,SLOT(inputEditorEnterPressed()));

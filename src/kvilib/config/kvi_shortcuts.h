@@ -52,17 +52,17 @@
 * \def KVI_SHORTCUTS_EDITOR_CUT Cut the selected text and copy the text to clipboard
 * \def KVI_SHORTCUTS_EDITOR_UNDO Undo last action
 * \def KVI_SHORTCUTS_AWAY Go away/back
-* \def KVI_SHORTCUTS_EDITOR_TOOLBAR Open "Manage Toolbars" dialog
+* \def KVI_SHORTCUTS_EDITORS_TOOLBAR Open "Manage Toolbars" dialog
 * \def KVI_SHORTCUTS_CONNECT Connect/disconnect current irc context
-* \def KVI_SHORTCUTS_EDITOR_CLASS Open Class editor
-* \def KVI_SHORTCUTS_EDITOR_EVENT Open Event editor
+* \def KVI_SHORTCUTS_EDITORS_CLASS Open Class editor
+* \def KVI_SHORTCUTS_EDITORS_EVENT Open Event editor
 * \def KVI_SHORTCUTS_IDENTITY Open Identity options
-* \def KVI_SHORTCUTS_EDITOR_ALIAS Open Alias editor
+* \def KVI_SHORTCUTS_EDITORS_ALIAS Open Alias editor
 * \def KVI_SHORTCUTS_OPTIONS Open "Options" dialog
-* \def KVI_SHORTCUTS_EDITOR_POPUP Open Popup editor
-* \def KVI_SHORTCUTS_EDITOR_ACTION Open Action editor
-* \def KVI_SHORTCUTS_EDITOR_RAW Open Raw events editor
-* \def KVI_SHORTCUTS_EDITOR_TESTER Open Script tester
+* \def KVI_SHORTCUTS_EDITORS_POPUP Open Popup editor
+* \def KVI_SHORTCUTS_EDITORS_ACTION Open Action editor
+* \def KVI_SHORTCUTS_EDITORS_RAW Open Raw events editor
+* \def KVI_SHORTCUTS_EDITORS_TESTER Open Script tester
 * \def KVI_SHORTCUTS_THEME Open "Theme Options" dialog
 * \def KVI_SHORTCUTS_USERS Open "Registered users" dialog
 * \def KVI_SHORTCUTS_EXEC Open "Execute Script" dialog
