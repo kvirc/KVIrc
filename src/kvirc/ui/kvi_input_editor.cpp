@@ -1282,9 +1282,16 @@ void KviInputEditor::installShortcuts()
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_COPY),this,SLOT(copyInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_CUT),this,SLOT(cutInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PASTE),this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PASTE2),this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_UNDO),this,SLOT(undoInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_REDO),this,SLOT(redoInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_SELECTALL),this,SLOT(selectAllInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_DELETEWORD),this,SLOT(deleteWord()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_PREV_LINE),this,SLOT(previousLine()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_NEXT_LINE),this,SLOT(nextLine()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_PREV_PAGE),this,SLOT(previousPage()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_NEXT_PAGE),this,SLOT(nextPage()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_SEARCH),this,SLOT(search()),0,Qt::WidgetShortcut);
 }
 
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
@@ -1330,37 +1337,6 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 				//avoid Ctrl+J from inserting a linefeed
 				break;
 			}
-			case Qt::Key_Backspace:
-				//delete last word
-				if(m_iCursorPosition > 0 && !m_bReadOnly && !hasSelection())
-				{
-					// skip whitespace
-					while(m_iCursorPosition > 0)
-					{
-						if(!m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
-							break;
-						m_szTextBuffer.remove(m_iCursorPosition-1,1);
-						m_iCursorPosition--;
-						if(m_iFirstVisibleChar > m_iCursorPosition)
-							m_iFirstVisibleChar--;
-					}
-					// skip nonwhitespace
-					while(m_iCursorPosition > 0)
-					{
-						if(m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
-							break;
-						m_szTextBuffer.remove(m_iCursorPosition-1,1);
-						m_iCursorPosition--;
-						if(m_iFirstVisibleChar > m_iCursorPosition)
-							m_iFirstVisibleChar--;
-					}
-					repaintWithCursorOn();
-				}
-			break;
-			case Qt::Key_F:
-				if(m_pKviWindow)
-					if(m_pKviWindow->view())m_pKviWindow->view()->toggleToolWidget();
-			break;
 			case Qt::Key_Return:
 			case Qt::Key_Enter:
 				if(m_pInputParent->inherits("KviInput"))
@@ -1409,27 +1385,6 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 			insertText(e->text());
 		}
 		return;
-	}
-
-	if(e->modifiers() & Qt::ShiftModifier)
-	{
-		switch(e->key())
-		{
-			case Qt::Key_Insert:
-				if(!m_bReadOnly) pasteClipboardWithConfirmation();
-				return;
-			break;
-			case Qt::Key_PageUp:
-				if(m_pKviWindow)
-					if(m_pKviWindow->view())m_pKviWindow->view()->prevLine();
-				return;
-			break;
-			case Qt::Key_PageDown:
-				if(m_pKviWindow)
-					if(m_pKviWindow->view())m_pKviWindow->view()->nextLine();
-				return;
-			break;
-		}
 	}
 
 	switch(e->key())
@@ -1535,14 +1490,6 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 				}
 			}
 			break;
-		case Qt::Key_PageUp:
-			if(m_pKviWindow)
-				if(m_pKviWindow->view())m_pKviWindow->view()->prevPage();
-		break;
-		case Qt::Key_PageDown:
-			if(m_pKviWindow)
-				if(m_pKviWindow->view())m_pKviWindow->view()->nextPage();
-		break;
 		case Qt::Key_Return:
 		case Qt::Key_Enter:
 			returnPressed();
@@ -2347,6 +2294,67 @@ void KviInputEditor::selectAllInternal()
 	m_iCursorPosition=m_szTextBuffer.length();
 	repaintWithCursorOn();
 }
+
+void KviInputEditor::deleteWord()
+{
+	if(m_iCursorPosition > 0 && !m_bReadOnly && !hasSelection())
+	{
+		// skip whitespace
+		while(m_iCursorPosition > 0)
+		{
+			if(!m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
+				break;
+			m_szTextBuffer.remove(m_iCursorPosition-1,1);
+			m_iCursorPosition--;
+			if(m_iFirstVisibleChar > m_iCursorPosition)
+				m_iFirstVisibleChar--;
+		}
+		// skip nonwhitespace
+		while(m_iCursorPosition > 0)
+		{
+			if(m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
+				break;
+			m_szTextBuffer.remove(m_iCursorPosition-1,1);
+			m_iCursorPosition--;
+			if(m_iFirstVisibleChar > m_iCursorPosition)
+				m_iFirstVisibleChar--;
+		}
+		repaintWithCursorOn();
+	}
+}
+
+void KviInputEditor::previousLine()
+{
+	if(m_pKviWindow)
+		if(m_pKviWindow->view()) m_pKviWindow->view()->prevLine();
+	return;
+}
+
+void KviInputEditor::nextLine()
+{
+	if(m_pKviWindow)
+		if(m_pKviWindow->view()) m_pKviWindow->view()->nextLine();
+	return;
+}
+
+void KviInputEditor::previousPage()
+{
+	if(m_pKviWindow)
+		if(m_pKviWindow->view()) m_pKviWindow->view()->prevPage();
+}
+
+void KviInputEditor::nextPage()
+{
+	if(m_pKviWindow)
+		if(m_pKviWindow->view()) m_pKviWindow->view()->nextPage();
+}
+
+void KviInputEditor::search()
+{
+	if(m_pKviWindow)
+		if(m_pKviWindow->view()) m_pKviWindow->view()->toggleToolWidget();
+}
+
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_input_editor.moc"

@@ -27,7 +27,7 @@
 /**
 * \file kvi_shortcuts.h
 * \author Elvio Basello
-* \brief This file contains the keyboard shortcuts used by KVIrc
+* \brief This file contains all the keyboard shortcuts used by KVIrc
 */
 
 /**
@@ -37,7 +37,7 @@
 * \def KVI_SHORTCUTS_EDITOR_SELECTALL Select all
 * \def KVI_SHORTCUTS_EDITOR_BOLD Insert the 'bold' mIRC text control character
 * \def KVI_SHORTCUTS_EDITOR_COPY Copy the selected text to clipboard
-* \def KVI_SHORTCUTS_FIND Open "Find Text" dialog
+* \def KVI_SHORTCUTS_WIN_SEARCH Open "Find Text" dialog
 * \def KVI_SHORTCUTS_EDITOR_ICON Insert the 'icon' control code and pops up the icon list box
 * \def KVI_SHORTCUTS_JOIN Open "Join Channels" dialog
 * \def KVI_SHORTCUTS_EDITOR_COLOR Insert the 'color' mIRC text control character
@@ -48,6 +48,7 @@
 * \def KVI_SHORTCUTS_SERVERS Open "Servers" dialog
 * \def KVI_SHORTCUTS_EDITOR_UNDERLINE Insert the 'underline' mIRC text control character
 * \def KVI_SHORTCUTS_EDITOR_PASTE Paste the clipboard contents (same as middle mouse click)
+* \def KVI_SHORTCUTS_EDITOR_PASTE2 Paste the clipboard contents (same as middle mouse click)
 		Ctrl+W:[/b] Close current window
 * \def KVI_SHORTCUTS_EDITOR_CUT Cut the selected text and copy the text to clipboard
 * \def KVI_SHORTCUTS_EDITOR_UNDO Undo last action
@@ -69,30 +70,31 @@
 * \def KVI_SHORTCUTS_EDITOR_REDO Redo last action
 * \def KVI_SHORTCUTS_WIN_PREV Previous window
 * \def KVI_SHORTCUTS_WIN_NEXT Next window
-* \def KVI_SHORTCUTS_CONTEXT_WIN_PREV Previous window in the same IRC context
-* \def KVI_SHORTCUTS_CONTEXT_WIN_NEXT Next window in the same IRC context
-* \def KVI_SHORTCUTS_HIGHLIGHT_WIN_PREV Previous highlighted window
-* \def KVI_SHORTCUTS_HIGHLIGHT_WIN_NEXT Next highlighted window
+* \def KVI_SHORTCUTS_WIN_PREV_CONTEXT Previous window in the same IRC context
+* \def KVI_SHORTCUTS_WIN_NEXT_CONTEXT Next window in the same IRC context
+* \def KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT Previous highlighted window
+* \def KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT Next highlighted window
 * \def KVI_SHORTCUTS_WIN_MAXIMIZE Maximizes current window
 * \def KVI_SHORTCUTS_WIN_MINIMIZE Minimizes current window
-		Shift+<F1-F12>:[/b] window switch[br]
-		PageUp:[/b] Scroll the output window up one page[br]
-		PageDown:[/b] Scroll the output window down one page[br]
-		Shift+PageUp:[/b] Scroll the output window up one line[br]
-		Shift+PageDown:[/b] Scroll the output window down one line[br]
+		Shift+<F1-F12>:[/b] window switch
+* \def KVI_SHORTCUTS_WIN_PREV_PAGE Scroll the output window up one page
+* \def KVI_SHORTCUTS_WIN_NEXT_PAGE Scroll the output window down one page
+* \def KVI_SHORTCUTS_WIN_PREV_LINE Scroll the output window up one line
+* \def KVI_SHORTCUTS_WIN_NEXT_LINE Scroll the output window down one line
 * \def KVI_SHORTCUTS_EDITOR_PREV_WORD Move to the beginning of the previous word
 * \def KVI_SHORTCUTS_EDITOR_NEXT_WORD Move to the end of the next word
 * \def KVI_SHORTCUTS_EDITOR_PREV_WORD_SELECT Select up to the beginning of the previous word
 * \def KVI_SHORTCUTS_EDITOR_NEXT_WORD_SELECT Select up to the end of the next word
-		Ctrl+<digit>:[/b] Script accelerators (see OnAccelKeyPressed)[br]
-		F2-F12, Shift+(F1-F12):[/b] Script accelerators (see OnAccelKeyPressed)[br]
-		CursorUp:[/b] Move backward in the command history[br]
-		CursorDown:[/b] Move forward in the command history[br]
+		Ctrl+<digit>:[/b] Script accelerators (see OnAccelKeyPressed)
+		F2-F12, Shift+(F1-F12):[/b] Script accelerators (see OnAccelKeyPressed)
+		CursorUp:[/b] Move backward in the command history
+		CursorDown:[/b] Move forward in the command history
 * \def KVI_SHORTCUTS_EDITOR_HISTORY Open the history popup
 * \def KVI_SHORTCUTS_EDITOR_PREV_CHAR Move the cursor to the left
 * \def KVI_SHORTCUTS_EDITOR_NEXT_CHAR Move the cursor to the right
 * \def KVI_SHORTCUTS_EDITOR_PREV_CHAR_SELECT Move the selection to the left
 * \def KVI_SHORTCUTS_EDITOR_NEXT_CHAR_SELECT Move the selection to the right
+* \def KVI_SHORTCUTS_EDITOR_DELETEWORD Delete last word
 * \def KVI_SHORTCUTS_MULTILINE_OPEN Show/hide the multiline editor
 		Ctrl+Enter:[/b] Send message as plain text, ignoring / commands[br]
 		Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code[br]
@@ -113,7 +115,7 @@
 #define KVI_SHORTCUTS_EDITOR_SELECTALL "Ctrl+A"
 #define KVI_SHORTCUTS_EDITOR_BOLD "Ctrl+B"
 #define KVI_SHORTCUTS_EDITOR_COPY "Ctrl+C"
-#define KVI_SHORTCUTS_FIND "Ctrl+F"
+#define KVI_SHORTCUTS_WIN_SEARCH "Ctrl+F"
 #define KVI_SHORTCUTS_EDITOR_ICON "Ctrl+I"
 #define KVI_SHORTCUTS_JOIN "Ctrl+J"
 #define KVI_SHORTCUTS_EDITOR_COLOR "Ctrl+K"
@@ -145,17 +147,18 @@
 #define KVI_SHORTCUTS_EDITOR_REDO "Ctrl+Shift+Z"
 #define KVI_SHORTCUTS_WIN_PREV Qt::AltModifier + Qt::Key_Up
 #define KVI_SHORTCUTS_WIN_NEXT Qt::AltModifier + Qt::Key_Down
-#define KVI_SHORTCUTS_CONTEXT_WIN_PREV Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Up
-#define KVI_SHORTCUTS_CONTEXT_WIN_NEXT Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Down
-#define KVI_SHORTCUTS_HIGHLIGHT_WIN_PREV Qt::AltModifier + Qt::Key_PageUp
-#define KVI_SHORTCUTS_HIGHLIGHT_WIN_NEXT Qt::AltModifier + Qt::Key_PageDown
+#define KVI_SHORTCUTS_WIN_PREV_CONTEXT Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Up
+#define KVI_SHORTCUTS_WIN_NEXT_CONTEXT Qt::AltModifier + Qt::ShiftModifier + Qt::Key_Down
+#define KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT Qt::AltModifier + Qt::Key_PageUp
+#define KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT Qt::AltModifier + Qt::Key_PageDown
 #define KVI_SHORTCUTS_WIN_MAXIMIZE Qt::ControlModifier + Qt::Key_Up
 #define KVI_SHORTCUTS_WIN_MINIMIZE Qt::ControlModifier + Qt::Key_Down
+#define KVI_SHORTCUTS_EDITOR_PASTE2 Qt::ShiftModifier + Qt::Key_Insert
 //	Shift+<F1-F12>:[/b] window switch[br]
-//	PageUp:[/b] Scroll the output window up one page[br]
-//	PageDown:[/b] Scroll the output window down one page[br]
-//	Shift+PageUp:[/b] Scroll the output window up one line[br]
-//	Shift+PageDown:[/b] Scroll the output window down one line[br]
+#define KVI_SHORTCUTS_WIN_PREV_PAGE Qt::Key_PageUp
+#define KVI_SHORTCUTS_WIN_NEXT_PAGE Qt::Key_PageDown
+#define KVI_SHORTCUTS_WIN_PREV_LINE Qt::ShiftModifier + Qt::Key_PageUp
+#define KVI_SHORTCUTS_WIN_NEXT_LINE Qt::ShiftModifier + Qt::Key_PageDown
 #define KVI_SHORTCUTS_EDITOR_PREV_WORD Qt::ControlModifier + Qt::Key_Left
 #define KVI_SHORTCUTS_EDITOR_NEXT_WORD Qt::ControlModifier + Qt::Key_Right
 #define KVI_SHORTCUTS_EDITOR_PREV_WORD_SELECT Qt::ControlModifier + Qt::ShiftModifier + Qt::Key_Left
@@ -169,6 +172,7 @@
 #define KVI_SHORTCUTS_EDITOR_NEXT_CHAR Qt::Key_Right
 #define KVI_SHORTCUTS_EDITOR_PREV_CHAR_SELECT Qt::ShiftModifier + Qt::Key_Left
 #define KVI_SHORTCUTS_EDITOR_NEXT_CHAR_SELECT Qt::ShiftModifier + Qt::Key_Right
+#define KVI_SHORTCUTS_EDITOR_DELETEWORD Qt::ControlModifier + Qt::Key_Backspace
 #define KVI_SHORTCUTS_MULTILINE_OPEN Qt::AltModifier + Qt::Key_Return
 //	Ctrl+Enter:[/b] Send message as plain text, ignoring / commands[br]
 //	Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code[br]
@@ -255,6 +259,7 @@
 		[b]Ctrl+RightArrow:[/b] Move to the end of the next word[br]
 		[b]Ctrl+Shift+LeftArrow:[/b] Select up to the beginning of the previous word[br]
 		[b]Ctrl+Shift+RightArrow:[/b] Select up to the end of the next word[br]
+		[b]Ctrl+Backspace:[/b] Delete last word[br]
 		[b]Ctrl+<digit>:[/b] Script accelerators (see OnAccelKeyPressed)[br]
 		[b]F2-F12, Shift+(F1-F12):[/b] Script accelerators (see OnAccelKeyPressed)[br]
 		[b]Ctrl+B:[/b] nsert the 'bold' mIRC text control character[br]

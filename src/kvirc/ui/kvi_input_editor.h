@@ -689,10 +689,46 @@ private slots:
 	void redoInternal();
 	
 	/**
-	* \brief Select all
+	* \brief Selects all
 	* \return void
 	*/
 	void selectAllInternal();
+	
+	/**
+	* \brief Deletes last word
+	* \return void
+	*/
+	void deleteWord();
+	
+	/**
+	* \brief Scrolls the output window up one line
+	* \return void
+	*/
+	void previousLine();
+	
+	/**
+	* \brief Scrolls the output window down one line
+	* \return void
+	*/
+	void nextLine();
+	
+	/**
+	* \brief Scrolls the output window up one page
+	* \return void
+	*/
+	void previousPage();
+	
+	/**
+	* \brief Scrolls the output window down one page
+	* \return void
+	*/
+	void nextPage();
+	
+	/**
+	* \brief Opens the search window
+	* \return void
+	*/
+	void search();
 
 protected:
 	void installShortcuts();

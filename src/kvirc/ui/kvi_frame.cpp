@@ -289,26 +289,26 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 
 void KviFrame::installAccelerators()
 {
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_PREV) , this, SLOT(switchToPrevWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_NEXT), this, SLOT(switchToNextWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_CONTEXT_WIN_PREV), this, SLOT(switchToPrevWindowInContext()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_CONTEXT_WIN_NEXT), this, SLOT(switchToNextWindowInContext()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_HIGHLIGHT_WIN_PREV) , this, SLOT(switchToPrevHighlightedWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_HIGHLIGHT_WIN_NEXT), this, SLOT(switchToNextHighlightedWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_MAXIMIZE), this, SLOT(maximizeWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_MINIMIZE), this, SLOT(minimizeWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_PREV),this,SLOT(switchToPrevWindow()),0,Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_NEXT),this,SLOT(switchToNextWindow()),0,Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_PREV_CONTEXT),this,SLOT(switchToPrevWindowInContext()),0,Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_NEXT_CONTEXT),this,SLOT(switchToNextWindowInContext()),0,Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT),this,SLOT(switchToPrevHighlightedWindow()),0,Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT),this,SLOT(switchToNextHighlightedWindow()),0,Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_MAXIMIZE),this,SLOT(maximizeWindow()),0,Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_MINIMIZE),this,SLOT(minimizeWindow()),0,Qt::ApplicationShortcut);
 
 	static int accel_table[] = {
-		Qt::Key_1 + Qt::CTRL ,       // script accels...
-		Qt::Key_2 + Qt::CTRL ,
-		Qt::Key_3 + Qt::CTRL ,
-		Qt::Key_4 + Qt::CTRL ,
-		Qt::Key_5 + Qt::CTRL ,
-		Qt::Key_6 + Qt::CTRL ,
-		Qt::Key_7 + Qt::CTRL ,
-		Qt::Key_8 + Qt::CTRL ,
-		Qt::Key_9 + Qt::CTRL ,
-		Qt::Key_0 + Qt::CTRL ,
+		Qt::Key_1 + Qt::ControlModifier ,       // script accels...
+		Qt::Key_2 + Qt::ControlModifier ,
+		Qt::Key_3 + Qt::ControlModifier ,
+		Qt::Key_4 + Qt::ControlModifier ,
+		Qt::Key_5 + Qt::ControlModifier ,
+		Qt::Key_6 + Qt::ControlModifier ,
+		Qt::Key_7 + Qt::ControlModifier ,
+		Qt::Key_8 + Qt::ControlModifier ,
+		Qt::Key_9 + Qt::ControlModifier ,
+		Qt::Key_0 + Qt::ControlModifier ,
 		Qt::Key_F2 ,
 		Qt::Key_F3 ,
 		Qt::Key_F4 ,
@@ -326,7 +326,7 @@ void KviFrame::installAccelerators()
 	int i=0, keys=0;
 	while((keys = accel_table[i]))
 	{
-		new QShortcut(keys, this, SLOT(accelActivated()), 0, Qt::ApplicationShortcut);
+		new QShortcut(QKeySequence(keys),this,SLOT(accelActivated()),0,Qt::ApplicationShortcut);
 		i++;
 	}
 }
