@@ -172,15 +172,8 @@
 //   Major opcode:  55
 // Program received signal SIGABRT, Aborted.
 // Do not change unless you're sure that it will not happen :)
-// #define KVI_IRCVIEW_MINIMUM_WIDTH 22
+#define KVI_IRCVIEW_MINIMUM_WIDTH 22
 //16+4+(2*4) * Do not change
-
-/*
- * Raised this value trying to avoid a bad effect when the window gets resized to its
- * minimum size: the splitter will return the widgets minimumSize(). We enforce the same
- * default proportions of 82/18 (ircview/userlist) used in KviChannel::loadProperties
- */
-#define KVI_IRCVIEW_MINIMUM_WIDTH 82
 #define KVI_IRCVIEW_PIXMAP_AND_SEPARATOR 20
 #define KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH 28
 #define KVI_IRCVIEW_SIZEHINT_WIDTH 150
