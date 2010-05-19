@@ -170,7 +170,7 @@ public:
 	*/
 	inline KviInputHistory * history(){ return KviInputHistory::instance(); };
 protected:
-	//virtual void resizeEvent(QResizeEvent * e);
+	//void installShortcuts();
 	virtual void focusInEvent(QFocusEvent * e);
 	virtual void setFocusProxy(QWidget * w);
 	virtual void keyPressEvent(QKeyEvent * e);
@@ -205,6 +205,13 @@ public slots:
 	* \return void
 	*/
 	void toggleToolButtons();
+/*
+private slots:
+	/**
+	* \brief Toggles multiline
+	* \return void
+	*/
+	//void toggleMultiLine();
 };
 
 #endif //_KVI_INPUT_H_

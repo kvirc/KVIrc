@@ -75,7 +75,6 @@
 * \def KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT Next highlighted window
 * \def KVI_SHORTCUTS_WIN_MAXIMIZE Maximizes current window
 * \def KVI_SHORTCUTS_WIN_MINIMIZE Minimizes current window
-		Shift+<F1-F12>:[/b] window switch
 * \def KVI_SHORTCUTS_WIN_PREV_PAGE Scroll the output window up one page
 * \def KVI_SHORTCUTS_WIN_NEXT_PAGE Scroll the output window down one page
 * \def KVI_SHORTCUTS_WIN_PREV_LINE Scroll the output window up one line
@@ -123,6 +122,8 @@
 		Tab after a $:[/b] Complete function names[br]
 		Shift+Tab after the first word of input:[/b] Complete nicknames with full mask in the current channel or query
 */
+
+// Please keep this list ordered by shortcut key and not by name :)
 #define KVI_SHORTCUTS_HELP "F1"
 #define KVI_SHORTCUTS_EDITOR_SELECT_ALL "Ctrl+A"
 #define KVI_SHORTCUTS_EDITOR_BOLD "Ctrl+B"
@@ -138,7 +139,7 @@
 #define KVI_SHORTCUTS_SERVERS "Ctrl+S"
 #define KVI_SHORTCUTS_EDITOR_UNDERLINE "Ctrl+U"
 #define KVI_SHORTCUTS_EDITOR_PASTE "Ctrl+V"
-//Ctrl+W: no need to implement this since it's hardcoded in Qt's MDI
+//Ctrl+W: No need to implement this since it's hardcoded in Qt's MDI
 #define KVI_SHORTCUTS_EDITOR_CUT "Ctrl+X"
 #define KVI_SHORTCUTS_EDITOR_UNDO "Ctrl+Z"
 #define KVI_SHORTCUTS_AWAY "Ctrl+Shift+A"
@@ -166,7 +167,6 @@
 #define KVI_SHORTCUTS_WIN_MAXIMIZE Qt::ControlModifier + Qt::Key_Up
 #define KVI_SHORTCUTS_WIN_MINIMIZE Qt::ControlModifier + Qt::Key_Down
 #define KVI_SHORTCUTS_EDITOR_PASTE_2 Qt::ShiftModifier + Qt::Key_Insert
-//	Shift+<F1-F12>:[/b] window switch[br]
 #define KVI_SHORTCUTS_WIN_PREV_PAGE Qt::Key_PageUp
 #define KVI_SHORTCUTS_WIN_NEXT_PAGE Qt::Key_PageDown
 #define KVI_SHORTCUTS_WIN_PREV_LINE Qt::ShiftModifier + Qt::Key_PageUp
@@ -175,8 +175,8 @@
 #define KVI_SHORTCUTS_EDITOR_NEXT_WORD Qt::ControlModifier + Qt::Key_Right
 #define KVI_SHORTCUTS_EDITOR_PREV_WORD_SELECT Qt::ControlModifier + Qt::ShiftModifier + Qt::Key_Left
 #define KVI_SHORTCUTS_EDITOR_NEXT_WORD_SELECT Qt::ControlModifier + Qt::ShiftModifier + Qt::Key_Right
-//	Ctrl+<digit>:[/b] Script accelerators (see OnAccelKeyPressed)[br]
-//	F2-F12, Shift+(F1-F12):[/b] Script accelerators (see OnAccelKeyPressed)[br]
+//Ctrl+<digit>: Script accelerators (see OnAccelKeyPressed)
+//F2-F12, Shift+(F1-F12): Script accelerators (see OnAccelKeyPressed)
 #define KVI_SHORTCUTS_EDITOR_HISTORY Qt::ControlModifier + Qt::Key_PageUp
 #define KVI_SHORTCUTS_EDITOR_PREV_CHAR Qt::Key_Left
 #define KVI_SHORTCUTS_EDITOR_NEXT_CHAR Qt::Key_Right
@@ -184,6 +184,7 @@
 #define KVI_SHORTCUTS_EDITOR_NEXT_CHAR_SELECT Qt::ShiftModifier + Qt::Key_Right
 #define KVI_SHORTCUTS_EDITOR_DELETE_WORD Qt::ControlModifier + Qt::Key_Backspace
 #define KVI_SHORTCUTS_MULTILINE_OPEN Qt::AltModifier + Qt::Key_Return
+#define KVI_SHORTCUTS_MULTILINE_OPEN_2 Qt::AltModifier + Qt::Key_Enter
 #define KVI_SHORTCUTS_EDITOR_SEND_PLAIN Qt::ControlModifier + Qt::Key_Return
 #define KVI_SHORTCUTS_EDITOR_SEND_PLAIN_2 Qt::ControlModifier + Qt::Key_Enter
 #define KVI_SHORTCUTS_EDITOR_HOME Qt::Key_Home
@@ -270,7 +271,6 @@
 		[b]Alt+PageDown:[/b] Next highlighted window[br]
 		[b]Ctrl+UpArrow:[/b] Maximizes current window[br]
 		[b]Ctrl+DownArrow:[/b] Minimizes current window[br]
-		[b]Shift+<F1-F12>:[/b] window switch[br]
 		[b]PageUp:[/b] Scroll the output window up one page[br]
 		[b]PageDown:[/b] Scroll the output window down one page[br]
 		[b]Shift+PageUp:[/b] Scroll the output window up one line[br]
@@ -317,10 +317,10 @@
 
 		[big]Completion hotkeys[/big][br]
 		[b]Tab in the first word of input:[/b] Complete nicknames in the current channel or query[br]
+		[b]Shift+Tab after the first word of input:[/b] Complete nicknames with full mask in the current channel or query[br]
 		[b]Tab after a leading /:[/b] Complete commands[br]
 		[b]Tab after a / in the middle of input:[/b] Complete directories[br]
-		[b]Tab after a $:[/b] Complete function names[br]
-		[b]Shift+Tab after the first word of input:[/b] Complete nicknames with full mask in the current channel or query
+		[b]Tab after a $:[/b] Complete function names
 */
 
 #endif //_KVI_SHORTCUTS_H_

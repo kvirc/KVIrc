@@ -40,7 +40,7 @@
 #include "kvi_scripteditor.h"
 #include "kvi_historywin.h"
 #include "kvi_userinput.h"
-#include "kvi_shortcuts.h"
+//#include "kvi_shortcuts.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_tooltip.h"
@@ -58,7 +58,7 @@
 #include <QMouseEvent>
 #include <QUrl>
 #include <QHBoxLayout>
-#include <QShortcut>
+//#include <QShortcut>
 
 #include <ctype.h>
 #include <stdlib.h>
@@ -170,6 +170,11 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pLayout->addWidget(m_pHideToolsButton,0,2,2,1);
 	m_pLayout->addWidget(m_pButtonContainer,0,1,2,1);
 	m_pLayout->addWidget(m_pInputEditor,0,0,2,1);
+	
+	/*
+	FIXME: see toggleMultiLine()
+	installShortcuts();
+	*/
 }
 
 KviInput::~KviInput()
@@ -209,21 +214,31 @@ void KviInput::inputEditorEnterPressed()
 	m_pInputEditor->setText("");
 }
 
-void KviInput::keyPressEvent(QKeyEvent *e)
+/*
+FIXME: see toggleMultiLine()
+void KviInput::installShortcuts()
 {
-	//debug("KviInput::keyPressEvent(key:%d,state:%d,text:%s)",e->key(),e->state(),e->text().isEmpty() ? "empty" : e->text().toUtf8().data());
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_MULTILINE_OPEN),this,SLOT(toggleMultiLine()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_MULTILINE_OPEN_2),this,SLOT(toggleMultiLine()),0,Qt::WidgetShortcut);
+}
+*/
 
+void KviInput::keyPressEvent(QKeyEvent * e)
+{
+	//FIXME: this block of code have to be removed if QShortcut will work; see toggleMultiLine()
 	if(e->modifiers() & Qt::AltModifier)
 	{
 		switch(e->key())
 		{
 			case Qt::Key_Enter:
 			case Qt::Key_Return:
+			{
 				multiLineEditorButtonToggled(!m_pMultiLineEditor);
+			}
 			break;
 		}
 	}
-
+	
 	if(e->modifiers() & Qt::ControlModifier)
 	{
 		switch(e->key())
@@ -336,7 +351,8 @@ void KviInput::multiLineEditorButtonToggled(bool bOn)
 
 void KviInput::iconButtonClicked()
 {
-	if(!g_pTextIconWindow)g_pTextIconWindow = new KviTextIconWindow();
+	if(!g_pTextIconWindow)
+		g_pTextIconWindow = new KviTextIconWindow();
 	QPoint pnt = m_pIconButton->mapToGlobal(QPoint(m_pIconButton->width(),0));
  	g_pTextIconWindow->move(pnt.x()-g_pTextIconWindow->width(),pnt.y() - g_pTextIconWindow->height());
 	g_pTextIconWindow->popup(this,true);
@@ -353,32 +369,22 @@ void KviInput::historyButtonClicked()
 	g_pHistoryWindow->popup(this);
 }
 
-#define BUTTON_WIDTH 20
-
-/*void KviInput::resizeEvent(QResizeEvent *e)
-{
-	//m_pButtonContainer
-	m_pInputEditor->setGeometry(0,0,m_pButtonContainer->isVisible() ? width() - (BUTTON_WIDTH * 4)-10 : width() - 10,height());
-	if(m_pMultiLineEditor)m_pMultiLineEditor->setGeometry(0,0,m_pButtonContainer->isVisible() ? width() - (BUTTON_WIDTH * 4)-10 : width() - 10,height());
-	if(m_pButtonContainer->isVisible()) m_pButtonContainer->setGeometry(width() - (BUTTON_WIDTH * 4)-10,0,BUTTON_WIDTH*4,height());
-
-	m_pHideToolsButton->setGeometry(width() - 10,0,10,height());
-
-	QWidget::resizeEvent(e);
-}*/
-
 void KviInput::setFocus()
 {
 	// redirect setFocus() to the right children
-	if(m_pMultiLineEditor)m_pMultiLineEditor->setFocus();
-	else m_pInputEditor->setFocus();
+	if(m_pMultiLineEditor)
+		m_pMultiLineEditor->setFocus();
+	else
+		m_pInputEditor->setFocus();
 }
 
 void KviInput::focusInEvent(QFocusEvent *)
 {
 	// if we get a focus in event , redirect the focus to the children
-	if(m_pMultiLineEditor)m_pMultiLineEditor->setFocus();
-	else m_pInputEditor->setFocus();
+	if(m_pMultiLineEditor)
+		m_pMultiLineEditor->setFocus();
+	else
+		m_pInputEditor->setFocus();
 }
 
 int KviInput::heightHint() const
@@ -390,7 +396,8 @@ void KviInput::setText(const QString & szText)
 {
 	if(m_pMultiLineEditor)
 		m_pMultiLineEditor->setText(szText);
-	else m_pInputEditor->setText(szText);
+	else
+		m_pInputEditor->setText(szText);
 }
 
 void KviInput::insertChar(char c)
@@ -405,7 +412,7 @@ void KviInput::insertText(const QString & szText)
 
 void KviInput::applyOptions()
 {
-	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))//G&N mar 2005
+	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))
 	{
 		QIcon is1;
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
@@ -437,6 +444,73 @@ QString KviInput::text()
 		szText = m_pInputEditor->text();
 	return szText;
 }
+
+/*
+FIXME: with the shortcut, it opens the multiline but then it can't close it
+void KviInput::toggleMultiLine()
+{
+	multiLineEditorButtonToggled(!m_pMultiLineEditor);
+}
+*/
+
+/*
+	@doc: commandline
+	@title:
+		The Commandline Input Features
+	@type:
+		generic
+	@short:
+		Commandline input features
+	@body:
+		[big]Principles of operation[/big]
+		[p]
+		The idea is simple: anything that starts with a slash (/) character
+		is interpreted as a command. Anything else is plain text that is
+		sent to the target of the window (channel, query, dcc chat etc..).
+		[/p]
+		[big]The two operating modes[/big]
+		[p]
+		The commandline input has two operating modes: the "user friendly mode" and
+		the "kvs mode". In the user friendly mode all the parameters of the commands
+		are interpreted exactly like you type them. There is no special interpretation
+		of $,%,-,( and ; characters. This allows you to type "/me is happy ;)", for example.
+		In the kvs mode the full parameter interpretation is enabled and the commands
+		work just like in any other script editor. This means that anything that
+		starts with a $ is a function call, anything that starts with a % is a variable,
+		the dash characters after command names are interpreted as switches and ; is the
+		command separator. This in turn does NOT allow you to type "/me is happy ;)"
+		because ; is the command separator and ) will be interpreted as the beginning
+		of the next command. In KVS mode you obviously have to escape the ; character
+		by typing "/me is happy \;)". The user friendly mode is good for everyday chatting
+		and for novice users while the KVS mode is for experts that know that minimum about
+		scripting languages. Please note that in the user-friendly mode you're not allowed
+		to type multiple commands at once :).
+		[/p]
+		[p]
+		Also look at the [doc:keyboard]keyboard shortcuts[/doc] reference.[br]
+		If you drop a file on this widget, a <a href="parse.kvihelp">/PARSE &lt;filename&gt;</a> will be executed.[br]
+		You can enable word substitution in the preferences dialog.[br]
+		For example, if you choose to substitute "afaik" with "As far as I know",[br]
+		when you will type "afaik" somewhere in the command line, and then
+		press Space or Return, that word will be replaced with "As far as I know".[br]
+		Experiment with it :)[br]
+		The Tab key activates the completion of the current word.[br]
+		If a word is prefixed with a '/', it is treated as a command to be completed,
+		if it begins with '$', it is treated as a function or identifier to be completed,
+		otherwise it is treated as a nickname or filename to be completed.
+		[example]
+			/ec&lt;Tab&gt; will produce /echo&lt;space&gt;
+			/echo $loca&lt;Tab&gt; will produce /echo $localhost
+		[/example]
+		Multiple matches are listed in the view window and the word is completed
+		to the common part of all the matches.
+		[example]
+			$sel&lt;Tab;&gt; will find multiple matches and produce $selected
+		[/example]
+		Experiment with that too :)
+		[/p]
+*/
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_input.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

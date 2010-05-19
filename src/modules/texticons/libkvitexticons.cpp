@@ -43,7 +43,6 @@
 	@seealso:
 		[fnc]$texticons.get[/fnc]
 */
-
 static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 {
 	QString szIcon;
@@ -53,30 +52,30 @@ static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 	if(!szIcon.isNull())
 	{
-		pIcon=g_pTextIconManager->lookupTextIcon(szIcon);
+		pIcon = g_pTextIconManager->lookupTextIcon(szIcon);
 		if(!pIcon)
 		{
 			c->warning("Icon '%s' not found",szIcon.toUtf8().data());
 		} else {
-			if(pIcon->id()!=-1)
+			if(pIcon->id() != -1)
 				c->returnValue()->setInteger(pIcon->id());
 			else
 				c->returnValue()->setString(pIcon->filename());
 		}
 	} else {
-		KviKvsHash* hash = new KviKvsHash();
+		KviKvsHash * pHash = new KviKvsHash();
 
 		KviPointerHashTableIterator<QString,KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
 
 		while(KviTextIcon * i = it.current())
 		{
-			if(i->id()!=-1)
-				hash->set(it.currentKey(),new KviKvsVariant( (kvs_int_t)(i->id()) ));
+			if(i->id() != -1)
+				pHash->set(it.currentKey(),new KviKvsVariant((kvs_int_t)(i->id()) ));
 			else
-				hash->set(it.currentKey(),new KviKvsVariant(i->filename()));
+				pHash->set(it.currentKey(),new KviKvsVariant(i->filename()));
 			++it;
 		}
-		c->returnValue()->setHash(hash);
+		c->returnValue()->setHash(pHash);
 	}
 	return true;
 }
@@ -100,11 +99,10 @@ static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$texticons.get[/fnc]
 */
-
 static bool texticons_kvs_cmd_set(KviKvsModuleCommandCall * c)
 {
 	QString szName,szIcon;
-	KviTextIcon* pIcon=0;
+	KviTextIcon * pIcon = 0;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("iconName",KVS_PT_NONEMPTYSTRING,0,szName)
 		KVSM_PARAMETER("iconIdOrFile",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
@@ -113,20 +111,20 @@ static bool texticons_kvs_cmd_set(KviKvsModuleCommandCall * c)
 	{
 		g_pTextIconManager->textIconDict()->remove(szName);
 	} else {
-		pIcon=g_pTextIconManager->lookupTextIcon(szName);
+		pIcon = g_pTextIconManager->lookupTextIcon(szName);
 		if(!pIcon)
 		{
-			KviTextIcon* pTmpIcon=new KviTextIcon(-1);
+			KviTextIcon * pTmpIcon = new KviTextIcon(-1);
 			g_pTextIconManager->insert(szName,*pTmpIcon);
 			delete pTmpIcon;
-			pIcon=g_pTextIconManager->lookupTextIcon(szName);
+			pIcon = g_pTextIconManager->lookupTextIcon(szName);
 			if(!pIcon) return false;
 		}
 
 		bool bOk;
-		unsigned int iResult=szIcon.toUInt(&bOk);
+		unsigned int uResult = szIcon.toUInt(&bOk);
 		if(bOk)
-			pIcon->setId(iResult);
+			pIcon->setId(uResult);
 		else
 			pIcon->setFilename(szIcon);
 
@@ -159,3 +157,41 @@ KVIRC_MODULE(
 	texticons_module_cleanup,
 	0
 )
+
+/*
+	@doc: texticons
+	@type:
+		generic
+	@title:
+		The KVIrc TextIcons extension
+	@short:
+		The KVIrc TextIcons extension
+	@body:
+		Starting from version 3.0.0 KVIrc supports the TextIcon extension
+		to the standard IRC protocol. It is a mean for sending text enriched
+		of small images without sending the images themselves.[br]
+		The idea is quite simple: the IRC client (and it's user) associates
+		some small images to text strings (called icon tokens) and the strings are sent
+		in place of the images preceeded by a special escape character.[br]
+		The chosen escape character is 29 (hex 0x1d) which corresponds
+		to the ASCII group separator.[br]
+		So for example if a client has the association of the icon token "rose" with a small
+		icon containing a red rose flower then KVIrc could send the string
+		"&lt;0x1d&gt;rose" in the message stream to ask the remote parties to
+		display such an icon. If the remote parties don't have this association
+		then they will simply strip the control code and display the string "rose",
+		(eventually showing it in some enchanced way).[br]
+		The icon tokens can't contain spaces
+		so the receiving clients stop the extraction of the icon strings
+		when a space, an icon escape or the message termination is encountered.
+		[br]
+		&lt;icon escape&gt; := character 0x1d (ASCII group separator)[br]
+		&lt;icon token&gt; := any character with the exception of 0x1d, CR,LF and SPACE.[br]
+		[br]
+		Please note that this is a KVIrc extension and the remote clients
+		that don't support this feature will not display the icon (and will
+		eventually show the 0x1d character in the data stream).[br]
+		If you like this feature please either convince the remote users
+		to try KVIrc or tell them to write to their client developers asking
+		for this simple feature to be implemented.[br]
+*/

@@ -4,7 +4,7 @@
 //   Creation date : Sat Oct 9 2004 16:03:01 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2004-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -73,16 +73,16 @@ KviIrcMessageCheckListItem::~KviIrcMessageCheckListItem()
 }
 
 
-KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
-: QFrame(par)
+KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
+: QFrame(pParent)
 {
-	m_pIrcView = par;
+	m_pIrcView = pParent;
 	setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
 	setAutoFillBackground(true);
-	QPalette p=palette();
-	QColor col=p.color(backgroundRole());
+	QPalette p = palette();
+	QColor col = p.color(backgroundRole());
 
-	p.setColor(backgroundRole(), col);
+	p.setColor(backgroundRole(),col);
 	setPalette(p);
 
 	QGridLayout * gl = new QGridLayout(this);
@@ -108,8 +108,6 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 
 
 	QTabWidget * tw = new QTabWidget(this);
-
-
 
 	// Find tab
 	QWidget * w = new QWidget(tw);
@@ -193,7 +191,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	gl->setSizeConstraint(QGridLayout::SetFixedSize);
 	m_pStringToFind->setFocus();
 	tw->setCurrentIndex(tw->indexOf(w));
-	new QShortcut(Qt::Key_Escape,this,SLOT(close()));
+	new QShortcut(QKeySequence(Qt::Key_Escape),this,SLOT(close()),0,Qt::WidgetShortcut);
 }
 
 KviIrcViewToolWidget::~KviIrcViewToolWidget()
@@ -209,28 +207,26 @@ KviIrcViewToolWidget::~KviIrcViewToolWidget()
 
 void KviIrcViewToolWidget::filterEnableAll()
 {
-	for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
+	for(int i=0; i < KVI_NUM_MSGTYPE_OPTIONS; i++)
 	{
 		m_pFilterItems[i]->setOn(true);
 	}
-
 }
 
 void KviIrcViewToolWidget::filterEnableNone()
 {
-	for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
+	for(int i=0; i < KVI_NUM_MSGTYPE_OPTIONS; i++)
 	{
 		m_pFilterItems[i]->setOn(false);
 	}
-
 }
 
-void KviIrcViewToolWidget::hideEvent ( QHideEvent * )
+void KviIrcViewToolWidget::hideEvent(QHideEvent *)
 {
 	m_pIrcView->toggleToolWidget();
 }
 
-void KviIrcViewToolWidget::closeEvent ( QCloseEvent * )
+void KviIrcViewToolWidget::closeEvent(QCloseEvent *)
 {
 	m_pIrcView->toggleToolWidget();
 }
@@ -246,13 +242,13 @@ void KviIrcViewToolWidget::filterLoad()
 		QFile f(szFile);
 		if(f.open(QIODevice::ReadOnly))
 		{
-			char buffer[KVI_NUM_MSGTYPE_OPTIONS];
-			kvi_memset(buffer,0,KVI_NUM_MSGTYPE_OPTIONS);
-			f.read(buffer,KVI_NUM_MSGTYPE_OPTIONS);
+			char cBuffer[KVI_NUM_MSGTYPE_OPTIONS];
+			kvi_memset(cBuffer,0,KVI_NUM_MSGTYPE_OPTIONS);
+			f.read(cBuffer,KVI_NUM_MSGTYPE_OPTIONS);
 			f.close();
-			for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
+			for(int i=0; i < KVI_NUM_MSGTYPE_OPTIONS; i++)
 			{
-				m_pFilterItems[i]->setOn(buffer[i]);
+				m_pFilterItems[i]->setOn(cBuffer[i]);
 			}
 			forceRepaint();
 		} else {
@@ -271,12 +267,12 @@ void KviIrcViewToolWidget::filterSave()
 		QFile f(szFile);
 		if(f.open(QIODevice::WriteOnly))
 		{
-			char buffer[KVI_NUM_MSGTYPE_OPTIONS];
-			for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
+			char cBuffer[KVI_NUM_MSGTYPE_OPTIONS];
+			for(int i=0; i < KVI_NUM_MSGTYPE_OPTIONS; i++)
 			{
-				buffer[i] = messageEnabled(i) ? 1 : 0;
+				cBuffer[i] = messageEnabled(i) ? 1 : 0;
 			}
-			if(f.write(buffer,KVI_NUM_MSGTYPE_OPTIONS) < KVI_NUM_MSGTYPE_OPTIONS)
+			if(f.write(cBuffer,KVI_NUM_MSGTYPE_OPTIONS) < KVI_NUM_MSGTYPE_OPTIONS)
 				KviMessageBox::warning(__tr2qs("Failed to write the filter file %Q (IO Error)"),&szFile);
 			f.close();
 		} else KviMessageBox::warning(__tr2qs("Can't open the filter file %Q for writing"),&szFile);
@@ -292,9 +288,9 @@ void KviIrcViewToolWidget::forceRepaint()
 	#endif
 }
 
-void KviIrcViewToolWidget::setFindResult(const QString & text)
+void KviIrcViewToolWidget::setFindResult(const QString & szText)
 {
-	m_pFindResult->setText(text);
+	m_pFindResult->setText(szText);
 }
 
 void KviIrcViewToolWidget::findPrev()
@@ -310,27 +306,31 @@ void KviIrcViewToolWidget::findNext()
 }
 
 
-void KviIrcViewToolWidget::mousePressEvent(QMouseEvent *e)
+void KviIrcViewToolWidget::mousePressEvent(QMouseEvent * e)
 {
 	m_pressPoint = e->pos();
 }
 
 void KviIrcViewToolWidget::mouseMoveEvent(QMouseEvent *)
 {
-	QPoint p=m_pIrcView->mapFromGlobal(QCursor::pos());
-	p-=m_pressPoint;
-	if(p.x() < 1)p.setX(1);
+	QPoint p = m_pIrcView->mapFromGlobal(QCursor::pos());
+	p -= m_pressPoint;
+	if(p.x() < 1)
+		p.setX(1);
 	else {
-		int www = (m_pIrcView->width() - (m_pIrcView->m_pScrollBar->width() + 1));
-		if((p.x() + width()) > www)p.setX(www - width());
+		int iWidth = (m_pIrcView->width() - (m_pIrcView->m_pScrollBar->width() + 1));
+		if((p.x() + width()) > iWidth)
+			p.setX(iWidth - width());
 	}
-	if(p.y() < 1)p.setY(1);
+	
+	if(p.y() < 1)
+		p.setY(1);
 	else {
-		int hhh = (m_pIrcView->height() - 1);
-		if((p.y() + height()) > hhh)p.setY(hhh - height());
+		int iHeight = (m_pIrcView->height() - 1);
+		if((p.y() + height()) > iHeight)
+			p.setY(iHeight - height());
 	}
 	move(p);
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -349,7 +349,7 @@ KviIrcViewToolTip::~KviIrcViewToolTip()
 {
 }
 
-void KviIrcViewToolTip::maybeTip(const QPoint &pnt)
+void KviIrcViewToolTip::maybeTip(const QPoint & pnt)
 {
 	m_pView->maybeTip(pnt);
 }

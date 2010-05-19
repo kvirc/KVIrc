@@ -1360,19 +1360,14 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 		}
 
 		//debug("%c",e->ascii());
-		if(!m_bReadOnly) {
+		if(!m_bReadOnly)
 			insertText(e->text());
-		}
+
 		return;
 	}
 
-	switch(e->key())
-	{
-		default:
-			if(!e->text().isEmpty() && !m_bReadOnly)
-				insertText(e->text());
-		break;
-	}
+	if(!e->text().isEmpty() && !m_bReadOnly)
+		insertText(e->text());
 }
 
 void KviInputEditor::keyReleaseEvent(QKeyEvent * e)
@@ -2402,100 +2397,3 @@ void KviInputEditor::altHit()
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_input_editor.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-
-/*
-	@doc: texticons
-	@type:
-		generic
-	@title:
-		The KVIrc TextIcons extension
-	@short:
-		The KVIrc TextIcons extension
-	@body:
-		Starting from version 3.0.0 KVIrc supports the TextIcon extension
-		to the standard IRC protocol. It is a mean for sending text enriched
-		of small images without sending the images themselves.[br]
-		The idea is quite simple: the IRC client (and it's user) associates
-		some small images to text strings (called icon tokens) and the strings are sent
-		in place of the images preceeded by a special escape character.[br]
-		The chosen escape character is 29 (hex 0x1d) which corresponds
-		to the ASCII group separator.[br]
-		So for example if a client has the association of the icon token "rose" with a small
-		icon containing a red rose flower then KVIrc could send the string
-		"&lt;0x1d&gt;rose" in the message stream to ask the remote parties to
-		display such an icon. If the remote parties don't have this association
-		then they will simply strip the control code and display the string "rose",
-		(eventually showing it in some enchanced way).[br]
-		The icon tokens can't contain spaces
-		so the receiving clients stop the extraction of the icon strings
-		when a space, an icon escape or the message termination is encountered.
-		[br]
-		&lt;icon escape&gt; := character 0x1d (ASCII group separator)[br]
-		&lt;icon token&gt; := any character with the exception of 0x1d, CR,LF and SPACE.[br]
-		[br]
-		Please note that this is a KVIrc extension and the remote clients
-		that don't support this feature will not display the icon (and will
-		eventually show the 0x1d character in the data stream).[br]
-		If you like this feature please either convince the remote users
-		to try KVIrc or tell them to write to their client developers asking
-		for this simple feature to be implemented.[br]
-*/
-
-
-/*
-	@doc: commandline
-	@title:
-		The Commandline Input Features
-	@type:
-		generic
-	@short:
-		Commandline input features
-	@body:
-		[big]Principles of operation[/big]
-		[p]
-		The idea is simple: anything that starts with a slash (/) character
-		is interpreted as a command. Anything else is plain text that is
-		sent to the target of the window (channel, query, dcc chat etc..).
-		[/p]
-		[big]The two operating modes[/big]
-		[p]
-		The commandline input has two operating modes: the "user friendly mode" and
-		the "kvs mode". In the user friendly mode all the parameters of the commands
-		are interpreted exactly like you type them. There is no special interpretation
-		of $,%,-,( and ; characters. This allows you to type "/me is happy ;)", for example.
-		In the kvs mode the full parameter interpretation is enabled and the commands
-		work just like in any other script editor. This means that anything that
-		starts with a $ is a function call, anything that starts with a % is a variable,
-		the dash characters after command names are interpreted as switches and ; is the
-		command separator. This in turn does NOT allow you to type "/me is happy ;)"
-		because ; is the command separator and ) will be interpreted as the beginning
-		of the next command. In KVS mode you obviously have to escape the ; character
-		by typing "/me is happy \;)". The user friendly mode is good for everyday chatting
-		and for novice users while the KVS mode is for experts that know that minimum about
-		scripting languages. Please note that in the user-friendly mode you're not allowed
-		to type multiple commands at once :).
-		[/p]
-		[p]
-		Also look at the [doc:keyboard]keyboard shortcuts[/doc] reference.[br]
-		If you drop a file on this widget, a <a href="parse.kvihelp">/PARSE &lt;filename&gt;</a> will be executed.[br]
-		You can enable word substitution in the preferences dialog.[br]
-		For example, if you choose to substitute "afaik" with "As far as I know",[br]
-		when you will type "afaik" somewhere in the command line, and then
-		press Space or Return, that word will be replaced with "As far as I know".[br]
-		Experiment with it :)[br]
-		The Tab key activates the completion of the current word.[br]
-		If a word is prefixed with a '/', it is treated as a command to be completed,
-		if it begins with '$', it is treated as a function or identifier to be completed,
-		otherwise it is treated as a nickname or filename to be completed.
-		[example]
-			/ec&lt;Tab&gt; will produce /echo&lt;space&gt;
-			/echo $loca&lt;Tab&gt; will produce /echo $localhost
-		[/example]
-		Multiple matches are listed in the view window and the word is completed
-		to the common part of all the matches.
-		[example]
-			$sel&lt;Tab;&gt; will find multiple matches and produce $selected
-		[/example]
-		Experiment with that too :)
-		[/p]
-*/
