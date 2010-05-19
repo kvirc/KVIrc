@@ -245,7 +245,7 @@ bool KviKvsObject_lineedit::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	SET_OBJECT(QLineEdit)
 
 	connect(widget(),SIGNAL(returnPressed()),this,SLOT(slotreturnPressed()));
-	connect(widget(),SIGNAL(editFinished()),this,SLOT(slotlostFocus()));
+	connect(widget(),SIGNAL(editingFinished()),this,SLOT(slotlostFocus()));
 	connect(widget(),SIGNAL(textChanged(const QString & )),this,SLOT(slottextChanged(const QString & )));
 	return true;
 }
