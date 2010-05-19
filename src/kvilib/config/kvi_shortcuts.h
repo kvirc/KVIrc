@@ -49,7 +49,6 @@
 * \def KVI_SHORTCUTS_EDITOR_UNDERLINE Insert the 'underline' mIRC text control character
 * \def KVI_SHORTCUTS_EDITOR_PASTE Paste the clipboard contents (same as middle mouse click)
 * \def KVI_SHORTCUTS_EDITOR_PASTE_2 Paste the clipboard contents (same as middle mouse click)
-		Ctrl+W:[/b] Close current window
 * \def KVI_SHORTCUTS_EDITOR_CUT Cut the selected text and copy the text to clipboard
 * \def KVI_SHORTCUTS_EDITOR_UNDO Undo last action
 * \def KVI_SHORTCUTS_AWAY Go away/back
@@ -88,7 +87,7 @@
 		Ctrl+<digit>:[/b] Script accelerators (see OnAccelKeyPressed)
 		F2-F12, Shift+(F1-F12):[/b] Script accelerators (see OnAccelKeyPressed)
 * \def KVI_SHORTCUTS_EDITOR_HISTORY_PREV Move backward in the command history
-		CursorDown:[/b] Move forward in the command history
+* \def KVI_SHORTCUTS_EDITOR_HISTORY_NEXT Move forward in the command history
 * \def KVI_SHORTCUTS_EDITOR_HISTORY Open the history popup
 * \def KVI_SHORTCUTS_EDITOR_PREV_CHAR Move the cursor to the left
 * \def KVI_SHORTCUTS_EDITOR_NEXT_CHAR Move the cursor to the right
@@ -102,6 +101,13 @@
 * \def KVI_SHORTCUTS_EDITOR_END Move the cursos at the end
 * \def KVI_SHORTCUTS_EDITOR_HOME_SELECT Select until the beginning
 * \def KVI_SHORTCUTS_EDITOR_END_SELECT Select until the end
+* \def KVI_SHORTCUTS_EDITOR_RETURN Return key
+* \def KVI_SHORTCUTS_EDITOR_RETURN_2 Enter key
+* \def KVI_SHORTCUTS_EDITOR_BACKSPACE Backspace key
+* \def KVI_SHORTCUTS_EDITOR_DELETE Delete key
+* \def KVI_SHORTCUTS_EDITOR_ESCAPE Escape key
+* \def KVI_SHORTCUTS_EDITOR_ALT Alt key
+* \def KVI_SHORTCUTS_EDITOR_ALT_2 Meta key
 
 		Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code[br]
 			[example]
@@ -132,7 +138,7 @@
 #define KVI_SHORTCUTS_SERVERS "Ctrl+S"
 #define KVI_SHORTCUTS_EDITOR_UNDERLINE "Ctrl+U"
 #define KVI_SHORTCUTS_EDITOR_PASTE "Ctrl+V"
-//Ctrl+W:[/b] Close current window
+//Ctrl+W: no need to implement this since it's hardcoded in Qt's MDI
 #define KVI_SHORTCUTS_EDITOR_CUT "Ctrl+X"
 #define KVI_SHORTCUTS_EDITOR_UNDO "Ctrl+Z"
 #define KVI_SHORTCUTS_AWAY "Ctrl+Shift+A"
@@ -171,8 +177,6 @@
 #define KVI_SHORTCUTS_EDITOR_NEXT_WORD_SELECT Qt::ControlModifier + Qt::ShiftModifier + Qt::Key_Right
 //	Ctrl+<digit>:[/b] Script accelerators (see OnAccelKeyPressed)[br]
 //	F2-F12, Shift+(F1-F12):[/b] Script accelerators (see OnAccelKeyPressed)[br]
-//	CursorUp:[/b] Move backward in the command history[br]
-//	CursorDown:[/b] Move forward in the command history[br]
 #define KVI_SHORTCUTS_EDITOR_HISTORY Qt::ControlModifier + Qt::Key_PageUp
 #define KVI_SHORTCUTS_EDITOR_PREV_CHAR Qt::Key_Left
 #define KVI_SHORTCUTS_EDITOR_NEXT_CHAR Qt::Key_Right
@@ -186,7 +190,15 @@
 #define KVI_SHORTCUTS_EDITOR_END Qt::Key_End
 #define KVI_SHORTCUTS_EDITOR_HOME_SELECT Qt::ShiftModifier + Qt::Key_Home
 #define KVI_SHORTCUTS_EDITOR_END_SELECT Qt::ShiftModifier + Qt::Key_End
-
+#define KVI_SHORTCUTS_EDITOR_HISTORY_PREV Qt::Key_Up
+#define KVI_SHORTCUTS_EDITOR_HISTORY_NEXT Qt::Key_Down
+#define KVI_SHORTCUTS_EDITOR_RETURN Qt::Key_Return
+#define KVI_SHORTCUTS_EDITOR_RETURN_2 Qt::Key_Enter
+#define KVI_SHORTCUTS_EDITOR_BACKSPACE Qt::Key_Backspace
+#define KVI_SHORTCUTS_EDITOR_DELETE Qt::Key_Delete
+#define KVI_SHORTCUTS_EDITOR_ESCAPE Qt::Key_Escape
+#define KVI_SHORTCUTS_EDITOR_ALT Qt::Key_Alt
+#define KVI_SHORTCUTS_EDITOR_ALT_2 Qt::Key_Meta
 
 //	Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code[br]
 //		[example]
@@ -285,13 +297,13 @@
 		[b]Ctrl+X:[/b] Cut the selected text[br]
 		[b]Ctrl+V:[/b] Paste the clipboard contents (same as middle mouse click)[br]
 		[b]Ctrl+I:[/b] Insert the 'icon' control code and pops up the icon list box[br]
-		[b]CursorUp:[/b] Move backward in the command history[br]
-		[b]CursorDown:[/b] Move forward in the command history[br]
+		[b]UpArrow:[/b] Move backward in the command history and in the history popup[br]
+		[b]DownArrow:[/b] Move forward in the command history and in the history popup[br]
 		[b]Ctrl+PageUp:[/b] Open the history popup[br]
-		[b]CursorRight:[/b] Move the cursor to the right[br]
-		[b]CursorLeft:[/b] Move the cursor to the left :)[br]
-		[b]Shift+CursorLeft:[/b] Move the selection to the left[br]
-		[b]Shift+RightCursor:[/b] Move the selection to the right[br]
+		[b]LeftArrow:[/b] Move the cursor to the left :)[br]
+		[b]RightArrow:[/b] Move the cursor to the right[br]
+		[b]Shift+LeftArrow:[/b] Move the selection to the left[br]
+		[b]Shift+RightArrow:[/b] Move the selection to the right[br]
 		[b]Alt+Enter:[/b] Show/hide the multiline editor[br]
 		[b]Ctrl+Enter:[/b] Send message as plain text, ignoring / commands[br]
 		[b]Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code[br]

@@ -6,7 +6,7 @@
 //   Creation date : Fri Sep 5 2008 17:26:34 by Elvio Basello
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)
+//   Copyright (C) 2008 Elvio Basello (hell at hellvis69 dot netsons dot org)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -64,7 +64,7 @@ class KviTalPopupMenu;
 #define KVI_INPUT_DEF_FORE 101
 
 #ifndef ACCEL_KEY
-#define ACCEL_KEY(k) "\t" + QString(QKeySequence( Qt::CTRL | Qt::Key_ ## k ))
+	#define ACCEL_KEY(k) "\t" + QString(QKeySequence(Qt::ControlModifier | Qt::Key_ ## k ))
 #endif
 
 /**
@@ -73,8 +73,8 @@ class KviTalPopupMenu;
 */
 class KVIRC_API KviInputEditor : public QWidget
 {
-	//Q_PROPERTY( int KviProperty_FocusOwner READ heightHint )
-	Q_PROPERTY( int TransparencyCapable READ heightHint )
+	//Q_PROPERTY(int KviProperty_FocusOwner READ heightHint)
+	Q_PROPERTY(int TransparencyCapable READ heightHint)
 	Q_OBJECT
 	friend class KviTopicWidget; // it uses home()
 public:
@@ -761,17 +761,46 @@ private slots:
 	void endInternalSelection();
 	
 	/**
-	* \brief Moves backward in the command history
+	* \brief Moves backward in the command history and in the history popup
 	* \return void
 	*/
 	void historyPrev();
 	
 	/**
-	* \brief Moves forward in the command history
+	* \brief Moves forward in the command history and in the history popup
 	* \return void
 	*/
 	void historyNext();
-
+	
+	/**
+	* \brief Run when return/enter key is pressed
+	* \return void
+	*/
+	void returnHit();
+	
+	/**
+	* \brief Run when backspace key is pressed
+	* \return void
+	*/
+	void backspaceHit();
+	
+	/**
+	* \brief Run when delete key is pressed
+	* \return void
+	*/
+	void deleteHit();
+	
+	/**
+	* \brief Run when escape key is pressed
+	* \return void
+	*/
+	void escapeHit();
+	
+	/**
+	* \brief Run when alt/meta key is pressed
+	* \return void
+	*/
+	void altHit();
 protected:
 	void installShortcuts();
 	virtual void drawContents(QPainter *);
