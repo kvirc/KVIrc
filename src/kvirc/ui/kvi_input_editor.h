@@ -729,6 +729,48 @@ private slots:
 	* \return void
 	*/
 	void search();
+	
+	/**
+	* \brief Sends plain text, ignoring initial token starting with / (a command)
+	* \return void
+	*/
+	void sendPlain();
+	
+	/**
+	* \brief Moves the cursor at the beginning
+	* \return void
+	*/
+	void homeInternal();
+	
+	/**
+	* \brief Moves the cursor at the end
+	* \return void
+	*/
+	void endInternal();
+	
+	/**
+	* \brief Selects until the beginning
+	* \return void
+	*/
+	void homeInternalSelection();
+	
+	/**
+	* \brief Selects until the end
+	* \return void
+	*/
+	void endInternalSelection();
+	
+	/**
+	* \brief Moves backward in the command history
+	* \return void
+	*/
+	void historyPrev();
+	
+	/**
+	* \brief Moves forward in the command history
+	* \return void
+	*/
+	void historyNext();
 
 protected:
 	void installShortcuts();

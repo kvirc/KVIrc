@@ -1282,16 +1282,22 @@ void KviInputEditor::installShortcuts()
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_COPY),this,SLOT(copyInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_CUT),this,SLOT(cutInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PASTE),this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PASTE2),this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PASTE_2),this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_UNDO),this,SLOT(undoInternal()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_REDO),this,SLOT(redoInternal()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_SELECTALL),this,SLOT(selectAllInternal()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_DELETEWORD),this,SLOT(deleteWord()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_SELECT_ALL),this,SLOT(selectAllInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_DELETE_WORD),this,SLOT(deleteWord()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_PREV_LINE),this,SLOT(previousLine()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_NEXT_LINE),this,SLOT(nextLine()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_PREV_PAGE),this,SLOT(previousPage()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_NEXT_PAGE),this,SLOT(nextPage()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_SEARCH),this,SLOT(search()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_SEND_PLAIN),this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_SEND_PLAIN_2),this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_HOME),this,SLOT(homeInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_END),this,SLOT(endInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_HOME_SELECT),this,SLOT(homeInternalSelection()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_END_SELECT),this,SLOT(endInternalSelection()),0,Qt::WidgetShortcut);
 }
 
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
@@ -1337,29 +1343,6 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 				//avoid Ctrl+J from inserting a linefeed
 				break;
 			}
-			case Qt::Key_Return:
-			case Qt::Key_Enter:
-				if(m_pInputParent->inherits("KviInput"))
-				{
-					QString szBuffer(m_szTextBuffer);
-					m_szTextBuffer="";
-					selectOneChar(-1);
-					m_iCursorPosition = 0;
-					m_iFirstVisibleChar = 0;
-					repaintWithCursorOn();
-					KviUserInput::parseNonCommand(szBuffer,m_pKviWindow);
-					if (!szBuffer.isEmpty())
-					{
-						KviInputHistory::instance()->add(new QString(szBuffer));
-						m_pHistory->insert(0,new QString(szBuffer));
-					}
-
-					__range_valid(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
-					if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)m_pHistory->removeLast();
-
-					m_iCurHistoryIdx = -1;
-				}
-				break;
 			default:
 				if(!m_bReadOnly) insertText(e->text());
 			break;
@@ -1416,77 +1399,6 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 					m_szTextBuffer.remove(m_iCursorPosition,1);
 					selectOneChar(-1);
 					repaintWithCursorOn();
-				}
-			}
-			break;
-		case Qt::Key_Home:
-			if(m_iCursorPosition > 0)
-			{
-				if(e->modifiers() & Qt::ShiftModifier)
-				{
-					if((m_iSelectionBegin == -1)&&(m_iSelectionEnd == -1))m_iSelectionEnd = m_iCursorPosition - 1;
-					m_iSelectionBegin = 0;
-				} else {
-					selectOneChar(-1);
-				}
-				home();
-			}
-			break;
-		case Qt::Key_End://we should call it even the cursor is at the end for deselecting
-			if(e->modifiers() & Qt::ShiftModifier)
-			{
-				if((m_iSelectionBegin == -1)&&(m_iSelectionEnd == -1))m_iSelectionBegin = m_iCursorPosition;
-				m_iSelectionEnd = m_szTextBuffer.length()-1;
-			} else {
-				selectOneChar(-1);
-			}
-			end();
-			break;
-		case Qt::Key_Up:
-			if(!m_bReadOnly)
-			{
-				if(m_pHistory->count() > 0)
-				{
-					if(m_iCurHistoryIdx < 0)
-					{
-						m_szSaveTextBuffer = m_szTextBuffer;
-						m_szTextBuffer = *(m_pHistory->at(0));
-						m_iCurHistoryIdx = 0;
-					} else if(m_iCurHistoryIdx >= (int)(m_pHistory->count()-1))
-					{
-						m_szTextBuffer=m_szSaveTextBuffer;
-						m_iCurHistoryIdx = -1;
-					} else {
-						m_iCurHistoryIdx++;
-						m_szTextBuffer = *(m_pHistory->at(m_iCurHistoryIdx));
-					}
-					selectOneChar(-1);
-					if(KVI_OPTION_BOOL(KviOption_boolInputHistoryCursorAtEnd))end();
-					else home();
-				}
-			}
-			break;
-		case Qt::Key_Down:
-			if(!m_bReadOnly)
-			{
-				if(m_pHistory->count() > 0)
-				{
-					if(m_iCurHistoryIdx < 0)
-					{
-						m_szSaveTextBuffer = m_szTextBuffer;
-						m_szTextBuffer = *(m_pHistory->at(m_pHistory->count()-1));
-						m_iCurHistoryIdx =m_pHistory->count()-1;
-					} else if(m_iCurHistoryIdx == 0)
-					{
-						m_szTextBuffer=m_szSaveTextBuffer;
-						m_iCurHistoryIdx = -1;
-					} else {
-						m_iCurHistoryIdx--;
-						m_szTextBuffer = *(m_pHistory->at(m_iCurHistoryIdx));
-					}
-					selectOneChar(-1);
-					if(KVI_OPTION_BOOL(KviOption_boolInputHistoryCursorAtEnd))end();
-					else home();
 				}
 			}
 			break;
@@ -2355,6 +2267,129 @@ void KviInputEditor::search()
 		if(m_pKviWindow->view()) m_pKviWindow->view()->toggleToolWidget();
 }
 
+void KviInputEditor::sendPlain()
+{
+	if(m_pInputParent->inherits("KviInput"))
+	{
+		QString szBuffer(m_szTextBuffer);
+		m_szTextBuffer="";
+		selectOneChar(-1);
+		m_iCursorPosition = 0;
+		m_iFirstVisibleChar = 0;
+		repaintWithCursorOn();
+		KviUserInput::parseNonCommand(szBuffer,m_pKviWindow);
+		if (!szBuffer.isEmpty())
+		{
+			KviInputHistory::instance()->add(new QString(szBuffer));
+			m_pHistory->insert(0,new QString(szBuffer));
+		}
+
+		__range_valid(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
+		if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)m_pHistory->removeLast();
+
+		m_iCurHistoryIdx = -1;
+	}
+}
+
+void KviInputEditor::homeInternal()
+{
+	if(m_iCursorPosition > 0)
+	{
+		selectOneChar(-1);
+		home();
+	}
+}
+
+void KviInputEditor::homeInternalSelection()
+{
+	if(m_iCursorPosition > 0)
+	{
+		if((m_iSelectionBegin == -1) && (m_iSelectionEnd == -1))
+		{
+			// There is no selection
+			m_iSelectionEnd = m_iCursorPosition - 1;
+		} else {
+			// There is selection
+			m_iSelectionEnd = m_iSelectionBegin - 1;
+		}
+		
+		m_iSelectionBegin = 0;
+		home();
+	}
+}
+
+void KviInputEditor::endInternal()
+{
+	selectOneChar(-1);
+	end();
+}
+
+void KviInputEditor::endInternalSelection()
+{
+	if((m_iSelectionBegin == -1) && (m_iSelectionEnd == -1))
+	{
+		// There is no selection
+		m_iSelectionBegin = m_iCursorPosition;
+	} else {
+		// There is selection
+		m_iSelectionBegin = m_iSelectionEnd+1;
+	}
+
+	m_iSelectionEnd = m_szTextBuffer.length()-1;
+	end();
+}
+
+void KviInputEditor::historyPrev()
+{
+	if(!m_bReadOnly)
+	{
+		if(m_pHistory->count() > 0)
+		{
+			if(m_iCurHistoryIdx < 0)
+			{
+				m_szSaveTextBuffer = m_szTextBuffer;
+				m_szTextBuffer = *(m_pHistory->at(0));
+				m_iCurHistoryIdx = 0;
+			} else if(m_iCurHistoryIdx >= (int)(m_pHistory->count()-1))
+			{
+				m_szTextBuffer=m_szSaveTextBuffer;
+				m_iCurHistoryIdx = -1;
+			} else {
+				m_iCurHistoryIdx++;
+				m_szTextBuffer = *(m_pHistory->at(m_iCurHistoryIdx));
+			}
+			selectOneChar(-1);
+			if(KVI_OPTION_BOOL(KviOption_boolInputHistoryCursorAtEnd))end();
+			else home();
+		}
+	}
+}
+
+void KviInputEditor::historyNext()
+{
+	if(!m_bReadOnly)
+	{
+		if(m_pHistory->count() > 0)
+		{
+			if(m_iCurHistoryIdx < 0)
+			{
+				m_szSaveTextBuffer = m_szTextBuffer;
+				m_szTextBuffer = *(m_pHistory->at(m_pHistory->count()-1));
+				m_iCurHistoryIdx =m_pHistory->count()-1;
+			} else if(m_iCurHistoryIdx == 0)
+			{
+				m_szTextBuffer=m_szSaveTextBuffer;
+				m_iCurHistoryIdx = -1;
+			} else {
+				m_iCurHistoryIdx--;
+				m_szTextBuffer = *(m_pHistory->at(m_iCurHistoryIdx));
+			}
+			selectOneChar(-1);
+			if(KVI_OPTION_BOOL(KviOption_boolInputHistoryCursorAtEnd))end();
+			else home();
+		}
+	}
+}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_input_editor.moc"

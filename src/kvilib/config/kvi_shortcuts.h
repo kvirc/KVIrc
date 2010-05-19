@@ -34,7 +34,7 @@
 * \brief Keyboard shortcuts
 *
 * \def KVI_SHORTCUTS_HELP Help Index (Window)
-* \def KVI_SHORTCUTS_EDITOR_SELECTALL Select all
+* \def KVI_SHORTCUTS_EDITOR_SELECT_ALL Select all
 * \def KVI_SHORTCUTS_EDITOR_BOLD Insert the 'bold' mIRC text control character
 * \def KVI_SHORTCUTS_EDITOR_COPY Copy the selected text to clipboard
 * \def KVI_SHORTCUTS_WIN_SEARCH Open "Find Text" dialog
@@ -48,7 +48,7 @@
 * \def KVI_SHORTCUTS_SERVERS Open "Servers" dialog
 * \def KVI_SHORTCUTS_EDITOR_UNDERLINE Insert the 'underline' mIRC text control character
 * \def KVI_SHORTCUTS_EDITOR_PASTE Paste the clipboard contents (same as middle mouse click)
-* \def KVI_SHORTCUTS_EDITOR_PASTE2 Paste the clipboard contents (same as middle mouse click)
+* \def KVI_SHORTCUTS_EDITOR_PASTE_2 Paste the clipboard contents (same as middle mouse click)
 		Ctrl+W:[/b] Close current window
 * \def KVI_SHORTCUTS_EDITOR_CUT Cut the selected text and copy the text to clipboard
 * \def KVI_SHORTCUTS_EDITOR_UNDO Undo last action
@@ -87,16 +87,22 @@
 * \def KVI_SHORTCUTS_EDITOR_NEXT_WORD_SELECT Select up to the end of the next word
 		Ctrl+<digit>:[/b] Script accelerators (see OnAccelKeyPressed)
 		F2-F12, Shift+(F1-F12):[/b] Script accelerators (see OnAccelKeyPressed)
-		CursorUp:[/b] Move backward in the command history
+* \def KVI_SHORTCUTS_EDITOR_HISTORY_PREV Move backward in the command history
 		CursorDown:[/b] Move forward in the command history
 * \def KVI_SHORTCUTS_EDITOR_HISTORY Open the history popup
 * \def KVI_SHORTCUTS_EDITOR_PREV_CHAR Move the cursor to the left
 * \def KVI_SHORTCUTS_EDITOR_NEXT_CHAR Move the cursor to the right
 * \def KVI_SHORTCUTS_EDITOR_PREV_CHAR_SELECT Move the selection to the left
 * \def KVI_SHORTCUTS_EDITOR_NEXT_CHAR_SELECT Move the selection to the right
-* \def KVI_SHORTCUTS_EDITOR_DELETEWORD Delete last word
+* \def KVI_SHORTCUTS_EDITOR_DELETE_WORD Delete last word
 * \def KVI_SHORTCUTS_MULTILINE_OPEN Show/hide the multiline editor
-		Ctrl+Enter:[/b] Send message as plain text, ignoring / commands[br]
+* \def KVI_SHORTCUTS_EDITOR_SEND_PLAIN Send message as plain text, ignoring / commands
+* \def KVI_SHORTCUTS_EDITOR_SEND_PLAIN_2 Send message as plain text, ignoring / commands
+* \def KVI_SHORTCUTS_EDITOR_HOME Move the cursos at the beginning
+* \def KVI_SHORTCUTS_EDITOR_END Move the cursos at the end
+* \def KVI_SHORTCUTS_EDITOR_HOME_SELECT Select until the beginning
+* \def KVI_SHORTCUTS_EDITOR_END_SELECT Select until the end
+
 		Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code[br]
 			[example]
 			Alt+32:[/b] Inserts ASCII/Unicode character 32: ' ' (a space)
@@ -112,7 +118,7 @@
 		Shift+Tab after the first word of input:[/b] Complete nicknames with full mask in the current channel or query
 */
 #define KVI_SHORTCUTS_HELP "F1"
-#define KVI_SHORTCUTS_EDITOR_SELECTALL "Ctrl+A"
+#define KVI_SHORTCUTS_EDITOR_SELECT_ALL "Ctrl+A"
 #define KVI_SHORTCUTS_EDITOR_BOLD "Ctrl+B"
 #define KVI_SHORTCUTS_EDITOR_COPY "Ctrl+C"
 #define KVI_SHORTCUTS_WIN_SEARCH "Ctrl+F"
@@ -153,7 +159,7 @@
 #define KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT Qt::AltModifier + Qt::Key_PageDown
 #define KVI_SHORTCUTS_WIN_MAXIMIZE Qt::ControlModifier + Qt::Key_Up
 #define KVI_SHORTCUTS_WIN_MINIMIZE Qt::ControlModifier + Qt::Key_Down
-#define KVI_SHORTCUTS_EDITOR_PASTE2 Qt::ShiftModifier + Qt::Key_Insert
+#define KVI_SHORTCUTS_EDITOR_PASTE_2 Qt::ShiftModifier + Qt::Key_Insert
 //	Shift+<F1-F12>:[/b] window switch[br]
 #define KVI_SHORTCUTS_WIN_PREV_PAGE Qt::Key_PageUp
 #define KVI_SHORTCUTS_WIN_NEXT_PAGE Qt::Key_PageDown
@@ -172,9 +178,16 @@
 #define KVI_SHORTCUTS_EDITOR_NEXT_CHAR Qt::Key_Right
 #define KVI_SHORTCUTS_EDITOR_PREV_CHAR_SELECT Qt::ShiftModifier + Qt::Key_Left
 #define KVI_SHORTCUTS_EDITOR_NEXT_CHAR_SELECT Qt::ShiftModifier + Qt::Key_Right
-#define KVI_SHORTCUTS_EDITOR_DELETEWORD Qt::ControlModifier + Qt::Key_Backspace
+#define KVI_SHORTCUTS_EDITOR_DELETE_WORD Qt::ControlModifier + Qt::Key_Backspace
 #define KVI_SHORTCUTS_MULTILINE_OPEN Qt::AltModifier + Qt::Key_Return
-//	Ctrl+Enter:[/b] Send message as plain text, ignoring / commands[br]
+#define KVI_SHORTCUTS_EDITOR_SEND_PLAIN Qt::ControlModifier + Qt::Key_Return
+#define KVI_SHORTCUTS_EDITOR_SEND_PLAIN_2 Qt::ControlModifier + Qt::Key_Enter
+#define KVI_SHORTCUTS_EDITOR_HOME Qt::Key_Home
+#define KVI_SHORTCUTS_EDITOR_END Qt::Key_End
+#define KVI_SHORTCUTS_EDITOR_HOME_SELECT Qt::ShiftModifier + Qt::Key_Home
+#define KVI_SHORTCUTS_EDITOR_END_SELECT Qt::ShiftModifier + Qt::Key_End
+
+
 //	Alt+<numeric_sequence>:[/b] Insert the character by ASCII/Unicode code[br]
 //		[example]
 //		Alt+32:[/b] Inserts ASCII/Unicode character 32: ' ' (a space)
