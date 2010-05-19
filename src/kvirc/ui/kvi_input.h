@@ -205,13 +205,12 @@ public slots:
 	* \return void
 	*/
 	void toggleToolButtons();
-/*
-private slots:
-	/**
-	* \brief Toggles multiline
-	* \return void
-	*/
-	//void toggleMultiLine();
+//private slots:
+//	/**
+//	* \brief Toggles multiline
+//	* \return void
+//	*/
+//	void toggleMultiLine();
 };
 
 #endif //_KVI_INPUT_H_

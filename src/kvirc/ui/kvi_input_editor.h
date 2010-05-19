@@ -427,14 +427,14 @@ private:
 	* \brief Inserts an action separator in the undo stack
 	* \return void
 	*/
-	inline void separate() { separator = true; }
+	inline void separate(){ separator = true;}
 
 	/**
 	* \brief Inserts one action in the undo stack
 	* \param cmd The command struct representing the action
 	* \return void
 	*/
-	void addCommand(const Command& cmd);
+	void addCommand(const Command & cmd);
 
 	/**
 	* \brief Returns the current input editor font metrics (globally shared)
@@ -801,6 +801,19 @@ private slots:
 	* \return void
 	*/
 	void altHit();
+	
+	/**
+	* \brief Toggles the commandline's KVS/User-friendly mode
+	* \return void
+	*/
+	void toggleCommandMode();
+	
+	/**
+	* \brief Does nothing but grabs some keys combinations
+	* \warning This is an hack. The keys combinations grabbed by this function write a non-printable chars which cause some troubles, eg duplication of chars opening/closing more times the multiline
+	* \return void
+	*/
+	void dummy();
 protected:
 	void installShortcuts();
 	virtual void drawContents(QPainter *);

@@ -104,9 +104,9 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_pUserListView        = pView;
 	m_pHistory             = new KviPointerList<QString>;
 	m_pHistory->setAutoDelete(true);
-	m_bReadOnly = FALSE;
-	undoState = 0;
-	separator = FALSE;
+	m_bReadOnly            = false;
+	undoState              = 0;
+	separator              = false;
 
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 
@@ -1262,55 +1262,63 @@ void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 
 void KviInputEditor::installShortcuts()
 {
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_MULTILINE_OPEN),this,SLOT(toggleMultiLineEditor()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_HISTORY),this,SLOT(openHistory()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_HISTORY_PREV),this,SLOT(historyPrev()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_HISTORY_NEXT),this,SLOT(historyNext()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PREV_CHAR),this,SLOT(previousChar()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_NEXT_CHAR),this,SLOT(nextChar()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PREV_CHAR_SELECT),this,SLOT(previousCharSelection()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_NEXT_CHAR_SELECT),this,SLOT(nextCharSelection()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PREV_WORD),this,SLOT(previousWord()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_NEXT_WORD),this,SLOT(nextWord()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PREV_WORD_SELECT),this,SLOT(previousWordSelection()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_NEXT_WORD_SELECT),this,SLOT(nextWordSelection()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_BOLD),this,SLOT(insertBold()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_RESET),this,SLOT(insertReset()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_UNDERLINE),this,SLOT(insertUnderline()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_REVERSE),this,SLOT(insertReverse()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PLAINTEXT),this,SLOT(insertPlainText()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_ICON),this,SLOT(insertIcon()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_COLOR),this,SLOT(insertColor()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_COPY),this,SLOT(copyInternal()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_CUT),this,SLOT(cutInternal()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PASTE),this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_PASTE_2),this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_UNDO),this,SLOT(undoInternal()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_REDO),this,SLOT(redoInternal()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_SELECT_ALL),this,SLOT(selectAllInternal()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_DELETE_WORD),this,SLOT(deleteWord()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_MULTILINE),this,SLOT(toggleMultiLineEditor()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_MULTILINE_2),this,SLOT(toggleMultiLineEditor()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HISTORY),this,SLOT(openHistory()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HISTORY_PREV),this,SLOT(historyPrev()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HISTORY_NEXT),this,SLOT(historyNext()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_PREV_CHAR),this,SLOT(previousChar()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_NEXT_CHAR),this,SLOT(nextChar()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_PREV_CHAR_SELECT),this,SLOT(previousCharSelection()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_NEXT_CHAR_SELECT),this,SLOT(nextCharSelection()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_PREV_WORD),this,SLOT(previousWord()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_NEXT_WORD),this,SLOT(nextWord()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_PREV_WORD_SELECT),this,SLOT(previousWordSelection()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_NEXT_WORD_SELECT),this,SLOT(nextWordSelection()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_BOLD),this,SLOT(insertBold()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_RESET),this,SLOT(insertReset()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_UNDERLINE),this,SLOT(insertUnderline()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_REVERSE),this,SLOT(insertReverse()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_PLAINTEXT),this,SLOT(insertPlainText()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_ICON),this,SLOT(insertIcon()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_COLOR),this,SLOT(insertColor()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_COPY),this,SLOT(copyInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_CUT),this,SLOT(cutInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_PASTE),this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_PASTE_2),this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_UNDO),this,SLOT(undoInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_REDO),this,SLOT(redoInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SELECT_ALL),this,SLOT(selectAllInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DELETE_WORD),this,SLOT(deleteWord()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_PREV_LINE),this,SLOT(previousLine()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_NEXT_LINE),this,SLOT(nextLine()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_PREV_PAGE),this,SLOT(previousPage()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_NEXT_PAGE),this,SLOT(nextPage()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_SEARCH),this,SLOT(search()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_SEND_PLAIN),this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_SEND_PLAIN_2),this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_HOME),this,SLOT(homeInternal()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_END),this,SLOT(endInternal()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_HOME_SELECT),this,SLOT(homeInternalSelection()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_END_SELECT),this,SLOT(endInternalSelection()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_RETURN),this,SLOT(returnHit()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_RETURN_2),this,SLOT(returnHit()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_BACKSPACE),this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_DELETE),this,SLOT(deleteHit()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_ESCAPE),this,SLOT(escapeHit()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_ALT),this,SLOT(altHit()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_EDITOR_ALT_2),this,SLOT(altHit()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_PLAIN),this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_PLAIN_2),this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HOME),this,SLOT(homeInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_END),this,SLOT(endInternal()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HOME_SELECT),this,SLOT(homeInternalSelection()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_END_SELECT),this,SLOT(endInternalSelection()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_RETURN),this,SLOT(returnHit()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_RETURN_2),this,SLOT(returnHit()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_BACKSPACE),this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DELETE),this,SLOT(deleteHit()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_ESCAPE),this,SLOT(escapeHit()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_ALT),this,SLOT(altHit()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_ALT_2),this,SLOT(altHit()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_COMMANDLINE),this,SLOT(toggleCommandMode()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY),this,SLOT(dummy()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY_2),this,SLOT(dummy()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY_3),this,SLOT(dummy()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY_4),this,SLOT(dummy()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY_5),this,SLOT(dummy()),0,Qt::WidgetShortcut);
 }
 
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
 {
+	
 	// disable the keyPress handling when IM is in composition.
 	if(m_bIMComposing)
 	{
@@ -1365,7 +1373,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 
 		return;
 	}
-
+	
 	if(!e->text().isEmpty() && !m_bReadOnly)
 		insertText(e->text());
 }
@@ -2392,6 +2400,17 @@ void KviInputEditor::escapeHit()
 void KviInputEditor::altHit()
 {
 	m_szAltKeyCode = "";
+}
+
+void KviInputEditor::toggleCommandMode()
+{
+	if(m_pInputParent->inherits("KviInput"))
+		((KviInput *)(m_pInputParent))->setUserFriendly(!((KviInput *)(m_pInputParent))->isUserFriendly());
+}
+
+void KviInputEditor::dummy()
+{
+	// this function does nothing. check the header file for explanation
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
