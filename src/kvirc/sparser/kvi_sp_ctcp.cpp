@@ -1358,8 +1358,7 @@ void KviServerParser::parseCtcpRequestPage(KviCtcpMessage *msg)
 				if(!g_pCtcpPageDialog)g_pCtcpPageDialog = new KviCtcpPageDialog();
 				KviStr szData8;
 				szData8 = msg->pData;
-				QString szData;
-				szData = msg->msg->connection()->decodeText(szData8.ptr());
+				QString szData = Qt::escape(msg->msg->connection()->decodeText(szData8.ptr()));
 				g_pCtcpPageDialog->addPage(msg->pSource->nick(),msg->pSource->user(),msg->pSource->host(),szData);
 				g_pCtcpPageDialog->popup();
 			}
