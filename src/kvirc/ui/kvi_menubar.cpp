@@ -230,15 +230,6 @@ void KviMenuBar::setupMainPopup()
 
 	main->insertSeparator();
 
-	if(m_pFrm->dockExtension())
-	{
-		int id = main->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TRAYICON)),__tr2qs("Hide &Dock Icon"),m_pFrm,SLOT(executeInternalCommand(int)));
-		main->setItemParameter(id,KVI_INTERNALCOMMAND_TRAYICON_HIDE);
-	} else {
-		int id = main->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TRAYICON)),__tr2qs("Show &Dock Icon"),m_pFrm,SLOT(executeInternalCommand(int)));
-		main->setItemParameter(id,KVI_INTERNALCOMMAND_TRAYICON_SHOW);
-	}
-
 // Qt/Mac creates a Quit item on its own <= this is bad
 #ifndef COMPILE_ON_MAC
 	main->insertSeparator();

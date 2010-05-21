@@ -24,6 +24,8 @@
 
 #include "optw_tray.h"
 
+#include "kvi_frame.h"
+#include "kvi_internalcmd.h"
 #include "kvi_options.h"
 #include "kvi_locale.h"
 #include "kvi_tal_tooltip.h"
@@ -77,11 +79,19 @@ void KviTrayOptionsWidget::setEnabled(bool)
 		else
 			m_pLevelsGroup->setEnabled(false);
 
+		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
 	} else {
 		m_pCloseInTray->setEnabled(false);
 		m_pEnableFlashing->setEnabled(false);
 		m_pLevelBasedNotify->setEnabled(false);
 		m_pLevelsGroup->setEnabled(false);
+
+		m_pCloseInTray->setChecked(false);
+		m_pEnableFlashing->setChecked(false);
+		m_pLevelBasedNotify->setChecked(false);
+		m_pLevelsGroup->setChecked(false);
+
+		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
 	}
 }
 
