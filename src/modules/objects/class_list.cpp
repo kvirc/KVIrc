@@ -162,6 +162,7 @@ KVSO_END_REGISTERCLASS(KviKvsObject_list)
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_list,KviKvsObject)
 	m_pDataList = new KviPointerList<KviKvsVariant>;
 	m_pDataList->setAutoDelete(true);
+	m_pDataList->first();
 KVSO_END_CONSTRUCTOR(KviKvsObject_list)
 
 
@@ -229,7 +230,7 @@ KVSO_CLASS_FUNCTION(list,removeLast)
 KVSO_CLASS_FUNCTION(list,removeCurrent)
 {
 	CHECK_INTERNAL_POINTER(m_pDataList)
-	if(m_pDataList->current())
+	if(m_pDataList->count())
 	{
 		m_pDataList->removeCurrent();
 		c->returnValue()->setBoolean(true);
