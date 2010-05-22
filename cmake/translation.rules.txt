@@ -72,7 +72,7 @@ IF(USE_GETTEXT_TRANSLATIONS)
 		ELSE()
 			ADD_CUSTOM_COMMAND(
 				COMMENT "Extracting ctx messages for ${_potBasename}"
-				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr_ctx -k__tr_no_lookup_ctx -k__tr2qs_ctx -k__tr2wc_ctx -k__tr2ws_ctx -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
+				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr_ctx -k__tr_no_lookup_ctx -k__tr2qs_no_lookup -k__tr2qs_ctx -k__tr2wc_ctx -k__tr2ws_ctx -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
 				TARGET messages-extract-${_potBasename}
 			)
 		ENDIF()

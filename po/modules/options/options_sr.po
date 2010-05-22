@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 15:48+0200\n"
+"POT-Creation-Date: 2010-05-22 17:47+0200\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -1539,6 +1539,16 @@ msgstr "Uvod"
 msgid "Add Rule"
 msgstr "Dodaj zabranu (ban)"
 
+#: src/modules/options/optw_dcc.h:58
+#: src/modules/options/optw_dcc.h:102
+#: src/modules/options/optw_irc.h:57
+#: src/modules/options/optw_channel.h:64
+#: src/modules/options/optw_identity.h:203
+#: src/modules/options/optw_connection.h:45
+#, fuzzy
+msgid "Advanced"
+msgstr "Napredno ..."
+
 #: src/modules/options/optw_notifier.cpp:154
 #: src/modules/options/optw_notify.cpp:60
 #, fuzzy
@@ -1604,6 +1614,11 @@ msgstr "ignorisana poruka korisnika"
 msgid "Alert level:"
 msgstr "Nivo upozorenja"
 
+#: src/modules/options/optw_highlighting.h:30
+#, fuzzy
+msgid "Alert/Highlight"
+msgstr "Omogući URL isticanje"
+
 #: src/modules/options/optw_ctcpfloodprotection.cpp:86
 msgid "Allow up to:"
 msgstr ""
@@ -1657,6 +1672,10 @@ msgstr "Kreiraj minimizirano"
 #, fuzzy
 msgid "Always open transfer window as minimized"
 msgstr "Nov &okvir prozora"
+
+#: src/modules/options/optw_antispam.h:30
+msgid "Anti-spam"
+msgstr ""
 
 #: src/modules/options/optw_ctcp.cpp:53
 msgid "Append to SOURCE reply:"
@@ -1720,6 +1739,11 @@ msgstr "Napravi minimizirano kad automatski-prihvataš"
 msgid "Automatically unload unused modules"
 msgstr "Automatski uđi na kanal na koi si pozvan (INVITE)"
 
+#: src/modules/options/optw_identity.h:178
+#, fuzzy
+msgid "Avatar"
+msgstr "Avatar slika"
+
 #: src/modules/options/optw_identity.cpp:120
 msgid "Avatar Download - KVIrc"
 msgstr ""
@@ -1739,6 +1763,16 @@ msgstr "Izaberi fajl za ponudu"
 msgid "Avatar offer timeout:"
 msgstr "Vreme isteka avatar ponude u sekundama"
 
+#: src/modules/options/optw_avatar.h:32
+#, fuzzy
+msgid "Avatars"
+msgstr "Avatar slika"
+
+#: src/modules/options/optw_away.h:30
+#, fuzzy
+msgid "Away"
+msgstr "&Odsutnost"
+
 #: src/modules/options/optw_away.cpp:45
 #, fuzzy
 msgid "Away Nickname"
@@ -1751,6 +1785,8 @@ msgstr "&Odsutnost"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:160
 #: src/modules/options/optw_interfacelookglobal.cpp:180
+#: src/modules/options/optw_windowlist.h:79
+#: src/modules/options/optw_userlist.h:46
 #, fuzzy
 msgid "Background"
 msgstr "Pozadina"
@@ -1837,6 +1873,11 @@ msgstr ""
 msgid "CLIENTINFO"
 msgstr ""
 
+#: src/modules/options/optw_ctcp.h:30
+#, fuzzy
+msgid "CTCP"
+msgstr "CTCP Page"
+
 #: src/modules/options/optw_ctcp.cpp:47
 #, fuzzy
 msgid "CTCP Replies"
@@ -1896,6 +1937,10 @@ msgstr "obaveštenje servera"
 msgid "Change nickname on away"
 msgstr "Promeni nadimak pri odsutnosti"
 
+#: src/modules/options/optw_channel.h:36
+msgid "Channel"
+msgstr "Kanal"
+
 #: src/modules/options/optw_userlist.cpp:59
 #, fuzzy
 msgid "Channel admin:"
@@ -1915,6 +1960,11 @@ msgstr "&Naslaži prozore"
 #: src/modules/options/optw_servers.cpp:815
 msgid "Channels to join automatically upon connect:"
 msgstr ""
+
+#: src/modules/options/optw_dcc.h:115
+#, fuzzy
+msgid "Chat"
+msgstr "Izmeni"
 
 #: src/modules/options/optw_notify.cpp:65
 msgid "Check USERHOST for online users"
@@ -1953,6 +2003,11 @@ msgstr "Izaberite jednu sliku..."
 msgid "Choose..."
 msgstr "Izaberi..."
 
+#: src/modules/options/optw_windowlist.h:112
+#, fuzzy
+msgid "Classic Window List"
+msgstr "Lista prozora"
+
 #: src/modules/options/optw_ircoutput.cpp:62
 #, fuzzy
 msgid "Classic format"
@@ -1977,6 +2032,11 @@ msgstr ""
 #: src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr ""
+
+#: src/modules/options/optw_messages.h:189
+#, fuzzy
+msgid "Color Set"
+msgstr "Zatvori"
 
 #: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
@@ -2021,6 +2081,7 @@ msgid "Connect to this server at startup"
 msgstr "Isteklo je vreme za povezivanje"
 
 #: src/modules/options/optw_servers.cpp:805
+#: src/modules/options/optw_connection.h:32
 msgid "Connection"
 msgstr "Konekcija"
 
@@ -2033,6 +2094,11 @@ msgstr "Zatvori"
 #, fuzzy
 msgid "Console windows"
 msgstr "&Terminal prozor"
+
+#: src/modules/options/optw_notify.h:30
+#, fuzzy
+msgid "Contacts"
+msgstr "Poveži se"
 
 #: src/modules/options/optw_input.cpp:43
 msgid "Control char color"
@@ -2055,6 +2121,10 @@ msgstr "Boja kursora"
 #: src/modules/options/optw_away.cpp:53
 #, c-format
 msgid "Custom nickname (%nick% means a current nick):"
+msgstr ""
+
+#: src/modules/options/optw_dcc.h:30
+msgid "DCC"
 msgstr ""
 
 #: src/modules/options/optw_logging.cpp:43
@@ -2422,9 +2492,20 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Ne mogu da odredim lokalni port"
 
+#: src/modules/options/optw_windowlist.h:98
+#: src/modules/options/optw_ircview.h:70
+#: src/modules/options/optw_userlist.h:103
+msgid "Features"
+msgstr ""
+
 #: src/modules/options/optw_identity.cpp:376
 msgid "Female"
 msgstr ""
+
+#: src/modules/options/optw_dcc.h:74
+#, fuzzy
+msgid "File Transfer"
+msgstr "Obriši mrtve prenose"
 
 #: src/modules/options/optw_mediatypes.cpp:100
 #, fuzzy
@@ -2447,6 +2528,11 @@ msgstr ""
 #, fuzzy
 msgid "Flash window when users are going online"
 msgstr "lista obaveštenja ulasci"
+
+#: src/modules/options/optw_ctcpfloodprotection.h:30
+#, fuzzy
+msgid "Flood Protection"
+msgstr "Koristi flood zaštitu"
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_notifier.cpp:38
@@ -2479,6 +2565,12 @@ msgstr ""
 msgid "Force language:"
 msgstr ""
 
+#: src/modules/options/optw_windowlist.h:64
+#: src/modules/options/optw_userlist.h:67
+#, fuzzy
+msgid "Foreground"
+msgstr "Boja ispisa"
+
 #: src/modules/options/optw_topiclabel.cpp:37
 #: src/modules/options/optw_notifier.cpp:40
 #: src/modules/options/optw_input.cpp:40
@@ -2497,6 +2589,12 @@ msgstr "Generalne opcije"
 
 #: src/modules/options/optw_servers.cpp:217
 #: src/modules/options/optw_messages.cpp:71
+#: src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_dcc.h:88
+#: src/modules/options/optw_irc.h:43
+#: src/modules/options/optw_interfacelookglobal.h:33
+#: src/modules/options/optw_channel.h:52
+#: src/modules/options/optw_identity.h:154
 #, fuzzy
 msgid "General"
 msgstr "Generalne opcije"
@@ -2504,6 +2602,11 @@ msgstr "Generalne opcije"
 #: src/modules/options/dialog.cpp:114
 msgid "General Preferences"
 msgstr ""
+
+#: src/modules/options/optw_generalopt.h:30
+#, fuzzy
+msgid "General options"
+msgstr "Gnutella opcije"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:45
 #, fuzzy
@@ -2569,6 +2672,11 @@ msgstr ""
 msgid "Highest port:"
 msgstr "Port servisa"
 
+#: src/modules/options/optw_highlighting.h:44
+#, fuzzy
+msgid "Highlight"
+msgstr "Omogući URL isticanje"
+
 #: src/modules/options/optw_highlighting.cpp:61
 msgid "Highlight every occurence of a word inside text"
 msgstr ""
@@ -2629,6 +2737,10 @@ msgstr "Sistemov stek tretira IPV4 kao deo IPV6 prostora za ime"
 msgid "IPv6 Settings"
 msgstr "&Podešavanja"
 
+#: src/modules/options/optw_irc.h:30
+msgid "IRC"
+msgstr ""
+
 #: src/modules/options/optw_userlist.cpp:57
 msgid "IRC Op:"
 msgstr ""
@@ -2650,6 +2762,11 @@ msgstr "Ikona"
 msgid "Id:"
 msgstr "Id"
 
+#: src/modules/options/optw_connection.h:91
+#, fuzzy
+msgid "Ident Service"
+msgstr "Ident korisničko ime"
+
 #: src/modules/options/optw_connection.cpp:226
 #, fuzzy
 msgid "Ident username:"
@@ -2664,8 +2781,14 @@ msgstr "Komanda predstavljanja"
 
 #: src/modules/options/optw_servers.cpp:569
 #: src/modules/options/optw_interfacefeatures.cpp:61
+#: src/modules/options/optw_identity.h:138
 msgid "Identity"
 msgstr ""
+
+#: src/modules/options/optw_ignore.h:32
+#, fuzzy
+msgid "Ignore"
+msgstr "ignorisano"
 
 #: src/modules/options/optw_uparser.cpp:47
 msgid "Ignore module versions (dangerous)"
@@ -2704,6 +2827,17 @@ msgstr ""
 #: src/modules/options/optw_interfacelookglobal.cpp:186
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr ""
+
+#: src/modules/options/optw_input.h:33
+#: src/modules/options/optw_input.h:51
+#, fuzzy
+msgid "Input"
+msgstr "Indeks"
+
+#: src/modules/options/optw_interfacefeatures.h:32
+#, fuzzy
+msgid "Interface"
+msgstr "Adresa interfejsa (ili ime)"
 
 #: src/modules/options/optw_query.cpp:101
 #: src/modules/options/optw_channel.cpp:139
@@ -2768,8 +2902,22 @@ msgstr ""
 msgid "Kill broken timers"
 msgstr "Ubij prekinute tajmere"
 
+#: src/modules/options/optw_topiclabel.h:32
+#, fuzzy
+msgid "Labels"
+msgstr "Labela"
+
+#: src/modules/options/optw_lag.h:31
+#, fuzzy
+msgid "Lag"
+msgstr "Beleške"
+
 #: src/modules/options/optw_lag.cpp:44
 msgid "Lag meter heartbeat:"
+msgstr ""
+
+#: src/modules/options/optw_textencoding.h:32
+msgid "Language"
 msgstr ""
 
 #: src/modules/options/optw_identity.cpp:394
@@ -2848,6 +2996,16 @@ msgstr "Nedostaje lista kanala"
 msgid "Log this"
 msgstr ""
 
+#: src/modules/options/optw_logging.h:30
+#, fuzzy
+msgid "Logging"
+msgstr "odlazeće"
+
+#: src/modules/options/optw_ircview.h:50
+#, fuzzy
+msgid "Look"
+msgstr "Zaključaj"
+
 #: src/modules/options/optw_interfacelookglobal.cpp:181
 #, fuzzy
 msgid "Low-Contrast Foreground"
@@ -2883,6 +3041,11 @@ msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
 msgstr ""
+
+#: src/modules/options/optw_ircview.h:84
+#, fuzzy
+msgid "Marker"
+msgstr "Prenesi"
 
 #: src/modules/options/optw_ircview.cpp:179
 #, fuzzy
@@ -2942,9 +3105,24 @@ msgstr ""
 msgid "Media Player"
 msgstr "Nov tip medija"
 
+#: src/modules/options/optw_mediatypes.h:48
+#, fuzzy
+msgid "Media Types"
+msgstr "Nov tip medija"
+
+#: src/modules/options/optw_messages.h:96
+#, fuzzy
+msgid "Message Colors"
+msgstr "Nadimak 4"
+
 #: src/modules/options/optw_nickserv.cpp:76
 #, fuzzy
 msgid "Message Regexp"
+msgstr "Tip poruke"
+
+#: src/modules/options/optw_messages.h:54
+#, fuzzy
+msgid "Message Style"
 msgstr "Tip poruke"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:182
@@ -3102,6 +3280,7 @@ msgid "Nick completion postfix string"
 msgstr ""
 
 #: src/modules/options/optw_servers.cpp:339
+#: src/modules/options/optw_nickserv.h:41
 #, fuzzy
 msgid "NickServ"
 msgstr "NickServ maska"
@@ -3134,6 +3313,11 @@ msgstr "Nadimak"
 #, fuzzy
 msgid "Nickname Colors"
 msgstr "Nadimak 4"
+
+#: src/modules/options/optw_userlist.h:83
+#, fuzzy
+msgid "Nickname Grid"
+msgstr "Nadimak 1"
 
 #: src/modules/options/optw_identity.cpp:60
 #, fuzzy
@@ -3174,6 +3358,12 @@ msgstr "Normalni mod"
 #, fuzzy
 msgid "Normal:"
 msgstr "Normalni mod"
+
+#: src/modules/options/optw_notifier.h:33
+#: src/modules/options/optw_notifier.h:51
+#, fuzzy
+msgid "Notifier"
+msgstr "Lista obaveštenja"
 
 #: src/modules/options/optw_notifier.cpp:166
 msgid "Notifier window opacity while active (mouseover)"
@@ -3316,6 +3506,11 @@ msgstr "Izm&ena"
 #, fuzzy
 msgid "Outgoing data queue flush timeout:"
 msgstr "Odlazeći red podataka -vreme isteka (100-2000 msekundi)"
+
+#: src/modules/options/optw_ircview.h:36
+#, fuzzy
+msgid "Output"
+msgstr "Izlazni bafer"
 
 #: src/modules/options/optw_connection.cpp:202
 #, fuzzy
@@ -3528,6 +3723,11 @@ msgstr "Uvod"
 msgid "Profile Name:"
 msgstr "Uvod"
 
+#: src/modules/options/optw_identity.h:228
+#, fuzzy
+msgid "Profiles"
+msgstr "Uvod"
+
 #: src/modules/options/optw_windowlist.cpp:97
 #: src/modules/options/optw_windowlist.cpp:253
 #, fuzzy
@@ -3538,6 +3738,11 @@ msgstr "Linija progresa"
 #: src/modules/options/optw_servers.cpp:510
 msgid "Properties"
 msgstr "Podešavanja"
+
+#: src/modules/options/optw_protection.h:32
+#, fuzzy
+msgid "Protection"
+msgstr "Koristi flood zaštitu"
 
 #: src/modules/options/optw_urlhandlers.cpp:66
 #, fuzzy
@@ -3551,6 +3756,11 @@ msgstr "Protokol:"
 #: src/modules/options/optw_proxy.cpp:70
 msgid "Proxy"
 msgstr "Proxy"
+
+#: src/modules/options/optw_proxy.h:53
+#, fuzzy
+msgid "Proxy Hosts"
+msgstr "proksi host"
 
 #: src/modules/options/optw_servers.cpp:761
 #, fuzzy
@@ -3590,6 +3800,11 @@ msgstr ""
 #: src/modules/options/optw_identity.cpp:890
 msgid "Put here the username you want to use"
 msgstr ""
+
+#: src/modules/options/optw_query.h:30
+#, fuzzy
+msgid "Query"
+msgstr "upit obaveštenja"
 
 #: src/modules/options/optw_logging.cpp:41
 #, fuzzy
@@ -3725,6 +3940,11 @@ msgstr ""
 msgid "SOURCE"
 msgstr ""
 
+#: src/modules/options/optw_connection.h:59
+#, fuzzy
+msgid "SSL"
+msgstr "Koristi SSL"
+
 #: src/modules/options/optw_servers.cpp:786
 #, fuzzy
 msgid "Sasl Nickname:"
@@ -3773,6 +3993,11 @@ msgstr "Pokrećem listu obaveštenja"
 #, fuzzy
 msgid "Scaling on load (and in user tooltips)"
 msgstr "Pokrećem listu obaveštenja"
+
+#: src/modules/options/optw_uparser.h:30
+#, fuzzy
+msgid "Scripting Engine"
+msgstr "Opis"
 
 #: src/modules/options/optw_tray.cpp:49
 msgid "Select message levels to notify"
@@ -3854,6 +4079,7 @@ msgid "Server:"
 msgstr "Server:"
 
 #: src/modules/options/optw_interfacefeatures.cpp:62
+#: src/modules/options/optw_servers.h:155
 #, fuzzy
 msgid "Servers"
 msgstr "Server"
@@ -4005,6 +4231,10 @@ msgstr "Tihi anti-spam (nema povratnih stvari za sve: samo ignoriši)"
 msgid "Single click"
 msgstr ""
 
+#: src/modules/options/optw_connection.h:76
+msgid "Socket"
+msgstr "Priključak"
+
 #: src/modules/options/optw_ircview.cpp:192
 msgid "SolidLine"
 msgstr ""
@@ -4017,7 +4247,13 @@ msgstr ""
 msgid "Sort windows by name"
 msgstr ""
 
+#: src/modules/options/optw_sound.h:33
+#, fuzzy
+msgid "Sound"
+msgstr "Pošalji"
+
 #: src/modules/options/optw_sound.cpp:60
+#: src/modules/options/optw_sound.h:47
 #, fuzzy
 msgid "Sound System"
 msgstr "Muzički sistem"
@@ -4026,6 +4262,11 @@ msgstr "Muzički sistem"
 #, fuzzy
 msgid "Sound device:"
 msgstr "Muzički uređaj"
+
+#: src/modules/options/optw_sound.h:82
+#, fuzzy
+msgid "Sounds"
+msgstr "Pošalji"
 
 #: src/modules/options/optw_logging.cpp:48
 #, fuzzy
@@ -4051,10 +4292,20 @@ msgstr ""
 msgid "Test"
 msgstr "Tester"
 
+#: src/modules/options/optw_messages.h:39
+#, fuzzy
+msgid "Text"
+msgstr "Tekst:"
+
 #: src/modules/options/optw_servers.cpp:171
 #: src/modules/options/optw_servers.cpp:682
 #, fuzzy
 msgid "Text Encoding:"
+msgstr "Tekstualni editor"
+
+#: src/modules/options/optw_texticons.h:39
+#, fuzzy
+msgid "Text icons"
 msgstr "Tekstualni editor"
 
 #: src/modules/options/optw_windowlist.cpp:87
@@ -4256,6 +4507,10 @@ msgstr "&Parče"
 msgid "Timeout Values"
 msgstr ""
 
+#: src/modules/options/optw_messages.h:75
+msgid "Timestamp"
+msgstr "Datum i vreme"
+
 #: src/modules/options/optw_messages.cpp:151
 #, fuzzy
 msgid "Timestamp format:"
@@ -4271,6 +4526,16 @@ msgstr "selekcija"
 msgid "Title Foreground color"
 msgstr "Boja ispisa"
 
+#: src/modules/options/optw_interfacelookglobal.h:87
+#, fuzzy
+msgid "ToolBar Applets"
+msgstr "&Alati"
+
+#: src/modules/options/optw_tools.h:33
+#, fuzzy
+msgid "Tools"
+msgstr "&Alati"
+
 #: src/modules/options/optw_ircview.cpp:70
 #: src/modules/options/optw_notifier.cpp:60
 #: src/modules/options/optw_userlist.cpp:147
@@ -4284,6 +4549,11 @@ msgstr "Naslov"
 msgid "Track last read text line"
 msgstr ""
 
+#: src/modules/options/optw_interfacelookglobal.h:48
+#, fuzzy
+msgid "Transparency"
+msgstr "Transparentno "
+
 #: src/modules/options/optw_interfacelookglobal.cpp:102
 #: src/modules/options/optw_interfacelookglobal.cpp:118
 #: src/modules/options/optw_interfacelookglobal.cpp:125
@@ -4294,6 +4564,16 @@ msgstr ""
 msgid "Transparent"
 msgstr "Transparentno "
 
+#: src/modules/options/optw_tray.h:32
+#, fuzzy
+msgid "Tray icon"
+msgstr "Tekstualni editor"
+
+#: src/modules/options/optw_windowlist.h:48
+#, fuzzy
+msgid "Tree Window List"
+msgstr "Lista prozora"
+
 #: src/modules/options/optw_lag.cpp:55
 msgid "Trigger event if lag exceeds:"
 msgstr ""
@@ -4302,6 +4582,11 @@ msgstr ""
 #, fuzzy
 msgid "Tweaks"
 msgstr "Tester"
+
+#: src/modules/options/optw_urlhandlers.h:32
+#, fuzzy
+msgid "URL handlers"
+msgstr "Dodaj manipulator"
 
 #: src/modules/options/optw_notify.cpp:92
 msgid "USERHOST delay (in seconds)"
@@ -4545,6 +4830,11 @@ msgstr "Korisnički-definisan prefiks i postfiks"
 msgid "User-op:"
 msgstr "Korisnik"
 
+#: src/modules/options/optw_userlist.h:32
+#, fuzzy
+msgid "Userlist"
+msgstr "Lista korisnika"
+
 #: src/modules/options/optw_identity.cpp:697
 msgid "Username"
 msgstr "Korisničko ime"
@@ -4565,6 +4855,10 @@ msgstr ""
 msgid "Verbose"
 msgstr ""
 
+#: src/modules/options/optw_ircoutput.h:33
+msgid "Verbosity And Output"
+msgstr ""
+
 #: src/modules/options/optw_userlist.cpp:137
 #, fuzzy
 msgid "Vertical Alignment:"
@@ -4577,6 +4871,11 @@ msgstr "Server X509 sertifikat"
 #, fuzzy
 msgid "Vertical align:"
 msgstr "Server X509 sertifikat"
+
+#: src/modules/options/optw_dcc.h:128
+#, fuzzy
+msgid "Voice"
+msgstr "Naslov"
 
 #: src/modules/options/optw_userlist.cpp:62
 #, fuzzy
@@ -4614,6 +4913,15 @@ msgstr "ko (who) odgovor"
 msgid "Winamp messages ecoding"
 msgstr ""
 
+#: src/modules/options/optw_windowlist.h:34
+msgid "Window List"
+msgstr "Lista prozora"
+
+#: src/modules/options/optw_highlighting.h:57
+#, fuzzy
+msgid "Window List Alert"
+msgstr "Lista prozora"
+
 #: src/modules/options/optw_antispam.cpp:46
 msgid "Words considered spam:"
 msgstr ""
@@ -4622,6 +4930,10 @@ msgstr ""
 #, fuzzy
 msgid "Words to highlight:"
 msgstr "Omogući URL isticanje"
+
+#: src/modules/options/optw_interfacelookglobal.h:74
+msgid "Workspace"
+msgstr ""
 
 #: src/modules/options/optw_identity.cpp:390
 msgid ""
@@ -4654,23 +4966,185 @@ msgstr "[PREFIKS]nadimak[!korisnik@host][POSTFIKS] poruka"
 msgid "[Unknown Media Type]"
 msgstr "Nepoznat tip medija"
 
+#: src/modules/options/optw_nickserv.h:43
+msgid "authentication,identify"
+msgstr ""
+
 #: src/modules/options/optw_dcc.cpp:235
 #: src/modules/options/optw_dcc.cpp:241
 #, fuzzy
 msgid "bytes/sec"
 msgstr "0 bajtova/sek"
 
+#: src/modules/options/optw_query.h:32
+#, fuzzy
+msgid "chat"
+msgstr "Izmeni"
+
+#: src/modules/options/optw_servers.h:156
+msgid "connection"
+msgstr "konekcija"
+
+#: src/modules/options/optw_proxy.h:55
+#, fuzzy
+msgid "connection,servers"
+msgstr "Isteklo je vreme za povezivanje"
+
+#: src/modules/options/optw_protection.h:35
+msgid "ctcp,flood"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.h:35
+msgid "debug"
+msgstr ""
+
 #: src/modules/options/optw_textencoding.cpp:88
 msgid "en"
+msgstr ""
+
+#: src/modules/options/optw_mediatypes.h:50
+msgid "file,audio,video,programs"
 msgstr ""
 
 #: src/modules/options/optw_servers.cpp:1614
 msgid "irc.unknown.net"
 msgstr "irc.nepoznat.net"
 
+#: src/modules/options/optw_textencoding.h:35
+msgid "language,encoding,charset,codepage"
+msgstr ""
+
+#: src/modules/options/optw_notify.h:32
+msgid "notify,buddy,buddies,friends"
+msgstr ""
+
+#: src/modules/options/optw_notifier.h:52
+#, fuzzy
+msgid "popup"
+msgstr "Iskačući meni"
+
+#: src/modules/options/optw_ignore.h:34
+#, fuzzy
+msgid "protection"
+msgstr "Koristi flood zaštitu"
+
+#: src/modules/options/optw_logging.h:31
+msgid "save,output"
+msgstr ""
+
+#: src/modules/options/optw_uparser.h:31
+msgid "scripting,kvs,debug"
+msgstr ""
+
+#: src/modules/options/optw_texticons.h:41
+#, fuzzy
+msgid "smileys,emoticons"
+msgstr "sekundi"
+
+#: src/modules/options/optw_sound.h:84
+msgid "sound,events"
+msgstr ""
+
+#: src/modules/options/optw_sound.h:49
+msgid "sound,xmms,audio,play,amarok"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.h:36
+#: src/modules/options/optw_windowlist.h:50
+#: src/modules/options/optw_windowlist.h:66
+#: src/modules/options/optw_windowlist.h:81
+#: src/modules/options/optw_windowlist.h:100
+#: src/modules/options/optw_windowlist.h:115
+#: src/modules/options/optw_interfacelookglobal.h:34
+#, fuzzy
+msgid "theme"
+msgstr "Stavka"
+
+#: src/modules/options/optw_interfacelookglobal.h:49
+#, fuzzy
+msgid "theme,background"
+msgstr "Pozadina"
+
+#: src/modules/options/optw_messages.h:97
+#: src/modules/options/optw_messages.h:190
+msgid "theme,colors,messages,output"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:40
+#: src/modules/options/optw_ircview.h:37
+#: src/modules/options/optw_ircview.h:51
+msgid "theme,colors,output"
+msgstr ""
+
+#: src/modules/options/optw_notifier.h:34
+#: src/modules/options/optw_input.h:34
+msgid "theme,colors,text"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.h:75
+#, fuzzy
+msgid "theme,mdi"
+msgstr "Stavka"
+
+#: src/modules/options/optw_messages.h:58
+msgid "theme,privmsg,output,format"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.h:88
+#, fuzzy
+msgid "theme,toolbar"
+msgstr "Pozadina"
+
+#: src/modules/options/optw_topiclabel.h:33
+#, fuzzy
+msgid "theme,topic"
+msgstr "Stavka"
+
+#: src/modules/options/optw_userlist.h:33
+#, fuzzy
+msgid "theme,userlist,channel"
+msgstr "Pozadina"
+
+#: src/modules/options/optw_userlist.h:47
+#, fuzzy
+msgid "theme,userlist,channel,background"
+msgstr "Pozadina"
+
+#: src/modules/options/optw_userlist.h:68
+#, fuzzy
+msgid "theme,userlist,channel,colors"
+msgstr "Kanal"
+
+#: src/modules/options/optw_userlist.h:84
+#, fuzzy
+msgid "theme,userlist,channel,grid"
+msgstr "Pozadina"
+
+#: src/modules/options/optw_lag.h:33
+msgid "time,ping"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:79
+#, fuzzy
+msgid "time,timestamp"
+msgstr "Datum i vreme"
+
+#: src/modules/options/optw_tray.h:34
+msgid "tray,TRAYICON"
+msgstr ""
+
 #: src/modules/options/optw_texticons.cpp:214
 msgid "unnamed"
 msgstr "bezimena"
+
+#: src/modules/options/optw_urlhandlers.h:35
+msgid "url,programs"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:104
+#, fuzzy
+msgid "userlist,channel"
+msgstr "Kanal"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:91
 msgid "within:"
@@ -6633,20 +7107,12 @@ msgstr ""
 #~ msgstr "Adresa se već koristi"
 
 #, fuzzy
-#~ msgid "Advanced"
-#~ msgstr "Napredno ..."
-
-#, fuzzy
 #~ msgid "After connect execute"
 #~ msgstr "Po konektovanju izvrši:"
 
 #, fuzzy
 #~ msgid "After login join channels"
 #~ msgstr "Auto-uključenje logovanja u kanal prozoru"
-
-#, fuzzy
-#~ msgid "Alert/Highlight"
-#~ msgstr "Omogući URL isticanje"
 
 #~ msgid "Alias"
 #~ msgstr "Alias"
@@ -6844,10 +7310,6 @@ msgstr ""
 #~ msgstr "Mogući modovi korisnika:"
 
 #, fuzzy
-#~ msgid "Avatar"
-#~ msgstr "Avatar slika"
-
-#, fuzzy
 #~ msgid "Avatar Handling"
 #~ msgstr "promena avatara"
 
@@ -6859,10 +7321,6 @@ msgstr ""
 #~ msgstr "Avatar slika"
 
 #, fuzzy
-#~ msgid "Avatars"
-#~ msgstr "Avatar slika"
-
-#, fuzzy
 #~ msgid "Average hops: ~%d.%d"
 #~ msgstr "Prosečnih skokova : ~%d.%d"
 
@@ -6871,10 +7329,6 @@ msgstr ""
 
 #~ msgid "Avg: %d (bytes/sec)"
 #~ msgstr "Prosek: %d (bajtova/sek)"
-
-#, fuzzy
-#~ msgid "Away"
-#~ msgstr "&Odsutnost"
 
 #, fuzzy
 #~ msgid "Away Indicator"
@@ -7089,10 +7543,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "C&ase sensitive"
 #~ msgstr "Razlikuj velika i mala slova"
-
-#, fuzzy
-#~ msgid "CTCP"
-#~ msgstr "CTCP Page"
 
 #, fuzzy
 #~ msgid "CTCP ACTION from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -7611,9 +8061,6 @@ msgstr ""
 #~ msgid "Changed text encoding to %Q"
 #~ msgstr "Izaberi fajlove za slanje"
 
-#~ msgid "Channel"
-#~ msgstr "Kanal"
-
 #~ msgid "Channel \r!c\r%Q\r was created at %Q"
 #~ msgstr "Kanal \r!c\r%Q\r je bio kreiran u %Q"
 
@@ -7712,10 +8159,6 @@ msgstr ""
 
 #~ msgid "Char device"
 #~ msgstr "Karakter uređaj"
-
-#, fuzzy
-#~ msgid "Chat"
-#~ msgstr "Izmeni"
 
 #, fuzzy
 #~ msgid "Chat with"
@@ -7826,10 +8269,6 @@ msgstr ""
 #~ msgid "Class is undefined"
 #~ msgstr "Klasa %s nije definisana"
 
-#, fuzzy
-#~ msgid "Classic Window List"
-#~ msgstr "Lista prozora"
-
 #~ msgid "Clear"
 #~ msgstr "Očisti"
 
@@ -7870,10 +8309,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Code"
 #~ msgstr "Cpp mod"
-
-#, fuzzy
-#~ msgid "Color Set"
-#~ msgstr "Zatvori"
 
 #, fuzzy
 #~ msgid "Color free (no ANSI colors)"
@@ -8059,10 +8494,6 @@ msgstr ""
 
 #~ msgid "Contacting host %s on port %u"
 #~ msgstr "Kontaktiram host %s na portu %u"
-
-#, fuzzy
-#~ msgid "Contacts"
-#~ msgstr "Poveži se"
 
 #, fuzzy
 #~ msgid "Context"
@@ -8908,10 +9339,6 @@ msgstr ""
 #~ msgstr "Fajl nije pronađen"
 
 #, fuzzy
-#~ msgid "File Transfer"
-#~ msgstr "Obriši mrtve prenose"
-
-#, fuzzy
 #~ msgid "File Transfers"
 #~ msgstr "Obriši mrtve prenose"
 
@@ -8988,10 +9415,6 @@ msgstr ""
 #~ msgstr "Filter"
 
 #, fuzzy
-#~ msgid "Flood Protection"
-#~ msgstr "Koristi flood zaštitu"
-
-#, fuzzy
 #~ msgid "Flooded with messages"
 #~ msgstr "poruka razdvajanja"
 
@@ -9019,10 +9442,6 @@ msgstr ""
 
 #~ msgid "Force the following interface for listening (unless -i is used)"
 #~ msgstr "Forsiraj prateći interfejs za slušanje (izuzev ako je -i korišćeno)"
-
-#, fuzzy
-#~ msgid "Foreground"
-#~ msgstr "Boja ispisa"
 
 #, fuzzy
 #~ msgid ""
@@ -9090,10 +9509,6 @@ msgstr ""
 
 #~ msgid "Function name expected"
 #~ msgstr "Ime funkcije očekivano"
-
-#, fuzzy
-#~ msgid "General options"
-#~ msgstr "Gnutella opcije"
 
 #, fuzzy
 #~ msgid "Generate \"defpopup\" Script Snippet"
@@ -9267,10 +9682,6 @@ msgstr ""
 #~ msgstr "Avatar slika"
 
 #, fuzzy
-#~ msgid "Highlight"
-#~ msgstr "Omogući URL isticanje"
-
-#, fuzzy
 #~ msgid "Highlight as"
 #~ msgstr "Naglašeni tekst"
 
@@ -9414,14 +9825,6 @@ msgstr ""
 #~ msgstr "Id"
 
 #, fuzzy
-#~ msgid "Ident"
-#~ msgstr "Indeks"
-
-#, fuzzy
-#~ msgid "Ident Service"
-#~ msgstr "Ident korisničko ime"
-
-#, fuzzy
 #~ msgid "Ident message"
 #~ msgstr "ident poruka"
 
@@ -9445,10 +9848,6 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Ig&nore"
-#~ msgstr "ignorisano"
-
-#, fuzzy
-#~ msgid "Ignore"
 #~ msgstr "ignorisano"
 
 #, fuzzy
@@ -9563,10 +9962,6 @@ msgstr ""
 
 #~ msgid "Integer parameter expected"
 #~ msgstr "Celobrojni parametar je očekivan"
-
-#, fuzzy
-#~ msgid "Interface"
-#~ msgstr "Adresa interfejsa (ili ime)"
 
 #~ msgid "Interface address (or name)"
 #~ msgstr "Adresa interfejsa (ili ime)"
@@ -10129,14 +10524,6 @@ msgstr ""
 #~ msgstr "Labela"
 
 #, fuzzy
-#~ msgid "Labels"
-#~ msgstr "Labela"
-
-#, fuzzy
-#~ msgid "Lag"
-#~ msgstr "Beleške"
-
-#, fuzzy
 #~ msgid "Lag Indicator"
 #~ msgstr "Tekstualni editor"
 
@@ -10373,10 +10760,6 @@ msgstr ""
 #~ msgid "Log viewer (&MDI)"
 #~ msgstr "Prikazivač zapisa (&MDI)"
 
-#, fuzzy
-#~ msgid "Logging"
-#~ msgstr "odlazeće"
-
 #~ msgid "Logging enabled"
 #~ msgstr "Logovanje omogućeno"
 
@@ -10398,10 +10781,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Login operations completed"
 #~ msgstr "login operacija kompletna"
-
-#, fuzzy
-#~ msgid "Look"
-#~ msgstr "Zaključaj"
 
 #~ msgid "Looking up host %Q..."
 #~ msgstr "Tražim host %Q..."
@@ -10458,10 +10837,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Manage S&hared Files"
 #~ msgstr "Nema deljenih fajlova"
-
-#, fuzzy
-#~ msgid "Marker"
-#~ msgstr "Prenesi"
 
 #~ msgid "Mask"
 #~ msgstr "Maska"
@@ -10531,21 +10906,9 @@ msgstr ""
 #~ msgid "Me privmsgs count: %c%u"
 #~ msgstr "Broj privatnih poruka za mene: %c%u"
 
-#, fuzzy
-#~ msgid "Media Types"
-#~ msgstr "Nov tip medija"
-
 #~ msgid "Media type of file %s matched to '%s' but no commandline specified"
 #~ msgstr ""
 #~ "Tip medija fajla %s se poklapa sa %s ali nije definisana komandna linija"
-
-#, fuzzy
-#~ msgid "Message Colors"
-#~ msgstr "Nadimak 4"
-
-#, fuzzy
-#~ msgid "Message Style"
-#~ msgstr "Tip poruke"
 
 #, fuzzy
 #~ msgid "Message Type"
@@ -10959,10 +11322,6 @@ msgstr ""
 #~ msgstr "Nadimak 2"
 
 #, fuzzy
-#~ msgid "Nickname Grid"
-#~ msgstr "Nadimak 1"
-
-#, fuzzy
 #~ msgid "Nickname problem"
 #~ msgstr "problem nadimka"
 
@@ -11354,10 +11713,6 @@ msgstr ""
 
 #~ msgid "Nothing to write"
 #~ msgstr "Nema ništa za pisanje"
-
-#, fuzzy
-#~ msgid "Notifier"
-#~ msgstr "Lista obaveštenja"
 
 #, fuzzy
 #~ msgid "Notify"
@@ -11757,10 +12112,6 @@ msgstr ""
 #~ msgstr "Odlazeći saobraćaj"
 
 #, fuzzy
-#~ msgid "Output"
-#~ msgstr "Izlazni bafer"
-
-#, fuzzy
 #~ msgid "Output Style"
 #~ msgstr "Izlazni bafer"
 
@@ -11967,10 +12318,6 @@ msgstr ""
 #~ msgid "Processing list: %Q"
 #~ msgstr "Obrađujem listu %Q"
 
-#, fuzzy
-#~ msgid "Profiles"
-#~ msgstr "Uvod"
-
 #~ msgid "Progress"
 #~ msgstr "Napredak"
 
@@ -12001,16 +12348,8 @@ msgstr ""
 #~ msgid "Property: %c%s%c, type: %s"
 #~ msgstr "    Vlasništvo: %s=%s"
 
-#, fuzzy
-#~ msgid "Protection"
-#~ msgstr "Koristi flood zaštitu"
-
 #~ msgid "Proxy %s has a nickname: %s"
 #~ msgstr "Proksi %s ima nadimak: %s"
-
-#, fuzzy
-#~ msgid "Proxy Hosts"
-#~ msgstr "proksi host"
 
 #~ msgid "Proxy connection"
 #~ msgstr "Proksi konekcija"
@@ -12084,10 +12423,6 @@ msgstr ""
 #~ msgstr ""
 #~ "<center>Klikni ovde za editovanje naprednih opcija za ovaj server...</"
 #~ "center>"
-
-#, fuzzy
-#~ msgid "Query"
-#~ msgstr "upit obaveštenja"
 
 #, fuzzy
 #~ msgid "Query Targets"
@@ -12463,10 +12798,6 @@ msgstr ""
 #~ msgstr "Red:0 Kolona:0"
 
 #, fuzzy
-#~ msgid "SSL"
-#~ msgstr "Koristi SSL"
-
-#, fuzzy
 #~ msgid "SSL message"
 #~ msgstr "DCC poruka"
 
@@ -12535,10 +12866,6 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Scripting"
-#~ msgstr "Opis"
-
-#, fuzzy
-#~ msgid "Scripting Engine"
 #~ msgstr "Opis"
 
 #, fuzzy
@@ -12996,9 +13323,6 @@ msgstr ""
 #~ msgid "Smart"
 #~ msgstr "Prenesi"
 
-#~ msgid "Socket"
-#~ msgstr "Priključak"
-
 #~ msgid "Socket Spy [IRC Context %u]"
 #~ msgstr "Špijun Priključka [IRC Kontekst %u]"
 
@@ -13040,10 +13364,6 @@ msgstr ""
 #~ msgstr "Deljenje"
 
 #, fuzzy
-#~ msgid "Sound"
-#~ msgstr "Pošalji"
-
-#, fuzzy
 #~ msgid "Sound file '%Q' not found"
 #~ msgstr "Prozor %s nije nađen"
 
@@ -13054,10 +13374,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Sound system detected to: %s"
 #~ msgstr "Detektovano razdvajanje mreža :%s"
-
-#, fuzzy
-#~ msgid "Sounds"
-#~ msgstr "Pošalji"
 
 #~ msgid ""
 #~ "Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
@@ -13216,15 +13532,7 @@ msgstr ""
 #~ msgstr "Terminal emulator"
 
 #, fuzzy
-#~ msgid "Text"
-#~ msgstr "Tekst:"
-
-#, fuzzy
 #~ msgid "Text Editor"
-#~ msgstr "Tekstualni editor"
-
-#, fuzzy
-#~ msgid "Text icons"
 #~ msgstr "Tekstualni editor"
 
 #~ msgid "Text:"
@@ -14042,9 +14350,6 @@ msgstr ""
 #~ msgid "Timer callback handler '%s' is broken: killing"
 #~ msgstr "Upravljač vremenskog odziva '%s' je prekinut: ubijam"
 
-#~ msgid "Timestamp"
-#~ msgstr "Datum i vreme"
-
 #, fuzzy
 #~ msgid "Timestamp color"
 #~ msgstr "Datum i vreme"
@@ -14104,10 +14409,6 @@ msgstr ""
 #~ msgstr "Saveti alata vreme prikaza (u milisek)"
 
 #, fuzzy
-#~ msgid "ToolBar Applets"
-#~ msgstr "&Alati"
-
-#, fuzzy
 #~ msgid "ToolBar Export"
 #~ msgstr "Uključi/isključi editor zabrana"
 
@@ -14121,10 +14422,6 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Toolbars"
-#~ msgstr "&Alati"
-
-#, fuzzy
-#~ msgid "Tools"
 #~ msgstr "&Alati"
 
 #~ msgid "Topic"
@@ -14193,24 +14490,12 @@ msgstr ""
 #~ msgstr "Prenošenje"
 
 #, fuzzy
-#~ msgid "Transparency"
-#~ msgstr "Transparentno "
-
-#, fuzzy
 #~ msgid "Transport"
 #~ msgstr "Transparentno "
 
 #, fuzzy
-#~ msgid "Tray icon"
-#~ msgstr "Tekstualni editor"
-
-#, fuzzy
 #~ msgid "Tree Taskbar"
 #~ msgstr "Taskbar"
-
-#, fuzzy
-#~ msgid "Tree Window List"
-#~ msgstr "Lista prozora"
 
 #~ msgid "Type"
 #~ msgstr "Vrsta"
@@ -14243,10 +14528,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "URL foreground"
 #~ msgstr "URL ispis"
-
-#, fuzzy
-#~ msgid "URL handlers"
-#~ msgstr "Dodaj manipulator"
 
 #, fuzzy
 #~ msgid "USERINFO reply:"
@@ -14877,10 +15158,6 @@ msgstr ""
 #~ msgid "Userhost info: %s"
 #~ msgstr "Korisnik nije nađen (%s)"
 
-#, fuzzy
-#~ msgid "Userlist"
-#~ msgstr "Lista korisnika"
-
 #~ msgid "Usernames: %c%s"
 #~ msgstr "Korisnička imena: %c%s"
 
@@ -14954,10 +15231,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Version:"
 #~ msgstr "Opis:"
-
-#, fuzzy
-#~ msgid "Voice"
-#~ msgstr "Naslov"
 
 #, fuzzy
 #~ msgid "Voice Chat"
@@ -15118,13 +15391,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Window Captions"
 #~ msgstr "Prozor nije pronađen"
-
-#~ msgid "Window List"
-#~ msgstr "Lista prozora"
-
-#, fuzzy
-#~ msgid "Window List Alert"
-#~ msgstr "Lista prozora"
 
 #, fuzzy
 #~ msgid "Window Toolbar"
@@ -15682,10 +15948,6 @@ msgstr ""
 #~ msgstr "Kanal"
 
 #, fuzzy
-#~ msgid "chat"
-#~ msgstr "Izmeni"
-
-#, fuzzy
 #~ msgid "close this window?"
 #~ msgstr "Zatvori ovaj prozor"
 
@@ -15699,13 +15961,6 @@ msgstr ""
 
 #~ msgid "concurrent transfers limit reached (%u of %u transfers running)"
 #~ msgstr "Dostignut limit istovremenih prenosa (%u od %u prenosa pokrenuto)"
-
-#~ msgid "connection"
-#~ msgstr "konekcija"
-
-#, fuzzy
-#~ msgid "connection,servers"
-#~ msgstr "Isteklo je vreme za povezivanje"
 
 #, fuzzy
 #~ msgid "d: Obscure 'DEBUG' flag"
@@ -15922,16 +16177,8 @@ msgstr ""
 #~ msgid "pix '%Q' doesn't exists"
 #~ msgstr "Fajl podešavanja sa ID-om '%s' nije otvoren"
 
-#, fuzzy
-#~ msgid "popup"
-#~ msgstr "Iskačući meni"
-
 #~ msgid "private"
 #~ msgstr "privatno"
-
-#, fuzzy
-#~ msgid "protection"
-#~ msgstr "Koristi flood zaštitu"
 
 #~ msgid "proxy host"
 #~ msgstr "proksi host"
@@ -15999,10 +16246,6 @@ msgstr ""
 #~ msgid "slots limit reached (%u slots of %u)"
 #~ msgstr "dostignut limit slotova (%u slotova od %u)"
 
-#, fuzzy
-#~ msgid "smileys,emoticons"
-#~ msgstr "sekundi"
-
 #~ msgid "ssl message"
 #~ msgstr "ssl poruka"
 
@@ -16010,32 +16253,8 @@ msgstr ""
 #~ msgid "t (Connection stats ?)"
 #~ msgstr "status konekcije"
 
-#, fuzzy
-#~ msgid "theme"
-#~ msgstr "Stavka"
-
-#, fuzzy
-#~ msgid "theme,background"
-#~ msgstr "Pozadina"
-
-#, fuzzy
-#~ msgid "theme,userlist,channel,background"
-#~ msgstr "Pozadina"
-
-#, fuzzy
-#~ msgid "theme,userlist,channel,colors"
-#~ msgstr "Kanal"
-
-#, fuzzy
-#~ msgid "theme,userlist,channel,grid"
-#~ msgstr "Pozadina"
-
 #~ msgid "this executable has no SSL support: -s switch ignored"
 #~ msgstr "ovaj KVIrc nema SSL podršku: ignorisan -s prekidač"
-
-#, fuzzy
-#~ msgid "time,timestamp"
-#~ msgstr "Datum i vreme"
 
 #~ msgid "too many pending connections"
 #~ msgstr "previše nerešenih konekcija"
@@ -16054,10 +16273,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "user-operators"
 #~ msgstr "operator %c%c"
-
-#, fuzzy
-#~ msgid "userlist,channel"
-#~ msgstr "Kanal"
 
 #, fuzzy
 #~ msgid "voiced user"

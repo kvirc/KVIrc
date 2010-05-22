@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 15:48+0200\n"
+"POT-Creation-Date: 2010-05-22 17:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -574,6 +574,12 @@ msgstr ""
 
 #: src/modules/options/optw_servers.cpp:217
 #: src/modules/options/optw_messages.cpp:71
+#: src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_dcc.h:88
+#: src/modules/options/optw_irc.h:43
+#: src/modules/options/optw_interfacelookglobal.h:33
+#: src/modules/options/optw_channel.h:52
+#: src/modules/options/optw_identity.h:154
 msgid "General"
 msgstr ""
 
@@ -637,6 +643,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/optw_servers.cpp:339
+#: src/modules/options/optw_nickserv.h:41
 msgid "NickServ"
 msgstr ""
 
@@ -725,6 +732,7 @@ msgstr ""
 
 #: src/modules/options/optw_servers.cpp:569
 #: src/modules/options/optw_interfacefeatures.cpp:61
+#: src/modules/options/optw_identity.h:138
 msgid "Identity"
 msgstr ""
 
@@ -923,6 +931,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/optw_servers.cpp:805
+#: src/modules/options/optw_connection.h:32
 msgid "Connection"
 msgstr ""
 
@@ -1732,6 +1741,8 @@ msgstr ""
 
 #: src/modules/options/optw_interfacelookglobal.cpp:160
 #: src/modules/options/optw_interfacelookglobal.cpp:180
+#: src/modules/options/optw_windowlist.h:79
+#: src/modules/options/optw_userlist.h:46
 msgid "Background"
 msgstr ""
 
@@ -2645,6 +2656,7 @@ msgid "Registered Users"
 msgstr ""
 
 #: src/modules/options/optw_interfacefeatures.cpp:62
+#: src/modules/options/optw_servers.h:155
 msgid "Servers"
 msgstr ""
 
@@ -3687,6 +3699,7 @@ msgid "Use verbose ignore (show messages in console)"
 msgstr ""
 
 #: src/modules/options/optw_sound.cpp:60
+#: src/modules/options/optw_sound.h:47
 msgid "Sound System"
 msgstr ""
 
@@ -3954,4 +3967,400 @@ msgstr ""
 msgid ""
 "<center>This makes the IRC context display applet show the current lag after "
 "the user's nickname (in seconds)</center>"
+msgstr ""
+
+#: src/modules/options/optw_away.h:30
+msgid "Away"
+msgstr ""
+
+#: src/modules/options/optw_ctcp.h:30
+msgid "CTCP"
+msgstr ""
+
+#: src/modules/options/optw_dcc.h:30
+msgid "DCC"
+msgstr ""
+
+#: src/modules/options/optw_dcc.h:58
+#: src/modules/options/optw_dcc.h:102
+#: src/modules/options/optw_irc.h:57
+#: src/modules/options/optw_channel.h:64
+#: src/modules/options/optw_identity.h:203
+#: src/modules/options/optw_connection.h:45
+msgid "Advanced"
+msgstr ""
+
+#: src/modules/options/optw_dcc.h:74
+msgid "File Transfer"
+msgstr ""
+
+#: src/modules/options/optw_dcc.h:115
+msgid "Chat"
+msgstr ""
+
+#: src/modules/options/optw_dcc.h:128
+msgid "Voice"
+msgstr ""
+
+#: src/modules/options/optw_irc.h:30
+msgid "IRC"
+msgstr ""
+
+#: src/modules/options/optw_lag.h:31
+msgid "Lag"
+msgstr ""
+
+#: src/modules/options/optw_lag.h:33
+msgid "time,ping"
+msgstr ""
+
+#: src/modules/options/optw_nickserv.h:43
+msgid "authentication,identify"
+msgstr ""
+
+#: src/modules/options/optw_textencoding.h:32
+msgid "Language"
+msgstr ""
+
+#: src/modules/options/optw_textencoding.h:35
+msgid "language,encoding,charset,codepage"
+msgstr ""
+
+#: src/modules/options/optw_notify.h:30
+msgid "Contacts"
+msgstr ""
+
+#: src/modules/options/optw_notify.h:32
+msgid "notify,buddy,buddies,friends"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:39
+msgid "Text"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:40
+#: src/modules/options/optw_ircview.h:37
+#: src/modules/options/optw_ircview.h:51
+msgid "theme,colors,output"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:54
+msgid "Message Style"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:58
+msgid "theme,privmsg,output,format"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:75
+msgid "Timestamp"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:79
+msgid "time,timestamp"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:96
+msgid "Message Colors"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:97
+#: src/modules/options/optw_messages.h:190
+msgid "theme,colors,messages,output"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:189
+msgid "Color Set"
+msgstr ""
+
+#: src/modules/options/optw_avatar.h:32
+msgid "Avatars"
+msgstr ""
+
+#: src/modules/options/optw_sound.h:33
+msgid "Sound"
+msgstr ""
+
+#: src/modules/options/optw_sound.h:49
+msgid "sound,xmms,audio,play,amarok"
+msgstr ""
+
+#: src/modules/options/optw_sound.h:82
+msgid "Sounds"
+msgstr ""
+
+#: src/modules/options/optw_sound.h:84
+msgid "sound,events"
+msgstr ""
+
+#: src/modules/options/optw_urlhandlers.h:32
+msgid "URL handlers"
+msgstr ""
+
+#: src/modules/options/optw_urlhandlers.h:35
+msgid "url,programs"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.h:34
+msgid "Window List"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.h:36
+#: src/modules/options/optw_windowlist.h:50
+#: src/modules/options/optw_windowlist.h:66
+#: src/modules/options/optw_windowlist.h:81
+#: src/modules/options/optw_windowlist.h:100
+#: src/modules/options/optw_windowlist.h:115
+#: src/modules/options/optw_interfacelookglobal.h:34
+msgid "theme"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.h:48
+msgid "Tree Window List"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.h:64
+#: src/modules/options/optw_userlist.h:67
+msgid "Foreground"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.h:98
+#: src/modules/options/optw_ircview.h:70
+#: src/modules/options/optw_userlist.h:103
+msgid "Features"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.h:112
+msgid "Classic Window List"
+msgstr ""
+
+#: src/modules/options/optw_tray.h:32
+msgid "Tray icon"
+msgstr ""
+
+#: src/modules/options/optw_tray.h:34
+msgid "tray,TRAYICON"
+msgstr ""
+
+#: src/modules/options/optw_notifier.h:33
+#: src/modules/options/optw_notifier.h:51
+msgid "Notifier"
+msgstr ""
+
+#: src/modules/options/optw_notifier.h:34
+#: src/modules/options/optw_input.h:34
+msgid "theme,colors,text"
+msgstr ""
+
+#: src/modules/options/optw_notifier.h:52
+msgid "popup"
+msgstr ""
+
+#: src/modules/options/optw_tools.h:33
+msgid "Tools"
+msgstr ""
+
+#: src/modules/options/optw_generalopt.h:30
+msgid "General options"
+msgstr ""
+
+#: src/modules/options/optw_interfacefeatures.h:32
+msgid "Interface"
+msgstr ""
+
+#: src/modules/options/optw_texticons.h:39
+msgid "Text icons"
+msgstr ""
+
+#: src/modules/options/optw_texticons.h:41
+msgid "smileys,emoticons"
+msgstr ""
+
+#: src/modules/options/optw_ircview.h:36
+msgid "Output"
+msgstr ""
+
+#: src/modules/options/optw_ircview.h:50
+msgid "Look"
+msgstr ""
+
+#: src/modules/options/optw_ircview.h:84
+msgid "Marker"
+msgstr ""
+
+#: src/modules/options/optw_mediatypes.h:48
+msgid "Media Types"
+msgstr ""
+
+#: src/modules/options/optw_mediatypes.h:50
+msgid "file,audio,video,programs"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.h:48
+msgid "Transparency"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.h:49
+msgid "theme,background"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.h:74
+msgid "Workspace"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.h:75
+msgid "theme,mdi"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.h:87
+msgid "ToolBar Applets"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.h:88
+msgid "theme,toolbar"
+msgstr ""
+
+#: src/modules/options/optw_servers.h:156
+msgid "connection"
+msgstr ""
+
+#: src/modules/options/optw_channel.h:36
+msgid "Channel"
+msgstr ""
+
+#: src/modules/options/optw_protection.h:32
+msgid "Protection"
+msgstr ""
+
+#: src/modules/options/optw_protection.h:35
+msgid "ctcp,flood"
+msgstr ""
+
+#: src/modules/options/optw_identity.h:178
+msgid "Avatar"
+msgstr ""
+
+#: src/modules/options/optw_identity.h:228
+msgid "Profiles"
+msgstr ""
+
+#: src/modules/options/optw_antispam.h:30
+msgid "Anti-spam"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.h:33
+msgid "Verbosity And Output"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.h:35
+msgid "debug"
+msgstr ""
+
+#: src/modules/options/optw_logging.h:30
+msgid "Logging"
+msgstr ""
+
+#: src/modules/options/optw_logging.h:31
+msgid "save,output"
+msgstr ""
+
+#: src/modules/options/optw_input.h:33
+#: src/modules/options/optw_input.h:51
+msgid "Input"
+msgstr ""
+
+#: src/modules/options/optw_proxy.h:53
+msgid "Proxy Hosts"
+msgstr ""
+
+#: src/modules/options/optw_proxy.h:55
+msgid "connection,servers"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.h:30
+msgid "Alert/Highlight"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.h:44
+msgid "Highlight"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.h:57
+msgid "Window List Alert"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.h:30
+msgid "Flood Protection"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:32
+msgid "Userlist"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:33
+msgid "theme,userlist,channel"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:47
+msgid "theme,userlist,channel,background"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:68
+msgid "theme,userlist,channel,colors"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:83
+msgid "Nickname Grid"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:84
+msgid "theme,userlist,channel,grid"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:104
+msgid "userlist,channel"
+msgstr ""
+
+#: src/modules/options/optw_topiclabel.h:32
+msgid "Labels"
+msgstr ""
+
+#: src/modules/options/optw_topiclabel.h:33
+msgid "theme,topic"
+msgstr ""
+
+#: src/modules/options/optw_uparser.h:30
+msgid "Scripting Engine"
+msgstr ""
+
+#: src/modules/options/optw_uparser.h:31
+msgid "scripting,kvs,debug"
+msgstr ""
+
+#: src/modules/options/optw_connection.h:59
+msgid "SSL"
+msgstr ""
+
+#: src/modules/options/optw_connection.h:76
+msgid "Socket"
+msgstr ""
+
+#: src/modules/options/optw_connection.h:91
+msgid "Ident Service"
+msgstr ""
+
+#: src/modules/options/optw_ignore.h:32
+msgid "Ignore"
+msgstr ""
+
+#: src/modules/options/optw_ignore.h:34
+msgid "protection"
+msgstr ""
+
+#: src/modules/options/optw_query.h:30
+msgid "Query"
+msgstr ""
+
+#: src/modules/options/optw_query.h:32
+msgid "chat"
 msgstr ""
