@@ -315,7 +315,9 @@ void KviQuery::textViewRightClicked()
 void KviQuery::saveProperties(KviConfig * cfg)
 {
 	KviWindow::saveProperties(cfg);
-	cfg->writeEntry("Splitter",m_pSplitter->sizes());
+	QList<int> sizes;
+	sizes << m_pIrcView->width() << m_pUserListView->width();
+	cfg->writeEntry("Splitter",sizes);
 	cfg->writeEntry("UserListViewVisible",m_pUserListView->isVisible());
 }
 
@@ -324,9 +326,15 @@ void KviQuery::loadProperties(KviConfig * cfg)
 	int iWidth = width();
 	KviWindow::loadProperties(cfg);
 	QList<int> def;
-	def.append((iWidth * 80) / 100);
-	def.append((iWidth * 20) / 100);
-	m_pSplitter->setSizes(cfg->readIntListEntry("Splitter",def));
+	def.append((iWidth * 75) / 100);
+	def.append((iWidth * 25) / 100);
+	QList<int> sizes=cfg->readIntListEntry("Splitter",def);
+	m_pSplitter->setSizes(sizes);
+	m_pIrcView->resize(sizes.at(0), m_pIrcView->height());
+	m_pUserListView->resize(sizes.at(1), m_pUserListView->height());
+	m_pSplitter->setStretchFactor(0,0);
+	m_pSplitter->setStretchFactor(0,1);
+
 	showListView(cfg->readBoolEntry("UserListViewVisible",false));
 }
 

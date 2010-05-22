@@ -313,7 +313,9 @@ void KviChannel::saveProperties(KviConfig * cfg)
 {
 	KviWindow::saveProperties(cfg);
 	cfg->writeEntry("TopSplitter",m_pTopSplitter->sizes());
-	cfg->writeEntry("Splitter",m_pSplitter->sizes());
+	QList<int> sizes;
+	sizes << m_pIrcView->width() << m_pUserListView->width();
+	cfg->writeEntry("Splitter",sizes);
 	cfg->writeEntry("VertSplitter",m_pMessageView ? m_pVertSplitter->sizes() : m_VertSplitterSizesList);
 	cfg->writeEntry("PrivateBackground",m_privateBackground);
 	cfg->writeEntry("DoubleView",m_pMessageView ? true : false);
@@ -332,9 +334,15 @@ void KviChannel::loadProperties(KviConfig * cfg)
 	def.append((iWidth * 10) / 100);
 	m_pTopSplitter->setSizes(cfg->readIntListEntry("TopSplitter",def));
 	def.clear();
-	def.append((iWidth * 82) / 100);
-	def.append((iWidth * 18) / 100);
-	m_pSplitter->setSizes(cfg->readIntListEntry("Splitter",def));
+	def.append((iWidth * 75) / 100);
+	def.append((iWidth * 25) / 100);
+	QList<int> sizes=cfg->readIntListEntry("Splitter",def);
+	m_pSplitter->setSizes(sizes);
+	m_pIrcView->resize(sizes.at(0), m_pIrcView->height());
+	m_pUserListView->resize(sizes.at(1), m_pUserListView->height());
+	m_pSplitter->setStretchFactor(0,0);
+	m_pSplitter->setStretchFactor(0,1);
+
 	def.clear();
 
 	def.append((iWidth * 60) / 100);
