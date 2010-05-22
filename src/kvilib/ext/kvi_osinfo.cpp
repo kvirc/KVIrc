@@ -353,14 +353,14 @@ static QString queryWinInfo(QueryInfo info)
 				szVersion+= QString("Service Pack 6a (Build %1)").arg( osvi.dwBuildNumber & 0xFFFF );
 			else // Windows NT 4.0 prior to SP6a
 			{
-				szVersion+= QString( "%1 (Build %2)").arg( osvi.szCSDVersion,  osvi.dwBuildNumber & 0xFFFF);
+				szVersion+= QString( "%1 (Build %2)").arg( osvi.szCSDVersion ).arg(osvi.dwBuildNumber & 0xFFFF);
 			}
 
 			RegCloseKey( hKey );
 		}
 		else // not Windows NT 4.0
 		{
-			szVersion+= QString( "%1 (Build %2)").arg( osvi.szCSDVersion,  osvi.dwBuildNumber & 0xFFFF);
+			szVersion+= QString( "%1 (Build %2)").arg( osvi.szCSDVersion ).arg(osvi.dwBuildNumber & 0xFFFF);
 		}
 
 		break;
