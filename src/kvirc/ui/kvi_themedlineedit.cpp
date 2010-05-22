@@ -53,8 +53,10 @@ KviThemedLineEdit::~KviThemedLineEdit()
 
 void KviThemedLineEdit::applyOptions()
 {
+	// workaround for gtk+ style forcing a crappy white background (ticket #777)
+	bool bIsCrappyGtkStyle = (QString("QGtkStyle").compare(qApp->style()->metaObject()->className())==0);
 	QString szStyle = QString("QLineEdit { background: transparent; color: %1; font-family: %2; font-size: %3pt; font-weight: %4; font-style: %5;}")
-	.arg(KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name())
+	.arg(bIsCrappyGtkStyle ? QColor(0,0,0).name() : KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name())
 	.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
 	.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
 	.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
