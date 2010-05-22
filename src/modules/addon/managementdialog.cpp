@@ -89,7 +89,7 @@ KviScriptAddonListViewItem::~KviScriptAddonListViewItem()
 KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 : QDialog(p)
 {
-	setWindowTitle(__tr2qs("Manage Script-Based Addons"));
+	setWindowTitle(__tr2qs_ctx("Manage Script-Based Addons","addon"));
 	setObjectName("Addon manager");
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ADDONS)));
 
@@ -167,7 +167,7 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	connect(m_pListWidget,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentChanged(QListWidgetItem *,QListWidgetItem *)));
 	m_pListWidget->setCurrentItem(m_pListWidget->item(0));
 
-	QPushButton * pCloseBtn = new QPushButton(__tr2qs("Close"),this);
+	QPushButton * pCloseBtn = new QPushButton(__tr2qs_ctx("Close","addon"),this);
 	pCloseBtn->setMaximumSize(pCloseBtn->sizeHint().width(),pCloseBtn->sizeHint().height());
 	connect(pCloseBtn,SIGNAL(clicked()),this,SLOT(closeClicked()));
 	g->addWidget(pCloseBtn,2,0);
@@ -250,13 +250,13 @@ void KviScriptManagementDialog::uninstallScript()
 	if(!it)return;
 
 	QString txt = "<p>";
-	txt += __tr2qs("Do you really want to uninstall the addon \"%1\" ?").arg(it->addon()->visibleName());
+	txt += __tr2qs_ctx("Do you really want to uninstall the addon \"%1\" ?","addon").arg(it->addon()->visibleName());
 	txt += "</p>";
 
 	if(QMessageBox::question(
 		this,
-		__tr2qs("Confirm addon uninstallation"),
-		txt, __tr2qs("&Yes"), __tr2qs("&No"),0,1
+		__tr2qs_ctx("Confirm addon uninstallation","addon"),
+		txt, __tr2qs_ctx("Yes","addon"), __tr2qs_ctx("No","addon"),0,1
 		) != 0) return;
 
 	KviKvsScriptAddonManager::instance()->unregisterAddon(it->addon()->name(),g_pActiveWindow);
@@ -276,7 +276,7 @@ void KviScriptManagementDialog::installScript()
 
 	if(!KviFileDialog::askForOpenFileName(
 		szFileName,
-		__tr2qs("Please select the addon installation file"),
+		__tr2qs_ctx("Please select the addon installation file","addon"),
 		QString(),KVI_FILTER_ADDON,false,true
 		)) return;
 

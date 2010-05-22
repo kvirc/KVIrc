@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 15:48+0200\n"
+"POT-Creation-Date: 2010-05-22 17:46+0200\n"
 "PO-Revision-Date: 2010-01-30 21:26+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -63,9 +63,17 @@ msgstr "Не могу открыть файл на запись."
 msgid "Cannot write to the file descriptor."
 msgstr "Не могу записать в дескриптор файла."
 
+#: src/modules/addon/managementdialog.cpp:170
+msgid "Close"
+msgstr ""
+
 #: src/modules/addon/managementdialog.cpp:110
 msgid "Configure Addon..."
 msgstr "Конфигурация дополнения..."
+
+#: src/modules/addon/managementdialog.cpp:258
+msgid "Confirm addon uninstallation"
+msgstr ""
 
 #: src/modules/addon/packaddondialog.cpp:52
 msgid "Create Addon Package - KVIrc"
@@ -100,6 +108,10 @@ msgstr "Описание: %Q"
 #: src/modules/addon/addonfunctions.cpp:211
 msgid "Do Not Install"
 msgstr "Не устанавливать"
+
+#: src/modules/addon/managementdialog.cpp:253
+msgid "Do you really want to uninstall the addon \"%1\" ?"
+msgstr ""
 
 #: src/modules/addon/addonfunctions.cpp:210
 msgid "Do you want to proceed with the installation ?"
@@ -206,6 +218,10 @@ msgstr "Установить пакет дополнения с локально
 msgid "Internal error: call a head-shrinker"
 msgstr "Внутренняя ошибка: вызов сжимателя заголовка"
 
+#: src/modules/addon/managementdialog.cpp:92
+msgid "Manage Script-Based Addons"
+msgstr ""
+
 #: src/modules/addon/packaddondialog.cpp:509
 msgid "Minimum &KVIrc Version:"
 msgstr "Минимальная версия &KVIrc:"
@@ -217,6 +233,10 @@ msgstr "Минимальная версия KVIrc"
 #: src/modules/addon/libkviaddon.cpp:147
 msgid "Name: %Q"
 msgstr "Имя: %Q"
+
+#: src/modules/addon/managementdialog.cpp:259
+msgid "No"
+msgstr ""
 
 #: src/modules/addon/packaddondialog.cpp:486
 msgid "No spaces allowed, like MyAddon"
@@ -277,6 +297,10 @@ msgstr "Версия пакета"
 #: src/modules/addon/packaddondialog.cpp:446
 msgid "Packaging failed"
 msgstr "Упаковка завершена неудачно"
+
+#: src/modules/addon/managementdialog.cpp:279
+msgid "Please select the addon installation file"
+msgstr ""
 
 #: src/modules/addon/packaddondialog.cpp:561
 msgid "Save Package"
@@ -425,6 +449,10 @@ msgstr ""
 #: src/modules/addon/packaddondialog.cpp:86
 msgid "Welcome"
 msgstr "Добро пожаловать"
+
+#: src/modules/addon/managementdialog.cpp:259
+msgid "Yes"
+msgstr ""
 
 #: src/modules/addon/addonfunctions.cpp:212
 msgid "Yes, Proceed"
