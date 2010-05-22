@@ -372,16 +372,18 @@ void KviSoundThread::run()
 				channelCount = afGetVirtualChannels(file, AF_DEFAULT_TRACK);
 				buffer = kvi_malloc(int(BUFFER_FRAMES * frameSize));
 
-				int audiofd_c = open("/dev/dsp", O_WRONLY | O_EXCL | O_NDELAY);
+				int audiofd_c = open("/dev/dsp", O_WRONLY | /*O_EXCL |*/ O_NDELAY);
+
 				QFile audiofd;
-				audiofd.open(audiofd_c,QIODevice::WriteOnly);
 
 				if(audiofd_c < 0)
 				{
-					debug("Could not open audio devive /dev/dsp! [OSS]");
-					debug("(the device is probably busy)");
+					debug("Could not open audio device /dev/dsp! [OSS+AUDIOFILE]");
+					debug("(the device is probably busy , errno = %d)",errno);
 					goto exit_thread;
 				}
+
+				audiofd.open(audiofd_c,QIODevice::WriteOnly); // ???? what the heck is this for ?
 
 				if (sampleWidth == 8) format = AFMT_U8;
 				else if (sampleWidth == 16)format = AFMT_S16_NE;
@@ -441,7 +443,7 @@ void KviSoundThread::run()
 			int iDataLen = 0;
 			int iSize = 0;
 
-			if(!f.open(QIODevice::WriteOnly))
+			if(!f.open(QIODevice::ReadOnly))
 			{
 				debug("Could not open sound file %s! [OSS]",m_szFileName.toUtf8().data());
 				return;
@@ -463,7 +465,7 @@ void KviSoundThread::run()
 
 			iSize -= 24;
 
-			fd = open("/dev/audio",  O_WRONLY | O_EXCL | O_NDELAY);
+			fd = open("/dev/audio",  O_WRONLY | /*O_EXCL |*/ O_NDELAY);
 			if(fd < 0)
 			{
 				debug("Could not open device file /dev/audio!");
