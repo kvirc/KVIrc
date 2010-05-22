@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-24 10:36+0200\n"
+"POT-Creation-Date: 2010-05-22 15:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -410,7 +410,7 @@ msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:634
 #: src/modules/dcc/requests.cpp:454
-#: src/modules/dcc/requests.cpp:744
+#: src/modules/dcc/requests.cpp:754
 msgid "<unknown size>"
 msgstr ""
 
@@ -785,144 +785,145 @@ msgid "It seems that I haven't requested this dcc chat"
 msgstr ""
 
 #: src/modules/dcc/requests.cpp:452
-#: src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/requests.cpp:752
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
 msgstr ""
 
 #: src/modules/dcc/requests.cpp:462
-#: src/modules/dcc/requests.cpp:613
-#: src/modules/dcc/requests.cpp:752
+#: src/modules/dcc/requests.cpp:472
+#: src/modules/dcc/requests.cpp:623
+#: src/modules/dcc/requests.cpp:762
 msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:476
+#: src/modules/dcc/requests.cpp:486
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC SEND is not available"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:539
+#: src/modules/dcc/requests.cpp:549
 #, c-format
 msgid ""
 "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:565
+#: src/modules/dcc/requests.cpp:575
 #, c-format
 msgid "Invalid resume position argument '%s'"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:578
+#: src/modules/dcc/requests.cpp:588
 #, c-format
 msgid ""
 "Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
 "or invalid resume size"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:603
+#: src/modules/dcc/requests.cpp:613
 msgid ""
 "The above request has resume file size missing, assuming a resume file size "
 "of 0"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:627
+#: src/modules/dcc/requests.cpp:637
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC RECV is not available"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:643
+#: src/modules/dcc/requests.cpp:653
 #, c-format
 msgid "Invalid RECV request: Position %u is is larger than file size"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:697
+#: src/modules/dcc/requests.cpp:707
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:703
+#: src/modules/dcc/requests.cpp:713
 #, c-format
 msgid "The remote client is listening on interface %s and port %s"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:710
+#: src/modules/dcc/requests.cpp:720
 msgid ""
 "Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
 "to send the file (or double-click on the socket)"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:766
+#: src/modules/dcc/requests.cpp:776
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC RSEND is not available"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:777
-#: src/modules/dcc/requests.cpp:947
+#: src/modules/dcc/requests.cpp:787
+#: src/modules/dcc/requests.cpp:957
 msgid "(unknown)"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:783
-#: src/modules/dcc/requests.cpp:933
+#: src/modules/dcc/requests.cpp:793
+#: src/modules/dcc/requests.cpp:943
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:849
+#: src/modules/dcc/requests.cpp:859
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC GET is not available"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:861
+#: src/modules/dcc/requests.cpp:871
 msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:862
+#: src/modules/dcc/requests.cpp:872
 msgid "\"any\""
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:906
+#: src/modules/dcc/requests.cpp:916
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %s since we can't accept incoming connections (user option)"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:963
+#: src/modules/dcc/requests.cpp:973
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %Q"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:997
+#: src/modules/dcc/requests.cpp:1007
 msgid ""
 "The above request cannot be accepted: DCC VOICE support not enabled at "
 "compilation time "
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:1007
-#: src/modules/dcc/requests.cpp:1082
+#: src/modules/dcc/requests.cpp:1017
+#: src/modules/dcc/requests.cpp:1092
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:1020
+#: src/modules/dcc/requests.cpp:1030
 #, c-format
 msgid ""
 "The above request appears to be broken: Invalid sample-rate '%s', defaulting "
 "to 8000"
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:1071
+#: src/modules/dcc/requests.cpp:1081
 msgid ""
 "The above request cannot be accepted: DCC VIDEO support not enabled at "
 "compilation time "
 msgstr ""
 
-#: src/modules/dcc/requests.cpp:1240
+#: src/modules/dcc/requests.cpp:1250
 #, c-format
 msgid "Unknown DCC type '%s'"
 msgstr ""

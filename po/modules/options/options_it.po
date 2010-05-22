@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-24 10:36+0200\n"
-"PO-Revision-Date: 2010-03-22 12:41+0100\n"
-"Last-Translator: Fabio Bas <ctrlaltca@gmail.com>\n"
+"POT-Creation-Date: 2010-05-22 15:48+0200\n"
+"PO-Revision-Date: 2010-05-22 15:55+0200\n"
+"Last-Translator: \n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -609,7 +609,6 @@ msgstr ""
 "permette di trovarli rapidamente nella lista.</center>"
 
 #: src/modules/options/optw_servers.cpp:782
-#, fuzzy
 msgid ""
 "<center>This check enables the use of the <b>SASL</b> authentication "
 "procotol If you enable the proper global option in the Connection/SSL tab "
@@ -617,8 +616,8 @@ msgid ""
 "protocol will be used for this server if available.</center>"
 msgstr ""
 "<center>Questo checkbox attiva il supporto al protocollo di autenticazione "
-"<b>SASL</b>.Se abiliti l'opzione globale nella scheda Connessione e "
-"inserisci le tue credenziali in questa pagina, il protocollo SASL verrà "
+"<b>SASL</b>.Se abiliti l'opzione globale nella scheda Connessione/SSL e "
+"riempi i campi Sasl Nickname e Sasl Password, il protocollo SASL verrà "
 "usato per questo server se disponibile.</center>"
 
 #: src/modules/options/optw_servers.cpp:654
@@ -2039,7 +2038,7 @@ msgstr "Scegli un Avatar - KVIrc"
 msgid "Choose a Filename - KVIrc"
 msgstr "Scegli un File - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:613
+#: src/modules/options/optw_messages.cpp:614
 msgid "Choose a Filename - KVIrc "
 msgstr "Scegli un Nome per il File - KVIrc"
 
@@ -2059,7 +2058,7 @@ msgstr "Formato classico"
 msgid "Clear List"
 msgstr "Pulisci Lista"
 
-#: src/modules/options/optw_tray.cpp:42
+#: src/modules/options/optw_tray.cpp:44
 msgid "Close in tray"
 msgstr "Chiudi nella tray"
 
@@ -2137,9 +2136,9 @@ msgid "Cursor color"
 msgstr "Colore del cursore"
 
 #: src/modules/options/optw_away.cpp:53
-#, fuzzy, c-format
+#, c-format
 msgid "Custom nickname (%nick% means a current nick):"
-msgstr "Nickname (%%nick%% significa nick corrente):"
+msgstr "Nickname (%nick% significa nick corrente):"
 
 #: src/modules/options/optw_logging.cpp:43
 msgid "DCC Chat windows"
@@ -2374,7 +2373,7 @@ msgstr "Abilta il servizio ident solo mentre connetti al server"
 msgid "Enable lag meter"
 msgstr "Attiva misuratore lag"
 
-#: src/modules/options/optw_tray.cpp:45
+#: src/modules/options/optw_tray.cpp:47
 msgid "Enable level-based message notification (not a message-type based)"
 msgstr ""
 "Abilita la notifica del messaggio basato sui livelli (non sul tipo di "
@@ -2404,11 +2403,11 @@ msgstr "Abilita il logging della cronologia dell'input"
 msgid "Enable the notifier"
 msgstr "Abilita la finestra di notifica"
 
-#: src/modules/options/optw_tray.cpp:41
+#: src/modules/options/optw_tray.cpp:43
 msgid "Enable tray icon"
 msgstr "Abilita l'icona nel vassoio di sistema"
 
-#: src/modules/options/optw_tray.cpp:44
+#: src/modules/options/optw_tray.cpp:46
 msgid "Enable tray icon flashing"
 msgstr "Abilita il flashing dell'icona nel vassoio di sistema"
 
@@ -2973,11 +2972,11 @@ msgstr "Livello di allerta minimo:"
 msgid "Minimum delay between two requests:"
 msgstr "Distanza minima tra due richieste:"
 
-#: src/modules/options/optw_tray.cpp:53
+#: src/modules/options/optw_tray.cpp:55
 msgid "Minimum level for high-priority message"
 msgstr "Livello minimo per i messaggi ad alta priorità"
 
-#: src/modules/options/optw_tray.cpp:49
+#: src/modules/options/optw_tray.cpp:51
 msgid "Minimum level for low-priority messages"
 msgstr "Livello minimo per i messaggi a bassa priorità"
 
@@ -3416,9 +3415,8 @@ msgid "Prepend gender info to realname"
 msgstr "Aggiungi informazioni sul sesso nel realname"
 
 #: src/modules/options/optw_irc.cpp:78
-#, fuzzy
 msgid "Prepend smart nick color info to realname"
-msgstr "Prependi informazioni avatar al realname"
+msgstr "Prependi informazioni dei colori del nick al realname"
 
 #: src/modules/options/optw_connection.cpp:119
 msgid "Private Key"
@@ -3678,7 +3676,7 @@ msgstr "Scala nella lista utenti"
 msgid "Scaling on load (and in user tooltips)"
 msgstr "Scala al caricamento (e nelle tooltip utente)"
 
-#: src/modules/options/optw_tray.cpp:47
+#: src/modules/options/optw_tray.cpp:49
 msgid "Select message levels to notify"
 msgstr "Seleziona i livelli del messaggio da notificare"
 

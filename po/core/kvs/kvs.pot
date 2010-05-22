@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-24 10:36+0200\n"
+"POT-Creation-Date: 2010-05-22 15:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -938,27 +938,25 @@ msgstr ""
 msgid "found signed integer \"%d\" where type 'unsigned integer' was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:297
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:302
 #: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
 msgid "This window has no associated IRC context"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:466
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:471
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:491
 #, c-format
 msgid "No such IRC context (%u)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:477
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:592
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:482
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:597
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:502
 msgid "This window is not associated to an IRC context"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:850
-msgid ""
-"The specified format string wasn't accepted by the underlying system time "
-"formatting function"
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:821
+msgid "Couldn't construct QDateTime object."
 msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:59

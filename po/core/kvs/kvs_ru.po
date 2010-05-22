@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-24 10:36+0200\n"
+"POT-Creation-Date: 2010-05-22 15:48+0200\n"
 "PO-Revision-Date: 2010-01-31 19:39+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -207,6 +207,10 @@ msgid ""
 msgstr ""
 "Имя алиаса может содержать только цифры, буквы, нижние подчеркивания и '::' "
 "как разделитель пространств имён"
+
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:821
+msgid "Couldn't construct QDateTime object."
+msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:249
 msgid ""
@@ -710,7 +714,7 @@ msgstr "Нет обработчика '%Q' для заготовки событ�
 msgid "No menu bar item with text '%Q'"
 msgstr "Нет пункта меню с текстом '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:466
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:471
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:491
 #, c-format
 msgid "No such IRC context (%u)"
@@ -1206,14 +1210,6 @@ msgstr "Правая часть оператора '^=' не является ц
 msgid "The right side of operator '|=' didn't evaluate to an integer"
 msgstr "Правая часть оператора '|=' не является целым числом"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:850
-msgid ""
-"The specified format string wasn't accepted by the underlying system time "
-"formatting function"
-msgstr ""
-"Указанная строка формата не была принята нижележащей функцией форматирования "
-"системного времени"
-
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:948
 msgid "The specified maximum run time is invalid: assuming zero (infinite)"
 msgstr ""
@@ -1279,7 +1275,7 @@ msgstr ""
 "Похоже на оператор разыменования указателя но объект '->', но на самом деле "
 "это не так. Возможно вы забыли после него '$'?"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:297
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:302
 #: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
 msgid "This window has no associated IRC context"
 msgstr "Это окно не связано с IRC контекстом"
@@ -1288,8 +1284,8 @@ msgstr "Это окно не связано с IRC контекстом"
 msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr "Это окно не связано с контекстом IRC и не является DCC чатом"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:477
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:592
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:482
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:597
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:502
 msgid "This window is not associated to an IRC context"
 msgstr "Это окно не ассоциировано с контекстом IRC"
@@ -1691,3 +1687,10 @@ msgstr "Строка %d, около символа %d"
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:90
 msgid "say: injected commandline"
 msgstr "say: внутрь текста вставлена команда"
+
+#~ msgid ""
+#~ "The specified format string wasn't accepted by the underlying system time "
+#~ "formatting function"
+#~ msgstr ""
+#~ "Указанная строка формата не была принята нижележащей функцией "
+#~ "форматирования системного времени"

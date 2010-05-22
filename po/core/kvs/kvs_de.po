@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-24 10:36+0200\n"
+"POT-Creation-Date: 2010-05-22 15:48+0200\n"
 "PO-Revision-Date: 2010-04-24 19:57+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -209,6 +209,10 @@ msgid ""
 msgstr ""
 "Klassennamen können nur Buchstaben, Ziffern, Unterstriche und ›::‹-"
 "Namensraumseperatoren enthalten"
+
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:821
+msgid "Couldn't construct QDateTime object."
+msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:249
 msgid ""
@@ -725,7 +729,7 @@ msgstr "Kein Handler ›%Q‹ für Raw-Numeric-Ereignis ›%d‹"
 msgid "No menu bar item with text '%Q'"
 msgstr "Kein Menüleisteneintrag mit Text ›%Q‹"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:466
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:471
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:491
 #, c-format
 msgid "No such IRC context (%u)"
@@ -1265,14 +1269,6 @@ msgstr ""
 "Die rechte Seite des ›|=‹-Operators konnte nicht zu einem Integer "
 "ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:850
-msgid ""
-"The specified format string wasn't accepted by the underlying system time "
-"formatting function"
-msgstr ""
-"Die angegebene Formatzeichenkette wurde von der zugrundeliegenden System-"
-"Zeitformatierungsfunktion nicht akzeptiert"
-
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:948
 msgid "The specified maximum run time is invalid: assuming zero (infinite)"
 msgstr ""
@@ -1343,7 +1339,7 @@ msgstr ""
 "Dies sieht sehr nach einem Objekt-Handle-Dereferenzierungsoperator ›->‹ aus, "
 "aber es ist keiner. Haben Sie vielleicht ein ›$‹ direkt danach vergessen?"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:297
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:302
 #: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
 msgid "This window has no associated IRC context"
 msgstr "Dieses Fenster hat keinen zugeordneten IRC-Kontext"
@@ -1353,8 +1349,8 @@ msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr ""
 "Dieses Fenster ist keinem IRC-Kontext zugeordnet und ist auch kein DCC-Chat"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:477
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:592
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:482
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:597
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:502
 msgid "This window is not associated to an IRC context"
 msgstr "Dieses Fenster ist keinem IRC-Kontext zugeordnet"
@@ -1783,6 +1779,13 @@ msgstr "say: eingespeiste Kommandozeile"
 
 #~ msgid "No Qt property named \"%Q\" for object named \"%Q\" of class %Q"
 #~ msgstr "Keine Qt-Eigenschaft »%Q« für Objekt »%Q« der Klasse %Q"
+
+#~ msgid ""
+#~ "The specified format string wasn't accepted by the underlying system time "
+#~ "formatting function"
+#~ msgstr ""
+#~ "Die angegebene Formatzeichenkette wurde von der zugrundeliegenden System-"
+#~ "Zeitformatierungsfunktion nicht akzeptiert"
 
 #~ msgid "The ›foreach‹ command needs an expression enclosed in parenthesis"
 #~ msgstr "Der ›foreach‹-Befehl benötigt einen Ausdruck in runden Klammers"

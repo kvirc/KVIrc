@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-24 10:36+0200\n"
+"POT-Creation-Date: 2010-05-22 15:48+0200\n"
 "PO-Revision-Date: 2010-04-21 14:16+0100\n"
 "Last-Translator: Zé <mmodem00@gmal.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -194,6 +194,10 @@ msgstr "A classe '%Q' não está definida"
 msgid ""
 "Class names can contain only letters, digits, underscores and '::' namespace "
 "separators"
+msgstr ""
+
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:821
+msgid "Couldn't construct QDateTime object."
 msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:249
@@ -654,7 +658,7 @@ msgstr "Nenhum manipulador '%Q' para o evento numérico bruto '%d'"
 msgid "No menu bar item with text '%Q'"
 msgstr "Nenhum item da barra de menu com texto '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:466
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:471
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:491
 #, c-format
 msgid "No such IRC context (%u)"
@@ -1099,12 +1103,6 @@ msgstr ""
 msgid "The right side of operator '|=' didn't evaluate to an integer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:850
-msgid ""
-"The specified format string wasn't accepted by the underlying system time "
-"formatting function"
-msgstr ""
-
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:948
 msgid "The specified maximum run time is invalid: assuming zero (infinite)"
 msgstr ""
@@ -1166,7 +1164,7 @@ msgid ""
 "fact it isn't. Maybe you forgot a '$' just after?"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:297
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:302
 #: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
 msgid "This window has no associated IRC context"
 msgstr ""
@@ -1175,8 +1173,8 @@ msgstr ""
 msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:477
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:592
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:482
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:597
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:502
 msgid "This window is not associated to an IRC context"
 msgstr ""

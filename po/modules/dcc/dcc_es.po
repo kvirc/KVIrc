@@ -3,7 +3,8 @@
 # egns <grannost@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2010-04-24 10:36+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-22 15:48+0200\n"
 "PO-Revision-Date: 2010-05-18 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -11,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
 
-#: src/modules/dcc/requests.cpp:862
+#: src/modules/dcc/requests.cpp:872
 msgid "\"any\""
 msgstr "\"cualquiera\""
 
@@ -24,7 +25,7 @@ msgstr "%1"
 msgid "%1 of %2 (%3%)"
 msgstr "%1 de %2 (%3%)"
 
-#: src/modules/dcc/requests.cpp:697
+#: src/modules/dcc/requests.cpp:707
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
 msgstr "%Q [%Q@%Q] está preparado para recibir el archivo \"%s\""
 
@@ -93,8 +94,8 @@ msgstr "Fi&gura"
 msgid "&Triangle"
 msgstr "&Triángulo"
 
-#: src/modules/dcc/requests.cpp:777
-#: src/modules/dcc/requests.cpp:947
+#: src/modules/dcc/requests.cpp:787
+#: src/modules/dcc/requests.cpp:957
 msgid "(unknown)"
 msgstr "(desconocido)"
 
@@ -180,7 +181,7 @@ msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:634
 #: src/modules/dcc/requests.cpp:454
-#: src/modules/dcc/requests.cpp:744
+#: src/modules/dcc/requests.cpp:754
 msgid "<unknown size>"
 msgstr "<tamaño desconocido>"
 
@@ -198,7 +199,7 @@ msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr ""
 "Aceptando petición RESUME, la transferencia comenzará en la posición %1"
 
-#: src/modules/dcc/requests.cpp:963
+#: src/modules/dcc/requests.cpp:973
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %Q"
@@ -206,7 +207,7 @@ msgstr ""
 "Aceptando una petición de archivo desde %Q [%Q@%Q] para '%s' (archivo real: %"
 "Q), ofreciendo DCC %Q"
 
-#: src/modules/dcc/requests.cpp:906
+#: src/modules/dcc/requests.cpp:916
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %s since we can't accept incoming connections (user option)"
@@ -291,7 +292,7 @@ msgstr ""
 msgid "Can't open file %Q for reading"
 msgstr "No pude abrir el archivo %Q para lectura"
 
-#: src/modules/dcc/requests.cpp:539
+#: src/modules/dcc/requests.cpp:549
 #, c-format
 msgid ""
 "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
@@ -299,7 +300,7 @@ msgstr ""
 "No pude realizar el DCC REVC: la transferencia del archivo %s en el puerto %"
 "s no se inició"
 
-#: src/modules/dcc/requests.cpp:578
+#: src/modules/dcc/requests.cpp:588
 #, c-format
 msgid ""
 "Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
@@ -508,7 +509,7 @@ msgstr "Dirección IP no válida %s"
 msgid "Invalid IP address in old format %s"
 msgstr "La dirección IP en formato antiguo no es válida %s"
 
-#: src/modules/dcc/requests.cpp:643
+#: src/modules/dcc/requests.cpp:653
 #, c-format
 msgid "Invalid RECV request: Position %u is is larger than file size"
 msgstr ""
@@ -532,7 +533,7 @@ msgstr "Codec especificado no válido, poniendo por defecto 'adpcm'"
 msgid "Invalid port number %s"
 msgstr "Número de puerto no válido %s"
 
-#: src/modules/dcc/requests.cpp:565
+#: src/modules/dcc/requests.cpp:575
 #, c-format
 msgid "Invalid resume position argument '%s'"
 msgstr "El argumento de posición de reanudación '%s' no es válido"
@@ -580,13 +581,13 @@ msgstr "El extremo final es %Q:%Q"
 msgid "Low-level transport connection established"
 msgstr "Establecida la conexión de transporte de bajo nivel"
 
-#: src/modules/dcc/requests.cpp:861
+#: src/modules/dcc/requests.cpp:871
 msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
 msgstr ""
 "No hay una oferta del archivo '%s' (con tamaño %s) disponible para %Q [%Q@%Q]"
 
-#: src/modules/dcc/requests.cpp:783
-#: src/modules/dcc/requests.cpp:933
+#: src/modules/dcc/requests.cpp:793
+#: src/modules/dcc/requests.cpp:943
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr ""
 "No hay un interfaz adecuando en el que escuchar, intentando continuar de "
@@ -704,7 +705,7 @@ msgstr "Iniciando negociación del protocolo SSL"
 msgid "TRANSFER %d"
 msgstr "TRANSFERENCIA %d"
 
-#: src/modules/dcc/requests.cpp:1020
+#: src/modules/dcc/requests.cpp:1030
 #, c-format
 msgid ""
 "The above request appears to be broken: Invalid sample-rate '%s', defaulting "
@@ -713,7 +714,7 @@ msgstr ""
 "La petición anterior parece errónea: frecuencia de muestreo '%s' no válida, "
 "poniendo a 8000 por defecto"
 
-#: src/modules/dcc/requests.cpp:1071
+#: src/modules/dcc/requests.cpp:1081
 msgid ""
 "The above request cannot be accepted: DCC VIDEO support not enabled at "
 "compilation time "
@@ -721,7 +722,7 @@ msgstr ""
 "La petición anterior no puede ser aceptada: el ejecutable no fue compilado "
 "con soporte DCC VIDEO "
 
-#: src/modules/dcc/requests.cpp:997
+#: src/modules/dcc/requests.cpp:1007
 msgid ""
 "The above request cannot be accepted: DCC VOICE support not enabled at "
 "compilation time "
@@ -729,13 +730,13 @@ msgstr ""
 "La petición anterior no puede ser aceptada: el ejecutable no fue compilado "
 "con soporte DCC VOICE"
 
-#: src/modules/dcc/requests.cpp:1007
-#: src/modules/dcc/requests.cpp:1082
+#: src/modules/dcc/requests.cpp:1017
+#: src/modules/dcc/requests.cpp:1092
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
 msgstr "La petición anterior no puede ser aceptada: codec no soportado '%s'"
 
-#: src/modules/dcc/requests.cpp:603
+#: src/modules/dcc/requests.cpp:613
 msgid ""
 "The above request has resume file size missing, assuming a resume file size "
 "of 0"
@@ -744,8 +745,9 @@ msgstr ""
 "0 como tamaño de archivo de reanudación"
 
 #: src/modules/dcc/requests.cpp:462
-#: src/modules/dcc/requests.cpp:613
-#: src/modules/dcc/requests.cpp:752
+#: src/modules/dcc/requests.cpp:472
+#: src/modules/dcc/requests.cpp:623
+#: src/modules/dcc/requests.cpp:762
 msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
@@ -754,7 +756,7 @@ msgstr ""
 "ruta, quitando la ruta e intentando continuar"
 
 #: src/modules/dcc/requests.cpp:452
-#: src/modules/dcc/requests.cpp:742
+#: src/modules/dcc/requests.cpp:752
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -863,7 +865,7 @@ msgid "The local IP address is private, determining from IRC server: %s"
 msgstr ""
 "La dirección IP local es privada, determinando desde el servidor IRC: %s"
 
-#: src/modules/dcc/requests.cpp:703
+#: src/modules/dcc/requests.cpp:713
 #, c-format
 msgid "The remote client is listening on interface %s and port %s"
 msgstr "El cliente remoto está escuchando en el interfaz %s y puerto %s"
@@ -894,7 +896,7 @@ msgstr ""
 "Este ejecutable ha sido compilado sin soporte SSL, no está disponible la "
 "extensión SSL para DCC CHAT"
 
-#: src/modules/dcc/requests.cpp:849
+#: src/modules/dcc/requests.cpp:859
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC GET is not available"
@@ -902,7 +904,7 @@ msgstr ""
 "Este ejecutable ha sido compilado sin soporte SSL, no está disponible la "
 "extensión SSL para DCC GET"
 
-#: src/modules/dcc/requests.cpp:627
+#: src/modules/dcc/requests.cpp:637
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC RECV is not available"
@@ -910,7 +912,7 @@ msgstr ""
 "Este ejecutable ha sido compilado sin soporte SSL, no está disponible la "
 "extensión SSL para DCC RECV"
 
-#: src/modules/dcc/requests.cpp:766
+#: src/modules/dcc/requests.cpp:776
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC RSEND is not available"
@@ -918,7 +920,7 @@ msgstr ""
 "Este ejecutable ha sido compilado sin soporte SSL, no está disponible la "
 "extensión SSL para DCC RSEND"
 
-#: src/modules/dcc/requests.cpp:476
+#: src/modules/dcc/requests.cpp:486
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC SEND is not available"
@@ -977,12 +979,12 @@ msgstr "Imposible obtener la dirección del interfaz %Q"
 msgid "Unable to process the above request: %Q, %Q"
 msgstr "No es posible procesar la petición anterior: %Q, %Q"
 
-#: src/modules/dcc/requests.cpp:1240
+#: src/modules/dcc/requests.cpp:1250
 #, c-format
 msgid "Unknown DCC type '%s'"
 msgstr "Tipo DCC desconocido '%s'"
 
-#: src/modules/dcc/requests.cpp:710
+#: src/modules/dcc/requests.cpp:720
 msgid ""
 "Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
 "to send the file (or double-click on the socket)"
@@ -1025,8 +1027,8 @@ msgid ""
 "half-duplex soundcard, use the DCC VOICE option to force half-duplex "
 "algorithm"
 msgstr ""
-"ATENCIÓN: falló la comprobación de las características duplex de la tarjeta de "
-"sonido: si esta es una tarjeta half-duplex, usa la opción DCC VOICE para "
+"ATENCIÓN: falló la comprobación de las características duplex de la tarjeta "
+"de sonido: si esta es una tarjeta half-duplex, usa la opción DCC VOICE para "
 "forzar el algoritmo half-duplex"
 
 #: src/modules/dcc/voice.cpp:211

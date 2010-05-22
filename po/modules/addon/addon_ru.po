@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-24 10:36+0200\n"
+"POT-Creation-Date: 2010-05-22 15:48+0200\n"
 "PO-Revision-Date: 2010-01-30 21:26+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -25,12 +25,12 @@ msgstr "%cДополнение %Q, версия %Q%c"
 msgid "Addon Engine Version"
 msgstr "Версия движка дополнения"
 
-#: src/modules/addon/packaddondialog.cpp:308
-#: src/modules/addon/packaddondialog.cpp:334
+#: src/modules/addon/packaddondialog.cpp:304
+#: src/modules/addon/packaddondialog.cpp:330
 msgid "Addon Packaging Error"
 msgstr "Ошибка упаковки дополнения"
 
-#: src/modules/addon/packaddondialog.cpp:317
+#: src/modules/addon/packaddondialog.cpp:313
 msgid "Addon Packaging Warning"
 msgstr "Предупреждение упаковки дополнения"
 
@@ -51,15 +51,15 @@ msgstr "Попытка зарегистрировать дополнение \"%
 msgid "Author"
 msgstr "Автор"
 
-#: src/modules/addon/packaddondialog.cpp:685
+#: src/modules/addon/packaddondialog.cpp:681
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/modules/addon/packaddondialog.cpp:276
+#: src/modules/addon/packaddondialog.cpp:272
 msgid "Cannot open file for writing."
 msgstr "Не могу открыть файл на запись."
 
-#: src/modules/addon/packaddondialog.cpp:283
+#: src/modules/addon/packaddondialog.cpp:279
 msgid "Cannot write to the file descriptor."
 msgstr "Не могу записать в дескриптор файла."
 
@@ -89,7 +89,7 @@ msgstr "Создано с помощью"
 msgid "Delete Selected Addons"
 msgstr "Удалить выбранные дополнения"
 
-#: src/modules/addon/packaddondialog.cpp:508
+#: src/modules/addon/packaddondialog.cpp:504
 msgid "Description must be short"
 msgstr "Описание должно быть коротким"
 
@@ -109,16 +109,16 @@ msgstr "Вы хотите продолжить установку?"
 msgid "Error installing addon package: %Q"
 msgstr "Не могу установить пакет дополнения: %Q"
 
-#: src/modules/addon/packaddondialog.cpp:363
-#: src/modules/addon/packaddondialog.cpp:373
-#: src/modules/addon/packaddondialog.cpp:383
-#: src/modules/addon/packaddondialog.cpp:393
-#: src/modules/addon/packaddondialog.cpp:403
-#: src/modules/addon/packaddondialog.cpp:413
-#: src/modules/addon/packaddondialog.cpp:423
-#: src/modules/addon/packaddondialog.cpp:433
-#: src/modules/addon/packaddondialog.cpp:453
-#: src/modules/addon/packaddondialog.cpp:461
+#: src/modules/addon/packaddondialog.cpp:359
+#: src/modules/addon/packaddondialog.cpp:369
+#: src/modules/addon/packaddondialog.cpp:379
+#: src/modules/addon/packaddondialog.cpp:389
+#: src/modules/addon/packaddondialog.cpp:399
+#: src/modules/addon/packaddondialog.cpp:409
+#: src/modules/addon/packaddondialog.cpp:419
+#: src/modules/addon/packaddondialog.cpp:429
+#: src/modules/addon/packaddondialog.cpp:449
+#: src/modules/addon/packaddondialog.cpp:457
 msgid "Export Addon - KVIrc"
 msgstr "Экспорт дополнения - KVIrc"
 
@@ -127,15 +127,15 @@ msgstr "Экспорт дополнения - KVIrc"
 msgid "Failed to unpack the selected file: %Q"
 msgstr "Не могу распаковать выбранный файл: %Q"
 
-#: src/modules/addon/packaddondialog.cpp:669
+#: src/modules/addon/packaddondialog.cpp:665
 msgid "File Summary"
 msgstr "Краткая сводка о файле"
 
-#: src/modules/addon/packaddondialog.cpp:603
+#: src/modules/addon/packaddondialog.cpp:599
 msgid "Final Information"
 msgstr "Конечная информация"
 
-#: src/modules/addon/packaddondialog.cpp:689
+#: src/modules/addon/packaddondialog.cpp:685
 msgid "Finish"
 msgstr "Готово"
 
@@ -147,7 +147,7 @@ msgstr "Еще дополнения..."
 msgid "Go Back to Package Data"
 msgstr "Вернуться к данным пакета"
 
-#: src/modules/addon/packaddondialog.cpp:676
+#: src/modules/addon/packaddondialog.cpp:672
 msgid ""
 "Here there are the files I found in the directories you provided.\n"
 "If these and the information showed in the previous page are correct, hit "
@@ -159,7 +159,7 @@ msgstr ""
 "кнопку \"Готово\"\n"
 "чтобы завершить операции упаковки."
 
-#: src/modules/addon/packaddondialog.cpp:604
+#: src/modules/addon/packaddondialog.cpp:600
 msgid ""
 "Here there are the information you provided. If these information are "
 "correct, hit the \"Finish\" button to complete the packaging operations."
@@ -167,17 +167,17 @@ msgstr ""
 "Здесь представлена введённая вами информация. Если эта информация верна, "
 "нажмите кнопку \"Готово\" чтобы завершить упаковку."
 
-#: src/modules/addon/packaddondialog.cpp:472
+#: src/modules/addon/packaddondialog.cpp:468
 msgid ""
 "Here you need to provide information about you (the packager) and a short "
 "description of the package you're creating."
 msgstr "Здесь вы должны указать информацию о себе и краткое описание пакета."
 
-#: src/modules/addon/packaddondialog.cpp:566
+#: src/modules/addon/packaddondialog.cpp:562
 msgid "Here you need to provide the path where to save the addon package"
 msgstr "Здесь вам надо выбрать директорию для сохранения пакета дополнения."
 
-#: src/modules/addon/packaddondialog.cpp:539
+#: src/modules/addon/packaddondialog.cpp:535
 msgid "Here you need to select the directory where the addon files are."
 msgstr "Здесь вам надо выбрать директорию, где расположены файлы дополнения."
 
@@ -185,7 +185,7 @@ msgstr "Здесь вам надо выбрать директорию, где �
 msgid "Hit the \"Next\" button to begin."
 msgstr "Нажмите \"Далее\" для продолжения."
 
-#: src/modules/addon/packaddondialog.cpp:649
+#: src/modules/addon/packaddondialog.cpp:645
 msgid "Icon File"
 msgstr "Файл иконки"
 
@@ -206,11 +206,11 @@ msgstr "Установить пакет дополнения с локально
 msgid "Internal error: call a head-shrinker"
 msgstr "Внутренняя ошибка: вызов сжимателя заголовка"
 
-#: src/modules/addon/packaddondialog.cpp:513
+#: src/modules/addon/packaddondialog.cpp:509
 msgid "Minimum &KVIrc Version:"
 msgstr "Минимальная версия &KVIrc:"
 
-#: src/modules/addon/packaddondialog.cpp:645
+#: src/modules/addon/packaddondialog.cpp:641
 msgid "Minimum KVIrc Version"
 msgstr "Минимальная версия KVIrc"
 
@@ -218,7 +218,7 @@ msgstr "Минимальная версия KVIrc"
 msgid "Name: %Q"
 msgstr "Имя: %Q"
 
-#: src/modules/addon/packaddondialog.cpp:490
+#: src/modules/addon/packaddondialog.cpp:486
 msgid "No spaces allowed, like MyAddon"
 msgstr "Пробелы не допустимы, например, MyAddon"
 
@@ -226,75 +226,75 @@ msgstr "Пробелы не допустимы, например, MyAddon"
 msgid "One or more files can't be deleted"
 msgstr "Один или несколько файлов не могут быть удалены"
 
-#: src/modules/addon/packaddondialog.cpp:477
+#: src/modules/addon/packaddondialog.cpp:473
 msgid "Package &Author:"
 msgstr "&Автор пакета:"
 
-#: src/modules/addon/packaddondialog.cpp:504
+#: src/modules/addon/packaddondialog.cpp:500
 msgid "Package &Description:"
 msgstr "&Описание пакета:"
 
-#: src/modules/addon/packaddondialog.cpp:486
+#: src/modules/addon/packaddondialog.cpp:482
 msgid "Package &Name:"
 msgstr "Имя &пакета:"
 
-#: src/modules/addon/packaddondialog.cpp:495
+#: src/modules/addon/packaddondialog.cpp:491
 msgid "Package &Version:"
 msgstr "&Версия пакета:"
 
-#: src/modules/addon/packaddondialog.cpp:629
+#: src/modules/addon/packaddondialog.cpp:625
 msgid "Package Author"
 msgstr "Автор пакета"
 
-#: src/modules/addon/packaddondialog.cpp:641
+#: src/modules/addon/packaddondialog.cpp:637
 msgid "Package Description"
 msgstr "Описание пакета"
 
-#: src/modules/addon/packaddondialog.cpp:538
+#: src/modules/addon/packaddondialog.cpp:534
 msgid "Package Files"
 msgstr "Файлы пакета"
 
-#: src/modules/addon/packaddondialog.cpp:471
+#: src/modules/addon/packaddondialog.cpp:467
 msgid "Package Information"
 msgstr "Информация о пакете"
 
-#: src/modules/addon/packaddondialog.cpp:633
+#: src/modules/addon/packaddondialog.cpp:629
 msgid "Package Name"
 msgstr "Имя пакета"
 
-#: src/modules/addon/packaddondialog.cpp:637
+#: src/modules/addon/packaddondialog.cpp:633
 msgid "Package Version"
 msgstr "Версия пакета"
 
-#: src/modules/addon/packaddondialog.cpp:360
-#: src/modules/addon/packaddondialog.cpp:370
-#: src/modules/addon/packaddondialog.cpp:380
-#: src/modules/addon/packaddondialog.cpp:390
-#: src/modules/addon/packaddondialog.cpp:400
-#: src/modules/addon/packaddondialog.cpp:410
-#: src/modules/addon/packaddondialog.cpp:420
-#: src/modules/addon/packaddondialog.cpp:430
-#: src/modules/addon/packaddondialog.cpp:450
+#: src/modules/addon/packaddondialog.cpp:356
+#: src/modules/addon/packaddondialog.cpp:366
+#: src/modules/addon/packaddondialog.cpp:376
+#: src/modules/addon/packaddondialog.cpp:386
+#: src/modules/addon/packaddondialog.cpp:396
+#: src/modules/addon/packaddondialog.cpp:406
+#: src/modules/addon/packaddondialog.cpp:416
+#: src/modules/addon/packaddondialog.cpp:426
+#: src/modules/addon/packaddondialog.cpp:446
 msgid "Packaging failed"
 msgstr "Упаковка завершена неудачно"
 
-#: src/modules/addon/packaddondialog.cpp:565
+#: src/modules/addon/packaddondialog.cpp:561
 msgid "Save Package"
 msgstr "Сохранить пакет"
 
-#: src/modules/addon/packaddondialog.cpp:657
+#: src/modules/addon/packaddondialog.cpp:653
 msgid "Save Path"
 msgstr "Путь сохранения"
 
-#: src/modules/addon/packaddondialog.cpp:571
+#: src/modules/addon/packaddondialog.cpp:567
 msgid "Select save path:"
 msgstr "Выберите путь сохранения:"
 
-#: src/modules/addon/packaddondialog.cpp:548
+#: src/modules/addon/packaddondialog.cpp:544
 msgid "Select the icon file:"
 msgstr "Выберите файл иконки:"
 
-#: src/modules/addon/packaddondialog.cpp:544
+#: src/modules/addon/packaddondialog.cpp:540
 msgid "Select the source directory:"
 msgstr "Выберите исходную директорию:"
 
@@ -306,7 +306,7 @@ msgstr "Показать подробности"
 msgid "Show Help"
 msgstr "Показать помощь"
 
-#: src/modules/addon/packaddondialog.cpp:653
+#: src/modules/addon/packaddondialog.cpp:649
 msgid "Source Directory"
 msgstr "Исходная директория"
 
@@ -390,7 +390,7 @@ msgstr ""
 "Установлен KVIrc слишком старой версии. Минимальная требуемая версия для "
 "этого скрипта %Q"
 
-#: src/modules/addon/packaddondialog.cpp:627
+#: src/modules/addon/packaddondialog.cpp:623
 msgid "This is what I will check for:"
 msgstr "Вот что я буду проверять:"
 
@@ -413,7 +413,7 @@ msgstr "Всего установлено %d дополнений"
 msgid "Uninstalling existing addon version %Q"
 msgstr "Удаление имеющегося дополнения версии %Q"
 
-#: src/modules/addon/packaddondialog.cpp:499
+#: src/modules/addon/packaddondialog.cpp:495
 msgid "Version in the form x.y[.z], like 1.0 or 2.0.3"
 msgstr "Версия в форме x.y[.z], например, 1.0 или 2.0.3"
 
@@ -442,6 +442,6 @@ msgstr ""
 msgid "You're about to install the following addon package"
 msgstr "Вы пытаетесь установить пакет дополнения"
 
-#: src/modules/addon/packaddondialog.cpp:481
+#: src/modules/addon/packaddondialog.cpp:477
 msgid "Your name here"
 msgstr "Ваше имя"

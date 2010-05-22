@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-24 10:36+0200\n"
+"POT-Creation-Date: 2010-05-22 15:57+0200\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team: Ukrainian\n"
@@ -35,22 +35,22 @@ msgstr "Зробити скріншот - KVIrc"
 msgid "Apply theme - KVIrc"
 msgstr "Застосувати тему - KVIrc"
 
-#: src/modules/theme/themefunctions.cpp:122
-#: src/modules/theme/themefunctions.cpp:320
+#: src/modules/theme/themefunctions.cpp:121
+#: src/modules/theme/themefunctions.cpp:319
 msgid "Author"
 msgstr "Автор"
 
-#: src/modules/theme/libkvitheme.cpp:191
+#: src/modules/theme/libkvitheme.cpp:235
 msgid "Choose a file to save the screenshot to"
 msgstr "Виберіть файл для збереження скріншота."
 
-#: src/modules/theme/themefunctions.cpp:123
-#: src/modules/theme/themefunctions.cpp:321
+#: src/modules/theme/themefunctions.cpp:122
+#: src/modules/theme/themefunctions.cpp:320
 msgid "Created at"
 msgstr "Дата створення"
 
-#: src/modules/theme/themefunctions.cpp:124
-#: src/modules/theme/themefunctions.cpp:322
+#: src/modules/theme/themefunctions.cpp:123
+#: src/modules/theme/themefunctions.cpp:321
 msgid "Created with"
 msgstr "Створено за допомогою"
 
@@ -67,7 +67,7 @@ msgstr "Видалити тему - KVIrc"
 msgid "Description:"
 msgstr "Опис:"
 
-#: src/modules/theme/themefunctions.cpp:277
+#: src/modules/theme/themefunctions.cpp:276
 msgid "Do Not Install"
 msgstr "Не встановлювати"
 
@@ -75,7 +75,7 @@ msgstr "Не встановлювати"
 msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
 msgstr "Ви дійсно хочете видалити \"%Q\" (версії %Q)?"
 
-#: src/modules/theme/themefunctions.cpp:276
+#: src/modules/theme/themefunctions.cpp:275
 msgid "Do you want to proceed with the installation ?"
 msgstr "Ви хочете продовжити установку?"
 
@@ -88,7 +88,7 @@ msgstr "Ви дійсно хочете застосувати тему \"%Q\" (�
 msgid "Error installing theme package: %Q"
 msgstr "Не можу встановити пакет теми: %Q"
 
-#: src/modules/theme/libkvitheme.cpp:206
+#: src/modules/theme/libkvitheme.cpp:250
 msgid "Error making screenshot"
 msgstr "Не можу зробити скріншот."
 
@@ -127,7 +127,7 @@ msgstr "Не можу завантажити обране зображення. 
 msgid "Failed to make screenshot"
 msgstr "Не можу зробити скріншот"
 
-#: src/modules/theme/themefunctions.cpp:296
+#: src/modules/theme/themefunctions.cpp:295
 msgid "Failed to unpack the selected file: %Q"
 msgstr "Не можу розпакувати обраний файл: %Q"
 
@@ -139,7 +139,7 @@ msgstr "Для завершення операції впакування нат
 msgid "Get More Themes..."
 msgstr "Одержати більше тим"
 
-#: src/modules/theme/themefunctions.cpp:213
+#: src/modules/theme/themefunctions.cpp:212
 msgid "Go Back to Package Data"
 msgstr "Повернутися до даних пакета"
 
@@ -198,7 +198,7 @@ msgstr "Натисніть \"Далі\" для продовження."
 msgid "Icon/Screenshot"
 msgstr "Іконка або скріншот"
 
-#: src/modules/theme/themefunctions.cpp:274
+#: src/modules/theme/themefunctions.cpp:273
 msgid "Install Theme Pack - KVIrc"
 msgstr "Установити пакет теми - KVIrc"
 
@@ -264,11 +264,11 @@ msgstr "Зберегти тему - KVIrc"
 msgid "Screenshot"
 msgstr "Скріншот"
 
-#: src/modules/theme/themefunctions.cpp:224
+#: src/modules/theme/themefunctions.cpp:223
 msgid "Show Details"
 msgstr "Показати подробиці"
 
-#: src/modules/theme/themefunctions.cpp:324
+#: src/modules/theme/themefunctions.cpp:323
 msgid "Subdirectory"
 msgstr "Підкаталог"
 
@@ -281,7 +281,8 @@ msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "Обрані файли не є пакетами теми KVIrc"
 
 #: src/modules/theme/libkvitheme.cpp:128
-msgid "The theme package  %Q does not exists"
+#: src/modules/theme/libkvitheme.cpp:171
+msgid "The theme package '%Q' does not exists"
 msgstr ""
 
 #: src/modules/theme/savethemedialog.cpp:127
@@ -292,7 +293,7 @@ msgstr "Автор теми:"
 msgid "Theme Data"
 msgstr "Даної теми"
 
-#: src/modules/theme/themefunctions.cpp:323
+#: src/modules/theme/themefunctions.cpp:322
 msgid "Theme Engine Version"
 msgstr "Версія движка теми"
 
@@ -353,7 +354,7 @@ msgstr "Не можу зберегти тему: %Q"
 msgid "Version:"
 msgstr "Версія:"
 
-#: src/modules/theme/themefunctions.cpp:220
+#: src/modules/theme/themefunctions.cpp:219
 msgid ""
 "Warning: Some of the theme contained in this package might be either "
 "corrupted or incompatible with this version of KVIrc"
@@ -361,7 +362,7 @@ msgstr ""
 "Попередження: деякі файли цього пакета можуть бути ушкоджені або не сумісні "
 "з вашою версією KVIrc"
 
-#: src/modules/theme/themefunctions.cpp:204
+#: src/modules/theme/themefunctions.cpp:203
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Попередження: тема може бути не сумісна з вашою версією KVIrc"
 
@@ -370,7 +371,7 @@ msgstr "Попередження: тема може бути не сумісна
 msgid "Welcome"
 msgstr "Ласкаво просимо"
 
-#: src/modules/theme/themefunctions.cpp:278
+#: src/modules/theme/themefunctions.cpp:277
 msgid "Yes, Proceed"
 msgstr "Так, продовжити"
 
@@ -392,7 +393,7 @@ msgid ""
 "screenshot."
 msgstr "Вам буде запропоновано вказати ім'я теми, опис і скріншот."
 
-#: src/modules/theme/themefunctions.cpp:275
+#: src/modules/theme/themefunctions.cpp:274
 msgid "You're about to install the following theme package"
 msgstr "Ви намагаєтеся встановити пакет теми"
 

@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-24 10:36+0200\n"
-"PO-Revision-Date: 2010-03-22 12:08+0100\n"
-"Last-Translator: Fabio Bas <ctrlaltca@gmail.com>\n"
+"POT-Creation-Date: 2010-05-22 15:48+0200\n"
+"PO-Revision-Date: 2010-05-22 16:19+0200\n"
+"Last-Translator: \n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -209,6 +209,10 @@ msgstr ""
 "I nomi delle classi possono contenere solo lettere, numeri, _ e il "
 "separatore dei namespace '::'"
 
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:821
+msgid "Couldn't construct QDateTime object."
+msgstr "Non posso costruire un oggetto QDateTime."
+
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:249
 msgid ""
 "Couldn't find a suitable IRC context for the connection, try using -n or -u"
@@ -343,12 +347,12 @@ msgstr ""
 "'regexp' o 'default'"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1595
-#, fuzzy
 msgid ""
 "Found character %q (unicode %x) where a 'prologue', 'separator', 'label', "
 "'popup', 'item', 'extpopup' or 'epilogue' label was expected"
 msgstr ""
-"Trovato il carattere %q (unicode %x) mentre aspettavo un 'prologue', "
+"Trovato il carattere %q (unicode %x) mentre aspettavo un'etichetta "
+"'prologue', "
 "'separator', 'label', 'popup', 'item', 'extpopup' o 'epilogue'"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:775
@@ -439,14 +443,13 @@ msgstr ""
 "'default' o 'break'"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1845
-#, fuzzy
 msgid ""
 "Found token '%Q' where a 'prologue', 'separator', 'label', 'popup', 'item', "
 "'extpopup' or 'epilogue' label was expected"
 msgstr ""
 "Trovato il token '%Q' mentre mi aspettavo un'etichetta "
-"'prologo','separatore','etichetta','popup','elemento','popup esterno' o "
-"'epilogo'"
+"'prologue', 'separator', 'label', 'popup', 'item', 'extpopup' o "
+"'epilogue'"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:811
 msgid "Garbage string after the expression in 'do' command: ignored"
@@ -729,7 +732,7 @@ msgstr "Nessun gestore '%Q' per l'evento numerico '%d'"
 msgid "No menu bar item with text '%Q'"
 msgstr "Nessun elemento del menu col testo '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:466
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:471
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:491
 #, c-format
 msgid "No such IRC context (%u)"
@@ -1240,14 +1243,6 @@ msgstr "La parte destra dell'operatore '^=' non è valutata come un intero"
 msgid "The right side of operator '|=' didn't evaluate to an integer"
 msgstr "La parte destra dell'operatore '|=' non è valutata come un intero"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:850
-msgid ""
-"The specified format string wasn't accepted by the underlying system time "
-"formatting function"
-msgstr ""
-"La format string specificata non è accettata dalla funzione di formattazione "
-"del tempo"
-
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:948
 msgid "The specified maximum run time is invalid: assuming zero (infinite)"
 msgstr ""
@@ -1316,7 +1311,7 @@ msgstr ""
 "Questo sembra molto un operatore di dereferenziazione a un oggetto '->' ma "
 "in effetti non lo è. Forse hai dimenticato un '$' subito dopo?"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:297
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:302
 #: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
 msgid "This window has no associated IRC context"
 msgstr "Questa finestra non ha un contesto IRC associato"
@@ -1325,8 +1320,8 @@ msgstr "Questa finestra non ha un contesto IRC associato"
 msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr "Questa finestra non ha un contesto IRC associato e non è una DCC chat"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:477
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:592
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:482
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:597
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:502
 msgid "This window is not associated to an IRC context"
 msgstr "Questa finestra non è associata a un contesto IRC"
@@ -1748,3 +1743,10 @@ msgstr "linea %d, vicino al carattere %d"
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:90
 msgid "say: injected commandline"
 msgstr "dice: linea di comando iniettata"
+
+#~ msgid ""
+#~ "The specified format string wasn't accepted by the underlying system time "
+#~ "formatting function"
+#~ msgstr ""
+#~ "La format string specificata non è accettata dalla funzione di "
+#~ "formattazione del tempo"
