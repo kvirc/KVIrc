@@ -87,12 +87,21 @@ bool KviApp::checkGlobalKvircDirectory(const QString szDir)
 	return KviFileUtils::isReadable(szPicsDir);
 }
 
-bool KviApp::checkLocalKvircDirectory(const QString szDir)
+bool KviApp::checkLocalKvircDirectory(const QString &szSpecificPath)
+{
+	QString szSavedLocalKvircDir = m_szLocalKvircDir;
+	m_szLocalKvircDir = szSpecificPath;
+	bool bRet = checkLocalKvircDirectory();
+	m_szLocalKvircDir = szSavedLocalKvircDir;
+	return bRet;
+}
+
+bool KviApp::checkLocalKvircDirectory()
 {
 	//First check if the dir exists
-	if(!KviFileUtils::directoryExists(szDir))
+	if(!KviFileUtils::directoryExists(m_szLocalKvircDir))
 		return false;
-	if(!QFileInfo(szDir).isWritable())
+	if(!QFileInfo(m_szLocalKvircDir).isWritable())
 		return false;
 
 	QString szBuff;
@@ -726,7 +735,7 @@ bool KviApp::findLocalKvircDirectory()
 				}
 
 				// If we have it , ok...done
-				if(checkLocalKvircDirectory(m_szLocalKvircDir))
+				if(checkLocalKvircDirectory())
 					return true;
 			}
 		}
@@ -737,7 +746,7 @@ bool KviApp::findLocalKvircDirectory()
 	if(m_bPortable)
 	{
 		m_szLocalKvircDir = g_pApp->applicationDirPath() + KVI_PATH_SEPARATOR_CHAR + "Settings";
-		if(checkLocalKvircDirectory(m_szLocalKvircDir))
+		if(checkLocalKvircDirectory())
 			return true;
 	}
 #endif
@@ -770,7 +779,7 @@ bool KviApp::findLocalKvircDirectory()
 		return false; // we force a setup anyway
 
 	// If we have it , ok...done
-	if(checkLocalKvircDirectory(m_szLocalKvircDir))
+	if(checkLocalKvircDirectory())
 		return true;
 	return false;
 }

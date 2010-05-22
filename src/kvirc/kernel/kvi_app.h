@@ -302,7 +302,8 @@ private:
 	void findGlobalKvircDirectory();
 	bool findLocalKvircDirectory();
 	bool checkGlobalKvircDirectory(const QString);
-	bool checkLocalKvircDirectory(const QString);
+	bool checkLocalKvircDirectory(const QString &szSpecificPath);
+	bool checkLocalKvircDirectory(); // check the m_szLocalKvircDirectory path
 	bool checkFileAssociations();
 	void setupFileAssociations();
 

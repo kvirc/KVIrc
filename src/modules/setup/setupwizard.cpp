@@ -742,6 +742,7 @@ void KviSetupWizard::portableClicked()
 
 void KviSetupWizard::chooseOldDataPath()
 {
+	// FIXME: We'd like to show hidden directories here ($HOME/.kvirc is hidden)...
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(m_pDataPathEdit->text(),__tr2qs("Choose an Old Configuration Folder - KVIrc Setup"),0);
 	KviFileUtils::adjustFilePath(szBuffer);
 	if(!szBuffer.isEmpty())
