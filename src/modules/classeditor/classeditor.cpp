@@ -1430,9 +1430,11 @@ void KviClassEditor::build()
 		}
 		if (pClass->classNotBuilt())
 		{
+		//	debug("compiling %s",pClass->name().toUtf8().data());
 			KviClassEditorTreeWidgetItem *pParentClass=m_pClasses->find(pClass->InheritsClass());
 
 			pLinkedClasses.append(pClass);
+			//if (!pParentClass) debug("no parent class");
 			while(pParentClass)
 			{
 				if (pParentClass->classNotBuilt()) pLinkedClasses.append(pParentClass);
@@ -1469,6 +1471,7 @@ void KviClassEditor::build()
 					QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 					break;
 				}
+				//else debug("class compiled %s :\n",szClass.toUtf8().data());
 				pLinkedClasses.at(i)->setClassNotBuilt(false);
 				m_pEditor->setModified(false);
 			}
@@ -1718,9 +1721,16 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 	if (!szInheritsClassName.isEmpty())
 	{
 		int iCurrentIdx=m_pInheritsClassComboBox->findText(szInheritsClassName);
+		if (iCurrentIdx==-1) iCurrentIdx=m_pInheritsClassComboBox->findText("object");
+		m_pInheritsClassComboBox->setCurrentIndex(iCurrentIdx);
+	}
+	else
+	{
+		int iCurrentIdx=m_pInheritsClassComboBox->findText("object");
 		m_pInheritsClassComboBox->setCurrentIndex(iCurrentIdx);
 	}
 	m_pClassNameLineEdit->setFocus();
+
 
 	hbox = new KviTalHBox(this);
 	hbox->setSpacing(0);
