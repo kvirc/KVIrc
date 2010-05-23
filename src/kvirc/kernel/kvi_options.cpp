@@ -605,7 +605,7 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("DccMinPort",30000,KviOption_sectFlagDcc),
 	UINT_OPTION("DccMaxPort",31000,KviOption_sectFlagDcc),
 	UINT_OPTION("SoundOfferTimeoutInSecs",60,KviOption_sectFlagConnection),
-	UINT_OPTION("MaximumRequestedAvatarSize",512000,KviOption_sectFlagAvatar),
+	UINT_OPTION("MaximumRequestedAvatarSize",524288,KviOption_sectFlagAvatar),
 	UINT_OPTION("TreeWindowListMaximumWidth",200,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
 	UINT_OPTION("PasteDelay",2000,KviOption_sectFlagInput),
 	UINT_OPTION("MaxDccSendTransfers",10,KviOption_sectFlagDcc),

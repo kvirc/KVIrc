@@ -51,6 +51,7 @@
 #include <QTimer>
 #include <QValidator>
 #include <QCloseEvent>
+#include <QFileInfo>
 
 KviNickAlternativesDialog::KviNickAlternativesDialog(QWidget * par,const QString &n1,const QString &n2,const QString &n3)
 : QDialog(par)
@@ -602,12 +603,34 @@ void KviIdentityAvatarOptionsWidget::chooseAvatar()
 	{
 		if((m_pLocalAvatar->pixmap()->width() > 1024) || (m_pLocalAvatar->pixmap()->height() > 768))
 		{
-			QMessageBox::warning(this,__tr2qs_ctx("Avatar Might Be Too Big - KVIrc","options"),
-						__tr2qs_ctx("The avatar you have chosen is bigger than 1024x768 pixels.<br>" \
+			QMessageBox::warning(
+					this,
+					__tr2qs_ctx("Avatar Might Be Too Big - KVIrc","options"),
+					__tr2qs_ctx(
+							"The avatar you have chosen is bigger than 1024x768 pixels.<br>" \
 							"Such a big image will not be seen on all the user monitors<br>" \
 							"and will probably be scaled by the remote clients with poor quality<br>" \
 							"algorithms to improve performance. You *should* scale it manually<br>" \
-							"to a sane size (like 800x600) or choose a different image.","options"));
+							"to a sane size (like 800x600) or choose a different image.",
+							"options"
+						)
+				);
+		} else {
+			QFileInfo inf(m_pLocalAvatar->path());
+			if(inf.size() > 524288)
+			{
+				QMessageBox::warning(
+						this,
+						__tr2qs_ctx("Avatar Might Be Too Big - KVIrc","options"),
+						__tr2qs_ctx(
+								"The avatar you have chosen is bigger than 500 KiB<br>" \
+								"and most clients will refuse to download it.<br>" \
+								"You *should* either scale it, use a different storage<br>" \
+								"format or choose a different image.",
+								"options"
+							)
+					);
+			}
 		}
 	}
 

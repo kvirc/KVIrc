@@ -40,7 +40,7 @@
  *     It relies on image metadata to determine loop count. So most of pics will
  *     be played only once.
  *
- *  2) It dublicates QPixmap while we calls currentFrame(), that's a very
+ *  2) It duplicates QPixmap while we calls currentFrame(), that's a very
  *     big overload for us.
  *
  *  3) If we try to scale QMovie by using built-in scale mechanism, it will
@@ -49,7 +49,7 @@
  *     10,100,1000 times too:(
  *
  *  4) KviAnimatedPixmap uses internal cache mechanism with KviAnimatedPixmapCache class.
- *     It's managed inside KviAnimatedPixmap and KviAnimatedPixmapCache. No othet actions
+ *     It's managed inside KviAnimatedPixmap and KviAnimatedPixmapCache. No other actions
  *     needed to perform caching.
  *
  * So... Here is my workaround. It's working in this way:

@@ -96,7 +96,8 @@
 KviAvatar::KviAvatar(
 		const QString &szLocalPath,
 		const QString &szName,
-		const QSize& scaleOnLoad)
+		const QSize& scaleOnLoad
+	)
 {
 	m_bRemote = KviQString::equalCIN("http://",szName,7);
 

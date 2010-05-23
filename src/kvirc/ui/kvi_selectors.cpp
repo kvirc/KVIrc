@@ -265,14 +265,14 @@ void KviPasswordLineEdit::setText(const QString& text){
 KviPixmapPreview::KviPixmapPreview(QWidget * par)
 : QScrollArea(par)
 {
-	m_pLabPixmap = new QLabel;
+	m_pLabPixmap = new QLabel(this);
 	setWidget(m_pLabPixmap);
 	setBackgroundRole(QPalette::Dark);
 }
 
 KviPixmapPreview::~KviPixmapPreview()
 {
-	delete m_pLabPixmap;
+	//delete m_pLabPixmap;
 }
 
 void KviPixmapPreview::setPixmap(KviPixmap * pix)
@@ -281,8 +281,7 @@ void KviPixmapPreview::setPixmap(KviPixmap * pix)
 	{
 		m_pLabPixmap->resize(pix->pixmap()->size());
 		m_pLabPixmap->setPixmap(*pix->pixmap());
-
-		setWidget(m_pLabPixmap);
+		//setWidget(m_pLabPixmap);
 	}
 }
 
