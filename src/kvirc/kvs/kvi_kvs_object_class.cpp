@@ -61,6 +61,10 @@ KviKvsObjectClass::KviKvsObjectClass(
 		while(KviKvsObjectFunctionHandler * fh = it.current())
 		{
 			m_pFunctionHandlers->insert(it.currentKey(),fh->clone());
+			KviKvsObjectFunctionHandler * f=m_pFunctionHandlers->find(it.currentKey());
+			if (f->isScriptHandler()){
+				f->setClone(true);
+			}
 			++it;
 		}
 	}
@@ -182,7 +186,7 @@ bool KviKvsObjectClass::save(const QString &szFileName)
 
 	while(KviKvsObjectFunctionHandler * h = it.current())
 	{
-		if(h->isScriptHandler())
+		if(h->isScriptHandler() && !h->isClone())
 		{
 			szBuffer += "	";
 			if(h->flags() & KviKvsObjectFunctionHandler::Internal)

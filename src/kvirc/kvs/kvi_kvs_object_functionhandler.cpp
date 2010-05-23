@@ -29,6 +29,7 @@
 KviKvsObjectFunctionHandler::KviKvsObjectFunctionHandler(unsigned int uFlags)
 : m_uFlags(uFlags)
 {
+	m_bClone=false;
 }
 
 KviKvsObjectFunctionHandler::~KviKvsObjectFunctionHandler()
@@ -43,4 +44,8 @@ bool KviKvsObjectFunctionHandler::isScriptHandler()
 QString KviKvsObjectFunctionHandler::scriptHandlerCode()
 {
 	return QString();
+}
+bool KviKvsObjectFunctionHandler::isClone()
+{
+	return m_bClone;
 }

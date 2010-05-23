@@ -679,8 +679,6 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 	// 'found matches' highlighting
 	KviScriptEditorWidget * pEditor = ((KviScriptEditorWidget *)textEdit());
 	QString szFind = pEditor->m_szFind;
-	debug("find %s",szFind.toUtf8().data());
-
 	if (!szFind.isEmpty())
 	{
 		index = szText.indexOf(szFind);
@@ -691,8 +689,6 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 			index = szText.indexOf(szFind,index + length);
 		}
 	}
-	debug("exit loop");
-
 }
 
 

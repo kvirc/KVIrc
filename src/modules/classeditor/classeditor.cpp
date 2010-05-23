@@ -395,7 +395,8 @@ void KviClassEditor::createFullClass(KviKvsObjectClass *pClass, KviClassEditorTr
 	{
 		QString szCode;
 		KviKvsObjectFunctionHandler *handler=pClass->lookupFunctionHandler(it.currentKey());
-		if (pClass->isScriptHandler(it.currentKey()))
+
+		if (pClass->isScriptHandler(it.currentKey()) && !handler->isClone())
 		{
 			pFunctionItem=findFunction(it.currentKey(), pClassItem);
 			if(!pFunctionItem) pFunctionItem = new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,it.currentKey());

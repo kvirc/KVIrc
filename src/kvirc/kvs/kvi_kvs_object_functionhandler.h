@@ -40,11 +40,14 @@ public:
 	enum Flags { Internal = 1 };
 protected:
 	unsigned int m_uFlags;
+	bool m_bClone;
 protected:
 	KviKvsObjectFunctionHandler(unsigned int uFlags = 0);
 public:
 	virtual ~KviKvsObjectFunctionHandler();
 public:
+	void setClone(bool bCl){m_bClone=bCl;};
+	bool isClone();
 	unsigned int flags(){ return m_uFlags; };
 protected:
 	virtual bool isScriptHandler();
