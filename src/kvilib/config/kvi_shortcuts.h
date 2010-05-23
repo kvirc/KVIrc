@@ -48,6 +48,7 @@
 * \def KVI_SHORTCUTS_INPUT_ALT Alt key
 * \def KVI_SHORTCUTS_INPUT_ALT_2 Meta key
 * \def KVI_SHORTCUTS_INPUT_BACKSPACE Backspace key
+* \def KVI_SHORTCUTS_INPUT_BACKSPACE_2 Shift + Backspace key
 * \def KVI_SHORTCUTS_INPUT_BOLD Insert the 'bold' mIRC text control character
 * \def KVI_SHORTCUTS_INPUT_COLOR Insert the 'color' mIRC text control character
 * \def KVI_SHORTCUTS_INPUT_COMMANDLINE Toggle the commandline's KVS/User-friendly mode
@@ -80,7 +81,9 @@
 * \def KVI_SHORTCUTS_INPUT_REDO Redo last action
 * \def KVI_SHORTCUTS_INPUT_RESET Insert Reset control character
 * \def KVI_SHORTCUTS_INPUT_RETURN Return key
-* \def KVI_SHORTCUTS_INPUT_RETURN_2 Enter key
+* \def KVI_SHORTCUTS_INPUT_RETURN_2 Shift + Return key
+* \def KVI_SHORTCUTS_INPUT_RETURN_3 Enter key
+* \def KVI_SHORTCUTS_INPUT_RETURN_4 Shift + Enter key
 * \def KVI_SHORTCUTS_INPUT_REVERSE Insert the 'reverse' mIRC text control character
 * \def KVI_SHORTCUTS_INPUT_SELECT_ALL Select all
 * \def KVI_SHORTCUTS_INPUT_SEND_PLAIN Send message as plain text, ignoring / commands
@@ -89,9 +92,6 @@
 * \def KVI_SHORTCUTS_INPUT_UNDO Undo last action
 * \def KVI_SHORTCUTS_INPUT_DUMMY Dummy combo
 * \def KVI_SHORTCUTS_INPUT_DUMMY_2 Dummy combo
-* \def KVI_SHORTCUTS_INPUT_DUMMY_3 Dummy combo
-* \def KVI_SHORTCUTS_INPUT_DUMMY_4 Dummy combo
-* \def KVI_SHORTCUTS_INPUT_DUMMY_5 Dummy combo
 *
 * \def KVI_SHORTCUTS_EDITORS_ACTION Open Action editor
 * \def KVI_SHORTCUTS_EDITORS_ALIAS Open Alias editor
@@ -189,17 +189,17 @@
 #define KVI_SHORTCUTS_INPUT_HISTORY_PREV Qt::Key_Up
 #define KVI_SHORTCUTS_INPUT_HISTORY_NEXT Qt::Key_Down
 #define KVI_SHORTCUTS_INPUT_RETURN Qt::Key_Return
-#define KVI_SHORTCUTS_INPUT_RETURN_2 Qt::Key_Enter
+#define KVI_SHORTCUTS_INPUT_RETURN_2 Qt::ShiftModifier + Qt::Key_Return
+#define KVI_SHORTCUTS_INPUT_RETURN_3 Qt::Key_Enter
+#define KVI_SHORTCUTS_INPUT_RETURN_4 Qt::ShiftModifier + Qt::Key_Enter
 #define KVI_SHORTCUTS_INPUT_BACKSPACE Qt::Key_Backspace
+#define KVI_SHORTCUTS_INPUT_BACKSPACE_2 Qt::ShiftModifier + Qt::Key_Backspace
 #define KVI_SHORTCUTS_INPUT_DELETE Qt::Key_Delete
 #define KVI_SHORTCUTS_INPUT_ESCAPE Qt::Key_Escape
 #define KVI_SHORTCUTS_INPUT_ALT Qt::Key_Alt
 #define KVI_SHORTCUTS_INPUT_ALT_2 Qt::Key_Meta
 #define KVI_SHORTCUTS_INPUT_DUMMY Qt::ShiftModifier + Qt::Key_Escape
-#define KVI_SHORTCUTS_INPUT_DUMMY_2 Qt::ShiftModifier + Qt::Key_Backspace
-#define KVI_SHORTCUTS_INPUT_DUMMY_3 Qt::ShiftModifier + Qt::Key_Delete
-#define KVI_SHORTCUTS_INPUT_DUMMY_4 Qt::ShiftModifier + Qt::Key_Return
-#define KVI_SHORTCUTS_INPUT_DUMMY_5 Qt::ShiftModifier + Qt::Key_Enter
+#define KVI_SHORTCUTS_INPUT_DUMMY_2 Qt::ShiftModifier + Qt::Key_Delete
 
 
 /*

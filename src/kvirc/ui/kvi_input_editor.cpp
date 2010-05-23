@@ -1303,7 +1303,10 @@ void KviInputEditor::installShortcuts()
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_END_SELECT),this,SLOT(endInternalSelection()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_RETURN),this,SLOT(returnHit()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_RETURN_2),this,SLOT(returnHit()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_RETURN_3),this,SLOT(returnHit()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_RETURN_4),this,SLOT(returnHit()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_BACKSPACE),this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_BACKSPACE_2),this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DELETE),this,SLOT(deleteHit()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_ESCAPE),this,SLOT(escapeHit()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_ALT),this,SLOT(altHit()),0,Qt::WidgetShortcut);
@@ -1311,9 +1314,6 @@ void KviInputEditor::installShortcuts()
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_COMMANDLINE),this,SLOT(toggleCommandMode()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY),this,SLOT(dummy()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY_2),this,SLOT(dummy()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY_3),this,SLOT(dummy()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY_4),this,SLOT(dummy()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY_5),this,SLOT(dummy()),0,Qt::WidgetShortcut);
 }
 
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
