@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-22 15:48+0200\n"
-"PO-Revision-Date: 2010-04-21 14:16+0100\n"
+"PO-Revision-Date: 2010-05-25 00:33+0100\n"
 "Last-Translator: Zé <mmodem00@gmal.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1519,12 +1519,12 @@ msgstr "inicio da entrada"
 #: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:116
 #, c-format
 msgid "found empty string where type '%s' was expected"
-msgstr ""
+msgstr "encontrado texto vazio onde era esperado o tipo '%s'"
 
 #: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:227
 #: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:276
 msgid "found empty string while a non empty one was expected"
-msgstr ""
+msgstr "encontrado texto vazio enquanto não era esperado um vazio"
 
 #: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:303
 #, c-format
@@ -1533,11 +1533,11 @@ msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:123
 msgid "found string value \"%Q\" where type '%s' was expected"
-msgstr ""
+msgstr "encontrado valor de texto \"%Q\" onde era esperado o tipo '%s'"
 
 #: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:128
 msgid "found type %Q where type '%s' was expected"
-msgstr ""
+msgstr "encontrado o tipo %Q onde era esperado o tipo '%s'"
 
 #: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:108
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:95
@@ -1548,3 +1548,4 @@ msgstr "linha %d, perto do caracter %d"
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:90
 msgid "say: injected commandline"
 msgstr "diga: linhadecomando injectada"
+
