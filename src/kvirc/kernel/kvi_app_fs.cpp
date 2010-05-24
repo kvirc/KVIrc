@@ -419,7 +419,6 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 	return false;
 }
 
-
 bool KviApp::findImage(QString &szRetPath,const QString &filename)
 {
 	// Find an user file...
@@ -545,6 +544,34 @@ bool KviApp::findSmallIcon(QString &szRetPath,const QString &filename)
 	if(KviFileUtils::fileExists(szRetPath))return true;
 
 	szRetPath = filename;
+
+	return false;
+}
+
+bool KviApp::findAudioFile(QString &szRetPath,const QString &szFileName)
+{
+	if(KviFileUtils::isAbsolutePath(szFileName))
+	{
+		szRetPath = szFileName;
+		return KviFileUtils::fileExists(szFileName);
+	}
+
+	getLocalKvircDirectory(szRetPath,KviApp::Audio,szFileName);
+	if(KviFileUtils::fileExists(szRetPath))
+		return true;
+
+	getGlobalKvircDirectory(szRetPath,KviApp::Audio,szFileName);
+	if(KviFileUtils::fileExists(szRetPath))
+		return true;
+
+	// Last resort
+	szRetPath = QDir::homePath();
+	KviQString::ensureLastCharIs(szRetPath,KVI_PATH_SEPARATOR_CHAR);
+	szRetPath.append(szFileName);
+	if(KviFileUtils::fileExists(szRetPath))
+		return true;
+
+	szRetPath = szFileName;
 
 	return false;
 }

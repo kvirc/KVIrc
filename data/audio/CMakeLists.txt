@@ -1,0 +1,15 @@
+# CMakeLists for data/pics
+
+
+FILE(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/*.wav")
+
+IF(UNIX)
+	IF(APPLE)
+		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/audio/)
+	ELSE()
+		# Assume linux
+		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/audio/)
+	ENDIF()
+ELSEIF(WIN32)
+	INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/audio/)
+ENDIF()

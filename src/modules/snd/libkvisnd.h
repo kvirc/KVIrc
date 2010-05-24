@@ -36,98 +36,21 @@
 
 class KviSoundPlayer;
 
-//class KviWavSoundFileReader
-//{
-//public:
-//	KviWavSoundFileReader(QFile * f);
-//	~KviWavSoundFileReader();
-//protected:
-//	QFile * m_pFile;
-//public:
-//	static bool recognize(KviFile * f);
-//	bool readHeader();
-//};
-
-
-//bool KviWavSoundFileReader::recognize(KviFile * f)
-//{
-//	kvi_u32_t tag;
-//	if(!f->load(tag))return false;
-//
-//	f->at(0);
-//}
-
-//bool KviWavSoundFileReader::readHeader()
-//{
-//
-//
-//    tag = get_le32(pb);
-//
-//    if (tag != MKTAG('R', 'I', 'F', 'F'))
-//        return -1;
-//    get_le32(pb); /* file size */
-//    tag = get_le32(pb);
-//    if (tag != MKTAG('W', 'A', 'V', 'E'))
-//        return -1;
-//
-//    size = find_tag(pb, MKTAG('f', 'm', 't', ' '));
-//    if (size < 0)
-//        return -1;
-//    id = get_le16(pb);
-//    channels = get_le16(pb);
-//    rate = get_le32(pb);
-//    bit_rate = get_le32(pb) * 8;
-//    get_le16(pb); /* block align */
-//    get_le16(pb); /* bits per sample */
-//    if (size >= 18) {
-//        /* wav_extra_size */
-//        extra_size = get_le16(pb);
-//        /* skip unused data */
-//        url_fseek(pb, size - 18, SEEK_CUR);
-//    }
-//
-//    size = find_tag(pb, MKTAG('d', 'a', 't', 'a'));
-//    if (size < 0)
-//        return -1;
-//
-//    /* now we are ready: build format streams */
-//    st = malloc(sizeof(AVStream));
-//    if (!st)
-//        return -1;
-//    s->nb_streams = 1;
-//    s->streams[0] = st;
-//
-//    st->id = 0;
-//
-//    st->codec.codec_type = CODEC_TYPE_AUDIO;
-//    st->codec.codec_tag = id;
-//    st->codec.codec_id = codec_get_id(codec_wav_tags, id);
-//    st->codec.channels = channels;
-//    st->codec.sample_rate = rate;
-//}
-
 class KviSoundThread : public KviThread
 {
 public:
 	KviSoundThread(const QString &szFileName);
 	virtual ~KviSoundThread();
 protected:
+	bool m_bTerminate;
 	QString m_szFileName;
+public:
+	void terminate();
 protected:
 	virtual void play();
 	virtual void run();
 };
 
-#ifdef COMPILE_PHONON_SUPPORT
-class KviPhononSoundThread : public KviSoundThread
-{
-	public:
-		KviPhononSoundThread(const QString &szFileName);
-		virtual ~KviPhononSoundThread();
-	protected:
-		virtual void play();
-};
-#endif
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#ifdef COMPILE_OSS_SUPPORT
@@ -176,7 +99,38 @@ class KviPhononSoundThread : public KviSoundThread
 #endif //!COMPILE_ON_WINDOWS
 
 
-typedef bool (KviSoundPlayer::*SoundSystemRoutine)(const QString &szFileName);
+#ifdef COMPILE_PHONON_SUPPORT
+namespace Phonon
+{
+	class MediaObject;
+}
+#endif //!COMPILE_PHONON_SUPPORT
+
+typedef bool (KviSoundPlayer::*SoundSystemPlayRoutine)(const QString &szFileName);
+typedef void (KviSoundPlayer::*SoundSystemCleanupRoutine)();
+
+class KviSoundPlayerEntry
+{
+private:
+	SoundSystemPlayRoutine m_pPlayRoutine;
+	SoundSystemCleanupRoutine m_pCleanupRoutine;
+public:
+	KviSoundPlayerEntry(SoundSystemPlayRoutine pPlayRoutine,SoundSystemCleanupRoutine pCleanupRoutine)
+		: m_pPlayRoutine(pPlayRoutine), m_pCleanupRoutine(pCleanupRoutine)
+	{
+	}
+
+	SoundSystemPlayRoutine playRoutine()
+	{
+		return m_pPlayRoutine;
+	}
+	
+	SoundSystemCleanupRoutine cleanupRoutine()
+	{
+		return m_pCleanupRoutine;
+	}
+	
+};
 
 class KviSoundPlayer : public QObject
 {
@@ -189,39 +143,58 @@ public:
 	bool play(const QString &szFileName);
 	void detectSoundSystem();
 	bool havePlayingSounds();
-	//void getAvailableSoundSystems(KviPointerList<QString> * l);
 	void getAvailableSoundSystems(QStringList * l);
-	bool isMuted() {return KVI_OPTION_BOOL(KviOption_boolMuteAllSounds); };
-	void setMuted(bool muted) {KVI_OPTION_BOOL(KviOption_boolMuteAllSounds)=muted;};
+	bool isMuted()
+	{
+		return KVI_OPTION_BOOL(KviOption_boolMuteAllSounds);
+	}
+	void setMuted(bool muted)
+	{
+		KVI_OPTION_BOOL(KviOption_boolMuteAllSounds) = muted;
+	}
 protected:
 	KviPointerList<KviSoundThread> * m_pThreadList;
-	KviPointerHashTable<QString,SoundSystemRoutine> * m_pSoundSystemDict;
+	KviPointerHashTable<QString,KviSoundPlayerEntry> * m_pSoundSystemDict;
+#ifdef COMPILE_PHONON_SUPPORT
+	Phonon::MediaObject * m_pPhononPlayer;
+#endif //!COMPILE_PHONON_SUPPORT
+	KviSoundPlayerEntry * m_pLastUsedSoundPlayerEntry;
 protected:
 	void registerSoundThread(KviSoundThread * t);
 	void unregisterSoundThread(KviSoundThread * t);
 	virtual bool event(QEvent *e);
 protected:
+	void stopAllSoundThreads();
+	void cleanupAfterLastPlayerEntry();
 #ifdef COMPILE_PHONON_SUPPORT
 	bool playPhonon(const QString &szFileName);
+	void cleanupPhonon();
 #endif //!COMPILE_PHONON_SUPPORT
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	bool playWinmm(const QString &szFileName);
+	void cleanupWinmm();
 #else //!COMPILE_ON_WINDOWS
 	#ifdef COMPILE_OSS_SUPPORT
 		bool playOss(const QString &szFileName);
+		void cleanupOss();
 		#ifdef COMPILE_AUDIOFILE_SUPPORT
 			bool playOssAudiofile(const QString &szFileName);
+			void cleanupOssAudiofile();
 		#endif //COMPILE_AUDIOFILE_SUPPORT
 	#endif //COMPILE_OSS_SUPPORT
 	#ifdef COMPILE_ARTS_SUPPORT
 		bool playArts(const QString &szFileName);
+		void cleanupArts();
 	#endif //COMPILE_ARTS_SUPPORT
 	#ifdef COMPILE_ESD_SUPPORT
 		bool playEsd(const QString &szFileName);
+		void cleanupEsd();
 	#endif //COMPILE_ESD_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 	bool playQt(const QString &szFileName);
+	void cleanupQt();
 	bool playNull(const QString &szFileName);
+	void cleanupNull();
 };
 
 

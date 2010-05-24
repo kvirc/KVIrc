@@ -67,10 +67,12 @@ protected:
 	QComboBox * m_pWinampEncodingCombo;
 #endif
 	QComboBox * m_pTagsEncodingCombo;
+	bool m_bFirstShow;
 protected:
 	void soundFillBox();
 	void mediaFillBox();
 	virtual void commit();
+	virtual void showEvent(QShowEvent *e);
 protected slots:
 	void soundTest();
 	void soundAutoDetect();

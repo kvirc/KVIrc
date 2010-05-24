@@ -32,12 +32,13 @@
 #include "kvi_string.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_tooltip.h"
+#include "kvi_app.h"
 
 #include <QLabel>
 #include <QPushButton>
 
 
-// FIXME: This module doesn't Cancel properly when auto-detection is performed!
+// FIXME: This module doesn't ???? properly when auto-detection is performed!
 
 
 
@@ -54,6 +55,8 @@ KviSoundOptionsWidget::~KviSoundOptionsWidget()
 KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {
+	m_bFirstShow = true;
+
 	setObjectName("sound_system_options_widget");
 	createLayout();
 
@@ -86,10 +89,6 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 	m_pMediaTestButton = new QPushButton(__tr2qs_ctx("Test","options"),h);
 	connect(m_pMediaTestButton,SIGNAL(clicked()),this,SLOT(mediaTest()));
 
-	soundFillBox();
-	mediaFillBox();
-	// FIXME!
-	m_pSoundTestButton->setEnabled(false);
 	m_pMediaTestButton->setEnabled(false);
 
 	g = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("ID3 tags' encoding","options"),true);
@@ -148,8 +147,45 @@ KviSoundGeneralOptionsWidget::~KviSoundGeneralOptionsWidget()
 {
 }
 
+void KviSoundGeneralOptionsWidget::showEvent(QShowEvent *)
+{
+	if(!m_bFirstShow)
+		return;
+
+	// We fill these boxes only before the first show since the soundFillBox()
+	// is likely to trigger sound system-detection which may take time...
+	
+	g_pApp->setOverrideCursor(Qt::WaitCursor);
+	
+	soundFillBox();
+	mediaFillBox();
+	
+	g_pApp->restoreOverrideCursor();
+	
+	m_bFirstShow = false;
+}
+
 void KviSoundGeneralOptionsWidget::soundTest()
 {
+	QString szSavedSoundSystem = KVI_OPTION_STRING(KviOption_stringSoundSystem);
+	KVI_OPTION_STRING(KviOption_stringSoundSystem) = m_pSoundSystemBox->currentText();
+
+	KviModule * m = g_pModuleManager->getModule("snd");
+
+	if(!m)
+		return; // doh
+
+	QString szFileName;
+	
+	if(!g_pApp->findAudioFile(szFileName,QString::fromUtf8("jingle.wav")))
+	{
+		qDebug("Can't find the jingle.wav file: was it shipped with your kvirc installation?");
+		return;
+	}
+
+	m->ctrl("play",&szFileName);
+
+	KVI_OPTION_STRING(KviOption_stringSoundSystem) = szSavedSoundSystem;
 }
 
 void KviSoundGeneralOptionsWidget::mediaTest()
@@ -159,17 +195,29 @@ void KviSoundGeneralOptionsWidget::mediaTest()
 void KviSoundGeneralOptionsWidget::soundAutoDetect()
 {
 	KviModule * m = g_pModuleManager->getModule("snd");
-	if(!m)return;
+	if(!m)
+		return;
+
+	g_pApp->setOverrideCursor(Qt::WaitCursor);
+
 	m->ctrl("detectSoundSystem",0);
 	soundFillBox();
+
+	g_pApp->restoreOverrideCursor();
 }
 
 void KviSoundGeneralOptionsWidget::mediaAutoDetect()
 {
 	KviModule * m = g_pModuleManager->getModule("mediaplayer");
-	if(!m)return;
+	if(!m)
+		return;
+
+	g_pApp->setOverrideCursor(Qt::WaitCursor);
+
 	m->ctrl("detectMediaPlayer",0);
 	mediaFillBox();
+
+	g_pApp->restoreOverrideCursor();
 }
 
 void KviSoundGeneralOptionsWidget::soundFillBox()
@@ -180,11 +228,11 @@ void KviSoundGeneralOptionsWidget::soundFillBox()
 	int i;
 	KviModule * m = g_pModuleManager->getModule("snd");
 
+	if(!m)
+		goto disable;
 
-	if(!m)goto disable;
-
-
-	if(!m->ctrl("getAvailableSoundSystems",&l))goto disable;
+	if(!m->ctrl("getAvailableSoundSystems",&l))
+		goto disable;
 
 	m_pSoundSystemBox->clear();
 

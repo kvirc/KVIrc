@@ -75,7 +75,7 @@ int            KviInputEditor::g_iInputFontCharWidth[256];
 QFontMetrics * KviInputEditor::g_pLastFontMetrics = 0;
 
 KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView * pView)
-:QWidget(pPar)
+	: QWidget(pPar)
 {
 	++KviInputEditor::g_iInputInstances;
 	setObjectName("input_widget");
@@ -211,6 +211,7 @@ QSize KviInputEditor::sizeHint() const
 	QFontMetrics *fm = KviInputEditor::getLastFontMetrics(font());
 	int h = qMax(fm->height(), 14) + 2*(KVI_INPUT_MARGIN + KVI_INPUT_PADDING + KVI_INPUT_XTRAPADDING);
 	int w = fm->width(QLatin1Char('x')) * 17 + 2*(KVI_INPUT_MARGIN + KVI_INPUT_PADDING + KVI_INPUT_XTRAPADDING);
+
 	QStyleOptionFrameV2 option;
 	option.initFrom(this);
 	option.rect = rect();
@@ -229,25 +230,6 @@ QSize KviInputEditor::sizeHint() const
 void KviInputEditor::paintEvent(QPaintEvent *)
 {
 	QPainter p(this);
-	QStyleOptionFrameV2 option;
-
-	option.initFrom(this);
-	option.rect = rect();
-	option.lineWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, this);
-	option.midLineWidth = 0;
-	
-	option.state |= QStyle::State_Sunken;
-	if(isReadOnly())
-		option.state |= QStyle::State_ReadOnly;
-	option.features = QStyleOptionFrameV2::None;
-
-	style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, &p, this);
-	QRect r = style()->subElementRect(QStyle::SE_LineEditContents, &option, this);
-	r.setX(r.x() + KVI_INPUT_MARGIN);
-	r.setY(r.y() + KVI_INPUT_MARGIN);
-	r.setRight(r.right() - KVI_INPUT_MARGIN);
-	r.setBottom(r.bottom() - KVI_INPUT_MARGIN-1);
-	p.setClipRect(r);
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
@@ -256,7 +238,7 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 		p.setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p.fillRect(r, col);
+		p.fillRect(contentsRect(), col);
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
@@ -273,10 +255,29 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 	}
 #endif
 
-	r.setX(r.x() + KVI_INPUT_PADDING);
-	r.setY(r.y() + KVI_INPUT_PADDING);
-	r.setRight(r.right() - KVI_INPUT_PADDING);
-	r.setBottom(r.bottom() - KVI_INPUT_PADDING);
+	QStyleOptionFrameV2 option;
+
+	option.initFrom(this);
+	option.rect = rect();
+	option.lineWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, this);
+	option.midLineWidth = 0;
+	
+	option.state |= QStyle::State_Sunken;
+	if(isReadOnly())
+		option.state |= QStyle::State_ReadOnly;
+	
+	//option.state &= ~(QStyle::State_HasFocus | QStyle::State_Active | QStyle::State_MouseOver); // kill any state that will cause an "active" frame to be painted
+	option.features = QStyleOptionFrameV2::None;
+
+	style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, &p, this);
+
+	QRect r = style()->subElementRect(QStyle::SE_LineEditContents, &option, this);
+
+	r.setX(r.x() + KVI_INPUT_MARGIN + KVI_INPUT_PADDING);
+	r.setY(r.y() + KVI_INPUT_MARGIN + KVI_INPUT_PADDING);
+	r.setRight(r.right() - KVI_INPUT_MARGIN - KVI_INPUT_PADDING);
+	r.setBottom(r.bottom() - KVI_INPUT_MARGIN - KVI_INPUT_PADDING);
+		
 	p.setClipRect(r);
 
 	p.translate(r.topLeft());

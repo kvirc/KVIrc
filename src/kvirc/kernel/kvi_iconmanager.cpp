@@ -357,10 +357,10 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 	"ninja", // 305
 	"pirate", // 306
 	"puke", // 307
-        "rage", // 308
-        "class", // 309
-        "classnotbuilt", // 310
-        "function" // 311
+	"rage", // 308
+	"class", // 309
+	"classnotbuilt", // 310
+	"function" // 311
 };
 
 KviIconWidget::KviIconWidget()
@@ -502,26 +502,6 @@ KviIconManager::KviIconManager()
 	g_pActivityMeterPixmap = new QPixmap(buffer);
 
 	m_pIconNames = 0;
-
-	// TEMP
-
-	/*
-	for(i=0;i<KVI_NUM_SMALL_ICONS;i++)
-	{
-		QPixmap * tmp = getSmallIcon(i);
-		QString nnn = "/home/pragma/kvismallicons/kcs_";
-		nnn += g_szIconNames[i];
-		nnn += ".png";
-		if(tmp->isNull())
-		{
-			debug("OPS, %s is NULL",nnn.latin1());
-		}
-		if(!tmp->save(nnn,"PNG",90))
-		{
-			debug("FAILED TO SAVE %s",nnn.latin1());
-		}
-	}
-	*/
 }
 
 KviIconManager::~KviIconManager()

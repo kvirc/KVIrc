@@ -606,21 +606,24 @@ void KviMdiManager::slotSubWindowActivated(QMdiSubWindow * pMdiChild)
 	{
 		if(((KviMdiChild*)pMdiChild)->client() && g_pFrame->isActiveWindow())
 		{
-			qDebug("subwindowactivated %p %s",pMdiChild, ((KviMdiChild*)pMdiChild)->plainCaption().toUtf8().data());
+			//qDebug("subwindowactivated %p %s",pMdiChild, ((KviMdiChild*)pMdiChild)->plainCaption().toUtf8().data());
 			g_pFrame->childWindowActivated((KviWindow *)((KviMdiChild*)pMdiChild)->client());
 		} else {
-			qDebug("(inactive) subwindowactivated %p %s",pMdiChild, ((KviMdiChild*)pMdiChild)->plainCaption().toUtf8().data());
+			//qDebug("(inactive) subwindowactivated %p %s",pMdiChild, ((KviMdiChild*)pMdiChild)->plainCaption().toUtf8().data());
 		}
 	} else {
 		//last subwindow deactivated
-		qDebug("subwindowactivated 0x0");
+		//qDebug("subwindowactivated 0x0");
 	}
 }
 
 bool KviMdiManager::eventFilter(QObject *obj, QEvent *event)
 {
-	if(	((event->type() == QEvent::KeyPress) ||
-		(event->type() == QEvent::KeyRelease)) &&
+	if(
+		(
+			(event->type() == QEvent::KeyPress) ||
+			(event->type() == QEvent::KeyRelease)
+		) &&
 		m_bInSDIMode
 	)
 	{
@@ -652,3 +655,4 @@ bool KviMdiManager::eventFilter(QObject *obj, QEvent *event)
 	}
 	return QMdiArea::eventFilter(obj, event);
 }
+

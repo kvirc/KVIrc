@@ -232,6 +232,18 @@ public:
 	//
 	bool getReadOnlyConfigPath(QString &buffer,const char *config_name,KvircSubdir sbd = Config,bool bNoFail = false);
 
+
+	///
+	/// Attempts to locate the audio file specified by szFileName and put it's
+	/// absolute path in szRetPath. Returns true if the audio file is found and false otherwise.
+	///
+	/// If szFileName is already an absolute path then it's returned directly
+	/// after testing for its existence. If szFileName is not an absolute path
+	/// then it's searched in the local KVIrc "audio" directory, then in the global one
+	/// and finally in the user's home.
+	///
+	bool findAudioFile(QString &szRetPath,const QString &szFileName);
+
 	// kvi_app.cpp : Window stuff
 	KviWindow       * findWindow(const QString &windowId);
 	KviWindow       * findWindowByCaption(const QString &windowCaption,int iContextId=-1);

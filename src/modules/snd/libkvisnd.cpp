@@ -40,7 +40,6 @@
 	#include <phonon/mediaobject.h>
 	#include <phonon/mediasource.h>
 	#include <phonon/path.h>
-	Phonon::MediaObject * g_pPhononPlayer=0;
 	#include <QUrl>
 #endif //!COMPILE_PHONON_SUPPORT
 
@@ -87,49 +86,85 @@ KviSoundPlayer::KviSoundPlayer()
 	m_pThreadList = new KviPointerList<KviSoundThread>;
 	m_pThreadList->setAutoDelete(true);
 
-	m_pSoundSystemDict = new KviPointerHashTable<QString,SoundSystemRoutine>(17,false);
-	m_pSoundSystemDict->setAutoDelete(true);
 #ifdef COMPILE_PHONON_SUPPORT
-	m_pSoundSystemDict->insert("phonon",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playPhonon)));
+	m_pPhononPlayer = NULL;
 #endif //!COMPILE_PHONON_SUPPORT
+
+	m_pLastUsedSoundPlayerEntry = NULL;
+
+	m_pSoundSystemDict = new KviPointerHashTable<QString,KviSoundPlayerEntry>(17,false);
+	m_pSoundSystemDict->setAutoDelete(true);
+
+#ifdef COMPILE_PHONON_SUPPORT
+	m_pSoundSystemDict->insert("phonon",new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playPhonon),KVI_PTR2MEMBER(KviSoundPlayer::cleanupPhonon)));
+#endif //!COMPILE_PHONON_SUPPORT
+
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	m_pSoundSystemDict->insert("winmm",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playWinmm)));
+	m_pSoundSystemDict->insert("winmm",new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playWinmm),KVI_PTR2MEMBER(KviSoundPlayer::cleanupWinmm)));
 #else //!COMPILE_ON_WINDOWS
+
 	#ifdef COMPILE_OSS_SUPPORT
 		#ifdef COMPILE_AUDIOFILE_SUPPORT
-			m_pSoundSystemDict->insert("oss+audiofile",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playOssAudiofile)));
+			m_pSoundSystemDict->insert("oss+audiofile",new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playOssAudiofile),KVI_PTR2MEMBER(KviSoundPlayer::cleanupOssAudiofile)));
 		#endif //COMPILE_AUDIOFILE_SUPPORT
-		m_pSoundSystemDict->insert("oss",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playOss)));
+		m_pSoundSystemDict->insert("oss",new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playOss),KVI_PTR2MEMBER(KviSoundPlayer::cleanupOss)));
 	#endif //COMPILE_OSS_SUPPORT
+
 	#ifdef COMPILE_ESD_SUPPORT
-		m_pSoundSystemDict->insert("esd",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playEsd)));
+		m_pSoundSystemDict->insert("esd",new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playEsd),KVI_PTR2MEMBER(KviSoundPlayer::cleanupEsd)));
 	#endif //COMPILE_ESD_SUPPORT
+
 #endif //!COMPILE_ON_WINDOWS
 
-	if(QSound::isAvailable())
-		m_pSoundSystemDict->insert("qt",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playQt)));
-
-	m_pSoundSystemDict->insert("null",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playNull)));
+	m_pSoundSystemDict->insert("qt",new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playQt),KVI_PTR2MEMBER(KviSoundPlayer::cleanupQt)));
+	m_pSoundSystemDict->insert("null",new KviSoundPlayerEntry(KVI_PTR2MEMBER(KviSoundPlayer::playNull),KVI_PTR2MEMBER(KviSoundPlayer::cleanupNull)));
 }
 
 KviSoundPlayer::~KviSoundPlayer()
 {
-	m_pThreadList->setAutoDelete(false);
-	while(KviSoundThread * t = m_pThreadList->first())delete t;
+	if(m_pLastUsedSoundPlayerEntry)
+		cleanupAfterLastPlayerEntry();
+
+	stopAllSoundThreads();
 	delete m_pThreadList;
+
 	KviThreadManager::killPendingEvents(this);
+
 	delete m_pSoundSystemDict;
 
 #ifdef COMPILE_PHONON_SUPPORT
-	if(g_pPhononPlayer)
-		g_pPhononPlayer->deleteLater();
-#endif
+	if(m_pPhononPlayer)
+		delete m_pPhononPlayer;
+#endif //COMPILE_PHONON_SUPPORT
+
 	g_pSoundPlayer = 0;
+}
+
+void KviSoundPlayer::stopAllSoundThreads()
+{
+	// kill any running sound thread
+	m_pThreadList->setAutoDelete(false);
+
+	while(KviSoundThread * t = m_pThreadList->first())
+		delete t;
+
+	m_pThreadList->setAutoDelete(true);
+}
+
+void KviSoundPlayer::cleanupAfterLastPlayerEntry()
+{
+	stopAllSoundThreads();
+	if(!m_pLastUsedSoundPlayerEntry)
+		return;
+	SoundSystemCleanupRoutine r = m_pLastUsedSoundPlayerEntry->cleanupRoutine();
+	if(r)
+		(this->*r)();
+	m_pLastUsedSoundPlayerEntry = NULL;
 }
 
 void KviSoundPlayer::getAvailableSoundSystems(QStringList *l)
 {
-	KviPointerHashTableIterator<QString,SoundSystemRoutine> it(*m_pSoundSystemDict);
+	KviPointerHashTableIterator<QString,KviSoundPlayerEntry> it(*m_pSoundSystemDict);
 	while(it.current())
 	{
 		l->append(it.currentKey());
@@ -139,7 +174,13 @@ void KviSoundPlayer::getAvailableSoundSystems(QStringList *l)
 
 bool KviSoundPlayer::havePlayingSounds()
 {
-	return (m_pThreadList->count() > 0);
+	if(m_pThreadList->count() > 0)
+		return true;
+#ifdef COMPILE_PHONON_SUPPORT
+	if(m_pPhononPlayer->state() == Phonon::PlayingState)
+		return true;
+#endif //COMPILE_PHONON_SUPPORT
+	return false;
 }
 
 void KviSoundPlayer::registerSoundThread(KviSoundThread * t)
@@ -167,8 +208,9 @@ bool KviSoundPlayer::event(QEvent * e)
 void KviSoundPlayer::detectSoundSystem()
 {
 #ifdef COMPILE_PHONON_SUPPORT
-	if(!g_pPhononPlayer) g_pPhononPlayer= Phonon::createPlayer(Phonon::MusicCategory);
-	if(g_pPhononPlayer->state() != Phonon::ErrorState)
+	if(!m_pPhononPlayer)
+		m_pPhononPlayer = Phonon::createPlayer(Phonon::MusicCategory);
+	if(m_pPhononPlayer->state() != Phonon::ErrorState)
 	{
 		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "phonon";
 		return;
@@ -207,23 +249,51 @@ void KviSoundPlayer::detectSoundSystem()
 #ifdef COMPILE_PHONON_SUPPORT
 bool KviSoundPlayer::playPhonon(const QString &szFileName)
 {
-	if(isMuted()) return true;
+	if(isMuted())
+		return true;
+
 	Phonon::MediaSource media(szFileName);
-        if(!g_pPhononPlayer)
-		g_pPhononPlayer= Phonon::createPlayer(Phonon::MusicCategory,media);
-	else g_pPhononPlayer->setCurrentSource(media);
-	if(g_pPhononPlayer->state()!=Phonon::ErrorState)
-        {
-                g_pPhononPlayer->play();
-        }
+
+	if(!m_pPhononPlayer)
+		m_pPhononPlayer = Phonon::createPlayer(Phonon::MusicCategory,media);
+	else
+		m_pPhononPlayer->setCurrentSource(media);
+
+	if(m_pPhononPlayer->state() == Phonon::ErrorState)
+	{
+		QString szError = m_pPhononPlayer->errorString();
+		if(szError.isEmpty())
+			qDebug("Phonon player in error state: can't play media '%s'",szFileName.isEmpty() ? "" : szFileName.toUtf8().data());
+		else
+			qDebug("Phonon player in error state: %s (can't play media '%s')",szError.toUtf8().data(),szFileName.isEmpty() ? "" : szFileName.toUtf8().data());
+
+		return false;
+	}
+
+	m_pPhononPlayer->play();
+
 	return true;
 }
+
+void KviSoundPlayer::cleanupPhonon()
+{
+	if(!m_pPhononPlayer)
+		return;
+	delete m_pPhononPlayer; // must be stopped
+	m_pPhononPlayer = NULL;
+}
 #endif //!COMPILE_PHONON_SUPPORT
+
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	bool KviSoundPlayer::playWinmm(const QString &szFileName)
 	{
 		sndPlaySound(szFileName.toLocal8Bit().data(),SND_ASYNC | SND_NODEFAULT);
 		return true;
+	}
+	
+	void KviSoundPlayer::cleanupWinmm()
+	{
+		// FIXME: how to stop playing on windows ?
 	}
 #else //!COMPILE_ON_WINDOWS
 	#ifdef COMPILE_OSS_SUPPORT
@@ -239,6 +309,10 @@ bool KviSoundPlayer::playPhonon(const QString &szFileName)
 				}
 				return true;
 			}
+			
+			void KviSoundPlayer::cleanupOssAudiofile()
+			{
+			}
 		#endif //COMPILE_AUDIOFILE_SUPPORT
 		bool KviSoundPlayer::playOss(const QString &szFileName)
 		{
@@ -251,11 +325,16 @@ bool KviSoundPlayer::playPhonon(const QString &szFileName)
 			}
 			return true;
 		}
+
+		void KviSoundPlayer::cleanupOss()
+		{
+		}
 	#endif //COMPILE_OSS_SUPPORT
 	#ifdef COMPILE_ESD_SUPPORT
 		bool KviSoundPlayer::playEsd(const QString &szFileName)
 		{
-			if(isMuted()) return true;
+			if(isMuted())
+				return true;
 			KviEsdSoundThread * t = new KviEsdSoundThread(szFileName);
 			if(!t->start())
 			{
@@ -264,14 +343,24 @@ bool KviSoundPlayer::playPhonon(const QString &szFileName)
 			}
 			return true;
 		}
+
+		void KviSoundPlayer::cleanupEsd()
+		{
+		}
 	#endif //COMPILE_ESD_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 
 bool KviSoundPlayer::playQt(const QString &szFileName)
 {
-	if(isMuted()) return true;
+	if(isMuted())
+		return true;
 	QSound::play(szFileName);
 	return true;
+}
+
+void KviSoundPlayer::cleanupQt()
+{
+	// how to stop Qt sounds ?
 }
 
 bool KviSoundPlayer::playNull(const QString &)
@@ -280,24 +369,49 @@ bool KviSoundPlayer::playNull(const QString &)
 	return true;
 }
 
+void KviSoundPlayer::cleanupNull()
+{
+}
+
 bool KviSoundPlayer::play(const QString &szFileName)
 {
-	if(isMuted()) return true;
-	SoundSystemRoutine * r = m_pSoundSystemDict->find(KVI_OPTION_STRING(KviOption_stringSoundSystem));
+	if(isMuted())
+		return true;
 
-	if(!r)
+	KviSoundPlayerEntry * e = m_pSoundSystemDict->find(KVI_OPTION_STRING(KviOption_stringSoundSystem));
+
+	if(!e)
 	{
-		if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringSoundSystem),"unknown"))
+		if(
+				(!KVI_OPTION_STRING(KviOption_stringSoundSystem).isEmpty()) &&
+				(!KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringSoundSystem),"unknown"))
+			)
 		{
-			detectSoundSystem();
-			r = m_pSoundSystemDict->find(KVI_OPTION_STRING(KviOption_stringSoundSystem));
-			if(!r)return false;
-		} else {
-			return false;
+			qDebug(
+					"Sound system '%s' is not valid, you may want to re-configure it in the options dialog...",
+					KVI_OPTION_STRING(KviOption_stringSoundSystem).toUtf8().data()
+				);
+			return false; // detection already attempted (and failed?)
 		}
+
+		detectSoundSystem();
+		e = m_pSoundSystemDict->find(KVI_OPTION_STRING(KviOption_stringSoundSystem));
+		if(!e)
+			return false;
 	}
 
-	return (this->*(*r))(szFileName);
+	if(e != m_pLastUsedSoundPlayerEntry)
+	{
+		// if the sound player changed, cleanup after the previous one
+		if(m_pLastUsedSoundPlayerEntry)
+			cleanupAfterLastPlayerEntry();
+		m_pLastUsedSoundPlayerEntry = e;
+	}
+
+	SoundSystemPlayRoutine r = e->playRoutine();
+	Q_ASSERT(r); // MUST BE THERE
+
+	return (this->*r)(szFileName);
 }
 
 
@@ -306,11 +420,18 @@ KviSoundThread::KviSoundThread(const QString &szFileName)
 {
 	g_pSoundPlayer->registerSoundThread(this);
 	m_szFileName = szFileName;
+	m_bTerminate = false;
 }
 
 KviSoundThread::~KviSoundThread()
 {
+	m_bTerminate = true; // force a termination request (since the base class will wait())
 	g_pSoundPlayer->unregisterSoundThread(this);
+}
+
+void KviSoundThread::terminate()
+{
+	m_bTerminate = true;
 }
 
 void KviSoundThread::play()
@@ -372,7 +493,7 @@ void KviSoundThread::run()
 				channelCount = afGetVirtualChannels(file, AF_DEFAULT_TRACK);
 				buffer = kvi_malloc(int(BUFFER_FRAMES * frameSize));
 
-				int audiofd_c = open("/dev/dsp", O_WRONLY | /*O_EXCL |*/ O_NDELAY);
+				int audiofd_c = open("/dev/dsp", O_WRONLY /*| O_EXCL | O_NDELAY*/);
 
 				QFile audiofd;
 
@@ -385,16 +506,18 @@ void KviSoundThread::run()
 
 				audiofd.open(audiofd_c,QIODevice::WriteOnly); // ???? what the heck is this for ?
 
-				if (sampleWidth == 8) format = AFMT_U8;
-				else if (sampleWidth == 16)format = AFMT_S16_NE;
+				if (sampleWidth == 8)
+					format = AFMT_U8;
+				else if(sampleWidth == 16)
+					format = AFMT_S16_NE;
 
-				if (ioctl(audiofd.handle(),SNDCTL_DSP_SETFMT, &format) == -1)
+				if(ioctl(audiofd.handle(),SNDCTL_DSP_SETFMT, &format) == -1)
 				{
 					debug("Could not set format width to DSP! [OSS]");
 					goto exit_thread;
 				}
 
-				if (ioctl(audiofd.handle(), SNDCTL_DSP_CHANNELS, &channelCount) == -1)
+				if (ioctl(audiofd.handle(),SNDCTL_DSP_CHANNELS, &channelCount) == -1)
 				{
 					debug("Could not set DSP channels! [OSS]");
 					goto exit_thread;
@@ -409,7 +532,7 @@ void KviSoundThread::run()
 
 				framesRead = afReadFrames(file, AF_DEFAULT_TRACK, buffer, BUFFER_FRAMES);
 
-				while(framesRead > 0)
+				while(!m_bTerminate && (framesRead > 0))
 				{
 					audiofd.write((char *)buffer,(int)(framesRead * frameSize));
 					framesRead = afReadFrames(file, AF_DEFAULT_TRACK, buffer,BUFFER_FRAMES);
@@ -436,6 +559,12 @@ void KviSoundThread::run()
 		void KviOssSoundThread::play()
 		{
 			#define OSS_BUFFER_SIZE 16384
+
+			if(!m_szFileName.endsWith(QString(".au")))
+			{
+				debug("Oss only player supports only *.au files");
+				return;
+			}
 
 			QFile f(m_szFileName);
 			int fd = -1;
@@ -465,7 +594,7 @@ void KviSoundThread::run()
 
 			iSize -= 24;
 
-			fd = open("/dev/audio",  O_WRONLY | /*O_EXCL |*/ O_NDELAY);
+			fd = open("/dev/audio",  O_WRONLY /* | O_EXCL | O_NDELAY*/);
 			if(fd < 0)
 			{
 				debug("Could not open device file /dev/audio!");
@@ -474,7 +603,7 @@ void KviSoundThread::run()
 			}
 
 
-			while(iSize > 0)
+			while(!m_bTerminate && (iSize > 0))
 			{
 				int iCanRead = OSS_BUFFER_SIZE - iDataLen;
 				if(iCanRead > 0)
@@ -529,7 +658,7 @@ void KviSoundThread::run()
 		void KviEsdSoundThread::play()
 		{
 			// ESD has a really nice API
-			if(!esd_play_file(NULL,m_szFileName.toUtf8().data(),1))
+			if(!esd_play_file(NULL,m_szFileName.toUtf8().data(),1)) // this is sync.. FIXME: it can't be stopped!
 				debug("Could not play sound %s! [ESD]",m_szFileName.toUtf8().data());
 		}
 
@@ -569,13 +698,15 @@ static bool snd_kvs_cmd_play(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 	if(szFile.isEmpty() || (!KviFileUtils::fileExists(szFile)))
 	{
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("Sound file '%Q' not found"),&szFile);
+		if(!c->hasSwitch('q',"quiet"))
+			c->warning(__tr2qs("Sound file '%Q' not found"),&szFile);
 		return true;
 	}
 
 	if(!g_pSoundPlayer->play(szFile))
 	{
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("Unable to play sound '%Q'"),&szFile);
+		if(!c->hasSwitch('q',"quiet"))
+			c->warning(__tr2qs("Unable to play sound '%Q'"),&szFile);
 	}
 
 	return true;
@@ -698,6 +829,13 @@ static bool snd_module_ctrl(KviModule *,const char * operation,void * param)
 	{
 		g_pSoundPlayer->detectSoundSystem();
 		return true;
+	}
+	if(kvi_strEqualCI(operation,"play"))
+	{
+		QString * pszFileName = (QString *)param;
+		if(pszFileName)
+			return g_pSoundPlayer->play(*pszFileName);
+		return false;
 	}
 	return false;
 }
