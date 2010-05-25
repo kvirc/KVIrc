@@ -86,10 +86,12 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 	pPage->setTitle(__tr2qs_ctx("Welcome","addon"));
 
 	QLabel * pLabel = new QLabel(pPage);
+	pLabel->setWordWrap(true);
 	pLabel->setText(__tr2qs_ctx("This procedure allows you to export the selected addon to a single package. It is useful when you want to distribute your addon to the public.","addon"));
 	pLayout->addWidget(pLabel);
 
 	pLabel = new QLabel(pPage);
+	pLabel->setWordWrap(true);
 	QString szText;
 	szText += __tr2qs_ctx("You will be asked to provide some information like the package name, the version, a description and so on.","addon");
 	szText += "<br><br>";

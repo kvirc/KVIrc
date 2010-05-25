@@ -44,7 +44,7 @@ namespace KviThemeFunctions
 
 	static bool notAValidThemePackage(QString &szError)
 	{
-		KviQString::sprintf(szError,__tr2qs_ctx("The selected file does not seem to be a valid KVIrc theme package","theme"));
+		szError = __tr2qs_ctx("The selected file does not seem to be a valid KVIrc theme package","theme");
 		return false;
 	}
 

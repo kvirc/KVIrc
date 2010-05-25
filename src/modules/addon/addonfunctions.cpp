@@ -44,7 +44,7 @@ namespace KviAddonFunctions
 {
 	bool notAValidAddonPackage(QString &szError)
 	{
-		KviQString::sprintf(szError,__tr2qs_ctx("The selected file does not seem to be a valid KVIrc addon package","addon"));
+		szError = __tr2qs_ctx("The selected file does not seem to be a valid KVIrc addon package","addon");
 		return false;
 	}
 
@@ -70,16 +70,19 @@ namespace KviAddonFunctions
 		pInfoFields = r.stringInfoFields();
 
 		pValue = pInfoFields->find("PackageType");
-		if(!pValue)return notAValidAddonPackage(szError);
+		if(!pValue)
+			return notAValidAddonPackage(szError);
 		pValue = pInfoFields->find("AddonPackVersion");
-		if(!pValue)return notAValidAddonPackage(szError);
+		if(!pValue)
+			return notAValidAddonPackage(szError);
 		if(!KviQString::equalCI(*pValue,KVI_CURRENT_ADDONS_ENGINE_VERSION))return notAValidAddonPackage(szError);
 
 		// make sure the default fields exist
 		for(int i=0;i<6;i++)
 		{
 			pValue = pInfoFields->find(check_fields[i]);
-			if(!pValue)return notAValidAddonPackage(szError);
+			if(!pValue)
+				return notAValidAddonPackage(szError);
 		}
 
 		// ok.. it should be really valid at this point
@@ -219,52 +222,57 @@ namespace KviAddonFunctions
 
 		bInstall = KviHtmlDialog::display(pDialogParent,&hd) == 2;
 
-		if(bInstall)
+		if(!bInstall)
+			return true;
+
+		// Create a random extraction dir
+		QString szTmpPath, szUnpackPath;
+		QString szRandomDir = createRandomDir();
+
+		g_pApp->getLocalKvircDirectory(szTmpPath,KviApp::Tmp);
+		KviQString::ensureLastCharIs(szTmpPath,QChar(KVI_PATH_SEPARATOR_CHAR));
+		szUnpackPath = szTmpPath + szRandomDir;
+		QDir szTmpDir(szUnpackPath);
+
+		// Check for dir existence
+		while(szTmpDir.exists())
 		{
-			// Create a random extraction dir
-			QString szTmpPath, szUnpackPath;
-			QString szRandomDir = createRandomDir();
-
-			g_pApp->getLocalKvircDirectory(szTmpPath,KviApp::Tmp);
-			KviQString::ensureLastCharIs(szTmpPath,QChar(KVI_PATH_SEPARATOR_CHAR));
+			szRandomDir = createRandomDir();
 			szUnpackPath = szTmpPath + szRandomDir;
-			QDir szTmpDir(szUnpackPath);
+			szTmpDir = QDir(szUnpackPath);
+		}
 
-			// Check for dir existence
-			while(szTmpDir.exists())
-			{
-				szRandomDir = createRandomDir();
-				szUnpackPath = szTmpPath + szRandomDir;
-				szTmpDir = QDir(szUnpackPath);
-			}
+		// Unpack addon package into the random tmp dir
+		if(!r.unpack(szAddonPackageFileName,szUnpackPath))
+		{
+			szErr = r.lastError();
+			KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","addon"),&szErr);
+			return false;
+		}
 
-			// Unpack addon package into the random tmp dir
-			if(!r.unpack(szAddonPackageFileName,szUnpackPath))
-			{
-				szErr = r.lastError();
-				KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","addon"),&szErr);
-				return true;
-			}
+		// Now we have all stuff in ~/.config/KVIrc/tmp/$rand
+		if(!
+				KviKvsScript::run(
+						QString::fromAscii("parse \"%1\\install.kvs\"")
+								.arg(
+										szUnpackPath
+											.replace("\\","\\\\")
+											.replace("\"","\\\"")
+									),
+						g_pActiveWindow
+					)
+				)
+		{
+			// Parsing the script failed
+			// However, the user should already be notified via normal script output.
+		}
 
-			// Now we have all stuff in ~/.config/KVIrc/tmp/$rand
-
-                        QString szParse="parse \"" + szUnpackPath + "\\install.kvs"+"\"";
-                        szParse.replace("\\","\\\\");
-                        KviKvsScript::run(szParse,g_pActiveWindow);
-
-
-			// Remove all files
-			QDir * pDir = new QDir(szUnpackPath);
-			QStringList list = pDir->entryList(QDir::AllEntries,QDir::DirsFirst);
-			debug("Path: %s",szUnpackPath.toUtf8().data());
-			debug("Count: %d",list.count());
-
-                        if(!KviFileUtils::deleteDir(szUnpackPath))
-			{
-				szErr = __tr2qs_ctx("One or more files can't be deleted","addon");
-				KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","addon"),&szErr);
-				return true;
-                        }
+		if(!KviFileUtils::deleteDir(szUnpackPath))
+		{
+			// FIXME: Just warn the user and assume success?
+			szErr = __tr2qs_ctx("One or more files can't be deleted","addon");
+			KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","addon"),&szErr);
+			return false;
 		}
 
 		return true;
