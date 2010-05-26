@@ -1,0 +1,42 @@
+# Translation of python_es.po to spanish
+#
+# egns <grannost@gmail.com>, 2009-2010
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2010-04-24 10:36+0200\n"
+"PO-Revision-Date: 2010-05-18 13:03+0200\n"
+"Last-Translator: egns <grannost@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/python/libkvipython.cpp:46
+msgid "The pythoncore module can't be loaded: python support not available"
+msgstr "El núcleo de python no pudo ser cargado: soporte de python no disponible"
+
+#: src/modules/python/libkvipython.cpp:47
+msgid "To see more details about loading failure try /pythoncore.load"
+msgstr "Para ver más detalles sobre el error de carga prueba /pythoncore.load"
+
+#: src/modules/python/libkvipython.cpp:60
+msgid ""
+"This KVIrc executable has been compiled without python scripting support"
+msgstr ""
+"Este ejecutable de KVIrc ha sido compilado sin soporte de scripting en python"
+
+#: src/modules/python/libkvipython.cpp:100
+#: src/modules/python/libkvipython.cpp:153
+msgid ""
+"The pythoncore module failed to execute the code: something is wrong with "
+"the python support"
+msgstr ""
+"El módulo pythoncore ha fallado al ejecutar el código: algo está mal con "
+"el soporte de python"
+
+#: src/modules/python/libkvipython.cpp:117
+#: src/modules/python/libkvipython.cpp:121
+msgid "Python execution error:"
+msgstr "Error al ejecutar python:"
+
+#: src/modules/pythoncore/libkvipythoncore.cpp:112
+msgid "Internal error: python interpreter not initialized"
+msgstr "Error interno: el intérprete de python no está inicializado"

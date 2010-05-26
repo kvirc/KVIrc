@@ -4,22 +4,16 @@
 # José Luis Sánchez Villanueva <jsanchezv@teleline.es>, 2004-2006.
 # Roberto Ciria <rciria@gmail.com>, 2007.
 # Armando Camarero <arcepi@arcepi.net>, 2009.
-# egns <grannost@gmail.com>, 2009.
-# Neiko, 2010.
+# egns <grannost@gmail.com>, 2009-2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: kvirc_es\n"
-"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-22 15:48+0200\n"
 "PO-Revision-Date: 2010-05-18 11:47+0200\n"
-"Last-Translator: \n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Juan José Álvarez Martínez <juanjux@yahoo.es>\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:645
 msgid ""
@@ -987,11 +981,11 @@ msgid ""
 "worries. You will have a chance to preserve the old configuration.</"
 "p><p>Click \"<b>Next</b>\" to proceed.</p>"
 msgstr ""
-"<p><h2>Bienvenido :)</h2>Esta es la primera ejecución de esta versión de "
-"KVIrc.<br>Este asistente le guiará a través de los pocos pasos necesarios "
-"para completar la configuración.<br><br>Si tenía instalada una versión "
-"anterior de KVIrc no se preocupe, tendrá oportunidad de preservar su "
-"configuración.</p><p>Pulse \"<b>Siguiente</b>\" para continuar.</p>"
+"<p><h2>Bienvenido :)</h2>Ésta es la primera ejecución de esta versión de "
+"KVIrc.<br>Este asistente te guiará a través de los pocos pasos necesarios "
+"para completar la configuración.<br><br>Si tenías instalada una versión "
+"anterior de KVIrc no te preocupes, tendrás oportunidad de preservar tu "
+"configuración.</p><p>Pulsa \"<b>Siguiente</b>\" para continuar.</p>"
 
 #: src/modules/setup/setupwizard.cpp:183
 msgid ""
@@ -1004,8 +998,8 @@ msgid ""
 msgstr ""
 "<p>Todos los archivos de esta distribución están cubiertos por la GPL."
 "<br>Llanamente esto puede leerse como sigue:<br><ul><li><b>KVIrc es libre</"
-"b>, úselo y diviértase <b>:)</b></li><li>Si utiliza <b>cualquier</b> parte "
-"de KVIrc en su proyecto, <b>DEBE</b> liberarlo con la misma licencia.</li></"
+"b>, úsalo y diviértete <b>:)</b></li><li>Si utilizas <b>cualquier</b> parte "
+"de KVIrc en tu proyecto, <b>DEBES</b> liberarlo con la misma licencia.</li></"
 "ul></p><p>La versión \"legal\" de la licencia se muestra en el cuadro "
 "inferior.</p>"
 
@@ -1218,15 +1212,15 @@ msgstr "Permite gestionar las funcionalidades adicionales basadas en script"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:195
 msgid "Allows you to manage the themes"
-msgstr "Permite gestionar los temas visuales"
+msgstr "Permite gestionar el tema"
 
 #: src/kvirc/kernel/kvi_options.cpp:818
 msgid "Am de-halfop'd"
-msgstr "He sido semidesopeado"
+msgstr "Se me ha quitado el semiop"
 
 #: src/kvirc/kernel/kvi_options.cpp:842
 msgid "Am de-userop'd"
-msgstr "Se me ha quitado el op de usuario"
+msgstr "Se me ha quitado el userop"
 
 #: src/kvirc/kernel/kvi_options.cpp:815
 msgid "Am deop'd"
@@ -1238,7 +1232,7 @@ msgstr "Se me ha quitado la voz"
 
 #: src/kvirc/kernel/kvi_options.cpp:817
 msgid "Am halfop'd"
-msgstr "Se me ha quitado el semi-op "
+msgstr "Se me dio semiop"
 
 #: src/kvirc/kernel/kvi_options.cpp:812
 msgid "Am kicked"
@@ -1250,7 +1244,7 @@ msgstr "Se me dio op"
 
 #: src/kvirc/kernel/kvi_options.cpp:841
 msgid "Am userop'd"
-msgstr "Se me dio user-op"
+msgstr "Se me dio userop"
 
 #: src/kvirc/kernel/kvi_options.cpp:814
 msgid "Am voiced"
@@ -2059,9 +2053,8 @@ msgid "Clear Buffer"
 msgstr "Limpiar buffer"
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:107
-#, fuzzy
 msgid "Clear Recent"
-msgstr "Limpiar lista de nicks recientes"
+msgstr "Limpiar recientes"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:768
 #: src/kvirc/kernel/kvi_coreactions.cpp:783
@@ -2192,7 +2185,7 @@ msgstr "Configurar servidores..."
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:183
 msgid "Configure Theme..."
-msgstr "Configurar temas visuales..."
+msgstr "Configurar tema..."
 
 #: src/kvirc/ui/kvi_input.cpp:265
 msgid "Confirm Multiline Message"
@@ -3456,7 +3449,7 @@ msgstr "Importar desde http://www.mirc.co.uk/servers.ini"
 
 #: src/modules/mircimport/libkvimircimport.cpp:319
 msgid "Import from servers.ini"
-msgstr "Importación desde servers.ini"
+msgstr "Importar desde un archivo servers.ini"
 
 #: src/modules/setup/setupwizard.cpp:514
 msgid "Import server list from mIRC"
@@ -3764,11 +3757,11 @@ msgstr "Fichero de configuración de KVirc"
 
 #: src/kvirc/ui/kvi_menubar.cpp:134
 msgid "KVIrc French Home&page"
-msgstr "&Página de KVIrc en francés"
+msgstr "&Web de KVIrc en francés"
 
 #: src/kvirc/ui/kvi_menubar.cpp:125
 msgid "KVIrc Home&page"
-msgstr "&Página de KVIrc"
+msgstr "&Web de KVIrc"
 
 #: src/kvirc/kernel/kvi_app_setup.cpp:146
 #: src/kvirc/kernel/kvi_app_setup.cpp:467
@@ -4054,7 +4047,7 @@ msgstr "Gestionar funcionalidades adicionales basadas en Script"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:194
 msgid "Manage Themes..."
-msgstr "Gestionar temas visuales..."
+msgstr "Gestionar temas..."
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:202
 msgid "Mask"
@@ -4141,7 +4134,7 @@ msgstr "Opciones de color Mirc (#RRGGBB)"
 
 #: src/kvirc/kernel/kvi_options.cpp:1004
 msgid "Missing absolute directory for the theme information"
-msgstr "Falta directorio absoluto para información de temas visuales"
+msgstr "Falta directorio absoluto para la información del tema"
 
 #: src/modules/str/libkvistr.cpp:2057
 msgid "Missing argument for ?X escape sequence, 0 assumed"
@@ -4544,7 +4537,7 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1279
 msgid "Notify list: \r!n\r%Q\r is offline (watch)"
-msgstr "Lista de notificación: \r!n\r%Q\r  está desconectado (watch)"
+msgstr "Lista de notificación: \r!n\r%Q\r está desconectado (watch)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1141
 #: src/kvirc/kernel/kvi_notifylist.cpp:1154
@@ -4610,7 +4603,7 @@ msgid ""
 "Notify list: Timeout (%d sec) is too short, resetting to something more "
 "reasonable (15 sec)"
 msgstr ""
-"Lista de notificación: Timeout (%d segs) es demasiado pequeña, poniendo un "
+"Lista de notificación: Timeout (%d segs) es demasiado pequeño, poniendo un "
 "valor más razonable (15 segundos)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1028
@@ -5992,7 +5985,7 @@ msgstr "Muestra el diálogo general de opciones"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:184
 msgid "Shows the theme options dialog"
-msgstr "Muestra el diálogo de opciones de temas visuales"
+msgstr "Muestra el diálogo de opciones del tema"
 
 #: src/modules/ident/libkviident.cpp:124
 msgid "Shutting down identd service (requested action)"
@@ -7274,7 +7267,7 @@ msgstr "Cambio de modo usuario no operador"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:293
 msgid "User-operators OR Auditorium: /NAMES and /WHO show only ops"
-msgstr "Usuarios operadores y auditorio : /NAMES y /WHO sólo muestran los ops"
+msgstr "Usuarios operadores y auditorio: /NAMES y /WHO sólo muestran los ops"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:568
 msgid "Username"
@@ -8181,11 +8174,11 @@ msgstr "usuario total"
 
 #: src/kvirc/ui/kvi_channel.cpp:967
 msgid "user-operator"
-msgstr "usuario operador"
+msgstr "userop"
 
 #: src/kvirc/ui/kvi_channel.cpp:967
 msgid "user-operators"
-msgstr "usuarios operadores"
+msgstr "userops"
 
 #: src/kvirc/ui/kvi_channel.cpp:976
 msgid "users total"
