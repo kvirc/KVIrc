@@ -293,7 +293,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("HideInputToolButtons",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("StripControlCodesInLogs",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("EnableTrayIconFlashing",true,KviOption_sectFlagFrame),
-	BOOL_OPTION("UseFlatClassicWindowListButtons",true,KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("UseFlatClassicWindowListButtons",false,KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("StripMsgTypeInLogs",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("UseLevelBasedTrayNotification",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("MuteAllSounds",false,KviOption_sectFlagFrame),
