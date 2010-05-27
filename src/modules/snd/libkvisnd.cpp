@@ -174,11 +174,13 @@ void KviSoundPlayer::getAvailableSoundSystems(QStringList *l)
 
 bool KviSoundPlayer::havePlayingSounds()
 {
-	if(m_pThreadList->count() > 0)
-		return true;
+	if(m_pThreadList)
+		if(m_pThreadList->count() > 0)
+			return true;
 #ifdef COMPILE_PHONON_SUPPORT
-	if(m_pPhononPlayer->state() == Phonon::PlayingState)
-		return true;
+	if(m_pPhononPlayer)
+		if(m_pPhononPlayer->state() == Phonon::PlayingState)
+			return true;
 #endif //COMPILE_PHONON_SUPPORT
 	return false;
 }
