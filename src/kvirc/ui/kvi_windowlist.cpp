@@ -522,51 +522,55 @@ void KviClassicWindowList::calcButtonHeight()
 void KviClassicWindowList::insertButton(KviWindowListButton * b)
 {
 	int idx = 0;
-//	if(KVI_OPTION_BOOL(KviOption_boolSortWindowListButtons))
-//	{
-		// first sort by irc context
-		for(KviWindowListButton * btn = m_pButtonList->first();btn;btn = m_pButtonList->next())
+	// first sort by irc context
+	for(KviWindowListButton * btn = m_pButtonList->first();btn;btn = m_pButtonList->next())
+	{
+		if(btn->kviWindow()->console() == b->kviWindow()->console())
 		{
-			if(btn->kviWindow()->console() == b->kviWindow()->console())
+			// same irc context (or none)
+			// sort by type now
+			for(;btn;btn = m_pButtonList->next())
 			{
-				// same irc context (or none)
-				// sort by type now
-				for(;btn;btn = m_pButtonList->next())
+				if(
+						(btn->kviWindow()->type() > b->kviWindow()->type()) ||
+						(btn->kviWindow()->console() != b->kviWindow()->console())
+					)
 				{
-					if((btn->kviWindow()->type() > b->kviWindow()->type()) ||
-						(btn->kviWindow()->console() != b->kviWindow()->console()))
-					{
-						// greater type or another irc context
-						m_pButtonList->insert(idx,b);
-						return;
-					} else if(btn->kviWindow()->type() == b->kviWindow()->type())
-					{
-						// same type!
-						// sort by name
-						if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName) && (KviQString::cmpCI(btn->kviWindow()->windowName(),b->kviWindow()->windowName()) > 0))
-						{
-							// got a "higher one"
-							m_pButtonList->insert(idx,b);
-							return;
-						}
-					}
-					idx++;
-				}
-				// ran out of buttons
-				m_pButtonList->append(b);
-				return;
-			} else {
-				if(!(btn->kviWindow()->console()) && b->kviWindow()->console())
-				{
-					// this must be a new console...insert before the contextless windows
-					__range_valid(b->kviWindow()->console() == b->kviWindow());
+					// greater type or another irc context
 					m_pButtonList->insert(idx,b);
 					return;
-				} else idx++; // wrong irc contet...go on searching
+				}
+				
+				if(btn->kviWindow()->type() == b->kviWindow()->type())
+				{
+					// same type!
+					// sort by name
+					if(
+							KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName) &&
+							(KviQString::cmpCI(btn->kviWindow()->windowName(),b->kviWindow()->windowName()) > 0)
+						)
+					{
+						// got a "higher one"
+						m_pButtonList->insert(idx,b);
+						return;
+					}
+				}
+				idx++;
 			}
+			// ran out of buttons
+			m_pButtonList->append(b);
+			return;
 		}
-//	}
-	// no sorting selected , or no match for this irc context
+		
+		if(!(btn->kviWindow()->console()) && b->kviWindow()->console())
+		{
+			// this must be a new console...insert before the contextless windows
+			__range_valid(b->kviWindow()->console() == b->kviWindow());
+			m_pButtonList->insert(idx,b);
+			return;
+		} else idx++; // wrong irc contet...go on searching
+	}
+
 	m_pButtonList->append(b);
 }
 
@@ -701,10 +705,6 @@ void KviClassicWindowList::applyOptions()
 
 	calcButtonHeight();
 
-	//for(KviWindowListButton * b = m_pButtonList->first();b;b = m_pButtonList->next())
-	//{
-	//	b->setFlat(KVI_OPTION_BOOL(KviOption_boolUseFlatClassicWindowListButtons)); // We do it ourselves
-	//}
 	doLayout(); // this will trigger a repaint anyway
 }
 
