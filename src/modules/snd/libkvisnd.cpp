@@ -261,6 +261,8 @@ bool KviSoundPlayer::playPhonon(const QString &szFileName)
 	else
 		m_pPhononPlayer->setCurrentSource(media);
 
+	m_pPhononPlayer->setTransitionTime(2000); // this fixes playback with the (very buggy) xine backend
+
 	if(m_pPhononPlayer->state() == Phonon::ErrorState)
 	{
 		QString szError = m_pPhononPlayer->errorString();
