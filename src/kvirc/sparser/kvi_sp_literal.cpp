@@ -99,7 +99,7 @@ void KviServerParser::parseLiteralPing(KviIrcMessage *msg)
 	{
 		msg->console()->output(KVI_OUT_SERVERPING,
 			__tr2qs("Received ping from \r!s\r%Q\r (PING %Q), replied pong"),
-			szPrefix.toUtf8().data(),&szAllParams);
+			&szPrefix,&szAllParams);
 	}
 }
 
