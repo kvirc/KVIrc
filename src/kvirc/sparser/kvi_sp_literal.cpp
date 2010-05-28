@@ -98,8 +98,8 @@ void KviServerParser::parseLiteralPing(KviIrcMessage *msg)
 	if((!msg->haltOutput()) && KVI_OPTION_BOOL(KviOption_boolShowPingPong))
 	{
 		msg->console()->output(KVI_OUT_SERVERPING,
-			__tr2qs("Received ping from \r!s\r%Q\r (PING %Q), replied pong"),
-			&szPrefix,&szAllParams);
+			__tr2qs("Received ping from \r!s\r%s\r (PING %s), replied pong"),
+			szPrefix.toUtf8().data(),szAllParams.toUtf8().data());
 	}
 }
 
