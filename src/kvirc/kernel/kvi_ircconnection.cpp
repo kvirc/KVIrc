@@ -350,6 +350,9 @@ void KviIrcConnection::linkEstabilished()
 
 void KviIrcConnection::handleCapLs()
 {
+	if(!m_pStateData->isInsideCapLs())
+		return;
+
 	m_pStateData->setInsideCapLs(false);
 
 	// STARTTLS support: this has to be checked first because it could imply
@@ -380,12 +383,22 @@ void KviIrcConnection::handleCapLs()
 
 	//TODO MULTI-PREFIX, others goes here
 
-	if(szRequests.isEmpty()) endCapLs();
-	else sendFmtData("CAP REQ :%s",szRequests.trimmed().toUtf8().data());
+	if(szRequests.isEmpty())
+	{
+		endCapLs();
+	} else {
+		sendFmtData("CAP REQ :%s",szRequests.trimmed().toUtf8().data());
+		m_pStateData->setInsideCapReq(true);
+	}
 }
 
 void KviIrcConnection::handleCapAck()
 {
+	if(!m_pStateData->isInsideCapReq())
+		return;
+
+	m_pStateData->setInsideCapReq(false);
+	
 	bool bUsed=false;
 
 	//SASL
@@ -411,37 +424,37 @@ void KviIrcConnection::handleCapAck()
 void KviIrcConnection::handleAuthenticate(KviStr & szAuth)
 {
 	//SASL
-	if(m_pStateData->isInsideAuthenticate())
+	if(!m_pStateData->isInsideAuthenticate())
+		return;
+
+	QByteArray szNick = encodeText(target()->server()->saslNick());
+	QByteArray szPass = encodeText(target()->server()->saslPass());
+	if(szAuth=="+")
 	{
-		QByteArray szNick = encodeText(target()->server()->saslNick());
-		QByteArray szPass = encodeText(target()->server()->saslPass());
-		if(szAuth=="+")
+		//PLAIN
+		KviStr szOut;
+		if(KviSASL::plainMethod(szAuth,
+					szOut,
+					szNick,
+					szPass
+					))
 		{
-			//PLAIN
-			KviStr szOut;
-			if(KviSASL::plainMethod(szAuth,
-						szOut,
-						szNick,
-						szPass
-						))
-			{
-				sendFmtData("AUTHENTICATE %s",szOut.ptr());
-			} else {
-				sendFmtData("AUTHENTICATE *");
-			}
+			sendFmtData("AUTHENTICATE %s",szOut.ptr());
 		} else {
-			//DH-BLOWFISH sasl auth
-			KviStr szOut;
-			if(KviSASL::dh_blowfishMethod(szAuth,
-						szOut,
-						szNick,
-						szPass
-						))
-			{
-				sendFmtData("AUTHENTICATE %s",szOut.ptr());
-			} else {
-				sendFmtData("AUTHENTICATE *");
-			}
+			sendFmtData("AUTHENTICATE *");
+		}
+	} else {
+		//DH-BLOWFISH sasl auth
+		KviStr szOut;
+		if(KviSASL::dh_blowfishMethod(szAuth,
+					szOut,
+					szNick,
+					szPass
+					))
+		{
+			sendFmtData("AUTHENTICATE %s",szOut.ptr());
+		} else {
+			sendFmtData("AUTHENTICATE *");
 		}
 	}
 }

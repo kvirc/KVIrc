@@ -45,6 +45,7 @@ public:
 	~KviIrcConnectionStateData();
 protected:
 	bool         m_bInsideCapLs;                  // true if there's a CAP LS request pending
+	bool         m_bInsideCapReq;                 // true if there's a CAP REQ request pending
 	bool         m_bInsideAuthenticate;           // true if there's a AUTHENTICATE request pending
 	bool         m_bSentStartTls;                 // the state of STARTTLS protocol
 	bool         m_bSentQuit;                     // have we sent the quit message for this connection ?
@@ -63,6 +64,9 @@ public:
 
 	bool isInsideCapLs(){ return m_bInsideCapLs; };
 	void setInsideCapLs(bool bInside){ m_bInsideCapLs = bInside; };
+
+	bool isInsideCapReq(){ return m_bInsideCapReq; };
+	void setInsideCapReq(bool bInside){ m_bInsideCapReq = bInside; };
 
 	bool sentQuit(){ return m_bSentQuit; };
 	void setSentQuit(){ m_bSentQuit = true; };
