@@ -1995,7 +1995,7 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 {
 	// CAP
 	// CAP LS
-	// :prefix CAP * LS :tls userhost-in-names multi-prefix sasl
+	// :prefix CAP <nickname> <command> [*] :tls userhost-in-names multi-prefix sasl
 
 	// Server2client subcommands:
 	// LIST, LS, ACK, NAK
@@ -2004,67 +2004,89 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 
 	QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
 	QString szCmd = msg->connection()->decodeText(msg->safeParam(1));
-	QString szProtocols = msg->connection()->decodeText(msg->safeParam(2));
+	QString szProtocols = msg->connection()->decodeText(msg->safeTrailing());
 
 	if(szCmd == "LS")
 	{
-		msg->connection()->serverInfo()->setSupportsCaps(szProtocols);
-		msg->connection()->handleCapLs();
-	} else if(szCmd == "ACK") {
-		//extensions preceeded by a minus sign "-" are disabled, "+" or no prefix are enabled
-		QStringList szlDisabledExtensions, szlEnabledExtensions, szlExtensions;
-		szlExtensions = szProtocols.split(QChar(' '), QString::SkipEmptyParts);
-		for(int i=0;i<szlExtensions.size(); ++i)
+		// :prefix CAP <nickname> LS [*] :<cap1> <cap2> <cap3> ....
+		// All but the last LS messages have the asterisk
+		
+		QString szAsterisk = msg->connection()->decodeText(msg->safeParam(2));
+		bool bLast = szAsterisk != "*";
+		
+		msg->connection()->serverInfo()->addSupportedCaps(szProtocols);
+
+		if(msg->connection()->stateData()->isInsideInitialCapLs())
 		{
-			if(szlExtensions.at(i).left(1)=='-')
-			{
-				szlDisabledExtensions << szlExtensions.at(i).mid(1);
-			} else {
-				if(szlExtensions.at(i).left(1)=='+')
-				{
-					szlEnabledExtensions << szlExtensions.at(i).mid(1);
-				} else {
-					szlEnabledExtensions << szlExtensions.at(i);
-				}
-			}
+			// We sent the request: handle it silently.. but only if this is the last of the LS messages
+			if(bLast)
+				msg->connection()->handleInitialCapLs();
+			return;
 		}
+
+		// We didn't send the request (the user did, or the server sent the reply spontaneously)
 		if(!msg->haltOutput())
-		{
-			if(szlEnabledExtensions.size() > 0)
-				msg->console()->output(KVI_OUT_CAP,
-						__tr2qs("Enabled CAP Extensions: %s"),
-						szlEnabledExtensions.join(" ").toUtf8().data());
-			if(szlDisabledExtensions.size() > 0)
-				msg->console()->output(KVI_OUT_CAP,
-						__tr2qs("Disabled CAP Extensions: %s"),
-						szlDisabledExtensions.join(" ").toUtf8().data());
-		}
-		msg->connection()->serverInfo()->setEnableCaps(szlEnabledExtensions.join(" "));
-		msg->connection()->handleCapAck();
-	} else if(szCmd == "NAK") {
-		if(!msg->haltOutput())
-		{
-			msg->console()->output(KVI_OUT_CAP,
-				__tr2qs("Disabled CAP Extensions: %Q"),
-				&szProtocols);
-		}
-		msg->connection()->serverInfo()->setDisableCaps(szProtocols);
-		msg->connection()->handleCapNak();
-	} else if(szCmd == "LIST") {
-		if(!msg->haltOutput())
-		{
-			msg->console()->output(KVI_OUT_CAP,
-				__tr2qs("Currently enabled CAP Extensions: %Q"),
-				&szProtocols);
-		}
-	} else {
-		if(!msg->haltOutput())
-		{
-			msg->console()->output(KVI_OUT_CAP,
-				__tr2qs("Received unknown extended capability message: %Q %Q"),
-				&szCmd, &szProtocols);
-		}
+			msg->console()->output(KVI_OUT_CAP,__tr2qs("Server capabilities: %Q"),&szProtocols);
+
+		return;
 	}
+
+	if(szCmd == "ACK")
+	{
+		// :prefix CAP <nickname> ACK [*] :<cap1> <cap2> <cap3> ....
+		// All but the last ACK messages have the asterisk
+	
+		msg->connection()->serverInfo()->changeEnabledCapList(szProtocols);
+
+		QString szAsterisk = msg->connection()->decodeText(msg->safeParam(2));
+		bool bLast = szAsterisk != "*";
+
+		if(msg->connection()->stateData()->isInsideInitialCapReq())
+		{
+			// We sent the request: handle it silently.. but only if this is the last of the REQ messages
+			if(bLast)
+				msg->connection()->handleInitialCapAck();
+			return;
+		}
+
+		if(!msg->haltOutput())
+			msg->console()->output(KVI_OUT_CAP,__tr2qs("Capability change acknowledged: %Q"),&szProtocols);
+		
+		return;
+	}
+	
+	if(szCmd == "NAK")
+	{
+		// :prefix CAP <nickname> NAK :<cap1> <cap2> <cap3> ....
+
+		if(msg->connection()->stateData()->isInsideInitialCapReq())
+		{
+			msg->connection()->handleInitialCapNak();
+			return;
+		}
+
+		if(!msg->haltOutput())
+			msg->console()->output(KVI_OUT_CAP,__tr2qs("Capability change denied: %Q"),&szProtocols);
+
+		return;
+
+	}
+	
+	if(szCmd == "LIST")
+	{
+		// :prefix CAP <nickname> LIST [*] :<cap1> <cap2> <cap3> ....
+		// All but the last LIST messages have the asterisk
+
+		msg->connection()->serverInfo()->changeEnabledCapList(szProtocols);
+
+		if(!msg->haltOutput())
+			msg->console()->output(KVI_OUT_CAP,__tr2qs("Currently enabled capabilities: %Q"),&szProtocols);
+
+		return;
+	}
+	
+	if(!msg->haltOutput())
+		msg->console()->output(KVI_OUT_CAP,__tr2qs("Received unknown extended capability message: %Q %Q"),&szCmd,&szProtocols);
 }
 
 void KviServerParser::parseLiteralAuthenticate(KviIrcMessage *msg)

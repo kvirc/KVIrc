@@ -37,45 +37,99 @@ KviIrcConnectionServerInfo::KviIrcConnectionServerInfo()
 	m_szSupportedModeFlags = "ov";
 	m_pModePrefixTable = 0;
 	buildModePrefixTable();
-	m_bSupportsModesIe   = true;
+	m_bSupportsModesIe = true;
 	m_bSupportsWatchList = false;
 	m_bSupportsCodePages = false;
 	m_bSupportsCap = false;
-	m_iMaxTopicLen=-1;
-	m_szListModes="";
-	m_szPlainModes="";
-	m_iMaxModeChanges=3;
+	m_iMaxTopicLen = -1;
+	m_iMaxModeChanges = 3;
 	m_pServInfo = new KviBasicIrcServerInfo();
 }
 
 KviIrcConnectionServerInfo::~KviIrcConnectionServerInfo()
 {
-	if(m_pServInfo) delete m_pServInfo;
-	if(m_pModePrefixTable) kvi_free(m_pModePrefixTable);
+	if(m_pServInfo)
+		delete m_pServInfo;
+	if(m_pModePrefixTable)
+		kvi_free(m_pModePrefixTable);
 }
 
-void KviIrcConnectionServerInfo::setSupportsCaps(QString szCaps)
+void KviIrcConnectionServerInfo::addSupportedCaps(const QString &szCapList)
 {
-	m_bSupportsCap=true;
-	qDebug("server support caps: %s",szCaps.toUtf8().data());
-	m_szaSupportedCaps = szCaps.split(' ', QString::SkipEmptyParts);
-}
+	m_bSupportsCap = true;
 
-void KviIrcConnectionServerInfo::setEnableCaps(QString szCaps)
-{
-	qDebug("server enabled caps: %s",szCaps.toUtf8().data());
-	m_szaEnabledCaps.append(szCaps.split(' ', QString::SkipEmptyParts));
-	m_szaEnabledCaps.removeDuplicates();
-}
-
-void KviIrcConnectionServerInfo::setDisableCaps(QString szCaps)
-{
-	qDebug("server disabled caps: %s",szCaps.toUtf8().data());
-	QStringList szaDisabled = szCaps.split(' ', QString::SkipEmptyParts);
-
-	for (int i = 0; i < szaDisabled.size(); ++i)
+	QStringList lTmp = szCapList.split(' ',QString::SkipEmptyParts);
+	foreach(QString szCap,lTmp)
 	{
-		m_szaEnabledCaps.removeOne(szaDisabled.at(i));
+		// cap modifiers are:
+		//  '-' : disable a capability (should not be present in a LS message...)
+		//  '=' : sticky (can't be disabled once enabled)
+		//  '~' : needs ack for modification
+
+		if(szCap.length() < 1)
+			continue; // shouldn't happen
+
+		switch(szCap[0].unicode())
+		{
+			case '-':
+			case '~':
+			case '=':
+				szCap.remove(0,1);
+			break;
+			default:
+				// ok
+			break;
+		}
+
+		szCap = szCap.toLower();
+
+		if(!m_lSupportedCaps.contains(szCap))
+			m_lSupportedCaps.append(szCap);
+	}
+}
+
+void KviIrcConnectionServerInfo::changeEnabledCapList(const QString &szCapList)
+{
+	m_bSupportsCap = true;
+	QStringList lTmp = szCapList.split(' ',QString::SkipEmptyParts);
+	foreach(QString szCap,lTmp)
+	{
+		// cap modifiers are:
+		//  '-' : disable a capability (should not be present in a LS message...)
+		//  '=' : sticky (can't be disabled once enabled)
+		//  '~' : needs ack for modification
+
+		if(szCap.length() < 1)
+			continue; // shouldn't happen
+
+		bool bRemove = false;
+
+		switch(szCap[0].unicode())
+		{
+			case '-':
+				bRemove = true;
+				// fall through
+			case '~':
+			case '=':
+				szCap.remove(0,1);
+			break;
+			default:
+				// ok
+			break;
+		}
+
+		szCap = szCap.toLower();
+
+		if(bRemove)
+		{
+			m_lEnabledCaps.removeAll(szCap);
+		} else {
+			if(!m_lEnabledCaps.contains(szCap))
+				m_lEnabledCaps.append(szCap);
+		}
+
+		if(!m_lSupportedCaps.contains(szCap))
+			m_lSupportedCaps.append(szCap);
 	}
 }
 

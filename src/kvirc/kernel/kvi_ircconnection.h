@@ -733,31 +733,31 @@ protected:
 	* \brief Called when CAP LS answer is received
 	* \return void
 	*/
-	void handleCapLs();
+	void handleInitialCapLs();
 
 	/**
 	* \brief Called when CAP LS negotiation fails
 	* \return void
 	*/
-	void handleFailedCapLs();
+	void handleFailedInitialCapLs();
 
 	/**
 	* \brief Called when CAP ACK answer is received
 	* \return void
 	*/
-	void handleCapAck();
+	void handleInitialCapAck();
 
 	/**
 	* \brief Called when CAP NAK answer is received
 	* \return void
 	*/
-	void handleCapNak();
+	void handleInitialCapNak();
 
 	/**
 	* \brief Called when we want to end CAP negotiation and go on wi the login
 	* \return void
 	*/
-	void endCapLs();
+	void endInitialCapNegotiation();
 
 	/**
 	* \brief Called to update the away state

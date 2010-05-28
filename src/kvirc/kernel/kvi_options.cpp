@@ -146,7 +146,6 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("AutoLogChannels",true,KviOption_sectFlagLogging),
 	BOOL_OPTION("AutoLogDccChat",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("AutoLogConsole",false,KviOption_sectFlagLogging),
-
 	BOOL_OPTION("SilentAntiSpam",false,KviOption_sectFlagAntiSpam),
 	BOOL_OPTION("UseIncomingDccMediaTypeSavePath",true,KviOption_sectFlagDcc),
 	BOOL_OPTION("NotifyListSendUserhostForOnlineUsers",true,KviOption_sectFlagConnection),
@@ -640,8 +639,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("IdentdOutputMode",KviIdentdOutputMode::Quiet,KviOption_sectFlagConnection),
 	UINT_OPTION("ScaleAvatarsOnLoadHeight",640,KviOption_sectFlagAvatar),
 	UINT_OPTION("ScaleAvatarsOnLoadWidth",480,KviOption_sectFlagAvatar),
-	UINT_OPTION("NotifierActiveTransparency",90,KviOption_sectFlagNotifier),
-	UINT_OPTION("NotifierInactiveTransparency",40,KviOption_sectFlagNotifier),
+	UINT_OPTION("NotifierActiveTransparency",90,KviOption_sectFlagNotifier | KviOption_groupTheme),
+	UINT_OPTION("NotifierInactiveTransparency",60,KviOption_sectFlagNotifier | KviOption_groupTheme),
 	UINT_OPTION("IrcViewMarkerStyle",0,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	UINT_OPTION("IrcViewMarkerSize",1,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	UINT_OPTION("UrlMouseClickNum",2,KviOption_sectFlagUrl),

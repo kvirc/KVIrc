@@ -44,8 +44,9 @@ public:
 	KviIrcConnectionStateData();
 	~KviIrcConnectionStateData();
 protected:
-	bool         m_bInsideCapLs;                  // true if there's a CAP LS request pending
-	bool         m_bInsideCapReq;                 // true if there's a CAP REQ request pending
+	bool         m_bInsideInitialCapLs;                  // true if there's a CAP LS request pending
+	bool         m_bIgnoreOneYouHaveNotRegisteredError; // true if we have sent a CAP LS request followed by a PING which will generate an error (and we need to ignore it)
+	bool         m_bInsideInitialCapReq;                 // true if there's a CAP REQ request pending
 	bool         m_bInsideAuthenticate;           // true if there's a AUTHENTICATE request pending
 	bool         m_bSentStartTls;                 // the state of STARTTLS protocol
 	bool         m_bSentQuit;                     // have we sent the quit message for this connection ?
@@ -62,11 +63,16 @@ public:
 	bool isInsideAuthenticate(){ return m_bInsideAuthenticate; };
 	void setInsideAuthenticate(bool bInside){ m_bInsideAuthenticate = bInside; };
 
-	bool isInsideCapLs(){ return m_bInsideCapLs; };
-	void setInsideCapLs(bool bInside){ m_bInsideCapLs = bInside; };
+	bool isInsideInitialCapLs(){ return m_bInsideInitialCapLs; };
+	void setInsideInitialCapLs(bool bInside){ m_bInsideInitialCapLs = bInside; };
 
-	bool isInsideCapReq(){ return m_bInsideCapReq; };
-	void setInsideCapReq(bool bInside){ m_bInsideCapReq = bInside; };
+	void setIgnoreOneYouHaveNotRegisteredError(bool bIgnore)
+		{ m_bIgnoreOneYouHaveNotRegisteredError = bIgnore; };
+	bool ignoreOneYouHaveNotRegisteredError() const
+		{ return m_bIgnoreOneYouHaveNotRegisteredError; };
+
+	bool isInsideInitialCapReq(){ return m_bInsideInitialCapReq; };
+	void setInsideInitialCapReq(bool bInside){ m_bInsideInitialCapReq = bInside; };
 
 	bool sentQuit(){ return m_bSentQuit; };
 	void setSentQuit(){ m_bSentQuit = true; };

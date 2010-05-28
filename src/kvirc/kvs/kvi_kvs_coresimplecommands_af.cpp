@@ -485,7 +485,60 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 
 	}
-	
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: cap
+		@type:
+			command
+		@title:
+			cap
+		@syntax:
+			cap <command:string> [parameters:string]
+		@short:
+			Sends a CAP command
+		@description:
+			Sends a CAP command to the server.[br]
+			The <command> may be one of LS,REQ,LIST and ACK as per CAP specification (Google for draft-mitchell-irc-capabilities-02).
+			The <parameters> string usually contains a list of capabilities to be activated or deactivated (deactivation is triggered
+			by prepending a - prefix to the capability name.[br]
+			This command is [doc:connection_dependant_commands]connection dependant[/doc] and actually works only on servers
+			that implement the CAP capability.
+		@examples:
+			[example]
+			cap LS
+			cap REQ identify-msg
+			cap LIST
+			cap REQ -identify-msg
+			[/example]
+	*/
+
+	KVSCSC(cap)
+	{
+		QString szCommand,szParams;
+		KVSCSC_PARAMETERS_BEGIN
+			KVSCSC_PARAMETER("command",KVS_PT_NONEMPTYSTRING,0,szCommand)
+			KVSCSC_PARAMETER("parameters",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szParams)
+		KVSCSC_PARAMETERS_END
+
+		KVSCSC_REQUIRE_CONNECTION
+
+		QByteArray szEncodedCommand = KVSCSC_pConnection->encodeText(szCommand);
+		QByteArray szEncodedParams = KVSCSC_pConnection->encodeText(szParams);
+
+		if(szEncodedParams.isEmpty())
+		{
+			if(!(KVSCSC_pConnection->sendFmtData("CAP %s",szEncodedCommand.data())))
+				return KVSCSC_pContext->warningNoIrcConnection();
+		} else {
+			if(!(KVSCSC_pConnection->sendFmtData("CAP %s :%s",szEncodedCommand.data(),szEncodedParams.data())))
+				return KVSCSC_pContext->warningNoIrcConnection();
+		}
+
+		return true;
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*

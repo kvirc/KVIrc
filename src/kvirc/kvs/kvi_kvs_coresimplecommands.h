@@ -64,6 +64,7 @@ namespace KviKvsCoreSimpleCommands
 	KVSCSC(ban);
 	KVSCSC(beep);
 	KVSCSC(buttonctl);
+	KVSCSC(cap);
 	KVSCSC(chanadmin);
 	KVSCSC(chanowner);
 	KVSCSC(ctcp);

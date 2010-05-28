@@ -53,6 +53,7 @@ namespace KviKvsCoreSimpleCommands
 		_REGCMD("ban",ban)
 		_REGCMD("beep",beep)
 		_REGCMD("buttonctl",buttonctl)
+		_REGCMD("cap",cap)
 		_REGCMD("chanadmin",chanadmin)
 		_REGCMD("chanowner",chanowner)
 		_REGCMD("codepage",rfc2812wrapper)

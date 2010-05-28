@@ -318,7 +318,8 @@ void KviServerParser::parseNumeric005(KviIrcMessage *msg)
 			while(*aux && (*aux != ' '))aux++;
 			while(*aux == ' ')aux++;
 			if(*aux == ':')aux++;
-			if(!msg->haltOutput())msg->console()->output(KVI_OUT_SERVERINFO,__tr2qs("This server supports: %s"),msg->connection()->decodeText(aux).toUtf8().data());
+			if(!msg->haltOutput())
+				msg->console()->output(KVI_OUT_SERVERINFO,__tr2qs("This server supports: %s"),msg->connection()->decodeText(aux).toUtf8().data());
 			if(bNamesx || bUhNames) {
 				msg->connection()->sendFmtData("PROTOCTL %s %s",bNamesx ? "NAMESX" : "", bUhNames ? "UHNAMES" : "");
 			}
@@ -346,7 +347,8 @@ void KviServerParser::parseNumericMotd(KviIrcMessage *msg)
 	// 372: RPL_ENDOFMOTD [I,E,U,D]
 	// :prefix 376 target :End of /MOTD command.
 	// FIXME: #warning "SKIP MOTD , MOTD IN A SEPARATE WINDOW , SILENT ENDOFMOTD , MOTD IN ACTIVE WINDOW"
-	if(!msg->haltOutput())msg->console()->outputNoFmt(KVI_OUT_MOTD,msg->connection()->decodeText(msg->safeTrailing()));
+	if(!msg->haltOutput())
+		msg->console()->outputNoFmt(KVI_OUT_MOTD,msg->connection()->decodeText(msg->safeTrailing()));
 
 	if(msg->numeric() == RPL_ENDOFMOTD)
 	{
@@ -921,7 +923,6 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 		{
 			case 0:
 				// used a server specific nickname
-				;
 				if(KVI_OPTION_STRING(KviOption_stringNickname1).trimmed().isEmpty())
 					KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
 				szNextNick = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
@@ -1002,8 +1003,7 @@ void KviServerParser::parseNumericUnavailResource(KviIrcMessage *msg)
 		{
 			QString szNk = msg->connection()->decodeText(msg->safeParam(1));
 			QString szWText = msg->connection()->decodeText(msg->safeTrailing());
-			msg->console()->output(KVI_OUT_NICKNAMEPROBLEM,
-				"\r!n\r%Q\r: %Q",&szNk,&szWText);
+			msg->console()->output(KVI_OUT_NICKNAMEPROBLEM,"\r!n\r%Q\r: %Q",&szNk,&szWText);
 		}
 	}
 }
@@ -1040,8 +1040,7 @@ void KviServerParser::otherChannelError(KviIrcMessage *msg)
 		if(!pOut)pOut = (KviWindow *)(msg->console());
 		QString szChannel = msg->connection()->decodeText(msg->safeParam(1));
 		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
-		pOut->output(KVI_OUT_GENERICERROR,
-			"\r!c\r%Q\r: %Q",&szChannel,&szWText);
+		pOut->output(KVI_OUT_GENERICERROR,"\r!c\r%Q\r: %Q",&szChannel,&szWText);
 	}
 }
 
@@ -2196,7 +2195,7 @@ void KviServerParser::parseNumericStartTls(KviIrcMessage * msg)
 
 	switch(msg->numeric())
 	{
-		case 670:
+		case RPL_STARTTLSOK:
 			//670 is used on some ircd as a whois reply: these ircds will not be able to
 			//support starttls anyway.. see ticket #682
 			if(!msg->connection()->stateData()->sentStartTls())
@@ -2204,18 +2203,19 @@ void KviServerParser::parseNumericStartTls(KviIrcMessage * msg)
 				parseNumericWhoisOther(msg);
 				return;
 			}
-			debug("STARTTLS OK");
 			bEnable = true;
-			break;
-		case 691:
-			debug("STARTTLS FAIL");
+		break;
+		case RPL_STARTTLSFAIL:
 			bEnable = false;
-			break;
+		break;
 	}
 
-	#ifdef COMPILE_SSL_SUPPORT
+#ifdef COMPILE_SSL_SUPPORT
 	msg->connection()->enableStartTlsSupport(bEnable);
-	#endif
+#else //!COMPILE_SSL_SUPPORT
+	if(!msg->haltOutput())
+		msg->console()->output(KVI_OUT_GENERICERROR,__tr2qs("STARTTLS reply received but SSL support is not complied in: ignoring"));
+#endif //!COMPILE_SSL_SUPPORT
 }
 
 void KviServerParser::parseNumericNotRegistered(KviIrcMessage * msg)
@@ -2223,8 +2223,28 @@ void KviServerParser::parseNumericNotRegistered(KviIrcMessage * msg)
 	// 451: ERR_NOTREGISTERED
 	// :prefix 451 PING :You have not registered
 
-	if(msg->connection()->stateData()->isInsideCapLs())
-		msg->connection()->handleFailedCapLs();
+	if(msg->connection()->stateData()->isInsideInitialCapLs())
+	{
+		msg->connection()->handleFailedInitialCapLs();
+		return;
+	}
+	
+	// if not registered yet and a CAP LS request was sent out then
+	// hide it (WE have triggered the error).
+	if(msg->connection()->stateData()->ignoreOneYouHaveNotRegisteredError())
+	{
+		// eat it once, silently.
+		msg->connection()->stateData()->setIgnoreOneYouHaveNotRegisteredError(false);
+		return;
+	}
+
+	// else we didn't send CAP LS so better show this to the user
+	if(!msg->haltOutput())
+	{
+		QString szCmd = msg->connection()->decodeText(msg->safeParam(0));
+		QString szErrorText = msg->connection()->decodeText(msg->safeTrailing());
+		msg->console()->output(KVI_OUT_GENERICERROR,"%Q: %Q",&szCmd,&szErrorText);
+	}
 }
 
 // SASL support
@@ -2237,13 +2257,11 @@ void KviServerParser::parseNumericSaslLogin(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 		QString szParam=msg->connection()->decodeText(msg->safeParam(2));
-		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("Authenticated as %Q"),
-			     &szParam
-			     );
+		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("Authenticated as %Q"),&szParam);
 	}
 
 	if(msg->connection()->stateData()->isInsideAuthenticate())
-		msg->connection()->endCapLs();
+		msg->connection()->endInitialCapNegotiation();
 }
 
 void KviServerParser::parseNumericSaslSuccess(KviIrcMessage * msg)
@@ -2258,7 +2276,7 @@ void KviServerParser::parseNumericSaslSuccess(KviIrcMessage * msg)
 	}
 
 	if(msg->connection()->stateData()->isInsideAuthenticate())
-		msg->connection()->endCapLs();
+		msg->connection()->endInitialCapNegotiation();
 }
 
 void KviServerParser::parseNumericSaslFail(KviIrcMessage * msg)
@@ -2273,11 +2291,9 @@ void KviServerParser::parseNumericSaslFail(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 		QString szParam=msg->connection()->decodeText(msg->safeTrailing());
-		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("SASL Authentication error: %Q"),
-			     &szParam
-			     );
+		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("SASL Authentication error: %Q"),&szParam);
 	}
 
 	if(msg->connection()->stateData()->isInsideAuthenticate())
-		msg->connection()->endCapLs();
+		msg->connection()->endInitialCapNegotiation();
 }

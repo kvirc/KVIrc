@@ -341,19 +341,21 @@ void KviIrcConnection::linkEstabilished()
 		 * on slow connections.
 		 */
 
-		m_pStateData->setInsideCapLs(true);
-		sendFmtData("CAP LS\r\nPING :%s",target()->server()->hostName().data());
+		m_pStateData->setInsideInitialCapLs(true);
+		m_pStateData->setIgnoreOneYouHaveNotRegisteredError(true);
+		
+		sendFmtData("CAP LS\r\nPING :%Q",&(target()->server()->hostName()));
 	} else {
 		loginToIrcServer();
 	}
 }
 
-void KviIrcConnection::handleCapLs()
+void KviIrcConnection::handleInitialCapLs()
 {
-	if(!m_pStateData->isInsideCapLs())
-		return;
+	if(!m_pStateData->isInsideInitialCapLs())
+		return; // We shouldn't be here...
 
-	m_pStateData->setInsideCapLs(false);
+	m_pStateData->setInsideInitialCapLs(false);
 
 	// STARTTLS support: this has to be checked first because it could imply
 	// a full cap renegotiation 
@@ -385,19 +387,19 @@ void KviIrcConnection::handleCapLs()
 
 	if(szRequests.isEmpty())
 	{
-		endCapLs();
+		endInitialCapNegotiation();
 	} else {
 		sendFmtData("CAP REQ :%s",szRequests.trimmed().toUtf8().data());
-		m_pStateData->setInsideCapReq(true);
+		m_pStateData->setInsideInitialCapReq(true);
 	}
 }
 
-void KviIrcConnection::handleCapAck()
+void KviIrcConnection::handleInitialCapAck()
 {
-	if(!m_pStateData->isInsideCapReq())
-		return;
+	if(!m_pStateData->isInsideInitialCapReq())
+		return; // We shouldn't be here
 
-	m_pStateData->setInsideCapReq(false);
+	m_pStateData->setInsideInitialCapReq(false);
 	
 	bool bUsed=false;
 
@@ -417,8 +419,8 @@ void KviIrcConnection::handleCapAck()
 #endif
 	}
 
-
-	if(!bUsed) endCapLs();
+	if(!bUsed)
+		endInitialCapNegotiation();
 }
 
 void KviIrcConnection::handleAuthenticate(KviStr & szAuth)
@@ -459,21 +461,21 @@ void KviIrcConnection::handleAuthenticate(KviStr & szAuth)
 	}
 }
 
-void KviIrcConnection::handleCapNak()
+void KviIrcConnection::handleInitialCapNak()
 {
-	endCapLs();
+	endInitialCapNegotiation();
 }
 
-void KviIrcConnection::endCapLs()
+void KviIrcConnection::endInitialCapNegotiation()
 {
 	m_pStateData->setInsideAuthenticate(false);
 	sendFmtData("CAP END");
 	loginToIrcServer();
 }
 
-void KviIrcConnection::handleFailedCapLs()
+void KviIrcConnection::handleFailedInitialCapLs()
 {
-	m_pStateData->setInsideCapLs(false);
+	m_pStateData->setInsideInitialCapLs(false);
 	loginToIrcServer();
 }
 
@@ -1076,7 +1078,7 @@ void KviIrcConnection::trySTARTTLS()
 {
 	// Check if the server supports STARTTLS protocol and we want to
 	// connect through it
-	debug("Sending STARTTLS command...");
+	//debug("Sending STARTTLS command...");
 	if(!sendFmtData("STARTTLS"))
 	{
 		// Cannot send command
@@ -1092,7 +1094,7 @@ void KviIrcConnection::enableStartTlsSupport(bool bEnable)
 	{
 		// Ok, the server supports STARTTLS protocol
 		// ssl handshake e switch del socket
-		debug("Starting SSL handshake...");
+		//debug("Starting SSL handshake...");
 		link()->socket()->enterSSLMode(); // FIXME: this should be forwarded through KviIrcLink, probably
 	} else {
 		// The server does not support STARTTLS
@@ -1383,6 +1385,13 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 {
 	if(context()->state() == KviIrcContext::Connected)
 		return;
+
+	// Stop ignoring ERR_NOTREGISTERED errors. This is related to the initial CAP LS message.
+	// Well.. we should already have stopped ignoring the errors as we should have received
+	// the one we expected (because of the PING after CAP LS). Moreover the server shouldn't
+	// be sending these messages after the login has been completed.
+	// ...but to be on the safe side we just disable the special handling here. 
+	m_pStateData->setIgnoreOneYouHaveNotRegisteredError(false); 
 
 	context()->loginComplete();
 
