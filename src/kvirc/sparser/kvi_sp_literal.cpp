@@ -2011,13 +2011,35 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 		msg->connection()->serverInfo()->setSupportsCaps(szProtocols);
 		msg->connection()->handleCapLs();
 	} else if(szCmd == "ACK") {
+		//extensions preceeded by a minus sign "-" are disabled, "+" or no prefix are enabled
+		QStringList szlDisabledExtensions, szlEnabledExtensions, szlExtensions;
+		szlExtensions = szProtocols.split(QChar(' '), QString::SkipEmptyParts);
+		for(int i=0;i<szlExtensions.size(); ++i)
+		{
+			if(szlExtensions.at(i).left(1)=='-')
+			{
+				szlDisabledExtensions << szlExtensions.at(i).mid(1);
+			} else {
+				if(szlExtensions.at(i).left(1)=='+')
+				{
+					szlEnabledExtensions << szlExtensions.at(i).mid(1);
+				} else {
+					szlEnabledExtensions << szlExtensions.at(i);
+				}
+			}
+		}
 		if(!msg->haltOutput())
 		{
-			msg->console()->output(KVI_OUT_CAP,
-				__tr2qs("Enabled CAP Extensions: %Q"),
-				&szProtocols);
+			if(szlEnabledExtensions.size() > 0)
+				msg->console()->output(KVI_OUT_CAP,
+						__tr2qs("Enabled CAP Extensions: %s"),
+						szlEnabledExtensions.join(" ").toUtf8().data());
+			if(szlDisabledExtensions.size() > 0)
+				msg->console()->output(KVI_OUT_CAP,
+						__tr2qs("Disabled CAP Extensions: %s"),
+						szlDisabledExtensions.join(" ").toUtf8().data());
 		}
-		msg->connection()->serverInfo()->setEnableCaps(szProtocols);
+		msg->connection()->serverInfo()->setEnableCaps(szlEnabledExtensions.join(" "));
 		msg->connection()->handleCapAck();
 	} else if(szCmd == "NAK") {
 		if(!msg->haltOutput())
