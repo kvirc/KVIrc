@@ -33,9 +33,9 @@
 #include "kvi_msgbox.h"
 #include "kvi_buildinfo.h"
 #ifdef COMPILE_DBUS_SUPPORT
-#ifndef COMPILE_KDE_SUPPORT // 'cause kde adds an interface itself
-	#include "kvi_dbusadaptor.h"
-#endif
+	#ifndef COMPILE_KDE_SUPPORT // 'cause kde adds an interface itself
+		#include "kvi_dbusadaptor.h"
+	#endif
 #endif
 #ifndef COMPILE_NO_IPC
 	extern bool kvi_sendIpcMessage(const char * message); // kvi_ipc.cpp
@@ -346,26 +346,36 @@ int main(int argc, char ** argv)
 		return ((iRetCode == KVI_ARGS_RETCODE_ERROR) ? (-1) : 0);
 	}
 
-	KviApp * pTheApp;
-
 #ifdef COMPILE_KDE_SUPPORT
-	KAboutData * pAbout = new KAboutData("kvirc", "kvirc", ki18n("KVIrc"), KVI_VERSION);
-	#if KDE_IS_VERSION(4,3,0)
-		pAbout->setBugAddress("https://svn.kvirc.de/kvirc/");
-	#endif
+
+	KAboutData oAboutData(
+			"kvirc", // internal program name
+			"kvirc", // message catalogue name
+			ki18n("KVIrc"), // user-visible program name
+			KVI_VERSION, // program version
+			ki18n("Visual IRC Client"), // description
+			KAboutData::License_GPL, // license
+			ki18n("(c) 1998-2010 The KVIrc Development Team"),
+			ki18n("???"), // *some other text* ????
+			"http://www.kvirc.net", // homepage
+			"https://svn.kvirc.de/kvirc/" // bug address (FIXME: this would be an E-MAIL address...)
+		);
+
 	//fake argc/argv initialization: kde will use argv[0] as out appName in some dialogs
 	// (eg: kdebase/workspace/kwin/killer/killer.cpp)
-	KCmdLineArgs::init(1, &argv[0], pAbout);
+	KCmdLineArgs::init(1, &argv[0], &oAboutData);
+
 #endif
 
-	pTheApp = new KviApp(argc,argv);
+	KviApp * pTheApp = new KviApp(argc,argv);
 
 #ifdef COMPILE_DBUS_SUPPORT
-#ifndef COMPILE_KDE_SUPPORT
-	new KviDbusAdaptor(pTheApp);
-	QDBusConnection::sessionBus().registerObject("/MainApplication", pTheApp);
+	#ifndef COMPILE_KDE_SUPPORT
+		new KviDbusAdaptor(pTheApp); // FIXME: shouldn't this be deleted by someone ?
+		QDBusConnection::sessionBus().registerObject("/MainApplication", pTheApp);
+	#endif
 #endif
-#endif
+
 	KviStr szRemoteCommand = a.szExecCommand;
 	if(a.szExecRemoteCommand.hasData())
 	{
@@ -418,7 +428,9 @@ int main(int argc, char ** argv)
 			}
 			delete pTheApp;
 			return 0;
-		} else if(a.bExecuteCommandAndClose)
+		}
+		
+		if(a.bExecuteCommandAndClose)
 		{
 			delete pTheApp;
 			return 0;
@@ -437,6 +449,6 @@ int main(int argc, char ** argv)
 	// :)
 
 	delete pTheApp;
-	pTheApp = 0;
+
 	return iRetVal;
 }

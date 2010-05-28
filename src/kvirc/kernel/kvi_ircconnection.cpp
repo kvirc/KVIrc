@@ -742,10 +742,7 @@ bool KviIrcConnection::sendFmtData(const char * pcFmt, ...)
 	}
 
 	// Trigger OnOutboundTraffic event
-	KviKvsVariantList * pParams = new KviKvsVariantList();
-	pParams->append(szMsg);
-
-	KVS_TRIGGER_EVENT(KviEvent_OnOutboundTraffic,m_pConsole->activeWindow(),pParams);
+	KVS_TRIGGER_EVENT_1(KviEvent_OnOutboundTraffic,m_pConsole->activeWindow(),szMsg);
 
 	return m_pLink->sendPacket(pData);
 }
@@ -780,10 +777,7 @@ bool KviIrcConnection::sendData(const char * pcBuffer, int iBuflen)
 	}
 
 	// Trigger OnOutboundTraffic event
-	KviKvsVariantList * pParams = new KviKvsVariantList();
-	pParams->append(szMsg);
-
-	KVS_TRIGGER_EVENT(KviEvent_OnOutboundTraffic,m_pConsole->activeWindow(),pParams);
+	KVS_TRIGGER_EVENT_1(KviEvent_OnOutboundTraffic,m_pConsole->activeWindow(),szMsg);
 
 	return m_pLink->sendPacket(pData);
 }

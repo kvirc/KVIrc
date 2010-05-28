@@ -74,11 +74,11 @@ KviTalGroupBox::~KviTalGroupBox()
 
 void KviTalGroupBox::childEvent(QChildEvent * e)
 {
-	if(m_pLayout != layout())
-		return;
 	if(!e->child()->isWidgetType())
 		return;
 	if(e->child()->parent() != this)
+		return;
+	if(m_pLayout != layout())
 		return;
 
 	switch(e->type())

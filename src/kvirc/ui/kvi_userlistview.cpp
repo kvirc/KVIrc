@@ -1196,16 +1196,7 @@ bool KviUserListView::partInternal(const QString & szNick, bool bRemove)
 			} else pEntry = pEntry->m_pNext;
 		}
 
-		if(bRemove)
-			m_pIrcUserDataBase->removeUser(szNick,pUserEntry->m_pGlobalData);
-
-		if(!m_pIrcUserDataBase->find(szNick))
-		{
-			//completelly removed. avatar is deleted
-			pUserEntry->resetAvatarConnection();
-		}
-
-		// now just remove it
+		// decrease counts first
 		if(pUserEntry->m_pGlobalData->isIrcOp())
 			m_iIrcOpCount--;
 		if(pUserEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
@@ -1220,6 +1211,18 @@ bool KviUserListView::partInternal(const QString & szNick, bool bRemove)
 			m_iVoiceCount--;
 		if(pUserEntry->m_iFlags & KVI_USERFLAG_USEROP)
 			m_iUserOpCount--;
+
+		if(bRemove)
+		{
+			m_pIrcUserDataBase->removeUser(szNick,pUserEntry->m_pGlobalData);
+
+			if(!m_pIrcUserDataBase->find(szNick))
+			{
+				//completelly removed. avatar is deleted
+				pUserEntry->resetAvatarConnection();
+			}
+		}
+
 		if(pUserEntry->m_bSelected)
 		{
 			m_iSelectedCount--;

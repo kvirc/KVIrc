@@ -110,7 +110,8 @@ void KviIrcLink::destroySocket()
 
 	if(m_pSocket)
 	{
-		//we use deleteLater() here, since m_pSocket can receive events from a QSocketNotifier
+		// We use deleteLater() here, since we could actually be inside an event
+		// related to the QSocketNotifier that the socket is attached to...
 		m_pSocket->deleteLater();
 		m_pSocket = 0;
 	}

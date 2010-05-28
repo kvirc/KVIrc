@@ -44,7 +44,7 @@
 //
 //
 
-// THESE TWO ARE SLOW, but allow reusing the params
+// These two allow reusing the parameter lists (but may require more code)
 #define KVS_TRIGGER_EVENT(__idx,__wnd,__parms) \
 	if(KviKvsEventManager::instance()->hasAppHandlers(__idx)) \
 		KviKvsEventManager::instance()->trigger(__idx,__wnd,__parms);
@@ -54,7 +54,7 @@
 		KviKvsEventManager::instance()->trigger(__idx,__wnd,__parms) : false)
 
 
-// FAST CALLING MACROS
+// These require less code (but param lists can't be reused)
 #define KVS_TRIGGER_EVENT_0(__idx,__wnd) \
 	if(KviKvsEventManager::instance()->hasAppHandlers(__idx)) \
 	{ \

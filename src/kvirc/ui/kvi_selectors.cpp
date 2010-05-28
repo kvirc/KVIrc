@@ -636,7 +636,8 @@ void KviFontSelector::changeClicked()
 {
 	bool bOk;
 	QFont tmp = QFontDialog::getFont(&bOk,m_pButton->font());
-	if(bOk)setButtonFont(&tmp);
+	if(bOk)
+		setButtonFont(&tmp);
 }
 
 void KviFontSelector::commit()

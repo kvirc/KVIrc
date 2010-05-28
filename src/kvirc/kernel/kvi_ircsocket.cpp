@@ -166,7 +166,9 @@ void KviIrcSocket::reset()
 
 	m_bInProcessData = false;
 
-	if(m_pFlushTimer->isActive())m_pFlushTimer->stop();
+	if(m_pFlushTimer->isActive())
+		m_pFlushTimer->stop();
+
 	queue_removeAllMessages();
 
 	setState(Idle);

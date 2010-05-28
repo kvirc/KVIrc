@@ -45,9 +45,10 @@ KviIrcUserEntry::KviIrcUserEntry(const QString &user,const QString &host)
 	m_bIrcOp = false;
 	m_eGender = Unknown;
 	m_bBot = false;
-	m_bNotFoundRegUserLoockup=false;
-	m_bUseCustomColor=false;
-	m_iSmartNickColor=-1;
+	m_bNotFoundRegUserLoockup = false;
+	m_bUseCustomColor = false;
+	m_bAvatarRequested = false;
+	m_iSmartNickColor = -1;
 }
 
 void KviIrcUserEntry::setRealName(const QString &rn)
@@ -245,7 +246,8 @@ KviIrcUserEntry * KviIrcUserDataBase::insertUser(const QString &nick,const QStri
 void KviIrcUserDataBase::removeUser(const QString &nick,KviIrcUserEntry * e)
 {
 	e->m_nRefs--;
-	if(e->m_nRefs == 0)m_pDict->remove(nick);
+	if(e->m_nRefs == 0)
+		m_pDict->remove(nick);
 }
 
 void KviIrcUserDataBase::setupConnectionWithReguserDb()

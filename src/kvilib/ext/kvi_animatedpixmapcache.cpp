@@ -30,33 +30,52 @@
 
 #define FRAME_DELAY 100
 
-static KviAnimatedPixmapCache* g_pAnimatedCache = 0;
-static QPixmap* g_pDummyPixmap = 0;
+KviAnimatedPixmapCache * KviAnimatedPixmapCache::m_pInstance = NULL;
+static QPixmap * g_pDummyPixmap = NULL;
 
 KviAnimatedPixmapCache::KviAnimatedPixmapCache()
 {
-	g_pAnimatedCache = this;
+	m_pInstance = this;
 	m_animationTimer.setInterval(FRAME_DELAY);
 	connect(&m_animationTimer,SIGNAL(timeout()),this,SLOT(timeoutEvent()));
 }
 
-KviAnimatedPixmapCache::~KviAnimatedPixmapCache() {
-	if(g_pDummyPixmap) {
+KviAnimatedPixmapCache::~KviAnimatedPixmapCache()
+{
+	if(g_pDummyPixmap)
+	{
 		delete g_pDummyPixmap;
+		g_pDummyPixmap = NULL;
 	}
-	g_pAnimatedCache = 0;
+	m_pInstance = NULL;
 }
 
-KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalLoad(QString szFile) {
+void KviAnimatedPixmapCache::init()
+{
+	if(m_pInstance)
+		return;
+	m_pInstance = new KviAnimatedPixmapCache();
+}
+
+void KviAnimatedPixmapCache::done()
+{
+	if(!m_pInstance)
+		return;
+	delete m_pInstance;
+	m_pInstance = NULL;
+}
+
+KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalLoad(const QString &szFile)
+{
 	m_cacheMutex.lock();
 
 	Data* newData = 0;
 
 	QMultiHash<QString, Data*>::iterator i = m_hCache.find(szFile);
-	while (i != m_hCache.end() && i.key() == szFile && !newData) {
-		if (!i.value()->resized) {
+	while (i != m_hCache.end() && i.key() == szFile && !newData)
+	{
+		if (!i.value()->resized)
 			newData = i.value();
-		}
 		++i;
 	}
 
@@ -85,7 +104,9 @@ KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalLoad(QString szFil
 
 	return newData;
 }
-KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalResize(Data* data, QSize size) {
+
+KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalResize(Data* data,const QSize &size)
+{
 	m_cacheMutex.lock();
 
 	bool hasToBeResized = false;
@@ -126,7 +147,8 @@ KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalResize(Data* data,
 	return newData;
 }
 
-void KviAnimatedPixmapCache::internalFree(Data* data) {
+void KviAnimatedPixmapCache::internalFree(Data* data)
+{
 	m_cacheMutex.lock();
 	data->refs--;
 	if(data->refs==0)
@@ -139,29 +161,6 @@ void KviAnimatedPixmapCache::internalFree(Data* data) {
 		delete data;
 	}
 	m_cacheMutex.unlock();
-}
-
-KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::load(QString szFileName) {
-	if (!g_pAnimatedCache) {
-		new KviAnimatedPixmapCache();
-	}
-	return g_pAnimatedCache->internalLoad(szFileName);
-}
-
-
-KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::resize(KviAnimatedPixmapCache::Data* data, QSize size) {
-	if (!g_pAnimatedCache) {
-		new KviAnimatedPixmapCache();
-	}
-	return g_pAnimatedCache->internalResize(data, size);
-}
-
-
-void KviAnimatedPixmapCache::free(KviAnimatedPixmapCache::Data* data) {
-	if (!g_pAnimatedCache) {
-		new KviAnimatedPixmapCache();
-	}
-	g_pAnimatedCache->internalFree(data);
 }
 
 void  KviAnimatedPixmapCache::internalScheduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver)
@@ -230,25 +229,16 @@ void KviAnimatedPixmapCache::timeoutEvent()
 		m_animationTimer.stop();
 }
 
-void  KviAnimatedPixmapCache::scheduleFrameChange(uint when,KviAnimatedPixmapInterface* receiver)
-{
-	if (g_pAnimatedCache)
-	{
-		g_pAnimatedCache->internalScheduleFrameChange(when,receiver);
-	}
-}
-
 QPixmap* KviAnimatedPixmapCache::dummyPixmap()
 {
 	if(!g_pDummyPixmap)
-	{
 		g_pDummyPixmap = new QPixmap();
-	}
 	return g_pDummyPixmap;
 }
 
 void KviAnimatedPixmapCache::internalNotifyDelete(
-		KviAnimatedPixmapInterface* receiver)
+		KviAnimatedPixmapInterface* receiver
+	)
 {
 	m_timerMutex.lock();
 
@@ -268,10 +258,3 @@ void KviAnimatedPixmapCache::internalNotifyDelete(
 	m_timerMutex.unlock();
 }
 
-void KviAnimatedPixmapCache::notifyDelete(KviAnimatedPixmapInterface* receiver)
-{
-	if (g_pAnimatedCache)
-	{
-		g_pAnimatedCache->internalNotifyDelete(receiver);
-	}
-}

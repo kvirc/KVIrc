@@ -105,17 +105,18 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	 */
 	
 	// try absolute path
-	QFileInfo * f= new QFileInfo(szParam);
-	if(!f->exists())
+	QFileInfo f(szParam);
+
+	if(!f.exists())
 	{
 		// try relative path (to local help)
 		g_pApp->getLocalKvircDirectory(szHelpDir,KviApp::Help);
 		dirHelp = QDir(szHelpDir);
 		szDoc = dirHelp.absoluteFilePath(szParam);
 		qDebug("No abs path, trying local relative path: %s",szDoc.toUtf8().data());
-		f->setFile(szDoc);
+		f.setFile(szDoc);
 
-		if(!f->exists())
+		if(!f.exists())
 		{
 			//try relative path (to global help)
 			g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
@@ -123,12 +124,12 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 			szDoc = dirHelp.absoluteFilePath(szParam);
 			qDebug("No local relative, trying global relative path: %s",szDoc.toUtf8().data());
-			f->setFile(szDoc);
+			f.setFile(szDoc);
 		}
 	}
 
 	// Search in help
-	if(!f->exists())
+	if(!f.exists())
 	{
 		qDebug("No path, trying search..");
 		if(g_pDocIndex)
@@ -151,7 +152,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 			if (i!=-1)
 			{
 				szDoc=QUrl(g_pDocIndex->documentList()[ i ]).toLocalFile();
-				f->setFile(szDoc);
+				f.setFile(szDoc);
 			} else {
 				QString szTmpDocName(".*/doc_");
 				szTmpDocName.append(QRegExp::escape(szParam));
@@ -160,19 +161,19 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 				if (i!=-1)
 				{
 					szDoc=QUrl(g_pDocIndex->documentList()[ i ]).toLocalFile();
-					f->setFile(szDoc);
+					f.setFile(szDoc);
 				}
 			}
 		}
 	}
 
 	// Everything failed => error
-	if(!f->exists())
+	if(!f.exists())
 	{
 		szDoc = dirHelp.absoluteFilePath("nohelpavailable.html");
 
 		qDebug("Document not found, defaulting to error page: %s",szDoc.toUtf8().data());
-		f->setFile(szDoc);
+		f.setFile(szDoc);
 	}
 
 	if(!c->switches()->find('n',"new"))
@@ -181,19 +182,19 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 		if(w)
 		{
-			w->textBrowser()->setSource(QUrl::fromLocalFile(f->absoluteFilePath()));
+			w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
 			return true;
 		}
 	}
 	if(c->switches()->find('m',"mdi"))
 	{
 		KviHelpWindow *w = new KviHelpWindow(c->window()->frame(),"Help browser");
-		w->textBrowser()->setSource(QUrl::fromLocalFile(f->absoluteFilePath()));
+		w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
 		c->window()->frame()->addWindow(w);
 	} else {
 		KviHelpWidget *w = new KviHelpWidget(c->window()->frame()->splitter(),
 			c->window()->frame(),true);
-		w->textBrowser()->setSource(QUrl::fromLocalFile(f->absoluteFilePath()));
+		w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
 		w->show();
 	}
 

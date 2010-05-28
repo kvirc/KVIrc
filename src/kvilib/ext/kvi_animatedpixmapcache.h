@@ -31,13 +31,15 @@
 #include <QTimer>
 #include "kvi_settings.h"
 
-class KviAnimatedPixmapInterface {
+class KviAnimatedPixmapInterface
+{
 public:
 	 virtual void nextFrame(bool) = 0;
 	 virtual ~KviAnimatedPixmapInterface() {};
 };
 
-class KVILIB_API KviAnimatedPixmapCache : public QObject {
+class KVILIB_API KviAnimatedPixmapCache : public QObject
+{
         Q_OBJECT
 public:
 	/*
@@ -47,7 +49,7 @@ public:
 	 * It provides copyconstructor, wich makes possible to simple
 	 * assign two containers with this classes.
 	 *
-	 * All data will be dublicated in such case.
+	 * All data will be duplicated in such case.
 	 */
 	class FrameInfo {
 	public:
@@ -95,38 +97,69 @@ public:
 				}
 		}
 	};
+
 protected:
-
-	mutable QMutex                               m_cacheMutex;
-	mutable QMutex                               m_timerMutex;
-
-	QMultiHash<QString,Data*>                    m_hCache;
-	QMultiMap<long long,KviAnimatedPixmapInterface*> m_timerData;
-	QTimer                                       m_animationTimer;
-
-	/*
-	 * This class is a singletone.
-	 * It doesn't allow to be created directly;
-	 */
+	//
+	// This class is a singleton.
+	// It can't be created directly
+	//
 	KviAnimatedPixmapCache();
-
-	Data* internalLoad  (QString szFile);
-	Data* internalResize(Data* data,QSize size);
-
-	void  internalFree(Data* data);
-	inline void  internalScheduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver);
-	void  internalNotifyDelete(KviAnimatedPixmapInterface* receiver);
-protected slots:
-        virtual void timeoutEvent();
-public:
 	virtual ~KviAnimatedPixmapCache();
 
-	static void  scheduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver);
-	static Data* load(QString szFileName);
-	static Data* resize(Data* data,QSize size);
-	static void  free(Data* data);
+protected:
+
+	mutable QMutex m_cacheMutex;
+	mutable QMutex m_timerMutex;
+
+	QMultiHash<QString,Data*> m_hCache;
+	QMultiMap<long long,KviAnimatedPixmapInterface*> m_timerData;
+	QTimer m_animationTimer;
+
+	static KviAnimatedPixmapCache * m_pInstance;
+
+protected:
+
+	Data* internalLoad(const QString &szFile);
+	Data* internalResize(Data* data,const QSize &size);
+	void internalFree(Data* data);
+
+	void internalScheduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver);
+	void internalNotifyDelete(KviAnimatedPixmapInterface* receiver);
+
+protected slots:
+	virtual void timeoutEvent();
+
+public:
+
+	static void init();
+	static void done();
+
+	static void  scheduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver)
+	{
+		m_pInstance->internalScheduleFrameChange(delay,receiver);
+	}
+
+	static Data* load(const QString &szFileName)
+	{
+		return m_pInstance->internalLoad(szFileName);
+	}
+
+	static Data* resize(Data* data,const QSize &size)
+	{
+		return m_pInstance->internalResize(data,size);
+	}
+
+	static void free(Data* data)
+	{
+		m_pInstance->internalFree(data);
+	}
+	
 	static QPixmap* dummyPixmap();
-	static void notifyDelete(KviAnimatedPixmapInterface* receiver);
+	
+	static void notifyDelete(KviAnimatedPixmapInterface* receiver)
+	{
+		m_pInstance->internalNotifyDelete(receiver);
+	}
 };
 
 #endif /* KVI_ANIMATEDPIXMAPCACHE_H_ */

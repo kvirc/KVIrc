@@ -72,6 +72,7 @@
 #include "kvi_stringconversion.h"
 #include "kvi_useridentity.h"
 #include "kvi_ircview.h"
+#include "kvi_animatedpixmapcache.h"
 
 #ifndef COMPILE_NO_IPC
 	#include "kvi_ipc.h"
@@ -93,6 +94,7 @@
 #include <QTextCodec>
 #include <QMetaObject>
 #include <QTextDocument>
+
 /*
 HACK These 2 hacks are defined because X11 defines Unsorted and None
 which conflicts with QDir and KviApp::KvircSubdir
@@ -326,6 +328,10 @@ void KviApp::setup()
 
 	KVI_SPLASH_SET_PROGRESS(12);
 
+	KviAnimatedPixmapCache::init();
+
+	KVI_SPLASH_SET_PROGRESS(13);
+
 	// Load the remaining configuration
 	// Note that loadOptions() assumes that the current progress is 12 and
 	// will bump it up to 45 in small steps
@@ -556,17 +562,21 @@ KviApp::~KviApp()
 	destroyIpcSentinel();
 #endif
 
-	if(g_pSplashScreen)delete g_pSplashScreen;
-	if(g_pCtcpPageDialog)delete g_pCtcpPageDialog;
+	if(g_pSplashScreen)
+		delete g_pSplashScreen;
+	if(g_pCtcpPageDialog)
+		delete g_pCtcpPageDialog;
 
 	// if we still have a frame: kill it
-	if(g_pFrame)delete g_pFrame;
+	if(g_pFrame)
+		delete g_pFrame;
 	g_pActiveWindow = 0; // .. but it should be already 0 anyway
 
 	// execute pending deletes (this may still contain some UI elements)
 	//delete g_pGarbageCollector;
 
-	if(!m_bSetupDone)return; // killed with IPC (nothing except the m_pFrameList was created yet)
+	if(!m_bSetupDone)
+		return; // killed with IPC (nothing except the m_pFrameList was created yet)
 
 	KviFileTransferManager::cleanup();
 
@@ -635,7 +645,9 @@ KviApp::~KviApp()
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	destroyPseudoTransparency();
 #endif
-	if(m_pPendingAvatarChanges)delete m_pPendingAvatarChanges;
+	if(m_pPendingAvatarChanges)
+		delete m_pPendingAvatarChanges;
+	KviAnimatedPixmapCache::done();
 	// Kill the thread manager.... all the slave threads should have been already terminated ...
 #ifdef COMPILE_SSL_SUPPORT
 	KviSSL::globalDestroy();

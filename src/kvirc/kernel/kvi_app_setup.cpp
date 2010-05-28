@@ -718,27 +718,18 @@ bool KviApp::findLocalKvircDirectory()
 	if(m_szConfigFile.isEmpty())
 	{ 
 		// don't do that if user supplied a config file :)
-		KConfig * pCfg = new KConfig("kvirc");
-		KConfigGroup * pCfgMainGroup = new KConfigGroup(pCfg, "Main");
-		if(pCfg)
-		{
-			if(pCfg->accessMode() == KConfig::ReadWrite)
-			{
-				m_szLocalKvircDir = pCfgMainGroup->readEntry("LocalKvircDirectory");
+		KConfig oKCfg("kvirc");
+		KConfigGroup oKCfgMainGroup(&oKCfg, "Main");
 
-				unsigned int uSourcesDate = pCfgMainGroup->readEntry("SourcesDate").toInt();
-				if(uSourcesDate < KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP)
-				{
-					delete pCfgMainGroup;
-					pCfgMainGroup = 0;
-					return false; // we force a setup anyway
-				}
+		m_szLocalKvircDir = oKCfgMainGroup.readEntry("LocalKvircDirectory");
 
-				// If we have it , ok...done
-				if(checkLocalKvircDirectory())
-					return true;
-			}
-		}
+		unsigned int uSourcesDate = oKCfgMainGroup.readEntry("SourcesDate").toInt();
+		if(uSourcesDate < KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP)
+			return false; // we force a setup anyway
+
+		// If we have it , ok...done
+		if(checkLocalKvircDirectory())
+			return true;
 	}
 #endif //COMPILE_KDE_SUPPORT
 
@@ -767,8 +758,8 @@ bool KviApp::findLocalKvircDirectory()
 		szF += KVI_PATH_SEPARATOR;
 		szF += KVI_HOME_CONFIG_FILE_NAME;
 	}
+
 	//If the file exists , read the first non empty line.
-	//FIXME: LOCALE BROKEN!!!
 	KviConfig cfgx(szF,KviConfig::Read);
 
 	cfgx.setGroup("Main");
@@ -779,9 +770,7 @@ bool KviApp::findLocalKvircDirectory()
 		return false; // we force a setup anyway
 
 	// If we have it , ok...done
-	if(checkLocalKvircDirectory())
-		return true;
-	return false;
+	return checkLocalKvircDirectory();
 }
 
 void KviApp::loadDirectories()
