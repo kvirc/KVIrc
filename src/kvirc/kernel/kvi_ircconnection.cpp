@@ -344,6 +344,8 @@ void KviIrcConnection::linkEstabilished()
 		m_pStateData->setInsideInitialCapLs(true);
 		m_pStateData->setIgnoreOneYouHaveNotRegisteredError(true);
 		
+		// FIXME: The PING method does NOT work with bouncers. We need a timeout here.
+		
 		sendFmtData("CAP LS\r\nPING :%Q",&(target()->server()->hostName()));
 	} else {
 		loginToIrcServer();
