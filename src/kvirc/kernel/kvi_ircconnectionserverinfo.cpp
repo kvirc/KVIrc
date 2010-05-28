@@ -88,52 +88,6 @@ void KviIrcConnectionServerInfo::addSupportedCaps(const QString &szCapList)
 	}
 }
 
-void KviIrcConnectionServerInfo::changeEnabledCapList(const QString &szCapList)
-{
-	m_bSupportsCap = true;
-	QStringList lTmp = szCapList.split(' ',QString::SkipEmptyParts);
-	foreach(QString szCap,lTmp)
-	{
-		// cap modifiers are:
-		//  '-' : disable a capability (should not be present in a LS message...)
-		//  '=' : sticky (can't be disabled once enabled)
-		//  '~' : needs ack for modification
-
-		if(szCap.length() < 1)
-			continue; // shouldn't happen
-
-		bool bRemove = false;
-
-		switch(szCap[0].unicode())
-		{
-			case '-':
-				bRemove = true;
-				// fall through
-			case '~':
-			case '=':
-				szCap.remove(0,1);
-			break;
-			default:
-				// ok
-			break;
-		}
-
-		szCap = szCap.toLower();
-
-		if(bRemove)
-		{
-			m_lEnabledCaps.removeAll(szCap);
-		} else {
-			if(!m_lEnabledCaps.contains(szCap))
-				m_lEnabledCaps.append(szCap);
-		}
-
-		if(!m_lSupportedCaps.contains(szCap))
-			m_lSupportedCaps.append(szCap);
-	}
-}
-
-	
 void KviIrcConnectionServerInfo::setSupportedChannelModes(const QString &szSupportedChannelModes)
 {
 	int pos=-1;

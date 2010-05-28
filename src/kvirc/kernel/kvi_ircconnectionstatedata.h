@@ -28,6 +28,8 @@
 #include "kvi_time.h"
 #include "kvi_qstring.h"
 
+#include <QStringList>
+
 //
 // This class is used as container for miscelaneous connection state variables
 // that do not have a class for their own.
@@ -56,7 +58,15 @@ protected:
 	kvi_time_t   m_tLastReceivedChannelWhoReply;  // the time that we have received our last channel who reply
 	kvi_time_t   m_tLastSentChannelWhoRequest;    // the time that we have sent our last channel who request
 	kvi_time_t   m_tLastReceivedWhoisReply;       // the time that we have received the last whois reply, reset to 0 when we receive an /END OF WHOIS
+	QStringList  m_lEnabledCaps;                  // the CAPs currently enabled
+	bool         m_bIdentifyMsgCapabilityEnabled; // do we have the msg-identity CAP enabled ?
 public:
+	const QStringList & enabledCaps(){ return m_lEnabledCaps; };
+	void changeEnabledCapList(const QString &szCapList);
+
+	bool identifyMsgCapabilityEnabled() const
+		{ return m_bIdentifyMsgCapabilityEnabled; };
+
 	bool sentStartTls(){ return m_bSentStartTls; };
 	void setSentStartTls(){ m_bSentStartTls = true; };
 

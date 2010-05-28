@@ -146,7 +146,6 @@ private:
 	QString m_szPlainModes;
 	bool m_bSupportsCap;
 	QStringList m_lSupportedCaps;
-	QStringList m_lEnabledCaps;
 public:
 	char  registerModeChar() { return m_pServInfo ?  m_pServInfo->getRegisterModeChar() : 0; };
 	const char * software(){ return m_pServInfo ? m_pServInfo->getSoftware() : 0; };
@@ -163,7 +162,6 @@ public:
 	bool supportsModeq(){ return m_bSupportsModeq; };
 	bool supportsCap(){ return m_bSupportsCap; };
 	const QStringList & supportedCaps(){ return m_lSupportedCaps; };
-	const QStringList & enabledCaps(){ return m_lEnabledCaps; };
 	bool supportsWatchList(){ return m_bSupportsWatchList; };
 	bool supportsCodePages(){ return m_bSupportsCodePages; };
 
@@ -190,7 +188,6 @@ protected:
 	void setSupportsWatchList(bool bSupportsWatchList){ m_bSupportsWatchList = bSupportsWatchList; };
 	void setSupportsCodePages(bool bSupportsCodePages){ m_bSupportsCodePages = bSupportsCodePages; };
 	void addSupportedCaps(const QString &szCapList);
-	void changeEnabledCapList(const QString &szCapList);
 	void setMaxTopicLen( int iTopLen ) { m_iMaxTopicLen=iTopLen; };
 	void setMaxModeChanges(int iModes ) { m_iMaxModeChanges=iModes; };
 private:

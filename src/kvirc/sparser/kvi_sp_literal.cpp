@@ -695,6 +695,12 @@ void KviServerParser::parseLiteralKick(KviIrcMessage *msg)
 		_retptr = _txt; _retmsgtype = _type;
 #endif //COMPILE_CRYPT_SUPPORT
 
+enum PrivmsgIdentifyMsgCapState
+{
+	IdentifyMsgCapNotUsed,
+	IdentifyMsgCapUsedNotIdentified,
+	IdentifyMsgCapUsedIdentified
+};
 
 
 void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
@@ -711,12 +717,33 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 	KviRegisteredUser * u = msg->connection()->userDataBase()->registeredUser(szNick,szUser,szHost);
 	//Highlight it?
 
-	// FIXME: 	#warning "DEDICATED CTCP WINDOW ?"
+	PrivmsgIdentifyMsgCapState eCapState = IdentifyMsgCapNotUsed;
+
 	KviStr * pTrailing = msg->trailingString();
 	if(pTrailing)
 	{
+		if(msg->connection()->stateData()->identifyMsgCapabilityEnabled())
+		{
+			switch(*(pTrailing->ptr()))
+			{
+				case '+':
+					// message from identified user
+					eCapState = IdentifyMsgCapUsedIdentified;
+					pTrailing->cutLeft(1); // kill the first char
+				break;
+				case '-':
+					eCapState = IdentifyMsgCapUsedNotIdentified;
+					pTrailing->cutLeft(1); // kill the first char
+				break;
+				default:
+					// nothing interesting
+				break;
+			}
+		}
+
 		if(*(pTrailing->ptr()) == 0x01)
 		{
+			// FIXME: 	#warning "DEDICATED CTCP WINDOW ?"
 			if(pTrailing->len() > 1)
 			{
 				if(pTrailing->lastCharIs(0x01))pTrailing->cutRight(1);
@@ -740,16 +767,15 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 	if(IS_ME(msg,szTarget))
 	{
 		//Ignore it?
-		if (u)
+		if(u)
 		{
-			if (u->isIgnoreEnabledFor(KviRegisteredUser::Query))
+			if(u->isIgnoreEnabledFor(KviRegisteredUser::Query))
 			{
-				if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnIgnoredMessage,msg->console(),szNick,szUser,szHost,szTarget,szMsg)) return;
+				if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnIgnoredMessage,msg->console(),szNick,szUser,szHost,szTarget,szMsg))
+					return;
 
-				if (KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
-				{
+				if(KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
 					console->output(KVI_OUT_IGNORE,__tr2qs("Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
-				}
 				return;
 			}
 		}
@@ -856,9 +882,14 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 		{
 			// ok, we have the query. Trigger the user action anyway
 			query->userAction(szNick,szUser,szHost,KVI_USERACTION_PRIVMSG);
+
 			// decrypt the message if needed
-			KviStr szBuffer; const char * txtptr; int msgtype;
+			KviStr szBuffer;
+			const char * txtptr;
+			int msgtype;
+
 			DECRYPT_IF_NEEDED(query,msg->safeTrailing(),KVI_OUT_QUERYPRIVMSG,KVI_OUT_QUERYPRIVMSGCRYPTED,szBuffer,txtptr,msgtype)
+
 			// trigger the script event and eventually kill the output
 			QString szMsgText = query->decodeText(txtptr);
 			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnQueryMessage,query,szNick,szUser,szHost,szMsgText))
@@ -893,6 +924,11 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 						g_pApp->notifierMessage(query,KVI_SMALLICON_QUERYPRIVMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 					}
 				}
+				
+				// if the message is identified (identify-msg CAP) then re-add the +/- char at the beginning
+				if(eCapState != IdentifyMsgCapNotUsed)
+					szMsgText = QString::fromAscii("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
+
 				console->outputPrivmsg(query,msgtype,szNick,szUser,szHost,szMsgText,iFlags);
 			}
 		} else {
@@ -910,6 +946,11 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 				KviKvsVariantList soundParams(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound)));
 			 	KviKvsScript::run("snd.play $0",console,&soundParams);
 			}
+
+			// if the message is identified (identify-msg CAP) then re-add the +/- char at the beginning
+			if(eCapState != IdentifyMsgCapNotUsed)
+				szMsgText = QString::fromAscii("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
+
 			// spit the message text out
 			if(!msg->haltOutput())
 			{
@@ -974,6 +1015,11 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 			if(!msg->haltOutput())
 			{
 				QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
+
+				// if the message is identified (identify-msg CAP) then re-add the +/- char at the beginning
+				if(eCapState != IdentifyMsgCapNotUsed)
+					szMsgText = QString::fromAscii("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
+
 				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ?
 					console->activeWindow() : (KviWindow *)(console);
 				QString broad;
@@ -990,6 +1036,11 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 
 			if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnChannelMessage,chan,szNick,szUser,szHost,szMsgText,szPrefixes))
 				msg->setHaltOutput();
+
+			// if the message is identified (identify-msg CAP) then re-add the +/- char at the beginning
+			if(eCapState != IdentifyMsgCapNotUsed)
+				szMsgText = QString::fromAscii("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
+
 
 			if(!msg->haltOutput())
 			{
@@ -2036,7 +2087,8 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 		// :prefix CAP <nickname> ACK [*] :<cap1> <cap2> <cap3> ....
 		// All but the last ACK messages have the asterisk
 	
-		msg->connection()->serverInfo()->changeEnabledCapList(szProtocols);
+		msg->connection()->serverInfo()->addSupportedCaps(szProtocols);
+		msg->connection()->stateData()->changeEnabledCapList(szProtocols);
 
 		QString szAsterisk = msg->connection()->decodeText(msg->safeParam(2));
 		bool bLast = szAsterisk != "*";
@@ -2077,7 +2129,7 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 		// :prefix CAP <nickname> LIST [*] :<cap1> <cap2> <cap3> ....
 		// All but the last LIST messages have the asterisk
 
-		msg->connection()->serverInfo()->changeEnabledCapList(szProtocols);
+		msg->connection()->stateData()->changeEnabledCapList(szProtocols);
 
 		if(!msg->haltOutput())
 			msg->console()->output(KVI_OUT_CAP,__tr2qs("Currently enabled capabilities: %Q"),&szProtocols);

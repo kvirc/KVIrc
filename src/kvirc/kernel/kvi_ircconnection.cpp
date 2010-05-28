@@ -369,7 +369,7 @@ void KviIrcConnection::handleInitialCapLs()
 		serverInfo()->supportedCaps().contains("tls",Qt::CaseInsensitive)
 	)
 	{
-		trySTARTTLS();
+		trySTARTTLS(); // FIXME: Shouldn't we be able to STARTTLS even without CAP support ?
 		return;
 	}
 #endif
@@ -384,6 +384,13 @@ void KviIrcConnection::handleInitialCapLs()
 	{
 		szRequests.append("sasl ");
 	}
+
+#if 0
+	if(serverInfo()->supportedCaps().contains("multi-prefix",Qt::CaseInsensitive))
+	{
+		szRequest.append("multi-prefix"); // NAMES supports this, WHO probably not yet
+	}
+#endif
 
 	//TODO MULTI-PREFIX, others goes here
 
@@ -408,7 +415,7 @@ void KviIrcConnection::handleInitialCapAck()
 	//SASL
 	if(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable) &&
 		target()->server()->enabledSASL() &&
-		serverInfo()->enabledCaps().contains("sasl",Qt::CaseInsensitive)
+		m_pStateData->enabledCaps().contains("sasl",Qt::CaseInsensitive)
 	)
 	{
 		m_pStateData->setInsideAuthenticate(true);
