@@ -207,7 +207,7 @@ void KviHttpRequest::dnsLookupDone(KviDns *d)
 		delete m_pDns;
 		m_pDns = 0;
 		QString tmp;
-		KviQString::sprintf(tmp,__tr2qs("Host %Q resolved to %Q"),&(m_url.host()),&m_szIp);
+		KviQString::sprintf(tmp,__tr2qs("Host %Q resolved to %Q"),m_url.host().toUtf8().data(),&m_szIp);
 		emit status(tmp);
 		haveServerIp();
 	} else {
