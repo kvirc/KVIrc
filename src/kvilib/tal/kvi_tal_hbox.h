@@ -103,6 +103,14 @@ public:
 	* \return void
 	*/
 	void addStretch(int iStretch);
+
+	/**
+	* \brief Adds a non-stretchable spacing item
+	* \param iSpace the width of the item
+	* \return void
+	*/
+	void addSpacing(int iSpace);
+
 protected:
 	virtual void childEvent(QChildEvent * e);
 };

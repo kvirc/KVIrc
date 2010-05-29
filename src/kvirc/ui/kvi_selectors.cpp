@@ -169,8 +169,12 @@ void KviStringSelector::setText(const QString& text){
 KviPasswordSelector::KviPasswordSelector(QWidget * par,const QString & txt,QString *pOption,bool bEnabled)
 : KviTalHBox(par) , KviSelectorInterface()
 {
+	setSpacing(0);
+	setMargin(0);
+
 	m_pLabel = new QLabel(txt,this);
 	m_pLineEdit = new QLineEdit(this);
+	addSpacing(4);
 	m_pCheckBox = new QCheckBox(this);
 	m_pLineEdit->setEchoMode(QLineEdit::Password);
 	m_pCheckBox->setCheckState(Qt::Checked);
@@ -179,7 +183,6 @@ KviPasswordSelector::KviPasswordSelector(QWidget * par,const QString & txt,QStri
 	QString tmp = *pOption;
 	m_pLineEdit->setText(tmp);
 
-	setSpacing(4);
 	setStretchFactor(m_pLineEdit,1);
 
 	m_pOption = pOption;
@@ -222,13 +225,16 @@ void KviPasswordSelector::setText(const QString& text){
 KviPasswordLineEdit::KviPasswordLineEdit(QWidget * par)
 : KviTalHBox(par)
 {
+	setSpacing(0);
+	setMargin(0);
+
 	m_pLineEdit = new QLineEdit(this);
+	addSpacing(4);
 	m_pCheckBox = new QCheckBox(this);
 	m_pLineEdit->setEchoMode(QLineEdit::Password);
 	m_pCheckBox->setCheckState(Qt::Checked);
 	connect(m_pCheckBox,SIGNAL(stateChanged(int)), this, SLOT(checkToggled(int)));
 	//m_pLineEdit->setMinimumWidth(200);
-	setSpacing(4);
 	setStretchFactor(m_pLineEdit,1);
 }
 

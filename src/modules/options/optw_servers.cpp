@@ -127,30 +127,49 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 	KviTalGroupBox *gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("Properties","options"),tab);
 	gl->addWidget(gbox,0,0,1,2);
 
+	QGridLayout * pPropertiesBoxLayout = new QGridLayout();
+	gbox->setLayout(pPropertiesBoxLayout);
+
 	l = new QLabel(__tr2qs_ctx("Username:","options"),gbox);
+	pPropertiesBoxLayout->addWidget(l,0,0);
+
 	m_pUserEditor = new QLineEdit(gbox);
 	m_pUserEditor->setText(n->userName());
+	pPropertiesBoxLayout->addWidget(m_pUserEditor,0,1);
 
 	KviTalToolTip::add(m_pUserEditor,__tr2qs_ctx("<center>This is the <b>username</b> that KVIrc will use to login to servers on this network.\n" \
 		"If this field is left empty (most common case), KVIrc will use the default username " \
 		"specified in the \"Identity\" options tab.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Password:","options"),gbox);
+	pPropertiesBoxLayout->addWidget(l,1,0);
+
 	m_pPassEditor = new KviPasswordLineEdit(gbox);
 	m_pPassEditor->setText(n->password());
+	pPropertiesBoxLayout->addWidget(m_pPassEditor,1,1);
+
 	KviTalToolTip::add(m_pPassEditor,__tr2qs_ctx("<center>If this network requires a password, put it in this field, otherwise leave it empty.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Nickname:","options"),gbox);
+	pPropertiesBoxLayout->addWidget(l,2,0);
+
 	m_pNickEditor = new QLineEdit(gbox);
 	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*",Qt::CaseSensitive),gbox);
 	m_pNickEditor->setValidator(v);
 	m_pNickEditor->setText(n->nickName());
+	pPropertiesBoxLayout->addWidget(m_pNickEditor,2,1);
+
+
 	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to the servers on this network.<br>" \
 		"If this field is left empty (most common case), the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Real name:","options"),gbox);
+	pPropertiesBoxLayout->addWidget(l,3,0);
+
 	m_pRealEditor = new QLineEdit(gbox);
 	m_pRealEditor->setText(n->realName());
+	pPropertiesBoxLayout->addWidget(m_pRealEditor,3,1);
+
 	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with the servers on this network.<br>" \
 		"If you leave this field empty (most common case), the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
 
@@ -510,34 +529,56 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	KviTalGroupBox *gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("Properties","options"),tab);
 	gl->addWidget(gbox,0,0);
 
+	QGridLayout * pPropertiesBoxLayout = new QGridLayout();
+	gbox->setLayout(pPropertiesBoxLayout);
+
 	l = new QLabel(__tr2qs_ctx("Username:","options"),gbox);
+	pPropertiesBoxLayout->addWidget(l,0,0);
+
 	m_pUserEditor = new QLineEdit(gbox);
 	m_pUserEditor->setText(s->userName());
+	pPropertiesBoxLayout->addWidget(m_pUserEditor,0,1);
+
 	KviTalToolTip::add(m_pUserEditor,__tr2qs_ctx("<center>This is the <b>username</b> that KVIrc will use to login to this server.\n" \
 		"If this field is left empty (most common case), KVIrc will first look if an username is specified " \
 		"for the network that this server belongs to, and if that is empty then KVIrc will use the default username " \
 		"specified in the \"Identity\" options tab.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Password:","options"),gbox);
+	pPropertiesBoxLayout->addWidget(l,1,0);
+
 	m_pPassEditor = new KviPasswordLineEdit(gbox);
 	m_pPassEditor->setText(s->password());
+	pPropertiesBoxLayout->addWidget(m_pPassEditor,1,1);
+
 	KviTalToolTip::add(m_pPassEditor,__tr2qs_ctx("<center>If this server requires a password, put it in this field, otherwise leave it empty.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Nickname:","options"),gbox);
+	pPropertiesBoxLayout->addWidget(l,2,0);
+
 	m_pNickEditor = new QLineEdit(gbox);
 	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"),gbox);
 	m_pNickEditor->setValidator(v);
 	m_pNickEditor->setText(s->nickName());
+	pPropertiesBoxLayout->addWidget(m_pNickEditor,2,1);
+
 	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to this server.<br>" \
 		"If this field is left empty (most common case), KVIrc will first look if a nickname is specified " \
 		"for the network that this server belongs to, and if that is empty then the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Real name:","options"),gbox);
+	pPropertiesBoxLayout->addWidget(l,3,0);
+
 	m_pRealEditor = new QLineEdit(gbox);
 	m_pRealEditor->setText(s->realName());
+	pPropertiesBoxLayout->addWidget(m_pRealEditor,3,1);
+
 	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with this server.<br>" \
 		"If you leave this field empty (most common case), KVIrc will first look if a real name is specified " \
 		"for the network that this server belongs to, and if that is empty the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
+
+
+
 	gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("User Mode","options"),tab);
 	gl->addWidget(gbox,1,0);
 
@@ -667,60 +708,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	m_pUseSSLCheck->setChecked(s->useSSL());
 
 
-
-	m_pEnableCAPCheck = new QCheckBox(__tr2qs_ctx("Use CAP protocol","options"),tab);
-	pCheckBoxLayout->addWidget(m_pEnableCAPCheck,2,0);
-
-	KviTalToolTip::add(m_pEnableCAPCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Extended Capability</b> " \
-		"support. Obviously, this server must have support for this, too. Disable this for irc bouncers.</center>","options"));
-	m_pEnableCAPCheck->setChecked(s->enabledCAP());
-
-
-
-	m_pEnableSTARTTLSCheck = new QCheckBox(__tr2qs_ctx("Enable STARTTLS protocol","options"),tab);
-	pCheckBoxLayout->addWidget(m_pEnableSTARTTLSCheck,2,1);
-	m_pEnableSTARTTLSCheck->setEnabled(s->enabledCAP());
-	QObject::connect(m_pEnableCAPCheck,SIGNAL(toggled(bool)),m_pEnableSTARTTLSCheck,SLOT(setEnabled(bool)));
-	KviTalToolTip::add(m_pEnableSTARTTLSCheck,__tr2qs_ctx("<center>This check enables the use of the <b>Transport Layer Security</b> " \
-		"protocol. If you enable the proper global option in the Connection/SSL tab, the TLS protocol will be used for this server if available.</center>","options"));
-#ifndef COMPILE_SSL_SUPPORT
-	m_pEnableSTARTTLSCheck->setEnabled(false);
-#endif
-	m_pEnableSTARTTLSCheck->setChecked(s->enabledCAP() && s->enabledSTARTTLS());
-
 	iRow++;
-
-
-	QGroupBox * pSASLGroup = new QGroupBox(__tr2qs_ctx("SASL Authentication","options"),tab);
-	gl->addWidget(pSASLGroup,iRow,0,1,2);
-
-	QGridLayout * pSASLLayout = new QGridLayout(pSASLGroup);
-
-	m_pEnableSASLCheck = new QCheckBox(__tr2qs_ctx("Enable SASL authentication","options"),pSASLGroup);
-	pSASLLayout->addWidget(m_pEnableSASLCheck,0,0,1,2);
-	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("<center>This check enables the use of the <b>SASL</b> authentication procotol " \
-		"If you enable the proper global option in the Connection/SSL tab and fill the Sasl Nickname and Sasl Password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
-	m_pEnableSASLCheck->setChecked(s->enabledSASL());
-
-	l = new QLabel(__tr2qs_ctx("Sasl Nickname:","options"),pSASLGroup);
-	pSASLLayout->addWidget(l,1,0);
-	m_pSaslNickEditor = new QLineEdit(pSASLGroup);
-	m_pSaslNickEditor->setText(s->saslNick());
-	KviTalToolTip::add(m_pSaslNickEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your nickname here.</center>","options"));
-	pSASLLayout->addWidget(m_pSaslNickEditor,1,1);
-
-	l = new QLabel(__tr2qs_ctx("Sasl Password:","options"),pSASLGroup);
-	pSASLLayout->addWidget(l,2,0);
-	m_pSaslPassEditor = new KviPasswordLineEdit(pSASLGroup); // <---- ?????
-	m_pSaslPassEditor->setText(s->saslPass());
-	KviTalToolTip::add(m_pSaslPassEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your password here.</center>","options"));
-	pSASLLayout->addWidget(m_pSaslPassEditor,2,1);
-
-	pSASLGroup->setEnabled(s->enabledCAP());
-	QObject::connect(m_pEnableCAPCheck,SIGNAL(toggled(bool)),pSASLGroup,SLOT(setEnabled(bool)));
-
-	iRow++;
-
 
 
 	//server encoding
@@ -770,57 +758,6 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 	m_pEncodingEditor->setCurrentIndex(srvcurrent);
 	m_pTextEncodingEditor->setCurrentIndex(txtcurrent);
-
-	iRow++;
-
-	l = new QLabel(__tr2qs_ctx("Link filter:","options"),tab);
-	gl->addWidget(l,iRow,0);
-	m_pLinkFilterEditor = new QComboBox(tab);
-	m_pLinkFilterEditor->setEditable(true);
-	m_pLinkFilterEditor->setDuplicatesEnabled(false);
-	gl->addWidget(m_pLinkFilterEditor,iRow,1);
-
-	m_pLinkFilterEditor->addItem("");
-
-	g_pModuleManager->loadModulesByCaps("linkfilter");
-	KviModuleExtensionDescriptorList * mexl = KviModuleExtensionManager::instance()->getExtensionList("linkfilter");
-
-	if(mexl)
-	{
-		for(KviModuleExtensionDescriptor * d = mexl->first();d;d = mexl->next())
-			m_pLinkFilterEditor->addItem(d->name().ptr());
-	} else {
-		if(!s->linkFilter().isEmpty())
-			m_pLinkFilterEditor->addItem(s->linkFilter());
-	}
-
-	if(!s->linkFilter().isEmpty())
-	{
-		int i = m_pLinkFilterEditor->findText(s->linkFilter());
-		if (i != -1)
-			m_pLinkFilterEditor->setCurrentIndex(i);
-		else
-			m_pLinkFilterEditor->setEditText(s->linkFilter());
-	}
-	else
-		m_pLinkFilterEditor->setCurrentIndex(0);
-
-
-	KviTalToolTip::add(m_pLinkFilterEditor,__tr2qs_ctx("<center>This field specifies the name of a module that exports a link filter for this type of server.<br>" \
-		"For plain IRC connections, you don't need any link filters; this is used for incompatible protocols.</center>","options"));
-
-	iRow++;
-
-	l = new QLabel(__tr2qs_ctx("Id:","options"),tab);
-	gl->addWidget(l,iRow,0);
-	m_pIdEditor = new QLineEdit(tab);
-	if(s->id().isEmpty())s->generateUniqueId();
-	m_pIdEditor->setText(s->id());
-	gl->addWidget(m_pIdEditor,iRow,1);
-
-	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique id for this server. " \
-		"You will then be able to use /server -x &lt;this_id&gt; to make the connection. This is especially " \
-		"useful when you have multiple server entries with the same hostname and port in different networks (bouncers?)</center>","options"));
 
 	iRow++;
 
@@ -905,6 +842,131 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 	tw->addTab(tab,__tr2qs_ctx("On Login","options"));
 
+
+
+	// Advanced tab
+
+
+	tab = new QWidget(tw);
+	gl = new QGridLayout(tab);
+
+	iRow = 0;
+
+	QGroupBox * pCapGroup = new QGroupBox(__tr2qs_ctx("Extended Capabilities","options"),tab);
+	gl->addWidget(pCapGroup,iRow,0,1,2);
+
+	QGridLayout * pCapLayout = new QGridLayout();
+	pCapGroup->setLayout(pCapLayout);
+
+	m_pEnableCAPCheck = new QCheckBox(__tr2qs_ctx("Query extended capabilities on connect","options"),tab);
+	pCapLayout->addWidget(m_pEnableCAPCheck,0,0);
+
+	KviTalToolTip::add(m_pEnableCAPCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Extended Capability</b> " \
+		"support. Obviously, this server must have support for this, too. Disable this for irc bouncers.</center>","options"));
+	m_pEnableCAPCheck->setChecked(s->enabledCAP());
+
+
+
+	m_pEnableSTARTTLSCheck = new QCheckBox(__tr2qs_ctx("Switch to SSL/TLS by using the STARTTLS extension","options"),tab);
+	pCapLayout->addWidget(m_pEnableSTARTTLSCheck,1,0);
+
+	m_pEnableSTARTTLSCheck->setEnabled(s->enabledCAP());
+	QObject::connect(m_pEnableCAPCheck,SIGNAL(toggled(bool)),m_pEnableSTARTTLSCheck,SLOT(setEnabled(bool)));
+	KviTalToolTip::add(m_pEnableSTARTTLSCheck,__tr2qs_ctx("<center>This check enables the use of the <b>Transport Layer Security</b> " \
+		"protocol. If you enable the proper global option in the Connection/SSL tab, the TLS protocol will be used for this server if available.</center>","options"));
+#ifndef COMPILE_SSL_SUPPORT
+	m_pEnableSTARTTLSCheck->setEnabled(false);
+#endif
+	m_pEnableSTARTTLSCheck->setChecked(s->enabledCAP() && s->enabledSTARTTLS());
+
+
+	QGroupBox * pSASLGroup = new QGroupBox(__tr2qs_ctx("SASL Authentication","options"),tab);
+	pCapLayout->addWidget(pSASLGroup,2,0);
+
+	QGridLayout * pSASLLayout = new QGridLayout(pSASLGroup);
+
+	m_pEnableSASLCheck = new QCheckBox(__tr2qs_ctx("Authenticate via SASL extension","options"),pSASLGroup);
+	pSASLLayout->addWidget(m_pEnableSASLCheck,0,0,1,2);
+	KviTalToolTip::add(m_pEnableSASLCheck,__tr2qs_ctx("<center>This check enables the use of the <b>SASL</b> authentication procotol " \
+		"If you enable the proper global option in the Connection/SSL tab and fill the Sasl Nickname and Sasl Password fields in this page, the SASL protocol will be used for this server if available.</center>","options"));
+	m_pEnableSASLCheck->setChecked(s->enabledSASL());
+
+	l = new QLabel(__tr2qs_ctx("Sasl Nickname:","options"),pSASLGroup);
+	pSASLLayout->addWidget(l,1,0);
+	m_pSaslNickEditor = new QLineEdit(pSASLGroup);
+	m_pSaslNickEditor->setText(s->saslNick());
+	KviTalToolTip::add(m_pSaslNickEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your nickname here.</center>","options"));
+	pSASLLayout->addWidget(m_pSaslNickEditor,1,1);
+
+	l = new QLabel(__tr2qs_ctx("Sasl Password:","options"),pSASLGroup);
+	pSASLLayout->addWidget(l,2,0);
+	m_pSaslPassEditor = new KviPasswordLineEdit(pSASLGroup); // <---- ?????
+	m_pSaslPassEditor->setText(s->saslPass());
+	KviTalToolTip::add(m_pSaslPassEditor,__tr2qs_ctx("<center>If you want to enable SASL authentication, insert your password here.</center>","options"));
+	pSASLLayout->addWidget(m_pSaslPassEditor,2,1);
+
+	pSASLGroup->setEnabled(s->enabledCAP());
+	QObject::connect(m_pEnableCAPCheck,SIGNAL(toggled(bool)),pSASLGroup,SLOT(setEnabled(bool)));
+
+	iRow++;
+
+
+	l = new QLabel(__tr2qs_ctx("Link filter:","options"),tab);
+	gl->addWidget(l,iRow,0);
+	m_pLinkFilterEditor = new QComboBox(tab);
+	m_pLinkFilterEditor->setEditable(true);
+	m_pLinkFilterEditor->setDuplicatesEnabled(false);
+	gl->addWidget(m_pLinkFilterEditor,iRow,1);
+
+	m_pLinkFilterEditor->addItem("");
+
+	g_pModuleManager->loadModulesByCaps("linkfilter");
+	KviModuleExtensionDescriptorList * mexl = KviModuleExtensionManager::instance()->getExtensionList("linkfilter");
+
+	if(mexl)
+	{
+		for(KviModuleExtensionDescriptor * d = mexl->first();d;d = mexl->next())
+			m_pLinkFilterEditor->addItem(d->name().ptr());
+	} else {
+		if(!s->linkFilter().isEmpty())
+			m_pLinkFilterEditor->addItem(s->linkFilter());
+	}
+
+	if(!s->linkFilter().isEmpty())
+	{
+		int i = m_pLinkFilterEditor->findText(s->linkFilter());
+		if (i != -1)
+			m_pLinkFilterEditor->setCurrentIndex(i);
+		else
+			m_pLinkFilterEditor->setEditText(s->linkFilter());
+	}
+	else
+		m_pLinkFilterEditor->setCurrentIndex(0);
+
+
+	KviTalToolTip::add(m_pLinkFilterEditor,__tr2qs_ctx("<center>This field specifies the name of a module that exports a link filter for this type of server.<br>" \
+		"For plain IRC connections, you don't need any link filters; this is used for incompatible protocols.</center>","options"));
+
+	iRow++;
+
+	l = new QLabel(__tr2qs_ctx("Id:","options"),tab);
+	gl->addWidget(l,iRow,0);
+	m_pIdEditor = new QLineEdit(tab);
+	if(s->id().isEmpty())s->generateUniqueId();
+	m_pIdEditor->setText(s->id());
+	gl->addWidget(m_pIdEditor,iRow,1);
+
+	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique id for this server. " \
+		"You will then be able to use /server -x &lt;this_id&gt; to make the connection. This is especially " \
+		"useful when you have multiple server entries with the same hostname and port in different networks (bouncers?)</center>","options"));
+
+
+	iRow++;
+
+	tw->addTab(tab,__tr2qs_ctx("Advanced","options"));
+
+
+
 	QPushButton * b = new QPushButton(__tr2qs_ctx("OK","options"),this);
 	b->setMinimumWidth(80);
 	g->addWidget(b,3,2);
@@ -918,6 +980,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 	g->setRowStretch(2,1);
 	g->setColumnStretch(1,1);
+
 
 	tw->setMinimumWidth(390);
 

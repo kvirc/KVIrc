@@ -118,6 +118,11 @@ void KviTalHBox::addStretch(int iStretch)
 	m_pLayout->addStretch(iStretch);
 }
 
+void KviTalHBox::addSpacing(int iSpacing)
+{
+	m_pLayout->addSpacing(iSpacing);
+}
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_hbox.moc"
 #endif //COMPILE_USE_STANDALONE_MOC_SOURCES
