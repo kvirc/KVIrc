@@ -1323,28 +1323,44 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	connect(m_pDetailsButton,SIGNAL(clicked()),this,SLOT(detailsClicked()));
 	KviTalToolTip::add(m_pDetailsButton,__tr2qs_ctx("<center>Click here to edit advanced options for this entry</center>","options"));
 
-	m_pConnectCurrent = new QPushButton(__tr2qs_ctx("Connect &Now","options"),this);
-	addWidgetToLayout(m_pConnectCurrent,0,2,0,2);
-	connect(m_pConnectCurrent,SIGNAL(clicked()),this,SLOT(connectCurrentClicked()));
-
-	KviTalToolTip::add(m_pConnectCurrent,__tr2qs_ctx("<center>Hit this button to connect to the currently selected server.</center>","options"));
-
-	m_pRecentPopup = new KviTalPopupMenu(this);
+	m_pRecentPopup = new KviTalPopupMenu(gbox);
 	connect(m_pRecentPopup,SIGNAL(aboutToShow()),this,SLOT(recentServersPopupAboutToShow()));
 	connect(m_pRecentPopup,SIGNAL(activated(int)),this,SLOT(recentServersPopupClicked(int)));
 
-	QToolButton * tb = new QToolButton(this);
+	QToolButton * tb = new QToolButton(gbox);
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME))));
 	tb->setMenu(m_pRecentPopup);
 	tb->setAutoRaise(true);
 	tb->setPopupMode(QToolButton::InstantPopup);
-	addWidgetToLayout(tb,1,2,1,2);
 	
 	KviTalToolTip::add(tb,__tr2qs_ctx("<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>","options"));
+
 
 	// The "Show this dialog at startup" option is shown only when the server options widget is shown as standalone dialog
 	if(parent->inherits("KviOptionsWidgetContainer"))
 	{
+		m_pConnectCurrent = new QPushButton(__tr2qs_ctx("Connect &Now","options"),this);
+		addWidgetToLayout(m_pConnectCurrent,0,2,1,2);
+		connect(m_pConnectCurrent,SIGNAL(clicked()),this,SLOT(connectCurrentClicked()));
+	
+		QPalette pal(QColor(0,0,128));
+
+		pal.setColor(QPalette::Active,QPalette::Button,QColor(0,0,220));
+		pal.setColor(QPalette::Active,QPalette::ButtonText,QColor(245,245,245));
+
+		pal.setColor(QPalette::Disabled,QPalette::Button,QColor(98,98,180));
+		pal.setColor(QPalette::Disabled,QPalette::ButtonText,QColor(128,128,245));
+
+
+		m_pConnectCurrent->setPalette(pal);
+	
+		QFont fnt = m_pConnectCurrent->font();
+		fnt.setPointSizeF(fnt.pointSizeF() * 1.4);
+		fnt.setBold(true);
+		m_pConnectCurrent->setFont(fnt);
+	
+		KviTalToolTip::add(m_pConnectCurrent,__tr2qs_ctx("<center>Hit this button to connect to the currently selected server.</center>","options"));
+
 		KviOptionsWidgetContainer * pContainer = dynamic_cast<KviOptionsWidgetContainer *>(parent);
 		if(pContainer)
 		{
@@ -1353,6 +1369,8 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 
 			KviTalToolTip::add(b,__tr2qs_ctx("<center>If this option is enabled, the Servers dialog will appear every time you start KVIrc</center>","options"));
 		}
+	} else {
+		m_pConnectCurrent = NULL;
 	}
 
 	m_pLastEditedItem = 0;
@@ -1538,7 +1556,8 @@ void KviServerOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetI
 		m_pSrvNetLabel->setEnabled(true);
 		m_pSrvNetEdit->setEnabled(true);
 		m_pDetailsButton->setEnabled(true);
-		m_pConnectCurrent->setEnabled(m_pLastEditedItem->m_pServerData);
+		if(m_pConnectCurrent)
+			m_pConnectCurrent->setEnabled(m_pLastEditedItem->m_pServerData);
 
 		m_pRemoveButton->setEnabled(true);
 		m_pCopyServerButton->setEnabled(m_pLastEditedItem->m_pServerData);
@@ -1555,7 +1574,8 @@ void KviServerOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetI
 		m_pRemoveButton->setEnabled(false);
 		m_pCopyServerButton->setEnabled(true);
 
-		m_pConnectCurrent->setEnabled(false);
+		if(m_pConnectCurrent)
+			m_pConnectCurrent->setEnabled(false);
 		m_pSrvNetLabel->setEnabled(false);
 		m_pSrvNetEdit->setEnabled(false);
 		m_pSrvNetEdit->setText(__tr2qs_ctx("No selection","options"));
