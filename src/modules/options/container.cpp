@@ -34,6 +34,7 @@
 #include <QPushButton>
 #include <QDesktopWidget>
 #include <QEvent>
+#include <QGridLayout>
 #include <QCloseEvent>
 #include <QIcon>
 
@@ -43,6 +44,8 @@ extern KviOptionsInstanceManager * g_pOptionsInstanceManager;
 KviOptionsWidgetContainer::KviOptionsWidgetContainer(QWidget * par,bool bModal)
 : QDialog(par)
 {
+	m_pLayout = new QGridLayout(this);
+
 	setObjectName("container");
 	m_pOptionsWidget = 0;
 	setModal(bModal);
@@ -53,31 +56,36 @@ KviOptionsWidgetContainer::~KviOptionsWidgetContainer()
 	if(m_pOptionsWidget)delete m_pOptionsWidget;
 }
 
+void KviOptionsWidgetContainer::setLeftCornerWidget(QWidget * pWidget)
+{
+	if(!pWidget)
+		return;
+	m_pLayout->addWidget(pWidget,1,0);
+}
+
+
 void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 {
-	QGridLayout * g = new QGridLayout(this);
-
-	g->addWidget(w,0,0,1,3);
+	m_pLayout->addWidget(w,0,0,1,3);
 	//g->addMultiCellWidget(w,0,0,0,2);
-
 
 	QPushButton * b = new QPushButton(__tr2qs_ctx("&OK","options"),this);
 	KviTalToolTip::add(b,__tr2qs_ctx("Close this dialog, accepting all changes.","options"));
 	//b->setMinimumWidth(m_pCancel->sizeHint().width());
-	g->addWidget(b,1,1);
+	m_pLayout->addWidget(b,1,1);
 	b->setDefault(true);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
 	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 
 	m_pCancel = new QPushButton(__tr2qs_ctx("Cancel","options"),this);
 	KviTalToolTip::add(m_pCancel,__tr2qs_ctx("Close this dialog, discarding all changes.","options"));
-	g->addWidget(m_pCancel,1,2);
+	m_pLayout->addWidget(m_pCancel,1,2);
 	connect(m_pCancel,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 	m_pCancel->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 
 
-	g->setRowStretch(0,1);
-	g->setColumnStretch(0,1);
+	m_pLayout->setRowStretch(0,1);
+	m_pLayout->setColumnStretch(0,1);
 
 	KviOptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(w->metaObject()->className());
 	if(e)
@@ -85,8 +93,8 @@ void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 		setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(e->iIcon))));
 		setWindowTitle(e->szName);
 	}
-	m_pOptionsWidget = w;
 
+	m_pOptionsWidget = w;
 }
 
 void KviOptionsWidgetContainer::closeEvent(QCloseEvent *e)

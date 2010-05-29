@@ -29,6 +29,7 @@
 #include <QDialog>
 
 class QPushButton;
+class QGridLayout;
 
 class KviOptionsWidgetContainer : public QDialog
 {
@@ -39,8 +40,10 @@ public:
 protected:
 	KviOptionsWidget * m_pOptionsWidget;
 	QPushButton      * m_pCancel;
+	QGridLayout      * m_pLayout;
 public:
 	void setup(KviOptionsWidget * w);
+	void setLeftCornerWidget(QWidget * pWidget);
 protected:
 	virtual void closeEvent(QCloseEvent *e);
 	virtual void showEvent(QShowEvent *e);

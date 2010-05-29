@@ -60,6 +60,16 @@ public:
 	KviServer * m_pServerData;
 	KviNetwork * m_pNetworkData;
 public:
+	KviServer * serverData() const
+	{
+		return m_pServerData;
+	}
+	
+	KviNetwork * networkData() const
+	{
+		return m_pNetworkData;
+	}
+public:
 	void updateVisibleStrings();
 };
 
@@ -192,6 +202,7 @@ private:
 	void fillServerList();
 	void saveLastItem();
 	KviServerOptionsTreeWidgetItem * findNetItem(const QString &netname);
+	void selectBestServerByUrl(const QString &szUrl);
 protected slots:
 	void importerDead();
 	void importServer(const KviServer & s,const QString &network);

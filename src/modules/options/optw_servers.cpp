@@ -26,6 +26,8 @@
 #include "optw_proxy.h"
 #include "optw_nickserv.h" // for the NickServ rule editor
 
+#include "container.h"
+
 #include "kvi_query.h"
 #include "kvi_channel.h"
 #include "kvi_locale.h"
@@ -1317,22 +1319,6 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pSrvNetEdit = new QLineEdit(gbox);
 	KviTalToolTip::add(m_pSrvNetEdit,__tr2qs_ctx("<center>This is the name of the currently selected server or network</center>","options"));
 
-/*
-	m_pIPv6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
-
-#ifndef COMPILE_IPV6_SUPPORT
-	m_pIPv6Check->setEnabled(false);
-#endif
-
-	KviTalToolTip::add(m_pIPv6Check,__tr2qs_ctx("<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
-						"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
-
-	m_pPortLabel = new QLabel(__tr2qs_ctx("Port:","options"),gbox);
-
-	m_pPortEdit = new QLineEdit(gbox);
-	KviTalToolTip::add(m_pPortEdit,__tr2qs_ctx("<center>This is the default <b>port</b> that this server will be contacted on.<br>Usually <b>6667</b> is OK.</center>","options"));
-*/
-
 	m_pDetailsButton = new QPushButton(__tr2qs_ctx("Advanced...","options"),gbox);
 	connect(m_pDetailsButton,SIGNAL(clicked()),this,SLOT(detailsClicked()));
 	KviTalToolTip::add(m_pDetailsButton,__tr2qs_ctx("<center>Click here to edit advanced options for this entry</center>","options"));
@@ -1356,11 +1342,18 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	
 	KviTalToolTip::add(tb,__tr2qs_ctx("<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>","options"));
 
-	KviBoolSelector * b = addBoolSelector(0,3,1,3,__tr2qs_ctx("Show this dialog at startup","options"),KviOption_boolShowServersConnectDialogOnStart);
+	// The "Show this dialog at startup" option is shown only when the server options widget is shown as standalone dialog
+	if(parent->inherits("KviOptionsWidgetContainer"))
+	{
+		KviOptionsWidgetContainer * pContainer = dynamic_cast<KviOptionsWidgetContainer *>(parent);
+		if(pContainer)
+		{
+			KviBoolSelector * b = addBoolSelector(pContainer,__tr2qs_ctx("Show this dialog at startup","options"),KviOption_boolShowServersConnectDialogOnStart);
+			pContainer->setLeftCornerWidget(b);
 
-	KviTalToolTip::add(b,__tr2qs_ctx("<center>If this option is enabled, the Servers dialog will appear every time you start KVIrc</center>","options"));
-
-	// KviBoolSelector * c = addBoolSelector(0,6,2,6,__tr("Close after connection","options"),KviOption_boolCloseServerWidgetAfterConnect);
+			KviTalToolTip::add(b,__tr2qs_ctx("<center>If this option is enabled, the Servers dialog will appear every time you start KVIrc</center>","options"));
+		}
+	}
 
 	m_pLastEditedItem = 0;
 
@@ -1382,14 +1375,18 @@ KviServerOptionsWidget::~KviServerOptionsWidget()
 		m_pImportFilter = 0;
 	}
 
-	if(m_pClipboard)delete m_pClipboard;
-	if(m_pServerDetailsDialog)delete m_pServerDetailsDialog;
-	if(m_pNetworkDetailsDialog)delete m_pNetworkDetailsDialog;
+	if(m_pClipboard)
+		delete m_pClipboard;
+	if(m_pServerDetailsDialog)
+		delete m_pServerDetailsDialog;
+	if(m_pNetworkDetailsDialog)
+		delete m_pNetworkDetailsDialog;
 }
 
 void KviServerOptionsWidget::recentServersPopupAboutToShow()
 {
 	g_pApp->fillRecentServersPopup(m_pRecentPopup);
+
 	m_pRecentPopup->insertSeparator();
 	m_pRecentPopup->insertItem(__tr2qs("Clear Recent Servers List"));
 }
@@ -1397,25 +1394,91 @@ void KviServerOptionsWidget::recentServersPopupAboutToShow()
 void KviServerOptionsWidget::recentServersPopupClicked(int id)
 {
 	KviConsole * c = g_pActiveWindow->console();
-	if(!c)return;
+	if(!c)
+		return;
 
 	QString szItemText = m_pRecentPopup->text(id);
 	szItemText.remove(QChar('&'));
-	if(!szItemText.isEmpty())
+	if(szItemText.isEmpty())
+		return;
+	if(szItemText == __tr2qs("Clear Recent Servers List"))
 	{
-		if(szItemText == __tr2qs("Clear Recent Servers List"))
+		KviKvsScript::run("option stringlistRecentServers",c);
+		return;
+	}
+
+	selectBestServerByUrl(szItemText);
+}
+
+void KviServerOptionsWidget::selectBestServerByUrl(const QString &szUrl)
+{
+	if(szUrl.isEmpty())
+		return;
+
+	KviIrcUrlParts oParts;
+
+	KviIrcUrl::split(szUrl,oParts);
+
+	int uCount = m_pTreeWidget->topLevelItemCount();
+	int uIdx = 0;
+	
+	KviServerOptionsTreeWidgetItem * pBestCandidate = NULL;
+	kvi_u32_t uBestCandidateScore = 0;
+	
+	while(uIdx < uCount)
+	{
+		KviServerOptionsTreeWidgetItem * pNet = static_cast<KviServerOptionsTreeWidgetItem *>(m_pTreeWidget->topLevelItem(uIdx));
+		
+		uIdx++;
+		
+		if(!pNet)
+			continue; // huh ?
+		
+		int uServerCount = pNet->childCount();
+		int uChildIdx = 0;
+		while(uChildIdx < uServerCount)
 		{
-			KviKvsScript::run("option stringlistRecentServers",c);
-		} else {
-			KviStr szCommand;
-			QString szText = szItemText;
-			if(KviIrcUrl::parse(szText.toUtf8().data(),szCommand,KVI_IRCURL_CONTEXT_THIS))
+			KviServerOptionsTreeWidgetItem * pServer = static_cast<KviServerOptionsTreeWidgetItem *>(pNet->child(uChildIdx));
+			uChildIdx++;
+			
+			if(!pServer)
+				continue; // huh ?
+			
+			KviServer * pServerData = pServer->serverData();
+			
+			if(!pServerData)
+				continue; // umphf...
+
+			kvi_u32_t uScore = 0;
+			
+			if(pServerData->hostName().toLower() == oParts.szHost.toLower())
+				uScore++;
+			if(pServerData->port() == oParts.iPort)
+				uScore++;
+			if(pServerData->isIPv6() == oParts.bIPv6)
+				uScore++;
+			if(pServerData->useSSL() == oParts.bSsl)
+				uScore++;
+			
+			if(uScore > uBestCandidateScore)
 			{
-				KviKvsScript::run(szCommand.ptr(),c);
+				uBestCandidateScore = uScore;
+				pBestCandidate = pServer;
+				if(uScore >= 4)
+				{
+					// exact match
+					uIdx = uCount; // break the outer loop
+					break; // break the inner loop
+				}
 			}
 		}
 	}
+
+	if(pBestCandidate)
+		m_pTreeWidget->setCurrentItem(pBestCandidate);
+
 }
+
 
 void KviServerOptionsWidget::connectCurrentClicked()
 {
