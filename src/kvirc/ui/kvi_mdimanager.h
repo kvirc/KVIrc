@@ -123,15 +123,21 @@ public:
 	* \brief Move the focus the the previous active window
 	* \return void
 	*/
-	void focusPreviousTopChild();
+	void focusPreviousTopChild(KviMdiChild * pExcludeThis = NULL);
 
 	/**
 	* \brief Remove and delete the subwindow
 	* \param lpC The KviMdiChild which will be destroyed.
-	* \param bFocusTopChild Defines if the previous active window will be reactivated.
  	* \return void
  	*/
-	void destroyChild(KviMdiChild * lpC, bool bFocusTopChild = true);
+	void destroyChild(KviMdiChild * lpC);
+
+	/**
+	* \brief Hides the specified child and focuses some other child
+	* \param lpC The KviMdiChild which will be hidden.
+ 	* \return void
+ 	*/
+	void hideChild(KviMdiChild * lpC);
 
 	/**
 	* \brief Get all visible subwindows

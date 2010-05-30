@@ -153,16 +153,22 @@ void KviMdiManager::setTopChild(KviMdiChild *lpC)
 	setActiveSubWindow((QMdiSubWindow*) lpC);
 }
 
-void KviMdiManager::destroyChild(KviMdiChild *lpC, bool bFocusTopChild)
+void KviMdiManager::hideChild(KviMdiChild *lpC)
+{
+	focusPreviousTopChild(lpC);
+	lpC->hide();
+}
+
+void KviMdiManager::destroyChild(KviMdiChild *lpC)
 {
 	removeSubWindow(lpC);
 	delete lpC;
-
-	if(bFocusTopChild)
-		focusPreviousTopChild();
 	
 	if(!m_bInSDIMode)
-		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+	{
+		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
+			tile();
+	}
 }
 
 void KviMdiManager::setIsInSDIMode(bool bMode)
@@ -173,34 +179,43 @@ void KviMdiManager::setIsInSDIMode(bool bMode)
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 };
 
-void KviMdiManager::focusPreviousTopChild()
+void KviMdiManager::focusPreviousTopChild(KviMdiChild * pExcludeThis)
 {
-	if (!activeSubWindow()) return;
-	if (!activeSubWindow()->inherits("KviMdiChild")) return;
+	KviMdiChild * lpC = NULL;
 
-	KviMdiChild * lpC = 0;
-
-	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::ActivationHistoryOrder);
+	//QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::ActivationHistoryOrder);
+	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
 	QListIterator<QMdiSubWindow*> wl(tmp);
 	wl.toBack();
 
-	while (wl.hasPrevious())
+	while(wl.hasPrevious())
 	{
-			lpC = (KviMdiChild*) wl.previous();
-			if (!lpC->inherits("KviMdiChild")) continue;
+		QMdiSubWindow * pSubWindow = wl.previous();
 
-			if (lpC->state() != KviMdiChild::Minimized)
-			{
-				break;
-			}
+		if(!pSubWindow->inherits("KviMdiChild"))
+			continue;
+
+		lpC = static_cast<KviMdiChild *>(pSubWindow);
+
+		if(lpC == pExcludeThis)
+			continue;
+
+		if(!lpC->isVisible())
+			continue;
+
+		if(lpC->state() != KviMdiChild::Minimized)
+			break;
 	}
 
-	if(!lpC)return;
+	if(!lpC)
+		return;
+
 	if(isInSDIMode())
 		lpC->maximize();
-	else
+	else {
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
 			tile();
+	}
 	lpC->raise();
 	if(!lpC->hasFocus())
 		lpC->setFocus();
@@ -265,13 +280,13 @@ void KviMdiManager::fillWindowPopup()
 	QString szItem;
 	QString szCaption;
 	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
-	QListIterator<QMdiSubWindow*> m_pZ(tmp);
+	QListIterator<QMdiSubWindow*> it(tmp);
 
 	KviMdiChild * lpC;
 
-	while (m_pZ.hasNext())
+	while (it.hasNext())
 	{
-		lpC = (KviMdiChild *) m_pZ.next();
+		lpC = (KviMdiChild *) it.next();
 
 		if (!lpC->inherits("KviMdiChild"))
 		{

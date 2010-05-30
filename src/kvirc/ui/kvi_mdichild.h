@@ -66,7 +66,8 @@ public:
 	* \enum MdiChildState
 	* \brief This is the state of the child window
 	*/
-	enum MdiChildState {
+	enum MdiChildState
+	{
 		Maximized = 0, /**< The child window is maximized */
 		Minimized,     /**< The child window is minimized */
 		Normal         /**< The child window is normal */
@@ -76,13 +77,13 @@ protected:
 	KviMdiManager * m_pManager;
 private:
 	/// The widget docked into our MDI window.
-	QWidget       * m_pClient;
+	QWidget * m_pClient;
 	/// Saves the geometry of the window for restoring it's position
-	QRect           m_restoredGeometry;
+	QRect m_restoredGeometry;
 	/// Contains the current window Icon
-	QPixmap         m_pIcon;
+	QPixmap m_pIcon;
 	/// Caption as plain text.
-	QString         m_szPlainCaption;
+	QString m_szPlainCaption;
 private:
 	/**
 	* \brief Updates the caption of the child

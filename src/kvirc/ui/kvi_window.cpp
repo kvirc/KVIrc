@@ -373,7 +373,8 @@ void KviWindow::setType(int iType)
 
 void KviWindow::createWindowListItem()
 {
-	if(m_pWindowListItem)return;
+	if(m_pWindowListItem)
+		return;
 	m_pWindowListItem = g_pFrame->m_pWindowList->addItem(this);
 }
 

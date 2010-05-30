@@ -190,7 +190,7 @@ KviFrame::~KviFrame()
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
 	{
 		if(wnd->inherits("KviKvsScriptWindowWindow"))
-			closeWindow(wnd);
+		closeWindow(wnd);
 	}
 
 	// Call the frame destructor callback AFTER saving the toolbar positions
@@ -427,9 +427,10 @@ void KviFrame::closeWindow(KviWindow *wnd)
 	m_pWinList->removeRef(wnd);
 
 	// hide it
-	if(wnd->mdiParent())wnd->mdiParent()->hide();
-	else wnd->hide();
-
+	if(wnd->mdiParent())
+		m_pMdi->hideChild(wnd->mdiParent());
+	else
+		wnd->hide();
 
 	if(wnd == g_pActiveWindow) // ops... :/ ... this happens only at shutdown
 	{
@@ -442,7 +443,7 @@ void KviFrame::closeWindow(KviWindow *wnd)
 	if(wnd->mdiParent())
 	{
 		//this deletes the wnd, too
-		m_pMdi->destroyChild(wnd->mdiParent(), true);
+		m_pMdi->destroyChild(wnd->mdiParent());
 	} else {
 		delete wnd;
 	}
@@ -562,7 +563,7 @@ void KviFrame::undockWindow(KviWindow *wnd)
 	if(!(wnd->mdiParent()))return;
 	KviMdiChild * lpC = wnd->mdiParent();
 	lpC->unsetClient();
-	m_pMdi->destroyChild(lpC, false);
+	m_pMdi->destroyChild(lpC);
 	wnd->show();
 	wnd->youAreUndocked();
 	wnd->raise();

@@ -109,6 +109,8 @@ QRect KviMdiChild::restoredGeometry()
 
 KviMdiChild::MdiChildState KviMdiChild::state()
 {
+	//if(!isVisible())
+	//	return Minimized;
 	if(isMinimized())
 		return Minimized;
 	if(isMaximized())
@@ -135,7 +137,7 @@ void KviMdiChild::setWindowTitle(const QString & plain)
 
 void KviMdiChild::windowStateChangedEvent(Qt::WindowStates oldState, Qt::WindowStates newState)
 {
-// 	qDebug("%s %d => %d", m_szPlainCaption.toUtf8().data(), (int) oldState, (int) newState);
+	//qDebug("%s %d => %d", m_szPlainCaption.toUtf8().data(), (int) oldState, (int) newState);
 	Qt::WindowStates diffState = oldState ^ newState;
 
 	if(diffState.testFlag(Qt::WindowMinimized))
@@ -231,14 +233,15 @@ void KviMdiChild::setClient(QWidget * w)
 
 	m_pClient = w;
 	setWidget(w);
-        QString tmp1;
-        if(w->inherits("KviWindow"))
-        {
-            KviIrcConnection * pConnection=((KviWindow*)w)->connection();
-            if (pConnection) tmp1.append(pConnection->target()->network()->name()+"_");
-        }
+	QString tmp1;
+	if(w->inherits("KviWindow"))
+	{
+		KviIrcConnection * pConnection=((KviWindow*)w)->connection();
+		if(pConnection)
+			tmp1.append(pConnection->target()->network()->name()+"_");
+	}
 
-        KviStr tmp(KviStr::Format,"mdi_child_%s%s",tmp1.toUtf8().data(),w->objectName().toUtf8().data());
+	KviStr tmp(KviStr::Format,"mdi_child_%s%s",tmp1.toUtf8().data(),w->objectName().toUtf8().data());
 	setObjectName(tmp.ptr());
 }
 
