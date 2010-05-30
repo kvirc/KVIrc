@@ -165,7 +165,8 @@ void KviMdiChild::restore()
 	{
 		if(isMaximized())
 			showMaximized();
-		else showNormal();
+		else
+			showNormal();
 		return;
 	}
 

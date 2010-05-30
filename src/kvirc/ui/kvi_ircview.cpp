@@ -468,7 +468,8 @@ void KviIrcView::setPrivateBackgroundPixmap(const QPixmap &pixmap,bool bRepaint)
 		delete m_pPrivateBackgroundPixmap;
 		m_pPrivateBackgroundPixmap=0;
 	}
-	if(!pixmap.isNull())m_pPrivateBackgroundPixmap = new QPixmap(pixmap);
+	if(!pixmap.isNull())
+		m_pPrivateBackgroundPixmap = new QPixmap(pixmap);
 
 	if(bRepaint)
 		update();

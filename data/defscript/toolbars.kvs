@@ -13,7 +13,7 @@ toolbar.additem irccontext kvirc.usermodemenu
 toolbar.show irccontext
 
 toolbar.create options $tr("Options","defscript") $icon("options")
-toolbar.additem irccontext kvirc.serveroptions
+#toolbar.additem irccontext kvirc.serveroptions
 toolbar.additem options kvirc.identityoptions
 toolbar.additem options kvirc.generaloptions
 toolbar.additem options kvirc.themeoptions

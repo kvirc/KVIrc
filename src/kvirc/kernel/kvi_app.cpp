@@ -171,6 +171,8 @@ QPixmap                                 * g_pActivityMeterPixmap        = 0;
 	KVIRC_API KviCryptEngineManager * g_pCryptEngineManager = 0;
 #endif
 
+#include <QStyleFactory>
+
 KviApp::KviApp(int &argc,char ** argv)
 : KviTalApplication(argc,argv)
 {
@@ -1832,6 +1834,8 @@ void KviApp::fillRecentServersListBox(KviTalListBox * l)
 }
 */
 
+//#include <QPixmapCache>
+
 void KviApp::heartbeat(kvi_time_t tNow)
 {
 	const struct tm *pTm = localtime(&tNow);
@@ -1851,6 +1855,9 @@ void KviApp::heartbeat(kvi_time_t tNow)
 			++it;
 		}
 	}
+
+	//qDebug("Clearing Qt pixmap cache...");
+	//QPixmapCache::clear();
 }
 
 void KviApp::timerEvent(QTimerEvent *e)
