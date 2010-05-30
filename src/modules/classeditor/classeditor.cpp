@@ -1100,7 +1100,26 @@ void KviClassEditor::appendSelectedClassItemsRecursive(KviPointerList<KviClassEd
 			appendSelectedClassItemsRecursive(l,pStartFrom->child(i));
 	}
 }
-
+void KviClassEditor::appendSelectedItems(KviPointerList<KviClassEditorTreeWidgetItem> * l)
+{
+	QList<QTreeWidgetItem *> list=m_pTreeWidget->selectedItems();
+	for(int i=0;i<list.count();i++)
+	{
+		if (((KviClassEditorTreeWidgetItem *)list.at(i))->isClass()||((KviClassEditorTreeWidgetItem *)list.at(i))->isMethod())
+			l->append((KviClassEditorTreeWidgetItem *)list.at(i));
+		else appendSelectedItemsRecursive(l,list.at(i));
+	}
+}
+void KviClassEditor::appendSelectedItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom)
+{
+	for (int i=0;i<pStartFrom->childCount();i++)
+	{
+		if (((KviClassEditorTreeWidgetItem *)pStartFrom->child(i))->isClass()||((KviClassEditorTreeWidgetItem *)pStartFrom->child(i))->isMethod())
+			l->append(((KviClassEditorTreeWidgetItem *)pStartFrom->child(i)));
+		else
+			appendSelectedItemsRecursive(l,pStartFrom->child(i));
+	}
+}
 void KviClassEditor::appendAllClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l)
 {
 	KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> it (*m_pClasses);
@@ -1224,7 +1243,7 @@ void KviClassEditor::removeSelectedItems()
 {
 	KviPointerList<KviClassEditorTreeWidgetItem> l;
 	l.setAutoDelete(false);
-	appendSelectedClassItems(&l);
+	appendSelectedItems(&l);
 
 	bool bYesToAll = false;
 

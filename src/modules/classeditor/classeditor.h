@@ -173,6 +173,11 @@ protected:
 	void saveLastEditedItem();
 	void appendSelectedClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
 	void appendSelectedClassItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
+	
+	void appendSelectedItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
+	void appendSelectedItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
+
+	
 	void appendAllClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
 	void appendAllClassItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
 
