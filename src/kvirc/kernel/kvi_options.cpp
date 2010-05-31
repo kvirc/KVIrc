@@ -326,7 +326,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("FrameIsMaximized",false,KviOption_sectFlagGeometry),
 	BOOL_OPTION("PrependNickColorInfoToRealname",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("DontShowNotifierIfActiveWindowIsFullScreen",false,KviOption_sectFlagFrame),
-	BOOL_OPTION("WheelScrollsWindowsList",false,KviOption_sectFlagWindowList)
+	BOOL_OPTION("WheelScrollsWindowsList",true,KviOption_sectFlagWindowList)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)

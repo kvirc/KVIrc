@@ -187,18 +187,6 @@ void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent *e)
 	// Mitigate bug #488:
 	//   When there is a scroll bar the wheel scrolls up and down 
 	//   When there is no scroll bar the wheel changes selection in the tree
-	QScrollBar * pBar = verticalScrollBar();
-	
-	if(!pBar)
-	{
-		e->ignore(); // let our parent handle the event
-		return;
-	}
-	if(!pBar->isVisible())
-	{
-		e->ignore(); // let our parent handle the event
-		return;
-	}
 
 	if(KVI_OPTION_BOOL(KviOption_boolWheelScrollsWindowsList))
 	{
@@ -207,6 +195,13 @@ void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent *e)
 		else if(e->delta() > 0)
 			((KviTreeWindowList*)parent())->switchWindow(false, false);
 	} else {
+		QScrollBar * pBar = verticalScrollBar();
+
+		if(!pBar)
+			return;
+		if(!pBar->isVisible())
+			return;
+
 		if(
 			((e->delta() < 0) && (pBar->value() < pBar->maximum())) ||
 			((e->delta() > 0) && (pBar->value() > pBar->minimum()))
