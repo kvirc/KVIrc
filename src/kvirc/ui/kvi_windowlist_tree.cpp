@@ -35,6 +35,7 @@
 
 #include <QHeaderView>
 #include <QMouseEvent>
+#include <QWheelEvent>
 #include <QPainter>
 #include <QTimer>
 
@@ -176,8 +177,31 @@ KviTreeWindowListTreeWidget::~KviTreeWindowListTreeWidget()
 
 void KviTreeWindowListTreeWidget::mouseMoveEvent(QMouseEvent *)
 {
-	//dummy just to avoid bug #581
+	// dummy just to avoid bug #581:
+	//   Clicking on item A and moving the mouse to item B selects item A first and then item B
+	//   Hovewer item A remains current
 }
+
+void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent *e)
+{
+	// Mitigate bug #488:
+	//   When there is a scroll bar the wheel scrolls up and down 
+	//   When there is no scroll bar the wheel changes selection in the tree
+	QScrollBar * pBar = verticalScrollBar();
+	
+	if(!pBar)
+		return;
+	if(!pBar->isVisible())
+		return;
+	if(
+			((e->delta() < 0) && (pBar->value() < pBar->maximum())) ||
+			((e->delta() > 0) && (pBar->value() > pBar->minimum()))
+		)
+			QApplication::sendEvent(pBar,e);
+	else
+		e->accept(); // eat it
+}
+
 
 void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 {
