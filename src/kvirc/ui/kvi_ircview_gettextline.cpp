@@ -63,6 +63,81 @@ void kvi_appendWCharToQStringWithLength(QString * qstrptr,const kvi_wchar_t * pt
 	#endif // !WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
 }
 
+static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
+{
+	// p here points somewhere inside an url.
+
+	// Now the question is what characters are and which aren't allowed inside an URL.
+
+	// RFC1738 says that:
+	//
+	// ...only alphanumerics, the special characters "$-_.+!*'(),", and reserved characters [...] "/:?@&=;" may be used unencoded within a URL...
+
+	// However, in many cases this isn't respected. Since the browsers will automatically encode the invalid characters
+	// then the users will tend to write the links without the special encoding. ed2k links also use the | character
+	// and it's common for the file names to appear partially unencoded.
+	
+	// There is also a very common case of urls being enclosed inside parentheses: (http://url.here). 
+	// In this case the rightmost ')' is shouldn't be included in the url. On the other hand there are many links that 
+	// actually contain the ')' character and have it exactly at the end. Wikipedia, for instance, has a lot of such links.
+	
+	// So in the end, we just can't have an algorithm that pleases everybody. If we follow exactly the RFC1738
+	// then some links that would actually work inside a browser will not be recognized as links and some other links that
+	// a human would recognize being inside parentheses will contain too many chars.
+	
+	// The following algorithm, then, is a compromise that works in most cases.
+	
+	int iSquareParenthesisLevel = 0;
+	int iRoundParenthesisLevel = 0;
+	
+	for(;;)
+	{
+		if(*p < 32)
+			return p; // no spaces and control characters below 32
+	
+		if((*p == '{') || (*p == '}') || (*p == '<') || (*p == '>') || (*p == '"') || (*p == '\''))
+			return p; // never valid inside an url
+	
+		if(*p == '[')
+		{
+			iSquareParenthesisLevel++;
+			p++;
+			continue;
+		}
+
+		if(*p == ']')
+		{
+			if(iSquareParenthesisLevel <= 0)
+				return p;
+			// balanced square parenthesis
+			iSquareParenthesisLevel--;
+			p++;
+			continue;
+		}
+
+		if(*p == '(')
+		{
+			iRoundParenthesisLevel++;
+			p++;
+			continue;
+		}
+
+		if(*p == ')')
+		{
+			if(iRoundParenthesisLevel <= 0)
+				return p;
+			// balanced round parenthesis
+			iRoundParenthesisLevel--;
+			p++;
+			continue;
+		}
+
+		p++;
+	}
+	
+	return p;
+}
+
 const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 					const kvi_wchar_t * data_ptr,
 					KviIrcViewLine *line_ptr,
@@ -79,7 +154,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 	int iCurChunk = 0;
 	int blockLen;
 
-	register const kvi_wchar_t *p= data_ptr;
+	register const kvi_wchar_t *p = data_ptr;
 
 	//Alloc the first attribute
 	line_ptr->uChunkCount = 1;
@@ -811,12 +886,12 @@ check_mailto_url:
 got_url:
 	//Url highlighting block
 
-/*
- * Profane description: we just found a tag that we suppose to be the start of a url.
- * p is the address of the start of our text buffer, partLen the length of the tag (eg. http:// = 7)
- * We want to check if it's valid and highlight it creating an ad-hoc chunk for it in this line.
- * The ascii value of the first character after the tag have to be >= 47, or we assume it as invalid
- */
+	/*
+	 * Profane description: we just found a tag that we suppose to be the start of a url.
+	 * p is the address of the start of our text buffer, partLen the length of the tag (eg. http:// = 7)
+	 * We want to check if it's valid and highlight it creating an ad-hoc chunk for it in this line.
+	 * The ascii value of the first character after the tag have to be >= 47, or we assume it as invalid
+	 */
 
 	if(*(p + partLen) < 47)
 	{
@@ -841,13 +916,9 @@ got_url:
 		//now run until the presumed end of the url
 		data_ptr=p;
 		p+=partLen;
-		// Question : What characters are NOT allowed in an URL ?
-		// I assume [] () {} 'and chars below 33 (space too , and negative chars too! (for signed char systems))
-		// [] and () are used in ed2k links often
 
-		// These characters are "{", "}", "|", "\", "^", "~", "[", "]", and "`". (RFC1738)
-		while((*p > 32) && (*p != '[') && (*p != '|') && (*p != '{') && (*p != '>') &&
-				(*p != ']')  && (*p != '}') && (*p != '<') && (*p != '"') && (*p != '\''))p++;
+		p = skip_to_end_of_url(p);
+
 		if(m_pKviWindow)
 		{
 			QString tmp;
