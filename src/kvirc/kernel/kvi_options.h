@@ -333,8 +333,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUseSaslIfAvailable 239
 #define KviOption_boolFrameIsMaximized 240                             /* internal */
 #define KviOption_boolPrependNickColorInfoToRealname 241
+#define KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen 242   /* notifier */
 
-#define KVI_NUM_BOOL_OPTIONS 242
+#define KVI_NUM_BOOL_OPTIONS 243
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

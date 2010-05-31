@@ -257,13 +257,74 @@ void KviNotifierWindow::stopAutoHideTimer()
 	m_pProgressBar->setValue(0);
 }
 
+// FIXME: The code for detecting fullscreen window does NOT take into account multi-screen setups.
+//        We also lack the code for MacOSX and Qt-only-X11 compilation.
+
+#if COMPILE_KDE_SUPPORT
+
+	#include <kwindowsystem.h>
+	
+	static bool active_window_is_full_screen()
+	{
+		WId activeId = KWindowSystem::activeWindow();
+		KWindowInfo wi = KWindowSystem::windowInfo(activeId, NET::WMState);
+		return (wi.valid() && wi.hasState(NET::FullScreen));
+	}
+
+#else //!COMPILE_KDE_SUPPORT
+	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	
+		#include <windows.h>
+		
+		static bool active_window_is_full_screen()
+		{
+			HWND hForeground = ::GetForegroundWindow();
+			if(!hForeground)
+				return false;
+
+			HWND hDesktop = ::GetDesktopWindow();
+			if(hForeground == hDesktop)
+				return false;
+
+			HWND hShell = ::GetShellWindow();
+			if(hForeground == hShell)
+				return false;
+
+			RECT rct;
+			::GetWindowRect(hForeground,&rct);
+
+			if((rc.right - rc.left) < GetSystemMetrics(SM_CXSCREEN))
+				return false;
+			
+			if((rc.bottom - rc.top) < GetSystemMetrics(SM_CYSCREEN))
+				return false;
+
+			return true;
+		}
+	
+	#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
+#endif //!COMPILE_KDE_SUPPORT
+
+
 void KviNotifierWindow::doShow(bool bDoAnimate)
 {
-	if(!KVI_OPTION_BOOL(KviOption_boolEnableNotifier))return;
+	if(!KVI_OPTION_BOOL(KviOption_boolEnableNotifier))
+		return;
 
 	kvi_time_t tNow = kvi_unixTime();
 	if(g_tNotifierDisabledUntil > tNow)return;
 	g_tNotifierDisabledUntil = 0;
+
+#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+
+	if(KVI_OPTION_BOOL(KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen))
+	{
+		// check if the active window is full screen
+		if(active_window_is_full_screen())
+			return;
+	}
+
+#endif //COMPILE_KDE_SUPPORT || COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
 	switch(m_eState)
 	{

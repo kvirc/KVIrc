@@ -139,7 +139,9 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 
 	createLayout();
 
-	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable the notifier","options"),KviOption_boolEnableNotifier);
+	int iRow = 0;
+
+	KviBoolSelector * b = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable the notifier","options"),KviOption_boolEnableNotifier);
 	QString tip = "<center>";
 	tip += __tr2qs_ctx("This is an option for the impatient: it allows to forcibly and permanently disable " \
 					"the notifier window. Please note that if this option is activated then " \
@@ -148,10 +150,43 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 					"will make all the /notifier.* commands fail silently.","options");
 	tip += "</center>";
 	mergeTip(b,tip);
-	addBoolSelector(0,1,0,1,__tr2qs_ctx("Enable notifier window flashing","options"),KviOption_boolNotifierFlashing);
-	KviBoolSelector * b2 = addBoolSelector(0,2,0,2,__tr2qs_ctx("Enable notifier window fade effect","options"),KviOption_boolNotifierFading);
 
-	KviTalGroupBox *g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Advanced configuration","options"));
+	iRow++;
+
+#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+
+	KviBoolSelector * b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Don't show notifier when there is an active fullscreen window","options"),KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen);
+
+	tip = "<center>";
+	tip += __tr2qs_ctx("This option stops the notifier from being displayed when there is an active fullscreen window. " \
+						"This is useful for gaming sessions where you may be distracted by the notifier or it may even switch " \
+						"your game from fullscreen to window mode.","options");
+	tip += "</center>";
+	mergeTip(b2,tip);
+	
+	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
+	QObject::connect(b,SIGNAL(toggled(bool)),b2,SLOT(setEnabled(bool)));
+
+	iRow++;
+
+#endif //COMPILE_KDE_SUPPORT || COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
+
+	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable notifier window flashing","options"),KviOption_boolNotifierFlashing);
+
+	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
+	QObject::connect(b,SIGNAL(toggled(bool)),b2,SLOT(setEnabled(bool)));
+
+
+	iRow++;
+	
+	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable notifier window fade effect","options"),KviOption_boolNotifierFading);
+
+	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
+	QObject::connect(b,SIGNAL(toggled(bool)),b2,SLOT(setEnabled(bool)));
+
+	iRow++;
+
+	KviTalGroupBox *g = addGroupBox(0,iRow,0,iRow,Qt::Horizontal,__tr2qs_ctx("Advanced configuration","options"));
 	connect(b,SIGNAL(toggled(bool)),g,SLOT(setEnabled(bool)));
 
 	connect(b,
@@ -175,7 +210,7 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 				0,100,40,KVI_OPTION_BOOL(KviOption_boolNotifierFading)),
 		SLOT(setEnabled(bool)));
 
-	addRowSpacer(0,4,0,4);
+	addRowSpacer(0,iRow,0,iRow);
 }
 
 KviNotifierOptionsWidget::~KviNotifierOptionsWidget()
