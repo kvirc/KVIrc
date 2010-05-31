@@ -153,9 +153,11 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 
 	iRow++;
 
+	KviBoolSelector * b2;
+
 #if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
-	KviBoolSelector * b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Don't show notifier when there is an active fullscreen window","options"),KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen);
+	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Don't show notifier when there is an active fullscreen window","options"),KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen);
 
 	tip = "<center>";
 	tip += __tr2qs_ctx("This option stops the notifier from being displayed when there is an active fullscreen window. " \
