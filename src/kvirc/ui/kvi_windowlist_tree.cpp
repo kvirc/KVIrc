@@ -190,16 +190,29 @@ void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent *e)
 	QScrollBar * pBar = verticalScrollBar();
 	
 	if(!pBar)
+	{
+		e->ignore(); // let our parent handle the event
 		return;
+	}
 	if(!pBar->isVisible())
+	{
+		e->ignore(); // let our parent handle the event
 		return;
-	if(
+	}
+
+	if(KVI_OPTION_BOOL(KviOption_boolWheelScrollsWindowsList))
+	{
+		if(e->delta() < 0)
+			((KviTreeWindowList*)parent())->switchWindow(true, false);
+		else if(e->delta() > 0)
+			((KviTreeWindowList*)parent())->switchWindow(false, false);
+	} else {
+		if(
 			((e->delta() < 0) && (pBar->value() < pBar->maximum())) ||
 			((e->delta() > 0) && (pBar->value() > pBar->minimum()))
 		)
 			QApplication::sendEvent(pBar,e);
-	else
-		e->accept(); // eat it
+	}
 }
 
 

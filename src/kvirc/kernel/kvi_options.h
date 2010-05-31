@@ -334,8 +334,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolFrameIsMaximized 240                             /* internal */
 #define KviOption_boolPrependNickColorInfoToRealname 241
 #define KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen 242   /* notifier */
+#define KviOption_boolWheelScrollsWindowsList 243
 
-#define KVI_NUM_BOOL_OPTIONS 243
+#define KVI_NUM_BOOL_OPTIONS 244
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"
