@@ -1098,7 +1098,11 @@ void KviInputEditor::timerEvent(QTimerEvent * e)
 
 void KviInputEditor::handleDragSelection()
 {
-	if(m_iSelectionAnchorChar == -1) return;
+	if(m_iSelectionAnchorChar == -1)
+		return;
+
+	if(m_iSelectionAnchorChar > m_szTextBuffer.length()) // may happen if hitting backspace or del while dragging
+		m_iSelectionAnchorChar = m_szTextBuffer.length();
 
 	QPoint pnt = mapFromGlobal(QCursor::pos());
 
@@ -1829,15 +1833,15 @@ int KviInputEditor::xPositionFromCharIndex(int iChIdx)
 	int iCurXPos = 0;
 	int iCurChar = m_iFirstVisibleChar;
 
-	if(!m_szTextBuffer.isEmpty())
-		while(iCurChar < iChIdx)
-		{
-			QChar c = m_szTextBuffer.at(iCurChar);
-
-			iCurXPos += (c.unicode() < 256) ? KviInputEditor::g_iInputFontCharWidth[c.unicode()] : fm->width(c);
-
-			iCurChar++;
-		}
+	if(m_szTextBuffer.isEmpty())
+		return iCurXPos;
+	
+	while(iCurChar < iChIdx)
+	{
+		QChar c = m_szTextBuffer.at(iCurChar);
+		iCurXPos += (c.unicode() < 256) ? KviInputEditor::g_iInputFontCharWidth[c.unicode()] : fm->width(c);
+		iCurChar++;
+	}
 
 	return iCurXPos;
 }
@@ -2360,35 +2364,42 @@ void KviInputEditor::returnHit()
 
 void KviInputEditor::backspaceHit()
 {
-	if(!m_bReadOnly)
+	if(m_bReadOnly)
+		return;
+	if(hasSelection() && (m_iSelectionEnd >= m_iCursorPosition-1) && (m_iSelectionBegin <= m_iCursorPosition))
 	{
-		if(hasSelection() && (m_iSelectionEnd >= m_iCursorPosition-1) && (m_iSelectionBegin <= m_iCursorPosition))
-		{
-			//remove the selection
-			m_szTextBuffer.remove(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1);
-			m_iCursorPosition = m_iSelectionBegin;
-			if(m_iFirstVisibleChar > m_iCursorPosition)m_iFirstVisibleChar = m_iCursorPosition;
-		} else if(m_iCursorPosition > 0) {
-			m_iCursorPosition--;
-			m_szTextBuffer.remove(m_iCursorPosition,1);
-			if(m_iFirstVisibleChar > m_iCursorPosition)m_iFirstVisibleChar--;
-		}
-		selectOneChar(-1);
-		repaintWithCursorOn();
+		//remove the selection
+		m_szTextBuffer.remove(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1);
+		m_iCursorPosition = m_iSelectionBegin;
+		if(m_iFirstVisibleChar > m_iCursorPosition)
+			m_iFirstVisibleChar = m_iCursorPosition;
+	} else if(m_iCursorPosition > 0)
+	{
+		m_iCursorPosition--;
+		m_szTextBuffer.remove(m_iCursorPosition,1);
+		if(m_iFirstVisibleChar > m_iCursorPosition)
+			m_iFirstVisibleChar--;
 	}
+	selectOneChar(-1);
+	repaintWithCursorOn();
 }
 
 void KviInputEditor::deleteHit()
 {
-	if(!m_bReadOnly)
+	if(m_bReadOnly)
+		return;
+
+	if(hasSelection())
 	{
-		if(hasSelection()) removeSelected();
-		else if(m_iCursorPosition < (int)m_szTextBuffer.length())
-		{
-			m_szTextBuffer.remove(m_iCursorPosition,1);
-			selectOneChar(-1);
-			repaintWithCursorOn();
-		}
+		removeSelected();
+		return;
+	}
+	
+	if(m_iCursorPosition < (int)m_szTextBuffer.length())
+	{
+		m_szTextBuffer.remove(m_iCursorPosition,1);
+		selectOneChar(-1);
+		repaintWithCursorOn();
 	}
 }
 
