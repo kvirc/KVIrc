@@ -563,7 +563,7 @@ void KviClassEditor::renameClass(KviClassEditorTreeWidgetItem *pClassItem)
 		activateItem(pClassItem);
 		pClassItem->setExpanded(true);
 	}
-qDebug("causa rename deleto classe %s",szClassName.toUtf8().data());
+	qDebug("causa rename deleto classe %s",szClassName.toUtf8().data());
 	KviKvsObjectClass *pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
 	if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
 }
@@ -1222,6 +1222,20 @@ bool KviClassEditor::removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToA
 		KviKvsObjectClass *pClass = KviKvsKernel::instance()->objectController()->lookupClass(buildFullClassName(it));
 		qDebug("rimuovo class %s %p",buildFullClassName(it).toUtf8().data(), pClass);
 		if (pClass) KviKvsKernel::instance()->objectController()->deleteClass(pClass);
+		else
+		{
+			QString szFileName=buildFullClassName(it);
+			szFileName.replace("::","--");
+			szFileName.append(KVI_FILEEXTENSION_SCRIPT);
+			QString szPath;
+			g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes);
+			QDir d(szPath);
+			if (d.exists(szFileName))
+			{
+				qDebug("rimuovo dal disco il file %s",szFileName.toUtf8().data());
+				d.remove(szFileName);
+			}
+		}
 	}
 	if(it->isMethod())
 	{
