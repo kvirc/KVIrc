@@ -92,7 +92,7 @@ static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
 	
 	for(;;)
 	{
-		if(*p < 32)
+		if(*p <= 32)
 			return p; // no spaces and control characters below 32
 	
 		if((*p == '{') || (*p == '}') || (*p == '<') || (*p == '>') || (*p == '"') || (*p == '\''))
