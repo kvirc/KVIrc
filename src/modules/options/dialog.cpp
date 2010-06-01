@@ -333,11 +333,8 @@ bool KviOptionsDialog::searchInSelectors(KviOptionsWidget *pOptionsWidget,const 
 				}
 				if(bOk)
 				{
-					debug("found in %s",szText.toUtf8().data());
 					bFoundSomethingHere = true;
 				}
-				else 	debug("NOT found in %s",szText.toUtf8().data());
-
 				QFont font = pWidget->font();
 				font.setBold(bOk);
 				font.setUnderline(bOk);
