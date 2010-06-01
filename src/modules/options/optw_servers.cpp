@@ -65,6 +65,10 @@
 #include <QHeaderView>
 #include <QIcon>
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	#include <QStyleFactory>
+	#include <QWindowsStyle>
+#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
 KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 	: QDialog(par)
@@ -1351,7 +1355,19 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 		pal.setColor(QPalette::Disabled,QPalette::Button,QColor(98,98,180));
 		pal.setColor(QPalette::Disabled,QPalette::ButtonText,QColor(128,128,245));
 
-
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		// Kill the WindowXP style which does not honor palette
+		QStyle * pWindowsStyle = QStyleFactory::create("plastique");
+		if(!pWindowsStyle)
+		{
+			pWindowsStyle = QStyleFactory::create("windows");
+			if(!pWindowsStyle)
+				pWindowsStyle = QStyleFactory::create("motif"); // even motif is better.. :D
+		}
+		if(pWindowsStyle)
+			m_pConnectCurrent->setStyle(pWindowsStyle);
+#endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
+		
 		m_pConnectCurrent->setPalette(pal);
 	
 		QFont fnt = m_pConnectCurrent->font();
