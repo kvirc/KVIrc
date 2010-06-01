@@ -1,15 +1,28 @@
 Thomas Kalla, 17.09.2009
 #########################
 
-This document contains step-by-step instructions for compiling KVIrc4 from SVN sources on a Mac OS X system. Due to changed prerequisites and compilation system, this compilation howto does not apply to older versions of KVirc.
+This document contains step-by-step instructions for compiling KVIrc4 from SVN
+sources on a Mac OS X system. Due to changed prerequisites and compilation 
+system, this compilation howto does not apply to older versions of KVirc.
 
 
-All this has worked fine several times for me. I've been using KVirc on Mac since May 2004 without any crashes & faults. Only the sound interface does not work, but I have no use for it within an IRC client. However, I cannot guarantee that this instructions will work for you as they do for me and I'm not responsible for any problems or damage you may encounter after following them. You should always understand what you are doing!
+All this has worked fine several times for me. I've been using KVirc on Mac 
+since May 2004 without any crashes & faults. Only the sound interface does not
+work, but I have no use for it within an IRC client. However, I cannot
+guarantee that this instructions will work for you as they do for me and I'm
+not responsible for any problems or damage you may encounter after following
+them. You should always understand what you are doing!
 
 
-IMPORTANT: Installing KVIrc "the usual way" like on other popular Unix-like OSes with files spread across several directories does not work and is unsupported. The provided compilation system builds a typical "Bundle" for Mac OS X. A bundle is "just" a special directory structure on Mac systems which contains the application binary, dependant libraries, plugins, modules and other resources.
+IMPORTANT: Installing KVIrc "the usual way" like on other popular Unix-like
+OSes with files spread across several directories does not work and is
+unsupported. The provided compilation system builds a typical "Bundle" for 
+Mac OS X. A bundle is "just" a special directory structure on Mac systems which
+contains the application binary, dependant libraries, plugins, modules and
+other resources.
 
-For further details look at http://doc.trolltech.com/qq/qq09-mac-deployment.html and the documentation on http://developer.apple.com, please.
+For further details look at http://doc.trolltech.com/qq/qq09-mac-deployment.html
+and the documentation on http://developer.apple.com, please.
 
 
 #########################
@@ -17,28 +30,43 @@ For further details look at http://doc.trolltech.com/qq/qq09-mac-deployment.html
 #########################
 
 1. Apple Xcode
-Any version should work as long as it supports Mac OS X 10.4 and higher. If you want the latest version, you have to register at http://developer.apple.com (it's free), download XCode and follow the install instructions in the documentation.
+
+Any version should work as long as it supports Mac OS X 10.4 and higher. If you
+want the latest version, you have to register at http://developer.apple.com (it's
+free), download XCode and follow the install instructions in the documentation.
 
 2. QT-MAC
-I suggest to download and install the latest binary package from http://www.qtsoftware.com/downloads/mac-os-cpp. Hint: If you do not want to do deep debugging of Qt, you do NOT need the debugging libraries. Of course you can donwload the sources and build Qt yourself. Read the documentation and build a Framework (not the standard Unix-like library version) in that case.
+
+I suggest to download and install the latest binary package from
+http://www.qtsoftware.com/downloads/mac-os-cpp. Hint: If you do not want to do
+deep debugging of Qt, you do NOT need the debugging libraries. Of course you can
+donwload the sources and build Qt yourself. Read the documentation and build a
+Framework (not the standard Unix-like library version) in that case.
 
 3. GNU gettext
-Get the latest sources from your favourite GNU mirror. This step is optional but you will lose the localisation support.
 
-If you already installed Fink, you already have gettext so you may skip this step.
+Get the latest sources from your favourite GNU mirror. This step is optional
+but you will lose the localisation support.
+
+If you already installed Fink, you already have gettext so you may skip this
+step.
 
 Below, sample instruction follow for version 0.17 used by me:
 
 Open a terminal window
-# cd /Developer
-# tar -xzf <your_path_to_the_sources>/gettext-0.17.tar.gz
-# cd gettext-0.17
-# ./configure
-# make
-# make install
+
+	# cd /Developer
+	# tar -xzf <your_path_to_the_sources>/gettext-0.17.tar.gz
+	# cd gettext-0.17
+	# ./configure
+	# make
+	# make install
 
 4. CMake
-Get the latest version of the automatic build system from http://www.cmake.org. Again it's up to you if you want the easily installable binary package or read the documentation and compile by yourself.
+
+Get the latest version of the automatic build system from http://www.cmake.org.
+Again it's up to you if you want the easily installable binary package or read 
+the documentation and compile by yourself.
 
 5. Make sure that gettext and CMake are accessible from your $PATH!
 
@@ -50,28 +78,34 @@ Get the latest version of the automatic build system from http://www.cmake.org. 
 
 1) Get the KVIrc sources:
 
-# svn co https://svn.kvirc.de/svn/trunk/kvirc
+	# svn co https://svn.kvirc.de/svn/trunk/kvirc
 
 2) Build! :-)
 
 Two IMPORTANT hints before you start:
 
-* If you want to use Perl (Documentation and Modules) you have to build a universal binary. This is due to Cmake overriding your architecture values by the ones found in 'ldflags' returned by calling "perl -V".
-* If you want python support than you cannot build for an older Mac OS X version, i.e. the value of $MACOSX_DEPLOYMENT_TARGET has to match the value used by Apple when they built the python package.
+* If you want to use Perl (Documentation and Modules) you have to build a
+universal binary. This is due to Cmake overriding your architecture values
+by the ones found in 'ldflags' returned by calling "perl -V".
+* If you want python support than you cannot build for an older Mac OS X
+version, i.e. the value of $MACOSX_DEPLOYMENT_TARGET has to match the value
+used by Apple when they built the python package.
 
 I suggest an "out-of-source" build:
 
-# mkdir kvirc-build
-# cmake <path-to-kvirc-src-dir>
-# make
-# make install
+	# mkdir kvirc-build
+	# cmake <path-to-kvirc-src-dir>
+	# make
+	# make install
 
-Instead cmake you may also consider to call ccmake which provides a nice gui for the options.
+Instead cmake you may also consider to call ccmake which provides a nice gui
+for the options.
 
 The result is a KVIrc.app bundle within the build directory.
 
 3) Enjoy :-)
 
-Open Finder, move your bundle into a better location (e.g. /Applications), and double click to start.
+Open Finder, move your bundle into a better location (e.g. /Applications),
+and double click to start.
 
 

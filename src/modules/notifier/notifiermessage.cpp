@@ -38,9 +38,15 @@ KviNotifierMessage::KviNotifierMessage(QPixmap * pPixmap, const QString &szText)
 	m_szText=szText;
 	m_pPixmap=pPixmap;
 
+	m_pHBox = new QHBoxLayout(this);
+	m_pHBox->setSpacing(SPACING);
+	m_pHBox->setMargin(SPACING);
+	
+	//qDebug("NOTIFIER TEXT MESSAGE: \n%s\n",szText.toUtf8().data());
+
 	if(bShowImages)
 	{
-		m_pLabel0 = new QLabel();
+		m_pLabel0 = new QLabel(this);
 		m_pLabel0->setFixedSize(16,16);
 		if(m_pPixmap)
 			m_pLabel0->setPixmap(*m_pPixmap);
@@ -49,15 +55,11 @@ KviNotifierMessage::KviNotifierMessage(QPixmap * pPixmap, const QString &szText)
 	}
 
 
-	m_pLabel1 = new QLabel();
+	m_pLabel1 = new QLabel(this);
 	m_pLabel1->setTextFormat(Qt::RichText);
 	m_pLabel1->setText(KviHtmlGenerator::convertToHtml(m_szText));
 	m_pLabel1->setWordWrap(true);
 
-	m_pHBox = new QHBoxLayout(this);
-	m_pHBox->setSpacing(SPACING);
-	m_pHBox->setMargin(SPACING);
-	
 	if(bShowImages)
 	{
 		m_pHBox->setStretch(1,99);

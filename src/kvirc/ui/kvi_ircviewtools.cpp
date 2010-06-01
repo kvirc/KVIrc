@@ -189,7 +189,11 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 	gl->addWidget(tw,1,0,1,2);
 
 	gl->setSizeConstraint(QGridLayout::SetFixedSize);
-	m_pStringToFind->setFocus();
+
+#ifndef COMPILE_ON_MAC
+	m_pStringToFind->setFocus(); // this makes MacOSX version of Qt go nuts and crash
+#endif //!COMPILE_ON_MAC
+
 	tw->setCurrentIndex(tw->indexOf(w));
 	new QShortcut(QKeySequence(Qt::Key_Escape),this,SLOT(close()),0,Qt::WidgetShortcut);
 }
