@@ -293,10 +293,10 @@ void KviNotifierWindow::stopAutoHideTimer()
 			RECT rct;
 			::GetWindowRect(hForeground,&rct);
 
-			if((rc.right - rc.left) < GetSystemMetrics(SM_CXSCREEN))
+			if((rct.right - rct.left) < GetSystemMetrics(SM_CXSCREEN))
 				return false;
 			
-			if((rc.bottom - rc.top) < GetSystemMetrics(SM_CYSCREEN))
+			if((rct.bottom - rct.top) < GetSystemMetrics(SM_CYSCREEN))
 				return false;
 
 			return true;
