@@ -155,7 +155,8 @@ void KviInputEditor::applyOptions()
 	setFont(newFont);
 
 	//then, let font metrics be updated in lazy fashion
-	if(g_pLastFontMetrics) delete g_pLastFontMetrics;
+	if(g_pLastFontMetrics)
+		delete g_pLastFontMetrics;
 	g_pLastFontMetrics = 0;
 
 	//not that lazy, since we force an update :)
@@ -230,7 +231,7 @@ QSize KviInputEditor::sizeHint() const
 void KviInputEditor::paintEvent(QPaintEvent *)
 {
 	QPainter p(this);
-
+	
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{

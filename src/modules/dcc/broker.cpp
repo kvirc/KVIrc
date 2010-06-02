@@ -738,15 +738,18 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 
 		bool bOk;
 		quint64 iRemoteSize = dcc->szFileSize.toULongLong(&bOk);
-		if(!bOk)iRemoteSize = 0;
+		if(!bOk)
+			iRemoteSize = 0;
 
 		if(!dcc->bAutoAccept)
 		{
 			QString tmp;
 			bool bDisableResume = false;
 
-			if((bOk) || // remote size is unknown
-				(iRemoteSize > (quint64)fi.size())) // or it is larger than the actual size on disk
+			if(
+				(!bOk) ||                          // remote size is unknown
+				(iRemoteSize > (quint64)fi.size()) // or it is larger than the actual size on disk
+			) 
 			{
 				tmp = __tr2qs_ctx( \
 							"The file '<b>%1</b>' already exists " \
@@ -780,27 +783,31 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 					this,SLOT(cancelDcc(KviDccBox *,KviDccDescriptor *)));
 			box->show();
 			return;
-		} else {
-			// auto resume ?
-			if(KVI_OPTION_BOOL(KviOption_boolAutoResumeDccSendWhenAutoAccepted) &&
-				(bOk) && // only if the remote size is really known
-				(iRemoteSize > (quint64)fi.size()) && // only if the remote size is larger than the local size
-				(!KviDccFileTransfer::nonFailedTransferWithLocalFileName(dcc->szLocalFileName.toUtf8().data()))) // only if there is no transfer with this local file name yet
-			{
-				// yep, auto resume...
-				dcc->bResume = true;
-				recvFileExecute(0,dcc);
-			} else if(iRemoteSize == (quint64)fi.size())
-			{ 
-				dcc->console()->output(KVI_OUT_DCCMSG,"Transfer aborted: file %Q already completed",&(dcc->szLocalFileName));
-				cancelDcc(0,dcc);
-			} else {
-				// otherwise auto rename
-				renameDccSendFile(0,dcc);
-			}
-			return;
 		}
-	} else dcc->szLocalFileSize = "0";
+
+		// auto resume ?
+		if(
+				KVI_OPTION_BOOL(KviOption_boolAutoResumeDccSendWhenAutoAccepted) &&
+				(bOk) &&                              // only if the remote size is really known
+				(iRemoteSize > (quint64)fi.size()) && // only if the remote size is larger than the local size
+				(!KviDccFileTransfer::nonFailedTransferWithLocalFileName(dcc->szLocalFileName)) // only if there is no transfer with this local file name yet
+			) 
+		{
+			// yep, auto resume...
+			dcc->bResume = true;
+			recvFileExecute(0,dcc);
+		} else if(iRemoteSize == (quint64)fi.size())
+		{ 
+			dcc->console()->output(KVI_OUT_DCCMSG,"Transfer aborted: file %Q already completed",&(dcc->szLocalFileName));
+			cancelDcc(0,dcc);
+		} else {
+			// otherwise auto rename
+			renameDccSendFile(0,dcc);
+		}
+		return;
+	}
+	
+	dcc->szLocalFileSize = "0";
 
 	// everything OK
 	recvFileExecute(0,dcc);
