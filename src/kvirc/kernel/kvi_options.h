@@ -335,8 +335,10 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolPrependNickColorInfoToRealname 241
 #define KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen 242   /* notifier */
 #define KviOption_boolWheelScrollsWindowsList 243
+#define KviOption_boolAcceptMismatchedPortDccResumeRequests 244      /* dcc::send */
 
-#define KVI_NUM_BOOL_OPTIONS 244
+
+#define KVI_NUM_BOOL_OPTIONS 245
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

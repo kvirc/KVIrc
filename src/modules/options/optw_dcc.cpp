@@ -217,10 +217,18 @@ KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * paren
 				"the DCC transfer with some buggy IRC clients.<br>" \
 				"Use it only if your DCC transfers stall just after establishing a connection without sending any data.</center>","options"));
 
-	b = addBoolSelector(g,__tr2qs_ctx("Accept broken RESUME (mIRC file.ext)","options"),KviOption_boolAcceptBrokenFileNameDccResumeRequests);
+	b = addBoolSelector(g,__tr2qs_ctx("Accept RESUME requests with broken filename (mIRC file.ext)","options"),KviOption_boolAcceptBrokenFileNameDccResumeRequests);
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes KVIrc to accept RESUME requests with invalid filenames.<br>" \
 				"Use it if KVIrc fails to accept RESUME requests from other clients (e.g. some versions of mIRC).</center>","options"));
+
+
+	b = addBoolSelector(g,__tr2qs_ctx("Accept RESUME requests with mismatched ports","options"),KviOption_boolAcceptMismatchedPortDccResumeRequests);
+	mergeTip(b,
+		__tr2qs_ctx("<center>This option causes KVIrc to accept RESUME requests with mismatched ports.<br>" \
+				"Use it if some router on the path between you and the receiver remaps the ports in DCC SEND " \
+				"but not in DCC RESUME requests.<br>Please note that this option may misbehave in certain usage " \
+				"patterns since KVIrc must differentiate between transfers only by looking at the filename. Be careful.</center>","options"));
 
 	b = addBoolSelector(g,__tr2qs_ctx("Replace spaces with underscores in outgoing filenames","options"),KviOption_boolDCCFileTransferReplaceOutgoingSpacesWithUnderscores);
 	mergeTip(b,

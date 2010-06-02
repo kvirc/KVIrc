@@ -196,7 +196,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("AutoJoinOnInvite",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("ShowServersConnectDialogOnStart",true, KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowServersConnectDialogAsToplevel",true,KviOption_sectFlagFrame),
-	BOOL_OPTION("AcceptBrokenFileNameDccResumeRequests",true,KviOption_sectFlagFrame),
+	BOOL_OPTION("AcceptBrokenFileNameDccResumeRequests",true,KviOption_sectFlagDcc),
 	BOOL_OPTION("AutoReconnectOnUnexpectedDisconnect",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("RejoinChannelsAfterReconnect",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("ReopenQueriesAfterReconnect",true,KviOption_sectFlagFrame),
@@ -326,7 +326,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("FrameIsMaximized",false,KviOption_sectFlagGeometry),
 	BOOL_OPTION("PrependNickColorInfoToRealname",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("DontShowNotifierIfActiveWindowIsFullScreen",false,KviOption_sectFlagFrame),
-	BOOL_OPTION("WheelScrollsWindowsList",true,KviOption_sectFlagWindowList)
+	BOOL_OPTION("WheelScrollsWindowsList",true,KviOption_sectFlagWindowList),
+	BOOL_OPTION("AcceptMismatchedPortDccResumeRequests",false,KviOption_sectFlagDcc)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)

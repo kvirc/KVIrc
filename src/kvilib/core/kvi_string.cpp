@@ -2337,6 +2337,52 @@ KviStr & KviStr::setNum(unsigned long num)
 	return (*this);
 }
 
+long long KviStr::toLongLong(bool *bOk) const
+{
+	long long result = 0;
+	if(bOk)*bOk = false;
+	register char *p=m_ptr;
+	bool bNeg = false;
+	while(isspace(*p))p++; //skip spaces
+	if(*p == '-'){
+		bNeg = true;
+		p++;
+	} else {
+		if(*p == '+')p++;
+	}
+	if(isdigit(*p)){                      //point to something interesting ?
+		do{
+			result = (result * 10) + (*p - '0');
+			p++;
+		} while(isdigit(*p));
+		if(bNeg)result = -result;
+		while(isspace(*p))p++;        //skip trailing spaces
+		if(*p)return 0;               //if this is not the end...die.
+		if(bOk)*bOk = true;
+		return result;
+	}
+	return 0;
+}
+
+unsigned long long KviStr::toULongLong(bool *bOk) const
+{
+	unsigned long long result = 0;
+	if(bOk)*bOk = false;
+	register char *p=m_ptr;
+	while(isspace(*p))p++; //skip spaces
+	if(isdigit(*p)){                      //point to something interesting ?
+		do{
+			result = (result * 10) + (*p - '0');
+			p++;
+		} while(isdigit(*p));
+		while(isspace(*p))p++;        //skip trailing spaces
+		if(*p)return 0;               //if this is not the end...die.
+		if(bOk)*bOk = true;
+		return result;
+	}
+	return 0;
+}
+
 long KviStr::toLong(bool *bOk) const
 {
 	long result = 0;

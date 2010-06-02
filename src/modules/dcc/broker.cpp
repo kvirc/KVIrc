@@ -957,18 +957,17 @@ bool KviDccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename
 		KviDccZeroPortTag * t = findZeroPortTag(QString(szZeroPortTag));
 		if(t)
 		{
-			//debug("FOUND");
 			// valid zero port resume request
-			if(filePos < t->m_uFileSize)
-			{
-				//debug("VALID");
-				// ok!
-				t->m_uResumePosition = filePos;
+			if(filePos >= t->m_uFileSize)
+				return false; // invalid resume size
+				
+			// ok!
+			t->m_uResumePosition = filePos;
 
-				KviStr szBuffy;
-				KviServerParser::encodeCtcpParameter(filename,szBuffy);
+			KviStr szBuffy;
+			KviServerParser::encodeCtcpParameter(filename,szBuffy);
 
-				dcc->ctcpMsg->msg->console()->connection()->sendFmtData(
+			dcc->ctcpMsg->msg->console()->connection()->sendFmtData(
 					"PRIVMSG %s :%cDCC ACCEPT %s %s %u %s%c",
 					dcc->ctcpMsg->msg->console()->connection()->encodeText(dcc->ctcpMsg->pSource->nick()).data(),
 					0x01,
@@ -976,12 +975,10 @@ bool KviDccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename
 					port,
 					filePos,
 					szZeroPortTag,
-					0x01);
+					0x01
+				);
 
-				return true;
-			} else {
-				return false; // invalid resume size
-			}
+			return true;
 		}
 	}
 	//debug("NOT A ZeRO PORT");

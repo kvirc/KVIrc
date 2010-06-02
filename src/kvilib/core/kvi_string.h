@@ -415,6 +415,8 @@ public:
 	// everything in base 10.... no overflow checks here
 	long toLong(bool *bOk=0) const;
 	unsigned long toULong(bool *bOk=0) const;
+	long long toLongLong(bool *bOk=0) const;
+	unsigned long long toULongLong(bool *bOk=0) const;
 	char toChar(bool *bOk=0) const              { return (char)toLong(bOk);             };
 	unsigned char toUChar(bool *bOk=0) const    { return (unsigned char)toULong(bOk);   };
 	int toInt(bool *bOk=0) const                { return (int)toLong(bOk);              };

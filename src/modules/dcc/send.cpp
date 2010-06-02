@@ -1438,11 +1438,13 @@ bool KviDccFileTransfer::handleResumeAccepted(const char * filename,const char *
 
 bool KviDccFileTransfer::handleResumeRequest(const char * filename,const char * port,quint64 filePos)
 {
-	if(!g_pDccFileTransfers)return false;
+	if(!g_pDccFileTransfers)
+		return false;
 
 	for(KviDccFileTransfer * t = g_pDccFileTransfers->first();t;t = g_pDccFileTransfers->next())
 	{
-		if(t->doResume(filename,port,filePos))return true;
+		if(t->doResume(filename,port,filePos))
+			return true;
 	}
 
 	return false;
@@ -1785,42 +1787,89 @@ bool KviDccFileTransfer::resumeAccepted(const char *filename,const char *port,co
 
 bool KviDccFileTransfer::doResume(const char * filename,const char * port,quint64 filePos)
 {
-	if(KviQString::equalCI(port,m_pMarshal->dccPort()) &&
-		(!m_pSlaveRecvThread) && (!m_pDescriptor->bRecvFile))
+	if(m_pSlaveRecvThread)
+		return false; // we're already receiving stuff...
+	if(m_pSlaveSendThread)
+		return false; // we're already sending stuff...
+
+	if(m_pDescriptor->bRecvFile)
+		return false; // we're receiving... can't resume anything
+
+	bool bFileNameMatches = KviQString::equalCI(filename,m_pDescriptor->szFileName);
+	bool bPortMatches = KviQString::equalCI(port,m_pMarshal->dccPort());
+
+	if(!bPortMatches)
 	{
-		if(KviQString::equalCI(filename,m_pDescriptor->szFileName) || KVI_OPTION_BOOL(KviOption_boolAcceptBrokenFileNameDccResumeRequests))
-		{
-			bool bOk;
-			quint64 iLocalFileSize = m_pDescriptor->szLocalFileSize.toULongLong(&bOk);
-			if(!bOk)
-			{
-				// ops...internal error
-				outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Internal error in RESUME request","dcc"));
-				return false;
-			}
-			if(iLocalFileSize <= filePos)
-			{
-				outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Invalid RESUME request: Position %1 is larger than file size","dcc").arg(filePos));
-				return false;
-			}
+		// port doesn't match
+		if(!bFileNameMatches)
+			return false; // neither filename nor port match
+		
+		if(!KVI_OPTION_BOOL(KviOption_boolAcceptMismatchedPortDccResumeRequests))
+			return false;
 
-			outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Accepting RESUME request, transfer will begin at position %1","dcc").arg(filePos));
+		// hmm.. try to accept a mismatched port request
 
-			m_pDescriptor->szFileSize.setNum(filePos);
-
-
-			KviStr szBuffy;
-			KviServerParser::encodeCtcpParameter(filename,szBuffy);
-
-			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC ACCEPT %s %s %u%c",
-				m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-				0x01,
-				m_pDescriptor->console()->connection()->encodeText(szBuffy.ptr()).data(),
-				port,filePos,0x01);
-			return true;
-		}
+		if(_OUTPUT_VERBOSE)
+			outputAndLog(KVI_OUT_DCCMSG,__tr2qs_ctx("Processing RESUME request with mismatched port (%1)","dcc").arg(port));
 	}
-	return false;
+
+	// port matches
+	
+	if(!bFileNameMatches)
+	{
+		// bad file name
+		if(!bPortMatches)
+			return false; // neither filename nor port match
+
+		// port matches (this is very likely to be the right transfer)
+		
+		if(!KVI_OPTION_BOOL(KviOption_boolAcceptBrokenFileNameDccResumeRequests))
+		{
+			if(_OUTPUT_VERBOSE)
+				outputAndLog(
+						KVI_OUT_DCCMSG,
+						__tr2qs_ctx("Invalid RESUME request: Invalid file name (got '%1' but should be '%2')","dcc")
+								.arg(filename)
+								.arg(m_pDescriptor->szFileName)
+					);
+			return false; // bad file name
+		}
+
+		if(_OUTPUT_VERBOSE)
+			outputAndLog(KVI_OUT_DCCMSG,__tr2qs_ctx("Processing RESUME request with broken filename (%1)","dcc").arg(filename));
+	}
+
+	bool bOk;
+	quint64 iLocalFileSize = m_pDescriptor->szLocalFileSize.toULongLong(&bOk);
+
+	if(!bOk)
+	{
+		// ops...internal error
+		outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Internal error in RESUME request","dcc"));
+		return false;
+	}
+
+	if(iLocalFileSize <= filePos)
+	{
+		outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Invalid RESUME request: Position %1 is larger than file size","dcc").arg(filePos));
+		return false;
+	}
+
+	outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Accepting RESUME request, transfer will begin at position %1","dcc").arg(filePos));
+
+	m_pDescriptor->szFileSize.setNum(filePos);
+
+	KviStr szBuffy;
+	KviServerParser::encodeCtcpParameter(filename,szBuffy);
+
+	m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC ACCEPT %s %s %u%c",
+			m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+			0x01,
+			m_pDescriptor->console()->connection()->encodeText(szBuffy.ptr()).data(),
+			port,filePos,0x01
+		);
+
+	return true;
 }
 
 

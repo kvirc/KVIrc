@@ -566,7 +566,7 @@ static void dccModuleParseDccResume(KviDccRequest *dcc)
 	//      DCC SEND <filename> <remoteip> <remoteport> <filesize> <tag>
 
 	bool bOk;
-	quint64 filePos = dcc->szParam3.toULong(&bOk);
+	quint64 filePos = (quint64)(dcc->szParam3.toULongLong(&bOk));
 	if(!bOk)
 	{
 		if(!dcc->ctcpMsg->msg->haltOutput())
