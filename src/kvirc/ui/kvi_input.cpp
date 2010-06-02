@@ -40,7 +40,7 @@
 #include "kvi_scripteditor.h"
 #include "kvi_historywin.h"
 #include "kvi_userinput.h"
-//#include "kvi_shortcuts.h"
+#include "kvi_shortcuts.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_tooltip.h"
@@ -58,7 +58,7 @@
 #include <QMouseEvent>
 #include <QUrl>
 #include <QHBoxLayout>
-//#include <QShortcut>
+#include <QShortcut>
 
 #include <ctype.h>
 #include <stdlib.h>
@@ -171,10 +171,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pLayout->addWidget(m_pButtonContainer,0,1,2,1);
 	m_pLayout->addWidget(m_pInputEditor,0,0,2,1);
 	
-	/*
-	FIXME: see toggleMultiLine()
 	installShortcuts();
-	*/
 }
 
 KviInput::~KviInput()
@@ -214,31 +211,14 @@ void KviInput::inputEditorEnterPressed()
 	m_pInputEditor->setText("");
 }
 
-/*
-FIXME: see toggleMultiLine()
 void KviInput::installShortcuts()
 {
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_MULTILINE_OPEN),this,SLOT(toggleMultiLine()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_MULTILINE_OPEN_2),this,SLOT(toggleMultiLine()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_MULTILINE),this,SLOT(toggleMultiLine()),0,Qt::WidgetWithChildrenShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_MULTILINE_2),this,SLOT(toggleMultiLine()),0,Qt::WidgetWithChildrenShortcut);
 }
-*/
 
 void KviInput::keyPressEvent(QKeyEvent * e)
 {
-	//FIXME: this block of code have to be removed if QShortcut will work; see toggleMultiLine()
-	if(e->modifiers() & Qt::AltModifier)
-	{
-		switch(e->key())
-		{
-			case Qt::Key_Enter:
-			case Qt::Key_Return:
-			{
-				multiLineEditorButtonToggled(!m_pMultiLineEditor);
-			}
-			break;
-		}
-	}
-	
 	if(e->modifiers() & Qt::ControlModifier)
 	{
 		switch(e->key())
@@ -445,13 +425,10 @@ QString KviInput::text()
 	return szText;
 }
 
-/*
-FIXME: with the shortcut, it opens the multiline but then it can't close it
 void KviInput::toggleMultiLine()
 {
 	multiLineEditorButtonToggled(!m_pMultiLineEditor);
 }
-*/
 
 /*
 	@doc: commandline

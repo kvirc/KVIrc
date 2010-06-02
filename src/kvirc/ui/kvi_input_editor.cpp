@@ -1268,8 +1268,6 @@ void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 
 void KviInputEditor::installShortcuts()
 {
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_MULTILINE),this,SLOT(toggleMultiLineEditor()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_MULTILINE_2),this,SLOT(toggleMultiLineEditor()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HISTORY),this,SLOT(openHistory()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HISTORY_PREV),this,SLOT(historyPrev()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HISTORY_NEXT),this,SLOT(historyNext()),0,Qt::WidgetShortcut);
