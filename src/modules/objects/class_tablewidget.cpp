@@ -84,7 +84,11 @@ const char * const itemflags_tbl[] = {
                 This widget provides a table.
 	@functions:
                 !fn: $setText(<row:integer>,<col:integer>,[<text:string>])
+		Sets the contents of the cell pointeid by row and col to text.
+		!fn: $setNumber(<row:integer>,<col:integer>,[<number:integer>]).
+		Sets the contents of the cell pointeid by row and col to number.
                 !fn: <string> $text(<row:integer>,<col:integer>)
+		Returns  the text of the cell pointed by row and col.
                 !fn: $setHorizontalHeaderLabels(<string array>)
                 !fn: $showHorizontalHeader()
                 !fn: $hideHorizontalHeader()
@@ -133,6 +137,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tablewidget,"tablewidget","widget")
 
         // Item (text. icon, widget)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setText)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setNumber)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setToolTip)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,text)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setCellWidget)
@@ -193,6 +198,27 @@ KVSO_CLASS_FUNCTION(tablewidget,setText)
             }
             item->setText(szText);
             return true;
+}
+KVSO_CLASS_FUNCTION(tablewidget,setNumber)
+{
+	    CHECK_INTERNAL_POINTER(widget())
+	    kvs_int_t iCol,iRow,iNumber;
+	    QString szText;
+	    KVSO_PARAMETERS_BEGIN(c)
+			KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+			KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+			KVSO_PARAMETER("number",KVS_PT_INT,0,iNumber)
+	    KVSO_PARAMETERS_END(c)
+	    if(iRow>=((QTableWidget *)widget())->rowCount() || iRow>=((QTableWidget *)widget())->rowCount())
+		c->warning(__tr2qs_ctx("Item out of the tablewidget size","objects"));
+	    QTableWidgetItem *item=((QTableWidget *)widget())->item(iRow,iCol);
+	    if(!item)
+	    {
+		item=new QTableWidgetItem();
+		((QTableWidget *)widget())->setItem(iRow,iCol,item);
+	    }
+	    item->setData(0,(int)iNumber);
+	    return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,setIcon)
 {

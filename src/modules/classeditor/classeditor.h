@@ -187,7 +187,7 @@ protected:
 	bool askForClassName(QString &szClassName,QString &szInheritsClassName,bool bEdit);
 	bool askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText, QString &szNameBuffer);
 	bool askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName, bool bRenameMode);
-	void searchInheritedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & pInheritsedClasses);
+	void searchInheritedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & lInheritsedClasses);
 	bool classExists(QString &szFullItemName);
 	void renameClass(KviClassEditorTreeWidgetItem *pClassItem);
 	void renameNamespace(KviClassEditorTreeWidgetItem *pNamespaceItem);
