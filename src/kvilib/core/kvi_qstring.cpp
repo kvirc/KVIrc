@@ -642,8 +642,14 @@ namespace KviQString
 
 	void appendNumber(QString & szSrc, double dReal)
 	{
+#ifdef COMPILE_ON_MINGW
+		//workaround for #801
+		QString cBuffer;
+		cBuffer.setNum(dReal, 'f');
+#else
 		char cBuffer[512];
 		::sprintf(cBuffer,"%f",dReal);
+#endif
 		szSrc.append(cBuffer);
 	}
 
