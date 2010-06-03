@@ -129,6 +129,8 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("console_splitter");
+	m_pSplitter->setChildrenCollapsible(false);
+
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 

@@ -84,7 +84,9 @@ KviQuery::KviQuery(KviFrame * lpFrm, KviConsole * lpConsole, const QString & szN
 	createTextEncodingButton(m_pButtonGrid);
 
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
-	m_pSplitter->setObjectName("main_splitter");
+	m_pSplitter->setObjectName("query_splitter");
+	m_pSplitter->setChildrenCollapsible(false);
+
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);

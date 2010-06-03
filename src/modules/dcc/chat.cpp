@@ -102,6 +102,8 @@ KviDccChat::KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
 
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("dcc_chat_splitter");
+	m_pSplitter->setChildrenCollapsible(false);
+
 	m_pIrcView  = new KviIrcView(m_pSplitter,pFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	m_pInput    = new KviInput(this);

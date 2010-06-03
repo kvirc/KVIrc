@@ -325,7 +325,7 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_iLastScrollBarValue      = 0;
 
 	// set the minimum width
-	setMinimumWidth(KVI_IRCVIEW_MINIMUM_WIDTH);
+	setMinimumWidth(KVI_IRCVIEW_MINIMUM_WIDTH + m_pScrollBar->sizeHint().width());
 	// and catch all mouse events
 	setMouseTracking(true);
 	// let's go!
@@ -1647,6 +1647,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 			{
 				if(ptr->pChunks[curAttrBlock].type == KVI_TEXT_ICON)
 				{
+					//FIXME what if the icon curBlockWidth is > maxWidth ? => endless loop
 					// This is an icon block: needs to be wrapped differently:
 					// The wrap block goes BEFORE the icon itself
 					ptr->pBlocks[ptr->iBlockCount].pChunk  = 0;
