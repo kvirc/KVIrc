@@ -178,6 +178,12 @@ protected:
 	virtual void moveEvent(QMoveEvent * e);
 
 	/**
+	* \brief Updates the widget geometry when resizing
+	* \return void
+	*/
+	virtual void resizeEvent(QResizeEvent * e);
+
+	/**
 	* \brief Hooks into close event to make user decisions possible
 	* \return void
 	*/

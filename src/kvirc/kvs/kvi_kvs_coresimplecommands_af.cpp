@@ -516,6 +516,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(cap)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szCommand,szParams;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("command",KVS_PT_NONEMPTYSTRING,0,szCommand)
