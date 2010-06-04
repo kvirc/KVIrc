@@ -148,6 +148,7 @@ KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircSe
 	m_pFilter = f;
 
 	QLabel * l = new QLabel(this);
+	l->setWordWrap(true);
 	l->setText(__tr2qs("<center><b>Welcome!</b><br><br>This wizard will guide you in the process of " \
 			"downloading a list of IRC servers. Please click \"<b>Next</b>\" to begin the operation.</center>"));
 	addPage(l,capt);
@@ -155,6 +156,7 @@ KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircSe
 
 	KviTalVBox * vb = new KviTalVBox(this);
 	l = new QLabel(vb);
+	l->setWordWrap(true);
 	l->setText(__tr2qs("<center>Here you can modify the URL that the list will be downloaded from. In most cases the default URL is acceptable.</center>"));
 
 	vb->setStretchFactor(l,1);

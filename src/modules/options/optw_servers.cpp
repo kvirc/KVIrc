@@ -1531,6 +1531,9 @@ void KviServerOptionsWidget::fillServerList()
 
 	KviPointerHashTableIterator<QString,KviNetwork> it(*(g_pServerDataBase->recordDict()));
 
+	if(m_pConnectCurrent)
+		m_pConnectCurrent->setEnabled(false);
+
 	while(KviNetwork * r = it.current())
 	{
 		net = new KviServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),r);
@@ -1554,6 +1557,8 @@ void KviServerOptionsWidget::fillServerList()
 		cur->setSelected(true);
 		m_pTreeWidget->setCurrentItem(cur);
 		m_pTreeWidget->scrollToItem(cur);
+		if(m_pConnectCurrent)
+			m_pConnectCurrent->setEnabled(false);
 	}
 }
 

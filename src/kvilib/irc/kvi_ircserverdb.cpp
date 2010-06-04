@@ -86,6 +86,12 @@ KviNetwork * KviServerDataBase::findNetwork(const QString & szName)
 	return r;
 }
 
+unsigned int KviServerDataBase::networkCount() const
+{
+	return m_pRecords->count();
+}
+
+
 KviNetwork * KviServerDataBase::currentNetwork()
 {
 	KviNetwork * r = 0;
@@ -94,13 +100,7 @@ KviNetwork * KviServerDataBase::currentNetwork()
 	if(r)
 		return r;
 
-	KviPointerHashTableIterator<QString,KviNetwork> it(*m_pRecords);
-	r = it.current();
-	if(!r)
-		return 0;
-
-	m_szCurrentNetwork = r->name();
-	return r;
+	return 0;
 }
 
 bool KviServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetName, KviNetwork * r, QString & szError)

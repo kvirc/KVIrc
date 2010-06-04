@@ -154,11 +154,17 @@ public:
 	void addNetwork(KviNetwork * n);
 
 	/**
-	* \brief Searches fot a network
+	* \brief Searches for a network
 	* \param name The name of the network to find
 	* \return KviNetwork
 	*/
 	KviNetwork * findNetwork(const QString & name);
+
+	/**
+	* \brief Returns the number of networks
+	* \return unsigned integer
+	*/
+	unsigned int networkCount() const;
 
 	/**
 	* \brief Loads the database data
