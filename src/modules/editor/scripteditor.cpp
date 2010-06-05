@@ -681,12 +681,12 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 	QString szFind = pEditor->m_szFind;
 	if (!szFind.isEmpty())
 	{
-		index = szText.indexOf(szFind);
+		index = szText.indexOf(szFind,0,Qt::CaseInsensitive);
 		int length=szFind.length();
 		while (index >= 0)
 		{
 			setFormat(index, length, findFormat);
-			index = szText.indexOf(szFind,index + length);
+			index = szText.indexOf(szFind,index + length,Qt::CaseInsensitive);
 		}
 	}
 }
