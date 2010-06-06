@@ -1558,7 +1558,7 @@ void KviServerOptionsWidget::fillServerList()
 		m_pTreeWidget->setCurrentItem(cur);
 		m_pTreeWidget->scrollToItem(cur);
 		if(m_pConnectCurrent)
-			m_pConnectCurrent->setEnabled(false);
+			m_pConnectCurrent->setEnabled(true);
 	}
 }
 
