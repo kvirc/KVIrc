@@ -1627,6 +1627,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 			} else return;
 		} else {
 			//Need word wrap
+
 			//First go back to an admissible width
 			while((curLineWidth >= maxWidth) && (curBlockLen > 0))
 			{
@@ -1634,8 +1635,9 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 				curBlockLen--;
 				curLineWidth-=IRCVIEW_WCHARWIDTH(*p);
 			}
-			//Now look for a space (ar a tabulation)
-			while((*p != ' ' && *p != 9) && (curBlockLen > 0))
+		
+			//Now look for a space (or a tabulation)
+			while((p->unicode() != ' ') && (p->unicode() != '\t') && (curBlockLen > 0))
 			{
 				p--;
 				curBlockLen--;
