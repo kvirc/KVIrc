@@ -936,7 +936,8 @@ void KviIrcView::fastScroll(int lines)
 	{
 		if(l)
 		{
-			if(maxLineWidth != l->iMaxLineWidth)calculateLineWraps(l,maxLineWidth);
+			if(maxLineWidth != l->iMaxLineWidth)
+				calculateLineWraps(l,maxLineWidth);
 			heightToPaint += l->uLineWraps * m_iFontLineSpacing;
 			heightToPaint += (m_iFontLineSpacing + m_iFontDescent);
 			lines--;
@@ -1564,12 +1565,15 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 	// Another monster
 	//
 
-	if(maxWidth<=0) return;
+	if(maxWidth <= m_iIconWidth)
+		return;
 
-	if(ptr->iBlockCount != 0)kvi_free(ptr->pBlocks); // free any previous wrap blocks
+	if(ptr->iBlockCount != 0)
+		kvi_free(ptr->pBlocks); // free any previous wrap blocks
+
 	ptr->pBlocks      = (KviIrcViewWrappedBlock *)kvi_malloc(sizeof(KviIrcViewWrappedBlock)); // alloc one block
-	ptr->iMaxLineWidth       = maxWidth; // calculus for this width
-	ptr->iBlockCount      = 0;        // it will be ++
+	ptr->iMaxLineWidth        = maxWidth; // calculus for this width
+	ptr->iBlockCount          = 0;        // it will be ++
 	ptr->uLineWraps           = 0;        // no line wraps yet
 
 	unsigned int curAttrBlock = 0;        // Current attribute block
@@ -1604,6 +1608,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 				p++;
 			}
 		}
+
 		//Check the length
 		curLineWidth += curBlockWidth;
 
@@ -1615,98 +1620,111 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 			ptr->pBlocks[ptr->iBlockCount].block_width = curBlockWidth;
 			curAttrBlock++;
 			ptr->iBlockCount++;
-			//Process the next block of data in the next loop or return if have no more blocks
-			if(curAttrBlock < ptr->uChunkCount)
+			
+			// if we have no more blocks, return (with is ok)
+			if(curAttrBlock >= ptr->uChunkCount)
+				return;
+			
+			//Process the next block of data in the next loop
+			ptr->pBlocks = (KviIrcViewWrappedBlock *)kvi_realloc(ptr->pBlocks,(ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
+			ptr->pBlocks[ptr->iBlockCount].block_start = ptr->pChunks[curAttrBlock].iTextStart;
+			ptr->pBlocks[ptr->iBlockCount].block_len = 0;
+			ptr->pBlocks[ptr->iBlockCount].block_width = 0;
+			ptr->pBlocks[ptr->iBlockCount].pChunk  = &(ptr->pChunks[curAttrBlock]);
+			maxBlockLen = ptr->pBlocks[ptr->iBlockCount].pChunk->iTextLen;
+
+			continue;
+
+		}
+
+		//Need word wrap
+
+		//First go back to an admissible width
+		while((curLineWidth >= maxWidth) && (curBlockLen > 0))
+		{
+			p--;
+			curBlockLen--;
+			curLineWidth-=IRCVIEW_WCHARWIDTH(*p);
+		}
+	
+		//Now look for a space (or a tabulation)
+		while((p->unicode() != ' ') && (p->unicode() != '\t') && (curBlockLen > 0))
+		{
+			p--;
+			curBlockLen--;
+			curLineWidth-=IRCVIEW_WCHARWIDTH(*p);
+		}
+
+		if(curBlockLen == 0)
+		{
+			// ran up to the beginning of the block....
+			if(ptr->pChunks[curAttrBlock].type == KVI_TEXT_ICON)
 			{
+				//FIXME what if the icon curBlockWidth is > maxWidth ? => endless loop
+				// This is an icon block: needs to be wrapped differently:
+				// The wrap block goes BEFORE the icon itself
+				ptr->pBlocks[ptr->iBlockCount].pChunk  = 0;
+				ptr->pBlocks[ptr->iBlockCount].block_width = 0;
+				ptr->iBlockCount++;
 				ptr->pBlocks = (KviIrcViewWrappedBlock *)kvi_realloc(ptr->pBlocks,(ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
-				ptr->pBlocks[ptr->iBlockCount].block_start = ptr->pChunks[curAttrBlock].iTextStart;
-				ptr->pBlocks[ptr->iBlockCount].block_len = 0;
+				ptr->pBlocks[ptr->iBlockCount].block_start = p - unicode;
+				ptr->pBlocks[ptr->iBlockCount].block_len   = 0;
 				ptr->pBlocks[ptr->iBlockCount].block_width = 0;
 				ptr->pBlocks[ptr->iBlockCount].pChunk  = &(ptr->pChunks[curAttrBlock]);
-				maxBlockLen = ptr->pBlocks[ptr->iBlockCount].pChunk->iTextLen;
-			} else return;
+				goto wrap_line;
+			}
+			//Don't like it....forced wrap here...
+			//Go ahead up to the biggest possible string
+			if(maxBlockLen > 0)
+			{
+				//avoid a loop when IRCVIEW_WCHARWIDTH(*p) > maxWidth
+				uint uLoopedChars=0;
+				do
+				{
+					curBlockLen++;
+					p++;
+					curLineWidth+=IRCVIEW_WCHARWIDTH(*p);
+					uLoopedChars++;
+				} while((curLineWidth < maxWidth) && (curBlockLen < maxBlockLen));
+				//Now overrunned , go back 1 char (if we ran over at least 2 chars)
+				if(uLoopedChars>1)
+				{
+					p--;
+					curBlockLen--;
+				}
+			}
+			//K...wrap
 		} else {
-			//Need word wrap
+			//found a space...
+			//include it in the first block
+			p++;
+			curBlockLen++;
+		}
 
-			//First go back to an admissible width
-			while((curLineWidth >= maxWidth) && (curBlockLen > 0))
-			{
-				p--;
-				curBlockLen--;
-				curLineWidth-=IRCVIEW_WCHARWIDTH(*p);
-			}
-		
-			//Now look for a space (or a tabulation)
-			while((p->unicode() != ' ') && (p->unicode() != '\t') && (curBlockLen > 0))
-			{
-				p--;
-				curBlockLen--;
-				curLineWidth-=IRCVIEW_WCHARWIDTH(*p);
-			}
+		ptr->pBlocks[ptr->iBlockCount].block_len = curBlockLen;
+		ptr->pBlocks[ptr->iBlockCount].block_width = -1; // word wrap --> negative block_width
+		maxBlockLen-=curBlockLen;
+		ptr->iBlockCount++;
+		ptr->pBlocks = (KviIrcViewWrappedBlock *)kvi_realloc(ptr->pBlocks,(ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
+		ptr->pBlocks[ptr->iBlockCount].block_start = p - unicode;
+		ptr->pBlocks[ptr->iBlockCount].block_len   = 0;
+		ptr->pBlocks[ptr->iBlockCount].block_width = 0;
+		ptr->pBlocks[ptr->iBlockCount].pChunk  = 0;
 
-			//If we ran up to the beginning of the block....
-			if(curBlockLen == 0)
-			{
-				if(ptr->pChunks[curAttrBlock].type == KVI_TEXT_ICON)
-				{
-					//FIXME what if the icon curBlockWidth is > maxWidth ? => endless loop
-					// This is an icon block: needs to be wrapped differently:
-					// The wrap block goes BEFORE the icon itself
-					ptr->pBlocks[ptr->iBlockCount].pChunk  = 0;
-					ptr->pBlocks[ptr->iBlockCount].block_width = 0;
-					ptr->iBlockCount++;
-					ptr->pBlocks = (KviIrcViewWrappedBlock *)kvi_realloc(ptr->pBlocks,(ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
-					ptr->pBlocks[ptr->iBlockCount].block_start = p - unicode;
-					ptr->pBlocks[ptr->iBlockCount].block_len   = 0;
-					ptr->pBlocks[ptr->iBlockCount].block_width = 0;
-					ptr->pBlocks[ptr->iBlockCount].pChunk  = &(ptr->pChunks[curAttrBlock]);
-					goto wrap_line;
-				}
-				//Don't like it....forced wrap here...
-				//Go ahead up to the biggest possible string
-				if(maxBlockLen > 0)
-				{
-					//avoid a loop when IRCVIEW_WCHARWIDTH(*p) > maxWidth
-					uint uLoopedChars=0;
-					do
-					{
-						curBlockLen++;
-						p++;
-						curLineWidth+=IRCVIEW_WCHARWIDTH(*p);
-						uLoopedChars++;
-					} while((curLineWidth < maxWidth) && (curBlockLen < maxBlockLen));
-					//Now overrunned , go back 1 char (if we ran over at least 2 chars)
-					if(uLoopedChars>1)
-					{
-						p--;
-						curBlockLen--;
-					}
-				}
-				//K...wrap
-			} else {
-				//found a space...
-				//include it in the first block
-				p++;
-				curBlockLen++;
-			}
-
-			ptr->pBlocks[ptr->iBlockCount].block_len = curBlockLen;
-			ptr->pBlocks[ptr->iBlockCount].block_width = -1; // word wrap --> negative block_width
-			maxBlockLen-=curBlockLen;
-			ptr->iBlockCount++;
-			ptr->pBlocks = (KviIrcViewWrappedBlock *)kvi_realloc(ptr->pBlocks,(ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
-			ptr->pBlocks[ptr->iBlockCount].block_start = p - unicode;
-			ptr->pBlocks[ptr->iBlockCount].block_len   = 0;
-			ptr->pBlocks[ptr->iBlockCount].block_width = 0;
-			ptr->pBlocks[ptr->iBlockCount].pChunk  = 0;
 wrap_line:
-			curLineWidth = 0;
-			ptr->uLineWraps++;
-			if(ptr->uLineWraps == 1)
-			{
-				if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))maxWidth-=m_iWrapMargin;
-				if(maxWidth<=0) return;
-			}
+		curLineWidth = 0;
+		ptr->uLineWraps++;
+
+		if(ptr->uLineWraps == 1)
+		{
+			if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))
+				maxWidth -= m_iWrapMargin;
+			if(maxWidth <= m_iIconWidth)
+				return;
+		} else if(ptr->uLineWraps > 128)
+		{
+			// ooops.. this is looping endlessly: it may happen in certain insane window width / font size configurations...
+			return;
 		}
 	}
 
