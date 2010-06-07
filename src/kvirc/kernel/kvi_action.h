@@ -73,8 +73,8 @@ protected:
 	QString m_szVisibleName;
 	QString m_szDescription;
 	KviActionCategory * m_pCategory;                // may be 0, not owned!
-	QString m_szBigIcon;
-	int     m_iSmallIconId;
+	QString m_szBigIconId;
+	QString m_szSmallIconId;
 	KviPointerList<QWidget> * m_pWidgetList;
 	unsigned short int m_uInternalFlags;
 	unsigned int m_uFlags;
@@ -94,26 +94,15 @@ public:
 	};
 public:
 	KviAction(QObject * pParent,                    // can be 0, but using a QObject will help in deleting this action :)
-		const QString &szName,                      // internal name of this action, in form [module.]name
-		const QString &szVisibleName,               // permanent visible name, visible at least in the action drawer
-		const QString &szDescription,               // what this action does ?
-		KviActionCategory * pCategory = 0,          // one of KviActionManager::category*() or 0 (default category)
-		const QString &szBigIcon = QString(),
-		int iSmallIconId = 0,
-		unsigned int uFlags = 0,
-		const QString &szKeySequence = QString())
-	: QObject(pParent),
-		m_szName(szName),
-		m_szVisibleName(szVisibleName),
-		m_szDescription(szDescription),
-		m_pCategory(pCategory),
-		m_szBigIcon(szBigIcon),
-		m_iSmallIconId(iSmallIconId),
-		m_pWidgetList(0),
-		m_uInternalFlags(KVI_ACTION_FLAG_ENABLED),
-		m_uFlags(uFlags),
-		m_szKeySequence(szKeySequence),
-		m_pAccel(0) {}
+			const QString &szName,                      // internal name of this action, in form [module.]name
+			const QString &szVisibleName,               // permanent visible name, visible at least in the action drawer
+			const QString &szDescription,               // what this action does ?
+			KviActionCategory * pCategory = NULL,       // one of KviActionManager::category*() or 0 (default category)
+			const QString &szBigIconId = QString(),
+			const QString &szSmallIconId = QString(),
+			unsigned int uFlags = 0,
+			const QString &szKeySequence = QString()
+		);
 	virtual ~KviAction();
 public:
 	static int validateFlags(int iFlagsToValidate);
@@ -121,14 +110,15 @@ public:
 	virtual const QString & visibleName();
 	virtual const QString & description();
 	const QString & keySequence() const { return m_szKeySequence; };
-	const QString & bigIconString() const { return m_szBigIcon; };
+	const QString & bigIconId() const { return m_szBigIconId; };
+	const QString & smallIconId() const { return m_szSmallIconId; };
 	KviActionCategory * category() const { return m_pCategory; };
 	bool isEnabled() const { return (m_uInternalFlags & KVI_ACTION_FLAG_ENABLED); };
 	unsigned int flags(){ return m_uFlags; };
 	virtual bool isKviUserActionNeverOverrideThis();
 	virtual void setEnabled(bool bEnabled);
-	virtual QPixmap * smallIcon();
-	virtual QPixmap * bigIcon();
+	virtual QPixmap * smallIcon(); // FIXME: maybe doesn't need to be virtual anymore
+	virtual QPixmap * bigIcon();   // FIXME: maybe doesn't need to be virtual anymore
 	virtual bool addToPopupMenu(KviTalPopupMenu *pMenu);
 	virtual QWidget * addToCustomToolBar(KviCustomToolBar *pParentToolBar);
 	void suicide() { delete this; };

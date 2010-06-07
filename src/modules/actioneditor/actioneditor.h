@@ -145,6 +145,8 @@ public:
 protected slots:
 	void chooseSmallIcon();
 	void chooseBigIcon();
+	void displaySmallIcon(const QString &szIconId);
+	void displayBigIcon(const QString &szIconId);
 	void needsContextCheckToggled(bool);
 	void needsConnectionCheckToggled(bool);
 	void specificWindowsCheckToggled(bool);

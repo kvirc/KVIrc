@@ -65,7 +65,17 @@ class KviSubmenuAction : public KviKvsAction
 {
 	Q_OBJECT
 public:
-	KviSubmenuAction(QObject * pParent, const QString & szName, const QString & szScriptCode, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory = 0, const QString & szBigIcon = QString(), int iSmallIconId = 0, unsigned int uFlags = 0);
+	KviSubmenuAction(
+			QObject * pParent,
+			const QString & szName,
+			const QString & szScriptCode,
+			const QString & szVisibleName,
+			const QString & szDescription,
+			KviActionCategory * pCategory = NULL,
+			const QString & szBigIconId = QString(),
+			const QString & szSmallIcoNId = QString(),
+			unsigned int uFlags = 0
+		);
 	~KviSubmenuAction();
 protected:
 	KviTalPopupMenu * m_pPopup;

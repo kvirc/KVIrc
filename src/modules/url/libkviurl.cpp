@@ -138,14 +138,15 @@ void KviUrlDialogTreeWidget::paintEvent(QPaintEvent * event)
 }
 
 KviUrlAction::KviUrlAction(QObject * pParent)
-: KviKvsAction(pParent,
-	"url.list",
-	"url.list",
-	__tr2qs("Show URL List"),
-	__tr2qs("Shows the URL list window"),
-	KviActionManager::categoryGeneric(),
-	"kvi_bigicon_www.png",
-	KVI_SMALLICON_URL
+: KviKvsAction(
+		pParent,
+		"url.list",
+		"url.list",
+		__tr2qs("Show URL List"),
+		__tr2qs("Shows the URL list window"),
+		KviActionManager::categoryGeneric(),
+		"kvi_bigicon_www.png",
+		QString("%1").arg(KVI_SMALLICON_URL)
 	)
 {
 }
@@ -157,7 +158,7 @@ KviUrlAction::~KviUrlAction()
 // ---------------------------- CLASS URLDIALOG ------------------------begin //
 
 UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
-:KviWindow(KVI_WINDOW_TYPE_TOOL,g_pFrame,"URL List")
+	:KviWindow(KVI_WINDOW_TYPE_TOOL,g_pFrame,"URL List")
 {
 	setAutoFillBackground(false);
 	

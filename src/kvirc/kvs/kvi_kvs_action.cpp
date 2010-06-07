@@ -28,17 +28,29 @@
 #include "kvi_kvs_script.h"
 #include "kvi_window.h"
 
-KviKvsAction::KviKvsAction(QObject * pParent,
+KviKvsAction::KviKvsAction(
+		QObject * pParent,
 		const QString &szName,
 		const QString &szScriptCode,
 		const QString &szVisibleName,
 		const QString &szDescription,
 		KviActionCategory * pCategory,
-		const QString &szBigIcon,
-		int iSmallIconId,
+		const QString &szBigIconId,
+		const QString &szSmallIconId,
 		unsigned int uFlags,
-		const QString &szKeySequence)
-	: KviAction(pParent,szName,szVisibleName,szDescription,pCategory,szBigIcon,iSmallIconId,uFlags,szKeySequence)
+		const QString &szKeySequence
+	)
+	: KviAction(
+		pParent,
+		szName,
+		szVisibleName,
+		szDescription,
+		pCategory,
+		szBigIconId,
+		szSmallIconId,
+		uFlags,
+		szKeySequence
+	)
 {
 	m_szScript = QString(szScriptCode);
 }

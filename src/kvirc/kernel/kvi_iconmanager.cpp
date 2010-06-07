@@ -716,7 +716,8 @@ void KviIconManager::addToCache(const QString &szName,KviCachedPixmap * p)
 QPixmap * KviIconManager::getImage(const QString &id,bool bCanBeNumber,QString* pRetPath)
 {
 	if(id.isEmpty())
-		return 0;
+		return NULL;
+
 	if(bCanBeNumber)
 	{
 		bool bOk;
@@ -724,13 +725,31 @@ QPixmap * KviIconManager::getImage(const QString &id,bool bCanBeNumber,QString* 
 		if(bOk)
 		{
 			// was a number : this is not a filename
-			if(idx >= 0)return getSmallIcon(idx % KVI_NUM_SMALL_ICONS);
+			if(idx >= 0)
+				return getSmallIcon(idx % KVI_NUM_SMALL_ICONS);
+		} else {
+			if(id.startsWith("$icon"))
+			{
+				QString szTmp = id.trimmed();
+				szTmp.replace("$icon(","");
+				szTmp.replace(")","");
+				szTmp = szTmp.trimmed();
+				szTmp.replace("\"","");
+				idx = getSmallIconIdFromName(szTmp.trimmed());
+				if(idx >= 0)
+					return getSmallIcon(idx % KVI_NUM_SMALL_ICONS);
+				
+			}
 		}
 	}
 
 	KviCachedPixmap * p = getPixmapWithCache(id);
-	if(!p)return 0;
-	if(pRetPath)*pRetPath = p->path();
+	if(!p)
+		return NULL;
+
+	if(pRetPath)
+		*pRetPath = p->path();
+
 	return p->pixmap();
 }
 

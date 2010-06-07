@@ -35,16 +35,18 @@ class KVIRC_API KviKvsUserAction : public KviKvsAction
 	friend class KviActionManager;
 	Q_OBJECT
 public:
-	KviKvsUserAction(QObject * pParent,
-		const QString &szName,
-		const QString &szScriptCode,
-		const QString &szVisibleNameCode,
-		const QString &szDescriptionCode,
-		const QString &szCategory,
-		const QString &szBigIcon,
-		const QString &szSmallIcon,
-		unsigned int uFlags,
-		const QString &szKeySequence = QString());
+	KviKvsUserAction(
+			QObject * pParent,
+			const QString &szName,
+			const QString &szScriptCode,
+			const QString &szVisibleNameCode,
+			const QString &szDescriptionCode,
+			const QString &szCategory,
+			const QString &szBigIconId,
+			const QString &szSmallIconId,
+			unsigned int uFlags,
+			const QString &szKeySequence = QString()
+		);
 	KviKvsUserAction(QObject * pParent);
 	~KviKvsUserAction();
 
@@ -52,19 +54,20 @@ public:
 	// This MUST be used by the modules to allocate action structures
 	// instead of the new operator.
 	// See kvi_heapobject.cpp for an explaination.
-	static KviKvsUserAction * createInstance(QObject * pParent,
-		const QString &szName,
-		const QString &szScriptCode,
-		const QString &szVisibleNameCode,
-		const QString &szDescriptionCode,
-		const QString &szCategory,
-		const QString &szBigIcon,
-		const QString &szSmallIcon,
-		unsigned int uFlags,
-		const QString &szKeySequence = QString());
+	static KviKvsUserAction * createInstance(
+			QObject * pParent,
+			const QString &szName,
+			const QString &szScriptCode,
+			const QString &szVisibleNameCode,
+			const QString &szDescriptionCode,
+			const QString &szCategory,
+			const QString &szBigIconId,
+			const QString &szSmallIconId,
+			unsigned int uFlags,
+			const QString &szKeySequence = QString()
+		);
 	void suicide() { delete this; };
 protected:
-	QString m_szSmallIcon;
 	QString m_szCategory;
 	KviKvsScript * m_pDescriptionScript;
 	KviKvsScript * m_pVisibleNameScript;
@@ -77,19 +80,19 @@ public:
 	virtual const QString & description();
 	const QString & visibleNameCode();
 	const QString & descriptionCode();
-	virtual QPixmap * smallIcon();
 	const QString & category(){ return m_szCategory; };
-	const QString & smallIconString(){ return m_szSmallIcon; };
-	static void exportToKvs(QString &szBuffer,
-		const QString &szName,
-		const QString &szScriptCode,
-		const QString &szVisibleName,
-		const QString &szDescription,
-		const QString &szCategory,
-		const QString &szBigIcon,
-		const QString &szSmallIcon,
-		unsigned int uFlags,
-		const QString &szKeySequence);
+	static void exportToKvs(
+			QString &szBuffer,
+			const QString &szName,
+			const QString &szScriptCode,
+			const QString &szVisibleName,
+			const QString &szDescription,
+			const QString &szCategory,
+			const QString &szBigIcon,
+			const QString &szSmallIcon,
+			unsigned int uFlags,
+			const QString &szKeySequence
+		);
 	void exportToKvs(QString &szBuffer);
 };
 

@@ -95,8 +95,10 @@ KviImageDialog::KviImageDialog(QWidget * par,
 		int types,
 		int initialType,
 		const QString &szInitialDir,
-		int maxPreviewFileSize,bool modal)
-: QDialog(par)
+		int maxPreviewFileSize,
+		bool modal
+	)
+	: QDialog(par)
 {
 	m_szInitialPath = szInitialDir;
 	setModal(modal);

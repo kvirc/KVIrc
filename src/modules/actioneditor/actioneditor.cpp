@@ -341,6 +341,35 @@ void KviSingleActionEditor::specificWindowsCheckToggled(bool)
 	m_pWindowDccChatCheck->setEnabled(b);
 }
 
+void KviSingleActionEditor::displaySmallIcon(const QString &szIconId)
+{
+	QPixmap * pix = g_pIconManager->getImage(szIconId);
+
+	if(pix)
+	{
+		m_pSmallIconEdit->setText(szIconId);
+		m_pSmallIconButton->setIcon(QIcon(*pix));
+	} else {
+		m_pSmallIconEdit->setText(QString());
+		m_pSmallIconButton->setIcon(QIcon());
+	}
+	
+}
+
+void KviSingleActionEditor::displayBigIcon(const QString &szIconId)
+{
+	QPixmap * pix = g_pIconManager->getImage(szIconId);
+
+	if(pix)
+	{
+		m_pBigIconEdit->setText(szIconId);
+		m_pBigIconButton->setIcon(QIcon(*pix));
+	} else {
+		m_pBigIconEdit->setText(QString());
+		m_pBigIconButton->setIcon(QIcon());
+	}
+}
+
 void KviSingleActionEditor::chooseSmallIcon()
 {
 	if(!m_pActionData)return;
@@ -348,16 +377,10 @@ void KviSingleActionEditor::chooseSmallIcon()
 	int ret = d->exec();
 	QString s = d->selectedImage();
 	delete d;
-	if(ret != QDialog::Accepted)return;
-	s.replace("$icon(","");
-	s.chop(1);
-	int id=g_pIconManager->getSmallIconIdFromName(s);
-	QString szId;
-	szId.setNum(id);
-	QPixmap * p = g_pIconManager->getImage(szId);
-	if(!p)return;
-	m_pSmallIconEdit->setText(s);
-	m_pSmallIconButton->setIcon(QIcon(*p));
+	if(ret != QDialog::Accepted)
+		return;
+
+	displaySmallIcon(s);
 }
 
 void KviSingleActionEditor::chooseBigIcon()
@@ -367,11 +390,10 @@ void KviSingleActionEditor::chooseBigIcon()
 	int ret = d->exec();
 	QString s = d->selectedImage();
 	delete d;
-	if(ret != QDialog::Accepted)return;
-	QPixmap * p = g_pIconManager->getBigIcon(s);
-	if(!p)return;
-	m_pBigIconEdit->setText(s);
-	m_pBigIconButton->setIcon(QIcon(*p));
+	if(ret != QDialog::Accepted)
+		return;
+
+	displayBigIcon(s);
 }
 
 void KviSingleActionEditor::setActionData(KviActionData * d)
@@ -416,24 +438,8 @@ void KviSingleActionEditor::setActionData(KviActionData * d)
 		m_pDescriptionEdit->setEnabled(true);
 		m_pSmallIconEdit->setEnabled(true);
 		m_pBigIconEdit->setEnabled(true);
-		QPixmap * p = g_pIconManager->getImage(d->m_szSmallIcon);
-		if(p)
-		{
-			m_pSmallIconEdit->setText(d->m_szSmallIcon);
-			m_pSmallIconButton->setIcon(QIcon(*p));
-		} else {
-			m_pSmallIconEdit->setText("");
-			m_pSmallIconButton->setIcon(QIcon());
-		}
-		p = g_pIconManager->getImage(d->m_szBigIcon);
-		if(p)
-		{
-			m_pBigIconEdit->setText(d->m_szBigIcon);
-			m_pBigIconButton->setIcon(QIcon(*p));
-		} else {
-			m_pBigIconEdit->setText("");
-			m_pBigIconButton->setIcon(QIcon());
-		}
+		displaySmallIcon(d->m_szSmallIcon);
+		displayBigIcon(d->m_szBigIcon);
 		m_pSmallIconButton->setEnabled(true);
 		m_pBigIconButton->setEnabled(true);
 		m_pNeedsContextCheck->setEnabled(true);
@@ -645,16 +651,18 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	{
 		if(a->isKviUserActionNeverOverrideThis())
 		{
-			KviActionData * ad = new KviActionData(a->name(),
-						((KviKvsUserAction *)a)->scriptCode(),
-						((KviKvsUserAction *)a)->visibleNameCode(),
-						((KviKvsUserAction *)a)->descriptionCode(),
-						a->category() ? a->category()->name() : KviActionManager::categoryGeneric()->name(),
-						a->bigIconString(),
-						((KviKvsUserAction *)a)->smallIconString(),
-						a->flags(),
-						a->keySequence(),
-						0);
+			KviActionData * ad = new KviActionData(
+					a->name(),
+					((KviKvsUserAction *)a)->scriptCode(),
+					((KviKvsUserAction *)a)->visibleNameCode(),
+					((KviKvsUserAction *)a)->descriptionCode(),
+					a->category() ? a->category()->name() : KviActionManager::categoryGeneric()->name(),
+					a->bigIconId(),
+					a->smallIconId(),
+					a->flags(),
+					a->keySequence(),
+					0
+				);
 			KviActionEditorTreeWidgetItem * lvi = new KviActionEditorTreeWidgetItem(m_pTreeWidget,ad);
 			ad->m_pItem = lvi;
 			if(ad->m_szName == g_szLastEditedAction)
@@ -699,16 +707,18 @@ void KviActionEditor::exportActions()
 		{
 			KviActionData * a = ((KviActionEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->actionData();
 
-			KviKvsUserAction::exportToKvs(szCode,
-				a->m_szName,
-				a->m_szScriptCode,
-				a->m_szVisibleName,
-				a->m_szDescription,
-				a->m_szCategory,
-				a->m_szBigIcon,
-				a->m_szSmallIcon,
-				a->m_uFlags,
-				a->m_szKeySequence);
+			KviKvsUserAction::exportToKvs(
+					szCode,
+					a->m_szName,
+					a->m_szScriptCode,
+					a->m_szVisibleName,
+					a->m_szDescription,
+					a->m_szCategory,
+					a->m_szBigIcon,
+					a->m_szSmallIcon,
+					a->m_uFlags,
+					a->m_szKeySequence
+				);
 		}
 	}
 

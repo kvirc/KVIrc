@@ -36,6 +36,33 @@
 #include "kvi_query.h"
 #include "kvi_tal_popupmenu.h"
 
+KviAction::KviAction(
+			QObject * pParent,
+			const QString &szName,
+			const QString &szVisibleName,
+			const QString &szDescription,
+			KviActionCategory * pCategory,
+			const QString &szBigIconId,
+			const QString &szSmallIconId,
+			unsigned int uFlags,
+			const QString &szKeySequence
+		)
+	: QObject(pParent),
+		m_szName(szName),
+		m_szVisibleName(szVisibleName),
+		m_szDescription(szDescription),
+		m_pCategory(pCategory),
+		m_szBigIconId(szBigIconId),
+		m_szSmallIconId(szSmallIconId),
+		m_pWidgetList(NULL),
+		m_uInternalFlags(KVI_ACTION_FLAG_ENABLED),
+		m_uFlags(uFlags),
+		m_szKeySequence(szKeySequence),
+		m_pAccel(NULL)
+{
+}
+
+
 KviAction::~KviAction()
 {
 	if(m_pWidgetList)
@@ -119,13 +146,16 @@ int KviAction::validateFlags(int iFlagsToValidate)
 
 QPixmap * KviAction::smallIcon()
 {
-	if(m_iSmallIconId != 0)return g_pIconManager->getSmallIcon(m_iSmallIconId);
-	return 0;
+	if(m_szSmallIconId.isEmpty())
+		return NULL;
+	return g_pIconManager->getImage(m_szSmallIconId);
 }
 
 QPixmap * KviAction::bigIcon()
 {
-	return g_pIconManager->getBigIcon(m_szBigIcon);
+	if(m_szBigIconId.isEmpty())
+		return NULL;
+	return g_pIconManager->getImage(m_szBigIconId);
 }
 
 void KviAction::setup()

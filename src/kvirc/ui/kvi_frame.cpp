@@ -899,38 +899,41 @@ void KviFrame::fillToolBarsPopup(KviTalPopupMenu * p)
 	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it2(*(KviCustomToolBarManager::instance()->descriptors()));
 	if(it2.current())
 	{
-		if(cnt > 0)p->insertSeparator();
+		if(cnt > 0)
+			p->insertSeparator();
+
 		while(KviCustomToolBarDescriptor * d = it2.current())
 		{
 			QString label = __tr2qs("Show %1").arg(d->label());
 			QString ico = d->iconId();
-			// use the icon only if there is no check
-			if(d->toolBar())
+			if(!ico.isEmpty())
 			{
-				id = p->insertItem(label);
-				p->setItemChecked(id,true);
-			} else {
-				if(!ico.isEmpty())
+				QPixmap * pix = g_pIconManager->getImage(d->iconId());
+				if(pix)
 				{
-					QPixmap * pix = g_pIconManager->getImage(d->iconId());
-					if(pix)
-					{
-						id = p->insertItem(*pix,label);
-					} else {
-						id = p->insertItem(label);
-					}
+					id = p->insertItem(*pix,label);
 				} else {
 					id = p->insertItem(label);
 				}
+			} else {
+				id = p->insertItem(label);
 			}
 			p->setItemParameter(id,d->internalId());
+			p->setItemChecked(id,d->toolBar());
 			++it2;
 			cnt++;
 		}
 	}
 
-	if(cnt > 0)p->insertSeparator();
-	p->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)),__tr2qs("Customize..."),this,SLOT(customizeToolBars()));
+	if(cnt > 0)
+		p->insertSeparator();
+
+	p->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)),
+			__tr2qs("Customize..."),
+			this,
+			SLOT(customizeToolBars())
+		);
 }
 
 void KviFrame::customizeToolBars()
