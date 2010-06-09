@@ -514,16 +514,16 @@ void KviConsole::closeEvent(QCloseEvent *e)
 					__tr2qs("Confirmation - KVIrc"),
 					__tr2qs("You have just attempted to close a console window with an active connection inside.\n" \
 						"Are you sure you wish to terminate the connection?"),
-					__tr2qs("&Always"),
 					__tr2qs("&Yes"),
+					__tr2qs("&Always"),
 					__tr2qs("&No"),
 					2,2))
 				{
 					case 0:
-						KVI_OPTION_BOOL(KviOption_boolAlwaysDisconnectClosingConnectedConsole) = true;
+						// nothing here
 					break;
 					case 1:
-						// nothing here
+						KVI_OPTION_BOOL(KviOption_boolAlwaysDisconnectClosingConnectedConsole) = true;
 					break;
 					default: // 2 = no
 						e->ignore();
