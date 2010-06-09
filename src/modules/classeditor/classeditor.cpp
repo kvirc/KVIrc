@@ -551,6 +551,7 @@ void KviClassEditor::renameClass(KviClassEditorTreeWidgetItem *pClassItem)
 	pClassItem->setInheritsClass(szNewInheritsClassName);
 	pClassItem->setClassNotBuilt(true);
 	KviPointerList<KviClassEditorTreeWidgetItem> lInheritedClasses;
+	lInheritedClasses.setAutoDelete(false);
 	searchInheritedClasses(szClassName,lInheritedClasses);
 	for(unsigned int i=0;i<lInheritedClasses.count();i++)
 	{
@@ -629,6 +630,8 @@ void KviClassEditor::renameNamespace(KviClassEditorTreeWidgetItem *pOldNamespace
 		if (entry)
 		{
 			KviPointerList<KviClassEditorTreeWidgetItem> lInheritedClasses;
+			lInheritedClasses.setAutoDelete(false);
+
 			QString szOldName = entry->key();
 			QString szNewName = buildFullClassName(pList.at(i));
 			searchInheritedClasses(szOldName,lInheritedClasses);
@@ -1151,6 +1154,7 @@ void KviClassEditor::removeItemChildren(KviClassEditorTreeWidgetItem *it)
 	if(it->isClass())
 	{
 		KviPointerList<KviClassEditorTreeWidgetItem> lInheritedClasses;
+		lInheritedClasses.setAutoDelete(false);
 		searchInheritedClasses(buildFullClassName(it),lInheritedClasses);
 		for(unsigned int i=0;i<lInheritedClasses.count();i++)
 		{
@@ -1246,6 +1250,7 @@ bool KviClassEditor::removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToA
 		KviClassEditorTreeWidgetItem* pClass = (KviClassEditorTreeWidgetItem*)it->parent();
 		pClass->setClassNotBuilt(true);
 		KviPointerList<KviClassEditorTreeWidgetItem> lInheritedClasses;
+		lInheritedClasses.setAutoDelete(false);
 		debug("class name %s",pClass->name().toUtf8().data());
 		searchInheritedClasses(pClass->name(),lInheritedClasses);
 		for(unsigned int i=0;i<lInheritedClasses.count();i++)
@@ -1494,6 +1499,7 @@ void KviClassEditor::build()
 					QString szError=__tr2qs_ctx("Unable to compile class: ","editor");
 					szError+=szFullClassName+"\n";
 					KviPointerList<KviClassEditorTreeWidgetItem> lInheritedClasses;
+					lInheritedClasses.setAutoDelete(false);
 					searchInheritedClasses(szFullClassName,lInheritedClasses);
 					if (lInheritedClasses.count())
 					{
