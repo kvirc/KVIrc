@@ -472,6 +472,7 @@ void KviClassEditor::renameFunction()
 		return;
 	}
 	pFunction->setName(szNewFunctionName);
+	currentItemChanged(pFunction,pFunction);
 	pFunction->setInternalFunction(bInternal);
 	pParentClass->setClassNotBuilt(true);
 	KviPointerList<KviClassEditorTreeWidgetItem> lInheritedClasses;
@@ -676,7 +677,6 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 {
 	saveLastEditedItem();
 	m_pLastEditedItem = (KviClassEditorTreeWidgetItem *)it;
-
 	if(!m_pLastEditedItem)
 	{
 		m_pClassNameLabel->setText(__tr2qs_ctx("No item selected","editor"));
@@ -685,6 +685,8 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 		m_pEditor->setEnabled(false);
 		return;
 	}
+	debug("Current item changed in %s",it->text(0).toUtf8().data());
+
 	KviClassEditorTreeWidgetItem * pClassItem;
 	if(m_pLastEditedItem->isMethod()) pClassItem=(KviClassEditorTreeWidgetItem *)m_pLastEditedItem->parent();
 	else pClassItem=m_pLastEditedItem;
