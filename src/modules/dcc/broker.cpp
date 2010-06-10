@@ -755,8 +755,8 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 							"The file '<b>%1</b>' already exists " \
 							"and is <b>%2</b> large.<br>" \
 							"Do you wish to<br>" \
-							"<b>overwrite</b> the existing file,<br> " \
 							"<b>auto-rename</b> the new file, or<br>" \
+							"<b>overwrite</b> the existing file,<br> " \
 							"<b>resume</b> an incomplete download?" \
 						,"dcc" \
 					).arg(dcc->szLocalFileName, KviQString::makeSizeReadable(fi.size()));
@@ -767,8 +767,8 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 							"The file '<b>%1</b>' already exists " \
 							"and is larger than the offered one.<br>" \
 							"Do you wish to<br>" \
-							"<b>overwrite</b> the existing file, or<br> " \
 							"<b>auto-rename</b> the new file ?" \
+							"<b>overwrite</b> the existing file, or<br> " \
 						,"dcc" \
 					).arg(dcc->szLocalFileName);
 			}

@@ -1010,9 +1010,7 @@ void KviDccVoice::setMixerVolume(int vol)
 	::ioctl(fd, req, &val);
 	::close(fd);
 
-	QString s;
-	s.sprintf(__tr_ctx("Volume: %i","dcc"), -vol);
-	m_pVolumeSlider->setToolTip(s);
+	m_pVolumeSlider->setToolTip(__tr2qs_ctx("Volume: %1","dcc").arg(-vol));
 #endif
 }
 
