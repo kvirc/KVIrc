@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 15:57+0200\n"
+"POT-Creation-Date: 2010-06-10 20:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <FI@li.org>\n"
@@ -28,10 +28,9 @@ msgstr "&Poista teema"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Ota kuvakaappaus - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:109
-#: src/modules/theme/libkvitheme.cpp:123
 #: src/modules/theme/managementdialog.cpp:279
 #: src/modules/theme/managementdialog.cpp:292
+#: src/modules/theme/libkvitheme.cpp:109 src/modules/theme/libkvitheme.cpp:123
 msgid "Apply theme - KVIrc"
 msgstr "Ota teema käyttöön - KVIrc"
 
@@ -79,8 +78,8 @@ msgstr "Halutako varmasti poistaa teeman \"%Q\"n (versio %Q)?"
 msgid "Do you want to proceed with the installation ?"
 msgstr "Haluatko jatkaa asennusta ?"
 
-#: src/modules/theme/libkvitheme.cpp:110
 #: src/modules/theme/managementdialog.cpp:280
+#: src/modules/theme/libkvitheme.cpp:110
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Haluatko ottaa teeman \"%Q\"n (versio %Q) käyttöön?"
 
@@ -105,8 +104,8 @@ msgstr "Vie valitut teemat jaettavaan pakettiin"
 msgid "Export Theme - KVIrc"
 msgstr "Vie teema - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:122
 #: src/modules/theme/managementdialog.cpp:291
+#: src/modules/theme/libkvitheme.cpp:122
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Ei voitu ottaa teemaa käyttöön: %Q"
 
@@ -282,8 +281,7 @@ msgstr "Valittu tiedosto ei näytä olevan kelvollinen KVIrc -teemapaketti: %Q"
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "Valittu tiedosto ei näytä olevan kelvollinen KVIrc -teemapaketti"
 
-#: src/modules/theme/libkvitheme.cpp:128
-#: src/modules/theme/libkvitheme.cpp:171
+#: src/modules/theme/libkvitheme.cpp:128 src/modules/theme/libkvitheme.cpp:171
 msgid "The theme package '%Q' does not exists"
 msgstr ""
 

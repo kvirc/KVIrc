@@ -8,57 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 15:48+0200\n"
+"POT-Creation-Date: 2010-06-10 20:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/modules/notifier/notifierwindow.cpp:889
-msgid "Show/Hide input line"
-msgstr ""
-
-#: src/modules/notifier/notifierwindow.cpp:890
-msgid "Hide"
-msgstr ""
-
-#: src/modules/notifier/notifierwindow.cpp:893
-msgid "1 Minute"
-msgstr ""
-
-#: src/modules/notifier/notifierwindow.cpp:894
-msgid "5 Minutes"
-msgstr ""
-
-#: src/modules/notifier/notifierwindow.cpp:895
-msgid "15 Minutes"
-msgstr ""
-
-#: src/modules/notifier/notifierwindow.cpp:896
-msgid "30 Minutes"
-msgstr ""
-
-#: src/modules/notifier/notifierwindow.cpp:897
-msgid "1 Hour"
-msgstr ""
-
-#: src/modules/notifier/notifierwindow.cpp:899
-msgid "Until KVIrc is Restarted"
-msgstr ""
-
-#: src/modules/notifier/notifierwindow.cpp:900
-msgid "Permanently (Until Explicitly Enabled)"
-msgstr ""
-
-#: src/modules/notifier/notifierwindow.cpp:902
-msgid "Disable"
-msgstr ""
-
-#: src/modules/notifier/notifierwindow.cpp:974
-msgid "Write text or commands to window"
-msgstr ""
 
 #: src/modules/notifier/libkvinotifier.cpp:137
 msgid "The specified window does not exist"
@@ -70,4 +26,48 @@ msgstr ""
 
 #: src/modules/notifier/libkvinotifier.cpp:154
 msgid "The -t switch expects a timeout in seconds"
+msgstr ""
+
+#: src/modules/notifier/notifierwindow.cpp:950
+msgid "Show/Hide input line"
+msgstr ""
+
+#: src/modules/notifier/notifierwindow.cpp:951
+msgid "Hide"
+msgstr ""
+
+#: src/modules/notifier/notifierwindow.cpp:954
+msgid "1 Minute"
+msgstr ""
+
+#: src/modules/notifier/notifierwindow.cpp:955
+msgid "5 Minutes"
+msgstr ""
+
+#: src/modules/notifier/notifierwindow.cpp:956
+msgid "15 Minutes"
+msgstr ""
+
+#: src/modules/notifier/notifierwindow.cpp:957
+msgid "30 Minutes"
+msgstr ""
+
+#: src/modules/notifier/notifierwindow.cpp:958
+msgid "1 Hour"
+msgstr ""
+
+#: src/modules/notifier/notifierwindow.cpp:960
+msgid "Until KVIrc is Restarted"
+msgstr ""
+
+#: src/modules/notifier/notifierwindow.cpp:961
+msgid "Permanently (Until Explicitly Enabled)"
+msgstr ""
+
+#: src/modules/notifier/notifierwindow.cpp:963
+msgid "Disable"
+msgstr ""
+
+#: src/modules/notifier/notifierwindow.cpp:1035
+msgid "Write text or commands to window"
 msgstr ""

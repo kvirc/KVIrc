@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_theme \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 15:57+0200\n"
+"POT-Creation-Date: 2010-06-10 20:53+0200\n"
 "PO-Revision-Date: 2010-05-25 00:28+0100\n"
 "Last-Translator: Zé <mmodem00@gmal.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -31,10 +31,9 @@ msgstr "&Remover Tema"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Adquirir Captura de Ecrã - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:109
-#: src/modules/theme/libkvitheme.cpp:123
 #: src/modules/theme/managementdialog.cpp:279
 #: src/modules/theme/managementdialog.cpp:292
+#: src/modules/theme/libkvitheme.cpp:109 src/modules/theme/libkvitheme.cpp:123
 msgid "Apply theme - KVIrc"
 msgstr "Aplicar tema - KVIrc"
 
@@ -82,8 +81,8 @@ msgstr "Deseja realmente apagar o tema \"%Q\" (versão %Q)?"
 msgid "Do you want to proceed with the installation ?"
 msgstr "Deseja prosseguir com a instalação ?"
 
-#: src/modules/theme/libkvitheme.cpp:110
 #: src/modules/theme/managementdialog.cpp:280
+#: src/modules/theme/libkvitheme.cpp:110
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Deseja aplicar o tema \"%Q\" (versão %Q)?"
 
@@ -108,8 +107,8 @@ msgstr "Exportar Temas Seleccionados para um Pacote de Distribuição"
 msgid "Export Theme - KVIrc"
 msgstr "Exportar Tema - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:122
 #: src/modules/theme/managementdialog.cpp:291
+#: src/modules/theme/libkvitheme.cpp:122
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Falha ao aplicar o tema especificado: %Q"
 
@@ -287,8 +286,7 @@ msgstr "O ficheiro seleccionado não parece ser um pacote KVIrc válido: %Q"
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "O ficheiro seleccionado não parece ser um pacote de tema KVIrc válido"
 
-#: src/modules/theme/libkvitheme.cpp:128
-#: src/modules/theme/libkvitheme.cpp:171
+#: src/modules/theme/libkvitheme.cpp:128 src/modules/theme/libkvitheme.cpp:171
 msgid "The theme package '%Q' does not exists"
 msgstr "O pacote do tema '%Q' não existe"
 
@@ -415,4 +413,3 @@ msgstr "O seu nome aqui"
 #: src/modules/theme/managementdialog.cpp:86
 msgid "by"
 msgstr "por"
-
