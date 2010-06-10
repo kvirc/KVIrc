@@ -42,7 +42,9 @@ KviNotifierMessage::KviNotifierMessage(QPixmap * pPixmap, const QString &szText)
 	m_pHBox->setSpacing(SPACING);
 	m_pHBox->setMargin(SPACING);
 	
-	//qDebug("NOTIFIER TEXT MESSAGE: \n%s\n",szText.toUtf8().data());
+	//QByteArray utf8 = szText.toUtf8();
+	//if(utf8.data())
+	//	qDebug("NOTIFIER TEXT MESSAGE: \n%s\n",utf8.data());
 
 	if(bShowImages)
 	{

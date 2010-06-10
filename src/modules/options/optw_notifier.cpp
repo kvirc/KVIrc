@@ -212,6 +212,8 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 				0,100,40,KVI_OPTION_BOOL(KviOption_boolNotifierFading)),
 		SLOT(setEnabled(bool)));
 
+	iRow++;
+
 	addRowSpacer(0,iRow,0,iRow);
 }
 
