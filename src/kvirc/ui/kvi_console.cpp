@@ -254,7 +254,7 @@ void KviConsole::completeChannel(const QString &word,KviPointerList<QString> * m
 		if(kvi_strEqualCIN(c->windowName(),word.ptr(),word.len()))matches->append(new KviStr((*it)
 	}
 	*/
-	QStringList *pList = g_pApp->getRecentChannels(currentNetworkName());
+	QStringList *pList = g_pApp->recentChannelsForNetwork(currentNetworkName());
 	if(pList)
 	{
 		for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)

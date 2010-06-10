@@ -187,13 +187,13 @@ KviApp::KviApp(int &argc,char ** argv)
 	m_bCreateConfig         = false;
 	m_bShowSplashScreen     = true;
 	m_bUpdateGuiPending     = false;
-	m_pPendingAvatarChanges = 0;
-	m_pRecentChannelsDict   = 0;
+	m_pPendingAvatarChanges = NULL;
+	m_pRecentChannelDict   = NULL;
 #ifndef COMPILE_NO_IPC
-	m_pIpcSentinel          = 0;
+	m_pIpcSentinel          = NULL;
 #endif
 	m_iHeartbeatTimerId     = -1;
-	defaultFont             = font();
+	m_fntDefaultFont        = font();
 	// next step is setup()
 	m_bSetupDone = false;
 	kvi_socket_flushTrafficCounters();
@@ -597,7 +597,8 @@ KviApp::~KviApp()
 	saveOptions();
 	saveIdentities();
 	KviUserIdentityManager::done();
-	if(m_pRecentChannelsDict) delete m_pRecentChannelsDict;
+	if(m_pRecentChannelDict)
+		delete m_pRecentChannelDict;
 	// now kill the stuff that the frame depends on
 	saveIrcServerDataBase();
 	delete g_pServerDataBase;
@@ -1204,15 +1205,11 @@ void KviApp::updateApplicationFont()
 	{
 			setFont(KVI_OPTION_FONT(KviOption_fontApplication));
 			if(g_pFrame)
-			{
 				g_pFrame->setFont(font());
-			}
 	} else {
-			setFont(defaultFont);
+			setFont(m_fntDefaultFont);
 			if(g_pFrame)
-			{
-				g_pFrame->setFont(defaultFont);
-			}
+				g_pFrame->setFont(m_fntDefaultFont);
 	}
 }
 
@@ -1697,75 +1694,86 @@ void KviApp::addRecentNickname(const QString& newNick)
 
 void KviApp::addRecentChannel(const QString& szChan,const QString& net)
 {
-	if(!m_pRecentChannelsDict)
+	if(!m_pRecentChannelDict)
 		buildRecentChannels();
-	QStringList* pList=m_pRecentChannelsDict->find(net.toUtf8().data());
-	if(pList)
+
+	QStringList * pList = m_pRecentChannelDict->find(net);
+	if(!pList)
 	{
-		if(!pList->contains(szChan)) pList->append(szChan);
+		pList = new QStringList(szChan);
+		m_pRecentChannelDict->insert(net,pList);
 	}
-	else
-	{
-		pList=new QStringList(szChan);
-		m_pRecentChannelsDict->insert(net.toUtf8().data(),pList);
-	}
+
+	if(!pList->contains(szChan))
+		pList->append(szChan);
 }
+
 
 void KviApp::buildRecentChannels()
 {
-	if(m_pRecentChannelsDict)
-		delete m_pRecentChannelsDict;
-	m_pRecentChannelsDict = new KviPointerHashTable<const char *,QStringList>;
-	m_pRecentChannelsDict->setAutoDelete(TRUE);
+	if(m_pRecentChannelDict)
+		delete m_pRecentChannelDict;
+
+	m_pRecentChannelDict = new KviPointerHashTable<QString,QStringList>;
+	m_pRecentChannelDict->setAutoDelete(TRUE);
+
 	QString szChan,szNet;
+
 	for (
 		QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels).begin();
 		it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels).end();
 		++it
 	)
 	{
-		if(!(*it).isEmpty())
+		if((*it).isEmpty())
+			continue;
+			
+		szChan = (*it).section(KVI_RECENT_CHANNELS_SEPARATOR,0,0);
+		szNet = (*it).section(KVI_RECENT_CHANNELS_SEPARATOR,1);
+
+		if(szNet.isEmpty())
+			continue;
+			
+		QStringList* pList = m_pRecentChannelDict->find(szNet);
+		if(!pList)
 		{
-			szChan = (*it).section( KVI_RECENT_CHANNELS_SEPARATOR, 0, 0 );
-			szNet = (*it).section( KVI_RECENT_CHANNELS_SEPARATOR, 1 );
-			if(!szNet.isEmpty())
-			{
-				QStringList* pList=m_pRecentChannelsDict->find(szNet.toUtf8().data());
-				if(pList)
-				{
-					if(!pList->contains(szChan)) pList->append(szChan);
-				}
-				else
-				{
-					pList=new QStringList(szChan);
-					m_pRecentChannelsDict->insert(szNet.toUtf8().data(),pList);
-				}
-			}
+			pList=new QStringList(szChan);
+			m_pRecentChannelDict->insert(szNet,pList);
 		}
+
+		if(!pList->contains(szChan))
+			pList->append(szChan);
 	}
 }
 
 void KviApp::saveRecentChannels()
 {
-	if(!m_pRecentChannelsDict) return;
+	if(!m_pRecentChannelDict)
+		return;
+
 	QString szTmp;
+
 	KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels).clear();
-	KviPointerHashTableIterator<const char *,QStringList> it( *m_pRecentChannelsDict );
+
+	KviPointerHashTableIterator<QString,QStringList> it( *m_pRecentChannelDict );
+
 	for( ; it.current(); ++it )
 	{
-		for ( QStringList::Iterator it_str = it.current()->begin(); it_str != it.current()->end(); ++it_str ) {
+		for(QStringList::Iterator it_str = it.current()->begin(); it_str != it.current()->end(); ++it_str)
+		{
 			szTmp=*it_str;
 			szTmp.append(KVI_RECENT_CHANNELS_SEPARATOR);
 			szTmp.append(it.currentKey());
 			KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels).append(szTmp);
 		}
-        }
+	}
 }
 
-QStringList* KviApp::getRecentChannels(const QString& net)
+QStringList * KviApp::recentChannelsForNetwork(const QString& net)
 {
-	if(!m_pRecentChannelsDict) buildRecentChannels();
-	return m_pRecentChannelsDict->find(net.toUtf8().data());
+	if(!m_pRecentChannelDict)
+		buildRecentChannels();
+	return m_pRecentChannelDict->find(net);
 }
 
 void KviApp::addRecentServer(const QString& server)
@@ -1809,17 +1817,18 @@ void KviApp::fillRecentChannelsPopup(KviTalPopupMenu * m,KviConsole * pConsole)
 {
 	m->clear();
 	int id;
-	QStringList* pList=getRecentChannels(pConsole->currentNetworkName());
+	QStringList* pList = recentChannelsForNetwork(pConsole->currentNetworkName());
 	if(pList)
 	{
 		for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
 		{
-			if(*it == "") continue;
+			if(*it == "")
+				continue; // ?
 			id = m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),*it);
-			if(!pConsole->isConnected())m->setItemEnabled(id,false);
-			else {
+			if(!pConsole->isConnected())
+				m->setItemEnabled(id,false);
+			else
 				m->setItemEnabled(id,!(pConsole->connection()->findChannel(*it)));
-			}
 		}
 	}
 }

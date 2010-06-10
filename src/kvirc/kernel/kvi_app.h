@@ -34,8 +34,6 @@
 #include "kvi_time.h"
 #include "kvi_pointerhashtable.h" // ?
 
-#define KVI_RECENT_CHANNELS_SEPARATOR ":"
-
 #ifdef COMPILE_ON_WINDOWS
 	// The brain damaged MSVC compiler can't instantiate templates without this
 	#include "kvi_frame.h"
@@ -104,14 +102,14 @@ protected:
 	bool                            m_bUpdateGuiPending;
 	KviPointerList<KviPendingAvatarChange> * m_pPendingAvatarChanges;
 	bool                            m_bSetupDone;
-	KviPointerHashTable<const char *,QStringList>     * m_pRecentChannelsDict;
+	KviPointerHashTable<QString,QStringList> * m_pRecentChannelDict;
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	bool                            m_bUpdatePseudoTransparencyPending;
 #endif
 #ifndef COMPILE_NO_IPC
 	KviIpcSentinel                * m_pIpcSentinel;
 #endif
-	QFont				defaultFont;
+	QFont                           m_fntDefaultFont;
 public:
 	// setup stuff (accessed from kvi_main.cpp: consider private othwerise)
 	QString	          m_szConfigFile;        // setup
@@ -276,7 +274,14 @@ public:
 
 	void addRecentNickname(const QString& newNick);
 	void addRecentChannel(const QString& chan,const QString& net);
-	QStringList* getRecentChannels(const QString& net);
+
+	QStringList * recentChannelsForNetwork(const QString& net);
+
+	KviPointerHashTable<QString,QStringList> * recentChannels() const
+	{
+		return m_pRecentChannelDict;
+	}
+	
 
 	void addRecentServer(const QString& server);
 	void fillRecentServersPopup(KviTalPopupMenu * m);

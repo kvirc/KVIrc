@@ -40,6 +40,7 @@
 extern KviNotifierWindow * g_pNotifierWindow;
 
 KviNotifierWindowTab::KviNotifierWindowTab(KviWindow * pWnd, QTabWidget *parent)
+	: QScrollArea(parent)
 {
 	m_pWnd = pWnd;
 	if(m_pWnd)

@@ -697,6 +697,8 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 	#define SET_ANTI_ALIASING(p) (p).setRenderHint(QPainter::TextAntialiasing);
 
 
+#define KVI_RECENT_CHANNELS_SEPARATOR ":"
+
 #if defined(_KVI_OPTIONS_CPP_) || defined(_WANT_OPTION_FLAGS_)
 
 	// flag definitions

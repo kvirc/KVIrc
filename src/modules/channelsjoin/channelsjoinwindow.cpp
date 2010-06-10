@@ -162,26 +162,9 @@ void KviChannelsJoinWindow::fillListView()
 
 	m_pTreeWidget->header()->hide();
 
+	// Registered channels go first
+
 	QTreeWidgetItem * par = new QTreeWidgetItem(m_pTreeWidget);
-	par->setText(0,__tr2qs("Recent Channels"));
-	par->setExpanded(true);
-	QTreeWidgetItem * chld;
-
-	if(m_pConsole)
-	{
-		QStringList * pList = g_pApp->getRecentChannels(m_pConsole->currentNetworkName());
-		if(pList)
-		{
-			for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
-			{
-				chld = new QTreeWidgetItem(par);
-				chld->setText(0,*it);
-				chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
-			}
-		}
-	}
-
-	par = new QTreeWidgetItem(m_pTreeWidget);
 	par->setText(0,__tr2qs("Registered Channels"));
 	par->setExpanded(true);
 
@@ -191,10 +174,67 @@ void KviChannelsJoinWindow::fillListView()
 		KviPointerHashTableIterator<const char *,KviRegisteredChannelList> it(*d);
 		while(it.current())
 		{
-			chld = new QTreeWidgetItem(par);
+			QTreeWidgetItem * chld = new QTreeWidgetItem(par);
 			chld->setText(0,it.currentKey());
 			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 			++it;
+		}
+	}
+
+	par = new QTreeWidgetItem(m_pTreeWidget);
+	par->setText(0,__tr2qs("Recent Channels"));
+	par->setExpanded(true);
+
+	QTreeWidgetItem * chld;
+
+	bool bGotChanOnCurrentNetwork = false;
+
+	if(m_pConsole)
+	{
+		QStringList * pList = g_pApp->recentChannelsForNetwork(m_pConsole->currentNetworkName());
+		if(pList)
+		{
+			if(pList->count() > 0)
+			{
+				bGotChanOnCurrentNetwork = true;
+
+				par = new QTreeWidgetItem(par);
+				par->setText(0,__tr2qs("Current Network"));
+				par->setExpanded(true);
+	
+				for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
+				{
+					chld = new QTreeWidgetItem(par);
+					chld->setText(0,*it);
+					chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
+				}
+			}
+		}
+	}
+
+	KviPointerHashTable<QString,QStringList> * pDict = g_pApp->recentChannels();
+	if(!pDict)
+		return;
+
+	par = new QTreeWidgetItem(par);
+	par->setText(0,__tr2qs("All Networks"));
+
+	if(!bGotChanOnCurrentNetwork)
+		par->setExpanded(true); // expand this one instead
+
+	QHash<QString,int> hNoDuplicates;
+
+	for(QStringList * pChans = pDict->first();pChans;pChans = pDict->next())
+	{
+		for(QStringList::Iterator it = pChans->begin(); it != pChans->end(); ++it)
+		{
+			QString chan = *it;
+			if(hNoDuplicates.contains(chan.toLower()))
+				continue;
+			hNoDuplicates.insert(chan.toLower(),1);
+			chld = new QTreeWidgetItem(par);
+			chld->setText(0,chan);
+			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 		}
 	}
 }
