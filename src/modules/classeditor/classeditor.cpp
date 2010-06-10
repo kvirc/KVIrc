@@ -685,8 +685,6 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 		m_pEditor->setEnabled(false);
 		return;
 	}
-	debug("Current item changed in %s",it->text(0).toUtf8().data());
-
 	KviClassEditorTreeWidgetItem * pClassItem;
 	if(m_pLastEditedItem->isMethod()) pClassItem=(KviClassEditorTreeWidgetItem *)m_pLastEditedItem->parent();
 	else pClassItem=m_pLastEditedItem;
@@ -1108,26 +1106,7 @@ void KviClassEditor::appendSelectedClassItemsRecursive(KviPointerList<KviClassEd
 			appendSelectedClassItemsRecursive(l,pStartFrom->child(i));
 	}
 }
-void KviClassEditor::appendSelectedItems(KviPointerList<KviClassEditorTreeWidgetItem> * l)
-{
-	QList<QTreeWidgetItem *> list=m_pTreeWidget->selectedItems();
-	for(int i=0;i<list.count();i++)
-	{
-		if (((KviClassEditorTreeWidgetItem *)list.at(i))->isClass()||((KviClassEditorTreeWidgetItem *)list.at(i))->isMethod())
-			l->append((KviClassEditorTreeWidgetItem *)list.at(i));
-		else appendSelectedItemsRecursive(l,list.at(i));
-	}
-}
-void KviClassEditor::appendSelectedItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom)
-{
-	for (int i=0;i<pStartFrom->childCount();i++)
-	{
-		if (((KviClassEditorTreeWidgetItem *)pStartFrom->child(i))->isClass()||((KviClassEditorTreeWidgetItem *)pStartFrom->child(i))->isMethod())
-			l->append(((KviClassEditorTreeWidgetItem *)pStartFrom->child(i)));
-		else
-			appendSelectedItemsRecursive(l,pStartFrom->child(i));
-	}
-}
+
 void KviClassEditor::appendAllClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l)
 {
 	KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> it (*m_pClasses);
@@ -1151,7 +1130,7 @@ void KviClassEditor::appendAllClassItemsRecursive(KviPointerList<KviClassEditorT
 	}
 }
 
-void KviClassEditor::removeItemChildren(KviClassEditorTreeWidgetItem *it)
+void KviClassEditor::removeItemChildren(KviClassEditorTreeWidgetItem *it,KviPointerList <KviClassEditorTreeWidgetItem> &lRemovedItems)
 {
 	if(it->isClass())
 	{
@@ -1170,7 +1149,7 @@ void KviClassEditor::removeItemChildren(KviClassEditorTreeWidgetItem *it)
 	{
 		KviClassEditorTreeWidgetItem * pChild = (KviClassEditorTreeWidgetItem *)(it->child(0));
 		if(pChild->childCount())
-			removeItemChildren(pChild);
+			removeItemChildren(pChild,lRemovedItems);
 		if(pChild->isClass())
 		{
 			m_pClasses->removeRef(pChild);
@@ -1179,11 +1158,12 @@ void KviClassEditor::removeItemChildren(KviClassEditorTreeWidgetItem *it)
 			qDebug("rimuovo class %s %p",buildFullClassName(pChild).toUtf8().data(), pClass);
 		}
 		it->removeChild(pChild);
+		lRemovedItems.append(it);
 		delete pChild;
 	}
 }
 
-bool KviClassEditor::removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToAll,bool)
+bool KviClassEditor::removeItem(KviClassEditorTreeWidgetItem *it,KviPointerList <KviClassEditorTreeWidgetItem> &lRemovedItems,bool * pbYesToAll,bool)
 {
 	if(!it)return true;
 	QString szMsg;
@@ -1225,7 +1205,7 @@ bool KviClassEditor::removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToA
 	if(it == m_pLastClickedItem)
 		m_pLastClickedItem = 0;
 	if (it->childCount())
-		removeItemChildren(it);
+		removeItemChildren(it,lRemovedItems);
 	if(it->isClass())
 	{
 		m_pClasses->removeRef(it);
@@ -1249,34 +1229,36 @@ bool KviClassEditor::removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToA
 	}
 	if(it->isMethod())
 	{
-		KviClassEditorTreeWidgetItem* pClass = (KviClassEditorTreeWidgetItem*)it->parent();
-		pClass->setClassNotBuilt(true);
-		KviPointerList<KviClassEditorTreeWidgetItem> lInheritedClasses;
-		lInheritedClasses.setAutoDelete(false);
-		debug("class name %s",pClass->name().toUtf8().data());
-		searchInheritedClasses(pClass->name(),lInheritedClasses);
-		for(unsigned int i=0;i<lInheritedClasses.count();i++)
-		{
-			lInheritedClasses.at(i)->setClassNotBuilt(true);
-			lInheritedClasses.at(i)->setInheritsClass(pClass->name());
-			lInheritedClasses.at(i)->setExpanded(true);
-		}
+		updateClassHierarchy((KviClassEditorTreeWidgetItem*)it->parent());
 	}
+	lRemovedItems.append(it);
 	delete it;
 	return true;
+}
+void KviClassEditor::updateClassHierarchy(KviClassEditorTreeWidgetItem* pClass)
+{
+	pClass->setClassNotBuilt(true);
+	KviPointerList<KviClassEditorTreeWidgetItem> lInheritedClasses;
+	lInheritedClasses.setAutoDelete(false);
+	searchInheritedClasses(pClass->name(),lInheritedClasses);
+	for(unsigned int i=0;i<lInheritedClasses.count();i++)
+	{
+		lInheritedClasses.at(i)->setClassNotBuilt(true);
+		lInheritedClasses.at(i)->setInheritsClass(pClass->name());
+		lInheritedClasses.at(i)->setExpanded(true);
+	}
 }
 
 void KviClassEditor::removeSelectedItems()
 {
-	KviPointerList<KviClassEditorTreeWidgetItem> l;
-	l.setAutoDelete(false);
-	appendSelectedItems(&l);
-
+	KviPointerList<KviClassEditorTreeWidgetItem> lRemovedItems;
+	lRemovedItems.setAutoDelete(false);
+	QList<QTreeWidgetItem *> list=m_pTreeWidget->selectedItems();
 	bool bYesToAll = false;
-
-	for(KviClassEditorTreeWidgetItem *it = l.first();it;it = l.next())
+	for(int i=0;i<list.count();i++)
 	{
-		if(!removeItem(it,&bYesToAll,false))return;
+		if (lRemovedItems.findRef((KviClassEditorTreeWidgetItem *) list.at(i))!=-1) continue;
+		if(!removeItem((KviClassEditorTreeWidgetItem *) list.at(i),lRemovedItems,&bYesToAll,false))return;
 	}
 }
 

@@ -174,8 +174,6 @@ protected:
 	void appendSelectedClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
 	void appendSelectedClassItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
 	
-	void appendSelectedItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
-	void appendSelectedItemsRecursive(KviPointerList<KviClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
 
 	
 	void appendAllClassItems(KviPointerList<KviClassEditorTreeWidgetItem> * l);
@@ -192,8 +190,10 @@ protected:
 	void renameClass(KviClassEditorTreeWidgetItem *pClassItem);
 	void renameNamespace(KviClassEditorTreeWidgetItem *pNamespaceItem);
 
-        bool removeItem(KviClassEditorTreeWidgetItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
-        void removeItemChildren(KviClassEditorTreeWidgetItem *it);
+	bool removeItem(KviClassEditorTreeWidgetItem *it,KviPointerList <KviClassEditorTreeWidgetItem> &lRemovedItems,bool * pbYesToAll,bool);
+	void updateClassHierarchy(KviClassEditorTreeWidgetItem* pClass);
+
+	void removeItemChildren(KviClassEditorTreeWidgetItem *it,KviPointerList <KviClassEditorTreeWidgetItem> &lRemovedItems);
         void buildFullItemPath(KviClassEditorTreeWidgetItem * it,QString &szBuffer);
         QString buildFullClassName(KviClassEditorTreeWidgetItem * it);
         KviClassEditorTreeWidgetItem * createFullItem(const QString &szFullName);
