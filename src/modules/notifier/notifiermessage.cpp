@@ -34,40 +34,21 @@
 
 KviNotifierMessage::KviNotifierMessage(QPixmap * pPixmap, const QString &szText)
 {
-	bool bShowImages=KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages);
+	m_pLabel0 = 0;
+	m_pLabel1 = 0;
+	
 	m_szText=szText;
 	m_pPixmap=pPixmap;
 
-	m_pHBox = new QHBoxLayout(this);
-	m_pHBox->setSpacing(SPACING);
-	m_pHBox->setMargin(SPACING);
-	
 	//QByteArray utf8 = szText.toUtf8();
 	//if(utf8.data())
 	//	qDebug("NOTIFIER TEXT MESSAGE: \n%s\n",utf8.data());
 
-	if(bShowImages)
-	{
-		m_pLabel0 = new QLabel(this);
-		m_pLabel0->setFixedSize(16,16);
-		if(m_pPixmap)
-			m_pLabel0->setPixmap(*m_pPixmap);
-	} else {
-		m_pLabel0 = 0;
-	}
+	m_pHBox = new QHBoxLayout(this);
+	m_pHBox->setSpacing(SPACING);
+	m_pHBox->setMargin(SPACING);
 
-
-	m_pLabel1 = new QLabel(this);
-	m_pLabel1->setTextFormat(Qt::RichText);
-	m_pLabel1->setText(KviHtmlGenerator::convertToHtml(m_szText));
-	m_pLabel1->setWordWrap(true);
-
-	if(bShowImages)
-	{
-		m_pHBox->setStretch(1,99);
-		m_pHBox->addWidget(m_pLabel0);
-	}
-	m_pHBox->addWidget(m_pLabel1);
+	updateGui();
 }
 
 KviNotifierMessage::~KviNotifierMessage()
@@ -80,4 +61,40 @@ KviNotifierMessage::~KviNotifierMessage()
 		m_pHBox->deleteLater();
 }
 
+void KviNotifierMessage::updateGui()
+{
+	bool bShowImages=KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages);
 
+	if(m_pLabel0)
+		delete m_pLabel0;
+
+	if(m_pLabel1)
+		delete m_pLabel1;
+
+	if(bShowImages)
+	{
+		m_pLabel0 = new QLabel(this);
+		m_pLabel0->setFixedSize(16,16);
+		if(m_pPixmap)
+			m_pLabel0->setPixmap(*m_pPixmap);
+	} else {
+		m_pLabel0 = 0;
+	}
+
+	m_pLabel1 = new QLabel(this);
+	m_pLabel1->setTextFormat(Qt::RichText);
+	m_pLabel1->setText(KviHtmlGenerator::convertToHtml(m_szText));
+	m_pLabel1->setWordWrap(true);
+	m_pLabel1->setFont(KVI_OPTION_FONT(KviOption_fontNotifier));
+	QPalette pal = m_pLabel1->palette();
+	pal.setColor(QPalette::WindowText, KVI_OPTION_COLOR(KviOption_colorNotifierForeground));
+	m_pLabel1->setPalette(pal);	
+	
+	if(bShowImages)
+	{
+		m_pHBox->setStretch(1,99);
+		m_pHBox->addWidget(m_pLabel0);
+	}
+	m_pHBox->addWidget(m_pLabel1);
+
+}

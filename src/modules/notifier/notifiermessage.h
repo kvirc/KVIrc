@@ -77,6 +77,11 @@ public:
 	* \return QPixmap*
 	*/
 	inline QPixmap* pixmap() const { return m_pPixmap; };
+	/**
+	* \brief Updates the aspect of this message
+	* \return void
+	*/
+	void updateGui();
 };
 
 #endif //!_NOTIFIERMESSAGE_H_

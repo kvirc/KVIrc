@@ -38,7 +38,6 @@
 #include <QCursor>
 #include <QDateTime>
 #include <QImage>
-#include <QLineEdit>
 #include <QPixmap>
 #include <QRect>
 #include <QTimer>
@@ -51,7 +50,7 @@ class KviWindow;
 class KviNotifierMessage;
 class KviNotifierWindowBorder;
 class KviNotifierWindowTabs;
-
+class KviThemedLineEdit;
 
 extern kvi_time_t g_tNotifierDisabledUntil;
 
@@ -78,7 +77,7 @@ protected:
 	QRect	m_wndRect;
 
 	KviNotifierMessage * m_pCurrentMessage;
-	QLineEdit * m_pLineEdit;
+	KviThemedLineEdit * m_pLineEdit;
 
 	bool	m_bDragging;
 	bool	m_bLeftButtonIsPressed;

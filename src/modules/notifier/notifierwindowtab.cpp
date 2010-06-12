@@ -28,6 +28,7 @@
 #include "notifierwindow.h"
 #include "notifiersettings.h"
 
+#include "kvi_app.h"
 #include "kvi_config.h"
 #include "kvi_locale.h"
 #include "kvi_frame.h"
@@ -36,6 +37,12 @@
 
 #include <QScrollBar>
 #include <QResizeEvent>
+#include <QPainter>
+
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	#include <QPixmap>
+	extern QPixmap       * g_pShadedChildGlobalDesktopBackground;
+#endif
 
 extern KviNotifierWindow * g_pNotifierWindow;
 
@@ -96,6 +103,17 @@ void KviNotifierWindowTab::appendMessage(KviNotifierMessage * m)
 		KviNotifierMessage* tmp2=(KviNotifierMessage*)tmp->widget();
 		if(tmp2)
 			tmp2->deleteLater();
+	}
+}
+
+void KviNotifierWindowTab::updateGui()
+{
+	for(int i=0; i<m_pVBox->count(); ++i)
+	{
+		QLayoutItem* tmp=m_pVBox->itemAt(i);
+		KviNotifierMessage* tmp2=(KviNotifierMessage*)tmp->widget();
+		if(tmp2)
+			tmp2->updateGui();
 	}
 }
 
@@ -161,6 +179,42 @@ void KviNotifierWindowTab::resizeEvent(QResizeEvent *)
 				m->setFixedWidth(iWidth);
 		}
 	}
+}
+
+void KviNotifierWindowTab::paintEvent(QPaintEvent * e)
+{
+	QPainter *p = new QPainter(viewport());
+
+	//make sure you clean your widget with a transparent
+	//  color before doing any rendering
+	//  note the usage of a composition mode Source
+	//  it's important!
+
+	#ifdef COMPILE_PSEUDO_TRANSPARENCY
+		if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
+		{
+			p->save();
+			p->setCompositionMode(QPainter::CompositionMode_Source);
+			QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+			col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
+			p->fillRect(e->rect(), col);
+			p->restore();
+		} else if(g_pShadedChildGlobalDesktopBackground)
+		{
+			QPoint pnt = mapToGlobal(e->rect().topLeft());
+			p->drawTiledPixmap(e->rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+		} else {
+	#endif
+			QPixmap * pPix = KVI_OPTION_PIXMAP(KviOption_pixmapNotifierBackground).pixmap();
+
+			if(pPix) KviPixmapUtils::drawPixmapWithPainter(p,pPix,KVI_OPTION_UINT(KviOption_uintNotifierPixmapAlign),e->rect(),e->rect().width(),e->rect().height());
+			else p->fillRect(e->rect(),KVI_OPTION_COLOR(KviOption_colorNotifierBackground));
+	#ifdef COMPILE_PSEUDO_TRANSPARENCY
+		}
+	#endif
+	
+	delete p;
+	e->ignore();
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

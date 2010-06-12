@@ -30,14 +30,13 @@
 
 #include "kvi_iconmanager.h"
 #include "kvi_config.h"
-#include "kvi_app.h"
 #include "kvi_window.h"
 #include "kvi_locale.h"
 #include "kvi_frame.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_options.h"
 #include "kvi_userinput.h"
-
+#include "kvi_themedlineedit.h"
 
 #include <QApplication>
 #include <QImage>
@@ -50,11 +49,6 @@
 #include <QPainter>
 #include <QPaintEvent>
 #include <QMouseEvent>
-
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	#include <QPixmap>
-	extern QPixmap       * g_pShadedChildGlobalDesktopBackground;
-#endif
 
 extern KviNotifierWindow * g_pNotifierWindow;
 
@@ -89,7 +83,7 @@ KviNotifierWindow::KviNotifierWindow()
 
 	setFocusPolicy(Qt::NoFocus);
 	setMouseTracking(true);
-	setAutoFillBackground(false);
+	setAutoFillBackground(true);
 
 	hide();
 
@@ -132,7 +126,7 @@ KviNotifierWindow::KviNotifierWindow()
 	m_pProgressBar->setMaximumWidth(8);
 	m_pProgressBar->installEventFilter(this);
 
-	m_pLineEdit = new QLineEdit(this);
+	m_pLineEdit = new KviThemedLineEdit(this, 0, "notifier_lineedit");
 	QPalette palette=m_pLineEdit->palette();
 	palette.setColor(m_pLineEdit->backgroundRole(), Qt::transparent);
 	m_pLineEdit->setPalette(palette);
@@ -165,13 +159,16 @@ KviNotifierWindow::~KviNotifierWindow()
 void KviNotifierWindow::updateGui()
 {
 	setFont(KVI_OPTION_FONT(KviOption_fontNotifier));
-	QPalette pal = palette();
-	pal.setColor(QPalette::Foreground, KVI_OPTION_COLOR(KviOption_colorNotifierForeground));
-	setPalette(pal);
 	QPalette palette=m_pLineEdit->palette();
 	palette.setColor(m_pLineEdit->foregroundRole(), KVI_OPTION_COLOR(KviOption_colorNotifierForeground));
 	m_pLineEdit->setPalette(palette);
 	m_pLineEdit->setFont(KVI_OPTION_FONT(KviOption_fontNotifier));
+	
+	for(int i=0; i<m_pWndTabs->count();++i)
+	{
+		((KviNotifierWindowTab*)m_pWndTabs->widget(i))->updateGui();
+	}
+
 }
 
 void KviNotifierWindow::addMessage(KviWindow * pWnd,const QString &szImageId,const QString &szText,unsigned int uMessageTime)
@@ -596,47 +593,20 @@ void KviNotifierWindow::blink()
 
 void KviNotifierWindow::paintEvent(QPaintEvent *e)
 {
-	QPainter p(this);
+	QPainter *p = new QPainter(this);
 
-	//make sure you clean your widget with a transparent
-	//  color before doing any rendering
-	//  note the usage of a composition mode Source
-	//  it's important!
-
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
-	{
-		p.save();
-		p.setCompositionMode(QPainter::CompositionMode_Source);
-		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
-		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p.fillRect(e->rect(), col);
-		p.restore();
-	} else if(g_pShadedChildGlobalDesktopBackground)
-	{
-		QPoint pnt = mapToGlobal(e->rect().topLeft());
-		p.drawTiledPixmap(e->rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
-	} else {
-#endif
-		QPixmap * pPix = KVI_OPTION_PIXMAP(KviOption_pixmapNotifierBackground).pixmap();
-
-		if(pPix) KviPixmapUtils::drawPixmapWithPainter(&p,pPix,KVI_OPTION_UINT(KviOption_uintNotifierPixmapAlign),e->rect(),e->rect().width(),e->rect().height());
-		else p.fillRect(e->rect(),KVI_OPTION_COLOR(KviOption_colorNotifierBackground));
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	}
-#endif
 	if(m_wndRect.width()!=m_pWndBorder->width() || m_wndRect.height()!=m_pWndBorder->height())
 		m_pWndBorder->resize( m_wndRect.size() );
 
 	if(m_bBlinkOn)
 	{
-		m_pWndBorder->draw(&p,true);
+		m_pWndBorder->draw(p,true);
 	} else {
-		m_pWndBorder->draw(&p);
+		m_pWndBorder->draw(p);
 	}
 
-	p.setPen(KVI_OPTION_COLOR(KviOption_colorNotifierTitleForeground));
-	p.setFont(KVI_OPTION_FONT(KviOption_fontNotifierTitle));
+	p->setPen(KVI_OPTION_COLOR(KviOption_colorNotifierTitleForeground));
+	p->setFont(KVI_OPTION_FONT(KviOption_fontNotifierTitle));
 
 	QString title = "KVIrc - ";
 	KviNotifierWindowTab *tab = (KviNotifierWindowTab *)m_pWndTabs->currentWidget();
@@ -651,7 +621,10 @@ void KviNotifierWindow::paintEvent(QPaintEvent *e)
 	} else {
 			title += "notifier";
 	}
-	p.drawText(m_pWndBorder->titleRect(),Qt::AlignLeft | Qt::AlignVCenter | Qt::TextSingleLine,title);
+	p->drawText(m_pWndBorder->titleRect(),Qt::AlignLeft | Qt::AlignVCenter | Qt::TextSingleLine,title);
+	
+	delete p;
+	e->ignore();
 }
 
 void KviNotifierWindow::mouseMoveEvent(QMouseEvent * e)

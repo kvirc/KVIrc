@@ -50,11 +50,13 @@ private:
 	QWidget		* m_pVWidget;
 public:
 	void appendMessage(KviNotifierMessage * m);
+	void updateGui();
 	inline QString label() const { return m_label; };
 	inline KviWindow * wnd() const { return m_pWnd; };
 protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void resizeEvent(QResizeEvent * e);
+	virtual void paintEvent(QPaintEvent * e);
 private slots:
 	void scrollRangeChanged(int, int);
 	void labelChanged();
