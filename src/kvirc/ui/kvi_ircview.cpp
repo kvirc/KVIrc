@@ -1985,7 +1985,12 @@ void KviIrcView::recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi)
 	if(m_pFm)
 		delete m_pFm;
 
+#ifdef COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
 	m_pFm = new QFontMetricsF(fm);
+#else //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
+	m_pFm = new QFontMetrics(fm);
+#endif //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
+
 
 	m_iFontLineSpacing = m_pFm->lineSpacing();
 
