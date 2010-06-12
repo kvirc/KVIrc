@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-10 20:53+0200\n"
+"POT-Creation-Date: 2010-06-12 16:26+0200\n"
 "PO-Revision-Date: 2010-06-10 21:06+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -837,7 +837,7 @@ msgid "<Ctrl+Return>; submits, <Alt+Return>; hides this editor"
 msgstr ""
 "<Strg+Eingabetaste>; sendet ab; <Alt+Eingabetaste>; schließt diesen Editor"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1004
+#: src/kvirc/ui/kvi_ircview_events.cpp:1005
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
 "<br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"
@@ -845,7 +845,7 @@ msgstr ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
 "<br><nowrap>+%Q (%u Nutzer)<hr>%Q</nowrap>"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1010
+#: src/kvirc/ui/kvi_ircview_events.cpp:1011
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Double-"
 "click to join %Q<br>Right click to view other options"
@@ -861,7 +861,7 @@ msgstr "<b>Kann keinen Tip finden... :(</b>"
 msgid "<b>Channel mode:</b>"
 msgstr "<b>Channel-Modus:</b>"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1030
+#: src/kvirc/ui/kvi_ircview_events.cpp:1031
 msgid "<b>Double-click:</b><br>%Q"
 msgstr "<b>Doppelklicken:</b><br>%Q"
 
@@ -873,11 +873,11 @@ msgstr "<b>Doppelklicken,</b> um Netzwerkinformationen zu bekommen"
 msgid "<b>KVIrc</b>"
 msgstr "<b>KVIrc</b>"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1035
+#: src/kvirc/ui/kvi_ircview_events.cpp:1036
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Mittelklicken:</b><br>%Q"
 
-#: src/kvirc/kernel/kvi_app.cpp:779
+#: src/kvirc/kernel/kvi_app.cpp:787
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -914,7 +914,7 @@ msgstr ""
 msgid "<b>Right click</b> to add/remove applets"
 msgstr "<b>Rechtsklicken</b> zum Hinzufügen/Löschen von Applets"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1040
+#: src/kvirc/ui/kvi_ircview_events.cpp:1041
 msgid "<b>Right-click:</b><br>%Q"
 msgstr "<b>Rechtsklicken:</b><br>%Q"
 
@@ -1342,7 +1342,7 @@ msgstr "Verfügbare Benutzermodi:"
 msgid "Avatar change"
 msgstr "Avataränderung"
 
-#: src/kvirc/kernel/kvi_app.cpp:990
+#: src/kvirc/kernel/kvi_app.cpp:998
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr "Der Avatardownload für %Q!%Q@%Q und URL %Q ist fehlgeschlagen: %Q."
 
@@ -1988,11 +1988,16 @@ msgstr "Beim Starten prüfen"
 msgid "Choose Avatar - KVIrc"
 msgstr "Avater auswählen - KVIrc"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2027
+#: src/kvirc/ui/kvi_ircview.cpp:2105 src/kvirc/ui/kvi_ircview.cpp:2107
+#, fuzzy
+msgid "Choose Font"
+msgstr "Temporäre Schriftart auswählen ..."
+
+#: src/kvirc/ui/kvi_ircview.cpp:2072
 msgid "Choose Temporary Background..."
 msgstr "Temporären Hintergrund auswählen ..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:2026
+#: src/kvirc/ui/kvi_ircview.cpp:2071
 msgid "Choose Temporary Font..."
 msgstr "Temporäre Schriftart auswählen ..."
 
@@ -2032,7 +2037,7 @@ msgstr "Datei auswählen"
 msgid "Choose image ..."
 msgstr "Bilddatei auswählen ..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:2065
+#: src/kvirc/ui/kvi_ircview.cpp:2116
 msgid "Choose the background image..."
 msgstr "Hintergrund-Bilddatei auswählen ..."
 
@@ -2052,7 +2057,7 @@ msgstr "Der Stückchen-Header ist zu lang: Er überschritt 4096 Byte"
 msgid "Clear"
 msgstr "Leeren"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2031
+#: src/kvirc/ui/kvi_ircview.cpp:2076
 msgid "Clear Buffer"
 msgstr "Puffer leeren"
 
@@ -2077,7 +2082,7 @@ msgstr "Letzte-Nicknames-Liste leeren"
 msgid "Clear Recent Servers List"
 msgstr "Letzte-Server-Liste leeren"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:874
+#: src/kvirc/ui/kvi_ircview_events.cpp:875
 msgid "Click to open this link"
 msgstr "Klicken zum Öffnen der Verknüpfung"
 
@@ -2622,18 +2627,18 @@ msgstr "Doppelklicken zum Wiederholen"
 msgid "Double-click to edit..."
 msgstr "Doppelklick zum Bearbeiten..."
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:898
+#: src/kvirc/ui/kvi_ircview_events.cpp:899
 msgid ""
 "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
 "Doppelklicken zum Auflösen dieses Hostnamens<br>Rechtsklicken für weitere "
 "Optionen"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:876
+#: src/kvirc/ui/kvi_ircview_events.cpp:877
 msgid "Double-click to open this link"
 msgstr "Doppelklicken zum Öffnen der Verknüpfung"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:925
+#: src/kvirc/ui/kvi_ircview_events.cpp:926
 msgid "Double-click to read the MOTD<br>Right-click to view other options"
 msgstr "Doppelklicken zum Lesen der MOTD<br>Rechtsklicken für weitere Optionen"
 
@@ -2641,7 +2646,7 @@ msgstr "Doppelklicken zum Lesen der MOTD<br>Rechtsklicken für weitere Optionen"
 msgid "Double-click to set..."
 msgstr "Doppelklick zum Setzen..."
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:938
+#: src/kvirc/ui/kvi_ircview_events.cpp:939
 msgid "Double-click to set<br>"
 msgstr "Doppelklicken zum Setzen<br>"
 
@@ -2907,7 +2912,7 @@ msgstr ""
 "Laden des Avatars mit dem Namen \"%Q\" und dem lokalem Pfad \"%Q\" "
 "fehlgeschlagen"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2070
+#: src/kvirc/ui/kvi_ircview.cpp:2121
 msgid "Failed to load the selected image"
 msgstr "Laden des ausgewählten Bildes fehlgeschlagen"
 
@@ -3001,19 +3006,19 @@ msgstr "Datei existiert bereits - KVIrc"
 msgid "File I/O error"
 msgstr "Es ist ein Datei-Eingabe-/Ausgabe-Fehler aufgetreten"
 
-#: src/kvirc/kernel/kvi_app.cpp:957
+#: src/kvirc/kernel/kvi_app.cpp:965
 msgid "File download failed"
 msgstr "Das Herunterladen der Datei ist fehlgeschlagen."
 
-#: src/kvirc/kernel/kvi_app.cpp:959
+#: src/kvirc/kernel/kvi_app.cpp:967
 msgid "File download from %1 failed"
 msgstr "Das Herunterladen der Datei %1 ist fehlgeschlagen."
 
-#: src/kvirc/kernel/kvi_app.cpp:970
+#: src/kvirc/kernel/kvi_app.cpp:978
 msgid "File download from %1 successfully complete"
 msgstr "Das Herunterladen der Datei von %1 ist erfolgreich beendet."
 
-#: src/kvirc/kernel/kvi_app.cpp:968
+#: src/kvirc/kernel/kvi_app.cpp:976
 msgid "File download successfully complete"
 msgstr "Die Datei wurde erfolgreich heruntergeladen."
 
@@ -3214,7 +3219,7 @@ msgstr "Hey Mann... tu was!"
 msgid "Hey... are ya sure that your network is up?"
 msgstr "Hey... sind Sie sicher, dass das Netzwerk verfügbar ist?"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2020
+#: src/kvirc/ui/kvi_ircview.cpp:2065
 msgid "Hide Find Window"
 msgstr "Suchfenster ausblenden"
 
@@ -3492,7 +3497,7 @@ msgstr "Paket Installieren"
 msgid "Install Theme Package"
 msgstr "Themenpaket installieren"
 
-#: src/kvirc/kernel/kvi_app.cpp:778
+#: src/kvirc/kernel/kvi_app.cpp:786
 msgid "Installation problems ?"
 msgstr "Installationsprobleme?"
 
@@ -3580,7 +3585,7 @@ msgstr "Ungültiges Datenfeld: Vermutlich ist das Paket beschädigt"
 msgid "Invalid direction for this engine"
 msgstr "Ungültige Richtung für diese Routine"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2070
+#: src/kvirc/ui/kvi_ircview.cpp:2121
 msgid "Invalid image"
 msgstr "Ungültiges Bild"
 
@@ -4289,7 +4294,7 @@ msgid "Nickname:"
 msgstr "Nickname:"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:840 src/kvirc/ui/kvi_statusbar.cpp:554
-#: src/kvirc/ui/kvi_input.cpp:254 src/kvirc/kernel/kvi_app.cpp:794
+#: src/kvirc/ui/kvi_input.cpp:254 src/kvirc/kernel/kvi_app.cpp:802
 msgid "No"
 msgstr "Nein"
 
@@ -4309,7 +4314,7 @@ msgstr "Kein Action-Name/Index angegeben"
 msgid "No activity"
 msgstr "Keine Aktivität"
 
-#: src/kvirc/kernel/kvi_app.cpp:793
+#: src/kvirc/kernel/kvi_app.cpp:801
 msgid "No and Don't Ask Me Again"
 msgstr "Nein, und nicht wieder nachfragen"
 
@@ -4444,7 +4449,7 @@ msgstr "Nicht verbunden"
 msgid "Not enough parameters"
 msgstr "Es wurden nicht genügend Parameter angegeben"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2221 src/kvirc/ui/kvi_ircview.cpp:2275
+#: src/kvirc/ui/kvi_ircview.cpp:2275 src/kvirc/ui/kvi_ircview.cpp:2329
 msgid "Not found"
 msgstr "Nicht gefunden"
 
@@ -4452,11 +4457,11 @@ msgstr "Nicht gefunden"
 msgid "Nothing is happening..."
 msgstr "Hier passiert nichts..."
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:979
+#: src/kvirc/ui/kvi_ircview_events.cpp:980
 msgid "Nothing known about %Q"
 msgstr "Es ist nichts bekannt über %Q"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:980
+#: src/kvirc/ui/kvi_ircview_events.cpp:981
 msgid "Nothing known about %Q (no connection)"
 msgstr "Es ist nichts bekannt über %Q (keine bestehende Verbindung)"
 
@@ -4644,7 +4649,7 @@ msgstr "Acht-Bit-Datenstrom (unbekannt)"
 msgid "Often used directories"
 msgstr "Häufig benutzte Verzeichnisse"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2070 src/kvirc/ui/kvi_maskeditor.cpp:85
+#: src/kvirc/ui/kvi_ircview.cpp:2121 src/kvirc/ui/kvi_maskeditor.cpp:85
 #: src/kvirc/ui/kvi_imagedialog.cpp:160
 msgid "Ok"
 msgstr "OK"
@@ -5013,7 +5018,7 @@ msgstr ""
 "Wenn Sie den CBC-Modus nutzen möchten, müssen Sie\n"
 "dem/den Schlüssel(n) ein \"cbc:\" voranstellen.\n"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2206 src/kvirc/ui/kvi_ircview.cpp:2259
+#: src/kvirc/ui/kvi_ircview.cpp:2260 src/kvirc/ui/kvi_ircview.cpp:2313
 #, c-format
 msgid "Pos %d"
 msgstr "Pos. %d"
@@ -5394,7 +5399,7 @@ msgstr "Bemerke Lagprüfung mit Zuverlässigkeit %u (%s)"
 msgid "Reload"
 msgstr "Erneut laden"
 
-#: src/kvirc/kernel/kvi_app.cpp:858
+#: src/kvirc/kernel/kvi_app.cpp:866
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "Entferntes Kommando empfangen (%s ...)"
@@ -5428,7 +5433,7 @@ msgstr "Liste abfragen"
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2028
+#: src/kvirc/ui/kvi_ircview.cpp:2073
 msgid "Reset Temporary Background"
 msgstr "Temporären Hintergrund zurücksetzen ..."
 
@@ -5436,7 +5441,7 @@ msgstr "Temporären Hintergrund zurücksetzen ..."
 msgid "Restore &Default Script"
 msgstr "&Standardskript wiederherstellen"
 
-#: src/kvirc/kernel/kvi_app.cpp:814
+#: src/kvirc/kernel/kvi_app.cpp:822
 msgid "Restore Default Script - KVIrc"
 msgstr "Standardskript wiederherstellen - KVIrc"
 
@@ -5543,7 +5548,7 @@ msgstr "Skripte"
 msgid "Scripting related actions"
 msgstr "Aktionen bezüglich der Skripte"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:839
+#: src/kvirc/ui/kvi_ircview_events.cpp:840
 msgid "Scroll up to read from the last read line"
 msgstr "Hochscrollen, um nach der zuletzt gelesenen Zeile weiter zu lesen"
 
@@ -5551,7 +5556,7 @@ msgstr "Hochscrollen, um nach der zuletzt gelesenen Zeile weiter zu lesen"
 msgid "Search"
 msgstr "Suchen"
 
-#: src/kvirc/ui/kvi_ircview.cpp:318
+#: src/kvirc/ui/kvi_ircview.cpp:322
 msgid "Search tools"
 msgstr "Suchwerkzeuge"
 
@@ -5699,7 +5704,7 @@ msgstr "Servernotizen (+s)"
 msgid "Server X509 certificate"
 msgstr "Server X509-Zertifikat"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:921
+#: src/kvirc/ui/kvi_ircview_events.cpp:922
 msgid "Server appears to be a network hub<br>"
 msgstr "Server scheint ein Netzwerkhub zu sein<br>"
 
@@ -5813,7 +5818,7 @@ msgstr "%1 anzeigen"
 msgid "Show &Icon Table"
 msgstr "&Piktogrammtabelle anzeigen"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2022
+#: src/kvirc/ui/kvi_ircview.cpp:2067
 msgid "Show Find Window"
 msgstr "Suchfenster anzeigen"
 
@@ -6495,7 +6500,10 @@ msgstr ""
 "den Namen %s"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:978
-msgid "The server seems to have changed the idea about the local hostname"
+#, fuzzy
+msgid ""
+"The server reports a hostname differing from what KVIrc set for the local "
+"hostname."
 msgstr "Der Server meldet einen anderen Hostnamen, als den von KVIrc gesetzten"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:862
@@ -6695,6 +6703,15 @@ msgid ""
 msgstr ""
 "Diese KVIrc-Version ist zu alt, um dieses Thema benutzen zu können (minmiale "
 "Version ist %Q, wohingegen diese Themenimplementation die Version %s besitzt)"
+
+#: src/kvirc/kernel/kvi_ircconnection.cpp:979
+#, fuzzy
+msgid ""
+"This can happen if you use a broken bouncer, the IRC server masks your IP/"
+"Hostname or something weird is happening on the IRC server."
+msgstr ""
+"Es wird wahrscheinlich ein fehlerhafter Bouncer benutzt, oder es ist etwas "
+"sonderbares auf dem IRC-Server passiert"
 
 #: src/kvilib/core/kvi_error.cpp:163
 msgid "This executable has been compiled without SSL support"
@@ -6935,12 +6952,12 @@ msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
 msgid "Unable to find a window with the specified window id"
 msgstr "Kann kein Fenster mit der angegebenen Fenster-ID finden"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:895
+#: src/kvirc/ui/kvi_ircview_events.cpp:896
 msgid "Unable to look it up hostname: Hostname appears to be masked"
 msgstr ""
 "Auflösen des Server-Hostnamens fehlgeschlagen: Hostname sieht maskiert aus"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:896
+#: src/kvirc/ui/kvi_ircview_events.cpp:897
 msgid "Unable to look it up hostname: Unknown host"
 msgstr "Auflösen des Hostnamens fehlgeschlagen: Unbekannter Host"
 
@@ -7094,7 +7111,7 @@ msgstr "Der Knoten ist unbekannt (der Host wurde nicht gefunden)"
 msgid "Unknown operator"
 msgstr "Unbekannter Operator"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:922
+#: src/kvirc/ui/kvi_ircview_events.cpp:923
 msgid "Unknown server<br>"
 msgstr "Unbekannter Server<br>"
 
@@ -7525,7 +7542,7 @@ msgid "Writing package header"
 msgstr "Die Paket-Kopfinformationen werden geschrieben"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:840 src/kvirc/ui/kvi_statusbar.cpp:552
-#: src/kvirc/ui/kvi_input.cpp:253 src/kvirc/kernel/kvi_app.cpp:795
+#: src/kvirc/ui/kvi_input.cpp:253 src/kvirc/kernel/kvi_app.cpp:803
 msgid "Yes"
 msgstr "Ja"
 
@@ -7533,7 +7550,7 @@ msgstr "Ja"
 msgid "Yes, always"
 msgstr "Ja, immer"
 
-#: src/kvirc/kernel/kvi_app.cpp:815
+#: src/kvirc/kernel/kvi_app.cpp:823
 msgid ""
 "You are about to restore the default script.<br>This will erase any script "
 "changes you have made.<br>Do you wish to proceed?"
@@ -7625,21 +7642,13 @@ msgstr ""
 "Zwischenablage<br> bearbeitet wurde, schützen.<br><br>Soll die Nachricht "
 "wirklich gesendet werden?"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:962
+#: src/kvirc/ui/kvi_ircview_events.cpp:963
 msgid "You're not an operator: You may not change channel modes"
 msgstr "Sie sind kein Operator: Sie können die Channel-Modi nicht ändern"
 
 #: src/modules/links/linkswindow.cpp:412
 msgid "You're not connected to a server"
 msgstr "Sie sind nicht mit einen Server verbunden"
-
-#: src/kvirc/kernel/kvi_ircconnection.cpp:979
-msgid ""
-"You're probably using a broken bouncer or maybe something weird is happening "
-"on the IRC server"
-msgstr ""
-"Es wird wahrscheinlich ein fehlerhafter Bouncer benutzt, oder es ist etwas "
-"sonderbares auf dem IRC-Server passiert"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2108
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2116
@@ -7651,11 +7660,11 @@ msgstr "Ihre Kodierung ist nun %Q"
 msgid "Your user mode is %s"
 msgstr "Ihr Benutzermodus ist %s"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2024
+#: src/kvirc/ui/kvi_ircview.cpp:2069
 msgid "Zoom In"
 msgstr "Hineinzoomen"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2025
+#: src/kvirc/ui/kvi_ircview.cpp:2070
 msgid "Zoom Out"
 msgstr "Herauszoomen"
 

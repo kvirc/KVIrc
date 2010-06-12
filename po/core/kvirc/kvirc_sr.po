@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-10 20:53+0200\n"
+"POT-Creation-Date: 2010-06-12 16:26+0200\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -890,13 +890,13 @@ msgstr ""
 msgid "<Ctrl+Return>; submits, <Alt+Return>; hides this editor"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1004
+#: src/kvirc/ui/kvi_ircview_events.cpp:1005
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
 "<br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1010
+#: src/kvirc/ui/kvi_ircview_events.cpp:1011
 #, fuzzy
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Double-"
@@ -912,7 +912,7 @@ msgstr "<b>Ne mogu da nadjem nikakav savet... :-(</b>"
 msgid "<b>Channel mode:</b>"
 msgstr "<b>Mod kanala</b><br>"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1030
+#: src/kvirc/ui/kvi_ircview_events.cpp:1031
 msgid "<b>Double-click:</b><br>%Q"
 msgstr "<b>Dupli klik:</b><br>%Q"
 
@@ -925,11 +925,11 @@ msgstr "Dupli klik za postavljanje<br>"
 msgid "<b>KVIrc</b>"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1035
+#: src/kvirc/ui/kvi_ircview_events.cpp:1036
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Srednji klik:</b><br>%Q"
 
-#: src/kvirc/kernel/kvi_app.cpp:779
+#: src/kvirc/kernel/kvi_app.cpp:787
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -951,7 +951,7 @@ msgstr ""
 msgid "<b>Right click</b> to add/remove applets"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1040
+#: src/kvirc/ui/kvi_ircview_events.cpp:1041
 msgid "<b>Right-click:</b><br>%Q"
 msgstr "<b>Desni klik:</b><br>%Q"
 
@@ -1388,7 +1388,7 @@ msgstr "Mogu� modovi korisnika:"
 msgid "Avatar change"
 msgstr "promena avatara"
 
-#: src/kvirc/kernel/kvi_app.cpp:990
+#: src/kvirc/kernel/kvi_app.cpp:998
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr ""
 
@@ -2115,12 +2115,17 @@ msgstr "status konekcije"
 msgid "Choose Avatar - KVIrc"
 msgstr "Izaberite direktorijum..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:2027
+#: src/kvirc/ui/kvi_ircview.cpp:2105 src/kvirc/ui/kvi_ircview.cpp:2107
+#, fuzzy
+msgid "Choose Font"
+msgstr "Izaberite jednu sliku..."
+
+#: src/kvirc/ui/kvi_ircview.cpp:2072
 #, fuzzy
 msgid "Choose Temporary Background..."
 msgstr "Izaberite jednu sliku..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:2026
+#: src/kvirc/ui/kvi_ircview.cpp:2071
 #, fuzzy
 msgid "Choose Temporary Font..."
 msgstr "Izaberite jednu sliku..."
@@ -2169,7 +2174,7 @@ msgstr "Izaberi fajl za parseovanje"
 msgid "Choose image ..."
 msgstr "Izaberite jednu sliku..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:2065
+#: src/kvirc/ui/kvi_ircview.cpp:2116
 #, fuzzy
 msgid "Choose the background image..."
 msgstr "Globalna slika pozadine"
@@ -2191,7 +2196,7 @@ msgstr ""
 msgid "Clear"
 msgstr "O�sti"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2031
+#: src/kvirc/ui/kvi_ircview.cpp:2076
 msgid "Clear Buffer"
 msgstr ""
 
@@ -2220,7 +2225,7 @@ msgstr "&Skoranji serveri"
 msgid "Clear Recent Servers List"
 msgstr "&Skoranji serveri"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:874
+#: src/kvirc/ui/kvi_ircview_events.cpp:875
 #, fuzzy
 msgid "Click to open this link"
 msgstr "Dupli klik za postavljanje<br>"
@@ -2792,19 +2797,19 @@ msgstr "Dupli klik za postavljanje<br>"
 msgid "Double-click to edit..."
 msgstr "<br>Dupli klik za editovanje"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:898
+#: src/kvirc/ui/kvi_ircview_events.cpp:899
 #, fuzzy
 msgid ""
 "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
 "Dupli klik za reavanje ovog hosta<br>Desni klik za pregled ostalih opcija"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:876
+#: src/kvirc/ui/kvi_ircview_events.cpp:877
 #, fuzzy
 msgid "Double-click to open this link"
 msgstr "Dupli klik za postavljanje<br>"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:925
+#: src/kvirc/ui/kvi_ircview_events.cpp:926
 #, fuzzy
 msgid "Double-click to read the MOTD<br>Right-click to view other options"
 msgstr "Dupli klik za �tanje MOTD-a<br>Desni klik za pregled ostalih opcija"
@@ -2814,7 +2819,7 @@ msgstr "Dupli klik za �tanje MOTD-a<br>Desni klik za pregled ostalih opcija"
 msgid "Double-click to set..."
 msgstr "Dupli klik za postavljanje<br>"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:938
+#: src/kvirc/ui/kvi_ircview_events.cpp:939
 #, fuzzy
 msgid "Double-click to set<br>"
 msgstr "Dupli klik za postavljanje<br>"
@@ -3105,7 +3110,7 @@ msgstr "Ne mogu da odredim lokalni port"
 msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:2070
+#: src/kvirc/ui/kvi_ircview.cpp:2121
 #, fuzzy
 msgid "Failed to load the selected image"
 msgstr "Ne mogu da otvorim fajl %Q"
@@ -3208,22 +3213,22 @@ msgstr "Fajl postoji"
 msgid "File I/O error"
 msgstr "Ulazno-izlazna greka"
 
-#: src/kvirc/kernel/kvi_app.cpp:957
+#: src/kvirc/kernel/kvi_app.cpp:965
 #, fuzzy
 msgid "File download failed"
 msgstr "Direktorijum za svla�nje"
 
-#: src/kvirc/kernel/kvi_app.cpp:959
+#: src/kvirc/kernel/kvi_app.cpp:967
 #, fuzzy
 msgid "File download from %1 failed"
 msgstr "U�taj iz fajla"
 
-#: src/kvirc/kernel/kvi_app.cpp:970
+#: src/kvirc/kernel/kvi_app.cpp:978
 #, fuzzy
 msgid "File download from %1 successfully complete"
 msgstr "U�taj iz fajla"
 
-#: src/kvirc/kernel/kvi_app.cpp:968
+#: src/kvirc/kernel/kvi_app.cpp:976
 #, fuzzy
 msgid "File download successfully complete"
 msgstr "Direktorijum za svla�nje"
@@ -3444,7 +3449,7 @@ msgstr ""
 msgid "Hey... are ya sure that your network is up?"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:2020
+#: src/kvirc/ui/kvi_ircview.cpp:2065
 #, fuzzy
 msgid "Hide Find Window"
 msgstr "&Terminal prozor"
@@ -3746,7 +3751,7 @@ msgstr ""
 msgid "Install Theme Package"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:778
+#: src/kvirc/kernel/kvi_app.cpp:786
 msgid "Installation problems ?"
 msgstr ""
 
@@ -3837,7 +3842,7 @@ msgstr ""
 msgid "Invalid direction for this engine"
 msgstr "Pogrena maina za kriptovanje"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2070
+#: src/kvirc/ui/kvi_ircview.cpp:2121
 #, fuzzy
 msgid "Invalid image"
 msgstr "Pogreno vreme isteka"
@@ -4609,7 +4614,7 @@ msgid "Nickname:"
 msgstr "Nadimak"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:840 src/kvirc/ui/kvi_statusbar.cpp:554
-#: src/kvirc/ui/kvi_input.cpp:254 src/kvirc/kernel/kvi_app.cpp:794
+#: src/kvirc/ui/kvi_input.cpp:254 src/kvirc/kernel/kvi_app.cpp:802
 msgid "No"
 msgstr "Ne"
 
@@ -4631,7 +4636,7 @@ msgstr ""
 msgid "No activity"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:793
+#: src/kvirc/kernel/kvi_app.cpp:801
 msgid "No and Don't Ask Me Again"
 msgstr ""
 
@@ -4771,7 +4776,7 @@ msgstr "Nema konekcije"
 msgid "Not enough parameters"
 msgstr "Nema dovoljno parametara"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2221 src/kvirc/ui/kvi_ircview.cpp:2275
+#: src/kvirc/ui/kvi_ircview.cpp:2275 src/kvirc/ui/kvi_ircview.cpp:2329
 msgid "Not found"
 msgstr "Nije na�no"
 
@@ -4779,11 +4784,11 @@ msgstr "Nije na�no"
 msgid "Nothing is happening..."
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:979
+#: src/kvirc/ui/kvi_ircview_events.cpp:980
 msgid "Nothing known about %Q"
 msgstr "Nita poznato o %Q"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:980
+#: src/kvirc/ui/kvi_ircview_events.cpp:981
 msgid "Nothing known about %Q (no connection)"
 msgstr "Nita poznato o %Q (mi nismo na vezi)"
 
@@ -4977,7 +4982,7 @@ msgstr "Oktet strim (nepoznat)"
 msgid "Often used directories"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:2070 src/kvirc/ui/kvi_maskeditor.cpp:85
+#: src/kvirc/ui/kvi_ircview.cpp:2121 src/kvirc/ui/kvi_maskeditor.cpp:85
 #: src/kvirc/ui/kvi_imagedialog.cpp:160
 msgid "Ok"
 msgstr "Ok"
@@ -5325,7 +5330,7 @@ msgid ""
 "your key(s) with \"cbc:\".\n"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:2206 src/kvirc/ui/kvi_ircview.cpp:2259
+#: src/kvirc/ui/kvi_ircview.cpp:2260 src/kvirc/ui/kvi_ircview.cpp:2313
 #, c-format
 msgid "Pos %d"
 msgstr "Poz %d"
@@ -5730,7 +5735,7 @@ msgstr ""
 msgid "Reload"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:858
+#: src/kvirc/kernel/kvi_app.cpp:866
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "Primljena je udaljena komanda (%s ...)"
@@ -5768,7 +5773,7 @@ msgstr "DCC zahtev"
 msgid "Reset"
 msgstr "Server"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2028
+#: src/kvirc/ui/kvi_ircview.cpp:2073
 #, fuzzy
 msgid "Reset Temporary Background"
 msgstr "Izaberite jednu sliku..."
@@ -5777,7 +5782,7 @@ msgstr "Izaberite jednu sliku..."
 msgid "Restore &Default Script"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:814
+#: src/kvirc/kernel/kvi_app.cpp:822
 msgid "Restore Default Script - KVIrc"
 msgstr ""
 
@@ -5891,7 +5896,7 @@ msgstr "Opis"
 msgid "Scripting related actions"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:839
+#: src/kvirc/ui/kvi_ircview_events.cpp:840
 msgid "Scroll up to read from the last read line"
 msgstr ""
 
@@ -5900,7 +5905,7 @@ msgstr ""
 msgid "Search"
 msgstr "Pretrai"
 
-#: src/kvirc/ui/kvi_ircview.cpp:318
+#: src/kvirc/ui/kvi_ircview.cpp:322
 msgid "Search tools"
 msgstr "Alati za pretraivanje"
 
@@ -6064,7 +6069,7 @@ msgstr "s (Obavetenja servera)"
 msgid "Server X509 certificate"
 msgstr "Server X509 sertifikat"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:921
+#: src/kvirc/ui/kvi_ircview_events.cpp:922
 msgid "Server appears to be a network hub<br>"
 msgstr ""
 
@@ -6197,7 +6202,7 @@ msgstr "&Pove�j KVIrc przor"
 msgid "Show &Icon Table"
 msgstr "&Ikone widget"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2022
+#: src/kvirc/ui/kvi_ircview.cpp:2067
 #, fuzzy
 msgid "Show Find Window"
 msgstr "&Kazi u prozor"
@@ -6899,7 +6904,9 @@ msgid "The server refused the suggested nickname (%s) and named you %s instead"
 msgstr "Server odbija predloeni nadimak (%s) i umesto toga vas imenuje sa %s"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:978
-msgid "The server seems to have changed the idea about the local hostname"
+msgid ""
+"The server reports a hostname differing from what KVIrc set for the local "
+"hostname."
 msgstr ""
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:862
@@ -7093,6 +7100,12 @@ msgstr "Ovaj KVIrc nema  IPV6 podrku"
 msgid ""
 "This KVIrc executable is too old for this theme (minimum theme engine "
 "version required is %Q while this theme engine has version %s)"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_ircconnection.cpp:979
+msgid ""
+"This can happen if you use a broken bouncer, the IRC server masks your IP/"
+"Hostname or something weird is happening on the IRC server."
 msgstr ""
 
 #: src/kvilib/core/kvi_error.cpp:163
@@ -7351,13 +7364,13 @@ msgstr "Ne mogu da ustanovim trenutnu ifru"
 msgid "Unable to find a window with the specified window id"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:895
+#: src/kvirc/ui/kvi_ircview_events.cpp:896
 #, fuzzy
 msgid "Unable to look it up hostname: Hostname appears to be masked"
 msgstr ""
 "Ne mogu da pronadjem ime hosta IRC servera: Ne mogu da pokrenem DNS slave"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:896
+#: src/kvirc/ui/kvi_ircview_events.cpp:897
 #, fuzzy
 msgid "Unable to look it up hostname: Unknown host"
 msgstr ""
@@ -7520,7 +7533,7 @@ msgstr "Nepoznat �or (host nije prona�n)"
 msgid "Unknown operator"
 msgstr "Nepoznat operator"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:922
+#: src/kvirc/ui/kvi_ircview_events.cpp:923
 #, fuzzy
 msgid "Unknown server<br>"
 msgstr "Nepoznata greka"
@@ -7985,7 +7998,7 @@ msgid "Writing package header"
 msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:840 src/kvirc/ui/kvi_statusbar.cpp:552
-#: src/kvirc/ui/kvi_input.cpp:253 src/kvirc/kernel/kvi_app.cpp:795
+#: src/kvirc/ui/kvi_input.cpp:253 src/kvirc/kernel/kvi_app.cpp:803
 msgid "Yes"
 msgstr "Da"
 
@@ -7993,7 +8006,7 @@ msgstr "Da"
 msgid "Yes, always"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:815
+#: src/kvirc/kernel/kvi_app.cpp:823
 msgid ""
 "You are about to restore the default script.<br>This will erase any script "
 "changes you have made.<br>Do you wish to proceed?"
@@ -8070,7 +8083,7 @@ msgid ""
 "message to be sent?"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:962
+#: src/kvirc/ui/kvi_ircview_events.cpp:963
 #, fuzzy
 msgid "You're not an operator: You may not change channel modes"
 msgstr "Niste operator; ne moete da menjate modove kanala"
@@ -8079,12 +8092,6 @@ msgstr "Niste operator; ne moete da menjate modove kanala"
 #, fuzzy
 msgid "You're not connected to a server"
 msgstr "Niste zaka�ni na IRC server"
-
-#: src/kvirc/kernel/kvi_ircconnection.cpp:979
-msgid ""
-"You're probably using a broken bouncer or maybe something weird is happening "
-"on the IRC server"
-msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2108
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2116
@@ -8097,11 +8104,11 @@ msgstr "Va korisni�i mod je %s"
 msgid "Your user mode is %s"
 msgstr "Va korisni�i mod je %s"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2024
+#: src/kvirc/ui/kvi_ircview.cpp:2069
 msgid "Zoom In"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:2025
+#: src/kvirc/ui/kvi_ircview.cpp:2070
 msgid "Zoom Out"
 msgstr ""
 

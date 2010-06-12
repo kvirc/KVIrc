@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-10 20:53+0200\n"
+"POT-Creation-Date: 2010-06-12 16:26+0200\n"
 "PO-Revision-Date: 2009-08-07 10:40+0300\n"
 "Last-Translator: CrabMan\n"
 "Language-Team: Ukrainian\n"
@@ -826,13 +826,13 @@ msgstr "< &Назад"
 msgid "<Ctrl+Return>; submits, <Alt+Return>; hides this editor"
 msgstr "<Ctrl+Return> відправити,   <Alt+Return> сховати цей редактор"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1004
+#: src/kvirc/ui/kvi_ircview_events.cpp:1005
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
 "<br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1010
+#: src/kvirc/ui/kvi_ircview_events.cpp:1011
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Double-"
 "click to join %Q<br>Right click to view other options"
@@ -848,7 +848,7 @@ msgstr "<b>Не можу знайти якої-небудь ради... :(</b>"
 msgid "<b>Channel mode:</b>"
 msgstr "<b>Режим каналу:</b>"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1030
+#: src/kvirc/ui/kvi_ircview_events.cpp:1031
 msgid "<b>Double-click:</b><br>%Q"
 msgstr "<b>Подвійний клич:</b><br>%Q"
 
@@ -861,11 +861,11 @@ msgstr "Подвійний клич для відкриття посилання
 msgid "<b>KVIrc</b>"
 msgstr "<b>KVIrc</b>"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1035
+#: src/kvirc/ui/kvi_ircview_events.cpp:1036
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Клич на середній кнопці:</b><br>%Q"
 
-#: src/kvirc/kernel/kvi_app.cpp:779
+#: src/kvirc/kernel/kvi_app.cpp:787
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -900,7 +900,7 @@ msgstr ""
 msgid "<b>Right click</b> to add/remove applets"
 msgstr "<b>Права кнопка</b> - додати/видалити аплети"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:1040
+#: src/kvirc/ui/kvi_ircview_events.cpp:1041
 msgid "<b>Right-click:</b><br>%Q"
 msgstr "<b>Клич на правій кнопці:</b><br>%Q"
 
@@ -1312,7 +1312,7 @@ msgstr "Доступні користувальницькі режими:"
 msgid "Avatar change"
 msgstr "Зміна аватара"
 
-#: src/kvirc/kernel/kvi_app.cpp:990
+#: src/kvirc/kernel/kvi_app.cpp:998
 #, fuzzy
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr "Помилка завантаження аватара для %Q! %Q@%Q і url %Q: %Q"
@@ -1973,11 +1973,16 @@ msgstr "Статус з'єднання"
 msgid "Choose Avatar - KVIrc"
 msgstr "Вибір аватара - KVIrc"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2027
+#: src/kvirc/ui/kvi_ircview.cpp:2105 src/kvirc/ui/kvi_ircview.cpp:2107
+#, fuzzy
+msgid "Choose Font"
+msgstr "Вибрати"
+
+#: src/kvirc/ui/kvi_ircview.cpp:2072
 msgid "Choose Temporary Background..."
 msgstr "Виберіть тимчасове тло..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:2026
+#: src/kvirc/ui/kvi_ircview.cpp:2071
 msgid "Choose Temporary Font..."
 msgstr "Виберіть тимчасовий шрифт..."
 
@@ -2017,7 +2022,7 @@ msgstr "Оберіть ім'я файлу"
 msgid "Choose image ..."
 msgstr "Виберіть зображення ..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:2065
+#: src/kvirc/ui/kvi_ircview.cpp:2116
 msgid "Choose the background image..."
 msgstr "Виберіть фонове зображення..."
 
@@ -2038,7 +2043,7 @@ msgstr "Заголовок занадто довгий, перевищує 4096 
 msgid "Clear"
 msgstr "Очистити"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2031
+#: src/kvirc/ui/kvi_ircview.cpp:2076
 msgid "Clear Buffer"
 msgstr "Очистити буфер"
 
@@ -2066,7 +2071,7 @@ msgstr "Недавні канали"
 msgid "Clear Recent Servers List"
 msgstr "Очистити список поточних серверів"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:874
+#: src/kvirc/ui/kvi_ircview_events.cpp:875
 #, fuzzy
 msgid "Click to open this link"
 msgstr "Подвійний клич для відкриття посилання"
@@ -2617,17 +2622,17 @@ msgstr "Подвійний клич для установки<br>"
 msgid "Double-click to edit..."
 msgstr "Подвійний клік для редагування..."
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:898
+#: src/kvirc/ui/kvi_ircview_events.cpp:899
 msgid ""
 "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
 "Подвійний клич для визначення IP цього<br>Клич на правій кнопці - інші опції"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:876
+#: src/kvirc/ui/kvi_ircview_events.cpp:877
 msgid "Double-click to open this link"
 msgstr "Подвійний клич для відкриття посилання"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:925
+#: src/kvirc/ui/kvi_ircview_events.cpp:926
 msgid "Double-click to read the MOTD<br>Right-click to view other options"
 msgstr "Подвійний клич для читання MOTD<br>Клич правою клавішею - інші опції"
 
@@ -2635,7 +2640,7 @@ msgstr "Подвійний клич для читання MOTD<br>Клич пр�
 msgid "Double-click to set..."
 msgstr "Подвійний клік для встановлення..."
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:938
+#: src/kvirc/ui/kvi_ircview_events.cpp:939
 msgid "Double-click to set<br>"
 msgstr "Подвійний клич для установки<br>"
 
@@ -2908,7 +2913,7 @@ msgstr "Не можу запустити задану шифрувальну м�
 msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
 msgstr "Помилка завантаження аватара з ім'ям \"%Q\" і локальним шляхом \"%Q\""
 
-#: src/kvirc/ui/kvi_ircview.cpp:2070
+#: src/kvirc/ui/kvi_ircview.cpp:2121
 msgid "Failed to load the selected image"
 msgstr "Помилка завантаження обраної картинки"
 
@@ -3003,19 +3008,19 @@ msgstr "Файл існує - KVIrc"
 msgid "File I/O error"
 msgstr "Помилка файлового введення/виводу"
 
-#: src/kvirc/kernel/kvi_app.cpp:957
+#: src/kvirc/kernel/kvi_app.cpp:965
 msgid "File download failed"
 msgstr "Помилка завантаження файлу"
 
-#: src/kvirc/kernel/kvi_app.cpp:959
+#: src/kvirc/kernel/kvi_app.cpp:967
 msgid "File download from %1 failed"
 msgstr "Скачування файлу від %1 завершилося помилкою"
 
-#: src/kvirc/kernel/kvi_app.cpp:970
+#: src/kvirc/kernel/kvi_app.cpp:978
 msgid "File download from %1 successfully complete"
 msgstr "Скачування файлу від %1 успішно завершено"
 
-#: src/kvirc/kernel/kvi_app.cpp:968
+#: src/kvirc/kernel/kvi_app.cpp:976
 msgid "File download successfully complete"
 msgstr "Скачування файлу успішно завершене"
 
@@ -3216,7 +3221,7 @@ msgstr "Агов товариш... не спи, змерзнеш!"
 msgid "Hey... are ya sure that your network is up?"
 msgstr "Эй... це ваша мережа те?"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2020
+#: src/kvirc/ui/kvi_ircview.cpp:2065
 msgid "Hide Find Window"
 msgstr "Сховати вікно пошуку"
 
@@ -3494,7 +3499,7 @@ msgstr "Установити пакет"
 msgid "Install Theme Package"
 msgstr "Установити пакет теми"
 
-#: src/kvirc/kernel/kvi_app.cpp:778
+#: src/kvirc/kernel/kvi_app.cpp:786
 msgid "Installation problems ?"
 msgstr "Проблеми з інсталяцією?"
 
@@ -3583,7 +3588,7 @@ msgstr "Ушкоджені дані пакета"
 msgid "Invalid direction for this engine"
 msgstr "Недійсна директива"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2070
+#: src/kvirc/ui/kvi_ircview.cpp:2121
 msgid "Invalid image"
 msgstr "Не є зображенням"
 
@@ -4292,7 +4297,7 @@ msgid "Nickname:"
 msgstr "Нік:"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:840 src/kvirc/ui/kvi_statusbar.cpp:554
-#: src/kvirc/ui/kvi_input.cpp:254 src/kvirc/kernel/kvi_app.cpp:794
+#: src/kvirc/ui/kvi_input.cpp:254 src/kvirc/kernel/kvi_app.cpp:802
 msgid "No"
 msgstr "Ні"
 
@@ -4312,7 +4317,7 @@ msgstr "Не задане ім'я/номер дії"
 msgid "No activity"
 msgstr "Немає активності"
 
-#: src/kvirc/kernel/kvi_app.cpp:793
+#: src/kvirc/kernel/kvi_app.cpp:801
 msgid "No and Don't Ask Me Again"
 msgstr "Немає й більше мене не запитувати"
 
@@ -4443,7 +4448,7 @@ msgstr "Відключений"
 msgid "Not enough parameters"
 msgstr "Замало аргументів"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2221 src/kvirc/ui/kvi_ircview.cpp:2275
+#: src/kvirc/ui/kvi_ircview.cpp:2275 src/kvirc/ui/kvi_ircview.cpp:2329
 msgid "Not found"
 msgstr "Не знайдений"
 
@@ -4451,11 +4456,11 @@ msgstr "Не знайдений"
 msgid "Nothing is happening..."
 msgstr "Нічого не відбувається..."
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:979
+#: src/kvirc/ui/kvi_ircview_events.cpp:980
 msgid "Nothing known about %Q"
 msgstr "Нічого не відомо про %Q"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:980
+#: src/kvirc/ui/kvi_ircview_events.cpp:981
 msgid "Nothing known about %Q (no connection)"
 msgstr "Нічого не відомо про %Q (немає з'єднання)"
 
@@ -4634,7 +4639,7 @@ msgstr "Octet потік (невідомий)"
 msgid "Often used directories"
 msgstr "Часто використовувані каталоги"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2070 src/kvirc/ui/kvi_maskeditor.cpp:85
+#: src/kvirc/ui/kvi_ircview.cpp:2121 src/kvirc/ui/kvi_maskeditor.cpp:85
 #: src/kvirc/ui/kvi_imagedialog.cpp:160
 msgid "Ok"
 msgstr "Ок"
@@ -4996,7 +5001,7 @@ msgstr ""
 "якщо ви хочете працювати з CBC режимом, ви повинні\n"
 "використати ключ(і) \"cbc:\".\n"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2206 src/kvirc/ui/kvi_ircview.cpp:2259
+#: src/kvirc/ui/kvi_ircview.cpp:2260 src/kvirc/ui/kvi_ircview.cpp:2313
 #, c-format
 msgid "Pos %d"
 msgstr "Позиція %d"
@@ -5371,7 +5376,7 @@ msgstr "Визначена гарантована затримка %u (%s)"
 msgid "Reload"
 msgstr "Обновити"
 
-#: src/kvirc/kernel/kvi_app.cpp:858
+#: src/kvirc/kernel/kvi_app.cpp:866
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "Дистанційна команда отримала (%s ...)"
@@ -5405,7 +5410,7 @@ msgstr "Отримати список"
 msgid "Reset"
 msgstr "Скидання"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2028
+#: src/kvirc/ui/kvi_ircview.cpp:2073
 msgid "Reset Temporary Background"
 msgstr "Скинути тимчасове тло"
 
@@ -5413,7 +5418,7 @@ msgstr "Скинути тимчасове тло"
 msgid "Restore &Default Script"
 msgstr "Відновити сценарії по &умовчанню"
 
-#: src/kvirc/kernel/kvi_app.cpp:814
+#: src/kvirc/kernel/kvi_app.cpp:822
 msgid "Restore Default Script - KVIrc"
 msgstr "Відновлення сценаріїв за замовчуванням - KVirc"
 
@@ -5516,7 +5521,7 @@ msgstr "Сценарії"
 msgid "Scripting related actions"
 msgstr "Дії, зв'язані зі сценаріями"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:839
+#: src/kvirc/ui/kvi_ircview_events.cpp:840
 msgid "Scroll up to read from the last read line"
 msgstr ""
 
@@ -5524,7 +5529,7 @@ msgstr ""
 msgid "Search"
 msgstr "Пошук"
 
-#: src/kvirc/ui/kvi_ircview.cpp:318
+#: src/kvirc/ui/kvi_ircview.cpp:322
 msgid "Search tools"
 msgstr "Інструменти пошуку"
 
@@ -5668,7 +5673,7 @@ msgstr "Повідомлення сервера (+s)"
 msgid "Server X509 certificate"
 msgstr "Сертифікат сервера X509"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:921
+#: src/kvirc/ui/kvi_ircview_events.cpp:922
 msgid "Server appears to be a network hub<br>"
 msgstr "Сервер є мережним хабом<br>"
 
@@ -5786,7 +5791,7 @@ msgstr "Показати %1"
 msgid "Show &Icon Table"
 msgstr "Показати таблицю &іконок"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2022
+#: src/kvirc/ui/kvi_ircview.cpp:2067
 msgid "Show Find Window"
 msgstr "Показати вікно пошуку"
 
@@ -6458,7 +6463,10 @@ msgid "The server refused the suggested nickname (%s) and named you %s instead"
 msgstr "Сервер відхилив запропонований вами Нік (%s) і назвав вас %s"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:978
-msgid "The server seems to have changed the idea about the local hostname"
+#, fuzzy
+msgid ""
+"The server reports a hostname differing from what KVIrc set for the local "
+"hostname."
 msgstr "Сервер здається хоче змінити хостмаску"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:862
@@ -6649,6 +6657,14 @@ msgid ""
 msgstr ""
 "Установлений KVIrc занадто старої версії. Мінімальна необхідна версія для "
 "цього Скріпта %Q"
+
+#: src/kvirc/kernel/kvi_ircconnection.cpp:979
+#, fuzzy
+msgid ""
+"This can happen if you use a broken bouncer, the IRC server masks your IP/"
+"Hostname or something weird is happening on the IRC server."
+msgstr ""
+"Ви ймовірно використаєте баунсер або на IRC сервері відбувається щось дивне"
 
 #: src/kvilib/core/kvi_error.cpp:163
 msgid "This executable has been compiled without SSL support"
@@ -6886,11 +6902,11 @@ msgstr "Не можу визначити використовуваний шиф
 msgid "Unable to find a window with the specified window id"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:895
+#: src/kvirc/ui/kvi_ircview_events.cpp:896
 msgid "Unable to look it up hostname: Hostname appears to be masked"
 msgstr "Не можу знайти хост: Хост замаскований"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:896
+#: src/kvirc/ui/kvi_ircview_events.cpp:897
 msgid "Unable to look it up hostname: Unknown host"
 msgstr "Не можу знайти хост: Невідомий хост"
 
@@ -7036,7 +7052,7 @@ msgstr "Хост не знайдений"
 msgid "Unknown operator"
 msgstr "Невідомий оператор"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:922
+#: src/kvirc/ui/kvi_ircview_events.cpp:923
 msgid "Unknown server<br>"
 msgstr "Невідомий сервер<br>"
 
@@ -7473,7 +7489,7 @@ msgid "Writing package header"
 msgstr "Записую заголовок пакета"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:840 src/kvirc/ui/kvi_statusbar.cpp:552
-#: src/kvirc/ui/kvi_input.cpp:253 src/kvirc/kernel/kvi_app.cpp:795
+#: src/kvirc/ui/kvi_input.cpp:253 src/kvirc/kernel/kvi_app.cpp:803
 msgid "Yes"
 msgstr "Так"
 
@@ -7481,7 +7497,7 @@ msgstr "Так"
 msgid "Yes, always"
 msgstr "Так, завжди"
 
-#: src/kvirc/kernel/kvi_app.cpp:815
+#: src/kvirc/kernel/kvi_app.cpp:823
 msgid ""
 "You are about to restore the default script.<br>This will erase any script "
 "changes you have made.<br>Do you wish to proceed?"
@@ -7568,20 +7584,13 @@ msgstr ""
 "передачу великого повідомлення,<br>не відредагованого після вставки з буфера "
 "обміну<br><br>Ви хочете відіслати повідомлення?"
 
-#: src/kvirc/ui/kvi_ircview_events.cpp:962
+#: src/kvirc/ui/kvi_ircview_events.cpp:963
 msgid "You're not an operator: You may not change channel modes"
 msgstr "Ви не оператор: Ви не можете змінювати режими каналу"
 
 #: src/modules/links/linkswindow.cpp:412
 msgid "You're not connected to a server"
 msgstr "Ви не підключені до сервера"
-
-#: src/kvirc/kernel/kvi_ircconnection.cpp:979
-msgid ""
-"You're probably using a broken bouncer or maybe something weird is happening "
-"on the IRC server"
-msgstr ""
-"Ви ймовірно використаєте баунсер або на IRC сервері відбувається щось дивне"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2108
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2116
@@ -7593,11 +7602,11 @@ msgstr "Використовуване кодування %Q"
 msgid "Your user mode is %s"
 msgstr "Ваш користувальницький режим %s"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2024
+#: src/kvirc/ui/kvi_ircview.cpp:2069
 msgid "Zoom In"
 msgstr "Збільшити"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2025
+#: src/kvirc/ui/kvi_ircview.cpp:2070
 msgid "Zoom Out"
 msgstr "Зменшити"
 
@@ -8896,9 +8905,6 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgstr ""
 #~ "Включите цю опцію якщо дія повинне бути доступно тільки в активних вікнах "
 #~ "заданих типів."
-
-#~ msgid "Choose"
-#~ msgstr "Вибрати"
 
 #~ msgid "Choose Avatar Image File"
 #~ msgstr "Вибрати файл аватара"
