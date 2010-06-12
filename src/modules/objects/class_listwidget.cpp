@@ -28,6 +28,31 @@
 #include "class_list.h"
 #include "class_listwidget.h"
 #include <QListWidget>
+
+const int item_flags[] = {
+	Qt::NoItemFlags,
+	Qt::ItemIsSelectable,
+	Qt::ItemIsEditable,
+	Qt::ItemIsDragEnabled,
+	Qt::ItemIsDropEnabled,
+	Qt::ItemIsUserCheckable,
+	Qt::ItemIsEnabled,
+	Qt::ItemIsTristate
+};
+
+const char * const itemflags_tbl[] = {
+	"noitemflag",
+	"selectable",
+	"editable",
+	"dragEnabled",
+	"dropEnabled",
+	"userCheckable",
+	"enabled",
+	"tristate"
+};
+
+#define itemflags_num	(sizeof(itemflags_tbl) / sizeof(itemflags_tbl[0]))
+
 /*
         @doc:listbox
         @title:
@@ -62,6 +87,17 @@
 		"extended" : multiple items can be selected but only in a single mouse interaction[br]
 		"none" : no items can be selected[br]
 		The default mode is "single"
+		!fn: $setFlag(<idx:integer>,<flag1:string>, <flag2:string>, ...)
+		Sets the flags for the item at index idz to the given flags. These determine whether the item can be selected or modified. This is often used to disable an item.
+		Supported flags are:
+		- noitemflag : no flag sets;
+		- selectable : item is selecatble;
+		- editable : item is editable;
+		- dragEnabled : item can dragged;
+		- dropEnabled : item can used as drop target;
+		- userCheckable : item is checkable;
+		- enabled :item is enabled;
+		- tristate : item is checkable with three separate states.
 		!fn: <string> $selectionMode()
 		Returns the current selection mode
 		!fn: $insertItem(<text:string>, <index:uint>)
@@ -83,6 +119,11 @@
                 Sets the current listbox item.
 		!fn: $clear()
 		Removes all the items
+		!fn: $setFont(<idx:integer>,<family:string>,<size:integer>[,<style1:string>, <style2:string>, ...])
+		Set the font's family, size and style, at index <idx>; valid flag for style are:[br]
+		italic, bold, underline, overline, strikeout, fixedpitch  [br]
+		If you just want to set a style without altering the preset font size and family, you can use $setFont() like this:[br]
+		%widget->$setFont(0,0,"bold")
 		!fn: $itemEnteredEvent()
 		This function is called by KVIrc when the mouse cursor enters an item.
 		!fn: $selectionChangeEvent()
@@ -117,10 +158,14 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listwidget,"listbox","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,itemRect);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setCurrentItem);
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,selectedItems)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setSelected)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,isSelected)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,selectedItems);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setSelected);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,isSelected);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setFont);
 
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setFlags)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setChecked);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,isChecked);
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setSelectionMode);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,selectionMode);
@@ -166,6 +211,98 @@ KVSO_CLASS_FUNCTION(listwidget,insertItem)
 	return true;
 }
 
+KVSO_CLASS_FUNCTION(listwidget,setFlags)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	QStringList itemflags;
+	kvs_int_t iIdx;
+	KVSO_PARAMETERS_BEGIN(c)
+	    KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIdx)
+	    KVSO_PARAMETER("flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,itemflags)
+	KVSO_PARAMETERS_END(c)
+	int flag,sum=0;
+	QListWidgetItem *pItem=((QListWidget *)widget())->item(iIdx);
+	if(!pItem) return true;
+	for ( int i=0;i<itemflags.count();i++)
+	{
+		flag = 0;
+		for(unsigned int j = 0; j < itemflags_num; j++)
+		{
+			if(KviQString::equalCI(itemflags.at(i), itemflags_tbl[j]))
+			{
+				flag=item_flags[j];
+				break;
+			}
+		}
+		if(flag){
+			if (flag==Qt::ItemIsUserCheckable)
+					pItem->setCheckState(Qt::Unchecked);
+			sum = sum | flag;
+		}
+		else
+			c->warning(__tr2qs_ctx("Unknown item flag '%Q'","objects"),&itemflags.at(i));
+	}
+	pItem->setFlags((Qt::ItemFlags)sum);
+	return true;
+}
+KVSO_CLASS_FUNCTION(listwidget,setChecked)
+{
+	bool bChecked;
+	kvs_int_t iIdx;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIdx)
+		KVSO_PARAMETER("bChecked",KVS_PT_BOOL,0,bChecked)
+	KVSO_PARAMETERS_END(c)
+	QListWidgetItem *pItem=((QListWidget *)widget())->item(iIdx);
+	if(!pItem) return true;
+	pItem->setCheckState(bChecked?Qt::Checked:Qt::Unchecked);
+	return true;
+}
+
+KVSO_CLASS_FUNCTION(listwidget,isChecked)
+{
+	kvs_int_t iIdx;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIdx)
+	KVSO_PARAMETERS_END(c)
+	QListWidgetItem *pItem=((QListWidget *)widget())->item(iIdx);
+	if(!pItem) return true;
+	c->returnValue()->setBoolean(pItem->checkState()==Qt::Checked?1:0);
+	return true;
+}
+
+KVSO_CLASS_FUNCTION(listwidget,setFont)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	QString szFamily;
+	QStringList szListStyle;
+	kvs_int_t iSize,iIdx;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("index",KVS_PT_INTEGER,0,iIdx)
+		KVSO_PARAMETER("size",KVS_PT_INTEGER,0,iSize)
+		KVSO_PARAMETER("family",KVS_PT_STRING,0,szFamily)
+		KVSO_PARAMETER("style",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,szListStyle)
+	KVSO_PARAMETERS_END(c)
+	QListWidgetItem *pItem=((QListWidget *)widget())->item(iIdx);
+	if(!pItem) return true;
+	QFont font=widget()->font();
+	if(!szFamily.isEmpty()) font.setFamily(szFamily);
+	if(iSize) font.setPointSize(iSize);
+	QString szStyle;
+	for(int i=0;i<szListStyle.length();i++)
+	{
+		szStyle=szListStyle.at(i);
+		if(KviQString::equalCI(szStyle,"italic")) font.setItalic(TRUE);
+		else if(KviQString::equalCI(szStyle,"bold")) font.setBold(TRUE);
+		else if(KviQString::equalCI(szStyle,"underline"))font.setUnderline(TRUE);
+		else if(KviQString::equalCI(szStyle,"overline")) font.setOverline(TRUE);
+		else if(KviQString::equalCI(szStyle,"strikeout"))font.setStrikeOut(TRUE);
+		else if(KviQString::equalCI(szStyle,"fixedpitch")) font.setFixedPitch(TRUE);
+		else c->warning(__tr2qs_ctx("Unknown style '%Q'","objects"),&szStyle);
+	}
+	pItem->setFont(font);
+	return true;
+}
 KVSO_CLASS_FUNCTION(listwidget,clear)
 {
 	CHECK_INTERNAL_POINTER(widget())

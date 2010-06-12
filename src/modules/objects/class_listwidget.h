@@ -54,10 +54,13 @@ protected:
 	bool insertWidgetItem(KviKvsObjectFunctionCall *c);
 	bool isSelected(KviKvsObjectFunctionCall *c);
 	bool setSelected(KviKvsObjectFunctionCall *c);
+	bool setFlags(KviKvsObjectFunctionCall *c);
 	bool selectedItems(KviKvsObjectFunctionCall *c);
 	bool currentItemChangeEvent(KviKvsObjectFunctionCall *c);
 	bool itemEnteredEvent(KviKvsObjectFunctionCall *c);
-
+	bool setChecked(KviKvsObjectFunctionCall *c);
+	bool setFont(KviKvsObjectFunctionCall *c);
+	bool isChecked(KviKvsObjectFunctionCall *c);
 	bool itemAt(KviKvsObjectFunctionCall *c);
 	bool itemRect(KviKvsObjectFunctionCall *c);
 protected slots:

@@ -146,9 +146,11 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tablewidget,"tablewidget","widget")
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setItemFlags);
 
         KVSO_REGISTER_HANDLER(KviKvsObject_tablewidget,"itemEnteredEvent",itemEnteredEvent);
-
-
+	KVSO_REGISTER_HANDLER(KviKvsObject_tablewidget,"cellActivatedEvent",cellActivatedEvent);
+	KVSO_REGISTER_HANDLER(KviKvsObject_tablewidget,"cellDoubleClickedEvent",cellDoubleClickedEvent);
         KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KviKvsObject_tablewidget,"paintCellEvent")
+	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_tablewidget,"sizeHintCellRequestEvent")
+
 
 
 KVSO_END_REGISTERCLASS(KviKvsObject_tablewidget)
@@ -167,9 +169,15 @@ bool KviKvsObject_tablewidget::init(KviKvsRunTimeContext *c,KviKvsVariantList *)
 
         SET_OBJECT(QTableWidget)
         m_pCellItemDelegate=new KviCellItemDelegate(((QTableWidget *)widget()),this);
+
         m_pContext=c;
         ((QTableWidget *)widget())->setItemDelegate(m_pCellItemDelegate);
+	((QTableWidget *)widget())->verticalHeader()->resizeSections(QHeaderView::Custom );
+	((QTableWidget *)widget())->horizontalHeader()->resizeSections(QHeaderView::Custom );
+
         connect(widget(),SIGNAL(itemEntered(QTableWidgetItem *)),this,SLOT(slotItemEntered(QTableWidgetItem *)));
+	connect(widget(),SIGNAL(cellActivated(int,int)),this,SLOT(cellActivated(int,int)));
+	connect(widget(),SIGNAL(cellDoubleClicked(int,int)),this,SLOT(cellDoubleClicked(int,int)));
         return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,clear)
@@ -535,6 +543,31 @@ KVSO_CLASS_FUNCTION(tablewidget,itemEnteredEvent)
         emitSignal("itemEntered",c,c->params());
         return true;
 }
+void KviKvsObject_tablewidget::cellActivated(int iRow,int iCol)
+
+{
+	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)iRow),new KviKvsVariant((kvs_int_t)iCol));
+	callFunction(this,"cellActivatedEvent",0,&params);
+}
+KVSO_CLASS_FUNCTION(tablewidget,cellActivatedEvent)
+{
+
+	emitSignal("cellActivated",c,c->params());
+	return true;
+}
+void KviKvsObject_tablewidget::cellDoubleClicked(int iRow,int iCol)
+
+{
+	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)iRow),new KviKvsVariant((kvs_int_t)iCol));
+	callFunction(this,"cellDoubleClickedEvent",0,&params);
+}
+KVSO_CLASS_FUNCTION(tablewidget,cellDoubleClickedEvent)
+{
+
+	emitSignal("cellDoubleClicked",c,c->params());
+	return true;
+}
+
 bool KviKvsObject_tablewidget::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index)
 {
         p->save();
@@ -568,12 +601,24 @@ KviCellItemDelegate::~KviCellItemDelegate()
 
 void KviCellItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
-        if (m_pParentScript->paint(pPainter,option,index)) QItemDelegate::paint(pPainter,option,index);
+	if (m_pParentScript->paint(pPainter,option,index)) QItemDelegate::paint(pPainter,option,index);
 }
 
 QSize KviCellItemDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex & index) const
 {
-        return QItemDelegate::sizeHint(option,index);
+       KviKvsVariant *sizeret=new KviKvsVariant();
+	debug("sizehint cell");
+       KviKvsVariantList parameters(new KviKvsVariant((kvs_int_t) index.row()),new KviKvsVariant((kvs_int_t) index.column()));
+       m_pParentScript->callFunction(m_pParentScript,"sizeHintCellRequestEvent",sizeret,&parameters);
+       if (sizeret->isArray())
+       {
+	       if (sizeret->array()->size()==2)
+	       {
+		       kvs_int_t w,h;
+		       if (sizeret->array()->at(0)->asInteger(w) && sizeret->array()->at(1)->asInteger(h))return QSize(w,h);
+	       }
+       }
+       return QItemDelegate::sizeHint(option,index);
 }
 
 

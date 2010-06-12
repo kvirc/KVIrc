@@ -164,7 +164,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_groupbox,"groupbox","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_groupbox,alignment)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_groupbox,setAlignment)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_groupbox,setOrientation)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_groupbox,setOrientation)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_groupbox,isChecked)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_groupbox,setChecked)
 

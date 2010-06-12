@@ -412,11 +412,9 @@ const char * const widgettypes_tbl[] = {
 		For some kind of widgets, setting a background pixmap may have no effect or
 		have strange results. Experiment with it.
 		To unset the background image call [classfnc]$setBackgroundColor[/classfnc]
-		!fn: $setFont(<size>,<family>,<style>)
-		Set the font's size, family and stile, valid flag for style are:[br]
-			italic, bold, underline, overline, strikeout, fixedpitch  [br]
-		If you just want to set a style without altering the preset font size and family, you can use $setFont() like this:[br]
-			%widget->$setFont(0,0,"bold")
+		!fn: $setFont(<family:string>,<size:integer>[,<style1:string>, <style2:string>, ...])
+		Set the font's family,size and style, valid flag for style are:[br]
+		- italic, bold, underline, overline, strikeout, fixedpitch  [br]
 		!fn: $setWFlags(<flag1>, <flag2>, ...)
 		This function sets widget flags, given as parameters.
 		Valid flags are:
@@ -1725,27 +1723,32 @@ KVSO_CLASS_FUNCTION(widget,setWFlags)
 KVSO_CLASS_FUNCTION(widget,setFont)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szFamily,szStyle;
-	kvs_int_t uSize;
+	QString szFamily;
+	QStringList szListStyle;
+	kvs_int_t iSize;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("size",KVS_PT_UNSIGNEDINTEGER,0,uSize)
+		KVSO_PARAMETER("size",KVS_PT_INTEGER,0,iSize)
 		KVSO_PARAMETER("family",KVS_PT_STRING,0,szFamily)
-		KVSO_PARAMETER("style",KVS_PT_STRING,0,szStyle)
+		KVSO_PARAMETER("style",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,szListStyle)
 	KVSO_PARAMETERS_END(c)
 	QFont font=widget()->font();
-	font.setFamily(szFamily);
-	font.setPointSize(uSize);
-	if(KviQString::equalCI(szStyle,"italic")) font.setItalic(TRUE);
-	else if(KviQString::equalCI(szStyle,"bold")) font.setBold(TRUE);
-	else if(KviQString::equalCI(szStyle,"underline"))font.setUnderline(TRUE);
-	else if(KviQString::equalCI(szStyle,"overline")) font.setOverline(TRUE);
-	else if(KviQString::equalCI(szStyle,"strikeout"))font.setStrikeOut(TRUE);
-	else if(KviQString::equalCI(szStyle,"fixedpitch")) font.setFixedPitch(TRUE);
-	else c->warning(__tr2qs_ctx("Unknown style '%Q'","objects"),&szStyle);
+	if(!szFamily.isEmpty()) font.setFamily(szFamily);
+	if(iSize) font.setPointSize(iSize);
+	QString szStyle;
+	for(int i=0;i<szListStyle.length();i++)
+	{
+		szStyle=szListStyle.at(i);
+		if(KviQString::equalCI(szStyle,"italic")) font.setItalic(TRUE);
+		else if(KviQString::equalCI(szStyle,"bold")) font.setBold(TRUE);
+		else if(KviQString::equalCI(szStyle,"underline"))font.setUnderline(TRUE);
+		else if(KviQString::equalCI(szStyle,"overline")) font.setOverline(TRUE);
+		else if(KviQString::equalCI(szStyle,"strikeout"))font.setStrikeOut(TRUE);
+		else if(KviQString::equalCI(szStyle,"fixedpitch")) font.setFixedPitch(TRUE);
+		else c->warning(__tr2qs_ctx("Unknown style '%Q'","objects"),&szStyle);
+	}
 	widget()->setFont(font);
 	return true;
 }
-
 KVSO_CLASS_FUNCTION(widget,addWidgetToWrappedLayout)
 {
 	CHECK_INTERNAL_POINTER(widget())

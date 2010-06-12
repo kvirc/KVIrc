@@ -90,17 +90,20 @@ public:
             bool hideVerticalHeader(KviKvsObjectFunctionCall *c);
             bool showVerticalHeader(KviKvsObjectFunctionCall *c);
             bool clear(KviKvsObjectFunctionCall *c);
-            bool itemEnteredEvent(KviKvsObjectFunctionCall *c);
+	    bool itemEnteredEvent(KviKvsObjectFunctionCall *c);
+	    bool cellActivatedEvent(KviKvsObjectFunctionCall *c);
+	    bool cellDoubleClickedEvent(KviKvsObjectFunctionCall *c);
 
-            bool hideColumn(KviKvsObjectFunctionCall *c);
+
+	    bool hideColumn(KviKvsObjectFunctionCall *c);
             bool showColumn(KviKvsObjectFunctionCall *c);
             bool hideRow(KviKvsObjectFunctionCall *c);
             bool showRow(KviKvsObjectFunctionCall *c);
 
 protected slots:
         void slotItemEntered(QTableWidgetItem *);
-
-        //void slotClicked();
+	void cellActivated(int iRow,int iCol);
+	void cellDoubleClicked(int iRow,int iCol);
 };
 
 

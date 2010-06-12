@@ -206,8 +206,8 @@ const char * const brushstyles_tbl[] = {
 		[/pre]
 		!fn: $drawPixmap(<x:integer>,<y:integer>,<pixmap:hobject>,<sx:integer>,<sy:integer>,<ex:integer>,<ey:integer>)
 		Draws a pixmap at x,y coordinates[br]
-		!fn: $setFont(<size:unsigned integer>,<family:string>,<style:enum>)[br]
-		Set the font's size, family and stile, valid flag for style are:[br]
+		!fn: $setFont(<family:string>,<size:integer>[,<style:enum>,<style:enum>,..])[br]
+		Set the font's family, size and style, valid flag for style are:[br]
 		[pre]
 		italic     [br]
 		bold     [br]
@@ -658,22 +658,29 @@ if(__pCol1OrArray->isArray())\
 KVSO_CLASS_FUNCTION(painter,setFont)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
-	QString szFamily,szStyle;
-	kvs_int_t uSize;
+	QString szFamily;
+	QStringList szListStyle;
+	kvs_int_t iSize;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("size",KVS_PT_UNSIGNEDINTEGER,0,uSize)
+		KVSO_PARAMETER("size",KVS_PT_INTEGER,0,iSize)
 		KVSO_PARAMETER("family",KVS_PT_STRING,0,szFamily)
-		KVSO_PARAMETER("style",KVS_PT_STRING,0,szStyle)
+		KVSO_PARAMETER("style",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,szListStyle)
 	KVSO_PARAMETERS_END(c)
 	QFont font=m_pPainter->font();
 	font.setFamily(szFamily);
-	font.setPointSize(uSize);
-	if(KviQString::equalCI(szStyle,"italic")) font.setItalic(TRUE);
-	if(KviQString::equalCI(szStyle,"bold")) font.setBold(TRUE);
-	if(KviQString::equalCI(szStyle,"underline"))font.setUnderline(TRUE);
-	if(KviQString::equalCI(szStyle,"overline")) font.setOverline(TRUE);
-	if(KviQString::equalCI(szStyle,"strikeout"))font.setStrikeOut(TRUE);
-	if(KviQString::equalCI(szStyle,"fixedpitch")) font.setFixedPitch(TRUE);
+	font.setPointSize(iSize);
+	QString szStyle;
+	for(int i=0;i<szListStyle.length();i++)
+	{
+		szStyle=szListStyle.at(i);
+		if(KviQString::equalCI(szStyle,"italic")) font.setItalic(TRUE);
+		else if(KviQString::equalCI(szStyle,"bold")) font.setBold(TRUE);
+		else if(KviQString::equalCI(szStyle,"underline"))font.setUnderline(TRUE);
+		else if(KviQString::equalCI(szStyle,"overline")) font.setOverline(TRUE);
+		else if(KviQString::equalCI(szStyle,"strikeout"))font.setStrikeOut(TRUE);
+		else if(KviQString::equalCI(szStyle,"fixedpitch")) font.setFixedPitch(TRUE);
+		else c->warning(__tr2qs_ctx("Unknown style '%Q'","objects"),&szStyle);
+	}
 	m_pPainter->setFont(font);
 	return true;
 }
