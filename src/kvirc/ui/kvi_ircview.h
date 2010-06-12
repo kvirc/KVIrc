@@ -36,7 +36,8 @@
 class QScrollBar;
 class QLineEdit;
 class QFile;
-class QFQs;
+class QFontMetricsF;
+class QFontMetrics;
 class KviTalPopupMenu;
 
 class KviWindow;
@@ -52,6 +53,8 @@ typedef struct _KviIrcViewLine KviIrcViewLine;
 typedef struct _KviIrcViewWrappedBlockSelectionInfoTag KviIrcViewWrappedBlockSelectionInfo;
 
 #define KVI_IRCVIEW_INVALID_LINE_MARK_INDEX 0xffffffff
+
+
 
 class KVIRC_API KviIrcView : public QWidget
 {
@@ -101,7 +104,7 @@ private:
 	int                         m_iFontLineSpacing;
 	int                         m_iFontLineWidth;
 	int                         m_iFontDescent;
-	int                         m_iFontCharacterWidth[256];    //1024 bytes fixed
+	kvi_fontmetric_t            m_iFontCharacterWidth[256];    //1024 bytes fixed
 
 	int                         m_iWrapMargin;
 	int                         m_iMinimumPaintWidth;
@@ -133,7 +136,11 @@ private:
 	bool                        m_bPostedPaintEventPending;
 	KviPointerList<KviIrcViewLine> * m_pMessagesStoppedWhileSelecting;
 	KviIrcView                * m_pMasterView;
+#ifdef COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
+	QFontMetricsF             * m_pFm;               // assume this valid only inside a paint event (may be 0 in other circumstances)
+#else //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
 	QFontMetrics              * m_pFm;               // assume this valid only inside a paint event (may be 0 in other circumstances)
+#endif
 
 	QMouseEvent              *  m_pLastEvent;
 
@@ -214,7 +221,11 @@ private:
 	void fastScroll(int lines = 1);
 	const kvi_wchar_t * getTextLine(int msg_type,const kvi_wchar_t * data_ptr,KviIrcViewLine *line_ptr,bool bEnableTimeStamp = true);
 	void calculateLineWraps(KviIrcViewLine *ptr,int maxWidth);
+#ifdef COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
+	void recalcFontVariables(const QFontMetricsF &fm,const QFontInfo &fi);
+#else //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
 	void recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi);
+#endif //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
 	bool checkSelectionBlock(KviIrcViewLine * line,int bufIndex);
 	KviIrcViewWrappedBlock * getLinkUnderMouse(int xPos,int yPos,QRect * pRect = 0,QString * linkCmd = 0,QString * linkText = 0);
 	void doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkText);

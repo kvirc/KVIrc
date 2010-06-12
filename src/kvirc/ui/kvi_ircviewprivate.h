@@ -85,8 +85,8 @@ typedef struct _KviIrcViewLineChunk
 	kvi_wchar_t  * szPayload;                          // KVI_TEXT_ESCAPE attribute command buffer and KVI_TEXT_ICON icon name (non zeroed for other attributes!!!)
 	kvi_wchar_t  * szSmileId;
 	struct {
-	unsigned char back;                        // optional background color for KVI_TEXT_COLOR attribute
-	unsigned char fore;                        // optional foreground color for KVI_TEXT_COLOR attribute (used also for KVI_TEXT_ESCAPE!!!)
+		unsigned char back;                        // optional background color for KVI_TEXT_COLOR attribute
+		unsigned char fore;                        // optional foreground color for KVI_TEXT_COLOR attribute (used also for KVI_TEXT_ESCAPE!!!)
 	} _KVI_PACKED colors; // anonymous
 //	QColor customBack;
 	QColor customFore;
@@ -101,7 +101,7 @@ typedef struct _KviIrcViewWrappedBlock
 	KviIrcViewLineChunk     * pChunk;                  // pointer to real line chunk or 0 for word wraps
 	int                       block_start;             // this is generally different than pAttribute->block_idx!
 	int                       block_len;               // length if the block in characters
-	int                       block_width;             // width of the block in pixels
+	kvi_fontmetric_t          block_width;             // width of the block in pixels
 } _KVI_PACKED KviIrcViewWrappedBlock;
 
 
@@ -135,11 +135,11 @@ typedef struct _KviIrcViewWrappedBlockSelectionInfoTag
 {
 	int selection_type;
 	int part_1_length;
-	int part_1_width;
+	kvi_fontmetric_t part_1_width;
 	int part_2_length;
-	int part_2_width;
+	kvi_fontmetric_t part_2_width;
 	int part_3_length;
-	int part_3_width;
+	kvi_fontmetric_t part_3_width;
 } KviIrcViewWrappedBlockSelectionInfo;
 
 #ifdef COMPILE_ON_WINDOWS

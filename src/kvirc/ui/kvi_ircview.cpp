@@ -102,7 +102,11 @@
 #include <QBitmap>
 #include <QPainter>
 #include <QRegExp>
-#include <QFontMetrics>
+#ifdef COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
+	#include <QFontMetricsF>
+#else //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
+	#include <QFontMetrics>
+#endif //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
 #include <QApplication>
 #include <QMessageBox>
 #include <QPaintEvent>
@@ -287,9 +291,9 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	setAutoFillBackground(false);
 
 	m_pFm = 0; // will be updated in the first paint event
-	m_iFontDescent=0;
-	m_iFontLineSpacing=0;
-	m_iFontLineWidth=0;
+	m_iFontDescent = 0;
+	m_iFontLineSpacing = 0;
+	m_iFontLineWidth = 0;
 
 	m_pToolTip = new KviIrcViewToolTip(this);
 
@@ -1972,18 +1976,21 @@ return false;
 
 //============ recalcFontVariables ==============//
 
+#ifdef COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
+void KviIrcView::recalcFontVariables(const QFontMetricsF &fm,const QFontInfo &fi)
+#else //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
 void KviIrcView::recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi)
+#endif //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
 {
-	// FIXME: #warning "OPTIMIZE THIS: GLOBAL VARIABLES"
 	if(m_pFm)
 		delete m_pFm;
 
-	m_pFm = new QFontMetrics(fm);
+	m_pFm = new QFontMetricsF(fm);
 
 	m_iFontLineSpacing = m_pFm->lineSpacing();
 
-	if((m_iFontLineSpacing < KVI_IRCVIEW_PIXMAP_SIZE) && KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
-		m_iFontLineSpacing = KVI_IRCVIEW_PIXMAP_SIZE;
+	if((m_iFontLineSpacing < (kvi_fontmetric_t)KVI_IRCVIEW_PIXMAP_SIZE) && KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
+		m_iFontLineSpacing = (kvi_fontmetric_t)KVI_IRCVIEW_PIXMAP_SIZE;
 
 	m_iFontDescent = m_pFm->descent();
 	m_iFontLineWidth = m_pFm->lineWidth();
@@ -1995,16 +2002,16 @@ void KviIrcView::recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi)
 	// fix for #489 (horizontal tabulations)
 	m_iFontCharacterWidth[9] = m_pFm->width("\t");
 
-	if(m_iFontLineWidth == 0)
-		m_iFontLineWidth=1;
+	if(m_iFontLineWidth < 1)
+		m_iFontLineWidth = 1;
 
 	m_iWrapMargin = m_pFm->width("wwww");
 
-	m_iMinimumPaintWidth = (m_pFm->width('w') << 1) + m_iWrapMargin;
+	m_iMinimumPaintWidth = (((int)(m_pFm->width('w'))) << 1) + m_iWrapMargin;
 
-	m_iRelativePixmapY = (m_iFontLineSpacing + KVI_IRCVIEW_PIXMAP_SIZE) >> 1;
+	m_iRelativePixmapY = (int)(m_iFontLineSpacing + KVI_IRCVIEW_PIXMAP_SIZE) >> 1;
 
-	m_iIconWidth = m_pFm->width("w");
+	m_iIconWidth = (int)m_pFm->width("w");
 
 	if(fi.fixedPitch() && (m_iIconWidth > 0))
 	{
@@ -2177,18 +2184,21 @@ void KviIrcView::setCursorLine(KviIrcViewLine * l)
 		// Here we're in trouble :D
 		int curBottomCoord = height() - KVI_IRCVIEW_VERTICAL_BORDER;
 		int maxLineWidth   = width();
-		if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))maxLineWidth -= KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH;
+		if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
+			maxLineWidth -= KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH;
 		//Make sure that we have enough space to paint something...
 		if(maxLineWidth < m_iMinimumPaintWidth)return; // ugh
 		//And loop thru lines until we not run over the upper bound of the view
 		KviIrcViewLine * curLine = m_pCurLine;
 		while(l)
 		{
-			if(maxLineWidth != l->iMaxLineWidth)calculateLineWraps(l,maxLineWidth);
+			if(maxLineWidth != l->iMaxLineWidth)
+				calculateLineWraps(l,maxLineWidth);
 			curBottomCoord -= (l->uLineWraps + 1) * m_iFontLineSpacing;
 			while(curLine && (curBottomCoord < KVI_IRCVIEW_VERTICAL_BORDER))
 			{
-				if(curLine->iMaxLineWidth != maxLineWidth)calculateLineWraps(curLine,maxLineWidth);
+				if(curLine->iMaxLineWidth != maxLineWidth)
+					calculateLineWraps(curLine,maxLineWidth);
 				curBottomCoord += ((curLine->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
 				curLine = curLine->pPrev;
 				sc--;
