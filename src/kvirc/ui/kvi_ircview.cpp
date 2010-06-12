@@ -102,11 +102,7 @@
 #include <QBitmap>
 #include <QPainter>
 #include <QRegExp>
-#ifdef COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
-	#include <QFontMetricsF>
-#else //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
-	#include <QFontMetrics>
-#endif //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
+#include <QFontMetrics>
 #include <QApplication>
 #include <QMessageBox>
 #include <QPaintEvent>
@@ -1976,26 +1972,17 @@ return false;
 
 //============ recalcFontVariables ==============//
 
-#ifdef COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
-void KviIrcView::recalcFontVariables(const QFontMetricsF &fm,const QFontInfo &fi)
-#else //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
 void KviIrcView::recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi)
-#endif //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
 {
 	if(m_pFm)
 		delete m_pFm;
 
-#ifdef COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
-	m_pFm = new QFontMetricsF(fm);
-#else //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
 	m_pFm = new QFontMetrics(fm);
-#endif //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
-
 
 	m_iFontLineSpacing = m_pFm->lineSpacing();
 
-	if((m_iFontLineSpacing < (kvi_fontmetric_t)KVI_IRCVIEW_PIXMAP_SIZE) && KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
-		m_iFontLineSpacing = (kvi_fontmetric_t)KVI_IRCVIEW_PIXMAP_SIZE;
+	if((m_iFontLineSpacing < KVI_IRCVIEW_PIXMAP_SIZE) && KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
+		m_iFontLineSpacing = KVI_IRCVIEW_PIXMAP_SIZE;
 
 	m_iFontDescent = m_pFm->descent();
 	m_iFontLineWidth = m_pFm->lineWidth();
@@ -2113,7 +2100,8 @@ void KviIrcView::chooseFont()
 void KviIrcView::chooseBackground()
 {
 	QString f;
-	if(!KviFileDialog::askForOpenFileName(f,__tr2qs("Choose the background image...")))return;
+	if(!KviFileDialog::askForOpenFileName(f,__tr2qs("Choose the background image...")))
+		return;
 	if(f.isEmpty())return;
 	QPixmap p(f);
 	if(p.isNull())

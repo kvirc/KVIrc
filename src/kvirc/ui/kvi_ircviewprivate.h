@@ -101,7 +101,7 @@ typedef struct _KviIrcViewWrappedBlock
 	KviIrcViewLineChunk     * pChunk;                  // pointer to real line chunk or 0 for word wraps
 	int                       block_start;             // this is generally different than pAttribute->block_idx!
 	int                       block_len;               // length if the block in characters
-	kvi_fontmetric_t          block_width;             // width of the block in pixels
+	int                       block_width;             // width of the block in pixels
 } _KVI_PACKED KviIrcViewWrappedBlock;
 
 
@@ -135,11 +135,11 @@ typedef struct _KviIrcViewWrappedBlockSelectionInfoTag
 {
 	int selection_type;
 	int part_1_length;
-	kvi_fontmetric_t part_1_width;
+	int part_1_width;
 	int part_2_length;
-	kvi_fontmetric_t part_2_width;
+	int part_2_width;
 	int part_3_length;
-	kvi_fontmetric_t part_3_width;
+	int part_3_width;
 } KviIrcViewWrappedBlockSelectionInfo;
 
 #ifdef COMPILE_ON_WINDOWS

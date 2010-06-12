@@ -185,14 +185,4 @@
 	#endif
 #endif
 
-#ifdef COMPILE_ON_MAC
-	#define COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS 1
-#endif //COMPILE_ON_MAC
-
-#ifdef COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
-	typedef qreal kvi_fontmetric_t;
-#else //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
-	typedef int kvi_fontmetric_t;
-#endif //!COMPILE_IRCVIEW_FLOATING_POINT_FONT_METRICS
-
 #endif //_KVI_SETTINGS_H_
