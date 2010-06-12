@@ -975,8 +975,8 @@ void KviIrcConnection::userInfoReceived(const QString & szUserName, const QStrin
 			// ...the server (or more likely the bouncer) must have changed his mind...
 			if(!_OUTPUT_MUTE)
 			{
-				m_pConsole->output(KVI_OUT_SYSTEMWARNING,__tr2qs("The server seems to have changed the idea about the local hostname"));
-				m_pConsole->output(KVI_OUT_SYSTEMWARNING,__tr2qs("You're probably using a broken bouncer or maybe something weird is happening on the IRC server"));
+				m_pConsole->output(KVI_OUT_SYSTEMWARNING,__tr2qs("The server reports a hostname differing from what KVIrc set for the local hostname."));
+				m_pConsole->output(KVI_OUT_SYSTEMWARNING,__tr2qs("This can happen if you use a broken bouncer, the IRC server masks your IP/Hostname or something weird is happening on the IRC server."));
 			}
 			warned_once = true;
 		}
