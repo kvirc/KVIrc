@@ -423,10 +423,6 @@ void KviIrcView::setFont(const QFont &f)
 	}
 
 	QFont newFont(f);
-#ifdef COMPILE_ON_MAC
-	// Antialiasing doesn't allow kerning to be disabled on mac
-	newFont.setStyleStrategy(QFont::NoAntialias);
-#endif //COMPILE_ON_MAC
 	newFont.setKerning(false);
 	QWidget::setFont(newFont);
 	update();
