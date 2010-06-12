@@ -67,11 +67,8 @@ KviChannelTreeWidgetItemData::~KviChannelTreeWidgetItemData()
 
 
 KviChannelTreeWidgetItem::KviChannelTreeWidgetItem(QTreeWidget * v,KviChannelTreeWidgetItemData * pData)
-: QTreeWidgetItem(v)
+: QTreeWidgetItem(v), m_pData(pData)
 {
-	setText(0, pData->m_szChan);
-	setText(1, pData->m_szUsers);
-	setText(2, pData->m_szTopic);
 }
 
 KviChannelTreeWidgetItem::~KviChannelTreeWidgetItem()
@@ -80,28 +77,40 @@ KviChannelTreeWidgetItem::~KviChannelTreeWidgetItem()
 
 int KviChannelTreeWidgetItem::width(const QFontMetrics & fm, const QTreeWidget *, int iColumn) const
 {
-	if(iColumn == 2)
-		return fm.width(KviMircCntrl::stripControlBytes(text(iColumn)));
-	else return fm.width(text(iColumn));
-}
-
-bool KviChannelTreeWidgetItem::operator<(const QTreeWidgetItem & other) const
-{
-	int iSortCol = treeWidget()->sortColumn();
-	switch(iSortCol)
+	switch(iColumn)
 	{
 		case 0:
 			//channel
-			return text(iSortCol).toUpper() < other.text(iSortCol).toUpper();
+			return fm.width(m_pData->m_szChan);
 			break;
 		case 1:
 			//users
-			return text(iSortCol).toInt() < other.text(iSortCol).toInt();
+			return fm.width(m_pData->m_szUsers.toInt());
 			break;
 		case 2:
 		default:
 			//topic
-			return KviMircCntrl::stripControlBytes(text(iSortCol)).toUpper() < KviMircCntrl::stripControlBytes(other.text(iSortCol)).toUpper();
+			return fm.width(KviMircCntrl::stripControlBytes(m_pData->m_szTopic));
+			break;
+	}
+}
+
+bool KviChannelTreeWidgetItem::operator<(const QTreeWidgetItem & other) const
+{
+	switch(treeWidget()->sortColumn())
+	{
+		case 0:
+			//channel
+			return m_pData->m_szChan < ((KviChannelTreeWidgetItem*)&other)->itemdata()->m_szChan.toUpper();
+			break;
+		case 1:
+			//users
+			return m_pData->m_szUsers.toInt() < ((KviChannelTreeWidgetItem*)&other)->itemdata()->m_szUsers.toInt();
+			break;
+		case 2:
+		default:
+			//topic
+			return KviMircCntrl::stripControlBytes(m_pData->m_szTopic.toUpper()) < KviMircCntrl::stripControlBytes(((KviChannelTreeWidgetItem*)&other)->itemdata()->m_szTopic.toUpper());
 			break;
 	}
 }
@@ -117,6 +126,8 @@ KviChannelTreeWidgetItemDelegate::~KviChannelTreeWidgetItemDelegate()
 
 void KviChannelTreeWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
+	KviChannelTreeWidgetItem* obj = static_cast<KviChannelTreeWidgetItem*>(index.internalPointer());
+
 	if (option.state & QStyle::State_Selected)
 		p->fillRect(option.rect, option.palette.brush( QPalette::Highlight ) );
 
@@ -127,16 +138,16 @@ void KviChannelTreeWidgetItemDelegate::paint(QPainter * p, const QStyleOptionVie
 	{
 		case 0:
 			//channel
-			p->drawText(option.rect, index.data().toString());
+			p->drawText(option.rect, obj->itemdata()->m_szChan);
 			break;
 		case 1:
 			//users
-			p->drawText(option.rect, Qt::AlignHCenter, index.data().toString());
+			p->drawText(option.rect, Qt::AlignHCenter, obj->itemdata()->m_szUsers);
 			break;
 		case 2:
 		default:
 			//topic
-			KviTopicWidget::paintColoredText(p,index.data().toString(),option.palette,option.rect);
+			KviTopicWidget::paintColoredText(p,obj->itemdata()->m_szTopic,option.palette,option.rect);
 			break;
 	}
 }

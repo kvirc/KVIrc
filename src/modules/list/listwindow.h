@@ -68,9 +68,12 @@ class KviChannelTreeWidgetItem : public QTreeWidgetItem
 public:
 	KviChannelTreeWidgetItem(QTreeWidget * pWidget, KviChannelTreeWidgetItemData * pData);
 	~KviChannelTreeWidgetItem();
+private:
+	KviChannelTreeWidgetItemData * m_pData;
 public:
 	int width (const QFontMetrics & fm, const QTreeWidget * pWidget, int iColumn) const;
 	bool operator<(const QTreeWidgetItem & other) const;
+	inline KviChannelTreeWidgetItemData * itemdata() { return m_pData; }; 
 };
 
 class KviListWindow : public KviWindow, public KviExternalServerDataParser
