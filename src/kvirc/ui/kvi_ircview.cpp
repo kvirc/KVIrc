@@ -425,7 +425,7 @@ void KviIrcView::setFont(const QFont &f)
 	QFont newFont(f);
 #ifdef COMPILE_ON_MAC
 	// Antialiasing doesn't allow kerning to be disabled on mac
-	newFont.setStyleStrategy(newFont.styleStrategy() | QFont::NoAntialias);
+	newFont.setStyleStrategy(QFont::NoAntialias);
 #endif //COMPILE_ON_MAC
 	newFont.setKerning(false);
 	QWidget::setFont(newFont);
@@ -1672,7 +1672,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 		{
 			p--;
 			curBlockLen--;
-			curLineWidth- = IRCVIEW_WCHARWIDTH(*p);
+			curLineWidth -= IRCVIEW_WCHARWIDTH(*p);
 		}
 	
 		// Now look for a space (or a tabulation)
@@ -1680,7 +1680,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 		{
 			p--;
 			curBlockLen--;
-			curLineWidth- = IRCVIEW_WCHARWIDTH(*p);
+			curLineWidth -= IRCVIEW_WCHARWIDTH(*p);
 		}
 
 		if(curBlockLen == 0)
