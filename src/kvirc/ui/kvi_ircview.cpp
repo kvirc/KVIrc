@@ -253,11 +253,11 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 		KVI_OPTION_UINT(KviOption_uintIrcViewMaxBufferSize) = 32;
 	}
 
-	m_bMouseIsDown               = false;
+	m_bMouseIsDown             = false;
 
-	//m_bShowImages              = KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages);
+	//m_bShowImages            = KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages);
 
-	m_iMouseTimer		   = 0;
+	m_iMouseTimer              = 0;
 
 	m_bAcceptDrops             = false;
 	m_pPrivateBackgroundPixmap = 0;
@@ -365,24 +365,38 @@ static inline void delete_text_line(KviIrcViewLine * line,QHash<KviIrcViewLine*,
 KviIrcView::~KviIrcView()
 {
 	// kill any pending timer
-	if(m_iFlushTimer) killTimer(m_iFlushTimer);
-	if(m_iSelectTimer) killTimer(m_iSelectTimer);
-	if(m_iMouseTimer)killTimer(m_iMouseTimer);
+	if(m_iFlushTimer)
+		killTimer(m_iFlushTimer);
+	if(m_iSelectTimer)
+		killTimer(m_iSelectTimer);
+	if(m_iMouseTimer)
+		killTimer(m_iMouseTimer);
+
 	// and close the log file (flush!)
 	stopLogging();
-	if(m_pToolWidget)delete m_pToolWidget;
+
+	if(m_pToolWidget)
+		delete m_pToolWidget;
+
 	// don't forget the bacgkround pixmap!
-	if(m_pPrivateBackgroundPixmap)delete m_pPrivateBackgroundPixmap;
+	if(m_pPrivateBackgroundPixmap)
+		delete m_pPrivateBackgroundPixmap;
+
 	// and to remove all the text lines
 	emptyBuffer(false);
+
 	// the pending ones too!
 	while(KviIrcViewLine * l = m_pMessagesStoppedWhileSelecting->first())
 	{
 		m_pMessagesStoppedWhileSelecting->removeFirst();
 		delete_text_line(l,&m_hAnimatedSmiles);
 	}
+
 	delete m_pMessagesStoppedWhileSelecting;
-	if(m_pFm)delete m_pFm;
+
+	if(m_pFm)
+		delete m_pFm;
+
 	delete m_pToolTip;
 	delete m_pWrappedBlockSelectionInfo;
 }
@@ -409,6 +423,10 @@ void KviIrcView::setFont(const QFont &f)
 	}
 
 	QFont newFont(f);
+#ifdef COMPILE_ON_MAC
+	// Antialiasing doesn't allow kerning to be disabled on mac
+	newFont.setStyleStrategy(newFont.styleStrategy() | QFont::NoAntialias);
+#endif //COMPILE_ON_MAC
 	newFont.setKerning(false);
 	QWidget::setFont(newFont);
 	update();
@@ -417,12 +435,14 @@ void KviIrcView::setFont(const QFont &f)
 void KviIrcView::applyOptions()
 {
 	flushLog();
+
 	setFont(KVI_OPTION_FONT(KviOption_fontIrcView));
-	if(m_iFlushTimer) killTimer(m_iFlushTimer);
+
+	if(m_iFlushTimer)
+		killTimer(m_iFlushTimer);
+
 	if(KVI_OPTION_UINT(KviOption_uintAutoFlushLogs))
-	{
 		m_iFlushTimer = startTimer(KVI_OPTION_UINT(KviOption_uintAutoFlushLogs)*60*1000);
-	}
 }
 
 
@@ -447,7 +467,8 @@ void KviIrcView::clearBuffer()
 bool KviIrcView::saveBuffer(const char *filename)
 {
 	QFile f(QString::fromUtf8(filename));
-	if(!f.open(QIODevice::WriteOnly|QIODevice::Truncate))return false;
+	if(!f.open(QIODevice::WriteOnly|QIODevice::Truncate))
+		return false;
 	QString tmp;
 	getTextBuffer(tmp);
 	QByteArray tmpx = KviQString::toUtf8(tmp);
@@ -606,8 +627,9 @@ void KviIrcView::postUpdateEvent()
 
 void KviIrcView::appendLine(KviIrcViewLine *ptr,bool bRepaint)
 {
-	//This one appends a KviIrcViewLine to
-	//the buffer list (at the end)
+	// This one appends a KviIrcViewLine to
+	// the buffer list (at the end)
+
 	if(m_bMouseIsDown)
 	{
 		// Do not move the view!
@@ -627,6 +649,7 @@ void KviIrcView::appendLine(KviIrcViewLine *ptr,bool bRepaint)
 			add2Log(ptr->szText,ptr->iMsgType,false);
 			// If we fail...this has been already reported!
 		}
+
 		// mmh.. when this overflows... we have problems (find doesn't work anymore :()
 		// but it overflows at 2^32 lines... 2^32 = 4.294.967.296 lines
 		// to spit it out in a year you'd need to print 1360 lines per second... that's insane :D
@@ -918,11 +941,15 @@ void KviIrcView::fastScroll(int lines)
 
 	// Ok...the current line is the last one here
 	// It is the only one that needs to be repainted
-	int widgetWidth  = width()-m_pScrollBar->width();
-	if(widgetWidth < KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH+10)return; //can't show stuff here
+	int widgetWidth  = width() - m_pScrollBar->width();
+
+	if(widgetWidth < KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH+10)
+		return; //can't show stuff here
+
 	int widgetHeight = height();
 	int maxLineWidth = widgetWidth;
 	int defLeftCoord=KVI_IRCVIEW_HORIZONTAL_BORDER;
+
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
 	{
 		maxLineWidth -= KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH;
@@ -978,6 +1005,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	 */
 	int scrollbarWidth = m_pScrollBar->width();
 	int widgetWidth  = width() - scrollbarWidth;
+
 	if(!isVisible())
 	{
 		m_iUnprocessedPaintEventRequests = 0; // assume a full repaint when this widget is shown...
@@ -990,7 +1018,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 
 	if(p)
 	{
-		r=p->rect(); // app triggered , or self triggered from fastScroll (in that case m_iUnprocessedPaintEventRequests is set to 0 there)
+		r = p->rect(); // app triggered , or self triggered from fastScroll (in that case m_iUnprocessedPaintEventRequests is set to 0 there)
 		if(r == rect())
 			m_iUnprocessedPaintEventRequests = 0; // only full repaints reset
 	} else {
@@ -1057,7 +1085,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	 * wrapped at the right edge of this control).
 	 */
 
-	//Have lines visible
+	// Have lines visible
 	int curBottomCoord = widgetHeight - KVI_IRCVIEW_VERTICAL_BORDER;
 	int maxLineWidth   = widgetWidth;
 	int defLeftCoord   = KVI_IRCVIEW_HORIZONTAL_BORDER;
@@ -1072,13 +1100,14 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 
 	KviIrcViewLine *pCurTextLine = m_pCurLine;
 
-	//Make sure that we have enough space to paint something...
-	if(maxLineWidth < m_iMinimumPaintWidth)pCurTextLine=0;
+	// Make sure that we have enough space to paint something...
+	if(maxLineWidth < m_iMinimumPaintWidth)
+		pCurTextLine=0;
 
 	bool bLineMarkPainted = !KVI_OPTION_BOOL(KviOption_boolTrackLastReadTextViewLine);
 
 
-	//And loop thru lines until we not run over the upper bound of the view
+	// And loop thru lines until we not run over the upper bound of the view
 	while((curBottomCoord >= KVI_IRCVIEW_VERTICAL_BORDER) && pCurTextLine)
 	{
 		//Paint pCurTextLine
@@ -1571,7 +1600,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 	if(ptr->iBlockCount != 0)
 		kvi_free(ptr->pBlocks); // free any previous wrap blocks
 
-	ptr->pBlocks      = (KviIrcViewWrappedBlock *)kvi_malloc(sizeof(KviIrcViewWrappedBlock)); // alloc one block
+	ptr->pBlocks              = (KviIrcViewWrappedBlock *)kvi_malloc(sizeof(KviIrcViewWrappedBlock)); // alloc one block
 	ptr->iMaxLineWidth        = maxWidth; // calculus for this width
 	ptr->iBlockCount          = 0;        // it will be ++
 	ptr->uLineWraps           = 0;        // no line wraps yet
@@ -1583,7 +1612,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 	ptr->pBlocks->block_start = 0;
 	ptr->pBlocks->block_len   = 0;
 	ptr->pBlocks->block_width = 0;
-	ptr->pBlocks->pChunk  = &(ptr->pChunks[0]); // always an attribute block
+	ptr->pBlocks->pChunk      = &(ptr->pChunks[0]); // always an attribute block
 
 	int maxBlockLen = ptr->pChunks->iTextLen; // ptr->pChunks[0].iTextLen
 
@@ -1591,8 +1620,9 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 
 	for(;;)
 	{
-		//Calculate the block_width
+		// Calculate the block_width
 		register const QChar * p = unicode + ptr->pBlocks[ptr->iBlockCount].block_start;
+
 		int curBlockLen   = 0;
 		int curBlockWidth = 0;
 
@@ -1614,9 +1644,8 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 
 		if(curLineWidth < maxWidth)
 		{
-			//debug("Block of %d pix and len %d with type %d",ptr->pBlocks[ptr->iBlockCount].block_width,ptr->pBlocks[ptr->iBlockCount].block_len,ptr->pChunks[curAttrBlock].type);
 			//Ok....proceed to next block
-			ptr->pBlocks[ptr->iBlockCount].block_len   = curBlockLen;
+			ptr->pBlocks[ptr->iBlockCount].block_len = curBlockLen;
 			ptr->pBlocks[ptr->iBlockCount].block_width = curBlockWidth;
 			curAttrBlock++;
 			ptr->iBlockCount++;
@@ -1630,29 +1659,28 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 			ptr->pBlocks[ptr->iBlockCount].block_start = ptr->pChunks[curAttrBlock].iTextStart;
 			ptr->pBlocks[ptr->iBlockCount].block_len = 0;
 			ptr->pBlocks[ptr->iBlockCount].block_width = 0;
-			ptr->pBlocks[ptr->iBlockCount].pChunk  = &(ptr->pChunks[curAttrBlock]);
+			ptr->pBlocks[ptr->iBlockCount].pChunk = &(ptr->pChunks[curAttrBlock]);
 			maxBlockLen = ptr->pBlocks[ptr->iBlockCount].pChunk->iTextLen;
 
 			continue;
-
 		}
 
-		//Need word wrap
+		// Need word wrap
 
-		//First go back to an admissible width
+		// First go back to an admissible width
 		while((curLineWidth >= maxWidth) && (curBlockLen > 0))
 		{
 			p--;
 			curBlockLen--;
-			curLineWidth-=IRCVIEW_WCHARWIDTH(*p);
+			curLineWidth- = IRCVIEW_WCHARWIDTH(*p);
 		}
 	
-		//Now look for a space (or a tabulation)
+		// Now look for a space (or a tabulation)
 		while((p->unicode() != ' ') && (p->unicode() != '\t') && (curBlockLen > 0))
 		{
 			p--;
 			curBlockLen--;
-			curLineWidth-=IRCVIEW_WCHARWIDTH(*p);
+			curLineWidth- = IRCVIEW_WCHARWIDTH(*p);
 		}
 
 		if(curBlockLen == 0)
@@ -1660,7 +1688,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 			// ran up to the beginning of the block....
 			if(ptr->pChunks[curAttrBlock].type == KVI_TEXT_ICON)
 			{
-				//FIXME what if the icon curBlockWidth is > maxWidth ? => endless loop
+				// FIXME what if the icon curBlockWidth is > maxWidth ? => endless loop
 				// This is an icon block: needs to be wrapped differently:
 				// The wrap block goes BEFORE the icon itself
 				ptr->pBlocks[ptr->iBlockCount].pChunk  = 0;
@@ -1673,11 +1701,11 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 				ptr->pBlocks[ptr->iBlockCount].pChunk  = &(ptr->pChunks[curAttrBlock]);
 				goto wrap_line;
 			}
-			//Don't like it....forced wrap here...
-			//Go ahead up to the biggest possible string
+			// Don't like it....forced wrap here...
+			// Go ahead up to the biggest possible string
 			if(maxBlockLen > 0)
 			{
-				//avoid a loop when IRCVIEW_WCHARWIDTH(*p) > maxWidth
+				// avoid a loop when IRCVIEW_WCHARWIDTH(*p) > maxWidth
 				uint uLoopedChars=0;
 				do
 				{
@@ -1686,7 +1714,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 					curLineWidth+=IRCVIEW_WCHARWIDTH(*p);
 					uLoopedChars++;
 				} while((curLineWidth < maxWidth) && (curBlockLen < maxBlockLen));
-				//Now overrunned , go back 1 char (if we ran over at least 2 chars)
+				// Now overrunned , go back 1 char (if we ran over at least 2 chars)
 				if(uLoopedChars>1)
 				{
 					p--;
@@ -1951,32 +1979,41 @@ return false;
 void KviIrcView::recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi)
 {
 	// FIXME: #warning "OPTIMIZE THIS: GLOBAL VARIABLES"
-	if(m_pFm)delete m_pFm;
+	if(m_pFm)
+		delete m_pFm;
+
 	m_pFm = new QFontMetrics(fm);
+
 	m_iFontLineSpacing = m_pFm->lineSpacing();
-	if(m_iFontLineSpacing < KVI_IRCVIEW_PIXMAP_SIZE && KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
-	{
+
+	if((m_iFontLineSpacing < KVI_IRCVIEW_PIXMAP_SIZE) && KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
 		m_iFontLineSpacing = KVI_IRCVIEW_PIXMAP_SIZE;
-	}
-	m_iFontDescent     =m_pFm->descent();
-	m_iFontLineWidth   =m_pFm->lineWidth();
+
+	m_iFontDescent = m_pFm->descent();
+	m_iFontLineWidth = m_pFm->lineWidth();
+
 	// cache the first 256 characters
 	for(unsigned short i=0;i<256;i++)
-	{
-		m_iFontCharacterWidth[i]=m_pFm->width(QChar(i));
-	}
-	//fix for #489 (horizontal tabulations)
-	m_iFontCharacterWidth[9]=m_pFm->width("\t");
+		m_iFontCharacterWidth[i] = m_pFm->width(QChar(i));
 
-	if(m_iFontLineWidth==0)m_iFontLineWidth=1;
+	// fix for #489 (horizontal tabulations)
+	m_iFontCharacterWidth[9] = m_pFm->width("\t");
+
+	if(m_iFontLineWidth == 0)
+		m_iFontLineWidth=1;
+
 	m_iWrapMargin = m_pFm->width("wwww");
-	m_iMinimumPaintWidth = (m_pFm->width('w') << 1)+m_iWrapMargin;
+
+	m_iMinimumPaintWidth = (m_pFm->width('w') << 1) + m_iWrapMargin;
+
 	m_iRelativePixmapY = (m_iFontLineSpacing + KVI_IRCVIEW_PIXMAP_SIZE) >> 1;
+
 	m_iIconWidth = m_pFm->width("w");
 
 	if(fi.fixedPitch() && (m_iIconWidth > 0))
 	{
-		while(m_iIconWidth < 18)m_iIconWidth += m_iIconWidth;
+		while(m_iIconWidth < 18)
+			m_iIconWidth += m_iIconWidth;
 		m_iIconSideSpacing = (m_iIconWidth - 16) >> 1;
 	} else {
 		m_iIconWidth = 18;
@@ -2054,7 +2091,13 @@ void KviIrcView::decreaseFontSize()
 void KviIrcView::chooseFont()
 {
 	bool bOk;
-	QFont f = QFontDialog::getFont(&bOk,font(),this);
+#ifdef COMPILE_ON_MAC
+	// The native font dialog makes Qt 4.6 go into a strange modal infinite loop (the font dialog is never properly closed).
+	// FIXME: Re-check it with future releases of Qt.
+	QFont f = QFontDialog::getFont(&bOk,font(),this,__tr("Choose Font"),QFontDialog::DontUseNativeDialog);
+#else //!COMPILE_ON_MAC
+	QFont f = QFontDialog::getFont(&bOk,font(),this,__tr("Choose Font"));
+#endif //!COMPILE_ON_MAC
 	if(!bOk)return;
 	setFont(f);
 }
@@ -2677,39 +2720,6 @@ bool KviIrcView::checkMarkerArea(const QRect & area, const QPoint & mousePos)
 void KviIrcView::animatedIconChange()
 {
 	update();
-	//static int i = 0;
-	//debug("animation %i",i);
-	//i++;
-
-
-	/*KviAnimatedPixmap* targetPixmap = (KviAnimatedPixmap*) sender();
-	KviIrcViewLine   * targetLine = m_hAnimatedSmiles[targetPixmap];
-	if(targetLine)
-	{
-		QRect repaintRect();
-	}
-
-	uint uWraps = 0;
-
-	KviIrcViewLine * l = m_pCurLine;
-	if(!l)return;
-
-	int iTop = height() + m_iFontDescent - KVI_IRCVIEW_VERTICAL_BORDER;
-
-	// our current line begins after the mouse position... go on
-	while(iTop > KVI_IRCVIEW_VERTICAL_BORDER)
-	{
-		//subtract from iTop the height of the current line (aka go to the end of the previous / start of the current point)
-		iTop -= ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
-
-		l = l->pPrev;
-	}
-
-	if(l)
-	{
-		update(QRect(0,iTop,width()-m_pScrollBar->width(),((l->uLineWraps + 1) * m_iFontLineSpacing)));
-	}*/
-
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -138,10 +138,12 @@ static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
 	return p;
 }
 
-const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
-					const kvi_wchar_t * data_ptr,
-					KviIrcViewLine *line_ptr,
-					bool bEnableTimeStamp)
+const kvi_wchar_t * KviIrcView::getTextLine(
+		int iMsgType,
+		const kvi_wchar_t * data_ptr,
+		KviIrcViewLine *line_ptr,
+		bool bEnableTimeStamp
+	)
 {
 	const kvi_wchar_t* pUnEscapeAt = 0;
 
@@ -1089,27 +1091,29 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 	__range_valid(data_ptr);
 	m_pLastLinkUnderMouse = 0;
 
-	//qDebug("APP [[%s]] PPA",QString::fromUtf16(data_ptr).replace(QChar('\r'),QString::fromAscii("<r>")).toUtf8().data());
-
 	if(!KVI_OPTION_BOOL(KviOption_boolStripControlCodesInLogs))
 	{
 		// Looks like the user wants to keep the control codes in the log file: we just dump everything inside (including newlines...)
 		if(m_pLogFile && KVI_OPTION_MSGTYPE(iMsgType).logEnabled())
 		{
 			add2Log(QString::fromUtf16(data_ptr),iMsgType,true);
-		} else if(m_pMasterView) {
+		} else if(m_pMasterView)
+		{
 			if(m_pMasterView->m_pLogFile && KVI_OPTION_MSGTYPE(iMsgType).logEnabled())
 				m_pMasterView->add2Log(QString::fromUtf16(data_ptr),iMsgType,true);
 		}
 	}
 
 	while(*data_ptr)
-	{                                         //Have more data
+	{
+		// have more data to process
+
 		KviIrcViewLine *line_ptr=new KviIrcViewLine;  //create a line struct
-		line_ptr->iMsgType=iMsgType;
-		line_ptr->iMaxLineWidth=-1;
-		line_ptr->iBlockCount=0;
-		line_ptr->uLineWraps=0;
+
+		line_ptr->iMsgType = iMsgType;
+		line_ptr->iMaxLineWidth = -1;
+		line_ptr->iBlockCount = 0;
+		line_ptr->uLineWraps = 0;
 
 		data_ptr = getTextLine(iMsgType,data_ptr,line_ptr,!(iFlags & NoTimestamp));
 

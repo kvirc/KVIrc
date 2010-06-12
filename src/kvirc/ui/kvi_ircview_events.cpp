@@ -486,6 +486,7 @@ void KviIrcView::addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelect
 		break;
 	}
 }
+
 void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 {
 	if(m_pSelectionInitLine)
@@ -693,7 +694,6 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 
 void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 {
-//	debug("Pos : %d,%d",e->pos().x(),e->pos().y());
 	if(m_bMouseIsDown && (e->buttons() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
 	{
 		if(m_iSelectTimer == 0)
@@ -717,58 +717,59 @@ void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 			if(iTmp > -1)
 				m_iSelectionEndCharIndex = iTmp;
 		}
-	} else {
-		if(m_iSelectTimer)
+
+		return;
+	}
+
+	if(m_iSelectTimer)
+	{
+		killTimer(m_iSelectTimer);
+		m_iSelectTimer = 0;
+	}
+
+	int yPos = e->pos().y();
+	int rectTop;
+	int rectHeight;
+	QRect rctLink;
+	KviIrcViewWrappedBlock * newLinkUnderMouse = getLinkUnderMouse(e->pos().x(),yPos,&rctLink);
+
+	rectTop = rctLink.y();
+	rectHeight = rctLink.height();
+
+	if(newLinkUnderMouse != m_pLastLinkUnderMouse)
+	{
+		m_pLastLinkUnderMouse = newLinkUnderMouse;
+		if(m_pLastLinkUnderMouse)
 		{
-			killTimer(m_iSelectTimer);
-			m_iSelectTimer = 0;
-		}
+			setCursor(Qt::PointingHandCursor);
+			if(rectTop < 0)rectTop = 0;
+			if((rectTop + rectHeight) > height())rectHeight = height() - rectTop;
 
-		int yPos = e->pos().y();
-		int rectTop;
-		int rectHeight;
-		QRect rctLink;
-		KviIrcViewWrappedBlock * newLinkUnderMouse = getLinkUnderMouse(e->pos().x(),yPos,&rctLink);
-
-		rectTop = rctLink.y();
-		rectHeight = rctLink.height();
-
-		if(newLinkUnderMouse != m_pLastLinkUnderMouse)
-		{
-			m_pLastLinkUnderMouse = newLinkUnderMouse;
-			if(m_pLastLinkUnderMouse)
+			if(m_iLastLinkRectHeight > -1)
 			{
-				setCursor(Qt::PointingHandCursor);
-				if(rectTop < 0)rectTop = 0;
-				if((rectTop + rectHeight) > height())rectHeight = height() - rectTop;
-
-				if(m_iLastLinkRectHeight > -1)
-				{
-					// prev link
-					int top = (rectTop < m_iLastLinkRectTop) ? rectTop : m_iLastLinkRectTop;
-					int lastBottom = m_iLastLinkRectTop + m_iLastLinkRectHeight;
-					int thisBottom = rectTop + rectHeight;
-					QRect r(0,top,width(),((lastBottom > thisBottom) ? lastBottom : thisBottom) - top);
-					repaint(r);
-				} else {
-					// no prev link
-					QRect r(0,rectTop,width(),rectHeight);
-					repaint(r);
-				}
-				m_iLastLinkRectTop = rectTop;
-				m_iLastLinkRectHeight = rectHeight;
+				// prev link
+				int top = (rectTop < m_iLastLinkRectTop) ? rectTop : m_iLastLinkRectTop;
+				int lastBottom = m_iLastLinkRectTop + m_iLastLinkRectHeight;
+				int thisBottom = rectTop + rectHeight;
+				QRect r(0,top,width(),((lastBottom > thisBottom) ? lastBottom : thisBottom) - top);
+				repaint(r);
 			} else {
-				setCursor(Qt::ArrowCursor);
-				if(m_iLastLinkRectHeight > -1)
-				{
-					// There was a previous bottom rect
-					QRect r(0,m_iLastLinkRectTop,width(),m_iLastLinkRectHeight);
-					repaint(r);
-					m_iLastLinkRectTop = -1;
-					m_iLastLinkRectHeight = -1;
-				}
+				// no prev link
+				QRect r(0,rectTop,width(),rectHeight);
+				repaint(r);
 			}
-
+			m_iLastLinkRectTop = rectTop;
+			m_iLastLinkRectHeight = rectHeight;
+		} else {
+			setCursor(Qt::ArrowCursor);
+			if(m_iLastLinkRectHeight > -1)
+			{
+				// There was a previous bottom rect
+				QRect r(0,m_iLastLinkRectTop,width(),m_iLastLinkRectHeight);
+				repaint(r);
+				m_iLastLinkRectTop = -1;
+				m_iLastLinkRectHeight = -1;
+			}
 		}
 	}
 }
@@ -777,7 +778,7 @@ void KviIrcView::leaveEvent(QEvent * )
 {
 	if(m_pLastLinkUnderMouse)
 	{
-		 m_pLastLinkUnderMouse=0;
+		 m_pLastLinkUnderMouse = 0;
 		 update();
 	}
 }
