@@ -73,6 +73,7 @@
 #include "kvi_useridentity.h"
 #include "kvi_ircview.h"
 #include "kvi_animatedpixmapcache.h"
+#include "kvi_env.h"
 
 #ifndef COMPILE_NO_IPC
 	#include "kvi_ipc.h"
@@ -180,6 +181,13 @@ KviApp::KviApp(int &argc,char ** argv)
 	setApplicationVersion(KVIRC_VERSION_RELEASE);
 	setOrganizationDomain("kvirc.net");
 	setOrganizationName("KVIrc");
+
+#ifdef COMPILE_ON_MAC
+	// Disable the native menubar on MacOSX as in Qt 4.6 it's quite buggy and
+	// *very* often crashes in QMenuBar::macUpdateMenuBar()->QAction::isVisible().
+	// FIXME: Check it with later Qt versions
+	kvi_setenv("QT_MAC_NO_NATIVE_MENUBAR","1");
+#endif //COMPILE_ON_MAC
 
 	// Ok...everything begins here
 	g_pApp                  = this;
