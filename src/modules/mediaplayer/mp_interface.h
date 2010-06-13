@@ -117,7 +117,7 @@ public:
 	// 0 if the player isn't playing anyting and -1 if unknown (e.g. a stream)
 	virtual int length();
 	// jump to position
-	virtual bool jumpTo(int &iPos);
+	virtual bool jumpTo(kvs_int_t &iPos);
 	// interface with a default implementation for certain types of media (read for mp3)
 	// reimplement only if the player knows better
 
@@ -156,13 +156,13 @@ public:
 	// get the position in the playlist
 	virtual int getPlayListPos();
 	// set the position in the playlist
-	virtual bool setPlayListPos(int &iPos);
+	virtual bool setPlayListPos(kvs_int_t &iPos);
 	// return the list's length
 	virtual int getListLength();
 	// return the Eq(number) value
-	virtual int getEqData(int &i_val);
+	virtual int getEqData(kvs_int_t &i_val);
 	// set the  Eq(iPos) to Eq(iVal) value
-	virtual bool setEqData(int &iPos, int &iVal);
+	virtual bool setEqData(kvs_int_t &iPos, kvs_int_t &iVal);
 	// get the   Repeat bool value
 	virtual bool getRepeat();
 	// get the  shuffle bool value

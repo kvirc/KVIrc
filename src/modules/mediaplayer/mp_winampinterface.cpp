@@ -473,7 +473,7 @@ bool KviWinampInterface::minimize()
 	return false;
 }
 
-bool KviWinampInterface::setPlayListPos(int &iPos)
+bool KviWinampInterface::setPlayListPos(kvs_int_t &iPos)
 {
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
@@ -500,7 +500,7 @@ int KviWinampInterface::getListLength()
 	return ret;
 }
 
-bool KviWinampInterface::setEqData(int &iPos, int &iVal)
+bool KviWinampInterface::setEqData(kvs_int_t &iPos, kvs_int_t &iVal)
 {
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
@@ -512,7 +512,7 @@ bool KviWinampInterface::setEqData(int &iPos, int &iVal)
 	return false;
 }
 
-int KviWinampInterface::getEqData(int &ival)
+int KviWinampInterface::getEqData(kvs_int_t &ival)
 {
 	HWND hWinamp = find_winamp(this);
 	int ret = -1;

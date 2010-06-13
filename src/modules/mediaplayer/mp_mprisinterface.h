@@ -60,7 +60,7 @@
 		virtual int getVol();
 		virtual int position();
 		virtual int length();
-		virtual bool jumpTo(int &iPos);
+		virtual bool jumpTo(kvs_int_t &iPos);
 	};
 
 	class KviAudaciousInterface : public KviMPRISInterface

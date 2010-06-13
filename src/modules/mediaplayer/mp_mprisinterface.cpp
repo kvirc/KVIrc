@@ -306,9 +306,9 @@ int KviMPRISInterface::length()
 	return -1;
 }
 
-bool KviMPRISInterface::jumpTo(int &iPos)
+bool KviMPRISInterface::jumpTo(kvs_int_t &iPos)
 {
-	MPRIS_CALL_METHOD_WITH_ARG("PositionSet", QVariant(iPos), false)
+	MPRIS_CALL_METHOD_WITH_ARG("PositionSet", QVariant((int)iPos), false)
 	return true;
 }
 

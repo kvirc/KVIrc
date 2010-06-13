@@ -191,7 +191,7 @@ bool KviXmmsInterface::quit()
 	XMMS_SIMPLE_CALL("xmms_remote_quit")
 }
 
-bool KviXmmsInterface::jumpTo(int &iPos)
+bool KviXmmsInterface::jumpTo(kvs_int_t &iPos)
 {
 	void (*sym)(int,int) = (void (*)(int,int))lookupSymbol("xmms_remote_jump_to_time");
 	if(!sym)return false;

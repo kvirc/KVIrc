@@ -621,7 +621,7 @@ MP_KVS_COMMAND(amipExec)
 
 MP_KVS_COMMAND(jumpTo)
 {
-	int iPos;
+	kvs_int_t iPos;
 
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("position",KVS_PT_INT,0,iPos)
@@ -1168,7 +1168,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(channels,channels)
 
 MP_KVS_COMMAND(setPlayListPos)
 {
-	int iPos;
+	kvs_int_t iPos;
 
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("position",KVS_PT_INT,0,iPos)
@@ -1299,7 +1299,7 @@ MP_KVS_SIMPLE_BOOL_FUNCTION(getShuffle,getShuffle)
 
 MP_KVS_FUNCTION(getEqData)
 {
-	int iValue;
+	kvs_int_t iValue;
 	QString szOptions;
 
 	KVSM_PARAMETERS_BEGIN(c)
@@ -1346,8 +1346,8 @@ MP_KVS_FUNCTION(getEqData)
 
 MP_KVS_COMMAND(setEqData)
 {
-	int iPos;
-	int iValue;
+	kvs_int_t iPos;
+	kvs_int_t iValue;
 
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("item",KVS_PT_INT,0,iPos)

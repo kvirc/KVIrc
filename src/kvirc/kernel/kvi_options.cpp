@@ -642,8 +642,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("IdentdOutputMode",KviIdentdOutputMode::Quiet,KviOption_sectFlagConnection),
 	UINT_OPTION("ScaleAvatarsOnLoadHeight",640,KviOption_sectFlagAvatar),
 	UINT_OPTION("ScaleAvatarsOnLoadWidth",480,KviOption_sectFlagAvatar),
-	UINT_OPTION("NotifierActiveTransparency",90,KviOption_sectFlagNotifier | KviOption_groupTheme),
-	UINT_OPTION("NotifierInactiveTransparency",60,KviOption_sectFlagNotifier | KviOption_groupTheme),
+	UINT_OPTION("NotifierActiveTransparency",100,KviOption_sectFlagNotifier | KviOption_groupTheme),
+	UINT_OPTION("NotifierInactiveTransparency",80,KviOption_sectFlagNotifier | KviOption_groupTheme), // this may be cool but it confuses the user
 	UINT_OPTION("IrcViewMarkerStyle",0,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	UINT_OPTION("IrcViewMarkerSize",1,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	UINT_OPTION("UrlMouseClickNum",2,KviOption_sectFlagUrl),

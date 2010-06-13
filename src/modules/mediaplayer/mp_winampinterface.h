@@ -58,10 +58,10 @@
 		virtual bool show();
 		virtual bool minimize();
 		virtual int getPlayListPos();
-		virtual bool setPlayListPos(int &iPos);
+		virtual bool setPlayListPos(kvs_int_t &iPos);
 		virtual int getListLength();
-		virtual int getEqData(int &ival);
-		virtual bool setEqData(int &iPos, int &iVal);
+		virtual int getEqData(kvs_int_t &ival);
+		virtual bool setEqData(kvs_int_t &iPos, kvs_int_t &iVal);
 		virtual bool getRepeat();
 		virtual bool getShuffle();
 		virtual bool setRepeat(bool &bVal);

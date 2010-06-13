@@ -177,7 +177,7 @@ bool KviMediaPlayerInterface::mute()
 	return false;
 }
 
-bool KviMediaPlayerInterface::jumpTo(int &)
+bool KviMediaPlayerInterface::jumpTo(kvs_int_t &)
 {
 	notImplemented();
 	return false;
@@ -213,7 +213,7 @@ int KviMediaPlayerInterface::getPlayListPos()
 	return -1;
 }
 
-bool KviMediaPlayerInterface::setPlayListPos(int &)
+bool KviMediaPlayerInterface::setPlayListPos(kvs_int_t &)
 {
 	notImplemented();
 	return false;
@@ -225,13 +225,13 @@ int KviMediaPlayerInterface::getListLength()
 	return -1;
 }
 
-int KviMediaPlayerInterface::getEqData(int &)
+int KviMediaPlayerInterface::getEqData(kvs_int_t &)
 {
 	notImplemented();
 	return -1;
 }
 
-bool KviMediaPlayerInterface::setEqData(int &, int &)
+bool KviMediaPlayerInterface::setEqData(kvs_int_t &, kvs_int_t &)
 {
 	notImplemented();
 	return false;
