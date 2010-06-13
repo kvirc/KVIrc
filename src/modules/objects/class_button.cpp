@@ -116,15 +116,20 @@ KVSO_CLASS_FUNCTION(button,setText)
 KVSO_CLASS_FUNCTION(button,setImage)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsVariant icon;
+	KviKvsVariant * pIcon;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("icon_or_hobject",KVS_PT_VARIANT,0,icon)
+		KVSO_PARAMETER("icon_or_hobject",KVS_PT_VARIANT,0,pIcon)
 	KVSO_PARAMETERS_END(c)
-	if(icon.isHObject())
+	if(!pIcon)
+	{
+		c->warning(__tr2qs_ctx("Image parameter missing","object"));
+		return true;
+	}
+	if(pIcon->isHObject())
 	{
 		kvs_hobject_t hObj;
-		icon.asHObject(hObj);
-		KviKvsObject *pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
+		pIcon->asHObject(hObj);
+		KviKvsObject *pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObj);
 		if (!pObject)
 		{
 			c->warning(__tr2qs_ctx("Pixmap parameter is not an object!","objects"));
@@ -132,13 +137,12 @@ KVSO_CLASS_FUNCTION(button,setImage)
 		}
 		if(pObject->inheritsClass("pixmap"))
 			((QPushButton *)widget())->setIcon(QIcon(*((KviKvsObject_pixmap *)pObject)->getPixmap()));
-		else{
+		else
 			c->warning(__tr2qs_ctx("Object Pixmap required!","object"));
-		}
 		return true;
 	}
 	QString szIcon;
-	icon.asString(szIcon);
+	pIcon->asString(szIcon);
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
 	if(pix)	((QPushButton *)widget())->setIcon(*pix);
 	else((QPushButton *)widget())->setIcon(QIcon());
