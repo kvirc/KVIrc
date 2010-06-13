@@ -694,6 +694,8 @@ KviIdentityProfileOptionsWidget::KviIdentityProfileOptionsWidget(QWidget * pPare
 : KviOptionsWidget(pParent)
 {
 	setObjectName("identity_profiles_option_widget");
+	m_pEditor = 0;
+	m_iCurrentEditedProfile = -1;
 
 	createLayout();
 	QGridLayout * pLayout = layout();
@@ -782,9 +784,13 @@ void KviIdentityProfileOptionsWidget::toggleControls()
 void KviIdentityProfileOptionsWidget::addProfileEntry()
 {
 	KviIdentityProfile profile;
-	KviIdentityProfileEditor editor(this);
+	m_iCurrentEditedProfile = -1;
 
-	if(editor.editProfile(&profile))
+	if(m_pEditor)
+		delete m_pEditor;
+	m_pEditor = new KviIdentityProfileEditor(this);
+
+	if(m_pEditor->editProfile(&profile))
 	{
 		QTreeWidgetItem * pItem = new QTreeWidgetItem(m_pTreeWidget);
 		pItem->setText(0,profile.name());
@@ -811,8 +817,12 @@ void KviIdentityProfileOptionsWidget::editProfileEntry()
 	profile.setUserName(pItem->text(4));
 	profile.setRealName(pItem->text(5));
 
-	KviIdentityProfileEditor editor(this);
-	if(editor.editProfile(&profile))
+	m_iCurrentEditedProfile=m_pTreeWidget->indexOfTopLevelItem(pItem);
+
+	if(m_pEditor)
+		delete m_pEditor;
+	m_pEditor = new KviIdentityProfileEditor(this);
+	if(m_pEditor->editProfile(&profile))
 	{
 		pItem->setText(0,profile.name());
 		pItem->setText(1,profile.network());
@@ -821,6 +831,20 @@ void KviIdentityProfileOptionsWidget::editProfileEntry()
 		pItem->setText(4,profile.userName());
 		pItem->setText(5,profile.realName());
 	}
+}
+
+void KviIdentityProfileOptionsWidget::editProfileOkPressed()
+{
+	for(int i=0; i < m_pTreeWidget->topLevelItemCount(); i++)
+	{
+		if(m_pEditor->m_pNameEdit->text() == m_pTreeWidget->topLevelItem(i)->text(0) && i!=m_iCurrentEditedProfile)
+		{
+			QMessageBox::warning(this,__tr2qs_ctx("Invalid Profile Rule","options"),__tr2qs_ctx("There is already a profile with that name","options"),__tr2qs_ctx("OK","options"));
+			return;
+		}
+	}
+
+	m_pEditor->accept();
 }
 
 void KviIdentityProfileOptionsWidget::delProfileEntry()
@@ -932,7 +956,7 @@ KviIdentityProfileEditor::KviIdentityProfileEditor(QWidget * pParent)
 
 	m_pBtnOk = new QPushButton(__tr2qs_ctx("OK","options"),pBox);
 	m_pBtnOk->setEnabled(false);
-	connect(m_pBtnOk,SIGNAL(clicked()),this,SLOT(okPressed()));
+	connect(m_pBtnOk,SIGNAL(clicked()),pParent,SLOT(editProfileOkPressed()));
 
 	pLayout->setColumnStretch(1,1);
 
@@ -986,19 +1010,6 @@ void KviIdentityProfileEditor::toggleButton(const QString & szText)
 		bEnabled = false;
 
 	m_pBtnOk->setEnabled(bEnabled);
-}
-
-void KviIdentityProfileEditor::okPressed()
-{
-	KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();
-
-	if(pSet->findName(m_pNameEdit->text()))
-	{
-		QMessageBox::warning(this,__tr2qs_ctx("Invalid Profile Rule","options"),__tr2qs_ctx("There is already a profile with that name","options"),__tr2qs_ctx("OK","options"));
-		return;
-	}
-
-	accept();
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

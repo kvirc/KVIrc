@@ -129,7 +129,6 @@ public:
 	bool editProfile(KviIdentityProfile * pProfile);
 protected slots:
 	void toggleButton(const QString & szText);
-	void okPressed();
 };
 
 
@@ -236,11 +235,13 @@ public:
 	KviIdentityProfileOptionsWidget(QWidget * pParent);
 	~KviIdentityProfileOptionsWidget();
 protected:
-	QTreeWidget * m_pTreeWidget;
-	QCheckBox        * m_pProfilesCheck;
-	QPushButton      * m_pBtnAddProfile;
-	QPushButton      * m_pBtnEditProfile;
-	QPushButton      * m_pBtnDelProfile;
+	QTreeWidget              * m_pTreeWidget;
+	QCheckBox                * m_pProfilesCheck;
+	QPushButton              * m_pBtnAddProfile;
+	QPushButton              * m_pBtnEditProfile;
+	QPushButton              * m_pBtnDelProfile;
+	KviIdentityProfileEditor * m_pEditor;
+	int                        m_iCurrentEditedProfile;
 public:
 	virtual void commit();
 protected slots:
@@ -248,6 +249,7 @@ protected slots:
 	void addProfileEntry();
 	void editProfileEntry();
 	void delProfileEntry();
+	void editProfileOkPressed();
 };
 
 #endif //_OPTW_IDENTITY_H_
