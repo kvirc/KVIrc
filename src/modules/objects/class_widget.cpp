@@ -1753,7 +1753,7 @@ KVSO_CLASS_FUNCTION(widget,addWidgetToWrappedLayout)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject *ob;
-	kvs_int_t uCol,uRow;
+	kvs_uint_t uCol,uRow;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)

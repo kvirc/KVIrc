@@ -990,7 +990,7 @@ bool KviKvsObject::function_emit(KviKvsObjectFunctionCall * c)
 
 bool KviKvsObject::function_startTimer(KviKvsObjectFunctionCall * c)
 {
-	kvs_int_t timeout;
+	kvs_uint_t timeout;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("timeout",KVS_PT_UINT,0,timeout)
 	KVSO_PARAMETERS_END(c)

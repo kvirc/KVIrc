@@ -215,7 +215,7 @@ KVSO_CLASS_FUNCTION(listwidget,setFlags)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QStringList itemflags;
-	kvs_int_t iIdx;
+	kvs_uint_t iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
 	    KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIdx)
 	    KVSO_PARAMETER("flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,itemflags)
@@ -248,7 +248,7 @@ KVSO_CLASS_FUNCTION(listwidget,setFlags)
 KVSO_CLASS_FUNCTION(listwidget,setChecked)
 {
 	bool bChecked;
-	kvs_int_t iIdx;
+	kvs_uint_t iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIdx)
 		KVSO_PARAMETER("bChecked",KVS_PT_BOOL,0,bChecked)
@@ -261,7 +261,7 @@ KVSO_CLASS_FUNCTION(listwidget,setChecked)
 
 KVSO_CLASS_FUNCTION(listwidget,isChecked)
 {
-	kvs_int_t iIdx;
+	kvs_uint_t iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIdx)
 	KVSO_PARAMETERS_END(c)
@@ -313,7 +313,7 @@ KVSO_CLASS_FUNCTION(listwidget,clear)
 KVSO_CLASS_FUNCTION(listwidget,changeItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iIndex,cnt;
+	kvs_uint_t iIndex,cnt;
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)

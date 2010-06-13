@@ -37,70 +37,103 @@ class QString;
 
 // Data type: QString
 // Default: QString()
-#define KVS_PT_STRING 0
-
-// Data type: QString
-// Default: QString()
-#define KVS_PT_NONEMPTYSTRING 1
+enum KviKvsParameterTypeQString
+{
+	KVS_PT_STRING = 0,
+	KVS_PT_NONEMPTYSTRING = 1
+};
 
 // Data type: kvs_int_t
 // Default: 0
-#define KVS_PT_INT 2
-	#define KVS_PT_INTEGER 2
+enum KviKvsParameterTypeKvsIntT
+{
+	KVS_PT_INT = 2,
+	KVS_PT_INTEGER = 2
+};
 
 // Data type: kvs_uint_t
 // Default: 0
-#define KVS_PT_UINT 3
-	#define KVS_PT_UNSIGNEDINTEGER 3
+enum KviKvsParameterTypeKvsUIntT
+{
+	KVS_PT_UINT = 3,
+	KVS_PT_UNSIGNEDINTEGER = 3
+};
 
 // Data type: kvs_real_t
 // default: 0.0
-#define KVS_PT_DOUBLE 4
-	#define KVS_PT_REAL 4
+enum KviKvsParameterTypeKvsRealT
+{
+	KVS_PT_DOUBLE = 4,
+	KVS_PT_REAL = 4
+};
 
 // Data type: bool
 // default: false
-#define KVS_PT_BOOL 5
-	#define KVS_PT_BOOLEAN 5
+enum KviKvsParameterTypeBool
+{
+	KVS_PT_BOOL = 5,
+	KVS_PT_BOOLEAN = 5
+};
 
 // Data type: KviKvsHash *
 // default: 0
-#define KVS_PT_HASH 6
+enum KviKvsParameterTypeKviKvsHashPointer
+{
+	KVS_PT_HASH = 6
+};
 
 // Data type: KviKvsArrayCast
 // default empty cast
-#define KVS_PT_ARRAYCAST 7
+enum KviKvsParameterTypeKviKvsArrayCast
+{
+	KVS_PT_ARRAYCAST = 7
+};
 
 // Data type: KviKvsVariant *
 // default: 0
-#define KVS_PT_VARIANT 8
+enum KviKvsParameterTypeKviKvsVariantPointer
+{
+	KVS_PT_VARIANT = 8
+};
 
 // Data type: QByteArray
 // default null string (0)
-#define KVS_PT_CSTRING 9
-
-// Data type: QByteArray
-// default null string (0)
-#define KVS_PT_NONEMPTYCSTRING 10
+enum KviKvsParameterTypeQByteArray
+{
+	KVS_PT_CSTRING = 9,
+	KVS_PT_NONEMPTYCSTRING = 10
+};
 
 // Data type: QStringList
 // default: list cleared
 // This eats all the remaining params in the list!
-#define KVS_PT_STRINGLIST 11
+enum KviKvsParameterTypeQStringList
+{
+	KVS_PT_STRINGLIST = 11
+};
 
 // Data type: KviKvsVariantList
 // default: list cleared
 // This eats all the remaining params in the list!
-// The list has autodelete set to off since the copies are SHALLOW!
-#define KVS_PT_VARIANTLIST 12
+// The list has autodelete set to off since the copies are SHALLOW (as opposed to deep)!
+enum KviKvsParameterTypeKviKvsVariantList
+{
+	KVS_PT_VARIANTLIST = 12
+};
 
 // Data type: kvs_hobject_t
 // default: (kvs_hobject_t)0
-#define KVS_PT_HOBJECT 13
+enum KviKvsParameterTypeKvsHObjectT
+{
+	KVS_PT_HOBJECT = 13
+};
 
 // Data type: KviKvsArray *
 // default 0
-#define KVS_PT_ARRAY 14
+enum KviKvsParameterTypeKviKvsArrayPointer
+{
+	KVS_PT_ARRAY = 14
+};
 
 // Data type: ignored
 #define KVS_PT_IGNORE 15
@@ -120,61 +153,61 @@ namespace KviKvsParameterProcessor
 	{
 	public:
 		const char          * szName;
-		const unsigned char   uType;
-		const unsigned char   uFlags;
+		unsigned char         uType;
+		unsigned char         uFlags;
 		void                * pContainer;
 	public:
 		// KVS_PT_STRING, KVS_PT_NONEMPTYSTRING
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,QString &szBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&szBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeQString type,unsigned char flags,QString &szBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&szBuffer)) {};
 
 		// KVS_PT_INTEGER (KVS_PT_INT)
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,kvs_int_t &iBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&iBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeKvsIntT type,unsigned char flags,kvs_int_t &iBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&iBuffer)) {};
 
 		// KVS_PT_UNSIGNEDINTEGER (KVS_PT_UINT)
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,kvs_uint_t &uBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&uBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeKvsUIntT type,unsigned char flags,kvs_uint_t &uBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&uBuffer)) {};
 
 		// KVS_PT_DOUBLE (KVS_PT_REAL)
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,kvs_real_t &dBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&dBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeKvsRealT type,unsigned char flags,kvs_real_t &dBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&dBuffer)) {};
 
 		// KVS_PT_BOOL (KVS_PT_BOOLEAN)
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,bool &bBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&bBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeBool type,unsigned char flags,bool &bBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&bBuffer)) {};
 
 		// KVS_PT_HASH
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,KviKvsHash * &pBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&pBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeKviKvsHashPointer type,unsigned char flags,KviKvsHash * &pBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&pBuffer)) {};
 
 		// KVS_PT_ARRAYCAST
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,KviKvsArrayCast &oBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&oBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeKviKvsArrayCast type,unsigned char flags,KviKvsArrayCast &oBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&oBuffer)) {};
 
 		// KVS_PT_VARIANT
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,KviKvsVariant * &pBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&pBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeKviKvsVariantPointer type,unsigned char flags,KviKvsVariant * &pBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&pBuffer)) {};
 
 		// KVS_PT_CSTRING, KVS_PT_NONEMPTYCSTRING
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,QByteArray &szBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&szBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeQByteArray type,unsigned char flags,QByteArray &szBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&szBuffer)) {};
 
 		// KVS_PT_STRINGLIST
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,QStringList &lBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&lBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeQStringList type,unsigned char flags,QStringList &lBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&lBuffer)) {};
 
 		// KVS_PT_VARIANTLIST
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,KviKvsVariantList &lBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&lBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeKviKvsVariantList type,unsigned char flags,KviKvsVariantList &lBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&lBuffer)) {};
 
 		// KVS_PT_HOBJECT
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,kvs_hobject_t &hBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&hBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeKvsHObjectT type,unsigned char flags,kvs_hobject_t &hBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&hBuffer)) {};
 
 		// KVS_PT_ARRAY
-		ParameterFormat(const char * name,const unsigned char type,const unsigned char flags,KviKvsArray * &pBuffer)
-			: szName(name), uType(type), uFlags(flags), pContainer((void *)(&pBuffer)) {};
+		ParameterFormat(const char * name,KviKvsParameterTypeKviKvsArrayPointer type,unsigned char flags,KviKvsArray * &pBuffer)
+			: szName(name), uType((unsigned char)type), uFlags(flags), pContainer((void *)(&pBuffer)) {};
 
 		// KVS_PT_IGNORE
 		ParameterFormat(const char * name)
@@ -184,7 +217,7 @@ namespace KviKvsParameterProcessor
 		ParameterFormat()
 			: szName(NULL), uType(KVS_PT_IGNORE), uFlags(0), pContainer(NULL) {};
 
-		//ParameterFormat(const char * n,const unsigned char t,const unsigned char f,void * p)
+		//ParameterFormat(const char * n,unsigned char t,unsigned char f,void * p)
 		//: szName(n), uType(t), uFlags(f), pContainer(p) {};
 	};
 

@@ -197,7 +197,7 @@ static bool spaste_kvs_cmd_clipboard(KviKvsModuleCommandCall * c)
 
 static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 {
-	kvs_int_t iId=0;
+	kvs_uint_t iId=0;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("delay",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,iId)
 	KVSM_PARAMETERS_END(c)

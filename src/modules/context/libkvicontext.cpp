@@ -40,7 +40,7 @@
 #include "kvi_ircconnectiontarget.h"
 
 #define GET_CONSOLE_FROM_STANDARD_PARAMS \
-	kvs_int_t iContextId; \
+	kvs_uint_t iContextId; \
 	KVSM_PARAMETERS_BEGIN(c) \
 		KVSM_PARAMETER("irc_context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,iContextId) \
 	KVSM_PARAMETERS_END(c) \

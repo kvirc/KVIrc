@@ -388,7 +388,7 @@ KVSO_CLASS_FUNCTION(treewidget,setColumnText)
 */
 KVSO_CLASS_FUNCTION(treewidget,setColumnCount)
 {
-	kvs_int_t uCol;
+	kvs_uint_t uCol;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
 	KVSO_PARAMETERS_END(c)

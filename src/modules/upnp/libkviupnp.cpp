@@ -149,6 +149,7 @@ static bool upnp_kvs_cmd_addPortMapping(KviKvsModuleCommandCall * c)
 static bool upnp_kvs_cmd_delPortMapping(KviKvsModuleCommandCall * c)
 {
 	kvs_int_t iPort;
+	QString tmp;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("port",KVS_PT_INT,0,iPort)
 	KVSM_PARAMETERS_END(c)

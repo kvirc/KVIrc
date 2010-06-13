@@ -22,6 +22,8 @@
 //
 //=============================================================================
 
+// FIXME: Indentation in this file sux :D
+
 #include "kvi_debug.h"
 #include "kvi_app.h"
 #include "kvi_locale.h"
@@ -189,7 +191,7 @@ KVSO_CLASS_FUNCTION(tablewidget,clear)
 KVSO_CLASS_FUNCTION(tablewidget,setText)
 {
             CHECK_INTERNAL_POINTER(widget())
-            kvs_int_t iCol,iRow;
+            kvs_uint_t iCol,iRow;
             QString szText;
             KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
@@ -210,7 +212,8 @@ KVSO_CLASS_FUNCTION(tablewidget,setText)
 KVSO_CLASS_FUNCTION(tablewidget,setNumber)
 {
 	    CHECK_INTERNAL_POINTER(widget())
-	    kvs_int_t iCol,iRow,iNumber;
+	    kvs_uint_t iCol,iRow;
+			kvs_int_t iNumber;
 	    QString szText;
 	    KVSO_PARAMETERS_BEGIN(c)
 			KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
@@ -230,7 +233,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setNumber)
 }
 KVSO_CLASS_FUNCTION(tablewidget,setIcon)
 {
-            kvs_int_t iCol,iRow;
+            kvs_uint_t iCol,iRow;
             KviKvsObject *obPixmap;
             kvs_hobject_t obHpixmap;
             KviKvsVariant * vPixmap;
@@ -272,7 +275,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setIcon)
 KVSO_CLASS_FUNCTION(tablewidget,text)
 {
             CHECK_INTERNAL_POINTER(widget())
-            kvs_int_t iCol,iRow;
+            kvs_uint_t iCol,iRow;
             KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
                         KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
@@ -285,7 +288,7 @@ KVSO_CLASS_FUNCTION(tablewidget,text)
 KVSO_CLASS_FUNCTION(tablewidget,setRowCount)
 {
             CHECK_INTERNAL_POINTER(widget())
-            kvs_int_t iRow;
+            kvs_uint_t iRow;
             KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
             KVSO_PARAMETERS_END(c)
@@ -319,7 +322,7 @@ KVSO_CLASS_FUNCTION(tablewidget,columnCount)
 KVSO_CLASS_FUNCTION(tablewidget,itemRowColAt)
 {
         CHECK_INTERNAL_POINTER(widget())
-        kvs_int_t uX,uY;
+        kvs_uint_t uX,uY;
         KVSO_PARAMETERS_BEGIN(c)
                 KVSO_PARAMETER("uX",KVS_PT_UNSIGNEDINTEGER,0,uX)
                 KVSO_PARAMETER("uY",KVS_PT_UNSIGNEDINTEGER,0,uY)
@@ -336,7 +339,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setToolTip)
 {
         CHECK_INTERNAL_POINTER(widget())
         QString szTooltip;
-        kvs_int_t uX,uY;
+        kvs_uint_t uX,uY;
         KVSO_PARAMETERS_BEGIN(c)
                 KVSO_PARAMETER("uX",KVS_PT_UNSIGNEDINTEGER,0,uX)
                 KVSO_PARAMETER("uY",KVS_PT_UNSIGNEDINTEGER,0,uY)
@@ -348,7 +351,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setToolTip)
 KVSO_CLASS_FUNCTION(tablewidget,setColumnCount)
 {
             CHECK_INTERNAL_POINTER(widget())
-            kvs_int_t iCol;
+            kvs_uint_t iCol;
             KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
             KVSO_PARAMETERS_END(c)
@@ -359,7 +362,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setColumnCount)
 KVSO_CLASS_FUNCTION(tablewidget,hideColumn)
 {
             CHECK_INTERNAL_POINTER(widget())
-            kvs_int_t iCol;
+            kvs_uint_t iCol;
             KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
             KVSO_PARAMETERS_END(c)
@@ -369,7 +372,7 @@ KVSO_CLASS_FUNCTION(tablewidget,hideColumn)
 KVSO_CLASS_FUNCTION(tablewidget,showColumn)
 {
             CHECK_INTERNAL_POINTER(widget())
-            kvs_int_t iCol;
+            kvs_uint_t iCol;
             KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
             KVSO_PARAMETERS_END(c)
@@ -378,7 +381,7 @@ KVSO_CLASS_FUNCTION(tablewidget,showColumn)
 }KVSO_CLASS_FUNCTION(tablewidget,hideRow)
 {
             CHECK_INTERNAL_POINTER(widget())
-            kvs_int_t iRow;
+            kvs_uint_t iRow;
             KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iRow)
             KVSO_PARAMETERS_END(c)
@@ -387,7 +390,7 @@ KVSO_CLASS_FUNCTION(tablewidget,showColumn)
 }KVSO_CLASS_FUNCTION(tablewidget,showRow)
 {
             CHECK_INTERNAL_POINTER(widget())
-            kvs_int_t iRow;
+            kvs_uint_t iRow;
             KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iRow)
             KVSO_PARAMETERS_END(c)
@@ -458,7 +461,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setCellWidget)
             CHECK_INTERNAL_POINTER(widget())
             KviKvsObject * pObject;
             kvs_hobject_t hObject;
-            kvs_int_t iRow,iCol;
+            kvs_uint_t iRow,iCol;
             KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
                         KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,iCol)
@@ -499,7 +502,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setItemFlags)
     CHECK_INTERNAL_POINTER(widget())
 
     QStringList itemflags;
-        kvs_int_t iRow,iCol;
+        kvs_uint_t iRow,iCol;
         KVSO_PARAMETERS_BEGIN(c)
                 KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
                 KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,iCol)

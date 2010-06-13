@@ -211,7 +211,7 @@ KVSO_CLASS_FUNCTION(tabwidget,insertTab)
 	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject *pObject;
 	QString szLabel,szIcon;
-	kvs_int_t iIndex;
+	kvs_uint_t iIndex;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("tab_widget",KVS_PT_HOBJECT,0,hObject)
@@ -232,7 +232,7 @@ KVSO_CLASS_FUNCTION(tabwidget,insertTab)
 KVSO_CLASS_FUNCTION(tabwidget,setCurrentPage)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iIndex;
+	kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
@@ -311,7 +311,7 @@ KVSO_CLASS_FUNCTION(tabwidget,currentPageIndex)
 KVSO_CLASS_FUNCTION(tabwidget,tabLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uIndex;
+	kvs_int_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_INT,0,uIndex)
 	KVSO_PARAMETERS_END(c)

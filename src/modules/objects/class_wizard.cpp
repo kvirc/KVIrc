@@ -155,7 +155,7 @@ KVSO_CLASS_FUNCTION(wizard,insertPage)
 
 	KviKvsObject *ob;
 	QString szLabel;
-	kvs_int_t uIndex;
+	kvs_uint_t uIndex;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("page_widget",KVS_PT_HOBJECT,0,hObject)
