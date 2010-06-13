@@ -286,6 +286,8 @@ bool KviIpEditor::eventFilter(QObject * o,QEvent *e)
 					return QFrame::eventFilter(o,e);
 				break;
 				default:
+					if(((QKeyEvent *)e)->text().size() < 1)
+						return false;
 					// a normal key (this part substitutes a QValidator)
 					const char c = tolower(((QKeyEvent *)e)->text().toAscii().at(0));
 					if(m_addrType == IPv4)
