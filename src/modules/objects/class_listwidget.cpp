@@ -126,23 +126,28 @@ const char * const itemflags_tbl[] = {
 		italic, bold, underline, overline, strikeout, fixedpitch  [br]
 		If you just want to set a style without altering the preset font size and family, you can use $setFont() like this:[br]
 		%widget->$setFont(0,0,"bold")
-		!fn: $itemEnteredEvent()
-		This function is called by KVIrc when the mouse cursor enters an item.
-		!fn: $selectionChangeEvent()
-                This function is called by KVIrc when the selection in the listbox changes.
-		!fn: $currentItemChangeEvent()
-		This function is called by KVIrc when the current item changes.
 		!fn: <index:integer> $onItemEvent()
 		This function is called by KVIrc when the current item pointed by the mouse changes and gives in $0 the item index.
 		!fn: <array:x,y,width,height> $itemRect(<item:index>)
 		Returns the rectangle on the screen that item occupies, or an invalid rectangle if item is 0 or is not currently visible.
+		!fn: $itemEnteredEvent()
+		This function is called by KVIrc when the mouse cursor enters an item.
+		!fn: $selectionChangedEvent()
+		This function is called by KVIrc when the selection in the listbox changes.
+		!fn: $currentItemChangedEvent()
+		This function is called by KVIrc when the current item changes.
+		!fn: $itemChangedEvent()
+		This function is called by KVIrc when the current data item changes (i.e. the user check a ckeckable item) .
 
 		@signals:
 		!sg: <string> $currentItemChanged()
-		This signal is emitted by the default implementation of [classfnc]$currentItemChangeEvent[/classfnc]().[br]
+		This signal is emitted by the default implementation of [classfnc]$currentItemChangedEvent[/classfnc]().[br]
+		!sg: <string> $itemChanged()
+		This signal is emitted by the default implementation of [classfnc]$itemChangedEvent[/classfnc]().[br]
 		!sg: <string> $itemEntered()
 		This signal is emitted by the default implementation of [classfnc]$itemEnteredEvent[/classfnc]().[br]
-
+		!sg: <string> $selectionChanged()
+		This signal is emitted by the default implementation of [classfnc]$selectionChangedEvent[/classfnc]().[br]
 		*/
 
 
@@ -172,12 +177,14 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listwidget,"listbox","widget")
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setSelectionMode);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,selectionMode);
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,currentItemChangeEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,itemEnteredEvent);
+
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setForeground);
 
-
-	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_listwidget,"selectionChangeEvent")
+	// events
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,currentItemChangedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,itemChangedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,itemEnteredEvent);
+	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_listwidget,"selectionChangedEvent")
 
 
 KVSO_END_REGISTERCLASS(KviKvsObject_listwidget)
@@ -198,6 +205,8 @@ bool KviKvsObject_listwidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	connect(obj,SIGNAL(itemSelectionChanged()),this,SLOT(selectionChanged()));
 	connect(obj,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentItemChanged(QListWidgetItem *,QListWidgetItem *)));
 	connect(obj,SIGNAL(itemEntered(QListWidgetItem *)),this,SLOT(slotItemEntered(QListWidgetItem *)));
+	connect(obj,SIGNAL(itemChanged(QListWidgetItem *)),this,SLOT(slotItemChanged(QListWidgetItem *)));
+
 	return true;
 }
 
@@ -614,9 +623,14 @@ KVSO_CLASS_FUNCTION(listwidget,itemRect)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listwidget,currentItemChangeEvent)
+KVSO_CLASS_FUNCTION(listwidget,currentItemChangedEvent)
 {
 	emitSignal("currentItemChanged",c,c->params());
+	return true;
+}
+KVSO_CLASS_FUNCTION(listwidget,itemChangedEvent)
+{
+	emitSignal("itemChanged",c,c->params());
 	return true;
 }
 
@@ -630,17 +644,17 @@ KVSO_CLASS_FUNCTION(listwidget,itemEnteredEvent)
 //slots
 void KviKvsObject_listwidget::currentItemChanged(QListWidgetItem *currentItem,QListWidgetItem *)
 {
-	if (!currentItem) callFunction(this,"currentItemChangeEvent",0,0);
+	if (!currentItem) callFunction(this,"currentItemChangedEvent",0,0);
 	else
 	{
 		KviKvsVariantList params(new KviKvsVariant(currentItem->text()));
-		callFunction(this,"currentItemChangeEvent",0,&params);
+		callFunction(this,"currentItemChangedEvent",0,&params);
 	}
 
 }
 void KviKvsObject_listwidget::selectionChanged()
 {
-	callFunction(this,"selectionChangeEvent",0,0);
+	callFunction(this,"selectionChangedEvent",0,0);
 }
 
 
@@ -650,6 +664,11 @@ void KviKvsObject_listwidget::slotItemEntered(QListWidgetItem *item)
 	callFunction(this,"itemEnteredEvent",0,&params);
 }
 
+void KviKvsObject_listwidget::slotItemChanged(QListWidgetItem *item)
+{
+	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)((QListWidget *)widget())->row(item)));
+	callFunction(this,"itemChangedEvent",0,&params);
+}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_listwidget.moc"

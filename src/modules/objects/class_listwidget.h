@@ -56,20 +56,25 @@ protected:
 	bool setSelected(KviKvsObjectFunctionCall *c);
 	bool setFlags(KviKvsObjectFunctionCall *c);
 	bool selectedItems(KviKvsObjectFunctionCall *c);
-
 	bool setForeground(KviKvsObjectFunctionCall *c);
 	bool setIcon(KviKvsObjectFunctionCall *c);
-	bool currentItemChangeEvent(KviKvsObjectFunctionCall *c);
-	bool itemEnteredEvent(KviKvsObjectFunctionCall *c);
 	bool setChecked(KviKvsObjectFunctionCall *c);
 	bool setFont(KviKvsObjectFunctionCall *c);
 	bool isChecked(KviKvsObjectFunctionCall *c);
 	bool itemAt(KviKvsObjectFunctionCall *c);
 	bool itemRect(KviKvsObjectFunctionCall *c);
+
+	// events
+	bool currentItemChangedEvent(KviKvsObjectFunctionCall *c);
+	bool itemChangedEvent(KviKvsObjectFunctionCall *c);
+	bool itemEnteredEvent(KviKvsObjectFunctionCall *c);
+
 protected slots:
 	void selectionChanged();
 	void currentItemChanged(QListWidgetItem *,QListWidgetItem *);
 	void slotItemEntered(QListWidgetItem *item);
+	void slotItemChanged(QListWidgetItem *item);
+
 };
 
 
