@@ -393,7 +393,6 @@ KVSO_CLASS_FUNCTION(tabwidget,removePage)
 		return true;
 	}
 	((QTabWidget *)widget())->removeTab(iIdx);
-	debug("rimuovo l'indice %d",iIdx);
 	tabsList.removeAt(iIdx);
 	return true;
 }
@@ -441,7 +440,7 @@ KVSO_CLASS_FUNCTION(tabwidget,setTabPosition)
 KVSO_CLASS_FUNCTION(tabwidget,currentChangedEvent)
 {
 
-	emitSignal("valueChanged",c,c->params());
+	emitSignal("currentChanged",c,c->params());
 	return true;
 }
 

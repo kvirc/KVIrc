@@ -100,6 +100,10 @@ const char * const itemflags_tbl[] = {
 		- userCheckable : item is checkable;
 		- enabled :item is enabled;
 		- tristate : item is checkable with three separate states.
+		!fn: $setChecked(<checkstate:bool>)
+		Sets the eventual item check box 'checked state' to <bool>.
+		!fn: <bool> $isChecked()
+		Returns '1' if the eventual item check box is checked, '0' otherwise.[br]
 		!fn: <string> $selectionMode()
 		Returns the current selection mode
 		!fn: $insertItem(<text:string>, <index:uint>)
