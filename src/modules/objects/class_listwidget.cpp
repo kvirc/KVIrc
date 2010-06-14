@@ -27,6 +27,8 @@
 #include "kvi_debug.h"
 #include "class_list.h"
 #include "class_listwidget.h"
+#include "class_pixmap.h"
+#include "kvi_iconmanager.h"
 #include <QListWidget>
 
 const int item_flags[] = {
@@ -162,6 +164,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listwidget,"listbox","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setSelected);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,isSelected);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setFont);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setIcon);
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setFlags)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setChecked);
@@ -171,6 +174,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listwidget,"listbox","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,selectionMode);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,currentItemChangeEvent);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,itemEnteredEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setForeground);
 
 
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_listwidget,"selectionChangeEvent")
@@ -301,6 +305,105 @@ KVSO_CLASS_FUNCTION(listwidget,setFont)
 		else c->warning(__tr2qs_ctx("Unknown style '%Q'","objects"),&szStyle);
 	}
 	pItem->setFont(font);
+	return true;
+}
+KVSO_CLASS_FUNCTION(listwidget,setIcon)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t uIdx;
+	KviKvsObject *obPixmap;
+	kvs_hobject_t obHpixmap;
+	KviKvsVariant * vPixmap;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uIdx)
+		KVSO_PARAMETER("pixmap",KVS_PT_VARIANT,0,vPixmap)
+	KVSO_PARAMETERS_END(c)
+	QListWidgetItem *pItem=((QListWidget *)widget())->item(uIdx);
+	if(!pItem) return true;
+
+	QPixmap *pix = 0;
+	if (vPixmap->isEmpty()) {pItem->setIcon(QIcon());return true;}
+	if(vPixmap->isHObject())
+	{
+		vPixmap->asHObject(obHpixmap);
+		obPixmap=KviKvsKernel::instance()->objectController()->lookupObject(obHpixmap);
+		if (!obPixmap->inheritsClass("pixmap"))
+		{
+			c->warning(__tr2qs_ctx("Pixmap object or image Id required","objects"));
+			return true;
+		}
+		pix=((KviKvsObject_pixmap *)obPixmap)->getPixmap();
+	} else {
+		QString szPix;
+		vPixmap->asString(szPix);
+		pix=g_pIconManager->getImage(szPix);
+		if(!pix)
+		{
+			c->warning(__tr2qs_ctx("Error occured: the suitable file '%Q' is not of the correct format or it is not a valid icon number.","objects"),&szPix);
+			return true;
+		}
+	}
+	if(pix){
+		pItem->setIcon(*pix);
+	}
+	else{
+		pItem->setIcon(QIcon());
+	}
+	return true;
+}
+KVSO_CLASS_FUNCTION(listwidget,setForeground)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_int_t iCol1,iCol2,iCol3,iOpacity,iIdx;
+	QString szColorMode,szColor;
+	KviKvsVariant *var1,*var2,*var3;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("index",KVS_PT_INTEGER,0,iIdx)
+		KVSO_PARAMETER("Color_1_Or_Colorname",KVS_PT_VARIANT,0,var1)
+		KVSO_PARAMETER("Color_2",KVS_PT_VARIANT,KVS_PF_OPTIONAL,var2)
+		KVSO_PARAMETER("Colo3_3",KVS_PT_VARIANT,KVS_PF_OPTIONAL,var3)
+		KVSO_PARAMETER("color_mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szColorMode)
+		KVSO_PARAMETER("opacity",KVS_PT_INT,KVS_PF_OPTIONAL,iOpacity)
+	KVSO_PARAMETERS_END(c)
+	QListWidgetItem *pItem=((QListWidget *)widget())->item(iIdx);
+	if(!pItem) return true;
+	QColor col;
+	if (!var1->asInteger(iCol1))
+	{
+		var1->asString(szColor);
+		if (c->paramCount()<3) iOpacity=255;
+		else
+		{
+			if (!var2->asInteger(iOpacity))
+			{
+				c->warning(__tr2qs_ctx("The opacity parameter didn't evaluate to integer","objects"));
+				return true;
+			}
+		}
+		col.setNamedColor(szColor);
+		col.setAlpha(iOpacity);
+	}
+	else
+	{
+		if(c->paramCount()<4)
+		{
+			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
+			return true;
+		}
+		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
+		{
+			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
+			return true;
+		}
+		if (c->paramCount()<5) iOpacity=255;
+		if(KviQString::equalCI(szColorMode, "HSV"))
+		col.setHsv(iCol1,iCol2,iCol3,iOpacity);
+		else
+		col.setRgb(iCol1,iCol2,iCol3,iOpacity);
+	}
+	QBrush brush=pItem->foreground();
+	brush.setColor(col);
+	pItem->setForeground(brush);
 	return true;
 }
 KVSO_CLASS_FUNCTION(listwidget,clear)

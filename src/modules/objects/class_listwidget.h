@@ -56,6 +56,9 @@ protected:
 	bool setSelected(KviKvsObjectFunctionCall *c);
 	bool setFlags(KviKvsObjectFunctionCall *c);
 	bool selectedItems(KviKvsObjectFunctionCall *c);
+
+	bool setForeground(KviKvsObjectFunctionCall *c);
+	bool setIcon(KviKvsObjectFunctionCall *c);
 	bool currentItemChangeEvent(KviKvsObjectFunctionCall *c);
 	bool itemEnteredEvent(KviKvsObjectFunctionCall *c);
 	bool setChecked(KviKvsObjectFunctionCall *c);

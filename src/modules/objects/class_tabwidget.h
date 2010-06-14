@@ -37,6 +37,7 @@ public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	QList<kvs_hobject_t> tabsList;
 
 	bool addTab(KviKvsObjectFunctionCall *c);
 	bool insertTab(KviKvsObjectFunctionCall *c);
@@ -49,12 +50,18 @@ protected:
 	bool currentTabLabel(KviKvsObjectFunctionCall *c);
 	bool count(KviKvsObjectFunctionCall *c);
 	bool changeTab(KviKvsObjectFunctionCall *c);
-	bool currentChangedEvent(KviKvsObjectFunctionCall *c);
 	bool removePage(KviKvsObjectFunctionCall *c);
 	bool setTabPosition(KviKvsObjectFunctionCall *c);
+	bool setTabsClosable(KviKvsObjectFunctionCall *c);
+	bool widgetAt(KviKvsObjectFunctionCall *c);
+
+	// events
+	bool currentChangedEvent(KviKvsObjectFunctionCall *c);
+	bool tabCloseRequestEvent(KviKvsObjectFunctionCall *c);
 
 protected slots:
 	void slotCurrentChanged(int);
+	void slotTabCloseRequest(int);
 };
 
 #endif	//!_CLASS_TABWIDGET_H_

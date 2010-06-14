@@ -70,6 +70,8 @@
 		Returns the current page index.
 		!fn: <string> $tabLabel(<index:uinteger>)
 		Returns the tab label of the <index>.
+		!fn: <hobject> $widgetAt(<index:integer>)
+		Returns the tab widget of the <index> or 0 if index is out of the tabs count.
 		!fn: <string> $currentTabLabel()
 		Returns the label of the current tab.
 		!fn: $removePage(<tab_widget:object>)
@@ -77,10 +79,17 @@
 		!fn: $setTabPosition(<tab_position:string>)
 		Sets TabPosition. Valid parameters are : Top, Bottom.
 		!fn: <integer> $count()
-		This property holds the number of tabs in the tab bar.
+		Returns the number of tabs in the tab bar.
+		!fn: $setTabsClosable(<enable:bool>)
+		Sets whether close buttons are automatically added to each tab
 		!fn: $currentChangedEvent()
 		This function is invoched when the current tab was changed.[br]
 		The default implementation emits the [classfnc]$currentChange[/classfnc]() signal.
+		!fn: $tabCloseRequestEvent()
+		This function is invoched when when the close button on a tab is clicked.
+		The index is the index of the tab that should be removed.[br]
+		The default implementation emits the [classfnc]$tabCloseRequest[/classfnc]() signal.
+		See also [classfnc]$setTabsClosable[/classfnc]().
 	@examples:
 		[example]
 			# First we'll create the main tabwidget.
@@ -140,9 +149,11 @@
 			%Tabwidget->$show()
 		[/example]
 	@signals:
-		!sg: $currentChange()
+		!sg: $currentChange(<index:integer>)
 		This signal is emitted by the default implementation of [classfnc]$currentChangedEvent[/classfnc]().[br]
 		If you reimplement that function you will have to emit the signal manually (if you still need it).[br]
+		!sg: $tabCloseRequest(<index:integer>)
+		This signal is emitted by the default implementation of [classfnc]tabCloseRequestEvent[/classfnc]().[br]
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tabwidget,"tabwidget","widget")
@@ -160,10 +171,13 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tabwidget,"tabwidget","widget")
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,count)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,removePage)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,widgetAt)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,setTabPosition)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,setTabsClosable)
 
 	// events
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,currentChangedEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,tabCloseRequestEvent)
 
 
 
@@ -175,15 +189,28 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_tabwidget)
 
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_tabwidget)
-
+tabsList.clear();;
 KVSO_END_CONSTRUCTOR(KviKvsObject_tabwidget)
 
 bool KviKvsObject_tabwidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QTabWidget)
 	connect(widget(),SIGNAL(currentChanged(int)),this,SLOT(slotCurrentChanged(int)));
+	connect(widget(),SIGNAL(tabCloseRequested(int)),this,SLOT(slotTabCloseRequest(int)));
+
 	return true;
 }
+KVSO_CLASS_FUNCTION(tabwidget,setTabsClosable)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	bool bClosable;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("bool_flag",KVS_PT_BOOLEAN,0,bClosable)
+	KVSO_PARAMETERS_END(c)
+	((QTabWidget *)widget())->setTabsClosable(bClosable);
+	return true;
+}
+
 KVSO_CLASS_FUNCTION(tabwidget,addTab)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -198,11 +225,22 @@ KVSO_CLASS_FUNCTION(tabwidget,addTab)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
-
 	if(pix){
 		((QTabWidget *)widget())->addTab(((QWidget *)(pObject->object())),QIcon(*pix),szLabel);
 	}
 	else((QTabWidget *)widget())->addTab(((QWidget *)(pObject->object())),szLabel);
+	tabsList.append(hObject);
+	return true;
+}
+KVSO_CLASS_FUNCTION(tabwidget,widgetAt)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_int_t iIndex;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("index",KVS_PT_INTEGER,0,iIndex)
+	KVSO_PARAMETERS_END(c)
+	if (iIndex>=tabsList.count()) c->returnValue()->setHObject((kvs_hobject_t)0);
+	else c->returnValue()->setHObject(tabsList.at(iIndex));
 	return true;
 }
 
@@ -211,21 +249,22 @@ KVSO_CLASS_FUNCTION(tabwidget,insertTab)
 	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject *pObject;
 	QString szLabel,szIcon;
-	kvs_uint_t iIndex;
+	kvs_uint_t uIndex;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("tab_widget",KVS_PT_HOBJECT,0,hObject)
 		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
 		KVSO_PARAMETER("icon_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
 	if(pix){
-			((QTabWidget *)widget())->insertTab(iIndex,(QWidget *)(pObject->object()),QIcon(*pix),szLabel);
+			((QTabWidget *)widget())->insertTab(uIndex,(QWidget *)(pObject->object()),QIcon(*pix),szLabel);
 	}
-	else ((QTabWidget *)widget())->insertTab(iIndex,((QWidget *)(pObject->object())),szLabel);
+	else ((QTabWidget *)widget())->insertTab(uIndex,((QWidget *)(pObject->object())),szLabel);
+	tabsList.insert(uIndex,hObject);
 	return true;
 }
 
@@ -251,13 +290,13 @@ KVSO_CLASS_FUNCTION(tabwidget,setTabToolTip)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	int ctrl = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
-	if (ctrl == -1)
+	int iIdx = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
+	if (iIdx == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab ","objects"));
 		return true;
 	}
-	((QTabWidget *)widget())->setTabToolTip(ctrl,szTooltip);
+	((QTabWidget *)widget())->setTabToolTip(iIdx,szTooltip);
 	return true;
 }
 KVSO_CLASS_FUNCTION(tabwidget,removeTabToolTip)
@@ -270,13 +309,13 @@ KVSO_CLASS_FUNCTION(tabwidget,removeTabToolTip)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	int ctrl = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object()))) ;
-	if (ctrl==-1)
+	int iIdx = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object()))) ;
+	if (iIdx==-1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab ","objects"));
 		return true;
 	}
-	((QTabWidget *)widget())->setTabToolTip(ctrl,QString());
+	((QTabWidget *)widget())->setTabToolTip(iIdx,QString());
 	return true;
 }
 
@@ -292,13 +331,13 @@ KVSO_CLASS_FUNCTION(tabwidget,setTabLabel)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	int ctrl = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
-	if (ctrl == -1)
+	int iIdx = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
+	if (iIdx == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab ","objects"));
 		return true;
 	}
-	((QTabWidget *)widget())->setTabText(ctrl,szLabel);
+	((QTabWidget *)widget())->setTabText(iIdx,szLabel);
 	return true;
 }
 KVSO_CLASS_FUNCTION(tabwidget,currentPageIndex)
@@ -317,7 +356,7 @@ KVSO_CLASS_FUNCTION(tabwidget,tabLabel)
 	KVSO_PARAMETERS_END(c)
 	QString label=((QTabWidget *)widget())->tabText(uIndex);
 	c->returnValue()->setString(label);
-    return true;
+	return true;
 }
 
 
@@ -335,7 +374,7 @@ KVSO_CLASS_FUNCTION(tabwidget,currentTabLabel)
 	int i= ((QTabWidget *)widget())->currentIndex();
 	QString label=((QTabWidget *)widget())->tabText(i);
 	c->returnValue()->setString(label);
-    return true;
+	 return true;
 }
 KVSO_CLASS_FUNCTION(tabwidget,removePage)
 {
@@ -347,13 +386,15 @@ KVSO_CLASS_FUNCTION(tabwidget,removePage)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	int ctrl = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
-	if (ctrl == -1)
+	int iIdx = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
+	if (iIdx == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab ","objects"));
 		return true;
 	}
-	((QTabWidget *)widget())->removeTab(ctrl);
+	((QTabWidget *)widget())->removeTab(iIdx);
+	debug("rimuovo l'indice %d",iIdx);
+	tabsList.removeAt(iIdx);
 	return true;
 }
 
@@ -370,15 +411,15 @@ KVSO_CLASS_FUNCTION(tabwidget,changeTab)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	int ctrl = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
-	if (ctrl == -1)
+	int iIdx = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
+	if (iIdx == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab","objects"));
 		return true;
 	}
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
-	if(pix)((QTabWidget *)widget())->setTabIcon(ctrl,QIcon(*pix));
-	((QTabWidget *)widget())->setTabText(ctrl,szLabel);
+	if(pix)((QTabWidget *)widget())->setTabIcon(iIdx,QIcon(*pix));
+	((QTabWidget *)widget())->setTabText(iIdx,szLabel);
 	return true;
 }
 
@@ -410,6 +451,18 @@ void KviKvsObject_tabwidget::slotCurrentChanged(int value)
 	callFunction(this,"currentChangedEvent",&params);
 }
 
+KVSO_CLASS_FUNCTION(tabwidget,tabCloseRequestEvent)
+{
+
+	emitSignal("tabCloseRequested",c,c->params());
+	return true;
+}
+
+void KviKvsObject_tabwidget::slotTabCloseRequest(int iIndex)
+{
+	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)iIndex));
+	callFunction(this,"tabCloseRequestEvent",&params);
+}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_tabwidget.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
