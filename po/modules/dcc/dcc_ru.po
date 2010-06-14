@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: dcc_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-12 16:26+0200\n"
-"PO-Revision-Date: 2010-05-03 19:01+0400\n"
-"Last-Translator: Govorov Igor\n"
+"PO-Revision-Date: 2010-06-14 10:42+0400\n"
+"Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/modules/dcc/requests.cpp:872
@@ -496,6 +496,8 @@ msgstr "Недействительный RECV запрос: Позиция %u б
 #: src/modules/dcc/send.cpp:1831
 msgid "Invalid RESUME request: Invalid file name (got '%1' but should be '%2')"
 msgstr ""
+"Неверный запрос RESUME: Неверное имя файла (получено '%1', должно быть - "
+"'%2')"
 
 #: src/modules/dcc/send.cpp:1854
 msgid "Invalid RESUME request: Position %1 is larger than file size"
@@ -596,12 +598,11 @@ msgstr "Пе&реписать"
 
 #: src/modules/dcc/send.cpp:1839
 msgid "Processing RESUME request with broken filename (%1)"
-msgstr ""
+msgstr "Обрабатываю запрос RESUME с неверным именем файла (%1)"
 
 #: src/modules/dcc/send.cpp:1813
-#, fuzzy
 msgid "Processing RESUME request with mismatched port (%1)"
-msgstr "Запрос RESUME принят, передача начинается с позиции %1"
+msgstr "Обрабатываю запрос RESUME с несовпадающим портом (%1)"
 
 #: src/modules/dcc/send.cpp:1769
 msgid "RESUME accepted, transfer will begin at position %1"
@@ -774,26 +775,24 @@ msgid "The current window has no associated DCC session"
 msgstr "Текущее окно не ассоциируется с DCC сессией"
 
 #: src/modules/dcc/broker.cpp:755
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>auto-rename</b> the new file,<br><b>overwrite</b> the existing "
 "file, or<br> <b>resume</b> an incomplete download?"
 msgstr ""
 "Файл '<b>%1</b>' уже существует, размер - <b>%2</b>.<br>Вы хотите "
-"<br><b>переписать</b> существующий файл,<br> <b>автоматически переименовать</"
-"b> новый файл, или<br><b>продолжить</b> незавершённую загрузку?"
+"<br><b>автоматически переименовать</b> новый файл,<br> <b>переписать</"
+"b> существующий файл, или<br><b>продолжить</b> незавершённую загрузку?"
 
 #: src/modules/dcc/broker.cpp:767
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is larger than the offered one."
 "<br>Do you wish to<br><b>auto-rename</b> the new file, or<br><b>overwrite</"
 "b> the existing file ?"
 msgstr ""
-"Файл большего размера '<b>%1</b>' уже существует.<br>Вы хотите "
-"<br><b>переписать</b> существующий файл, или<br> <b>автоматически "
-"переименовать</b> новый файл?"
+"Файл большего размера '<b>%1</b>' уже существует.<br> "
+"Вы хотите <b>автоматически переименовать</b> новый файл или<br> "
+"<b>переписать</b> существующий файл?"
 
 #: src/modules/dcc/video.cpp:811 src/modules/dcc/chat.cpp:469
 msgid ""
@@ -954,9 +953,8 @@ msgid "Video device:"
 msgstr "Устройство видео:"
 
 #: src/modules/dcc/voice.cpp:1013
-#, fuzzy
 msgid "Volume: %1"
-msgstr "Громкость: %i"
+msgstr "Громкость: %1"
 
 #: src/modules/dcc/send.cpp:261
 msgid ""

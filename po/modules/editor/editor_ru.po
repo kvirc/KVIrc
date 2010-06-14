@@ -11,15 +11,15 @@ msgstr ""
 "Project-Id-Version: editor_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-12 16:26+0200\n"
-"PO-Revision-Date: 2010-05-03 19:52+0400\n"
-"Last-Translator: Govorov Igor\n"
+"PO-Revision-Date: 2010-06-14 10:48+0400\n"
+"Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/modules/eventeditor/eventeditor.cpp:393
 #, c-format
@@ -63,7 +63,7 @@ msgstr "### Пролог ###"
 
 #: src/modules/classeditor/classeditor.cpp:1859
 msgid "&Add"
-msgstr ""
+msgstr "Добавить"
 
 #: src/modules/raweditor/raweditor.cpp:181
 msgid "&Add Raw Event..."
@@ -96,7 +96,7 @@ msgstr "Копировать"
 
 #: src/modules/classeditor/classeditor.cpp:1773
 msgid "&Create Class"
-msgstr ""
+msgstr "Создать класс"
 
 #: src/modules/eventeditor/eventeditor.cpp:201
 #: src/modules/raweditor/raweditor.cpp:160
@@ -249,7 +249,7 @@ msgstr "Добавить класс"
 
 #: src/modules/classeditor/classeditor.cpp:770
 msgid "Add Member Function"
-msgstr ""
+msgstr "Добавить функцию-член"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:563
 #: src/modules/aliaseditor/aliaseditor.cpp:1129
@@ -494,7 +494,7 @@ msgstr "Комментарии:"
 
 #: src/modules/classeditor/classeditor.cpp:1499
 msgid "Compilation error - KVIrc"
-msgstr ""
+msgstr "Ошибка компиляции - KVIrc"
 
 #: src/modules/popupeditor/popupeditor.cpp:236
 msgid "Condition:"
@@ -1307,7 +1307,7 @@ msgstr "Тип"
 
 #: src/modules/classeditor/classeditor.cpp:1483
 msgid "Unable to compile class: "
-msgstr ""
+msgstr "Не могу скомпилировать класс:"
 
 #: src/modules/actioneditor/actioneditor.cpp:727
 msgid "Unable to write to the actions file."
