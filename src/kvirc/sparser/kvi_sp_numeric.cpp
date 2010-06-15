@@ -910,15 +910,19 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 	// Check for identity profiles
 	KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();
 	bool bProfilesEnabled = pSet ? (pSet->isEnabled() && !pSet->isEmpty()) : false;
+	KviIdentityProfile * pProfile = 0;
 	if(bProfilesEnabled)
 	{
-		KviIdentityProfile * pProfile = pSet->findNetwork(msg->connection()->networkName());
+		pProfile = pSet->findNetwork(msg->connection()->networkName());
 		if(pProfile)
 		{
 			szNextNick = pProfile->altNick();
 			uNickCnt = 1;
 		}
-	} else {
+	}
+	
+	if(!pProfile)
+	{
 		switch(msg->connection()->stateData()->loginNickIndex())
 		{
 			case 0:
