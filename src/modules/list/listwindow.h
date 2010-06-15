@@ -73,7 +73,7 @@ private:
 public:
 	int width (const QFontMetrics & fm, const QTreeWidget * pWidget, int iColumn) const;
 	bool operator<(const QTreeWidgetItem & other) const;
-	inline KviChannelTreeWidgetItemData * itemdata() { return m_pData; }; 
+	inline KviChannelTreeWidgetItemData * itemData() { return m_pData; }; 
 };
 
 class KviListWindow : public KviWindow, public KviExternalServerDataParser
