@@ -239,7 +239,7 @@ KVSO_CLASS_FUNCTION(tabwidget,widgetAt)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_INTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
-	if (iIndex>=tabsList.count()) c->returnValue()->setHObject((kvs_hobject_t)0);
+	if (iIndex>=tabsList.count()||iIndex<0) c->returnValue()->setHObject((kvs_hobject_t)0);
 	else c->returnValue()->setHObject(tabsList.at(iIndex));
 	return true;
 }
