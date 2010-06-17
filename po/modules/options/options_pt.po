@@ -3,22 +3,18 @@
 # translation of kvirc_pt.po to
 #
 # Copyright (C) 2002,2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
-# Ze <mmodem00@netvisao.pt>, 2003.
-# Américo José Melo <mmodem00@netvisao.pt>, 2004, 2005, 2006.
-# Zé <mmodem00@netvisao.pt>, 2004, 2005, 2006.
-# José Melo <mmodem00@gmail.com>, 2005.
+# Ze <mmodem00@netvisao.pt>, 2003, 2004, 2005, 2006.
 # Zé <mmodem@netcabo.pt>, 2005.
 # Zé <mmodem00@gmail.com>, 2006, 2007, 2008, 2010.
-# Zé <ze@mandriva.org>, 2008, 2010.
 # Zé <mmodem00@gmal.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-12 16:26+0200\n"
-"PO-Revision-Date: 2010-05-25 00:26+0100\n"
-"Last-Translator: Zé <mmodem00@gmal.com>\n"
-"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2010-06-17 16:13+0100\n"
+"Last-Translator: Zé <ze@mandriva.org>\n"
+"Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1035,6 +1031,15 @@ msgid ""
 "differentiate between transfers only by looking at the filename. Be careful."
 "</center>"
 msgstr ""
+"<center>Este opção faz com que o KVIrc aceite pedidos de RESUMO com portos "
+"incompatíveis.<br>Use-a se algum roteador no caminho entre si e o receptor "
+"remapear "
+"os portos no DCC SEND mas não nos pedidos DCC RESUME.<br>Por favor note que "
+"esta opção pode não ter um bom comportamento em certos padrões de uso, já "
+"que o "
+"KVIrc tem que diferenciar entre as transferências apenas olhando para o "
+"ficheiro."
+"Tenha Atenção.</center>"
 
 #: src/modules/options/optw_irc.cpp:71
 msgid ""
@@ -1677,13 +1682,14 @@ msgid "Abort"
 msgstr "Abortar"
 
 #: src/modules/options/optw_dcc.cpp:220
-#, fuzzy
 msgid "Accept RESUME requests with broken filename (mIRC file.ext)"
-msgstr "Aceitar RESUMO danificado (ficheiro.ext mIRC)"
+msgstr ""
+"Aceitar pedidos de RESUMO com nomes de ficheiros danificados (ficheiro.ext "
+"mIRC)"
 
 #: src/modules/options/optw_dcc.cpp:226
 msgid "Accept RESUME requests with mismatched ports"
-msgstr ""
+msgstr "Aceitar pedidos de RESUMO com portos incompatíveis"
 
 #: src/modules/options/optw_servers.cpp:1320
 msgid "Active Configuration"
@@ -1838,7 +1844,7 @@ msgstr "Anexar à resposta VERSION:"
 
 #: src/modules/options/optw_servers.cpp:894
 msgid "Authenticate via SASL extension"
-msgstr ""
+msgstr "Autenticar através de entensão SASL"
 
 #: src/modules/options/optw_logging.cpp:49
 msgid "Auto flush logs every"
@@ -2351,9 +2357,9 @@ msgid "Don't show colors in user messages"
 msgstr "Não mostrar cores nas mensagens de utilizadores"
 
 #: src/modules/options/optw_notifier.cpp:160
-#, fuzzy
 msgid "Don't show notifier when there is an active fullscreen window"
-msgstr "Mostrar notificações na janela activa"
+msgstr ""
+"Não mostrar notificador quando existe uma janela activa em ecrã completo"
 
 #: src/modules/options/optw_ircview.cpp:190
 msgid "DotLine"
@@ -2505,7 +2511,7 @@ msgstr "Expandir tabulações na entrada usando esta quantidade de espaços:"
 
 #: src/modules/options/optw_servers.cpp:861
 msgid "Extended Capabilities"
-msgstr ""
+msgstr "Capacidades Extendidas"
 
 #: src/modules/options/optw_ircoutput.cpp:71
 msgid "External CTCP replies"
@@ -3156,7 +3162,7 @@ msgstr "Manipulador de rato"
 #: src/modules/options/optw_windowlist.cpp:225
 msgid ""
 "Mouse wheel changes the active window instead of scrolling the scrollbar"
-msgstr ""
+msgstr "A roda do rato muda a janela activa em vez de rolar a barra de rolagem"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
@@ -3657,9 +3663,8 @@ msgid "Protection"
 msgstr "Protecção"
 
 #: src/modules/options/optw_servers.cpp:722
-#, fuzzy
 msgid "Protocol Encoding:"
-msgstr "Codificação do Texto:"
+msgstr "Codificação do Protocolo:"
 
 #: src/modules/options/optw_urlhandlers.cpp:66
 msgid "Protocol handler"
@@ -3719,7 +3724,7 @@ msgstr "Privado"
 
 #: src/modules/options/optw_servers.cpp:867
 msgid "Query extended capabilities on connect"
-msgstr ""
+msgstr "Capacidades de pesquisa entendida no contexto"
 
 #: src/modules/options/optw_logging.cpp:41
 msgid "Query windows"
@@ -3833,9 +3838,8 @@ msgid "Right"
 msgstr "Direita"
 
 #: src/modules/options/optw_servers.cpp:889
-#, fuzzy
 msgid "SASL Authentication"
-msgstr "Activar autenticação SASL"
+msgstr "Autenticação SASL"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:102
 msgid "SOURCE"
@@ -4134,7 +4138,7 @@ msgstr "Faixa de números de tipo de mensagem nos registos"
 
 #: src/modules/options/optw_servers.cpp:876
 msgid "Switch to SSL/TLS by using the STARTTLS extension"
-msgstr ""
+msgstr "Mudar para SSL/TLS usando a entensão STARTTLS"
 
 #: src/modules/options/optw_ircoutput.cpp:64
 msgid "System locale format"
@@ -4209,6 +4213,10 @@ msgid ""
 "refuse to download it.<br>You *should* either scale it, use a different "
 "storage<br>format or choose a different image."
 msgstr ""
+"A imagem avatar que escolheu é maior que 500 KiB<br>e a maioria "
+"dos clientes irá recusar a sua transferência.<br>*Deve* escalar a imagem, "
+"usar um formato de gravação diferente<br> ou escolher uma imagem "
+"diferente."
 
 #: src/modules/options/dialog.cpp:117
 msgid "Theme Preferences"
@@ -4347,6 +4355,10 @@ msgid ""
 "distracted by the notifier or it may even switch your game from fullscreen "
 "to window mode."
 msgstr ""
+"Esta opção faz com que o notificador deixe de estar disponível quando "
+"existir uma janela em ecrã completo. Isto é útil para sessões de jogo "
+"onde pode ser distraído pelo notificador ou pode ainda mudar o seu jogo "
+"para um modo de janela em ecrã completo."
 
 #: src/modules/options/optw_avatar.cpp:107
 msgid ""
