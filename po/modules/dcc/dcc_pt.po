@@ -4,14 +4,15 @@
 #
 # Zé <mmodem00@gmail.com>, 2004-2007, 2010.
 # Zé <mmodem00@gmal.com>, 2010.
+# Zé <ze@mandriva.org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_dcc \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-12 16:26+0200\n"
-"PO-Revision-Date: 2010-05-16 03:39+0100\n"
-"Last-Translator: Zé <mmodem00@gmal.com>\n"
-"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2010-06-17 16:33+0100\n"
+"Last-Translator: Zé <ze@mandriva.org>\n"
+"Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -500,6 +501,8 @@ msgstr "Pedido RECV inválido: A posição %u é maior que o tamanho do ficheiro
 #: src/modules/dcc/send.cpp:1831
 msgid "Invalid RESUME request: Invalid file name (got '%1' but should be '%2')"
 msgstr ""
+"Pedido de RESUMO inválido: Nome de ficheiro inválido (tem-se '%1' quando "
+"devia ser '%2')"
 
 #: src/modules/dcc/send.cpp:1854
 msgid "Invalid RESUME request: Position %1 is larger than file size"
@@ -601,12 +604,11 @@ msgstr "&Substituir"
 
 #: src/modules/dcc/send.cpp:1839
 msgid "Processing RESUME request with broken filename (%1)"
-msgstr ""
+msgstr "A processar o pedido de RESUMO com o nome do ficheiro danificado (%1)"
 
 #: src/modules/dcc/send.cpp:1813
-#, fuzzy
 msgid "Processing RESUME request with mismatched port (%1)"
-msgstr "A aceitar pedido RESUMIR, a transferência irá começar na posição %1"
+msgstr "A processar o pedido de RESUMO com o porto incompatível (%1)"
 
 #: src/modules/dcc/send.cpp:1769
 msgid "RESUME accepted, transfer will begin at position %1"
@@ -785,26 +787,24 @@ msgid "The current window has no associated DCC session"
 msgstr "A janela actual não tem uma sessão DCC associada"
 
 #: src/modules/dcc/broker.cpp:755
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>auto-rename</b> the new file,<br><b>overwrite</b> the existing "
 "file, or<br> <b>resume</b> an incomplete download?"
 msgstr ""
-"O ficheiro '<b>%1</b>' já existe e tem <b>%2</b> de tamanho."
-"<br>Deseja<br><b>substituir</b> o ficheiro existente,<br> <b>auto-renomear</"
-"b> o novo ficheiro, ou<br><b>resumir</b> uma transferência incompleta?"
+"O ficheiro '<b>%1</b>' já existe e tem <b>%2</b> de tamanho.<br>Deseja "
+"<br><b>auto-renomear</b> o novo ficheiro,<br><b>substituir</b> o ficheiro "
+"existente ou<br><b>resumir</b> uma transferência incompleta?"
 
 #: src/modules/dcc/broker.cpp:767
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is larger than the offered one."
 "<br>Do you wish to<br><b>auto-rename</b> the new file, or<br><b>overwrite</"
 "b> the existing file ?"
 msgstr ""
 "O ficheiro '<b>%1</b>' já existe e é maior que o ficheiro oferecido."
-"<br>Deseja <br><b>substituir</b> o ficheiro existente, ou<br> <b>auto-"
-"renomear</b> o novo ficheiro?"
+"<br>Deseja <br><b>auto-renomear</b> o novo ficheiro, ou <br><b>substituir</b>"
+" o ficheiro existente?"
 
 #: src/modules/dcc/video.cpp:811 src/modules/dcc/chat.cpp:469
 msgid ""
@@ -968,9 +968,8 @@ msgid "Video device:"
 msgstr "Dispositivo de vídeo:"
 
 #: src/modules/dcc/voice.cpp:1013
-#, fuzzy
 msgid "Volume: %1"
-msgstr "Volume: %i"
+msgstr "Volume: %1"
 
 #: src/modules/dcc/send.cpp:261
 msgid ""
