@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-12 16:26+0200\n"
-"PO-Revision-Date: 2010-06-17 16:24+0100\n"
+"PO-Revision-Date: 2010-06-17 16:53+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -726,11 +726,11 @@ msgstr "(Desconhecido)"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:489
 msgid "(unknown)"
-msgstr "(Desconhecido)"
+msgstr "(desconhecido)"
 
 #: src/kvirc/kernel/kvi_options.cpp:766
 msgid "+I mode change"
-msgstr "mudar para modo +i"
+msgstr "mudança de modo +i"
 
 #: src/kvirc/kernel/kvi_options.cpp:762
 msgid "+b mode change"
@@ -750,7 +750,7 @@ msgstr "mudança de modo +v"
 
 #: src/kvirc/ui/kvi_query.cpp:262
 msgid ", probably away"
-msgstr ", provavelmente Ausente"
+msgstr ", provavelmente ausente"
 
 #: src/kvirc/ui/kvi_query.cpp:256
 msgid ", using server %1"
@@ -762,7 +762,7 @@ msgstr "- d -- h -- m -- s"
 
 #: src/kvirc/kernel/kvi_options.cpp:767
 msgid "-I mode change"
-msgstr "mudar para modo -i"
+msgstr "mudança de modo -i"
 
 #: src/kvirc/kernel/kvi_options.cpp:763
 msgid "-b mode change"
@@ -819,7 +819,7 @@ msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:171
 msgid ": Unknown user mode"
-msgstr ":Modo desconhecido"
+msgstr ":Modo de utilizador desconhecido"
 
 #: src/modules/setup/setupwizard.cpp:84
 msgid "< &Back"
@@ -851,7 +851,7 @@ msgstr "<b>Não é possível encontrar qualquer dica... :(</b>"
 
 #: src/kvirc/ui/kvi_channel.cpp:1676
 msgid "<b>Channel mode:</b>"
-msgstr "<b>Modos do canal</b>"
+msgstr "<b>Modo do canal</b>"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:1031
 msgid "<b>Double-click:</b><br>%Q"
@@ -1044,11 +1044,11 @@ msgstr ""
 
 #: src/modules/lamerizer/libkvilamerizer.cpp:219
 msgid "A really lame text transformation engine :D"
-msgstr "Um motor de transformação de texto mesmo lento :D"
+msgstr "Um mecanismo de transformação de texto mesmo lento :D"
 
 #: src/modules/lamerizer/libkvilamerizer.cpp:229
 msgid "A really lame text transformation engine: Light Version."
-msgstr "Um motor de transformação de texto mesmo lento: Versão Leve."
+msgstr "Um mecanismo de transformação de texto mesmo lento: Versão Leve."
 
 #: src/kvirc/ui/kvi_selectors.cpp:478 src/kvirc/ui/kvi_selectors.cpp:825
 msgid "A&dd"
@@ -1139,7 +1139,7 @@ msgstr ""
 #: src/modules/avatar/libkviavatar.cpp:412
 msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
 msgstr ""
-"Adicionados %d seg à oferta de ficheiro para o ficheiro %Q (%Q) receptador %Q"
+"Adicionados %d seg à oferta do ficheiro para o ficheiro %Q (%Q) e receptor %Q"
 
 #: src/kvilib/core/kvi_error.cpp:156
 msgid "Address already in use"
@@ -1167,7 +1167,7 @@ msgstr "Todas as Redes"
 
 #: src/modules/setup/setupwizard.cpp:296
 msgid "All settings in shared program folder (portable)"
-msgstr "Todas as configurações na pasta partilhada do programa (portátil)"
+msgstr "Todas as configurações na pasta partilhada do programa (portável)"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:976
 msgid "Allows entering and leaving away state"
@@ -1210,19 +1210,19 @@ msgstr "Tiraram-me de semioperador"
 
 #: src/kvirc/kernel/kvi_options.cpp:844
 msgid "Am de-userop'd"
-msgstr "tiraram-me de operador"
+msgstr "Tiraram-me de operador"
 
 #: src/kvirc/kernel/kvi_options.cpp:817
 msgid "Am deop'd"
-msgstr "Deixei de ser operador"
+msgstr "Tiraram-me de operador"
 
 #: src/kvirc/kernel/kvi_options.cpp:818
 msgid "Am devoiced"
-msgstr "Estou sem voz"
+msgstr "Tiraram-me a voz"
 
 #: src/kvirc/kernel/kvi_options.cpp:819
 msgid "Am halfop'd"
-msgstr "Estou semioperador"
+msgstr "Estou como semioperador"
 
 #: src/kvirc/kernel/kvi_options.cpp:814
 msgid "Am kicked"
@@ -1230,19 +1230,19 @@ msgstr "Fui expulso"
 
 #: src/kvirc/kernel/kvi_options.cpp:815
 msgid "Am op'd"
-msgstr "Sou operador"
+msgstr "Estou como operador"
 
 #: src/kvirc/kernel/kvi_options.cpp:843
 msgid "Am userop'd"
-msgstr "Sou operador"
+msgstr "Estou como operador"
 
 #: src/kvirc/kernel/kvi_options.cpp:816
 msgid "Am voiced"
-msgstr "Tenho voz"
+msgstr "Estou com voz"
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:250
 msgid "Anodine's Full Grid"
-msgstr "Grelha Anodine Completa"
+msgstr "Grelha Completa Anodine"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:284
 msgid "Anonymous or protected user"
@@ -1270,7 +1270,7 @@ msgstr "Arranja as janelas MDI num estilo cascata-maximizada"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:160
 msgid "Attempting %Q to %Q (%Q) on port %u"
-msgstr "A tentar %Q para %Q (%Q) na porta %u"
+msgstr "A tentar %Q para %Q (%Q) no porto %u"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:169
 #, c-format
@@ -2323,20 +2323,19 @@ msgstr "A criar pacote..."
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:264
 msgid "Crypt: Can't create an engine instance: crypting disabled"
 msgstr ""
-"Encriptação: Não é possível criar uma instância/motor: encriptação "
-"desactivada"
+"Encriptação: Não é possível criar um mecanismo: encriptação desactivada"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:275
 #, c-format
 msgid "Crypt: Can't initialize the engine :%s"
-msgstr "Encriptação: Não é possível inicializar o motor:%s"
+msgstr "Encriptação: Não é possível inicializar o mecanismo:%s"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:283
 msgid ""
 "Crypt: You have to enable encryption and/or decryption for the engine to work"
 msgstr ""
-"Criptação: Tem que activar a encriptação e/ou desencriptação para que o "
-"motor funcione"
+"Encriptação: Tem que activar a encriptação e/ou desencriptação para que o "
+"mecanismo funcione"
 
 #: src/kvirc/ui/kvi_window.cpp:405
 msgid "Crypting"
@@ -2371,18 +2370,18 @@ msgid ""
 "Information about the algorithm can be found at\n"
 "<http://www.cryptolounge.org/wiki/AES>\n"
 msgstr ""
-"Motor criptográfico baseado no algoritmo\n"
+"Mecanismo criptográfico baseado no algoritmo\n"
 "Padrão de Encriptação Avançado (AES)\n"
 "chamado Rijndael.\n"
 "O testo é primeiro encriptado com Rijndael\n"
 "e depois convertido para a notação %s.\n"
 "As chaves usadas têm de comprimento %d bit\n"
 "e serão preenchidas com zeros se indicar mais pequenas.\n"
-"Se apenas for indicada uma chave, este motor\n"
+"Se apenas for indicada uma chave, este mecanismo\n"
 "irá usá-la tanto para encriptar e desencriptar.\n"
 "\n"
 "Esta é a implementação Crypto++ que pode\n"
-"fazer muito mais que o seu motor predefinido, mas\n"
+"fazer muito mais que o seu mecanismo predefinido, mas\n"
 "este deve ser um substituto, actua apenas como\n"
 "o original.\n"
 "Informação acerca do algoritmo pode ser\n"
@@ -2403,14 +2402,14 @@ msgid ""
 "See the rijndael module documentation\n"
 "for more info on the algorithm used.\n"
 msgstr ""
-"Motor criptográfico baseado no algoritmo\n"
+"Mecanismo criptográfico baseado no algoritmo\n"
 "Padrão de Encriptação Avançado (AES)\n"
 "chamado Rijndael.\n"
 "O testo é primeiro encriptado com rijndael\n"
 "e depois convertido para a notação %s.\n"
 "As chaves usadas têm de comprimento %d bit\n"
 "e serão preenchidas com zeros se indicar mais pequenas.\n"
-"Se apenas for indicada uma chave, este motor\n"
+"Se apenas for indicada uma chave, este mecanismo\n"
 "irá usá-la tanto para encriptar e desencriptar.\n"
 "Veja o módulo de documentação rijndael para\n"
 "mais informação acerca do algoritmo usado.\n"
@@ -2775,7 +2774,7 @@ msgstr "Fim do resultado junto"
 
 #: src/modules/rijndael/libkvirijndael.cpp:170
 msgid "Engine not initialized"
-msgstr "Motor não inicializado"
+msgstr "Mecanismo não inicializado"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:1046
 msgid "Enter Away Mode"
@@ -2891,7 +2890,7 @@ msgstr "Falha ao inicializar o contexto SSL"
 
 #: src/modules/window/libkviwindow.cpp:1527
 msgid "Failed to initialize the specified crypt engine: %Q"
-msgstr "Falha ao inicializar o motor de encriptação: %Q"
+msgstr "Falha ao inicializar o mecanismo de encriptação: %Q"
 
 #: src/kvirc/ui/kvi_console.cpp:1022
 msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
@@ -3554,7 +3553,7 @@ msgstr "Índice do array inválido: positivo inteiro esperado"
 
 #: src/kvilib/ext/kvi_crypt.cpp:159
 msgid "Invalid crypt engine"
-msgstr "Motor de encriptação inválido"
+msgstr "Mecanismo de encriptação inválido"
 
 #: src/kvilib/file/kvi_packagefile.cpp:968
 msgid "Invalid data field: the package is probably corrupt"
@@ -3562,7 +3561,7 @@ msgstr "Campo de dados inválido: o pacote provavelmente está corrompido"
 
 #: src/modules/rijndael/libkvirijndael.cpp:171
 msgid "Invalid direction for this engine"
-msgstr "Direcção inválida para este motor"
+msgstr "Direcção inválida para este mecanismo"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2121
 msgid "Invalid image"
@@ -4294,7 +4293,7 @@ msgstr "Nenhuma actividade"
 
 #: src/kvirc/kernel/kvi_app.cpp:801
 msgid "No and Don't Ask Me Again"
-msgstr "Não e Não me pergunte outra vez"
+msgstr "Não e Não Me Pergunte Novamente"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:518
 msgid "No channel topic is set"
@@ -4310,7 +4309,8 @@ msgstr "Nenhuma conexão"
 
 #: src/modules/window/libkviwindow.cpp:1502
 msgid "No encrypt key specified: can't allocate engine"
-msgstr "Nenhuma chave de encriptação indicada: não é possível alocar motor"
+msgstr ""
+"Nenhuma chave de encriptação indicada: não é possível alocar o mecanismo"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:283
 msgid "No external messages"
@@ -4727,7 +4727,7 @@ msgstr "Ops...por alguma razão o objecto do filtro da ligação foi destruído"
 
 #: src/kvirc/ui/kvi_window.cpp:505
 msgid "Ops...I've accidentally lost the crypting engine..."
-msgstr "Ups...Perdi acidentalmente o motor de encriptação..."
+msgstr "Ups...Perdi acidentalmente o mecanismo de encriptação..."
 
 #: src/modules/rijndael/libkvirijndael.cpp:218
 msgid "Ops...decrypt cipher not initialized"
@@ -4940,7 +4940,7 @@ msgid ""
 "\n"
 "This is the Crypto++ based version, not relying on embedded code\n"
 msgstr ""
-"Motor de criptografia popular baseado no\n"
+"Mecanismo de criptografia popular baseado no\n"
 "algoritmo de encriptação Blowfish.\n"
 "O texto é primeiro encriptado com Blowfish \n"
 "e depois codificado com base64.\n"
@@ -4949,9 +4949,9 @@ msgstr ""
 "caracteres.\n"
 "As chaves podem ir até 65 bytes (448 bits) de\n"
 "comprimento. Se apenas uma chave é indicada,\n"
-"este motor irá usá-la tanto para encriptar e\n"
+"este mecanismo irá usá-la tanto para encriptar e\n"
 "desencriptar.\n"
-"Este motor funciona em modo ECB por predefinição,\n"
+"Este mecanismo funciona em modo ECB por predefinição,\n"
 "de deseja usar o modo CBC deve adicionar o\n"
 "prefixo \"cbc:\" às suas chaves.\n"
 "\n"
@@ -4973,7 +4973,7 @@ msgid ""
 "if you want to use CBC mode you must prefix\n"
 "your key(s) with \"cbc:\".\n"
 msgstr ""
-"Motor de criptografia popular baseado no\n"
+"Mecanismo de criptografia popular baseado no\n"
 "algoritmo de encriptação Blowfish.\n"
 "O texto é primeiro encriptado com Blowfish \n"
 "e depois convertido na notação base64.\n"
@@ -4982,9 +4982,9 @@ msgstr ""
 "caracteres.\n"
 "Pode indicar chaves  com comprimento até\n"
 "56 bytes (448 bits).\n"
-"Se apenas uma chave é indicada, este motor\n"
+"Se apenas uma chave é indicada, este mecanismo\n"
 "irá usá-la tanto para encriptar e desencriptar.\n"
-"Este motor funciona em modo ECB por predefinição:\n"
+"Este mecanismo funciona em modo ECB por predefinição:\n"
 "de deseja usar o modo CBC deve adicionar o\n"
 "prefixo \"cbc:\" às suas chaves.\n"
 
@@ -6022,7 +6022,7 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:244
 msgid "Sorry, no crypt engines available"
-msgstr "Desculpe, não há motores de encriptação disponíveis"
+msgstr "Desculpe, não existem mecanismos de encriptação disponíveis"
 
 #: src/kvirc/ui/kvi_windowlist_tree.cpp:250
 msgid "Sort"
@@ -6274,14 +6274,15 @@ msgstr "A conexão terminou inesperadamente. A tentar reconectar..."
 
 #: src/modules/window/libkviwindow.cpp:1531
 msgid "The crypt engine \"%Q\" does not exist"
-msgstr "O motor de encriptação \"%Q\" não existe"
+msgstr "O mecanismo de encriptação \"%Q\" não existe"
 
 #: src/kvirc/ui/kvi_channel.cpp:1150
 msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %Q, no "
 "data sent to the server"
 msgstr ""
-"O motor de encriptação não foi capaz de encriptar a mensagem actual (%Q): %"
+"O mecanismo de encriptação não foi capaz de encriptar a mensagem actual "
+"(%Q): %"
 "Q, nenhuns dados enviados para o servidor"
 
 #: src/kvirc/ui/kvi_query.cpp:615
@@ -6289,7 +6290,8 @@ msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %s, no "
 "data sent to the server"
 msgstr ""
-"O motor de encriptação não foi capaz de encriptar a mensagem actual (%Q): %"
+"O mecanismo de encriptação não foi capaz de encriptar a mensagem actual "
+"(%Q): %"
 "s, nenhuns dados enviados para o servidor"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:264
@@ -6347,7 +6349,7 @@ msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
 msgstr ""
-"A seguinte mensagem parece estar encriptada, mas o motor de encriptação "
+"A seguinte mensagem parece estar encriptada, mas o mecanismo de encriptação "
 "falhou ao descodifica-la: %Q"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1020
@@ -6639,7 +6641,8 @@ msgid ""
 "version required is %Q while this theme engine has version %s)"
 msgstr ""
 "Este executável KVirc é demasiado antigo para este tema (a versão mínima de "
-"motor do tema requerida é %Q enquanto este motor do tema tiver a versão %s)"
+"mecanismo do tema requerida é %Q enquanto este mecanismo do tema tiver a "
+"versão %s)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:979
 msgid ""
@@ -7024,7 +7027,7 @@ msgstr "Comando desconhecido"
 
 #: src/modules/window/libkviwindow.cpp:1524
 msgid "Unknown engine error"
-msgstr "Erro do motor desconhecido"
+msgstr "Erro do mecanismo desconhecido"
 
 #: src/kvilib/core/kvi_error.cpp:51
 #: src/modules/rijndael/libkvirijndael.cpp:173
@@ -7168,7 +7171,7 @@ msgstr "Use as definições de pasta da instalação anterior"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:85
 msgid "Use the crypt engine"
-msgstr "Usar motor de encriptação"
+msgstr "Usar mecanismo de encriptação"
 
 #: src/kvirc/ui/kvi_channel.cpp:153 src/kvirc/ui/kvi_channel.cpp:201
 msgid "User List"
