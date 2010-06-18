@@ -942,6 +942,12 @@ void KviKvsVariant::serializeString(QString& buffer)
 
 void KviKvsVariant::serialize(QString& result)
 {
+	if(!m_pData)
+	{
+		result = "null";
+		return;
+	}
+
 	switch(m_pData->m_eType)
 	{
 		case KviKvsVariantData::HObject:
@@ -967,7 +973,7 @@ void KviKvsVariant::serialize(QString& result)
 			m_pData->m_u.pArray->serialize(result);
 		break;
 		case KviKvsVariantData::Nothing:
-			result="null";
+			result = "null";
 		break;
 		default: // just make gcc happy
 		break;
