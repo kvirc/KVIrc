@@ -1,6 +1,6 @@
 # translation of dcc_es.po to spanish
 #
-# egns <grannost@gmail.com>, 2009.
+# egns <grannost@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
@@ -498,6 +498,8 @@ msgstr ""
 #: src/modules/dcc/send.cpp:1831
 msgid "Invalid RESUME request: Invalid file name (got '%1' but should be '%2')"
 msgstr ""
+"Petición RESUME no válida: nombre de archivo no válido ('%1' pero debería "
+"ser '%2')"
 
 #: src/modules/dcc/send.cpp:1854
 msgid "Invalid RESUME request: Position %1 is larger than file size"
@@ -600,13 +602,11 @@ msgstr "Sobree&scribir"
 
 #: src/modules/dcc/send.cpp:1839
 msgid "Processing RESUME request with broken filename (%1)"
-msgstr ""
+msgstr "Procesando petición RESUME con nombre de archivo erróneo (%1)"
 
 #: src/modules/dcc/send.cpp:1813
-#, fuzzy
 msgid "Processing RESUME request with mismatched port (%1)"
-msgstr ""
-"Aceptando petición RESUME, la transferencia comenzará en la posición %1"
+msgstr "Procesando petición RESUME con un puerto cambiado (%1)"
 
 #: src/modules/dcc/send.cpp:1769
 msgid "RESUME accepted, transfer will begin at position %1"
@@ -789,27 +789,24 @@ msgid "The current window has no associated DCC session"
 msgstr "La ventana actual no tiene una sesión DCC asociada"
 
 #: src/modules/dcc/broker.cpp:755
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>auto-rename</b> the new file,<br><b>overwrite</b> the existing "
 "file, or<br> <b>resume</b> an incomplete download?"
 msgstr ""
 "El archivo '<b>%1</b>' ya existe y es de <b>%2</b>."
-"<br>¿Desea<br><b>sobreescribir</b> el archivo existente,<br> <b>renombrar "
-"automáticamente</b> el nuevo archivo, o<br><b>continuar</b> una "
-"transferencia incompleta?"
+"<br>¿Desea<br><b>auto-renombrar</b> el archivo nuevo,<br> <b>sobrescribir"
+"</b> el archivo existente, o<br><b>continuar</b> una transferencia incompleta?"
 
 #: src/modules/dcc/broker.cpp:767
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is larger than the offered one."
 "<br>Do you wish to<br><b>auto-rename</b> the new file, or<br><b>overwrite</"
 "b> the existing file ?"
 msgstr ""
 "El archivo '<b>%1</b>' ya existe y es más grande que el ofrecido."
-"<br>¿Desea<br><b>sobreescribir</b> el archivo existente, o<br> <b>renombrar "
-"automaticamente</b> el nuevo archivo?"
+"<br>¿Desea<br><b>auto-renombrar</b> el archivo nuevo, o<br><b>sobrescribir"
+"</b> el archivo existente?"
 
 #: src/modules/dcc/video.cpp:811 src/modules/dcc/chat.cpp:469
 msgid ""
@@ -976,9 +973,8 @@ msgid "Video device:"
 msgstr "Dispositivo de vídeo:"
 
 #: src/modules/dcc/voice.cpp:1013
-#, fuzzy
 msgid "Volume: %1"
-msgstr "Volumen: %i"
+msgstr "Volumen: %1"
 
 #: src/modules/dcc/send.cpp:261
 msgid ""

@@ -89,7 +89,7 @@ msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] acaba de abandonar \r!c\r%Q\r: %Q"
 
 #: src/kvirc/ui/kvi_query.cpp:259
 msgid " (%1 hops)"
-msgstr "(%1 saltos)"
+msgstr " (%1 saltos)"
 
 #: src/kvirc/ui/kvi_channel.cpp:1081 src/kvirc/ui/kvi_query.cpp:445
 #: src/kvirc/ui/kvi_console.cpp:1153
@@ -1162,9 +1162,8 @@ msgid "All Files"
 msgstr "Todos los archivos"
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:220
-#, fuzzy
 msgid "All Networks"
-msgstr "Red"
+msgstr "Todas las redes"
 
 #: src/modules/setup/setupwizard.cpp:296
 msgid "All settings in shared program folder (portable)"
@@ -1792,11 +1791,11 @@ msgstr "No puedo detener la descarga de la lista, no hay una conexión activa."
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2105
 msgid "Capability change acknowledged: %Q"
-msgstr ""
+msgstr "Cambio de capacidad en acuerdo: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2121
 msgid "Capability change denied: %Q"
-msgstr ""
+msgstr "Cambio de capacidad denegado: %Q"
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:239
 msgid "Cascade &Maximized"
@@ -1971,9 +1970,8 @@ msgid "Choose Avatar - KVIrc"
 msgstr "Escoge avatar - KVIrc"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2105 src/kvirc/ui/kvi_ircview.cpp:2107
-#, fuzzy
 msgid "Choose Font"
-msgstr "Escoger una fuente temporal..."
+msgstr "Elegir fuente"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2072
 msgid "Choose Temporary Background..."
@@ -2419,9 +2417,8 @@ msgid "Current IRC URI"
 msgstr "URI de IRC actual"
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:202
-#, fuzzy
 msgid "Current Network"
-msgstr "La red actual es %Q"
+msgstr "Red actual"
 
 #: src/kvirc/kernel/kvi_sslmaster.cpp:90
 #: src/kvirc/kernel/kvi_ircsocket.cpp:1276
@@ -2438,9 +2435,8 @@ msgid "Current window is not a channel"
 msgstr "La ventana actual no es un canal"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2135
-#, fuzzy
 msgid "Currently enabled capabilities: %Q"
-msgstr "Extensiones CAP activadas actualmente: %Q"
+msgstr "Extensiones CAP activadas: %Q"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:205
 msgid "Customize Toolbars..."
@@ -5445,7 +5441,8 @@ msgstr "Mensaje SSL"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2217
 msgid "STARTTLS reply received but SSL support is not complied in: ignoring"
-msgstr ""
+msgstr "Se recibió una respuesta STARTTLS pero el soporte SSL no fue compilado: "
+"ignorando"
 
 #: src/kvilib/system/kvi_locale.cpp:1044
 msgid "Sample"
@@ -5652,9 +5649,8 @@ msgid "Server appears to be a network hub<br>"
 msgstr "El servidor parece ser un concentrador de red<br>"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2080
-#, fuzzy
 msgid "Server capabilities: %Q"
-msgstr "[Parser de servidor]: %s"
+msgstr "Capacidades del servidor: %Q"
 
 #: src/kvirc/kernel/kvi_options.cpp:850
 msgid "Server error"
@@ -6437,12 +6433,12 @@ msgid "The server refused the suggested nickname (%s) and named you %s instead"
 msgstr "El servidor rechazó el nick sugerido (%s) y le nombró %s en su lugar"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:978
-#, fuzzy
 msgid ""
 "The server reports a hostname differing from what KVIrc set for the local "
 "hostname."
 msgstr ""
-"El servidor parece haber cambiado de idea acerca del nombre de máquina local"
+"El servidor informa de un nombre de host diferente del que KVIrc configuró para "
+"el host local."
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:862
 msgid ""
@@ -6646,13 +6642,12 @@ msgstr ""
 "temas en uso es %Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:979
-#, fuzzy
 msgid ""
 "This can happen if you use a broken bouncer, the IRC server masks your IP/"
 "Hostname or something weird is happening on the IRC server."
 msgstr ""
-"Probablemente está usando un repetidor estropeado o algo muy malo está "
-"sucediendo en el servidor IRC"
+"Ésto puede ocurrir si usas un bouncer que no funciona correctamente, el servidor IRC "
+"oculta tu IP/nombre de host o algo raro está ocurriendo en el servidor de IRC."
 
 #: src/kvilib/core/kvi_error.cpp:163
 msgid "This executable has been compiled without SSL support"

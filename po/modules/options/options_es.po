@@ -225,7 +225,7 @@ msgid ""
 "center>"
 msgstr ""
 "<center>Aquí puedes poner la lista de canales a los que entrarás "
-"automaticamento después de establecer una conexión con un servidor de esta "
+"automáticamente después de establecer una conexión con un servidor de esta "
 "red. Para añadir un canal, escribe su nombre en la caja de texto inferior y "
 "pulsa \"<b>Añadir</b>\".</center>"
 
@@ -236,7 +236,7 @@ msgid ""
 "name in the text input below and click \"<b>Add</b>\".</center>"
 msgstr ""
 "<center>Aquí puedes poner la lista de canales a los que entrarás "
-"automaticamento después de establecer una conexión con este servidor. Para "
+"automáticamente después de establecer una conexión con este servidor. Para "
 "añadir un canal, escribe su nombre en la caja de texto inferior y pulsa "
 "\"<b>Añadir</b>\".</center>"
 
@@ -368,12 +368,16 @@ msgid ""
 "<center>If you want to enable SASL authentication, insert your nickname here."
 "</center>"
 msgstr ""
+"<center>Si quieres activar la autenticación SASL, pon tu nick aquí."
+"</center>"
 
 #: src/modules/options/optw_servers.cpp:911
 msgid ""
 "<center>If you want to enable SASL authentication, insert your password here."
 "</center>"
 msgstr ""
+"<center>Si quieres activar la autenticación SASL, pon tu contraseña aquí."
+"</center>"
 
 #: src/modules/options/optw_channel.cpp:146
 msgid ""
@@ -1024,6 +1028,12 @@ msgid ""
 "differentiate between transfers only by looking at the filename. Be careful."
 "</center>"
 msgstr ""
+"<center>Esta opción hace que KVIrc acepte peticiones RESUME con puertos "
+"cambiados.<br>Úsala si algún router entre tú y el receptor cambia los puertos "
+"en las peticiones DCC SEND pero no en las DCC RESUME.<br>Por favor, ten en cuenta "
+"que esta opción podría comportarse erróneamente en ciertos patrones de uso ya "
+"que KVIrc debe diferenciar entre transferencias sólo mirando el nombre del "
+"archivo. Ten cuidado.</center>"
 
 #: src/modules/options/optw_irc.cpp:71
 msgid ""
@@ -1504,6 +1514,8 @@ msgid ""
 "<center>When available and enabled of the specific server, KVIrc will try to "
 "authenticate the user using the SASL procotol</center>"
 msgstr ""
+"<center>Cuando esté disponible y el servidor especificado lo permita, KVIrc "
+"intentará autenticar al usuario usando el protocolo SASL</center>"
 
 #: src/modules/options/optw_dcc.cpp:121
 msgid ""
@@ -1661,13 +1673,13 @@ msgid "Abort"
 msgstr "Abortar"
 
 #: src/modules/options/optw_dcc.cpp:220
-#, fuzzy
 msgid "Accept RESUME requests with broken filename (mIRC file.ext)"
-msgstr "Aceptar RESUME erróneo (mIRC archivo.ext)"
+msgstr "Aceptar peticiones RESUME con un nombre de archivo erróneo "
+"(mIRC archivo.ext)"
 
 #: src/modules/options/optw_dcc.cpp:226
 msgid "Accept RESUME requests with mismatched ports"
-msgstr ""
+msgstr "Aceptar peticiones RESUME con puertos cambiados"
 
 #: src/modules/options/optw_servers.cpp:1320
 msgid "Active Configuration"
@@ -1675,11 +1687,11 @@ msgstr "Configuración activa"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:183
 msgid "Active High-Contrast Foreground (Primary)"
-msgstr "Primer plano activo de alto contraste (Primario)"
+msgstr "Primer plano activo de alto contraste (primario)"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:184
 msgid "Active High-Contrast Foreground (Secondary)"
-msgstr "Primer plano activo de alto contraste (Secundario)"
+msgstr "Primer plano activo de alto contraste (secundario)"
 
 #: src/modules/options/optw_connection.cpp:204
 msgid "Active window"
@@ -1822,7 +1834,7 @@ msgstr "Añadir a la respuesta VERSION:"
 
 #: src/modules/options/optw_servers.cpp:894
 msgid "Authenticate via SASL extension"
-msgstr ""
+msgstr "Autenticar con la extensión SASL"
 
 #: src/modules/options/optw_logging.cpp:49
 msgid "Auto flush logs every"
@@ -1847,7 +1859,7 @@ msgstr "Aceptar automáticamente"
 
 #: src/modules/options/optw_avatar.cpp:80
 msgid "Automatically accept incoming avatars"
-msgstr "Aceptar automaticamente avatares entrantes"
+msgstr "Aceptar automáticamente avatares entrantes"
 
 #: src/modules/options/optw_dcc.cpp:188
 msgid "Automatically clear transfer"
@@ -2177,7 +2189,7 @@ msgstr "Contactos"
 
 #: src/modules/options/optw_input.cpp:43
 msgid "Control char color"
-msgstr "Color de los carácteres de control"
+msgstr "Color de los caracteres de control"
 
 #: src/modules/options/optw_servers.cpp:1297
 msgid "Copy Server"
@@ -2333,9 +2345,9 @@ msgid "Don't show colors in user messages"
 msgstr "No mostrar colores en los mensajes de los usuarios"
 
 #: src/modules/options/optw_notifier.cpp:160
-#, fuzzy
 msgid "Don't show notifier when there is an active fullscreen window"
-msgstr "Mostrar notificaciones en la ventana actual"
+msgstr "No mostrar el notificador cuando haya una ventana activa a "
+"pantalla completa"
 
 #: src/modules/options/optw_ircview.cpp:190
 msgid "DotLine"
@@ -2343,7 +2355,7 @@ msgstr "PuntoLínea"
 
 #: src/modules/options/optw_userlist.cpp:99
 msgid "Dotted Grid"
-msgstr "Rejilla Punteada"
+msgstr "Rejilla punteada"
 
 #: src/modules/options/optw_urlhandlers.cpp:54
 msgid "Double click"
@@ -2488,7 +2500,7 @@ msgstr "Expandir tabulaciones en la entrada usando esta cantidad de espacios:"
 
 #: src/modules/options/optw_servers.cpp:861
 msgid "Extended Capabilities"
-msgstr ""
+msgstr "Capacidades extendidas"
 
 #: src/modules/options/optw_ircoutput.cpp:71
 msgid "External CTCP replies"
@@ -2545,19 +2557,19 @@ msgstr "Patrón de archivo:"
 #: src/modules/options/optw_dcc.cpp:324
 msgid "Flash system taskbar on new dcc chat message"
 msgstr ""
-"Parpadeo en la barra de tareas del sistema con nuevos mensajes en chats dcc"
+"Hacer parpadear la barra de tareas al llegar un nuevo chat DCC"
 
 #: src/modules/options/optw_query.cpp:74
 msgid "Flash system taskbar on new query message"
-msgstr "Parpadeo en la barra de tareas del sistema con los nuevos privados"
+msgstr "Hacer parpadear la barra de tareas al llegar un nuevo privado"
 
 #: src/modules/options/optw_highlighting.cpp:70
 msgid "Flash the system taskbar entry on highlighted messages"
-msgstr "Parpadeo en la barra de tareas del sistema con los mensajes resaltados"
+msgstr "Hacer parpadear la barra de tareas al haber un mensaje resaltado"
 
 #: src/modules/options/optw_notify.cpp:51
 msgid "Flash window when users are going online"
-msgstr "Parpadeo de la ventana cuando los usuarios vayan estando en línea"
+msgstr "Hacer parpadear la ventana cuando los usuarios se conecten"
 
 #: src/modules/options/optw_ctcpfloodprotection.h:30
 msgid "Flood Protection"
@@ -2568,14 +2580,14 @@ msgstr "Protección de flood"
 #: src/modules/options/optw_input.cpp:38
 #: src/modules/options/optw_topiclabel.cpp:36
 msgid "Font"
-msgstr "Fuentes"
+msgstr "Fuente"
 
 #: src/modules/options/optw_windowlist.cpp:85
 #: src/modules/options/optw_windowlist.cpp:245
 #: src/modules/options/optw_ircview.cpp:51
 #: src/modules/options/optw_userlist.cpp:52
 msgid "Font:"
-msgstr "Fuentes:"
+msgstr "Fuente:"
 
 #: src/modules/options/optw_dcc.cpp:355
 msgid "Force half-duplex mode on sound device"
@@ -2583,7 +2595,7 @@ msgstr "Forzar modo half-duplex en dispositivo de sonido"
 
 #: src/modules/options/optw_dcc.cpp:267
 msgid "Force idle step"
-msgstr "Forzar esperas"
+msgstr "Forzar espera"
 
 #: src/modules/options/optw_irc.cpp:69
 msgid "Force immediate quit"
@@ -2623,11 +2635,11 @@ msgstr "General"
 
 #: src/modules/options/dialog.cpp:114
 msgid "General Preferences"
-msgstr "Preferencias Generales"
+msgstr "Preferencias generales"
 
 #: src/modules/options/optw_generalopt.h:30
 msgid "General options"
-msgstr "Opciones general"
+msgstr "Opciones generales"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:45
 msgid "Global application font:"
@@ -2830,11 +2842,11 @@ msgstr "Importar lista"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:185
 msgid "Inactive High-Contrast Foreground (Primary)"
-msgstr "Primer plano inactivo de alto contraste (Primario)"
+msgstr "Primer plano inactivo de alto contraste (primario)"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:186
 msgid "Inactive High-Contrast Foreground (Secondary)"
-msgstr "Primer plano inactivo de alto contraste (Secundario)"
+msgstr "Primer plano inactivo de alto contraste (secundario)"
 
 #: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
 msgid "Input"
@@ -3057,7 +3069,7 @@ msgstr "Máximo número de transferencias DCC"
 
 #: src/modules/options/optw_avatar.cpp:67
 msgid "Maximum requested file size:"
-msgstr "Tamaño máximo de archivo solicitado:"
+msgstr "Tamaño máximo de archivos a solicitar:"
 
 #: src/modules/options/optw_windowlist.cpp:258
 msgid "Maximum width of buttons:"
@@ -3065,7 +3077,7 @@ msgstr "Ancho mínimo de los botones:"
 
 #: src/modules/options/optw_windowlist.cpp:224
 msgid "Maximum width:"
-msgstr "Anchura máxima:"
+msgstr "Ancho máxima:"
 
 #: src/modules/options/optw_sound.cpp:341
 msgid "Me have been kicked"
@@ -3125,11 +3137,11 @@ msgstr "Nivel mínimo para mensajes de baja prioridad"
 
 #: src/modules/options/optw_windowlist.cpp:255
 msgid "Minimum width of buttons:"
-msgstr "Anchura mínima de los botones:"
+msgstr "Ancho mínima de los botones:"
 
 #: src/modules/options/optw_windowlist.cpp:223
 msgid "Minimum width:"
-msgstr "Anchura mínima:"
+msgstr "Ancho mínima:"
 
 #: src/modules/options/optw_dcc.cpp:359
 msgid "Mixer device:"
@@ -3143,6 +3155,8 @@ msgstr "Manejador del ratón"
 msgid ""
 "Mouse wheel changes the active window instead of scrolling the scrollbar"
 msgstr ""
+"La rueda del ratón cambia la ventana activa en lugar de desplazar la barra "
+"de desplazamiento"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
@@ -3509,8 +3523,8 @@ msgid ""
 "Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the "
 "normal nicks"
 msgstr ""
-"Colocar nicks comenzando con caracteres no alfanuméricos (como _CHICO_GUAY_) "
-"después de los nicks normales"
+"Colocar nicks que comienzan con letras no-alfa (como _CHICO_GUAY_) "
+"después del resto"
 
 #: src/modules/options/optw_userlist.cpp:98
 msgid "Plain Grid"
@@ -3643,9 +3657,8 @@ msgid "Protection"
 msgstr "Protección"
 
 #: src/modules/options/optw_servers.cpp:722
-#, fuzzy
 msgid "Protocol Encoding:"
-msgstr "Codificación de texto:"
+msgstr "Codificación del protocolo:"
 
 #: src/modules/options/optw_urlhandlers.cpp:66
 msgid "Protocol handler"
@@ -3705,7 +3718,7 @@ msgstr "Privados"
 
 #: src/modules/options/optw_servers.cpp:867
 msgid "Query extended capabilities on connect"
-msgstr ""
+msgstr "Pedir las capacidades extendidas al conectar"
 
 #: src/modules/options/optw_logging.cpp:41
 msgid "Query windows"
@@ -3771,7 +3784,7 @@ msgstr "Recordar avatares para usuarios registrados"
 
 #: src/modules/options/optw_interfacefeatures.cpp:46
 msgid "Remember window properties"
-msgstr "Recordar propiedades de ventana"
+msgstr "Recordar las propiedades de ventana"
 
 #: src/modules/options/optw_mediatypes.cpp:126
 msgid "Remote open command:"
@@ -3818,9 +3831,8 @@ msgid "Right"
 msgstr "Derecha"
 
 #: src/modules/options/optw_servers.cpp:889
-#, fuzzy
 msgid "SASL Authentication"
-msgstr "Activar autenticación SASL"
+msgstr "Autenticación SASL"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:102
 msgid "SOURCE"
@@ -3872,7 +3884,7 @@ msgstr "Escalar al cargar (y en tooltips de usuario)"
 
 #: src/modules/options/optw_uparser.h:30
 msgid "Scripting Engine"
-msgstr ""
+msgstr "Motor de scripting"
 
 #: src/modules/options/optw_tray.cpp:49
 msgid "Select message levels to notify"
@@ -4120,7 +4132,7 @@ msgstr "No guardar números de tipo de mensaje en registros"
 
 #: src/modules/options/optw_servers.cpp:876
 msgid "Switch to SSL/TLS by using the STARTTLS extension"
-msgstr ""
+msgstr "Cambiar a SSL/TLS usando la extensión STARTTLS"
 
 #: src/modules/options/optw_ircoutput.cpp:64
 msgid "System locale format"
@@ -4188,7 +4200,7 @@ msgstr ""
 "tamaño no podrá ser visto en los monitores<br> de todos los usuarios y "
 "probablemente tendrá que ser escalado<br> por los clientes remotos con "
 "algoritmos de baja calidad para<br> mejorar el rendimiento. *Deberías* "
-"escalarla manualmente<br> a un tamaño más normal (como 800x600) o elegir una "
+"escalarlo manualmente<br> a un tamaño más normal (como 800x600) o elegir una "
 "imagen<br> diferente."
 
 #: src/modules/options/optw_identity.cpp:626
@@ -4197,6 +4209,9 @@ msgid ""
 "refuse to download it.<br>You *should* either scale it, use a different "
 "storage<br>format or choose a different image."
 msgstr ""
+"El avatar que has elegido es mayor de 500 KB<br>y la mayoría de los clientes "
+"se negarán a descargarlo.<br>*Deberías* o cambiarle el tamaño, usar un formato "
+"de<br>almacenamiento distinto o elegir otra imagen."
 
 #: src/modules/options/dialog.cpp:117
 msgid "Theme Preferences"
@@ -4340,6 +4355,10 @@ msgid ""
 "distracted by the notifier or it may even switch your game from fullscreen "
 "to window mode."
 msgstr ""
+"Esta opción hace que el notificador no se muestre cuando hay una ventana "
+"a pantalla completa activa. Ésto es útil para jugar, donde el notificador "
+"podría distraerte o incluso podría cambiar el juego de modo a pantalla "
+"completa a modo ventana."
 
 #: src/modules/options/optw_avatar.cpp:107
 msgid ""
@@ -4556,7 +4575,8 @@ msgstr "Usar completado de nick al estilo bash"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:100
 msgid "Use compositing for real transparency"
-msgstr "Usar compositing para transparencia real"
+msgstr ""
+"Usar compositing (composición de escritorio) para transparencia real"
 
 #: src/modules/options/optw_highlighting.cpp:102
 msgid "Use custom alert level"
@@ -4572,7 +4592,7 @@ msgstr "Usar el fondo de escritorio para la transparencia"
 
 #: src/modules/options/optw_userlist.cpp:68
 msgid "Use different color for own nick:"
-msgstr "Usar color diferente para el propio nick:"
+msgstr "Usar un color distinto para el nick propio:"
 
 #: src/modules/options/optw_dcc.cpp:259
 msgid "Use fast send (send ahead)"
@@ -4612,7 +4632,7 @@ msgstr "Utilizar color especial para marca de tiempo"
 
 #: src/modules/options/optw_messages.cpp:83
 msgid "Use specified colors for own nick:"
-msgstr "Utilizar los colores especificados para el nick propio:"
+msgstr "Usar estos colores para el nick propio:"
 
 #: src/modules/options/optw_urlhandlers.cpp:69
 msgid "Use system URL handlers"
@@ -4648,7 +4668,7 @@ msgstr "Usar rango de puertos definidos por el usuario"
 
 #: src/modules/options/optw_ignore.cpp:46
 msgid "Use verbose ignore (show messages in console)"
-msgstr "Usar ignore detallado (muestra los en la consola)"
+msgstr "Usar ignore detallado (muestra los mensajes en la consola)"
 
 #: src/modules/options/optw_dcc.cpp:51
 msgid "Use workaround for firewall"
@@ -4673,7 +4693,7 @@ msgstr "Prefijo y sufijo definidos por el usuario"
 
 #: src/modules/options/optw_userlist.cpp:63
 msgid "User-op:"
-msgstr "Usuarios operadores:"
+msgstr "User-op:"
 
 #: src/modules/options/optw_userlist.h:32
 msgid "Userlist"
