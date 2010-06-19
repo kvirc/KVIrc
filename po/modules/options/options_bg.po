@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-12 16:26+0200\n"
+"POT-Creation-Date: 2010-06-19 20:08+0200\n"
 "PO-Revision-Date: 2004-06-01 21:36+0300\n"
 "Last-Translator: Атанас Мавров <bugar@developer.bg>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
@@ -570,7 +570,7 @@ msgid ""
 "TEXT</b>.</center>"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:725
+#: src/modules/options/optw_identity.cpp:727
 msgid ""
 "<center>This is a set of rules to use profiles.KVIrc will use them to handle "
 "the user connection data before the data is sent to the IRC server.<br>This "
@@ -1213,7 +1213,7 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:738
+#: src/modules/options/optw_identity.cpp:740
 msgid "Add Profile"
 msgstr ""
 
@@ -1225,7 +1225,7 @@ msgstr ""
 #: src/modules/options/optw_servers.cpp:972
 #: src/modules/options/optw_channel.h:64 src/modules/options/optw_dcc.h:58
 #: src/modules/options/optw_dcc.h:102 src/modules/options/optw_irc.h:57
-#: src/modules/options/optw_identity.h:203
+#: src/modules/options/optw_identity.h:202
 #: src/modules/options/optw_connection.h:45
 msgid "Advanced"
 msgstr ""
@@ -1293,7 +1293,7 @@ msgstr ""
 msgid "Allow up to:"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:719
+#: src/modules/options/optw_identity.cpp:721
 msgid "Alt. Nick"
 msgstr ""
 
@@ -1309,7 +1309,7 @@ msgstr ""
 msgid "Alt. Nickname 3:"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:901
+#: src/modules/options/optw_identity.cpp:925
 msgid "Alternative Nickname:"
 msgstr ""
 
@@ -1394,7 +1394,7 @@ msgstr ""
 msgid "Automatically unload unused modules"
 msgstr ""
 
-#: src/modules/options/optw_identity.h:178
+#: src/modules/options/optw_identity.h:177
 msgid "Avatar"
 msgstr ""
 
@@ -1524,7 +1524,7 @@ msgstr ""
 
 #: src/modules/options/dialog.cpp:242 src/modules/options/optw_identity.cpp:96
 #: src/modules/options/optw_identity.cpp:239
-#: src/modules/options/optw_identity.cpp:929
+#: src/modules/options/optw_identity.cpp:953
 #: src/modules/options/optw_nickserv.cpp:128
 #: src/modules/options/optw_servers.cpp:372
 #: src/modules/options/optw_servers.cpp:982
@@ -1792,7 +1792,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:744
+#: src/modules/options/optw_identity.cpp:746
 msgid "Delete Profile"
 msgstr ""
 
@@ -1898,7 +1898,7 @@ msgstr ""
 msgid "Echo channel topic"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:741
+#: src/modules/options/optw_identity.cpp:743
 msgid "Edit Profile"
 msgstr ""
 
@@ -1915,7 +1915,7 @@ msgstr ""
 msgid "Enable Ignore For"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:704
+#: src/modules/options/optw_identity.cpp:706
 msgid "Enable Network Profiles"
 msgstr ""
 
@@ -2140,7 +2140,7 @@ msgstr ""
 #: src/modules/options/optw_servers.cpp:242
 #: src/modules/options/optw_channel.h:52 src/modules/options/optw_dcc.h:45
 #: src/modules/options/optw_dcc.h:88 src/modules/options/optw_irc.h:43
-#: src/modules/options/optw_identity.h:154
+#: src/modules/options/optw_identity.h:153
 #: src/modules/options/optw_interfacelookglobal.h:33
 msgid "General"
 msgstr ""
@@ -2308,7 +2308,7 @@ msgstr ""
 
 #: src/modules/options/optw_servers.cpp:616
 #: src/modules/options/optw_interfacefeatures.cpp:61
-#: src/modules/options/optw_identity.h:138
+#: src/modules/options/optw_identity.h:137
 msgid "Identity"
 msgstr ""
 
@@ -2371,7 +2371,7 @@ msgstr "Вътрешна грешка"
 msgid "Invalid NickServ Rule"
 msgstr "Неправилен порт"
 
-#: src/modules/options/optw_identity.cpp:997
+#: src/modules/options/optw_identity.cpp:842
 #, fuzzy
 msgid "Invalid Profile Rule"
 msgstr "Неправилен порт"
@@ -2666,31 +2666,31 @@ msgstr ""
 msgid "Mute"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:869
+#: src/modules/options/optw_identity.cpp:893
 msgid "MyNetwork"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:870
+#: src/modules/options/optw_identity.cpp:894
 msgid "MyNick"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:871
+#: src/modules/options/optw_identity.cpp:895
 msgid "MyNick2"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:873
+#: src/modules/options/optw_identity.cpp:897
 msgid "MyRealName"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:872
+#: src/modules/options/optw_identity.cpp:896
 msgid "MyUserName"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:716
+#: src/modules/options/optw_identity.cpp:718
 msgid "Name"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:717
+#: src/modules/options/optw_identity.cpp:719
 msgid "Network"
 msgstr ""
 
@@ -2702,7 +2702,7 @@ msgstr ""
 msgid "Network Interfaces"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:885
+#: src/modules/options/optw_identity.cpp:909
 msgid "Network Name:"
 msgstr ""
 
@@ -2768,7 +2768,7 @@ msgstr ""
 msgid "NickServ Request Mask"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:718
+#: src/modules/options/optw_identity.cpp:720
 #: src/modules/options/optw_nickserv.cpp:243
 #: src/modules/options/optw_servers.cpp:316
 msgid "Nickname"
@@ -2787,7 +2787,7 @@ msgid "Nickname alternatives"
 msgstr ""
 
 #: src/modules/options/optw_identity.cpp:304
-#: src/modules/options/optw_identity.cpp:893
+#: src/modules/options/optw_identity.cpp:917
 #: src/modules/options/optw_servers.cpp:159
 #: src/modules/options/optw_servers.cpp:562
 msgid "Nickname:"
@@ -2842,8 +2842,8 @@ msgstr ""
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:933
-#: src/modules/options/optw_identity.cpp:997
+#: src/modules/options/optw_identity.cpp:842
+#: src/modules/options/optw_identity.cpp:957
 #: src/modules/options/optw_nickserv.cpp:133
 #: src/modules/options/optw_nickserv.cpp:154
 #: src/modules/options/optw_servers.cpp:976
@@ -3119,19 +3119,19 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:866
+#: src/modules/options/optw_identity.cpp:890
 msgid "Profile Editor - KVIrc"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:868
+#: src/modules/options/optw_identity.cpp:892
 msgid "Profile Name"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:877
+#: src/modules/options/optw_identity.cpp:901
 msgid "Profile Name:"
 msgstr ""
 
-#: src/modules/options/optw_identity.h:228
+#: src/modules/options/optw_identity.h:227
 msgid "Profiles"
 msgstr ""
 
@@ -3178,15 +3178,15 @@ msgstr ""
 msgid "Proxy:"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:905
+#: src/modules/options/optw_identity.cpp:929
 msgid "Put here the alternative nickname you want to use"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:889
+#: src/modules/options/optw_identity.cpp:913
 msgid "Put here the name of the network"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:881
+#: src/modules/options/optw_identity.cpp:905
 msgid "Put here the name of the profile"
 msgstr ""
 
@@ -3194,15 +3194,15 @@ msgstr ""
 msgid "Put here the nickname that you have registered with NickServ"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:897
+#: src/modules/options/optw_identity.cpp:921
 msgid "Put here the nickname you want to use"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:921
+#: src/modules/options/optw_identity.cpp:945
 msgid "Put here the realname you want to use"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:913
+#: src/modules/options/optw_identity.cpp:937
 msgid "Put here the username you want to use"
 msgstr ""
 
@@ -3244,11 +3244,11 @@ msgstr ""
 msgid "Real name:"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:721
+#: src/modules/options/optw_identity.cpp:723
 msgid "Realname"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:917
+#: src/modules/options/optw_identity.cpp:941
 msgid "Realname:"
 msgstr ""
 
@@ -3700,7 +3700,7 @@ msgstr ""
 msgid "Theme Preferences"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:997
+#: src/modules/options/optw_identity.cpp:842
 msgid "There is already a profile with that name"
 msgstr ""
 
@@ -3727,7 +3727,7 @@ msgstr ""
 msgid "This check enables the automatic identification with NickServ"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:705
+#: src/modules/options/optw_identity.cpp:707
 msgid "This check enables the use of network profiles"
 msgstr ""
 
@@ -4129,13 +4129,13 @@ msgstr ""
 msgid "Userlist"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:720
+#: src/modules/options/optw_identity.cpp:722
 msgid "Username"
 msgstr ""
 
 #: src/modules/options/optw_proxy.cpp:117
 #: src/modules/options/optw_identity.cpp:317
-#: src/modules/options/optw_identity.cpp:909
+#: src/modules/options/optw_identity.cpp:933
 #: src/modules/options/optw_servers.cpp:139
 #: src/modules/options/optw_servers.cpp:541
 msgid "Username:"

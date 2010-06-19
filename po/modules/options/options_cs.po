@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-12 16:26+0200\n"
+"POT-Creation-Date: 2010-06-19 20:08+0200\n"
 "PO-Revision-Date: 2008-01-16 08:51+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -754,7 +754,7 @@ msgstr ""
 "co děláte.<br>Také nezapomínejte, že poskytovaná hesla jsou uložena jako "
 "<b>OBYČEJNÝ TEXT</b>.Pravým kliknutím přidáte/odeberete pravidla.</center>"
 
-#: src/modules/options/optw_identity.cpp:725
+#: src/modules/options/optw_identity.cpp:727
 msgid ""
 "<center>This is a set of rules to use profiles.KVIrc will use them to handle "
 "the user connection data before the data is sent to the IRC server.<br>This "
@@ -1639,7 +1639,7 @@ msgstr "Aktivní okno"
 msgid "Add"
 msgstr "Přidat"
 
-#: src/modules/options/optw_identity.cpp:738
+#: src/modules/options/optw_identity.cpp:740
 #, fuzzy
 msgid "Add Profile"
 msgstr "Profil"
@@ -1652,7 +1652,7 @@ msgstr "Přidat pravidlo"
 #: src/modules/options/optw_servers.cpp:972
 #: src/modules/options/optw_channel.h:64 src/modules/options/optw_dcc.h:58
 #: src/modules/options/optw_dcc.h:102 src/modules/options/optw_irc.h:57
-#: src/modules/options/optw_identity.h:203
+#: src/modules/options/optw_identity.h:202
 #: src/modules/options/optw_connection.h:45
 msgid "Advanced"
 msgstr "Pokročilé"
@@ -1720,7 +1720,7 @@ msgstr "Výstrahy/Zvýraznění"
 msgid "Allow up to:"
 msgstr "Bude li více než:"
 
-#: src/modules/options/optw_identity.cpp:719
+#: src/modules/options/optw_identity.cpp:721
 #, fuzzy
 msgid "Alt. Nick"
 msgstr "Alt. přezdívka 1:"
@@ -1737,7 +1737,7 @@ msgstr "Alt. přezdívka 2:"
 msgid "Alt. Nickname 3:"
 msgstr "Alt. přezdívka 3:"
 
-#: src/modules/options/optw_identity.cpp:901
+#: src/modules/options/optw_identity.cpp:925
 #, fuzzy
 msgid "Alternative Nickname:"
 msgstr "Alt. přezdívka 1:"
@@ -1823,7 +1823,7 @@ msgstr "Automaticky navázat při auto-příjmu"
 msgid "Automatically unload unused modules"
 msgstr "Automaticky mazat z paměti nepoužité moduly"
 
-#: src/modules/options/optw_identity.h:178
+#: src/modules/options/optw_identity.h:177
 msgid "Avatar"
 msgstr "Avatar"
 
@@ -1953,7 +1953,7 @@ msgstr "Cache IP adresy"
 
 #: src/modules/options/dialog.cpp:242 src/modules/options/optw_identity.cpp:96
 #: src/modules/options/optw_identity.cpp:239
-#: src/modules/options/optw_identity.cpp:929
+#: src/modules/options/optw_identity.cpp:953
 #: src/modules/options/optw_nickserv.cpp:128
 #: src/modules/options/optw_servers.cpp:372
 #: src/modules/options/optw_servers.cpp:982
@@ -2222,7 +2222,7 @@ msgstr "Prodleva mezi pokusy:"
 msgid "Delete"
 msgstr "Smazat"
 
-#: src/modules/options/optw_identity.cpp:744
+#: src/modules/options/optw_identity.cpp:746
 #, fuzzy
 msgid "Delete Profile"
 msgstr "Smazat pravidlo"
@@ -2331,7 +2331,7 @@ msgstr "Kreslit některé emotikony (smajlíky) jako obrázky"
 msgid "Echo channel topic"
 msgstr "Vypsat téma kanálu"
 
-#: src/modules/options/optw_identity.cpp:741
+#: src/modules/options/optw_identity.cpp:743
 #, fuzzy
 msgid "Edit Profile"
 msgstr "Profil"
@@ -2349,7 +2349,7 @@ msgstr "Povolit Anti-spam pro"
 msgid "Enable Ignore For"
 msgstr "Povolit ignorování pro"
 
-#: src/modules/options/optw_identity.cpp:704
+#: src/modules/options/optw_identity.cpp:706
 #, fuzzy
 msgid "Enable Network Profiles"
 msgstr "Vlastnosti sítě"
@@ -2584,7 +2584,7 @@ msgstr "Pohlaví:"
 #: src/modules/options/optw_servers.cpp:242
 #: src/modules/options/optw_channel.h:52 src/modules/options/optw_dcc.h:45
 #: src/modules/options/optw_dcc.h:88 src/modules/options/optw_irc.h:43
-#: src/modules/options/optw_identity.h:154
+#: src/modules/options/optw_identity.h:153
 #: src/modules/options/optw_interfacelookglobal.h:33
 msgid "General"
 msgstr "Hlavní"
@@ -2753,7 +2753,7 @@ msgstr "Příkaz identifikace"
 
 #: src/modules/options/optw_servers.cpp:616
 #: src/modules/options/optw_interfacefeatures.cpp:61
-#: src/modules/options/optw_identity.h:138
+#: src/modules/options/optw_identity.h:137
 msgid "Identity"
 msgstr "Identita"
 
@@ -2815,7 +2815,7 @@ msgstr "Interval nečinnosti:"
 msgid "Invalid NickServ Rule"
 msgstr "Neplatné NickServ pravidlo"
 
-#: src/modules/options/optw_identity.cpp:997
+#: src/modules/options/optw_identity.cpp:842
 #, fuzzy
 msgid "Invalid Profile Rule"
 msgstr "Neplatné NickServ pravidlo"
@@ -3115,34 +3115,34 @@ msgstr ""
 msgid "Mute"
 msgstr "Ztlumený"
 
-#: src/modules/options/optw_identity.cpp:869
+#: src/modules/options/optw_identity.cpp:893
 #, fuzzy
 msgid "MyNetwork"
 msgstr "Síť"
 
-#: src/modules/options/optw_identity.cpp:870
+#: src/modules/options/optw_identity.cpp:894
 msgid "MyNick"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:871
+#: src/modules/options/optw_identity.cpp:895
 msgid "MyNick2"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:873
+#: src/modules/options/optw_identity.cpp:897
 #, fuzzy
 msgid "MyRealName"
 msgstr "Skutečné jméno:"
 
-#: src/modules/options/optw_identity.cpp:872
+#: src/modules/options/optw_identity.cpp:896
 #, fuzzy
 msgid "MyUserName"
 msgstr "Uživatelské jméno:"
 
-#: src/modules/options/optw_identity.cpp:716
+#: src/modules/options/optw_identity.cpp:718
 msgid "Name"
 msgstr "Jméno"
 
-#: src/modules/options/optw_identity.cpp:717
+#: src/modules/options/optw_identity.cpp:719
 msgid "Network"
 msgstr "Síť"
 
@@ -3154,7 +3154,7 @@ msgstr "Detaily sítě"
 msgid "Network Interfaces"
 msgstr "Síťová rozhraní"
 
-#: src/modules/options/optw_identity.cpp:885
+#: src/modules/options/optw_identity.cpp:909
 #, fuzzy
 msgid "Network Name:"
 msgstr "Síť:"
@@ -3221,7 +3221,7 @@ msgstr "NickServ Maska"
 msgid "NickServ Request Mask"
 msgstr "NickServ Maska požadavku"
 
-#: src/modules/options/optw_identity.cpp:718
+#: src/modules/options/optw_identity.cpp:720
 #: src/modules/options/optw_nickserv.cpp:243
 #: src/modules/options/optw_servers.cpp:316
 msgid "Nickname"
@@ -3240,7 +3240,7 @@ msgid "Nickname alternatives"
 msgstr "Alternativní přezdívky"
 
 #: src/modules/options/optw_identity.cpp:304
-#: src/modules/options/optw_identity.cpp:893
+#: src/modules/options/optw_identity.cpp:917
 #: src/modules/options/optw_servers.cpp:159
 #: src/modules/options/optw_servers.cpp:562
 msgid "Nickname:"
@@ -3296,8 +3296,8 @@ msgstr "Oznámit dokončení v oznamovači"
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr "Oznámit selhanou DCC komunikaci vzdálenému konci"
 
-#: src/modules/options/optw_identity.cpp:933
-#: src/modules/options/optw_identity.cpp:997
+#: src/modules/options/optw_identity.cpp:842
+#: src/modules/options/optw_identity.cpp:957
 #: src/modules/options/optw_nickserv.cpp:133
 #: src/modules/options/optw_nickserv.cpp:154
 #: src/modules/options/optw_servers.cpp:976
@@ -3584,22 +3584,22 @@ msgstr "Soukromá/kanálová oznámení"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/modules/options/optw_identity.cpp:866
+#: src/modules/options/optw_identity.cpp:890
 #, fuzzy
 msgid "Profile Editor - KVIrc"
 msgstr "Soubor existuje - KVIrc"
 
-#: src/modules/options/optw_identity.cpp:868
+#: src/modules/options/optw_identity.cpp:892
 #, fuzzy
 msgid "Profile Name"
 msgstr "Profil"
 
-#: src/modules/options/optw_identity.cpp:877
+#: src/modules/options/optw_identity.cpp:901
 #, fuzzy
 msgid "Profile Name:"
 msgstr "Profil"
 
-#: src/modules/options/optw_identity.h:228
+#: src/modules/options/optw_identity.h:227
 #, fuzzy
 msgid "Profiles"
 msgstr "Profil"
@@ -3648,16 +3648,16 @@ msgstr "Proxy server:"
 msgid "Proxy:"
 msgstr "Proxy:"
 
-#: src/modules/options/optw_identity.cpp:905
+#: src/modules/options/optw_identity.cpp:929
 msgid "Put here the alternative nickname you want to use"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:889
+#: src/modules/options/optw_identity.cpp:913
 #, fuzzy
 msgid "Put here the name of the network"
 msgstr "Prosím zadejte vlastnosti pro novou nástrojovou lištu"
 
-#: src/modules/options/optw_identity.cpp:881
+#: src/modules/options/optw_identity.cpp:905
 msgid "Put here the name of the profile"
 msgstr ""
 
@@ -3665,16 +3665,16 @@ msgstr ""
 msgid "Put here the nickname that you have registered with NickServ"
 msgstr "Sem vložte přezdívku, kterou máte registrovanou s NickServ"
 
-#: src/modules/options/optw_identity.cpp:897
+#: src/modules/options/optw_identity.cpp:921
 #, fuzzy
 msgid "Put here the nickname you want to use"
 msgstr "Sem vložte přezdívku, kterou máte registrovanou s NickServ"
 
-#: src/modules/options/optw_identity.cpp:921
+#: src/modules/options/optw_identity.cpp:945
 msgid "Put here the realname you want to use"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:913
+#: src/modules/options/optw_identity.cpp:937
 msgid "Put here the username you want to use"
 msgstr ""
 
@@ -3716,12 +3716,12 @@ msgstr "S&mazat server"
 msgid "Real name:"
 msgstr "Skutečné jméno:"
 
-#: src/modules/options/optw_identity.cpp:721
+#: src/modules/options/optw_identity.cpp:723
 #, fuzzy
 msgid "Realname"
 msgstr "Skutečné jméno:"
 
-#: src/modules/options/optw_identity.cpp:917
+#: src/modules/options/optw_identity.cpp:941
 #, fuzzy
 msgid "Realname:"
 msgstr "Skutečné jméno:"
@@ -4190,7 +4190,7 @@ msgstr ""
 msgid "Theme Preferences"
 msgstr "Předvolby Motivu"
 
-#: src/modules/options/optw_identity.cpp:997
+#: src/modules/options/optw_identity.cpp:842
 msgid "There is already a profile with that name"
 msgstr ""
 
@@ -4221,7 +4221,7 @@ msgstr "Toto umožňuje výběr zvukového systému použitého s KVIrc."
 msgid "This check enables the automatic identification with NickServ"
 msgstr "Toto povolí automatickou identifikaci s NickServ"
 
-#: src/modules/options/optw_identity.cpp:705
+#: src/modules/options/optw_identity.cpp:707
 msgid "This check enables the use of network profiles"
 msgstr ""
 
@@ -4662,14 +4662,14 @@ msgstr "Uživ. op:"
 msgid "Userlist"
 msgstr "Uživatelé"
 
-#: src/modules/options/optw_identity.cpp:720
+#: src/modules/options/optw_identity.cpp:722
 #, fuzzy
 msgid "Username"
 msgstr "Uživatelské jméno:"
 
 #: src/modules/options/optw_proxy.cpp:117
 #: src/modules/options/optw_identity.cpp:317
-#: src/modules/options/optw_identity.cpp:909
+#: src/modules/options/optw_identity.cpp:933
 #: src/modules/options/optw_servers.cpp:139
 #: src/modules/options/optw_servers.cpp:541
 msgid "Username:"

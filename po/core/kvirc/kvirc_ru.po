@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-12 16:26+0200\n"
+"POT-Creation-Date: 2010-06-19 20:07+0200\n"
 "PO-Revision-Date: 2010-01-30 15:53+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -106,8 +106,8 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] приглашает вас на канал \
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] теперь известен как \r!n\r%Q\r"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1963
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1966
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1967
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1970
 msgid "\r!n\r%Q\r invited %Q into channel %Q"
 msgstr "\r!n\r%Q\r приглашает %Q на канал %Q"
 
@@ -297,91 +297,91 @@ msgstr "%Q в IRC"
 msgid "%Q unsets avatar"
 msgstr "%Q отменил аватар"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2058
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2062
 msgid "%Q: no such channel"
 msgstr "%Q: нет такого канала"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2047
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2051
 msgid "%Q: no such server"
 msgstr "%Q: нет такого сервера"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1512
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1516
 msgid "%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"
 msgstr "%c\r!n\r%Q\r%c WHOIS информация от \r!s\r%Q\r"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1529
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1533
 msgid "%c\r!n\r%Q\r%c WHOWAS info from \r!s\r%Q\r"
 msgstr "%c\r!n\r%Q\r%c WHOWAS информация от \r!s\r%Q\r"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1212
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1216
 msgid "%c\r!n\r%Q\r%c is %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 msgstr "%c\r!n\r%Q\r%c является %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1433
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1437
 msgid "%c\r!n\r%Q\r%c is authenticated as %Q"
 msgstr "%c\r!n\r%Q\r%c идентифицирован как: %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1159
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1163
 msgid "%c\r!n\r%Q\r%c is away: %Q"
 msgstr "%c\r!n\r%Q\r%c отошёл: %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1237
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1241
 msgid "%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 msgstr "%c\r!n\r%Q\r%c был %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1305
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1309
 msgid "%c\r!n\r%Q\r%c's channels: %Q"
 msgstr "%c\r!n\r%Q\r%c каналы: %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2147
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2151
 msgid "%c\r!n\r%Q\r%c's codepage is %Q: %Q"
 msgstr "%c\r!n\r%Q\r%c использует кодировку %Q: %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1352
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1356
 msgid "%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"
 msgstr "%c\r!n\r%Q\r%c время простоя: %u д %u ч %u м %u с"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1465
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1469
 msgid "%c\r!n\r%Q\r%c's info: %Q"
 msgstr "%c\r!n\r%Q\r%c информация: %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1241
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1245
 msgid "%c\r!n\r%Q\r%c's real name was: %Q"
 msgstr "%c\r!n\r%Q\r%c было реальное имя: %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1217
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1221
 msgid "%c\r!n\r%Q\r%c's real name: %Q"
 msgstr "%c\r!n\r%Q\r%c реальное имя: %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1414
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1418
 msgid "%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"
 msgstr "%c\r!n\r%Q\r%c сервер: \r!s\r%Q\r - %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1376
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1380
 msgid "%c\r!n\r%Q\r%c's signon time: %Q"
 msgstr "%c\r!n\r%Q\r%c время авторизации: %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1927
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1931
 #, c-format
 msgid "%c\r!s\r%s\r%c's administrator is %s"
 msgstr "%c\r!s\r%s\r%c администратор %s"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1938
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1942
 #, c-format
 msgid "%c\r!s\r%s\r%c's contact address is %s"
 msgstr "%c\r!s\r%s\r%c контактный адрес %s"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1988
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1992
 #, c-format
 msgid "%c\r!s\r%s\r%c's information:"
 msgstr "%c\r!s\r%s\r%c's информация:"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1916
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1920
 #, c-format
 msgid "%c\r!s\r%s\r%c's server info: %s"
 msgstr "%c\r!s\r%s\r%c информация о сервере: %s"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2009
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2013
 msgid "%c\r!s\r%s\r%c's time is %Q"
 msgstr "%c\r!s\r%s\r%c's время %Q"
 
@@ -949,7 +949,7 @@ msgstr "<br><b>Ключ:</b> %s"
 msgid "<br><b>Limit:</b> %s"
 msgstr "<br><b>Лимит:</b> %s"
 
-#: src/modules/list/listwindow.cpp:196
+#: src/modules/list/listwindow.cpp:207
 msgid ""
 "<center><b>/LIST command parameters:</b><br>Many servers accept special "
 "parameters that allow you to filter the returned entries.<br>Commonly, "
@@ -1295,7 +1295,7 @@ msgstr "Попытка использования прокси %s на порт�
 msgid "Attempting to rejoin \r!c\r%Q\r..."
 msgstr "Попытка вернуться \r!c\r%Q\r..."
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2260
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2264
 #, fuzzy
 msgid "Authenticated as %Q"
 msgstr "%c\r!n\r%Q\r%c идентифицирован как: %Q"
@@ -1617,7 +1617,7 @@ msgstr ""
 "Не могу включить сервис идентификации на IPv6 : не могу настроить "
 "прослушивание адреса"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1597
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1601
 msgid "Can't evaluate creation time"
 msgstr "Не возможно определить время создания"
 
@@ -1785,27 +1785,27 @@ msgstr ""
 msgid "Cannot request links: No active connection"
 msgstr "Невозможно запросить данные о связи серверов: Нет активных соединений"
 
-#: src/modules/list/listwindow.cpp:257
+#: src/modules/list/listwindow.cpp:268
 msgid "Cannot request list: No active connection"
 msgstr "Невозможно получить список: Нет активных соединений"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2093
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2097
 msgid "Cannot send text to channel %Q"
 msgstr "Не могу отослать текст на канал %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2075
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2079
 msgid "Cannot send text to channel %Q: %Q"
 msgstr "Не могу отослать данные на канал %Q: %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2090
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2094
 msgid "Cannot send to channel"
 msgstr "Не могу отослать данные на канал"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2072
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2076
 msgid "Cannot send to channel: %Q"
 msgstr "Не могу отослать данные на канал: %Q"
 
-#: src/modules/list/listwindow.cpp:268
+#: src/modules/list/listwindow.cpp:279
 msgid "Cannot stop list download, no active connection."
 msgstr "остановить загрузку списка: Нет активных соединений"
 
@@ -1871,13 +1871,13 @@ msgid "Changed text encoding to %Q"
 msgstr "кодировка текста изменена на %Q"
 
 #: src/kvirc/kernel/kvi_actionmanager.cpp:68
-#: src/modules/list/listwindow.cpp:210
+#: src/modules/list/listwindow.cpp:221
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:67
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:75
 msgid "Channel"
 msgstr "Канал"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1624
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1628
 msgid "Channel \r!c\r%Q\r was created at %Q"
 msgstr "Канал \r!c\r%Q\r создан %Q"
 
@@ -1887,7 +1887,7 @@ msgstr "Канал \r!c\r%Q\r создан %Q"
 msgid "Channel CTCP"
 msgstr "CTCP в канал"
 
-#: src/modules/list/listwindow.cpp:308
+#: src/modules/list/listwindow.cpp:319
 #, c-format
 msgid "Channel List [IRC Context %u]"
 msgstr "Список каналов [IRC Контекст %u]"
@@ -1912,15 +1912,15 @@ msgstr "Смена ключа канала"
 msgid "Channel limit change"
 msgstr "Смена лимита канала"
 
-#: src/modules/list/listwindow.cpp:345
+#: src/modules/list/listwindow.cpp:356
 msgid "Channel list"
 msgstr "Список каналов"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1686
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1690
 msgid "Channel list begin: channel, users, topic"
 msgstr "Начало канального списка: канал, пользователи, тема"
 
-#: src/modules/list/listwindow.cpp:342
+#: src/modules/list/listwindow.cpp:353
 msgid "Channel list for %Q - %Q"
 msgstr "Список каналов для %Q - %Q"
 
@@ -1969,11 +1969,11 @@ msgstr "Тема канала: %Q"
 msgid "Channel topic:"
 msgstr "Тема канала:"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1619
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1623
 msgid "Channel was created at %Q"
 msgstr "Канал создан %Q"
 
-#: src/modules/list/listwindow.cpp:429
+#: src/modules/list/listwindow.cpp:440
 msgid "Channels list download finished"
 msgstr "Завершено обновление списка каналов"
 
@@ -1989,16 +1989,16 @@ msgstr "Проверять при запуске"
 msgid "Choose Avatar - KVIrc"
 msgstr "Выбор аватара - KVIrc"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2105 src/kvirc/ui/kvi_ircview.cpp:2107
+#: src/kvirc/ui/kvi_ircview.cpp:2092 src/kvirc/ui/kvi_ircview.cpp:2094
 #, fuzzy
 msgid "Choose Font"
 msgstr "Выберите временный шрифт..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:2072
+#: src/kvirc/ui/kvi_ircview.cpp:2059
 msgid "Choose Temporary Background..."
 msgstr "Выберите временный фон..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:2071
+#: src/kvirc/ui/kvi_ircview.cpp:2058
 msgid "Choose Temporary Font..."
 msgstr "Выберите временный шрифт..."
 
@@ -2030,7 +2030,7 @@ msgstr "Выберите файл картинки - KVIrc"
 msgid "Choose an Old Configuration Folder - KVIrc Setup"
 msgstr "Выберите старый каталог конфигурации - Установщик KVIrc"
 
-#: src/modules/list/listwindow.cpp:348 src/modules/list/listwindow.cpp:372
+#: src/modules/list/listwindow.cpp:359 src/modules/list/listwindow.cpp:383
 msgid "Choose filename"
 msgstr "Выберите имя файла"
 
@@ -2038,7 +2038,7 @@ msgstr "Выберите имя файла"
 msgid "Choose image ..."
 msgstr "Выберите изображение ..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:2116
+#: src/kvirc/ui/kvi_ircview.cpp:2103
 msgid "Choose the background image..."
 msgstr "Выберите фоновое изображение..."
 
@@ -2058,7 +2058,7 @@ msgstr "Блок заголовка слишком длинный: превыш�
 msgid "Clear"
 msgstr "Очистить"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2076
+#: src/kvirc/ui/kvi_ircview.cpp:2063
 msgid "Clear Buffer"
 msgstr "Очистить буфер"
 
@@ -2133,7 +2133,7 @@ msgstr "Свободный цвет (без цветов ANSI)"
 msgid "Color options (#RRGGBB)"
 msgstr "Опция цвета (#RRGGBB)"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1057
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1061
 msgid "Command syntax %Q: %Q"
 msgstr "Синтаксис команды %Q: %Q"
 
@@ -2168,7 +2168,7 @@ msgstr "Ошибка инициализации библиотеки сжати�
 msgid "Compression library internal error"
 msgstr "Внутренняя ошибка библиотеки сжатия"
 
-#: src/modules/list/listwindow.cpp:348
+#: src/modules/list/listwindow.cpp:359
 msgid "Configuration files (*.kvc)"
 msgstr "Файлы конфигурации (*.kvc)"
 
@@ -2225,7 +2225,7 @@ msgstr "Подключиться/Отключиться"
 msgid "Connected since"
 msgstr "Подключен с"
 
-#: src/modules/list/listwindow.cpp:280 src/modules/links/linkswindow.cpp:131
+#: src/modules/list/listwindow.cpp:291 src/modules/links/linkswindow.cpp:131
 #, c-format
 msgid "Connected to %s (%s)"
 msgstr "Подключен к %s (%s)"
@@ -2749,16 +2749,16 @@ msgstr "Криптованое извещение канала"
 msgid "Encrypted query notice"
 msgstr "Криптованое извещение привата"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1998
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2002
 #, c-format
 msgid "End of %c\r!s\r%s\r%c's information"
 msgstr "Конец %c\r!s\r%s\r%c's информации"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1766
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1770
 msgid "End of LINKS"
 msgstr "Конец LINKS"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1727
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1731
 msgid "End of LIST"
 msgstr "Конец LIST"
 
@@ -2775,7 +2775,7 @@ msgstr "Конец WHO списка для %Q"
 msgid "End of channel %Q for \r!c\r%Q\r"
 msgstr "Окончание канала %Q для \r!c\r%Q\r"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1105
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1109
 msgid "End of help about %Q"
 msgstr "Конец справки о программе %Q"
 
@@ -2855,7 +2855,7 @@ msgstr "Растянуть по &горизонтали"
 msgid "Expand &Vertically"
 msgstr "Растянуть по &вертикали"
 
-#: src/modules/list/listwindow.cpp:177
+#: src/modules/list/listwindow.cpp:188
 msgid "Export List"
 msgstr "Экспортировать список"
 
@@ -2912,7 +2912,7 @@ msgstr "Не могу запустить заданный модуль шифр�
 msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
 msgstr "Ошибка загрузки аватара с именем \"%Q\" и локальным путём \"%Q\""
 
-#: src/kvirc/ui/kvi_ircview.cpp:2121
+#: src/kvirc/ui/kvi_ircview.cpp:2109
 msgid "Failed to load the selected image"
 msgstr "Ошибка загрузки выбранной картинки"
 
@@ -3216,7 +3216,7 @@ msgstr "Эй товарищ... не спи, замерзнешь!"
 msgid "Hey... are ya sure that your network is up?"
 msgstr "Эй... вы уверены что ваша сеть работает?"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2065
+#: src/kvirc/ui/kvi_ircview.cpp:2052
 msgid "Hide Find Window"
 msgstr "Скрыть окно поиска"
 
@@ -3418,7 +3418,7 @@ msgstr "Проигнорировано приглашение от \r!nс\r%Q\r 
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "Проигнорировано приватное сообщение от \r!nс\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
-#: src/modules/list/listwindow.cpp:170
+#: src/modules/list/listwindow.cpp:181
 msgid "Import List"
 msgstr "Импортировать список"
 
@@ -3584,7 +3584,7 @@ msgstr "Повреждены данные пакета"
 msgid "Invalid direction for this engine"
 msgstr "Недействительная директива для этого движка"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2121
+#: src/kvirc/ui/kvi_ircview.cpp:2109
 msgid "Invalid image"
 msgstr "Не является изображением"
 
@@ -3888,7 +3888,7 @@ msgstr "Ссылка"
 msgid "Link overlay foreground"
 msgstr "Начальная ссылка оверлея"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1751
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1755
 msgid "Link: %Q"
 msgstr "Ссылка: %Q"
 
@@ -3914,7 +3914,7 @@ msgstr "Окно ссылок уже открыто для этого конте
 msgid "List Download"
 msgstr "Загрузка списка"
 
-#: src/modules/list/listwindow.cpp:285
+#: src/modules/list/listwindow.cpp:296
 msgid "List cannot be requested: Not connected to a server"
 msgstr "Список не получен: Нет соединения с сервером"
 
@@ -3926,7 +3926,7 @@ msgstr "Список типов окон, доступных в этой вер�
 msgid "List window already open for this IRC context"
 msgstr "Окно списка уже открыто для этого контекста IRC"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1713
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1717
 msgid "List: %Q"
 msgstr "Список: %Q"
 
@@ -4424,7 +4424,7 @@ msgstr "Обновления не найдены"
 msgid "No users in the notify list"
 msgstr "Нет пользователей в списке уведомлений"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:985
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:989
 msgid "No way to login as '\r!n\r%Q\r' (%d: %Q), trying '%Q'..."
 msgstr "Невозможно войти под ником '\r!n\r%Q\r' (%d: %Q), пробую '%Q'..."
 
@@ -4446,7 +4446,7 @@ msgstr "Отключен"
 msgid "Not enough parameters"
 msgstr "Не достаточно аргументов"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2275 src/kvirc/ui/kvi_ircview.cpp:2329
+#: src/kvirc/ui/kvi_ircview.cpp:2263 src/kvirc/ui/kvi_ircview.cpp:2317
 msgid "Not found"
 msgstr "Не найден"
 
@@ -4637,7 +4637,7 @@ msgstr "Octet поток (неизвестный)"
 msgid "Often used directories"
 msgstr "Часто используемые каталоги"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2121 src/kvirc/ui/kvi_maskeditor.cpp:85
+#: src/kvirc/ui/kvi_ircview.cpp:2109 src/kvirc/ui/kvi_maskeditor.cpp:85
 #: src/kvirc/ui/kvi_imagedialog.cpp:160
 msgid "Ok"
 msgstr "Ок"
@@ -4999,7 +4999,7 @@ msgstr ""
 "если вы хотите работать с CBC режимом, вы должны\n"
 "использовать ключ(и) \"cbc:\".\n"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2260 src/kvirc/ui/kvi_ircview.cpp:2313
+#: src/kvirc/ui/kvi_ircview.cpp:2248 src/kvirc/ui/kvi_ircview.cpp:2301
 #, c-format
 msgid "Pos %d"
 msgstr "Позиция %d"
@@ -5053,7 +5053,7 @@ msgstr "Обработка DCC %Q запроса от \r!n\r%Q\r [%Q@\r!h\r%Q\r]
 msgid "Processing link: %s"
 msgstr "Обработка соединений: %s"
 
-#: src/modules/list/listwindow.cpp:499
+#: src/modules/list/listwindow.cpp:512
 msgid "Processing list: %Q"
 msgstr "Обработка списка: %Q"
 
@@ -5271,7 +5271,7 @@ msgstr "Реальное имя:"
 msgid "Received HTTP response: %s"
 msgstr "Получен ответ HTTP: %s"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1342
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1346
 msgid "Received a broken RPL_WHOISIDLE, can't evaluate the idle time"
 msgstr "Получен битый RPL_WHOISIDLE, не могу определить время простоя"
 
@@ -5394,15 +5394,15 @@ msgstr "Сообщить об ошибке / Высказать пожелани
 msgid "Request Links"
 msgstr "Запросить соединения"
 
-#: src/modules/list/listwindow.cpp:184
+#: src/modules/list/listwindow.cpp:195
 msgid "Request List"
 msgstr "Запросить список"
 
-#: src/modules/list/listwindow.cpp:418 src/modules/links/linkswindow.cpp:419
+#: src/modules/list/listwindow.cpp:429 src/modules/links/linkswindow.cpp:419
 msgid "Reset"
 msgstr "Сброс"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2073
+#: src/kvirc/ui/kvi_ircview.cpp:2060
 msgid "Reset Temporary Background"
 msgstr "Сбросить временный фон"
 
@@ -5414,7 +5414,7 @@ msgstr "Восстановить сценарии по &умолчанию"
 msgid "Restore Default Script - KVIrc"
 msgstr "Восстановление сценариев по умолчанию - KVirc"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1806
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1810
 msgid "Restoring pre-away nickname (%Q)"
 msgstr "Восстановление ника (%Q)"
 
@@ -5448,11 +5448,11 @@ msgstr ""
 msgid "Run KVS Script"
 msgstr "Запустить KVS скрипт"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2294
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2298
 msgid "SASL Authentication error: %Q"
 msgstr ""
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2275
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2279
 msgid "SASL authentication successful"
 msgstr ""
 
@@ -5460,7 +5460,7 @@ msgstr ""
 msgid "SSL message"
 msgstr "Сообщение SSL"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2217
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2221
 msgid "STARTTLS reply received but SSL support is not complied in: ignoring"
 msgstr ""
 
@@ -5521,7 +5521,7 @@ msgstr "Прокрутить вверх чтобы читать с послед�
 msgid "Search"
 msgstr "Поиск"
 
-#: src/kvirc/ui/kvi_ircview.cpp:322
+#: src/kvirc/ui/kvi_ircview.cpp:318
 msgid "Search tools"
 msgstr "Инструменты поиска"
 
@@ -5609,7 +5609,7 @@ msgstr "Отослан запрос соединения, ожидаю подт�
 msgid "Sent links request, waiting for reply..."
 msgstr "Отослан запрос связей серверов, ожидаю ответ..."
 
-#: src/modules/list/listwindow.cpp:254
+#: src/modules/list/listwindow.cpp:265
 msgid "Sent list request, waiting for reply..."
 msgstr "Отослан запрос списка, ожидаю ответ..."
 
@@ -5743,7 +5743,7 @@ msgstr "Установил"
 msgid "Set on"
 msgstr "Дата установки"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1844
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1848
 msgid "Setting away nickname (%Q)"
 msgstr "Установка ника в режиме Отошёл (%Q)"
 
@@ -5779,7 +5779,7 @@ msgstr "Показать %1"
 msgid "Show &Icon Table"
 msgstr "Показать таблицу &иконок"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2067
+#: src/kvirc/ui/kvi_ircview.cpp:2054
 msgid "Show Find Window"
 msgstr "Показать окно поиска"
 
@@ -6022,7 +6022,7 @@ msgstr "Сокет открыт"
 msgid "Socket warning"
 msgstr "Предупреждение сокета"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:970
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:974
 msgid ""
 "Something really weird is happening: the server is refusing all the login "
 "nicknames..."
@@ -6118,11 +6118,11 @@ msgstr "Запуск списка уведомлений"
 msgid "Stop Paste"
 msgstr "Остановить вставку"
 
-#: src/modules/list/listwindow.cpp:191
+#: src/modules/list/listwindow.cpp:202
 msgid "Stop list download"
 msgstr "Остановить загрузку списка"
 
-#: src/modules/list/listwindow.cpp:266
+#: src/modules/list/listwindow.cpp:277
 msgid "Stopping the list download..."
 msgstr "Завершаем загрузку списка.."
 
@@ -6433,7 +6433,7 @@ msgid ""
 msgstr ""
 "Сервер не поддерживает команду STARTTLS. Ваше соединение НЕ будет зашифровано"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:975
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:979
 msgid ""
 "The server is refusing all the login nicknames: giving up, you must send the "
 "nickname manually"
@@ -6744,11 +6744,11 @@ msgstr "Время ожидания запроса вышло: закрываю 
 msgid "Timestamp"
 msgstr "Отметка времени"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1088
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1092
 msgid "Tip for %Q: %Q"
 msgstr "Подсказка для %Q: %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1085
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1089
 msgid "Tip: %Q"
 msgstr "Подсказка: %Q"
 
@@ -6760,7 +6760,7 @@ msgstr "Панели инструментов"
 msgid "Tools"
 msgstr "Инструменты"
 
-#: src/modules/list/listwindow.cpp:212
+#: src/modules/list/listwindow.cpp:223
 msgid "Topic"
 msgstr "Тема"
 
@@ -6846,7 +6846,7 @@ msgstr "Начальный URL"
 msgid "URL:IRC Protocol"
 msgstr "URL:IRC Протокол"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1665
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1669
 msgid "USERHOST info: %Q"
 msgstr "Информация USERHOST: %Q"
 
@@ -7200,7 +7200,7 @@ msgstr "Имя пользователя"
 msgid "Userop mode change"
 msgstr "Изменение режима пользователь-оператор"
 
-#: src/modules/list/listwindow.cpp:211
+#: src/modules/list/listwindow.cpp:222
 msgid "Users"
 msgstr "Пользователи"
 
@@ -7478,7 +7478,7 @@ msgstr ""
 msgid "You are not connected to a server"
 msgstr "Вы не подключены к серверу"
 
-#: src/modules/list/listwindow.cpp:320
+#: src/modules/list/listwindow.cpp:331
 msgid "You cannot export an empty list"
 msgstr "Вы не можете экспортировать пустой список"
 
@@ -7563,21 +7563,21 @@ msgstr "Вы не оператор: Вы не можете изменять ре
 msgid "You're not connected to a server"
 msgstr "Вы не подключены к серверу"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2108
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2116
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2112
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2120
 msgid "Your encoding is now %Q"
 msgstr "Используемая кодировка %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:2171
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:2175
 #, c-format
 msgid "Your user mode is %s"
 msgstr "Ваш пользовательский режим %s"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2069
+#: src/kvirc/ui/kvi_ircview.cpp:2056
 msgid "Zoom In"
 msgstr "Увеличить"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2070
+#: src/kvirc/ui/kvi_ircview.cpp:2057
 msgid "Zoom Out"
 msgstr "Уменьшить"
 
@@ -7625,7 +7625,7 @@ msgstr "[Канал мёртв]"
 msgid "[Dead query]"
 msgstr "[Мёртвый приват]"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1826
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1830
 msgid "[Entering away status]: %Q"
 msgstr "[Включение статуса Отошёл]: %Q"
 
@@ -7639,11 +7639,11 @@ msgstr "[IDENT]: %s"
 msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
 msgstr "[ПРЕДУПРЕЖДЕНИЕ СОЕДИНЕНИЯ]: Сообщение сокета обрезано до 512 байт."
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1795
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1799
 msgid "[Leaving away status after %ud %uh %um %us]: %Q"
 msgstr "[Выход из статуса Отошёл после %u д %u ч %u м %u с]: %Q"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:1799
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:1803
 msgid "[Leaving away status]: %Q"
 msgstr "[Выход из статуса Отошёл]: %Q"
 

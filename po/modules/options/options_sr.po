@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-12 16:26+0200\n"
+"POT-Creation-Date: 2010-06-19 20:08+0200\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -701,7 +701,7 @@ msgstr ""
 "KVIrc konfiguracionom fajlu. <br>Desni klik za dodavanje/uklanjanje pravila."
 "</center>"
 
-#: src/modules/options/optw_identity.cpp:725
+#: src/modules/options/optw_identity.cpp:727
 msgid ""
 "<center>This is a set of rules to use profiles.KVIrc will use them to handle "
 "the user connection data before the data is sent to the IRC server.<br>This "
@@ -1540,7 +1540,7 @@ msgstr "&Terminal prozor"
 msgid "Add"
 msgstr "Dodaj"
 
-#: src/modules/options/optw_identity.cpp:738
+#: src/modules/options/optw_identity.cpp:740
 #, fuzzy
 msgid "Add Profile"
 msgstr "Uvod"
@@ -1554,7 +1554,7 @@ msgstr "Dodaj zabranu (ban)"
 #: src/modules/options/optw_servers.cpp:972
 #: src/modules/options/optw_channel.h:64 src/modules/options/optw_dcc.h:58
 #: src/modules/options/optw_dcc.h:102 src/modules/options/optw_irc.h:57
-#: src/modules/options/optw_identity.h:203
+#: src/modules/options/optw_identity.h:202
 #: src/modules/options/optw_connection.h:45
 #, fuzzy
 msgid "Advanced"
@@ -1634,7 +1634,7 @@ msgstr "Omogući URL isticanje"
 msgid "Allow up to:"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:719
+#: src/modules/options/optw_identity.cpp:721
 #, fuzzy
 msgid "Alt. Nick"
 msgstr "Nadimak 1"
@@ -1654,7 +1654,7 @@ msgstr "Nadimak 2"
 msgid "Alt. Nickname 3:"
 msgstr "Nadimak 3"
 
-#: src/modules/options/optw_identity.cpp:901
+#: src/modules/options/optw_identity.cpp:925
 #, fuzzy
 msgid "Alternative Nickname:"
 msgstr "Nadimak 1"
@@ -1752,7 +1752,7 @@ msgstr "Napravi minimizirano kad automatski-prihvataš"
 msgid "Automatically unload unused modules"
 msgstr "Automatski uđi na kanal na koi si pozvan (INVITE)"
 
-#: src/modules/options/optw_identity.h:178
+#: src/modules/options/optw_identity.h:177
 #, fuzzy
 msgid "Avatar"
 msgstr "Avatar slika"
@@ -1903,7 +1903,7 @@ msgstr "Keširaj IP adresu"
 
 #: src/modules/options/dialog.cpp:242 src/modules/options/optw_identity.cpp:96
 #: src/modules/options/optw_identity.cpp:239
-#: src/modules/options/optw_identity.cpp:929
+#: src/modules/options/optw_identity.cpp:953
 #: src/modules/options/optw_nickserv.cpp:128
 #: src/modules/options/optw_servers.cpp:372
 #: src/modules/options/optw_servers.cpp:982
@@ -2210,7 +2210,7 @@ msgstr ""
 msgid "Delete"
 msgstr "Obriši"
 
-#: src/modules/options/optw_identity.cpp:744
+#: src/modules/options/optw_identity.cpp:746
 #, fuzzy
 msgid "Delete Profile"
 msgstr "Obriši ovo pravilo"
@@ -2330,7 +2330,7 @@ msgstr "Nacrtaj neke emocije kao stvarne ikone"
 msgid "Echo channel topic"
 msgstr "Nema postavljenog naslova kanala"
 
-#: src/modules/options/optw_identity.cpp:741
+#: src/modules/options/optw_identity.cpp:743
 #, fuzzy
 msgid "Edit Profile"
 msgstr "Uvod"
@@ -2350,7 +2350,7 @@ msgstr ""
 msgid "Enable Ignore For"
 msgstr "Omogući ignorisanje za NOTICE"
 
-#: src/modules/options/optw_identity.cpp:704
+#: src/modules/options/optw_identity.cpp:706
 #, fuzzy
 msgid "Enable Network Profiles"
 msgstr "Podešavanja"
@@ -2599,7 +2599,7 @@ msgstr "Generalne opcije"
 #: src/modules/options/optw_servers.cpp:242
 #: src/modules/options/optw_channel.h:52 src/modules/options/optw_dcc.h:45
 #: src/modules/options/optw_dcc.h:88 src/modules/options/optw_irc.h:43
-#: src/modules/options/optw_identity.h:154
+#: src/modules/options/optw_identity.h:153
 #: src/modules/options/optw_interfacelookglobal.h:33
 #, fuzzy
 msgid "General"
@@ -2787,7 +2787,7 @@ msgstr "Komanda predstavljanja"
 
 #: src/modules/options/optw_servers.cpp:616
 #: src/modules/options/optw_interfacefeatures.cpp:61
-#: src/modules/options/optw_identity.h:138
+#: src/modules/options/optw_identity.h:137
 msgid "Identity"
 msgstr ""
 
@@ -2855,7 +2855,7 @@ msgstr "Ident korisničko ime"
 msgid "Invalid NickServ Rule"
 msgstr "Pogrešan ID tajmera"
 
-#: src/modules/options/optw_identity.cpp:997
+#: src/modules/options/optw_identity.cpp:842
 #, fuzzy
 msgid "Invalid Profile Rule"
 msgstr "Pogrešan ID tajmera"
@@ -3196,34 +3196,34 @@ msgstr ""
 msgid "Mute"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:869
+#: src/modules/options/optw_identity.cpp:893
 #, fuzzy
 msgid "MyNetwork"
 msgstr "Mreža"
 
-#: src/modules/options/optw_identity.cpp:870
+#: src/modules/options/optw_identity.cpp:894
 msgid "MyNick"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:871
+#: src/modules/options/optw_identity.cpp:895
 msgid "MyNick2"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:873
+#: src/modules/options/optw_identity.cpp:897
 #, fuzzy
 msgid "MyRealName"
 msgstr "Stvarno ime"
 
-#: src/modules/options/optw_identity.cpp:872
+#: src/modules/options/optw_identity.cpp:896
 #, fuzzy
 msgid "MyUserName"
 msgstr "Korisničko ime"
 
-#: src/modules/options/optw_identity.cpp:716
+#: src/modules/options/optw_identity.cpp:718
 msgid "Name"
 msgstr "Naziv"
 
-#: src/modules/options/optw_identity.cpp:717
+#: src/modules/options/optw_identity.cpp:719
 msgid "Network"
 msgstr "Mreža"
 
@@ -3237,7 +3237,7 @@ msgstr "Podešavanja"
 msgid "Network Interfaces"
 msgstr "Mreža je nedostupna"
 
-#: src/modules/options/optw_identity.cpp:885
+#: src/modules/options/optw_identity.cpp:909
 #, fuzzy
 msgid "Network Name:"
 msgstr "Mreža"
@@ -3313,7 +3313,7 @@ msgstr "NickServ maska"
 msgid "NickServ Request Mask"
 msgstr "NickServ maska"
 
-#: src/modules/options/optw_identity.cpp:718
+#: src/modules/options/optw_identity.cpp:720
 #: src/modules/options/optw_nickserv.cpp:243
 #: src/modules/options/optw_servers.cpp:316
 msgid "Nickname"
@@ -3335,7 +3335,7 @@ msgid "Nickname alternatives"
 msgstr "Nadimak 4"
 
 #: src/modules/options/optw_identity.cpp:304
-#: src/modules/options/optw_identity.cpp:893
+#: src/modules/options/optw_identity.cpp:917
 #: src/modules/options/optw_servers.cpp:159
 #: src/modules/options/optw_servers.cpp:562
 msgid "Nickname:"
@@ -3397,8 +3397,8 @@ msgstr "Obavesti o uspešnom u konzoli"
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:933
-#: src/modules/options/optw_identity.cpp:997
+#: src/modules/options/optw_identity.cpp:842
+#: src/modules/options/optw_identity.cpp:957
 #: src/modules/options/optw_nickserv.cpp:133
 #: src/modules/options/optw_nickserv.cpp:154
 #: src/modules/options/optw_servers.cpp:976
@@ -3717,22 +3717,22 @@ msgstr "šifrovano obaveštenje kanala"
 msgid "Profile"
 msgstr "Uvod"
 
-#: src/modules/options/optw_identity.cpp:866
+#: src/modules/options/optw_identity.cpp:890
 #, fuzzy
 msgid "Profile Editor - KVIrc"
 msgstr "Fajl postoji"
 
-#: src/modules/options/optw_identity.cpp:868
+#: src/modules/options/optw_identity.cpp:892
 #, fuzzy
 msgid "Profile Name"
 msgstr "Uvod"
 
-#: src/modules/options/optw_identity.cpp:877
+#: src/modules/options/optw_identity.cpp:901
 #, fuzzy
 msgid "Profile Name:"
 msgstr "Uvod"
 
-#: src/modules/options/optw_identity.h:228
+#: src/modules/options/optw_identity.h:227
 #, fuzzy
 msgid "Profiles"
 msgstr "Uvod"
@@ -3785,16 +3785,16 @@ msgstr "irc server"
 msgid "Proxy:"
 msgstr "Proxy:"
 
-#: src/modules/options/optw_identity.cpp:905
+#: src/modules/options/optw_identity.cpp:929
 msgid "Put here the alternative nickname you want to use"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:889
+#: src/modules/options/optw_identity.cpp:913
 #, fuzzy
 msgid "Put here the name of the network"
 msgstr "Nema korisnika u listi obaveštenja"
 
-#: src/modules/options/optw_identity.cpp:881
+#: src/modules/options/optw_identity.cpp:905
 #, fuzzy
 msgid "Put here the name of the profile"
 msgstr "Unesite ime fajla databaze"
@@ -3803,15 +3803,15 @@ msgstr "Unesite ime fajla databaze"
 msgid "Put here the nickname that you have registered with NickServ"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:897
+#: src/modules/options/optw_identity.cpp:921
 msgid "Put here the nickname you want to use"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:921
+#: src/modules/options/optw_identity.cpp:945
 msgid "Put here the realname you want to use"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:913
+#: src/modules/options/optw_identity.cpp:937
 msgid "Put here the username you want to use"
 msgstr ""
 
@@ -3861,12 +3861,12 @@ msgstr "Ukloni server"
 msgid "Real name:"
 msgstr "Stvarno ime"
 
-#: src/modules/options/optw_identity.cpp:721
+#: src/modules/options/optw_identity.cpp:723
 #, fuzzy
 msgid "Realname"
 msgstr "Stvarno ime"
 
-#: src/modules/options/optw_identity.cpp:917
+#: src/modules/options/optw_identity.cpp:941
 #, fuzzy
 msgid "Realname:"
 msgstr "Stvarno ime"
@@ -4379,7 +4379,7 @@ msgstr ""
 msgid "Theme Preferences"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:997
+#: src/modules/options/optw_identity.cpp:842
 msgid "There is already a profile with that name"
 msgstr ""
 
@@ -4406,7 +4406,7 @@ msgstr ""
 msgid "This check enables the automatic identification with NickServ"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:705
+#: src/modules/options/optw_identity.cpp:707
 msgid "This check enables the use of network profiles"
 msgstr ""
 
@@ -4868,13 +4868,13 @@ msgstr "Korisnik"
 msgid "Userlist"
 msgstr "Lista korisnika"
 
-#: src/modules/options/optw_identity.cpp:720
+#: src/modules/options/optw_identity.cpp:722
 msgid "Username"
 msgstr "Korisničko ime"
 
 #: src/modules/options/optw_proxy.cpp:117
 #: src/modules/options/optw_identity.cpp:317
-#: src/modules/options/optw_identity.cpp:909
+#: src/modules/options/optw_identity.cpp:933
 #: src/modules/options/optw_servers.cpp:139
 #: src/modules/options/optw_servers.cpp:541
 msgid "Username:"

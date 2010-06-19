@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-12 16:26+0200\n"
+"POT-Creation-Date: 2010-06-19 20:08+0200\n"
 "PO-Revision-Date: 2010-05-22 15:52+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -32,23 +32,23 @@ msgstr " richiede sia un array come primo parametro o quattro interi"
 msgid " requires either an array as first parameter or two integers"
 msgstr " richiede sia un array come primo parametro o due interi"
 
-#: src/modules/objects/class_painter.cpp:1007
+#: src/modules/objects/class_painter.cpp:1014
 msgid "$fontMetricsHeight: the painter is not active!"
 msgstr "$fontMetricsHeight: il painter non è attivo!"
 
-#: src/modules/objects/class_painter.cpp:997
+#: src/modules/objects/class_painter.cpp:1004
 msgid "$fontMetricsWidth: the painter is not active!"
 msgstr "$fontMetricsWidth: il painter non è attivo!"
 
-#: src/modules/objects/class_widget.cpp:1604
+#: src/modules/objects/class_widget.cpp:1602
 msgid "$move() requires either an array as first parameter or two integers"
 msgstr "$move() richiede sia un array come primo parametro o due interi"
 
-#: src/modules/objects/class_widget.cpp:1661
+#: src/modules/objects/class_widget.cpp:1659
 msgid "$resize() requires either an array as first parameter or two integers"
 msgstr "$resize() richiede sia un array come primo parametro o due interi"
 
-#: src/modules/objects/class_widget.cpp:1361
+#: src/modules/objects/class_widget.cpp:1359
 msgid ""
 "$setBackgroundColor requires either an array as first parameter, one hex "
 "string or color name, or three integers"
@@ -60,7 +60,7 @@ msgstr ""
 msgid "$setColor requires either an array as first parameter or three integers"
 msgstr "$setColor richiede o un array come primo parametro o tre interi"
 
-#: src/modules/objects/class_widget.cpp:1279
+#: src/modules/objects/class_widget.cpp:1277
 msgid ""
 "$setForegroundColor requires either an array as first parameter, one hex "
 "string or color name, or three integers"
@@ -68,7 +68,7 @@ msgstr ""
 "$setForegroundColor richiede come primo parametro un array, una stringa "
 "esadecimale, un nome di colore o tre interi"
 
-#: src/modules/objects/class_widget.cpp:1157
+#: src/modules/objects/class_widget.cpp:1155
 msgid ""
 "$setGeometry() requires either an array as first parameter or four integers"
 msgstr ""
@@ -136,7 +136,7 @@ msgstr "Non posso aggiungere un oggetto non popupmenu"
 #: src/modules/objects/class_wizard.cpp:168
 #: src/modules/objects/class_window.cpp:143
 #: src/modules/objects/class_window.cpp:148
-#: src/modules/objects/class_widget.cpp:1779
+#: src/modules/objects/class_widget.cpp:1782
 msgid "Can't add a non-widget object"
 msgstr "Non posso aggiungere un oggetto non widget"
 
@@ -144,22 +144,22 @@ msgstr "Non posso aggiungere un oggetto non widget"
 msgid "Can't add a null object"
 msgstr "Non posso aggiungere un oggetto nullo"
 
-#: src/modules/objects/class_tabwidget.cpp:376
+#: src/modules/objects/class_tabwidget.cpp:416
 msgid "Can't find the tab"
 msgstr "Non trovo la scheda"
 
-#: src/modules/objects/class_tabwidget.cpp:257
-#: src/modules/objects/class_tabwidget.cpp:276
-#: src/modules/objects/class_tabwidget.cpp:298
-#: src/modules/objects/class_tabwidget.cpp:353
+#: src/modules/objects/class_tabwidget.cpp:296
+#: src/modules/objects/class_tabwidget.cpp:315
+#: src/modules/objects/class_tabwidget.cpp:337
+#: src/modules/objects/class_tabwidget.cpp:392
 msgid "Can't find the tab "
 msgstr "Non trovo la scheda"
 
-#: src/modules/objects/class_listwidget.cpp:305
+#: src/modules/objects/class_listwidget.cpp:558
 msgid "Can't insert a non-widget object"
 msgstr "Non posso inserire un oggetto non widget"
 
-#: src/modules/objects/class_listwidget.cpp:300
+#: src/modules/objects/class_listwidget.cpp:553
 msgid "Can't insert the listwidget itself!"
 msgstr "Non posso inserire la stessa listwidget!"
 
@@ -181,12 +181,13 @@ msgstr "Non posso aprire il file '%Q' in scrittura"
 msgid "Class '%Q' is not defined"
 msgstr "Classe '%Q' non definita"
 
-#: src/modules/objects/class_painter.cpp:1560
+#: src/modules/objects/class_painter.cpp:1567
 msgid "Color name or triplette RGB/HSV values required"
 msgstr "Richiesto nome del colore o tripletta RGB/HSV"
 
-#: src/modules/objects/class_painter.cpp:864
-#: src/modules/objects/class_painter.cpp:917
+#: src/modules/objects/class_listwidget.cpp:403
+#: src/modules/objects/class_painter.cpp:871
+#: src/modules/objects/class_painter.cpp:924
 msgid "Color name or triplette rgb/hsv value required"
 msgstr "Richiesto nome del colore o tripletta RGB/HSV"
 
@@ -241,7 +242,8 @@ msgstr "Errore nell'implementazione della classe KVS: processo annullato"
 msgid "Error near line %d, column %d"
 msgstr "Errore vicino alla riga %d, colonna %d"
 
-#: src/modules/objects/class_tablewidget.cpp:251
+#: src/modules/objects/class_listwidget.cpp:355
+#: src/modules/objects/class_tablewidget.cpp:266
 #: src/modules/objects/class_treewidgetitem.cpp:422
 msgid ""
 "Error occured: the suitable file '%Q' is not of the correct format or it is "
@@ -291,6 +293,11 @@ msgstr "Non posso leggere il file '%Q'."
 msgid "Icon '%Q' doesn't exist"
 msgstr "L'icona '%Q' non esiste"
 
+#: src/modules/objects/class_button.cpp:125
+#, fuzzy
+msgid "Image parameter missing"
+msgstr "Parametri invalidi"
+
 #: src/modules/objects/libkviobjects.cpp:559
 msgid "Inexisting class object for objects.name"
 msgstr "Oggetto classe inesistente per objects.name"
@@ -336,7 +343,7 @@ msgstr "Area dock invalida"
 msgid "Invalid insertion Policy '%Q'"
 msgstr "Policy di inserimento '%Q' invalida"
 
-#: src/modules/objects/class_painter.cpp:1169
+#: src/modules/objects/class_painter.cpp:1176
 msgid "Invalid mode '%Q'"
 msgstr "Modo '%Q' invalido"
 
@@ -348,7 +355,7 @@ msgstr ""
 "Il gestore dell'oggetto passato come parametro è invalido (l'oggetto non "
 "esiste più?)"
 
-#: src/modules/objects/class_widget.cpp:1693
+#: src/modules/objects/class_widget.cpp:1691
 msgid "Invalid parameters"
 msgstr "Parametri invalidi"
 
@@ -360,7 +367,7 @@ msgstr "Modo di ridimensionamento invalido, passo a Auto"
 msgid "Invalid selection mode '%Q'"
 msgstr "Modo di selezione '%Q' invalido"
 
-#: src/modules/objects/class_listwidget.cpp:269
+#: src/modules/objects/class_listwidget.cpp:522
 msgid "Invalid selection mode '%Q' assuming single"
 msgstr "Modo di selezione '%Q' invalido, assumo single"
 
@@ -373,16 +380,16 @@ msgstr "Indirizzo socket invalido"
 msgid "Invalid socket object specified (it doesn't inherit from socket)"
 msgstr "Oggetto socket invalido (non eredità dalla socket)"
 
-#: src/modules/objects/class_listwidget.cpp:188
-#: src/modules/objects/class_listwidget.cpp:206
+#: src/modules/objects/class_listwidget.cpp:441
+#: src/modules/objects/class_listwidget.cpp:459
 #: src/modules/objects/class_combobox.cpp:175
 #: src/modules/objects/class_combobox.cpp:192
 #, c-format
 msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
 msgstr "L'elemento indice [%d] è troppo grosso - passo a $count() - 1 [%d]"
 
-#: src/modules/objects/class_tablewidget.cpp:192
-#: src/modules/objects/class_tablewidget.cpp:213
+#: src/modules/objects/class_tablewidget.cpp:206
+#: src/modules/objects/class_tablewidget.cpp:228
 msgid "Item out of the tablewidget size"
 msgstr "Elemento fuori dalla dimensione della tablewidget"
 
@@ -398,7 +405,7 @@ msgstr "Listen fallita"
 msgid "Missing Qt plugin for database %Q"
 msgstr "Manca il plugin Qt per il database %Q"
 
-#: src/modules/objects/class_painter.cpp:1036
+#: src/modules/objects/class_painter.cpp:1043
 msgid "Missing filename"
 msgstr "Manca il nome del file"
 
@@ -406,7 +413,7 @@ msgstr "Manca il nome del file"
 msgid "No IPv6 support in this executable"
 msgstr "Non c'è il supporto IPv6 in questo eseguibile"
 
-#: src/modules/objects/class_widget.cpp:1774
+#: src/modules/objects/class_widget.cpp:1777
 msgid "No Layout associated to the widget "
 msgstr "Non c'è Layout associato alla widget"
 
@@ -418,7 +425,7 @@ msgstr "Nessuna connessione query aperta"
 msgid "No socket object specified"
 msgstr "Nessun oggetto socket specificato"
 
-#: src/modules/objects/class_listwidget.cpp:185
+#: src/modules/objects/class_listwidget.cpp:438
 #: src/modules/objects/class_combobox.cpp:172
 #: src/modules/objects/class_combobox.cpp:280
 msgid "No string parameter given - using empty string"
@@ -433,15 +440,15 @@ msgstr "Nessuna linea '%d'"
 msgid "No such open mode '%Q'"
 msgstr "Nessun modo di apertura '%Q'"
 
-#: src/modules/objects/class_painter.cpp:1062
-#: src/modules/objects/class_painter.cpp:1087
+#: src/modules/objects/class_painter.cpp:1069
+#: src/modules/objects/class_painter.cpp:1094
 msgid "No valid paint device"
 msgstr "Nessun dispositivo di disegno valido"
 
-#: src/modules/objects/class_widget.cpp:1263
-#: src/modules/objects/class_widget.cpp:1269
-#: src/modules/objects/class_widget.cpp:1345
-#: src/modules/objects/class_widget.cpp:1351
+#: src/modules/objects/class_widget.cpp:1261
+#: src/modules/objects/class_widget.cpp:1267
+#: src/modules/objects/class_widget.cpp:1343
+#: src/modules/objects/class_widget.cpp:1349
 msgid "Not a valid color !"
 msgstr "Colore non valido!"
 
@@ -449,12 +456,12 @@ msgstr "Colore non valido!"
 msgid "Not an hex digit"
 msgstr "Non è una cifra esadecimale"
 
-#: src/modules/objects/class_widget.cpp:1878
+#: src/modules/objects/class_widget.cpp:1881
 msgid "Null mask"
 msgstr "Maschera nulla"
 
-#: src/modules/objects/class_painter.cpp:841
-#: src/modules/objects/class_button.cpp:136
+#: src/modules/objects/class_painter.cpp:848
+#: src/modules/objects/class_button.cpp:141
 msgid "Object Pixmap required!"
 msgstr "Oggetto Pixmap richiesto!"
 
@@ -476,48 +483,49 @@ msgstr "Uno dei parametri dell'array non viene valutato come intero"
 msgid "One of the array parameters is empty"
 msgstr "Uno dei parametri dell'array è vuoto"
 
-#: src/modules/objects/class_widget.cpp:1242
-#: src/modules/objects/class_widget.cpp:1324
+#: src/modules/objects/class_widget.cpp:1240
+#: src/modules/objects/class_widget.cpp:1322
 #: src/modules/objects/class_multilineedit.cpp:600
 msgid "One of the colors array parameters didn't evaluate to an integer"
 msgstr "Uno dei parametri dell'array dei colori non viene valutato come intero"
 
-#: src/modules/objects/class_widget.cpp:1236
-#: src/modules/objects/class_widget.cpp:1318
+#: src/modules/objects/class_widget.cpp:1234
+#: src/modules/objects/class_widget.cpp:1316
 #: src/modules/objects/class_multilineedit.cpp:595
 msgid "One of the colors array parameters is empty"
 msgstr "Uno dei parametri dell'array dei colori è vuoto"
 
-#: src/modules/objects/class_widget.cpp:1147
+#: src/modules/objects/class_widget.cpp:1145
 #: src/modules/objects/class_painter.cpp:563
 msgid "One of the geometry array parameters didn't evaluate to an integer"
 msgstr "Uno dei parametri dell'array geometrico non viene valutato come intero"
 
-#: src/modules/objects/class_widget.cpp:1142
+#: src/modules/objects/class_widget.cpp:1140
 #: src/modules/objects/class_painter.cpp:558
 msgid "One of the geometry array parameters is empty"
 msgstr "Uno dei parametri dell'array geometrico è vuoto"
 
-#: src/modules/objects/class_widget.cpp:1597
+#: src/modules/objects/class_widget.cpp:1595
 msgid "One of the move array parameters didn't evaluate to an integer"
 msgstr "Uno dei parametri dell'array move non viene valutato come intero"
 
-#: src/modules/objects/class_widget.cpp:1592
+#: src/modules/objects/class_widget.cpp:1590
 msgid "One of the move array parameters is empty"
 msgstr "Uno dei parametri dell'array move è vuoto"
 
-#: src/modules/objects/class_widget.cpp:1654
+#: src/modules/objects/class_widget.cpp:1652
 msgid "One of the resize array parameters didn't evaluate to an integer"
 msgstr ""
 "Uno dei parametri dell'array ridimensionamento non viene valutato come intero"
 
-#: src/modules/objects/class_widget.cpp:1649
+#: src/modules/objects/class_widget.cpp:1647
 msgid "One of the resize array parameters is empty"
 msgstr "Uno dei parametri dell'array ridimensionamento è vuoto"
 
-#: src/modules/objects/class_painter.cpp:869
-#: src/modules/objects/class_painter.cpp:922
-#: src/modules/objects/class_painter.cpp:1565
+#: src/modules/objects/class_listwidget.cpp:408
+#: src/modules/objects/class_painter.cpp:876
+#: src/modules/objects/class_painter.cpp:929
+#: src/modules/objects/class_painter.cpp:1572
 msgid "One of the triplette parameters didn't evaluate to an integer"
 msgstr "Uno dei parametri della tripletta non viene valutato come intero"
 
@@ -525,31 +533,32 @@ msgstr "Uno dei parametri della tripletta non viene valutato come intero"
 msgid "Only memorybuffer class object is supported"
 msgstr "Solo la classe memorybuffer è supportata"
 
-#: src/modules/objects/class_widget.cpp:1803
+#: src/modules/objects/class_widget.cpp:1806
 msgid "Parent must be a widget object"
 msgstr "Il padre dev'essere un oggetto widget"
 
-#: src/modules/objects/class_tablewidget.cpp:241
+#: src/modules/objects/class_listwidget.cpp:345
+#: src/modules/objects/class_tablewidget.cpp:256
 #: src/modules/objects/class_treewidgetitem.cpp:412
 msgid "Pixmap object or image Id required"
 msgstr "Oggetto pixmap o ID immagine richiesto"
 
-#: src/modules/objects/class_widget.cpp:1873
-#: src/modules/objects/class_painter.cpp:1203
+#: src/modules/objects/class_widget.cpp:1876
+#: src/modules/objects/class_painter.cpp:1210
 msgid "Pixmap object required"
 msgstr "Oggetto pixmap richiesto"
 
-#: src/modules/objects/class_painter.cpp:1074
+#: src/modules/objects/class_painter.cpp:1081
 msgid "Pixmap or Widget parameter is not an object"
 msgstr "Pixmap o il parametro Widget non è un oggetto"
 
-#: src/modules/objects/class_widget.cpp:1868
-#: src/modules/objects/class_painter.cpp:1198
+#: src/modules/objects/class_widget.cpp:1871
+#: src/modules/objects/class_painter.cpp:1205
 msgid "Pixmap parameter is not an object"
 msgstr "Il parametro pixmap non è un oggetto"
 
-#: src/modules/objects/class_painter.cpp:836
-#: src/modules/objects/class_button.cpp:130
+#: src/modules/objects/class_painter.cpp:843
+#: src/modules/objects/class_button.cpp:135
 msgid "Pixmap parameter is not an object!"
 msgstr "Il parametro pixmap non è un oggetto!"
 
@@ -581,20 +590,20 @@ msgstr "Creazione della socket fallita"
 msgid "The added widget is not a child of this dock window"
 msgstr "La widget aggiunta non è figlia di questa finestra dock"
 
-#: src/modules/objects/class_widget.cpp:1585
-#: src/modules/objects/class_widget.cpp:1642
+#: src/modules/objects/class_widget.cpp:1583
+#: src/modules/objects/class_widget.cpp:1640
 #: src/modules/objects/class_painter.cpp:585
 msgid "The array passed as parameter must contain at least 2 elements"
 msgstr "L'array passato come parametro deve contenere almeno 2 elementi"
 
-#: src/modules/objects/class_widget.cpp:1227
-#: src/modules/objects/class_widget.cpp:1309
+#: src/modules/objects/class_widget.cpp:1225
+#: src/modules/objects/class_widget.cpp:1307
 #: src/modules/objects/class_multilineedit.cpp:586
 #: src/modules/objects/class_painter.cpp:619
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr "L'array passato come parametro deve contenere almeno 3 elementi"
 
-#: src/modules/objects/class_widget.cpp:1129
+#: src/modules/objects/class_widget.cpp:1127
 #: src/modules/objects/class_painter.cpp:549
 msgid "The array passed as parameter must contain at least 4 elements"
 msgstr "L'array passato come parametro deve contenere almeno 4 elementi"
@@ -608,11 +617,11 @@ msgstr "La classe '%Q' non esiste"
 msgid "The file '%Q' does not exist"
 msgstr "Il file '%Q' non esiste"
 
-#: src/modules/objects/class_widget.cpp:1162
-#: src/modules/objects/class_widget.cpp:1284
-#: src/modules/objects/class_widget.cpp:1366
-#: src/modules/objects/class_widget.cpp:1609
-#: src/modules/objects/class_widget.cpp:1666
+#: src/modules/objects/class_widget.cpp:1160
+#: src/modules/objects/class_widget.cpp:1282
+#: src/modules/objects/class_widget.cpp:1364
+#: src/modules/objects/class_widget.cpp:1607
+#: src/modules/objects/class_widget.cpp:1664
 #: src/modules/objects/class_multilineedit.cpp:636
 #: src/modules/objects/class_painter.cpp:575
 #: src/modules/objects/class_painter.cpp:609
@@ -640,9 +649,10 @@ msgstr "L'elemento della lista non può essere senza padre"
 msgid "The memoryBuffer object is empty: nothing will be saved"
 msgstr "L'oggetto memorybuffer è vuoto: non verrà salvato nulla"
 
-#: src/modules/objects/class_painter.cpp:852
-#: src/modules/objects/class_painter.cpp:905
-#: src/modules/objects/class_painter.cpp:1547
+#: src/modules/objects/class_listwidget.cpp:392
+#: src/modules/objects/class_painter.cpp:859
+#: src/modules/objects/class_painter.cpp:912
+#: src/modules/objects/class_painter.cpp:1554
 msgid "The opacity parameter didn't evaluate to integer"
 msgstr "Il parametro di opacità non viene valutato come intero"
 
@@ -666,7 +676,7 @@ msgstr ""
 msgid "The parent-widget isn't a MainWindow."
 msgstr "L'oggetto padre non è un MainWindow."
 
-#: src/modules/objects/class_widget.cpp:1837
+#: src/modules/objects/class_widget.cpp:1840
 msgid "The pixmap is not valid"
 msgstr "La pixmap non è valida"
 
@@ -715,7 +725,7 @@ msgstr ""
 msgid "Type value %Q not supported"
 msgstr "Tipo %Q non supportato"
 
-#: src/modules/objects/class_painter.cpp:703
+#: src/modules/objects/class_painter.cpp:710
 msgid "Unknown '%Q' background mode"
 msgstr "Modo background '%Q' sconosciuto"
 
@@ -723,16 +733,16 @@ msgstr "Modo background '%Q' sconosciuto"
 msgid "Unknown '%Q' sort order: switching to ascending order"
 msgstr "Modo di ordinamento '%Q' sconosciuto: cambio al metodo ascendente"
 
-#: src/modules/objects/class_widget.cpp:1936
+#: src/modules/objects/class_widget.cpp:1939
 msgid "Unknown Color Group '%Q'"
 msgstr "Gruppo Colore '%Q' sconosciuto"
 
-#: src/modules/objects/class_widget.cpp:1927
+#: src/modules/objects/class_widget.cpp:1930
 msgid "Unknown Color Role '%Q'"
 msgstr "Ruolo Colore '%Q' sconosciuto"
 
 #: src/modules/objects/class_multilineedit.cpp:758
-#: src/modules/objects/class_groupbox.cpp:315
+#: src/modules/objects/class_groupbox.cpp:314
 #: src/modules/objects/class_hbox.cpp:197
 #: src/modules/objects/class_label.cpp:273
 msgid "Unknown alignment '%Q'"
@@ -747,7 +757,7 @@ msgstr "Allineamento '%Q' sconosciuto"
 msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
 msgstr "Proporzioni %Q sconosciute - Cambio a KeepAspectRatio"
 
-#: src/modules/objects/class_painter.cpp:1494
+#: src/modules/objects/class_painter.cpp:1501
 msgid "Unknown brush style '%Q'"
 msgstr "Stile del pennello '%Q' sconosciuto"
 
@@ -755,7 +765,8 @@ msgstr "Stile del pennello '%Q' sconosciuto"
 msgid "Unknown echo mode '%Q'"
 msgstr "Modo echo '%Q' sconosciuto"
 
-#: src/modules/objects/class_tablewidget.cpp:518
+#: src/modules/objects/class_listwidget.cpp:260
+#: src/modules/objects/class_tablewidget.cpp:533
 #: src/modules/objects/class_treewidgetitem.cpp:287
 msgid "Unknown item flag '%Q'"
 msgstr "Flag elemento '%Q' sconosciuta"
@@ -764,16 +775,16 @@ msgstr "Flag elemento '%Q' sconosciuta"
 msgid "Unknown mode '%Q'"
 msgstr "Modo '%Q' sconosciuto"
 
-#: src/modules/objects/class_groupbox.cpp:348
+#: src/modules/objects/class_groupbox.cpp:347
 #: src/modules/objects/class_slider.cpp:282
 msgid "Unknown orientation '%Q'"
 msgstr "Orientamento '%Q' sconosciuto"
 
-#: src/modules/objects/class_painter.cpp:1468
+#: src/modules/objects/class_painter.cpp:1475
 msgid "Unknown pen style '%Q'"
 msgstr "Stile della penna '%Q' sconosciuto"
 
-#: src/modules/objects/class_tabwidget.cpp:396
+#: src/modules/objects/class_tabwidget.cpp:436
 msgid "Unknown position '%Q'"
 msgstr "Posizione '%Q' sconosciuta"
 
@@ -781,8 +792,10 @@ msgstr "Posizione '%Q' sconosciuta"
 msgid "Unknown segment style '%Q'"
 msgstr "Stile del segmento '%Q' sconosciuto"
 
-#: src/modules/objects/class_widget.cpp:1744
+#: src/modules/objects/class_listwidget.cpp:318
+#: src/modules/objects/class_widget.cpp:1747
 #: src/modules/objects/class_label.cpp:327
+#: src/modules/objects/class_painter.cpp:682
 msgid "Unknown style '%Q'"
 msgstr "Stile '%Q' sconosciuto"
 
@@ -798,11 +811,11 @@ msgstr "Posizione del testo '%Q' sconosciuta"
 msgid "Unknown tickmark '%Q'"
 msgstr "Tickmark '%Q' sconosciuto"
 
-#: src/modules/objects/class_widget.cpp:1903
+#: src/modules/objects/class_widget.cpp:1906
 msgid "Unknown widget attribute '%Q'"
 msgstr "Attributo widget '%Q' sconosciuto"
 
-#: src/modules/objects/class_widget.cpp:1719
+#: src/modules/objects/class_widget.cpp:1717
 msgid "Unknown widget flag '%Q'"
 msgstr "Flag widget '%Q' sconosciuta"
 
@@ -841,19 +854,19 @@ msgstr "Warning vicino alla linea %d, colonna %d"
 msgid "Widget object required"
 msgstr "Oggetto widget richiesto"
 
-#: src/modules/objects/class_painter.cpp:1081
+#: src/modules/objects/class_painter.cpp:1088
 msgid "Widget or Pixmap required "
 msgstr "Widget o Pixmap richiesti"
 
 #: src/modules/objects/class_mainwindow.cpp:90
-#: src/modules/objects/class_widget.cpp:1768
+#: src/modules/objects/class_widget.cpp:1771
 #: src/modules/objects/class_toolbutton.cpp:269
 #: src/modules/objects/object_macros.h:115
 msgid "Widget parameter is not a valid object"
 msgstr "Il parametro widget non è un oggetto valido"
 
 #: src/modules/objects/class_mainwindow.cpp:85
-#: src/modules/objects/class_widget.cpp:1763
+#: src/modules/objects/class_widget.cpp:1766
 #: src/modules/objects/class_toolbutton.cpp:264
 #: src/modules/objects/object_macros.h:110
 msgid "Widget parameter is not an object"
