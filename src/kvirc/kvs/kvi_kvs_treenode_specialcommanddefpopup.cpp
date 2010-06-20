@@ -243,9 +243,14 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelPopup::addLabel(KviKvsTreeNodeSpec
 
 bool KviKvsTreeNodeSpecialCommandDefpopupLabelPopup::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
 {
-	// the name will be reset anyway
-	KviKvsPopupMenu * pNew = p->addPopup(m_szItemName,m_szText,m_szIcon,m_szCondition);
-	return fill(c,pNew);
+	// first check if we're trying to add to a child submenu
+	KviKvsPopupMenu * pMenu = p->findChildPopupByName(m_szItemName);
+	if(!pMenu)
+	{
+		// not found: add a new one
+		pMenu = p->addPopup(m_szItemName,m_szText,m_szIcon,m_szCondition);
+	}
+	return fill(c,pMenu);
 }
 
 bool KviKvsTreeNodeSpecialCommandDefpopupLabelPopup::fill(KviKvsRunTimeContext* c,KviKvsPopupMenu * p)

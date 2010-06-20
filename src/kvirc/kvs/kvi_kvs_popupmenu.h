@@ -266,6 +266,7 @@ public:
 	void addPrologue(const QString &szItemName,const QString &szCode);
 	void addEpilogue(const QString &szItemName,const QString &szCode);
 	bool removeItemByName(const QString &szItemName,bool bRecursive);
+	KviKvsPopupMenu * findChildPopupByName(const QString &szItemName);
 	KviPointerList<KviKvsScript> * epilogues(){ return m_pEpilogues; };
 	KviPointerList<KviKvsScript> * prologues(){ return m_pPrologues; };
 	KviKvsPopupMenu * parentPopup(){ return m_pParentPopup; };

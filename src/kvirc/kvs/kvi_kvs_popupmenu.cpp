@@ -591,6 +591,22 @@ KviKvsPopupMenuTopLevelData * KviKvsPopupMenu::topLevelData()
 	return m_pTopLevelData;
 }
 
+KviKvsPopupMenu * KviKvsPopupMenu::findChildPopupByName(const QString &szItemName)
+{
+	for(KviKvsPopupMenuItem * it = m_pItemList->first();it;it = m_pItemList->next())
+	{
+		if(!it->isMenu())
+			continue;
+		if(!KviQString::equalCI(szItemName,it->name()))
+			continue;
+		KviKvsPopupMenu * pMenu = ((KviKvsPopupMenuItemMenu *)it)->menu();
+		if(!pMenu)
+			continue;
+		return pMenu;
+	}
+	return NULL;
+}
+
 bool KviKvsPopupMenu::removeItemByName(const QString &szItemName,bool bRecursive)
 {
 	KviKvsScript * se;
