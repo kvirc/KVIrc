@@ -69,10 +69,10 @@ class KVILIB_API KviAnimatedPixmap : public QObject , public KviAnimatedPixmapIn
 
 protected:
 	QString                        m_szFileName;
-	KviAnimatedPixmapCache::Data*  m_lFrames;
+	KviAnimatedPixmapCache::Data*  m_pFrameData;
 
 	uint                           m_uCurrentFrameNumber;
-	bool                           m_bStarted;
+	int                            m_iStarted;
 public:
 	/*
 	* Creates KviAnimatedPixmap, and loads data from "fileName".
@@ -84,7 +84,7 @@ public:
 	/*
 	 * Creates new pixmap using "source" as source of images.
 	 */
-	KviAnimatedPixmap(KviAnimatedPixmap* source);
+	KviAnimatedPixmap(const KviAnimatedPixmap &source);
 
 	/*
 	 * Returns true if animation is started.
@@ -92,7 +92,7 @@ public:
 	 */
 	inline bool isStarted()
 	{
-		return m_bStarted;
+		return m_iStarted > 0;
 	}
 
 	/*
@@ -111,7 +111,7 @@ public:
 	 */
 	inline bool isValid()
 	{
-		return (m_lFrames->count()>0);
+		return (m_pFrameData->count()>0);
 	}
 
 	/*
@@ -121,8 +121,8 @@ public:
 
 	inline QPixmap* pixmap()
 	{
-		if(m_lFrames->count()>0)
-			return m_lFrames->at(m_uCurrentFrameNumber).pixmap;
+		if(m_pFrameData->count()>0)
+			return m_pFrameData->at(m_uCurrentFrameNumber).pixmap;
 		else
 			return KviAnimatedPixmapCache::dummyPixmap();
 	}
@@ -140,7 +140,7 @@ public:
 	 */
 	inline uint framesCount()
 	{
-		return m_lFrames->count();
+		return m_pFrameData->count();
 	}
 
 	/*
@@ -148,7 +148,7 @@ public:
 	 */
 	inline const QSize& size()
 	{
-		return m_lFrames->size;
+		return m_pFrameData->size;
 	}
 
 	/*
@@ -160,7 +160,7 @@ public:
 	/*
 	 * Called when the frame changes
 	 */
-	void nextFrame(bool bScheduleNext);
+	void nextFrame(bool bEmitSignalAndScheduleNext);
 
 signals:
 

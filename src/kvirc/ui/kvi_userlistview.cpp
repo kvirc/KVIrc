@@ -88,6 +88,7 @@ void KviUserListToolTip::maybeTip(const QPoint & pnt)
 
 
 KviUserListEntry::KviUserListEntry(KviUserListView * pParent, const QString & szNick, KviIrcUserEntry * pEntry, short int iFlags, bool bJoinTimeUnknown)
+	: QObject()
 {
 	m_pListView       = pParent;
 	m_szNick          = szNick;
@@ -98,82 +99,83 @@ KviUserListEntry::KviUserListEntry(KviUserListView * pParent, const QString & sz
 	m_iTemperature    = bJoinTimeUnknown ? 0 : KVI_USERACTION_JOIN;
 
 	m_bSelected       = false;
-	m_pConnectedAnimation = 0;
+	m_pConnectedAnimation = NULL;
 
-	recalcSize();
 	updateAvatarData();
+	recalcSize();
 }
 
 KviUserListEntry::~KviUserListEntry()
 {
-	/*if(m_pConnectedAnimation)
+	if(m_pConnectedAnimation)
 	{
-		m_pConnectedAnimation->disconnect(SIGNAL(frameChanged()),
-			m_pListView,SLOT(animatedAvatarUpdated()));
-	}*/
+		QObject::disconnect(m_pConnectedAnimation,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
+		QObject::disconnect(m_pConnectedAnimation,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
+		m_pConnectedAnimation->stop();
+		m_pConnectedAnimation = NULL;
+	}
 }
 
-void KviUserListEntry::resetAvatarConnection()
-{
-	m_pConnectedAnimation = 0;
-}
 
 void KviUserListEntry::updateAvatarData()
 {
-	KviAnimatedPixmap * pOldMovie = m_pConnectedAnimation;
+	if(m_pConnectedAnimation)
+	{
+		QObject::disconnect(m_pConnectedAnimation,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
+		QObject::disconnect(m_pConnectedAnimation,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
+		m_pConnectedAnimation->stop();
+		m_pConnectedAnimation = NULL;
+	}
 
-	m_pConnectedAnimation = 0;
+	if(!KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))
+		return;
 
 	KviAvatar * pAv = m_pGlobalData->avatar();
 
-	if(KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))
+	if(!pAv)
+		return;
+
+	if(pAv)
 	{
-		if(pAv)
-		{
-			if(KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
-					(
-						!KVI_OPTION_BOOL(KviOption_boolDoNotStretchAvatars) ||
-						((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
-						((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
-					)
+		if(
+				KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
+				(
+					(!KVI_OPTION_BOOL(KviOption_boolDoNotUpscaleAvatars)) ||
+					((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
+					((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
 				)
-			{
-				m_pConnectedAnimation = pAv->forSize(
+			)
+		{
+			m_pConnectedAnimation = pAv->forSize(
 					KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
 					KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight)
 				);
-			}
-			else
-			{
-				m_pConnectedAnimation = pAv->animatedPixmap();
-			}
-		}
-
-		if(m_pConnectedAnimation && (m_pConnectedAnimation != pOldMovie))
-		{
-			if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedAvatars))
-			{
-				m_pConnectedAnimation->start();
-			} else {
-				m_pConnectedAnimation->stop();
-			}
-
-			m_pListView->connect(
-				m_pConnectedAnimation,SIGNAL(frameChanged()),
-				m_pListView,SLOT(animatedAvatarUpdated()));
-
-			/*
-			The old one is deleted.
-			So it is disconnected automagically...
-			if(pOldMovie)
-			{
-				m_pListView->disconnect(
-							pOldMovie,SIGNAL(frameChanged()),
-							m_pListView,SLOT(animatedAvatarUpdated())
-							);
-			}*/
+		} else {
+			m_pConnectedAnimation = pAv->animatedPixmap();
 		}
 	}
+
+	if(!m_pConnectedAnimation)
+		return;
+
+	if(!KVI_OPTION_BOOL(KviOption_boolEnableAnimatedAvatars))
+		return;
+
+	QObject::connect(m_pConnectedAnimation,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
+	QObject::connect(m_pConnectedAnimation,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
+
+	m_pConnectedAnimation->start();
+
+}
+
+void KviUserListEntry::avatarFrameChanged()
+{
+	m_pListView->animatedAvatarUpdated(this);
+}
+
+void KviUserListEntry::avatarDestroyed()
+{
+	m_pConnectedAnimation = NULL;
 }
 
 bool KviUserListEntry::color(QColor & color)
@@ -219,36 +221,14 @@ bool KviUserListEntry::color(QColor & color)
 
 void KviUserListEntry::recalcSize()
 {
-	KviAvatar * pAv = m_pGlobalData->avatar();
 	m_iHeight = m_pListView->m_iFontHeight;
-	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons) && (m_iHeight < 20))m_iHeight = 20;
 
-	if(KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))//G&N  2005
-	{
-		if(pAv)
-		{
-			if(KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
-					(
-						!KVI_OPTION_BOOL(KviOption_boolDoNotStretchAvatars) ||
-						((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
-						((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
-					)
-				)
-			{
-				//don't worry about resize action
-				//it has to be done anyway on painting
-				//and result will be cached.
-				m_iHeight += pAv->forSize(
-						KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
-						KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight)
-					)->size().height();
-			}
-			else
-			{
-				m_iHeight += pAv->size().height();
-			}
-		}
-	}
+	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons) && (m_iHeight < 20))
+		m_iHeight = 20;
+
+	if(m_pConnectedAnimation)
+		m_iHeight += m_pConnectedAnimation->size().height();
+
 	m_iHeight += 3;
 }
 
@@ -379,15 +359,7 @@ void KviUserListView::applyOptions()
 	m_iTotalHeight = 0;
 	while(pEntry)
 	{
-		if(pEntry->m_pConnectedAnimation)
-		{
-			if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedAvatars))
-			{
-				pEntry->m_pConnectedAnimation->start();
-			} else {
-				pEntry->m_pConnectedAnimation->stop();
-			}
-		}
+		pEntry->updateAvatarData();
 		pEntry->recalcSize();
 		m_iTotalHeight += pEntry->m_iHeight;
 		pEntry = pEntry->m_pNext;
@@ -435,8 +407,9 @@ void KviUserListView::setMaskEntries(char cType, int iNum)
 	updateUsersLabel();
 }
 
-void KviUserListView::animatedAvatarUpdated()
+void KviUserListView::animatedAvatarUpdated(KviUserListEntry *e)
 {
+	// FIXME: This sucks
 
 	if(!m_pTopItem)
 		return;
@@ -476,7 +449,7 @@ void KviUserListView::animatedAvatarUpdated()
 	while(pEntry && (iCurTop <= m_pViewArea->height()))
 	{
 		iCurBottom = iCurTop + pEntry->m_iHeight;
-		if(pEntry->m_pConnectedAnimation==sender())
+		if(pEntry == e)
 		{
 			rct.setX(iBaseX);
 			rct.setY(iCurTop + iBaseY);
@@ -847,8 +820,8 @@ bool KviUserListView::avatarChanged(const QString & szNick)
 	{
 		int iOldHeight = pUserEntry->m_iHeight;
 		m_iTotalHeight -= pUserEntry->m_iHeight;
-		pUserEntry->recalcSize();
 		pUserEntry->updateAvatarData();
+		pUserEntry->recalcSize();
 		m_iTotalHeight += pUserEntry->m_iHeight;
 		// if this was "over" the top item , we must adjust the scrollbar value
 		// otherwise scroll everything down
@@ -1216,11 +1189,11 @@ bool KviUserListView::partInternal(const QString & szNick, bool bRemove)
 		{
 			m_pIrcUserDataBase->removeUser(szNick,pUserEntry->m_pGlobalData);
 
-			if(!m_pIrcUserDataBase->find(szNick))
-			{
+			//if(!m_pIrcUserDataBase->find(szNick))
+			//{
 				//completelly removed. avatar is deleted
-				pUserEntry->resetAvatarConnection();
-			}
+			//	pUserEntry->resetAvatarConnection();
+			//}
 		}
 
 		if(pUserEntry->m_bSelected)
@@ -1363,7 +1336,7 @@ void KviUserListView::removeAllEntries()
 	KviPointerHashTableIterator<QString,KviUserListEntry> it(*m_pEntryDict);
 	while(it.current())
 	{
-		it.current()->resetAvatarConnection();
+		//it.current()->resetAvatarConnection();
 		m_pIrcUserDataBase->removeUser(it.currentKey(),
 			((KviUserListEntry *)it.current())->m_pGlobalData);
 		++it;
@@ -1851,21 +1824,24 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			if(KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))//G&N  2005
 			{
 				KviAvatar * pAv = pEntry->m_pGlobalData->avatar();
-				if(pAv && KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth) && KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
+				if(pAv)
 				{
 					QPixmap * pPix;
-					if( KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
+					if(
+						KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
+						KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth) &&
+						KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight) && 
 						(
-							!KVI_OPTION_BOOL(KviOption_boolDoNotStretchAvatars) ||
 							((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
 							((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
 						)
-					) {
+					)
+					{
+						qDebug("WARNING: Scaling avatar on-the-fly: this should NEVER happen!");
 						pPix = pAv->forSize(
 								KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
 								KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight)
-								)->pixmap();
-
+							)->pixmap();
 					} else {
 						pPix = pAv->pixmap();
 					}

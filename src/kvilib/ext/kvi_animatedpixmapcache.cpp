@@ -149,6 +149,8 @@ KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalResize(Data* data,
 
 void KviAnimatedPixmapCache::internalFree(Data* data)
 {
+	if(!data)
+		return;
 	m_cacheMutex.lock();
 	data->refs--;
 	if(data->refs==0)
@@ -210,8 +212,10 @@ void KviAnimatedPixmapCache::timeoutEvent()
 	{
 		if(processed.contains(i.value()))
 		{
+			// increase the frame index but do not emit the signals as we'll be emitting it later
 			i.value()->nextFrame(false);
 		} else {
+			// we'll be emitting the signal later
 			processed.append(i.value());
 		}
 
@@ -220,6 +224,7 @@ void KviAnimatedPixmapCache::timeoutEvent()
 
 	for(int i = 0; i < processed.size(); ++i)
 	{
+		// increase the frame index and emit the signal
 		processed.at(i)->nextFrame(true);
 	}
 
@@ -242,10 +247,9 @@ void KviAnimatedPixmapCache::internalNotifyDelete(
 {
 	m_timerMutex.lock();
 
-	QMultiMap<long long, KviAnimatedPixmapInterface*>::iterator i =
-			m_timerData.begin();
+	QMultiMap<long long, KviAnimatedPixmapInterface*>::iterator i = m_timerData.begin();
 
-	while (i != m_timerData.end())
+	while(i != m_timerData.end())
 	{
 		if (i.value() == receiver)
 		{

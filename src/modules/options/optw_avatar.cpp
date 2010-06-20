@@ -45,7 +45,7 @@ KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 			"Avatars will be scaled to fit the " \
 			"constraints set below. Better keep this option on. :)</center>","options"));
 
-	addBoolSelector(g,__tr2qs_ctx("Do not scale avatar if it is less than required size","options"),KviOption_boolDoNotStretchAvatars);
+	addBoolSelector(g,__tr2qs_ctx("Do not scale avatar if it is less than required size","options"),KviOption_boolDoNotUpscaleAvatars);
 
 	KviUIntSelector *u = addUIntSelector(g,__tr2qs_ctx("Image width:","options"),KviOption_uintAvatarScaleWidth,0,512,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatars));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));

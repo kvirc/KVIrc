@@ -279,7 +279,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("CommandlineInUserFriendlyModeByDefault",false,KviOption_sectFlagFrame), // this confuses existing users and is not mentioned in the docs where there are commandline examples : we need it to be off by default for now
 	BOOL_OPTION("EnableVisualEffects",true,KviOption_resetUpdateGui),
 	BOOL_OPTION("DCCFileTransferReplaceOutgoingSpacesWithUnderscores",true,KviOption_sectFlagDcc),
-	BOOL_OPTION("DoNotStretchAvatars",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui ),
+	BOOL_OPTION("DoNotUpscaleAvatars",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui ),
 	BOOL_OPTION("UseDifferentColorForOwnNick",false,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("CloseInTray",false,KviOption_sectFlagFrame | KviOption_resetUpdateGui),
 	BOOL_OPTION("StartupMinimized",false,KviOption_sectFlagFrame),

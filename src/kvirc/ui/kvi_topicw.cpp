@@ -164,11 +164,12 @@ void KviTopicWidget::reset()
 void KviTopicWidget::applyOptions()
 {
 	//set the font
-	QFont newFont(KVI_OPTION_FONT(KviOption_fontInput));
+	m_pLabel->applyOptions();
+	QFont newFont(KVI_OPTION_FONT(KviOption_fontLabel));
 	newFont.setKerning(false);
 	setFont(newFont);
-	if(m_pLabel)
-		m_pLabel->setFont(newFont);
+	if(m_pCompletionBox)
+		m_pCompletionBox->setFont(newFont);
 }
 
 void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& cg,const QRect & rect)

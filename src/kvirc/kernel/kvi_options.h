@@ -287,7 +287,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolCommandlineInUserFriendlyModeByDefault 193     /* interface::input */
 #define KviOption_boolEnableVisualEffects 194     /* interface */
 #define KviOption_boolDCCFileTransferReplaceOutgoingSpacesWithUnderscores 195
-#define KviOption_boolDoNotStretchAvatars 196
+#define KviOption_boolDoNotUpscaleAvatars 196
 #define KviOption_boolUseDifferentColorForOwnNick 197 /* interface */
 #define KviOption_boolCloseInTray 198                                   /* interface */
 #define KviOption_boolStartupMinimized 199                                   /* interface */

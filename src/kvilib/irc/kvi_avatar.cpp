@@ -115,7 +115,7 @@ KviAvatar::KviAvatar(
 		m_pPixmap->resize(scaleOnLoad,Qt::KeepAspectRatio);
 	}
 
-	m_pPixmap->start();
+	//m_pPixmap->start(); <-- eh ?
 
 	m_scaledPixmapsCache.insert(m_pPixmap->size(),m_pPixmap);
 }
@@ -131,10 +131,9 @@ KviAvatar::~KviAvatar()
 KviAnimatedPixmap * KviAvatar::forSize(const QSize& size)
 {
 	if(m_scaledPixmapsCache.contains(size))
-	{
 		return m_scaledPixmapsCache[size];
-	}
-	KviAnimatedPixmap* scaledPixmap = new KviAnimatedPixmap(m_pPixmap);
+
+	KviAnimatedPixmap* scaledPixmap = new KviAnimatedPixmap(*m_pPixmap);
 	scaledPixmap->resize(size,Qt::KeepAspectRatio);
 
 	m_scaledPixmapsCache.insert(size,scaledPixmap);

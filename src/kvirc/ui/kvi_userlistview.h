@@ -129,8 +129,9 @@ public:
 * \class KviUserListEntry
 * \brief Userlist entry management class
 */
-class KVIRC_API KviUserListEntry
+class KVIRC_API KviUserListEntry : public QObject
 {
+	Q_OBJECT
 	friend class KviUserListView;
 	friend class KviUserListViewArea;
 public:
@@ -201,17 +202,15 @@ public:
 	*/
 	void updateAvatarData();
 
-	/**
-	* \brief Resets the avatar connection with the entry
-	* \return void
-	*/
-	void resetAvatarConnection();
 protected:
 	/**
 	* \brief Recalculates the size height for the entry
 	* \return void
 	*/
 	void recalcSize();
+private slots:
+	void avatarFrameChanged();
+	void avatarDestroyed();
 };
 
 /**
@@ -792,7 +791,7 @@ public slots:
 	* \brief Called when an animated avatar is updated (every frame)
 	* \return void
 	*/
-	void animatedAvatarUpdated();
+	void animatedAvatarUpdated(KviUserListEntry * e);
 };
 
 /**

@@ -67,17 +67,19 @@ KviTextIcon::KviTextIcon(QString szFile)
 {
 	QString szRetPath;
 
-	if (g_pApp->findImage(szRetPath, szFile))
+	if(g_pApp->findImage(szRetPath, szFile))
 	{
 		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath);
+#if 0 // this doesn't work anyway
 		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
 		{
 			m_pAnimatedPixmap->start();
 		} else {
 			m_pAnimatedPixmap->stop();
 		}
+#endif
 	} else {
-		m_pAnimatedPixmap = 0;
+		m_pAnimatedPixmap = NULL;
 	}
 }
 
@@ -85,11 +87,11 @@ KviTextIcon::KviTextIcon(KviTextIcon * pIcon)
 {
 	m_iId = pIcon->id();
 	m_szFileName = pIcon->m_szFileName;
-	if (pIcon->m_pAnimatedPixmap)
+	if(pIcon->m_pAnimatedPixmap)
 	{
-		m_pAnimatedPixmap = new KviAnimatedPixmap(pIcon->m_pAnimatedPixmap);
+		m_pAnimatedPixmap = new KviAnimatedPixmap(*(pIcon->m_pAnimatedPixmap));
 	} else {
-		m_pAnimatedPixmap = 0;
+		m_pAnimatedPixmap = NULL;
 	}
 }
 
@@ -113,16 +115,14 @@ void KviTextIcon::setFilename(QString szFileName)
 
 QPixmap * KviTextIcon::pixmap()
 {
-	if(m_iId>=0)
-	{
+	if(m_iId >= 0)
 		return g_pIconManager->getSmallIcon(m_iId);
-	} else {
-		// This is actually wrong (at least for the current implementation).
-		// Users of this class expect the pointer to be permanent while
-		// g_pIconManager returns temporary pointers.
-		// KviIrcView will happily crash dereferencing a hollow pointer sooner or later
-		return g_pIconManager->getPixmap(m_szFileName);
-	}
+
+	// This is actually wrong (at least for the current implementation).
+	// Users of this class expect the pointer to be permanent while
+	// g_pIconManager returns temporary pointers.
+	// KviIrcView will happily crash dereferencing a hollow pointer sooner or later
+	return g_pIconManager->getPixmap(m_szFileName);
 }
 
 KviTextIconManager::KviTextIconManager()

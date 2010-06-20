@@ -24,71 +24,87 @@
 
 #include "kvi_animatedpixmap.h"
 #include "kvi_settings.h"
+
 #include <QImageReader>
 #include <QTime>
 #include <QHash>
-#include <QMutexLocker>
 
 KviAnimatedPixmap::KviAnimatedPixmap(QString fileName)
-	:m_szFileName(fileName)
+	: QObject(),
+		m_szFileName(fileName),
+		m_uCurrentFrameNumber(0),
+		m_iStarted(0)
 {
-	m_bStarted            = 0;
-	m_uCurrentFrameNumber = 0;
+	m_pFrameData = KviAnimatedPixmapCache::load(fileName);
 
-	m_lFrames=KviAnimatedPixmapCache::load(fileName);
-	start();
+	//start(); <-- absolutely NO
 }
 
-KviAnimatedPixmap::KviAnimatedPixmap(KviAnimatedPixmap* source)
-	:m_szFileName(source->m_szFileName),
-	m_lFrames(source->m_lFrames),
-	m_uCurrentFrameNumber(source->m_uCurrentFrameNumber),
-	m_bStarted(source->m_bStarted) //keep started state
+KviAnimatedPixmap::KviAnimatedPixmap(const KviAnimatedPixmap &source)
+	: QObject(),
+	m_szFileName(source.m_szFileName),
+	m_pFrameData(source.m_pFrameData),
+	m_uCurrentFrameNumber(source.m_uCurrentFrameNumber),
+	m_iStarted(0)
 {
-	m_lFrames->refs++;
+	m_pFrameData->refs++;
 
 	//restore started state
-	if(isStarted() && (framesCount()>1))
-	{
-		KviAnimatedPixmapCache::scheduleFrameChange(m_lFrames->at(m_uCurrentFrameNumber).delay,this);
-	}
+	//if(isStarted() && (framesCount()>1))
+	//{
+	//	KviAnimatedPixmapCache::scheduleFrameChange(m_pFrameData->at(m_uCurrentFrameNumber).delay,this);
+	//}
 }
 
 KviAnimatedPixmap::~KviAnimatedPixmap()
 {
+	if(m_iStarted > 0)
+		qDebug("WARNING: KviAnimatedPixmap wasn't stopped enough times");
 	KviAnimatedPixmapCache::notifyDelete(this);
-	KviAnimatedPixmapCache::free(m_lFrames);
+	KviAnimatedPixmapCache::free(m_pFrameData);
 }
 
 void KviAnimatedPixmap::start()
 {
-	if(!isStarted() && (framesCount()>1))
-	{
-		KviAnimatedPixmapCache::scheduleFrameChange(m_lFrames->at(m_uCurrentFrameNumber).delay,this);
-		m_bStarted = true;
-	}
+	m_iStarted++;
+
+	if(m_iStarted > 1)
+		return; // was already started
+
+	if(m_pFrameData->count() < 2)
+		return;
+
+	m_uCurrentFrameNumber = 0;
+
+	KviAnimatedPixmapCache::scheduleFrameChange(m_pFrameData->at(m_uCurrentFrameNumber).delay,this);
 }
 
 void KviAnimatedPixmap::stop()
 {
-	if(isStarted())
-	{
-		m_bStarted = false;
-	}
+	if(!m_iStarted)
+		return;
+
+	m_iStarted--;
+	if(m_iStarted < 0)
+		m_iStarted = 0;
 }
-#include <stdio.h>
-void KviAnimatedPixmap::nextFrame(bool bScheduleNext)
+
+void KviAnimatedPixmap::nextFrame(bool bEmitSignalAndScheduleNext)
 {
+	if(m_iStarted < 1)
+		return;
+
 	m_uCurrentFrameNumber++;
 	//Ensure, that we are not out of bounds
-	m_uCurrentFrameNumber %= m_lFrames->count();
+	m_uCurrentFrameNumber %= m_pFrameData->count();
 
-	//run timer again
-	if(m_bStarted && bScheduleNext)
-	{
-		emit(frameChanged());
-		KviAnimatedPixmapCache::scheduleFrameChange(m_lFrames->at(m_uCurrentFrameNumber).delay,this);
-	}
+	if(!bEmitSignalAndScheduleNext)
+		return;
+
+	if(m_iStarted)
+		emit frameChanged();
+
+	KviAnimatedPixmapCache::scheduleFrameChange(m_pFrameData->at(m_uCurrentFrameNumber).delay,this);
 }
 
 void KviAnimatedPixmap::resize(QSize newSize,Qt::AspectRatioMode ratioMode)
@@ -96,5 +112,6 @@ void KviAnimatedPixmap::resize(QSize newSize,Qt::AspectRatioMode ratioMode)
 	QSize curSize(size());
 	curSize.scale(newSize,ratioMode);
 
-	m_lFrames = KviAnimatedPixmapCache::resize(m_lFrames,curSize);
+	m_pFrameData = KviAnimatedPixmapCache::resize(m_pFrameData,curSize);
 }
+
