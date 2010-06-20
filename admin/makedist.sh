@@ -30,6 +30,13 @@ fi
 echo "Copying sources..."
 cp -rf $1 $TEMPSRCDIR
 
+echo "Determining svn revision..."
+cd $1
+REVISION=$(svnversion -n .)
+
+echo "Revision is $REVISION"
+echo $REVISION > $TEMPSRCDIR/.svnrevision
+
 if test -f $OUTPUTFILE; then
 	echo "Cleaning the target package file path..."
 	rm -f $OUTPUTFILE
