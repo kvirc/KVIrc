@@ -243,11 +243,15 @@ KviIrcUserEntry * KviIrcUserDataBase::insertUser(const QString &nick,const QStri
 	return e;
 }
 
-void KviIrcUserDataBase::removeUser(const QString &nick,KviIrcUserEntry * e)
+bool KviIrcUserDataBase::removeUser(const QString &nick,KviIrcUserEntry * e)
 {
 	e->m_nRefs--;
 	if(e->m_nRefs == 0)
+	{
 		m_pDict->remove(nick);
+		return true;
+	}
+	return false;
 }
 
 void KviIrcUserDataBase::setupConnectionWithReguserDb()

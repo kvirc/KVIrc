@@ -99,7 +99,7 @@ KviUserListEntry::KviUserListEntry(KviUserListView * pParent, const QString & sz
 	m_iTemperature    = bJoinTimeUnknown ? 0 : KVI_USERACTION_JOIN;
 
 	m_bSelected       = false;
-	m_pConnectedAnimation = NULL;
+	m_pAvatarPixmap = NULL;
 
 	updateAvatarData();
 	recalcSize();
@@ -107,25 +107,24 @@ KviUserListEntry::KviUserListEntry(KviUserListView * pParent, const QString & sz
 
 KviUserListEntry::~KviUserListEntry()
 {
-	if(m_pConnectedAnimation)
-	{
-		QObject::disconnect(m_pConnectedAnimation,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
-		QObject::disconnect(m_pConnectedAnimation,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
-		m_pConnectedAnimation->stop();
-		m_pConnectedAnimation = NULL;
-	}
+	if(m_pAvatarPixmap)
+		detachAvatarData();
 }
 
+void KviUserListEntry::detachAvatarData()
+{
+	if(!m_pAvatarPixmap)
+		return;
+
+	m_pAvatarPixmap->stop();
+	QObject::disconnect(m_pAvatarPixmap,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
+	QObject::disconnect(m_pAvatarPixmap,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
+	m_pAvatarPixmap = NULL;
+}
 
 void KviUserListEntry::updateAvatarData()
 {
-	if(m_pConnectedAnimation)
-	{
-		QObject::disconnect(m_pConnectedAnimation,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
-		QObject::disconnect(m_pConnectedAnimation,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
-		m_pConnectedAnimation->stop();
-		m_pConnectedAnimation = NULL;
-	}
+	detachAvatarData();
 
 	if(!KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))
 		return;
@@ -146,26 +145,25 @@ void KviUserListEntry::updateAvatarData()
 				)
 			)
 		{
-			m_pConnectedAnimation = pAv->forSize(
+			m_pAvatarPixmap = pAv->forSize(
 					KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
 					KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight)
 				);
 		} else {
-			m_pConnectedAnimation = pAv->animatedPixmap();
+			m_pAvatarPixmap = pAv->animatedPixmap();
 		}
 	}
 
-	if(!m_pConnectedAnimation)
+	if(!m_pAvatarPixmap)
 		return;
 
 	if(!KVI_OPTION_BOOL(KviOption_boolEnableAnimatedAvatars))
 		return;
 
-	QObject::connect(m_pConnectedAnimation,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
-	QObject::connect(m_pConnectedAnimation,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
+	QObject::connect(m_pAvatarPixmap,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
+	QObject::connect(m_pAvatarPixmap,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
 
-	m_pConnectedAnimation->start();
-
+	m_pAvatarPixmap->start();
 }
 
 void KviUserListEntry::avatarFrameChanged()
@@ -175,7 +173,7 @@ void KviUserListEntry::avatarFrameChanged()
 
 void KviUserListEntry::avatarDestroyed()
 {
-	m_pConnectedAnimation = NULL;
+	m_pAvatarPixmap = NULL;
 }
 
 bool KviUserListEntry::color(QColor & color)
@@ -226,8 +224,8 @@ void KviUserListEntry::recalcSize()
 	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons) && (m_iHeight < 20))
 		m_iHeight = 20;
 
-	if(m_pConnectedAnimation)
-		m_iHeight += m_pConnectedAnimation->size().height();
+	if(m_pAvatarPixmap)
+		m_iHeight += m_pAvatarPixmap->size().height();
 
 	m_iHeight += 3;
 }
@@ -410,7 +408,6 @@ void KviUserListView::setMaskEntries(char cType, int iNum)
 void KviUserListView::animatedAvatarUpdated(KviUserListEntry *e)
 {
 	// FIXME: This sucks
-
 	if(!m_pTopItem)
 		return;
 
@@ -436,10 +433,11 @@ void KviUserListView::animatedAvatarUpdated(KviUserListEntry *e)
 		{
 			case KVI_USERLISTVIEW_GRIDTYPE_PLAINGRID:
 			case KVI_USERLISTVIEW_GRIDTYPE_DOTGRID:
-				break;
+			break;
 			default: // KVI_USERLISTVIEW_GRIDTYPE_3DGRID and KVI_USERLISTVIEW_GRIDTYPE_3DBUTTONS
-				if(pEntry->m_bSelected) iBaseY++;
-				break;
+				if(pEntry->m_bSelected)
+					iBaseY++;
+			break;
 		}
 		iBaseX += 3;
 	} else {
@@ -453,10 +451,11 @@ void KviUserListView::animatedAvatarUpdated(KviUserListEntry *e)
 		{
 			rct.setX(iBaseX);
 			rct.setY(iCurTop + iBaseY);
-			rct.setWidth(pEntry->m_pConnectedAnimation->pixmap()->size().width());
-			rct.setHeight(pEntry->m_pConnectedAnimation->pixmap()->size().height());
+			rct.setWidth(pEntry->m_pAvatarPixmap->pixmap()->size().width());
+			rct.setHeight(pEntry->m_pAvatarPixmap->pixmap()->size().height());
 
 			m_pViewArea->update(rct);
+			break;
 		}
 		iCurTop = iCurBottom;
 		pEntry = pEntry->m_pNext;
@@ -1152,97 +1151,91 @@ void KviUserListView::select(const QString & szNick)
 	m_pViewArea->update();
 }
 
-bool KviUserListView::partInternal(const QString & szNick, bool bRemove)
+bool KviUserListView::partInternal(const QString & szNick, bool bRemoveDefinitively)
 {
 	KviUserListEntry * pUserEntry = m_pEntryDict->find(szNick);
-	if(pUserEntry)
+	if(!pUserEntry)
+		return false; // not there
+
+	// so, first of all..check if this item is over, or below the top item
+	KviUserListEntry * pEntry = m_pHeadItem;
+	bool bGotTopItem = false;
+	while(pEntry != pUserEntry)
 	{
-		// so, first of all..check if this item is over, or below the top item
-		KviUserListEntry * pEntry = m_pHeadItem;
-		bool bGotTopItem = false;
-		while(pEntry != pUserEntry)
+		if(pEntry == m_pTopItem)
 		{
-			if(pEntry == m_pTopItem)
-			{
-				bGotTopItem = true;
-				pEntry = pUserEntry;
-			} else pEntry = pEntry->m_pNext;
-		}
-
-		// decrease counts first
-		if(pUserEntry->m_pGlobalData->isIrcOp())
-			m_iIrcOpCount--;
-		if(pUserEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
-			m_iChanOwnerCount--;
-		if(pUserEntry->m_iFlags & KVI_USERFLAG_CHANADMIN)
-			m_iChanAdminCount--;
-		if(pUserEntry->m_iFlags & KVI_USERFLAG_OP)
-			m_iOpCount--;
-		if(pUserEntry->m_iFlags & KVI_USERFLAG_HALFOP)
-			m_iHalfOpCount--;
-		if(pUserEntry->m_iFlags & KVI_USERFLAG_VOICE)
-			m_iVoiceCount--;
-		if(pUserEntry->m_iFlags & KVI_USERFLAG_USEROP)
-			m_iUserOpCount--;
-
-		if(bRemove)
-		{
-			m_pIrcUserDataBase->removeUser(szNick,pUserEntry->m_pGlobalData);
-
-			//if(!m_pIrcUserDataBase->find(szNick))
-			//{
-				//completelly removed. avatar is deleted
-			//	pUserEntry->resetAvatarConnection();
-			//}
-		}
-
-		if(pUserEntry->m_bSelected)
-		{
-			m_iSelectedCount--;
-			if(m_iSelectedCount == 0)
-				g_pFrame->childWindowSelectionStateChange(m_pKviWindow,false);
-		}
-		if(pUserEntry->m_pPrev)
-			pUserEntry->m_pPrev->m_pNext = pUserEntry->m_pNext;
-		if(pUserEntry->m_pNext)
-			pUserEntry->m_pNext->m_pPrev = pUserEntry->m_pPrev;
-		if(m_pTopItem == pUserEntry)
-		{
-			bGotTopItem = true; // !!! the previous while() does not handle it!
-			m_pTopItem = pUserEntry->m_pNext;
-			if(m_pTopItem == 0)
-				m_pTopItem = pUserEntry->m_pPrev;
-		}
-		if(pUserEntry == m_pHeadItem)
-			m_pHeadItem = pUserEntry->m_pNext;
-		if(pUserEntry == m_pTailItem)
-			m_pTailItem = pUserEntry->m_pPrev;
-		m_iTotalHeight -= pUserEntry->m_iHeight;
-
-		int iHeight = pUserEntry->m_iHeight;
-
-		m_pEntryDict->remove(szNick);
-
-		if(bGotTopItem)
-		{
-			// removing after (or exactly) the top item, may be visible
-			if(bRemove)
-				triggerUpdate();
-		} else {
-			// removing over (before) the top item...not visible
-			m_pViewArea->m_bIgnoreScrollBar = true;
-			m_pViewArea->m_iLastScrollBarVal -= iHeight;
-			m_pViewArea->m_pScrollBar->setValue(m_pViewArea->m_iLastScrollBarVal);
-//			m_pViewArea->m_pScrollBar->setRange(0,m_iTotalHeight);
-			updateScrollBarRange();
-			m_pViewArea->m_bIgnoreScrollBar = false;
-			if(bRemove)
-				updateUsersLabel();
-		}
-
-		return true;
+			bGotTopItem = true;
+			pEntry = pUserEntry;
+		} else pEntry = pEntry->m_pNext;
 	}
-	return false;
+
+	// decrease counts first
+	if(pUserEntry->m_pGlobalData->isIrcOp())
+		m_iIrcOpCount--;
+	if(pUserEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
+		m_iChanOwnerCount--;
+	if(pUserEntry->m_iFlags & KVI_USERFLAG_CHANADMIN)
+		m_iChanAdminCount--;
+	if(pUserEntry->m_iFlags & KVI_USERFLAG_OP)
+		m_iOpCount--;
+	if(pUserEntry->m_iFlags & KVI_USERFLAG_HALFOP)
+		m_iHalfOpCount--;
+	if(pUserEntry->m_iFlags & KVI_USERFLAG_VOICE)
+		m_iVoiceCount--;
+	if(pUserEntry->m_iFlags & KVI_USERFLAG_USEROP)
+		m_iUserOpCount--;
+
+	if(bRemoveDefinitively)
+	{
+		pUserEntry->detachAvatarData();
+		m_pIrcUserDataBase->removeUser(szNick,pUserEntry->m_pGlobalData);
+	}
+
+	if(pUserEntry->m_bSelected)
+	{
+		m_iSelectedCount--;
+		if(m_iSelectedCount == 0)
+			g_pFrame->childWindowSelectionStateChange(m_pKviWindow,false);
+	}
+	if(pUserEntry->m_pPrev)
+		pUserEntry->m_pPrev->m_pNext = pUserEntry->m_pNext;
+	if(pUserEntry->m_pNext)
+		pUserEntry->m_pNext->m_pPrev = pUserEntry->m_pPrev;
+	if(m_pTopItem == pUserEntry)
+	{
+		bGotTopItem = true; // !!! the previous while() does not handle it!
+		m_pTopItem = pUserEntry->m_pNext;
+		if(m_pTopItem == 0)
+			m_pTopItem = pUserEntry->m_pPrev;
+	}
+	if(pUserEntry == m_pHeadItem)
+		m_pHeadItem = pUserEntry->m_pNext;
+	if(pUserEntry == m_pTailItem)
+		m_pTailItem = pUserEntry->m_pPrev;
+	m_iTotalHeight -= pUserEntry->m_iHeight;
+
+	int iHeight = pUserEntry->m_iHeight;
+
+	m_pEntryDict->remove(szNick);
+
+	if(bGotTopItem)
+	{
+		// removing after (or exactly) the top item, may be visible
+		if(bRemoveDefinitively)
+			triggerUpdate();
+	} else {
+		// removing over (before) the top item...not visible
+		m_pViewArea->m_bIgnoreScrollBar = true;
+		m_pViewArea->m_iLastScrollBarVal -= iHeight;
+		m_pViewArea->m_pScrollBar->setValue(m_pViewArea->m_iLastScrollBarVal);
+//			m_pViewArea->m_pScrollBar->setRange(0,m_iTotalHeight);
+		updateScrollBarRange();
+		m_pViewArea->m_bIgnoreScrollBar = false;
+		if(bRemoveDefinitively)
+			updateUsersLabel();
+	}
+
+	return true;
 }
 
 bool KviUserListView::nickChange(const QString & szOldNick, const QString & szNewNick)
@@ -1255,11 +1248,7 @@ bool KviUserListView::nickChange(const QString & szOldNick, const QString & szNe
 		int iFlags        = pEntry->m_iFlags;
 		kvi_time_t joint  = pEntry->m_joinTime;
 		bool bSelect      = pEntry->m_bSelected;
-		/*if(pEntry->m_pConnectedAnimation)
-		{
-			pEntry->m_pConnectedAnimation->disconnect(SIGNAL(frameChanged()),
-				this,SLOT(animatedAvatarUpdated()));
-		}*/
+
 		KviAvatar * pAv   = pEntry->m_pGlobalData->forgetAvatar();
 
 		KviIrcUserEntry::Gender gender = pEntry->m_pGlobalData->gender();
@@ -1287,31 +1276,31 @@ bool KviUserListView::nickChange(const QString & szOldNick, const QString & szNe
 
 void KviUserListView::updateUsersLabel()
 {
-	if(KVI_OPTION_BOOL(KviOption_boolShowUserListStatisticLabel))//G&N  2005
-	{
-		KviStr tmp;
-		tmp.sprintf("<nobr><b>[%u]</b>",m_pEntryDict->count());
-		if(m_iChanOwnerCount)
-			tmp.append(KviStr::Format," q:%d",m_iChanOwnerCount);
-		if(m_iChanAdminCount)
-			tmp.append(KviStr::Format," a:%d",m_iChanAdminCount);
-		if(m_iOpCount)
-			tmp.append(KviStr::Format," o:%d",m_iOpCount);
-		if(m_iHalfOpCount)
-			tmp.append(KviStr::Format," h:%d",m_iHalfOpCount);
-		if(m_iVoiceCount)
-			tmp.append(KviStr::Format," v:%d",m_iVoiceCount);
-		if(m_iUserOpCount)
-			tmp.append(KviStr::Format," u:%d",m_iUserOpCount);
-		if(m_ibEntries)
-			tmp.append(KviStr::Format," b:%d",m_ibEntries);
-		if(m_ieEntries)
-			tmp.append(KviStr::Format," e:%d",m_ieEntries);
-		if(m_iIEntries)
-			tmp.append(KviStr::Format," I:%d",m_iIEntries);
-		tmp.append("</nobr>");
-		m_pUsersLabel->setText(tmp.ptr());
-	}
+	if(!KVI_OPTION_BOOL(KviOption_boolShowUserListStatisticLabel))
+		return;
+
+	KviStr tmp;
+	tmp.sprintf("<nobr><b>[%u]</b>",m_pEntryDict->count());
+	if(m_iChanOwnerCount)
+		tmp.append(KviStr::Format," q:%d",m_iChanOwnerCount);
+	if(m_iChanAdminCount)
+		tmp.append(KviStr::Format," a:%d",m_iChanAdminCount);
+	if(m_iOpCount)
+		tmp.append(KviStr::Format," o:%d",m_iOpCount);
+	if(m_iHalfOpCount)
+		tmp.append(KviStr::Format," h:%d",m_iHalfOpCount);
+	if(m_iVoiceCount)
+		tmp.append(KviStr::Format," v:%d",m_iVoiceCount);
+	if(m_iUserOpCount)
+		tmp.append(KviStr::Format," u:%d",m_iUserOpCount);
+	if(m_ibEntries)
+		tmp.append(KviStr::Format," b:%d",m_ibEntries);
+	if(m_ieEntries)
+		tmp.append(KviStr::Format," e:%d",m_ieEntries);
+	if(m_iIEntries)
+		tmp.append(KviStr::Format," I:%d",m_iIEntries);
+	tmp.append("</nobr>");
+	m_pUsersLabel->setText(tmp.ptr());
 }
 
 // FIXME: this could be done really better
@@ -1821,31 +1810,11 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			}
 			iTheY += 2;
 
-			if(KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))//G&N  2005
+			if(KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))
 			{
-				KviAvatar * pAv = pEntry->m_pGlobalData->avatar();
-				if(pAv)
+				if(pEntry->m_pAvatarPixmap)
 				{
-					QPixmap * pPix;
-					if(
-						KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
-						KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth) &&
-						KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight) && 
-						(
-							((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
-							((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
-						)
-					)
-					{
-						qDebug("WARNING: Scaling avatar on-the-fly: this should NEVER happen!");
-						pPix = pAv->forSize(
-								KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
-								KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight)
-							)->pixmap();
-					} else {
-						pPix = pAv->pixmap();
-					}
-
+					QPixmap * pPix = pEntry->m_pAvatarPixmap->pixmap();
 					p.drawPixmap(iAvatarAndTextX,iTheY,*pPix);
 					iTheY += pPix->height() + 1;
 				}

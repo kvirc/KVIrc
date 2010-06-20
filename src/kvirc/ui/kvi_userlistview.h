@@ -163,7 +163,7 @@ protected:
 	bool                m_bSelected;
 	KviUserListEntry  * m_pNext;
 	KviUserListEntry  * m_pPrev;
-	KviAnimatedPixmap * m_pConnectedAnimation;
+	KviAnimatedPixmap * m_pAvatarPixmap;
 public:
 	/**
 	* \brief Returns the flags of the user
@@ -201,6 +201,7 @@ public:
 	* \return void
 	*/
 	void updateAvatarData();
+	void detachAvatarData();
 
 protected:
 	/**

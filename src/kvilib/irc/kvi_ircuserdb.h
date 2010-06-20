@@ -370,12 +370,12 @@ public:
 	KviIrcUserEntry * find(const QString & nick){ return m_pDict->find(nick); };
 
 	/**
-	* \brief Deletes a user from the database
+	* \brief Decrements the user reference count and if it reaches 0 then deletes the user from the database
 	* \param nick The nickname of the user
 	* \param e The entry of the user
-	* \return void
+	* \return true if the reference count reached 0 and false otherwise (so true if the user was completely deleted from the db)
 	*/
-	void removeUser(const QString & nick, KviIrcUserEntry * e);
+	bool removeUser(const QString & nick, KviIrcUserEntry * e);
 
 	/**
 	* \brief Returns the database dictionary

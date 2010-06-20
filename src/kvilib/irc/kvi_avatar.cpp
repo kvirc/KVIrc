@@ -115,17 +115,13 @@ KviAvatar::KviAvatar(
 		m_pPixmap->resize(scaleOnLoad,Qt::KeepAspectRatio);
 	}
 
-	//m_pPixmap->start(); <-- eh ?
-
 	m_scaledPixmapsCache.insert(m_pPixmap->size(),m_pPixmap);
 }
 
 KviAvatar::~KviAvatar()
 {
 	foreach(KviAnimatedPixmap* pix,m_scaledPixmapsCache)
-	{
 		delete pix;
-	}
 }
 
 KviAnimatedPixmap * KviAvatar::forSize(const QSize& size)
