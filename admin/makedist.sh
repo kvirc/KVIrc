@@ -41,7 +41,7 @@ echo "Removing .svn directories.."
 rm -fr $(find ./$PKGSRCDIR -name ".svn")
 
 echo "Compressing sources into $OUTPUTFILE"
-tar -zcvf $OUTPUTFILE $PKGSRCDIR
+tar -jcvf $OUTPUTFILE $PKGSRCDIR
 
 echo "Removing target directory..."
 rm -rf $TEMPSRCDIR
