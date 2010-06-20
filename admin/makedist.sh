@@ -32,6 +32,7 @@ cp -rf $1 $TEMPSRCDIR
 
 echo "Determining svn revision..."
 cd $1
+svn update
 REVISION=$(svnversion -n .)
 
 echo "Revision is $REVISION"
