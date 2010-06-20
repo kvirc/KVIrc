@@ -58,8 +58,8 @@ KviAnimatedPixmap::KviAnimatedPixmap(const KviAnimatedPixmap &source)
 
 KviAnimatedPixmap::~KviAnimatedPixmap()
 {
-	if(m_iStarted > 0)
-		qDebug("WARNING: KviAnimatedPixmap wasn't stopped enough times");
+	//if(m_iStarted > 0)
+	//	qDebug("WARNING: KviAnimatedPixmap wasn't stopped enough times");
 	KviAnimatedPixmapCache::notifyDelete(this);
 	KviAnimatedPixmapCache::free(m_pFrameData);
 }
