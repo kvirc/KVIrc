@@ -1413,6 +1413,15 @@ if(open(NOHELP,">$g_directory/nohelpavailable$g_fileextension"))
 	printf "Can't open $g_directory/nohelpavailable$g_fileextension for writing\n";
 }
 
+if(open(TAG,">$g_directory/documentation.$g_version.tag"))
+{
+	print TAG "dummy\n";
+	close(TAG);
+} else {
+	printf "Can't open $g_directory/documentation.$g_version.tag for writing\n";
+}
+
+
 # print "\n";
 # print "--\n";
 # print "-- Done! (Processed $g_files files)\n";
