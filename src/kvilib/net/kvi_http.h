@@ -95,6 +95,7 @@ protected:
 	unsigned int           m_uRemainingChunkSize;
 	bool                   m_bIgnoreRemainingData; // used in chunked transfer after the last chunk has been seen
 	KviFile              * m_pFile;
+	unsigned int           m_uConnectionTimeout; // in seconds, 60 secs by default
 protected:
 	bool startDnsLookup();
 	virtual bool event(QEvent *e);
@@ -110,6 +111,13 @@ protected slots:
 	void dnsLookupDone(KviDns *d);
 	void haveServerIp();
 public:
+	void setConnectionTimeout(unsigned int uConnectionTimeout)
+	{
+		m_uConnectionTimeout = uConnectionTimeout;
+		if(m_uConnectionTimeout < 5)
+			m_uConnectionTimeout = 5; // keep it sane
+	}
+
 	const KviUrl & url(){ return m_url; };
 	ProcessingType processingType(){ return m_eProcessingType; };
 	ExistingFileAction existingFileAction(){ return m_eExistingFileAction; };
@@ -164,14 +172,15 @@ public:
 	enum RequestMethod { Post, Get , Head };
 protected:
 	KviHttpRequestThread(KviHttpRequest * r,
-		const QString &szHost,
-		const QString &szIp,
-		unsigned short uPort,
-		const QString &szPath,
-		unsigned int uContentOffset,
-		RequestMethod m,
-		const QString &szPostData = QString(),
-		bool bUseSSL = false);
+			const QString &szHost,
+			const QString &szIp,
+			unsigned short uPort,
+			const QString &szPath,
+			unsigned int uContentOffset,
+			RequestMethod m,
+			const QString &szPostData = QString(),
+			bool bUseSSL = false
+		);
 
 public:
 	~KviHttpRequestThread();
@@ -188,10 +197,17 @@ protected:
 	unsigned short   m_uPort;
 	kvi_socket_t     m_sock;
 	bool             m_bUseSSL;
+	unsigned int     m_uConnectionTimeout;
 #ifdef COMPILE_SSL_SUPPORT
 	KviSSL         * m_pSSL;
 #endif
 protected:
+	void setConnectionTimeout(unsigned int uTimeout)
+	{
+		m_uConnectionTimeout = uTimeout;
+		if(m_uConnectionTimeout < 5)
+			m_uConnectionTimeout = 5; // keep it sane
+	}
 	int selectForReadStep();
 	bool selectForRead(int iTimeoutInSecs);
 	bool readDataStep();

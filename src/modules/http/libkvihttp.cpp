@@ -109,6 +109,15 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		if(bOk)hft->request()->setContentOffset(uContentOffset);
 	}
 
+	// FIXME: this should be numeric
+	if(c->switches()->getAsStringIfExisting('t',"timeout",tmp))
+	{
+		bool bOk;
+		unsigned int uConnectionTimeout = tmp.toUInt(&bOk);
+		if(bOk)
+			hft->request()->setConnectionTimeout(uConnectionTimeout);
+	}
+
 	if(c->switches()->getAsStringIfExisting('w',"winctrl",tmp))
 	{
 		if(!tmp.contains('h'))hft->invokeTransferWindow(c->window(),tmp.contains('m'),tmp.contains('n'));
@@ -198,6 +207,11 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		and -e=r then the file will be resumed, the transfer will start at the specified offset
 		and the received stream will be appended to the existing file.(avoid it unless you know what you're doing:
 		it's easy to download broken files).[br]
+
+		!sw: -t=<timeout_in_seconds> | --timeout=<timeout_in_seconds>
+		Changes the default connection timeout to the <timeout_in_seconds>.
+		A connection stuck for more than <timeout_in_seconds> seconds will be simply aborted.
+		The default timeout is 60 seconds and is appropriate for most operations. Use with care.[br]
 
 		!sw: -h | --head
 		Causes the connection to use the HTTP HEAD method that effectively

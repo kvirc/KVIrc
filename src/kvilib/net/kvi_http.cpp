@@ -54,6 +54,7 @@ KviHttpRequest::KviHttpRequest()
 	m_pPrivateData = 0;
 	m_bHeaderProcessed = false;
 	m_pBuffer = new KviDataBuffer();
+	m_uConnectionTimeout = 60;
 
 	resetStatus();
 	resetData();
@@ -230,15 +231,18 @@ void KviHttpRequest::haveServerIp()
 	if(m_pThread)delete m_pThread;
 
 	m_pThread = new KviHttpRequestThread(
-						this,
-						m_url.host(),
-						m_szIp,
-						uPort,
-						m_url.path(),
-						m_uContentOffset,
-						(m_eProcessingType == HeadersOnly) ? KviHttpRequestThread::Head : (m_szPostData.isEmpty() ? KviHttpRequestThread::Get : KviHttpRequestThread::Post),
-						m_szPostData,
-						m_url.protocol()=="https");
+			this,
+			m_url.host(),
+			m_szIp,
+			uPort,
+			m_url.path(),
+			m_uContentOffset,
+			(m_eProcessingType == HeadersOnly) ? KviHttpRequestThread::Head : (m_szPostData.isEmpty() ? KviHttpRequestThread::Get : KviHttpRequestThread::Post),
+			m_szPostData,
+			m_url.protocol()=="https"
+		);
+
+	m_pThread->setConnectionTimeout(m_uConnectionTimeout);
 
 	if(!m_pThread->start())
 	{
@@ -851,16 +855,16 @@ check_stream_length:
 }
 
 KviHttpRequestThread::KviHttpRequestThread(
-	KviHttpRequest * r,
-	const QString &szHost,
-	const QString &szIp,
-	unsigned short uPort,
-	const QString & szPath,
-	unsigned int uContentOffset,
-	RequestMethod m,
-	const QString &szPostData,
-	bool bUseSSL
-) : KviSensitiveThread()
+		KviHttpRequest * r,
+		const QString &szHost,
+		const QString &szIp,
+		unsigned short uPort,
+		const QString & szPath,
+		unsigned int uContentOffset,
+		RequestMethod m,
+		const QString &szPostData,
+		bool bUseSSL
+	) : KviSensitiveThread()
 {
 	m_pRequest = r;
 	m_szHost = szHost;
@@ -872,6 +876,7 @@ KviHttpRequestThread::KviHttpRequestThread(
 	m_szPostData = szPostData;
 	m_sock = KVI_INVALID_SOCKET;
 	m_bUseSSL = bUseSSL;
+	m_uConnectionTimeout = 60;
 #ifdef COMPILE_SSL_SUPPORT
 	m_pSSL = 0;
 #endif
@@ -963,7 +968,8 @@ bool KviHttpRequestThread::selectForWrite(int iTimeoutInSecs)
 		}
 
 
-		if((time(0) - startTime) > iTimeoutInSecs)return failure(__tr_no_lookup("Operation timed out"));
+		if((time(0) - startTime) > iTimeoutInSecs)
+			return failure(__tr_no_lookup("Operation timed out"));
 
 		usleep(100000); // 1/10 sec
 	}
@@ -1013,8 +1019,8 @@ bool KviHttpRequestThread::connectToRemoteHost()
 
 	// now loop selecting for write
 
-	//#warning "This should be a tuneable timeout"
-	if(!selectForWrite(60))return false;
+	if(!selectForWrite(m_uConnectionTimeout))
+		return false;
 
 	int sockError;
 	int iSize=sizeof(sockError);
@@ -1045,10 +1051,12 @@ bool KviHttpRequestThread::connectToRemoteHost()
 					return true;
 				break;
 				case KviSSL::WantRead:
-					if(!selectForRead(60))return false;
+					if(!selectForRead(m_uConnectionTimeout))
+						return false;
 				break;
 				case KviSSL::WantWrite:
-					if(!selectForWrite(60))return false;
+					if(!selectForWrite(m_uConnectionTimeout))
+						return false;
 				break;
 				case KviSSL::RemoteEndClosedConnection:
 					return failure(__tr_no_lookup("Remote end has closed the connection"));
@@ -1091,7 +1099,8 @@ bool KviHttpRequestThread::sendBuffer(const char * buffer,int bufLen,int iTimeou
 
 	for(;;)
 	{
-		if(!processInternalEvents())return failure();
+		if(!processInternalEvents())
+			return failure();
 
 		int wrtn;
 #ifdef COMPILE_SSL_SUPPORT
@@ -1109,7 +1118,8 @@ bool KviHttpRequestThread::sendBuffer(const char * buffer,int bufLen,int iTimeou
 		{
 			curLen -= wrtn;
 
-			if(curLen <= 0)break;
+			if(curLen <= 0)
+				break;
 
 			ptr += wrtn;
 		} else {
@@ -1122,10 +1132,12 @@ bool KviHttpRequestThread::sendBuffer(const char * buffer,int bufLen,int iTimeou
 					switch(m_pSSL->getProtocolError(wrtn))
 					{
 						case KviSSL::WantWrite:
-							if(!selectForWrite(60))return false;
+							if(!selectForWrite(m_uConnectionTimeout))
+								return false;
 							break;
 						case KviSSL::WantRead:
-							if(!selectForRead(60))return false;
+							if(!selectForRead(m_uConnectionTimeout))
+								return false;
 							break;
 						case KviSSL::SyscallError:
 							if(wrtn == 0)
@@ -1273,10 +1285,10 @@ bool KviHttpRequestThread::readDataStep()
 					readed = 0;
 				break;
 				case KviSSL::WantRead:
-					return selectForRead(120);
+					return selectForRead(m_uConnectionTimeout);
 				break;
 				case KviSSL::WantWrite:
-					return selectForWrite(120);
+					return selectForWrite(m_uConnectionTimeout);
 				break;
 				case KviSSL::SyscallError:
 				{
@@ -1316,7 +1328,7 @@ bool KviHttpRequestThread::readDataStep()
 				// yes...read error
 				return failure(KviError::getUntranslatedDescription(KviError::translateSystemError(err)));
 			}
-			return selectForRead(120); // EINTR or EAGAIN...transient problem
+			return selectForRead(m_uConnectionTimeout); // EINTR or EAGAIN...transient problem
 		} else {
 			// readed == 0
 			// Connection closed by remote host
@@ -1324,7 +1336,7 @@ bool KviHttpRequestThread::readDataStep()
 			return false;
 		}
 	}
-	return selectForRead(120);
+	return selectForRead(m_uConnectionTimeout);
 }
 
 void KviHttpRequestThread::run()
