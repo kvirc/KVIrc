@@ -98,54 +98,39 @@ const int align_cod[] = {
 		Sets the group box's orientation. Valid values are: Horizontal, Vertical.
 	@examples:
 		[example]
-		|-Start:[br]
-		#Let's start.[br]
-		#first we'll create the main widget.[br]
-		%widget=$new(widget)[br]
-		[br]
-		#then the groupbox [br]
-		%gb=$new(groupbox,%widget)[br]
-		%gb->$setTitle(Login)[br]
-		%gb->$setAlignment("Left")[br]
-		[br]
-		#now we create the labels and lineedits.[br]
-		%labeluser=$new(label,%gb)[br]
-		%labeluser->$settext(User: )[br]
-		%labelpass=$new(label,%gb)[br]
-		%labelpass->$settext(Pass: )[br]
-		%inputuser=$new(lineedit,%gb)[br]
-		%inputpass=$new(lineedit,%gb)[br]
-		%inputpass->$setechomode("password")[br]
-		[br]
-		#now lets' layouting the groupbox's element's.[br]
-		%layoutgb=$new(layout,%gb)[br]
-		%layoutgb->$setmargin(20)[br]
-		%layoutgb->$addwidget(%labeluser,0,0)[br]
-		%layoutgb->$addwidget(%labelpass,1,0)[br]
-		%layoutgb->$addwidget(%inputuser,0,1)[br]
-		%layoutgb->$addwidget(%inputpass,1,1)[br]
-		[br]
-		# now we create a fake widget and managing the two buttons layout.[br]
-		%fakewidget=$new(widget,%widget)[br]
-		%layoutbtn=$new(layout,%fakewidget)[br]
-		%btnok=$new(button,%fakewidget)[br]
-		%btnok->$settext("OK")[br]
-		%btncancel=$new(button,%fakewidget)[br]
-		%btncancel->$settext("Cancel")[br]
-		%layoutbtn->$addwidget(%btnok,0,0)[br]
-		%layoutbtn->$addwidget(%btncancel,0,1)[br]
-		[br]
-		#And finally we create a main layout with the groupbox (and its "children")[br]
-		#and fakewiget (with its buttons children).
-		%mainlayout=$new(layout,%widget)[br]
-		%mainlayout->$setspacing(10)[br]
-		%mainlayout->$setmargin(10)[br]
-		%mainlayout->$addwidget(%gb,0,0)[br]
-		%mainlayout->$addwidget(%fakewidget,1,0)[br]
-		[br]
-		#Let's show our nice login request =D ! [br]
-		%widget->$show()[br]
-	[/example]
+			//Let's start.
+			//First we'll create the main widget. as a dialog
+			%widget=$new(dialog)
+			%layout=$new(layout,%widget)
+			//then the groupbox
+			%gb=$new(groupbox,%widget)
+			%gb->$setTitle(Login)
+			%gb->$setAlignment("Left")
+			// add the gbox to the main layout
+			%layout->$addWidget(%gb,0,0)
+			// now we create the user field  (labels + lineedit)
+			// in a horizontal box
+			%hbox=$new(hbox,%gb)
+			%labeluser=$new(label,%hbox)
+			%labeluser->$settext(User: )
+			%inputuser=$new(lineedit,%hbox)
+			//now we create the pass field  (labels + lineedit).
+			// in a horizontal box
+			%hbox=$new(hbox,%gb)
+			%labelpass=$new(label,%hbox)
+			%labelpass->$settext(Pass: )
+			%inputpass=$new(lineedit,%hbox)
+			%inputpass->$setechomode("password")
+			// now we create the ok/cancel box buttons
+			%hbox=$new(hbox,%gb)
+			%btnok=$new(button,%hbox)
+			%btnok->$settext("OK")
+			%btncancel=$new(button,%hbox)
+			%btncancel->$settext("Cancel")
+
+			//Let's show our nice form
+			%widget->$show()
+		[/example]
 
 */
 
