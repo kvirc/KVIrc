@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-19 20:08+0200\n"
-"PO-Revision-Date: 2010-05-22 18:21+0200\n"
+"PO-Revision-Date: 2010-06-21 23:43+0200\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1035,6 +1035,11 @@ msgid ""
 "differentiate between transfers only by looking at the filename. Be careful."
 "</center>"
 msgstr ""
+"<center>Questa opzione fa sì che KVIrc accetti le richieste di RESUME con "
+"porte differenti.<br>Usalo se hai un router tra te e l'utente remoto che "
+"rimappa le porte in DCC SEND ma non in DCC RESUME.<br>Nota che questa "
+"opzione puà dare problemi dal momento che KVIrc deve differenziare i "
+"trasferimenti guardando solamente il nome del file. Fai attenzione.</center>"
 
 #: src/modules/options/optw_irc.cpp:71
 msgid ""
@@ -1671,13 +1676,12 @@ msgid "Abort"
 msgstr "Annulla"
 
 #: src/modules/options/optw_dcc.cpp:220
-#, fuzzy
 msgid "Accept RESUME requests with broken filename (mIRC file.ext)"
 msgstr "Accetta RESUME interrotti (mIRC file.ext)"
 
 #: src/modules/options/optw_dcc.cpp:226
 msgid "Accept RESUME requests with mismatched ports"
-msgstr ""
+msgstr "Accetta richieste RESUME con porte differenti"
 
 #: src/modules/options/optw_servers.cpp:1320
 msgid "Active Configuration"
@@ -1832,7 +1836,7 @@ msgstr "Aggiungi alla risposta VERSION:"
 
 #: src/modules/options/optw_servers.cpp:894
 msgid "Authenticate via SASL extension"
-msgstr ""
+msgstr "Autentica via estensione SASL"
 
 #: src/modules/options/optw_logging.cpp:49
 msgid "Auto flush logs every"
@@ -2345,9 +2349,9 @@ msgid "Don't show colors in user messages"
 msgstr "Non mostrare i colori nei messaggi degli utenti"
 
 #: src/modules/options/optw_notifier.cpp:160
-#, fuzzy
 msgid "Don't show notifier when there is an active fullscreen window"
-msgstr "Mostra notifiche nella finestra attiva"
+msgstr ""
+"Non mostrare il notificatore se c'è una finestra a tutto schermo attiva"
 
 #: src/modules/options/optw_ircview.cpp:190
 msgid "DotLine"
@@ -2500,7 +2504,7 @@ msgstr "Espandi le tabulazioni dell'input usando questo numero di spazi:"
 
 #: src/modules/options/optw_servers.cpp:861
 msgid "Extended Capabilities"
-msgstr ""
+msgstr "Estensioni"
 
 #: src/modules/options/optw_ircoutput.cpp:71
 msgid "External CTCP replies"
@@ -3159,6 +3163,8 @@ msgstr "Gestore mouse"
 msgid ""
 "Mouse wheel changes the active window instead of scrolling the scrollbar"
 msgstr ""
+"La rotella del mouse cambia la finestra attiva invece che scrollare la "
+"scrollbar"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
@@ -3660,9 +3666,8 @@ msgid "Protection"
 msgstr "Protezione"
 
 #: src/modules/options/optw_servers.cpp:722
-#, fuzzy
 msgid "Protocol Encoding:"
-msgstr "Codifica Testo:"
+msgstr "Codifica Protocollo:"
 
 #: src/modules/options/optw_urlhandlers.cpp:66
 msgid "Protocol handler"
@@ -3722,7 +3727,7 @@ msgstr "Query"
 
 #: src/modules/options/optw_servers.cpp:867
 msgid "Query extended capabilities on connect"
-msgstr ""
+msgstr "Richiedi le estensioni alla connessione"
 
 #: src/modules/options/optw_logging.cpp:41
 msgid "Query windows"
@@ -3835,9 +3840,8 @@ msgid "Right"
 msgstr "Destra"
 
 #: src/modules/options/optw_servers.cpp:889
-#, fuzzy
 msgid "SASL Authentication"
-msgstr "Attiva autenticazione SASL"
+msgstr "Autenticazione SASL"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:102
 msgid "SOURCE"
@@ -4136,7 +4140,7 @@ msgstr "Elimina i numer dei tipi di messaggio dai log"
 
 #: src/modules/options/optw_servers.cpp:876
 msgid "Switch to SSL/TLS by using the STARTTLS extension"
-msgstr ""
+msgstr "Cambia a SSL/TLS usando l'estensione STARTTLS"
 
 #: src/modules/options/optw_ircoutput.cpp:64
 msgid "System locale format"
@@ -4210,6 +4214,8 @@ msgid ""
 "refuse to download it.<br>You *should* either scale it, use a different "
 "storage<br>format or choose a different image."
 msgstr ""
+"L'avatar che hai scelto è più grande di 500 KiB<br>e molti client non lo "
+"scaricheranno.<br>*Dovresti* scalarlo, o usare un'immagine diversa."
 
 #: src/modules/options/dialog.cpp:117
 msgid "Theme Preferences"
@@ -4353,6 +4359,11 @@ msgid ""
 "distracted by the notifier or it may even switch your game from fullscreen "
 "to window mode."
 msgstr ""
+"Questa opzione impedisce al notificatore di essere visualizzato quando c'è "
+"una finestra a tutto schermo. E' utile quando stai giocando e potresti "
+"essere "
+"distratto dal notificatore o togliere dalla modalità a tutto schermo la "
+"finestra del gioco."
 
 #: src/modules/options/optw_avatar.cpp:107
 msgid ""
