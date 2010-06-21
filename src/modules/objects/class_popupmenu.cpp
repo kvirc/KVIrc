@@ -57,11 +57,8 @@
 	@functions:
 		!fn: $insertItem(<text:string>,[icon_id:string])
 		Inserts menu items into a popup menu with optional icon and return the popup identifier.
-		!fn: $insertWidget(<widget:object>)[br]
-		Inserts widget items int a popup menu and return the popup identifier.[br]
-		The widget is treats as a separator; this means that the item is not selectable and you can, for example, simply insert a label if you need a popup menu with a title.
-		!fn: $insertHandle(<text_label:string>,<popupmenu:object>,[icon])
-		Inserts a submenu with optional icon into the popup menu.
+		!fn: $setTitle(<text:string>)
+		Sets the popupmenu title to text.
 		!fn: $exec([<widget:objects>,<x:uinteger>,<y:integer>])
 		If called without paramaters show the popup menu at the current pointer position.[br]
 		With the optional parameters show the popup menu at the coordinate x,y widget parameter relative.
@@ -86,89 +83,88 @@
 		[br]
 		|-EXAMPLE POPUP MENU-|[br]
 		|--Start:
-		# First of all we create an array wich will be used to create random colors.[br]
-		%Hex[]=$array(0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F)[br]
-		[br]
+		// first we define a class inherited from popupmenu
+		class(menu,popupmenu)
+		{
+			constructor()
+			{
+				// we store the item's id for checkit in activatedEvent
+				@%tile_id=@$insertItem("Tile",118)
+				@%cascade_id=@$insertItem("Cascade",115)
+				@$insertSeparator(3)
+				@%closeactw_id=@$insertItem("Close Active Window",08)
+				@%closeallw_id=@$insertItem("Close All Window",58)
+			}
+			activatedEvent()
+			{
+				// now we emit a signals to the relative to the user choice
+				%id=$0
+				if (%id==@%tile_id) @$emit("tile")
+				else if(%id==@%cascade_id) @$emit("cascade")
+				else if (%id==@%closeactw_id) @$emit("closeactive")
+				else @$emit("closeallwindows")
+				// deleting the popup
+				delete $$
+			}
+		}
 		class (ws,widget)[br]
-		{[br]
-		#In the constructor we create everything that belong to the single widget.[br]
-			constructor[br]
-			{[br]
-				#Geometry of the widget and setting-up of popupmenu [br]
-				$$->$setGeometry(%X,%Y,100,100)[br]
-			    $$->%lay=$new(layout,$$)[br]
-				#Here we generate a cicle to create our labels inside the widget.[br]
-				%i=0[br]
-				while (%i<10)[br]
-				{[br]
-					$$->%label=$new(label,$$)[br]
-					$$->%label->$settext("Another class by N\&G")[br]
-					#We set our foreground's coulor using the hex arrey in random way.[br]
-					%color=%Hex[$rand(14)]%Hex[$rand(14)]%Hex[$rand(14)]%Hex[$rand(14)]%Hex[$rand(14)]%Hex[$rand(14)][br]
-					$$->%label->$setforegroundcolor(%color)[br]
-					$$->%label->$setautoresize(1)[br]
-					#We add the label to the widget's popupmenu.[br]
-					$$->%lay->$addwidget($$->%label,%i,0)[br]
-					%i++;[br]
-				}[br]
-				#We make the popupmenu relative to this widget: this is merely demonstrative.[br]
-				#because it creates 25 identical popups.[br]
-				$$->%Popupmenu=$new(popupmenu,$$)[br]
-				#we create the label widget wich will be used as popup's title[br]
-				$$->%Popuptitle=$new(label)[br]
-				$$->%Popuptitle->$settext(<B><U>"Windows Options"</B></U>)[br]
-				$$->%Popuptitle->$setAlignment(Center)[br]
-				#and we add it.[br]
-				%A=$$->%Popuptitle[br]
-				$$->%Popupmenu->$insertwidget(%A)[br]
-				#Here we keep the various IDs in the arrays[br]
-				%Tile[%I]=$$->%Popupmenu->$insertItem("Tile",118)[br]
-				%Cascade[%I]=$$->%Popupmenu->$insertItem("Cascade",115)[br]
-				$$->%Popupmenu->$insertSeparator(3)[br]
-				%Closeactw[%I]=$$->%Popupmenu->$insertItem("Close Active Window",08)[br]
-				%Closeallw[%I]=$$->%Popupmenu->$insertItem("Close All Window",58)[br]
-				$$->$show()[br]
-				privateimpl($$->%Popupmenu,activatedEvent)[br]
-				{[br]
-					%id=$0[br]
-					%i = 0[br]
-					#with this cicle we control wich of the items has been called  comparing the id given back by the event with our arrays created before;[br]
-					while (%i<20)[br]
-					{[br]
-						if (%id == %Tile[%i]) return %Workspace->$tile()[br]
-						if (%id == %Cascade[%i]) return %Workspace->$cascade()[br]
-						if (%id == %Closeactw[%i]) return %Workspace->$closeactivewindow()[br]
-						if (%id == %Closeallw[%i]) return %Workspace->$closeallwindows()[br]
-						%i ++[br]
-					}[br]
-				}[br]
-			}[br]
-		   #we activate the popup pushing the right mouse button on the widget[br]
-		  mousepressevent[br]
-			{[br]
-			   if ($0 == 1) $$->%Popupmenu->$exec()[br]
-			}[br]
-		}[br]
-		%Workspace=$new(workspace)[br]
-		%Workspace->$resize(640,480)[br]
-		%I=0[br]
-		%Cicle=1[br]
-		while (%I<20)[br]
-		{[br]
-			%X=$rand(500)[br]
-			%Y=$rand(480)[br]
-			%Widget=$new(ws,%Workspace)[br]
-			%I++[br]
-		}[br]
+		{
+			#In the constructor we create everything that belong to the single widget.
+			constructor()
+			{
+				#Here we generate a loop to create our labels inside the widget.
+				%lay=$new(layout,$$)
+				// we use a vbox to managing labels in vertical orientation
+				%vb=$new(vbox,$$)
+				// then add the vbox to the main layout
+				%lay->$addWidget(%vb,0,0)
+				// let's create our colorful labels
+				for(%i=0;%i<15;%i++)
+				{
+					@%label=$new(label,%vb)
+					@%label->$settext("Another class by N\&G")
+					#We set our foreground's colors using the hex array in a random way.
+					@%label->$setforegroundcolor($array($rand(255),$rand(255),$rand(255)))
+				}
+			}
+			customContextMenuRequestedEvent()
+			{
+				#We create  the popupmenu relative to this widget at runtime.
+				%p=$new(menu,$$)
+				objects.connect %p tile @$parent tile
+				objects.connect %p cascade @$parent cascade
+				objects.connect %p closeactive @$parent closeactivewindow
+				objects.connect %p closeallwindows @$parent closeallwindows
+				%p->$exec($$,$($0+10),$($1+10))
+			}
+		}
+		// we create the workspace widget
+		%Workspace=$new(workspace)
+		// we use as space as we have
+		%size[]=%Workspace->$screenResolution()
+		// resize it
+		%Workspace->$resize(%size[0],%size[1])
+		// then create 20 subwidget
+		for(%i=0;%i<20;%i++)
+		{
+			%w=$new(ws,%Workspace)
+			// let's add avery widget to the workspace
+			%Workspace->$addSubWindow(%w)
+			// then "shake it" a little bit around :-)
+			%w->$move($rand($(%size[0]-50)),$rand($(%size[1]-50)))
+		}
+		// reimplement closeEvent to delete all this :-)
+		privateimpl(%Workspace,closeEvent)
+		{
+			delete $$
+		}
 		#Let's show!
-		%Workspace->$show[br]
-		|--End.[br][br]
+		%Workspace->$show		|--End.[br][br]
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_popupmenu,"popupmenu","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,insertItem)
-	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,"insertWidget", functioninsertWidget)
-//	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,"setTitle", functionsetTitle)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,setTitle)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,exec)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,insertSeparator)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,removeItem)
@@ -220,7 +216,7 @@ KVSO_CLASS_FUNCTION(popupmenu,insertItem)
 	identifier++;
 	return true;
 }
-/*
+
 KVSO_CLASS_FUNCTION(popupmenu,setTitle)
 {
 	QString szTitle;
@@ -233,65 +229,6 @@ KVSO_CLASS_FUNCTION(popupmenu,setTitle)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(popupmenu,insertWidget)
-{
-	KviKvsObject *pObject;
-	kvs_hobject_t hObject;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
-	KVSO_PARAMETERS_END(c)
-	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!pObject)
-	{
-                c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
-		return true;
-	}
-	if (!pObject->object())
-	{
-                c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));
-		return true;
-	}
-	if(!pObject->object()->isWidgetType())
-	{
-                c->warning(__tr2qs_ctx("Can't add a non-widget object","objects"));
-		return TRUE;
-	}
-	if (widget()) ((KviTalPopupMenu *)widget())->insertItem(((KviTalPopupMenu  *)(pObject->object())));
-	return true;
-}
-
-
-KVSO_CLASS_FUNCTION(popupmenu,insertHandle)
-{
-	KviKvsObject *ob;
-	QString szLabel,szIcon;
-	kvs_hobject_t hObject;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text_label",KVS_PT_STRING,0,szLabel)
-		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("icon_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
-	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!ob->object()->inheritsClass("popupmenu"))
-	{
-                c->warning(__tr2qs_ctx("Can't add a non - popupmenu  object","objects"));
-		return TRUE;
-	}
-	if(!widget())return true;
-	QPixmap *pix = 0;
-	int id=0;
-	if(!szIcon.isEmpty())
-	{
-		pix = g_pIconManager->getImage(szIcon);
-		if (pix) id=((KviTalPopupMenu *)widget())->insertItem(*pix,szLabel,((KviTalPopupMenu  *)(ob->object())));
-                else c->warning(__tr2qs_ctx("pix '%Q' doesn't exists","objects"),&szIcon);
-	}
-	else
-		id=((KviTalPopupMenu *)widget())->insertItem(szLabel,((KviTalPopupMenu  *)(ob->object())));
-	c->returnValue()->setInteger(id);
-	return true;
-}
-*/
 KVSO_CLASS_FUNCTION(popupmenu,exec)
 {
 	CHECK_INTERNAL_POINTER(widget())

@@ -42,7 +42,7 @@ protected:
 	QHash<int,QAction *> actionsDict;
 	int identifier;
 	bool insertItem(KviKvsObjectFunctionCall *c);
-	//bool setTitle(KviKvsObjectFunctionCall *c);
+	bool setTitle(KviKvsObjectFunctionCall *c);
 	//bool insertWidget(KviKvsObjectFunctionCall *c);
 	//bool insertHandle(KviKvsObjectFunctionCall *c);
 	bool exec(KviKvsObjectFunctionCall *c);

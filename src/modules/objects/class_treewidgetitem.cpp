@@ -124,7 +124,7 @@ const char * const itemflags_tbl[] = {
                 Returns the check status of this item. [classfnc:listviewitem]$setCheckable[/classfnc]() must
 		have been previously called.
 
-                !fn: $setFlag(<flag1:string>, <flag2:string>, ...)
+		!fn: $setFlags(<flag1:string>, <flag2:string>, ...)
                 Sets the flags for the item to the given flags. These determine whether the item can be selected or modified. This is often used to disable an item.
                 Supported flags are:
                 - noitemflag : no flag sets;
