@@ -18,42 +18,40 @@ fi
 
 THISDIR=$(pwd)
 TEMPDIR=/tmp
-PKGSRCDIR=kvirc-$2
-TEMPSRCDIR=$TEMPDIR/$PKGSRCDIR
-OUTPUTFILE=$THISDIR/kvirc-$2.tar.bz2
+PKGSRCDIR=kvirc-"$2"
+TEMPSRCDIR="$TEMPDIR/$PKGSRCDIR"
+OUTPUTFILE="$THISDIR/kvirc-$2.tar.bz2"
 
 if test -d "$TEMPSRCDIR"; then
 	echo "Removing stale target directory..."
-	rm -rf $TEMPSRCDIR
+	rm -rf "$TEMPSRCDIR"
 fi
 
-echo "Copying sources..."
-cp -rf $1 $TEMPSRCDIR
+echo "Exporting svn dir ..."
+svn export "${1}" "${TEMPSRCDIR}"
 
 echo "Determining svn revision..."
-cd $1
-svn update
+cd "$1"
+# If we update svn here, we have a different revision than we exported above
+#svn update
 REVISION=$(svnversion -n .)
 
 echo "Revision is $REVISION"
-echo $REVISION > $TEMPSRCDIR/.svnrevision
+echo $REVISION > "$TEMPSRCDIR/.svnrevision"
 
-if test -f $OUTPUTFILE; then
+if test -f "$OUTPUTFILE" ; then
 	echo "Cleaning the target package file path..."
-	rm -f $OUTPUTFILE
+	rm -f "$OUTPUTFILE"
 fi
 
-cd $TEMPDIR
-
-echo "Removing .svn directories.."
-rm -fr $(find ./$PKGSRCDIR -name ".svn")
+cd "$TEMPDIR"
 
 echo "Compressing sources into $OUTPUTFILE"
-tar -jcvf $OUTPUTFILE $PKGSRCDIR
+tar -jcvf "$OUTPUTFILE" "$PKGSRCDIR"
 
 echo "Removing target directory..."
-rm -rf $TEMPSRCDIR
+rm -rf "$TEMPSRCDIR"
 
-cd $THISDIR
+cd "$THISDIR"
 
 echo "Done."
