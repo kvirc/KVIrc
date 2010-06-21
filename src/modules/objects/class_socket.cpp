@@ -195,72 +195,69 @@
 
 @examples:
 		[example]
-		#Server socket: listen 80 port and answer to requests (multi-threaded)[br]
-[br]
-		class (webserver,socket) {[br]
-			constructor () {[br]
-				$$->$listen(80, "127.0.0.1")[br]
-			}[br]
-			incomingConnectionEvent()[br]
-			{[br]
-				%tmp = $new(socket)[br]
-				$$->$accept(%tmp)[br]
-				echo "Webserver incoming Conection from: %tmp->$remoteIp : %tmp->$remotePort"[br]
-				%tmp->$write("HTTP/1.1 200 OK\n\n<html><head></head><body><h1>KVIrc Webserver</h1></body></html>\n")[br]
-				%tmp->$close()[br]
-				delete %tmp[br]
-			}[br]
-		}[br]
-		[br]
-		#finally start webserver[br]
-		%WebS = $new(webserver)[br]
-		[br]
+		// Server socket: listen 8080 port and answer to requests (multi-threaded)[br]
+		class (webserver,socket)
+		{
+			constructor ()
+			{
+				@$listen(8080, "127.0.0.1")
+			}
+			incomingConnectionEvent()
+			{
+				%tmp = $new(socket)
+				@$accept(%tmp)
+				echo "Webserver incoming Conection from: %tmp->$remoteIp : %tmp->$remotePort"
+				%tmp->$write("HTTP/1.1 200 OK\n\n<html><head></head><body><h1>KVIrc Webserver</h1></body></html>\n")
+				%tmp->$close()
+				delete %tmp
+			}
+		}
+		// finally start webserver
+		%WebS = $new(webserver)
 		[/example]
 		[example]
-		#Client socket - go to google and grab request header[br]
-		class (httprequest,socket) {[br]
-	constructor () [br]
-	{[br]
-		# connect to the server[br]
-		$$->$connect("www.google.de",80)[br]
-	}[br]
-	destructor()[br]
-	{[br]
-		# if the socket is still open close it[br]
-		if($$->$status() == 4) $$->$close()[br]
-	}[br]
-	connectFailedEvent() [br]
-	{[br]
-		# the connection to the server failed[br]
-		echo  "Connection failed: "$0[br]
-                delete $$[br]ite)
-        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,w
-	}[br]
-	connectEvent() [br]
-	{[br]
-		# connection is complete[br]
-		# send a request to receive the headers only from http://www.google.de/[br]
-		$$->$write("HEAD / HTTP/1.1\r\nHost: www.google.de\r\nConnction: Close\r\nUser-Agent: KVIrc socket\r\n\r\n");[br]
-	}[br]
-	dataAvailableEvent() [br]
-	{[br]
-		# reading the received data[br]
-		%newdata  = $$->$read($0)[br]
-		echo %newdata[br]
-		#close and delete the socket[br]
-		$$->$close()[br]
-		delete $$[br]
-	}[br]
-	disconnectEvent() [br]
-	{[br]
-		# connection has been closed[br]
-		echo "Connection closed"[br]
-		delete $$[br]
-	}[br]
-}[br]
-
-#Creating the socket[br]
-%Temp = $new(httprequest)[br]
+		// Client socket - go to google and grab request header[br]
+		class (httprequest,socket)
+		{
+			constructor ()
+			{
+				// connect to the server
+				@$connect("www.google.com",80)
+			}
+			destructor()
+			{
+				// if the socket is still open close it
+				if(@$status() == 4) @$close()
+			}
+			connectFailedEvent()
+			{
+				// the connection to the server failed
+				debug  "Connection failed: "$0
+				delete $$
+			}
+			connectEvent()
+			{
+				// connection is complete
+				// send a request to receive the headers only from http://www.google.com/
+				@$write("HEAD / HTTP/1.1\r\nHost: www.google.de\r\nConnction: Close\r\nUser-Agent: KVIrc socket\r\n\r\n");
+			}
+			dataAvailableEvent()
+			{
+				// reading the received data
+				%newdata  = @$read($0)
+				echo %newdata
+				#close and delete the socket
+				@$close()
+				delete $$
+			}
+			disconnectEvent()
+			{
+				// connection has been closed
+				echo "Connection closed"
+				delete $$
+			}
+		}
+		%Temp = $new(httprequest)
 		[/example]
 */
 
