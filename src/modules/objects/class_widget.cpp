@@ -534,58 +534,48 @@ const char * const widgettypes_tbl[] = {
 		Remove the widget from statusbar.
 	@examples:
 		[example]
-			%Widget = $new(widget)
+			%widget = $new(widget)
 			# This is the main container for other elements.
 
-			%Widget->$setWindowTitle("This is the widget title")
+			%widget->$setWindowTitle("This is the widget title")
 
-			%Widget->$setGeometry(100,200,170,290)
-			# 100 and 200 are distance (pixel) from the left and the top of father widget (in this case the KVIrc window)
-			# 300 and 400 are the weight and the height of the widget
+			%box=$new(vbox,%widget)
+			%layout=$new(layout,%widget)
+			%layout->$addWidget(%box,0,0)
 
-			%Widget->%label = $new(label,%Widget)
-			%Widget->%label->$setText("This is a text label")
-			%Widget->%label->$setGeometry(10,10,150,20)
+			%label = $new(label,%box)
+			%label->$setText("This is a text label")
 
-			%Widget->%lineedit = $new(lineedit,%Widget)
-			%Widget->%lineedit->$setText("This is a lineedit")
-			%Widget->%lineedit->$setGeometry(10,40,150,20)
+			%lineedit = $new(lineedit,%box)
+			%lineedit->$setText("This is a lineedit")
 
-			%Widget->%multilineedit = $new(multilineedit,%Widget)
-			%Widget->%multilineedit->$setText("This is a multilineedit")
-			%Widget->%multilineedit->$setGeometry(10,70,150,40)
+			%multilineedit = $new(multilineedit,%box)
+			%multilineedit->$setText("This is a multilineedit")
 
-			%Widget->%checkbox = $new(checkbox,%Widget)
-			%Widget->%checkbox->$setText("This is a checkbox")
-			%Widget->%checkbox->$setGeometry(10,120,150,20)
+			%checkbox = $new(checkbox,%box)
+			%checkbox->$setText("This is a checkbox")
 
-			%Widget->%combobox = $new(combobox,%Widget)
-			%Widget->%combobox->$setGeometry(10,150,150,20)
-			%Widget->%combobox->$insertItem("This is a combobox")
-			%Widget->%combobox->$insertItem("This is a combobox's item")
+			%combobox = $new(combobox,%box)
+			%combobox->$insertItem("This is a combobox")
+			%combobox->$insertItem("This is a combobox's item")
 
-			%Widget->%listwidget = $new(listwidget,%Widget)
-			%Widget->%listwidget->$setGeometry(10,180,150,40)
-			%Widget->%listwidget->$insertItem("This is another item")
-			%Widget->%listwidget->$insertItem("This is a listwidget's item")
-			%Widget->%listwidget->$insertItem("This is a listwidget")
+			%listbox = $new(listbox,%box)
+			%listbox->$insertItem("This is a listbox item")
+			%listbox->$insertItem("This is another item")
 
-			%Widget->%radiobutton = $new(radiobutton,%Widget)
-			%Widget->%radiobutton->$setGeometry(10,230,150,20)
-			%Widget->%radiobutton->$setText("This is a radiobutton")
+			%radiobutton = $new(radiobutton,%box)
+			%radiobutton->$setText("This is a radiobutton")
 
-			%Widget->%button = $new(button, %Widget)
-			%Widget->%button->$setText("Close me")
-			%Widget->%button->$setGeometry(10,260,150,20)
+			%button = $new(button, %box)
+			%button->$setText("Close me")
 
-			%Widget->$show()
-			# This shows the widget
-
-			privateimpl(%Widget->%button, mousePressEvent) {
-				delete $$->$parent()
-				# This closes the widget automatically
+			privateimpl(%widget,closeMe)
+			{
+				delete $$
 			}
+			objects.connect  %button clicked %widget closeMe
 
+			%widget->$show()
 		[/example]
 
 */

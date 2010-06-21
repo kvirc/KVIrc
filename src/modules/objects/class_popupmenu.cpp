@@ -81,8 +81,8 @@
 		!sg: $highlighted()
 		This signal is emitted by the default implementation of [classfnc]$highlightedEvent[/classfnc]().
 		[br]
-		|-EXAMPLE POPUP MENU-|[br]
-		|--Start:
+	@examples:
+		[example]
 		// first we define a class inherited from popupmenu
 		class(menu,popupmenu)
 		{
@@ -159,7 +159,8 @@
 			delete $$
 		}
 		#Let's show!
-		%Workspace->$show		|--End.[br][br]
+		%Workspace->$show()
+		[/example]
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_popupmenu,"popupmenu","widget")
