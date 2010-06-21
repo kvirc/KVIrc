@@ -92,38 +92,31 @@
 		See also [classfnc]$setTabsClosable[/classfnc]().
 	@examples:
 		[example]
-			# First we'll create the main tabwidget.
+			// First we'll create the main tabwidget.
 			%Tabwidget=$new(tabwidget)
 			%Tabwidget->$setToolTip("Example of TabWidget class")
-			%Tabwidget->$setMargin(30)
 			%Tabwidget->$setTabPosition(Top)
-
-			# Now we'll create the new widgets and put they in to the main tabwidget.
-			%firsttab=$new(widget,%Tabwidget)
-			%secondtab=$new(widget,%Tabwidget)
-
-			# Now we'll create the item to put in to tab's pages.
-			%layoutfirsttab=$new(layout,%firsttab)
-			%labelbt=$new(label,%firsttab)
+			%Tabwidget->$resize(300,200)
+			// Now we'll create the new widgets and put they in to the main tabwidget.
+			%firsttab=$new(vbox)
+			%secondtab=$new(vbox)
+			// Now we'll create the item to put in to tab's pages.
+			// First tab
+			%hbox=$new(hbox,%firsttab)
+			%labelbt=$new(label,%hbox)
 			%labelbt->$settext(Botton Tab)
-			%labeltt=$new(label,%firsttab)
+			%labeltt=$new(label,%hbox)
 			%labeltt->$settext(Top Tab)
-			%buttontb=$new(button,%firsttab)
+			%hbox=$new(hbox,%firsttab)
+			%buttontb=$new(button,%hbox)
 			%buttontb->$settext("To &Botton")
-			%buttontt=$new(button,%firsttab)
+			%buttontt=$new(button,%hbox)
 			%buttontt->$settext("To &Top")
-
-			# Now we'll give a layout to all items.
-			# This also allows to use privateimpl without making buttons global variables
-			%layoutfirsttab->$addwidget(%labelbt,0,0)
-			%layoutfirsttab->$addwidget(%labeltt,0,1)
-			%layoutfirsttab->$addwidget(%buttontb,1,0)
-			%layoutfirsttab->$addwidget(%buttontt,1,1)
-
-			# Add the page to the main tab.
+			// Now we'll give a layout to all items.
+			// This also allows to use privateimpl without making buttons global variables
+			// Add the page to the main tab.
 			%Tabwidget->$addTab(%firsttab,Top&Button,33)
-
-			# Implementing the action to do when the user click the buttons.
+			// Implementing the action to do when the user click the buttons.
 			privateimpl(%buttontb,mousepressevent)
 			{
 				%Tabwidget->$setTabPosition(Bottom)
@@ -132,20 +125,15 @@
 			{
 				%Tabwidget->$setTabPosition(Top)
 			}
-
-			# We do the same work  with the second tab's page.
-			%layoutsecondtab=$new(layout,%secondtab)
+			// We do the same work  with the second tab's page.
 			%labelwp=$new(label,%secondtab)
 			%labelwp->$settext("Enjoy the new Class provided by")
-			%layoutsecondtab->$addwidget(%labelwp,0,0)
 			%labelwp->$setalignment("Center")
 			%labelgen=$new(label,%secondtab)
 			%labelgen->$settext(Grifisx \& Noldor)
 			%labelgen->$setalignment("Center")
-			%layoutsecondtab->$addwidget(%labelgen,1,0)
 			%Tabwidget->$addTab(%secondtab,&About,50)
-
-			# Let's show our example.
+			// Let's show our example.
 			%Tabwidget->$show()
 		[/example]
 	@signals:
