@@ -304,6 +304,14 @@ int parseArgs(ParseArgs * a)
 						szTmp.replace('\\',"\\\\");
 						a->szExecCommand.append(szTmp);
 						a->szExecCommand.append('"');
+					} else if(KviQString::equalCI(ri,".kva"))
+					{
+						if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
+						a->szExecCommand.append("addon.install \"");
+						szTmp.replace('$',"\\$");
+						szTmp.replace('\\',"\\\\");
+						a->szExecCommand.append(szTmp);
+						a->szExecCommand.append('"');
 					} else {
 						szServer = szTmp; // assume a plain server name
 					}
