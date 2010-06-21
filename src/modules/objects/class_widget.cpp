@@ -55,6 +55,7 @@
 #include <QPrinter>
 #include <QApplication>
 #include <QPoint>
+#include <QContextMenuEvent>
 
 #ifdef COMPILE_WEBKIT_SUPPORT
 	#include <QtWebKit/QWebView>
@@ -502,7 +503,10 @@ const char * const widgettypes_tbl[] = {
 		PaintOnScreen - Indicates that the widget wants to draw directly onto the screen.
 		NoMousePropagation - Prohibits mouse events from being propagated to the widget's parent.
                 !fn: $setStyleSheet(<string>)
-
+		Set a style sheet for this widget.
+		!fn: $customContextMenuRequestedEvent(<x_mouse_pos:integer>,<y_mouse_pos:integer>)
+		This event is triggered when the user has requested a context menu on the widget (i.e. right clicking on the widget).
+		The x,y coordinates are widget relative.
 		!fn: $array(<red:integer,green:integer,blue:integer) $colorPalette(<color_role:string><color_group:string>)
 		Returns the color in color_group(disabled, active or inactive), used for color_role.
 		Valid color role are:
@@ -713,6 +717,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"sizeHintRequestEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"maybeTipEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"shortCutEvent")
+	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"customContextMenuRequestedEvent")
 
 #ifdef COMPILE_WEBKIT_SUPPORT
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_widget,setWebView)
@@ -731,7 +736,6 @@ bool KviKvsObject_widget::init(KviKvsRunTimeContext *c,KviKvsVariantList *)
 {
 	setObject(new KviKvsWidget(this,parentScriptWidget()));
         m_pContext=c;
-
 	widget()->setObjectName(getName());
 	return true;
 }
@@ -747,7 +751,13 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 
 		switch(e->type())
 		{
-
+			case QEvent::ContextMenu:
+			{
+				QPoint iPoint=widget()->mapFromGlobal(((QContextMenuEvent *)e)->globalPos());
+				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)iPoint.x()),new KviKvsVariant((kvs_int_t)iPoint.y()));
+				callFunction(this,"customContextMenuRequestedEvent",retv,&params);
+				break;
+			}
 			case QEvent::Shortcut:
 			{
 				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)((QShortcutEvent *)e)->shortcutId()));

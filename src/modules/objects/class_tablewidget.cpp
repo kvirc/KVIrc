@@ -85,25 +85,79 @@ const char * const itemflags_tbl[] = {
 	@description:
                 This widget provides a table.
 	@functions:
-                !fn: $setText(<row:integer>,<col:integer>,[<text:string>])
+		!fn: $setText(<row:uint>,<col:uint>,[<text:string>])
 		Sets the contents of the cell pointeid by row and col to text.
-		!fn: $setNumber(<row:integer>,<col:integer>,[<number:integer>]).
+		!fn: $setTooltip(<row:uint>,<col:uint>,[<text:string>])
+		Sets the tooltip of the cell pointeid by row and col to text.
+		!fn: $setNumber(<row:uint>,<col:uint>,[<number:integer>]).
 		Sets the contents of the cell pointeid by row and col to number.
                 !fn: <string> $text(<row:integer>,<col:integer>)
 		Returns  the text of the cell pointed by row and col.
                 !fn: $setHorizontalHeaderLabels(<string array>)
+		Sets the horizontal header labels using labels.
                 !fn: $showHorizontalHeader()
+		Shows the horizontal header.
                 !fn: $hideHorizontalHeader()
+		Hides the horizontal header.
                 !fn: $setVerticalHeaderLabels(<string array>)
+		Sets the vertical header labels using labels.
                 !fn: $showVerticalHeader()
-                !fn: $hideVerticalHeader()
-                !fn: $setRowCount(<integer>)
-                !fn: <integer> $rowCount()
-                !fn: $setColumnCount(<integer>)
-                !fn: <integer> $columnCount()
-                !fn: $setCellWidget(<hobject>)
-                !fn: $setIcon()
-                !fn: $clear()
+		Shows the vertical header.
+		!fn: $hideVerticalHeader()
+		Hides the vertical header.
+		!fn: $setRowCount(<integer>)
+		Sets  the number of rows in the table.
+		!fn: <integer> $rowCount()
+		Returns the number of rows in the table.
+		!fn: <integer> $currentRow()
+		Returns the current row.
+		Useful in the [classfnc]customContextMenuRequestedEvent[/classfnc].
+		!fn: $setColumnCount(<integer>)
+		Sets  the number of columns in the table.
+		!fn: <integer> $columnCount()
+		Returns  the number of columns in the table.
+		!fn: <integer> $currentRow()
+		Returns the current column.
+		Useful in the [classfnc]customContextMenuRequestedEvent[/classfnc]
+		!fn: $setFlag(<row:uint>,<col:uint>,<flag1:string>, <flag2:string>, ...)
+		Sets the flags for the cell pointed by row and col to the given flags.
+		These determine whether the cell can be selected or modified.
+		Supported flags are:
+		- noitemflag : no flag sets;
+		- selectable : cell is selecatble;
+		- editable : cell is editable;
+		- dragEnabled : cell can dragged;
+		- dropEnabled : cell can used as drop target;
+		- userCheckable : cell is checkable;
+		- enabled :cell is enabled;
+		- tristate : cell is checkable with three separate states.
+		!fn: $setCellWidget(<row:uint>,<column:uint>,<widget:hobject>)
+		Sets the given widget to be displayed in the cell in the given row and column, passing the ownership of the widget to the table.
+		!fn: $setIcon(<row:uint>,<column:uint>,<icon:imageid or hobject>)
+		Sets the cell icon pointed by <row>,<column>.
+		Icon parameter can be a standard KVIrc  [doc:image_id]image identifier[/doc] icon or a KVS pixmap's object.
+		!fn: $hideRow(<row:uint>)
+		Hides the row <row>.
+		!fn: $showRow(<row:uint>)
+		Shows the row <row>.
+		!fn: $hideColumn(<col:uint>)
+		Hides the column <col>.
+		!fn: $showColumn(<col:uint>)
+		Shows the column <col>.
+		!fn: $clear()
+		Clears the table.
+		!fn: <row,col> $itemEnteredEvent()
+		This event is triggered when the mouse cursor enters an cell.
+		!fn: <row,col> $cellActivatedEvent()
+		This event is triggered when the cell specified by row and column has been activated
+		!fn: <row,col>  $cellDoubleClickedEvent()
+		This event is triggered whenever a cell in the table is double clicked.
+		!fn: $paintCellEvent(<painter:hobject>,<row,uint>,<col:uint>)
+		This event handler can be reimplemented to repaint cells.
+		The framework will pass the row/col coordinates and, as parameter, a [class]painter[/class]object.
+		You don't need to begin/end/delete the painter.
+		!fn: $sizeHintCellRequestEvent()
+		!fn; $resizeRowsToContents()
             @signals:
 		!sg: $clicked()
 		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
@@ -137,7 +191,10 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tablewidget,"tablewidget","widget")
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,hideColumn)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,showColumn)
 
-        // Item (text. icon, widget)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,resizeRowsToContents)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,resizeColumnsToContents)
+
+	// Item (text. icon, widget)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setNumber)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setToolTip)
@@ -192,136 +249,152 @@ KVSO_CLASS_FUNCTION(tablewidget,clear)
         ((QTableWidget *)widget())->clear();
         return true;
 }
+KVSO_CLASS_FUNCTION(tablewidget,resizeRowsToContents)
+{
+	CHECK_INTERNAL_POINTER(widget())
+//	debug("resize row to contents");
+
+	((QTableWidget *)widget())->resizeRowsToContents();
+	return true;
+}
+KVSO_CLASS_FUNCTION(tablewidget,resizeColumnsToContents)
+{
+	CHECK_INTERNAL_POINTER(widget())
+//	debug("resize coluns to contents");
+	((QTableWidget *)widget())->resizeColumnsToContents();
+	return true;
+}
+
 KVSO_CLASS_FUNCTION(tablewidget,setText)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            kvs_uint_t iCol,iRow;
-            QString szText;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
-                        KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
-                        KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
-            KVSO_PARAMETERS_END(c)
-            if(iRow>=((QTableWidget *)widget())->rowCount() || iRow>=((QTableWidget *)widget())->rowCount())
-                c->warning(__tr2qs_ctx("Item out of the tablewidget size","objects"));
-            QTableWidgetItem *item=((QTableWidget *)widget())->item(iRow,iCol);
-            if(!item)
-            {
-                item=new QTableWidgetItem();
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t iCol,iRow;
+	QString szText;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETERS_END(c)
+	if(iRow>=((QTableWidget *)widget())->rowCount() || iRow>=((QTableWidget *)widget())->rowCount())
+	c->warning(__tr2qs_ctx("Item out of the tablewidget size","objects"));
+	QTableWidgetItem *item=((QTableWidget *)widget())->item(iRow,iCol);
+	if(!item)
+	{
+		item=new QTableWidgetItem();
                 ((QTableWidget *)widget())->setItem(iRow,iCol,item);
-            }
-            item->setText(szText);
-            return true;
+	}
+	item->setText(szText);
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,setNumber)
 {
-	    CHECK_INTERNAL_POINTER(widget())
-	    kvs_uint_t iCol,iRow;
-			kvs_int_t iNumber;
-	    QString szText;
-	    KVSO_PARAMETERS_BEGIN(c)
-			KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
-			KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
-			KVSO_PARAMETER("number",KVS_PT_INT,0,iNumber)
-	    KVSO_PARAMETERS_END(c)
-	    if(iRow>=((QTableWidget *)widget())->rowCount() || iRow>=((QTableWidget *)widget())->rowCount())
-		c->warning(__tr2qs_ctx("Item out of the tablewidget size","objects"));
-	    QTableWidgetItem *item=((QTableWidget *)widget())->item(iRow,iCol);
-	    if(!item)
-	    {
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t iCol,iRow;
+	kvs_int_t iNumber;
+	QString szText;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+		KVSO_PARAMETER("number",KVS_PT_INT,0,iNumber)
+	KVSO_PARAMETERS_END(c)
+	if(iRow>=((QTableWidget *)widget())->rowCount() || iRow>=((QTableWidget *)widget())->rowCount())
+	c->warning(__tr2qs_ctx("Item out of the tablewidget size","objects"));
+	QTableWidgetItem *item=((QTableWidget *)widget())->item(iRow,iCol);
+	if(!item)
+	{
 		item=new QTableWidgetItem();
 		((QTableWidget *)widget())->setItem(iRow,iCol,item);
-	    }
-	    item->setData(0,(int)iNumber);
-	    return true;
+	}
+	item->setData(0,(int)iNumber);
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,setIcon)
 {
-            kvs_uint_t iCol,iRow;
-            KviKvsObject *obPixmap;
-            kvs_hobject_t obHpixmap;
-            KviKvsVariant * vPixmap;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
-                        KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
-                        KVSO_PARAMETER("icon",KVS_PT_VARIANT,0,vPixmap)
-            KVSO_PARAMETERS_END(c)
-            QPixmap *pix = 0;
-            if(vPixmap->isHObject())
-            {
-                        vPixmap->asHObject(obHpixmap);
-                        obPixmap=KviKvsKernel::instance()->objectController()->lookupObject(obHpixmap);
-                        if (!obPixmap->inheritsClass("pixmap"))
-                        {
-                           c->warning(__tr2qs_ctx("Pixmap object or image Id required","objects"));
-                           return true;
-                        }
-                        pix=((KviKvsObject_pixmap *)obPixmap)->getPixmap();
-            } else {
-                        QString szPix;
+	kvs_uint_t iCol,iRow;
+	KviKvsObject *obPixmap;
+	kvs_hobject_t obHpixmap;
+	KviKvsVariant * vPixmap;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+		KVSO_PARAMETER("icon",KVS_PT_VARIANT,0,vPixmap)
+	KVSO_PARAMETERS_END(c)
+	QPixmap *pix = 0;
+	if(vPixmap->isHObject())
+	{
+		vPixmap->asHObject(obHpixmap);
+		obPixmap=KviKvsKernel::instance()->objectController()->lookupObject(obHpixmap);
+		if (!obPixmap->inheritsClass("pixmap"))
+		{
+			c->warning(__tr2qs_ctx("Pixmap object or image Id required","objects"));
+			return true;
+		}
+		pix=((KviKvsObject_pixmap *)obPixmap)->getPixmap();
+	} else {
+			QString szPix;
                         vPixmap->asString(szPix);
                         pix=g_pIconManager->getImage(szPix);
                         if(!pix)
                         {
-                        c->warning(__tr2qs_ctx("Error occured: the suitable file '%Q' is not of the correct format or it is not a valid icon number.","objects"),&szPix);
-                                    return true;
+				c->warning(__tr2qs_ctx("Error occured: the suitable file '%Q' is not of the correct format or it is not a valid icon number.","objects"),&szPix);
+				return true;
                         }
-            }
-            QTableWidgetItem *item=((QTableWidget *)widget())->item(iRow,iCol);
-            if(!item)
-            {
-                item=new QTableWidgetItem();
+	}
+	QTableWidgetItem *item=((QTableWidget *)widget())->item(iRow,iCol);
+	if(!item)
+	{
+		item=new QTableWidgetItem();
                 ((QTableWidget *)widget())->setItem(iRow,iCol,item);
-            }
-            item->setIcon(QIcon(*pix));
-            return true;
+	}
+	item->setIcon(QIcon(*pix));
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,text)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            kvs_uint_t iCol,iRow;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
-                        KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
-            KVSO_PARAMETERS_END(c)
-            QTableWidgetItem *item=((QTableWidget *)widget())->item(iRow,iCol);
-            if(!item) c->returnValue()->setNothing();
-            else c->returnValue()->setString(((QTableWidget *)widget())->item(iRow,iCol)->text());
-            return true;
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t iCol,iRow;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+	KVSO_PARAMETERS_END(c)
+	QTableWidgetItem *item=((QTableWidget *)widget())->item(iRow,iCol);
+	if(!item) c->returnValue()->setNothing();
+	else c->returnValue()->setString(((QTableWidget *)widget())->item(iRow,iCol)->text());
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,setRowCount)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            kvs_uint_t iRow;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
-            KVSO_PARAMETERS_END(c)
-            ((QTableWidget *)widget())->setRowCount(iRow);
-            return true;
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t iRow;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+	KVSO_PARAMETERS_END(c)
+	((QTableWidget *)widget())->setRowCount(iRow);
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,rowCount)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            c->returnValue()->setInteger(((QTableWidget *)widget())->rowCount());
-            return true;
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(((QTableWidget *)widget())->rowCount());
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,currentRow)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            c->returnValue()->setInteger(((QTableWidget *)widget())->currentRow());
-            return true;
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(((QTableWidget *)widget())->currentRow());
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,currentColumn)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            c->returnValue()->setInteger(((QTableWidget *)widget())->currentColumn());
-            return true;
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(((QTableWidget *)widget())->currentColumn());
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,columnCount)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            c->returnValue()->setInteger(((QTableWidget *)widget())->columnCount());
-            return true;
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(((QTableWidget *)widget())->columnCount());
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,itemRowColAt)
 {
@@ -332,85 +405,93 @@ KVSO_CLASS_FUNCTION(tablewidget,itemRowColAt)
                 KVSO_PARAMETER("uY",KVS_PT_UNSIGNEDINTEGER,0,uY)
         KVSO_PARAMETERS_END(c)
         KviKvsArray *pArray;
-        QTableWidgetItem *pItem=((QTableWidget *)widget())->itemAt(QPoint(uX,uY));
-        pArray=new KviKvsArray;
-        pArray->set(0,new KviKvsVariant((kvs_int_t)pItem->row()));
-        pArray->set(1,new KviKvsVariant((kvs_int_t)pItem->column()));
-        c->returnValue()->setArray(pArray);
+	QTableWidgetItem *pItem=((QTableWidget *)widget())->itemAt(uX,uY);
+	pArray=new KviKvsArray;
+	if (!pItem) {
+		pArray->set(0,new KviKvsVariant((kvs_int_t)-1));
+		pArray->set(1,new KviKvsVariant((kvs_int_t)-1));
+	}
+	else {
+		pArray->set(0,new KviKvsVariant((kvs_int_t)pItem->row()));
+		pArray->set(1,new KviKvsVariant((kvs_int_t)pItem->column()));
+	}
+	c->returnValue()->setArray(pArray);
         return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,setToolTip)
 {
         CHECK_INTERNAL_POINTER(widget())
         QString szTooltip;
-        kvs_uint_t uX,uY;
+	kvs_uint_t uRow,uCol;
         KVSO_PARAMETERS_BEGIN(c)
-                KVSO_PARAMETER("uX",KVS_PT_UNSIGNEDINTEGER,0,uX)
-                KVSO_PARAMETER("uY",KVS_PT_UNSIGNEDINTEGER,0,uY)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,uCol)
                 KVSO_PARAMETER("tooltip",KVS_PT_STRING,0,szTooltip)
         KVSO_PARAMETERS_END(c)
-        ((QTableWidget *)widget())->itemAt(uX,uY)->setToolTip(szTooltip);
+	QTableWidgetItem *pItem=((QTableWidget *)widget())->item(uRow,uCol);
+	if (pItem) pItem->setToolTip(szTooltip);
         return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,setColumnCount)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            kvs_uint_t iCol;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
-            KVSO_PARAMETERS_END(c)
-            ((QTableWidget *)widget())->setColumnCount(iCol);
-            return true;
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t iCol;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+	KVSO_PARAMETERS_END(c)
+	((QTableWidget *)widget())->setColumnCount(iCol);
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(tablewidget,hideColumn)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            kvs_uint_t iCol;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
-            KVSO_PARAMETERS_END(c)
-            ((QTableWidget *)widget())->hideColumn(iCol);
-            return true;
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t iCol;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+	KVSO_PARAMETERS_END(c)
+	((QTableWidget *)widget())->hideColumn(iCol);
+	 return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,showColumn)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            kvs_uint_t iCol;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
-            KVSO_PARAMETERS_END(c)
-            ((QTableWidget *)widget())->showColumn(iCol);
-            return true;
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t iCol;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+	KVSO_PARAMETERS_END(c)
+	((QTableWidget *)widget())->showColumn(iCol);
+	return true;
 }KVSO_CLASS_FUNCTION(tablewidget,hideRow)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            kvs_uint_t iRow;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iRow)
-            KVSO_PARAMETERS_END(c)
-            ((QTableWidget *)widget())->hideRow(iRow);
-            return true;
-}KVSO_CLASS_FUNCTION(tablewidget,showRow)
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t iRow;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+	KVSO_PARAMETERS_END(c)
+	((QTableWidget *)widget())->hideRow(iRow);
+	return true;
+}
+KVSO_CLASS_FUNCTION(tablewidget,showRow)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            kvs_uint_t iRow;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iRow)
-            KVSO_PARAMETERS_END(c)
-            ((QTableWidget *)widget())->showRow(iRow);
-            return true;
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t iRow;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+	KVSO_PARAMETERS_END(c)
+	((QTableWidget *)widget())->showRow(iRow);
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,setHorizontalHeaderLabels)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            KviKvsArrayCast ac;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("labels",KVS_PT_ARRAYCAST,0,ac)
-            KVSO_PARAMETERS_END(c)
-            QStringList szColumns;
-            if(KviKvsArray * a = ac.array())
-            {
+	CHECK_INTERNAL_POINTER(widget())
+	KviKvsArrayCast ac;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("labels",KVS_PT_ARRAYCAST,0,ac)
+	KVSO_PARAMETERS_END(c)
+	QStringList szColumns;
+	if(KviKvsArray * a = ac.array())
+	{
                 kvs_int_t uIdx = 0;
                 kvs_int_t uSize = a->size();
                 while(uIdx < uSize)
@@ -425,21 +506,21 @@ KVSO_CLASS_FUNCTION(tablewidget,setHorizontalHeaderLabels)
                         else szColumns.append("");
                         uIdx++;
                 }
-            }
-            ((QTableWidget *)object())->setHorizontalHeaderLabels(szColumns);
-            return true;
+	}
+	((QTableWidget *)object())->setHorizontalHeaderLabels(szColumns);
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(tablewidget,setVerticalHeaderLabels)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            KviKvsArrayCast ac;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("labels",KVS_PT_ARRAYCAST,0,ac)
-            KVSO_PARAMETERS_END(c)
-            QStringList szColumns;
-            if(KviKvsArray * a = ac.array())
-            {
+	CHECK_INTERNAL_POINTER(widget())
+	KviKvsArrayCast ac;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("labels",KVS_PT_ARRAYCAST,0,ac)
+	KVSO_PARAMETERS_END(c)
+	QStringList szColumns;
+	if(KviKvsArray * a = ac.array())
+	{
                 kvs_int_t uIdx = 0;
                 kvs_int_t uSize = a->size();
                 while(uIdx < uSize)
@@ -454,65 +535,65 @@ KVSO_CLASS_FUNCTION(tablewidget,setVerticalHeaderLabels)
                         else szColumns.append("");
                         uIdx++;
                 }
-            }
-            ((QTableWidget *)object())->setVerticalHeaderLabels(szColumns);
-            return true;
+	}
+	((QTableWidget *)object())->setVerticalHeaderLabels(szColumns);
+	return true;
 }
 
 
 KVSO_CLASS_FUNCTION(tablewidget,setCellWidget)
 {
-            CHECK_INTERNAL_POINTER(widget())
-            KviKvsObject * pObject;
-            kvs_hobject_t hObject;
-            kvs_uint_t iRow,iCol;
-            KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
-                        KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,iCol)
-                        KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
-            KVSO_PARAMETERS_END(c)
-            pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-            CHECK_HOBJECT_IS_WIDGET(pObject)
-            ((QTableWidget *)object())->setCellWidget(iRow,iCol,((QWidget *)(pObject->object())));
-            return true;
+	CHECK_INTERNAL_POINTER(widget())
+	KviKvsObject * pObject;
+	kvs_hobject_t hObject;
+	kvs_uint_t iRow,iCol;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+		KVSO_PARAMETERS_END(c)
+		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	CHECK_HOBJECT_IS_WIDGET(pObject)
+	((QTableWidget *)object())->setCellWidget(iRow,iCol,((QWidget *)(pObject->object())));
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,hideHorizontalHeader)
 {
 	Q_UNUSED(c);
-            ((QTableWidget *)widget())->horizontalHeader()->hide();
-            return true;
+	((QTableWidget *)widget())->horizontalHeader()->hide();
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,hideVerticalHeader)
 {
 	Q_UNUSED(c);
-            ((QTableWidget *)widget())->verticalHeader()->hide();
-            return true;
+	((QTableWidget *)widget())->verticalHeader()->hide();
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(tablewidget,showHorizontalHeader)
 {
 	Q_UNUSED(c);
-            ((QTableWidget *)widget())->horizontalHeader()->show();
-            return true;
+	((QTableWidget *)widget())->horizontalHeader()->show();
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,showVerticalHeader)
 {
 	Q_UNUSED(c);
-            ((QTableWidget *)widget())->verticalHeader()->show();
-            return true;
+	((QTableWidget *)widget())->verticalHeader()->show();
+	return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,setItemFlags)
 {
-    CHECK_INTERNAL_POINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 
-    QStringList itemflags;
+			QStringList itemflags;
         kvs_uint_t iRow,iCol;
         KVSO_PARAMETERS_BEGIN(c)
-                KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
-                KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,iCol)
-                KVSO_PARAMETER("flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,itemflags)
-        KVSO_PARAMETERS_END(c)
-        int flag,sum=0;
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+		KVSO_PARAMETER("flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,itemflags)
+		KVSO_PARAMETERS_END(c)
+	int flag,sum=0;
         for ( int i=0;i<itemflags.count();i++)
         {
                 flag = 0;
@@ -525,8 +606,8 @@ KVSO_CLASS_FUNCTION(tablewidget,setItemFlags)
                         }
                 }
                 if(flag){
-                  //      if (flag==Qt::ItemIsUserCheckable)
-                    //                    pItem->setCheckState(0,Qt::Unchecked);
+			//      if (flag==Qt::ItemIsUserCheckable)
+			//                    pItem->setCheckState(0,Qt::Unchecked);
                         sum = sum | flag;
                 }
                 else
@@ -540,8 +621,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setItemFlags)
 void KviKvsObject_tablewidget::slotItemEntered(QTableWidgetItem * i)
 
 {
-      // if (!i) callFunction(this,"itecurrentItemChangeEvent",0,0);
-        KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i->row()),new KviKvsVariant((kvs_int_t)i->column()));
+	 KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i->row()),new KviKvsVariant((kvs_int_t)i->column()));
         callFunction(this,"itemEnteredEvent",0,&params);
 }
 KVSO_CLASS_FUNCTION(tablewidget,itemEnteredEvent)
@@ -574,6 +654,21 @@ KVSO_CLASS_FUNCTION(tablewidget,cellDoubleClickedEvent)
 	emitSignal("cellDoubleClicked",c,c->params());
 	return true;
 }
+KVSO_CLASS_FUNCTION(tablewidget,customContextMenuRequestedEvent)
+{
+	emitSignal("rightButtonClicked",c,c->params());
+	emitSignal("customContextMenuRequested",c,c->params());
+	return true;
+}
+
+void KviKvsObject_tablewidget::slotCustomContextMenuRequested(const QPoint &pnt)
+{
+	KviKvsVariant *xpos=new KviKvsVariant((kvs_int_t)pnt.x());
+	KviKvsVariant *ypos=new KviKvsVariant((kvs_int_t)pnt.y());
+	KviKvsVariantList params(xpos,ypos);
+	callFunction(this,"customContextMenuRequestedEvent",0,&params);
+}
+
 
 bool KviKvsObject_tablewidget::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index)
 {

@@ -101,6 +101,8 @@ static void KviKvsSqlInstanceUnregister(KviKvsObject_sql *instance)
                       Closes the connection <connection_name>.
                       !fn: <size:integer> $queryResultsSize()
                       Returns the query size in rows or -1 if the query is empty or the database driver doesn' support the function.
+		      !fn: <error:string> $lastError(<more_details:boolean>)
+		      Returns last error occurred. Use the more_details flag for more info about the error.
                       !fn: <ok:boolean> $queryExec([<query:string>])
                       Execs the current query <query>. The string must follow the right syntax against the database in use.
                       If there are no parameters, it will exec the query previously done.
@@ -545,12 +547,20 @@ KVSO_CLASS_FUNCTION(sql,queryRecord)
 KVSO_CLASS_FUNCTION(sql,lastError)
 {
         CHECK_QUERY_IS_INIT
-        QString szError;
+	bool bMoreErrorDetails;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("more",KVS_PT_BOOLEAN,KVS_PF_OPTIONAL,bMoreErrorDetails)
+	KVSO_PARAMETERS_END(c)
+	QString szError;
         QSqlError error=m_pCurrentSQlQuery->lastError();
-        if (error.type()==QSqlError::StatementError) szError="SyntaxError";
-        else if (error.type()==QSqlError::ConnectionError) szError="ConnectionError";
-        else if (error.type()==QSqlError::TransactionError) szError="TransactionError";
-        else szError="UnkonwnError";
+	if (bMoreErrorDetails) szError=error.text();
+	else
+	{
+		if (error.type()==QSqlError::StatementError) szError="SyntaxError";
+		else if (error.type()==QSqlError::ConnectionError) szError="ConnectionError";
+		else if (error.type()==QSqlError::TransactionError) szError="TransactionError";
+		else szError="UnkonwnError";
+	}
         c->returnValue()->setString(szError);
         return true;
 }

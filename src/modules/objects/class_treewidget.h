@@ -59,7 +59,6 @@ protected:
 	bool itemExpandedEvent(KviKvsObjectFunctionCall *c);
 	bool itemCollapsedEvent(KviKvsObjectFunctionCall *c);
 	bool itemChangedEvent(KviKvsObjectFunctionCall *c);
-	bool customContextMenuRequestedEvent(KviKvsObjectFunctionCall *c);
 	bool selectedItems(KviKvsObjectFunctionCall *c);
 	bool currentItem(KviKvsObjectFunctionCall *c);
 	bool setSelectionMode(KviKvsObjectFunctionCall *c);
@@ -74,7 +73,6 @@ protected:
         bool topLevelItemCount(KviKvsObjectFunctionCall *c);
 protected slots:
 	void slotClicked(QTreeWidgetItem *,int);
-	void slotCustomContextMenuRequested(const QPoint &pnt);
 	void slotSelectionChanged();
 	void slotCurrentChanged(QTreeWidgetItem *,QTreeWidgetItem *);
 	void slotItemActivated(QTreeWidgetItem *,int col);

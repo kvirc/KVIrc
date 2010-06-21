@@ -221,9 +221,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemExpandedEvent);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemCollapsedEvent);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemChangedEvent);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"rightButtonClickedEvent",customContextMenuRequestedEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,customContextMenuRequestedEvent);
-        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setAcceptDrops);
+	   KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setAcceptDrops);
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_treewidget,"fileDroppedEvent")
 
 KVSO_END_REGISTERCLASS(KviKvsObject_treewidget)
@@ -251,9 +249,6 @@ bool KviKvsObject_treewidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	connect(widget(),SIGNAL(itemExpanded(QTreeWidgetItem *)),this,SLOT(slotItemExpanded(QTreeWidgetItem *)));
 	connect(widget(),SIGNAL(itemCollapsed(QTreeWidgetItem *)),this,SLOT(slotItemCollapsed(QTreeWidgetItem *)));
 	connect(widget(),SIGNAL(itemChanged(QTreeWidgetItem *,int)),this,SLOT(slotItemChanged(QTreeWidgetItem *,int)));
-	widget()->setContextMenuPolicy(Qt::CustomContextMenu);
-	connect(widget(),SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(slotCustomContextMenuRequested(const QPoint &)));
-
 	return true;
 }
 
@@ -578,21 +573,7 @@ void KviKvsObject_treewidget::slotItemCollapsed(QTreeWidgetItem * i)
 	callFunction(this,"itemCollapsedEvent",0,&params);
 }
 
-KVSO_CLASS_FUNCTION(treewidget,customContextMenuRequestedEvent)
-{
-	emitSignal("rightButtonClicked",c,c->params());
-	emitSignal("customContextMenuRequested",c,c->params());
-	return true;
-}
 
-void KviKvsObject_treewidget::slotCustomContextMenuRequested(const QPoint &pnt)
-{
-	KviKvsVariant *xpos=new KviKvsVariant((kvs_int_t)pnt.x());
-	KviKvsVariant *ypos=new KviKvsVariant((kvs_int_t)pnt.y());
-	QTreeWidgetItem *it=(QTreeWidgetItem *) ((QTreeWidget *)widget())->itemAt(pnt);
-	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(it)),xpos,ypos);
-	callFunction(this,"customContextMenuRequestedEvent",0,&params);
-}
 
 KVSO_CLASS_FUNCTION(treewidget,itemChangedEvent)
 {
