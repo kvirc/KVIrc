@@ -1,0 +1,258 @@
+SUMMARY
+=======
+1. PREFACE
+2. INSTALLATION
+3. A TYPICAL ADDON LAYOUT
+4. THE HELP AND CONFIGURATION CALLBACKS
+5. THE REAL WORK
+6. SOME EXAMPLES
+
+
+1. PREFACE
+
+Starting from the release 4.0.0 KVIrc supports the addon packaging system.
+
+A KVIrc addon is basically a zip package containing a subset of user-defined icons,
+aliases, functions, classes and all stuff needed to implement a new KVIrc feature.
+It might be a simple automatic-away subsystem, a GUI newsticker or a complex file
+sharing service (commonly called "fserve"). Addons are sometimes called "scripts".
+In fact a KVIrc addon is usually made of more than one KVS script.
+
+KVIrc has a builtin addon management system that allows the users to create, install,
+configure and uninstall features with a nice graphical interface. The management
+system allows the addons to have documentation integrated in the KVIrc help and to
+be translated in several languages.
+
+
+2. INSTALLATION
+
+The addons are usually shipped in compressed archives (.kva). KVIrc will look for the
+installer file called "install.kvs" and executes it when the user will ask for your
+addon to be installed. The install.kvs contains the code for the registration of your
+addon and will include all the other necessary source files. 
+
+
+3. A TYPICAL ADDON LAYOUT
+
+As stated above, the addons are usually shipped in a compressed archive.
+Once uncompressed, the installer will check the directory tree containing the addon
+code and all the relatedfiles. In order to have uniformity the installer complains if
+the structure below is not respected.
+
+    name-version/
+     +- init.kvs
+     +- src/
+     |    +- source1.kvs
+     |    +- source2.kvs
+     |    \- ...
+     +- locale/
+     |    +- name_it.mo
+     |    +- name_de.mo
+     |    \- ...
+     +- config/
+     |    +- config1.kvc
+     |    +- config2.kvc
+     |    \- ...
+     +- sound/
+     |    +- audio1.wav
+     |    +- audio2.wav
+     |    \- ...
+     +- pics/
+     |    +- pic1.png
+     |    +- pic2.png
+     |    \- ...
+     +- help/
+          +- en/
+          |   +- index.html
+          |   +- hints.html
+          |   \- ...
+          +- it/
+              +- index.html
+              +- hints.html
+              \- ...
+
+The entries with a slash (/) at the end are directories while the other are files.
+Please note that you need all of these directories or the routine that automagically
+creates the installer will fail. 
+The toplevel directory should be named with your addon name and version. Use no spaces
+in the directory entries (this will make the things simplier for people that want to
+use your addon).
+
+Hint: Remember that your addon is going to be installed on different platforms (at
+least linux, macosx and windows based). The poor windows' notepad has serious problems
+with reading text files that contain only linefeeds as line separators. Keep it in mind...
+
+The initialization script has to be named init.kvs and must contain all the routines
+to register your addon.
+Eg.:
+
+    # Register classes
+    MyAddon::classes::register
+    
+    # Initialize events
+    MyAddon::events::init
+    
+    # Load configuration
+    MyAddon::config::load
+    
+    # Setup popups
+    defpopup("MyAddon")
+    {
+        item($tr("Something","MyAddon"),110)
+        {
+            ...
+        }
+    }
+    
+    # Set options
+    option boolAutoAcceptDccSend 1
+    option boolShowMinimizedDebugWindow 1
+
+
+The main source directory for your addon have to be named "src" and must contain the
+implementation of the features you're going to provide. File names should contain the
+namespace of the addon, the optional subnamespace and the name of the feature, like
+$addonNS_$subNS_[$subNS_[...]]$name.kvs.
+Eg.:
+
+    # A class which handles a database
+    MyAddon_classes_database.kvs
+    
+    # A class which handles the options of our addon in a GUI
+    MyAddon_classes_gui_options.kvs
+    
+    # A script containing some logging functions
+    MyAddon_functions_logging.kvs
+
+
+The "locale" directory should contain the *.mo catalogue's files for your tranlations.
+The localization process of a script is explained in this document. Your *.mo filenames
+should be prefixed by your addon name.
+
+The configuration directory "config" should contains only the files which store the
+configuration of your addon and must end with the .kvc extension.
+
+The "pics" and "sound" (if relevant) directories should contain your multimedia files.
+It's a good idea to have your pics file in PNG format and sound files in WAV format.
+
+The "help" directory should contain subdirectories for each language your help files
+are written in. The languages dirs should be named with the language code also used for
+the translation files (like "en", "it" etc...).
+Please note that english is the default language and KVIrc will fallback to the "en"
+subdirectory when no other language is found around...
+
+
+4. THE HELP AND CONFIGURATION CALLBACKS
+
+Each addon can have a help and a configuration callback. These are set respectively by
+addon.sethelpcallback and addon.setconfigurecallback.
+The help callback will be invoked by KVIrc when the user will ask help for your addon
+(mainly from the addon management dialog, but not necessairly). It should call help.open
+with the name of your documentation index html file (it should be relative to the help
+language directory.
+
+Hint: help.open myaddon/index.html will automatically lookup the right language
+
+If you provide no help callback, the button for requesting help will be simply disabled.
+A good and relatively complex addon *should* have at least a minimal help file explaining
+the features.
+
+The configuration callback will be invoked when the user will try to configure your addon
+from the addon management dialog. This callback is useful mainly for complexier graphical
+scripts that can show up a dialog that allows configuring all of the addon features.
+To use this callback you will probably need some object scripting.
+
+
+5. THE REAL WORK
+
+The real addon work is done by the scripts contained in the source directory. They will
+likely add aliases (maybe in a nice namespace named against your addon), register event
+handlers, create actions, timers, toolbars and object classes. You should install all of
+this stuff from your addon source files.
+
+Remember that your source files will NOT be parsed every time KVIrc starts up: your stuff
+must be registered in KVIrc and be able to startup itself, if needed. You must clean up
+everything in your uninstallation callback. This means that you must remove the aliases,
+unregister the event handlers, destroy the actions, kill the timers and the object classes
+you've created. Be a clean coder :)
+
+
+6. SOME EXAMPLES
+
+The code below is just an example of how to write a useful initalizazion of your own addon.
+The name of the classes refer to the ones described above. 
+
+    # Register the classes
+    alias(MyAddon::classes::register)
+    {
+        # Create an array with all the classes of our addon.
+        # In this way it's easy to add or remove classes in the registering routine
+        %classes[] = $array( \
+            MyAddon::classes::database, \
+            MyAddon::classes::gui::options, \
+            ...
+            )
+        
+        # Scan the array and register the classes
+        for(%i=0; %i < $length(%classes[]); %i++)
+        {
+            if($classDefined("%classes[%i]"))
+            {
+                objects.killClass %classes[%i]
+            }
+            eval %classes[%i]
+        }
+    }
+    
+    # Initialize events
+    alias(MyAddon::events::init)
+    {
+        event(OnKVIrcStartup,"MyAddon")
+        {
+            ...
+            # Load the catalogue (translation) file "myaddon" from the path provided
+            trload myaddon $file.localdir("locale/MyAddon")
+            MyAddon::config::load
+            ...
+        }
+        event(OnChannelMessage,"MyAddon_something")
+        {
+            ...
+        }
+    }
+    
+    # Load configuration
+    alias(MyAddon::config::load)
+    {
+        # If the class ConfHandler is not defined, register all classes we have
+        if(!$classDefined(MyAddon::classes::ConfHandler))
+        {
+            MyAddon::classes::register
+        }
+        
+        # Set some variables
+        %MyAddonConfig = $new(MyAddon::classes::ConfHandler)
+        %MyAddonConfigPath = $file.localdir(config/scripts/MyAddon)
+        
+        # Open the configuration file and move to the section "general"
+        %c = $config.open(%MyAddonConfigPath/MyAddon.kvc,"r")
+        config.setsection %c general
+        
+        # Store the value of the key "Key" in the global variable %Key
+        %Key = $config.read(%c,"Key",2)
+        ...
+    }
+
+
+7. WHERE TO START
+
+It is a good idea to start on the KVIrc web site. There are surely several addons to
+look at. Pick one that seems simple and analyze its layout and code (wow... the free
+software!). It will be easier to do than it was to explain it :D
+
+Another great resource place is the IRC channel #KVIrc located on irc.freenode.org
+network. There you can find many people able to code and help you.
+
+Have fun! :) 
+
+Elvio Basello

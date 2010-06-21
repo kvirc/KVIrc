@@ -12,6 +12,7 @@ SET(howto
 	INSTALL
 	INSTALL-MacOS.txt
 	INSTALL-Win32.txt
+	addon.howto.txt
 	firefox.hack.txt
 	hackers.guide.txt
 	scripting.faq.txt
