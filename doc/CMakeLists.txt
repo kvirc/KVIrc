@@ -23,6 +23,11 @@ SET(howto
 # User documentation
 IF(PERL_FOUND)
 
+	# The userdocs target is in the normal build process and rebuilds the documentation
+	# only when the revision number changes. This is useful for svn users and package users.
+
+	# The docs target is standalone and explicitly builds the documentation (useful for developers)
+
 	IF(DEFINED CMAKE_KVIRC_BUILD_REVISION)
 		SET(USERDOCS_VERSION "${VERSION_RELEASE}.${CMAKE_KVIRC_BUILD_REVISION}")
 	ELSE()
@@ -47,6 +52,11 @@ IF(PERL_FOUND)
 			# Assume linux
 			INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/help)
 		ENDIF()
+		ADD_CUSTOM_TARGET(
+			docs
+			COMMENT "Generating user documentation..."
+			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${USERDOCS_VERSION} '${CMAKE_CURRENT_BINARY_DIR}/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
+		)
 	ELSEIF(WIN32)
 		ADD_CUSTOM_COMMAND(
 			OUTPUT ${USERDOCS_OUTPUT_FILE}
@@ -54,6 +64,11 @@ IF(PERL_FOUND)
 			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${USERDOCS_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/help/en/ ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
 		)
 		INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/help)	
+		ADD_CUSTOM_TARGET(
+			docs
+			COMMENT "Generating user documentation..."
+			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${USERDOCS_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/help/en/ ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
+		)
 	ENDIF()
 
 ENDIF()
