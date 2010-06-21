@@ -511,7 +511,7 @@ KviSetupWizard::KviSetupWizard()
 #endif
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	m_pUseMircServerList = new QRadioButton(__tr2qs("Import server list from mIRC"),m_pDesktopIntegration->m_pVBox);
+	m_pUseMircServerList = new QCheckBox(__tr2qs("Import server list from mIRC"),m_pDesktopIntegration->m_pVBox);
 	m_pUseMircServerList->setEnabled(false);
 #endif
 
