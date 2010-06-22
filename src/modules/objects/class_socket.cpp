@@ -195,7 +195,7 @@
 
 @examples:
 		[example]
-		// Server socket: listen 8080 port and answer to requests (multi-threaded)[br]
+		// Server socket: listen 8080 port and answer to requests (multi-threaded)
 		class (webserver,socket)
 		{
 			constructor ()

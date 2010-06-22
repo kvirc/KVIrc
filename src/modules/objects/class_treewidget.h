@@ -71,6 +71,7 @@ protected:
 	bool setColumnCount(KviKvsObjectFunctionCall *c);
         bool topLevelItem(KviKvsObjectFunctionCall *c);
         bool topLevelItemCount(KviKvsObjectFunctionCall *c);
+	bool itemAt(KviKvsObjectFunctionCall *c);
 protected slots:
 	void slotClicked(QTreeWidgetItem *,int);
 	void slotSelectionChanged();

@@ -94,6 +94,9 @@
                 Returns the currently selected [class]listviewitem[/class] or $null if no items are selected.
                 This function works only if the list view is in single selection mode.
 
+		!fn: <listviewitem:hobject> $itemAt(<x_global_pos:integer>,<y_global_pos:integer>)
+		Returns the listviewitem object at the x,y globals coordinates or $null if no item at.
+
                 !fn: <listviewitem> $currentItem()
                 Returns the current [class]listviewitem[/class] or $null if no item is current at the moment.
 
@@ -151,10 +154,7 @@
                 This event is called when the item has been renamed in text, e.g. by in in-place renaming, in column col.[br]
                 The default implementation emits the [classfnc]$itemChanged[/classfnc]() signal.
 
-                !fn: $rightButtonClickEvent(<item:object>,<x:integer>,>y:integer>)
-                This signal is emitted when the right button is clicked.[br]
-                The arguments are the relevant item (may be 0), the point in global coordinates and the relevant column (or -1 if the click was outside the list).
-                The default implementation emits the [classfnc]$rightButtonClicked[/classfnc]() signal.
+
         @signals:
                 !sg: $clicked()
                 This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
@@ -201,7 +201,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,currentItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setSelectionMode)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,listViewHeaderIsVisible)
-
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemAt)
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,hideListViewHeader)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,showListViewHeader)
@@ -221,7 +221,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemExpandedEvent);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemCollapsedEvent);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemChangedEvent);
-	   KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setAcceptDrops);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setAcceptDrops);
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_treewidget,"fileDroppedEvent")
 
 KVSO_END_REGISTERCLASS(KviKvsObject_treewidget)
@@ -290,7 +290,20 @@ KVSO_CLASS_FUNCTION(treewidget,topLevelItem)
         else  c->returnValue()->setHObject(KviKvsObject_treewidgetitem::itemToHandle(pItem));
         return true;
 }
-
+KVSO_CLASS_FUNCTION(treewidget,itemAt)
+{
+	if (!widget()) return true;
+	kvs_int_t iXpos,iYpos;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("x_pos",KVS_PT_INT,0,iXpos)
+		KVSO_PARAMETER("y_pos",KVS_PT_INT,0,iYpos)
+	KVSO_PARAMETERS_END(c)
+	QPoint pPoint=((QTreeWidget *)widget())->viewport()->mapFromGlobal(QPoint(iXpos,iYpos));
+	QTreeWidgetItem *pItem=((QTreeWidget *)widget())->itemAt(pPoint);
+	if (!pItem) c->returnValue()->setHObject((kvs_hobject_t)0);
+	else  c->returnValue()->setHObject(KviKvsObject_treewidgetitem::itemToHandle(pItem));
+	return true;
+}
 KVSO_CLASS_FUNCTION(treewidget,topLevelItemCount)
 {
         if (!widget()) return true;

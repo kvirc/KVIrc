@@ -410,13 +410,14 @@ KVSO_CLASS_FUNCTION(tablewidget,columnCount)
 KVSO_CLASS_FUNCTION(tablewidget,itemRowColAt)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uX,uY;
+	kvs_int_t iXpos,iYpos;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("uX",KVS_PT_UNSIGNEDINTEGER,0,uX)
-		KVSO_PARAMETER("uY",KVS_PT_UNSIGNEDINTEGER,0,uY)
+		KVSO_PARAMETER("x_pos",KVS_PT_INT,0,iXpos)
+		KVSO_PARAMETER("y_pos",KVS_PT_INT,0,iYpos)
 	KVSO_PARAMETERS_END(c)
 	KviKvsArray *pArray;
-	QTableWidgetItem *pItem=((QTableWidget *)widget())->itemAt(uX,uY);
+	QPoint pPoint=((QTableWidget *)widget())->viewport()->mapFromGlobal(QPoint(iXpos,iYpos));
+	QTableWidgetItem *pItem=((QTableWidget *)widget())->itemAt(pPoint.x(),pPoint.y());
 	pArray=new KviKvsArray;
 	if (!pItem) {
 		pArray->set(0,new KviKvsVariant((kvs_int_t)-1));
