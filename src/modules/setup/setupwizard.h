@@ -121,7 +121,7 @@ public:
 	//QRadioButton  * m_pServersLoadConfig;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QString         m_szMircServerIniFile;
-	QRadioButton  * m_pUseMircServerList;
+	QCheckBox  * m_pUseMircServerList;
 #endif
 
 	QString		    m_szServerConfigFile;
