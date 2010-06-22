@@ -202,6 +202,10 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
 	szTmp += "# Register the script: this must be the first instruction executed\n# since it will abort with an error when a greater version is already installed\n";
 
 	// install.kvs: addon registration
+	/* FIXME: re-add in KVIrc 4.1!
+	 * implement a backend with full automatic cleaning for aliases, classes, popups,
+	 * actions, ... via snapshot/diff of kvirc state before/after installing a package
+
 	szTmp += QString("addon.register(\"%1\",\"%2\",\"%1\",\"%3\",\"%4\",\"%5\")\n").arg(m_szName, m_szVersion, m_szDescription, m_szMinVersion, m_szIcon);
 	szTmp += "{\n";
 	szTmp += "\t# This is our uninstall callback: it will be called by KVIrc when addon.uninstall is invoked\n";
@@ -210,6 +214,7 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
 	szTmp += QString("\t%1::uninstall::uninstallaliases\n").arg(m_szName);
 	szTmp += "}\n\n";
 	szTmp += "# Ok, addon.register succeeded. We can go on with the installation.\n\n";
+	*/
 
 	// install.kvs: run path
 	szTmp += "# Get the path that this script was launched from\n";

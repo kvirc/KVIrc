@@ -6,10 +6,12 @@ SUMMARY
 1. PREFACE
 2. INSTALLATION
 3. A TYPICAL ADDON LAYOUT
-4. THE HELP AND CONFIGURATION CALLBACKS
-5. THE REAL WORK
-6. SOME EXAMPLES
-7. WHERE TO START
+4. THE INIT FILE
+5. THE HELP AND CONFIGURATION CALLBACKS
+6. THE REAL WORK
+7. SOME EXAMPLES
+8. HINTS
+9. WHERE TO START
 
 
 1. PREFACE
@@ -127,15 +129,12 @@ subnamespace and the name of the feature, like $addonNS_$subNS_[$subNS_[...]]$na
 Eg.:
 
     # A class which handles a database
-
     src/MyAddon_classes_database.kvs
     
     # A class which handles the options of our addon in a GUI
-
     src/MyAddon_classes_gui_options.kvs
     
     # A script containing some logging functions
-
     src/MyAddon_functions_logging.kvs
 
 
@@ -162,8 +161,44 @@ Please note that english is the default language and KVIrc will fallback to the 
 subdirectory when no other language is found around...
 
 
+4. THE INIT FILE
 
-4. THE HELP AND CONFIGURATION CALLBACKS
+The smallest addon that you can write is the one that does nothing. 
+
+    addon.register("MyAddon", \
+                    "1.0.0", \
+                    $tr("My First Addon","myaddon"), \
+                    $tr("An addon that is really cool but does
+                    simply nothing","myaddon"), \
+                    "4.0.0", \
+                    "MyAddon_32.png")
+    {
+    }
+
+
+The code above does nothing but registers the "MyAddon" addon.
+You actually *NEED* this callback code!
+
+The first parameter is the internal addon id which can be used to identify your addon
+inside KVIrc. The id must be unique: two addons that share the same name cannot be
+installed.
+The second parameter is the addon version. It should be expressed in the classic format
+[major].[minor].[pathlevel] or something really similar (in fact KVIrc just expects the
+version to be a string composed of numbers separated by dots). The version is compared
+when an addon is installed and KVIrc complains if the user tries to downgrade an addon
+(that is to install a less recent version over a more recent one).
+The third parameter is the visible name of your addon: it will be displayed to the user
+in the addon management dialog. It can contain the $tr function so you can have it
+translated to several languages: in this case, our string will be translated in the
+catalogue myaddon.
+The fourth parameter is a short description of the feature that the addon implements;
+it can contain the $tr() function too.
+The fifth parameter is the minimal KVIrc version required to run the addon.
+The sixth parameter is the icon to show in the manager: it has to be 32x32 pixel big.
+There are also some switches that can be used to fiddle a little bit more :) 
+
+
+5. THE HELP AND CONFIGURATION CALLBACKS
 
 Each addon can have a help and a configuration callback. These are set respectively by
 addon.sethelpcallback and addon.setconfigurecallback.
@@ -184,8 +219,7 @@ scripts that can show up a dialog that allows configuring all of the addon featu
 To use this callback you will probably need some object scripting.
 
 
-
-5. THE REAL WORK
+6. THE REAL WORK
 
 The real addon work is done by the scripts contained in the source directory. They will
 likely add aliases (maybe in a nice namespace named against your addon), register event
@@ -199,7 +233,7 @@ unregister the event handlers, destroy the actions, kill the timers and the obje
 you've created. Be a clean coder :)
 
 
-6. SOME EXAMPLES
+7. SOME EXAMPLES
 
 The code below is just an example of how to write a useful initalizazion of your own addon.
 The name of the classes refer to the ones described above. 
@@ -266,7 +300,7 @@ The name of the classes refer to the ones described above.
     }
 
 
-7. HINTS
+8. HINTS
 
 - Use namespaces for your aliases and your classes. This will help avoiding
   collisions with other scripts and addons.
@@ -276,7 +310,7 @@ The name of the classes refer to the ones described above.
   with reading text files that contain only linefeeds as line separators. Keep it in mind...
 
 
-8. WHERE TO START
+9. WHERE TO START
 
 It is a good idea to start on the KVIrc web site. There are surely several addons to
 look at. Pick one that seems simple and analyze its layout and code (wow... the free
