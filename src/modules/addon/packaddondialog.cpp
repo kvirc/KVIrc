@@ -239,13 +239,14 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
 
 	// install.kvs: generate uninstall alias
 	szTmp += "# Generate the uninstall alias\n";
-	szTmp += QString("%installer->$generateUninstallAlias(\"%1::uninstall::uninstallfiles\")\n\n") \
+	szTmp += QString("%installer->$generateUninstallAlias(\"%1::uninstallfiles\")\n\n") \
 		.arg(m_szName);
 
 	// install.kvs: kill the installer class
 	szTmp += "# Kill the installer helper\n";
 	szTmp += "delete %installer\n\n";
 
+#if 0
 	// install.kvs: fetch the complete script
 	szTmp += "# Fetch the complete script\n";
 	szTmp += "%files[] = $file.ls($file.extractpath($0)/src,f)\n";
@@ -262,6 +263,7 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
                 .arg(m_szName);
 	szTmp += "%alias .= \"}\"\n";
 	szTmp += "eval %alias\n\n";
+#endif
 
 	// install.kvs: include initialization file
 	szTmp += "# Include initialization file\n";

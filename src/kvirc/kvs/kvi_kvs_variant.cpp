@@ -1145,8 +1145,10 @@ void KviKvsVariant::unserializeString(const QChar** aux,QString& data)
 				break;
 			case '/':
 				data.append('/');
+				break;
 			case 'b':
 				data.append('\b');
+				break;
 			case 'f':
 				data.append('\f');
 				break;
