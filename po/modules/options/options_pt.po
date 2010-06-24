@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-19 20:08+0200\n"
-"PO-Revision-Date: 2010-06-24 06:18+0100\n"
+"PO-Revision-Date: 2010-06-24 06:25+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -995,7 +995,7 @@ msgid ""
 "<center>This makes the IRC context display applet show the current lag after "
 "the user's nickname (in seconds)</center>"
 msgstr ""
-"<center>Isto faz com que a 'applet' para mostrar o contexto IRC exiba o "
+"<center>Isto faz com que a componente de mostrar o contexto IRC exiba o "
 "'lag' actual após a alcunha do utilizador (em segundos)</center>"
 
 #: src/modules/options/optw_lag.cpp:47
@@ -1072,8 +1072,9 @@ msgid ""
 msgstr ""
 "<center>Esta opção faz com que o KVirc envie um reconhecimento zero-byte "
 "para responder/iniciar as transferências DCC com alguns clientes IRC com "
-"erros.<br>Use-o apenas se a sua transferência DCC parar logo a seguir a "
-"estabelecer uma conexão sem enviar quaisquer dados.</center>"
+"erros.<br>Use-o apenas se a sua transferência DCC parar logo após "
+"estabelecer "
+"uma conexão sem enviar quaisquer dados.</center>"
 
 #: src/modules/options/optw_query.cpp:82 src/modules/options/optw_dcc.cpp:332
 msgid ""
@@ -4450,7 +4451,7 @@ msgstr "Topo"
 
 #: src/modules/options/optw_ircview.cpp:178
 msgid "Track last read text line"
-msgstr "Seguir última linha do texto lido"
+msgstr "Seguir a última linha do texto lido"
 
 #: src/modules/options/optw_interfacelookglobal.h:48
 msgid "Transparency"
