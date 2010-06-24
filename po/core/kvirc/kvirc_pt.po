@@ -1,15 +1,14 @@
 # translation of kvirc_pt.po to Português
-# Ze <mmodem00@netvisao.pt>, 2003.
-# Zé <mmodem00@netvisao.pt>, 2004, 2005.
+#
+# Zé <mmodem00@netvisao.pt>, 2003, 2004, 2005.
 # Zé <mmodem00@gmail.com>, 2006, 2007, 2008, 2010.
 # Zé <ze@mandriva.org>, 2008, 2010.
-# Zé <mmodem00@gmal.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-19 20:07+0200\n"
-"PO-Revision-Date: 2010-06-17 16:53+0100\n"
+"PO-Revision-Date: 2010-06-24 06:36+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -5283,33 +5282,33 @@ msgstr ""
 #: src/kvirc/sparser/kvi_sp_literal.cpp:324
 msgid "Received a part message for an unknown channel, possible desync"
 msgstr ""
-"Mensagem de saída de canal recebida para um canal desconhecido,possível "
-"desync"
+"Mensagem de saída de canal recebida para um canal desconhecido, "
+"possível dessincronização"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1412
 msgid "Received a topic message for an unknown channel, possible desync"
 msgstr ""
-"Mensagem de tópico recebida para um canal desconhecido, possível "
-"dessincronização"
+"Mensagem de tópico recebida para um canal desconhecido, "
+"possível dessincronização"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1607
 msgid "Received an invite message directed to another nick, possible desync"
 msgstr ""
 "Recebeu uma mensagem de convite que era dirigida a outra alcunha, "
-"possíveldessincronização"
+"possível dessincronização"
 
 #: src/modules/links/linkswindow.cpp:184
 msgid "Received end of links."
-msgstr "Fim das ligações recebido."
+msgstr "Recebido fim das ligações."
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:101
 msgid "Received ping from \r!s\r%Q\r (PING %Q), replied pong"
-msgstr "PING recebido de \r!s\r%Q\r (PING %Q), pong respondido"
+msgstr "Recebido PING de \r!s\r%Q\r (PING %Q), pong respondido"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:128
 #, c-format
 msgid "Received pong from \r!s\r%s\r (PONG %s)"
-msgstr "PONG recebido de \r!s\r%s\r (PONG %s)"
+msgstr "Recebido PONG de \r!s\r%s\r (PONG %s)"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2141
 msgid "Received unknown extended capability message: %Q %Q"
@@ -5325,15 +5324,15 @@ msgstr "Tentativa de reconexão abortada"
 
 #: src/kvirc/kernel/kvi_options.cpp:1250
 msgid "Rectangle options (x,y,width,height)"
-msgstr "Opções de rectangulos (x,y,comprimento,altura)"
+msgstr "Opções do rectângulo (x,y,comprimento,altura)"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3057
 msgid "Red Balance"
-msgstr "Balanço Vermelho"
+msgstr "Balanço do Vermelho"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:299
 msgid "Redirect on channel full"
-msgstr "Redireccionar quando o canal encher"
+msgstr "Redireccionar quando o canal estiver cheio"
 
 #: src/modules/help/helpwindow.cpp:90
 msgid "Refresh index"
@@ -5372,7 +5371,7 @@ msgstr "A máquina remota fechou a conexão"
 
 #: src/modules/mircimport/libkvimircimport.cpp:143
 msgid "Remote mIRC servers.ini Import Wizard"
-msgstr "Assistente de Importação mIRC Remoto de servers.ini"
+msgstr "Assistente de Importação Remoto de servers.ini do mIRC"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:375
 msgid "Remove %Q"
@@ -5380,11 +5379,11 @@ msgstr "Remover %Q"
 
 #: src/kvirc/ui/kvi_menubar.cpp:140
 msgid "Report a Bug / Propose Improvements"
-msgstr "Comunicar Erro/Propor melhorias"
+msgstr "Reportar Erro / Propor melhorias"
 
 #: src/modules/links/linkswindow.cpp:64
 msgid "Request Links"
-msgstr "Pedido de Ligações"
+msgstr "Pedir Ligações"
 
 #: src/modules/list/listwindow.cpp:195
 msgid "Request List"
