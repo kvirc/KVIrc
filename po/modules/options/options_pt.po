@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-19 20:08+0200\n"
-"PO-Revision-Date: 2010-06-24 06:47+0100\n"
+"PO-Revision-Date: 2010-06-24 06:57+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -248,7 +248,8 @@ msgstr ""
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
-"<center>Prima este botão para conectar ao actual servidor seleccionado.</"
+"<center>Prima este botão para conectar ao servidor seleccionado actualmente."
+"</"
 "center>"
 
 #: src/modules/options/optw_servers.cpp:592
@@ -663,7 +664,7 @@ msgid ""
 "server is temporairly unreachable or you want to avoid the round-robin "
 "lookups.</center>"
 msgstr ""
-"<center>Esta marca irá activar o <b>endereço IP em 'cache'</b> para este "
+"<center>Esta marca irá activar o <b>endereço IP em caixa</b> para este "
 "servidor: as procuras de DNS podem consumir muito tempo e podem estar a "
 "bloquear em algumas plataformas; esta opção irá fazer com que o KVirc "
 "procure o nome do endereço do servidor apenas uma vez.<br><br>Avançado: "
@@ -795,10 +796,11 @@ msgid ""
 "up again.</center>"
 msgstr ""
 "<center>Este é o <b>endereço IP</b> deste servidor, está aqui para "
-"propósitos de 'cache'. <br>Se deixar este campo vazio, o KVirc irá preenche-"
+"propósitos de caixa. <br>Se deixar este campo vazio, o KVirc irá preenche-"
 "lo na primeira vez que se conectar ao servidor. Se activar a opção em baixo "
-"\"endereço IP em 'cache'\", o KVirc irá usá-lo como um \"resultado em "
-"'cache'\" e evitar de o procurar novamente.</center>"
+"\"endereço IP em caixa\", o KVirc irá usá-lo como um \"resultado em caixa\" "
+"e "
+"evitar de o procurar novamente.</center>"
 
 #: src/modules/options/optw_servers.cpp:774
 msgid ""
@@ -1326,7 +1328,7 @@ msgid ""
 "\" option.</center>"
 msgstr ""
 "<center>Esta opção faz com que o KVirc mantenha a janela do canal aberta "
-"depois de ter sido expulso.<br>Pode ser também uma boa ideia activar a opção"
+"após ter sido expulso.<br>Pode ser também uma boa ideia activar a opção"
 "\"Reentrar no canal\".</br></center>"
 
 #: src/modules/options/optw_channel.cpp:70
@@ -1334,7 +1336,7 @@ msgid ""
 "<center>This option will cause KVIrc to keep the channel window open after "
 "leaving it.</center>"
 msgstr ""
-"<center>Esta opção irá fazer com que o KVirc mantenha a janela do canal "
+"<center>Esta opção fará com que o KVirc mantenha a janela do canal "
 "aberta depois de a deixar.</center>"
 
 #: src/modules/options/optw_irc.cpp:51
@@ -1367,7 +1369,7 @@ msgid ""
 "sets an avatar and there is no cached copy available.</center>"
 msgstr ""
 "<center>Esta opção faz com que o KVIrc envie um pedido DCC GET quando alguém "
-"tem uma avatar e não há uma cópia em 'cache' disponível.</center>"
+"tem uma avatar e não há uma cópia em caixa disponível.</center>"
 
 #: src/modules/options/optw_irc.cpp:54
 msgid ""
@@ -2017,7 +2019,7 @@ msgstr "Respostas CTCP"
 
 #: src/modules/options/optw_servers.cpp:667
 msgid "Cache IP address"
-msgstr "Endereço IP em 'cache'"
+msgstr "Endereço IP em caixa"
 
 #: src/modules/options/dialog.cpp:242 src/modules/options/optw_identity.cpp:96
 #: src/modules/options/optw_identity.cpp:239
@@ -2080,7 +2082,7 @@ msgstr "Janelas de canais"
 #: src/modules/options/optw_servers.cpp:252
 #: src/modules/options/optw_servers.cpp:809
 msgid "Channels to join automatically upon connect:"
-msgstr "Canais para entrar automaticamente depois de conectar:"
+msgstr "Canais para entrar automaticamente após conectar:"
 
 #: src/modules/options/optw_dcc.h:115
 msgid "Chat"
@@ -3680,7 +3682,7 @@ msgstr "'Proxy'"
 
 #: src/modules/options/optw_proxy.h:53
 msgid "Proxy Hosts"
-msgstr "Endereços Proxy"
+msgstr "Máquinas 'Proxy'"
 
 #: src/modules/options/optw_servers.cpp:770
 msgid "Proxy server:"
@@ -3724,7 +3726,7 @@ msgstr "Privado"
 
 #: src/modules/options/optw_servers.cpp:867
 msgid "Query extended capabilities on connect"
-msgstr "Capacidades de pesquisa entendida no contexto"
+msgstr "Pesquisar capacidades extendida ao conectar"
 
 #: src/modules/options/optw_logging.cpp:41
 msgid "Query windows"

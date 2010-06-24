@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-19 20:07+0200\n"
-"PO-Revision-Date: 2010-06-24 06:36+0100\n"
+"PO-Revision-Date: 2010-06-24 06:55+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -6264,8 +6264,8 @@ msgid ""
 "The connection attempt failed while using a cached IP address for the "
 "current server"
 msgstr ""
-"A tentativa de conexão falhou enquanto usava o endereço IP para o servidor "
-"actual"
+"A tentativa de conexão falhou enquanto usava o endereço IP em caixa para "
+"o servidor actual"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:809
 msgid "The connection terminated unexpectedly. Trying to reconnect..."
@@ -6819,7 +6819,7 @@ msgstr "Agudo"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:662
 msgid "Try reconnecting with caching disabled"
-msgstr "Tentar reconectar com a cache desactivada"
+msgstr "Tentar reconectar com a caixa desactivada"
 
 #: src/kvilib/core/kvi_error.cpp:148
 msgid "UNUSED"
@@ -7234,12 +7234,12 @@ msgstr "A usar um asterisco dentro de frases não é permitido."
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:198
 #, c-format
 msgid "Using cached proxy IP address (%s)"
-msgstr "A usar o endereço IP 'proxy' em 'cache' (%s)"
+msgstr "A usar o endereço IP 'proxy' em caixa (%s)"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:326
 #, c-format
 msgid "Using cached server IP address (%s)"
-msgstr "A usar o endereço IP em cache do servidor (%s)"
+msgstr "A usar o endereço IP em caixa do servidor (%s)"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:139
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
