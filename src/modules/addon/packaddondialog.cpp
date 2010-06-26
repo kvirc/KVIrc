@@ -430,18 +430,6 @@ bool KviPackAddonDialog::packAddon()
 		return false;
 	}
 
-#if 0
-	// Add installer script
-	if(!pw.addFile(QString("%1%2%3").arg(m_szDirPath).arg(QChar(KVI_PATH_SEPARATOR_CHAR)).arg("install.kvs"),"install.kvs"))
-	{
-		szTmp = __tr2qs_ctx("Packaging failed","addon");
-		szTmp += ": ";
-		szTmp += pw.lastError();
-		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-		return false;
-	}
-#endif
-
 	// Create the addon package
 	if(m_szSavePath.isEmpty())
 	{
@@ -510,7 +498,7 @@ KviPackAddonInfoPackageWidget::KviPackAddonInfoPackageWidget(KviPackAddonDialog 
 	pLayout->addWidget(pLabel,3,0);
 
 	m_pPackageDescriptionEdit = new QLineEdit(this);
-	m_pPackageDescriptionEdit->setText(__tr2qs_ctx("Description must be short","addon"));
+	m_pPackageDescriptionEdit->setText(QString());
 	pLabel->setBuddy(m_pPackageDescriptionEdit);
 	pLayout->addWidget(m_pPackageDescriptionEdit,3,1);
 

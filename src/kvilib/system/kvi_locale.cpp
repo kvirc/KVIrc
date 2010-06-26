@@ -801,7 +801,8 @@ namespace KviLocale
 	bool loadCatalogue(const QString &name,const QString &szLocaleDir)
 	{
 		//debug("Looking up catalogue %s",name);
-		if(g_pCatalogueDict->find(KviQString::toUtf8(name).data()))return true; // already loaded
+		if(g_pCatalogueDict->find(KviQString::toUtf8(name).data()))
+			return true; // already loaded
 
 		QString szBuffer;
 
@@ -810,7 +811,6 @@ namespace KviLocale
 			KviMessageCatalogue * c = new KviMessageCatalogue();
 			if(c->load(szBuffer))
 			{
-				//debug("KviLocale: loaded catalogue %s",name);
 				g_pCatalogueDict->insert(KviQString::toUtf8(name).data(),c);
 				return true;
 			}
