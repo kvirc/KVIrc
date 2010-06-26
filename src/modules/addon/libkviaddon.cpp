@@ -172,8 +172,8 @@ static bool addon_kvs_cmd_list(KviKvsModuleCommandCall * c)
 		!sw: -q | --quiet
 			Makes the command run quietly
 	@description:
-		Uninstalls the specified addon by executing its uninstall callback function.
-		It also removes the addon's registration entry.
+		Uninstalls the specified addon by executing its uninstall callback function
+		and removing its installed files. It also removes the addon's registration entry.
 		If the -n switch is specified the the uninstall callback is not called,
 		only the registration entry is removed.
 	@seealso:
@@ -502,7 +502,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 	@seealso:
 		[cmd]addon.uninstall[/cmd], [fnc]$addon.exists[/fnc],
 		[cmd]addon.setconfigurecallback[/cmd], [cmd]addon.configure[/cmd],
-		[cmd]addon.sethelpcallback[/cmd], [cmd]addon.help[/cmd]
+		[cmd]addon.sethelpcallback[/cmd], [cmd]addon.help[/cmd], [cmd]addon.installfiles[/cmd]
 	@examples:
 		[example]
 
@@ -572,8 +572,10 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 		if(!c->switches()->find('q',"quiet"))
 			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Uninstalling existing addon version %Q","addon"),&(a->version()));
 
+		bool bUninstall = !c->switches()->find('n',"no-uninstall");
+
 		// uninstall the existing version
-		KviKvsScriptAddonManager::instance()->unregisterAddon(rd.szName,c->window(),!c->switches()->find('n',"no-uninstall"));
+		KviKvsScriptAddonManager::instance()->unregisterAddon(rd.szName,c->window(),bUninstall,bUninstall);
 	}
 
 	if(!KviKvsScriptAddonManager::instance()->registerAddon(&rd))
@@ -584,6 +586,172 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 
 	if(!c->switches()->find('q',"quiet"))
 		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Addon successfully registered","addon"));
+
+	return true;
+}
+
+/*
+	@doc: addon.installfiles
+	@type:
+		command
+	@title:
+		addon.installfiles
+	@short:
+		Installs a set of files for an addon
+	@syntax:
+		addon.installfiles <id:string> <target:string> [files]
+	@switches:
+		!sw: -q | --quiet
+			Makes the command run quietly
+		!sw: -s | --skip-inexisting
+			Skip inexisting entries in the [files] list
+	@description:
+		Installs the [files] for the addon identified by the specified <id>.
+		The files will be automatically removed when the addon is uninstalled.
+		<target> is the target path inside the local kvirc directory. The following
+		standard paths should be used:[br]
+		[ul]
+		[li]"pics" for image files.[/li]
+		[li]"locale" for translation *.mo files.[/li]
+		[li]"audio" for sound files.[/li]
+		[li]"config" for configuration files.[/li]
+		[/ul]
+		Other target paths are allowed and subdirectories are supported (eg. "pics/myaddon").
+		[files] is a list of filenames or directory names.
+		Each file will be copied to the specified target path in the local kvirc directory.
+		Filenames can contain wildcard characters in the last component.
+	@seealso:
+		[cmd]addon.register[/cmd]
+		[cmd]addon.uninstall[/cmd]
+*/
+
+static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
+{
+	QString szName;
+	QString szTarget;
+	QStringList lEntries;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("name",KVS_PT_NONEMPTYSTRING,0,szName)
+		KVSM_PARAMETER("target",KVS_PT_NONEMPTYSTRING,0,szTarget)
+		KVSM_PARAMETER("files",KVS_PT_STRINGLIST,0,lEntries)
+	KVSM_PARAMETERS_END(c)
+
+	bool bQuiet = c->switches()->find('q',"quiet");
+	bool bSkipInexisting = c->switches()->find('i',"skip-inexisting");
+
+	KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
+	if(!a)
+	{
+		if(!bQuiet)
+			c->warning(__tr2qs_ctx("The addon \"%1\" does not exist","addon").arg(szName));
+		return true;
+	}
+
+	if(szTarget.isEmpty())
+		return c->error(__tr2qs_ctx("The target path can't be empty","addon"));
+
+	if(szTarget.indexOf("..") != -1)
+		return c->error(__tr2qs_ctx("The target path can't contain ..","addon"));
+
+	if(lEntries.isEmpty())
+	{
+		if(!bQuiet)
+			c->warning(__tr2qs_ctx("Empty file list","addon"));
+		return true; // nothing to do
+	}
+
+	QStringList lExpandedEntries;
+
+	foreach(QString szEntry,lEntries)
+	{
+		KviFileUtils::adjustFilePath(szEntry);
+
+		if(szEntry.contains("*"))
+		{
+			// filtered entry
+			int idx = szEntry.lastIndexOf(QChar(KVI_PATH_SEPARATOR_CHAR));
+			QString szPath;
+			QString szFilter;
+			if(idx < 0)
+			{
+				szPath = ".";
+				szFilter = szEntry;
+			} else {
+				szPath = szEntry.left(idx);
+				szFilter = szEntry.mid(idx+1);
+			}
+
+			QDir dir(szPath);
+			if(!dir.exists())
+			{
+				if(!bSkipInexisting)
+					return c->error(__tr2qs_ctx("The directory '%1' doesn't exist","addon").arg(szPath));
+				if(!bQuiet)
+					c->warning(__tr2qs_ctx("Skipping inexisting entry '%1'","addon").arg(szEntry));
+				continue;
+			}
+
+			QStringList sl = dir.entryList(
+					QStringList(szFilter),
+					QDir::Files | QDir::NoSymLinks | QDir::Readable | QDir::Hidden | QDir::System,
+					QDir::Unsorted
+				);
+
+			foreach(QString sz,sl)
+			{
+				lExpandedEntries.append(QString("%1%2%3").arg(szPath).arg(QString(KVI_PATH_SEPARATOR_CHAR)).arg(sz));
+			}
+			continue;
+		}
+
+		QFileInfo inf(szEntry);
+		if(!inf.exists())
+		{
+			if(!bSkipInexisting)
+				return c->error(__tr2qs_ctx("The file '%1' doesn't exist","addon").arg(szEntry));
+			if(!bQuiet)
+				c->warning(__tr2qs_ctx("Skipping inexisting entry '%1'","addon").arg(szEntry));
+			continue;
+		}
+
+		if(!inf.isFile())
+		{
+			if(!bSkipInexisting)
+				return c->error(__tr2qs_ctx("The entry '%1' is not a file","addon").arg(szEntry));
+			if(!bQuiet)
+				c->warning(__tr2qs_ctx("Skipping invalid entry '%1'","addon").arg(szEntry));
+			continue;
+		}
+
+		lExpandedEntries.append(szEntry);
+	}
+
+	// create target path
+	QString szTargetPath;
+	g_pApp->getLocalKvircDirectory(szTargetPath,KviApp::None,szTarget);
+
+	KviFileUtils::makeDir(szTargetPath);
+
+	for(QStringList::Iterator it = lExpandedEntries.begin();it != lExpandedEntries.end();++it)
+	{
+		QFileInfo inf(*it);
+		if(!inf.exists())
+		{
+			qDebug("ERROR: File %s doesn't exist, but it should...",inf.fileName().toUtf8().data());
+			continue; // bleah.. should never happen
+		}
+
+		QString szEntry = QString("%1%2%3").arg(szTarget).arg(QString(KVI_PATH_SEPARATOR_CHAR)).arg(inf.fileName());
+		g_pApp->getLocalKvircDirectory(szTargetPath,KviApp::None,szEntry);
+
+		if(!bQuiet)
+			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Installing file '%1' into '%2'","addon").arg(*it).arg(szTargetPath));
+
+		KviFileUtils::copyFile(*it,szTargetPath);
+
+		a->addInstalledFile(szEntry);
+	}
 
 	return true;
 }
@@ -651,6 +819,7 @@ static bool addon_module_init(KviModule *m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"uninstall",addon_kvs_cmd_uninstall);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"configure",addon_kvs_cmd_configure);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"help",addon_kvs_cmd_help);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"installfiles",addon_kvs_cmd_installfiles);
 
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"setconfigurecallback",addon_kvs_cmd_setconfigurecallback);
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"sethelpcallback",addon_kvs_cmd_sethelpcallback);

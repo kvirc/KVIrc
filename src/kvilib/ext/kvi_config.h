@@ -123,7 +123,7 @@ public:
 	bool readBoolEntry(const QString & szKey,bool bTrue);
 	QRect readRectEntry(const QString & szKey,const QRect &rct);
 	void writeEntry(const QString & szKey,const QRect &rct);
-	QStringList readStringListEntry(const QString & szKey,const QStringList &list);
+	QStringList readStringListEntry(const QString & szKey,const QStringList &list = QStringList());
 	void writeEntry(const QString & szKey,const QStringList &list);
 	QList<int> readIntListEntry(const QString & ,const QList<int> &list);
 	void writeEntry(const QString & szKey,const QList<int> &list);

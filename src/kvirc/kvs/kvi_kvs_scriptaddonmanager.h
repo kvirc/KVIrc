@@ -29,6 +29,7 @@
 #include "kvi_qstring.h"
 #include "kvi_pointerhashtable.h"
 
+#include <QStringList>
 
 class KviConfig;
 class KviKvsScript;
@@ -62,8 +63,10 @@ protected:
 	KviKvsScript * m_pHelpCallback;       // help callback
 	QString        m_szDescription;       // parsed description
 	QString        m_szVisibleName;       // parsed visible name
-	QString        m_szIconId;
+	QString        m_szIconId;            // the id of the associated icon
+	QStringList    m_lInstalledFiles;     // the list of the installed files
 public:
+	const QStringList &installedFiles() const { return m_lInstalledFiles; };
 	const QString &name() const { return m_szName; };
 	const QString &version() const { return m_szVersion; };
 	const QString &visibleName();
@@ -75,6 +78,11 @@ public:
 	const QString &helpCallbackCode();
 	const QString &iconId(){ return m_szIconId; };
 	QPixmap * icon();
+	///
+	/// Register a file to be uninstalled after the uninstall callback.
+	/// The file name *MUST* be relative to the local kvirc directory.
+	///
+	void addInstalledFile(const QString &szFileName);
 	void setConfigureCallback(const QString &szConfigureCallbackCode);
 	void setHelpCallback(const QString &szHelpCallbackCode);
 	void executeConfigureCallback(KviWindow * pWnd);
@@ -116,7 +124,7 @@ public:
 
 	bool registerAddon(KviKvsScriptAddonRegistrationData * d);
 	KviKvsScriptAddon * findAddon(const QString &szName);
-	bool unregisterAddon(const QString &szName,KviWindow * pWnd,bool bExecuteUninstallCallback = true);
+	bool unregisterAddon(const QString &szName,KviWindow * pWnd,bool bExecuteUninstallCallback = true,bool bUninstallFiles = true);
 	KviPointerHashTable<QString,KviKvsScriptAddon> * addonDict();
 
 	void clear();

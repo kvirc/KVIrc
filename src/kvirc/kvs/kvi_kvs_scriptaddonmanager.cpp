@@ -4,7 +4,7 @@
 //   Creation date : Thu 31 Mar 2005 01:21:23 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,6 +27,10 @@
 #include "kvi_config.h"
 #include "kvi_window.h"
 #include "kvi_iconmanager.h"
+#include "kvi_fileutils.h"
+#include "kvi_app.h"
+
+#include <QFileInfo>
 
 KviKvsScriptAddonManager * KviKvsScriptAddonManager::m_pInstance = 0;
 
@@ -144,7 +148,15 @@ bool KviKvsScriptAddon::load(KviConfig * cfg,const QString &szName)
 	tmp1 = cfg->readQStringEntry("HelpCallback");
 	if(!tmp1.isEmpty())
 		setHelpCallback(tmp1);
+	m_lInstalledFiles = cfg->readStringListEntry("InstalledFiles");
 	return true;
+}
+
+void KviKvsScriptAddon::addInstalledFile(const QString &szFileName)
+{
+	if(m_lInstalledFiles.contains(szFileName))
+		return;
+	m_lInstalledFiles.append(szFileName);
 }
 
 void KviKvsScriptAddon::setConfigureCallback(const QString &szConfigureCallbackCode)
@@ -213,6 +225,7 @@ void KviKvsScriptAddon::save(KviConfig * cfg)
 	cfg->writeEntry("ConfigureCallback",configureCallbackCode());
 	cfg->writeEntry("HelpCallback",helpCallbackCode());
 	cfg->writeEntry("IconId",m_szIconId);
+	cfg->writeEntry("InstalledFiles",m_lInstalledFiles);
 }
 
 void KviKvsScriptAddon::executeUninstallCallback(KviWindow * pWnd)
@@ -348,14 +361,16 @@ bool KviKvsScriptAddonManager::registerAddon(KviKvsScriptAddonRegistrationData *
 
 KviKvsScriptAddon * KviKvsScriptAddonManager::findAddon(const QString &szName)
 {
-	if(!m_bLoaded)delayedLoad();
+	if(!m_bLoaded)
+		delayedLoad();
 	return m_pAddonDict->find(szName);
 }
 
-bool KviKvsScriptAddonManager::unregisterAddon(const QString &szName,KviWindow * pWnd,bool bExecuteUninstallCallback)
+bool KviKvsScriptAddonManager::unregisterAddon(const QString &szName,KviWindow * pWnd,bool bExecuteUninstallCallback,bool bUninstallFiles)
 {
 	KviKvsScriptAddon * a = findAddon(szName);
-	if(!a)return false;
+	if(!a)
+		return false;
 
 	// remove the addon before executing the uninstall callback
 	// so the user effectively can't call addon.unregister on itself in the uninstall callback code :D
@@ -365,6 +380,26 @@ bool KviKvsScriptAddonManager::unregisterAddon(const QString &szName,KviWindow *
 
 	if(bExecuteUninstallCallback)
 		a->executeUninstallCallback(pWnd);
+
+	if(bUninstallFiles)
+	{
+		// uninstall files
+		QStringList lFiles = a->installedFiles();
+		foreach(QString szFileName,lFiles)
+		{
+			QString szPath;
+			g_pApp->getLocalKvircDirectory(szPath,KviApp::None,szFileName);
+	
+			//qDebug("Uninstalling %s",szPath.toUtf8().data());
+	
+			QFileInfo inf(szPath);
+			if(!inf.exists())
+				continue;
+	
+			KviFileUtils::removeFile(szPath);
+		}
+		// FIXME: remove empty directories!!
+	}
 
 	delete a;
 	return true;
