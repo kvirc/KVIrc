@@ -36,16 +36,6 @@ namespace KviAddonFunctions
 {
 	bool notAValidAddonPackage(QString & szError);
 	bool installAddonPackage(const QString & szAddonPackageFileName, QString & szError, QWidget * pDialogParent = 0);
-	void getAddonHtmlDescription(
-		QString & szBuffer,
-		const QString & szAddonName,
-		const QString & szAddonVersion,
-		const QString & szAddonDescription,
-		const QString & szAddonApplication,
-		const QString & szAddonAuthor,
-		const QString & szAddonDate,
-		const QString & szAddonAddonEngineVersion
-	);
 	QString createRandomDir();
 }
 

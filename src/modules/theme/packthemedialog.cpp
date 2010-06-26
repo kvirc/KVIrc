@@ -437,7 +437,6 @@ bool KviPackThemeDialog::packTheme()
 	m_szPackagePath = field("packageSavePath").toString();
 	//m_szSavePath = field("packageSavePath").toString();
 
-	debug("author: %s, name: %s, version: %s, desc: %s, image: %s, save: %s, engine: %s\n",m_szAuthor.toUtf8().data(),m_szName.toUtf8().data(),m_szVersion.toUtf8().data(),m_szDescription.toUtf8().data(),m_szImagePath.toUtf8().data(),m_szPackagePath.toUtf8().data(),KVI_CURRENT_THEME_ENGINE_VERSION);
 	//return false;
 
 	QImage pix(m_szImagePath);
@@ -537,7 +536,6 @@ bool KviPackThemeDialog::packTheme()
 
 		if(!f.addDirectory(pInfo->absoluteDirectory(),pInfo->subdirectory()))
 		{
-			debug("error abs %s - sub %s",pInfo->absoluteDirectory().toUtf8().data(),pInfo->subdirectory().toUtf8().data());
 			szTmp = __tr2qs_ctx("Packaging failed","theme");
 			szTmp += ": ";
 			szTmp += f.lastError();
@@ -553,8 +551,6 @@ bool KviPackThemeDialog::packTheme()
 
 	if(!f.pack(m_szPackagePath))
 	{
-		debug("error package path %s",m_szPackagePath.toUtf8().data());
-
 		szTmp = __tr2qs_ctx("Packaging failed","theme");
 		szTmp += ": ";
 		szTmp += f.lastError();

@@ -44,6 +44,8 @@ class QTextEdit;
 class QLineEdit;
 class QLabel;
 
+class KviPackageWriter;
+
 class KviPackAddonInfoPackageWidget;
 class KviPackAddonFileSelectionWidget;
 class KviPackAddonSaveSelectionWidget;
@@ -95,6 +97,16 @@ protected:
 	* \return bool
 	*/
 	bool packAddon();
+
+	/**
+	* Helper for packAddon()
+	*/
+	bool addSubdirectoryIfExists(
+			KviPackageWriter &pw,
+			const QString &szAddonPath,
+			const QString &szSubdir,
+			const QString &szTargetSubdir
+		);
 
 	/**
 	* \brief Ensures the sources directory is complete

@@ -53,6 +53,8 @@ namespace KviAddonFunctions
 		KviPointerHashTable<QString,QString> * pInfoFields;
 		QString * pValue;
 		QString szErr;
+		QPixmap pix;
+		QByteArray * pByteArray;
 		bool bInstall;
 		KviHtmlDialogData hd;
 
@@ -70,12 +72,17 @@ namespace KviAddonFunctions
 		pInfoFields = r.stringInfoFields();
 
 		pValue = pInfoFields->find("PackageType");
+
 		if(!pValue)
 			return notAValidAddonPackage(szError);
+
+		if(!KviQString::equalCI(*pValue,"AddonPack"))
+			return notAValidAddonPackage(szError);
+
 		pValue = pInfoFields->find("AddonPackVersion");
+
 		if(!pValue)
 			return notAValidAddonPackage(szError);
-		if(!KviQString::equalCI(*pValue,KVI_CURRENT_ADDONS_ENGINE_VERSION))return notAValidAddonPackage(szError);
 
 		// make sure the default fields exist
 		for(int i=0;i<6;i++)
@@ -86,17 +93,28 @@ namespace KviAddonFunctions
 		}
 
 		// ok.. it should be really valid at this point
+		// load its picture
+		pByteArray = r.binaryInfoFields()->find("Image");
+		if(pByteArray)
+			pix.loadFromData(*pByteArray,0,0);
+
+		if(pix.isNull())
+		{
+			// load the default icon
+			pix = *(g_pIconManager->getBigIcon(KVI_BIGICON_ADDONS));
+		}
+
 		QString szPackageName;
 		QString szPackageVersion;
 		QString szPackageAuthor;
 		QString szPackageDescription;
 		QString szPackageDate;
-		QString szPackageAddonEngineVersion;
+		QString szAddonPackVersion;
 		QString szPackageApplication;
 
 		QString szAuthor = __tr2qs_ctx("Author","addon");
 		QString szCreatedAt = __tr2qs_ctx("Created at","addon");
-		QString szCreatedOn = __tr2qs_ctx("Created with","Addon");
+		QString szCreatedWith = __tr2qs_ctx("Created with","addon");
 
 		r.getStringInfoField("Name",szPackageName);
 		r.getStringInfoField("Version",szPackageVersion);
@@ -104,62 +122,26 @@ namespace KviAddonFunctions
 		r.getStringInfoField("Description",szPackageDescription);
 		r.getStringInfoField("Application",szPackageApplication);
 		r.getStringInfoField("Date",szPackageDate);
+		r.getStringInfoField("AddonPackVersion",szAddonPackVersion);
 
 		QString szWarnings;
-		QString szDetails = "<html><body bgcolor=\"#ffffff\">";
 		QString szTmp;
 
 		bool bValid = true;
 
-		QString szAddonName;
-		QString szAddonVersion;
-		QString szAddonDescription;
-		QString szAddonDate;
-		QString szAddonAuthor;
-		QString szAddonEngineVersion;
-		QString szAddonApplication;
-
-		r.getStringInfoField("AddonName",szAddonName);
-		r.getStringInfoField("AddonVersion",szAddonVersion);
-		r.getStringInfoField("AddonApplication",szAddonApplication);
-		r.getStringInfoField("AddonDescription",szAddonDescription);
-		r.getStringInfoField("AddonDate",szAddonDate);
-		r.getStringInfoField("AddonAuthor",szAddonAuthor);
-		r.getStringInfoField("AddonAddonEngineVersion",szAddonEngineVersion);
-
-		if(szAddonName.isEmpty() || szAddonVersion.isEmpty() || szAddonEngineVersion.isEmpty())
-			bValid = false;
-		if(KviMiscUtils::compareVersions(szAddonEngineVersion,KVI_CURRENT_ADDONS_ENGINE_VERSION) < 0)
+		if(szPackageName.isEmpty() || szPackageVersion.isEmpty() || szAddonPackVersion.isEmpty())
 			bValid = false;
 
-		QString szDetailsBuffer;
+		if(KviMiscUtils::compareVersions(szAddonPackVersion,KVI_CURRENT_ADDONS_ENGINE_VERSION) < 0)
+			bValid = false;
 
-		getAddonHtmlDescription(
-			szDetailsBuffer,
-			szAddonName,
-			szAddonVersion,
-			szAddonDescription,
-			szAddonApplication,
-			szAddonAuthor,
-			szAddonDate,
-			szAddonEngineVersion
-		);
-
-		szDetails += szDetailsBuffer;
 
 		if(!bValid)
 		{
-			szDetails += "<p><center><font color=\"#ff0000\"><b>";
-			szDetails += __tr2qs_ctx("Warning: The addon might be incompatible with this version of KVIrc","addon");
-			szDetails += "</b></font></center></p>";
+			szWarnings += "<p><center><font color=\"#ff0000\"><b>";
+			szWarnings += __tr2qs_ctx("Warning: The addon might be incompatible with this version of KVIrc","addon");
+			szWarnings += "</b></font></center></p>";
 		}
-
-		szDetails += "<br><p><center><a href=\"addon_dialog_main\">";
-		szDetails +=  __tr2qs_ctx("Go Back to Package Data","addon");
-		szDetails += "</a></center></p>";
-		szDetails += "</body></html>";
-
-		QString szShowDetails = __tr2qs_ctx("Show Details","addon");
 
 		KviQString::sprintf(hd.szHtmlText,
 			"<html bgcolor=\"#ffffff\">" \
@@ -184,9 +166,6 @@ namespace KviAddonFunctions
 					"</center></p>" \
 					"%Q" \
 					"<br>" \
-					"<p><center>" \
-						"<a href=\"addon_dialog_details\">%Q</a>" \
-					"</center></p>" \
 				"</body>" \
 			"</html>",
 			&szPackageName,
@@ -196,13 +175,12 @@ namespace KviAddonFunctions
 			&szPackageAuthor,
 			&szCreatedAt,
 			&szPackageDate,
-			&szCreatedOn,
+			&szCreatedWith,
 			&szPackageApplication,
-			&szWarnings,
-			&szShowDetails
+			&szWarnings
 		);
 
-		hd.addHtmlResource("addon_dialog_details",szDetails);
+		hd.addImageResource("addon_dialog_pack_image",pix);
 		hd.addHtmlResource("addon_dialog_main",hd.szHtmlText);
 
 		QString beginCenter = "<center>";
@@ -253,7 +231,7 @@ namespace KviAddonFunctions
 		// Now we have all stuff in ~/.config/KVIrc/tmp/$rand
 		if(!
 				KviKvsScript::run(
-						QString::fromAscii("parse \"%1\\install.kvs\"")
+						QString::fromAscii("parse \"%1/install.kvs\"")
 								.arg(
 										szUnpackPath
 											.replace("\\","\\\\")
@@ -276,55 +254,6 @@ namespace KviAddonFunctions
 		}
 
 		return true;
-	}
-
-	void getAddonHtmlDescription(
-		QString &szBuffer,
-		const QString &szAddonName,
-		const QString &szAddonVersion,
-		const QString &szAddonDescription,
-		const QString &szAddonApplication,
-		const QString &szAddonAuthor,
-		const QString &szAddonDate,
-		const QString &szAddonAddonEngineVersion
-	)
-	{
-		QString szAuthor = __tr2qs_ctx("Author","addon");
-		QString szCreatedAt = __tr2qs_ctx("Created at","addon");
-		QString szCreatedOn = __tr2qs_ctx("Created with","addon");
-		QString szAddonEngineVersion = __tr2qs_ctx("Addon Engine Version","addon");
-		QString szSubdirectory = __tr2qs_ctx("Subdirectory","addon");
-
-		KviQString::sprintf(
-			szBuffer,
-			"<p><center>" \
-				"<h2>%Q %Q</h2>" \
-			"</center></p>" \
-			"<p><center>" \
-				"<i>%Q</i>" \
-			"</center></p>" \
-			"<p><center>" \
-				"%Q: <b>%Q</b><br>" \
-				"%Q: <b>%Q</b><br>" \
-			"</center></p>" \
-			"<p><center>" \
-				"<font color=\"#808080\">" \
-					"%Q: %Q<br>" \
-					"%Q: %Q<br>" \
-				"</font>" \
-			"</center></p>",
-			&szAddonName,
-			&szAddonVersion,
-			&szAddonDescription,
-			&szAuthor,
-			&szAddonAuthor,
-			&szCreatedAt,
-			&szAddonDate,
-			&szCreatedOn,
-			&szAddonApplication,
-			&szAddonAddonEngineVersion,
-			&szAddonAddonEngineVersion
-		);
 	}
 
 	QString createRandomDir()

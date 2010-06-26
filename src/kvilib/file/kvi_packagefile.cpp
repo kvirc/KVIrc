@@ -687,7 +687,8 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 {
 	// Flags
 	kvi_u32_t uFlags;
-	if(!pFile->load(uFlags))return readError();
+	if(!pFile->load(uFlags))
+		return readError();
 
 #ifndef COMPILE_ZLIB_SUPPORT
 	if(uFlags & KVI_PACKAGE_DATAFIELD_FLAG_FILE_DEFLATE)
@@ -699,7 +700,8 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 	// Path
 	QString szPath;
-	if(!pFile->load(szPath))return readError();
+	if(!pFile->load(szPath))
+		return readError();
 
 	QString szFileName = szUnpackPath;
 	KviQString::ensureLastCharIs(szFileName,QChar(KVI_PATH_SEPARATOR_CHAR));
@@ -912,7 +914,8 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 bool KviPackageReader::getStringInfoField(const QString &szName,QString &szBuffer)
 {
 	QString * pVal = m_pStringInfoFields->find(szName);
-	if(!pVal)return false;
+	if(!pVal)
+		return false;
 	szBuffer = *pVal;
 	return true;
 }
@@ -941,7 +944,6 @@ bool KviPackageReader::unpackInternal(const QString &szLocalFileName,const QStri
 		showProgressDialog(__tr2qs("Reading package..."),size);
 		updateProgress(0,__tr2qs("Reading package header"));
 	}
-
 
 	if(!readHeaderInternal(&f,szLocalFileName))
 		return false;

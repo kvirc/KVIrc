@@ -41,6 +41,7 @@
 #include <QDir>
 #include <QDirIterator>
 #include <QDateTime>
+#include <QBuffer>
 
 
 KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
@@ -146,6 +147,9 @@ bool KviPackAddonDialog::checkDirTree(QString * pszError, QString * pszWarning)
 		return false;
 	}
 
+#if 0
+	// These dirs are optional
+	
 	QDir locale(m_szDirPath + "/locale");
 	if(!locale.exists())
 	{
@@ -180,20 +184,23 @@ bool KviPackAddonDialog::checkDirTree(QString * pszError, QString * pszWarning)
 		*pszWarning += __tr2qs_ctx("The help directory (help) does not exist.","addon");
 		*pszWarning += "\n";
 	}
+#endif
 
-	QFileInfo init(m_szDirPath + "/init.kvs");
+	QFileInfo init(m_szDirPath + "/install.kvs");
 	if(!init.exists())
 	{
-		*pszError = __tr2qs_ctx("The initialization script (init.kvs) does not exist.","addon");
+		*pszError = __tr2qs_ctx("The initialization script (install.kvs) does not exist.","addon");
 		return false;
 	}
 
 	return true;
 }
 
+#if 0
 bool KviPackAddonDialog::createInstaller(QString * pszError)
 {
-	if(pszError) *pszError = "";
+	if(pszError)
+		*pszError = "";
 
 	// Start creating install.kvs: header
 	QString szTmp;
@@ -226,23 +233,20 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
 
 	// install.kvs: copy files
 	szTmp += "# Copy files in each subdirectory\n# the pics\n";
-	szTmp += QString("if (!$file.exists($file.localdir(\"pics/%1\"))) file.mkdir $file.localdir(\"pics/%1\")\n\n").arg(m_szName);
-	szTmp += QString("%installer->$copyFiles(\"%mypath/pics/%1\",\"*.png\",$file.localdir(\"pics/%1\"))\n\n").arg(m_szName);
-	szTmp += "# the translations\n";
-	szTmp += QString("if (!$file.exists($file.localdir(\"locale/%1\"))) file.mkdir $file.localdir(\"locale/%1\")\n\n").arg(m_szName);
 
-	szTmp += "%installer->$copyFiles(\"%mypath/locale/%1\",\"*.mo\",$file.localdir(\"locale/%1\"))\n\n";
+	szTmp += QString("%installer->$copyFiles(\"%mypath/pics\",\"*.png\",$file.localdir(\"pics\"))\n\n");
+	szTmp += "# the translations\n";
+	szTmp += "%installer->$copyFiles(\"%mypath/locale\",\"*.mo\",$file.localdir(\"locale\"))\n\n";
 
 	szTmp += "# the documentation\n";
-	szTmp += QString("if (!$file.exists($file.localdir(\"help/%1\"))) file.mkdir $file.localdir(\"help/en/%1\")\n\n").arg(m_szName);
-	szTmp += QString("%installer->$copyFiles(\"%mypath/help/en/%1/\",\"*.html\",$file.localdir(\"help/en/%1\"))\n\n").arg(m_szName);
+	szTmp += QString("%installer->$copyFiles(\"%mypath/help/\",\"*.html\",$file.localdir(\"help/\"))\n\n");
 
 	// install.kvs: generate uninstall alias
 	szTmp += "# Generate the uninstall alias\n";
 	szTmp += QString("%installer->$generateUninstallAlias(\"%1::uninstallfiles\")\n\n") \
 		.arg(m_szName);
 
-	// install.kvs: kill the installer class
+	// kviinstall.kvs: kill the installer class
 	szTmp += "# Kill the installer helper\n";
 	szTmp += "delete %installer\n\n";
 
@@ -293,6 +297,33 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
 
 	return true;
 }
+#endif
+
+bool KviPackAddonDialog::addSubdirectoryIfExists(
+		KviPackageWriter &pw,
+		const QString &szAddonPath,
+		const QString &szSubdir,
+		const QString &szTargetSubdir
+	)
+{
+	QString szFullPath = QString::fromAscii("%1%2%3")
+		.arg(szAddonPath).arg(QChar(KVI_PATH_SEPARATOR_CHAR)).arg(szSubdir);
+
+	QDir dir(szFullPath);
+	if(!dir.exists())
+		return true;
+
+	if(!pw.addDirectory(szFullPath,szTargetSubdir))
+	{
+		QString szTmp = __tr2qs_ctx("Packaging failed","addon");
+		szTmp += ": ";
+		szTmp += pw.lastError();
+		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+		return false;
+	}
+
+	return true;
+}
 
 bool KviPackAddonDialog::packAddon()
 {
@@ -302,7 +333,7 @@ bool KviPackAddonDialog::packAddon()
 	m_szVersion = field("packageVersion").toString();
 	m_szDescription = field("packageDescription").toString();
 	m_szMinVersion = field("packageMinVersion").toString();
-	m_szIcon = field("packageIcon").toString().section("/",-1);
+	m_szIcon = field("packageIcon").toString();
 	m_szDirPath = field("packageDirPath").toString();
 	m_szSavePath = field("packageSavePath").toString();
 
@@ -331,9 +362,11 @@ bool KviPackAddonDialog::packAddon()
 	m_pPackAddonSummaryFilesWidget->setPath(m_szDirPath);
 	if(m_pPackAddonSummaryFilesWidget->exec() == QDialog::Rejected)
 	{
+		delete m_pPackAddonSummaryFilesWidget;
 		return false;
 	}
 
+#if 0
 	// Create the installer file
 	if(!createInstaller(&szError))
 	{
@@ -343,10 +376,10 @@ bool KviPackAddonDialog::packAddon()
 		);
 		return false;
 	}
+#endif
 
-	// We need mandatory UNIX like path separators
-	m_szDirPath.replace("\\","/");
-	m_szSavePath.replace("\\","/");
+	//m_szDirPath.replace("\\","/");
+	//m_szSavePath.replace("\\","/");
 
 	QString szTmp;
 	szTmp = QDateTime::currentDateTime().toString();
@@ -361,68 +394,34 @@ bool KviPackAddonDialog::packAddon()
 	pw.addInfoField("Date",szTmp);
 	pw.addInfoField("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
 
+	QPixmap pix(m_szIcon);
+	if(!pix.isNull())
+	{
+		QByteArray * pba = new QByteArray();
+		QBuffer bufferz(pba,0);
+
+		bufferz.open(QIODevice::WriteOnly);
+		pix.save(&bufferz,"PNG");
+		bufferz.close();
+		pw.addInfoField("Icon",pba);
+	}
+
 	// Add source dir
-	if(!pw.addDirectory(m_szDirPath + "/src","src/"))
-	{
-		szTmp = __tr2qs_ctx("Packaging failed","addon");
-		szTmp += ": ";
-		szTmp += pw.lastError();
-		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	if(!addSubdirectoryIfExists(pw,m_szDirPath,"src","src/"))
 		return false;
-	}
-
-	// Add config dir
-	if(!pw.addDirectory(m_szDirPath + "/config","config/scripts/" + m_szName))
-	{
-		szTmp = __tr2qs_ctx("Packaging failed","addon");
-		szTmp += ": ";
-		szTmp += pw.lastError();
-		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	if(!addSubdirectoryIfExists(pw,m_szDirPath,"config","config/"))
 		return false;
-	}
-
-	// Add image dir
-	if(!pw.addDirectory(m_szDirPath + "/pics","pics/" + m_szName))
-	{
-		szTmp = __tr2qs_ctx("Packaging failed","addon");
-		szTmp += ": ";
-		szTmp += pw.lastError();
-		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	if(!addSubdirectoryIfExists(pw,m_szDirPath,"pics","pics/"))
 		return false;
-	}
-	
-	// Add sound dir
-	if(!pw.addDirectory(m_szDirPath + "/sounds","sounds/" + m_szName))
-	{
-		szTmp = __tr2qs_ctx("Packaging failed","addon");
-		szTmp += ": ";
-		szTmp += pw.lastError();
-		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	if(!addSubdirectoryIfExists(pw,m_szDirPath,"sounds","sounds/"))
 		return false;
-	}
-
-	// Add localization dir
-	if(!pw.addDirectory(m_szDirPath + "/locale","locale/" + m_szName))
-	{
-		szTmp = __tr2qs_ctx("Packaging failed","addon");
-		szTmp += ": ";
-		szTmp += pw.lastError();
-		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	if(!addSubdirectoryIfExists(pw,m_szDirPath,"locale","locale/"))
 		return false;
-	}
-
-	// Add help dir
-	if(!pw.addDirectory(m_szDirPath + "/help","help/" + m_szName))
-	{
-		szTmp = __tr2qs_ctx("Packaging failed","addon");
-		szTmp += ": ";
-		szTmp += pw.lastError();
-		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	if(!addSubdirectoryIfExists(pw,m_szDirPath,"help","help/"))
 		return false;
-	}
 
 	// Add initialization script
-	if(!pw.addFile(m_szDirPath + "/init.kvs","init.kvs"))
+	if(!pw.addFile(QString("%1%2%3").arg(m_szDirPath).arg(QChar(KVI_PATH_SEPARATOR_CHAR)).arg("install.kvs"),"install.kvs"))
 	{
 		szTmp = __tr2qs_ctx("Packaging failed","addon");
 		szTmp += ": ";
@@ -430,9 +429,10 @@ bool KviPackAddonDialog::packAddon()
 		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return false;
 	}
-	
+
+#if 0
 	// Add installer script
-	if(!pw.addFile(m_szDirPath + "/install.kvs","install.kvs"))
+	if(!pw.addFile(QString("%1%2%3").arg(m_szDirPath).arg(QChar(KVI_PATH_SEPARATOR_CHAR)).arg("install.kvs"),"install.kvs"))
 	{
 		szTmp = __tr2qs_ctx("Packaging failed","addon");
 		szTmp += ": ";
@@ -440,6 +440,7 @@ bool KviPackAddonDialog::packAddon()
 		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return false;
 	}
+#endif
 
 	// Create the addon package
 	if(m_szSavePath.isEmpty())
@@ -461,9 +462,6 @@ bool KviPackAddonDialog::packAddon()
 		return false;
 	}
 
-	// Debug purpose
-        //KviPackageReader pr;
-        //pr.unpack("/home/ale/Test-2.0.3.kva","/home/ale/unpacked_test_kva");
 
 	QMessageBox::information(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs("Package saved successfully in ") + m_szSavePath,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
