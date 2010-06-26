@@ -140,6 +140,7 @@ bool KviPackAddonDialog::checkDirTree(QString * pszError, QString * pszWarning)
 		return false;
 	}
 
+#if 0
 	QDir source(m_szDirPath + "/src");
 	if(!source.exists())
 	{
@@ -147,7 +148,6 @@ bool KviPackAddonDialog::checkDirTree(QString * pszError, QString * pszWarning)
 		return false;
 	}
 
-#if 0
 	// These dirs are optional
 	
 	QDir locale(m_szDirPath + "/locale");
