@@ -134,10 +134,14 @@ KVSO_CLASS_FUNCTION(dockwindow,setAllowedDockAreas)
 		KVSO_PARAMETER("docks",KVS_PT_STRING,0,szFlags)
 	KVSO_PARAMETERS_END(c)
 	Qt::DockWidgetAreas fAreas = Qt::NoDockWidgetArea;
-	if(szFlags.indexOf('t',Qt::CaseInsensitive))fAreas |= Qt::TopDockWidgetArea;
-	if(szFlags.indexOf('l',Qt::CaseInsensitive))fAreas |= Qt::LeftDockWidgetArea;
-	if(szFlags.indexOf('r',Qt::CaseInsensitive))fAreas |= Qt::RightDockWidgetArea;
-	if(szFlags.indexOf('b',Qt::CaseInsensitive))fAreas |= Qt::BottomDockWidgetArea;
+	if(szFlags.indexOf('t',Qt::CaseInsensitive) >= 0)
+		fAreas |= Qt::TopDockWidgetArea;
+	if(szFlags.indexOf('l',Qt::CaseInsensitive) >= 0)f
+		Areas |= Qt::LeftDockWidgetArea;
+	if(szFlags.indexOf('r',Qt::CaseInsensitive) >= 0)
+		fAreas |= Qt::RightDockWidgetArea;
+	if(szFlags.indexOf('b',Qt::CaseInsensitive) >= 0)
+		fAreas |= Qt::BottomDockWidgetArea;
 	_pDockWindow->setAllowedAreas(fAreas);
 	QDockWidget::DockWidgetFeatures fFeatures = _pDockWindow->features();
 	if(szFlags.indexOf('f',Qt::CaseInsensitive))
