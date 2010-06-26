@@ -136,8 +136,8 @@ KVSO_CLASS_FUNCTION(dockwindow,setAllowedDockAreas)
 	Qt::DockWidgetAreas fAreas = Qt::NoDockWidgetArea;
 	if(szFlags.indexOf('t',Qt::CaseInsensitive) >= 0)
 		fAreas |= Qt::TopDockWidgetArea;
-	if(szFlags.indexOf('l',Qt::CaseInsensitive) >= 0)f
-		Areas |= Qt::LeftDockWidgetArea;
+	if(szFlags.indexOf('l',Qt::CaseInsensitive) >= 0)
+		fAreas |= Qt::LeftDockWidgetArea;
 	if(szFlags.indexOf('r',Qt::CaseInsensitive) >= 0)
 		fAreas |= Qt::RightDockWidgetArea;
 	if(szFlags.indexOf('b',Qt::CaseInsensitive) >= 0)
