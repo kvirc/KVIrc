@@ -614,8 +614,27 @@ void KviScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 
 void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 {
-	if(szText.isEmpty()) return;
+	if(szText.isEmpty())
+		return;
+
 	int iIndexStart=0;
+
+	if(previousBlockState() == 1)
+	{
+		// in comment
+		int iCommentEnd = szText.indexOf(commentEndExpression);
+		if(iCommentEnd < 0)
+		{
+			// not found: comment until the end of the block
+			setCurrentBlockState(1);
+			setFormat(iIndexStart,szText.length(),commentFormat);
+			return;
+		}
+		// end of comment found
+		setFormat(iIndexStart,iCommentEnd - iIndexStart,commentFormat);
+		setCurrentBlockState(0);
+		iIndexStart = iCommentEnd;
+	}
 
 	// skip tabulations and spaces
 	while(iIndexStart < szText.size())
@@ -627,7 +646,10 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 			break;
 		}
 	}
-	if (iIndexStart == szText.size()) return;
+
+	if (iIndexStart == szText.size())
+		return;
+
 	// check 'commands'
 	int iCommandStart=iIndexStart;
 	if (szText.at(iIndexStart).unicode()!='$' && szText.at(iIndexStart).unicode()!='{' && szText.at(iIndexStart).unicode()!='}' && szText.at(iIndexStart).unicode()!='%')
@@ -659,7 +681,8 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 	setCurrentBlockState(0);
 
 	int startIndex = 0;
-	if (previousBlockState() != 1) startIndex = szText.indexOf(commentStartExpression);
+	if (previousBlockState() != 1)
+		startIndex = szText.indexOf(commentStartExpression);
 
 	while (startIndex >= 0)
 	{
