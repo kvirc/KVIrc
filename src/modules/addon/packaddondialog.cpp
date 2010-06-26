@@ -160,7 +160,7 @@ bool KviPackAddonDialog::checkDirTree(QString * pszError, QString * pszWarning)
 	QDir sound(m_szDirPath + "/sound");
 	if(!sound.exists())
 	{
-		*pszWarning += __tr2qs_ctx("The sounds directory (sound) does not exist.","addon");
+		*pszWarning += __tr2qs_ctx("The audio directory (sound) does not exist.","addon");
 		*pszWarning += "\n";
 	}
 
@@ -413,7 +413,9 @@ bool KviPackAddonDialog::packAddon()
 		return false;
 	if(!addSubdirectoryIfExists(pw,m_szDirPath,"pics","pics/"))
 		return false;
-	if(!addSubdirectoryIfExists(pw,m_szDirPath,"sounds","sounds/"))
+	if(!addSubdirectoryIfExists(pw,m_szDirPath,"audio","audio/"))
+		return false;
+	if(!addSubdirectoryIfExists(pw,m_szDirPath,"sounds","audio/"))
 		return false;
 	if(!addSubdirectoryIfExists(pw,m_szDirPath,"locale","locale/"))
 		return false;

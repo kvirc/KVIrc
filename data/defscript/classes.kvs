@@ -1,5 +1,8 @@
 # Default classes file
 
+# Compatibility only: do not use.
+# Use /addon.installfiles instead.
+
 # A helper class for installing files and generating an uninstallation alias on the fly
 class(installer,object)
 {

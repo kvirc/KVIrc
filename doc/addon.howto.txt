@@ -49,7 +49,7 @@ The uncompressed tree is substantially the same directory tree that you have
 to create in order to package your addon and it usually looks like this:
 
     name-version/
-     +- init.kvs
+     +- install.kvs
      +- src/
      |    +- source1.kvs
      |    +- source2.kvs
@@ -62,7 +62,7 @@ to create in order to package your addon and it usually looks like this:
      |    +- config1.kvc
      |    +- config2.kvc
      |    \- ...
-     +- sound/
+     +- audio/
      |    +- audio1.wav
      |    +- audio2.wav
      |    \- ...
@@ -86,12 +86,30 @@ The toplevel directory should be named with your addon name and version. Use no 
 in the directory entries: this will make the things simplier for people that want to
 use your addon.
 
-The init.kvs is the mandatory initialization script which must contain all the
-procedures required to register your addon inside the KVIrc subsystems.
+The install.kvs is the mandatory initialization script which must contain all the
+procedures required to register your addon inside the KVIrc subsystems and install
+all your addon data files.
 
 For example:
 
     ...
+    addon.register("MyAddon", \
+                    "1.0.0", \
+                    "My First Addon", \
+                    "An addon that is really cool but does
+                    simply nothing", \
+                    "4.0.0", \
+                    "MyAddon_32.png" \
+         )
+    {
+    }
+
+    addon.installfiles "MyAddon" "pics" "pics/*.png"
+    addon.installfiles "MyAddon" "locale" "locale/*.mo"
+    addon.installfiles "MyAddon" "config" "config/*.kvc"
+    addon.installfiles "MyAddon" "audio" "audio/*.wav"
+    addon.installfiles "MyAddon" "help/en" "help/en/*.html"
+    addon.installfiles "MyAddon" "help/it" "help/it/*.html"
 
     # Register classes
     MyAddon::classes::register
@@ -115,32 +133,15 @@ For example:
     option boolAutoAcceptDccSend 1
     option boolShowMinimizedDebugWindow 1
 
+    # Invoke sources
+    include "src/mystuff.kvs"
     ...
 
 
-The init.kvs is the only really mandatory piece of an addon. Most real-world addons,
+The install.kvs is the only really mandatory piece of an addon. Most real-world addons,
 however, will be split over several kvs source files. Canonically these
-source files are placed in the src/ subdirectory and the init.kvs invokes
-them in the right order. More about the init.kvs script in section 4.
-
-Source file names should contain the namespace of the addon, the optional
-subnamespace and the name of the feature, like $addonNS_$subNS_[$subNS_[...]]$name.kvs.
-
-Eg.:
-
-    # A class which handles a database
-    src/MyAddon_classes_database.kvs
-    
-    # A class which handles the options of our addon in a GUI
-    src/MyAddon_classes_gui_options.kvs
-    
-    # A script containing some logging functions
-    src/MyAddon_functions_logging.kvs
-
-
-The init.kvs script must invoke (by using /parse or /include) these files
-in the correct order.
-
+source files are placed in the src/ subdirectory and the install.kvs must invoke them
+them in the right order. More about the install.kvs script in section 4.
 
 If your addon is translated in different languages then the "locale" directory should
 contain the *.mo catalogue files for your tranlations. The localization process of a
@@ -150,7 +151,7 @@ by your addon name.
 If your addon needs an initial configuration then your config files should be placed
 in the "config" subdirectory and shoud have *.kvs as extension.
 
-The "pics" and "sound" (if relevant) directories should contain your multimedia files.
+The "pics" and "audio" (if relevant) directories should contain your multimedia files.
 It's a good idea to have your pics file in PNG format and sound files in WAV format.
 
 The "help" directory should contain subdirectories for each language your help files
@@ -177,7 +178,7 @@ The smallest addon that you can write is the one that does nothing.
 
 
 The code above does nothing but registers the "MyAddon" addon.
-You actually *NEED* this callback code!
+
 
 The first parameter is the internal addon id which can be used to identify your addon
 inside KVIrc. The id must be unique: two addons that share the same name cannot be
