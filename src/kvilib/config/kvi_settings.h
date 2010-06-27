@@ -141,7 +141,7 @@
 	#define KVI_VERSION_BRANCH KVIRC_VERSION_BRANCH
 #endif
 
-#define KVI_RELEASE_NAME "Insomnia"
+#define KVI_RELEASE_NAME "Equilibrium"
 
 
 // We want _GNU_SOURCE features
