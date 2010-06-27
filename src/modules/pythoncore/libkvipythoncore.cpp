@@ -35,6 +35,7 @@
 #ifdef COMPILE_PYTHON_SUPPORT
 	#include "kvircmodule.h"
 	#include "pythoncoreinterface.h"
+
 	#include <Python.h>
 
 KviKvsRunTimeContext * g_pCurrentKvsContext = 0;

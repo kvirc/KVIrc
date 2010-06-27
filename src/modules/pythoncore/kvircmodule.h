@@ -51,16 +51,18 @@ extern "C" {
 
 	#ifdef KVIRC_MODULE
 		// This section is used when compiling kvircmodule.cpp
-		static PyObject * PyKVIrc_echo(PyObject * pSelf, PyObject * pArgs);
-		static PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs);
-		static PyObject * PyKVIrc_warning(PyObject * pSelf, PyObject * pArgs);
-		static PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs);
-		static PyObject * PyKVIrc_setLocal(PyObject * pSelf, PyObject * pArgs);
-		static PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs);
-		static PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs);
-		static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs);
-		static PyObject * PyKVIrc_internalWarning(PyObject * pSelf, PyObject * pArgs);
-		static PyObject * PyKVIrc_error(PyObject * pSelf, PyObject * pArgs);
+		#if 0
+		PyObject * PyKVIrc_echo(PyObject * pSelf, PyObject * pArgs);
+		PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs);
+		PyObject * PyKVIrc_warning(PyObject * pSelf, PyObject * pArgs);
+		PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs);
+		PyObject * PyKVIrc_setLocal(PyObject * pSelf, PyObject * pArgs);
+		PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs);
+		PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs);
+		PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs);
+		PyObject * PyKVIrc_internalWarning(PyObject * pSelf, PyObject * pArgs);
+		PyObject * PyKVIrc_error(PyObject * pSelf, PyObject * pArgs);
+		#endif
 	#else
 		// This section is used in modules that use kvircmodule's API
 		static void ** PyKVIrc_API;
