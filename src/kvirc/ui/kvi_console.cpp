@@ -943,11 +943,10 @@ void KviConsole::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const
 			e->setAvatar(avatar);
 			avatarChangedUpdateWindows(nick,QString());
 			return;
-		} else {
-			// no cached image on disk.. will need to requery it anyway
-			// remove from cache
-			KviAvatarCache::instance()->remove(KviIrcMask(nick,user,host),currentNetworkName().toUtf8().data());
 		}
+		// no cached image on disk.. will need to requery it anyway
+		// remove from cache
+		KviAvatarCache::instance()->remove(KviIrcMask(nick,user,host),currentNetworkName().toUtf8().data());
 	}
 
 	// registered ?

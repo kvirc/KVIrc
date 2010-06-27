@@ -817,13 +817,15 @@ KviAvatar * KviIconManager::getAvatar(const QString &szLocalPath,const QString &
 	if(szLocalPath.isEmpty())
 	{
 		//both path and name empty => fail
-		if(szName.isEmpty())return 0;
+		if(szName.isEmpty())
+			return 0;
 		if(KviQString::equalCIN("http://",szName,7))
 		{
 			// it's an url, cache it locally
 			szN = szName;
 			urlToCachedFileName(szN);
 			g_pApp->getLocalKvircDirectory(szP,KviApp::Avatars,szN);
+			szN = szName; // keep the remote url as name
 		} else {
 			//locally cached avatar, called only by its szName
 			szN = KviFileUtils::extractFileName(szName);
@@ -831,7 +833,8 @@ KviAvatar * KviIconManager::getAvatar(const QString &szLocalPath,const QString &
 		}
 	} else if(szName.isEmpty())
 	{
-		if(szLocalPath.isEmpty())return 0;
+		if(szLocalPath.isEmpty())
+			return 0;
 		szP = szLocalPath;
 		szN = KviFileUtils::extractFileName(szLocalPath);
 	} else {

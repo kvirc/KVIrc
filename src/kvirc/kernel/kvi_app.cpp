@@ -941,11 +941,14 @@ KviPendingAvatarChange * KviApp::findPendingAvatarChange(KviConsole * pConsole,c
 
 void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,const QString &szLocalFileName,const QString &szNick,const QString &szError,bool bQuiet)
 {
-
 	KviPendingAvatarChange * p;
 
-	if(m_pPendingAvatarChanges)p = findPendingAvatarChange(0,szNick,szRemoteUrl);
-	else p = 0;
+	if(m_pPendingAvatarChanges)
+	{
+		p = findPendingAvatarChange(0,szNick,szRemoteUrl);
+	} else {
+		p = 0;
+	}
 
 	if(!p)
 	{

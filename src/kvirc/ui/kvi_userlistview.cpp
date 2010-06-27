@@ -815,50 +815,49 @@ void KviUserListView::triggerUpdate()
 bool KviUserListView::avatarChanged(const QString & szNick)
 {
 	KviUserListEntry * pUserEntry = m_pEntryDict->find(szNick);
-	if(pUserEntry)
-	{
-		int iOldHeight = pUserEntry->m_iHeight;
-		m_iTotalHeight -= pUserEntry->m_iHeight;
-		pUserEntry->updateAvatarData();
-		pUserEntry->recalcSize();
-		m_iTotalHeight += pUserEntry->m_iHeight;
-		// if this was "over" the top item , we must adjust the scrollbar value
-		// otherwise scroll everything down
-		KviUserListEntry * pEntry = m_pHeadItem;
-		bool bGotTopItem = false;
-		while(pEntry != pUserEntry)
-		{
-			if(pEntry == m_pTopItem)
-			{
-				bGotTopItem = true;
-				pEntry = pUserEntry;
-			} else pEntry = pEntry->m_pNext;
-		}
+	if(!pUserEntry)
+		return false;
 
-		if(!bGotTopItem && (m_pTopItem != pUserEntry))
+	int iOldHeight = pUserEntry->m_iHeight;
+	m_iTotalHeight -= pUserEntry->m_iHeight;
+	pUserEntry->updateAvatarData();
+	pUserEntry->recalcSize();
+	m_iTotalHeight += pUserEntry->m_iHeight;
+	// if this was "over" the top item , we must adjust the scrollbar value
+	// otherwise scroll everything down
+	KviUserListEntry * pEntry = m_pHeadItem;
+	bool bGotTopItem = false;
+	while(pEntry != pUserEntry)
+	{
+		if(pEntry == m_pTopItem)
 		{
-			// we're "over" the top item , so over the
-			// upper side of the view...adjust the scroll bar value
-			int iHeightDiff = pUserEntry->m_iHeight - iOldHeight;
-			m_pViewArea->m_iLastScrollBarVal += iHeightDiff;
-			m_pViewArea->m_bIgnoreScrollBar = true;
-//			m_pViewArea->m_pScrollBar->setRange(0,m_iTotalHeight);
-			updateScrollBarRange();
-			m_pViewArea->m_pScrollBar->setValue(m_pViewArea->m_iLastScrollBarVal);
-			m_pViewArea->m_bIgnoreScrollBar = false;
-		} else {
-			// the item may be visible!
-			// the scroll bar should take care of the case
-			// in that the current value runs out of the allowed
-			// range.... it should set the value to a good one
-			// and emit the signal
-			updateScrollBarRange();
-//			m_pViewArea->m_pScrollBar->setRange(0,m_iTotalHeight);
-			m_pViewArea->update();
-		}
-		return true;
+			bGotTopItem = true;
+			pEntry = pUserEntry;
+		} else pEntry = pEntry->m_pNext;
 	}
-	return false;
+
+	if(!bGotTopItem && (m_pTopItem != pUserEntry))
+	{
+		// we're "over" the top item , so over the
+		// upper side of the view...adjust the scroll bar value
+		int iHeightDiff = pUserEntry->m_iHeight - iOldHeight;
+		m_pViewArea->m_iLastScrollBarVal += iHeightDiff;
+		m_pViewArea->m_bIgnoreScrollBar = true;
+//			m_pViewArea->m_pScrollBar->setRange(0,m_iTotalHeight);
+		updateScrollBarRange();
+		m_pViewArea->m_pScrollBar->setValue(m_pViewArea->m_iLastScrollBarVal);
+		m_pViewArea->m_bIgnoreScrollBar = false;
+	} else {
+		// the item may be visible!
+		// the scroll bar should take care of the case
+		// in that the current value runs out of the allowed
+		// range.... it should set the value to a good one
+		// and emit the signal
+		updateScrollBarRange();
+//			m_pViewArea->m_pScrollBar->setRange(0,m_iTotalHeight);
+		m_pViewArea->update();
+	}
+	return true;
 }
 
 bool KviUserListView::userActionVerifyMask(const QString & szNick, const QString & szUser, const QString & szHost, int iActionTemperature, QString & szOldUser, QString & szOldHost)
