@@ -99,6 +99,9 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 	szText += __tr2qs_ctx("Hit the \"Next\" button to begin.","addon");
 	pLabel->setText(szText);
 	pLayout->addWidget(pLabel);
+	
+	pPage->setMinimumWidth(350);
+	
 	addPage(pPage);
 
 	// Packager information
@@ -116,6 +119,7 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 	// Summary info
 	m_pPackAddonSummaryInfoWidget = new KviPackAddonSummaryInfoWidget(this);
 	addPage(m_pPackAddonSummaryInfoWidget);
+
 }
 
 KviPackAddonDialog::~KviPackAddonDialog()
@@ -124,7 +128,8 @@ KviPackAddonDialog::~KviPackAddonDialog()
 
 void KviPackAddonDialog::accept()
 {
-	if(!packAddon()) return;
+	if(!packAddon())
+		return;
 	QWizard::accept();
 }
 
@@ -139,52 +144,6 @@ bool KviPackAddonDialog::checkDirTree(QString * pszError, QString * pszWarning)
 		*pszError = __tr2qs_ctx("The selected directory does not exist.","addon");
 		return false;
 	}
-
-#if 0
-	QDir source(m_szDirPath + "/src");
-	if(!source.exists())
-	{
-		*pszError = __tr2qs_ctx("The sources directory (src) does not exist.","addon");
-		return false;
-	}
-
-	// These dirs are optional
-	
-	QDir locale(m_szDirPath + "/locale");
-	if(!locale.exists())
-	{
-		*pszWarning += __tr2qs_ctx("The translations directory (locale) does not exist.","addon");
-		*pszWarning += "\n";
-	}
-
-	QDir sound(m_szDirPath + "/sound");
-	if(!sound.exists())
-	{
-		*pszWarning += __tr2qs_ctx("The audio directory (sound) does not exist.","addon");
-		*pszWarning += "\n";
-	}
-
-	QDir pics(m_szDirPath + "/pics");
-	if(!pics.exists())
-	{
-		*pszWarning += __tr2qs_ctx("The pictures directory (pics) does not exist.","addon");
-		*pszWarning += "\n";
-	}
-
-	QDir config(m_szDirPath + "/config");
-	if(!config.exists())
-	{
-		*pszWarning += __tr2qs_ctx("The configurations directory (config) does not exist.","addon");
-		*pszWarning += "\n";
-	}
-
-	QDir help(m_szDirPath + "/help");
-	if(!help.exists())
-	{
-		*pszWarning += __tr2qs_ctx("The help directory (help) does not exist.","addon");
-		*pszWarning += "\n";
-	}
-#endif
 
 	QFileInfo init(m_szDirPath + "/install.kvs");
 	if(!init.exists())
@@ -299,31 +258,6 @@ bool KviPackAddonDialog::createInstaller(QString * pszError)
 }
 #endif
 
-bool KviPackAddonDialog::addSubdirectoryIfExists(
-		KviPackageWriter &pw,
-		const QString &szAddonPath,
-		const QString &szSubdir,
-		const QString &szTargetSubdir
-	)
-{
-	QString szFullPath = QString::fromAscii("%1%2%3")
-		.arg(szAddonPath).arg(QChar(KVI_PATH_SEPARATOR_CHAR)).arg(szSubdir);
-
-	QDir dir(szFullPath);
-	if(!dir.exists())
-		return true;
-
-	if(!pw.addDirectory(szFullPath,szTargetSubdir))
-	{
-		QString szTmp = __tr2qs_ctx("Packaging failed","addon");
-		szTmp += ": ";
-		szTmp += pw.lastError();
-		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-		return false;
-	}
-
-	return true;
-}
 
 bool KviPackAddonDialog::packAddon()
 {
@@ -366,20 +300,6 @@ bool KviPackAddonDialog::packAddon()
 		return false;
 	}
 
-#if 0
-	// Create the installer file
-	if(!createInstaller(&szError))
-	{
-		QMessageBox::critical(this,
-			__tr2qs_ctx("Addon Packaging Error","addon"),
-			szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
-		);
-		return false;
-	}
-#endif
-
-	//m_szDirPath.replace("\\","/");
-	//m_szSavePath.replace("\\","/");
 
 	QString szTmp;
 	szTmp = QDateTime::currentDateTime().toString();
@@ -403,34 +323,50 @@ bool KviPackAddonDialog::packAddon()
 		bufferz.open(QIODevice::WriteOnly);
 		pix.save(&bufferz,"PNG");
 		bufferz.close();
-		pw.addInfoField("Icon",pba);
+		pw.addInfoField("Image",pba);
 	}
 
-	// Add source dir
-	if(!addSubdirectoryIfExists(pw,m_szDirPath,"src","src/"))
-		return false;
-	if(!addSubdirectoryIfExists(pw,m_szDirPath,"config","config/"))
-		return false;
-	if(!addSubdirectoryIfExists(pw,m_szDirPath,"pics","pics/"))
-		return false;
-	if(!addSubdirectoryIfExists(pw,m_szDirPath,"audio","audio/"))
-		return false;
-	if(!addSubdirectoryIfExists(pw,m_szDirPath,"sounds","audio/"))
-		return false;
-	if(!addSubdirectoryIfExists(pw,m_szDirPath,"locale","locale/"))
-		return false;
-	if(!addSubdirectoryIfExists(pw,m_szDirPath,"help","help/"))
-		return false;
+	QDir dir(m_szDirPath);
+	QFileInfoList ls = dir.entryInfoList(QDir::Dirs | QDir::Files | QDir::Readable | QDir::NoSymLinks | QDir::NoDotAndDotDot);
 
-	// Add initialization script
-	if(!pw.addFile(QString("%1%2%3").arg(m_szDirPath).arg(QChar(KVI_PATH_SEPARATOR_CHAR)).arg("install.kvs"),"install.kvs"))
+	if(ls.isEmpty())
 	{
 		szTmp = __tr2qs_ctx("Packaging failed","addon");
 		szTmp += ": ";
-		szTmp += pw.lastError();
+		szTmp += __tr2qs_ctx("The package file list is empty","addon");
 		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return false;
 	}
+
+	for(QFileInfoList::Iterator it = ls.begin();it != ls.end();++it)
+	{
+		const QFileInfo &inf = *it;
+
+		if(inf.isDir())
+		{
+			if(!pw.addDirectory(inf.absoluteFilePath(),QString("%1/").arg(inf.fileName())))
+			{
+				QString szTmp = __tr2qs_ctx("Packaging failed","addon");
+				szTmp += ": ";
+				szTmp += pw.lastError();
+				QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+				return false;
+			}
+
+			continue;
+		}
+
+		// must be a file
+		if(!pw.addFile(inf.absoluteFilePath(),inf.fileName()))
+		{
+			szTmp = __tr2qs_ctx("Packaging failed","addon");
+			szTmp += ": ";
+			szTmp += pw.lastError();
+			QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+			return false;
+		}
+	}
+
 
 	// Create the addon package
 	if(m_szSavePath.isEmpty())
@@ -536,11 +472,11 @@ KviPackAddonFileSelectionWidget::KviPackAddonFileSelectionWidget(KviPackAddonDia
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 
 	// Select source directory
-	m_pDirPathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select the source directory:","addon"),&m_szDirPath,true);
+	m_pDirPathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select the source directory:","addon"),&m_szDirPath,true,KviFileSelector::VerticalLayout);
 	pLayout->addWidget(m_pDirPathSelector);
 
 	// Select addon icon
-	m_pPackageIconEdit = new KviFileSelector(this,__tr2qs_ctx("Select the icon file:","addon"),&m_szPackageIcon,true,0,KVI_FILTER_IMAGE);
+	m_pPackageIconEdit = new KviFileSelector(this,__tr2qs_ctx("Select the icon file:","addon"),&m_szPackageIcon,true,KviFileSelector::VerticalLayout,KVI_FILTER_IMAGE);
 	pLayout->addWidget(m_pPackageIconEdit);
 
 	// Store data in the fields
@@ -563,7 +499,14 @@ KviPackAddonSaveSelectionWidget::KviPackAddonSaveSelectionWidget(KviPackAddonDia
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 
 	// Select save path
-	m_pSavePathSelector = new KviFileSelector(this,__tr2qs_ctx("Select save path:","addon"),&m_szFilePath,true,KviFileSelector::ChooseSaveFileName,KVI_FILTER_ADDON);
+	m_pSavePathSelector = new KviFileSelector(
+			this,
+			__tr2qs_ctx("Select save path:","addon"),
+			&m_szFilePath,
+			true,
+			KviFileSelector::ChooseSaveFileName | KviFileSelector::VerticalLayout,
+			KVI_FILTER_ADDON
+		);
 	pLayout->addWidget(m_pSavePathSelector);
 
 	// Store data in the fields

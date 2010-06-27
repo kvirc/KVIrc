@@ -230,7 +230,6 @@ bool KviPackageWriter::addDirectory(const QString &szLocalDirectoryName,const QS
 	if(!(uAddFileFlags & FollowSymLinks))
 		iFlags |= QDir::NoSymLinks;
 
-	// QT4SUX: Because the QDir::entryInfoList() breaks really a lot of code by returning an object that behaves in a _totally_ different way.. it's also much slower
 	int j;
 	QFileInfoList sl = d.entryInfoList(iFlags);
 	for(j=0;j<sl.size();j++)
@@ -502,21 +501,25 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 	magic[1] = 'V';
 	magic[2] = 'P';
 	magic[3] = 'F';
-	if(f.write(magic,4) != 4)return writeError();
+	if(f.write(magic,4) != 4)
+		return writeError();
 
 	// Version
 	kvi_u32_t uVersion = 0x1;
-	if(!f.save(uVersion))return writeError();
+	if(!f.save(uVersion))
+		return writeError();
 
 	// Flags
 	kvi_u32_t uFlags = 0x0;
-	if(!f.save(uFlags))return writeError();
+	if(!f.save(uFlags))
+		return writeError();
 
 	// write PackageInfo
 
 	// InfoFieldCount
 	kvi_u32_t uCount = m_pStringInfoFields->count() + m_pBinaryInfoFields->count();
-	if(!f.save(uCount))return writeError();
+	if(!f.save(uCount))
+		return writeError();
 
 	m_iCurrentProgress = 5;
 	if(!updateProgress(m_iCurrentProgress,__tr2qs("Writing informational fields")))
@@ -526,10 +529,13 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 	KviPointerHashTableIterator<QString,QString> it(*m_pStringInfoFields);
 	while(QString * s = it.current())
 	{
-		if(!f.save(it.currentKey()))return writeError();
+		if(!f.save(it.currentKey()))
+			return writeError();
 		kvi_u32_t uType = KVI_PACKAGE_INFOFIELD_TYPE_STRING;
-		if(!f.save(uType))return writeError();
-		if(!f.save(*s))return writeError();
+		if(!f.save(uType))
+			return writeError();
+		if(!f.save(*s))
+			return writeError();
 		++it;
 	}
 
@@ -537,10 +543,13 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 	KviPointerHashTableIterator<QString,QByteArray> it2(*m_pBinaryInfoFields);
 	while(QByteArray * b = it2.current())
 	{
-		if(!f.save(it2.currentKey()))return writeError();
+		if(!f.save(it2.currentKey()))
+			return writeError();
 		kvi_u32_t uType = KVI_PACKAGE_INFOFIELD_TYPE_BINARYBUFFER;
-		if(!f.save(uType))return writeError();
-		if(!f.save(*b))return writeError();
+		if(!f.save(uType))
+			return writeError();
+		if(!f.save(*b))
+			return writeError();
 		++it2;
 	}
 
@@ -604,7 +613,9 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 	// Magic
 	char magic[4];
 
-	if(pFile->read(magic,4) != 4) return readError();
+	if(pFile->read(magic,4) != 4)
+		return readError();
+
 	if((magic[0] != 'K') || (magic[1] != 'V') || (magic[2] != 'P') || (magic[3] != 'F'))
 	{
 		setLastError(__tr2qs("The file specified is not a valid KVIrc package"));
@@ -613,7 +624,8 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 
 	// Version
 	kvi_u32_t uVersion;
-	if(!pFile->load(uVersion))return readError();
+	if(!pFile->load(uVersion))
+		return readError();
 	if(uVersion != 0x1)
 	{
 		setLastError(__tr2qs("The package has an invalid version number, it might have been created by a newer KVIrc"));
@@ -622,14 +634,16 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 
 	// Flags
 	kvi_u32_t uFlags;
-	if(!pFile->load(uFlags))return readError();
+	if(!pFile->load(uFlags))
+		return readError();
 	// we ignore them at the moment
 
 	// read PackageInfo
 
 	// InfoFieldCount
 	kvi_u32_t uCount;
-	if(!pFile->load(uCount))return writeError();
+	if(!pFile->load(uCount))
+		return writeError();
 
 	m_pStringInfoFields->clear();
 	m_pBinaryInfoFields->clear();
@@ -638,9 +652,11 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 	while(uIdx < uCount)
 	{
 		QString szKey;
-		if(!pFile->load(szKey))return readError();
+		if(!pFile->load(szKey))
+			return readError();
 		kvi_u32_t uFieldType;
-		if(!pFile->load(uFieldType))return readError();
+		if(!pFile->load(uFieldType))
+			return readError();
 		switch(uFieldType)
 		{
 			case KVI_PACKAGE_INFOFIELD_TYPE_STRING:

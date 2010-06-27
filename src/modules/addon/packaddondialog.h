@@ -99,16 +99,6 @@ protected:
 	bool packAddon();
 
 	/**
-	* Helper for packAddon()
-	*/
-	bool addSubdirectoryIfExists(
-			KviPackageWriter &pw,
-			const QString &szAddonPath,
-			const QString &szSubdir,
-			const QString &szTargetSubdir
-		);
-
-	/**
 	* \brief Ensures the sources directory is complete
 	* \param pszError The buffer containing errors
 	* \param pszWarning The buffer containing warnings

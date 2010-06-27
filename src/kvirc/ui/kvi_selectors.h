@@ -221,7 +221,7 @@ public slots:
 };
 
 
-class KVIRC_API KviFileSelector : public KviTalHBox, public KviSelectorInterface
+class KVIRC_API KviFileSelector : public QWidget, public KviSelectorInterface
 {
 	Q_OBJECT
 	Q_PROPERTY(QString tmpFile READ tmpFile WRITE setTmpFile)
@@ -231,7 +231,8 @@ public:
 public:
 	enum Flags {
 		ChooseSaveFileName = 1,
-		DontConfirmOverwrite = 2
+		DontConfirmOverwrite = 2,
+		VerticalLayout = 4
 	};
 protected:
 	QLabel      * m_pLabel;
@@ -259,7 +260,7 @@ class KVIRC_API KviDirectorySelector : public KviFileSelector
 {
 	Q_OBJECT
 public:
-	KviDirectorySelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled);
+	KviDirectorySelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled,unsigned int uFlags = 0);
 	~KviDirectorySelector(){};
 protected:
 	virtual void select();

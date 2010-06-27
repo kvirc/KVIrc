@@ -387,19 +387,43 @@ void KviPixmapSelector::setEnabled(bool bEnabled)
 
 // FIXME: #warning "Option for DIR_MUST_EXISTS...(this widget could be turned into a file selector too)"
 KviFileSelector::KviFileSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled,unsigned int uFlags,const QString &szFilter)
-: KviTalHBox(par), KviSelectorInterface()
+: QWidget(par), KviSelectorInterface()
 {
+	QGridLayout * g = new QGridLayout(this);
+
 	m_uFlags = uFlags;
 	m_szFilter = szFilter;
 	m_pLabel = new QLabel(txt,this);
+	
+	if(uFlags & VerticalLayout)
+		g->addWidget(m_pLabel,0,0,1,2);
+	else
+		g->addWidget(m_pLabel,0,0);
+	
 	m_pLineEdit = new QLineEdit(this);
+	
+	if(uFlags & VerticalLayout)
+		g->addWidget(m_pLineEdit,1,0);
+	else
+		g->addWidget(m_pLineEdit,0,1);
+	
 	//m_pLineEdit->setMinimumWidth(200);
 	m_pLineEdit->setText(*pOption);
+	
 	m_pButton = new QPushButton(__tr2qs("&Browse..."),this);
 	connect(m_pButton,SIGNAL(clicked()),this,SLOT(browseClicked()));
 
-	setSpacing(4);
-	setStretchFactor(m_pLineEdit,1);
+	if(uFlags & VerticalLayout)
+		g->addWidget(m_pButton,1,1);
+	else
+		g->addWidget(m_pButton,0,2);
+
+	g->setSpacing(4);
+
+	if(uFlags & VerticalLayout)
+		g->setColumnStretch(0,1);
+	else
+		g->setColumnStretch(1,1);
 
 	m_pOption = pOption;
 
@@ -413,7 +437,7 @@ void KviFileSelector::commit()
 
 void KviFileSelector::setEnabled(bool bEnabled)
 {
-	KviTalHBox::setEnabled(bEnabled);
+	QWidget::setEnabled(bEnabled);
 	m_pLineEdit->setEnabled(bEnabled);
 	m_pLabel->setEnabled(bEnabled);
 	m_pButton->setEnabled(bEnabled);
@@ -450,8 +474,8 @@ void KviFileSelector::select()
 }
 
 
-KviDirectorySelector::KviDirectorySelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled)
-: KviFileSelector(par,txt,pOption,bEnabled)
+KviDirectorySelector::KviDirectorySelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled,unsigned int uFlags)
+: KviFileSelector(par,txt,pOption,bEnabled,uFlags)
 {
 }
 

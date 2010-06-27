@@ -70,7 +70,7 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 	}
 
 	te = new KviTextBrowser(this,pData);
-	debug("Create dialog html");
+
 	pData->m_pDoc->setHtml(pData->szHtmlText);
 	te->setDocument(pData->m_pDoc);
 
