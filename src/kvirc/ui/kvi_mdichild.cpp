@@ -62,7 +62,7 @@ KviMdiChild::KviMdiChild(KviMdiManager * par, const char * name)
 	m_pManager = par;
 	m_pClient = 0;
 
-	m_restoredGeometry   = QRect(10,10,500,380);
+	setGeometry(QRect(10,10,500,380));
 
 	connect(systemMenu(), SIGNAL(aboutToShow()), this, SLOT(updateSystemPopup()));
 	connect(this, SIGNAL(windowStateChanged(Qt::WindowStates, Qt::WindowStates)), this, SLOT(windowStateChangedEvent(Qt::WindowStates, Qt::WindowStates)));
@@ -87,7 +87,6 @@ void KviMdiChild::transparencyWorkaround()
 	
 void KviMdiChild::setRestoredGeometry(const QRect &r)
 {
-	m_restoredGeometry = r;
 	setGeometry(r);
 }
 
@@ -104,7 +103,7 @@ void KviMdiChild::closeEvent(QCloseEvent * e)
 
 QRect KviMdiChild::restoredGeometry()
 {
-	return m_restoredGeometry;
+	return geometry();
 }
 
 KviMdiChild::MdiChildState KviMdiChild::state()
@@ -223,14 +222,7 @@ void KviMdiChild::moveEvent(QMoveEvent *e)
 		}
 	}
 #endif
-	m_restoredGeometry.setTopLeft(e->pos());
 	QMdiSubWindow::moveEvent(e);
-}
-
-void KviMdiChild::resizeEvent(QResizeEvent *e)
-{
-	m_restoredGeometry.setSize(e->size());
-	QMdiSubWindow::resizeEvent(e);
 }
 
 void KviMdiChild::setClient(QWidget * w)

@@ -23,31 +23,3 @@
 //=============================================================================
 
 #include "kvi_tal_splitter.h"
-#include <stdio.h>
-KviTalSplitter::KviTalSplitter(Qt::Orientation orientation, QWidget * pParent)
-: QSplitter(orientation, pParent)
-{
-	bHasValidSizes = false;
-	connect(this, SIGNAL(splitterMoved(int, int)), this, SLOT(splitterHasMoved(int, int)));
-}
-
-KviTalSplitter::~KviTalSplitter()
-{
-}
-
-QList<int> KviTalSplitter::sizes()
-{
-	return bHasValidSizes ? QSplitter::sizes() : oldSizes;
-}
-
-void KviTalSplitter::setSizes(QList<int> sizes)
-{
-	oldSizes = sizes;
-	QSplitter::setSizes(oldSizes);
-}
-
-void KviTalSplitter::splitterHasMoved(int, int)
-{
-	if(!bHasValidSizes)
-		bHasValidSizes=true;
-}

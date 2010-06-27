@@ -78,8 +78,6 @@ protected:
 private:
 	/// The widget docked into our MDI window.
 	QWidget * m_pClient;
-	/// Saves the geometry of the window for restoring it's position
-	QRect m_restoredGeometry;
 	/// Contains the current window Icon
 	QPixmap m_pIcon;
 	/// Caption as plain text.
@@ -176,12 +174,6 @@ protected:
 	* \return void
 	*/
 	virtual void moveEvent(QMoveEvent * e);
-
-	/**
-	* \brief Updates the widget geometry when resizing
-	* \return void
-	*/
-	virtual void resizeEvent(QResizeEvent * e);
 
 	/**
 	* \brief Hooks into close event to make user decisions possible
