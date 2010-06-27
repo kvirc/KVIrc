@@ -7,8 +7,6 @@ function usage()
 	echo "Available options:"
 	echo "   --gzip"
 	echo "     Use gzip instead of bzip2"
-	echo "   --bzip"
-	echo "     Use bzip2 instead of gzip (default)"
 	echo "   --help"
 	echo "     Show this help"
 }
