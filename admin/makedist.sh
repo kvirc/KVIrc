@@ -7,6 +7,8 @@ function usage()
 	echo "Available options:"
 	echo "   --gzip"
 	echo "     Use gzip instead of bzip2"
+	echo "   --md5sum"
+	echo "     Create md5sum of the package too"
 	echo "   --help"
 	echo "     Show this help"
 }
@@ -16,6 +18,7 @@ SOURCETREEDIR=""
 KVIRCVERSION=""
 COMPRESSSWITCH="j"
 OUTPUTEXTENSION="bz2"
+DOMD5SUM="no"
 
 for i in $*; do
 	case $i in
@@ -26,6 +29,9 @@ for i in $*; do
 		--help)
 				usage
 				exit
+			;;
+		--md5sum)
+				DOMD5SUM="yes"
 			;;
 		*)
 			if test -z "$SOURCETREEDIR"; then
@@ -59,7 +65,8 @@ THISDIR=$(pwd)
 TEMPDIR=/tmp
 PKGSRCDIR=kvirc-"$KVIRCVERSION"
 TEMPSRCDIR="$TEMPDIR/$PKGSRCDIR"
-OUTPUTFILE="$THISDIR/kvirc-${KVIRCVERSION}.tar.${OUTPUTEXTENSION}"
+OUTPUTFILENAME="kvirc-${KVIRCVERSION}.tar.${OUTPUTEXTENSION}"
+OUTPUTFILE="${THISDIR}/${OUTPUTFILENAME}"
 
 if [ -d "$TEMPSRCDIR" ]; then
 	echo "Removing stale target directory..."
@@ -83,19 +90,41 @@ if [ -f "$OUTPUTFILE" ]; then
 	rm -f "$OUTPUTFILE"
 fi
 
-cd "$TEMPDIR"
+if [ "${DOMD5SUM}" = "yes" ]; then
+	if [ -f "${OUTPUTFILE}.md5sum" ]; then
+		echo "Cleaning stale md5sum file..."
+		rm -f "${OUTPUTFILE}.md5sum"
+	fi
+fi
 
 echo "Compressing sources into $OUTPUTFILE"
 
-TARPARAMS="${COMPRESSSWITCH}cf"
-tar -$TARPARAMS "$OUTPUTFILE" "$PKGSRCDIR"
+cd "$TEMPDIR"
 
-echo "Removing target directory..."
-rm -rf "$TEMPSRCDIR"
+TARPARAMS="${COMPRESSSWITCH}cf"
+tar -$TARPARAMS "$OUTPUTFILE" "$PKGSRCDIR" || exit
 
 cd "$THISDIR"
 
-ls -al $OUTPUTFILE
+if [ "${DOMD5SUM}" = "yes" ]; then
+	cd "$THISDIR"
+	md5sum "${OUTPUTFILENAME}" > "${OUTPUTFILENAME}.md5sum"
+fi
 
-echo "Done."
+echo "Removing target directory..."
+rm -rf "${TEMPSRCDIR}"
+
+
+echo "Here is the output I've generated"
+
+cd "$THISDIR"
+
+ls -al "${OUTPUTFILENAME}"
+
+if [ "${DOMD5SUM}" = "yes" ]; then
+	ls -la "${OUTPUTFILENAME}.md5sum"
+fi
+
+
+echo "Done. Have a nice day :)"
 
