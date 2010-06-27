@@ -150,8 +150,6 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 			szBuffer = szFiles[0];
 		KviFileUtils::adjustFilePath(szBuffer);
 
-		qDebug("SGHIBIRIBI");
-
 		if(!szBuffer.isEmpty())
 		{
 			if(!bConfirmOverwrite)
@@ -159,13 +157,10 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 				delete pDialog;
 				return true;
 			}
-			qDebug("FILE IS NOT EMPTY");
 
 			// Check for the file existence
 			if(KviFileUtils::fileExists(szBuffer))
 			{
-				qDebug("CONFIRMING OVERWRITE!");
-
 				QString szTmp;
 				KviQString::sprintf(szTmp,__tr2qs("The file %s already exists.<br>Do you wish to overwrite it?"),szBuffer.toUtf8().data());
 

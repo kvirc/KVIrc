@@ -1,32 +1,32 @@
-XX.YY.2010: Release 4.0.0 "Insomnia"
+27.06.2010: Release 4.0.0 "Insomnia"
 ###############################################################################
 
 And again, after more than one year, we're back with a new release :)
 
-
-
 Notable new features of this release include:
 
-- definitive port to the new Qt4 libraries, that include a better support
-  for native-looking widgets under unix, windows and macosx;
-- a totally rewritten MDI subsystem, with the look and feel of your OS;
-- compatibility to recent technologies: DBus for inter process communications,
-  MPRIS for media players control and info reporting, Phonon for direct media
-  playback, and support for specific environments like KDE4;
-- a new UPnP module to control and remotely map your router ports for DCC;
-- a rewritten iograph module to check your bandwidth usage;
-- support for animated avatars and smilies;
-- ability to get other user's avatars/information like gender without the need
-  to CTCP the whole channel;
-- a better support for server tecnologies like STARTTLS, irc services;
-- a lot of new options to better customize you client;
-- a lot of new KVS commands and functions for your scripting needs;
-- tons of bug fixes, more than 500 only from the bugtracker;
-- a better documentation of the code for those who like to give a look at it;
-- a class editor for object oriented scripting
-- a graphical addon packager
-- days and days of further testing, fixing and filing to assure you an optimal
+- Definitive and stable port to the new Qt4 libraries
+- Definitive KDE4 support
+- Better support for server tecnologies like CAPS, STARTTLS, irc services...
+- A new UPnP module to control and remotely map your router ports for DCC
+- A rewritten iograph module to check your bandwidth usage
+- A class editor for object oriented scripting
+- A graphical addon packager
+- A totally rewritten MDI subsystem, with the look and feel of your OS
+- Support for animated avatars
+- Ability to get other user's avatars/information without the need to
+  CTCP the whole channel
+- A lot of new options to better customize your client
+- A lot of new KVS commands and functions for your scripting needs
+- A better documentation of the code for those who like to give a look at it.
+- Support for DBus inter-process communication
+- Support for the MPRIS media player control and info reporting
+- Support for Phonon direct media playback
+- Tons of bug fixes, more than 500 only from the bugtracker
+- Days and days of further testing and fixing to assure you an optimal
   IRC experience ;)
+
+
 
 There is a lot of minor new features that will make your IRC sessions funnier
 and more exciting: some of them are described in the ChangeLog file and
