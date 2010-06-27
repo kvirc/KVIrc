@@ -1,37 +1,49 @@
 27.06.2010: Release 4.0.0 "Insomnia"
 ###############################################################################
 
-And again, after more than one year, we're back with a new release :)
+And again, after more than one year, we're back with a new release.
+
+The major version increment from 3 to 4 reflects a big milestone reached by the
+project: the port to Qt4 has been officially completed. This required a lot of
+code to be rewritten and I must say that we have suffered it a bit. But now
+it's done and Qt4 is a great framework to base KVIrc on, far better than Qt3.
 
 Notable new features of this release include:
 
-- Definitive and stable port to the new Qt4 libraries
-- Definitive KDE4 support
-- Better support for server tecnologies like CAPS, STARTTLS, irc services...
+- Definitive and stable port to the Qt4 libraries
+- A brand new build system based on CMake (no more ./configure)
+- Better support for server tecnologies: CAPS, STARTTLS, SASL, irc services...
 - A new UPnP module to control and remotely map your router ports for DCC
-- A rewritten iograph module to check your bandwidth usage
-- A class editor for object oriented scripting
-- A graphical addon packager
 - A totally rewritten MDI subsystem, with the look and feel of your OS
+- A nice graphical addon packager
+- A visual class editor for object oriented scripting
+- A rewritten iograph module to check your bandwidth usage
 - Support for animated avatars
 - Ability to get other user's avatars/information without the need to
   CTCP the whole channel
-- A lot of new options to better customize your client
-- A lot of new KVS commands and functions for your scripting needs
-- A better documentation of the code for those who like to give a look at it.
 - Support for DBus inter-process communication
 - Support for the MPRIS media player control and info reporting
 - Support for Phonon direct media playback
+- Improved platform compatibility for KDE4, MacOSX, Seven etc...
+- A lot of new options to better customize your client
+- A lot of new KVS commands and functions for your scripting needs
 - Tons of bug fixes, more than 500 only from the bugtracker
-- Days and days of further testing and fixing to assure you an optimal
-  IRC experience ;)
+- A better documentation of the code for those who like to give a look at it.
+- Months of testing and fixing to assure you an optimal IRC experience ;)
+_ ...
 
+Again a lot of people contributed to this release. It would be simply unfair
+not to mention the huge development effort made by Elvio Basello (HelLViS69),
+Fabio Bas (CtrlAltCa) and Alessandro Carbone (Noldor). Without their hard work
+KVIrc 4.0.0 wouldn't be possible.
 
+Other kudos go to Markus Rennings (mren), Kai Wasserbäch (Curan),
+Jan Wagner (spy6), Claudia Mongini (etherea), Jose (Zé) Melo (mmodem),
+Alexey Uzhva (alexey), Robert Förster (Dessa), ambossarm, TheXception,
+Voker57, Thomas Kalla, bugslayer, Aeriana, Desowin and obviously to everyone
+on #kvirc@freenode who provided testing and support.
 
-There is a lot of minor new features that will make your IRC sessions funnier
-and more exciting: some of them are described in the ChangeLog file and
-other can be found by exploring the user interface.
-
+Well... it's time to play wity it.
 
 Have fun :)
 Szymon Stefanek and The KVIrc Development Team
