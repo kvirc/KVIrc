@@ -389,23 +389,23 @@ void KviPixmapSelector::setEnabled(bool bEnabled)
 KviFileSelector::KviFileSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled,unsigned int uFlags,const QString &szFilter)
 : QWidget(par), KviSelectorInterface()
 {
-	QGridLayout * g = new QGridLayout(this);
+	m_Layout = new QGridLayout(this);
 
 	m_uFlags = uFlags;
 	m_szFilter = szFilter;
 	m_pLabel = new QLabel(txt,this);
 	
 	if(uFlags & VerticalLayout)
-		g->addWidget(m_pLabel,0,0,1,2);
+		m_Layout->addWidget(m_pLabel,0,0,1,2);
 	else
-		g->addWidget(m_pLabel,0,0);
+		m_Layout->addWidget(m_pLabel,0,0);
 	
 	m_pLineEdit = new QLineEdit(this);
 	
 	if(uFlags & VerticalLayout)
-		g->addWidget(m_pLineEdit,1,0);
+		m_Layout->addWidget(m_pLineEdit,1,0);
 	else
-		g->addWidget(m_pLineEdit,0,1);
+		m_Layout->addWidget(m_pLineEdit,0,1);
 	
 	//m_pLineEdit->setMinimumWidth(200);
 	m_pLineEdit->setText(*pOption);
@@ -414,16 +414,16 @@ KviFileSelector::KviFileSelector(QWidget * par,const QString & txt,QString * pOp
 	connect(m_pButton,SIGNAL(clicked()),this,SLOT(browseClicked()));
 
 	if(uFlags & VerticalLayout)
-		g->addWidget(m_pButton,1,1);
+		m_Layout->addWidget(m_pButton,1,1);
 	else
-		g->addWidget(m_pButton,0,2);
+		m_Layout->addWidget(m_pButton,0,2);
 
-	g->setSpacing(4);
+	m_Layout->setSpacing(4);
 
 	if(uFlags & VerticalLayout)
-		g->setColumnStretch(0,1);
+		m_Layout->setColumnStretch(0,1);
 	else
-		g->setColumnStretch(1,1);
+		m_Layout->setColumnStretch(1,1);
 
 	m_pOption = pOption;
 
@@ -795,6 +795,12 @@ KviSoundSelector::KviSoundSelector(QWidget * par,const QString & txt,QString * p
 {
 	m_pPlayButton =  new QPushButton(__tr2qs("Play"),this);
 	connect(m_pPlayButton,SIGNAL(clicked()),this,SLOT(playSound()));
+	
+	//parent layout
+	if(m_uFlags & VerticalLayout)
+		m_Layout->addWidget(m_pPlayButton,2,1);
+	else
+		m_Layout->addWidget(m_pPlayButton,0,3);
 }
 
 KviSoundSelector::~KviSoundSelector()
@@ -876,11 +882,6 @@ void KviChannelListSelector::commit()
 	{
 		pItem=(KviChanTreeViewItem*)m_pTreeWidget->topLevelItem(i);
 		m_pOption->append(pItem->text(0)+":"+pItem->pass());
-	//QTreeWidgetItemIterator it( m_pTreeWidget);
-	//while ( it.current() ) {
-	//	pItem = (KviChanTreeViewItem*)( it.current() );
-//		m_pOption->append(pItem->text(0)+":"+pItem->pass());
-//		++it;
 	}
 }
 
@@ -917,13 +918,9 @@ void KviChannelListSelector::removeClicked()
 {
 	KviPointerList<QTreeWidgetItem> lst;
 	QList<QTreeWidgetItem *> items=m_pTreeWidget->selectedItems () ;
-	//QTreeWidgetItemIterator it( m_pTreeWidget, QTreeWidgetItemIterator::Selected );
-	//while ( it.current() ) {
 	for (int i=0;i<items.count();i++)
 	{
 		lst.append((QTreeWidgetItem *)items.at(i));
-	//	lst.append((QTreeWidgetItem *)it.current() );
-	//	++it;
 	}
 	lst.setAutoDelete(TRUE);
 	lst.clear();

@@ -241,6 +241,7 @@ protected:
 	QString     * m_pOption;
 	unsigned int  m_uFlags;
 	QString       m_szFilter;
+	QGridLayout * m_Layout;
 public:
 	QString tmpFile(){ return m_pLineEdit->text(); };
 	void setTmpFile(QString & szFile){ m_pLineEdit->setText(szFile); };
