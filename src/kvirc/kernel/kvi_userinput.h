@@ -69,6 +69,13 @@ namespace KviUserInput
 	*/
 	KVIRC_API void parseNonCommand(QString & szData, KviWindow * pWindow);
 
+	/**
+	* \brief Escapes any kvs special character from a string
+	* \param szData The string to escape
+	* \return void
+	*/
+	KVIRC_API void escapeString(QString & szData);
+
 	//bool parseCommandWithSingleArgument(const QString & szData, KviWindow * pWindow, const QString & szContext = KviQString::Empty);
 }
 

@@ -67,6 +67,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(countStatusBarItems);
 	KVSCF(cr);
 	KVSCF(date);
+	KVSCF(escape);
 	KVSCF(falseCKEYWORDWORKAROUND);
 	KVSCF(features);
 	KVSCF(firstConnectedConsole);

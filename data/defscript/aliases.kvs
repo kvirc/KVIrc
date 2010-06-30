@@ -521,7 +521,7 @@ alias(hop)
 
 	// Exit channel
 	if($window.type($channel(%chan))=="channel")
-		eval "part --keep %chan $option(stringPartMessage)"
+		eval "part --keep $escape(%chan) $option(stringPartMessage)"
 	// Rejoin channel
 	if(!%key) join %chan
 	else join %chan %key
