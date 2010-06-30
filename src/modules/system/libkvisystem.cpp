@@ -413,7 +413,7 @@ static bool system_kvs_fnc_hostname(KviKvsModuleFunctionCall *c)
 	@short:
 		Performs a DBus call
 	@syntax:
-		<variant> $system.dbus(<service:string>,<path:string>,<interface:string>,<method:string>[,<parameter1:string>[,<parameter2:string>[,...]]])
+		<variant> $system.dbus(<service:string>,<path:string>,<interface:string>,<method:string>[,<bus_type:string>[,<parameter1:string>[,<parameter2:string>[,...]]]])
 	@description:
 		This function allows performing simple Dbus calls without executing
 		an external process. This feature is available ONLY when KDE support
@@ -424,6 +424,8 @@ static bool system_kvs_fnc_hostname(KviKvsModuleFunctionCall *c)
 		on the remote object and <parameter1>,<parameter2>,... is the list of
 		parameters to be passed. The <function> name must contain the
 		trailing parenthesis and parameter specification (see examples).
+		The <bus_type> specifies the bus to connect, use "system" for systemBus or
+		"session" for sessionBus. If it's leaved blank, it will use sessionBus.
 		The parameters MUST be in the form "type=value"
 		where "type" is the C++ type of the parameter and value
 		is the string rappresentation of the parameter data. Currently
@@ -450,7 +452,7 @@ static bool system_kvs_fnc_hostname(KviKvsModuleFunctionCall *c)
 
 static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 {
-	QString szService, szPath, szInterface, szMethod;
+	QString szService, szPath, szInterface, szMethod, szBusType;
 	QStringList parms;
 
 	KVSM_PARAMETERS_BEGIN(c)
@@ -458,16 +460,32 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 		KVSM_PARAMETER("path",KVS_PT_NONEMPTYSTRING,0,szPath)
 		KVSM_PARAMETER("interface",KVS_PT_NONEMPTYSTRING,0,szInterface)
 		KVSM_PARAMETER("method",KVS_PT_NONEMPTYSTRING,0,szMethod)
+		KVSM_PARAMETER("bus_type",KVS_PT_STRING,0,szBusType)
 		KVSM_PARAMETER("parameter_list",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,parms)
 	KVSM_PARAMETERS_END(c)
 
 #ifdef COMPILE_KDE_SUPPORT
 
-	QDBusInterface remoteApp(szService, szPath, szInterface);
+	if(szBusType.isEmpty())
+		szBusType = "session";
+
+	QDBusConnection busType("");
+	
+	if(szBusType == "system")
+	{
+		busType = QDBusConnection::systemBus();
+	} else if(szBusType == "session"){
+		busType = QDBusConnection::sessionBus();
+	} else {
+		c->warning(__tr2qs("No DBus type specified"));
+		return false;
+	}
+	
+	QDBusInterface remoteApp(szService, szPath, szInterface, busType);
 	if(!remoteApp.isValid())
 	{
-			c->warning(__tr2qs("Invalid DBus interface"));
-			return false;
+		c->warning(__tr2qs("Invalid DBus interface"));
+		return false;
 	}
 
 	QList<QVariant> ds;

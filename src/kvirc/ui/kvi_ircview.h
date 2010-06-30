@@ -73,7 +73,7 @@ public:
 	void setPaintOnScreen(bool bFlag){setAttribute(Qt::WA_PaintOnScreen,bFlag);} ;
 private:
 //	QDate                       m_lastLogDay;
-	int		 	                m_iFlushTimer;
+	int                         m_iFlushTimer;
 	KviIrcViewLine            * m_pFirstLine;
 	KviIrcViewLine            * m_pCurLine;    // Bottom line in the view
 	KviIrcViewLine            * m_pLastLine;
@@ -137,11 +137,11 @@ private:
 	KviIrcView                * m_pMasterView;
 	QFontMetrics              * m_pFm;               // assume this valid only inside a paint event (may be 0 in other circumstances)
 
-	QMouseEvent              *  m_pLastEvent;
+	QMouseEvent               * m_pLastEvent;
 
 	KviIrcViewToolTip         * m_pToolTip;
-	bool m_bHaveUnreadedHighlightedMessages;
-	bool m_bHaveUnreadedMessages;
+	bool                        m_bHaveUnreadedHighlightedMessages;
+	bool                        m_bHaveUnreadedMessages;
 
 	QMultiHash<KviIrcViewLine*,KviAnimatedPixmap*>  m_hAnimatedSmiles;
 public:

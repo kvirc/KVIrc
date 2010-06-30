@@ -2052,6 +2052,7 @@ void KviIrcView::showToolsPopup()
 		m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)),__tr2qs("Hide Find Window"),this,SLOT(toggleToolWidget()));
 	else
 		m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)),__tr2qs("Show Find Window"),this,SLOT(toggleToolWidget()));
+
 	m_pToolsPopup->insertSeparator();
 	m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PLUS)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));
 	m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINUS)),__tr2qs("Zoom Out"),this,SLOT(decreaseFontSize()));
@@ -2260,7 +2261,8 @@ do_pNext:
 	}
 	m_pCursorLine = 0;
 	repaint();
-	if(m_pToolWidget)m_pToolWidget->setFindResult(__tr2qs("Not found"));
+	if(m_pToolWidget)
+		m_pToolWidget->setFindResult(__tr2qs("Not found"));
 }
 
 
@@ -2314,7 +2316,8 @@ do_pPrev:
 	m_pCursorLine = 0;
 
 	repaint();
-	if(m_pToolWidget)m_pToolWidget->setFindResult(__tr2qs("Not found"));
+	if(m_pToolWidget)
+		m_pToolWidget->setFindResult(__tr2qs("Not found"));
 }
 
 KviIrcViewLine * KviIrcView::getVisibleLineAt(int yPos)
