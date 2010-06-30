@@ -39,6 +39,7 @@
 #include "kvi_ircuserdb.h"
 #include "kvi_frame.h"
 #include "kvi_statusbar.h"
+#include "kvi_userinput.h"
 
 // date includes
 #include <QDateTime>
@@ -993,6 +994,39 @@ namespace KviKvsCoreFunctions
         KVSCF_pRetBuffer->setString(szFmtTime);
 
         leavenow:
+		return true;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: escape
+		@type:
+			function
+		@title:
+			$escape
+		@short:
+			Returns a kvs-escaped version of the string
+		@syntax:
+			<string> $escape(<text:string>)
+		@description:
+			In KVS some characters in a string have special meanings: % marks the start of a variable name, $ the start of a function name, etc..[br]
+			Sometimes you could need to escape them using a \ character to avoid kvirc from interpreting the special meaning of these characters:
+			this function will to the dirty job for you, returning a correctly kvs-escaped version of the string passed as a parameter.[br]
+		@seealso:
+			[cmd]eval[/cmd]
+	*/
+
+	KVSCF(escape)
+	{
+		QString szData;
+		KVSCF_PARAMETERS_BEGIN
+			KVSCF_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szData)
+		KVSCF_PARAMETERS_END
+
+		KviUserInput::escapeString(szData);
+
+		KVSCF_pRetBuffer->setString(szData);
 		return true;
 	}
 

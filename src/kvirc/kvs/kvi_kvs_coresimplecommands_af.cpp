@@ -1390,6 +1390,8 @@ namespace KviKvsCoreSimpleCommands
 				[comment]# Evaluate a command block[/comment]
 				eval "{ echo First command!; echo Second command!; }"
 			[/example]
+		@seealso:
+			[fnc]$escape[/fnc]
 	*/
 
 	KVSCSC(eval)

@@ -83,15 +83,7 @@ namespace KviUserInput
 			static QString szUserFriendlyCommandlineContext(__tr2qs("commandline::userfriendly"));
 
 			QString szCmd = szData;
-			// escape any -$;\%(
-			szCmd.replace("\\","\\\\");
-			szCmd.replace("\"","\\\"");
-			szCmd.replace("$","\\$");
-			szCmd.replace("%","\\%");
-			szCmd.replace("(","\\(");
-			szCmd.replace(";","\\;");
-			szCmd.replace("-","\\-");
-			szCmd.replace("+","\\+");
+			escapeString(szCmd);
 
 			KviKvsScript kvs(szContext.isEmpty() ? szUserFriendlyCommandlineContext : szContext,szCmd);
 			return (kvs.run(pWindow,0,0) != KviKvsScript::Error);
@@ -160,5 +152,18 @@ namespace KviUserInput
 				break;
 			}
 		}
+	}
+	
+	void escapeString(QString & szData)
+	{
+		// escape any -$;\%(
+		szData.replace("\\","\\\\");
+		szData.replace("\"","\\\"");
+		szData.replace("$","\\$");
+		szData.replace("%","\\%");
+		szData.replace("(","\\(");
+		szData.replace(";","\\;");
+		szData.replace("-","\\-");
+		szData.replace("+","\\+");
 	}
 };

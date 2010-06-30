@@ -61,6 +61,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("countStatusBarItems",countStatusBarItems)
 		_REGFNC("cr",cr)
 		_REGFNC("date",date)
+		_REGFNC("escape",escape)
 		_REGFNC("false",falseCKEYWORDWORKAROUND)
 		_REGFNC("features",features)
 		_REGFNC("firstConnectedConsole",firstConnectedConsole)
