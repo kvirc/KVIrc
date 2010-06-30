@@ -178,6 +178,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	m_pTreeWidget->header()->hide();
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setSortingEnabled(false);
+	m_pTreeWidget->setSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
 
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem *)),this,SLOT(treeWidgetItemSelectionChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
 
