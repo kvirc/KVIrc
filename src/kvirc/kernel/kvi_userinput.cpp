@@ -162,6 +162,7 @@ namespace KviUserInput
 		szData.replace("$","\\$");
 		szData.replace("%","\\%");
 		szData.replace("(","\\(");
+		szData.replace(")","\\)");
 		szData.replace(";","\\;");
 		szData.replace("-","\\-");
 		szData.replace("+","\\+");
