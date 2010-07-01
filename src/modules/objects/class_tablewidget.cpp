@@ -675,22 +675,6 @@ KVSO_CLASS_FUNCTION(tablewidget,cellDoubleClickedEvent)
 	emitSignal("cellDoubleClicked",c,c->params());
 	return true;
 }
-
-KVSO_CLASS_FUNCTION(tablewidget,customContextMenuRequestedEvent)
-{
-	emitSignal("rightButtonClicked",c,c->params());
-	emitSignal("customContextMenuRequested",c,c->params());
-	return true;
-}
-
-void KviKvsObject_tablewidget::slotCustomContextMenuRequested(const QPoint & pnt)
-{
-	KviKvsVariant *xpos=new KviKvsVariant((kvs_int_t)pnt.x());
-	KviKvsVariant *ypos=new KviKvsVariant((kvs_int_t)pnt.y());
-	KviKvsVariantList params(xpos,ypos);
-	callFunction(this,"customContextMenuRequestedEvent",0,&params);
-}
-
 bool KviKvsObject_tablewidget::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index)
 {
 	p->save();
@@ -731,7 +715,7 @@ void KviCellItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem 
 QSize KviCellItemDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex & index) const
 {
 	KviKvsVariant *sizeret=new KviKvsVariant();
-	debug("sizehint cell");
+	//debug("sizehint cell");
 	KviKvsVariantList parameters(new KviKvsVariant((kvs_int_t) index.row()),new KviKvsVariant((kvs_int_t) index.column()));
 	m_pParentScript->callFunction(m_pParentScript,"sizeHintCellRequestEvent",sizeret,&parameters);
 	if (sizeret->isArray())

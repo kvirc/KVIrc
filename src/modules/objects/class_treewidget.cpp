@@ -65,7 +65,7 @@
                 that items can be selected by the mouse actions: experiment with the two modes :).
                 The NoSelection mode has obviously no selection at all.
         @functions:
-                !fn: $addColumn(<text_label:string> <width:unsigned integer>)
+		!fn: $addColumn(<text_label:string>,[<width:integer>])
                 Adds a width pixels wide column with the column header label to the list view.
 
                 !fn: $setSorting(<column:integer>,<sort_order:string>)
@@ -318,12 +318,12 @@ KVSO_CLASS_FUNCTION(treewidget,addColumn)
 	kvs_int_t iW;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
-		KVSO_PARAMETER("width",KVS_PT_INT,0,iW)
+		KVSO_PARAMETER("width",KVS_PT_INT,KVS_PF_OPTIONAL,iW)
 	KVSO_PARAMETERS_END(c)
 	int col=((QTreeWidget *)widget())->columnCount();
 	QTreeWidgetItem *header=((QTreeWidget *)widget())->headerItem();
 	header->setText(col,szLabel);
-	((QTreeWidget *)widget())->setColumnWidth(col,iW);
+	if(iW) ((QTreeWidget *)widget())->setColumnWidth(col,iW);
 	col++;
 	((QTreeWidget *)widget())->setColumnCount(col);
 	//col++;
