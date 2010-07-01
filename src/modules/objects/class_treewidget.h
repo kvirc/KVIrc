@@ -72,6 +72,7 @@ protected:
         bool topLevelItem(KviKvsObjectFunctionCall *c);
         bool topLevelItemCount(KviKvsObjectFunctionCall *c);
 	bool itemAt(KviKvsObjectFunctionCall *c);
+	// debug
 protected slots:
 	void slotClicked(QTreeWidgetItem *,int);
 	void slotSelectionChanged();
