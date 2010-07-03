@@ -69,13 +69,19 @@ namespace KviHtmlGenerator
 				if(c == '&')
 				{
 					//look for an html entity
-					QString szEntity = szText.mid((int)uIdx,5);
-					if(szEntity=="&amp;")
+					QString szEntity = szText.mid((int)uIdx,6);
+					if(szEntity=="&quot;")
 					{
-						uIdx+=4;
+						uIdx+=5;
 					} else {
-						szEntity.truncate(4);
-						if(szEntity=="&lt;" || szEntity=="&gt;") uIdx+=3;
+						szEntity.truncate(5);
+						if(szEntity=="&amp;")
+						{
+							 uIdx+=4;
+						} else {
+							szEntity.truncate(4);
+							if(szEntity=="&lt;" || szEntity=="&gt;") uIdx+=3;
+						}
 					}
 				}
 
