@@ -376,8 +376,8 @@ void KviCustomizeToolBarsDialog::deleteToolBar()
 	if(QMessageBox::question(this,
 			__tr2qs_ctx("Confirm ToolBar Deletion","editor"),
 			__tr2qs_ctx("Do you really want to delete toolbar \"%1\" ?","editor").arg(t->windowTitle()),
-			__tr2qs_ctx("No","editor"),
-			__tr2qs_ctx("Yes","editor")) == 0)return;
+			QMessageBox::Yes | QMessageBox::No,
+			QMessageBox::No) != QMessageBox::Yes)return;
 	KviCustomToolBarManager::instance()->destroyDescriptor(t->descriptor()->id());
 }
 
