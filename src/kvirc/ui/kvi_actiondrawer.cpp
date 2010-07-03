@@ -174,7 +174,8 @@ KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListW
 	m_szKey = pAction->visibleName().toUpper();
 
 	QPixmap * p = pAction->bigIcon();
-	setIcon(QIcon(*p));
+	if(p)
+		setIcon(QIcon(*p));
 	setText(szText);
 }
 
