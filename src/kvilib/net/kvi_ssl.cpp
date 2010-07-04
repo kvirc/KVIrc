@@ -354,7 +354,8 @@ KviSSL::Result KviSSL::useCertificateFile(const char * cert,const char * pass)
 	X509 * x509 = 0;
 
 	FILE * f = fopen(cert,"r");
-	if(!f)return FileIoError;
+	if(!f)
+		return FileIoError;
 
 //	debug("READING CERTIFICATE %s",cert);
 	if(PEM_read_X509(f,&x509,cb,&m_szPass))
@@ -362,6 +363,7 @@ KviSSL::Result KviSSL::useCertificateFile(const char * cert,const char * pass)
 		if(!SSL_CTX_use_certificate(m_pSSLCtx,x509))
 		{
 			X509_free(x509);
+			fclose(f);
 			return SSLError;
 		}
 	}
@@ -380,7 +382,8 @@ KviSSL::Result KviSSL::usePrivateKeyFile(const char * key,const char * pass)
 	EVP_PKEY * k = 0;
 
 	FILE * f = fopen(key,"r");
-	if(!f)return FileIoError;
+	if(!f)
+		return FileIoError;
 
 //	debug("READING KEY %s",key);
 	if(PEM_read_PrivateKey(f,&k,cb,&m_szPass))
@@ -388,6 +391,7 @@ KviSSL::Result KviSSL::usePrivateKeyFile(const char * key,const char * pass)
 		if(!SSL_CTX_use_PrivateKey(m_pSSLCtx,k))
 		{
 			EVP_PKEY_free(k);
+			fclose(f);
 			return SSLError;
 		}
 	}
