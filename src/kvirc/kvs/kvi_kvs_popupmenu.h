@@ -259,7 +259,7 @@ public:
 	void addSeparator(const QString &szItemName,const QString &szCondition);
 	void addLabel(const QString &szItemName,const QString &szText,const QString &szIcon,const QString &szCondition);
 	void addItem(const QString &szItemName,const QString &szCode,const QString &szText,const QString &szIcon,const QString &szCondition);
-	void addExtPopup(const QString &szItemName,const QString &szPopupName,const QString szText,const QString &szIcon,const QString &szCondition);
+	void addExtPopup(const QString &szItemName,const QString &szPopupName,const QString &szText,const QString &szIcon,const QString &szCondition);
 	void doPopup(const QPoint & pnt,KviWindow * wnd,KviKvsVariantList * pParams,bool bTestMode = false);
 	bool isEmpty(){ return m_pItemList->isEmpty() && m_pPrologues->isEmpty() && m_pEpilogues->isEmpty(); };
 	void doClear();

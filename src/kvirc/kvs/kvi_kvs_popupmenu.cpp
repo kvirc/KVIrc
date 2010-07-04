@@ -707,7 +707,7 @@ void KviKvsPopupMenu::addItem(const QString &szItemName,const QString &szCode,co
 
 }
 
-void KviKvsPopupMenu::addExtPopup(const QString &szItemName,const QString &szPopupName,const QString szText,const QString &szIcon,const QString &szCondition)
+void KviKvsPopupMenu::addExtPopup(const QString &szItemName,const QString &szPopupName,const QString &szText,const QString &szIcon,const QString &szCondition)
 {
 	QString szName = szItemName;
 	if(szName.isEmpty())
