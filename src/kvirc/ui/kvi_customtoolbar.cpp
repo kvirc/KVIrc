@@ -271,7 +271,10 @@ void KviCustomToolBar::dragLeaveEvent(QDragLeaveEvent *)
 	{
 		if(m_pFilteredChildren)
 			m_pFilteredChildren->remove(m_pDraggedChild); // just to be sure
-		delete m_pDraggedChild;
+		//m_pDraggedChild->reparent(0);
+		m_pDraggedChild->hide();
+		m_pDraggedChild->deleteLater(); // don't delete it now: it's going to crash with recent Qt versions
+		//delete m_pDraggedChild;
 		m_pDraggedChild = 0;
 	}
 }
