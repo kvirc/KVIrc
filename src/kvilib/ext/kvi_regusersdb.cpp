@@ -149,7 +149,8 @@ KviRegisteredUser::KviRegisteredUser(const QString & name)
 
 KviRegisteredUser::~KviRegisteredUser()
 {
-	if(m_pPropertyDict)delete m_pPropertyDict;
+	if(m_pPropertyDict)
+		delete m_pPropertyDict;
 	delete m_pMaskList;
 }
 

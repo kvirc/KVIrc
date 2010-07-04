@@ -63,10 +63,8 @@ namespace Kopete {
 namespace AV {
 
 VideoDevice::VideoDevice()
+	: descriptor(-1), m_streambuffers(0), m_current_input(0)
 {
-	descriptor = -1;
-	m_streambuffers  = 0;
-	m_current_input = 0;
 }
 
 
@@ -334,9 +332,9 @@ int VideoDevice::setFileName(QString filename)
 }
 
 /*!
-    \fn QString VideoDevice::fileName()
+    \fn QString VideoDevice::fileName() const
  */
-QString VideoDevice::fileName()
+QString VideoDevice::fileName() const
 {
 	return full_filename;
 }
@@ -757,32 +755,32 @@ int VideoDevice::inputs()
 }
 
 
-int VideoDevice::width()
+int VideoDevice::width() const
 {
 	return currentwidth;
 }
 
-int VideoDevice::minWidth()
+int VideoDevice::minWidth() const
 {
 	return minwidth;
 }
 
-int VideoDevice::maxWidth()
+int VideoDevice::maxWidth() const
 {
 	return maxwidth;
 }
 
-int VideoDevice::height()
+int VideoDevice::height() const
 {
 	return currentheight;
 }
 
-int VideoDevice::minHeight()
+int VideoDevice::minHeight() const
 {
 	return minheight;
 }
 
-int VideoDevice::maxHeight()
+int VideoDevice::maxHeight() const
 {
 	return maxheight;
 }
@@ -1708,7 +1706,7 @@ int VideoDevice::close()
     \return A list of all supported numeric controls for the current input
     \brief Returns the supported numeric controls for the current input
  */
-QList<NumericVideoControl> VideoDevice::getSupportedNumericControls()
+QList<NumericVideoControl> VideoDevice::getSupportedNumericControls() const
 {
 	return m_numericCtrls;
 }
@@ -1718,7 +1716,7 @@ QList<NumericVideoControl> VideoDevice::getSupportedNumericControls()
     \return A list of all supported boolean controls for the current input
     \brief Returns the supported boolean controls for the current input
  */
-QList<BooleanVideoControl> VideoDevice::getSupportedBooleanControls()
+QList<BooleanVideoControl> VideoDevice::getSupportedBooleanControls() const
 {
 	return m_booleanCtrls;
 }
@@ -1728,7 +1726,7 @@ QList<BooleanVideoControl> VideoDevice::getSupportedBooleanControls()
     \return A list of all supported menu-controls for the current input
     \brief Returns the supported menu-controls for the current input
  */
-QList<MenuVideoControl> VideoDevice::getSupportedMenuControls()
+QList<MenuVideoControl> VideoDevice::getSupportedMenuControls() const
 {
 	return m_menuCtrls;
 }
@@ -1738,7 +1736,7 @@ QList<MenuVideoControl> VideoDevice::getSupportedMenuControls()
     \return A list of all supported action-controls for the current input
     \brief Returns the supported action-controls for the current input
  */
-QList<ActionVideoControl> VideoDevice::getSupportedActionControls()
+QList<ActionVideoControl> VideoDevice::getSupportedActionControls() const
 {
 	return m_actionCtrls;
 }
@@ -2983,37 +2981,37 @@ int VideoDevice::initUserptr()
 	return EXIT_FAILURE;
 }
 
-bool VideoDevice::canCapture()
+bool VideoDevice::canCapture() const
 {
 	return m_videocapture;
 }
 
-bool VideoDevice::canChromakey()
+bool VideoDevice::canChromakey() const
 {
 	return m_videochromakey;
 }
 
-bool VideoDevice::canScale()
+bool VideoDevice::canScale() const
 {
 	return m_videoscale;
 }
 
-bool VideoDevice::canOverlay()
+bool VideoDevice::canOverlay() const
 {
 	return m_videooverlay;
 }
 
-bool VideoDevice::canRead()
+bool VideoDevice::canRead() const
 {
 	return m_videoread;
 }
 
-bool VideoDevice::canAsyncIO()
+bool VideoDevice::canAsyncIO() const
 {
 	return m_videoasyncio;
 }
 
-bool VideoDevice::canStream()
+bool VideoDevice::canStream() const
 {
 	return m_videostream;
 }
