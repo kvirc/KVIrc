@@ -58,14 +58,20 @@ KviPixmap::KviPixmap(const KviPixmap &pix)
 
 KviPixmap::~KviPixmap()
 {
-	if(m_pPix)delete m_pPix;
-	m_pPix = 0; // just to be sure :)
+	if(m_pPix)
+	{
+		delete m_pPix;
+		m_pPix = 0; // just to be sure :)
+	}
 }
 
 bool KviPixmap::load(const char * path)
 {
-	if(m_pPix)delete m_pPix;
-	m_pPix   = 0;
+	if(m_pPix)
+	{
+		delete m_pPix;
+		m_pPix   = 0;
+	}
 	m_szPath = path;
 	if(m_szPath.isEmpty())return false;
 
@@ -83,8 +89,11 @@ bool KviPixmap::load(const char * path)
 
 bool KviPixmap::load(const QString& path)
 {
-	if(m_pPix)delete m_pPix;
-	m_pPix   = 0;
+	if(m_pPix)
+	{
+		delete m_pPix;
+		m_pPix   = 0;
+	}
 	m_szPath = path;
 	if(m_szPath.isEmpty())return false;
 
@@ -108,7 +117,8 @@ void KviPixmap::set(const QPixmap &pix,const QString &szPath)
 		return;
 	}
 
-	if(m_pPix)delete m_pPix;
+	if(m_pPix)
+		delete m_pPix;
 	m_pPix = new QPixmap(pix);
 	m_szPath = szPath;
 }
@@ -116,8 +126,11 @@ void KviPixmap::set(const QPixmap &pix,const QString &szPath)
 
 void KviPixmap::setNull()
 {
-	if(m_pPix)delete m_pPix;
-	m_pPix = 0;
+	if(m_pPix)
+	{
+		delete m_pPix;
+		m_pPix = 0;
+	}
 	m_szPath = "";
 }
 
@@ -126,8 +139,11 @@ KviPixmap & KviPixmap::operator=(const KviPixmap &pix)
 	if(m_pPix == pix.m_pPix)return (*this); // self assignment (!!!)
 	if(KviQString::equalCI(m_szPath,pix.path()))return (*this); // same pix
 
-	if(m_pPix)delete m_pPix;
-	m_pPix   = 0;
+	if(m_pPix)
+	{
+		delete m_pPix;
+		m_pPix   = 0;
+	}
 	m_szPath = pix.path();
 
 	if(!m_szPath.isEmpty())

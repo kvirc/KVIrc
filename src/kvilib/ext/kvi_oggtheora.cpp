@@ -238,7 +238,6 @@ void KviTheoraEncoder::addVideoFrame(QRgb * rgb32, int)
 	rgb32toyuv444(rgb32, videoYuv, geometry.pic_w, geometry.pic_h);
 //	qDebug("addFrame p%p size%d yuv%p",rgb32,videoSize,videoYuv);
 	
-	double videotime;
 	ogg_page videopage;
 
 	// is there a video page flushed?  If not, fetch one if possible
@@ -247,7 +246,7 @@ void KviTheoraEncoder::addVideoFrame(QRgb * rgb32, int)
 	// no pages?
 	if(!videoflag) return;
 
-	videotime=videoflag?th_granule_time(td,ogg_page_granulepos(&videopage)):-1;
+	th_granule_time(td,ogg_page_granulepos(&videopage));
 
 	// flush a video page
 	m_pStream->append(videopage.header,videopage.header_len);
