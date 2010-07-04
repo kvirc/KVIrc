@@ -57,8 +57,8 @@ public:
 	KviWindow * window(){ return m_pWindow; };
 	KviKvsScript * callback(){ return m_pCallback; };
 	KviKvsVariantList * parameterList(){ return m_pParameterList; };
-	const QString & query(){ return m_szQuery; };
-	bool rebindOnWindowClose(){ return m_bRebindOnWindowClose; };
+	const QString & query() const { return m_szQuery; };
+	bool rebindOnWindowClose() const { return m_bRebindOnWindowClose; };
 	void setWindow(KviWindow * pWnd){ m_pWindow = pWnd; };
 	void setParameterList(KviKvsVariantList * pList){ m_pParameterList = pList; };
 };

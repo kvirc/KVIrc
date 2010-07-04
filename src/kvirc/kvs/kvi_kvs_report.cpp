@@ -48,7 +48,6 @@ void KviKvsReport::findLineAndCol(const QChar * pBegin,const QChar * pPoint,int 
 {
 	iLine = 1;
 
-	const QChar * pPrevLine = 0;
 	const QChar * pLineBegin = pBegin;
 
 	unsigned short us = pBegin->unicode();
@@ -57,7 +56,6 @@ void KviKvsReport::findLineAndCol(const QChar * pBegin,const QChar * pPoint,int 
 	{
 		if(us == '\n')
 		{
-			pPrevLine = pLineBegin;
 			pBegin++;
 			pLineBegin = pBegin;
 			iLine++;
