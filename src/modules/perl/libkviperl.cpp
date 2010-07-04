@@ -369,7 +369,7 @@
 		Treat perl errors as KVS errors and abort execution of the
 		current script. Incompatible with -q
 	@description:
-		Indicates the beginning of a snipped of perl code.
+		Indicates the beginning of a snippet of perl code.
 		The whole code part between perl.begin and perl.end
 		is executed in a perl interpreter.
 		If perl.end is omitted then it is implicitly assumed

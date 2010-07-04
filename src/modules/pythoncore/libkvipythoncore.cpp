@@ -80,6 +80,22 @@ bool KviPythonInterpreter::init()
 	PyInterpreterState * mainInterpreterState = mainThreadState->interp;
 	// create a thread state object for this thread
 	m_pThreadState = PyThreadState_New(mainInterpreterState);
+	// swap in the current thread state
+	PyThreadState_Swap(m_pThreadState);
+	// and hook in the kvirc error handling routines
+	QString szPreCode = QString( \
+		"import kvirc\n" \
+		"import sys\n" \
+		"class kvirc_stderr_grabber:\n" \
+		"\tdef write(self,s):\n" \
+		"\t\tkvirc.error(s)\n" \
+		"sys.stderr=kvirc_stderr_grabber()\n"
+	);
+	// evaluate that
+	PyRun_SimpleString(szPreCode.toUtf8().data());
+	// swap out our thread state for now
+	PyThreadState_Swap(NULL);
+
 	// free the lock
 	PyEval_ReleaseLock();
 	return true;
@@ -103,7 +119,7 @@ void KviPythonInterpreter::done()
 
 bool KviPythonInterpreter::execute(
 		const QString &szCode,
-		QStringList &, //args
+		QStringList &lArgs, //args
 		QString &szRetVal,
 		QString &szError,
 		QStringList &) //lWarnings
@@ -121,6 +137,10 @@ bool KviPythonInterpreter::execute(
 	PyEval_AcquireLock();
 	// swap in my thread state
 	PyThreadState_Swap(m_pThreadState);
+
+	
+
+#if 0 // now it's done in the initialization function of the interpreter
 	//prepend some helping functions
 	QString szPreCode= QString("import kvirc\n" \
 		"import sys\n" \
@@ -130,6 +150,24 @@ bool KviPythonInterpreter::execute(
 		"sys.stderr=kvirc_stderr_grabber()\n"
 	);
 	PyRun_SimpleString(szPreCode.toUtf8().data());
+#endif
+
+	QString szVarCode = "aArgs = [";
+
+	bool bFirst = true;
+	foreach(QString szArg,lArgs)
+	{
+		if(!bFirst)
+			szVarCode += ",";
+		else
+			bFirst = false;
+
+		szVarCode += QString::fromAscii("\"%1\"").arg(szArg);
+	}
+
+	szVarCode += "]";
+
+	PyRun_SimpleString(szVarCode.toUtf8().data());
 
 	// execute some python code
 	retVal = PyRun_SimpleString(szCode.toUtf8().data());
@@ -148,7 +186,7 @@ bool KviPythonInterpreter::execute(
 
 	if(retVal)
 		return false;
-	else return true;
+	return true;
 }
 
 	static KviPointerHashTable<QString,KviPythonInterpreter> * g_pInterpreters = 0;

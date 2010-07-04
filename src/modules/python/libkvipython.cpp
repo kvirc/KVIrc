@@ -63,6 +63,85 @@
 	static KviModule * g_pPythonCoreModule = 0;
 #endif // COMPILE_PYTHON_SUPPORT
 
+
+/*
+	@doc: python.begin
+	@type:
+		command
+	@title:
+		python.begin
+	@keyterms:
+		Including python code snippets in KVS
+	@short:
+		Starts a python code snippet
+	@syntax:
+		python.begin [-n] [-q] [(<python_context>[,<arg0>[,<arg1>[...]]])]
+		<python code>
+		python.end
+	@switches:
+		!sw: -q | --quiet
+		Prevents the command from printing any warnings.
+		!sw: -n | --no-return
+		Prevents the python script return value to be propagated
+		to the current context.
+		!sw: -f | --fail-on-error
+		Treat python errors as KVS errors and abort execution of the
+		current script. Incompatible with -q
+	@description:
+		Indicates the beginning of a snippet of python code.
+		The whole code part between python.begin and python.end
+		is executed in a python interpreter.
+		If python.end is omitted then it is implicitly assumed
+		that the code from python.begin to the end of the command
+		buffer is python.[br]
+		Each python code execution is bound to a
+		python context (that is in fact a particular instance
+		of a python interpreter). If <python_context> is not specified
+		or it is an empty string then temporary python interpreter is created
+		and destroyed just after the code snippet has terminated execution.
+		If <python_context> is specified then a python interpreter
+		keyed to that context is used: if it was already existing
+		then it is reused otherwise it is created.
+		Any <python_context> is persistent: it mantains the function
+		declarations and python variable states until explicitly
+		destroyed with [cmd]python.destroy[/cmd] (or the pythoncore
+		module is forcibly unloaded).[br]
+		The <arg0>,<arg1>,... arguments, if present, are passed
+		to the python code snippet in the aArgs list (accessible as aArgs[0],aArgs[1]...).[br]
+		The return value of the python code is propagated to the current
+		context (just like [cmd]setreturn[/cmd] was called on it) unless
+		the -n switch is used.[br]
+		The -q switch prevents from the command from printing any
+		warning.[br]
+		See the [doc:python_and_kvs]python scripting documentation[/doc]
+		for more information.
+	@examples:
+		[example]
+			python.begin
+			KVIrc::eval("echo \"Hello World from python!\"");
+			python.end
+		[/example]
+	@seealso:
+*/
+
+/*
+	@doc: python.end
+	@type:
+		command
+	@title:
+		python.end
+	@short:
+		Ends a python code snippet
+	@syntax:
+		python.begin[(<python_context>)]
+		<python code>
+		python.end
+	@description:
+		Ends a python code snippet. See [cmd]python.begin[/cmd].
+	@seealso:
+		[cmd]python.begin[/cmd]
+*/
+
 static bool python_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 {
 	// This command is somewhat special in the fact that has a dedicated
