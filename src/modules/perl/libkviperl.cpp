@@ -75,7 +75,7 @@
 		Starting from version 3.0.2 you can include perl code snippets
 		in KVS code and you can use KVS commands from within perl.
 		This feature is present only if a working perl installation
-		has been found at ./configure time.[br]
+		has been found at build time.[br]
 		[br]
 
 		[big]Using perl from KVS[/big][br]
