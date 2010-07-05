@@ -71,7 +71,7 @@ void KviConfig::clear()
 	delete m_pDict;
 	m_pDict      = new KviPointerHashTable<QString,KviConfigGroup>(17,false);
 	m_pDict->setAutoDelete(true);
-	m_bDirty     = false;
+	m_bDirty     = true;
 	m_szGroup    = KVI_CONFIG_DEFAULT_GROUP;
 }
 
