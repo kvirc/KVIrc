@@ -836,14 +836,55 @@ For comparable strings we strip the letters in order to make the comparison.
 
 - Stable and unstable versions
 
-Our numbering scheme does NOT tell which versions are stable
-and which are unstable. The versions are declared to be (more or less) stable
+Historically our numbering scheme didn't tell which versions were stable
+and which are unstable. The versions were declared to be (more or less) stable
 by other means (read: the mailing list and the www site).
-It is true, tough, that stable versions are likely to have
-more numbers omitted (read: 3.5 looks more "stable" than 3.4.5.43),
-but this is not a strict requirement. It is also true that
-almost all "unstable" versions come out from the svn tree and
-usually contain all the four parts.
+It is true, though, that stable versions were likely to have
+more numbers omitted (3.5 looks more "stable" than 3.4.5.43),
+but in the end this wasn't a strict requirement.
+
+However, the request for a more standardized versioning scheme is quite
+recurrent so we *might* try to use the following one from now on:
+
+  + Major versions have no scheme. Developers decide when to increase them.
+    When a major number increases the minor and patchlevel restart from 0.
+
+  + Even minor versions are used for stable releases with major changes.
+    Odd minor versions are used for trunk svn development.
+
+  + For stable (even) minor numbers:
+    + Even patchlevel versions are used for public releases
+    + Odd patchlevel versions are used for svn development
+
+  + For unstable (odd) minor numbers
+    + The patchlevels are increased freely by the developers when a
+      particular milestone is reached.
+
+So:
+
+  4.1.0 is an unstable svn build that comes from svn trunk
+  4.1.3 is an unstable svn build that comes from svn trunk that reached some
+        kind of third milestone
+  4.2.0 is a stable with major changes with respect to 4.0.0
+        it still comes from trunk
+  4.2.1 is a work-in-progress build that comes from svn branch 4.2
+  4.2.2 is a stable with bugfix changes with respect to 4.2.0
+        it comes from svn 4.2 branch
+  4.2.3 is a work-in-progress build that comes from svn branch 4.2
+  4.2.4 is a stable with bugfix changes with respect to 4.2.2
+        it comes from svn 4.2 branch
+  ...
+
+Note that in stable stuff both the minor AND the patchlevel are even numbers.
+
+Visually, for a single major number N, the development might resemble the
+following scheme (R means 'stable public release'):
+
+         R                                  R                    R
+trunk: N.0.0--N.1.0--N.1.1--N.1.2--N.1.3--N.2.0--N.3.0--N.3.1--N.4.0--N.5.0
+         |                                  |                    |
+branch:  +--N.0.1--N.0.2--N.0.3--N.0.4      +--N.2.1--N.2.2      +--N.4.1-...
+                     R             R                    R  
 
 - Official, semi-official and unofficial packages
 
@@ -878,14 +919,6 @@ the unofficial packages and don't provide support if they don't compile/work
 as expected the user/packager is on his own.. but we'll try to be helpful,
 if possible :)
 
-- Putting it all together
-
-At the moment of writing the KVIrc svn trunk has version 4.0.0.
-Today is 01 Sept 2009 and the current svn revision number is 3453.
-The latest official release was 3.4.2, still based on qt3, and some 3.4.3
-bugfixes snapshots are floating around the net.
-If tomorrow we had to emit a quick fix for the official release we'll
-use 4.0.1.
 
 -------------------------------------------------------------------------------
 Code documentation
