@@ -272,6 +272,7 @@ namespace KviKvsCoreSimpleCommands
 			// server is not empty.
 			KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
 			d->bUseSSL = (KVSCSC_pSwitches->find('s',"ssl") != 0);
+			d->bSTARTTLS = false;
 			d->szServer = szServer;
 			d->uPort = (kvi_u32_t)uPort;
 			d->szLinkFilter = szSocketFilter;
