@@ -259,7 +259,7 @@ static bool tip_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	if(!g_pTipWindow)g_pTipWindow = new KviTipWindow();
 	if (!szTipfilename.isEmpty())
-		_pTipWindow->openConfig(szTipfilename);
+		g_pTipWindow->openConfig(szTipfilename);
 	g_pTipWindow->nextTip();
 	g_pTipWindow->show();
 	return true;
