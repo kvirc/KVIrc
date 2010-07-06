@@ -37,12 +37,11 @@ KviColorWindow::KviColorWindow()
 	setObjectName("toplevel_color_window");
 	setWindowFlags(Qt::Popup);
 	setFocusPolicy(Qt::NoFocus);
-	setFixedSize(146,38);
+	setFixedSize(144,36);
 	m_pOwner = 0;
 	QFont fnt = QFont();
 	fnt.setStyleHint(QFont::TypeWriter);
 	fnt.setPointSize(10);
-	//QFont fnt("fixed",10);
 	setFont(fnt);
 	m_iTimerId = -1;
 }
