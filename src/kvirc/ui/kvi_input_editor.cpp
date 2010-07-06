@@ -1149,6 +1149,10 @@ void KviInputEditor::returnPressed(bool)
 		m_pHistory->insert(0,new QString(m_szTextBuffer));
 	}
 
+	//ensure the color window is hidden (bug #835)
+	if(g_pColorWindow->isVisible())
+		g_pColorWindow->hide();
+
 	__range_valid(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
 	if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)m_pHistory->removeLast();
 
@@ -2236,6 +2240,10 @@ void KviInputEditor::sendPlain()
 {
 	if(m_pInputParent->inherits("KviInput"))
 	{
+		//ensure the color window is hidden (bug #835)
+		if(g_pColorWindow->isVisible())
+			g_pColorWindow->hide();
+
 		QString szBuffer(m_szTextBuffer);
 		m_szTextBuffer="";
 		selectOneChar(-1);
