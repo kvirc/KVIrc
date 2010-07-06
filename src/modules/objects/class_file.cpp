@@ -578,8 +578,8 @@ KVSO_CLASS_FUNCTION(file,readHexBlock)
 	}
 	str[index]='\0';
 	c->returnValue()->setString(str);
-	delete str;
-	delete buff;
+	delete[] str;
+	delete[] buff;
 	return true;
 }
 
