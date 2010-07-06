@@ -413,7 +413,7 @@ void KviTrayIcon::refresh()
 
 void KviTrayIcon::activatedSlot( QSystemTrayIcon::ActivationReason reason )
 {
-	if(reason==QSystemTrayIcon::Trigger)
+	if(reason==QSystemTrayIcon::Trigger && (KVI_OPTION_BOOL(KviOption_boolCloseInTray) || !m_pFrm->isVisible()))
 	{
 		toggleParentFrame();
 	}
