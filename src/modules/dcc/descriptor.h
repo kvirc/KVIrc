@@ -130,22 +130,22 @@ public:
 	KviStr          szCodec;           // codec name
 	int             iSampleRate;       // Sample rate
 public:
-	QString protocol(){ return szType; };
-	bool isActive(){ return bActive; };
-	QString remoteNick(){ return szNick; };
-	QString remoteUser(){ return szUser; };
-	QString remoteHost(){ return szHost; };
-	QString remoteIp(){ return szIp; };
-	QString remotePort(){ return szPort; };
-	QString remoteFileName(){ return szFileName; };
-	QString remoteFileSize(){ return szFileSize; };
-	QString localNick(){ return szLocalNick; };
-	QString localUser(){ return szLocalUser; };
-	QString localHost(){ return szLocalHost; };
-	QString localIp(){ return szIp; };
-	QString localPort(){ return szPort; };
-	QString localFileName(){ return szLocalFileName; };
-	QString localFileSize(){ return szLocalFileSize; };
+	QString protocol() const { return szType; };
+	bool isActive() const { return bActive; };
+	QString remoteNick() const { return szNick; };
+	QString remoteUser() const { return szUser; };
+	QString remoteHost() const { return szHost; };
+	QString remoteIp() const { return szIp; };
+	QString remotePort() const { return szPort; };
+	QString remoteFileName() const { return szFileName; };
+	QString remoteFileSize() const { return szFileSize; };
+	QString localNick() const { return szLocalNick; };
+	QString localUser() const { return szLocalUser; };
+	QString localHost() const { return szLocalHost; };
+	QString localIp() const { return szIp; };
+	QString localPort() const { return szPort; };
+	QString localFileName() const { return szLocalFileName; };
+	QString localFileSize() const { return szLocalFileSize; };
 	bool isFileUpload();
 	bool isFileDownload();
 	bool isDccChat();

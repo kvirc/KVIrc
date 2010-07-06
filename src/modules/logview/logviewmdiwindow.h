@@ -56,14 +56,14 @@ public:
 
 	KviLogFile(const QString& name);
 
-	const QString & fileName() { return m_szFilename; };
-	const QString & name() { return m_szName; };
-	const QString & network() { return m_szNetwork; };
-	const QDate   & date() { return m_date; };
+	const QString & fileName() const { return m_szFilename; };
+	const QString & name() const { return m_szName; };
+	const QString & network() const { return m_szNetwork; };
+	const QDate   & date() const { return m_date; };
 
 	void getText(QString & text,const QString& logDir);
 
-	KviLogTypes type() { return m_type; };
+	KviLogTypes type() const { return m_type; };
 private:
 	KviLogTypes  m_type;
 	QString      m_szFilename;

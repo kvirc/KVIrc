@@ -156,7 +156,7 @@
 	}
 
 
-	int IdlePlatform::secondsIdle() {
+	int IdlePlatform::secondsIdle() const {
 		return d->mSecondsIdle;
 	}
 #endif

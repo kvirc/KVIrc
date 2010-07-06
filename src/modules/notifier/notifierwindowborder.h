@@ -117,11 +117,11 @@ public:
 	inline int height() const { return m_rct.height(); };
 	inline int baseLine() const { return (y()+height()); };
 
-	inline QRect bodyRect() { return m_bodyRect; };
-	inline QRect captionRect() { return m_captionRect; };
-	inline QRect rect() { return m_rct; };
-	inline QRect closeRect() { return m_closeIconRect; };
-	inline QRect titleRect() { return m_titleRect; };
+	inline QRect bodyRect() const { return m_bodyRect; };
+	inline QRect captionRect() const { return m_captionRect; };
+	inline QRect rect() const { return m_rct; };
+	inline QRect closeRect() const { return m_closeIconRect; };
+	inline QRect titleRect() const { return m_titleRect; };
 
 	void draw(QPainter *, bool b = false);
 	void setPics(bool b = false);

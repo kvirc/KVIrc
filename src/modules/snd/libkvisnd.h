@@ -120,12 +120,12 @@ public:
 	{
 	}
 
-	SoundSystemPlayRoutine playRoutine()
+	SoundSystemPlayRoutine playRoutine() const
 	{
 		return m_pPlayRoutine;
 	}
 	
-	SoundSystemCleanupRoutine cleanupRoutine()
+	SoundSystemCleanupRoutine cleanupRoutine() const
 	{
 		return m_pCleanupRoutine;
 	}

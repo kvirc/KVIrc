@@ -122,7 +122,7 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 			int offset = 0;
 			switch(m_eGeneralStatus)
 			{
-				case Initializing: offset = 0; break;
+				case Initializing:
 				case Connecting: offset = 0; break;
 				case Downloading: offset = 48; break;
 				case Success: offset = 96; break;

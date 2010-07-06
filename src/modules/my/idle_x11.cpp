@@ -25,8 +25,8 @@
 #ifndef COMPILE_XSS_SUPPORT
 	IdlePlatform::IdlePlatform() {}
 	IdlePlatform::~IdlePlatform() {}
-	bool IdlePlatform::init() { return false; }
-	int IdlePlatform::secondsIdle() { return 0; }
+	bool IdlePlatform::init() const { return false; }
+	int IdlePlatform::secondsIdle() const { return 0; }
 #else
 	#include <QApplication>
 	#include <QDesktopWidget>
