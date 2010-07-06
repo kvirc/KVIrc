@@ -503,15 +503,17 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 			} else {
 				wnd->setGeometry(rect);
 				wnd->triggerCreationEvents();
+				
 				if(bShow)
 				{
-					wnd->show();
 					if(bMaximized)
 						wnd->maximize();
 				} else {
+					wnd->setWindowState(wnd->windowState() | Qt::WindowMinimized);
 					if(bMaximized)
 						wnd->setWindowState(wnd->windowState() | Qt::WindowMaximized);
 				}
+				wnd->show();
 				wnd->youAreUndocked();
 				if(bShow)
 				{
