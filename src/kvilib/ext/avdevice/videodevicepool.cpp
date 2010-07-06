@@ -61,15 +61,24 @@ VideoDevicePool* VideoDevicePool::self()
 }
 
 VideoDevicePool::VideoDevicePool()
-: m_current_device(0)
+: m_current_device(-1)
 {
+#ifdef COMPILE_KDE_SUPPORT
 	connect( Solid::DeviceNotifier::instance(), SIGNAL(deviceAdded(const QString&)), SLOT(deviceAdded(const QString &)) );
 	connect( Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(const QString&)), SLOT(deviceRemoved(const QString &)) );
+	/* NOTE: No locking needed as long as we don't connect with Qt::ConnectionType = Qt::DirectConnection
+	         while the signals are emitted by other threads
+	 */
+	foreach( Solid::Device device, Solid::Device::listFromType(Solid::DeviceInterface::Video, QString()) )
+		registerDevice( device );
+#endif
 }
 
 
 VideoDevicePool::~VideoDevicePool()
 {
+	foreach ( VideoDevice* vd, m_videodevices )
+		delete vd;
 }
 
 
@@ -80,44 +89,39 @@ VideoDevicePool::~VideoDevicePool()
  */
 int VideoDevicePool::open(int device)
 {
-    /// @todo implement me
 	qDebug() << "called with device" << device;
-	m_ready.lock();
-	if (!m_videodevice.size())
+	if (!m_videodevices.size() || (device >= m_videodevices.size()))
 	{
-		qDebug() << "open(): No devices found. Must scan for available devices." << m_current_device;
-		scanDevices();
-	}
-	if (!m_videodevice.size() || (device >= m_videodevice.size()))
-	{
-		qDebug() << "open(): Device not found. bailing out." << m_current_device;
-		m_ready.unlock();
+		qDebug() << "Device not found.";
 		return EXIT_FAILURE;
 	}
-	int current_device = m_current_device;
 	if (device < 0)
 	{
-		qDebug() << "Trying to load saved device (using default device if not available)";
-		loadSelectedDevice();	// Set m_current_device to saved device (if device available)
+		qDebug() << "Trying to load saved device.";
+		device = getSavedDevice();
+		if (device < 0)
+		{
+			if (m_current_device < 0)
+				device = 0;
+			else
+				device = m_current_device;
+			qDebug() << "Saved device is not available, using default device:" << device;
+		}
 	}
-	else
-		m_current_device = device;
 	int isopen = EXIT_FAILURE;
-	if ((m_current_device != current_device) || !isOpen())
+	if ((device != m_current_device) || !isOpen())
 	{
 		if (isOpen())
 		{
-			if (EXIT_SUCCESS == m_videodevice[current_device].close())
+			if (EXIT_SUCCESS == m_videodevices[m_current_device]->close())
 				m_clients--;
 			else
-			{
-				m_ready.unlock();
 				return EXIT_FAILURE;
-			}
 		}
-		isopen = m_videodevice[m_current_device].open();
+		isopen = m_videodevices[device]->open();
 		if (isopen == EXIT_SUCCESS)
 		{
+			m_current_device = device;
 			loadDeviceConfig(); // Load and apply device parameters
 			m_clients++;
 		}
@@ -128,57 +132,82 @@ int VideoDevicePool::open(int device)
 		m_clients++;
 	}
 	qDebug() << "Number of clients: " << m_clients;
-	m_ready.unlock();
 	return isopen;
 }
 
 bool VideoDevicePool::isOpen()
 {
-	return m_videodevice[currentDevice()].isOpen();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->isOpen();
+	else
+		return false;
 }
 
 /*!
     \fn VideoDevicePool::showDeviceCapabilities(int device)
  */
-int VideoDevicePool::showDeviceCapabilities(unsigned int device)
+int VideoDevicePool::showDeviceCapabilities(int device)
 {
-	return m_videodevice[device].showDeviceCapabilities();
+	if (device < 0)
+		device = m_current_device;
+	if ((device >= 0) && (device < m_videodevices.size()))
+		return m_videodevices[device]->showDeviceCapabilities();
+	else
+		return EXIT_FAILURE;
 }
 
 int VideoDevicePool::width()
 {
-	return m_videodevice[currentDevice()].width();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->width();
+	else
+		return 0;
 }
 
 int VideoDevicePool::minWidth()
 {
-	return m_videodevice[currentDevice()].minWidth();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->minWidth();
+	else
+		return 0;
 }
 
 int VideoDevicePool::maxWidth()
 {
-	return m_videodevice[currentDevice()].maxWidth();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->maxWidth();
+	else
+		return 0;
 }
 
 int VideoDevicePool::height()
 {
-	return m_videodevice[currentDevice()].height();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->height();
+	else
+		return 0;
 }
 
 int VideoDevicePool::minHeight()
 {
-	return m_videodevice[currentDevice()].minHeight();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->minHeight();
+	else
+		return 0;
 }
 
 int VideoDevicePool::maxHeight()
 {
-	return m_videodevice[currentDevice()].maxHeight();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->maxHeight();
+	else
+		return 0;
 }
 
 int VideoDevicePool::setSize( int newwidth, int newheight)
 {
-	if(m_videodevice.size())
-		return m_videodevice[currentDevice()].setSize(newwidth, newheight);
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->setSize(newwidth, newheight);
 	else
 	{
 		qDebug() << "VideoDevicePool::setSize() fallback for no device.";
@@ -199,7 +228,7 @@ int VideoDevicePool::setSize( int newwidth, int newheight)
 int VideoDevicePool::close()
 {
 	int ret = EXIT_FAILURE;
-	if (m_current_device >= m_videodevice.size())
+	if ((m_current_device < 0) || (m_current_device >= m_videodevices.size()))
 	{
 		qDebug() << "Current device out of range.";
 	}
@@ -215,7 +244,7 @@ int VideoDevicePool::close()
 	}
 	else
 	{
-		ret = m_videodevice[m_current_device].close();
+		ret = m_videodevices[m_current_device]->close();
 		if (EXIT_SUCCESS == ret)
 			m_clients--;
 	}
@@ -228,9 +257,10 @@ int VideoDevicePool::close()
 int VideoDevicePool::startCapturing()
 {
 	qDebug() << "startCapturing() called.";
-	if(m_videodevice.size())
-		return m_videodevice[currentDevice()].startCapturing();
-	return EXIT_FAILURE;
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->startCapturing();
+	else
+		return EXIT_FAILURE;
 }
 
 
@@ -239,9 +269,10 @@ int VideoDevicePool::startCapturing()
  */
 int VideoDevicePool::stopCapturing()
 {
-	if(m_videodevice.size())
-		return m_videodevice[currentDevice()].stopCapturing();
-	return EXIT_FAILURE;
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->stopCapturing();
+	else
+		return EXIT_FAILURE;
 }
 
 
@@ -254,8 +285,8 @@ int VideoDevicePool::stopCapturing()
  */
 QList<NumericVideoControl> VideoDevicePool::getSupportedNumericControls()
 {
-	if (currentDevice() < m_videodevice.size() )
-		return m_videodevice[currentDevice()].getSupportedNumericControls();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->getSupportedNumericControls();
 	else
 		return QList<NumericVideoControl>();
 }
@@ -267,8 +298,8 @@ QList<NumericVideoControl> VideoDevicePool::getSupportedNumericControls()
  */
 QList<BooleanVideoControl> VideoDevicePool::getSupportedBooleanControls()
 {
-	if (currentDevice() < m_videodevice.size() )
-		return m_videodevice[currentDevice()].getSupportedBooleanControls();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->getSupportedBooleanControls();
 	else
 		return QList<BooleanVideoControl>();
 }
@@ -280,8 +311,8 @@ QList<BooleanVideoControl> VideoDevicePool::getSupportedBooleanControls()
  */
 QList<MenuVideoControl> VideoDevicePool::getSupportedMenuControls()
 {
-	if (currentDevice() < m_videodevice.size() )
-		return m_videodevice[currentDevice()].getSupportedMenuControls();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->getSupportedMenuControls();
 	else
 		return QList<MenuVideoControl>();
 }
@@ -293,8 +324,8 @@ QList<MenuVideoControl> VideoDevicePool::getSupportedMenuControls()
  */
 QList<ActionVideoControl> VideoDevicePool::getSupportedActionControls()
 {
-	if (currentDevice() < m_videodevice.size() )
-		return m_videodevice[currentDevice()].getSupportedActionControls();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->getSupportedActionControls();
 	else
 		return QList<ActionVideoControl>();
 }
@@ -310,8 +341,8 @@ QList<ActionVideoControl> VideoDevicePool::getSupportedActionControls()
  */
 int VideoDevicePool::getControlValue(quint32 ctrl_id, qint32 * value)
 {
-	if (currentDevice() < m_videodevice.size() )
-		return m_videodevice[currentDevice()].getControlValue(ctrl_id, value);
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->getControlValue(ctrl_id, value);
 	else
 		return EXIT_FAILURE;
 }
@@ -328,8 +359,8 @@ int VideoDevicePool::getControlValue(quint32 ctrl_id, qint32 * value)
  */
 int VideoDevicePool::setControlValue(quint32 ctrl_id, qint32 value)
 {
-	if (currentDevice() < m_videodevice.size() )
-		return m_videodevice[currentDevice()].setControlValue(ctrl_id, value);
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->setControlValue(ctrl_id, value);
 	else
 		return EXIT_FAILURE;
 }
@@ -341,21 +372,10 @@ int VideoDevicePool::setControlValue(quint32 ctrl_id, qint32 value)
 int VideoDevicePool::getFrame()
 {
 //	qDebug() << "VideoDevicePool::getFrame() called.";
-	if(m_videodevice.size())
-		return m_videodevice[currentDevice()].getFrame();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->getFrame();
 	else
-	{
-		qDebug() << "VideoDevicePool::getFrame() fallback for no device.";
-		for(int loop=0; loop < m_buffer.data.size(); loop+=3)
-		{
-			m_buffer.data[loop]   = 255;
-			m_buffer.data[loop+1] = 0;
-			m_buffer.data[loop+2] = 0;
-		}
-	}
-	qDebug() << "VideoDevicePool::getFrame() exited successfuly.";
-
-	return EXIT_SUCCESS;
+		return EXIT_FAILURE;
 }
 
 /*!
@@ -364,65 +384,10 @@ int VideoDevicePool::getFrame()
 int VideoDevicePool::getImage(QImage *qimage)
 {
 //	qDebug() << "VideoDevicePool::getImage() called.";
-	if(m_videodevice.size())
-		return m_videodevice[currentDevice()].getImage(qimage);
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->getImage(qimage);
 	else
-	{
-		qDebug() << "VideoDevicePool::getImage() fallback for no device.";
-
-		// do NOT delete qimage here, as it is received as a parameter
-		if (qimage->width() != width() || qimage->height() != height())
-			*qimage = QImage(width(), height(), QImage::Format_RGB32);
-
-		uchar *bits=qimage->bits();
-		switch(m_buffer.pixelformat)
-		{
-			case PIXELFORMAT_NONE	: break;
-			case PIXELFORMAT_GREY	: break;
-			case PIXELFORMAT_RGB332	: break;
-			case PIXELFORMAT_RGB555	: break;
-			case PIXELFORMAT_RGB555X: break;
-			case PIXELFORMAT_RGB565	: break;
-			case PIXELFORMAT_RGB565X: break;
-			case PIXELFORMAT_RGB24	:
-				{
-					qDebug() << "VideoDevicePool::getImage() fallback for no device - RGB24.";
-					int step=0;
-					for(int loop=0;loop < qimage->numBytes();loop+=4)
-					{
-						bits[loop]   = m_buffer.data[step];
-						bits[loop+1] = m_buffer.data[step+1];
-						bits[loop+2] = m_buffer.data[step+2];
-						bits[loop+3] = 255;
-						step+=3;
-					}
-				}
-				break;
-			case PIXELFORMAT_BGR24	: break;
-				{
-					int step=0;
-					for(int loop=0;loop < qimage->numBytes();loop+=4)
-					{
-						bits[loop]   = m_buffer.data[step+2];
-						bits[loop+1] = m_buffer.data[step+1];
-						bits[loop+2] = m_buffer.data[step];
-						bits[loop+3] = 255;
-						step+=3;
-					}
-				}
-				break;
-			case PIXELFORMAT_RGB32	: memcpy(bits,&m_buffer.data[0], m_buffer.data.size());
-				break;
-			case PIXELFORMAT_BGR32	: break;
-			case PIXELFORMAT_YUYV   : break;
-			case PIXELFORMAT_UYVY   : break;
-			case PIXELFORMAT_YUV420P: break;
-			case PIXELFORMAT_YUV422P: break;
-			default: break;
-		}
-	}
-	qDebug() << "VideoDevicePool::getImage() exited successfuly.";
-	return EXIT_SUCCESS;
+		return EXIT_FAILURE;
 }
 
 /*!
@@ -431,213 +396,152 @@ int VideoDevicePool::getImage(QImage *qimage)
 int VideoDevicePool::selectInput(int newinput)
 {
 	qDebug() << "VideoDevicePool::selectInput(" << newinput << ") called.";
-	if(m_videodevice.size())
-		return m_videodevice[currentDevice()].selectInput(newinput);
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->selectInput(newinput);
 	else
-		return 0;
+		return EXIT_FAILURE;
 }
 
 /*!
     \fn Kopete::AV::VideoDevicePool::fillDeviceQComboBox(QComboBox *combobox)
  */
-int VideoDevicePool::fillDeviceQComboBox(QComboBox *combobox)
+void VideoDevicePool::fillDeviceQComboBox(QComboBox *combobox)
 {
-    /// @todo implement me
 	qDebug() << "Called.";
-// check if QComboBox is a valid pointer.
-	if (combobox != NULL)
+	if (combobox == NULL)
+		return;
+	combobox->clear();
+	if (m_videodevices.size())
 	{
-		combobox->clear();
-		qDebug() << "Combobox cleaned.";
-		if(m_videodevice.size())
+		for (int loop = 0; loop < m_videodevices.size(); loop++)
 		{
-			for (int loop=0; loop < m_videodevice.size(); loop++)
-			{
-				combobox->addItem(m_videodevice[loop].m_name);
-				qDebug() << "Added device " << loop << ": " << m_videodevice[loop].m_name;
-			}
-			combobox->setCurrentIndex(currentDevice());
-			combobox->setEnabled(true);
-			return EXIT_SUCCESS;
+			combobox->addItem(m_videodevices[loop]->m_name);
+			qDebug() << "Added device" << loop << ":  " << m_videodevices[loop]->m_name;
 		}
-		combobox->setEnabled(false);
+		combobox->setCurrentIndex(m_current_device);
 	}
-	return EXIT_FAILURE;
+	combobox->setEnabled(m_videodevices.size());
 }
 
 /*!
     \fn Kopete::AV::VideoDevicePool::fillInputQComboBox(QComboBox *combobox)
  */
-int VideoDevicePool::fillInputQComboBox(QComboBox *combobox)
+void VideoDevicePool::fillInputQComboBox(QComboBox *combobox)
 {
-    /// @todo implement me
 	qDebug() << "Called.";
-	if (combobox != NULL)
+	if (combobox == NULL)
+		return;
+	combobox->clear();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
 	{
-		combobox->clear();
-		if ( !m_videodevice.isEmpty() && (currentDevice()>=0) && currentDevice() < m_videodevice.size() )
+		if (m_videodevices[m_current_device]->inputs() > 0)
 		{
-			if(m_videodevice[currentDevice()].inputs()>0)
+			for (int loop = 0; loop < m_videodevices[m_current_device]->inputs(); loop++)
 			{
-				for (int loop=0; loop < m_videodevice[currentDevice()].inputs(); loop++)
-				{
-					combobox->addItem(m_videodevice[currentDevice()].m_input[loop].name);
-					qDebug() << "Added input " << loop << ": " << m_videodevice[currentDevice()].m_input[loop].name << " (tuner: " << m_videodevice[currentDevice()].m_input[loop].hastuner << ")";
-				}
-				combobox->setCurrentIndex(currentInput());
-				combobox->setEnabled(true);
-				return EXIT_SUCCESS;
+				combobox->addItem(m_videodevices[m_current_device]->m_input[loop].name);
+				qDebug() << "Added input" << loop << ":  " << m_videodevices[m_current_device]->m_input[loop].name
+				         << " (tuner: " << m_videodevices[m_current_device]->m_input[loop].hastuner << ")";
 			}
+			combobox->setCurrentIndex(m_videodevices[m_current_device]->currentInput());
 		}
-		combobox->setEnabled(false);
 	}
-	return EXIT_FAILURE;
+	combobox->setEnabled(combobox->count());
 }
 
 /*!
     \fn Kopete::AV::VideoDevicePool::fillStandardQComboBox(QComboBox *combobox)
  */
-int VideoDevicePool::fillStandardQComboBox(QComboBox *combobox)
+void VideoDevicePool::fillStandardQComboBox(QComboBox *combobox)
 {
-    /// @todo implement me
 	qDebug() << "Called.";
-	if (combobox != NULL)
+	if (combobox == NULL)
+		return;
+	combobox->clear();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
 	{
-		combobox->clear();
-		if ( !m_videodevice.isEmpty() && currentDevice() < m_videodevice.size() )
+		if (m_videodevices[m_current_device]->inputs() > 0)
 		{
-			if(m_videodevice[currentDevice()].inputs()>0)
+			for (unsigned int loop = 0; loop < 25; loop++)
 			{
-				for (unsigned int loop=0; loop < 25; loop++)
+				if (m_videodevices[m_current_device]->m_input[currentInput()].m_standards & (1 << loop))
 				{
-					if ( (m_videodevice[currentDevice()].m_input[currentInput()].m_standards) & (1 << loop) )
-						combobox->addItem(m_videodevice[currentDevice()].signalStandardName( 1 << loop));
-/*
-				case STANDARD_PAL_B1	: return V4L2_STD_PAL_B1;	break;
-				case STANDARD_PAL_G	: return V4L2_STD_PAL_G;	break;
-				case STANDARD_PAL_H	: return V4L2_STD_PAL_H;	break;
-				case STANDARD_PAL_I	: return V4L2_STD_PAL_I;	break;
-				case STANDARD_PAL_D	: return V4L2_STD_PAL_D;	break;
-				case STANDARD_PAL_D1	: return V4L2_STD_PAL_D1;	break;
-				case STANDARD_PAL_K	: return V4L2_STD_PAL_K;	break;
-				case STANDARD_PAL_M	: return V4L2_STD_PAL_M;	break;
-				case STANDARD_PAL_N	: return V4L2_STD_PAL_N;	break;
-				case STANDARD_PAL_Nc	: return V4L2_STD_PAL_Nc;	break;
-				case STANDARD_PAL_60	: return V4L2_STD_PAL_60;	break;
-				case STANDARD_NTSC_M	: return V4L2_STD_NTSC_M;	break;
-				case STANDARD_NTSC_M_JP	: return V4L2_STD_NTSC_M_JP;	break;
-				case STANDARD_NTSC_443	: return V4L2_STD_NTSC;		break; // Using workaround value because my videodev2.h header seems to not include this standard in struct __u64 v4l2_std_id
-				case STANDARD_SECAM_B	: return V4L2_STD_SECAM_B;	break;
-				case STANDARD_SECAM_D	: return V4L2_STD_SECAM_D;	break;
-				case STANDARD_SECAM_G	: return V4L2_STD_SECAM_G;	break;
-				case STANDARD_SECAM_H	: return V4L2_STD_SECAM_H;	break;
-				case STANDARD_SECAM_K	: return V4L2_STD_SECAM_K;	break;
-				case STANDARD_SECAM_K1	: return V4L2_STD_SECAM_K1;	break;
-				case STANDARD_SECAM_L	: return V4L2_STD_SECAM_L;	break;
-				case STANDARD_SECAM_LC	: return V4L2_STD_SECAM;	break; // Using workaround value because my videodev2.h header seems to not include this standard in struct __u64 v4l2_std_id
-				case STANDARD_ATSC_8_VSB	: return V4L2_STD_ATSC_8_VSB;	break; // ATSC/HDTV Standard officially not supported by V4L2 but exists in videodev2.h
-				case STANDARD_ATSC_16_VSB	: return V4L2_STD_ATSC_16_VSB;	break; // ATSC/HDTV Standard officially not supported by V4L2 but exists in videodev2.h
-				case STANDARD_PAL_BG	: return V4L2_STD_PAL_BG;	break;
-				case STANDARD_PAL_DK	: return V4L2_STD_PAL_DK;	break;
-				case STANDARD_PAL	: return V4L2_STD_PAL;		break;
-				case STANDARD_NTSC	: return V4L2_STD_NTSC;		break;
-				case STANDARD_SECAM_DK	: return V4L2_STD_SECAM_DK;	break;
-				case STANDARD_SECAM	: return V4L2_STD_SECAM;	break;
-				case STANDARD_525_60	: return V4L2_STD_525_60;	break;
-				case STANDARD_625_50	: return V4L2_STD_625_50;	break;
-				case STANDARD_ALL	: return V4L2_STD_ALL;		break;
-
-				combobox->insertItem(m_videodevice[currentDevice()].m_input[loop].name);
-				qDebug() << "StandardQComboBox: Added input " << loop << ": " << m_videodevice[currentDevice()].m_input[loop].name << " (tuner: " << m_videodevice[currentDevice()].m_input[loop].hastuner << ")";*/
+					combobox->addItem(m_videodevices[m_current_device]->signalStandardName(1 << loop));
+					qDebug() << "Added signal standard" << loop << ":  " << m_videodevices[m_current_device]->signalStandardName(1 << loop);
 				}
-				combobox->setCurrentIndex(0);	// FIXME: set to actual signal standard
-				combobox->setEnabled(combobox->count());
-				return EXIT_SUCCESS;
+				  
 			}
-		}
-		combobox->setEnabled(false);
+			combobox->setCurrentIndex(0);	// FIXME: set to actual signal standard
+		}  
 	}
-	return EXIT_FAILURE;
+	combobox->setEnabled(combobox->count());
 }
-
-/*!
-    \fn Kopete::AV::VideoDevicePool::scanDevices()
- */
-int VideoDevicePool::scanDevices()
+#ifdef COMPILE_KDE_SUPPORT
+bool VideoDevicePool::registerDevice( Solid::Device & device )
 {
-    /// @todo implement me
-
-	if (m_videodevice.isEmpty()) {
-		qDebug() << "called";
-#ifndef COMPILE_DISABLE_AVDEVICE
-		foreach (Solid::Device device,
-				Solid::Device::listFromType(Solid::DeviceInterface::Video, QString())) {
-			registerDevice( device );
-		}
-
-#endif
-		qDebug() << "exited successfuly";
-	} else {
-		qDebug() << "Not scanning: initial device list already loaded";
-	}
-	return EXIT_SUCCESS;
-}
-
-void VideoDevicePool::registerDevice( Solid::Device & device )
-{
-	qDebug() << "New video device at " << device.udi();
+	qDebug() << "called, UDI is:\n   " << device.udi();
 	const Solid::Device * vendorDevice = &device;
-	while ( vendorDevice->isValid() && vendorDevice->vendor().isEmpty() )
+	while (vendorDevice->isValid() && vendorDevice->vendor().isEmpty())
+		vendorDevice = new Solid::Device(vendorDevice->parentUdi());
+	/* NOTE: The device we register has usually an empty vendor string and a less meaningfull product string.
+	   So we go up to the first parent device that has a non-empty vendor string,
+	   because we find the expected strings describing the device there.
+	 */
+	if (vendorDevice->isValid())
+		qDebug() << "vendor:" << vendorDevice->vendor() << ", product:" << vendorDevice->product();
+	else
+		qDebug() << "vendor:" << device.vendor() << ", product:" << device.product();
+ 
+	if (device.isValid())
 	{
-		vendorDevice = new Solid::Device( vendorDevice->parentUdi() );
-	}
-	if ( vendorDevice->isValid() )
-	{
-		qDebug() << "vendor: " << vendorDevice->vendor() << ", product: " << vendorDevice->product();
-	}
-	Solid::Video * solidVideoDevice = device.as<Solid::Video>();
-	if ( solidVideoDevice ) {
-		QStringList protocols = solidVideoDevice->supportedProtocols();
-		if ( protocols.contains( "video4linux" ) )
+		Solid::Video * solidVideoDevice = device.as<Solid::Video>();
+		if (solidVideoDevice)
 		{
-			QStringList drivers = solidVideoDevice->supportedDrivers( "video4linux" );
-			if ( drivers.contains( "video4linux" ) )
+			QStringList protocols = solidVideoDevice->supportedProtocols();
+			if (protocols.contains("video4linux"))
 			{
-				qDebug() << "V4L device path is" << solidVideoDevice->driverHandle( "video4linux" ).toString();
-				VideoDevice videodevice;
-				videodevice.setUdi( device.udi() );
-				videodevice.setFileName(solidVideoDevice->driverHandle( "video4linux" ).toString());
-				qDebug() << "Found device " << videodevice.fileName();
-				videodevice.open();
-				if(videodevice.isOpen())
+				QStringList drivers = solidVideoDevice->supportedDrivers("video4linux");
+				if (drivers.contains("video4linux"))
 				{
-					qDebug() << "File " << videodevice.fileName() << " was opened successfuly";
-					videodevice.close();
-					m_videodevice.push_back(videodevice);
+					VideoDevice* videodevice = new VideoDevice;
+					videodevice->setUdi( device.udi() );
+					videodevice->setFileName(solidVideoDevice->driverHandle("video4linux").toString());
+					qDebug() << "V4L device path is" << solidVideoDevice->driverHandle("video4linux").toString();
+					if (EXIT_SUCCESS == videodevice->open())
+					{
+						bool cap = videodevice->canCapture();
+						videodevice->close();
+						if (cap)
+						{
+							if (m_videodevices.size() == 0)
+								m_current_device = 0;
+							m_videodevices.push_back(videodevice);
+							qDebug() << "Device is a valid video device, adding it to video device pool.";
+							return true;
+						}
+						else
+							qDebug() << "Device does not support capturing.";
+					}
+					else
+						qDebug() << "Device could not be opened.";
+					delete videodevice;
 				}
 			}
 		}
+		else
+			qDebug() << "Device is not a video device.";
 	}
-}
-
-/*!
-    \fn Kopete::AV::VideoDevicePool::hasDevices()
- */
-bool VideoDevicePool::hasDevices()
-{
-    /// @todo implement me
-	if(m_videodevice.size())
-		return true;
+	else
+		qDebug() << "Not a valid Solid device: device is not available in the system.";
 	return false;
 }
-
+#endif
 /*!
     \fn Kopete::AV::VideoDevicePool::size()
  */
 int VideoDevicePool::size()
 {
     /// @todo implement me
-	return m_videodevice.size();
+	return m_videodevices.size();
 }
 
 /*!
@@ -654,8 +558,8 @@ int VideoDevicePool::currentDevice()
  */
 QString VideoDevicePool::currentDeviceUdi()
 {
-	if (m_videodevice.size() && (m_current_device >= 0))
-		return m_videodevice[m_current_device].udi();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->udi();
 	else
 		return QString();
 }
@@ -666,7 +570,10 @@ QString VideoDevicePool::currentDeviceUdi()
 int VideoDevicePool::currentInput()
 {
     /// @todo implement me
-	return m_videodevice[currentDevice()].currentInput();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->currentInput();
+	else
+		return -1;
 }
 
 /*!
@@ -675,17 +582,20 @@ int VideoDevicePool::currentInput()
 int VideoDevicePool::inputs()
 {
     /// @todo implement me
-	return m_videodevice[currentDevice()].inputs();
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
+		return m_videodevices[m_current_device]->inputs();
+	else
+		return 0;
 }
 
 /*!
-    \fn void Kopete::AV::VideoDevicePool::loadSelectedDevice()
-    \brief Loads and selects the saved device
+    \fn int Kopete::AV::VideoDevicePool::getSavedDevice()
+    \brief Returns the index of the saved device
  */
-void VideoDevicePool::loadSelectedDevice()
+int VideoDevicePool::getSavedDevice()
 {
 	qDebug() << "called";
-	if (hasDevices())
+	if (m_videodevices.size())
 	{
 		KConfigGroup config(KGlobal::config(), "Video Device Settings");
 		QString currentdevice = config.readEntry("Current Device", QString());
@@ -693,14 +603,14 @@ void VideoDevicePool::loadSelectedDevice()
 		if (!currentdevice.isEmpty())
 		{
 			qDebug() << "Saved device:" << currentdevice;
-			VideoDeviceVector::iterator vditerator;
-			for( vditerator = m_videodevice.begin(); vditerator != m_videodevice.end(); ++vditerator )
+			QVector<VideoDevice*>::iterator vditerator;
+			for( vditerator = m_videodevices.begin(); vditerator != m_videodevices.end(); ++vditerator )
 			{
-				if ((*vditerator).udi() == currentdevice)
+				if ((*vditerator)->udi() == currentdevice)
 				{
-					m_current_device = std::distance (m_videodevice.begin(), vditerator);
-					qDebug() << "Saved device is available, setting device-index to" << m_current_device;
-					return;
+					int devIndex = std::distance (m_videodevices.begin(), vditerator);
+					qDebug() << "Saved device is available, device index is" << devIndex;
+					return devIndex;
 				}
 			}
 			qDebug() << "Saved device is not available.";
@@ -708,6 +618,7 @@ void VideoDevicePool::loadSelectedDevice()
 		else
 			qDebug() << "No device saved.";
 	}
+	return -1;
 }
 
 /*!
@@ -719,21 +630,21 @@ void VideoDevicePool::loadSelectedDevice()
 void VideoDevicePool::loadDeviceConfig()
 {
 	qDebug() << "called";
-	if (hasDevices())
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
 	{
 		KConfigGroup config(KGlobal::config(), "Video Device Settings");
 		// Load input and apply
-		const QString key_currentinput = QString::fromLocal8Bit( "Device %1 Current Input" ).arg( m_videodevice[m_current_device].udi() );
+		const QString key_currentinput = QString::fromLocal8Bit( "Device %1 Current Input" ).arg( m_videodevices[m_current_device]->udi() );
 		const int currentinput = config.readEntry(key_currentinput, 0);
 		qDebug() << "Setting input to" << currentinput;
-		if (currentinput != m_videodevice[m_current_device].currentInput())
-			m_videodevice[m_current_device].selectInput(currentinput);
+		if (currentinput != m_videodevices[m_current_device]->currentInput())
+			m_videodevices[m_current_device]->selectInput(currentinput);
 		// Load video-controls and apply
 		quint32 ctrl_id;
 		qint32 ctrl_value;
 		QString ctrl_key;
 		bool ok = false;
-		const QString key_control_start = QString::fromLocal8Bit( "Device %1 Input %2 Control " ).arg( m_videodevice[m_current_device].udi() ,  m_videodevice[m_current_device].currentInput() );
+		const QString key_control_start = QString::fromLocal8Bit( "Device %1 Input %2 Control " ).arg( m_videodevices[m_current_device]->udi() ).arg( m_videodevices[m_current_device]->currentInput() );
 		QStringList ctrl_keys = config.keyList().filter(key_control_start);
 		qDebug() << "Found" << ctrl_keys.size() << "saved values for video-controls";
 		foreach (ctrl_key, ctrl_keys)
@@ -750,7 +661,7 @@ void VideoDevicePool::loadDeviceConfig()
 				if (ok && !tmpstr.isEmpty())
 				{
 					qDebug() << "Setting control" << ctrl_id << "to value" << ctrl_value;
-					m_videodevice[m_current_device].setControlValue(ctrl_id, ctrl_value);
+					m_videodevices[m_current_device]->setControlValue(ctrl_id, ctrl_value);
 				}
 				else
 					qDebug() << "Saved value for control" << ctrl_id << "is invalid:" << tmpstr;
@@ -771,23 +682,23 @@ void VideoDevicePool::loadDeviceConfig()
 void VideoDevicePool::saveCurrentDeviceConfig()
 {
 	qDebug() << "called";
-	if (hasDevices())
+	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
 	{
 		KConfigGroup config(KGlobal::config(), "Video Device Settings");
 		// Save current device:
-		qDebug() << "Current device:" << m_videodevice[m_current_device].udi();
-		config.writeEntry( "Current Device", m_videodevice[m_current_device].udi() );
+		qDebug() << "Current device:" << m_videodevices[m_current_device]->udi();
+		config.writeEntry( "Current Device", m_videodevices[m_current_device]->udi() );
 		// Save current device name (for debugging only):
-		qDebug() << "Current device name:" << m_videodevice[m_current_device].m_name;
-		const QString name = QString::fromLocal8Bit( "Device %1 Name" ).arg( m_videodevice[m_current_device].udi() );
-		config.writeEntry( name, m_videodevice[m_current_device].m_name );
+		qDebug() << "Current device name:" << m_videodevices[m_current_device]->m_name;
+		const QString name = QString::fromLocal8Bit( "Device %1 Name" ).arg( m_videodevices[m_current_device]->udi() );
+		config.writeEntry( name, m_videodevices[m_current_device]->m_name );
 		// Open device if closed:
 		bool wasClosed = false;
-		if (!m_videodevice[m_current_device].isOpen())
+		if (!m_videodevices[m_current_device]->isOpen())
 		{
 			qDebug() << "Device is currently closed, will be opened.";
 			wasClosed = true;
-			if (EXIT_SUCCESS != m_videodevice[m_current_device].open())
+			if (EXIT_SUCCESS != m_videodevices[m_current_device]->open())
 			{
 				qDebug() << "Failed to open the device. Saving aborted.";
 				config.sync();
@@ -795,18 +706,18 @@ void VideoDevicePool::saveCurrentDeviceConfig()
 			}
 		}
 		// Save current input:
-		qDebug() << "Current input:" << m_videodevice[m_current_device].currentInput();
-		const QString key_currentinput = QString::fromLocal8Bit( "Device %1 Current Input" ).arg( m_videodevice[m_current_device].udi() );
-		config.writeEntry( key_currentinput, m_videodevice[m_current_device].currentInput() );
+		qDebug() << "Current input:" << m_videodevices[m_current_device]->currentInput();
+		const QString key_currentinput = QString::fromLocal8Bit( "Device %1 Current Input" ).arg( m_videodevices[m_current_device]->udi() );
+		config.writeEntry( key_currentinput, m_videodevices[m_current_device]->currentInput() );
 		// --- Save values of the controls ---:
 		qint32 ctrl_value;
-		const QString key_control_start = QString::fromLocal8Bit( "Device %1 Input %2 Control " ).arg( m_videodevice[m_current_device].udi() ,  m_videodevice[m_current_device].currentInput() );
+		const QString key_control_start = QString::fromLocal8Bit( "Device %1 Input %2 Control " ).arg( m_videodevices[m_current_device]->udi() ).arg( m_videodevices[m_current_device]->currentInput() );
 		// Save values of the numeric controls:
-		QList<NumericVideoControl> numCtrls = m_videodevice[m_current_device].getSupportedNumericControls();
+		QList<NumericVideoControl> numCtrls = m_videodevices[m_current_device]->getSupportedNumericControls();
 		NumericVideoControl numCtrl;
 		foreach (numCtrl, numCtrls)
 		{
-			if (EXIT_SUCCESS == m_videodevice[m_current_device].getControlValue(numCtrl.id, &ctrl_value))
+			if (EXIT_SUCCESS == m_videodevices[m_current_device]->getControlValue(numCtrl.id, &ctrl_value))
 			{
 				qDebug() << "Numeric control:" << numCtrl.id << "value" << ctrl_value;
 				config.writeEntry( key_control_start + QString::number(numCtrl.id), ctrl_value );
@@ -815,11 +726,11 @@ void VideoDevicePool::saveCurrentDeviceConfig()
 				qDebug() << "Error: couldn't get current value for numeric control" << numCtrl.id;
 		}
 		// Save values of the boolean controls:
-		QList<BooleanVideoControl> boolCtrls = m_videodevice[m_current_device].getSupportedBooleanControls();
+		QList<BooleanVideoControl> boolCtrls = m_videodevices[m_current_device]->getSupportedBooleanControls();
 		BooleanVideoControl boolCtrl;
 		foreach (boolCtrl, boolCtrls)
 		{
-			if (EXIT_SUCCESS == m_videodevice[m_current_device].getControlValue(boolCtrl.id, &ctrl_value))
+			if (EXIT_SUCCESS == m_videodevices[m_current_device]->getControlValue(boolCtrl.id, &ctrl_value))
 			{
 				qDebug() << "Boolean control:" << boolCtrl.id << "value" << ctrl_value;
 				config.writeEntry( key_control_start + QString::number(boolCtrl.id), ctrl_value );
@@ -828,11 +739,11 @@ void VideoDevicePool::saveCurrentDeviceConfig()
 				qDebug() << "Error: couldn't get current value for boolean control" << numCtrl.id;
 		}
 		// Save values of the menu controls:
-		QList<MenuVideoControl> menuCtrls = m_videodevice[m_current_device].getSupportedMenuControls();
+		QList<MenuVideoControl> menuCtrls = m_videodevices[m_current_device]->getSupportedMenuControls();
 		MenuVideoControl menuCtrl;
 		foreach (menuCtrl, menuCtrls)
 		{
-			if (EXIT_SUCCESS == m_videodevice[m_current_device].getControlValue(menuCtrl.id, &ctrl_value))
+			if (EXIT_SUCCESS == m_videodevices[m_current_device]->getControlValue(menuCtrl.id, &ctrl_value))
 			{
 				qDebug() << "Menu-control:" << menuCtrl.id << "value" << ctrl_value;
 				config.writeEntry( key_control_start + QString::number(menuCtrl.id), ctrl_value );
@@ -844,7 +755,7 @@ void VideoDevicePool::saveCurrentDeviceConfig()
 		// Close device again (if it was closed before):
 		if (wasClosed)
 		{
-			if (EXIT_SUCCESS == m_videodevice[m_current_device].close())
+			if (EXIT_SUCCESS == m_videodevices[m_current_device]->close())
 				qDebug() << "Device successfully closed.";
 			else
 				qDebug() << "Error: failed to close the device.";
@@ -856,47 +767,48 @@ void VideoDevicePool::saveCurrentDeviceConfig()
 
 void VideoDevicePool::deviceAdded( const QString & udi )
 {
-	qDebug() << "("<< udi << ") called";
+	qDebug() << "called with UDI" << udi;
+#ifdef COMPILE_KDE_SUPPORT
 	Solid::Device dev( udi );
 	if ( dev.is<Solid::Video>() )
 	{
-		registerDevice( dev );
-		emit deviceRegistered( udi );
+		qDebug() << "Device is a video device, trying to register it.";
+		if ( registerDevice( dev ) )
+			emit deviceRegistered( udi );
 	}
+	else
+		qDebug() << "Device is not a video device";
+#endif
 }
-
 void VideoDevicePool::deviceRemoved( const QString & udi )
 {
-	qDebug() << "("<< udi << ") called";
+	qDebug() << "called with UDI" << udi;
 	int i = 0;
-	m_ready.lock();
-	foreach ( VideoDevice vd, m_videodevice )
+	foreach ( VideoDevice* vd, m_videodevices )
 	{
-		if ( vd.udi() == udi )
+		if ( vd->udi() == udi )
 		{
-			qDebug() << "Video device '" << udi << "' has been removed!";
-			// not sure if this is safe but at this point the device node is gone already anyway
-			m_videodevice.remove( i );
+			qDebug() << "Video device with UDI" << udi << "has been removed!";
+			delete m_videodevices[i]; // NOTE: device is closed in destructor
+			m_videodevices.remove( i );
 			if (m_current_device == i)
 			{
-				m_current_device = 0;
+				if (m_videodevices.size())
+					m_current_device = 0;
+				else
+					m_current_device = -1;
 				m_clients = 0;
 			}
 			else if (m_current_device > i)
 			{
 				m_current_device--;
 			}
-			m_ready.unlock();
 			emit deviceUnregistered( udi );
-			/* NOTE: do not emit deviceUnregistered( udi ) with mutex locked ! => potential deadlock ! */
 			return;
 		}
 		else
-		{
 			i++;
-		}
 	}
-	m_ready.unlock();
 }
 
 } // namespace AV

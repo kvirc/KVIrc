@@ -291,7 +291,7 @@ public:
 	VideoDevice();
 	virtual ~VideoDevice();
 	int setFileName(QString filename);
-	QString fileName() const;
+	QString fileName();
 	void setUdi( const QString & );
 	QString udi() const;
 	virtual int open();
@@ -299,12 +299,12 @@ public:
 
 	int showDeviceCapabilities();
 
-	int width() const;
-	int minWidth() const ;
-	int maxWidth() const;
-	int height() const;
-	int minHeight() const;
-	int maxHeight() const;
+	int width();
+	int minWidth();
+	int maxWidth();
+	int height();
+	int minHeight();
+	int maxHeight();
 	virtual int setSize( int newwidth, int newheight);
 
 	virtual pixel_format setPixelFormat(pixel_format newformat);
@@ -331,21 +331,21 @@ public:
 	virtual int stopCapturing();
 	virtual int close();
 
-	QList<NumericVideoControl> getSupportedNumericControls() const;
-	QList<BooleanVideoControl> getSupportedBooleanControls() const;
-	QList<MenuVideoControl> getSupportedMenuControls() const;
-	QList<ActionVideoControl> getSupportedActionControls() const;
+	QList<NumericVideoControl> getSupportedNumericControls();
+	QList<BooleanVideoControl> getSupportedBooleanControls();
+	QList<MenuVideoControl> getSupportedMenuControls();
+	QList<ActionVideoControl> getSupportedActionControls();
 
 	int getControlValue(quint32 ctrl_id, qint32 * value);
 	int setControlValue(quint32 ctrl_id, qint32 value);
 
-	bool canCapture() const;
-	bool canChromakey() const;
-	bool canScale() const;
-	bool canOverlay() const;
-	bool canRead() const;
-	bool canAsyncIO() const;
-	bool canStream() const;
+	bool canCapture();
+	bool canChromakey();
+	bool canScale();
+	bool canOverlay();
+	bool canRead();
+	bool canAsyncIO();
+	bool canStream();
 
 	QString m_name;
 	QVector<Kopete::AV::VideoInput> m_input;

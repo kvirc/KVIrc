@@ -52,7 +52,6 @@
 #include "videoinput.h"
 #include <QString>
 #include <QImage>
-#include <QMutex>
 #include <QComboBox>
 #include "videodevice.h"
 
@@ -61,12 +60,6 @@
 	#include <kconfig.h>
 	#include <kglobal.h>
 #endif
-
-// Uncomment this line and comment out the include and using lines to 
-// revert to standard vector if you hit issues. It should all be fine though.
-// typedef QVector<Kopete::AV::VideoDevice> VideoDeviceVector;
-#include "videodevicevector.h"
-using Kopete::AV::VideoDeviceVector;
 
 namespace Kopete {
 
@@ -99,16 +92,11 @@ public:
 	int readFrame();
 	int getImage(QImage *qimage);
 	int selectInput(int newinput);
-	int scanDevices();
-	void registerDevice( Solid::Device & dev );
-	bool hasDevices();
-#ifdef COMPILE_KDE_SUPPORT
 	int size();
-#endif	
 	~VideoDevicePool();
-	int fillDeviceQComboBox(QComboBox *combobox);
-	int fillInputQComboBox(QComboBox *combobox);
-	int fillStandardQComboBox(QComboBox *combobox);
+	void fillDeviceQComboBox(QComboBox *combobox);
+	void fillInputQComboBox(QComboBox *combobox);
+	void fillStandardQComboBox(QComboBox *combobox);
 	QString currentDeviceUdi();
 	int currentDevice();
 	int currentInput();
@@ -130,6 +118,7 @@ signals:
 	 */
 	void deviceRegistered( const QString & udi );
 	void deviceUnregistered( const QString & udi );
+
 protected slots:
 	/**
 	 * Slot called when a new device is added to the system
@@ -140,17 +129,17 @@ protected slots:
 protected:
 	int xioctl(int request, void *arg);
 	int errnoReturn(const char* s);
-	int showDeviceCapabilities(unsigned int device);
-	void loadSelectedDevice();
-	void loadDeviceConfig(); // Load configuration parameters;
 #ifdef COMPILE_KDE_SUPPORT
+	bool registerDevice( Solid::Device & dev );
+#endif
+	int showDeviceCapabilities(int device = -1);
+	int getSavedDevice();
+	void loadDeviceConfig(); // Load configuration parameters;
 
 	int m_current_device;
-	VideoDeviceVector m_videodevice; // Vector to be filled with found devices
+	QVector<VideoDevice*> m_videodevices;	/*!< Vector of pointers to the available video devices */
 	struct imagebuffer m_buffer; // only used when no devices were found
-	QMutex m_ready;
 
-#endif
 private:
 	VideoDevicePool();
 	static VideoDevicePool* s_self;

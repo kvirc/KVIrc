@@ -129,8 +129,6 @@ IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
 	LIST(APPEND kvilib_SRCS
 		ext/avdevice/videodevice.cpp 
 		ext/avdevice/videoinput.cpp 
-		ext/avdevice/dummyvideodevice.cpp
-		ext/avdevice/videodevicevector.cpp
 		ext/avdevice/videodevicepool.cpp 
 		ext/avdevice/bayer.cpp
 		ext/avdevice/sonix_compress.cpp

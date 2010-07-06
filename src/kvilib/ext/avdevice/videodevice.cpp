@@ -65,6 +65,9 @@ namespace AV {
 VideoDevice::VideoDevice()
 	: descriptor(-1), m_streambuffers(0), m_current_input(0)
 {
+	descriptor = -1;
+	m_streambuffers  = 0;
+	m_current_input = 0;
 }
 
 
@@ -141,7 +144,7 @@ void VideoDevice::setupControls()
 			}
 			break;
 #endif
-		VIDEODEV_DRIVER_V4L:
+		case VIDEODEV_DRIVER_V4L:
 			{
 				NumericVideoControl numCtrl;
 				numCtrl.value_min = 0;
@@ -166,7 +169,7 @@ void VideoDevice::setupControls()
 			}
 			break;
 #endif
-		VIDEODEV_DRIVER_NONE:
+		case VIDEODEV_DRIVER_NONE:
 		default:
 			break;
 	}
@@ -332,9 +335,9 @@ int VideoDevice::setFileName(QString filename)
 }
 
 /*!
-    \fn QString VideoDevice::fileName() const
+    \fn QString VideoDevice::fileName()
  */
-QString VideoDevice::fileName() const
+QString VideoDevice::fileName()
 {
 	return full_filename;
 }
@@ -353,9 +356,9 @@ int VideoDevice::open()
 		return EXIT_SUCCESS;
 	}
 #ifdef HAVE_LIBV4L2
-	descriptor = ::v4l2_open (QFile::encodeName(full_filename), O_RDWR, 0);
+	descriptor = ::v4l2_open (QFile::encodeName(full_filename), O_RDWR | O_NONBLOCK, 0);
 #else
-	descriptor = ::open (QFile::encodeName(full_filename), O_RDWR, 0);
+	descriptor = ::open (QFile::encodeName(full_filename), O_RDWR | O_NONBLOCK, 0);
 #endif
 	if(isOpen())
 	{
@@ -755,32 +758,32 @@ int VideoDevice::inputs()
 }
 
 
-int VideoDevice::width() const
+int VideoDevice::width()
 {
 	return currentwidth;
 }
 
-int VideoDevice::minWidth() const
+int VideoDevice::minWidth()
 {
 	return minwidth;
 }
 
-int VideoDevice::maxWidth() const
+int VideoDevice::maxWidth()
 {
 	return maxwidth;
 }
 
-int VideoDevice::height() const
+int VideoDevice::height()
 {
 	return currentheight;
 }
 
-int VideoDevice::minHeight() const
+int VideoDevice::minHeight()
 {
 	return minheight;
 }
 
-int VideoDevice::maxHeight() const
+int VideoDevice::maxHeight()
 {
 	return maxheight;
 }
@@ -1186,15 +1189,13 @@ int VideoDevice::getFrame()
 #endif
 				if (-1 == bytesread) // must verify this point with ov511 driver.
 				{
-					qDebug() << "IO_METHOD_READ failed.";
-					switch (errno)
+					if (errno == EAGAIN)
 					{
-						case EAGAIN:
-							return EXIT_FAILURE;
-						case EIO: /* Could ignore EIO, see spec. fall through */
-						default:
-						return errnoReturn ("read");
+//						qDebug() << "No new frame available.";
+						return EXIT_FAILURE;
 					}
+					else
+						return errnoReturn ("read");
 				}
 				if((int)m_currentbuffer.data.size() < bytesread)
 				{
@@ -1209,18 +1210,13 @@ int VideoDevice::getFrame()
 				v4l2buffer.memory = V4L2_MEMORY_MMAP;
 				if (-1 == xioctl (VIDIOC_DQBUF, &v4l2buffer))
 				{
-					qDebug() << full_filename << " MMAPed getFrame failed.";
-					switch (errno)
+					if (errno == EAGAIN)
 					{
-						case EAGAIN:
-						{
-							qDebug() << full_filename << " MMAPed getFrame failed: EAGAIN. Pointer: ";
-							return EXIT_FAILURE;
-						}
-						case EIO: /* Could ignore EIO, see spec. fall through */
-						default:
-							return errnoReturn ("VIDIOC_DQBUF");
+//						qDebug() << "No new frame available.";
+						return EXIT_FAILURE;
 					}
+					else
+						return errnoReturn ("VIDIOC_DQBUF");
 				}
 /*				if (v4l2buffer.index < m_streambuffers)
 					return EXIT_FAILURE;*/ //it was an assert()
@@ -1230,7 +1226,7 @@ int VideoDevice::getFrame()
 					(uint) m_rawbuffers.size() <= v4l2buffer.index)
 					return EXIT_FAILURE;
 
-				if (m_rawbuffers[v4l2buffer.index].length < m_currentbuffer.data.size())
+				if (m_rawbuffers[v4l2buffer.index].length < (uint)m_currentbuffer.data.size())
 				{
 					qDebug() <<  "Buffer size mismatch: expecting raw buffer length to be" << m_currentbuffer.data.size() << "but it was" << m_rawbuffers[v4l2buffer.index].length;
 					return EXIT_FAILURE;
@@ -1252,14 +1248,13 @@ int VideoDevice::getFrame()
 					v4l2buffer.memory = V4L2_MEMORY_USERPTR;
 					if (-1 == xioctl (VIDIOC_DQBUF, &v4l2buffer))
 					{
-						switch (errno)
+						if (errno == EAGAIN)
 						{
-							case EAGAIN:
-								return EXIT_FAILURE;
-							case EIO: /* Could ignore EIO, see spec. fall through */
-							default:
-								return errnoReturn ("VIDIOC_DQBUF");
+//							qDebug() << "No new frame available.";
+							return EXIT_FAILURE;
 						}
+						else
+							return errnoReturn ("VIDIOC_DQBUF");
 					}
 					if ((unsigned int) m_rawbuffers.size() < m_streambuffers)
 						return EXIT_FAILURE;
@@ -1706,7 +1701,7 @@ int VideoDevice::close()
     \return A list of all supported numeric controls for the current input
     \brief Returns the supported numeric controls for the current input
  */
-QList<NumericVideoControl> VideoDevice::getSupportedNumericControls() const
+QList<NumericVideoControl> VideoDevice::getSupportedNumericControls()
 {
 	return m_numericCtrls;
 }
@@ -1716,7 +1711,7 @@ QList<NumericVideoControl> VideoDevice::getSupportedNumericControls() const
     \return A list of all supported boolean controls for the current input
     \brief Returns the supported boolean controls for the current input
  */
-QList<BooleanVideoControl> VideoDevice::getSupportedBooleanControls() const
+QList<BooleanVideoControl> VideoDevice::getSupportedBooleanControls()
 {
 	return m_booleanCtrls;
 }
@@ -1726,7 +1721,7 @@ QList<BooleanVideoControl> VideoDevice::getSupportedBooleanControls() const
     \return A list of all supported menu-controls for the current input
     \brief Returns the supported menu-controls for the current input
  */
-QList<MenuVideoControl> VideoDevice::getSupportedMenuControls() const
+QList<MenuVideoControl> VideoDevice::getSupportedMenuControls()
 {
 	return m_menuCtrls;
 }
@@ -1736,7 +1731,7 @@ QList<MenuVideoControl> VideoDevice::getSupportedMenuControls() const
     \return A list of all supported action-controls for the current input
     \brief Returns the supported action-controls for the current input
  */
-QList<ActionVideoControl> VideoDevice::getSupportedActionControls() const
+QList<ActionVideoControl> VideoDevice::getSupportedActionControls()
 {
 	return m_actionCtrls;
 }
@@ -2981,37 +2976,37 @@ int VideoDevice::initUserptr()
 	return EXIT_FAILURE;
 }
 
-bool VideoDevice::canCapture() const
+bool VideoDevice::canCapture()
 {
 	return m_videocapture;
 }
 
-bool VideoDevice::canChromakey() const
+bool VideoDevice::canChromakey()
 {
 	return m_videochromakey;
 }
 
-bool VideoDevice::canScale() const
+bool VideoDevice::canScale()
 {
 	return m_videoscale;
 }
 
-bool VideoDevice::canOverlay() const
+bool VideoDevice::canOverlay()
 {
 	return m_videooverlay;
 }
 
-bool VideoDevice::canRead() const
+bool VideoDevice::canRead()
 {
 	return m_videoread;
 }
 
-bool VideoDevice::canAsyncIO() const
+bool VideoDevice::canAsyncIO()
 {
 	return m_videoasyncio;
 }
 
-bool VideoDevice::canStream() const
+bool VideoDevice::canStream()
 {
 	return m_videostream;
 }
