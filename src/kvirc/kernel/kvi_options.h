@@ -335,10 +335,16 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolPrependNickColorInfoToRealname 241
 #define KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen 242   /* notifier */
 #define KviOption_boolWheelScrollsWindowsList 243
-#define KviOption_boolAcceptMismatchedPortDccResumeRequests 244      /* dcc::send */
+#define KviOption_boolAcceptMismatchedPortDccResumeRequests 244         /* dcc::send */
+#define KviOption_boolEnableUrlLinkToolTip 245                           /* ircview output */
+#define KviOption_boolEnableHostLinkToolTip 246                          /* ircview output */
+#define KviOption_boolEnableServerLinkToolTip 247                        /* ircview output */
+#define KviOption_boolEnableModeLinkToolTip 248                          /* ircview output */
+#define KviOption_boolEnableNickLinkToolTip 249                          /* ircview output */
+#define KviOption_boolEnableChannelLinkToolTip 250                       /* ircview output */
+#define KviOption_boolEnableEscapeLinkToolTip 251                        /* ircview output */
 
-
-#define KVI_NUM_BOOL_OPTIONS 245
+#define KVI_NUM_BOOL_OPTIONS 252
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

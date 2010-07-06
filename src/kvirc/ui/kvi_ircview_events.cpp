@@ -98,7 +98,7 @@
 		These links are used internally in KVIrc , but you can use them too.[br]
 		The <escape_command> is a single letter this time: it defines the type of the link.[br]
 		Currently KVIrc uses six types of builtin links : 'n' for nickname links, 'u' for url links,
-		'c' for channel links, 'h' for hostname links, 'm' for mask links and 's' for server links.[br]
+		'c' for channel links, 'h' for hostname links, 'm' for mode links and 's' for server links.[br]
 		Theoretically you can also use your own link types: just use any other letter or digit (you can't use ']' and <cr>),
 		but probably you will prefer a completely user defined link in that case anyway.[br]
 		Once the user interacts with the link , kvirc executes the predefined events:[br]
@@ -859,6 +859,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 	{
 		case 'u': // url link
 		{
+			if(!KVI_OPTION_BOOL(KviOption_boolEnableUrlLinkToolTip))
+				return;
 			tip = "<table width=\"100%\">" \
 				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KVI_SMALLICON_URL) + "\"> <u><font color=\"blue\"><nowrap>";
 			if(linkText.length() > 50)
@@ -880,6 +882,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		break;
 		case 'h': // host link
 		{
+			if(!KVI_OPTION_BOOL(KviOption_boolEnableHostLinkToolTip))
+				return;
 			tip = "<table width=\"100%\">" \
 				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KVI_SMALLICON_SERVER) + "\"> <u><font color=\"blue\"><nowrap>";
 			if(linkText.length() > 50)
@@ -903,6 +907,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		break;
 		case 's': // server link
 		{
+			if(!KVI_OPTION_BOOL(KviOption_boolEnableServerLinkToolTip))
+				return;
 			// FIXME: #warning "Spit out some server info...hub ?...registered ?"
 
 			tip = "<table width=\"100%\">" \
@@ -929,6 +935,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		break;
 		case 'm': // mode link
 		{
+			if(!KVI_OPTION_BOOL(KviOption_boolEnableModeLinkToolTip))
+				return;
 			if((linkCmd.length() > 2) && (m_pKviWindow->type() == KVI_WINDOW_TYPE_CHANNEL))
 			{
 				if(((KviChannel *)m_pKviWindow)->isMeOp())
@@ -967,6 +975,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		break;
 		case 'n': // nick link
 		{
+			if(!KVI_OPTION_BOOL(KviOption_boolEnableNickLinkToolTip))
+				return;
 			if(console())
 			{
 				if(console()->connection())
@@ -984,6 +994,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		break;
 		case 'c': // channel link
 		{
+			if(!KVI_OPTION_BOOL(KviOption_boolEnableChannelLinkToolTip))
+				return;
 			if(console() && console()->connection())
 			{
 				QString szChan = linkText;
@@ -1018,6 +1030,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		break;
 		default:
 		{
+			if(!KVI_OPTION_BOOL(KviOption_boolEnableEscapeLinkToolTip))
+				return;
 			QString dbl,rbt,txt,mbt;
 			getLinkEscapeCommand(dbl,linkCmd,"[!dbl]");
 			getLinkEscapeCommand(rbt,linkCmd,"[!rbt]");

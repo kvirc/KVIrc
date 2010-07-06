@@ -159,7 +159,16 @@ KviIrcViewFeaturesOptionsWidget::KviIrcViewFeaturesOptionsWidget(QWidget * paren
 	s->setSuffix(__tr2qs_ctx(" msec","options"));
 	addBoolSelector(0,12,0,12,__tr2qs_ctx("Enable animated smiles","options"),KviOption_boolEnableAnimatedSmiles);
 
-	addRowSpacer(0,13,0,13);
+	KviTalGroupBox * pGroup = addGroupBox(0,13,0,13,Qt::Horizontal,__tr2qs_ctx("Enable tooltips for:","options"));
+	addBoolSelector(pGroup,__tr2qs_ctx("Url links","options"),KviOption_boolEnableUrlLinkToolTip);
+	addBoolSelector(pGroup,__tr2qs_ctx("Host links","options"),KviOption_boolEnableHostLinkToolTip);
+	addBoolSelector(pGroup,__tr2qs_ctx("Server links","options"),KviOption_boolEnableServerLinkToolTip);
+	addBoolSelector(pGroup,__tr2qs_ctx("Mode links","options"),KviOption_boolEnableModeLinkToolTip);
+	addBoolSelector(pGroup,__tr2qs_ctx("Nick links","options"),KviOption_boolEnableNickLinkToolTip);
+	addBoolSelector(pGroup,__tr2qs_ctx("Channel links","options"),KviOption_boolEnableChannelLinkToolTip);
+	addBoolSelector(pGroup,__tr2qs_ctx("Escape sequences","options"),KviOption_boolEnableEscapeLinkToolTip);
+	
+	addRowSpacer(0,14,0,14);
 }
 
 KviIrcViewFeaturesOptionsWidget::~KviIrcViewFeaturesOptionsWidget()
