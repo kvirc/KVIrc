@@ -58,7 +58,7 @@ public:
 	bool init(); // if this fails then well.. :D
 	void done();
 	bool execute(const QString & szCode, QStringList & lArgs, QString & szRetVal, QString & szError, QStringList & lWarnings);
-	const QString & contextName(){ return m_szContextName; };
+	const QString & contextName() const { return m_szContextName; };
 };
 
 KviPythonInterpreter::KviPythonInterpreter(const QString & szContextName)

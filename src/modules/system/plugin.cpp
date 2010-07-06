@@ -194,7 +194,7 @@ int KviPlugin::call(const QString& pszFunctionName, int argc, char * argv[], cha
 	return r;
 }
 
-QString KviPlugin::name()
+QString KviPlugin::name() const
 {
 	return m_szName;
 }

@@ -461,9 +461,9 @@ void KviTrayIcon::grabActivityInfo()
 				break;
 			}
 		} else {
-			unsigned int iLevel=0;
 			if(b->kviWindow()->view())
 			{
+				unsigned int iLevel=0;
 				if(b->kviWindow()->view()->haveUnreadedHighlightedMessages())
 				{
 					iLevel=2;

@@ -53,7 +53,7 @@ public:
 	bool unload();
 	bool canunload();
 	int call(const QString& szFunctionName, int argc, char * argv[], char ** pBuffer);
-	QString name();
+	QString name() const;
 	void setName(const QString& szName);
 protected:
 };

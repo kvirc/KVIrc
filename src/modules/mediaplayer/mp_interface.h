@@ -38,7 +38,7 @@ public:
 protected:
 	QString m_szLastError;
 public:
-	const QString & lastError(){ return m_szLastError; };
+	const QString & lastError() const { return m_szLastError; };
 
 	//
 	// mandatory interface
