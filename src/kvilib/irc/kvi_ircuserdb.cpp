@@ -78,8 +78,11 @@ void KviIrcUserEntry::setRealName(const QString &rn)
 		}
 	}
 	
-	// smart nick color code
-	if(m_szRealName.length()>=7)
+	/*
+	 * smart nick color code: min length=5, max length=7
+	 * 1 - ^K, 2 - digit, 3 - coma, 4 - digit, 5 - KVI_TEXT_RESET, 6 - start of realname.
+	 */
+	if(m_szRealName.length()>=5)
 	{
 		if((m_szRealName[0].unicode()==KVI_TEXT_COLOR))
 		{
