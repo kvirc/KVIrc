@@ -57,8 +57,6 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 	#include <solid/device.h>
-	#include <kconfig.h>
-	#include <kglobal.h>
 #endif
 
 namespace Kopete {

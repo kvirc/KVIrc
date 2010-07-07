@@ -23,20 +23,21 @@
 #include <cerrno>
 #include <cstring>
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kglobal.h>
-#include <kconfig.h>
-#include <kconfiggroup.h>
-#include <qdir.h>
-#include <solid/device.h>
-#include <solid/devicenotifier.h>
-#include <solid/deviceinterface.h>
-#include <solid/video.h>
-
+#include <QDir>
+#include <QDebug>
 
 #include "videodevice.h"
 #include "videodevicepool.h"
+
+#ifdef COMPILE_KDE_SUPPORT
+	#include <klocale.h>
+	#include <kglobal.h>
+	#include <kconfig.h>
+	#include <kconfiggroup.h>
+	#include <solid/devicenotifier.h>
+	#include <solid/deviceinterface.h>
+	#include <solid/video.h>
+#endif
 
 #define CLEAR(x) memset (&(x), 0, sizeof (x))
 
@@ -594,6 +595,7 @@ int VideoDevicePool::inputs()
  */
 int VideoDevicePool::getSavedDevice()
 {
+#ifdef COMPILE_KDE_SUPPORT
 	qDebug() << "called";
 	if (m_videodevices.size())
 	{
@@ -618,6 +620,7 @@ int VideoDevicePool::getSavedDevice()
 		else
 			qDebug() << "No device saved.";
 	}
+#endif
 	return -1;
 }
 
@@ -629,6 +632,7 @@ int VideoDevicePool::getSavedDevice()
  */
 void VideoDevicePool::loadDeviceConfig()
 {
+#ifdef COMPILE_KDE_SUPPORT
 	qDebug() << "called";
 	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
 	{
@@ -671,6 +675,7 @@ void VideoDevicePool::loadDeviceConfig()
 		}
 	}
 	/* TODO: load and apply signal standard */
+#endif
 }
 
 /*!
@@ -681,6 +686,7 @@ void VideoDevicePool::loadDeviceConfig()
  */
 void VideoDevicePool::saveCurrentDeviceConfig()
 {
+#ifdef COMPILE_KDE_SUPPORT
 	qDebug() << "called";
 	if ((m_current_device >= 0) && (m_current_device < m_videodevices.size()))
 	{
@@ -763,6 +769,7 @@ void VideoDevicePool::saveCurrentDeviceConfig()
 		config.sync();
 	}
 	/* TODO: save signal standard */
+#endif
 }
 
 void VideoDevicePool::deviceAdded( const QString & udi )
