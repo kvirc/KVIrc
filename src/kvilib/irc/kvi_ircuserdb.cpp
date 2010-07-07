@@ -60,15 +60,15 @@ void KviIrcUserEntry::setRealName(const QString &rn)
 		{
 			// hum.. encoded as hidden color code eh ? publish is somewhere, so others might implement this...
 			// for backwards compatibily, 3=bot
-			if(m_szRealName[1].unicode() == '3')
+			if(m_szRealName[1].unicode() & 1 && m_szRealName[1].unicode() & 2)
 			{
 				setBot(true); //3
 			} else {
-				if(m_szRealName[1].unicode() == '1')
+				if(m_szRealName[1].unicode() & 1)
 				{
 					setGender(Male); //1
 				} else {
-					if(m_szRealName[1].unicode()  == '2')
+					if(m_szRealName[1].unicode() & 2)
 					{
 						setGender(Female); //2
 					}
