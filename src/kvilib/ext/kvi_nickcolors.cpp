@@ -77,7 +77,8 @@ namespace KviNickColors
 		int iBestMatch=-1;
 		char* comb= (char*)kvi_malloc(6);
 		int numm=0;
-		snprintf(comb, 6, "%d,%d", iFore, iBack);
+		// TODO handle KVI_TRANSPARENT and KVI_NOCHANGE (ticket #812)
+		snprintf(comb, 6, "%d,%d", iFore % 16, iBack % 16);
 // 		qDebug("Nick color %s",comb);
 		for(int i=0; i<KVI_NUM_NICK_COLORS;++i)
 		{
@@ -96,6 +97,7 @@ namespace KviNickColors
 				{
 					//exact match
 // 					qDebug("Exact match %s",g_nickColors[i]);
+					kvi_free(comb);
 					return i;
 				} else {
 					//partial match
