@@ -117,8 +117,10 @@ void KviUserListEntry::detachAvatarData()
 		return;
 
 	m_pAvatarPixmap->stop();
-	QObject::disconnect(m_pAvatarPixmap,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
-	QObject::disconnect(m_pAvatarPixmap,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
+	if (receivers(SIGNAL(frameChanged())) > 0)
+		QObject::disconnect(m_pAvatarPixmap,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
+	if (receivers(SIGNAL(destroyed())) > 0)
+		QObject::disconnect(m_pAvatarPixmap,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
 	m_pAvatarPixmap = NULL;
 }
 
