@@ -46,20 +46,21 @@ SET(LIB_SUFFIX
 	CACHE STRING "Define suffix of directory name (32/64)"
 )
 
-IF(EXISTS "${CMAKE_SOURCE_DIR}/.svn" AND IS_DIRECTORY "${CMAKE_SOURCE_DIR}/.svn")
+# Get revision number from SVN
+SET(MANUAL_REVISION
+	CACHE STRING "Manually set the revision number"
+)
 
-	# Get revision number from SVN
-	SET(MANUAL_REVISION
-		CACHE STRING "Manually set the revision number if subversion is not found"
-	)
-	
-	STRING(COMPARE EQUAL "${MANUAL_REVISION}" "" MANUAL_REVISION_UNSET)
-	IF(MANUAL_REVISION_UNSET)
+STRING(COMPARE EQUAL "${MANUAL_REVISION}" "" MANUAL_REVISION_UNSET)
+IF(MANUAL_REVISION_UNSET)
+	# No manually forced revision number, gotta guess one now
+	IF(EXISTS "${CMAKE_SOURCE_DIR}/.svn" AND IS_DIRECTORY "${CMAKE_SOURCE_DIR}/.svn")
+		# We're in a svn structure, let's get the revision number using subversion
 		FIND_PACKAGE(Subversion)
 		IF(Subversion_FOUND)
 			MESSAGE(STATUS "Found Subversion ${Subversion_VERSION_SVN}")
 			Subversion_WC_INFO(${PROJECT_SOURCE_DIR} KVIrc)
-	 		IF(DEFINED KVIrc_WC_REVISION)
+			IF(DEFINED KVIrc_WC_REVISION)
 				SET(CMAKE_KVIRC_BUILD_REVISION ${KVIrc_WC_REVISION})
 				MESSAGE(STATUS "Current revision is ${KVIrc_WC_REVISION}")
 			ELSE()
@@ -69,18 +70,20 @@ IF(EXISTS "${CMAKE_SOURCE_DIR}/.svn" AND IS_DIRECTORY "${CMAKE_SOURCE_DIR}/.svn"
 			MESSAGE("Subversion not found. No revision number will be used")
 		ENDIF()
 	ELSE()
-		SET(CMAKE_KVIRC_BUILD_REVISION ${MANUAL_REVISION})
-		MESSAGE(STATUS "Current revision has been manually set to ${MANUAL_REVISION}")
+		IF(EXISTS "${CMAKE_SOURCE_DIR}/.svnrevision")
+			# We're in a release package created using makedist.sh, so we should include a .svnrevision file
+			FILE(READ "${CMAKE_SOURCE_DIR}/.svnrevision" DISTSVNREVISION)
+			STRING(STRIP "${DISTSVNREVISION}" CMAKE_KVIRC_BUILD_REVISION)
+			MESSAGE(STATUS "SVN revision is ${CMAKE_KVIRC_BUILD_REVISION}")
+		ELSE()
+			MESSAGE(STATUS "No revision number found.")
+		ENDIF()
 	ENDIF()
 
 ELSE()
-	IF(EXISTS "${CMAKE_SOURCE_DIR}/.svnrevision")
-		FILE(READ "${CMAKE_SOURCE_DIR}/.svnrevision" DISTSVNREVISION)
-		STRING(STRIP "${DISTSVNREVISION}" CMAKE_KVIRC_BUILD_REVISION)
-		MESSAGE(STATUS "SVN revision is ${CMAKE_KVIRC_BUILD_REVISION}")
-	ELSE()
-		MESSAGE(STATUS "No revision number found.")
-	ENDIF()
+	# Manually forced revision number
+	SET(CMAKE_KVIRC_BUILD_REVISION ${MANUAL_REVISION})
+	MESSAGE(STATUS "Current revision has been manually set to ${MANUAL_REVISION}")
 ENDIF()
 
 
