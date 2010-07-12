@@ -718,6 +718,7 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 :KviScriptEditor(par)
 {
+	m_pOptionsDialog=0;
 	if(g_pScriptEditorWindowList->isEmpty())loadOptions();
 	g_pScriptEditorWindowList->append(this);
 	m_lastCursorPos = 0;
@@ -772,6 +773,11 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 
 KviScriptEditorImplementation::~KviScriptEditorImplementation()
 {
+	if(m_pOptionsDialog)
+	{
+		m_pOptionsDialog->deleteLater();
+		m_pOptionsDialog=0;
+	}
 	g_pScriptEditorWindowList->removeRef(this);
 	if(g_pScriptEditorWindowList->isEmpty())
 		saveOptions();
@@ -963,8 +969,17 @@ void KviScriptEditorImplementation::loadFromFile()
 
 void KviScriptEditorImplementation::configureColors()
 {
-	KviScriptEditorWidgetColorOptions dlg(this);
-	if(dlg.exec() == QDialog::Accepted)
+	if(!m_pOptionsDialog)
+	{
+		m_pOptionsDialog = new KviScriptEditorWidgetColorOptions(this);
+		connect(m_pOptionsDialog,SIGNAL(finished(int)),this,SLOT(optionsDialogFinished(int)));
+	}
+	m_pOptionsDialog->show();
+}
+
+void KviScriptEditorImplementation::optionsDialogFinished(int iResult)
+{
+	if(iResult == QDialog::Accepted)
 	{
 		m_pEditor->updateOptions();
 		saveOptions();

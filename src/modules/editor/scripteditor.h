@@ -145,7 +145,7 @@ public:
 public:
 	QLineEdit * m_pFindLineEdit;
 protected:
-
+	KviScriptEditorWidgetColorOptions * m_pOptionsDialog;
 	KviScriptEditorWidget * m_pEditor;
 	QLabel                * m_pRowColLabel;
 	int                     m_lastCursorPos;
@@ -178,6 +178,7 @@ protected slots:
 	void slotReplaceAll(const QString & szToReplace, const QString & szReplaceWith);
 	void slotInitFind();
 	void slotNextFind(const QString &);
+	void optionsDialogFinished(int iResult);
 signals:
 	void find(const QString &);
 	void replaceAll(const QString & szToReplace, const QString & szReplaceWith);
