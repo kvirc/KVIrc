@@ -204,6 +204,7 @@ protected:
 	virtual void moveEvent(QMoveEvent *e);
 	virtual bool focusNextPrevChild(bool next);
 	virtual void changeEvent(QEvent * event);
+	virtual void contextMenuEvent(QContextMenuEvent * event);
 
 	void updatePseudoTransparency();
 	void installAccelerators();

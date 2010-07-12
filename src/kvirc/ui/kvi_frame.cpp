@@ -827,6 +827,12 @@ void KviFrame::resizeEvent(QResizeEvent *e)
 	KviTalMainWindow::resizeEvent(e);
 }
 
+
+void KviFrame::contextMenuEvent(QContextMenuEvent *)
+{
+	// do nothing! avoids builtin popup from qmainwindow
+}
+
 void KviFrame::updatePseudoTransparency()
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
