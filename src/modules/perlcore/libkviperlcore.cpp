@@ -404,7 +404,10 @@ static bool perlcore_module_cleanup(KviModule *)
 	perlcore_destroy_all_interpreters();
 	delete g_pInterpreters;
 	g_pInterpreters = 0;
+	// ifdef workaround for #842
+#ifndef COMPILE_ON_MAC
 	PERL_SYS_TERM();
+#endif
 #endif // COMPILE_PERL_SUPPORT
 	return true;
 }
