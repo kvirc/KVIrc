@@ -925,6 +925,12 @@ void KviIrcView::fastScroll(int lines)
 {
 	m_iUnprocessedPaintEventRequests = 0;
 
+#ifdef COMPILE_ON_MAC
+	// fastScroll() is currently broken for macosx, ticket #791
+        update();
+        return;
+#endif
+
 	if(!isVisible())return;
 
 	if(!m_pFm)
