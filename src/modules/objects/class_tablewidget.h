@@ -98,12 +98,10 @@ protected:
 	bool showColumn(KviKvsObjectFunctionCall *c);
 	bool hideRow(KviKvsObjectFunctionCall *c);
 	bool showRow(KviKvsObjectFunctionCall *c);
-	bool customContextMenuRequestedEvent(KviKvsObjectFunctionCall *c);
 	bool resizeRowsToContents(KviKvsObjectFunctionCall *c);
 	bool resizeColumnsToContents(KviKvsObjectFunctionCall *c);
 protected slots:
 	void slotItemEntered(QTableWidgetItem *);
-	void slotCustomContextMenuRequested(const QPoint &pnt);
 	void cellActivated(int iRow,int iCol);
 	void cellDoubleClicked(int iRow,int iCol);
 };
