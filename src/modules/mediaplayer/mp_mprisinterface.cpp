@@ -444,7 +444,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	"bmpx",
 	__tr2qs_ctx(
 		"An interface to BMPx.\n" \
-		"Download it from http://bmpx.backtrace.info\n"
+		"Download it from http://sourceforge.net/projects/beepmp\n"
 		,
 		"mediaplayer"
 	)
@@ -504,7 +504,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	"xmms2",
 	__tr2qs_ctx(
 		"An interface to the Xmms2 media player.\n" \
-		"Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n",
+		"Download it from http://xmms2.org\n",
 		"mediaplayer"
 	)
 )
