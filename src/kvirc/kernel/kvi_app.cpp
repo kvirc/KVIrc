@@ -787,7 +787,7 @@ void KviApp::checkSuggestRestoreDefaultScript()
 		__tr2qs("<b>Ooops...</b><br><br>" \
 				"<b>There are some reasons that make me think that your KVIrc installation is incomplete.</b><br><br>" \
 				"I might be wrong, but you seem to miss some of the features that the default KVIrc script provides." \
-				"This may happen because you have upgraded to an unstable cvs version, " \
+				"This may happen because you have upgraded to an unstable svn version, " \
 				"because you have accidentally deleted or damaged your configuration files, " \
 				"because you have installed an incomplete script " \
 				"or because you have hit a bug in KVIrc.<br><br>" \

@@ -36,7 +36,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 	"xmms",
 	__tr2qs_ctx(
 		"An interface to the popular UNIX xmms media player.\n" \
-		"Download it from http://www.xmms.org\n"
+		"Download it from http://legacy.xmms2.org\n"
 		,
 		"mediaplayer"
 	)
