@@ -1219,6 +1219,38 @@ namespace KviQString
 		szSrc.remove(0,bIncluded ? iIdx + szFind.length() : iIdx);
 	}
 
+	QString leftToFirst(QString & szSrc, const QChar & c, bool bIncluded, bool bReturnFullStringIfNotFound)
+	{
+		int iIdx = szSrc.indexOf(c);
+		if(iIdx == -1)
+			return bReturnFullStringIfNotFound ? szSrc : QString();
+		return szSrc.left(bIncluded ? iIdx + 1 : iIdx);
+	}
+	
+	QString leftToFirst(QString & szSrc, const QString & szFind, bool bIncluded, bool bReturnFullStringIfNotFound)
+	{
+		int iIdx = szSrc.indexOf(szFind);
+		if(iIdx == -1)
+			return bReturnFullStringIfNotFound ? szSrc : QString();
+		return szSrc.left(bIncluded ? iIdx + 1 : iIdx);
+	}
+
+	QString leftToLast(QString & szSrc, const QChar & c, bool bIncluded, bool bReturnFullStringIfNotFound)
+	{
+		int iIdx = szSrc.lastIndexOf(c);
+		if(iIdx == -1)
+			return bReturnFullStringIfNotFound ? szSrc : QString();
+		return szSrc.left(bIncluded ? iIdx + 1 : iIdx);
+	}
+	
+	QString leftToLast(QString & szSrc, const QString & szFind, bool bIncluded, bool bReturnFullStringIfNotFound)
+	{
+		int iIdx = szSrc.lastIndexOf(szFind);
+		if(iIdx == -1)
+			return bReturnFullStringIfNotFound ? szSrc : QString();
+		return szSrc.left(bIncluded ? iIdx + 1 : iIdx);
+	}
+
 	QString upperISO88591(const QString & szSrc)
 	{
 		const QChar * pC = nullTerminatedArray(szSrc);

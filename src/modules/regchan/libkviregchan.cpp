@@ -29,7 +29,7 @@
 #include "kvi_out.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_window.h"
-
+#include "kvi_debug.h"
 
 // kvi_app.cpp
 extern KVIRC_API KviRegisteredChannelDataBase * g_pRegisteredChannelDataBase;
@@ -71,7 +71,8 @@ static bool regchan_kvs_cmd_add(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("channel name",KVS_PT_NONEMPTYSTRING,0,szChan)
 		KVSM_PARAMETER("netmask",KVS_PT_STRING,KVS_PF_OPTIONAL,szNetmask)
 	KVSM_PARAMETERS_END(c)
-	if(szNetmask.isEmpty())szNetmask="*";
+	if(szNetmask.isEmpty())
+		szNetmask="*";
 	g_pRegisteredChannelDataBase->add(new KviRegisteredChannel(szChan,szNetmask));
 	return true;
 }
@@ -111,13 +112,16 @@ static bool regchan_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("network",KVS_PT_NONEMPTYSTRING,0,szNetwork)
 	KVSM_PARAMETERS_END(c)
 	KviRegisteredChannel * ch;
-	if(c->hasSwitch('e',"exactly"))ch = g_pRegisteredChannelDataBase->findExact(szChan.toUtf8().data(),szNetwork.toUtf8().data());
-	else ch = g_pRegisteredChannelDataBase->find(szChan.toUtf8().data(),szNetwork.toUtf8().data());
+	if(c->hasSwitch('e',"exactly"))
+		ch = g_pRegisteredChannelDataBase->findExact(szChan,szNetwork);
+	else
+		ch = g_pRegisteredChannelDataBase->find(szChan,szNetwork);
 	if(ch)
 	{
 		g_pRegisteredChannelDataBase->remove(ch);
 	} else {
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("No such channel/netmask entry in the database","register"));
+		if(!c->hasSwitch('q',"quiet"))
+			c->warning(__tr2qs_ctx("No such channel/netmask entry in the database","register"));
 	}
 	return true;
 }
@@ -163,18 +167,21 @@ static bool regchan_kvs_cmd_setProperty(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("value",KVS_PT_STRING,0,szValue)
 	KVSM_PARAMETERS_END(c)
 	KviRegisteredChannel * ch;
-	if(c->hasSwitch('e',"exactly"))ch = g_pRegisteredChannelDataBase->findExact(szChan.toUtf8().data(),szNetwork.toUtf8().data());
-	else ch = g_pRegisteredChannelDataBase->find(szChan.toUtf8().data(),szNetwork.toUtf8().data());
+	if(c->hasSwitch('e',"exactly"))
+		ch = g_pRegisteredChannelDataBase->findExact(szChan,szNetwork);
+	else
+		ch = g_pRegisteredChannelDataBase->find(szChan,szNetwork);
 	if(ch)
 	{
 		if(!szValue.isEmpty())
 		{
-			ch->setProperty(szProperty.toUtf8().data(),new KviStr(szValue));
+			ch->setProperty(szProperty,szValue);
 		} else {
-			ch->removeProperty(szProperty.toUtf8().data());
+			ch->removeProperty(szProperty);
 		}
 	} else {
-		if(!c->hasSwitch('q',"quiet")) c->warning(__tr2qs_ctx("No such channel/netmask entry in the database","register"));
+		if(!c->hasSwitch('q',"quiet"))
+			c->warning(__tr2qs_ctx("No such channel/netmask entry in the database","register"));
 	}
 	return true;
 }
@@ -198,19 +205,30 @@ static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 
 	int tot = 0;
 
-	KviPointerHashTableIterator<const char *,KviRegisteredChannelList> it(*(g_pRegisteredChannelDataBase->channelDict()));
-	while(KviRegisteredChannelList * l = it.current())
+	QHash<QString,KviRegisteredChannelList *>::Iterator it;
+	for(it = g_pRegisteredChannelDataBase->channelDict()->begin();it != g_pRegisteredChannelDataBase->channelDict()->end();++it)
 	{
+		KviRegisteredChannelList * l = it.value();
+
 		for(KviRegisteredChannel * ch = l->first();ch;ch = l->next())
 		{
 			tot++;
-			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Channel: %c%s@%s","register"),
-				KVI_TEXT_BOLD,ch->name().ptr(),ch->netMask().ptr());
-			KviPointerHashTableIterator<const char *,KviStr> pit(*(ch->propertyDict()));
-			while(KviStr * s = pit.current())
+			c->window()->outputNoFmt(
+					KVI_OUT_SYSTEMMESSAGE,
+					__tr2qs_ctx("Channel: %1%2@%3","register")
+						.arg(QChar(KVI_TEXT_BOLD))
+						.arg(ch->name())
+						.arg(ch->netMask())
+				);
+			
+			for(QHash<QString,QString>::Iterator it2 = ch->propertyDict()->begin();it2 != ch->propertyDict()->end();++it2)
 			{
-				c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("    Property: %s=%s","register"),pit.currentKey(),s->ptr());
-				++pit;
+				c->window()->outputNoFmt(
+						KVI_OUT_SYSTEMMESSAGE,
+						__tr2qs_ctx("    Property: %1=%2","register")
+							.arg(it2.key())
+							.arg(it2.value())
+					);
 			}
 		}
 		++it;
@@ -250,32 +268,28 @@ static bool regchan_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsArray* pArray = new KviKvsArray();
-//	KviKvsArray* pArrayCN = new KviKvsArray();
-//	pArrayCN->set(0,new KviKvsVariant(QString("")));
-//	pArrayCN->set(1,new KviKvsVariant(QString("")));
+
 	int aid=0;
 
-	if(szChan.isEmpty())szChan="*";
-	if(szNetmask.isEmpty())szNetmask="*";
+	if(szChan.isEmpty())
+		szChan="*";
+	if(szNetmask.isEmpty())
+		szNetmask="*";
 
-	KviPointerHashTable<const char *,KviRegisteredChannelList> * d = g_pRegisteredChannelDataBase->channelDict();
-	KviPointerHashTableIterator<const char *,KviRegisteredChannelList> it(*d);
 
-	while(KviRegisteredChannelList * l = it.current())
+	QHash<QString,KviRegisteredChannelList *>::Iterator it;
+	for(it = g_pRegisteredChannelDataBase->channelDict()->begin();it != g_pRegisteredChannelDataBase->channelDict()->end();++it)
 	{
+		KviRegisteredChannelList * l = it.value();
+
 		for(KviRegisteredChannel * ch = l->first();ch;ch = l->next())
-		if(KviQString::matchWildExpressions(ch->name().ptr(),szChan) &&
-			KviQString::matchWildExpressions(ch->netMask().ptr(),szNetmask))
 		{
-//		FIXME: WE NEED TO RETURN AN ARRAY OF 2-ELEMENT ARRAYS (chan name, netmask)
-			pArray->set(aid,new KviKvsVariant(QString(ch->name()+"@"+ch->netMask())));
-//			pArray->set(aid,new KviKvsVariant(QString(ch->name()));
-//			pArrayCN->set(0,new KviKvsVariant(QString(ch->name())));
-//			pArrayCN->set(1,new KviKvsVariant(QString(ch->netMask())));
-//			pArray->set(aid,new KviKvsVariant(pArrayCN));
-			aid++;
+			if(KviQString::matchWildExpressions(ch->name(),szChan) && KviQString::matchWildExpressions(ch->netMask(),szNetmask))
+			{
+				pArray->set(aid,new KviKvsVariant(QString::fromUtf8("%1@%2").arg(ch->name(),ch->netMask())));
+				aid++;
+			}
 		}
-		++it;
 	}
 	c->returnValue()->setArray(pArray);
 	return true;
@@ -310,12 +324,13 @@ static bool regchan_kvs_fnc_property(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("network",KVS_PT_STRING,0,szNetwork)
 		KVSM_PARAMETER("property name",KVS_PT_NONEMPTYSTRING,0,szPropertyName)
 	KVSM_PARAMETERS_END(c)
-	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan.toUtf8().data(),szNetwork.toUtf8().data());
+	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan,szNetwork);
 	if(ch)
 	{
-		KviStr * p = ch->property(szPropertyName.toUtf8().data());
-		if(p)c->returnValue()->setString(p->ptr());
-	} //else c->warning(__tr("User %s not found"),parms->safeFirstParam());
+		QString szProp = ch->property(szPropertyName);
+		if(!szProp.isEmpty())
+			c->returnValue()->setString(szProp);
+	}
 	return true;
 }
 /*
@@ -348,7 +363,7 @@ static bool regchan_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("channel name",KVS_PT_STRING,0,szChan)
 		KVSM_PARAMETER("network",KVS_PT_STRING,0,szNetwork)
 	KVSM_PARAMETERS_END(c)
-	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan.toUtf8().data(),szNetwork.toUtf8().data());
+	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan,szNetwork);
 	c->returnValue()->setBoolean(ch);
 	return true;
 }
@@ -384,7 +399,7 @@ static bool regchan_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("channel name",KVS_PT_STRING,0,szChan)
 		KVSM_PARAMETER("netmask",KVS_PT_STRING,0,szNetmask)
 	KVSM_PARAMETERS_END(c)
-	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan.toUtf8().data(),szNetmask.toUtf8().data());
+	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan,szNetmask);
 	c->returnValue()->setBoolean(ch);
 	return true;
 }
