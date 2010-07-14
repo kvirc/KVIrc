@@ -183,7 +183,7 @@ void KviEventEditorTreeWidget::mousePressEvent (QMouseEvent *e)
 
 void KviEventEditor::itemPressed(QTreeWidgetItem *it,const QPoint &pnt)
 {
-	__range_valid(m_bOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 
 	if(it)
 	{
@@ -221,7 +221,7 @@ void KviEventEditor::itemPressed(QTreeWidgetItem *it,const QPoint &pnt)
 
 void KviEventEditor::getUniqueHandlerName(KviEventTreeWidgetItem *it,QString &buffer)
 {
-	__range_valid(m_bOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 
 	QString newName = buffer;
 	if(newName.isEmpty())newName = __tr2qs_ctx("unnamed","editor");
@@ -251,7 +251,7 @@ void KviEventEditor::getUniqueHandlerName(KviEventTreeWidgetItem *it,QString &bu
 
 void KviEventEditor::addHandlerForCurrentEvent()
 {
-	__range_valid(m_pOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 
 	if(!m_pTreeWidget->selectedItems().isEmpty())
 	{
@@ -273,7 +273,7 @@ void KviEventEditor::addHandlerForCurrentEvent()
 
 void KviEventEditor::removeCurrentHandler()
 {
-	__range_valid(m_pOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 	if(m_pLastEditedItem)
 	{
 		QTreeWidgetItem * it = m_pLastEditedItem;
@@ -294,7 +294,7 @@ void KviEventEditor::removeCurrentHandler()
 
 void KviEventEditor::toggleCurrentHandlerEnabled()
 {
-	__range_valid(m_pOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 	if(m_pLastEditedItem)
 	{
 		m_pLastEditedItem->setEnabled(!(m_pLastEditedItem->m_bEnabled));
@@ -340,7 +340,7 @@ void KviEventEditor::commit()
 
 void KviEventEditor::saveLastEditedItem()
 {
-	__range_valid(m_bOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 	if(!m_pLastEditedItem)return;
 	((KviEventHandlerTreeWidgetItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
 	QString buffer = m_pNameEditor->text();
@@ -360,7 +360,7 @@ void KviEventEditor::saveLastEditedItem()
 
 void KviEventEditor::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *)
 {
-	__range_valid(m_bOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 	saveLastEditedItem();
 
 	if(!it)

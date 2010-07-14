@@ -28,26 +28,49 @@
 #include "kvi_heapobject.h"
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
-#include "kvi_pointerhashtable.h"
+
+#include <QHash>
 
 class KVILIB_API KviRegisteredChannel : public KviHeapObject
 {
 	friend class KviRegisteredChannelDataBase;
 public:
-	KviRegisteredChannel(const KviStr &name,const KviStr &netmask);
+	KviRegisteredChannel(const QString &name,const QString &netmask);
 	~KviRegisteredChannel();
 protected:
-	KviStr               m_szName;
-	KviStr               m_szNetMask;
-	KviPointerHashTable<const char *,KviStr> * m_pPropertyDict;
+	QString                  m_szName;
+	QString                  m_szNetMask;
+	QHash<QString,QString> * m_pPropertyDict;
 public:
-	KviPointerHashTable<const char *,KviStr> * propertyDict(){ return m_pPropertyDict; };
-	const KviStr & name(){ return m_szName; };
-	const KviStr & netMask(){ return m_szNetMask; };
-	KviStr * property(const char * name){ return m_pPropertyDict->find(name); };
-	// val must be allocated with NEW!
-	void setProperty(const char * name,KviStr * val){ m_pPropertyDict->replace(name,val); };
-	void removeProperty(const char * name){ m_pPropertyDict->remove(name); };
+	QHash<QString,QString> * propertyDict()
+	{
+		return m_pPropertyDict;
+	}
+
+	const QString & name()
+	{
+		return m_szName;
+	}
+
+	const QString & netMask()
+	{
+		return m_szNetMask;
+	}
+
+	QString property(const QString &name)
+	{
+		return m_pPropertyDict->value(name);
+	}
+
+	void setProperty(const QString &name,const QString &val)
+	{
+		m_pPropertyDict->insert(name,val);
+	}
+
+	void removeProperty(const QString &name)
+	{
+		m_pPropertyDict->remove(name);
+	}
 };
 
 typedef KVILIB_API_TYPEDEF KviPointerList<KviRegisteredChannel> KviRegisteredChannelList;
@@ -58,13 +81,20 @@ public:
 	KviRegisteredChannelDataBase();
 	~KviRegisteredChannelDataBase();
 protected:
-	KviPointerHashTable<const char *,KviRegisteredChannelList> * m_pChannelDict;
+	QHash<QString,KviRegisteredChannelList *> * m_pChannelDict;
 public:
-	KviPointerHashTable<const char *,KviRegisteredChannelList> * channelDict(){ return m_pChannelDict; };
-	KviRegisteredChannel * find(const char * name,const char * net);
-	KviRegisteredChannel * findExact(const char * name,const char * netmask);
+	QHash<QString,KviRegisteredChannelList *> * channelDict()
+	{
+		return m_pChannelDict;
+	}
+
+	KviRegisteredChannel * find(const QString &name,const QString &net);
+
+	KviRegisteredChannel * findExact(const QString &name,const QString &netmask);
+
 	void remove(KviRegisteredChannel * c);
 	void add(KviRegisteredChannel * c);
+
 	void load(const QString &filename);
 	void save(const QString &filename);
 };

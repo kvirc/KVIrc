@@ -1115,7 +1115,7 @@ bool KviIrcView::event(QEvent *e)
 {
 	if(e->type() == QEvent::User)
 	{
-		__range_valid(m_bPostedPaintEventPending);
+		KVI_ASSERT(m_bPostedPaintEventPending);
 		if(m_iUnprocessedPaintEventRequests)
 			repaint();
 		// else we just had a pointEvent that did the job

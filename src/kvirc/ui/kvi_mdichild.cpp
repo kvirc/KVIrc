@@ -227,8 +227,8 @@ void KviMdiChild::moveEvent(QMoveEvent *e)
 
 void KviMdiChild::setClient(QWidget * w)
 {
-	__range_valid(m_pClient==0);
-	__range_valid(w!=0);
+	KVI_ASSERT(m_pClient==0);
+	KVI_ASSERT(w!=0);
 
 	m_pClient = w;
 	setWidget(w);
@@ -246,7 +246,7 @@ void KviMdiChild::setClient(QWidget * w)
 
 void KviMdiChild::unsetClient()
 {
-	__range_valid(m_pClient!=0);
+	KVI_ASSERT(m_pClient!=0);
 	if(!m_pClient)return;
 	setWidget(0);
 	m_pClient = 0;

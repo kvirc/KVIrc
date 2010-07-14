@@ -312,7 +312,7 @@ void KviLinksWindow::endOfLinks()
 
 QTreeWidgetItem * KviLinksWindow::insertLink(KviLink *l)
 {
-	__range_valid(l->hops > 0);
+	KVI_ASSERT(l->hops > 0);
 	QTreeWidgetItem * i = getItemByHost(l->parent.ptr(),0);
 	QTreeWidgetItem * it = 0;
 	if(!i)

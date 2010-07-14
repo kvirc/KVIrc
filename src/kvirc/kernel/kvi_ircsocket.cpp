@@ -1294,7 +1294,7 @@ void KviIrcSocket::raiseSSLError()
 void KviIrcSocket::doSSLHandshake(int)
 {
 #ifdef COMPILE_SSL_SUPPORT
-	__range_valid(m_pSSL);
+	KVI_ASSERT(m_pSSL);
 
 	if(m_pRsn)
 	{
@@ -1526,7 +1526,7 @@ void KviIrcSocket::processData(char * buffer,int)
 			bufLen = p - beginOfCurData;
 			//check for previous unterminated data
 			if(m_uReadBufferLen > 0){
-				__range_valid(m_pReadBuffer);
+				KVI_ASSERT(m_pReadBuffer);
 				messageBuffer = (char *)kvi_realloc(messageBuffer,bufLen + m_uReadBufferLen + 1);
 				kvi_memmove(messageBuffer,m_pReadBuffer,m_uReadBufferLen);
 				kvi_memmove((void *)(messageBuffer + m_uReadBufferLen),beginOfCurData,bufLen);
@@ -1587,7 +1587,7 @@ void KviIrcSocket::processData(char * buffer,int)
 		bufLen = p - beginOfCurData;
 		if(m_uReadBufferLen > 0){
 			//and there was more stuff saved... (really slow connection)
-			__range_valid(m_pReadBuffer);
+			KVI_ASSERT(m_pReadBuffer);
 			m_pReadBuffer =(char *)kvi_realloc(m_pReadBuffer,m_uReadBufferLen + bufLen);
 			kvi_memmove((void *)(m_pReadBuffer+m_uReadBufferLen),beginOfCurData,bufLen);
 			m_uReadBufferLen += bufLen;
@@ -1627,7 +1627,7 @@ void KviIrcSocket::abort()
 
 void KviIrcSocket::handleInvalidSocketRead(int iReadLength)
 {
-	__range_valid(iReadLength <= 0);
+	KVI_ASSERT(iReadLength <= 0);
 	if(iReadLength == 0)
 	{
 		raiseError(KviError_remoteEndClosedConnection);
@@ -1652,9 +1652,8 @@ void KviIrcSocket::handleInvalidSocketRead(int iReadLength)
 
 void KviIrcSocket::queue_insertMessage(KviIrcSocketMsgEntry * pMsg)
 {
-	__range_valid(pMsg);
-	__range_valid(pMsg->data_ptr);
-	__range_valid(pMsg->data_len);
+	KVI_ASSERT(pMsg);
+
 	pMsg->next_ptr = 0;
 
 	if(m_pSendQueueHead)
@@ -1678,8 +1677,8 @@ void KviIrcSocket::free_msgEntry(KviIrcSocketMsgEntry * e)
 
 bool KviIrcSocket::queue_removeMessage()
 {
-	__range_valid(m_pSendQueueTail);
-	__range_valid(m_pSendQueueHead);
+	KVI_ASSERT(m_pSendQueueTail);
+	KVI_ASSERT(m_pSendQueueHead);
 
 	if(m_pSendQueueHead->pData)
 		delete m_pSendQueueHead->pData;
@@ -1708,7 +1707,7 @@ void KviIrcSocket::flushSendQueue()
 		m_pFlushTimer->stop();
 
 	// Ok...have something to send...
-	__range_valid(m_state != Idle);
+	KVI_ASSERT(m_state != Idle);
 
 	struct timeval curTime;
 

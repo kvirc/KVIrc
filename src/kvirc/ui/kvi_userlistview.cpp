@@ -1255,7 +1255,7 @@ bool KviUserListView::nickChange(const QString & szOldNick, const QString & szNe
 		KviIrcUserEntry::Gender gender = pEntry->m_pGlobalData->gender();
 		bool bBot = pEntry->m_pGlobalData->isBot();
 		part(szOldNick);
-		__range_invalid(m_pEntryDict->find(szOldNick));
+		KVI_ASSERT(!m_pEntryDict->find(szOldNick));
 
 		pEntry = join(szNewNick,szUser,szHost,iFlags);
 		pEntry->m_pGlobalData->setGender(gender);

@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define _KVI_DEBUG_CHECK_RANGE_
-
 #include "thread.h"
 
 #include "kvi_debug.h"
@@ -57,7 +55,7 @@ KviDccThread::~KviDccThread()
 	m_pSSL = 0;
 #endif
 	if(m_fd != KVI_INVALID_SOCKET)kvi_socket_close(m_fd);
-	__range_invalid(m_pMutex->locked());
+	KVI_ASSERT(!m_pMutex->locked());
 	delete m_pMutex;
 }
 
@@ -71,7 +69,7 @@ void KviDccThread::setSSL(KviSSL * s)
 
 bool KviDccThread::handleInvalidSocketRead(int readLen)
 {
-	__range_valid(readLen < 1);
+	KVI_ASSERT(readLen < 1);
 	if(readLen == 0)
 	{
 		// connection closed

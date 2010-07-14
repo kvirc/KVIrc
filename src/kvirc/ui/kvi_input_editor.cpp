@@ -1154,7 +1154,7 @@ void KviInputEditor::returnPressed(bool)
 		if(g_pColorWindow->isVisible())
 			g_pColorWindow->hide();
 
-	__range_valid(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
+	KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
 	if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)m_pHistory->removeLast();
 
 	m_iCurHistoryIdx = -1;
@@ -2259,7 +2259,7 @@ void KviInputEditor::sendPlain()
 			m_pHistory->insert(0,new QString(szBuffer));
 		}
 
-		__range_valid(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
+		KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
 		if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)m_pHistory->removeLast();
 
 		m_iCurHistoryIdx = -1;

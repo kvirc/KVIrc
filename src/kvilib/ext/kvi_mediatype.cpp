@@ -89,7 +89,7 @@ KviMediaManager::~KviMediaManager()
 
 KviMediaType * KviMediaManager::findMediaTypeByIanaType(const char * ianaType)
 {
-	__range_valid(locked());
+	KVI_ASSERT(locked());
 	for(KviMediaType * mt = m_pMediaTypeList->first();mt;mt = m_pMediaTypeList->next())
 	{
 		if(kvi_strEqualCI(mt->szIanaType.ptr(),ianaType))return mt;
@@ -100,7 +100,7 @@ KviMediaType * KviMediaManager::findMediaTypeByIanaType(const char * ianaType)
 
 KviMediaType * KviMediaManager::findMediaTypeByFileMask(const char * filemask)
 {
-	__range_valid(locked());
+	KVI_ASSERT(locked());
 	for(KviMediaType * mt = m_pMediaTypeList->first();mt;mt = m_pMediaTypeList->next())
 	{
 // FIXME: #warning "Should this be case sensitive ?"
@@ -125,7 +125,7 @@ void KviMediaManager::copyMediaType(KviMediaType * dst,KviMediaType * src)
 
 void KviMediaManager::insertMediaType(KviMediaType * m)
 {
-	__range_valid(locked());
+	KVI_ASSERT(locked());
 	int iWildCount    = m->szFileMask.occurences('*');
 	int iNonWildCount = m->szFileMask.len() - iWildCount;
 
@@ -236,7 +236,7 @@ void KviMediaManager::insertMediaType(KviMediaType * m)
 KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckMagic)
 {
 	// FIXME: This should be ported at least to QString....
-	__range_valid(locked());
+	KVI_ASSERT(locked());
 
 	KviStr szFullPath = filename;
 	if(!KviFileUtils::isAbsolutePath(szFullPath.ptr()))
@@ -455,7 +455,7 @@ static KviDefaultMediaType g_defMediaTypes[]=
 
 void KviMediaManager::load(const QString &filename)
 {
-	__range_valid(locked());
+	KVI_ASSERT(locked());
 
 	KviConfig cfg(filename,KviConfig::Read);
 	cfg.setGroup("MediaTypes");
@@ -500,7 +500,7 @@ void KviMediaManager::load(const QString &filename)
 
 void KviMediaManager::save(const QString &filename)
 {
-	__range_valid(locked());
+	KVI_ASSERT(locked());
 	KviConfig cfg(filename,KviConfig::Write);
 
 	cfg.clear();

@@ -517,6 +517,58 @@ namespace KviQString
 	extern KVILIB_API void cutToLast(QString & szSrc, const QString & szFind, bool bIncluded = true, bool bClearIfNotFound = false);
 
 	/**
+	* \brief Returns the string up to the the first occurrence of the given char
+	*
+	* If the char is not found, the string is returned as it is.
+	* \param szSrc The source string
+	* \param c The char to search for
+	* \param bIncluded Wheter to include the given char in the returned string
+	* \param bReturnFullStringIfNotFound True if we want the function to return the whole string if the char isn't found and
+	*        false if we want the function to return an empty string in this case.
+	* \return void
+	*/
+	extern KVILIB_API QString leftToFirst(QString & szSrc, const QChar & c, bool bIncluded = true, bool bReturnFullStringIfNotFound = true);
+	
+	/**
+	* \brief Returns the string up to the first occurrence of the given string
+	*
+	* If the char is not found, the string is returned as it is.
+	* \param szSrc The source string
+	* \param szFind The string to search for
+	* \param bIncluded Wheter to include the given string in the returned string
+	* \param bReturnFullStringIfNotFound True if we want the function to return the whole string if the string isn't found and
+	*        false if we want the function to return an empty string in this case.
+	* \return void
+	*/
+	extern KVILIB_API QString leftToFirst(QString & szSrc, const QString & szFind, bool bIncluded = true, bool bReturnFullStringIfNotFound = true);
+	
+	/**
+	* \brief Returns the string up to the last occurrence of the given char
+	*
+	* If the char is not found, the string is returned as it is.
+	* \param szSrc The source string
+	* \param c The char to search for
+	* \param bIncluded Wheter to include the given char in the returned string
+	* \param bReturnFullStringIfNotFound True if we want the function to return the whole string if the char isn't found and
+	*        false if we want the function to return an empty string in this case.
+	* \return void
+	*/
+	extern KVILIB_API QString leftToLast(QString & szSrc, const QChar & c, bool bIncluded = true, bool bReturnFullStringIfNotFound = true);
+	
+	/**
+	* \brief Returns the string up to the last occurrence of the given string
+	*
+	* If the char is not found, the string is returned as it is.
+	* \param szSrc The source string
+	* \param szFind The string to search for
+	* \param bIncluded Wheter to include the given string in the returned string
+	* \param bReturnFullStringIfNotFound True if we want the function to return the whole string if the string isn't found and
+	*        false if we want the function to return an empty string in this case.
+	* \return void
+	*/
+	extern KVILIB_API QString leftToLast(QString & szSrc, const QString & szFind, bool bIncluded = true, bool bReturnFullStringIfNotFound = true);
+
+	/**
 	* \brief Returns an ISO-8859-1 upper case string
 	* \param szSrc The source string
 	* \return QString

@@ -45,8 +45,6 @@
 #include "kvi_ircconnectiontargetresolver.h"
 #include "kvi_ircsocket.h"
 #include "kvi_databuffer.h"
-
-#define __KVI_DEBUG__
 #include "kvi_debug.h"
 
 #include <QTimer>
@@ -241,7 +239,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 			//check for previous unterminated data
 			if(m_uReadBufferLen > 0)
 			{
-				__range_valid(m_pReadBuffer);
+				KVI_ASSERT(m_pReadBuffer);
 				cMessageBuffer = (char *)kvi_realloc(cMessageBuffer,iBufLen + m_uReadBufferLen + 1);
 				kvi_memmove(cMessageBuffer,m_pReadBuffer,m_uReadBufferLen);
 				kvi_memmove((void *)(cMessageBuffer + m_uReadBufferLen),cBeginOfCurData,iBufLen);
@@ -250,7 +248,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 				kvi_free(m_pReadBuffer);
 				m_pReadBuffer = 0;
 			} else {
-				__range_invalid(m_pReadBuffer);
+				KVI_ASSERT(!m_pReadBuffer);
 				cMessageBuffer = (char *)kvi_realloc(cMessageBuffer,iBufLen + 1);
 				kvi_memmove(cMessageBuffer,cBeginOfCurData,iBufLen);
 				*(cMessageBuffer + iBufLen) = '\0';
@@ -302,13 +300,13 @@ void KviIrcLink::processData(char * buffer, int iLen)
 		if(m_uReadBufferLen > 0)
 		{
 			//and there was more stuff saved... (really slow connection)
-			__range_valid(m_pReadBuffer);
+			KVI_ASSERT(m_pReadBuffer);
 			m_pReadBuffer =(char *)kvi_realloc(m_pReadBuffer,m_uReadBufferLen + iBufLen);
 			kvi_memmove((void *)(m_pReadBuffer+m_uReadBufferLen),cBeginOfCurData,iBufLen);
 			m_uReadBufferLen += iBufLen;
 		} else {
 			//
-			__range_invalid(m_pReadBuffer);
+			KVI_ASSERT(!m_pReadBuffer);
 			m_uReadBufferLen = iBufLen;
 			m_pReadBuffer =(char *)kvi_malloc(m_uReadBufferLen);
 			kvi_memmove(m_pReadBuffer,cBeginOfCurData,m_uReadBufferLen);

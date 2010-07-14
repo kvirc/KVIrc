@@ -57,9 +57,18 @@
 #else
 	#define kvi_va_start_by_reference va_start
 #endif
+
 #define kvi_va_arg va_arg
 #define kvi_va_end va_end
 
+
+#ifdef va_copy
+	#define kvi_va_copy(a,b) va_copy(a,b)
+#elif defined(__va_copy)
+	#define kvi_va_copy(a,b) __va_copy(a,b)
+#else
+	#define kvi_va_copy(a,b) ((a) = (b))
+#endif
 
 
 #endif //_KVI_STDARG_H_

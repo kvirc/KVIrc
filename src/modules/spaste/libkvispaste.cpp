@@ -206,34 +206,35 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 	{
 		while(g_pControllerList->first()) delete g_pControllerList->first();
 		return true;
-	} else {
-		KviPointerListIterator<SPasteController> it(*g_pControllerList);
-		SPasteController *item;
+	}
 
-		if(!iId) //Delete all spaste's from the current window
+	KviPointerListIterator<SPasteController> it(*g_pControllerList);
+	SPasteController *item;
+
+	if(!iId) //Delete all spaste's from the current window
+	{
+		if((c->window()->type() != KVI_WINDOW_TYPE_CHANNEL) && (c->window()->type() != KVI_WINDOW_TYPE_QUERY) && (c->window()->type() != KVI_WINDOW_TYPE_DCCCHAT))
 		{
-			if((c->window()->type() != KVI_WINDOW_TYPE_CHANNEL) && (c->window()->type() != KVI_WINDOW_TYPE_QUERY) && (c->window()->type() != KVI_WINDOW_TYPE_DCCCHAT))
-			{
-				QString szWinId = c->window()->id();
-				c->warning(__tr2qs("The specified window (%Q) is not a channel/query/dcc"),&szWinId);
-				return false;
-			} else {
-				while( (item = it.current()) != 0)
-				{
-					++it;
-					if(KviQString::equalCS(item->window()->id(),c->window()->id()))delete item;
-				}
-			}
+			QString szWinId = c->window()->id();
+			c->warning(__tr2qs("The specified window (%Q) is not a channel/query/dcc"),&szWinId);
+			return false;
 		} else {
-			//Delete the spaste with the given id
 			while( (item = it.current()) != 0)
 			{
 				++it;
-				if(item->getId() == iId)delete item;
+				if(KviQString::equalCS(item->window()->id(),c->window()->id()))delete item;
 			}
 		}
-		return true;
+	} else {
+		//Delete the spaste with the given id
+		while( (item = it.current()) != 0)
+		{
+			++it;
+			if(item->getId() == (kvs_int_t)iId)
+				delete item;
+		}
 	}
+	return true;
 }
 
 /*

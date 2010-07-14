@@ -94,7 +94,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		} else d->setConsole(c->window()->frame()->firstConsole());
 	}
 
-	__range_valid(d->console());
+	KVI_ASSERT(d->console());
 
 	if(!d->console()->isConnected())
 	{
@@ -1284,7 +1284,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		else d->console() = c->window()->frame()->firstConsole();
 	}
 
-	__range_valid(d->console());
+	KVI_ASSERT(d->console());
 
 	if(!d->console()->isConnected())
 	{

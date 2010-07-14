@@ -144,7 +144,7 @@ void KviRawEditor::customContextMenuRequested(const QPoint &pos)
 {
 	QTreeWidgetItem *it;
 	it=(QTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
-	__range_valid(m_bOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 	m_pContextPopup->clear();
 	if(it)
 	{
@@ -185,7 +185,7 @@ void KviRawEditor::customContextMenuRequested(const QPoint &pos)
 
 void KviRawEditor::getUniqueHandlerName(KviRawTreeWidgetItem *it,QString &buffer)
 {
-	__range_valid(m_bOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 
 	QString newName = buffer;
 	if(newName.isEmpty())newName = __tr2qs_ctx("unnamed","editor");
@@ -247,7 +247,7 @@ add_handler:
 
 void KviRawEditor::addHandlerForCurrentRaw()
 {
-	__range_valid(m_pOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 
 	KviRawTreeWidgetItem * it = (KviRawTreeWidgetItem *) m_pTreeWidget->currentItem();
 	if(it)
@@ -268,7 +268,7 @@ void KviRawEditor::addHandlerForCurrentRaw()
 
 void KviRawEditor::removeCurrentHandler()
 {
-	__range_valid(m_pOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 	if(m_pLastEditedItem)
 	{
 		QTreeWidgetItem * it = m_pLastEditedItem;
@@ -283,7 +283,7 @@ void KviRawEditor::removeCurrentHandler()
 
 void KviRawEditor::toggleCurrentHandlerEnabled()
 {
-	__range_valid(m_pOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 	if(m_pLastEditedItem)
 	{
 		m_pLastEditedItem->m_bEnabled = !(m_pLastEditedItem->m_bEnabled);
@@ -329,7 +329,7 @@ void KviRawEditor::commit()
 
 void KviRawEditor::saveLastEditedItem()
 {
-	__range_valid(m_bOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 	if(!m_pLastEditedItem)return;
 
 	QString buffer = m_pNameEditor->text();
@@ -349,7 +349,7 @@ void KviRawEditor::saveLastEditedItem()
 
 void KviRawEditor::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *)
 {
-	__range_valid(m_bOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 	saveLastEditedItem();
 	if(it->parent())
 	{

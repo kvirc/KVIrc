@@ -22,9 +22,6 @@
 //
 //=============================================================================
 
-
-
-#define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
 
 #define _KVI_STRING_CPP_
@@ -633,7 +630,7 @@ bool kvi_matchWildExprWithTerminator(register const char *m1,register const char
 
 const char * kvi_extractToken(KviStr &str,const char *aux_ptr,char sep)
 {
-	__range_valid(aux_ptr);
+	KVI_ASSERT(aux_ptr);
 	while(*aux_ptr && (*aux_ptr == sep))aux_ptr++;
 	const char *p=aux_ptr;
 	while(*p && (*p != sep))p++;
@@ -647,7 +644,7 @@ const char * kvi_extractToken(KviStr &str,const char *aux_ptr,char sep)
 
 const char * kvi_extractUpTo(KviStr &str,const char *aux_ptr,char sep)
 {
-	__range_valid(aux_ptr);
+	KVI_ASSERT(aux_ptr);
 	const char *p=aux_ptr;
 	while(*p && (*p != sep))p++;
 	str.m_len=p-aux_ptr;
@@ -659,9 +656,9 @@ const char * kvi_extractUpTo(KviStr &str,const char *aux_ptr,char sep)
 
 int kvi_vsnprintf(char *buffer,int len,const char *fmt,kvi_va_list list)
 {
-	__range_valid(fmt);
-	__range_valid(buffer);
-	__range_valid(len > 0); //printing 0 characters is senseless
+	KVI_ASSERT(fmt);
+	KVI_ASSERT(buffer);
+	KVI_ASSERT(len > 0); //printing 0 characters is senseless
 
 	register char *p;
 	char *argString;
@@ -777,8 +774,8 @@ int kvi_vsnprintf(char *buffer,int len,const char *fmt,kvi_va_list list)
 
 int kvi_irc_vsnprintf(char *buffer,const char *fmt,kvi_va_list list,bool *bTruncated)
 {
-	__range_valid(fmt);
-	__range_valid(buffer);
+	KVI_ASSERT(fmt);
+	KVI_ASSERT(buffer);
 	if( !( buffer && fmt) ) return false;
 	register char *p;
 	char *argString;
@@ -872,12 +869,12 @@ int kvi_irc_vsnprintf(char *buffer,const char *fmt,kvi_va_list list,bool *bTrunc
 		}
 	}
 	//succesfull finish
-	__range_valid(len >= 2);
+	KVI_ASSERT(len >= 2);
 	*p++ = '\r';
 	*p   = '\n';
 	return ((p-buffer)+1);
 truncate:
-	__range_valid(len >= 2);
+	KVI_ASSERT(len >= 2);
 	*bTruncated = true;
 	*p++ = '\r';
 	*p   = '\n';
@@ -888,8 +885,8 @@ truncate:
 
 bool kvi_strEqualCS(const char *str1,const char *str2)
 {
-	__range_valid(str1);
-	__range_valid(str2);
+	KVI_ASSERT(str1);
+	KVI_ASSERT(str2);
 	if( !( str1 && str2 ) ) return false;
 	register unsigned char *s1 = (unsigned char *)str1;
 	register unsigned char *s2 = (unsigned char *)str2;
@@ -899,9 +896,9 @@ bool kvi_strEqualCS(const char *str1,const char *str2)
 
 bool kvi_strEqualCSN(const char *str1,const char *str2,int len)
 {
-	__range_valid(str1);
-	__range_valid(str2);
-	__range_valid(len >= 0);
+	KVI_ASSERT(str1);
+	KVI_ASSERT(str2);
+	KVI_ASSERT(len >= 0);
 	if( !( str1 && str2 && (len >= 0) ) ) return false;
 	register unsigned char *s1 = (unsigned char *)str1;
 	register unsigned char *s2 = (unsigned char *)str2;
@@ -913,9 +910,9 @@ bool kvi_strEqualCSN(const char *str1,const char *str2,int len)
 
 bool kvi_strEqualCIN(const char *str1,const char *str2,int len)
 {
-	__range_valid(str1);
-	__range_valid(str2);
-	__range_valid(len >= 0);
+	KVI_ASSERT(str1);
+	KVI_ASSERT(str2);
+	KVI_ASSERT(len >= 0);
 	if( !( str1 && str2 && (len >= 0) ) ) return false;
 	register unsigned char *s1 = (unsigned char *)str1;
 	register unsigned char *s2 = (unsigned char *)str2;
@@ -925,8 +922,8 @@ bool kvi_strEqualCIN(const char *str1,const char *str2,int len)
 
 bool kvi_strEqualCI(const char *str1,const char *str2)
 {
-	__range_valid(str1);
-	__range_valid(str2);
+	KVI_ASSERT(str1);
+	KVI_ASSERT(str2);
 	if( !( str1 && str2) ) return false;
 	register unsigned char *s1 = (unsigned char *)str1;
 	register unsigned char *s2 = (unsigned char *)str2;
@@ -941,8 +938,8 @@ bool kvi_strEqualCI(const char *str1,const char *str2)
 int kvi_strcmpCI(const char *str1,const char *str2)
 {
 	//abcd abce
-	__range_valid(str1);
-	__range_valid(str2);
+	KVI_ASSERT(str1);
+	KVI_ASSERT(str2);
 	if( !( str1 && str2) ) return false;
 	register unsigned char *s1 = (unsigned char *)str1;
 	register unsigned char *s2 = (unsigned char *)str2;
@@ -960,8 +957,8 @@ int kvi_strcmpCI(const char *str1,const char *str2)
 //int kvi_strcmpCIN(const char *str1,const char *str2,int len)
 //{
 //	//abcd abce
-//	__range_valid(str1);
-//	__range_valid(str2);
+//	KVI_ASSERT(str1);
+//	KVI_ASSERT(str2);
 //	register unsigned char *s1 = (unsigned char *)str1;
 //	register unsigned char *s2 = (unsigned char *)str2;
 //	int diff;
@@ -977,8 +974,8 @@ int kvi_strcmpCI(const char *str1,const char *str2)
 int kvi_strcmpCS(const char *str1,const char *str2)
 {
 	//abcd abce
-	__range_valid(str1);
-	__range_valid(str2);
+	KVI_ASSERT(str1);
+	KVI_ASSERT(str2);
 	if( !( str1 && str2) ) return false;
 	register unsigned char *s1 = (unsigned char *)str1;
 	register unsigned char *s2 = (unsigned char *)str2;
@@ -989,8 +986,8 @@ int kvi_strcmpCS(const char *str1,const char *str2)
 
 int kvi_strMatchRevCS(const char *str1, const char *str2, int index)
 {
-	__range_valid(str1);
-	__range_valid(str2);
+	KVI_ASSERT(str1);
+	KVI_ASSERT(str2);
 	if( !( str1 && str2) ) return false;
 	register char *s1=(char *)str1;
 	register char *s2=(char *)str2;
@@ -1056,9 +1053,9 @@ KviStr::KviStr(const QByteArray &str)
 
 KviStr::KviStr(const char *str,int len)
 {
-	__range_valid(str);
-	//__range_valid(len <= ((int)strlen(str))); <-- we trust the user here (and a strlen() call may run AFTER len if data is not null terminated)
-	__range_valid(len >= 0);
+	KVI_ASSERT(str);
+	//KVI_ASSERT(len <= ((int)strlen(str))); <-- we trust the user here (and a strlen() call may run AFTER len if data is not null terminated)
+	KVI_ASSERT(len >= 0);
 	m_len = len;
 	m_ptr = (char *)kvi_malloc(m_len+1);
 	kvi_fastmove(m_ptr,str,m_len);
@@ -1067,9 +1064,9 @@ KviStr::KviStr(const char *str,int len)
 
 KviStr::KviStr(const char *bg,const char *end)
 {
-	__range_valid(bg);
-	__range_valid(end);
-	__range_valid(bg <= end);
+	KVI_ASSERT(bg);
+	KVI_ASSERT(end);
+	KVI_ASSERT(bg <= end);
 	m_len = end-bg;
 	m_ptr = (char *)kvi_malloc(m_len +1);
 	kvi_fastmove(m_ptr,bg,m_len);
@@ -1108,7 +1105,7 @@ KviStr::KviStr(KviFormatConstructorTag,const char *fmt,...)
 
 KviStr::KviStr(const KviStr &str)
 {
-	__range_valid(str.m_ptr);
+	KVI_ASSERT(str.m_ptr);
 	m_len = str.m_len;
 	m_ptr = (char *)kvi_malloc(m_len+1);
 	kvi_fastmove(m_ptr,str.m_ptr,m_len+1);
@@ -1131,7 +1128,7 @@ KviStr::KviStr(const QString &str)
 
 KviStr::KviStr(char c,int fillLen)
 {
-	__range_valid(fillLen >= 0);
+	KVI_ASSERT(fillLen >= 0);
 	m_len = fillLen;
 	m_ptr = (char *)kvi_malloc(m_len+1);
 	register char *p=m_ptr;
@@ -1179,7 +1176,7 @@ KviStr::~KviStr()
 
 void KviStr::setLength(int iLen)
 {
-	__range_valid(iLen >= 0);
+	KVI_ASSERT(iLen >= 0);
 	m_len = iLen;
 	m_ptr = (char *)kvi_realloc(m_ptr,m_len+1);
 	*(m_ptr + m_len) = '\0';
@@ -1187,8 +1184,8 @@ void KviStr::setLength(int iLen)
 
 KviStr & KviStr::operator=(const KviStr &str)
 {
-	__range_valid(str.m_ptr);
-	__range_valid(str.m_ptr != m_ptr);
+	KVI_ASSERT(str.m_ptr);
+	KVI_ASSERT(str.m_ptr != m_ptr);
 	m_len = str.m_len;
 	m_ptr = (char *)kvi_realloc(m_ptr,m_len+1);
 	kvi_fastmove(m_ptr,str.m_ptr,m_len+1);
@@ -1206,7 +1203,7 @@ KviStr & KviStr::operator=(const QByteArray &str)
 
 KviStr & KviStr::operator=(const char *str)
 {
-	//__range_valid(str);
+	//KVI_ASSERT(str);
 	if(str){
 		m_len = (int)strlen(str);
 		m_ptr = (char *)kvi_realloc(m_ptr,m_len+1);
@@ -1242,7 +1239,7 @@ static char hexdigits[16] = { '0','1','2','3','4','5','6','7','8','9','a','b','c
 
 void KviStr::bufferToHex(const char *buffer,int len)
 {
-	__range_valid(buffer);
+	KVI_ASSERT(buffer);
 	m_len = (len * 2);
 	m_ptr = (char *)kvi_realloc(m_ptr,m_len + 1);
 	char * aux = m_ptr;
@@ -1523,7 +1520,7 @@ void KviStr::append(char c)
 
 void KviStr::append(const KviStr &str)
 {
-	__range_valid(str.m_ptr);
+	KVI_ASSERT(str.m_ptr);
 	m_ptr = (char *)kvi_realloc(m_ptr,m_len+str.m_len+1);
 	kvi_fastmove((m_ptr+m_len),str.m_ptr,str.m_len+1);
 	m_len += str.m_len;
@@ -1549,9 +1546,9 @@ void KviStr::append(const QString &str)
 
 void KviStr::append(const char *str,int len)
 {
-	__range_valid(str);
-//	__range_valid(len <= ((int)strlen(str)));
-	__range_valid(len >= 0);
+	KVI_ASSERT(str);
+//	KVI_ASSERT(len <= ((int)strlen(str)));
+	KVI_ASSERT(len >= 0);
 	m_ptr = (char *)kvi_realloc(m_ptr,m_len+len+1);
 	kvi_fastmove((m_ptr+m_len),str,len);
 	m_len += len;
@@ -1592,9 +1589,9 @@ void KviStr::append(KviFormatConstructorTag ,const char *fmt,...)
 
 void KviStr::extractFromString(const char *begin,const char *end)
 {
-	__range_valid(begin);
-	__range_valid(end);
-	__range_valid(end >= begin);
+	KVI_ASSERT(begin);
+	KVI_ASSERT(end);
+	KVI_ASSERT(end >= begin);
 	m_len = end-begin;
 	m_ptr = (char *)kvi_realloc(m_ptr,m_len+1);
 	kvi_fastmove(m_ptr,begin,m_len);
@@ -1603,8 +1600,8 @@ void KviStr::extractFromString(const char *begin,const char *end)
 
 void KviStr::prepend(const KviStr &str)
 {
-	__range_valid(str.m_ptr);
-	__range_valid(str.m_ptr != m_ptr);
+	KVI_ASSERT(str.m_ptr);
+	KVI_ASSERT(str.m_ptr != m_ptr);
 	m_ptr = (char *)kvi_realloc(m_ptr,m_len+str.m_len+1);
 	kvi_memmove((m_ptr+str.m_len),m_ptr,m_len+1); //move self
 	kvi_fastmove(m_ptr,str.m_ptr,str.m_len);
@@ -1623,9 +1620,9 @@ void KviStr::prepend(const char *str)
 
 void KviStr::prepend(const char *str,int len)
 {
-	__range_valid(str);
-	__range_valid(len <= ((int)strlen(str)));
-	__range_valid(len >= 0);
+	KVI_ASSERT(str);
+	KVI_ASSERT(len <= ((int)strlen(str)));
+	KVI_ASSERT(len >= 0);
 	m_ptr = (char *)kvi_realloc(m_ptr,m_len+len+1);
 	kvi_memmove((m_ptr+len),m_ptr,m_len+1); //move self
 	kvi_fastmove(m_ptr,str,len);
@@ -1799,8 +1796,8 @@ KviStr KviStr::right(int maxLen) const
 
 KviStr KviStr::middle(int idx,int maxLen) const
 {
-	__range_valid(maxLen >= 0);
-	__range_valid(idx >= 0);
+	KVI_ASSERT(maxLen >= 0);
+	KVI_ASSERT(idx >= 0);
 	if((maxLen <= 0) || (idx < 0)){ //max len negative...invalid params
 		KviStr ret;
 		return ret;
@@ -1917,7 +1914,7 @@ void KviStr::joinFromArray(KviStr ** strings,const char * sep,bool bLastSep)
 
 KviStr & KviStr::insert(int idx,const char *data)
 {
-	__range_valid(data);
+	KVI_ASSERT(data);
 	if(idx <= m_len){
 		int len = (int)strlen(data);
 		m_ptr = (char *)kvi_realloc(m_ptr,m_len+len+1);
@@ -2179,7 +2176,7 @@ int KviStr::occurences(char c,bool caseS) const
 
 int KviStr::occurences(const char *str,bool caseS) const
 {
-	__range_valid(str);
+	KVI_ASSERT(str);
 	register char *p = m_ptr;
 	int cnt=0;
 	int len = (int)strlen(str);
@@ -2225,7 +2222,7 @@ bool KviStr::contains(char c,bool caseS) const
 
 bool KviStr::contains(const char *str,bool caseS) const
 {
-	__range_valid(str);
+	KVI_ASSERT(str);
 	register char *p = m_ptr;
 	int len = (int)strlen(str);
 	if(caseS)
@@ -2470,7 +2467,7 @@ long KviStr::toLongExt(bool *bOk,int base)
 
 KviStr & KviStr::cutLeft(int len)
 {
-	__range_valid(len >= 0);
+	KVI_ASSERT(len >= 0);
 	if(len <= m_len){
 		m_len -= len;
 		kvi_memmove(m_ptr,m_ptr+len,m_len+1);
@@ -2485,7 +2482,7 @@ KviStr & KviStr::cutLeft(int len)
 
 KviStr & KviStr::cutRight(int len)
 {
-	__range_valid(len >= 0);
+	KVI_ASSERT(len >= 0);
 	if(len <= m_len){
 		m_len -= len;
 		m_ptr = (char *)kvi_realloc(m_ptr,m_len+1);
@@ -2500,8 +2497,8 @@ KviStr & KviStr::cutRight(int len)
 
 KviStr & KviStr::cut(int idx,int len)
 {
-	__range_valid(idx >= 0);
-	__range_valid(len >= 0);
+	KVI_ASSERT(idx >= 0);
+	KVI_ASSERT(len >= 0);
 	if(idx < m_len){
 		// idx = 3 len = 3 m_len = 10
 		// 0123456789
@@ -2594,7 +2591,7 @@ KviStr & KviStr::cutFromLast(const char *c,bool bIncluded)
 
 KviStr & KviStr::setLen(int len)
 {
-	__range_valid(len >= 0);
+	KVI_ASSERT(len >= 0);
 	m_ptr = (char *)kvi_realloc(m_ptr,len+1);
 	*(m_ptr+len)='\0';
 	m_len = len;
@@ -2613,7 +2610,7 @@ KviStr & KviStr::stripLeftWhiteSpace()
 
 KviStr & KviStr::stripLeft(char c)
 {
-	__range_valid(c != '\0');
+	KVI_ASSERT(c != '\0');
 	register char *p=m_ptr;
 	while(*p == c)p++;
 	m_len -= (p-m_ptr);
@@ -2624,8 +2621,8 @@ KviStr & KviStr::stripLeft(char c)
 
 bool KviStr::getToken(KviStr & str,char sep)
 {
-	__range_valid(str.m_ptr);
-	__range_valid(str.m_ptr != m_ptr);
+	KVI_ASSERT(str.m_ptr);
+	KVI_ASSERT(str.m_ptr != m_ptr);
 	register char *p=m_ptr;
 	//skip to the end
 	while(*p && (*p != sep))p++;
@@ -2643,8 +2640,8 @@ bool KviStr::getToken(KviStr & str,char sep)
 
 bool KviStr::getLine(KviStr &str)
 {
-	__range_valid(str.m_ptr);
-	__range_valid(str.m_ptr != m_ptr);
+	KVI_ASSERT(str.m_ptr);
+	KVI_ASSERT(str.m_ptr != m_ptr);
 	if(m_len == 0)return false;
 	register char *p=m_ptr;
 	//skip to the end
@@ -2669,6 +2666,37 @@ KviStr KviStr::getToken(char sep)
 	while(*p && (*p == sep))p++;
 	cutLeft(p-m_ptr);
 	return ret;
+}
+
+KviStr & KviStr::vsprintf(const char *fmt,kvi_va_list list)
+{
+	kvi_va_list save;
+	kvi_va_copy(save,list);
+
+	m_ptr=(char *)kvi_realloc(m_ptr,256);
+	//First try
+	//print...with max 256 chars
+	m_len=kvi_vsnprintf(m_ptr,256,fmt,list);
+
+	//check if we failed
+	if(m_len < 0)
+	{
+		//yes , failed....
+		int dummy=256;
+		do { //we failed , so retry with 256 more chars
+			dummy+=256;
+			//realloc
+			m_ptr=(char *)kvi_realloc(m_ptr,dummy);
+			//print...
+			kvi_va_copy(list,save);
+			m_len=kvi_vsnprintf(m_ptr,dummy,fmt,list);
+		} while (m_len < 0);
+	}
+	//done...
+	//now m_len is the length of the written string not including the terminator...
+	//perfect! :)
+	m_ptr=(char *)kvi_realloc(m_ptr,m_len+1);
+	return (*this);
 }
 
 KviStr & KviStr::sprintf(const char *fmt,...)
@@ -2787,7 +2815,7 @@ int KviStr::findFirstIdx(const char *str,bool caseS) const
 	// a position in QString() does not map to the position in the char array
 	// since a single UNICODE char may use one or more bytes...
 
-	__range_valid(str);
+	KVI_ASSERT(str);
 	register char *p=m_ptr;
 	int len = (int)strlen(str);
 	if(caseS){
@@ -2832,7 +2860,7 @@ int KviStr::findLastIdx(const char *str,bool caseS) const
 
 	// return QString(m_ptr).findRev(QString(str),-1,caseS);
 
-	__range_valid(str);
+	KVI_ASSERT(str);
 	//Calc the len of the searched string
 	int len = (int)strlen(str);
 	//Too long ?

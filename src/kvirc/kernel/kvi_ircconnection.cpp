@@ -812,7 +812,7 @@ bool KviIrcConnection::sendData(const char * pcBuffer, int iBuflen)
 
 void KviIrcConnection::delayedStartNotifyList()
 {
-	__range_invalid(m_pNotifyListTimer);
+	KVI_ASSERT(!m_pNotifyListTimer);
 
 	if(m_pNotifyListTimer)
 		delete m_pNotifyListTimer;
@@ -1373,7 +1373,6 @@ void KviIrcConnection::nickChange(const QString & szNewNick)
 
 bool KviIrcConnection::changeUserMode(char cMode, bool bSet)
 {
-	__range_valid(m_pConnectionInfo);
 	if(bSet)
 	{
 		if(m_pUserInfo->hasUserMode(cMode))

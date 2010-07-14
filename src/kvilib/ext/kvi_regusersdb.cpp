@@ -373,7 +373,7 @@ static void append_mask_to_list(KviRegisteredMaskList *l,KviRegisteredUser *u,Kv
 KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u,KviIrcMask * mask)
 {
 	if(!u || !mask) return 0;
-	__range_valid(u == m_pUserDict->find(u->name()));
+	KVI_ASSERT(u == m_pUserDict->find(u->name()));
 
 	KviRegisteredMaskList * l;
 	if(mask->hasWildNick())

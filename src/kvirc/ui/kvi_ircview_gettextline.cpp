@@ -1088,7 +1088,7 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 {
 	//appends a text string to the buffer list
 	//splits the lines
-	__range_valid(data_ptr);
+	KVI_ASSERT(data_ptr);
 	m_pLastLinkUnderMouse = 0;
 
 	if(!KVI_OPTION_BOOL(KviOption_boolStripControlCodesInLogs))

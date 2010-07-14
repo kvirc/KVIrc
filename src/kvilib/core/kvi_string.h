@@ -229,6 +229,8 @@ public:
 	// Safe sprintf. This one will never write past the end of the string
 	// It can handle only %s %d %u and %c format flags.
 	KviStr & sprintf(const char *fmt,...);
+	
+	KviStr & vsprintf(const char *fmt,kvi_va_list list);
 
 	// append functions
 	void append(const KviStr &str);

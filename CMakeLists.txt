@@ -153,6 +153,7 @@ ENDIF()
 OPTION(WANT_DEBUG "Compile debug symbols" OFF)
 IF(CMAKE_BUILD_TYPE MATCHES Debug OR CMAKE_BUILD_TYPE MATCHES RelWithDebInfo OR DEBUG OR WITH_DEBUG)
 	SET(WANT_DEBUG ON CACHE BOOL "Compile debug symbols" FORCE)
+	SET(COMPILE_DEBUG_MODE 1)
 ENDIF()
 
 OPTION(WANT_STRIP "Strip binaries (discard symbols from object files)" OFF)

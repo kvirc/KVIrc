@@ -692,7 +692,7 @@ void KviConsole::outputPrivmsg(KviWindow *wnd,
 {
 	// FIXME: #warning "THIS IS USED BY WINDOWS THAT ARE NOT BOUND TO THIS IRC CONTEXT"
 	// FIXME: #warning "REMEMBER IT IN ESCAPE COMMANDS"
-	// __range_valid(wnd);
+	// KVI_ASSERT(wnd);
 
 	bool bIsChan = (wnd->type() == KVI_WINDOW_TYPE_CHANNEL);
 	bool bIsNotice = ((type == KVI_OUT_CHANNELNOTICE)||(type == KVI_OUT_CHANNELNOTICECRYPTED) \

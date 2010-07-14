@@ -38,9 +38,9 @@
 
 		void *kvi_memmove(void * dst_ptr,const void *src_ptr,int len)
 		{
-			__range_valid(dst_ptr);
-			__range_valid(src_ptr);
-			__range_valid(len >= 0);
+			KVI_ASSERT(dst_ptr);
+			KVI_ASSERT(src_ptr);
+			KVI_ASSERT(len >= 0);
 			// Save pointer registers
 			asm("	pushl %esi");                     // save %esi
 			asm("	pushl %edi");                     // save %edi
@@ -99,9 +99,9 @@
 
 		void *kvi_memmoveodd(void * dst_ptr,const void *src_ptr,int len)
 		{
-			__range_valid(dst_ptr);
-			__range_valid(src_ptr);
-			__range_valid(len >= 0);
+			KVI_ASSERT(dst_ptr);
+			KVI_ASSERT(src_ptr);
+			KVI_ASSERT(len >= 0);
 			// Save pointer registers
 			asm("	pushl %esi");                     // save %esi
 			asm("	pushl %edi");                     // save %edi
@@ -170,9 +170,9 @@
 
 		void *kvi_memmove(void *dst_ptr,const void *src_ptr,int len)
 		{
-			__range_valid(dst_ptr);
-			__range_valid(src_ptr);
-			__range_valid(len >= 0);
+			KVI_ASSERT(dst_ptr);
+			KVI_ASSERT(src_ptr);
+			KVI_ASSERT(len >= 0);
 			register char *dst;
 			register const char *src;
 			if(dst_ptr > src_ptr){
@@ -189,10 +189,10 @@
 
 		void *kvi_memmoveodd(void *dst_ptr,const void *src_ptr,int len)
 		{
-			__range_valid(dst_ptr);
-			__range_valid(src_ptr);
-			__range_valid(len >= 0);
-			__range_valid((len & 1) == 0);
+			KVI_ASSERT(dst_ptr);
+			KVI_ASSERT(src_ptr);
+			KVI_ASSERT(len >= 0);
+			KVI_ASSERT((len & 1) == 0);
 			register short *dst;
 			register const short *src;
 			if(dst_ptr > src_ptr){
@@ -217,9 +217,9 @@
 
 		void kvi_fastmove(void *dst_ptr,const void *src_ptr,int len)
 		{
-			__range_valid(dst_ptr);
-			__range_valid(src_ptr);
-			__range_valid(len >= 0);
+			KVI_ASSERT(dst_ptr);
+			KVI_ASSERT(src_ptr);
+			KVI_ASSERT(len >= 0);
 			register const char *src = (const char *)src_ptr;
 			register char *dst = (char *)dst_ptr;
 			while(len--)*dst++ = *src++;
@@ -227,10 +227,10 @@
 
 		void kvi_fastmoveodd(void *dst_ptr,const void *src_ptr,int len)
 		{
-			__range_valid(dst_ptr);
-			__range_valid(src_ptr);
-			__range_valid(len >= 0);
-			__range_valid((len & 1) == 0);
+			KVI_ASSERT(dst_ptr);
+			KVI_ASSERT(src_ptr);
+			KVI_ASSERT(len >= 0);
+			KVI_ASSERT((len & 1) == 0);
 			register const short *src = (const short *)src_ptr;
 			register short *dst = (short *)dst_ptr;
 			while(len > 0){
@@ -243,8 +243,8 @@
 
 	void kvi_memset(void *dst_ptr,char c,int len)
 	{
-		__range_valid(dst_ptr);
-		__range_valid(len >= 0);
+		KVI_ASSERT(dst_ptr);
+		KVI_ASSERT(len >= 0);
 		register char *dst = (char *)dst_ptr;
 		while(len--)*dst++ = c;
 	}

@@ -94,7 +94,7 @@
 /*
 const char * KviIrcMask::setMask(const char *szMask,char c)
 {
-	__range_valid(szMask);
+	KVI_ASSERT(szMask);
 	//nick!username@host.top
 	//0123456789
 	register const char *p=szMask;
@@ -150,7 +150,7 @@ const char * KviIrcMask::setMask(const char *szMask,char c)
 
 const char * KviIrcMask::setUserhostMask(const char *szMask)
 {
-	__range_valid(szMask);
+	KVI_ASSERT(szMask);
 	//nick[*]=<+!->username@host.top
 	//0123456789
 	register const char *p=szMask;

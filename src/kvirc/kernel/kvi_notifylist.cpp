@@ -960,7 +960,7 @@ void KviStupidNotifyListManager::sendIsOn()
 {
 	m_szLastIsOnMsg = "";
 	QString * nick = m_pNickList->at(m_iNextNickToCheck);
-	__range_valid(nick);
+	KVI_ASSERT(nick);
 
 	int i = 0;
 	while(nick && ((nick->length() + 5 + m_szLastIsOnMsg.length()) < 510))

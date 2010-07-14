@@ -31,8 +31,6 @@
 	#include "dialogs.h"
 #endif
 
-#define _KVI_DEBUG_CHECK_RANGE_
-
 #include "kvi_debug.h"
 #include "kvi_options.h"
 #include "kvi_input.h"
@@ -684,7 +682,7 @@ void KviDccChatThread::run()
 					if(!handleInvalidSocketRead(readLen))
 					{
 						if(data.iLen)handleIncomingData(&data,true); // critical
-						__range_invalid(data.iLen);
+						KVI_ASSERT(!data.iLen);
 						break; // error
 					}
 				}
@@ -712,8 +710,8 @@ out_of_the_loop:
 
 bool KviDccChatThread::handleIncomingData(KviDccThreadIncomingData * data,bool bCritical)
 {
-	__range_valid(data->iLen);
-	__range_valid(data->buffer);
+	KVI_ASSERT(data->iLen);
+	KVI_ASSERT(data->buffer);
 	char * aux = data->buffer;
 	char * end = data->buffer + data->iLen;
 	while(aux != end)
@@ -733,7 +731,7 @@ bool KviDccChatThread::handleIncomingData(KviDccThreadIncomingData * data,bool b
 			// so len += 1; --> new data->iLen -= len;
 			data->iLen -= (len + 1);
 //			debug("iLen now = %d",data->iLen);
-			__range_valid(data->iLen >= 0);
+			KVI_ASSERT(data->iLen >= 0);
 			if(data->iLen > 0)
 			{
 				// memmove the remaining part to the beginning
@@ -744,7 +742,7 @@ bool KviDccChatThread::handleIncomingData(KviDccThreadIncomingData * data,bool b
 				aux = data->buffer;
 			} else {
 				// no more data in the buffer
-				__range_valid(data->iLen == 0);
+				KVI_ASSERT(data->iLen == 0);
 				kvi_free(data->buffer);
 				data->buffer = end = aux = 0;
 			}

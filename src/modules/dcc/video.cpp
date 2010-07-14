@@ -241,8 +241,8 @@ bool KviDccVideoThread::textStep()
 bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool bCritical)
 {
 //	qDebug("KviDccVideoThread::handleIncomingData");
-	__range_valid(data->iLen);
-	__range_valid(data->buffer);
+	KVI_ASSERT(data->iLen);
+	KVI_ASSERT(data->buffer);
 	char * aux = data->buffer;
 	char * end = data->buffer + data->iLen;
 	while(aux != end)
@@ -262,7 +262,7 @@ bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool 
 			// so len += 1; --> new data->iLen -= len;
 			data->iLen -= (len + 1);
 //			debug("iLen now = %d",data->iLen);
-			__range_valid(data->iLen >= 0);
+			KVI_ASSERT(data->iLen >= 0);
 			if(data->iLen > 0)
 			{
 				// memmove the remaining part to the beginning
@@ -273,7 +273,7 @@ bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool 
 				aux = data->buffer;
 			} else {
 				// no more data in the buffer
-				__range_valid(data->iLen == 0);
+				KVI_ASSERT(data->iLen == 0);
 				kvi_free(data->buffer);
 				data->buffer = end = aux = 0;
 			}

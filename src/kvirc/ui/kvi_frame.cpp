@@ -614,7 +614,7 @@ KviConsole * KviFrame::firstConsole()
 	{
 		if(wnd->type() == KVI_WINDOW_TYPE_CONSOLE)return (KviConsole *)wnd;
 	}
-	__range_valid(false);
+	KVI_ASSERT(false);
 	return 0; //should newer be here!.. but sometimes we are ?
 }
 

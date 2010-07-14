@@ -35,7 +35,7 @@
 
 KviDataBuffer::KviDataBuffer(int uSize,const unsigned char * data)
 {
-	__range_valid(uSize > 0);
+	KVI_ASSERT(uSize > 0);
 	m_uSize = uSize;
 	m_pData = (unsigned char *)kvi_malloc(sizeof(unsigned char) * uSize);
 	if(data)kvi_memmove(m_pData,data,uSize);
@@ -51,7 +51,7 @@ KviDataBuffer::~KviDataBuffer()
 {
 	if(m_pData)
 	{
-		__range_valid(m_uSize);
+		KVI_ASSERT(m_uSize);
 		kvi_free(m_pData);
 	}
 }
@@ -100,7 +100,7 @@ int KviDataBuffer::find(unsigned char c)
 
 void KviDataBuffer::remove(int uSize)
 {
-	__range_valid((uSize <= m_uSize) && (uSize > 0));
+	KVI_ASSERT((uSize <= m_uSize) && (uSize > 0));
 
 	m_uSize -= uSize;
 
@@ -116,7 +116,7 @@ void KviDataBuffer::remove(int uSize)
 
 void KviDataBuffer::resize(int uSize)
 {
-	__range_valid(uSize >= 0);
+	KVI_ASSERT(uSize >= 0);
 	if(uSize > 0)
 	{
 		m_pData = (unsigned char *)kvi_realloc(m_pData,uSize * sizeof(unsigned char));

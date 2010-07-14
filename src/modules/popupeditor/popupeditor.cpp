@@ -1069,7 +1069,7 @@ void KviPopupEditor::oneTimeSetup()
 void KviPopupEditor::customContextMenuRequested(const QPoint &pos)
 {
 	QTreeWidgetItem *it=m_pTreeWidget->itemAt(pos);
-	__range_valid(m_bOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 
 	if(it)
 	{
@@ -1266,7 +1266,7 @@ void KviPopupEditor::commit()
 
 void KviPopupEditor::getUniquePopupName(KviMenuTreeWidgetItem *item,QString &buffer)
 {
-	__range_valid(m_bOneTimeSetupDone);
+	KVI_ASSERT(m_bOneTimeSetupDone);
 
 	if(buffer.isEmpty())buffer = __tr2qs_ctx("unnamed","editor");
 	QString newName = buffer;

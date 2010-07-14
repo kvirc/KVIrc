@@ -229,7 +229,7 @@ inline int KviConsole::selectedCount()
 
 inline bool KviConsole::isIPv6Connection()
 {
-	__range_valid(connection());
+	KVI_ASSERT(connection());
 	return connection()->target()->server()->isIPv6();
 }
 

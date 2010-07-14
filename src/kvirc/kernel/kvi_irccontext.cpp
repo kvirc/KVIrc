@@ -206,7 +206,7 @@ KviChannel * KviIrcContext::findDeadChannel(const QString &name)
 	if(!m_pDeadChannels)return 0;
 	for(KviChannel * c = m_pDeadChannels->first();c;c = m_pDeadChannels->next())
 	{
-		__range_valid(c->isDeadChan());
+		KVI_ASSERT(c->isDeadChan());
 		if(KviQString::equalCI(name,c->windowName()))return c;
 	}
 	return 0;
@@ -217,7 +217,7 @@ KviQuery * KviIrcContext::findDeadQuery(const QString &name)
 	if(!m_pDeadQueries)return 0;
 	for(KviQuery * c = m_pDeadQueries->first();c;c = m_pDeadQueries->next())
 	{
-		__range_valid(c->isDeadQuery());
+		KVI_ASSERT(c->isDeadQuery());
 		if(KviQString::equalCI(name,c->windowName()))return c;
 	}
 	return 0;
@@ -901,7 +901,7 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 		break;
 		default:
 			// should never end here!
-			__ASSERT(false);
+			KVI_ASSERT(false);
 		break;
 	}
 }

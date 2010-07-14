@@ -27,12 +27,16 @@
 
 #include <QtGlobal>
 
+#include "kvi_sysconfig.h"
+
 /**
 * \file kvi_debug.h
 * \author Szymon Stefanek
 * \brief This file contains the definition of the debug macros;
 *        You can enable ALL the debugging output by uncommenting the line that defines _KVI_DEBUG_CHECK_RANGE_
 */
+
+#if 0
 
 //=============================================================================
 //
@@ -44,17 +48,16 @@
 /**
 * \brief Debug macros
 *
-* \def __range_valid Assert that ensures that its parameter is true
+* \def KVI_ASSERT Assert that ensures that its parameter is true
 * \def __range_invalid Assert that ensures that its parameter is false
 * \def __ASSERT Assert that ensures that its parameter is true; enabled only if _KVI_DEBUG_or __KVI_DEBUG__ is defined
 */
 
-
 #ifdef _KVI_DEBUG_CHECK_RANGE_
-	#define __range_valid(_expr) if(!(_expr))debug("[kvirc]: ASSERT FAILED: \"%s\" is false in %s (%d)",#_expr,__FILE__,__LINE__)
+	#define KVI_ASSERT(_expr) if(!(_expr))debug("[kvirc]: ASSERT FAILED: \"%s\" is false in %s (%d)",#_expr,__FILE__,__LINE__)
 	#define __range_invalid(_expr) if(_expr)debug("[kvirc]: ASSERT FAILED: \"%s\" is true in %s (%d)",#_expr,__FILE__,__LINE__)
 #else
-	#define __range_valid(_expr)
+	#define KVI_ASSERT(_expr)
 	#define __range_invalid(_expr)
 #endif
 
@@ -63,5 +66,94 @@
 #else
 	#define __ASSERT(_expr)
 #endif
+
+#endif
+
+
+#include <stdlib.h> // abort
+
+#ifdef __GNUC__
+
+	#define kvi_debug(fmt,arg...) qDebug(fmt,##arg)
+	#define kvi_warning(fmt,arg...) qWarning(fmt,##arg)
+	#define kvi_fatal(fmt,arg...) do { qFatal(fmt,##arg); abort(); } while(0) 
+	#define KVI_PRETTY_FUNCTION __PRETTY_FUNCTION__
+
+#else //!__GNUC__
+
+	// assume MSVC
+
+	#define kvi_debug(fmt,...) qDebug(fmt,__VA_ARGS__)
+	#define kvi_warning(fmt,...) qWarning(fmt,__VA_ARGS__)
+	#define kvi_fatal(fmt,...) do { qFatal(fmt,__VA_ARGS__); abort(); } while(0) 
+	#define KVI_PRETTY_FUNCTION __FUNCTION__
+
+#endif //!__GNUC__
+
+
+#ifdef COMPILE_DEBUG_MODE
+
+	#define KVI_ASSERT(__condition__) \
+			do { \
+				if(!(__condition__)) \
+					qFatal("[ASSERT FAILED] (" # __condition__ ") in %s at %s:%u",KVI_PRETTY_FUNCTION,__FILE__,__LINE__); \
+			} while(0)
+
+	#define KVI_ASSERT_MSG(__condition__,__message__) \
+			do { \
+				if(!(__condition__)) \
+				{ \
+					qFatal("[ASSERT FAILED] (" # __condition__ ") in %s at %s:%u",KVI_PRETTY_FUNCTION,__FILE__,__LINE__); \
+					qFatal("[ASSERT FAILED] " __message__); \
+				} \
+			} while(0)
+
+	#include "kvi_debugcontext.h"
+
+	#define KVI_TRACE_HACK_TOKENPASTE_2(x,y) x ## y
+	#define KVI_TRACE_HACK_TOKENPASTE_1(x,y) KVI_TRACE_HACK_TOKENPASTE_2(x,y)
+
+	#ifdef __GNUC__
+		#define KVI_TRACE_FUNCTION \
+				KviDebugContext KVI_TRACE_HACK_TOKENPASTE_1(ctx,__LINE__)(__PRETTY_FUNCTION__)
+
+		#define KVI_TRACE_BLOCK(_szBlockDescription) \
+				KviDebugContext KVI_TRACE_HACK_TOKENPASTE_1(ctx,__LINE__)("%s - %s",__PRETTY_FUNCTION__,_szBlockDescription)
+		
+		#define KVI_TRACE(_szFmt,arg...) KviDebugContext::trace(_szFmt,##arg)
+
+	#else
+		#define KVI_TRACE_FUNCTION \
+				KviDebugContext KVI_TRACE_HACK_TOKENPASTE_1(ctx,__LINE__)(__FUNCTION__)
+
+		#define KVI_TRACE_BLOCK(_szBlockDescription) \
+				KviDebugContext KVI_TRACE_HACK_TOKENPASTE_1(ctx,__LINE__)("%s - %s",__FUNCTION__,_szBlockDescription)
+
+		#define KVI_TRACE(_szFmt,...) KviDebugContext::trace(_szFmt,__VA_ARGS__)
+
+	#endif
+
+#else //!COMPILE_DEBUG_MODE
+
+	#define KVI_ASSERT(__condition__) do { } while(0)
+	#define KVI_ASSERT_MSG(__condition__,__message__) do { } while(0)
+
+	#define KVI_TRACE_FUNCTION \
+			do { } while(0)
+
+	#define KVI_TRACE_BLOCK(_szBlockDescription) \
+			do { } while(0)
+
+	#ifdef __GNUC__
+		#define KVI_TRACE(_szFmt,arg...) do { } while(0)
+	#else
+		#define KVI_TRACE(_szFmt,...) do { } while(0)
+	#endif 
+	
+#endif //!COMPILE_DEBUG_MODE
+
+
+
+
 
 #endif //_KVI_DEBUG_H_

@@ -36,6 +36,7 @@
 #include "kvi_qstring.h"
 #include "kvi_malloc.h"
 #include "kvi_memmove.h"
+#include "kvi_debug.h"
 
 #include <ctype.h>
 
@@ -620,18 +621,26 @@ public:
 	{
 		for(unsigned int i=0;i<m_uSize;i++)
 		{
+			if(!m_pDataArray[i])
+				continue;
+
+			while(KviPointerHashTableEntry<Key,T> * e = m_pDataArray[i]->takeFirst())
+			{
+				kvi_hash_key_destroy(e->hKey,m_bDeepCopyKeys);
+
+				if(m_bAutoDelete)
+					delete ((T *)(e->pData));
+
+				delete e;
+
+				if(!m_pDataArray[i])
+					break; // emptied in the meantime
+			}
+
 			if(m_pDataArray[i])
 			{
-				for(KviPointerHashTableEntry<Key,T> * e = m_pDataArray[i]->first();e;e = m_pDataArray[i]->next())
-				{
-					kvi_hash_key_destroy(e->hKey,m_bDeepCopyKeys);
-					if(m_bAutoDelete)
-						delete ((T *)(e->pData));
-				}
-				KviPointerList<KviPointerHashTableEntry<Key,T> > * pList = m_pDataArray[i];
-				//delete m_pDataArray[i];
+				delete m_pDataArray[i];
 				m_pDataArray[i] = 0;
-				delete pList;
 			}
 		}
 		m_uCount = 0;

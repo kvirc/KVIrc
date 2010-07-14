@@ -68,6 +68,7 @@ SET(kvilib_SRCS
 	ext/kvi_crypt.cpp
 	ext/kvi_databuffer.cpp
 	ext/kvi_dbusadaptor.cpp
+	ext/kvi_debugcontext.cpp
 	ext/kvi_garbage.cpp
 	ext/kvi_mediatype.cpp
 	ext/kvi_miscutils.cpp

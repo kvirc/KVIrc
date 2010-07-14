@@ -800,10 +800,10 @@ bool KviKvsObject::disconnectSignal(const QString &sigName,KviKvsObjectConnectio
 {
 	if(!m_pSignalDict)return false;
 	KviKvsObjectConnectionList * l = m_pSignalDict->find(sigName);
-	//__range_valid(l);
+	//KVI_ASSERT(l);
 	if(!l)return false;
 	pConnection->pTargetObject->unregisterConnection(pConnection);
-	//__range_valid(l->findRef(pConnection) > -1);
+	//KVI_ASSERT(l->findRef(pConnection) > -1);
 	l->removeRef(pConnection);
 	if(l->isEmpty())m_pSignalDict->remove(sigName);
 	if(m_pSignalDict->isEmpty())

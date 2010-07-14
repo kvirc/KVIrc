@@ -697,7 +697,7 @@ void KviIrcView::appendLine(KviIrcViewLine *ptr,bool bRepaint)
 				if(m_pScrollBar->value() > 0)
 				{
 					m_iLastScrollBarValue--;
-					__range_valid(m_iLastScrollBarValue >= 0);
+					KVI_ASSERT(m_iLastScrollBarValue >= 0);
 					m_pScrollBar->triggerAction(QAbstractSlider::SliderSingleStepSub);
 				} // else will stay in sync
 				m_bSkipScrollBarRepaint = false;

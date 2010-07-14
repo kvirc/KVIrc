@@ -567,7 +567,7 @@ void KviClassicWindowList::insertButton(KviWindowListButton * b)
 		if(!(btn->kviWindow()->console()) && b->kviWindow()->console())
 		{
 			// this must be a new console...insert before the contextless windows
-			__range_valid(b->kviWindow()->console() == b->kviWindow());
+			KVI_ASSERT(b->kviWindow()->console() == b->kviWindow());
 			m_pButtonList->insert(idx,b);
 			return;
 		} else idx++; // wrong irc contet...go on searching

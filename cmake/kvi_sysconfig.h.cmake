@@ -52,6 +52,8 @@
 #cmakedefine HAVE_LIBV4L2 1
 #cmakedefine V4L2_CAP_VIDEO_CAPTURE 1
 
+#cmakedefine COMPILE_DEBUG_MODE 1
+
 #cmakedefine COMPILE_PERL_SUPPORT 1
 #cmakedefine COMPILE_PYTHON_SUPPORT 1
 

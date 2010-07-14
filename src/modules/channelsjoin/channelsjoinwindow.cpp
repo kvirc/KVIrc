@@ -33,9 +33,9 @@
 #include "kvi_console.h"
 #include "kvi_regchan.h"
 #include "kvi_kvs_script.h"
-#include <QTreeWidget>
 #include "kvi_tal_groupbox.h"
 
+#include <QTreeWidget>
 #include <QLabel>
 #include <QLineEdit>
 #include <QLayout>
@@ -168,14 +168,13 @@ void KviChannelsJoinWindow::fillListView()
 	par->setText(0,__tr2qs("Registered Channels"));
 	par->setExpanded(true);
 
-	KviPointerHashTable<const char *,KviRegisteredChannelList> * d = g_pRegisteredChannelDataBase->channelDict();
+	QHash<QString,KviRegisteredChannelList *> * d = g_pRegisteredChannelDataBase->channelDict();
 	if(d)
 	{
-		KviPointerHashTableIterator<const char *,KviRegisteredChannelList> it(*d);
-		while(it.current())
+		for(QHash<QString,KviRegisteredChannelList *>::Iterator it = d->begin();it != d->end();++it)
 		{
 			QTreeWidgetItem * chld = new QTreeWidgetItem(par);
-			chld->setText(0,it.currentKey());
+			chld->setText(0,it.key());
 			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 			++it;
 		}

@@ -46,8 +46,6 @@
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_ircsocket.h"
 #include "kvi_error.h"
-
-#define __KVI_DEBUG__
 #include "kvi_debug.h"
 
 #include <stdlib.h>
@@ -121,7 +119,7 @@ void KviIrcConnectionTargetResolver::cleanup()
 
 void KviIrcConnectionTargetResolver::start(KviIrcConnectionTarget * t)
 {
-	__ASSERT(m_eState == Idle);
+	KVI_ASSERT(m_eState == Idle);
 
 	m_eState = Running;
 
@@ -576,7 +574,7 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 
 void KviIrcConnectionTargetResolver::terminate(Status s,int iLastError)
 {
-	__ASSERT(m_eState != Terminated);
+	KVI_ASSERT(m_eState != Terminated);
 	cleanup(); // do a cleanup anyway
 	m_eState = Terminated;
 	m_eStatus = s;
