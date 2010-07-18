@@ -542,6 +542,7 @@ void KviDccChat::connected()
 	updateCaption();
 
 	m_pSlaveThread = new KviDccChatThread(this,m_pMarshal->releaseSocket());
+	
 #ifdef COMPILE_SSL_SUPPORT
 	KviSSL * s = m_pMarshal->releaseSSL();
 	if(s)
@@ -558,6 +559,12 @@ void KviDccChat::connected()
 			&(m_pMarshal->remoteIp()),&(m_pMarshal->remotePort()));
 		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Local end is %Q:%Q","dcc"),
 			&(m_pMarshal->localIp()),&(m_pMarshal->localPort()));
+#ifdef COMPILE_SSL_SUPPORT
+		QString tmp = QString("dcc: %1 %2@%3:%4").arg(m_pDescriptor->bIsSSL ? "SChat" : "Chat", m_pDescriptor->szNick, m_pDescriptor->szIp, m_pDescriptor->szPort);
+#else
+		QString tmp = QString("dcc: %1 %2@%3:%4").arg("Chat", m_pDescriptor->szNick, m_pDescriptor->szIp, m_pDescriptor->szPort);
+#endif
+		m_pLabel->setText(tmp);
 	}
 }
 
