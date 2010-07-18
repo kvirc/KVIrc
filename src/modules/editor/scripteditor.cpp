@@ -327,7 +327,6 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 				return;
 			case Qt::Key_Enter:
 			case Qt::Key_Return:
-			case Qt::Key_Backspace:
 			case Qt::Key_PageUp:
 				 e->ignore(); // allow the parent to process it
 				 return;
