@@ -760,7 +760,7 @@ bool KviIrcConnection::sendFmtData(const char * pcFmt, ...)
 	{
 		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
 		{
-			if(m->outgoingMessage(szMsg.toUtf8().data()))
+			if(m->outgoingMessage(szMsg.toAscii().data()))
 				return true;
 		}
 	}
