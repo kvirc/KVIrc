@@ -111,7 +111,15 @@ const char * const itemflags_tbl[] = {
 		!fn: <integer> $currentRow()
 		Returns the current row.
 		Useful in the [classfnc]customContextMenuRequestedEvent[/classfnc].
-		!fn: $setColumnCount(<integer>)
+		!fn: $insertRow(<row:uinteger>)
+		Insert an empty row at <row>.
+		!fn: $removeRow(<row:uinteger>)
+		Remove the row at <row> and all its items from the table.
+		!fn: $insertColumn(<column:uinteger>)
+		Insert an empty column at <column>.
+		!fn: $removeColumn(<column:uinteger>)
+		Remove the column at <column> and all its items from the table.
+		!fn: $setColumnCount(<uinteger>)
 		Sets  the number of columns in the table.
 		!fn: <integer> $columnCount()
 		Returns  the number of columns in the table.
@@ -178,6 +186,11 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tablewidget,"tablewidget","widget")
 
 	// Rows-Columns
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setRowCount)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,insertRow)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,insertColumn)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,removeRow)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,removeColumn)
+
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,rowCount)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,currentRow)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setColumnCount)
@@ -311,6 +324,50 @@ KVSO_CLASS_FUNCTION(tablewidget,setNumber)
 	pItem->setData(0,(int)iNumber);
 	return true;
 }
+
+KVSO_CLASS_FUNCTION(tablewidget,insertRow)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t uRow;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
+	KVSO_PARAMETERS_END(c)
+	((QTableWidget *)widget())->insertRow(uRow);
+	return true;
+}
+
+KVSO_CLASS_FUNCTION(tablewidget,insertColumn)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t uCol;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uCol)
+	KVSO_PARAMETERS_END(c)
+	((QTableWidget *)widget())->insertColumn(uCol);
+	return true;
+}
+KVSO_CLASS_FUNCTION(tablewidget,removeRow)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t uRow;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
+	KVSO_PARAMETERS_END(c)
+	((QTableWidget *)widget())->removeRow(uRow);
+	return true;
+}
+
+KVSO_CLASS_FUNCTION(tablewidget,removeColumn)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_uint_t uCol;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uCol)
+	KVSO_PARAMETERS_END(c)
+	((QTableWidget *)widget())->removeColumn(uCol);
+	return true;
+}
+
 
 KVSO_CLASS_FUNCTION(tablewidget,setIcon)
 {

@@ -81,6 +81,13 @@ protected:
 	bool itemRowColAt(KviKvsObjectFunctionCall *c);
 
 	bool rowCount(KviKvsObjectFunctionCall *c);
+
+	bool insertRow(KviKvsObjectFunctionCall *c);
+	bool insertColumn(KviKvsObjectFunctionCall *c);
+	bool removeRow(KviKvsObjectFunctionCall *c);
+	bool removeColumn(KviKvsObjectFunctionCall *c);
+
+
 	bool setHorizontalHeaderLabels(KviKvsObjectFunctionCall *c);
 	bool setVerticalHeaderLabels(KviKvsObjectFunctionCall *c);
 	bool setCellWidget(KviKvsObjectFunctionCall *c);
