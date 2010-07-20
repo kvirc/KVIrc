@@ -179,6 +179,12 @@ void KviServer::setAutoJoinChannelList(QStringList * pNewChannelList)
 	m_pAutoJoinChannelList = pNewChannelList;
 }
 
+void KviServer::setAutoJoinChannelList(const QString & szNewChannelList)
+{
+	if(m_pAutoJoinChannelList)delete m_pAutoJoinChannelList;
+	m_pAutoJoinChannelList = new QStringList(szNewChannelList.split(","));
+}
+
 bool KviServer::load(KviConfig * cfg, const QString & szPrefix)
 {
 	QString szTmp;

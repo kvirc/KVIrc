@@ -279,6 +279,12 @@ public:
 	inline QStringList * autoJoinChannelList(){ return m_pAutoJoinChannelList; };
 
 	/**
+	* \brief Returns the list of the channels in the autojoin list as a string
+	* \return const QString &
+	*/
+	inline const QString autoJoinChannelListAsString(){ return m_pAutoJoinChannelList ? m_pAutoJoinChannelList->join(",") : ""; };
+
+	/**
 	* \brief Returns true if the server uses IPv6
 	* \return bool
 	*/
@@ -451,6 +457,13 @@ public:
 	* \return void
 	*/
 	void setAutoJoinChannelList(QStringList * pNewChannelList);
+
+	/**
+	* \brief Sets the list of channels to mark for autojoin
+	* \param szNewChannelList A comma separated list of channels
+	* \return void
+	*/
+	void setAutoJoinChannelList(const QString & szNewChannelList);
 
 	/**
 	* \brief Sets the autoconnection mode for the server

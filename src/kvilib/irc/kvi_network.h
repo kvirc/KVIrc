@@ -35,6 +35,7 @@
 #include "kvi_pointerlist.h"
 
 #include <QString>
+#include <QStringList>
 
 class KviNickServRuleSet;
 class KviServer;
@@ -164,10 +165,16 @@ public:
 	inline bool autoConnect() const { return m_bAutoConnect; };
 
 	/**
-	* \brief Returns a list of channels with autojoin flag
+	* \brief Returns the list of channels with autojoin flag
 	* \return QStringList *
 	*/
 	inline QStringList * autoJoinChannelList(){ return m_pChannelList; };
+
+	/**
+	* \brief Returns the list of channels with autojoin flag as a string
+	* \return const QString &
+	*/
+	inline const QString autoJoinChannelListAsString(){ return m_pChannelList ? m_pChannelList->join(",") : ""; };
 
 	/**
 	* \brief Returns a set of rules for the NickServ
@@ -269,7 +276,14 @@ public:
 	* \return void
 	*/
 	void setAutoJoinChannelList(QStringList * pNewChannelList);
-	
+
+	/**
+	* \brief Sets the list of channels to mark for autojoin
+	* \param szNewChannelList A comma separated list of channels
+	* \return void
+	*/
+	void setAutoJoinChannelList(const QString & szNewChannelList);
+
 	/**
 	* \brief Sets the autoconnect flag
 	* \param bAutoConnect The state of the autoconnect flag

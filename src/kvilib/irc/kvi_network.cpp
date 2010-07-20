@@ -26,8 +26,6 @@
 #include "kvi_ircserver.h"
 #include "kvi_nickserv.h"
 
-#include <QStringList>
-
 KviNetwork::KviNetwork(const KviNetwork &src)
 {
 	m_pChannelList = 0;
@@ -59,6 +57,12 @@ void KviNetwork::setAutoJoinChannelList(QStringList * pNewChannelList)
 {
 	if(m_pChannelList)delete m_pChannelList;
 	m_pChannelList = pNewChannelList;
+}
+
+void KviNetwork::setAutoJoinChannelList(const QString & szNewChannelList)
+{
+	if(m_pChannelList)delete m_pChannelList;
+	m_pChannelList = new QStringList(szNewChannelList.split(","));
 }
 
 void KviNetwork::setNickServRuleSet(KviNickServRuleSet * s)
