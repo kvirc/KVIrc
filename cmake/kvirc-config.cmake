@@ -38,12 +38,10 @@ print_syntax()
 	echo "  options:"
 	echo "    --version         : Version of the KVIrc toolkit."
 	echo "    --prefix          : The prefix where KVIrc was installed."
-	echo "    --includedirs     : The include directories you should use to compile stuff with KVIrc."
-	echo "    --includeflags    : The include directories above with -I prepended."
-	echo "    --librarydirs     : The library directories you should use to compile stuff with KVIrc."
-	echo "    --libraries       : The libraries you should use to compile stuff with KVIrc."
-	echo "    --libraryflags    : The library directories above with -L prepended "
-	echo "                        and the libraries above with -l prepended."
+	echo "    --lib-suffix      : The suffix (if any) for the library directory where KVIrc was installed."
+	echo "    --revision        : The KVIrc revision number."
+	echo "    --date            : The KVIrc build date."
+	echo "    --type            : The KVIrc build type (Debug, Release, ..)."
 	exit 0
 }
 
@@ -59,37 +57,24 @@ while test $# -gt 0; do
 		*) optarg= ;;
 	esac
 
-	LIBS="@LIBS@"
-	LIBS="$(echo ${LIBS} | sed s/\;/\ /g)"
-
 	case $1 in
 		--version)
 		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO @VERSION_RELEASE@"
 		;;
 		--prefix)
-		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO @INSTALL_PREFIX@"
+		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO @CMAKE_INSTALL_PREFIX@"
 		;;
-		--includedirs)
-		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO @KVIRC_CONFIG_INCLUDEDIRS@"
+		--lib-suffix)
+		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO @LIB_SUFFIX@"
 		;;
-		--includeflags)
-		for d in @KVIRC_CONFIG_INCLUDEDIRS@; do
-			KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO -I$d"
-		done
+		--revision)
+		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO @CMAKE_KVIRC_BUILD_REVISION@"
 		;;
-		--librarydirs)
-		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO @KVIRC_CONFIG_LIBRARYDIRS@"
+		--date)
+		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO @CMAKE_KVIRC_BUILD_DATE@"
 		;;
-		--libraries)
-		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO ${LIBS}"
-		;;
-		--libraryflags)
-		for d in @KVIRC_CONFIG_LIBRARYDIRS@; do
-			KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO -L$d"
-		done
-		for d in ${LIBS}; do
-			KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO -l$d"
-		done
+		--type)
+		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO @CMAKE_BUILD_TYPE@"
 		;;
 		*)
 		print_syntax 1 1>&2
