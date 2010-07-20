@@ -164,10 +164,9 @@ void KviMdiChild::restore()
 {
 	if(isMinimized())
 	{
-		if(isMaximized())
-			showMaximized();
-		else
-			showNormal();
+		// we don't use showNormal here because it seems to enforce the previous window geometry:
+		// since we were minimized in a shaded form, this creates ugly effects (like bug #823)
+		show();
 		return;
 	}
 
@@ -190,7 +189,7 @@ void KviMdiChild::maximize()
 	if(isVisible())
 		showMaximized();
 	else
-		setWindowState(windowState() & ~Qt::WindowMaximized);
+		setWindowState(windowState() & Qt::WindowMaximized);
 }
 
 void KviMdiChild::minimize()
@@ -198,7 +197,7 @@ void KviMdiChild::minimize()
 	if(isVisible())
 		showMinimized();
 	else
-		setWindowState(windowState() & ~Qt::WindowMinimized);
+		setWindowState(windowState() & Qt::WindowMinimized);
 }
 
 void KviMdiChild::updateCaption()
