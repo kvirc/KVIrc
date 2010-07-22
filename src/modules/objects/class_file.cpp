@@ -160,6 +160,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_file,"file","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"flush",flush)
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"size",size)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"resize",resize)
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"atEnd",atEnd)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"where",where)
@@ -308,6 +309,19 @@ KVSO_CLASS_FUNCTION(file,seek)
 	KVSO_PARAMETERS_END(c)
 	CHECK_FILE_IS_OPEN
 	m_pFile->seek(uIndex);
+	return true;
+}
+
+
+KVSO_CLASS_FUNCTION(file,resize)
+{
+	CHECK_INTERNAL_POINTER(m_pFile)
+	kvs_int_t iSize;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("size",KVS_PT_INTEGER,0,iSize)
+	KVSO_PARAMETERS_END(c)
+	CHECK_FILE_IS_OPEN
+	m_pFile->resize(iSize);
 	return true;
 }
 

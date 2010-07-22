@@ -46,6 +46,7 @@ public:
 	bool close(KviKvsObjectFunctionCall *c);
 	bool flush(KviKvsObjectFunctionCall *c);
 	bool size(KviKvsObjectFunctionCall *c);
+	bool resize(KviKvsObjectFunctionCall *c);
 
 	bool atEnd(KviKvsObjectFunctionCall *c);
 	// int QFile at() const

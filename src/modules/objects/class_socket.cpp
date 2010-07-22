@@ -412,16 +412,29 @@ KVSO_CLASS_FUNCTION(socket,read)
 			c->warning(__tr2qs_ctx("Buffer parameter is not an object","objects"));
 			return true;
 		}
-		if (!pObject->inheritsClass("memorybuffer"))
+		if (pObject->inheritsClass("memorybuffer"))
+		{
+			QByteArray *pBuffer=((KviKvsObject_memorybuffer *)pObject)->pBuffer();
+			int oldsize=pBuffer->size();
+			pBuffer->resize(oldsize+uLen);
+			kvi_memmove(pBuffer->data()+oldsize,m_pInBuffer,uLen);
+
+		}
+		else if (pObject->inheritsClass("file"))
+		{
+			KviFile *pFile=((KviKvsObject_file *)pObject)->file();
+			if (!pFile->isOpen())
+			{
+				c->warning(__tr2qs_ctx("File is not open!","objects"));
+				return true;
+			}
+			pFile->write(m_pInBuffer,uLen);
+		}
+		else
 		{
 			c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
 			return true;
 		}
-
-		QByteArray *pBuffer=((KviKvsObject_memorybuffer *)pObject)->pBuffer();
-		int oldsize=pBuffer->size();
-		pBuffer->resize(oldsize+uLen);
-		kvi_memmove(pBuffer->data()+oldsize,m_pInBuffer,uLen);
 		eatInData(uLen);
 		return true;
 	}
@@ -439,6 +452,7 @@ KVSO_CLASS_FUNCTION(socket,read)
 	}
 	return true;
 }
+
 
 
 KVSO_CLASS_FUNCTION(socket,write)
