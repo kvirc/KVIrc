@@ -272,11 +272,7 @@ static bool pythoncore_module_init(KviModule *)
 #ifdef COMPILE_PYTHON_SUPPORT
 
 	// Initialize the Python interpreter
-#ifdef COMPILE_ON_MAC
-	PyMac_Initialize();
-#else
 	Py_Initialize();
-#endif
 	PyEval_InitThreads();
 
 	// save a pointer to the main PyThreadState object
