@@ -169,7 +169,20 @@ void KviCustomToolBar::syncDescriptor()
 	for(int i=0; i < pLayout->count(); i++)
 	{
 		if(QWidget * w = pLayout->itemAt(i)->widget())
+		{
+#ifdef COMPILE_ON_MAC
+			// on mac, we are not able to delete unused widgets from the toolbar while dragging;
+			// instead, we only hide them. now it's time to clean them'up. (ticket #803)
+			if(w->isVisible())
+			{
+				m_pDescriptor->actions()->append(new QString(w->objectName()));
+			} else {
+				w->deleteLater();
+			}
+#else
 			m_pDescriptor->actions()->append(new QString(w->objectName()));
+#endif
+		}
 	}
 }
 
