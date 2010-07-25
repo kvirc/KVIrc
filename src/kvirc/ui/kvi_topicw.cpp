@@ -443,6 +443,7 @@ void KviTopicWidget::switchMode()
 		m_pInput->setReadOnly(!bCanEdit);
 		m_pInput->setMaxBufferSize(maxlen);
 		m_pInput->setGeometry(0,0,width() - (height() << 2)+height(),height());
+		m_pInput->setFont(font());
 		m_pInput->setText(m_szTopic);
 		connect(m_pInput,SIGNAL(enterPressed()),this,SLOT(acceptClicked()));
 		connect(m_pInput,SIGNAL(escapePressed()),this,SLOT(discardClicked()));
