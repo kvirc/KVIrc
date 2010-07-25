@@ -311,12 +311,28 @@ void KviSSL::shutdown()
 	}
 }
 
+/**
+ * Used only during passive (server) mode
+ * Check the client certificate, always valid, even if it not exists
+ */
+int verify_clientCallback(int preverify_ok, X509_STORE_CTX *x509_ctx) {
+	// From man page: If verify_callback returns 1, the verification process is continued. If verify_callback always returns 1,
+	// the TLS/SSL handshake will not be terminated with respect to verification failures and the connection will be established.
+	return 1;
+}
 
 bool KviSSL::initContext(Method m)
 {
 	if(m_pSSL)return false;
 	m_pSSLCtx = SSL_CTX_new(m == Client ? SSLv23_client_method() : SSLv23_server_method());
 	if(!m_pSSLCtx)return false;
+
+	if (m == Server)
+	{
+		// we have to request the peer certificate, else only the client can see the peer identity, not the server
+		SSL_CTX_set_verify(m_pSSLCtx, SSL_VERIFY_PEER, verify_clientCallback);
+	} 
+	
 	// we want all ciphers to be available here, except insecure ones, orderer by strength;
 	// ADH are moved to the end since they are less secure, but they don't need a certificate
 	// (so we can use secure dcc without a cert)
@@ -366,6 +382,7 @@ KviSSL::Result KviSSL::useCertificateFile(const char * cert,const char * pass)
 			fclose(f);
 			return SSLError;
 		}
+		X509_free(x509);
 	}
 
 	fclose(f);
@@ -394,6 +411,7 @@ KviSSL::Result KviSSL::usePrivateKeyFile(const char * key,const char * pass)
 			fclose(f);
 			return SSLError;
 		}
+		EVP_PKEY_free(k);
 	}
 
 	fclose(f);
