@@ -81,7 +81,8 @@ static void dcc_module_request_error(KviDccRequest * dcc,const QString& errText)
 	if(KVI_OPTION_BOOL(KviOption_boolNotifyFailedDccHandshakes))
 	{
 		QString szError = QString("Sorry, your DCC %1 request can't be satisfied: %2").arg(dcc->szType.ptr(), errText);
-		dcc_module_reply_errmsg(dcc,szError);
+		//since szError contains an user-suppplied string, we simplify it to avoid any kind of injection (bug #858)
+		dcc_module_reply_errmsg(dcc,szError.simplifyWhiteSpace());
 	}
 }
 

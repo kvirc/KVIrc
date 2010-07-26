@@ -256,8 +256,8 @@ public:
 	static void encodeCtcpParameter(const char * param,QString &buffer,bool bSpaceBreaks = true);
 	static const char * decodeCtcpEscape(const char * msg_ptr,KviStr &buffer);
 	static const char * decodeCtcpEscape(const char * msg_ptr,KviQCString &buffer);
-	static const char * extractCtcpParameter(const char * msg_ptr,KviStr &buffer,bool bSpaceBreaks = true);
-	static const char * extractCtcpParameter(const char * msg_ptr,QString &buffer,bool bSpaceBreaks = true);
+	static const char * extractCtcpParameter(const char * msg_ptr,KviStr &buffer,bool bSpaceBreaks = true, bool bSafeOnly=false);
+	static const char * extractCtcpParameter(const char * msg_ptr,QString &buffer,bool bSpaceBreaks = true, bool bSafeOnly=false);
 };
 
 #ifndef _KVI_SPARSER_CPP_

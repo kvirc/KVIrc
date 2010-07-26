@@ -636,7 +636,7 @@ const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,KviQCString 
 }
 
 
-const char * KviServerParser::extractCtcpParameter(const char * msg_ptr,KviStr &buffer,bool bSpaceBreaks)
+const char * KviServerParser::extractCtcpParameter(const char * msg_ptr,KviStr &buffer,bool bSpaceBreaks, bool bSafeOnly)
 {
 	//
 	// This one extracts the "next" ctcp parameter in msg_ptr
@@ -668,17 +668,20 @@ const char * KviServerParser::extractCtcpParameter(const char * msg_ptr,KviStr &
 		{
 			case '\\':
 				// backslash : escape sequence
-				if(msg_ptr != begin)buffer.append(begin,msg_ptr - begin);
-				msg_ptr++;
-				if(*msg_ptr)
-				{
-					// decode the escape
-					msg_ptr = decodeCtcpEscape(msg_ptr,buffer);
-					begin = msg_ptr;
+				if(bSafeOnly)msg_ptr++;
+				else {
+					if(msg_ptr != begin)buffer.append(begin,msg_ptr - begin);
+					msg_ptr++;
+					if(*msg_ptr)
+					{
+						// decode the escape
+						msg_ptr = decodeCtcpEscape(msg_ptr,buffer);
+						begin = msg_ptr;
+					}
+					// else it is a senseless trailing backslash.
+					// Just ignore and let the function
+					// return spontaneously.
 				}
-				// else it is a senseless trailing backslash.
-				// Just ignore and let the function
-				// return spontaneously.
 			break;
 			case ' ':
 				// space : separate tokens if not in string
@@ -693,7 +696,7 @@ const char * KviServerParser::extractCtcpParameter(const char * msg_ptr,KviStr &
 				}
 			break;
 			case '"':
-				if(bInString)
+				if(bInString && !bSafeOnly)
 				{
 					// A string terminator. We don't return
 					// immediately since if !bSpaceBreaks
@@ -721,7 +724,7 @@ const char * KviServerParser::extractCtcpParameter(const char * msg_ptr,KviStr &
 	return msg_ptr;
 }
 
-const char * KviServerParser::extractCtcpParameter(const char * p_msg_ptr,QString &resultBuffer,bool bSpaceBreaks)
+const char * KviServerParser::extractCtcpParameter(const char * p_msg_ptr,QString &resultBuffer,bool bSpaceBreaks, bool bSafeOnly)
 {
 	//
 	// This one extracts the "next" ctcp parameter in p_msg_ptr
@@ -753,15 +756,18 @@ const char * KviServerParser::extractCtcpParameter(const char * p_msg_ptr,QStrin
 		{
 			case '\\':
 				// backslash : escape sequence
-				msg_ptr++;
-				if(*msg_ptr)
-				{
-					// decode the escape
-					msg_ptr = decodeCtcpEscape(msg_ptr,buffer);
+				if(bSafeOnly)msg_ptr++;
+				else {
+					msg_ptr++;
+					if(*msg_ptr)
+					{
+						// decode the escape
+						msg_ptr = decodeCtcpEscape(msg_ptr,buffer);
+					}
+					// else it is a senseless trailing backslash.
+					// Just ignore and let the function
+					// return spontaneously.
 				}
-				// else it is a senseless trailing backslash.
-				// Just ignore and let the function
-				// return spontaneously.
 			break;
 			case ' ':
 				// space : separate tokens if not in string
@@ -779,7 +785,7 @@ const char * KviServerParser::extractCtcpParameter(const char * p_msg_ptr,QStrin
 				}
 			break;
 			case '"':
-				if(bInString)
+				if(bInString && !bSafeOnly)
 				{
 					// A string terminator. We don't return
 					// immediately since if !bSpaceBreaks
@@ -1709,7 +1715,7 @@ void KviServerParser::parseCtcpRequestDcc(KviCtcpMessage *msg)
 {
 	KviDccRequest p;
 	KviStr aux    = msg->pData;
-	msg->pData    = extractCtcpParameter(msg->pData,p.szType);
+	msg->pData    = extractCtcpParameter(msg->pData,p.szType, true, true);
 	msg->pData    = extractCtcpParameter(msg->pData,p.szParam1);
 	msg->pData    = extractCtcpParameter(msg->pData,p.szParam2);
 	msg->pData    = extractCtcpParameter(msg->pData,p.szParam3);
