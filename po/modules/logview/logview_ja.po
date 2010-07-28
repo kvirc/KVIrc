@@ -1,0 +1,120 @@
+# Japanese translation for logview (KVIrc module)
+# Copyright (C) 2010 KVIrc Development Team
+# This file is distributed under the same license as the KVIrc package.
+# Tadashi Jokagi <elf@elf.no-ip.org>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: logview_ja\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-19 20:08+0200\n"
+"PO-Revision-Date: 2010-07-26 16:10+0900\n"
+"Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
+"Language-Team: Japanese <elf@elf.no-ip.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/logview/libkvilogview.cpp:135
+msgid "Browse &Log Files"
+msgstr "ログファイルの参照(&L)"
+
+#: src/modules/logview/logviewmdiwindow.cpp:78
+msgid "Index"
+msgstr "索引"
+
+#: src/modules/logview/logviewmdiwindow.cpp:87
+msgid "Filter"
+msgstr "フィルター"
+
+#: src/modules/logview/logviewmdiwindow.cpp:91
+msgid "Show channel logs"
+msgstr "チャンネルのログの表示"
+
+#: src/modules/logview/logviewmdiwindow.cpp:95
+msgid "Show query logs"
+msgstr "問い合わせのログの表示"
+
+#: src/modules/logview/logviewmdiwindow.cpp:99
+msgid "Show console logs"
+msgstr "コンソールのログの表示"
+
+#: src/modules/logview/logviewmdiwindow.cpp:103
+msgid "Show DCC chat logs"
+msgstr "DCC チャットのログの表示"
+
+#: src/modules/logview/logviewmdiwindow.cpp:107
+msgid "Show other logs"
+msgstr "その他のログの表示"
+
+#: src/modules/logview/logviewmdiwindow.cpp:112
+msgid "Contents filter"
+msgstr "内容によるフィルター"
+
+#: src/modules/logview/logviewmdiwindow.cpp:115
+msgid "Log name mask:"
+msgstr "ログの名前のマスク:"
+
+#: src/modules/logview/logviewmdiwindow.cpp:121
+msgid "Log contents mask:"
+msgstr "ログの内容によるマスク"
+
+#: src/modules/logview/logviewmdiwindow.cpp:127
+msgid "Only older than"
+msgstr "より古いもののみ"
+
+#: src/modules/logview/logviewmdiwindow.cpp:135
+msgid "Only newier than"
+msgstr "より新しいもののみ"
+
+#: src/modules/logview/logviewmdiwindow.cpp:143
+msgid "Apply filter"
+msgstr "フィルターの適用"
+
+#: src/modules/logview/logviewmdiwindow.cpp:205
+msgid "Log Viewer"
+msgstr "ログ ビュアー"
+
+#: src/modules/logview/logviewmdiwindow.cpp:247
+msgid "Filtering files..."
+msgstr "ファイルをフィルター処理しています..."
+
+#: src/modules/logview/logviewmdiwindow.cpp:248
+msgid "Abort filtering"
+msgstr "フィルター処理の中断"
+
+#: src/modules/logview/logviewmdiwindow.cpp:300
+msgid "%Q on %Q"
+msgstr ""
+
+#: src/modules/logview/logviewmdiwindow.cpp:374
+msgid "Remove all these channel/query log files"
+msgstr "全チャンネル/問い合わせのログ ファイルを削除する"
+
+#: src/modules/logview/logviewmdiwindow.cpp:375
+msgid "Remove file"
+msgstr "ファイルの削除"
+
+#: src/modules/logview/logviewmdiwindow.cpp:533
+msgid "Log File"
+msgstr "ログ ファイル"
+
+#: src/modules/logview/logviewwidget.cpp:71
+msgid "Channel"
+msgstr "チャンネル"
+
+#: src/modules/logview/logviewwidget.cpp:75
+msgid "Query"
+msgstr "問い合わせ"
+
+#: src/modules/logview/logviewwidget.cpp:79
+msgid "DCC Chat"
+msgstr "DCC チャット"
+
+#: src/modules/logview/logviewwidget.cpp:83
+msgid "Console"
+msgstr "コンソール"
+
+#: src/modules/logview/logviewwidget.cpp:87
+msgid "Other"
+msgstr "その他"

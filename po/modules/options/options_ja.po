@@ -1,0 +1,4416 @@
+# Japanese translation for options (KVIrc module)
+# Copyright (C) 2010 KVIrc Development Team
+# This file is distributed under the same license as the KVIrc package.
+# Tadashi Jokagi <elf@elf.no-ip.org>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: options_ja\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-19 20:08+0200\n"
+"PO-Revision-Date: 2010-07-28 10:37+0900\n"
+"Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
+"Language-Team: Japanese <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/options/optw_sound.cpp:63
+#: src/modules/options/optw_sound.h:47
+msgid "Sound System"
+msgstr "音声システム"
+
+#: src/modules/options/optw_sound.cpp:65
+msgid "This allows you to select the sound system to be used with KVIrc."
+msgstr ""
+
+#: src/modules/options/optw_sound.cpp:71
+#: src/modules/options/optw_sound.cpp:86
+msgid "Auto-detect"
+msgstr "自動検出"
+
+#: src/modules/options/optw_sound.cpp:74
+#: src/modules/options/optw_sound.cpp:89
+msgid "Test"
+msgstr "テスト"
+
+#: src/modules/options/optw_sound.cpp:77
+msgid "Media Player"
+msgstr "メディア プレイヤー"
+
+#: src/modules/options/optw_sound.cpp:79
+msgid ""
+"This allows you to select the preferred media player to be used with the "
+"mediaplayer.* module commands and functions."
+msgstr ""
+
+#: src/modules/options/optw_sound.cpp:94
+msgid "ID3 tags' encoding"
+msgstr "ID3 タグのエンコーディング"
+
+#: src/modules/options/optw_sound.cpp:96
+msgid "This allows you to select encoding of mp3 tags."
+msgstr ""
+
+#: src/modules/options/optw_sound.cpp:101
+#: src/modules/options/optw_sound.cpp:125
+#: src/modules/options/optw_textencoding.cpp:50
+#: src/modules/options/optw_textencoding.cpp:58
+msgid "Use Language Encoding"
+msgstr "言語エンコーディングを使う"
+
+#: src/modules/options/optw_sound.cpp:117
+msgid "Winamp messages ecoding"
+msgstr "Winamp メッセージのエンコーディング"
+
+#: src/modules/options/optw_sound.cpp:119
+msgid "This allows you to select encoding of winamp messages."
+msgstr ""
+
+#: src/modules/options/optw_sound.cpp:332
+msgid "New Query opened"
+msgstr ""
+
+#: src/modules/options/optw_sound.cpp:335
+msgid "New message in inactive query"
+msgstr ""
+
+#: src/modules/options/optw_sound.cpp:338
+msgid "Highlighted message in inactive window"
+msgstr ""
+
+#: src/modules/options/optw_sound.cpp:341
+msgid "Me have been kicked"
+msgstr ""
+
+#: src/modules/options/optw_messages.cpp:71
+#: src/modules/options/optw_servers.cpp:242
+#: src/modules/options/optw_channel.h:52
+#: src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_dcc.h:88
+#: src/modules/options/optw_irc.h:43
+#: src/modules/options/optw_identity.h:153
+#: src/modules/options/optw_interfacelookglobal.h:33
+msgid "General"
+msgstr "一般"
+
+#: src/modules/options/optw_messages.cpp:73
+msgid "Show message icons"
+msgstr "メッセージ アイコンを表示する"
+
+#: src/modules/options/optw_messages.cpp:74
+msgid "Draw some emoticons (smileys) as pictures"
+msgstr "いくつかの表情文字(絵文字)を写真で描画する"
+
+#: src/modules/options/optw_messages.cpp:75
+msgid "Don't show colors in user messages"
+msgstr "ユーザーのメッセージを色つきで表示しない"
+
+#: src/modules/options/optw_messages.cpp:77
+msgid "Nicknames"
+msgstr "ニックネーム"
+
+#: src/modules/options/optw_messages.cpp:79
+msgid "\"Smart\" nickname colors"
+msgstr "「スマートな」ニックネームの色"
+
+#: src/modules/options/optw_messages.cpp:83
+msgid "Use specified colors for own nick:"
+msgstr "自分のニック用の色指定を使う:"
+
+#: src/modules/options/optw_messages.cpp:90
+msgid "Use same colors as in the userlist"
+msgstr "ユーザー リストと内と同じ色を使う"
+
+#: src/modules/options/optw_messages.cpp:93
+msgid "Show nicknames in bold"
+msgstr "ニックネームを太字で表示する"
+
+#: src/modules/options/optw_messages.cpp:94
+msgid "Show user and host"
+msgstr "ユーザーとホストを表示する"
+
+#: src/modules/options/optw_messages.cpp:95
+msgid "Show channel mode prefix"
+msgstr ""
+
+#: src/modules/options/optw_messages.cpp:96
+msgid "User-defined prefix and postfix"
+msgstr ""
+
+#: src/modules/options/optw_messages.cpp:98
+msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
+msgstr ""
+
+#: src/modules/options/optw_messages.cpp:112
+msgid "Prefix:"
+msgstr ""
+
+#: src/modules/options/optw_messages.cpp:117
+msgid "Postfix:"
+msgstr ""
+
+#: src/modules/options/optw_messages.cpp:135
+msgid "Show timestamp"
+msgstr "日時を表示する"
+
+#: src/modules/options/optw_messages.cpp:138
+msgid "Use UTC time for timestamp"
+msgstr "日時は UTC 時間を使う"
+
+#: src/modules/options/optw_messages.cpp:145
+msgid "Use special color for timestamps"
+msgstr "日付に特殊色を使う"
+
+#: src/modules/options/optw_messages.cpp:151
+msgid "Timestamp format:"
+msgstr "日時の形式"
+
+#: src/modules/options/optw_messages.cpp:297
+msgid "Transparent"
+msgstr "透過"
+
+#: src/modules/options/optw_messages.cpp:362
+msgid "Background:"
+msgstr "背景色:"
+
+#: src/modules/options/optw_messages.cpp:375
+msgid "Foreground:"
+msgstr "前景色:"
+
+#: src/modules/options/optw_messages.cpp:387
+msgid "Alert level:"
+msgstr "代替レベル:"
+
+#: src/modules/options/optw_messages.cpp:408
+msgid "Log this"
+msgstr "これをログ記録する"
+
+#: src/modules/options/optw_messages.cpp:412
+msgid "Load From..."
+msgstr "読み込む..."
+
+#: src/modules/options/optw_messages.cpp:414
+msgid "Save As..."
+msgstr "別名で保存する"
+
+#: src/modules/options/optw_messages.cpp:560
+msgid "Choose a Filename - KVIrc"
+msgstr "ファイル名の選択 - KVIrc"
+
+#: src/modules/options/optw_messages.cpp:614
+msgid "Choose a Filename - KVIrc "
+msgstr "ファイル名の選択 - KVIrc "
+
+#: src/modules/options/optw_notifier.cpp:38
+#: src/modules/options/optw_interfacelookglobal.cpp:178
+#: src/modules/options/optw_input.cpp:38
+#: src/modules/options/optw_topiclabel.cpp:36
+msgid "Font"
+msgstr "フォント"
+
+#: src/modules/options/optw_notifier.cpp:39
+#: src/modules/options/optw_input.cpp:39
+#: src/modules/options/optw_topiclabel.cpp:38
+msgid "Background color"
+msgstr "背景色"
+
+#: src/modules/options/optw_notifier.cpp:40
+#: src/modules/options/optw_input.cpp:40
+#: src/modules/options/optw_topiclabel.cpp:37
+msgid "Foreground color"
+msgstr "前景色"
+
+#: src/modules/options/optw_notifier.cpp:41
+msgid "Title Font"
+msgstr "題名のフォント"
+
+#: src/modules/options/optw_notifier.cpp:42
+msgid "Title Foreground color"
+msgstr "題名の前景色"
+
+#: src/modules/options/optw_notifier.cpp:44
+#: src/modules/options/optw_input.cpp:46
+#: src/modules/options/optw_topiclabel.cpp:39
+msgid "Background image"
+msgstr "背景画像"
+
+#: src/modules/options/optw_notifier.cpp:46
+#: src/modules/options/optw_windowlist.cpp:125
+#: src/modules/options/optw_input.cpp:48
+#: src/modules/options/optw_ircview.cpp:56
+msgid "Horizontal align:"
+msgstr "水平の位置あわせ:"
+
+#: src/modules/options/optw_notifier.cpp:50
+#: src/modules/options/optw_windowlist.cpp:129
+#: src/modules/options/optw_input.cpp:52
+#: src/modules/options/optw_ircview.cpp:60
+msgid "Vertical align:"
+msgstr "垂直の位置あわせ:"
+
+#: src/modules/options/optw_notifier.cpp:54
+#: src/modules/options/optw_notifier.cpp:59
+#: src/modules/options/optw_windowlist.cpp:133
+#: src/modules/options/optw_windowlist.cpp:138
+#: src/modules/options/optw_input.cpp:56
+#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_ircview.cpp:64
+#: src/modules/options/optw_ircview.cpp:69
+#: src/modules/options/optw_userlist.cpp:141
+#: src/modules/options/optw_userlist.cpp:146
+msgid "Tile"
+msgstr "題名"
+
+#: src/modules/options/optw_notifier.cpp:55
+#: src/modules/options/optw_windowlist.cpp:134
+#: src/modules/options/optw_input.cpp:57
+#: src/modules/options/optw_ircview.cpp:65
+#: src/modules/options/optw_userlist.cpp:142
+msgid "Left"
+msgstr "左"
+
+#: src/modules/options/optw_notifier.cpp:56
+#: src/modules/options/optw_windowlist.cpp:135
+#: src/modules/options/optw_input.cpp:58
+#: src/modules/options/optw_ircview.cpp:66
+#: src/modules/options/optw_userlist.cpp:143
+msgid "Right"
+msgstr "右"
+
+#: src/modules/options/optw_notifier.cpp:57
+#: src/modules/options/optw_notifier.cpp:62
+#: src/modules/options/optw_windowlist.cpp:136
+#: src/modules/options/optw_windowlist.cpp:141
+#: src/modules/options/optw_input.cpp:59
+#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_ircview.cpp:67
+#: src/modules/options/optw_ircview.cpp:72
+#: src/modules/options/optw_userlist.cpp:144
+#: src/modules/options/optw_userlist.cpp:149
+msgid "Center"
+msgstr "中央"
+
+#: src/modules/options/optw_notifier.cpp:60
+#: src/modules/options/optw_windowlist.cpp:139
+#: src/modules/options/optw_input.cpp:62
+#: src/modules/options/optw_ircview.cpp:70
+#: src/modules/options/optw_userlist.cpp:147
+msgid "Top"
+msgstr "上"
+
+#: src/modules/options/optw_notifier.cpp:61
+#: src/modules/options/optw_windowlist.cpp:140
+#: src/modules/options/optw_input.cpp:63
+#: src/modules/options/optw_ircview.cpp:71
+#: src/modules/options/optw_userlist.cpp:148
+msgid "Bottom"
+msgstr "下"
+
+#: src/modules/options/optw_notifier.cpp:144
+msgid "Enable the notifier"
+msgstr "通知を有効にする"
+
+#: src/modules/options/optw_notifier.cpp:146
+msgid ""
+"This is an option for the impatient: it allows to forcibly and permanently "
+"disable the notifier window. Please note that if this option is activated "
+"then the notifier will NOT popup even if all the other options around "
+"specify to use it in response to particular events. Also note that this "
+"option will make all the /notifier.* commands fail silently."
+msgstr ""
+
+#: src/modules/options/optw_notifier.cpp:160
+msgid "Don't show notifier when there is an active fullscreen window"
+msgstr ""
+
+#: src/modules/options/optw_notifier.cpp:163
+msgid ""
+"This option stops the notifier from being displayed when there is an active "
+"fullscreen window. This is useful for gaming sessions where you may be "
+"distracted by the notifier or it may even switch your game from fullscreen "
+"to window mode."
+msgstr ""
+
+#: src/modules/options/optw_notifier.cpp:176
+msgid "Enable notifier window flashing"
+msgstr "通知ウィンドウの点滅を有効にする"
+
+#: src/modules/options/optw_notifier.cpp:184
+msgid "Enable notifier window fade effect"
+msgstr "通知ウィンドウのフェード効果を有効にする"
+
+#: src/modules/options/optw_notifier.cpp:191
+#: src/modules/options/optw_notify.cpp:60
+msgid "Advanced configuration"
+msgstr "高度な設定"
+
+#: src/modules/options/optw_notifier.cpp:196
+msgid "Default auto hiding time for messages (0 to disable)"
+msgstr ""
+
+#: src/modules/options/optw_notifier.cpp:203
+msgid "Notifier window opacity while active (mouseover)"
+msgstr ""
+
+#: src/modules/options/optw_notifier.cpp:210
+msgid "Notifier window opacity while inactive"
+msgstr ""
+
+#: src/modules/options/optw_uparser.cpp:39
+msgid "Disable parser warnings"
+msgstr "パーサーの警告を無効にする"
+
+#: src/modules/options/optw_uparser.cpp:40
+msgid "Disable broken event handlers"
+msgstr "壊れたイベント制御を無効にする"
+
+#: src/modules/options/optw_uparser.cpp:41
+msgid "Kill broken timers"
+msgstr ""
+
+#: src/modules/options/optw_uparser.cpp:42
+msgid "Send unknown commands as /RAW"
+msgstr "/RAW として不明なコマンドを送信する"
+
+#: src/modules/options/optw_uparser.cpp:46
+msgid "Automatically unload unused modules"
+msgstr "未使用モジュールを自動的に開放する"
+
+#: src/modules/options/optw_uparser.cpp:47
+msgid "Ignore module versions (dangerous)"
+msgstr ""
+
+#: src/modules/options/optw_uparser.cpp:51
+msgid "Relay errors and warnings to debug window"
+msgstr "リレーのエラーと警告をデバッグウィンドウへ"
+
+#: src/modules/options/optw_uparser.cpp:52
+msgid "Create minimized debug window"
+msgstr "デバッグ用ウィンドウを最小化で作成する"
+
+#: src/modules/options/optw_textencoding.cpp:45
+msgid "Default server encoding:"
+msgstr "標準のサーバー エンコーディング"
+
+#: src/modules/options/optw_textencoding.cpp:53
+msgid "Default text encoding:"
+msgstr "標準のテキスト エンコーディング"
+
+#: src/modules/options/optw_textencoding.cpp:78
+msgid "Force language:"
+msgstr "言語の強制設定:"
+
+#: src/modules/options/optw_textencoding.cpp:84
+msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
+msgstr "<b>注釈:</b> 言語の変更を適用するには KVirc を再起動する必要があります。"
+
+#: src/modules/options/optw_textencoding.cpp:87
+msgid "Automatic detection"
+msgstr "自動検出"
+
+#: src/modules/options/optw_textencoding.cpp:88
+msgid "en"
+msgstr "英語"
+
+#: src/modules/options/optw_textencoding.cpp:160
+msgid "Unable to write language information to"
+msgstr ""
+
+#: src/modules/options/optw_textencoding.cpp:160
+#: src/modules/options/optw_identity.cpp:99
+msgid "Ok"
+msgstr "OK"
+
+#: src/modules/options/optw_tools.cpp:40
+msgid ""
+"This section contains irc tools<br><p>like<b> away, lag and logging system. "
+"</b> </p>"
+msgstr ""
+
+#: src/modules/options/dialog.cpp:114
+msgid "General Preferences"
+msgstr "一般設定"
+
+#: src/modules/options/dialog.cpp:117
+msgid "Theme Preferences"
+msgstr "テーマ設定"
+
+#: src/modules/options/dialog.cpp:119
+msgid "KVIrc Preferences"
+msgstr "KVIrc 設定"
+
+#: src/modules/options/dialog.cpp:122
+msgid ""
+"This dialog contains a set of KVIrc settings.<br> Use the icons on the left "
+"to navigate through the option pages. The text box in the bottom left corner "
+"is a small search engine. It will highlight the pages that contain options "
+"related to the search term you have entered."
+msgstr ""
+
+#: src/modules/options/dialog.cpp:129
+msgid ""
+"Many settings have tooltips that can be shown by holding the cursor over "
+"their label for a few seconds."
+msgstr ""
+
+#: src/modules/options/dialog.cpp:132
+msgid ""
+"When you have finished, click \"<b>OK</b>\" to accept your changes or "
+"\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
+"your changes without closing the window."
+msgstr ""
+
+#: src/modules/options/dialog.cpp:196
+msgid ""
+"<p>This is the search tool for this options dialog.</p><p>You can enter a "
+"search term either in your native language or in english and press the "
+"button on the right. The pages that contain some options related to the "
+"search term will be highlighted and you will be able to quickly find them.</"
+"p><p>Try \"nickname\" for example.</p>"
+msgstr ""
+
+#: src/modules/options/dialog.cpp:227
+#: src/modules/options/optw_identity.cpp:234
+#: src/modules/options/optw_servers.cpp:366
+#: src/modules/options/container.cpp:72
+msgid "&OK"
+msgstr "&OK"
+
+#: src/modules/options/dialog.cpp:229
+#: src/modules/options/container.cpp:73
+msgid "Close this dialog, accepting all changes."
+msgstr "全変更を許可し、ダイアログを閉じます。"
+
+#: src/modules/options/dialog.cpp:235
+msgid "&Apply"
+msgstr "適用(&A)"
+
+#: src/modules/options/dialog.cpp:237
+msgid "Commit all changes immediately."
+msgstr "すぐにすべての変更をコミットします。"
+
+#: src/modules/options/dialog.cpp:242
+#: src/modules/options/optw_identity.cpp:96
+#: src/modules/options/optw_identity.cpp:239
+#: src/modules/options/optw_identity.cpp:953
+#: src/modules/options/optw_nickserv.cpp:128
+#: src/modules/options/optw_servers.cpp:372
+#: src/modules/options/optw_servers.cpp:982
+#: src/modules/options/container.cpp:80
+msgid "Cancel"
+msgstr "取り消し"
+
+#: src/modules/options/dialog.cpp:244
+#: src/modules/options/container.cpp:81
+msgid "Close this dialog, discarding all changes."
+msgstr "全変更を破棄し、このダイアログを閉じます。"
+
+#: src/modules/options/optw_proxy.cpp:66
+msgid "Use proxy"
+msgstr "プロキシーを使う"
+
+#: src/modules/options/optw_proxy.cpp:70
+msgid "Proxy"
+msgstr "プロキシー"
+
+#: src/modules/options/optw_proxy.cpp:81
+msgid ""
+"<center>This is the list of available proxy servers.<br>Right-click on the "
+"list to add or remove proxies.</center>"
+msgstr ""
+
+#: src/modules/options/optw_proxy.cpp:93
+msgid "New Proxy"
+msgstr "新しいプロキシー"
+
+#: src/modules/options/optw_proxy.cpp:100
+msgid "Remove Proxy"
+msgstr "プロキシーの削除"
+
+#: src/modules/options/optw_proxy.cpp:106
+#: src/modules/options/optw_notify.cpp:41
+#: src/modules/options/optw_lag.cpp:43
+#: src/modules/options/optw_connection.cpp:221
+msgid "Configuration"
+msgstr "構成"
+
+#: src/modules/options/optw_proxy.cpp:111
+msgid "Proxy:"
+msgstr "プロキシー:"
+
+#: src/modules/options/optw_proxy.cpp:113
+#: src/modules/options/optw_servers.cpp:625
+msgid "Port:"
+msgstr "ポート:"
+
+#: src/modules/options/optw_proxy.cpp:115
+#: src/modules/options/optw_servers.cpp:639
+msgid "IP address:"
+msgstr "IP アドレス:"
+
+#: src/modules/options/optw_proxy.cpp:117
+#: src/modules/options/optw_identity.cpp:317
+#: src/modules/options/optw_identity.cpp:933
+#: src/modules/options/optw_servers.cpp:139
+#: src/modules/options/optw_servers.cpp:541
+msgid "Username:"
+msgstr "ユーザー名:"
+
+#: src/modules/options/optw_proxy.cpp:119
+#: src/modules/options/optw_servers.cpp:150
+#: src/modules/options/optw_servers.cpp:553
+msgid "Password:"
+msgstr "パスワード:"
+
+#: src/modules/options/optw_proxy.cpp:121
+msgid "Protocol:"
+msgstr "プロトコル:"
+
+#: src/modules/options/optw_proxy.cpp:129
+#: src/modules/options/optw_servers.cpp:690
+msgid "Use IPv6 protocol"
+msgstr "IPv6 プロトコルを使う"
+
+#: src/modules/options/optw_proxy.cpp:325
+msgid "&New Proxy"
+msgstr "新規プロキシー(&N)"
+
+#: src/modules/options/optw_proxy.cpp:326
+msgid "Re&move Proxy"
+msgstr "プロキシーの削除(&M)"
+
+#: src/modules/options/optw_identity.cpp:61
+msgid "Nickname alternatives"
+msgstr "代替ニックネーム"
+
+#: src/modules/options/optw_identity.cpp:64
+msgid ""
+"<center>Here you can choose up to three nicknames alternative to the primary "
+"one. KVIrc will use the alternatives if the primary nick is already used by "
+"someone else on a particular IRC network.</center>"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:73
+msgid "Alt. Nickname 1:"
+msgstr "代替ニックネーム 1:"
+
+#: src/modules/options/optw_identity.cpp:80
+msgid "Alt. Nickname 2:"
+msgstr "代替ニックネーム 2:"
+
+#: src/modules/options/optw_identity.cpp:87
+msgid "Alt. Nickname 3:"
+msgstr "代替ニックネーム 3:"
+
+#: src/modules/options/optw_identity.cpp:121
+msgid "Avatar Download - KVIrc"
+msgstr "アバターのダウンロード - KVIrc"
+
+#: src/modules/options/optw_identity.cpp:127
+msgid "<center>Please wait while the avatar is being downloaded</center>"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:130
+msgid "Abort"
+msgstr "中断"
+
+#: src/modules/options/optw_identity.cpp:161
+msgid "Failed to start the download"
+msgstr "ダウンロードの開始に失敗しました"
+
+#: src/modules/options/optw_identity.cpp:168
+#: src/modules/options/optw_identity.cpp:175
+msgid "Download aborted by user"
+msgstr "ユーザーにより、ダウンロードを中断しました"
+
+#: src/modules/options/optw_identity.cpp:204
+msgid "Choose Avatar - KVIrc"
+msgstr "アバターの選択 - KVIrc"
+
+#: src/modules/options/optw_identity.cpp:209
+msgid ""
+"Please select an avatar image. The full path to a local file or an image on "
+"the Web can be used.<br>If you wish to use a local image file, click the "
+"\"<b>Browse</b>\"button to browse local folders.<br>The full URL for an "
+"image (including <b>http://</b>) can be entered manually."
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:227
+msgid "&Browse..."
+msgstr "参照(&B)..."
+
+#: src/modules/options/optw_identity.cpp:265
+msgid "Choose an Image File - KVIrc"
+msgstr "画像ファイルを選択する - KVIrc"
+
+#: src/modules/options/optw_identity.cpp:299
+msgid "Basic Properties"
+msgstr "基本プロパティ"
+
+#: src/modules/options/optw_identity.cpp:304
+#: src/modules/options/optw_identity.cpp:917
+#: src/modules/options/optw_servers.cpp:159
+#: src/modules/options/optw_servers.cpp:562
+msgid "Nickname:"
+msgstr "ニックネーム:"
+
+#: src/modules/options/optw_identity.cpp:306
+msgid ""
+"<center>Your <b>nickname</b> is your primary form of identification on IRC."
+"<br>Since servers cannot accept multiple users sharing the same nickname "
+"(case insensitive), you can provide alternative nicknames to be used in "
+"casethe server refuses to accept the default one.</center>"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:314
+msgid "Alternatives..."
+msgstr "代替..."
+
+#: src/modules/options/optw_identity.cpp:319
+msgid ""
+"<center>This is the <b>username</b> that you will use to connect to the "
+"server.<br>In the past, it was used as a form of authentication, but it "
+"normally has no special use now.<br>In addition to your nickname, you are "
+"identified on IRC by your <b>username@hostname</b>.</br>Basically, you can "
+"enter any word you like here. :D</center>"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:324
+#: src/modules/options/optw_servers.cpp:172
+#: src/modules/options/optw_servers.cpp:575
+msgid "Real name:"
+msgstr "本名:"
+
+#: src/modules/options/optw_identity.cpp:327
+msgid ""
+"<center>This text will appear when someone does a /WHOIS on you.<br>It is "
+"intended to be your real name, but people tend to put random quotes and "
+"phrases here too.</center>"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:331
+msgid ""
+"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:336
+msgid "Profile"
+msgstr "プロフィール"
+
+#: src/modules/options/optw_identity.cpp:341
+msgid "Age:"
+msgstr "年齢:"
+
+#: src/modules/options/optw_identity.cpp:345
+msgid "Here you can specify your age."
+msgstr "ここであなたの年齢を指定できます。"
+
+#: src/modules/options/optw_identity.cpp:348
+#: src/modules/options/optw_identity.cpp:376
+msgid "Unspecified"
+msgstr "未指定"
+
+#: src/modules/options/optw_identity.cpp:369
+msgid "Gender:"
+msgstr "性別:"
+
+#: src/modules/options/optw_identity.cpp:373
+msgid "Here you can specify your gender."
+msgstr "ここであなたの性別を指定できます。"
+
+#: src/modules/options/optw_identity.cpp:377
+msgid "Female"
+msgstr "女性"
+
+#: src/modules/options/optw_identity.cpp:378
+msgid "Male"
+msgstr "男性"
+
+#: src/modules/options/optw_identity.cpp:389
+msgid "Location:"
+msgstr "地域:"
+
+#: src/modules/options/optw_identity.cpp:391
+msgid ""
+"You can describe here your approximate physical location. Something like "
+"\"Region, Country\" will be ok. Please note that this information will be "
+"viewable by anyone so putting more data (like the exact address), generally, "
+"<b>is not a good idea</b>."
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:395
+msgid "Languages:"
+msgstr "言語:"
+
+#: src/modules/options/optw_identity.cpp:397
+msgid ""
+"You can put here the short names of the languages you can speak. An example "
+"might be \"EN,IT\" that would mean that you speak both Italian and English."
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:400
+msgid "Other:"
+msgstr "その他:"
+
+#: src/modules/options/optw_identity.cpp:402
+msgid ""
+"You can put here some additional personal data. It might be a funny quote or "
+"your homepage url... Please note that this information will be viewable by "
+"anyone so <b>don't put any sensible data</b> (passwords, telephone or credit "
+"card numbers)."
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:467
+msgid ""
+"Here you can choose your avatar image. It will be visible<br>by other people "
+"that request it. Choose a nice image of yourself,<br>possibly avoiding "
+"obscenity and offending images. It is a good idea<br>to choose a relatively "
+"small file (say 150 Kb max) because<br>most clients have a limit on the size "
+"of avatars being downloaded.<br>The image also should be smaller than "
+"800x600 pixels since<br>it will have to be viewable in everyone's monitor."
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:475
+msgid "Use avatar"
+msgstr "アバターを使う"
+
+#: src/modules/options/optw_identity.cpp:497
+msgid "Choose..."
+msgstr "選択..."
+
+#: src/modules/options/optw_identity.cpp:555
+#: src/modules/options/optw_identity.cpp:594
+msgid "Failed to Load Avatar - KVIrc"
+msgstr "アバターの読み込みに失敗 - KVIrc"
+
+#: src/modules/options/optw_identity.cpp:556
+#: src/modules/options/optw_identity.cpp:595
+msgid ""
+"Failed to load the avatar image.<br>It may be an unaccessible file or an "
+"unsupported image format."
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:563
+msgid "Failed to download the avatar image.<br><b>%Q</b>"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:565
+msgid "Avatar Download Failed - KVIrc"
+msgstr "アバターのダウンロードに失敗しました - KVIrc"
+
+#: src/modules/options/optw_identity.cpp:608
+#: src/modules/options/optw_identity.cpp:624
+msgid "Avatar Might Be Too Big - KVIrc"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:610
+msgid ""
+"The avatar you have chosen is bigger than 1024x768 pixels.<br>Such a big "
+"image will not be seen on all the user monitors<br>and will probably be "
+"scaled by the remote clients with poor quality<br>algorithms to improve "
+"performance. You *should* scale it manually<br>to a sane size (like 800x600) "
+"or choose a different image."
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:626
+msgid ""
+"The avatar you have chosen is bigger than 500 KiB<br>and most clients will "
+"refuse to download it.<br>You *should* either scale it, use a different "
+"storage<br>format or choose a different image."
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:657
+#: src/modules/options/optw_servers.cpp:588
+msgid "User Mode"
+msgstr "ユーザー モード"
+
+#: src/modules/options/optw_identity.cpp:658
+#: src/modules/options/optw_servers.cpp:599
+msgid "Invisible (+i)"
+msgstr "不可視 (+i)"
+
+#: src/modules/options/optw_identity.cpp:659
+#: src/modules/options/optw_servers.cpp:603
+msgid "Server notices (+s)"
+msgstr "サーバーの通知 (+s)"
+
+#: src/modules/options/optw_identity.cpp:660
+#: src/modules/options/optw_servers.cpp:607
+msgid "Wallops (+w)"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:662
+msgid "Default Messages"
+msgstr "標準のメッセージ"
+
+#: src/modules/options/optw_identity.cpp:664
+msgid "Part message:"
+msgstr "退室時のメッセージ"
+
+#: src/modules/options/optw_identity.cpp:667
+msgid ""
+"<center>This is the default part message that will be used when you<br>leave "
+"a channel by closing a channel window.</center>"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:670
+msgid "Quit message:"
+msgstr "終了時のメッセージ"
+
+#: src/modules/options/optw_identity.cpp:672
+msgid ""
+"<center>This is the default quit message that will be used when you<br>quit "
+"your IRC session by closing the console window or disconnecting by pressing "
+"the disconnect button.</center>"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:706
+msgid "Enable Network Profiles"
+msgstr "ネットワーク プロフィールを有効にする"
+
+#: src/modules/options/optw_identity.cpp:707
+msgid "This check enables the use of network profiles"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:718
+msgid "Name"
+msgstr "名前"
+
+#: src/modules/options/optw_identity.cpp:719
+msgid "Network"
+msgstr "ネットワーク"
+
+#: src/modules/options/optw_identity.cpp:720
+#: src/modules/options/optw_nickserv.cpp:243
+#: src/modules/options/optw_servers.cpp:316
+msgid "Nickname"
+msgstr "ニックネーム"
+
+#: src/modules/options/optw_identity.cpp:721
+msgid "Alt. Nick"
+msgstr "代替ニックネーム"
+
+#: src/modules/options/optw_identity.cpp:722
+msgid "Username"
+msgstr "ユーザーの名前"
+
+#: src/modules/options/optw_identity.cpp:723
+msgid "Realname"
+msgstr "本名"
+
+#: src/modules/options/optw_identity.cpp:727
+msgid ""
+"<center>This is a set of rules to use profiles.KVIrc will use them to handle "
+"the user connection data before the data is sent to the IRC server.<br>This "
+"is useful if a user wants to use different data on different networks "
+"without changing them at every connection attempt."
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:740
+msgid "Add Profile"
+msgstr "プロフィールの追加"
+
+#: src/modules/options/optw_identity.cpp:743
+msgid "Edit Profile"
+msgstr "プロフィールの編集"
+
+#: src/modules/options/optw_identity.cpp:746
+msgid "Delete Profile"
+msgstr "プロフィールの削除"
+
+#: src/modules/options/optw_identity.cpp:842
+msgid "Invalid Profile Rule"
+msgstr "プロフィールのルールが正しくありません"
+
+#: src/modules/options/optw_identity.cpp:842
+msgid "There is already a profile with that name"
+msgstr "その名前のプロフィールは既に存在します。"
+
+#: src/modules/options/optw_identity.cpp:842
+#: src/modules/options/optw_identity.cpp:957
+#: src/modules/options/optw_nickserv.cpp:133
+#: src/modules/options/optw_nickserv.cpp:154
+#: src/modules/options/optw_servers.cpp:976
+msgid "OK"
+msgstr "OK"
+
+#: src/modules/options/optw_identity.cpp:890
+msgid "Profile Editor - KVIrc"
+msgstr "プロフィール エディター - KVIrc"
+
+#: src/modules/options/optw_identity.cpp:892
+msgid "Profile Name"
+msgstr "プロフィールの名前"
+
+#: src/modules/options/optw_identity.cpp:893
+msgid "MyNetwork"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:894
+msgid "MyNick"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:895
+msgid "MyNick2"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:896
+msgid "MyUserName"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:897
+msgid "MyRealName"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:901
+msgid "Profile Name:"
+msgstr "プロフィールの名前:"
+
+#: src/modules/options/optw_identity.cpp:905
+msgid "Put here the name of the profile"
+msgstr "ここにプロフィールの名前を入力します。"
+
+#: src/modules/options/optw_identity.cpp:909
+msgid "Network Name:"
+msgstr "ネットワークの名前:"
+
+#: src/modules/options/optw_identity.cpp:913
+msgid "Put here the name of the network"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:921
+msgid "Put here the nickname you want to use"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:925
+msgid "Alternative Nickname:"
+msgstr "代替ニックネーム"
+
+#: src/modules/options/optw_identity.cpp:929
+msgid "Put here the alternative nickname you want to use"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:937
+msgid "Put here the username you want to use"
+msgstr ""
+
+#: src/modules/options/optw_identity.cpp:941
+msgid "Realname:"
+msgstr "本名:"
+
+#: src/modules/options/optw_identity.cpp:945
+msgid "Put here the realname you want to use"
+msgstr ""
+
+#: src/modules/options/optw_generalopt.cpp:39
+msgid ""
+"This section contains the general client options<br><p>like<b> sound, "
+"mediafiles, URL handler </b> etc... </p>"
+msgstr ""
+
+#: src/modules/options/optw_tray.cpp:43
+msgid "Enable tray icon"
+msgstr "トレイアイコンを有効にする"
+
+#: src/modules/options/optw_tray.cpp:44
+msgid "Close in tray"
+msgstr "閉じるときはトレイに"
+
+#: src/modules/options/optw_tray.cpp:46
+msgid "Enable tray icon flashing"
+msgstr "トレイアイコンの点滅を有効にする"
+
+#: src/modules/options/optw_tray.cpp:47
+msgid "Enable level-based message notification (not a message-type based)"
+msgstr ""
+
+#: src/modules/options/optw_tray.cpp:49
+msgid "Select message levels to notify"
+msgstr ""
+
+#: src/modules/options/optw_tray.cpp:51
+msgid "Minimum level for low-priority messages"
+msgstr ""
+
+#: src/modules/options/optw_tray.cpp:55
+msgid "Minimum level for high-priority message"
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:48
+msgid "NickServ Authentication Rule"
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:55
+msgid "Registered NickName"
+msgstr "登録済みニックネーム"
+
+#: src/modules/options/optw_nickserv.cpp:59
+msgid "Put here the nickname that you have registered with NickServ"
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:63
+#: src/modules/options/optw_nickserv.cpp:245
+#: src/modules/options/optw_servers.cpp:317
+msgid "NickServ Mask"
+msgstr "NickServ マスク"
+
+#: src/modules/options/optw_nickserv.cpp:68
+#, c-format
+msgid ""
+"This is the mask that NickServ must match to be correctly identified as the "
+"NickServ service. This usually will be something like <b>NickServ!"
+"service@services.dalnet</b>.<br>You can use wildcards for this field, but "
+"generally it is a security flaw. If you're 100%% sure that NO user on the "
+"network can use the nickname \"NickServ\", the mask <b>NickServ!*@*</b> may "
+"be safe to use in this field."
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:76
+msgid "Message Regexp"
+msgstr "メッセージ正規表現"
+
+#: src/modules/options/optw_nickserv.cpp:84
+msgid ""
+"This is the simple regular expression that the identification request "
+"message from NickServ must match in order to be correctly recognized.<br>The "
+"message is usually something like \"To identify yourself please use /ns "
+"IDENTIFY password\" and it is sent when the NickServ wants you to "
+"authenticate yourself. You can use the * and ? wildcards."
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:89
+#: src/modules/options/optw_nickserv.cpp:247
+#: src/modules/options/optw_servers.cpp:319
+msgid "Identify Command"
+msgstr "識別コマンド"
+
+#: src/modules/options/optw_nickserv.cpp:94
+msgid ""
+"This is the command that will be executed when NickServ requests "
+"authentication for the nickname described in this rule (if the both server "
+"and NickServ mask are matched). This usually will be something like <b>msg "
+"NickServ identify &lt;yourpassword&gt;</b>.<br>You can use <b>msg -q</b> if "
+"you don't want the password echoed on the screen. Please note that there is "
+"no leading slash in this command."
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:106
+#: src/modules/options/optw_nickserv.cpp:244
+msgid "Server mask"
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:111
+msgid ""
+"This is the mask that the current server must match in order for this rule "
+"to apply. It can contain * and ? wildcards.<br>Do NOT use simply \"*\" "
+"here..."
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:121
+msgid "Hint: Move the mouse cursor over the fields to get help"
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:153
+msgid "Invalid NickServ Rule"
+msgstr "NickServ のルールが正しくありません"
+
+#: src/modules/options/optw_nickserv.cpp:158
+msgid "The Nickname field can't be empty!"
+msgstr "ニックネームの項目は空にできません!"
+
+#: src/modules/options/optw_nickserv.cpp:164
+msgid "The Nickname field can't contain spaces!"
+msgstr "ニックネームの項目は空白を含めません!"
+
+#: src/modules/options/optw_nickserv.cpp:172
+msgid "The NickServ mask can't be empty!<br>You must put at least * there."
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:180
+msgid "The Message Regexp can't be empty!<br>You must put at least * there."
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:188
+msgid "The Identify Command can't be empty!"
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:232
+#: src/modules/options/optw_servers.cpp:304
+msgid "Enable NickServ Identification"
+msgstr "NickServ 認証を有効にする"
+
+#: src/modules/options/optw_nickserv.cpp:235
+#: src/modules/options/optw_servers.cpp:308
+msgid "This check enables the automatic identification with NickServ"
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:246
+#: src/modules/options/optw_servers.cpp:318
+msgid "NickServ Request Mask"
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:254
+msgid ""
+"<center>This is a list of NickServ identification rules. KVIrc will use them "
+"to model its automatic interaction with NickServ on all the networks."
+"<br>Please be aware that this feature can cause your NickServ passwords to "
+"be stolen if used improperly. Make sure that you fully understand the "
+"NickServ authentication protocol.<br>In other words, be sure to know what "
+"you're doing.<br>Also note that the password that you provide is stored as "
+"<b>PLAIN TEXT</b>.<br>KVIrc supports also per-network NickServ "
+"authentication rules that can be created in the \"Advanced...\" network "
+"options (accessible from the servers dialog).</center>"
+msgstr ""
+
+#: src/modules/options/optw_nickserv.cpp:264
+#: src/modules/options/optw_servers.cpp:332
+msgid "Add Rule"
+msgstr "ルールの追加"
+
+#: src/modules/options/optw_nickserv.cpp:268
+#: src/modules/options/optw_servers.cpp:337
+msgid "Edit Rule"
+msgstr "ルールの編集"
+
+#: src/modules/options/optw_nickserv.cpp:272
+#: src/modules/options/optw_servers.cpp:341
+msgid "Delete Rule"
+msgstr "ルールの削除"
+
+#: src/modules/options/optw_notify.cpp:40
+msgid "Use online notify list"
+msgstr "オンライン通知リストを使う"
+
+#: src/modules/options/optw_notify.cpp:46
+msgid "Show notifications in active window"
+msgstr "有効なウィンドウの通知を表示する"
+
+#: src/modules/options/optw_notify.cpp:51
+msgid "Flash window when users are going online"
+msgstr "ユーザーがオンラインになったとき、ウィンドウを点滅させる"
+
+#: src/modules/options/optw_notify.cpp:56
+msgid "Popup notifier when users are going online"
+msgstr "ユーザーがオンラインになったとき、通知をポップアップする"
+
+#: src/modules/options/optw_notify.cpp:65
+msgid "Check USERHOST for online users"
+msgstr "オンライン ユーザーを USERHOST で確認する"
+
+#: src/modules/options/optw_notify.cpp:70
+msgid "Use \"smart\" notify list manager"
+msgstr ""
+
+#: src/modules/options/optw_notify.cpp:75
+msgid "Use the WATCH method if available"
+msgstr "利用できるなら WATCH メソッドを使う"
+
+#: src/modules/options/optw_notify.cpp:80
+msgid "Check interval (in seconds)"
+msgstr "確認の間隔 (単位: 秒)"
+
+#: src/modules/options/optw_notify.cpp:86
+msgid "ISON delay (in seconds)"
+msgstr "ISON 遅延 (単位: 秒)"
+
+#: src/modules/options/optw_notify.cpp:92
+msgid "USERHOST delay (in seconds)"
+msgstr "USERHOST 遅延 (単位: 秒)"
+
+#: src/modules/options/optw_notify.cpp:97
+msgid ""
+"<p><b>Note:</b><br>The notify list is managed using the \"Registered Users\" "
+"settings.</p>"
+msgstr ""
+
+#: src/modules/options/optw_lag.cpp:41
+msgid "Enable lag meter"
+msgstr ""
+
+#: src/modules/options/optw_lag.cpp:42
+msgid ""
+"<center>This enables the lag meter engine, which checks at regular intervals "
+"how much lag (latency) the server has.</center>"
+msgstr ""
+
+#: src/modules/options/optw_lag.cpp:44
+msgid "Lag meter heartbeat:"
+msgstr ""
+
+#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_connection.cpp:155
+#: src/modules/options/optw_ircview.cpp:157
+#: src/modules/options/optw_ircview.cpp:159
+#: src/modules/options/optw_dcc.cpp:276
+msgid " msec"
+msgstr " ミリ秒"
+
+#: src/modules/options/optw_lag.cpp:47
+msgid ""
+"<center>This option allows you to set the lag meter heartbeat interval."
+"<br>The lower the heartbeat interval the higher will be the accuracy of the "
+"lag check but also higher cpu usage and data traffic to the server."
+"<br>Please note that this is NOT the interval between pings sent to the "
+"server: the pings (if any) will be sent really less often. 5000 is a "
+"reasonable value.</center>"
+msgstr ""
+
+#: src/modules/options/optw_lag.cpp:55
+msgid "Trigger event if lag exceeds:"
+msgstr ""
+
+#: src/modules/options/optw_lag.cpp:57
+msgid ""
+"<center>This option controls the threshold for the OnLagAlarmTimeUp and "
+"OnLagAlarmTimeDown events. When the lag goes above the threshold "
+"OnLagAlarmTimeUp will be triggered and when the lag falls back below the "
+"threshold then OnLagAlarmTimeDown will be triggered</center>"
+msgstr ""
+
+#: src/modules/options/optw_lag.cpp:63
+msgid "Show lag in IRC context display"
+msgstr ""
+
+#: src/modules/options/optw_lag.cpp:64
+msgid ""
+"<center>This makes the IRC context display applet show the current lag after "
+"the user's nickname (in seconds)</center>"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:41
+msgid "Scaling in userlist"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:42
+msgid "Scale avatar images in userlist (recommended)"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:43
+msgid ""
+"<center>This option will force KVIrc to scale avatars shown in the userlist."
+"<br>Avatars will be scaled to fit the constraints set below. Better keep "
+"this option on. :)</center>"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:48
+msgid "Do not scale avatar if it is less than required size"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:50
+#: src/modules/options/optw_avatar.cpp:59
+msgid "Image width:"
+msgstr "画像の幅:"
+
+#: src/modules/options/optw_avatar.cpp:52
+#: src/modules/options/optw_avatar.cpp:61
+msgid "Image height:"
+msgstr "画像の高さ:"
+
+#: src/modules/options/optw_avatar.cpp:56
+msgid "Scaling on load (and in user tooltips)"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:57
+msgid "Scale avatar images on image load"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:65
+msgid "Request CTCP"
+msgstr "CTCP 要求"
+
+#: src/modules/options/optw_avatar.cpp:66
+msgid "Request missing avatars"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:67
+msgid "Maximum requested file size:"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:70
+msgid ""
+"<center>This option will cause KVIrc to send a DCC GET request when someone "
+"sets an avatar and there is no cached copy available.</center>"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:72
+#: src/modules/options/optw_dcc.cpp:285
+msgid " bytes"
+msgstr " バイト"
+
+#: src/modules/options/optw_avatar.cpp:75
+msgid ""
+"<center>This is the maximum size for avatar images that will be "
+"automatically requested.<br>A reasonable value might be 102400 bytes (100 K)."
+"</center>"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:80
+msgid "Automatically accept incoming avatars"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:83
+msgid ""
+"<center>This option will cause KVIrc to auto-accept DCC SEND requests for "
+"incoming avatars.<br>If you're using the \"Request missing avatars\" option "
+"above, enabling this may by useful.<br>Avatars will be saved in the local "
+"KVIrc directory.</center>"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:89
+msgid "Remember avatars for registered users"
+msgstr "登録済みユーザーのアバターを覚える"
+
+#: src/modules/options/optw_avatar.cpp:92
+msgid ""
+"<center>Use a user's last known avatar by default (only for users that are "
+"registered).</center>"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:95
+msgid "Avatar offer timeout:"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:96
+#: src/modules/options/optw_connection.cpp:85
+#: src/modules/options/optw_connection.cpp:153
+#: src/modules/options/optw_dcc.cpp:140
+#: src/modules/options/optw_channel.cpp:121
+#: src/modules/options/optw_ctcpfloodprotection.cpp:92
+msgid " sec"
+msgstr " 秒"
+
+#: src/modules/options/optw_avatar.cpp:98
+msgid ""
+"<center>This is the amount of time to make an avatar available for transfer "
+"when requested.<br>When someone sends a CTCP AVATAR request, KVIrc will "
+"reply with a CTCP AVATAR message containing the name and size of your avatar "
+"image.<br>A time-limited file offer is added for the image file to the "
+"requesting user.</center>"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:105
+msgid "Ignore requests if no avatar is set"
+msgstr ""
+
+#: src/modules/options/optw_avatar.cpp:107
+msgid ""
+"This option will cause KVIrc to ignore channel CTCP AVATAR requests when you "
+"have no avatar set. This is usually a good practice since it helps in "
+"reducing traffic by not sending a reply that would be empty."
+msgstr ""
+
+#: src/modules/options/optw_highlighting.cpp:55
+msgid "Enable word highlighting"
+msgstr "単語のハイライトを有効にする"
+
+#: src/modules/options/optw_highlighting.cpp:57
+msgid "Words to highlight:"
+msgstr "ハイライトにする単語"
+
+#: src/modules/options/optw_highlighting.cpp:61
+msgid "Highlight every occurence of a word inside text"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.cpp:63
+msgid "Highlight only whole words using these word splitters:"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.cpp:68
+msgid "Highlight messages containing my nickname"
+msgstr "自分のニックネームが含まれるメッセージをハイライトする"
+
+#: src/modules/options/optw_highlighting.cpp:69
+msgid ""
+"<center>If this option is enabled, KVIrc will highlight any user message "
+"containing your current nickname</center>"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.cpp:70
+msgid "Flash the system taskbar entry on highlighted messages"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.cpp:71
+msgid ""
+"<center>If this option is enabled, KVIrc will (attempt to) flash the system "
+"taskbar entry when a highlighted message is printed and KVIrc is not the "
+"active window</center>"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.cpp:72
+msgid "Popup the notifier window on highlighted messages"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.cpp:73
+msgid ""
+"<center>If this option is enabled, KVIrc will popup a little notifier window "
+"in the low right corner of your desktop when a highlighted message is "
+"printed and KVIrc is not the active window</center>"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.cpp:90
+msgid "Alert Restrictions"
+msgstr "アラートの制限"
+
+#: src/modules/options/optw_highlighting.cpp:91
+msgid "Restrict alert"
+msgstr "アラートの制限"
+
+#: src/modules/options/optw_highlighting.cpp:92
+msgid ""
+"<center>If this option is enabled, KVIrc will alert in the window list only "
+"if a normal message is received in a channel.<br>Actions like joins, parts "
+"and mode changes will be ignored.<br> This is useful if you are in channels "
+"with a high rate of traffic and only want to be alerted for messages that "
+"are interesting to you.</center>"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.cpp:94
+msgid "Alert for highlighted words"
+msgstr "歯以来とした単語のアラート"
+
+#: src/modules/options/optw_highlighting.cpp:95
+msgid ""
+"<center>If this option is enabled, the window list will also alert for "
+"messages which contain a word from the highlighted words list above.</center>"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.cpp:97
+msgid "Alert for query messages"
+msgstr "問い合わせメッセージのアラート"
+
+#: src/modules/options/optw_highlighting.cpp:98
+msgid ""
+"<center>If this option is enabled, the window list will also alert for "
+"messages which are shown in queries.</center>"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.cpp:102
+msgid "Use custom alert level"
+msgstr "カスタムのアラート レベルを使う"
+
+#: src/modules/options/optw_highlighting.cpp:103
+msgid ""
+"<center>If this option is enabled, KVIrc will alert in the window list only "
+"if the specified alert level is reached.</center>"
+msgstr ""
+
+#: src/modules/options/optw_highlighting.cpp:105
+msgid "Minimum alert level:"
+msgstr "最低のアラート レベル:"
+
+#: src/modules/options/optw_highlighting.cpp:107
+msgid ""
+"<center>This option sets the minimum alert level for the window list.</"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.cpp:39
+msgid "Use tree window list"
+msgstr "ツリー上のウィンドウ リストを使う"
+
+#: src/modules/options/optw_windowlist.cpp:40
+msgid "Sort windows by name"
+msgstr "ウィンドウを名前で並び替える"
+
+#: src/modules/options/optw_windowlist.cpp:41
+msgid "Show window icons in window list"
+msgstr "ウィンドウ リストにウィンドウ アイコンを表示する"
+
+#: src/modules/options/optw_windowlist.cpp:42
+msgid "Show activity meter in window list"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.cpp:43
+msgid ""
+"<center>This option enables the usage of the window list activity meter. "
+"Each window entry will have a small indicator of the activity that is going "
+"on in that window. The indicator is a small square that changes colors, dark "
+"colors mean low activity, while bright colors signal high activity. KVIrc "
+"also uses some heuristics to determine whether the activity is somewhat "
+"\"human\" or it is generated by automated entities (such as bots or IRC "
+"servers). \"Human\" activity causes the indicator to be shaded red while "
+"automated activity causes the indicator to be shaded blue.</center>"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.cpp:50
+msgid "Show IRC context indicator in window list"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.cpp:51
+msgid "Enable window tooltips"
+msgstr "ウィンドウのツールチップを有効にする"
+
+#: src/modules/options/optw_windowlist.cpp:52
+msgid "Show header"
+msgstr "ヘッダーを表示する"
+
+#: src/modules/options/optw_windowlist.cpp:85
+#: src/modules/options/optw_windowlist.cpp:245
+#: src/modules/options/optw_ircview.cpp:51
+#: src/modules/options/optw_userlist.cpp:52
+msgid "Font:"
+msgstr "フォント:"
+
+#: src/modules/options/optw_windowlist.cpp:87
+#: src/modules/options/optw_windowlist.cpp:246
+msgid "Text/Alert Colors"
+msgstr "テキスト/アラートの色"
+
+#: src/modules/options/optw_windowlist.cpp:89
+#: src/modules/options/optw_windowlist.cpp:120
+#: src/modules/options/optw_windowlist.cpp:247
+#: src/modules/options/optw_userlist.cpp:55
+#: src/modules/options/optw_userlist.cpp:127
+msgid "Normal:"
+msgstr "通常:"
+
+#: src/modules/options/optw_windowlist.cpp:90
+#: src/modules/options/optw_windowlist.cpp:121
+#: src/modules/options/optw_userlist.cpp:56
+#: src/modules/options/optw_userlist.cpp:128
+msgid "Selected:"
+msgstr "選択中:"
+
+#: src/modules/options/optw_windowlist.cpp:91
+#: src/modules/options/optw_windowlist.cpp:249
+msgid "Alert Level 1:"
+msgstr "アラート レベル 1:"
+
+#: src/modules/options/optw_windowlist.cpp:92
+#: src/modules/options/optw_windowlist.cpp:250
+msgid "Alert Level 2:"
+msgstr "アラート レベル 2:"
+
+#: src/modules/options/optw_windowlist.cpp:93
+#: src/modules/options/optw_windowlist.cpp:251
+msgid "Alert Level 3:"
+msgstr "アラート レベル 3:"
+
+#: src/modules/options/optw_windowlist.cpp:94
+#: src/modules/options/optw_windowlist.cpp:252
+msgid "Alert Level 4:"
+msgstr "アラート レベル 4:"
+
+#: src/modules/options/optw_windowlist.cpp:95
+#: src/modules/options/optw_windowlist.cpp:253
+msgid "Alert Level 5:"
+msgstr "アラート レベル 5:"
+
+#: src/modules/options/optw_windowlist.cpp:97
+#: src/modules/options/optw_windowlist.cpp:254
+msgid "Progress bar color:"
+msgstr "プログレス バーの色"
+
+#: src/modules/options/optw_windowlist.cpp:119
+#: src/modules/options/optw_userlist.cpp:126
+msgid "Background Colors"
+msgstr "背景色"
+
+#: src/modules/options/optw_windowlist.cpp:123
+#: src/modules/options/optw_ircview.cpp:54
+#: src/modules/options/optw_userlist.cpp:131
+msgid "Background image:"
+msgstr "背景画像:"
+
+#: src/modules/options/optw_windowlist.cpp:223
+msgid "Minimum width:"
+msgstr "最小幅:"
+
+#: src/modules/options/optw_windowlist.cpp:224
+msgid "Maximum width:"
+msgstr "最大幅:"
+
+#: src/modules/options/optw_windowlist.cpp:225
+msgid ""
+"Mouse wheel changes the active window instead of scrolling the scrollbar"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.cpp:248
+msgid "Minimized:"
+msgstr "最小化:"
+
+#: src/modules/options/optw_windowlist.cpp:255
+msgid "Minimum width of buttons:"
+msgstr "ボタンの最小幅設定"
+
+#: src/modules/options/optw_windowlist.cpp:257
+msgid "Set maximum button width"
+msgstr "ボタンの最大幅設定"
+
+#: src/modules/options/optw_windowlist.cpp:258
+msgid "Maximum width of buttons:"
+msgstr "ボタンの最大幅:"
+
+#: src/modules/options/optw_windowlist.cpp:259
+msgid "Use flat buttons"
+msgstr "平坦なボタンを使う"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:42
+msgid "Use global application font"
+msgstr "全体的なアプリケーション フォントを使う"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:43
+msgid ""
+"This option will force a static font for every widget that has no specific "
+"font setting"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.cpp:44
+msgid "Show icons in popup menus"
+msgstr "ポップアップメニューでアイコンを表示する"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:45
+msgid "Global application font:"
+msgstr "全体的なアプリケーションフォント:"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:67
+msgid "Enable fake transparency"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.cpp:70
+msgid ""
+"<center>This option makes all KVIrc windows look transparent.<br>You must "
+"choose a blending background image to below or check the \"Use compositing "
+"for real transparency\" option.</center>"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.cpp:76
+msgid ""
+"<center>This option makes all KVIrc windows look transparent.<br>You must "
+"choose a blending background image to below or check the \"Use desktop "
+"background for transparency\" option.</center>"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.cpp:82
+msgid ""
+"<center>This option makes all KVIrc windows look like transparent.<br>You "
+"must choose a blending background image to below.</center>"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.cpp:87
+msgid "Child window opacity:"
+msgstr "子ウィンドウの透過度:"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:91
+msgid "Parent window opacity:"
+msgstr "親ウィンドウの透過度:"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:95
+msgid "Blend color:"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.cpp:100
+msgid "Use compositing for real transparency"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.cpp:102
+#: src/modules/options/optw_interfacelookglobal.cpp:118
+#: src/modules/options/optw_interfacelookglobal.cpp:125
+msgid "Transparency blend image:"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.cpp:116
+msgid "Use desktop background for transparency"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.cpp:160
+#: src/modules/options/optw_interfacelookglobal.cpp:180
+#: src/modules/options/optw_windowlist.h:79
+#: src/modules/options/optw_userlist.h:46
+msgid "Background"
+msgstr "背景"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:161
+#: src/modules/options/optw_interfacelookglobal.cpp:188
+msgid "Background Image"
+msgstr "背景画像"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:181
+msgid "Low-Contrast Foreground"
+msgstr "低コントラストの前景"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:182
+msgid "Mid-Contrast Foreground"
+msgstr "通常コントラストの前景"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:183
+msgid "Active High-Contrast Foreground (Primary)"
+msgstr "有効な高コントラストの前景 (第 1 候補)"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:184
+msgid "Active High-Contrast Foreground (Secondary)"
+msgstr "有効な高コントラストの前景 (第 2 候補)"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:185
+msgid "Inactive High-Contrast Foreground (Primary)"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.cpp:186
+msgid "Inactive High-Contrast Foreground (Secondary)"
+msgstr ""
+
+#: src/modules/options/optw_irc.cpp:49
+msgid "Minimize console after successful login"
+msgstr "ログイン成功後にコンソールを最小化する"
+
+#: src/modules/options/optw_irc.cpp:51
+msgid ""
+"<center>This option will cause KVIrc to minimize the console window after "
+"successfully logging into a server.</center>"
+msgstr ""
+
+#: src/modules/options/optw_irc.cpp:53
+msgid "Show network name in console window list entry"
+msgstr "コンソールウィンドウの一覧エントリーにネットワークの名前を表示する"
+
+#: src/modules/options/optw_irc.cpp:54
+msgid ""
+"<center>This option will cause KVIrc to show the network name as the console "
+"window list entry instead of the server name. This is nice to keep on unless "
+"your servers are not organized in networks or you often connect to two "
+"servers of the same network.</center>"
+msgstr ""
+
+#: src/modules/options/optw_irc.cpp:69
+msgid "Force immediate quit"
+msgstr ""
+
+#: src/modules/options/optw_irc.cpp:71
+msgid ""
+"<center>This option causes KVIrc to close the connection immediately after "
+"sending the QUIT message.<br>When this option is disabled, KVIrc will wait "
+"for the server to close the connection.<br>Note that if you use this, your "
+"QUIT message may be not displayed.</center>"
+msgstr ""
+
+#: src/modules/options/optw_irc.cpp:76
+msgid "Prepend gender info to realname"
+msgstr "本名の後に性別情報を追加する"
+
+#: src/modules/options/optw_irc.cpp:77
+msgid "Prepend avatar info to realname"
+msgstr "本名の後にアバター情報を追加する"
+
+#: src/modules/options/optw_irc.cpp:78
+msgid "Prepend smart nick color info to realname"
+msgstr ""
+
+#: src/modules/options/optw_away.cpp:39
+msgid "Enable default away message"
+msgstr "常に標準の退席メッセージを使う"
+
+#: src/modules/options/optw_away.cpp:41
+msgid "Default away message:"
+msgstr "標準の退席メッセージ:"
+
+#: src/modules/options/optw_away.cpp:43
+msgid "User input exits away mode"
+msgstr ""
+
+#: src/modules/options/optw_away.cpp:45
+msgid "Away Nickname"
+msgstr "退席時のニックネーム"
+
+#: src/modules/options/optw_away.cpp:46
+msgid "Change nickname on away"
+msgstr "退席時にニックネームを変える"
+
+#: src/modules/options/optw_away.cpp:49
+msgid "Use automatic nickname ([5 letters]AWAY)"
+msgstr "自動的なニックネームを使う ([5 文字]AWAY)"
+
+#: src/modules/options/optw_away.cpp:53
+#, c-format
+msgid "Custom nickname (%nick% means a current nick):"
+msgstr ""
+
+#: src/modules/options/optw_input.cpp:41
+msgid "Selection background color"
+msgstr "背景色の選択"
+
+#: src/modules/options/optw_input.cpp:42
+msgid "Selection foreground color"
+msgstr "前景色の選択"
+
+#: src/modules/options/optw_input.cpp:43
+msgid "Control char color"
+msgstr "制御文字の色"
+
+#: src/modules/options/optw_input.cpp:44
+msgid "Cursor color"
+msgstr "カーソルの色"
+
+#: src/modules/options/optw_input.cpp:143
+msgid "Warp cursor at the end of line when browsing history"
+msgstr ""
+
+#: src/modules/options/optw_input.cpp:144
+msgid "Enable the input history logging"
+msgstr ""
+
+#: src/modules/options/optw_input.cpp:145
+msgid "Hide input toolbuttons by default"
+msgstr ""
+
+#: src/modules/options/optw_input.cpp:146
+msgid "Commandline in user-friendly mode by default"
+msgstr ""
+
+#: src/modules/options/optw_input.cpp:147
+msgid "Expand tabulations in input using this amount of spaces:"
+msgstr ""
+
+#: src/modules/options/optw_input.cpp:149
+msgid "Nick completion"
+msgstr "ニックの補完"
+
+#: src/modules/options/optw_input.cpp:151
+msgid "Use bash-like nick completion"
+msgstr "bash のようなニックの補完を使う"
+
+#: src/modules/options/optw_input.cpp:152
+msgid "Use zsh-like nick completion"
+msgstr "zsh のようなニックの補完を使う"
+
+#: src/modules/options/optw_input.cpp:156
+msgid "Nick completion postfix string"
+msgstr ""
+
+#: src/modules/options/optw_input.cpp:157
+msgid "Use the completion postfix string for the first word only"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:103
+msgid "Network Details"
+msgstr "ネットワークの詳細"
+
+#: src/modules/options/optw_servers.cpp:117
+#: src/modules/options/optw_servers.cpp:518
+#: src/modules/options/optw_mediatypes.cpp:88
+msgid "Description:"
+msgstr "説明:"
+
+#: src/modules/options/optw_servers.cpp:123
+msgid "<center>Put here a brief description of the network.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:133
+#: src/modules/options/optw_servers.cpp:535
+msgid "Properties"
+msgstr "プロパティ"
+
+#: src/modules/options/optw_servers.cpp:146
+msgid ""
+"<center>This is the <b>username</b> that KVIrc will use to login to servers "
+"on this network.\n"
+"If this field is left empty (most common case), KVIrc will use the default "
+"username specified in the \"Identity\" options tab.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:157
+msgid ""
+"<center>If this network requires a password, put it in this field, otherwise "
+"leave it empty.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:169
+msgid ""
+"<center>You can specify a \"special\" <b>nickname</b> that will be used to "
+"log in to the servers on this network.<br>If this field is left empty (most "
+"common case), the default nickname (specified in the \"Identity\" settings) "
+"will be used.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:179
+msgid ""
+"<center>You can specify a \"special\" <b>real name</b> that will be used to "
+"login with the servers on this network.<br>If you leave this field empty "
+"(most common case), the default \"real name\" (specified in the \"Identity\" "
+"settings) will be used.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:184
+msgid "Server Encoding:"
+msgstr "サーバーのエンコーディング:"
+
+#: src/modules/options/optw_servers.cpp:189
+msgid ""
+"<center>This box allows you to choose the preferred encoding for the servers "
+"in this network. This encoding will be used for server specific needs, like "
+"referencing nicknames and channel names.If you choose \"Use System Encoding"
+"\" then the encoding will be set to the systemwide value that you choose in "
+"the \"Encoding\" page of the options dialog.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:196
+#: src/modules/options/optw_servers.cpp:736
+msgid "Text Encoding:"
+msgstr "テキストのエンコーディング"
+
+#: src/modules/options/optw_servers.cpp:201
+msgid ""
+"<center>This box allows you to choose the preferred encoding for the servers "
+"in this network. This encoding will be used as the default for text messages."
+"If you choose \"Use System Encoding\" then the encoding will be set to the "
+"systemwide value that you choose in the \"Encoding\" page of the options "
+"dialog.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:212
+#: src/modules/options/optw_servers.cpp:213
+msgid "Use System Encoding"
+msgstr "システムのエンコーディングを使う"
+
+#: src/modules/options/optw_servers.cpp:229
+msgid "Connect to this network at startup"
+msgstr "起動時にこのネットワークに接続する"
+
+#: src/modules/options/optw_servers.cpp:233
+msgid ""
+"<center>This option will cause KVIrc to automatically connect to this "
+"network at startup</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:252
+#: src/modules/options/optw_servers.cpp:809
+msgid "Channels to join automatically upon connect:"
+msgstr "接続したら自動的に参加するチャンネル:"
+
+#: src/modules/options/optw_servers.cpp:254
+msgid ""
+"<center>Here you can set a list of channels to be joined automatically after "
+"a connection to a server in this network has been established. To add a "
+"channel, type its name in the text input below and click \"<b>Add</b>\".</"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:260
+#: src/modules/options/optw_servers.cpp:815
+#: src/modules/options/optw_interfacefeatures.cpp:63
+msgid "Join Channels"
+msgstr "チャンネルに参加する"
+
+#: src/modules/options/optw_servers.cpp:270
+msgid ""
+"<center>The following commands will be executed after a connection to a "
+"server in this network has been established.<br><b>Important:</b> Enter "
+"commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> "
+"instead of <tt>/quote pass secret</tt>).<br>KVIrc will first send the USER "
+"command, then eventually PASS and NICK and then execute this command "
+"sequence.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:275
+#: src/modules/options/optw_servers.cpp:831
+msgid "On Connect"
+msgstr "接続時"
+
+#: src/modules/options/optw_servers.cpp:289
+msgid ""
+"<center>The following commands will be executed after a successful login to "
+"a server in this network.<br><b>Important:</b> Enter commands <b>without</b> "
+"a preceding slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote "
+"privatelog</tt>).<br>This is useful for automatically opening queries, "
+"setting variables, etc.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:293
+#: src/modules/options/optw_servers.cpp:849
+msgid "On Login"
+msgstr "ログイン時"
+
+#: src/modules/options/optw_servers.cpp:325
+msgid ""
+"<center>This is a list of NickServ identification rules. KVIrc will use them "
+"to model its automatic interaction with NickServ on this network.<br>Please "
+"be aware that this feature can cause your NickServ passwords to be stolen if "
+"used improperly. Make sure that you fully understand the NickServ "
+"authentication protocol.<br>In other words, be sure to know what you're "
+"doing.<br>Also note that the password that you provide is stored as <b>PLAIN "
+"TEXT</b>.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:364
+#: src/modules/options/optw_nickserv.h:41
+msgid "NickServ"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:509
+msgid "Server Details"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:524
+msgid ""
+"<center>This is a brief description of this server. This field has no "
+"restrictions but many server lists use it to describe the server's physical "
+"location</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:548
+msgid ""
+"<center>This is the <b>username</b> that KVIrc will use to login to this "
+"server.\n"
+"If this field is left empty (most common case), KVIrc will first look if an "
+"username is specified for the network that this server belongs to, and if "
+"that is empty then KVIrc will use the default username specified in the "
+"\"Identity\" options tab.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:560
+msgid ""
+"<center>If this server requires a password, put it in this field, otherwise "
+"leave it empty.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:571
+msgid ""
+"<center>You can specify a \"special\" <b>nickname</b> that will be used to "
+"log in to this server.<br>If this field is left empty (most common case), "
+"KVIrc will first look if a nickname is specified for the network that this "
+"server belongs to, and if that is empty then the default nickname (specified "
+"in the \"Identity\" settings) will be used.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:582
+msgid ""
+"<center>You can specify a \"special\" <b>real name</b> that will be used to "
+"login with this server.<br>If you leave this field empty (most common case), "
+"KVIrc will first look if a real name is specified for the network that this "
+"server belongs to, and if that is empty the default \"real name\" (specified "
+"in the \"Identity\" settings) will be used.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:591
+msgid "Use default user mode"
+msgstr "標準のユーザー モードを使う"
+
+#: src/modules/options/optw_servers.cpp:592
+msgid ""
+"<center>If this is enabled, the global initial <b>user mode</b> (configured "
+"from the identity dialog) will be used. If disabled, you can configure an "
+"initial user mode for this server"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:616
+#: src/modules/options/optw_interfacefeatures.cpp:61
+#: src/modules/options/optw_identity.h:137
+msgid "Identity"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:634
+msgid ""
+"<center>This is the default <b>port</b> that this server will be contacted "
+"on.<br>Usually <b>6667</b> is OK.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:643
+msgid ""
+"<center>This is the <b>IP address</b> of this server, it is here for caching "
+"purposes.<br>If you leave this field empty, KVIrc will fill it in the first "
+"time it connects to the server. If you enable the \"cache IP address\" "
+"option below, KVIrc will use it as a \"cached result\" and avoid looking it "
+"up again.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:667
+msgid "Cache IP address"
+msgstr "IP アドレスのキャッシュ"
+
+#: src/modules/options/optw_servers.cpp:670
+msgid ""
+"<center>This check will enable <b>IP address caching</b> for this server:"
+"<br>DNS lookups can be time-consuming and might be blocking on some "
+"platforms; this option will cause KVIrc to look up the server hostname only "
+"once.<br><br> Advanced: you can also use this option to force a certain "
+"server name to resolve to a fixed ip address when either the dns for that "
+"server is temporairly unreachable or you want to avoid the round-robin "
+"lookups.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:681
+msgid "Connect to this server at startup"
+msgstr "起動時にこのサーバーに接続する"
+
+#: src/modules/options/optw_servers.cpp:686
+msgid ""
+"<center>This option will cause KVIrc to connect to the IRC server when it is "
+"started.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:700
+msgid ""
+"<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will "
+"attempt to use the IPv6 protocol (thus your OS <b>must</b> have a working "
+"IPv6 stack and you <b>must</b> have an IPv6 connection).</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:706
+msgid "Use SSL protocol"
+msgstr "SSL プロトコルを使う"
+
+#: src/modules/options/optw_servers.cpp:709
+msgid ""
+"<center>This check will cause the connection to use the <b>Secure Socket "
+"Layer</b> encryption support. Obviously, this server must have support for "
+"this, too. :)</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:722
+msgid "Protocol Encoding:"
+msgstr "プロトコルのエンコーディング:"
+
+#: src/modules/options/optw_servers.cpp:727
+msgid ""
+"<center>This box allows you to choose the preferred encoding for this "
+"server. This encoding will be used for server specific needs, like "
+"referencing nicknames and channel names.If you choose \"Use Network Encoding"
+"\" then the encoding will be inherited from the network that this server "
+"belongs to.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:741
+msgid ""
+"<center>This box allows you to choose the preferred encoding for this "
+"server. This encoding will be used as the default for text messages.If you "
+"choose \"Use Network Encoding\" then the encoding will be inherited from the "
+"network that this server belongs to.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:752
+#: src/modules/options/optw_servers.cpp:753
+msgid "Use Network Encoding"
+msgstr "ネットワークのエンコーディングを使う"
+
+#: src/modules/options/optw_servers.cpp:770
+msgid "Proxy server:"
+msgstr "プロキシー サーバー:"
+
+#: src/modules/options/optw_servers.cpp:774
+msgid ""
+"<center>This is the <b>proxy</b> that KVIrc will use to connect to this "
+"server.\n"
+"If this field is set in \"Default\" KVirc will use global proxy settings, if "
+"it is set in \"Direct connection\" KVirc will connect to this server without "
+"proxy. You can define new proxy server in global options' \"Proxy servers\" "
+"menu.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:778
+msgid "Default"
+msgstr "標準"
+
+#: src/modules/options/optw_servers.cpp:779
+msgid "Direct connection"
+msgstr "直接接続"
+
+#: src/modules/options/optw_servers.cpp:799
+#: src/modules/options/optw_connection.h:32
+msgid "Connection"
+msgstr "接続"
+
+#: src/modules/options/optw_servers.cpp:810
+msgid ""
+"<center>Here you can set a list of channels to be joined automatically after "
+"a connection to this server has been established. To add a channel, type its "
+"name in the text input below and click \"<b>Add</b>\".</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:826
+msgid ""
+"<center>The following commands will be executed after a connection has been "
+"established.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
+"slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</"
+"tt>).<br>KVIrc will first send the USER command, then eventually PASS and "
+"NICK and then execute this command sequence.<br>This is particularly useful "
+"for IRC bouncers that require login commands.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:845
+msgid ""
+"<center>The following commands will be executed after a successful login to "
+"this server.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
+"slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote privatelog</tt>)."
+"<br>This is useful for automatically opening queries, setting variables, etc."
+"</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:861
+msgid "Extended Capabilities"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:867
+msgid "Query extended capabilities on connect"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:870
+msgid ""
+"<center>This check will cause the connection to use the <b>Extended "
+"Capability</b> support. Obviously, this server must have support for this, "
+"too. Disable this for irc bouncers.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:876
+msgid "Switch to SSL/TLS by using the STARTTLS extension"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:881
+msgid ""
+"<center>This check enables the use of the <b>Transport Layer Security</b> "
+"protocol. If you enable the proper global option in the Connection/SSL tab, "
+"the TLS protocol will be used for this server if available.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:889
+msgid "SASL Authentication"
+msgstr "SASL 認証"
+
+#: src/modules/options/optw_servers.cpp:894
+msgid "Authenticate via SASL extension"
+msgstr "SASL 拡張での認証"
+
+#: src/modules/options/optw_servers.cpp:896
+msgid ""
+"<center>This check enables the use of the <b>SASL</b> authentication "
+"procotol If you enable the proper global option in the Connection/SSL tab "
+"and fill the Sasl Nickname and Sasl Password fields in this page, the SASL "
+"protocol will be used for this server if available.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:900
+msgid "Sasl Nickname:"
+msgstr "SASL ニックネーム:"
+
+#: src/modules/options/optw_servers.cpp:904
+msgid ""
+"<center>If you want to enable SASL authentication, insert your nickname here."
+"</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:907
+msgid "Sasl Password:"
+msgstr "SASL パスワード:"
+
+#: src/modules/options/optw_servers.cpp:911
+msgid ""
+"<center>If you want to enable SASL authentication, insert your password here."
+"</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:920
+msgid "Link filter:"
+msgstr "リンク フィルター:"
+
+#: src/modules/options/optw_servers.cpp:953
+msgid ""
+"<center>This field specifies the name of a module that exports a link filter "
+"for this type of server.<br>For plain IRC connections, you don't need any "
+"link filters; this is used for incompatible protocols.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:958
+msgid "Id:"
+msgstr "ID:"
+
+#: src/modules/options/optw_servers.cpp:965
+msgid ""
+"<center>This field allows you to specify a really unique id for this server. "
+"You will then be able to use /server -x &lt;this_id&gt; to make the "
+"connection. This is especially useful when you have multiple server entries "
+"with the same hostname and port in different networks (bouncers?)</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:972
+#: src/modules/options/optw_channel.h:64
+#: src/modules/options/optw_dcc.h:58
+#: src/modules/options/optw_dcc.h:102
+#: src/modules/options/optw_irc.h:57
+#: src/modules/options/optw_identity.h:202
+#: src/modules/options/optw_connection.h:45
+msgid "Advanced"
+msgstr "高度な設定"
+
+#: src/modules/options/optw_servers.cpp:1240
+msgid "Server"
+msgstr "サーバー"
+
+#: src/modules/options/optw_servers.cpp:1241
+#: src/modules/options/optw_mediatypes.cpp:79
+msgid "Description"
+msgstr "説明"
+
+#: src/modules/options/optw_servers.cpp:1260
+msgid ""
+"<center>This is the list of available IRC servers.<br>Right-click on the "
+"list to add or remove servers and perform other actions.<br>Double-click on "
+"a item for advanced options.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1274
+#: src/modules/options/optw_servers.cpp:1685
+#: src/modules/options/optw_servers.cpp:1811
+msgid "New Network"
+msgstr "新しいネットワーク情報"
+
+#: src/modules/options/optw_servers.cpp:1280
+msgid "New Server"
+msgstr "新しいサーバー情報"
+
+#: src/modules/options/optw_servers.cpp:1287
+msgid "Remove Network/Server"
+msgstr "ネットワーク/サーバー情報の削除"
+
+#: src/modules/options/optw_servers.cpp:1297
+msgid "Copy Server"
+msgstr "サーバー情報のコピー"
+
+#: src/modules/options/optw_servers.cpp:1304
+msgid "Paste Server"
+msgstr "サーバー情報の貼り付け"
+
+#: src/modules/options/optw_servers.cpp:1315
+#: src/modules/options/optw_servers.cpp:1701
+msgid "Import List"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1320
+msgid "Active Configuration"
+msgstr "選択中の設定"
+
+#: src/modules/options/optw_servers.cpp:1321
+#: src/modules/options/optw_servers.cpp:1588
+msgid "Server:"
+msgstr "サーバー:"
+
+#: src/modules/options/optw_servers.cpp:1324
+msgid ""
+"<center>This is the name of the currently selected server or network</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1326
+msgid "Advanced..."
+msgstr "高度な設定..."
+
+#: src/modules/options/optw_servers.cpp:1328
+msgid "<center>Click here to edit advanced options for this entry</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1340
+msgid ""
+"<center>This button shows a list of recently used servers. It allows you to "
+"quickly find them in the list.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1346
+msgid "Connect &Now"
+msgstr "今すぐ接続する(&N)"
+
+#: src/modules/options/optw_servers.cpp:1378
+msgid ""
+"<center>Hit this button to connect to the currently selected server.</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1383
+msgid "Show this dialog at startup"
+msgstr "起動時にこのダイアログを表示する"
+
+#: src/modules/options/optw_servers.cpp:1386
+msgid ""
+"<center>If this option is enabled, the Servers dialog will appear every time "
+"you start KVIrc</center>"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1591
+msgid "Network:"
+msgstr "ネットワーク:"
+
+#: src/modules/options/optw_servers.cpp:1602
+msgid "No selection"
+msgstr "選択なし"
+
+#: src/modules/options/optw_servers.cpp:1619
+msgid "UnknownNet"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1686
+msgid "Remove Network"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1689
+msgid "&New Server"
+msgstr "新しいサーバー情報(&N)"
+
+#: src/modules/options/optw_servers.cpp:1690
+msgid "Re&move Server"
+msgstr "サーバー情報の削除(&M)"
+
+#: src/modules/options/optw_servers.cpp:1692
+msgid "&Copy Server"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1694
+msgid "&Paste Server"
+msgstr "サーバー情報の貼り付け(&P)"
+
+#: src/modules/options/optw_servers.cpp:1699
+msgid "Clear List"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1738
+msgid ""
+"Oops... something weird happened:<br>Can't find any module capable of "
+"importing servers."
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1755
+msgid ""
+"Oops... something weird happened:<br>Can't find the module that was capable "
+"of this import action. :("
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:1832
+msgid "irc.unknown.net"
+msgstr ""
+
+#: src/modules/options/optw_interfacefeatures.cpp:44
+msgid "Minimize on startup"
+msgstr "起動時に最小化する"
+
+#: src/modules/options/optw_interfacefeatures.cpp:45
+msgid "Confirm quit with active connections"
+msgstr "終了時に有効な接続を確認する"
+
+#: src/modules/options/optw_interfacefeatures.cpp:46
+msgid "Remember window properties"
+msgstr "ウィンドウのプロパティを覚える"
+
+#: src/modules/options/optw_interfacefeatures.cpp:51
+msgid "Disable splash screen"
+msgstr "スプラッシュ スクリーンを無効にする"
+
+#: src/modules/options/optw_interfacefeatures.cpp:55
+msgid "Enable visual effects"
+msgstr "ビジュアル エフェクトを有効にする"
+
+#: src/modules/options/optw_interfacefeatures.cpp:56
+msgid "Hide Channel window tool buttons by default"
+msgstr "標準でチャンネル ウィンドウのツール ボタンを隠す"
+
+#: src/modules/options/optw_interfacefeatures.cpp:58
+msgid "Open Dialog Window For"
+msgstr "ダイアログ ウィンドウを開くとき"
+
+#: src/modules/options/optw_interfacefeatures.cpp:59
+msgid "Preferences"
+msgstr "プリファレンス"
+
+#: src/modules/options/optw_interfacefeatures.cpp:60
+msgid "Registered Users"
+msgstr "登録済みユーザー"
+
+#: src/modules/options/optw_interfacefeatures.cpp:62
+#: src/modules/options/optw_servers.h:165
+msgid "Servers"
+msgstr "サーバー"
+
+#: src/modules/options/optw_ircoutput.cpp:43
+#: src/modules/options/optw_connection.cpp:199
+msgid "Output verbosity"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.cpp:47
+msgid "Mute"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.cpp:48
+msgid "Quiet"
+msgstr "静かに"
+
+#: src/modules/options/optw_ircoutput.cpp:49
+msgid "Normal"
+msgstr "通常"
+
+#: src/modules/options/optw_ircoutput.cpp:50
+msgid "Verbose"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.cpp:51
+msgid "Paranoic"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.cpp:58
+msgid "Datetime format"
+msgstr "日時の形式"
+
+#: src/modules/options/optw_ircoutput.cpp:62
+msgid "Classic format"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.cpp:63
+msgid "ISO 8601 format"
+msgstr "ISO 8601 形式"
+
+#: src/modules/options/optw_ircoutput.cpp:64
+msgid "System locale format"
+msgstr "システム ロケールの形式"
+
+#: src/modules/options/optw_ircoutput.cpp:69
+msgid "Show in active window"
+msgstr "アクティブなウィンドウに表示する"
+
+#: src/modules/options/optw_ircoutput.cpp:70
+msgid "External messages"
+msgstr "外部メッセージ"
+
+#: src/modules/options/optw_ircoutput.cpp:71
+msgid "External CTCP replies"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.cpp:72
+msgid "Whois replies"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.cpp:73
+msgid "ChanServ and NickServ notices"
+msgstr "ChanServ と NickServ の通知"
+
+#: src/modules/options/optw_ircoutput.cpp:74
+msgid "Invite messages"
+msgstr "招待メッセージ"
+
+#: src/modules/options/optw_ircoutput.cpp:75
+msgid "Server replies"
+msgstr "サーバーの応答"
+
+#: src/modules/options/optw_ircoutput.cpp:76
+msgid "Server notices"
+msgstr "サーバーの通知"
+
+#: src/modules/options/optw_ircoutput.cpp:77
+msgid "Broadcast and WALLOPS messages"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.cpp:80
+msgid "Show extended server information"
+msgstr "拡張サーバー情報を表示する"
+
+#: src/modules/options/optw_ircoutput.cpp:81
+msgid "Show server pings"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.cpp:82
+msgid "Show own parts in the console"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.cpp:83
+msgid "Show compact mode changes"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:42
+msgid "Open Query For"
+msgstr "問い合わせを開いたとき"
+
+#: src/modules/options/optw_query.cpp:43
+#: src/modules/options/optw_antispam.cpp:40
+msgid "Private messages"
+msgstr "プライベート メッセージ"
+
+#: src/modules/options/optw_query.cpp:45
+msgid ""
+"<center>This option enables query window creation when a private message "
+"(PRIVMSG) is received.<br>If you disable this, private messages will be "
+"shown in the active window or a common channel.</center>"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:50
+#: src/modules/options/optw_antispam.cpp:42
+msgid "Private notices"
+msgstr "プライベート通知"
+
+#: src/modules/options/optw_query.cpp:52
+msgid ""
+"<center>This option enables query window creation when a private notice "
+"(NOTICE) is received.<br>If you disable this, private notices will be shown "
+"in the active window or a common channel.</center>"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:58
+msgid "Always open queries as minimized"
+msgstr "常に最小化で問い合わせを開く"
+
+#: src/modules/options/optw_query.cpp:61
+msgid ""
+"<center>This option causes newly created query windows to be immediately "
+"minimized.<br>Enable this if you don't like queries popping up while you're "
+"typing something in a channel. :D</center>"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:67
+msgid "Enable target user tracking"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:69
+msgid ""
+"<center>This option will enable target user tracking.<br>Some actions of the "
+"target user (e.g. joins and parts) will be displayed in the window.<br></"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:74
+msgid "Flash system taskbar on new query message"
+msgstr "新しい問い合わせメッセージの際にシステム タスクバーを点滅させる"
+
+#: src/modules/options/optw_query.cpp:76
+msgid ""
+"<center>This option causes the system taskbar entry for KVIrc to flash when "
+"a new query message is received and the KVIrc window is not the active.</"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:80
+msgid "Popup notifier on new query message"
+msgstr "新しい問い合わせメッセージの際に通知をポップアップする"
+
+#: src/modules/options/optw_query.cpp:82
+#: src/modules/options/optw_dcc.cpp:332
+msgid ""
+"<center>This option causes a small notifier window to pop up in the low "
+"right corner of the screen when a new message is received and the KVIrc "
+"window is not active.</center>"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:85
+msgid "Show information about query target at the top of the query"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:87
+msgid ""
+"<center>This option enables query window information label. It can show you "
+"known information about query target at the top of the window.<br>Uncheck if "
+"you think,that it wastes your query space/</center>"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:92
+msgid "Paste last query log"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:97
+#: src/modules/options/optw_channel.cpp:135
+msgid "Paste up to:"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:98
+#: src/modules/options/optw_ircview.cpp:155
+#: src/modules/options/optw_channel.cpp:136
+msgid " lines"
+msgstr " 行"
+
+#: src/modules/options/optw_query.cpp:99
+#: src/modules/options/optw_channel.cpp:137
+msgid ""
+"<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_query.cpp:101
+#: src/modules/options/optw_channel.cpp:139
+msgid "Interval:"
+msgstr "間隔:"
+
+#: src/modules/options/optw_query.cpp:102
+#: src/modules/options/optw_channel.cpp:140
+msgid " days"
+msgstr " 日"
+
+#: src/modules/options/optw_query.cpp:103
+#: src/modules/options/optw_channel.cpp:141
+msgid ""
+"<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:41
+msgid "On Disconnect"
+msgstr "切断時"
+
+#: src/modules/options/optw_connection.cpp:43
+#: src/modules/options/optw_connection.cpp:51
+msgid "Keep channels open"
+msgstr "チャンネルを開いたままにする"
+
+#: src/modules/options/optw_connection.cpp:44
+msgid ""
+"<center>This option will cause KVIrc to keep channels open after disconnect."
+"</center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:46
+#: src/modules/options/optw_connection.cpp:54
+msgid "Keep queries open"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:47
+msgid ""
+"<center>This option will cause KVIrc to keep queries open after disconnect.</"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:49
+msgid "On Unexpected Disconnect"
+msgstr "期待しない切断時"
+
+#: src/modules/options/optw_connection.cpp:52
+msgid ""
+"<center>This option will cause KVIrc to keep channels open after an "
+"unexpected disconnect.</center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:55
+msgid ""
+"<center>This option will cause KVIrc to keep queries open after an "
+"unexpected disconnect.</center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:57
+msgid "Rejoin channels after reconnect"
+msgstr "再接続後にチャンネルに再度参加する"
+
+#: src/modules/options/optw_connection.cpp:58
+msgid ""
+"<center>This option will cause KVIrc to rejoin channels after a successful "
+"reconnect attempt.</center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:60
+msgid "Reopen queries after reconnect"
+msgstr "再接続後に問い合わせを再度開く"
+
+#: src/modules/options/optw_connection.cpp:61
+msgid ""
+"<center>This option will cause KVIrc to reopen query windows after a "
+"successful reconnect attempt.</center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:64
+msgid "Automatically reconnect"
+msgstr "自動的に再接続する"
+
+#: src/modules/options/optw_connection.cpp:65
+msgid ""
+"<center>This option will enable auto-reconnecting after an unexpected "
+"disconnect. An unexpected disconnect is the <b>termination</b> of a <b>fully "
+"connected IRC session</b> that was <b>not requested by the user</b> by the "
+"means of the QUIT message.<p><b>Warning:</b> If you use /RAW to send a QUIT "
+"message to the server, this option will not behave correctly, since does not "
+"detect the outgoing QUIT message and will attempt to reconnect after the "
+"server has closed the connection. For this reason, always use the /QUIT "
+"command to close your connections. This option may also behave incorrectly "
+"with bouncers that support detaching, in this case a solution could be to "
+"prepare an alias that sends the bouncer \"detach\" command immediately "
+"before the \"quit\" command.<br><tt>alias(bncdetach){ raw bouncer detach; "
+"quit; }</tt></p></center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:77
+msgid "Maximum attempts (0: unlimited):"
+msgstr "最大試行数 (0: 無制限):"
+
+#: src/modules/options/optw_connection.cpp:82
+msgid "Delay between attempts:"
+msgstr "試行までの遅延:"
+
+#: src/modules/options/optw_connection.cpp:87
+msgid ""
+"<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:89
+msgid "Use the SASL authentication protocol if available"
+msgstr "利用できるなら SASL 認証を使う"
+
+#: src/modules/options/optw_connection.cpp:90
+msgid ""
+"<center>When available and enabled of the specific server, KVIrc will try to "
+"authenticate the user using the SASL procotol</center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:108
+msgid "Certificate"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:110
+msgid "Use SSL certificate (PEM format only)"
+msgstr "SSL 証明書を使う (PEM 形式のみ)"
+
+#: src/modules/options/optw_connection.cpp:112
+msgid "Certificate location:"
+msgstr "証明書の場所:"
+
+#: src/modules/options/optw_connection.cpp:115
+msgid "Certificate password:"
+msgstr "証明書のパスワード:"
+
+#: src/modules/options/optw_connection.cpp:119
+msgid "Private Key"
+msgstr "秘密鍵"
+
+#: src/modules/options/optw_connection.cpp:120
+msgid "Use SSL private key"
+msgstr "SSL 秘密鍵を使う"
+
+#: src/modules/options/optw_connection.cpp:122
+msgid "Private key location:"
+msgstr "秘密鍵の場所:"
+
+#: src/modules/options/optw_connection.cpp:125
+msgid "Private key password:"
+msgstr "秘密鍵のパスワード:"
+
+#: src/modules/options/optw_connection.cpp:129
+msgid "Use the STARTTLS security protocol if available"
+msgstr "利用できるなら STARTTLS セキュリティ プロトコルを使う"
+
+#: src/modules/options/optw_connection.cpp:130
+msgid ""
+"<center>This option will cause KVIrc to try to reconnect to the server using "
+"an encrypted connection</center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:135
+msgid "This executable has no SSL support."
+msgstr "この実行ファイルは SSL をサポートしていません。"
+
+#: src/modules/options/optw_connection.cpp:151
+msgid "Timeout Values"
+msgstr "タイムアウト値"
+
+#: src/modules/options/optw_connection.cpp:152
+msgid "Connect timeout:"
+msgstr "接続のタイムアウト:"
+
+#: src/modules/options/optw_connection.cpp:154
+msgid "Outgoing data queue flush timeout:"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:156
+msgid "Limit outgoing traffic"
+msgstr "出力トラフィックの制限"
+
+#: src/modules/options/optw_connection.cpp:157
+msgid "Limit to 1 message every:"
+msgstr "1 メッセージ毎の制限:"
+
+#: src/modules/options/optw_connection.cpp:159
+msgid " usec"
+msgstr " マイクロ秒"
+
+#: src/modules/options/optw_connection.cpp:160
+msgid ""
+"<center>Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</"
+"b></center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:163
+msgid "Network Interfaces"
+msgstr "ネットワーク インターフェース"
+
+#: src/modules/options/optw_connection.cpp:165
+msgid "Bind IPv4 connections to:"
+msgstr "IPv4 接続で割り当てる:"
+
+#: src/modules/options/optw_connection.cpp:169
+msgid "Bind IPv6 connections to:"
+msgstr "IPv6 接続で割り当てる:"
+
+#: src/modules/options/optw_connection.cpp:174
+msgid "Pick Random IP Address for Round-Robin Servers"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:175
+msgid ""
+"<center>This option will cause the KVIrc networking stack to pick up a "
+"random entry when multiple IP address are retrieved for a server dns lookup. "
+"This is harmless and can fix some problems with caching dns servers that do "
+"not properly rotate the records as the authoritative ones would do. On the "
+"other hand, you might want to disable it if you want to rely on the dns "
+"server to provide the best choice.</center>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:196
+msgid "Enable ident service (bad practice on UNIX!)"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:202
+msgid "Output identd messages to:"
+msgstr "identd メッセージの出力先:"
+
+#: src/modules/options/optw_connection.cpp:204
+msgid "Active window"
+msgstr "アクティブ ウィンドウ"
+
+#: src/modules/options/optw_connection.cpp:205
+msgid "Console"
+msgstr "コンソール"
+
+#: src/modules/options/optw_connection.cpp:206
+msgid "Do not show any identd messages"
+msgstr "いずれの identd メッセージも表示しない"
+
+#: src/modules/options/optw_connection.cpp:223
+msgid "Enable ident service only while connecting to server"
+msgstr "サーバーに接続しているときのみ ident サービスを有効にする"
+
+#: src/modules/options/optw_connection.cpp:226
+msgid "Ident username:"
+msgstr "識別ユーザー名"
+
+#: src/modules/options/optw_connection.cpp:230
+msgid "Service port:"
+msgstr "サーバー ポート:"
+
+#: src/modules/options/optw_connection.cpp:235
+msgid "IPv6 Settings"
+msgstr "IPv6 設定"
+
+#: src/modules/options/optw_connection.cpp:236
+msgid "Enable service for IPv6"
+msgstr "IPv6 のサービスを有効にする"
+
+#: src/modules/options/optw_connection.cpp:245
+msgid "IP stack treats IPv4 as part of IPv6 namespace"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:252
+msgid ""
+"<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
+"that implements only a limited subset of the Identification Protocol "
+"specifications. If it is possible, install a real ident daemon.</p>"
+msgstr ""
+
+#: src/modules/options/optw_connection.cpp:257
+msgid ""
+"<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
+"that implements only a limited subset of the Identification Protocol "
+"specifications.<br>On UNIX, you may also need root privileges to bind to the "
+"auth port (113).<br>It is <b>highly recommended</b> that a <b>real</b> "
+"system-wide ident daemon be used instead, or none at all if ident is not "
+"required.</p>"
+msgstr ""
+
+#: src/modules/options/optw_ircview.cpp:52
+msgid "Background color:"
+msgstr "背景色"
+
+#: src/modules/options/optw_ircview.cpp:152
+msgid "Enable URL highlighting"
+msgstr "URL のハイライトを有効にする"
+
+#: src/modules/options/optw_ircview.cpp:153
+msgid "Use line wrap margin"
+msgstr "禁則マージンを使う"
+
+#: src/modules/options/optw_ircview.cpp:154
+msgid "Maximum buffer size:"
+msgstr "最大バッファの大きさ:"
+
+#: src/modules/options/optw_ircview.cpp:156
+msgid "Link tooltip show delay:"
+msgstr ""
+
+#: src/modules/options/optw_ircview.cpp:158
+msgid "Link tooltip hide delay:"
+msgstr ""
+
+#: src/modules/options/optw_ircview.cpp:160
+msgid "Enable animated smiles"
+msgstr "動く絵文字を有効にする"
+
+#: src/modules/options/optw_ircview.cpp:178
+msgid "Track last read text line"
+msgstr ""
+
+#: src/modules/options/optw_ircview.cpp:179
+msgid "Marker color:"
+msgstr "マーカーの色:"
+
+#: src/modules/options/optw_ircview.cpp:181
+msgid "Marker size:"
+msgstr "マーカーの大きさ:"
+
+#: src/modules/options/optw_ircview.cpp:182
+msgid " pixels"
+msgstr " ピクセル"
+
+#: src/modules/options/optw_ircview.cpp:184
+msgid "Marker style:"
+msgstr "マーカーのスタイル:"
+
+#: src/modules/options/optw_ircview.cpp:190
+msgid "DotLine"
+msgstr ""
+
+#: src/modules/options/optw_ircview.cpp:191
+msgid "DashLine"
+msgstr ""
+
+#: src/modules/options/optw_ircview.cpp:192
+msgid "SolidLine"
+msgstr ""
+
+#: src/modules/options/optw_ircview.cpp:193
+msgid "DashDotLine"
+msgstr ""
+
+#: src/modules/options/optw_ircview.cpp:194
+msgid "DashDotDotLine"
+msgstr ""
+
+#: src/modules/options/libkvioptions.cpp:201
+msgid "No such options page class name %Q"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:51
+msgid "Use workaround for firewall"
+msgstr "ファイアウォールの会費を使う"
+
+#: src/modules/options/optw_dcc.cpp:53
+msgid ""
+"<center>Enable this option if you can't accept incoming connections."
+"<br>KVIrc will try to use different methods to send and receive files."
+"<br>Please note that these methods may NOT work when communicating with a "
+"non-KVIrc client.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:72
+msgid "Network Properties"
+msgstr "ネットワークのプロパティ"
+
+#: src/modules/options/optw_dcc.cpp:74
+msgid "Use user-defined address or network interface"
+msgstr "ユーザー定義のアドレスかネットワーク インターフェースを使う"
+
+#: src/modules/options/optw_dcc.cpp:77
+msgid ""
+"<center>Enable this option if you are on a multihost machine and want to "
+"force one of the available IP addresses to be used for outgoing DCCs."
+"<br>This is especially useful when you use IPv6 and IPv4 addresses.<br>You "
+"can force KVIrc to always choose the IPv4 interface.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:81
+msgid "Listen on address/interface:"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:83
+msgid ""
+"<center>This is the IP address or name of the interface to use by default "
+"for outgoing DCC transfers.<br>On UNIX systems that support it, you can also "
+"specify IPv4 interface names (such as <b>ppp0</b>).<br>If you set it to "
+"<b>0.0.0.0</b>, KVIrc will try to use the first available IPv4 interface</"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:89
+msgid "Use user-defined port range"
+msgstr "ユーザー定義のポート帯を使う"
+
+#: src/modules/options/optw_dcc.cpp:91
+msgid ""
+"<center>Enable this option if you want specify a local port range for DCC.</"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:95
+msgid "Lowest port:"
+msgstr "最低ポート:"
+
+#: src/modules/options/optw_dcc.cpp:98
+msgid "Highest port:"
+msgstr "最高ポート:"
+
+#: src/modules/options/optw_dcc.cpp:101
+msgid "Send a fixed address in requests"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:103
+msgid ""
+"<center>Enable this option if you want to always send a fake IP address in "
+"your DCC requests.<br>This might be useful if you're behind a router with a "
+"static address that does network address translation (NAT) and forwards all "
+"or a range of ports.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:106
+msgid "Send address/interface:"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:109
+msgid ""
+"<center>This is the fixed address that will be sent with all DCC requests if "
+"you enable the option above.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:112
+msgid "Guess address from IRC server if unroutable"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:115
+msgid ""
+"<center>You can enable this option if you are behind a router that forwards "
+"all or a range of ports.<br>KVIrc will try to guess the IP address to use "
+"for DCC by looking up the local hostname as seen by the IRC server you're "
+"connected to.<br>This method is an exclusive alternative to the \"fixed "
+"address\" above.<br>It might guess the correct address automatically if "
+"certain conditions are met (e.g. the IRC server does not mask hostnames).</"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:120
+msgid "Use \"broken bouncer hack\" to detect address"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:121
+msgid ""
+"<center>When you're behind a dialup router and also tunneling through a "
+"psyBNC bouncer, you can use a bug in the bouncer to force KVIrc to bind the "
+"DCC connections to the dialup router's address.<br>It's an ugly hack - use "
+"it only if nothing else works.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:127
+msgid "Notify failed DCC handshakes to the remote end"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:128
+msgid ""
+"<center>If you enable this option, when a DCC request from a remote user "
+"can't be satisfied KVIrc will notify him by a CTCP ERRMSG. This is a nice "
+"feature so it is a good idea to leave it on unless for some reason you have "
+"deactivated the antiflood system: in this case turning off this option might "
+"help if you often get attacked by CTCP floods.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:134
+msgid "Maximum number of DCC sessions"
+msgstr "DCC セッションの最大数"
+
+#: src/modules/options/optw_dcc.cpp:135
+msgid ""
+"<center>This is the maximum number of concurrent DCC sessions and it "
+"includes all the DCC types (send,chat,recv...). KVIrc will refuse the "
+"requests when this limit is reached.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:139
+msgid "DCC socket timeout:"
+msgstr "DCC ソケットのタイムアウト:"
+
+#: src/modules/options/optw_dcc.cpp:141
+msgid ""
+"<center>This is the amount of time that KVIrc will wait for a response "
+"before assuming that a DCC has failed because the remote client was unable "
+"to connect to our listening socket.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:174
+msgid "On Incoming File"
+msgstr "ファイル受信時"
+
+#: src/modules/options/optw_dcc.cpp:175
+#: src/modules/options/optw_dcc.cpp:314
+#: src/modules/options/optw_dcc.cpp:350
+msgid "Automatically accept"
+msgstr "自動的に許可する"
+
+#: src/modules/options/optw_dcc.cpp:176
+msgid "Open transfer window as minimized when auto-accepted"
+msgstr "自動許可のとき、最小化で転送ウィンドウを開く"
+
+#: src/modules/options/optw_dcc.cpp:177
+msgid "Automatically resume when auto-accepted"
+msgstr "自動許可のとき、自動的に再開する"
+
+#: src/modules/options/optw_dcc.cpp:179
+msgid "Save Location"
+msgstr "保存場所"
+
+#: src/modules/options/optw_dcc.cpp:180
+msgid "Download folder:"
+msgstr "ダウンロード用フォルダー:"
+
+#: src/modules/options/optw_dcc.cpp:181
+msgid "Sort saved files by nicknames (create subfolders)"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:182
+msgid "Guess save path from media type"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:185
+msgid "On Download Completion"
+msgstr "ダウンロード完了時"
+
+#: src/modules/options/optw_dcc.cpp:186
+msgid "Notify completion in console"
+msgstr "コンソールに完了を通知する"
+
+#: src/modules/options/optw_dcc.cpp:187
+msgid "Notify completion in notifier"
+msgstr "通知に完了を通知する"
+
+#: src/modules/options/optw_dcc.cpp:188
+msgid "Automatically clear transfer"
+msgstr "自動で転送情報を消去する"
+
+#: src/modules/options/optw_dcc.cpp:190
+msgid ""
+"<center>This option will cause successfully terminated transfers to be "
+"automatically removed from the transfer window.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:194
+msgid "Always open transfer window as minimized"
+msgstr "常に最小化で転送ウィンドウを開く"
+
+#: src/modules/options/optw_dcc.cpp:213
+msgid "Bug Compatibility"
+msgstr "バグ互換性"
+
+#: src/modules/options/optw_dcc.cpp:214
+msgid "Send ACK for byte 0"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:216
+msgid ""
+"<center>This option causes KVIrc to send a zero-byte acknowledge to kick-"
+"start the DCC transfer with some buggy IRC clients.<br>Use it only if your "
+"DCC transfers stall just after establishing a connection without sending any "
+"data.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:220
+msgid "Accept RESUME requests with broken filename (mIRC file.ext)"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:222
+msgid ""
+"<center>This option causes KVIrc to accept RESUME requests with invalid "
+"filenames.<br>Use it if KVIrc fails to accept RESUME requests from other "
+"clients (e.g. some versions of mIRC).</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:226
+msgid "Accept RESUME requests with mismatched ports"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:228
+msgid ""
+"<center>This option causes KVIrc to accept RESUME requests with mismatched "
+"ports.<br>Use it if some router on the path between you and the receiver "
+"remaps the ports in DCC SEND but not in DCC RESUME requests.<br>Please note "
+"that this option may misbehave in certain usage patterns since KVIrc must "
+"differentiate between transfers only by looking at the filename. Be careful."
+"</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:233
+msgid "Replace spaces with underscores in outgoing filenames"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:235
+msgid ""
+"<center>This option causes KVIrc to replace spaces with underscores in "
+"filenames for all the outgoing file transfers. This will fix filename "
+"handling with some buggy clients (e.g. some versions of mIRC)."
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:238
+msgid "Limits"
+msgstr "制限"
+
+#: src/modules/options/optw_dcc.cpp:241
+msgid "Limit upload bandwidth to"
+msgstr "アップロードのバンド幅制限"
+
+#: src/modules/options/optw_dcc.cpp:243
+#: src/modules/options/optw_dcc.cpp:249
+msgid "bytes/sec"
+msgstr "バイト/秒"
+
+#: src/modules/options/optw_dcc.cpp:247
+msgid "Limit download bandwidth to"
+msgstr "ダウンロードのバンド幅制限"
+
+#: src/modules/options/optw_dcc.cpp:253
+msgid "Maximum number of DCC transfers"
+msgstr "DCC 転送の最大数"
+
+#: src/modules/options/optw_dcc.cpp:254
+msgid ""
+"<center>This is the maximum number of concurrent DCC transfers. KVIrc will "
+"refuse the requests when this limit is reached.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:257
+msgid "Tweaks"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:259
+msgid "Use fast send (send ahead)"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:261
+msgid ""
+"<center>The \"send ahead\" DCC method allows data to be sent faster by "
+"breaking some of the rules of the original DCC SEND protocol specification."
+"<br>Most clients can handle this kind of optimisation so disable it only if "
+"you have problems.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:267
+msgid "Force idle step"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:269
+msgid ""
+"<center>Enable this option when the dcc file transfers tend to block your "
+"computer by consuming too much CPU time. When this option is enabled the "
+"idle interval below will be forcibly inserted between each sent/received "
+"data packet.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:279
+msgid ""
+"<center>This parameter controls the average delay between two packets sent "
+"or received.<br>A smaller interval will cause you to send data faster but "
+"will also add load to your CPU, disk and network interface.<br>Reasonable "
+"values are from 5 to 50 milliseconds.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:284
+msgid "Packet size:"
+msgstr "パケットの大きさ:"
+
+#: src/modules/options/optw_dcc.cpp:287
+msgid ""
+"<center>This parameter controls the packet size used for DCC SEND.<br>With "
+"bigger packets you will be probably send data faster, but you will also "
+"saturate your bandwidth and in some cases cause more disk activity."
+"<br>Reasonable values are from 512 to 4096 bytes.</center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:313
+msgid "On Chat Request"
+msgstr "チャットの要求時"
+
+#: src/modules/options/optw_dcc.cpp:315
+#: src/modules/options/optw_dcc.cpp:352
+msgid "Open minimized when auto-accepted"
+msgstr "自動許可のとき、最小化で開く"
+
+#: src/modules/options/optw_dcc.cpp:317
+msgid "Always open as minimized"
+msgstr "常に最小化で開く"
+
+#: src/modules/options/optw_dcc.cpp:324
+msgid "Flash system taskbar on new dcc chat message"
+msgstr "新しい DCC チャットのメッセージが届いたらシステム タスクバーを点滅させる"
+
+#: src/modules/options/optw_dcc.cpp:326
+msgid ""
+"<center>This option causes the system taskbar entry for KVIrc to flash when "
+"a new dcc chat message is received and the KVIrc window is not the active.</"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:330
+msgid "Popup notifier on new dcc chat message"
+msgstr "新しい DCC チャットのメッセージが届いたら通知をポップアップする"
+
+#: src/modules/options/optw_dcc.cpp:348
+msgid "Open all minimized"
+msgstr "すべて最小化で開く"
+
+#: src/modules/options/optw_dcc.cpp:349
+msgid "On Voice Request"
+msgstr "ボイスの要求時"
+
+#: src/modules/options/optw_dcc.cpp:355
+msgid "Force half-duplex mode on sound device"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:356
+msgid "Volume slider controls PCM, not Master"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:358
+msgid "Sound device:"
+msgstr "音声デバイス:"
+
+#: src/modules/options/optw_dcc.cpp:359
+msgid "Mixer device:"
+msgstr "ミキサー デバイス:"
+
+#: src/modules/options/optw_dcc.cpp:361
+msgid "Pre-buffer size:"
+msgstr "プリバッファーの容量"
+
+#: src/modules/options/optw_urlhandlers.cpp:49
+msgid "Mouse handler"
+msgstr "マウス 制御"
+
+#: src/modules/options/optw_urlhandlers.cpp:51
+msgid "How many click to open links?"
+msgstr "何回のクリックでリンクを開きますか?"
+
+#: src/modules/options/optw_urlhandlers.cpp:53
+msgid "Single click"
+msgstr "シングル クリック"
+
+#: src/modules/options/optw_urlhandlers.cpp:54
+msgid "Double click"
+msgstr "ダブル クリック"
+
+#: src/modules/options/optw_urlhandlers.cpp:66
+msgid "Protocol handler"
+msgstr "プロトコルのハンドラー"
+
+#: src/modules/options/optw_urlhandlers.cpp:69
+msgid "Use system URL handlers"
+msgstr "システムの URL ハンドラーを使う"
+
+#: src/modules/options/optw_urlhandlers.cpp:72
+msgid "<b>http://</b> handler command:"
+msgstr "<b>http://</b> のハンドラー コマンド:"
+
+#: src/modules/options/optw_urlhandlers.cpp:73
+msgid "<b>https://</b> handler command:"
+msgstr "<b>https://</b> のハンドラー コマンド:"
+
+#: src/modules/options/optw_urlhandlers.cpp:74
+msgid "<b>ftp://</b> handler command:"
+msgstr "<b>ftp://</b> のハンドラー コマンド:"
+
+#: src/modules/options/optw_urlhandlers.cpp:75
+msgid "<b>mailto:</b> handler command:"
+msgstr "<b>mailto://</b> のハンドラー コマンド:"
+
+#: src/modules/options/optw_urlhandlers.cpp:76
+msgid "<b>file://</b> handler command:"
+msgstr "<b>file://</b> のハンドラー コマンド:"
+
+#: src/modules/options/optw_urlhandlers.cpp:77
+msgid "Unknown protocol handler command:"
+msgstr "不明なプロトコルのハンドラー コマンド"
+
+#: src/modules/options/optw_channel.cpp:53
+msgid "On Channel Kick"
+msgstr "チャンネルの追放時"
+
+#: src/modules/options/optw_channel.cpp:55
+msgid "Rejoin channel"
+msgstr "チャンネルに再度参加"
+
+#: src/modules/options/optw_channel.cpp:57
+msgid ""
+"<center>This option will cause KVIrc to attempt to rejoin a channel after "
+"being kicked.</center>"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:59
+#: src/modules/options/optw_channel.cpp:68
+msgid "Keep channel open"
+msgstr "チャンネルを開いたままにする"
+
+#: src/modules/options/optw_channel.cpp:61
+msgid ""
+"<center>This option will cause KVIrc to keep the channel window open after "
+"being kicked.<br>It might be a good idea to also enable the \"Rejoin channel"
+"\" option.</center>"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:66
+msgid "On Channel Part"
+msgstr "チャンネルの退室時"
+
+#: src/modules/options/optw_channel.cpp:70
+msgid ""
+"<center>This option will cause KVIrc to keep the channel window open after "
+"leaving it.</center>"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:73
+msgid "Automatically join channel on invite"
+msgstr "招待のチャンネルは自動的に参加する"
+
+#: src/modules/options/optw_channel.cpp:75
+msgid ""
+"<center>This option will cause KVIrc to automatically join a channel when an "
+"INVITE message for that channel is received.<br><b>Warning:</b> This may "
+"help spammers harass you. :)</center>"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:79
+msgid "Always open channels as minimized"
+msgstr "常に最小化でチャンネルを開く"
+
+#: src/modules/options/optw_channel.cpp:81
+msgid ""
+"<center>This option causes newly created channel windows to be immediately "
+"minimized.<br>Enable this if you don't like channels popping up while you're "
+"typing something in a channel. :D</center>"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:99
+msgid "Log joined channels history"
+msgstr "参加したチャンネルの履歴を記録する"
+
+#: src/modules/options/optw_channel.cpp:101
+msgid "Default ban mask:"
+msgstr "標準の禁止マスク:"
+
+#: src/modules/options/optw_channel.cpp:119
+msgid "On Channel Join"
+msgstr "チャンネル参加時"
+
+#: src/modules/options/optw_channel.cpp:120
+msgid "Minimum delay between two requests:"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:122
+msgid ""
+"<center>Minimum value: <b>0 secs</b><br>Maximum value: <b>60 secs</b></"
+"center>"
+msgstr "<center>最小値: <b>0 秒</b><br>最大値: <b>60 秒</b></center>"
+
+#: src/modules/options/optw_channel.cpp:124
+msgid "Do not send /WHO request"
+msgstr "/WHO 要求を送信しない"
+
+#: src/modules/options/optw_channel.cpp:125
+msgid "Do not request ban list"
+msgstr "禁止一覧を要求しない"
+
+#: src/modules/options/optw_channel.cpp:126
+msgid "Do not request ban exception list"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:127
+msgid "Do not request invite list"
+msgstr "招待一覧を要求しない"
+
+#: src/modules/options/optw_channel.cpp:128
+msgid "Do not request quiet ban list"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:129
+msgid "Echo channel topic"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:130
+msgid "Show channel sync time"
+msgstr "チャンネルの同期時間を表示する"
+
+#: src/modules/options/optw_channel.cpp:132
+msgid "Paste last channel log"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:144
+msgid "Keep away list updated by sending WHO requests"
+msgstr ""
+
+#: src/modules/options/optw_channel.cpp:146
+msgid ""
+"<center>KVIrc sends out a channel /WHO message every now and then to keep "
+"the channel away list in sync. Use this option to disable this feature (and "
+"to save your IRC bandwidth.</center>"
+msgstr ""
+
+#: src/modules/options/optw_ctcp.cpp:40
+msgid ""
+"<center><b>Settings for CTCP.</b></center><p>The <b>Client-To-Client "
+"Protocol</b> (CTCP) is used to transmit special control messages over an IRC "
+"connection. These messages can request information from clients or negotiate "
+"file transfers.<br><br></p>"
+msgstr ""
+
+#: src/modules/options/optw_ctcp.cpp:47
+msgid "CTCP Replies"
+msgstr ""
+
+#: src/modules/options/optw_ctcp.cpp:48
+msgid "Append to VERSION reply:"
+msgstr ""
+
+#: src/modules/options/optw_ctcp.cpp:51
+msgid ""
+"<center>This text will be appended to the CTCP VERSION reply.<br>For "
+"example, you can place a script name here.</center>"
+msgstr ""
+
+#: src/modules/options/optw_ctcp.cpp:53
+msgid "Append to SOURCE reply:"
+msgstr ""
+
+#: src/modules/options/optw_ctcp.cpp:56
+msgid ""
+"<center>This text will be appended to the CTCP SOURCE reply.<br>For example, "
+"you can place the source URL for a script here.</center>"
+msgstr ""
+
+#: src/modules/options/optw_ctcp.cpp:63
+msgid "PAGE reply:"
+msgstr ""
+
+#: src/modules/options/optw_ctcp.cpp:66
+msgid ""
+"<center>This is the CTCP PAGE reply.<br>It should contain some sort of "
+"acknowledgement for CTCP PAGE messages.</center>"
+msgstr ""
+
+#: src/modules/options/optw_ctcp.cpp:68
+msgid "Show the CTCP replies in the active window"
+msgstr ""
+
+#: src/modules/options/optw_ctcp.cpp:70
+msgid "Show dialog for CTCP page requests"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:83
+msgid "Use flood protection for CTCP requests (recommended)"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:84
+msgid ""
+"<center>This option makes KVIrc only respond to a limited number of CTCP "
+"requests within a specified time interval, to prevent \"flooding\" CTCP "
+"messages.</center>"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:86
+msgid "Allow up to:"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:87
+msgid " requests"
+msgstr " リクエスト"
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:88
+msgid ""
+"<center>Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 "
+"requests</b></center>"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:91
+msgid "within:"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:93
+msgid ""
+"<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:96
+msgid "Ignored Ctcp Requests"
+msgstr "無視する CTCP 要求"
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:97
+msgid "PING"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:98
+msgid "FINGER"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:99
+msgid "CLIENTINFO"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:100
+msgid "USERINFO"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:101
+msgid "VERSION"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:102
+msgid "SOURCE"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:103
+msgid "TIME"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:104
+msgid "PAGE"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:105
+msgid "AVATAR"
+msgstr ""
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:106
+msgid "DCC/TDCC"
+msgstr "DCC/TDCC"
+
+#: src/modules/options/optw_userlist.cpp:54
+msgid "Nickname Colors"
+msgstr "ニックネームの色"
+
+#: src/modules/options/optw_userlist.cpp:57
+msgid "IRC Op:"
+msgstr ""
+
+#: src/modules/options/optw_userlist.cpp:58
+msgid "Channel owner:"
+msgstr "チャンネルの所有者:"
+
+#: src/modules/options/optw_userlist.cpp:59
+msgid "Channel admin:"
+msgstr "チャンネルの管理者:"
+
+#: src/modules/options/optw_userlist.cpp:60
+msgid "Op:"
+msgstr ""
+
+#: src/modules/options/optw_userlist.cpp:61
+msgid "Half-op:"
+msgstr ""
+
+#: src/modules/options/optw_userlist.cpp:62
+msgid "Voice:"
+msgstr "ボイス:"
+
+#: src/modules/options/optw_userlist.cpp:63
+msgid "User-op:"
+msgstr ""
+
+#: src/modules/options/optw_userlist.cpp:64
+msgid "Away:"
+msgstr "退席:"
+
+#: src/modules/options/optw_userlist.cpp:68
+msgid "Use different color for own nick:"
+msgstr "自分のニックと違う色を使う"
+
+#: src/modules/options/optw_userlist.cpp:83
+msgid "Draw nickname grid"
+msgstr "ニックネームのグリッドを書く"
+
+#: src/modules/options/optw_userlist.cpp:85
+msgid "Grid color:"
+msgstr "グリッドの色:"
+
+#: src/modules/options/optw_userlist.cpp:92
+msgid "Grid type:"
+msgstr "グリッドの種類:"
+
+#: src/modules/options/optw_userlist.cpp:96
+msgid "3D Grid"
+msgstr "3D グリッド"
+
+#: src/modules/options/optw_userlist.cpp:97
+msgid "3D Buttons"
+msgstr "3D ボタン"
+
+#: src/modules/options/optw_userlist.cpp:98
+msgid "Plain Grid"
+msgstr "平坦なグリッド"
+
+#: src/modules/options/optw_userlist.cpp:99
+msgid "Dotted Grid"
+msgstr "ドット模様のグリッド"
+
+#: src/modules/options/optw_userlist.cpp:133
+msgid "Horizontal Alignment:"
+msgstr "水平の位置あわせ:"
+
+#: src/modules/options/optw_userlist.cpp:137
+msgid "Vertical Alignment:"
+msgstr "垂直の位置あわせ:"
+
+#: src/modules/options/optw_userlist.cpp:232
+msgid "Show gender icons"
+msgstr "性別アイコンを表示する"
+
+#: src/modules/options/optw_userlist.cpp:233
+msgid "Show user channel icons"
+msgstr "ユーザー チャンネルのアイコンを表示する"
+
+#: src/modules/options/optw_userlist.cpp:234
+msgid "Show user channel activity indicator"
+msgstr "活発度のインジケーターをユーザー チャンネルで表示する"
+
+#: src/modules/options/optw_userlist.cpp:235
+msgid "Show label with userlist stats"
+msgstr "ユーザー リストの状態にラベルを表示する"
+
+#: src/modules/options/optw_userlist.cpp:236
+msgid "Enable user tooltips"
+msgstr "ユーザーのツールチップを有効にする"
+
+#: src/modules/options/optw_userlist.cpp:237
+msgid "Show avatars in userlist"
+msgstr "ユーザー リストでアバターを表示する"
+
+#: src/modules/options/optw_userlist.cpp:238
+msgid "Enable animated avatars"
+msgstr "動くアバターを有効にする"
+
+#: src/modules/options/optw_userlist.cpp:239
+msgid ""
+"Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the "
+"normal nicks"
+msgstr ""
+
+#: src/modules/options/optw_ignore.cpp:40
+msgid "Enable Ignore For"
+msgstr ""
+
+#: src/modules/options/optw_ignore.cpp:41
+msgid "Private/channel messages"
+msgstr "プライベート/チャンネル メッセージ"
+
+#: src/modules/options/optw_ignore.cpp:42
+msgid "Private/channel notices"
+msgstr "プライベート/チャンネル 告知"
+
+#: src/modules/options/optw_ignore.cpp:46
+msgid "Use verbose ignore (show messages in console)"
+msgstr ""
+
+#: src/modules/options/optw_antispam.cpp:39
+msgid "Enable Anti-spam For"
+msgstr "次の項目でスパム対策を有効にする"
+
+#: src/modules/options/optw_antispam.cpp:45
+msgid "Silent anti-spam (no warnings)"
+msgstr "静かにスパム対策 (警告なし)"
+
+#: src/modules/options/optw_antispam.cpp:46
+msgid "Words considered spam:"
+msgstr ""
+
+#: src/modules/options/optw_mediatypes.cpp:77
+msgid "Pattern"
+msgstr "パターン"
+
+#: src/modules/options/optw_mediatypes.cpp:78
+msgid "MIME Type"
+msgstr "MIME の種類"
+
+#: src/modules/options/optw_mediatypes.cpp:94
+msgid "MIME type:"
+msgstr "MIME の種類:"
+
+#: src/modules/options/optw_mediatypes.cpp:100
+msgid "File pattern:"
+msgstr "ファイル名のパターン"
+
+#: src/modules/options/optw_mediatypes.cpp:106
+msgid "Magic bytes:"
+msgstr "マジック バイト"
+
+#: src/modules/options/optw_mediatypes.cpp:112
+msgid "Save path:"
+msgstr "保存パス:"
+
+#: src/modules/options/optw_mediatypes.cpp:118
+msgid "Local open command:"
+msgstr "ローカルを開くコマンド:"
+
+#: src/modules/options/optw_mediatypes.cpp:123
+msgid ""
+"<center>This field contains the command to execute to open a local file."
+"<br><tt>$0</tt> is used in place of the filename</center>"
+msgstr ""
+
+#: src/modules/options/optw_mediatypes.cpp:126
+msgid "Remote open command:"
+msgstr "リモートを開くコマンド:"
+
+#: src/modules/options/optw_mediatypes.cpp:131
+msgid ""
+"<center>This field contains the command to execute when automatically "
+"opening a received file.<br><tt>$0</tt> is used in place of the filename</"
+"center>"
+msgstr ""
+
+#: src/modules/options/optw_mediatypes.cpp:134
+msgid "Icon"
+msgstr "アイコン"
+
+#: src/modules/options/optw_mediatypes.cpp:145
+msgid "&New"
+msgstr "新規(&N)"
+
+#: src/modules/options/optw_mediatypes.cpp:149
+msgid "Re&move"
+msgstr "削除(&M)"
+
+#: src/modules/options/optw_mediatypes.cpp:194
+msgid "[Unknown Media Type]"
+msgstr ""
+
+#: src/modules/options/optw_mediatypes.cpp:240
+msgid "New Media Type"
+msgstr "新しいメディアの種類"
+
+#: src/modules/options/optw_logging.cpp:40
+msgid "Automatically Log"
+msgstr "自動的なログ"
+
+#: src/modules/options/optw_logging.cpp:41
+msgid "Query windows"
+msgstr "問い合わせウィンドウ"
+
+#: src/modules/options/optw_logging.cpp:42
+msgid "Channel windows"
+msgstr "チャンネル ウィンドウ"
+
+#: src/modules/options/optw_logging.cpp:43
+msgid "DCC Chat windows"
+msgstr "DCC チャット ウィンドウ"
+
+#: src/modules/options/optw_logging.cpp:44
+msgid "Console windows"
+msgstr "コンソール ウィンドウ"
+
+#: src/modules/options/optw_logging.cpp:46
+msgid "Save logs to folder:"
+msgstr "ログを保存するフォルダー"
+
+#: src/modules/options/optw_logging.cpp:47
+msgid "Strip message type numbers in logs"
+msgstr ""
+
+#: src/modules/options/optw_logging.cpp:48
+msgid "Strip colors in logs"
+msgstr "ログから色を取り去る"
+
+#: src/modules/options/optw_logging.cpp:49
+msgid "Auto flush logs every"
+msgstr ""
+
+#: src/modules/options/optw_logging.cpp:50
+msgid " min"
+msgstr " 分"
+
+#: src/modules/options/optw_logging.cpp:52
+msgid ""
+"<center>Save logs with the current interval<br>Set to 0 to disable this "
+"feature</center>"
+msgstr ""
+
+#: src/modules/options/optw_logging.cpp:56
+msgid "Gzip logs"
+msgstr "ログを Gzip 圧縮する"
+
+#: src/modules/options/optw_texticons.cpp:91
+msgid ""
+"This table contains the text icon associations.<br>KVirc will use them to "
+"display the CTRL+I escape sequences and eventually the emoticons."
+msgstr ""
+
+#: src/modules/options/optw_texticons.cpp:117
+msgid "Add"
+msgstr "追加"
+
+#: src/modules/options/optw_texticons.cpp:121
+msgid "Delete"
+msgstr "削除"
+
+#: src/modules/options/optw_texticons.cpp:214
+msgid "unnamed"
+msgstr ""
+
+#: src/modules/options/optw_ignore.h:32
+msgid "Ignore"
+msgstr "無視"
+
+#: src/modules/options/optw_ignore.h:34
+msgid "protection"
+msgstr "防御"
+
+#: src/modules/options/optw_ctcpfloodprotection.h:30
+msgid "Flood Protection"
+msgstr ""
+
+#: src/modules/options/optw_proxy.h:53
+msgid "Proxy Hosts"
+msgstr "プロキシー ホスト"
+
+#: src/modules/options/optw_proxy.h:55
+msgid "connection,servers"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.h:34
+msgid "Window List"
+msgstr "ウィンドウ一覧"
+
+#: src/modules/options/optw_windowlist.h:36
+#: src/modules/options/optw_windowlist.h:50
+#: src/modules/options/optw_windowlist.h:66
+#: src/modules/options/optw_windowlist.h:81
+#: src/modules/options/optw_windowlist.h:100
+#: src/modules/options/optw_windowlist.h:115
+#: src/modules/options/optw_interfacelookglobal.h:34
+msgid "theme"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.h:48
+msgid "Tree Window List"
+msgstr "ツリー上のウィンドウ リスト"
+
+#: src/modules/options/optw_windowlist.h:64
+#: src/modules/options/optw_userlist.h:67
+msgid "Foreground"
+msgstr "前景"
+
+#: src/modules/options/optw_windowlist.h:98
+#: src/modules/options/optw_ircview.h:70
+#: src/modules/options/optw_userlist.h:103
+msgid "Features"
+msgstr ""
+
+#: src/modules/options/optw_windowlist.h:112
+msgid "Classic Window List"
+msgstr "クラッシックなウィンドウ リスト"
+
+#: src/modules/options/optw_messages.h:39
+msgid "Text"
+msgstr "テキスト"
+
+#: src/modules/options/optw_messages.h:40
+#: src/modules/options/optw_ircview.h:37
+#: src/modules/options/optw_ircview.h:51
+msgid "theme,colors,output"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:54
+msgid "Message Style"
+msgstr "メッセージのスタイル"
+
+#: src/modules/options/optw_messages.h:58
+msgid "theme,privmsg,output,format"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:75
+msgid "Timestamp"
+msgstr "時刻"
+
+#: src/modules/options/optw_messages.h:79
+msgid "time,timestamp"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:96
+msgid "Message Colors"
+msgstr "メッセージの色"
+
+#: src/modules/options/optw_messages.h:97
+#: src/modules/options/optw_messages.h:190
+msgid "theme,colors,messages,output"
+msgstr ""
+
+#: src/modules/options/optw_messages.h:189
+msgid "Color Set"
+msgstr "色セット"
+
+#: src/modules/options/optw_interfacefeatures.h:32
+msgid "Interface"
+msgstr "インターフェース"
+
+#: src/modules/options/optw_channel.h:36
+msgid "Channel"
+msgstr "チャンネル"
+
+#: src/modules/options/optw_tray.h:32
+msgid "Tray icon"
+msgstr "トレイ アイコン"
+
+#: src/modules/options/optw_tray.h:34
+msgid "tray,TRAYICON"
+msgstr ""
+
+#: src/modules/options/optw_topiclabel.h:32
+msgid "Labels"
+msgstr "ラベル"
+
+#: src/modules/options/optw_topiclabel.h:33
+msgid "theme,topic"
+msgstr ""
+
+#: src/modules/options/optw_dcc.h:30
+msgid "DCC"
+msgstr "DCC"
+
+#: src/modules/options/optw_dcc.h:74
+msgid "File Transfer"
+msgstr "ファイル転送"
+
+#: src/modules/options/optw_dcc.h:115
+msgid "Chat"
+msgstr "チャット"
+
+#: src/modules/options/optw_dcc.h:128
+msgid "Voice"
+msgstr "ボイス"
+
+#: src/modules/options/optw_irc.h:30
+msgid "IRC"
+msgstr "IRC"
+
+#: src/modules/options/optw_urlhandlers.h:32
+msgid "URL handlers"
+msgstr "URL 制御"
+
+#: src/modules/options/optw_urlhandlers.h:35
+msgid "url,programs"
+msgstr ""
+
+#: src/modules/options/optw_away.h:30
+msgid "Away"
+msgstr "退席"
+
+#: src/modules/options/optw_lag.h:31
+msgid "Lag"
+msgstr ""
+
+#: src/modules/options/optw_lag.h:33
+msgid "time,ping"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.h:33
+msgid "Verbosity And Output"
+msgstr ""
+
+#: src/modules/options/optw_ircoutput.h:35
+msgid "debug"
+msgstr ""
+
+#: src/modules/options/optw_avatar.h:32
+msgid "Avatars"
+msgstr "アバター"
+
+#: src/modules/options/optw_highlighting.h:30
+msgid "Alert/Highlight"
+msgstr "アラート/ハイライト"
+
+#: src/modules/options/optw_highlighting.h:44
+msgid "Highlight"
+msgstr "ハイライト"
+
+#: src/modules/options/optw_highlighting.h:57
+msgid "Window List Alert"
+msgstr "ウィンドウ リストのアラート"
+
+#: src/modules/options/optw_identity.h:177
+msgid "Avatar"
+msgstr "アバター"
+
+#: src/modules/options/optw_identity.h:227
+msgid "Profiles"
+msgstr "プロフィール"
+
+#: src/modules/options/optw_texticons.h:39
+msgid "Text icons"
+msgstr "テキスト アイコン"
+
+#: src/modules/options/optw_texticons.h:41
+msgid "smileys,emoticons"
+msgstr ""
+
+#: src/modules/options/optw_ircview.h:36
+msgid "Output"
+msgstr "出力"
+
+#: src/modules/options/optw_ircview.h:50
+msgid "Look"
+msgstr "概観"
+
+#: src/modules/options/optw_ircview.h:84
+msgid "Marker"
+msgstr "マーカー"
+
+#: src/modules/options/optw_logging.h:30
+msgid "Logging"
+msgstr "ログ記録"
+
+#: src/modules/options/optw_logging.h:31
+msgid "save,output"
+msgstr ""
+
+#: src/modules/options/optw_mediatypes.h:48
+msgid "Media Types"
+msgstr "メディアの種類"
+
+#: src/modules/options/optw_mediatypes.h:50
+msgid "file,audio,video,programs"
+msgstr ""
+
+#: src/modules/options/optw_textencoding.h:32
+msgid "Language"
+msgstr "言語"
+
+#: src/modules/options/optw_textencoding.h:35
+msgid "language,encoding,charset,codepage"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.h:48
+msgid "Transparency"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.h:49
+msgid "theme,background"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.h:74
+msgid "Workspace"
+msgstr "ワークスペース"
+
+#: src/modules/options/optw_interfacelookglobal.h:75
+msgid "theme,mdi"
+msgstr ""
+
+#: src/modules/options/optw_interfacelookglobal.h:87
+msgid "ToolBar Applets"
+msgstr "ツールバーの概観"
+
+#: src/modules/options/optw_interfacelookglobal.h:88
+msgid "theme,toolbar"
+msgstr ""
+
+#: src/modules/options/optw_connection.h:59
+msgid "SSL"
+msgstr "SSL"
+
+#: src/modules/options/optw_connection.h:76
+msgid "Socket"
+msgstr "ソケット"
+
+#: src/modules/options/optw_connection.h:91
+msgid "Ident Service"
+msgstr "Ident サービス"
+
+#: src/modules/options/optw_tools.h:33
+msgid "Tools"
+msgstr "ツール"
+
+#: src/modules/options/optw_nickserv.h:43
+msgid "authentication,identify"
+msgstr ""
+
+#: src/modules/options/optw_notify.h:30
+msgid "Contacts"
+msgstr "連絡"
+
+#: src/modules/options/optw_notify.h:32
+msgid "notify,buddy,buddies,friends"
+msgstr ""
+
+#: src/modules/options/optw_query.h:30
+msgid "Query"
+msgstr "問い合わせ"
+
+#: src/modules/options/optw_query.h:32
+msgid "chat"
+msgstr ""
+
+#: src/modules/options/optw_sound.h:33
+msgid "Sound"
+msgstr "音声"
+
+#: src/modules/options/optw_sound.h:49
+msgid "sound,xmms,audio,play,amarok"
+msgstr ""
+
+#: src/modules/options/optw_sound.h:84
+msgid "Sounds"
+msgstr "音声"
+
+#: src/modules/options/optw_sound.h:86
+msgid "sound,events"
+msgstr ""
+
+#: src/modules/options/optw_generalopt.h:30
+msgid "General options"
+msgstr "一般オプション"
+
+#: src/modules/options/optw_servers.h:166
+msgid "connection"
+msgstr ""
+
+#: src/modules/options/optw_protection.h:32
+msgid "Protection"
+msgstr "防御"
+
+#: src/modules/options/optw_protection.h:35
+msgid "ctcp,flood"
+msgstr ""
+
+#: src/modules/options/optw_input.h:33
+#: src/modules/options/optw_input.h:51
+msgid "Input"
+msgstr "入力"
+
+#: src/modules/options/optw_input.h:34
+#: src/modules/options/optw_notifier.h:34
+msgid "theme,colors,text"
+msgstr ""
+
+#: src/modules/options/optw_antispam.h:30
+msgid "Anti-spam"
+msgstr "スパム対策"
+
+#: src/modules/options/optw_uparser.h:30
+msgid "Scripting Engine"
+msgstr "スクリプト エンジン"
+
+#: src/modules/options/optw_uparser.h:31
+msgid "scripting,kvs,debug"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:32
+msgid "Userlist"
+msgstr "ユーザー一覧"
+
+#: src/modules/options/optw_userlist.h:33
+msgid "theme,userlist,channel"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:47
+msgid "theme,userlist,channel,background"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:68
+msgid "theme,userlist,channel,colors"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:83
+msgid "Nickname Grid"
+msgstr "ニックネームのグリッド"
+
+#: src/modules/options/optw_userlist.h:84
+msgid "theme,userlist,channel,grid"
+msgstr ""
+
+#: src/modules/options/optw_userlist.h:104
+msgid "userlist,channel"
+msgstr ""
+
+#: src/modules/options/optw_ctcp.h:30
+msgid "CTCP"
+msgstr "CTCP"
+
+#: src/modules/options/optw_notifier.h:33
+#: src/modules/options/optw_notifier.h:51
+msgid "Notifier"
+msgstr "通知"
+
+#: src/modules/options/optw_notifier.h:52
+msgid "popup"
+msgstr "ポップアップ"

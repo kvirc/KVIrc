@@ -1,0 +1,109 @@
+# Japanese translation for serverdb (KVIrc module)
+# Copyright (C) 2010 KVIrc Development Team
+# This file is distributed under the same license as the KVIrc package.
+# Tadashi Jokagi <elf@elf.no-ip.org>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: serverdb_ja\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-19 20:08+0200\n"
+"PO-Revision-Date: 2010-07-24 01:19+0900\n"
+"Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
+"Language-Team: Japanese <elf@elf.no-ip.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/proxydb/libkviproxydb.cpp:60
+#: src/modules/proxydb/libkviproxydb.cpp:103
+#: src/modules/proxydb/libkviproxydb.cpp:357
+#: src/modules/proxydb/libkviproxydb.cpp:428
+#: src/modules/proxydb/libkviproxydb.cpp:497
+#: src/modules/proxydb/libkviproxydb.cpp:552
+#: src/modules/proxydb/libkviproxydb.cpp:596
+msgid "You must provide the proxy hostname as parameter"
+msgstr "パラメーターとしてプロキシーのホスト名を指定しなければなりません。"
+
+#: src/modules/proxydb/libkviproxydb.cpp:70
+#: src/modules/proxydb/libkviproxydb.cpp:113
+#: src/modules/proxydb/libkviproxydb.cpp:374
+#: src/modules/proxydb/libkviproxydb.cpp:445
+#: src/modules/proxydb/libkviproxydb.cpp:508
+#: src/modules/proxydb/libkviproxydb.cpp:569
+#: src/modules/proxydb/libkviproxydb.cpp:613
+msgid "The specified proxy does not exist"
+msgstr "指定のプロキシーは存在しません。"
+
+#: src/modules/proxydb/libkviproxydb.cpp:273
+msgid "You must provide the proxy name as parameter"
+msgstr "パラメーターとしてプロキシーを指定しなければなりません。"
+
+#: src/modules/proxydb/libkviproxydb.cpp:284
+msgid "The specified proxy already exists"
+msgstr "指定のプロキシーは既に存在します。"
+
+#: src/modules/proxydb/libkviproxydb.cpp:311
+#: src/modules/proxydb/libkviproxydb.cpp:577
+msgid "The specified protocol does not exist"
+msgstr "指定のプロトコルは存在しません。"
+
+#: src/modules/proxydb/libkviproxydb.cpp:363
+msgid "You must provide the port number as parameter"
+msgstr "パラメーターとしてポート番号を指定しなければなりません。"
+
+#: src/modules/proxydb/libkviproxydb.cpp:434
+msgid "You must provide the IP as parameter"
+msgstr "パラメーターとして IP を指定しなければなりません。"
+
+#: src/modules/proxydb/libkviproxydb.cpp:453
+msgid "The specified IP is not valid"
+msgstr "指定の IP は正しくありません。"
+
+#: src/modules/proxydb/libkviproxydb.cpp:558
+msgid "You must provide the protocol as parameter"
+msgstr "パラメーターとしてプロトコルを指定しなければなりません。"
+
+#: src/modules/proxydb/libkviproxydb.cpp:602
+#: src/modules/serverdb/libkviserverdb.cpp:818
+#: src/modules/serverdb/libkviserverdb.cpp:860
+msgid "You must provide the value as parameter"
+msgstr "パラメーターとして値を指定しなければなりません。"
+
+#: src/modules/serverdb/libkviserverdb.cpp:61
+#: src/modules/serverdb/libkviserverdb.cpp:162
+#: src/modules/serverdb/libkviserverdb.cpp:190
+#: src/modules/serverdb/libkviserverdb.cpp:677
+#: src/modules/serverdb/libkviserverdb.cpp:748
+#: src/modules/serverdb/libkviserverdb.cpp:812
+#: src/modules/serverdb/libkviserverdb.cpp:848
+msgid "You must provide the network name as parameter"
+msgstr "パラメーターとしてネットワークプ名を指定しなければなりません。"
+
+#: src/modules/serverdb/libkviserverdb.cpp:104
+#: src/modules/serverdb/libkviserverdb.cpp:196
+#: src/modules/serverdb/libkviserverdb.cpp:754
+#: src/modules/serverdb/libkviserverdb.cpp:854
+msgid "You must provide the server name as parameter"
+msgstr "パラメーターとしてサーバー名を指定しなければなりません。"
+
+#: src/modules/serverdb/libkviserverdb.cpp:169
+#: src/modules/serverdb/libkviserverdb.cpp:203
+#: src/modules/serverdb/libkviserverdb.cpp:762
+#: src/modules/serverdb/libkviserverdb.cpp:826
+#: src/modules/serverdb/libkviserverdb.cpp:868
+msgid "The specified network does not exist"
+msgstr "指定のネットワークは存在しません。"
+
+#: src/modules/serverdb/libkviserverdb.cpp:210
+#: src/modules/serverdb/libkviserverdb.cpp:876
+msgid "The specified server does not exist"
+msgstr "指定のサーバーは存在しません。"
+
+#: src/modules/serverdb/libkviserverdb.cpp:685
+msgid "The network specified already exists"
+msgstr "指定のネットワークは既に存在しています。"
+
+#: src/modules/serverdb/libkviserverdb.cpp:773
+msgid "The specified server already exists"
+msgstr "指定のサーバーは既に存在します。"
