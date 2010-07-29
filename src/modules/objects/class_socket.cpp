@@ -900,8 +900,6 @@ debug ("Socket created");
 		KviKvsVariantList lParams;
 		lParams.append(new KviKvsVariant(__tr2qs_ctx("Failed to create the socket","objects")));
 		callFunction(this,"connectFailedEvent",&lParams);
-/*		callFunction(this,"connectFailedEvent",new KviKvsVariantList(
-			new KviKvsVariant(__tr2qs_ctx("Failed to create the socket","objects"))));*/
 		if(m_uConnectionId == uOldConnectionId)reset();
 		// else it has already been called!
 		return;
@@ -914,8 +912,6 @@ debug ("Socket created");
 		KviKvsVariantList lParams;
 		lParams.append(new KviKvsVariant(__tr2qs_ctx("Failed to setup a nonblocking socket","objects")));
 		callFunction(this,"connectFailedEvent",&lParams);
-/*		callFunction(this,"connectFailedEvent",new KviKvsVariantList(
-			new KviKvsVariant(__tr2qs_ctx("Failed to setup a nonblocking socket","objects"))));*/
 		if(m_uConnectionId == uOldConnectionId)reset();
 		// else it has already been called!
 		return;
@@ -942,8 +938,6 @@ debug ("Socket created");
 			KviKvsVariantList lParams;
 			lParams.append(new KviKvsVariant(callBackError));
 			callFunction(this,"connectFailedEvent",&lParams);
-			//callFunction(this,"connectFailedEvent",new KviKvsVariantList(new KviKvsVariant(callBackError)));
-
 			if(m_uConnectionId == uOldConnectionId)reset();
 			// else it has already been called!
 			return;
@@ -967,8 +961,6 @@ void KviKvsObject_socket::connectTimeoutSlot()
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant(__tr2qs_ctx("Connect attempt timed out","objects")));
 	callFunction(this,"connectFailedEvent",&lParams);
-	/*callFunction(this,"connectFailedEvent",new KviKvsVariantList(
-				new KviKvsVariant(__tr2qs_ctx("Connect attempt timed out","objects"))));*/
 	if(m_uConnectionId == uOldConnectionId)reset();
 	// else it has already been called!
 }
@@ -998,9 +990,6 @@ void KviKvsObject_socket::lookupRemoteIp()
 		KviKvsVariantList lParams;
 		lParams.append(new KviKvsVariant(__tr2qs_ctx("Can't start the DNS thread","objects")));
 		callFunction(this,"connectFailedEvent",&lParams);
-
-	/*	callFunction(this,"connectFailedEvent",new KviKvsVariantList(
-				new KviKvsVariant(__tr2qs_ctx("Can't start the DNS thread","objects"))));*/
 		if(m_uConnectionId == uOldConnectionId)reset();
 		// else it has already been called!
 	}
@@ -1015,8 +1004,6 @@ void KviKvsObject_socket::lookupDone(KviDns *pDns)
 		KviKvsVariantList lParams;
 		lParams.append(new KviKvsVariant(KviError::getDescription(pDns->error())));
 		callFunction(this,"connectFailedEvent",&lParams);
-	/*	callFunction(this,"connectFailedEvent",new KviKvsVariantList(
-			new KviKvsVariant(KviError::getDescription(pDns->error()))));*/
 
 		if(m_uConnectionId == uOldConnectionId)reset();
 		// else it has already been called!
@@ -1058,8 +1045,6 @@ void KviKvsObject_socket::writeNotifierFired(int)
 		KviKvsVariantList lParams;
 		lParams.append(new KviKvsVariant(KviError::getDescription(sockError)));
 		callFunction(this,"connectFailedEvent",&lParams);
-		/*callFunction(this,"connectFailedEvent",new KviKvsVariantList(
-			new KviKvsVariant(KviError::getDescription(sockError))));*/
 		if(m_uConnectionId == uOldConnectionId)reset();
 		// else it has already been called!
 	} else {
@@ -1129,14 +1114,10 @@ void KviKvsObject_socket::readNotifierFired(int)
 						KviKvsVariantList lParams;
 						lParams.append(new KviKvsVariant((kvs_int_t)KviError::translateSystemError(err)));
 						callFunction(this,"disconnectEvent",&lParams);
-					/*	callFunction(this,"disconnectEvent",new KviKvsVariantList(
-						new KviKvsVariant((kvs_int_t)KviError::translateSystemError(err))));*/
 				} else {
 						KviKvsVariantList lParams;
 						lParams.append(new KviKvsVariant(KviError::getDescription(KviError_remoteEndClosedConnection)));
 						callFunction(this,"disconnectEvent",&lParams);
-						/*callFunction(this,"disconnectEvent",new KviKvsVariantList(
-						new KviKvsVariant(KviError::getDescription(KviError_remoteEndClosedConnection))));*/
 
 				}
 				if(m_uConnectionId == uOldConnectionId)reset();
@@ -1153,11 +1134,7 @@ void KviKvsObject_socket::readNotifierFired(int)
 	unsigned int uOldConnectionId = m_uConnectionId;
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant((kvs_int_t)readLength));
-
-/*	KviKvsVariant *pParam=new KviKvsVariant((kvs_int_t)readLength);
-	KviKvsVariantList *pParamsList=new KviKvsVariantList(pParam);*/
 	callFunction(this,"dataAvailableEvent",&lParams);
-	//delete pParamsList;
 	if(m_uConnectionId == uOldConnectionId)
 	{
 		if(m_uInDataLen > (4096 * 1024)) // too much data in buffer (not reading)
@@ -1165,8 +1142,6 @@ void KviKvsObject_socket::readNotifierFired(int)
 			KviKvsVariantList lParams;
 			lParams.append(new KviKvsVariant(new KviKvsVariant(__tr2qs_ctx("Too much unprocessed incoming data (you've left this socket unmanaged ?)","objects"))));
 			callFunction(this,"disconnectEvent",&lParams);
-			/*callFunction(this,"disconnectEvent",new KviKvsVariantList(
-				new KviKvsVariant(__tr2qs_ctx("Too much unprocessed incoming data (you've left this socket unmanaged ?)","objects"))));*/
 			reset();
 		}
 	}
@@ -1237,9 +1212,6 @@ void KviKvsObject_socket::tryFlush()
 			KviKvsVariantList lParams;
 			lParams.append(new KviKvsVariant(KviError::getDescription(KviError::translateSystemError(err))));
 			callFunction(this,"disconnectEvent",&lParams);
-
-			/*callFunction(this,"disconnectEvent",0,new KviKvsVariantList(
-				new KviKvsVariant(KviError::getDescription(KviError::translateSystemError(err)))));*/
 			if(m_uConnectionId == uOldConnectionId)reset();
 			// else it has already been called!
 			return;
