@@ -15,19 +15,19 @@ class(installer,object)
 	{
 		if($0 == "")
 		{
-			echo "[Installer] Error: the first argument of copyFiles must be a source directory"
+			echo $tr("[Installer] Error: the first argument of copyFiles must be a source directory","defscript")
 			halt
 		}
 
 		if($1 == "")
 		{
-			echo "[Installer] Error: the second argument of copyFiles must be a file name or file regexp"
+			echo $tr("[Installer] Error: the second argument of copyFiles must be a file name or file regexp","defscript")
 			halt
 		}
 
 		if($2 == "")
 		{
-			echo "[Installer] Error: the third argument of copyFiles must be a destination directory"
+			echo $tr("[Installer] Error: the third argument of copyFiles must be a destination directory","defscript")
 			halt
 		}
 

@@ -18,7 +18,7 @@ alias(avatar)
 	# avatar target file
 	if(!$0)
 	{
-		echo "Missing target, no action taken"
+		echo $tr("Missing target, no action taken","defscript")
 		return
 	}
 	if($1)
@@ -148,12 +148,15 @@ alias(wallop)
 
 	# Due to server flood, timing may be very high
 	echo -w=$active $tr("Sending wallop to","defscript") $chan.name($active)
-	timer(wallop,5000,$chan.users(,,o),$0-){
+	timer(wallop,5000,$chan.users(,,o),$0-)
+	{
 		if(%:localOps == ""){ %:localOps = $chan.users(,,o); %:curIndex = 0; }
 		if(%:curIndex == %:localOps[]#){ killtimer wallop; return; }
 
-		for(%i=0;%i<1;%i++){
-			if(%:localOps[%:curIndex] != $my.nick){
+		for(%i=0;%i<1;%i++)
+		{
+			if(%:localOps[%:curIndex] != $my.nick)
+			{
 				if(%:curIndex == %:localOps[]#){ killtimer wallop; return; }
 				msg -q %:localOps[%:curIndex] $1-
 				%:curIndex++
@@ -233,7 +236,7 @@ alias(kb)
 	if(!$0)
 	{
 		echo $tr("Usage:","defscript")
-		echo "	  /kb <nick_list> [" $tr("reason") "]"
+		echo "	  /kb <nick_list> [" $tr("reason","defscript") "]"
 		halt;
 	}
 
@@ -252,7 +255,7 @@ alias(kb)
 			if(!%mask)%mask = %nick; # plain ban
 
 			%reason = $1-
-			#if(!%reason)%reason = "You're not welcome here!"
+			#if(!%reason)%reason = $tr("You're not welcome here!","defscript")
 
 			# This is tricky : we send everything
 			# as a single raw message just because
@@ -289,8 +292,9 @@ alias(amsgall)
 
 alias(ameall)
 {
-	foreach(%i,$window.list(channel),$window.list(query)){
-	if(%i!="") me -r=%i $0-
+	foreach(%i,$window.list(channel),$window.list(query))
+	{
+		if(%i!="") me -r=%i $0-
 	}
 }
 
@@ -472,7 +476,7 @@ alias(dns)
 	if(!$0)
 	{
 		echo $tr("Usage:","defscript")
-		echo echo "  /dns <nickname>"
+		echo "  /dns <nickname>"
 		halt
 	}
 

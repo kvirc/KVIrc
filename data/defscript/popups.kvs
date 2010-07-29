@@ -8,9 +8,10 @@ defpopup(highlight)
 {
 	prologue
 	{
-		if($0!=""){
+		if($0!="")
+		{
 			%:regName = $reguser.match($mask($0))
-		        %:beingHl = $reguser.property(%:regName,highlight)
+			%:beingHl = $reguser.property(%:regName,highlight)
 			%:beingHlTmp = $tmphighlight.isNickHighLighted($0)
 		}
 	}
@@ -73,7 +74,8 @@ defpopup(channelhighlight)
 {
 	prologue
 	{
-		if($window!="" && !$chan.isDead()){
+		if($window!="" && !$chan.isDead())
+		{
 			%:beingHlTmp = $tmphighlight.isChannelHighLighted($window)
 		}
 	}
@@ -99,12 +101,12 @@ defpopup(ignore)
 		if(%:regName)
 		{
 			%:inIgnoreList = $reguser.isIgnoreEnabled(%:regName);
-			if(%:inIgnoreList) %:ignLabelText << $tr("is being ignored")
-			else %:ignLabelText << $tr("is not being ignored")
+			if(%:inIgnoreList) %:ignLabelText << $tr("is being ignored","defscript")
+			else %:ignLabelText << $tr("is not being ignored","defscript")
 
 			%:ignLabelText << "</p>"
 		} else {
-			%:ignLabelText << $tr("is not being ignored")"</p>"
+			%:ignLabelText << $tr("is not being ignored","defscript")"</p>"
 		}
 	}
 
@@ -334,7 +336,7 @@ defpopup(registration)
 			if(%:defAvatar)%:labelText << "<br><b>$0</b>" $tr("has a default avatar","defscript")
 			%:labelText << "</p>"
 		} else {
-			%:labelText << $tr("is not registered")"</p>"
+			%:labelText << $tr("is not registered","defscript")"</p>"
 		}
 	}
 
@@ -347,7 +349,7 @@ defpopup(registration)
 
 	popup($tr("Quick Registration","defscript")) (!%:regName)
 	{
-		item($tr("Register as") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
+		item($tr("Register as","defscript") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
 		{
 			reguser.add $0 $mask($0,11)
 		}
@@ -1334,22 +1336,22 @@ defpopup(windowpopup)
 
 #	popup(Buffer)
 #	{
-#		item("Save to file...")window.savebuffer
-#		item("Clear")window.clear
-#		item("Find...")window.findtext
+#		item($tr("Save to file...","defscript"))window.savebuffer
+#		item($tr("Clear","defscript"))window.clear
+#		item($tr("Find...","defscript"))window.findtext
 #	}
 #	popup(View)
 #	{
-#		item("Show images")($window.images == 0)window.images 1
-#		item("Enable timestamps")($window.timestamp == 0)window.timestamp 1
-#		item("Disable timestamps")($window.timestam == 1)window.timestamp 0
-#		item("Set font...")$window.setfont
-#		item("Set background...")$window.setbackground
+#		item($tr("Show images","defscript"))($window.images == 0)window.images 1
+#		item($tr("Enable timestamps","defscript"))($window.timestamp == 0)window.timestamp 1
+#		item($tr("Disable timestamps","defscript"))($window.timestam == 1)window.timestamp 0
+#		item($tr("Set font...","defscript"))$window.setfont
+#		item($tr("Set background...","defscript"))$window.setbackground
 #	}
 #	popup(Mdi)
 #	{
-#		item("Minimize")window.minimize
-#		item("Maximize")window.maximize
+#		item($tr("Minimize","defscript"))window.minimize
+#		item($tr("Maximize","defscript"))window.maximize
 #	}
 }
 
