@@ -252,8 +252,11 @@ void KviKvsObject_ftp::slotCommandFinished ( int id, bool error )
 	else if (m_pFtp->currentCommand()==QFtp:: Login) status="logged";
 	else if (m_pFtp->currentCommand()==QFtp:: Cd) status="entered";
 	else if (m_pFtp->currentCommand()==QFtp:: List) status="listCompleted";
-	callFunction(this,"commandFinishedEvent",0,new KviKvsVariantList(new KviKvsVariant((kvs_int_t) id),
-		new KviKvsVariant(status),new KviKvsVariant(error)));
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant((kvs_int_t) id));
+	lParams.append(new KviKvsVariant(status));
+	lParams.append(new KviKvsVariant(error));
+	callFunction(this,"commandFinishedEvent",0,&lParams);
 }
 
 void KviKvsObject_ftp::slotCommandStarted ( int )
@@ -262,8 +265,10 @@ void KviKvsObject_ftp::slotCommandStarted ( int )
 
 void KviKvsObject_ftp::slotDataTransferProgress ( qint64 done, qint64 total )
 {
-        callFunction(this,"dataTransferProgressEvent",0,new KviKvsVariantList(
-		new KviKvsVariant((kvs_int_t) done),new KviKvsVariant((kvs_int_t) total)));
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant((kvs_int_t) done));
+	lParams.append(new KviKvsVariant((kvs_int_t) total));
+        callFunction(this,"dataTransferProgressEvent",0,&lParams);
 }
 
 KVSO_CLASS_FUNCTION(ftp,dataTransferProgressEvent)
@@ -278,7 +283,9 @@ void KviKvsObject_ftp::slotDone ( bool )
 
 void KviKvsObject_ftp::slotListInfo ( const QUrlInfo & i )
 {
-	callFunction(this,"listInfoEvent",0,new KviKvsVariantList(new KviKvsVariant(i.name())));
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant(i.name()));
+	callFunction(this,"listInfoEvent",0,&lParams);
 }
 
 KVSO_CLASS_FUNCTION(ftp,listInfoEvent)
@@ -304,8 +311,9 @@ void KviKvsObject_ftp::slotStateChanged (int state)
 	else if (state==QFtp::Connected) szState="Connected";
 	else if (state==QFtp::LoggedIn) szState="LoggedIn";
 	else if (state==QFtp::Closing) szState="Closing";
-	callFunction(this,"stateChangedEvent",0,new KviKvsVariantList(
-		new KviKvsVariant(szState)));
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant(szState));
+	callFunction(this,"stateChangedEvent",0,&lParams);
 }
 
 KVSO_CLASS_FUNCTION(ftp,stateChangedEvent)

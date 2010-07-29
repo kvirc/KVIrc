@@ -895,34 +895,50 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 			}
 			break;
 			case QEvent::MouseButtonPress:
-					if(((QMouseEvent *)e)->button() & Qt::LeftButton)aparam = 0;
-				else {
-					if(((QMouseEvent *)e)->button() & Qt::RightButton)aparam = 1;
-					else aparam = 2;
-				}
-				if(!callFunction(this,"mousePressEvent",retv,new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
-				))) brokenhandler = true; // ignore results of a broken event handler
-		break;
-			case QEvent::MouseButtonRelease:
+			{
 				if(((QMouseEvent *)e)->button() & Qt::LeftButton)aparam = 0;
 				else {
 					if(((QMouseEvent *)e)->button() & Qt::RightButton)aparam = 1;
 					else aparam = 2;
 				}
-				if(!callFunction(this,"mouseReleaseEvent",retv,new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
-				))) brokenhandler = true; // ignore results of a broken event handler
+				KviKvsVariantList lParams;
+				lParams.append(new KviKvsVariant((kvs_int_t)aparam));
+				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
+				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
+				if (!callFunction(this,"mousePressEvent",0,&lParams)) brokenhandler = true; // ignore results of a broken event handler
+			}
+			break;
+			case QEvent::MouseButtonRelease:
+			{
+				if(((QMouseEvent *)e)->button() & Qt::LeftButton)aparam = 0;
+				else {
+					if(((QMouseEvent *)e)->button() & Qt::RightButton)aparam = 1;
+					else aparam = 2;
+				}
+				KviKvsVariantList lParams;
+				lParams.append(new KviKvsVariant((kvs_int_t)aparam));
+				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
+				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
+				if (!callFunction(this,"mouseReleaseEvent",0,&lParams)) brokenhandler = true; // ignore results of a broken event handler
+			}
 			break;
 			case QEvent::MouseButtonDblClick:
+			{
 				if(( (QMouseEvent *)e)->button() & Qt::LeftButton)aparam = 0;
 				else {
 					if(((QMouseEvent *)e)->button() & Qt::RightButton)aparam = 1;
 					else aparam = 2;
 				}
-					if(!callFunction(this,"mouseDoubleClickEvent",retv,new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
-				))) brokenhandler = true; // ignore results of a broken event handler
+				KviKvsVariantList lParams;
+				lParams.append(new KviKvsVariant((kvs_int_t)aparam));
+				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
+				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
+				if (!callFunction(this,"mouseDoubleClickEvent",0,&lParams)) brokenhandler = true; // ignore results of a broken event handler
+			}
 
 			break;
-			case QEvent::MouseMove:
+			 case QEvent::MouseMove:
+			{
 				if( (((QMouseEvent *)e)->button()) & Qt::LeftButton) aparam = 0;
 				else
 				{
@@ -933,8 +949,12 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 							else aparam = -1;
 						}
 				}
-				if(!callFunction(this,"mouseMoveEvent",retv,new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
-				))) brokenhandler = true; // ignore results of a broken event handler
+				KviKvsVariantList lParams;
+				lParams.append(new KviKvsVariant((kvs_int_t)aparam));
+				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
+				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
+				if (!callFunction(this,"mouseMoveEvent",0,&lParams)) brokenhandler = true; // ignore results of a broken event handler
+			}
 			break;
 			case QEvent::FocusIn:
 				if(!callFunction(this,"focusInEvent",retv,0))brokenhandler = true;
