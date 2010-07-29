@@ -166,6 +166,7 @@ void KviMdiChild::restore()
 	{
 		// we don't use showNormal here because it seems to enforce the previous window geometry:
 		// since we were minimized in a shaded form, this creates ugly effects (like bug #823)
+		setWindowState(windowState() & ~Qt::WindowMinimized);
 		show();
 		return;
 	}
