@@ -932,7 +932,7 @@ void KviConsole::avatarChanged(KviAvatar * avatar,const QString &nick,const QStr
 void KviConsole::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const QString &user,const QString &host)
 {
 	// look it up in the cache
-	QString szAvatar = KviAvatarCache::instance()->lookup(KviIrcMask(nick,user,host),currentNetworkName().toUtf8().data());
+	QString szAvatar = KviAvatarCache::instance()->lookup(KviIrcMask(nick,user,host),currentNetworkName());
 	if(!szAvatar.isEmpty())
 	{
 		// got a cache hit... is it on disk ?
@@ -946,7 +946,7 @@ void KviConsole::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const
 		}
 		// no cached image on disk.. will need to requery it anyway
 		// remove from cache
-		KviAvatarCache::instance()->remove(KviIrcMask(nick,user,host),currentNetworkName().toUtf8().data());
+		KviAvatarCache::instance()->remove(KviIrcMask(nick,user,host),currentNetworkName());
 	}
 
 	// registered ?
@@ -1027,25 +1027,37 @@ KviAvatar * KviConsole::setAvatar(const QString &nick,const QString &user,const 
 KviAvatar * KviConsole::defaultAvatarFromOptions()
 {
 	QPixmap * avatar = KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar).pixmap();
-	if(!avatar)return 0;
-	if(avatar->isNull())return 0;
-	if(KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty())return 0;
-	KviAvatar * loadedAvatar = new KviAvatar(KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar).path(),KVI_OPTION_STRING(KviOption_stringMyAvatar));
-	if(loadedAvatar->isValid())
-	{
-		return loadedAvatar;
-	} else {
-		delete loadedAvatar;
+
+	if(!avatar)
 		return 0;
-	}
+
+	if(avatar->isNull())
+		return 0;
+
+	if(KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty())
+		return 0;
+
+	KviAvatar * loadedAvatar = new KviAvatar(KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar).path(),KVI_OPTION_STRING(KviOption_stringMyAvatar));
+
+	if(loadedAvatar->isValid())
+		return loadedAvatar;
+
+	delete loadedAvatar;
+	return 0;
 }
 
 KviAvatar * KviConsole::currentAvatar()
 {
-	if(!connection())return 0;
+	if(!connection())
+		return 0;
+
 	KviIrcUserEntry * e = connection()->userDataBase()->find(connection()->userInfo()->nickName());
-	if(!e)return 0;
+
+	if(!e)
+		return 0;
+
 	KviAvatar * a = e->avatar();
+
 	if(!a)
 	{
 		a = defaultAvatarFromOptions();
@@ -1055,15 +1067,20 @@ KviAvatar * KviConsole::currentAvatar()
 			avatarChanged(a,connection()->userInfo()->nickName(),QString(),QString(),QString());
 		}
 	}
+
 	return a;
 }
 
 void KviConsole::setAvatarFromOptions()
 {
-	if(!connection())return;
+	if(!connection())
+		return;
 	KviIrcUserEntry * e = connection()->userDataBase()->find(connection()->userInfo()->nickName());
+
 	if(!e)return;
+
 	KviAvatar * a = defaultAvatarFromOptions();
+
 	if(a)
 	{
 		e->setAvatar(a);
