@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-19 20:08+0200\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
 "PO-Revision-Date: 2010-05-18 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -73,11 +73,11 @@ msgstr "&Compilar"
 
 #: src/modules/classeditor/classeditor.cpp:1780
 #: src/modules/classeditor/classeditor.cpp:1866
-#: src/modules/editor/scripteditor.cpp:994
+#: src/modules/editor/scripteditor.cpp:1031
 msgid "&Cancel"
 msgstr "&Cancelar"
 
-#: src/modules/editor/scripteditor.cpp:726
+#: src/modules/editor/scripteditor.cpp:749
 msgid "&Configure Editor..."
 msgstr "&Configurar editor..."
 
@@ -137,7 +137,7 @@ msgstr "&Nueva ventana emergente"
 msgid "&OK"
 msgstr "&Aceptar"
 
-#: src/modules/editor/scripteditor.cpp:723
+#: src/modules/editor/scripteditor.cpp:746
 msgid "&Open..."
 msgstr "&Abrir..."
 
@@ -154,11 +154,11 @@ msgid "&Rename Class"
 msgstr "&Renombrar clase"
 
 #: src/modules/editor/scripteditor.cpp:250
-#: src/modules/editor/scripteditor.cpp:999
+#: src/modules/editor/scripteditor.cpp:1036
 msgid "&Replace"
 msgstr "&Reemplazar"
 
-#: src/modules/editor/scripteditor.cpp:989
+#: src/modules/editor/scripteditor.cpp:1026
 msgid "&Replace in all Aliases"
 msgstr "&Reemplazar en todos los aliases"
 
@@ -166,7 +166,7 @@ msgstr "&Reemplazar en todos los aliases"
 msgid "&Save"
 msgstr "&Guardar..."
 
-#: src/modules/editor/scripteditor.cpp:724
+#: src/modules/editor/scripteditor.cpp:747
 msgid "&Save As..."
 msgstr "&Guardar como..."
 
@@ -298,7 +298,7 @@ msgstr "Aplicar"
 msgid "Automatically"
 msgstr "Automáticamente"
 
-#: src/modules/editor/scripteditor.cpp:516
+#: src/modules/editor/scripteditor.cpp:515
 msgid "Background:"
 msgstr "Fondo:"
 
@@ -321,23 +321,23 @@ msgstr "Nombre incorrecto para el espacio de nombres"
 msgid "Big Icon:"
 msgstr "Icono grande:"
 
-#: src/modules/editor/scripteditor.cpp:518
+#: src/modules/editor/scripteditor.cpp:517
 msgid "Brackets:"
 msgstr "Llaves:"
 
-#: src/modules/editor/scripteditor.cpp:936
+#: src/modules/editor/scripteditor.cpp:964
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "No pude abrir el archivo %s para lectura."
 
-#: src/modules/editor/scripteditor.cpp:855
+#: src/modules/editor/scripteditor.cpp:883
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "No pude abrir el archivo %s para escritura."
 
 #: src/modules/actioneditor/actioneditor.cpp:884
 #: src/modules/aliaseditor/aliaseditor.cpp:1194
-#: src/modules/editor/scripteditor.cpp:532
+#: src/modules/editor/scripteditor.cpp:531
 #: src/modules/eventeditor/eventeditor.cpp:515
 #: src/modules/popupeditor/popupeditor.cpp:1320
 #: src/modules/raweditor/raweditor.cpp:488
@@ -423,7 +423,7 @@ msgstr "Elige un directorio - KVIrc"
 #: src/modules/actioneditor/actioneditor.cpp:700
 #: src/modules/aliaseditor/aliaseditor.cpp:808
 #: src/modules/classeditor/classeditor.cpp:1052
-#: src/modules/editor/scripteditor.cpp:842
+#: src/modules/editor/scripteditor.cpp:870
 #: src/modules/eventeditor/eventeditor.cpp:446
 #: src/modules/eventeditor/eventeditor.cpp:487
 #: src/modules/popupeditor/popupeditor.cpp:1120
@@ -478,11 +478,11 @@ msgstr "Cerrar todos los items"
 msgid "Collapse All Namespaces"
 msgstr "Cerrar todos los espacios de nombres"
 
-#: src/modules/editor/scripteditor.cpp:514
+#: src/modules/editor/scripteditor.cpp:513
 msgid "Colors"
 msgstr "Colores"
 
-#: src/modules/editor/scripteditor.cpp:519
+#: src/modules/editor/scripteditor.cpp:518
 msgid "Comments:"
 msgstr "Comentarios:"
 
@@ -652,7 +652,7 @@ msgstr "Menú externo"
 msgid "External menu:"
 msgstr "Menú externo:"
 
-#: src/modules/editor/scripteditor.cpp:735
+#: src/modules/editor/scripteditor.cpp:758
 msgid "Find"
 msgstr "Buscar"
 
@@ -676,7 +676,7 @@ msgstr "Buscar en clases"
 msgid "Find In Classes..."
 msgstr "Buscar en clases..."
 
-#: src/modules/editor/scripteditor.cpp:524
+#: src/modules/editor/scripteditor.cpp:523
 msgid "Find:"
 msgstr "Buscar:"
 
@@ -684,7 +684,7 @@ msgstr "Buscar:"
 msgid "Flags"
 msgstr "Opciones"
 
-#: src/modules/editor/scripteditor.cpp:512
+#: src/modules/editor/scripteditor.cpp:511
 msgid "Font:"
 msgstr "Fuente:"
 
@@ -708,7 +708,7 @@ msgstr ""
 "Los nombres de las funciones sólo pueden contener letras, dígitos y barras "
 "bajas"
 
-#: src/modules/editor/scripteditor.cpp:520
+#: src/modules/editor/scripteditor.cpp:519
 msgid "Functions:"
 msgstr "Funciones:"
 
@@ -765,7 +765,7 @@ msgstr "ID de objeto:"
 msgid "Key Sequence:"
 msgstr "Secuencia clave:"
 
-#: src/modules/editor/scripteditor.cpp:521
+#: src/modules/editor/scripteditor.cpp:520
 msgid "Keywords:"
 msgstr "Identificadores:"
 
@@ -778,7 +778,7 @@ msgstr "Etiqueta"
 msgid "Label:"
 msgstr "Etiqueta:"
 
-#: src/modules/editor/scripteditor.cpp:922
+#: src/modules/editor/scripteditor.cpp:950
 msgid "Load Script File - KVIrc"
 msgstr "Cargar Archivo de Script - KVIrc"
 
@@ -929,7 +929,6 @@ msgstr "Nueva barra de herramientas"
 #: src/modules/aliaseditor/aliaseditor.cpp:930
 #: src/modules/classeditor/classeditor.cpp:990
 #: src/modules/classeditor/classeditor.cpp:1187
-#: src/modules/toolbareditor/toolbareditor.cpp:379
 #: src/modules/toolbareditor/toolbareditor.cpp:404
 msgid "No"
 msgstr "No"
@@ -944,7 +943,7 @@ msgstr "No"
 msgid "No item selected"
 msgstr "No hay ningún objeto seleccionado"
 
-#: src/modules/editor/scripteditor.cpp:517
+#: src/modules/editor/scripteditor.cpp:516
 msgid "Normal text:"
 msgstr "Texto normal:"
 
@@ -956,7 +955,7 @@ msgstr "Texto normal:"
 #: src/modules/classeditor/classeditor.cpp:963
 #: src/modules/classeditor/classeditor.cpp:1033
 #: src/modules/classeditor/classeditor.cpp:1063
-#: src/modules/editor/scripteditor.cpp:528
+#: src/modules/editor/scripteditor.cpp:527
 #: src/modules/eventeditor/eventeditor.cpp:491
 #: src/modules/popupeditor/popupeditor.cpp:1127
 #: src/modules/popupeditor/popupeditor.cpp:1174
@@ -994,7 +993,7 @@ msgstr "Vale, déjame volver a intentarlo..."
 msgid "Only If There Are Selected Users"
 msgstr "Sólo si hay usuarios seleccionados"
 
-#: src/modules/editor/scripteditor.cpp:935
+#: src/modules/editor/scripteditor.cpp:963
 msgid "Open Failed - KVIrc"
 msgstr "Falló la apertura - KVIrc"
 
@@ -1104,7 +1103,7 @@ msgstr "Editor de menús emergentes"
 msgid "Popup name"
 msgstr "Nombre del menú emergente"
 
-#: src/modules/editor/scripteditor.cpp:506
+#: src/modules/editor/scripteditor.cpp:505
 msgid "Preferences"
 msgstr "Preferencias"
 
@@ -1116,7 +1115,7 @@ msgstr "Prólogo"
 msgid "Properties"
 msgstr "Propiedades"
 
-#: src/modules/editor/scripteditor.cpp:523
+#: src/modules/editor/scripteditor.cpp:522
 msgid "Punctuation:"
 msgstr "Puntuación:"
 
@@ -1171,16 +1170,16 @@ msgstr "Renombrar espacio de nombres"
 msgid "Replace file"
 msgstr "Reemplazar archivo"
 
-#: src/modules/editor/scripteditor.cpp:977
+#: src/modules/editor/scripteditor.cpp:1014
 msgid "Replace with"
 msgstr "Reemplazar con"
 
-#: src/modules/editor/scripteditor.cpp:905
+#: src/modules/editor/scripteditor.cpp:933
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Fila: %d Col: %d"
 
-#: src/modules/editor/scripteditor.cpp:854
+#: src/modules/editor/scripteditor.cpp:882
 msgid "Save Failed - KVIrc"
 msgstr "Falló la Grabación - KVIrc"
 
@@ -1351,7 +1350,7 @@ msgstr "No se pudo escribir al archivo de eventos en bruto."
 msgid "Unable to write to the toolbar file."
 msgstr "No se pudo escribir al archivo de barras de herramientas."
 
-#: src/modules/editor/scripteditor.cpp:522
+#: src/modules/editor/scripteditor.cpp:521
 msgid "Variables:"
 msgstr "Variables:"
 
@@ -1371,7 +1370,7 @@ msgstr ""
 "Descripción corta para esta acción.<br>Esta frase será mostrada al usuario "
 "así que es una buena idea usar $tr() aquí"
 
-#: src/modules/editor/scripteditor.cpp:968
+#: src/modules/editor/scripteditor.cpp:1005
 msgid "Word to Find"
 msgstr "Palabra a encontrar"
 
@@ -1392,7 +1391,6 @@ msgstr "Falló la escritura - KVIrc"
 #: src/modules/aliaseditor/aliaseditor.cpp:930
 #: src/modules/classeditor/classeditor.cpp:990
 #: src/modules/classeditor/classeditor.cpp:1187
-#: src/modules/toolbareditor/toolbareditor.cpp:380
 #: src/modules/toolbareditor/toolbareditor.cpp:403
 msgid "Yes"
 msgstr "Sí"

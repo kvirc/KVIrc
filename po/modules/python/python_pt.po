@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 15:48+0200\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
 "PO-Revision-Date: 2010-03-10 04:04+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/pythoncore/libkvipythoncore.cpp:112
+#: src/modules/pythoncore/libkvipythoncore.cpp:129
 msgid "Internal error: python interpreter not initialized"
 msgstr "Erro interno: interpretador python não inicializado"
 
-#: src/modules/python/libkvipython.cpp:117
-#: src/modules/python/libkvipython.cpp:121
+#: src/modules/python/libkvipython.cpp:441
+#: src/modules/python/libkvipython.cpp:445
 msgid "Python execution error:"
 msgstr "Erro de execução python:"
 
@@ -31,8 +31,8 @@ msgid "The pythoncore module can't be loaded: python support not available"
 msgstr ""
 "O módulo pythoncore não pode ser carregado: suporte python não disponível"
 
-#: src/modules/python/libkvipython.cpp:100
-#: src/modules/python/libkvipython.cpp:153
+#: src/modules/python/libkvipython.cpp:424
+#: src/modules/python/libkvipython.cpp:477
 msgid ""
 "The pythoncore module failed to execute the code: something is wrong with "
 "the python support"

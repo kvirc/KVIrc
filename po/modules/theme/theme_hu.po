@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-19 20:08+0200\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
 "PO-Revision-Date: 2008-03-03 10:04+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -28,14 +28,15 @@ msgstr "Kinézet eltávolítása"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Képernyőkép Készítése - KVIrc"
 
+#: src/modules/theme/libkvitheme.cpp:109
+#: src/modules/theme/libkvitheme.cpp:123
 #: src/modules/theme/managementdialog.cpp:279
 #: src/modules/theme/managementdialog.cpp:292
-#: src/modules/theme/libkvitheme.cpp:109 src/modules/theme/libkvitheme.cpp:123
 msgid "Apply theme - KVIrc"
 msgstr "Kinézet Alkalmazása - KVIrc"
 
-#: src/modules/theme/themefunctions.cpp:121
-#: src/modules/theme/themefunctions.cpp:319
+#: src/modules/theme/themefunctions.cpp:126
+#: src/modules/theme/themefunctions.cpp:322
 msgid "Author"
 msgstr "Készítő"
 
@@ -43,13 +44,13 @@ msgstr "Készítő"
 msgid "Choose a file to save the screenshot to"
 msgstr "Add meg a fájlt, ahova a képernyőképet mentsem"
 
-#: src/modules/theme/themefunctions.cpp:122
-#: src/modules/theme/themefunctions.cpp:320
+#: src/modules/theme/themefunctions.cpp:127
+#: src/modules/theme/themefunctions.cpp:323
 msgid "Created at"
 msgstr "Készült "
 
-#: src/modules/theme/themefunctions.cpp:123
-#: src/modules/theme/themefunctions.cpp:321
+#: src/modules/theme/themefunctions.cpp:128
+#: src/modules/theme/themefunctions.cpp:324
 msgid "Created with"
 msgstr "Készült"
 
@@ -66,7 +67,7 @@ msgstr "Kinézet Törlése - KVIrc"
 msgid "Description:"
 msgstr "Leírás:"
 
-#: src/modules/theme/themefunctions.cpp:276
+#: src/modules/theme/themefunctions.cpp:281
 msgid "Do Not Install"
 msgstr "Ne Telepíts"
 
@@ -74,12 +75,12 @@ msgstr "Ne Telepíts"
 msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
 msgstr "Tényleg törölni szeretnéd a kinézetet \"%Q\" (Verzió: %Q)?"
 
-#: src/modules/theme/themefunctions.cpp:275
+#: src/modules/theme/themefunctions.cpp:280
 msgid "Do you want to proceed with the installation ?"
 msgstr "Szeretnéd folytatni a telepítéssel?"
 
-#: src/modules/theme/managementdialog.cpp:280
 #: src/modules/theme/libkvitheme.cpp:110
+#: src/modules/theme/managementdialog.cpp:280
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Szeretnéd alkalmazni a \"%Q\" Kinézetet (%Q verzió)"
 
@@ -97,15 +98,15 @@ msgstr "A kiválsztott csomag exportálása hordozható csomagba"
 
 #: src/modules/theme/packthemedialog.cpp:64
 #: src/modules/theme/packthemedialog.cpp:369
-#: src/modules/theme/packthemedialog.cpp:457
-#: src/modules/theme/packthemedialog.cpp:545
-#: src/modules/theme/packthemedialog.cpp:562
-#: src/modules/theme/packthemedialog.cpp:574
+#: src/modules/theme/packthemedialog.cpp:456
+#: src/modules/theme/packthemedialog.cpp:543
+#: src/modules/theme/packthemedialog.cpp:558
+#: src/modules/theme/packthemedialog.cpp:570
 msgid "Export Theme - KVIrc"
 msgstr "Kinézet Exportálása - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:291
 #: src/modules/theme/libkvitheme.cpp:122
+#: src/modules/theme/managementdialog.cpp:291
 msgid "Failed to apply the specified theme: %Q"
 msgstr "A megadott kinézet alkalmazása sikertelen: Q"
 
@@ -114,7 +115,7 @@ msgstr "A megadott kinézet alkalmazása sikertelen: Q"
 msgid "Failed to load the selected image"
 msgstr "Kiválasztott kép betöltése sikertelen"
 
-#: src/modules/theme/packthemedialog.cpp:458
+#: src/modules/theme/packthemedialog.cpp:457
 msgid "Failed to load the selected image: please fix it"
 msgstr "Kiválasztott kép betöltése sikertelen: kérlek javítsd"
 
@@ -126,7 +127,7 @@ msgstr "A kiválasztott képernyőkép betöltése nem lehetséges: kérlek jav�
 msgid "Failed to make screenshot"
 msgstr "Képernyőkép készítése sikertelen"
 
-#: src/modules/theme/themefunctions.cpp:295
+#: src/modules/theme/themefunctions.cpp:298
 msgid "Failed to unpack the selected file: %Q"
 msgstr "A kiválaszott fájl kicsomagolása sikertelen: %Q"
 
@@ -139,7 +140,7 @@ msgstr ""
 msgid "Get More Themes..."
 msgstr "Még több kinézet..."
 
-#: src/modules/theme/themefunctions.cpp:212
+#: src/modules/theme/themefunctions.cpp:217
 msgid "Go Back to Package Data"
 msgstr "Vissza a Csomag Adatokhoz"
 
@@ -201,7 +202,7 @@ msgstr "Kattints a \"Következő\" gombra a kezdéshez."
 msgid "Icon/Screenshot"
 msgstr "Ikon/Képernyőkép"
 
-#: src/modules/theme/themefunctions.cpp:273
+#: src/modules/theme/themefunctions.cpp:278
 msgid "Install Theme Pack - KVIrc"
 msgstr "Kinézet Csomag Telepítése - KVIrc"
 
@@ -237,8 +238,8 @@ msgstr "Csomag Neve:"
 msgid "Package Path"
 msgstr "Csomag Útvonala"
 
-#: src/modules/theme/packthemedialog.cpp:541
-#: src/modules/theme/packthemedialog.cpp:558
+#: src/modules/theme/packthemedialog.cpp:539
+#: src/modules/theme/packthemedialog.cpp:554
 msgid "Packaging failed"
 msgstr "Csomagkészítés sikertelen"
 
@@ -267,15 +268,15 @@ msgstr "Kinézet Mentése - KVIrc"
 msgid "Screenshot"
 msgstr "Képernyőkép"
 
-#: src/modules/theme/themefunctions.cpp:223
+#: src/modules/theme/themefunctions.cpp:228
 msgid "Show Details"
 msgstr "Részletek Megjelenítése"
 
-#: src/modules/theme/themefunctions.cpp:323
+#: src/modules/theme/themefunctions.cpp:326
 msgid "Subdirectory"
 msgstr "Alkönyvtár"
 
-#: src/modules/theme/themefunctions.cpp:69
+#: src/modules/theme/themefunctions.cpp:68
 msgid "The selected file does not seem to be a valid KVIrc package: %Q"
 msgstr "A kiválasztott fájl valószínűleg nem érvényes KVIrc kinézet csomag: %Q"
 
@@ -283,7 +284,8 @@ msgstr "A kiválasztott fájl valószínűleg nem érvényes KVIrc kinézet csom
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "A kiválasztott fájl valószínűleg nem érvényes KVIrc kinézet csomag"
 
-#: src/modules/theme/libkvitheme.cpp:128 src/modules/theme/libkvitheme.cpp:171
+#: src/modules/theme/libkvitheme.cpp:128
+#: src/modules/theme/libkvitheme.cpp:171
 msgid "The theme package '%Q' does not exists"
 msgstr ""
 
@@ -295,7 +297,7 @@ msgstr "Kinézet Készítője:"
 msgid "Theme Data"
 msgstr "Kinézet Adatok"
 
-#: src/modules/theme/themefunctions.cpp:322
+#: src/modules/theme/themefunctions.cpp:325
 msgid "Theme Engine Version"
 msgstr "Kinézet Motor Verzió"
 
@@ -357,7 +359,7 @@ msgstr "%Q kinézet mentése sikertelen."
 msgid "Version:"
 msgstr "Verzió:"
 
-#: src/modules/theme/themefunctions.cpp:219
+#: src/modules/theme/themefunctions.cpp:224
 msgid ""
 "Warning: Some of the theme contained in this package might be either "
 "corrupted or incompatible with this version of KVIrc"
@@ -365,7 +367,7 @@ msgstr ""
 "Figyelmeztetés: a csomag tartalmaz olyan elemeket, amelyek nem biztos, hogy "
 "kompatibilisek a KVIrc ezen verziójával vagy a fájl sérült."
 
-#: src/modules/theme/themefunctions.cpp:203
+#: src/modules/theme/themefunctions.cpp:208
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr ""
 "Figyelmeztetés: A kinézet nem biztos, hogy kompatibilis a KVIrc ezen "
@@ -376,7 +378,7 @@ msgstr ""
 msgid "Welcome"
 msgstr "Üdvözlet"
 
-#: src/modules/theme/themefunctions.cpp:277
+#: src/modules/theme/themefunctions.cpp:282
 msgid "Yes, Proceed"
 msgstr "Igen, Folytatás"
 
@@ -399,7 +401,7 @@ msgstr ""
 "Meg kell majd adnod egy kinézet nevet, leírást és - ha szeretnéd - "
 "képernyőképet."
 
-#: src/modules/theme/themefunctions.cpp:274
+#: src/modules/theme/themefunctions.cpp:279
 msgid "You're about to install the following theme package"
 msgstr "A következő kinézet csomag kerül telepítésre:"
 

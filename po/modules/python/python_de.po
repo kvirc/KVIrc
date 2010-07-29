@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 15:48+0200\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
 "PO-Revision-Date: 2010-01-24 16:45+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -16,12 +16,12 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: src/modules/pythoncore/libkvipythoncore.cpp:112
+#: src/modules/pythoncore/libkvipythoncore.cpp:129
 msgid "Internal error: python interpreter not initialized"
 msgstr "Interner Fehler: Python-Interpreter nicht initialisiert"
 
-#: src/modules/python/libkvipython.cpp:117
-#: src/modules/python/libkvipython.cpp:121
+#: src/modules/python/libkvipython.cpp:441
+#: src/modules/python/libkvipython.cpp:445
 msgid "Python execution error:"
 msgstr "Python-Ausführungsfehler:"
 
@@ -31,8 +31,8 @@ msgstr ""
 "Das Modul pythoncore kann nicht geladen werden: Python-Unterstützung nicht "
 "verfügbar"
 
-#: src/modules/python/libkvipython.cpp:100
-#: src/modules/python/libkvipython.cpp:153
+#: src/modules/python/libkvipython.cpp:424
+#: src/modules/python/libkvipython.cpp:477
 msgid ""
 "The pythoncore module failed to execute the code: something is wrong with "
 "the python support"

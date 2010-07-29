@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-10 20:53+0200\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
 "PO-Revision-Date: 2005-02-24 23:23+0100\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -67,12 +67,12 @@ msgstr ""
 
 #: src/modules/classeditor/classeditor.cpp:1780
 #: src/modules/classeditor/classeditor.cpp:1866
-#: src/modules/editor/scripteditor.cpp:994
+#: src/modules/editor/scripteditor.cpp:1031
 #, fuzzy
 msgid "&Cancel"
 msgstr "Cancel·lar"
 
-#: src/modules/editor/scripteditor.cpp:726
+#: src/modules/editor/scripteditor.cpp:749
 msgid "&Configure Editor..."
 msgstr "&Configurar Editor..."
 
@@ -132,7 +132,7 @@ msgstr ""
 msgid "&OK"
 msgstr "&Acceptar"
 
-#: src/modules/editor/scripteditor.cpp:723
+#: src/modules/editor/scripteditor.cpp:746
 msgid "&Open..."
 msgstr "&Obrir..."
 
@@ -149,11 +149,11 @@ msgid "&Rename Class"
 msgstr ""
 
 #: src/modules/editor/scripteditor.cpp:250
-#: src/modules/editor/scripteditor.cpp:999
+#: src/modules/editor/scripteditor.cpp:1036
 msgid "&Replace"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:989
+#: src/modules/editor/scripteditor.cpp:1026
 msgid "&Replace in all Aliases"
 msgstr ""
 
@@ -162,7 +162,7 @@ msgstr ""
 msgid "&Save"
 msgstr "&Guardar Com a..."
 
-#: src/modules/editor/scripteditor.cpp:724
+#: src/modules/editor/scripteditor.cpp:747
 msgid "&Save As..."
 msgstr "&Guardar Com a..."
 
@@ -277,7 +277,7 @@ msgstr ""
 msgid "Automatically"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:516
+#: src/modules/editor/scripteditor.cpp:515
 msgid "Background:"
 msgstr "Fons:"
 
@@ -300,23 +300,23 @@ msgstr ""
 msgid "Big Icon:"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:518
+#: src/modules/editor/scripteditor.cpp:517
 msgid "Brackets:"
 msgstr "Claus:"
 
-#: src/modules/editor/scripteditor.cpp:936
+#: src/modules/editor/scripteditor.cpp:964
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "No puc obrir l'arxiu %s per a lectura."
 
-#: src/modules/editor/scripteditor.cpp:855
+#: src/modules/editor/scripteditor.cpp:883
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "No puc obrir l'arxiu %s per a escriptura."
 
 #: src/modules/actioneditor/actioneditor.cpp:884
 #: src/modules/aliaseditor/aliaseditor.cpp:1194
-#: src/modules/editor/scripteditor.cpp:532
+#: src/modules/editor/scripteditor.cpp:531
 #: src/modules/eventeditor/eventeditor.cpp:515
 #: src/modules/popupeditor/popupeditor.cpp:1320
 #: src/modules/raweditor/raweditor.cpp:488
@@ -386,7 +386,7 @@ msgstr "Esculli un Nom d'Arxiu - KVIrc"
 #: src/modules/actioneditor/actioneditor.cpp:700
 #: src/modules/aliaseditor/aliaseditor.cpp:808
 #: src/modules/classeditor/classeditor.cpp:1052
-#: src/modules/editor/scripteditor.cpp:842
+#: src/modules/editor/scripteditor.cpp:870
 #: src/modules/eventeditor/eventeditor.cpp:446
 #: src/modules/eventeditor/eventeditor.cpp:487
 #: src/modules/popupeditor/popupeditor.cpp:1120
@@ -440,11 +440,11 @@ msgstr ""
 msgid "Collapse All Namespaces"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:514
+#: src/modules/editor/scripteditor.cpp:513
 msgid "Colors"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:519
+#: src/modules/editor/scripteditor.cpp:518
 msgid "Comments:"
 msgstr "Comentaris:"
 
@@ -613,7 +613,7 @@ msgstr ""
 msgid "External menu:"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:735
+#: src/modules/editor/scripteditor.cpp:758
 msgid "Find"
 msgstr ""
 
@@ -637,7 +637,7 @@ msgstr ""
 msgid "Find In Classes..."
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:524
+#: src/modules/editor/scripteditor.cpp:523
 msgid "Find:"
 msgstr ""
 
@@ -645,7 +645,7 @@ msgstr ""
 msgid "Flags"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:512
+#: src/modules/editor/scripteditor.cpp:511
 msgid "Font:"
 msgstr "Font:"
 
@@ -666,7 +666,7 @@ msgstr ""
 msgid "Function names can contain only letters, digits and underscores"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:520
+#: src/modules/editor/scripteditor.cpp:519
 msgid "Functions:"
 msgstr "Funcions:"
 
@@ -722,7 +722,7 @@ msgstr ""
 msgid "Key Sequence:"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:521
+#: src/modules/editor/scripteditor.cpp:520
 msgid "Keywords:"
 msgstr "Identificadors:"
 
@@ -735,7 +735,7 @@ msgstr ""
 msgid "Label:"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:922
+#: src/modules/editor/scripteditor.cpp:950
 msgid "Load Script File - KVIrc"
 msgstr "Carregar Arxivo d'Script - KVIrc"
 
@@ -885,7 +885,6 @@ msgstr ""
 #: src/modules/aliaseditor/aliaseditor.cpp:930
 #: src/modules/classeditor/classeditor.cpp:990
 #: src/modules/classeditor/classeditor.cpp:1187
-#: src/modules/toolbareditor/toolbareditor.cpp:379
 #: src/modules/toolbareditor/toolbareditor.cpp:404
 msgid "No"
 msgstr ""
@@ -900,7 +899,7 @@ msgstr ""
 msgid "No item selected"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:517
+#: src/modules/editor/scripteditor.cpp:516
 msgid "Normal text:"
 msgstr "Text normal:"
 
@@ -912,7 +911,7 @@ msgstr "Text normal:"
 #: src/modules/classeditor/classeditor.cpp:963
 #: src/modules/classeditor/classeditor.cpp:1033
 #: src/modules/classeditor/classeditor.cpp:1063
-#: src/modules/editor/scripteditor.cpp:528
+#: src/modules/editor/scripteditor.cpp:527
 #: src/modules/eventeditor/eventeditor.cpp:491
 #: src/modules/popupeditor/popupeditor.cpp:1127
 #: src/modules/popupeditor/popupeditor.cpp:1174
@@ -951,7 +950,7 @@ msgstr ""
 msgid "Only If There Are Selected Users"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:935
+#: src/modules/editor/scripteditor.cpp:963
 msgid "Open Failed - KVIrc"
 msgstr "Ha fallat l'apertura - KVIrc"
 
@@ -1047,7 +1046,7 @@ msgstr ""
 msgid "Popup name"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:506
+#: src/modules/editor/scripteditor.cpp:505
 msgid "Preferences"
 msgstr "Preferències"
 
@@ -1059,7 +1058,7 @@ msgstr ""
 msgid "Properties"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:523
+#: src/modules/editor/scripteditor.cpp:522
 msgid "Punctuation:"
 msgstr "Puntuació:"
 
@@ -1114,16 +1113,16 @@ msgstr ""
 msgid "Replace file"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:977
+#: src/modules/editor/scripteditor.cpp:1014
 msgid "Replace with"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:905
+#: src/modules/editor/scripteditor.cpp:933
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Fila: %d Col: %d"
 
-#: src/modules/editor/scripteditor.cpp:854
+#: src/modules/editor/scripteditor.cpp:882
 msgid "Save Failed - KVIrc"
 msgstr "Ha fallat la Gravació - KVIrc"
 
@@ -1277,7 +1276,7 @@ msgstr ""
 msgid "Unable to write to the toolbar file."
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:522
+#: src/modules/editor/scripteditor.cpp:521
 msgid "Variables:"
 msgstr "Variables:"
 
@@ -1293,7 +1292,7 @@ msgid ""
 "to the user so it is a good idea to use $tr() here"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:968
+#: src/modules/editor/scripteditor.cpp:1005
 msgid "Word to Find"
 msgstr ""
 
@@ -1315,7 +1314,6 @@ msgstr "Ha fallat l'apertura - KVIrc"
 #: src/modules/aliaseditor/aliaseditor.cpp:930
 #: src/modules/classeditor/classeditor.cpp:990
 #: src/modules/classeditor/classeditor.cpp:1187
-#: src/modules/toolbareditor/toolbareditor.cpp:380
 #: src/modules/toolbareditor/toolbareditor.cpp:403
 msgid "Yes"
 msgstr ""

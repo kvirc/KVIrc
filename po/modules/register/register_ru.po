@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-10 20:53+0200\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
 "PO-Revision-Date: 2010-01-30 19:43+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -25,14 +25,14 @@ msgstr "    Маска: %Q!%Q@%Q"
 msgid "    No properties"
 msgstr "    Нет свойств"
 
+#: src/modules/regchan/libkviregchan.cpp:229
+#, fuzzy
+msgid "    Property: %1=%2"
+msgstr "    Свойство: %Q=%Q"
+
 #: src/modules/reguser/libkvireguser.cpp:831
 msgid "    Property: %Q=%Q"
 msgstr "    Свойство: %Q=%Q"
-
-#: src/modules/regchan/libkviregchan.cpp:212
-#, c-format
-msgid "    Property: %s=%s"
-msgstr "    Свойство: %s=%s"
 
 #: src/modules/reguser/libkvireguser.cpp:816
 msgid "    Warning: this user has no registration masks"
@@ -46,7 +46,8 @@ msgstr " Пользователь: %c%Q"
 msgid "&Add Group..."
 msgstr "&Добавить группу..."
 
-#: src/modules/reguser/dialog.cpp:246 src/modules/reguser/edituser.cpp:355
+#: src/modules/reguser/edituser.cpp:355
+#: src/modules/reguser/dialog.cpp:246
 msgid "&Add..."
 msgstr "&Добавить..."
 
@@ -62,8 +63,10 @@ msgstr "&Редактировать..."
 msgid "&New"
 msgstr "&Новый"
 
-#: src/modules/reguser/dialog.cpp:297 src/modules/reguser/edituser.cpp:114
-#: src/modules/reguser/edituser.cpp:258 src/modules/reguser/edituser.cpp:470
+#: src/modules/reguser/edituser.cpp:114
+#: src/modules/reguser/edituser.cpp:258
+#: src/modules/reguser/edituser.cpp:470
+#: src/modules/reguser/dialog.cpp:297
 msgid "&OK"
 msgstr "&Ok"
 
@@ -236,26 +239,32 @@ msgstr "Невозможно открыть файл %Q на запись."
 msgid "Can't open file %s for reading."
 msgstr "Невозможно открыть файл %s на чтение."
 
-#: src/modules/reguser/dialog.cpp:302 src/modules/reguser/edituser.cpp:118
-#: src/modules/reguser/edituser.cpp:262 src/modules/reguser/edituser.cpp:469
+#: src/modules/reguser/edituser.cpp:118
+#: src/modules/reguser/edituser.cpp:262
+#: src/modules/reguser/edituser.cpp:469
+#: src/modules/reguser/dialog.cpp:302
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/modules/regchan/libkviregchan.cpp:207
-#, c-format
-msgid "Channel: %c%s@%s"
+#: src/modules/regchan/libkviregchan.cpp:219
+#, fuzzy
+msgid "Channel: %1%2@%3"
 msgstr "Канал: %c%s@%s"
 
-#: src/modules/reguser/dialog.cpp:719 src/modules/reguser/dialog.cpp:823
+#: src/modules/reguser/dialog.cpp:719
+#: src/modules/reguser/dialog.cpp:823
 msgid "Choose a Filename - KVIrc"
 msgstr "Выберите имя файла - KVIrc"
 
-#: src/modules/reguser/dialog.cpp:134 src/modules/reguser/edituser.cpp:332
+#: src/modules/reguser/edituser.cpp:332
+#: src/modules/reguser/dialog.cpp:134
 msgid "Comment:"
 msgstr "Комментарий:"
 
-#: src/modules/reguser/dialog.cpp:520 src/modules/reguser/dialog.cpp:523
-#: src/modules/reguser/dialog.cpp:524 src/modules/reguser/dialog.cpp:526
+#: src/modules/reguser/dialog.cpp:520
+#: src/modules/reguser/dialog.cpp:523
+#: src/modules/reguser/dialog.cpp:524
+#: src/modules/reguser/dialog.cpp:526
 #: src/modules/reguser/dialog.cpp:528
 msgid "Default"
 msgstr "По умолчанию"
@@ -286,7 +295,8 @@ msgstr ""
 msgid "Flags"
 msgstr "Флаги"
 
-#: src/modules/reguser/dialog.cpp:411 src/modules/reguser/dialog.cpp:424
+#: src/modules/reguser/dialog.cpp:411
+#: src/modules/reguser/dialog.cpp:424
 msgid "Group name:"
 msgstr "Имя группы:"
 
@@ -412,8 +422,8 @@ msgstr "Имя не определено"
 msgid "No property specified"
 msgstr "Не определено свойство"
 
-#: src/modules/regchan/libkviregchan.cpp:120
-#: src/modules/regchan/libkviregchan.cpp:177
+#: src/modules/regchan/libkviregchan.cpp:124
+#: src/modules/regchan/libkviregchan.cpp:184
 msgid "No such channel/netmask entry in the database"
 msgstr "Не найдены канал/маска в базе"
 
@@ -449,7 +459,8 @@ msgstr "Свойство"
 msgid "Property Editor"
 msgstr "Редактор свойств"
 
-#: src/modules/reguser/dialog.cpp:256 src/modules/reguser/edituser.cpp:359
+#: src/modules/reguser/edituser.cpp:359
+#: src/modules/reguser/dialog.cpp:256
 msgid "Re&move"
 msgstr "&Удалить"
 
@@ -461,7 +472,7 @@ msgstr "Регистрация пользователя"
 msgid "Registered Users - KVIrc"
 msgstr "Регистрация пользователей - KVIrc"
 
-#: src/modules/regchan/libkviregchan.cpp:197
+#: src/modules/regchan/libkviregchan.cpp:204
 msgid "Registered channel list:"
 msgstr "Зарегистрированный список каналов:"
 
@@ -515,7 +526,7 @@ msgstr "Файл %s содержит базу данных пользовате�
 msgid "The file %s doesn't appear to be a valid registered users database."
 msgstr "Файл %s не является действительной базой регистрации пользователей."
 
-#: src/modules/regchan/libkviregchan.cpp:219
+#: src/modules/regchan/libkviregchan.cpp:238
 #, c-format
 msgid "Total %d channels"
 msgstr "Всего %d каналов"
@@ -551,3 +562,6 @@ msgstr "Пользователь не найден (%Q)"
 #: src/modules/reguser/edituser.cpp:92
 msgid "Value"
 msgstr "Значение"
+
+#~ msgid "    Property: %s=%s"
+#~ msgstr "    Свойство: %s=%s"

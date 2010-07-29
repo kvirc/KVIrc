@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 15:48+0200\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
 "PO-Revision-Date: 2010-01-30 20:25+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/modules/serverdb/libkviserverdb.cpp:685
+#: src/modules/serverdb/libkviserverdb.cpp:721
 msgid "The network specified already exists"
 msgstr "Указанная сеть уже существует"
 
@@ -26,9 +26,9 @@ msgstr "Указанный IP не действителен"
 
 #: src/modules/serverdb/libkviserverdb.cpp:169
 #: src/modules/serverdb/libkviserverdb.cpp:203
-#: src/modules/serverdb/libkviserverdb.cpp:762
-#: src/modules/serverdb/libkviserverdb.cpp:826
-#: src/modules/serverdb/libkviserverdb.cpp:868
+#: src/modules/serverdb/libkviserverdb.cpp:798
+#: src/modules/serverdb/libkviserverdb.cpp:862
+#: src/modules/serverdb/libkviserverdb.cpp:904
 msgid "The specified network does not exist"
 msgstr "Заданная сеть не существует"
 
@@ -51,12 +51,12 @@ msgstr "Указанный адрес прокси уже существует"
 msgid "The specified proxy does not exist"
 msgstr "Заданный прокси не существует"
 
-#: src/modules/serverdb/libkviserverdb.cpp:773
+#: src/modules/serverdb/libkviserverdb.cpp:809
 msgid "The specified server already exists"
 msgstr "Заданный сервер уже существует"
 
 #: src/modules/serverdb/libkviserverdb.cpp:210
-#: src/modules/serverdb/libkviserverdb.cpp:876
+#: src/modules/serverdb/libkviserverdb.cpp:912
 msgid "The specified server does not exist"
 msgstr "Заданный сервер не существует"
 
@@ -67,10 +67,10 @@ msgstr "Вы должны предоставить IP в качестве пар
 #: src/modules/serverdb/libkviserverdb.cpp:61
 #: src/modules/serverdb/libkviserverdb.cpp:162
 #: src/modules/serverdb/libkviserverdb.cpp:190
-#: src/modules/serverdb/libkviserverdb.cpp:677
-#: src/modules/serverdb/libkviserverdb.cpp:748
-#: src/modules/serverdb/libkviserverdb.cpp:812
+#: src/modules/serverdb/libkviserverdb.cpp:713
+#: src/modules/serverdb/libkviserverdb.cpp:784
 #: src/modules/serverdb/libkviserverdb.cpp:848
+#: src/modules/serverdb/libkviserverdb.cpp:884
 msgid "You must provide the network name as parameter"
 msgstr "Вы должны предоставить имя сети в качестве параметра"
 
@@ -98,13 +98,13 @@ msgstr "Вы должны предоставить имя прокси в кач
 
 #: src/modules/serverdb/libkviserverdb.cpp:104
 #: src/modules/serverdb/libkviserverdb.cpp:196
-#: src/modules/serverdb/libkviserverdb.cpp:754
-#: src/modules/serverdb/libkviserverdb.cpp:854
+#: src/modules/serverdb/libkviserverdb.cpp:790
+#: src/modules/serverdb/libkviserverdb.cpp:890
 msgid "You must provide the server name as parameter"
 msgstr "Вы должны предоставить имя сервера в качестве параметра"
 
 #: src/modules/proxydb/libkviproxydb.cpp:602
-#: src/modules/serverdb/libkviserverdb.cpp:818
-#: src/modules/serverdb/libkviserverdb.cpp:860
+#: src/modules/serverdb/libkviserverdb.cpp:854
+#: src/modules/serverdb/libkviserverdb.cpp:896
 msgid "You must provide the value as parameter"
 msgstr "Вы должны предоставить значение в качестве параметра"

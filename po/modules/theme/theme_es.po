@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-10 20:53+0200\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
 "PO-Revision-Date: 2010-05-18 13:03+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -23,14 +23,15 @@ msgstr "Elimina&r tema"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Tomar captura de pantalla - KVIrc"
 
+#: src/modules/theme/libkvitheme.cpp:109
+#: src/modules/theme/libkvitheme.cpp:123
 #: src/modules/theme/managementdialog.cpp:279
 #: src/modules/theme/managementdialog.cpp:292
-#: src/modules/theme/libkvitheme.cpp:109 src/modules/theme/libkvitheme.cpp:123
 msgid "Apply theme - KVIrc"
 msgstr "Aplicar tema - KVIrc"
 
-#: src/modules/theme/themefunctions.cpp:121
-#: src/modules/theme/themefunctions.cpp:319
+#: src/modules/theme/themefunctions.cpp:126
+#: src/modules/theme/themefunctions.cpp:322
 msgid "Author"
 msgstr "Autor"
 
@@ -38,13 +39,13 @@ msgstr "Autor"
 msgid "Choose a file to save the screenshot to"
 msgstr "Elegir un archivo al que guardar la captura de pantalla"
 
-#: src/modules/theme/themefunctions.cpp:122
-#: src/modules/theme/themefunctions.cpp:320
+#: src/modules/theme/themefunctions.cpp:127
+#: src/modules/theme/themefunctions.cpp:323
 msgid "Created at"
 msgstr "Creado el"
 
-#: src/modules/theme/themefunctions.cpp:123
-#: src/modules/theme/themefunctions.cpp:321
+#: src/modules/theme/themefunctions.cpp:128
+#: src/modules/theme/themefunctions.cpp:324
 msgid "Created with"
 msgstr "Creado con"
 
@@ -61,7 +62,7 @@ msgstr "Eliminar tema - KVIrc"
 msgid "Description:"
 msgstr "Descripción:"
 
-#: src/modules/theme/themefunctions.cpp:276
+#: src/modules/theme/themefunctions.cpp:281
 msgid "Do Not Install"
 msgstr "No instalar"
 
@@ -69,12 +70,12 @@ msgstr "No instalar"
 msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
 msgstr "¿Realmente quieres eliminar el tema \"%Q\" (versión %Q)?"
 
-#: src/modules/theme/themefunctions.cpp:275
+#: src/modules/theme/themefunctions.cpp:280
 msgid "Do you want to proceed with the installation ?"
 msgstr "¿Quieres proceder con la instalación?"
 
-#: src/modules/theme/managementdialog.cpp:280
 #: src/modules/theme/libkvitheme.cpp:110
+#: src/modules/theme/managementdialog.cpp:280
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "¿Quieres aplicar el tema \"%Q\" (versión %Q)?"
 
@@ -92,15 +93,15 @@ msgstr "Exportar los temas seleccionados a un paquete distribuible"
 
 #: src/modules/theme/packthemedialog.cpp:64
 #: src/modules/theme/packthemedialog.cpp:369
-#: src/modules/theme/packthemedialog.cpp:457
-#: src/modules/theme/packthemedialog.cpp:545
-#: src/modules/theme/packthemedialog.cpp:562
-#: src/modules/theme/packthemedialog.cpp:574
+#: src/modules/theme/packthemedialog.cpp:456
+#: src/modules/theme/packthemedialog.cpp:543
+#: src/modules/theme/packthemedialog.cpp:558
+#: src/modules/theme/packthemedialog.cpp:570
 msgid "Export Theme - KVIrc"
 msgstr "Exportar tema - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:291
 #: src/modules/theme/libkvitheme.cpp:122
+#: src/modules/theme/managementdialog.cpp:291
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Error al aplicar el tema especificado: %Q"
 
@@ -109,7 +110,7 @@ msgstr "Error al aplicar el tema especificado: %Q"
 msgid "Failed to load the selected image"
 msgstr "Error al cargar la imagen seleccionada"
 
-#: src/modules/theme/packthemedialog.cpp:458
+#: src/modules/theme/packthemedialog.cpp:457
 msgid "Failed to load the selected image: please fix it"
 msgstr "Error al cargar la imagen seleccionada: por favor, arréglalo"
 
@@ -122,7 +123,7 @@ msgstr ""
 msgid "Failed to make screenshot"
 msgstr "Error al tomar la captura"
 
-#: src/modules/theme/themefunctions.cpp:295
+#: src/modules/theme/themefunctions.cpp:298
 msgid "Failed to unpack the selected file: %Q"
 msgstr "Error al desempaquetar el archivo seleccionado: %Q"
 
@@ -136,7 +137,7 @@ msgstr ""
 msgid "Get More Themes..."
 msgstr "Obtener más temas..."
 
-#: src/modules/theme/themefunctions.cpp:212
+#: src/modules/theme/themefunctions.cpp:217
 msgid "Go Back to Package Data"
 msgstr "Volver a datos del paquete"
 
@@ -197,7 +198,7 @@ msgstr "Haz clic en el botón \"Next\" para empezar."
 msgid "Icon/Screenshot"
 msgstr "Icono/Captura"
 
-#: src/modules/theme/themefunctions.cpp:273
+#: src/modules/theme/themefunctions.cpp:278
 msgid "Install Theme Pack - KVIrc"
 msgstr "Instalar paquete de tema - KVIrc"
 
@@ -233,8 +234,8 @@ msgstr "Nombre del paquete:"
 msgid "Package Path"
 msgstr "Ruta del paquete"
 
-#: src/modules/theme/packthemedialog.cpp:541
-#: src/modules/theme/packthemedialog.cpp:558
+#: src/modules/theme/packthemedialog.cpp:539
+#: src/modules/theme/packthemedialog.cpp:554
 msgid "Packaging failed"
 msgstr "Error empaquetando"
 
@@ -263,15 +264,15 @@ msgstr "Guardar tema - KVIrc"
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
-#: src/modules/theme/themefunctions.cpp:223
+#: src/modules/theme/themefunctions.cpp:228
 msgid "Show Details"
 msgstr "Mostrar detalles"
 
-#: src/modules/theme/themefunctions.cpp:323
+#: src/modules/theme/themefunctions.cpp:326
 msgid "Subdirectory"
 msgstr "Subdirectorio"
 
-#: src/modules/theme/themefunctions.cpp:69
+#: src/modules/theme/themefunctions.cpp:68
 msgid "The selected file does not seem to be a valid KVIrc package: %Q"
 msgstr "El archivo seleccionado no parece ser un paquete de KVIrc válido: %Q"
 
@@ -279,7 +280,8 @@ msgstr "El archivo seleccionado no parece ser un paquete de KVIrc válido: %Q"
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "El archivo seleccionado no parece ser un paquete de tema KVIrc válido"
 
-#: src/modules/theme/libkvitheme.cpp:128 src/modules/theme/libkvitheme.cpp:171
+#: src/modules/theme/libkvitheme.cpp:128
+#: src/modules/theme/libkvitheme.cpp:171
 #, fuzzy
 msgid "The theme package '%Q' does not exists"
 msgstr "El paquete de temas %Q no existe"
@@ -292,7 +294,7 @@ msgstr "Autor del tema:"
 msgid "Theme Data"
 msgstr "Datos del tema"
 
-#: src/modules/theme/themefunctions.cpp:322
+#: src/modules/theme/themefunctions.cpp:325
 msgid "Theme Engine Version"
 msgstr "Versión del mecanismo del tema"
 
@@ -352,7 +354,7 @@ msgstr "No se pudo guardar el tema: %Q"
 msgid "Version:"
 msgstr "Versión:"
 
-#: src/modules/theme/themefunctions.cpp:219
+#: src/modules/theme/themefunctions.cpp:224
 msgid ""
 "Warning: Some of the theme contained in this package might be either "
 "corrupted or incompatible with this version of KVIrc"
@@ -360,7 +362,7 @@ msgstr ""
 "Atención: algunas cosas del tema contenido en este paquete podrían estar "
 "dañadas o no ser compatibles con esta versión de KVIrc"
 
-#: src/modules/theme/themefunctions.cpp:203
+#: src/modules/theme/themefunctions.cpp:208
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Atención: este tema podría ser incompatible con esta versión de KVIrc"
 
@@ -369,7 +371,7 @@ msgstr "Atención: este tema podría ser incompatible con esta versión de KVIrc
 msgid "Welcome"
 msgstr "Bienvenido"
 
-#: src/modules/theme/themefunctions.cpp:277
+#: src/modules/theme/themefunctions.cpp:282
 msgid "Yes, Proceed"
 msgstr "Sí, vamos"
 
@@ -393,7 +395,7 @@ msgstr ""
 "Se te pedirá un nombre para el tema, una descripción y, si quieres, una "
 "captura."
 
-#: src/modules/theme/themefunctions.cpp:274
+#: src/modules/theme/themefunctions.cpp:279
 msgid "You're about to install the following theme package"
 msgstr "Vas a instalar el siguiente paquete de tema"
 

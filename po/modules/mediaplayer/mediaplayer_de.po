@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-19 20:08+0200\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
 "PO-Revision-Date: 2009-12-30 16:43+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -26,9 +26,10 @@ msgstr ""
 "Sie können ihn unter http://amarok.kde.org herunterladen.\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:446
+#, fuzzy
 msgid ""
 "An interface to BMPx.\n"
-"Download it from http://bmpx.backtrace.info\n"
+"Download it from http://sourceforge.net/projects/beepmp\n"
 msgstr ""
 "Eine Schnittstelle für BMPx.\n"
 "Sie können ihn unter http://bmpx.backtrache.info herunterladen.\n"
@@ -42,9 +43,10 @@ msgstr ""
 "Sie können es unter http://qmmp.ylsoftware.com herunterladen.\n"
 
 #: src/modules/mediaplayer/mp_amipinterface.cpp:108
+#, fuzzy
 msgid ""
 "An interface to the AMIP plug-in.\n"
-"You can download it from http://amip.tools-for.net.\n"
+"You can download it from http://amip.tools-for.net\n"
 "To use this interface you must install AMIP plug-in for your player."
 msgstr ""
 "Eine Schnittstelle zum AMIP-Zusatzmodul (plugin).\n"
@@ -65,13 +67,13 @@ msgstr ""
 "(http://addons.songbirdnest.com/addon/1626).\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:506
+#, fuzzy
 msgid ""
 "An interface to the Xmms2 media player.\n"
-"Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
+"Download it from http://xmms2.org\n"
 msgstr ""
-"Eine Schnittstelle für den Xmms2 Media Player.\n"
-"Sie können ihn unter http://wiki.xmms2.xmms.se/index.php/Main_Page "
-"herunterladen.\n"
+"Eine Schnittstelle für den Beliebten UNIX xmms Player.\n"
+"Sie können ihn unter http://www.xmms.org herunterladen.\n"
 
 #: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
 msgid ""
@@ -82,9 +84,10 @@ msgstr ""
 "Sie können ihn unter http://audacious-media-player.org herunterladen.\n"
 
 #: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+#, fuzzy
 msgid ""
 "An interface to the popular UNIX xmms media player.\n"
-"Download it from http://www.xmms.org\n"
+"Download it from http://legacy.xmms2.org\n"
 msgstr ""
 "Eine Schnittstelle für den Beliebten UNIX xmms Player.\n"
 "Sie können ihn unter http://www.xmms.org herunterladen.\n"
@@ -195,3 +198,11 @@ msgstr "Probiere Schnittstelle »%Q«: %d Punkte."
 
 #~ msgid "An interface to the Juk KDE media player."
 #~ msgstr "Schnittstelle für Juk."
+
+#~ msgid ""
+#~ "An interface to the Xmms2 media player.\n"
+#~ "Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
+#~ msgstr ""
+#~ "Eine Schnittstelle für den Xmms2 Media Player.\n"
+#~ "Sie können ihn unter http://wiki.xmms2.xmms.se/index.php/Main_Page "
+#~ "herunterladen.\n"

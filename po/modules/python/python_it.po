@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 15:48+0200\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
 "PO-Revision-Date: 2010-01-25 17:13+0100\n"
 "Last-Translator: Elvio Basello <hell@hellvis69.netsons.org>\n"
 "Language-Team:  <it@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
 
-#: src/modules/pythoncore/libkvipythoncore.cpp:112
+#: src/modules/pythoncore/libkvipythoncore.cpp:129
 msgid "Internal error: python interpreter not initialized"
 msgstr "Errore interno: interprete python non inizializzato"
 
-#: src/modules/python/libkvipython.cpp:117
-#: src/modules/python/libkvipython.cpp:121
+#: src/modules/python/libkvipython.cpp:441
+#: src/modules/python/libkvipython.cpp:445
 msgid "Python execution error:"
 msgstr "Errore esecuzione python:"
 
@@ -32,8 +32,8 @@ msgid "The pythoncore module can't be loaded: python support not available"
 msgstr ""
 "Il modulo pythoncore non può essere caricato: supporto python non disponibile"
 
-#: src/modules/python/libkvipython.cpp:100
-#: src/modules/python/libkvipython.cpp:153
+#: src/modules/python/libkvipython.cpp:424
+#: src/modules/python/libkvipython.cpp:477
 msgid ""
 "The pythoncore module failed to execute the code: something is wrong with "
 "the python support"

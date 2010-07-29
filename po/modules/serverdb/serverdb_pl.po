@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 15:48+0200\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
 "PO-Revision-Date: 2009-12-06 23:23+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 
-#: src/modules/serverdb/libkviserverdb.cpp:685
+#: src/modules/serverdb/libkviserverdb.cpp:721
 msgid "The network specified already exists"
 msgstr "Określona sieć już istnieje"
 
@@ -28,9 +28,9 @@ msgstr "Określony adres IP jest nie poprawny"
 
 #: src/modules/serverdb/libkviserverdb.cpp:169
 #: src/modules/serverdb/libkviserverdb.cpp:203
-#: src/modules/serverdb/libkviserverdb.cpp:762
-#: src/modules/serverdb/libkviserverdb.cpp:826
-#: src/modules/serverdb/libkviserverdb.cpp:868
+#: src/modules/serverdb/libkviserverdb.cpp:798
+#: src/modules/serverdb/libkviserverdb.cpp:862
+#: src/modules/serverdb/libkviserverdb.cpp:904
 msgid "The specified network does not exist"
 msgstr "Określona sieć nie istnieje"
 
@@ -53,12 +53,12 @@ msgstr "Określone proxy już istnieje"
 msgid "The specified proxy does not exist"
 msgstr "Określone proxy nie istnieje"
 
-#: src/modules/serverdb/libkviserverdb.cpp:773
+#: src/modules/serverdb/libkviserverdb.cpp:809
 msgid "The specified server already exists"
 msgstr "Określony serwer już istnieje"
 
 #: src/modules/serverdb/libkviserverdb.cpp:210
-#: src/modules/serverdb/libkviserverdb.cpp:876
+#: src/modules/serverdb/libkviserverdb.cpp:912
 msgid "The specified server does not exist"
 msgstr "Określony serwer nie istnieje"
 
@@ -69,10 +69,10 @@ msgstr "Musisz dostarczyć adres IP jako parametr"
 #: src/modules/serverdb/libkviserverdb.cpp:61
 #: src/modules/serverdb/libkviserverdb.cpp:162
 #: src/modules/serverdb/libkviserverdb.cpp:190
-#: src/modules/serverdb/libkviserverdb.cpp:677
-#: src/modules/serverdb/libkviserverdb.cpp:748
-#: src/modules/serverdb/libkviserverdb.cpp:812
+#: src/modules/serverdb/libkviserverdb.cpp:713
+#: src/modules/serverdb/libkviserverdb.cpp:784
 #: src/modules/serverdb/libkviserverdb.cpp:848
+#: src/modules/serverdb/libkviserverdb.cpp:884
 msgid "You must provide the network name as parameter"
 msgstr "Musisz dostarczyć nazwę sieci jako parametr"
 
@@ -100,13 +100,13 @@ msgstr "Musisz dostarczyć nazwę proxy jako parametr"
 
 #: src/modules/serverdb/libkviserverdb.cpp:104
 #: src/modules/serverdb/libkviserverdb.cpp:196
-#: src/modules/serverdb/libkviserverdb.cpp:754
-#: src/modules/serverdb/libkviserverdb.cpp:854
+#: src/modules/serverdb/libkviserverdb.cpp:790
+#: src/modules/serverdb/libkviserverdb.cpp:890
 msgid "You must provide the server name as parameter"
 msgstr "Musisz dostarczyć nazwę serwera jako parametr"
 
 #: src/modules/proxydb/libkviproxydb.cpp:602
-#: src/modules/serverdb/libkviserverdb.cpp:818
-#: src/modules/serverdb/libkviserverdb.cpp:860
+#: src/modules/serverdb/libkviserverdb.cpp:854
+#: src/modules/serverdb/libkviserverdb.cpp:896
 msgid "You must provide the value as parameter"
 msgstr "Musisz dostarczyć wartość jako parametr"

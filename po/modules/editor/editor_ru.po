@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-19 20:08+0200\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
 "PO-Revision-Date: 2010-06-14 10:48+0400\n"
 "Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -82,11 +82,11 @@ msgstr ""
 
 #: src/modules/classeditor/classeditor.cpp:1780
 #: src/modules/classeditor/classeditor.cpp:1866
-#: src/modules/editor/scripteditor.cpp:994
+#: src/modules/editor/scripteditor.cpp:1031
 msgid "&Cancel"
 msgstr "Отмена"
 
-#: src/modules/editor/scripteditor.cpp:726
+#: src/modules/editor/scripteditor.cpp:749
 msgid "&Configure Editor..."
 msgstr "&Настроить редактор..."
 
@@ -146,7 +146,7 @@ msgstr "&Новое всплывающее меню"
 msgid "&OK"
 msgstr "&Ok"
 
-#: src/modules/editor/scripteditor.cpp:723
+#: src/modules/editor/scripteditor.cpp:746
 msgid "&Open..."
 msgstr "&Открыть..."
 
@@ -163,11 +163,11 @@ msgid "&Rename Class"
 msgstr "Переименовать класс"
 
 #: src/modules/editor/scripteditor.cpp:250
-#: src/modules/editor/scripteditor.cpp:999
+#: src/modules/editor/scripteditor.cpp:1036
 msgid "&Replace"
 msgstr "Заменить"
 
-#: src/modules/editor/scripteditor.cpp:989
+#: src/modules/editor/scripteditor.cpp:1026
 msgid "&Replace in all Aliases"
 msgstr "Заменить во всех алиасах"
 
@@ -175,7 +175,7 @@ msgstr "Заменить во всех алиасах"
 msgid "&Save"
 msgstr "Сохранить"
 
-#: src/modules/editor/scripteditor.cpp:724
+#: src/modules/editor/scripteditor.cpp:747
 msgid "&Save As..."
 msgstr "&Сохранить как..."
 
@@ -306,7 +306,7 @@ msgstr "Применить"
 msgid "Automatically"
 msgstr "Автоматически"
 
-#: src/modules/editor/scripteditor.cpp:516
+#: src/modules/editor/scripteditor.cpp:515
 msgid "Background:"
 msgstr "Фон:"
 
@@ -329,23 +329,23 @@ msgstr "Некорректное имя для пространства имён
 msgid "Big Icon:"
 msgstr "Большая иконка:"
 
-#: src/modules/editor/scripteditor.cpp:518
+#: src/modules/editor/scripteditor.cpp:517
 msgid "Brackets:"
 msgstr "Скобки:"
 
-#: src/modules/editor/scripteditor.cpp:936
+#: src/modules/editor/scripteditor.cpp:964
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "Невозможно открыть файл %s на чтение."
 
-#: src/modules/editor/scripteditor.cpp:855
+#: src/modules/editor/scripteditor.cpp:883
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Невозможно открыть файл %s на запись."
 
 #: src/modules/actioneditor/actioneditor.cpp:884
 #: src/modules/aliaseditor/aliaseditor.cpp:1194
-#: src/modules/editor/scripteditor.cpp:532
+#: src/modules/editor/scripteditor.cpp:531
 #: src/modules/eventeditor/eventeditor.cpp:515
 #: src/modules/popupeditor/popupeditor.cpp:1320
 #: src/modules/raweditor/raweditor.cpp:488
@@ -430,7 +430,7 @@ msgstr "Выберите каталог - KVIrc"
 #: src/modules/actioneditor/actioneditor.cpp:700
 #: src/modules/aliaseditor/aliaseditor.cpp:808
 #: src/modules/classeditor/classeditor.cpp:1052
-#: src/modules/editor/scripteditor.cpp:842
+#: src/modules/editor/scripteditor.cpp:870
 #: src/modules/eventeditor/eventeditor.cpp:446
 #: src/modules/eventeditor/eventeditor.cpp:487
 #: src/modules/popupeditor/popupeditor.cpp:1120
@@ -484,11 +484,11 @@ msgstr "Свернуть все элементы"
 msgid "Collapse All Namespaces"
 msgstr "Свернуть все пространства имён"
 
-#: src/modules/editor/scripteditor.cpp:514
+#: src/modules/editor/scripteditor.cpp:513
 msgid "Colors"
 msgstr "Цвета"
 
-#: src/modules/editor/scripteditor.cpp:519
+#: src/modules/editor/scripteditor.cpp:518
 msgid "Comments:"
 msgstr "Комментарии:"
 
@@ -656,7 +656,7 @@ msgstr "Внешнее меню"
 msgid "External menu:"
 msgstr "Внешнее меню:"
 
-#: src/modules/editor/scripteditor.cpp:735
+#: src/modules/editor/scripteditor.cpp:758
 msgid "Find"
 msgstr "Найти"
 
@@ -680,7 +680,7 @@ msgstr "Найти в классах"
 msgid "Find In Classes..."
 msgstr "Найти в классах..."
 
-#: src/modules/editor/scripteditor.cpp:524
+#: src/modules/editor/scripteditor.cpp:523
 msgid "Find:"
 msgstr "Поиск:"
 
@@ -688,7 +688,7 @@ msgstr "Поиск:"
 msgid "Flags"
 msgstr "Флаги"
 
-#: src/modules/editor/scripteditor.cpp:512
+#: src/modules/editor/scripteditor.cpp:511
 msgid "Font:"
 msgstr "Шрифт:"
 
@@ -710,7 +710,7 @@ msgid "Function names can contain only letters, digits and underscores"
 msgstr ""
 "Имя функции может содержать только буквы, цифры, и нижние подчеркивания"
 
-#: src/modules/editor/scripteditor.cpp:520
+#: src/modules/editor/scripteditor.cpp:519
 msgid "Functions:"
 msgstr "Функции:"
 
@@ -767,7 +767,7 @@ msgstr "Идентификатор пункта"
 msgid "Key Sequence:"
 msgstr "Комбинация клавиш:"
 
-#: src/modules/editor/scripteditor.cpp:521
+#: src/modules/editor/scripteditor.cpp:520
 msgid "Keywords:"
 msgstr "Ключевые слова:"
 
@@ -780,7 +780,7 @@ msgstr "Метка"
 msgid "Label:"
 msgstr "Метка:"
 
-#: src/modules/editor/scripteditor.cpp:922
+#: src/modules/editor/scripteditor.cpp:950
 msgid "Load Script File - KVIrc"
 msgstr "Загрузить файл скрипта - KVIrc"
 
@@ -931,7 +931,6 @@ msgstr "Новая панель инструментов"
 #: src/modules/aliaseditor/aliaseditor.cpp:930
 #: src/modules/classeditor/classeditor.cpp:990
 #: src/modules/classeditor/classeditor.cpp:1187
-#: src/modules/toolbareditor/toolbareditor.cpp:379
 #: src/modules/toolbareditor/toolbareditor.cpp:404
 msgid "No"
 msgstr "Нет"
@@ -946,7 +945,7 @@ msgstr "Нет"
 msgid "No item selected"
 msgstr "Ничего не выбрано"
 
-#: src/modules/editor/scripteditor.cpp:517
+#: src/modules/editor/scripteditor.cpp:516
 msgid "Normal text:"
 msgstr "Обычный текст:"
 
@@ -958,7 +957,7 @@ msgstr "Обычный текст:"
 #: src/modules/classeditor/classeditor.cpp:963
 #: src/modules/classeditor/classeditor.cpp:1033
 #: src/modules/classeditor/classeditor.cpp:1063
-#: src/modules/editor/scripteditor.cpp:528
+#: src/modules/editor/scripteditor.cpp:527
 #: src/modules/eventeditor/eventeditor.cpp:491
 #: src/modules/popupeditor/popupeditor.cpp:1127
 #: src/modules/popupeditor/popupeditor.cpp:1174
@@ -996,7 +995,7 @@ msgstr "Хорошо, давайте попробую еще раз..."
 msgid "Only If There Are Selected Users"
 msgstr "Только если есть выбранные пользователи"
 
-#: src/modules/editor/scripteditor.cpp:935
+#: src/modules/editor/scripteditor.cpp:963
 msgid "Open Failed - KVIrc"
 msgstr "Ошибка открытия - KVIrc"
 
@@ -1102,7 +1101,7 @@ msgstr "Редактор всплывающих меню"
 msgid "Popup name"
 msgstr "Имя всплывающего меню"
 
-#: src/modules/editor/scripteditor.cpp:506
+#: src/modules/editor/scripteditor.cpp:505
 msgid "Preferences"
 msgstr "Предпочтения"
 
@@ -1114,7 +1113,7 @@ msgstr "Пролог"
 msgid "Properties"
 msgstr "Свойства"
 
-#: src/modules/editor/scripteditor.cpp:523
+#: src/modules/editor/scripteditor.cpp:522
 msgid "Punctuation:"
 msgstr "Знаки препинания:"
 
@@ -1169,16 +1168,16 @@ msgstr "Переименовать пространство имён"
 msgid "Replace file"
 msgstr "Заменить файл"
 
-#: src/modules/editor/scripteditor.cpp:977
+#: src/modules/editor/scripteditor.cpp:1014
 msgid "Replace with"
 msgstr "Заменить на"
 
-#: src/modules/editor/scripteditor.cpp:905
+#: src/modules/editor/scripteditor.cpp:933
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Строк: %d Столбцов:%d"
 
-#: src/modules/editor/scripteditor.cpp:854
+#: src/modules/editor/scripteditor.cpp:882
 msgid "Save Failed - KVIrc"
 msgstr "Ошибка при сохранении - KVIrc"
 
@@ -1346,7 +1345,7 @@ msgstr "Невозможно записать файл с низкоуровне
 msgid "Unable to write to the toolbar file."
 msgstr "Невозможно записать файл с панелью инструментов."
 
-#: src/modules/editor/scripteditor.cpp:522
+#: src/modules/editor/scripteditor.cpp:521
 msgid "Variables:"
 msgstr "Переменные:"
 
@@ -1366,7 +1365,7 @@ msgstr ""
 "Видимое краткое описание этого действия.<br>Эта строка будет показана "
 "пользователю, хорошей идеей будет использование здесь $tr()"
 
-#: src/modules/editor/scripteditor.cpp:968
+#: src/modules/editor/scripteditor.cpp:1005
 msgid "Word to Find"
 msgstr "Слово для поиска"
 
@@ -1387,7 +1386,6 @@ msgstr "Ошибка записи - KVIrc"
 #: src/modules/aliaseditor/aliaseditor.cpp:930
 #: src/modules/classeditor/classeditor.cpp:990
 #: src/modules/classeditor/classeditor.cpp:1187
-#: src/modules/toolbareditor/toolbareditor.cpp:380
 #: src/modules/toolbareditor/toolbareditor.cpp:403
 msgid "Yes"
 msgstr "Да"
