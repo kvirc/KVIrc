@@ -393,7 +393,10 @@ void KviKvsObject_http::slotRequestFinished ( int id, bool error )
                 redirect(name,m_pHttp->lastResponse());
         delete pFile;
     }
-    callFunction(this,"requestFinishedEvent",0,new KviKvsVariantList(new KviKvsVariant((kvs_int_t) id),new KviKvsVariant(error)));
+    KviKvsVariantList lParams;
+    lParams.append(new KviKvsVariant((kvs_int_t) id));
+    lParams.append(new KviKvsVariant(error));
+    callFunction(this,"requestFinishedEvent",0,&lParams);
 }
 
 bool KviKvsObject_http::functionRequestStartedEvent(KviKvsObjectFunctionCall *c)
@@ -403,13 +406,17 @@ bool KviKvsObject_http::functionRequestStartedEvent(KviKvsObjectFunctionCall *c)
 }
 void KviKvsObject_http::slotRequestStarted ( int id )
 {
-	callFunction(this,"requestStartedEvent",0,new KviKvsVariantList(new KviKvsVariant((kvs_int_t) id)));
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant((kvs_int_t) id));
+	callFunction(this,"requestStartedEvent",0,&lParams);
 }
 
 void KviKvsObject_http::slotDataReadProgress ( int done,int total )
 {
-	callFunction(this,"dataReadProgressEvent",0,new KviKvsVariantList(
-		new KviKvsVariant((kvs_int_t)done),new KviKvsVariant((kvs_int_t)total)));
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant((kvs_int_t) done));
+	lParams.append(new KviKvsVariant((kvs_int_t) total));
+	callFunction(this,"dataReadProgressEvent",0,&lParams);
 }
 bool KviKvsObject_http::functionDataReadProgressEvent(KviKvsObjectFunctionCall *c)
 {
@@ -418,8 +425,10 @@ bool KviKvsObject_http::functionDataReadProgressEvent(KviKvsObjectFunctionCall *
 }
 void KviKvsObject_http::slotDataSendProgress ( int done,int total )
 {
-	callFunction(this,"dataSendProgressEvent",0,new KviKvsVariantList(
-		new KviKvsVariant((kvs_int_t)done),new KviKvsVariant((kvs_int_t)total)));
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant((kvs_int_t) done));
+	lParams.append(new KviKvsVariant((kvs_int_t) total));
+	callFunction(this,"dataProgressEvent",0,&lParams);
 }
 bool KviKvsObject_http::functionDataSendProgressEvent(KviKvsObjectFunctionCall *c)
 {
@@ -433,8 +442,9 @@ bool KviKvsObject_http::functionDoneEvent(KviKvsObjectFunctionCall *c)
 }
 void KviKvsObject_http::slotDone ( bool error )
 {
-	callFunction(this,"doneEvent",0,new KviKvsVariantList(new KviKvsVariant(error)));
-
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant(error));
+	callFunction(this,"doneEvent",0,&lParams);
 }
 
 bool KviKvsObject_http::functionResponseHeaderReceivedEvent(KviKvsObjectFunctionCall *c)
@@ -475,8 +485,9 @@ void KviKvsObject_http::slotResponseHeaderReceived(const QHttpResponseHeader &r)
             m_bAbort=true;
             m_pHttp->abort();
         }
-	callFunction(this,"responseHeaderReceivedEvent",0,new KviKvsVariantList(
-		new KviKvsVariant(szResponse)));
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant(szResponse));
+	callFunction(this,"responseHeaderReceivedEvent",0,&lParams);
 
 }
 void KviKvsObject_http::slotReadyRead(const QHttpResponseHeader &r)
@@ -491,8 +502,9 @@ void KviKvsObject_http::slotReadyRead(const QHttpResponseHeader &r)
 		default: szResponse=r.reasonPhrase();
 			m_bAbort=true;
 	}
-	callFunction(this,"readyReadEvent",0,new KviKvsVariantList(
-		new KviKvsVariant(szResponse)));
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant(szResponse));
+	callFunction(this,"readyreadEvent",0,&lParams);
 }
 
 
@@ -509,8 +521,9 @@ void KviKvsObject_http::slotStateChanged ( int state)
 	else if (state==QHttp::Reading) szState="Reading";
 
 	else if (state==QHttp::Closing) szState="Closing";
-	callFunction(this,"stateChangedEvent",0,new KviKvsVariantList(
-		new KviKvsVariant(szState)));
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant(szState));
+	callFunction(this,"stateChangedEvent",0,&lParams);
 }
 bool KviKvsObject_http::functionStateChangedEvent(KviKvsObjectFunctionCall *c)
 {
@@ -533,8 +546,10 @@ void KviKvsObject_http::slotSslErrors(QList<QSslError> sslerrors)
 	{
 		pArray->set(i,new KviKvsVariant(ssl_errors_tbl[sslerrors.at(i).error()]));
 	}
-	callFunction(this,"sslErrorsEvent",0,new KviKvsVariantList(new KviKvsVariant(pArray)));
-}
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant(pArray));
+	callFunction(this,"sslErrorEvent",0,&lParams);
+	}
 
 bool KviKvsObject_http::functionSslErrorsEvent(KviKvsObjectFunctionCall *c)
 {
