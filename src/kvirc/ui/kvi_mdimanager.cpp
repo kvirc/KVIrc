@@ -477,6 +477,8 @@ void KviMdiManager::restoreAll()
 			if(lpC->state() == KviMdiChild::Minimized) lpC->restore();
 		}
 	}
+	if(!m_bInSDIMode)
+		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 }
 
 int KviMdiManager::getVisibleChildCount()
