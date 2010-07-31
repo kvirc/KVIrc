@@ -281,11 +281,8 @@ void KviQuery::slotDndEvents(const QString &pcFile)
 void KviQuery::triggerCreationEvents()
 {
 	if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
-	{
-		KviKvsVariantList lParams;
-		lParams.append(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound)));
-		KviKvsScript::run("snd.play $0",0,&lParams);
-	}
+		KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
+
 	KVS_TRIGGER_EVENT_0(KviEvent_OnQueryWindowCreated,this);
 }
 

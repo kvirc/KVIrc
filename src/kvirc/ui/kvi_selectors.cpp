@@ -809,9 +809,7 @@ KviSoundSelector::~KviSoundSelector()
 
 void KviSoundSelector::playSound()
 {
-	KviKvsVariantList lParams;
-	lParams.append(new KviKvsVariant(m_pLineEdit->text()));
-	KviKvsScript::run("snd.play $0",0,&lParams);
+	KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(m_pLineEdit->text())));
 }
 
 void KviSoundSelector::setEnabled(bool bEnabled)
