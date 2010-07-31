@@ -38,10 +38,14 @@ free), download XCode and follow the install instructions in the documentation.
 2. QT-MAC
 
 I suggest to download and install the latest binary package from
-http://www.qtsoftware.com/downloads/mac-os-cpp. Hint: If you do not want to do
-deep debugging of Qt, you do NOT need the debugging libraries. Of course you can
-donwload the sources and build Qt yourself. Read the documentation and build a
-Framework (not the standard Unix-like library version) in that case.
+http://www.qtsoftware.com/downloads/mac-os-cpp . As of 31.08.2010 the Carbon version
+of Qt 4.6.3 seems to work a bit better than the Cocoa version since the latter is
+affected by a bug related to font display (and specifically to font kerning).
+
+Hint: If you do not want to do deep debugging of Qt, you do NOT need the debugging
+libraries. Of course you can donwload the sources and build Qt yourself. Read the
+documentation and build a Framework (not the standard Unix-like library version) in
+that case.
 
 3. GNU gettext
 
