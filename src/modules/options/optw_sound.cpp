@@ -149,9 +149,10 @@ KviSoundGeneralOptionsWidget::~KviSoundGeneralOptionsWidget()
 
 void KviSoundGeneralOptionsWidget::showEvent(QShowEvent *)
 {
+qDebug("showEvent");
 	if(!m_bFirstShow)
 		return;
-
+qDebug("m_bFirstShow");
 	// We fill these boxes only before the first show since the soundFillBox()
 	// is likely to trigger sound system-detection which may take time...
 	
@@ -222,6 +223,7 @@ void KviSoundGeneralOptionsWidget::mediaAutoDetect()
 
 void KviSoundGeneralOptionsWidget::soundFillBox()
 {
+	qDebug("soundFillBox");
 	QStringList l;
 	QStringList::Iterator it;
 	int cnt;
@@ -235,10 +237,11 @@ void KviSoundGeneralOptionsWidget::soundFillBox()
 		goto disable;
 
 	m_pSoundSystemBox->clear();
-
+qDebug("soundFillBox clear");
 	for ( it = l.begin(); it != l.end(); ++it )
 	{
 		m_pSoundSystemBox->addItem(*it);
+		qDebug("soundFillBox add %s",it->toUtf8().data());
 	}
 
 	cnt = m_pSoundSystemBox->count();
@@ -246,9 +249,11 @@ void KviSoundGeneralOptionsWidget::soundFillBox()
 	for(i=0;i<cnt;i++)
 	{
 		QString t = m_pSoundSystemBox->itemText(i);
+		qDebug("soundFillBox check %s==%s",t.toUtf8().data(),KVI_OPTION_STRING(KviOption_stringSoundSystem).toUtf8().data());
 		if(KviQString::equalCI(t,KVI_OPTION_STRING(KviOption_stringSoundSystem)))
 		{
 			m_pSoundSystemBox->setCurrentIndex(i);
+qDebug("soundFillBox check ok setCurrentIndex %i",i);
 			break;
 		}
 	}
@@ -298,6 +303,10 @@ disable:
 
 void KviSoundGeneralOptionsWidget::commit()
 {
+	// avoid to commit if we've never been shown (and initialized)
+	if(m_bFirstShow)
+		return;
+
 	KviOptionsWidget::commit();
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = m_pSoundSystemBox->currentText();
 	KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) = m_pMediaPlayerBox->currentText();
