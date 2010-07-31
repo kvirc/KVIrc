@@ -572,7 +572,12 @@ void KviConsole::closeEvent(QCloseEvent *e)
 // internal helper for applyHighlighting
 int KviConsole::triggerOnHighlight(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg,const QString &trigger)
 {
-	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && wnd!=g_pActiveWindow) KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound))));
+	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && wnd!=g_pActiveWindow)
+	{
+		KviKvsVariantList lParams;
+		lParams.append(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound)));
+		KviKvsScript::run("snd.play $0",0,&lParams);
+	}
 	QString szMessageType;
 	KviQString::sprintf(szMessageType,"%d",type);
 	if(KVS_TRIGGER_EVENT_7_HALTED(KviEvent_OnHighlight,

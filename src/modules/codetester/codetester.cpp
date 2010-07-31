@@ -73,12 +73,14 @@ KviCodeTester::~KviCodeTester()
 
 void KviCodeTester::execute()
 {
-	QString parms = m_pParams->text();
+	QStringList szParams = m_pParams->text().split(" ");
 	QString buffer;
 	m_pEditor->getText(buffer);
 	KviConsole * con = g_pApp->activeConsole();
-	//KviParameterList * l = new KviParameterList(parms.ptr());
-	KviKvsScript::run(buffer,con,new KviKvsVariantList(new QString(parms)));
+	KviKvsVariantList lParams;
+	for(int i=0;i<szParams.count();i++)
+		lParams.append(new KviKvsVariant(szParams.at(i)));
+	KviKvsScript::run(buffer,con,&lParams);
 }
 
 KviCodeTesterWindow::KviCodeTesterWindow(KviFrame * lpFrm)

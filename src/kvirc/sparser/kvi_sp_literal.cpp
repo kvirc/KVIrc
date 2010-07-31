@@ -574,7 +574,12 @@ void KviServerParser::parseLiteralKick(KviIrcMessage *msg)
 		if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnMeKick,chan,
 				szNick,szUser,szHost,szKickMsg))
 			msg->setHaltOutput();
-		if(!KVI_OPTION_STRING(KviOption_stringOnMeKickedSound).isEmpty()) KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnMeKickedSound))));
+		if(!KVI_OPTION_STRING(KviOption_stringOnMeKickedSound).isEmpty())
+		{
+			KviKvsVariantList lParams;
+			lParams.append(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnMeKickedSound)));
+			KviKvsScript::run("snd.play $0",0,&lParams);
+		}
 
 		QString szPass = chan->channelKey();
 
