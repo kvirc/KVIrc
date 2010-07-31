@@ -1097,7 +1097,7 @@ static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 	@short:
 		Matches a fixed string against a wildcard expression
 	@syntax:
-		<bool> $str.match(<expression:string>,<string:string>[,<case:bool>[,<flags:string>]])
+		<bool> $str.match(<expression:string>,<string:string>[,<flags:string>[,<case:bool>]])
 	@description:
 		Returns 1 if the fixed <string> matches the <expression>, 0 otherwise.[br]
 		If <flags> contains the flag 'r' then <expression> is treated as a full
