@@ -151,7 +151,6 @@ void KviSoundGeneralOptionsWidget::showEvent(QShowEvent *)
 {
 	if(!m_bFirstShow)
 		return;
-
 	// We fill these boxes only before the first show since the soundFillBox()
 	// is likely to trigger sound system-detection which may take time...
 	
@@ -235,7 +234,6 @@ void KviSoundGeneralOptionsWidget::soundFillBox()
 		goto disable;
 
 	m_pSoundSystemBox->clear();
-
 	for ( it = l.begin(); it != l.end(); ++it )
 	{
 		m_pSoundSystemBox->addItem(*it);
@@ -298,6 +296,10 @@ disable:
 
 void KviSoundGeneralOptionsWidget::commit()
 {
+	// avoid to commit if we've never been shown (and initialized)
+	if(m_bFirstShow)
+		return;
+
 	KviOptionsWidget::commit();
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = m_pSoundSystemBox->currentText();
 	KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) = m_pMediaPlayerBox->currentText();
