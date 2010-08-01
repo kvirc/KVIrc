@@ -699,6 +699,13 @@ protected:
 	void useProfileData(KviIdentityProfileSet * pSet, const QString & szNetwork);
 
 	/**
+	* Sets the specified real name in the user information set after
+	* evaluating it via KVS engine (so identifiers are substituted).
+	* Call this function instead of m_pUserInfo->setRealName().
+	*/
+	void useRealName(const QString &szRealName);
+
+	/**
 	* \brief Logins to the irc server
 	* \return void
 	*/

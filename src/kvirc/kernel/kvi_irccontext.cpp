@@ -865,6 +865,7 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 				if(szQuit.isEmpty())szQuit = KVI_OPTION_STRING(KviOption_stringQuitMessage);
 				szQuit.replace(";","\\;");
 				szQuit.replace("\n"," ");
+				szQuit.replace("\r"," ");
 				QString buffer;
 				KviKvsVariant ret;
 				if(KviKvsScript::evaluate(szQuit,console(),0,&ret))

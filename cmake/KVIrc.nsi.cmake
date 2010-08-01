@@ -6,7 +6,7 @@
 !include "LogicLib.nsh"
 
 Name "KVIrc"
-!define VERSION '4.1.0'
+!define VERSION '4.1.1'
 !define RELEASE_NAME 'Equilibrium (wip)'
 !define /date RELEASE_VERSION 'r@CMAKE_KVIRC_BUILD_REVISION@'
 !define URL_ABOUT 'http://www.kvirc.net/'

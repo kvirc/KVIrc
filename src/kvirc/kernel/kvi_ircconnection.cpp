@@ -1112,6 +1112,26 @@ void KviIrcConnection::enableStartTlsSupport(bool bEnable)
 }
 #endif // COMPILE_SSL_SUPPORT
 
+void KviIrcConnection::useRealName(const QString &szRealName)
+{
+	// Evaluate functions in the real name (so we can have $version() inside)
+
+	QString szRealNameBuffer = szRealName;
+
+	if(!szRealNameBuffer.isEmpty())
+	{
+		szRealNameBuffer.replace(";","\\;");
+		szRealNameBuffer.replace("\n"," ");
+		szRealNameBuffer.replace("\r"," ");
+
+		KviKvsVariant vRet;
+		if(KviKvsScript::evaluate(szRealNameBuffer,console(),0,&vRet))
+			vRet.asString(szRealNameBuffer);
+	}
+
+	m_pUserInfo->setRealName(szRealNameBuffer);
+}
+
 void KviIrcConnection::useProfileData(KviIdentityProfileSet * pSet, const QString & szNetwork)
 {
 	KviIdentityProfile * pProfile = pSet->findNetwork(szNetwork);
@@ -1120,7 +1140,7 @@ void KviIrcConnection::useProfileData(KviIdentityProfileSet * pSet, const QStrin
 	// Update connection data
 	m_pUserInfo->setNickName(pProfile->nick());
 	m_pUserInfo->setUserName(pProfile->userName());
-	m_pUserInfo->setRealName(pProfile->realName());
+	useRealName(pProfile->realName());
 }
 
 void KviIrcConnection::loginToIrcServer()
@@ -1187,15 +1207,15 @@ void KviIrcConnection::loginToIrcServer()
 	{
 		if(!_OUTPUT_MUTE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific real name (%Q)"),&(pServer->m_szRealName));
-		m_pUserInfo->setRealName(pServer->m_szRealName.trimmed());
+		useRealName(pServer->m_szRealName.trimmed());
 	} else {
 		if(!pNet->realName().isEmpty())
 		{
 			if(!_OUTPUT_MUTE)
 				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific real name (%Q)"),&(pNet->realName()));
-			m_pUserInfo->setRealName(pNet->realName());
+			useRealName(pNet->realName());
 		} else {
-			m_pUserInfo->setRealName(KVI_OPTION_STRING(KviOption_stringRealname));
+			useRealName(KVI_OPTION_STRING(KviOption_stringRealname));
 		}
 	}
 

@@ -71,7 +71,7 @@
 #define KVI_DEFAULT_NICKNAME3 "%nick%|3"
 #define KVI_DEFAULT_NICKNAME4 "%nick%|4"
 #define KVI_DEFAULT_USERNAME "kvirc"
-#define KVI_DEFAULT_REALNAME "KVIrc " KVI_VERSION " '" KVI_RELEASE_NAME "' http://kvirc.net/"
+#define KVI_DEFAULT_REALNAME "KVIrc $version(v) $version(n) http://kvirc.net/"
 
 #define KVI_DEFAULT_PART_MESSAGE "Once you know what it is you want to be true, instinct is a very useful device for enabling you to know that it is"
 #define KVI_DEFAULT_QUIT_MESSAGE "KVIrc $version(v) $version(n) http://www.kvirc.net/"
