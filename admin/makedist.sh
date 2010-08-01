@@ -7,6 +7,8 @@ function usage()
 	echo "Available options:"
 	echo "   --gzip"
 	echo "     Use gzip instead of bzip2"
+	echo "   --bzip"
+	echo "     Use bzip instead of bzip2"
 	echo "   --md5sum"
 	echo "     Create md5sum of the package too"
 	echo "   --help"
@@ -26,12 +28,21 @@ for i in $*; do
 				COMPRESSSWITCH="z"
 				OUTPUTEXTENSION="gz"
 			;;
+		--bzip)
+				COMPRESSSWITCH="j"
+				OUTPUTEXTENSION="bz2"
+			;;
 		--help)
 				usage
 				exit
 			;;
 		--md5sum)
 				DOMD5SUM="yes"
+			;;
+		--*)
+			echo "ERROR: Unrecognized option $i"
+			usage
+			exit
 			;;
 		*)
 			if test -z "$SOURCETREEDIR"; then
@@ -50,7 +61,7 @@ if [ -z "$SOURCETREEDIR" ]; then
 fi
 
 if [ -z "$KVIRCVERSION" ]; then
-	echo "ERROR: Kvirc version missing"
+	echo "ERROR: KVIrc version missing"
 	usage
 	exit
 fi
@@ -67,6 +78,7 @@ PKGSRCDIR=kvirc-"$KVIRCVERSION"
 TEMPSRCDIR="$TEMPDIR/$PKGSRCDIR"
 OUTPUTFILENAME="kvirc-${KVIRCVERSION}.tar.${OUTPUTEXTENSION}"
 OUTPUTFILE="${THISDIR}/${OUTPUTFILENAME}"
+MD5SUMOUTPUTFILENAME="${OUTPUTFILE}.md5"
 
 if [ -d "$TEMPSRCDIR" ]; then
 	echo "Removing stale target directory..."
@@ -85,15 +97,15 @@ REVISION=$(svnversion -n .)
 echo "Revision is $REVISION"
 echo $REVISION > "$TEMPSRCDIR/.svnrevision"
 
-if [ -f "$OUTPUTFILE" ]; then
-	echo "Cleaning the target package file path..."
-	rm -f "$OUTPUTFILE"
+if [ -f "${OUTPUTFILE}" ]; then
+	echo "Removing the existing output file..."
+	rm -f "${OUTPUTFILE}"
 fi
 
 if [ "${DOMD5SUM}" = "yes" ]; then
-	if [ -f "${OUTPUTFILE}.md5sum" ]; then
+	if [ -f "${MD5SUMOUTPUTFILENAME}" ]; then
 		echo "Cleaning stale md5sum file..."
-		rm -f "${OUTPUTFILE}.md5sum"
+		rm -f "${MD5SUMOUTPUTFILENAME}"
 	fi
 fi
 
@@ -108,12 +120,11 @@ cd "$THISDIR"
 
 if [ "${DOMD5SUM}" = "yes" ]; then
 	cd "$THISDIR"
-	md5sum "${OUTPUTFILENAME}" > "${OUTPUTFILENAME}.md5sum"
+	md5sum "${OUTPUTFILENAME}" > "${MD5SUMOUTPUTFILENAME}"
 fi
 
 echo "Removing target directory..."
 rm -rf "${TEMPSRCDIR}"
-
 
 echo "Here is the output I've generated"
 
@@ -122,7 +133,7 @@ cd "$THISDIR"
 ls -al "${OUTPUTFILENAME}"
 
 if [ "${DOMD5SUM}" = "yes" ]; then
-	ls -la "${OUTPUTFILENAME}.md5sum"
+	ls -la "${MD5SUMOUTPUTFILENAME}"
 fi
 
 
