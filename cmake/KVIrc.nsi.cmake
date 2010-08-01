@@ -101,6 +101,8 @@ Section !$(KVIrc) KVIrc_IDX
 	File release\license\COPYING
 	SetOutPath "$INSTDIR\locale"
 	File release\locale\*.mo
+	SetOutPath "$INSTDIR\audio"
+	File release\audio\*.wav
 	SetOutPath "$INSTDIR\modules"
 	File /r release\modules\*.*
 	SetOutPath "$INSTDIR\msgcolors"
@@ -228,9 +230,12 @@ Section !un.$(UnGeneralFiles)
     ; Remove shortcuts, if any
     Delete "$SMPROGRAMS\KVIrc\*.*"
     RMDir "$SMPROGRAMS\KVIrc"
+    Delete "$DESKTOP\KVIrc.lnk"
+    Delete "$QUICKLAUNCH\KVIrc.lnk"
   
     ; Delete installed trees of files
     RMDir /r "$INSTDIR\config"
+    RMDir /r "$INSTDIR\audio"
     RMDir /r "$INSTDIR\qt-plugins"
     RMDir /r "$INSTDIR\defscript"
     RMDir /r "$INSTDIR\doc"
