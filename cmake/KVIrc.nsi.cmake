@@ -6,7 +6,7 @@
 !include "LogicLib.nsh"
 
 Name "KVIrc"
-!define VERSION '4.0.1'
+!define VERSION '4.0.2'
 !define RELEASE_NAME 'Insomnia'
 !define /date RELEASE_VERSION 'r@CMAKE_KVIRC_BUILD_REVISION@'
 !define URL_ABOUT 'http://www.kvirc.net/'
@@ -16,7 +16,7 @@ Name "KVIrc"
 
 ; Svn release, eg: KVIrc-4.0.0-rc3-dev-r4300.exe
 ;OutFile KVIrc-${VERSION}-${RELEASE_VERSION}-dev.exe
-; Stable version, eg: KVIrc-4.0.1-Insomnia.exe
+; Stable version, eg: KVIrc-4.0.0-Insomnia.exe
 OutFile KVIrc-${VERSION}-${RELEASE_NAME}.exe
 
 SetCompressor /SOLID lzma
@@ -101,6 +101,8 @@ Section !$(KVIrc) KVIrc_IDX
 	File release\license\COPYING
 	SetOutPath "$INSTDIR\locale"
 	File release\locale\*.mo
+	SetOutPath "$INSTDIR\audio"
+	File release\audio\*.wav
 	SetOutPath "$INSTDIR\modules"
 	File /r release\modules\*.*
 	SetOutPath "$INSTDIR\msgcolors"
@@ -228,9 +230,12 @@ Section !un.$(UnGeneralFiles)
     ; Remove shortcuts, if any
     Delete "$SMPROGRAMS\KVIrc\*.*"
     RMDir "$SMPROGRAMS\KVIrc"
+    Delete "$DESKTOP\KVIrc.lnk"
+    Delete "$QUICKLAUNCH\KVIrc.lnk"
   
     ; Delete installed trees of files
     RMDir /r "$INSTDIR\config"
+    RMDir /r "$INSTDIR\audio"
     RMDir /r "$INSTDIR\qt-plugins"
     RMDir /r "$INSTDIR\defscript"
     RMDir /r "$INSTDIR\doc"
