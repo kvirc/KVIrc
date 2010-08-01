@@ -285,7 +285,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Beeps (when possible :D)[br]
 			...[br]
-			No , really..[br]
+			No , really...[br]
 			This command rings the bell on the keyboard (the PC speaker).
 			The volume must be in range 0-100; the default is 100.[br]
 			The pitch is specified in Hz and must be positive.[br]
@@ -295,18 +295,23 @@ namespace KviKvsCoreSimpleCommands
 			The duration of the bell is only indicative and
 			can be shortened by a subsequent call to /beep (that
 			will override the currently playing one).[br]
-			On Windows, the bell is always synchronous and it is not
-			event granted that the bell will be a bell at all... you might
-			get the system default sound instead.. so be careful if you
-			want to write portable scripts :)[br]
 			If the -s switch is specified the bell becomes synchronous:
 			KVIrc waits the bell to complete before continuing.[br]
-			Obviously -s is senseless on Windows.[br]
-			(WARNING : the main KVIrc thread is stopped in that case
-			so if you play long notes (duration > 100)
-			the entire application will appear to freeze for a while).[br]
 			The precision of the bell pitch, duration and
-			volume is strongly dependant on the system and the underlying hardware.[br]
+			volume is strongly dependant on the system and the underlying hardware.[br][br]
+			On Windows, the bell is always synchronous and it is not
+			event granted that the bell will be a bell at all... you might
+			get the system default sound instead...
+			On some security-enchanced Windows variants (2008 Server, Seven and possibly
+			some 64-bit Vista builds) the access to the PC speaker
+			may be silently denied so don't be surprised too much if you don't hear any
+			sound at all on such systems...[br][br]
+			WARNING[br][br]
+			The main KVIrc thread is stopped while a synchronous bell is playing
+			so if you play long notes (duration > 100) the entire application may appear to
+			freeze for a while. Be careful :)[br]
+		@seealso:
+			[cmd]snd.play[/cmd]
 	*/
 
 	KVSCSC(beep)
