@@ -1,5 +1,8 @@
 #/bin/bash
 
+#################################################################################################
+# Helper functions
+
 function usage()
 {
 	echo "Usage:"
@@ -15,6 +18,8 @@ function usage()
 	echo "     Show this help"
 }
 
+#################################################################################################
+# Gather commandline params
 
 SOURCETREEDIR=""
 KVIRCVERSION=""
@@ -72,21 +77,34 @@ if [ ! -d $SOURCETREEDIR ]; then
 	exit
 fi
 
+#################################################################################################
+# Setup vars
+
 THISDIR=$(pwd)
 TEMPDIR=/tmp
 PKGSRCDIR=kvirc-"$KVIRCVERSION"
 TEMPSRCDIR="$TEMPDIR/$PKGSRCDIR"
 OUTPUTFILENAME="kvirc-${KVIRCVERSION}.tar.${OUTPUTEXTENSION}"
 OUTPUTFILE="${THISDIR}/${OUTPUTFILENAME}"
-MD5SUMOUTPUTFILENAME="${OUTPUTFILE}.md5"
+MD5SUMOUTPUTFILENAME="${OUTPUTFILENAME}.md5"
+MD5SUMOUTPUTFILE="${THISDIR}/${MD5SUMOUTPUTFILENAME}"
+
+#################################################################################################
+# Clear the temporary dir
 
 if [ -d "$TEMPSRCDIR" ]; then
 	echo "Removing stale target directory..."
 	rm -rf "$TEMPSRCDIR"
 fi
 
+#################################################################################################
+# Export svn into the temporary dir
+
 echo "Exporting svn dir into ${TEMPSRCDIR}..."
 svn export "${SOURCETREEDIR}" "${TEMPSRCDIR}"
+
+#################################################################################################
+# Figure out the svn revision
 
 echo "Determining svn revision..."
 cd "$SOURCETREEDIR"
@@ -97,17 +115,23 @@ REVISION=$(svnversion -n .)
 echo "Revision is $REVISION"
 echo $REVISION > "$TEMPSRCDIR/.svnrevision"
 
+#################################################################################################
+# Make room for the output files
+
 if [ -f "${OUTPUTFILE}" ]; then
 	echo "Removing the existing output file..."
 	rm -f "${OUTPUTFILE}"
 fi
 
 if [ "${DOMD5SUM}" = "yes" ]; then
-	if [ -f "${MD5SUMOUTPUTFILENAME}" ]; then
+	if [ -f "${MD5SUMOUTPUTFILE}" ]; then
 		echo "Cleaning stale md5sum file..."
-		rm -f "${MD5SUMOUTPUTFILENAME}"
+		rm -f "${MD5SUMOUTPUTFILE}"
 	fi
 fi
+
+#################################################################################################
+# Do compress
 
 echo "Compressing sources into $OUTPUTFILE"
 
@@ -116,19 +140,28 @@ cd "$TEMPDIR"
 TARPARAMS="${COMPRESSSWITCH}cf"
 tar -$TARPARAMS "$OUTPUTFILE" "$PKGSRCDIR" || exit
 
+#################################################################################################
+# Do md5sum if requested
+
 cd "$THISDIR"
 
 if [ "${DOMD5SUM}" = "yes" ]; then
 	cd "$THISDIR"
-	md5sum "${OUTPUTFILENAME}" > "${MD5SUMOUTPUTFILENAME}"
+	md5sum "${OUTPUTFILENAME}" > "${MD5SUMOUTPUTFILE}"
 fi
+
+#################################################################################################
+# Cleanup the exported svn tree
 
 echo "Removing target directory..."
 rm -rf "${TEMPSRCDIR}"
 
+#################################################################################################
+# Show the work done
+
 echo "Here is the output I've generated"
 
-cd "$THISDIR"
+cd "${THISDIR}"
 
 ls -al "${OUTPUTFILENAME}"
 
@@ -136,6 +169,9 @@ if [ "${DOMD5SUM}" = "yes" ]; then
 	ls -la "${MD5SUMOUTPUTFILENAME}"
 fi
 
+
+#################################################################################################
+# Done :)
 
 echo "Done. Have a nice day :)"
 
