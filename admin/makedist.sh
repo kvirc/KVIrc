@@ -11,7 +11,7 @@ function usage()
 	echo "   --gzip"
 	echo "     Use gzip instead of bzip2"
 	echo "   --bzip"
-	echo "     Use bzip instead of bzip2"
+	echo "     Use bzip instead of gzip"
 	echo "   --md5sum"
 	echo "     Create md5sum of the package too"
 	echo "   --help"
