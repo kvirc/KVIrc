@@ -32,6 +32,22 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_locale.h"
 
+
+#ifdef COMPILE_ON_WINDOWS
+	//
+	// Since OpenSSL 0.9.8 we need to link in a piece of code from the OpenSSL source.
+	// This is their own hack to avoid runtime problems when linking to an OpenSSL library
+	// that has been compiled with a different runtime (different options or compiler at all).
+	// This file is either installed in ${OPENSSL_INSTALL_ROOT}/include/openssl or
+	// in ${OPENSSL_INSTALL_ROOT}/ms/.
+	//
+	// Failing to include this file manifests itself with an abort when using a certificate.
+	// Just before the abort a message box complains about "no OPENSSL_Applink" which is
+	// implemented inside applink.c
+	//
+	#include <applink.c>
+#endif //COMPILE_ON_WINDOWS
+
 namespace KviSSLMaster
 {
 
