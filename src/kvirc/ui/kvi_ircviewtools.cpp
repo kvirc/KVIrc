@@ -34,6 +34,7 @@
 #include "kvi_filedialog.h"
 #include "kvi_app.h"
 #include "kvi_memmove.h"
+#include "kvi_shortcuts.h"
 #include "kvi_window.h"
 
 #include <QTabWidget>
@@ -195,7 +196,8 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 #endif //!COMPILE_ON_MAC
 
 	tw->setCurrentIndex(tw->indexOf(w));
-	new QShortcut(QKeySequence(Qt::Key_Escape),this,SLOT(close()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(Qt::Key_Escape),this,SLOT(close()),0,Qt::WidgetWithChildrenShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_SEARCH),this,SLOT(close()),0,Qt::WidgetWithChildrenShortcut);
 }
 
 KviIrcViewToolWidget::~KviIrcViewToolWidget()
