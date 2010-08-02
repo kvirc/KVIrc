@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-07-28 18:58+0200\n"
-"PO-Revision-Date: 2010-08-02 22:59+0100\n"
+"PO-Revision-Date: 2010-08-02 23:47+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -3921,7 +3921,7 @@ msgstr "Ligação: %Q"
 
 #: src/modules/links/linkswindow.cpp:134
 msgid "Links cannot be requested: Not connected to a server"
-msgstr "As ligações não podem ser pedidas. Não está conectado a um servidor"
+msgstr "As ligações não podem ser pedidas: não está conectado a um servidor"
 
 #: src/modules/links/linkswindow.cpp:159
 msgid "Links for %Q [IRC Context %u]"
@@ -3942,7 +3942,7 @@ msgstr "Lista de Transferências"
 
 #: src/modules/list/listwindow.cpp:296
 msgid "List cannot be requested: Not connected to a server"
-msgstr "A lista não pode ser pedida. Não está conectado a um servidor"
+msgstr "A lista não pode ser pedida: não está conectado a um servidor"
 
 #: src/kvirc/ui/kvi_window.cpp:519
 msgid "List of window types available in this release of KVIrc:"
@@ -4482,7 +4482,7 @@ msgstr "Não ausente"
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:304
 #: src/kvirc/ui/kvi_statusbar.cpp:692
 msgid "Not connected"
-msgstr "Não conectado"
+msgstr "Desconectado"
 
 #: src/kvilib/core/kvi_error.cpp:110
 msgid "Not enough parameters"
@@ -6075,7 +6075,7 @@ msgstr "Mensagem do 'socket'"
 
 #: src/kvilib/core/kvi_error.cpp:134
 msgid "Socket not connected"
-msgstr "'Socket' não conectado"
+msgstr "'Socket' desconectado"
 
 #: src/modules/socketspy/socketspywindow.cpp:98
 msgid "Socket open"
@@ -7583,7 +7583,7 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_userinput.cpp:132
 msgid "You are not connected to a server"
-msgstr "Não está conectado num servidor"
+msgstr "Não está conectado a um servidor"
 
 #: src/modules/list/listwindow.cpp:331
 msgid "You cannot export an empty list"
