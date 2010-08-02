@@ -134,7 +134,7 @@ protected:
 	void stopTalking();
 	void startConnection();
 	virtual const QString & localNick();
-	virtual void ownMessage(const QString &text);
+	virtual void ownMessage(const QString &text, bool bUserFeedback = true);
 	virtual void ownAction(const QString &text);
 protected slots:
 	void handleMarshalError(int err);

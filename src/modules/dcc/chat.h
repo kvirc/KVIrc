@@ -87,7 +87,7 @@ protected:
 	virtual QSize sizeHint() const;
 	virtual const QString & localNick();
 	virtual bool event(QEvent *e);
-	virtual void ownMessage(const QString &text);
+	virtual void ownMessage(const QString &text, bool bUserFeedback = true);
 	virtual void ownAction(const QString &text);
 	virtual void triggerCreationEvents();
 	virtual void triggerDestructionEvents();

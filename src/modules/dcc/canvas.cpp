@@ -156,13 +156,15 @@
 		buffer.sprintf("%s_%s_%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 	}
 
-	void KviDccCanvas::ownMessage(const char * text)
+	void KviDccCanvas::ownMessage(const char * text, bool bUserFeedback)
 	{
 		KviStr buf(KviStr::Format,"%s\r\n",text);
 	//	m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
-		m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
-			m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
-			m_pDescriptor->szLocalHost.toUtf8().data(),text);
+		
+		if(bUserFeedback)
+			m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+				m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
+				m_pDescriptor->szLocalHost.toUtf8().data(),text);
 	}
 
 	void KviDccCanvas::ownAction(const char * text)

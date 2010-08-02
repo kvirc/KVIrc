@@ -272,7 +272,7 @@ public:
 	virtual void updateCaption();
 	virtual void applyOptions();
 	virtual void updateIcon();
-	virtual void ownMessage(const QString &){};
+	virtual void ownMessage(const QString &, bool = true){};
 	virtual void ownAction(const QString &){};
 	virtual const QString & plainTextCaption(){ return m_szPlainTextCaption; };
 	virtual void setFocus();

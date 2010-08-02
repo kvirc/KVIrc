@@ -1086,7 +1086,7 @@ void KviChannel::fillCaptionBuffers()
 	m_szPlainTextCaption += szNickOnServer;
 }
 
-void KviChannel::ownMessage(const QString & szBuffer)
+void KviChannel::ownMessage(const QString & szBuffer, bool bUserFeedback)
 {
 	if(!connection())
 		return;
@@ -1130,17 +1130,21 @@ void KviChannel::ownMessage(const QString & szBuffer)
 					case KviCryptEngine::Encrypted:
 						if(!connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),encrypted.ptr()))
 							return;
-						m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
-								QString(),QString(),QString(),szBuffer,KviConsole::NoNotifications);
+						if(bUserFeedback)
+							m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
+									QString(),QString(),QString(),szBuffer,KviConsole::NoNotifications);
 					break;
 					case KviCryptEngine::Encoded:
 					{
 						if(!connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),encrypted.ptr()))
 							return;
-						// ugly ,but we must redecode here
-						QString szRedecoded = decodeText(encrypted.ptr());
-						m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
-							QString(),QString(),QString(),szRedecoded,KviConsole::NoNotifications);
+						if(bUserFeedback)
+						{
+							// ugly ,but we must redecode here
+							QString szRedecoded = decodeText(encrypted.ptr());
+							m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+								QString(),QString(),QString(),szRedecoded,KviConsole::NoNotifications);
+						}
 					}
 					break;
 					default: // also case KviCryptEngine::EncryptError
@@ -1232,7 +1236,8 @@ void KviChannel::ownMessage(const QString & szBuffer)
 			if(connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),szTmp.data()))
 			{
 				//feeedback the user
-				m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szCurSubString,KviConsole::NoNotifications);
+				if(bUserFeedback)
+					m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szCurSubString,KviConsole::NoNotifications);
 				userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);
 			} else {
 				// skipped a part in this multi message.. we don't want to continue
@@ -1247,7 +1252,8 @@ void KviChannel::ownMessage(const QString & szBuffer)
 	} else {
 		if(connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),d))
 		{
-			m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szTmpBuffer,KviConsole::NoNotifications);
+			if(bUserFeedback)
+				m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szTmpBuffer,KviConsole::NoNotifications);
 			userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);
 		}
 	}

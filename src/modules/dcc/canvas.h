@@ -58,7 +58,7 @@
 		virtual void resizeEvent(QResizeEvent *e);
 		virtual QSize sizeHint() const;
 		virtual bool event(QEvent *e);
-		virtual void ownMessage(const char *text);
+		virtual void ownMessage(const char *text, bool bUserFeedback = true);
 		virtual void ownAction(const char *text);
 	protected slots:
 		void handleMarshalError(int err);

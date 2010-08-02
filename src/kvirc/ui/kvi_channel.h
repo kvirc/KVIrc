@@ -889,9 +889,10 @@ public:
 	/**
 	* \brief Called when we send a message
 	* \param szBuffer The buffer :)
+	* \param bUserFeedback Whether to display the echo feedback to the user
 	* \return void
 	*/
-	void ownMessage(const QString & szBuffer);
+	void ownMessage(const QString & szBuffer, bool bUserFeedback = true);
 
 	/**
 	* \brief Called when we perform an action

@@ -290,7 +290,7 @@ void KviDccChat::getBaseLogFileName(QString &buffer)
 	buffer.sprintf("%s_%s_%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 }
 
-void KviDccChat::ownMessage(const QString &text)
+void KviDccChat::ownMessage(const QString &text, bool bUserFeedback)
 {
 	if(!m_pSlaveThread)
 	{
@@ -317,19 +317,23 @@ void KviDccChat::ownMessage(const QString &text)
 					{
 						KviStr buf(KviStr::Format,"%s\r\n",encrypted.ptr());
 						m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
-						m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
-							m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
-							m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsole::NoNotifications);
+						if(bUserFeedback)
+							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
+								m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
+								m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsole::NoNotifications);
 					}
 					break;
 					case KviCryptEngine::Encoded:
 					{
 						KviStr buf(KviStr::Format,"%s\r\n",encrypted.ptr());
 						m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
-						QString encr = decodeText(encrypted.ptr());
-						m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
-							m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
-							m_pDescriptor->szLocalHost.toUtf8().data(),encr,KviConsole::NoNotifications);
+						if(bUserFeedback)
+						{
+							QString encr = decodeText(encrypted.ptr());
+							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+								m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
+								m_pDescriptor->szLocalHost.toUtf8().data(),encr,KviConsole::NoNotifications);
+						}
 					}
 					break;
 					default: // also case KviCryptEngine::EncryptError
@@ -347,9 +351,11 @@ void KviDccChat::ownMessage(const QString &text)
 				KviStr buf(KviStr::Format,"%s\r\n",d);
 				QString tmp = text.right(text.length() - 1);
 				m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
-				m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
-					m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
-					m_pDescriptor->szLocalHost.toUtf8().data(),tmp,KviConsole::NoNotifications);
+				
+				if(bUserFeedback)
+					m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+						m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
+						m_pDescriptor->szLocalHost.toUtf8().data(),tmp,KviConsole::NoNotifications);
 				return;
 			}
 		}
@@ -357,9 +363,11 @@ void KviDccChat::ownMessage(const QString &text)
 #endif
 	KviStr buf(KviStr::Format,"%s\r\n",d);
 	m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
-	m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
-		m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
-		m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsole::NoNotifications);
+	
+	if(bUserFeedback)
+		m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
+			m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
+			m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsole::NoNotifications);
 }
 
 const QString & KviDccChat::localNick()

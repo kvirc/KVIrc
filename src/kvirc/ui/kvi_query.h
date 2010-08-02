@@ -163,9 +163,10 @@ public:
 	/**
 	* \brief Called when we send a message to the query target
 	* \param szBuffer The buffer where to store the data
+	* \param bUserFeedback Whether to display the echo feedback to the user
 	* \return void
 	*/
-	void ownMessage(const QString & szBuffer);
+	void ownMessage(const QString & szBuffer, bool bUserFeedback = true);
 
 	/**
 	* \brief Called when we perform an action
