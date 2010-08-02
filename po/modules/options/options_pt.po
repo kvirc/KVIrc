@@ -10,13 +10,13 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-07-28 18:58+0200\n"
-"PO-Revision-Date: 2010-06-24 06:57+0100\n"
+"PO-Revision-Date: 2010-08-02 23:05+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/options/optw_avatar.cpp:72
@@ -2074,9 +2074,8 @@ msgid "Channel admin:"
 msgstr "Admin. do Canal:"
 
 #: src/modules/options/optw_ircview.cpp:168
-#, fuzzy
 msgid "Channel links"
-msgstr "Janelas de canais"
+msgstr "Ligações de canal"
 
 #: src/modules/options/optw_userlist.cpp:58
 msgid "Channel owner:"
@@ -2494,9 +2493,8 @@ msgid "Enable the notifier"
 msgstr "Activar notificação"
 
 #: src/modules/options/optw_ircview.cpp:162
-#, fuzzy
 msgid "Enable tooltips for:"
-msgstr "Activar dicas do utilizador"
+msgstr "Activar dicas para:"
 
 #: src/modules/options/optw_tray.cpp:43
 msgid "Enable tray icon"
@@ -2524,7 +2522,7 @@ msgstr "Activar destaque de palavras"
 
 #: src/modules/options/optw_ircview.cpp:169
 msgid "Escape sequences"
-msgstr ""
+msgstr "Sequências de escape"
 
 #: src/modules/options/optw_input.cpp:147
 msgid "Expand tabulations in input using this amount of spaces:"
@@ -2776,9 +2774,8 @@ msgid "Horizontal align:"
 msgstr "Alinhamento horizontal:"
 
 #: src/modules/options/optw_ircview.cpp:164
-#, fuzzy
 msgid "Host links"
-msgstr " linhas"
+msgstr "Ligações de máquinas"
 
 #: src/modules/options/optw_urlhandlers.cpp:51
 msgid "How many click to open links?"
@@ -3185,9 +3182,8 @@ msgid "Mixer device:"
 msgstr "Dispositivo misturador:"
 
 #: src/modules/options/optw_ircview.cpp:166
-#, fuzzy
 msgid "Mode links"
-msgstr " linhas"
+msgstr "Ligações de modo"
 
 #: src/modules/options/optw_urlhandlers.cpp:49
 msgid "Mouse handler"
@@ -3285,9 +3281,8 @@ msgid "Nick completion postfix string"
 msgstr "Texto de sufixo de completação de alcunha"
 
 #: src/modules/options/optw_ircview.cpp:167
-#, fuzzy
 msgid "Nick links"
-msgstr "Completação de alcunha"
+msgstr "Ligações de alcunha"
 
 #: src/modules/options/optw_servers.cpp:364
 #: src/modules/options/optw_nickserv.h:41
@@ -3981,9 +3976,8 @@ msgid "Server Encoding:"
 msgstr "Codificação do Servidor:"
 
 #: src/modules/options/optw_ircview.cpp:165
-#, fuzzy
 msgid "Server links"
-msgstr "Respostas do servidor"
+msgstr "Ligações de servidor"
 
 #: src/modules/options/optw_nickserv.cpp:106
 #: src/modules/options/optw_nickserv.cpp:244
@@ -4561,9 +4555,8 @@ msgid "Unspecified"
 msgstr "Não indicado"
 
 #: src/modules/options/optw_ircview.cpp:163
-#, fuzzy
 msgid "Url links"
-msgstr " linhas"
+msgstr "Ligações de Url"
 
 #: src/modules/options/optw_dcc.cpp:120
 msgid "Use \"broken bouncer hack\" to detect address"

@@ -9,13 +9,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-07-29 18:13+0200\n"
-"PO-Revision-Date: 2010-07-01 01:45+0100\n"
+"PO-Revision-Date: 2010-08-02 23:02+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/defscript/popups.kvs:541
@@ -378,7 +378,7 @@ msgstr "Máscara para"
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
-msgstr ""
+msgstr "Destino em falta, nenhuma acção tomada"
 
 #: data/defscript/popups.kvs:459
 #: data/defscript/popups.kvs:1061
@@ -604,18 +604,24 @@ msgstr "Não está conectado a um servidor"
 msgid ""
 "[Installer] Error: the first argument of copyFiles must be a source directory"
 msgstr ""
+"Erro do [Instalador]: o primeiro argumento de copyFiles tem que ser "
+"um directório de origem"
 
 #: data/defscript/classes.kvs:24
 msgid ""
 "[Installer] Error: the second argument of copyFiles must be a file name or "
 "file regexp"
 msgstr ""
+"Erro do [Instalador]: o segundo argumento de copyFiles tem que ser um "
+"nome de ficheiro ou uma expressão regular"
 
 #: data/defscript/classes.kvs:30
 msgid ""
 "[Installer] Error: the third argument of copyFiles must be a destination "
 "directory"
 msgstr ""
+"Erro do [Instalador]: o terceiro argumento de copyFiles tem que ter um "
+"directório de destino"
 
 #: data/defscript/aliases.kvs:100
 msgid "channel"
@@ -688,3 +694,4 @@ msgstr "y (Linhas-y)"
 #: data/defscript/popups.kvs:836
 msgid "z (Debug Stats?)"
 msgstr "z (Estatísticas de Depuração?)"
+
