@@ -614,6 +614,11 @@ IF(WANT_OPENSSL)
 			FIND_LIBRARY(LIB_EAY NAMES libeay32MD eay libeay libeay32)
 			IF(LIB_EAY)
 				INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR})
+				# The following are here in order to pick the applink.c file
+				# The documentation says that it should be included in OPENSSL_INCLUDE_DIR/openssl
+				# but in the package I have now it's actually in OPENSSL_INCLUDE_DIR/../ms .
+				INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR}/openssl)
+				INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR}/../ms)
 				LIST(APPEND LIBS ${OPENSSL_LIBRARIES} ${LIB_EAY})
 				SET(COMPILE_SSL_SUPPORT 1)
 				SET(CMAKE_STATUS_SSL_SUPPORT "Yes")
