@@ -109,7 +109,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_addons.png",
 		KVI_SMALLICON_ADDONS,
 		0,
-		QString());
+		KVI_SHORTCUTS_MANAGE_ADDONS);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_EDITREGUSERS,
@@ -197,7 +197,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_theme.png",
 		KVI_SMALLICON_THEME,
 		0,
-		QString());
+		KVI_SHORTCUTS_MANAGE_THEMES);
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_TOOLBAREDITOR,
