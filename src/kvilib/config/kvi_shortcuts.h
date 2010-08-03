@@ -43,7 +43,9 @@
 * \def KVI_SHORTCUTS_OPTIONS Open "Options" dialog
 * \def KVI_SHORTCUTS_SERVERS Open "Servers" dialog
 * \def KVI_SHORTCUTS_THEME Open "Theme Options" dialog
-* \def KVI_SHORTCUTS_USERS Open "Registered users" dialog
+* \def KVI_SHORTCUTS_USERS Open "Registered Users" dialog
+* \def KVI_SHORTCUTS_MANAGE_THEMES Open "Manage Theme" dialog
+* \def KVI_SHORTCUTS_MANAGE_ADDONS Open "Manage Theme" dialog
 *
 * \def KVI_SHORTCUTS_INPUT_ALT Alt key
 * \def KVI_SHORTCUTS_INPUT_ALT_2 Meta key
@@ -144,6 +146,8 @@
 #define KVI_SHORTCUTS_EDITORS_EVENT "Ctrl+Shift+E"
 #define KVI_SHORTCUTS_IDENTITY "Ctrl+Shift+I"
 #define KVI_SHORTCUTS_EDITORS_ALIAS "Ctrl+Shift+L"
+#define KVI_SHORTCUTS_MANAGE_THEMES "Ctrl+Shift+M"
+#define KVI_SHORTCUTS_MANAGE_ADDONS "Ctrl+Shift+N"
 #define KVI_SHORTCUTS_OPTIONS "Ctrl+Shift+O"
 #define KVI_SHORTCUTS_EDITORS_POPUP "Ctrl+Shift+P"
 #define KVI_SHORTCUTS_EDITORS_ACTION "Ctrl+Shift+Q"
@@ -240,6 +244,8 @@
 		[b]Ctrl+Shift+E:[/b] Open Event editor[br]
 		[b]Ctrl+Shift+I:[/b] Open Identity options[br]
 		[b]Ctrl+Shift+L:[/b] Open Alias editor[br]
+		[b]Ctrl+Shift+M:[/b] Open "Manage Themes" dialog[br]
+		[b]Ctrl+Shift+N:[/b] Open "Manage Addons" dialog[br]
 		[b]Ctrl+Shift+O:[/b] Open "Options" dialog[br]
 		[b]Ctrl+Shift+P:[/b] Open Popup editor[br]
 		[b]Ctrl+Shift+Q:[/b] Open Action editor[br]
@@ -249,7 +255,7 @@
 		[b]Ctrl+Shift+U:[/b] Open "Registered users" dialog[br]
 		[b]Ctrl+Shift+X:[/b] Open "Execute Script" dialog[br]
 		[b]Ctrl+Shift+Z:[/b] Redo last action[br]
-
+		
 		[big]Window handling related keys:[/big][br]
 		[b]Alt+UpArrow:[/b] Previous window[br]
 		[b]Alt+DownArrow:[/b] Next window[br]
