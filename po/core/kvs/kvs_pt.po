@@ -3,19 +3,18 @@
 #
 # Zé <mmodem00@gmail.com>, 2010.
 # Zé <ze@mandriva.org>, 2010.
-# Zé <mmodem00@gmal.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-10 20:53+0200\n"
-"PO-Revision-Date: 2010-05-26 01:51+0100\n"
-"Last-Translator: Zé <mmodem00@gmal.com>\n"
+"PO-Revision-Date: 2010-08-03 01:06+0100\n"
+"Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/kvirc/kvs/kvi_kvs_object.cpp:1076
@@ -52,7 +51,7 @@ msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
 msgstr ""
-"Os nomes das 'alias' podem conter apenas letras, dígitos, sublinhados e "
+"Os nomes das alias podem conter apenas letras, dígitos, sublinhados e "
 "separadores de nomedeespaço '::'"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:258
@@ -558,7 +557,7 @@ msgstr "A listar propriedades Qt para o objecto chamado '%Q' da classe KVS %Q"
 
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:243
 msgid "Missing alias name"
-msgstr "Nome de 'alias' em falta"
+msgstr "Nome da alias em falta"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:723
 msgid "Missing channel list"
@@ -868,23 +867,23 @@ msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_parser_command.cpp:86
 msgid "Syntax error: malformed alias identifier"
-msgstr ""
+msgstr "Erro de sintaxe: identificador de alias mal formado"
 
 #: src/kvirc/kvs/kvi_kvs_parser_command.cpp:61
 msgid "Syntax error: malformed module command identifier"
-msgstr ""
+msgstr "Erro de sintaxe: identificador do comando do módulo mal formado"
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:396
 msgid "The $sw() function can be used only in aliases"
-msgstr ""
+msgstr "A função $sw() pode ser apenas usada nas aliases"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1954
 msgid "The 'defpopup' command needs an expression enclosed in parenthesis"
-msgstr ""
+msgstr "O comando 'defpopup' precisa de uma expressão fechada em parêntesis"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1044
 msgid "The 'for' command needs an expression enclosed in parenthesis"
-msgstr ""
+msgstr "O comando 'for' precisa de uma expressão fechada em parêntesis"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1250
 msgid ""
@@ -901,7 +900,7 @@ msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1208
 msgid "The 'foreach' command needs an expression enclosed in parenthesis"
-msgstr ""
+msgstr "O comando 'foreach' precisa de uma expressão fechada em parêntesis"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:312
 msgid "The 'global' command needs a variable list"
@@ -909,11 +908,11 @@ msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:854
 msgid "The 'if' command needs an expression enclosed in parenthesis"
-msgstr ""
+msgstr "O comando 'if' precisa de uma expressão fechada em parêntesis"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1391
 msgid "The 'switch' command needs an expression enclosed in parenthesis"
-msgstr ""
+msgstr "O comando 'switch' precisa de uma expressão fechada em parêntesis"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:242
 msgid "The 'unset' command needs a variable list"
@@ -984,7 +983,7 @@ msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:752
 msgid "The catalogue %Q was not loaded"
-msgstr ""
+msgstr "O catálogo %Q não foi carregado"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:416
 msgid "The commandline for this url type seems to be broken (%Q)"
@@ -992,11 +991,11 @@ msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:459
 msgid "The current window is not a channel"
-msgstr ""
+msgstr "A janela actual não é um canal"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:297
 msgid "The current window is not a channel, a query or a console"
-msgstr ""
+msgstr "A janela actual não é um canal, um privado ou uma consola"
 
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:2909
 msgid ""
@@ -1007,7 +1006,7 @@ msgstr ""
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:315
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:320
 msgid "The following string was injected by the user:"
-msgstr ""
+msgstr "O texto (String) seguinte foi injectado pelo utilizador"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:879
 msgid ""
@@ -1211,32 +1210,36 @@ msgstr ""
 #: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:302
 msgid "This window has no associated IRC context"
-msgstr ""
+msgstr "Esta janela não tem um contexto IRC associado"
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:195
 msgid "This window has no associated IRC context and is not a DCC chat"
-msgstr ""
+msgstr "Esta janela não tem um contexto IRC associado e não é um conversa DCC"
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:482
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:597
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:502
 msgid "This window is not associated to an IRC context"
-msgstr ""
+msgstr "Esta janela não está associada a um contexto IRC"
 
 #: src/kvirc/kvs/kvi_kvs_timermanager.cpp:237
 msgid "Timer '%Q' has a broken callback handler: killing the timer"
 msgstr ""
+"O temporizador '%Q' tem um manipulador de chamada inválido: "
+"a desactivar o temporizador"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:526
 msgid ""
 "Timer name omitted but there is not current timer (this is not a timer "
 "callback)"
 msgstr ""
+"Nome do temporizador omitido, mas não existe nenhum temporizador actual "
+"(isto não é uma chamada de temporizador)"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:660
 #, c-format
 msgid "Total: %u timers running"
-msgstr ""
+msgstr "Total: %u temporizadores a correr"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:152
 msgid "Trailing garbage at the end of the break command: ignored"
@@ -1444,11 +1447,11 @@ msgstr "Desconhecido"
 
 #: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:214
 msgid "Unknown binary operator '%q'"
-msgstr ""
+msgstr "Operador binário desconhecido '%q'"
 
 #: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:116
 msgid "Unknown binary operator '=%q': did you mean '==' ?"
-msgstr ""
+msgstr "Unknown binary operator '=%q': queria dizer '==' ?"
 
 #: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:664
 msgid "Unknown binding operation '%Q'"
@@ -1490,11 +1493,11 @@ msgstr "Botão da janela '%Q' não encontrado"
 #: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:468
 #, c-format
 msgid "Window with ID '%s' not found, returning empty string"
-msgstr ""
+msgstr "Janela com ID '%s' não encontrada, a devolver string vazia"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1247
 msgid "Window with id %Q not found: no rebinding performed"
-msgstr ""
+msgstr "Janela com id '%s' não encontrada: nenhuma re-ligação realizada"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:637
 msgid "WindowLifetime"
@@ -1587,3 +1590,4 @@ msgstr "linha %d, perto do caracter %d"
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:90
 msgid "say: injected commandline"
 msgstr "diga: linhadecomando injectada"
+

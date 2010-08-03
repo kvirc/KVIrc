@@ -2,18 +2,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Zé <mmodem00@gmail.com>, 2010.
+# Zé <ze@mandriva.org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-10 20:53+0200\n"
-"PO-Revision-Date: 2010-03-26 01:13+0000\n"
-"Last-Translator: Zé <mmodem00@gmail.com>\n"
+"POT-Creation-Date: 2010-07-28 18:58+0200\n"
+"PO-Revision-Date: 2010-08-02 23:07+0100\n"
+"Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/reguser/libkvireguser.cpp:820
@@ -24,14 +25,13 @@ msgstr "    Máscara: %Q!%Q@%Q"
 msgid "    No properties"
 msgstr "    Sem propriedades"
 
+#: src/modules/regchan/libkviregchan.cpp:229
+msgid "    Property: %1=%2"
+msgstr "    Propriedade: %1=%2"
+
 #: src/modules/reguser/libkvireguser.cpp:831
 msgid "    Property: %Q=%Q"
 msgstr "    Propriedade: %Q=%Q"
-
-#: src/modules/regchan/libkviregchan.cpp:212
-#, c-format
-msgid "    Property: %s=%s"
-msgstr "    Propriedade: %s=%s"
 
 #: src/modules/reguser/libkvireguser.cpp:816
 msgid "    Warning: this user has no registration masks"
@@ -45,7 +45,8 @@ msgstr " Utilizador: %c%Q"
 msgid "&Add Group..."
 msgstr "&Adicionar Grupo..."
 
-#: src/modules/reguser/dialog.cpp:246 src/modules/reguser/edituser.cpp:355
+#: src/modules/reguser/edituser.cpp:355
+#: src/modules/reguser/dialog.cpp:246
 msgid "&Add..."
 msgstr "&Adicionar..."
 
@@ -61,8 +62,10 @@ msgstr "&Editar..."
 msgid "&New"
 msgstr "&Novo"
 
-#: src/modules/reguser/dialog.cpp:297 src/modules/reguser/edituser.cpp:114
-#: src/modules/reguser/edituser.cpp:258 src/modules/reguser/edituser.cpp:470
+#: src/modules/reguser/edituser.cpp:114
+#: src/modules/reguser/edituser.cpp:258
+#: src/modules/reguser/edituser.cpp:470
+#: src/modules/reguser/dialog.cpp:297
 msgid "&OK"
 msgstr "&OK"
 
@@ -237,26 +240,31 @@ msgstr "Não é possível abrir o ficheiro %Q para escrita."
 msgid "Can't open file %s for reading."
 msgstr "Não é possível abrir o ficheiro %s para leitura."
 
-#: src/modules/reguser/dialog.cpp:302 src/modules/reguser/edituser.cpp:118
-#: src/modules/reguser/edituser.cpp:262 src/modules/reguser/edituser.cpp:469
+#: src/modules/reguser/edituser.cpp:118
+#: src/modules/reguser/edituser.cpp:262
+#: src/modules/reguser/edituser.cpp:469
+#: src/modules/reguser/dialog.cpp:302
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/modules/regchan/libkviregchan.cpp:207
-#, c-format
-msgid "Channel: %c%s@%s"
-msgstr "Canal: %c%s@%s"
+#: src/modules/regchan/libkviregchan.cpp:219
+msgid "Channel: %1%2@%3"
+msgstr "Canal: %1%2@%3"
 
-#: src/modules/reguser/dialog.cpp:719 src/modules/reguser/dialog.cpp:823
+#: src/modules/reguser/dialog.cpp:719
+#: src/modules/reguser/dialog.cpp:823
 msgid "Choose a Filename - KVIrc"
 msgstr "Escolher um Ficheiro - KVIrc"
 
-#: src/modules/reguser/dialog.cpp:134 src/modules/reguser/edituser.cpp:332
+#: src/modules/reguser/edituser.cpp:332
+#: src/modules/reguser/dialog.cpp:134
 msgid "Comment:"
 msgstr "Comentário:"
 
-#: src/modules/reguser/dialog.cpp:520 src/modules/reguser/dialog.cpp:523
-#: src/modules/reguser/dialog.cpp:524 src/modules/reguser/dialog.cpp:526
+#: src/modules/reguser/dialog.cpp:520
+#: src/modules/reguser/dialog.cpp:523
+#: src/modules/reguser/dialog.cpp:524
+#: src/modules/reguser/dialog.cpp:526
 #: src/modules/reguser/dialog.cpp:528
 msgid "Default"
 msgstr "Predefinido"
@@ -288,7 +296,8 @@ msgstr ""
 msgid "Flags"
 msgstr "Opções"
 
-#: src/modules/reguser/dialog.cpp:411 src/modules/reguser/dialog.cpp:424
+#: src/modules/reguser/dialog.cpp:411
+#: src/modules/reguser/dialog.cpp:424
 msgid "Group name:"
 msgstr "Nome do grupo..."
 
@@ -413,8 +422,8 @@ msgstr "Nenhum nome indicado"
 msgid "No property specified"
 msgstr "Nenhuma propriedade indicada"
 
-#: src/modules/regchan/libkviregchan.cpp:120
-#: src/modules/regchan/libkviregchan.cpp:177
+#: src/modules/regchan/libkviregchan.cpp:124
+#: src/modules/regchan/libkviregchan.cpp:184
 msgid "No such channel/netmask entry in the database"
 msgstr "Nenhuma entrada de máscara de rede/canal na base de dados"
 
@@ -450,7 +459,8 @@ msgstr "Propriedades"
 msgid "Property Editor"
 msgstr "Editor de Propriedades"
 
-#: src/modules/reguser/dialog.cpp:256 src/modules/reguser/edituser.cpp:359
+#: src/modules/reguser/edituser.cpp:359
+#: src/modules/reguser/dialog.cpp:256
 msgid "Re&move"
 msgstr "Re&mover"
 
@@ -462,7 +472,7 @@ msgstr "Entrada de Utilizador Registado"
 msgid "Registered Users - KVIrc"
 msgstr "Utilizadores Registados - KVIrc"
 
-#: src/modules/regchan/libkviregchan.cpp:197
+#: src/modules/regchan/libkviregchan.cpp:204
 msgid "Registered channel list:"
 msgstr "Lista de canais registados:"
 
@@ -520,7 +530,7 @@ msgstr ""
 "O ficheiro %s não parece ser uma base de dados válida de utilizadores "
 "registados."
 
-#: src/modules/regchan/libkviregchan.cpp:219
+#: src/modules/regchan/libkviregchan.cpp:238
 #, c-format
 msgid "Total %d channels"
 msgstr "Total %d canais"
@@ -556,3 +566,6 @@ msgstr "Utilizador não encontrado (%Q)"
 #: src/modules/reguser/edituser.cpp:92
 msgid "Value"
 msgstr "Valor"
+
+#~ msgid "    Property: %s=%s"
+#~ msgstr "    Propriedade: %s=%s"

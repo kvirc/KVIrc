@@ -13,13 +13,13 @@ msgstr ""
 "Project-Id-Version: editor_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-19 20:08+0200\n"
-"PO-Revision-Date: 2010-05-16 03:36+0100\n"
-"Last-Translator: Zé <mmodem00@gmal.com>\n"
+"PO-Revision-Date: 2010-08-03 00:51+0100\n"
+"Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/eventeditor/eventeditor.cpp:393
@@ -243,7 +243,7 @@ msgstr "Código da acção"
 #: src/modules/aliaseditor/aliaseditor.cpp:558
 #: src/modules/aliaseditor/aliaseditor.cpp:1122
 msgid "Add Alias"
-msgstr "Adicionar 'Alias'"
+msgstr "Adicionar Alias"
 
 #: src/modules/classeditor/classeditor.cpp:762
 msgid "Add Class"
@@ -269,27 +269,27 @@ msgstr "Avançado..."
 #: src/modules/aliaseditor/aliaseditor.cpp:339
 #: src/modules/aliaseditor/aliaseditor.cpp:535
 msgid "Alias"
-msgstr "'Alias'"
+msgstr "Alias"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1177
 msgid "Alias Editor"
-msgstr "Editor de 'Alias'"
+msgstr "Editor de Alias"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:720
 #: src/modules/aliaseditor/aliaseditor.cpp:788
 msgid "Alias Export"
-msgstr "Exportar 'Alias'"
+msgstr "Exportar Alias"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:440
 msgid "Alias already exists"
-msgstr "A 'alias' já existe"
+msgstr "A alias já existe"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1002
 msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
 msgstr ""
-"Os nomes das 'alias' podem conter apenas letras, dígitos, sublinhado e "
+"Os nomes das aliases podem conter apenas letras, dígitos, sublinhado e "
 "separadores de nomes de espaços '::'"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:322
@@ -297,8 +297,8 @@ msgid ""
 "An external script has changed the alias you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
-"Um 'script' externo mudou a 'alias' que está actualmente a editar. Deseja "
-"aceitar as mudanças externas?"
+"Um 'script' externo mudou a alias que está actualmente a editar. "
+"Deseja aceitar as mudanças externas?"
 
 #: src/modules/actioneditor/actioneditor.cpp:879
 msgid "Apply"
@@ -316,7 +316,7 @@ msgstr "Fundo:"
 #: src/modules/aliaseditor/aliaseditor.cpp:1015
 #: src/modules/aliaseditor/aliaseditor.cpp:1026
 msgid "Bad Alias Name"
-msgstr "Nome de 'Alias' Inválido"
+msgstr "Nome de Alias Inválido"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1069
 #: src/modules/aliaseditor/aliaseditor.cpp:1083
@@ -537,7 +537,7 @@ msgstr "Deseja realmente apagar a barra de ferramentas \"%1\"?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:922
 msgid "Do you really want to remove the alias \"%Q\" ?"
-msgstr "Deseja realmente remover a 'alias' \"%Q\" ?"
+msgstr "Deseja realmente remover a alias \"%Q\" ?"
 
 #: src/modules/classeditor/classeditor.cpp:1177
 msgid "Do you really want to remove the class \"%Q\" ?"
@@ -571,7 +571,7 @@ msgstr "Editar Barra de Ferramentas"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:146
 msgid "Edit the alias or namespace name"
-msgstr "Editar os nomes das 'alias' ou dos nomesdeespaços"
+msgstr "Editar o nome da alias ou do namespace"
 
 #: src/modules/classeditor/classeditor.cpp:177
 msgid "Edit the class or namespace name"
@@ -698,7 +698,7 @@ msgstr "Tipo de Letra:"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1027
 msgid "Found an empty namespace in alias name"
-msgstr "Encontrado um nomedeespaço vazio no nome da 'alias'"
+msgstr "Encontrado um namespace vazio no nome da alias"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1095
 #: src/modules/classeditor/classeditor.cpp:1358
@@ -797,7 +797,7 @@ msgstr "Função Membro:"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:988
 msgid "Missing Alias Name"
-msgstr "Nome de 'Alias' em Falta"
+msgstr "Nome da Alias em Falta"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1056
 #: src/modules/classeditor/classeditor.cpp:1319
@@ -1019,7 +1019,7 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:321
 msgid "OverWrite Current Alias"
-msgstr "Substituir 'Alias' Actual"
+msgstr "Substituir Alias Actual"
 
 #: src/modules/popupeditor/popupeditor.cpp:440
 msgid "Paste Above"
@@ -1043,7 +1043,7 @@ msgstr "Por favor indique o nome para a função membro:"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1122
 msgid "Please enter the name for the new alias"
-msgstr "Por favor indique o nome para a nova 'alias'"
+msgstr "Por favor indique o nome para a nova alias"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1129
 #: src/modules/classeditor/classeditor.cpp:1401
@@ -1052,7 +1052,7 @@ msgstr "Por favor indique o nome para o novo nomedeespaço"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:426
 msgid "Please enter the new name for the alias"
-msgstr "Por favor indique o novo nome para a 'alias'"
+msgstr "Por favor indique o novo nome para a alias"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:428
 #: src/modules/classeditor/classeditor.cpp:592
@@ -1064,8 +1064,8 @@ msgid ""
 "Please enter the text to be searched for. The matching aliases will be "
 "highlighted."
 msgstr ""
-"Por favor indique o texto a ser procurado. A 'alias' correspondente será "
-"destacada."
+"Por favor indique o texto a ser procurado. As aliases correspondentes serão "
+"destacadas."
 
 #: src/modules/classeditor/classeditor.cpp:861
 msgid ""
@@ -1160,7 +1160,7 @@ msgstr "Renomear"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:426
 msgid "Rename Alias"
-msgstr "Renomear 'Alias'"
+msgstr "Renomear Alias"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:428
 #: src/modules/classeditor/classeditor.cpp:592
@@ -1201,7 +1201,7 @@ msgstr "Ícone Pequeno:"
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
-"Caracter ':' perdido no nome da 'alias': queria dizer ...<nomedeespaço>::"
+"Caracter ':' perdido no nome da alias: queria dizer ...<nomedeespaço>::"
 "<nome> ?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1084
@@ -1320,7 +1320,7 @@ msgstr "Não é possível escrever para o ficheiro de acções."
 #: src/modules/aliaseditor/aliaseditor.cpp:819
 #: src/modules/popupeditor/popupeditor.cpp:1174
 msgid "Unable to write to the alias file."
-msgstr "Não é possível escrever para o ficheiro da 'alias'."
+msgstr "Não é possível escrever para o ficheiro da alias."
 
 #: src/modules/classeditor/classeditor.cpp:1063
 msgid "Unable to write to the class file."
@@ -1405,7 +1405,7 @@ msgstr "Sim a Tudo"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:989
 msgid "You must specify a valid name for the alias"
-msgstr "Deve indicar um nome válido para a 'alias'"
+msgstr "Deve indicar um nome válido para a alias"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1057
 #: src/modules/classeditor/classeditor.cpp:1320
