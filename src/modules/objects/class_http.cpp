@@ -22,18 +22,20 @@
 //
 //=============================================================================
 
+#include "class_http.h"
+
 #include "kvi_debug.h"
 #include "kvi_error.h"
 #include "kvi_locale.h"
-#include "class_http.h"
+
 #include <QHttp>
 #include <QUrl>
- #include <QUrlInfo>
+#include <QUrlInfo>
+
 #ifndef QT_NO_OPENSSL
+	#include <QSslError>
 
-#include <QSslError>
-
-const char * const ssl_errors_tbl[] = {
+	const char * const ssl_errors_tbl[] = {
 		"NoError",
 		"UnableToGetIssuerCertificate",
 		"UnableToDecryptCertificateSignature",
@@ -60,8 +62,8 @@ const char * const ssl_errors_tbl[] = {
 		"UnspecifiedError",
 		"NoSslSupport"
 	};
-
 #endif
+
 /*
 	@doc: http
 	@keyterms:
@@ -145,9 +147,7 @@ const char * const ssl_errors_tbl[] = {
 		This signal is emitted by the default implementation of [classfnc]$stateChangedEvent[/classfnc].
 		!sg: $responseHeaderReceived()
 		This signal is emitted by the default implementation of [classfnc]$responseHeaderReceivedEvent[/classfnc].
-
-
-		*/
+*/
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_http,"http","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"get",functionGet)
@@ -274,34 +274,32 @@ bool  KviKvsObject_http::functionSetProxy(KviKvsObjectFunctionCall *c)
 	m_pHttp->setProxy(szHost,uRemotePort,szUser,szPass);
 	return true;
 }
+
 bool  KviKvsObject_http::functionGet(KviKvsObjectFunctionCall *c)
 {
-
 	CHECK_INTERNAL_POINTER(m_pHttp)
 	QString szPath,szDest;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("remote_path",KVS_PT_STRING,0,szPath)
+		KVSO_PARAMETER("remote_path",KVS_PT_STRING,KVS_PF_OPTIONAL,szPath)
 		KVSO_PARAMETER("local_filename",KVS_PT_STRING,0,szDest)
 	KVSO_PARAMETERS_END(c)
-	QFile *pFile=0;
+	
+	QFile * pFile=0;
 	if (!szDest.isEmpty())
 	{
 		pFile=new QFile(szDest);
 		if (pFile)
 		{
-				pFile->open(QIODevice::WriteOnly);
-		}
-		else
-		{
+			pFile->open(QIODevice::WriteOnly);
+		} else {
 			c->warning(__tr2qs_ctx("'%Q' is not a valid file path","objects"),&szDest);
 			c->returnValue()->setInteger(-1);
 			return true;
 		}
-
 	}
 
-        if (szPath.isEmpty()) szPath="/";
-        int id=m_pHttp->get(szPath,pFile);
+	if (szPath.isEmpty()) szPath="/";
+	int id=m_pHttp->get(szPath,pFile);
 	if (pFile) getDict[id]=pFile;
 	c->returnValue()->setInteger(id);
 	return true;
