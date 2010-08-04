@@ -1,6 +1,6 @@
 # translation of about_fr.po to Français
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Ahinu <ahinu@wanadoo.fr>, 2005.
 # Ahinu <ahinu.laman@gmail.com>, 2006.
 #
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: about_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 15:48+0200\n"
-"PO-Revision-Date: 2010-07-13 07:48+0100\n"
+"POT-Creation-Date: 2010-06-19 20:08+0200\n"
+"PO-Revision-Date: 2010-08-03 19:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: Français <kde-francophone@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,87 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
 
-#: src/modules/about/aboutdialog.cpp:108
-msgid "About"
-msgstr "À propos"
-
 #: src/modules/about/aboutdialog.cpp:79
 msgid "About KVIrc..."
 msgstr "À propos de KVIrc..."
-
-#: src/modules/about/aboutdialog.cpp:136
-msgid "Architecture"
-msgstr "Architecture"
-
-#: src/modules/about/aboutdialog.cpp:163
-msgid "Build Command"
-msgstr "Chemin du constructeur"
-
-#: src/modules/about/aboutdialog.cpp:143
-msgid "Build Date"
-msgstr "Date de la compilation"
-
-#: src/modules/about/aboutdialog.cpp:167
-msgid "Build Flags"
-msgstr "Drapeaux du constructeur"
-
-#: src/modules/about/aboutdialog.cpp:141
-msgid "Build Info"
-msgstr "Information de compilation"
-
-#: src/modules/about/aboutdialog.cpp:159
-msgid "CPU Name"
-msgstr "Nom CPU"
 
 #: src/modules/about/aboutdialog.cpp:80
 msgid "Close"
 msgstr "Fermer"
 
-#: src/modules/about/aboutdialog.cpp:176
-msgid "Compiler Flags"
-msgstr "Drapeaux à la compilation"
-
-#: src/modules/about/aboutdialog.cpp:172
-msgid "Compiler Name"
-msgstr "Nom du compilateur"
-
-#: src/modules/about/aboutdialog.cpp:182
-msgid "Executable Information"
-msgstr "Information sur l'executable"
-
 #: src/modules/about/aboutdialog.cpp:102
 msgid "Forged by the <b>KVIrc Development Team</b>"
 msgstr "Forgé par l'<b>Équipe de Développement de KVIrc</b>"
 
-#: src/modules/about/aboutdialog.cpp:195
-msgid "Honor && Glory"
-msgstr "Honneur && Gloire"
-
-#: src/modules/about/aboutdialog.cpp:221
-msgid "License"
-msgstr "Licence"
-
-#: src/modules/about/aboutdialog.cpp:214
-msgid ""
-"Oops... Can't find the license file...\n"
-"It MUST be included in the distribution...\n"
-"Please report to <pragma at kvirc dot net>"
-msgstr ""
-"Oups... Impossible de trouver le fichier de licence...\n"
-"Il DOIT être inclu dans la distribution...\n"
-"Rapportez cela à <pragma at kvirc dot net>"
-
-#: src/modules/about/aboutdialog.cpp:151
-msgid "Revision Number"
-msgstr "Numero de la révision"
+#: src/modules/about/aboutdialog.cpp:108
+msgid "About"
+msgstr "À propos"
 
 #: src/modules/about/aboutdialog.cpp:122
 msgid "Runtime Info"
 msgstr "Information système"
-
-#: src/modules/about/aboutdialog.cpp:147
-msgid "Sources Date"
-msgstr "Date des sources"
 
 #: src/modules/about/aboutdialog.cpp:124
 #: src/modules/about/aboutdialog.cpp:155
@@ -108,3 +46,64 @@ msgstr "Nom du système"
 msgid "System Version"
 msgstr "Version du système"
 
+#: src/modules/about/aboutdialog.cpp:136
+msgid "Architecture"
+msgstr "Architecture"
+
+#: src/modules/about/aboutdialog.cpp:141
+msgid "Build Info"
+msgstr "Information de compilation"
+
+#: src/modules/about/aboutdialog.cpp:143
+msgid "Build Date"
+msgstr "Date de la compilation"
+
+#: src/modules/about/aboutdialog.cpp:147
+msgid "Sources Date"
+msgstr "Date des sources"
+
+#: src/modules/about/aboutdialog.cpp:151
+msgid "Revision Number"
+msgstr "Numéro de la révision"
+
+#: src/modules/about/aboutdialog.cpp:159
+msgid "CPU Name"
+msgstr "Nom CPU"
+
+#: src/modules/about/aboutdialog.cpp:163
+msgid "Build Command"
+msgstr "Chemin du constructeur"
+
+#: src/modules/about/aboutdialog.cpp:167
+msgid "Build Flags"
+msgstr "Drapeaux du constructeur"
+
+#: src/modules/about/aboutdialog.cpp:172
+msgid "Compiler Name"
+msgstr "Nom du compilateur"
+
+#: src/modules/about/aboutdialog.cpp:176
+msgid "Compiler Flags"
+msgstr "Drapeaux à la compilation"
+
+#: src/modules/about/aboutdialog.cpp:182
+msgid "Executable Information"
+msgstr "Information sur l'exécutable"
+
+#: src/modules/about/aboutdialog.cpp:195
+msgid "Honor && Glory"
+msgstr "Honneur && Gloire"
+
+#: src/modules/about/aboutdialog.cpp:214
+msgid ""
+"Oops... Can't find the license file...\n"
+"It MUST be included in the distribution...\n"
+"Please report to <pragma at kvirc dot net>"
+msgstr ""
+"Oups... Impossible de trouver le fichier de licence...\n"
+"Il DOIT être inclue dans la distribution...\n"
+"Rapportez cela à <pragma at kvirc dot net>"
+
+#: src/modules/about/aboutdialog.cpp:221
+msgid "License"
+msgstr "Licence"
