@@ -272,7 +272,11 @@ void KviApp::setup()
 	// Make sure that the C strings are translated to utf8
 	// This is a fallback solution anyway: we should use the appropriate
 	// encoding every time.
-	QTextCodec::setCodecForCStrings(KviLocale::codecForName("UTF-8"));
+	QTextCodec * pUTF8Codec = KviLocale::codecForName("UTF-8");
+	if(pUTF8Codec)
+		QTextCodec::setCodecForCStrings(pUTF8Codec);
+	else
+		debug("Aaargh... have no UTF-8 codec?");
 
 	QString tmp;
 /*
