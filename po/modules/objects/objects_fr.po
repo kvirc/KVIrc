@@ -1,0 +1,848 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: objects_fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-19 20:08+0200\n"
+"PO-Revision-Date: 2010-07-25 17:45+0100\n"
+"Last-Translator: \n"
+"Language-Team: Français <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/objects/class_listwidget.cpp:260
+#: src/modules/objects/class_tablewidget.cpp:533
+#: src/modules/objects/class_treewidgetitem.cpp:287
+msgid "Unknown item flag '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:318
+#: src/modules/objects/class_widget.cpp:1747
+#: src/modules/objects/class_label.cpp:327
+#: src/modules/objects/class_painter.cpp:682
+msgid "Unknown style '%Q'"
+msgstr "Style inconnu '%Q'"
+
+#: src/modules/objects/class_listwidget.cpp:345
+#: src/modules/objects/class_tablewidget.cpp:256
+#: src/modules/objects/class_treewidgetitem.cpp:412
+msgid "Pixmap object or image Id required"
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:355
+#: src/modules/objects/class_tablewidget.cpp:266
+#: src/modules/objects/class_treewidgetitem.cpp:422
+msgid "Error occured: the suitable file '%Q' is not of the correct format or it is not a valid icon number."
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:392
+#: src/modules/objects/class_painter.cpp:859
+#: src/modules/objects/class_painter.cpp:912
+#: src/modules/objects/class_painter.cpp:1554
+msgid "The opacity parameter didn't evaluate to integer"
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:403
+#: src/modules/objects/class_painter.cpp:871
+#: src/modules/objects/class_painter.cpp:924
+msgid "Color name or triplette rgb/hsv value required"
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:408
+#: src/modules/objects/class_painter.cpp:876
+#: src/modules/objects/class_painter.cpp:929
+#: src/modules/objects/class_painter.cpp:1572
+msgid "One of the triplette parameters didn't evaluate to an integer"
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:438
+#: src/modules/objects/class_combobox.cpp:172
+#: src/modules/objects/class_combobox.cpp:280
+msgid "No string parameter given - using empty string"
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:441
+#: src/modules/objects/class_listwidget.cpp:459
+#: src/modules/objects/class_combobox.cpp:175
+#: src/modules/objects/class_combobox.cpp:192
+#, c-format
+msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:522
+msgid "Invalid selection mode '%Q' assuming single"
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:553
+msgid "Can't insert the listwidget itself!"
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:558
+msgid "Can't insert a non-widget object"
+msgstr ""
+
+#: src/modules/objects/class_wizard.cpp:146
+#: src/modules/objects/class_wizard.cpp:168
+#: src/modules/objects/class_window.cpp:143
+#: src/modules/objects/class_window.cpp:148
+#: src/modules/objects/class_widget.cpp:1782
+msgid "Can't add a non-widget object"
+msgstr ""
+
+#: src/modules/objects/class_wizard.cpp:189
+#: src/modules/objects/class_wizard.cpp:208
+#: src/modules/objects/class_wizard.cpp:229
+#: src/modules/objects/class_wizard.cpp:249
+#: src/modules/objects/class_wizard.cpp:269
+#: src/modules/objects/class_mainwindow.cpp:95
+#: src/modules/objects/object_macros.h:120
+msgid "Widget object required"
+msgstr "Object widget nécéssaire"
+
+#: src/modules/objects/class_mainwindow.cpp:85
+#: src/modules/objects/class_widget.cpp:1766
+#: src/modules/objects/class_toolbutton.cpp:264
+#: src/modules/objects/object_macros.h:110
+msgid "Widget parameter is not an object"
+msgstr ""
+
+#: src/modules/objects/class_mainwindow.cpp:90
+#: src/modules/objects/class_widget.cpp:1771
+#: src/modules/objects/class_toolbutton.cpp:269
+#: src/modules/objects/object_macros.h:115
+msgid "Widget parameter is not a valid object"
+msgstr ""
+
+#: src/modules/objects/class_http.cpp:229
+msgid "Host '%Q' is not a valid url"
+msgstr "L'hôte '%Q' n'est pas une URL valide"
+
+#: src/modules/objects/class_http.cpp:296
+msgid "'%Q' is not a valid file path"
+msgstr "'%Q' n'est pas un chemin de fichier valide"
+
+#: src/modules/objects/class_widget.cpp:1127
+#: src/modules/objects/class_painter.cpp:549
+msgid "The array passed as parameter must contain at least 4 elements"
+msgstr "Le tableau passez en paramètre doit contenir au moins 4 éléments"
+
+#: src/modules/objects/class_widget.cpp:1140
+#: src/modules/objects/class_painter.cpp:558
+msgid "One of the geometry array parameters is empty"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1145
+#: src/modules/objects/class_painter.cpp:563
+msgid "One of the geometry array parameters didn't evaluate to an integer"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1155
+msgid "$setGeometry() requires either an array as first parameter or four integers"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1160
+#: src/modules/objects/class_widget.cpp:1282
+#: src/modules/objects/class_widget.cpp:1364
+#: src/modules/objects/class_widget.cpp:1607
+#: src/modules/objects/class_widget.cpp:1664
+#: src/modules/objects/class_multilineedit.cpp:636
+#: src/modules/objects/class_painter.cpp:575
+#: src/modules/objects/class_painter.cpp:609
+#: src/modules/objects/class_painter.cpp:653
+#, fuzzy
+msgid "The first parameter didn't evaluate to an array nor an integer"
+msgstr "Le premier paramètre ne semble être; ni un tableau, ni un entier"
+
+#: src/modules/objects/class_widget.cpp:1225
+#: src/modules/objects/class_widget.cpp:1307
+#: src/modules/objects/class_multilineedit.cpp:586
+#: src/modules/objects/class_painter.cpp:619
+msgid "The array passed as parameter must contain at least 3 elements"
+msgstr "Le tableau passer en paramètre doit contenir au moins 3 éléments"
+
+#: src/modules/objects/class_widget.cpp:1234
+#: src/modules/objects/class_widget.cpp:1316
+#: src/modules/objects/class_multilineedit.cpp:595
+msgid "One of the colors array parameters is empty"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1240
+#: src/modules/objects/class_widget.cpp:1322
+#: src/modules/objects/class_multilineedit.cpp:600
+msgid "One of the colors array parameters didn't evaluate to an integer"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1261
+#: src/modules/objects/class_widget.cpp:1267
+#: src/modules/objects/class_widget.cpp:1343
+#: src/modules/objects/class_widget.cpp:1349
+msgid "Not a valid color !"
+msgstr "Ce n'est pas une couleur valide !"
+
+#: src/modules/objects/class_widget.cpp:1277
+msgid "$setForegroundColor requires either an array as first parameter, one hex string or color name, or three integers"
+msgstr "$setForegroundColor à besoin soit d'un tableau, d'une chaîne hexadécimale, d'un nom de douleur ou de 3 entiers en tant que premier paramètre"
+
+#: src/modules/objects/class_widget.cpp:1359
+msgid "$setBackgroundColor requires either an array as first parameter, one hex string or color name, or three integers"
+msgstr "$setBackgroundColor à besoin soit d'un tableau, d'une chaîne hexadécimale, d'un nom de douleur ou de 3 entiers en tant que premier paramètre"
+
+#: src/modules/objects/class_widget.cpp:1583
+#: src/modules/objects/class_widget.cpp:1640
+#: src/modules/objects/class_painter.cpp:585
+msgid "The array passed as parameter must contain at least 2 elements"
+msgstr "Le tableau passer en paramètre doit contenir au moins 2 éléments"
+
+#: src/modules/objects/class_widget.cpp:1590
+msgid "One of the move array parameters is empty"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1595
+msgid "One of the move array parameters didn't evaluate to an integer"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1602
+msgid "$move() requires either an array as first parameter or two integers"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1647
+msgid "One of the resize array parameters is empty"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1652
+msgid "One of the resize array parameters didn't evaluate to an integer"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1659
+msgid "$resize() requires either an array as first parameter or two integers"
+msgstr "$resize() à besoin d'un tableau ou de deux entiers, en premier paramètre"
+
+#: src/modules/objects/class_widget.cpp:1691
+msgid "Invalid parameters"
+msgstr "Paramétres invalide"
+
+#: src/modules/objects/class_widget.cpp:1717
+msgid "Unknown widget flag '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1777
+msgid "No Layout associated to the widget "
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1806
+msgid "Parent must be a widget object"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1840
+msgid "The pixmap is not valid"
+msgstr "Le pixmap n'est pas valide"
+
+#: src/modules/objects/class_widget.cpp:1871
+#: src/modules/objects/class_painter.cpp:1205
+msgid "Pixmap parameter is not an object"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1876
+#: src/modules/objects/class_painter.cpp:1210
+msgid "Pixmap object required"
+msgstr "Object pixmap nécéssaire"
+
+#: src/modules/objects/class_widget.cpp:1881
+#, fuzzy
+msgid "Null mask"
+msgstr "Masque null"
+
+#: src/modules/objects/class_widget.cpp:1906
+msgid "Unknown widget attribute '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1930
+msgid "Unknown Color Role '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_widget.cpp:1939
+msgid "Unknown Color Group '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_process.cpp:221
+msgid "Process could not be started."
+msgstr "Le processus n'a pas pu être lancer"
+
+#: src/modules/objects/class_layout.cpp:138
+msgid "The parent of a layout must be a widget!"
+msgstr ""
+
+#: src/modules/objects/class_layout.cpp:269
+msgid "Invalid resize mode defaulting to Auto"
+msgstr ""
+
+#: src/modules/objects/class_layout.cpp:290
+msgid "The widget must be a child of this layout"
+msgstr ""
+
+#: src/modules/objects/class_layout.cpp:309
+#: src/modules/objects/class_vbox.cpp:203
+msgid "Unknown alignment: '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_workspace.cpp:229
+msgid "The widget must be a subwindow of this workspace"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:415
+#: src/modules/objects/class_socket.cpp:463
+#: src/modules/objects/class_file.cpp:369
+#: src/modules/objects/class_file.cpp:489
+#: src/modules/objects/class_pixmap.cpp:274
+msgid "Buffer parameter is not an object"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:420
+#: src/modules/objects/class_file.cpp:374
+#: src/modules/objects/class_file.cpp:508
+#: src/modules/objects/class_pixmap.cpp:279
+msgid "Buffer parameter is not a memorybuffer object"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:476
+#: src/modules/objects/class_file.cpp:40
+#: src/modules/objects/class_file.cpp:480
+msgid "File is not open!"
+msgstr "Le fichier n'est pas ouvert !"
+
+#: src/modules/objects/class_socket.cpp:487
+msgid "Buffer parameter is not a memorybuffer or file object"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:531
+msgid "No socket object specified"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:537
+msgid "Invalid socket object specified (it doesn't inherit from socket)"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:549
+msgid "There is no connection to accept!"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:579
+#, c-format
+msgid "Value %d for port is out of range (values allowed are from 0 to 65535)"
+msgstr "La valeur %d pour le port n'est pas valide (les valeurs autoriser vont de 0 à 65535)"
+
+#: src/modules/objects/class_socket.cpp:584
+#: src/modules/objects/class_socket.cpp:615
+msgid "Another connection in progress"
+msgstr "Une autre connexion est en cours"
+
+#: src/modules/objects/class_socket.cpp:632
+msgid "No IPv6 support in this executable"
+msgstr "Pas de support IPv6 dans cette executable"
+
+#: src/modules/objects/class_socket.cpp:654
+#: src/modules/objects/class_socket.cpp:868
+msgid "Invalid IP address (%Q)"
+msgstr "Adresse IP invalide (%Q)"
+
+#: src/modules/objects/class_socket.cpp:675
+msgid "Socket creation failed"
+msgstr "La création du socket à échouer"
+
+#: src/modules/objects/class_socket.cpp:690
+#: src/modules/objects/class_socket.cpp:711
+msgid "Invalid socket address"
+msgstr "Adresse de socket invalide"
+
+#: src/modules/objects/class_socket.cpp:698
+#: src/modules/objects/class_socket.cpp:719
+msgid "Bind failure"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:729
+msgid "Listen failure"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:862
+msgid "Invalid IP address "
+msgstr "Adresse IP invalide"
+
+#: src/modules/objects/class_socket.cpp:890
+msgid "Failed to create the socket"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:902
+msgid "Failed to setup a nonblocking socket"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:923
+msgid "Connect failure: "
+msgstr "Connexion échouer :"
+
+#: src/modules/objects/class_socket.cpp:950
+msgid "Connect attempt timed out"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:979
+msgid "Can't start the DNS thread"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:1125
+msgid "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
+msgstr ""
+
+#: src/modules/objects/class_multilineedit.cpp:263
+#, c-format
+msgid "No such line '%d'"
+msgstr ""
+
+#: src/modules/objects/class_multilineedit.cpp:317
+msgid "Unknown word wrap '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_multilineedit.cpp:612
+msgid "A string of 6 hex digits is required"
+msgstr "Une chaîne de 6 caractères hexadécimaux est requise"
+
+#: src/modules/objects/class_multilineedit.cpp:623
+msgid "Not an hex digit"
+msgstr "Ce n'est pas un nombre Hexa"
+
+#: src/modules/objects/class_multilineedit.cpp:631
+msgid "$setColor requires either an array as first parameter or three integers"
+msgstr ""
+
+#: src/modules/objects/class_multilineedit.cpp:708
+msgid "Unknown text format '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_multilineedit.cpp:723
+#: src/modules/objects/class_tbrowser.cpp:103
+#: src/modules/objects/class_pixmap.cpp:188
+#: src/modules/objects/class_pixmap.cpp:224
+msgid "I can't find the specified file '%Q'."
+msgstr ""
+
+#: src/modules/objects/class_multilineedit.cpp:730
+msgid "I cannot read the file '%Q'."
+msgstr ""
+
+#: src/modules/objects/class_multilineedit.cpp:758
+#: src/modules/objects/class_groupbox.cpp:314
+#: src/modules/objects/class_hbox.cpp:197
+#: src/modules/objects/class_label.cpp:273
+msgid "Unknown alignment '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_tablewidget.cpp:206
+#: src/modules/objects/class_tablewidget.cpp:228
+msgid "Item out of the tablewidget size"
+msgstr ""
+
+#: src/modules/objects/class_wrapper.cpp:146
+msgid "The window identifier preceded by WinId must be the first object in the search path"
+msgstr ""
+
+#: src/modules/objects/class_wrapper.cpp:167
+msgid "Failed to find one of the wrap path widgets ('%Q::%Q')"
+msgstr ""
+
+#: src/modules/objects/class_wrapper.cpp:175
+msgid "Failed to find the widget to wrap"
+msgstr ""
+
+#: src/modules/objects/class_groupbox.cpp:347
+#: src/modules/objects/class_slider.cpp:282
+msgid "Unknown orientation '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:200
+msgid "Missing Qt plugin for database %Q"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:207
+msgid "Duplicate connection name '%Q', old query connection removed"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:237
+#: src/modules/objects/class_sql.cpp:270
+#: src/modules/objects/class_sql.cpp:287
+#: src/modules/objects/class_sql.cpp:304
+#: src/modules/objects/class_sql.cpp:321
+msgid "Connection %Q does not exists"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:343
+msgid "Connection query %Q does not exists"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:361
+msgid "No query connection is open"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:370
+msgid "Query for connection %Q does not exists"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:395
+msgid "Query %Q already initialized"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:400
+msgid "Connection %Q is not open!"
+msgstr "La connexion %Q n'est pas ouverte !"
+
+#: src/modules/objects/class_sql.cpp:461
+msgid "Only memorybuffer class object is supported"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:467
+msgid "Type value %Q not supported"
+msgstr ""
+
+#: src/modules/objects/class_hbox.cpp:146
+#: src/modules/objects/class_hbox.cpp:178
+#: src/modules/objects/class_vbox.cpp:183
+msgid "The widget must be a child of this hbox"
+msgstr ""
+
+#: src/modules/objects/class_vbox.cpp:153
+msgid "The widget must be a child of this vbox"
+msgstr ""
+
+#: src/modules/objects/class_treewidget.cpp:414
+msgid "Invalid selection mode '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_treewidget.cpp:429
+msgid "Unknown '%Q' sort order: switching to ascending order"
+msgstr ""
+
+#: src/modules/objects/class_slider.cpp:268
+msgid "Unknown tickmark '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_memorybuffer.cpp:98
+msgid "The file '%Q' does not exist"
+msgstr "Le fichier '%q' n'existe pas"
+
+#: src/modules/objects/class_memorybuffer.cpp:116
+msgid "Cannot open file '%Q' for writing"
+msgstr "Impossible d'ouvrire le fichier '%Q' pour y écrire"
+
+#: src/modules/objects/class_lineedit.cpp:407
+msgid "Unknown echo mode '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_lineedit.cpp:471
+msgid "Unkonwn '%Q' completition mode, switching to default popupCompletition"
+msgstr ""
+
+#: src/modules/objects/class_xmlreader.cpp:151
+msgid "Error in KVS class implementation: processing aborted"
+msgstr ""
+
+#: src/modules/objects/class_xmlreader.cpp:156
+msgid "Processing aborted"
+msgstr ""
+
+#: src/modules/objects/class_xmlreader.cpp:162
+#, c-format
+msgid "Error near line %d, column %d"
+msgstr "Erreur près de la ligne %d, colonne %d"
+
+#: src/modules/objects/class_xmlreader.cpp:164
+#, c-format
+msgid "Warning near line %d, column %d"
+msgstr ""
+
+#: src/modules/objects/class_xmlreader.cpp:315
+#, fuzzy
+msgid "XML support not available in the Qt library"
+msgstr "Le support du XML n'est pas disponible dans Qt"
+
+#: src/modules/objects/class_xmlreader.cpp:330
+msgid "Data parameter is not an object"
+msgstr ""
+
+#: src/modules/objects/class_xmlreader.cpp:339
+msgid "Data parameter is not a memorybuffer object"
+msgstr ""
+
+#: src/modules/objects/class_xmlreader.cpp:358
+msgid "Data is not a memorybuffer object or string"
+msgstr ""
+
+#: src/modules/objects/class_combobox.cpp:331
+msgid "Invalid insertion Policy '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_tabwidget.cpp:296
+#: src/modules/objects/class_tabwidget.cpp:315
+#: src/modules/objects/class_tabwidget.cpp:337
+#: src/modules/objects/class_tabwidget.cpp:392
+msgid "Can't find the tab "
+msgstr ""
+
+#: src/modules/objects/class_tabwidget.cpp:416
+msgid "Can't find the tab"
+msgstr ""
+
+#: src/modules/objects/class_tabwidget.cpp:436
+msgid "Unknown position '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:227
+msgid "Empty filename string"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:250
+msgid "No such open mode '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:321
+msgid "Argument too long, using only first char"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:323
+msgid "Write error occured!"
+msgstr "Une erreur d'écriture est intervenu !"
+
+#: src/modules/objects/class_file.cpp:332
+msgid "Read error occured!"
+msgstr "Une erreur de lecture est intervenu !"
+
+#: src/modules/objects/class_file.cpp:346
+msgid "Argument too long, using only the first char"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:421
+msgid "The incoming data isn't an array"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:431
+msgid "The incoming data isn't a Dictionary"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:441
+msgid "Unsupported datatype '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:500
+msgid "The memoryBuffer object is empty: nothing will be saved"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:516
+msgid "Block parameter must be a string or a memorybuffer object"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:598
+msgid "Length of hex string is not multiple of 2"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:614
+#, fuzzy
+msgid "The hex string is not correct!"
+msgstr "La chaîne hexadécimal n'est pas correct !"
+
+#: src/modules/objects/class_toolbar.cpp:83
+msgid "The toolbar cannot be a parent-widget!"
+msgstr ""
+
+#: src/modules/objects/class_toolbar.cpp:92
+msgid "The parent-widget isn't a MainWindow."
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:189
+msgid "Class '%Q' is not defined"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:263
+msgid "Inexisting target object for objects.connect"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:268
+msgid "Inexisting source object for objects.connect"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:273
+msgid "Inexisting target slot '%Q' for objects.connect"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:358
+#: src/modules/objects/libkviobjects.cpp:457
+msgid "The class '%Q' does not exist"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:415
+msgid "Object does not exists"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:559
+msgid "Inexisting class object for objects.name"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:602
+msgid "Inexisting target object for objects.disconnect"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:607
+msgid "Inexisting source object for objects.disconnect"
+msgstr ""
+
+#: src/modules/objects/class_toolbutton.cpp:274
+msgid "Can't add a non-popupmenu object"
+msgstr ""
+
+#: src/modules/objects/class_toolbutton.cpp:316
+msgid "Unknown text position '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_popupmenu.cpp:214
+msgid "Icon '%Q' doesn't exist"
+msgstr "L'icône '%Q' n'existe pas"
+
+#: src/modules/objects/class_buttongroup.cpp:94
+msgid "Buttongroup supports only checkbox and radiobox object"
+msgstr ""
+
+#: src/modules/objects/class_treewidgetitem.cpp:181
+msgid "The listviewitem cannot be parentless"
+msgstr ""
+
+#: src/modules/objects/class_treewidgetitem.cpp:191
+msgid "The parent of the listwidgetitem must be either another listwidgetitem or a listwidget"
+msgstr ""
+
+#: src/modules/objects/class_lcd.cpp:142
+msgid "Unknown mode '%Q'"
+msgstr "Mode inconnu '%Q'"
+
+#: src/modules/objects/class_lcd.cpp:156
+msgid "Unknown segment style '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:569
+msgid " requires either an array as first parameter or four integers"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:592
+#: src/modules/objects/class_painter.cpp:627
+msgid "One of the array parameters is empty"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:597
+#: src/modules/objects/class_painter.cpp:632
+msgid "One of the array parameters didn't evaluate to an integer"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:603
+msgid " requires either an array as first parameter or two integers"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:640
+msgid "The opacity value didn't evaluate to an integer"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:647
+msgid " requires either an array as first parameter or 3 integers"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:710
+msgid "Unknown '%Q' background mode"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:843
+#: src/modules/objects/class_button.cpp:135
+msgid "Pixmap parameter is not an object!"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:848
+#: src/modules/objects/class_button.cpp:141
+msgid "Object Pixmap required!"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:1004
+msgid "$fontMetricsWidth: the painter is not active!"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:1014
+msgid "$fontMetricsHeight: the painter is not active!"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:1043
+#, fuzzy
+msgid "Missing filename"
+msgstr "Nom de fichier manquant"
+
+#: src/modules/objects/class_painter.cpp:1069
+#: src/modules/objects/class_painter.cpp:1094
+msgid "No valid paint device"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:1081
+msgid "Pixmap or Widget parameter is not an object"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:1088
+msgid "Widget or Pixmap required "
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:1176
+msgid "Invalid mode '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:1475
+msgid "Unknown pen style '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:1501
+msgid "Unknown brush style '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:1567
+msgid "Color name or triplette RGB/HSV values required"
+msgstr ""
+
+#: src/modules/objects/class_button.cpp:125
+msgid "Image parameter missing"
+msgstr ""
+
+#: src/modules/objects/class_pixmap.cpp:173
+msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
+msgstr ""
+
+#: src/modules/objects/class_dockwindow.cpp:96
+msgid "Can't add a null object"
+msgstr ""
+
+#: src/modules/objects/class_dockwindow.cpp:103
+msgid "Invalid object handle passed as parameter (the object is no longer existing ?)"
+msgstr ""
+
+#: src/modules/objects/class_dockwindow.cpp:109
+#, fuzzy
+msgid "Object in invalid state"
+msgstr "état de l'object invalide"
+
+#: src/modules/objects/class_dockwindow.cpp:115
+msgid "Can't set a non-widget object to be the main widget of a dock window"
+msgstr ""
+
+#: src/modules/objects/class_dockwindow.cpp:121
+msgid "The added widget is not a child of this dock window"
+msgstr ""
+
+#: src/modules/objects/class_dockwindow.cpp:170
+msgid "Invalid dock area specified"
+msgstr ""
+
+#: src/modules/objects/object_macros.h:104
+msgid "Internal error: no valid pointer for this object"
+msgstr "Erreur interne : pas de pointeur valide pour cette object"
+

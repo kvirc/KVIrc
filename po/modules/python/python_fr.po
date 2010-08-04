@@ -1,0 +1,42 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: python_fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-19 20:08+0200\n"
+"PO-Revision-Date: 2010-07-18 12:29+0100\n"
+"Last-Translator: \n"
+"Language-Team: Français <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/python/libkvipython.cpp:46
+msgid "The pythoncore module can't be loaded: python support not available"
+msgstr "Le module pythoncore ne peux pas être chargé : la gestion de Python n'est pas disponible"
+
+#: src/modules/python/libkvipython.cpp:47
+msgid "To see more details about loading failure try /pythoncore.load"
+msgstr "Pour plus de détails sur le problème de chargement, essayez /pythoncore.load"
+
+#: src/modules/python/libkvipython.cpp:60
+msgid "This KVIrc executable has been compiled without python scripting support"
+msgstr "Cet exécutable KVIrc n'a pas été compilé avec la gestion des scripts Python"
+
+#: src/modules/python/libkvipython.cpp:100
+#: src/modules/python/libkvipython.cpp:153
+msgid "The pythoncore module failed to execute the code: something is wrong with the python support"
+msgstr "Le module pythoncore n'a pas réussi à exécuter le code : un problème est survenu dans la gestion de Python"
+
+#: src/modules/python/libkvipython.cpp:117
+#: src/modules/python/libkvipython.cpp:121
+msgid "Python execution error:"
+msgstr "Erreur d'exécution de Python :"
+
+#: src/modules/pythoncore/libkvipythoncore.cpp:112
+msgid "Internal error: python interpreter not initialized"
+msgstr "Erreur interne : l'interpréteur de Python n'est pas initialisé"
