@@ -79,10 +79,6 @@ static QTextCodec                        * g_pUtf8TextCodec       = 0;
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
-typedef char gchar;
-typedef unsigned char guchar;
-typedef signed int gssize;
-typedef unsigned int gunichar;
 
 #define UNICODE_VALID(Char)                  \
 	((Char) < 0x110000 &&                    \
@@ -91,48 +87,47 @@ typedef unsigned int gunichar;
 	((Char) & 0xFFFE) != 0xFFFE)
 
 #define CONTINUATION_CHAR                            \
-	if ((*(guchar *)p & 0xc0) != 0x80) /* 10xxxxxx */ \
+	if ((*(unsigned char *)p & 0xc0) != 0x80) /* 10xxxxxx */ \
 		goto error;                                     \
 		val <<= 6;                                      \
-		val |= (*(guchar *)p) & 0x3f;
+		val |= (*(unsigned char *)p) & 0x3f;
 
 
-static const char *
-fast_validate (const char *str)
+static const char * fast_validate (const char *str)
 {
-	gunichar val = 0;
-	gunichar min = 0;
-	const gchar *p;
+	unsigned int val = 0;
+	unsigned int min = 0;
+	const char *p;
 
 	for (p = str; *p; p++)
 	{
-		if (*(guchar *)p < 128)
+		if (*(unsigned char *)p < 128)
 			/* done */;
 		else
 		{
-			const gchar *last;
+			const char *last;
 
 			last = p;
-			if ((*(guchar *)p & 0xe0) == 0xc0) /* 110xxxxx */
+			if ((*(unsigned char *)p & 0xe0) == 0xc0) /* 110xxxxx */
 			{
-				if ((*(guchar *)p & 0x1e) == 0)
+				if ((*(unsigned char *)p & 0x1e) == 0)
 					goto error;
 				p++;
-				if ((*(guchar *)p & 0xc0) != 0x80) /* 10xxxxxx */
+				if ((*(unsigned char *)p & 0xc0) != 0x80) /* 10xxxxxx */
 					goto error;
 			}
 			else
 			{
-				if ((*(guchar *)p & 0xf0) == 0xe0) /* 1110xxxx */
+				if ((*(unsigned char *)p & 0xf0) == 0xe0) /* 1110xxxx */
 				{
 					min = (1 << 11);
-					val = *(guchar *)p & 0x0f;
+					val = *(unsigned char *)p & 0x0f;
 					goto TWO_REMAINING;
 				}
-				else if ((*(guchar *)p & 0xf8) == 0xf0) /* 11110xxx */
+				else if ((*(unsigned char *)p & 0xf8) == 0xf0) /* 11110xxx */
 				{
 					min = (1 << 16);
-					val = *(guchar *)p & 0x07;
+					val = *(unsigned char *)p & 0x07;
 				}
 				else goto error;
 
@@ -159,51 +154,50 @@ fast_validate (const char *str)
 	return p;
 }
 
-static const gchar *
-fast_validate_len (const char *str, gssize max_len)
+static const char * fast_validate_len (const char *str, int max_len)
 {
-	gunichar val = 0;
-	gunichar min = 0;
-	const gchar *p;
+	unsigned int val = 0;
+	unsigned int min = 0;
+	const char *p;
 
 	for (p = str; (max_len < 0 || (p - str) < max_len) && *p; p++)
 	{
-		if (*(guchar *)p < 128)
+		if (*(unsigned char *)p < 128)
 			/* done */;
 		else
 		{
-			const gchar *last;
+			const char *last;
 
 			last = p;
-			if ((*(guchar *)p & 0xe0) == 0xc0) /* 110xxxxx */
+			if ((*(unsigned char *)p & 0xe0) == 0xc0) /* 110xxxxx */
 			{
 			if (max_len >= 0 && max_len - (p - str) < 2)
 				goto error;
 
-			if ((*(guchar *)p & 0x1e) == 0)
+			if ((*(unsigned char *)p & 0x1e) == 0)
 				goto error;
 			p++;
-			if ((*(guchar *)p & 0xc0) != 0x80) /* 10xxxxxx */
+			if ((*(unsigned char *)p & 0xc0) != 0x80) /* 10xxxxxx */
 				goto error;
 			}
 			else
 			{
-				if ((*(guchar *)p & 0xf0) == 0xe0) /* 1110xxxx */
+				if ((*(unsigned char *)p & 0xf0) == 0xe0) /* 1110xxxx */
 				{
 					if (max_len >= 0 && max_len - (p - str) < 3)
 					goto error;
 
 					min = (1 << 11);
-					val = *(guchar *)p & 0x0f;
+					val = *(unsigned char *)p & 0x0f;
 					goto TWO_REMAINING;
 				}
-				else if ((*(guchar *)p & 0xf8) == 0xf0) /* 11110xxx */
+				else if ((*(unsigned char *)p & 0xf8) == 0xf0) /* 11110xxx */
 				{
 					if (max_len >= 0 && max_len - (p - str) < 4)
 					goto error;
 
 					min = (1 << 16);
-					val = *(guchar *)p & 0x07;
+					val = *(unsigned char *)p & 0x07;
 				}
 				else
 					goto error;
@@ -230,11 +224,9 @@ fast_validate_len (const char *str, gssize max_len)
 	return p;
 }
 
-static bool g_utf8_validate (const char   *str,
-                                gssize        max_len,
-                                const gchar **end)
+static bool g_utf8_validate(const char *str,int max_len,const char **end)
 {
-	const gchar *p;
+	const char *p;
 
 	if (max_len < 0)
 		p = fast_validate (str);
@@ -254,18 +246,21 @@ static bool g_utf8_validate (const char   *str,
 //   End of gutf8.c
 /////////////////////////////////////////////////////////////////////////////////////
 
-
 class KviSmartTextCodec : public QTextCodec
 {
-protected:
+private:
 	QByteArray  m_szName;
 	QTextCodec * m_pRecvCodec;
 	QTextCodec * m_pSendCodec;
 public:
-	KviSmartTextCodec(const char * szName,const char * szChildCodecName,bool bSendInUtf8)
+	KviSmartTextCodec(const char * szName,QTextCodec * pChildCodec,bool bSendInUtf8)
 	: QTextCodec()
 	{
+		Q_ASSERT(pChildCodec);
+
+		m_pRecvCodec = pChildCodec;
 		m_szName = szName;
+
 		if(!g_pUtf8TextCodec)
 		{
 			g_pUtf8TextCodec = QTextCodec::codecForName("UTF-8");
@@ -273,18 +268,12 @@ public:
 			{
 				debug("Can't find the global utf8 text codec!");
 				g_pUtf8TextCodec = QTextCodec::codecForLocale(); // try anything else...
+				if(!g_pUtf8TextCodec)
+					debug("Aargh.. got no UTF-8 text codec: we're in trouble.");
 			}
 		}
-		m_pRecvCodec = QTextCodec::codecForName(szChildCodecName);
-		if(!m_pRecvCodec)
-		{
-			debug("Can't find the codec for name %s (composite codec creation)",szName);
-			m_pRecvCodec = g_pUtf8TextCodec;
-		}
-		if(bSendInUtf8)
-			m_pSendCodec = g_pUtf8TextCodec;
-		else
-			m_pSendCodec = m_pRecvCodec;
+
+		m_pSendCodec = bSendInUtf8 ? g_pUtf8TextCodec : pChildCodec;
 	}
 public:
 	bool ok(){ return m_pRecvCodec && g_pUtf8TextCodec; };
@@ -299,7 +288,9 @@ protected:
 	}
 	virtual QString convertToUnicode(const char * chars,int len,ConverterState * state) const
 	{
-		if(g_utf8_validate(chars,len,NULL))return g_pUtf8TextCodec->toUnicode(chars,len,state);
+		if(g_utf8_validate(chars,len,NULL))
+			return g_pUtf8TextCodec->toUnicode(chars,len,state);
+
 		return m_pRecvCodec->toUnicode(chars,len,state);
 	}
 };
@@ -763,33 +754,49 @@ namespace KviLocale
 	QTextCodec * codecForName(const char * szName)
 	{
 		KviStr szTmp = szName;
+
 		int idx = szTmp.findFirstIdx('[');
 		if(idx != -1)
 		{
-			// composite codec: either UTF-8 [child codec] or child codec [UTF-8]
+			// Might be a composite codec: either UTF-8 [child codec] or child codec [UTF-8]
 			KviSmartTextCodec * c = g_pSmartCodecDict->find(szName);
-			if(c)return c;
+			if(c)
+				return c; // got cached copy
 
-
+			bool bSendUtf8;
+			
 			if(kvi_strEqualCIN("UTF-8 [",szName,7))
 			{
+				// Likely a smart codec that sends UTF-8
 				szTmp.replaceAll("UTF-8 [","");
 				szTmp.replaceAll("]","");
-				// smart codec that sends UTF-8
-				c = new KviSmartTextCodec(szName,szTmp.ptr(),true);
+				bSendUtf8 = true;
 			} else {
+				// Likely a smart codec that sends child encoding ?
 				szTmp.cutFromFirst(' ');
-				// smart codec that sends child encoding
-				c = new KviSmartTextCodec(szName,szTmp.ptr(),false);
+				bSendUtf8 = false;
 			}
-			if(c->ok())
+
+			QTextCodec * pChildCodec = QTextCodec::codecForName(szTmp.ptr());
+			if(pChildCodec)
 			{
-				g_pSmartCodecDict->replace(szName,c);
-				return c;
-			} else {
+				c = new KviSmartTextCodec(szName,pChildCodec,bSendUtf8);
+	
+				if(c->ok())
+				{
+					g_pSmartCodecDict->replace(szName,c);
+					return c;
+				}
+
 				delete c;
+			} else {
+				// The name of the child codec was invalid: can't create such a smart codec.
+				// We probably screwed up the guess above related to the [ char.
+				// This code path is also triggered by the yircfuzzer by specifying completly invalid codec names.
 			}
+
 		}
+
 		return QTextCodec::codecForName(szName);
 	}
 
