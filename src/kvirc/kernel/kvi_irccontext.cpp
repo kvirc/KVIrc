@@ -225,8 +225,16 @@ KviQuery * KviIrcContext::findDeadQuery(const QString &name)
 
 KviQuery * KviIrcContext::firstDeadQuery()
 {
-	if(!m_pDeadQueries)return 0;
+	if(!m_pDeadQueries)
+		return 0;
 	return m_pDeadQueries->first();
+}
+
+KviChannel * KviIrcContext::firstDeadChannel()
+{
+	if(!m_pDeadChannels)
+		return 0;
+	return m_pDeadChannels->first();
 }
 
 void KviIrcContext::registerContextWindow(KviWindow * pWnd)

@@ -609,6 +609,9 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 	{
 		// this is not "OK" and not "Partial content"
 		// Error , redirect or something confusing
+		
+		// FIXME: Handle 30x codes by re-issuing the request with the new URI ?
+		
 		if(m_eProcessingType != HeadersOnly)
 		{
 			// this is an error then

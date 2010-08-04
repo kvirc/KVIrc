@@ -221,20 +221,28 @@ void KviConsole::fillContextPopup(KviTalPopupMenu * p)
 	int id;
 	int cc = 0;
 	int qc = 0;
-	// FIXME: add items to close dead queries and channels ?
+
 	if(connection())
 	{
 		cc = connection()->channelList()->count();
 		qc = connection()->queryList()->count();
 		p->insertSeparator();
 		id = p->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Part All Channels"),connection(),SLOT(partAllChannels()));
-		if(!cc)p->setItemEnabled(id,false);
+		if(!cc)
+			p->setItemEnabled(id,false);
 		id = p->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUERY)),__tr2qs("Close All Queries"),connection(),SLOT(closeAllQueries()));
-		if(!qc)p->setItemEnabled(id,false);
+		if(!qc)
+			p->setItemEnabled(id,false);
 	}
+
+	if(m_pContext->firstDeadChannel())
+		p->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DEADCHANNEL)),__tr2qs("Close All Dead Channels"),m_pContext,SLOT(closeAllDeadChannels()));
+	if(m_pContext->firstDeadQuery())
+		p->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DEADQUERY)),__tr2qs("Close All Dead Queries"),m_pContext,SLOT(closeAllDeadQueries()));
 
 	p->insertSeparator();
 	p->insertItem(__tr2qs("Unhighlight All Windows"),context(),SLOT(unhighlightAllWindows()));
+
 	if(connection())
 	{
 		id = p->insertItem(__tr2qs("Unhighlight All Channels"),connection(),SLOT(unhighlightAllChannels()));

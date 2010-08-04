@@ -118,8 +118,6 @@ public:
 	inline bool isConnected(){ return m_eState == Connected; };
 	inline bool isLoggingIn(){ return m_eState == LoggingIn; };
 	// dead channels and queries
-	void closeAllDeadChannels();
-	void closeAllDeadQueries();
 	bool unregisterDeadChannel(KviChannel * c);
 	bool unregisterDeadQuery(KviQuery * q);
 	void registerDeadChannel(KviChannel * c);
@@ -127,6 +125,7 @@ public:
 	KviChannel * findDeadChannel(const QString &name);
 	KviQuery * findDeadQuery(const QString &nick);
 	KviQuery * firstDeadQuery();
+	KviChannel * firstDeadChannel();
 	// other windows bound to the context
 	void closeAllContextWindows();
 	void registerContextWindow(KviWindow * pWnd);
@@ -156,6 +155,9 @@ public:
 	void unregisterDataStreamMonitor(KviIrcDataStreamMonitor *m);
 
 	void terminateConnectionRequest(bool bForce,const QString &szQuitMessage = QString(),bool bSimulateUnexpectedDisconnect = false);
+public slots:
+	void closeAllDeadChannels();
+	void closeAllDeadQueries();
 
 protected:
 	// called by KviIrcContextToolBar: this will DIE in favor of connectOrDisconnect()
