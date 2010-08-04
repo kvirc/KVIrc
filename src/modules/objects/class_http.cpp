@@ -280,8 +280,8 @@ bool  KviKvsObject_http::functionGet(KviKvsObjectFunctionCall *c)
 	CHECK_INTERNAL_POINTER(m_pHttp)
 	QString szPath,szDest;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("remote_path",KVS_PT_STRING,KVS_PF_OPTIONAL,szPath)
-		KVSO_PARAMETER("local_filename",KVS_PT_STRING,0,szDest)
+		KVSO_PARAMETER("remote_path",KVS_PT_STRING,0,szPath)
+		KVSO_PARAMETER("local_filename",KVS_PT_STRING,KVS_PF_OPTIONAL,szDest)
 	KVSO_PARAMETERS_END(c)
 	
 	QFile * pFile=0;
