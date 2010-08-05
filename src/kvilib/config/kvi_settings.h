@@ -142,6 +142,7 @@
 #endif
 
 #define KVI_RELEASE_NAME "Equilibrium"
+// REMINDER: "Aria" is a candidate
 
 
 // We want _GNU_SOURCE features
