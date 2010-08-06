@@ -692,8 +692,8 @@ typedef struct _NotifierMessageSupaDupaParameterStruct
 
 void KviApp::notifierMessage(KviWindow * pWnd,int iIconId,const QString &szMsg,unsigned int uMessageLifetime)
 {
-#ifdef COMPILE_KDE_SUPPORT
-	if(KVI_OPTION_BOOL(KviOption_boolUseKDENotifier))
+#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_DBUS_SUPPORT)
+	if(KVI_OPTION_BOOL(KviOption_boolUseDBusNotifier))
 	{
 		// org.freedesktop.Notifications.Notify
 		QVariantList args;
@@ -711,7 +711,7 @@ void KviApp::notifierMessage(KviWindow * pWnd,int iIconId,const QString &szMsg,u
 		if(reply.type() == QDBusMessage::ErrorMessage)
 		{
 			QDBusError err = reply;
-			debug("KNotify DBus error\nID: %u\nName: %s\nMessage: %s\n",reply.arguments().first().toUInt(),qPrintable(err.name()),qPrintable(err.message()));
+			debug("DBus notify error\nID: %u\nName: %s\nMessage: %s\n",reply.arguments().first().toUInt(),qPrintable(err.name()),qPrintable(err.message()));
 		}
 	} else {
 #endif
@@ -725,7 +725,7 @@ void KviApp::notifierMessage(KviWindow * pWnd,int iIconId,const QString &szMsg,u
 		s.uMessageLifetime = uMessageLifetime;
 
 		m->ctrl("notifier::message",(void *)&s);
-#ifdef COMPILE_KDE_SUPPORT
+#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_DBUS_SUPPORT)
 	}
 #endif
 }

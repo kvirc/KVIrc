@@ -343,7 +343,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolEnableNickLinkToolTip 249                          /* ircview output */
 #define KviOption_boolEnableChannelLinkToolTip 250                       /* ircview output */
 #define KviOption_boolEnableEscapeLinkToolTip 251                        /* ircview output */
-#define KviOption_boolUseKDENotifier 252                                 /* notifier */
+#define KviOption_boolUseDBusNotifier 252                                /* notifier */
 
 #define KVI_NUM_BOOL_OPTIONS 253
 

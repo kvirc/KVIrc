@@ -155,10 +155,11 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 
 	KviBoolSelector * b2;
 
-#ifdef COMPILE_KDE_SUPPORT
-	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Use the KDE notifier","options"),KviOption_boolUseKDENotifier);
+#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_DBUS_SUPPORT)
+	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Use the KDE notifier","options"),KviOption_boolUseDBusNotifier);
 	tip = "<center>";
-	tip += __tr2qs_ctx("This option uses the KDE notifier instead of KVIrc one. " \
+	tip += __tr2qs_ctx("This option uses the DBus-based notifier (like KDE KNotify) " \
+		"instead of KVIrc one.<br>" \
 		"This is cool if you want to better integrate KVIrc inside KDE. " \
 		"Note that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's","options");
 	tip += "</center>";
@@ -168,7 +169,7 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),b2,SLOT(setEnabled(bool)));
 	
 	iRow++;
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE_SUPPORT || COMPILE_DBUS_SUPPORT
 
 #if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
