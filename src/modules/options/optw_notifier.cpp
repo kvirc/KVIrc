@@ -156,7 +156,7 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 	KviBoolSelector * b2;
 
 #if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_DBUS_SUPPORT)
-	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Use the KDE notifier","options"),KviOption_boolUseDBusNotifier);
+	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Use the DBus-based notifiers","options"),KviOption_boolUseDBusNotifier);
 	tip = "<center>";
 	tip += __tr2qs_ctx("This option uses the DBus-based notifier (like KDE KNotify) " \
 		"instead of KVIrc one.<br>" \
