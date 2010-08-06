@@ -77,9 +77,6 @@
 // must fit in 31 bits (0x7fffffff)! (because of data size limits)
 #define MAX_DCC_BANDWIDTH_LIMIT 0x1fffffff
 
-//#include <unistd.h> //close()
-
-// FIXME: SSL Support here!
 // FIXME: The events OnDCCConnect etc are in wrong places here...!
 
 extern KviDccBroker * g_pDccBroker;
@@ -119,7 +116,19 @@ KviDccRecvThread::~KviDccRecvThread()
 bool KviDccRecvThread::sendAck(int filePos)
 {
 	quint32 size = htonl(filePos & 0xffffffff);
-	if(kvi_socket_send(m_fd,(void *)(&size),4) != 4)
+	int iRet=0;
+#ifdef COMPILE_SSL_SUPPORT
+	if(m_pSSL)
+	{
+		iRet = m_pSSL->write((char*)(&size),4);
+	} else {
+#endif
+		iRet = kvi_socket_send(m_fd,(void *)(&size),4);
+#ifdef COMPILE_SSL_SUPPORT
+	}
+#endif
+
+	if(iRet != 4)
 	{
 		postErrorEvent(KviError_acknowledgeError);
 		return false;
@@ -250,7 +259,17 @@ void KviDccRecvThread::run()
 
 				if(uToRead > 0)
 				{
-					int readLen = kvi_socket_recv(m_fd,buffer,uToRead);
+					int readLen;
+#ifdef COMPILE_SSL_SUPPORT
+					if(m_pSSL)
+					{
+						readLen = m_pSSL->read(buffer,uToRead);
+					} else {
+#endif
+						readLen = kvi_socket_recv(m_fd,buffer,uToRead);
+#ifdef COMPILE_SSL_SUPPORT
+					}
+#endif
 
 					if(readLen > 0)
 					{
@@ -319,6 +338,46 @@ void KviDccRecvThread::run()
 					} else {
 						updateStats();
 						// Read problem...
+
+#ifdef COMPILE_SSL_SUPPORT
+						if(m_pSSL)
+						{
+							// ssl error....?
+							switch(m_pSSL->getProtocolError(readLen))
+							{
+								case KviSSL::ZeroReturn:
+									readLen = 0;
+								break;
+								case KviSSL::WantRead:
+								case KviSSL::WantWrite:
+									// hmmm...
+								break;
+								case KviSSL::SyscallError:
+								{
+									int iE = m_pSSL->getLastError(true);
+									if(iE != 0)
+									{
+										raiseSSLError();
+										postErrorEvent(KviError_SSLError);
+										goto exit_dcc;
+									}
+								}
+								break;
+								case KviSSL::SSLError:
+								{
+									raiseSSLError();
+									postErrorEvent(KviError_SSLError);
+									goto exit_dcc;
+								}
+								break;
+								default:
+									// Raise unknown SSL ERROR
+									postErrorEvent(KviError_SSLError);
+									goto exit_dcc;
+								break;
+							}
+						}
+#endif
 
 						if(readLen == 0)
 						{
@@ -393,6 +452,15 @@ exit_dcc:
 		delete m_pFile;
 		m_pFile = 0;
 	}
+
+#ifdef COMPILE_SSL_SUPPORT
+	if(m_pSSL)
+	{
+		KviSSLMaster::freeSSL(m_pSSL);
+		m_pSSL = 0;
+	}
+#endif
+
 	kvi_socket_close(m_fd);
 	m_fd = KVI_INVALID_SOCKET;
 }
@@ -555,7 +623,19 @@ void KviDccSendThread::run()
 				if(!m_pOpt->bNoAcks)
 				{
 					int iAckBytesToRead = 4 - iBytesInAckBuffer;
-					int readLen = kvi_socket_recv(m_fd,(void *)(ackbuffer.cAckBuffer + iBytesInAckBuffer),iAckBytesToRead);
+
+					int readLen;
+#ifdef COMPILE_SSL_SUPPORT
+					if(m_pSSL)
+					{
+						readLen = m_pSSL->read((ackbuffer.cAckBuffer + iBytesInAckBuffer),iAckBytesToRead);
+					} else {
+#endif
+						readLen = kvi_socket_recv(m_fd,(ackbuffer.cAckBuffer + iBytesInAckBuffer),iAckBytesToRead);
+#ifdef COMPILE_SSL_SUPPORT
+					}
+#endif
+
 					if(readLen > 0)
 					{
 						iBytesInAckBuffer += readLen;
@@ -591,6 +671,46 @@ void KviDccSendThread::run()
 							iBytesInAckBuffer = 0;
 						}
 					} else {
+#ifdef COMPILE_SSL_SUPPORT
+						if(m_pSSL)
+						{
+							// ssl error....?
+							switch(m_pSSL->getProtocolError(readLen))
+							{
+								case KviSSL::ZeroReturn:
+									readLen = 0;
+								break;
+								case KviSSL::WantRead:
+								case KviSSL::WantWrite:
+									// hmmm...
+								break;
+								case KviSSL::SyscallError:
+								{
+									int iE = m_pSSL->getLastError(true);
+									if(iE != 0)
+									{
+										raiseSSLError();
+										postErrorEvent(KviError_SSLError);
+										goto exit_dcc;
+									}
+								}
+								break;
+								case KviSSL::SSLError:
+								{
+									raiseSSLError();
+									postErrorEvent(KviError_SSLError);
+									goto exit_dcc;
+								}
+								break;
+								default:
+									// Raise unknown SSL ERROR
+									postErrorEvent(KviError_SSLError);
+									goto exit_dcc;
+								break;
+							}
+						}
+#endif
+
 						if(!handleInvalidSocketRead(readLen))break;
 					}
 
@@ -613,7 +733,17 @@ void KviDccSendThread::run()
 						if(pFile->atEnd())
 						{
 							int iAck;
-							int readLen = kvi_socket_recv(m_fd,(void *)&iAck,4);
+							int readLen;
+#ifdef COMPILE_SSL_SUPPORT
+							if(m_pSSL)
+							{
+								readLen = m_pSSL->read((char*)&iAck,4);
+							} else {
+#endif
+								readLen = kvi_socket_recv(m_fd,(char*)&iAck,4);
+#ifdef COMPILE_SSL_SUPPORT
+							}
+#endif
 							if(readLen == 0)
 							{
 								// done...success
@@ -624,6 +754,46 @@ void KviDccSendThread::run()
 							} else {
 								if(readLen < 0)
 								{
+#ifdef COMPILE_SSL_SUPPORT
+									if(m_pSSL)
+									{
+										// ssl error....?
+										switch(m_pSSL->getProtocolError(readLen))
+										{
+											case KviSSL::ZeroReturn:
+												readLen = 0;
+											break;
+											case KviSSL::WantRead:
+											case KviSSL::WantWrite:
+												// hmmm...
+											break;
+											case KviSSL::SyscallError:
+											{
+												int iE = m_pSSL->getLastError(true);
+												if(iE != 0)
+												{
+													raiseSSLError();
+													postErrorEvent(KviError_SSLError);
+													goto exit_dcc;
+												}
+											}
+											break;
+											case KviSSL::SSLError:
+											{
+												raiseSSLError();
+												postErrorEvent(KviError_SSLError);
+												goto exit_dcc;
+											}
+											break;
+											default:
+												// Raise unknown SSL ERROR
+												postErrorEvent(KviError_SSLError);
+												goto exit_dcc;
+											break;
+										}
+									}
+#endif
+
 									if(!handleInvalidSocketRead(readLen))break;
 								} else {
 									KviThreadDataEvent<KviStr> * e = new KviThreadDataEvent<KviStr>(KVI_DCC_THREAD_EVENT_MESSAGE);
@@ -666,13 +836,79 @@ void KviDccSendThread::run()
 								break;
 							}
 							// send it out
-							written = kvi_socket_send(m_fd,buffer,toRead);
+
+#ifdef COMPILE_SSL_SUPPORT
+							if(m_pSSL)
+							{
+								written = m_pSSL->write(buffer,toRead);
+							} else {
+#endif
+								written = kvi_socket_send(m_fd,buffer,toRead);
+#ifdef COMPILE_SSL_SUPPORT
+							}
+#endif
+
 							if(written < toRead)
 							{
 								if(written < 0)
 								{
+#ifdef COMPILE_SSL_SUPPORT
+									if(m_pSSL)
+									{
+										// ops...might be an SSL error
+										switch(m_pSSL->getProtocolError(written))
+										{
+											case KviSSL::WantWrite:
+											case KviSSL::WantRead:
+												// Async continue...
+												goto handle_system_error;
+											break;
+											case KviSSL::SyscallError:
+												if(written == 0)
+												{
+													raiseSSLError();
+													postErrorEvent(KviError_remoteEndClosedConnection);
+													goto exit_dcc;
+												} else {
+													int iSSLErr = m_pSSL->getLastError(true);
+													if(iSSLErr != 0)
+													{
+														raiseSSLError();
+														postErrorEvent(KviError_SSLError);
+														goto exit_dcc;
+													} else {
+														goto handle_system_error;
+													}
+												}
+											break;
+											case KviSSL::SSLError:
+												raiseSSLError();
+												postErrorEvent(KviError_SSLError);
+												goto exit_dcc;
+											break;
+											default:
+												postErrorEvent(KviError_SSLError);
+												goto exit_dcc;
+											break;
+										}
+									}
+#endif
+
 									// error ?
 									if(!handleInvalidSocketRead(written))break;
+
+handle_system_error:
+									int err = kvi_socket_error();
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+									if((err != EAGAIN) || (err != EINTR) || (err != WSAEWOULDBLOCK))
+#else
+									if((err != EAGAIN)||(err != EINTR))
+#endif
+									{
+										postErrorEvent(KviError::translateSystemError(err));
+										goto exit_dcc;
+									}
+
 								} else {
 									// seek back to the right position
 									pFile->seek(pFile->pos() - (toRead - written));
@@ -735,6 +971,14 @@ exit_dcc:
 	pFile->close();
 	delete pFile;
 	pFile = 0;
+
+#ifdef COMPILE_SSL_SUPPORT
+	if(m_pSSL)
+	{
+		KviSSLMaster::freeSSL(m_pSSL);
+		m_pSSL = 0;
+	}
+#endif
 	kvi_socket_close(m_fd);
 	m_fd = KVI_INVALID_SOCKET;
 }
@@ -774,7 +1018,9 @@ KviDccFileTransfer::KviDccFileTransfer(KviDccDescriptor * dcc)
 	connect(m_pMarshal,SIGNAL(sslError(const char *)),this,SLOT(sslError(const char *)));
 #endif
 
-	m_szDccType = dcc->bIsTdcc ? (dcc->bRecvFile ? "TRECV" : "TSEND") : (dcc->bRecvFile ? "RECV" : "SEND");
+	m_szDccType = dcc->bRecvFile ? "RECV" : "SEND";
+	if(dcc->bIsTdcc) m_szDccType.prepend("T");
+	if(dcc->bIsSSL) m_szDccType.prepend("S");
 
 	m_pSlaveRecvThread = 0;
 	m_pSlaveSendThread = 0;
@@ -896,10 +1142,18 @@ void KviDccFileTransfer::listenOrConnect()
 {
 	if(!(m_pDescriptor->bActive))
 	{
+#ifdef COMPILE_SSL_SUPPORT
+		int ret = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout,m_pDescriptor->bIsSSL);
+#else
 		int ret = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
+#endif
 		if(ret != KviError_success)handleMarshalError(ret);
 	} else {
+#ifdef COMPILE_SSL_SUPPORT
+		int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout,m_pDescriptor->bIsSSL);
+#else
 		int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
+#endif
 		if(ret != KviError_success)handleMarshalError(ret);
 	}
 
@@ -1551,6 +1805,9 @@ void KviDccFileTransfer::connectionInProgress()
 		if(m_pDescriptor->isZeroPortRequest())
 		{
 			szReq = "SEND";
+			if(m_pDescriptor->bIsTdcc) szReq.prepend("T");
+			if(m_pDescriptor->bIsSSL) szReq.prepend("S");
+
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %s %s %s %s%c",
 					m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
 					0x01,
@@ -1721,6 +1978,14 @@ void KviDccFileTransfer::connected()
 		o->bNoAcks         = m_pDescriptor->bNoAcks;
 		o->uMaxBandwidth   = m_uMaxBandwidth;
 		m_pSlaveRecvThread = new KviDccRecvThread(this,m_pMarshal->releaseSocket(),o);
+
+#ifdef COMPILE_SSL_SUPPORT
+		KviSSL * s = m_pMarshal->releaseSSL();
+		if(s)
+		{
+			m_pSlaveRecvThread->setSSL(s);
+		}
+#endif
 		m_pSlaveRecvThread->start();
 	} else {
 		KviDccSendThreadOptions * o = new KviDccSendThreadOptions;
@@ -1736,6 +2001,13 @@ void KviDccFileTransfer::connected()
 		o->uMaxBandwidth   = m_uMaxBandwidth;
 		o->bNoAcks         = m_pDescriptor->bNoAcks;
 		m_pSlaveSendThread = new KviDccSendThread(this,m_pMarshal->releaseSocket(),o);
+#ifdef COMPILE_SSL_SUPPORT
+		KviSSL * s = m_pMarshal->releaseSSL();
+		if(s)
+		{
+			m_pSlaveSendThread->setSSL(s);
+		}
+#endif
 		m_pSlaveSendThread->start();
 	}
 
@@ -1891,7 +2163,6 @@ KviDccFileTransferBandwidthDialog::KviDccFileTransferBandwidthDialog(QWidget * p
 
 	m_pEnableLimitCheck->setChecked((iVal >= 0) && (iVal < MAX_DCC_BANDWIDTH_LIMIT));
 
-	//m_pLimitBox = new QSpinBox(0,MAX_DCC_BANDWIDTH_LIMIT-1,1,this);
 	m_pLimitBox = new QSpinBox(this);
 	m_pLimitBox->setMinimum(0);
 	m_pLimitBox->setMaximum(MAX_DCC_BANDWIDTH_LIMIT-1);
@@ -1900,7 +2171,6 @@ KviDccFileTransferBandwidthDialog::KviDccFileTransferBandwidthDialog(QWidget * p
 	m_pLimitBox->setEnabled((iVal >= 0) && (iVal < MAX_DCC_BANDWIDTH_LIMIT));
 	connect(m_pEnableLimitCheck,SIGNAL(toggled(bool)),m_pLimitBox,SLOT(setEnabled(bool)));
 	g->addWidget(m_pLimitBox,0,1,1,2);
-//	g->addMultiCellWidget(m_pLimitBox,0,0,1,2);
 
 	szText = " ";
 	szText += __tr2qs_ctx("bytes/sec","dcc");

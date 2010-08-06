@@ -315,7 +315,9 @@ void KviSSL::shutdown()
  * Used only during passive (server) mode
  * Check the client certificate, always valid, even if it not exists
  */
-int verify_clientCallback(int preverify_ok, X509_STORE_CTX *x509_ctx) {
+int verify_clientCallback(int, X509_STORE_CTX *)
+{
+	//int preverify_ok, X509_STORE_CTX *x509_ctx
 	// From man page: If verify_callback returns 1, the verification process is continued. If verify_callback always returns 1,
 	// the TLS/SSL handshake will not be terminated with respect to verification failures and the connection will be established.
 	return 1;
