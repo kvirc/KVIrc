@@ -176,7 +176,6 @@ void KviChannelsJoinWindow::fillListView()
 			QTreeWidgetItem * chld = new QTreeWidgetItem(par);
 			chld->setText(0,it.key());
 			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
-			++it;
 		}
 	}
 
