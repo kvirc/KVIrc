@@ -2144,6 +2144,16 @@ bool KviDccFileTransfer::doResume(const char * filename,const char * port,quint6
 	return true;
 }
 
+KviDccThread * KviDccFileTransfer::getSlaveThread()
+{
+	if(m_pDescriptor->bRecvFile)
+	{
+		return m_pSlaveRecvThread;
+	} else {
+		return m_pSlaveSendThread;
+	}
+}
+
 
 KviDccFileTransferBandwidthDialog::KviDccFileTransferBandwidthDialog(QWidget * pParent,KviDccFileTransfer * t)
 : QDialog(pParent)

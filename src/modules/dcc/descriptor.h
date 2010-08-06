@@ -150,6 +150,9 @@ public:
 	bool isFileDownload();
 	bool isDccChat();
 	bool isFileTransfer(){ return (isFileUpload() || isFileDownload()); };
+#ifdef COMPILE_SSL_SUPPORT
+	bool isSSL() const { return bIsSSL; };
+#endif
 };
 
 #endif //_DESCRIPTOR_H_

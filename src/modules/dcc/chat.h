@@ -92,6 +92,7 @@ protected:
 	virtual void triggerCreationEvents();
 	virtual void triggerDestructionEvents();
 	void startConnection();
+	virtual KviDccThread * getSlaveThread() { return m_pSlaveThread; };
 protected slots:
 	void handleMarshalError(int err);
 	void connected();

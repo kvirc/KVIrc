@@ -540,6 +540,19 @@ KviSSLCertificate::~KviSSLCertificate()
 	delete m_pIssuer;
 }
 
+const char * KviSSLCertificate::getX509Base64()
+{
+	BUF_MEM *bptr;
+	BIO* mem = BIO_new(BIO_s_mem());
+	PEM_write_bio_X509(mem, m_pX509);
+	int iLen = BIO_get_mem_data(mem, &bptr);
+	char * szTmp = (char *) kvi_malloc(iLen+1);
+	kvi_fastmove(szTmp, bptr, iLen);
+	*(szTmp+iLen) = '\0';
+	BIO_free_all(mem);
+	return szTmp;
+}
+
 #ifdef COMPILE_ON_WINDOWS
 
 	// On windows we need to override new and delete operators

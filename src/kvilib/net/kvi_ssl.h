@@ -62,6 +62,7 @@ private:
 //	void getPKeyType(int type,KviStr &buffer);
 public:
 	void setX509(X509 * x509);
+	const char * getX509Base64(); //not owned, you'll need to delete this
 
 	const char * signatureType(){ return m_szSignatureType.ptr(); };
 	const char * signatureContents(){ return m_szSignatureContents.ptr(); };

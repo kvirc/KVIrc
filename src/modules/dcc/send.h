@@ -229,6 +229,7 @@ public:
 
 	int bandwidthLimit();
 	void setBandwidthLimit(int iVal);
+	virtual KviDccThread * getSlaveThread();
 protected:
 	void startConnection();
 	void listenOrConnect();

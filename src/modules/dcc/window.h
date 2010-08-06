@@ -28,6 +28,7 @@
 #include "marshal.h"
 
 #include "kvi_window.h"
+class KviDccThread;
 
 class KviDccWindow : public KviWindow , public KviDccMarshalOutputContext
 {
@@ -39,11 +40,11 @@ protected:
 	KviDccDescriptor       * m_pDescriptor;
 	KviDccMarshal          * m_pMarshal;
 public:
-	KviDccDescriptor * descriptor(){ return m_pDescriptor; };
-	const KviDccMarshal    * marshal(){ return m_pMarshal; };
-
-	virtual KviWindow * dccMarshalOutputWindow();
-	virtual const char * dccMarshalOutputContextString();
+	KviDccDescriptor       * descriptor() { return m_pDescriptor; };
+	const KviDccMarshal    * marshal() { return m_pMarshal; };
+	virtual KviDccThread   * getSlaveThread() { return 0; };
+	virtual KviWindow      * dccMarshalOutputWindow();
+	virtual const char     * dccMarshalOutputContextString();
 };
 
 #endif //_WINDOW_H_

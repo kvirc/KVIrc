@@ -2699,6 +2699,212 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 
 
 /*
+	@doc: dcc.getSSLInfo
+	@type:
+		function
+	@title:
+		$dcc.getSSLInfo
+	@short:
+		Returns the requested ssl information about a ssl-enabled dcc session
+	@syntax:
+		$dcc.getSSLInfo(<query:string>[,<dcc_id:integer>])
+	@description:
+		Returns the requested ssl information about a ssl-enabled dcc session.[br]
+		If <dcc_id> is omitted then the DCC Session associated
+		to the current window is assumed.[br]
+		If <dcc_id> is not a valid DCC session identifier (or it is omitted
+		and the current window has no associated DCC session) then
+		this function prints a warning and returns an empty sting.[br]
+		If the DCC session is not using ssl then this function returns an empty string.[br]
+		Available query strings are:[br]
+		[ul]
+		[li]signatureType[/li]
+		[li]signatureContents[/li]
+		[li]subjectCountry[/li]
+		[li]subjectStateOrProvince[/li]
+		[li]subjectLocality[/li]
+		[li]subjectOrganization[/li]
+		[li]subjectOrganizationalUnit[/li]
+		[li]subjectCommonName[/li]
+		[li]issuerCountry[/li]
+		[li]issuerStateOrProvince[/li]
+		[li]issuerLocality[/li]
+		[li]issuerOrganization[/li]
+		[li]issuerOrganizationalUnit[/li]
+		[li]issuerCommonName[/li]
+		[li]publicKeyBits[/li]
+		[li]publicKeyType[/li]
+		[li]serialNumber[/li]
+		[li]pemBase64[/li]
+		[li]version[/li]
+		[/ul]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
+*/
+
+static bool dcc_kvs_fnc_getSSLInfo(KviKvsModuleFunctionCall * c)
+{
+	kvs_uint_t uDccId;
+	QString szQuery;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("query",KVS_PT_STRING,0,szQuery)
+		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
+	KVSM_PARAMETERS_END(c)
+
+#ifndef COMPILE_SSL_SUPPORT
+	c->warning(__tr2qs_ctx("This executable was built without SSL support","dcc"));
+	return true;
+#else
+
+	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+
+	if(dcc)
+	{
+		if(!dcc->isSSL())
+		{
+			c->warning(__tr2qs_ctx("Unable to get SSL informations: DCC session is not using SSL","dcc"));
+			c->returnValue()->setString("");
+			return true;
+		}
+
+		KviDccThread * pSlaveThread = 0;
+		if(dcc->window())
+			pSlaveThread = dcc->window()->getSlaveThread();
+		else if(dcc->transfer())
+			pSlaveThread = dcc->transfer()->getSlaveThread();
+
+		if(!pSlaveThread)
+		{
+			c->warning(__tr2qs_ctx("Unable to get SSL informations: DCC session not initialized yet","dcc"));
+			c->returnValue()->setString("");
+			return true;
+		}
+		
+		KviSSL * pSSL = pSlaveThread->getSSL();
+		if(!pSSL)
+		{
+			c->warning(__tr2qs_ctx("Unable to get SSL informations: SSL non initialized yet in DCC session","dcc"));
+			c->returnValue()->setString("");
+			return true;
+		}
+
+		KviSSLCertificate * pCert = pSSL->getPeerCertificate();
+
+		if(!pCert)
+		{
+			c->warning(__tr2qs_ctx("Unable to get SSL informations: No peer certificate available","dcc"));
+			c->returnValue()->setString("");
+			return true;
+		}
+
+		if(szQuery.compare("signatureType")==0)
+		{
+			c->returnValue()->setString(pCert->signatureType());
+			return true;
+		}
+		if(szQuery.compare("signatureContents")==0)
+		{
+			c->returnValue()->setString(pCert->signatureContents());
+			return true;
+		}
+		if(szQuery.compare("subjectCountry")==0)
+		{
+			c->returnValue()->setString(pCert->subjectCountry());
+			return true;
+		}
+		if(szQuery.compare("subjectStateOrProvince")==0)
+		{
+			c->returnValue()->setString(pCert->subjectStateOrProvince());
+			return true;
+		}
+		if(szQuery.compare("subjectLocality")==0)
+		{
+			c->returnValue()->setString(pCert->subjectLocality());
+			return true;
+		}
+		if(szQuery.compare("subjectOrganization")==0)
+		{
+			c->returnValue()->setString(pCert->subjectOrganization());
+			return true;
+		}
+		if(szQuery.compare("subjectOrganizationalUnit")==0)
+		{
+			c->returnValue()->setString(pCert->subjectOrganizationalUnit());
+			return true;
+		}
+		if(szQuery.compare("subjectCommonName")==0)
+		{
+			c->returnValue()->setString(pCert->subjectCommonName());
+			return true;
+		}
+		if(szQuery.compare("issuerCountry")==0)
+		{
+			c->returnValue()->setString(pCert->issuerCountry());
+			return true;
+		}
+		if(szQuery.compare("issuerStateOrProvince")==0)
+		{
+			c->returnValue()->setString(pCert->issuerStateOrProvince());
+			return true;
+		}
+		if(szQuery.compare("issuerLocality")==0)
+		{
+			c->returnValue()->setString(pCert->issuerLocality());
+			return true;
+		}
+		if(szQuery.compare("issuerOrganization")==0)
+		{
+			c->returnValue()->setString(pCert->issuerOrganization());
+			return true;
+		}
+		if(szQuery.compare("issuerOrganizationalUnit")==0)
+		{
+			c->returnValue()->setString(pCert->issuerOrganizationalUnit());
+			return true;
+		}
+		if(szQuery.compare("issuerCommonName")==0)
+		{
+			c->returnValue()->setString(pCert->issuerCommonName());
+			return true;
+		}
+		if(szQuery.compare("publicKeyBits")==0)
+		{
+			c->returnValue()->setInteger(pCert->publicKeyBits());
+			return true;
+		}
+		if(szQuery.compare("publicKeyType")==0)
+		{
+			c->returnValue()->setString(pCert->publicKeyType());
+			return true;
+		}
+		if(szQuery.compare("serialNumber")==0)
+		{
+			c->returnValue()->setInteger(pCert->serialNumber());
+			return true;
+		}
+		if(szQuery.compare("pemBase64")==0)
+		{
+			const char * szTmp=pCert->getX509Base64();
+			QString szBase64(szTmp);
+			c->returnValue()->setString(szBase64);
+			delete szTmp;
+			return true;
+		}
+		if(szQuery.compare("version")==0)
+		{
+			c->returnValue()->setInteger(pCert->version());
+			return true;
+		}
+
+		c->warning(__tr2qs_ctx("Unable to get SSL informations: query not recognized","dcc"));
+		c->returnValue()->setString("");
+		return true;
+	}
+	return true;
+#endif
+}
+
+
+/*
 	@doc: dcc
 	@type:
 		module
@@ -2753,6 +2959,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		[fnc]$dcc.remoteFileSize[/fnc][br]
 		[fnc]$dcc.ircContext[/fnc][br]
 		[fnc]$dcc.session[/fnc][br]
+		[fnc]$dcc.getSSLInfo[/fnc][br]
 */
 
 
@@ -2798,6 +3005,7 @@ static bool dcc_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"ircContext",dcc_kvs_fnc_ircContext);
 	KVSM_REGISTER_FUNCTION(m,"session",dcc_kvs_fnc_session);
 	KVSM_REGISTER_FUNCTION(m,"sessionList",dcc_kvs_fnc_sessionList);
+	KVSM_REGISTER_FUNCTION(m,"getSSLInfo",dcc_kvs_fnc_getSSLInfo);
 
 	return true;
 }

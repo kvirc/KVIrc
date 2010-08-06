@@ -74,6 +74,7 @@ public:
 #ifdef COMPILE_SSL_SUPPORT
 	void raiseSSLError();
 	void setSSL(KviSSL * s);
+	KviSSL * getSSL() const { return m_pSSL; };
 #endif
 };
 
