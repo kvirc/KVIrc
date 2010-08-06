@@ -165,6 +165,7 @@ public:
 	// Protocol error
 	KviSSL::Result getProtocolError(int ret);
 	KviSSLCertificate * getPeerCertificate();
+	KviSSLCertificate * getLocalCertificate();
 	KviSSLCipherInfo * getCurrentCipherInfo();
 	KviSSL::Result useCertificateFile(const char * cert,const char * pass);
 	KviSSL::Result usePrivateKeyFile(const char * key,const char * pass);

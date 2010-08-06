@@ -509,6 +509,14 @@ KviSSLCertificate * KviSSL::getPeerCertificate()
 	return new KviSSLCertificate(x509);
 }
 
+KviSSLCertificate * KviSSL::getLocalCertificate()
+{
+	if(!m_pSSL)return 0;
+	X509 * x509 = SSL_get_certificate(m_pSSL);
+	if(!x509)return 0;
+	return new KviSSLCertificate(x509);
+}
+
 KviSSLCipherInfo * KviSSL::getCurrentCipherInfo()
 {
 	if(!m_pSSL)return 0;

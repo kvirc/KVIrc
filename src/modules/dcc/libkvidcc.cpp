@@ -2699,22 +2699,22 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 
 
 /*
-	@doc: dcc.getSSLInfo
+	@doc: dcc.getSSLPeerCertInfo
 	@type:
 		function
 	@title:
-		$dcc.getSSLInfo
+		$dcc.getSSLCertInfo
 	@short:
-		Returns the requested ssl information about a ssl-enabled dcc session
+		Returns the requested information about certificates used in an ssl-enabled dcc session
 	@syntax:
-		$dcc.getSSLInfo(<query:string>[,<dcc_id:integer>])
+		$dcc.getSSLCertInfo(<query:string>[,<type:string='remote'>[,<dcc_id:integer>]])
 	@description:
-		Returns the requested ssl information about a ssl-enabled dcc session.[br]
-		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
-		If <dcc_id> is not a valid DCC session identifier (or it is omitted
-		and the current window has no associated DCC session) then
-		this function prints a warning and returns an empty sting.[br]
+		Returns the requested information about certificates used in an ssl-enabled dcc session.[br]
+		The second <type> parameter can be "local" or "remote", and refers to the certificate you want
+		to query the information from; if omitted, it defaults to "remote".[br]
+		If <dcc_id> is omitted then the DCC Session associated to the current window is assumed.[br]
+		If <dcc_id> is not a valid DCC session identifier (or it is omitted and the current window 
+		has no associated DCC session) then this function prints a warning and returns an empty sting.[br]
 		If the DCC session is not using ssl then this function returns an empty string.[br]
 		Available query strings are:[br]
 		[ul]
@@ -2741,12 +2741,15 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
-static bool dcc_kvs_fnc_getSSLInfo(KviKvsModuleFunctionCall * c)
+static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 {
 	kvs_uint_t uDccId;
 	QString szQuery;
+	QString szType;
+	bool bRemote=true;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("query",KVS_PT_STRING,0,szQuery)
+		KVSM_PARAMETER("type",KVS_PT_STRING,KVS_PF_OPTIONAL,szType)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
@@ -2755,6 +2758,18 @@ static bool dcc_kvs_fnc_getSSLInfo(KviKvsModuleFunctionCall * c)
 	return true;
 #else
 
+	if(szType.compare("local")==0)
+	{
+		bRemote=false;
+	} else {
+		// already defaults to true, we only catch the error condition
+		if(szType.compare("remote")!=0)
+		{
+			c->warning(__tr2qs_ctx("You specified a bad string for the parameter \"type\"","dcc"));
+			c->returnValue()->setString("");
+			return true;
+		}
+	}
 	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)
@@ -2787,7 +2802,7 @@ static bool dcc_kvs_fnc_getSSLInfo(KviKvsModuleFunctionCall * c)
 			return true;
 		}
 
-		KviSSLCertificate * pCert = pSSL->getPeerCertificate();
+		KviSSLCertificate * pCert = bRemote ? pSSL->getPeerCertificate() : pSSL->getLocalCertificate();
 
 		if(!pCert)
 		{
@@ -3005,7 +3020,7 @@ static bool dcc_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"ircContext",dcc_kvs_fnc_ircContext);
 	KVSM_REGISTER_FUNCTION(m,"session",dcc_kvs_fnc_session);
 	KVSM_REGISTER_FUNCTION(m,"sessionList",dcc_kvs_fnc_sessionList);
-	KVSM_REGISTER_FUNCTION(m,"getSSLInfo",dcc_kvs_fnc_getSSLInfo);
+	KVSM_REGISTER_FUNCTION(m,"getSSLCertInfo",dcc_kvs_fnc_getSSLCertInfo);
 
 	return true;
 }
