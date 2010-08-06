@@ -94,6 +94,7 @@
 #include <QTextCodec>
 #include <QMetaObject>
 #include <QTextDocument>
+#include <QDBusInterface>
 
 /*
 HACK These 2 hacks are defined because X11 defines Unsorted and None
@@ -108,9 +109,6 @@ DO NOT REMOVE THEM EVEN IF THEY ARE DEFINED ALSO IN kvi_app.h
 	#undef None
 #endif
 
-
-#include <QDir>
-
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_ssl.h"
 #endif
@@ -119,6 +117,7 @@ DO NOT REMOVE THEM EVEN IF THEY ARE DEFINED ALSO IN kvi_app.h
 	#include <QPluginLoader>
 #endif
 
+#include <QDir>
 
 #include <stdlib.h> // rand & srand
 #include <time.h> // time() in srand()
@@ -693,16 +692,42 @@ typedef struct _NotifierMessageSupaDupaParameterStruct
 
 void KviApp::notifierMessage(KviWindow * pWnd,int iIconId,const QString &szMsg,unsigned int uMessageLifetime)
 {
-	KviModule * m = g_pModuleManager->getModule("notifier");
-	if(!m)return;
+#ifdef COMPILE_KDE_SUPPORT
+	if(KVI_OPTION_BOOL(KviOption_boolUseKDENotifier))
+	{
+		// org.freedesktop.Notifications.Notify
+		QVariantList args;
+		args << QString("KVIrc");                           // application name, optional
+		args << QVariant(QVariant::UInt);                   // notification id, optional
+		args << QString();                                  // application icon, optional
+		args << __tr2qs("KVIrc requests your attention");   // summary text
+		args << QString(szMsg);                             // detailed text
+		args << QStringList();                              // actions
+		args << QVariantMap();                              // hints, optional
+		args << (int)uMessageLifetime*1000;                 // timeout in milliseconds
+		
+		QDBusInterface * pNotify = new QDBusInterface("org.freedesktop.Notifications","/org/freedesktop/Notifications","org.freedesktop.Notifications",QDBusConnection::sessionBus(),this);
+		QDBusMessage reply = pNotify->callWithArgumentList(QDBus::Block,"Notify",args);
+		if(reply.type() == QDBusMessage::ErrorMessage)
+		{
+			QDBusError err = reply;
+			debug("KNotify DBus error\nID: %u\nName: %s\nMessage: %s\n",reply.arguments().first().toUInt(),qPrintable(err.name()),qPrintable(err.message()));
+		}
+	} else {
+#endif
+		KviModule * m = g_pModuleManager->getModule("notifier");
+		if(!m)return;
 
-	NotifierMessageSupaDupaParameterStruct s;
-	s.pWindow = pWnd;
-	s.szIcon.sprintf("%d",iIconId);
-	s.szMessage = szMsg;
-	s.uMessageLifetime = uMessageLifetime;
+		NotifierMessageSupaDupaParameterStruct s;
+		s.pWindow = pWnd;
+		s.szIcon.sprintf("%d",iIconId);
+		s.szMessage = szMsg;
+		s.uMessageLifetime = uMessageLifetime;
 
-	m->ctrl("notifier::message",(void *)&s);
+		m->ctrl("notifier::message",(void *)&s);
+#ifdef COMPILE_KDE_SUPPORT
+	}
+#endif
 }
 
 QTextCodec * KviApp::defaultTextCodec()

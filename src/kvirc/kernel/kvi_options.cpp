@@ -334,7 +334,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("EnableModeLinkToolTip",true,KviOption_sectFlagGui),
 	BOOL_OPTION("EnableNickLinkToolTip",true,KviOption_sectFlagGui),
 	BOOL_OPTION("EnableChannelLinkToolTip",true,KviOption_sectFlagGui),
-	BOOL_OPTION("EnableEscapeLinkToolTip",true,KviOption_sectFlagGui)
+	BOOL_OPTION("EnableEscapeLinkToolTip",true,KviOption_sectFlagGui),
+	BOOL_OPTION("UseKDENotifier",false,KviOption_sectFlagConnection)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)

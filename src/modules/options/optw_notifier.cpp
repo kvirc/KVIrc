@@ -144,10 +144,10 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 	KviBoolSelector * b = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable the notifier","options"),KviOption_boolEnableNotifier);
 	QString tip = "<center>";
 	tip += __tr2qs_ctx("This is an option for the impatient: it allows to forcibly and permanently disable " \
-					"the notifier window. Please note that if this option is activated then " \
-					"the notifier will NOT popup even if all the other options around specify " \
-					"to use it in response to particular events. Also note that this option " \
-					"will make all the /notifier.* commands fail silently.","options");
+		"the notifier window. Please note that if this option is not activated then " \
+		"the notifier will NOT popup even if all the other options around specify " \
+		"to use it in response to particular events. Also note that this option " \
+		"will make all the /notifier.* commands fail silently.","options");
 	tip += "</center>";
 	mergeTip(b,tip);
 
@@ -155,14 +155,29 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 
 	KviBoolSelector * b2;
 
+#ifdef COMPILE_KDE_SUPPORT
+	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Use the KDE notifier","options"),KviOption_boolUseKDENotifier);
+	tip = "<center>";
+	tip += __tr2qs_ctx("This option uses the KDE notifier instead of KVIrc one. " \
+		"This is cool if you want to better integrate KVIrc inside KDE. " \
+		"Note that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's","options");
+	tip += "</center>";
+	mergeTip(b2,tip);
+	
+	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
+	connect(b,SIGNAL(toggled(bool)),b2,SLOT(setEnabled(bool)));
+	
+	iRow++;
+#endif //COMPILE_KDE_SUPPORT
+
 #if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Don't show notifier when there is an active fullscreen window","options"),KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen);
 
 	tip = "<center>";
 	tip += __tr2qs_ctx("This option stops the notifier from being displayed when there is an active fullscreen window. " \
-						"This is useful for gaming sessions where you may be distracted by the notifier or it may even switch " \
-						"your game from fullscreen to window mode.","options");
+		"This is useful for gaming sessions where you may be distracted by the notifier or it may even switch " \
+		"your game from fullscreen to window mode.","options");
 	tip += "</center>";
 	mergeTip(b2,tip);
 	
@@ -178,7 +193,6 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
 	QObject::connect(b,SIGNAL(toggled(bool)),b2,SLOT(setEnabled(bool)));
 
-
 	iRow++;
 	
 	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable notifier window fade effect","options"),KviOption_boolNotifierFading);
@@ -188,7 +202,7 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 
 	iRow++;
 
-	KviTalGroupBox *g = addGroupBox(0,iRow,0,iRow,Qt::Horizontal,__tr2qs_ctx("Advanced configuration","options"));
+	KviTalGroupBox * g = addGroupBox(0,iRow,0,iRow,Qt::Horizontal,__tr2qs_ctx("Advanced configuration","options"));
 	connect(b,SIGNAL(toggled(bool)),g,SLOT(setEnabled(bool)));
 
 	connect(b,
