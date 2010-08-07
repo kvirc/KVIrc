@@ -33,13 +33,16 @@
 #include "kvi_settings.h"
 #include "kvi_malloc.h"
 #include "kvi_kvs_arraycast.h"
+#include "kvi_options.h"
 
 #include <QRegExp>
 #include <QClipboard>
 
 #if defined( COMPILE_SSL_SUPPORT ) && !defined( COMPILE_NO_EMBEDDED_CODE )
 	// The current implementation
+	#include <openssl/ssl.h>
 	#include <openssl/evp.h>
+	#include <openssl/pem.h>
 #elif defined(COMPILE_NO_EMBEDDED_CODE)
 	// The preferred new implementation (until QCryptographicHash supports all
 	// hashes we want).
@@ -2173,6 +2176,286 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 }
 
 
+/*
+	@doc: str.evpSign
+	@type:
+		function
+	@title:
+		$str.evpSign
+	@short:
+		Returns a signature for a message created using your certificate's private key
+	@syntax:
+		<string> $str.evpSign(<message:string>[,<certificate:string>[,<password:string>]])
+	@description:
+		This function returns a base64-encoded signature string created signing the
+		provided <message> using the private key of the specified <certificate>.[br]
+		If the <certificate> parameter is omitted, the private key specified in the
+		kvirc options will be used.[br]
+		If any error occurs, this function will return an empty string.
+	@examples:
+		[example]
+			# Emulate a call with no parameters
+			%message="test message";
+			%pcert=$file.read($option(stringSSLPrivateKeyPath));
+			%sign=$str.evpSign(%message,%pcert,$option(stringSSLPrivateKeyPass));
+		[/example]
+		[example]
+			# Sign and verify the signature using the certificates from options
+			%message="test message";
+			%sign=$str.evpSign(%message);
+			if($str.evpVerify(%message, %sign))
+			{
+				echo "signature is valid";
+			} else {
+				echo "signature is not valid";
+			}
+		[/example]
+	@seealso:
+		[fnc]$str.evpVerify[/fnc]
+*/
+
+static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
+{
+	QByteArray szMessage;
+	QByteArray szCert;
+	QByteArray szPass;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("message",KVS_PT_NONEMPTYCSTRING,0,szMessage)
+		KVSM_PARAMETER("certificate",KVS_PT_NONEMPTYCSTRING,KVS_PF_OPTIONAL,szCert)
+		KVSM_PARAMETER("password",KVS_PT_NONEMPTYCSTRING,KVS_PF_OPTIONAL,szPass)
+	KVSM_PARAMETERS_END(c)
+
+#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
+
+	EVP_MD_CTX md_ctx;
+	EVP_PKEY * pKey = 0;
+	unsigned int len = 0;
+	unsigned char *sig = 0;
+
+	//FIXME do we need a mutex here?
+	SSL_library_init();
+	SSL_load_error_strings();
+
+	if(szCert.isEmpty())
+	{
+		//use default cert
+		if(!KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey))
+		{
+			c->warning(__tr2qs("No certificate specified and no private key certificate defined in KVIrc options."));
+			c->returnValue()->setString("");
+			return true;
+		}
+		
+		FILE * f = fopen(KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data(),"r");
+		if(!f)
+		{
+			c->warning(__tr2qs("File I/O error while trying to use the private key file %s"),KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data());
+			c->returnValue()->setString("");
+			return true;
+		}
+
+		szPass = KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass).toUtf8();
+		PEM_read_PrivateKey(f, &pKey, NULL, szPass.data());
+		
+		fclose(f);
+
+		if(!pKey)
+		{
+			c->warning(__tr2qs("Can not read private key while trying to use the default private key certificate %s"),KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data());
+			c->returnValue()->setString("");
+			return true;
+		}
+	} else {
+		// get from parameter (with optional password)
+		BIO *in;
+		in = BIO_new_mem_buf((unsigned char*)szCert.data(), szCert.size());
+		PEM_read_bio_PrivateKey(in, &pKey, NULL, szPass.data());
+		BIO_free(in);
+
+		if(!pKey)
+		{
+			c->warning(__tr2qs("Can not read private key while trying to use the provided certificate (wrong password?)"));
+			c->returnValue()->setString("");
+			return true;
+		}
+	}
+
+	len = EVP_PKEY_size(pKey);
+	sig = (unsigned char*)kvi_malloc(len*sizeof(char));
+
+	EVP_SignInit(&md_ctx, EVP_sha1());
+	EVP_SignUpdate(&md_ctx, (unsigned char *)szMessage.data(), szMessage.length());
+	if (EVP_SignFinal (&md_ctx, sig, &len, pKey))
+	{
+		QByteArray szSign((const char *)sig, len);
+		OPENSSL_free(sig);
+		EVP_PKEY_free(pKey);
+		c->returnValue()->setString(szSign.toBase64().data());
+		return true;
+	}
+	c->warning(__tr2qs("An error occured while signing the message."));
+	c->returnValue()->setString("");
+	return true;
+
+#else
+	c->warning(__tr2qs("KVIrc is compiled without OpenSSL support."));
+	c->returnValue()->setString("");
+	return true;
+#endif
+}
+
+/*
+	@doc: str.evpVerify
+	@type:
+		function
+	@title:
+		$str.evpVerify
+	@short:
+		Verifies the signature for a message against a public key
+	@syntax:
+		<bool> $str.evpVerify(<message:string>,<signature:string>[,<certificate:string>[,<password:string>]])
+	@description:
+		This function verifies the signature for a message against a publick key contained in a certificate.[br]
+		The signature has to be base64-encoded, as the one returned by [fnc]$str.evpSign[/fnc].[br]
+		If the <certificate> parameter is omitted, the public key certificate specified in the
+		kvirc options will be used.[br]
+		If any error occurs, this function will return false.
+	@examples:
+		[example]
+			# Emulate a call with no certificate parameters
+			%message="test message";
+			%signature=$str.evpSign(%message);
+			%cert=$file.read($option(stringSSLCertificatePath));
+			$str.evpVerify(%message,%signature,%cert,$option(stringSSLCertificatePass));
+		[/example]
+		[example]
+			# Sign and verify the signature using the certificates from options
+			%message="test message";
+			%sign=$str.evpSign(%message);
+			if($str.evpVerify(%message, %sign))
+			{
+				echo "signature is valid";
+			} else {
+				echo "signature is not valid";
+			}
+		[/example]
+	@seealso:
+		[fnc]$str.evpSign[/fnc]
+*/
+
+static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
+{
+	QByteArray szMessage;
+	QByteArray szCert;
+	QByteArray szSign;
+	QByteArray szSignB64;
+	QByteArray szPass;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("message",KVS_PT_NONEMPTYCSTRING,0,szMessage)
+		KVSM_PARAMETER("signature",KVS_PT_NONEMPTYCSTRING,0,szSignB64)
+		KVSM_PARAMETER("certificate",KVS_PT_NONEMPTYCSTRING,KVS_PF_OPTIONAL,szCert)
+		KVSM_PARAMETER("password",KVS_PT_NONEMPTYCSTRING,KVS_PF_OPTIONAL,szPass)
+	KVSM_PARAMETERS_END(c)
+
+#if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
+
+	//FIXME do we need a mutex here?
+	SSL_library_init();
+	SSL_load_error_strings();
+
+	szSign = QByteArray::fromBase64(szSignB64);
+	const char * message = szMessage.data();
+	
+	EVP_MD_CTX md_ctx;
+	EVP_PKEY *pKey = 0;
+	X509 *cert = 0;
+	int err = -1;
+
+	if(szCert.isEmpty())
+	{
+		//use default cert
+		if(!KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate))
+		{
+			c->warning(__tr2qs("No certificate specified and no public key certificate defined in KVIrc options."));
+			c->returnValue()->setString("");
+			return true;
+		}
+		
+		FILE * f = fopen(KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data(),"r");
+		if(!f)
+		{
+			c->warning(__tr2qs("File I/O error while trying to use the public key file %s"),KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data());
+			c->returnValue()->setString("");
+			return true;
+		}
+
+		szPass = KVI_OPTION_STRING(KviOption_stringSSLCertificatePass).toUtf8();
+		PEM_read_X509(f, &cert, NULL, szPass.data());
+		
+		fclose(f);
+
+		if(cert)
+		{
+			pKey = (EVP_PKEY *) X509_get_pubkey(cert);
+			X509_free(cert);
+		}
+
+		if(!pKey)
+		{
+			c->warning(__tr2qs("Can not read public key while trying to use the default public key certificate %s"),KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data());
+			c->returnValue()->setString("");
+			return true;
+		}
+	} else {
+		// get from parameter (with optional password)
+		BIO *in = BIO_new_mem_buf((unsigned char*)szCert.data(), szCert.size());
+		PEM_read_bio_X509(in, &cert, 0, szPass.data());
+		
+		if(cert)
+		{
+			pKey = (EVP_PKEY *) X509_get_pubkey(cert);
+			X509_free(cert);
+		} else {
+			pKey = PEM_read_bio_PUBKEY(in, NULL, 0, szPass.data());
+		}
+
+		BIO_free(in);
+		
+		if(!pKey)
+		{
+			c->warning(__tr2qs("Can not read public key from the provided certificate."));
+			c->returnValue()->setBoolean(false);
+			return true;
+		}
+	}
+
+	EVP_VerifyInit(&md_ctx, EVP_sha1());
+	EVP_VerifyUpdate(&md_ctx, message, strlen(message));
+	err = EVP_VerifyFinal(&md_ctx, (unsigned char*)szSign.data(), szSign.size(), pKey);
+	EVP_MD_CTX_cleanup(&md_ctx);
+	EVP_PKEY_free(pKey);
+	switch(err)
+	{
+		case 0:
+			c->returnValue()->setBoolean(false);
+			return true;
+		case 1:
+			c->returnValue()->setBoolean(true);
+			return true;
+		default:
+			c->warning(__tr2qs("An error occured during signature verification."));
+			c->returnValue()->setBoolean(false);
+			return true;
+	}
+#else
+	c->warning(__tr2qs("KVIrc is compiled without OpenSSL support."));
+	c->returnValue()->setBoolean(false);
+	return true;
+#endif
+}
+
+
 
 /*********************************************************************/
 //              Module stuff
@@ -2223,6 +2506,8 @@ static bool str_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"upcase",str_kvs_fnc_upcase);
 	KVSM_REGISTER_FUNCTION(m,"urlencode",str_kvs_fnc_urlencode);
 	KVSM_REGISTER_FUNCTION(m,"word",str_kvs_fnc_word);
+	KVSM_REGISTER_FUNCTION(m,"evpSign",str_kvs_fnc_evpSign);
+	KVSM_REGISTER_FUNCTION(m,"evpVerify",str_kvs_fnc_evpVerify);
 	
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"toClipboard",str_kvs_cmd_toClipboard);
 	return true;
