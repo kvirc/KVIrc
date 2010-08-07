@@ -62,7 +62,7 @@
 #include "kvi_moduleextension.h"
 #include "kvi_internalcmd.h"
 #include "kvi_filetransfer.h"
-#include "kvi_kvs.h"
+#include "kvi_mirccntrl.h"
 #include "kvi_ircurl.h"
 #include "kvi_avatarcache.h"
 #include "kvi_actionmanager.h"
@@ -73,11 +73,7 @@
 #include "kvi_useridentity.h"
 #include "kvi_ircview.h"
 #include "kvi_animatedpixmapcache.h"
-
-#ifndef COMPILE_NO_IPC
-	#include "kvi_ipc.h"
-#endif
-
+#include "kvi_kvs.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_popupmanager.h"
 #include "kvi_kvs_kernel.h"
@@ -107,6 +103,10 @@ DO NOT REMOVE THEM EVEN IF THEY ARE DEFINED ALSO IN kvi_app.h
 
 #ifdef None
 	#undef None
+#endif
+
+#ifndef COMPILE_NO_IPC
+	#include "kvi_ipc.h"
 #endif
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -187,14 +187,13 @@ KviApp::KviApp(int &argc,char ** argv)
 	m_bShowSplashScreen     = true;
 	m_bUpdateGuiPending     = false;
 	m_pPendingAvatarChanges = NULL;
-	m_pRecentChannelDict   = NULL;
+	m_pRecentChannelDict    = NULL;
 #ifndef COMPILE_NO_IPC
 	m_pIpcSentinel          = NULL;
 #endif
 	m_iHeartbeatTimerId     = -1;
 	m_fntDefaultFont        = font();
-	// next step is setup()
-	m_bSetupDone = false;
+	m_bSetupDone            = false;
 	kvi_socket_flushTrafficCounters();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_bPortable = KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable");
@@ -695,16 +694,18 @@ void KviApp::notifierMessage(KviWindow * pWnd,int iIconId,const QString &szMsg,u
 #if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_DBUS_SUPPORT)
 	if(KVI_OPTION_BOOL(KviOption_boolUseDBusNotifier))
 	{
+		//szMsg = KviMircCntrl::stripControlBytes(szMsg);
+		
 		// org.freedesktop.Notifications.Notify
 		QVariantList args;
-		args << QString("KVIrc");                           // application name, optional
-		args << QVariant(QVariant::UInt);                   // notification id, optional
-		args << QString();                                  // application icon, optional
-		args << __tr2qs("KVIrc requests your attention");   // summary text
-		args << QString(szMsg);                             // detailed text
-		args << QStringList();                              // actions
-		args << QVariantMap();                              // hints, optional
-		args << (int)uMessageLifetime*1000;                 // timeout in milliseconds
+		args << QString("KVIrc");                                // application name
+		args << QVariant(QVariant::UInt);                        // notification id
+		args << QString(g_pIconManager->getSmallIconName(16));   // application icon
+		args << __tr2qs("KVIrc requests your attention");        // summary text
+		args << QString(KviMircCntrl::stripControlBytes(szMsg)); // detailed text
+		args << QStringList();                                   // actions
+		args << QVariantMap();                                   // hints, optional
+		args << (int)uMessageLifetime*1000;                      // timeout in msecs
 		
 		QDBusInterface * pNotify = new QDBusInterface("org.freedesktop.Notifications","/org/freedesktop/Notifications","org.freedesktop.Notifications",QDBusConnection::sessionBus(),this);
 		QDBusMessage reply = pNotify->callWithArgumentList(QDBus::Block,"Notify",args);
