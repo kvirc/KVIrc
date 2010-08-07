@@ -4,18 +4,20 @@
 #
 # Ahinu <ahinu.laman@gmail.com>, 2006.
 # Elephantman <elephantman@europnet.org>, 2008.
+# _Otaku, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: dcc_fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-07 17:02+0200\n"
-"PO-Revision-Date: 2010-07-15 22:00+0100\n"
-"Last-Translator: \n"
-"Language-Team: Français <en@li.org>\n"
+"PO-Revision-Date: 2010-08-07 19:59+0200\n"
+"Last-Translator: _Otaku\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/modules/dcc/requests.cpp:873
 msgid "\"any\""
@@ -969,22 +971,29 @@ msgstr "Transfert des données"
 #: src/modules/dcc/libkvidcc.cpp:2779
 msgid "Unable to get SSL informations: DCC session is not using SSL"
 msgstr ""
+"Impossible d'obtenir les informations SSL : la session DCC n'utilise pas SSL"
 
 #: src/modules/dcc/libkvidcc.cpp:2792
 msgid "Unable to get SSL informations: DCC session not initialized yet"
 msgstr ""
+"Impossible d'obtenir les informations SSL : la session DCC n'est pas encore "
+"initialisée"
 
 #: src/modules/dcc/libkvidcc.cpp:2809
 msgid "Unable to get SSL informations: No peer certificate available"
 msgstr ""
+"Impossible d'obtenir les informations SSL : Pas de certificat d'échange "
+"disponible"
 
 #: src/modules/dcc/libkvidcc.cpp:2800
 msgid "Unable to get SSL informations: SSL non initialized yet in DCC session"
 msgstr ""
+"Impossible d'obtenir les informations SSL : SSL n'est pas encore initialisé "
+"dans la session DCC"
 
 #: src/modules/dcc/libkvidcc.cpp:2913
 msgid "Unable to get SSL informations: query not recognized"
-msgstr ""
+msgstr "Impossible d'obtenir les informations SSL : discussion non reconnue"
 
 #: src/modules/dcc/libkvidcc.cpp:129
 msgid "Unable to get address of interface %Q"
@@ -1054,7 +1063,7 @@ msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:2768
 msgid "You specified a bad string for the parameter \"type\""
-msgstr ""
+msgstr "Vous avez spécifié une mauvaise option pour le paramètre \"type\""
 
 #: src/modules/dcc/broker.cpp:287
 msgid "You will be the passive side of the connection.<br>"

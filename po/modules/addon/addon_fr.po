@@ -1,19 +1,21 @@
 # translation of addon_fr.po to Français
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# _Otaku, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: addon_fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-07 17:02+0200\n"
-"PO-Revision-Date: 2010-07-31 19:11+0100\n"
-"Last-Translator: \n"
-"Language-Team: Français <LL@li.org>\n"
+"PO-Revision-Date: 2010-08-07 19:43+0200\n"
+"Last-Translator: _Otaku\n"
+"Language-Team: French <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: src/modules/addon/libkviaddon.cpp:146
 msgid "%cAddon id %Q, version %Q%c"
@@ -161,12 +163,12 @@ msgstr ""
 "les opérations de paquetage."
 
 #: src/modules/addon/packaddondialog.cpp:542
-#, fuzzy
 msgid ""
 "Here there are the information you provided. If these information are "
 "correct, hit the \"Finish\" button to complete the packaging operations."
 msgstr ""
-"Voilà les informations que vous avez fournie. Si elles sont correct, appuyez "
+"Voilà les informations que vous avez fournie. Si elles sont correctes, "
+"appuyez "
 "sur le bouton \"Fin\" pour complétez le processus du paquet."
 
 #: src/modules/addon/packaddondialog.cpp:403
@@ -212,7 +214,7 @@ msgstr "Installer une extension sous forme de paquet depuis le disque"
 
 #: src/modules/addon/libkviaddon.cpp:749
 msgid "Installing file '%1' into '%2'"
-msgstr ""
+msgstr "Installation du fichier '%1' dans '%2'"
 
 #: src/modules/addon/libkviaddon.cpp:529
 #, fuzzy
@@ -242,28 +244,24 @@ msgid "No"
 msgstr "Non"
 
 #: src/modules/addon/packaddondialog.cpp:421
-#, fuzzy
 msgid "No spaces allowed, like MyAddon"
-msgstr "Les espaces sont interdit, comme MonExtension"
+msgstr "Les espaces sont interdit, essayez quelque chose comme MonExtension"
 
 #: src/modules/addon/addonfunctions.cpp:251
 msgid "One or more files can't be deleted"
 msgstr "Un ou plusieurs fichier(s) n'ont pas pu être supprimer"
 
 #: src/modules/addon/packaddondialog.cpp:408
-#, fuzzy
 msgid "Package &Author:"
-msgstr "Auteur du paquetage :"
+msgstr "Auteur du paquet :"
 
 #: src/modules/addon/packaddondialog.cpp:435
-#, fuzzy
 msgid "Package &Description:"
-msgstr "Description du paquetage :"
+msgstr "Description du paquet :"
 
 #: src/modules/addon/packaddondialog.cpp:417
-#, fuzzy
 msgid "Package &Name:"
-msgstr "Nom du paquetage :"
+msgstr "Nom du paquet :"
 
 #: src/modules/addon/packaddondialog.cpp:426
 #, fuzzy
@@ -307,7 +305,7 @@ msgstr "Veuillez sélectionner le fichier d'installation de l'extension"
 
 #: src/modules/addon/packaddondialog.cpp:496
 msgid "Save Package"
-msgstr ""
+msgstr "Sauvegarder le paquet"
 
 #: src/modules/addon/packaddondialog.cpp:595
 msgid "Save Path"
@@ -366,7 +364,7 @@ msgstr "Le dossier '%1' n'existe pas"
 
 #: src/modules/addon/libkviaddon.cpp:721
 msgid "The entry '%1' is not a file"
-msgstr ""
+msgstr "L'entrée '%1' n'est pas un fichier"
 
 #: src/modules/addon/libkviaddon.cpp:712
 msgid "The file '%1' doesn't exist"
@@ -378,7 +376,7 @@ msgstr "Le script d'initialisation (install.kvs) n'existe pas"
 
 #: src/modules/addon/packaddondialog.cpp:336
 msgid "The package file list is empty"
-msgstr ""
+msgstr "La liste de paquets est vide"
 
 #: src/modules/addon/packaddondialog.cpp:144
 msgid "The selected directory does not exist."
@@ -478,3 +476,4 @@ msgstr "Vous êtes sur le point d'installer les extensions suivante"
 #: src/modules/addon/packaddondialog.cpp:412
 msgid "Your name here"
 msgstr "Mettez votre nom ici"
+
