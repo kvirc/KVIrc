@@ -44,7 +44,7 @@ void KviKvsPopupManager::init()
 {
 	if(KviKvsPopupManager::instance())
 	{
-		debug("WARNING: Trying to create the KviKvsPopupManager twice!");
+		qDebug("WARNING: Trying to create the KviKvsPopupManager twice!");
 		return;
 	}
 	(void)new KviKvsPopupManager();
@@ -54,7 +54,7 @@ void KviKvsPopupManager::done()
 {
 	if(!KviKvsPopupManager::instance())
 	{
-		debug("WARNING: Trying to destroy the KviKvsPopupManager twice!");
+		qDebug("WARNING: Trying to destroy the KviKvsPopupManager twice!");
 		return;
 	}
 	delete KviKvsPopupManager::instance();

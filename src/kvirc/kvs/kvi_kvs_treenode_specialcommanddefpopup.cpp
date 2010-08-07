@@ -140,11 +140,11 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator::contextDescription(QStr
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator::dump(const char * prefix)
 {
-	debug("%s SpecialCommandDefpopupLabelSeparator",prefix);
+	qDebug("%s SpecialCommandDefpopupLabelSeparator",prefix);
 	QString tmp = prefix;
 	tmp.append("  CONDITION:");
 	tmp.append(m_szCondition);
-	debug("%s",tmp.toUtf8().data());
+	qDebug("%s",tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator::execute(KviKvsRunTimeContext *,KviKvsPopupMenu * p)
@@ -161,11 +161,11 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue::contextDescription(QStri
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue::dump(const char * prefix)
 {
-	debug("%s SpecialCommandDefpopupLabelEpilogue",prefix);
+	qDebug("%s SpecialCommandDefpopupLabelEpilogue",prefix);
 	QString tmp = prefix;
 	tmp.append("  INSTRUCTION: ");
 	tmp += m_szInstruction;
-	debug("%s",tmp.toUtf8().data());
+	qDebug("%s",tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue::execute(KviKvsRunTimeContext *,KviKvsPopupMenu * p)
@@ -182,11 +182,11 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue::contextDescription(QStri
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue::dump(const char * prefix)
 {
-	debug("%s SpecialCommandDefpopupLabelPrologue",prefix);
+	qDebug("%s SpecialCommandDefpopupLabelPrologue",prefix);
 	QString tmp = prefix;
 	tmp.append("  INSTRUCTION: ");
 	tmp += m_szInstruction;
-	debug("%s",tmp.toUtf8().data());
+	qDebug("%s",tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue::execute(KviKvsRunTimeContext *,KviKvsPopupMenu * p)
@@ -216,21 +216,21 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelPopup::contextDescription(QString 
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelPopup::dump(const char * prefix)
 {
-	debug("%s SpecialCommandDefpopupLabelPopup",prefix);
+	qDebug("%s SpecialCommandDefpopupLabelPopup",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	QString x = tmp;
 	x += "CONDITION: ";
 	x += m_szCondition;
-	debug("%s",x.toUtf8().data());
+	qDebug("%s",x.toUtf8().data());
 	x = tmp;
 	x += "TEXT: ";
 	x += m_szText;
-	debug("%s",x.toUtf8().data());
+	qDebug("%s",x.toUtf8().data());
 	x = tmp;
 	x += "ICON: ";
 	x += m_szIcon;
-	debug("%s",x.toUtf8().data());
+	qDebug("%s",x.toUtf8().data());
 	for(KviKvsTreeNodeSpecialCommandDefpopupLabel * l = m_pLabels->first();l;l = m_pLabels->next())
 		l->dump(tmp.toUtf8().data());
 }
@@ -286,7 +286,7 @@ void KviKvsTreeNodeSpecialCommandDefpopup::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeSpecialCommandDefpopup::dump(const char * prefix)
 {
-	debug("%s SpecialCommandDefpopup",prefix);
+	qDebug("%s SpecialCommandDefpopup",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pPopupName->dump(tmp.toUtf8().data());

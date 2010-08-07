@@ -98,7 +98,7 @@ static void kvi_threadIgnoreSigalarm()
 			ignr_act.sa_flags  |= SA_RESTART;
 		#endif
 
-			if(sigaction(SIGALRM,&ignr_act,0) == -1)debug("Failed to set SIG_IGN for SIGALRM.");
+			if(sigaction(SIGALRM,&ignr_act,0) == -1)qDebug("Failed to set SIG_IGN for SIGALRM.");
 	#endif
 #endif
 }
@@ -107,7 +107,7 @@ static void kvi_threadIgnoreSigalarm()
 
 static void kvi_threadSigpipeHandler(int)
 {
-	debug("Thread ????: Caught SIGPIPE: ignoring.");
+	qDebug("Thread ????: Caught SIGPIPE: ignoring.");
 }
 
 #endif
@@ -132,7 +132,7 @@ static void kvi_threadCatchSigpipe()
 	act.sa_flags  |= SA_RESTART;
 #endif
 
-	if(sigaction(SIGPIPE,&act,0L) == -1)debug("Failed to set the handler for SIGPIPE.");
+	if(sigaction(SIGPIPE,&act,0L) == -1)qDebug("Failed to set the handler for SIGPIPE.");
 #endif
 }
 
@@ -170,7 +170,7 @@ void KviThreadManager::globalDestroy()
 KviThreadManager::KviThreadManager()
 : QObject()
 {
-	if(g_pThreadManager)debug("Hey...what are ya doing ?");
+	if(g_pThreadManager)qDebug("Hey...what are ya doing ?");
 
 
 	m_pMutex = new KviMutex();
@@ -188,17 +188,17 @@ KviThreadManager::KviThreadManager()
 
 	if(pipe(m_fd) != 0)
 	{
-		debug("Ops...thread manager pipe creation failed (%s)",KviQString::toUtf8(KviError::getDescription(KviError::translateSystemError(errno))).data());
+		qDebug("Ops...thread manager pipe creation failed (%s)",KviQString::toUtf8(KviError::getDescription(KviError::translateSystemError(errno))).data());
 	}
 
 	if(fcntl(m_fd[KVI_THREAD_PIPE_SIDE_SLAVE],F_SETFL,O_NONBLOCK) == -1)
 	{
-		debug("Ops...thread manager slave pipe initialisation failed (%s)",KviQString::toUtf8(KviError::getDescription(KviError::translateSystemError(errno))).data());
+		qDebug("Ops...thread manager slave pipe initialisation failed (%s)",KviQString::toUtf8(KviError::getDescription(KviError::translateSystemError(errno))).data());
 	}
 
 	if(fcntl(m_fd[KVI_THREAD_PIPE_SIDE_MASTER],F_SETFL,O_NONBLOCK) == -1)
 	{
-		debug("Ops...thread manager master pipe initialisation failed (%s)",KviQString::toUtf8(KviError::getDescription(KviError::translateSystemError(errno))).data());
+		qDebug("Ops...thread manager master pipe initialisation failed (%s)",KviQString::toUtf8(KviError::getDescription(KviError::translateSystemError(errno))).data());
 	}
 
 	m_pSn = new QSocketNotifier(m_fd[KVI_THREAD_PIPE_SIDE_MASTER],QSocketNotifier::Read);
@@ -348,7 +348,7 @@ void KviThreadManager::postSlaveEvent(QObject *o,QEvent *e)
 		{
 			// ops.. failed to write down the event..
 			// this is quite irritating now...
-			debug("Ops.. failed to write down the trigger");
+			qDebug("Ops.. failed to write down the trigger");
 			// FIXME: maybe a single shot timer ?
 		} else {
 			m_iTriggerCount++;
@@ -420,7 +420,7 @@ void KviThreadManager::threadLeftWaitState()
 	m_iWaitingThreads--;
 	if(m_iWaitingThreads < 0)
 	{
-		debug("Ops.. got a negative number of waiting threads ?");
+		qDebug("Ops.. got a negative number of waiting threads ?");
 		m_iWaitingThreads = 0;
 	}
 	m_pMutex->unlock();
@@ -461,11 +461,11 @@ KviThread::KviThread()
 
 KviThread::~KviThread()
 {
-//	debug(">> KviThread::~KviThread() : (this = %d)",this);
+//	qDebug(">> KviThread::~KviThread() : (this = %d)",this);
 	wait();
 	delete m_pRunningMutex;
 	g_pThreadManager->unregisterSlaveThread(this);
-//	debug("<< KviThread::~KviThread() : (this = %d)",this);
+//	qDebug("<< KviThread::~KviThread() : (this = %d)",this);
 }
 
 void KviThread::setRunning(bool bRunning)
@@ -511,16 +511,16 @@ bool KviThread::start()
 void KviThread::wait()
 {
 	// We're on the master side here...and we're waiting the slave to exit
-//	debug(">> KviThread::wait() (this=%d)",this);
+//	qDebug(">> KviThread::wait() (this=%d)",this);
 	while(isStartingUp())usleep(500); // sleep 500 microseconds
-//	debug("!! KviThread::wait() (this=%d)",this);
+//	qDebug("!! KviThread::wait() (this=%d)",this);
 	g_pThreadManager->threadEnteredWaitState();
 	while(isRunning())
 	{
 		usleep(500); // sleep 500 microseconds
 	}
 	g_pThreadManager->threadLeftWaitState();
-//	debug("<< KviThread::wait() (this=%d)",this);
+//	qDebug("<< KviThread::wait() (this=%d)",this);
 }
 
 void KviThread::exit()
@@ -533,13 +533,13 @@ void KviThread::exit()
 void KviThread::internalThreadRun_doNotTouchThis()
 {
 	// we're on the slave thread here!
-//	debug(">> KviThread::internalRun (this=%d)",this);
+//	qDebug(">> KviThread::internalRun (this=%d)",this);
 	setRunning(true);
 	setStartingUp(false);
 	kvi_threadInitialize();
 	run();
 	setRunning(false);
-//	debug("<< KviThread::internalRun (this=%d",this);
+//	qDebug("<< KviThread::internalRun (this=%d",this);
 }
 
 void KviThread::usleep(unsigned long usec)
@@ -591,9 +591,9 @@ KviSensitiveThread::KviSensitiveThread()
 
 KviSensitiveThread::~KviSensitiveThread()
 {
-//	debug("Entering KviSensitiveThread::~KviSensitiveThread (this=%d)",this);
+//	qDebug("Entering KviSensitiveThread::~KviSensitiveThread (this=%d)",this);
 	terminate();
-//	debug("KviSensitiveThread::~KviSensitiveThread : terminate called (This=%d)",this);
+//	qDebug("KviSensitiveThread::~KviSensitiveThread : terminate called (This=%d)",this);
 	m_pLocalEventQueueMutex->lock();
 	m_pLocalEventQueue->setAutoDelete(true);
 	delete m_pLocalEventQueue;
@@ -601,12 +601,12 @@ KviSensitiveThread::~KviSensitiveThread()
 	m_pLocalEventQueueMutex->unlock();
 	delete m_pLocalEventQueueMutex;
     m_pLocalEventQueueMutex = 0;
-//	debug("Exiting KviSensitiveThread::~KviSensitiveThread (this=%d)",this);
+//	qDebug("Exiting KviSensitiveThread::~KviSensitiveThread (this=%d)",this);
 }
 
 void KviSensitiveThread::enqueueEvent(KviThreadEvent *e)
 {
-//	debug(">>> KviSensitiveThread::enqueueEvent() (this=%d)",this);
+//	qDebug(">>> KviSensitiveThread::enqueueEvent() (this=%d)",this);
 	m_pLocalEventQueueMutex->lock();
 	if(!m_pLocalEventQueue)
 	{
@@ -617,27 +617,27 @@ void KviSensitiveThread::enqueueEvent(KviThreadEvent *e)
 	}
 	m_pLocalEventQueue->append(e);
 	m_pLocalEventQueueMutex->unlock();
-//	debug("<<< KviSensitiveThread::enqueueEvent() (this=%d)",this);
+//	qDebug("<<< KviSensitiveThread::enqueueEvent() (this=%d)",this);
 }
 
 KviThreadEvent * KviSensitiveThread::dequeueEvent()
 {
-//	debug(">>> KviSensitiveThread::dequeueEvent() (this=%d)",this);
+//	qDebug(">>> KviSensitiveThread::dequeueEvent() (this=%d)",this);
 	KviThreadEvent * ret;
 	m_pLocalEventQueueMutex->lock();
 	ret = m_pLocalEventQueue->first();
 	if(ret)m_pLocalEventQueue->removeFirst();
 	m_pLocalEventQueueMutex->unlock();
-//	debug("<<< KviSensitiveThread::dequeueEvent() (this=%d)",this);
+//	qDebug("<<< KviSensitiveThread::dequeueEvent() (this=%d)",this);
 	return ret;
 }
 
 void KviSensitiveThread::terminate()
 {
-//	debug("Entering KviSensitiveThread::terminate (this=%d)",this);
+//	qDebug("Entering KviSensitiveThread::terminate (this=%d)",this);
 	enqueueEvent(new KviThreadEvent(KVI_THREAD_EVENT_TERMINATE));
-//	debug("KviSensitiveThread::terminate() : event enqueued waiting (this=%d)",this);
+//	qDebug("KviSensitiveThread::terminate() : event enqueued waiting (this=%d)",this);
 	wait();
-//	debug("Exiting KviSensitiveThread::terminate (this=%d)",this);
+//	qDebug("Exiting KviSensitiveThread::terminate (this=%d)",this);
 }
 

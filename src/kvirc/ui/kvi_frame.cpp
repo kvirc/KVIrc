@@ -272,7 +272,7 @@ void KviFrame::saveModuleExtensionToolBars()
 		s += ":";
 		s += t->descriptor()->name().ptr();
 
-		//debug("FOUND TOOLBAR %s",t->descriptor()->name().ptr());
+		//qDebug("FOUND TOOLBAR %s",t->descriptor()->name().ptr());
 
 		KVI_OPTION_STRINGLIST(KviOption_stringlistModuleExtensionToolbars).append(s);
 	}
@@ -380,7 +380,7 @@ void KviFrame::saveWindowProperties(KviWindow * wnd,const QString &szSection)
 		}
 
 		if(!minKey.isEmpty())g_pWinPropertiesConfig->clearGroup(minKey);
-		else debug("Oops...no minimum key found!");
+		else qDebug("Oops...no minimum key found!");
 	}
 
 	// The following line should NOT be needed...but just to be sure...
@@ -1018,7 +1018,7 @@ void KviFrame::restoreToolBarPositions()
 	if(f.open(QIODevice::ReadOnly))
 	{
 		if(!restoreState(f.readAll(),1))
-			debug("Error while restoring toolbars position");
+			qDebug("Error while restoring toolbars position");
 	} else {
 		bNeedDefaults = true;
 	}

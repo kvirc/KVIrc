@@ -80,7 +80,7 @@ KviKvsScript::~KviKvsScript()
 {
 	if(m_pData->m_uRefs < 2)
 	{
-		if(m_pData->m_uLock)debug("WARNING: Destroying a locked KviKvsScript");
+		if(m_pData->m_uLock)qDebug("WARNING: Destroying a locked KviKvsScript");
 		if(m_pData->m_pTree)delete m_pData->m_pTree;
 		delete m_pData;
 	} else {
@@ -114,7 +114,7 @@ void KviKvsScript::dump(const char * prefix)
 {
 	if(m_pData->m_pTree)
 		m_pData->m_pTree->dump(prefix);
-	else debug("%s KviKvsScript : no tree to dump",prefix);
+	else qDebug("%s KviKvsScript : no tree to dump",prefix);
 }
 
 void KviKvsScript::detach()
@@ -182,8 +182,8 @@ int KviKvsScript::run(KviWindow * pWnd, KviKvsVariantList * pParams, KviKvsVaria
 	if(!m_pData->m_pTree)
 	{
 		//g_iTreeCacheMisses++;
-		//debug("CREATING TREE FOR SCRIPT %s",name().latin1());
-		//debug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
+		//qDebug("CREATING TREE FOR SCRIPT %s",name().latin1());
+		//qDebug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
 		if(!parse(pWnd,iRunFlags))
 		{
 			if(pParams && !(iRunFlags & PreserveParams))
@@ -192,8 +192,8 @@ int KviKvsScript::run(KviWindow * pWnd, KviKvsVariantList * pParams, KviKvsVaria
 		}
 	} else {
 		//g_iTreeCacheHits++;
-		//debug("USING A CACHED TREE FOR SCRIPT %s",name().latin1());
-		//debug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
+		//qDebug("USING A CACHED TREE FOR SCRIPT %s",name().latin1());
+		//qDebug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
 	}
 
 	return execute(pWnd,pParams,pRetVal,iRunFlags,pExtData);
@@ -204,14 +204,14 @@ int KviKvsScript::run(KviKvsRunTimeContext * pContext, int iRunFlags)
 	if(!m_pData->m_pTree)
 	{
 		//g_iTreeCacheMisses++;
-		//debug("CREATING TREE FOR SCRIPT %s",name().latin1());
-		//debug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
+		//qDebug("CREATING TREE FOR SCRIPT %s",name().latin1());
+		//qDebug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
 		if(!parse(pContext->window(),iRunFlags))
 			return Error;
 	} else {
 		//g_iTreeCacheHits++;
-		//debug("USING A CACHED TREE FOR SCRIPT %s",name().latin1());
-		//debug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
+		//qDebug("USING A CACHED TREE FOR SCRIPT %s",name().latin1());
+		//qDebug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
 	}
 
 	int iRet;
@@ -244,7 +244,7 @@ bool KviKvsScript::parse(KviWindow * pOutput, int iRunFlags)
 			if(m_pData->m_uLock)
 			{
 				// ops... someone is locked in THIS script object
-				debug("WARNING: Trying to reparse a locked KviKvsScript!");
+				qDebug("WARNING: Trying to reparse a locked KviKvsScript!");
 				return false;
 			}
 			if(m_pData->m_pTree)
@@ -274,9 +274,9 @@ bool KviKvsScript::parse(KviWindow * pOutput, int iRunFlags)
 		break;
 	}
 
-	//debug("\n\nDUMPING SCRIPT");
+	//qDebug("\n\nDUMPING SCRIPT");
 	//dump("");
-	//debug("END OF SCRIPT DUMP\n\n");
+	//qDebug("END OF SCRIPT DUMP\n\n");
 
 	return !p.error();
 }

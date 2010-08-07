@@ -65,7 +65,7 @@ bool KviKvsTreeNodeConstantData::convertStringConstantToNumeric()
 
 void KviKvsTreeNodeConstantData::dump(const char * prefix)
 {
-	debug("%s ConstantData",prefix);
+	qDebug("%s ConstantData",prefix);
 	QString tmp = prefix;
 	tmp.prepend("  ");
 	m_pValue->dump(tmp.toUtf8().data());

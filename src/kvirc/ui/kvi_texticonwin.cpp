@@ -154,7 +154,7 @@ void KviTextIconWindow::cellSelected(int row, int column)
 {
 	if(m_pTable->cellWidget(row, column))
 	{
-//		debug("%i %i %i %s",m_pOwner->inherits("KviInputEditor"),m_pOwner->inherits("KviInput"),m_pOwner->inherits("QLineEdit"),m_pOwner->className());
+//		qDebug("%i %i %i %s",m_pOwner->inherits("KviInputEditor"),m_pOwner->inherits("KviInput"),m_pOwner->inherits("QLineEdit"),m_pOwner->className());
 		QString szItem(m_pTable->cellWidget(row, column)->toolTip());
 		szItem.append(' ');
 

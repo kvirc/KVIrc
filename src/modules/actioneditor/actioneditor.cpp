@@ -405,7 +405,7 @@ void KviSingleActionEditor::setActionData(KviActionData * d)
 		unsigned int uOldFlags = d->m_uFlags;
 		d->m_uFlags = KviAction::validateFlags(d->m_uFlags);
 		if(d->m_uFlags != uOldFlags)
-			debug("invalid action flags in KviSingleActionEditor::setActionData(): %d fixed to %d",uOldFlags,d->m_uFlags);
+			qDebug("invalid action flags in KviSingleActionEditor::setActionData(): %d fixed to %d",uOldFlags,d->m_uFlags);
 
 		m_pNameEdit->setText(d->m_szName);
 		m_pNameEdit->setEnabled(true);
@@ -581,7 +581,7 @@ void KviSingleActionEditor::commit()
 	unsigned int uOldFlags = m_pActionData->m_uFlags;
 	m_pActionData->m_uFlags = KviAction::validateFlags(m_pActionData->m_uFlags);
 	if(m_pActionData->m_uFlags != uOldFlags)
-		debug("invalid action flags in KviSingleActionEditor::commit(): %d fixed to %d",uOldFlags,m_pActionData->m_uFlags);
+		qDebug("invalid action flags in KviSingleActionEditor::commit(): %d fixed to %d",uOldFlags,m_pActionData->m_uFlags);
 }
 
 

@@ -69,7 +69,7 @@ namespace KviFileUtils
 		}
 		if(ch == 0)
 		{
-			debug("Warning : %s is not an ascii file",f->name().latin1());
+			qDebug("Warning : %s is not an ascii file",f->name().latin1());
 		}
 		if(cur_len > 0)
 		{
@@ -122,7 +122,7 @@ namespace KviFileUtils
 			{
 				if(!d.mkdir(szCreatedDir))
 				{
-					debug("Can't create directory %s",KviQString::toUtf8(szCreatedDir).data());
+					qDebug("Can't create directory %s",KviQString::toUtf8(szCreatedDir).data());
 					return false;
 				}
 			}
@@ -194,7 +194,7 @@ namespace KviFileUtils
 		{
 			QByteArray ba = f.readAll();
 			szBuffer = QString::fromUtf8(ba.data(),ba.size());
-			//debug("BUFFERLEN: %d",szBuffer.length());
+			//qDebug("BUFFERLEN: %d",szBuffer.length());
 		} else {
 			szBuffer = QString(f.readAll());
 		}

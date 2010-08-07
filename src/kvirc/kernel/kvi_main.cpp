@@ -95,7 +95,7 @@ int parseArgs(ParseArgs * a)
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			MessageBox(0,szMessage.toLocal8Bit().data(),"KVIrc",0);
 #else
-			debug("%s",szMessage.toLocal8Bit().data());
+			qDebug("%s",szMessage.toLocal8Bit().data());
 #endif
 
 			return KVI_ARGS_RETCODE_STOP;
@@ -143,7 +143,7 @@ int parseArgs(ParseArgs * a)
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			MessageBox(0,szMessage.toLocal8Bit().data(),"KVIrc",0);
 #else
-			debug("%s",szMessage.toLocal8Bit().data());
+			qDebug("%s",szMessage.toLocal8Bit().data());
 #endif
 			return KVI_ARGS_RETCODE_STOP;
 		}
@@ -153,12 +153,12 @@ int parseArgs(ParseArgs * a)
 			idx++;
 			if(idx >= a->argc)
 			{
-				debug("Option -c requires a config file name");
+				qDebug("Option -c requires a config file name");
 				return KVI_ARGS_RETCODE_ERROR;
 			}
 			p = a->argv[idx];
 			a->configFile = p;
-			debug("Using file %s as config",p);
+			qDebug("Using file %s as config",p);
 			continue;
 		}
 
@@ -167,7 +167,7 @@ int parseArgs(ParseArgs * a)
 			idx++;
 			if(idx >= a->argc)
 			{
-				debug("Option -e requires a command");
+				qDebug("Option -e requires a command");
 				return KVI_ARGS_RETCODE_ERROR;
 			}
 			p = a->argv[idx];
@@ -181,7 +181,7 @@ int parseArgs(ParseArgs * a)
 			idx++;
 			if(idx >= a->argc)
 			{
-				debug("Option -x requires a command");
+				qDebug("Option -x requires a command");
 				return KVI_ARGS_RETCODE_ERROR;
 			}
 			p = a->argv[idx];
@@ -196,7 +196,7 @@ int parseArgs(ParseArgs * a)
 			idx++;
 			if(idx >= a->argc)
 			{
-				debug("Option -r requires a command");
+				qDebug("Option -r requires a command");
 				return KVI_ARGS_RETCODE_ERROR;
 			}
 			p = a->argv[idx];
@@ -216,13 +216,13 @@ int parseArgs(ParseArgs * a)
 			idx++;
 			if(idx >= a->argc)
 			{
-				debug("Option -n requires a config file name");
+				qDebug("Option -n requires a config file name");
 				return KVI_ARGS_RETCODE_ERROR;
 			}
 			p = a->argv[idx];
 			a->configFile = p;
 			a->createFile=true;
-			debug("Using file %s as config",p);
+			qDebug("Using file %s as config",p);
 			continue;
 		}
 
@@ -250,7 +250,7 @@ int parseArgs(ParseArgs * a)
 			idx++;
 			if(idx >= a->argc)
 			{
-				debug("Option --external requires n irc:// url");
+				qDebug("Option --external requires n irc:// url");
 				return KVI_ARGS_RETCODE_ERROR;
 			}
 			p = a->argv[idx];
@@ -431,7 +431,7 @@ int main(int argc, char ** argv)
 				{
 					QMessageBox::information(0,"Session - KVIrc",szTmp.ptr(),QMessageBox::Ok);
 				} else {
-					debug("%s",szTmp.ptr());
+					qDebug("%s",szTmp.ptr());
 				}
 			}
 			delete pTheApp;

@@ -1930,12 +1930,12 @@ bool KviDccFileTransfer::event(QEvent *e)
 			}
 			break;
 			default:
-				debug("Invalid event type %d received",((KviThreadEvent *)e)->id());
+				qDebug("Invalid event type %d received",((KviThreadEvent *)e)->id());
 			break;
 		}
 	}
 //#warning "Remove this!"
-//	if(e->type() == QEvent::Close)debug("Close event received");
+//	if(e->type() == QEvent::Close)qDebug("Close event received");
 	return KviFileTransfer::event(e);
 }
 

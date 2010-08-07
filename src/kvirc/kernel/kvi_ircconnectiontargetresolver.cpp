@@ -224,7 +224,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 
 			if(m_pProxyDns)
 			{
-				debug("Something weird is happening, m_pProxyDns is non-zero in lookupProxyHostname()");
+				qDebug("Something weird is happening, m_pProxyDns is non-zero in lookupProxyHostname()");
 				delete m_pProxyDns;
 				m_pProxyDns = 0;
 			}
@@ -342,7 +342,7 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 		} else {
 			if(m_pServerDns)
 			{
-				debug("Something weird is happening, m_pServerDns is non-zero in lookupServerHostname()");
+				qDebug("Something weird is happening, m_pServerDns is non-zero in lookupServerHostname()");
 				delete m_pServerDns;
 				m_pServerDns = 0;
 			}

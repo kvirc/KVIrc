@@ -77,7 +77,7 @@ void KviKvsDnsManager::init()
 {
 	if(KviKvsDnsManager::m_pInstance)
 	{
-		debug("Trying to double init() the dns manager!");
+		qDebug("Trying to double init() the dns manager!");
 		return;
 	}
 	KviKvsDnsManager::m_pInstance = new KviKvsDnsManager();
@@ -87,7 +87,7 @@ void KviKvsDnsManager::done()
 {
 	if(!KviKvsDnsManager::m_pInstance)
 	{
-		debug("Trying to call done() on a non existing dns manager!");
+		qDebug("Trying to call done() on a non existing dns manager!");
 		return;
 	}
 	delete KviKvsDnsManager::m_pInstance;
@@ -110,7 +110,7 @@ void KviKvsDnsManager::dnsLookupTerminated(KviDns * pDns)
 	KviKvsDnsObject * o = m_pDnsObjects->find(pDns);
 	if(!o)
 	{
-		debug("KviKvsDnsManager::dnsLookupTerminated(): can't find the KviKvsDnsObject structure");
+		qDebug("KviKvsDnsManager::dnsLookupTerminated(): can't find the KviKvsDnsObject structure");
 		return;
 	}
 

@@ -309,7 +309,7 @@ void KviRawEditor::commit()
 			for (int j=0;j<it->childCount();j++)
 			{
 				ch=(QTreeWidgetItem *)it->child(j);
-				debug("Commit handler %s",((KviRawHandlerTreeWidgetItem *)ch)->text(0).toUtf8().data());
+				qDebug("Commit handler %s",((KviRawHandlerTreeWidgetItem *)ch)->text(0).toUtf8().data());
 				//int a=(KviRawTreeWidgetItem *)it)->m_iIdx;
 				KviQString::sprintf(szContext,"RawEvent%d::%s",&(((KviRawTreeWidgetItem *)it)->m_iIdx),(((KviRawHandlerTreeWidgetItem *)ch)->text(0)).toUtf8().data());
 				KviKvsScriptEventHandler * s = new KviKvsScriptEventHandler(
@@ -333,11 +333,11 @@ void KviRawEditor::saveLastEditedItem()
 	if(!m_pLastEditedItem)return;
 
 	QString buffer = m_pNameEditor->text();
-	debug("Check lineedit name %s and internal %s",buffer.toUtf8().data(),m_pLastEditedItem->text(0).toUtf8().data());
+	qDebug("Check lineedit name %s and internal %s",buffer.toUtf8().data(),m_pLastEditedItem->text(0).toUtf8().data());
 	if(!KviQString::equalCI(buffer,m_pLastEditedItem->text(0)))
 	{
 		getUniqueHandlerName((KviRawTreeWidgetItem *)(m_pLastEditedItem->parent()),buffer);
-		debug("Change name %s",buffer.toUtf8().data());
+		qDebug("Change name %s",buffer.toUtf8().data());
 	}
 
 	m_pLastEditedItem->setName(buffer);
@@ -537,7 +537,7 @@ void KviRawEditorWindow::saveProperties(KviConfig *)
 	#ifdef COMPILE_SCRIPTTOOLBAR
 		cfg->writeEntry("Sizes",m_pEditor->sizes());
 		cfg->writeEntry("LastRaw",m_pEditor->lastEditedRaw().ptr());
-		//debug("LAST EDITED=%s",m_pEditor->lastEditedRaw().ptr());
+		//qDebug("LAST EDITED=%s",m_pEditor->lastEditedRaw().ptr());
 	#endif // COMPILE_SCRIPTTOOLBAR
 	*/
 }
@@ -552,7 +552,7 @@ void KviRawEditorWindow::loadProperties(KviConfig *)
 		m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
 		KviStr tmp = cfg->readEntry("LastRaw","");
 		m_pEditor->editRaw(tmp);
-		//debug("LAST EDITED WAS %s",tmp.ptr());
+		//qDebug("LAST EDITED WAS %s",tmp.ptr());
 	#endif // COMPILE_SCRIPTTOOLBAR
 	*/
 }

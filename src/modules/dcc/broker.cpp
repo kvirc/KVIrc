@@ -130,7 +130,7 @@ void KviDccBroker::unregisterDccWindow(KviWindow *wnd)
 
 void KviDccBroker::unregisterDccBox(KviDccBox * box)
 {
-	//debug("Forgetting box %d",box);
+	//qDebug("Forgetting box %d",box);
 	m_pBoxList->removeRef(box);
 }
 
@@ -949,7 +949,7 @@ bool KviDccBroker::handleResumeAccepted(const char * filename,const char * port,
 
 bool KviDccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename,const char * port,unsigned long filePos,const char * szZeroPortTag)
 {
-	//debug("HANDLE %s %s %u %s",filename,port,filePos,szZeroPortTag);
+	//qDebug("HANDLE %s %s %u %s",filename,port,filePos,szZeroPortTag);
 	// the zeroPOrtTag is nonempty here only if port == 0
 	if(kvi_strEqualCI("0",port) && szZeroPortTag)
 	{
@@ -981,7 +981,7 @@ bool KviDccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename
 			return true;
 		}
 	}
-	//debug("NOT A ZeRO PORT");
+	//qDebug("NOT A ZeRO PORT");
 
 	return KviDccFileTransfer::handleResumeRequest(filename,port,filePos);
 }

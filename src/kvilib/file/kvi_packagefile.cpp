@@ -866,7 +866,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 					}
 				} else {
 					//THIS HAPPENS FOR ZERO SIZE FILES
-					debug("hum.... internal, rEWq (ret = %d) (avail_out = %d)",ret,zstr.avail_out);
+					qDebug("hum.... internal, rEWq (ret = %d) (avail_out = %d)",ret,zstr.avail_out);
 
 					inflateEnd(&zstr);
 					setLastError(__tr2qs("Compression library internal error"));

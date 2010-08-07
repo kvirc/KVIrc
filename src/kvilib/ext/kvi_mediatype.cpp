@@ -259,7 +259,7 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckM
 	if(lstat(szFullPath.ptr(),&st) != 0)
 #endif
 	{
-		//debug("Problems while stating file %s",szFullPath.ptr());
+		//qDebug("Problems while stating file %s",szFullPath.ptr());
 		// We do just the pattern matching
 		// it's better to avoid magic checks
 		// if the file is a device , we would be blocked while attempting to read data
@@ -271,7 +271,7 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckM
 		{
 			if(stat(szFullPath.ptr(),&st) != 0)
 			{
-				debug("Problems while stating() target for link %s",szFullPath.ptr());
+				qDebug("Problems while stating() target for link %s",szFullPath.ptr());
 				// Same as above
 				return findMediaTypeForRegularFile(szFullPath.ptr(),szFile.ptr(),false);
 			}

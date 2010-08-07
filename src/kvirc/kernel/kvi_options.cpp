@@ -1073,7 +1073,7 @@ namespace KviTheme
 						cfg.writeEntry(g_pixmapOptionsTable[i].name,szPixName);
 					} else {
 						// we ignore this error for now
-						debug("failed to save %s",szPixPath.toUtf8().data());
+						qDebug("failed to save %s",szPixPath.toUtf8().data());
 						cfg.writeEntry(g_pixmapOptionsTable[i].name,"");
 					}
 				} else {

@@ -250,7 +250,7 @@ void KviApp::setup()
 	getGlobalKvircDirectory(szPluginsDir,None,"qt-plugins/");
 	setLibraryPaths(QStringList(szPluginsDir));
 	//KviMessageBox::information(libraryPaths().join(";"));
-	//debug("%1",loader.isLoaded());
+	//qDebug("%1",loader.isLoaded());
 #endif
 
 	// check if we want to permanently disable the splash screen
@@ -274,7 +274,7 @@ void KviApp::setup()
 	if(pUTF8Codec)
 		QTextCodec::setCodecForCStrings(pUTF8Codec);
 	else
-		debug("Aaargh... have no UTF-8 codec?");
+		qDebug("Aaargh... have no UTF-8 codec?");
 
 	QString tmp;
 /*
@@ -712,7 +712,7 @@ void KviApp::notifierMessage(KviWindow * pWnd,int iIconId,const QString &szMsg,u
 		if(reply.type() == QDBusMessage::ErrorMessage)
 		{
 			QDBusError err = reply;
-			debug("DBus notify error\nID: %u\nName: %s\nMessage: %s\n",reply.arguments().first().toUInt(),qPrintable(err.name()),qPrintable(err.message()));
+			qDebug("DBus notify error\nID: %u\nName: %s\nMessage: %s\n",reply.arguments().first().toUInt(),qPrintable(err.name()),qPrintable(err.message()));
 		}
 	} else {
 #endif
@@ -742,7 +742,7 @@ QTextCodec * KviApp::defaultTextCodec()
 	c = QTextCodec::codecForLocale();
 	if(c)return c;
 	c = KviLocale::codecForName("UTF-8");
-	if(!c)debug("KviApp::defaultTextCodec(): cannot find a suitable text codec for locale :/");
+	if(!c)qDebug("KviApp::defaultTextCodec(): cannot find a suitable text codec for locale :/");
 	return c;
 }
 
@@ -757,7 +757,7 @@ QTextCodec * KviApp::defaultSrvCodec()
 	c = QTextCodec::codecForLocale();
 	if(c)return c;
 	c = KviLocale::codecForName("UTF-8");
-	if(!c)debug("KviApp::defaultSrcCodec(): cannot find a suitable text codec for locale :/");
+	if(!c)qDebug("KviApp::defaultSrcCodec(): cannot find a suitable text codec for locale :/");
 	return c;
 }
 

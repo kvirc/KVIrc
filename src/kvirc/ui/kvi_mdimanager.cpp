@@ -553,7 +553,7 @@ void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds
 
 	if(xQuantum < ((lpTop->minimumSize().width() > KVI_MDICHILD_MIN_WIDTH) ? lpTop->minimumSize().width() : KVI_MDICHILD_MIN_WIDTH))
 	{
-		if (pColrecall[numToHandle-1] == 0) debug("Tile : Not enouh space");
+		if (pColrecall[numToHandle-1] == 0) qDebug("Tile : Not enouh space");
 			else tileAllInternal(pColrecall[numToHandle-1], bHorizontal);
 		return;
 	}
@@ -562,7 +562,7 @@ void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds
 
 	if(yQuantum < ((lpTop->minimumSize().height() > KVI_MDICHILD_MIN_HEIGHT) ? lpTop->minimumSize().height() : KVI_MDICHILD_MIN_HEIGHT))
 	{
-		if (pRowrecall[numToHandle-1] == 0) debug("Tile : Not enough space");
+		if (pRowrecall[numToHandle-1] == 0) qDebug("Tile : Not enough space");
 			else tileAllInternal(pRowrecall[numToHandle-1], bHorizontal);
 		return;
 	}

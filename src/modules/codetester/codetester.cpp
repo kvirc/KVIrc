@@ -120,7 +120,7 @@ void KviCodeTesterWindow::saveProperties(KviConfig *) //cfg
 #ifdef COMPILE_SCRIPTTOOLBAR
 	cfg->writeEntry("Sizes",m_pEditor->sizes());
 	cfg->writeEntry("LastRaw",m_pEditor->lastEditedRaw().ptr());
-	//debug("LAST EDITED=%s",m_pEditor->lastEditedRaw().ptr());
+	//qDebug("LAST EDITED=%s",m_pEditor->lastEditedRaw().ptr());
 #endif // COMPILE_SCRIPTTOOLBAR
 */
 }
@@ -135,7 +135,7 @@ void KviCodeTesterWindow::loadProperties(KviConfig *) //cfg
 	m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
 	KviStr tmp = cfg->readEntry("LastRaw","");
 	m_pEditor->editRaw(tmp);
-	//debug("LAST EDITED WAS %s",tmp.ptr());
+	//qDebug("LAST EDITED WAS %s",tmp.ptr());
 #endif // COMPILE_SCRIPTTOOLBAR
 */
 }

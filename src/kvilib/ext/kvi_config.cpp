@@ -646,14 +646,14 @@ QList<int> KviConfig::readIntListEntry(const QString & szKey,const QList<int> &l
 	QString * p_str = p_group->find(szKey);
 	if(!p_str)
 	{
-		//debug("Returning default list for group %s and key %s",m_szGroup.latin1(),szKey.latin1());
+		//qDebug("Returning default list for group %s and key %s",m_szGroup.latin1(),szKey.latin1());
 		return list;
 	}
 
 	QStringList sl = p_str->split(",");
 	QList<int> ret;
 
-	//debug("Got option list for group %s and key %s: %s",m_szGroup.latin1(),szKey.latin1(),p_str->latin1());
+	//qDebug("Got option list for group %s and key %s: %s",m_szGroup.latin1(),szKey.latin1(),p_str->latin1());
 
 	for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
 	{
@@ -676,7 +676,7 @@ void KviConfig::writeEntry(const QString & szKey,const QList<int> &list)
 		if(szData.hasData())szData.append(',');
 		szData.append(KviStr::Format,"%d",*it);
 	}
-	//debug("Writing option list for group %s and key %s: %s",m_szGroup.latin1(),szKey.latin1(),szData.ptr());
+	//qDebug("Writing option list for group %s and key %s: %s",m_szGroup.latin1(),szKey.latin1(),szData.ptr());
 
 	p_group->replace(szKey,new QString(szData.ptr()));
 }

@@ -470,7 +470,7 @@ bool KviScriptEditorWidget::contextSensitiveHelp() const
 	} else {
 		pList = g_pUserParser->completeCommandAllocateResult(szTmp);
 	}
-	debug ("command or func %s",szTmp.toUtf8().data());
+	qDebug("command or func %s",szTmp.toUtf8().data());
 
 	bool bOk = false;
 	if(pList)
@@ -490,7 +490,7 @@ bool KviScriptEditorWidget::contextSensitiveHelp() const
 
 	QString szParse;
 	KviQString::sprintf(szParse,"timer -s (help,0){ help -s %Q; }",&szBuffer);
-	debug ("parsing %s",szParse.toLatin1());
+	qDebug("parsing %s",szParse.toLatin1());
 	KviKvsScript::run(szParse,(KviWindow*)g_pApp->activeConsole());
 	*/
 

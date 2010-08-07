@@ -433,7 +433,7 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 	int iOldFlags = iFlags;
 	iFlags = KviAction::validateFlags(iFlags);
 	if(iFlags != iOldFlags)
-		debug("action.validate has provided invalid flags: %d fixed to %d",iOldFlags,iFlags);
+		qDebug("action.validate has provided invalid flags: %d fixed to %d",iOldFlags,iFlags);
 
 	KviKvsUserAction * a = KviKvsUserAction::createInstance(KviActionManager::instance(),
 		szName,szCmd,szVisibleText,

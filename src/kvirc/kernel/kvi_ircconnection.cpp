@@ -1087,7 +1087,7 @@ void KviIrcConnection::trySTARTTLS()
 {
 	// Check if the server supports STARTTLS protocol and we want to
 	// connect through it
-	//debug("Sending STARTTLS command...");
+	//qDebug("Sending STARTTLS command...");
 	if(!sendFmtData("STARTTLS"))
 	{
 		// Cannot send command
@@ -1103,7 +1103,7 @@ void KviIrcConnection::enableStartTlsSupport(bool bEnable)
 	{
 		// Ok, the server supports STARTTLS protocol
 		// ssl handshake e switch del socket
-		//debug("Starting SSL handshake...");
+		//qDebug("Starting SSL handshake...");
 		link()->socket()->enterSSLMode(); // FIXME: this should be forwarded through KviIrcLink, probably
 	} else {
 		// The server does not support STARTTLS

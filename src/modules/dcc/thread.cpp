@@ -43,7 +43,7 @@ KviDccThread::KviDccThread(QObject * par,kvi_socket_t fd)
 	m_fd          = fd;
 	m_pMutex      = new KviMutex();
 #ifdef COMPILE_SSL_SUPPORT
-//	debug("CLEARING SSL IN KviDccThread constructor");
+//	qDebug("CLEARING SSL IN KviDccThread constructor");
 	m_pSSL        = 0;
 #endif
 }

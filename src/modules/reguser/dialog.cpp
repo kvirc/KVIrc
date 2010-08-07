@@ -887,7 +887,7 @@ void KviRegisteredUsersDialog::importClicked()
 			img=io.read();
 //			if(io.read())goto read_error;
 
-			if(img.isNull())debug("Ops.. readed a null image ?");
+			if(img.isNull())qDebug("Ops.. readed a null image ?");
 
 			QString fName = u->name();
 			KviFileUtils::adjustFilePath(fName);
@@ -903,7 +903,7 @@ void KviRegisteredUsersDialog::importClicked()
 
 			if(!img.save(fPath,"PNG"))
 			{
-				debug("Can't save image %s",fPath.toUtf8().data());
+				qDebug("Can't save image %s",fPath.toUtf8().data());
 			} else {
 				u->setProperty("avatar",fPath);
 			}

@@ -443,7 +443,7 @@ void KviNotifierWindow::heartbeat()
 			targetOpacity/=100;
 			bIncreasing = targetOpacity>m_dOpacity;
 			m_dOpacity += bIncreasing ? OPACITY_STEP : -(OPACITY_STEP);
-			//debug("%f %f %i %i",m_dOpacity,targetOpacity,bIncreasing,(m_dOpacity >= targetOpacity));
+			//qDebug("%f %f %i %i",m_dOpacity,targetOpacity,bIncreasing,(m_dOpacity >= targetOpacity));
 			if( (bIncreasing && (m_dOpacity >= targetOpacity) ) ||
 				(!bIncreasing && (m_dOpacity <= targetOpacity) )
 				)
@@ -504,13 +504,13 @@ void KviNotifierWindow::doHide(bool bDoAnimate)
 		if((!bDoAnimate) || (x() != m_pWndBorder->x()) || (y() != m_pWndBorder->y()))
 		{
 
-			//debug ("just hide quickly with notifier x() %d and notifier y() % - WBorderx() %d and WBordery() %d and bDoanimate %d",x(),y(),m_pWndBorder->x(),m_pWndBorder->y(),bDoAnimate);
+			//qDebug("just hide quickly with notifier x() %d and notifier y() % - WBorderx() %d and WBordery() %d and bDoanimate %d",x(),y(),m_pWndBorder->x(),m_pWndBorder->y(),bDoAnimate);
 			// the user asked to not animate or
 			// the window has been moved and the animation would suck anyway
 			// just hide quickly
 			hideNow();
 		} else {
-			//debug ("starting hide animation notifier x() %d and notifier y() % - WBorderx() %d and WBordery() %d and bDoanimate %d",x(),y(),m_pWndBorder->x(),m_pWndBorder->y(),bDoAnimate);
+			//qDebug("starting hide animation notifier x() %d and notifier y() % - WBorderx() %d and WBordery() %d and bDoanimate %d",x(),y(),m_pWndBorder->x(),m_pWndBorder->y(),bDoAnimate);
 			m_pShowHideTimer = new QTimer();
 			connect(m_pShowHideTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
 			m_dOpacity = 1.0 - OPACITY_STEP;
@@ -629,7 +629,7 @@ void KviNotifierWindow::paintEvent(QPaintEvent *e)
 
 void KviNotifierWindow::mouseMoveEvent(QMouseEvent * e)
 {
-	//debug ("move on x,y: %d,%d", e->pos().x(), e->pos().y());
+	//qDebug("move on x,y: %d,%d", e->pos().x(), e->pos().y());
 
 	if (!m_bLeftButtonIsPressed) {
 
@@ -696,9 +696,9 @@ void KviNotifierWindow::mousePressEvent(QMouseEvent * e)
 	if(checkResizing(m_pntClick)) goto sartelo;
 
 	if(m_pWndBorder->captionRect().contains(e->pos())) {
-		//debug ("Clicked on m_pWndBorder->rect()");
+		//qDebug("Clicked on m_pWndBorder->rect()");
 		if(m_pWndBorder->closeRect().contains(e->pos()))	{
-			//debug ("\tClicked on m_pWndBorder->closeRect()");
+			//qDebug("\tClicked on m_pWndBorder->closeRect()");
 			m_bCloseDown = true;
 			m_pWndBorder->setCloseIcon(WDG_ICON_CLICKED);
 			goto sartelo;
@@ -712,7 +712,7 @@ void KviNotifierWindow::mousePressEvent(QMouseEvent * e)
 		}
 	}
 
-	//debug ("x,y: %d,%d - width,height: %d,%d", m_pWndBorder->rect().x(),m_pWndBorder->rect().y(),m_pWndBorder->rect().width(),m_pWndBorder->rect().height());
+	//qDebug("x,y: %d,%d - width,height: %d,%d", m_pWndBorder->rect().x(),m_pWndBorder->rect().y(),m_pWndBorder->rect().width(),m_pWndBorder->rect().height());
 
 	if (m_pWndBorder->rect().contains(e->pos())) {
 		goto sartelo;
@@ -744,7 +744,7 @@ void KviNotifierWindow::mouseReleaseEvent(QMouseEvent * e)
 	if(m_pWndBorder->captionRect().contains(e->pos())) {
 
 		if(m_pWndBorder->closeRect().contains(e->pos())) {
-			//debug ("hide now from release event");
+			//qDebug("hide now from release event");
 			hideNow();
 		} else {
 			update();

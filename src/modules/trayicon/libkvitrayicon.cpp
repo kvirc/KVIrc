@@ -224,7 +224,7 @@ bool KviTrayIcon::event(QEvent *e)
 
 //int KviTrayIcon::message(int,void *)
 //{
-//	debug("Message");
+//	qDebug("Message");
 //	update();
 //	return 0;
 //}

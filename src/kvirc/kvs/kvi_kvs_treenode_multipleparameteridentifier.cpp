@@ -48,8 +48,8 @@ void KviKvsTreeNodeMultipleParameterIdentifier::contextDescription(QString &szBu
 
 void KviKvsTreeNodeMultipleParameterIdentifier::dump(const char * prefix)
 {
-	if(m_iEnd < m_iStart)debug("%s MultipleParameterIdentifier(%d-)",prefix,m_iStart);
-	else debug("%s MultipleParameterIdentifier(%d-%d)",prefix,m_iStart,m_iEnd);
+	if(m_iEnd < m_iStart)qDebug("%s MultipleParameterIdentifier(%d-)",prefix,m_iStart);
+	else qDebug("%s MultipleParameterIdentifier(%d-%d)",prefix,m_iStart,m_iEnd);
 }
 
 bool KviKvsTreeNodeMultipleParameterIdentifier::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)

@@ -102,7 +102,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		QString szNum1(pBegin,KVSP_curCharPointer - pBegin);
 		bool bOk;
 		int iNum1 = szNum1.toInt(&bOk);
-		if(!bOk)debug("Ops... a non-number made by numbers ?");
+		if(!bOk)qDebug("Ops... a non-number made by numbers ?");
 
 		if(KVSP_curCharUnicode != '-')
 		{
@@ -132,7 +132,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 
 		QString szNum2(pBegin,KVSP_curCharPointer - pBegin);
 		int iNum2 = szNum2.toInt(&bOk);
-		if(!bOk)debug("Ops... a non-number made by numbers (2) ?");
+		if(!bOk)qDebug("Ops... a non-number made by numbers (2) ?");
 
 		if(iNum1 < iNum2)return new KviKvsTreeNodeMultipleParameterIdentifier(pDollarBegin,iNum1,iNum2);
 		else {

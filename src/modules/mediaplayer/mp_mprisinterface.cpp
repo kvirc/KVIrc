@@ -89,7 +89,7 @@ int KviMPRISInterface::detect(bool)
 	QDBusMessage reply = dbus_iface.call(QDBus::Block, __action); \
 	if (reply.type() == QDBusMessage::ErrorMessage) { \
 		QDBusError err = reply; \
-		debug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
+		qDebug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
 		return FALSE; \
 	} \
 	return TRUE;
@@ -130,7 +130,7 @@ bool KviMPRISInterface::quit()
 	QDBusMessage reply = dbus_iface.call(QDBus::Block, __method); \
 	if (reply.type() == QDBusMessage::ErrorMessage) { \
 		QDBusError err = reply; \
-		debug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
+		qDebug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
 		return __return_if_fail; \
 	}
 
@@ -157,7 +157,7 @@ bool KviMPRISInterface::quit()
         QDBusMessage reply = dbus_iface.call(QDBus::Block, __method, __arg); \
         if (reply.type() == QDBusMessage::ErrorMessage) { \
                 QDBusError err = reply; \
-                debug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
+                qDebug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
                 return __return_if_fail; \
         }
 

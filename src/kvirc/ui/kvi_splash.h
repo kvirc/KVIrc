@@ -49,7 +49,7 @@
 	if(g_pSplashScreen) \
 		g_pSplashScreen->setProgress(__val);
 
-//#define KVI_SPLASH_SET_TEXT(__txt) if(g_pSplashScreen){ g_pSplashScreen->message(__txt); debug(__txt.latin1()); }
+//#define KVI_SPLASH_SET_TEXT(__txt) if(g_pSplashScreen){ g_pSplashScreen->message(__txt); qDebug(__txt.latin1()); }
 
 /**
 * \class KviSplashScreen

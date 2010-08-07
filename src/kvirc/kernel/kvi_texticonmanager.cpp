@@ -240,7 +240,7 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 			int iId = cfg.readIntEntry(*s,-1);
 			QString szTmp;
 			QPixmap * pix = 0;
-			//debug("%s %s %i %i",__FILE__,__FUNCTION__,__LINE__,id);
+			//qDebug("%s %s %i %i",__FILE__,__FUNCTION__,__LINE__,id);
 			if(iId != -1)
 			{
 				pix = g_pIconManager->getSmallIcon(iId);

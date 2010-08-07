@@ -105,7 +105,7 @@ void KviKvsEventManager::init()
 {
 	if(KviKvsEventManager::instance())
 	{
-		debug("WARNING: Trying to create KviKvsEventManager twice!");
+		qDebug("WARNING: Trying to create KviKvsEventManager twice!");
 		return;
 	}
 	(void) new KviKvsEventManager();
@@ -115,7 +115,7 @@ void KviKvsEventManager::done()
 {
 	if(!KviKvsEventManager::instance())
 	{
-		debug("WARNING: Trying to destroy the KviKvsEventManager twice!");
+		qDebug("WARNING: Trying to destroy the KviKvsEventManager twice!");
 		return;
 	}
 	delete KviKvsEventManager::instance();

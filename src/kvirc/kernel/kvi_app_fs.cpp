@@ -78,9 +78,9 @@ void KviApp::getGlobalKvircDirectory(QString &szData,KvircSubdir dir,const QStri
 		break;
 		case HelpEN        : KviQString::appendFormatted(szData,"help%sen",KVI_PATH_SEPARATOR);        break;
 		case HelpNoIntl    : szData.append("help");                                                    break;
-		case Log           : debug("WARNING Global log directory requested!");                         break;
-		case Incoming      : debug("WARNING Global incoming directory requested!");                    break;
-		case Trash         : debug("WARNING Global trash directory requested!");                       break;
+		case Log           : qDebug("WARNING Global log directory requested!");                         break;
+		case Incoming      : qDebug("WARNING Global incoming directory requested!");                    break;
+		case Trash         : qDebug("WARNING Global trash directory requested!");                       break;
 		case Config        : szData.append("config");                                                  break;
 		case Audio         : szData.append("audio");                                                   break;
 		case Scripts       : szData.append("scripts");                                                 break;
@@ -91,7 +91,7 @@ void KviApp::getGlobalKvircDirectory(QString &szData,KvircSubdir dir,const QStri
 		case License       : szData.append("license");                                                 break;
 		case Filters       : szData.append("filters");                                                 break;
 		case Locale        : szData.append("locale");                                                  break;
-		case Tmp           : debug("WARNING Global tmp directory requested!");                         break;
+		case Tmp           : qDebug("WARNING Global tmp directory requested!");                         break;
 		case Themes        : szData.append("themes");                                                  break;
 		case Classes       : szData.append("classes");                                                 break;
 		case SmallIcons    : szData.append("pics"KVI_PATH_SEPARATOR KVI_SMALLICONS_SUBDIRECTORY);      break;
@@ -321,7 +321,7 @@ bool KviApp::findImageInImageSearchPath(QString &szRetPath,const QString &filena
 		szRetPath = *it;
 		KviQString::ensureLastCharIs(szRetPath,KVI_PATH_SEPARATOR_CHAR);
 		szRetPath.append(filename);
-		//debug("LOOK FOR %s",szRetPath.ptr());
+		//qDebug("LOOK FOR %s",szRetPath.ptr());
 		if(KviFileUtils::fileExists(szRetPath))return true;
 	}
 
@@ -380,7 +380,7 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 		for(i=0;i<2;i++)
 		{
 			getGlobalKvircDirectory(szBuffer,pics_globalsubdirs[i],szRetPath);
-			//debug("CHECK %s",szBuffer.ptr());
+			//qDebug("CHECK %s",szBuffer.ptr());
 			if(KviFileUtils::fileExists(szBuffer))
 			{
 				QFileInfo fi2(szBuffer);
@@ -586,7 +586,7 @@ bool KviApp::getReadOnlyConfigPath(QString &buffer,const char *config_name,Kvirc
 {
 	// Take a look in the local directory....
 	getLocalKvircDirectory(buffer,sbd,config_name);
-	//debug("%s %s %i |%s| %i",__FILE__,__FUNCTION__,__LINE__,buffer.ptr(),KviFileUtils::fileExists(buffer.ptr()));
+	//qDebug("%s %s %i |%s| %i",__FILE__,__FUNCTION__,__LINE__,buffer.ptr(),KviFileUtils::fileExists(buffer.ptr()));
 	if(!KviFileUtils::fileExists(buffer))
 	{
 		// No saved config yet... check for defaults

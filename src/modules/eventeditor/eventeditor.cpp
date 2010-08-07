@@ -564,7 +564,7 @@ void KviEventEditorWindow::saveProperties(KviConfig *) //cfg
 #ifdef COMPILE_SCRIPTTOOLBAR
 	cfg->writeEntry("Sizes",m_pEditor->sizes());
 	cfg->writeEntry("LastEvent",m_pEditor->lastEditedEvent().ptr());
-	//debug("LAST EDITED=%s",m_pEditor->lastEditedEvent().ptr());
+	//qDebug("LAST EDITED=%s",m_pEditor->lastEditedEvent().ptr());
 #endif // COMPILE_SCRIPTTOOLBAR
 */
 }
@@ -579,7 +579,7 @@ void KviEventEditorWindow::loadProperties(KviConfig *) //cfg
 	m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
 	KviStr tmp = cfg->readEntry("LastEvent","");
 	m_pEditor->editEvent(tmp);
-	//debug("LAST EDITED WAS %s",tmp.ptr());
+	//qDebug("LAST EDITED WAS %s",tmp.ptr());
 #endif // COMPILE_SCRIPTTOOLBAR
 */
 }

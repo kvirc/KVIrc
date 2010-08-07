@@ -86,14 +86,14 @@ KVSO_CLASS_FUNCTION(memorybuffer,loadFromFile)
 	{
 
 		KviFile f(szFileName);
-		debug("loading file %s",szFileName.toUtf8().data());
+		qDebug("loading file %s",szFileName.toUtf8().data());
 		if (f.open(QIODevice::ReadOnly))
 		{
 			m_pBuffer->resize(f.size());
 			f.read(m_pBuffer->data(),f.size());
 			f.close();
 		}
-		else debug("Error in load file!");
+		else qDebug("Error in load file!");
 	}
 	else c->warning(__tr2qs_ctx("The file '%Q' does not exist","objects"),&szFileName);
 	return true;

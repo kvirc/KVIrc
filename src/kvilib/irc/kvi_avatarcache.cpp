@@ -42,7 +42,7 @@ void KviAvatarCache::init()
 {
 	if(m_pAvatarCacheInstance)
 	{
-		debug("WARNING: trying to initialize the avatar cache twice");
+		qDebug("WARNING: trying to initialize the avatar cache twice");
 		return;
 	}
 
@@ -53,7 +53,7 @@ void KviAvatarCache::done()
 {
 	if(!m_pAvatarCacheInstance)
 	{
-		debug("WARNING: trying to destroy an uninitialized avatar cache");
+		qDebug("WARNING: trying to destroy an uninitialized avatar cache");
 		return;
 	}
 

@@ -529,7 +529,7 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 			s->cutLeft(idx + 1);
 			s->trimmed();
 			hdr.replace(szName.ptr(),new KviStr(*s));
-			//debug("FOUND HEADER (%s)=(%s)",szName.ptr(),s->ptr());
+			//qDebug("FOUND HEADER (%s)=(%s)",szName.ptr(),s->ptr());
 		}
 	}
 
@@ -902,7 +902,7 @@ bool KviHttpRequestThread::processInternalEvents()
 			}
 			break;
 			default:
-				debug("Unrecognized event in http thread");
+				qDebug("Unrecognized event in http thread");
 				delete e;
 				return false;
 			break;
@@ -1417,7 +1417,7 @@ void KviHttpRequestThread::runInternal()
 		szRequest += "\r\n";
 	}
 
-	//debug("SENDING REQUEST:\n%s",szRequest.ptr());
+	//qDebug("SENDING REQUEST:\n%s",szRequest.ptr());
 
 	if(!sendBuffer(szRequest.ptr(),szRequest.len(),60))return;
 

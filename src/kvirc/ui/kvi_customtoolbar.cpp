@@ -241,11 +241,11 @@ void KviCustomToolBar::dragMoveEvent(QDragMoveEvent *e)
 
 	int iMe = -1;
 	int iIdx = dropIndexAt(e->pos(),m_pDraggedChild,&iMe);
-// 	debug("DROP INDEX IS %d, ME IS %d",iIdx,iMe);
+// 	qDebug("DROP INDEX IS %d, ME IS %d",iIdx,iMe);
 	if(iIdx == iMe) return; // would move over itself
 
 	QWidget * pWidgetToMove = widgetAt(iIdx > iMe ? iIdx+1 : iIdx);
-// 	debug("SEARCHING FOR WIDGET TO MOVE AT %d AND FOUND %x (ME=%x)",iIdx > iMe ? iIdx+1 : iIdx,pWidgetToMove,pChild);
+// 	qDebug("SEARCHING FOR WIDGET TO MOVE AT %d AND FOUND %x (ME=%x)",iIdx > iMe ? iIdx+1 : iIdx,pWidgetToMove,pChild);
 	if(pWidgetToMove == m_pDraggedChild)
 		return; // hmmm
 
@@ -261,7 +261,7 @@ void KviCustomToolBar::dragMoveEvent(QDragMoveEvent *e)
 		pAction = actionForWidget(pWidgetToMove);
 		if(pAction)
 		{
-// 			debug("AND GOT ACTION FOR THAT WIDGET\n");
+// 			qDebug("AND GOT ACTION FOR THAT WIDGET\n");
 
 			bDone = true;
 			pAction = insertWidget(pAction,m_pDraggedChild);

@@ -473,7 +473,7 @@ namespace KviKvsCoreFunctions
 			wnd = KVSCF_pContext->window();
 		}
 
-		//debug("CALLING $target on window %s",wnd->name());
+		//qDebug("CALLING $target on window %s",wnd->name());
 		QString szTa = wnd->target();
 
 

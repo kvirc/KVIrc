@@ -56,12 +56,12 @@ static bool editor_module_cleanup(KviModule *)
 		QObject * w = g_pScriptEditorWindowList->first()->parent();;
 		while(w)
 		{
-			//debug("%s %s %i %s",__FILE__,__FUNCTION__,__LINE__,w->className());
+			//qDebug("%s %s %i %s",__FILE__,__FUNCTION__,__LINE__,w->className());
 			if(w->inherits("KviWindow"))
 			{
-			//	debug("%s %s %i",__FILE__,__FUNCTION__,__LINE__);
+			//	qDebug("%s %s %i",__FILE__,__FUNCTION__,__LINE__);
 				//((KviWindow *)w)->close();
-			//	debug("%s %s %i",__FILE__,__FUNCTION__,__LINE__);
+			//	qDebug("%s %s %i",__FILE__,__FUNCTION__,__LINE__);
 				break;
 			}
 		w = w->parent();

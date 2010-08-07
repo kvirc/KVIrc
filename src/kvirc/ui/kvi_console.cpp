@@ -744,7 +744,7 @@ void KviConsole::outputPrivmsg(KviWindow *wnd,
 					szMsg += nick;
 					szMsg += "&gt;</b> ";
 					szMsg += Qt::escape(szDecodedMessage);
-					//debug("kvi_console.cpp:629 debug: %s",szMsg.data());
+					//qDebug("kvi_console.cpp:629 debug: %s",szMsg.data());
 					g_pApp->notifierMessage(wnd,KVI_OPTION_MSGTYPE(iSaveType).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 				}
 			}

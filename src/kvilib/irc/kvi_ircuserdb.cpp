@@ -177,7 +177,7 @@ KviRegisteredUser* KviIrcUserDataBase::registeredUser(const QString & nick,const
 	if(u->m_bNotFoundRegUserLoockup && u->m_szLastRegisteredMatchNick==nick)
 	{
 		//cacheHit++;
-		//debug("cache hits/miss = %i/%i",cacheHit,cacheMiss);
+		//qDebug("cache hits/miss = %i/%i",cacheHit,cacheMiss);
 		return 0;
 	}
 
@@ -209,7 +209,7 @@ KviRegisteredUser* KviIrcUserDataBase::registeredUser(const QString & nick,const
 		}
 	}
 
-//	debug("cache hits/miss = %i/%i",cacheHit,cacheMiss);
+//	qDebug("cache hits/miss = %i/%i",cacheHit,cacheMiss);
 	return pUser;
 }
 

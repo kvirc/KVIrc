@@ -433,7 +433,7 @@ void KviKvsTreeNodeExpressionBinaryOperator::dump(const char * prefix)
 	__name::__name(const QChar * pLocation) \
 	: KviKvsTreeNodeExpressionBinaryOperator(pLocation){} \
 	__name::~__name(){} \
-	void __name::dump(const char * prefix){ debug("%s " __stringname,prefix); dumpOperands(prefix); } \
+	void __name::dump(const char * prefix){ qDebug("%s " __stringname,prefix); dumpOperands(prefix); } \
 	void __name::contextDescription(QString &szBuffer){ szBuffer = __contextdescription; } \
 	int __name::precedence(){ return __precedence; };
 

@@ -140,7 +140,7 @@
 			cpd.dwData = KVI_WINDOWS_IPC_MESSAGE;
 			cpd.lpData = (void *)message;
 			DWORD dwResult;
-			debug(message);
+			qDebug(message);
 			::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,&dwResult);
 			return true;
 		}
@@ -219,7 +219,7 @@
 			{
 				if(cpd->dwData == KVI_WINDOWS_IPC_MESSAGE)
 				{
-					debug((char *)(cpd->lpData));
+					qDebug((char *)(cpd->lpData));
 					if(g_pApp)g_pApp->ipcMessage((char *)(cpd->lpData));
 					return true;
 				}

@@ -177,7 +177,7 @@ void KviIrcLink::resolverTerminated()
 {
 	if(!m_pResolver)
 	{
-		debug("Oops... resoverTerminated() triggered without a resolver ?");
+		qDebug("Oops... resoverTerminated() triggered without a resolver ?");
 		return;
 	}
 
@@ -314,7 +314,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 		//The m_pReadBuffer contains at max 1 irc message...
 		//that can not be longer than 510 bytes (the message is not CRLF terminated)
 		// FIXME: Is this limit *really* valid on all servers ?
-		if(m_uReadBufferLen > 510) debug("WARNING: Receiving an invalid irc message from server.");
+		if(m_uReadBufferLen > 510) qDebug("WARNING: Receiving an invalid irc message from server.");
 	}
 	kvi_free(cMessageBuffer);
 }
@@ -361,7 +361,7 @@ void KviIrcLink::socketStateChange()
 					m_pConnection->linkTerminated();
 				break;
 				default: // currently can be only Idle
-					debug("Ooops... got a KviIrcSocket::Idle state change when KviIrcLink::m_eState was Idle");
+					qDebug("Ooops... got a KviIrcSocket::Idle state change when KviIrcLink::m_eState was Idle");
 				break;
 			}
 		}

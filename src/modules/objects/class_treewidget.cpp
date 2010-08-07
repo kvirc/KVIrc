@@ -640,7 +640,7 @@ void KviKvsTreeWidget::dragMoveEvent( QDragMoveEvent * )
 
 void KviKvsTreeWidget::dropEvent(QDropEvent * e)
 {
-	debug("Drop event");
+	qDebug("Drop event");
 	QList<QUrl> list;
 	if(e->mimeData()->hasUrls())
 	{
@@ -653,7 +653,7 @@ void KviKvsTreeWidget::dropEvent(QDropEvent * e)
 			{
 				QUrl url = *it;
 				QString path = url.toLocalFile();
-				debug("path %s",path.toUtf8().data());
+				qDebug("path %s",path.toUtf8().data());
                                 QTreeWidgetItem *i = itemAt( e->pos() );
                                 m_pParentScript->fileDropped(path,i);
 			}

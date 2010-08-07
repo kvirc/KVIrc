@@ -102,7 +102,7 @@ public:
 	void setHeight(int h);
 	void resize(int w, int h) { setWidth(w); setHeight(h); };
 	void resize(QSize r) { setWidth(r.width()); setHeight(r.height()); };
-	void setGeometry(QRect r) { r.topLeft(); r.size(); 	/*debug("x,y: %d,%d", r.x(), r.y()); debug("w,h: %d,%d", r.width(), r.height());*/ };
+	void setGeometry(QRect r) { r.topLeft(); r.size(); 	/*qDebug("x,y: %d,%d", r.x(), r.y()); qDebug("w,h: %d,%d", r.width(), r.height());*/ };
 	void setGeometry(QPoint p, QSize s) { setPoint (p.x(), p.y()); setWidth (s.width()); setHeight (s.height()); };
 
 	void setPoint(int x, int y) { m_pnt.setX(x); m_pnt.setY(y); m_rct.setX(x); m_rct.setY(y);  };

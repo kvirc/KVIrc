@@ -378,7 +378,7 @@ static bool proxydb_kvs_cmd_setPort(KviKvsModuleCommandCall * c)
 	uPort = szPort.toInt(&bOk);
 	if(!bOk) uPort = 1080;
 	pProxy->setPort(uPort);
-	debug("PROXYDB Port: %d",uPort);
+	qDebug("PROXYDB Port: %d",uPort);
 
 	return true;
 }
@@ -615,7 +615,7 @@ static bool proxydb_kvs_cmd_setProtocol(KviKvsModuleCommandCall * c)
 		} \
 		\
 		pProxy->__callName(szPropertyName); \
-		debug("PROXYDB Property: %s",szPropertyName.toUtf8().data()); \
+		qDebug("PROXYDB Property: %s",szPropertyName.toUtf8().data()); \
 		\
 		return true; \
 	}

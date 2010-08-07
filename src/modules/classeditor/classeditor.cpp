@@ -1458,11 +1458,11 @@ void KviClassEditor::build()
 		}
 		if (pClass->classNotBuilt())
 		{
-		//	debug("compiling %s",pClass->name().toUtf8().data());
+		//	qDebug("compiling %s",pClass->name().toUtf8().data());
 			KviClassEditorTreeWidgetItem *pParentClass=m_pClasses->find(pClass->InheritsClass());
 
 			pLinkedClasses.append(pClass);
-			//if (!pParentClass) debug("no parent class");
+			//if (!pParentClass) qDebug("no parent class");
 			while(pParentClass)
 			{
 				if (pParentClass->classNotBuilt()) pLinkedClasses.append(pParentClass);
@@ -1500,7 +1500,7 @@ void KviClassEditor::build()
 					QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 					break;
 				}
-				//else debug("class compiled %s :\n",szClass.toUtf8().data());
+				//else qDebug("class compiled %s :\n",szClass.toUtf8().data());
 				pLinkedClasses.at(i)->setClassNotBuilt(false);
 				m_pEditor->setModified(false);
 			}

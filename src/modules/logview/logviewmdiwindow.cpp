@@ -403,7 +403,7 @@ void KviLogViewMDIWindow::deleteCurrent()
 				{
 					if (!(KviLogListViewItem*)pChild->child(j))
 					{
-						debug ("Null pointer in logviewitem");
+						qDebug("Null pointer in logviewitem");
 						continue;
 					}
 					itemsList.append((KviLogListViewItem*)pChild->child(j));
@@ -480,7 +480,7 @@ KviLogFile::KviLogFile(const QString & szName)
 	int iDay = szDate.section('.',2,2).toInt();
 	m_date.setYMD(iYear,iMonth,iDay);
 
-	//debug("type=%i, name=%s, net=%s, date=%i %i %i",m_type,m_szName.ascii(),m_szNetwork.ascii(),iYear,iMonth,iDay);
+	//qDebug("type=%i, name=%s, net=%s, date=%i %i %i",m_type,m_szName.ascii(),m_szNetwork.ascii(),iYear,iMonth,iDay);
 }
 
 void KviLogFile::getText(QString & text,const QString& logDir){
@@ -507,7 +507,7 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 			gzclose(file);
 			text = QString::fromUtf8(data);
 		} else {
-			debug("Cannot open compressed file %s",logName.toLocal8Bit().data());
+			qDebug("Cannot open compressed file %s",logName.toLocal8Bit().data());
 		}
 	} else {
 #endif

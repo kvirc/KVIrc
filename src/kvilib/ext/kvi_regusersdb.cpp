@@ -412,7 +412,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u,Kvi
 			l->setAutoDelete(true);
 			if(!u->addMask(mask))
 			{
-				debug(" Ops...got an incoherent regusers action...recovered ?");
+				qDebug(" Ops...got an incoherent regusers action...recovered ?");
 				delete l;
                 l = 0;
 			} else {
@@ -425,7 +425,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u,Kvi
 	// Ok...add it
 	if(!u->addMask(mask))
 	{
-		debug("ops...got an incoherent regusers action...recovered ?");
+		qDebug("ops...got an incoherent regusers action...recovered ?");
 		return 0; // ops...already there ?
 	}
 	append_mask_to_list(l,u,mask);
@@ -485,7 +485,7 @@ bool KviRegisteredUserDataBase::removeUser(const QString & name)
 	while(KviIrcMask * mask = u->maskList()->first())
 	{
 		if(!removeMaskByPointer(mask))
-			debug("Ops... removeMaskByPointer(%s) failed ?",KviQString::toUtf8(name).data());
+			qDebug("Ops... removeMaskByPointer(%s) failed ?",KviQString::toUtf8(name).data());
 	}
 	emit(userRemoved(name));
 	m_pUserDict->remove(name);

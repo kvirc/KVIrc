@@ -1369,7 +1369,7 @@ void KviPopupEditorWindow::saveProperties(KviConfig *) //cfg
 #ifdef COMPILE_SCRIPTTOOLBAR
 	cfg->writeEntry("Sizes",m_pEditor->sizes());
 	cfg->writeEntry("LastPopup",m_pEditor->lastEditedPopup().ptr());
-	//debug("LAST EDITED=%s",m_pEditor->lastEditedPopup().ptr());
+	//qDebug("LAST EDITED=%s",m_pEditor->lastEditedPopup().ptr());
 #endif // COMPILE_SCRIPTTOOLBAR
 */
 }
@@ -1384,7 +1384,7 @@ void KviPopupEditorWindow::loadProperties(KviConfig *) // cfg
 	m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
 	KviStr tmp = cfg->readEntry("LastPopup","");
 	m_pEditor->editPopup(tmp);
-	//debug("LAST EDITED WAS %s",tmp.ptr());
+	//qDebug("LAST EDITED WAS %s",tmp.ptr());
 #endif // COMPILE_SCRIPTTOOLBAR
 */
 }

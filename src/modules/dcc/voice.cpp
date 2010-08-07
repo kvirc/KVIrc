@@ -370,7 +370,7 @@ bool KviDccVoiceThread::soundStep()
 
 			if(ioctl(m_soundFd,SNDCTL_DSP_GETOSPACE,&info) < 0)
 			{
-				debug("get o space failed");
+				qDebug("get o space failed");
 				info.bytes = KVI_FRAGMENT_SIZE_IN_BYTES; // dummy... if this is not correct...well...we will block for 1024/16000 of a sec
 				info.fragments = 1;
 				info.fragsize = KVI_FRAGMENT_SIZE_IN_BYTES;
@@ -378,7 +378,7 @@ bool KviDccVoiceThread::soundStep()
 			if(info.fragments > 0)
 			{
 				int toWrite = info.fragments * info.fragsize;
-				//debug("Can write %d bytes",toWrite);
+				//qDebug("Can write %d bytes",toWrite);
 				if(m_inSignalBuffer.size() < toWrite)toWrite = m_inSignalBuffer.size();
 				int written = write(m_soundFd,m_inSignalBuffer.data(),toWrite);
 				if(written > 0)m_inSignalBuffer.remove(written);
@@ -461,12 +461,12 @@ bool KviDccVoiceThread::soundStep()
 			audio_buf_info info;
 			if(ioctl(m_soundFd,SNDCTL_DSP_GETISPACE,&info) < 0)
 			{
-				debug("Ispace failed");
+				qDebug("Ispace failed");
 				info.fragments = 0; // dummy...
 				info.bytes = 0;
 			}
 
-			//debug("INFO: fragments: %d, fragstotal: %d, fragsize: %d, bytes: %d",info.fragments,info.fragstotal,info.fragsize,info.bytes);
+			//qDebug("INFO: fragments: %d, fragstotal: %d, fragsize: %d, bytes: %d",info.fragments,info.fragstotal,info.fragsize,info.bytes);
 
 			if(info.fragments == 0 && info.bytes == 0)
 			{
@@ -496,14 +496,14 @@ bool KviDccVoiceThread::soundStep()
 					}
 				}
 /*
-				debug("Signal buffer:");
+				qDebug("Signal buffer:");
 				for(int i=0;i<200;i+=2)
 				{
 					if(i >= m_outSignalBuffer.size())break;
 					printf("%04x ",*(((unsigned short *)(m_outSignalBuffer.data() + i))));
 					if((i % 6) == 0)printf("\n");
 				}
-				debug("END\n");
+				qDebug("END\n");
 */
 				m_pOpt->pCodec->encode(&m_outSignalBuffer,&m_outFrameBuffer);
 			}
@@ -520,11 +520,11 @@ bool KviDccVoiceThread::soundStep()
 void KviDccVoiceThread::startRecording()
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
-	//debug("Start recording");
+	//qDebug("Start recording");
 	if(m_bRecording)return; // already started
 	if(openSoundcardForReading())
 	{
-//		debug("Posting event");
+//		qDebug("Posting event");
 		KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
 		e->setData(new int(KVI_DCC_VOICE_THREAD_ACTION_START_RECORDING));
 		postEvent(parent(),e);
@@ -540,7 +540,7 @@ void KviDccVoiceThread::startRecording()
 void KviDccVoiceThread::stopRecording()
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
-	//debug("Stop recording");
+	//qDebug("Stop recording");
 	m_bRecordingRequestPending = false;
 	if(!m_bRecording)return; // already stopped
 
@@ -556,7 +556,7 @@ void KviDccVoiceThread::stopRecording()
 void KviDccVoiceThread::startPlaying()
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
-	//debug("Start playing");
+	//qDebug("Start playing");
 	if(m_bPlaying)return;
 
 	if(openSoundcardForWriting())
@@ -572,7 +572,7 @@ void KviDccVoiceThread::startPlaying()
 void KviDccVoiceThread::stopPlaying()
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
-	//debug("Stop playing");
+	//qDebug("Stop playing");
 	if(!m_bPlaying)return;
 
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
@@ -856,7 +856,7 @@ bool KviDccVoice::event(QEvent *e)
 			}
 			break;
 			default:
-				debug("Invalid event type %d received",((KviThreadEvent *)e)->id());
+				qDebug("Invalid event type %d received",((KviThreadEvent *)e)->id());
 			break;
 		}
 
@@ -1020,7 +1020,7 @@ void KviDccVoice::setMixerVolume(int vol)
  * another KVirc window, fired up xmms, changed the volume, and returned to our dcc voice window */
 void KviDccVoice::focusInEvent(QFocusEvent *e)
 {
-//	debug("focusInEvent()");
+//	qDebug("focusInEvent()");
 	m_pVolumeSlider->setValue(getMixerVolume());
 	setMixerVolume(m_pVolumeSlider->value());
 

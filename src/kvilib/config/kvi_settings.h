@@ -129,7 +129,6 @@
 * \def KVI_PTR2MEMBER Cross-platform macro that returns a member from its pointer
 * \def COMPILE_NO_X_BELL Enasures X bell is disabled if X is disabled
 * \def KVI_DEPRECATED Prefix for deprecated objects inside kvirc code (currently unused)
-* \def debug Internal debug function; default to qt4's qDebug implementation
 * \def BIG_ENDIAN_MACHINE_BYTE_ORDER If defined, the current target processor is big endian, little endian otherwise
 */
 
@@ -175,7 +174,6 @@
 #endif
 
 #define KVI_DEPRECATED
-#define debug qDebug
 
 // Trust Qt about the current target processor endianness
 #if Q_BYTE_ORDER == Q_BIG_ENDIAN

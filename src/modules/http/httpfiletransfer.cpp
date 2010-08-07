@@ -190,7 +190,7 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 				int tSpan = kvi_timeSpan(m_tTransferEndTime > 0 ? m_tTransferEndTime : kvi_unixTime(),m_tTransferStartTime);
 				if(tSpan > 0)
 				{
-					//debug("SPAN: %d (%d - %d)",tSpan,m_tTransferEndTime > 0 ? m_tTransferEndTime : kvi_unixTime(),m_tTransferStartTime);
+					//qDebug("SPAN: %d (%d - %d)",tSpan,m_tTransferEndTime > 0 ? m_tTransferEndTime : kvi_unixTime(),m_tTransferStartTime);
 					iAvgSpeed = uRecvd / tSpan;
 					if(!bIsTerminated && (uTotal >= uRecvd))
 					{

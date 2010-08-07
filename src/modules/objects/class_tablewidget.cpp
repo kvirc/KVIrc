@@ -266,7 +266,7 @@ KVSO_CLASS_FUNCTION(tablewidget,clear)
 KVSO_CLASS_FUNCTION(tablewidget,resizeRowsToContents)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	//debug("resize row to contents");
+	//qDebug("resize row to contents");
 
 	((QTableWidget *)widget())->resizeRowsToContents();
 	return true;
@@ -275,7 +275,7 @@ KVSO_CLASS_FUNCTION(tablewidget,resizeRowsToContents)
 KVSO_CLASS_FUNCTION(tablewidget,resizeColumnsToContents)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	//debug("resize coluns to contents");
+	//qDebug("resize coluns to contents");
 	((QTableWidget *)widget())->resizeColumnsToContents();
 	return true;
 }
@@ -772,7 +772,7 @@ void KviCellItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem 
 QSize KviCellItemDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex & index) const
 {
 	KviKvsVariant *sizeret=new KviKvsVariant();
-	//debug("sizehint cell");
+	//qDebug("sizehint cell");
 	KviKvsVariantList parameters(new KviKvsVariant((kvs_int_t) index.row()),new KviKvsVariant((kvs_int_t) index.column()));
 	m_pParentScript->callFunction(m_pParentScript,"sizeHintCellRequestEvent",sizeret,&parameters);
 	if (sizeret->isArray())

@@ -799,7 +799,7 @@
 		{
 			m_dragMode = Rotate;
 			m_dragPointArray = it->internalPoints();
-	//		debug("Here");
+	//		qDebug("Here");
 			setCursor(sizeHorCursor);
 			return;
 		}
@@ -835,7 +835,7 @@
 			{
 				QPoint act((int)(p.x() - it->x()),(int)(p.y() - it->y()));
 				double dAngle = ssm_2d_rotationAngle(m_dragBegin.x(),m_dragBegin.y(),act.x(),act.y());
-	//			debug("%d,%d %d,%d %f",m_dragBegin.x(),m_dragBegin.y(),act.x(),act.y(),dAngle);
+	//			qDebug("%d,%d %d,%d %f",m_dragBegin.x(),m_dragBegin.y(),act.x(),act.y(),dAngle);
 				QPointArray thePoints = m_dragPointArray.copy();
 				for(unsigned int i=0;i<thePoints.size();i++)
 				{

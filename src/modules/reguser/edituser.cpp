@@ -612,7 +612,7 @@ void KviRegisteredUserEntryDialog::okClicked()
 	{
 		// ops... no way
 		// FIXME: spit an error message ?
-		debug("Ops.. something wrong with the regusers db");
+		qDebug("Ops.. something wrong with the regusers db");
 		accept();
 		return;
 	}

@@ -175,10 +175,10 @@ void KviInputEditor::dropEvent(QDropEvent * e)
 	if(e->mimeData()->hasUrls())
 	{
 		list = e->mimeData()->urls();
-		//debug("Local files decoded");
+		//qDebug("Local files decoded");
 		if(!list.isEmpty())
 		{
-			//debug("List not empty");
+			//qDebug("List not empty");
 			QList<QUrl>::Iterator it = list.begin();
 			for( ; it != list.end(); ++it )
 			{
@@ -595,7 +595,7 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 			}
 			break;
 			default:
-				debug("Ops..");
+				qDebug("Ops..");
 				exit(0);
 			break;
 		}
@@ -646,7 +646,7 @@ void KviInputEditor::runUpToTheFirstVisibleChar()
 				}
 				break;
 				case 0:
-					debug("KviInputEditor::Encountered invisible end of the string!");
+					qDebug("KviInputEditor::Encountered invisible end of the string!");
 					exit(0);
 				break;
 			}
@@ -1376,7 +1376,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 			return;
 		}
 
-		//debug("%c",e->ascii());
+		//qDebug("%c",e->ascii());
 		if(!m_bReadOnly)
 			insertText(e->text());
 
@@ -1397,7 +1397,7 @@ void KviInputEditor::keyReleaseEvent(QKeyEvent * e)
 			unsigned short uCh = m_szAltKeyCode.toUShort(&bOk);
 			if(bOk && uCh != 0)
 			{
-				//debug("INSERTING CHAR %d",ch);
+				//qDebug("INSERTING CHAR %d",ch);
 				insertChar(QChar(uCh));
 				e->accept();
 			}

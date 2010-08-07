@@ -47,7 +47,7 @@ void KviKvsTreeNodeArrayElement::contextDescription(QString & szBuffer)
 
 void KviKvsTreeNodeArrayElement::dump(const char * prefix)
 {
-	debug("%s ArrayElement",prefix);
+	qDebug("%s ArrayElement",prefix);
 	QString szTmp = prefix;
 	szTmp.append("  ");
 	m_pSource->dump(szTmp.toUtf8().data());

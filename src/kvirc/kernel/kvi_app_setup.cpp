@@ -875,7 +875,7 @@ void KviApp::setupFinish()
 {
 	if(!g_pSetupLibrary)
 	{
-		debug("Oops... lost the setup library ?");
+		qDebug("Oops... lost the setup library ?");
 		return;
 	}
 

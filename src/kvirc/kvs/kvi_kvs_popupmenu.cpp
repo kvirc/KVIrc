@@ -718,7 +718,7 @@ void KviKvsPopupMenu::addExtPopup(const QString &szItemName,const QString &szPop
 
 void KviKvsPopupMenu::addItemInternal(KviKvsPopupMenuItem * it)
 {
-	if(isLocked())debug("Ooops... KviKvsPopupMenu is locked in ::addItem()");
+	if(isLocked())qDebug("Ooops... KviKvsPopupMenu is locked in ::addItem()");
 	m_pItemList->append(it);
 }
 
@@ -799,7 +799,7 @@ void KviKvsPopupMenu::setupMenuContents()
 			if(m_bSetupDone)return;
 			// we have been called by doPopup
 			// the menu contents have been already cleared
-			if(m_pTopLevelData)debug("Ops.. something got messed in KviKvsPopupMenu activation system");
+			if(m_pTopLevelData)qDebug("Ops.. something got messed in KviKvsPopupMenu activation system");
 			// Swap the top level data from temporary to the permanent
 			m_pTopLevelData = m_pTempTopLevelData;
 			m_pTempTopLevelData = 0;

@@ -477,8 +477,8 @@ void KviSoundThread::run()
 				file = afOpenFile(m_szFileName.toUtf8().data(),"r",NULL);
 				if(!file)
 				{
-					debug("libaudiofile could not open the file %s",m_szFileName.toUtf8().data());
-					debug("giving up playing sound...");
+					qDebug("libaudiofile could not open the file %s",m_szFileName.toUtf8().data());
+					qDebug("giving up playing sound...");
 					return; // screwed up
 				}
 
@@ -488,8 +488,8 @@ void KviSoundThread::run()
 
 				if(sampleFormat == -1)
 				{
-					debug("libaudiofile couldn't find the sample format for file %s",m_szFileName.toUtf8().data());
-					debug("giving up playing sound...");
+					qDebug("libaudiofile couldn't find the sample format for file %s",m_szFileName.toUtf8().data());
+					qDebug("giving up playing sound...");
 					afCloseFile(file);
 					return; // screwed up
 				}
@@ -504,8 +504,8 @@ void KviSoundThread::run()
 
 				if(audiofd_c < 0)
 				{
-					debug("Could not open audio device /dev/dsp! [OSS+AUDIOFILE]");
-					debug("(the device is probably busy , errno = %d)",errno);
+					qDebug("Could not open audio device /dev/dsp! [OSS+AUDIOFILE]");
+					qDebug("(the device is probably busy , errno = %d)",errno);
 					goto exit_thread;
 				}
 
@@ -518,20 +518,20 @@ void KviSoundThread::run()
 
 				if(ioctl(audiofd.handle(),SNDCTL_DSP_SETFMT, &format) == -1)
 				{
-					debug("Could not set format width to DSP! [OSS]");
+					qDebug("Could not set format width to DSP! [OSS]");
 					goto exit_thread;
 				}
 
 				if (ioctl(audiofd.handle(),SNDCTL_DSP_CHANNELS, &channelCount) == -1)
 				{
-					debug("Could not set DSP channels! [OSS]");
+					qDebug("Could not set DSP channels! [OSS]");
 					goto exit_thread;
 				}
 
 				freq = (int) afGetRate(file, AF_DEFAULT_TRACK);
 				if (ioctl(audiofd.handle(), SNDCTL_DSP_SPEED, &freq) == -1)
 				{
-					debug("Could not set DSP speed %d! [OSS]",freq);
+					qDebug("Could not set DSP speed %d! [OSS]",freq);
 					goto exit_thread;
 				}
 
@@ -567,7 +567,7 @@ void KviSoundThread::run()
 
 			if(!m_szFileName.endsWith(QString(".au")))
 			{
-				debug("Oss only player supports only *.au files");
+				qDebug("Oss only player supports only *.au files");
 				return;
 			}
 
@@ -579,7 +579,7 @@ void KviSoundThread::run()
 
 			if(!f.open(QIODevice::ReadOnly))
 			{
-				debug("Could not open sound file %s! [OSS]",m_szFileName.toUtf8().data());
+				qDebug("Could not open sound file %s! [OSS]",m_szFileName.toUtf8().data());
 				return;
 			}
 
@@ -587,13 +587,13 @@ void KviSoundThread::run()
 
 			if(iSize < 24)
 			{
-				debug("Could not play sound, file %s too small! [OSS]",m_szFileName.toUtf8().data());
+				qDebug("Could not play sound, file %s too small! [OSS]",m_szFileName.toUtf8().data());
 				goto exit_thread;
 			}
 
 			if(f.read(buf,24) < 24)
 			{
-				debug("Error while reading the sound file header (%s)! [OSS]",m_szFileName.toUtf8().data());
+				qDebug("Error while reading the sound file header (%s)! [OSS]",m_szFileName.toUtf8().data());
 				goto exit_thread;
 			}
 
@@ -602,8 +602,8 @@ void KviSoundThread::run()
 			fd = open("/dev/audio",  O_WRONLY /* | O_EXCL | O_NDELAY*/);
 			if(fd < 0)
 			{
-				debug("Could not open device file /dev/audio!");
-				debug("Maybe other program is using the device? Hint: fuser -uv /dev/audio");
+				qDebug("Could not open device file /dev/audio!");
+				qDebug("Maybe other program is using the device? Hint: fuser -uv /dev/audio");
 				goto exit_thread;
 			}
 
@@ -617,7 +617,7 @@ void KviSoundThread::run()
 					int iReaded = f.read(buf + iDataLen,iToRead);
 					if(iReaded < 1)
 					{
-						debug("Error while reading the file data (%s)! [OSS]",m_szFileName.toUtf8().data());
+						qDebug("Error while reading the file data (%s)! [OSS]",m_szFileName.toUtf8().data());
 						goto exit_thread;
 					}
 					iSize -= iReaded;
@@ -630,7 +630,7 @@ void KviSoundThread::run()
 					{
 						if((errno != EINTR) && (errno != EAGAIN))
 						{
-							debug("Error while writing the audio data (%s)! [OSS]",m_szFileName.toUtf8().data());
+							qDebug("Error while writing the audio data (%s)! [OSS]",m_szFileName.toUtf8().data());
 							goto exit_thread;
 						}
 					}
@@ -664,7 +664,7 @@ void KviSoundThread::run()
 		{
 			// ESD has a really nice API
 			if(!esd_play_file(NULL,m_szFileName.toUtf8().data(),1)) // this is sync.. FIXME: it can't be stopped!
-				debug("Could not play sound %s! [ESD]",m_szFileName.toUtf8().data());
+				qDebug("Could not play sound %s! [ESD]",m_szFileName.toUtf8().data());
 		}
 
 	#endif //COMPILE_ESD_SUPPORT

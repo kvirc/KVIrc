@@ -1051,7 +1051,7 @@ KVSO_CLASS_FUNCTION(painter,begin)
                      QPrintDialog printDialog(m_pPrinter, 0);
                      if (printDialog.exec() == QDialog::Accepted)
                      {
-                       debug("papersize %d",m_pPrinter->paperSize());
+                       qDebug("papersize %d",m_pPrinter->paperSize());
                        m_pPainter->begin(m_pPrinter);
                        return true;
                      }

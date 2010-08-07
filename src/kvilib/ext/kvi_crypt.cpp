@@ -175,13 +175,13 @@
 
 	KviCryptEngine::EncryptResult KviCryptEngine::encrypt(const char *,KviStr &)
 	{
-//		debug("Pure virtual KviCryptEngine::encrypt() called");
+//		qDebug("Pure virtual KviCryptEngine::encrypt() called");
 		return EncryptError;
 	}
 
 	KviCryptEngine::DecryptResult KviCryptEngine::decrypt(const char *,KviStr &)
 	{
-//		debug("Pure virtual KviCryptEngine::decrypt() called");
+//		qDebug("Pure virtual KviCryptEngine::decrypt() called");
 		return DecryptError;
 	}
 

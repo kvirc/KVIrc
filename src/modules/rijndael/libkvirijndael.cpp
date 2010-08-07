@@ -653,7 +653,7 @@
 	{
 		if(*(encoded.ptr()) != '*')
 		{
-			debug("WARNING: Specified a CBC key but the incoming message doesn't seem to be a CBC one");
+			qDebug("WARNING: Specified a CBC key but the incoming message doesn't seem to be a CBC one");
 			return doDecryptECB(encoded,plain);
 		}
 		encoded.cutLeft(1);

@@ -886,7 +886,7 @@ QByteArray KviQuery::loadLogFile(const QString & szFileName, bool bGzip)
 
 			gzclose(logFile);
 		} else {
-			debug("Cannot open compressed file %s",szFileName.toUtf8().data());
+			qDebug("Cannot open compressed file %s",szFileName.toUtf8().data());
 		}
 
 	} else {

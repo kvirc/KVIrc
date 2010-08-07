@@ -199,7 +199,7 @@ bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e,const QString &szData)
 				params.append(new KviKvsVariant(QString("ping")));
 			break;
 			default:
-				debug("Ops... unknown trigger() CallbackEvent parameter in KviProcessDescriptor::trigger()");
+				qDebug("Ops... unknown trigger() CallbackEvent parameter in KviProcessDescriptor::trigger()");
 				return false;
 			break;
 		}

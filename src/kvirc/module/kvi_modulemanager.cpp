@@ -154,7 +154,7 @@ bool KviModuleManager::loadModule(const QString &modName)
 {
 	if(findModule(modName))
 	{
-		//debug("MODULE %s ALREADY IN CORE MEMORY",modName);
+		//qDebug("MODULE %s ALREADY IN CORE MEMORY",modName);
 		return true;
 	}
 	QString tmp;
@@ -234,7 +234,7 @@ bool KviModuleManager::loadModule(const QString &modName)
 		if(!((info->init_routine)(module)))
 		{
 			m_szLastError = __tr2qs("Failed to execute the init routine");
-			//debug("ERROR IN LOADING MODULE %s (%s): failed to execute the init routine",modName,szName.ptr());
+			//qDebug("ERROR IN LOADING MODULE %s (%s): failed to execute the init routine",modName,szName.ptr());
 			delete module;
 			// kill the message catalogue too then
 			KviLocale::unloadCatalogue(modName);
@@ -282,7 +282,7 @@ bool KviModuleManager::unloadModule(KviModule * module)
 	}
 	QString szModName = module->name();
 	module->handle()->unload();
-	//debug("Closing module %s, dlclose returns %d",szModName.ptr(),dlclose(module->handle()));
+	//qDebug("Closing module %s, dlclose returns %d",szModName.ptr(),dlclose(module->handle()));
 
 	m_pModuleDict->remove(szModName);
 	delete module;

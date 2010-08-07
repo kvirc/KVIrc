@@ -920,7 +920,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 						// don't send the message to the notifier twice
 						iFlags |= KviConsole::NoNotifier;
 						QString szMsg = Qt::escape(szMsgText);
-						//debug("kvi_sp_literal.cpp:908 debug: %s",szMsgText.data());
+						//qDebug("kvi_sp_literal.cpp:908 debug: %s",szMsgText.data());
 						g_pApp->notifierMessage(query,KVI_SMALLICON_QUERYPRIVMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 					}
 				}
@@ -1279,7 +1279,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 						// don't send the message twice to the notifier
 						iFlags |= KviConsole::NoNotifier;
 						QString szMsg = Qt::escape(szMsgText);
-						//debug("kvi_sp_literal.cpp:1262 debug: %s",szMsgText.data());
+						//qDebug("kvi_sp_literal.cpp:1262 debug: %s",szMsgText.data());
 						g_pApp->notifierMessage(query,KVI_SMALLICON_QUERYNOTICE,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 					}
 				}
@@ -1550,7 +1550,7 @@ void KviServerParser::parseLiteralNick(KviIrcMessage *msg)
 		{
 			// the target SHOULD have changed his nick here
 			if(!q->nickChange(szNick,szNewNick))
-				debug("Internal error: query %s failed to change nick from %s to %s",szNick.toUtf8().data(),szNick.toUtf8().data(),szNewNick.toUtf8().data());
+				qDebug("Internal error: query %s failed to change nick from %s to %s",szNick.toUtf8().data(),szNick.toUtf8().data(),szNewNick.toUtf8().data());
 			if(!msg->haltOutput())
 				q->output(KVI_OUT_NICK,__tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"),
 					&szNick,&szUser,&szHost,&szNewNick);

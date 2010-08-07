@@ -129,7 +129,7 @@ void KviDccDescriptor::triggerCreationEvent()
 {
 	if(m_bCreationEventTriggered)
 	{
-		debug("Ops.. trying to trigger OnDccSessionCreated twice");
+		qDebug("Ops.. trying to trigger OnDccSessionCreated twice");
 		return;
 	}
 	m_bCreationEventTriggered = true;

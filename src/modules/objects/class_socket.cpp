@@ -509,7 +509,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 			QByteArray szData8 = szData.toUtf8();
 			if(szData8.length() > 0)
 			{
-                                        debug("write on socket %s",szData8.data());
+                                        qDebug("write on socket %s",szData8.data());
 					m_pOutBuffer->append((const unsigned char*)szData8.data(),szData8.length());
 			}
 		}
@@ -582,7 +582,7 @@ KVSO_CLASS_FUNCTION(socket,functionConnect)
 		KVSO_PARAMETER("remote_ip",KVS_PT_STRING,0,m_szRemoteIp)
 		KVSO_PARAMETER("remote_port",KVS_PT_UNSIGNEDINTEGER,0,m_uRemotePort)
 	KVSO_PARAMETERS_END(c)
-	debug ("Function connect");
+	qDebug("Function connect");
 
 
 	if (m_uRemotePort>65535)
@@ -604,13 +604,13 @@ KVSO_CLASS_FUNCTION(socket,functionConnect)
 	if(KviNetUtils::isValidStringIp(m_szRemoteIp))
 #endif
 	{
-		debug ("ok connecting");
-		debug ("connectinhg on ip %s ",m_szRemoteIp.toUtf8().data());
-		debug ("non so ip");
+		qDebug("ok connecting");
+		qDebug("connectinhg on ip %s ",m_szRemoteIp.toUtf8().data());
+		qDebug("non so ip");
 		m_iStatus = KVI_SCRIPT_SOCKET_STATUS_CONNECTING;
 		delayedConnect();
 	} else {
-		debug ("connectinhg on ip %s port %d",m_szRemoteIp.toUtf8().data(),(int) m_uRemotePort);
+		qDebug("connectinhg on ip %s port %d",m_szRemoteIp.toUtf8().data(),(int) m_uRemotePort);
 		m_iStatus = KVI_SCRIPT_SOCKET_STATUS_DNS;
 		delayedLookupRemoteIp();
 	}
@@ -860,7 +860,7 @@ void KviKvsObject_socket::delayedConnect()
 
 void KviKvsObject_socket::doConnect()
 {
-	debug ("doConnect function");
+	qDebug("doConnect function");
 	if(m_pDelayTimer)delete m_pDelayTimer;
 	m_pDelayTimer = 0;
 
@@ -883,7 +883,7 @@ void KviKvsObject_socket::doConnect()
 		// else it has already been called!
 		return;
 	}
-debug ("Socket created");
+qDebug("Socket created");
 
 	// create the socket
 #ifdef COMPILE_IPV6_SUPPORT
@@ -904,7 +904,7 @@ debug ("Socket created");
 		// else it has already been called!
 		return;
 	}
-	debug ("Valid socket");
+	qDebug("Valid socket");
 
 	if(!kvi_socket_setNonBlocking(m_sock))
 	{
@@ -943,7 +943,7 @@ debug ("Socket created");
 			return;
 		}
 	}
-	debug ("Socket connected");
+	qDebug("Socket connected");
 	m_pDelayTimer = new QTimer();
 	connect(m_pDelayTimer,SIGNAL(timeout()),this,SLOT(connectTimeoutSlot()));
 	m_pDelayTimer->setInterval(m_uConnectTimeout);
@@ -978,7 +978,7 @@ void KviKvsObject_socket::delayedLookupRemoteIp()
 
 void KviKvsObject_socket::lookupRemoteIp()
 {
-	debug ("Resolve dns");
+	qDebug("Resolve dns");
 	if(m_pDelayTimer)delete m_pDelayTimer;
 	m_pDelayTimer = 0;
 	if(m_pDns)delete m_pDns;
@@ -1010,7 +1010,7 @@ void KviKvsObject_socket::lookupDone(KviDns *pDns)
 		return;
 	}
 	m_szRemoteIp = pDns->firstIpAddress();
-	debug ("Dns resolved in %s",m_szRemoteIp.toUtf8().data());
+	qDebug("Dns resolved in %s",m_szRemoteIp.toUtf8().data());
 
 	delete m_pDns;
 	m_pDns = 0;
@@ -1037,7 +1037,7 @@ void KviKvsObject_socket::writeNotifierFired(int)
 	//sockError = 0;
 	if(sockError != 0)
 	{
-		//debug("Failed here %d",sockError);
+		//qDebug("Failed here %d",sockError);
 		//failed
 		if(sockError > 0)sockError = KviError::translateSystemError(sockError);
 		else sockError = KviError_unknownError; //Error 0 ?

@@ -54,15 +54,15 @@
 */
 
 #ifdef _KVI_DEBUG_CHECK_RANGE_
-	#define KVI_ASSERT(_expr) if(!(_expr))debug("[kvirc]: ASSERT FAILED: \"%s\" is false in %s (%d)",#_expr,__FILE__,__LINE__)
-	#define __range_invalid(_expr) if(_expr)debug("[kvirc]: ASSERT FAILED: \"%s\" is true in %s (%d)",#_expr,__FILE__,__LINE__)
+	#define KVI_ASSERT(_expr) if(!(_expr))qDebug("[kvirc]: ASSERT FAILED: \"%s\" is false in %s (%d)",#_expr,__FILE__,__LINE__)
+	#define __range_invalid(_expr) if(_expr)qDebug("[kvirc]: ASSERT FAILED: \"%s\" is true in %s (%d)",#_expr,__FILE__,__LINE__)
 #else
 	#define KVI_ASSERT(_expr)
 	#define __range_invalid(_expr)
 #endif
 
 #if defined(_KVI_DEBUG_) || defined(__KVI_DEBUG__)
-	#define __ASSERT(_expr) if(!(_expr))debug("[kvirc]: ASSERT FAILED: \"%s\" is false in %s (%d)",#_expr,__FILE__,__LINE__)
+	#define __ASSERT(_expr) if(!(_expr))qDebug("[kvirc]: ASSERT FAILED: \"%s\" is false in %s (%d)",#_expr,__FILE__,__LINE__)
 #else
 	#define __ASSERT(_expr)
 #endif

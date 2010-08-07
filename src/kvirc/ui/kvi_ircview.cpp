@@ -561,10 +561,10 @@ void KviIrcView::setTimestamp(bool bTimestamp)
 //		nAttributes += (l->uChunkCount);
 //		l = l->pNext;
 //	}
-//	debug("\n\nLines = %u (%u bytes - %u KB) (avg %u bytes per line)",nLines,nAlloc,nAlloc / 1024,nLines ? (nAlloc / nLines) : 0);
-//	debug("string bytes = %u (%u KB)",nStringBytes,nStringBytes / 1024);
-//	debug("attributes = %u (%u bytes - %u KB)",nAttributes,nAttrBytes,nAttrBytes / 1024);
-//	debug("blocks = %u (%u bytes - %u KB)\n",nBlocks,nBlockBytes,nBlockBytes / 1024);
+//	qDebug("\n\nLines = %u (%u bytes - %u KB) (avg %u bytes per line)",nLines,nAlloc,nAlloc / 1024,nLines ? (nAlloc / nLines) : 0);
+//	qDebug("string bytes = %u (%u KB)",nStringBytes,nStringBytes / 1024);
+//	qDebug("attributes = %u (%u bytes - %u KB)",nAttributes,nAttrBytes,nAttrBytes / 1024);
+//	qDebug("blocks = %u (%u bytes - %u KB)\n",nBlocks,nBlockBytes,nBlockBytes / 1024);
 
 }
 */
@@ -1242,7 +1242,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 					//case KVI_TEXT_ICON:
 					//case KVI_TEXT_UNICON:
 						// does nothing
-						//debug("Have a block with ICON/UNICON attr");
+						//qDebug("Have a block with ICON/UNICON attr");
 						//break;
 				}
 
@@ -1438,7 +1438,7 @@ no_selection_paint:
 					moredown += ((m_iFontLineSpacing - daIcon->height()) / 2);
 					pa.drawPixmap(curLeftCoord + m_iIconSideSpacing,imageYPos + moredown,*(daIcon));
 
-					//debug("SHifting by %d",block->block_width);
+					//qDebug("SHifting by %d",block->block_width);
 					curLeftCoord += block->block_width;
 				} else {
 

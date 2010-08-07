@@ -60,7 +60,7 @@ public:
 	~KviEventHandlerTreeWidgetItem() {};
 public:
 	const int & cursorPosition(){return m_cPos; };
-	void setCursorPosition(const int &cPos){debug ("set cursor to %d",cPos); m_cPos = cPos; };
+	void setCursorPosition(const int &cPos){qDebug("set cursor to %d",cPos); m_cPos = cPos; };
 
 	void setName(const QString &szName);
 	QString name() const { return m_szName; };

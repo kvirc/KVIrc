@@ -360,7 +360,7 @@ KviDns::~KviDns()
 	if(m_pSlaveThread)delete m_pSlaveThread; // will eventually terminate it (but it will also block us!!!)
 	KviThreadManager::killPendingEvents(this);
 	if(m_pDnsResult)delete m_pDnsResult;
-	if(m_pAuxData)debug("You're leaking memory man! m_pAuxData is non 0!");
+	if(m_pAuxData)qDebug("You're leaking memory man! m_pAuxData is non 0!");
 }
 
 bool KviDns::isRunning() const

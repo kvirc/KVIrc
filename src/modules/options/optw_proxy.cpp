@@ -46,7 +46,7 @@
 KviProxyOptionsTreeWidgetItem::KviProxyOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,KviProxy * prx)
 : QTreeWidgetItem(parent)
 {
-	debug("Creating item");
+	qDebug("Creating item");
 	setText(0,prx->m_szHostname);
 	setIcon(0,QIcon(pm));
 	m_pProxyData = new KviProxy(*prx);
@@ -54,7 +54,7 @@ KviProxyOptionsTreeWidgetItem::KviProxyOptionsTreeWidgetItem(QTreeWidget *parent
 
 KviProxyOptionsTreeWidgetItem::~KviProxyOptionsTreeWidgetItem()
 {
-	debug("Deleting item");
+	qDebug("Deleting item");
 	delete m_pProxyData;
 }
 

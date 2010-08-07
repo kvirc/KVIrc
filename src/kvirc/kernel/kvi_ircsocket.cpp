@@ -740,7 +740,7 @@ void KviIrcSocket::proxyLoginV4()
 	struct in_addr ircInAddr;
 
 	if(!KviNetUtils::stringIpToBinaryIp(m_pIrcServer->ip(),&ircInAddr))
-		debug("SOCKET INTERNAL ERROR IN IPV4 (SOCKS4) ADDR CONVERSION");
+		qDebug("SOCKET INTERNAL ERROR IN IPV4 (SOCKS4) ADDR CONVERSION");
 
 	quint32 host = (quint32)ircInAddr.s_addr;
 	kvi_memmove((void *)(pcBufToSend + 4),(void *)&host,4);
@@ -971,7 +971,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 		struct in6_addr ircInAddr;
 
 		if(!KviNetUtils::stringIpToBinaryIp_V6(m_pIrcServer->ip(),&ircInAddr))
-			debug("SOCKET INTERNAL ERROR IN IPV6 ADDR CONVERSION");
+			qDebug("SOCKET INTERNAL ERROR IN IPV6 ADDR CONVERSION");
 		kvi_memmove((void *)(pcBufToSend + 4),(void *)(&ircInAddr),4);
 		quint16 port = (quint16)htons(m_pIrcServer->port());
 		kvi_memmove((void *)(pcBufToSend + 20),(void *)&port,2);
@@ -980,7 +980,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 		struct in_addr ircInAddr;
 
 		if(!KviNetUtils::stringIpToBinaryIp(m_pIrcServer->ip(),&ircInAddr))
-			debug("SOCKET INTERNAL ERROR IN IPV4 ADDR CONVERSION");
+			qDebug("SOCKET INTERNAL ERROR IN IPV4 ADDR CONVERSION");
 		quint32 host = (quint32)ircInAddr.s_addr;
 		kvi_memmove((void *)(pcBufToSend + 4),(void *)&host,4);
 		quint16 port = (quint16)htons(m_pIrcServer->port());
@@ -1601,7 +1601,7 @@ void KviIrcSocket::processData(char * buffer,int)
 		//The m_pReadBuffer contains at max 1 irc message...
 		//that can not be longer than 510 bytes (the message is not CRLF terminated)
 		// FIXME: Is this limit *really* valid on all servers ?
-		if(m_uReadBufferLen > 510)debug("WARNING : Receiving an invalid irc message from server.");
+		if(m_uReadBufferLen > 510)qDebug("WARNING : Receiving an invalid irc message from server.");
 	}
 	kvi_free(messageBuffer);
 

@@ -167,7 +167,7 @@ void KviAnimatedPixmapCache::internalFree(Data* data)
 
 void  KviAnimatedPixmapCache::internalScheduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver)
 {
-	//debug("Adding %i - %i",(uint)KviTimeUtils::getCurrentTimeMills()+delay,receiver);
+	//qDebug("Adding %i - %i",(uint)KviTimeUtils::getCurrentTimeMills()+delay,receiver);
 	m_timerMutex.lock();
 	long long when = KviTimeUtils::getCurrentTimeMills()+delay;
 

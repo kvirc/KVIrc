@@ -441,7 +441,7 @@ bool KviDccChat::event(QEvent *e)
 							szMsg += m_pDescriptor->szNick;
 							szMsg += "</b> ";
 							szMsg += Qt::escape(QString(d.ptr()));
-							//debug("kvi_sp_ctcp.cpp:975 debug: %s",szMsg.data());
+							//qDebug("kvi_sp_ctcp.cpp:975 debug: %s",szMsg.data());
 							g_pApp->notifierMessage(this,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 						}
 					}
@@ -736,7 +736,7 @@ bool KviDccChatThread::handleIncomingData(KviDccThreadIncomingData * data,bool b
 			KviThreadDataEvent<KviStr> * e = new KviThreadDataEvent<KviStr>(KVI_DCC_THREAD_EVENT_DATA);
 			// The left part is len chars long
 			int len = aux - data->buffer;
-//			debug("LEN = %d, iLen = %d",len,data->iLen);
+//			qDebug("LEN = %d, iLen = %d",len,data->iLen);
 //#warning "DO IT BETTER (the \r cutting)"
 			KviStr * s = new KviStr(data->buffer,len);
 			if(s->lastCharIs('\r'))s->cutRight(1);
@@ -745,7 +745,7 @@ bool KviDccChatThread::handleIncomingData(KviDccThreadIncomingData * data,bool b
 			++aux;
 			// so len += 1; --> new data->iLen -= len;
 			data->iLen -= (len + 1);
-//			debug("iLen now = %d",data->iLen);
+//			qDebug("iLen now = %d",data->iLen);
 			KVI_ASSERT(data->iLen >= 0);
 			if(data->iLen > 0)
 			{
@@ -763,7 +763,7 @@ bool KviDccChatThread::handleIncomingData(KviDccThreadIncomingData * data,bool b
 			}
 			postEvent(parent(),e);
 		} else aux++;
-//		debug("PASSING CHAR %c",*aux);
+//		qDebug("PASSING CHAR %c",*aux);
 	}
 	// now aux == end
 	if(bCritical)

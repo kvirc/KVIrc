@@ -123,7 +123,7 @@ void KviFileTransferManager::unregisterTransfer(KviFileTransfer * t)
 {
 	if(!m_pTransferList)
 	{
-		debug("Ops: unregistering transfer with no transfer list!");
+		qDebug("Ops: unregistering transfer with no transfer list!");
 		return;
 	}
 

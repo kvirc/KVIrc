@@ -95,7 +95,7 @@
 	QDBusMessage reply = dbus_iface.call(QDBus::Block, __action); \
 	if (reply.type() == QDBusMessage::ErrorMessage) { \
 		QDBusError err = reply; \
-		debug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
+		qDebug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
 		return FALSE; \
 	} \
 	return TRUE;
@@ -173,7 +173,7 @@
 /*
 		CHECK_RANGE_BOOL(i, m_ti.size())
 
-		debug("starting %s [%d]", (const char*)m_ti[i].name, m_ti[i].num);
+		qDebug("starting %s [%d]", (const char*)m_ti[i].name, m_ti[i].num);
 		if (!voidRetIntDCOPCall("KTorrent", "start(int)", m_ti[i].num))
 			ERROR_RET_BOOL
 */
@@ -185,7 +185,7 @@
 /*
 		CHECK_RANGE_BOOL(i, m_ti.size())
 
-		debug("stopping %s [%d]", (const char*)m_ti[i].name, m_ti[i].num);
+		qDebug("stopping %s [%d]", (const char*)m_ti[i].name, m_ti[i].num);
 		if (!voidRetIntBoolDCOPCall("KTorrent", "stop(int, bool)", m_ti[i].num, true))
 			ERROR_RET_BOOL
 */
@@ -197,7 +197,7 @@
 /*
 		CHECK_RANGE_BOOL(i, m_ti.size())
 
-		debug("announcing %s [%d]", (const char*)m_ti[i].name, m_ti[i].num);
+		qDebug("announcing %s [%d]", (const char*)m_ti[i].name, m_ti[i].num);
 		if (!voidRetIntDCOPCall("KTorrent", "announce(int)", m_ti[i].num))
 			ERROR_RET_BOOL
 */
@@ -265,7 +265,7 @@
 
 		CHECK_RANGE_STRING(file, ret.size())
 
-		debug("prio: %d", ret[file]);
+		qDebug("prio: %d", ret[file]);
 		switch (ret[file])
 		{
 			case 1: return "low";

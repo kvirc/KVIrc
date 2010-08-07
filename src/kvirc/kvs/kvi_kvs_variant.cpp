@@ -622,18 +622,18 @@ void KviKvsVariant::dump(const char * prefix) const
 {
 	if(!m_pData)
 	{
-		debug("%s Nothing [this=0x%lx]",prefix,(long unsigned int) this);
+		qDebug("%s Nothing [this=0x%lx]",prefix,(long unsigned int) this);
 		return;
 	}
 	switch(m_pData->m_eType)
 	{
-		case KviKvsVariantData::String: debug("%s String(%s) [this=0x%lx]",prefix,m_pData->m_u.pString->toUtf8().data(),(long unsigned int)this); break;
-		case KviKvsVariantData::Array: debug("%s Array(ptr=0x%lx) [this=0x%lx]",prefix,(long unsigned int)m_pData->m_u.pArray,(long unsigned int)this); break;
-		case KviKvsVariantData::Hash: debug("%s Hash(ptr=0x%lx,dict=0x%lx) [this=0x%lx]",prefix,(long unsigned int)m_pData->m_u.pHash,(long unsigned int)m_pData->m_u.pHash->dict(),(long unsigned int)this); break;
-		case KviKvsVariantData::Integer:  debug("%s Integer(%d) [this=0x%lx]",prefix,(int) m_pData->m_u.iInteger,(long unsigned int)this); break;
-		case KviKvsVariantData::Real: debug("%s Real(%f) [this=0x%lx]",prefix,*(m_pData->m_u.pReal),(long unsigned int)this); break;
-		case KviKvsVariantData::Boolean: debug("%s Boolean(%s) [this=0x%lx]",prefix,m_pData->m_u.bBoolean ? "true" : "false",(long unsigned int)this); break;
-		case KviKvsVariantData::HObject: debug("%s HObject(%lx) [this=0x%lx]",prefix,(long unsigned int)m_pData->m_u.hObject,(long unsigned int)this); break;
+		case KviKvsVariantData::String: qDebug("%s String(%s) [this=0x%lx]",prefix,m_pData->m_u.pString->toUtf8().data(),(long unsigned int)this); break;
+		case KviKvsVariantData::Array: qDebug("%s Array(ptr=0x%lx) [this=0x%lx]",prefix,(long unsigned int)m_pData->m_u.pArray,(long unsigned int)this); break;
+		case KviKvsVariantData::Hash: qDebug("%s Hash(ptr=0x%lx,dict=0x%lx) [this=0x%lx]",prefix,(long unsigned int)m_pData->m_u.pHash,(long unsigned int)m_pData->m_u.pHash->dict(),(long unsigned int)this); break;
+		case KviKvsVariantData::Integer:  qDebug("%s Integer(%d) [this=0x%lx]",prefix,(int) m_pData->m_u.iInteger,(long unsigned int)this); break;
+		case KviKvsVariantData::Real: qDebug("%s Real(%f) [this=0x%lx]",prefix,*(m_pData->m_u.pReal),(long unsigned int)this); break;
+		case KviKvsVariantData::Boolean: qDebug("%s Boolean(%s) [this=0x%lx]",prefix,m_pData->m_u.bBoolean ? "true" : "false",(long unsigned int)this); break;
+		case KviKvsVariantData::HObject: qDebug("%s HObject(%lx) [this=0x%lx]",prefix,(long unsigned int)m_pData->m_u.hObject,(long unsigned int)this); break;
 		default: /* make gcc happy */ break;
 	}
 }

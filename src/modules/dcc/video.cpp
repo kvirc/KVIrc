@@ -252,7 +252,7 @@ bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool 
 			KviThreadDataEvent<KviStr> * e = new KviThreadDataEvent<KviStr>(KVI_DCC_THREAD_EVENT_DATA);
 			// The left part is len chars long
 			int len = aux - data->buffer;
-//			debug("LEN = %d, iLen = %d",len,data->iLen);
+//			qDebug("LEN = %d, iLen = %d",len,data->iLen);
 //#warning "DO IT BETTER (the \r cutting)"
 			KviStr * s = new KviStr(data->buffer,len);
 			if(s->lastCharIs('\r'))s->cutRight(1);
@@ -261,7 +261,7 @@ bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool 
 			++aux;
 			// so len += 1; --> new data->iLen -= len;
 			data->iLen -= (len + 1);
-//			debug("iLen now = %d",data->iLen);
+//			qDebug("iLen now = %d",data->iLen);
 			KVI_ASSERT(data->iLen >= 0);
 			if(data->iLen > 0)
 			{
@@ -279,7 +279,7 @@ bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool 
 			}
 			postEvent(parent(),e);
 		} else aux++;
-//		debug("PASSING CHAR %c",*aux);
+//		qDebug("PASSING CHAR %c",*aux);
 	}
 	// now aux == end
 	if(bCritical)
@@ -304,10 +304,10 @@ bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool 
 void KviDccVideoThread::startRecording()
 {
 #ifndef COMPILE_DISABLE_DCC_VIDEO
-	//debug("Start recording");
+	//qDebug("Start recording");
 	if(m_bRecording)return; // already started
 	
-//	debug("Posting event");
+//	qDebug("Posting event");
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
 	e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_START_RECORDING));
 	postEvent(KviDccThread::parent(),e);
@@ -319,7 +319,7 @@ void KviDccVideoThread::startRecording()
 void KviDccVideoThread::stopRecording()
 {
 #ifndef COMPILE_DISABLE_DCC_VIDEO
-	//debug("Stop recording");
+	//qDebug("Stop recording");
 	if(!m_bRecording)return; // already stopped
 
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
@@ -333,7 +333,7 @@ void KviDccVideoThread::stopRecording()
 void KviDccVideoThread::startPlaying()
 {
 #ifndef COMPILE_DISABLE_DCC_VIDEO
-	//debug("Start playing");
+	//qDebug("Start playing");
 	if(m_bPlaying)return;
 
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
@@ -347,7 +347,7 @@ void KviDccVideoThread::startPlaying()
 void KviDccVideoThread::stopPlaying()
 {
 #ifndef COMPILE_DISABLE_DCC_VIDEO
-	//debug("Stop playing");
+	//qDebug("Stop playing");
 	if(!m_bPlaying)return;
 
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
@@ -785,7 +785,7 @@ bool KviDccVideo::event(QEvent *e)
 							szMsg += m_pDescriptor->szNick;
 							szMsg += "</b> ";
 							szMsg += Qt::escape(QString(d.ptr()));
-							//debug("kvi_sp_ctcp.cpp:975 debug: %s",szMsg.data());
+							//qDebug("kvi_sp_ctcp.cpp:975 debug: %s",szMsg.data());
 							g_pApp->notifierMessage(this,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 						}
 					}
@@ -882,7 +882,7 @@ bool KviDccVideo::event(QEvent *e)
 			}
 			break;
 			default:
-				debug("Invalid event type %d received",((KviThreadEvent *)e)->id());
+				qDebug("Invalid event type %d received",((KviThreadEvent *)e)->id());
 			break;
 		}
 

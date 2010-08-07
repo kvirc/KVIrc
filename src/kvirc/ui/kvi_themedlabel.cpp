@@ -53,7 +53,7 @@ KviThemedLabel::~KviThemedLabel()
 
 void KviThemedLabel::applyOptions()
 {
-	//debug("KviThemedLabel::applyOptions()");
+	//qDebug("KviThemedLabel::applyOptions()");
 	QString szStyle = QString("QLabel { background: transparent; color: %1; font-family: %2; font-size: %3pt; font-weight: %4; font-style: %5;}")
 		.arg(KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name())
 		.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())

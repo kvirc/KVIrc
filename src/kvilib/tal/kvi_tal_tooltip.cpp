@@ -52,7 +52,7 @@ bool KviTalToolTipHelper::eventFilter(QObject *,QEvent * pEvent)
 {
 	if((pEvent->type() == QEvent::ToolTip) && m_pToolTip)
 	{
-//		debug("TOOL TIP EVENT WITH POSITION %d,%d",((QHelpEvent *)pEvent)->pos().x(),((QHelpEvent *)pEvent)->pos().y());
+//		qDebug("TOOL TIP EVENT WITH POSITION %d,%d",((QHelpEvent *)pEvent)->pos().x(),((QHelpEvent *)pEvent)->pos().y());
 		m_pToolTip->maybeTip(((QHelpEvent *)pEvent)->pos());
 		return true;
 	}
@@ -93,7 +93,7 @@ void KviTalToolTip::remove(QWidget *widget)
 
 void KviTalToolTip::tip(const QRect & rect,const QString & text)
 {
-//	debug("TOOL TIP AT %d,%d",rect.topLeft().x(),rect.topLeft().y());
+//	qDebug("TOOL TIP AT %d,%d",rect.topLeft().x(),rect.topLeft().y());
 	QPoint pnt=m_pParent->mapToGlobal(rect.topLeft());
 	pnt.setX(pnt.x()+16);
 	pnt.setY(pnt.y()+16);

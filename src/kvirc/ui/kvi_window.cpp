@@ -968,7 +968,7 @@ void KviWindow::focusInEvent(QFocusEvent *)
 		if(m_pFocusHandler)m_pFocusHandler->setFocus();
 		else {
 			// else too bad :/
-			debug("No widget able to handle focus for window %s",objectName().toUtf8().data());
+			qDebug("No widget able to handle focus for window %s",objectName().toUtf8().data());
 			return;
 		}
 	} else {
@@ -981,7 +981,7 @@ void KviWindow::focusInEvent(QFocusEvent *)
 	// we should be already the active window at this point.
 	// If we're not, then run activateSelf() to fix this.
 	if(g_pActiveWindow != this)activateSelf();
-	//else debug("ACTIVE WINDOW IS ALREADY THIS");
+	//else qDebug("ACTIVE WINDOW IS ALREADY THIS");
 	updateCaption();
 }
 
@@ -1066,7 +1066,7 @@ void KviWindow::childDestroyed()
 
 void KviWindow::childRemoved(QWidget * o)
 {
-	//debug("CHILD REMOVED %d",o);
+	//qDebug("CHILD REMOVED %d",o);
 	o->removeEventFilter(this);
 	if(o == m_pFocusHandler)
 		m_pFocusHandler = 0;

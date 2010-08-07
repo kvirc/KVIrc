@@ -48,9 +48,9 @@ void KviGarbageCollector::collect(QObject * g)
 		m_pGarbageList = new KviPointerList<QObject>;
 		m_pGarbageList->setAutoDelete(true);
 	}
-	//debug("COLLECTING GARBAGE %s",g->className());
+	//qDebug("COLLECTING GARBAGE %s",g->className());
 	m_pGarbageList->append(g);
-//	debug("Registering garbage object %d (%s:%s)",g,g->className(),g->name());
+//	qDebug("Registering garbage object %d (%s:%s)",g,g->className(),g->name());
 	connect(g,SIGNAL(destroyed()),this,SLOT(garbageSuicide()));
 	triggerCleanup(0);
 }
@@ -59,13 +59,13 @@ void KviGarbageCollector::garbageSuicide()
 {
 	if(!m_pGarbageList)
 	{
-		debug("Ops... garbage suicide while no garbage list");
+		qDebug("Ops... garbage suicide while no garbage list");
 		return;
 	}
 	int idx = m_pGarbageList->findRef(sender());
 	if(idx == -1)
 	{
-		debug("Ops... unregistered garbage suicide");
+		qDebug("Ops... unregistered garbage suicide");
 		return;
 	}
 	m_pGarbageList->removeRef(sender());
@@ -77,7 +77,7 @@ void KviGarbageCollector::garbageSuicide()
 
 void KviGarbageCollector::triggerCleanup(int iTimeout)
 {
-	//debug("TRIGGERING CLEANUP AFTER %d msecs",iTimeout);
+	//qDebug("TRIGGERING CLEANUP AFTER %d msecs",iTimeout);
 	if(m_pCleanupTimer)
 	{
 		m_pCleanupTimer->stop();
@@ -90,26 +90,26 @@ void KviGarbageCollector::triggerCleanup(int iTimeout)
 
 void KviGarbageCollector::cleanup()
 {
-	//debug("CLEANUP CALLED !");
+	//qDebug("CLEANUP CALLED !");
 	if(m_pGarbageList)
 	{
-		//debug("SOME GARBAGE TO DELETE");
+		//qDebug("SOME GARBAGE TO DELETE");
 		KviPointerList<QObject> dying;
 		dying.setAutoDelete(false);
 		for(QObject * o = m_pGarbageList->first();o;o = m_pGarbageList->next())
 		{
-			//debug("CHECKING GARBAGE CLASS %s",o->className());
+			//qDebug("CHECKING GARBAGE CLASS %s",o->className());
 			bool bDeleteIt = m_bForceCleanupNow;
 			if(!bDeleteIt)
 			{
-				//debug("CLEANUP NOT FORCED");
+				//qDebug("CLEANUP NOT FORCED");
 				QVariant v = o->property("blockingDelete");
 				if(v.isValid())
 				{
-					//debug("HAS A VALID VARIANT!");
-//					debug("[Garbage collector]: garbage has a blockingDelete property");
+					//qDebug("HAS A VALID VARIANT!");
+//					qDebug("[Garbage collector]: garbage has a blockingDelete property");
 					bDeleteIt = !(v.toBool());
-//					if(!bDeleteIt)debug("And doesn't want to be delete now!");
+//					if(!bDeleteIt)qDebug("And doesn't want to be delete now!");
 				} else bDeleteIt = true; // must be deleted
 			}
 			if(bDeleteIt)dying.append(o);
@@ -117,7 +117,7 @@ void KviGarbageCollector::cleanup()
 
 		for(QObject * o2 = dying.first();o2;o2 = dying.next())
 		{
-			//debug("KILLING GARBAGE CLASS %s",o2->className());
+			//qDebug("KILLING GARBAGE CLASS %s",o2->className());
 			disconnect(o2,SIGNAL(destroyed()),this,SLOT(garbageSuicide()));
 			m_pGarbageList->removeRef(o2);
 		}
@@ -131,12 +131,12 @@ void KviGarbageCollector::cleanup()
 
 	if(m_pGarbageList)
 	{
-//		debug("[Garbage collector cleanup]: Some stuff left to be deleted, will retry in a while");
+//		qDebug("[Garbage collector cleanup]: Some stuff left to be deleted, will retry in a while");
 		// something left to be destroyed
-		if(m_bForceCleanupNow)debug("[Garbage collector]: Ops...I've left some undeleted stuff!");
+		if(m_bForceCleanupNow)qDebug("[Garbage collector]: Ops...I've left some undeleted stuff!");
 		triggerCleanup(5000); // retry in 5 sec
 	} else {
-//		debug("[Garbage collector cleanup]: Completed");
+//		qDebug("[Garbage collector cleanup]: Completed");
 		// nothing left to delete
 		if(m_pCleanupTimer)
 		{

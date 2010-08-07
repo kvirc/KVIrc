@@ -41,7 +41,7 @@
 
 #define KVSP_setCurCharPointer(_ptr) m_ptr = _ptr
 
-#define KVSP_ASSERT(_x) if(!(_x))debug("WARNING : ASSERT FAILED: (%s) IS FALSE AT %s:%d",#_x,__FILE__,__LINE__);
+#define KVSP_ASSERT(_x) if(!(_x))qDebug("WARNING : ASSERT FAILED: (%s) IS FALSE AT %s:%d",#_x,__FILE__,__LINE__);
 
 
 #endif //!_KVI_KVS_PARSER_MACROS_H_

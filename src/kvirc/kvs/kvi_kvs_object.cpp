@@ -612,7 +612,7 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,con
 
 	KviKvsKernel::instance()->objectController()->registerObject(this);
 
-//	debug("Hello world!");
+//	qDebug("Hello world!");
 //	[root@localhost cvs3]# kvirc
 //	Hello world!
 //	[root@localhost cvs3]# date

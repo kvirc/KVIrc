@@ -89,10 +89,10 @@ void KviDccMarshal::reset()
 		m_fd = KVI_INVALID_SOCKET;
 	}
 #ifdef COMPILE_SSL_SUPPORT
-//	debug("MARSHAL RESETTING (SSL=%d)",m_pSSL);
+//	qDebug("MARSHAL RESETTING (SSL=%d)",m_pSSL);
 	if(m_pSSL)
 	{
-//		debug("MARSHAL CLEARING THE SSL");
+//		qDebug("MARSHAL CLEARING THE SSL");
 		KviSSLMaster::freeSSL(m_pSSL);
 		m_pSSL = 0;
 	}
@@ -263,12 +263,12 @@ void KviDccMarshal::doListen()
 
 	if(kvi_socket_getsockname(m_fd,sareal.socketAddress(),&size))
 	{
-//		debug("GETSOCKNAMEOK");
+//		qDebug("GETSOCKNAMEOK");
 		m_szPort.setNum(sareal.port());
 		m_uPort = sareal.port();
-//		debug("REALPORT %u",m_uPort);
+//		qDebug("REALPORT %u",m_uPort);
 	} else {
-//		debug("GETSOCKNAMEFAILED");
+//		qDebug("GETSOCKNAMEFAILED");
 	}
 
 	// and setup the READ notifier...
@@ -565,7 +565,7 @@ void KviDccMarshal::snActivated(int)
 void KviDccMarshal::doSSLHandshake(int)
 {
 #ifdef COMPILE_SSL_SUPPORT
-//	debug("DO SSL HANDSHAKE");
+//	qDebug("DO SSL HANDSHAKE");
 	if(m_pSn)
 	{
 		delete m_pSn;
@@ -574,7 +574,7 @@ void KviDccMarshal::doSSLHandshake(int)
 
 	if(!m_pSSL)
 	{
-		debug("Ops... I've lost the SSL class ?");
+		qDebug("Ops... I've lost the SSL class ?");
 		reset();
 		emit error(KviError_internalError);
 		return; // ops ?
@@ -586,9 +586,9 @@ void KviDccMarshal::doSSLHandshake(int)
 	{
 		case KviSSL::Success:
 			// done!
-//			debug("EMITTING CONNECTED");
+//			qDebug("EMITTING CONNECTED");
 			emit connected();
-//			debug("CONNECTED EMITTED");
+//			qDebug("CONNECTED EMITTED");
 		break;
 		case KviSSL::WantRead:
 			m_pSn = new QSocketNotifier((int)m_fd,QSocketNotifier::Read);
@@ -632,7 +632,7 @@ void KviDccMarshal::doSSLHandshake(int)
 		break;
 	}
 #else  //!COMPILE_SSL_SUPPORT
-	debug("Ops.. ssl handshake without ssl support!...aborting!");
+	qDebug("Ops.. ssl handshake without ssl support!...aborting!");
 	exit(-1);
 #endif //!COMPILE_SSL_SUPPORT
 }

@@ -202,7 +202,7 @@ static DH * my_get_dh(int keylength)
 		break;
 		default:
 			// What the hell do you want from me ?
-			debug("OpenSSL is asking for a DH param with keylen %d: no way :D",keylength);
+			qDebug("OpenSSL is asking for a DH param with keylen %d: no way :D",keylength);
 		break;
 
 	}
@@ -360,7 +360,7 @@ static int cb(char *buf, int size, int, void *u)
 	int len = p->len();
 	if(len >= size)return 0;
 	kvi_memmove(buf,p->ptr(),len + 1);
-//	debug("PASS REQYESTED: %s",p->ptr());
+//	qDebug("PASS REQYESTED: %s",p->ptr());
 	return len;
 }
 
@@ -375,7 +375,7 @@ KviSSL::Result KviSSL::useCertificateFile(const char * cert,const char * pass)
 	if(!f)
 		return FileIoError;
 
-//	debug("READING CERTIFICATE %s",cert);
+//	qDebug("READING CERTIFICATE %s",cert);
 	if(PEM_read_X509(f,&x509,cb,&m_szPass))
 	{
 		if(!SSL_CTX_use_certificate(m_pSSLCtx,x509))
@@ -404,7 +404,7 @@ KviSSL::Result KviSSL::usePrivateKeyFile(const char * key,const char * pass)
 	if(!f)
 		return FileIoError;
 
-//	debug("READING KEY %s",key);
+//	qDebug("READING KEY %s",key);
 	if(PEM_read_PrivateKey(f,&k,cb,&m_szPass))
 	{
 		if(!SSL_CTX_use_PrivateKey(m_pSSLCtx,k))

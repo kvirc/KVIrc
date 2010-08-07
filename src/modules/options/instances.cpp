@@ -664,7 +664,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 : QObject(0)
 {
 
-	//debug("Instantiating");
+	//qDebug("Instantiating");
 	// Create the global widget dict : case sensitive , do not copy keys
 	m_pInstanceTree = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	m_pInstanceTree->setAutoDelete(true);
@@ -3548,9 +3548,9 @@ void KviOptionsInstanceManager::deleteInstanceTree(KviPointerList<KviOptionsWidg
 					delete e->pWidget->parent();
 					e->pWidget =  0;
 				} else {
-					debug("Ops...i have deleted the options dialog ?");
+					qDebug("Ops...i have deleted the options dialog ?");
 				}
-			} //else debug("Clas %s has no widget",e->szName);
+			} //else qDebug("Clas %s has no widget",e->szName);
 			if(e->pChildList)deleteInstanceTree(e->pChildList);
 		}
 		delete l;
@@ -3560,7 +3560,7 @@ void KviOptionsInstanceManager::deleteInstanceTree(KviPointerList<KviOptionsWidg
 
 KviOptionsInstanceManager::~KviOptionsInstanceManager()
 {
-	if(m_pInstanceTree)debug("Ops...KviOptionsInstanceManager::cleanup() not called ?");
+	if(m_pInstanceTree)qDebug("Ops...KviOptionsInstanceManager::cleanup() not called ?");
 }
 
 void KviOptionsInstanceManager::cleanup(KviModule *)
