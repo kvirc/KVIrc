@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-19 20:07+0200\n"
+"POT-Creation-Date: 2010-08-07 17:02+0200\n"
 "PO-Revision-Date: 2010-07-16 15:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: Français <LL@li.org>\n"
@@ -27,7 +27,6 @@ msgstr ""
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "On choisie l'interface client \"%Q\""
 
-
 #: src/modules/torrent/libkvitorrent.cpp:719
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Interface du client \"%Q\" invalide !"
@@ -46,11 +45,15 @@ msgstr "Pas de client torrent selectionner. Essayer /torrent.detect"
 
 #: src/modules/torrent/libkvitorrent.cpp:109
 msgid "Seems that there is no usable torrent client on this machine"
-msgstr "Il semble ne pas y avoir de client torrent utilisable sur cette machine"
+msgstr ""
+"Il semble ne pas y avoir de client torrent utilisable sur cette machine"
 
 #: src/modules/torrent/libkvitorrent.cpp:128
-msgid "The selected torrent client interface failed to execute the requested function"
-msgstr "Le client torrent selectionner à échouer lors de l'exécution de la requête"
+msgid ""
+"The selected torrent client interface failed to execute the requested "
+"function"
+msgstr ""
+"Le client torrent selectionner à échouer lors de l'exécution de la requête"
 
 #: src/modules/torrent/tc_statusbarapplet.cpp:44
 #: src/modules/torrent/tc_statusbarapplet.cpp:61

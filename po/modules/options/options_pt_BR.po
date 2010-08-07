@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt_BR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 18:58+0200\n"
+"POT-Creation-Date: 2010-08-07 17:02+0200\n"
 "PO-Revision-Date: 2005-05-26 22:52+0000\n"
 "Last-Translator: \n"
 "Language-Team:  <pt@li.org>\n"
@@ -19,8 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:285
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:285
 msgid " bytes"
 msgstr " bytes"
 
@@ -42,8 +41,7 @@ msgstr ""
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
 #: src/modules/options/optw_connection.cpp:155
-#: src/modules/options/optw_dcc.cpp:276
-#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_dcc.cpp:276 src/modules/options/optw_lag.cpp:45
 #: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr " mseg"
@@ -100,8 +98,7 @@ msgstr "&Novo Servidor"
 
 #: src/modules/options/optw_servers.cpp:366
 #: src/modules/options/optw_identity.cpp:234
-#: src/modules/options/dialog.cpp:228
-#: src/modules/options/container.cpp:72
+#: src/modules/options/dialog.cpp:228 src/modules/options/container.cpp:72
 msgid "&OK"
 msgstr "&Aceitar"
 
@@ -1065,8 +1062,7 @@ msgstr ""
 "problemÃ¡ticos.<br>Utilize-o apenas se sua transferÃªncia DCC parar logo "
 "apÃ³s estabelecer uma conexÃ£o sem enviar quaisquer dados.</center> "
 
-#: src/modules/options/optw_query.cpp:82
-#: src/modules/options/optw_dcc.cpp:332
+#: src/modules/options/optw_query.cpp:82 src/modules/options/optw_dcc.cpp:332
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1702,17 +1698,15 @@ msgstr "PrÃ³logo"
 msgid "Add Rule"
 msgstr "Adicionar Regra"
 
-#: src/modules/options/optw_servers.cpp:972
-#: src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102
-#: src/modules/options/optw_irc.h:57
+#: src/modules/options/optw_servers.cpp:972 src/modules/options/optw_dcc.h:58
+#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_irc.h:57
 #: src/modules/options/optw_channel.h:64
 #: src/modules/options/optw_identity.h:202
 #: src/modules/options/optw_connection.h:45
 msgid "Advanced"
 msgstr "AvanÃ§ado"
 
-#: src/modules/options/optw_notifier.cpp:191
+#: src/modules/options/optw_notifier.cpp:206
 #: src/modules/options/optw_notify.cpp:60
 msgid "Advanced configuration"
 msgstr "ConfiguraÃ§Ã£o avanÃ§ada"
@@ -1840,8 +1834,7 @@ msgstr ""
 msgid "Auto flush logs every"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Auto-detect"
 msgstr "Auto-detectar"
 
@@ -1854,8 +1847,7 @@ msgstr "Reconectar automaticamente"
 msgid "Automatically Log"
 msgstr "Log AutomÃ¡tico"
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:314
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:314
 #: src/modules/options/optw_dcc.cpp:350
 msgid "Automatically accept"
 msgstr "Aceitar automaticamente"
@@ -2023,8 +2015,7 @@ msgstr "Armazenar endereÃ§o IP"
 #: src/modules/options/optw_identity.cpp:96
 #: src/modules/options/optw_identity.cpp:239
 #: src/modules/options/optw_identity.cpp:953
-#: src/modules/options/dialog.cpp:243
-#: src/modules/options/container.cpp:80
+#: src/modules/options/dialog.cpp:243 src/modules/options/container.cpp:80
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -2036,8 +2027,7 @@ msgstr "Cancelar"
 #: src/modules/options/optw_userlist.cpp:149
 #: src/modules/options/optw_windowlist.cpp:136
 #: src/modules/options/optw_windowlist.cpp:141
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 #, fuzzy
 msgid "Center"
 msgstr "Geral"
@@ -2143,13 +2133,11 @@ msgstr "Limpar Lista"
 msgid "Close in tray"
 msgstr "Minimizar novos privados"
 
-#: src/modules/options/dialog.cpp:230
-#: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:230 src/modules/options/container.cpp:73
 msgid "Close this dialog, accepting all changes."
 msgstr "Fecha esta caixa de diÃ¡logo, aceitando todas as alteraÃ§Ãµes."
 
-#: src/modules/options/dialog.cpp:245
-#: src/modules/options/container.cpp:81
+#: src/modules/options/dialog.cpp:245 src/modules/options/container.cpp:81
 msgid "Close this dialog, discarding all changes."
 msgstr "Fecha esta caixa de diÃ¡logo, rejeitando todas as alteraÃ§Ãµes."
 
@@ -2277,7 +2265,7 @@ msgstr "PadrÃ£o"
 msgid "Default Messages"
 msgstr "Mensagem de ausÃªncia padrÃ£o:"
 
-#: src/modules/options/optw_notifier.cpp:196
+#: src/modules/options/optw_notifier.cpp:211
 msgid "Default auto hiding time for messages (0 to disable)"
 msgstr ""
 
@@ -2380,7 +2368,7 @@ msgstr "NÃ£o exibir cores nas mensagens de usuÃ¡rios"
 msgid "Don't show colors in user messages"
 msgstr "NÃ£o exibir cores nas mensagens de usuÃ¡rios"
 
-#: src/modules/options/optw_notifier.cpp:160
+#: src/modules/options/optw_notifier.cpp:176
 #, fuzzy
 msgid "Don't show notifier when there is an active fullscreen window"
 msgstr "Exibir notificaÃ§Ãµes na janela ativa"
@@ -2486,11 +2474,11 @@ msgstr "Habilitar medidor de lag"
 msgid "Enable level-based message notification (not a message-type based)"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:184
+#: src/modules/options/optw_notifier.cpp:199
 msgid "Enable notifier window fade effect"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:176
+#: src/modules/options/optw_notifier.cpp:192
 #, fuzzy
 msgid "Enable notifier window flashing"
 msgstr "Habilitar destaque de palavras"
@@ -2684,10 +2672,8 @@ msgid "Gender:"
 msgstr "Geral"
 
 #: src/modules/options/optw_servers.cpp:242
-#: src/modules/options/optw_messages.cpp:71
-#: src/modules/options/optw_dcc.h:45
-#: src/modules/options/optw_dcc.h:88
-#: src/modules/options/optw_irc.h:43
+#: src/modules/options/optw_messages.cpp:71 src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_dcc.h:88 src/modules/options/optw_irc.h:43
 #: src/modules/options/optw_interfacelookglobal.h:33
 #: src/modules/options/optw_channel.h:52
 #: src/modules/options/optw_identity.h:153
@@ -2778,7 +2764,7 @@ msgstr "Destacar mensagens que contenham o meu apelido"
 msgid "Highlight only whole words using these word splitters:"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:338
+#: src/modules/options/optw_sound.cpp:340
 #, fuzzy
 msgid "Highlighted message in inactive window"
 msgstr "Destacar mensagens que contenham o meu apelido"
@@ -2912,8 +2898,7 @@ msgstr "Contraste Alto Inativo do Primeiro Plano (PrimÃ¡rio)"
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Contraste Alto Inativo do Primeiro Plano (SecundÃ¡rio)"
 
-#: src/modules/options/optw_input.h:33
-#: src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
 msgid "Input"
 msgstr "Entrada"
 
@@ -3153,7 +3138,7 @@ msgstr "Largura mÃ­nima dos botÃµes:"
 msgid "Maximum width:"
 msgstr "Largura mÃ¡xima:"
 
-#: src/modules/options/optw_sound.cpp:341
+#: src/modules/options/optw_sound.cpp:343
 #, fuzzy
 msgid "Me have been kicked"
 msgstr "VocÃª foi paginado por"
@@ -3311,7 +3296,7 @@ msgstr "Nova Rede"
 msgid "New Proxy"
 msgstr "Novo Proxy"
 
-#: src/modules/options/optw_sound.cpp:332
+#: src/modules/options/optw_sound.cpp:334
 #, fuzzy
 msgid "New Query opened"
 msgstr "Manter conversas abertas"
@@ -3320,7 +3305,7 @@ msgstr "Manter conversas abertas"
 msgid "New Server"
 msgstr "Novo Servidor"
 
-#: src/modules/options/optw_sound.cpp:335
+#: src/modules/options/optw_sound.cpp:337
 msgid "New message in inactive query"
 msgstr ""
 
@@ -3413,11 +3398,11 @@ msgstr "Normal:"
 msgid "Notifier"
 msgstr "Notificador"
 
-#: src/modules/options/optw_notifier.cpp:203
+#: src/modules/options/optw_notifier.cpp:218
 msgid "Notifier window opacity while active (mouseover)"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:210
+#: src/modules/options/optw_notifier.cpp:225
 msgid "Notifier window opacity while inactive"
 msgstr ""
 
@@ -3526,8 +3511,7 @@ msgstr "Abrir privado com"
 msgid "Open all minimized"
 msgstr "Abrir todos minimizados"
 
-#: src/modules/options/optw_dcc.cpp:315
-#: src/modules/options/optw_dcc.cpp:352
+#: src/modules/options/optw_dcc.cpp:315 src/modules/options/optw_dcc.cpp:352
 msgid "Open minimized when auto-accepted"
 msgstr "Abrir minimizado quando aceitar automaticamente"
 
@@ -4255,8 +4239,7 @@ msgstr "Ordenar janelas por nome"
 msgid "Sound"
 msgstr "Som"
 
-#: src/modules/options/optw_sound.cpp:63
-#: src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:63 src/modules/options/optw_sound.h:47
 msgid "Sound System"
 msgstr "Sistema de Som"
 
@@ -4291,8 +4274,7 @@ msgstr "Erro do sistema"
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_sound.cpp:74
-#: src/modules/options/optw_sound.cpp:89
+#: src/modules/options/optw_sound.cpp:74 src/modules/options/optw_sound.cpp:89
 msgid "Test"
 msgstr "Testar"
 
@@ -4414,12 +4396,13 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/optw_notifier.cpp:146
+#, fuzzy
 msgid ""
 "This is an option for the impatient: it allows to forcibly and permanently "
-"disable the notifier window. Please note that if this option is activated "
-"then the notifier will NOT popup even if all the other options around "
-"specify to use it in response to particular events. Also note that this "
-"option will make all the /notifier.* commands fail silently."
+"disable the notifier window. Please note that if this option is not "
+"activated then the notifier will NOT popup even if all the other options "
+"around specify to use it in response to particular events. Also note that "
+"this option will make all the /notifier.* commands fail silently."
 msgstr ""
 "Esta Ã© uma opÃ§Ã£o para os impacientes: permite a desativaÃ§Ã£o forÃ§ada e "
 "permanente da janela de notificaÃ§Ã£o. Por favor note que se esta opÃ§Ã£o "
@@ -4485,12 +4468,19 @@ msgstr ""
 "favor use /ns IDENTIFY password\" e Ã© enviado quando o Nickserv quer que "
 "vocÃª se identifique. Pode usar os caracteres * e ?."
 
-#: src/modules/options/optw_notifier.cpp:163
+#: src/modules/options/optw_notifier.cpp:179
 msgid ""
 "This option stops the notifier from being displayed when there is an active "
 "fullscreen window. This is useful for gaming sessions where you may be "
 "distracted by the notifier or it may even switch your game from fullscreen "
 "to window mode."
+msgstr ""
+
+#: src/modules/options/optw_notifier.cpp:161
+msgid ""
+"This option uses the DBus-based notifier (like KDE KNotify) instead of KVIrc "
+"one.<br>This is cool if you want to better integrate KVIrc inside KDE. Note "
+"that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's"
 msgstr ""
 
 #: src/modules/options/optw_avatar.cpp:107
@@ -4539,8 +4529,7 @@ msgstr ""
 #: src/modules/options/optw_userlist.cpp:146
 #: src/modules/options/optw_windowlist.cpp:133
 #: src/modules/options/optw_windowlist.cpp:138
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 msgid "Tile"
 msgstr ""
 
@@ -4783,6 +4772,10 @@ msgstr "Usar cor especial na marca de tempo"
 msgid "Use system URL handlers"
 msgstr "Manipuladores de URL"
 
+#: src/modules/options/optw_notifier.cpp:159
+msgid "Use the DBus-based notifiers"
+msgstr ""
+
 #: src/modules/options/optw_connection.cpp:89
 #, fuzzy
 msgid "Use the SASL authentication protocol if available"
@@ -4977,8 +4970,7 @@ msgstr "[Tipo de Midia Desconhecida]"
 msgid "authentication,identify"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:243
-#: src/modules/options/optw_dcc.cpp:249
+#: src/modules/options/optw_dcc.cpp:243 src/modules/options/optw_dcc.cpp:249
 msgid "bytes/sec"
 msgstr "bytes/sec"
 
@@ -5077,13 +5069,11 @@ msgid "theme,colors,messages,output"
 msgstr ""
 
 #: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37
-#: src/modules/options/optw_ircview.h:51
+#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
 msgid "theme,colors,output"
 msgstr ""
 
-#: src/modules/options/optw_notifier.h:34
-#: src/modules/options/optw_input.h:34
+#: src/modules/options/optw_notifier.h:34 src/modules/options/optw_input.h:34
 msgid "theme,colors,text"
 msgstr ""
 

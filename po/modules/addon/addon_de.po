@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 18:58+0200\n"
+"POT-Creation-Date: 2010-08-07 17:02+0200\n"
 "PO-Revision-Date: 2010-06-10 21:10+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -312,8 +312,7 @@ msgstr "Quellverzeichnis auswählen:"
 msgid "Show Help"
 msgstr "Hilfe anzeigen"
 
-#: src/modules/addon/libkviaddon.cpp:691
-#: src/modules/addon/libkviaddon.cpp:714
+#: src/modules/addon/libkviaddon.cpp:691 src/modules/addon/libkviaddon.cpp:714
 msgid "Skipping inexisting entry '%1'"
 msgstr ""
 
@@ -325,12 +324,9 @@ msgstr ""
 msgid "Source Directory"
 msgstr "Quellverzeichnis"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:647
 msgid "The addon \"%1\" does not exist"
 msgstr "Die Erweiterung »%1« existiert nicht"
 
@@ -426,8 +422,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Gesamt: %d Erweiterungen installiert"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Deinstallieren der bestehenden Erweiterung Version %Q"
 

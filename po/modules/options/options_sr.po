@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 18:58+0200\n"
+"POT-Creation-Date: 2010-08-07 17:02+0200\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -14,8 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.5\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:285
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:285
 #, fuzzy
 msgid " bytes"
 msgstr "0 bajtova"
@@ -40,8 +39,7 @@ msgstr "odgovoreno"
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
 #: src/modules/options/optw_connection.cpp:155
-#: src/modules/options/optw_dcc.cpp:276
-#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_dcc.cpp:276 src/modules/options/optw_lag.cpp:45
 #: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr ""
@@ -106,8 +104,7 @@ msgstr "Mreža/Server"
 
 #: src/modules/options/optw_servers.cpp:366
 #: src/modules/options/optw_identity.cpp:234
-#: src/modules/options/dialog.cpp:228
-#: src/modules/options/container.cpp:72
+#: src/modules/options/dialog.cpp:228 src/modules/options/container.cpp:72
 #, fuzzy
 msgid "&OK"
 msgstr "OK"
@@ -955,8 +952,7 @@ msgid ""
 "data.</center>"
 msgstr ""
 
-#: src/modules/options/optw_query.cpp:82
-#: src/modules/options/optw_dcc.cpp:332
+#: src/modules/options/optw_query.cpp:82 src/modules/options/optw_dcc.cpp:332
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1554,10 +1550,8 @@ msgstr "Uvod"
 msgid "Add Rule"
 msgstr "Dodaj zabranu (ban)"
 
-#: src/modules/options/optw_servers.cpp:972
-#: src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102
-#: src/modules/options/optw_irc.h:57
+#: src/modules/options/optw_servers.cpp:972 src/modules/options/optw_dcc.h:58
+#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_irc.h:57
 #: src/modules/options/optw_channel.h:64
 #: src/modules/options/optw_identity.h:202
 #: src/modules/options/optw_connection.h:45
@@ -1565,7 +1559,7 @@ msgstr "Dodaj zabranu (ban)"
 msgid "Advanced"
 msgstr "Napredno ..."
 
-#: src/modules/options/optw_notifier.cpp:191
+#: src/modules/options/optw_notifier.cpp:206
 #: src/modules/options/optw_notify.cpp:60
 #, fuzzy
 msgid "Advanced configuration"
@@ -1709,8 +1703,7 @@ msgstr ""
 msgid "Auto flush logs every"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Auto-detect"
 msgstr ""
 
@@ -1723,8 +1716,7 @@ msgstr "Automatski prihvati"
 msgid "Automatically Log"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:314
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:314
 #: src/modules/options/optw_dcc.cpp:350
 #, fuzzy
 msgid "Automatically accept"
@@ -1914,8 +1906,7 @@ msgstr "Keširaj IP adresu"
 #: src/modules/options/optw_identity.cpp:96
 #: src/modules/options/optw_identity.cpp:239
 #: src/modules/options/optw_identity.cpp:953
-#: src/modules/options/dialog.cpp:243
-#: src/modules/options/container.cpp:80
+#: src/modules/options/dialog.cpp:243 src/modules/options/container.cpp:80
 msgid "Cancel"
 msgstr "Poništi"
 
@@ -1927,8 +1918,7 @@ msgstr "Poništi"
 #: src/modules/options/optw_userlist.cpp:149
 #: src/modules/options/optw_windowlist.cpp:136
 #: src/modules/options/optw_windowlist.cpp:141
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 #, fuzzy
 msgid "Center"
 msgstr "Generalne opcije"
@@ -2049,13 +2039,11 @@ msgstr "Isprazni listu"
 msgid "Close in tray"
 msgstr "M&inimizuj"
 
-#: src/modules/options/dialog.cpp:230
-#: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:230 src/modules/options/container.cpp:73
 msgid "Close this dialog, accepting all changes."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:245
-#: src/modules/options/container.cpp:81
+#: src/modules/options/dialog.cpp:245 src/modules/options/container.cpp:81
 msgid "Close this dialog, discarding all changes."
 msgstr ""
 
@@ -2195,7 +2183,7 @@ msgstr "predefinisano"
 msgid "Default Messages"
 msgstr "Predefinisana poruka odsutnosti"
 
-#: src/modules/options/optw_notifier.cpp:196
+#: src/modules/options/optw_notifier.cpp:211
 msgid "Default auto hiding time for messages (0 to disable)"
 msgstr ""
 
@@ -2303,7 +2291,7 @@ msgstr "Ne prikazuj skrivene fajlove"
 msgid "Don't show colors in user messages"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:160
+#: src/modules/options/optw_notifier.cpp:176
 #, fuzzy
 msgid "Don't show notifier when there is an active fullscreen window"
 msgstr "Promene liste obaveštenja u aktivni prozor"
@@ -2419,11 +2407,11 @@ msgstr "Pogrešan parametar"
 msgid "Enable level-based message notification (not a message-type based)"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:184
+#: src/modules/options/optw_notifier.cpp:199
 msgid "Enable notifier window fade effect"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:176
+#: src/modules/options/optw_notifier.cpp:192
 #, fuzzy
 msgid "Enable notifier window flashing"
 msgstr "Omogući naglašavanje reči"
@@ -2622,10 +2610,8 @@ msgid "Gender:"
 msgstr "Generalne opcije"
 
 #: src/modules/options/optw_servers.cpp:242
-#: src/modules/options/optw_messages.cpp:71
-#: src/modules/options/optw_dcc.h:45
-#: src/modules/options/optw_dcc.h:88
-#: src/modules/options/optw_irc.h:43
+#: src/modules/options/optw_messages.cpp:71 src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_dcc.h:88 src/modules/options/optw_irc.h:43
 #: src/modules/options/optw_interfacelookglobal.h:33
 #: src/modules/options/optw_channel.h:52
 #: src/modules/options/optw_identity.h:153
@@ -2724,7 +2710,7 @@ msgstr "Uvek naglasi poruke sa mojim nadimkom u njima"
 msgid "Highlight only whole words using these word splitters:"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:338
+#: src/modules/options/optw_sound.cpp:340
 #, fuzzy
 msgid "Highlighted message in inactive window"
 msgstr "nema spoljnih poruka"
@@ -2867,8 +2853,7 @@ msgstr ""
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr ""
 
-#: src/modules/options/optw_input.h:33
-#: src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
 #, fuzzy
 msgid "Input"
 msgstr "Indeks"
@@ -3135,7 +3120,7 @@ msgstr "Minimalna širina"
 msgid "Maximum width:"
 msgstr "Maksimalna širina"
 
-#: src/modules/options/optw_sound.cpp:341
+#: src/modules/options/optw_sound.cpp:343
 msgid "Me have been kicked"
 msgstr ""
 
@@ -3306,7 +3291,7 @@ msgstr "Nova Mreža"
 msgid "New Proxy"
 msgstr "Proxy"
 
-#: src/modules/options/optw_sound.cpp:332
+#: src/modules/options/optw_sound.cpp:334
 msgid "New Query opened"
 msgstr ""
 
@@ -3315,7 +3300,7 @@ msgstr ""
 msgid "New Server"
 msgstr "Mreža/Server"
 
-#: src/modules/options/optw_sound.cpp:335
+#: src/modules/options/optw_sound.cpp:337
 msgid "New message in inactive query"
 msgstr ""
 
@@ -3419,11 +3404,11 @@ msgstr "Normalni mod"
 msgid "Notifier"
 msgstr "Lista obaveštenja"
 
-#: src/modules/options/optw_notifier.cpp:203
+#: src/modules/options/optw_notifier.cpp:218
 msgid "Notifier window opacity while active (mouseover)"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:210
+#: src/modules/options/optw_notifier.cpp:225
 msgid "Notifier window opacity while inactive"
 msgstr ""
 
@@ -3540,8 +3525,7 @@ msgstr ""
 msgid "Open all minimized"
 msgstr "Kreiraj minimizirano"
 
-#: src/modules/options/optw_dcc.cpp:315
-#: src/modules/options/optw_dcc.cpp:352
+#: src/modules/options/optw_dcc.cpp:315 src/modules/options/optw_dcc.cpp:352
 #, fuzzy
 msgid "Open minimized when auto-accepted"
 msgstr "Napravi minimizirano kad automatski-prihvataš"
@@ -4324,8 +4308,7 @@ msgstr ""
 msgid "Sound"
 msgstr "Pošalji"
 
-#: src/modules/options/optw_sound.cpp:63
-#: src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:63 src/modules/options/optw_sound.h:47
 #, fuzzy
 msgid "Sound System"
 msgstr "Muzički sistem"
@@ -4362,8 +4345,7 @@ msgstr "sistemska greška"
 msgid "TIME"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:74
-#: src/modules/options/optw_sound.cpp:89
+#: src/modules/options/optw_sound.cpp:74 src/modules/options/optw_sound.cpp:89
 #, fuzzy
 msgid "Test"
 msgstr "Tester"
@@ -4483,10 +4465,10 @@ msgstr ""
 #: src/modules/options/optw_notifier.cpp:146
 msgid ""
 "This is an option for the impatient: it allows to forcibly and permanently "
-"disable the notifier window. Please note that if this option is activated "
-"then the notifier will NOT popup even if all the other options around "
-"specify to use it in response to particular events. Also note that this "
-"option will make all the /notifier.* commands fail silently."
+"disable the notifier window. Please note that if this option is not "
+"activated then the notifier will NOT popup even if all the other options "
+"around specify to use it in response to particular events. Also note that "
+"this option will make all the /notifier.* commands fail silently."
 msgstr ""
 
 #: src/modules/options/optw_nickserv.cpp:94
@@ -4539,12 +4521,19 @@ msgid ""
 "authenticate yourself. You can use the * and ? wildcards."
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:163
+#: src/modules/options/optw_notifier.cpp:179
 msgid ""
 "This option stops the notifier from being displayed when there is an active "
 "fullscreen window. This is useful for gaming sessions where you may be "
 "distracted by the notifier or it may even switch your game from fullscreen "
 "to window mode."
+msgstr ""
+
+#: src/modules/options/optw_notifier.cpp:161
+msgid ""
+"This option uses the DBus-based notifier (like KDE KNotify) instead of KVIrc "
+"one.<br>This is cool if you want to better integrate KVIrc inside KDE. Note "
+"that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's"
 msgstr ""
 
 #: src/modules/options/optw_avatar.cpp:107
@@ -4588,8 +4577,7 @@ msgstr ""
 #: src/modules/options/optw_userlist.cpp:146
 #: src/modules/options/optw_windowlist.cpp:133
 #: src/modules/options/optw_windowlist.cpp:138
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 #, fuzzy
 msgid "Tile"
 msgstr "&Parče"
@@ -4855,6 +4843,10 @@ msgstr "Koristi UTC datum i vreme"
 msgid "Use system URL handlers"
 msgstr "Dodaj manipulator"
 
+#: src/modules/options/optw_notifier.cpp:159
+msgid "Use the DBus-based notifiers"
+msgstr ""
+
 #: src/modules/options/optw_connection.cpp:89
 #, fuzzy
 msgid "Use the SASL authentication protocol if available"
@@ -5061,8 +5053,7 @@ msgstr "Nepoznat tip medija"
 msgid "authentication,identify"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:243
-#: src/modules/options/optw_dcc.cpp:249
+#: src/modules/options/optw_dcc.cpp:243 src/modules/options/optw_dcc.cpp:249
 #, fuzzy
 msgid "bytes/sec"
 msgstr "0 bajtova/sek"
@@ -5162,13 +5153,11 @@ msgid "theme,colors,messages,output"
 msgstr ""
 
 #: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37
-#: src/modules/options/optw_ircview.h:51
+#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
 msgid "theme,colors,output"
 msgstr ""
 
-#: src/modules/options/optw_notifier.h:34
-#: src/modules/options/optw_input.h:34
+#: src/modules/options/optw_notifier.h:34 src/modules/options/optw_input.h:34
 msgid "theme,colors,text"
 msgstr ""
 

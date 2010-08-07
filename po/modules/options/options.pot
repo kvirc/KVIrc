@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 18:58+0200\n"
+"POT-Creation-Date: 2010-08-07 17:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1203,17 +1203,28 @@ msgstr ""
 #: src/modules/options/optw_notifier.cpp:146
 msgid ""
 "This is an option for the impatient: it allows to forcibly and permanently "
-"disable the notifier window. Please note that if this option is activated "
-"then the notifier will NOT popup even if all the other options around "
-"specify to use it in response to particular events. Also note that this "
-"option will make all the /notifier.* commands fail silently."
+"disable the notifier window. Please note that if this option is not "
+"activated then the notifier will NOT popup even if all the other options "
+"around specify to use it in response to particular events. Also note that "
+"this option will make all the /notifier.* commands fail silently."
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:160
+#: src/modules/options/optw_notifier.cpp:159
+msgid "Use the DBus-based notifiers"
+msgstr ""
+
+#: src/modules/options/optw_notifier.cpp:161
+msgid ""
+"This option uses the DBus-based notifier (like KDE KNotify) instead of KVIrc "
+"one.<br>This is cool if you want to better integrate KVIrc inside KDE. Note "
+"that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's"
+msgstr ""
+
+#: src/modules/options/optw_notifier.cpp:176
 msgid "Don't show notifier when there is an active fullscreen window"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:163
+#: src/modules/options/optw_notifier.cpp:179
 msgid ""
 "This option stops the notifier from being displayed when there is an active "
 "fullscreen window. This is useful for gaming sessions where you may be "
@@ -1221,28 +1232,28 @@ msgid ""
 "to window mode."
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:176
+#: src/modules/options/optw_notifier.cpp:192
 msgid "Enable notifier window flashing"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:184
+#: src/modules/options/optw_notifier.cpp:199
 msgid "Enable notifier window fade effect"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:191
+#: src/modules/options/optw_notifier.cpp:206
 #: src/modules/options/optw_notify.cpp:60
 msgid "Advanced configuration"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:196
+#: src/modules/options/optw_notifier.cpp:211
 msgid "Default auto hiding time for messages (0 to disable)"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:203
+#: src/modules/options/optw_notifier.cpp:218
 msgid "Notifier window opacity while active (mouseover)"
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:210
+#: src/modules/options/optw_notifier.cpp:225
 msgid "Notifier window opacity while inactive"
 msgstr ""
 
@@ -3835,19 +3846,19 @@ msgstr ""
 msgid "This allows you to select encoding of winamp messages."
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:332
+#: src/modules/options/optw_sound.cpp:334
 msgid "New Query opened"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:335
+#: src/modules/options/optw_sound.cpp:337
 msgid "New message in inactive query"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:338
+#: src/modules/options/optw_sound.cpp:340
 msgid "Highlighted message in inactive window"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:341
+#: src/modules/options/optw_sound.cpp:343
 msgid "Me have been kicked"
 msgstr ""
 

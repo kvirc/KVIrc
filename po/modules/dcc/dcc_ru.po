@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 18:58+0200\n"
+"POT-Creation-Date: 2010-08-07 17:02+0200\n"
 "PO-Revision-Date: 2010-06-14 10:42+0400\n"
 "Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -25,12 +25,11 @@ msgstr ""
 msgid "\"any\""
 msgstr "\"любой\""
 
-#: src/modules/dcc/send.cpp:1270
+#: src/modules/dcc/send.cpp:1524
 msgid "%1"
 msgstr "%1"
 
-#: src/modules/dcc/send.cpp:1259
-#: src/modules/dcc/send.cpp:1266
+#: src/modules/dcc/send.cpp:1513 src/modules/dcc/send.cpp:1520
 msgid "%1 of %2 (%3%)"
 msgstr "%1 из %2 (%3%)"
 
@@ -78,8 +77,7 @@ msgstr "&Сектор"
 msgid "&Polygons"
 msgstr "&Многоугольники"
 
-#: src/modules/dcc/canvaswidget.cpp:1479
-#: src/modules/dcc/canvaswidget.cpp:1487
+#: src/modules/dcc/canvaswidget.cpp:1479 src/modules/dcc/canvaswidget.cpp:1487
 msgid "&Rectangle"
 msgstr "&Прямоугольник"
 
@@ -103,15 +101,12 @@ msgstr "&Форма"
 msgid "&Triangle"
 msgstr "&Треугольник"
 
-#: src/modules/dcc/requests.cpp:788
-#: src/modules/dcc/requests.cpp:958
+#: src/modules/dcc/requests.cpp:788 src/modules/dcc/requests.cpp:958
 msgid "(unknown)"
 msgstr "(неизвестно)"
 
-#: src/modules/dcc/libkvidcc.cpp:434
-#: src/modules/dcc/libkvidcc.cpp:657
-#: src/modules/dcc/libkvidcc.cpp:1159
-#: src/modules/dcc/libkvidcc.cpp:1226
+#: src/modules/dcc/libkvidcc.cpp:434 src/modules/dcc/libkvidcc.cpp:657
+#: src/modules/dcc/libkvidcc.cpp:1159 src/modules/dcc/libkvidcc.cpp:1226
 msgid "-c requires -i and -p"
 msgstr "-c требуется -i и -p"
 
@@ -184,22 +179,20 @@ msgstr ""
 "указать KVIrc чтобы он автоматически принимал входящие аватары установив "
 "опцию <tt>boolAutoAcceptIncomingAvatars</tt> в true.<br>"
 
-#: src/modules/dcc/libkvidcc.cpp:634
-#: src/modules/dcc/requests.cpp:455
+#: src/modules/dcc/libkvidcc.cpp:634 src/modules/dcc/requests.cpp:455
 #: src/modules/dcc/requests.cpp:755
 msgid "<unknown size>"
 msgstr "<неизвестный размер>"
 
-#: src/modules/dcc/send.cpp:967
+#: src/modules/dcc/send.cpp:1221
 msgid "Abort"
 msgstr "Прервать"
 
-#: src/modules/dcc/send.cpp:941
-#: src/modules/dcc/send.cpp:952
+#: src/modules/dcc/send.cpp:1195 src/modules/dcc/send.cpp:1206
 msgid "Aborted"
 msgstr "Прервано"
 
-#: src/modules/dcc/send.cpp:1858
+#: src/modules/dcc/send.cpp:2130
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr "Запрос RESUME принят, передача начинается с позиции %1"
 
@@ -220,13 +213,12 @@ msgstr ""
 "DCC %s поскольку мы не можем принимать входящие соединения (опция "
 "пользователя)"
 
-#: src/modules/dcc/video.cpp:910
-#: src/modules/dcc/voice.cpp:930
+#: src/modules/dcc/video.cpp:918 src/modules/dcc/voice.cpp:930
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Текущий используемый кодек - '%s'"
 
-#: src/modules/dcc/send.cpp:844
+#: src/modules/dcc/send.cpp:1090
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Попытка пассивного DCC %1 соединения"
 
@@ -247,7 +239,7 @@ msgstr "Попытка пассивного соединения DCC VIDEO"
 msgid "Attempting a passive DCC VOICE connection"
 msgstr "Попытка пассивного соединения DCC VOICE"
 
-#: src/modules/dcc/send.cpp:848
+#: src/modules/dcc/send.cpp:1094
 msgid "Attempting an active DCC %1 connection"
 msgstr "Попытка активного DCC %1 соединения"
 
@@ -276,7 +268,7 @@ msgstr "Автоматический приём DCC %Q запроса из %Q!%Q
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
 msgstr "Автосохранение DCC %Q файла %Q как \r![!dbl]play $0\r%Q\r"
 
-#: src/modules/dcc/send.cpp:1294
+#: src/modules/dcc/send.cpp:1548
 msgid "Avg:"
 msgstr "В среднем:"
 
@@ -289,8 +281,7 @@ msgstr ""
 "Не могу слушать интерфейс '%s': исправьте его в диалоге опций, или выключите "
 "опцию (тогда вероятно dcc будет работать)"
 
-#: src/modules/dcc/broker.cpp:207
-#: src/modules/dcc/broker.cpp:916
+#: src/modules/dcc/broker.cpp:207 src/modules/dcc/broker.cpp:916
 msgid "Can't open file %Q for reading"
 msgstr "Невозможно открыть файл %Q на чтение"
 
@@ -319,15 +310,12 @@ msgstr "Не могу найти пригодный локальный IPV4 ад
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Невозможно отослать DCC %Q запрос в %Q: IRC соединение закрыто"
 
-#: src/modules/dcc/send.cpp:1915
-#: src/modules/dcc/dialogs.cpp:158
+#: src/modules/dcc/send.cpp:2195 src/modules/dcc/dialogs.cpp:158
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/modules/dcc/video.cpp:643
-#: src/modules/dcc/video.cpp:738
-#: src/modules/dcc/chat.cpp:297
-#: src/modules/dcc/chat.cpp:392
+#: src/modules/dcc/video.cpp:643 src/modules/dcc/video.cpp:746
+#: src/modules/dcc/chat.cpp:297 src/modules/dcc/chat.cpp:400
 msgid "Cannot send data: No active connection"
 msgstr "Невозможно отослать данные: Нет активных соединений"
 
@@ -335,8 +323,7 @@ msgstr "Невозможно отослать данные: Нет активн�
 msgid "Choose Files to Save - KVIrc"
 msgstr "Выберите файлы для сохранения - KVIrc"
 
-#: src/modules/dcc/broker.cpp:167
-#: src/modules/dcc/broker.cpp:879
+#: src/modules/dcc/broker.cpp:167 src/modules/dcc/broker.cpp:879
 msgid "Choose Files to Send - KVIrc"
 msgstr "Выберите файл для передачи - KVIrc"
 
@@ -346,46 +333,41 @@ msgid "Concurrent transfer limit reached (%u of %u transfers running)"
 msgstr ""
 "Количество параллельных передач достигло лимита (%u из %u передач запущено)"
 
-#: src/modules/dcc/send.cpp:962
+#: src/modules/dcc/send.cpp:1216
 msgid "Configure Bandwidth..."
 msgstr "Конфигурирование пропускной способности..."
 
-#: src/modules/dcc/send.cpp:1884
+#: src/modules/dcc/send.cpp:2166
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr "Конфигурирование пропускной способности для DCC передачи %1"
 
-#: src/modules/dcc/send.cpp:1698
+#: src/modules/dcc/send.cpp:1955
 msgid "Connected to %1:%2"
 msgstr "Подключение к%1:%2"
 
-#: src/modules/dcc/video.cpp:894
-#: src/modules/dcc/chat.cpp:556
-#: src/modules/dcc/voice.cpp:910
-#: src/modules/dcc/canvas.cpp:282
+#: src/modules/dcc/video.cpp:902 src/modules/dcc/chat.cpp:564
+#: src/modules/dcc/voice.cpp:910 src/modules/dcc/canvas.cpp:284
 msgid "Connected to %Q:%Q"
 msgstr "Подключение к %Q:%Q"
 
-#: src/modules/dcc/send.cpp:1490
+#: src/modules/dcc/send.cpp:1744
 msgid "Contacting host %1 on port %2"
 msgstr "Подключение к хосту %1 на порт %2"
 
-#: src/modules/dcc/video.cpp:584
-#: src/modules/dcc/chat.cpp:184
-#: src/modules/dcc/voice.cpp:755
-#: src/modules/dcc/canvas.cpp:108
+#: src/modules/dcc/video.cpp:584 src/modules/dcc/chat.cpp:184
+#: src/modules/dcc/voice.cpp:755 src/modules/dcc/canvas.cpp:108
 msgid "Contacting host %Q on port %Q"
 msgstr "Подключение к хосту %Q на порт %Q"
 
-#: src/modules/dcc/broker.cpp:296
-#: src/modules/dcc/broker.cpp:626
+#: src/modules/dcc/broker.cpp:296 src/modules/dcc/broker.cpp:626
 msgid "DCC %1 Request - KVIrc"
 msgstr "Запрос DCC %1 - KVIrc"
 
-#: src/modules/dcc/send.cpp:1573
+#: src/modules/dcc/send.cpp:1830
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 запрос не отослан, ожидаю ручного соединения"
 
-#: src/modules/dcc/chat.cpp:527
+#: src/modules/dcc/chat.cpp:535
 msgid "DCC %Q failed: %Q"
 msgstr "Ошибка DCC %Q: %Q"
 
@@ -393,7 +375,7 @@ msgstr "Ошибка DCC %Q: %Q"
 msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "DCC %Q запрос не отослан, ожидаю ручного соединения"
 
-#: src/modules/dcc/send.cpp:1635
+#: src/modules/dcc/send.cpp:1892
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr "DCC %s передача с %Q@%Q:%Q завершена: \r![!dbl]play $0\r%s\r"
 
@@ -405,9 +387,8 @@ msgstr "Запрос DCC CANVAS"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "DCC CANVAS запрос не отослан: ожидаю ручного соединения"
 
-#: src/modules/dcc/video.cpp:889
-#: src/modules/dcc/voice.cpp:901
-#: src/modules/dcc/canvas.cpp:277
+#: src/modules/dcc/video.cpp:897 src/modules/dcc/voice.cpp:901
+#: src/modules/dcc/canvas.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "Ошибка DCC: %Q"
 
@@ -435,7 +416,7 @@ msgstr "Запрос DCC VOICE не отослан: ожидается ручн�
 msgid "DCC VOICE support not enabled at compilation time"
 msgstr "Поддержка DCC VOICE не включена во время компиляции"
 
-#: src/modules/dcc/send.cpp:362
+#: src/modules/dcc/send.cpp:421
 msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
@@ -443,12 +424,11 @@ msgstr ""
 "Передача данных завершена, ожидаю 30 сек. чтобы собеседник закрыл "
 "соединение..."
 
-#: src/modules/dcc/send.cpp:369
+#: src/modules/dcc/send.cpp:428
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Передача данных завершилась 30 сек. назад, закрываю соединение"
 
-#: src/modules/dcc/video.cpp:752
-#: src/modules/dcc/chat.cpp:407
+#: src/modules/dcc/video.cpp:760 src/modules/dcc/chat.cpp:415
 #: src/modules/dcc/voice.cpp:818
 msgid "ERROR: %Q"
 msgstr "ОШИБКА: %Q"
@@ -461,7 +441,7 @@ msgstr "Файл %s существует, автоматическое пере�
 msgid "File Already Exists - KVIrc"
 msgstr "Файл уже существует - KVIrc"
 
-#: src/modules/dcc/send.cpp:1157
+#: src/modules/dcc/send.cpp:1411
 msgid "From: "
 msgstr "От: "
 
@@ -494,7 +474,7 @@ msgstr "Входной буфер: %d байт"
 msgid "Input:"
 msgstr "Вход:"
 
-#: src/modules/dcc/send.cpp:1848
+#: src/modules/dcc/send.cpp:2120
 msgid "Internal error in RESUME request"
 msgstr "Внутренняя ошибка в запросе RESUME"
 
@@ -513,13 +493,13 @@ msgstr "Недействительный IP адрес в старом форм�
 msgid "Invalid RECV request: Position %u is is larger than file size"
 msgstr "Недействительный RECV запрос: Позиция %u больше размера файла"
 
-#: src/modules/dcc/send.cpp:1831
+#: src/modules/dcc/send.cpp:2103
 msgid "Invalid RESUME request: Invalid file name (got '%1' but should be '%2')"
 msgstr ""
 "Неверный запрос RESUME: Неверное имя файла (получено '%1', должно быть - '%"
 "2')"
 
-#: src/modules/dcc/send.cpp:1854
+#: src/modules/dcc/send.cpp:2126
 msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr "Недействительный RESUME запрос: позиция %1 больше чем размер файла"
 
@@ -549,38 +529,33 @@ msgstr "Недействительная скорость, принимаетс�
 msgid "It seems that I haven't requested this dcc chat"
 msgstr "Похоже, что вы не запрашивали этот dcc чат"
 
-#: src/modules/dcc/send.cpp:1887
+#: src/modules/dcc/send.cpp:2169
 msgid "Limit download bandwidth to"
 msgstr "Ограничение скорости загрузки"
 
-#: src/modules/dcc/send.cpp:1887
+#: src/modules/dcc/send.cpp:2169
 msgid "Limit upload bandwidth to"
 msgstr "Ограничение скорости отправки"
 
-#: src/modules/dcc/send.cpp:1497
+#: src/modules/dcc/send.cpp:1751
 msgid "Listening on interface %1 port %2"
 msgstr "Прослушивание интерфейса %1 на порту %2"
 
-#: src/modules/dcc/video.cpp:587
-#: src/modules/dcc/chat.cpp:186
-#: src/modules/dcc/voice.cpp:758
-#: src/modules/dcc/canvas.cpp:84
+#: src/modules/dcc/video.cpp:587 src/modules/dcc/chat.cpp:186
+#: src/modules/dcc/voice.cpp:758 src/modules/dcc/canvas.cpp:84
 msgid "Listening on interface %Q port %Q"
 msgstr "Прослушивание на интерфейсе %Q порта %Q"
 
-#: src/modules/dcc/send.cpp:1699
+#: src/modules/dcc/send.cpp:1956
 msgid "Local end is %1:%2"
 msgstr "Локальное окончание %1:%2"
 
-#: src/modules/dcc/video.cpp:896
-#: src/modules/dcc/chat.cpp:558
-#: src/modules/dcc/voice.cpp:912
-#: src/modules/dcc/canvas.cpp:284
+#: src/modules/dcc/video.cpp:904 src/modules/dcc/chat.cpp:566
+#: src/modules/dcc/voice.cpp:912 src/modules/dcc/canvas.cpp:286
 msgid "Local end is %Q:%Q"
 msgstr "Локальное окончание %Q:%Q"
 
-#: src/modules/dcc/chat.cpp:246
-#: src/modules/dcc/send.cpp:1584
+#: src/modules/dcc/chat.cpp:246 src/modules/dcc/send.cpp:1841
 msgid "Low-level transport connection established"
 msgstr "Установлено соединение по низкоуровневому транспорту"
 
@@ -588,8 +563,7 @@ msgstr "Установлено соединение по низкоуровне�
 msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
 msgstr "Нет файла с именем '%s' (размером %s) доступного для %Q [%Q@%Q]"
 
-#: src/modules/dcc/requests.cpp:794
-#: src/modules/dcc/requests.cpp:944
+#: src/modules/dcc/requests.cpp:794 src/modules/dcc/requests.cpp:944
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr ""
 "Не подходящий интерфейс для прослушивания, пытаюсь продолжить в любом "
@@ -599,7 +573,7 @@ msgstr ""
 msgid "No suitable interfaces to listen on, use -i"
 msgstr "Интерфейс непригоден для прослушивания, используйте -i"
 
-#: src/modules/dcc/send.cpp:1910
+#: src/modules/dcc/send.cpp:2190
 msgid "OK"
 msgstr "Ок"
 
@@ -622,15 +596,15 @@ msgstr "Выходной буфер: %d байт"
 msgid "Over&write"
 msgstr "Пе&реписать"
 
-#: src/modules/dcc/send.cpp:1839
+#: src/modules/dcc/send.cpp:2111
 msgid "Processing RESUME request with broken filename (%1)"
 msgstr "Обрабатываю запрос RESUME с неверным именем файла (%1)"
 
-#: src/modules/dcc/send.cpp:1813
+#: src/modules/dcc/send.cpp:2085
 msgid "Processing RESUME request with mismatched port (%1)"
 msgstr "Обрабатываю запрос RESUME с несовпадающим портом (%1)"
 
-#: src/modules/dcc/send.cpp:1769
+#: src/modules/dcc/send.cpp:2041
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "RESUME принят, передача начинается с позиции %1"
 
@@ -638,19 +612,19 @@ msgstr "RESUME принят, передача начинается с позиц
 msgid "Re&sume"
 msgstr "&Докачка"
 
-#: src/modules/dcc/send.cpp:964
+#: src/modules/dcc/send.cpp:1218
 msgid "Resend DCC"
 msgstr "Повторная отправка DCC"
 
-#: src/modules/dcc/send.cpp:966
+#: src/modules/dcc/send.cpp:1220
 msgid "Resend RevDCC"
 msgstr "Повторная отправка RevDCC"
 
-#: src/modules/dcc/send.cpp:965
+#: src/modules/dcc/send.cpp:1219
 msgid "Resend TDCC"
 msgstr "Повторная отправка TDCC"
 
-#: src/modules/dcc/send.cpp:1571
+#: src/modules/dcc/send.cpp:1828
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr "Отослан DCC %1 запрос %2, ожидаю соединения от удалённого клиента..."
 
@@ -664,7 +638,7 @@ msgid ""
 msgstr ""
 "Отослан DCC CANVAS запрос %Q, ожидаю соединения от удалённого клиента..."
 
-#: src/modules/dcc/send.cpp:874
+#: src/modules/dcc/send.cpp:1120
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "Отослан DCC RESUME запрос %1, ожидаю ACCEPT"
 
@@ -682,7 +656,7 @@ msgid ""
 msgstr ""
 "Отослан DCC VOICE (%s) запрос %Q, ожидаю соединение удалённого клиента..."
 
-#: src/modules/dcc/send.cpp:785
+#: src/modules/dcc/send.cpp:1031
 msgid "Setting up the connection"
 msgstr "Установка соединения"
 
@@ -691,7 +665,7 @@ msgstr "Установка соединения"
 msgid "Slot limit reached (%u slots of %u)"
 msgstr "Достигнут лимит слотов (%u слотов из %u)"
 
-#: src/modules/dcc/send.cpp:1283
+#: src/modules/dcc/send.cpp:1537
 msgid "Spd:"
 msgstr "Скорость:"
 
@@ -699,12 +673,11 @@ msgstr "Скорость:"
 msgid "Standard:"
 msgstr "Стандарт:"
 
-#: src/modules/dcc/chat.cpp:247
-#: src/modules/dcc/send.cpp:1585
+#: src/modules/dcc/chat.cpp:247 src/modules/dcc/send.cpp:1842
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Запуск соединения через SSL"
 
-#: src/modules/dcc/send.cpp:762
+#: src/modules/dcc/send.cpp:1006
 #, c-format
 msgid "TRANSFER %d"
 msgstr "ПЕРЕДАЧА %d"
@@ -734,8 +707,7 @@ msgstr ""
 "Невозможно принять указанный запрос: Поддержка DCC VOICE не включена во "
 "время компиляции"
 
-#: src/modules/dcc/requests.cpp:1018
-#: src/modules/dcc/requests.cpp:1093
+#: src/modules/dcc/requests.cpp:1018 src/modules/dcc/requests.cpp:1093
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
 msgstr "Невозможно принять указанный запрос: Неподдерживаемый кодек '%s'"
@@ -747,10 +719,8 @@ msgid ""
 msgstr ""
 "В указанном запросе отсутствует размер файла, принимаю итоговый размер 0"
 
-#: src/modules/dcc/requests.cpp:463
-#: src/modules/dcc/requests.cpp:473
-#: src/modules/dcc/requests.cpp:624
-#: src/modules/dcc/requests.cpp:763
+#: src/modules/dcc/requests.cpp:463 src/modules/dcc/requests.cpp:473
+#: src/modules/dcc/requests.cpp:624 src/modules/dcc/requests.cpp:763
 msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
@@ -758,8 +728,7 @@ msgstr ""
 "Указанный запрос является битым: Имя файла содержит компоненты пути, удаляю "
 "их и пытаюсь продолжить"
 
-#: src/modules/dcc/requests.cpp:453
-#: src/modules/dcc/requests.cpp:753
+#: src/modules/dcc/requests.cpp:453 src/modules/dcc/requests.cpp:753
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -792,8 +761,7 @@ msgstr "Подключение к хосту <b>%1</b> на порт <b>%2</b><b
 msgid "The connection will be secured using SSL.<br>"
 msgstr "Соединение будет использовать SSL.<br>"
 
-#: src/modules/dcc/video.cpp:685
-#: src/modules/dcc/chat.cpp:339
+#: src/modules/dcc/video.cpp:689 src/modules/dcc/chat.cpp:343
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
@@ -801,8 +769,7 @@ msgstr ""
 "Крипто машина не способна зашифровать текущее сообщение(%Q): %Q, никакие "
 "данные не отосланы"
 
-#: src/modules/dcc/libkvidcc.cpp:1641
-#: src/modules/dcc/libkvidcc.cpp:2606
+#: src/modules/dcc/libkvidcc.cpp:1641 src/modules/dcc/libkvidcc.cpp:2606
 #: src/modules/dcc/libkvidcc.cpp:2626
 msgid "The current window has no associated DCC session"
 msgstr "Текущее окно не ассоциируется с DCC сессией"
@@ -827,8 +794,7 @@ msgstr ""
 "<b>автоматически переименовать</b> новый файл или<br> <b>переписать</b> "
 "существующий файл?"
 
-#: src/modules/dcc/video.cpp:811
-#: src/modules/dcc/chat.cpp:467
+#: src/modules/dcc/video.cpp:819 src/modules/dcc/chat.cpp:475
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
@@ -836,15 +802,13 @@ msgstr ""
 "Следующее сообщение зашифровано, но криптовальная машина не может его "
 "расшифровать: %Q"
 
-#: src/modules/dcc/chat.cpp:213
-#: src/modules/dcc/send.cpp:1525
+#: src/modules/dcc/chat.cpp:213 src/modules/dcc/send.cpp:1779
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "Локальный IP адрес является приватным и нет IRC сервера для его определения"
 
-#: src/modules/dcc/chat.cpp:210
-#: src/modules/dcc/send.cpp:1522
+#: src/modules/dcc/chat.cpp:210 src/modules/dcc/send.cpp:1776
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
@@ -852,7 +816,7 @@ msgstr ""
 "Локальный IP адрес является приватным и его невозможно определить на IRC "
 "сервере"
 
-#: src/modules/dcc/send.cpp:1520
+#: src/modules/dcc/send.cpp:1774
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "Локальный IP адрес является приватным, определяю из IRC сервера: %1"
 
@@ -926,6 +890,11 @@ msgstr ""
 msgid "This executable has no SSL support, -s switch ignored"
 msgstr "Эта сборка не поддерживает SSL, ключ -s проигнорирован"
 
+#: src/modules/dcc/libkvidcc.cpp:2757
+#, fuzzy
+msgid "This executable was built without SSL support"
+msgstr "Эта сборка программы не имеет поддержки SSL, ключ -s проигнорирован"
+
 #: src/modules/dcc/libkvidcc.cpp:172
 msgid "This executable was built without SSL support, -s switch ignored"
 msgstr "Эта сборка программы не имеет поддержки SSL, ключ -s проигнорирован"
@@ -938,7 +907,7 @@ msgstr ""
 "Это окно не ассоциируется с IRC контекстом (IRC контекст требуется при -c "
 "или -n)"
 
-#: src/modules/dcc/send.cpp:1158
+#: src/modules/dcc/send.cpp:1412
 msgid "To: "
 msgstr "Кому: "
 
@@ -946,23 +915,42 @@ msgstr "Кому: "
 msgid "Too many pending connections"
 msgstr "Слишком много незавершённых соединений"
 
-#: src/modules/dcc/send.cpp:1359
+#: src/modules/dcc/send.cpp:1613
 msgid "Transfer Log"
 msgstr "Журнал передачи"
 
-#: src/modules/dcc/send.cpp:1650
+#: src/modules/dcc/send.cpp:1907
 msgid "Transfer completed"
 msgstr "Передача завершена"
 
-#: src/modules/dcc/send.cpp:951
-#: src/modules/dcc/send.cpp:1610
-#: src/modules/dcc/send.cpp:1689
+#: src/modules/dcc/send.cpp:1205 src/modules/dcc/send.cpp:1867
+#: src/modules/dcc/send.cpp:1946
 msgid "Transfer failed: "
 msgstr "Ошибка передачи: "
 
-#: src/modules/dcc/send.cpp:1743
+#: src/modules/dcc/send.cpp:2015
 msgid "Transferring data"
 msgstr "Передача данных"
+
+#: src/modules/dcc/libkvidcc.cpp:2779
+msgid "Unable to get SSL informations: DCC session is not using SSL"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2792
+msgid "Unable to get SSL informations: DCC session not initialized yet"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2809
+msgid "Unable to get SSL informations: No peer certificate available"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2800
+msgid "Unable to get SSL informations: SSL non initialized yet in DCC session"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2913
+msgid "Unable to get SSL informations: query not recognized"
+msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:129
 msgid "Unable to get address of interface %Q"
@@ -993,7 +981,7 @@ msgstr "Устройство видео:"
 msgid "Volume: %1"
 msgstr "Громкость: %1"
 
-#: src/modules/dcc/send.cpp:261
+#: src/modules/dcc/send.cpp:280
 msgid ""
 "WARNING: Ignoring data past the declared end of file and closing the "
 "connection"
@@ -1001,11 +989,11 @@ msgstr ""
 "ПРЕДУПРЕЖДЕНИЕ: Игнорирование данных после объявления конца файла и закрытия "
 "соединения"
 
-#: src/modules/dcc/send.cpp:630
+#: src/modules/dcc/send.cpp:800
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr "ПРЕДУПРЕЖДЕНИЕ: Получены данные в DCC TSEND, это не признаётся"
 
-#: src/modules/dcc/send.cpp:260
+#: src/modules/dcc/send.cpp:279
 msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr "ПРЕДУПРЕЖДЕНИЕ: Собеседник посылает какие-то данные после конца файла"
 
@@ -1028,6 +1016,10 @@ msgstr ""
 "ПРЕДУПРЕЖДЕНИЕ: не могу установить запрошенное значение скорости (%d): "
 "устройство использует ближайшее подходящее (%d)"
 
+#: src/modules/dcc/libkvidcc.cpp:2768
+msgid "You specified a bad string for the parameter \"type\""
+msgstr ""
+
 #: src/modules/dcc/broker.cpp:287
 msgid "You will be the passive side of the connection.<br>"
 msgstr "Вы будете пассивной стороной связи.<br>"
@@ -1039,7 +1031,7 @@ msgid ""
 msgstr ""
 "Вы не подключены к серверу (активное соединение требуется при -c или -n)"
 
-#: src/modules/dcc/send.cpp:1592
+#: src/modules/dcc/send.cpp:1849
 msgid "[SSL ERROR]: %1"
 msgstr "[ОШИБКА SSL]: %1"
 
@@ -1048,28 +1040,19 @@ msgstr "[ОШИБКА SSL]: %1"
 msgid "[SSL ERROR]: %s"
 msgstr "[ОШИБКА SSL]: %s"
 
-#: src/modules/dcc/send.cpp:1906
+#: src/modules/dcc/send.cpp:2186
 msgid "bytes/sec"
 msgstr "байт/сек"
 
-#: src/modules/dcc/descriptor.cpp:65
-#: src/modules/dcc/libkvidcc.cpp:111
-#: src/modules/dcc/libkvidcc.cpp:408
-#: src/modules/dcc/libkvidcc.cpp:443
-#: src/modules/dcc/libkvidcc.cpp:642
-#: src/modules/dcc/libkvidcc.cpp:666
-#: src/modules/dcc/libkvidcc.cpp:803
-#: src/modules/dcc/libkvidcc.cpp:805
-#: src/modules/dcc/libkvidcc.cpp:1121
-#: src/modules/dcc/libkvidcc.cpp:1171
-#: src/modules/dcc/libkvidcc.cpp:1199
-#: src/modules/dcc/libkvidcc.cpp:1238
-#: src/modules/dcc/marshal.cpp:490
-#: src/modules/dcc/marshal.cpp:520
-#: src/modules/dcc/marshal.cpp:525
-#: src/modules/dcc/requests.cpp:142
-#: src/modules/dcc/requests.cpp:143
-#: src/modules/dcc/requests.cpp:144
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
+#: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
+#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
+#: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
+#: src/modules/dcc/libkvidcc.cpp:1199 src/modules/dcc/libkvidcc.cpp:1238
+#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/requests.cpp:142
+#: src/modules/dcc/requests.cpp:143 src/modules/dcc/requests.cpp:144
 msgid "unknown"
 msgstr "неизвестный"
 
