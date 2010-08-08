@@ -167,7 +167,42 @@
 		[example]
 			%theobj-&gt;%field[key] = something
 		[/example]
-		Unlike in C, there is no need to declare object fields.
+		Unlike in C, there is no need to declare object fields.[br]
+		If you have ever used other high level object-oriented languages, you may be used to declaring different types of
+		variables: instance variables, which per definition define an object's state (at least partly) and local variables,
+		which can be used in any function and will be only valid in the very current scope. This does and does not apply
+		to KVI++.[br]
+		Local variables can be used as normal and the scope of those variables will (naturally) be limited to the scope of
+		the function they are defined in.[br]
+		[example]
+			class(test,object)
+			{
+				test()
+				{
+					%test = "will this persist?"
+				}
+
+				anotherfunc() {
+					echo "var: %test"
+				}
+			}
+
+			%myObject = $new(test,0)
+			%myObject-&gt;$test()
+			# Behold! This will only print "var: "!
+			%myObject-&gt;$anotherfunc()
+		[/example][br]
+		Intance variables, however, which are managed in the object's "field" can be accessed at any time by anyone.
+		[b]Warning:[/b] every script or object is potentially able to change the values of your field variables!
+		They may also add or unset (empty) previously not used or used fields.[br]
+		As earlier said, there is no need to declare object fields, as KVIrc will keep track of them. Even more precisely
+		said, you [b]can not[/b] declare them in the class file itself (some later example will tell you otherwise,
+		just keep in mind to ignore the pseudo code, as it does not reflect how KVI++ is really working in respect of
+		fields.)[br]
+		However, there is one way to declare and define object fields: using the constructor (please see below, if you
+		are interesting in learning about this function), it is possible to "declare" (really only for the human being
+		reading the code) and more important initialize object fields. For more information, see the Constructor section
+		below.[br]
 		Any object can have any field variable; an "unset" field is equivalent to an "empty" field.[br]
 		Note:[br]
 		The KVIrc scripting language is not typed.
@@ -260,6 +295,8 @@
 		This concept is common to almost all object oriented languages.
 		A class is a collection of methods that define an object's behaviour.
 		Hehe... it is not easy to explain it, so I'll try with an example:[br]
+		[b]Please note, that this is pseudo code. KVI++ does by no means employs
+		a "field" directive as shown below![/b] 
 		[example]
 		class HostAddress
 		{
@@ -301,7 +338,7 @@
 			}
 		}
 		[/example]
-		In the above example I have "implemented" the two functions by using pseudo code.[br][br]
+		In the above example I have "implemented" the two functions in pseudo code.[br][br]
 
 		Let's go back to the real world.[br][br]
 
@@ -406,7 +443,7 @@
 		So, to call a base class implementation of a function we "prepend" the base class name before the function name in the call.
 		The base class name could be also [class]object[/class] in this case, but the [class]object[/class] class has no "sayhello" function defined
 		so it would result in an error.[br][br]
-		In the above example, all the values of [fnc]$this[/fnc]</a>-&gt;%language
+		In the above example, all the values of [fnc]$this[/fnc]-&gt;%language
 		that are not equal to "italian" are assumed to be "english".
 		This is not always true, for example, just after the object creation the %language variable field
 		is effectively empty. The above class works correctly in this case, but we might want to have always
@@ -424,11 +461,29 @@
 		The class constructor is a [b]function[/b] that is called automatically just after the object
 		has been created internally by KVIrc and just before the [fnc]$new[/fnc]
 		function returns. It should be used to setup the internal object state.[br]
+		The constructor can and should list and initialize all the necessary object fields.[br]
+		[example]
+			class(myObject,object)
+			{
+				constructor()
+				{
+					$this-&gt;%test = "This is a sample object field."
+				}
+			}
+
+			%myObject = $new(myObject,object)
+			echo %myObject-&gt;%test
+		[/example][br]
+		Will thus print "This is a sample object field."[br]
 		Unlike in C++, in KVIrc, the constructor CAN return a value:[br]
 		If it returns 0 it signals the object creation failure: the object
 		is immediately destroyed and [fnc]$new[/fnc]() returns 0 to the caller.
 		Any other return value is treated as success, so the object is effectively
 		created and [fnc]$new[/fnc]() returns its ID to the caller.[br]
+		This said, KVI++ will automatically return a value of 1 and you should [b]never[/b]
+		return a value other than 0 if something bad happened (like a mandatory parameter was not given in the $new()
+		call or the like.) KVIrc will also issue a warning message and remind you of this when a non-zero value is
+		returned.[br]
 		All the builtin classes have a constructor defined that will almost never fail (only if we run out of memory),
 		so you can avoid to check the [fnc]$new[/fnc]() return value
 		when creating the instances of the built-in classes.[br][br]
@@ -437,6 +492,26 @@
 		You should [b]always call the base class constructor[/b] in your overridden one, to setup
 		the base class state, and propagate its return value (eventually modified if the base class
 		constructor is succesfull but your derived class initialization fails).[br]
+		This very basic example will illustrate how to do this (please read the paragraph about inheriting classes
+		above first):[br]
+		[example]
+			class(baseObject,object)
+			{
+				constructor()
+				{
+					echo "baseObject or derived object created."
+				}
+			}
+
+			class(derivedObject,baseObject)
+			{
+				constructor()
+				{
+					echo "derivedObject object created."
+					$this->$baseObject::constructor()
+				}
+			}
+		[/example][br][br]
 		In practice, the builtin class constructors do nothing other than setting the return
 		value to 1 so you can even avoid to call them, but in any other case you must do it.[br][br]
 
