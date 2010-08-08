@@ -175,7 +175,7 @@
 		Local variables can be used as normal and the scope of those variables will (naturally) be limited to the scope of
 		the function they are defined in.[br]
 		[example]
-			class(test,object)
+			[cmd]class[/cmd](test,[class]object[/class])
 			{
 				test()
 				{
@@ -183,13 +183,13 @@
 				}
 
 				anotherfunc() {
-					echo "var: %test"
+					[cmd]echo[/cmd] "var: %test"
 				}
 			}
 
-			%myObject = $new(test,0)
+			%myObject = [fnc]$new[/fnc](test,0)
 			%myObject-&gt;$test()
-			# Behold! This will only print "var: "!
+			[comment]# Behold! This will only print "var: "![/comment]
 			%myObject-&gt;$anotherfunc()
 		[/example][br]
 		Intance variables, however, which are managed in the object's "field" can be accessed at any time by anyone.
@@ -363,7 +363,7 @@
 		In KVI++, A new class must be always derived from some other class: the lowest possible
 		level of inheritance is 1: deriving from class [class]object[/class].[br]
 		[example]
-			[cmd]class[/cmd](helloworld,object)
+			[cmd]class[/cmd](helloworld,[class]object[/class])
 			{
 				sayhello()
 				{
@@ -463,16 +463,16 @@
 		function returns. It should be used to setup the internal object state.[br]
 		The constructor can and should list and initialize all the necessary object fields.[br]
 		[example]
-			class(myObject,object)
+			[cmd]class[/cmd](myObject,[class]object[/class])
 			{
 				constructor()
 				{
-					$this-&gt;%test = "This is a sample object field."
+					[fnc]$this[/fnc]-&gt;%test = "This is a sample object field."
 				}
 			}
 
-			%myObject = $new(myObject,object)
-			echo %myObject-&gt;%test
+			%myObject = [fnc]$new[/fnc](myObject,[class]object[/class])
+			[cmd]echo[/cmd] %myObject-&gt;%test
 		[/example][br]
 		Will thus print "This is a sample object field."[br]
 		Unlike in C++, in KVIrc, the constructor CAN return a value:[br]
@@ -495,20 +495,20 @@
 		This very basic example will illustrate how to do this (please read the paragraph about inheriting classes
 		above first):[br]
 		[example]
-			class(baseObject,object)
+			[cmd]class[/cmd](baseObject,[class]object[/class])
 			{
 				constructor()
 				{
-					echo "baseObject or derived object created."
+					[cmd]echo[/cmd] "baseObject or derived object created."
 				}
 			}
 
-			class(derivedObject,baseObject)
+			[cmd]class[/cmd](derivedObject,baseObject)
 			{
 				constructor()
 				{
-					echo "derivedObject object created."
-					$this->$baseObject::constructor()
+					[cmd]echo[/cmd] "derivedObject object created."
+					[fnc]$this[/fnc]->$baseObject::constructor()
 				}
 			}
 		[/example][br][br]
