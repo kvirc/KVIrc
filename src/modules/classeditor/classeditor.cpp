@@ -1919,6 +1919,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 
         m_pReminderLineEdit = new QLineEdit(hbox);
         m_pReminderLineEdit->setText(szReminder);
+
 	hbox = new KviTalHBox(this);
 	hbox->setSpacing(0);
 	hbox->setMargin(0);
@@ -1940,7 +1941,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 	hbox = new KviTalHBox(this);
 	hbox->setSpacing(0);
 	hbox->setMargin(0);
-	pLayout->addWidget(hbox,3,0);
+	pLayout->addWidget(hbox,4,0);
 
 	m_pNewFunctionButton = new QPushButton(hbox);
 	m_pNewFunctionButton->setObjectName("newfunctionbutton");
