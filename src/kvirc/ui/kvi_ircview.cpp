@@ -2151,74 +2151,94 @@ void KviIrcView::toggleToolWidget()
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+void KviIrcView::ensureLineVisible(KviIrcViewLine * pLineToShow)
+{
+	KVI_ASSERT(pLineToShow);
+
+	if(pLineToShow == m_pCurLine)
+	{
+		// nothing to do, just repaint for safety sake
+		repaint();
+		return;
+	}
+	
+	// need to scroll
+	int sc = m_pScrollBar->value();
+
+	if(pLineToShow->uIndex > m_pCurLine->uIndex)
+	{
+		// The cursor line is below the current line
+		// Go down counting scroll steps (and verify if the line is really there)
+		KviIrcViewLine * pLine = m_pCurLine;
+		
+		while(pLine && (pLine != pLineToShow))
+		{
+			pLine = pLine->pNext;
+			sc++;
+		}
+
+		if(!pLine)
+			return; // oops.. line not found ?
+
+		if(sc != m_pScrollBar->value())
+		{
+			m_pCurLine = pLine;
+			m_iLastScrollBarValue = sc;
+			m_pScrollBar->setValue(sc);
+		} else {
+			repaint();
+		}
+		return;
+	}
+
+	// The cursor line is over the current line
+	// Here we're in trouble :D
+	int curBottomCoord = height() - KVI_IRCVIEW_VERTICAL_BORDER;
+	int maxLineWidth   = width();
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
+		maxLineWidth -= KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH;
+	//Make sure that we have enough space to paint something...
+	if(maxLineWidth < m_iMinimumPaintWidth)return; // ugh
+	//And loop thru lines until we not run over the upper bound of the view
+	KviIrcViewLine * pLine = m_pCurLine;
+	KviIrcViewLine * pCurLine = m_pCurLine;
+	while(pLine)
+	{
+		if(maxLineWidth != pLine->iMaxLineWidth)
+			calculateLineWraps(pLine,maxLineWidth);
+		curBottomCoord -= (pLine->uLineWraps + 1) * m_iFontLineSpacing;
+		while(pCurLine && (curBottomCoord < KVI_IRCVIEW_VERTICAL_BORDER))
+		{
+			if(pCurLine->iMaxLineWidth != maxLineWidth)
+				calculateLineWraps(pCurLine,maxLineWidth);
+			curBottomCoord += ((pCurLine->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
+			pCurLine = pCurLine->pPrev;
+			sc--;
+		}
+		if(pLine == pLineToShow)
+			break;
+		curBottomCoord -= m_iFontDescent;
+		pLine = pLine->pPrev;
+	}
+
+	if(!pCurLine)
+		return; // ooops.. line not found :D
+
+	if(sc != m_pScrollBar->value())
+	{
+		m_pCurLine = pCurLine;
+		m_iLastScrollBarValue = sc;
+		m_pScrollBar->setValue(sc);
+	} else {
+		repaint();
+	}
+}
+
 
 void KviIrcView::setCursorLine(KviIrcViewLine * l)
 {
 	m_pCursorLine = l;
-	if(m_pCursorLine == m_pCurLine)
-	{
-
-	repaint();
-
-		return;
-	}
-	int sc = m_pScrollBar->value();
-	l = m_pCurLine;
-	if(m_pCursorLine->uIndex > m_pCurLine->uIndex)
-	{
-		// The cursor line is below the current line
-		while(l && (l != m_pCursorLine))
-		{
-			l = l->pNext;
-			sc++;
-		}
-		if(!l)return;
-		if(sc != m_pScrollBar->value())
-		{
-			m_pCurLine = m_pCursorLine;
-			m_iLastScrollBarValue = sc;
-			m_pScrollBar->setValue(sc);
-		} else {
-			repaint();
-		}
-	} else {
-		// The cursor line is over the current line
-		// Here we're in trouble :D
-		int curBottomCoord = height() - KVI_IRCVIEW_VERTICAL_BORDER;
-		int maxLineWidth   = width();
-		if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
-			maxLineWidth -= KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH;
-		//Make sure that we have enough space to paint something...
-		if(maxLineWidth < m_iMinimumPaintWidth)return; // ugh
-		//And loop thru lines until we not run over the upper bound of the view
-		KviIrcViewLine * curLine = m_pCurLine;
-		while(l)
-		{
-			if(maxLineWidth != l->iMaxLineWidth)
-				calculateLineWraps(l,maxLineWidth);
-			curBottomCoord -= (l->uLineWraps + 1) * m_iFontLineSpacing;
-			while(curLine && (curBottomCoord < KVI_IRCVIEW_VERTICAL_BORDER))
-			{
-				if(curLine->iMaxLineWidth != maxLineWidth)
-					calculateLineWraps(curLine,maxLineWidth);
-				curBottomCoord += ((curLine->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
-				curLine = curLine->pPrev;
-				sc--;
-			}
-			if(l == m_pCursorLine)break;
-			curBottomCoord -= m_iFontDescent;
-			l = l->pPrev;
-		}
-		if(!curLine)return;
-		if(sc != m_pScrollBar->value())
-		{
-			m_pCurLine = curLine;
-			m_iLastScrollBarValue = sc;
-			m_pScrollBar->setValue(sc);
-		} else {
-			repaint();
-		}
-	}
+	ensureLineVisible(l);
 }
 
 void KviIrcView::findNext(const QString& szText,bool bCaseS,bool bRegExp,bool bExtended)

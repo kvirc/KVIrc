@@ -208,6 +208,7 @@ signals:
 	void fileDropped(const QString &);
 private:
 	void setCursorLine(KviIrcViewLine * l);
+	void ensureLineVisible(KviIrcViewLine * pLineToShow);
 	KviIrcViewLine * getVisibleLineAt(int yPos);
 	int getVisibleCharIndexAt(KviIrcViewLine * line, int xPos, int yPos);
 	void getLinkEscapeCommand(QString &buffer,const QString &escape_cmd,const QString &escape_label);
