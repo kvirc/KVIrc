@@ -61,7 +61,8 @@ KviKvsTreeNode * KviKvsParser::parseComment()
 								return 0;
 							break;
 							case '*':
-								KVSP_skipChar;
+								while(KVSP_curCharUnicode == '*')
+									KVSP_skipChar;
 								if(KVSP_curCharUnicode == '/')
 								{
 									KVSP_skipChar;
