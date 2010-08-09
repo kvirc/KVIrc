@@ -386,11 +386,11 @@ void KviIconWidget::init()
 	setWindowTitle(__tr2qs("Icon Table"));
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ICONMANAGER))));
 
-	int rows = KVI_NUM_SMALL_ICONS / 10;
-	if((rows * 10) < KVI_NUM_SMALL_ICONS)rows++;
+	int rows = KVI_NUM_SMALL_ICONS / 20;
+	if((rows * 20) < KVI_NUM_SMALL_ICONS)rows++;
 	QGridLayout * g = new QGridLayout(this);
 	int i;
-	for(i = 0;i < 10;i++)
+	for(i = 0;i < 20;i++)
 	{
 		KviStr tmp(KviStr::Format,"%d",i);
 		QLabel * l = new QLabel(tmp.ptr(),this);
@@ -398,7 +398,7 @@ void KviIconWidget::init()
 	}
 	for(i = 0;i < rows;i++)
 	{
-		KviStr tmp(KviStr::Format,"%d",i * 10);
+		KviStr tmp(KviStr::Format,"%d",i * 20);
 		QLabel * l = new QLabel(tmp.ptr(),this);
 		g->addWidget(l,i + 1,0);
 	}
@@ -408,7 +408,7 @@ void KviIconWidget::init()
 		QLabel * l = new QLabel(this);
 		l->setObjectName(tmp.ptr());
 		l->setPixmap(*(g_pIconManager->getSmallIcon(i)));
-		g->addWidget(l,(i / 10) + 1,(i % 10) + 1);
+		g->addWidget(l,(i / 20) + 1,(i % 20) + 1);
 		l->installEventFilter(this);
 		l->setAcceptDrops(true);
 	}
