@@ -174,6 +174,8 @@
 // Do not change unless you're sure that it will not happen :)
 #define KVI_IRCVIEW_MINIMUM_WIDTH 22
 //16+4+(2*4) * Do not change
+//this is mostly needed to avoid collapsing in slit view
+#define KVI_IRCVIEW_MINIMUM_HEIGHT 22
 #define KVI_IRCVIEW_PIXMAP_AND_SEPARATOR 20
 #define KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH 28
 #define KVI_IRCVIEW_SIZEHINT_WIDTH 150
@@ -324,8 +326,8 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	connect(m_pScrollBar,SIGNAL(valueChanged(int)),this,SLOT(scrollBarPositionChanged(int)));
 	m_iLastScrollBarValue      = 0;
 
-	// set the minimum width
-	setMinimumWidth(KVI_IRCVIEW_MINIMUM_WIDTH + m_pScrollBar->sizeHint().width());
+	// set the minimum size
+	setMinimumSize(KVI_IRCVIEW_MINIMUM_WIDTH + m_pScrollBar->sizeHint().width(), KVI_IRCVIEW_MINIMUM_HEIGHT);
 	// and catch all mouse events
 	setMouseTracking(true);
 	// let's go!

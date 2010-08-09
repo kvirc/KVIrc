@@ -74,7 +74,8 @@ KviRawEditor::KviRawEditor(QWidget * par)
 	QGridLayout * l = new QGridLayout(this);
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this);
 	spl->setObjectName("raweditor_splitter");
-	spl->setOpaqueResize(false);
+	spl->setChildrenCollapsible(false);
+
 	l->addWidget(spl,0,0);
 
 	KviTalVBox * boxi = new KviTalVBox(spl);

@@ -91,7 +91,7 @@ KviEventEditor::KviEventEditor(QWidget * par)
 	QGridLayout * l = new QGridLayout(this);
 
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this);
-	spl->setOpaqueResize(false);
+	spl->setChildrenCollapsible(false);
 
 	l->addWidget(spl,0,0);
 

@@ -201,8 +201,8 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	g->addWidget(m_pMenuButton,0,2);
 	connect(m_pMenuButton,SIGNAL(clicked()),this,SLOT(testPopup()));
 	QSplitter * spl = new QSplitter(Qt::Vertical,this);
-	spl->setObjectName("popupeditor");
-	spl->setOpaqueResize(false);
+	spl->setObjectName("popupeditor_vertical_splitter");
+	spl->setChildrenCollapsible(false);
 
 	m_pTreeWidget = new QTreeWidget(spl);
 	m_pTreeWidget->setColumnCount(2);
@@ -1005,8 +1005,8 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 {
 	QGridLayout * l = new QGridLayout(this);
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this);
-	spl->setObjectName("popupeditor");
-	spl->setOpaqueResize(false);
+	spl->setObjectName("popupeditor_horizontal_splitter");
+	spl->setChildrenCollapsible(false);
 	l->addWidget(spl,0,0);
 
 	KviTalVBox * box = new KviTalVBox(spl);

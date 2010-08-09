@@ -112,6 +112,7 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	m_pButtonBox->setMargin(0);
 
 	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal,m_pButtonBox);
+	m_pTopSplitter->setChildrenCollapsible(false);
 
 	m_pButtonBox->setStretchFactor(m_pTopSplitter,1);
 
@@ -136,6 +137,8 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	
 	// Spitted vertially on the left
 	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
+	m_pVertSplitter->setChildrenCollapsible(false);
+
 	// With the IRC view over
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 	m_pIrcView->setObjectName(szName);
