@@ -52,9 +52,7 @@ public:
 protected:
 	virtual bool isScriptHandler();
 	virtual QString scriptHandlerCode();
-	virtual QString reminder();
-        virtual void setReminder(const QString &szReminder);
-        virtual KviKvsObjectFunctionHandler * clone() = 0;
+	virtual KviKvsObjectFunctionHandler * clone() = 0;
 	virtual bool call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall) = 0;
 };
 

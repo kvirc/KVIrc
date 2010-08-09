@@ -102,11 +102,10 @@ bool KviKvsObjectCoreCallFunctionHandler::call(KviKvsObject * pObject,KviKvsObje
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-KviKvsObjectScriptFunctionHandler::KviKvsObjectScriptFunctionHandler(const QString &szScriptContext,const QString &szCode,const QString &szReminder,unsigned int uFlags)
+KviKvsObjectScriptFunctionHandler::KviKvsObjectScriptFunctionHandler(const QString &szScriptContext,const QString &szCode,unsigned int uFlags)
 : KviKvsObjectFunctionHandler(uFlags)
 {
 	m_pHandler = new KviKvsScript(szScriptContext,szCode,KviKvsScript::InstructionList);
-        m_szReminder = szReminder;
 }
 
 KviKvsObjectScriptFunctionHandler::KviKvsObjectScriptFunctionHandler(const KviKvsObjectScriptFunctionHandler &h)
@@ -129,10 +128,6 @@ bool KviKvsObjectScriptFunctionHandler::isScriptHandler()
 QString KviKvsObjectScriptFunctionHandler::scriptHandlerCode()
 {
 	return m_pHandler->code();
-}
-QString KviKvsObjectScriptFunctionHandler::reminder()
-{
-        return m_szReminder;
 }
 
 KviKvsObjectFunctionHandler * KviKvsObjectScriptFunctionHandler::clone()

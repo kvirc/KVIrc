@@ -544,13 +544,11 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			delete pClass;
 			return 0;
 		}
-                QString szReminder;
+
 		if(KVSP_curCharUnicode == '(')
 		{
-                        KVSP_skipChar;
-                        const QChar * pReminderBegin = KVSP_curCharPointer;
-                        while((!(KVSP_curCharIsEndOfBuffer)) && (KVSP_curCharUnicode != ')'))
-                        KVSP_skipChar;
+			while((!(KVSP_curCharIsEndOfBuffer)) && (KVSP_curCharUnicode != ')'))
+				KVSP_skipChar;
 
 			if(KVSP_curCharIsEndOfBuffer)
 			{
@@ -558,7 +556,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 				delete pClass;
 				return 0;
 			}
-                        szReminder = QString(pReminderBegin,KVSP_curCharPointer - pReminderBegin);
+
 			KVSP_skipChar;
 
 			if(!skipSpacesAndNewlines())
@@ -602,7 +600,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			KviCommandFormatter::bufferFromBlock(szInstruction);
 		}
 
-                pClass->addFunctionDefinition(new KviKvsTreeNodeSpecialCommandClassFunctionDefinition(pLabelBegin,szLabel,szInstruction,szReminder,uHandlerFlags));
+		pClass->addFunctionDefinition(new KviKvsTreeNodeSpecialCommandClassFunctionDefinition(pLabelBegin,szLabel,szInstruction,uHandlerFlags));
 
 		if(!skipSpacesAndNewlines())
 		{

@@ -81,15 +81,11 @@ public:
             if (pFunctionHandler) return pFunctionHandler->isScriptHandler();
             else return false;
         };
-        void setReminder(const QString &szReminder,KviKvsObjectFunctionHandler *h);
-        QString reminder(KviKvsObjectFunctionHandler *h);
-
-
 	const QString & name(){ return m_szName; };
 	KviKvsObjectClass * parentClass(){ return m_pParentClass; };
 	// pProc CAN'T be zero here!
 	void registerFunctionHandler(const QString & szFunctionName,KviKvsObjectFunctionHandlerProc pProc,unsigned int uFlags = 0);
-        void registerFunctionHandler(const QString & szFunctionName,const QString &szBuffer,const QString &szReminder,unsigned int uFlags = 0);
+	void registerFunctionHandler(const QString & szFunctionName,const QString &szBuffer,unsigned int uFlags = 0);
 
 	// registers an empty handler that returns "nothing"
 	void registerStandardNothingReturnFunctionHandler(const QString & szFunc);

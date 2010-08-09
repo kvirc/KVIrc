@@ -57,20 +57,16 @@ class KVIRC_API KviKvsObjectScriptFunctionHandler : public KviKvsObjectFunctionH
 	friend class KviKvsObject;
 	friend class KviKvsObjectClass;
 protected:
-        KviKvsObjectScriptFunctionHandler(const QString &szScriptContext,const QString &szCode,const QString &szReminder,unsigned int uFlags = 0);
+	KviKvsObjectScriptFunctionHandler(const QString &szScriptContext,const QString &szCode,unsigned int uFlags = 0);
 	KviKvsObjectScriptFunctionHandler(const KviKvsObjectScriptFunctionHandler &h);
 public:
 	virtual ~KviKvsObjectScriptFunctionHandler();
 protected:
 	KviKvsScript * m_pHandler;
-        QString m_szReminder;
 protected:
 	virtual bool isScriptHandler();
 	virtual QString scriptHandlerCode();
-        virtual QString reminder();
-        virtual void setReminder(const QString &szReminder){m_szReminder=szReminder;};
-
-        virtual KviKvsObjectFunctionHandler * clone();
+	virtual KviKvsObjectFunctionHandler * clone();
 	virtual bool call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall);
 };
 

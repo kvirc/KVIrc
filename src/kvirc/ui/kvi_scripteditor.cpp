@@ -63,12 +63,7 @@ void KviScriptEditor::setInfoText(const QString &)
 void KviScriptEditor::setFindLineeditReadOnly(bool)
 {
 }
-void KviScriptEditor::setReadOnly(bool)
-{
-}
-void KviScriptEditor::setUnHighlightedText(const QString & szText)
-{
-}
+
 void KviScriptEditor::getText(QByteArray &)
 {
 }

@@ -64,9 +64,6 @@ protected:
 	QString       m_szHelp;
 public:
 	KviScriptEditorSyntaxHighlighter * syntaxHighlighter(){return m_pSyntaxHighlighter;};
-	void disableSyntaxHighlighter();
-	void enableSyntaxHighlighter();
-
 	void createCompleter(QStringList &list);
 
 	void loadCompleterFromFile();
@@ -160,10 +157,6 @@ public:
 	virtual void getText(QByteArray & szText);
 	virtual void setFindText(const QString & szText);
 	virtual void setEnabled(bool bEnabled);
-	virtual void setReadOnly(bool bReadOnly);
-	void setUnHighlightedText(const QString & szText);
-
-
 	virtual void setFocus();
 	virtual bool isModified();
 	virtual void setModified(bool);

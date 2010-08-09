@@ -185,16 +185,15 @@ KviClassEditor::KviClassEditor(QWidget * par)
 	hbox = new KviTalHBox(box);
 	hbox->setSpacing(0);
 	hbox->setMargin(0);
-        m_pFunctionNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
-        m_pFunctionNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
-        m_pFunctionNameRenameButton->setEnabled(false);
-        connect(m_pFunctionNameRenameButton,SIGNAL(clicked()),this,SLOT(renameFunction()));
-        hbox->setStretchFactor(m_pFunctionNameLabel,2);
-        m_pFunctionNameRenameButton->setToolTip(__tr2qs_ctx("Edit the function member name","editor"));
+	m_pMemberFunctionNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
+	m_pMemberFunctionNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
+	m_pMemberFunctionNameRenameButton->setEnabled(false);
+	connect(m_pMemberFunctionNameRenameButton,SIGNAL(clicked()),this,SLOT(renameFunction()));
+	hbox->setStretchFactor(m_pMemberFunctionNameLabel,2);
+	m_pMemberFunctionNameRenameButton->setToolTip(__tr2qs_ctx("Edit the function member name","editor"));
 
-        m_pReminderLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),box);
-        m_pReminderLabel->hide();
-        m_pReminderLabel->setWordWrap(1);
+
+
 	m_pEditor = KviScriptEditor::createInstance(box);
 	m_pEditor->setFocus();
 
@@ -405,8 +404,7 @@ void KviClassEditor::createFullClass(KviKvsObjectClass *pClass, KviClassEditorTr
 			if(!pFunctionItem) pFunctionItem = new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,it.currentKey());
 			pClass->getFunctionCode(szCode,*handler);
 			pFunctionItem->setBuffer(szCode);
-                        pFunctionItem->setReminder(pClass->reminder(handler));
-                        if(handler->flags() & KviKvsObjectFunctionHandler::Internal) pFunctionItem->setInternalFunction(true);
+			if(handler->flags() & KviKvsObjectFunctionHandler::Internal) pFunctionItem->setInternalFunction(true);
 		}
 		++it;
 	}
@@ -455,38 +453,14 @@ void KviClassEditor::renameFunction()
 {
 	if(!m_pLastEditedItem)return;
 	KviClassEditorTreeWidgetItem *pFunction=m_pLastEditedItem;
-        QString szClassName = buildFullClassName((KviClassEditorTreeWidgetItem*)pFunction->parent());
+	QString szClassName = ((KviClassEditorTreeWidgetItem*)pFunction->parent())->name();
 	QString szFunctionName = pFunction->name();
-        QString szReminder = pFunction->reminder();
-        QString szNewReminder=szReminder;
 	KviClassEditorTreeWidgetItem *pParentClass = (KviClassEditorTreeWidgetItem*) pFunction->parent();
 
 	QString szNewFunctionName = szFunctionName;
 	bool bInternal=pFunction->isInternalFunction();
-        if(!askForFunction(szNewFunctionName,szNewReminder,&bInternal,szClassName, true)) return;
-        if(KviQString::equalCI(szFunctionName,szNewFunctionName) && bInternal==pFunction->isInternalFunction())
-        {
-           if(!KviQString::equalCI(szNewReminder,szReminder))
-           {
-                pFunction->setReminder(szNewReminder);
-                KviKvsObjectClass *pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
-                if (pClass){
-                    KviKvsObjectFunctionHandler *pHandler=pClass->lookupFunctionHandler(szFunctionName);
-                    if (pHandler){
-                        pClass->setReminder(szNewReminder,pHandler);
-                        QString szPath;
-                        QString szFileName = szClassName.toLower();
-                        szFileName += ".kvs";
-                        szFileName.replace("::","--");
-                        g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes,szFileName);
-                        pClass->save(szPath);
-                    }
-                }
-                currentItemChanged(pFunction,pFunction);
-
-            }
-           return;
-        }
+	if(!askForFunction(szNewFunctionName, &bInternal,szClassName, true)) return;
+	if(KviQString::equalCI(szFunctionName,szNewFunctionName) && bInternal==pFunction->isInternalFunction()) return;
 	if (findFunction(szNewFunctionName,pParentClass) && !KviQString::equalCI(szFunctionName,szNewFunctionName))
 	{
 		g_pClassEditorModule->lock();
@@ -498,8 +472,7 @@ void KviClassEditor::renameFunction()
 		return;
 	}
 	pFunction->setName(szNewFunctionName);
-        pFunction->setReminder(szNewReminder);
-        currentItemChanged(pFunction,pFunction);
+	currentItemChanged(pFunction,pFunction);
 	pFunction->setInternalFunction(bInternal);
 	pParentClass->setClassNotBuilt(true);
 	KviPointerList<KviClassEditorTreeWidgetItem> lInheritedClasses;
@@ -680,7 +653,7 @@ void KviClassEditor::renameNamespace(KviClassEditorTreeWidgetItem *pOldNamespace
 
 	if (pNewItem)
 	{
-                activateItem(pNewItem);
+		activateItem(pNewItem);
 		pNewItem->setExpanded(true);
 	} else {
 		activateItem(pOldNamespaceItem);
@@ -724,9 +697,9 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 		szLabelText += "</b>";
 		m_pClassNameLabel->setText(szLabelText);
 		m_pClassNameRenameButton->setEnabled(true);
-                m_pFunctionNameRenameButton->setEnabled(false);
+		m_pMemberFunctionNameRenameButton->setEnabled(false);
 		m_pInheritsClassNameLabel->setText("");
-                m_pFunctionNameLabel->setText("");
+		m_pMemberFunctionNameLabel->setText("");
 		m_pEditor->setText("");
 		m_pEditor->setEnabled(false);
 		m_pTreeWidget->setFocus();
@@ -750,45 +723,19 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 		szLabelText += ": <b>";
 		szLabelText += m_pLastEditedItem->text(0);
 		szLabelText += "</b>";
-                m_pFunctionNameRenameButton->setEnabled(true);
-                if(!m_pLastEditedItem->reminder().isEmpty())
-                {
-                        QString szReminderText =__tr2qs_ctx("Reminder text.","editor");
-                        szReminderText += ": <b>";
-                        szReminderText += m_pLastEditedItem->reminder();
-                        szReminderText += "</b>";
-			m_pReminderLabel->setText(szReminderText);
-                        m_pReminderLabel->show();
-                 }
-                 else m_pReminderLabel->hide();
-		 m_pFunctionNameLabel->setText(szLabelText);
-		 m_pFunctionNameLabel->show();
-		 m_pFunctionNameRenameButton->show();
-        }
-        else{
-            m_pReminderLabel->hide();
-	    m_pFunctionNameLabel->hide();
-            m_pClassNameRenameButton->setEnabled(true);
-	    m_pFunctionNameRenameButton->hide();
-        }
-        if(m_pLastEditedItem->isClass())
+		m_pMemberFunctionNameRenameButton->setEnabled(true);
+	}
+	else m_pClassNameRenameButton->setEnabled(true);
+	m_pMemberFunctionNameLabel->setText(szLabelText);
+	if(m_pLastEditedItem->isClass())
 	{
-                m_pFunctionNameRenameButton->setEnabled(false);
+		m_pMemberFunctionNameRenameButton->setEnabled(false);
 		m_pEditor->setText("");
-		m_pEditor->setEnabled(true);
+		m_pEditor->setEnabled(false);
 		m_pTreeWidget->setFocus();
-		QString szBuffer;
-		for(int i=0;i<it->childCount();i++)
-		{
-		    KviClassEditorTreeWidgetItem *item=((KviClassEditorTreeWidgetItem *)it->child(i));
-		    szBuffer+="Member Function: <b>$"+item->name()+"</b><br>";
-		    szBuffer+="Parameters reminder: "+item->reminder()+"<br><br>";
-		}
-		m_pEditor->setUnHighlightedText(szBuffer);
-		m_pEditor->setReadOnly(true);
 		return;
 	}
-	m_pEditor->setReadOnly(false);
+
 	m_pEditor->setText(((KviClassEditorTreeWidgetItem *)it)->buffer());
 	m_pEditor->setFocus();
 	m_pEditor->setCursorPosition(((KviClassEditorTreeWidgetItem *)it)->cursorPosition());
@@ -984,8 +931,7 @@ void KviClassEditor::getExportClassBuffer(QString &buffer,KviClassEditorTreeWidg
 			if (pFunction->isInternalFunction()) buffer+="internal ";
 			buffer += "function ";
 			buffer += pFunction->name();
-                        buffer += "("+pFunction->reminder()+")";
-                        buffer += "\n\t{\n";
+			buffer += "\n\t{\n";
 			buffer += pFunction->buffer();
 			buffer += "\n\t}\n";
 		}
@@ -1334,9 +1280,9 @@ bool KviClassEditor::askForClassName(QString &szClassName,QString &szInheritsCla
 	return false;
 }
 
-bool KviClassEditor::askForFunction(QString &szFunctionName,QString &szReminder,bool * bInternal,const QString &szClassName, bool bRenameMode)
+bool KviClassEditor::askForFunction(QString &szFunctionName,bool * bInternal,const QString &szClassName, bool bRenameMode)
 {
-        KviClassEditorFunctionDialog *pDialog=new KviClassEditorFunctionDialog(this,"function",szClassName,szFunctionName,szReminder,*bInternal, bRenameMode);
+	KviClassEditorFunctionDialog *pDialog=new KviClassEditorFunctionDialog(this,"function",szClassName,szFunctionName, *bInternal, bRenameMode);
 	szFunctionName="";
 	g_pClassEditorModule->lock();
 	bool bOk=pDialog->exec();
@@ -1344,8 +1290,7 @@ bool KviClassEditor::askForFunction(QString &szFunctionName,QString &szReminder,
 	if(bOk)
 	{
 		szFunctionName=pDialog->getFunctionName();
-                szReminder=pDialog->getReminder();
-                *bInternal=pDialog->isInternalFunction();
+		*bInternal=pDialog->isInternalFunction();
 		delete pDialog;
 		return true;
 	}
@@ -1461,16 +1406,15 @@ void KviClassEditor::newNamespace()
 
 void KviClassEditor::newMemberFunction()
 {
-        QString szFunctionName,szClassName,szReminder;
+	QString szFunctionName,szClassName;
 	if(m_pLastClickedItem->isMethod()) m_pLastClickedItem= (KviClassEditorTreeWidgetItem*)m_pLastClickedItem->parent();
 	szClassName=buildFullClassName(m_pLastClickedItem);
 	bool bInternal= false;
-        if(!askForFunction(szFunctionName, szReminder,&bInternal,szClassName, false)) return;
+	if(!askForFunction(szFunctionName, &bInternal,szClassName, false)) return;
 	if(szFunctionName.isEmpty())return;
-        KviClassEditorTreeWidgetItem *it=newItem(szFunctionName,KviClassEditorTreeWidgetItem::Method);
+	KviClassEditorTreeWidgetItem *it=newItem(szFunctionName,KviClassEditorTreeWidgetItem::Method);
 	it->setInternalFunction(bInternal);
-        if(!szReminder.isEmpty()) it->setReminder(szReminder);
-        activateItem(it);
+	activateItem(it);
 	((KviClassEditorTreeWidgetItem*)it->parent())->setClassNotBuilt(true);
 }
 
@@ -1489,8 +1433,9 @@ KviClassEditorTreeWidgetItem *  KviClassEditor::newItem(QString &szName,KviClass
 		idx++;
 	}
 	KviClassEditorTreeWidgetItem * it;
-        it=createFullItem(szName);
+	it=createFullItem(szName);
 	it->setType(eType);
+
 	return it;
 }
 
@@ -1513,11 +1458,11 @@ void KviClassEditor::build()
 		}
 		if (pClass->classNotBuilt())
 		{
-		//	qDebug("compiling %s",pClass->name().toUtf8().data());
+		//	debug("compiling %s",pClass->name().toUtf8().data());
 			KviClassEditorTreeWidgetItem *pParentClass=m_pClasses->find(pClass->InheritsClass());
 
 			pLinkedClasses.append(pClass);
-			//if (!pParentClass) qDebug("no parent class");
+			//if (!pParentClass) debug("no parent class");
 			while(pParentClass)
 			{
 				if (pParentClass->classNotBuilt()) pLinkedClasses.append(pParentClass);
@@ -1555,7 +1500,7 @@ void KviClassEditor::build()
 					QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 					break;
 				}
-				//else qDebug("class compiled %s :\n",szClass.toUtf8().data());
+				//else debug("class compiled %s :\n",szClass.toUtf8().data());
 				pLinkedClasses.at(i)->setClassNotBuilt(false);
 				m_pEditor->setModified(false);
 			}
@@ -1610,20 +1555,15 @@ void KviClassEditor::loadNotBuiltClasses()
 			}
 			for(QString * s = names.first(); s; s = names.next())
 			{
-
 				if (KviQString::equalCI(*s,"@Inherits"))
 				{
 					pClassItem->setInheritsClass(cfg.readQStringEntry(*s,""));
 					continue;
 				}
-                                if ((*s).left(9)=="@Reminder") continue;
-                                QString szCode = cfg.readQStringEntry(*s,"");
+				QString szCode = cfg.readQStringEntry(*s,"");
 				KviClassEditorTreeWidgetItem *pFunctionItem=findFunction(*s, pClassItem);
 				if(!pFunctionItem) pFunctionItem = new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,*s);
 				pFunctionItem->setBuffer(szCode);
-                                QString szEntry="@Reminder|"+(*s);
-                                QString szReminder = cfg.readQStringEntry(szEntry,"");
-                                pFunctionItem->setReminder(szReminder);
 			}
 		}
 	}
@@ -1648,16 +1588,9 @@ void KviClassEditor::saveNotBuiltClasses()
 
 			cfg.setGroup(it.currentKey());
 			cfg.writeEntry("@Inherits",it.current()->InheritsClass());
-                        QString szReminderEntry;
-                        for(int i=0;i<it.current()->childCount();i++){
-                            if(!((KviClassEditorTreeWidgetItem*)it.current()->child(i))->reminder().isEmpty())
-                            {
-                                szReminderEntry="@Reminder|"+((KviClassEditorTreeWidgetItem*)it.current()->child(i))->name();
-                                cfg.writeEntry(szReminderEntry,((KviClassEditorTreeWidgetItem*)it.current()->child(i))->reminder());
-                            }
-                            cfg.writeEntry(((KviClassEditorTreeWidgetItem*)it.current()->child(i))->name(),((KviClassEditorTreeWidgetItem*)it.current()->child(i))->buffer());
-                        }
-                 }
+			for(int i=0;i<it.current()->childCount();i++)
+				cfg.writeEntry(((KviClassEditorTreeWidgetItem*)it.current()->child(i))->name(),((KviClassEditorTreeWidgetItem*)it.current()->child(i))->buffer());
+		}
 		++it;
         }
         cfg.sync();
@@ -1863,7 +1796,7 @@ void KviClassEditorDialog::textChanged(const QString & szText)
 	m_pNewClassButton->setEnabled(!szText.isEmpty());
 }
 
-KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString &szClassName, const QString &szFunctionName, const QString &szReminder,bool bIsInternal, bool bRenameMode)
+KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString &szClassName, const QString &szFunctionName, bool bIsInternal, bool bRenameMode)
 : QDialog(pParent)
 {
 	setObjectName(szName);
@@ -1898,22 +1831,10 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 	m_pFunctionNameLineEdit->setToolTip(__tr2qs_ctx("Function names can contain only letters, digits and underscores","editor"));
 	m_pFunctionNameLineEdit->setText(szFunctionName);
 
-        hbox = new KviTalHBox(this);
-        hbox->setSpacing(0);
-        hbox->setMargin(0);
-        pLayout->addWidget(hbox,2,0);
-
-        QLabel * pReminderLabel = new QLabel(hbox);
-        pReminderLabel->setObjectName("reminderlabel");
-        pReminderLabel->setWordWrap(1);
-        pReminderLabel->setText(__tr2qs_ctx("Please enter the optional reminder string for the member function:","editor"));
-
-        m_pReminderLineEdit = new QLineEdit(hbox);
-        m_pReminderLineEdit->setText(szReminder);
 	hbox = new KviTalHBox(this);
 	hbox->setSpacing(0);
 	hbox->setMargin(0);
-        pLayout->addWidget(hbox,3,0);
+	pLayout->addWidget(hbox,2,0);
 
 
 	QLabel * pFunctionInternalLabel = new QLabel(hbox);

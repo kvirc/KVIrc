@@ -45,14 +45,6 @@ QString KviKvsObjectFunctionHandler::scriptHandlerCode()
 {
 	return QString();
 }
-QString KviKvsObjectFunctionHandler::reminder()
-{
-        return QString();
-}
-void KviKvsObjectFunctionHandler::setReminder(const QString &)
-{
-}
-
 bool KviKvsObjectFunctionHandler::isClone()
 {
 	return m_bClone;
