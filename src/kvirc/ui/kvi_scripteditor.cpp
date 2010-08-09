@@ -66,7 +66,7 @@ void KviScriptEditor::setFindLineeditReadOnly(bool)
 void KviScriptEditor::setReadOnly(bool)
 {
 }
-void KviScriptEditor::setUnHighlightedText(const QString & szText)
+void KviScriptEditor::setUnHighlightedText(const QString &)
 {
 }
 void KviScriptEditor::getText(QByteArray &)

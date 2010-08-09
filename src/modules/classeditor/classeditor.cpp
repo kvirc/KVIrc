@@ -778,11 +778,20 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 		m_pEditor->setEnabled(true);
 		m_pTreeWidget->setFocus();
 		QString szBuffer;
-		for(int i=0;i<it->childCount();i++)
+		QStringList szFunctionsList;
+		KviPointerHashTable<QString,KviClassEditorTreeWidgetItem> lFunctions;
+		lFunctions.setAutoDelete(false);
+		KviClassEditorTreeWidgetItem *pItem;
+		for(int i=0;i<it->childCount();i++){
+			pItem=((KviClassEditorTreeWidgetItem *)it->child(i));
+			szFunctionsList.append(pItem->name());
+			lFunctions.insert(pItem->name(),pItem);
+		}
+		szFunctionsList.sort();
+		for(int i=0;i<szFunctionsList.count();i++)
 		{
-		    KviClassEditorTreeWidgetItem *item=((KviClassEditorTreeWidgetItem *)it->child(i));
-		    szBuffer+="Member Function: <b>$"+item->name()+"</b><br>";
-		    szBuffer+="Parameters reminder: "+item->reminder()+"<br><br>";
+		    szBuffer+="Member Function: <b>$"+szFunctionsList.at(i)+"</b><br>";
+		    szBuffer+="Parameters reminder: "+lFunctions.find(szFunctionsList.at(i))->reminder()+"<br><br>";
 		}
 		m_pEditor->setUnHighlightedText(szBuffer);
 		m_pEditor->setReadOnly(true);
