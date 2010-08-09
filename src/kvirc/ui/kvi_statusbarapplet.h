@@ -224,7 +224,8 @@ protected:
 	void getNewVersion();
 protected slots:
 	void updateDisplay();
-	void toggleContext();
+	void toggleStartup();
+	void toggleRevision();
 	void responseReceived(const QString &);
 	void requestCompleted(bool status);
 	void binaryDataReceived(const KviDataBuffer &);
@@ -236,6 +237,7 @@ private:
 	bool             m_bCheckFailed;
 	bool             m_bUpdateStatus;
 	bool             m_bUpdateOnStartup;
+	bool             m_bUpdateRevision;
 };
 
 #endif //_KVI_STATUSBARAPPLET_H_

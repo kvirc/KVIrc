@@ -637,11 +637,12 @@ void KviStatusBarSeparator::selfRegister(KviStatusBar * pBar)
 KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
-	m_bCheckDone = false;
-	m_bCheckFailed = false;
-	m_bUpdateStatus = false;
+	m_bCheckDone       = false;
+	m_bCheckFailed     = false;
+	m_bUpdateStatus    = false;
 	m_bUpdateOnStartup = false;
-	m_pHttpRequest = 0;
+	m_bUpdateRevision  = false;
+	m_pHttpRequest     = 0;
 
 	updateDisplay();
 
@@ -661,21 +662,32 @@ void KviStatusBarUpdateIndicator::updateDisplay()
 		setPixmap(m_bUpdateStatus ? *(g_pIconManager->getSmallIcon(KVI_SMALLICON_UPDATE)) : *(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTUPDATE)));
 }
 
-void KviStatusBarUpdateIndicator::toggleContext()
+void KviStatusBarUpdateIndicator::toggleStartup()
 {
 	m_bUpdateOnStartup = !m_bUpdateOnStartup;
 }
 
+void KviStatusBarUpdateIndicator::toggleRevision()
+{
+	m_bUpdateRevision = !m_bUpdateRevision;
+	m_bUpdateStatus = false;
+	updateDisplay();
+}
+
 void KviStatusBarUpdateIndicator::fillContextPopup(KviTalPopupMenu * p)
 {
-	int id = p->insertItem(__tr2qs("Check on startup"),this,SLOT(toggleContext()));
+	int id = p->insertItem(__tr2qs("Check on startup"),this,SLOT(toggleStartup()));
 	p->setItemChecked(id,m_bUpdateOnStartup);
+	id = p->insertItem(__tr2qs("Check SVN revisions"),this,SLOT(toggleRevision()));
+	p->setItemChecked(id,m_bUpdateRevision);
 }
 
 void KviStatusBarUpdateIndicator::loadState(const char * pcPrefix, KviConfig * pCfg)
 {
 	KviStr tmp(KviStr::Format,"%s_UpdateOnStartup",pcPrefix);
 	m_bUpdateOnStartup = pCfg->readBoolEntry(tmp.ptr(),false);
+	KviStr tmp2(KviStr::Format,"%s_UpdateRevision",pcPrefix);
+	m_bUpdateRevision = pCfg->readBoolEntry(tmp2.ptr(),false);
 
 	if(m_bUpdateOnStartup) checkVersion();
 }
@@ -684,6 +696,8 @@ void KviStatusBarUpdateIndicator::saveState(const char * pcPrefix, KviConfig * p
 {
 	KviStr tmp(KviStr::Format,"%s_UpdateOnStartup",pcPrefix);
 	pCfg->writeEntry(tmp.ptr(),m_bUpdateOnStartup);
+	KviStr tmp2(KviStr::Format,"%s_UpdateRevision",pcPrefix);
+	pCfg->writeEntry(tmp2.ptr(),m_bUpdateRevision);
 }
 
 KviStatusBarApplet * CreateStatusBarUpdateIndicator(KviStatusBar * pBar, KviStatusBarAppletDescriptor * pDescriptor)
@@ -703,8 +717,14 @@ void KviStatusBarUpdateIndicator::selfRegister(KviStatusBar * pBar)
 void KviStatusBarUpdateIndicator::checkVersion()
 {
 	m_bCheckDone = true;
-	QString szFileName;
-	KviUrl url("http://kvirc.net/checkversion.php");
+	QString szUrl,szFileName;
+	
+	if(m_bUpdateRevision)
+		szUrl = "http://kvirc.net/checkversion.php?svn=1";
+	else
+		szUrl = "http://kvirc.net/checkversion.php";
+	
+	KviUrl url(szUrl);
 
 	m_pHttpRequest = new KviHttpRequest();
 	//connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(hostResolved(const QString &)));
@@ -718,10 +738,13 @@ void KviStatusBarUpdateIndicator::checkVersion()
 
 void KviStatusBarUpdateIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 {
-	if(!(e->button() & Qt::LeftButton)) return;
+	if(!(e->button() & Qt::LeftButton))
+		return;
 
-	if(m_bUpdateStatus) getNewVersion();
-	else checkVersion();
+	if(m_bUpdateStatus)
+		getNewVersion();
+	else
+		checkVersion();
 }
 
 void KviStatusBarUpdateIndicator::responseReceived(const QString & szResponse)
@@ -739,15 +762,27 @@ void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer & buffe
 {
 	// Got data
 	KviStr szData((const char *)buffer.data(),buffer.size());
-
-	// The version returned by remote server is newer than ours
-	if(KviMiscUtils::compareVersions(szData.ptr(),KVI_VERSION) < 0)
+	bool bRemoteNew = false;
+	
+	if(m_bUpdateRevision)
+	{
+		if(szData.toUInt() > KviBuildInfo::buildRevision().toUInt())
+			bRemoteNew = true;
+	} else {
+		if(KviMiscUtils::compareVersions(szData.ptr(),KVI_VERSION) < 0)
+			bRemoteNew = true;
+	}
+	
+	if(bRemoteNew)
 	{
 		m_szNewVersion = QString(szData.ptr());
 		m_bUpdateStatus = true;
 		updateDisplay();
 
-		if(!m_bUpdateOnStartup) getNewVersion();
+		if(!m_bUpdateOnStartup)
+		{
+			getNewVersion();
+		}
 	}
 }
 
@@ -760,23 +795,30 @@ void KviStatusBarUpdateIndicator::requestCompleted(bool)
 void KviStatusBarUpdateIndicator::getNewVersion()
 {
 	// Set build platform
-	QString szSystem = KviBuildInfo::buildSystemName();
+	QString szUrl;
+	
+	if(m_bUpdateRevision)
+	{
+		szUrl = "http://kvirc.net/?id=svn";
+	} else {
+		QString szSystem = KviBuildInfo::buildSystemName();
 
-	if(szSystem == "Windows") szSystem = "win32";
-	else if(szSystem == "Darwin") szSystem = "macosx";
-	else szSystem = "unix";
+		if(szSystem == "Windows") szSystem = "win32";
+		else if(szSystem == "Darwin") szSystem = "macosx";
+		else szSystem = "unix";
 
-	// Create page to link to
-	QString szUrl = "http://kvirc.net/?id=releases&platform=";
-	szUrl += szSystem;
-	szUrl += "&version=";
-	szUrl += m_szNewVersion;
+		// Create page to link to
+		szUrl = "http://kvirc.net/?id=releases&platform=";
+		szUrl += szSystem;
+		szUrl += "&version=";
+		szUrl += m_szNewVersion;
+	}
 
 	// Create command to run
 	QString szCommand = "openurl ";
 	szCommand += szUrl;
 
-	// Open the download page for the platform we're using
+	// Open the svn or the download page for the platform we're using
 	KviKvsScript::run(szCommand,g_pActiveWindow);
 }
 
@@ -787,7 +829,7 @@ QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 	{
 		szRet += __tr2qs("Update missing");
 		szRet += "</b><br>";
-		szRet += __tr2qs("You didn't checked yet.\nShould I check it?");
+		szRet += __tr2qs("You didn't check yet.\nShould I check it?");
 		szRet += "<br>";
 		szRet += __tr2qs("Double click to check");
 	} else if(m_bCheckFailed)
