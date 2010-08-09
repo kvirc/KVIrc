@@ -735,7 +735,7 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 	szLabelText += ": <b>";
 	szLabelText += szClassName;
 	szLabelText += "</b>, ";
-	szLabelText += __tr2qs_ctx("Inherits from class ","editor");
+	szLabelText += __tr2qs_ctx("inherits from class ","editor");
 	szLabelText += ": <b>";
 	szLabelText += pClassItem->InheritsClass();
 	szLabelText += "</b>";
@@ -743,7 +743,7 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 
 	//m_pInheritsClassNameLabel->setText(szLabelText);
 
-	szLabelText = __tr2qs_ctx("Member Function:","editor");
+	szLabelText = __tr2qs_ctx("Member Function","editor");
 	if(m_pLastEditedItem->isMethod())
 	{
 		szLabelText += ": <b>";
