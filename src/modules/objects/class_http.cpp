@@ -426,7 +426,7 @@ void KviKvsObject_http::slotDataSendProgress ( int done,int total )
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant((kvs_int_t) done));
 	lParams.append(new KviKvsVariant((kvs_int_t) total));
-	callFunction(this,"dataProgressEvent",0,&lParams);
+	callFunction(this,"dataSendProgressEvent",0,&lParams);
 }
 bool KviKvsObject_http::functionDataSendProgressEvent(KviKvsObjectFunctionCall *c)
 {
