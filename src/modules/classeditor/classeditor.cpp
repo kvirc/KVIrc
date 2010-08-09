@@ -180,7 +180,6 @@ KviClassEditor::KviClassEditor(QWidget * par)
 	hbox->setSpacing(0);
 	hbox->setMargin(0);
 
-	m_pInheritsClassNameLabel=new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
 
 	hbox = new KviTalHBox(box);
 	hbox->setSpacing(0);
@@ -725,7 +724,7 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 		m_pClassNameLabel->setText(szLabelText);
 		m_pClassNameRenameButton->setEnabled(true);
                 m_pFunctionNameRenameButton->setEnabled(false);
-		m_pInheritsClassNameLabel->setText("");
+		//m_pInheritsClassNameLabel->setText("");
                 m_pFunctionNameLabel->setText("");
 		m_pEditor->setText("");
 		m_pEditor->setEnabled(false);
@@ -735,14 +734,14 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 	QString szLabelText = __tr2qs_ctx("Class","editor");
 	szLabelText += ": <b>";
 	szLabelText += szClassName;
-	szLabelText += "</b>";
-	m_pClassNameLabel->setText(szLabelText);
-
-	szLabelText = __tr2qs_ctx("Inherits Class","editor");
+	szLabelText += "</b>, ";
+	szLabelText += __tr2qs_ctx("Inherits from class ","editor");
 	szLabelText += ": <b>";
 	szLabelText += pClassItem->InheritsClass();
 	szLabelText += "</b>";
-	m_pInheritsClassNameLabel->setText(szLabelText);
+	m_pClassNameLabel->setText(szLabelText);
+
+	//m_pInheritsClassNameLabel->setText(szLabelText);
 
 	szLabelText = __tr2qs_ctx("Member Function:","editor");
 	if(m_pLastEditedItem->isMethod())
@@ -790,8 +789,9 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 		szFunctionsList.sort();
 		for(int i=0;i<szFunctionsList.count();i++)
 		{
-		    szBuffer+="Member Function: <b>$"+szFunctionsList.at(i)+"</b><br>";
-		    szBuffer+="Parameters reminder: "+lFunctions.find(szFunctionsList.at(i))->reminder()+"<br><br>";
+			szBuffer+="Member Function: <b>$"+szFunctionsList.at(i)+"</b><br>";
+			if(!lFunctions.find(szFunctionsList.at(i))->reminder().isEmpty())
+				szBuffer+="Parameters reminder: "+lFunctions.find(szFunctionsList.at(i))->reminder()+"<br><br>";
 		}
 		m_pEditor->setUnHighlightedText(szBuffer);
 		m_pEditor->setReadOnly(true);

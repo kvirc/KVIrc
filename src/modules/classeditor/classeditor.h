@@ -110,8 +110,7 @@ public:
 	KviScriptEditor              * m_pEditor;
 	KviClassEditorTreeWidget     * m_pTreeWidget;
         QLabel                       * m_pClassNameLabel;
-	QLabel                       * m_pInheritsClassNameLabel;
-        QPushButton                  * m_pClassNameRenameButton;
+	QPushButton                  * m_pClassNameRenameButton;
         QLabel                       * m_pFunctionNameLabel;
         QPushButton                  * m_pFunctionNameRenameButton;
         QLabel                       * m_pReminderLabel;
