@@ -119,6 +119,7 @@ KviScriptEditorWidget::~KviScriptEditorWidget()
 {
 	if(m_pCompleter)
 		delete m_pCompleter;
+	disableSyntaxHighlighter();
 }
 
 void KviScriptEditorWidget::checkReadyCompleter()
@@ -272,6 +273,18 @@ void KviScriptEditorWidget::slotHelp()
 {
 	contextSensitiveHelp();
 }
+void KviScriptEditorWidget::enableSyntaxHighlighter()
+{
+	// we currently delete and re-create the m_pSyntaxHighlighter
+	// as a trick to ensure proper re-highlightning to occur
+	if (!m_pSyntaxHighlighter)
+	    m_pSyntaxHighlighter = new KviScriptEditorSyntaxHighlighter(this);
+}
+void KviScriptEditorWidget::disableSyntaxHighlighter()
+{
+	if (m_pSyntaxHighlighter) delete m_pSyntaxHighlighter;
+	m_pSyntaxHighlighter = 0;
+}
 
 void KviScriptEditorWidget::updateOptions()
 {
@@ -281,10 +294,8 @@ void KviScriptEditorWidget::updateOptions()
 	setPalette(p);
 	setFont(g_fntNormal);
 	setTextColor(g_clrNormalText);
-	// we currently delete and re-create the m_pSyntaxHighlighter
-	// as a trick to ensure proper re-highlightning to occur
-	if (m_pSyntaxHighlighter) delete m_pSyntaxHighlighter;
-	m_pSyntaxHighlighter = new KviScriptEditorSyntaxHighlighter(this);
+	disableSyntaxHighlighter();
+	enableSyntaxHighlighter();
 
 	p = ((KviScriptEditorImplementation*)m_pParent)->findLineEdit()->palette();
 	p.setColor(foregroundRole(),g_clrFind);
@@ -889,14 +900,21 @@ void KviScriptEditorImplementation::setText(const char * txt)
 {
 	setText(QByteArray(txt));
 }
-
+void KviScriptEditorImplementation::setUnHighlightedText(const QString & szText)
+{
+	m_pEditor->disableSyntaxHighlighter();
+	m_pEditor->setText(szText);
+}
 void KviScriptEditorImplementation::setText(const QByteArray & szText)
 {
-        m_pEditor->setPlainText(szText.data());
+	m_pEditor->setPlainText(szText.data());
 	m_pEditor->document()->setModified(false);
 	updateRowColLabel();
 }
-
+void KviScriptEditorImplementation::setReadOnly(bool bReadOnly)
+{
+	m_pEditor->setReadOnly(bReadOnly);
+}
 void KviScriptEditorImplementation::getText(QByteArray & szText)
 {
 	szText = m_pEditor->toPlainText().toUtf8();
@@ -904,6 +922,7 @@ void KviScriptEditorImplementation::getText(QByteArray & szText)
 
 void KviScriptEditorImplementation::setText(const QString & szText)
 {
+	m_pEditor->enableSyntaxHighlighter();
 	m_pEditor->setPlainText(szText);
 	QTextCursor cur=m_pEditor->textCursor();
 	cur.movePosition(QTextCursor::End);

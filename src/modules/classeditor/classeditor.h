@@ -58,13 +58,16 @@ protected:
 	QString m_szName;
         QString m_szBuffer;
         bool m_bClassModified, m_bInternal;
-	QString m_szInheritsClassName;
+        QString m_szInheritsClassName,m_szReminder;
         int  m_cPos;
 public:
 	void setInheritsClass(QString szInheritsClassName){m_szInheritsClassName=szInheritsClassName;};
 	QString InheritsClass(){return m_szInheritsClassName;};
 	const QString & name(){ return m_szName; };
 	void setName(const QString &szName);
+        void setReminder(const QString &szName){m_szReminder=szName;};
+        QString reminder(){return m_szReminder;};
+
         void setClassNotBuilt(bool bModified);
         bool classNotBuilt(){return m_bClassModified;};
         void setInternalFunction(bool bInternal){m_bInternal=bInternal;};
@@ -109,8 +112,9 @@ public:
         QLabel                       * m_pClassNameLabel;
 	QLabel                       * m_pInheritsClassNameLabel;
         QPushButton                  * m_pClassNameRenameButton;
-        QLabel                       * m_pMemberFunctionNameLabel;
-        QPushButton                  * m_pMemberFunctionNameRenameButton;
+        QLabel                       * m_pFunctionNameLabel;
+        QPushButton                  * m_pFunctionNameRenameButton;
+        QLabel                       * m_pReminderLabel;
 
 	KviClassEditorTreeWidgetItem * m_pLastEditedItem;
 	KviClassEditorTreeWidgetItem * m_pLastClickedItem;
@@ -184,7 +188,7 @@ protected:
         bool hasSelectedItems();
 	bool askForClassName(QString &szClassName,QString &szInheritsClassName,bool bEdit);
 	bool askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText, QString &szNameBuffer);
-	bool askForFunction(QString &szFunctionName,bool * bInternal, const QString &szClassName, bool bRenameMode);
+        bool askForFunction(QString &szFunctionName,QString &szReminder,bool * bInternal, const QString &szClassName, bool bRenameMode);
 	void searchInheritedClasses(const QString szClass,KviPointerList<KviClassEditorTreeWidgetItem> & lInheritsedClasses);
 	bool classExists(QString &szFullItemName);
 	void renameClass(KviClassEditorTreeWidgetItem *pClassItem);
@@ -246,15 +250,18 @@ class KviClassEditorFunctionDialog: public QDialog
 {
         Q_OBJECT
 public:
-	KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString & szClassName,const QString &szFunctionName, bool bIsInternal, bool bRenameMode=false);
+        KviClassEditorFunctionDialog(QWidget * pParent, const QString & szName, const QString & szClassName,const QString &szFunctionName, const QString &szReminder,bool bIsInternal, bool bRenameMode=false);
 
         ~KviClassEditorFunctionDialog();
 public:
         QString getFunctionName(){return m_pFunctionNameLineEdit->text();};
+        QString getReminder(){return m_pReminderLineEdit->text();};
+
         bool isInternalFunction(){return m_pInternalCheckBox->isChecked();};
 protected:
         QPushButton * m_pNewFunctionButton;
         QLineEdit * m_pFunctionNameLineEdit;
+        QLineEdit * m_pReminderLineEdit;
         QCheckBox * m_pInternalCheckBox;
 protected slots:
         void textChanged(const QString &);

@@ -35,15 +35,17 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeSpecialCommandClassFunctionDefinition : public KviKvsTreeNode
 {
 public:
-	KviKvsTreeNodeSpecialCommandClassFunctionDefinition(const QChar * pLocation,const QString &szName,const QString &szBuffer,unsigned int uHandlerFlags);
-	virtual ~KviKvsTreeNodeSpecialCommandClassFunctionDefinition(){};
+        KviKvsTreeNodeSpecialCommandClassFunctionDefinition(const QChar * pLocation,const QString &szName,const QString &szBuffer, const QString &szReminder,unsigned int uHandlerFlags);
+        virtual ~KviKvsTreeNodeSpecialCommandClassFunctionDefinition(){};
 protected:
 	QString m_szName;
+        QString m_szReminder;
 	QString m_szBuffer;
 	unsigned int m_uHandlerFlags;
 public:
 	unsigned int handlerFlags(){ return m_uHandlerFlags; };
 	const QString & name(){ return m_szName; };
+        const QString & reminder(){ return m_szReminder; };
 	const QString & buffer(){ return m_szBuffer; };
 	virtual void contextDescription(QString &szBuffer);
 	virtual void dump(const char * prefix);
@@ -55,7 +57,7 @@ class KVIRC_API KviKvsTreeNodeSpecialCommandClass : public KviKvsTreeNodeSpecial
 {
 public:
 	KviKvsTreeNodeSpecialCommandClass(const QChar * pLocation,KviKvsTreeNodeDataList * pParams);
-	virtual ~KviKvsTreeNodeSpecialCommandClass();
+        virtual ~KviKvsTreeNodeSpecialCommandClass();
 protected:
 	KviKvsTreeNodeDataList * m_pParams;
 	KviPointerList<KviKvsTreeNodeSpecialCommandClassFunctionDefinition> * m_pFunctions;

@@ -29,11 +29,12 @@
 #include "kvi_kvs_object_controller.h"
 #include "kvi_kvs_object_class.h"
 
-KviKvsTreeNodeSpecialCommandClassFunctionDefinition::KviKvsTreeNodeSpecialCommandClassFunctionDefinition(const QChar * pLocation,const QString &szName,const QString &szBuffer,unsigned int uHandlerFlags)
+KviKvsTreeNodeSpecialCommandClassFunctionDefinition::KviKvsTreeNodeSpecialCommandClassFunctionDefinition(const QChar * pLocation,const QString &szName,const QString &szBuffer,const QString &szReminder,unsigned int uHandlerFlags)
 : KviKvsTreeNode(pLocation)
 {
 	m_uHandlerFlags = uHandlerFlags;
 	m_szName = szName;
+        m_szReminder = szReminder;
 	m_szBuffer = szBuffer;
 }
 
@@ -156,7 +157,7 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 
 	for(KviKvsTreeNodeSpecialCommandClassFunctionDefinition * d = m_pFunctions->first();d;d = m_pFunctions->next())
 	{
-		pActualClass->registerFunctionHandler(d->name(),d->buffer(),d->handlerFlags());
+                pActualClass->registerFunctionHandler(d->name(),d->buffer(),d->reminder(),d->handlerFlags());
 	}
 	return true;
 }

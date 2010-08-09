@@ -58,9 +58,11 @@ public:
 	virtual void setInfoText(const QString &text);
 	virtual void setFindText(const QString &text);
 	virtual void setCursorPosition(int);
+	virtual void setReadOnly(bool bReadonly);
 	virtual int getCursor();
 	virtual void setFindLineeditReadOnly(bool b);
 	virtual bool isModified();
+	virtual void setUnHighlightedText(const QString & szText);
 	virtual void setModified(bool){};
 	static KviScriptEditor * getDummyEditor(QWidget * par);
 	static KviScriptEditor * createInstance(QWidget * par);

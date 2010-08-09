@@ -1712,7 +1712,7 @@ void KviKvsObject::registerPrivateImplementation(const QString &szFunctionName,c
 		szContext += "[privateimpl]::";
 		szContext += szFunctionName;
 
-		m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectScriptFunctionHandler(szContext,szCode));
+                m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectScriptFunctionHandler(szContext,szCode,QString("")));
 	}
 }
 
