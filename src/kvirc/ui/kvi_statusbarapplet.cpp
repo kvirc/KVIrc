@@ -799,7 +799,8 @@ void KviStatusBarUpdateIndicator::getNewVersion()
 	
 	if(m_bUpdateRevision)
 	{
-		szUrl = "http://kvirc.net/?id=svn";
+		szUrl = "https://svn.kvirc.de/kvirc/changeset/";
+		szUrl += m_szNewVersion;
 	} else {
 		QString szSystem = KviBuildInfo::buildSystemName();
 
