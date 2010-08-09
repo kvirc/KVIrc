@@ -1129,14 +1129,10 @@ void KviKvsObject_socket::readNotifierFired(int)
 	}
 	// readLength > 0
 	m_uInDataLen += readLength;
-
-       KviKvsVariant *param=new KviKvsVariant((kvs_int_t)readLength);
-       KviKvsVariantList *lParams=new KviKvsVariantList(param);
+	KviKvsVariantList lParams;
+	lParams.append(new KviKvsVariant((kvs_int_t)readLength));
+	callFunction(this,"dataAvailableEvent",&lParams);
 	unsigned int uOldConnectionId = m_uConnectionId;
-        callFunction(this,"dataAvailableEvent",lParams);
-        //delete param;
-        delete lParams;
-        //callFunction(this,"dataAvailableEvent",new KviKvsVariantList(new KviKvsVariant((kvs_int_t)readLength)));
 	if(m_uConnectionId == uOldConnectionId)
 	{
 		if(m_uInDataLen > (4096 * 1024)) // too much data in buffer (not reading)
