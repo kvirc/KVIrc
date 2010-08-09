@@ -360,7 +360,11 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 	"rage", // 308
 	"class", // 309
 	"classnotbuilt", // 310
-	"function" // 311
+	"function", // 311
+	"sexmale", // 312
+	"sexfemale", // 313
+	"sexbot", // 314
+	"sexircop" // 315
 };
 
 KviIconWidget::KviIconWidget()

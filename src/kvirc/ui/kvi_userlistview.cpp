@@ -88,7 +88,7 @@ void KviUserListToolTip::maybeTip(const QPoint & pnt)
 
 
 KviUserListEntry::KviUserListEntry(KviUserListView * pParent, const QString & szNick, KviIrcUserEntry * pEntry, short int iFlags, bool bJoinTimeUnknown)
-	: QObject()
+: QObject()
 {
 	m_pListView       = pParent;
 	m_szNick          = szNick;
@@ -99,7 +99,7 @@ KviUserListEntry::KviUserListEntry(KviUserListView * pParent, const QString & sz
 	m_iTemperature    = bJoinTimeUnknown ? 0 : KVI_USERACTION_JOIN;
 
 	m_bSelected       = false;
-	m_pAvatarPixmap = NULL;
+	m_pAvatarPixmap   = NULL;
 
 	updateAvatarData();
 	recalcSize();
@@ -1823,15 +1823,21 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 
 			if(bShowGender)
 			{
+				if(pEntry->globalData()->isIrcOp())
+				{
+					QPixmap * pIco = g_pIconManager->getSmallIcon(KVI_SMALLICON_SEXIRCOP);
+					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
+				}
+				
 				if(pEntry->globalData()->gender()!=KviIrcUserEntry::Unknown)
 				{
-					QPixmap * pIco = g_pIconManager->getBigIcon((pEntry->globalData()->gender()==KviIrcUserEntry::Male) ? "kvi_icon_male.png" : "kvi_icon_female.png");
+					QPixmap * pIco = g_pIconManager->getSmallIcon((pEntry->globalData()->gender()==KviIrcUserEntry::Male) ? KVI_SMALLICON_SEXMALE : KVI_SMALLICON_SEXFEMALE);
 					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
 				}
 
 				if(pEntry->globalData()->isBot())
 				{
-					QPixmap * pIco = g_pIconManager->getBigIcon("kvi_icon_bot.png");
+					QPixmap * pIco = g_pIconManager->getSmallIcon(KVI_SMALLICON_SEXBOT);
 					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
 				}
 				iTheX +=11;
@@ -1907,28 +1913,26 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			if(bShowIcons)
 			{
 				//p.drawRect(iTheX,iTheY + 2,18,e->m_iHeight - 4);
-				if(pEntry->m_iFlags != 0 || pEntry->globalData()->isIrcOp())
+				if(pEntry->m_iFlags != 0)
 				{
 					QPixmap * pIco = g_pIconManager->getSmallIcon( \
 											pEntry->globalData()->isAway() ? \
 												( \
-													(pEntry->globalData()->isIrcOp()) ? \
-													KVI_SMALLICON_IRCOPAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
+													(pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
 													KVI_SMALLICON_CHANOWNERAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN) ? \
 													KVI_SMALLICON_CHANADMINAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_OP) ? \
 													KVI_SMALLICON_OPAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_HALFOP) ? \
 													KVI_SMALLICON_HALFOPAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_VOICE) ? \
-													KVI_SMALLICON_VOICEAWAY : KVI_SMALLICON_USEROPAWAY)))))
+													KVI_SMALLICON_VOICEAWAY : KVI_SMALLICON_USEROPAWAY))))
 												) \
 											: \
 												( \
-													(pEntry->globalData()->isIrcOp()) ? \
-													KVI_SMALLICON_IRCOP : ((pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
+													(pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
 													KVI_SMALLICON_CHANOWNER : ((pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN) ? \
 													KVI_SMALLICON_CHANADMIN : ((pEntry->m_iFlags & KVI_USERFLAG_OP) ? \
 													KVI_SMALLICON_OP : ((pEntry->m_iFlags & KVI_USERFLAG_HALFOP) ? \
 													KVI_SMALLICON_HALFOP : ((pEntry->m_iFlags & KVI_USERFLAG_VOICE) ? \
-													KVI_SMALLICON_VOICE : KVI_SMALLICON_USEROP))))) \
+													KVI_SMALLICON_VOICE : KVI_SMALLICON_USEROP)))) \
 												) \
 										);
 					p.drawPixmap(iTheX,iTheY+(fm.lineSpacing()-16/*size of small icon*/)/2,*pIco);
