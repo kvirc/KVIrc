@@ -251,8 +251,11 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("transferwindow_hsplitter");
+	m_pSplitter->setChildrenCollapsible(false);
+
 	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setObjectName("transferwindow_vsplitter");
+	m_pVertSplitter->setChildrenCollapsible(false);
 
 	m_pTableWidget  = new KviFileTransferWidget(m_pVertSplitter);
 

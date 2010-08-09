@@ -55,6 +55,7 @@
 #include <QMouseEvent>
 #include <QByteArray>
 #include <QMessageBox>
+#include <QSplitter>
 
 #ifdef COMPILE_ZLIB_SUPPORT
 	#include <zlib.h>
@@ -72,6 +73,8 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
+	m_pSplitter->setChildrenCollapsible(false);
+
 	m_pTabWidget = new QTabWidget(m_pSplitter);
 
 	m_pIndexTab  = new KviTalVBox(m_pTabWidget);

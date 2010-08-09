@@ -48,6 +48,7 @@ KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame *,bool bIsStandalone)
 : QWidget(par)
 {
 	setObjectName("help_widget");
+	setMinimumWidth(80);
 	if(bIsStandalone)g_pHelpWidgetList->append(this);
 	m_bIsStandalone = bIsStandalone;
 

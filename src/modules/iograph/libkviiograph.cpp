@@ -151,8 +151,8 @@ void KviIOGraphWidget::timerEvent(QTimerEvent *)
 	kvi_u64_t sB = g_uOutgoingTraffic;
 	kvi_u64_t rB = g_uIncomingTraffic;
 
-	unsigned int sDiff = sB - m_uLastSentBytes;
-	unsigned int rDiff = rB - m_uLastRecvBytes;
+	unsigned int sDiff = sB > m_uLastSentBytes ? (sB - m_uLastSentBytes) : 0;
+	unsigned int rDiff = rB > m_uLastRecvBytes ? (rB - m_uLastRecvBytes) : 0;
 
 	unsigned int iMax = qMax(sDiff, rDiff);
 

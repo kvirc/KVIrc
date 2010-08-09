@@ -112,6 +112,7 @@ KviFrame::KviFrame()
 
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_frame_splitter");
+	m_pSplitter->setChildrenCollapsible(false);
 
 	setCentralWidget(m_pSplitter);
 

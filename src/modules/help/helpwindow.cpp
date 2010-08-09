@@ -68,6 +68,8 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	g_pHelpWindowList->append(this);
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
+	m_pSplitter->setChildrenCollapsible(false);
+
 	m_pHelpWidget = new KviHelpWidget(m_pSplitter,lpFrm);
 
 	m_pToolBar=new KviTalVBox(m_pSplitter);

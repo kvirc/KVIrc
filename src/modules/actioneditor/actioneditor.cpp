@@ -618,7 +618,7 @@ KviActionEditor::KviActionEditor(QWidget * par)
 
 	QGridLayout * l = new QGridLayout(this);
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
-	m_pSplitter->setOpaqueResize(false);
+	m_pSplitter->setChildrenCollapsible(false);
 	l->addWidget(m_pSplitter,0,0);
 
 

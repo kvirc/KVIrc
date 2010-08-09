@@ -31,7 +31,6 @@
 #include "kvi_app.h"
 #include "kvi_qstring.h"
 
-#include <QSplitter>
 #include <QLayout>
 #include <QDir>
 #include <QTextCodec>

@@ -165,6 +165,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 
 	QGridLayout * g1 = new QGridLayout(this);
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this);
+	spl->setChildrenCollapsible(false);
 
 	g1->addWidget(spl,0,0,1,5);
 
