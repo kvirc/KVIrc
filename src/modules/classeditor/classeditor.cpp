@@ -712,14 +712,6 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 		m_pEditor->setEnabled(false);
 		return;
 	}
-/*	szLabelText += m_pLastEditedItem->text(0);
-	szLabelText += "</b>";
-	m_pFunctionNameRenameButton->setEnabled(true);
-	if(!m_pLastEditedItem->reminder().isEmpty())
-	szLabelText += m_pLastEditedItem->text(0);
-	szLabelText += "</b>";
-	m_pFunctionNameRenameButton->setEnabled(true);
-	if(!m_pLastEditedItem->reminder().isEmpty())*/
 	KviClassEditorTreeWidgetItem * pClassItem;
 	if(m_pLastEditedItem->isMethod()) pClassItem=(KviClassEditorTreeWidgetItem *)m_pLastEditedItem->parent();
 	else pClassItem=m_pLastEditedItem;
@@ -779,7 +771,6 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
             m_pClassNameRenameButton->setEnabled(true);
 	    m_pFunctionNameRenameButton->hide();
         }
-//        m_pFunctionNameLabel->setText(szLabelText);
         if(m_pLastEditedItem->isClass())
 	{
                 m_pFunctionNameRenameButton->setEnabled(false);
