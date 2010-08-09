@@ -97,12 +97,12 @@ void KviKvsObjectClass::registerFunctionHandler(const QString & szFunctionName,K
 	m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectCoreCallFunctionHandler(pProc,uFlags));
 }
 
-void KviKvsObjectClass::registerFunctionHandler(const QString & szFunctionName,const QString &szBuffer,unsigned int uFlags)
+void KviKvsObjectClass::registerFunctionHandler(const QString & szFunctionName,const QString &szBuffer,const QString &szReminder,unsigned int uFlags)
 {
 	QString szContext = m_szName;
 	szContext += "::";
 	szContext += szFunctionName;
-	m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectScriptFunctionHandler(szContext,szBuffer,uFlags));
+        m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectScriptFunctionHandler(szContext,szBuffer,szReminder,uFlags));
 }
 
 void KviKvsObjectClass::registerStandardNothingReturnFunctionHandler(const QString &szFunctionName)
@@ -193,7 +193,7 @@ bool KviKvsObjectClass::save(const QString &szFileName)
 			szBuffer += "internal ";
 			szBuffer += "function ";
 			szBuffer += it.currentKey();
-			szBuffer += "()\n";
+                        szBuffer += "("+h->reminder()+")\n";
 			QString szCode = h->scriptHandlerCode();
 			KviCommandFormatter::blockFromBuffer(szCode);
 			KviCommandFormatter::indent(szCode);
@@ -212,7 +212,14 @@ void KviKvsObjectClass::getFunctionCode(QString &szCode,KviKvsObjectFunctionHand
 	szCode=h.scriptHandlerCode();
 }
 
-
+void KviKvsObjectClass::setReminder(const QString &szReminder,KviKvsObjectFunctionHandler *h)
+{
+        h->setReminder(szReminder);
+}
+QString KviKvsObjectClass::reminder(KviKvsObjectFunctionHandler *h)
+{
+        return h->reminder();
+}
 
 bool KviKvsObjectClass::load(const QString &szFileName)
 {
