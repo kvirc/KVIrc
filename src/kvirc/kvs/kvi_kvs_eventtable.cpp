@@ -1754,11 +1754,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$4 = mode params"),
 
 	/*
-		@doc: onusermode
+		@doc: onusermodechange
 		@type:
 			event
 		@title:
-			OnUserMode
+			OnUserModeChange
 		@short:
 			The local user has changed mode
 		@parameters:
@@ -1771,7 +1771,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			if the mode was removed it will be something like "-x" , otherwise something like "+x".[br]
 			Calling 'halt' in this event will stop the "mode" message output.[br]
 	*/
-	EVENT("OnUserModeChanged", \
+	EVENT("OnUserModeChange", \
 		"$0 = mode flags"),
 
 	/*
@@ -3751,5 +3751,28 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 	EVENT("OnQueryNickDefaultActionRequest", \
 		"$0 = actual name\n" \
 		"$1 - visible name\n" \
-		"$2 - command name")
+		"$2 - command name"),
+	
+	/*
+		@doc: onwindowtitlerequest
+		@type:
+			event
+		@title:
+			OnWindowTitleRequest
+		@short:
+			Triggered when a window title needs to be set
+		@parameters:
+			none
+		@window:
+			Any window
+		@description:
+			This event is triggered when a KVIrc MDI or undocked window is in need of a window title change.[br]
+			You can set a customized window title and halt the default title from being set.[br]
+		@seealso:
+			[cmd]window.setWindowTitle[cmd]
+	*/
+	EVENT("OnWindowTitleRequest", \
+		"$0 = window id\n" \
+		"$1 = default window title")
+
 };

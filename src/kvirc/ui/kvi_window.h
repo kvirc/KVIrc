@@ -295,6 +295,11 @@ public:
 	void listWindowTypes();
 
 	void activateSelf();
+	
+	// call this in the constructor if your caption is fixed:
+	// it will set m_szPlainTextCaption to szCaption and it will
+	// automatically use it without the need of overriding fillCaptionBuffers
+	void setFixedCaption(const QString &szCaption);
 public slots:
 	void dock();
 	void undock();
@@ -331,11 +336,6 @@ protected:
 	// called by KviFrame
 	// either lost the active window status or the frame is no longer active (but we're still the active kvirc's subwindow)
 	virtual void lostUserFocus();
-
-	// call this in the constructor if your caption is fixed:
-	// it will set m_szPlainTextCaption to szCaption and it will
-	// automatically use it without the need of overriding fillCaptionBuffers
-	void setFixedCaption(const QString &szCaption);
 	// this by default calls fillSingleColorCaptionBuffer(plainTextCaption());
 	virtual void fillCaptionBuffers();
 	// protected helper

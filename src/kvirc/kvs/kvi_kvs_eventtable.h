@@ -39,6 +39,7 @@
 * \def KviEvent_OnFrameWindowCreated Triggered when the frame window is created
 * \def KviEvent_OnFrameWindowDestroyed Triggered when the frame window is destroyed
 * \def KviEvent_OnURL An URL appears in one of the output windows
+* \def KviEvent_OnError Triggered when an ERROR message is received from the server
 * \def KviEvent_OnAccelKeyPressed An accelerator key was pressed
 * \def KviEvent_OnHighlight A channel or query message is going to be highlighted
 * \def KviEvent_OnWindowActivated A window has just been activated
@@ -54,6 +55,7 @@
 * \def KviEvent_OnWallops A WALLOPS message is received from the server
 * \def KviEvent_OnIgnoredMessage Triggered when a message is ignored
 * \def KviEvent_OnServerNotice A server NOTICE have been issued
+* \def KviEvent_OnWindowTitleRequest A window title is needed
 */
 #define KviEvent_OnKVIrcStartup                    0
 #define KviEvent_OnKVIrcShutdown                   1
@@ -78,6 +80,7 @@
 #define KviEvent_OnWallops                        20
 #define KviEvent_OnIgnoredMessage                 21
 #define KviEvent_OnServerNotice                   22
+#define KviEvent_OnWindowTitleRequest            145
 
 // Connection
 /**
@@ -184,7 +187,7 @@
 // IRC modes
 /**
 * \def KviEvent_OnChannelModeChange The channel mode has been changed
-* \def KviEvent_OnUserMode The local user has changed mode
+* \def KviEvent_OnUserModeChange The local user has changed mode
 * \def KviEvent_OnBan Someone has set a +b flag on the channel
 * \def KviEvent_OnUnban Someone has set a -b flag on the channel
 * \def KviEvent_OnMeBan Local user is being banned in a channel
@@ -234,7 +237,7 @@
 * \def KviEvent_OnMeDeIrcOp Someone has given the local user the -O flag
 */
 #define KviEvent_OnChannelModeChange        64
-#define KviEvent_OnUserMode                 65
+#define KviEvent_OnUserModeChange           65
 #define KviEvent_OnBan                      66
 #define KviEvent_OnUnban                    67
 #define KviEvent_OnMeBan                    68
@@ -361,6 +364,6 @@
 #define KviEvent_OnQueryNickDefaultActionRequest   144
 
 /** \def KVI_KVS_NUM_APP_EVENTS Defines the number of events */
-#define KVI_KVS_NUM_APP_EVENTS 145
+#define KVI_KVS_NUM_APP_EVENTS 146
 
 #endif //_KVI_KVS_EVENTTABLE_H_

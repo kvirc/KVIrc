@@ -57,6 +57,8 @@
 #include "kvi_kvs_script.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_tooltip.h"
+#include "kvi_kvs_script.h"
+#include "kvi_kvs_eventtriggers.h"
 
 #include <QPixmap>
 #include <QCursor>
@@ -646,10 +648,16 @@ void KviWindow::fillSingleColorCaptionBuffers(const QString &szName)
 void KviWindow::updateCaption()
 {
 	fillCaptionBuffers();
-	if(mdiParent())
-		mdiParent()->setWindowTitle(m_szPlainTextCaption);
-	else
-		setWindowTitle(m_szPlainTextCaption);
+	bool bHaltOutput = false;
+	bHaltOutput = KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnWindowTitleRequest,this,id(),m_szPlainTextCaption);
+
+	if(!bHaltOutput)
+	{
+		if(mdiParent())
+			mdiParent()->setWindowTitle(m_szPlainTextCaption);
+		else
+			setWindowTitle(m_szPlainTextCaption);
+	}
 	if(m_pWindowListItem)
 		m_pWindowListItem->captionChanged();
 }

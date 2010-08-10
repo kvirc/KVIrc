@@ -1648,12 +1648,12 @@ void KviServerParser::parseUserMode(KviIrcMessage *msg,const char * modeflptr)
 						KviKvsEventManager::instance()->trigger(KviEvent_OnNickServAuth,msg->console(),&vList);
 					}
 					// There was a mode change
-					if(KviKvsEventManager::instance()->hasAppHandlers(KviEvent_OnUserMode))
+					if(KviKvsEventManager::instance()->hasAppHandlers(KviEvent_OnUserModeChange))
 					{
 						QString szModeFlag(bSet ? QChar('+') : QChar('-'));
 						szModeFlag += QChar(*modeflptr);
 						KviKvsVariantList vList(new KviKvsVariant(szModeFlag));
-						if(KviKvsEventManager::instance()->trigger(KviEvent_OnUserMode,msg->console(),&vList))
+						if(KviKvsEventManager::instance()->trigger(KviEvent_OnUserModeChange,msg->console(),&vList))
 							msg->setHaltOutput();
 					}
 				}

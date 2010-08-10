@@ -1166,9 +1166,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	@description:
 		Sets the caption of the user window specified by <window_id> to <plain_text_caption>.[br]
 		If <window_id> is an empty string then the current window is assumed.[br]
-		The window must be of type userwnd and must have been created by [fnc]$window.open[/fnc]:
-		it is not possible to change the caption of other window types.[br]
-		If the window does not exists or is not of the expected type then a warning is printed unless the -q switch is used.[br]
+		If the window does not exists then a warning is printed unless the -q switch is used.[br]
 	@seealso:
 */
 
@@ -1194,7 +1192,13 @@ static bool window_kvs_cmd_setWindowTitle(KviKvsModuleCommandCall * c)
 	{
 		((KviUserWindow *)pWnd)->setWindowTitleStrings(szPlain);
 	} else {
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("The specified window is not of type \"userwnd\""));
+		//store the window title (needed for functions that search windows by their captions)
+		((KviWindow *)pWnd)->setFixedCaption(szPlain);
+
+		if(((KviWindow *)pWnd)->mdiParent())
+			((KviWindow *)pWnd)->mdiParent()->setWindowTitle(szPlain);
+		else
+			((KviWindow *)pWnd)->setWindowTitle(szPlain);
 	}
 	return true;
 }
