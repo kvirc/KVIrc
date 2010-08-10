@@ -279,9 +279,18 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 	delete pParams;
 }
 
-void KviIrcView::mousePressEvent(QMouseEvent *e)
+void KviIrcView::mousePressEvent(QMouseEvent * e)
 {
 	if(m_pKviWindow->input()) m_pKviWindow->input()->setFocus();
+	
+	if(e->button() & Qt::LeftButton)
+	{
+		// We are inside the line marker
+		if(checkMarkerArea(m_lineMarkArea,e->pos()))
+		{
+			scrollToMarker();
+		}
+	}
 
 	if(e->button() & Qt::LeftButton)
 	{
@@ -692,8 +701,19 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 
 // FIXME: #warning "The tooltip timeout should be small, because the view scrolls!"
 
-void KviIrcView::mouseMoveEvent(QMouseEvent *e)
+void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 {
+	bool bCursorOverMarker = false;
+	if(checkMarkerArea(m_lineMarkArea,e->pos()))
+	{
+		bCursorOverMarker = true;
+	}
+	
+	if(bCursorOverMarker)
+		setCursor(Qt::PointingHandCursor);
+	else
+		setCursor(Qt::ArrowCursor);
+	
 	if(m_bMouseIsDown && (e->buttons() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
 	{
 		if(m_iSelectTimer == 0)

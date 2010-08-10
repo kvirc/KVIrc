@@ -89,17 +89,17 @@ protected:
 	KviIrcViewToolWidget(KviIrcView * par);
 	~KviIrcViewToolWidget();
 protected:
-	KviIrcView * m_pIrcView;
-	QLineEdit  * m_pStringToFind;
-	QPoint       m_pressPoint;
+	KviIrcView  * m_pIrcView;
+	QLineEdit   * m_pStringToFind;
+	QPoint        m_pressPoint;
 
-	QCheckBox  * m_pCaseSensitive;
-	QCheckBox  * m_pRegExp;
-	QCheckBox  * m_pExtendedRegExp;
+	QCheckBox   * m_pCaseSensitive;
+	QCheckBox   * m_pRegExp;
+	QCheckBox   * m_pExtendedRegExp;
 
-	QLabel     * m_pFindResult;
+	QLabel      * m_pFindResult;
 
-	QTreeWidget  * m_pFilterView;
+	QTreeWidget * m_pFilterView;
 
 	KviIrcMessageCheckListItem ** m_pFilterItems;
 

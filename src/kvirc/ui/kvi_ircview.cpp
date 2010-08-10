@@ -1568,6 +1568,7 @@ no_selection_paint:
 				* y++; pa.drawLine(x-4,y,x+4,y);
 				*/
 				QPixmap * pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_UNREADTEXT);
+				m_lineMarkArea = QRect(x,y,16,16);
 				pa.drawPixmap(x,y,16,16,*pIcon);
 				//pa.setRasterOp(CopyROP);
 			}
@@ -2750,6 +2751,22 @@ bool KviIrcView::checkMarkerArea(const QRect & area, const QPoint & mousePos)
 void KviIrcView::animatedIconChange()
 {
 	update();
+}
+
+void KviIrcView::scrollToMarker()
+{
+	KviIrcViewLine * pLine = m_pCurLine;
+	
+	while(pLine && (pLine->uIndex != m_uLineMarkLineIndex))
+		pLine = pLine->pPrev;
+	
+	if(pLine == 0)
+	{
+		// The buffer has already cleaned the marker line
+		ensureLineVisible(pLine->pNext);
+	} else {
+		ensureLineVisible(pLine);
+	}
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

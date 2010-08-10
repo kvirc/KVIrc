@@ -79,6 +79,7 @@ private:
 	KviIrcViewLine            * m_pLastLine;
 	KviIrcViewLine            * m_pCursorLine;
 	unsigned int                m_uLineMarkLineIndex;
+	QRect                       m_lineMarkArea;
 
 	// Highliting of links
 	KviIrcViewWrappedBlock    * m_pLastLinkUnderMouse;
@@ -192,20 +193,22 @@ public:
 	const QString & lastLineOfText();
 	const QString & lastMessageText();
 	virtual void setFont(const QFont &f);
-public slots:
-	void flushLog();
-	void showToolsPopup();
-	void clearBuffer();
-	void toggleToolWidget();
-	void increaseFontSize();
-	void decreaseFontSize();
-	void chooseFont();
-	void chooseBackground();
-	void resetBackground();
-signals:
-	void rightClicked();
-	void dndEntered();
-	void fileDropped(const QString &);
+protected:
+	virtual void paintEvent(QPaintEvent *);
+	virtual void resizeEvent(QResizeEvent *);
+	virtual void mousePressEvent(QMouseEvent * e);
+	virtual void mouseRealPressEvent(QMouseEvent * e);
+	virtual void mouseReleaseEvent(QMouseEvent *);
+	virtual void mouseDoubleClickEvent(QMouseEvent * e);
+	virtual void mouseMoveEvent(QMouseEvent * e);
+	virtual void timerEvent(QTimerEvent * e);
+	virtual void dragEnterEvent(QDragEnterEvent * e);
+	virtual void dropEvent(QDropEvent * e);
+	virtual bool event(QEvent * e);
+	virtual void wheelEvent(QWheelEvent * e);
+	virtual void keyPressEvent(QKeyEvent * e);
+	void maybeTip(const QPoint & pnt);
+	virtual void leaveEvent(QEvent *);
 private:
 	void setCursorLine(KviIrcViewLine * l);
 	void ensureLineVisible(KviIrcViewLine * pLineToShow);
@@ -223,27 +226,26 @@ private:
 	void doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkText);
 	void doMarkerToolTip(const QRect &rct);
 	bool checkMarkerArea(const QRect & area, const QPoint & mousePos);
+	void scrollToMarker();
 	void addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelectionText);
-protected:
-	virtual void paintEvent(QPaintEvent *);
-	virtual void resizeEvent(QResizeEvent *);
-	virtual void mousePressEvent(QMouseEvent *e);
-	virtual void mouseRealPressEvent(QMouseEvent *e);
-	virtual void mouseReleaseEvent(QMouseEvent *);
-	virtual void mouseDoubleClickEvent(QMouseEvent *e);
-	virtual void mouseMoveEvent(QMouseEvent *e);
-	virtual void timerEvent(QTimerEvent *e);
-	virtual void dragEnterEvent(QDragEnterEvent *e);
-	virtual void dropEvent(QDropEvent *e);
-	virtual bool event(QEvent *e);
-	virtual void wheelEvent(QWheelEvent *e);
-	virtual void keyPressEvent(QKeyEvent *e);
-	void maybeTip(const QPoint &pnt);
-	virtual void leaveEvent(QEvent *);
+public slots:
+	void flushLog();
+	void showToolsPopup();
+	void clearBuffer();
+	void toggleToolWidget();
+	void increaseFontSize();
+	void decreaseFontSize();
+	void chooseFont();
+	void chooseBackground();
+	void resetBackground();
 protected slots:
 	virtual void scrollBarPositionChanged(int newValue);
 	void masterDead();
 	void animatedIconChange();
+signals:
+	void rightClicked();
+	void dndEntered();
+	void fileDropped(const QString &);
 };
 
 #endif //_KVI_IRCVIEW_H_
