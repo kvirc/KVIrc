@@ -66,8 +66,8 @@ void KviRequestQueue::dequeueChannel(KviChannel * pChan)
 
 void KviRequestQueue::clearAll()
 {
-	m_channels.clear();
 	m_timer.stop();
+	m_channels.clear();
 	m_curType = Mode;
 }
 
