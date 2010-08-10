@@ -155,7 +155,7 @@ KviIrcConnection::~KviIrcConnection()
 	delete m_pAsyncWhoisData;
 	delete m_pStatistics;
 	delete m_pUserIdentity;
-	delete m_pRequestQueue;
+	m_pRequestQueue->deleteLater();
 }
 
 void KviIrcConnection::setEncoding(const QString & szEncoding)
