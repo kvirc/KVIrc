@@ -87,6 +87,8 @@ public:
 	int serialNumber(){ return m_iSerialNumber; };
 
 	int version(){ return m_iVersion; };
+	
+	bool fingerprintIsValid();
 #ifdef COMPILE_ON_WINDOWS
 	// On windows we need to override new and delete operators
 	// to ensure that always the right new/delete pair is called for an object instance

@@ -2699,7 +2699,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 
 
 /*
-	@doc: dcc.getSSLPeerCertInfo
+	@doc: dcc.getSSLCertInfo
 	@type:
 		function
 	@title:
@@ -2737,6 +2737,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		[li]serialNumber[/li]
 		[li]pemBase64[/li]
 		[li]version[/li]
+		[li]fingerprintIsValid[/li]
 		[/ul]
 		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
@@ -2907,6 +2908,11 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 		if(szQuery.compare("version")==0)
 		{
 			c->returnValue()->setInteger(pCert->version());
+			return true;
+		}
+		if(szQuery.compare("fingerprintIsValid")==0)
+		{
+			c->returnValue()->setBoolean(pCert->fingerprintIsValid());
 			return true;
 		}
 

@@ -593,6 +593,20 @@ void KviSSLCertificate::setX509(X509 * x509)
 	extractSignature();
 }
 
+bool KviSSLCertificate::fingerprintIsValid()
+{
+	if(!m_pX509)
+		return false;
+
+	EVP_PKEY * pkey = X509_get_pubkey(m_pX509);
+	int rv = X509_verify(m_pX509, pkey);
+	
+	// careful: https://support.ntp.org/bugs/show_bug.cgi?id=1127
+	// quote: X509_verify is a call to ASN1_item_verify which can return both 0 and -1 for error cases.
+	// In particular it can return -1 when the message digest type is not known, or memory allocation failed.
+	return rv > 0 ? true : false;
+}
+
 void KviSSLCertificate::extractSubject()
 {
 	char buffer[1024];
