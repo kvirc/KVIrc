@@ -59,7 +59,7 @@ private:
 	void extractSignature();
 	const char * dictEntry(KviPointerHashTable<const char *,KviStr> * dict,const char * entry);
 	void splitX509String(KviPointerHashTable<const char *,KviStr> * dict,const char * t);
-//	void getPKeyType(int type,KviStr &buffer);
+	int getFingerprint(unsigned char * bufferData, unsigned int * bufferLen, int * hashFunctionId);
 public:
 	void setX509(X509 * x509);
 	const char * getX509Base64(); //not owned, you'll need to delete this
@@ -89,6 +89,10 @@ public:
 	int version(){ return m_iVersion; };
 	
 	bool fingerprintIsValid();
+	int fingerprintHashId();
+	const char * fingerprintHashStr();
+	const char * fingerprintContents();
+
 #ifdef COMPILE_ON_WINDOWS
 	// On windows we need to override new and delete operators
 	// to ensure that always the right new/delete pair is called for an object instance

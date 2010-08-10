@@ -604,7 +604,78 @@ bool KviSSLCertificate::fingerprintIsValid()
 	// careful: https://support.ntp.org/bugs/show_bug.cgi?id=1127
 	// quote: X509_verify is a call to ASN1_item_verify which can return both 0 and -1 for error cases.
 	// In particular it can return -1 when the message digest type is not known, or memory allocation failed.
-	return rv > 0 ? true : false;
+	return (rv > 0);
+}
+
+int KviSSLCertificate::fingerprintHashId()
+{
+	unsigned char bufferData[EVP_MAX_MD_SIZE];
+	unsigned int bufferLen = 0;
+	int hashType = NID_sha1;
+	
+	if(getFingerprint(bufferData, &bufferLen, &hashType) != 0)
+		return -1;
+	
+	return hashType;
+	
+}
+
+const char * KviSSLCertificate::fingerprintHashStr()
+{
+	unsigned char bufferData[EVP_MAX_MD_SIZE];
+	unsigned int bufferLen = 0;
+	int hashType = NID_sha1;
+	
+	if(getFingerprint(bufferData, &bufferLen, &hashType) != 0)
+		return "";
+	
+	return OBJ_nid2ln(hashType);
+}
+
+const char * KviSSLCertificate::fingerprintContents()
+{
+	unsigned char bufferData[EVP_MAX_MD_SIZE];
+	unsigned int bufferLen = 0;
+	int hashType = NID_sha1;
+	
+	if(getFingerprint(bufferData, &bufferLen, &hashType) != 0)
+		return "";
+	
+	QByteArray digestByteArray = QByteArray::fromRawData((char *) bufferData, bufferLen);
+	return digestByteArray.toHex().data();
+}
+
+/**
+ * Be careful, in order to work, these functions need to be executed once:
+ * OpenSSL_add_all_digests();
+ * OpenSSL_add_all_algorithms();
+ * (generally at startup)
+ */
+int KviSSLCertificate::getFingerprint(unsigned char * bufferData, unsigned int * bufferLen, int * hashFunctionId)
+{
+	//TODO if in the future we will want to check the return value, ensure this
+	// doesn't collide with the one from openssl
+	if(!m_pX509)
+		return -99;
+	
+	const EVP_MD * mdType = NULL;
+	
+	//qDebug() << *hashFunctionId << OBJ_nid2ln(*hashFunctionId);
+	
+	mdType = EVP_get_digestbynid(*hashFunctionId);
+	if (mdType == NULL)
+	{
+		// internal error, like unknown
+// 		qDebug() << "EVP_get_digestbynid: failed, " << *hashFunctionId;
+		return -98;
+	}
+	
+	if (!X509_digest(m_pX509, mdType, bufferData, bufferLen))
+	{
+		return -97;
+	}
+	
+	return 0;
 }
 
 void KviSSLCertificate::extractSubject()

@@ -2738,6 +2738,9 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		[li]pemBase64[/li]
 		[li]version[/li]
 		[li]fingerprintIsValid[/li]
+		[li]fingerprintHashId[/li]
+		[li]fingerprintHashStr[/li]
+		[li]fingerprintContents[/li]
 		[/ul]
 		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
@@ -2913,6 +2916,21 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 		if(szQuery.compare("fingerprintIsValid")==0)
 		{
 			c->returnValue()->setBoolean(pCert->fingerprintIsValid());
+			return true;
+		}
+		if(szQuery.compare("fingerprintHashId")==0)
+		{
+			c->returnValue()->setInteger(pCert->fingerprintHashId());
+			return true;
+		}
+		if(szQuery.compare("fingerprintHashStr")==0)
+		{
+			c->returnValue()->setString(pCert->fingerprintHashStr());
+			return true;
+		}
+		if(szQuery.compare("fingerprintContents")==0)
+		{
+			c->returnValue()->setString(pCert->fingerprintContents());
 			return true;
 		}
 
