@@ -2154,7 +2154,8 @@ void KviIrcView::toggleToolWidget()
 
 void KviIrcView::ensureLineVisible(KviIrcViewLine * pLineToShow)
 {
-	KVI_ASSERT(pLineToShow);
+	if(!pLineToShow)
+		return;
 
 	if(pLineToShow == m_pCurLine)
 	{
@@ -2763,7 +2764,7 @@ void KviIrcView::scrollToMarker()
 	if(pLine == 0)
 	{
 		// The buffer has already cleaned the marker line
-		ensureLineVisible(pLine->pNext);
+		ensureLineVisible(m_pFirstLine);
 	} else {
 		ensureLineVisible(pLine);
 	}
