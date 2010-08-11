@@ -449,7 +449,7 @@ QWidget * KviAction::addToCustomToolBar(KviCustomToolBar *pParentToolBar)
 
 	b->setIcon(p ? *p : QPixmap());
 	b->setText(visibleName());
-	b->setStatusTip(visibleName());
+	b->setToolTip(visibleName());
 	b->setObjectName(m_szName.toUtf8().data());
 	connect(b,SIGNAL(clicked()),this,SLOT(activate()));
 
