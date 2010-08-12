@@ -7,13 +7,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-12 22:59+0200\n"
-"PO-Revision-Date: 2010-03-21 16:03+0100\n"
+"PO-Revision-Date: 2010-08-12 23:25+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: data/defscript/popups.kvs:541
@@ -376,7 +376,7 @@ msgstr "Maske für"
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
-msgstr ""
+msgstr "Fehlendes Zeil, keine Aktion ausgeführt"
 
 #: data/defscript/popups.kvs:459
 #: data/defscript/popups.kvs:1061
@@ -602,18 +602,24 @@ msgstr "Es besteht keine Server-Verbindung"
 msgid ""
 "[Installer] Error: the first argument of copyFiles must be a source directory"
 msgstr ""
+"[Installer] Fehler: Das erste Argument von copyFiles muss ein "
+"Quellverzeichnis sein"
 
 #: data/defscript/classes.kvs:24
 msgid ""
 "[Installer] Error: the second argument of copyFiles must be a file name or "
 "file regexp"
 msgstr ""
+"[Installer] Fehler: Das zweite Argument von copyFiles muss Dateiname oder "
+"eine Datei-RegExp sein"
 
 #: data/defscript/classes.kvs:30
 msgid ""
 "[Installer] Error: the third argument of copyFiles must be a destination "
 "directory"
 msgstr ""
+"[Installer] Fehler: Das dritte Argument von copyFiles muss ein "
+"Zielverzeichnis sein"
 
 #: data/defscript/aliases.kvs:100
 msgid "channel"
@@ -686,3 +692,4 @@ msgstr "y (y-Lines)"
 #: data/defscript/popups.kvs:836
 msgid "z (Debug Stats?)"
 msgstr "z (Debug-Statistiken?)"
+

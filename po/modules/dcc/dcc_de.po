@@ -10,13 +10,13 @@ msgstr ""
 "Project-Id-Version: dcc_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-12 22:59+0200\n"
-"PO-Revision-Date: 2010-06-10 21:20+0200\n"
+"PO-Revision-Date: 2010-08-12 23:38+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/dcc/requests.cpp:873
@@ -922,11 +922,8 @@ msgstr ""
 "ignoriert"
 
 #: src/modules/dcc/libkvidcc.cpp:2761
-#, fuzzy
 msgid "This executable was built without SSL support"
-msgstr ""
-"Diese Version von KVirc wurde ohne SSL-Unterstützung erstellt, Schalter -s "
-"wird ignoriert"
+msgstr "Diese Version von KVirc wurde ohne SSL-Unterstützung erstellt"
 
 #: src/modules/dcc/libkvidcc.cpp:172
 msgid "This executable was built without SSL support, -s switch ignored"
@@ -970,22 +967,30 @@ msgstr "Daten werden übertragen"
 #: src/modules/dcc/libkvidcc.cpp:2783
 msgid "Unable to get SSL informations: DCC session is not using SSL"
 msgstr ""
+"Beziehen der SSL-Informationen nicht möglich: Diese DCC-Sitzung nutzt kein "
+"SSL"
 
 #: src/modules/dcc/libkvidcc.cpp:2796
 msgid "Unable to get SSL informations: DCC session not initialized yet"
 msgstr ""
+"Beziehen der SSL-Informationen nicht möglich: DCC-Sitzung noch nicht "
+"initialisiert"
 
 #: src/modules/dcc/libkvidcc.cpp:2813
 msgid "Unable to get SSL informations: No peer certificate available"
 msgstr ""
+"Beziehen der SSL-Informationen nicht möglich: Kein Zertifikat der Gegenseite "
+"verfügbar"
 
 #: src/modules/dcc/libkvidcc.cpp:2804
 msgid "Unable to get SSL informations: SSL non initialized yet in DCC session"
 msgstr ""
+"Beziehen der SSL-Informationen nicht möglich: SSL noch nicht initialisiert "
+"in dieser DCC-Sitzung"
 
 #: src/modules/dcc/libkvidcc.cpp:2937
 msgid "Unable to get SSL informations: query not recognized"
-msgstr ""
+msgstr "Bezeiehn der SSL-Informationen nicht möglich: Anfrage nicht angenommen"
 
 #: src/modules/dcc/libkvidcc.cpp:129
 msgid "Unable to get address of interface %Q"
@@ -1055,7 +1060,7 @@ msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:2772
 msgid "You specified a bad string for the parameter \"type\""
-msgstr ""
+msgstr "Schlechte Zeichenkette angegeben für den Parameter »Typ«"
 
 #: src/modules/dcc/broker.cpp:287
 msgid "You will be the passive side of the connection.<br>"

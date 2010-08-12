@@ -13,13 +13,13 @@ msgstr ""
 "Project-Id-Version: kvirc_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-12 22:59+0200\n"
-"PO-Revision-Date: 2010-06-12 16:31+0200\n"
+"PO-Revision-Date: 2010-08-12 23:21+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:645
@@ -878,7 +878,6 @@ msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Mittelklicken:</b><br>%Q"
 
 #: src/kvirc/kernel/kvi_app.cpp:812
-#, fuzzy
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -899,7 +898,7 @@ msgstr ""
 "diese KVIrc-Installation nicht komplett ist.</b><br><br>Es könnte alles in "
 "Ordnung sein, aber es scheinen einige Fähigkeiten zu fehlen, die das "
 "Standard-KVIrc-Skript anbietet. Dies kann passieren, wenn man zu einer "
-"instabilen CVS-Version aktualisiert, aus Versehen Konfigurationsdateien "
+"instabilen SVN-Version aktualisiert, aus Versehen Konfigurationsdateien "
 "beschädigt oder löscht, ein nicht komplettes Skript installiert oder einen "
 "Fehler in KVIrc gefunden hat.<br><br>Die Installation des Standard-Skriptes "
 "kann wiederholt werden, um die fehlenden Fähigkeiten wieder herzustellen."
@@ -1259,11 +1258,11 @@ msgstr "Wurde voice'd"
 
 #: src/modules/str/libkvistr.cpp:2447
 msgid "An error occured during signature verification."
-msgstr ""
+msgstr "Während der Signaturüberprüfung ist ein Fehler aufgetreten."
 
 #: src/modules/str/libkvistr.cpp:2296
 msgid "An error occured while signing the message."
-msgstr ""
+msgstr "Währen des Signierens der Nachricht ist ein Fehler aufgetreten."
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:250
 msgid "Anodine's Full Grid"
@@ -1599,23 +1598,25 @@ msgid "CTCP request unknown"
 msgstr "CTCP-Abfrage unbekannt"
 
 #: src/modules/str/libkvistr.cpp:2264
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Can not read private key while trying to use the default private key "
 "certificate %s"
 msgstr ""
-"[%s]: [SSL-FEHLER]: Datei-E/A-Fehler beim Versuch der Benutzung der privaten "
-"Schlüsseldatei %s"
+"Kann den privaten Schlüssel nicht lesen, um das standardmäßige private "
+"Schlüsselzertifikat zu nutzen %s"
 
 #: src/modules/str/libkvistr.cpp:2277
 msgid ""
 "Can not read private key while trying to use the provided certificate (wrong "
 "password?)"
 msgstr ""
+"Kann den privaten Schlüssel nicht lesen, um das angegebene Zertifikat zu "
+"nutzen (falsches Passwort?)"
 
 #: src/modules/str/libkvistr.cpp:2427
 msgid "Can not read public key from the provided certificate."
-msgstr ""
+msgstr "Kann den privaten Schlüssel nicht aus dem angegebenen Zertifikat lesen"
 
 #: src/modules/str/libkvistr.cpp:2406
 #, c-format
@@ -1623,6 +1624,8 @@ msgid ""
 "Can not read public key while trying to use the default public key "
 "certificate %s"
 msgstr ""
+"Kann den öffentlichen Schlüssel nicht lesen, um das standardmäßige "
+"öffentliche Zertifikat zu nutzen %s"
 
 #: src/modules/avatar/libkviavatar.cpp:405
 msgid "Can't add a file offer for file %Q (huh ? file not readable ?)"
@@ -2017,7 +2020,7 @@ msgstr "Zeichenorientiertes Gerät"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:681
 msgid "Check SVN revisions"
-msgstr ""
+msgstr "SVN-Revision überprüfen"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:679
 msgid "Check on startup"
@@ -2136,14 +2139,12 @@ msgid "Close"
 msgstr "Schließen"
 
 #: src/kvirc/ui/kvi_console.cpp:239
-#, fuzzy
 msgid "Close All Dead Channels"
-msgstr "Alle Anfragen schliessen"
+msgstr "Alle toten Räume schließen"
 
 #: src/kvirc/ui/kvi_console.cpp:241
-#, fuzzy
 msgid "Close All Dead Queries"
-msgstr "Alle Anfragen schliessen"
+msgstr "Alle toten Queries schließen"
 
 #: src/kvirc/ui/kvi_console.cpp:233
 msgid "Close All Queries"
@@ -3055,18 +3056,18 @@ msgid "File I/O error"
 msgstr "Es ist ein Datei-Eingabe-/Ausgabe-Fehler aufgetreten"
 
 #: src/modules/str/libkvistr.cpp:2252
-#, fuzzy, c-format
+#, c-format
 msgid "File I/O error while trying to use the private key file %s"
 msgstr ""
-"[%s]: [SSL-FEHLER]: Datei-E/A-Fehler beim Versuch der Benutzung der privaten "
-"Schlüsseldatei %s"
+"Datei-E/A-Fehler während des Versuchs, die private Schlüsseldatei zu nutzen "
+"%s"
 
 #: src/modules/str/libkvistr.cpp:2388
-#, fuzzy, c-format
+#, c-format
 msgid "File I/O error while trying to use the public key file %s"
 msgstr ""
-"[%s]: [SSL-FEHLER]: Datei-E/A-Fehler beim Versuch der Benutzung der privaten "
-"Schlüsseldatei %s"
+"Datei-E/A-Fehler während des Versuchs, die öffentliche Schlüsseldatei zu "
+"nutzen %s"
 
 #: src/kvirc/kernel/kvi_app.cpp:993
 msgid "File download failed"
@@ -3858,13 +3859,12 @@ msgstr ""
 "digest-Funktion unterstützt nur MD4, MD5 und SHA1."
 
 #: src/modules/str/libkvistr.cpp:2301 src/modules/str/libkvistr.cpp:2452
-#, fuzzy
 msgid "KVIrc is compiled without OpenSSL support."
-msgstr "Diese Version von KVIrc wurde ohne SSL-Unterstützung kompiliert"
+msgstr "KVIrc wurde ohne SSL-Unterstützung kompiliert."
 
 #: src/kvirc/kernel/kvi_app.cpp:707
 msgid "KVIrc requests your attention"
-msgstr ""
+msgstr "KVIrc benötigt Ihre Aufmerksamkeit"
 
 #: src/kvilib/core/kvi_error.cpp:93
 msgid "Kernel networking panic"
@@ -4375,7 +4375,7 @@ msgstr "Nein "
 
 #: src/modules/system/libkvisystem.cpp:480
 msgid "No DBus type specified"
-msgstr ""
+msgstr "Kein DBus-Typ angegeben"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:696 src/kvirc/ui/kvi_irctoolbar.cpp:329
 msgid "No IRC context"
@@ -4398,12 +4398,16 @@ msgid ""
 "No certificate specified and no private key certificate defined in KVIrc "
 "options."
 msgstr ""
+"Kein Zertifikat angegeben und kein privates Zertifikat in den "
+"KVIrc-Einstellungen definiert."
 
 #: src/modules/str/libkvistr.cpp:2380
 msgid ""
 "No certificate specified and no public key certificate defined in KVIrc "
 "options."
 msgstr ""
+"Kein Zertifikat angegeben und kein öffentliches Zertifikat in den "
+"KVIrc-Einstellungen definiert."
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:518
 msgid "No channel topic is set"
@@ -7649,7 +7653,6 @@ msgid "You cannot export an empty list"
 msgstr "Sie können keine leere Liste exportieren"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:833
-#, fuzzy
 msgid ""
 "You didn't check yet.\n"
 "Should I check it?"

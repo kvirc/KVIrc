@@ -7,13 +7,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-12 22:59+0200\n"
-"PO-Revision-Date: 2010-06-10 21:10+0200\n"
+"PO-Revision-Date: 2010-08-12 23:32+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/modules/addon/libkviaddon.cpp:146
@@ -106,7 +106,7 @@ msgstr "Soll mit der Installation fortgefahren werden?"
 
 #: src/modules/addon/libkviaddon.cpp:660
 msgid "Empty file list"
-msgstr ""
+msgstr "Leere Dateiliste"
 
 #: src/modules/addon/libkviaddon.cpp:804
 msgid "Error installing addon package: %Q"
@@ -203,7 +203,7 @@ msgstr "Erweiterungspaket von Festplatte installieren"
 
 #: src/modules/addon/libkviaddon.cpp:749
 msgid "Installing file '%1' into '%2'"
-msgstr ""
+msgstr "Installiere Datei ›%1‹ nach ›%2‹"
 
 #: src/modules/addon/libkviaddon.cpp:529
 msgid "Internal error: call a head-shrinker"
@@ -314,11 +314,11 @@ msgstr "Hilfe anzeigen"
 
 #: src/modules/addon/libkviaddon.cpp:691 src/modules/addon/libkviaddon.cpp:714
 msgid "Skipping inexisting entry '%1'"
-msgstr ""
+msgstr "Überspringe nicht existierenden Eintrag ›%1‹"
 
 #: src/modules/addon/libkviaddon.cpp:723
 msgid "Skipping invalid entry '%1'"
-msgstr ""
+msgstr "Überspringe ungültigen Eintrag ›%1‹"
 
 #: src/modules/addon/packaddondialog.cpp:591
 msgid "Source Directory"
@@ -344,27 +344,24 @@ msgstr ""
 "Die Erweiterung »%Q« existiert bereits in Version %Q, welche neuer ist als %Q"
 
 #: src/modules/addon/libkviaddon.cpp:689
-#, fuzzy
 msgid "The directory '%1' doesn't exist"
-msgstr "Das ausgewählte Verzeichnis existiert nicht."
+msgstr "Das Verzeichnis ›%1‹ existiert nicht."
 
 #: src/modules/addon/libkviaddon.cpp:721
 msgid "The entry '%1' is not a file"
-msgstr ""
+msgstr "Der Eintrag ›%1‹ ist keine Datei"
 
 #: src/modules/addon/libkviaddon.cpp:712
-#, fuzzy
 msgid "The file '%1' doesn't exist"
-msgstr "Die Erweiterung »%1« existiert nicht"
+msgstr "Die Datei ›%1‹ existiert nicht"
 
 #: src/modules/addon/packaddondialog.cpp:151
-#, fuzzy
 msgid "The initialization script (install.kvs) does not exist."
-msgstr "Das Initialisierungsskript (init.kvs) existiert nicht."
+msgstr "Das Initialisierungsskript (install.kvs) existiert nicht."
 
 #: src/modules/addon/packaddondialog.cpp:336
 msgid "The package file list is empty"
-msgstr ""
+msgstr "Die Dateiliste des Pakets ist leer"
 
 #: src/modules/addon/packaddondialog.cpp:144
 msgid "The selected directory does not exist."
@@ -390,11 +387,11 @@ msgstr "Die angegebene Version »%Q« ist keine gültige Versionszeichenkette"
 
 #: src/modules/addon/libkviaddon.cpp:652
 msgid "The target path can't be empty"
-msgstr ""
+msgstr "Der Zielpfad darf nicht leer sein"
 
 #: src/modules/addon/libkviaddon.cpp:655
 msgid "The target path can't contain .."
-msgstr ""
+msgstr "Der Zielpfad darf .. nicht enthalten "
 
 #: src/modules/addon/libkviaddon.cpp:550
 msgid ""
