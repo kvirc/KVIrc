@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-07 17:02+0200\n"
-"PO-Revision-Date: 2010-08-03 00:45+0100\n"
+"PO-Revision-Date: 2010-08-12 17:31+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -4300,7 +4300,6 @@ msgstr ""
 "este campo é opcional e irá aparecer como parte da resposta CTCP USERINFO."
 
 #: src/modules/options/optw_notifier.cpp:146
-#, fuzzy
 msgid ""
 "This is an option for the impatient: it allows to forcibly and permanently "
 "disable the notifier window. Please note that if this option is not "
@@ -4309,11 +4308,12 @@ msgid ""
 "this option will make all the /notifier.* commands fail silently."
 msgstr ""
 "Esta é uma opção para o impaciente: permite forçosamente e permanentemente "
-"desactivar a janela de notificação. Por favor note que se esta opção estiver "
-"activada, então o notificador NÃO irá ser mostrado, mesmo se todas as outras "
-"opções sobre como especificar para o usar como resposta a eventos "
-"particulares. Note também que esta opção irá fazer com que todos os comando /"
-"notifier.* falhem silenciosamente."
+"desactivar a janela de notificação. Por favor note que se esta opção não "
+"estiver activada, então o notificador NÃO irá ser mostrado, mesmo se todas "
+"as outras opções sobre como especificar para o usar como resposta para "
+"eventos "
+"particulares. Note também que esta opção irá fazer com que todos os comandos "
+"/notifier.* falhem silenciosamente."
 
 #: src/modules/options/optw_nickserv.cpp:94
 msgid ""
@@ -4389,6 +4389,10 @@ msgid ""
 "one.<br>This is cool if you want to better integrate KVIrc inside KDE. Note "
 "that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's"
 msgstr ""
+"Esta opção usa o notificador baseado no DBus (como o KNotify  do KDE) "
+"em vez do notificador do KVIrc.<br>Isto é bom se quiser integrar melhor "
+"o KVIrc com o KDE. Note que o notificador do KDE não é flexivel e não "
+"tem separadores como o do KVIrc."
 
 #: src/modules/options/optw_avatar.cpp:107
 msgid ""
@@ -4671,7 +4675,7 @@ msgstr "Usar manipuladores URL do sistema"
 
 #: src/modules/options/optw_notifier.cpp:159
 msgid "Use the DBus-based notifiers"
-msgstr ""
+msgstr "Usar os notificadores baseados no DBus"
 
 #: src/modules/options/optw_connection.cpp:89
 msgid "Use the SASL authentication protocol if available"

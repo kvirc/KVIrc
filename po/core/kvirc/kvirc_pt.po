@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-07 17:02+0200\n"
-"PO-Revision-Date: 2010-08-03 00:44+0100\n"
+"PO-Revision-Date: 2010-08-12 17:25+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -1241,11 +1241,11 @@ msgstr "Estou com voz"
 
 #: src/modules/str/libkvistr.cpp:2447
 msgid "An error occured during signature verification."
-msgstr ""
+msgstr "Ocorreu um erro durante a verificação da assinatura."
 
 #: src/modules/str/libkvistr.cpp:2296
 msgid "An error occured while signing the message."
-msgstr ""
+msgstr "Ocorreu um erro ao assinar a mensagem."
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:250
 msgid "Anodine's Full Grid"
@@ -1581,23 +1581,25 @@ msgid "CTCP request unknown"
 msgstr "Pedido CTCP desconhecido"
 
 #: src/modules/str/libkvistr.cpp:2264
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Can not read private key while trying to use the default private key "
 "certificate %s"
 msgstr ""
-"[%s]: [ERRO SSL]: Erro I/O do ficheiro enquanto se tentava usar o ficheiro "
-"da chave privada %s"
+"Não é possível ler a chave privada enquanto tentar usar o certificado "
+"de chave privada %s"
 
 #: src/modules/str/libkvistr.cpp:2277
 msgid ""
 "Can not read private key while trying to use the provided certificate (wrong "
 "password?)"
 msgstr ""
+"Não é possível ler a chave privada enquanto tenta usar o certificado "
+"fornecido (senha errada?)"
 
 #: src/modules/str/libkvistr.cpp:2427
 msgid "Can not read public key from the provided certificate."
-msgstr ""
+msgstr "Não é possível ler a chave pública do certificado indicado."
 
 #: src/modules/str/libkvistr.cpp:2406
 #, c-format
@@ -1605,6 +1607,8 @@ msgid ""
 "Can not read public key while trying to use the default public key "
 "certificate %s"
 msgstr ""
+"Não é possível le a chave pública enquanto tenta usar o certificado "
+"da chave pública predefinida %s"
 
 #: src/modules/avatar/libkviavatar.cpp:405
 msgid "Can't add a file offer for file %Q (huh ? file not readable ?)"
@@ -2122,14 +2126,12 @@ msgid "Close"
 msgstr "Fechar"
 
 #: src/kvirc/ui/kvi_console.cpp:239
-#, fuzzy
 msgid "Close All Dead Channels"
-msgstr "Fechar Todos os Privados"
+msgstr "Fechar Todos os Canais Desactivados"
 
 #: src/kvirc/ui/kvi_console.cpp:241
-#, fuzzy
 msgid "Close All Dead Queries"
-msgstr "Fechar Todos os Privados"
+msgstr "Fechar Todos os Privados Desactivados"
 
 #: src/kvirc/ui/kvi_console.cpp:233
 msgid "Close All Queries"
@@ -3035,18 +3037,18 @@ msgid "File I/O error"
 msgstr "Erro E/S do Ficheiro"
 
 #: src/modules/str/libkvistr.cpp:2252
-#, fuzzy, c-format
+#, c-format
 msgid "File I/O error while trying to use the private key file %s"
 msgstr ""
-"[%s]: [ERRO SSL]: Erro I/O do ficheiro enquanto se tentava usar o ficheiro "
-"da chave privada %s"
+"Erro de E/S do ficheiro enquanto tentava usar o ficheiro "
+"de chave privada %s"
 
 #: src/modules/str/libkvistr.cpp:2388
-#, fuzzy, c-format
+#, c-format
 msgid "File I/O error while trying to use the public key file %s"
 msgstr ""
-"[%s]: [ERRO SSL]: Erro I/O do ficheiro enquanto se tentava usar o ficheiro "
-"da chave privada %s"
+"Erro de E/S do ficheiro enquanto tentava usar o ficheiro "
+"de chave pública %s"
 
 #: src/kvirc/kernel/kvi_app.cpp:990
 msgid "File download failed"
@@ -3831,13 +3833,12 @@ msgstr ""
 "apenas MD4, MD5 e SHA1."
 
 #: src/modules/str/libkvistr.cpp:2301 src/modules/str/libkvistr.cpp:2452
-#, fuzzy
 msgid "KVIrc is compiled without OpenSSL support."
-msgstr "Este executável foi compilado sem suporte SSL"
+msgstr "O KVIrc está compilado sem o suporte SSL."
 
 #: src/kvirc/kernel/kvi_app.cpp:704
 msgid "KVIrc requests your attention"
-msgstr ""
+msgstr "O KVIrc pede a sua atenção"
 
 #: src/kvilib/core/kvi_error.cpp:93
 msgid "Kernel networking panic"
@@ -4371,12 +4372,16 @@ msgid ""
 "No certificate specified and no private key certificate defined in KVIrc "
 "options."
 msgstr ""
+"Nenhum certificado especificado e nenhum certificado de chave "
+"privada definido nas opções do KVIrc."
 
 #: src/modules/str/libkvistr.cpp:2380
 msgid ""
 "No certificate specified and no public key certificate defined in KVIrc "
 "options."
 msgstr ""
+"Nenhum certificado especificado e nenhum certificado de chave "
+"pública definido nas opções do KVIrc."
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:518
 msgid "No channel topic is set"
