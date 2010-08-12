@@ -90,7 +90,6 @@
 #include <QTextCodec>
 #include <QMetaObject>
 #include <QTextDocument>
-#include <QDBusInterface>
 
 /*
 HACK These 2 hacks are defined because X11 defines Unsorted and None
@@ -115,6 +114,10 @@ DO NOT REMOVE THEM EVEN IF THEY ARE DEFINED ALSO IN kvi_app.h
 
 #ifdef COMPILE_ON_WINDOWS
 	#include <QPluginLoader>
+#endif
+
+#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_DBUS_SUPPORT)
+	#include <QDBusInterface>
 #endif
 
 #include <QDir>
