@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-07 17:02+0200\n"
-"PO-Revision-Date: 2010-08-02 23:02+0100\n"
+"PO-Revision-Date: 2010-08-12 20:41+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "&Administrador"
 #: data/defscript/popups.kvs:465
 #: data/defscript/popups.kvs:599
 msgid "&Ban"
-msgstr "&Banimentos"
+msgstr "&Banir"
 
 #: data/defscript/popups.kvs:527
 msgid "&Control"
@@ -79,7 +79,7 @@ msgstr "&Entrar"
 #: data/defscript/popups.kvs:715
 #: data/defscript/popups.kvs:777
 msgid "&Join Channels..."
-msgstr "&Entrar em Canais"
+msgstr "&Entrar nos Canais..."
 
 #: data/defscript/popups.kvs:583
 #: data/defscript/popups.kvs:590
@@ -88,7 +88,7 @@ msgstr "&Expulsar"
 
 #: data/defscript/popups.kvs:616
 msgid "&Kick/Ban"
-msgstr "&Expular/Banir"
+msgstr "&Expulsar/Banir"
 
 #: data/defscript/popups.kvs:551
 msgid "&Op"
@@ -96,12 +96,12 @@ msgstr "&Op"
 
 #: data/defscript/popups.kvs:912
 msgid "&Page"
-msgstr "&Página"
+msgstr "&Paginar"
 
 #: data/defscript/popups.kvs:668
 #: data/defscript/popups.kvs:727
 msgid "&Part"
-msgstr "&Sair"
+msgstr "&Partir"
 
 #: data/defscript/popups.kvs:634
 #: data/defscript/popups.kvs:1287
@@ -136,7 +136,7 @@ msgstr "-o: envia uma noticia para todos os operadores do canal"
 
 #: data/defscript/aliases.kvs:107
 msgid "-q: quiet mode"
-msgstr "-q: modo inactivo"
+msgstr "-q: modo quieto"
 
 #: data/defscript/aliases.kvs:106
 msgid "-v: send notice to all channel voices"
@@ -148,7 +148,7 @@ msgstr "-w: envia uma noticia para todos os donos do canal"
 
 #: data/defscript/popups.kvs:395
 msgid "Add to Notify"
-msgstr "Adicionar à Notificação"
+msgstr "Adicionar ao Notificador"
 
 #: data/defscript/popups.kvs:29
 #: data/defscript/popups.kvs:62
@@ -217,11 +217,11 @@ msgstr "Limpar Predefinido"
 
 #: data/defscript/popups.kvs:626
 msgid "Configure ban mask..."
-msgstr "Configurar máscara de banimento..."
+msgstr "Configurar máscara de banir..."
 
 #: data/defscript/popups.kvs:686
 msgid "Copy Channel Address"
-msgstr "Copiar Endereço de Canal"
+msgstr "Copiar Endereço do Canal"
 
 #: data/defscript/popups.kvs:757
 msgid "Copy Channel URL to Clipboard"
@@ -250,7 +250,7 @@ msgstr "Editar Registo..."
 
 #: data/defscript/popups.kvs:115
 msgid "Enable Ignore"
-msgstr "Activar Ignore"
+msgstr "Activar Ignorar"
 
 #: data/defscript/popups.kvs:590
 msgid "Enter a kick reason"
@@ -339,7 +339,7 @@ msgstr "Incluir 'Buffer' Existente"
 
 #: data/defscript/popups.kvs:588
 msgid "K&ick"
-msgstr "&Expulsão"
+msgstr "&Expulsar"
 
 #: data/defscript/popups.kvs:590
 msgid "Kick Reason"
@@ -348,11 +348,11 @@ msgstr "Razão de Expulsão"
 #: data/defscript/popups.kvs:609
 #: data/defscript/popups.kvs:614
 msgid "Kick/Ban"
-msgstr "Expulsão/Banimento"
+msgstr "Expulsar/Banir"
 
 #: data/defscript/popups.kvs:616
 msgid "Kick/Ban Reason"
-msgstr "Razão Expulsão/Banimento"
+msgstr "Razão de Expulsão/Banimento"
 
 #: data/defscript/popups.kvs:1210
 msgid "Log To Default File"
@@ -397,7 +397,7 @@ msgstr "Utilizador Normal"
 
 #: data/defscript/popups.kvs:1203
 msgid "Not Logging"
-msgstr "Não está a registar"
+msgstr "Não Registar"
 
 #: data/defscript/popups.kvs:653
 #: data/defscript/popups.kvs:748
@@ -495,11 +495,11 @@ msgstr "Parar Destacamento"
 #: data/defscript/popups.kvs:19
 #: data/defscript/popups.kvs:83
 msgid "Stop Highlighting (Local)"
-msgstr "Parar de Destacar (Local)"
+msgstr "Parar Destacamento (Local)"
 
 #: data/defscript/popups.kvs:1198
 msgid "Stop Logging"
-msgstr "Parar Registos"
+msgstr "Parar Registo"
 
 #: data/defscript/popups.kvs:977
 msgid "TDCC Reverse Send to"
@@ -569,7 +569,7 @@ msgstr "Uso:"
 
 #: data/defscript/aliases.kvs:439
 msgid "User Operator"
-msgstr "Operador Utilizador"
+msgstr "Utilizador Operador"
 
 #: data/defscript/aliases.kvs:437
 msgid "Voice"
@@ -594,7 +594,7 @@ msgstr "Tem que estar conectado a um servidor"
 
 #: data/defscript/aliases.kvs:466
 msgid "You must use DNS in an IRC context"
-msgstr "Tem que usar DNS num contexto IRC"
+msgstr "Tem que usar o DNS num contexto IRC"
 
 #: data/defscript/popups.kvs:771
 msgid "You're not connected to a server"
@@ -694,3 +694,5 @@ msgstr "y (Linhas-y)"
 #: data/defscript/popups.kvs:836
 msgid "z (Debug Stats?)"
 msgstr "z (Estatísticas de Depuração?)"
+
+

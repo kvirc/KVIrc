@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-07 17:02+0200\n"
-"PO-Revision-Date: 2010-08-12 17:25+0100\n"
+"PO-Revision-Date: 2010-08-12 20:20+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -702,7 +702,7 @@ msgstr "(DNS Interno) Serviço não suportado"
 
 #: src/kvilib/core/kvi_error.cpp:73
 msgid "(DNS Internal) Unsupported address family"
-msgstr "(DNS Interno) Família de endereços não suportada"
+msgstr "(DNS Interno) Família de endereço não suportada"
 
 #: src/kvilib/core/kvi_error.cpp:81
 msgid "(DNS Internal) Unsupported socket type"
@@ -1748,7 +1748,7 @@ msgstr "Não é possível configurar um 'socket' de escuta: ligação falhada"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1045
 msgid "Can't start the DNS slave thread"
-msgstr "Não é possível iniciar a linha/thread DNS"
+msgstr "Não é possível iniciar o DNS 'slave'"
 
 #: src/modules/ident/libkviident.cpp:230
 msgid "Can't start the ident service : async setting failed"
@@ -2619,7 +2619,7 @@ msgstr "Pesquisa DNS falhada"
 
 #: src/kvilib/core/kvi_error.cpp:76
 msgid "Dns temporaneous fault (try again)"
-msgstr "Falha temporaria do DNS (tente novamente)"
+msgstr "Falha temporária do DNS (tente novamente)"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3049
 msgid "Do White Balance"
@@ -6985,14 +6985,14 @@ msgstr "Não se encontrou o nome do endereço: endereço desconhecido"
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:239
 msgid "Unable to look up the IRC proxy hostname: Can't start the DNS slave"
 msgstr ""
-"Não é possível encontrar o endereço 'proxy' IRC: Não é possível iniciar o "
-"DNS 'slave'"
+"Não é possível encontrar a máquina 'proxy' IRC: Não é possível iniciar "
+"o DNS 'slave'"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:356
 msgid "Unable to look up the server hostname: Can't start the DNS slave"
 msgstr ""
-"Não é possível encontrar o nome do endereço do servidor: não consegue "
-"iniciar o slave DNS"
+"Não é possível encontrar a máquina do servidor: não consegue "
+"iniciar o DNS 'slave'"
 
 #: src/modules/snd/libkvisnd.cpp:714
 msgid "Unable to play sound '%Q'"
@@ -7977,7 +7977,7 @@ msgstr "conexão"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:323
 msgid "d: Obscure 'DEBUG' flag"
-msgstr "d: flag 'DEPURAR' obscura"
+msgstr "d: opção 'DEPURAÇÃO' obscura"
 
 #: src/kvirc/ui/kvi_imagedialog.cpp:273
 msgid "directory"
