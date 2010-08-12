@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-07 17:02+0200\n"
+"POT-Creation-Date: 2010-08-12 22:59+0200\n"
 "PO-Revision-Date: 2010-06-10 21:20+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -217,7 +217,7 @@ msgstr ""
 "s wird angeboten, da keine ankommenden Verbindungen angenommen werden können "
 "(Benutzeroption)"
 
-#: src/modules/dcc/video.cpp:918 src/modules/dcc/voice.cpp:930
+#: src/modules/dcc/voice.cpp:930 src/modules/dcc/video.cpp:918
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Aktueller benutzter Codec ist ›%s‹"
@@ -317,7 +317,7 @@ msgstr ""
 "DCC %Q-Anfrage kann nicht an %Q gestellt werden: Die IRC-Verbindung wurde "
 "beendet"
 
-#: src/modules/dcc/send.cpp:2195 src/modules/dcc/dialogs.cpp:158
+#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:2195
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -353,8 +353,8 @@ msgstr "Bandbreite für DCC-Übertragung %1 konfigurieren"
 msgid "Connected to %1:%2"
 msgstr "Verbunden zu %1:%2"
 
-#: src/modules/dcc/video.cpp:902 src/modules/dcc/chat.cpp:564
-#: src/modules/dcc/voice.cpp:910 src/modules/dcc/canvas.cpp:284
+#: src/modules/dcc/voice.cpp:910 src/modules/dcc/video.cpp:902
+#: src/modules/dcc/canvas.cpp:284 src/modules/dcc/chat.cpp:564
 msgid "Connected to %Q:%Q"
 msgstr "Verbunden zu %Q:%Q"
 
@@ -362,8 +362,8 @@ msgstr "Verbunden zu %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Host %1 wird an Port %2 kontaktiert"
 
-#: src/modules/dcc/video.cpp:584 src/modules/dcc/chat.cpp:184
-#: src/modules/dcc/voice.cpp:755 src/modules/dcc/canvas.cpp:108
+#: src/modules/dcc/voice.cpp:755 src/modules/dcc/video.cpp:584
+#: src/modules/dcc/canvas.cpp:108 src/modules/dcc/chat.cpp:184
 msgid "Contacting host %Q on port %Q"
 msgstr "Host %Q wird an Port %Q kontaktiert"
 
@@ -395,7 +395,7 @@ msgstr "DCC CANVAS-Anfrage"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "DCC CANVAS-Anfrage nicht gesendet: erwarte manuelle Verbindungen"
 
-#: src/modules/dcc/video.cpp:897 src/modules/dcc/voice.cpp:901
+#: src/modules/dcc/voice.cpp:901 src/modules/dcc/video.cpp:897
 #: src/modules/dcc/canvas.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "DCC fehlgeschlagen: %Q"
@@ -437,8 +437,8 @@ msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr ""
 "Datenübertragung wurde vor 30 Sekunden beendet, schließe die Verbindung"
 
-#: src/modules/dcc/video.cpp:760 src/modules/dcc/chat.cpp:415
-#: src/modules/dcc/voice.cpp:818
+#: src/modules/dcc/voice.cpp:818 src/modules/dcc/video.cpp:760
+#: src/modules/dcc/chat.cpp:415
 msgid "ERROR: %Q"
 msgstr "FEHLER: %Q"
 
@@ -550,8 +550,8 @@ msgstr "Bandbreite zum Hochladen beschränken auf"
 msgid "Listening on interface %1 port %2"
 msgstr "Es wird an Schnittstelle %1 Port %2 auf eine Verbindung gewartet"
 
-#: src/modules/dcc/video.cpp:587 src/modules/dcc/chat.cpp:186
-#: src/modules/dcc/voice.cpp:758 src/modules/dcc/canvas.cpp:84
+#: src/modules/dcc/voice.cpp:758 src/modules/dcc/video.cpp:587
+#: src/modules/dcc/canvas.cpp:84 src/modules/dcc/chat.cpp:186
 msgid "Listening on interface %Q port %Q"
 msgstr "Es wird an Schnittstelle %Q Port %Q auf eine Verbindung gewartet"
 
@@ -559,8 +559,8 @@ msgstr "Es wird an Schnittstelle %Q Port %Q auf eine Verbindung gewartet"
 msgid "Local end is %1:%2"
 msgstr "Lokales Ende ist %1:%2"
 
-#: src/modules/dcc/video.cpp:904 src/modules/dcc/chat.cpp:566
-#: src/modules/dcc/voice.cpp:912 src/modules/dcc/canvas.cpp:286
+#: src/modules/dcc/voice.cpp:912 src/modules/dcc/video.cpp:904
+#: src/modules/dcc/canvas.cpp:286 src/modules/dcc/chat.cpp:566
 msgid "Local end is %Q:%Q"
 msgstr "Lokales Ende ist %Q:%Q"
 
@@ -921,7 +921,7 @@ msgstr ""
 "Diese Version von KVirc enthält keine SSL-Unterstützung, Schalter -s wird "
 "ignoriert"
 
-#: src/modules/dcc/libkvidcc.cpp:2757
+#: src/modules/dcc/libkvidcc.cpp:2761
 #, fuzzy
 msgid "This executable was built without SSL support"
 msgstr ""
@@ -967,23 +967,23 @@ msgstr "Übertragung fehlgeschlagen: "
 msgid "Transferring data"
 msgstr "Daten werden übertragen"
 
-#: src/modules/dcc/libkvidcc.cpp:2779
+#: src/modules/dcc/libkvidcc.cpp:2783
 msgid "Unable to get SSL informations: DCC session is not using SSL"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2792
+#: src/modules/dcc/libkvidcc.cpp:2796
 msgid "Unable to get SSL informations: DCC session not initialized yet"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2809
+#: src/modules/dcc/libkvidcc.cpp:2813
 msgid "Unable to get SSL informations: No peer certificate available"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2800
+#: src/modules/dcc/libkvidcc.cpp:2804
 msgid "Unable to get SSL informations: SSL non initialized yet in DCC session"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2913
+#: src/modules/dcc/libkvidcc.cpp:2937
 msgid "Unable to get SSL informations: query not recognized"
 msgstr ""
 
@@ -1053,7 +1053,7 @@ msgstr ""
 "WARNUNG: Setzen der angeforderten Sample-Rate (%d) fehlgeschlagen: das Gerät "
 "benutzt die nächstliegende (%d)"
 
-#: src/modules/dcc/libkvidcc.cpp:2768
+#: src/modules/dcc/libkvidcc.cpp:2772
 msgid "You specified a bad string for the parameter \"type\""
 msgstr ""
 
@@ -1082,14 +1082,14 @@ msgstr "[SSL-FEHLER]: %s"
 msgid "bytes/sec"
 msgstr "Byte/Sek"
 
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/libkvidcc.cpp:111
 #: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
 #: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
 #: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
 #: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
 #: src/modules/dcc/libkvidcc.cpp:1199 src/modules/dcc/libkvidcc.cpp:1238
-#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
-#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/requests.cpp:142
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/requests.cpp:142
 #: src/modules/dcc/requests.cpp:143 src/modules/dcc/requests.cpp:144
 msgid "unknown"
 msgstr "unbekannt"

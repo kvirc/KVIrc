@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: about_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-07 17:02+0200\n"
+"POT-Creation-Date: 2010-08-12 22:59+0200\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -21,56 +21,56 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1:2);\n"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:512
+#: src/modules/filetransferwindow/filetransferwindow.cpp:515
 msgid "&Clear Terminated"
 msgstr "Очистити &завершені"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:480
+#: src/modules/filetransferwindow/filetransferwindow.cpp:483
 msgid "&Copy Path to Clipboard"
 msgstr "&Копіювати шлях у буфер обміну"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:482
+#: src/modules/filetransferwindow/filetransferwindow.cpp:485
 msgid "&Delete file"
 msgstr "&Видалити файл"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:436
-#: src/modules/filetransferwindow/filetransferwindow.cpp:469
+#: src/modules/filetransferwindow/filetransferwindow.cpp:439
+#: src/modules/filetransferwindow/filetransferwindow.cpp:472
 msgid "&Open"
 msgstr "&Відкрити"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:457
+#: src/modules/filetransferwindow/filetransferwindow.cpp:460
 msgid "&Other..."
 msgstr "&Інше..."
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:519
+#: src/modules/filetransferwindow/filetransferwindow.cpp:522
 msgid "Clear &All"
 msgstr "Очистити &всі"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:782
+#: src/modules/filetransferwindow/filetransferwindow.cpp:785
 msgid "Clear All Transfers? - KVIrc"
 msgstr "Очистити всі передачі? - KVIrc"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:778
+#: src/modules/filetransferwindow/filetransferwindow.cpp:781
 msgid "Clear all transfers, including any in progress?"
 msgstr "Очистити всі передачі, включаючи не завершені?"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:613
+#: src/modules/filetransferwindow/filetransferwindow.cpp:616
 msgid "Confirm delete"
 msgstr "Підтвердите видалення"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:618
+#: src/modules/filetransferwindow/filetransferwindow.cpp:621
 msgid "Delete failed"
 msgstr "Помилка видалення"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:611
+#: src/modules/filetransferwindow/filetransferwindow.cpp:614
 msgid "Do you really want to delete the file %Q?"
 msgstr "Ви дійсно хочете видалити файл %Q ?"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:619
+#: src/modules/filetransferwindow/filetransferwindow.cpp:622
 msgid "Failed to remove the file"
 msgstr "Неможливо видалити файл"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:815
+#: src/modules/filetransferwindow/filetransferwindow.cpp:818
 msgid "File Transfers"
 msgstr "Передачі файлів"
 
@@ -78,30 +78,30 @@ msgstr "Передачі файлів"
 msgid "Information"
 msgstr "Інформація"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:484
+#: src/modules/filetransferwindow/filetransferwindow.cpp:487
 msgid "Local &File"
 msgstr "Локальний &файл"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:475
+#: src/modules/filetransferwindow/filetransferwindow.cpp:478
 msgid "MS-DOS Prompt at Location"
 msgstr "Відкрити командний рядок у папці файлу"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:614
-#: src/modules/filetransferwindow/filetransferwindow.cpp:782
+#: src/modules/filetransferwindow/filetransferwindow.cpp:617
+#: src/modules/filetransferwindow/filetransferwindow.cpp:785
 msgid "No"
 msgstr "Ні"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:620
+#: src/modules/filetransferwindow/filetransferwindow.cpp:623
 msgid "OK"
 msgstr "Ок"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:462
-#: src/modules/filetransferwindow/filetransferwindow.cpp:474
+#: src/modules/filetransferwindow/filetransferwindow.cpp:465
+#: src/modules/filetransferwindow/filetransferwindow.cpp:477
 msgid "Open &Location"
 msgstr "Відкрити &папку"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:460
-#: src/modules/filetransferwindow/filetransferwindow.cpp:472
+#: src/modules/filetransferwindow/filetransferwindow.cpp:463
+#: src/modules/filetransferwindow/filetransferwindow.cpp:475
 msgid "Open &With"
 msgstr "Відкрити &як"
 
@@ -109,12 +109,12 @@ msgstr "Відкрити &як"
 msgid "Progress"
 msgstr "Прогрес"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:417
+#: src/modules/filetransferwindow/filetransferwindow.cpp:420
 #, fuzzy
 msgid "Size: %1"
 msgstr "Розмір: %1 байт"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:463
+#: src/modules/filetransferwindow/filetransferwindow.cpp:466
 msgid "Terminal at Location"
 msgstr "Відкрити термінал у папці файлу"
 
@@ -122,8 +122,8 @@ msgstr "Відкрити термінал у папці файлу"
 msgid "Type"
 msgstr "Тип"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:614
-#: src/modules/filetransferwindow/filetransferwindow.cpp:782
+#: src/modules/filetransferwindow/filetransferwindow.cpp:617
+#: src/modules/filetransferwindow/filetransferwindow.cpp:785
 msgid "Yes"
 msgstr "Так"
 

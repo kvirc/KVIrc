@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 18:58+0200\n"
+"POT-Creation-Date: 2010-08-12 22:59+0200\n"
 "PO-Revision-Date: 2010-06-14 10:51+0400\n"
 "Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -32,10 +32,9 @@ msgstr "Удалить тему"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Сделать скриншот - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:109
-#: src/modules/theme/libkvitheme.cpp:123
 #: src/modules/theme/managementdialog.cpp:279
 #: src/modules/theme/managementdialog.cpp:292
+#: src/modules/theme/libkvitheme.cpp:109 src/modules/theme/libkvitheme.cpp:123
 msgid "Apply theme - KVIrc"
 msgstr "Применить тему - KVIrc"
 
@@ -83,8 +82,8 @@ msgstr "Вы действительно хотите удалить \"%Q\" (ве
 msgid "Do you want to proceed with the installation ?"
 msgstr "Вы хотите продолжить установку?"
 
-#: src/modules/theme/libkvitheme.cpp:110
 #: src/modules/theme/managementdialog.cpp:280
+#: src/modules/theme/libkvitheme.cpp:110
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Вы действительно хотите применить тему \"%Q\" (версии %Q)?"
 
@@ -109,8 +108,8 @@ msgstr "Экспортировать выбранные темы в пакет �
 msgid "Export Theme - KVIrc"
 msgstr "Экспорт темы - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:122
 #: src/modules/theme/managementdialog.cpp:291
+#: src/modules/theme/libkvitheme.cpp:122
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Не могу применить выбранную тему: %Q"
 
@@ -284,8 +283,7 @@ msgstr "Выбранный файл не является пакетом тем�
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "Выбранные файлы не являются пакетами темы KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:128
-#: src/modules/theme/libkvitheme.cpp:171
+#: src/modules/theme/libkvitheme.cpp:128 src/modules/theme/libkvitheme.cpp:171
 msgid "The theme package '%Q' does not exists"
 msgstr "Пакет темы '%Q' не существует"
 

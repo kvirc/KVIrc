@@ -8,13 +8,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-07 17:02+0200\n"
+"POT-Creation-Date: 2010-08-12 22:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/notifier/libkvinotifier.cpp:137
+msgid "The specified window does not exist"
+msgstr ""
+
+#: src/modules/notifier/libkvinotifier.cpp:151
+msgid "The specified timeout is not valid, assuming 0"
+msgstr ""
+
+#: src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
+msgstr ""
 
 #: src/modules/notifier/notifierwindow.cpp:923
 msgid "Show/Hide input line"
@@ -58,16 +70,4 @@ msgstr ""
 
 #: src/modules/notifier/notifierwindow.cpp:1008
 msgid "Write text or commands to window"
-msgstr ""
-
-#: src/modules/notifier/libkvinotifier.cpp:137
-msgid "The specified window does not exist"
-msgstr ""
-
-#: src/modules/notifier/libkvinotifier.cpp:151
-msgid "The specified timeout is not valid, assuming 0"
-msgstr ""
-
-#: src/modules/notifier/libkvinotifier.cpp:154
-msgid "The -t switch expects a timeout in seconds"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-07 17:02+0200\n"
+"POT-Creation-Date: 2010-08-12 22:59+0200\n"
 "PO-Revision-Date: 2007-10-27 23:04+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -212,7 +212,7 @@ msgstr ""
 "felajánlás DCC %s mióta nincs engedélyezve a bejövő kapcsolat (felhasználói "
 "beállítás)"
 
-#: src/modules/dcc/video.cpp:918 src/modules/dcc/voice.cpp:930
+#: src/modules/dcc/voice.cpp:930 src/modules/dcc/video.cpp:918
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Aktuális codec: %s"
@@ -311,7 +311,7 @@ msgstr "Nincs megfelelő helyi IPv4 cím"
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Nem lehet DCC %Q kérést küldeni %Q: felé, IRC kapcsolat megszakadt"
 
-#: src/modules/dcc/send.cpp:2195 src/modules/dcc/dialogs.cpp:158
+#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:2195
 msgid "Cancel"
 msgstr "Mégsem"
 
@@ -345,8 +345,8 @@ msgstr "Sávszélesség beállítása DCC %1 átvitelhez"
 msgid "Connected to %1:%2"
 msgstr "Kapcsolódva %1:%2"
 
-#: src/modules/dcc/video.cpp:902 src/modules/dcc/chat.cpp:564
-#: src/modules/dcc/voice.cpp:910 src/modules/dcc/canvas.cpp:284
+#: src/modules/dcc/voice.cpp:910 src/modules/dcc/video.cpp:902
+#: src/modules/dcc/canvas.cpp:284 src/modules/dcc/chat.cpp:564
 msgid "Connected to %Q:%Q"
 msgstr "Kapcsolódva %Q:%Q"
 
@@ -354,8 +354,8 @@ msgstr "Kapcsolódva %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Kapcsolódás a %1 hosthoz %2 porton keresztül"
 
-#: src/modules/dcc/video.cpp:584 src/modules/dcc/chat.cpp:184
-#: src/modules/dcc/voice.cpp:755 src/modules/dcc/canvas.cpp:108
+#: src/modules/dcc/voice.cpp:755 src/modules/dcc/video.cpp:584
+#: src/modules/dcc/canvas.cpp:108 src/modules/dcc/chat.cpp:184
 msgid "Contacting host %Q on port %Q"
 msgstr "Kapcsolódás %Q -ra/re %Q porton keresztül"
 
@@ -388,7 +388,7 @@ msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr ""
 "DCC CANVAS (vászon) kérés nem lett elküldve, manuális csatlakozás szükséges"
 
-#: src/modules/dcc/video.cpp:897 src/modules/dcc/voice.cpp:901
+#: src/modules/dcc/voice.cpp:901 src/modules/dcc/video.cpp:897
 #: src/modules/dcc/canvas.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "DCC Sikertelen %Q"
@@ -432,8 +432,8 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Adatátvitel megszakítva 30 másodperce, kapcsolat zárása"
 
-#: src/modules/dcc/video.cpp:760 src/modules/dcc/chat.cpp:415
-#: src/modules/dcc/voice.cpp:818
+#: src/modules/dcc/voice.cpp:818 src/modules/dcc/video.cpp:760
+#: src/modules/dcc/chat.cpp:415
 msgid "ERROR: %Q"
 msgstr "HIBA: %Q"
 
@@ -545,8 +545,8 @@ msgstr "Feltöltési sávszélesség korlátozása "
 msgid "Listening on interface %1 port %2"
 msgstr "Hallgatózás %1 eszközön %2 porton keresztül"
 
-#: src/modules/dcc/video.cpp:587 src/modules/dcc/chat.cpp:186
-#: src/modules/dcc/voice.cpp:758 src/modules/dcc/canvas.cpp:84
+#: src/modules/dcc/voice.cpp:758 src/modules/dcc/video.cpp:587
+#: src/modules/dcc/canvas.cpp:84 src/modules/dcc/chat.cpp:186
 msgid "Listening on interface %Q port %Q"
 msgstr "Hallgatózás %Q eszközön, %Q porton"
 
@@ -554,8 +554,8 @@ msgstr "Hallgatózás %Q eszközön, %Q porton"
 msgid "Local end is %1:%2"
 msgstr ""
 
-#: src/modules/dcc/video.cpp:904 src/modules/dcc/chat.cpp:566
-#: src/modules/dcc/voice.cpp:912 src/modules/dcc/canvas.cpp:286
+#: src/modules/dcc/voice.cpp:912 src/modules/dcc/video.cpp:904
+#: src/modules/dcc/canvas.cpp:286 src/modules/dcc/chat.cpp:566
 msgid "Local end is %Q:%Q"
 msgstr "Local end is %Q:%Q"
 
@@ -898,7 +898,7 @@ msgstr ""
 msgid "This executable has no SSL support, -s switch ignored"
 msgstr "Ez SSL támogatás nélküli kiadás, '-s' kapcsoló mellőzve"
 
-#: src/modules/dcc/libkvidcc.cpp:2757
+#: src/modules/dcc/libkvidcc.cpp:2761
 #, fuzzy
 msgid "This executable was built without SSL support"
 msgstr "Ez a kiadás SSL támogatás nélkül lett lefordítva, -s kapcsoló mellőzve"
@@ -940,23 +940,23 @@ msgstr "Adatátvitel megszakadt: "
 msgid "Transferring data"
 msgstr "Adatátvitel"
 
-#: src/modules/dcc/libkvidcc.cpp:2779
+#: src/modules/dcc/libkvidcc.cpp:2783
 msgid "Unable to get SSL informations: DCC session is not using SSL"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2792
+#: src/modules/dcc/libkvidcc.cpp:2796
 msgid "Unable to get SSL informations: DCC session not initialized yet"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2809
+#: src/modules/dcc/libkvidcc.cpp:2813
 msgid "Unable to get SSL informations: No peer certificate available"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2800
+#: src/modules/dcc/libkvidcc.cpp:2804
 msgid "Unable to get SSL informations: SSL non initialized yet in DCC session"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2913
+#: src/modules/dcc/libkvidcc.cpp:2937
 msgid "Unable to get SSL informations: query not recognized"
 msgstr ""
 
@@ -1028,7 +1028,7 @@ msgstr ""
 "FIGYELMEZTETÉS: a kért mintavételi-korrekció érvénytelen: (%d): a "
 "legközelebbi egyezés: %d, ezt használom"
 
-#: src/modules/dcc/libkvidcc.cpp:2768
+#: src/modules/dcc/libkvidcc.cpp:2772
 msgid "You specified a bad string for the parameter \"type\""
 msgstr ""
 
@@ -1057,14 +1057,14 @@ msgstr "[SSL HIBA]: %s"
 msgid "bytes/sec"
 msgstr "bájt/másodperc "
 
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/libkvidcc.cpp:111
 #: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
 #: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
 #: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
 #: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
 #: src/modules/dcc/libkvidcc.cpp:1199 src/modules/dcc/libkvidcc.cpp:1238
-#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
-#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/requests.cpp:142
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/requests.cpp:142
 #: src/modules/dcc/requests.cpp:143 src/modules/dcc/requests.cpp:144
 msgid "unknown"
 msgstr "ismertelen"

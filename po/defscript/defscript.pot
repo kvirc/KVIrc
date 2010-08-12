@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-07 17:02+0200\n"
+"POT-Creation-Date: 2010-08-12 22:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,24 +151,21 @@ msgstr ""
 msgid "Happy ircing :)"
 msgstr ""
 
-#: data/defscript/toolbars.kvs:3
-msgid "IRC Context"
+#: data/defscript/classes.kvs:18
+msgid ""
+"[Installer] Error: the first argument of copyFiles must be a source directory"
 msgstr ""
 
-#: data/defscript/toolbars.kvs:15
-msgid "Options"
+#: data/defscript/classes.kvs:24
+msgid ""
+"[Installer] Error: the second argument of copyFiles must be a file name or "
+"file regexp"
 msgstr ""
 
-#: data/defscript/toolbars.kvs:22
-msgid "Help"
-msgstr ""
-
-#: data/defscript/toolbars.kvs:30
-msgid "Scripting"
-msgstr ""
-
-#: data/defscript/toolbars.kvs:40
-msgid "Window operations"
+#: data/defscript/classes.kvs:30
+msgid ""
+"[Installer] Error: the third argument of copyFiles must be a destination "
+"directory"
 msgstr ""
 
 #: data/defscript/popups.kvs:19
@@ -670,19 +667,22 @@ msgstr ""
 msgid "Traceroute6 to "
 msgstr ""
 
-#: data/defscript/classes.kvs:18
-msgid ""
-"[Installer] Error: the first argument of copyFiles must be a source directory"
+#: data/defscript/toolbars.kvs:3
+msgid "IRC Context"
 msgstr ""
 
-#: data/defscript/classes.kvs:24
-msgid ""
-"[Installer] Error: the second argument of copyFiles must be a file name or "
-"file regexp"
+#: data/defscript/toolbars.kvs:15
+msgid "Options"
 msgstr ""
 
-#: data/defscript/classes.kvs:30
-msgid ""
-"[Installer] Error: the third argument of copyFiles must be a destination "
-"directory"
+#: data/defscript/toolbars.kvs:22
+msgid "Help"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:30
+msgid "Scripting"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:40
+msgid "Window operations"
 msgstr ""

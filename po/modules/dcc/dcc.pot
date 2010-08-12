@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-07 17:02+0200\n"
+"POT-Creation-Date: 2010-08-12 22:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,104 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/dcc/video.cpp:449
-msgid "Video device:"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:456
-msgid "Input:"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:463
-msgid "Standard:"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:569
-msgid "Attempting a passive DCC VIDEO connection"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:574
-msgid "Attempting an active DCC VIDEO connection"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:584
-#: src/modules/dcc/chat.cpp:184
-#: src/modules/dcc/voice.cpp:755
-#: src/modules/dcc/canvas.cpp:108
-msgid "Contacting host %Q on port %Q"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:587
-#: src/modules/dcc/chat.cpp:186
-#: src/modules/dcc/voice.cpp:758
-#: src/modules/dcc/canvas.cpp:84
-msgid "Listening on interface %Q port %Q"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:604
-msgid ""
-"Sent DCC VIDEO (%s) request to %Q, waiting for the remote client to "
-"connect..."
-msgstr ""
-
-#: src/modules/dcc/video.cpp:606
-msgid "DCC VIDEO request not sent: awaiting manual connection"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:643
-#: src/modules/dcc/video.cpp:746
-#: src/modules/dcc/chat.cpp:297
-#: src/modules/dcc/chat.cpp:400
-msgid "Cannot send data: No active connection"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:689
-#: src/modules/dcc/chat.cpp:343
-msgid ""
-"The crypto engine was not able to encrypt the current message (%Q): %Q, no "
-"data was sent to the remote end"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:760
-#: src/modules/dcc/chat.cpp:415
-#: src/modules/dcc/voice.cpp:818
-msgid "ERROR: %Q"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:819
-#: src/modules/dcc/chat.cpp:475
-msgid ""
-"The following message appears to be encrypted, but the crypto engine failed "
-"to decode it: %Q"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:897
-#: src/modules/dcc/voice.cpp:901
-#: src/modules/dcc/canvas.cpp:279
-msgid "DCC Failed: %Q"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:902
-#: src/modules/dcc/chat.cpp:564
-#: src/modules/dcc/voice.cpp:910
-#: src/modules/dcc/canvas.cpp:284
-msgid "Connected to %Q:%Q"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:904
-#: src/modules/dcc/chat.cpp:566
-#: src/modules/dcc/voice.cpp:912
-#: src/modules/dcc/canvas.cpp:286
-msgid "Local end is %Q:%Q"
-msgstr ""
-
-#: src/modules/dcc/video.cpp:918
-#: src/modules/dcc/voice.cpp:930
-#, c-format
-msgid "Actual codec used is '%s'"
-msgstr ""
-
-#: src/modules/dcc/descriptor.cpp:65
+#: src/modules/dcc/marshal.cpp:490
+#: src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525
 #: src/modules/dcc/libkvidcc.cpp:111
 #: src/modules/dcc/libkvidcc.cpp:408
 #: src/modules/dcc/libkvidcc.cpp:443
@@ -125,13 +30,232 @@ msgstr ""
 #: src/modules/dcc/libkvidcc.cpp:1171
 #: src/modules/dcc/libkvidcc.cpp:1199
 #: src/modules/dcc/libkvidcc.cpp:1238
-#: src/modules/dcc/marshal.cpp:490
-#: src/modules/dcc/marshal.cpp:520
-#: src/modules/dcc/marshal.cpp:525
+#: src/modules/dcc/descriptor.cpp:65
 #: src/modules/dcc/requests.cpp:142
 #: src/modules/dcc/requests.cpp:143
 #: src/modules/dcc/requests.cpp:144
 msgid "unknown"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:92
+msgid ""
+"This window has no associated IRC context (an IRC context is required unless "
+"-c or -n are passed)"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:105
+msgid ""
+"You're not connected to a server (an active connection is required unless -c "
+"or -n are passed)"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:129
+msgid "Unable to get address of interface %Q"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:139
+msgid "No suitable interfaces to listen on, use -i"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:172
+msgid "This executable was built without SSL support, -s switch ignored"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:434
+#: src/modules/dcc/libkvidcc.cpp:657
+#: src/modules/dcc/libkvidcc.cpp:1159
+#: src/modules/dcc/libkvidcc.cpp:1226
+msgid "-c requires -i and -p"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:634
+#: src/modules/dcc/requests.cpp:455
+#: src/modules/dcc/requests.cpp:755
+msgid "<unknown size>"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:890
+msgid "This executable has been built without SSL support, -s switch ignored"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:960
+msgid "This executable has no SSL support, -s switch ignored"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1114
+msgid "DCC VOICE support not enabled at compilation time"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1132
+msgid "Invalid sample rate specified, defaulting to 8000"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1148
+msgid "Invalid codec specified, defaulting to 'adpcm'"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1192
+msgid "DCC VIDEO support not enabled at compilation time"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1213
+msgid "Invalid codec specified"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1641
+#: src/modules/dcc/libkvidcc.cpp:2606
+#: src/modules/dcc/libkvidcc.cpp:2626
+msgid "The current window has no associated DCC session"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1646
+msgid "The specified parameter is not a valid DCC identifier"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1726
+msgid "This DCC session is not a DCC transfer session"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2617
+msgid "The specified window identifier is not valid"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2761
+msgid "This executable was built without SSL support"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2772
+msgid "You specified a bad string for the parameter \"type\""
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2783
+msgid "Unable to get SSL informations: DCC session is not using SSL"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2796
+msgid "Unable to get SSL informations: DCC session not initialized yet"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2804
+msgid "Unable to get SSL informations: SSL non initialized yet in DCC session"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2813
+msgid "Unable to get SSL informations: No peer certificate available"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2937
+msgid "Unable to get SSL informations: query not recognized"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:162
+msgid ""
+"WARNING: failed to check the soundcard duplex capabilities: if this is a "
+"half-duplex soundcard, use the DCC VOICE option to force half-duplex "
+"algorithm"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:170
+msgid ""
+"Half duplex soundcard detected, you will not be able to talk and listen at "
+"the same time"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:211
+#, c-format
+msgid ""
+"WARNING: failed to set the requested sample rate (%d): the device used "
+"closest match (%d)"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:269
+msgid "Ops...failed to test the soundcard capabilities...expect problems..."
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:655
+msgid "Input buffer"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:657
+msgid "Output buffer"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:740
+msgid "Attempting a passive DCC VOICE connection"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:745
+msgid "Attempting an active DCC VOICE connection"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:755
+#: src/modules/dcc/video.cpp:584
+#: src/modules/dcc/canvas.cpp:108
+#: src/modules/dcc/chat.cpp:184
+msgid "Contacting host %Q on port %Q"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:758
+#: src/modules/dcc/video.cpp:587
+#: src/modules/dcc/canvas.cpp:84
+#: src/modules/dcc/chat.cpp:186
+msgid "Listening on interface %Q port %Q"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:775
+msgid ""
+"Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
+"connect..."
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:777
+msgid "DCC VOICE request not sent: awaiting manual connections"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:818
+#: src/modules/dcc/video.cpp:760
+#: src/modules/dcc/chat.cpp:415
+msgid "ERROR: %Q"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:876
+#, c-format
+msgid "Input buffer: %d bytes"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:878
+#, c-format
+msgid "Output buffer: %d bytes"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:901
+#: src/modules/dcc/video.cpp:897
+#: src/modules/dcc/canvas.cpp:279
+msgid "DCC Failed: %Q"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:910
+#: src/modules/dcc/video.cpp:902
+#: src/modules/dcc/canvas.cpp:284
+#: src/modules/dcc/chat.cpp:564
+msgid "Connected to %Q:%Q"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:912
+#: src/modules/dcc/video.cpp:904
+#: src/modules/dcc/canvas.cpp:286
+#: src/modules/dcc/chat.cpp:566
+msgid "Local end is %Q:%Q"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:930
+#: src/modules/dcc/video.cpp:918
+#, c-format
+msgid "Actual codec used is '%s'"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:1013
+msgid "Volume: %1"
 msgstr ""
 
 #: src/modules/dcc/broker.cpp:167
@@ -257,436 +381,66 @@ msgstr ""
 msgid "File %s exists, auto-renaming to %Q"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:161
-#, c-format
-msgid "Attempting a passive DCC %s connection"
+#: src/modules/dcc/video.cpp:449
+msgid "Video device:"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:170
-#, c-format
-msgid "Attempting an active DCC %s connection"
+#: src/modules/dcc/video.cpp:456
+msgid "Input:"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:208
-#, c-format
-msgid "The local IP address is private, determining from IRC server: %s"
+#: src/modules/dcc/video.cpp:463
+msgid "Standard:"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:210
-#: src/modules/dcc/send.cpp:1776
+#: src/modules/dcc/video.cpp:569
+msgid "Attempting a passive DCC VIDEO connection"
+msgstr ""
+
+#: src/modules/dcc/video.cpp:574
+msgid "Attempting an active DCC VIDEO connection"
+msgstr ""
+
+#: src/modules/dcc/video.cpp:604
 msgid ""
-"The local IP address is private, but unable to determine it from the IRC "
-"server"
-msgstr ""
-
-#: src/modules/dcc/chat.cpp:213
-#: src/modules/dcc/send.cpp:1779
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
-msgstr ""
-
-#: src/modules/dcc/chat.cpp:235
-msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
-msgstr ""
-
-#: src/modules/dcc/chat.cpp:238
-msgid "DCC %Q request not sent, awaiting manual connection"
-msgstr ""
-
-#: src/modules/dcc/chat.cpp:246
-#: src/modules/dcc/send.cpp:1841
-msgid "Low-level transport connection established"
-msgstr ""
-
-#: src/modules/dcc/chat.cpp:247
-#: src/modules/dcc/send.cpp:1842
-msgid "Starting Secure Socket Layer handshake"
-msgstr ""
-
-#: src/modules/dcc/chat.cpp:255
-#, c-format
-msgid "[SSL ERROR]: %s"
-msgstr ""
-
-#: src/modules/dcc/chat.cpp:535
-msgid "DCC %Q failed: %Q"
-msgstr ""
-
-#: src/modules/dcc/voice.cpp:162
-msgid ""
-"WARNING: failed to check the soundcard duplex capabilities: if this is a "
-"half-duplex soundcard, use the DCC VOICE option to force half-duplex "
-"algorithm"
-msgstr ""
-
-#: src/modules/dcc/voice.cpp:170
-msgid ""
-"Half duplex soundcard detected, you will not be able to talk and listen at "
-"the same time"
-msgstr ""
-
-#: src/modules/dcc/voice.cpp:211
-#, c-format
-msgid ""
-"WARNING: failed to set the requested sample rate (%d): the device used "
-"closest match (%d)"
-msgstr ""
-
-#: src/modules/dcc/voice.cpp:269
-msgid "Ops...failed to test the soundcard capabilities...expect problems..."
-msgstr ""
-
-#: src/modules/dcc/voice.cpp:655
-msgid "Input buffer"
-msgstr ""
-
-#: src/modules/dcc/voice.cpp:657
-msgid "Output buffer"
-msgstr ""
-
-#: src/modules/dcc/voice.cpp:740
-msgid "Attempting a passive DCC VOICE connection"
-msgstr ""
-
-#: src/modules/dcc/voice.cpp:745
-msgid "Attempting an active DCC VOICE connection"
-msgstr ""
-
-#: src/modules/dcc/voice.cpp:775
-msgid ""
-"Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
+"Sent DCC VIDEO (%s) request to %Q, waiting for the remote client to "
 "connect..."
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:777
-msgid "DCC VOICE request not sent: awaiting manual connections"
+#: src/modules/dcc/video.cpp:606
+msgid "DCC VIDEO request not sent: awaiting manual connection"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:876
+#: src/modules/dcc/video.cpp:643
+#: src/modules/dcc/video.cpp:746
+#: src/modules/dcc/chat.cpp:297
+#: src/modules/dcc/chat.cpp:400
+msgid "Cannot send data: No active connection"
+msgstr ""
+
+#: src/modules/dcc/video.cpp:689
+#: src/modules/dcc/chat.cpp:343
+msgid ""
+"The crypto engine was not able to encrypt the current message (%Q): %Q, no "
+"data was sent to the remote end"
+msgstr ""
+
+#: src/modules/dcc/video.cpp:819
+#: src/modules/dcc/chat.cpp:475
+msgid ""
+"The following message appears to be encrypted, but the crypto engine failed "
+"to decode it: %Q"
+msgstr ""
+
+#: src/modules/dcc/utils.cpp:124
+msgid "Can't retrieve a suitable local IPV4 address"
+msgstr ""
+
+#: src/modules/dcc/utils.cpp:142
 #, c-format
-msgid "Input buffer: %d bytes"
-msgstr ""
-
-#: src/modules/dcc/voice.cpp:878
-#, c-format
-msgid "Output buffer: %d bytes"
-msgstr ""
-
-#: src/modules/dcc/voice.cpp:1013
-msgid "Volume: %1"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:92
 msgid ""
-"This window has no associated IRC context (an IRC context is required unless "
-"-c or -n are passed)"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:105
-msgid ""
-"You're not connected to a server (an active connection is required unless -c "
-"or -n are passed)"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:129
-msgid "Unable to get address of interface %Q"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:139
-msgid "No suitable interfaces to listen on, use -i"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:172
-msgid "This executable was built without SSL support, -s switch ignored"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:434
-#: src/modules/dcc/libkvidcc.cpp:657
-#: src/modules/dcc/libkvidcc.cpp:1159
-#: src/modules/dcc/libkvidcc.cpp:1226
-msgid "-c requires -i and -p"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:634
-#: src/modules/dcc/requests.cpp:455
-#: src/modules/dcc/requests.cpp:755
-msgid "<unknown size>"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:890
-msgid "This executable has been built without SSL support, -s switch ignored"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:960
-msgid "This executable has no SSL support, -s switch ignored"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1114
-msgid "DCC VOICE support not enabled at compilation time"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1132
-msgid "Invalid sample rate specified, defaulting to 8000"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1148
-msgid "Invalid codec specified, defaulting to 'adpcm'"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1192
-msgid "DCC VIDEO support not enabled at compilation time"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1213
-msgid "Invalid codec specified"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1641
-#: src/modules/dcc/libkvidcc.cpp:2606
-#: src/modules/dcc/libkvidcc.cpp:2626
-msgid "The current window has no associated DCC session"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1646
-msgid "The specified parameter is not a valid DCC identifier"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:1726
-msgid "This DCC session is not a DCC transfer session"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2617
-msgid "The specified window identifier is not valid"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2757
-msgid "This executable was built without SSL support"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2768
-msgid "You specified a bad string for the parameter \"type\""
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2779
-msgid "Unable to get SSL informations: DCC session is not using SSL"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2792
-msgid "Unable to get SSL informations: DCC session not initialized yet"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2800
-msgid "Unable to get SSL informations: SSL non initialized yet in DCC session"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2809
-msgid "Unable to get SSL informations: No peer certificate available"
-msgstr ""
-
-#: src/modules/dcc/libkvidcc.cpp:2913
-msgid "Unable to get SSL informations: query not recognized"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:279
-msgid "WARNING: The peer is sending garbage data past the end of the file"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:280
-msgid ""
-"WARNING: Ignoring data past the declared end of file and closing the "
-"connection"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:421
-msgid ""
-"Data transfer terminated, waiting 30 seconds for the peer to close the "
-"connection..."
-msgstr ""
-
-#: src/modules/dcc/send.cpp:428
-msgid "Data transfer was terminated 30 seconds ago, closing the connection"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:800
-msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1006
-#, c-format
-msgid "TRANSFER %d"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1031
-msgid "Setting up the connection"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1090
-msgid "Attempting a passive DCC %1 connection"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1094
-msgid "Attempting an active DCC %1 connection"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1120
-msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1195
-#: src/modules/dcc/send.cpp:1206
-msgid "Aborted"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1205
-#: src/modules/dcc/send.cpp:1867
-#: src/modules/dcc/send.cpp:1946
-msgid "Transfer failed: "
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1216
-msgid "Configure Bandwidth..."
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1218
-msgid "Resend DCC"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1219
-msgid "Resend TDCC"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1220
-msgid "Resend RevDCC"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1221
-msgid "Abort"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1411
-msgid "From: "
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1412
-msgid "To: "
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1513
-#: src/modules/dcc/send.cpp:1520
-msgid "%1 of %2 (%3%)"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1524
-msgid "%1"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1537
-msgid "Spd:"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1548
-msgid "Avg:"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1613
-msgid "Transfer Log"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1744
-msgid "Contacting host %1 on port %2"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1751
-msgid "Listening on interface %1 port %2"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1774
-msgid "The local IP address is private, determining from IRC server: %1"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1828
-msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1830
-msgid "DCC %1 request not sent, awaiting manual connection"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1849
-msgid "[SSL ERROR]: %1"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1892
-msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1907
-msgid "Transfer completed"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1955
-msgid "Connected to %1:%2"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:1956
-msgid "Local end is %1:%2"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2015
-msgid "Transferring data"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2041
-msgid "RESUME accepted, transfer will begin at position %1"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2085
-msgid "Processing RESUME request with mismatched port (%1)"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2103
-msgid "Invalid RESUME request: Invalid file name (got '%1' but should be '%2')"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2111
-msgid "Processing RESUME request with broken filename (%1)"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2120
-msgid "Internal error in RESUME request"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2126
-msgid "Invalid RESUME request: Position %1 is larger than file size"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2130
-msgid "Accepting RESUME request, transfer will begin at position %1"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2166
-msgid "Configure bandwidth for DCC transfer %1"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2169
-msgid "Limit upload bandwidth to"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2169
-msgid "Limit download bandwidth to"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2186
-msgid "bytes/sec"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2190
-msgid "OK"
-msgstr ""
-
-#: src/modules/dcc/send.cpp:2195
-#: src/modules/dcc/dialogs.cpp:158
-msgid "Cancel"
+"Can't listen on default interface '%s': fix it in the options dialog, "
+"disabling the option (so the next dcc will work)"
 msgstr ""
 
 #: src/modules/dcc/canvas.cpp:79
@@ -757,6 +511,90 @@ msgstr ""
 
 #: src/modules/dcc/canvaswidget.cpp:1495
 msgid "&Insert"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:161
+#, c-format
+msgid "Attempting a passive DCC %s connection"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:170
+#, c-format
+msgid "Attempting an active DCC %s connection"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:208
+#, c-format
+msgid "The local IP address is private, determining from IRC server: %s"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:210
+#: src/modules/dcc/send.cpp:1776
+msgid ""
+"The local IP address is private, but unable to determine it from the IRC "
+"server"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:213
+#: src/modules/dcc/send.cpp:1779
+msgid ""
+"The local IP address is private, but have no IRC server to determine it from"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:235
+msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:238
+msgid "DCC %Q request not sent, awaiting manual connection"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:246
+#: src/modules/dcc/send.cpp:1841
+msgid "Low-level transport connection established"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:247
+#: src/modules/dcc/send.cpp:1842
+msgid "Starting Secure Socket Layer handshake"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:255
+#, c-format
+msgid "[SSL ERROR]: %s"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:535
+msgid "DCC %Q failed: %Q"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:75
+msgid "&Accept"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:80
+msgid "&Reject"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:145
+msgid "&Rename"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:149
+msgid "Over&write"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:153
+msgid "Re&sume"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:158
+#: src/modules/dcc/send.cpp:2195
+msgid "Cancel"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:165
+msgid "File Already Exists - KVIrc"
 msgstr ""
 
 #: src/modules/dcc/requests.cpp:82
@@ -967,37 +805,199 @@ msgstr ""
 msgid "Unknown DCC type '%s'"
 msgstr ""
 
-#: src/modules/dcc/dialogs.cpp:75
-msgid "&Accept"
+#: src/modules/dcc/send.cpp:279
+msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr ""
 
-#: src/modules/dcc/dialogs.cpp:80
-msgid "&Reject"
-msgstr ""
-
-#: src/modules/dcc/dialogs.cpp:145
-msgid "&Rename"
-msgstr ""
-
-#: src/modules/dcc/dialogs.cpp:149
-msgid "Over&write"
-msgstr ""
-
-#: src/modules/dcc/dialogs.cpp:153
-msgid "Re&sume"
-msgstr ""
-
-#: src/modules/dcc/dialogs.cpp:165
-msgid "File Already Exists - KVIrc"
-msgstr ""
-
-#: src/modules/dcc/utils.cpp:124
-msgid "Can't retrieve a suitable local IPV4 address"
-msgstr ""
-
-#: src/modules/dcc/utils.cpp:142
-#, c-format
+#: src/modules/dcc/send.cpp:280
 msgid ""
-"Can't listen on default interface '%s': fix it in the options dialog, "
-"disabling the option (so the next dcc will work)"
+"WARNING: Ignoring data past the declared end of file and closing the "
+"connection"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:421
+msgid ""
+"Data transfer terminated, waiting 30 seconds for the peer to close the "
+"connection..."
+msgstr ""
+
+#: src/modules/dcc/send.cpp:428
+msgid "Data transfer was terminated 30 seconds ago, closing the connection"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:800
+msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1006
+#, c-format
+msgid "TRANSFER %d"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1031
+msgid "Setting up the connection"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1090
+msgid "Attempting a passive DCC %1 connection"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1094
+msgid "Attempting an active DCC %1 connection"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1120
+msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1195
+#: src/modules/dcc/send.cpp:1206
+msgid "Aborted"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1205
+#: src/modules/dcc/send.cpp:1867
+#: src/modules/dcc/send.cpp:1946
+msgid "Transfer failed: "
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1216
+msgid "Configure Bandwidth..."
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1218
+msgid "Resend DCC"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1219
+msgid "Resend TDCC"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1220
+msgid "Resend RevDCC"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1221
+msgid "Abort"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1411
+msgid "From: "
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1412
+msgid "To: "
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1513
+#: src/modules/dcc/send.cpp:1520
+msgid "%1 of %2 (%3%)"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1524
+msgid "%1"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1537
+msgid "Spd:"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1548
+msgid "Avg:"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1613
+msgid "Transfer Log"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1744
+msgid "Contacting host %1 on port %2"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1751
+msgid "Listening on interface %1 port %2"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1774
+msgid "The local IP address is private, determining from IRC server: %1"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1828
+msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1830
+msgid "DCC %1 request not sent, awaiting manual connection"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1849
+msgid "[SSL ERROR]: %1"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1892
+msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1907
+msgid "Transfer completed"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1955
+msgid "Connected to %1:%2"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1956
+msgid "Local end is %1:%2"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2015
+msgid "Transferring data"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2041
+msgid "RESUME accepted, transfer will begin at position %1"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2085
+msgid "Processing RESUME request with mismatched port (%1)"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2103
+msgid "Invalid RESUME request: Invalid file name (got '%1' but should be '%2')"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2111
+msgid "Processing RESUME request with broken filename (%1)"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2120
+msgid "Internal error in RESUME request"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2126
+msgid "Invalid RESUME request: Position %1 is larger than file size"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2130
+msgid "Accepting RESUME request, transfer will begin at position %1"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2166
+msgid "Configure bandwidth for DCC transfer %1"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2169
+msgid "Limit upload bandwidth to"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2169
+msgid "Limit download bandwidth to"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2186
+msgid "bytes/sec"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:2190
+msgid "OK"
 msgstr ""
