@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-07 17:02+0200\n"
-"PO-Revision-Date: 2010-08-12 20:47+0100\n"
+"PO-Revision-Date: 2010-08-12 20:53+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -528,10 +528,11 @@ msgid ""
 "<br>This is useful for automatically opening queries, setting variables, etc."
 "</center>"
 msgstr ""
-"<center>Os seguintes comandos serão executados a seguir a uma autenticação "
-"bem sucessida neste servidor.<br><b>Importante:</b> Digitar comandos <b>sem</"
-"b> barra precedente (p.ex. <tt>quote privatelog</tt> em vez de <tt>/quote "
-"privatelog</tt>).<br>Isto é útil para entrar em canais automaticamente, "
+"<center>Os seguintes comandos serão executados após uma autenticação "
+"bem sucedida neste servidor.<br><b>Importante:</b> Digitar comandos <b>sem</"
+"b> uma barra precedente (p.ex. <tt>quote privatelog</tt> em vez de <tt>"
+"/quote "
+"privatelog</tt>).<br>Isto é útil para entrar automaticamente nos canais, "
 "abrir privados, definir variáveis, etc.</center>"
 
 #: src/modules/options/optw_servers.cpp:201
@@ -2901,7 +2902,7 @@ msgstr "Mensagens de convite"
 #: src/modules/options/optw_servers.cpp:815
 #: src/modules/options/optw_interfacefeatures.cpp:63
 msgid "Join Channels"
-msgstr "Entrar em Canais"
+msgstr "Canais"
 
 #: src/modules/options/dialog.cpp:119
 msgid "KVIrc Preferences"
