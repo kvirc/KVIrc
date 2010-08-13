@@ -478,7 +478,7 @@ static bool rijndael_module_init(KviModule * m)
 	g_pEngineList = new KviPointerList<KviCryptEngine>;
 	g_pEngineList->setAutoDelete(false);
 	
-	KviStr format = __tr2qs("Cryptographic engine based on the\n" \
+	QString szFormat = __tr2qs("Cryptographic engine based on the\n" \
 		"Advanced Encryption Standard (AES)\n" \
 		"algorithm called Rijndael.\n" \
 		"The text is first encrypted with Rijndael\n" \
@@ -499,7 +499,7 @@ static bool rijndael_module_init(KviModule * m)
 	KviCryptEngineDescription * d = new KviCryptEngineDescription;
 	d->szName = "Rijndael128Hex";
 	d->szAuthor = "Kai Wasserbäch";
-	d->szDescription.sprintf(format.ptr(),__tr2qs("hexadecimal"),128);
+	d->szDescription.sprintf(szFormat.toUtf8().data(),__tr2qs("hexadecimal"),128);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocRijndael128HexEngine;
@@ -509,7 +509,7 @@ static bool rijndael_module_init(KviModule * m)
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael192Hex";
 	d->szAuthor = "Kai Wasserbäch";
-	d->szDescription.sprintf(format.ptr(),__tr2qs("hexadecimal"),192);
+	d->szDescription.sprintf(szFormat.toUtf8().data(),__tr2qs("hexadecimal"),192);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocRijndael192HexEngine;
@@ -519,7 +519,7 @@ static bool rijndael_module_init(KviModule * m)
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael256Hex";
 	d->szAuthor = "Kai Wasserbäch";
-	d->szDescription.sprintf(format.ptr(),__tr2qs("hexadecimal"),256);
+	d->szDescription.sprintf(szFormat.toUtf8().data(),__tr2qs("hexadecimal"),256);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocRijndael256HexEngine;
@@ -529,7 +529,7 @@ static bool rijndael_module_init(KviModule * m)
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael128Base64";
 	d->szAuthor = "Kai Wasserbäch";
-	d->szDescription.sprintf(format.ptr(),__tr2qs("base64"),128);
+	d->szDescription.sprintf(szFormat.toUtf8().data(),__tr2qs("base64"),128);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocRijndael128Base64Engine;
@@ -539,7 +539,7 @@ static bool rijndael_module_init(KviModule * m)
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael192Base64";
 	d->szAuthor = "Kai Wasserbäch";
-	d->szDescription.sprintf(format.ptr(),__tr2qs("base64"),192);
+	d->szDescription.sprintf(szFormat.toUtf8().data(),__tr2qs("base64"),192);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocRijndael192Base64Engine;
@@ -549,13 +549,12 @@ static bool rijndael_module_init(KviModule * m)
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael256Base64";
 	d->szAuthor = "Kai Wasserbäch";
-	d->szDescription.sprintf(format.ptr(),__tr2qs("base64"),256);
+	d->szDescription.sprintf(szFormat.toUtf8().data(),__tr2qs("base64"),256);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocRijndael256Base64Engine;
 	d->deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
-	
 	
 	d = new KviCryptEngineDescription;
 	d->szName = "Mircryption";
@@ -578,7 +577,6 @@ static bool rijndael_module_init(KviModule * m)
 	d->allocFunc = allocMircryptionEngine;
 	d->deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
-	
 	
 	return true;
 }
