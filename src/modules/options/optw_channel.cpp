@@ -117,9 +117,9 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
 	m_pBanTypeCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintDefaultBanType));
 
 	KviTalGroupBox * g = addGroupBox(0,2,4,2,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
-	KviUIntSelector *u = addUIntSelector(g,__tr2qs_ctx("Minimum delay between two requests:","options"),KviOption_uintOnJoinRequestsDelay,0,60,2);
+	KviUIntSelector *u = addUIntSelector(g,__tr2qs_ctx("Minimum delay between two channel requests:","options"),KviOption_uintOnJoinRequestsDelay,0,10,1);
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
-	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 secs</b><br>Maximum value: <b>60 secs</b></center>","options"));
+	mergeTip(u,__tr2qs_ctx("<center>This is an artificial delay for the channel requests made on join.<br>You may increase it if your server complains about flooding when joining many channels at once.<br>Minimum value: <b>0 secs</b><br>Maximum value: <b>10 secs</b></center>","options"));
 	
 	addBoolSelector(g,__tr2qs_ctx("Do not send /WHO request","options"),KviOption_boolDisableWhoRequestOnJoin);
 	addBoolSelector(g,__tr2qs_ctx("Do not request ban list","options"),KviOption_boolDisableBanListRequestOnJoin);
