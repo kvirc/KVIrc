@@ -2742,7 +2742,11 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		[li]fingerprintHashStr[/li]
 		[li]fingerprintContents[/li]
 		[/ul]
-		See the [module:dcc]dcc module[/module] documentation for more information.[br]
+		@seealso:
+			[fnc]$certificate[/fnc]
+			[fnc]$str.evpSign[/fnc]
+			[fnc]$str.evpVerify[/fnc]
+			[module:dcc]dcc module[/module]
 */
 
 static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)

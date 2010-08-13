@@ -2212,6 +2212,8 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 		[/example]
 	@seealso:
 		[fnc]$str.evpVerify[/fnc]
+		[fnc]$certificate[/fnc]
+		[fnc]$dcc.getSSLCertInfo[/fnc]
 */
 
 static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
@@ -2341,6 +2343,8 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 		[/example]
 	@seealso:
 		[fnc]$str.evpSign[/fnc]
+		[fnc]$certificate[/fnc]
+		[fnc]$dcc.getSSLCertInfo[/fnc]
 */
 
 static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)

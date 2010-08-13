@@ -59,6 +59,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(b);
 	KVSCF(base64ToAscii);
 	KVSCF(boolean);
+	KVSCF(certificate);
 	KVSCF(channel);
 	KVSCF(charCKEYWORDWORKAROUND);
 	KVSCF(classDefined);

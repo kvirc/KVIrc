@@ -53,6 +53,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("base64ToAscii",base64ToAscii)
 		_REGFNC("bool",boolean)
 		_REGFNC("boolean",boolean)
+		_REGFNC("certificate",certificate)
 		_REGFNC("channel",channel)
 		_REGFNC("char",charCKEYWORDWORKAROUND)
 		_REGFNC("classDefined",classDefined)

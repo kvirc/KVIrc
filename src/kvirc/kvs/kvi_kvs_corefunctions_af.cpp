@@ -40,6 +40,8 @@
 #include "kvi_frame.h"
 #include "kvi_statusbar.h"
 #include "kvi_userinput.h"
+#include "kvi_ssl.h"
+#include "kvi_options.h"
 
 // date includes
 #include <QDateTime>
@@ -426,6 +428,226 @@ namespace KviKvsCoreFunctions
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: certificate
+		@type:
+			function
+		@title:
+			$certificate
+		@short:
+			Returns informations about the local certificate
+		@syntax:
+			<string> $certificate(<query:string>)
+		@description:
+			Returns the requested information about local certificate.[br]
+			Available query strings are:[br]
+			[ul]
+			[li]signatureType[/li]
+			[li]signatureContents[/li]
+			[li]subjectCountry[/li]
+			[li]subjectStateOrProvince[/li]
+			[li]subjectLocality[/li]
+			[li]subjectOrganization[/li]
+			[li]subjectOrganizationalUnit[/li]
+			[li]subjectCommonName[/li]
+			[li]issuerCountry[/li]
+			[li]issuerStateOrProvince[/li]
+			[li]issuerLocality[/li]
+			[li]issuerOrganization[/li]
+			[li]issuerOrganizationalUnit[/li]
+			[li]issuerCommonName[/li]
+			[li]publicKeyBits[/li]
+			[li]publicKeyType[/li]
+			[li]serialNumber[/li]
+			[li]pemBase64[/li]
+			[li]version[/li]
+			[li]fingerprintIsValid[/li]
+			[li]fingerprintHashId[/li]
+			[li]fingerprintHashStr[/li]
+			[li]fingerprintContents[/li]
+			[/ul]
+		@seealso:
+			[fnc]$str.evpSign[/fnc]
+			[fnc]$str.evpVerify[/fnc]
+			[fnc]$dcc.getSSLCertInfo[/fnc]
+	*/
+
+	KVSCF(certificate)
+	{
+		QString szQuery;
+		KVSCF_PARAMETERS_BEGIN
+			KVSCF_PARAMETER("query",KVS_PT_STRING,0,szQuery)
+		KVSCF_PARAMETERS_END
+
+#ifndef COMPILE_SSL_SUPPORT
+		KVSCF_pContext->warning(__tr2qs_ctx("This executable was built without SSL support","dcc"));
+		return true;
+#else
+
+		X509 *cert = 0;
+
+		if(!KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate))
+		{
+			KVSCF_pContext->warning(__tr2qs("No public key certificate defined in KVIrc options."));
+			KVSCF_pRetBuffer->setString("");
+			return true;
+		}
+		
+		FILE * f = fopen(KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data(),"r");
+		if(!f)
+		{
+			KVSCF_pContext->warning(__tr2qs("File I/O error while trying to use the public key file %s"),KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data());
+			KVSCF_pRetBuffer->setString("");
+			return true;
+		}
+
+		QString szPass = KVI_OPTION_STRING(KviOption_stringSSLCertificatePass).toUtf8();
+		PEM_read_X509(f, &cert, NULL, szPass.data());
+		
+		fclose(f);
+
+		if(!cert)
+		{
+			KVSCF_pContext->warning(__tr2qs("Can't load certificate from public key file %s"),KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data());
+			KVSCF_pRetBuffer->setString("");
+			return true;
+		}
+
+		// KviSSLCertificate takes ownership of the X509 structure, no need to free it
+		KviSSLCertificate * pCert = new KviSSLCertificate(cert);
+		
+		if(!pCert)
+		{
+			KVSCF_pContext->warning(__tr2qs_ctx("Error retrieving informations from the local certificate","dcc"));
+			KVSCF_pRetBuffer->setString("");
+			return true;
+		}
+
+		if(szQuery.compare("signatureType")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->signatureType());
+			return true;
+		}
+		if(szQuery.compare("signatureContents")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->signatureContents());
+			return true;
+		}
+		if(szQuery.compare("subjectCountry")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->subjectCountry());
+			return true;
+		}
+		if(szQuery.compare("subjectStateOrProvince")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->subjectStateOrProvince());
+			return true;
+		}
+		if(szQuery.compare("subjectLocality")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->subjectLocality());
+			return true;
+		}
+		if(szQuery.compare("subjectOrganization")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->subjectOrganization());
+			return true;
+		}
+		if(szQuery.compare("subjectOrganizationalUnit")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->subjectOrganizationalUnit());
+			return true;
+		}
+		if(szQuery.compare("subjectCommonName")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->subjectCommonName());
+			return true;
+		}
+		if(szQuery.compare("issuerCountry")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->issuerCountry());
+			return true;
+		}
+		if(szQuery.compare("issuerStateOrProvince")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->issuerStateOrProvince());
+			return true;
+		}
+		if(szQuery.compare("issuerLocality")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->issuerLocality());
+			return true;
+		}
+		if(szQuery.compare("issuerOrganization")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->issuerOrganization());
+			return true;
+		}
+		if(szQuery.compare("issuerOrganizationalUnit")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->issuerOrganizationalUnit());
+			return true;
+		}
+		if(szQuery.compare("issuerCommonName")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->issuerCommonName());
+			return true;
+		}
+		if(szQuery.compare("publicKeyBits")==0)
+		{
+			KVSCF_pRetBuffer->setInteger(pCert->publicKeyBits());
+			return true;
+		}
+		if(szQuery.compare("publicKeyType")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->publicKeyType());
+			return true;
+		}
+		if(szQuery.compare("serialNumber")==0)
+		{
+			KVSCF_pRetBuffer->setInteger(pCert->serialNumber());
+			return true;
+		}
+		if(szQuery.compare("pemBase64")==0)
+		{
+			const char * szTmp=pCert->getX509Base64();
+			QString szBase64(szTmp);
+			KVSCF_pRetBuffer->setString(szBase64);
+			delete szTmp;
+			return true;
+		}
+		if(szQuery.compare("version")==0)
+		{
+			KVSCF_pRetBuffer->setInteger(pCert->version());
+			return true;
+		}
+		if(szQuery.compare("fingerprintIsValid")==0)
+		{
+			KVSCF_pRetBuffer->setBoolean(pCert->fingerprintIsValid());
+			return true;
+		}
+		if(szQuery.compare("fingerprintHashId")==0)
+		{
+			KVSCF_pRetBuffer->setInteger(pCert->fingerprintHashId());
+			return true;
+		}
+		if(szQuery.compare("fingerprintHashStr")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->fingerprintHashStr());
+			return true;
+		}
+		if(szQuery.compare("fingerprintContents")==0)
+		{
+			KVSCF_pRetBuffer->setString(pCert->fingerprintContents());
+			return true;
+		}
+
+		KVSCF_pContext->warning(__tr2qs_ctx("Unable to get certificate informations: query not recognized","dcc"));
+		KVSCF_pRetBuffer->setString("");
+		return true;
+#endif
+	}
 
 	/*
 		@doc: channel
