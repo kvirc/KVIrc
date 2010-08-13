@@ -484,7 +484,7 @@ namespace KviKvsCoreFunctions
 		KVSCF_pContext->warning(__tr2qs_ctx("This executable was built without SSL support","dcc"));
 		return true;
 #else
-
+		KviSSL::globalSSLInit();
 		X509 *cert = 0;
 
 		if(!KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate))

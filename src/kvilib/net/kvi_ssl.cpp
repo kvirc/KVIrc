@@ -241,11 +241,12 @@ void KviSSL::globalDestroy()
 	if(dh_1024)DH_free(dh_1024);
 	if(dh_2048)DH_free(dh_2048);
 	if(dh_4096)DH_free(dh_4096);
+	globalSSLDestroy();
 	delete g_pSSLMutex;
 	g_pSSLMutex = 0;
 }
 
-KviSSL::KviSSL()
+void KviSSL::globalSSLInit()
 {
 	my_ssl_lock();
 	if(!g_bSSLInitialized)
@@ -253,9 +254,27 @@ KviSSL::KviSSL()
 		// FIXME: this should be done only if SSL is really needed
 		SSL_library_init();
 		SSL_load_error_strings();
+		//needed to support SHA2 in < OpenSSL 0.9.8o and 1.0.0a
+		OpenSSL_add_all_algorithms();
 		g_bSSLInitialized = true;
 	}
 	my_ssl_unlock();
+}
+
+void KviSSL::globalSSLDestroy()
+{
+	my_ssl_lock();
+	if(g_bSSLInitialized)
+	{
+		EVP_cleanup();
+		g_bSSLInitialized = false;
+	}
+	my_ssl_unlock();
+}
+
+KviSSL::KviSSL()
+{
+	globalSSLInit();
 	m_pSSL = 0;
 	m_pSSLCtx = 0;
 }

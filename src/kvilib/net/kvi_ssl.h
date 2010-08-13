@@ -157,6 +157,8 @@ public:
 public:
 	static void globalInit();
 	static void globalDestroy();
+	static void globalSSLInit();
+	static void globalSSLDestroy();
 public:
 	bool initSocket(kvi_socket_t fd);
 	bool initContext(KviSSL::Method m);

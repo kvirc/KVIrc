@@ -40,7 +40,7 @@
 
 #if defined( COMPILE_SSL_SUPPORT ) && !defined( COMPILE_NO_EMBEDDED_CODE )
 	// The current implementation
-	#include <openssl/ssl.h>
+	#include <kvi_ssl.h>
 	#include <openssl/evp.h>
 	#include <openssl/pem.h>
 #elif defined(COMPILE_NO_EMBEDDED_CODE)
@@ -2229,14 +2229,11 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 
 #if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
 
+	KviSSL::globalSSLInit();
 	EVP_MD_CTX md_ctx;
 	EVP_PKEY * pKey = 0;
 	unsigned int len = 0;
 	unsigned char *sig = 0;
-
-	//FIXME do we need a mutex here?
-	SSL_library_init();
-	SSL_load_error_strings();
 
 	if(szCert.isEmpty())
 	{
@@ -2364,10 +2361,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 
 #if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
 
-	//FIXME do we need a mutex here?
-	SSL_library_init();
-	SSL_load_error_strings();
-
+	KviSSL::globalSSLInit();
 	szSign = QByteArray::fromBase64(szSignB64);
 	const char * message = szMessage.data();
 	
