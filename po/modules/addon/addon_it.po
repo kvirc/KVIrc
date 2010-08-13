@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 22:59+0200\n"
-"PO-Revision-Date: 2010-05-22 17:49+0200\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2010-08-13 16:23+0200\n"
+"PO-Revision-Date: 2010-08-13 16:00+0200\n"
+"Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -109,7 +109,7 @@ msgstr "Vuoi procedere con l'installazione?"
 
 #: src/modules/addon/libkviaddon.cpp:660
 msgid "Empty file list"
-msgstr ""
+msgstr "Lista file vuota"
 
 #: src/modules/addon/libkviaddon.cpp:804
 msgid "Error installing addon package: %Q"
@@ -204,7 +204,7 @@ msgstr "Installa Pacchetto Addon Dal Disco"
 
 #: src/modules/addon/libkviaddon.cpp:749
 msgid "Installing file '%1' into '%2'"
-msgstr ""
+msgstr "Installo il file '%1' in '%2'"
 
 #: src/modules/addon/libkviaddon.cpp:529
 msgid "Internal error: call a head-shrinker"
@@ -313,21 +313,25 @@ msgstr "Seleziona la directory dei sorgenti:"
 msgid "Show Help"
 msgstr "Mostra Aiuto"
 
-#: src/modules/addon/libkviaddon.cpp:691 src/modules/addon/libkviaddon.cpp:714
+#: src/modules/addon/libkviaddon.cpp:691
+#: src/modules/addon/libkviaddon.cpp:714
 msgid "Skipping inexisting entry '%1'"
-msgstr ""
+msgstr "Salto l'entry non esistente '%1'"
 
 #: src/modules/addon/libkviaddon.cpp:723
 msgid "Skipping invalid entry '%1'"
-msgstr ""
+msgstr "Salto l'entry invalida '%1'"
 
 #: src/modules/addon/packaddondialog.cpp:591
 msgid "Source Directory"
 msgstr "Directory Sorgenti"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:647
 msgid "The addon \"%1\" does not exist"
 msgstr "L'addon \"%1\" non esiste"
 
@@ -344,27 +348,24 @@ msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
 msgstr "L'addon \"%Q\" esiste già con versione %Q che è maggiore di %Q"
 
 #: src/modules/addon/libkviaddon.cpp:689
-#, fuzzy
 msgid "The directory '%1' doesn't exist"
-msgstr "La directory selezionata non esiste."
+msgstr "La directory '%1' non esiste."
 
 #: src/modules/addon/libkviaddon.cpp:721
 msgid "The entry '%1' is not a file"
-msgstr ""
+msgstr "La entry '%1' non è un file"
 
 #: src/modules/addon/libkviaddon.cpp:712
-#, fuzzy
 msgid "The file '%1' doesn't exist"
-msgstr "L'addon \"%1\" non esiste"
+msgstr "Il file '%1' non esiste"
 
 #: src/modules/addon/packaddondialog.cpp:151
-#, fuzzy
 msgid "The initialization script (install.kvs) does not exist."
-msgstr "Lo script di inizializzazione (init.kvs) non esiste."
+msgstr "Lo script di inizializzazione (install.kvs) non esiste."
 
 #: src/modules/addon/packaddondialog.cpp:336
 msgid "The package file list is empty"
-msgstr ""
+msgstr "La lista file del pacchetto è vuota"
 
 #: src/modules/addon/packaddondialog.cpp:144
 msgid "The selected directory does not exist."
@@ -389,11 +390,11 @@ msgstr "La versione specificata \"%Q\" non è valida"
 
 #: src/modules/addon/libkviaddon.cpp:652
 msgid "The target path can't be empty"
-msgstr ""
+msgstr "Il percorso di destinazione non può essere vuoto"
 
 #: src/modules/addon/libkviaddon.cpp:655
 msgid "The target path can't contain .."
-msgstr ""
+msgstr "Il percorso di destinazione non può contenere .."
 
 #: src/modules/addon/libkviaddon.cpp:550
 msgid ""
@@ -420,7 +421,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Totale: %d addon installati"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Disinstallo l'addon esistente con versione %Q"
 

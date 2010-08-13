@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 22:59+0200\n"
+"POT-Creation-Date: 2010-08-13 16:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,6 +71,173 @@ msgstr ""
 #: src/modules/addon/managementdialog.cpp:292
 #: src/modules/addon/managementdialog.cpp:306
 msgid "Install Addon - KVIrc"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:47
+msgid "The selected file does not seem to be a valid KVIrc addon package"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:68
+msgid "The selected file does not seem to be a valid KVIrc package: %Q"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:115
+msgid "Author"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:116
+msgid "Created at"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:117
+msgid "Created with"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:142
+msgid "Warning: The addon might be incompatible with this version of KVIrc"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:189
+msgid "Install Addon Pack - KVIrc"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:190
+msgid "You're about to install the following addon package"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:191
+msgid "Do you want to proceed with the installation ?"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:192
+msgid "Do Not Install"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:193
+msgid "Yes, Proceed"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:227
+#: src/modules/addon/addonfunctions.cpp:252
+msgid "Failed to unpack the selected file: %Q"
+msgstr ""
+
+#: src/modules/addon/addonfunctions.cpp:251
+msgid "One or more files can't be deleted"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:146
+msgid "%cAddon id %Q, version %Q%c"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:147
+msgid "Name: %Q"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:148
+msgid "Description: %Q"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:154
+#, c-format
+msgid "Total: %d addons installed"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
+msgid "Uninstalling existing addon version %Q"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:647
+msgid "The addon \"%1\" does not exist"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:240
+msgid "The addon \"%1\" has no configure callback set"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:287
+msgid "The addon \"%1\" has no help callback set"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:529
+msgid "Internal error: call a head-shrinker"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:538
+msgid "The specified version \"%Q\" is not a valid version string"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:544
+msgid "The specified KVIrc version \"%Q\" is not a valid version string"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:550
+msgid ""
+"This KVIrc executable is too old to run this addon (minimum version required "
+"is %Q)"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:555
+msgid "Attempting to register addon \"%Q\" with version %Q"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:567
+msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:583
+msgid "Addon registration failed"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:588
+msgid "Addon successfully registered"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:652
+msgid "The target path can't be empty"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:655
+msgid "The target path can't contain .."
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:660
+msgid "Empty file list"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:689
+msgid "The directory '%1' doesn't exist"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:691
+#: src/modules/addon/libkviaddon.cpp:714
+msgid "Skipping inexisting entry '%1'"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:712
+msgid "The file '%1' doesn't exist"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:721
+msgid "The entry '%1' is not a file"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:723
+msgid "Skipping invalid entry '%1'"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:749
+msgid "Installing file '%1' into '%2'"
+msgstr ""
+
+#: src/modules/addon/libkviaddon.cpp:804
+msgid "Error installing addon package: %Q"
 msgstr ""
 
 #: src/modules/addon/packaddondialog.cpp:53
@@ -274,171 +441,4 @@ msgstr ""
 
 #: src/modules/addon/packaddondialog.cpp:627
 msgid "Finish"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:146
-msgid "%cAddon id %Q, version %Q%c"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:147
-msgid "Name: %Q"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:148
-msgid "Description: %Q"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:154
-#, c-format
-msgid "Total: %d addons installed"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
-msgid "Uninstalling existing addon version %Q"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:647
-msgid "The addon \"%1\" does not exist"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:240
-msgid "The addon \"%1\" has no configure callback set"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:287
-msgid "The addon \"%1\" has no help callback set"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:529
-msgid "Internal error: call a head-shrinker"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:538
-msgid "The specified version \"%Q\" is not a valid version string"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:544
-msgid "The specified KVIrc version \"%Q\" is not a valid version string"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:550
-msgid ""
-"This KVIrc executable is too old to run this addon (minimum version required "
-"is %Q)"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:555
-msgid "Attempting to register addon \"%Q\" with version %Q"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:567
-msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:583
-msgid "Addon registration failed"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:588
-msgid "Addon successfully registered"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:652
-msgid "The target path can't be empty"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:655
-msgid "The target path can't contain .."
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:660
-msgid "Empty file list"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:689
-msgid "The directory '%1' doesn't exist"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:691
-#: src/modules/addon/libkviaddon.cpp:714
-msgid "Skipping inexisting entry '%1'"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:712
-msgid "The file '%1' doesn't exist"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:721
-msgid "The entry '%1' is not a file"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:723
-msgid "Skipping invalid entry '%1'"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:749
-msgid "Installing file '%1' into '%2'"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:804
-msgid "Error installing addon package: %Q"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:47
-msgid "The selected file does not seem to be a valid KVIrc addon package"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:68
-msgid "The selected file does not seem to be a valid KVIrc package: %Q"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:115
-msgid "Author"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:116
-msgid "Created at"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:117
-msgid "Created with"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:142
-msgid "Warning: The addon might be incompatible with this version of KVIrc"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:189
-msgid "Install Addon Pack - KVIrc"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:190
-msgid "You're about to install the following addon package"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:191
-msgid "Do you want to proceed with the installation ?"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:192
-msgid "Do Not Install"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:193
-msgid "Yes, Proceed"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:227
-#: src/modules/addon/addonfunctions.cpp:252
-msgid "Failed to unpack the selected file: %Q"
-msgstr ""
-
-#: src/modules/addon/addonfunctions.cpp:251
-msgid "One or more files can't be deleted"
 msgstr ""

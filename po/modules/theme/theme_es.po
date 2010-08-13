@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 22:59+0200\n"
+"POT-Creation-Date: 2010-08-13 16:23+0200\n"
 "PO-Revision-Date: 2010-05-18 13:03+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -23,9 +23,10 @@ msgstr "Elimina&r tema"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Tomar captura de pantalla - KVIrc"
 
+#: src/modules/theme/libkvitheme.cpp:109
+#: src/modules/theme/libkvitheme.cpp:123
 #: src/modules/theme/managementdialog.cpp:279
 #: src/modules/theme/managementdialog.cpp:292
-#: src/modules/theme/libkvitheme.cpp:109 src/modules/theme/libkvitheme.cpp:123
 msgid "Apply theme - KVIrc"
 msgstr "Aplicar tema - KVIrc"
 
@@ -73,8 +74,8 @@ msgstr "¿Realmente quieres eliminar el tema \"%Q\" (versión %Q)?"
 msgid "Do you want to proceed with the installation ?"
 msgstr "¿Quieres proceder con la instalación?"
 
-#: src/modules/theme/managementdialog.cpp:280
 #: src/modules/theme/libkvitheme.cpp:110
+#: src/modules/theme/managementdialog.cpp:280
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "¿Quieres aplicar el tema \"%Q\" (versión %Q)?"
 
@@ -99,8 +100,8 @@ msgstr "Exportar los temas seleccionados a un paquete distribuible"
 msgid "Export Theme - KVIrc"
 msgstr "Exportar tema - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:291
 #: src/modules/theme/libkvitheme.cpp:122
+#: src/modules/theme/managementdialog.cpp:291
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Error al aplicar el tema especificado: %Q"
 
@@ -279,7 +280,8 @@ msgstr "El archivo seleccionado no parece ser un paquete de KVIrc válido: %Q"
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "El archivo seleccionado no parece ser un paquete de tema KVIrc válido"
 
-#: src/modules/theme/libkvitheme.cpp:128 src/modules/theme/libkvitheme.cpp:171
+#: src/modules/theme/libkvitheme.cpp:128
+#: src/modules/theme/libkvitheme.cpp:171
 #, fuzzy
 msgid "The theme package '%Q' does not exists"
 msgstr "El paquete de temas %Q no existe"

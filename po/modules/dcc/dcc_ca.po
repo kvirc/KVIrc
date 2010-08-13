@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 22:59+0200\n"
+"POT-Creation-Date: 2010-08-13 16:23+0200\n"
 "PO-Revision-Date: 2005-02-24 23:18+0100\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -25,7 +25,8 @@ msgstr "\"qualsevol\""
 msgid "%1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1513 src/modules/dcc/send.cpp:1520
+#: src/modules/dcc/send.cpp:1513
+#: src/modules/dcc/send.cpp:1520
 #, fuzzy
 msgid "%1 of %2 (%3%)"
 msgstr "%1 de %2 bytes (%3%)"
@@ -74,7 +75,8 @@ msgstr "Pastís"
 msgid "&Polygons"
 msgstr "&Polígons"
 
-#: src/modules/dcc/canvaswidget.cpp:1479 src/modules/dcc/canvaswidget.cpp:1487
+#: src/modules/dcc/canvaswidget.cpp:1479
+#: src/modules/dcc/canvaswidget.cpp:1487
 msgid "&Rectangle"
 msgstr "&Rectangle"
 
@@ -98,12 +100,15 @@ msgstr "Figura"
 msgid "&Triangle"
 msgstr "&Triangle"
 
-#: src/modules/dcc/requests.cpp:788 src/modules/dcc/requests.cpp:958
+#: src/modules/dcc/requests.cpp:788
+#: src/modules/dcc/requests.cpp:958
 msgid "(unknown)"
 msgstr "(desconegut)"
 
-#: src/modules/dcc/libkvidcc.cpp:434 src/modules/dcc/libkvidcc.cpp:657
-#: src/modules/dcc/libkvidcc.cpp:1159 src/modules/dcc/libkvidcc.cpp:1226
+#: src/modules/dcc/libkvidcc.cpp:434
+#: src/modules/dcc/libkvidcc.cpp:657
+#: src/modules/dcc/libkvidcc.cpp:1159
+#: src/modules/dcc/libkvidcc.cpp:1226
 msgid "-c requires -i and -p"
 msgstr "-c necessita -i i -p"
 
@@ -183,7 +188,8 @@ msgstr ""
 "KVIrc que accepti avatars automàticament activant l'opció <tt>Acceptar "
 "automàticament avatars entrants</tt>.<br>"
 
-#: src/modules/dcc/libkvidcc.cpp:634 src/modules/dcc/requests.cpp:455
+#: src/modules/dcc/libkvidcc.cpp:634
+#: src/modules/dcc/requests.cpp:455
 #: src/modules/dcc/requests.cpp:755
 msgid "<unknown size>"
 msgstr "<mida desconeguda>"
@@ -192,7 +198,8 @@ msgstr "<mida desconeguda>"
 msgid "Abort"
 msgstr "Interrompre"
 
-#: src/modules/dcc/send.cpp:1195 src/modules/dcc/send.cpp:1206
+#: src/modules/dcc/send.cpp:1195
+#: src/modules/dcc/send.cpp:1206
 msgid "Aborted"
 msgstr "Interrumpuda"
 
@@ -217,7 +224,8 @@ msgstr ""
 "Acceptant una petició d'arxiu des de %Q [%Q@%Q] per a '%s' (arxiu real: %Q), "
 "oferint DCC %s perque no podem acceptar connexions entrants (opció d'usuari)"
 
-#: src/modules/dcc/voice.cpp:930 src/modules/dcc/video.cpp:918
+#: src/modules/dcc/video.cpp:918
+#: src/modules/dcc/voice.cpp:930
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "El còdec actual és '%s'"
@@ -290,7 +298,8 @@ msgstr ""
 "No puc escoltar en la interfície per defecte '%s': arregla-ho en el diàleg "
 "d'opcions deshabilitant l'opció (per a que funcioni el pròxim dcc)"
 
-#: src/modules/dcc/broker.cpp:207 src/modules/dcc/broker.cpp:916
+#: src/modules/dcc/broker.cpp:207
+#: src/modules/dcc/broker.cpp:916
 #, fuzzy
 msgid "Can't open file %Q for reading"
 msgstr "No he pogut obrir l'arxiu %s per a lectura"
@@ -323,12 +332,15 @@ msgstr ""
 "No he pogut enviar la petició DCC %s a %s: la connexió IRC ha estat "
 "finalitzada"
 
-#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:2195
+#: src/modules/dcc/send.cpp:2195
+#: src/modules/dcc/dialogs.cpp:158
 msgid "Cancel"
 msgstr "Cancel·lar"
 
-#: src/modules/dcc/video.cpp:643 src/modules/dcc/video.cpp:746
-#: src/modules/dcc/chat.cpp:297 src/modules/dcc/chat.cpp:400
+#: src/modules/dcc/video.cpp:643
+#: src/modules/dcc/video.cpp:746
+#: src/modules/dcc/chat.cpp:297
+#: src/modules/dcc/chat.cpp:400
 msgid "Cannot send data: No active connection"
 msgstr "No puc enviar dades: No hi ha una connexió activa"
 
@@ -337,7 +349,8 @@ msgstr "No puc enviar dades: No hi ha una connexió activa"
 msgid "Choose Files to Save - KVIrc"
 msgstr "Esculli els Arxius a Enviar - KVIrc"
 
-#: src/modules/dcc/broker.cpp:167 src/modules/dcc/broker.cpp:879
+#: src/modules/dcc/broker.cpp:167
+#: src/modules/dcc/broker.cpp:879
 msgid "Choose Files to Send - KVIrc"
 msgstr "Esculli els Arxius a Enviar - KVIrc"
 
@@ -360,8 +373,10 @@ msgstr ""
 msgid "Connected to %1:%2"
 msgstr "Conectat a %1:%2"
 
-#: src/modules/dcc/voice.cpp:910 src/modules/dcc/video.cpp:902
-#: src/modules/dcc/canvas.cpp:284 src/modules/dcc/chat.cpp:564
+#: src/modules/dcc/video.cpp:902
+#: src/modules/dcc/chat.cpp:564
+#: src/modules/dcc/voice.cpp:910
+#: src/modules/dcc/canvas.cpp:284
 #, fuzzy
 msgid "Connected to %Q:%Q"
 msgstr "Conectat a %s:%s"
@@ -370,13 +385,16 @@ msgstr "Conectat a %s:%s"
 msgid "Contacting host %1 on port %2"
 msgstr "Contactant amb la màquina %1 en el port %2"
 
-#: src/modules/dcc/voice.cpp:755 src/modules/dcc/video.cpp:584
-#: src/modules/dcc/canvas.cpp:108 src/modules/dcc/chat.cpp:184
+#: src/modules/dcc/video.cpp:584
+#: src/modules/dcc/chat.cpp:184
+#: src/modules/dcc/voice.cpp:755
+#: src/modules/dcc/canvas.cpp:108
 #, fuzzy
 msgid "Contacting host %Q on port %Q"
 msgstr "Contactant amb la màquina %s en el port %s"
 
-#: src/modules/dcc/broker.cpp:296 src/modules/dcc/broker.cpp:626
+#: src/modules/dcc/broker.cpp:296
+#: src/modules/dcc/broker.cpp:626
 msgid "DCC %1 Request - KVIrc"
 msgstr "Petició DCC %1 - KVIrc"
 
@@ -407,7 +425,8 @@ msgstr "Petició de DCC CANVAS"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "Petició DCC CANVAS no enviada; esperant connexions manuals"
 
-#: src/modules/dcc/voice.cpp:901 src/modules/dcc/video.cpp:897
+#: src/modules/dcc/video.cpp:897
+#: src/modules/dcc/voice.cpp:901
 #: src/modules/dcc/canvas.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "Ha fallat el DCC: %Q"
@@ -451,8 +470,9 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "La transferència de dades ha acabat fa 30 segons, tancant la connexió"
 
-#: src/modules/dcc/voice.cpp:818 src/modules/dcc/video.cpp:760
+#: src/modules/dcc/video.cpp:760
 #: src/modules/dcc/chat.cpp:415
+#: src/modules/dcc/voice.cpp:818
 msgid "ERROR: %Q"
 msgstr "ERROR: %Q"
 
@@ -568,8 +588,10 @@ msgstr ""
 msgid "Listening on interface %1 port %2"
 msgstr "Escoltant en la interfície %1 port %2"
 
-#: src/modules/dcc/voice.cpp:758 src/modules/dcc/video.cpp:587
-#: src/modules/dcc/canvas.cpp:84 src/modules/dcc/chat.cpp:186
+#: src/modules/dcc/video.cpp:587
+#: src/modules/dcc/chat.cpp:186
+#: src/modules/dcc/voice.cpp:758
+#: src/modules/dcc/canvas.cpp:84
 #, fuzzy
 msgid "Listening on interface %Q port %Q"
 msgstr "Escoltant en la interfície %s port %s"
@@ -578,13 +600,16 @@ msgstr "Escoltant en la interfície %s port %s"
 msgid "Local end is %1:%2"
 msgstr "El extrem local és %1:%2"
 
-#: src/modules/dcc/voice.cpp:912 src/modules/dcc/video.cpp:904
-#: src/modules/dcc/canvas.cpp:286 src/modules/dcc/chat.cpp:566
+#: src/modules/dcc/video.cpp:904
+#: src/modules/dcc/chat.cpp:566
+#: src/modules/dcc/voice.cpp:912
+#: src/modules/dcc/canvas.cpp:286
 #, fuzzy
 msgid "Local end is %Q:%Q"
 msgstr "El extrem final és %s:%s"
 
-#: src/modules/dcc/chat.cpp:246 src/modules/dcc/send.cpp:1841
+#: src/modules/dcc/chat.cpp:246
+#: src/modules/dcc/send.cpp:1841
 msgid "Low-level transport connection established"
 msgstr "Establerta la connexió de transport de baix nivell"
 
@@ -593,7 +618,8 @@ msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
 msgstr ""
 "No hi ha una oferta de l'arxiu '%s' (amb mida %s) disponible per a %Q [%Q@%Q]"
 
-#: src/modules/dcc/requests.cpp:794 src/modules/dcc/requests.cpp:944
+#: src/modules/dcc/requests.cpp:794
+#: src/modules/dcc/requests.cpp:944
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr ""
 "No hi ha una interfície adequant en el que escoltar, intentant continuar de "
@@ -709,7 +735,8 @@ msgstr ""
 msgid "Standard:"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:247 src/modules/dcc/send.cpp:1842
+#: src/modules/dcc/chat.cpp:247
+#: src/modules/dcc/send.cpp:1842
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Iniciant negociació del protocol SSL"
 
@@ -741,7 +768,8 @@ msgid ""
 "compilation time "
 msgstr "La petició anterior no pot ser acceptada: còdec no suportat '%s'"
 
-#: src/modules/dcc/requests.cpp:1018 src/modules/dcc/requests.cpp:1093
+#: src/modules/dcc/requests.cpp:1018
+#: src/modules/dcc/requests.cpp:1093
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
 msgstr "La petició anterior no pot ser acceptada: còdec no suportat '%s'"
@@ -754,8 +782,10 @@ msgstr ""
 "La petició anterior no té una mida d'arxiu per a continuar, assumint 0 com a "
 "mida d'arxiu de reanudació"
 
-#: src/modules/dcc/requests.cpp:463 src/modules/dcc/requests.cpp:473
-#: src/modules/dcc/requests.cpp:624 src/modules/dcc/requests.cpp:763
+#: src/modules/dcc/requests.cpp:463
+#: src/modules/dcc/requests.cpp:473
+#: src/modules/dcc/requests.cpp:624
+#: src/modules/dcc/requests.cpp:763
 msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
@@ -763,7 +793,8 @@ msgstr ""
 "La petició anterior no és correcta: el nom de l'arxiu conté una ruta, "
 "traient la ruta i intentant continuar"
 
-#: src/modules/dcc/requests.cpp:453 src/modules/dcc/requests.cpp:753
+#: src/modules/dcc/requests.cpp:453
+#: src/modules/dcc/requests.cpp:753
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -795,7 +826,8 @@ msgstr ""
 msgid "The connection will be secured using SSL.<br>"
 msgstr "La connexió serà assegurada emprant SSL.<br>"
 
-#: src/modules/dcc/video.cpp:689 src/modules/dcc/chat.cpp:343
+#: src/modules/dcc/video.cpp:689
+#: src/modules/dcc/chat.cpp:343
 #, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
@@ -804,7 +836,8 @@ msgstr ""
 "El motor de xifrat no ha estat capaç de desxifrar el missatge actual (%Q): %"
 "s, no s'han enviat dades a l'extrem remot"
 
-#: src/modules/dcc/libkvidcc.cpp:1641 src/modules/dcc/libkvidcc.cpp:2606
+#: src/modules/dcc/libkvidcc.cpp:1641
+#: src/modules/dcc/libkvidcc.cpp:2606
 #: src/modules/dcc/libkvidcc.cpp:2626
 msgid "The current window has no associated DCC session"
 msgstr "La finestra actual no té una sessió DCC associada"
@@ -833,7 +866,8 @@ msgstr ""
 "automàticament</b> el nou arxiu, o<br><b>continuar</b> una transferència "
 "incompleta?"
 
-#: src/modules/dcc/video.cpp:819 src/modules/dcc/chat.cpp:475
+#: src/modules/dcc/video.cpp:819
+#: src/modules/dcc/chat.cpp:475
 #, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
@@ -842,14 +876,16 @@ msgstr ""
 "El següent missatge semblar estar xifrat, però el motor de xifrat ha fallat "
 "al descodificar-lo: %s"
 
-#: src/modules/dcc/chat.cpp:213 src/modules/dcc/send.cpp:1779
+#: src/modules/dcc/chat.cpp:213
+#: src/modules/dcc/send.cpp:1779
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "L'adreça IP local és privada, però no tinc un servidor IRC des d'on "
 "determinar-la"
 
-#: src/modules/dcc/chat.cpp:210 src/modules/dcc/send.cpp:1776
+#: src/modules/dcc/chat.cpp:210
+#: src/modules/dcc/send.cpp:1776
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
@@ -933,7 +969,7 @@ msgstr ""
 msgid "This executable has no SSL support, -s switch ignored"
 msgstr "Aquest executable no té suport SSL, modificador -s ignorat"
 
-#: src/modules/dcc/libkvidcc.cpp:2761
+#: src/modules/dcc/libkvidcc.cpp:2765
 #, fuzzy
 msgid "This executable was built without SSL support"
 msgstr ""
@@ -970,7 +1006,8 @@ msgstr "Registre de Transferència"
 msgid "Transfer completed"
 msgstr "Transferència completada"
 
-#: src/modules/dcc/send.cpp:1205 src/modules/dcc/send.cpp:1867
+#: src/modules/dcc/send.cpp:1205
+#: src/modules/dcc/send.cpp:1867
 #: src/modules/dcc/send.cpp:1946
 msgid "Transfer failed: "
 msgstr "Ha fallat la transferència: "
@@ -979,23 +1016,23 @@ msgstr "Ha fallat la transferència: "
 msgid "Transferring data"
 msgstr "Transferint dades"
 
-#: src/modules/dcc/libkvidcc.cpp:2783
+#: src/modules/dcc/libkvidcc.cpp:2787
 msgid "Unable to get SSL informations: DCC session is not using SSL"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2796
+#: src/modules/dcc/libkvidcc.cpp:2800
 msgid "Unable to get SSL informations: DCC session not initialized yet"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2813
+#: src/modules/dcc/libkvidcc.cpp:2817
 msgid "Unable to get SSL informations: No peer certificate available"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2804
+#: src/modules/dcc/libkvidcc.cpp:2808
 msgid "Unable to get SSL informations: SSL non initialized yet in DCC session"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2937
+#: src/modules/dcc/libkvidcc.cpp:2941
 msgid "Unable to get SSL informations: query not recognized"
 msgstr ""
 
@@ -1070,7 +1107,7 @@ msgstr ""
 "ATENCIO: ha fallat la configuració de la freqüència de mostreig solicitada (%"
 "d): el dispositiu ha emprat el valor més proper (%d)"
 
-#: src/modules/dcc/libkvidcc.cpp:2772
+#: src/modules/dcc/libkvidcc.cpp:2776
 msgid "You specified a bad string for the parameter \"type\""
 msgstr ""
 
@@ -1100,15 +1137,24 @@ msgstr "[ERROR SSL]: %s"
 msgid "bytes/sec"
 msgstr "Mitja: ? bytes/seg"
 
-#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
-#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/libkvidcc.cpp:111
-#: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
-#: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
-#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
-#: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
-#: src/modules/dcc/libkvidcc.cpp:1199 src/modules/dcc/libkvidcc.cpp:1238
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/requests.cpp:142
-#: src/modules/dcc/requests.cpp:143 src/modules/dcc/requests.cpp:144
+#: src/modules/dcc/descriptor.cpp:65
+#: src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/libkvidcc.cpp:408
+#: src/modules/dcc/libkvidcc.cpp:443
+#: src/modules/dcc/libkvidcc.cpp:642
+#: src/modules/dcc/libkvidcc.cpp:666
+#: src/modules/dcc/libkvidcc.cpp:803
+#: src/modules/dcc/libkvidcc.cpp:805
+#: src/modules/dcc/libkvidcc.cpp:1121
+#: src/modules/dcc/libkvidcc.cpp:1171
+#: src/modules/dcc/libkvidcc.cpp:1199
+#: src/modules/dcc/libkvidcc.cpp:1238
+#: src/modules/dcc/marshal.cpp:490
+#: src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525
+#: src/modules/dcc/requests.cpp:142
+#: src/modules/dcc/requests.cpp:143
+#: src/modules/dcc/requests.cpp:144
 msgid "unknown"
 msgstr "desconegut"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 22:59+0200\n"
+"POT-Creation-Date: 2010-08-13 16:23+0200\n"
 "PO-Revision-Date: 2010-06-23 01:09+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: \n"
@@ -15,7 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:285
+#: src/modules/options/optw_avatar.cpp:72
+#: src/modules/options/optw_dcc.cpp:285
 msgid " bytes"
 msgstr " bajtów"
 
@@ -24,8 +25,8 @@ msgstr " bajtów"
 msgid " days"
 msgstr " dni"
 
-#: src/modules/options/optw_query.cpp:98
 #: src/modules/options/optw_ircview.cpp:155
+#: src/modules/options/optw_query.cpp:98
 #: src/modules/options/optw_channel.cpp:136
 msgid " lines"
 msgstr " linii"
@@ -34,11 +35,12 @@ msgstr " linii"
 msgid " min"
 msgstr " min"
 
-#: src/modules/options/optw_lag.cpp:45 src/modules/options/optw_lag.cpp:56
-#: src/modules/options/optw_connection.cpp:155
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
+#: src/modules/options/optw_connection.cpp:155
 #: src/modules/options/optw_dcc.cpp:276
+#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr " msek"
 
@@ -51,11 +53,11 @@ msgid " requests"
 msgstr " żądań"
 
 #: src/modules/options/optw_avatar.cpp:96
+#: src/modules/options/optw_ctcpfloodprotection.cpp:92
 #: src/modules/options/optw_connection.cpp:85
 #: src/modules/options/optw_connection.cpp:153
-#: src/modules/options/optw_dcc.cpp:140
 #: src/modules/options/optw_channel.cpp:121
-#: src/modules/options/optw_ctcpfloodprotection.cpp:92
+#: src/modules/options/optw_dcc.cpp:140
 msgid " sec"
 msgstr " sek"
 
@@ -91,9 +93,9 @@ msgstr "&Nowe proxy"
 msgid "&New Server"
 msgstr "&Nowy serwer"
 
-#: src/modules/options/dialog.cpp:229
-#: src/modules/options/optw_identity.cpp:234
 #: src/modules/options/optw_servers.cpp:366
+#: src/modules/options/optw_identity.cpp:234
+#: src/modules/options/dialog.cpp:229
 #: src/modules/options/container.cpp:72
 msgid "&OK"
 msgstr "&OK"
@@ -393,14 +395,6 @@ msgstr ""
 "<center>Minimalna wartość: <b>0 sec</b><br>Maksymalna wartość: <b>86400 sec</"
 "b></center>"
 
-#: src/modules/options/optw_channel.cpp:122
-msgid ""
-"<center>Minimum value: <b>0 secs</b><br>Maximum value: <b>60 secs</b></"
-"center>"
-msgstr ""
-"<center>Minimalna wartość: <b>0 secs</b><br>Maksymalna wartość: <b>60 secs</"
-"b></center>"
-
 #: src/modules/options/optw_ctcpfloodprotection.cpp:93
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
@@ -652,6 +646,14 @@ msgid ""
 "without changing them at every connection attempt."
 msgstr ""
 
+#: src/modules/options/optw_channel.cpp:122
+msgid ""
+"<center>This is an artificial delay for the channel requests made on join."
+"<br>You may increase it if your server complains about flooding when joining "
+"many channels at once.<br>Minimum value: <b>0 secs</b><br>Maximum value: "
+"<b>10 secs</b></center>"
+msgstr ""
+
 #: src/modules/options/optw_servers.cpp:643
 msgid ""
 "<center>This is the <b>IP address</b> of this server, it is here for caching "
@@ -870,7 +872,8 @@ msgid ""
 "data.</center>"
 msgstr ""
 
-#: src/modules/options/optw_query.cpp:82 src/modules/options/optw_dcc.cpp:332
+#: src/modules/options/optw_query.cpp:82
+#: src/modules/options/optw_dcc.cpp:332
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1358,8 +1361,10 @@ msgid "Add Rule"
 msgstr "Dodaj zasadę"
 
 #: src/modules/options/optw_servers.cpp:972
-#: src/modules/options/optw_channel.h:64 src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_irc.h:57
+#: src/modules/options/optw_dcc.h:58
+#: src/modules/options/optw_dcc.h:102
+#: src/modules/options/optw_irc.h:57
+#: src/modules/options/optw_channel.h:64
 #: src/modules/options/optw_identity.h:202
 #: src/modules/options/optw_connection.h:45
 msgid "Advanced"
@@ -1487,7 +1492,8 @@ msgstr "Uwierzytelnienie poprzez rozszerzenie SASL"
 msgid "Auto flush logs every"
 msgstr "Automatyczne nadpisywanie dziennika co każde"
 
-#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71
+#: src/modules/options/optw_sound.cpp:86
 msgid "Auto-detect"
 msgstr "Wykryj automatycznie"
 
@@ -1499,7 +1505,8 @@ msgstr "Wykryj automatycznie"
 msgid "Automatically Log"
 msgstr "Automatyczne zapisywanie w dzienniku"
 
-#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:314
+#: src/modules/options/optw_dcc.cpp:175
+#: src/modules/options/optw_dcc.cpp:314
 #: src/modules/options/optw_dcc.cpp:350
 msgid "Automatically accept"
 msgstr "Automatyczna akceptacja"
@@ -1572,8 +1579,8 @@ msgstr "Nieobecny:"
 msgid "Background"
 msgstr "Tło"
 
-#: src/modules/options/optw_windowlist.cpp:119
 #: src/modules/options/optw_userlist.cpp:126
+#: src/modules/options/optw_windowlist.cpp:119
 msgid "Background Colors"
 msgstr "Kolory tła"
 
@@ -1582,9 +1589,9 @@ msgstr "Kolory tła"
 msgid "Background Image"
 msgstr "Obrazek tła"
 
+#: src/modules/options/optw_topiclabel.cpp:38
 #: src/modules/options/optw_notifier.cpp:39
 #: src/modules/options/optw_input.cpp:39
-#: src/modules/options/optw_topiclabel.cpp:38
 msgid "Background color"
 msgstr "Kolor tła"
 
@@ -1592,15 +1599,15 @@ msgstr "Kolor tła"
 msgid "Background color:"
 msgstr "Kolor tła:"
 
+#: src/modules/options/optw_topiclabel.cpp:39
 #: src/modules/options/optw_notifier.cpp:44
 #: src/modules/options/optw_input.cpp:46
-#: src/modules/options/optw_topiclabel.cpp:39
 msgid "Background image"
 msgstr "Obrazek tła"
 
-#: src/modules/options/optw_windowlist.cpp:123
 #: src/modules/options/optw_ircview.cpp:54
 #: src/modules/options/optw_userlist.cpp:131
+#: src/modules/options/optw_windowlist.cpp:123
 msgid "Background image:"
 msgstr "Obrazek tła:"
 
@@ -1624,11 +1631,11 @@ msgstr "Przypnij połączenia IPv6 do:"
 msgid "Blend color:"
 msgstr "Mieszany kolor:"
 
+#: src/modules/options/optw_ircview.cpp:71
 #: src/modules/options/optw_notifier.cpp:61
+#: src/modules/options/optw_userlist.cpp:148
 #: src/modules/options/optw_windowlist.cpp:140
 #: src/modules/options/optw_input.cpp:63
-#: src/modules/options/optw_ircview.cpp:71
-#: src/modules/options/optw_userlist.cpp:148
 msgid "Bottom"
 msgstr "Spód"
 
@@ -1656,25 +1663,27 @@ msgstr "Odpowiedzi CTCP"
 msgid "Cache IP address"
 msgstr "Buforowanie adresu IP"
 
-#: src/modules/options/dialog.cpp:244 src/modules/options/optw_identity.cpp:96
-#: src/modules/options/optw_identity.cpp:239
-#: src/modules/options/optw_identity.cpp:953
 #: src/modules/options/optw_nickserv.cpp:128
 #: src/modules/options/optw_servers.cpp:372
 #: src/modules/options/optw_servers.cpp:982
+#: src/modules/options/optw_identity.cpp:96
+#: src/modules/options/optw_identity.cpp:239
+#: src/modules/options/optw_identity.cpp:953
+#: src/modules/options/dialog.cpp:244
 #: src/modules/options/container.cpp:80
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/modules/options/optw_notifier.cpp:57
-#: src/modules/options/optw_notifier.cpp:62
-#: src/modules/options/optw_windowlist.cpp:136
-#: src/modules/options/optw_windowlist.cpp:141
-#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
+#: src/modules/options/optw_notifier.cpp:57
+#: src/modules/options/optw_notifier.cpp:62
 #: src/modules/options/optw_userlist.cpp:144
 #: src/modules/options/optw_userlist.cpp:149
+#: src/modules/options/optw_windowlist.cpp:136
+#: src/modules/options/optw_windowlist.cpp:141
+#: src/modules/options/optw_input.cpp:59
+#: src/modules/options/optw_input.cpp:64
 msgid "Center"
 msgstr "Środek"
 
@@ -1776,11 +1785,13 @@ msgstr "Wyczyść listę"
 msgid "Close in tray"
 msgstr "Zamykaj do schowka"
 
-#: src/modules/options/dialog.cpp:231 src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:231
+#: src/modules/options/container.cpp:73
 msgid "Close this dialog, accepting all changes."
 msgstr "Zamyka okno dialogowe, akceptując wszystkie zmiany."
 
-#: src/modules/options/dialog.cpp:246 src/modules/options/container.cpp:81
+#: src/modules/options/dialog.cpp:246
+#: src/modules/options/container.cpp:81
 msgid "Close this dialog, discarding all changes."
 msgstr "Zamyka okno dialogowe, porzucając wszystkie zmiany."
 
@@ -1796,9 +1807,10 @@ msgstr "Linia poleceń w trybie przyjaznym użytkownikowi jako domyślnie"
 msgid "Commit all changes immediately."
 msgstr "Potwierdź wszystkie zmiany natychmiast."
 
+#: src/modules/options/optw_notify.cpp:41
 #: src/modules/options/optw_proxy.cpp:106
-#: src/modules/options/optw_notify.cpp:41 src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_connection.cpp:221
+#: src/modules/options/optw_lag.cpp:43
 msgid "Configuration"
 msgstr "Konfiguracja"
 
@@ -2233,17 +2245,17 @@ msgstr "Migaj oknem kiedy użytkownij staje się dostępny"
 msgid "Flood Protection"
 msgstr "Ochrona zasypu"
 
+#: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_notifier.cpp:38
 #: src/modules/options/optw_interfacelookglobal.cpp:178
 #: src/modules/options/optw_input.cpp:38
-#: src/modules/options/optw_topiclabel.cpp:36
 msgid "Font"
 msgstr "Czcionka"
 
-#: src/modules/options/optw_windowlist.cpp:85
-#: src/modules/options/optw_windowlist.cpp:245
 #: src/modules/options/optw_ircview.cpp:51
 #: src/modules/options/optw_userlist.cpp:52
+#: src/modules/options/optw_windowlist.cpp:85
+#: src/modules/options/optw_windowlist.cpp:245
 msgid "Font:"
 msgstr "Czcionka:"
 
@@ -2269,9 +2281,9 @@ msgstr "Wymuś język:"
 msgid "Foreground"
 msgstr "Pierwszy plan"
 
+#: src/modules/options/optw_topiclabel.cpp:37
 #: src/modules/options/optw_notifier.cpp:40
 #: src/modules/options/optw_input.cpp:40
-#: src/modules/options/optw_topiclabel.cpp:37
 msgid "Foreground color"
 msgstr "Kolor pierwszego planu"
 
@@ -2283,12 +2295,14 @@ msgstr "Pierwszy plan:"
 msgid "Gender:"
 msgstr "Płeć:"
 
-#: src/modules/options/optw_messages.cpp:71
 #: src/modules/options/optw_servers.cpp:242
-#: src/modules/options/optw_channel.h:52 src/modules/options/optw_dcc.h:45
-#: src/modules/options/optw_dcc.h:88 src/modules/options/optw_irc.h:43
-#: src/modules/options/optw_identity.h:153
+#: src/modules/options/optw_messages.cpp:71
+#: src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_dcc.h:88
+#: src/modules/options/optw_irc.h:43
 #: src/modules/options/optw_interfacelookglobal.h:33
+#: src/modules/options/optw_channel.h:52
+#: src/modules/options/optw_identity.h:153
 msgid "General"
 msgstr "Ogólne"
 
@@ -2393,10 +2407,10 @@ msgstr "Wskazówka: Najedź kursorem myszki na pola aby uzyskać pomoc"
 msgid "Horizontal Alignment:"
 msgstr "Wyrównanie poziome:"
 
+#: src/modules/options/optw_ircview.cpp:56
 #: src/modules/options/optw_notifier.cpp:46
 #: src/modules/options/optw_windowlist.cpp:125
 #: src/modules/options/optw_input.cpp:48
-#: src/modules/options/optw_ircview.cpp:56
 msgid "Horizontal align:"
 msgstr "Wyrównanie poziome:"
 
@@ -2413,8 +2427,8 @@ msgstr "Jak dużo kliknięc potrzeba aby otworzyć hiperłącza?"
 msgid "ID3 tags' encoding"
 msgstr "Kodowanie tagów ID3"
 
-#: src/modules/options/optw_proxy.cpp:115
 #: src/modules/options/optw_servers.cpp:639
+#: src/modules/options/optw_proxy.cpp:115
 msgid "IP address:"
 msgstr "Adres IP:"
 
@@ -2510,7 +2524,8 @@ msgstr "Nieaktywny Wysoko-kontrastowy pierwszy plan (Podstawowy)"
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Nieaktywny Wysoko-kontrastowy piewszy plan (Drugorzędny)"
 
-#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33
+#: src/modules/options/optw_input.h:51
 msgid "Input"
 msgstr "Wejście"
 
@@ -2531,8 +2546,8 @@ msgstr "Niepoprawna reguła NickServ"
 msgid "Invalid Profile Rule"
 msgstr "Niepoprawna reguła profilu"
 
-#: src/modules/options/optw_identity.cpp:658
 #: src/modules/options/optw_servers.cpp:599
+#: src/modules/options/optw_identity.cpp:658
 msgid "Invisible (+i)"
 msgstr "Niewidzialny (+i)"
 
@@ -2593,11 +2608,11 @@ msgstr "Język"
 msgid "Languages:"
 msgstr "Języki:"
 
+#: src/modules/options/optw_ircview.cpp:65
 #: src/modules/options/optw_notifier.cpp:55
+#: src/modules/options/optw_userlist.cpp:142
 #: src/modules/options/optw_windowlist.cpp:134
 #: src/modules/options/optw_input.cpp:57
-#: src/modules/options/optw_ircview.cpp:65
-#: src/modules/options/optw_userlist.cpp:142
 msgid "Left"
 msgstr "Lewo"
 
@@ -2786,7 +2801,8 @@ msgid "Minimum alert level:"
 msgstr "Minimalny poziom alarmu:"
 
 #: src/modules/options/optw_channel.cpp:120
-msgid "Minimum delay between two requests:"
+#, fuzzy
+msgid "Minimum delay between two channel requests:"
 msgstr "Minimalne opóźnienie pomiędzy dwoma żądaniami:"
 
 #: src/modules/options/optw_tray.cpp:55
@@ -2934,9 +2950,9 @@ msgstr "Maska NickServ"
 msgid "NickServ Request Mask"
 msgstr "Maska żądania NickServ"
 
-#: src/modules/options/optw_identity.cpp:720
 #: src/modules/options/optw_nickserv.cpp:243
 #: src/modules/options/optw_servers.cpp:316
+#: src/modules/options/optw_identity.cpp:720
 msgid "Nickname"
 msgstr "Pseudonim"
 
@@ -2952,10 +2968,10 @@ msgstr "Siatka pseudonimu"
 msgid "Nickname alternatives"
 msgstr "Alternatywne pseudonimy"
 
-#: src/modules/options/optw_identity.cpp:304
-#: src/modules/options/optw_identity.cpp:917
 #: src/modules/options/optw_servers.cpp:159
 #: src/modules/options/optw_servers.cpp:562
+#: src/modules/options/optw_identity.cpp:304
+#: src/modules/options/optw_identity.cpp:917
 msgid "Nickname:"
 msgstr "Pseudonim:"
 
@@ -2976,11 +2992,11 @@ msgstr "Nie ma takiej klasy"
 msgid "Normal"
 msgstr "Normalna"
 
+#: src/modules/options/optw_userlist.cpp:55
+#: src/modules/options/optw_userlist.cpp:127
 #: src/modules/options/optw_windowlist.cpp:89
 #: src/modules/options/optw_windowlist.cpp:120
 #: src/modules/options/optw_windowlist.cpp:247
-#: src/modules/options/optw_userlist.cpp:55
-#: src/modules/options/optw_userlist.cpp:127
 msgid "Normal:"
 msgstr "Normalne:"
 
@@ -3009,16 +3025,16 @@ msgstr "Ogłoś ukończenie w powiadamiaczu"
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr ""
 
-#: src/modules/options/optw_identity.cpp:842
-#: src/modules/options/optw_identity.cpp:957
 #: src/modules/options/optw_nickserv.cpp:133
 #: src/modules/options/optw_nickserv.cpp:154
 #: src/modules/options/optw_servers.cpp:976
+#: src/modules/options/optw_identity.cpp:842
+#: src/modules/options/optw_identity.cpp:957
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/options/optw_textencoding.cpp:160
 #: src/modules/options/optw_identity.cpp:99
+#: src/modules/options/optw_textencoding.cpp:160
 msgid "Ok"
 msgstr "Ok"
 
@@ -3096,7 +3112,8 @@ msgstr "Otwórz okno rozmowy dla"
 msgid "Open all minimized"
 msgstr "Otwórz wszystkie zminimalizowane"
 
-#: src/modules/options/optw_dcc.cpp:315 src/modules/options/optw_dcc.cpp:352
+#: src/modules/options/optw_dcc.cpp:315
+#: src/modules/options/optw_dcc.cpp:352
 msgid "Open minimized when auto-accepted"
 msgstr "Otwórz zminimalizowany gdy automatycznie zaakceptowane"
 
@@ -3154,9 +3171,9 @@ msgstr "Przeźroczystośc okna nadrzędnego:"
 msgid "Part message:"
 msgstr "Wiadomość Part:"
 
-#: src/modules/options/optw_proxy.cpp:119
 #: src/modules/options/optw_servers.cpp:150
 #: src/modules/options/optw_servers.cpp:553
+#: src/modules/options/optw_proxy.cpp:119
 msgid "Password:"
 msgstr "Hasło:"
 
@@ -3226,8 +3243,8 @@ msgstr "Wyskakujący powiadamiacz kiedy użytkownik staje się dostępny"
 msgid "Popup the notifier window on highlighted messages"
 msgstr "Wyskakujące okno powiadamiacza na podświetlone wiadomości"
 
-#: src/modules/options/optw_proxy.cpp:113
 #: src/modules/options/optw_servers.cpp:625
+#: src/modules/options/optw_proxy.cpp:113
 msgid "Port:"
 msgstr "Port:"
 
@@ -3413,9 +3430,9 @@ msgstr "Us&uń serwer proxy"
 msgid "Re&move Server"
 msgstr "Us&uń serwer"
 
-#: src/modules/options/optw_identity.cpp:324
 #: src/modules/options/optw_servers.cpp:172
 #: src/modules/options/optw_servers.cpp:575
+#: src/modules/options/optw_identity.cpp:324
 msgid "Real name:"
 msgstr "Prawdziwe imię:"
 
@@ -3491,11 +3508,11 @@ msgstr "Żądaj brakujących awatarów"
 msgid "Restrict alert"
 msgstr "Ograniczony alarm"
 
+#: src/modules/options/optw_ircview.cpp:66
 #: src/modules/options/optw_notifier.cpp:56
+#: src/modules/options/optw_userlist.cpp:143
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_input.cpp:58
-#: src/modules/options/optw_ircview.cpp:66
-#: src/modules/options/optw_userlist.cpp:143
 msgid "Right"
 msgstr "Prawo"
 
@@ -3560,10 +3577,10 @@ msgstr "Silnik skryptów"
 msgid "Select message levels to notify"
 msgstr "Wybierz poziomy wiadomości do powiadomienia"
 
-#: src/modules/options/optw_windowlist.cpp:90
-#: src/modules/options/optw_windowlist.cpp:121
 #: src/modules/options/optw_userlist.cpp:56
 #: src/modules/options/optw_userlist.cpp:128
+#: src/modules/options/optw_windowlist.cpp:90
+#: src/modules/options/optw_windowlist.cpp:121
 msgid "Selected:"
 msgstr "Zaznaczony:"
 
@@ -3617,8 +3634,8 @@ msgstr "Maska serwera"
 msgid "Server notices"
 msgstr "Ogloszenia serwera"
 
-#: src/modules/options/optw_identity.cpp:659
 #: src/modules/options/optw_servers.cpp:603
+#: src/modules/options/optw_identity.cpp:659
 #, fuzzy
 msgid "Server notices (+s)"
 msgstr "Server notices (+s)"
@@ -3786,7 +3803,8 @@ msgstr "Sortuj okna według nazwy"
 msgid "Sound"
 msgstr "Dźwięk"
 
-#: src/modules/options/optw_sound.cpp:63 src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:63
+#: src/modules/options/optw_sound.h:47
 msgid "Sound System"
 msgstr "System dźwięku"
 
@@ -3819,7 +3837,8 @@ msgstr "Format ustawień lokalnych"
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_sound.cpp:74 src/modules/options/optw_sound.cpp:89
+#: src/modules/options/optw_sound.cpp:74
+#: src/modules/options/optw_sound.cpp:89
 msgid "Test"
 msgstr "Test"
 
@@ -4038,15 +4057,16 @@ msgid ""
 "display the CTRL+I escape sequences and eventually the emoticons."
 msgstr ""
 
-#: src/modules/options/optw_notifier.cpp:54
-#: src/modules/options/optw_notifier.cpp:59
-#: src/modules/options/optw_windowlist.cpp:133
-#: src/modules/options/optw_windowlist.cpp:138
-#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
+#: src/modules/options/optw_notifier.cpp:54
+#: src/modules/options/optw_notifier.cpp:59
 #: src/modules/options/optw_userlist.cpp:141
 #: src/modules/options/optw_userlist.cpp:146
+#: src/modules/options/optw_windowlist.cpp:133
+#: src/modules/options/optw_windowlist.cpp:138
+#: src/modules/options/optw_input.cpp:56
+#: src/modules/options/optw_input.cpp:61
 msgid "Tile"
 msgstr "Sąsiadująco"
 
@@ -4079,11 +4099,11 @@ msgstr "&Narzędzia"
 msgid "Tools"
 msgstr "Narzędzia"
 
+#: src/modules/options/optw_ircview.cpp:70
 #: src/modules/options/optw_notifier.cpp:60
+#: src/modules/options/optw_userlist.cpp:147
 #: src/modules/options/optw_windowlist.cpp:139
 #: src/modules/options/optw_input.cpp:62
-#: src/modules/options/optw_ircview.cpp:70
-#: src/modules/options/optw_userlist.cpp:147
 msgid "Top"
 msgstr "Góra"
 
@@ -4163,15 +4183,15 @@ msgstr ""
 msgid "Use \"smart\" notify list manager"
 msgstr "Użycie \"inteligentnego\" menedżera listy powiadomień"
 
-#: src/modules/options/optw_proxy.cpp:129
 #: src/modules/options/optw_servers.cpp:690
+#: src/modules/options/optw_proxy.cpp:129
 msgid "Use IPv6 protocol"
 msgstr "Użyj protokołu IPv6"
 
-#: src/modules/options/optw_sound.cpp:101
-#: src/modules/options/optw_sound.cpp:125
 #: src/modules/options/optw_textencoding.cpp:50
 #: src/modules/options/optw_textencoding.cpp:58
+#: src/modules/options/optw_sound.cpp:101
+#: src/modules/options/optw_sound.cpp:125
 msgid "Use Language Encoding"
 msgstr "Użyj kodowania języka"
 
@@ -4325,8 +4345,8 @@ msgstr "Użyj obejścia problemu dla zapory ogniowej"
 msgid "Use zsh-like nick completion"
 msgstr "Użyj stylu dokończeń pseudonimów jak w zsh"
 
-#: src/modules/options/optw_identity.cpp:657
 #: src/modules/options/optw_servers.cpp:588
+#: src/modules/options/optw_identity.cpp:657
 msgid "User Mode"
 msgstr "Tryb użytkownika"
 
@@ -4350,11 +4370,11 @@ msgstr "Lista użytkowników"
 msgid "Username"
 msgstr "Nazwa użytkownika:"
 
-#: src/modules/options/optw_proxy.cpp:117
-#: src/modules/options/optw_identity.cpp:317
-#: src/modules/options/optw_identity.cpp:933
 #: src/modules/options/optw_servers.cpp:139
 #: src/modules/options/optw_servers.cpp:541
+#: src/modules/options/optw_identity.cpp:317
+#: src/modules/options/optw_identity.cpp:933
+#: src/modules/options/optw_proxy.cpp:117
 msgid "Username:"
 msgstr "Użytkownik:"
 
@@ -4374,10 +4394,10 @@ msgstr "Gadatliwość i wyjście"
 msgid "Vertical Alignment:"
 msgstr "Wyrównanie pionowe:"
 
+#: src/modules/options/optw_ircview.cpp:60
 #: src/modules/options/optw_notifier.cpp:50
 #: src/modules/options/optw_windowlist.cpp:129
 #: src/modules/options/optw_input.cpp:52
-#: src/modules/options/optw_ircview.cpp:60
 msgid "Vertical align:"
 msgstr "Wyrównanie pionowe:"
 
@@ -4393,8 +4413,8 @@ msgstr "Głos:"
 msgid "Volume slider controls PCM, not Master"
 msgstr "Suwak głośności kontroluje PCM, nie Główną"
 
-#: src/modules/options/optw_identity.cpp:660
 #: src/modules/options/optw_servers.cpp:607
+#: src/modules/options/optw_identity.cpp:660
 #, fuzzy
 msgid "Wallops (+w)"
 msgstr "Wallops (+w)"
@@ -4487,7 +4507,8 @@ msgstr "[Nieznany Typ Mediów]"
 msgid "authentication,identify"
 msgstr "uwierzytelnianie,tożsamość"
 
-#: src/modules/options/optw_dcc.cpp:243 src/modules/options/optw_dcc.cpp:249
+#: src/modules/options/optw_dcc.cpp:243
+#: src/modules/options/optw_dcc.cpp:249
 msgid "bytes/sec"
 msgstr "bajtów/sek"
 
@@ -4579,11 +4600,13 @@ msgid "theme,colors,messages,output"
 msgstr ""
 
 #: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
+#: src/modules/options/optw_ircview.h:37
+#: src/modules/options/optw_ircview.h:51
 msgid "theme,colors,output"
 msgstr "motyw,kolory,wyjście"
 
-#: src/modules/options/optw_input.h:34 src/modules/options/optw_notifier.h:34
+#: src/modules/options/optw_notifier.h:34
+#: src/modules/options/optw_input.h:34
 msgid "theme,colors,text"
 msgstr "motyw,kolory,tekst"
 
@@ -4975,6 +4998,13 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "<b>Store configuration in folder:</b>"
 #~ msgstr "Zapi&sz ustawienia"
+
+#~ msgid ""
+#~ "<center>Minimum value: <b>0 secs</b><br>Maximum value: <b>60 secs</b></"
+#~ "center>"
+#~ msgstr ""
+#~ "<center>Minimalna wartość: <b>0 secs</b><br>Maksymalna wartość: <b>60 "
+#~ "secs</b></center>"
 
 #, fuzzy
 #~ msgid "<p>Theme: %1</p>"
