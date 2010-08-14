@@ -44,10 +44,10 @@
 	class KVIRC_API KviCryptSessionInfo : public KviHeapObject
 	{
 	public:
-		KviCryptEngine * pEngine;
-		QString          szEngineName;
-		bool             bDoEncrypt;
-		bool             bDoDecrypt;
+		KviCryptEngine * m_pEngine;
+		QString          m_szEngineName;
+		bool             m_bDoEncrypt;
+		bool             m_bDoDecrypt;
 	};
 
 	class KVIRC_API KviEngineListBoxItem : public KviTalListWidgetText
@@ -68,7 +68,7 @@
 	{
 		Q_OBJECT
 	public:
-		KviCryptController(QWidget * pParent, KviWindowToolPageButton * pButton, const char * name,KviWindow * pWnd, KviCryptSessionInfo * pInfo);
+		KviCryptController(QWidget * pParent, KviWindowToolPageButton * pButton, KviWindow * pWnd, KviCryptSessionInfo * pInfo);
 		~KviCryptController();
 	protected:
 		KviWindow            * m_pWindow;

@@ -305,13 +305,13 @@ void KviDccChat::ownMessage(const QString &text, bool bUserFeedback)
 #ifdef COMPILE_CRYPT_SUPPORT
 	if(cryptSessionInfo())
 	{
-		if(cryptSessionInfo()->bDoEncrypt)
+		if(cryptSessionInfo()->m_bDoEncrypt)
 		{
 			if(*d != KVI_TEXT_CRYPTESCAPE)
 			{
 				KviStr encrypted;
-				cryptSessionInfo()->pEngine->setMaxEncryptLen(-1);
-				switch(cryptSessionInfo()->pEngine->encrypt(d,encrypted))
+				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(-1);
+				switch(cryptSessionInfo()->m_pEngine->encrypt(d,encrypted))
 				{
 					case KviCryptEngine::Encrypted:
 					{
@@ -338,7 +338,7 @@ void KviDccChat::ownMessage(const QString &text, bool bUserFeedback)
 					break;
 					default: // also case KviCryptEngine::EncryptError
 					{
-						QString szErr = cryptSessionInfo()->pEngine->lastError();
+						QString szErr = cryptSessionInfo()->m_pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
 							__tr2qs_ctx("The crypto engine was not able to encrypt the current message (%Q): %Q, no data was sent to the remote end","dcc"),
 							&text,&szErr);
@@ -450,10 +450,10 @@ bool KviDccChat::event(QEvent *e)
 #ifdef COMPILE_CRYPT_SUPPORT
 					if(KviCryptSessionInfo * cinf = cryptSessionInfo())
 					{
-						if(cinf->bDoDecrypt)
+						if(cinf->m_bDoDecrypt)
 						{
 							KviStr decryptedStuff;
-							switch(cinf->pEngine->decrypt(d.ptr(),decryptedStuff))
+							switch(cinf->m_pEngine->decrypt(d.ptr(),decryptedStuff))
 							{
 								case KviCryptEngine::DecryptOkWasEncrypted:
 								case KviCryptEngine::DecryptOkWasEncoded:
@@ -470,7 +470,7 @@ bool KviDccChat::event(QEvent *e)
 
 								default: // also case KviCryptEngine::DecryptError
 								{
-									QString szErr = cinf->pEngine->lastError();
+									QString szErr = cinf->m_pEngine->lastError();
 									output(KVI_OUT_SYSTEMERROR,
 										__tr2qs_ctx("The following message appears to be encrypted, but the crypto engine failed to decode it: %Q","dcc"),
 										&szErr);

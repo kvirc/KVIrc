@@ -718,70 +718,70 @@ static bool rijndael_module_init(KviModule * m)
 	// FIXME: Maybe convert this repeated code to a function eh ?
 
 	KviCryptEngineDescription * d = new KviCryptEngineDescription;
-	d->szName = "Rijndael128Hex";
-	d->szAuthor = "Szymon Stefanek";
-	d->szDescription = QString(szFormat).arg(__tr2qs("hexadecimal")).arg(128);
-	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
+	d->m_szName = "Rijndael128Hex";
+	d->m_szAuthor = "Szymon Stefanek";
+	d->m_szDescription = QString(szFormat).arg(__tr2qs("hexadecimal")).arg(128);
+	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
-	d->allocFunc = allocRijndael128HexEngine;
-	d->deallocFunc = deallocRijndaelCryptEngine;
+	d->m_allocFunc = allocRijndael128HexEngine;
+	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
 
 	d = new KviCryptEngineDescription;
-	d->szName = "Rijndael192Hex";
-	d->szAuthor = "Szymon Stefanek";
-	d->szDescription = QString(szFormat).arg(__tr2qs("hexadecimal")).arg(192);
-	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
+	d->m_szName = "Rijndael192Hex";
+	d->m_szAuthor = "Szymon Stefanek";
+	d->m_szDescription = QString(szFormat).arg(__tr2qs("hexadecimal")).arg(192);
+	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
-	d->allocFunc = allocRijndael192HexEngine;
-	d->deallocFunc = deallocRijndaelCryptEngine;
+	d->m_allocFunc = allocRijndael192HexEngine;
+	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
 
 	d = new KviCryptEngineDescription;
-	d->szName = "Rijndael256Hex";
-	d->szAuthor = "Szymon Stefanek";
-	d->szDescription = QString(szFormat).arg(__tr2qs("hexadecimal")).arg(256);
-	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
+	d->m_szName = "Rijndael256Hex";
+	d->m_szAuthor = "Szymon Stefanek";
+	d->m_szDescription = QString(szFormat).arg(__tr2qs("hexadecimal")).arg(256);
+	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
-	d->allocFunc = allocRijndael256HexEngine;
-	d->deallocFunc = deallocRijndaelCryptEngine;
+	d->m_allocFunc = allocRijndael256HexEngine;
+	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
 
 	d = new KviCryptEngineDescription;
-	d->szName = "Rijndael128Base64";
-	d->szAuthor = "Szymon Stefanek";
-	d->szDescription = QString(szFormat).arg(__tr2qs("base64")).arg(128);
-	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
+	d->m_szName = "Rijndael128Base64";
+	d->m_szAuthor = "Szymon Stefanek";
+	d->m_szDescription = QString(szFormat).arg(__tr2qs("base64")).arg(128);
+	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
-	d->allocFunc = allocRijndael128Base64Engine;
-	d->deallocFunc = deallocRijndaelCryptEngine;
+	d->m_allocFunc = allocRijndael128Base64Engine;
+	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
 
 	d = new KviCryptEngineDescription;
-	d->szName = "Rijndael192Base64";
-	d->szAuthor = "Szymon Stefanek";
-	d->szDescription = QString(szFormat).arg(__tr2qs("base64")).arg(192);
-	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
+	d->m_szName = "Rijndael192Base64";
+	d->m_szAuthor = "Szymon Stefanek";
+	d->m_szDescription = QString(szFormat).arg(__tr2qs("base64")).arg(192);
+	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
-	d->allocFunc = allocRijndael192Base64Engine;
-	d->deallocFunc = deallocRijndaelCryptEngine;
+	d->m_allocFunc = allocRijndael192Base64Engine;
+	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
 
 	d = new KviCryptEngineDescription;
-	d->szName = "Rijndael256Base64";
-	d->szAuthor = "Szymon Stefanek";
-	d->szDescription = QString(szFormat).arg(__tr2qs("base64")).arg(256);
-	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
+	d->m_szName = "Rijndael256Base64";
+	d->m_szAuthor = "Szymon Stefanek";
+	d->m_szDescription = QString(szFormat).arg(__tr2qs("base64")).arg(256);
+	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
-	d->allocFunc = allocRijndael256Base64Engine;
-	d->deallocFunc = deallocRijndaelCryptEngine;
+	d->m_allocFunc = allocRijndael256Base64Engine;
+	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
 
 
 	d = new KviCryptEngineDescription;
-	d->szName = "Mircryption";
-	d->szAuthor = "Szymon Stefanek";
-	d->szDescription = __tr2qs("Popular cryptographic engine based on the\n" \
+	d->m_szName = "Mircryption";
+	d->m_szAuthor = "Szymon Stefanek";
+	d->m_szDescription = __tr2qs("Popular cryptographic engine based on the\n" \
 		"old Blowfish encryption algorithm.\n" \
 		"The text is first encrypted with Blowfish \n" \
 		"and then converted to base64 notation.\n" \
@@ -793,10 +793,10 @@ static bool rijndael_module_init(KviModule * m)
 		"This engine works in ECB mode by default:\n" \
 		"if you want to use CBC mode you must prefix\n" \
 		"your key(s) with \"cbc:\".\n");
-	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
+	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
-	d->allocFunc = allocMircryptionEngine;
-	d->deallocFunc = deallocRijndaelCryptEngine;
+	d->m_allocFunc = allocMircryptionEngine;
+	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
 
 

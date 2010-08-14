@@ -1122,13 +1122,13 @@ void KviChannel::ownMessage(const QString & szBuffer, bool bUserFeedback)
 #ifdef COMPILE_CRYPT_SUPPORT
 	if(cryptSessionInfo())
 	{
-		if(cryptSessionInfo()->bDoEncrypt)
+		if(cryptSessionInfo()->m_bDoEncrypt)
 		{
 			if(*d != KVI_TEXT_CRYPTESCAPE)
 			{
 				KviStr encrypted;
-				cryptSessionInfo()->pEngine->setMaxEncryptLen(maxMsgLen);
-				switch(cryptSessionInfo()->pEngine->encrypt(d,encrypted))
+				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(maxMsgLen);
+				switch(cryptSessionInfo()->m_pEngine->encrypt(d,encrypted))
 				{
 					case KviCryptEngine::Encrypted:
 						if(!connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),encrypted.ptr()))
@@ -1152,7 +1152,7 @@ void KviChannel::ownMessage(const QString & szBuffer, bool bUserFeedback)
 					break;
 					default: // also case KviCryptEngine::EncryptError
 					{
-						QString szEngineError = cryptSessionInfo()->pEngine->lastError();
+						QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
 							__tr2qs("The crypto engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"),
 							&szBuffer,&szEngineError);

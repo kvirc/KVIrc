@@ -86,21 +86,21 @@ KviRijndaelEngine::~KviRijndaelEngine()
 	m_szDecKey.clear();
 }
 
-bool KviRijndaelEngine::init(const char *encKey, int encKeyLen, const char *decKey, int decKeyLen)
+bool KviRijndaelEngine::init(const char * pcEncKey, int iEncKeyLen, const char * pcDecKey, int iDecKeyLen)
 {
-	if(encKey && (encKeyLen > 0))
+	if(pcEncKey && (iEncKeyLen > 0))
 	{
-		if(!(decKey && (decKeyLen > 0)))
+		if(!(pcDecKey && (iDecKeyLen > 0)))
 		{
-			decKey = encKey;
-			decKeyLen = encKeyLen;
+			pcDecKey = pcEncKey;
+			iDecKeyLen = iEncKeyLen;
 		} // else all
 	} else {
 		// no encrypt key specified...
-		if(decKey && decKeyLen)
+		if(pcDecKey && iDecKeyLen)
 		{
-			encKey = decKey;
-			encKeyLen = decKeyLen;
+			pcEncKey = pcDecKey;
+			iEncKeyLen = iDecKeyLen;
 		} else {
 			// both keys missing
 			setLastError(__tr2qs("Missing encryption and decryption key: at least one is needed"));
@@ -108,19 +108,19 @@ bool KviRijndaelEngine::init(const char *encKey, int encKeyLen, const char *decK
 		}
 	}
 
-	m_szEncKey = encKey;
-	m_szDecKey = decKey;
+	m_szEncKey = pcEncKey;
+	m_szDecKey = pcDecKey;
 	
-	if(encKeyLen > getKeyLen())
+	if(iEncKeyLen > getKeyLen())
 		m_szEncKey = m_szEncKey.substr(0,getKeyLen());
 	
-	if(encKeyLen < getKeyLen())
+	if(iEncKeyLen < getKeyLen())
 		m_szEncKey.resize(getKeyLen());
 	
-	if(decKeyLen > getKeyLen())
+	if(iDecKeyLen > getKeyLen())
 		m_szDecKey = m_szDecKey.substr(0,getKeyLen());
 	
-	if(decKeyLen < getKeyLen())
+	if(iDecKeyLen < getKeyLen())
 		m_szDecKey.resize(getKeyLen());
 	
 	if(m_szEncKey.empty() || m_szDecKey.empty())
@@ -129,19 +129,19 @@ bool KviRijndaelEngine::init(const char *encKey, int encKeyLen, const char *decK
 		return true;
 }
 
-KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,KviStr &outBuffer)
+KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * pcPlainText, KviStr & szOutBuffer)
 {
-	std::string cipher;
+	std::string szCipher;
 	// byte is a typedef by Crypto++ for unsigned char.
 	byte key[m_szEncKey.size()],iv[CryptoPP::AES::BLOCKSIZE];
 	
-	for(unsigned int i=0;i<m_szEncKey.size();i++)
-		key[i] = m_szEncKey[i];
+	for(unsigned int u=0;u<m_szEncKey.size();u++)
+		key[u] = m_szEncKey[u];
 
 	// The following is absolute shit, but the module we replace does it like
 	// that, so we hardcode the IV to 0 in the required length...
-	for(unsigned int i=0;i<sizeof(iv);i++)
-		iv[i] = 0x00;
+	for(unsigned int u=0;u<sizeof(iv);u++)
+		iv[u] = 0x00;
 	
 	// We hardcode CBC mode here, as the embedded code is always called in
 	// CBC mode too (see above, line 148), no need to use the external
@@ -154,19 +154,19 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
 		
 		if(getEncoding() == KVI_RIJNDAEL_HEX)
 		{
-			CryptoPP::StringSource(static_cast<std::string>(plainText), true,
+			CryptoPP::StringSource(static_cast<std::string>(pcPlainText), true,
 					new CryptoPP::StreamTransformationFilter(
 						encryptor, new CryptoPP::HexEncoder(
-						new CryptoPP::StringSink( cipher )
+						new CryptoPP::StringSink( szCipher )
 						), CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING
 					)
 				);
 		} else if(getEncoding() == KVI_RIJNDAEL_B64)
 		{
-			CryptoPP::StringSource(static_cast<std::string>(plainText), true,
+			CryptoPP::StringSource(static_cast<std::string>(pcPlainText), true,
 					new CryptoPP::StreamTransformationFilter(
 						encryptor, new CryptoPP::Base64Encoder(
-						new CryptoPP::StringSink( cipher )
+						new CryptoPP::StringSink( szCipher )
 						), CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING
 					)
 				);
@@ -181,28 +181,28 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
 		return KviCryptEngine::EncryptError;
 	}
 	
-	outBuffer = cipher.c_str();
-	outBuffer.prepend(KVI_TEXT_CRYPTESCAPE);
+	szOutBuffer = szCipher.c_str();
+	szOutBuffer.prepend(KVI_TEXT_CRYPTESCAPE);
 	return KviCryptEngine::Encrypted;
 }
 
-KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer,KviStr &plainText)
+KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * pcInBuffer, KviStr & szPlainText)
 {
-	std::string plain;
+	std::string szPlain;
 	byte key[m_szDecKey.size()],iv[CryptoPP::AES::BLOCKSIZE];
-	std::string szIn = inBuffer;
+	std::string szIn = pcInBuffer;
 	
-	for(unsigned int i=0;i<m_szDecKey.size();i++)
-		key[i] = m_szDecKey[i];
+	for(unsigned int u=0;u<m_szDecKey.size();u++)
+		key[u] = m_szDecKey[u];
 	
 	// The following is absolute shit, but the module we replace does it like
 	// that, so we hardcode the IV to 0 in the required length...
-	for(unsigned int i=0;i<sizeof(iv);i++)
-		iv[i] = 0x00;
+	for(unsigned int u=0;u<sizeof(iv);u++)
+		iv[u] = 0x00;
 
 	if(static_cast<int>(szIn[0]) != KVI_TEXT_CRYPTESCAPE)
 	{
-		plainText = inBuffer;
+		szPlainText = pcInBuffer;
 		return KviCryptEngine::DecryptOkWasPlainText;
 	}
 
@@ -210,7 +210,7 @@ KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer,K
 	
 	if(szIn.empty())
 	{
-		plainText = inBuffer;
+		szPlainText = pcInBuffer;
 		return KviCryptEngine::DecryptOkWasPlainText; // empty buffer
 	}
 	
@@ -222,7 +222,7 @@ KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer,K
 			CryptoPP::StringSource(szIn, true,
 					new CryptoPP::HexDecoder(
 						new CryptoPP::StreamTransformationFilter(
-						decryptor, new CryptoPP::StringSink( plain ),
+						decryptor, new CryptoPP::StringSink( szPlain ),
 						CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
 					)
 				);
@@ -231,7 +231,7 @@ KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer,K
 			CryptoPP::StringSource(szIn, true,
 					new CryptoPP::Base64Decoder(
 						new CryptoPP::StreamTransformationFilter(
-						decryptor, new CryptoPP::StringSink( plain ),
+						decryptor, new CryptoPP::StringSink( szPlain ),
 						CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
 					)
 				);
@@ -246,7 +246,7 @@ KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer,K
 		return KviCryptEngine::DecryptError;
 	}
 
-	plainText = plain.c_str();
+	szPlainText = szPlain.c_str();
 	return KviCryptEngine::DecryptOkWasEncrypted;
 }
 
@@ -303,21 +303,21 @@ KviMircryptionEngine::~KviMircryptionEngine()
 	m_szDecKey.clear();
 }
 
-bool KviMircryptionEngine::init(const char * encKey,int encKeyLen,const char * decKey,int decKeyLen)
+bool KviMircryptionEngine::init(const char * pcEncKey, int iEncKeyLen, const char * pcDecKey, int iDecKeyLen)
 {
-	if(encKey && (encKeyLen > 0))
+	if(pcEncKey && (iEncKeyLen > 0))
 	{
-		if(!(decKey && (decKeyLen > 0)))
+		if(!(pcDecKey && (iDecKeyLen > 0)))
 		{
-			decKey = encKey;
-			decKeyLen = encKeyLen;
+			pcDecKey = pcEncKey;
+			iDecKeyLen = iEncKeyLen;
 		} // else all
 	} else {
 		// no encrypt key specified...
-		if(decKey && decKeyLen)
+		if(pcDecKey && iDecKeyLen)
 		{
-			encKey = decKey;
-			encKeyLen = decKeyLen;
+			pcEncKey = pcDecKey;
+			iEncKeyLen = iDecKeyLen;
 		} else {
 			// both keys missing
 			setLastError(__tr2qs("Missing encryption and decryption key: at least one is needed"));
@@ -325,8 +325,8 @@ bool KviMircryptionEngine::init(const char * encKey,int encKeyLen,const char * d
 		}
 	}
 	
-	m_szEncKey = std::string(encKey,encKeyLen);
-	m_szDecKey = std::string(decKey,decKeyLen);
+	m_szEncKey = std::string(pcEncKey,iEncKeyLen);
+	m_szDecKey = std::string(pcDecKey,iDecKeyLen);
 	
 	if((m_szEncKey.find("cbc:",0,4) != std::string::npos) && (m_szEncKey.size() > 4))
 	{
@@ -347,25 +347,25 @@ bool KviMircryptionEngine::init(const char * encKey,int encKeyLen,const char * d
 	return true;
 }
 
-KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * plainText,KviStr &outBuffer)
+KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * pcPlainText, KviStr & szOutBuffer)
 {
-	std::string cipher;
+	std::string szCipher;
 	byte key[m_szEncKey.size()], iv[CryptoPP::Blowfish::BLOCKSIZE];
 	
-	for(unsigned int i=0;i<m_szEncKey.size();i++)
-		key[i] = m_szEncKey.at(i);
+	for(unsigned int u=0;u<m_szEncKey.size();u++)
+		key[u] = m_szEncKey.at(u);
 	
 	if(m_bEncryptCBC)
 	{
 		try {
-			for(unsigned int i=0;i<sizeof(iv);i++)
-				iv[i] = 0x00;
+			for(unsigned int u=0;u<sizeof(iv);u++)
+				iv[u] = 0x00;
 
 			CryptoPP::CBC_Mode< CryptoPP::Blowfish >::Encryption encryptor( key, sizeof(key), iv );
-			CryptoPP::StringSource(static_cast<std::string>(plainText), true,
+			CryptoPP::StringSource(static_cast<std::string>(pcPlainText), true,
 					new CryptoPP::StreamTransformationFilter(
 						encryptor, new CryptoPP::Base64Encoder(
-						new CryptoPP::StringSink( cipher )
+						new CryptoPP::StringSink( szCipher )
 						), CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING
 					)
 				);
@@ -378,10 +378,10 @@ KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * plainTe
 	} else {
 		try {
 			CryptoPP::ECB_Mode< CryptoPP::Blowfish >::Encryption encryptor( key, sizeof(key) );
-			CryptoPP::StringSource(static_cast<std::string>(plainText), true,
+			CryptoPP::StringSource(static_cast<std::string>(pcPlainText), true,
 					new CryptoPP::StreamTransformationFilter(
 						encryptor, new CryptoPP::Base64Encoder(
-						new CryptoPP::StringSink( cipher )
+						new CryptoPP::StringSink( szCipher )
 						), CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING
 					)
 				);
@@ -393,16 +393,16 @@ KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * plainTe
 		}
 	}
 	
-	outBuffer = "+OK ";
-	outBuffer.append(cipher.c_str());
+	szOutBuffer = "+OK ";
+	szOutBuffer.append(szCipher.c_str());
 	
 	return KviCryptEngine::Encrypted;
 }
 
-KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffer,KviStr &plainText)
+KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * pcInBuffer, KviStr & szPlainText)
 {
-	std::string plain;
-	std::string szIn = inBuffer;
+	std::string szPlain;
+	std::string szIn = pcInBuffer;
 	byte key[m_szDecKey.size()], iv[CryptoPP::Blowfish::BLOCKSIZE];
 	
 	// various old versions
@@ -414,25 +414,25 @@ KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffe
 		// some servers seem to strip the + at the beginning...
 		szIn = szIn.substr(3);
 	} else {
-		plainText = szIn.c_str();
+		szPlainText = szIn.c_str();
 		return KviCryptEngine::DecryptOkWasPlainText;
 	}
 	
-	for(unsigned int i=0;i<m_szDecKey.size();i++)
-		key[i] = m_szDecKey.at(i);
+	for(unsigned int u=0;u<m_szDecKey.size();u++)
+		key[u] = m_szDecKey.at(u);
 	
 	if(m_bDecryptCBC)
 	{
 		try {
-			for(unsigned int i=0;i<sizeof(iv);i++)
-				iv[i] = 0x00;
+			for(unsigned int u=0;u<sizeof(iv);u++)
+				iv[u] = 0x00;
 
 			CryptoPP::CBC_Mode< CryptoPP::Blowfish >::Decryption decryptor( key, sizeof(key), iv );
 			CryptoPP::StringSource(szIn, true,
 					new CryptoPP::Base64Decoder(
 						new CryptoPP::StreamTransformationFilter(
 						decryptor,
-						new CryptoPP::StringSink( plain ),
+						new CryptoPP::StringSink( szPlain ),
 						CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING
 						)
 					)
@@ -449,7 +449,7 @@ KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffe
 			CryptoPP::StringSource(szIn, true,
 					new CryptoPP::Base64Decoder(
 						new CryptoPP::StreamTransformationFilter(
-						decryptor, new CryptoPP::StringSink( plain ),
+						decryptor, new CryptoPP::StringSink( szPlain ),
 						CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
 					)
 				);
@@ -461,7 +461,7 @@ KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffe
 		}
 	}
 	
-	plainText = plain.c_str();
+	szPlainText = szPlain.c_str();
 	return KviCryptEngine::DecryptOkWasEncrypted;
 }
 
@@ -581,7 +581,7 @@ static bool rijndael_module_init(KviModule * m)
 	return true;
 }
 
-static bool rijndael_module_cleanup(KviModule *m)
+static bool rijndael_module_cleanup(KviModule * m)
 {
 	while(g_pEngineList->first())
 		delete g_pEngineList->first();

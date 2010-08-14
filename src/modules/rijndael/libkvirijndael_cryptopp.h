@@ -54,9 +54,9 @@ private:
 	std::string m_szEncKey;
 	std::string m_szDecKey;
 public:
-	virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
-	virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviStr &outBuffer);
-	virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviStr &plainText);
+	virtual bool init(const char * pcEncKey, int iEncKeyLen, const char * pcDecKey, int iDecKeyLen);
+	virtual KviCryptEngine::EncryptResult encrypt(const char * pcPlainText, KviStr & szOutBuffer);
+	virtual KviCryptEngine::DecryptResult decrypt(const char * pcInBuffer, KviStr & szPlainText);
 };
 
 class KviRijndael128HexEngine : public KviRijndaelEngine
@@ -133,9 +133,9 @@ public:
 	KviMircryptionEngine();
 	~KviMircryptionEngine();
 	
-	virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
-	virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviStr &outBuffer);
-	virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviStr &plainText);
+	virtual bool init(const char * pcEncKey, int iEncKeyLen, const char * pcDecKey, int iDecKeyLen);
+	virtual KviCryptEngine::EncryptResult encrypt(const char * pcPlainText, KviStr & szOutBuffer);
+	virtual KviCryptEngine::DecryptResult decrypt(const char * pcInBuffer, KviStr & szPlainText);
 private:
 	std::string m_szEncKey;
 	std::string m_szDecKey;

@@ -455,7 +455,7 @@ void KviWindow::toggleCryptController()
 	} else {
 		if(m_pSplitter && m_pInput)
 		{
-			m_pCryptController = new KviCryptController(m_pSplitter,m_pCryptControllerButton,"crypt_controller",this,m_pCryptSessionInfo);
+			m_pCryptController = new KviCryptController(m_pSplitter,m_pCryptControllerButton,this,m_pCryptSessionInfo);
 			connect(m_pCryptController,SIGNAL(done()),this,SLOT(cryptControllerFinished()));
 			//setFocusHandlerNoClass(m_pInput,m_pCryptController,"QLineEdit"); //link it!
 			m_pCryptController->show();
@@ -476,7 +476,7 @@ void KviWindow::setCryptSessionInfo(KviCryptSessionInfo * inf)
 	m_pCryptSessionInfo = inf;
 	if(m_pCryptSessionInfo)
 	{
-		connect(m_pCryptSessionInfo->pEngine,SIGNAL(destroyed()),this,SLOT(cryptSessionInfoDestroyed()));
+		connect(m_pCryptSessionInfo->m_pEngine,SIGNAL(destroyed()),this,SLOT(cryptSessionInfoDestroyed()));
 	}
 	if(m_pCryptControllerButton)
 	{
@@ -505,7 +505,7 @@ void KviWindow::cryptSessionInfoDestroyed()
 {
 #ifdef COMPILE_CRYPT_SUPPORT
 	output(KVI_OUT_SYSTEMERROR,__tr2qs("Ops...I've accidentally lost the crypting engine..."));
-	m_pCryptSessionInfo->pEngine = 0;
+	m_pCryptSessionInfo->m_pEngine = 0;
 	delete m_pCryptSessionInfo;
 	m_pCryptSessionInfo = 0;
 #endif

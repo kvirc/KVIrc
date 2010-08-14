@@ -45,22 +45,22 @@
 	extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 	extern KVIRC_API KviModuleManager      * g_pModuleManager;
 
-	KviEngineListBoxItem::KviEngineListBoxItem(KviTalListWidget * lb,KviCryptEngineDescription * d,const char * modName)
-	: KviTalListWidgetText(lb,d->szName)
+	KviEngineListBoxItem::KviEngineListBoxItem(KviTalListWidget * pList, KviCryptEngineDescription * pDesc, const char * pcModName)
+	: KviTalListWidgetText(pList,pDesc->m_szName)
 	{
-		m_szName = d->szName;
-		m_szAuthor = d->szAuthor;
-		m_szDescription = d->szDescription;
-		m_iFlags = d->iFlags;
-		m_szModuleName = modName;
-		setText(d->szName);
+		m_szName = pDesc->m_szName;
+		m_szAuthor = pDesc->m_szAuthor;
+		m_szDescription = pDesc->m_szDescription;
+		m_iFlags = pDesc->m_iFlags;
+		m_szModuleName = pcModName;
+		setText(pDesc->m_szName);
 	}
 
 	KviEngineListBoxItem::~KviEngineListBoxItem()
 	{
 	}
 
-	KviCryptController::KviCryptController(QWidget * pParent, KviWindowToolPageButton * pButton, const char *,KviWindow * pWnd, KviCryptSessionInfo * pInfo)
+	KviCryptController::KviCryptController(QWidget * pParent, KviWindowToolPageButton * pButton, KviWindow * pWnd, KviCryptSessionInfo * pInfo)
 	: KviWindowToolWidget(pParent,pButton)
 	{
 		// Load the known encryption modules
@@ -70,66 +70,66 @@
 
 		setFocusPolicy(Qt::ClickFocus);
 
-		QGridLayout *g = new QGridLayout(this);
+		QGridLayout * pLayout = new QGridLayout(this);
 
-		QLabel *l = new QLabel(this);
-		l->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LOCKED)));
-		g->addWidget(l,0,0);
-		l = new QLabel(__tr2qs("Cryptography/text transformation"),this);
-		g->addWidget(l,0,1,1,3);
+		QLabel * pLabel = new QLabel(this);
+		pLabel->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LOCKED)));
+		pLayout->addWidget(pLabel,0,0);
+		pLabel = new QLabel(__tr2qs("Cryptography/text transformation"),this);
+		pLayout->addWidget(pLabel,0,1,1,3);
 
-		QFrame * frm = new QFrame(this);
-		frm->setFrameStyle(QFrame::HLine | QFrame::Sunken);
-		g->addWidget(frm,1,0,1,4);
+		QFrame * pFrame = new QFrame(this);
+		pFrame->setFrameStyle(QFrame::HLine | QFrame::Sunken);
+		pLayout->addWidget(pFrame,1,0,1,4);
 
 		m_pEnableCheck = new QCheckBox(__tr2qs("Use the crypt engine"),this);
-		g->addWidget(m_pEnableCheck,2,0,1,4);
+		pLayout->addWidget(m_pEnableCheck,2,0,1,4);
 		connect(m_pEnableCheck,SIGNAL(toggled(bool)),this,SLOT(enableCheckToggled(bool)));
 
 		m_pListBox = new KviTalListWidget(this);
 		connect(m_pListBox,SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)),this,SLOT(engineHighlighted(QListWidgetItem *, QListWidgetItem *)));
-		g->addWidget(m_pListBox,3,0,6,1);
+		pLayout->addWidget(m_pListBox,3,0,6,1);
 
 		m_pDescriptionLabel = new QLabel(this);
 		m_pDescriptionLabel->setWordWrap(true);
 		m_pDescriptionLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 		m_pDescriptionLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
-		g->addWidget(m_pDescriptionLabel,3,1,1,3);
+		pLayout->addWidget(m_pDescriptionLabel,3,1,1,3);
 
 		m_pAuthorLabel = new QLabel(this);
 		m_pAuthorLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
-		g->addWidget(m_pAuthorLabel,4,1,1,3);
+		pLayout->addWidget(m_pAuthorLabel,4,1,1,3);
 
 		m_pEnableEncrypt = new QCheckBox(__tr2qs("Enable encryption"),this);
-		g->addWidget(m_pEnableEncrypt,5,1,1,3);
+		pLayout->addWidget(m_pEnableEncrypt,5,1,1,3);
 
 		m_pEncryptKeyLabel = new QLabel(__tr2qs("Encrypt key:"),this);
-		g->addWidget(m_pEncryptKeyLabel,6,1);
+		pLayout->addWidget(m_pEncryptKeyLabel,6,1);
 
 		m_pEncryptKeyEdit = new QLineEdit(this);
-		g->addWidget(m_pEncryptKeyEdit,6,2);
+		pLayout->addWidget(m_pEncryptKeyEdit,6,2);
 
 		m_pEncryptHexKeyCheck = new QCheckBox(__tr2qs("Hex"),this);
-		g->addWidget(m_pEncryptHexKeyCheck,6,3);
+		pLayout->addWidget(m_pEncryptHexKeyCheck,6,3);
 
 		m_pEnableDecrypt = new QCheckBox(__tr2qs("Enable decryption"),this);
-		g->addWidget(m_pEnableDecrypt,7,1,1,3);
+		pLayout->addWidget(m_pEnableDecrypt,7,1,1,3);
 
 		m_pDecryptKeyLabel = new QLabel(__tr2qs("Decrypt key:"),this);
-		g->addWidget(m_pDecryptKeyLabel,8,1);
+		pLayout->addWidget(m_pDecryptKeyLabel,8,1);
 
 		m_pDecryptKeyEdit = new QLineEdit(this);
-		g->addWidget(m_pDecryptKeyEdit,8,2);
+		pLayout->addWidget(m_pDecryptKeyEdit,8,2);
 
 		m_pDecryptHexKeyCheck = new QCheckBox(__tr2qs("Hex"),this);
-		g->addWidget(m_pDecryptHexKeyCheck,8,3);
+		pLayout->addWidget(m_pDecryptHexKeyCheck,8,3);
 
 		m_pOkButton = new QPushButton(__tr2qs("OK"),this);
-		g->addWidget(m_pOkButton,9,0,1,4);
+		pLayout->addWidget(m_pOkButton,9,0,1,4);
 		connect(m_pOkButton,SIGNAL(clicked()),this,SLOT(okClicked()));
 
-		g->setRowStretch(3,1);
-		g->setColumnStretch(2,1);
+		pLayout->setRowStretch(3,1);
+		pLayout->setColumnStretch(2,1);
 
 		m_pLastItem = 0;
 		m_pSessionInfo = 0;
@@ -138,13 +138,13 @@
 
 		if(pInfo)
 		{
-			QListWidgetItem * pItem = m_pListBox->findItems(QString(pInfo->szEngineName),Qt::MatchFixedString).first();
+			QListWidgetItem * pItem = m_pListBox->findItems(QString(pInfo->m_szEngineName),Qt::MatchFixedString).first();
 			if(pItem)
 			{
 				m_pEnableCheck->setChecked(true);
 				m_pListBox->setCurrentItem(pItem);
-				m_pEnableEncrypt->setChecked(pInfo->bDoEncrypt);
-				m_pEnableDecrypt->setChecked(pInfo->bDoDecrypt);
+				m_pEnableEncrypt->setChecked(pInfo->m_bDoEncrypt);
+				m_pEnableDecrypt->setChecked(pInfo->m_bDoDecrypt);
 			} else enableWidgets(false);
 		} else {
 			enableWidgets(false);
@@ -156,7 +156,7 @@
 		if(m_pSessionInfo)
 		{
 			// huh ?
-			g_pCryptEngineManager->deallocateEngine(m_pSessionInfo->pEngine);
+			g_pCryptEngineManager->deallocateEngine(m_pSessionInfo->m_pEngine);
 			delete m_pSessionInfo;
 		}
 		// Unload the unused ones...
@@ -165,49 +165,50 @@
 
 	void KviCryptController::fillEngineList()
 	{
-		const KviPointerHashTable<QString,KviCryptEngineDescription> * a = g_pCryptEngineManager->engineDict();
-		if(a)
+		const KviPointerHashTable<QString,KviCryptEngineDescription> * pHash = g_pCryptEngineManager->engineDict();
+		if(pHash)
 		{
-			KviPointerHashTableIterator<QString,KviCryptEngineDescription> it(*a);
+			KviPointerHashTableIterator<QString,KviCryptEngineDescription> it(*pHash);
 			while(it.current())
 			{
-				QString szModName = it.current()->providerHandle ? ((KviModule *)(it.current()->providerHandle))->name() : "";
+				QString szModName = it.current()->m_providerHandle ? ((KviModule *)(it.current()->m_providerHandle))->name() : "";
 				(void)(new KviEngineListBoxItem(m_pListBox,it.current(),szModName.toUtf8().data()));
 				++it;
 			}
-			if(m_pListBox->count() != 0)return;
+			if(m_pListBox->count() != 0)
+				return;
 		}
 		noEnginesAvailable();
 	}
 
-	void KviCryptController::engineHighlighted(QListWidgetItem *it, QListWidgetItem *)
+	void KviCryptController::engineHighlighted(QListWidgetItem * pItem, QListWidgetItem *)
 	{
-		if(it)
+		if(pItem)
 		{
-			KviEngineListBoxItem * eit = (KviEngineListBoxItem *)it;
-			m_pAuthorLabel->setText(eit->m_szAuthor.toUtf8().data());
+			KviEngineListBoxItem * pEngine = (KviEngineListBoxItem *)pItem;
+			m_pAuthorLabel->setText(pEngine->m_szAuthor.toUtf8().data());
 			QString szDesc = "<p>";
-			szDesc += eit->m_szDescription.toUtf8().data();
+			szDesc += pEngine->m_szDescription.toUtf8().data();
 			szDesc += "<br><br>";
 			szDesc += __tr2qs("If you don't want to encrypt a particular text line then just start it with the CTRL+P prefix");
 			m_pDescriptionLabel->setText(szDesc);
-			m_pEnableEncrypt->setEnabled(eit->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT);
-			m_pEncryptKeyLabel->setEnabled((eit->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT) &&
-				(eit->m_iFlags & KVI_CRYPTENGINE_WANT_ENCRYPT_KEY));
-			m_pEncryptKeyEdit->setEnabled((eit->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT) &&
-				(eit->m_iFlags & KVI_CRYPTENGINE_WANT_ENCRYPT_KEY));
+			m_pEnableEncrypt->setEnabled(pEngine->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT);
+			m_pEncryptKeyLabel->setEnabled((pEngine->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT) &&
+				(pEngine->m_iFlags & KVI_CRYPTENGINE_WANT_ENCRYPT_KEY));
+			m_pEncryptKeyEdit->setEnabled((pEngine->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT) &&
+				(pEngine->m_iFlags & KVI_CRYPTENGINE_WANT_ENCRYPT_KEY));
 			m_pEnableEncrypt->setChecked(m_pEncryptKeyEdit->isEnabled());
-			m_pEnableDecrypt->setEnabled(eit->m_iFlags & KVI_CRYPTENGINE_CAN_DECRYPT);
+			m_pEnableDecrypt->setEnabled(pEngine->m_iFlags & KVI_CRYPTENGINE_CAN_DECRYPT);
 			m_pEncryptHexKeyCheck->setEnabled(m_pEncryptKeyEdit->isEnabled());
 			m_pEncryptHexKeyCheck->setChecked(false);
-			m_pDecryptKeyLabel->setEnabled((eit->m_iFlags & KVI_CRYPTENGINE_CAN_DECRYPT) &&
-				(eit->m_iFlags & KVI_CRYPTENGINE_WANT_DECRYPT_KEY));
-			m_pDecryptKeyEdit->setEnabled((eit->m_iFlags & KVI_CRYPTENGINE_CAN_DECRYPT) &&
-				(eit->m_iFlags & KVI_CRYPTENGINE_WANT_DECRYPT_KEY));
+			m_pDecryptKeyLabel->setEnabled((pEngine->m_iFlags & KVI_CRYPTENGINE_CAN_DECRYPT) &&
+				(pEngine->m_iFlags & KVI_CRYPTENGINE_WANT_DECRYPT_KEY));
+			m_pDecryptKeyEdit->setEnabled((pEngine->m_iFlags & KVI_CRYPTENGINE_CAN_DECRYPT) &&
+				(pEngine->m_iFlags & KVI_CRYPTENGINE_WANT_DECRYPT_KEY));
 			m_pEnableDecrypt->setChecked(m_pDecryptKeyEdit->isEnabled());
 			m_pDecryptHexKeyCheck->setEnabled(m_pDecryptKeyEdit->isEnabled());
 			m_pDecryptHexKeyCheck->setChecked(false);
-			m_pLastItem = eit;
+			m_pLastItem = pEngine;
 			enableWidgets(true);
 		} else m_pLastItem = 0;
 	}
@@ -258,26 +259,26 @@
 					// Reregister the module in case that it has been unloaded
 					// while this dialog was open
 					if(!m_pLastItem->m_szModuleName.isEmpty())(void)g_pModuleManager->getModule(m_pLastItem->m_szModuleName.toUtf8().data());
-					m_pSessionInfo->pEngine = g_pCryptEngineManager->allocateEngine(m_pLastItem->m_szName.toUtf8().data());
-					if(!m_pSessionInfo->pEngine)
+					m_pSessionInfo->m_pEngine = g_pCryptEngineManager->allocateEngine(m_pLastItem->m_szName.toUtf8().data());
+					if(!m_pSessionInfo->m_pEngine)
 					{
 						m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Crypt: Can't create an engine instance: crypting disabled"));
 						delete m_pSessionInfo;
 						m_pSessionInfo = 0;
 					} else {
 						// initialize the engine
-						if(!initializeEngine(m_pSessionInfo->pEngine))
+						if(!initializeEngine(m_pSessionInfo->m_pEngine))
 						{
-							QString szErrStr = m_pSessionInfo->pEngine->lastError();
-							g_pCryptEngineManager->deallocateEngine(m_pSessionInfo->pEngine);
+							QString szErrStr = m_pSessionInfo->m_pEngine->lastError();
+							g_pCryptEngineManager->deallocateEngine(m_pSessionInfo->m_pEngine);
 							delete m_pSessionInfo;
 							m_pSessionInfo = 0;
 							m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Crypt: Can't initialize the engine :%s"),szErrStr.toUtf8().data());
 						} else {
 							// ok, engine ready and waiting...
-							m_pSessionInfo->szEngineName = m_pLastItem->m_szName;
-							m_pSessionInfo->bDoEncrypt = m_pEnableEncrypt->isChecked();
-							m_pSessionInfo->bDoDecrypt = m_pEnableDecrypt->isChecked();
+							m_pSessionInfo->m_szEngineName = m_pLastItem->m_szName;
+							m_pSessionInfo->m_bDoEncrypt = m_pEnableEncrypt->isChecked();
+							m_pSessionInfo->m_bDoDecrypt = m_pEnableDecrypt->isChecked();
 						}
 					}
 				} else m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Crypt: You have to enable encryption and/or decryption for the engine to work"));
@@ -301,13 +302,13 @@
 			szEncryptKey = m_pEncryptKeyEdit->text();
 			if(m_pEncryptHexKeyCheck->isChecked())
 			{
-				char * tmpKey;
-				iEncKeyLen = szEncryptKey.hexToBuffer(&tmpKey,false);
+				char * pcTmpKey;
+				iEncKeyLen = szEncryptKey.hexToBuffer(&pcTmpKey,false);
 				if(iEncKeyLen > 0)
 				{
 					pcEncKey = (char *)kvi_malloc(iEncKeyLen);
-					kvi_memmove(pcEncKey,tmpKey,iEncKeyLen);
-					KviStr::freeBuffer(tmpKey);
+					kvi_memmove(pcEncKey,pcTmpKey,iEncKeyLen);
+					KviStr::freeBuffer(pcTmpKey);
 				}
 			} else {
 				pcEncKey = (char *)kvi_malloc(szEncryptKey.len());
@@ -321,13 +322,13 @@
 			szDecryptKey = m_pDecryptKeyEdit->text();
 			if(m_pDecryptHexKeyCheck->isChecked())
 			{
-				char * tmpKey;
-				iDecKeyLen = szDecryptKey.hexToBuffer(&tmpKey,false);
+				char * pcTmpKey;
+				iDecKeyLen = szDecryptKey.hexToBuffer(&pcTmpKey,false);
 				if(iDecKeyLen > 0)
 				{
 					pcDecKey = (char *)kvi_malloc(iDecKeyLen);
-					kvi_memmove(pcDecKey,tmpKey,iDecKeyLen);
-					KviStr::freeBuffer(tmpKey);
+					kvi_memmove(pcDecKey,pcTmpKey,iDecKeyLen);
+					KviStr::freeBuffer(pcTmpKey);
 				}
 			} else {
 				pcDecKey = (char *)kvi_malloc(szDecryptKey.len());
@@ -347,9 +348,9 @@
 
 	KviCryptSessionInfo * KviCryptController::getNewSessionInfo()
 	{
-		KviCryptSessionInfo * inf = m_pSessionInfo;
+		KviCryptSessionInfo * pInfo = m_pSessionInfo;
 		m_pSessionInfo = 0;
-		return inf;
+		return pInfo;
 	}
 
 	KviCryptSessionInfo * KviCryptController::allocateCryptSessionInfo()
@@ -358,13 +359,14 @@
 		return new KviCryptSessionInfo();
 	}
 
-	void KviCryptController::destroyCryptSessionInfo(KviCryptSessionInfo ** inf)
+	void KviCryptController::destroyCryptSessionInfo(KviCryptSessionInfo ** ppInfo)
 	{
-		if(!(*inf))return;
-		(*inf)->pEngine->disconnect(); // disconnect every signal (this is mainly for destroyed())
-		g_pCryptEngineManager->deallocateEngine((*inf)->pEngine); // kill the engine
-		delete *inf;
-		*inf = 0;
+		if(!(*ppInfo))
+			return;
+		(*ppInfo)->m_pEngine->disconnect(); // disconnect every signal (this is mainly for destroyed())
+		g_pCryptEngineManager->deallocateEngine((*ppInfo)->m_pEngine); // kill the engine
+		delete *ppInfo;
+		*ppInfo = 0;
 	}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_cryptcontroller.moc"
