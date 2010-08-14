@@ -1,6 +1,6 @@
 # translation of dcc_fr.po to Français
-# This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# This file is distributed under the same license as the PACKAGE package.
 #
 # Ahinu <ahinu.laman@gmail.com>, 2006.
 # Elephantman <elephantman@europnet.org>, 2008.
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: dcc_fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-19 20:08+0200\n"
-"PO-Revision-Date: 2010-07-15 22:00+0100\n"
+"PO-Revision-Date: 2010-08-13 23:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: Français <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -220,7 +220,7 @@ msgstr "Acceptation automatique de la requête DCC %Q de %Q!%Q@%Q pour le fichie
 
 #: src/modules/dcc/broker.cpp:721
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
-msgstr "Sauvegarde automatique le fichier de DCC %Q %Q en \r![!dbl]play $0\r%Q\r"
+msgstr "Sauvegarde automatique DCC %Q du fichier %Q en \r![!dbl]play $0\r%Q\r"
 
 #: src/modules/dcc/send.cpp:1294
 msgid "Avg:"
@@ -229,7 +229,7 @@ msgstr "Moy. :"
 #: src/modules/dcc/utils.cpp:142
 #, c-format
 msgid "Can't listen on default interface '%s': fix it in the options dialog, disabling the option (so the next dcc will work)"
-msgstr "Impossible d'écouter sur l'interface par défaut '%s' : réglez cela dans fenêtre de réglage des options, en désactivant cette option (ainsi la prochaine connexion dcc fonctionera)"
+msgstr "Impossible d'écouter sur l'interface par défaut '%s' : réglez cela dans fenêtre de réglage des options, en désactivant cette option (ainsi la prochaine connexion dcc fonctionnera)"
 
 #: src/modules/dcc/broker.cpp:207
 #: src/modules/dcc/broker.cpp:916
@@ -268,12 +268,12 @@ msgstr "Impossible d'envoyer les données : aucune connexion active"
 
 #: src/modules/dcc/broker.cpp:706
 msgid "Choose Files to Save - KVIrc"
-msgstr "Choisir Fichiers à Enregistrer - KVIrc"
+msgstr "Choisir les fichiers à enregistrer - KVIrc"
 
 #: src/modules/dcc/broker.cpp:167
 #: src/modules/dcc/broker.cpp:879
 msgid "Choose Files to Send - KVIrc"
-msgstr "Choisir Fichiers à Envoyer - KVIrc"
+msgstr "Choisir les fichiers à envoyer - KVIrc"
 
 #: src/modules/dcc/requests.cpp:101
 #, c-format
@@ -337,7 +337,7 @@ msgstr "Requête DCC CANVAS"
 
 #: src/modules/dcc/canvas.cpp:101
 msgid "DCC CANVAS request not sent: awaiting manual connections"
-msgstr "La requête DCC CANVAS n'a pas été envoyée : attente de connexions manuelles"
+msgstr "La requête DCC CANVAS n'a pas été envoyée : attente d'une connexions manuelle"
 
 #: src/modules/dcc/voice.cpp:901
 #: src/modules/dcc/video.cpp:889
@@ -397,7 +397,7 @@ msgstr "Depuis : "
 
 #: src/modules/dcc/voice.cpp:170
 msgid "Half duplex soundcard detected, you will not be able to talk and listen at the same time"
-msgstr "Carte semi-duplex déctectée, vous n'allez pas pouvoir parler et écouter en même temps"
+msgstr "Carte semi-duplex détectée, vous n'allez pas pouvoir parler et écouter en même temps"
 
 #: src/modules/dcc/requests.cpp:84
 msgid "Ignoring"
@@ -453,7 +453,7 @@ msgstr "Le codec spécifié est invalide"
 
 #: src/modules/dcc/libkvidcc.cpp:1148
 msgid "Invalid codec specified, defaulting to 'adpcm'"
-msgstr "Le codec spécifié est invalide, celui par défaut 'adpcm' est choisi"
+msgstr "Le codec spécifié est invalide, celui par défaut 'adpcm' est choisie"
 
 #: src/modules/dcc/requests.cpp:163
 #, c-format
@@ -467,7 +467,7 @@ msgstr "Argument de position de reprise invalide '%s'"
 
 #: src/modules/dcc/libkvidcc.cpp:1132
 msgid "Invalid sample rate specified, defaulting to 8000"
-msgstr "Le taux d'échantillonage spécifié est invalide, la valeur par défaut de 8000 est choisie"
+msgstr "Le taux d'échantillonnage spécifié est invalide, la valeur par défaut de 8000 est choisie"
 
 #: src/modules/dcc/requests.cpp:332
 msgid "It seems that I haven't requested this dcc chat"
@@ -515,11 +515,11 @@ msgstr "Aucune fichier offert nommée '%s' (de taille %s) n'est disponible pour 
 #: src/modules/dcc/requests.cpp:793
 #: src/modules/dcc/requests.cpp:943
 msgid "No suitable interface to listen on, trying to continue anyway..."
-msgstr "Aucune interface valide à écouter, on essaie de poursuivre..."
+msgstr "Aucune interface valide à écouter, on essaie de continuer..."
 
 #: src/modules/dcc/libkvidcc.cpp:139
 msgid "No suitable interfaces to listen on, use -i"
-msgstr "Aucune interface valable à écouter, utilisez -i"
+msgstr "Aucune interface valide à écouter, utilisez -i"
 
 #: src/modules/dcc/send.cpp:1910
 msgid "OK"
@@ -624,7 +624,7 @@ msgstr "TRANSFERT %d"
 #: src/modules/dcc/requests.cpp:1030
 #, c-format
 msgid "The above request appears to be broken: Invalid sample-rate '%s', defaulting to 8000"
-msgstr "La requête ci-dessus semble cassée : taux d'échantillonage '%s' invalide, utilisation du choix par défaut de 8000"
+msgstr "La requête ci-dessus semble incorrect: taux d'échantillonnage '%s' invalide, utilisation du choix par défaut de 8000"
 
 #: src/modules/dcc/requests.cpp:1081
 msgid "The above request cannot be accepted: DCC VIDEO support not enabled at compilation time "
@@ -649,17 +649,17 @@ msgstr "La requête RESUME ci-dessus n'a pas spécifier de taille de fichier, on
 #: src/modules/dcc/requests.cpp:623
 #: src/modules/dcc/requests.cpp:762
 msgid "The above request is broken: The filename contains path components, stripping the leading path and trying to continue"
-msgstr "La requête ci-dessus est brisée : le fichier contient éléments de chemin, on supprime la partie répertoire et on essaie de poursuivre"
+msgstr "La requête ci-dessus est incorrect : le nom de fichier contient des éléments du chemin de destination, on supprime la partie répertoire et on essaie de continuer"
 
 #: src/modules/dcc/requests.cpp:452
 #: src/modules/dcc/requests.cpp:752
 msgid "The above request is broken: The fourth parameter should be the file size but does not appear to be an unsigned number; trying to continue"
-msgstr "La requête ci-dessus est brisée : le quatrième paramètre doit être la taille du fichier, mais il semble que ce ne soit pas un nombre positif, on essaie de poursuivre"
+msgstr "La requête ci-dessus est incorrect : le quatrième paramètre devrait être la taille du fichier, mais il semble que ce ne soit pas un nombre positif, on essaie de continuer"
 
 #: src/modules/dcc/requests.cpp:268
 #, c-format
 msgid "The above request is broken: The second parameter is '%s' and should be 'chat', trying to continue"
-msgstr "La requête ci-dessus est cassée : le second paramètre est '%s' et devrait être 'chat', on essaie de poursuivre"
+msgstr "La requête ci-dessus est cassée : le second paramètre est '%s' et devrait être 'chat', on essaie de continuer"
 
 #: src/modules/dcc/requests.cpp:331
 msgid "The above request is broken: it looks like a zero port tag acknowledge but I have either never seen this tag or it was sent more than 120 seconds ago"
@@ -671,7 +671,7 @@ msgstr "La connexion aura pour cible la machine <b>%1</b> sur le port <b>%2</b><
 
 #: src/modules/dcc/broker.cpp:281
 msgid "The connection will be secured using SSL.<br>"
-msgstr "La connexion sera securisée en utilisant SSL.<br>"
+msgstr "La connexion sera sécurisée en utilisant SSL.<br>"
 
 #: src/modules/dcc/video.cpp:685
 #: src/modules/dcc/chat.cpp:341
@@ -771,7 +771,7 @@ msgstr "Cette fenêtre n'a pas de contexte IRC associé (un contexte IRC est né
 
 #: src/modules/dcc/send.cpp:1158
 msgid "To: "
-msgstr "À :"
+msgstr "Vers :"
 
 #: src/modules/dcc/requests.cpp:127
 msgid "Too many pending connections"
@@ -814,7 +814,7 @@ msgstr "Utilisez %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s
 
 #: src/modules/dcc/video.cpp:449
 msgid "Video device:"
-msgstr "Appareil video :"
+msgstr "Appareil vidéo :"
 
 #: src/modules/dcc/voice.cpp:1013
 msgid "Volume: %1"
@@ -839,7 +839,7 @@ msgstr "ATTENTION : il n'a pas été possible de vérifier les possibilités de
 #: src/modules/dcc/voice.cpp:211
 #, c-format
 msgid "WARNING: failed to set the requested sample rate (%d): the device used closest match (%d)"
-msgstr "ATTENTION : il n'a pas été possible de choisir le taux d'échantillonage demandé (%d) : le périphérique a choisi celui qui s'en rapproche le plus (%d)"
+msgstr "ATTENTION : il n'a pas été possible de choisir le taux d'échantillonnage demandé (%d) : le périphérique a choisi celui qui s'en rapproche le plus (%d)"
 
 #: src/modules/dcc/broker.cpp:287
 msgid "You will be the passive side of the connection.<br>"
