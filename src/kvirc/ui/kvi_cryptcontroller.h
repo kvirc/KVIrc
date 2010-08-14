@@ -44,10 +44,10 @@
 	class KVIRC_API KviCryptSessionInfo : public KviHeapObject
 	{
 	public:
-		KviCryptEngine * pEngine;
-		KviStr           szEngineName;
-		bool             bDoEncrypt;
-		bool             bDoDecrypt;
+		KviCryptEngine * m_pEngine;
+		QString          m_szEngineName;
+		bool             m_bDoEncrypt;
+		bool             m_bDoDecrypt;
 	};
 
 	class KVIRC_API KviEngineListBoxItem : public KviTalListWidgetText
@@ -57,19 +57,18 @@
 		KviEngineListBoxItem(KviTalListWidget * lb,KviCryptEngineDescription * d,const char * modName);
 		~KviEngineListBoxItem();
 	public:
-		KviStr m_szName;
-		KviStr m_szAuthor;
-		KviStr m_szDescription;
-		KviStr m_szModuleName;
-		int m_iFlags;
+		QString m_szName;
+		QString m_szAuthor;
+		QString m_szDescription;
+		QString m_szModuleName;
+		int     m_iFlags;
 	};
-
 
 	class KVIRC_API KviCryptController : public KviWindowToolWidget
 	{
 		Q_OBJECT
 	public:
-		KviCryptController(QWidget * parent,KviWindowToolPageButton* button,const char * name,KviWindow * wnd,KviCryptSessionInfo * cur);
+		KviCryptController(QWidget * pParent, KviWindowToolPageButton * pButton, KviWindow * pWnd, KviCryptSessionInfo * pInfo);
 		~KviCryptController();
 	protected:
 		KviWindow            * m_pWindow;
@@ -90,23 +89,20 @@
 		KviCryptSessionInfo  * m_pSessionInfo;
 	private slots:
 		void enableCheckToggled(bool bChecked);
-		void engineHighlighted(QListWidgetItem *it, QListWidgetItem *);
+		void engineHighlighted(QListWidgetItem * pItem, QListWidgetItem *);
 		void okClicked();
 	public:
 		KviCryptSessionInfo * getNewSessionInfo();
 		static KviCryptSessionInfo * allocateCryptSessionInfo();
-		static void destroyCryptSessionInfo(KviCryptSessionInfo ** inf);
+		static void destroyCryptSessionInfo(KviCryptSessionInfo ** ppInfo);
 	private:
 		void fillEngineList();
 		void noEnginesAvailable();
 		void enableWidgets(bool bEnabled);
-		bool initializeEngine(KviCryptEngine * eng);
+		bool initializeEngine(KviCryptEngine * pEngine);
 	signals:
 		void done();
 	};
-
-
 #endif //COMPILE_CRYPT_SUPPORT
-
 
 #endif //!_KVI_CRYPTCONTROLLER_H_

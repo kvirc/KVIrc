@@ -214,22 +214,22 @@ static bool lamerizer_module_init(KviModule * m)
 	// FIXME: Maybe convert this repeated code to a function eh ?
 
 	KviCryptEngineDescription * d = new KviCryptEngineDescription;
-	d->szName = "Lamerizer";
-	d->szAuthor = "Szymon Stefanek and Jan Wagner";
-	d->szDescription = __tr2qs("A really lame text transformation engine :D");
-	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT;
-	d->allocFunc = allocLamerizerEngine;
-	d->deallocFunc = deallocLamerizerEngine;
+	d->m_szName = "Lamerizer";
+	d->m_szAuthor = "Szymon Stefanek and Jan Wagner";
+	d->m_szDescription = __tr2qs("A really lame text transformation engine :D");
+	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT;
+	d->m_allocFunc = allocLamerizerEngine;
+	d->m_deallocFunc = deallocLamerizerEngine;
 	m->registerCryptEngine(d);
 
 
 	d = new KviCryptEngineDescription;
-	d->szName = "LamerizerLight";
-	d->szAuthor = "Szymon Stefanek and Jan Wagner";
-	d->szDescription = __tr2qs("A really lame text transformation engine: Light Version.");
-	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT;
-	d->allocFunc = allocLightLamerizerEngine;
-	d->deallocFunc = deallocLamerizerEngine;
+	d->m_szName = "LamerizerLight";
+	d->m_szAuthor = "Szymon Stefanek and Jan Wagner";
+	d->m_szDescription = __tr2qs("A really lame text transformation engine: Light Version.");
+	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT;
+	d->m_allocFunc = allocLightLamerizerEngine;
+	d->m_deallocFunc = deallocLamerizerEngine;
 	m->registerCryptEngine(d);
 
 	return true;

@@ -168,18 +168,18 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
-	bool KviCryptEngine::init(const char *,int,const char *,int)
+	bool KviCryptEngine::init(const char *, int, const char *, int)
 	{
 		return false;
 	}
 
-	KviCryptEngine::EncryptResult KviCryptEngine::encrypt(const char *,KviStr &)
+	KviCryptEngine::EncryptResult KviCryptEngine::encrypt(const char *, KviStr &)
 	{
 //		debug("Pure virtual KviCryptEngine::encrypt() called");
 		return EncryptError;
 	}
 
-	KviCryptEngine::DecryptResult KviCryptEngine::decrypt(const char *,KviStr &)
+	KviCryptEngine::DecryptResult KviCryptEngine::decrypt(const char *, KviStr &)
 	{
 //		debug("Pure virtual KviCryptEngine::decrypt() called");
 		return DecryptError;
@@ -197,12 +197,12 @@
 		delete m_pEngineDict;
 	}
 
-	void KviCryptEngineManager::registerEngine(KviCryptEngineDescription * d)
+	void KviCryptEngineManager::registerEngine(KviCryptEngineDescription * pDesc)
 	{
-		m_pEngineDict->replace(d->szName,d);
+		m_pEngineDict->replace(pDesc->m_szName,pDesc);
 	}
 
-	void KviCryptEngineManager::unregisterEngine(const QString &szName)
+	void KviCryptEngineManager::unregisterEngine(const QString & szName)
 	{
 		m_pEngineDict->remove(szName);
 	}
@@ -212,31 +212,34 @@
 		KviPointerList<QString> lEnginesToRemove;
 		lEnginesToRemove.setAutoDelete(true);
 
-		for(KviPointerHashTableEntry<QString,KviCryptEngineDescription> * e = m_pEngineDict->firstEntry();e;e = m_pEngineDict->nextEntry())
+		for(KviPointerHashTableEntry<QString,KviCryptEngineDescription> * pDesc = m_pEngineDict->firstEntry();pDesc;pDesc = m_pEngineDict->nextEntry())
 		{
-			if(e->data()->providerHandle == providerHandle)
-				lEnginesToRemove.append(new QString(e->key()));
+			if(pDesc->data()->m_providerHandle == providerHandle)
+				lEnginesToRemove.append(new QString(pDesc->key()));
 		}
 
 		for(QString * pszEngineName = lEnginesToRemove.first();pszEngineName;pszEngineName = lEnginesToRemove.next())
 			m_pEngineDict->remove(*pszEngineName);
 	}
 
-	KviCryptEngine * KviCryptEngineManager::allocateEngine(const QString &szName)
+	KviCryptEngine * KviCryptEngineManager::allocateEngine(const QString & szName)
 	{
-		KviCryptEngineDescription * d =  m_pEngineDict->find(szName);
-		if(!d)return 0;
-		KviCryptEngine * e = d->allocFunc();
-		if(!e)return 0;
-		e->m_deallocFunc = d->deallocFunc; // remember the dealloc func from now on
-		return e;
+		KviCryptEngineDescription * pDesc =  m_pEngineDict->find(szName);
+		if(!pDesc)
+			return 0;
+		KviCryptEngine * pEngine = pDesc->m_allocFunc();
+		if(!pEngine)
+			return 0;
+		pEngine->m_deallocFunc = pDesc->m_deallocFunc; // remember the dealloc func from now on
+		return pEngine;
 	}
 
-	void KviCryptEngineManager::deallocateEngine(KviCryptEngine * e)
+	void KviCryptEngineManager::deallocateEngine(KviCryptEngine * pEngine)
 	{
-		if(!e)return;
-		crypt_engine_deallocator_func deallocFunc = e->m_deallocFunc;
-		deallocFunc(e);
+		if(!pEngine)
+			return;
+		crypt_engine_deallocator_func deallocFunc = pEngine->m_deallocFunc;
+		deallocFunc(pEngine);
 	}
 
 #endif //COMPILE_CRYPT_SUPPORT
