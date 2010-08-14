@@ -244,9 +244,6 @@ void KviServerParser::parseLiteralJoin(KviIrcMessage *msg)
 		// FIXME: #warning "IF VERBOSE SAY THAT WE'RE REQUESTING MODES & BAN LIST" (Synching channel)
 		msg->connection()->requestQueue()->enqueueChannel(chan);
 		
-		if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin))
-			chan->pasteLastLog();
-
 	} else {
 		// This must be someone else...(or desync)
 		int iFlags = 0;
