@@ -31,7 +31,7 @@
 #include "kvi_out.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_locale.h"
-
+#include "kvi_kvs_variant.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	//
@@ -179,6 +179,136 @@ KVIRC_API KviSSL * allocSSL(KviWindow * wnd,kvi_socket_t sock,KviSSL::Method m,c
 KVIRC_API void freeSSL(KviSSL * s)
 {
 	delete s;
+}
+
+/**
+ * Used for $certificate() and $dcc.getSSLCertInfo() function
+ */
+KVIRC_API bool getSSLCertInfo(KviSSLCertificate * pCert, QString szQuery, QString szOptionalParam, KviKvsVariant * pRetBuffer)
+{
+	pRetBuffer->setString("");
+	
+	if(szQuery.compare("signatureType")==0)
+	{
+		pRetBuffer->setString(pCert->signatureType());
+		return true;
+	}
+	if(szQuery.compare("signatureContents")==0)
+	{
+		pRetBuffer->setString(pCert->signatureContents());
+		return true;
+	}
+	if(szQuery.compare("subjectCountry")==0)
+	{
+		pRetBuffer->setString(pCert->subjectCountry());
+		return true;
+	}
+	if(szQuery.compare("subjectStateOrProvince")==0)
+	{
+		pRetBuffer->setString(pCert->subjectStateOrProvince());
+		return true;
+	}
+	if(szQuery.compare("subjectLocality")==0)
+	{
+		pRetBuffer->setString(pCert->subjectLocality());
+		return true;
+	}
+	if(szQuery.compare("subjectOrganization")==0)
+	{
+		pRetBuffer->setString(pCert->subjectOrganization());
+		return true;
+	}
+	if(szQuery.compare("subjectOrganizationalUnit")==0)
+	{
+		pRetBuffer->setString(pCert->subjectOrganizationalUnit());
+		return true;
+	}
+	if(szQuery.compare("subjectCommonName")==0)
+	{
+		pRetBuffer->setString(pCert->subjectCommonName());
+		return true;
+	}
+	if(szQuery.compare("issuerCountry")==0)
+	{
+		pRetBuffer->setString(pCert->issuerCountry());
+		return true;
+	}
+	if(szQuery.compare("issuerStateOrProvince")==0)
+	{
+		pRetBuffer->setString(pCert->issuerStateOrProvince());
+		return true;
+	}
+	if(szQuery.compare("issuerLocality")==0)
+	{
+		pRetBuffer->setString(pCert->issuerLocality());
+		return true;
+	}
+	if(szQuery.compare("issuerOrganization")==0)
+	{
+		pRetBuffer->setString(pCert->issuerOrganization());
+		return true;
+	}
+	if(szQuery.compare("issuerOrganizationalUnit")==0)
+	{
+		pRetBuffer->setString(pCert->issuerOrganizationalUnit());
+		return true;
+	}
+	if(szQuery.compare("issuerCommonName")==0)
+	{
+		pRetBuffer->setString(pCert->issuerCommonName());
+		return true;
+	}
+	if(szQuery.compare("publicKeyBits")==0)
+	{
+		pRetBuffer->setInteger(pCert->publicKeyBits());
+		return true;
+	}
+	if(szQuery.compare("publicKeyType")==0)
+	{
+		pRetBuffer->setString(pCert->publicKeyType());
+		return true;
+	}
+	if(szQuery.compare("serialNumber")==0)
+	{
+		pRetBuffer->setInteger(pCert->serialNumber());
+		return true;
+	}
+	if(szQuery.compare("pemBase64")==0)
+	{
+		const char * szTmp=pCert->getX509Base64();
+		QString szBase64(szTmp);
+		pRetBuffer->setString(szBase64);
+		delete szTmp;
+		return true;
+	}
+	if(szQuery.compare("version")==0)
+	{
+		pRetBuffer->setInteger(pCert->version());
+		return true;
+	}
+	if(szQuery.compare("fingerprintIsValid")==0)
+	{
+		pRetBuffer->setBoolean(pCert->fingerprintIsValid());
+		return true;
+	}
+	if(szQuery.compare("fingerprintDigestId")==0)
+	{
+		pRetBuffer->setInteger(pCert->fingerprintDigestId());
+		return true;
+	}
+	if(szQuery.compare("fingerprintDigestStr")==0)
+	{
+		pRetBuffer->setString(pCert->fingerprintDigestStr());
+		return true;
+	}
+	if(szQuery.compare("fingerprintContents")==0)
+	{
+		pRetBuffer->setString(pCert->fingerprintContents(szOptionalParam));
+		return true;
+	}
+	
+	// the warning is displayed in the caller
+	return false;
 }
 
 };

@@ -40,7 +40,7 @@
 #include "kvi_frame.h"
 #include "kvi_statusbar.h"
 #include "kvi_userinput.h"
-#include "kvi_ssl.h"
+#include "kvi_sslmaster.h"
 #include "kvi_options.h"
 
 // date includes
@@ -438,9 +438,10 @@ namespace KviKvsCoreFunctions
 		@short:
 			Returns informations about the local certificate
 		@syntax:
-			<string> $certificate(<query:string>)
+			<string> $certificate(<query:string>[,<param1:string>])
 		@description:
 			Returns the requested information about local certificate.[br]
+			Some queries can accept an optional parameter <param1>[br]
 			Available query strings are:[br]
 			[ul]
 			[li]signatureType[/li]
@@ -463,9 +464,9 @@ namespace KviKvsCoreFunctions
 			[li]pemBase64[/li]
 			[li]version[/li]
 			[li]fingerprintIsValid[/li]
-			[li]fingerprintHashId[/li]
-			[li]fingerprintHashStr[/li]
-			[li]fingerprintContents[/li]
+			[li]fingerprintDigestId[/li]
+			[li]fingerprintDigestStr[/li]
+			[li]fingerprintContents * accepts parameter interpreted as "digest name"[/li]
 			[/ul]
 		@seealso:
 			[fnc]$str.evpSign[/fnc]
@@ -476,8 +477,11 @@ namespace KviKvsCoreFunctions
 	KVSCF(certificate)
 	{
 		QString szQuery;
+		QString szParam1;
+		
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("query",KVS_PT_STRING,0,szQuery)
+			KVSCF_PARAMETER("param1",KVS_PT_STRING,KVS_PF_OPTIONAL,szParam1)
 		KVSCF_PARAMETERS_END
 
 #ifndef COMPILE_SSL_SUPPORT
@@ -524,124 +528,8 @@ namespace KviKvsCoreFunctions
 			return true;
 		}
 
-		if(szQuery.compare("signatureType")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->signatureType());
+		if(KviSSLMaster::getSSLCertInfo(pCert, szQuery, szParam1, KVSCF_pRetBuffer))
 			return true;
-		}
-		if(szQuery.compare("signatureContents")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->signatureContents());
-			return true;
-		}
-		if(szQuery.compare("subjectCountry")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->subjectCountry());
-			return true;
-		}
-		if(szQuery.compare("subjectStateOrProvince")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->subjectStateOrProvince());
-			return true;
-		}
-		if(szQuery.compare("subjectLocality")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->subjectLocality());
-			return true;
-		}
-		if(szQuery.compare("subjectOrganization")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->subjectOrganization());
-			return true;
-		}
-		if(szQuery.compare("subjectOrganizationalUnit")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->subjectOrganizationalUnit());
-			return true;
-		}
-		if(szQuery.compare("subjectCommonName")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->subjectCommonName());
-			return true;
-		}
-		if(szQuery.compare("issuerCountry")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->issuerCountry());
-			return true;
-		}
-		if(szQuery.compare("issuerStateOrProvince")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->issuerStateOrProvince());
-			return true;
-		}
-		if(szQuery.compare("issuerLocality")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->issuerLocality());
-			return true;
-		}
-		if(szQuery.compare("issuerOrganization")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->issuerOrganization());
-			return true;
-		}
-		if(szQuery.compare("issuerOrganizationalUnit")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->issuerOrganizationalUnit());
-			return true;
-		}
-		if(szQuery.compare("issuerCommonName")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->issuerCommonName());
-			return true;
-		}
-		if(szQuery.compare("publicKeyBits")==0)
-		{
-			KVSCF_pRetBuffer->setInteger(pCert->publicKeyBits());
-			return true;
-		}
-		if(szQuery.compare("publicKeyType")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->publicKeyType());
-			return true;
-		}
-		if(szQuery.compare("serialNumber")==0)
-		{
-			KVSCF_pRetBuffer->setInteger(pCert->serialNumber());
-			return true;
-		}
-		if(szQuery.compare("pemBase64")==0)
-		{
-			const char * szTmp=pCert->getX509Base64();
-			QString szBase64(szTmp);
-			KVSCF_pRetBuffer->setString(szBase64);
-			delete szTmp;
-			return true;
-		}
-		if(szQuery.compare("version")==0)
-		{
-			KVSCF_pRetBuffer->setInteger(pCert->version());
-			return true;
-		}
-		if(szQuery.compare("fingerprintIsValid")==0)
-		{
-			KVSCF_pRetBuffer->setBoolean(pCert->fingerprintIsValid());
-			return true;
-		}
-		if(szQuery.compare("fingerprintHashId")==0)
-		{
-			KVSCF_pRetBuffer->setInteger(pCert->fingerprintHashId());
-			return true;
-		}
-		if(szQuery.compare("fingerprintHashStr")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->fingerprintHashStr());
-			return true;
-		}
-		if(szQuery.compare("fingerprintContents")==0)
-		{
-			KVSCF_pRetBuffer->setString(pCert->fingerprintContents());
-			return true;
-		}
 
 		KVSCF_pContext->warning(__tr2qs_ctx("Unable to get certificate informations: query not recognized","dcc"));
 		KVSCF_pRetBuffer->setString("");

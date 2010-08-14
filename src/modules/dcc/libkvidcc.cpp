@@ -2707,7 +2707,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns the requested information about certificates used in an ssl-enabled dcc session
 	@syntax:
-		$dcc.getSSLCertInfo(<query:string>[,<type:string='remote'>[,<dcc_id:integer>]])
+		$dcc.getSSLCertInfo(<query:string>[,<type:string='remote'>[,<dcc_id:integer>[,<param1:string>]]])
 	@description:
 		Returns the requested information about certificates used in an ssl-enabled dcc session.[br]
 		The second <type> parameter can be "local" or "remote", and refers to the certificate you want
@@ -2716,6 +2716,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted and the current window 
 		has no associated DCC session) then this function prints a warning and returns an empty sting.[br]
 		If the DCC session is not using ssl then this function returns an empty string.[br]
+		Some queries can accept an optional parameter <param1>[br]
 		Available query strings are:[br]
 		[ul]
 		[li]signatureType[/li]
@@ -2738,10 +2739,15 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		[li]pemBase64[/li]
 		[li]version[/li]
 		[li]fingerprintIsValid[/li]
-		[li]fingerprintHashId[/li]
-		[li]fingerprintHashStr[/li]
-		[li]fingerprintContents[/li]
+		[li]fingerprintDigestId[/li]
+		[li]fingerprintDigestStr[/li]
+		[li]fingerprintContents * accepts parameter interpreted as "digest name"[/li]
 		[/ul]
+		@examples:
+			[example]
+				# get a sha256 fingerprint of remote peer's certificate 
+				$dcc.getSSLCertInfo(fingerprintContents,remote,$dcc.session,sha256)
+			[/example]
 		@seealso:
 			[fnc]$certificate[/fnc]
 			[fnc]$str.evpSign[/fnc]
@@ -2754,11 +2760,14 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 	kvs_uint_t uDccId;
 	QString szQuery;
 	QString szType;
+	QString szParam1;
 	bool bRemote=true;
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("query",KVS_PT_STRING,0,szQuery)
 		KVSM_PARAMETER("type",KVS_PT_STRING,KVS_PF_OPTIONAL,szType)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
+		KVSM_PARAMETER("param1",KVS_PT_STRING,KVS_PF_OPTIONAL,szParam1)
 	KVSM_PARAMETERS_END(c)
 
 #ifndef COMPILE_SSL_SUPPORT
@@ -2819,124 +2828,8 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 			return true;
 		}
 
-		if(szQuery.compare("signatureType")==0)
-		{
-			c->returnValue()->setString(pCert->signatureType());
+		if(KviSSLMaster::getSSLCertInfo(pCert, szQuery, szParam1, c->returnValue()))
 			return true;
-		}
-		if(szQuery.compare("signatureContents")==0)
-		{
-			c->returnValue()->setString(pCert->signatureContents());
-			return true;
-		}
-		if(szQuery.compare("subjectCountry")==0)
-		{
-			c->returnValue()->setString(pCert->subjectCountry());
-			return true;
-		}
-		if(szQuery.compare("subjectStateOrProvince")==0)
-		{
-			c->returnValue()->setString(pCert->subjectStateOrProvince());
-			return true;
-		}
-		if(szQuery.compare("subjectLocality")==0)
-		{
-			c->returnValue()->setString(pCert->subjectLocality());
-			return true;
-		}
-		if(szQuery.compare("subjectOrganization")==0)
-		{
-			c->returnValue()->setString(pCert->subjectOrganization());
-			return true;
-		}
-		if(szQuery.compare("subjectOrganizationalUnit")==0)
-		{
-			c->returnValue()->setString(pCert->subjectOrganizationalUnit());
-			return true;
-		}
-		if(szQuery.compare("subjectCommonName")==0)
-		{
-			c->returnValue()->setString(pCert->subjectCommonName());
-			return true;
-		}
-		if(szQuery.compare("issuerCountry")==0)
-		{
-			c->returnValue()->setString(pCert->issuerCountry());
-			return true;
-		}
-		if(szQuery.compare("issuerStateOrProvince")==0)
-		{
-			c->returnValue()->setString(pCert->issuerStateOrProvince());
-			return true;
-		}
-		if(szQuery.compare("issuerLocality")==0)
-		{
-			c->returnValue()->setString(pCert->issuerLocality());
-			return true;
-		}
-		if(szQuery.compare("issuerOrganization")==0)
-		{
-			c->returnValue()->setString(pCert->issuerOrganization());
-			return true;
-		}
-		if(szQuery.compare("issuerOrganizationalUnit")==0)
-		{
-			c->returnValue()->setString(pCert->issuerOrganizationalUnit());
-			return true;
-		}
-		if(szQuery.compare("issuerCommonName")==0)
-		{
-			c->returnValue()->setString(pCert->issuerCommonName());
-			return true;
-		}
-		if(szQuery.compare("publicKeyBits")==0)
-		{
-			c->returnValue()->setInteger(pCert->publicKeyBits());
-			return true;
-		}
-		if(szQuery.compare("publicKeyType")==0)
-		{
-			c->returnValue()->setString(pCert->publicKeyType());
-			return true;
-		}
-		if(szQuery.compare("serialNumber")==0)
-		{
-			c->returnValue()->setInteger(pCert->serialNumber());
-			return true;
-		}
-		if(szQuery.compare("pemBase64")==0)
-		{
-			const char * szTmp=pCert->getX509Base64();
-			QString szBase64(szTmp);
-			c->returnValue()->setString(szBase64);
-			delete szTmp;
-			return true;
-		}
-		if(szQuery.compare("version")==0)
-		{
-			c->returnValue()->setInteger(pCert->version());
-			return true;
-		}
-		if(szQuery.compare("fingerprintIsValid")==0)
-		{
-			c->returnValue()->setBoolean(pCert->fingerprintIsValid());
-			return true;
-		}
-		if(szQuery.compare("fingerprintHashId")==0)
-		{
-			c->returnValue()->setInteger(pCert->fingerprintHashId());
-			return true;
-		}
-		if(szQuery.compare("fingerprintHashStr")==0)
-		{
-			c->returnValue()->setString(pCert->fingerprintHashStr());
-			return true;
-		}
-		if(szQuery.compare("fingerprintContents")==0)
-		{
-			c->returnValue()->setString(pCert->fingerprintContents());
-			return true;
-		}
 
 		c->warning(__tr2qs_ctx("Unable to get SSL informations: query not recognized","dcc"));
 		c->returnValue()->setString("");
@@ -3002,7 +2895,7 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 		[fnc]$dcc.remoteFileSize[/fnc][br]
 		[fnc]$dcc.ircContext[/fnc][br]
 		[fnc]$dcc.session[/fnc][br]
-		[fnc]$dcc.getSSLInfo[/fnc][br]
+		[fnc]$dcc.getSSLCertInfo[/fnc][br]
 */
 
 

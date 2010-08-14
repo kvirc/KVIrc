@@ -626,51 +626,61 @@ bool KviSSLCertificate::fingerprintIsValid()
 	return (rv > 0);
 }
 
-int KviSSLCertificate::fingerprintHashId()
+int KviSSLCertificate::fingerprintDigestId()
 {
-	unsigned char bufferData[EVP_MAX_MD_SIZE];
-	unsigned int bufferLen = 0;
-	int hashType = NID_sha1;
-	
-	if(getFingerprint(bufferData, &bufferLen, &hashType) != 0)
+	if(!m_pX509)
 		return -1;
 	
-	return hashType;
+	int NID = OBJ_obj2nid(m_pX509->sig_alg->algorithm);
+	if (NID == NID_undef) 
+	{
+		// unknow digest function: it means the signature can't be verified: the certificate can't be trusted
+		return 0;
+	}
 	
+	const EVP_MD * mdType = NULL;
+	mdType = EVP_get_digestbyname(OBJ_nid2sn(NID));
+	
+	if (mdType == NULL) 
+	{
+		// Unknown digest
+		return 0;
+	}
+	
+	return mdType->type;
 }
 
-const char * KviSSLCertificate::fingerprintHashStr()
+const char * KviSSLCertificate::fingerprintDigestStr()
 {
-	unsigned char bufferData[EVP_MAX_MD_SIZE];
-	unsigned int bufferLen = 0;
-	int hashType = NID_sha1;
+	int iDigestType = fingerprintDigestId();
 	
-	if(getFingerprint(bufferData, &bufferLen, &hashType) != 0)
+	if(iDigestType == 0)
 		return "";
 	
-	return OBJ_nid2ln(hashType);
+	return OBJ_nid2ln(iDigestType);
 }
 
-const char * KviSSLCertificate::fingerprintContents()
+const char * KviSSLCertificate::fingerprintContents(QString digestName)
 {
 	unsigned char bufferData[EVP_MAX_MD_SIZE];
 	unsigned int bufferLen = 0;
-	int hashType = NID_sha1;
+	const char * pDigestName;
+	if (digestName.isEmpty())
+	{
+		// use the one used to create the signature
+		pDigestName = OBJ_nid2sn(fingerprintDigestId());
+	} else {
+		pDigestName = digestName.toUtf8().data();
+	}
 	
-	if(getFingerprint(bufferData, &bufferLen, &hashType) != 0)
+	if(getFingerprint(bufferData, &bufferLen, pDigestName) != 0)
 		return "";
 	
 	QByteArray digestByteArray = QByteArray::fromRawData((char *) bufferData, bufferLen);
 	return digestByteArray.toHex().data();
 }
 
-/**
- * Be careful, in order to work, these functions need to be executed once:
- * OpenSSL_add_all_digests();
- * OpenSSL_add_all_algorithms();
- * (generally at startup)
- */
-int KviSSLCertificate::getFingerprint(unsigned char * bufferData, unsigned int * bufferLen, int * hashFunctionId)
+int KviSSLCertificate::getFingerprint(unsigned char * bufferData, unsigned int * bufferLen, const char * digestName)
 {
 	//TODO if in the future we will want to check the return value, ensure this
 	// doesn't collide with the one from openssl
@@ -678,14 +688,11 @@ int KviSSLCertificate::getFingerprint(unsigned char * bufferData, unsigned int *
 		return -99;
 	
 	const EVP_MD * mdType = NULL;
+	mdType = EVP_get_digestbyname(digestName);
 	
-	//qDebug() << *hashFunctionId << OBJ_nid2ln(*hashFunctionId);
-	
-	mdType = EVP_get_digestbynid(*hashFunctionId);
-	if (mdType == NULL)
+	if (mdType == NULL) 
 	{
-		// internal error, like unknown
-// 		qDebug() << "EVP_get_digestbynid: failed, " << *hashFunctionId;
+		// Unknown digest
 		return -98;
 	}
 	
