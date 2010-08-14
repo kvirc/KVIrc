@@ -112,7 +112,7 @@
 				encKeyLen = decKeyLen;
 			} else {
 				// both keys missing
-				setLastError(__tr("Missing both encrypt and decrypt key: at least one is needed"));
+				setLastError(__tr2qs("Missing both encrypt and decrypt key: at least one is needed"));
 				return false;
 			}
 		}
@@ -162,15 +162,15 @@
 	{
 		switch(errCode)
 		{
-			case RIJNDAEL_SUCCESS: setLastError(__tr("Error 0: Success ?")); break;
-			case RIJNDAEL_UNSUPPORTED_MODE: setLastError(__tr("Unsupported crypt mode")); break;
-			case RIJNDAEL_UNSUPPORTED_DIRECTION: setLastError(__tr("Unsupported direction")); break;
-			case RIJNDAEL_UNSUPPORTED_KEY_LENGTH: setLastError(__tr("Unsupported key length")); break;
-			case RIJNDAEL_BAD_KEY: setLastError(__tr("Bad key data")); break;
-			case RIJNDAEL_NOT_INITIALIZED: setLastError(__tr("Engine not initialized")); break;
-			case RIJNDAEL_BAD_DIRECTION: setLastError(__tr("Invalid direction for this engine")); break;
-			case RIJNDAEL_CORRUPTED_DATA: setLastError(__tr("Corrupted message data or invalid decrypt key")); break;
-			default: setLastError(__tr("Unknown error")); break;
+			case RIJNDAEL_SUCCESS: setLastError(__tr2qs("Error 0: Success ?")); break;
+			case RIJNDAEL_UNSUPPORTED_MODE: setLastError(__tr2qs("Unsupported crypt mode")); break;
+			case RIJNDAEL_UNSUPPORTED_DIRECTION: setLastError(__tr2qs("Unsupported direction")); break;
+			case RIJNDAEL_UNSUPPORTED_KEY_LENGTH: setLastError(__tr2qs("Unsupported key length")); break;
+			case RIJNDAEL_BAD_KEY: setLastError(__tr2qs("Bad key data")); break;
+			case RIJNDAEL_NOT_INITIALIZED: setLastError(__tr2qs("Engine not initialized")); break;
+			case RIJNDAEL_BAD_DIRECTION: setLastError(__tr2qs("Invalid direction for this engine")); break;
+			case RIJNDAEL_CORRUPTED_DATA: setLastError(__tr2qs("Corrupted message data or invalid decrypt key")); break;
+			default: setLastError(__tr2qs("Unknown error")); break;
 		}
 	}
 
@@ -178,7 +178,7 @@
 	{
 		if(!m_pEncryptCipher)
 		{
-			setLastError(__tr("Ops...encrypt cipher not initialized"));
+			setLastError(__tr2qs("Ops...encrypt cipher not initialized"));
 			return KviCryptEngine::EncryptError;
 		}
 		int len = (int)kvi_strLen(plainText);
@@ -203,7 +203,7 @@
 		{
 			if(maxEncryptLen() > 0)
 			{
-				setLastError(__tr("Data buffer too long"));
+				setLastError(__tr2qs("Data buffer too long"));
 				return KviCryptEngine::EncryptError;
 			}
 		}
@@ -215,7 +215,7 @@
 	{
 		if(!m_pDecryptCipher)
 		{
-			setLastError(__tr("Ops...decrypt cipher not initialized"));
+			setLastError(__tr2qs("Ops...decrypt cipher not initialized"));
 			return KviCryptEngine::DecryptError;
 		}
 
@@ -271,7 +271,7 @@
 		*len = hex.hexToBuffer(&tmpBuf,false);
 		if(*len < 0)
 		{
-			setLastError(__tr("The message is not a hexadecimal string: this is not my stuff"));
+			setLastError(__tr2qs("The message is not a hexadecimal string: this is not my stuff"));
 			return false;
 		} else {
 			if(len > 0)
@@ -297,7 +297,7 @@
 		*len = base64.base64ToBuffer(&tmpBuf,false);
 		if(*len < 0)
 		{
-			setLastError(__tr("The message is not a base64 string: this is not my stuff"));
+			setLastError(__tr2qs("The message is not a base64 string: this is not my stuff"));
 			return false;
 		} else {
 			if(len > 0)
@@ -378,7 +378,7 @@
 				encKeyLen = decKeyLen;
 			} else {
 				// both keys missing
-				setLastError(__tr("Missing both encrypt and decrypt key: at least one is needed"));
+				setLastError(__tr2qs("Missing both encrypt and decrypt key: at least one is needed"));
 				return false;
 			}
 		}
@@ -411,7 +411,7 @@
 		{
 			if(maxEncryptLen() > 0)
 			{
-				setLastError(__tr("Data buffer too long"));
+				setLastError(__tr2qs("Data buffer too long"));
 				return KviCryptEngine::EncryptError;
 			}
 		}
@@ -653,7 +653,7 @@
 	{
 		if(*(encoded.ptr()) != '*')
 		{
-			debug("WARNING: Specified a CBC key but the incoming message doesn't seem to be a CBC one");
+			qDebug("WARNING: Specified a CBC key but the incoming message doesn't seem to be a CBC one");
 			return doDecryptECB(encoded,plain);
 		}
 		encoded.cutLeft(1);
@@ -662,12 +662,12 @@
 		int len = encoded.base64ToBuffer(&tmpBuf,false);
 		if(len < 0)
 		{
-			setLastError(__tr("The message is not a base64 string: this is not my stuff"));
+			setLastError(__tr2qs("The message is not a base64 string: this is not my stuff"));
 			return false;
 		}
 		if((len < 8) || (len % 8))
 		{
-			setLastError(__tr("The message doesn't seem to be encoded with CBC Mircryption"));
+			setLastError(__tr2qs("The message doesn't seem to be encoded with CBC Mircryption"));
 			if(len > 0)KviStr::freeBuffer(tmpBuf);
 			return false;
 		}
@@ -703,12 +703,12 @@ static bool rijndael_module_init(KviModule * m)
 	g_pEngineList = new KviPointerList<KviCryptEngine>;
 	g_pEngineList->setAutoDelete(false);
 
-	KviStr format = __tr("Cryptographic engine based on the\n" \
+	QString szFormat = __tr2qs("Cryptographic engine based on the\n" \
 		"Advanced Encryption Standard (AES)\n" \
 		"algorithm called Rijndael.\n" \
 		"The text is first encrypted with rijndael\n" \
-		"and then converted to %s notation.\n" \
-		"The keys used are %d bit long and will be padded\n" \
+		"and then converted to %1 notation.\n" \
+		"The keys used are %2 bit long and will be padded\n" \
 		"with zeros if you provide shorter ones.\n" \
 		"If only one key is provided, this engine\n" \
 		"will use it for both encrypting and decrypting.\n" \
@@ -720,9 +720,9 @@ static bool rijndael_module_init(KviModule * m)
 	KviCryptEngineDescription * d = new KviCryptEngineDescription;
 	d->szName = "Rijndael128Hex";
 	d->szAuthor = "Szymon Stefanek";
-	d->szDescription.sprintf(format.ptr(),__tr("hexadecimal"),128);
+	d->szDescription = QString(szFormat).arg(__tr2qs("hexadecimal")).arg(128);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocRijndael128HexEngine;
 	d->deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -730,9 +730,9 @@ static bool rijndael_module_init(KviModule * m)
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael192Hex";
 	d->szAuthor = "Szymon Stefanek";
-	d->szDescription.sprintf(format.ptr(),__tr("hexadecimal"),192);
+	d->szDescription = QString(szFormat).arg(__tr2qs("hexadecimal")).arg(192);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocRijndael192HexEngine;
 	d->deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -740,9 +740,9 @@ static bool rijndael_module_init(KviModule * m)
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael256Hex";
 	d->szAuthor = "Szymon Stefanek";
-	d->szDescription.sprintf(format.ptr(),__tr("hexadecimal"),256);
+	d->szDescription = QString(szFormat).arg(__tr2qs("hexadecimal")).arg(256);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocRijndael256HexEngine;
 	d->deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -750,9 +750,9 @@ static bool rijndael_module_init(KviModule * m)
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael128Base64";
 	d->szAuthor = "Szymon Stefanek";
-	d->szDescription.sprintf(format.ptr(),__tr("base64"),128);
+	d->szDescription = QString(szFormat).arg(__tr2qs("base64")).arg(128);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocRijndael128Base64Engine;
 	d->deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -760,9 +760,9 @@ static bool rijndael_module_init(KviModule * m)
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael192Base64";
 	d->szAuthor = "Szymon Stefanek";
-	d->szDescription.sprintf(format.ptr(),__tr("base64"),192);
+	d->szDescription = QString(szFormat).arg(__tr2qs("base64")).arg(192);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocRijndael192Base64Engine;
 	d->deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -770,9 +770,9 @@ static bool rijndael_module_init(KviModule * m)
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael256Base64";
 	d->szAuthor = "Szymon Stefanek";
-	d->szDescription.sprintf(format.ptr(),__tr("base64"),256);
+	d->szDescription = QString(szFormat).arg(__tr2qs("base64")).arg(256);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocRijndael256Base64Engine;
 	d->deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -781,7 +781,7 @@ static bool rijndael_module_init(KviModule * m)
 	d = new KviCryptEngineDescription;
 	d->szName = "Mircryption";
 	d->szAuthor = "Szymon Stefanek";
-	d->szDescription = __tr("Popular cryptographic engine based on the\n" \
+	d->szDescription = __tr2qs("Popular cryptographic engine based on the\n" \
 		"old Blowfish encryption algorithm.\n" \
 		"The text is first encrypted with Blowfish \n" \
 		"and then converted to base64 notation.\n" \
@@ -794,7 +794,7 @@ static bool rijndael_module_init(KviModule * m)
 		"if you want to use CBC mode you must prefix\n" \
 		"your key(s) with \"cbc:\".\n");
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+		KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
 	d->allocFunc = allocMircryptionEngine;
 	d->deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -809,7 +809,8 @@ static bool rijndael_module_init(KviModule * m)
 static bool rijndael_module_cleanup(KviModule *m)
 {
 #ifdef COMPILE_CRYPT_SUPPORT
-	while(g_pEngineList->first())delete g_pEngineList->first();
+	while(g_pEngineList->first())
+		delete g_pEngineList->first();
 	delete g_pEngineList;
 	g_pEngineList = 0;
 	m->unregisterCryptEngines();

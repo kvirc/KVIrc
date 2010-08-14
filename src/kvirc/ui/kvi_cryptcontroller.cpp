@@ -60,13 +60,13 @@
 	{
 	}
 
-	KviCryptController::KviCryptController(QWidget * par,KviWindowToolPageButton* button,const char *,KviWindow * wnd,KviCryptSessionInfo * cur)
-	: KviWindowToolWidget(par,button)
+	KviCryptController::KviCryptController(QWidget * pParent, KviWindowToolPageButton * pButton, const char *,KviWindow * pWnd, KviCryptSessionInfo * pInfo)
+	: KviWindowToolWidget(pParent,pButton)
 	{
 		// Load the known encryption modules
 		(void)g_pModuleManager->loadModulesByCaps("crypt");
 
-		m_pWindow = wnd;
+		m_pWindow = pWnd;
 
 		setFocusPolicy(Qt::ClickFocus);
 
@@ -136,15 +136,15 @@
 
 		fillEngineList();
 
-		if(cur)
+		if(pInfo)
 		{
-			QListWidgetItem * it = m_pListBox->findItems(QString(cur->szEngineName),Qt::MatchFixedString).first();
-			if(it)
+			QListWidgetItem * pItem = m_pListBox->findItems(QString(pInfo->szEngineName),Qt::MatchFixedString).first();
+			if(pItem)
 			{
 				m_pEnableCheck->setChecked(true);
-				m_pListBox->setCurrentItem(it);
-				m_pEnableEncrypt->setChecked(cur->bDoEncrypt);
-				m_pEnableDecrypt->setChecked(cur->bDoDecrypt);
+				m_pListBox->setCurrentItem(pItem);
+				m_pEnableEncrypt->setChecked(pInfo->bDoEncrypt);
+				m_pEnableDecrypt->setChecked(pInfo->bDoDecrypt);
 			} else enableWidgets(false);
 		} else {
 			enableWidgets(false);
@@ -171,8 +171,8 @@
 			KviPointerHashTableIterator<QString,KviCryptEngineDescription> it(*a);
 			while(it.current())
 			{
-				KviStr modName = it.current()->providerHandle ? ((KviModule *)(it.current()->providerHandle))->name() : "";
-				(void)(new KviEngineListBoxItem(m_pListBox,it.current(),modName.ptr()));
+				QString szModName = it.current()->providerHandle ? ((KviModule *)(it.current()->providerHandle))->name() : "";
+				(void)(new KviEngineListBoxItem(m_pListBox,it.current(),szModName.toUtf8().data()));
 				++it;
 			}
 			if(m_pListBox->count() != 0)return;
@@ -185,12 +185,12 @@
 		if(it)
 		{
 			KviEngineListBoxItem * eit = (KviEngineListBoxItem *)it;
-			m_pAuthorLabel->setText(eit->m_szAuthor.ptr());
-			QString des = "<p>";
-			des += eit->m_szDescription.ptr();
-			des += "<br><br>";
-			des += __tr2qs("If you don't want to encrypt a particular text line then just start it with the CTRL+P prefix");
-			m_pDescriptionLabel->setText(des);
+			m_pAuthorLabel->setText(eit->m_szAuthor.toUtf8().data());
+			QString szDesc = "<p>";
+			szDesc += eit->m_szDescription.toUtf8().data();
+			szDesc += "<br><br>";
+			szDesc += __tr2qs("If you don't want to encrypt a particular text line then just start it with the CTRL+P prefix");
+			m_pDescriptionLabel->setText(szDesc);
 			m_pEnableEncrypt->setEnabled(eit->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT);
 			m_pEncryptKeyLabel->setEnabled((eit->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT) &&
 				(eit->m_iFlags & KVI_CRYPTENGINE_WANT_ENCRYPT_KEY));
@@ -257,8 +257,8 @@
 					m_pSessionInfo = allocateCryptSessionInfo();
 					// Reregister the module in case that it has been unloaded
 					// while this dialog was open
-					if(m_pLastItem->m_szModuleName.hasData())(void)g_pModuleManager->getModule(m_pLastItem->m_szModuleName.ptr());
-					m_pSessionInfo->pEngine = g_pCryptEngineManager->allocateEngine(m_pLastItem->m_szName.ptr());
+					if(!m_pLastItem->m_szModuleName.isEmpty())(void)g_pModuleManager->getModule(m_pLastItem->m_szModuleName.toUtf8().data());
+					m_pSessionInfo->pEngine = g_pCryptEngineManager->allocateEngine(m_pLastItem->m_szName.toUtf8().data());
 					if(!m_pSessionInfo->pEngine)
 					{
 						m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Crypt: Can't create an engine instance: crypting disabled"));
@@ -268,11 +268,11 @@
 						// initialize the engine
 						if(!initializeEngine(m_pSessionInfo->pEngine))
 						{
-							KviStr errStr = m_pSessionInfo->pEngine->lastError();
+							QString szErrStr = m_pSessionInfo->pEngine->lastError();
 							g_pCryptEngineManager->deallocateEngine(m_pSessionInfo->pEngine);
 							delete m_pSessionInfo;
 							m_pSessionInfo = 0;
-							m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Crypt: Can't initialize the engine :%s"),errStr.ptr());
+							m_pWindow->output(KVI_OUT_SYSTEMERROR,__tr2qs("Crypt: Can't initialize the engine :%s"),szErrStr.toUtf8().data());
 						} else {
 							// ok, engine ready and waiting...
 							m_pSessionInfo->szEngineName = m_pLastItem->m_szName;
@@ -286,60 +286,61 @@
 		emit done();
 	}
 
-	bool KviCryptController::initializeEngine(KviCryptEngine * eng)
+	bool KviCryptController::initializeEngine(KviCryptEngine * pEngine)
 	{
-		KviStr m_szEncryptKey;
-		KviStr m_szDecryptKey;
+		KviStr szEncryptKey;
+		KviStr szDecryptKey;
 
-		char * encKey = 0;
-		int encKeyLen = 0;
+		char * pcEncKey = 0;
+		char * pcDecKey = 0;
+		int iEncKeyLen = 0;
+		int iDecKeyLen = 0;
 
 		if(m_pEnableEncrypt->isChecked())
 		{
-			m_szEncryptKey = m_pEncryptKeyEdit->text();
+			szEncryptKey = m_pEncryptKeyEdit->text();
 			if(m_pEncryptHexKeyCheck->isChecked())
 			{
 				char * tmpKey;
-				encKeyLen = m_szEncryptKey.hexToBuffer(&tmpKey,false);
-				if(encKeyLen > 0)
+				iEncKeyLen = szEncryptKey.hexToBuffer(&tmpKey,false);
+				if(iEncKeyLen > 0)
 				{
-					encKey = (char *)kvi_malloc(encKeyLen);
-					kvi_memmove(encKey,tmpKey,encKeyLen);
+					pcEncKey = (char *)kvi_malloc(iEncKeyLen);
+					kvi_memmove(pcEncKey,tmpKey,iEncKeyLen);
 					KviStr::freeBuffer(tmpKey);
 				}
 			} else {
-				encKey = (char *)kvi_malloc(m_szEncryptKey.len());
-				kvi_memmove(encKey,m_szEncryptKey.ptr(),m_szEncryptKey.len());
-				encKeyLen = m_szEncryptKey.len();
+				pcEncKey = (char *)kvi_malloc(szEncryptKey.len());
+				kvi_memmove(pcEncKey,szEncryptKey.ptr(),szEncryptKey.len());
+				iEncKeyLen = szEncryptKey.len();
 			}
 		}
-
-		char * decKey = 0;
-		int decKeyLen = 0;
 
 		if(m_pEnableDecrypt->isChecked())
 		{
-			m_szDecryptKey = m_pDecryptKeyEdit->text();
+			szDecryptKey = m_pDecryptKeyEdit->text();
 			if(m_pDecryptHexKeyCheck->isChecked())
 			{
 				char * tmpKey;
-				decKeyLen = m_szDecryptKey.hexToBuffer(&tmpKey,false);
-				if(decKeyLen > 0)
+				iDecKeyLen = szDecryptKey.hexToBuffer(&tmpKey,false);
+				if(iDecKeyLen > 0)
 				{
-					decKey = (char *)kvi_malloc(decKeyLen);
-					kvi_memmove(decKey,tmpKey,decKeyLen);
+					pcDecKey = (char *)kvi_malloc(iDecKeyLen);
+					kvi_memmove(pcDecKey,tmpKey,iDecKeyLen);
 					KviStr::freeBuffer(tmpKey);
 				}
 			} else {
-				decKey = (char *)kvi_malloc(m_szDecryptKey.len());
-				kvi_memmove(decKey,m_szDecryptKey.ptr(),m_szDecryptKey.len());
-				decKeyLen = m_szDecryptKey.len();
+				pcDecKey = (char *)kvi_malloc(szDecryptKey.len());
+				kvi_memmove(pcDecKey,szDecryptKey.ptr(),szDecryptKey.len());
+				iDecKeyLen = szDecryptKey.len();
 			}
 		}
 
-		bool bRet = eng->init(encKey,encKeyLen,decKey,decKeyLen);
-		if(encKey)kvi_free(encKey);
-		if(decKey)kvi_free(decKey);
+		bool bRet = pEngine->init(pcEncKey,iEncKeyLen,pcDecKey,iDecKeyLen);
+		if(pcEncKey)
+			kvi_free(pcEncKey);
+		if(pcDecKey)
+			kvi_free(pcDecKey);
 
 		return bRet;
 	}

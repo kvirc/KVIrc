@@ -43,103 +43,104 @@
 // AES/Rijndael
 class KviRijndaelEngine : public KviCryptEngine
 {
-    Q_OBJECT
-    public:
-        KviRijndaelEngine();
-        virtual ~KviRijndaelEngine();
-    protected:
-        virtual int getKeyLen(){ return CryptoPP::AES::DEFAULT_KEYLENGTH; };
-        virtual int getEncoding(){ return KVI_RIJNDAEL_HEX; };
-    private:
-        std::string m_szEncKey;
-        std::string m_szDecKey;
-    public:
-        virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
-        virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviStr &outBuffer);
-        virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviStr &plainText);
+	Q_OBJECT
+public:
+	KviRijndaelEngine();
+	virtual ~KviRijndaelEngine();
+protected:
+	virtual int getKeyLen(){ return CryptoPP::AES::DEFAULT_KEYLENGTH; };
+	virtual int getEncoding(){ return KVI_RIJNDAEL_HEX; };
+private:
+	std::string m_szEncKey;
+	std::string m_szDecKey;
+public:
+	virtual bool init(const char * pcEncKey, int iEncKeyLen, const char * pcDecKey, int iDecKeyLen);
+	virtual KviCryptEngine::EncryptResult encrypt(const char * pcPlainText, KviStr & szOutBuffer);
+	virtual KviCryptEngine::DecryptResult decrypt(const char * pcInBuffer, KviStr & szPlainText);
 };
 
 class KviRijndael128HexEngine : public KviRijndaelEngine
 {
-    Q_OBJECT
-    public:
-        KviRijndael128HexEngine() : KviRijndaelEngine() {};
-        virtual ~KviRijndael128HexEngine(){};
-    protected:
-        virtual int getKeyLen(){ return CryptoPP::AES::MIN_KEYLENGTH; };
-        virtual int getEncoding(){ return KVI_RIJNDAEL_HEX; };
+	Q_OBJECT
+public:
+	KviRijndael128HexEngine() : KviRijndaelEngine() {};
+	virtual ~KviRijndael128HexEngine(){};
+protected:
+	virtual int getKeyLen(){ return CryptoPP::AES::MIN_KEYLENGTH; };
+	virtual int getEncoding(){ return KVI_RIJNDAEL_HEX; };
 };
 
 class KviRijndael192HexEngine : public KviRijndaelEngine
 {
-    Q_OBJECT
-    public:
-        KviRijndael192HexEngine() : KviRijndaelEngine() {};
-        virtual ~KviRijndael192HexEngine(){};
-    protected:
-        virtual int getKeyLen(){ return (CryptoPP::AES::MIN_KEYLENGTH + CryptoPP::AES::KEYLENGTH_MULTIPLE); };
-        virtual int getEncoding() { return KVI_RIJNDAEL_HEX; };
+	Q_OBJECT
+public:
+	KviRijndael192HexEngine() : KviRijndaelEngine() {};
+	virtual ~KviRijndael192HexEngine(){};
+protected:
+	virtual int getKeyLen(){ return (CryptoPP::AES::MIN_KEYLENGTH + CryptoPP::AES::KEYLENGTH_MULTIPLE); };
+	virtual int getEncoding() { return KVI_RIJNDAEL_HEX; };
 };
 
 class KviRijndael256HexEngine : public KviRijndaelEngine
 {
-    Q_OBJECT
-    public:
-        KviRijndael256HexEngine() : KviRijndaelEngine() {};
-        virtual ~KviRijndael256HexEngine(){};
-    protected:
-        virtual int getKeyLen(){ return CryptoPP::AES::MAX_KEYLENGTH; };
-        virtual int getEncoding() { return KVI_RIJNDAEL_HEX; };
+	Q_OBJECT
+public:
+	KviRijndael256HexEngine() : KviRijndaelEngine() {};
+	virtual ~KviRijndael256HexEngine(){};
+protected:
+	virtual int getKeyLen(){ return CryptoPP::AES::MAX_KEYLENGTH; };
+	virtual int getEncoding() { return KVI_RIJNDAEL_HEX; };
 };
 
 class KviRijndael128Base64Engine : public KviRijndaelEngine
 {
-    Q_OBJECT
-    public:
-        KviRijndael128Base64Engine() : KviRijndaelEngine() {};
-        virtual ~KviRijndael128Base64Engine(){};
-    protected:
-        virtual int getKeyLen(){ return CryptoPP::AES::MIN_KEYLENGTH; };
-        virtual int getEncoding() { return KVI_RIJNDAEL_B64; };
+	Q_OBJECT
+public:
+	KviRijndael128Base64Engine() : KviRijndaelEngine() {};
+	virtual ~KviRijndael128Base64Engine(){};
+protected:
+	virtual int getKeyLen(){ return CryptoPP::AES::MIN_KEYLENGTH; };
+	virtual int getEncoding() { return KVI_RIJNDAEL_B64; };
 };
 
 class KviRijndael192Base64Engine : public KviRijndaelEngine
 {
-    Q_OBJECT
-    public:
-        KviRijndael192Base64Engine() : KviRijndaelEngine() {};
-        virtual ~KviRijndael192Base64Engine(){};
-    protected:
-        virtual int getKeyLen(){ return (CryptoPP::AES::MIN_KEYLENGTH + CryptoPP::AES::KEYLENGTH_MULTIPLE); };
-        virtual int getEncoding() { return KVI_RIJNDAEL_B64; };
+	Q_OBJECT
+public:
+	KviRijndael192Base64Engine() : KviRijndaelEngine() {};
+	virtual ~KviRijndael192Base64Engine(){};
+protected:
+	virtual int getKeyLen(){ return (CryptoPP::AES::MIN_KEYLENGTH + CryptoPP::AES::KEYLENGTH_MULTIPLE); };
+	virtual int getEncoding() { return KVI_RIJNDAEL_B64; };
 };
 
 class KviRijndael256Base64Engine : public KviRijndaelEngine
 {
-    Q_OBJECT
-    public:
-        KviRijndael256Base64Engine() : KviRijndaelEngine() {};
-        virtual ~KviRijndael256Base64Engine(){};
-    protected:
-        virtual int getKeyLen(){ return CryptoPP::AES::MAX_KEYLENGTH; };
-        virtual int getEncoding() { return KVI_RIJNDAEL_B64; };
+	Q_OBJECT
+public:
+	KviRijndael256Base64Engine() : KviRijndaelEngine() {};
+	virtual ~KviRijndael256Base64Engine(){};
+protected:
+	virtual int getKeyLen(){ return CryptoPP::AES::MAX_KEYLENGTH; };
+	virtual int getEncoding() { return KVI_RIJNDAEL_B64; };
 };
 
 // Blowfish (named »Mircryption« to be a real drop in replacement, hopefully)
 class KviMircryptionEngine : public KviCryptEngine
 {
-    Q_OBJECT
-    public:
-        KviMircryptionEngine();
-        ~KviMircryptionEngine();
-        
-        virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
-        virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviStr &outBuffer);
-        virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviStr &plainText);
-    private:
-        std::string m_szEncKey;
-        std::string m_szDecKey;
-        bool m_bEncryptCBC;
-        bool m_bDecryptCBC;
+	Q_OBJECT
+public:
+	KviMircryptionEngine();
+	~KviMircryptionEngine();
+	
+	virtual bool init(const char * pcEncKey, int iEncKeyLen, const char * pcDecKey, int iDecKeyLen);
+	virtual KviCryptEngine::EncryptResult encrypt(const char * pcPlainText, KviStr & szOutBuffer);
+	virtual KviCryptEngine::DecryptResult decrypt(const char * pcInBuffer, KviStr & szPlainText);
+private:
+	std::string m_szEncKey;
+	std::string m_szDecKey;
+	bool m_bEncryptCBC;
+	bool m_bDecryptCBC;
 };
+
 #endif // _LIBKVIRIJNDAEL_H_

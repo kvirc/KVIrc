@@ -123,13 +123,13 @@
 		KviCryptEngineDescription(){};
 		virtual ~KviCryptEngineDescription(){};
 	public:
-		QString                       szName;           // engine name
-		QString                       szDescription;    // details
-		QString                       szAuthor;         // algorithm author
-		int                           iFlags;           // properties
-		crypt_engine_allocator_func   allocFunc;        // engine allocator
-		crypt_engine_deallocator_func deallocFunc;      // deallocation function (if called from outside the origin module)
-		void *                        providerHandle;   // used to identify the provider module
+		QString                       m_szName;           // engine name
+		QString                       m_szDescription;    // details
+		QString                       m_szAuthor;         // algorithm author
+		int                           m_iFlags;           // properties
+		crypt_engine_allocator_func   m_allocFunc;        // engine allocator
+		crypt_engine_deallocator_func m_deallocFunc;      // deallocation function (if called from outside the origin module)
+		void                        * m_providerHandle;   // used to identify the provider module
 	};
 
 
