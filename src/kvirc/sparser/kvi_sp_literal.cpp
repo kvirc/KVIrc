@@ -666,8 +666,8 @@ void KviServerParser::parseLiteralKick(KviIrcMessage *msg)
 #ifdef COMPILE_CRYPT_SUPPORT
 	#define DECRYPT_IF_NEEDED(_target,_txt,_type,_type2,_buffer,_retptr,_retmsgtype) \
 		if(KviCryptSessionInfo * cinf = _target->cryptSessionInfo()){ \
-			if(cinf->m_bDoDecrypt){ \
-				switch(cinf->m_pEngine->decrypt(_txt,_buffer)) \
+			if(cinf->bDoDecrypt){ \
+				switch(cinf->pEngine->decrypt(_txt,_buffer)) \
 				{ \
 					case KviCryptEngine::DecryptOkWasEncrypted: \
 						_retptr = _buffer.ptr(); \
@@ -680,7 +680,7 @@ void KviServerParser::parseLiteralKick(KviIrcMessage *msg)
 					break; \
 					default: /* also case KviCryptEngine::DecryptError: */ \
 					{ \
-						QString szEngineError = cinf->m_pEngine->lastError(); \
+						QString szEngineError = cinf->pEngine->lastError(); \
 						_target->output(KVI_OUT_SYSTEMERROR, \
 							__tr2qs("The following message appears to be encrypted, but the crypto engine failed to decode it: %Q"), \
 							&szEngineError); \

@@ -186,7 +186,7 @@ unsigned int KviModule::secondsSinceLastAccess()
 
 void KviModule::registerCryptEngine(KviCryptEngineDescription * d)
 {
-	d->m_providerHandle = (void *)this;
+	d->providerHandle = (void *)this;
 	g_pCryptEngineManager->registerEngine(d);
 }
 

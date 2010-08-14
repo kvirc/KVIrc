@@ -45,7 +45,7 @@
 	{
 	public:
 		KviCryptEngine * pEngine;
-		QString          szEngineName;
+		KviStr           szEngineName;
 		bool             bDoEncrypt;
 		bool             bDoDecrypt;
 	};
@@ -57,18 +57,19 @@
 		KviEngineListBoxItem(KviTalListWidget * lb,KviCryptEngineDescription * d,const char * modName);
 		~KviEngineListBoxItem();
 	public:
-		QString m_szName;
-		QString m_szAuthor;
-		QString m_szDescription;
-		QString m_szModuleName;
-		int     m_iFlags;
+		KviStr m_szName;
+		KviStr m_szAuthor;
+		KviStr m_szDescription;
+		KviStr m_szModuleName;
+		int m_iFlags;
 	};
+
 
 	class KVIRC_API KviCryptController : public KviWindowToolWidget
 	{
 		Q_OBJECT
 	public:
-		KviCryptController(QWidget * pParent, KviWindowToolPageButton * pButton, const char * name,KviWindow * pWnd, KviCryptSessionInfo * pInfo);
+		KviCryptController(QWidget * parent,KviWindowToolPageButton* button,const char * name,KviWindow * wnd,KviCryptSessionInfo * cur);
 		~KviCryptController();
 	protected:
 		KviWindow            * m_pWindow;
@@ -89,20 +90,23 @@
 		KviCryptSessionInfo  * m_pSessionInfo;
 	private slots:
 		void enableCheckToggled(bool bChecked);
-		void engineHighlighted(QListWidgetItem * pItem, QListWidgetItem *);
+		void engineHighlighted(QListWidgetItem *it, QListWidgetItem *);
 		void okClicked();
 	public:
 		KviCryptSessionInfo * getNewSessionInfo();
 		static KviCryptSessionInfo * allocateCryptSessionInfo();
-		static void destroyCryptSessionInfo(KviCryptSessionInfo ** ppInfo);
+		static void destroyCryptSessionInfo(KviCryptSessionInfo ** inf);
 	private:
 		void fillEngineList();
 		void noEnginesAvailable();
 		void enableWidgets(bool bEnabled);
-		bool initializeEngine(KviCryptEngine * pEngine);
+		bool initializeEngine(KviCryptEngine * eng);
 	signals:
 		void done();
 	};
+
+
 #endif //COMPILE_CRYPT_SUPPORT
+
 
 #endif //!_KVI_CRYPTCONTROLLER_H_

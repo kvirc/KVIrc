@@ -1514,11 +1514,11 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 			if(initializeCryptEngine(e,enc,dec,szError))
 			{
 				KviCryptSessionInfo * inf = KviCryptController::allocateCryptSessionInfo();
-				inf->m_pEngine = e;
-				inf->m_szEngineName = szEngine;
+				inf->pEngine = e;
+				inf->szEngineName = szEngine;
 
-				inf->m_bDoEncrypt = (!c->hasSwitch('n',"onlydecrypt"));
-				inf->m_bDoDecrypt = (!c->hasSwitch('m',"onlyencrypt")) || c->hasSwitch('n',"onlydecrypt");
+				inf->bDoEncrypt = (!c->hasSwitch('n',"onlydecrypt"));
+				inf->bDoDecrypt = (!c->hasSwitch('m',"onlyencrypt")) || c->hasSwitch('n',"onlydecrypt");
 				pWnd->setCryptSessionInfo(inf);
 			} else {
 				if(szError.isEmpty())szError = __tr2qs("Unknown engine error");
