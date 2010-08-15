@@ -37,7 +37,6 @@ KviIrcConnectionServerInfo::KviIrcConnectionServerInfo()
 	m_szSupportedModeFlags = "ov";
 	m_pModePrefixTable = 0;
 	buildModePrefixTable();
-	m_bSupportsModesIe = true;
 	m_bSupportsWatchList = false;
 	m_bSupportsCodePages = false;
 	m_bSupportsCap = false;
@@ -90,25 +89,20 @@ void KviIrcConnectionServerInfo::addSupportedCaps(const QString &szCapList)
 
 void KviIrcConnectionServerInfo::setSupportedChannelModes(const QString &szSupportedChannelModes)
 {
-	int pos=-1;
+	QStringList szAllModes = szSupportedChannelModes.split(',', QString::KeepEmptyParts);
 
-	pos=szSupportedChannelModes.indexOf(',');
-	if(pos>=0) m_szListModes=szSupportedChannelModes.left(pos);
+	if(szAllModes.count() != 4)
+	{
+		// in this situation, better not to make assumptions about which modes needs a parameter
+		return;
+	}
 
-	pos=szSupportedChannelModes.lastIndexOf(',');
-	if(pos>=0) m_szPlainModes=szSupportedChannelModes.right(szSupportedChannelModes.length()+pos-1);
+	m_szListModes = szAllModes.at(0);
+	m_szParameterModes = szAllModes.at(1);
+	m_szParameterWhenSetModes = szAllModes.at(2);
+	m_szPlainModes = szAllModes.at(3);
 
 	m_szSupportedChannelModes = szSupportedChannelModes;
-	m_bSupportsModesIe = (szSupportedChannelModes.contains('e') && szSupportedChannelModes.contains('I'));
-	m_bSupportsModeq = szSupportedChannelModes.contains('q');
-	
-	QChar* aux=(QChar*)szSupportedChannelModes.utf16();
-	while(aux->unicode())
-	{
-		if(!m_szSupportedChannelModes.contains(*aux))
-			m_szSupportedChannelModes.append(*aux);
-		aux++;
-	}
 }
 
 void KviIrcConnectionServerInfo::setSupportedModePrefixes(const QString &szSupportedModePrefixes,const QString &szSupportedModeFlags)

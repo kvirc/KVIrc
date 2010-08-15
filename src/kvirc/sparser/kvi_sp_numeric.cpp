@@ -221,6 +221,41 @@ void KviServerParser::parseNumeric005(KviIrcMessage *msg)
 		for(unsigned int i = 1;i < count;i++)
 		{
 			const char * p = msg->param(i);
+			/* Strings that we don't parse:
+			 * EXCEPTS -> supports channels mode e (ban exception): we already use CHANMODES to handle that
+			 * INVEX -> supports channels mode I (invite exception): we already use CHANMODES to handle that
+			 * MAXCHANNELS -> Maximum number of channels allowed to join. (deprecated by CHANLIMIT, eg: MAXCHANNELS=10)
+			 * CHANLIMIT -> Maximum number of channels allowed to join by channel prefix (eg: CHANLIMIT=#&!+:10) 
+			 * NICKLEN -> Maximum nickname length
+			 * MAXBANS -> Maximum number of bans per channel (deprecated by MAXLIST, eg: MAXBANS=30)
+			 * MAXLIST -> Maximum number entries in the list per mode (eg: MAXLIST=beI:30)
+			 * WALLCHOPS -> The server supports messaging channel operators (deprecated by STATUSMSG, eg usage: notice @#channel) 
+			 * WALLVOICES -> The server supports messaging channel voiced users (deprecated by STATUSMSG, eg usage: notice +#channel) 
+			 * STATUSMSG -> The server supports messaging a particular class of channel users (eg: STATUSMSG=+@)
+			 * CASEMAPPING -> Case mapping used for nick- and channel name comparing (eg: CASEMAPPING=rfc1459)
+			 * ELIST -> search extensions to list modes, like mask search, topic search, creation time search (eg: ELIST=MNUCT)
+			 * KICKLEN -> Maximum kick comment length (eg: KICKLEN=80)
+			 * CHANNELLEN -> Maximum channel name length (eg: CHANNELLEN=50)
+			 * CHIDLEN -> Channel ID length for !channels (deprecated by IDCHAN, 5 by default, eg: CHIDLEN=5)
+			 * IDCHAN -> The ID length for channels with an ID (eg: IDCHAN=!:5)
+			 * SILENCE -> Max entires for the SILENCE command (eg: SILENCE=15)
+			 * PENALTY -> Server gives extra penalty to some commands instead of the normal 2 seconds per message and 1 second for every 120 bytes in a message. 
+			 * FNC -> Forced nick change: the server could change the client nickname
+			 * SAFELIST -> The LIST reaply won't killl the client for excess flood.
+			 * AWAYLEN -> Maximum away message length (eg: AWAYLEN=160)
+			 * NOQUIT -> Server 2 server feature, no need to expose it to clients, but whatever..
+			 * USERIP -> USERIP command supported
+			 * CPRIVMSG -> CPRIVMSG mass-message command exists (eg usage: CPRIVMSG channel nick,nick2,... :text)
+			 * CNOTICE -> CNOTICE mass-notice command exists (eg usage: CNOTICE channel nick,nick2,... :text)
+			 * MAXNICKLEN -> Max length of nick for other users (like NICKLEN, but ensures the server won't overflow it for other users)
+			 * MAXTARGETS -> Maximum targets allowed for PRIVMSG and NOTICE commands (eg: MAXTARGETS=4)
+			 * KNOCK -> KNOCK command supported
+			 * VCHANS -> Virtual channels support 
+			 * WHOX -> The WHO command uses WHOX protocol. 
+			 * CALLERID -> The server supports server side ignores via the +g user mode
+			 * ACCEPT -> The server supports server side ignore (deprecated by CALLERID)
+			 * LANGUAGE -> The server supports the LANGUAGE command (experimental, eg: LANGUAGE=2,en,i-klingon)
+			 */
 			if(kvi_strEqualCIN("PREFIX=(",p,8))
 			{
 				p+=8;
@@ -237,7 +272,10 @@ void KviServerParser::parseNumeric005(KviIrcMessage *msg)
 			{
 				p+=10;
 				KviStr tmp = p;
-				if(tmp.hasData())msg->connection()->serverInfo()->setSupportedChannelTypes(tmp.ptr());
+				if(tmp.hasData())
+				{
+					msg->connection()->serverInfo()->setSupportedChannelTypes(tmp.ptr());
+				}
 			} else if(kvi_strEqualCI("WATCH",p) || kvi_strEqualCIN("WATCH=",p,6))
 			{
 				msg->connection()->serverInfo()->setSupportsWatchList(true);
@@ -296,6 +334,7 @@ void KviServerParser::parseNumeric005(KviIrcMessage *msg)
 				bUhNames=true;
 			}else if(kvi_strEqualCIN("CHARSET=",p,8))
 			{
+				// This is commonly present, but some implementations are surely incompatible
 				p+=8;
 				QString tmp = p;
 				msg->connection()->serverInfo()->setSupportsCodePages(true);

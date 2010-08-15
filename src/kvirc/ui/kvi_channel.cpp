@@ -619,10 +619,12 @@ QSize KviChannel::sizeHint() const
 
 void KviChannel::setChannelMode(char mode, bool bAdd)
 {
-	if(!m_pConsole->connection()->serverInfo()->supportedListModes().contains(mode)){
+	if(!m_pConsole->connection()->serverInfo()->supportedListModes().contains(mode))
+	{
 		if(bAdd)
 		{
-			if(!(m_szChannelMode.contains(mode)))m_szChannelMode.append(mode);
+			if(!(m_szChannelMode.contains(mode)))
+				m_szChannelMode.append(mode);
 		} else {
 			if(m_szChannelMode.contains(mode))
 			{

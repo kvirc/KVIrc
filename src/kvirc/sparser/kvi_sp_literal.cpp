@@ -1735,9 +1735,6 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 	int curParamSave = curParam;
 	bool bIsMe;
 
-	//FIXME: Use PREFIX in 005 numeric instead of bServerSupportsModeIe - get rid of it altogether
-	//bool bModeIe = console->connection()->serverInfo()->supportsModesIe();
-
 	if(KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges))
 	{
 		/* pre-loop the modes char*, to understand if this is a multi-mode change that needs
@@ -1835,34 +1832,6 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 				if(bIsMultiSingleMode)
 					iIconForCompactMode=KVI_OUT_LIMIT;
 			break;
-#define CHANUSER_MODE_PARAM(__modechar) \
-			case __modechar: \
-			aParam = msg->connection()->decodeText(msg->safeParam(curParam++)); \
-			chan->setChannelMode(*aux,bSet); \
-			if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode))) \
-			{ \
-				if(aParam.isEmpty()) \
-				{ \
-					chan->output(KVI_OUT_CHANMODE, \
-						__tr2qs("%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"), \
-						&nickBuffer,&szUser,&hostBuffer, \
-						bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux); \
-				} else { \
-					chan->output(KVI_OUT_CHANMODE, \
-						__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"), \
-						&nickBuffer,&szUser,&hostBuffer, \
-						bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam); \
-				} \
-			} \
-			if(bIsMultiSingleMode) \
-				iIconForCompactMode=KVI_OUT_CHANMODE; \
-		break;
-
-			//flood mode with parameter like "[5m#M4]:5", see bug #505
-			CHANUSER_MODE_PARAM('f');
-			//Channel join throttling like "4:5", see bug #731
-			CHANUSER_MODE_PARAM('j');
-
 #define CHANUSER_MODE(__modechar,__chanfunc,__evmeset,__evmeunset,__evset,__evunset,__icomeset,__icomeunset,__icoset,__icounset) \
 			case __modechar: \
 				if(msg->connection()->serverInfo()->isSupportedModeFlag(__modechar)) \
@@ -1906,9 +1875,9 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 			CHANUSER_MODE('u',setUserOp,KviEvent_OnMeUserOp,KviEvent_OnMeDeUserOp,KviEvent_OnUserOp,KviEvent_OnDeUserOp,KVI_OUT_MEUSEROP,KVI_OUT_MEDEUSEROP,KVI_OUT_USEROP,KVI_OUT_USERDEOP)
 
 			case 'q':
-				if(msg->connection()->serverInfo()->supportsModeq())
+				if(msg->connection()->serverInfo()->supportedListModes().contains('q'))
 				{
-					//freenode's quite ban (channel mode with mask)
+					// freenode's quite ban (channel mode with mask)
 					aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
 					chan->setMask(*aux,aParam,bSet,msg->connection()->decodeText(msg->safePrefix()),QDateTime::currentDateTime().toTime_t());
 					auxMask = new KviIrcMask(aParam);
@@ -1998,6 +1967,34 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 			CHANNEL_MODE('e',KviEvent_OnMeBanException,KviEvent_OnMeBanExceptionRemove,KviEvent_OnBanException,KviEvent_OnBanExceptionRemove,KVI_OUT_MEBANEXCEPT,KVI_OUT_MEBANUNEXCEPT,KVI_OUT_BANEXCEPT,KVI_OUT_BANUNEXCEPT)
 
 			default:
+			// check if the mode "eats" a parameter
+			if(msg->connection()->serverInfo()->supportedParameterModes().contains(*aux)
+				|| (msg->connection()->serverInfo()->supportedParameterWhenSetModes().contains(*aux)  && bSet)
+				|| msg->connection()->serverInfo()->supportedListModes().contains(*aux))
+			{
+				/*
+				 * Examples:
+				 * flood mode with parameter like "[5m#M4]:5", see bug #505
+				 * Channel join throttling like "4:5", see bug #731
+				 */
+				aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
+				chan->setChannelMode(*aux,bSet);
+				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
+				{
+					if(aParam.isEmpty())
+					{
+						chan->output(KVI_OUT_CHANMODE,
+							__tr2qs("%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"),
+							&nickBuffer,&szUser,&hostBuffer,
+							bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux);
+					} else {
+						chan->output(KVI_OUT_CHANMODE,
+							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"),
+							&nickBuffer,&szUser,&hostBuffer,
+							bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam);
+					}
+				}
+			} else {
 				chan->setChannelMode(*aux,bSet);
 				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
 				{
@@ -2006,6 +2003,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 						&nickBuffer,&szUser,&hostBuffer,
 						bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux);
 				}
+			}
 				if(bIsMultiSingleMode)
 					iIconForCompactMode=KVI_OUT_CHANMODE;
 			break;

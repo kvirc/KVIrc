@@ -57,6 +57,7 @@ void KviModeWidget::reset()
 
 void KviModeWidget::refreshModes()
 {
+	// TODO: support other complex supported modes (the one that need a parameter)
 	QString szMode=m_pChannel->channelMode();
 	if(!m_pChannel->channelKey().isEmpty())
 		szMode+=QString(" k:%1").arg(m_pChannel->channelKey());

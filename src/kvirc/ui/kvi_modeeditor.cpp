@@ -37,21 +37,13 @@
 #include <QLayout>
 #include <QLabel>
 
-
-//////////////////////////////////////////////////////////////////////
-// class KviModeEditor
-//
-//////////////////////////////////////////////////////////////////////
-
-//static char checkable_modes_table[KVI_NUM_CHECKABLE_MODES] = { 'p','s','t','n','m','i'};
-
 KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char *,KviConsole * c,const QString &mode,const QString &key,const QString &limit)
 : KviWindowToolWidget(par,button)
 {
 	m_szMode = mode;
 	m_szKey = key;
 	m_szLimit = limit;
-	bool isEnabled=1;
+	bool isEnabled = true;
 
 	QObject * w = parent();
 	while(w)
@@ -59,7 +51,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		if(w->inherits("KviChannel"))
 		{
 			KviChannel *chan = ((KviChannel *)w);
-			if(!( chan->isMeHalfOp() || chan->isMeOp() || chan->isMeChanOwner() || chan->isMeChanAdmin() || chan->connection()->userInfo()->hasUserMode('o') || chan->connection()->userInfo()->hasUserMode('O') ) )  isEnabled=0;
+			if(!( chan->isMeHalfOp() || chan->isMeOp() || chan->isMeChanOwner() || chan->isMeChanAdmin() || chan->connection()->userInfo()->hasUserMode('o') || chan->connection()->userInfo()->hasUserMode('O') ) )  isEnabled = false;
 			break;
 		}
 		w = w->parent();
@@ -102,7 +94,6 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 
 	m_pCheckBoxes = new KviPointerList<QCheckBox>;
 	m_pCheckBoxes->setAutoDelete(false);
-
 
 	// first che basic checkable modes pstnmi
 	QString szModes = "pstnmi";
@@ -158,25 +149,20 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		m_pKeyEdit->setEnabled(false);
 	}
 
+	// add plain supported modes (the one that doesn't need a parameter)
 	if(c->connection())
 	{
 		if(c->connection()->serverInfo())
-			szModes = c->connection()->serverInfo()->supportedChannelModes();
+			szModes = c->connection()->serverInfo()->supportedPlainModes();
 	}
 
-	int idx = szModes.lastIndexOf(',');
-	if(idx != -1)szModes.remove(0,idx+1);
-
-	szModes.replace("p","");
-	szModes.replace("s","");
-	szModes.replace("t","");
-	szModes.replace("n","");
-	szModes.replace("m","");
-	szModes.replace("i","");
-	szModes.replace(",","");
-	szModes.replace("b","");
-	szModes.replace("k","");
-	szModes.replace("l","");
+	// remove modes that we already implemented
+	szModes.remove("p");
+	szModes.remove("s");
+	szModes.remove("t");
+	szModes.remove("n");
+	szModes.remove("m");
+	szModes.remove("i");
 
 	while(!szModes.isEmpty())
 	{
@@ -192,6 +178,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		g->addWidget(cb,i,0,1,3);
 	}
 
+	// TODO: add complex supported modes (the one that need a parameter)
 	i++;
 
 	g->setRowStretch(i,1);
