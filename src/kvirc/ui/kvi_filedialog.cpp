@@ -103,7 +103,7 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 	{
 		while(1)
 		{
-			szBuffer = QFileDialog::getSaveFileName(pParent,szCaption,szInitial,szFilter);
+			szBuffer = QFileDialog::getSaveFileName(pParent,szCaption,szInitial,szFilter,0,QFileDialog::DontConfirmOverwrite);
 			KviFileUtils::adjustFilePath(szBuffer);
 			//return !buffer.isEmpty();
 			if(szBuffer.isEmpty())
