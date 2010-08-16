@@ -523,28 +523,28 @@ __KVI_EXTERN KVILIB_API bool kvi_matchStringWithTerminator(register const char *
 __KVI_EXTERN KVILIB_API int kvi_strMatchRevCS(const char *str1, const char *str2, int index=-1);
 
 // KviStr comparison non-member operators
-__KVI_EXTERN KVILIB_API inline bool operator==(const KviStr &left,const KviStr &right)
+__KVI_EXTERN inline bool operator==(const KviStr &left,const KviStr &right)
 { return (left.m_len == right.m_len) ? kvi_strEqualCS(left.m_ptr,right.m_ptr) : false; }
-__KVI_EXTERN KVILIB_API inline bool operator==(const KviStr &left,const char *right)
+__KVI_EXTERN inline bool operator==(const KviStr &left,const char *right)
 { return kvi_strEqualCS(left.m_ptr,right); }
-__KVI_EXTERN KVILIB_API inline bool operator==(const char *left,const KviStr &right)
+__KVI_EXTERN inline bool operator==(const char *left,const KviStr &right)
 { return kvi_strEqualCS(left,right.m_ptr); }
-__KVI_EXTERN KVILIB_API inline bool operator!=(const KviStr &left,const KviStr &right)
+__KVI_EXTERN inline bool operator!=(const KviStr &left,const KviStr &right)
 { return !kvi_strEqualCS(left.m_ptr,right.m_ptr); }
-__KVI_EXTERN KVILIB_API inline bool operator!=(const KviStr &left,const char *right)
+__KVI_EXTERN inline bool operator!=(const KviStr &left,const char *right)
 { return !kvi_strEqualCS(left.m_ptr,right); }
-__KVI_EXTERN KVILIB_API inline bool operator!=(const char *left,const KviStr &right)
+__KVI_EXTERN inline bool operator!=(const char *left,const KviStr &right)
 { return !kvi_strEqualCS(left,right.m_ptr); }
 
-__KVI_EXTERN KVILIB_API inline KviStr operator+(const KviStr &left,const KviStr &right)
+__KVI_EXTERN inline KviStr operator+(const KviStr &left,const KviStr &right)
 { KviStr ret(left); ret += right; return ret; }
-__KVI_EXTERN KVILIB_API inline KviStr operator+(const KviStr &left,const char *right)
+__KVI_EXTERN inline KviStr operator+(const KviStr &left,const char *right)
 { KviStr ret(left); ret += right; return ret; }
-__KVI_EXTERN KVILIB_API inline KviStr operator+(const char *left,const KviStr &right)
+__KVI_EXTERN inline KviStr operator+(const char *left,const KviStr &right)
 { KviStr ret(left); ret += right; return ret; }
-__KVI_EXTERN KVILIB_API inline KviStr operator+(const KviStr &left,char right)
+__KVI_EXTERN inline KviStr operator+(const KviStr &left,char right)
 { KviStr ret(left); ret += right; return ret; }
-__KVI_EXTERN KVILIB_API inline KviStr operator+(char left,const KviStr &right)
+__KVI_EXTERN inline KviStr operator+(char left,const KviStr &right)
 { KviStr ret(left); ret += right; return ret; }
 
 inline int kvi_compare(const KviStr * p1,const KviStr * p2)
