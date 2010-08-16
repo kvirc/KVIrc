@@ -200,8 +200,6 @@
 #define KVI_SHORTCUTS_INPUT_BACKSPACE_2 Qt::ShiftModifier + Qt::Key_Backspace
 #define KVI_SHORTCUTS_INPUT_DELETE Qt::Key_Delete
 #define KVI_SHORTCUTS_INPUT_ESCAPE Qt::Key_Escape
-#define KVI_SHORTCUTS_INPUT_ALT Qt::Key_Alt
-#define KVI_SHORTCUTS_INPUT_ALT_2 Qt::Key_Meta
 #define KVI_SHORTCUTS_INPUT_DUMMY Qt::ShiftModifier + Qt::Key_Escape
 #define KVI_SHORTCUTS_INPUT_DUMMY_2 Qt::ShiftModifier + Qt::Key_Delete
 
