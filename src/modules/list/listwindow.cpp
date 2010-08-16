@@ -101,7 +101,7 @@ bool KviChannelTreeWidgetItem::operator<(const QTreeWidgetItem & other) const
 	{
 		case 0:
 			//channel
-			return m_pData->m_szChan < ((KviChannelTreeWidgetItem*)&other)->itemData()->m_szChan.toUpper();
+			return m_pData->m_szChan.toUpper() < ((KviChannelTreeWidgetItem*)&other)->itemData()->m_szChan.toUpper();
 			break;
 		case 1:
 			//users
