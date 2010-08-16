@@ -795,13 +795,7 @@ private slots:
 	* \return void
 	*/
 	void escapeHit();
-	
-	/**
-	* \brief Run when alt/meta key is pressed
-	* \return void
-	*/
-	void altHit();
-	
+
 	/**
 	* \brief Toggles the commandline's KVS/User-friendly mode
 	* \return void

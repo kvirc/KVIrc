@@ -1318,8 +1318,6 @@ void KviInputEditor::installShortcuts()
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_BACKSPACE_2),this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DELETE),this,SLOT(deleteHit()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_ESCAPE),this,SLOT(escapeHit()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_ALT),this,SLOT(altHit()),0,Qt::WidgetShortcut);
-	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_ALT_2),this,SLOT(altHit()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_COMMANDLINE),this,SLOT(toggleCommandMode()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY),this,SLOT(dummy()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY_2),this,SLOT(dummy()),0,Qt::WidgetShortcut);
@@ -1363,6 +1361,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 		return;
 	}
 
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	if((e->modifiers() & Qt::AltModifier) && (e->modifiers() & Qt::KeypadModifier))
 	{
 		// Qt::Key_Meta seems to substitute Qt::Key_Alt on some keyboards
@@ -1370,9 +1369,11 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 		{
 			m_szAltKeyCode = "";
 			return;
-		} else if((e->text().unicode()->toLatin1() >= '0') && (e->text().unicode()->toLatin1() <= '9'))
-		{
+		} else if((e->text().unicode()->toLatin1() >= '0') && (e->text().unicode()->toLatin1() <= '9')) {
 			m_szAltKeyCode += e->text().unicode()->toLatin1();
+			return;
+		} else if((e->key() >= Qt::Key_0) && (e->key() <= Qt::Key_9)) {
+			m_szAltKeyCode += e->key();
 			return;
 		}
 
@@ -1382,13 +1383,15 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 
 		return;
 	}
-	
+#endif
+
 	if(!e->text().isEmpty() && !m_bReadOnly)
 		insertText(e->text());
 }
 
 void KviInputEditor::keyReleaseEvent(QKeyEvent * e)
 {
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	if((e->key() == Qt::Key_Alt) || (e->key() == Qt::Key_Meta))
 	{
 		if(m_szAltKeyCode.hasData())
@@ -1404,6 +1407,7 @@ void KviInputEditor::keyReleaseEvent(QKeyEvent * e)
 		}
 		m_szAltKeyCode = "";
 	}
+#endif
 	e->ignore();
 }
 
@@ -2416,11 +2420,6 @@ void KviInputEditor::escapeHit()
 {
 	emit escapePressed();
 	return;
-}
-
-void KviInputEditor::altHit()
-{
-	m_szAltKeyCode = "";
 }
 
 void KviInputEditor::toggleCommandMode()
