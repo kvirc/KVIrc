@@ -157,10 +157,9 @@ protected slots:
 	void recursiveCollapseItems(KviClassEditorTreeWidgetItem * it);
 
 	void removeSelectedItems();
-/*
-	void slotFind();
-
 	void slotReplaceAll(const QString &before,const QString &after);
+
+/*
 	void classRefresh(const QString &szName);
 */
 

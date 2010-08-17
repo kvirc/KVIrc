@@ -170,6 +170,7 @@ KviClassEditor::KviClassEditor(QWidget * par)
 	hbox->setSpacing(0);
 	hbox->setMargin(0);
 	m_pClassNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
+	m_pClassNameLabel->setWordWrap(true);
 	m_pClassNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
 	m_pClassNameRenameButton->setEnabled(false);
 	connect(m_pClassNameRenameButton,SIGNAL(clicked()),this,SLOT(renameItem()));
@@ -197,9 +198,8 @@ KviClassEditor::KviClassEditor(QWidget * par)
 	m_pEditor = KviScriptEditor::createInstance(box);
 	m_pEditor->setFocus();
 
-	/*  connect(m_pEditor,SIGNAL(find(const QString &)),this,SLOT(slotFindWord(const QString &)));
+	connect(m_pEditor,SIGNAL(find(const QString &)),this,SLOT(slotFindWord(const QString &)));
 	connect(m_pEditor,SIGNAL(replaceAll(const QString &,const QString &)),this,SLOT(slotReplaceAll(const QString &,const QString &)));
-	*/
 	m_pContextPopup = new KviTalPopupMenu(this);
 
 	oneTimeSetup();
@@ -685,6 +685,8 @@ void KviClassEditor::renameNamespace(KviClassEditorTreeWidgetItem *pOldNamespace
 		activateItem(pOldNamespaceItem);
 		pOldNamespaceItem->setExpanded(true);
 	}
+	//searchReplace(szOldNameSpaceName+"::",true,szNewNameSpaceName+"::");
+
 }
 void KviClassEditor::saveLastEditedItem()
 {
@@ -898,6 +900,7 @@ void KviClassEditor::searchReplace(const QString &szSearch,bool bReplace,const Q
 				pItem->child(j)->setBackground(0, QColor(255,0,0,128));
 				if (bReplace){
 					QString &buffer=(QString &)((KviClassEditorTreeWidgetItem *)pItem->child(j))->buffer();
+					pItem->setClassNotBuilt(true);
 					buffer.replace(szSearch,szReplace,Qt::CaseInsensitive);
 				}
 				if (!bOpened)
@@ -959,17 +962,19 @@ void KviClassEditor::slotCollapseItems()
 		}
 	}
 }
-/*
+
 void KviClassEditor::slotReplaceAll(const QString &szFind,const QString &szReplace)
 {
 	m_pEditor->setFindText(szReplace);
-
+	searchReplace(szFind,true,szReplace);
+    /*
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
 		recursiveSearchReplace(szFind,(KviClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i),true,szReplace);
 	}
+	*/
 }
-*/
+
 void KviClassEditor::getExportClassBuffer(QString &buffer,KviClassEditorTreeWidgetItem * it)
 {
 	QString szBuf = it->buffer();

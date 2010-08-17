@@ -463,7 +463,6 @@ bool KviScriptEditorWidget::contextSensitiveHelp() const
 	int iPara, iIndex;
 	getCursorPosition(&iPara,&iIndex);
 	szBuffer = text(iPara);
-
 	getWordOnCursor(szBuffer,iIndex);
 	*/
 
@@ -1042,7 +1041,7 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog(QWidget * pParent, co
 
 	m_pCheckReplaceAll = new QCheckBox(this);
 	m_pCheckReplaceAll->setObjectName("replaceAll");
-	m_pCheckReplaceAll->setText(__tr2qs_ctx("&Replace in all Aliases","editor"));
+	m_pCheckReplaceAll->setText(__tr2qs_ctx("&Replace in all editor's items","editor"));
 	pLayout->addWidget(m_pCheckReplaceAll,2,0);
 
 	QPushButton * pCancelButton = new QPushButton(this);
