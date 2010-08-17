@@ -573,7 +573,7 @@ void KviServerParser::parseLiteralKick(KviIrcMessage *msg)
 			msg->setHaltOutput();
 		if(!KVI_OPTION_STRING(KviOption_stringOnMeKickedSound).isEmpty()) KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnMeKickedSound))));
 
-		QString szPass = chan->channelKey();
+		QString szPass = chan->hasChannelMode('k') ? chan->channelModeParam('k') : "";
 
 		if(KVI_OPTION_BOOL(KviOption_boolKeepChannelOpenOnKick))
 		{
@@ -1786,7 +1786,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 			case 'k':
 				if(bSet)aParam = msg->safeParam(curParam++);
 				else aParam = "";
-				chan->setChannelKey(aParam.toUtf8().data());
+				chan->setChannelModeWithParam('k',aParam);
 
 				if(bSet) {
 					if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnKeySet,chan,szNick,szUser,szHost,aParam))
@@ -1810,7 +1810,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 			case 'l':
 				if(bSet)aParam = msg->safeParam(curParam++);
 				else aParam = "";
-				chan->setChannelLimit(aParam.toUtf8().data());
+				chan->setChannelModeWithParam('l',aParam);
 
 				if(bSet) {
 					if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnLimitSet,chan,szNick,szUser,szHost,aParam))
@@ -1969,7 +1969,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 			default:
 			// check if the mode "eats" a parameter
 			if(msg->connection()->serverInfo()->supportedParameterModes().contains(*aux)
-				|| (msg->connection()->serverInfo()->supportedParameterWhenSetModes().contains(*aux)  && bSet)
+				|| (msg->connection()->serverInfo()->supportedParameterWhenSetModes().contains(*aux) && bSet)
 				|| msg->connection()->serverInfo()->supportedListModes().contains(*aux))
 			{
 				/*
@@ -1978,7 +1978,8 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 				 * Channel join throttling like "4:5", see bug #731
 				 */
 				aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
-				chan->setChannelMode(*aux,bSet);
+				chan->setChannelModeWithParam(*aux,aParam);
+
 				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
 				{
 					if(aParam.isEmpty())
@@ -1995,7 +1996,15 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 					}
 				}
 			} else {
-				chan->setChannelMode(*aux,bSet);
+				if(msg->connection()->serverInfo()->supportedParameterWhenSetModes().contains(*aux))
+				{
+					// a mode with parameter that does not receive one when unset
+					QString szEmptyParam("");
+					chan->setChannelModeWithParam(*aux,szEmptyParam);
+				} else {
+					chan->setChannelMode(*aux,bSet);
+				}
+
 				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
 				{
 					chan->output(KVI_OUT_CHANMODE,

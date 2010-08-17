@@ -744,7 +744,7 @@ void KviIrcContext::connectionTerminated()
 				// first only chans without key, in groups of 4
 				for(c = connection()->channelList()->first(); c; c = connection()->channelList()->next())
 				{
-					szCurPass = c->channelKey();
+					szCurPass = c->hasChannelMode('k') ? c->channelModeParam('k') : "";
 					szCurChan = c->windowName();
 					if(szCurPass.isEmpty())
 					{

@@ -26,7 +26,6 @@
 #include "kvi_iconmanager.h"
 #include "kvi_locale.h"
 #include "kvi_qstring.h"
-#include "kvi_console.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_channel.h"
@@ -36,27 +35,28 @@
 #include <QScrollArea>
 #include <QLayout>
 #include <QLabel>
+#include <QCheckBox>
+#include <QLineEdit>
+#include <QPushButton>
 
-KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char *,KviConsole * c,const QString &mode,const QString &key,const QString &limit)
+
+KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char * name,KviChannel * pChan)
 : KviWindowToolWidget(par,button)
 {
-	m_szMode = mode;
-	m_szKey = key;
-	m_szLimit = limit;
-	bool isEnabled = true;
-
-	QObject * w = parent();
-	while(w)
+	setObjectName(name);
+	m_pChannel = pChan;
+	bool bIsEnabled = true;
+	if(pChan)
 	{
-		if(w->inherits("KviChannel"))
-		{
-			KviChannel *chan = ((KviChannel *)w);
-			if(!( chan->isMeHalfOp() || chan->isMeOp() || chan->isMeChanOwner() || chan->isMeChanAdmin() || chan->connection()->userInfo()->hasUserMode('o') || chan->connection()->userInfo()->hasUserMode('O') ) )  isEnabled = false;
-			break;
-		}
-		w = w->parent();
+		if(!( pChan->isMeHalfOp() || 
+			pChan->isMeOp() || 
+			pChan->isMeChanOwner() || 
+			pChan->isMeChanAdmin() || 
+			pChan->connection()->userInfo()->hasUserMode('o') || 
+			pChan->connection()->userInfo()->hasUserMode('O') 
+		) ) bIsEnabled = false;
 	}
-
+	
 	QGridLayout *pMasterLayout = new QGridLayout(this);
 
 	setFocusPolicy(Qt::ClickFocus);
@@ -66,15 +66,13 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	pMasterLayout->addWidget(pScrollArea,0,0);
 
 	pMasterLayout->setRowStretch(1,1);
-	QPushButton * b;
-	if(isEnabled) b = new QPushButton(__tr2qs("&Apply"),this);
-	else b = new QPushButton(__tr2qs("Close"),this);
-
+	
+	QPushButton * b = new QPushButton(bIsEnabled ? __tr2qs("&Apply") : __tr2qs("Close"), this);
 	pMasterLayout->addWidget(b,1,0);
 	connect(b,SIGNAL(clicked()),this,SLOT(commit()));
 
 	QWidget * pBackground = new QWidget(pScrollArea->viewport());
-
+	
 	QGridLayout *g = new QGridLayout(pBackground);
 
 	QLabel * l = new QLabel("",pBackground);
@@ -89,72 +87,76 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 	g->addWidget(f,1,0,1,3);
 
-	int i = 1;
-	QString tmp;
+	QCheckBox * pCheckBox = 0;
+	QLineEdit * pLineEdit = 0;
+	int iRow = 1;
+	QString szTmp;
+	char cMode = 0;
 
-	m_pCheckBoxes = new KviPointerList<QCheckBox>;
-	m_pCheckBoxes->setAutoDelete(false);
-
-	// first che basic checkable modes pstnmi
+	// first, the basic checkable modes pstnmi
 	QString szModes = "pstnmi";
 
 	while(!szModes.isEmpty())
 	{
-		QChar ccc = szModes[0];
+		cMode = szModes[0].unicode();
 		szModes.remove(0,1);
 
-		KviQString::sprintf(tmp,"%c: %Q",ccc.unicode(),&(c->connection()->serverInfo()->getChannelModeDescription(ccc)));
-		QCheckBox * cb = new QCheckBox(tmp,pBackground);
-		cb->setEnabled(isEnabled);
-		m_pCheckBoxes->append(cb);
-		cb->setChecked(m_szMode.contains((char)ccc.unicode()));
-		i++;
-		g->addWidget(cb,i,0,1,3);
+		KviQString::sprintf(szTmp,"%c: %Q",cMode, getModeDescription(cMode));
+		pCheckBox = new QCheckBox(szTmp,pBackground);
+		pCheckBox->setEnabled(bIsEnabled);
+		m_pCheckBoxes.insert(cMode,pCheckBox);
+		if(pChan)
+			pCheckBox->setChecked(pChan->channelMode().contains(cMode));
+		iRow++;
+		g->addWidget(pCheckBox,iRow,0,1,3);
 	}
 
-	KviQString::sprintf(tmp,"l: %Q",&(c->connection()->serverInfo()->getChannelModeDescription('l')));
-	m_pLimitBox = new QCheckBox(tmp,pBackground);
-	m_pLimitBox->setEnabled(isEnabled);
-	i++;
-	g->addWidget(m_pLimitBox,i,0,1,3);
-	connect(m_pLimitBox,SIGNAL(toggled(bool)),this,SLOT(limitBoxToggled(bool)));
-	m_pLimitEdit = new QLineEdit(pBackground);
-	m_pLimitEdit->setEnabled(isEnabled);
-	i++;
-	g->addWidget(m_pLimitEdit,i,1,1,2);
-	if(!m_szLimit.isEmpty())
+	// second, che basic modes with parameter lk
+	szModes = "lk";
+
+	while(!szModes.isEmpty())
 	{
-		m_pLimitBox->setChecked(true);
-		m_pLimitEdit->setText(m_szLimit);
-	} else {
-		m_pLimitEdit->setEnabled(false);
+		cMode = szModes[0].unicode();
+		szModes.remove(0,1);
+
+		KviQString::sprintf(szTmp,"%c: %Q",cMode, getModeDescription(cMode));
+		pCheckBox = new QCheckBox(szTmp,pBackground);
+		m_pCheckBoxes.insert(cMode,pCheckBox);
+		pCheckBox->setEnabled(bIsEnabled);
+		iRow++;
+		g->addWidget(pCheckBox,iRow,0,1,3);
+
+		connect(pCheckBox,SIGNAL(toggled(bool)),this,SLOT(checkBoxToggled(bool)));
+		pLineEdit = new QLineEdit(pBackground);
+		m_pLineEdits.insert(cMode,pLineEdit);
+		pLineEdit->setEnabled(bIsEnabled);
+		iRow++;
+		g->addWidget(pLineEdit,iRow,1,1,2);
+		
+		if(pChan)
+		{
+			if(pChan->hasChannelMode(cMode))
+			{
+				pCheckBox->setChecked(true);
+				pLineEdit->setText(pChan->channelModeParam(cMode));
+			} else {
+				pLineEdit->setEnabled(false);
+			}
+		}
 	}
 
-	KviQString::sprintf(tmp,"k: %Q",&(c->connection()->serverInfo()->getChannelModeDescription('k')));
-	m_pKeyBox = new QCheckBox(tmp,pBackground);
-	m_pKeyBox->setEnabled(isEnabled);
-	i++;
-
-	g->addWidget(m_pKeyBox,i,0,1,3);
-	connect(m_pKeyBox,SIGNAL(toggled(bool)),this,SLOT(keyBoxToggled(bool)));
-	m_pKeyEdit = new QLineEdit(pBackground);
-	m_pKeyEdit->setEnabled(isEnabled);
-	i++;
-	g->addWidget(m_pKeyEdit,i,1,1,2);
-	if(!m_szKey.isEmpty())
+	// third, check if the we have any info about other modes supported by the server
+	KviIrcConnectionServerInfo * pServerInfo = getServerInfo();
+	if(!pServerInfo)
 	{
-		m_pKeyBox->setChecked(true);
-		m_pKeyEdit->setText(m_szKey);
-	} else {
-		m_pKeyEdit->setEnabled(false);
+		g->setRowStretch(++iRow,1);
+		g->setColumnStretch(2,1);
+		pScrollArea->setWidget(pBackground);
+		return;
 	}
 
-	// add plain supported modes (the one that doesn't need a parameter)
-	if(c->connection())
-	{
-		if(c->connection()->serverInfo())
-			szModes = c->connection()->serverInfo()->supportedPlainModes();
-	}
+	// 4th, more plain modes supported by the server
+	szModes = pServerInfo->supportedPlainModes();
 
 	// remove modes that we already implemented
 	szModes.remove("p");
@@ -166,147 +168,267 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 
 	while(!szModes.isEmpty())
 	{
-		QChar ccc = szModes[0];
+		cMode = szModes[0].unicode();
 		szModes.remove(0,1);
 
-		KviQString::sprintf(tmp,"%c: %Q",(char)ccc.unicode(),&(c->connection()->serverInfo()->getChannelModeDescription(ccc)));
-		QCheckBox * cb = new QCheckBox(tmp,pBackground);
-		cb->setEnabled(isEnabled);
-		m_pCheckBoxes->append(cb);
-		cb->setChecked(m_szMode.contains((char)ccc.unicode()));
-		i++;
-		g->addWidget(cb,i,0,1,3);
+		KviQString::sprintf(szTmp,"%c: %Q",cMode, getModeDescription(cMode));
+		pCheckBox = new QCheckBox(szTmp,pBackground);
+		pCheckBox->setEnabled(bIsEnabled);
+		m_pCheckBoxes.insert(cMode,pCheckBox);
+		if(pChan)
+			pCheckBox->setChecked(pChan->channelMode().contains(cMode));
+
+		iRow++;
+		g->addWidget(pCheckBox,iRow,0,1,3);
 	}
 
-	// TODO: add complex supported modes (the one that need a parameter)
-	i++;
+	iRow++;
 
-	g->setRowStretch(i,1);
+	// parameterized modes
+	szModes = pServerInfo->supportedParameterModes();
+	szModes.append(pServerInfo->supportedParameterWhenSetModes());
+
+	// remove modes that we already implemented
+	szModes.remove("k");
+	szModes.remove("l");
+
+	while(!szModes.isEmpty())
+	{
+		cMode = szModes[0].unicode();
+		szModes.remove(0,1);
+
+		KviQString::sprintf(szTmp,"%c: %Q",cMode, getModeDescription(cMode));
+		pCheckBox = new QCheckBox(szTmp,pBackground);
+		m_pCheckBoxes.insert(cMode,pCheckBox);
+		pCheckBox->setEnabled(bIsEnabled);
+		iRow++;
+		g->addWidget(pCheckBox,iRow,0,1,3);
+
+		connect(pCheckBox,SIGNAL(toggled(bool)),this,SLOT(checkBoxToggled(bool)));
+		pLineEdit = new QLineEdit(pBackground);
+		m_pLineEdits.insert(cMode,pLineEdit);
+		pLineEdit->setEnabled(bIsEnabled);
+		iRow++;
+		g->addWidget(pLineEdit,iRow,1,1,2);
+		
+		if(pChan->hasChannelMode(cMode))
+		{
+			pCheckBox->setChecked(true);
+			pLineEdit->setText(pChan->channelModeParam(cMode));
+		} else {
+			pLineEdit->setEnabled(false);
+		}
+	}
+
+	g->setRowStretch(++iRow,1);
 	g->setColumnStretch(2,1);
-
 	pScrollArea->setWidget(pBackground);
 }
 
 KviModeEditor::~KviModeEditor()
 {
-	delete m_pCheckBoxes;
+	for(int i=0;i<m_pLineEdits.count();++i)
+		delete m_pLineEdits.value(i);
+
+	for(int i=0;i<m_pCheckBoxes.count();++i)
+		delete m_pCheckBoxes.value(i);
 }
 
-void KviModeEditor::limitBoxToggled(bool bChecked)
+void KviModeEditor::checkBoxToggled(bool bChecked)
 {
-	m_pLimitEdit->setEnabled(bChecked);
-}
-
-void KviModeEditor::keyBoxToggled(bool bChecked)
-{
-	m_pKeyEdit->setEnabled(bChecked);
+	// enable/disable the lineedit if any
+	if(!sender())
+		return;
+	
+	QChar c = m_pCheckBoxes.key((QCheckBox *)sender());
+	if(c.isNull())
+		return;
+	
+	QLineEdit * pLineEdit = m_pLineEdits.value(c.unicode());
+	if(!pLineEdit)
+		return;
+	
+	pLineEdit->setEnabled(bChecked);
 }
 
 void KviModeEditor::commit()
 {
-	KviStr szPlusModes;
-	KviStr szMinusModes;
-
-	if(!m_szKey.isEmpty())
+	if(!m_pChannel)
 	{
-		// had a key before
-		if(m_pKeyBox->isChecked())
-		{
-			// still have it
-			QString tmp = m_pKeyEdit->text().trimmed();
-			if(!tmp.isEmpty())
-			{
-				if(tmp != m_szKey)
-				{
-					// not the same key!
-					// set the new one
-					KviStr mode(KviStr::Format,"-k %s",m_szKey.toUtf8().data()); // FIXME: assuming utf8 is wrong here!
-					emit setMode(mode.ptr());
-					mode.sprintf("+k %s",tmp.toUtf8().data());
-					emit setMode(mode.ptr());
-				}
-			}
-		} else {
-			// no key now! reset
-			KviStr mode(KviStr::Format,"-k %s",m_szKey.toUtf8().data());
-			emit setMode(mode.ptr());
-		}
-	} else {
-		// there was no key before
-		if(m_pKeyBox->isChecked())
-		{
-			QString tmp = m_pKeyEdit->text().trimmed();
-			if(!tmp.isEmpty())
-			{
-				// new key to be set
-				KviStr mode(KviStr::Format,"+k %s",tmp.toUtf8().data());
-				emit setMode(mode.ptr());
-			}
-		}
+		emit done();
+		return;
 	}
 
-	if(!m_szLimit.isEmpty())
+	QMap<char, QString> szPlusModes;
+	QMap<char, QString> szMinusModes;
+
+	QCheckBox * pCheckBox;
+	QLineEdit * pLineEdit;
+	char cMode = 0;
+
+	QList<char> modes = m_pCheckBoxes.keys();
+
+	for(int i=0; i < modes.count();++i)
 	{
-		// had a limit before
-		if(m_pLimitBox->isChecked())
+		cMode = modes.at(i);
+		pCheckBox = m_pCheckBoxes.value(cMode);
+		if(!pCheckBox)
+			continue; // wtf!?
+
+		pLineEdit = m_pLineEdits.value(cMode);
+		if(pLineEdit)
 		{
-			// still have it
-			QString tmp = m_pLimitEdit->text().trimmed();
-			bool bOk;
-			unsigned int uLimit = tmp.toUInt(&bOk);
-			if(bOk)
+			// mode with parameter (with an exception)
+			if(pCheckBox->isChecked())
 			{
-				if(m_szLimit != tmp)
+				// mode is checked
+				if(!m_pChannel->hasChannelMode(cMode) || 
+					(pLineEdit->text().trimmed() != m_pChannel->channelModeParam(cMode)))
 				{
-					// not the same limit!
-					KviStr mode(KviStr::Format,"+l %u",uLimit);
-					emit setMode(mode.ptr());
+					// mode was not checked before, or the parameter has changed
+					szPlusModes.insert(cMode, pLineEdit->text().trimmed());
 				}
-			}
-		} else {
-			// no limit now! reset
-			szMinusModes.append('l');
-		}
-	} else {
-		// there was no limit before
-		if(m_pLimitBox->isChecked())
-		{
-			QString tmp = m_pLimitEdit->text().trimmed();
-			bool bOk;
-			unsigned int uLimit = tmp.toUInt(&bOk);
-			if(bOk)
-			{
-				// new limit to be set
-				KviStr mode(KviStr::Format,"+l %u",uLimit);
-				emit setMode(mode.ptr());
-			}
-		}
-	}
-
-
-	for(QCheckBox * cb = m_pCheckBoxes->first();cb;cb = m_pCheckBoxes->next())
-	{
-		QString sz = cb->text();
-		sz.replace("&","");
-		if(sz.length() > 0)
-		{
-			QChar ccc = sz[0];
-			if(cb->isChecked())
-			{
-				if(!m_szMode.contains((char)ccc.unicode()))szPlusModes.append((char)ccc.unicode());
 			} else {
-				if(m_szMode.contains((char)ccc.unicode()))szMinusModes.append((char)ccc.unicode());
+				// mode is not checked
+				if(m_pChannel->hasChannelMode(cMode))
+				{
+					// but it was checked before
+					
+					// checks if this specific mode does not need a parameter when set
+					if(modeNeedsParameterOnlyWhenSet(cMode))
+					{
+						szMinusModes.insert(cMode,QString());
+						continue;
+					}
+
+					// unset the previously set mode
+					szMinusModes.insert(cMode, m_pChannel->channelModeParam(cMode));
+				}
+			}
+		} else {
+			//mode without parameter
+			if(pCheckBox->isChecked())
+			{
+				if(!m_pChannel->channelMode().contains(cMode))
+					szPlusModes.insert(cMode, QString());
+			} else {
+				if(m_pChannel->channelMode().contains(cMode))
+					szMinusModes.insert(cMode,QString());
 			}
 		}
 	}
 
-	KviStr szModes;
+	// now flush out mode changes
+	int iModesPerLine=3; // a good default
+	KviIrcConnectionServerInfo * pServerInfo = getServerInfo();
+	if(pServerInfo)
+	{
+		iModesPerLine = pServerInfo->maxModeChanges();
+		if(iModesPerLine < 1) iModesPerLine = 1;
+	}
 
-	if(szMinusModes.hasData())szModes.sprintf("-%s",szMinusModes.ptr());
-	if(szPlusModes.hasData())szModes.append(KviStr::Format,"+%s",szPlusModes.ptr());
-	if(szModes.hasData())emit setMode(szModes.ptr());
+	QString szModes;
+	QStringList szParameters;
+	int iModes=0;
+
+	QMap<char, QString>::const_iterator iter = szMinusModes.constBegin();
+	while (iter != szMinusModes.constEnd())
+	{
+		if(iter == szMinusModes.constBegin())
+			szModes.append("-");
+		szModes.append(iter.key());
+		szParameters.append(iter.value());
+		++iModes;
+		++iter;
+
+		//time to commit?
+		if(iModes == iModesPerLine)
+		{
+			QString szCommitModes = szModes;
+			if(iter == szMinusModes.constEnd())
+				szModes.clear();
+			else
+				szModes="-";
+			if(szParameters.count())
+			{
+				szCommitModes.append(QChar(' '));
+				szCommitModes.append(szParameters.join(QString(" ")));
+				szParameters.clear();
+			}
+			iModes=0;
+			
+			emit setMode(szCommitModes);
+		}
+	}
+
+	iter = szPlusModes.constBegin();
+	while (iter != szPlusModes.constEnd())
+	{
+		if(iter == szPlusModes.constBegin())
+			szModes.append("+");
+		szModes.append(iter.key());
+		szParameters.append(iter.value());
+		++iModes;
+		++iter;
+
+		//time to commit? this should be an ==, but includes the minus sign so "+aaa" = 4 chars
+		if(iModes == iModesPerLine)
+		{
+			QString szCommitModes = szModes;
+			if(iter == szPlusModes.constEnd())
+				szModes.clear();
+			else
+				szModes="+";
+			if(szParameters.count())
+			{
+				szCommitModes.append(QChar(' '));
+				szCommitModes.append(szParameters.join(QString(" ")));
+				szParameters.clear();
+			}
+			iModes=0;
+			
+			emit setMode(szCommitModes);
+		}
+	}
+
+	if(iModes)
+	{
+		QString szCommitModes = szModes;
+		szModes.clear();
+		if(szParameters.count())
+		{
+			szCommitModes.append(QChar(' '));
+			szCommitModes.append(szParameters.join(QString(" ")));
+			szParameters.clear();
+		}
+		emit setMode(szCommitModes);
+	}
 
 	emit done();
+}
+
+inline KviIrcConnectionServerInfo * KviModeEditor::getServerInfo()
+{
+	if(!m_pChannel) return 0;
+	if(!m_pChannel->console()) return 0;
+	if(!m_pChannel->console()->connection()) return 0;
+	return m_pChannel->console()->connection()->serverInfo();
+}
+
+inline const QString * KviModeEditor::getModeDescription(char cMode)
+{
+	KviIrcConnectionServerInfo * pServerInfo = getServerInfo();
+	if(pServerInfo)
+		return &(pServerInfo->getChannelModeDescription(cMode));
+	return 0; //safe, as will be used with KviQString::sprintf("%Q", ..);
+}
+
+inline bool KviModeEditor::modeNeedsParameterOnlyWhenSet(char cMode)
+{
+	KviIrcConnectionServerInfo * pServerInfo = getServerInfo();
+	if(pServerInfo)
+		return pServerInfo->supportedParameterWhenSetModes().contains(cMode);
+	return false;
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

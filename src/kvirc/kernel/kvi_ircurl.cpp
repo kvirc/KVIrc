@@ -330,9 +330,10 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsole* pConsole)
 				for(KviChannel * c = pConsole->connection()->channelList()->first();c;c = pConsole->connection()->channelList()->next())
 				{
 					tmp=c->target();
-					if(c->hasChannelKey()) {
+					if(c->hasChannelMode('k'))
+					{
 						tmp.append("?");
-						tmp.append(c->channelKey());
+						tmp.append(c->channelModeParam('k'));
 					}
 					if(!parts.chanList.removeAll(tmp))
 					{

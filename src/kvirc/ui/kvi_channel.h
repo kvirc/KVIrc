@@ -201,8 +201,7 @@ protected:
 	KviModeWidget                        * m_pModeWidget;
 	int                                    m_iStateFlags;
 	QString                                m_szChannelMode;
-	QString                                m_szChannelKey;
-	QString                                m_szChannelLimit;
+	QMap<char, QString>                    m_szChannelParameterModes;
 	KviPointerList<KviMaskEntry>         * m_pBanList;
 	KviPointerList<KviMaskEntry>         * m_pBanExceptionList;
 	KviPointerList<KviMaskEntry>         * m_pInviteList;
@@ -923,42 +922,26 @@ public:
 	void getChannelModeString(QString & szBuffer);
 
 	/**
-	* \brief Sets the limit for the channel
-	* \param pcLimit The limit of the channel
+	* \brief Sets a channel mode with a parameter; an empty parameter unsets the mode
+	* \param char The mode
+	* \param QString & The parameter for the mode
 	* \return void
 	*/
-	void setChannelLimit(const char * pcLimit);
+	void setChannelModeWithParam(char cMode, QString & szParam);
 
 	/**
-	* \brief Returns true if the channel has a limit set
+	* \brief Returns true if the channel has a mode set
+	* \param char The mode
 	* \return bool
 	*/
-	bool hasChannelLimit(){ return !m_szChannelLimit.isEmpty(); };
+	bool hasChannelMode(char cMode) { return m_szChannelParameterModes.contains(cMode); };
 
 	/**
-	* \brief Returns the limit number
-	* \return QString &
+	* \brief Returns the value for a channel mode
+	* \param char The mode
+	* \return QString
 	*/
-	QString & channelLimit(){ return m_szChannelLimit; };
-
-	/**
-	* \brief Sets the key for the channel
-	* \param pcKey The key of the channel
-	* \return void
-	*/
-	void setChannelKey(const char * pcKey);
-
-	/**
-	* \brief Returns true if the channel has a key set
-	* \return bool
-	*/
-	bool hasChannelKey() { return !m_szChannelKey.isEmpty(); };
-
-	/**
-	* \brief Returns the channel key
-	* \return QString &
-	*/
-	QString & channelKey(){ return m_szChannelKey; };
+	QString channelModeParam(char cMode) const { return m_szChannelParameterModes.value(cMode); };
 
 	/**
 	* \brief Adds a user to the highlight list
@@ -1201,10 +1184,10 @@ private slots:
 
 	/**
 	* \brief Called when we select the modes from the mode editor
-	* \param pcMode The modes selected
+	* \param QString The modes selected, including any plus/minus sign and parameters
 	* \return void
 	*/
-	void setMode(const char * pcMode);
+	void setMode(QString & szMode);
 
 	/**
 	* \brief Called when we right-click the irc view.

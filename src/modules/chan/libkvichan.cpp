@@ -112,10 +112,10 @@ static bool chan_kvs_fnc_getUrl(KviKvsModuleFunctionCall * c)
 	if (ch) {
 		KviIrcUrl::join(url,ch->connection()->target()->server());
 		url.append(ch->windowName());
-		if(ch->hasChannelKey())
+		if(ch->hasChannelMode('k'))
 		{
-			url.append('?');
-			url.append(ch->channelKey());
+			url.append("?");
+			url.append(ch->channelModeParam('k'));
 		}
 	} else {
 		if(c->window()->connection()) {
@@ -942,7 +942,7 @@ static bool chan_kvs_fnc_key(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
 	KVSM_PARAMETERS_END(c)
 	KviChannel * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setString(ch->channelKey());
+	if (ch) c->returnValue()->setString(ch->hasChannelMode('k') ? ch->channelModeParam('k') : "");
 	return true;
 }
 
@@ -972,14 +972,10 @@ static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 	KviChannel * ch = chan_kvs_find_channel(c,szId);
 	kvs_int_t limit=0;
-	QString lim;
 	if (ch)
 	{
-		if(ch->hasChannelLimit())
-		{
-			lim = ch->channelLimit().toUtf8().data();
-			limit = lim.toInt();
-		}
+		if(ch->hasChannelMode('l'))
+			limit = ch->channelModeParam('l').toInt();
 		c->returnValue()->setInteger(limit);
 	}
 	return true;

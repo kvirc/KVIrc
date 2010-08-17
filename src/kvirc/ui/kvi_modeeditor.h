@@ -29,13 +29,12 @@
 #include "kvi_pointerlist.h"
 #include "kvi_toolwindows_container.h"
 
-#include <QWidget>
-#include <QPushButton>
-#include <QCheckBox>
-#include <QLineEdit>
-#include <QLabel>
+#include <QMap>
 
-class KviConsole;
+class QCheckBox;
+class QLineEdit;
+class KviIrcConnectionServerInfo;
+class KviChannel;
 
 //////////////////////////////////////////////////////////////////////
 // class KviModeEditor
@@ -46,23 +45,21 @@ class KVIRC_API KviModeEditor : public KviWindowToolWidget
 {
 	Q_OBJECT
 public:
-	KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char * nam,KviConsole * c,const QString &mode,const QString &key,const QString &limit);
+	KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char * name,KviChannel * pChan);
 	~KviModeEditor();
 protected: // fields
-	QString                     m_szMode;
-	QString                     m_szKey;
-	QString                     m_szLimit;
-	KviPointerList<QCheckBox> * m_pCheckBoxes;
-	QCheckBox                 * m_pLimitBox;
-	QLineEdit                 * m_pLimitEdit;
-	QCheckBox                 * m_pKeyBox;
-	QLineEdit                 * m_pKeyEdit;
+	KviChannel                * m_pChannel;
+	QMap<char, QCheckBox *>     m_pCheckBoxes;
+	QMap<char, QLineEdit *>     m_pLineEdits;
+protected:
+	const QString * getModeDescription(char cMode);
+	bool modeNeedsParameterOnlyWhenSet(char cMode);
+	KviIrcConnectionServerInfo * getServerInfo();
 signals:
-	void setMode(const char *);
+	void setMode(QString & szMode);
 	void done();
 protected slots:
-	void limitBoxToggled(bool bChecked);
-	void keyBoxToggled(bool bChecked);
+	void checkBoxToggled(bool bChecked);
 	void commit();
 };
 

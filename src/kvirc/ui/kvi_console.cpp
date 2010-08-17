@@ -475,9 +475,10 @@ void KviConsole::updateUri()
 			for(KviChannel * c = connection()->channelList()->first();c;c = connection()->channelList()->next())
 			{
 				uri.append(c->target());
-				if(c->hasChannelKey()) {
+				if(c->hasChannelMode('k'))
+				{
 					uri.append("?");
-					uri.append(c->channelKey());
+					uri.append(c->channelModeParam('k'));
 				}
 				if(c!=last) uri.append(",");
 			}

@@ -447,8 +447,8 @@ void KviChannel::toggleModeEditor()
 			m_pModeEditorButton->setChecked(false);
 		resizeEvent(0);
 	} else {
-		m_pModeEditor = new KviModeEditor(m_pSplitter,m_pModeEditorButton,"mode_editor",console(),m_szChannelMode,m_szChannelKey,m_szChannelLimit);
-		connect(m_pModeEditor,SIGNAL(setMode(const char *)),this,SLOT(setMode(const char *)));
+		m_pModeEditor = new KviModeEditor(m_pSplitter,m_pModeEditorButton,"mode_editor",this);
+		connect(m_pModeEditor,SIGNAL(setMode(QString &)),this,SLOT(setMode(QString &)));
 		connect(m_pModeEditor,SIGNAL(done()),this,SLOT(modeSelectorDone()));
 		m_pModeEditor->show();
 		//setFocusHandlerNoClass(m_pInput,m_pModeEditor,"QLineEdit");
@@ -463,13 +463,16 @@ void KviChannel::modeSelectorDone()
 		toggleModeEditor();
 }
 
-void KviChannel::setMode(const char * mode)
+void KviChannel::setMode(QString & szMode)
 {
 	if(!connection())
 		return;
 
-	QByteArray tmp = connection()->encodeText(m_szName);
-	connection()->sendFmtData("MODE %s %s",tmp.data(),mode);
+	QByteArray channelName = connection()->encodeText(m_szName);
+	//FIXME is it right to assume this encoding?
+	QByteArray modes = connection()->encodeText(szMode);
+
+	connection()->sendFmtData("MODE %s %s",channelName.data(),modes.data());
 }
 
 void KviChannel::toggleBanEditor()
@@ -627,25 +630,19 @@ void KviChannel::setChannelMode(char mode, bool bAdd)
 				m_szChannelMode.append(mode);
 		} else {
 			if(m_szChannelMode.contains(mode))
-			{
 				m_szChannelMode.replace(mode,"");
-			}
 		}
 		updateModeLabel();
 		updateCaption();
 	}
 }
 
-void KviChannel::setChannelKey(const char * key)
+void KviChannel::setChannelModeWithParam(char cMode, QString & szParam)
 {
-	m_szChannelKey = key;
-	updateModeLabel();
-	updateCaption();
-}
-
-void KviChannel::setChannelLimit(const char * limit)
-{
-	m_szChannelLimit = limit;
+	if(szParam.isEmpty())
+		m_szChannelParameterModes.remove(cMode);
+	else 
+		m_szChannelParameterModes.insert(cMode,szParam);
 	updateModeLabel();
 	updateCaption();
 }
@@ -666,10 +663,10 @@ void KviChannel::removeHighlightedUser(const QString & szNick)
 void KviChannel::getChannelModeString(QString & szBuffer)
 {
 	szBuffer = m_szChannelMode;
-	if(!m_szChannelKey.isEmpty())
-		szBuffer.append('k');
-	if(!m_szChannelLimit.isEmpty())
-		szBuffer.append('l');
+	//add modes that use a parameter
+	QList<char> keys = m_szChannelParameterModes.keys();
+	for(int i=0; i<keys.count(); i++)
+		szBuffer.append(keys.at(i));
 }
 
 void KviChannel::setDeadChan()
@@ -699,8 +696,7 @@ void KviChannel::setDeadChan()
 	m_uActionHistoryHotActionCount = 0;
 
 	m_szChannelMode = "";
-	m_szChannelKey = "";
-	m_szChannelLimit = "";
+	m_szChannelParameterModes.clear();
 
 	// this should be moved to irc context!
 	if(connection())
@@ -1683,9 +1679,7 @@ void KviChannel::internalMask(const QString & szMask, bool bAdd, const QString &
 
 void KviChannel::updateModeLabel()
 {
-	QString szTmp = m_szChannelMode;
 	QString szTip = __tr2qs("<b>Channel mode:</b>");
-	//const char * aux = m_szChannelMode.toUtf8().data(); leaks memory and will not work with getChannelModeDescription() (can channel modes be multibyte ?)
 	KviStr szMod = m_szChannelMode;
 	const char * pcAux = szMod.ptr();
 	while(*pcAux)
@@ -1694,23 +1688,11 @@ void KviChannel::updateModeLabel()
 		++pcAux;
 	}
 
-	if(!m_szChannelKey.isEmpty())
-	{
-		if(!szTmp.isEmpty())
-			szTmp.append(' ');
+	if(hasChannelMode('k'))
+		szTip.append(__tr2qs("<br><b>Key:</b> %1").arg(channelModeParam('k')));
 
-		KviQString::appendFormatted(szTmp,"k:%s",m_szChannelKey.toUtf8().data());
-		KviQString::appendFormatted(szTip,__tr2qs("<br><b>Key:</b> %s"),m_szChannelKey.toUtf8().data());
-	}
-
-	if(!m_szChannelLimit.isEmpty())
-	{
-		if(!szTmp.isEmpty())
-			szTmp.append(' ');
-
-		KviQString::appendFormatted(szTmp,"l:%s",m_szChannelLimit.toUtf8().data());
-		KviQString::appendFormatted(szTip,__tr2qs("<br><b>Limit:</b> %s"),m_szChannelLimit.toUtf8().data());
-	}
+	if(hasChannelMode('l'))
+		szTip.append(__tr2qs("<br><b>Limit:</b> %1").arg(channelModeParam('k')));
 
 	m_pModeWidget->refreshModes();
 	KviTalToolTip::remove(m_pModeWidget);

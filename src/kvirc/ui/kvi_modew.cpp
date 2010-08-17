@@ -59,10 +59,10 @@ void KviModeWidget::refreshModes()
 {
 	// TODO: support other complex supported modes (the one that need a parameter)
 	QString szMode=m_pChannel->channelMode();
-	if(!m_pChannel->channelKey().isEmpty())
-		szMode+=QString(" k:%1").arg(m_pChannel->channelKey());
-	if(!m_pChannel->channelLimit().isEmpty())
-		szMode+=QString(" l:%1").arg(m_pChannel->channelLimit().toUtf8().data());
+	if(m_pChannel->hasChannelMode('k'))
+		szMode+=QString(" k:%1").arg(m_pChannel->channelModeParam('k'));
+	if(m_pChannel->hasChannelMode('l'))
+		szMode+=QString(" l:%1").arg(m_pChannel->channelModeParam('l'));
 	setText(szMode);
 }
 
