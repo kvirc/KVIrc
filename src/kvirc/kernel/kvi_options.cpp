@@ -327,7 +327,15 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("PrependNickColorInfoToRealname",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("DontShowNotifierIfActiveWindowIsFullScreen",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("WheelScrollsWindowsList",true,KviOption_sectFlagWindowList),
-	BOOL_OPTION("AcceptMismatchedPortDccResumeRequests",false,KviOption_sectFlagDcc)
+	BOOL_OPTION("AcceptMismatchedPortDccResumeRequests",false,KviOption_sectFlagDcc),
+	BOOL_OPTION("EnableUrlLinkToolTip",true,KviOption_sectFlagGui),
+	BOOL_OPTION("EnableHostLinkToolTip",true,KviOption_sectFlagGui),
+	BOOL_OPTION("EnableServerLinkToolTip",true,KviOption_sectFlagGui),
+	BOOL_OPTION("EnableModeLinkToolTip",true,KviOption_sectFlagGui),
+	BOOL_OPTION("EnableNickLinkToolTip",true,KviOption_sectFlagGui),
+	BOOL_OPTION("EnableChannelLinkToolTip",true,KviOption_sectFlagGui),
+	BOOL_OPTION("EnableEscapeLinkToolTip",true,KviOption_sectFlagGui),
+	BOOL_OPTION("UseDBusNotifier",false,KviOption_sectFlagConnection)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
@@ -657,7 +665,7 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("UserIrcViewOwnBackground",8,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	UINT_OPTION("NotifierPixmapAlign",0,KviOption_sectFlagNotifier | KviOption_groupTheme),
 	UINT_OPTION("OutputDatetimeFormat",0,KviOption_sectFlagIrcView),
-	UINT_OPTION("OnJoinRequestsDelay",2,KviOption_sectFlagConnection),
+	UINT_OPTION("OnJoinRequestsDelay",1,KviOption_sectFlagConnection), // FIXME: Wouldn't this be nicer in msecs defaulting to 100-200 ?
 };
 
 #define FONT_OPTION(_name,_face,_size,_flags) \
@@ -1065,7 +1073,7 @@ namespace KviTheme
 						cfg.writeEntry(g_pixmapOptionsTable[i].name,szPixName);
 					} else {
 						// we ignore this error for now
-						debug("failed to save %s",szPixPath.toUtf8().data());
+						qDebug("failed to save %s",szPixPath.toUtf8().data());
 						cfg.writeEntry(g_pixmapOptionsTable[i].name,"");
 					}
 				} else {

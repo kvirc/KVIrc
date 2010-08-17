@@ -652,8 +652,8 @@ void KviChannel::addHighlightedUser(const QString & szNick)
 {
 	if(!m_pUserListView->findEntry(szNick) || m_pTmpHighLighted->contains(szNick,Qt::CaseInsensitive))
 		return;
-	else
-   		m_pTmpHighLighted->append(szNick);
+
+	m_pTmpHighLighted->append(szNick);
 }
 
 void KviChannel::removeHighlightedUser(const QString & szNick)

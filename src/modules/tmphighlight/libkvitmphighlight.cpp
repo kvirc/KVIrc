@@ -57,7 +57,7 @@ static bool tmphighlight_kvs_cmd_addnick(KviKvsModuleCommandCall * c)
 	if( !c->window()->console() )return c->context()->errorNoIrcContext();
 	if( c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
 
-	if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
+	if(c->window()->type() != KVI_WINDOW_TYPE_CHANNEL)
 	{
 		c->warning(__tr2qs("Current window is not a channel"));
 		return false;
@@ -95,7 +95,7 @@ static bool tmphighlight_kvs_cmd_removenick(KviKvsModuleCommandCall * c)
 	if( !c->window()->console() )return c->context()->errorNoIrcContext();
 	if( c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
 
-	if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
+	if(c->window()->type() != KVI_WINDOW_TYPE_CHANNEL)
 	{
 		c->warning(__tr2qs("Current window is not a channel"));
 		return false;
@@ -148,7 +148,7 @@ static bool tmphighlight_kvs_cmd_addchannel(KviKvsModuleCommandCall * c)
 	if( !pWnd->console() )return c->context()->errorNoIrcContext();
 	if( pWnd->console()->isNotConnected() )return c->context()->errorNoIrcContext();
 
-	if(!pWnd->type() == KVI_WINDOW_TYPE_CHANNEL)
+	if(pWnd->type() != KVI_WINDOW_TYPE_CHANNEL)
 	{
 		c->warning(__tr2qs("Current window is not a channel"));
 		return false;
@@ -200,7 +200,7 @@ static bool tmphighlight_kvs_cmd_removechannel(KviKvsModuleCommandCall * c)
 	if( !pWnd->console() )return c->context()->errorNoIrcContext();
 	if( pWnd->console()->isNotConnected() )return c->context()->errorNoIrcContext();
 
-	if(!pWnd->type() == KVI_WINDOW_TYPE_CHANNEL)
+	if(pWnd->type() != KVI_WINDOW_TYPE_CHANNEL)
 	{
 		c->warning(__tr2qs("Current window is not a channel"));
 		return false;
@@ -238,7 +238,7 @@ static bool tmphighlight_kvs_fnc_isnickhighlighted(KviKvsModuleFunctionCall * c)
 	if( !c->window()->console() )return c->context()->errorNoIrcContext();
 	if( c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
 
-	if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
+	if(c->window()->type() != KVI_WINDOW_TYPE_CHANNEL)
 	{
 		c->warning(__tr2qs("Current window is not a channel"));
 		return false;
@@ -288,7 +288,7 @@ static bool tmphighlight_kvs_fnc_ischannelhighlighted(KviKvsModuleFunctionCall *
 	if( !pWnd->console() )return c->context()->errorNoIrcContext();
 	if( pWnd->console()->isNotConnected() )return c->context()->errorNoIrcContext();
 
-	if(!pWnd->type() == KVI_WINDOW_TYPE_CHANNEL)
+	if(pWnd->type() != KVI_WINDOW_TYPE_CHANNEL)
 	{
 		c->warning(__tr2qs("Current window is not a channel"));
 		return false;
