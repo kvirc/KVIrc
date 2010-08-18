@@ -42,6 +42,11 @@ KviIrcConnectionServerInfo::KviIrcConnectionServerInfo()
 	m_bSupportsCap = false;
 	m_iMaxTopicLen = -1;
 	m_iMaxModeChanges = 3;
+	m_szListModes = "b";
+	m_szParameterModes = "k";
+	m_szParameterWhenSetModes = "l";
+	m_szPlainModes = "pstnmi";
+	m_szSupportedChannelModes = "pstnmiklb";
 	m_pServInfo = new KviBasicIrcServerInfo();
 }
 

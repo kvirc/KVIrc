@@ -36,7 +36,6 @@ KviModeWidget::KviModeWidget(QWidget * par,KviChannel* chan,const char * name)
 :KviThemedLineEdit(par, chan, name)
 {
 	m_pChannel=chan;
-	connect(this,SIGNAL(textEdited ( const QString & ) ),this,SLOT(editorTextEdited( const QString & )));
 	reset();
 }
 
@@ -46,23 +45,16 @@ KviModeWidget::~KviModeWidget()
 
 void KviModeWidget::reset()
 {
-	setText(m_pChannel->channelMode());
 	setReadOnly(true);
-
 	refreshModes();
-	
 
 	if(m_pChannel->input()) m_pChannel->setFocus();
 }
 
 void KviModeWidget::refreshModes()
 {
-	// TODO: support other complex supported modes (the one that need a parameter)
-	QString szMode=m_pChannel->channelMode();
-	if(m_pChannel->hasChannelMode('k'))
-		szMode+=QString(" k:%1").arg(m_pChannel->channelModeParam('k'));
-	if(m_pChannel->hasChannelMode('l'))
-		szMode+=QString(" l:%1").arg(m_pChannel->channelModeParam('l'));
+	QString szMode;
+	m_pChannel->getChannelModeStringWithEmbeddedParams(szMode);
 	setText(szMode);
 }
 
@@ -98,39 +90,199 @@ void KviModeWidget::keyReleaseEvent (QKeyEvent * e)
 
 void KviModeWidget::editorReturnPressed()
 {
-	QString szCurModes=m_pChannel->channelMode();
-	QString szNewModes=text();
-	QString szMinusModes;
-	for(int i=0; i<szCurModes.length(); i++)
+	QMap<char, QString> szPlusModes;
+	QMap<char, QString> szMinusModes;
+
+	QString szTmpMode;
+	m_pChannel->getChannelModeStringWithEmbeddedParams(szTmpMode);
+	QStringList szOldModes=szTmpMode.split(QChar(' '), QString::SkipEmptyParts);
+	QStringList szNewModes=text().split(QChar(' '), QString::SkipEmptyParts);
+
+	//add new modes and modified ones
+	for(int i=0; i<szNewModes.count(); ++i)
 	{
-		if(szNewModes.contains(szCurModes[i]))
-			szNewModes.remove(szCurModes[i]);
-		else
-			szMinusModes+=szCurModes[i];
+		QString szSubstring=szNewModes.at(i);
+		if(i)
+		{
+			// not first part: mode with parameter
+			if(szSubstring.size() < 3)
+				continue;
+			if(szSubstring.at(1) != QChar(':'))
+				continue;
+			char cMode = szSubstring.at(0).unicode();
+			szSubstring.remove(0,2);
+
+			if(!m_pChannel->hasChannelMode(cMode) || 
+				(szSubstring != m_pChannel->channelModeParam(cMode)))
+			{
+				// mode was not set before, or the parameter has changed
+				szPlusModes.insert(cMode, szSubstring);
+			}
+		} else {
+			// first part: parameterless modes
+			QString szCurModes = szOldModes.count() ? szOldModes.at(0) : "";
+			for(int j=0; j<szSubstring.length(); ++j)
+			{
+				char cMode = szSubstring.at(j).unicode();
+				if(!szCurModes.contains(cMode))
+				{
+					// was not set, has to be inserted
+					szPlusModes.insert(cMode,QString());
+				}
+			}
+		}
 	}
-	QString mode;
-	if(!szMinusModes.isEmpty()) mode+=QString("-"+szMinusModes);
-	if(!szNewModes.isEmpty()) mode+=QString("+"+szNewModes);
-	if(!mode.isEmpty())
+	
+	// check for any mode that has been unset
+	for(int i=0; i<szOldModes.count(); ++i)
 	{
-		QByteArray chan = m_pChannel->connection()->encodeText(m_pChannel->target());
-		m_pChannel->connection()->sendFmtData("MODE %s %s",chan.data(),mode.toUtf8().data());
+		QString szSubstring=szOldModes.at(i);
+		if(i)
+		{
+			// not first part: mode with parameter
+			if(szSubstring.size() < 3)
+				continue;
+			if(szSubstring.at(1) != QChar(':'))
+				continue;
+			char cMode = szSubstring.at(0).unicode();
+			szSubstring.remove(0,2);
+
+			// we skip parameterless modes (j=0)
+			bool bStillSet=false;
+			for(int j=1; j<szNewModes.length(); ++j)
+			{
+				if(szNewModes.at(j).at(0) == cMode)
+					bStillSet=true;
+			}
+			if(!bStillSet)
+			{
+				// checks if this specific mode does not need a parameter when set
+				if(modeNeedsParameterOnlyWhenSet(cMode))
+				{
+					szMinusModes.insert(cMode,QString());
+				} else {
+					szMinusModes.insert(cMode, szSubstring);
+				}
+			}
+		} else {
+			// first part: parameterless modes
+			QString szNewParameterLessModes = szNewModes.count() ? szNewModes.at(0) : "";
+			for(int j=0; j<szSubstring.length(); ++j)
+			{
+				char cMode = szSubstring.at(j).unicode();
+				if(!szNewParameterLessModes.contains(cMode))
+				{
+					// was set, has to be unset
+					szMinusModes.insert(cMode,QString());
+				}
+			}
+		}
 	}
+
+	// now flush out mode changes
+	int iModesPerLine=3; // a good default
+	KviIrcConnectionServerInfo * pServerInfo = getServerInfo();
+	if(pServerInfo)
+	{
+		iModesPerLine = pServerInfo->maxModeChanges();
+		if(iModesPerLine < 1) iModesPerLine = 1;
+	}
+
+	QString szModes;
+	QStringList szParameters;
+	int iModes=0;
+
+	QMap<char, QString>::const_iterator iter = szMinusModes.constBegin();
+	while (iter != szMinusModes.constEnd())
+	{
+		if(iter == szMinusModes.constBegin())
+			szModes.append("-");
+		szModes.append(iter.key());
+		szParameters.append(iter.value());
+		++iModes;
+		++iter;
+
+		//time to commit?
+		if(iModes == iModesPerLine)
+		{
+			QString szCommitModes = szModes;
+			if(iter == szMinusModes.constEnd())
+				szModes.clear();
+			else
+				szModes="-";
+			if(szParameters.count())
+			{
+				szCommitModes.append(QChar(' '));
+				szCommitModes.append(szParameters.join(QString(" ")));
+				szParameters.clear();
+			}
+			iModes=0;
+			
+			emit setMode(szCommitModes);
+		}
+	}
+
+	iter = szPlusModes.constBegin();
+	while (iter != szPlusModes.constEnd())
+	{
+		if(iter == szPlusModes.constBegin())
+			szModes.append("+");
+		szModes.append(iter.key());
+		szParameters.append(iter.value());
+		++iModes;
+		++iter;
+
+		//time to commit? this should be an ==, but includes the minus sign so "+aaa" = 4 chars
+		if(iModes == iModesPerLine)
+		{
+			QString szCommitModes = szModes;
+			if(iter == szPlusModes.constEnd())
+				szModes.clear();
+			else
+				szModes="+";
+			if(szParameters.count())
+			{
+				szCommitModes.append(QChar(' '));
+				szCommitModes.append(szParameters.join(QString(" ")));
+				szParameters.clear();
+			}
+			iModes=0;
+			
+			emit setMode(szCommitModes);
+		}
+	}
+
+	if(iModes)
+	{
+		QString szCommitModes = szModes;
+		szModes.clear();
+		if(szParameters.count())
+		{
+			szCommitModes.append(QChar(' '));
+			szCommitModes.append(szParameters.join(QString(" ")));
+			szParameters.clear();
+		}
+		emit setMode(szCommitModes);
+	}
+
 	reset();
 }
 
-void KviModeWidget::editorTextEdited(const QString & text)
+inline KviIrcConnectionServerInfo * KviModeWidget::getServerInfo()
 {
-	int i = 0;
-	QString szText=text;
-	for(i=0;i<szText.length();i++)
-	{
-		if( !m_pChannel->connection()->serverInfo()->supportedPlainModes().contains(szText[i]) ||
-			szText.indexOf(szText[i])<i,Qt::CaseInsensitive )
-			szText.remove(i,1);
-	}
+	if(!m_pChannel) return 0;
+	if(!m_pChannel->console()) return 0;
+	if(!m_pChannel->console()->connection()) return 0;
+	return m_pChannel->console()->connection()->serverInfo();
 }
 
+inline bool KviModeWidget::modeNeedsParameterOnlyWhenSet(char cMode)
+{
+	KviIrcConnectionServerInfo * pServerInfo = getServerInfo();
+	if(pServerInfo)
+		return pServerInfo->supportedParameterWhenSetModes().contains(cMode);
+	return false;
+}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_modew.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

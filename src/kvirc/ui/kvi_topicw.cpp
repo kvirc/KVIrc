@@ -419,7 +419,7 @@ QSize KviTopicWidget::sizeHint() const
 
 void KviTopicWidget::switchMode()
 {
-	int maxlen=-1;
+	int iMaxLen=-1;
 	QObject * w = parent();
 	QString szModes;
 	bool bCanEdit = TRUE;
@@ -428,11 +428,20 @@ void KviTopicWidget::switchMode()
 		if(w->inherits("KviChannel"))
 		{
 			KviChannel *chan = ((KviChannel *)w);
-			maxlen=chan->connection()->serverInfo()->maxTopicLen();
+			iMaxLen = chan->connection()->serverInfo()->maxTopicLen();
 			chan->getChannelModeString(szModes);
-			if(szModes.contains('t') && !( chan->isMeHalfOp() || chan->isMeOp() || chan->isMeChanOwner() || chan->isMeChanAdmin() || chan->connection()->userInfo()->hasUserMode('o') || chan->connection()->userInfo()->hasUserMode('O')) )  {
+			if(chan->plainChannelMode().contains('t') &&
+				!( chan->isMeHalfOp() ||
+					chan->isMeOp() ||
+					chan->isMeChanOwner() ||
+					chan->isMeChanAdmin() ||
+					chan->connection()->userInfo()->hasUserMode('o') ||
+					chan->connection()->userInfo()->hasUserMode('O')
+				)
+			)
+			{
 				bCanEdit=false;
-				}
+			}
 			break;
 		}
 		w = w->parent();
@@ -442,7 +451,7 @@ void KviTopicWidget::switchMode()
 		m_pInput=new KviInputEditor(this,m_pKviChannel);
 		m_pInput->setObjectName("topicw_inputeditor");
 		m_pInput->setReadOnly(!bCanEdit);
-		m_pInput->setMaxBufferSize(maxlen);
+		m_pInput->setMaxBufferSize(iMaxLen);
 		m_pInput->setGeometry(0,0,width() - (height() << 2)+height(),height());
 		m_pInput->setText(m_szTopic);
 		connect(m_pInput,SIGNAL(enterPressed()),this,SLOT(acceptClicked()));

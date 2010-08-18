@@ -127,6 +127,7 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	// mode label follows the topic widget
 	m_pModeWidget = new KviModeWidget(m_pTopSplitter,this,"mode_");
 	KviTalToolTip::add(m_pModeWidget,__tr2qs("Channel mode"));
+	connect(m_pModeWidget,SIGNAL(setMode(QString &)),this,SLOT(setMode(QString &)));
 
 	createTextEncodingButton(m_pButtonContainer);
 
@@ -469,7 +470,6 @@ void KviChannel::setMode(QString & szMode)
 		return;
 
 	QByteArray channelName = connection()->encodeText(m_szName);
-	//FIXME is it right to assume this encoding?
 	QByteArray modes = connection()->encodeText(szMode);
 
 	connection()->sendFmtData("MODE %s %s",channelName.data(),modes.data());
@@ -622,19 +622,20 @@ QSize KviChannel::sizeHint() const
 
 void KviChannel::setChannelMode(char mode, bool bAdd)
 {
-	if(!m_pConsole->connection()->serverInfo()->supportedListModes().contains(mode))
+	// skip modes that ends up in a list (eg: bans)
+	if(m_pConsole->connection()->serverInfo()->supportedListModes().contains(mode))
+		return;
+
+	if(bAdd)
 	{
-		if(bAdd)
-		{
-			if(!(m_szChannelMode.contains(mode)))
-				m_szChannelMode.append(mode);
-		} else {
-			if(m_szChannelMode.contains(mode))
-				m_szChannelMode.replace(mode,"");
-		}
-		updateModeLabel();
-		updateCaption();
+		if(!(m_szChannelMode.contains(mode)))
+			m_szChannelMode.append(mode);
+	} else {
+		if(m_szChannelMode.contains(mode))
+			m_szChannelMode.replace(mode,"");
 	}
+	updateModeLabel();
+	updateCaption();
 }
 
 void KviChannel::setChannelModeWithParam(char cMode, QString & szParam)
@@ -664,9 +665,24 @@ void KviChannel::getChannelModeString(QString & szBuffer)
 {
 	szBuffer = m_szChannelMode;
 	//add modes that use a parameter
-	QList<char> keys = m_szChannelParameterModes.keys();
-	for(int i=0; i<keys.count(); i++)
-		szBuffer.append(keys.at(i));
+	QMap<char, QString>::const_iterator iter = m_szChannelParameterModes.constBegin();
+	while (iter != m_szChannelParameterModes.constEnd())
+	{
+		szBuffer.append(QChar(iter.key()));
+		++iter;
+	}
+}
+
+void KviChannel::getChannelModeStringWithEmbeddedParams(QString & szBuffer)
+{
+	szBuffer = m_szChannelMode;
+	//add modes that use a parameter
+	QMap<char, QString>::const_iterator iter = m_szChannelParameterModes.constBegin();
+	while (iter != m_szChannelParameterModes.constEnd())
+	{
+		szBuffer.append(QString(" %1:%2").arg(QChar(iter.key())).arg(iter.value()));
+		++iter;
+	}
 }
 
 void KviChannel::setDeadChan()

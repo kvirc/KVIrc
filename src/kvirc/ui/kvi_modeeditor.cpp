@@ -93,6 +93,8 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	QString szTmp;
 	char cMode = 0;
 
+	//NOTE: this is a fallback is for some reason we don't have a serverInfo() struct available fot this connection
+
 	// first, the basic checkable modes pstnmi
 	QString szModes = "pstnmi";
 
@@ -106,7 +108,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		pCheckBox->setEnabled(bIsEnabled);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		if(pChan)
-			pCheckBox->setChecked(pChan->channelMode().contains(cMode));
+			pCheckBox->setChecked(pChan->plainChannelMode().contains(cMode));
 		iRow++;
 		g->addWidget(pCheckBox,iRow,0,1,3);
 	}
@@ -176,7 +178,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		pCheckBox->setEnabled(bIsEnabled);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		if(pChan)
-			pCheckBox->setChecked(pChan->channelMode().contains(cMode));
+			pCheckBox->setChecked(pChan->plainChannelMode().contains(cMode));
 
 		iRow++;
 		g->addWidget(pCheckBox,iRow,0,1,3);
@@ -298,21 +300,19 @@ void KviModeEditor::commit()
 					if(modeNeedsParameterOnlyWhenSet(cMode))
 					{
 						szMinusModes.insert(cMode,QString());
-						continue;
+					} else {
+						szMinusModes.insert(cMode, m_pChannel->channelModeParam(cMode));
 					}
-
-					// unset the previously set mode
-					szMinusModes.insert(cMode, m_pChannel->channelModeParam(cMode));
 				}
 			}
 		} else {
 			//mode without parameter
 			if(pCheckBox->isChecked())
 			{
-				if(!m_pChannel->channelMode().contains(cMode))
+				if(!m_pChannel->plainChannelMode().contains(cMode))
 					szPlusModes.insert(cMode, QString());
 			} else {
-				if(m_pChannel->channelMode().contains(cMode))
+				if(m_pChannel->plainChannelMode().contains(cMode))
 					szMinusModes.insert(cMode,QString());
 			}
 		}

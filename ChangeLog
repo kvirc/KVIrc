@@ -8,8 +8,10 @@ August 2010
    - Tweaked Update Applet to allow checking of SVN revisions
    - Tweaked last read marker icon to allow scrolling back when clicked
    [CtrlAltCa]
-   - Added SSL backend to DCC
-   - Added $dcc.getSSLCertInfo() and $certificate() functions
+   - Added SSL backend to DCC transfer
+   - Added ssl-certificate related functions: $dcc.getSSLCertInfo(), $certificate(), $str.evpSign(), $str.evpVerify()
+   - Implemented better parser for 005 CHANMODES and added automatic modes discovery ability to mode widget and mode editor
+   - added $chan.modeParam()
 
 Jun 2010
    [Pragma]

@@ -934,6 +934,10 @@ static bool chan_kvs_fnc_mode(KviKvsModuleFunctionCall * c)
 		the current window is a chnannel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		If the channel has no key set, an empty string is returned.[br]
+		Alternatively, you could use $chan.modeParam(k) to get the current key.
+	@seealso:
+		[fnc]$chan.mode[/fnc]
+		[fnc]$chan.modeParam[/fnc]
 */
 static bool chan_kvs_fnc_key(KviKvsModuleFunctionCall * c)
 {
@@ -963,6 +967,10 @@ static bool chan_kvs_fnc_key(KviKvsModuleFunctionCall * c)
 		the current window is a chnannel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		If the channel has no limit set, "0" is returned.[br]
+		Alternatively, you could use $chan.modeParam(l) to get the current limit.
+	@seealso:
+		[fnc]$chan.mode[/fnc]
+		[fnc]$chan.modeParam[/fnc]
 */
 static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 {
@@ -978,6 +986,42 @@ static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 			limit = ch->channelModeParam('l').toInt();
 		c->returnValue()->setInteger(limit);
 	}
+	return true;
+}
+
+/*
+	@doc: chan.modeParam
+	@type:
+		function
+	@title:
+		$chan.modeParam
+	@short:
+		Returns the parameter for a set mode of a channel
+	@syntax:
+		<string> $chan.modeParam(<mode:string>[,<window_id:string>])
+	@description:
+		Returns the parameter for a set mode of a channel identified by <window_id>.[br]
+		If no <window_id> is passed, the current channel key is returned (assuming that
+		the current window is a chnannel at all).[br]
+		If the window is not a channel, a warning is printed and an empty string is returned.[br]
+		If the channel has no such a mode set, an empty string is returned.[br]
+		If you need to get the current channel key or user limit, you can use one of the specialized functions.[br]
+	@seealso:
+		[fnc]$chan.mode[/fnc]
+		[fnc]$chan.key[/fnc]
+		[fnc]$chan.limit[/fnc]
+*/
+static bool chan_kvs_fnc_modeParam(KviKvsModuleFunctionCall * c)
+{
+	QString szId;
+	QString szMode;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("mode",KVS_PT_NONEMPTYSTRING,0,szMode)
+		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETERS_END(c)
+	KviChannel * ch = chan_kvs_find_channel(c,szId);
+	char cMode = szMode.at(0).unicode();
+	if (ch) c->returnValue()->setString(ch->hasChannelMode(cMode) ? ch->channelModeParam(cMode) : "");
 	return true;
 }
 
@@ -1636,6 +1680,7 @@ static bool chan_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"matchbanexception",chan_kvs_fnc_matchbanexception);
 	KVSM_REGISTER_FUNCTION(m,"matchinvite",chan_kvs_fnc_matchinvite);
 	KVSM_REGISTER_FUNCTION(m,"mode",chan_kvs_fnc_mode);
+	KVSM_REGISTER_FUNCTION(m,"modeParam",chan_kvs_fnc_modeParam);
 	KVSM_REGISTER_FUNCTION(m,"name",chan_kvs_fnc_name);
 	KVSM_REGISTER_FUNCTION(m,"opcount",chan_kvs_fnc_opcount);
 	KVSM_REGISTER_FUNCTION(m,"ownercount",chan_kvs_fnc_ownercount);

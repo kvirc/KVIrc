@@ -901,7 +901,7 @@ public:
 	void ownAction(const QString & szBuffer);
 
 	/**
-	* \brief Sets the channel mode
+	* \brief Sets a plain (parameter-less) channel mode, (eg: +m)
 	* \param cMode The mode to set
 	* \param bAdd Whether to add or remove the mode
 	* \return void
@@ -909,20 +909,27 @@ public:
 	void setChannelMode(char cMode, bool bAdd);
 
 	/**
-	* \brief Returns the channel mode
+	* \brief Returns only the plain (parameter-less) channel modes (eg: mi)
 	* \return QString
 	*/
-	QString channelMode() { return m_szChannelMode; };
+	QString plainChannelMode() { return m_szChannelMode; };
 
 	/**
-	* \brief Gets the channel mode string and saves it in the buffer
+	* \brief Fills szBuffer with all set channel modes, but without any parameters (eg: lkmi)
 	* \param szBuffer The buffer :)
 	* \return void
 	*/
 	void getChannelModeString(QString & szBuffer);
 
 	/**
-	* \brief Sets a channel mode with a parameter; an empty parameter unsets the mode
+	* \brief Fills szBuffer with all set channel modes and any parameters (eg: mi l:10 k:password)
+	* \param szBuffer The buffer :)
+	* \return void
+	*/
+	void getChannelModeStringWithEmbeddedParams(QString & szBuffer);
+
+	/**
+	* \brief Sets a channel mode with a parameter; an empty parameter unsets the mode (eg: +k password)
 	* \param char The mode
 	* \param QString & The parameter for the mode
 	* \return void
@@ -930,14 +937,14 @@ public:
 	void setChannelModeWithParam(char cMode, QString & szParam);
 
 	/**
-	* \brief Returns true if the channel has a mode set
+	* \brief Returns true if the channel has a mode with parameter set (eg. mode k)
 	* \param char The mode
 	* \return bool
 	*/
 	bool hasChannelMode(char cMode) { return m_szChannelParameterModes.contains(cMode); };
 
 	/**
-	* \brief Returns the value for a channel mode
+	* \brief Returns the value (parameter) for a channel mode (eg. the password for mode k)
 	* \param char The mode
 	* \return QString
 	*/

@@ -1784,8 +1784,14 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 				bSet = false;
 			break;
 			case 'k':
-				if(bSet)aParam = msg->safeParam(curParam++);
-				else aParam = "";
+				if(bSet)
+				{
+					aParam = msg->safeParam(curParam++);
+				} else {
+					aParam = "";
+					// mode k always eats a parameter, also when unset
+					curParam++;
+				}
 				chan->setChannelModeWithParam('k',aParam);
 
 				if(bSet) {

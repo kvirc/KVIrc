@@ -28,6 +28,7 @@
 #include "kvi_themedlineedit.h"
 
 class KviChannel;
+class KviIrcConnectionServerInfo;
 
 class KVIRC_API KviModeWidget : public KviThemedLineEdit
 {
@@ -43,9 +44,12 @@ private:
 protected:
 	void mouseDoubleClickEvent(QMouseEvent * e);
 	void keyReleaseEvent (QKeyEvent * e);
+	bool modeNeedsParameterOnlyWhenSet(char cMode);
+	KviIrcConnectionServerInfo * getServerInfo();
 public slots:
 	void editorReturnPressed();
-	void editorTextEdited( const QString & );
+signals:
+	void setMode(QString & szMode);
 };
 
 #endif //_KVI_MODEW_H_
