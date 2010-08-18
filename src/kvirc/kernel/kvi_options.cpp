@@ -327,15 +327,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("PrependNickColorInfoToRealname",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("DontShowNotifierIfActiveWindowIsFullScreen",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("WheelScrollsWindowsList",true,KviOption_sectFlagWindowList),
-	BOOL_OPTION("AcceptMismatchedPortDccResumeRequests",false,KviOption_sectFlagDcc),
-	BOOL_OPTION("EnableUrlLinkToolTip",true,KviOption_sectFlagGui),
-	BOOL_OPTION("EnableHostLinkToolTip",true,KviOption_sectFlagGui),
-	BOOL_OPTION("EnableServerLinkToolTip",true,KviOption_sectFlagGui),
-	BOOL_OPTION("EnableModeLinkToolTip",true,KviOption_sectFlagGui),
-	BOOL_OPTION("EnableNickLinkToolTip",true,KviOption_sectFlagGui),
-	BOOL_OPTION("EnableChannelLinkToolTip",true,KviOption_sectFlagGui),
-	BOOL_OPTION("EnableEscapeLinkToolTip",true,KviOption_sectFlagGui),
-	BOOL_OPTION("UseDBusNotifier",false,KviOption_sectFlagConnection)
+	BOOL_OPTION("AcceptMismatchedPortDccResumeRequests",false,KviOption_sectFlagDcc)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
