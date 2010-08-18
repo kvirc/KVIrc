@@ -29,6 +29,7 @@
 #include "kvi_frame.h"
 #include "kvi_window.h"
 #include "kvi_out.h"
+#include "kvi_mdimanager.h"
 
 #include <QPainter>
 #include <QLineEdit>

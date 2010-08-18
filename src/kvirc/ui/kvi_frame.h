@@ -36,10 +36,10 @@
 #include "kvi_tal_mainwindow.h"
 #include "kvi_qstring.h"
 #include "kvi_pointerlist.h"
-#include "kvi_mdimanager.h"
 
 class KviMenuBar;
 class KviMdiChild;
+class KviMdiManager;
 class KviWindow;
 class KviConsole;
 class KviWindowListBase;

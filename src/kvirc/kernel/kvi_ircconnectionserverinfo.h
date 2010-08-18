@@ -30,23 +30,20 @@
 
 #include <QStringList>
 
+class KviIrcConnectionServerInfo;
+
 class KVIRC_API KviBasicIrcServerInfo
 {
 	//ircnet
 protected:
 	QString m_szServerVersion;
+	KviIrcConnectionServerInfo * m_pParent;
 public:
-	KviBasicIrcServerInfo(const QString & version = KviQString::Empty);
+	KviBasicIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty);
 	virtual ~KviBasicIrcServerInfo();
-protected:
-	virtual const QString & getCustomChannelModeDescription(QChar) { return KviQString::Empty; };
-	virtual const QString & getCustomUserModeDescription(QChar) { return KviQString::Empty; };
-private:
-	const QString & getBasicChannelModeDescription(QChar mode);
-	const QString & getBasicUserModeDescription(QChar mode);
 public:
-	const QString & getChannelModeDescription(QChar mode);
-	const QString & getUserModeDescription(QChar mode);
+	virtual const QString & getChannelModeDescription(char mode);
+	virtual const QString & getUserModeDescription(QChar mode);
 	virtual char getRegisterModeChar() { return 0; };
 	virtual const char * getSoftware() { return "Ircd"; };
 	virtual bool getNeedsOpToListModeseI() { return false; };
@@ -54,32 +51,33 @@ public:
 
 class KVIRC_API KviUnrealIrcServerInfo : public KviBasicIrcServerInfo
 {
-	//azzurranet
 public:
-	KviUnrealIrcServerInfo(const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(version) {;};
+	KviUnrealIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
 	virtual char getRegisterModeChar() { return 'r'; };
 	virtual const char * getSoftware() { return "Unreal"; };
 	virtual bool getNeedsOpToListModeseI() { return false; };
+	virtual const QString & getChannelModeDescription(char mode);
 };
 
 class KVIRC_API KviBahamutIrcServerInfo : public KviBasicIrcServerInfo
 {
-	//dalnet
+	//dalnet, azzurranet
 public:
-	KviBahamutIrcServerInfo(const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(version) {;};
+	KviBahamutIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
 	virtual char getRegisterModeChar() { return 'r'; };
 	virtual const char * getSoftware() { return "Bahamut"; };
 	virtual bool getNeedsOpToListModeseI() { return false; };
+	virtual const QString & getChannelModeDescription(char mode);
 };
 
 class KVIRC_API KviHyperionIrcServerInfo : public KviBasicIrcServerInfo
 {
-	// legacy freenode
+	// legacy freenode : no longer mantained
 public:
-	KviHyperionIrcServerInfo(const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(version) {;};
+	KviHyperionIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
 	virtual char getRegisterModeChar() { return 'e'; };
 	virtual const char * getSoftware() { return "Hyperion"; };
 	virtual bool getNeedsOpToListModeseI() { return true; };
@@ -89,33 +87,36 @@ class KVIRC_API KviIrcdSevenIrcServerInfo : public KviBasicIrcServerInfo
 {
 	//freenode
 public:
-	KviIrcdSevenIrcServerInfo(const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(version) {;};
+	KviIrcdSevenIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
 	virtual char getRegisterModeChar() { return 0; };
 	virtual const char * getSoftware() { return "Ircd-seven"; };
 	virtual bool getNeedsOpToListModeseI() { return true; };
+	virtual const QString & getChannelModeDescription(char mode);
 };
 
 class KVIRC_API KviIrcdRatboxIrcServerInfo : public KviBasicIrcServerInfo
 {
 	//efnet
 public:
-	KviIrcdRatboxIrcServerInfo(const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(version) {;};
+	KviIrcdRatboxIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
 	virtual char getRegisterModeChar() { return 0; };
 	virtual const char * getSoftware() { return "Ircd-ratbox"; };
 	virtual bool getNeedsOpToListModeseI() { return true; };
+	virtual const QString & getChannelModeDescription(char mode);
 };
 
 class KVIRC_API KviInspIRCdIrcServerInfo : public KviBasicIrcServerInfo
 {
 	//chatspike
 public:
-	KviInspIRCdIrcServerInfo(const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(version) {;};
+	KviInspIRCdIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
 	virtual char getRegisterModeChar() { return 'r'; };
 	virtual const char * getSoftware() { return "InspIRCd"; };
 	virtual bool getNeedsOpToListModeseI() { return true; };
+	virtual const QString & getChannelModeDescription(char mode);
 };
 
 class KVIRC_API KviIrcConnectionServerInfo
@@ -176,7 +177,7 @@ public:
 
 	void setServerVersion(const QString & version);
 
-	const QString & getChannelModeDescription(QChar mode) { return m_pServInfo->getChannelModeDescription(mode); };
+	const QString & getChannelModeDescription(char mode) { return m_pServInfo->getChannelModeDescription(mode); };
 	const QString & getUserModeDescription(QChar mode) { return m_pServInfo->getUserModeDescription(mode); };
 
 	bool isSupportedModePrefix(QChar c);

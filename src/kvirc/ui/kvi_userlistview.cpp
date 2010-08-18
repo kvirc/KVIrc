@@ -55,7 +55,7 @@
 #include <QDateTime>
 #include <QEvent>
 #include <QPaintEvent>
-#include <QMdiSubWindow>
+#include <QScrollBar>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;

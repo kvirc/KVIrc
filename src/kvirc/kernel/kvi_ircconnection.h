@@ -34,8 +34,6 @@
 #include "kvi_qstring.h"
 #include "kvi_pointerlist.h"
 #include "kvi_time.h"
-#include "kvi_ircconnectionuserinfo.h"
-#include "kvi_ircconnectionserverinfo.h"
 
 #include <QObject>
 #include <QByteArray>
@@ -364,19 +362,19 @@ public:
 	* \brief Helper that provides a shortcut for really common access to userInfo()->nickName()
 	* \return const QString &
 	*/
-	inline const QString & currentNickName();
+	const QString & currentNickName();
 
 	/**
 	* \brief Helper that provides a shortcut for really common access to userInfo()->userName()
 	* \return const QString &
 	*/
-	inline const QString & currentUserName();
+	const QString & currentUserName();
 
 	/**
 	* \brief Helper that provides a shortcut for really common access to serverInfo()->name()
 	* \return const QString &
 	*/
-	inline const QString & currentServerName();
+	const QString & currentServerName();
 
 	//
 	// Channel management
@@ -944,20 +942,5 @@ signals:
 
 
 // TODO: KviIdentity
-
-inline const QString & KviIrcConnection::currentServerName()
-{
-	return serverInfo()->name();
-}
-
-inline const QString & KviIrcConnection::currentNickName()
-{
-	return userInfo()->nickName();
-}
-
-inline const QString & KviIrcConnection::currentUserName()
-{
-	return userInfo()->userName();
-}
 
 #endif //_KVI_IRCCONNECTION_H_

@@ -28,6 +28,7 @@
 #include "kvi_options.h"
 #include "kvi_lagmeter.h"
 #include "kvi_ircconnectionstatedata.h"
+#include "kvi_ircconnectionserverinfo.h"
 
 #include <QByteArray>
 

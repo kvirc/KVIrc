@@ -41,6 +41,7 @@
 #include "kvi_irccontext.h"
 #include "kvi_lagmeter.h"
 #include "kvi_tal_popupmenu.h"
+#include "kvi_mdimanager.h"
 
 #include <QStyle>
 #include <QPainter>

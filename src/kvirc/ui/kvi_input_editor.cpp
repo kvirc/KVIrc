@@ -36,6 +36,7 @@
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_kernel.h"
 #include "kvi_locale.h"
+#include "kvi_mdimanager.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_options.h"
 #include "kvi_out.h"

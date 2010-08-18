@@ -28,6 +28,7 @@
 #include "kvi_frame.h"
 #include "kvi_iconmanager.h"
 #include "kvi_locale.h"
+#include "kvi_mdimanager.h"
 #include "kvi_module.h"
 #include "kvi_options.h"
 #include "kvi_socket.h"

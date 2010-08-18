@@ -28,6 +28,7 @@
 #include "kvi_app.h"
 #include "kvi_frame.h"
 #include "kvi_menubar.h"
+#include "kvi_mdimanager.h"
 #include "kvi_internalcmd.h"
 #include "kvi_iconmanager.h"
 #include "kvi_action.h"

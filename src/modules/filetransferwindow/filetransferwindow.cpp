@@ -37,6 +37,7 @@
 #include "kvi_qstring.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_frame.h"
+#include "kvi_mdimanager.h"
 
 #include <QToolTip>
 #include <QPainter>

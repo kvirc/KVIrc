@@ -34,6 +34,8 @@
 #include "kvi_ircconnectionasyncwhoisdata.h"
 #include "kvi_ircconnectionrequestqueue.h"
 #include "kvi_ircconnectionstatistics.h"
+#include "kvi_ircconnectionuserinfo.h"
+#include "kvi_ircconnectionserverinfo.h"
 #include "kvi_irclink.h"
 #include "kvi_ircsocket.h"
 #include "kvi_locale.h"
@@ -1697,4 +1699,19 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 			}
 		}
 	}
+}
+
+const QString & KviIrcConnection::currentServerName()
+{
+	return serverInfo()->name();
+}
+
+const QString & KviIrcConnection::currentNickName()
+{
+	return userInfo()->nickName();
+}
+
+const QString & KviIrcConnection::currentUserName()
+{
+	return userInfo()->userName();
 }

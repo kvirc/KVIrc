@@ -38,6 +38,7 @@
 #include <QWheelEvent>
 #include <QPainter>
 #include <QTimer>
+#include <QScrollBar>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;

@@ -38,6 +38,7 @@
 #include "kvi_modulemanager.h"
 #include "kvi_memmove.h"
 #include "kvi_malloc.h"
+#include "kvi_mdichild.h"
 #include "kvi_channel.h"
 #include "kvi_pointerhashtable.h"
 
