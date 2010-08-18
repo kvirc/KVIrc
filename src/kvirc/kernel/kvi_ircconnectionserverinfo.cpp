@@ -236,6 +236,10 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviIrcdRatboxIrcServerInfo(this, version);
 	else if(version.contains("inspircd",Qt::CaseInsensitive))
 		m_pServInfo = new KviInspIRCdIrcServerInfo(this, version);
+	else if(version.contains("snircd",Qt::CaseInsensitive))
+		m_pServInfo = new KviSnircdIrcServerInfo(this, version);
+	else if(version.contains("u2",Qt::CaseInsensitive))
+		m_pServInfo = new KviIrcuIrcServerInfo(this, version);
 	else
 		m_pServInfo = new KviBasicIrcServerInfo(this, version);
 }
@@ -424,6 +428,36 @@ const QString & KviIrcdRatboxIrcServerInfo::getChannelModeDescription(char mode)
 		// not present of efnet, but supported by ratbox
 		case 'r': return __tr2qs("Only registered nicks can join"); break;
 		case 'S': return __tr2qs("Need SSL connection to join"); break;
+	}
+	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviSnircdIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
+		case 'D': return __tr2qs("Delay users join to first message"); break;
+		case 'M': return __tr2qs("Moderate non auth users"); break;
+		case 'N': return __tr2qs("Block NOTICE"); break;
+		case 'R': return __tr2qs("Registered"); break;
+		case 'T': return __tr2qs("No multitarget messages"); break;
+		case 'd': return __tr2qs("Contains hidden users (previously +D)"); break;
+		case 'c': return __tr2qs("Color free (no ANSI colors)"); break;
+		case 'r': return __tr2qs("Only registered nicks can join"); break;
+		case 'u': return __tr2qs("Hide QUIT and PART messages"); break;
+	}
+	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviIrcuIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'D': return __tr2qs("Delay users join to first message"); break;
+		case 'R': return __tr2qs("Registered"); break;
+		case 'd': return __tr2qs("Contains hidden users (previously +D)"); break;
+		case 'r': return __tr2qs("Only registered nicks can join"); break;
 	}
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
 }
