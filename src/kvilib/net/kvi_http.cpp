@@ -487,20 +487,21 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 		if(bOk)bValid = true;
 	}
 
+	QString szUniResponse = QString::fromUtf8(szResponse.ptr());
+
 	if(!bValid)
 	{
 		// the response is invalid ?
 		resetInternalStatus();
-		m_szLastError=__tr2qs("Invalid HTTP response: %s").arg(szResponse.ptr());
+		m_szLastError = __tr2qs("Invalid HTTP response: %1").arg(szUniResponse);
 		emit terminated(false);
 		return false;
 	}
 
-	QString tmp;
-	KviQString::sprintf(tmp,__tr2qs("Received HTTP response: %s"),szResponse.ptr());
+	QString tmp = __tr2qs("Received HTTP response: %1").arg(szUniResponse);
 
 	emit status(tmp);
-	emit receivedResponse(QString(szResponse.ptr()));
+	emit receivedResponse(szUniResponse);
 
 	KviPointerList<KviStr> hlist;
 	hlist.setAutoDelete(true);
