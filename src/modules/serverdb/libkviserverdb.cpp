@@ -33,6 +33,70 @@
 extern KVIRC_API KviServerDataBase * g_pServerDataBase;
 
 /*
+	@doc: serverdb
+	@type:
+		module
+	@short:
+		Interface to the servers database
+	@title:
+		The serverdb module
+	@body:
+		The serverdb module is the scripting interface to the servers and networks database.[br]
+		It provides the following set of commands:[br]
+		[cmd]serverdb.addNetwork[/cmd]: adds a network entry to the database[br]
+		[cmd]serverdb.addServer[/cmd]: adds a server entry to the database[br]
+		[cmd]serverdb.setNetworkConnectCommand[/cmd]: sets a "on connect" script for the network[br]
+		[cmd]serverdb.setNetworkEncoding[/cmd]: sets the network encoding[br]
+		[cmd]serverdb.setNetworkTextEncoding[/cmd]: sets the network text encoding[br]
+		[cmd]serverdb.setNetworkDescription[/cmd]: sets the network description[br]
+		[cmd]serverdb.setNetworkLoginCommand[/cmd]: sets a "on login" script for the network[br]
+		[cmd]serverdb.setNetworkNickName[/cmd]: sets the network specific nickname[br]
+		[cmd]serverdb.setNetworkRealName[/cmd]: sets the network specific realname[br]
+		[cmd]serverdb.setNetworkUserName[/cmd]: sets the network specific username[br]
+		[cmd]serverdb.setNetworkJoinChannels[/cmd]: sets the network autojoin channels list[br]
+		[cmd]serverdb.setServerConnectCommand[/cmd]: sets a "on connect" script for the server[br]
+		[cmd]serverdb.setServerEncoding[/cmd]: sets the server encoding[br]
+		[cmd]serverdb.setServerTextEncoding[/cmd]: sets the server text encoding[br]
+		[cmd]serverdb.setServerDescription[/cmd]: sets the server description[br]
+		[cmd]serverdb.setServerLoginCommand[/cmd]: sets a "on login" script for the server[br]
+		[cmd]serverdb.setServerNickName[/cmd]: sets the server specific nickname[br]
+		[cmd]serverdb.setServerRealName[/cmd]: sets the server specific realname[br]
+		[cmd]serverdb.setServerUserName[/cmd]: sets the server specific username[br]
+		[cmd]serverdb.setServerJoinChannels[/cmd]: sets the server autojoin channels list[br]
+		[br]
+		It provides the following set of functions:[br]
+		[fnc]$serverdb.cacheIp[/fnc]: returns the cache-ip status for a server[br]
+		[fnc]$serverdb.networkConnectCommand[/fnc]: returns the "on connect" script for a network[br]
+		[fnc]$serverdb.networkDescription[/fnc]: returns the description for a network[br]
+		[fnc]$serverdb.networkEncoding[/fnc]: returns the encoding for a network[br]
+		[fnc]$serverdb.networkTextEncoding[/fnc]: returns the text encoding for a network[br]
+		[fnc]$serverdb.networkLoginCommand[/fnc]: returns the "on login" script for a network[br]
+		[fnc]$serverdb.networkName[/fnc]: returns the name of a network[br]
+		[fnc]$serverdb.networkNickName[/fnc]: returns the specific nickname for a network[br]
+		[fnc]$serverdb.networkRealName[/fnc]: returns the specific realname for a network[br]
+		[fnc]$serverdb.networkUserName[/fnc]: returns the specific username for a network[br]
+		[fnc]$serverdb.networkJoinChannels[/fnc]: returns the list of autojoin channels for a network[br]
+		[fnc]$serverdb.serverConnectCommand[/fnc]: returns the "on connect" script for a server[br]
+		[fnc]$serverdb.serverDescription[/fnc]: returns the description for a server[br]
+		[fnc]$serverdb.serverEncoding[/fnc]: returns the encoding for a server[br]
+		[fnc]$serverdb.serverTextEncoding[/fnc]: returns the text encoding for a server[br]
+		[fnc]$serverdb.serverId[/fnc]: returns the unique id for a server[br]
+		[fnc]$serverdb.serverIp[/fnc]: returns the ip for a server[br]
+		[fnc]$serverdb.serverLoginCommand[/fnc]: returns the "on login" script for a server[br]
+		[fnc]$serverdb.serverNickName[/fnc]: returns the specific nickname for a server[br]
+		[fnc]$serverdb.serverPassword[/fnc]: returns the password for a server[br]
+		[fnc]$serverdb.serverPort[/fnc]: returns the port for a server[br]
+		[fnc]$serverdb.serverRealName[/fnc]: returns the specific realname for a server[br]
+		[fnc]$serverdb.serverUserName[/fnc]: returns the specific username for a server[br]
+		[fnc]$serverdb.serverJoinChannels[/fnc]: returns the list of autojoin channels for a server[br]
+		[fnc]$serverdb.isAutoConnect[/fnc]: returns the autoconnect status for a server[br]
+		[fnc]$serverdb.isIPv6[/fnc]: returns the ipv6 status for a server[br]
+		[fnc]$serverdb.isSSL[/fnc]: returns the ssl status for a server[br]
+		[fnc]$serverdb.networkExists[/fnc]: checks if a network exists[br]
+		[fnc]$serverdb.serverExists[/fnc]: checks if a server exists[br]
+*/
+
+/*
 	@doc: serverdb.networkExists
 	@type:
 		function
