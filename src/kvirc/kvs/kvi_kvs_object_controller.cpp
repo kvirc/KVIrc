@@ -102,15 +102,20 @@ void KviKvsObjectController::clearUserClasses()
 {
 	flushUserClasses();
 	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*m_pClassDict);
-	KviPointerList<KviKvsObjectClass> l;
-	l.setAutoDelete(true);
+	KviPointerList<KviKvsObjectClass> lDying;
+	lDying.setAutoDelete(false);
 	while(it.current())
 	{
 		if(!(it.current()->isBuiltin()))
-		{
-			l.append(it.current());
-		}
+			lDying.append(it.current());
 		++it;
+	}
+	
+	for(KviKvsObjectClass * pDyingClass = lDying.first();pDyingClass;pDyingClass = lDying.next())
+	{
+		if(!m_pClassDict->findRef(pDyingClass))
+			continue; // already deleted (by parent <-> child relations)
+		delete pDyingClass;
 	}
 }
 
