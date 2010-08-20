@@ -67,7 +67,7 @@ namespace KviKvsCoreSimpleCommands
 			are always parsed (when typing this happen only if the text is a command).[br]
 			The switch -x will make say evaluate and execute arbitary commands, too:
 			if <text> begins with a slash then it will be treated as a command
-			to be evaluated and executed (after parsing the identifiers etc.)
+			to be evaluated and executed (after parsing the identifiers etc.).[br]
 			If this happens, the executed command will not be send to the active channel.[br]
 			[example]
 				/say -x /[cmd]echo[/cmd] foo
@@ -128,7 +128,7 @@ namespace KviKvsCoreSimpleCommands
 			[b]must[/b] be an IPv6 address.
 			If using a local interface name as <local address> (working on most, but not all systems),
 			the KVIrc network engine will automatically detect the interface address (i.e. the default
-			address of that interface.)
+			address of that interface).
 
 			!sw: -c=<command sequence:string> | --command=<command sequence:string>
 			The <command sequence> will be executed just after the login operations
@@ -141,21 +141,21 @@ namespace KviKvsCoreSimpleCommands
 
 			!sw: -i | --ipv6
 			Connects to the <server> via the IPv6 protocol
-			(if IPv6 support has been compiled in.)
+			(if IPv6 support has been compiled in).
 
 			!sw: -n | --new-context
 			Forces the connection to be attempted in a new IRC context (server window) instead of the current one.
 
 			!sw: -p=<password:string> | --password=<password:string>
 			Uses <password> to login to the server (the password will be stored in the server
-			entry too.)
+			entry too).
 
 			!sw: -q=<nick:string> | --nickname=<nick:string>
 			Uses <nick> to login to the server (the nickname will be stored in the server
-			entry too.)
+			entry too).
 
 			!sw: -s | --ssl
-			Activates the SSL support for this connection (if OpenSSL support has been compiled in.)
+			Activates the SSL support for this connection (if OpenSSL support has been compiled in).
 
 			!sw: -u | --unused-context
 			Forces the connection to be attempted in the first IRC context that has
