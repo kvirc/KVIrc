@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-#include <QFont>
 #include "kvi_settings.h"
 #include "kvi_string.h"
 #include "kvi_qstring.h"
@@ -33,6 +32,9 @@
 #include "kvi_pointerlist.h"
 #include "kvi_time.h"
 #include "kvi_pointerhashtable.h" // ?
+
+#include <QFont>
+#include <QStringList>
 
 #ifdef COMPILE_ON_WINDOWS
 	// The brain damaged MSVC compiler can't instantiate templates without this
@@ -52,16 +54,16 @@
 #endif
 
 class KviTalPopupMenu;
-class QPixmap;
 class KviTalListBox;
-class QTextCodec;
-class QDomElement;
-
 class KviConsole;
 class KviConfig;
 class KviRegisteredUser;
 class KviIrcConnection;
 class KviServerDataBase;
+class QPixmap;
+class QTextCodec;
+class QDomElement;
+class QStringList;
 
 typedef struct _KviPendingAvatarChange
 {
@@ -71,6 +73,25 @@ typedef struct _KviPendingAvatarChange
 	QString      szUser;
 	QString      szHost;
 } KviPendingAvatarChange;
+
+/**
+* \typedef KviNotifierMessageParam
+* \struct _KviNotifierMessageParam
+* \brief Defines a struct which holds information about the notifier message
+*/
+typedef struct _KviNotifierMessageParam
+{
+	KviWindow    * pWindow;            /**< The window where the notifier was triggered */
+	QString        szIcon;             /**< The id of the icon (channel, query, ...) */
+	QString        szMessage;          /**< The message which triggered the notifier */
+	unsigned int   uMessageLifetime;   /**< The timeout of the notifier; 0 means no hide */
+} KviNotifierMessageParam;
+
+typedef struct _KviDBusNotifierMessageQueue
+{
+	QStringList lMessages;
+} KviDBusNotifierMessageQueue;
+
 
 #ifdef Unsorted
 	#undef Unsorted

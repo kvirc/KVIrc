@@ -24,42 +24,96 @@
 //
 //=============================================================================
 
+/**
+* \file notifierwindowtab.h
+* \author Fabio Bas
+* \brief Defines the tab page for the notifier object
+*/
+
 #include "notifiermessage.h"
 
 #include "kvi_settings.h"
 
-#include <QTabWidget>
 #include <QScrollArea>
-#include <QVBoxLayout>
-#include <QWidget>
 
+class QVBoxLayout;
+class QWidget;
+class QTabWidget;
 class QPainter;
 class KviWindow;
 
-class KviNotifierWindowTab : public QScrollArea // this class defines an object for every single tab about the tabs area
+/**
+* \class KviNotifierWindowTab
+* \brief Defines an object for every single tab about the tabs area
+*/
+class KviNotifierWindowTab : public QScrollArea
 {
 	Q_OBJECT
 public:
-	KviNotifierWindowTab(KviWindow *, QTabWidget*);
+	/**
+	* \brief Creates the tab object
+	* \param pWnd The name of the window represented by the tab
+	* \param pParent The parent area container
+	* \return KviNotifierWindowTab
+	*/
+	KviNotifierWindowTab(KviWindow * pWnd, QTabWidget * pParent);
+	
+	/**
+	* \brief Destroys the tab object
+	*/
 	~KviNotifierWindowTab();
 private:
-	QString		  m_label;
-	KviWindow	* m_pWnd;
-	QTabWidget	* m_pParent;
-	QVBoxLayout	* m_pVBox;
-	QWidget		* m_pVWidget;
+	QString       m_szLabel;
+	KviWindow   * m_pWnd;
+	QTabWidget  * m_pParent;
+	QVBoxLayout * m_pVBox;
+	QWidget     * m_pVWidget;
 public:
-	void appendMessage(KviNotifierMessage * m);
+	/**
+	* \brief Appends the given message to the window
+	* \param pMessage The message received to append
+	* \return void
+	*/
+	void appendMessage(KviNotifierMessage * pMessage);
+	
+	/**
+	* \brief Updates the GUI
+	* \return void
+	*/
 	void updateGui();
-	inline QString label() const { return m_label; };
+	
+	/**
+	* \brief Returns the name of the current window
+	* \return QString
+	*/
+	inline QString label() const { return m_szLabel; };
+	
+	/**
+	* \brief Returns the pointer of the current window
+	* \return KviWindow *
+	*/
 	inline KviWindow * wnd() const { return m_pWnd; };
 protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void resizeEvent(QResizeEvent * e);
 	virtual void paintEvent(QPaintEvent * e);
 private slots:
+	/**
+	* \brief Emitted when the scrollbar range is changed
+	* \return void
+	*/
 	void scrollRangeChanged(int, int);
+	
+	/**
+	* \brief Emitted when the window changes its name
+	* \return void
+	*/
 	void labelChanged();
+	
+	/**
+	* \brief Emitted when the window is being destroyed
+	* \return void
+	*/
 	void closeMe();
 };
 

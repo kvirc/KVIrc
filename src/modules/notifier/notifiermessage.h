@@ -57,15 +57,15 @@ public:
 	~KviNotifierMessage();
 private:
 	/// The message text
-	QString  	  m_szText;
+	QString       m_szText;
 	/// The message icon (can be null)
-	QPixmap		* m_pPixmap;
+	QPixmap     * m_pPixmap;
 	/// Layout for the labels
-	QHBoxLayout	* m_pHBox;
+	QHBoxLayout * m_pHBox;
 	/// Label for the message icon
-	QLabel		* m_pLabel0;
+	QLabel      * m_pLabel0;
 	/// Label for the message text
-	QLabel		* m_pLabel1;
+	QLabel      * m_pLabel1;
 public:
 	/**
 	* \brief Returns the original irc message
@@ -74,9 +74,9 @@ public:
 	inline QString text() const { return m_szText; };
 	/**
 	* \brief Returns the message icon
-	* \return QPixmap*
+	* \return QPixmap *
 	*/
-	inline QPixmap* pixmap() const { return m_pPixmap; };
+	inline QPixmap * pixmap() const { return m_pPixmap; };
 	/**
 	* \brief Updates the aspect of this message
 	* \return void

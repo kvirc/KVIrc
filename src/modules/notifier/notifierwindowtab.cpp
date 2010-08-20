@@ -38,6 +38,9 @@
 #include <QScrollBar>
 #include <QResizeEvent>
 #include <QPainter>
+#include <QTabWidget>
+#include <QVBoxLayout>
+#include <QWidget>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	#include <QPixmap>
@@ -46,23 +49,23 @@
 
 extern KviNotifierWindow * g_pNotifierWindow;
 
-KviNotifierWindowTab::KviNotifierWindowTab(KviWindow * pWnd, QTabWidget *parent)
-	: QScrollArea(parent)
+KviNotifierWindowTab::KviNotifierWindowTab(KviWindow * pWnd, QTabWidget * pParent)
+: QScrollArea(pParent)
 {
 	m_pWnd = pWnd;
 	if(m_pWnd)
 	{
-		m_label = m_pWnd->windowName();
+		m_szLabel = m_pWnd->windowName();
 		connect(pWnd,SIGNAL(windowNameChanged()),this,SLOT(labelChanged()));
 		connect(pWnd,SIGNAL(destroyed()),this,SLOT(closeMe()));
 	} else {
-		m_label = (QString)"----";
+		m_szLabel = "----";
 	}
 
-	if(parent)
+	if(pParent)
 	{
-		m_pParent=parent;
-		m_pParent->addTab(this, m_label);
+		m_pParent = pParent;
+		m_pParent->addTab(this, m_szLabel);
 	}
 
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -71,7 +74,7 @@ KviNotifierWindowTab::KviNotifierWindowTab(KviWindow * pWnd, QTabWidget *parent)
 	if(verticalScrollBar())
 		connect(verticalScrollBar(),SIGNAL(rangeChanged(int, int)),this, SLOT(scrollRangeChanged(int, int)));
 
-	QPalette pal=palette();
+	QPalette pal = palette();
 	pal.setColor(backgroundRole(), Qt::transparent);
 	setPalette(pal);
 
@@ -92,17 +95,17 @@ KviNotifierWindowTab::~KviNotifierWindowTab()
 		m_pVWidget->deleteLater();
 }
 
-void KviNotifierWindowTab::appendMessage(KviNotifierMessage * m)
+void KviNotifierWindowTab::appendMessage(KviNotifierMessage * pMessage)
 {
-	m_pVBox->addWidget(m);
-	m->setFixedWidth(viewport()->width());
+	m_pVBox->addWidget(pMessage);
+	pMessage->setFixedWidth(viewport()->width());
 
 	while(m_pVBox->count() > MAX_MESSAGES_IN_WINDOW)
 	{
-		QLayoutItem* tmp=m_pVBox->takeAt(0);
-		KviNotifierMessage* tmp2=(KviNotifierMessage*)tmp->widget();
-		if(tmp2)
-			tmp2->deleteLater();
+		QLayoutItem * pTmp = m_pVBox->takeAt(0);
+		KviNotifierMessage * pTmp2 = (KviNotifierMessage*)pTmp->widget();
+		if(pTmp2)
+			pTmp2->deleteLater();
 	}
 }
 
@@ -110,10 +113,10 @@ void KviNotifierWindowTab::updateGui()
 {
 	for(int i=0; i<m_pVBox->count(); ++i)
 	{
-		QLayoutItem* tmp=m_pVBox->itemAt(i);
-		KviNotifierMessage* tmp2=(KviNotifierMessage*)tmp->widget();
-		if(tmp2)
-			tmp2->updateGui();
+		QLayoutItem * pTmp = m_pVBox->itemAt(i);
+		KviNotifierMessage * pTmp2 = (KviNotifierMessage*)pTmp->widget();
+		if(pTmp2)
+			pTmp2->updateGui();
 	}
 }
 
@@ -126,18 +129,21 @@ void KviNotifierWindowTab::scrollRangeChanged(int, int)
 
 void KviNotifierWindowTab::labelChanged()
 {
-	if(!m_pWnd || !m_pParent)return;
+	if(!m_pWnd || !m_pParent)
+		return;
 
-	int i = m_pParent->indexOf(this);
-	m_label = m_pWnd->windowName();
-	if(i>-1)
-		m_pParent->setTabText (i, m_label);
+	int iIdx = m_pParent->indexOf(this);
+	m_szLabel = m_pWnd->windowName();
+	if(iIdx > -1)
+		m_pParent->setTabText(iIdx, m_szLabel);
 }
 
 void KviNotifierWindowTab::mouseDoubleClickEvent(QMouseEvent *)
 {
-	if(!m_pWnd || !g_pNotifierWindow)return;
-	if(!g_pApp->windowExists(m_pWnd))return;
+	if(!m_pWnd || !g_pNotifierWindow)
+		return;
+	if(!g_pApp->windowExists(m_pWnd))
+		return;
 
 	g_pNotifierWindow->hideNow();
 
@@ -158,10 +164,10 @@ void KviNotifierWindowTab::closeMe()
 	//our window has been closed
 	if(m_pParent && g_pNotifierWindow)
 	{
-		int index = m_pParent->indexOf(this);
-		if(index!=-1)
+		int iIdx = m_pParent->indexOf(this);
+		if(iIdx != -1)
 		{
-			g_pNotifierWindow->slotTabCloseRequested(index);
+			g_pNotifierWindow->slotTabCloseRequested(iIdx);
 		}
 	}
 }
@@ -171,19 +177,19 @@ void KviNotifierWindowTab::resizeEvent(QResizeEvent *)
 	if(m_pVBox)
 	{
 		int iWidth = viewport()->width();
-		KviNotifierMessage* m;
-		for(int i=0;i<m_pVBox->count(); i++)
+		KviNotifierMessage * pMessage;
+		for(int i=0; i < m_pVBox->count(); i++)
 		{
-			m = (KviNotifierMessage*)m_pVBox->itemAt(i)->widget();
-			if(m)
-				m->setFixedWidth(iWidth);
+			pMessage = (KviNotifierMessage *)m_pVBox->itemAt(i)->widget();
+			if(pMessage)
+				pMessage->setFixedWidth(iWidth);
 		}
 	}
 }
 
 void KviNotifierWindowTab::paintEvent(QPaintEvent * e)
 {
-	QPainter *p = new QPainter(viewport());
+	QPainter * pPainter = new QPainter(viewport());
 
 	//make sure you clean your widget with a transparent
 	//  color before doing any rendering
@@ -193,27 +199,28 @@ void KviNotifierWindowTab::paintEvent(QPaintEvent * e)
 	#ifdef COMPILE_PSEUDO_TRANSPARENCY
 		if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 		{
-			p->save();
-			p->setCompositionMode(QPainter::CompositionMode_Source);
-			QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+			pPainter->save();
+			pPainter->setCompositionMode(QPainter::CompositionMode_Source);
+			QColor col = KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 			col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-			p->fillRect(e->rect(), col);
-			p->restore();
+			pPainter->fillRect(e->rect(), col);
+			pPainter->restore();
 		} else if(g_pShadedChildGlobalDesktopBackground)
 		{
 			QPoint pnt = mapToGlobal(e->rect().topLeft());
-			p->drawTiledPixmap(e->rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+			pPainter->drawTiledPixmap(e->rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 		} else {
 	#endif
 			QPixmap * pPix = KVI_OPTION_PIXMAP(KviOption_pixmapNotifierBackground).pixmap();
 
-			if(pPix) KviPixmapUtils::drawPixmapWithPainter(p,pPix,KVI_OPTION_UINT(KviOption_uintNotifierPixmapAlign),e->rect(),e->rect().width(),e->rect().height());
-			else p->fillRect(e->rect(),KVI_OPTION_COLOR(KviOption_colorNotifierBackground));
+			if(pPix)
+				KviPixmapUtils::drawPixmapWithPainter(pPainter,pPix,KVI_OPTION_UINT(KviOption_uintNotifierPixmapAlign),e->rect(),e->rect().width(),e->rect().height());
+			else pPainter->fillRect(e->rect(),KVI_OPTION_COLOR(KviOption_colorNotifierBackground));
 	#ifdef COMPILE_PSEUDO_TRANSPARENCY
 		}
 	#endif
 	
-	delete p;
+	delete pPainter;
 	e->ignore();
 }
 

@@ -930,22 +930,22 @@ public:
 
 	/**
 	* \brief Sets a channel mode with a parameter; an empty parameter unsets the mode (eg: +k password)
-	* \param char The mode
-	* \param QString & The parameter for the mode
+	* \param cMode The mode
+	* \param szParam The parameter for the mode
 	* \return void
 	*/
 	void setChannelModeWithParam(char cMode, QString & szParam);
 
 	/**
 	* \brief Returns true if the channel has a mode with parameter set (eg. mode k)
-	* \param char The mode
+	* \param cMode The mode
 	* \return bool
 	*/
 	bool hasChannelMode(char cMode) { return m_szChannelParameterModes.contains(cMode); };
 
 	/**
 	* \brief Returns the value (parameter) for a channel mode (eg. the password for mode k)
-	* \param char The mode
+	* \param cMode The mode
 	* \return QString
 	*/
 	QString channelModeParam(char cMode) const { return m_szChannelParameterModes.value(cMode); };
@@ -1191,7 +1191,7 @@ private slots:
 
 	/**
 	* \brief Called when we select the modes from the mode editor
-	* \param QString The modes selected, including any plus/minus sign and parameters
+	* \param szMode The modes selected, including any plus/minus sign and parameters
 	* \return void
 	*/
 	void setMode(QString & szMode);

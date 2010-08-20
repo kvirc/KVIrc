@@ -111,7 +111,6 @@ kvi_time_t g_tNotifierDisabledUntil = 0;
 			notifier.message -t=10 This message will be shown only for 10 seconds
 		[/example]
 */
-
 static bool notifier_kvs_cmd_message(KviKvsModuleCommandCall * c)
 {
 	QString szMessage;
@@ -138,13 +137,13 @@ static bool notifier_kvs_cmd_message(KviKvsModuleCommandCall * c)
 		}
 	}
 	c->switches()->getAsStringIfExisting('i',"icon",szIco);
-	kvs_int_t uTime=KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime);
+	kvs_int_t uTime = KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime);
 	if(c->hasSwitch('t',"timeout"))
 	{
-		KviKvsVariant *time=c->getSwitch('t',"timeout");
-		if(time)
+		KviKvsVariant * pTime = c->getSwitch('t',"timeout");
+		if(pTime)
 		{
-			bool bOk=time->asInteger(uTime);
+			bool bOk = pTime->asInteger(uTime);
 			if(!bOk)
 			{
 				uTime = 0;
@@ -182,10 +181,10 @@ static bool notifier_kvs_cmd_message(KviKvsModuleCommandCall * c)
 	@seealso:
 		[cmd]notifier.show[/cmd] [cmd]notifier.message[/cmd] [fnc]$notifier.isEnabled[/fnc]
 */
-
 static bool notifier_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 {
-	if(g_pNotifierWindow) g_pNotifierWindow->doHide(!(c->hasSwitch('n',"notanimated")));
+	if(g_pNotifierWindow)
+		g_pNotifierWindow->doHide(!(c->hasSwitch('n',"notanimated")));
 	return true;
 }
 
@@ -212,17 +211,19 @@ static bool notifier_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 	@seealso:
 		[cmd]notifier.hide[/cmd] [cmd]notifier.message[/cmd] [fnc]$notifier.isEnabled[/fnc]
 */
-
 static bool notifier_kvs_cmd_show(KviKvsModuleCommandCall * c)
 {
-	if(!g_pNotifierWindow)return true;
-	if(!g_pNotifierWindow->countTabs())return true;
+	if(!g_pNotifierWindow)
+		return true;
+	if(!g_pNotifierWindow->countTabs())
+		return true;
 
 	g_pNotifierWindow->setDisableHideOnMainWindowGotAttention(true);
 	g_pNotifierWindow->doShow(!(c->hasSwitch('n',"noanim")));
 
 	return true;
 }
+
 /*
 	@doc: notifier.isEnabled
 	@type:
@@ -246,21 +247,19 @@ static bool notifier_kvs_cmd_show(KviKvsModuleCommandCall * c)
 		instead.. but again [b]DON'T do it[/b] :)[br]
 
 */
-
 static bool notifier_kvs_fnc_isEnabled(KviKvsModuleFunctionCall * c)
 {
 	bool bCheck;
 	if(!KVI_OPTION_BOOL(KviOption_boolEnableNotifier))
-		bCheck=false;
+		bCheck = false;
 	else
-		bCheck=g_tNotifierDisabledUntil < kvi_unixTime();
+		bCheck = g_tNotifierDisabledUntil < kvi_unixTime();
 	c->returnValue()->setBoolean(bCheck);
 	return true;
 }
 
 static bool notifier_module_init(KviModule * m)
 {
-
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"message",notifier_kvs_cmd_message);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"show",notifier_kvs_cmd_show);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"hide",notifier_kvs_cmd_hide);
@@ -284,37 +283,29 @@ static bool notifier_module_can_unload(KviModule *)
 	return (!g_pNotifierWindow);
 }
 
-typedef struct _NotifierMessageSupaDupaParameterStruct
+static bool notifier_module_ctrl(KviModule *, const char * pcOperation, void * pParam)
 {
-	KviWindow * pWindow;
-	QString szIcon;
-	QString szMessage;
-	unsigned int uMessageLifetime; // 0 means no hide
-} NotifierMessageSupaDupaParameterStruct;
+	if(!kvi_strEqualCI("notifier::message",pcOperation))
+		return false;
 
-static bool notifier_module_ctrl(KviModule *,const char *operation,void *param)
-{
-	if(kvi_strEqualCI("notifier::message",operation))
-	{
-		NotifierMessageSupaDupaParameterStruct * p = (NotifierMessageSupaDupaParameterStruct *)param;
-		if(!p)return false;
+	KviNotifierMessageParam * p = (KviNotifierMessageParam *)pParam;
+	if(!p)
+		return false;
 
-		if(!g_pNotifierWindow)
-			g_pNotifierWindow = new KviNotifierWindow();
+	if(!g_pNotifierWindow)
+		g_pNotifierWindow = new KviNotifierWindow();
 
-		g_pNotifierWindow->addMessage(p->pWindow,p->szIcon,p->szMessage,p->uMessageLifetime);
-		g_pNotifierWindow->doShow(KVI_OPTION_BOOL(KviOption_boolNotifierFading)? true : false);
+	g_pNotifierWindow->addMessage(p->pWindow,p->szIcon,p->szMessage,p->uMessageLifetime);
+	g_pNotifierWindow->doShow(KVI_OPTION_BOOL(KviOption_boolNotifierFading) ? true : false);
 
-		return true;
-	}
-	return false;
+	return true;
 }
 
 KVIRC_MODULE(
 	"Notifier",
 	"4.0.0",
-	"Copyright (C) 2005:\n" \
-	"	Iacopo Palazzi (iakko at siena dot linux dot it)",
+	"Copyright (C) 2005 Iacopo Palazzi (iakko at siena dot linux dot it)\n" \
+	"              2010 Elvio Basello (hell at hellvis69 dot netsons dot org)",
 	"KVIrc Client - Taskbar Notifier",
 	notifier_module_init,
 	notifier_module_can_unload,

@@ -32,7 +32,7 @@
 #include <QRect>
 #include <QResizeEvent>
 
-KviNotifierMessage::KviNotifierMessage(QPixmap * pPixmap, const QString &szText)
+KviNotifierMessage::KviNotifierMessage(QPixmap * pPixmap, const QString & szText)
 {
 	m_pLabel0 = 0;
 	m_pLabel1 = 0;
@@ -63,7 +63,7 @@ KviNotifierMessage::~KviNotifierMessage()
 
 void KviNotifierMessage::updateGui()
 {
-	bool bShowImages=KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages);
+	bool bShowImages = KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages);
 
 	if(m_pLabel0)
 		delete m_pLabel0;
@@ -96,5 +96,4 @@ void KviNotifierMessage::updateGui()
 		m_pHBox->addWidget(m_pLabel0);
 	}
 	m_pHBox->addWidget(m_pLabel1);
-
 }

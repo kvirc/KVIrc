@@ -61,7 +61,7 @@ class KviPackAddonDialog : public QWizard
 	Q_OBJECT
 public:
 	/**
-	* \brief Create the wizard object
+	* \brief Creates the wizard object
 	* \param pParent The parent widget
 	* \return KviPackAddonDialog
 	*/
