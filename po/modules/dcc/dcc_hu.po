@@ -2,19 +2,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
-# Ádám Fibinger <vfiber@interware.hu>, 2006, 2007.
+# Ádám Fibinger <vfiber@interware.hu>, 2006, 2007, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: dcc_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-13 16:45+0200\n"
-"PO-Revision-Date: 2007-10-27 23:04+0200\n"
-"Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
-"Language-Team: hungarian <hu@li.org>\n"
+"PO-Revision-Date: 2010-08-20 11:50+0200\n"
+"Last-Translator: \n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/dcc/requests.cpp:873
 msgid "\"any\""
@@ -129,13 +130,12 @@ msgstr ""
 "keresztül történne<br>"
 
 #: src/modules/dcc/broker.cpp:417
-#, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VIDEO</"
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
 "b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> kérte <br><b>DCC kapcsolat létrehozását</b>VOICE "
+"<b>%1 [%2@%3]</b> kérte <br><b>DCC kapcsolat létrehozását</b>VIDEÓ "
 "módban<b></b><br>A kapcsolat célja: <b>%4</b> címen <b>%5</b>porton "
 "keresztül történne.<br>"
 
@@ -236,20 +236,19 @@ msgstr "Próbálkozás passzív DCC %s kapcsolat létrehozására"
 
 #: src/modules/dcc/canvas.cpp:79
 msgid "Attempting a passive DCC CANVAS connection"
-msgstr "Próbálkozás: passzív DCC CANAVAS (vászon) kapcsolat"
+msgstr "Próbálkozás passzív DCC CANAVAS (vászon) kapcsolat létrehozására"
 
 #: src/modules/dcc/video.cpp:569
-#, fuzzy
 msgid "Attempting a passive DCC VIDEO connection"
-msgstr "Passzív DCC VOICE kapcsolat létrehozása"
+msgstr "Próbálkozás passzív DCC VIDEO kapcsolat létrehozása"
 
 #: src/modules/dcc/voice.cpp:740
 msgid "Attempting a passive DCC VOICE connection"
-msgstr "Passzív DCC VOICE kapcsolat létrehozása"
+msgstr "Próbálkozás passzív DCC VOICE kapcsolat létrehozása"
 
 #: src/modules/dcc/send.cpp:1094
 msgid "Attempting an active DCC %1 connection"
-msgstr "Aktív DCC %1 kapcsolat létrehozása"
+msgstr "Próbálkozás aktív DCC %1 kapcsolat létrehozása"
 
 #: src/modules/dcc/chat.cpp:170
 #, c-format
@@ -261,13 +260,12 @@ msgid "Attempting an active DCC CANVAS connection"
 msgstr "Próbálkozás aktív DCC CANAVAS (vászon) kapcsolat létrehozására"
 
 #: src/modules/dcc/video.cpp:574
-#, fuzzy
 msgid "Attempting an active DCC VIDEO connection"
-msgstr "Aktív DCC VOICE kapcsolat létrehozása"
+msgstr "Aktív DCC VIDEO kapcsolat létrehozása"
 
 #: src/modules/dcc/voice.cpp:745
 msgid "Attempting an active DCC VOICE connection"
-msgstr "Aktív DCC VOICE kapcsolat létrehozása"
+msgstr "Próbálkozás aktív DCC VOICE kapcsolat létrehozása"
 
 #: src/modules/dcc/broker.cpp:639
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
@@ -413,19 +411,16 @@ msgid "DCC Failed: %Q"
 msgstr "DCC Sikertelen %Q"
 
 #: src/modules/dcc/broker.cpp:423
-#, fuzzy
 msgid "DCC VIDEO request"
-msgstr "DCC VOICE (hang) kérés"
+msgstr "DCC VIDEÓ (hang) kérés"
 
 #: src/modules/dcc/video.cpp:606
-#, fuzzy
 msgid "DCC VIDEO request not sent: awaiting manual connection"
-msgstr "DCC VOICE kérés nem lett elküldve, várakozás manuális kapcsolódásra"
+msgstr "DCC VIDEO kérés nem lett elküldve, várakozás manuális kapcsolódásra"
 
 #: src/modules/dcc/libkvidcc.cpp:1192
-#, fuzzy
 msgid "DCC VIDEO support not enabled at compilation time"
-msgstr "DCC VOICE nem volt engedélyezve fordításkor"
+msgstr "DCC VIDEO nem volt engedélyezve fordításkor"
 
 #: src/modules/dcc/broker.cpp:353
 msgid "DCC VOICE request"
@@ -496,7 +491,7 @@ msgstr "Beviteli puffer: %d bájt"
 
 #: src/modules/dcc/video.cpp:456
 msgid "Input:"
-msgstr ""
+msgstr "Bevitel:"
 
 #: src/modules/dcc/send.cpp:2120
 msgid "Internal error in RESUME request"
@@ -520,6 +515,8 @@ msgstr "Helytelen RECV kérés, Pozíció: %u nagyobb mint a fájlméret"
 #: src/modules/dcc/send.cpp:2103
 msgid "Invalid RESUME request: Invalid file name (got '%1' but should be '%2')"
 msgstr ""
+"Helytelen RESUME kérés: Helytelen fájl név ('%1' a kérés, de '%2' lenne a "
+"helyes)"
 
 #: src/modules/dcc/send.cpp:2126
 msgid "Invalid RESUME request: Position %1 is larger than file size"
@@ -527,9 +524,8 @@ msgstr ""
 "Helytelen RESUME (folytatás)kérés, %1 pozíció nagyobb, mint a fájl mérete"
 
 #: src/modules/dcc/libkvidcc.cpp:1213
-#, fuzzy
 msgid "Invalid codec specified"
-msgstr "Helytelen kodek meghatározása, váltás 'adpcm'-re"
+msgstr "Megadott kodek helytelen"
 
 #: src/modules/dcc/libkvidcc.cpp:1148
 msgid "Invalid codec specified, defaulting to 'adpcm'"
@@ -626,12 +622,11 @@ msgstr "Felülírás"
 
 #: src/modules/dcc/send.cpp:2111
 msgid "Processing RESUME request with broken filename (%1)"
-msgstr ""
+msgstr "RESUME kérés feldolgozása hibás fájlnévvel (%1)"
 
 #: src/modules/dcc/send.cpp:2085
-#, fuzzy
 msgid "Processing RESUME request with mismatched port (%1)"
-msgstr "Elfogadott RESUME (folytatás), adatátvitel %1 pozíciótól kezdődik"
+msgstr "RESUME kérés feldolgozása nem egyező porttal (%1)"
 
 #: src/modules/dcc/send.cpp:2041
 msgid "RESUME accepted, transfer will begin at position %1"
@@ -676,12 +671,11 @@ msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "DCC RESUME elküldve, kérés %1 felé, várakozás Elfogadásra"
 
 #: src/modules/dcc/video.cpp:604
-#, fuzzy
 msgid ""
 "Sent DCC VIDEO (%s) request to %Q, waiting for the remote client to "
 "connect..."
 msgstr ""
-"DCC VOICE kérés (%s) elküldve %Q felé, várakozás a távoli kliens "
+"DCC VIDEO kérés (%s) elküldve %Q felé, várakozás a távoli kliens "
 "kapcsolódására.."
 
 #: src/modules/dcc/voice.cpp:775
@@ -707,7 +701,7 @@ msgstr "Seb:"
 
 #: src/modules/dcc/video.cpp:463
 msgid "Standard:"
-msgstr ""
+msgstr "Alapértelmezett:"
 
 #: src/modules/dcc/chat.cpp:247
 #: src/modules/dcc/send.cpp:1842
@@ -729,12 +723,11 @@ msgstr ""
 "alkalmazás alapértelmezésre: 8000"
 
 #: src/modules/dcc/requests.cpp:1082
-#, fuzzy
 msgid ""
 "The above request cannot be accepted: DCC VIDEO support not enabled at "
 "compilation time "
 msgstr ""
-"A következő kérést nem tudom teljesíteni: DCC VOICE támogatás nem volt "
+"A következő kérést nem tudom teljesíteni: DCC VIDEO támogatás nem volt "
 "engedélyezve fodításkor"
 
 #: src/modules/dcc/requests.cpp:1008
@@ -817,18 +810,17 @@ msgid "The current window has no associated DCC session"
 msgstr "Az aktuális ablaknak nincs hozzárendelt DCC 'session'-ja"
 
 #: src/modules/dcc/broker.cpp:755
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>auto-rename</b> the new file,<br><b>overwrite</b> the existing "
 "file, or<br> <b>resume</b> an incomplete download?"
 msgstr ""
-"A fájl '<b>%1</b>' már létezik, és <b>%2</b>.<br>Szeretnéd <br><b>felülírni</"
-"b> a létező fájlt,<br> <b>automatikusan átnevezni</b> az új fájlt, "
+"A fájl '<b>%1</b>' már létezik, és <b>%2</b> méretű.<br>Szeretnéd <br> "
+"<b>felülírni</b> a létező fájlt,<br> <b>automatikusan átnevezni</b> az új "
+"fájlt, "
 "vagy<br><b>folytatni</b> egy befejezetlen letöltést?"
 
 #: src/modules/dcc/broker.cpp:767
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is larger than the offered one."
 "<br>Do you wish to<br><b>auto-rename</b> the new file, or<br><b>overwrite</"
@@ -935,9 +927,8 @@ msgid "This executable has no SSL support, -s switch ignored"
 msgstr "Ez SSL támogatás nélküli kiadás, '-s' kapcsoló mellőzve"
 
 #: src/modules/dcc/libkvidcc.cpp:2765
-#, fuzzy
 msgid "This executable was built without SSL support"
-msgstr "Ez a kiadás SSL támogatás nélkül lett lefordítva, -s kapcsoló mellőzve"
+msgstr "Ez a kiadás SSL támogatás nélkül lett fordítva"
 
 #: src/modules/dcc/libkvidcc.cpp:172
 msgid "This executable was built without SSL support, -s switch ignored"
@@ -979,23 +970,27 @@ msgstr "Adatátvitel"
 
 #: src/modules/dcc/libkvidcc.cpp:2787
 msgid "Unable to get SSL informations: DCC session is not using SSL"
-msgstr ""
+msgstr "SSL információk meghatározás sikertelen: A DCC ülés nem használ SSL-t"
 
 #: src/modules/dcc/libkvidcc.cpp:2800
 msgid "Unable to get SSL informations: DCC session not initialized yet"
 msgstr ""
+"SSL információk meghatározás sikertelen: A DCC ülés még nincs inicializálva"
 
 #: src/modules/dcc/libkvidcc.cpp:2817
 msgid "Unable to get SSL informations: No peer certificate available"
 msgstr ""
+"SSL információk meghatározás sikertelen: Peer bizonyítvány nem elérhető"
 
 #: src/modules/dcc/libkvidcc.cpp:2808
 msgid "Unable to get SSL informations: SSL non initialized yet in DCC session"
 msgstr ""
+"SSL információk meghatározás sikertelen: SSL még nincs inicializálva a DCC "
+"ülésen"
 
 #: src/modules/dcc/libkvidcc.cpp:2941
 msgid "Unable to get SSL informations: query not recognized"
-msgstr ""
+msgstr "SSL információk meghatározása sikertelen: lekérdezés ismeretlen"
 
 #: src/modules/dcc/libkvidcc.cpp:129
 msgid "Unable to get address of interface %Q"
@@ -1020,12 +1015,11 @@ msgstr ""
 
 #: src/modules/dcc/video.cpp:449
 msgid "Video device:"
-msgstr ""
+msgstr "Videó eszköz:"
 
 #: src/modules/dcc/voice.cpp:1013
-#, fuzzy
 msgid "Volume: %1"
-msgstr "Hangerő: %i"
+msgstr "Hangerő: %1"
 
 #: src/modules/dcc/send.cpp:280
 msgid ""
@@ -1046,14 +1040,13 @@ msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr "FIGYELMEZTETÉS: A peer szemét adatot küldött a fájl végén"
 
 #: src/modules/dcc/voice.cpp:162
-#, fuzzy
 msgid ""
 "WARNING: failed to check the soundcard duplex capabilities: if this is a "
 "half-duplex soundcard, use the DCC VOICE option to force half-duplex "
 "algorithm"
 msgstr ""
-"FIGYELMEZTETÉS: a hangkártya sikertelen ellenőrzése full-duplex "
-"meghatározásnál: ha ez a kártya half-duplex hangkártya, használd a DCC VOICE "
+"FIGYELMEZTETÉS: a hangkártya full-duplex képességeinek ellenőrzése "
+"sikertelen. Ha ez a kártya half-duplex hangkártya, használd a DCC VOICE "
 "opciót kényszerített half-duplex algoritmussal"
 
 #: src/modules/dcc/voice.cpp:211
@@ -1067,7 +1060,7 @@ msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:2776
 msgid "You specified a bad string for the parameter \"type\""
-msgstr ""
+msgstr "Hibás típus paramétert adtál meg"
 
 #: src/modules/dcc/broker.cpp:287
 msgid "You will be the passive side of the connection.<br>"
