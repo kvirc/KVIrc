@@ -250,7 +250,7 @@ alias(kb)
 	{
 		if(%nick)
 		{
-			#if the don't know the user ident/host (yet), we can only ban his nick
+			#if we don't know the user ident/host (yet), we can only ban his nick
 			if($isWellKnown(%nick)) %mask = $mask(%nick,$option(uintDefaultBanType));
 			else %mask = %nick;
 
