@@ -125,7 +125,7 @@ class KVIRC_API KviSnircdIrcServerInfo : public KviBasicIrcServerInfo
 public:
 	KviSnircdIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
 		:KviBasicIrcServerInfo(pParent, version) {;};
-	virtual char getRegisterModeChar() { return 'R'; };
+	virtual char getRegisterModeChar() { return 0; };
 	virtual const char * getSoftware() { return "Snircd"; };
 	virtual bool getNeedsOpToListModeseI() { return false; }; //modes eI doesn't exists
 	virtual const QString & getChannelModeDescription(char mode);
@@ -137,8 +137,20 @@ class KVIRC_API KviIrcuIrcServerInfo : public KviBasicIrcServerInfo
 public:
 	KviIrcuIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
 		:KviBasicIrcServerInfo(pParent, version) {;};
-	virtual char getRegisterModeChar() { return 'R'; };
+	virtual char getRegisterModeChar() { return 0; };
 	virtual const char * getSoftware() { return "Ircu"; };
+	virtual bool getNeedsOpToListModeseI() { return true; };
+	virtual const QString & getChannelModeDescription(char mode);
+};
+
+class KVIRC_API KviPlexusIrcServerInfo : public KviBasicIrcServerInfo
+{
+	//rizon; note: plexus is an extension to hybrid
+public:
+	KviPlexusIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
+		:KviBasicIrcServerInfo(pParent, version) {;};
+	virtual char getRegisterModeChar() { return 'r'; };
+	virtual const char * getSoftware() { return "Plexus"; };
 	virtual bool getNeedsOpToListModeseI() { return true; };
 	virtual const QString & getChannelModeDescription(char mode);
 };

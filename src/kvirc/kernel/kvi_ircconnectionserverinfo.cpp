@@ -240,6 +240,8 @@ void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 		m_pServInfo = new KviSnircdIrcServerInfo(this, version);
 	else if(version.contains("u2",Qt::CaseInsensitive))
 		m_pServInfo = new KviIrcuIrcServerInfo(this, version);
+	else if(version.contains("plexus",Qt::CaseInsensitive))
+		m_pServInfo = new KviPlexusIrcServerInfo(this, version);
 	else
 		m_pServInfo = new KviBasicIrcServerInfo(this, version);
 }
@@ -317,12 +319,12 @@ const QString & KviUnrealIrcServerInfo::getChannelModeDescription(char mode)
 		case 'N': return __tr2qs("Forbid nick change"); break;
 		case 'O': return __tr2qs("IRC-Op only channel"); break;
 		case 'Q': return __tr2qs("Disallow KICK (unless U-Line)"); break;
-		case 'a': return __tr2qs("Channel administrator"); break;
-		case 'c': return __tr2qs("Color free (no ANSI colors)"); break;
+		case 'a': return __tr2qs("Protected/admin nicks"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
 		case 'f': return __tr2qs("Flood protection (<num><type>:<secs>)"); break;
 		case 'h': return __tr2qs("Half-operators");break;
 		case 'j': return __tr2qs("Join throttling (<num>:<secs>)"); break;
-		case 'q': return __tr2qs("Channel owner"); break;
+		case 'q': return __tr2qs("Channel owners"); break;
 		case 'u': return __tr2qs("Auditorium: /NAMES and /WHO show only ops"); break;
 		case 'z': return __tr2qs("Need SSL connection to join"); break;
 	}
@@ -338,12 +340,12 @@ const QString & KviIrcdSevenIrcServerInfo::getChannelModeDescription(char mode)
 		case 'F': return __tr2qs("Enable forwarding"); break;
 		case 'L': return __tr2qs("Large ban/exempt/invex lists (staff only)"); break;
 		case 'M': return __tr2qs("Disallow kicking opers (staff only)"); break;
-		case 'P': return __tr2qs("Permanent channel (staff only)"); break;
+		case 'P': return __tr2qs("Persistent (staff only)"); break;
 		case 'Q': return __tr2qs("Block forwarded users"); break;
 		case 'R': return __tr2qs("Only registered nicks can join"); break;
 		case 'S': return __tr2qs("Strip colors"); break;
-		case 'T': return __tr2qs("Block NOTICE"); break;
-		case 'c': return __tr2qs("Color free (no ANSI colors)"); break;
+		case 'T': return __tr2qs("Forbid channel NOTICEs"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
 		case 'f': return __tr2qs("Forward to another channel on uninvited"); break;
 		case 'g': return __tr2qs("Allow anybody to invite");break;
 		case 'j': return __tr2qs("Join throttling (<num>:<secs>)"); break;
@@ -362,7 +364,7 @@ const QString & KviBahamutIrcServerInfo::getChannelModeDescription(char mode)
 		case 'M': return __tr2qs("Need auth to speak and change nick"); break;
 		case 'O': return __tr2qs("IRC-Op only channel"); break;
 		case 'R': return __tr2qs("Only registered nicks can join"); break;
-		case 'c': return __tr2qs("Color free (no ANSI colors, bold, etc..)"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
 		case 'j':
 			if(m_pParent)
 			{
@@ -403,17 +405,17 @@ const QString & KviInspIRCdIrcServerInfo::getChannelModeDescription(char mode)
 		case 'M': return __tr2qs("Need auth to speak and change nick"); break;
 		case 'N': return __tr2qs("Need auth to change nick"); break;
 		case 'O': return __tr2qs("IRC-Op only channel"); break;
-		case 'P': return __tr2qs("Permanent channel (staff only)"); break;
+		case 'P': return __tr2qs("Persistent (staff only)"); break;
 		case 'Q': return __tr2qs("Disallow KICK (unless U-Line)"); break;
 		case 'R': return __tr2qs("Only registered nicks can join"); break;
 		case 'S': return __tr2qs("Strip colors"); break;
-		case 'T': return __tr2qs("Block NOTICE"); break;
-		case 'a': return __tr2qs("Protected nick"); break;
-		case 'c': return __tr2qs("Color free (no ANSI colors)"); break;
+		case 'T': return __tr2qs("Forbid channel NOTICEs"); break;
+		case 'a': return __tr2qs("Protected/admin nicks"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
 		case 'f': return __tr2qs("Kick/[*]ban on message flood ([*]<num>:<secs>)"); break;
 		case 'g': return __tr2qs("Block message matching"); break;
 		case 'j': return __tr2qs("Join throttling (<num>:<secs>)"); break;
-		case 'q': return __tr2qs("Channel owner"); break;
+		case 'q': return __tr2qs("Channel owners"); break;
 		case 'u': return __tr2qs("Auditorium: /NAMES and /WHO show only ops"); break;
 		case 'y': return __tr2qs("Channel IRC op"); break;
 		case 'z': return __tr2qs("Need SSL connection to join"); break;
@@ -439,11 +441,11 @@ const QString & KviSnircdIrcServerInfo::getChannelModeDescription(char mode)
 		case 'C': return __tr2qs("Forbid channel CTCPs"); break;
 		case 'D': return __tr2qs("Delay users join to first message"); break;
 		case 'M': return __tr2qs("Moderate non auth users"); break;
-		case 'N': return __tr2qs("Block NOTICE"); break;
+		case 'N': return __tr2qs("Forbid channel NOTICEs"); break;
 		case 'R': return __tr2qs("Registered"); break;
 		case 'T': return __tr2qs("No multitarget messages"); break;
 		case 'd': return __tr2qs("Contains hidden users (previously +D)"); break;
-		case 'c': return __tr2qs("Color free (no ANSI colors)"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
 		case 'r': return __tr2qs("Only registered nicks can join"); break;
 		case 'u': return __tr2qs("Hide QUIT and PART messages"); break;
 	}
@@ -458,6 +460,26 @@ const QString & KviIrcuIrcServerInfo::getChannelModeDescription(char mode)
 		case 'R': return __tr2qs("Registered"); break;
 		case 'd': return __tr2qs("Contains hidden users (previously +D)"); break;
 		case 'r': return __tr2qs("Only registered nicks can join"); break;
+	}
+	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
+}
+
+const QString & KviPlexusIrcServerInfo::getChannelModeDescription(char mode)
+{
+	switch(mode)
+	{
+		case 'B': return __tr2qs("Bandwidth Saver"); break;
+		case 'M': return __tr2qs("Moderate non auth users"); break;
+		case 'N': return __tr2qs("Forbid channel NOTICEs"); break;
+		case 'O': return __tr2qs("IRC-Op only channel"); break;
+		case 'R': return __tr2qs("Only registered nicks can join"); break;
+		case 'S': return __tr2qs("Need SSL connection to join"); break;
+		case 'a': return __tr2qs("Protected/admin nicks"); break;
+		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
+		case 'h': return __tr2qs("Half-operators");break;
+		case 'p': return __tr2qs("Paranoia"); break;
+		case 'q': return __tr2qs("Channel owners"); break;
+		case 'z': return __tr2qs("Persistent (staff only)"); break;
 	}
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
 }
