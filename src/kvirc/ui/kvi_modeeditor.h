@@ -54,7 +54,6 @@ protected: // fields
 protected:
 	const QString * getModeDescription(char cMode);
 	bool modeNeedsParameterOnlyWhenSet(char cMode);
-	KviIrcConnectionServerInfo * getServerInfo();
 signals:
 	void setMode(QString & szMode);
 	void done();

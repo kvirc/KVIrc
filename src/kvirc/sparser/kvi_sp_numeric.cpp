@@ -691,12 +691,12 @@ void KviServerParser::parseNumeric367(KviIrcMessage *msg)
 	KviChannel * chan = msg->connection()->findChannel(szChan);
 	if(chan)
 	{
-		if(msg->connection()->serverInfo()->supportsModeq() && chan->sentQuietBanListRequest())
+		if(msg->connection()->serverInfo()->supportsModeq() && chan->sentListRequest('q'))
 		{
 			chan->setMask('q',banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
 			return;
 		}
-		if(chan->sentBanListRequest())
+		if(chan->sentListRequest('b'))
 		{
 			chan->setMask('b',banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
 			return;
@@ -717,16 +717,14 @@ void KviServerParser::parseNumeric368(KviIrcMessage *msg)
 	KviChannel * chan = msg->connection()->findChannel(szChan);
 	if(chan)
 	{
-		if(msg->connection()->serverInfo()->supportsModeq() && chan->sentQuietBanListRequest())
+		if(msg->connection()->serverInfo()->supportsModeq() && chan->sentListRequest('q'))
 		{
-			chan->setHasQuietBanList();
-			chan->setQuietBanListDone();
+			chan->setListRequestDone('q');
 			return;
 		}
-		if(chan->sentBanListRequest())
+		if(chan->sentListRequest('b'))
 		{
-			chan->setHasBanList();
-			chan->setBanListDone();
+			chan->setListRequestDone('b');
 			return;
 		}
 	}
@@ -738,17 +736,16 @@ void KviServerParser::parseNumeric368(KviIrcMessage *msg)
 	}
 }
 
-#define PARSE_NUMERIC_ENDOFLIST(__funcname,__setGotIt,__didSendRequest,__setDone,__daicon,__szWhatQString) \
+#define PARSE_NUMERIC_ENDOFLIST(__funcname,__modechar,__daicon,__szWhatQString) \
 	void KviServerParser::__funcname(KviIrcMessage *msg) \
 	{ \
 		QString szChan = msg->connection()->decodeText(msg->safeParam(1)); \
 		KviChannel * chan = msg->connection()->findChannel(szChan); \
 		if(chan) \
 		{ \
-			chan->__setGotIt(); \
-			if(chan->__didSendRequest()) \
+			if(chan->sentListRequest(__modechar)) \
 			{ \
-				chan->__setDone(); \
+				chan->setListRequestDone(__modechar); \
 				return; \
 			} \
 		} \
@@ -760,10 +757,14 @@ void KviServerParser::parseNumeric368(KviIrcMessage *msg)
 		} \
 	}
 
-PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfInviteList,setHasInviteList,sentInviteListRequest,setInviteListDone,KVI_OUT_INVITEEXCEPT,__tr2qs("invite list"))
-PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfExceptList,setHasBanExceptionList,sentBanExceptionListRequest,setBanExceptionListDone,KVI_OUT_BANEXCEPT,__tr2qs("ban exception list"))
+PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfInviteList,'I',KVI_OUT_INVITEEXCEPT,__tr2qs("invite list"))
+PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfExceptList,'e',KVI_OUT_BANEXCEPT,__tr2qs("ban exception list"))
 
-#define PARSE_NUMERIC_LIST(__funcname,__modechar,__sentRequest,__ico,__szWhatQString) \
+PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfQList,'q',KVI_OUT_BAN,__tr2qs("owner list"))
+PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfAList,'a',KVI_OUT_BAN,__tr2qs("protected/admin list"))
+PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfReopList,'R',KVI_OUT_BAN,__tr2qs("reop list"))
+
+#define PARSE_NUMERIC_LIST(__funcname,__modechar,__ico,__szWhatQString) \
 	void KviServerParser::__funcname(KviIrcMessage *msg) \
 	{ \
 		QString szChan   = msg->connection()->decodeText(msg->safeParam(1)); \
@@ -776,7 +777,7 @@ PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfExceptList,setHasBanExceptionList,sentB
 		if(chan) \
 		{ \
 			chan->setMask(__modechar,banmask,true,bansetby,QString(msg->safeParam(4)).toUInt()); \
-			if(chan->__sentRequest())return; \
+			if(chan->sentListRequest(__modechar))return; \
 		} \
 		if(!msg->haltOutput()) \
 		{ \
@@ -787,12 +788,13 @@ PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfExceptList,setHasBanExceptionList,sentB
 		} \
 	}
 
-// 346: RPL_INVITELIST [I,E,U,D]
-// :prefix 346 target <channel> <invitemask> [invitesetby] [invitesetat]
-PARSE_NUMERIC_LIST(parseNumericInviteList,'I',sentInviteListRequest,KVI_OUT_INVITEEXCEPT,__tr2qs("Invite listing"))
 // 346: RPL_EXCEPTLIST [I,E,U,D]
 // :prefix 346 target <channel> <banmask> [bansetby] [bansetat]
-PARSE_NUMERIC_LIST(parseNumericExceptList,'e',sentBanExceptionListRequest,KVI_OUT_BANEXCEPT,__tr2qs("Ban exception listing"));
+PARSE_NUMERIC_LIST(parseNumericInviteList,'I',KVI_OUT_INVITEEXCEPT,__tr2qs("Invite listing"))
+PARSE_NUMERIC_LIST(parseNumericExceptList,'e',KVI_OUT_BANEXCEPT,__tr2qs("Ban exception listing"));
+PARSE_NUMERIC_LIST(parseNumericQList,'q',KVI_OUT_BAN,__tr2qs("Owner listing"));
+PARSE_NUMERIC_LIST(parseNumericAList,'a',KVI_OUT_BAN,__tr2qs("Admin/protected nicks listing"));
+PARSE_NUMERIC_LIST(parseNumericReopList,'R',KVI_OUT_BAN,__tr2qs("Reop masks listing"));
 
 void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 {

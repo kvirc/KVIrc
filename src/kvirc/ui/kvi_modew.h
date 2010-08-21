@@ -45,7 +45,6 @@ protected:
 	void mouseDoubleClickEvent(QMouseEvent * e);
 	void keyReleaseEvent (QKeyEvent * e);
 	bool modeNeedsParameterOnlyWhenSet(char cMode);
-	KviIrcConnectionServerInfo * getServerInfo();
 public slots:
 	void editorReturnPressed();
 signals:

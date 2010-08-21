@@ -262,11 +262,11 @@ const QString & KviBasicIrcServerInfo::getChannelModeDescription(char mode)
 	switch(mode)
 	{
 // 		case '7': return __tr2qs("Only 7-bit letters in nicknames allowed"); break;
-		case 'I': return __tr2qs("Invite exception masks"); break;
-		case 'R': return __tr2qs("Reop masks"); break;
+		case 'I': return __tr2qs("Invite Exceptions"); break;
+		case 'R': return __tr2qs("Reop Masks"); break;
 		case 'a': return __tr2qs("Anonymous messages"); break;
-		case 'b': return __tr2qs("Ban masks"); break;
-		case 'e': return __tr2qs("Ban exception masks"); break;
+		case 'b': return __tr2qs("Ban Masks"); break;
+		case 'e': return __tr2qs("Ban Exceptions"); break;
 		case 'i': return __tr2qs("Invite only"); break;
 		case 'k': return __tr2qs("Key"); break;
 		case 'l': return __tr2qs("Limited number of users"); break;
@@ -350,6 +350,7 @@ const QString & KviIrcdSevenIrcServerInfo::getChannelModeDescription(char mode)
 		case 'g': return __tr2qs("Allow anybody to invite");break;
 		case 'j': return __tr2qs("Join throttling (<num>:<secs>)"); break;
 		case 'p': return __tr2qs("Paranoid (disable KNOCK)"); break;
+		case 'q': return __tr2qs("Quiet Ban Editor"); break;
 		case 'r': return __tr2qs("Need auth to join channel"); break;
 		case 'z': return __tr2qs("Reduced moderation for ops"); break;
 	}

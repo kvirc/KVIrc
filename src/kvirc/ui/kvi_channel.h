@@ -64,16 +64,8 @@ class KviModeEditor;
 
 /**
 * \def KVI_CHANNEL_STATE_HAVEALLNAMES Flag for "have all names"
-* \def KVI_CHANNEL_STATE_HAVEBANLIST Flag for "have ban list"
 * \def KVI_CHANNEL_STATE_HAVEWHOLIST Flag for "have WHO list"
-* \def KVI_CHANNEL_STATE_HAVEBANEXCEPTIONLIST Flag for "have ban exception list"
-* \def KVI_CHANNEL_STATE_HAVEINVITELIST Flag for "have invite list"
-* \def KVI_CHANNEL_STATE_HAVEQUIETBANLIST Flag for "have quiet ban list"
 * \def KVI_CHANNEL_STATE_DEADCHAN Flag for "dead channel"
-* \def KVI_CHANNEL_STATE_SENTBANLISTREQUEST Flag to set ban list request
-* \def KVI_CHANNEL_STATE_SENTBANEXCEPTIONLISTREQUEST Flag to set ban exception list request
-* \def KVI_CHANNEL_STATE_SENTINVITELISTREQUEST Flag to set invite list request
-* \def KVI_CHANNEL_STATE_SENTQUIETBANLISTREQUEST Flag to set ban list request
 * \def KVI_CHANNEL_STATE_SENTWHOREQUEST Flag to set WHO request
 * \def KVI_CHANNEL_STATE_SENTPART Flag to set PART request
 * \def KVI_CHANNEL_STATE_SYNCHRONIZED Flag to set SYNC request
@@ -81,21 +73,17 @@ class KviModeEditor;
 * \def KVI_CHANNEL_STATE_SENTSYNCWHOREQUEST Flag for SYNC request
 */
 #define KVI_CHANNEL_STATE_HAVEALLNAMES 1
-#define KVI_CHANNEL_STATE_HAVEBANLIST (1 << 1)
 #define KVI_CHANNEL_STATE_HAVEWHOLIST (1 << 2)
-#define KVI_CHANNEL_STATE_HAVEBANEXCEPTIONLIST (1 << 3)
-#define KVI_CHANNEL_STATE_HAVEINVITELIST (1 << 4)
-#define KVI_CHANNEL_STATE_HAVEQUIETBANLIST (1 << 5)
-#define KVI_CHANNEL_STATE_DEADCHAN (1 << 6)
-#define KVI_CHANNEL_STATE_SENTBANLISTREQUEST (1 << 7)
-#define KVI_CHANNEL_STATE_SENTBANEXCEPTIONLISTREQUEST (1 << 8)
-#define KVI_CHANNEL_STATE_SENTINVITELISTREQUEST (1 << 9)
-#define KVI_CHANNEL_STATE_SENTQUIETBANLISTREQUEST (1 << 10)
-#define KVI_CHANNEL_STATE_SENTWHOREQUEST (1 << 11)
-#define KVI_CHANNEL_STATE_SENTPART (1 << 12)
-#define KVI_CHANNEL_STATE_SYNCHRONIZED (1 << 13)
-#define KVI_CHANNEL_STATE_NOCLOSEONPART (1 << 14)
-#define KVI_CHANNEL_STATE_SENTSYNCWHOREQUEST (1 << 15)
+#define KVI_CHANNEL_STATE_DEADCHAN (1 << 3)
+#define KVI_CHANNEL_STATE_SENTWHOREQUEST (1 << 4)
+#define KVI_CHANNEL_STATE_SENTPART (1 << 5)
+#define KVI_CHANNEL_STATE_SYNCHRONIZED (1 << 6)
+#define KVI_CHANNEL_STATE_NOCLOSEONPART (1 << 7)
+#define KVI_CHANNEL_STATE_SENTSYNCWHOREQUEST (1 << 8)
+
+#define KVI_CHANNEL_STATE_MODELIST_NONE 0
+#define KVI_CHANNEL_STATE_MODELIST_REQUEST 1
+#define KVI_CHANNEL_STATE_MODELIST_GOTIT 2
 
 /**
 * \def KVI_CHANACTIVITY_LIMIT_ICE The limit to be "ice"
@@ -185,27 +173,19 @@ protected:
 	KviTalSplitter                       * m_pVertSplitter;
 	QToolButton                          * m_pDoubleViewButton;
 	KviWindowToolPageButton              * m_pListViewButton;
-	KviWindowToolPageButton              * m_pBanEditorButton;
-	KviWindowToolPageButton              * m_pBanExceptionEditorButton;
-	KviWindowToolPageButton              * m_pInviteEditorButton;
-	KviWindowToolPageButton              * m_pQuietBanEditorButton;
 	KviWindowToolPageButton              * m_pModeEditorButton;
-	KviMaskEditor                        * m_pBanEditor;
-	KviMaskEditor                        * m_pBanExceptionEditor;
-	KviMaskEditor                        * m_pInviteEditor;
-	KviMaskEditor                        * m_pQuietBanEditor;
+	QMap<char, KviWindowToolPageButton*>   m_pListEditorButtons;
+	QMap<char, KviMaskEditor*>             m_pListEditors;
 	KviModeEditor                        * m_pModeEditor;
 	KviIrcView                           * m_pMessageView;
 	KviTopicWidget                       * m_pTopicWidget;
 	KviUserListView                      * m_pUserListView;
 	KviModeWidget                        * m_pModeWidget;
 	int                                    m_iStateFlags;
+	QString                                m_szSentModeRequests;
 	QString                                m_szChannelMode;
 	QMap<char, QString>                    m_szChannelParameterModes;
-	KviPointerList<KviMaskEntry>         * m_pBanList;
-	KviPointerList<KviMaskEntry>         * m_pBanExceptionList;
-	KviPointerList<KviMaskEntry>         * m_pInviteList;
-	KviPointerList<KviMaskEntry>         * m_pQuietBanList;
+	QMap<char, KviPointerList<KviMaskEntry>*> m_pModeLists;
 	KviPixmap                              m_privateBackground;
 	QDateTime                              m_joinTime;
 	QString                                m_szNameWithUserFlag;
@@ -241,28 +221,34 @@ public:
 	QFrame * buttonContainer() { return (QFrame*)m_pButtonContainer; };
 
 	/**
+	* \brief Returns a list of masks for a specific mode
+	* \return KviPointerList<KviMaskEntry> *
+	*/
+	inline KviPointerList<KviMaskEntry> * modeMasks(char cMode){ if(m_pModeLists.contains(cMode)) return m_pModeLists.value(cMode); return 0; };
+
+	/**
 	* \brief Returns the list of bans set
 	* \return KviPointerList<KviMaskEntry> *
 	*/
-	KviPointerList<KviMaskEntry> * banList(){ return m_pBanList; };
+	KviPointerList<KviMaskEntry> * banList(){ return modeMasks('b'); };
 
 	/**
 	* \brief Returns the list of ban exceptions set
 	* \return KviPointerList<KviMaskEntry> *
 	*/
-	KviPointerList<KviMaskEntry> * banExceptionList(){ return m_pBanExceptionList; };
+	KviPointerList<KviMaskEntry> * banExceptionList(){ return modeMasks('e'); };
 
 	/**
-	* \brief Returns the list of invites set
+	* \brief Returns the list of invite exceptions set
 	* \return KviPointerList<KviMaskEntry> *
 	*/
-	KviPointerList<KviMaskEntry> * inviteList(){ return m_pInviteList; };
+	KviPointerList<KviMaskEntry> * inviteList(){ return modeMasks('I'); };
 
 	/**
 	* \brief Returns the list of quiet bans set
 	* \return KviPointerList<KviMaskEntry> *
 	*/
-	KviPointerList<KviMaskEntry> * quietBanList(){ return m_pQuietBanList; };
+	KviPointerList<KviMaskEntry> * quietBanList(){ return modeMasks('q'); };
 
 	/**
 	* \brief Returns the first selected nickname in the userlist
@@ -344,45 +330,51 @@ public:
 	unsigned int count(){ return m_pUserListView->count(); };
 
 	/**
+	* \brief Returns the number of masks is a channel mode list
+	* \return unsigned int
+	*/
+	unsigned int maskCount(char cMode){ if(m_pModeLists.contains(cMode)) return m_pModeLists.value(cMode)->count(); return 0; };
+
+	/**
 	* \brief Returns the number of ban masks
 	* \return unsigned int
 	*/
-	unsigned int banCount(){ return m_pBanList->count(); };
+	unsigned int banCount(){ if(m_pModeLists.contains('b')) return m_pModeLists.value('b')->count(); return 0; };
 
 	/**
 	* \brief Returns the number of ban exceptions masks list
 	* \return unsigned int
 	*/
-	unsigned int banExceptionCount(){ return m_pBanExceptionList->count(); };
+	unsigned int banExceptionCount(){ if(m_pModeLists.contains('e')) return m_pModeLists.value('e')->count(); return 0; };
 
 	/**
 	* \brief Returns the number of invite masks
 	* \return unsigned int
 	*/
-	unsigned int inviteCount(){ return m_pInviteList->count(); };
+	unsigned int inviteCount(){ if(m_pModeLists.contains('I')) return m_pModeLists.value('I')->count(); return 0; };
 
 	/**
 	* \brief Returns the number of quiet ban masks
 	* \return unsigned int
 	*/
-	unsigned int quietBanCount(){ return m_pQuietBanList->count(); };
+	unsigned int quietBanCount(){ if(m_pModeLists.contains('q')) return m_pModeLists.value('q')->count(); return 0; };
 
 	/**
-	* \brief Called when someone sets a mask in the channel's lists
+	* \brief Called when someone sets a channel mode that is stored in a list; these modes require a parameter that is tipically a mask
 	*
-	* The type of the mask can be:
-	*  - b: ban
-	*  - e: ban exception
-	*  - I: invite
-	*  - q: quiet ban
-	* \param cFlag The type of the mask
-	* \param szMask The mask set
+	* Examples:
+	*  - b: ban with mask
+	*  - e: ban exception with mask
+	*  - I: invite exception with mask
+	*  - q: channel owner with nick (unreal) or quiet ban (ircd-seven)
+	* \param cMode The type of the mask
+	* \param szMask The mask set (more generically, the parameter)
 	* \param bAdd Whether to add or remove the mask
 	* \param szSetBy Who set the mask
 	* \param uSetAt The datetime when the mask was set
 	* \return void
 	*/
-	void setMask(char cFlag, const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt);
+	void setMask(char cMode, const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt);
 
 	/**
 	* \brief Returns the time of the last received WHO reply
@@ -428,76 +420,22 @@ public:
 	void setSentWhoRequest(){ m_iStateFlags |= KVI_CHANNEL_STATE_SENTWHOREQUEST; };
 
 	/**
-	* \brief Returns true if we have sent the invite list request
+	* \brief Returns true if we have sent a list request for a specific channel mode
 	* \return bool
 	*/
-	bool sentInviteListRequest(){ return (m_iStateFlags & KVI_CHANNEL_STATE_SENTINVITELISTREQUEST); };
+	bool sentListRequest(char cMode){ return m_szSentModeRequests.contains(cMode); };
 
 	/**
-	* \brief Sets the invite request flag
+	* \brief Sets the "sent request" flag for a specific channel mode
 	* \return void
 	*/
-	void setSentInviteListRequest(){ m_iStateFlags |= KVI_CHANNEL_STATE_SENTINVITELISTREQUEST; };
+	void setSentListRequest(char cMode){ m_szSentModeRequests.append(cMode); };
 
 	/**
-	* \brief Clears the invite request flag
+	* \brief Clears the "sent request" flag for a specific chanel mode
 	* \return void
 	*/
-	void setInviteListDone(){ m_iStateFlags ^= KVI_CHANNEL_STATE_SENTINVITELISTREQUEST; };
-
-	/**
-	* \brief Returns true if we have sent the ban list request
-	* \return bool
-	*/
-	bool sentBanListRequest(){ return (m_iStateFlags & KVI_CHANNEL_STATE_SENTBANLISTREQUEST); };
-
-	/**
-	* \brief Sets the ban request flag
-	* \return void
-	*/
-	void setSentBanListRequest(){ m_iStateFlags |= KVI_CHANNEL_STATE_SENTBANLISTREQUEST; };
-
-	/**
-	* \brief Clears the ban request flag
-	* \return void
-	*/
-	void setBanListDone(){ m_iStateFlags ^= KVI_CHANNEL_STATE_SENTBANLISTREQUEST; };
-
-	/**
-	* \brief Returns true if we have sent the ban exception list request
-	* \return bool
-	*/
-	bool sentBanExceptionListRequest(){ return (m_iStateFlags & KVI_CHANNEL_STATE_SENTBANEXCEPTIONLISTREQUEST); };
-
-	/**
-	* \brief Sets the ban exception request flag
-	* \return void
-	*/
-	void setSentBanExceptionListRequest(){ m_iStateFlags |= KVI_CHANNEL_STATE_SENTBANEXCEPTIONLISTREQUEST; };
-
-	/**
-	* \brief Clears the ban exception request flag
-	* \return void
-	*/
-	void setBanExceptionListDone(){ m_iStateFlags ^= KVI_CHANNEL_STATE_SENTBANEXCEPTIONLISTREQUEST; };
-
-	/**
-	* \brief Returns true if we have sent the quiet ban list request
-	* \return bool
-	*/
-	bool sentQuietBanListRequest(){ return (m_iStateFlags & KVI_CHANNEL_STATE_SENTQUIETBANLISTREQUEST); };
-
-	/**
-	* \brief Sets the quiet ban request flag
-	* \return void
-	*/
-	void setSentQuietBanListRequest(){ m_iStateFlags |= KVI_CHANNEL_STATE_SENTQUIETBANLISTREQUEST; };
-
-	/**
-	* \brief Clears the quiet ban request flag
-	* \return void
-	*/
-	void setQuietBanListDone(){ m_iStateFlags ^= KVI_CHANNEL_STATE_SENTQUIETBANLISTREQUEST; };
+	void setListRequestDone(char cMode){ m_szSentModeRequests.remove(cMode); checkChannelSync(); };
 
 	/**
 	* \brief Returns true if the channel has all names
@@ -515,13 +453,7 @@ public:
 	* \brief Returns true if the channel has an invite list
 	* \return bool
 	*/
-	bool hasInviteList(){ return (m_iStateFlags & KVI_CHANNEL_STATE_HAVEINVITELIST); checkChannelSync(); };
-
-	/**
-	* \brief Sets the existance of the invite list
-	* \return void
-	*/
-	void setHasInviteList(){ m_iStateFlags |= KVI_CHANNEL_STATE_HAVEINVITELIST; };
+	bool hasInviteList(){ return m_pModeLists.contains('I'); };
 
 	/**
 	* \brief Returns true if the channel has a WHO list
@@ -539,37 +471,19 @@ public:
 	* \brief Returns true if the channel has a ban list
 	* \return bool
 	*/
-	bool hasBanList(){ return (m_iStateFlags & KVI_CHANNEL_STATE_HAVEBANLIST); };
-
-	/**
-	* \brief Sets the existance of the ban list
-	* \return void
-	*/
-	void setHasBanList(){ m_iStateFlags |= KVI_CHANNEL_STATE_HAVEBANLIST; checkChannelSync(); };
+	bool hasBanList(){ return m_pModeLists.contains('b'); };
 
 	/**
 	* \brief Returns true if the channel has a ban exception list
 	* \return bool
 	*/
-	bool hasBanExceptionList(){ return (m_iStateFlags & KVI_CHANNEL_STATE_HAVEBANEXCEPTIONLIST); };
-
-	/**
-	* \brief Sets the existance of the ban exception list
-	* \return void
-	*/
-	void setHasBanExceptionList(){ m_iStateFlags |= KVI_CHANNEL_STATE_HAVEBANEXCEPTIONLIST; checkChannelSync(); };
+	bool hasBanExceptionList(){ return m_pModeLists.contains('e'); };
 
 	/**
 	* \brief Returns true if the channel has a quiet ban list
 	* \return bool
 	*/
-	bool hasQuietBanList(){ return (m_iStateFlags & KVI_CHANNEL_STATE_HAVEQUIETBANLIST); };
-
-	/**
-	* \brief Sets the existance of the quiet ban list
-	* \return void
-	*/
-	void setHasQuietBanList(){ m_iStateFlags |= KVI_CHANNEL_STATE_HAVEQUIETBANLIST; checkChannelSync(); };
+	bool hasQuietBanList(){ return m_pModeLists.contains('q'); };
 
 	/**
 	* \brief Returns true if the channel has to be closed on part
@@ -1009,6 +923,12 @@ public:
 	* \return QByteArray
 	*/
 	QByteArray loadLogFile(const QString & szFileName, bool bGzip);
+	
+	/**
+	* \brief Gets the KviIrcConnectionServerInfo structure associated to the current connection
+	* \return KviIrcConnectionServerInfo*
+	*/
+	KviIrcConnectionServerInfo * serverInfo();
 protected:
 	/**
 	* \brief Filters the events
@@ -1069,17 +989,6 @@ protected:
 	* \return void
 	*/
 	virtual void triggerCreationEvents();
-
-	/**
-	* \brief Called when we toggle bans, quiet bans, exceptions or invites editor
-	* \param ppEd The mask editor
-	* \param ppBtn The toolpage button
-	* \param l The masks list
-	* \param cFlag The type of flag
-	* \param pcEdName Tee editor name
-	* \return void
-	*/
-	void toggleEditor(KviMaskEditor ** ppEd, KviWindowToolPageButton ** ppBtn, KviPointerList<KviMaskEntry> * l, char cFlag, const char * pcEdName);
 
 	/**
 	* \brief Called when someone sets a mask in the channel's lists
@@ -1148,28 +1057,10 @@ private slots:
 	void toggleListView();
 
 	/**
-	* \brief Toggles the ban editor
+	* \brief Toggles a list mode editor
 	* \return void
 	*/
-	void toggleBanEditor();
-
-	/**
-	* \brief Toggles the ban exception editor
-	* \return void
-	*/
-	void toggleBanExceptionEditor();
-
-	/**
-	* \brief Toggles the invite editor
-	* \return void
-	*/
-	void toggleInviteEditor();
-
-	/**
-	* \brief Toggles the quiet ban editor
-	* \return void
-	*/
-	void toggleQuietBanEditor();
+	void toggleListModeEditor();
 
 	/**
 	* \brief Toggles the mode editor

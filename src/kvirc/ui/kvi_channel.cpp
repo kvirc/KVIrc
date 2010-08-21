@@ -47,6 +47,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_ircconnectionserverinfo.h"
+#include "kvi_ircconnectionrequestqueue.h"
 #include "kvi_defaults.h"
 #include "kvi_sparser.h"
 #include "kvi_modew.h"
@@ -79,7 +80,6 @@
 
 
 // FIXME: #warning "+a Anonymous channel mode!"
-// FIXME: #warning "+R channel mode (reop)"
 // FIXME: #warning "OnChannelFlood event...."
 
 
@@ -89,14 +89,6 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	// Init some member variables
 	m_pInput               = 0;
 	m_iStateFlags          = 0;
-	m_pBanList             = new KviPointerList<KviMaskEntry>;
-	m_pBanList->setAutoDelete(true);
-	m_pBanExceptionList    = new KviPointerList<KviMaskEntry>;
-	m_pBanExceptionList->setAutoDelete(true);
-	m_pInviteList = new KviPointerList<KviMaskEntry>;
-	m_pInviteList->setAutoDelete(true);
-	m_pQuietBanList        = new KviPointerList<KviMaskEntry>;
-	m_pQuietBanList->setAutoDelete(true);
 	m_pActionHistory = new KviPointerList<KviChannelAction>;
 	m_pActionHistory->setAutoDelete(true);
 	m_uActionHistoryHotActionCount = 0;
@@ -156,31 +148,58 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 
 	m_pListViewButton = new KviWindowToolPageButton(KVI_SMALLICON_HIDELISTVIEW,KVI_SMALLICON_SHOWLISTVIEW,__tr2qs("User List"),buttonContainer(),true,"list_view_button");
 	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
-	m_pBanEditorButton = new KviWindowToolPageButton(KVI_SMALLICON_UNBAN,KVI_SMALLICON_BAN,__tr2qs("Ban Editor"),buttonContainer(),false,"ban_editor_button");
-	connect(m_pBanEditorButton,SIGNAL(clicked()),this,SLOT(toggleBanEditor()));
 
-	if(m_pConsole->connection()->serverInfo()->supportedListModes().contains('e'))
-	{
-		m_pBanExceptionEditorButton =new KviWindowToolPageButton(KVI_SMALLICON_BANUNEXCEPT,KVI_SMALLICON_BANEXCEPT,__tr2qs("Ban Exception Editor"),buttonContainer(),false,"ban_exception_editor_button");
-		connect(m_pBanExceptionEditorButton,SIGNAL(clicked()),this,SLOT(toggleBanExceptionEditor()));
-	} else {
-		m_pBanExceptionEditorButton=0;
-	}
+	//list modes (bans, bans exceptions, etc)
+	KviWindowToolPageButton * pButton = 0;
+	char cMode = 0;
+	QString szDescription = "";
+	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
+	// bans are hardcoded
+	cMode='b';
+	
+	if(pServerInfo)
+		szDescription = pServerInfo->getChannelModeDescription(cMode);
+	if(szDescription.isEmpty())
+		szDescription = __tr2qs("Mode \"%1\" Masks").arg(cMode);
 
-	if(m_pConsole->connection()->serverInfo()->supportedListModes().contains('I'))
+	pButton = new KviWindowToolPageButton(KVI_SMALLICON_UNBAN,KVI_SMALLICON_BAN,szDescription,buttonContainer(),false,"ban_editor_button");
+	connect(pButton,SIGNAL(clicked()),this,SLOT(toggleListModeEditor()));
+	m_pListEditorButtons.insert(cMode, pButton);
+	
+	//other list modes (dynamic)
+	QString szListModes = "";
+	if(pServerInfo)
 	{
-		m_pInviteEditorButton =new KviWindowToolPageButton(KVI_SMALLICON_INVITEUNEXCEPT,KVI_SMALLICON_INVITEEXCEPT,__tr2qs("Invite Exception Editor"),buttonContainer(),false,"invite_exception_editor_button");
-		connect(m_pInviteEditorButton,SIGNAL(clicked()),this,SLOT(toggleInviteEditor()));
-	} else {
-		m_pInviteEditorButton = 0;
-	}
-
-	if(m_pConsole->connection()->serverInfo()->supportedListModes().contains('q'))
-	{
-		m_pQuietBanEditorButton =new KviWindowToolPageButton(KVI_SMALLICON_UNBAN,KVI_SMALLICON_BAN,__tr2qs("Quiet Ban Editor"),buttonContainer(),false,"quiet_ban_editor_button");
-		connect(m_pQuietBanEditorButton,SIGNAL(clicked()),this,SLOT(toggleQuietBanEditor()));
-	} else {
-		m_pQuietBanEditorButton = 0;
+		szListModes = pServerInfo->supportedListModes();
+		szListModes.remove('b');
+	
+		for(int i=0;i<szListModes.size();++i)
+		{
+			char cMode = szListModes.at(i).unicode();
+			QString szDescription = pServerInfo->getChannelModeDescription(cMode);
+			if(szDescription.isEmpty())
+				szDescription = __tr2qs("Mode \"%1\" Masks").arg(cMode);
+			int iIconOn, iIconOff;
+			switch(cMode)
+			{
+				case 'e':
+					iIconOn = KVI_SMALLICON_BANUNEXCEPT;
+					iIconOff = KVI_SMALLICON_BANEXCEPT;
+					break;
+				case 'I':
+					iIconOn = KVI_SMALLICON_INVITEUNEXCEPT;
+					iIconOff = KVI_SMALLICON_INVITEEXCEPT;
+					break;
+				default:
+					iIconOn = KVI_SMALLICON_UNBAN;
+					iIconOff = KVI_SMALLICON_BAN;
+					break;
+			}
+			
+			pButton = new KviWindowToolPageButton(iIconOn,iIconOff,szDescription,buttonContainer(),false,"list_mode_editor_button");
+			connect(pButton,SIGNAL(clicked()),this,SLOT(toggleListModeEditor()));
+			m_pListEditorButtons.insert(cMode, pButton);
+		}
 	}
 
 	m_pModeEditorButton = new KviWindowToolPageButton(KVI_SMALLICON_CHANMODEHIDE,KVI_SMALLICON_CHANMODE,__tr2qs("Mode Editor"),buttonContainer(),false,"mode_editor_button");
@@ -207,11 +226,7 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	//m_pEditorsContainer->raiseWidget(m_pUserListView);
 	// And finally the input line on the bottom
 	m_pInput   = new KviInput(this,m_pUserListView);
-	// no mask editors yet
-	m_pBanEditor = 0;
-	m_pBanExceptionEditor = 0;
-	m_pInviteEditor = 0;
-	m_pQuietBanEditor = 0;
+
 	// Ensure proper focusing
 	//setFocusHandler(m_pInput,this);
 	// And turn on the secondary IRC view if needed
@@ -240,11 +255,14 @@ KviChannel::~KviChannel()
 	m_pUserListView->partAll();
 
 	delete m_pActionHistory;
-	delete m_pBanList;
-	delete m_pBanExceptionList;
-	delete m_pInviteList;
-	delete m_pQuietBanList;
 	delete m_pTmpHighLighted;
+	
+	qDeleteAll(m_pListEditors);
+	m_pListEditors.clear();
+	qDeleteAll(m_pListEditorButtons);
+	m_pListEditorButtons.clear();
+	qDeleteAll(m_pModeLists);
+	m_pModeLists.clear();
 }
 
 void KviChannel::toggleToolButtons()
@@ -475,88 +493,57 @@ void KviChannel::setMode(QString & szMode)
 	connection()->sendFmtData("MODE %s %s",channelName.data(),modes.data());
 }
 
-void KviChannel::toggleBanEditor()
+void KviChannel::toggleListModeEditor()
 {
-	toggleEditor(&m_pBanEditor,&m_pBanEditorButton,m_pBanList,'b',"ban_editor");
-}
+	KviWindowToolPageButton* pButton = (KviWindowToolPageButton*)sender();
+	if(!pButton)
+		return; //wtf?
 
-void KviChannel::toggleBanExceptionEditor()
-{
-	toggleEditor(&m_pBanExceptionEditor,&m_pBanExceptionEditorButton,m_pBanExceptionList,'e',"ban_exception_editor");
-}
-
-void KviChannel::toggleInviteEditor()
-{
-	toggleEditor(&m_pInviteEditor,&m_pInviteEditorButton,m_pInviteList,'I',"invite_exception_editor");
-}
-
-void KviChannel::toggleQuietBanEditor()
-{
-	toggleEditor(&m_pQuietBanEditor,&m_pQuietBanEditorButton,m_pQuietBanList,'q',"quiet_ban_editor");
-}
-
-void KviChannel::toggleEditor(KviMaskEditor ** ppEd, KviWindowToolPageButton ** ppBtn, KviPointerList<KviMaskEntry> * l, char cFlag, const char * pcEdName)
-{
-	if(*ppEd)
+	char cMode=0;
+	QMap<char, KviWindowToolPageButton*>::const_iterator iter = m_pListEditorButtons.constBegin();
+	
+	while (iter != m_pListEditorButtons.constEnd())
 	{
-		delete *ppEd;
-		*ppEd = 0;
-
-		if(!(*ppBtn))
-			return;
-		if((*ppBtn)->isChecked())
-			(*ppBtn)->setChecked(false);
-	} else {
-		bool bHasList = true;
-		switch(cFlag)
+		if(iter.value()==pButton)
 		{
-			case 'b':
-				if(!(bHasList = hasBanList()))
-				{
-					m_pBanList->clear();
-					setSentBanListRequest();
-				}
-			break;
-			case 'e':
-				if(!(bHasList = hasBanExceptionList()))
-				{
-					m_pBanExceptionList->clear();
-					setSentBanExceptionListRequest();
-				}
-			break;
-			case 'I':
-				if(!(bHasList = hasInviteList()))
-				{
-					m_pInviteList->clear();
-					setSentInviteListRequest();
-				}
-			break;
-			case 'q':
-				if(!(bHasList = hasQuietBanList()))
-				{
-					m_pQuietBanList->clear();
-					setSentQuietBanListRequest();
-				}
+			cMode=iter.key();
 			break;
 		}
+		++iter;
+	}
+	
+	if(!cMode)
+		return; //wtf?
 
-		if(!bHasList)
+	if(m_pListEditors.contains(cMode))
+	{
+		KviMaskEditor * pEditor = m_pListEditors.value(cMode);
+		m_pListEditors.remove(cMode);
+		pEditor->deleteLater();
+
+		pButton->setChecked(false);
+	} else {
+		if(!m_pModeLists.contains(cMode))
 		{
+			KviPointerList<KviMaskEntry>* pModeList = new KviPointerList<KviMaskEntry>;
+			pModeList->setAutoDelete(true);
+			m_pModeLists.insert(cMode,pModeList);
+
+			m_szSentModeRequests.append(cMode);
+
 			if(connection())
 			{
 				QByteArray szName = connection()->encodeText(m_szName);
-				connection()->sendFmtData("MODE %s %c",szName.data(),cFlag);
+				connection()->sendFmtData("MODE %s %c",szName.data(),cMode);
 			}
 		}
 
-		*ppEd = new KviMaskEditor(m_pSplitter,*ppBtn,l,cFlag,pcEdName);
-		connect(*ppEd,SIGNAL(removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *)),this,SLOT(removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *)));
-		//setFocusHandler(m_pInput,*ppEd); //socket it!
-		(*ppEd)->show();
-		if(!(*ppBtn))
-			return;
-		if(!((*ppBtn)->isChecked()))
-			(*ppBtn)->setChecked(true);
+		KviPointerList<KviMaskEntry> * pMaskList = m_pModeLists.value(cMode);
+		KviMaskEditor * pEditor = new KviMaskEditor(m_pSplitter,this,pButton,pMaskList,cMode,"list_mode_editor");
+		connect(pEditor,SIGNAL(removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *)),this,SLOT(removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *)));
+		m_pListEditors.insert(cMode,pEditor);
+		pEditor->show();
+		pButton->setChecked(true);
 	}
 }
 
@@ -564,7 +551,14 @@ void KviChannel::removeMasks(KviMaskEditor * ed, KviPointerList<KviMaskEntry> * 
 {
 	QString szMasks;
 	QString szFlags;
-	unsigned int uCount = 0;
+	int uCount = 0;
+	int iModesPerLine=3; // a good default
+	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
+	if(pServerInfo)
+	{
+		iModesPerLine = pServerInfo->maxModeChanges();
+		if(iModesPerLine < 1) iModesPerLine = 1;
+	}
 
 	for(KviMaskEntry * e = l->first(); e; e = l->next())
 	{
@@ -575,7 +569,7 @@ void KviChannel::removeMasks(KviMaskEditor * ed, KviPointerList<KviMaskEntry> * 
 		szFlags.append(ed->flag());
 		uCount++;
 
-		if(uCount == (unsigned int) connection()->serverInfo()->maxModeChanges())
+		if(uCount == iModesPerLine)
 		{
 			if(connection())
 			{
@@ -622,9 +616,13 @@ QSize KviChannel::sizeHint() const
 
 void KviChannel::setChannelMode(char mode, bool bAdd)
 {
-	// skip modes that ends up in a list (eg: bans)
-	if(m_pConsole->connection()->serverInfo()->supportedListModes().contains(mode))
-		return;
+	// skip modes that ends up in a list (bans are hardcoded)
+	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
+	if(pServerInfo || mode == 'b')
+	{
+		if(pServerInfo->supportedListModes().contains(mode))
+			return;
+	}
 
 	if(bAdd)
 	{
@@ -695,18 +693,23 @@ void KviChannel::setDeadChan()
 	m_pUserListView->enableUpdates(true);
 	m_pUserListView->setUserDataBase(0);
 
-	m_pBanList->clear();
-	m_pBanExceptionList->clear();
-	m_pInviteList->clear();
-	m_pQuietBanList->clear();
-
-	if(m_pBanEditor) m_pBanEditor->clear();
-	if(m_pBanExceptionEditor) m_pBanExceptionEditor->clear();
-	if(m_pInviteEditor) m_pInviteEditor->clear();
-	if(m_pQuietBanEditor) m_pQuietBanEditor->clear();
-
+	//clear all mask lists (eg bans)
+	QMap<char, KviPointerList<KviMaskEntry>*>::const_iterator iter = m_pModeLists.constBegin();
+	while (iter != m_pModeLists.constEnd())
+	{
+		iter.value()->clear();
+		++iter;
+	}
+	
+	//clear all mask editors
+	QMap<char, KviMaskEditor*>::const_iterator iter2 = m_pListEditors.constBegin();
+	while (iter2 != m_pListEditors.constEnd())
+	{
+		iter.value()->clear();
+		++iter;
+	}
+	
 	m_pTopicWidget->reset();
-
 
 	m_pActionHistory->clear();
 	m_uActionHistoryHotActionCount = 0;
@@ -1627,37 +1630,26 @@ int KviChannel::myFlags()
 	return m_pUserListView->flags(connection()->currentNickName());
 }
 
-void KviChannel::setMask(char cFlag, const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt)
+void KviChannel::setMask(char cMode, const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt)
 {
 	if(!connection())
 		return;
 
-	KviPointerList<KviMaskEntry> * list = m_pBanList;
-	KviMaskEditor * editor = m_pBanEditor;
-	switch(cFlag)
+	if(!m_pModeLists.contains(cMode))
 	{
-		case 'b':
-			m_iStateFlags ^= KVI_CHANNEL_STATE_HAVEBANLIST;
-			break;
-		case 'e':
-			m_iStateFlags ^= KVI_CHANNEL_STATE_HAVEBANEXCEPTIONLIST;
-			list = m_pBanExceptionList;
-			editor = m_pBanExceptionEditor;
-			break;
-		case 'I':
-			m_iStateFlags ^= KVI_CHANNEL_STATE_HAVEINVITELIST;
-			list = m_pInviteList;
-			editor = m_pInviteEditor;
-			break;
-		case 'q':
-			m_iStateFlags ^= KVI_CHANNEL_STATE_HAVEQUIETBANLIST;
-			list = m_pQuietBanList;
-			editor = m_pQuietBanEditor;
-			break;
+		// lazily insert it
+		KviPointerList<KviMaskEntry>* pModeList = new KviPointerList<KviMaskEntry>;
+		pModeList->setAutoDelete(true);
+		m_pModeLists.insert(cMode,pModeList);
 	}
 
+	KviPointerList<KviMaskEntry> * list = m_pModeLists.value(cMode);
+	KviMaskEditor * editor = 0;
+	if(m_pListEditors.contains(cMode))
+		editor = m_pListEditors.value(cMode);
+
 	internalMask(szMask,bAdd,szSetBy,uSetAt,list,&editor);
-	m_pUserListView->setMaskEntries(cFlag,(int)list->count());
+	m_pUserListView->setMaskEntries(cMode,(int)list->count());
 }
 
 void KviChannel::internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, KviPointerList<KviMaskEntry> * l, KviMaskEditor ** ppEd)
@@ -1698,9 +1690,12 @@ void KviChannel::updateModeLabel()
 	QString szTip = __tr2qs("<b>Channel mode:</b>");
 	KviStr szMod = m_szChannelMode;
 	const char * pcAux = szMod.ptr();
+	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
+
 	while(*pcAux)
 	{
-		KviQString::appendFormatted(szTip,"<br>%c: %Q",*pcAux,&(m_pConsole->connection()->serverInfo()->getChannelModeDescription(*pcAux)));
+		if(pServerInfo)
+			KviQString::appendFormatted(szTip,"<br>%c: %Q",*pcAux,&(m_pConsole->connection()->serverInfo()->getChannelModeDescription(*pcAux)));
 		++pcAux;
 	}
 
@@ -1738,29 +1733,13 @@ void KviChannel::checkChannelSync()
 			return;
 	}
 
-	if(m_iStateFlags & KVI_CHANNEL_STATE_SENTBANLISTREQUEST)
-	{
-		if(!(m_iStateFlags & KVI_CHANNEL_STATE_HAVEBANLIST))
-			return;
-	}
-
-	if(m_iStateFlags & KVI_CHANNEL_STATE_SENTBANEXCEPTIONLISTREQUEST)
-	{
-		if(!(m_iStateFlags & KVI_CHANNEL_STATE_HAVEBANEXCEPTIONLIST))
-			return;
-	}
-
-	if(m_iStateFlags & KVI_CHANNEL_STATE_SENTINVITELISTREQUEST)
-	{
-		if(!(m_iStateFlags & KVI_CHANNEL_STATE_HAVEINVITELIST))
-			return;
-	}
-
-	if(m_iStateFlags & KVI_CHANNEL_STATE_SENTQUIETBANLISTREQUEST)
-	{
-		if(!(m_iStateFlags & KVI_CHANNEL_STATE_HAVEQUIETBANLIST))
-			return;
-	}
+	// check if we're in the on-join request queue list
+	if(connection()->requestQueue()->isQueued(this))
+		return;
+	
+	// check if there's any request still runinng
+	if(m_szSentModeRequests.size() != 0)
+		return;
 
 	m_iStateFlags |= KVI_CHANNEL_STATE_SYNCHRONIZED;
 	// we already have all the spontaneous server replies
@@ -1798,17 +1777,15 @@ void KviChannel::preprocessMessage(QString & szMessage)
 		QString szTmp = KviMircCntrl::stripControlBytes(*it);
 		if(findEntry(*it))
 			*it = QString("\r!n\r%1\r").arg(*it);
-		if(m_pConsole)
+		KviIrcConnectionServerInfo * pServerInfo = serverInfo();
+		if(pServerInfo)
 		{
-			if(m_pConsole->connection())
+			if(pServerInfo->supportedChannelTypes().contains(szTmp[0]))
 			{
-				if(m_pConsole->connection()->serverInfo()->supportedChannelTypes().contains(szTmp[0]))
-				{
-					if((*it) == szTmp)
-						*it = QString("\r!c\r%1\r").arg(*it);
-					else
-						*it = QString("\r!c%1\r%2\r").arg(szTmp, *it);
-				}
+				if((*it) == szTmp)
+					*it = QString("\r!c\r%1\r").arg(*it);
+				else
+					*it = QString("\r!c%1\r%2\r").arg(szTmp, *it);
 			}
 		}
 	}
@@ -1820,6 +1797,12 @@ void KviChannel::unhighlight()
 	if(!m_pWindowListItem)
 		return;
 	m_pWindowListItem->unhighlight();
+}
+
+inline KviIrcConnectionServerInfo * KviChannel::serverInfo()
+{
+	if(!connection()) return 0;
+	return connection()->serverInfo();
 }
 
 void KviChannel::pasteLastLog()

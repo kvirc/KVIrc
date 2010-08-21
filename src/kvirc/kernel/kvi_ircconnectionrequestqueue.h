@@ -91,7 +91,14 @@ public:
 	* \return void
 	*/
 	void dequeueChannel(KviChannel * pChan);
-	
+
+	/**
+	* \brief Checks if a channel is in the queue stack
+	* \param pChan The channel to check
+	* \return bool
+	*/
+	bool isQueued(KviChannel * pChan) { return m_channels.contains(pChan); };
+
 	/**
 	* \brief Clears the queue stack
 	* \return void

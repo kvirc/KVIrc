@@ -87,40 +87,40 @@ void KviRequestQueue::timerSlot()
 		switch(m_curType)
 		{
 			case BanException:
-				if(pChan->connection()->serverInfo()->supportsModesIe() &&
+				if(pChan->serverInfo()->supportsModesIe() &&
 					!KVI_OPTION_BOOL(KviOption_boolDisableBanExceptionListRequestOnJoin) &&
-					!(	pChan->connection()->serverInfo()->getNeedsOpToListModeseI() &&
+					!(	pChan->serverInfo()->getNeedsOpToListModeseI() &&
 						!pChan->isMeOp()
 					 )
 				)
 				{
 					if(!pChan->connection()->sendFmtData("MODE %s e",encodedChan.data()))
 						clearAll(); // disconnected
-					else pChan->setSentBanExceptionListRequest();
+					else pChan->setSentListRequest('e');
 					m_curType = Invite;
 					break;
 				}
 			case Invite:
-				if(pChan->connection()->serverInfo()->supportsModesIe() &&
+				if(pChan->serverInfo()->supportsModesIe() &&
 					!KVI_OPTION_BOOL(KviOption_boolDisableInviteListRequestOnJoin) &&
-					!(	pChan->connection()->serverInfo()->getNeedsOpToListModeseI() &&
+					!(	pChan->serverInfo()->getNeedsOpToListModeseI() &&
 						!pChan->isMeOp()
 					 )
 				)
 				{
 					if(!pChan->connection()->sendFmtData("MODE %s I",encodedChan.data()))
 						clearAll(); // disconnected
-					else pChan->setSentInviteListRequest();
+					else pChan->setSentListRequest('I');
 					m_curType = QuietBan;
 					break;
 				}
 			case QuietBan:
-				if(pChan->connection()->serverInfo()->supportsModeq() &&
+				if(pChan->serverInfo()->supportsModeq() &&
 					!KVI_OPTION_BOOL(KviOption_boolDisableQuietBanListRequestOnJoin))
 				{
 					if(!pChan->connection()->sendFmtData("MODE %s q",encodedChan.data()))
 						clearAll(); // disconnected
-					else pChan->setSentQuietBanListRequest();
+					else pChan->setSentListRequest('q');
 					m_curType = Who;
 					break;
 				}
@@ -145,7 +145,7 @@ void KviRequestQueue::timerSlot()
 				{
 					if(!pChan->connection()->sendFmtData("MODE %s b",encodedChan.data()))
 						clearAll(); // disconnected
-					else pChan->setSentBanListRequest();
+					else pChan->setSentListRequest('b');
 					m_channels.dequeue();
 					m_curType = Mode;
 					break;

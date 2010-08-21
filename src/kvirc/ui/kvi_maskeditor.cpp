@@ -28,6 +28,7 @@
 #include "kvi_iconmanager.h"
 #include "kvi_qstring.h"
 #include "kvi_channel.h"
+#include "kvi_ircconnectionserverinfo.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_toolwindows_container.h"
 #include "kvi_channel.h"
@@ -123,60 +124,56 @@ void KviMaskInputDialog::accept()
 	QDialog::accept();
 }
 
-KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPointerList<KviMaskEntry> * maskList,char flag,const char *)
+KviMaskEditor::KviMaskEditor(QWidget * par,KviChannel * pChannel,KviWindowToolPageButton* button,KviPointerList<KviMaskEntry> * maskList,char cMode,const char *name)
 : KviWindowToolWidget(par,button)
 {
+	setObjectName(name);
 	bool isEnabled=1;
-
-	QObject * w = parent();
-	while(w)
+	m_pChannel = pChannel;
+	if(m_pChannel)
 	{
-		if(w->inherits("KviChannel"))
-		{
-			KviChannel *chan = ((KviChannel *)w);
-			if(!( chan->isMeHalfOp() || chan->isMeOp() || chan->isMeChanOwner() || chan->isMeChanAdmin() ) )
-				isEnabled=0;
-			break;
-		}
-	w = w->parent();
+		if(!( m_pChannel->isMeHalfOp() ||
+			m_pChannel->isMeOp() ||
+			m_pChannel->isMeChanOwner() ||
+			m_pChannel->isMeChanAdmin() ) 
+		) isEnabled=0;
 	}
 
 	setFocusPolicy(Qt::ClickFocus);
 
 	QGridLayout *g = new QGridLayout(this);
 
-	m_cFlag = flag;
+	m_cFlag = cMode;
 
-	QString txt;
-	switch(flag)
+	KviIrcConnectionServerInfo * pServerInfo = 0;
+	QString szDescription = "";
+	if(m_pChannel)
+		pServerInfo = m_pChannel->serverInfo();
+	if(pServerInfo)
+		szDescription = pServerInfo->getChannelModeDescription(cMode);
+	if(szDescription.isEmpty())
+		szDescription = __tr2qs("Mode \"%1\" Masks").arg(cMode);
+	switch(cMode)
 	{
 		case 'b':
-			txt = __tr2qs("Active Bans");
 			m_iIconId = KVI_SMALLICON_BAN;
-		break;
-		case 'I':
-			txt = __tr2qs("Active Invite Exceptions");
-			m_iIconId = KVI_SMALLICON_INVITEEXCEPT;
-		break;
+			break;
 		case 'e':
-			txt = __tr2qs("Active Ban Exceptions");
 			m_iIconId = KVI_SMALLICON_BANEXCEPT;
-		break;
-		case 'q':
-			txt = __tr2qs("Active Quiet Bans");
-			m_iIconId = KVI_SMALLICON_BAN;
-		break;
+			break;
+		case 'I':
+			m_iIconId = KVI_SMALLICON_INVITEEXCEPT;
+			break;
 		default:
-			txt = "?";
-			m_iIconId = KVI_SMALLICON_UNHANDLED;
-		break;
+			m_iIconId = KVI_SMALLICON_BAN;
+			break;
 	}
 
 	QLabel * l = new QLabel("",this);
 	l->setPixmap(*(g_pIconManager->getSmallIcon(m_iIconId)));
 	g->addWidget(l,0,0);
 
-	l = new QLabel(txt,this);
+	l = new QLabel(szDescription,this);
 	g->addWidget(l,0,1);
 
 	KviTalHBox * hb = new KviTalHBox(this);
@@ -274,20 +271,18 @@ void KviMaskEditor::removeClicked()
 
 void KviMaskEditor::addClicked()
 {
-	QObject * w = parent();
-	while(w)
+	if(m_pChannel)
 	{
-		if(w->inherits("KviChannel"))
+		if(m_pChannel->isMeHalfOp() ||
+			m_pChannel->isMeOp() ||
+			m_pChannel->isMeChanAdmin() ||
+			m_pChannel->isMeChanOwner() ||
+			m_pChannel->connection()->userInfo()->hasUserMode('o') ||
+			m_pChannel->connection()->userInfo()->hasUserMode('O'))
 		{
-			KviChannel *chan = ((KviChannel *)w);
-			if(chan->isMeHalfOp() || chan->isMeOp() || chan->isMeChanAdmin() || chan->isMeChanOwner() || chan->connection()->userInfo()->hasUserMode('o') || chan->connection()->userInfo()->hasUserMode('O'))
-			{
-				KviMaskInputDialog* pDialog=new KviMaskInputDialog("",this,chan);
-				pDialog->show();
-			}
-			break;
+			KviMaskInputDialog* pDialog=new KviMaskInputDialog("",this,m_pChannel);
+			pDialog->show();
 		}
-	w = w->parent();
 	}
 }
 
@@ -324,22 +319,17 @@ void KviMaskEditor::clear()
 
 void KviMaskEditor::itemDoubleClicked( QTreeWidgetItem * pItem, int )
 {
-	if(pItem)
+	if(pItem && m_pChannel)
 	{
-		QObject * w = parent();
-		while(w)
+		if(m_pChannel->isMeHalfOp() ||
+			m_pChannel->isMeOp() ||
+			m_pChannel->isMeChanAdmin() ||
+			m_pChannel->isMeChanOwner() ||
+			m_pChannel->connection()->userInfo()->hasUserMode('o') ||
+			m_pChannel->connection()->userInfo()->hasUserMode('O'))
 		{
-			if(w->inherits("KviChannel"))
-			{
-				KviChannel *chan = ((KviChannel *)w);
-				if(chan->isMeHalfOp() || chan->isMeOp() || chan->isMeChanAdmin() || chan->isMeChanOwner() || chan->connection()->userInfo()->hasUserMode('o') || chan->connection()->userInfo()->hasUserMode('O'))
-				{
-					KviMaskInputDialog* pDialog=new KviMaskInputDialog(pItem->text(0),this,chan);
-					pDialog->show();
-				}
-				break;
-			}
-		w = w->parent();
+			KviMaskInputDialog* pDialog=new KviMaskInputDialog(pItem->text(0),this,m_pChannel);
+			pDialog->show();
 		}
 	}
 }

@@ -151,6 +151,12 @@ private:
 	void parseNumericEndOfInviteList(KviIrcMessage *msg);
 	void parseNumericExceptList(KviIrcMessage *msg);
 	void parseNumericEndOfExceptList(KviIrcMessage *msg);
+	void parseNumericQList(KviIrcMessage *msg);
+	void parseNumericEndOfQList(KviIrcMessage *msg);
+	void parseNumericAList(KviIrcMessage *msg);
+	void parseNumericEndOfAList(KviIrcMessage *msg);
+	void parseNumericReopList(KviIrcMessage *msg);
+	void parseNumericEndOfReopList(KviIrcMessage *msg);
 	void parseNumericWhoReply(KviIrcMessage *msg);
 	void parseNumericEndOfWho(KviIrcMessage *msg);
 	void parseNumericNicknameProblem(KviIrcMessage *msg);

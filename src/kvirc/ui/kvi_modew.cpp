@@ -181,7 +181,8 @@ void KviModeWidget::editorReturnPressed()
 
 	// now flush out mode changes
 	int iModesPerLine=3; // a good default
-	KviIrcConnectionServerInfo * pServerInfo = getServerInfo();
+	KviIrcConnectionServerInfo * pServerInfo = 0;
+	if(m_pChannel) pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)
 	{
 		iModesPerLine = pServerInfo->maxModeChanges();
@@ -268,17 +269,10 @@ void KviModeWidget::editorReturnPressed()
 	reset();
 }
 
-inline KviIrcConnectionServerInfo * KviModeWidget::getServerInfo()
-{
-	if(!m_pChannel) return 0;
-	if(!m_pChannel->console()) return 0;
-	if(!m_pChannel->console()->connection()) return 0;
-	return m_pChannel->console()->connection()->serverInfo();
-}
-
 inline bool KviModeWidget::modeNeedsParameterOnlyWhenSet(char cMode)
 {
-	KviIrcConnectionServerInfo * pServerInfo = getServerInfo();
+	KviIrcConnectionServerInfo * pServerInfo = 0;
+	if(m_pChannel) pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)
 		return pServerInfo->supportedParameterWhenSetModes().contains(cMode);
 	return false;

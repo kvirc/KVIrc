@@ -564,6 +564,41 @@ static bool chan_kvs_fnc_invitecount(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+
+/*
+	@doc: chan.maskcount
+	@type:
+		function
+	@title:
+		$chan.maskcount
+	@short:
+		Returns the number of entries in the mask list for a channel mode
+	@syntax:
+		<integer> $chan.maskcount(<mode:char>)
+		<integer> $chan.maskcount(<mode:char>,[window_id:string])
+	@description:
+		The first form returns the number of entries in the ban list of the current channel (assuming that the current window
+		is a channel at all). If the current window is not a channel, a warning is printed
+		and 0 is returned.[br]
+		The second form returns the number entries in the ban list of the channel specified by <window_id>.[br]
+		The number of list entries is returned if it is known form at the call time: this means that
+		if the channel is not synchronized with the server (as just after the join, for example)
+		you might get a number that is actually smaller.[br]
+*/
+static bool chan_kvs_fnc_maskcount(KviKvsModuleFunctionCall * c)
+{
+	QString szId, szMode;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("mode",KVS_PT_NONEMPTYSTRING,0,szMode)
+		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETERS_END(c)
+
+	char cMode = szMode.at(0).unicode();
+	KviChannel * ch = chan_kvs_find_channel(c,szId);
+	if (ch) c->returnValue()->setInteger(ch->maskCount(cMode));
+	return true;
+}
+
 /*
 	@doc: chan.ison
 	@type:
@@ -1193,6 +1228,10 @@ next_item:
 		Returns an array of ban masks set ont the channel identified by [window_id].[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty array is returned.[br]
+	@seealso:
+		[fnc]$chan.masklist[/fnc]
+		[fnc]$chan.invitelist[/fnc]
+		[fnc]$chan.banexceptionlist[/fnc]
 */
 static bool chan_kvs_fnc_banlist(KviKvsModuleFunctionCall * c)
 {
@@ -1211,6 +1250,7 @@ static bool chan_kvs_fnc_banlist(KviKvsModuleFunctionCall * c)
 	int idx = 0;
 
 	KviPointerList<KviMaskEntry> * l = ch->banList();
+	if(!l) return true;
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
 	{
@@ -1235,6 +1275,10 @@ static bool chan_kvs_fnc_banlist(KviKvsModuleFunctionCall * c)
 		Returns an array of ban exception masks set ont the channel identified by [window_id].[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty array is returned.[br]
+	@seealso:
+		[fnc]$chan.banlist[/fnc]
+		[fnc]$chan.invitelist[/fnc]
+		[fnc]$chan.masklist[/fnc]
 */
 static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 {
@@ -1253,6 +1297,7 @@ static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 	int idx = 0;
 
 	KviPointerList<KviMaskEntry> * l = ch->banExceptionList();
+	if(!l) return true;
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
 	{
@@ -1277,6 +1322,10 @@ static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 		Returns an array of invite masks set ont the channel identified by [window_id].[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty array is returned.[br]
+	@seealso:
+		[fnc]$chan.banlist[/fnc]
+		[fnc]$chan.masklist[/fnc]
+		[fnc]$chan.banexceptionlist[/fnc]
 */
 static bool chan_kvs_fnc_invitelist(KviKvsModuleFunctionCall * c)
 {
@@ -1295,6 +1344,57 @@ static bool chan_kvs_fnc_invitelist(KviKvsModuleFunctionCall * c)
 	int idx = 0;
 
 	KviPointerList<KviMaskEntry> * l = ch->inviteList();
+	if(!l) return true;
+
+	for(KviMaskEntry * e = l->first();e;e = l->next())
+	{
+		pArray->set(idx,new KviKvsVariant(e->szMask));
+		idx++;
+	}
+
+	return true;
+}
+
+/*
+	@doc: chan.masklist
+	@type:
+		function
+	@title:
+		$chan.masklist
+	@short:
+		Returns an array of masks for a channel mode
+	@syntax:
+		$chan.masklist(<mode:char>[,window_id])
+	@description:
+		Returns an array of masks set for the channel mode <mode> on the channel identified by [window_id].[br]
+		If [window_id] is empty, the current window is used.[br]
+		If the window designated by [window_id] is not a channel a warning is printed and an empty array is returned.[br]
+	@seealso:
+		[fnc]$chan.banlist[/fnc]
+		[fnc]$chan.invitelist[/fnc]
+		[fnc]$chan.banexceptionlist[/fnc]
+*/
+static bool chan_kvs_fnc_masklist(KviKvsModuleFunctionCall * c)
+{
+	QString szWinId,szMask,szMode;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("mode",KVS_PT_NONEMPTYSTRING,0,szMode)
+		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
+	KVSM_PARAMETERS_END(c)
+
+	char cMode = szMode.at(0).unicode();
+		
+	KviKvsArray * pArray = new KviKvsArray();
+	c->returnValue()->setArray(pArray);
+
+	KviChannel * ch = chan_kvs_find_channel(c,szWinId);
+
+	if(!ch)return true;
+
+	int idx = 0;
+
+	KviPointerList<KviMaskEntry> * l = ch->modeMasks(cMode);
+	if(!l) return true;
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
 	{
@@ -1339,6 +1439,11 @@ static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
 	}
 
 	KviPointerList<KviMaskEntry> * l = ch->banList();
+	if(!l)
+	{
+		c->returnValue()->setNothing();
+		return true;
+	}
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
 	{
@@ -1387,6 +1492,11 @@ static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
 	}
 
 	KviPointerList<KviMaskEntry> * l = ch->banExceptionList();
+	if(!l)
+	{
+		c->returnValue()->setNothing();
+		return true;
+	}
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
 	{
@@ -1435,6 +1545,11 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 	}
 
 	KviPointerList<KviMaskEntry> * l = ch->inviteList();
+	if(!l)
+	{
+		c->returnValue()->setNothing();
+		return true;
+	}
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
 	{
@@ -1460,8 +1575,11 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<string> $chan.matchqban([window_id],<complete_mask>)
 	@description:
-		Some networks use +q channel mode to set "mute bans".
-		When an user mask matches such a ban, he won't be able to send messages to the channel.
+		Warning: this function is network-specific, makes some (bad) assumptions about a non-standard channel mode and
+		will probably be dropped in a future version.[br]
+		Use [fnc]$chan.matchmask[/fnc] instead.[br]
+		Some networks use +q channel mode to set "mute bans".[br]
+		When an user mask matches such a ban, he won't be able to send messages to the channel.[br]
 		The "mute bans" masks will be inserted in the normal channel bans list, with a percent sign % prepended
 		This function returns the "mute ban" mask that matches <complete_mask> on channel identified by [window_id].[br]
 		If no ban mask matches <complete_mask> an empty string is returned.[br]
@@ -1487,6 +1605,71 @@ static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
 	}
 
 	KviPointerList<KviMaskEntry> * l = ch->banList();
+	if(!l)
+	{
+		c->returnValue()->setNothing();
+		return true;
+	}
+
+	for(KviMaskEntry * e = l->first();e;e = l->next())
+	{
+		if(KviQString::matchString(e->szMask,szMask))
+		{
+			c->returnValue()->setString(e->szMask);
+			return true;
+		}
+	}
+
+	c->returnValue()->setNothing();
+	return true;
+}
+
+/*
+	@doc: chan.matchmask
+	@type:
+		function
+	@title:
+		$chan.matchmask
+	@short:
+		Matches a mask agains the channel list for a specific mode
+	@syntax:
+		<string> $chan.matchmask(<mode:char>,<complete_mask:string>[,window_id])
+	@description:
+
+		Some networks use +q channel mode to set "mute bans".[br]
+		When an user mask matches such a ban, he won't be able to send messages to the channel.[br]
+		The "mute bans" masks will be inserted in the normal channel bans list, with a percent sign % prepended
+		This function returns the "mute ban" mask that matches <complete_mask> on channel identified by [window_id].[br]
+		If no ban mask matches <complete_mask> an empty string is returned.[br]
+		If [window_id] is empty, the current window is used.[br]
+		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
+		This function is useful to determine if a "mute ban" set on the channel matches an user.[br]
+*/
+static bool chan_kvs_fnc_matchmask(KviKvsModuleFunctionCall * c)
+{
+	QString szWinId,szMask,szMode;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("mode",KVS_PT_NONEMPTYSTRING,0,szMode)
+		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask)
+		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
+	KVSM_PARAMETERS_END(c)
+
+	char cMode = szMode.at(0).unicode();
+	KviChannel * ch = chan_kvs_find_channel(c,szWinId);
+
+	if(!ch)
+	{
+		c->returnValue()->setNothing();
+		return true;
+	}
+
+	KviPointerList<KviMaskEntry> * l = ch->modeMasks(cMode);
+	if(!l)
+	{
+		c->returnValue()->setNothing();
+		return true;
+	}
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
 	{
@@ -1675,10 +1858,13 @@ static bool chan_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"isvoice",chan_kvs_fnc_isvoice);
 	KVSM_REGISTER_FUNCTION(m,"key",chan_kvs_fnc_key);
 	KVSM_REGISTER_FUNCTION(m,"limit",chan_kvs_fnc_limit);
+	KVSM_REGISTER_FUNCTION(m,"masklist",chan_kvs_fnc_masklist);
+	KVSM_REGISTER_FUNCTION(m,"maskcount",chan_kvs_fnc_maskcount);
 	KVSM_REGISTER_FUNCTION(m,"matchban",chan_kvs_fnc_matchban);
 	KVSM_REGISTER_FUNCTION(m,"matchqban",chan_kvs_fnc_matchqban);
 	KVSM_REGISTER_FUNCTION(m,"matchbanexception",chan_kvs_fnc_matchbanexception);
 	KVSM_REGISTER_FUNCTION(m,"matchinvite",chan_kvs_fnc_matchinvite);
+	KVSM_REGISTER_FUNCTION(m,"matchmask",chan_kvs_fnc_matchmask);
 	KVSM_REGISTER_FUNCTION(m,"mode",chan_kvs_fnc_mode);
 	KVSM_REGISTER_FUNCTION(m,"modeParam",chan_kvs_fnc_modeParam);
 	KVSM_REGISTER_FUNCTION(m,"name",chan_kvs_fnc_name);

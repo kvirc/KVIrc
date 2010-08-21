@@ -148,7 +148,8 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	}
 
 	// third, check if the we have any info about other modes supported by the server
-	KviIrcConnectionServerInfo * pServerInfo = getServerInfo();
+	KviIrcConnectionServerInfo * pServerInfo = 0;
+	if(m_pChannel) pServerInfo = m_pChannel->serverInfo();
 	if(!pServerInfo)
 	{
 		g->setRowStretch(++iRow,1);
@@ -320,7 +321,8 @@ void KviModeEditor::commit()
 
 	// now flush out mode changes
 	int iModesPerLine=3; // a good default
-	KviIrcConnectionServerInfo * pServerInfo = getServerInfo();
+	KviIrcConnectionServerInfo * pServerInfo = 0;
+	if(m_pChannel) pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)
 	{
 		iModesPerLine = pServerInfo->maxModeChanges();
@@ -407,17 +409,10 @@ void KviModeEditor::commit()
 	emit done();
 }
 
-inline KviIrcConnectionServerInfo * KviModeEditor::getServerInfo()
-{
-	if(!m_pChannel) return 0;
-	if(!m_pChannel->console()) return 0;
-	if(!m_pChannel->console()->connection()) return 0;
-	return m_pChannel->console()->connection()->serverInfo();
-}
-
 inline const QString * KviModeEditor::getModeDescription(char cMode)
 {
-	KviIrcConnectionServerInfo * pServerInfo = getServerInfo();
+	if(!m_pChannel) return 0;
+	KviIrcConnectionServerInfo * pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)
 		return &(pServerInfo->getChannelModeDescription(cMode));
 	return 0; //safe, as will be used with KviQString::sprintf("%Q", ..);
@@ -425,7 +420,8 @@ inline const QString * KviModeEditor::getModeDescription(char cMode)
 
 inline bool KviModeEditor::modeNeedsParameterOnlyWhenSet(char cMode)
 {
-	KviIrcConnectionServerInfo * pServerInfo = getServerInfo();
+	if(!m_pChannel) return 0;
+	KviIrcConnectionServerInfo * pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)
 		return pServerInfo->supportedParameterWhenSetModes().contains(cMode);
 	return false;

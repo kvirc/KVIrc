@@ -95,10 +95,11 @@ class KVIRC_API KviMaskEditor : public KviWindowToolWidget
 {
 	Q_OBJECT
 public:
-	KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPointerList<KviMaskEntry> * maskList,
-		char flag,const char * nam);
+	KviMaskEditor(QWidget * par,KviChannel * pChannel, KviWindowToolPageButton* button,KviPointerList<KviMaskEntry> * maskList,
+		char cMode,const char * name);
 	~KviMaskEditor();
 protected:
+	KviChannel            * m_pChannel;
 	QTreeWidget           * m_pMaskBox;
 	QPushButton           * m_pRemoveMask;
 	QPushButton           * m_pAddButton;

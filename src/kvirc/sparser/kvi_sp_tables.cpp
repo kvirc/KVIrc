@@ -432,8 +432,8 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericInviting)                      , // 351 RPL_INVITING
 	0,                                               // 342
 	0,                                               // 343
-	0,                                               // 344
-	0,                                               // 345
+	PTM(parseNumericReopList)                      , // 344 RPL_REOPLIST
+	PTM(parseNumericEndOfReopList)                 , // 345 RPL_ENDOFREOPLIST
 	PTM(parseNumericInviteList)                    , // 346 RPL_INVITELIST
 	PTM(parseNumericEndOfInviteList)               , // 347 RPL_ENDOFINVITELIST
 	PTM(parseNumericExceptList)                    , // 348 RPL_EXCEPTLIST
@@ -474,10 +474,10 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 383
 	0,                                               // 384
 	0,                                               // 385
-	0,                                               // 386
-	0,                                               // 387
-	0,                                               // 388
-	0,                                               // 389
+	PTM(parseNumericQList)                         , // 386 RPL_QLIST
+	PTM(parseNumericEndOfQList)                    , // 387 RPL_ENDOFQLIST
+	PTM(parseNumericAList)                         , // 388 RPL_ALIST
+	PTM(parseNumericEndOfAList)                    , // 389 RPL_ENDOFALIST
 	0,                                               // 390
 	PTM(parseNumericTime)                          , // 391 RPL_TIME
 	0,                                               // 392
