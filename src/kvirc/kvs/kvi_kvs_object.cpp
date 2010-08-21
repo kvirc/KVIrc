@@ -674,7 +674,7 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,con
 	m_pChildList         = new KviPointerList<KviKvsObject>;
 	m_pChildList->setAutoDelete(false);
 
-	m_pdataContainer     = new KviKvsHash();
+	m_pDataContainer     = new KviKvsHash();
 
 	m_pFunctionHandlers  = 0; // no local function handlers yet!
 
@@ -683,7 +683,8 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,con
 	m_pSignalDict        = 0; // no signals connected to remote slots
 	m_pConnectionList    = 0; // no local slots connected to remote signals
 
-	if(pParent)pParent->registerChild(this);
+	if(pParent)
+		pParent->registerChild(this);
 
 	KviKvsKernel::instance()->objectController()->registerObject(this);
 
@@ -699,75 +700,72 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,con
 
 KviKvsObject::~KviKvsObject()
 {
-        m_bInDelayedDeath = true;
-	while(m_pChildList->first())delete m_pChildList->first();
+	m_bInDelayedDeath = true; // don't attempt to die twice
+
+	// Call the destructor
+	// Note that children are still alive: the user can clean them up manually
+	callFunction(this,"destructor");
+
+	// Kill any child not deleted by the user
+	while(m_pChildList->first())
+		delete m_pChildList->first();
+
+	// Ok, from this point we shouldn't be touched by any one via KVS
+	// so we can start really deleting stuff...
 	delete m_pChildList;
 
-#if 0
-	// Disconnect all the signals
-	if(m_pSignalDict)
-	{
-		KviPointerHashTableIterator<QString,KviKvsObjectConnectionList> it(*m_pSignalDict);
-
-		while(it.current())
-		{
-			KviKvsObjectConnectionListIterator cit(*(it.current()));
-			while(cit.current())
-			{
-				disconnectSignal(it.currentKey(),cit.current());
-				// ++cit // NO!...we point to the next now!
-			}
-			// the iterator should automatically point to the next now
-			//if(m_pSignalDict)++it;
-		}
-	}
-
-	// Disconnect all the slots
-	if(m_pConnectionList)
-	{
-		KviKvsObjectConnectionListIterator cit(*m_pConnectionList);
-		while(cit.current())
-		{
-			QString szSig = cit.current()->szSignal;
-			cit.current()->pSourceObject->disconnectSignal(szSig,cit.current());
-			//++cit;// NO!... we point to the next now!
-		}
-	}
-#else
 	// Disconnect all the signals
 	for(;;)
 	{
-		if(!m_pSignalDict)break;
+		if(!m_pSignalDict)
+			break;
 		KviPointerHashTableEntry<QString,KviKvsObjectConnectionList> * pSignalList = m_pSignalDict->firstEntry();
-		if(!pSignalList)break;
+		if(!pSignalList)
+			break;
 		KviKvsObjectConnection * pConnection = pSignalList->data()->first();
-		if(!pConnection)break;
+		if(!pConnection)
+			break;
 		disconnectSignal(pSignalList->key(),pConnection);
 	}
 
 	// Disconnect all the slots
 	for(;;)
 	{
-		if(!m_pConnectionList)break;
+		if(!m_pConnectionList)
+			break;
 		KviKvsObjectConnection * pConnection = m_pConnectionList->first();
-		if(!pConnection)break;
-		QString szSignalCopy = pConnection->szSignal; // we need this since pConnection is deleted inside disconnectSignal() and pConnection->szSignal dies too (but is referenced after the connection delete)
+		if(!pConnection)
+			break;
+		// We need a copy of szSignal this since pConnection is deleted inside disconnectSignal()
+		// and pConnection->szSignal dies too (but is referenced after the connection delete)
+		QString szSignalCopy = pConnection->szSignal;
 		pConnection->pSourceObject->disconnectSignal(szSignalCopy,pConnection);
 	}
-#endif
 
+	// Detach from the kvs kernel
 	KviKvsKernel::instance()->objectController()->unregisterObject(this);
 
-	if(parentObject())parentObject()->unregisterChild(this);
+	// Detach from the parent object
+	if(parentObject())
+		parentObject()->unregisterChild(this);
 
+	// If we wrap a Qt object then detach and eventually delete
 	if(m_pObject)
 	{
+		// detach
 		disconnect(m_pObject,SIGNAL(destroyed()),this,SLOT(objectDestroyed()));
-		if(m_bObjectOwner)delete m_pObject;
+		// delete if we own it
+		if(m_bObjectOwner)
+			delete m_pObject;
 	}
 
-	delete m_pdataContainer;
-	if(m_pFunctionHandlers)delete m_pFunctionHandlers;
+	// Kill member variables
+	delete m_pDataContainer;
+	// Kill function container
+	if(m_pFunctionHandlers)
+		delete m_pFunctionHandlers;
+		
+	// Bye bye :)
 }
 
 bool KviKvsObject::init(KviKvsRunTimeContext *,KviKvsVariantList *)
@@ -1584,7 +1582,8 @@ KviKvsObjectFunctionHandler * KviKvsObject::lookupFunctionHandler(const QString 
 
 bool KviKvsObject::die()
 {
-	if(m_bInDelayedDeath)return false;
+	if(m_bInDelayedDeath)
+		return false;
 	m_bInDelayedDeath = true;
 	QTimer::singleShot(0,this,SLOT(delayedDie()));
 	return true;
@@ -1592,7 +1591,8 @@ bool KviKvsObject::die()
 
 bool KviKvsObject::dieNow()
 {
-	if(m_bInDelayedDeath)return false;
+	if(m_bInDelayedDeath)
+		return false;
 	m_bInDelayedDeath = true;
 	delete this;
 	return true;

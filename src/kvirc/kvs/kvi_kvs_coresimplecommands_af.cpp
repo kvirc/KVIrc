@@ -889,7 +889,6 @@ namespace KviKvsCoreSimpleCommands
 				if(!KVSCSC_pSwitches->find('q',"quiet"))
 					KVSCSC_pContext->warning(__tr2qs_ctx("Can't delete an inexisting object","kvs"));
 			} else {
-                                o->callFunction(o,"destructor");
 				if(KVSCSC_pSwitches->find('i',"immediate"))
 					o->dieNow();
 				else

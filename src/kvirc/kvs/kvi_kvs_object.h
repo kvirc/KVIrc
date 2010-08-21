@@ -62,7 +62,7 @@ protected:
 	kvs_hobject_t                                m_hObject;            // global object handle
 	KviKvsObjectClass                          * m_pClass;             // the class definition
 
-	KviKvsHash                                 * m_pdataContainer;     // member variables
+	KviKvsHash                                 * m_pDataContainer;     // member variables
 
 	KviPointerList<KviKvsObject>                   * m_pChildList;
 
@@ -112,7 +112,7 @@ public:
 
 	KviPointerHashTable<QString,KviKvsObjectFunctionHandler> * functionHandlers(){ return m_pFunctionHandlers; };
 
-	KviKvsHash * dataContainer(){ return m_pdataContainer; };
+	KviKvsHash * dataContainer(){ return m_pDataContainer; };
 
 	bool die();
 	bool dieNow();
