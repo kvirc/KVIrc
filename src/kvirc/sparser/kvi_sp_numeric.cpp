@@ -689,7 +689,7 @@ void KviServerParser::parseNumeric367(KviIrcMessage *msg)
 	KviChannel * chan = msg->connection()->findChannel(szChan);
 	if(chan)
 	{
-		if(msg->connection()->serverInfo()->supportsModeq() && chan->sentListRequest('q'))
+		if(msg->connection()->serverInfo()->supportedListModes().contains('q') && chan->sentListRequest('q'))
 		{
 			chan->setMask('q',banmask,true,bansetby,QString(msg->safeParam(4)).toUInt());
 			return;
@@ -715,7 +715,7 @@ void KviServerParser::parseNumeric368(KviIrcMessage *msg)
 	KviChannel * chan = msg->connection()->findChannel(szChan);
 	if(chan)
 	{
-		if(msg->connection()->serverInfo()->supportsModeq() && chan->sentListRequest('q'))
+		if(msg->connection()->serverInfo()->supportedListModes().contains('q') && chan->sentListRequest('q'))
 		{
 			chan->setListRequestDone('q');
 			return;

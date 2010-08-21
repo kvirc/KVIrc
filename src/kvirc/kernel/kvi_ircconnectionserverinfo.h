@@ -201,8 +201,6 @@ public:
 	const QString & supportedParameterModes() { return m_szParameterModes; };
 	const QString & supportedParameterWhenSetModes() { return m_szParameterWhenSetModes; };
 	const QString & supportedPlainModes() { return m_szPlainModes; };
-	bool supportsModesIe() { return (m_szListModes.contains('e') && m_szListModes.contains('I')); }
-	bool supportsModeq() { return m_szListModes.contains('q'); };
 	bool supportsCap() { return m_bSupportsCap; };
 	const QStringList & supportedCaps() { return m_lSupportedCaps; };
 	bool supportsWatchList() { return m_bSupportsWatchList; };

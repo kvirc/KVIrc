@@ -498,7 +498,7 @@ static bool chan_kvs_fnc_bancount(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
 	KVSM_PARAMETERS_END(c)
 	KviChannel * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->banCount());
+	if (ch) c->returnValue()->setInteger(ch->maskCount('b'));
 	return true;
 }
 
@@ -529,7 +529,7 @@ static bool chan_kvs_fnc_banexceptioncount(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
 	KVSM_PARAMETERS_END(c)
 	KviChannel * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->banExceptionCount());
+	if (ch) c->returnValue()->setInteger(ch->maskCount('e'));
 	return true;
 }
 
@@ -560,7 +560,7 @@ static bool chan_kvs_fnc_invitecount(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
 	KVSM_PARAMETERS_END(c)
 	KviChannel * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->inviteCount());
+	if (ch) c->returnValue()->setInteger(ch->maskCount('I'));
 	return true;
 }
 
@@ -1249,7 +1249,7 @@ static bool chan_kvs_fnc_banlist(KviKvsModuleFunctionCall * c)
 
 	int idx = 0;
 
-	KviPointerList<KviMaskEntry> * l = ch->banList();
+	KviPointerList<KviMaskEntry> * l = ch->modeMasks('b');
 	if(!l) return true;
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
@@ -1296,7 +1296,7 @@ static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 
 	int idx = 0;
 
-	KviPointerList<KviMaskEntry> * l = ch->banExceptionList();
+	KviPointerList<KviMaskEntry> * l = ch->modeMasks('e');
 	if(!l) return true;
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
@@ -1343,7 +1343,7 @@ static bool chan_kvs_fnc_invitelist(KviKvsModuleFunctionCall * c)
 
 	int idx = 0;
 
-	KviPointerList<KviMaskEntry> * l = ch->inviteList();
+	KviPointerList<KviMaskEntry> * l = ch->modeMasks('I');
 	if(!l) return true;
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
@@ -1438,7 +1438,7 @@ static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	KviPointerList<KviMaskEntry> * l = ch->banList();
+	KviPointerList<KviMaskEntry> * l = ch->modeMasks('b');
 	if(!l)
 	{
 		c->returnValue()->setNothing();
@@ -1491,7 +1491,7 @@ static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	KviPointerList<KviMaskEntry> * l = ch->banExceptionList();
+	KviPointerList<KviMaskEntry> * l = ch->modeMasks('e');
 	if(!l)
 	{
 		c->returnValue()->setNothing();
@@ -1544,7 +1544,7 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	KviPointerList<KviMaskEntry> * l = ch->inviteList();
+	KviPointerList<KviMaskEntry> * l = ch->modeMasks('I');
 	if(!l)
 	{
 		c->returnValue()->setNothing();
@@ -1604,7 +1604,7 @@ static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	KviPointerList<KviMaskEntry> * l = ch->banList();
+	KviPointerList<KviMaskEntry> * l = ch->modeMasks('b');
 	if(!l)
 	{
 		c->returnValue()->setNothing();

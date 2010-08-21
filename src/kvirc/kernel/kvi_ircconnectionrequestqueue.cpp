@@ -87,7 +87,7 @@ void KviRequestQueue::timerSlot()
 		switch(m_curType)
 		{
 			case BanException:
-				if(pChan->serverInfo()->supportsModesIe() &&
+				if(pChan->serverInfo()->supportedListModes().contains('e') &&
 					!KVI_OPTION_BOOL(KviOption_boolDisableBanExceptionListRequestOnJoin) &&
 					!(	pChan->serverInfo()->getNeedsOpToListModeseI() &&
 						!pChan->isMeOp()
@@ -101,7 +101,7 @@ void KviRequestQueue::timerSlot()
 					break;
 				}
 			case Invite:
-				if(pChan->serverInfo()->supportsModesIe() &&
+				if(pChan->serverInfo()->supportedListModes().contains('I') &&
 					!KVI_OPTION_BOOL(KviOption_boolDisableInviteListRequestOnJoin) &&
 					!(	pChan->serverInfo()->getNeedsOpToListModeseI() &&
 						!pChan->isMeOp()
@@ -115,7 +115,7 @@ void KviRequestQueue::timerSlot()
 					break;
 				}
 			case QuietBan:
-				if(pChan->serverInfo()->supportsModeq() &&
+				if(pChan->serverInfo()->supportedListModes().contains('q') &&
 					!KVI_OPTION_BOOL(KviOption_boolDisableQuietBanListRequestOnJoin))
 				{
 					if(!pChan->connection()->sendFmtData("MODE %s q",encodedChan.data()))

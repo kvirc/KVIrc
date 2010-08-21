@@ -227,30 +227,6 @@ public:
 	inline KviPointerList<KviMaskEntry> * modeMasks(char cMode){ if(m_pModeLists.contains(cMode)) return m_pModeLists.value(cMode); return 0; };
 
 	/**
-	* \brief Returns the list of bans set
-	* \return KviPointerList<KviMaskEntry> *
-	*/
-	KviPointerList<KviMaskEntry> * banList(){ return modeMasks('b'); };
-
-	/**
-	* \brief Returns the list of ban exceptions set
-	* \return KviPointerList<KviMaskEntry> *
-	*/
-	KviPointerList<KviMaskEntry> * banExceptionList(){ return modeMasks('e'); };
-
-	/**
-	* \brief Returns the list of invite exceptions set
-	* \return KviPointerList<KviMaskEntry> *
-	*/
-	KviPointerList<KviMaskEntry> * inviteList(){ return modeMasks('I'); };
-
-	/**
-	* \brief Returns the list of quiet bans set
-	* \return KviPointerList<KviMaskEntry> *
-	*/
-	KviPointerList<KviMaskEntry> * quietBanList(){ return modeMasks('q'); };
-
-	/**
 	* \brief Returns the first selected nickname in the userlist
 	* \return QString *
 	*/
@@ -334,30 +310,6 @@ public:
 	* \return unsigned int
 	*/
 	unsigned int maskCount(char cMode){ if(m_pModeLists.contains(cMode)) return m_pModeLists.value(cMode)->count(); return 0; };
-
-	/**
-	* \brief Returns the number of ban masks
-	* \return unsigned int
-	*/
-	unsigned int banCount(){ if(m_pModeLists.contains('b')) return m_pModeLists.value('b')->count(); return 0; };
-
-	/**
-	* \brief Returns the number of ban exceptions masks list
-	* \return unsigned int
-	*/
-	unsigned int banExceptionCount(){ if(m_pModeLists.contains('e')) return m_pModeLists.value('e')->count(); return 0; };
-
-	/**
-	* \brief Returns the number of invite masks
-	* \return unsigned int
-	*/
-	unsigned int inviteCount(){ if(m_pModeLists.contains('I')) return m_pModeLists.value('I')->count(); return 0; };
-
-	/**
-	* \brief Returns the number of quiet ban masks
-	* \return unsigned int
-	*/
-	unsigned int quietBanCount(){ if(m_pModeLists.contains('q')) return m_pModeLists.value('q')->count(); return 0; };
 
 	/**
 	* \brief Called when someone sets a channel mode that is stored in a list; these modes require a parameter that is tipically a mask

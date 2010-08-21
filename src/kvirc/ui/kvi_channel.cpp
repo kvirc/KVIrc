@@ -1799,7 +1799,7 @@ void KviChannel::unhighlight()
 	m_pWindowListItem->unhighlight();
 }
 
-inline KviIrcConnectionServerInfo * KviChannel::serverInfo()
+KviIrcConnectionServerInfo * KviChannel::serverInfo()
 {
 	if(!connection()) return 0;
 	return connection()->serverInfo();
