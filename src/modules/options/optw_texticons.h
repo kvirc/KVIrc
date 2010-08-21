@@ -66,10 +66,13 @@ protected:
 	KviTextIconTableItem *m_pItem;
 	QPushButton  * m_pAdd;
 	QPushButton  * m_pDel;
+	QPushButton  * m_pRestore;
 	KviTalPopupMenu *m_pPopup;
 	KviTalHBox *m_pBox;
 	QToolButton *m_pIconButton;
 	QToolButton *m_pBrowseButton;
+private:
+	void fillTable();
 public:
 	virtual void commit();
 protected slots:
@@ -77,6 +80,7 @@ protected slots:
 	void itemClicked(QTableWidgetItem *i);
 	void addClicked();
 	void delClicked();
+	void restoreClicked();
 
 	void iconSelected(int);
 	void doPopup();

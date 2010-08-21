@@ -72,18 +72,12 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 	setObjectName("texticons_options_widget");
 	createLayout();
 
-	KviPointerHashTableIterator<QString,KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
+	m_pTable = new QTableWidget(this);
 
-	m_pTable = new QTableWidget(g_pTextIconManager->textIconDict()->count(),2,this);
-
-	QStringList header;
-	header.append(__tr2qs("Text"));
-	header.append(__tr2qs("Emoticon"));
-
+	m_pTable->setColumnCount(2);
 	m_pTable->setColumnWidth(0,300);
 	m_pTable->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
 	m_pTable->horizontalHeader()->stretchLastSection();
-	m_pTable->setHorizontalHeaderLabels(header);
 	m_pTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 	m_pTable->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pTable->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -92,6 +86,47 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 			"KVirc will use them to display the CTRL+I escape sequences and eventually the " \
 			"emoticons.","options"));
 
+	layout()->addWidget(m_pTable,0,0,1,3);
+
+	m_pAdd = new QPushButton(__tr2qs_ctx("Add","options"),this);
+	layout()->addWidget(m_pAdd,1,0);
+	connect(m_pAdd,SIGNAL(clicked()),this,SLOT(addClicked()));
+
+	m_pDel = new QPushButton(__tr2qs_ctx("Delete","options"),this);
+	layout()->addWidget(m_pDel,1,1);
+	connect(m_pDel,SIGNAL(clicked()),this,SLOT(delClicked()));
+
+	m_pRestore = new QPushButton(__tr2qs_ctx("Restore","options"),this);
+	layout()->addWidget(m_pRestore,1,2);
+	connect(m_pRestore,SIGNAL(clicked()),this,SLOT(restoreClicked()));
+
+	connect(m_pTable,SIGNAL(itemSelectionChanged()),this,SLOT(itemSelectionChanged()));
+	connect(m_pTable,SIGNAL(itemClicked(QTableWidgetItem *)),this,SLOT(itemClicked(QTableWidgetItem *)));
+	
+	fillTable();
+}
+
+KviTextIconsOptionsWidget::~KviTextIconsOptionsWidget()
+{
+	if(m_pIconButton)
+		delete m_pIconButton;
+	if(m_pBrowseButton)
+		delete m_pBrowseButton;
+	if(m_pBox)
+		delete m_pBox;
+}
+
+void KviTextIconsOptionsWidget::fillTable()
+{
+	KviPointerHashTableIterator<QString,KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
+
+	m_pTable->clear();
+	QStringList header;
+	header.append(__tr2qs("Text"));
+	header.append(__tr2qs("Emoticon"));
+	m_pTable->setHorizontalHeaderLabels(header);
+	m_pTable->setRowCount(g_pTextIconManager->textIconDict()->count());
+	
 	int idx = 0;
 	QTableWidgetItem *item0;
 	KviTextIconTableItem *item1;
@@ -111,33 +146,10 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 		++idx;
 		++it;
 	}
-
-	layout()->addWidget(m_pTable,0,0,1,2);
-
-	m_pAdd = new QPushButton(__tr2qs_ctx("Add","options"),this);
-	layout()->addWidget(m_pAdd,1,0);
-	connect(m_pAdd,SIGNAL(clicked()),this,SLOT(addClicked()));
-
-	m_pDel = new QPushButton(__tr2qs_ctx("Delete","options"),this);
-	layout()->addWidget(m_pDel,1,1);
-	connect(m_pDel,SIGNAL(clicked()),this,SLOT(delClicked()));
-
+	
+	// disable the delete button
 	m_pDel->setEnabled(false);
-
-	connect(m_pTable,SIGNAL(itemSelectionChanged()),this,SLOT(itemSelectionChanged()));
-	connect(m_pTable,SIGNAL(itemClicked(QTableWidgetItem *)),this,SLOT(itemClicked(QTableWidgetItem *)));
 }
-
-KviTextIconsOptionsWidget::~KviTextIconsOptionsWidget()
-{
-	if(m_pIconButton)
-		delete m_pIconButton;
-	if(m_pBrowseButton)
-		delete m_pBrowseButton;
-	if (m_pBox)
-		delete m_pBox;
-}
-
 
 void KviTextIconsOptionsWidget::doPopup()
 {
@@ -217,6 +229,12 @@ void KviTextIconsOptionsWidget::addClicked()
 	m_pDel->setEnabled(true);
 }
 
+void KviTextIconsOptionsWidget::restoreClicked()
+{
+	g_pTextIconManager->checkDefaultAssociations();
+	fillTable();
+}
+
 void KviTextIconsOptionsWidget::delClicked()
 {
 	int i = m_pTable->currentRow();
@@ -261,7 +279,6 @@ void KviTextIconsOptionsWidget::commit()
 			}
 		}
 	}
-	g_pTextIconManager->checkDefaultAssociations();
 
 	for(int i=0; i<n; i++)
 		for (int j=0; j<m_pTable->columnCount(); j++)
