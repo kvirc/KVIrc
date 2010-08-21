@@ -708,8 +708,11 @@ void KviNotifierWindow::mousePressEvent(QMouseEvent * e)
 	}
 
 	if(checkResizing(m_pntClick))
+	{
 		update();
-
+		return;
+	}
+	
 	if(m_pWndBorder->captionRect().contains(e->pos()))
 	{
 		if(m_pWndBorder->closeRect().contains(e->pos()))
@@ -717,6 +720,7 @@ void KviNotifierWindow::mousePressEvent(QMouseEvent * e)
 			m_bCloseDown = true;
 			m_pWndBorder->setCloseIcon(WDG_ICON_CLICKED);
 			update();
+			return;
 		}
 
 		if(!m_bResizing)
@@ -725,16 +729,12 @@ void KviNotifierWindow::mousePressEvent(QMouseEvent * e)
 			m_pntDrag = cursor().pos();
 			m_pntPos = pos();
 			update();
+			return;
 		}
 	}
 
-	if(m_pWndBorder->rect().contains(e->pos()))
+	if(m_pWndBorder->rect().contains(e->pos()) || bWasBlinkOn)
 		update();
-
-	if(bWasBlinkOn)
-		update();
-	else
-		return;
 }
 
 void KviNotifierWindow::mouseReleaseEvent(QMouseEvent * e)

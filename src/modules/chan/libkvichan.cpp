@@ -1635,15 +1635,12 @@ static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<string> $chan.matchmask(<mode:char>,<complete_mask:string>[,window_id])
 	@description:
-
-		Some networks use +q channel mode to set "mute bans".[br]
-		When an user mask matches such a ban, he won't be able to send messages to the channel.[br]
-		The "mute bans" masks will be inserted in the normal channel bans list, with a percent sign % prepended
-		This function returns the "mute ban" mask that matches <complete_mask> on channel identified by [window_id].[br]
-		If no ban mask matches <complete_mask> an empty string is returned.[br]
+		Matches the provided <complete_mask> agains the mask list for channel mode <mode> on the channel identified by [window_id].[br]
+		If no mask matches <complete_mask> an empty string is returned.[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
-		This function is useful to determine if a "mute ban" set on the channel matches an user.[br]
+		Please note that some irc servers use channel list modes not only to store masks, but also for other data such
+		as nicknames. This function should be able to match them as long as they are strings.[br]
 */
 static bool chan_kvs_fnc_matchmask(KviKvsModuleFunctionCall * c)
 {

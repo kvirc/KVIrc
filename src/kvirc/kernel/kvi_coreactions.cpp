@@ -730,7 +730,8 @@ QWidget * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone()) setup();
 	QToolButton * b = new QToolButton(t);
-	b->setIcon(*(bigIcon()));
+	QPixmap * p = bigIcon();
+	b->setIcon(p ? *p : QPixmap());
 	b->setText(visibleName());
 	b->setStatusTip(visibleName());
 	b->setObjectName(name());
