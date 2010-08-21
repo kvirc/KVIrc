@@ -466,7 +466,7 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericMotd)                          , // 375 RPL_MOTDSTART
 	PTM(parseNumericMotd)                          , // 376 RPL_ENDOFMOTD
 	PTM(parseNumericMotd)                          , // 377 RPL_MOTD2
-	PTM(parseNumericMotd)                          , // 378 RPL_MOTD3
+	PTM(parseNumericWhoisOther)                    , // 378 RPL_WHOISHOST
 	0,                                               // 379
 	0,                                               // 380
 	0,                                               // 381

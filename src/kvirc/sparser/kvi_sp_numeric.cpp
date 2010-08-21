@@ -379,8 +379,6 @@ void KviServerParser::parseNumericMotd(KviIrcMessage *msg)
 	// :prefix 372 target : - <motd>
 	// 377: RPL_MOTD2 [?]
 	// :prefix 377 target : - <motd>
-	// 378: RPL_MOTD3 [Austnet]
-	// :prefix 377 target : - <motd>
 	// 375: RPL_MOTDSTART [I,E,U,D]
 	// :prefix 375 target : - <server> Message of the Day -
 	// 372: RPL_ENDOFMOTD [I,E,U,D]
