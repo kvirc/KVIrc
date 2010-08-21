@@ -713,7 +713,7 @@ KviKvsObject::~KviKvsObject()
 		{
 			// Ow... we are being deleted directly and not via die() or dieNow()
 			// This means that we need to call the kvs destructor here which
-			// is AFTER the kvs destructors of the derived classes.
+			// is AFTER the C++ destructors of the derived classes.
 			// This means that a list object, for instance, will be already
 			// cleared in its kvs destructor which isn't that nice.
 
@@ -724,8 +724,7 @@ KviKvsObject::~KviKvsObject()
 			m_bAboutToDie = true; // don't attempt to die twice
 		} else {
 			// This might be an "early" delete after a delayedDie() call.
-			// Quite critical.
-			// Don't complain...
+			// It shouldn't happen very often but if it happens we can't do much about it... don't complain.
 		}
 
 		// Well... need to call the destructor.
