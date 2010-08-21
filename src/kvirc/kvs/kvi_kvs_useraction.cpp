@@ -189,14 +189,20 @@ void KviKvsUserAction::exportToKvs(
 	QString tmp;
 	if(szVisibleName.contains('$'))
 	{
-		szBuffer += tmp;
+		szBuffer += szVisibleName;
 		szBuffer += ",";
 	} else {
-		tmp = szVisibleName;
-		tmp.replace("\"","\\\"");
-		szBuffer += "\"";
-		szBuffer += tmp;
-		szBuffer += "\",";
+		tmp = szVisibleName.trimmed();
+		if(tmp.startsWith(QChar('\"')) && tmp.endsWith(QChar('\"')))
+		{
+			szBuffer += tmp;
+			szBuffer += ",";
+		} else {
+			tmp.replace("\"","\\\"");
+			szBuffer += "\"";
+			szBuffer += tmp;
+			szBuffer += "\",";
+		}
 	}
 
 	if(szDescription.contains('$'))
@@ -204,11 +210,17 @@ void KviKvsUserAction::exportToKvs(
 		szBuffer += szDescription;
 		szBuffer += ",";
 	} else {
-		tmp = szDescription;
-		tmp.replace("\"","\\\"");
-		szBuffer += "\"";
-		szBuffer += tmp;
-		szBuffer += "\",";
+		tmp = szDescription.trimmed();
+		if(tmp.startsWith(QChar('\"')) && tmp.endsWith(QChar('\"')))
+		{
+			szBuffer += tmp;
+			szBuffer += ",";
+		} else {
+			tmp.replace("\"","\\\"");
+			szBuffer += "\"";
+			szBuffer += tmp;
+			szBuffer += "\",";
+		}
 	}
 
 	if(szBigIconId.contains('$'))
@@ -216,11 +228,17 @@ void KviKvsUserAction::exportToKvs(
 		szBuffer += szBigIconId;
 		szBuffer += ",";
 	} else {
-		tmp = szBigIconId;
-		tmp.replace("\"","\\\"");
-		szBuffer += "\"";
-		szBuffer += tmp;
-		szBuffer += "\",";
+		tmp = szBigIconId.trimmed();
+		if(tmp.startsWith(QChar('\"')) && tmp.endsWith(QChar('\"')))
+		{
+			szBuffer += tmp;
+			szBuffer += ",";
+		} else {
+			tmp.replace("\"","\\\"");
+			szBuffer += "\"";
+			szBuffer += tmp;
+			szBuffer += "\",";
+		}
 	}
 
 	if(szSmallIconId.contains('$'))
@@ -228,11 +246,17 @@ void KviKvsUserAction::exportToKvs(
 		szBuffer += szSmallIconId;
 		szBuffer += ")\n";
 	} else {
-		tmp = szSmallIconId;
-		tmp.replace("\"","\\\"");
-		szBuffer += "\"";
-		szBuffer += tmp;
-		szBuffer += "\")\n";
+		tmp = szSmallIconId.trimmed();
+		if(tmp.startsWith(QChar('\"')) && tmp.endsWith(QChar('\"')))
+		{
+			szBuffer += tmp;
+			szBuffer += ")\n";
+		} else {
+			tmp.replace("\"","\\\"");
+			szBuffer += "\"";
+			szBuffer += tmp;
+			szBuffer += "\")\n";
+		}
 	}
 
 	tmp = szScriptCode;
