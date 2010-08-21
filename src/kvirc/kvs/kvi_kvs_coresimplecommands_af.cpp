@@ -695,24 +695,32 @@ namespace KviKvsCoreSimpleCommands
 		@title:
 			debug
 		@syntax:
-			debug <text>
+			debug [-s] <text>
 		@short:
 			Outputs text to the debug window
 		@switches:
+			!sw: -s | --system-console
+			Output to the system console instead of the debug window.
 		@description:
-			Outputs the &lt;text&gt; to the debug window.[br]
+			If the -s switch is not specified then outputs the &lt;text&gt; to the debug window.
+			If the -s switch is used then the output is sent to the system console instead.
+			This is useful if you need to debug destructors of objects
+			or events that are triggered at kvirc shutdown.
 		@seealso:
 	*/
 
 	KVSCSC(debugCKEYWORDWORKAROUND)
 	{
-		Q_UNUSED(__pSwitches);
 		Q_UNUSED(__pContext);
 
 		QString szAll;
 		KVSCSC_pParams->allAsString(szAll);
-		KviWindow * pWnd = KviDebugWindow::getInstance();
-		pWnd->outputNoFmt(KVI_OUT_NONE,szAll);
+		if(KVSCSC_pSwitches->find('s',"system-console"))
+			qDebug("%s",szAll.toUtf8().data());
+		else {
+			KviWindow * pWnd = KviDebugWindow::getInstance();
+			pWnd->outputNoFmt(KVI_OUT_NONE,szAll);
+		}
 		return true;
 	}
 	
