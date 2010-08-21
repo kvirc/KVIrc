@@ -32,6 +32,9 @@
 
 #include "kvi_qstring.h"
 
+static char hexdigits[16] = { '0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f' };
+
+
 kvi_wslen_t kvi_wstrlen(const kvi_wchar_t * str)
 {
 	const kvi_wchar_t * ptr = str;
@@ -729,6 +732,20 @@ int kvi_vsnprintf(char *buffer,int len,const char *fmt,kvi_va_list list)
 				do { *p++ = *--pNumBuf; } while(pNumBuf != numberBuffer);
 				len -= argValue;
 				continue;
+			case 'x': // hexadecimal unsigned integer
+				argUValue = kvi_va_arg(list,unsigned int); //many implementations place int here
+				//write the number in a temporary buffer
+				pNumBuf = numberBuffer;
+				do {
+					tmp = argUValue / 16;
+					*pNumBuf++ = hexdigits[argUValue % 16];
+				} while((argUValue = tmp));
+				//copy now....
+				argValue = pNumBuf - numberBuffer; //length of the number string
+				if(len <= argValue)return (-1); //not enough space for number and terminator
+				do { *p++ = *--pNumBuf; } while(pNumBuf != numberBuffer);
+				len -= argValue;
+				continue;
 			case 'c': //char
 				//
 				// I'm not sure about this...
@@ -1234,8 +1251,6 @@ bool KviStr::hasNonWhiteSpaceData() const
 	}
 	return false;
 }
-
-static char hexdigits[16] = { '0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f' };
 
 void KviStr::bufferToHex(const char *buffer,int len)
 {

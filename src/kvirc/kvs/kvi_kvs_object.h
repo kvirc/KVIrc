@@ -80,8 +80,12 @@ protected:
 	QObject                                    * m_pObject;
 	bool                                         m_bObjectOwner;       // do we have to destroy it ?
 
-	// internal stuff for die()
-	bool                                         m_bInDelayedDeath;
+	// We're going to die soon after the control is given back to the event loop
+	bool m_bInDelayedDeath;
+	// We're going to die BEFORE the control is given back to the event loop
+	bool m_bAboutToDie;
+	// Did we already call the destructor ?
+	bool m_bDestructorCalled;
 public:
 	kvs_hobject_t handle(){ return m_hObject; };
 
@@ -175,6 +179,8 @@ protected:
 protected slots:
 	void delayedDie();
 	void objectDestroyed();
+private:
+	void callDestructor();
 };
 
 

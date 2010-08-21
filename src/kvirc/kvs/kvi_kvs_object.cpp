@@ -45,6 +45,7 @@
 #include <QMetaProperty>
 #include <QTimer>
 #include <QIcon>
+#include <QPointer>
 
 #include <time.h>
 
@@ -678,7 +679,9 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,con
 
 	m_pFunctionHandlers  = 0; // no local function handlers yet!
 
-	m_bInDelayedDeath    = false;
+	m_bInDelayedDeath = false;
+	m_bDestructorCalled = false;
+	m_bAboutToDie = false;
 
 	m_pSignalDict        = 0; // no signals connected to remote slots
 	m_pConnectionList    = 0; // no local slots connected to remote signals
@@ -700,15 +703,41 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,con
 
 KviKvsObject::~KviKvsObject()
 {
-	m_bInDelayedDeath = true; // don't attempt to die twice
+	//KVI_TRACE_FUNCTION;
+	//KVI_TRACE("Destroying kvs object %x, child of %x",this,parentObject());
 
-	// Call the destructor
-	// Note that children are still alive: the user can clean them up manually
-	callFunction(this,"destructor");
+	if(!m_bDestructorCalled)
+	{
+		// Destructor not called yet.. something is wrong.
+		if(!m_bAboutToDie)
+		{
+			// Ow... we are being deleted directly and not via die() or dieNow()
+			// This means that we need to call the kvs destructor here which
+			// is AFTER the kvs destructors of the derived classes.
+			// This means that a list object, for instance, will be already
+			// cleared in its kvs destructor which isn't that nice.
+
+			// Complain to the developers so they fix the code.
+			KVI_ASSERT_MSG(m_bAboutToDie,"You should never delete a KviKvsObject directly, call dieNow() instead");
+
+			// If we pass the assert in some kind of build go ahead nicely
+			m_bAboutToDie = true; // don't attempt to die twice
+		} else {
+			// This might be an "early" delete after a delayedDie() call.
+			// Quite critical.
+			// Don't complain...
+		}
+
+		// Well... need to call the destructor.
+		callDestructor();
+	} else {
+		// Destructor already called.
+		m_bAboutToDie = true; // don't attempt to die twice
+	}
 
 	// Kill any child not deleted by the user
 	while(m_pChildList->first())
-		delete m_pChildList->first();
+		m_pChildList->first()->dieNow();
 
 	// Ok, from this point we shouldn't be touched by any one via KVS
 	// so we can start really deleting stuff...
@@ -766,6 +795,17 @@ KviKvsObject::~KviKvsObject()
 		delete m_pFunctionHandlers;
 		
 	// Bye bye :)
+}
+
+void KviKvsObject::callDestructor()
+{
+	KVI_ASSERT(m_bAboutToDie); // this should be called by die(), dieNow() or ~KviKvsObject only, which set m_bAboutToDie to true.
+	KVI_ASSERT(!m_bDestructorCalled); // calling code must take care of this
+
+	m_bDestructorCalled = true;
+
+	// Note that children are still alive: the user can clean them up manually
+	callFunction(this,"destructor");
 }
 
 bool KviKvsObject::init(KviKvsRunTimeContext *,KviKvsVariantList *)
@@ -1517,16 +1557,33 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 
 void KviKvsObject::killAllChildrenWithClass(KviKvsObjectClass *cl)
 {
-	KviPointerList<KviKvsObject> l;
-	l.setAutoDelete(true);
-	for(KviKvsObject * o=m_pChildList->first();o;o=m_pChildList->next())
+	KviPointerList< QPointer<KviKvsObject> > lDying;
+	lDying.setAutoDelete(true);
+	
+	KviKvsObject * pObject;
+	
+	QPointer<KviKvsObject> guard(this);
+	
+	for(pObject = m_pChildList->first();pObject;pObject = m_pChildList->next())
 	{
-		if(o->getClass() == cl)
+		if(pObject->getClass() == cl)
 		{
-			l.append(o);
-		} else o->killAllChildrenWithClass(cl);
+			lDying.append(new QPointer<KviKvsObject>(pObject));
+		} else {
+			pObject->killAllChildrenWithClass(cl);
+			if(guard.isNull())
+				break; // argh.. circular delete
+		}
+	}
+	
+	for(QPointer<KviKvsObject> * pObject = lDying.first();pObject;pObject = lDying.next())
+	{
+		if(pObject->isNull())
+			continue; // already dead ?
+		(*pObject)->dieNow();
 	}
 }
+
 bool KviKvsObject::inheritsClass(const QString &szClass)
 {
 	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClass);
@@ -1582,24 +1639,41 @@ KviKvsObjectFunctionHandler * KviKvsObject::lookupFunctionHandler(const QString 
 
 bool KviKvsObject::die()
 {
+	if(m_bAboutToDie)
+		return false; // hum.. recursive death attempt :D
+
 	if(m_bInDelayedDeath)
-		return false;
+		return false; // we're alreadyi dying soon, dude, no need to repeat it over and over again...
+
 	m_bInDelayedDeath = true;
+
 	QTimer::singleShot(0,this,SLOT(delayedDie()));
 	return true;
 }
 
 bool KviKvsObject::dieNow()
 {
-	if(m_bInDelayedDeath)
-		return false;
-	m_bInDelayedDeath = true;
+	if(m_bAboutToDie)
+		return false; // hum.. recursive death attempt :D
+
+	m_bAboutToDie = true;
+
+	KVI_ASSERT(!m_bDestructorCalled);
+	callDestructor();
 	delete this;
+
 	return true;
 }
 
 void KviKvsObject::delayedDie()
 {
+	KVI_ASSERT(m_bInDelayedDeath); // must be true: never call it directly
+	KVI_ASSERT(!m_bAboutToDie); // if this is true something is wrong...
+
+	m_bAboutToDie = true;
+
+	KVI_ASSERT(!m_bDestructorCalled);
+	callDestructor();
 	delete this; // byez!
 }
 
@@ -1712,7 +1786,7 @@ void KviKvsObject::registerPrivateImplementation(const QString &szFunctionName,c
 		szContext += "[privateimpl]::";
 		szContext += szFunctionName;
 
-                m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectScriptFunctionHandler(szContext,szCode,QString("")));
+		m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectScriptFunctionHandler(szContext,szCode,QString("")));
 	}
 }
 

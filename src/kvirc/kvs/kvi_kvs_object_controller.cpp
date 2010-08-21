@@ -121,11 +121,15 @@ void KviKvsObjectController::clearUserClasses()
 
 void KviKvsObjectController::clearInstances()
 {
-	while(m_pTopLevelObjectList->first())delete m_pTopLevelObjectList->first();
+	while(m_pTopLevelObjectList->first())
+		m_pTopLevelObjectList->first()->dieNow();
+
 	delete m_pTopLevelObjectList; // empty list
 	delete m_pObjectDict; // empty dict
+
 	m_pTopLevelObjectList = new KviPointerList<KviKvsObject>;
 	m_pTopLevelObjectList->setAutoDelete(false);
+
 	m_pObjectDict = new KviPointerHashTable<void *,KviKvsObject>(101);
 	m_pObjectDict->setAutoDelete(false);
 }
