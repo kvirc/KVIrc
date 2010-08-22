@@ -286,11 +286,14 @@ namespace KviMircCntrl
 					if(i != begin)
 						ret += szData.mid(begin,i - begin);
 					i++;
+					/*
+					* These lines will strip out the first word following the icon escape character
 					while(i < l)
 					{
 						if(szData[i].unicode() == ' ')break;
 						else i++;
 					}
+					*/
 					begin = i;
 				break;
 				default:

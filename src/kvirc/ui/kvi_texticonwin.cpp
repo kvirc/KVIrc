@@ -52,15 +52,10 @@ KviTextIconWindow::KviTextIconWindow()
 	m_pTable->horizontalHeader()->hide();
 	m_pTable->verticalHeader()->hide();
 	m_pTable->setShowGrid(false);
-	m_pTable->setColumnCount(KVI_TEXTICON_COLUMNS);
 	m_pTable->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	int iColWidth=((width()-24)/KVI_TEXTICON_COLUMNS);
-	for(int i=0; i<KVI_TEXTICON_COLUMNS;i++)
-		m_pTable->setColumnWidth(i,iColWidth);
-
 
 	fill();
-	//connect(g_pTextIconManager,SIGNAL(changed()),this,SLOT(fill()));
+	connect(g_pTextIconManager,SIGNAL(changed()),this,SLOT(fill()));
 	connect(m_pTable,SIGNAL(cellClicked( int, int )),this,SLOT(cellSelected(int, int)));
 }
 
@@ -73,6 +68,12 @@ void KviTextIconWindow::fill()
 {
 	m_pTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	m_pTable->clear();
+	m_pTable->setRowCount(0);
+
+	m_pTable->setColumnCount(KVI_TEXTICON_COLUMNS);
+	int iColWidth=((width()-24)/KVI_TEXTICON_COLUMNS);
+	for(int i=0; i<KVI_TEXTICON_COLUMNS;i++)
+		m_pTable->setColumnWidth(i,iColWidth);
 
 	KviPointerHashTable<QString,KviTextIcon> * pDict = g_pTextIconManager->textIconDict();
 	KviPointerHashTableIterator<QString,KviTextIcon> it(*pDict);
@@ -125,6 +126,10 @@ void KviTextIconWindow::keyPressEvent(QKeyEvent * e)
 		{
 			cellSelected(m_pTable->currentRow(), m_pTable->currentColumn());
 		}
+		break;
+		case Qt::Key_Tab:
+			//avoid the text edit field to move to the icon cells using tab
+			break;
 		break;
 		case Qt::Key_Escape:
 			doHide();

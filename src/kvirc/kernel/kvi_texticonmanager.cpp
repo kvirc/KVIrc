@@ -279,7 +279,6 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 		}
 	}
 
-	checkDefaultAssociations();
 	emit changed();
 
 	return iUpd;

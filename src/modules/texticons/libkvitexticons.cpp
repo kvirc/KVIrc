@@ -129,7 +129,6 @@ static bool texticons_kvs_cmd_set(KviKvsModuleCommandCall * c)
 			pIcon->setFilename(szIcon);
 
 	}
-	g_pTextIconManager->checkDefaultAssociations();
 	return true;
 }
 
