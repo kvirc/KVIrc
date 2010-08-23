@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-14 03:34+0200\n"
-"PO-Revision-Date: 2010-08-12 20:51+0100\n"
+"PO-Revision-Date: 2010-08-23 23:15+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -1675,7 +1675,7 @@ msgstr "Não é possível matar a classe interna"
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:512
 #, c-format
 msgid "Can't load certificate from public key file %s"
-msgstr ""
+msgstr "Não é possível certificar do ficheiro de chave pública %s"
 
 #: src/modules/log/libkvilog.cpp:121
 msgid "Can't log to file %Q"
@@ -2037,7 +2037,7 @@ msgstr "Dispositivo de caracteres"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:681
 msgid "Check SVN revisions"
-msgstr ""
+msgstr "Verificar revisões SVN"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:679
 msgid "Check on startup"
@@ -2437,7 +2437,6 @@ msgid "Crypto++ threw the following exception: "
 msgstr "Crypto++ mostrou a seguinte excepção: "
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:481
-#, fuzzy
 msgid ""
 "Cryptographic engine based on the\n"
 "Advanced Encryption Standard (AES)\n"
@@ -2459,10 +2458,10 @@ msgstr ""
 "Mecanismo criptográfico baseado no algoritmo\n"
 "Padrão de Encriptação Avançado (AES)\n"
 "chamado Rijndael.\n"
-"O testo é primeiro encriptado com Rijndael\n"
+"O texto é primeiro encriptado com Rijndael\n"
 "e depois convertido para a notação %s.\n"
-"As chaves usadas têm de comprimento %d bit\n"
-"e serão preenchidas com zeros se indicar mais pequenas.\n"
+"As chaves usadas têm de comprimento %1 bit\n"
+"e serão preenchidas com zeros se fornecer chaves mais pequenas.\n"
 "Se apenas for indicada uma chave, este mecanismo\n"
 "irá usá-la tanto para encriptar e desencriptar.\n"
 "\n"
@@ -2474,7 +2473,6 @@ msgstr ""
 "encontrado em <http://www.cryptolounge.org/wiki/AES>\n"
 
 #: src/modules/rijndael/libkvirijndael.cpp:706
-#, fuzzy
 msgid ""
 "Cryptographic engine based on the\n"
 "Advanced Encryption Standard (AES)\n"
@@ -2491,11 +2489,11 @@ msgstr ""
 "Mecanismo criptográfico baseado no algoritmo\n"
 "Padrão de Encriptação Avançado (AES)\n"
 "chamado Rijndael.\n"
-"O testo é primeiro encriptado com rijndael\n"
+"O texto é primeiro encriptado com o rijndael\n"
 "e depois convertido para a notação %s.\n"
-"As chaves usadas têm de comprimento %d bit\n"
+"As chaves usadas têm de comprimento %2 bit\n"
 "e serão preenchidas com zeros se indicar mais pequenas.\n"
-"Se apenas for indicada uma chave, este mecanismo\n"
+"Se for indicada apenas uma chave, este mecanismo\n"
 "irá usá-la tanto para encriptar e desencriptar.\n"
 "Veja o módulo de documentação rijndael para\n"
 "mais informação acerca do algoritmo usado.\n"
@@ -4490,11 +4488,8 @@ msgid "No proxy hosts available, resuming direct connection"
 msgstr "Nenhum máquina proxy disponível, a resumir a conexão directa"
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:492
-#, fuzzy
 msgid "No public key certificate defined in KVIrc options."
-msgstr ""
-"Nenhum certificado especificado e nenhum certificado de chave pública "
-"definido nas opções do KVIrc."
+msgstr "Nenhum certificado de chave pública definido nas opções do KVIrc."
 
 #: src/kvilib/net/kvi_http.cpp:97
 msgid "No request"
@@ -7681,13 +7676,12 @@ msgid "You cannot export an empty list"
 msgstr "Não pode exportar uma lista vazia"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:833
-#, fuzzy
 msgid ""
 "You didn't check yet.\n"
 "Should I check it?"
 msgstr ""
 "Ainda não verificou.\n"
-"Será que devo tentar?"
+"Devo-o verificar?"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:591
 #: src/kvirc/sparser/kvi_sp_literal.cpp:601
