@@ -27,6 +27,8 @@
 #include "kvi_fileutils.h"
 #include "kvi_app.h"
 
+#include <QPointer>
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
 static KviKvsObject * objectClassCreateInstance(KviKvsObjectClass *pClass,KviKvsObject *pParent,const QString &szName)
@@ -49,7 +51,8 @@ KviKvsObjectController::KviKvsObjectController()
 KviKvsObjectController::~KviKvsObjectController()
 {
 	flushUserClasses();
-	while(m_pTopLevelObjectList->first())delete m_pTopLevelObjectList->first();
+	while(m_pTopLevelObjectList->first())
+		m_pTopLevelObjectList->first()->dieNow();
 	delete m_pTopLevelObjectList; // empty list
 	delete m_pObjectDict; // empty dict
 	m_pObjectDict = 0;
@@ -87,14 +90,29 @@ void KviKvsObjectController::init()
 
 void KviKvsObjectController::killAllObjectsWithClass(KviKvsObjectClass * pClass)
 {
-	if(!m_pObjectDict)return; // no more objects at all...
-	KviPointerList<KviKvsObject> l;
-	l.setAutoDelete(true);
+	if(!m_pObjectDict)
+		return; // no more objects at all...
 
-	for(KviKvsObject * o = m_pTopLevelObjectList->first();o;o = m_pTopLevelObjectList->next())
+	KviPointerList< QPointer<KviKvsObject> > lDying;
+	lDying.setAutoDelete(true);
+	
+	KviKvsObject * pObject;
+		
+	for(pObject = m_pTopLevelObjectList->first();pObject;pObject = m_pTopLevelObjectList->next())
 	{
-		if(o->getClass() == pClass)l.append(o);
-		else o->killAllChildrenWithClass(pClass);
+		if(pObject->getClass() == pClass)
+		{
+			lDying.append(new QPointer<KviKvsObject>(pObject));
+		} else {
+			pObject->killAllChildrenWithClass(pClass);
+		}
+	}
+	
+	for(QPointer<KviKvsObject> * pObject = lDying.first();pObject;pObject = lDying.next())
+	{
+		if(pObject->isNull())
+			continue; // already dead ?
+		(*pObject)->dieNow();
 	}
 }
 
@@ -232,3 +250,4 @@ void KviKvsObjectController::deleteClass(KviKvsObjectClass * pClass)
 	KviFileUtils::removeFile(szPath);
 	delete pClass;
 }
+
