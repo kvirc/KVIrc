@@ -159,9 +159,9 @@ const char * const itemflags_tbl[] = {
 		This event is triggered when the cell specified by row and column has been activated
 		!fn: <row,col>  $cellDoubleClickedEvent()
 		This event is triggered whenever a cell in the table is double clicked.
-		!fn: $paintCellEvent(<painter:hobject>,<row,uint>,<col:uint>)
+		!fn: $paintCellEvent(<painter:hobject>,<row,uint>,<col:uint>,<cell_width:uint>,<cell_height:uint>)
 		This event handler can be reimplemented to repaint cells.
-		The framework will pass the row/col coordinates and, as parameter, a [class]painter[/class]object.
+		The framework will pass the row/col coordinates, cell's width and height, and, as parameter, a [class]painter[/class]object.
 		You don't need to begin/end/delete the painter.
 		!fn: $sizeHintCellRequestEvent()
 		!fn; $resizeRowsToContents()
@@ -744,7 +744,9 @@ bool KviKvsObject_tablewidget::paint(QPainter * p, const QStyleOptionViewItem & 
 	int col=index.column();
 	int row=index.row();
 	kvs_hobject_t handle=pObject->handle();
-	KviKvsVariantList parameters(new KviKvsVariant(handle),new KviKvsVariant((kvs_int_t) row),new KviKvsVariant((kvs_int_t) col));
+	kvs_int_t cell_height=(kvs_int_t)option.rect.height();
+	kvs_int_t cell_width=(kvs_int_t)option.rect.width();
+	KviKvsVariantList parameters(new KviKvsVariant(handle),new KviKvsVariant((kvs_int_t) row),new KviKvsVariant((kvs_int_t) col),new KviKvsVariant(cell_width),new KviKvsVariant(cell_height));
 	bool ret=false;
 	KviKvsVariant *retv=new KviKvsVariant(ret);
 	callFunction(this,"paintCellEvent",retv,&parameters);
