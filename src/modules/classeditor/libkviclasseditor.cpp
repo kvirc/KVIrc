@@ -34,19 +34,18 @@ KviModule * g_pClassEditorModule = 0;
 
 
 /*
-        @doc: classeditor.open
+	@doc: classeditor.open
 	@type:
 		command
 	@title:
-                classeditor.open
+		classeditor.open
 	@short:
                 Shows the class editor
 	@syntax:
-                classeditor.open
+		classeditor.open
 	@description:
-                Opens the script class editor dialog.
+		Opens the script class editor dialog.
 */
-
 static bool classeditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	if(!g_pClassEditorWindow)
@@ -68,7 +67,7 @@ static bool classeditor_module_init(KviModule * m)
 	return true;
 }
 
-static bool classeditor_module_can_unload(KviModule * )
+static bool classeditor_module_can_unload(KviModule *)
 {
 	return (g_pClassEditorWindow == 0);
 }
