@@ -433,28 +433,33 @@ void KviClassEditor::oneTimeSetup()
 
 void KviClassEditor::createFullClass(KviKvsObjectClass * pClass, KviClassEditorTreeWidgetItem * pClassItem, const QString & szClassName)
 {
-	KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler> it(* pClass->getHandlers());
-	KviClassEditorTreeWidgetItem * pFunctionItem = 0;
+	KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
+	QStringList szFunctionsList;
+	while(it.current())
+	{
+		szFunctionsList.append(it.currentKey());
+		++it;
+	}
+	szFunctionsList.sort();
+	KviClassEditorTreeWidgetItem *pFunctionItem;
 	m_pClasses->insert(szClassName,pClassItem);
 	KviKvsObjectClass * pParentClass = pClass->parentClass();
 	pClassItem->setInheritsClass(pParentClass->name());
-	while(it.current())
+	for(int i=0;i<szFunctionsList.count();i++)
 	{
 		QString szCode;
-		KviKvsObjectFunctionHandler * pHandler = pClass->lookupFunctionHandler(it.currentKey());
-
-		if(pClass->isScriptHandler(it.currentKey()) && !pHandler->isClone())
+		KviKvsObjectFunctionHandler *pHandler=pClass->lookupFunctionHandler(szFunctionsList.at(i));
+		if (pClass->isScriptHandler(szFunctionsList.at(i)) && !pHandler->isClone())
 		{
-			pFunctionItem = findFunction(it.currentKey(), pClassItem);
-			if(!pFunctionItem)
-				pFunctionItem = new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,it.currentKey());
+			pFunctionItem=findFunction(szFunctionsList.at(i), pClassItem);
+			if(!pFunctionItem) pFunctionItem = new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,szFunctionsList.at(i));
 			pClass->getFunctionCode(szCode,*pHandler);
 			pFunctionItem->setBuffer(szCode);
 			pFunctionItem->setReminder(pClass->reminder(pHandler));
 			if(pHandler->flags() & KviKvsObjectFunctionHandler::Internal)
 				pFunctionItem->setInternalFunction(true);
 		}
-		++it;
+		//++it;
 	}
 }
 
@@ -808,8 +813,6 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * pTree, QTreeWidgetItem
 	szLabelText += "</b>";
 	m_pClassNameLabel->setText(szLabelText);
 
-	//m_pinheritsClassNameLabel->setText(szLabelText);
-
 	szLabelText = __tr2qs_ctx("Member Function","editor");
 	if(m_pLastEditedItem->isMethod())
 	{
@@ -860,7 +863,8 @@ void KviClassEditor::currentItemChanged(QTreeWidgetItem * pTree, QTreeWidgetItem
 		{
 			szBuffer += "Member Function: <b>$" + szFunctionsList.at(i) + "</b><br>";
 			if(!lFunctions.find(szFunctionsList.at(i))->reminder().isEmpty())
-				szBuffer += "Parameters reminder: " + lFunctions.find(szFunctionsList.at(i))->reminder() + "<br><br>";
+				szBuffer+="Parameters reminder: "+lFunctions.find(szFunctionsList.at(i))->reminder()+"<br>";
+			szBuffer+="<br>";
 		}
 		m_pEditor->setUnHighlightedText(szBuffer);
 		m_pEditor->setReadOnly(true);
