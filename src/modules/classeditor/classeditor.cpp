@@ -171,7 +171,6 @@ KviClassEditor::KviClassEditor(QWidget * pParent)
 {
 	m_pClasses = new KviPointerHashTable<QString,KviClassEditorTreeWidgetItem>(100,false);
 	m_pClasses->setAutoDelete(false);
-	// m_bSaving = false;
 	m_pLastEditedItem = 0;
 	m_pLastClickedItem = 0;
 	m_szDir = QDir::homePath();
@@ -192,8 +191,8 @@ KviClassEditor::KviClassEditor(QWidget * pParent)
 	KviTalHBox * pHBox = new KviTalHBox(pVBox);
 	pHBox->setSpacing(0);
 	pHBox->setMargin(0);
-	pHBox->setStretchFactor(m_pClassNameLabel,2);
 	m_pClassNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),pHBox);
+	pHBox->setStretchFactor(m_pClassNameLabel,2);
 	m_pClassNameLabel->setWordWrap(true);
 	m_pClassNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),pHBox);
 	m_pClassNameRenameButton->setToolTip(__tr2qs_ctx("Edit the class or namespace name","editor"));
@@ -207,8 +206,8 @@ KviClassEditor::KviClassEditor(QWidget * pParent)
 	pHBox = new KviTalHBox(pVBox);
 	pHBox->setSpacing(0);
 	pHBox->setMargin(0);
-	pHBox->setStretchFactor(m_pFunctionNameLabel,2);
 	m_pFunctionNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),pHBox);
+	pHBox->setStretchFactor(m_pFunctionNameLabel,2);
 	m_pFunctionNameRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),pHBox);
 	m_pFunctionNameRenameButton->setToolTip(__tr2qs_ctx("Edit the function member name","editor"));
 	m_pFunctionNameRenameButton->setEnabled(false);
@@ -216,7 +215,7 @@ KviClassEditor::KviClassEditor(QWidget * pParent)
 
 	m_pReminderLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),pVBox);
 	m_pReminderLabel->hide();
-	m_pReminderLabel->setWordWrap(1);
+	m_pReminderLabel->setWordWrap(true);
 
 	m_pEditor = KviScriptEditor::createInstance(pVBox);
 	m_pEditor->setFocus();
