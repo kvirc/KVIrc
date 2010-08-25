@@ -28,7 +28,7 @@
 
 #include "kvi_settings.h"
 
-#if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC) && !defined(COMPILE_ON_MINGW))
+#if (defined(COMPILE_DBUS_SUPPORT) && !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC) && !defined(COMPILE_ON_MINGW))
 	#include <QtDBus/QtDBus>
 
 	class KviMPRISInterface : public KviMediaPlayerInterface
