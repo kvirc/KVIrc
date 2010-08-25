@@ -983,6 +983,9 @@ check_emoticon_char:
 			case 'P':
 			case 'S':
 			case 'O':
+			case 'p':
+			case 's':
+			case 'o':
 			case '*':
 			case '|':
 			case 176: // 'Â°' -> alt 176 : teardrop
