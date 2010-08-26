@@ -123,31 +123,37 @@ void KviKvsObjectClass::registerStandardFalseReturnFunctionHandler(const QString
 
 KviKvsObject * KviKvsObjectClass::allocateInstance(KviKvsObject * pParent,const QString &szName,KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
 {
-	if(!m_allocProc)return 0;
-	KviKvsObject * pObject = m_allocProc(this,pParent,szName);
-	if(!pObject)return 0;
+	if(!m_allocProc)
+		return 0;
 
-	KviKvsVariant * v=pParams->first(); // FIXME: what the hell is this ?
+	KviKvsObject * pObject = m_allocProc(this,pParent,szName);
+	if(!pObject)
+		return 0;
+
 	if(!pObject->init(pContext,pParams))
 	{
 		// internal init failure : abort
-		delete pObject;
+		pObject->dieNow();
 		return 0;
 	}
 
-	//KviKvsVariant ret;
+	// copy params
 	KviKvsVariantList copy;
 	copy.setAutoDelete(false);
+
+	KviKvsVariant * v = pParams->first();
+
 	while(v)
 	{
 		copy.append(v);
 		v = pParams->next();
 	}
 	KviKvsVariant ret;
+
 	if(!pObject->callFunction(pObject,"constructor",QString(),pContext,&ret,&copy))
 	{
 		// ops...constructor failed (script error!)
-		delete pObject;
+		pObject->dieNow();
 		return 0;
 	}
 	

@@ -178,8 +178,8 @@ bool KviKvsObject_treewidgetitem::init(KviKvsRunTimeContext * pContext,KviKvsVar
 {
 	if (!parentObject())
 	{
-                        pContext->error(__tr2qs_ctx("The listviewitem cannot be parentless","objects"));
-			return false;
+		pContext->error(__tr2qs_ctx("The listviewitem cannot be parentless","objects"));
+		return false;
 	}
 	if(parentObject()->inheritsClass("listviewitem"))
 	{
@@ -188,7 +188,7 @@ bool KviKvsObject_treewidgetitem::init(KviKvsRunTimeContext * pContext,KviKvsVar
 		if(parentObject()->inheritsClass("listview"))
 			m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this,((QTreeWidget *)parentScriptWidget()));
 		else {
-                        pContext->error(__tr2qs_ctx("The parent of the listwidgetitem must be either another listwidgetitem or a listwidget","objects"));
+			pContext->error(__tr2qs_ctx("The parent of the listwidgetitem must be either another listwidgetitem or a listwidget","objects"));
 			return false;
 		}
 	}
