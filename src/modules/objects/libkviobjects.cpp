@@ -57,6 +57,7 @@
 #include "class_tbrowser.h"
 #include "class_toolbar.h"
 #include "class_toolbutton.h"
+#include "class_trayicon.h"
 #include "class_treewidget.h"
 #include "class_treewidgetitem.h"
 #include "class_vbox.h"
@@ -96,6 +97,7 @@ static bool objects_module_cleanup(KviModule *)
 
         KviKvsObject_memorybuffer::unregisterSelf();
 	KviKvsObject_process::unregisterSelf();
+        KviKvsObject_trayicon::unregisterSelf();
 	KviKvsObject_ftp::unregisterSelf();
 	KviKvsObject_http::unregisterSelf();
 	KviKvsObject_socket::unregisterSelf();
@@ -795,7 +797,7 @@ static bool objects_module_init(KviModule * m)
 	KviKvsObject_socket::registerSelf();
 	KviKvsObject_http::registerSelf();
 	KviKvsObject_ftp::registerSelf();
-
+        KviKvsObject_trayicon::registerSelf();
 	KviKvsObject_process::registerSelf();
 	KviKvsObject_memorybuffer::registerSelf();
 

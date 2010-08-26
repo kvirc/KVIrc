@@ -28,6 +28,7 @@ SET(kviobjects_MOC_HDRS
 	class_spinbox.h
 	class_tabwidget.h
 	class_tablewidget.h
+	class_trayicon.h
 	class_tbrowser.h
 	class_toolbutton.h
 	class_treewidget.h
@@ -72,6 +73,7 @@ SET(kviobjects_SRCS
 	class_sql.cpp
 	class_tabwidget.cpp
 	class_tablewidget.cpp
+	class_trayicon.cpp
 	class_tbrowser.cpp
 	class_toolbar.cpp
 	class_toolbutton.cpp
