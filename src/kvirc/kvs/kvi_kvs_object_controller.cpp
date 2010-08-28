@@ -242,12 +242,17 @@ KviKvsObjectClass * KviKvsObjectController::lookupClass(const QString &szClass,b
 
 void KviKvsObjectController::deleteClass(KviKvsObjectClass * pClass)
 {
+	KVI_ASSERT(pClass);
+
+	pClass->clearDirtyFlag(); // don't flush it to disk
+
 	QString szPath;
 	QString szFileName = pClass->name().toLower();
 	szFileName += ".kvs";
 	szFileName.replace("::","--");
 	g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes,szFileName);
 	KviFileUtils::removeFile(szPath);
+
 	delete pClass;
 }
 
