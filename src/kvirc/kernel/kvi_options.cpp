@@ -211,7 +211,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("ShowUserChannelIcons",true,KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ShowUserChannelState",false,KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("EnableIgnoreOnPrivMsg",true,KviOption_sectFlagConnection),
-	BOOL_OPTION("VerboseIgnore",true,KviOption_sectFlagConnection),
+	BOOL_OPTION("VerboseIgnore",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("EnableIgnoreOnNotice",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("NotifyFailedDccHandshakes",true,KviOption_sectFlagDcc),
 	BOOL_OPTION("AutoTileWindows",false,KviOption_sectFlagMdi),
