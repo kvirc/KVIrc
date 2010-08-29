@@ -188,7 +188,7 @@ bool KviKvsObject_treewidgetitem::init(KviKvsRunTimeContext * pContext,KviKvsVar
 		if(parentObject()->inheritsClass("listview"))
 			m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this,((QTreeWidget *)parentScriptWidget()));
 		else {
-			pContext->error(__tr2qs_ctx("The parent of the listwidgetitem must be either another listwidgetitem or a listwidget","objects"));
+                        pContext->error(__tr2qs_ctx("The parent of the listviewitem must be either another listviewitem or a listview","objects"));
 			return false;
 		}
 	}

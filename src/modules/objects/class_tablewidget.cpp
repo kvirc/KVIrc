@@ -288,7 +288,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setText)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
 		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,uCol)
-		KVSO_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szText)
+                KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 	KVSO_PARAMETERS_END(c)
 	if(uRow >= (uint)((QTableWidget *)widget())->rowCount() || uRow >= (uint)((QTableWidget *)widget())->rowCount())
 	c->warning(__tr2qs_ctx("Item out of the tablewidget size","objects"));
