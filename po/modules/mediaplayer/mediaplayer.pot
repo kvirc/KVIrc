@@ -8,13 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-13 16:45+0200\n"
+"POT-Creation-Date: 2010-08-29 12:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/mediaplayer/mp_interface.cpp:43
+msgid "Function not implemented"
+msgstr ""
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:320
 msgid ""
@@ -52,50 +56,6 @@ msgid ""
 "Download it from http://www.getsongbird.com.\n"
 "To use it you have to install also the MPRIS addon available at http://"
 "addons.songbirdnest.com/addon/1626.\n"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_winampinterface.cpp:184
-msgid "Can't find a running winamp window"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_winampinterface.cpp:194
-msgid ""
-"An interface to the popupar Winamp media player.\n"
-"You can download it from http://www.winamp.com.\n"
-"To use all the features of this interface you must copy the gen_kvirc.dll "
-"plugin found in the KVIrc distribution directory to the Winamp plugins "
-"folder and restart winamp."
-msgstr ""
-
-#: src/modules/mediaplayer/mp_winampinterface.cpp:316
-#: src/modules/mediaplayer/mp_winampinterface.cpp:350
-msgid ""
-"The winamp plugin has not been installed properly. Check /help mediaplayer."
-"nowplaying"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_interface.cpp:43
-msgid "Function not implemented"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
-msgid ""
-"An interface to the popular UNIX xmms media player.\n"
-"Download it from http://legacy.xmms2.org\n"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
-msgid ""
-"An interface to the popular UNIX audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:136
-msgid "Can't load the player library (%Q)"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:145
-msgid "Can't find symbol %s in %Q"
 msgstr ""
 
 #: src/modules/mediaplayer/mp_amipinterface.cpp:108
@@ -152,4 +112,44 @@ msgstr ""
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1553
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1596
 msgid "Last interface error: "
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://legacy.xmms2.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
+msgid ""
+"An interface to the popular UNIX audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:136
+msgid "Can't load the player library (%Q)"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:145
+msgid "Can't find symbol %s in %Q"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_winampinterface.cpp:184
+msgid "Can't find a running winamp window"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_winampinterface.cpp:194
+msgid ""
+"An interface to the popupar Winamp media player.\n"
+"You can download it from http://www.winamp.com.\n"
+"To use all the features of this interface you must copy the gen_kvirc.dll "
+"plugin found in the KVIrc distribution directory to the Winamp plugins "
+"folder and restart winamp."
+msgstr ""
+
+#: src/modules/mediaplayer/mp_winampinterface.cpp:316
+#: src/modules/mediaplayer/mp_winampinterface.cpp:350
+msgid ""
+"The winamp plugin has not been installed properly. Check /help mediaplayer."
+"nowplaying"
 msgstr ""

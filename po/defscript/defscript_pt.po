@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-13 16:45+0200\n"
-"PO-Revision-Date: 2010-08-12 20:41+0100\n"
+"POT-Creation-Date: 2010-08-29 12:46+0100\n"
+"PO-Revision-Date: 2010-08-29 13:07+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -169,15 +169,15 @@ msgstr "Banir"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: data/defscript/aliases.kvs:431
+#: data/defscript/aliases.kvs:433
 msgid "Channel Administrator"
 msgstr "Administrador do Canal"
 
-#: data/defscript/aliases.kvs:433
+#: data/defscript/aliases.kvs:435
 msgid "Channel Operator"
 msgstr "Operador do Canal"
 
-#: data/defscript/aliases.kvs:429
+#: data/defscript/aliases.kvs:431
 msgid "Channel Owner"
 msgstr "Dono do Canal"
 
@@ -254,11 +254,11 @@ msgstr "Activar Ignorar"
 
 #: data/defscript/popups.kvs:590
 msgid "Enter a kick reason"
-msgstr "Indique a razão da expulsão"
+msgstr "Indique a razão para expulsar"
 
 #: data/defscript/popups.kvs:616
 msgid "Enter a kick/ban reason"
-msgstr "Indique a razão da expulsão/banimento"
+msgstr "Indique a razão para expulsar/banir"
 
 #: data/defscript/popups.kvs:912
 msgid "Enter the message text"
@@ -268,7 +268,7 @@ msgstr "Indique a mensagem de texto"
 msgid "Flush Log File"
 msgstr "Apagar Ficheiro de Registo"
 
-#: data/defscript/aliases.kvs:435
+#: data/defscript/aliases.kvs:437
 msgid "Half Operator"
 msgstr "Semi-Operador"
 
@@ -343,7 +343,7 @@ msgstr "&Expulsar"
 
 #: data/defscript/popups.kvs:590
 msgid "Kick Reason"
-msgstr "Razão de Expulsão"
+msgstr "Razão para Expulsar"
 
 #: data/defscript/popups.kvs:609
 #: data/defscript/popups.kvs:614
@@ -352,7 +352,7 @@ msgstr "Expulsar/Banir"
 
 #: data/defscript/popups.kvs:616
 msgid "Kick/Ban Reason"
-msgstr "Razão de Expulsão/Banimento"
+msgstr "Razão para Expulsar/Banir"
 
 #: data/defscript/popups.kvs:1210
 msgid "Log To Default File"
@@ -387,11 +387,11 @@ msgstr "Destino em falta, nenhuma acção tomada"
 msgid "Multiple Users"
 msgstr "Múltiplos Utilizadores"
 
-#: data/defscript/aliases.kvs:489
+#: data/defscript/aliases.kvs:491
 msgid "No such user:"
 msgstr "Nenhum utilizador:"
 
-#: data/defscript/aliases.kvs:441
+#: data/defscript/aliases.kvs:443
 msgid "Normal User"
 msgstr "Utilizador Normal"
 
@@ -518,7 +518,7 @@ msgid "The default script has been successfully installed."
 msgstr "O 'script' predefinido foi instalado com sucesso."
 
 #: data/defscript/aliases.kvs:245
-#: data/defscript/aliases.kvs:424
+#: data/defscript/aliases.kvs:426
 msgid "This is not a channel window"
 msgstr "Esta não é uma janela de canal"
 
@@ -546,7 +546,7 @@ msgstr "Remover Ignore"
 msgid "Unregister"
 msgstr "Remover Registo"
 
-#: data/defscript/aliases.kvs:406
+#: data/defscript/aliases.kvs:408
 msgid "Unsupported type:"
 msgstr "Tipo não suportado:"
 
@@ -560,18 +560,18 @@ msgstr "Uso"
 #: data/defscript/aliases.kvs:209
 #: data/defscript/aliases.kvs:224
 #: data/defscript/aliases.kvs:238
-#: data/defscript/aliases.kvs:318
-#: data/defscript/aliases.kvs:360
-#: data/defscript/aliases.kvs:418
-#: data/defscript/aliases.kvs:478
+#: data/defscript/aliases.kvs:320
+#: data/defscript/aliases.kvs:362
+#: data/defscript/aliases.kvs:420
+#: data/defscript/aliases.kvs:480
 msgid "Usage:"
 msgstr "Uso:"
 
-#: data/defscript/aliases.kvs:439
+#: data/defscript/aliases.kvs:441
 msgid "User Operator"
 msgstr "Utilizador Operador"
 
-#: data/defscript/aliases.kvs:437
+#: data/defscript/aliases.kvs:439
 msgid "Voice"
 msgstr "Voz"
 
@@ -588,11 +588,11 @@ msgstr "Operações de janelas"
 msgid "With..."
 msgstr "Com..."
 
-#: data/defscript/aliases.kvs:472
+#: data/defscript/aliases.kvs:474
 msgid "You must be connected to a server"
 msgstr "Tem que estar conectado a um servidor"
 
-#: data/defscript/aliases.kvs:466
+#: data/defscript/aliases.kvs:468
 msgid "You must use DNS in an IRC context"
 msgstr "Tem que usar o DNS num contexto IRC"
 
@@ -694,3 +694,4 @@ msgstr "y (Linhas-y)"
 #: data/defscript/popups.kvs:836
 msgid "z (Debug Stats?)"
 msgstr "z (Estatísticas de Depuração?)"
+
