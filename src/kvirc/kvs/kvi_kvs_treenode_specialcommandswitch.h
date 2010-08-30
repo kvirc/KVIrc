@@ -47,7 +47,7 @@ public:
 	void setParameter(KviKvsTreeNodeData * pParameter);
 	void setInstruction(KviKvsTreeNodeInstruction * pInstruction);
 	void setTerminatingBreak(bool b){ m_bHasTerminatingBreak = b; };
-	virtual bool execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter) = 0;
+	virtual bool execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter, bool * bPassThrough) = 0;
 };
 
 
@@ -59,7 +59,7 @@ public:
 public:
 	virtual void contextDescription(QString &szBuffer);
 	virtual void dump(const char * prefix);
-	virtual bool execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter);
+	virtual bool execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter, bool * bPassThrough);
 };
 
 
@@ -71,7 +71,7 @@ public:
 public:
 	virtual void contextDescription(QString &szBuffer);
 	virtual void dump(const char * prefix);
-	virtual bool execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter);
+	virtual bool execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter, bool * bPassThrough);
 };
 
 class KVIRC_API KviKvsTreeNodeSpecialCommandSwitchLabelRegexp : public KviKvsTreeNodeSpecialCommandSwitchLabel
@@ -82,7 +82,7 @@ public:
 public:
 	virtual void contextDescription(QString &szBuffer);
 	virtual void dump(const char * prefix);
-	virtual bool execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter);
+	virtual bool execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter, bool * bPassThrough);
 };
 
 class KVIRC_API KviKvsTreeNodeSpecialCommandSwitchLabelDefault : public KviKvsTreeNodeSpecialCommandSwitchLabel
@@ -93,7 +93,7 @@ public:
 public:
 	virtual void dump(const char * prefix);
 	virtual void contextDescription(QString &szBuffer);
-	virtual bool execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter);
+	virtual bool execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter, bool * bPassThrough);
 };
 
 

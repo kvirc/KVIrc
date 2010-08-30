@@ -1286,7 +1286,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 		@title:
 			switch
 		@syntax:
-			switch(<expression>)
+			switch [-p] (<expression>)
 			{
 				case(<value>)[:]<command>
 				[break]
@@ -1305,6 +1305,9 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 				default[:]<command>
 				[break]
 			}
+		@switches:
+			!sw: -p | --passthrough
+			Use c-style 'break' flow control
 		@short:
 			Another flow control command
 		@description:
@@ -1322,6 +1325,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 			If <command> contains a [cmd]break[/cmd] statement inside or if [cmd]break[/cmd]
 			is specified just after the <command> then the execution of the switch is terminated
 			otherwise the nex label is evaluated.[br]
+			If the -p (--passthrough) option is enabled, than the switch command will execute all the istructions blocks
+			until a [cmd]break[/cmd] statement is found.
 			[b]match(<value>)[:]<command>[/b][br]
 			The <value> is expected to be a wildcard expression (containing '*' and '?' wildcards)
 			that is matched against <expression>.[br]
@@ -1364,6 +1369,21 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 				break;
 				default:
 					echo \%tmp was either 1 or something different from 2 (%tmp)
+				break;
+			}
+			[/example]
+			[comment]# An example of the -p switch[/comment]
+			[example]
+			%tmp = 1
+			switch -p (%tmp)
+			{
+				case(1):
+					echo \%tmp was 1!
+				case(2)
+					echo \%tmp was 1 or 2!
+					break;
+				default:
+					echo \%tmp was not 1 or 2 (%tmp)
 				break;
 			}
 			[/example]

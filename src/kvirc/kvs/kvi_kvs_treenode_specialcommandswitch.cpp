@@ -82,42 +82,47 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelCase::dump(const char * prefix)
 	if(m_pInstruction)m_pInstruction->dump(tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeSpecialCommandSwitchLabelCase::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter)
+bool KviKvsTreeNodeSpecialCommandSwitchLabelCase::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter, bool * bPassThrough)
 {
-	KviKvsVariant v;
-	if(!m_pParameter->evaluateReadOnly(c,&v))return false;
-
-	KviKvsNumber num;
-	if(pRealParameter->asNumber(num))
+	if(!(*bPassThrough))
 	{
-		KviKvsNumber num2;
-		if(!v.asNumber(num2))return true; // a number an a non number can't match
-		if(num.isInteger())
+		KviKvsVariant v;
+		if(!m_pParameter->evaluateReadOnly(c,&v))return false;
+
+		KviKvsNumber num;
+		if(pRealParameter->asNumber(num))
 		{
-			if(num2.isInteger())
+			KviKvsNumber num2;
+			if(!v.asNumber(num2))return true; // a number and a non number can't match
+			if(num.isInteger())
 			{
-				if(num.integer() != num2.integer())return true;
+				if(num2.isInteger())
+				{
+					if(num.integer() != num2.integer())return true;
+				} else {
+					if(((double)(num.integer())) != num2.real())return true;
+				}
 			} else {
-				if(((double)(num.integer())) != num2.real())return true;
+				if(num2.isInteger())
+				{
+					if(num.real() != ((double)(num2.integer())))return true;
+				} else {
+					if(num.real() != num2.real())return true;
+				}
 			}
 		} else {
-			if(num2.isInteger())
-			{
-				if(num.real() != ((double)(num2.integer())))return true;
-			} else {
-				if(num.real() != num2.real())return true;
-			}
+			// string comparision, case insensitive
+			QString reg;
+			v.asString(reg);
+
+			QString val;
+			pRealParameter->asString(val);
+
+			if(reg.toLower() != val.toLower())return true;
 		}
-	} else {
-		// string comparision, case insensitive
-		QString reg;
-		v.asString(reg);
-
-		QString val;
-		pRealParameter->asString(val);
-
-		if(reg.toLower() != val.toLower())return true;
 	}
+
+	*bPassThrough = true;
 
 	if(m_pInstruction)
 	{
@@ -155,20 +160,25 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelMatch::dump(const char * prefix)
 	if(m_pInstruction)m_pInstruction->dump(tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeSpecialCommandSwitchLabelMatch::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter)
+bool KviKvsTreeNodeSpecialCommandSwitchLabelMatch::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter, bool * bPassThrough)
 {
-	KviKvsVariant v;
-	if(!m_pParameter->evaluateReadOnly(c,&v))return false;
+	if(!(*bPassThrough))
+	{
+		KviKvsVariant v;
+		if(!m_pParameter->evaluateReadOnly(c,&v))return false;
 
-	QString reg;
-	v.asString(reg);
+		QString reg;
+		v.asString(reg);
 
-	//QRegExp rx(reg,false,true);
-	QRegExp rx(reg,Qt::CaseInsensitive,QRegExp::Wildcard);
-	QString val;
-	pRealParameter->asString(val);
+		//QRegExp rx(reg,false,true);
+		QRegExp rx(reg,Qt::CaseInsensitive,QRegExp::Wildcard);
+		QString val;
+		pRealParameter->asString(val);
 
-	if(!rx.exactMatch(val))return true; // no match
+		if(!rx.exactMatch(val))return true; // no match
+	}
+
+	*bPassThrough = true;
 
 	if(m_pInstruction)
 	{
@@ -206,20 +216,25 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::dump(const char * prefix)
 	if(m_pInstruction)m_pInstruction->dump(tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter)
+bool KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter, bool * bPassThrough)
 {
-	KviKvsVariant v;
-	if(!m_pParameter->evaluateReadOnly(c,&v))return false;
+	if(!(*bPassThrough))
+	{
+		KviKvsVariant v;
+		if(!m_pParameter->evaluateReadOnly(c,&v))return false;
 
-	QString reg;
-	v.asString(reg);
+		QString reg;
+		v.asString(reg);
 
-//	QRegExp rx(reg,false,false);
-	QRegExp rx(reg,Qt::CaseInsensitive,QRegExp::RegExp);
-	QString val;
-	pRealParameter->asString(val);
+	//	QRegExp rx(reg,false,false);
+		QRegExp rx(reg,Qt::CaseInsensitive,QRegExp::RegExp);
+		QString val;
+		pRealParameter->asString(val);
 
-	if(!rx.exactMatch(val))return true; // no match
+		if(!rx.exactMatch(val))return true; // no match
+	}
+
+	*bPassThrough = true;
 
 	if(m_pInstruction)
 	{
@@ -256,8 +271,10 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelDefault::dump(const char * prefix)
 	if(m_pInstruction)m_pInstruction->dump(tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeSpecialCommandSwitchLabelDefault::execute(KviKvsRunTimeContext * c,KviKvsVariant *)
+bool KviKvsTreeNodeSpecialCommandSwitchLabelDefault::execute(KviKvsRunTimeContext * c,KviKvsVariant *, bool * bPassThrough)
 {
+	*bPassThrough = true;
+
 	if(m_pInstruction)
 	{
 		if(!m_pInstruction->execute(c))return false; // might be a break too
@@ -312,9 +329,17 @@ bool KviKvsTreeNodeSpecialCommandSwitch::execute(KviKvsRunTimeContext * c)
 	KviKvsVariant v;
 	if(!m_pExpression->evaluateReadOnly(c,&v))return false;
 
+	KviKvsSwitchList swl;
+	if(m_pSwitches)
+	{
+		if(!(m_pSwitches->evaluate(c,&swl)))return false;
+	}
+
+	bool bUsePassThrough = swl.find('p',"--passthrough");
+	bool bPassThrough = false;
 	for(KviKvsTreeNodeSpecialCommandSwitchLabel * l = m_pLabels->first();l;l = m_pLabels->next())
 	{
-		if(!l->execute(c,&v))
+		if(!l->execute(c,&v, &bPassThrough))
 		{
 			if(c->error())return false;
 			// break ?
@@ -325,6 +350,8 @@ bool KviKvsTreeNodeSpecialCommandSwitch::execute(KviKvsRunTimeContext * c)
 			}
 			return false;
 		}
+		if(!bUsePassThrough)
+			bPassThrough = false;
 	}
 	return true;
 }
