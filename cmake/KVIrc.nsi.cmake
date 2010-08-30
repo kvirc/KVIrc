@@ -120,7 +120,7 @@ Section !$(KVIrc) KVIrc_IDX
 
 	; Write the uninstall keys for Windows
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "DisplayName" "KVIrc"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "UninstallString" '"$INSTDIR\uninstall.exe" _?=$INSTDIR'
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "URLInfoAbout" "${URL_ABOUT}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "HelpLink" "${URL_SUPPORT}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "URLUpdateInfo" "${URL_UPDATE}"
@@ -128,7 +128,8 @@ Section !$(KVIrc) KVIrc_IDX
 	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "NoModify" 1
 	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "NoRepair" 1
 
-	WriteUninstaller "uninstall.exe"
+
+	WriteUninstaller "$INSTDIR\uninstall.exe"
 
 	ExecWait "$INSTDIR\win32registrar.exe"
 
@@ -218,6 +219,8 @@ FunctionEnd
 ; Uninstaller
 
 Section !un.$(UnGeneralFiles)
+    Delete "$INSTDIR\uninstall.exe"
+
     SetShellVarContext all
 
     ; Remove registry keys
@@ -248,6 +251,8 @@ Section !un.$(UnGeneralFiles)
     RMDir /r "$INSTDIR\themes"
     Delete "$INSTDIR\*.dll"
     Delete "$INSTDIR\*.exe"
+    Delete "$INSTDIR\*.ini"
+    RMDir "$INSTDIR"
 
     ReadRegStr $R0 HKCU Software\Winamp ""
         IfFileExists "$R0\Plugins\gen_kvirc.dll" 0 +2
