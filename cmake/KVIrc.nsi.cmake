@@ -252,7 +252,7 @@ Section !un.$(UnGeneralFiles)
     Delete "$INSTDIR\*.dll"
     Delete "$INSTDIR\*.exe"
     Delete "$INSTDIR\*.ini"
-    RMDir /r "$INSTDIR"
+    RMDir "$INSTDIR"
 
     ReadRegStr $R0 HKCU Software\Winamp ""
         IfFileExists "$R0\Plugins\gen_kvirc.dll" 0 +2
