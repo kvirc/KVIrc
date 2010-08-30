@@ -56,22 +56,28 @@ namespace KviKvsCoreSimpleCommands
 			!sw: -r=<window_id> | --rebind=<window_id>
 			Standard command rebinding switch
 			!sw: -x | --allow-exec
-			Allow the execution of commands by interpreting the leading slash in th <text>
+			Allow the execution of commands by interpreting the leading slash in the <text>
 		@short:
 			Type text in a window
 		@description:
 			This command is more or less equivalent to typing text in the input
-			entry of the current window. If the -r switch is used
+			bar of the current window. If the -r switch is used
 			then the command is rebound to the window specified by <window_id>.
 			The main difference is that the variables and identifiers in <text>
 			are always parsed (when typing this happen only if the text is a command).[br]
-			With -x you can also use this command to execute "variable" commands too:
+			The switch -x will make say evaluate and execute arbitary commands, too:
 			if <text> begins with a slash then it will be treated as a command
-			to be executed (after parsing the identifiers etc.).[br]
+			to be evaluated and executed (after parsing the identifiers etc.).[br]
+			If this happens, the executed command will not be send to the active channel.[br]
+			[example]
+				/say -x /[cmd]echo[/cmd] foo
+			[/example][br]
+			will just print "foo".[br]
 			Please note that using /say -x with a <text> that isn't a constant
 			in the script but comes from some unidentified external source (e.g. the network)
-			is a potential security flaw: don't do it.
-			When the -x switch is not used, the text is never interpreted as command.
+			is a potential security flaw as it enables anyone to execute arbitary commands:
+			don't ever do it.[br]
+			When the -x switch is not used, the text is never interpreted as a command.
 			-q causes the command to run quietly.[br]
 			Please note that /say will also trigger the [event:ontextinput]OnTextInput[/event] event.
 			[b]Handle with care.[/b]
@@ -115,11 +121,14 @@ namespace KviKvsCoreSimpleCommands
 		@switches:
 			!sw: -b=<local address:string> | --bind-address=<local address:string>
 			Bind the outgoing connection to <local address>. The <local address> must be
-			the IP address of a local interface suitable for contacting the remote <server>:
+			either the IP address of a local interface or a local interface name itself
+			(e.g. eth0 under Linux, en0 under Mac OS etc.) suitable for contacting the
+			remote <server>:
 			this means that if you're going to use the -i switch, the <local address>
-			must be an IPV6 address.
-			On most systems it is also possible to use a local interface name as <local address>;
-			in this way the interface address can be resolved at runtime by the KVIrc network engine.
+			[b]must[/b] be an IPv6 address.
+			If using a local interface name as <local address> (working on most, but not all systems),
+			the KVIrc network engine will automatically detect the interface address (i.e. the default
+			address of that interface).
 
 			!sw: -c=<command sequence:string> | --command=<command sequence:string>
 			The <command sequence> will be executed just after the login operations
@@ -131,22 +140,22 @@ namespace KviKvsCoreSimpleCommands
 			For plain IRC it is not needed.
 
 			!sw: -i | --ipv6
-			Makes the connection by using the IPV6 protocol
-			(if supported by the executable)
+			Connects to the <server> via the IPv6 protocol
+			(if IPv6 support has been compiled in).
 
 			!sw: -n | --new-context
-			Forces the connection to be attempted in a new IRC context instead of the current one.
+			Forces the connection to be attempted in a new IRC context (server window) instead of the current one.
 
 			!sw: -p=<password:string> | --password=<password:string>
 			Uses <password> to login to the server (the password will be stored in the server
 			entry too).
 
 			!sw: -q=<nick:string> | --nickname=<nick:string>
-			Uses <nick> to login to the server (the nicknames will be stored in the server
+			Uses <nick> to login to the server (the nickname will be stored in the server
 			entry too).
 
 			!sw: -s | --ssl
-			Activates the SSL support for this connection
+			Activates the SSL support for this connection (if OpenSSL support has been compiled in).
 
 			!sw: -u | --unused-context
 			Forces the connection to be attempted in the first IRC context that has
@@ -154,7 +163,7 @@ namespace KviKvsCoreSimpleCommands
 			then a new one is created.
 
 			!sw: -l | --last
-			When <server> and <port> are empty use the last
+			When <server> and <port> are empty use the last ones used in any IRC context.
 		@description:
 			Attempts a connection to the specified <server>
 			on the specified <port>. If no <port> is specified

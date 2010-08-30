@@ -2124,7 +2124,11 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 						case 'E':
 						case 'F':
 						case 'f':
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+							_snprintf(numberBuffer,sizeof(numberBuffer),fmtbuffer,argRValue);
+#else
 							::sprintf(numberBuffer,fmtbuffer,argRValue);
+#endif
 							//copy now....
 							argValue = kvi_strLen(numberBuffer);
 							if((allocsize - reallen) < argValue)INCREMENT_MEM_BY(argValue)

@@ -288,11 +288,18 @@ void KviCustomToolBar::dragLeaveEvent(QDragLeaveEvent *)
 		QAction* widgetAction = actionForWidget(m_pDraggedChild);
 		if(widgetAction)
 			widgetAction->setVisible(false);
-		//ifdef workaround for #803
-#ifndef COMPILE_ON_MAC
-		m_pDraggedChild->deleteLater(); // don't delete it now: it's going to crash with recent Qt versions
+			
+	/*
+	 * This is quite broken at least in qt4.6:
+	 * Windows: we have to delete the item, or it will stay on the toolbar creating duplicates (ticket #915)
+	 * Osx: we can't delete the item (now or later), or we will create a crash (ticket #803)
+	 * Linux: we can't delete the item now, but deleteLater() works;
+	 */
+#if defined(COMPILE_ON_MINGW) || defined (COMPILE_ON_WINDOWS)
+		delete m_pDraggedChild;
+#elif !defined(COMPILE_ON_MAC)
+		m_pDraggedChild->deleteLater();
 #endif
-		//delete m_pDraggedChild;
 		m_pDraggedChild = 0;
 	}
 }

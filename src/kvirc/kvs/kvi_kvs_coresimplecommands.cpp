@@ -210,13 +210,13 @@ namespace KviKvsCoreSimpleCommands
 		@body:
 			Some less used KVIrc commands are implemented as simple wrappers
 			around the standard [doc]rfc2821[/doc] commands.[br]
-			For example, the /OPER command will be used only by server operators
+			For example, the /[cmd:oper]OPER[/cmd] command will be used only by server operators
 			and probably only once per connection.[br]
 			These commands should only be needed by experienced IRC users.
 			Due to this fact, these commands have no special kind of parsing performed by KVIrc;
 			the parameters are extracted, the identifiers are parsed normally
 			and are sent to the server without any semantic check.[br]
-			This means that while OPER requires two parameters, KVIrc will not
+			This means that while [cmd:oper]OPER[/cmd] requires two parameters, KVIrc will not
 			complain if you send a single parameter only or use ten parameters.[br]
 			The exact parameter syntax/semantic checking is left to you.[br]
 			This also means that if some of these commands accept parameters with spaces,

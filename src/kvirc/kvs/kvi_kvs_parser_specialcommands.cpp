@@ -1335,6 +1335,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 			that terminated the execution with break).[br]
 		@examples:
 			[comment]# Try to change the 1 below to 2 or 3 to see the results[/comment]
+			[example]
 			%tmp = 1
 			switch(%tmp)
 			{
@@ -1348,7 +1349,9 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 					echo \%tmp was not 1 nor 2: it was %tmp!
 				break;
 			}
+			[/example]
 			[comment]# A complexier example: change the 1 in 2 or 3[/comment]
+			[example]
 			%tmp = 1
 			switch(%tmp)
 			{
@@ -1361,7 +1364,9 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 					echo \%tmp was either 1 or something different from 2 (%tmp)
 				break;
 			}
+			[/example]
 			[comment]# An example with strings[/comment]
+			[example]
 			%tmp = "This is a test"
 			%tmp2 = "This is not a test"
 			switch(%tmp)
@@ -1384,6 +1389,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 					echo This is executed anyway (unless some break was called)
 				break;
 			}
+			[/example]
 	*/
 
 	if(KVSP_curCharUnicode != '(')
