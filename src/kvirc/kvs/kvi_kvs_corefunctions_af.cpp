@@ -912,200 +912,208 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("unixtime",KVS_PT_INT,KVS_PF_OPTIONAL,iTime)
 		KVSCF_PARAMETERS_END
 
-        // strftime() is not sufficient, as shown by #769, the following is
-        // derived from KDateTime (not a copy, but the structure is similar,
-        // which isn't surprising), but limited/extended to the required set of
-        // functionality.
-        // The reason for this is platform independency.
-        QDateTime qDt;
-        QString szFmtTime;
-        int iLength, iVal, iTemp, iLocalTzH, iLocalTzM, iUtcH, iUtcM, iTzOffset;
-        int iTzOffsetH, iTzOffsetM;
-        QChar cDiv;
+		// strftime() is not sufficient, as shown by #769, the following is
+		// derived from KDateTime (not a copy, but the structure is similar,
+		// which isn't surprising), but limited/extended to the required set of
+		// functionality.
+		// The reason for this is platform independency.
+		QDateTime qDt;
+		QString szFmtTime;
+		int iLength, iVal, iTemp, iLocalTzH, iLocalTzM, iUtcH, iUtcM, iTzOffset;
+		int iTzOffsetH, iTzOffsetM;
+		QChar cDiv;
 
-        if(KVSCF_pParams->count() > 1)
-                qDt.setTime_t(iTime);
-        else
-                qDt = QDateTime::currentDateTime();
+		if(KVSCF_pParams->count() > 1)
+			qDt.setTime_t(iTime);
+		else
+			qDt = QDateTime::currentDateTime();
 
-        if(!qDt.isValid()) {
+		if(!qDt.isValid())
+		{
 			KVSCF_pContext->warning(__tr2qs_ctx("Couldn't construct QDateTime object.","kvs"));
-            goto leavenow;
-        }
+			goto leavenow;
+		}
 
-        for(int i = 0; i < szFormat.size(); i++) {
-                ushort ch = szFormat.at(i).unicode();
-                iLength = 2;
-                iVal = 0x8000000;
-                cDiv = ' ';
+		for(int i = 0; i < szFormat.size(); i++)
+		{
+			ushort ch = szFormat.at(i).unicode();
+			iLength = 2;
+			iVal = 0x8000000;
+			cDiv = ' ';
 
-                switch(ch) {
-                        // FIXME: G, g, U, x, X, Z not implemented yet.
-                        //
-                        // E and O probably never will be implemented.
-                        case 'a':   // the abbreviated localized day name (e.g.
-                                    // 'Mon' to 'Sun'). Uses
-                                    // QDate::shortDayName().
-                            szFmtTime += qDt.toString("ddd");
-                            break;
-                        case 'A':   // the long localized day name (e.g.
-                                    // 'Monday' to 'Qt::Sunday'). Uses
-                                    // QDate::longDayName().
-                            szFmtTime += qDt.toString("dddd");
-                            break;
-                        case 'b':   // the abbreviated localized month name
-                        case 'h':   // (e.g. 'Jan' to 'Dec'). Uses
-                                    // QDate::shortMonthName().
-                            szFmtTime += qDt.toString("MMM");
-                            break;
-                        case 'B':   // the long localized month name (e.g.
-                                    // 'January' to 'December'). Uses
-                                    // QDate::longMonthName().
-                            szFmtTime += qDt.toString("MMMM");
-                            break;
-                        case 'c':   // If the format is Qt::TextDate, the string
-                                    // is formatted in the default way.
-                            szFmtTime += qDt.toString(Qt::TextDate);
-                            break;
-                        case 'C':   // 2-digit "century" (yyyy/100)
-                            iVal = qDt.date().year() / 100;
-                            break;
-                        case 'd':   // the day as number with a leading zero
-                                    // (01 to 31)
-                            cDiv = '0';
-                            // break omitted on purpose, NEXT MUST BE 'e'
-                        case 'e':   // 2-character wide day representation,
-                                    // space padded
-                            iVal = qDt.date().day();
-                            break;
-                        case 'D':   // American formatting
-                            szFmtTime += qDt.toString("MM/dd/yy");
-                            break;
-                        case 'F':   // yyyy-MM-dd (ISO 8601)
-                            szFmtTime += qDt.date().toString(Qt::ISODate);
-                            break;
-                        case 'H':   // the hour with a leading zero (00 to 23)
-                            cDiv = '0';
-                            // no break; on purpose (NEXT MUST BE case 'k')
-                        case 'k':   // same as H, only that single-character values
-                                    // are prefixed with a space
-                            iVal = qDt.time().hour();
-                            break;
-                        case 'I':   // hour, 01 - 12
-                            cDiv = '0';
-                            // fall through to 'l'
-                        case 'l':   // hour, 1 - 12
-                            iVal = (qDt.time().hour() + 11) % 12 + 1;
-                            break;
-                        case 'j':   // day of the year (001 to 365/366)
-                            iVal = qDt.date().dayOfYear();
-                            iLength = 3;
-                            cDiv = '0';
-                            break;
-                        case 'M':   // minutes (00 to 59)
-                            szFmtTime += qDt.toString("mm");
-                            break;
-                        case 'm':   // month (01-12)
-                            szFmtTime += qDt.toString("MM");
-                            break;
-                        case 'n':   // newline
-                            szFmtTime += "\n";
-                            break;
-                        case 'p':   // AM/PM
-                                    // FIXME: l10n for the am/pm? Maybe we can
-                                    //        draw it from a different source?
-                                    //        Qt doesn't offer l10n strings
-                                    //        for this.
-                            if(qDt.time().hour() < 12)
-                                    szFmtTime += "AM";
-                            else
-                                    szFmtTime += "PM";
-                            break;
-                        case 'P':   // am/pm, the same FIXME as for p applies.
-                            if(qDt.time().hour() < 12)
-                                    szFmtTime += "am";
-                            else
-                                    szFmtTime += "pm";
-                            break;
-                        case 'r':   // "I:M:S p"
-                            szFmtTime += qDt.toString("hh:mm:ss AP");
-                            break;
-                        case 'R':   // "H:M"
-                            szFmtTime += qDt.toString("hh:mm");
-                            break;
-                        case 's':   // seconds since epoch (currently 1970-01-01 00:00:00 UTC)
-                            szFmtTime += QString::number(qDt.toTime_t());
-                            break;
-                        case 'S':   // seconds (00-60)
-                            cDiv = '0';
-                            iVal = qDt.time().second();
-                            break;
-                        case 't':   // Tab
-                            szFmtTime += "\t";
-                            break;
-                        case 'T':   // H:M:S
-                            szFmtTime += qDt.toString("hh:mm:ss");
-                            break;
-                        case 'u':   // day of the week (1-7)
-                            iVal = qDt.date().dayOfWeek();
-                            iLength = 1;
-                            break;
-                        case 'V':   // week of the year (ISO 8601)
-                        case 'W':   // W is not entirely correct, but that's a
-                                    // lot easier this way.
-                            iVal = qDt.date().weekNumber();
-                            cDiv = '0';
-                            break;
-                        case 'w':   // day of week (0-6, 0==Sunday)
-                            iTemp = qDt.date().dayOfWeek();
-                            if(iTemp == Qt::Sunday)
-                                    iTemp = 0;
-                            szFmtTime += QString::number(iTemp);
-                            break;
-                        case 'y':   // year (2-character)
-                            szFmtTime += qDt.toString("yy");
-                            break;
-                        case 'Y':   // year (4-character)
-                            szFmtTime += qDt.toString("yyyy");
-                            break;
-                        case 'z':   // numerical timezone offset
-                            iLocalTzH = qDt.time().hour();
-                            iLocalTzM = qDt.time().minute();
-                            iUtcH     = qDt.toUTC().time().hour();
-                            iUtcM     = qDt.toUTC().time().minute();
-                            iTzOffsetH = iLocalTzH - iUtcH;
-                            iTzOffsetM = iLocalTzM - iUtcM;
-                            iTzOffset = iTzOffsetH * 100 + iTzOffsetM;
+			switch(ch)
+			{
+				// FIXME: G, g, U, x, X, Z not implemented yet.
+				//
+				// E and O probably never will be implemented.
+				case 'a':   // the abbreviated localized day name (e.g.
+					// 'Mon' to 'Sun'). Uses
+					// QDate::shortDayName().
+					szFmtTime += qDt.toString("ddd");
+					break;
+				case 'A':   // the long localized day name (e.g.
+					// 'Monday' to 'Qt::Sunday'). Uses
+					// QDate::longDayName().
+					szFmtTime += qDt.toString("dddd");
+					break;
+				case 'b':   // the abbreviated localized month name
+				case 'h':   // (e.g. 'Jan' to 'Dec'). Uses
+					// QDate::shortMonthName().
+					szFmtTime += qDt.toString("MMM");
+					break;
+				case 'B':   // the long localized month name (e.g.
+					// 'January' to 'December'). Uses
+					// QDate::longMonthName().
+					szFmtTime += qDt.toString("MMMM");
+					break;
+				case 'c':   // If the format is Qt::TextDate, the string
+					// is formatted in the default way.
+					szFmtTime += qDt.toString(Qt::TextDate);
+					break;
+				case 'C':   // 2-digit "century" (yyyy/100)
+					iVal = qDt.date().year() / 100;
+					break;
+				case 'd':   // the day as number with a leading zero
+					// (01 to 31)
+					cDiv = '0';
+					// break omitted on purpose, NEXT MUST BE 'e'
+				case 'e':   // 2-character wide day representation,
+					// space padded
+					iVal = qDt.date().day();
+				break;
+				case 'D':   // American formatting
+					szFmtTime += qDt.toString("MM/dd/yy");
+					break;
+				case 'F':   // yyyy-MM-dd (ISO 8601)
+					szFmtTime += qDt.date().toString(Qt::ISODate);
+					break;
+				case 'H':   // the hour with a leading zero (00 to 23)
+					cDiv = '0';
+					// no break; on purpose (NEXT MUST BE case 'k')
+				case 'k':   // same as H, only that single-character values
+					// are prefixed with a space
+					iVal = qDt.time().hour();
+					break;
+				case 'I':   // hour, 01 - 12
+					cDiv = '0';
+					// fall through to 'l'
+				case 'l':   // hour, 1 - 12
+					iVal = (qDt.time().hour() + 11) % 12 + 1;
+					break;
+				case 'j':   // day of the year (001 to 365/366)
+					iVal = qDt.date().dayOfYear();
+					iLength = 3;
+					cDiv = '0';
+					break;
+				case 'M':   // minutes (00 to 59)
+					szFmtTime += qDt.toString("mm");
+					break;
+				case 'm':   // month (01-12)
+					szFmtTime += qDt.toString("MM");
+					break;
+				case 'n':   // newline
+					szFmtTime += "\n";
+					break;
+				case 'p':   // AM/PM
+					// FIXME: l10n for the am/pm? Maybe we can
+					//        draw it from a different source?
+					//        Qt doesn't offer l10n strings
+					//        for this.
+					if(qDt.time().hour() < 12)
+						szFmtTime += "AM";
+					else
+						szFmtTime += "PM";
+					break;
+				case 'P':   // am/pm, the same FIXME as for p applies.
+					if(qDt.time().hour() < 12)
+						szFmtTime += "am";
+					else
+						szFmtTime += "pm";
+					break;
+				case 'r':   // "I:M:S p"
+					szFmtTime += qDt.toString("hh:mm:ss AP");
+					break;
+				case 'R':   // "H:M"
+					szFmtTime += qDt.toString("hh:mm");
+					break;
+				case 's':   // seconds since epoch (currently 1970-01-01 00:00:00 UTC)
+					szFmtTime += QString::number(qDt.toTime_t());
+					break;
+				case 'S':   // seconds (00-60)
+					cDiv = '0';
+					iVal = qDt.time().second();
+					break;
+				case 't':   // Tab
+					szFmtTime += "\t";
+					break;
+				case 'T':   // H:M:S
+					szFmtTime += qDt.toString("hh:mm:ss");
+					break;
+				case 'u':   // day of the week (1-7)
+					iVal = qDt.date().dayOfWeek();
+					iLength = 1;
+					break;
+				case 'V':   // week of the year (ISO 8601)
+				case 'W':   // W is not entirely correct, but that's a
+					// lot easier this way.
+					iVal = qDt.date().weekNumber();
+					cDiv = '0';
+					break;
+				case 'w':   // day of week (0-6, 0==Sunday)
+					iTemp = qDt.date().dayOfWeek();
+					if(iTemp == Qt::Sunday)
+						iTemp = 0;
+					szFmtTime += QString::number(iTemp);
+					break;
+				case 'y':   // year (2-character)
+					szFmtTime += qDt.toString("yy");
+					break;
+				case 'Y':   // year (4-character)
+					szFmtTime += qDt.toString("yyyy");
+					break;
+				case 'z':   // numerical timezone offset
+					iLocalTzH = qDt.time().hour();
+					iLocalTzM = qDt.time().minute();
+					iUtcH     = qDt.toUTC().time().hour();
+					iUtcM     = qDt.toUTC().time().minute();
+					iTzOffsetH = iLocalTzH - iUtcH;
+					iTzOffsetM = iLocalTzM - iUtcM;
+					iTzOffset = iTzOffsetH * 100 + iTzOffsetM;
 
-                            if(iTzOffset > 0)
-                                    szFmtTime += "+";
+					if(iTzOffset < 1200)
+						iTzOffset+= 2400;
 
-                            szFmtTime += QString("%1").arg(iTzOffset, 4, 10, QChar('0'));
-                            break;
-                        // FIXME
-                        // The abbrev. time zone name is a little bit trickier,
-                        // as I don't want to reimplement KTimeZone, but can't
-                        // use KTimeZone. I'll need to do some research on this.
-                        //case 'Z':   // TZ abbrev.
-                        //    szFmtTime += 
-                        default:
-                            szFmtTime += szFormat.at(i);
-                }
+					if(iTzOffset > 0)
+						szFmtTime += "+";
 
-                if(iVal != 0x8000000) {
-                        if(iVal < 0) {
-                                iVal = -iVal;
-                                szFmtTime += "-";
-                        }
-                        szFmtTime += QString("%1").arg(iVal, iLength, 10, cDiv);
-                }
-        }
-	    
-        KVSCF_pRetBuffer->setString(szFmtTime);
+					szFmtTime += QString("%1").arg(iTzOffset, 4, 10, QChar('0'));
+					break;
+				// FIXME
+				// The abbrev. time zone name is a little bit trickier,
+				// as I don't want to reimplement KTimeZone, but can't
+				// use KTimeZone. I'll need to do some research on this.
+				//case 'Z':   // TZ abbrev.
+				//    szFmtTime += 
+				default:
+					szFmtTime += szFormat.at(i);
+			}
 
-        leavenow:
-		return true;
-	}
+			if(iVal != 0x8000000)
+			{
+				if(iVal < 0)
+				{
+					iVal = -iVal;
+					szFmtTime += "-";
+				}
+				szFmtTime += QString("%1").arg(iVal, iLength, 10, cDiv);
+			}
+		}
+		
+		KVSCF_pRetBuffer->setString(szFmtTime);
+
+		leavenow:
+			return true;
+		}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
 
