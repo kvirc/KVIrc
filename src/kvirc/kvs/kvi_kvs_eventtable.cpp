@@ -261,14 +261,16 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			(if that option was specified).[br]
 			$5 contains the original color/icon set of the message that depends on
 			the type of the message itself.[br]
-			Since the CTCP ACTION messages generally have different format of output
-			then for your convenience $6 contains 1 if the message was caused by a
-			CTCP ACTION and 0 otherwise.[br]
+			Since the CTCP ACTION messages generally have different format of output, 
+			for your convenience $6 contains 1 if the message was caused by a
+			CTCP ACTION or 0 otherwise.[br]
 			If you call [cmd]halt[/cmd] in this event the message output will be completely disabled
 			(thus, KVIrc assumes that YOU have provided the necessary output and feedback to the user).[br]
 			A common error here is to call halt and re-echo the unmodified output; [b]this
-			can cause another OnHighlight event to be triggered and create an infinite loop![/b].
+			can cause another OnHighlight event to be triggered and create an infinite loop![/b]
 			[cmd]echoprivmsg[/cmd] [b]-n[/b] is the command you probably want.
+			To discriminate if this event has been triggered within a channel or in a private message,
+			check the values of [fnc]$channel[/fnc] or [fnc]$query[/fnc].
 	*/
 	EVENT("OnHighlight", \
 		"$0 = source nick\n" \
