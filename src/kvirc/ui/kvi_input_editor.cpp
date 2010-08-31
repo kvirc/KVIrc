@@ -1305,6 +1305,7 @@ void KviInputEditor::installShortcuts()
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_PREV_PAGE),this,SLOT(previousPage()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_NEXT_PAGE),this,SLOT(nextPage()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_SEARCH),this,SLOT(search()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE),this,SLOT(scrollToLastReadLine()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_PLAIN),this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_SEND_PLAIN_2),this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_HOME),this,SLOT(homeInternal()),0,Qt::WidgetShortcut);
@@ -2237,6 +2238,14 @@ void KviInputEditor::search()
 {
 	if(m_pKviWindow)
 		if(m_pKviWindow->view()) m_pKviWindow->view()->toggleToolWidget();
+}
+
+void KviInputEditor::scrollToLastReadLine()
+{
+	if(m_pKviWindow)
+		if(m_pKviWindow->view())
+			if(m_pKviWindow->view()->hasLineMark())
+				m_pKviWindow->view()->scrollToMarker();
 }
 
 void KviInputEditor::sendPlain()

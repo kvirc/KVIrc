@@ -731,6 +731,12 @@ private slots:
 	void search();
 	
 	/**
+	* \brief Scrolls the ircview to the last read line
+	* \return void
+	*/
+	void scrollToLastReadLine();
+
+	/**
 	* \brief Sends plain text, ignoring initial token starting with / (a command)
 	* \return void
 	*/

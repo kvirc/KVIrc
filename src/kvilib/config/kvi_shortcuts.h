@@ -125,6 +125,7 @@
 #define KVI_SHORTCUTS_INPUT_BOLD "Ctrl+B"
 #define KVI_SHORTCUTS_INPUT_COPY "Ctrl+C"
 #define KVI_SHORTCUTS_WIN_SEARCH "Ctrl+F"
+#define KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE "Ctrl+L"
 #define KVI_SHORTCUTS_INPUT_ICON "Ctrl+I"
 #define KVI_SHORTCUTS_JOIN "Ctrl+J"
 #define KVI_SHORTCUTS_INPUT_COLOR "Ctrl+K"
@@ -221,6 +222,7 @@
 		[b]Ctrl+B:[/b] Insert Bold control character[br]
 		[b]Ctrl+C:[/b] Copy to clipboard[br]
 		[b]Ctrl+F:[/b] Open "Find Text" dialog[br]
+		[b]Ctrl+L:[/b] Scroll to the "last read" line marker[br]
 		[b]Ctrl+I:[/b] Open "Insert icon" dialog[br]
 		[b]Ctrl+J:[/b] Open "Join Channels" dialog[br]
 		[b]Ctrl+K:[/b] Open "Insert Color" dialog[br]
