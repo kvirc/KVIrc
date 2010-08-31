@@ -475,6 +475,7 @@ end_of_the_param:
 		[flags] may be a combination of the letters 'g','i' and 'w'.[br]
 		'g' causes the search to be global and not stop after the first occurence of <search pattern>.[br]
 		'i' causes the search to be case insensitive.[br]
+		'm' causes the search to be case minimal (non-greedy).[br]
 		'w' causes the search pattern to be interpreted as a simple wildcard regular expression.
 	@examples:
 		[example]

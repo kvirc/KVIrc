@@ -531,10 +531,18 @@ static bool config_kvs_cmd_close(KviKvsModuleCommandCall * c)
 
 	if(cfg)
 	{
-		if(cfg->dirty() && cfg->readOnly())
+		if(cfg->readOnly())
 		{
-			if(!c->hasSwitch('q',"quiet"))
-				c->warning(__tr2qs("The config file '%Q' has been changed but is opened as read-only: changes will be lost"),&cfg->fileName());
+			if(cfg->dirty())
+			{
+				if(!c->hasSwitch('q',"quiet"))
+					c->warning(__tr2qs("The config file '%Q' has been changed but is opened as read-only: changes will be lost"),&cfg->fileName());
+			}
+		} else {
+			// we force a save here
+			if(!cfg->sync())
+				if(!c->hasSwitch('q',"quiet"))
+					c->warning(__tr2qs("An error has occured while trying to save the config file with id '%Q'"),&szId);
 		}
 		g_pConfigDict->remove(szId);
 	} else {
@@ -581,7 +589,8 @@ static bool config_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 		if(cfg->readOnly())
 			c->warning(__tr2qs("The config file with id '%Q' is read only"),&szId);
 		else
-			cfg->sync();
+			if(!cfg->sync())
+				c->warning(__tr2qs("An error has occured while trying to save the config file with id '%Q'"),&szId);
 	} else {
 		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
 	}
