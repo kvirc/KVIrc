@@ -33,7 +33,7 @@ KVILIB_API const char * getColorBytes(const char *data_ptr,unsigned char *byte_1
 	// and fills the color values in the two bytes
 	//
 
-	//First we can have a digit or a coma
+	//First we can have a digit or a comma
 	if(((*data_ptr >= '0') && (*data_ptr <='9')))
 	{
 		//Something interesting ok.
@@ -44,7 +44,7 @@ KVILIB_API const char * getColorBytes(const char *data_ptr,unsigned char *byte_1
 			//Yes we can understand it
 			if(*data_ptr==',')
 			{
-				//A coma , need to check for background
+				//A comma, need to check for background
 				data_ptr++;
 			} else {
 				//A number
@@ -52,7 +52,7 @@ KVILIB_API const char * getColorBytes(const char *data_ptr,unsigned char *byte_1
 				data_ptr++;
 				if(*data_ptr==',')
 				{
-					//A coma , need to check for background
+					//A comma, need to check for background
 					data_ptr++;
 				} else {
 					//Senseless return
@@ -74,7 +74,7 @@ KVILIB_API const char * getColorBytes(const char *data_ptr,unsigned char *byte_1
 
 	if((*data_ptr >= '0') && (*data_ptr <='9'))
 	{
-		//Background , a color code
+		//Background, a color code
 		(*byte_2)=(*data_ptr)-'0';
 		data_ptr++;
 		if((*data_ptr >= '0') && (*data_ptr <='9'))
@@ -97,7 +97,7 @@ KVILIB_API const kvi_wchar_t * getColorBytesW(const kvi_wchar_t *data_ptr,unsign
 	// and fills the color values in the two bytes
 	//
 
-	//First we can have a digit or a coma
+	//First we can have a digit or a comma
 	if(((*data_ptr >= '0') && (*data_ptr <='9')))
 	{
 		//Something interesting ok.
@@ -108,7 +108,7 @@ KVILIB_API const kvi_wchar_t * getColorBytesW(const kvi_wchar_t *data_ptr,unsign
 			//Yes we can understand it
 			if(*data_ptr==',')
 			{
-				//A coma , need to check for background
+				//A comma, need to check for background
 				data_ptr++;
 			} else {
 				//A number
@@ -117,7 +117,7 @@ KVILIB_API const kvi_wchar_t * getColorBytesW(const kvi_wchar_t *data_ptr,unsign
 				data_ptr++;
 				if(*data_ptr==',')
 				{
-					//A coma , need to check for background
+					//A comma, need to check for background
 					data_ptr++;
 				} else {
 					//Senseless return
@@ -139,7 +139,7 @@ KVILIB_API const kvi_wchar_t * getColorBytesW(const kvi_wchar_t *data_ptr,unsign
 
 	if((*data_ptr >= '0') && (*data_ptr <='9'))
 	{
-		//Background , a color code
+		//Background, a color code
 		(*byte_2)=(*data_ptr)-'0';
 		data_ptr++;
 		if((*data_ptr >= '0') && (*data_ptr <='9'))
@@ -171,7 +171,7 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 
 	unsigned short c = szData[(int)charIdx].unicode();
 
-	//First we can have a digit or a coma
+	//First we can have a digit or a comma
 	if(((c < '0') || (c > '9')))
 	{
 		// senseless : only a CTRL+K code
@@ -233,7 +233,7 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 			return charIdx;
 	}
 
-	//Background , a color code
+	//Background, a color code
 	(*byte_2)=c-'0';
 	charIdx++;
 	if(charIdx >= (unsigned int) szData.length())return charIdx;

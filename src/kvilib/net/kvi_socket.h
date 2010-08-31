@@ -99,7 +99,7 @@
 // kvi_socket_create
 // kvi_socket_open
 //
-//   Open a socket of the specified protocol family , type and protocol
+//   Open a socket of the specified protocol family, type and protocol
 //   You should always use the KVI_SOCKET_* constants as parameters
 //   Returns KVI_INVALID_SOCKET if the socket creation has failed.
 //   The returned socket is in blocking mode!

@@ -620,7 +620,7 @@ void KviIconManager::iconWidgetClosed()
 		In this last case KVIrc will look for the file in a predefined set
 		of directories: First in the local "pics" directory (usually
 		in ~/kvirc-version/pics/), then in the local "incoming" directory,
-		then in the global "pics" directory , then in the user home (~)
+		then in the global "pics" directory, then in the user home (~)
 		and in the current directory.[br]
 */
 

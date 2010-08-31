@@ -612,7 +612,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 		system.setenv <variable:string> [<value:string>]
 	@description:
 		Sets the enviroinement <variable> to the <value> string.[br]
-		If <value> is not given , the <variable> is unset.[br]
+		If <value> is not given, the <variable> is unset.[br]
 	@seealso:
 		[fnc]$system.getenv[/fnc]
 */

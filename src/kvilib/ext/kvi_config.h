@@ -48,7 +48,7 @@ typedef KviPointerHashTableIterator<QString,KviConfigGroup> KviConfigIterator;
 class KVILIB_API KviConfig : public KviHeapObject
 {
 public:
-	enum FileMode { Read = 1 , Write = 2 , ReadWrite = 3 };
+	enum FileMode { Read = 1, Write = 2, ReadWrite = 3 };
 public:
 	KviConfig(const QString &filename,FileMode f/* = ReadWrite*/,bool bLocal8Bit = false);
 	KviConfig(const char *filename,FileMode f/* = ReadWrite*/,bool bLocal8Bit = false);
@@ -74,7 +74,7 @@ public:
 	// If the group is not existing it will be effectively
 	// created only at the first attempt to read from it or write to it.
 	// With this flag set to true the KviConfig class will
-	// write down also the empty groups , and calls to setGroup()
+	// write down also the empty groups, and calls to setGroup()
 	// will create the groups if not existing yet (and set the config data
 	// as modified).
 	//
@@ -125,7 +125,7 @@ public:
 	void writeEntry(const QString & szKey,const QRect &rct);
 	QStringList readStringListEntry(const QString & szKey,const QStringList &list = QStringList());
 	void writeEntry(const QString & szKey,const QStringList &list);
-	QList<int> readIntListEntry(const QString & ,const QList<int> &list);
+	QList<int> readIntListEntry(const QString &,const QList<int> &list);
 	void writeEntry(const QString & szKey,const QList<int> &list);
 	QString readQStringEntry(const QString & szKey,const QString &szDefault = QString())
 		{ return readEntry(szKey,szDefault); };

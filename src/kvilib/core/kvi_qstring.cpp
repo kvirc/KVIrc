@@ -1030,7 +1030,7 @@ namespace KviQString
 				pSavePos1 = ++pM1;
 				if(!pSavePos1->unicode())
 				{
-					//last was a wildcard , matches everything ahead...
+					//last was a wildcard, matches everything ahead...
 					return true;
 				}
 				//next return state for the second string
@@ -1050,7 +1050,7 @@ namespace KviQString
 				pM2++;
 				if((!(pM1->unicode())) && pM2->unicode() && pSavePos1)
 				{
-					//pM1 finished , but pM2 not yet and we have a savePosition for pM1 (there was a wildcard)...
+					//pM1 finished, but pM2 not yet and we have a savePosition for pM1 (there was a wildcard)...
 					//retry matching the string following the * from the savePos2 (one char ahead last time)
 					//back to char after wildcard
 					pM1 = pSavePos1;
@@ -1078,14 +1078,14 @@ namespace KviQString
 					//...and again
 					continue;
 				}
-				// pM1 != pM2 , pM1 != * , pM2 != *
+				// pM1 != pM2, pM1 != *, pM2 != *
 				if((pM1->unicode() == '?') || (pM2->unicode() == '?'))
 				{
 					pM1++;
 					pM2++;
 					if((!(pM1->unicode())) && pM2->unicode() && pSavePos1)
 					{
-						//pM1 finished , but pM2 not yet and we have a savePosition for pM1 (there was a wildcard)...
+						//pM1 finished, but pM2 not yet and we have a savePosition for pM1 (there was a wildcard)...
 						//retry matching the string following the * from the pSavePos2 (one char ahead last time)
 						//back to char after wildcard
 						pM1 = pSavePos1;
@@ -1111,7 +1111,7 @@ namespace KviQString
 				}
 			}
 		}
-		//pM1 surely finished , so for the match , pM2 must be finished too
+		//pM1 surely finished, so for the match, pM2 must be finished too
 		return (!(pM2->unicode()));
 	}
 

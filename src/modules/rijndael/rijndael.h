@@ -49,7 +49,7 @@
 //
 
 //
-// This implementation works on 128 , 192 , 256 bit keys
+// This implementation works on 128, 192, 256 bit keys
 // and on 128 bit blocks
 //
 
@@ -107,14 +107,14 @@ typedef unsigned short UINT16;
 class Rijndael
 {
 public:
-	enum Direction { Encrypt , Decrypt };
-	enum Mode { ECB , CBC , CFB1 };
-	enum KeyLength { Key16Bytes , Key24Bytes , Key32Bytes };
+	enum Direction { Encrypt, Decrypt };
+	enum Mode { ECB, CBC, CFB1 };
+	enum KeyLength { Key16Bytes, Key24Bytes, Key32Bytes };
 
 	Rijndael();
 	~Rijndael();
 protected:
-	enum State { Valid , Invalid };
+	enum State { Valid, Invalid };
 
 	State     m_state;
 	Mode      m_mode;

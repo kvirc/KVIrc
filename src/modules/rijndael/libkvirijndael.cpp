@@ -835,9 +835,9 @@ static bool rijndael_module_can_unload(KviModule *)
 KVIRC_MODULE(
 	"Rijndael crypt engine",
 	"4.0.0",
-	"Szymon Stefanek <pragma at kvirc dot net>" ,
+	"Szymon Stefanek <pragma at kvirc dot net>",
 	"Exports the rijndael crypt engine",
-	rijndael_module_init ,
+	rijndael_module_init,
 	rijndael_module_can_unload,
 	0,
 	rijndael_module_cleanup,

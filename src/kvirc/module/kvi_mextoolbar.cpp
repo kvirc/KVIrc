@@ -27,7 +27,7 @@
 #include "kvi_frame.h"
 
 KviMexToolBar::KviMexToolBar(KviModuleExtensionDescriptor * pDesc, const QString & szName)
-: KviToolBar(szName,Qt::TopToolBarArea) , KviModuleExtension(pDesc)
+: KviToolBar(szName,Qt::TopToolBarArea), KviModuleExtension(pDesc)
 {
 	g_pFrame->registerModuleExtensionToolBar(this);
 }

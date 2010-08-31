@@ -32,7 +32,7 @@
 class KviTreeWindowList;
 class KviTreeWindowListItemInternal;
 
-class KVIRC_API KviTreeWindowListItem : public QTreeWidgetItem , public KviWindowListItem
+class KVIRC_API KviTreeWindowListItem : public QTreeWidgetItem, public KviWindowListItem
 {
 	friend class KviTreeWindowList;
 	friend class KviTreeWindowListTreeWidget;

@@ -25,7 +25,7 @@
 //=============================================================================
 // C memory allocation routines
 // This stuff is rather unused, because in normal compilations
-// kvi_malloc , kvi_free and kvi_realloc are macros (see kvi_malloc.h)
+// kvi_malloc, kvi_free and kvi_realloc are macros (see kvi_malloc.h)
 //=============================================================================
 
 

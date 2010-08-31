@@ -38,7 +38,7 @@
 
 namespace KviFileUtils
 {
-	static char cHexChars[16] = { '0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9' , 'A' , 'B' , 'C' , 'D' , 'E' , 'F' };
+	static char cHexChars[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 	
 	/*
 	WORKING CODE BUT UNUSED FOR NOW
@@ -92,7 +92,7 @@ namespace KviFileUtils
 		{
 			szBuffer.append('\n'); // readLine returned true...last char was a newline
 		}
-		// readLine returned false , no ending newline encountered
+		// readLine returned false, no ending newline encountered
 		return true;
 	}
 	*/

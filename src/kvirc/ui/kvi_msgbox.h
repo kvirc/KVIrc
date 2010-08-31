@@ -29,8 +29,8 @@
 /*
 class KviMessageBox : public KviTalMessageBox
 {
-	enum Result { Yes , No , Ok , Cancel };
-	enum ButtonResult { Button1 , Button2 , Button3 };
+	enum Result { Yes, No, Ok, Cancel };
+	enum ButtonResult { Button1, Button2, Button3 };
 
 	KVIRC_API void warning(const char * fmt,...);
 	KVIRC_API void information(const char * fmt,...);

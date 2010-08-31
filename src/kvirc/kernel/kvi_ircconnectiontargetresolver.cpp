@@ -513,7 +513,7 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 				{
 					if(!validateLocalAddress(KVI_OPTION_STRING(KviOption_stringIPv6ConnectionBindAddress),bindAddress))
 					{
-						// if it is not an interface name , kill it for now and let the user correct the address
+						// if it is not an interface name, kill it for now and let the user correct the address
 						if(KVI_OPTION_STRING(KviOption_stringIPv6ConnectionBindAddress).indexOf(':') != -1)
 						{
 							if(!_OUTPUT_MUTE)
@@ -542,7 +542,7 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 				{
 					if(!validateLocalAddress(KVI_OPTION_STRING(KviOption_stringIPv4ConnectionBindAddress),bindAddress))
 					{
-						// if it is not an interface name , kill it for now and let the user correct the address
+						// if it is not an interface name, kill it for now and let the user correct the address
 						if(KVI_OPTION_STRING(KviOption_stringIPv4ConnectionBindAddress).indexOf(':') != -1)
 						{
 							if(!_OUTPUT_MUTE)

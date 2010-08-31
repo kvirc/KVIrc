@@ -138,7 +138,7 @@
       patch that can force the broken memory banks to be ignored by the kernel (allocated permanently to a dummy kernel task).
       These tools can be found by digging the web with your favorite search engine.
    3) A deeper hardware problem: if upgrading the compiler and changing memory banks doesn't help then
-      it *might* be a deeper hardware problem: bus errors , faulty IDE (or SCSI) controller or even buggy CPU...
+      it *might* be a deeper hardware problem: bus errors, faulty IDE (or SCSI) controller or even buggy CPU...
       Well....
 
 
@@ -282,7 +282,7 @@
         # ping6 www.6bone.net
 
   Is the IPV6 support enabled in your kvirc executable ?
-  To find it out , try
+  To find it out, try
 
         /echo $features
 
@@ -663,7 +663,7 @@
 7.4 KVIrc dies when using alias(identify){ identify password; };
 
   This is infinite recursion: a programming error.
-  Take a look at http://en.wikipedia.org/wiki/Infinite_loop , learn
+  Take a look at http://en.wikipedia.org/wiki/Infinite_loop, learn
   that once for all and fix your script.
 
 

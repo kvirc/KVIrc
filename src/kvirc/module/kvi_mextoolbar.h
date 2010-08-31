@@ -29,7 +29,7 @@
 
 class KviFrame;
 
-class KVIRC_API KviMexToolBar : public KviToolBar , public KviModuleExtension
+class KVIRC_API KviMexToolBar : public KviToolBar, public KviModuleExtension
 {
 	Q_OBJECT
 public:

@@ -42,7 +42,7 @@
 		Crypt/text transformation engines and how to use them
 	@body:
 		[big]Introduction[/big][br]
-		Well , there is a concrete background noise about security around the net.
+		Well, there is a concrete background noise about security around the net.
 		And I've thought that adding a little cryptography support to KVIrc wasn't
 		a bad idea. So I've first comed out with the "crypt engines", that
 		allowed to have secure conversations on channels, queries and dcc chats;
@@ -83,8 +83,8 @@
 
 		[big]Yes, but why cryptography (on IRC) ?[/big][br]
 		Because it MAY be useful. More than once people have asked me to add some
-		crypting support to the dcc chats. Yes , I know that there are other
-		"secure communication" tools , but actually I can't find one that is able to
+		crypting support to the dcc chats. Yes, I know that there are other
+		"secure communication" tools, but actually I can't find one that is able to
 		implement a "secure real time conversation". And what about a MULTIPLE real
 		time secure conversation ? This can be done on an IRC channel now.[br]
 
@@ -125,7 +125,7 @@
 		and play with the CTRL+P escape.[br]
 
 		[big]The protocol[/big][br]
-		Well, there is no protocol actually , only the existing implementations , that
+		Well, there is no protocol actually, only the existing implementations, that
 		can be accessed by anyone that want to reproduce them. There are only some
 		points relating to the crypting engines that need to be cleared:[br]
 		The crypted text must be suitable to be sent thru an IRC connection;

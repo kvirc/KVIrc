@@ -245,7 +245,7 @@ void KviDccBroker::rsendExecute(KviDccDescriptor * dcc)
 		szTag = dcc->szFileName;
 	}
 
-	// now add a file offer , so he we will accept it automatically
+	// now add a file offer, so he we will accept it automatically
 	// 120 secs is a reasonable timeout
 	QString szMask = dcc->szNick;
 	szMask += "!*@*";

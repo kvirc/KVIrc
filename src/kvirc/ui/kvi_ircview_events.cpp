@@ -95,13 +95,13 @@
 
 		[big]Builtin links[/big][br]
 		The builtin links have builtin actions performed when the user interact with the link.[br]
-		These links are used internally in KVIrc , but you can use them too.[br]
+		These links are used internally in KVIrc, but you can use them too.[br]
 		The <escape_command> is a single letter this time: it defines the type of the link.[br]
 		Currently KVIrc uses six types of builtin links : 'n' for nickname links, 'u' for url links,
 		'c' for channel links, 'h' for hostname links, 'm' for mode links and 's' for server links.[br]
 		Theoretically you can also use your own link types: just use any other letter or digit (you can't use ']' and <cr>),
 		but probably you will prefer a completely user defined link in that case anyway.[br]
-		Once the user interacts with the link , kvirc executes the predefined events:[br]
+		Once the user interacts with the link, kvirc executes the predefined events:[br]
 		On right-click the event OnBuiltinLinkRightClicked is triggered: the first parameter is the link type,
 		the second parameter is the <visible text> (as a single parameter!!!)[br]
 		On middle-click the event OnBuiltinLinkMiddleClicked is triggered: the parameters are similar to the previous one.[br]

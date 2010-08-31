@@ -401,8 +401,8 @@ KviMessageCatalogue::KviMessageCatalogue()
 	//m_uEncoding = 0;
 	m_pTextCodec = QTextCodec::codecForLocale();
 
-	//m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(1123,true,false); // dictSize, case sensitive , don't copy keys
-	m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(32,true,false); // dictSize, case sensitive , don't copy keys
+	//m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(1123,true,false); // dictSize, case sensitive, don't copy keys
+	m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(32,true,false); // dictSize, case sensitive, don't copy keys
 	m_pMessages->setAutoDelete(true);
 }
 
@@ -514,7 +514,7 @@ bool KviMessageCatalogue::load(const QString& name)
 	int dictSize = kvi_getFirstBiggerPrime(numberOfStrings);
 	if(m_pMessages)
 		delete m_pMessages;
-	m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(dictSize,true,false); // dictSize, case sensitive , don't copy keys
+	m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(dictSize,true,false); // dictSize, case sensitive, don't copy keys
 	m_pMessages->setAutoDelete(true);
 
 	KviStr szHeader;
@@ -551,7 +551,7 @@ bool KviMessageCatalogue::load(const QString& name)
 
 	m_pTextCodec = 0;
 
-	// find out the text encoding , if possible
+	// find out the text encoding, if possible
 	if(szHeader.hasData())
 	{
 		// find "charset=*\n"

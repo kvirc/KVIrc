@@ -203,7 +203,7 @@ KviWindowListItem::~KviWindowListItem()
 
 
 KviWindowListButton::KviWindowListButton(QWidget * par,KviWindow * wnd,const char * name)
-: QPushButton(par) , KviWindowListItem(wnd)
+: QPushButton(par), KviWindowListItem(wnd)
 {
 	setObjectName(name);
 	m_bActive         = false;

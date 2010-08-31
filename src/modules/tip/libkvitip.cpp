@@ -241,7 +241,7 @@ void KviTipWindow::closeEvent(QCloseEvent *e)
 		tip.open [tip_file_name:string]
 	@description:
 		Opens the "did you know..." tip window.<br>
-		If <tip_file_name> is specified , that tip is used instead of
+		If <tip_file_name> is specified, that tip is used instead of
 		the default tips provided with kvirc.<br>
 		<tip_file_name> must be a file name with no path and must refer to a
 		standard KVIrc configuration file found in the global or local

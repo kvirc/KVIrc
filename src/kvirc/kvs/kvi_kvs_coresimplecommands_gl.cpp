@@ -82,7 +82,7 @@ namespace KviKvsCoreSimpleCommands
 			set the return value (use [cmd]setreturn[/cmd] for that) and
 			in the event handlers this command may have additional semantics:
 			refer to the specific event documentation for more info.[br]
-			In fact , this command should be used [b]only[/b] in the event handlers,
+			In fact, this command should be used [b]only[/b] in the event handlers,
 			use [cmd]return[/cmd] in any other context.[br]
 	*/
 
@@ -111,7 +111,7 @@ namespace KviKvsCoreSimpleCommands
 			Finds the first available help browser in the current frame
 			then opens the specified [document].
 			If no [document] is specified it the documentation index is shown.
-			If no help browser is available , a new one is created.
+			If no help browser is available, a new one is created.
 			[document] can be an absolute path or a relative one: in this case
 			the document is searched in the KVIrc documentation directory.[br]
 			If no document has been found using absolute and relative paths,

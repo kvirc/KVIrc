@@ -94,7 +94,7 @@ public:
 	KviFileTransferManager * manager(){ return KviFileTransferManager::instance(); };
 	// this returns the pointer to the transfer window : may be 0!
 	KviWindow * transferWindow(){ return manager()->transferWindow(); };
-	// this returns transferWindow() if not 0 , otherwise the application's active window
+	// this returns transferWindow() if not 0, otherwise the application's active window
 	KviWindow * outputWindow();
 
 	// this may be called by the transfers to update the display when the state changes

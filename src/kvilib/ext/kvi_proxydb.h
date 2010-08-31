@@ -34,7 +34,7 @@
 class KVILIB_API KviProxy
 {
 public:
-	enum Protocol { Socks4 , Socks5 , Http };
+	enum Protocol { Socks4, Socks5, Http };
 	KviProxy();
 	KviProxy(const KviProxy &prx);
 	~KviProxy();

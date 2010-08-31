@@ -58,7 +58,7 @@
 			asm("	decl %edi");                      // %edi--; (dst_ptr--);
 			asm("	std");                            // set direction flag (decrement esi and edi in movsb)
 			// Optimization : check for non-odd len (1,3,5,7...)
-			asm("	shr $1,%ecx");                    // %ecx >> 1 , shifted bit -> CF
+			asm("	shr $1,%ecx");                    // %ecx >> 1, shifted bit -> CF
 			asm("	jnc move_two_bytes_top_to_bottom_directly");  // if !carry (CF == 0) skip this move
 			// Move the first byte (non-odd)
 			asm("	movsb %ds:(%esi),%es:(%edi)");    // *dst-- = *src-- if DF  else *dst++ = *src++
@@ -66,7 +66,7 @@
 			asm("	decl %esi");                      // %esi--; (src_ptr--);
 			asm("	decl %edi");                      // %edi--; (dst_ptr--);
 			asm("move_two_bytes_top_to_bottom:");
-			asm("	shr $1,%ecx");                    // %ecx >> 1 , shifted bit -> CF
+			asm("	shr $1,%ecx");                    // %ecx >> 1, shifted bit -> CF
 			asm("	jnc move_the_rest_top_to_bottom_directly"); // if !carry (CF == 0) skip this move
 			// Move the next two bytes
 			asm("	movsw %ds:(%esi),%es:(%edi)");    // *((word *)dst)-- = *((word)src)-- if DF else *((word *)dst)++ = *((word)src)++
@@ -78,13 +78,13 @@
 			asm("move_from_bottom_to_top:");
 			asm("	cld");                            // clear direction flag (increment esi and edi in movsb)
 			// Optimization : check for non-odd len (1,3,5,7...)
-			asm("	shr $1,%ecx");                    // %ecx >> 1 , shifted bit -> CF
+			asm("	shr $1,%ecx");                    // %ecx >> 1, shifted bit -> CF
 			asm("	jnc move_two_bytes");             // if !carry (CF == 0) skip this move
 			// Move the first byte (non-odd)
 			asm("	movsb %ds:(%esi),%es:(%edi)");    // *dst-- = *src-- if DF  else *dst++ = *src++
-			// Optimization : pass 2 , check for %2 and %3
+			// Optimization : pass 2, check for %2 and %3
 			asm("move_two_bytes:");
-			asm("	shr $1,%ecx");                    // %ecx >> 1 , shifted bit -> CF
+			asm("	shr $1,%ecx");                    // %ecx >> 1, shifted bit -> CF
 			asm("	jnc move_the_rest");              // if !carry (CF == 0) skip this move
 			// Move the next two bytes
 			asm("	movsw %ds:(%esi),%es:(%edi)");    // *((word *)dst)-- = *((word)src)-- if DF else *((word *)dst)++ = *((word)src)++
@@ -117,7 +117,7 @@
 			asm("	addl %ecx,%edi");                 // %edi += %ecx (dst_ptr += len);
 			asm("	std");                            // set direction flag (decrement esi and edi in movsb)
 			// start moving
-			asm("	shr $2,%ecx");                    // %ecx >> 2 , last shifted bit -> CF
+			asm("	shr $2,%ecx");                    // %ecx >> 2, last shifted bit -> CF
 			asm("	jnc xmove_the_rest_top_to_bottom_directly"); // if !carry (CF == 0) skip this move
 			// Move the next two bytes
 			asm("	subl $2,%esi");                   // %esi-=2; (src_ptr-=2);
@@ -134,7 +134,7 @@
 			asm("xmove_from_bottom_to_top:");
 			asm("	cld");                            // clear direction flag (increment esi and edi in movsb)
 			// move it
-			asm("	shr $2,%ecx");                    // %ecx >> 2 , last shifted bit -> CF
+			asm("	shr $2,%ecx");                    // %ecx >> 2, last shifted bit -> CF
 			asm("	jnc xmove_the_rest");              // if !carry (CF == 0) skip this move
 			// Move the next two bytes
 			asm("	movsw %ds:(%esi),%es:(%edi)");    // *((word *)dst)-- = *((word)src)-- if DF else *((word *)dst)++ = *((word)src)++

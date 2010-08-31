@@ -185,7 +185,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_textedit,"multilineedit","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"paste", functionPaste)
 
 	//->Set Style
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setFamily" , functionsetFamily)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setFamily", functionsetFamily)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setItalic", functionsetItalic)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setBold", functionsetBold)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setUnderline", functionsetUnderline)
@@ -209,18 +209,18 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_textedit,"multilineedit","widget")
 	//->Text color & others
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setText", functionsetText)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setColor", functionsetColor)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setModified" , functionsetModified)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setModified", functionsetModified)
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setPointSize", functionsetPointSize)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setReadOnly",functionSetReadOnly)
 	
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setTextFormat" , functionsetTextFormat)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"textFormat" , functiontextFormat)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"loadFile" , functionloadFile);
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setAlignment" , functionsetAlignment)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setTextFormat", functionsetTextFormat)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"textFormat", functiontextFormat)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"loadFile", functionloadFile);
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setAlignment", functionsetAlignment)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"lines" ,functionlines)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"selectAll" ,functionselectAll)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"lines", functionlines)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"selectAll", functionselectAll)
 KVSO_END_REGISTERCLASS(KviKvsObject_textedit)
 
 
@@ -440,7 +440,7 @@ bool KviKvsObject_textedit::functionsetItalic(KviKvsObjectFunctionCall * c)
 	return true;
 }
 
-//-->Returns Italic , Bold, Underline.
+//-->Returns Italic, Bold, Underline.
 bool KviKvsObject_textedit::functionbold(KviKvsObjectFunctionCall * c)
 {
 	if(widget())

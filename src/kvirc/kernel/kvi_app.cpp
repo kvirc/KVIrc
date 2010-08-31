@@ -547,7 +547,7 @@ void KviApp::setup()
 
 void KviApp::frameDestructorCallback()
 {
-	// here we should kill anything that depends on g_pFrame , g_pActiveWindow and related being non zero...
+	// here we should kill anything that depends on g_pFrame, g_pActiveWindow and related being non zero...
 
 	// kill all the objects, while we have windows...
 	if(KviKvsKernel::instance())
@@ -1494,7 +1494,7 @@ void KviApp::createFrame()
 
 	if(m_szExecAfterStartup.hasData())
 	{
-		// FIXME , this should be a QString
+		// FIXME, this should be a QString
 		KviKvsScript::run(m_szExecAfterStartup.ptr(),g_pFrame->firstConsole());
 		m_szExecAfterStartup = "";
 	}
@@ -1950,7 +1950,7 @@ void KviApp::timerEvent(QTimerEvent * e)
 	heartbeat(tNow);
 }
 
-// qvariant.h uses this , and it is included by the qt generated moc file for Qt >= 3.0.0
+// qvariant.h uses this, and it is included by the qt generated moc file for Qt >= 3.0.0
 #ifdef Bool
 	#undef Bool
 #endif

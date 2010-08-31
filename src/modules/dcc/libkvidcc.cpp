@@ -85,7 +85,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 
 	if(!d->console())
 	{
-		// We don't need a console with -c and -n , otherwise we need it
+		// We don't need a console with -c and -n, otherwise we need it
 		if(!(c->switches()->find('c',"connect") || c->switches()->find('n',"no-ctcp")))
 		{
 			delete d;
@@ -98,14 +98,14 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 
 	if(!d->console()->isConnected())
 	{
-		// We don't need a connection with -c and -n , otherwise we need it
+		// We don't need a connection with -c and -n, otherwise we need it
 		if(!(c->switches()->find('c',"connect") || c->switches()->find('n',"no-ctcp")))
 		{
 			delete d;
 			c->error(__tr2qs_ctx("You're not connected to a server (an active connection is required unless -c or -n are passed)","dcc"));
 			return false;
 		} else {
-			// -c or -n , grab a local nick from somewhere
+			// -c or -n, grab a local nick from somewhere
 			d->szLocalNick  = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
 			if(d->szLocalNick.isEmpty())d->szLocalNick = KVI_DEFAULT_NICKNAME1;
 			d->szLocalUser  = __tr2qs_ctx("unknown","dcc"); // we can live without it
@@ -1279,7 +1279,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 
 	if(!d->console())
 	{
-		// We don't need a console with -c and -n , otherwise we need it
+		// We don't need a console with -c and -n, otherwise we need it
 		if(!(c->hasSwitch('c') || c->hasSwitch('n')))return c->noIrcContext();
 		else d->console() = c->window()->frame()->firstConsole();
 	}
@@ -1288,10 +1288,10 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 
 	if(!d->console()->isConnected())
 	{
-		// We don't need a connection with -c and -n , otherwise we need it
+		// We don't need a connection with -c and -n, otherwise we need it
 		if(!(c->hasSwitch('c') || c->hasSwitch('n')))return c->notConnectedToServer();
 		else {
-			// -c or -n , grab a local nick from somewhere
+			// -c or -n, grab a local nick from somewhere
 			d->szLocalNick  = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
 			if(d->szLocalNick.isEmpty())d->szLocalNick = KVI_DEFAULT_NICKNAME1;
 			d->szLocalUser  = __tr("unknown"); // we can live without it

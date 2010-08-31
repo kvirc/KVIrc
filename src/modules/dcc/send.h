@@ -168,7 +168,7 @@ protected slots:
 
 class KviDccFileTransfer : public KviFileTransfer, public KviDccMarshalOutputContext
 {
-	enum GeneralStatus { Connecting , Transferring , Success , Failure };
+	enum GeneralStatus { Connecting, Transferring, Success, Failure };
 	Q_OBJECT
 public:
 	KviDccFileTransfer(KviDccDescriptor * dcc);

@@ -37,7 +37,7 @@ public:
 protected:
 	QButtonGroup *m_pButtonGroup;
 	int m_iId;
-	KviPointerHashTable<int ,KviKvsObject > btnDict;
+	KviPointerHashTable<int, KviKvsObject > btnDict;
 	bool addButton(KviKvsObjectFunctionCall *c);
 	bool checkedButton(KviKvsObjectFunctionCall *c);
 

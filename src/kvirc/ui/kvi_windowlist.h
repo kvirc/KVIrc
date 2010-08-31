@@ -122,7 +122,7 @@ protected slots:
 
 class KviClassicWindowList;
 
-class KVIRC_API KviWindowListButton : public QPushButton , KviWindowListItem
+class KVIRC_API KviWindowListButton : public QPushButton, KviWindowListItem
 {
 	friend class KviClassicWindowList;
 	Q_OBJECT

@@ -215,7 +215,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 // <command parameter list> ::= <command parameter>[<space><command parameter>]
 // <command parameter> ::= <command parameter part>[<command parameter>]
 // <command parameter part> ::= <command literal parameter> | <string parameter> | <data evaluation>
-// <command literal parameter> ::= <anything except space , null , newline , ; , " , $ or %>
+// <command literal parameter> ::= <anything except space, null, newline, ;, ", $ or %>
 // <string parameter> ::= '"'<string parameter body>'"'
 // <string parameter body> ::= <anything except '"' or null>...
 // <command terminator> ::= ';' | '\n' | '\0'
@@ -427,7 +427,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[example]
 			[cmd]join[/cmd] #kvirc kvircrocks
 		[/example]
-		or , since #kvirc usually has no password , by writing:
+		or, since #kvirc usually has no password, by writing:
 		[example]
 			[cmd]join[/cmd] #kvirc
 		[/example]
@@ -565,7 +565,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		and then use /[cmd]parse[/cmd] &lt;filename&gt;
 		[/note]
 		In this case the command block has no special meaning
-		other than making the code more readable , but command blocks
+		other than making the code more readable, but command blocks
 		will be useful later (see [cmd]if[/cmd],[cmd]while[/cmd]...).[br]
 		[note]
 		Unlike in C or C++, the braces do NOT automatically define a variable scope
@@ -580,7 +580,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		A comment starts with the character '#' and terminates with a newline.
 		You can start a comment anywhere a command can start.[br]
 		[example]
-			# This is a comment , it occupies the whole line
+			# This is a comment, it occupies the whole line
 			[cmd]echo[/cmd] After the comment!; # This is an end-line comment
 		[/example]
 		You can't escape newline characters in this case.
@@ -663,7 +663,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		The -w switch allows to redirect the echo text to a specified window --- in this
 		case the one that you are typing in.[br]
-		[i](Surprise: in this case the -w switch is useless ,
+		[i](Surprise: in this case the -w switch is useless,
 		since echo prints text to the current window by default...
 		but it will work correctly. :)[/i]
 		[/p]
@@ -709,7 +709,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[example]
 			[cmd]echo[/cmd] The length of '(a+b)' is : [fnc]$str.len[/fnc]( (a+b) )
 		[/example]
-		This is useful for algebraic and boolean expressions , like the ones
+		This is useful for algebraic and boolean expressions, like the ones
 		accepted by the special function $() (see next paragraphs).[br]
 		[/p]
 
@@ -793,10 +793,10 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			}
 		[/example]
 		The example above will first check the validity of the <nickname> passed to kb:
-		if no nickname was passed , it will warn the user and stop.
+		if no nickname was passed, it will warn the user and stop.
 		The next step will be the "ban <nickname>" call. Another enchancement is the "default reason":
 		we first assign the remaining parameters ($1- means "from $1 to the end") to a temporary variable,
-		if the variable is empty , a default kick reason is assigned.
+		if the variable is empty, a default kick reason is assigned.
 		Finally the "kick <nickname> <reason>" will be executed.
 		Get used to looking at the single command documentation pages, they will give
 		you the hints necessary to fully understand the above piece of code.
@@ -831,7 +831,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			...
 		[/example]
 		Ops.. I've used some variables without actually explaining them... hehe.. please forgive me and read on.
-		This example is again really simple , but you might have complexier function-aliases.
+		This example is again really simple, but you might have complexier function-aliases.
 		The function-aliases are also normal aliases.... you can use it as a command:
 		[example]
 			/sum3 1 2 3
@@ -840,10 +840,10 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		(just because a command call implies ignoring the return value.
 		In fact there is no difference al all between function-aliases and normal-aliases:
 		the caller makes the difference: by calling an alias as a command the return value
-		just disappears in hyperspace, by calling an alias as a function , the return value
+		just disappears in hyperspace, by calling an alias as a function, the return value
 		is propagated (and in fact "used").
 		(There are some "nice" exceptions to this rule...but you don't need to care about it, for now).
-		If return is not called inside an alias body , the return value will be just a null value.
+		If return is not called inside an alias body, the return value will be just a null value.
 		[/p]
 		[p]
 		Aliases can accept switches just like any other command. The [fnc]$sw[/fnc] is there
@@ -856,7 +856,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		The functions of type [b]$N[-[M]][/b] (where N and M are positive
 		numbers starting from 0 and N < M) evaluate to the sequence of
 		[b]positional parameters[/b] from Nth to Mth."[br]
-		If M is omitted , the function evaluate to the sequence of [b]positional
+		If M is omitted, the function evaluate to the sequence of [b]positional
 		parameters[/b] from Nth to the last one. If the whole -M block is omitted
 		the function evaluate to the Nth positional parameter.
 		We will discover more on the [b]positional parameters[/b] when talking
@@ -1018,7 +1018,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			queries it is the list of the targets. For some other windows
 			the logical name corresponds to the caption text. This will be discussed later.[br]
 			The [b]type identifier[/b] describes the properties of a certain window.
-			For channel windows the type identifier is "channel" , for query windows is "query" ,
+			For channel windows the type identifier is "channel", for query windows is "query",
 			for console windows it is "console", etc..[br]
 
 			[big]Irc contexts[/big][br]
@@ -1098,7 +1098,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			You will obviously get an error message if you try to use them in a window
 			that has no associated IRC connection.[br]
 			For instance: [cmd]whois[/cmd] will work only if you execute it
-			in a console , channel or query window.[br]
+			in a console, channel or query window.[br]
 			If you want to use these commands in a window that is not associated to
 			any IRC context you may use the [doc:command_rebinding]standard -r switch[/doc].
 			You can use the same switch to execute a command in an [b]IRC context[/b] that is
@@ -1195,10 +1195,10 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			}
 		[/example]
 		The example above will first check the validity of the <nickname> passed to kb:
-		if no nickname was passed , it will warn the user and stop.
+		if no nickname was passed, it will warn the user and stop.
 		The next step will be the "ban <nickname>" call. Another enchancement is the "default reason":
 		we first assign the remaining parameters ($1- means "from $1 to the end") to a temporary variable,
-		if the variable is empty , a default kick reason is assigned.
+		if the variable is empty, a default kick reason is assigned.
 		Finally the "kick <nickname> <reason>" will be executed.
 		Get used to looking at the single command documentation pages, they will give
 		you the hints necessary to fully understand the above piece of code.
@@ -1233,7 +1233,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			...
 		[/example]
 		Ops.. I've used some variables without actually explaining them... hehe.. please forgive me and read on.
-		This example is again really simple , but you might have complexier function-aliases.
+		This example is again really simple, but you might have complexier function-aliases.
 		The function-aliases are also normal aliases.... you can use it as a command:
 		[example]
 			/sum3 1 2 3
@@ -1242,10 +1242,10 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		(just because a command call implies ignoring the return value.
 		In fact there is no difference al all between function-aliases and normal-aliases:
 		the caller makes the difference: by calling an alias as a command the return value
-		just disappears in hyperspace, by calling an alias as a function , the return value
+		just disappears in hyperspace, by calling an alias as a function, the return value
 		is propagated (and in fact "used").
 		(There are some "nice" exceptions to this rule...but you don't need to care about it, for now).
-		If return is not called inside an alias body , the return value will be just a null value.
+		If return is not called inside an alias body, the return value will be just a null value.
 		[/p]
 		[p]
 		Aliases can accept switches just like any other command. The [fnc]$sw[/fnc] is there
@@ -1598,7 +1598,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		Generic coding tips for scripters (and not only)
 	@body:
 		Here comes a small list of "coding tips".[br]
-		These apply to programming in general , not only to KVIrc scripting.[br]
+		These apply to programming in general, not only to KVIrc scripting.[br]
 		[br]
 		1. [b]Comment your code[/b][br]
 		A well commented code is easy to mantain, and easy to read by others.[br]
@@ -1623,7 +1623,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		is getting large.[br]
 		Obviously using "thisIsACounterVariable" as name for a simple counter
 		is also a suicide.[br]
-		A good convention on variable names can speed up writing , debugging and mantaining code.[br]
+		A good convention on variable names can speed up writing, debugging and mantaining code.[br]
 		Encoding the type of the variable in the variable name might be also a good idea,
 		but this is a matter of taste; personally I feel really well with that.[br]
 		Just as example, here go my fundamental convention rules for C++:[br]
@@ -1773,7 +1773,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/tr]
 		[tr]
 		[td]<alphanumeric char>[/td]
-		[td]Ascii characters 'A' to 'Z' , 'a' to 'z' , '0' to '9' and '_'[/td]
+		[td]Ascii characters 'A' to 'Z', 'a' to 'z', '0' to '9' and '_'[/td]
 		[/tr]
 		[tr]
 		[td]<variable>[/td]
@@ -2276,15 +2276,15 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[p]
 		Beside local and global variables there is a third family of them.
 		Variables that have a ':' character just after the leading '%' are [b]extended scope[/b] variables.
-		"%:index" , "%:Hello" , "%:something.else" are all valid special scope variable names.
+		"%:index", "%:Hello", "%:something.else" are all valid special scope variable names.
 		They're actually used in popups and in timers (but later I might find other usages as well :).
 		"Extended scope" means that these variables are somewhere in the middle between
-		global and local variables. They normally act as local , but in some cases their [b]lifetime[/b] and [b]visibility[/b]
+		global and local variables. They normally act as local, but in some cases their [b]lifetime[/b] and [b]visibility[/b]
 		may be extended.
 		[/p]
 
 		[p]
-		For example , in the popups , all the special scope variables
+		For example, in the popups, all the special scope variables
 		are visible during all the "lifetime" of a popup (so from the prologue code call to
 		the moment when the user selects an item and the corresponding code is executed).
 		This allows you to pre-calculate some data or conditions in the popup prologue

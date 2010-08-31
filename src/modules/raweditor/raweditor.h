@@ -67,7 +67,7 @@ class KviRawHandlerTreeWidgetItem : public QTreeWidgetItem
 {
 public:
 	KviRawHandlerTreeWidgetItem(QTreeWidgetItem * par,const QString & name,const QString & buffer,bool bEnabled)
-	: QTreeWidgetItem(par), m_szBuffer(buffer) , m_bEnabled(bEnabled)
+	: QTreeWidgetItem(par), m_szBuffer(buffer), m_bEnabled(bEnabled)
 	{
 		setText(0,name);
 		setEnabled(bEnabled);

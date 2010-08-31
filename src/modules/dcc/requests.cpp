@@ -887,7 +887,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 
 	if(KVI_OPTION_BOOL(KviOption_boolCantAcceptIncomingDccConnections))
 	{
-		// we have to use DCC RSEND , otherwise it will not work
+		// we have to use DCC RSEND, otherwise it will not work
 		KviStr szSubproto("RSEND");
 		szSubproto.prepend(szExtensions);
 
@@ -901,7 +901,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 			//   able to recognize the file.
 			//   Here we add another temporary offer with the right filename.
 
-			// now add a file offer , so he we will accept it automatically
+			// now add a file offer, so he we will accept it automatically
 			// 120 secs is a reasonable timeout
 			QString szMask;
 			dcc->ctcpMsg->pSource->mask(szMask,KviIrcMask::NickUserHost);

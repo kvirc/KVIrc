@@ -189,7 +189,7 @@ if (pWidgetDict)
 }
 KVSO_END_CONSTRUCTOR(KviKvsObject_workspace)
 
-bool KviKvsObject_workspace::init(KviKvsRunTimeContext * ,KviKvsVariantList *)
+bool KviKvsObject_workspace::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
         SET_OBJECT(QMdiArea);
 	return true;

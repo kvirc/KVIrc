@@ -465,7 +465,7 @@ namespace KviKvsCoreSimpleCommands
 			[b]Color[/b]: <optValue> must have the format #RRGGBB where R G and B are hex digits[br]
 			[b]Font[/b]: <optValue> is a comma separated list of font properties:
 				<family>,<pointsize>,<style>,<charset>,<weight>,<flags>. <family> is the font face name
-				("arial" , "helvetica" etc..), <pointsize> is more or less the indicator of the size of the font
+				("arial", "helvetica" etc..), <pointsize> is more or less the indicator of the size of the font
 				(try sth like 12,14), <style> is an integer that indicates the font style (fixed for example),
 				<charset> is an integer that indicates the charset of the font (maybe one day I'll document it better),
 				<weight> indicates the (ehm) weight of the font (50,100,150...matches Bold,DemiBold etc..),
@@ -734,7 +734,7 @@ namespace KviKvsCoreSimpleCommands
 		QByteArray szText;
 		if(sl.count() == 1)
 		{
-			// single chan , use channel encoding if possible
+			// single chan, use channel encoding if possible
 			KviChannel * ch = KVSCSC_pConnection->findChannel(szChans);
 			if(ch)
 				szText = ch->encodeText(szMsg);
@@ -775,7 +775,7 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Sends a password to the server
 		@description:
-			Sends a password to the server: usually KVIrc takes care of it , but well.. this is useful with bouncers.[br]
+			Sends a password to the server: usually KVIrc takes care of it, but well.. this is useful with bouncers.[br]
 			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2821 wrapper
@@ -841,7 +841,7 @@ namespace KviKvsCoreSimpleCommands
 			handlers for <popup_name>. In other words, you can't "popup
 			a popup" while it is being popped up. :) (This would
 			be an endless recursive behaviour).[br]
-			If the -p switch is used , then <screen_coordinates> must be
+			If the -p switch is used, then <screen_coordinates> must be
 			in the form <x>,<y> and will be used as screen coordinates
 			for the placement of the popup (instead of the current cursor position).[br]
 		@seealso:
@@ -992,7 +992,7 @@ namespace KviKvsCoreSimpleCommands
 			[example]
 			[comment]# Open a single query to Pragma[/comment]
 			query Pragma
-			[comment]# Open a query to Pragma and to Crocodile , say "Hello!" in both windows[/comment]
+			[comment]# Open a query to Pragma and to Crocodile, say "Hello!" in both windows[/comment]
 			query Pragma,Crocodile Hello !
 			[/example]
 	*/
@@ -1077,7 +1077,7 @@ namespace KviKvsCoreSimpleCommands
 			channels and queries kept open etc..). The QUIT message will be still sent unless
 			the -f switch is used. You can control all the "unexpected
 			disconnection" options in the options dialog.
-			If the -q switch is specified , this command terminates KVIrc immediately.[br]
+			If the -q switch is specified, this command terminates KVIrc immediately.[br]
 		@examples:
 			[example]
 				quit Time to sleep

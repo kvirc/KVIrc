@@ -49,14 +49,14 @@
 	@body:
 		[big]What is this ?[/big]
 		The "file offers" are a simple way to share your files with other IRC users.[br]
-		Basically , you setup an offer by selecting a local file, choosing a "visible name" for it.
+		Basically, you setup an offer by selecting a local file, choosing a "visible name" for it.
 		Remote users will be able to request you the file and download it automatically by
 		issuing a simple DCC GET request.[br]
 		[big]Details[/big]
 		Each offer refers to an existing file on one of your locally mounted file systems.
 		The offer is given a visible name that the remote users will effectively request.
 		To share the file /usr/arch/mp3/SonataArctica_SingInSilence_Live.mp3 you will add a file offer
-		with /usr/arch/mp3/SonataArctica_SingInSilence_Live.mp3 as real file path , something like
+		with /usr/arch/mp3/SonataArctica_SingInSilence_Live.mp3 as real file path, something like
 		"SonataArctica_SingInSilence.mp3". A remote user will then request you a DCC GET SonataArctica_SingInSilence.mp3
 		and KVIrc will automatically send the file.[br]
 		Each file offer has an "user mask" that the requesting remote users must match to
@@ -177,7 +177,7 @@ void KviSharedFilesManager::doInsert(KviSharedFileList * l, KviSharedFile * o)
 				// the ones with more non-wild chars go first...
 				if(fo->nonWildcardCount() < o->nonWildcardCount())
 				{
-					// ok...the new one has more non-wildcards , insert
+					// ok...the new one has more non-wildcards, insert
 					l->insert(index,o);
 					return;
 				} else {

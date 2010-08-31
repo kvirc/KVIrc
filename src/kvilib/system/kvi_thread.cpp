@@ -56,7 +56,7 @@ static void kvi_threadIgnoreSigalarm()
 	#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 			// Funky hack for some Solaris machines (maybe others ?)
 			// For an obscure (at least to me) reason
-			// when using threads ,some part of the system
+			// when using threads,some part of the system
 			// starts kidding us by sending a SIGALRM in apparently
 			// "random" circumstances. (Xlib ?) (XServer ?)
 			// The default action for SIGALRM is to exit the application.
@@ -150,7 +150,7 @@ static void kvi_threadInitialize()
 #define KVI_THREAD_PIPE_SIDE_SLAVE 1
 
 // the maximum length of the slave->master queue
-// over this length , the slave is forced to usleep()
+// over this length, the slave is forced to usleep()
 #define KVI_THREAD_MAX_EVENT_QUEUE_LENGTH 50
 
 static KviThreadManager * g_pThreadManager = 0;
@@ -308,7 +308,7 @@ void KviThreadManager::postSlaveEvent(QObject *o,QEvent *e)
 
 	m_pMutex->lock();
 
-	// if the queue gets too long , make this (slave) thread sleep
+	// if the queue gets too long, make this (slave) thread sleep
 
 	// there is a special case where we can't stop the slaves posting events
 	// it's when a thread-master-side is waiting for it's thread-slave-side
@@ -401,7 +401,7 @@ void KviThreadManager::eventsPending(int fd)
 		}
 	}
 
-	// ok , job done.. can relax now
+	// ok, job done.. can relax now
 	m_pMutex->unlock();
 
 #endif
@@ -525,7 +525,7 @@ void KviThread::wait()
 
 void KviThread::exit()
 {
-	// We're on the slave side thread here! (m_bRunning is true , m_bStartingUp is false)
+	// We're on the slave side thread here! (m_bRunning is true, m_bStartingUp is false)
 	setRunning(false);
 	kvi_threadExit();
 }

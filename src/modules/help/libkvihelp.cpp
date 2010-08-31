@@ -54,7 +54,7 @@ KviPointerList<KviHelpWindow> * g_pHelpWindowList = 0;
 		Finds the first available help browser in the current frame
 		then opens the specified [document].
 		If no [document] is specified it the documentation index is shown.
-		If no help browser is available , a new one is created.
+		If no help browser is available, a new one is created.
 		[document] can be an absolute path or a relative one: in this case
 		the document is searched in the KVIrc documentation directory.[br]
 		If no document has been found using absolute and relative paths,

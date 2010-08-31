@@ -554,7 +554,7 @@ void KviRegisteredUserEntryDialog::notifyCheckClicked(bool bChecked)
 					szMask.append(tmp);
 				}
 			}
-			// if the nickname list is still empty , build a dummy nick to notify
+			// if the nickname list is still empty, build a dummy nick to notify
 			if(szMask.isEmpty())
 			{
 				szMask = m_pUser->name();

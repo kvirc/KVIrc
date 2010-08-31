@@ -154,13 +154,13 @@ public:
 	*/
 	void setHost(const QString &szHost){ m_szHost = szHost.isEmpty() ? m_szWild : szHost; };
 
-	// Sets the host , nick and username extracting it from an irc mask:
+	// Sets the host, nick and username extracting it from an irc mask:
 	// nick!user@host
 	// The mask is terminated by end-of string null character or a character equal to c in the string.
 	// Returns the pointer to the end of the mask in the szMask string.(c or null-terminator)
 	//const char * setMask(const QString &szMask,char c=' ');
 
-	// Sets the host , nick and username extracting it from an userhost mask:
+	// Sets the host, nick and username extracting it from an userhost mask:
 	// nick[*]=<+|->user@host
 	// The mask is terminated by end-of string null char or a space character.
 	// Returns the pointer to the next non-space char in the szMask string or to the null-terminator
@@ -213,7 +213,7 @@ public:
 	/**
 	* \brief Returns in szMask the specified (if possible) mask of this user.
 	*
-	* If the host or username are not known , the mask may contain less
+	* If the host or username are not known, the mask may contain less
 	* information than requested.
 	* \param szMask The mask of the user
 	* \param eMaskType The mask type
@@ -237,7 +237,7 @@ public:
 	bool matches(const KviIrcMask & mask) const;
 
 	/**
-	* \brief Fixed external matches (this is wild , external is fixed)
+	* \brief Fixed external matches (this is wild, external is fixed)
 	* \param nick The nickname of the user
 	* \param user The username of the user
 	* \param host The hostname of the user
@@ -247,7 +247,7 @@ public:
 	//bool matchesFixed(const QString &szMask) const;
 
 	/**
-	* \brief Fixed external matches (this is wild , external is fixed)
+	* \brief Fixed external matches (this is wild, external is fixed)
 	* \param mask The make of the user
 	* \return bool
 	*/

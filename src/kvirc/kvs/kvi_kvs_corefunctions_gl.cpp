@@ -627,7 +627,7 @@ namespace KviKvsCoreFunctions
 			<boolean> $isSet(<data:variant>)
 		@description:
 			Returns 1 if <data> is actually set to some non-empty value
-			and 0 otherwise. If <data> is a variable , then this function
+			and 0 otherwise. If <data> is a variable, then this function
 			simply checks if the variable is set. If <data> is a constant
 			then this function checks if the constant is non empty.
 			Since KVIrc treats empty strings as "unset" values then

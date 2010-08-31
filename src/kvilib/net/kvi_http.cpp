@@ -609,7 +609,7 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 	if((uStatus != 200) && (uStatus != 206))
 	{
 		// this is not "OK" and not "Partial content"
-		// Error , redirect or something confusing
+		// Error, redirect or something confusing
 		
 		// FIXME: Handle 30x codes by re-issuing the request with the new URI ?
 		
@@ -1076,7 +1076,7 @@ bool KviHttpRequestThread::connectToRemoteHost()
 					{
 						// Declare problems :)
 						return failure(__tr_no_lookup("Unrecoverable SSL error during handshake"));
-					} // else can recover ? (EAGAIN , EINTR ?) ... should select for read or for write
+					} // else can recover ? (EAGAIN, EINTR ?) ... should select for read or for write
 				}
 				break;
 				default:

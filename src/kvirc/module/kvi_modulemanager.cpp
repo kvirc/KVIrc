@@ -218,7 +218,7 @@ bool KviModuleManager::loadModule(const QString &modName)
 	{
 		QString szDir;
 		// it's more probable to have the translations in the global directory
-		// try it as first... (yes, catalogue overriding is impossible this way.. but , anybody cares ?)
+		// try it as first... (yes, catalogue overriding is impossible this way.. but, anybody cares ?)
 		g_pApp->getGlobalKvircDirectory(szDir,KviApp::Locale);
 
 		if(!KviLocale::loadCatalogue(info->szModuleContext,szDir))

@@ -42,7 +42,7 @@ class KviMenuTreeWidgetItem;
 class KviPopupTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	enum Type { Item , Menu , Separator , Label , Epilogue , Prologue , ExtMenu };
+	enum Type { Item, Menu, Separator, Label, Epilogue, Prologue, ExtMenu };
 public:
 	KviPopupTreeWidgetItem(QTreeWidget * pTreeWidget,KviPopupTreeWidgetItem * after,Type t);
 	KviPopupTreeWidgetItem(KviPopupTreeWidgetItem * parent,KviPopupTreeWidgetItem * after,Type t);

@@ -50,7 +50,7 @@ bool g_bFoundMirc;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <windows.h>
 	#include <winnls.h>  // for MultiByteToWideChar
-	#include <objbase.h> // CoCreateInstance , CoInitialize & CO.
+	#include <objbase.h> // CoCreateInstance, CoInitialize & CO.
 	#include <shlobj.h>  // IShellLink IPersistFile & CO.
 #else
 	#include <unistd.h>  // for symlink()
@@ -796,7 +796,7 @@ void KviSetupWizard::makeLink()
 	// You need this horrible snippet of code to create a shortcut!!!!
 	//
 	// you have to:
-	// - dig in the registry ,
+	// - dig in the registry,
 	// - trigger the entire COM subsystem
 	// - bring up a couple of OLE interfaces....
 	// - use some obscure functions like MultiByteToWideChar
@@ -840,7 +840,7 @@ void KviSetupWizard::makeLink()
 	if(CoCreateInstance(CLSID_ShellLink,NULL,CLSCTX_INPROC_SERVER,
 				IID_IShellLink,(void **)&psl) == S_OK)
 	{
-		// just for fun , lookup another shell interface
+		// just for fun, lookup another shell interface
 
 		IPersistFile* ppf;
 

@@ -321,7 +321,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 	//    18aa:	ff 24 85 20 00 00 00 	jmp    *0x20(,%eax,4)
 	//
 	// but sth tells me that "jmp *0x20(,%eax,4)" takes a loooooot of clock ticks...
-	// ...we have less instructions , but the code takes longer to execute (7-8% longer)
+	// ...we have less instructions, but the code takes longer to execute (7-8% longer)
 	// it might be also due to pipeline tricks, jump "next instruction precalculation" stuff...
 
 	// So we end up using the first version here
@@ -970,7 +970,7 @@ check_emoticon_char:
 		// It happens really too often to have an 8 followed by a parenthesis
 		// that is not an emoticon
 
-		// *begin can be one of ':' , ';' , '='
+		// *begin can be one of ':', ';', '='
 		if(*p == '-')p++; // FIXME: we could handle also 'o' as a nose ??? (extreme: also '+' ?)
 		// FIXME: use a "jump-like-check-table" here ? .... it would be surely faster
 		// FIXME: handle also '[',']','\\','p','@','#','<','>','|' ???

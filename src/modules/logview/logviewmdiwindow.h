@@ -85,7 +85,7 @@ signals:
 	void rightButtonPressed(QTreeWidgetItem *,QPoint);
 };
 
-class KviLogViewMDIWindow : public KviWindow , public KviModuleExtension
+class KviLogViewMDIWindow : public KviWindow, public KviModuleExtension
 {
     Q_OBJECT
 public:

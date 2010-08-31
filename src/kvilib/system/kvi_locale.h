@@ -70,13 +70,13 @@ public:
 	QString * m_pQTranslation;
 public:
 	KviTranslationEntry(char * keyptr,int keylen,char * trptr,int trlen)
-	: m_szKey(keyptr,keylen) , m_szEncodedTranslation(trptr,trlen)
+	: m_szKey(keyptr,keylen), m_szEncodedTranslation(trptr,trlen)
 	{
 		m_pQTranslation = 0;
 	}
 
 	KviTranslationEntry(const char * keyandtr)
-	: m_szKey(keyandtr) , m_szEncodedTranslation(keyandtr)
+	: m_szKey(keyandtr), m_szEncodedTranslation(keyandtr)
 	{
 		m_pQTranslation = 0;
 	}

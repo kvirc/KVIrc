@@ -285,7 +285,7 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Beeps (when possible :D)[br]
 			...[br]
-			No , really...[br]
+			No, really...[br]
 			This command rings the bell on the keyboard (the PC speaker).
 			The volume must be in range 0-100; the default is 100.[br]
 			The pitch is specified in Hz and must be positive.[br]
@@ -644,7 +644,7 @@ namespace KviKvsCoreSimpleCommands
 			Sends a CTCP message
 		@description:
 			Sends a CTCP message to the specified <target>.[br]
-			The target may be a nickname , a channel, or a comma separated list of nicknames.[br]
+			The target may be a nickname, a channel, or a comma separated list of nicknames.[br]
 			The <ctcp_data> is a string containing the ctcp type followed by the ctcp parameters.[br]
 			For more info take a look at the [doc:ctcp_handling]ctcp protocol implementation notes[/doc].[br]
 			The CTCP message will be a request (sent through a PRIVMSG) unless the -n switch
@@ -1105,12 +1105,12 @@ namespace KviKvsCoreSimpleCommands
 			Send the output to the debug window (takes precedence over -w)
 		@description:
 			Outputs the &lt;text&gt; to the current window.[br]
-			If the 'w' switch is present , outputs the &lt;text&gt;
+			If the 'w' switch is present, outputs the &lt;text&gt;
 			to the specified window instead of the current one.
 			The <window_id> parameter is the [doc:window_naming_conventions]global ID[/doc] of the window
 			that has to be used.[br]
-			If the 'i' switch is given , it uses the specified
-			icon scheme (icon and colors) , otherwise it uses
+			If the 'i' switch is given, it uses the specified
+			icon scheme (icon and colors), otherwise it uses
 			the default one (0).[br]
 			If the -d switch is used then the output is sent to a special
 			window called "Debug" (the window is created if not existing yet).
@@ -1222,8 +1222,8 @@ namespace KviKvsCoreSimpleCommands
 			[doc:command_rebinding]-r rebinding switch[/doc]:
 			-w causes the specified window to be used only for output,
 			but the command parameters are evaluated in the current window.[br]
-			If the 'i' switch is given , it uses the specified
-			icon scheme (icon and colors) , otherwise it uses
+			If the 'i' switch is given, it uses the specified
+			icon scheme (icon and colors), otherwise it uses
 			the default one (0).[br]
 			If the -n switch is present then the highlighting rules
 			are not applied.[br]

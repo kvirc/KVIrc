@@ -117,7 +117,7 @@ class KviStatusBarClock : public KviStatusBarApplet
 public:
 	KviStatusBarClock(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
 	virtual ~KviStatusBarClock();
-	enum Format { HMS , HM };
+	enum Format { HMS, HM };
 protected:
 	bool m_bUtc;
 	bool m_b24h;

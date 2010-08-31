@@ -557,7 +557,7 @@ void KviServerParser::parseLiteralKick(KviIrcMessage *msg)
 	KviChannel * chan = msg->connection()->findChannel(szChan);
 
 	if(!chan){
-		// Ooops , desync with the server.
+		// Ooops, desync with the server.
 		UNRECOGNIZED_MESSAGE(msg,__tr("Received a kick message for an unknown channel, possible desync"));
 		return;
 	}
@@ -804,7 +804,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 		//								return;
 
 		//							} else {
-		//								m_pFrm->activeWindow()->output(KVI_OUT_INTERNAL,__tr("%s requests file %s: no such file was offered , ignoring"),talker.nick(),file.ptr());
+		//								m_pFrm->activeWindow()->output(KVI_OUT_INTERNAL,__tr("%s requests file %s: no such file was offered, ignoring"),talker.nick(),file.ptr());
 		//								return;
 		//							}
 		//						}
@@ -821,7 +821,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 		{
 			// New query requested. Check if we really should create it or not
 
-			// first of all the anti spam , if desired.
+			// first of all the anti spam, if desired.
 			// the antispam blocks anything else
 			// Eventually we could trigger a special event to notify the user of the
 			// spam message...
@@ -1192,7 +1192,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 		{
 			// New query requested. Check if we really should create it or not
 
-			// first of all the anti spam , if desired.
+			// first of all the anti spam, if desired.
 			// the antispam blocks anything else
 			// Eventually we could trigger a special event to notify the user of the
 			// spam message...
@@ -1505,8 +1505,8 @@ void KviServerParser::parseLiteralNick(KviIrcMessage *msg)
 	}
 	KviQuery * q = console->connection()->findQuery(szNick);
 	// It CAN happen that szNewNick first queries us without being
-	// on any channel then he QUITS , he reconnects , he joins
-	// a channel with szNick , queries us and changes nick to szNewNick : gotcha!
+	// on any channel then he QUITS, he reconnects, he joins
+	// a channel with szNick, queries us and changes nick to szNewNick : gotcha!
 	// should merge the queries!
 	KviQuery * old = console->connection()->findQuery(szNewNick);
 	if(old && (old != q))
@@ -1691,7 +1691,7 @@ void KviServerParser::parseLiteralMode(KviIrcMessage *msg)
 		KviChannel * chan = msg->connection()->findChannel(szTarget);
 
 		if(!chan){
-			// Ooops , desync with the server.
+			// Ooops, desync with the server.
 			UNRECOGNIZED_MESSAGE(msg,__tr("Received a mode change for an unknown channel, possible desync"));
 			return;
 		}

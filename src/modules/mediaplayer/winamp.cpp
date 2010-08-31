@@ -30,7 +30,7 @@
 // This is a winamp-kvirc interface plugin
 //
 
-// This stuff is compiled only on windows , as a separate dll module
+// This stuff is compiled only on windows, as a separate dll module
 
 
 typedef struct

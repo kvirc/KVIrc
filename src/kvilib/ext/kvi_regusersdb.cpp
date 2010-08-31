@@ -71,7 +71,7 @@
 		For this reason putting wildcards in nicknames could become a problem
 		if not used carefully (but may also be used to achieve interesting tricks).[br]
 		If you don't use wildcards in nicknames you are sure that
-		in a single irc connection , a mask will always refer to a single user.[br]
+		in a single irc connection, a mask will always refer to a single user.[br]
 		You will commonly use the following format:[br]
 		<nick>!*<username>@*.<host>.<top>[br]
 		or[br]
@@ -94,7 +94,7 @@
 		On the other hand, if you dislike the users with the nickname Eddie that come from .org
 		and you're implementing an auto-kick system, the correct mask to register is "Eddie!*@*.org".[br]
 		[br]
-		KVirc ties to be smart , and always find the most correct match for an user:
+		KVirc ties to be smart, and always find the most correct match for an user:
 		If you have two masks registered: Pragma!*xor@*.myisp.it and *!*@*.myisp.it,
 		kvirc will match Pragma!~xor@233-dyn.myisp.it with the first one even if the second
 		one matches too; the firs one is a best match.[br]
@@ -268,7 +268,7 @@ bool KviRegisteredUser::getBoolProperty(const QString & name,bool def)
 	QString * pValue = m_pPropertyDict->find(name);
 	if(pValue)
 	{
-		// be flexible , allow more "true" values (pragma)
+		// be flexible, allow more "true" values (pragma)
 		if(KviQString::equalCS(*pValue,"1"))return true;
 		if(KviQString::equalCI(*pValue,"true"))return true;
 		if(KviQString::equalCI(*pValue,"yes"))return true;

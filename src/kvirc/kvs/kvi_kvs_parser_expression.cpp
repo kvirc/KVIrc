@@ -505,7 +505,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 		return left;
 	}
 
-	// not a terminator... must be an operator (or an error , eventually)
+	// not a terminator... must be an operator (or an error, eventually)
 
 	KviKvsTreeNodeExpression * curTopOperator = parseExpressionBinaryOperator();
 	if(!curTopOperator)

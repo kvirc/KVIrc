@@ -285,7 +285,7 @@ search_finished:
 		}
 	}
 
-	// a valid hostname or ip address , not found in list : add it and make it current
+	// a valid hostname or ip address, not found in list : add it and make it current
 
 	r = m_pRecords->find(__tr2qs("Standalone Servers"));
 	if(!r)

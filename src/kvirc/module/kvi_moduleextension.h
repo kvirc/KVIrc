@@ -59,7 +59,7 @@ public: // this has to be public because of QPtrList... but should be protected
 	~KviModuleExtensionDescriptor();
 private:
 	int                              m_iId;            // unique id assigned at creation time
-	KviStr                           m_szType;         // name of the service (toolbar , crypt engine...)
+	KviStr                           m_szType;         // name of the service (toolbar, crypt engine...)
 	KviStr                           m_szName;         // name of the extension
 	QString                          m_szVisibleName;  // name that is VISIBLE and possibly translated
 	KviStr                           m_szAuthor;       // Author (visible)

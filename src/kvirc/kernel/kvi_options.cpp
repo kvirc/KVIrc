@@ -61,7 +61,7 @@
 extern KVIRC_API int g_iIdentDaemonRunningUsers;
 
 
-#define RECT_OPTION(_txt,_val,_flags) KviRectOption(KVI_RECT_OPTIONS_PREFIX _txt, _val , _flags)
+#define RECT_OPTION(_txt,_val,_flags) KviRectOption(KVI_RECT_OPTIONS_PREFIX _txt, _val, _flags)
 
 KviRectOption g_rectOptionsTable[KVI_NUM_RECT_OPTIONS]=
 {
@@ -546,7 +546,7 @@ KviColorOption g_iccolorOptionsTable[KVI_NUM_ICCOLOR_OPTIONS]=
 
 #define PIXMAP_OPTION(_name,_flags) \
 	KviPixmapOption( \
-		KVI_PIXMAP_OPTIONS_PREFIX _name , \
+		KVI_PIXMAP_OPTIONS_PREFIX _name, \
 		KviPixmap(), \
 		_flags | KviOption_resetUpdateGui)
 
@@ -566,8 +566,8 @@ KviPixmapOption g_pixmapOptionsTable[KVI_NUM_PIXMAP_OPTIONS]=
 
 //#define INT_OPTION(_name,_value,_flags)
 //	{
-//		KVI_INT_OPTIONS_PREFIX _name ,
-//		_value ,
+//		KVI_INT_OPTIONS_PREFIX _name,
+//		_value,
 //		_flags
 //	}
 //
@@ -580,8 +580,8 @@ KviPixmapOption g_pixmapOptionsTable[KVI_NUM_PIXMAP_OPTIONS]=
 
 #define UINT_OPTION(_name,_value,_flags) \
 	KviUIntOption( \
-		KVI_UINT_OPTIONS_PREFIX _name , \
-		_value , \
+		KVI_UINT_OPTIONS_PREFIX _name, \
+		_value, \
 		_flags \
 	)
 
@@ -670,8 +670,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 
 #define FONT_OPTION(_name,_face,_size,_flags) \
 	KviFontOption( \
-		KVI_FONT_OPTIONS_PREFIX _name , \
-		QFont(_face,_size) , \
+		KVI_FONT_OPTIONS_PREFIX _name, \
+		QFont(_face,_size), \
 		_flags | KviOption_groupTheme \
 	)
 
@@ -704,14 +704,14 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 
 #define MSGTYPE_OPTION(_name,_text,_icon,_levl) \
 	KviMsgTypeOption( \
-		KVI_MSGTYPE_OPTIONS_PREFIX _name , \
+		KVI_MSGTYPE_OPTIONS_PREFIX _name, \
 		KviMsgType(_text,_icon,KVI_BLACK,KVI_TRANSPARENT,true,_levl), \
 		KviOption_sectFlagMsgType | KviOption_groupTheme \
 	)
 
 #define MSGTYPE_OPTION_SPEC(_name,_text,_icon,_fore,_back,_levl) \
 	KviMsgTypeOption( \
-		KVI_MSGTYPE_OPTIONS_PREFIX _name , \
+		KVI_MSGTYPE_OPTIONS_PREFIX _name, \
 		KviMsgType(_text,_icon,_fore,_back,true,_levl), \
 		KviOption_sectFlagMsgType | KviOption_groupTheme \
 	)

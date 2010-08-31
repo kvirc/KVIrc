@@ -57,7 +57,7 @@ void KviDccBox::forgetDescriptor()
 }
 
 KviDccAcceptBox::KviDccAcceptBox(KviDccBroker * br,KviDccDescriptor * dcc,const QString &text,const QString &capt)
-: QWidget(0) , KviDccBox(br,dcc)
+: QWidget(0), KviDccBox(br,dcc)
 {
 	setObjectName("dcc_accept_box");
 	//QVBoxLayout * vb = new QVBoxLayout(this,4,4);
@@ -126,7 +126,7 @@ void KviDccAcceptBox::showEvent(QShowEvent *e)
 
 
 KviDccRenameBox::KviDccRenameBox(KviDccBroker * br,KviDccDescriptor * dcc,const QString &text,bool bDisableResume)
-: QWidget(0) , KviDccBox(br,dcc)
+: QWidget(0), KviDccBox(br,dcc)
 {
 	setObjectName("dcc_rename_box");
 	//QVBoxLayout * vb = new QVBoxLayout(this,4,4);

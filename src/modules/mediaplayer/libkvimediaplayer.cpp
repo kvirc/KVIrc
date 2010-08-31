@@ -543,7 +543,7 @@ MP_KVS_FUNCTION(playerList)
 	@description:
 		Plays the media specified by the <mrl> on the currently
 		selected media player interface. <mrl> is a standard Media Resource
-		Locator. Examples of such locators are: 'file:///home/myfile.mp3' ,
+		Locator. Examples of such locators are: 'file:///home/myfile.mp3',
 		'http://streaming.server.top:123', 'dvd:// or dvb://channelname'.
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
@@ -741,7 +741,7 @@ MP_KVS_SIMPLE_COMMAND(mute,mute)
 	@description:
 		Returns the mrl of the media currently played by the selected media player interface.
 		The mrl is a standard Media Resource Locator.
-		Examples of such locators are: 'file:///home/myfile.mp3' ,
+		Examples of such locators are: 'file:///home/myfile.mp3',
 		'http://streaming.server.top:123', 'dvd:// or dvb://channelname'.
 		This means that the returned string may NOT refer to a local file:
 		it refers to the local file only if the 'file://' prefix is found ([fnc]$mediaplayer.localFile()[/fnc]

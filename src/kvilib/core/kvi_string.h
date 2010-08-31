@@ -84,7 +84,7 @@ __KVI_EXTERN KVILIB_API bool kvi_strEqualCI(const char *str1,const char *str2);
 // Note that if str1 or str2 are shorter than len characters then are considered as NOT equal!
 __KVI_EXTERN KVILIB_API bool kvi_strEqualCIN(const char *str1,const char *str2,int len);
 // My own implementations of strcmp and strncasecmp
-// Once I wrote it , I KNOW what they do : ALWAYS :)
+// Once I wrote it, I KNOW what they do : ALWAYS :)
 // Note that greater here means that comes AFTER in the alphabetic order.
 __KVI_EXTERN KVILIB_API int kvi_strcmpCI(const char *str1,const char *str2);
 //__KVI_EXTERN KVILIB_API int kvi_strcmpCIN(const char *str1,const char *str2,int len);
@@ -115,7 +115,7 @@ public:
 	// No particular reason for these two names...
 	// It is just because I like it :)
 
-	enum KviFormatConstructorTag { Format , Sprintf };
+	enum KviFormatConstructorTag { Format, Sprintf };
 
 	//=============================================================================
 	// Constructors
@@ -162,7 +162,7 @@ public:
 	~KviStr();
 public:
 	//yes...public..but think it as private...:)
-	char *m_ptr; // pointer to allocated buffer , do not change this!
+	char *m_ptr; // pointer to allocated buffer, do not change this!
 	int   m_len; // string data length not including the terminator
 
 public:
@@ -204,7 +204,7 @@ public:
 	KviStr upperISO88591() const;
 	KviStr lowerISO88591() const;
 
-	// left , right & co.
+	// left, right & co.
 	// all parameters are safety-checked
 	KviStr left(int maxLen) const;
 	KviStr right(int maxLen) const ;
@@ -240,7 +240,7 @@ public:
 	void append(const char *str,int len);                             // str CAN NOT be 0, and MUST be at least len chars long
 	void append(KviFormatConstructorTag dummy,const char *fmt,...);
 
-	// prepend stuff , same as above
+	// prepend stuff, same as above
 	void prepend(const KviStr &str);
 	void prepend(const char *str);                                    // str CAN be 0
 	void prepend(const char *str,int len);                            // str CAN NOT be 0, and MUST be at least len chars long
@@ -257,7 +257,7 @@ public:
 	// Assignment
 	KviStr & operator=(const KviStr &str);       // deep copy
 	KviStr & operator=(const char *str);         // str can be NULL here
-	KviStr & operator=(char c);                  // 2 bytes allocated ,m_len = 1
+	KviStr & operator=(char c);                  // 2 bytes allocated,m_len = 1
 	KviStr & operator=(const QString &str);
 	KviStr & operator=(const QByteArray &str);
 
@@ -338,7 +338,7 @@ public:
 	// Tokenize
 	//=============================================================================
 
-	// Extracts (copy to str and remove) a token from this string ,<br>
+	// Extracts (copy to str and remove) a token from this string,<br>
 	// and returns true if there are more tokens to extract<br>
 	// Does not strip initial separators!!<br>
 	// str can NOT be this string.
@@ -356,8 +356,8 @@ public:
 	//KviStr ** splitToArray(const char * sep,int max,int * realCount) const;
 	static void freeArray(KviStr ** strings);
 	// joins the array to this string
-	// if sep is not 0 , it is inserted between the strings
-	// if bLastSep is true and sep is non 0 , then sep is also appended at the end
+	// if sep is not 0, it is inserted between the strings
+	// if bLastSep is true and sep is non 0, then sep is also appended at the end
 	// of the buffer (after the last string)
 	void joinFromArray(KviStr ** strings,const char * sep = 0,bool bLastSep = false);
 
@@ -472,8 +472,8 @@ public:
 
 
 // Cool string parsing function.
-// It will extract the first found token from the string aux_ptr , and return
-// a pointer to the beginning of the next token , or end of the string.
+// It will extract the first found token from the string aux_ptr, and return
+// a pointer to the beginning of the next token, or end of the string.
 // It skips the initial sep characters!
 __KVI_EXTERN KVILIB_API const char * kvi_extractToken(KviStr &str,const char *aux_ptr,char sep =' ');
 // Does not skip the beginning separators!

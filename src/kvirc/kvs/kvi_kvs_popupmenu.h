@@ -68,7 +68,7 @@ class KVIRC_API KviKvsPopupMenuItem
 {
 	friend class KviKvsPopupMenu;
 public:
-	enum Type { Item , Menu , Label , Separator , ExtMenu };
+	enum Type { Item, Menu, Label, Separator, ExtMenu };
 protected:
 	KviKvsPopupMenuItem(Type t,const QString &szItemName,const QString &szCondition);
 	KviKvsPopupMenuItem(Type t,const QString &szItemName,const KviKvsScript * pCondition);
@@ -131,9 +131,9 @@ protected:
 public:
 	virtual KviKvsScript * kvsIcon();
 	virtual KviKvsScript * kvsText();
-	// this just returns a string , eventually empty
+	// this just returns a string, eventually empty
 	QString evaluateText(KviKvsPopupMenuTopLevelData * pData);
-	// this just returns the icon , eventually
+	// this just returns the icon, eventually
 	QPixmap * evaluateIcon(KviKvsPopupMenuTopLevelData * pData);
 };
 

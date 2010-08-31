@@ -80,7 +80,7 @@
 		In this way, once in a while, KVIrc will send to the server an ISON message
 		with the nickname Pragma. If Szymon is online, you will be notified with a message:[br]
 		"Pragma [someuser@somehost.it] is on IRC".[br]
-		If Szymon uses often "[Pragma]" as his secondary nickname , you can do the following:[br]
+		If Szymon uses often "[Pragma]" as his secondary nickname, you can do the following:[br]
 		[example]
 			[cmd:reguser.addmask]reguser.addmask[/cmd] Szymon [Pragma]*@*.it
 			[cmd:reguser.setproperty]reguser.setproperty[/cmd] Szymon notify "Pragma [Pragma]"
@@ -103,7 +103,7 @@
 		in the notify list, it might become slow and eventually cause a
 		client to server flood.[br]
 		So finally, the intelligent method is the default. If you have "flood" problems,
-		or if you think that the notify list is quite slow , try the "stupid" method:
+		or if you think that the notify list is quite slow, try the "stupid" method:
 		it is not that bad after all.[br]
 		The third notify list management method is the "WATCH method".[br]
 		It uses a totally different (and better) approach to the notify lists management,
@@ -328,7 +328,7 @@ void KviNotifyListManager::notifyOffLine(const QString &nick,const QString &user
 KviIsOnNotifyListManager::KviIsOnNotifyListManager(KviIrcConnection * pConnection)
 : KviNotifyListManager(pConnection)
 {
-	m_pRegUserDict = new KviPointerHashTable<QString,QString>(17,false); // case insensitive , copy keys
+	m_pRegUserDict = new KviPointerHashTable<QString,QString>(17,false); // case insensitive, copy keys
 	m_pRegUserDict->setAutoDelete(true);
 	m_pNotifyList  = new KviPointerList<QString>;
 	m_pNotifyList->setAutoDelete(true);
@@ -551,7 +551,7 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage *msg)
 		}
 	}
 
-	// Ok...looks to be my ison (still not sure at 100% , but can't do better)
+	// Ok...looks to be my ison (still not sure at 100%, but can't do better)
 	if(m_pConnection->lagMeter())
 		m_pConnection->lagMeter()->lagCheckComplete("@notify_ison");
 
@@ -562,7 +562,7 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage *msg)
 	m_pIsOnList->setAutoDelete(false);
 
 	// Ok...we have an IsOn reply here
-	// The nicks in the IsOnList that are also in the reply are online , and go to the OnlineList
+	// The nicks in the IsOnList that are also in the reply are online, and go to the OnlineList
 	// the remaining in the IsOnList are offline
 
 	QString * s;
@@ -574,8 +574,8 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage *msg)
 	}
 
 	m_pIsOnList->setAutoDelete(true);
-	// Ok...all the users that are online , are on the OnlineList
-	// the remaining users are in the m_pIsOnList , and are no longer online
+	// Ok...all the users that are online, are on the OnlineList
+	// the remaining users are in the m_pIsOnList, and are no longer online
 
 	// first the easy step: remove the users that have just left irc or have never been online
 	// we're clearling the m_pIsOnList
@@ -612,8 +612,8 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage *msg)
 				// check if he is on some channels
 				if(ent->globalData()->nRefs() > 1)
 				{
-					// mmmh...we have more than one ref , so the user is at least in one query or channel
-					// look him up on channels , if we find his entry , we can be sure that he is
+					// mmmh...we have more than one ref, so the user is at least in one query or channel
+					// look him up on channels, if we find his entry, we can be sure that he is
 					// still the right user
 					KviPointerList<KviChannel> * chlist = m_pConsole->connection()->channelList();
 					for(KviChannel * ch = chlist->first();ch;ch = chlist->next())
@@ -684,13 +684,13 @@ bool KviIsOnNotifyListManager::doMatchUser(const QString &notifyString,const Kvi
 				if(!(m_pConsole->notifyListView()->findEntry(mask.nick())))
 				{
 					notifyOnLine(mask.nick(),mask.user(),mask.host());
-				} // else already online , and matching...all ok
+				} // else already online, and matching...all ok
 			} else {
 				// not matched.... has he been online before ?
 				if(m_pConsole->notifyListView()->findEntry(mask.nick()))
 				{
-					// has been online just a sec ago , but now the mask does not match
-					// either reguserdb has changed , or the user went offline and another one got his nick
+					// has been online just a sec ago, but now the mask does not match
+					// either reguserdb has changed, or the user went offline and another one got his nick
 					// in the meantime... (ugly situation anyway)
 					notifyOffLine(mask.nick(),mask.user(),mask.host(),__tr2qs("registration mask changed, or nickname is being used by someone else"));
 				} else {
@@ -853,7 +853,7 @@ bool KviIsOnNotifyListManager::handleUserhost(KviIrcMessage *msg)
 		}
 	}
 
-	// Ok...looks to be my usershot (still not sure at 100% , but can't do better)
+	// Ok...looks to be my usershot (still not sure at 100%, but can't do better)
 
 	if(m_pConnection->lagMeter())
 		m_pConnection->lagMeter()->lagCheckComplete("@notify_userhost");
@@ -1178,7 +1178,7 @@ bool KviWatchNotifyListManager::doMatchUser(KviIrcMessage * msg,const QString &n
 				{
 					notifyOnLine(mask.nick(),mask.user(),mask.host(),"watch");
 				} else {
-					// else already online , and matching...all ok
+					// else already online, and matching...all ok
 					if(msg->numeric() == RPL_NOWON)
 					{
 						// This is a reply to a /watch +something (should not happen, unless the user is messing) or to /watch l (user requested)
@@ -1194,7 +1194,7 @@ bool KviWatchNotifyListManager::doMatchUser(KviIrcMessage * msg,const QString &n
 				// not matched.... has he been online before ?
 				if(m_pConsole->notifyListView()->findEntry(mask.nick()))
 				{
-					// has been online just a sec ago , but now the mask does not match
+					// has been online just a sec ago, but now the mask does not match
 					// prolly the reguserdb has been changed
 					notifyOffLine(mask.nick(),mask.user(),mask.host(),
 						__tr2qs("registration mask changed or desync with the watch service"));

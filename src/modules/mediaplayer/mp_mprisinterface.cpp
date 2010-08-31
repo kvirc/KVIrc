@@ -30,8 +30,8 @@
 	according to MPRIS 1.0, GetStatus returns struct of 4 integers.
 
 	First integer: 0 = Playing, 1 = Paused, 2 = Stopped.
-	Second interger: 0 = Playing linearly , 1 = Playing randomly.
-	Third integer: 0 = Go to the next element once the current has finished playing , 1 = Repeat the current element
+	Second interger: 0 = Playing linearly, 1 = Playing randomly.
+	Third integer: 0 = Go to the next element once the current has finished playing, 1 = Repeat the current element
 	Fourth integer: 0 = Stop playing once the last element has been played, 1 = Never give up playing
 */
 
@@ -487,7 +487,7 @@ MP_IMPLEMENT_DESCRIPTOR(
         __tr2qs_ctx(
                 "An interface to Qmmp.\n" \
                 "Download it from http://qmmp.ylsoftware.com\n"
-                ,
+               ,
                 "mediaplayer"
         )
 )

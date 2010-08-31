@@ -169,7 +169,7 @@ class KviHttpRequestThread : public KviSensitiveThread
 {
 	friend class KviHttpRequest;
 public:
-	enum RequestMethod { Post, Get , Head };
+	enum RequestMethod { Post, Get, Head };
 protected:
 	KviHttpRequestThread(KviHttpRequest * r,
 			const QString &szHost,

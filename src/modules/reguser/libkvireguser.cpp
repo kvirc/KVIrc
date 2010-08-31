@@ -159,8 +159,8 @@ static bool reguser_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 		If [mask] is given, then it is added to the entry mask list.[br]
 		The <name> parameter may contain any character: even spaces are allowed (obviously you have to
 		use quotes in that case).[br]
-		If the '-r' switch is given , the new entry replaces any previous one with the same <name> (the old entry is removed).[br]
-		If the '-f' switch is given , and there is an existing entry with the same name , no warning is printed
+		If the '-r' switch is given, the new entry replaces any previous one with the same <name> (the old entry is removed).[br]
+		If the '-f' switch is given, and there is an existing entry with the same name, no warning is printed
 		and the old entry is treated just like it has been just added (thus the [mask] is eventually added to its mask list).[br]
 		The '-q' switch causes the command to run in "quiet" mode and print no warning.[br]
 	@examples:
@@ -241,7 +241,7 @@ static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 		Removes the regusers database entry with the specified <name>.[br]
 		If the -n switch is given, and there is a removed entry,
 		this command will restart all the running "notify lists".
-		If the -q switch is used , no warning is printed if the <name>
+		If the -q switch is used, no warning is printed if the <name>
 		does not identify an existing entry.
 	@examples:
 		[example]
@@ -296,7 +296,7 @@ static bool reguser_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 		The only restriction on the <mask> is that it must be unique inside the
 		regusers database: you can't match two users with the same mask (it would
 		have rather undefined results).[br]
-		If -f is used , KVIrc ensures that the mask is unique in the database
+		If -f is used, KVIrc ensures that the mask is unique in the database
 		and associates is to THIS registered user (breaking the previous associations).<br>
 		Once at least one mask has been added, the user can be "matched"
 		by using the [fnc]$reguser.match[/fnc]() function.[br]
@@ -369,7 +369,7 @@ static bool reguser_kvs_cmd_addmask(KviKvsModuleCommandCall * c)
 		reguser.delmask <mask>
 	@description:
 		Removes a mask from the regusers database.[br]
-		Since masks are unique in the database , you don't need to pass
+		Since masks are unique in the database, you don't need to pass
 		an <user> parameter: if an <user> entry has the <mask>, removing that <mask>
 		will surely remove it from that <user> entry. (contorsions ?)[br]
 	@examples:
@@ -655,12 +655,12 @@ static bool reguser_kvs_fnc_isIgnoreEnabled(KviKvsModuleFunctionCall * c)
 		Adds a property to the registered users database entry with name <name>.[br]
 		The property <property> is set to the specified <value> or is unset if <value>
 		is not given (or is an empty string).[br]
-		If the '-n' switch is used , and the user entry has been found in the database,
+		If the '-n' switch is used, and the user entry has been found in the database,
 		all the [doc:notify_list]notify lists[/doc] are restarted.[br]
-		If the '-a' switch is used , and there are users on IRC currently matched
+		If the '-a' switch is used, and there are users on IRC currently matched
 		by this reguser entry then their avatar is reset.
 		This is useful when you're changing someone's notify property.[br]
-		If the -q switch is used , the command runs in "quiet" mode and prints no warnings.[br]
+		If the -q switch is used, the command runs in "quiet" mode and prints no warnings.[br]
 	@examples:
 		[example]
 			[cmd]reguser.add[/cmd] "Szymon Stefanek"
@@ -929,7 +929,7 @@ static bool reguser_kvs_fnc_exactMatch(KviKvsModuleFunctionCall * c)
 //		$reguser.matches(<user_mask>)
 //	@description:
 //		Returns a comma separated list of registered user masks that match <user_mask>.[br]
-//		User mask must be in the format <nick>!<user>@<host> , where <user> and
+//		User mask must be in the format <nick>!<user>@<host>, where <user> and
 //		<host> may contain '*' wildcards.[br]
 //		If no registered mask matches the <user_mask> an empty string is returned.[br]
 //	@seealso:
@@ -982,9 +982,9 @@ static bool reguser_kvs_fnc_exactMatch(KviKvsModuleFunctionCall * c)
 		$reguser.mask(<name>[,<N>])
 	@description:
 		Returns the <N>th registration mask for the registered user database record identified
-		by <name>. If <N> is not given , returns an array of registration masks for that entry.[br]
+		by <name>. If <N> is not given, returns an array of registration masks for that entry.[br]
 		If <name> does not identify a valid entry an empty string is returned;
-		if <N> is out of range (or there are no masks at all) , an empty string is returned.[br]
+		if <N> is out of range (or there are no masks at all), an empty string is returned.[br]
 		<N> is a ZERO BASED index.[br]
 	@examples:
 		[example]
@@ -1155,7 +1155,7 @@ static bool reguser_kvs_fnc_matchProperty(KviKvsModuleFunctionCall * c)
 		reguser.wizard [mask]
 	@description:
 		Allows registering an user with an intuitive and easy to use interface.
-		If [mask] is specified , it is used as inital mask in the dialog.
+		If [mask] is specified, it is used as inital mask in the dialog.
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],

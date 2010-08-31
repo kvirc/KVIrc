@@ -96,7 +96,7 @@ KviIrcSocket::KviIrcSocket(KviIrcLink * pLink)
 	m_tAntiFloodLastMessageTime.tv_usec = 0;
 
 	if(KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout) < 100)
-		KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout) = 100; // this is our minimum , we don't want to lag the app
+		KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout) = 100; // this is our minimum, we don't want to lag the app
 
 	m_bInProcessData = false;
 
@@ -1352,7 +1352,7 @@ void KviIrcSocket::doSSLHandshake(int)
 				// Declare problems :)
 				raiseError((iErr ? KviError::translateSystemError(iErr) : KviError_unknownError));
 			} else {
-				// can recover ? (EAGAIN , EINTR ?)
+				// can recover ? (EAGAIN, EINTR ?)
 				m_pWsn = new QSocketNotifier((int)m_sock,QSocketNotifier::Write);
 				QObject::connect(m_pWsn,SIGNAL(activated(int)),this,SLOT(doSSLHandshake(int)));
 				m_pWsn->setEnabled(true);
@@ -1579,7 +1579,7 @@ void KviIrcSocket::processData(char * buffer,int)
 
 	//now *p == '\0'
 	//beginOfCurData points to '\0' if we have
-	//no more stuff to parse , or points to something
+	//no more stuff to parse, or points to something
 	//different than '\r' or '\n'...
 	if(*beginOfCurData)
 	{
@@ -1702,7 +1702,7 @@ void KviIrcSocket::queue_removeAllMessages()
 
 void KviIrcSocket::flushSendQueue()
 {
-	// If we're called from the flush timer , stop it
+	// If we're called from the flush timer, stop it
 	if(m_pFlushTimer->isActive())
 		m_pFlushTimer->stop();
 

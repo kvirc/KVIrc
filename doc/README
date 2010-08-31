@@ -86,7 +86,7 @@ Other documentation can be found in the doc subdirectory.
 
 You are encouraged to "mess" with all the KVIrc options and features,
 and to report bugs and misbehaviours to the author.
-Anyway , before reporting a bug , ask yourself if it can be caused
+Anyway, before reporting a bug, ask yourself if it can be caused
 by some other part of your system: KVIrc uses many external libraries
 and (as all programs) relies on a correct system behaviour.
 Make sure that the libraries you use are the correct ones (!!!).
@@ -353,12 +353,12 @@ Other documentation can be found in the doc subdirectory.
 
 - Reporting problems
 
-In this release , the changes are so huge that it was not possible
+In this release, the changes are so huge that it was not possible
 to test them in all the possible conditions. A 'normal' irc session
 should give you no problems.
 You are encouraged to "mess" with all the KVIrc options and features,
 and to report bugs and misbehaviours to the author.
-Anyway , before reporting a bug , ask yourself if it can be caused
+Anyway, before reporting a bug, ask yourself if it can be caused
 by some other part of your system: KVIrc uses many external libraries
 and (as all programs) relies on a correct system behaviour.
 Make sure that the libraries you use are the correct ones (!!!).
@@ -366,7 +366,7 @@ Make sure that the libraries you use are the correct ones (!!!).
 - Contents of a good bug report:
 
 - A gdb backtrace in case of a segfault.
-	The more gdb info you send , the biggest is the possibility
+	The more gdb info you send, the biggest is the possibility
 	for me to find the problem and maybe a solution.
 - A detailed description (read : procedure) to reproduce the bug
 	Obviously if possible...
@@ -383,7 +383,7 @@ the --enable-debug configure option.
 
 
 Here we go again!
-Yes , this is still called "beta" , but it should be stable on most machines.
+Yes, this is still called "beta", but it should be stable on most machines.
 We're simply still missing some features planned for the final 3.0.0.
 
 Beta2 is being released as a source package.
@@ -395,7 +395,7 @@ many new things to play with.
 
 There is a preliminary UNICODE port: KVIrc UI starts to "speak" foreign (non Latin1) based languages.
 IRC character set mapping has been implemented (with 8 commonly used codepages for now).
-You should be able to use the Euro sign (ISO-8859-15), write Cyrillic (KOI-8-R , CP-1251 , ISO-8859-5),
+You should be able to use the Euro sign (ISO-8859-15), write Cyrillic (KOI-8-R, CP-1251, ISO-8859-5),
 Greek (ISO-8859-7) and even use ideograms with the UTF-8 encoding.
 Character mapping selection is window based thus you should be able to write Cyrillic on #russian,
 Greek on #athens and write plain English on #kvirc in the same IRC session.

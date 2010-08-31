@@ -231,7 +231,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			F2 to F12, F1 to F12 with SHIFT key pressed, 0 to 9 with CTRL key pressed.[br]
 			This means that you can set up 33 "quick" aliases...that's really more than
 			an user can remember.[br]
-			If you need more keys , mail me , I'll see what I can do :)[br]
+			If you need more keys, mail me, I'll see what I can do :)[br]
 	*/
 	EVENT("OnAccelKeyPressed", \
 		"$0 = keys"),
@@ -314,7 +314,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			is detected to be ON-Line.[br]
 			The event is triggered in the console window or the active window of the IRC context depending
 			on the user options.[br]
-			(Note: If you call [cmd]halt[/cmd] in this event , you will stop the "Nick is on irc" output,
+			(Note: If you call [cmd]halt[/cmd] in this event, you will stop the "Nick is on irc" output,
 			but this is rather a bad idea since KVIrc gives a lot of additional information to the
 			user with some notify-methods).[br]
 			This is a good place to play a sound or attract the user attention in some other way.[br]
@@ -340,7 +340,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			has just left IRC.[br]
 			The event is triggered in the console window or the active window of the IRC context depending
 			on the user options.[br]
-			(Note: If you call [cmd]halt[/cmd] in this event , you will stop the "Nick has left irc" output,
+			(Note: If you call [cmd]halt[/cmd] in this event, you will stop the "Nick has left irc" output,
 			but this is rather a bad idea since KVIrc gives a lot of additional information to the
 			user with some notify-methods).[br]
 			This is a good place to play a sound or attract the user attention in some other way.[br]
@@ -929,7 +929,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			the text view. The double click link action is builtin and it causes KVIrc
 			to open the URL with a browser (tipically your OS default browser).[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
-			that can be performed with the URL , like bookmarking in some way or opening
+			that can be performed with the URL, like bookmarking in some way or opening
 			with a specific browser.[br]
 	*/
 	EVENT("OnURLLinkPopupRequest", \
@@ -959,7 +959,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			the text view. The double click link action is builtin and it causes KVIrc
 			to query the MOTD of the server.[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
-			that can be performed with the server name , like querying stats or links.[br]
+			that can be performed with the server name, like querying stats or links.[br]
 			Please note that the server name is generally NOT a hostname: some parts of
 			it are often hidden. The name of the server is generally valid only within
 			the IRC network that you are connected to.[br]
@@ -1020,7 +1020,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			This event is triggered when an user has right clicked on an "unknown" nickname link in
 			the text view.[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
-			that can be performed with the nickname like querying , sending a file by dcc or opening a dcc.chat.
+			that can be performed with the nickname like querying, sending a file by dcc or opening a dcc.chat.
 			Please note that NOT ALL the nickname links will receive this event.[br]
 			The nickname links that appear in the text view of the channel that they are actually in
 			are handled by the [event:onchannelnickpopuprequest]OnChannelNickPopupRequest[/event] event.[br]
@@ -1080,7 +1080,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			or a single nickname (if it is a link).[br]
 			In both cases all the nicknames are currently on the channel.[br]
 			You should popup a popup-menu with a set of possible channel-related actions,
-			like op/deop , voice/devoice , whois etc...
+			like op/deop, voice/devoice, whois etc...
 		@seealso:
 			[event:onchannelnickdefaultactionrequest]OnChannelNickDefaultActionRequest[/event]
 	*/
@@ -1103,7 +1103,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			This event is triggered when an user has right clicked on a list of nicknames in
 			the notify list (console window).[br]
 			This is a good place to show a [cmd]popup[/cmd] with some actions that can be performed
-			on the nicknames like querying , performing a whois lookup or sth similar.[br]
+			on the nicknames like querying, performing a whois lookup or sth similar.[br]
 	*/
 	EVENT("OnNotifyListPopupRequest", \
 		"$0 = nickname list"),
@@ -1532,7 +1532,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Channel
 		@description:
 			Triggered when a NON-local user is leaving a channel.[br]
-			The PART message has already been processed by the server , so
+			The PART message has already been processed by the server, so
 			the user is effectively no longer on the channel.
 			On the other side, it might be useful to access the user-related channel data from
 			this event, thus the handler is called effectively just BEFORE the
@@ -1565,7 +1565,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Channel
 		@description:
 			Triggered when the local user is leaving a channel.[br]
-			The PART message has already been processed by the server , so
+			The PART message has already been processed by the server, so
 			the user is effectively no longer on the channel.
 			On the other side, it might be useful to access the channel data from
 			this event, thus the handler is called effectively just BEFORE the
@@ -1599,7 +1599,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Channel
 		@description:
 			Triggered when a non-local user is being kicked from a channel.[br]
-			The KICK message has already been processed by the server , so
+			The KICK message has already been processed by the server, so
 			the user is effectively no longer on the channel.
 			On the other side, it might be useful to access the user-related channel data from
 			this event, thus the handler is called effectively just BEFORE the
@@ -1634,7 +1634,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Channel
 		@description:
 			Triggered when the local user has been kicked from a channel.[br]
-			The KICK message has already been processed by the server , so
+			The KICK message has already been processed by the server, so
 			the user is effectively no longer on the channel.
 			On the other side, it might be useful to access the user-related channel data from
 			this event, thus the handler is called effectively just BEFORE the
@@ -1703,7 +1703,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Console
 		@description:
 			Triggered when an user is quitting IRC.[br]
-			The QUIT message has already been processed by the server , so
+			The QUIT message has already been processed by the server, so
 			the user is effectively no longer on IRC.
 			On the other side, it might be useful to access the user-related data from
 			this event, thus the handler is called effectively just BEFORE the
@@ -1770,7 +1770,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			Triggered when the local user has changed his user mode.[br]
 			The first parameter is the changed mode flag with a leading '+' or '-' sign:
-			if the mode was removed it will be something like "-x" , otherwise something like "+x".[br]
+			if the mode was removed it will be something like "-x", otherwise something like "+x".[br]
 			Calling 'halt' in this event will stop the "mode" message output.[br]
 	*/
 	EVENT("OnUserModeChange", \

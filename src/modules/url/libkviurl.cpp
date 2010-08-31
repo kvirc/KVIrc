@@ -963,7 +963,7 @@ void url_module_config()
 
 KVIRC_MODULE(
 	"URL",
-	"4.0.0" ,
+	"4.0.0",
 	"Copyright (C) 2002 Andrea Parrella <yap@yapsoft.it>",
 	"url list module for KVIrc",
 	url_module_init,

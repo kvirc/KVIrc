@@ -66,7 +66,7 @@ void KviBoolSelector::commit()
 
 KviUIntSelector::KviUIntSelector(QWidget * par,const QString & txt,unsigned int *pOption,
 	unsigned int uLowBound,unsigned int uHighBound,unsigned int uDefault,bool bEnabled,bool bShortInt)
-: KviTalHBox(par) , KviSelectorInterface()
+: KviTalHBox(par), KviSelectorInterface()
 {
 	m_pLabel = new QLabel(txt,this);
 	//m_pLineEdit = new QLineEdit(this);
@@ -129,7 +129,7 @@ void KviUIntSelector::setEnabled(bool bEnabled)
 
 
 KviStringSelector::KviStringSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled)
-: KviTalHBox(par) , KviSelectorInterface()
+: KviTalHBox(par), KviSelectorInterface()
 {
 	m_pLabel = new QLabel(txt,this);
 	m_pLineEdit = new QLineEdit(this);
@@ -167,7 +167,7 @@ void KviStringSelector::setText(const QString& text){
 }
 
 KviPasswordSelector::KviPasswordSelector(QWidget * par,const QString & txt,QString *pOption,bool bEnabled)
-: KviTalHBox(par) , KviSelectorInterface()
+: KviTalHBox(par), KviSelectorInterface()
 {
 	setSpacing(0);
 	setMargin(0);

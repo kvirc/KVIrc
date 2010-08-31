@@ -324,11 +324,11 @@ namespace KviKvsCoreCallbackCommands
 			$8 = server that provided the information[br]
 			$9 = away message (empty if user hasn't set an away message)[br]
 			$10 = magic string evaluated at awhois call (may be empty)[br]
-			If the -i switch is specified , the whois message is sent to the server
+			If the -i switch is specified, the whois message is sent to the server
 			that the <nickname> user is connected to; in this way you will probably
 			get the idle time of the user too.[br]
 			If the server replies with a "No such nick/channel error message" the
-			<callback command> will be still triggered , but will have all the parameters
+			<callback command> will be still triggered, but will have all the parameters
 			empty with the exception of $0.[br]
 			If the connection gets interrupted before all the information have been received,
 			the <callback command> will never be triggered.[br]
@@ -397,9 +397,9 @@ namespace KviKvsCoreCallbackCommands
 			The <callback_code> will be executed as reaction to a button press.[br]
 			[br]
 			The "window" type button can be added only to the windows that have a button container: this
-			actually includes at least console , channels and queries.[br]
+			actually includes at least console, channels and queries.[br]
 			The button is added to the current window; if you want to add it to a different
-			window , use the [doc:command_rebinding]standard -r command rebinding[/doc] switch.[br]
+			window, use the [doc:command_rebinding]standard -r command rebinding[/doc] switch.[br]
 			The <callback_code> will be executed as reaction to a button press; the
 			code execution will be bound to the window that the button is attacched to.[br]
 			If a button with <name> already exists in the current window, its parameters are changed
@@ -408,7 +408,7 @@ namespace KviKvsCoreCallbackCommands
 			Passing an empty <callback_value> removes the button.[br]
 			The callback parameters $0 and $1 will contain the screen coordinates of the bottom-left
 			corner of the button: this is useful for showing a popup menu in response to the click.[br]
-			If the -q switch is used , this command prints no warnings.[br]
+			If the -q switch is used, this command prints no warnings.[br]
 			The -d switch causes the button to be disabled (grayed).[br]
 		@examples:
 			[example]
@@ -1085,7 +1085,7 @@ namespace KviKvsCoreCallbackCommands
 				%parameter = "some string value"
 				echo "Before calling /timer \%parameter is \"%parameter\""
 				timer -s (test,1000,%parameter){ echo "inside the callback \%parameter is \"%parameter\" but \$0 is \"$0\""; }
-				[comment]# watch the timer running , and note the behaviour of the %parameter variable[/comment]
+				[comment]# watch the timer running, and note the behaviour of the %parameter variable[/comment]
 				killtimer test
 				[comment]# Use the extended scope timer variables[/comment]
 				timer(test,1000)

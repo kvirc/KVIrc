@@ -146,7 +146,7 @@ void KviMediaManager::insertMediaType(KviMediaType * m)
 				int iNonWildCountExisting = mt->szFileMask.len() - iWildCountExisting;
 				if(iNonWildCountExisting < iNonWildCount)
 				{
-					// ok...the new one has more non-wildcards , insert
+					// ok...the new one has more non-wildcards, insert
 					m_pMediaTypeList->insert(index,m);
 					return;
 				} else {
@@ -250,7 +250,7 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckM
 	szFile.cutToLast('/',true);
 
 
-	// first of all , lstat() the file
+	// first of all, lstat() the file
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	struct _stat st;
 	if(_stat(szFullPath.ptr(),&st) != 0)
@@ -262,10 +262,10 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckM
 		//qDebug("Problems while stating file %s",szFullPath.ptr());
 		// We do just the pattern matching
 		// it's better to avoid magic checks
-		// if the file is a device , we would be blocked while attempting to read data
+		// if the file is a device, we would be blocked while attempting to read data
 		return findMediaTypeForRegularFile(szFullPath.ptr(),szFile.ptr(),false);
 	} else {
-		// If it is a link , stat() the link target
+		// If it is a link, stat() the link target
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 		if(S_ISLNK(st.st_mode))
 		{

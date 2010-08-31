@@ -291,7 +291,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 
 	//now *p == '\0'
 	//beginOfCurData points to '\0' if we have
-	//no more stuff to parse , or points to something
+	//no more stuff to parse, or points to something
 	//different than '\r' or '\n'...
 	if(*cBeginOfCurData)
 	{

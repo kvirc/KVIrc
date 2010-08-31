@@ -71,8 +71,8 @@ public:
 	KviDns();
 	~KviDns();
 public:
-	enum QueryType { IPv4 , IPv6 , Any };
-	enum State     { Idle , Busy , Failure , Success };
+	enum QueryType { IPv4, IPv6, Any };
+	enum State     { Idle, Busy, Failure, Success };
 protected:
 	void         * m_pAuxData;
 	KviDnsThread * m_pSlaveThread;

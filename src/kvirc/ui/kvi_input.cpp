@@ -360,7 +360,7 @@ void KviInput::setFocus()
 
 void KviInput::focusInEvent(QFocusEvent *)
 {
-	// if we get a focus in event , redirect the focus to the children
+	// if we get a focus in event, redirect the focus to the children
 	if(m_pMultiLineEditor)
 		m_pMultiLineEditor->setFocus();
 	else

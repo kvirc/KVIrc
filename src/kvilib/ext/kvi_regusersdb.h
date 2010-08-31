@@ -130,8 +130,8 @@ private:
 class KVILIB_API KviRegisteredMask
 {
 private:
-	KviRegisteredUser * m_pUser;               // pointer , not owned!
-	KviIrcMask        * m_pMask;               // pointer , not owned!
+	KviRegisteredUser * m_pUser;               // pointer, not owned!
+	KviIrcMask        * m_pMask;               // pointer, not owned!
 	int                 m_iMaskNonWildChars;
 public:
 	KviRegisteredMask(KviRegisteredUser * u,KviIrcMask * m);

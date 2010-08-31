@@ -163,7 +163,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 
 							if(!cmd)
 							{
-								// might be an error , but might be not...
+								// might be an error, but might be not...
 								// it is an error only if error() returns true
 								// but since the caller will take care of it
 								// we just return 0
@@ -201,7 +201,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 				cmd = (this->*(ccpr->proc))();
 				if(!cmd)
 				{
-					// might be an error , but might be not...
+					// might be an error, but might be not...
 					// it is an error only if error() returns true
 					// but since the caller will take care of it
 					// we just return 0

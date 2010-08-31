@@ -238,7 +238,7 @@ QSize KviFileTransferItemDelegate::sizeHint(const QStyleOptionViewItem &, const 
 }
 
 KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm)
-: KviWindow(KVI_WINDOW_TYPE_TOOL,lpFrm,"file transfer window",0) , KviModuleExtension(d)
+: KviWindow(KVI_WINDOW_TYPE_TOOL,lpFrm,"file transfer window",0), KviModuleExtension(d)
 {
 	g_pFileTransferWindow = this;
 	setAutoFillBackground(false);

@@ -64,7 +64,8 @@
  * This class owns all pixmaps. Do not store links to them.
  */
 
-class KVILIB_API KviAnimatedPixmap : public QObject , public KviAnimatedPixmapInterface{
+class KVILIB_API KviAnimatedPixmap : public QObject, public KviAnimatedPixmapInterface
+{
 	Q_OBJECT
 
 protected:

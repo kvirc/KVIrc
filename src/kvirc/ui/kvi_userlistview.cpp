@@ -652,7 +652,7 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 					// is half oped ?
 					if(!(pUserEntry->m_iFlags & KVI_USERFLAG_HALFOP))
 					{
-						// nope , skip halfops
+						// nope, skip halfops
 						while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_HALFOP))
 						{
 							if(pEntry == m_pTopItem)
@@ -663,7 +663,7 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 						// is voiced ?
 						if(!(pUserEntry->m_iFlags & KVI_USERFLAG_VOICE))
 						{
-							// nope , not voiced so skip voiced users
+							// nope, not voiced so skip voiced users
 							while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_VOICE))
 							{
 								if(pEntry == m_pTopItem)
@@ -674,7 +674,7 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 							// is userop'd?
 							if(!(pUserEntry->m_iFlags & KVI_USERFLAG_USEROP))
 							{
-								// nope , skip userops
+								// nope, skip userops
 								while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_USEROP))
 								{
 									if(pEntry == m_pTopItem)
@@ -682,10 +682,10 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 									pEntry = pEntry->m_pNext;
 								}
 							} // else is userop, ops, halfops, and voiced are skipped
-						} // else it is voiced , ops and halfops are skipped
-					} // else it is halfop ,  ops are skipped
-				} // else it is op , chan admins are skipped
-			} // else it is chan admin , chan owners are skipped
+						} // else it is voiced, ops and halfops are skipped
+					} // else it is halfop,  ops are skipped
+				} // else it is op, chan admins are skipped
+			} // else it is chan admin, chan owners are skipped
 		} // else it is chan owner, so nothing to skip: they are first in the list
 
 		// now strcmp within the current user-flag group...
@@ -774,7 +774,7 @@ KviUserListEntry * KviUserListView::join(const QString & szNick, const QString &
 //		if(!host.isEmpty()) - it can be UHNAMES with host or NAMEX(X) w/o it
 //		{
 			// Ok...the user was already on...
-			// Probably this is a NAMES(X) reply , and the user IS_ME
+			// Probably this is a NAMES(X) reply, and the user IS_ME
 			// (already joined after the JOIN message)
 			if(iFlags != pEntry->m_iFlags)
 			{
@@ -825,7 +825,7 @@ bool KviUserListView::avatarChanged(const QString & szNick)
 	pUserEntry->updateAvatarData();
 	pUserEntry->recalcSize();
 	m_iTotalHeight += pUserEntry->m_iHeight;
-	// if this was "over" the top item , we must adjust the scrollbar value
+	// if this was "over" the top item, we must adjust the scrollbar value
 	// otherwise scroll everything down
 	KviUserListEntry * pEntry = m_pHeadItem;
 	bool bGotTopItem = false;
@@ -840,7 +840,7 @@ bool KviUserListView::avatarChanged(const QString & szNick)
 
 	if(!bGotTopItem && (m_pTopItem != pUserEntry))
 	{
-		// we're "over" the top item , so over the
+		// we're "over" the top item, so over the
 		// upper side of the view...adjust the scroll bar value
 		int iHeightDiff = pUserEntry->m_iHeight - iOldHeight;
 		m_pViewArea->m_iLastScrollBarVal += iHeightDiff;
@@ -1849,10 +1849,10 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 				{
 					// the g_pUserChanStatePixmap is 36 x 80 pixels
 					// divided into 6 rows of 5 pixmaps
-					// row 0 is hot , row 5 is cold
-					// left is most active , right is least active
-					// e->m_iTemperature is a signed short , negative values are cold
-					// e->m_lastActionTime is the time of the last action (eventually 0 , if not known)
+					// row 0 is hot, row 5 is cold
+					// left is most active, right is least active
+					// e->m_iTemperature is a signed short, negative values are cold
+					// e->m_lastActionTime is the time of the last action (eventually 0, if not known)
 					// 6 bit right shift is an aprox division for 64 : really aprox minutes
 					unsigned int uTimeDiff = (((unsigned int)(curTime - pEntry->m_lastActionTime)) >> 6);
 					if(uTimeDiff < 16)

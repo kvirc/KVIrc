@@ -49,7 +49,7 @@ static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
 	"dirbrowser.open",
 	"ident.start",
 	"ident.stop",
-	"tip.open" ,
+	"tip.open",
 	"openurl http://www.kvirc.net",
 	"list.open",
 	"if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open",

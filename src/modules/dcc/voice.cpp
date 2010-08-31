@@ -83,7 +83,7 @@ extern KviDccBroker * g_pDccBroker;
 
 
 //#define KVI_AUDIO_DEVICE "/dev/dsp"
-// 32 fragments , 512 bytes
+// 32 fragments, 512 bytes
 #define KVI_SNDCTL_FRAG_SIZE 0x00B00009
 #define KVI_FRAGMENT_SIZE_IN_BYTES 512
 #define KVI_FORMAT AFMT_S16_LE
@@ -391,7 +391,7 @@ bool KviDccVoiceThread::soundStep()
 			//	m_uSleepTime += 100; // sleep for a while
 			//}
 		} else {
-			// hmmmm....playing , but nothing to write , possible underrun or EOF
+			// hmmmm....playing, but nothing to write, possible underrun or EOF
 			// a nice idea would be to use SNDCTL_DSP_GETODELAY here...
 			// but it appears to be broken on some audio devices
 			if(ioctl(m_soundFd,SNDCTL_DSP_GETOSPACE,&info) < 0)info.fragstotal = info.fragments; // dummy...but what should we do ?
@@ -407,12 +407,12 @@ bool KviDccVoiceThread::soundStep()
 		{
 			if(m_inSignalBuffer.size() >= m_pOpt->iPreBufferSize)
 			{
-				// yep...stuff to play... open the soundcard , if possible
+				// yep...stuff to play... open the soundcard, if possible
 				startPlaying();
 
 				m_iLastSignalBufferSize = m_inSignalBuffer.size();
 			} else {
-				// have stuff to play , but it's not enough to fill the pre-buffer
+				// have stuff to play, but it's not enough to fill the pre-buffer
 				//
 				struct timeval tv;
 				gettimeofday(&tv,0);

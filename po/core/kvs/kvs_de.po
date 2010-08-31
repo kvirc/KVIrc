@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-29 12:46+0100\n"
+"POT-Creation-Date: 2010-08-31 10:02+0200\n"
 "PO-Revision-Date: 2010-06-10 21:07+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -130,7 +130,8 @@ msgstr ""
 "Eigenschaft ist indiziert und definiert, aber die zurückgegebene Variante "
 "ist ungültig"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1220 src/kvirc/kvs/kvi_kvs_object.cpp:1450
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1220
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1450
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed but it doesn't really exist"
@@ -151,8 +152,8 @@ msgstr ""
 msgid "Can't find the external popup '%Q': ignoring"
 msgstr "Kann das externe Popup ›%Q‹ nicht finden: ignoriere"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:479
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:477
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:479
 msgid "Can't find the icon '%Q'"
 msgstr "Kann Icon ›%Q‹ nicht finden"
 
@@ -209,7 +210,7 @@ msgstr ""
 "Klassennamen können nur Buchstaben, Ziffern, Unterstriche und ›::‹-"
 "Namensraumseperatoren enthalten"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:932
+#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:933
 msgid "Couldn't construct QDateTime object."
 msgstr "QDateTime-Objekt konnte nicht erstellt werden."
 
@@ -224,8 +225,8 @@ msgstr ""
 msgid "Couln't find base class named '%Q'"
 msgstr "Kann Basisklasse ›%Q‹ nicht finden"
 
-#: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:100
 #: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:156
+#: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:100
 msgid "DNS Lookup result for query \"%Q\""
 msgstr "DNS-Ergebnis für Anfrage »%Q«"
 
@@ -256,7 +257,8 @@ msgstr "Leere ›for‹-Endlosschleife: Reparieren Sie das Skript"
 msgid "Empty instruction block for command evaluation"
 msgstr "Leerer Instruktionsblock zur Befehlsauswertung"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:146 src/kvirc/kvs/kvi_kvs_parser.cpp:164
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:146
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:164
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:185
 msgid "Empty script"
 msgstr "Leere Zeichenkette"
@@ -300,8 +302,8 @@ msgid "Error triggered from process callback handler: killing process"
 msgstr ""
 "Der Callback-Handler-Prozess löste einen Fehler aus: Beende den Prozess"
 
-#: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:105
 #: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:161
+#: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:105
 msgid "Error: %Q"
 msgstr "Fehler: %Q"
 
@@ -322,7 +324,7 @@ msgstr "Senden eines unbekannten Befehls als /raw fehlgeschlagen"
 msgid "Failed to start the process"
 msgstr "Starten des Prozesses fehlgeschlagen"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1488
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1514
 msgid ""
 "Found 'break' label where a 'case','match','regexp' or 'default' label was "
 "expected"
@@ -342,7 +344,7 @@ msgstr ""
 "Zeichen %q (Unicode %x) gefunden, während nach der abschließenden ›)‹ des "
 "›for‹-Befehls gesucht wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1450
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1476
 msgid ""
 "Found character %q (unicode %x) where a 'case','match','regexp','default' or "
 "'break' label was expected"
@@ -350,7 +352,7 @@ msgstr ""
 "Zeichen %q (Unicode %x) gefunden, wo ein ›case‹-, ›match‹-, ›regexp‹-, "
 "›default‹- oder ›break‹-Label erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1597
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1623
 msgid ""
 "Found character %q (unicode %x) where a 'prologue', 'separator', 'label', "
 "'popup', 'item', 'extpopup' or 'epilogue' label was expected"
@@ -415,19 +417,19 @@ msgstr ""
 "Leeren ›foreach‹-Ausführungsblock befunden: Vielleicht sollten Sie ihr "
 "Skript reparieren?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1696
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1722
 msgid "Found empty epilogue block: maybe you need to fix the script?"
 msgstr ""
 "Leerer epilogue-Block gefunden: Vielleicht sollten Sie das Skript reparieren?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1803
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1829
 msgid ""
 "Found empty instruction for popup item: maybe you need to fix the script?"
 msgstr ""
 "Leerer Instruktionsblock für das popup-Element gefunden: Vielleicht sollten "
 "Sie das Skript reparieren?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1694
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1720
 msgid "Found empty prologue block: maybe you need to fix the script?"
 msgstr ""
 "Leerer prologue-Block gefunden: Vielleicht sollten Sie das Skript reparieren?"
@@ -441,7 +443,7 @@ msgstr ""
 "Eingabeende gefunden, wo Zeichen ›%c‹ erwartet wurde: Schauen Sie in »/help %"
 "s« nach der Befehlssyntax"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1493
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1519
 msgid ""
 "Found token '%Q' where a 'case','match','regexp','default' or 'break' label "
 "was expected"
@@ -449,7 +451,7 @@ msgstr ""
 "Token ›%Q‹ gefunden, wo ein ›case‹-, ›match‹-, ›regexp‹-, ›default‹- oder "
 "›break‹-Label erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1847
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1873
 msgid ""
 "Found token '%Q' where a 'prologue', 'separator', 'label', 'popup', 'item', "
 "'extpopup' or 'epilogue' label was expected"
@@ -474,13 +476,13 @@ msgstr ""
 "Hash-Referenzzusicherung fehlgeschlagen: Die Variable wurde zu Typ ›%Q‹ "
 "ausgewertet"
 
-#: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:110
 #: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:166
+#: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:110
 msgid "Hostname %d: %Q"
 msgstr "Hostname %d: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:116
 #: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:172
+#: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:116
 msgid "IP address %d: %Q"
 msgstr "IP-Adresse %d: %Q"
 
@@ -643,8 +645,8 @@ msgstr "Timeout-Verzögerung fehlt"
 msgid "Missing timer name"
 msgstr "Timer-Name fehlt"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:68
 #: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:67
+#: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:68
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr "Modulbefehlsaufruf fehlgeschlagen: Kann Modul ›%Q‹ nicht laden: %Q"
 
@@ -697,7 +699,8 @@ msgstr ""
 "kann mich ein wenig verwirren: Es ist eine gute Idee, dieses in "
 "Anführungszeichen einzuschließen"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1213 src/kvirc/kvs/kvi_kvs_object.cpp:1441
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1213
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1441
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr "Keine Qt-Eigenschaft ›%Q‹ für Objekt ›%Q‹ der Klasse ›%Q‹"
 
@@ -713,16 +716,16 @@ msgstr "Kein Katalog %Q für die aktuelle Sprache gefunden"
 msgid "No commandline specified for this type of url (%Q)"
 msgstr "Keine Befehlszeile angegeben für diesen URL-Typ (%Q)"
 
+#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:560
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1507
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1520
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1542
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:560
 msgid "No handler '%Q' for event '%Q'"
 msgstr "Kein Handler ›%Q‹ für Ereignis ›%Q‹"
 
+#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:554
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1503
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1516
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:554
 msgid "No handler '%Q' for raw numeric event '%d'"
 msgstr "Kein Handler ›%Q‹ für Raw-Numeric-Ereignis ›%d‹"
 
@@ -730,18 +733,18 @@ msgstr "Kein Handler ›%Q‹ für Raw-Numeric-Ereignis ›%d‹"
 msgid "No menu bar item with text '%Q'"
 msgstr "Kein Menüleisteneintrag mit Text ›%Q‹"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:491
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:582
+#: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:491
 #, c-format
 msgid "No such IRC context (%u)"
 msgstr "Kein solcher IRC-Kontext (%u)"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1483
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1491
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
 #: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:567
 #: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:575
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1483
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1491
 msgid "No such event (%Q)"
 msgstr "kein solches Ereignis (%Q)"
 
@@ -804,7 +807,8 @@ msgstr ""
 msgid "Properties for Qt class %s"
 msgstr "Eigenschaften für Qt-Klasse %s"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1406 src/kvirc/kvs/kvi_kvs_object.cpp:1549
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1406
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1549
 msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
 "type"
@@ -828,7 +832,7 @@ msgstr "Rechter Operand konnte nicht zu einer Zahl ausgewertet werden"
 msgid "Say parse error: Broken command"
 msgstr "Say-Parse-Fehler: defekter Befehl"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1556
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1582
 msgid "Senseless empty switch command: fix the script"
 msgstr "Sinnloser leerer switch-Befehl: Reparieren Sie das Skript"
 
@@ -853,13 +857,13 @@ msgid ""
 msgstr ""
 "Einzelner ›:‹ im Aliasnamen gefunden: Meinten Sie ...<namespace>::<name>?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:187
 #: src/kvirc/kvs/kvi_kvs_parser_command.cpp:93
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:187
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr "Einzelnes ›:‹-Zeichen: Meinten Sie ›...<namespace>::<alias_name>‹?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:179
 #: src/kvirc/kvs/kvi_kvs_parser_command.cpp:85
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:179
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr "Einzelne ›::‹-Sequenz oder ungültiger Aliasname"
 
@@ -921,7 +925,7 @@ msgstr "Syntaxfehler: Fehlerhafter Modulbefehlsbezeichner"
 msgid "The $sw() function can be used only in aliases"
 msgstr "Die $sw()-Funktion kann nur in Aliasen benutzt werden"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1956
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1982
 msgid "The 'defpopup' command needs an expression enclosed in parenthesis"
 msgstr "Der ›defpopup‹-Befehl benötigt einen Ausdruck in runden Klammern"
 
@@ -958,7 +962,7 @@ msgstr "Der ›global‹-Befehl benötigt eine Variablenliste"
 msgid "The 'if' command needs an expression enclosed in parenthesis"
 msgstr "Der if-Befehl benötigt einen Ausdruck in runden Klammern"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1393
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1419
 msgid "The 'switch' command needs an expression enclosed in parenthesis"
 msgstr "Der ›switch‹-Befehl benötigt einen Ausdruck in runden Klammern"
 
@@ -1178,7 +1182,8 @@ msgstr ""
 msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
 msgstr "Der Menü-Eintrag mit ID »%Q« existiert nicht im Popup »%Q«"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1206 src/kvirc/kvs/kvi_kvs_object.cpp:1428
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1206
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1428
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "Das Objekt ›%Q‹ der Klasse ›%Q‹ hat keine Qt-Eigenschaften"
 
@@ -1285,8 +1290,8 @@ msgstr "Das angegebene Elternobjekt existiert nicht"
 msgid "The specified ping time is invalid: assuming zero (no ping)"
 msgstr "Die angegebene Ping-Zeit ist ungültig: Nehme Null an (kein Ping)"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:446
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:437
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:446
 msgid "The specified window has no button containers"
 msgstr "Das angegebene Fenster hat keine Button-Container"
 
@@ -1342,8 +1347,8 @@ msgstr ""
 "Dies sieht sehr nach einem Objekt-Handle-Dereferenzierungsoperator ›->‹ aus, "
 "aber es ist keiner. Haben Sie vielleicht ein ›$‹ direkt danach vergessen?"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:305
+#: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
 msgid "This window has no associated IRC context"
 msgstr "Dieses Fenster hat keinen zugeordneten IRC-Kontext"
 
@@ -1352,9 +1357,9 @@ msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr ""
 "Dieses Fenster ist keinem IRC-Kontext zugeordnet und ist auch kein DCC-Chat"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:502
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:593
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:708
+#: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:502
 msgid "This window is not associated to an IRC context"
 msgstr "Dieses Fenster ist keinem IRC-Kontext zugeordnet"
 
@@ -1441,7 +1446,7 @@ msgstr ""
 "Unerwartetes Zeichen ›%q‹ (Unicode %x) nach einem void-Funktionsaufruf: Ende "
 "der Anweisungen erwartet"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1835
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1861
 msgid ""
 "Unexpected empty <name> field in extpopup parameters. See /help defpopup for "
 "the syntax"
@@ -1449,9 +1454,9 @@ msgstr ""
 "Unerwartetes leeres <name>-Feld in den extpopup-Parametern. Schauen Sie in /"
 "help defpopup nach der Syntax"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1748
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1779
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1827
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1774
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1805
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1853
 msgid ""
 "Unexpected empty <text> field in extpopup parameters. See /help defpopup for "
 "the syntax"
@@ -1459,7 +1464,7 @@ msgstr ""
 "Unerwartetes leeres <text>-Feld in den extpopup-Parametern. Schauen Sie in /"
 "help defpopup nach der Syntax"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1729
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1755
 msgid ""
 "Unexpected empty <text> field in label parameters. See /help defpopup for "
 "the syntax"
@@ -1486,7 +1491,7 @@ msgstr ""
 msgid "Unexpected end of buffer in class definition"
 msgstr "Unerwartetes Pufferende in Klassendefinition"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1590
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1616
 msgid "Unexpected end of buffer in defpopup block"
 msgstr "Unerwartetes Pufferende im defpopup-Block"
 
@@ -1494,7 +1499,7 @@ msgstr "Unerwartetes Pufferende im defpopup-Block"
 msgid "Unexpected end of buffer in function parameter list reminder"
 msgstr "Unerwartetes Pufferende in FUnktionsparameterlisten-Reminder"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1443
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1469
 msgid "Unexpected end of buffer in switch condition block"
 msgstr "Unerwartetes Pufferende im ›switch‹-Bedingungsblock"
 
@@ -1537,7 +1542,8 @@ msgstr ""
 "Unerwartetes Zeilenende im Hash-Schlüssel (fehlendes ›}‹-Zeichen oder nicht "
 "maskierter Zeilenumbruch)"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3022 src/kvirc/kvs/kvi_kvs_parser.cpp:3089
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3022
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3089
 msgid "Unexpected end of line in parameter list"
 msgstr "Unerwartetes Zeilenende in Paramaterliste"
 
@@ -1581,7 +1587,8 @@ msgstr ""
 msgid "Unexpected end of script in multiline comment"
 msgstr "Unerwartetes Skriptende im Mehrzeilenkommentar"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3016 src/kvirc/kvs/kvi_kvs_parser.cpp:3083
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3016
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3083
 msgid "Unexpected end of script in parameter list"
 msgstr "Unerwartetes Skriptende in Parameterliste"
 
@@ -1642,7 +1649,8 @@ msgstr "Unbekannter Operator"
 msgid "Unterminated c-style multiline comment"
 msgstr "Nicht abgeschlossener, mehrzeiliger, C-Stil Kommentar "
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3468 src/kvirc/kvs/kvi_kvs_parser.cpp:3475
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3468
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3475
 msgid "Unterminated hash key"
 msgstr "Nichtterminierter Hash-Schlüssel"
 
@@ -1650,7 +1658,8 @@ msgstr "Nichtterminierter Hash-Schlüssel"
 msgid "Unterminated instruction block"
 msgstr "Nichtterminierter Instruktionsblock"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3754 src/kvirc/kvs/kvi_kvs_parser.cpp:3761
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3754
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3761
 msgid "Unterminated string constant"
 msgstr "Nichtterminierte Zeichenkettenkonstante"
 
@@ -1718,7 +1727,8 @@ msgstr "[KVS]%c Kompilierungsfehler: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Laufzeitfehler: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:191 src/kvirc/kvs/kvi_kvs_report.cpp:199
+#: src/kvirc/kvs/kvi_kvs_report.cpp:191
+#: src/kvirc/kvs/kvi_kvs_report.cpp:199
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Warnung: %Q"
 

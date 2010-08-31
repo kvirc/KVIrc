@@ -65,7 +65,7 @@ static QLibrary * g_pSetupLibrary = 0;
 // Things launched at startup:
 // - Attempt to find the global Kvirc directory
 // - Attempt to find the local Kvirc directory
-//   and if it is not found , ask the user to choose one
+//   and if it is not found, ask the user to choose one
 //
 
 bool KviApp::checkGlobalKvircDirectory(const QString szDir)
@@ -632,7 +632,7 @@ void KviApp::findGlobalKvircDirectory()
 		// FAILED ? Check the usual way...
 	#endif //COMPILE_WITH_KDE
 */
-	// Non KDE compilation , or not found under $KDEDIR/share/apps/kvirc/$VERSION_BRANCH
+	// Non KDE compilation, or not found under $KDEDIR/share/apps/kvirc/$VERSION_BRANCH
 
 	// Check for MacOS X Bundle compilation
 	#ifdef COMPILE_ON_MAC
@@ -657,7 +657,7 @@ void KviApp::findGlobalKvircDirectory()
 		}
 	}
 
-	//Last resource , try $HOME and $HOME/.kde
+	//Last resource, try $HOME and $HOME/.kde
 	for(int k=0;usualKvircGlobalDir[k] != 0;k++){
 		m_szGlobalKvircDir = QDir::homePath();
 		m_szGlobalKvircDir+= usualKvircGlobalDir[k];
@@ -727,7 +727,7 @@ bool KviApp::findLocalKvircDirectory()
 		if(uSourcesDate < KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP)
 			return false; // we force a setup anyway
 
-		// If we have it , ok...done
+		// If we have it, ok...done
 		if(checkLocalKvircDirectory())
 			return true;
 	}
@@ -759,7 +759,7 @@ bool KviApp::findLocalKvircDirectory()
 		szF += KVI_HOME_CONFIG_FILE_NAME;
 	}
 
-	//If the file exists , read the first non empty line.
+	//If the file exists, read the first non empty line.
 	KviConfig cfgx(szF,KviConfig::Read);
 
 	cfgx.setGroup("Main");
@@ -769,7 +769,7 @@ bool KviApp::findLocalKvircDirectory()
 	if(uSourcesDate < KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP)
 		return false; // we force a setup anyway
 
-	// If we have it , ok...done
+	// If we have it, ok...done
 	return checkLocalKvircDirectory();
 }
 

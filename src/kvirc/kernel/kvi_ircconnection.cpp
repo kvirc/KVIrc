@@ -735,7 +735,7 @@ void KviIrcConnection::resurrectDeadQueries()
 // 01234567890123456789012345678901234567890123456789
 // 0123456789\r\n
 //
-// We keep a list of data to send , and flush it as soon as we can.
+// We keep a list of data to send, and flush it as soon as we can.
 //
 
 bool KviIrcConnection::sendFmtData(const char * pcFmt, ...)
@@ -831,7 +831,7 @@ void KviIrcConnection::delayedStartNotifyList()
 	// This delay is large enough to fire after the MOTD has been sent,
 	// even on the weirdest network.
 	// If there is no MOTD, this timer will fire after 15 secs,
-	// If there is a MOTD , restartNotifyList() will be triggered by RPL_ENDOFMOTD and
+	// If there is a MOTD, restartNotifyList() will be triggered by RPL_ENDOFMOTD and
 	// will kill the timer before it has fired.
 }
 
@@ -1630,7 +1630,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 void KviIrcConnection::incomingMessage(const char * pcMessage)
 {
 	// A message has arrived from the current server
-	// First of all , notify the monitors
+	// First of all, notify the monitors
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
 		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())

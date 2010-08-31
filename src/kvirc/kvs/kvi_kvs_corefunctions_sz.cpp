@@ -1137,7 +1137,7 @@ namespace KviKvsCoreFunctions
 			has the specified <caption text>.[br]
 			If no window matches the specified <caption text>, and invalid
 			window id is returned (0).[br]
-			If no <caption text> is specified , this function returns the id
+			If no <caption text> is specified, this function returns the id
 			of the current window.[br]
 			<context_id> restricts search in only one irc context.
 		@examples:

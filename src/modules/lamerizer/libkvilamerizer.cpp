@@ -266,9 +266,9 @@ static bool lamerizer_module_can_unload(KviModule *)
 KVIRC_MODULE(
 	"Lamerizer crypt engine",
 	"4.0.0",
-	"Szymon Stefanek <pragma at kvirc dot net> \n Jan Wagner <istari@kvirc.net>" ,
+	"Szymon Stefanek <pragma at kvirc dot net> \n Jan Wagner <istari@kvirc.net>",
 	"Exports the lamerizer text transformation engine",
-	lamerizer_module_init ,
+	lamerizer_module_init,
 	lamerizer_module_can_unload,
 	0,
 	lamerizer_module_cleanup,

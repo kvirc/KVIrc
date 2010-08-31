@@ -1022,7 +1022,7 @@ bool KviWindow::eventFilter(QObject *o,QEvent *e)
 				{
 					m_pFocusHandler->setFocus();
 				} else {
-					setFocus(); // we grab the focus (someone must do it , damn :D)
+					setFocus(); // we grab the focus (someone must do it, damn :D)
 				}
 			}
 			break;

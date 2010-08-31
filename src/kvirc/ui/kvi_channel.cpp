@@ -1160,7 +1160,7 @@ void KviChannel::ownMessage(const QString & szBuffer, bool bUserFeedback)
 							return;
 						if(bUserFeedback)
 						{
-							// ugly ,but we must redecode here
+							// ugly,but we must redecode here
 							QString szRedecoded = decodeText(encrypted.ptr());
 							m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 								QString(),QString(),QString(),szRedecoded,KviConsole::NoNotifications);

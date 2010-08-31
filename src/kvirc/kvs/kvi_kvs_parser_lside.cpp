@@ -39,7 +39,7 @@
 	@type:
 		language
 	@short:
-		Variable operators , assignments & co.
+		Variable operators, assignments & co.
 	@body:
 		Operator constructs are commands just like the other ones.
 		All the operators work on local or global variables and dictionaries.[br]

@@ -45,21 +45,21 @@ static int g_iNextConfigId = 0;
 		$config.open(<filename:string>[,<flags:string>])
 	@description:
 		Opens a config file.
-		If the file already exists , its contents
+		If the file already exists, its contents
 		are parsed and available for extracting by the [fnc]$config.read[/fnc]() function.[br]
 		<filename> may be an absolute path or a relative path: if a relative path is used,
 		KVIrc will complete it with a local kvirc directory suitable for writing script config files.[br]
-		If the config file doesn't exist , it is opened as empty config file.[br]
+		If the config file doesn't exist, it is opened as empty config file.[br]
 		Flags can contain a combination of letters 'r' and 'w'.[br]
-		If only 'r' is specified , the config file is opened in "read-only" mode: no changes will be written to disk.[br]
-		If only 'w' is specified , the config file is opened in "write-only" mode: the contents of the file on disk
+		If only 'r' is specified, the config file is opened in "read-only" mode: no changes will be written to disk.[br]
+		If only 'w' is specified, the config file is opened in "write-only" mode: the contents of the file on disk
 		are not readed.[br]
 		If <flags> are not specified then 'rw' is assumed.[br]
 		The function returns an identifier for the open config file. This identifier
 		is a mandatory parameter in all the other config.* functions and commands.[br]
 		The config section is set to the default section name: you can change it by using
 		[cmd]config.setsection[/cmd].[br]
-		After you have finished using the file , don't forget to call [cmd]config.close[/cmd]!
+		After you have finished using the file, don't forget to call [cmd]config.close[/cmd]!
 		KVIrc tries to not open a config file twice: if the file was already opened then
 		the identifier of the open file is returned.[br]
 		You can check if a config file is already open by using the
@@ -513,7 +513,7 @@ static bool config_kvs_fnc_filelist(KviKvsModuleFunctionCall * c)
 		Closes the config file identified by <id>.[br]
 		<id> must be a a valid config file identifier returned by [fnc]$config.open[/fnc].[br]
 		If the config file was opened as read-write (default), the changes will be stored
-		to disk. If the config was opened as read-only , changes will not be written.[br]
+		to disk. If the config was opened as read-only, changes will not be written.[br]
 		If the <id> does not match any open config file, a warning is printed unless
 		the -q switch is used.[br]
 	@seealso:
@@ -561,7 +561,7 @@ static bool config_kvs_cmd_close(KviKvsModuleCommandCall * c)
 		Flushes the config file identified by <id>.[br]
 		<id> must be a a valid config file identifier returned by [fnc]$config.open[/fnc].[br]
 		If the config file was opened as read-write (default), the changes will be stored
-		to disk. If the config was opened as read-only ,an error is printed.[br]
+		to disk. If the config was opened as read-only, an error is printed.[br]
 		If the <id> does not match any open config file, a warning is printed.
 	@seealso:
 		[module:config]Config module documentation[/module]
@@ -691,7 +691,7 @@ static bool config_kvs_cmd_clearsection(KviKvsModuleCommandCall * c)
 		<id> must be a valid config file id returned by [fnc]$config.open[/fnc]().[br]
 		<key> and <value> can be any strings.[br]
 		The <key>=<value> pair is written in the current section of the config file.[br]
-		If <key> already exists in the current section of the config , the corresponding value is replaced with <value>.[br]
+		If <key> already exists in the current section of the config, the corresponding value is replaced with <value>.[br]
 		If <value> is an empty string, the <key> is simply removed from the current section.[br]
 		If a section remains empty (with no keys) at file write time, that section will be removed.[br]
 		The changes are NOT written to disk: you must call [cmd]config.flush[/cmd] or (better) [cmd]config.close[/cmd]
@@ -792,25 +792,24 @@ static bool config_kvs_cmd_setsection(KviKvsModuleCommandCall * c)
 		<key1>=<value1>[br]
 		....[br]
 		[br]
-		Keys and values are plain text strings. Eventual newlines in values are encoded using
+		Keys and values are plain text strings - newlines in values are encoded using
 		a simple hexadecimal notation.[br]
 		The config files can be also edited by using any text editor.[br]
 		The config module works on config files loaded in memory. For this reason,
-		you must first open a config file by the means of [fnc]$config.open[/fnc]().[br]
-		Once you open the file , if it exists on disk , its contents are loaded into memory
-		and you can access the data stored in it. If the file wasn't existing, and empty
-		memory config file is created.[br]
+		you must first open a config file by [fnc]$config.open[/fnc]() - if the file exists
+		on disk, its contents are loaded and you can access the data stored in it, otherwise
+		an empty config file is created in memory.[br]
 		The config file is opened in read-write mode by default. You can also choose
-		the "read-only" method: a read-only config file is never flushed to disk (but you can
-		set the values in memory!).[br]
-		It is not a good idea to keep a config file open forever: a good approach
-		is to keep settings in memory variables and write them all at once when it comes to
-		write settings: you open the config file , write all your values and close the file.[br]
+		the "read-only" method - a read-only config file is never flushed to disk (but you
+		can still set values in memory!).[br]
+		It is not a good idea to keep a config file open forever. A better approach is to
+		keep settings in memory variables - when you want to write to disk, open the config
+		file, write all your values and then close the file.[br]
 		You can obviously keep the config file open for some time but remember that
-		no change is written to the disk until [cmd]config.flush[/cmd] or [cmd]config.close[/cmd] is called.[br]
+		no changes are written to the disk until [cmd]config.flush[/cmd] or [cmd]config.close[/cmd] is called.[br]
 		You write entries by using [cmd]config.write[/cmd] and read them by using [fnc]$config.read[/fnc]().[br]
 		You can change the "current" config section by using [cmd]config.setsection[/cmd].[br]
-		Here comes a complete list of commands and functions exported by this module:[br]
+		The following lists all commands and functions exported by this module:[br]
 		[fnc]$config.open[/fnc][br]
 		[fnc]$config.read[/fnc][br]
 		[fnc]$config.section[/fnc][br]

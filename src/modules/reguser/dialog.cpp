@@ -371,7 +371,7 @@ void KviRegisteredUsersDialog::itemPressed(QTreeWidgetItem *it,int c)
 						szMask.append(tmp);
 					}
 				}
-				// if the nickname list is still empty , build a dummy nick to notify
+				// if the nickname list is still empty, build a dummy nick to notify
 				if(szMask.isEmpty())
 				{
 					szMask = i->user()->name();

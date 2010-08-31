@@ -42,7 +42,7 @@ public:
 	QString m_szTipText;
 public:
 	KviImageDialogItem(KviTalListWidget * b,const QPixmap &thumb,const QString &szFile,const QString &image_id,const QString &szTipText = QString(),bool bIsFolder = false)
-	: KviTalListWidgetPixmap(b,thumb,szFile) , m_bIsFolder(bIsFolder) , m_szImageId(image_id) , m_szTipText(szTipText) {};
+	: KviTalListWidgetPixmap(b,thumb,szFile), m_bIsFolder(bIsFolder), m_szImageId(image_id), m_szTipText(szTipText) {};
 	~KviImageDialogItem(){};
 public:
 	bool isFolder(){ return m_bIsFolder; };

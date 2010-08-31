@@ -33,7 +33,7 @@
 class KVIRC_API KviKvsEventHandler : public KviHeapObject
 {
 public:
-	enum Type { Script , Module };
+	enum Type { Script, Module };
 protected:
 	Type m_type;
 public:

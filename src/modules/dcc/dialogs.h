@@ -43,7 +43,7 @@ public:
 };
 
 
-class KviDccAcceptBox : public QWidget , public KviDccBox
+class KviDccAcceptBox : public QWidget, public KviDccBox
 {
 	Q_OBJECT
 public:
@@ -60,7 +60,7 @@ signals:
 	void rejected(KviDccBox *,KviDccDescriptor *);
 };
 
-class KviDccRenameBox : public QWidget , public KviDccBox
+class KviDccRenameBox : public QWidget, public KviDccBox
 {
 	Q_OBJECT
 public:

@@ -69,7 +69,7 @@
 // Numeric message handlers
 
 // FIXME: #warning "IN ALL OUTPUT ADD ESCAPE SEQUENCES!!!!"
-// FIXME: #warning "parseErrorUnknownModeChar() for modes e and I , parseErrorUnknownCommand for WATCH"
+// FIXME: #warning "parseErrorUnknownModeChar() for modes e and I, parseErrorUnknownCommand for WATCH"
 
 void KviServerParser::parseNumeric001(KviIrcMessage *msg)
 {
@@ -383,7 +383,7 @@ void KviServerParser::parseNumericMotd(KviIrcMessage *msg)
 	// :prefix 375 target : - <server> Message of the Day -
 	// 372: RPL_ENDOFMOTD [I,E,U,D]
 	// :prefix 376 target :End of /MOTD command.
-	// FIXME: #warning "SKIP MOTD , MOTD IN A SEPARATE WINDOW , SILENT ENDOFMOTD , MOTD IN ACTIVE WINDOW"
+	// FIXME: #warning "SKIP MOTD, MOTD IN A SEPARATE WINDOW, SILENT ENDOFMOTD, MOTD IN ACTIVE WINDOW"
 	if(!msg->haltOutput())
 		msg->console()->outputNoFmt(KVI_OUT_MOTD,msg->connection()->decodeText(msg->safeTrailing()));
 
@@ -1926,7 +1926,7 @@ void KviServerParser::parseNumericWatch(KviIrcMessage *msg)
 	}
 	// not handled...output it
 
-// FIXME: #warning "OUTPUT IT! (In a suitable way) (And handle 602 , 603 , 606 and 607 gracefully)"
+// FIXME: #warning "OUTPUT IT! (In a suitable way) (And handle 602, 603, 606 and 607 gracefully)"
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?

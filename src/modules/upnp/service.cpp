@@ -58,7 +58,7 @@ Service::Service(const QString &hostname, int port, const QString &informationUr
 {
 	m_szInformationUrl = informationUrl;
 	m_pHttp = new QHttp(hostname, port);
-	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ) , this, SLOT( slotRequestFinished(int,bool) ) );
+	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ), this, SLOT( slotRequestFinished(int,bool) ) );
 
 	qDebug() << "UPnP::Service: Created information service url='" << m_szInformationUrl << "'." << endl;
 }
@@ -76,7 +76,7 @@ Service::Service(const ServiceParameters &params)
 , m_iPort(params.port)
 {
 	m_pHttp = new QHttp(params.hostname, params.port);
-	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ) , this, SLOT( slotRequestFinished(int,bool) ) );
+	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ), this, SLOT( slotRequestFinished(int,bool) ) );
 
 	qDebug() << "CREATED UPnP::Service: url='" << m_szControlUrl << "' id='" << m_szServiceId << "'." << endl;
 }
@@ -116,8 +116,8 @@ int Service::callActionInternal(const QString &actionName, const QMap<QString,QS
 	qDebug() << "UPnP::Service: calling remote procedure '" << actionName << "'." << endl;
 
 	// Create the data message
-	//NOTE: we shouldm use serviceId_ instead of serviceType_ , but it seems that my router
-	// (and maybe others) are reporting wrong Ids , while they're gonna accepting only the
+	//NOTE: we shouldm use serviceId_ instead of serviceType_, but it seems that my router
+	// (and maybe others) are reporting wrong Ids, while they're gonna accepting only the
 	// correct ones. This is a decoded reply from my Zyxel:
 
 	//  Service :

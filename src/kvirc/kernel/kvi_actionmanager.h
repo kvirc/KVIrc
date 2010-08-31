@@ -57,7 +57,7 @@ protected:
 	static KviActionCategory * m_pCategoryGUI;
 	static KviActionCategory * m_pCategoryChannel;
 	static KviActionCategory * m_pCategoryTools;
-	// internal , current toolbar to be edited (only when customizing)
+	// internal, current toolbar to be edited (only when customizing)
 	static KviCustomToolBar * m_pCurrentToolBar;
 	bool m_bCoreActionsRegistered;
 public:

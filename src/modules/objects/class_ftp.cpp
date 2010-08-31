@@ -298,7 +298,7 @@ void KviKvsObject_ftp::slotReadyRead ()
 {
 }
 
-void KviKvsObject_ftp::slotRawCommandReply (int , const QString & )
+void KviKvsObject_ftp::slotRawCommandReply (int, const QString & )
 {
 }
 

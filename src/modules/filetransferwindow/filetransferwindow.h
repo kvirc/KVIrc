@@ -85,7 +85,7 @@ public:
 	void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
 };
 
-class KviFileTransferWindow : public KviWindow , public KviModuleExtension
+class KviFileTransferWindow : public KviWindow, public KviModuleExtension
 {
 	friend class KviFileTransferItem;
 	friend class KviFileTransferItemDelegate;

@@ -195,7 +195,7 @@ bool KviConfig::load()
 			} else {
 				// just readed something but less than expected
 				// check if the last readed char is a newline
-				// if it isn't , fake it
+				// if it isn't, fake it
 				if(*(p + readedLen - 1) != '\n')
 				{
 					*(p + readedLen) = '\n';
@@ -378,7 +378,7 @@ bool KviConfig::load()
 			switch(*(dataLine.ptr()))
 			{
 				case '#':
-					// just skip it , it is a comment
+					// just skip it, it is a comment
 				break;
 				case '[':
 				{

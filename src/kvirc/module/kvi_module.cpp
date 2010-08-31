@@ -72,7 +72,7 @@ extern KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager;
 
 		[big]Module naming convention[/big][br]
 		Every KVIrc module must have an "unique" name: the name is a single token,
-		made only of [b]lowercase[/b] letters , digits and underscores.
+		made only of [b]lowercase[/b] letters, digits and underscores.
 		The real object file (library) is named "libkvi<name>.so".
 		This convention allows KVIrc to load modules when they are referenced
 		by name in the scripting code (the reference in the code is case insensitive

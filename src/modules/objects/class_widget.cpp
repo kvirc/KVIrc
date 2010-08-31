@@ -246,7 +246,7 @@ const char * const widgettypes_tbl[] = {
 		Changes the widget's width to <width> and height to <height>.
 		See also [classfnc]$setGeometry[/classfnc]().
 		!fn: $isEnabled()
-		Returns '1' if the widget is enabled , '0' otherwise.
+		Returns '1' if the widget is enabled, '0' otherwise.
 		See also [classfnc:widget]$setEnabled[/classfnc]().
 		!fn: $setEnabled(<bool>)
 		Sets the widget state to enabled or disabled if <bool> is 1 or 0 respectively.
@@ -284,8 +284,8 @@ const char * const widgettypes_tbl[] = {
 		widget is a toplevel one.
 		!fn: $backgroundColor()
 		Returns the background color of this widget in hexadecimal
-		html-like format. For example , for a black bacground you will get
-		the string "000000" , for a red one , "FF0000", for a white one
+		html-like format. For example, for a black bacground you will get
+		the string "000000", for a red one, "FF0000", for a white one
 		"FFFFFF". See also [classfnc]$setBackgroundColor[/classfnc]()
 		!fn: $setBackgroundColor(<rgb(hex string)_array(red:integer,green:integer,blue_integer)_or_red>,[geen:integer],[blue:integer])
 		Sets the background color of this widget to <rgb_value>:valid values are:
@@ -584,18 +584,18 @@ const char * const widgettypes_tbl[] = {
 
 
 //
-// If you never call c->error() , c->warning() (your function never fails)
+// If you never call c->error(), c->warning() (your function never fails)
 // and never call a function that can call c->error() or c->warning()
 // you can avoid ENTER_STACK_FRAME and c->leaveStackFrame()
 // Just return true.
 // c->error() should be called only in really critical situations
 // (we have to define better "critical situation")
-// if possible , leave the things go after just a c->warning()
+// if possible, leave the things go after just a c->warning()
 //
 
 	// widget() will be never 0 in THIS class
 	// but in derived classes WILL be
-	// ... now that I think about it , it
+	// ... now that I think about it, it
 	// may happen that widget() will be zero here too:
 	// If the Qt "physical" widget gets destroyed
 	// by some external factor (for example when children
@@ -609,7 +609,7 @@ const char * const widgettypes_tbl[] = {
 	//   as in a qtwrapper not yet wrapped or failed to wrap (so
 	//   qtwrapper::$wrap() returned '0' for example)
 	//   or after the widget has been destroyed...
-	//   if widget() is 0 , the functions perform no actions
+	//   if widget() is 0, the functions perform no actions
 	//   return no errors and results that have to be assumed
 	//   as invalid (this allows the minimum overhead: if widget()
 

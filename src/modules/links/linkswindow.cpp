@@ -46,7 +46,7 @@
 extern KviPointerList<KviLinksWindow> * g_pLinksWindowList;
 
 KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
-: KviWindow(KVI_WINDOW_TYPE_LINKS,lpFrm,"links",lpConsole) , KviExternalServerDataParser()
+: KviWindow(KVI_WINDOW_TYPE_LINKS,lpFrm,"links",lpConsole), KviExternalServerDataParser()
 {
 	g_pLinksWindowList->append(this);
 

@@ -142,7 +142,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandBreak()
 		@description:
 			Interrupts an iteration loop like [cmd]while[/cmd].[br]
 			This command always jumps out of a single code block.[br]
-			If called outside an iteration loop , will act just like [cmd]halt[/cmd]
+			If called outside an iteration loop, will act just like [cmd]halt[/cmd]
 			has been called but has no additional semantics for events.[br]
 	*/
 	const QChar * pBegin = KVSP_curCharPointer; // FIXME: this is not accurate at all : it may be even the end of the cmd
@@ -697,7 +697,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandWhile()
 			delete e;
 			return 0;
 		}
-	} // else , just an empty instruction
+	} // else, just an empty instruction
 
 	return new KviKvsTreeNodeSpecialCommandWhile(pBegin,e,i);
 }
@@ -890,7 +890,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 			delete e;
 			return 0;
 		}
-	} // else , just an empty instruction
+	} // else, just an empty instruction
 
 	if(!skipSpacesAndNewlines())
 	{
@@ -963,7 +963,7 @@ handle_else_instruction:
 			if(i)delete i;
 			return 0;
 		}
-	} // else , just an empty instruction
+	} // else, just an empty instruction
 
 	return new KviKvsTreeNodeSpecialCommandIf(pBegin,e,i,i2);
 }
@@ -1180,9 +1180,9 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 			Iteration command
 		@description:
 			Executed <command> while assigning to <variable> each <item>.[br]
-			<item> may be a constant , a variable , an array , a dictionary or a function returning
+			<item> may be a constant, a variable, an array, a dictionary or a function returning
 			either a constant string an array reference or a dictionary reference.[br]
-			If <item> is an array , a dictionary or a function that returns a dictionary or array reference
+			If <item> is an array, a dictionary or a function that returns a dictionary or array reference
 			the iteration is done through all the dictionary/array items.[br]
 			Please note that the iteration order of dictionary items is undefined.[br]
 			You can always break from the loop by using the [cmd]break[/cmd] command.[br]
@@ -1929,17 +1929,17 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 			the previous contents of the popups are cleared, otherwise are preserved.[br]
 			The popup is generated 'on the fly' when the [cmd]popup[/cmd] command
 			is called.[br]
-			The 'item' keyword adds a menu item with visible <text> ,
+			The 'item' keyword adds a menu item with visible <text>,
 			the optional <icon> and <command> as code to be executed when the item
 			is clicked. <text> is a string that is evaluated at [cmd]popup[/cmd]
 			call time and may contain identifiers and variables. If <expression>
 			is given, it is evaluated at [cmd]popup[/cmd] call time and if the result
 			is 0, the item is not shown in the physical popup.[br]
-			The 'popup' keyword adds a submenu with visible <text> , the optional
+			The 'popup' keyword adds a submenu with visible <text>, the optional
 			<icon> and a popup body that follows exactly the same syntax
 			as the defpopup body. The <expression> has the same meaning as with the
 			'item' keyword.[br]
-			The 'extpopup' keyword adds a submenu with visible <text> , the optional
+			The 'extpopup' keyword adds a submenu with visible <text>, the optional
 			icon and a popup body that is defined by the popup menu <name>. This
 			basically allows to nest popup menus and define their parts separately.
 			<icon> and <expression> have the same meaning as with the 'item' keyword.[br]
@@ -1955,7 +1955,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 			<id> is an unique identifier that can be used to remove single items
 			by the means of [cmd]delpopupitem[/cmd]. If <id> is omitted
 			then it is automatically generated.
-			Please note that using this command inside the prologue , epilogue
+			Please note that using this command inside the prologue, epilogue
 			or item code of the modified popup menu is forbidden.
 			In other words: self modification of popup menus is NOT allowed.[br]
 			To remove a popup menu use this command with an empty body:[br]

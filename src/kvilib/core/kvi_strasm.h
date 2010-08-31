@@ -37,7 +37,7 @@ extern inline bool kvi_strEqualCS(const char * pcStr1, const char * pcStr2)
 {
 	// An instruction pattern is really useful in this case.
 	// When inlining, GCC can optimize to load esi and edi
-	// directly with the strings , without pushing and getting it
+	// directly with the strings, without pushing and getting it
 	// from the stack...
 	register bool bEax;
 	__asm__ __volatile__ (

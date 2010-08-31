@@ -94,7 +94,7 @@ static void KviKvsSqlInstanceUnregister(KviKvsObject_sql *instance)
                       !fn: $commit()
                       Commit the transaction.
                       !fn: $setCurrentQuery(<connection_name:string>)
-                      Sets the query for the database connection <connection_name> , which has to be already connected, as current query.
+                      Sets the query for the database connection <connection_name>, which has to be already connected, as current query.
                       !fn: <connection_name:string> $currentQuery()
                       Returns the name of the database connection for the current query, or an empty string if there aren't any initialized queries.
                       !fn: $closeConnection(<connection_name:string>)

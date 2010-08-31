@@ -49,13 +49,13 @@ extern QPixmap * g_pActivityMeterPixmap;
 // KviTreeWindowListItem
 
 KviTreeWindowListItem::KviTreeWindowListItem(QTreeWidget * par,KviWindow * wnd)
-: QTreeWidgetItem(par) , KviWindowListItem(wnd)
+: QTreeWidgetItem(par), KviWindowListItem(wnd)
 {
 	applyOptions();
 }
 
 KviTreeWindowListItem::KviTreeWindowListItem(KviTreeWindowListItem * par,KviWindow * wnd)
-: QTreeWidgetItem(par) , KviWindowListItem(wnd)
+: QTreeWidgetItem(par), KviWindowListItem(wnd)
 {
 	applyOptions();
 }
@@ -395,7 +395,7 @@ KviWindowListItem * KviTreeWindowList::addItem(KviWindow * wnd)
 		}
 	}
 
-	// console , or a window that has no irc context
+	// console, or a window that has no irc context
 	return new KviTreeWindowListItem(m_pTreeWidget,wnd);
 }
 

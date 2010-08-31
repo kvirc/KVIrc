@@ -411,12 +411,12 @@ int KviCustomToolBar::dropIndexAt(const QPoint & pnt, QWidget * pExclude, int * 
 			}
 		}
 
-		// ok , check again (we might have moved exactly over exclude idx now!)
+		// ok, check again (we might have moved exactly over exclude idx now!)
 		if((iExcludeIdx != -1) && (iExcludeIdx != iMinDistIdx))
 		{
 			// got the exclude idx by the way and wouldn't put exactly over it
 			// check if exclude idx is "before" the current possible insert position
-			// if it is , then lower down the index by one
+			// if it is, then lower down the index by one
 			if(orientation() == Qt::Horizontal)
 			{
 				if(pnt.x() > pntExclude.x())

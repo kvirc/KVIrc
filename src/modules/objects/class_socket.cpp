@@ -66,7 +66,7 @@
 	@description:
 		This class provides a standard TCP/IP socket functionality.[br]
 		It can be used either for connecting to a remote host or to listening for incoming connections.[br]
-		If the KVIrc executable has been compiled with the IPV6 protocol support , this socket also supports it.[br]
+		If the KVIrc executable has been compiled with the IPV6 protocol support, this socket also supports it.[br]
 	@functions:
 		!fn: $status()
 		Returns the status of the socket :[br]
@@ -90,27 +90,27 @@
 		<host> can be a numeric internet address (either Ipv4 or Ipv6 (if supported)) or a hostname.[br]
 		If a hostname is used, a DNS lookup is performed (the socket enters the "dns call" state).[br]
 		This function returns 1 if the connect attempt can be successfully initiated,
-		0 otherwise.[br] In fact , this function returns 0 only if the supplied <port> parameter
+		0 otherwise.[br] In fact, this function returns 0 only if the supplied <port> parameter
 		is invalid or the socket is in an incoherent state (already connected or listening):
 		for a newly created socket and with a valid <port> number you can safely ignore
 		the return value.[br]
 		Please note that the connection is asynchronous: when this function returns
 		the socket is NOT connected: it has just initiated the connect attempt
 		and you will be notified of the attempt result by an asynchronous event call:
-		in case of failure , $connectFailedEvent() will be called , in case of
-		succes , $connectEvent() will be called.
+		in case of failure, $connectFailedEvent() will be called, in case of
+		succes, $connectEvent() will be called.
 
 		!fn: $listen([<port>[,<interface>[,<force_ipv6>]]])
 		Attempts to listen on the specified <port> and <interface>.[br]
-		If <port> is not passed it is assumed to be 0 , if <interface> is not passed , it is assumed to be
+		If <port> is not passed it is assumed to be 0, if <interface> is not passed, it is assumed to be
 		"any interface" (INADDR_ANY).[br] Port 0 means that the kernel should choose a "random" port to listen on.[br]
-		If the <interface> is recognized as IPV6 address , and IPV6 is supported , the socket listens
+		If the <interface> is recognized as IPV6 address, and IPV6 is supported, the socket listens
 		in IPV6 mode. If <interface> is an empty string and <force_ipv6> is 1 the socket listens
 		on "any ipv6 interface".[br]
 		This function returns '1' in case of success and '0' in case of failure.[br]
 		On some systems listening in the IPV6 namespace allows to accept also IPV4 connections (this includes
 		linux but not windows afaik).[br]
-		When an incoming connection will arrive , $incomingConnectionEvent() will be called.
+		When an incoming connection will arrive, $incomingConnectionEvent() will be called.
 
 		!fn: $accept(<socketId>)
 		This function can be called only from inside $incomingConnectionEvent().[br]
@@ -187,11 +187,11 @@
 
 		!fn: $localIp()
 		Returns the IP address of the local end of this socket.[br]
-		The return value is meaningful only if the socket is in connected , listening or connecting state.
+		The return value is meaningful only if the socket is in connected, listening or connecting state.
 
 		!fn: $localPort()
 		Returns the port of the local end of this socket.[br]
-		The return value is meaningful only if the socket is in connected , listening or connecting state.
+		The return value is meaningful only if the socket is in connected, listening or connecting state.
 
 @examples:
 		[example]

@@ -130,7 +130,7 @@ bool KviIpEditor::setAddress(const QString &ipAddr)
 			QByteArray str(anchor,c - anchor);
 			bool bOk;
 			int num = str.toInt(&bOk);
-			if(!bOk)return false; // should never happen , but just to be sure
+			if(!bOk)return false; // should never happen, but just to be sure
 			if((num < 0) || (num > 255))return false; // Invalid field
 			m_pEdit[i]->setText(str.data());
 			if(i < 3){
@@ -184,7 +184,7 @@ QString KviIpEditor::address() const
 
 void KviIpEditor::recreateChildren()
 {
-	// A bit slow , but compact
+	// A bit slow, but compact
 	bool bIPv4 = (m_addrType == IPv4);
 	int max = bIPv4 ? 4 : 8;
 	QFontMetrics fm(font());
@@ -209,7 +209,7 @@ void KviIpEditor::recreateChildren()
 			m_pLabel[i]->setBackgroundRole(isEnabled() ? QPalette::Base : QPalette::Background);
 		}
 	}
-	// Kill the unused widgets , if any
+	// Kill the unused widgets, if any
 	if(bIPv4)
 	{
 		for(int i=4;i<8;i++)
@@ -300,7 +300,7 @@ bool KviIpEditor::eventFilter(QObject * o,QEvent *e)
 							s.insert(cursorPos,c);
 							bool bOk = false;
 							int num = s.toInt(&bOk);
-							if(!bOk)return true; //should never happen , but just to be sure
+							if(!bOk)return true; //should never happen, but just to be sure
 							if((num < 0) || (num > 255))return true; //invalid field
 							m_pEdit[edIdx]->setText(s);
 							if(num > 25)

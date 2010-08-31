@@ -90,7 +90,7 @@ protected:
 	void updateToolTip();
 	void deactivate();
 	void iconButtonClicked();
-	virtual bool eventFilter(QObject * o ,QEvent * e);
+	virtual bool eventFilter(QObject * o,QEvent * e);
 	virtual void mousePressEvent(QMouseEvent * e);
 	virtual void keyPressEvent(QKeyEvent * e);
 	virtual void resizeEvent(QResizeEvent * e);

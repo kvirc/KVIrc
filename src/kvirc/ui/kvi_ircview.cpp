@@ -28,35 +28,35 @@
 //
 // #define HOPE_THAT_IT_WILL_NEVER_NEED_TO_BE_MODIFIED :)
 
-// 07 May 1999 ,
-//      Already forgot how this damn thing works ,
+// 07 May 1999,
+//      Already forgot how this damn thing works,
 //      and spent 1 hour over a stupid bug.
 //      I had to recreate the whole thing in my mind......ooooouh...
 //      How did I wrote it ?
 //      Just take a look to paintEvent() or to calculateLineWraps()...
 //      Anyway...I've solved the bug.
 
-// 23 Nov 1999 ,
-//      Well , not so bad...I seem to still remember how it works
-//      So just for fun , complicated the things a little bit more.
+// 23 Nov 1999,
+//      Well, not so bad...I seem to still remember how it works
+//      So just for fun, complicated the things a little bit more.
 //      Added precaclucaltion of the text blocks and word wrapping
 //      and a fast scrolling mode (3 lines at once) for consecutive
 //      appendText() calls.
 //      Now the code becomes really not understandable...:)
 
-// 29 Jun 2000 21:02 ,
+// 29 Jun 2000 21:02,
 //      Here we go again... I have to adjust this stuff for 3.0.0
 //      Will I make this thingie work ?
-// 01 Jul 2000 04:20 (AM!) ,
+// 01 Jul 2000 04:20 (AM!),
 //      Yes....I got it to work just now
-//      and YES , complicated the things yet more.
+//      and YES, complicated the things yet more.
 //      This time made some paint event code completely unreadable
 //      by placing two monster macros...
 //      I hope that you have a smart compiler (such as gcc is).
 
 // 09 Dec 2000
 //      This is my C-asm-optimisation-hack playground
-//      Expect Bad Programming(tm) , Ugly Code(tm) , Unreadable Macros (tm)
+//      Expect Bad Programming(tm), Ugly Code(tm), Unreadable Macros (tm)
 //      and massive usage of the Evil(tm) goto.
 
 // 25 Sep 2001
@@ -165,8 +165,8 @@
 //#define KVI_IRCVIEW_MAX_LINES 1024
 // A little bit more than the scroll-bar...
 // Qt+X have strange interactions that I can not understand when I try to move the splitter
-// to the maximum on the left , Maybe the cache pixmap size becomes negative ? (I don't think so)
-// Anyway , when the scroll bar position becomes negative (or the IrcView has smaller width than
+// to the maximum on the left, Maybe the cache pixmap size becomes negative ? (I don't think so)
+// Anyway, when the scroll bar position becomes negative (or the IrcView has smaller width than
 // the scroll bar) X aborts with a funny
 // X Error: BadDrawable (invalid Pixmap or Window parameter) 9
 //   Major opcode:  55
@@ -535,9 +535,9 @@ void KviIrcView::setTimestamp(bool bTimestamp)
 	m_bTimestamp = bTimestamp;
 
 
-// STATS FOR A BUFFER FULL OF HIGHLY COLORED STRINGS , HIGHLY WRAPPED
+// STATS FOR A BUFFER FULL OF HIGHLY COLORED STRINGS, HIGHLY WRAPPED
 //
-// Lines = 1024 (322425 bytes - 314 KB) (avg 314 bytes per line) , well :)
+// Lines = 1024 (322425 bytes - 314 KB) (avg 314 bytes per line), well :)
 // string bytes = 87745 (85 KB)
 // attributes = 3576 (42912 bytes - 41 KB)
 // blocks = 12226 (146712 bytes - 143 KB)
@@ -1022,7 +1022,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 
 	if(p)
 	{
-		r = p->rect(); // app triggered , or self triggered from fastScroll (in that case m_iUnprocessedPaintEventRequests is set to 0 there)
+		r = p->rect(); // app triggered, or self triggered from fastScroll (in that case m_iUnprocessedPaintEventRequests is set to 0 there)
 		if(r == rect())
 			m_iUnprocessedPaintEventRequests = 0; // only full repaints reset
 	} else {
@@ -1249,7 +1249,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 				}
 
 			} else {
-				// no attributes , it is a line wrap
+				// no attributes, it is a line wrap
 				curLeftCoord = defLeftCoord;
 				if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))curLeftCoord+=m_iWrapMargin;
 				curBottomCoord += m_iFontLineSpacing;
@@ -1395,7 +1395,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 					int wdth = block->block_width;
 					if(wdth == 0)
 					{
-						// Last block before a word wrap , or a zero characters attribute block ?
+						// Last block before a word wrap, or a zero characters attribute block ?
 						if(i < (pCurTextLine->iBlockCount - 1))
 						{
 							// There is another block...
@@ -1431,7 +1431,7 @@ no_selection_paint:
 					if(!daIcon)
 					{
 						// this should never happen since we do a check
-						// when building the text icon block , but.. better safe than sorry:
+						// when building the text icon block, but.. better safe than sorry:
 						// so... we lost some icons ? wrong associations ?
 						// recover it by displaying the "question mark" icon
 						daIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_HELP); // must be there, eventually null pixmap :D
@@ -1719,7 +1719,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 					curLineWidth+=IRCVIEW_WCHARWIDTH(*p);
 					uLoopedChars++;
 				} while((curLineWidth < maxWidth) && (curBlockLen < maxBlockLen));
-				// Now overrunned , go back 1 char (if we ran over at least 2 chars)
+				// Now overrunned, go back 1 char (if we ran over at least 2 chars)
 				if(uLoopedChars>1)
 				{
 					p--;

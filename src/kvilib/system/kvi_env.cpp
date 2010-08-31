@@ -56,7 +56,7 @@ bool kvi_setenv(const char * name,const char * value)
 	#else
 bool kvi_setenv(const char *,const char *)
 {
-		// no setenv , no putenv.. what the hell of system is this ?
+		// no setenv, no putenv.. what the hell of system is this ?
 		return false;
 	#endif
 #endif
@@ -82,7 +82,7 @@ void kvi_unsetenv(const char * name)
 			// hmmm
 			if(kvi_getenv(name) == 0)
 			{
-				// ok , the string is not in the environment
+				// ok, the string is not in the environment
 				// we can free it
 				kvi_free(buf);
 			} // else this system sux
@@ -90,7 +90,7 @@ void kvi_unsetenv(const char * name)
 	#else
 void kvi_unsetenv(const char *)
 {
-		// no setenv , no putenv.. what the hell of system is this ?
+		// no setenv, no putenv.. what the hell of system is this ?
 	#endif
 #endif
 }

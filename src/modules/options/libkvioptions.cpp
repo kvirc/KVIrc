@@ -56,7 +56,7 @@ extern int g_iOptionWidgetInstances;
 	@syntax:
 		options.save
 	@description:
-		Saves the options to disk; this includes aliases , popups ,
+		Saves the options to disk; this includes aliases, popups,
 		events and user preferences.
 */
 
@@ -79,7 +79,7 @@ static bool options_kvs_cmd_save(KviKvsModuleCommandCall *)
 		options.dialog [-t] [options_group]
 	@description:
 		Shows the KVIrc options dialog for the specified options group.
-		If the [-t] switch is used , the dialog is opened as toplevel window,
+		If the [-t] switch is used, the dialog is opened as toplevel window,
 		otherwise it is opened as part of the current frame window.[br]
 		Valid values for [options_group] are "general" and "theme".
 		If [options_group] is omitted, the option group "general" is assumed.

@@ -151,7 +151,7 @@ const char * g_errorTable[KVI_NUM_ERRORS]=
 	__tr_no_lookup("Unexpected end in expression"),
 	__tr_no_lookup("Unexpected end in array index"),
 	__tr_no_lookup("Connection thru HTTP proxy failed"),
-	__tr_no_lookup("Case , match , regexp , default or break keyword expected"),
+	__tr_no_lookup("Case, match, regexp, default or break keyword expected"),
 	__tr_no_lookup("Access denied"),
 	__tr_no_lookup("Address already in use"),
 	__tr_no_lookup("Can't assign the requested address"),

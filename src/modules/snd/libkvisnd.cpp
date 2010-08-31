@@ -505,7 +505,7 @@ void KviSoundThread::run()
 				if(audiofd_c < 0)
 				{
 					qDebug("Could not open audio device /dev/dsp! [OSS+AUDIOFILE]");
-					qDebug("(the device is probably busy , errno = %d)",errno);
+					qDebug("(the device is probably busy, errno = %d)",errno);
 					goto exit_thread;
 				}
 

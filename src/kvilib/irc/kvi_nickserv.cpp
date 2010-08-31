@@ -49,7 +49,7 @@
 		it from being stolen by others.[br] The NickServ protocol is
 		not standardized (at the time that I'm writing this doc) and automatic
 		authentication is a pure experimental protocol.[br]
-		Once you get on IRC with a registered nickname , the NickServ will
+		Once you get on IRC with a registered nickname, the NickServ will
 		ask you for identification by sending you a NOTICE.[br]
 		The message will look in a way similar to the following:[br]
 		<b>You're using a registered nickname: if this is your nick,
@@ -63,7 +63,7 @@
 */
 
 
-// FIXME: The doc above is a bit outdated , fix it
+// FIXME: The doc above is a bit outdated, fix it
 
 KviNickServRuleSet::KviNickServRuleSet()
 : KviHeapObject()

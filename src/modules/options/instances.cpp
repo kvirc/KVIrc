@@ -665,7 +665,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 {
 
 	//qDebug("Instantiating");
-	// Create the global widget dict : case sensitive , do not copy keys
+	// Create the global widget dict : case sensitive, do not copy keys
 	m_pInstanceTree = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	m_pInstanceTree->setAutoDelete(true);
 

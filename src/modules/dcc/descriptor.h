@@ -76,7 +76,7 @@ private:
 	void copyFrom(const KviDccDescriptor &src);
 public:
 	// Generic parameters
-	QString         szType;            // DCC protocol : CHAT , SCHAT , SEND , TSSEND....
+	QString         szType;            // DCC protocol : CHAT, SCHAT, SEND, TSSEND....
 
 	bool            bActive;           // active or passive connection ?
 

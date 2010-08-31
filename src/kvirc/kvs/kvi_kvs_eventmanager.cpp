@@ -50,7 +50,7 @@
 		Event handlers can be created or destroyed by using the scriptcenter (graphic interface)
 		or even from the commandline (or script) by using the [cmd]event[/cmd] command.[br]
 		For example, the [event:onirc]OnIRC[/event] is triggered when the login operations have
-		been terminated and you can consider yourself "completely" on IRC. For example , you might
+		been terminated and you can consider yourself "completely" on IRC. For example, you might
 		want to "auto-join" some channels. Nothing easier! The following snippet of code
 		adds a handler to the OnIRC event that joins three channels:[br]
 		[example]
@@ -73,7 +73,7 @@
 		}
 		[/example]
 		(An even nicer idea would be to use the [cmd]awhois[/cmd] command...but that's left to the reader as exercise.[br]
-		To remove an event handler you still use the [cmd]event[/cmd] command , but with an empty code block:[br]
+		To remove an event handler you still use the [cmd]event[/cmd] command, but with an empty code block:[br]
 		[example]
 		[cmd]event[/cmd](OnIRC,lookforfred){}[br]
 		[/example]

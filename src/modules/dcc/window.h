@@ -30,7 +30,7 @@
 #include "kvi_window.h"
 class KviDccThread;
 
-class KviDccWindow : public KviWindow , public KviDccMarshalOutputContext
+class KviDccWindow : public KviWindow, public KviDccMarshalOutputContext
 {
 	Q_OBJECT
 public:

@@ -957,7 +957,7 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 
 	while(KviKvsObjectConnection * s = it.current())
 	{
-		// save it , since s may be destroyed in the call!
+		// save it, since s may be destroyed in the call!
 		KviKvsObject * pTarget = s->pTargetObject;
 
 		emitted++;
@@ -1753,7 +1753,7 @@ bool KviKvsObject::callFunction(
 	return h->call(this,&fc);
 
 	// Not only gcc spits out compiler errors:
-	// 25.09.2001 , at this point in file
+	// 25.09.2001, at this point in file
 
 	// c:\programmi\microsoft visual studio\myprojects\kvirc3\src\kvirc\uparser\kvi_scriptobject.cpp(1234) : fatal error C1001: INTERNAL COMPILER ERROR
 	//    (compiler file 'E:\8168\vc98\p2\src\P2\main.c', line 494)

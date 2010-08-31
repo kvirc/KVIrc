@@ -443,7 +443,7 @@ char *unpad(char *string)
 	return string;
 }
 
-bool scan_mp3_file(QString& ,mp3info * i)
+bool scan_mp3_file(QString&,mp3info * i)
 {
 	//memset(i,0,sizeof(mp3info));
 	resetmp3infoStruct(i);

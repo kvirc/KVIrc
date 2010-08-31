@@ -193,7 +193,7 @@ void KviRegisteredChannelDataBase::add(KviRegisteredChannel * c)
 	{
 		if(rc->netMask().count(QChar('*')) > o)
 		{
-			// the existing has more wildcards , insert here!
+			// the existing has more wildcards, insert here!
 			l->insert(idx,c);
 			return;
 		}

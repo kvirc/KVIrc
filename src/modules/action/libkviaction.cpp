@@ -502,7 +502,7 @@ static bool action_kvs_fnc_isEnabled(KviKvsModuleFunctionCall * c)
 
 static bool action_module_init(KviModule *m)
 {
-	// setlabel , $label , $position , move , $itempos , $itemexists , $itemtype
+	// setlabel, $label, $position, move, $itempos, $itemexists, $itemtype
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"list",action_kvs_cmd_list);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"trigger",action_kvs_cmd_trigger);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"enable",action_kvs_cmd_enable);

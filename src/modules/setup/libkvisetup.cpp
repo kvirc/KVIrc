@@ -148,7 +148,7 @@ KVIRC_MODULE(
 	"4.0.0",
 	"Szymon Stefanek <pragma at kvirc dot net>",
 	"First-time-run setup wizard",
-	setup_module_init ,
+	setup_module_init,
 	setup_module_can_unload,
 	0,
 	setup_module_cleanup,

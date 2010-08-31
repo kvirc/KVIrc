@@ -356,7 +356,7 @@ unsigned int fmt_ip6(char *s,const char ip[16])
 	unsigned int len;
 	unsigned int i;
 	unsigned int temp;
-	unsigned int compressing; // 0 not compressing , 1 compressing now , 2 already compressed once
+	unsigned int compressing; // 0 not compressing, 1 compressing now, 2 already compressed once
 
 	len = 0;
 	compressing = 0;

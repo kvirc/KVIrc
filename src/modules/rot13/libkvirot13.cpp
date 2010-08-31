@@ -162,9 +162,9 @@ static bool rot13_module_can_unload(KviModule *)
 KVIRC_MODULE(
 	"ROT13 crypt engine",
 	"4.0.0",
-	"Aeriana <aeriana at quasarnet dot org>" ,
+	"Aeriana <aeriana at quasarnet dot org>",
 	"Exports the ROT13 text transformation engine",
-	rot13_module_init ,
+	rot13_module_init,
 	rot13_module_can_unload,
 	0,
 	rot13_module_cleanup,

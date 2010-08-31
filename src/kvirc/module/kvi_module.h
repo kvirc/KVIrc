@@ -146,7 +146,7 @@ protected:
 	void updateAccessTime();
 	unsigned int secondsSinceLastAccess();
 public:
-	// name of this module: always low case , single word
+	// name of this module: always low case, single word
 	const QString & name(){ return m_szName; };
 	// filename of this module (with NO path): formatted as "libkvi%s.so",name()
 	const QString & filename(){ return m_szFileName; };

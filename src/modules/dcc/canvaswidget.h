@@ -194,15 +194,15 @@
 		KviCanvasView(QCanvas * c,KviCanvasWidget * cw,QWidget * par);
 		~KviCanvasView();
 	public:
-		enum State { Idle , SelectOrigin };
+		enum State { Idle, SelectOrigin };
 		enum ObjectType {
-			Rectangle , RichText , Line , Ellipse , Chord , Pie ,
-			PolygonTriangle , PolygonRectangle , PolygonPentagon ,
+			Rectangle, RichText, Line, Ellipse, Chord, Pie,
+			PolygonTriangle, PolygonRectangle, PolygonPentagon,
 			PolygonHexagon
 		};
 		enum DragMode {
-			None , All , Left , Right , Top , Bottom , LeftTop , RightTop ,
-			LeftBottom , RightBottom , Scale , SinglePoint , Rotate
+			None, All, Left, Right, Top, Bottom, LeftTop, RightTop,
+			LeftBottom, RightBottom, Scale, SinglePoint, Rotate
 		};
 	protected:
 		KviCanvasWidget * m_pCanvasWidget;

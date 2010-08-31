@@ -68,7 +68,7 @@ const int align_cod[] = {
 		[class]object[/class]
 	@description:
 		The layout is a geometry management tool for child widgets.
-		You create a layout , give it some widgets to manage and it will layout them
+		You create a layout, give it some widgets to manage and it will layout them
 		automatically.[br]
 		The parent of the layout must be the widget for which child widget geometries have to be managed.
 		A layout is a grid of NxM cells in which you insert child widgets with [classfnc:layout]$addWidget[/classfnc]().[br]

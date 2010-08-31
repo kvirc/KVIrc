@@ -129,12 +129,12 @@ void KviKvsCallbackMessageBox::done(int code)
 			<callback_command>
 		}
 	@description:
-		Shows a message dialog box with the specified <caption> , <message_text> , <icon> and
+		Shows a message dialog box with the specified <caption>, <message_text>, <icon> and
 		buttons.[br]
 		<caption> is a text string that will appear in the caption of the dialog box.[br]
 		<message_text> is a text string that will appear in the dialog box and can contain HTML formatting.[br]
 		<icon> is an [doc:image_id]image identifier[/doc] that defines an icon to be placed in the dialog box.
-		<icon> can be a relative or absolute path to an image file , a signed number (in that case it defines
+		<icon> can be a relative or absolute path to an image file, a signed number (in that case it defines
 		an internal KVIrc image) or one of the special strings "critical", "information" and "warning".[br]
 		<button0> is the text of the first button (on the left).[br]
 		<button1> is the text of the second button (if empty or not given at all, only one button will appear in the dialog).[br]
@@ -146,10 +146,10 @@ void KviKvsCallbackMessageBox::done(int code)
 		to the <callback_command> as positional parameters.[br]
 		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
 		it will appear above its parent widget and block its input until it's closed.[br]
-		Once the dialog has been shown , the user will click one of the buttons. At this point the dialog
+		Once the dialog has been shown, the user will click one of the buttons. At this point the dialog
 		is hidden and the <callback_command> is executed passing the number of the button clicked
-		as $0 and the magic parameters as positional parameters $1 , $2 , $3....[br]
-		Please note that if the user closes the window with the window manager close button ,
+		as $0 and the magic parameters as positional parameters $1, $2, $3....[br]
+		Please note that if the user closes the window with the window manager close button,
 		the action is interpreted as a button2 click (that is usually sth as "Cancel").[br]
 	@examples:
 		[example]
@@ -404,7 +404,7 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		!sw: -m | --multiline
 		Input multiline text instead of single line
 	@description:
-		Shows a text input dialog box with the specified <caption> , <info_text> , <icon> and
+		Shows a text input dialog box with the specified <caption>, <info_text>, <icon> and
 		buttons.[br]
 		<caption> is a text string that will appear in the caption of the dialog box.[br]
 		<info_text> is a fixed text string that will appear in the dialog box and can contain HTML formatting.[br]
@@ -413,20 +413,20 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		<button2> is the text of the third button (if empty or not given, only two buttons will appear in the dialog).[br]
 		If one of the text strings starts with a "default=" prefix then the button is assumed
 		to be the default button of the dialog and will be also activated when the user presses enter.
-		If the -m switch is used , the dialog will be a multi-line text input, otherwise the user will be able to
+		If the -m switch is used, the dialog will be a multi-line text input, otherwise the user will be able to
 		input only a single line of text.[br]
-		If the -d switch is used , the initial text input value is set to <default text>.[br]
-		If the -i switch is used , the dialog displays also the icon <icon> , just on the left ot the <info_text>[br]
+		If the -d switch is used, the initial text input value is set to <default text>.[br]
+		If the -i switch is used, the dialog displays also the icon <icon>, just on the left ot the <info_text>[br]
 		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
 		it will appear above its parent widget and block its input until it's closed.[br]
 		In that case <icon> is an [doc:image_id]image identifier[/doc] (can be a relative or absolute
 		path to an image file or a signed number (in that case it defines an internal KVIrc image).[br]
 		<magic1>,<magic2>... are the magic parameters: evaluated at dialog.textinput call time and passed
 		to the <callback_command> as positional parameters.[br]
-		Once the dialog has been shown , the user will click one of the buttons. At this point the dialog
+		Once the dialog has been shown, the user will click one of the buttons. At this point the dialog
 		is hidden and the <callback_command> is executed passing the text input value in $1, the number of the button clicked
-		as $0, and the magic parameters as positional parameters $2 , $3 , $4....[br]
-		Please note that if the user closes the window with the window manager close button ,
+		as $0, and the magic parameters as positional parameters $2, $3, $4....[br]
+		Please note that if the user closes the window with the window manager close button,
 		the action is interpreted as a button2 click (that is usually sth as "Cancel").[br]
 	@examples:
 		[example]
@@ -545,8 +545,8 @@ void KviKvsCallbackFileDialog::done(int code)
 			<callback_command>
 		}
 	@description:
-		Shows an openfile dialog box with the specified <caption> , <initial_selection> , and <file_filter>.[br]
-		<mode> can be "open" , "openm" , "save" or "dir":[br]
+		Shows an openfile dialog box with the specified <caption>, <initial_selection>, and <file_filter>.[br]
+		<mode> can be "open", "openm", "save" or "dir":[br]
 		"open" causes the dialog to return an existing file[br]
 		"openm" is similar to open but allows returning multiple files as a comma separated list[br]
 		"save" causes the dialog to return any file name (no overwrite confirmation is built in the dialog!)[br]
@@ -562,9 +562,9 @@ void KviKvsCallbackFileDialog::done(int code)
 		to the <callback_command> as positional parameters.[br]
 		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
 		it will appear above its parent widget and block its input until it's closed.[br]
-		Once the dialog has been shown , the user will select an EXISTING file and click either
+		Once the dialog has been shown, the user will select an EXISTING file and click either
 		Ok or Cancel. At this point the dialog is hidden and the <callback_command> is executed passing the selected file(s) as $0
-		and the magic parameters as positional parameters $1 , $2 , $3....[br]
+		and the magic parameters as positional parameters $1, $2, $3....[br]
 		If the user clicks "Cancel" or does not select any file the positional parameter $0 will be empty.[br]
 	@examples:
 		[example]
@@ -679,9 +679,9 @@ void KviKvsCallbackImageDialog::done(int code)
 		to the <callback_command> as positional parameters.[br]
 		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
 		it will appear above its parent widget and block its input until it's closed.[br]
-		Once the dialog has been shown , the user will select an EXISTING file and click either
+		Once the dialog has been shown, the user will select an EXISTING file and click either
 		Ok or Cancel. At this point the dialog is hidden and the <callback_command> is executed passing the selected file(s) as $0
-		and the magic parameters as positional parameters $1 , $2 , $3....[br]
+		and the magic parameters as positional parameters $1, $2, $3....[br]
 		If the user clicks "Cancel" or does not select any image the positional parameter $0 will be empty.[br]
 	@examples:
 		[example]
@@ -827,7 +827,7 @@ static bool dialog_module_fnc_textline(KviModule *m,KviCommand *c,KviParameterLi
 		This is actually confusing: the control IS in the script snippet but while the dialog
 		is open the whole world can change: you can return from the dialog call and discover
 		that the server connection no longer exists and the application is about to quit.[br]
-		This may happen even with non-blocking dialogs ,but in non-blocking mode you have
+		This may happen even with non-blocking dialogs,but in non-blocking mode you have
 		a way to handle this event. Consider the following snippet of code:[br]
 		[example]
 			echo My name is $?
@@ -838,7 +838,7 @@ static bool dialog_module_fnc_textline(KviModule *m,KviCommand *c,KviParameterLi
 		in the executable to handle all these situations but that would be really too expensive).[br]
 		With object scripting this is actually dangerous: you might use a blocking dialog
 		in an object signal handler and when returning discover that this object has been deleted!
-		(The example refers to a simple object , but think about a complex hierarchy of objects
+		(The example refers to a simple object, but think about a complex hierarchy of objects
 		where one random gets deleted...).[br]
 		This is why the dialogs in KVIrc are non-blocking :)[br]
 		That's REAL programming.
@@ -876,9 +876,9 @@ static bool dialog_module_can_unload(KviModule *)
 KVIRC_MODULE(
 	"KVIrc script dialogs",
 	"4.0.0",
-	"Szymon Stefanek <pragma at kvirc dot net>" ,
+	"Szymon Stefanek <pragma at kvirc dot net>",
 	"Adds the /dialog.* commands functionality\n",
-	dialog_module_init ,
+	dialog_module_init,
 	dialog_module_can_unload,
 	0,
 	dialog_module_cleanup,

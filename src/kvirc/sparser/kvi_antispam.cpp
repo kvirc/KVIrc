@@ -61,9 +61,9 @@
 //		a PRIVMSG is received from a person that has no QUERY
 //		window open yet.
 // - 95% of spam messages contain an URL inside (http,ftp,www) or a channel name.
-// - The other 5% contain words like auto-msg , msg me or query <nickname>
+// - The other 5% contain words like auto-msg, msg me or query <nickname>
 // - There are some really common words:
-//   free , mp3 , sex , teen , porn , pics , girls , babe , pass , user... , hard , join
+//   free, mp3, sex, teen, porn, pics, girls, babe, pass, user..., hard, join
 //
 // In this way we can get rid of a good 70% of spam msgs.
 

@@ -32,7 +32,7 @@
 // Base class for all IRC crypt engines
 // These intend to encrypt plain text into something
 // that can be sent through the IRC protocol...
-// so it should not contain NULL, CR , LF and other
+// so it should not contain NULL, CR, LF and other
 // similar stuff...
 //
 

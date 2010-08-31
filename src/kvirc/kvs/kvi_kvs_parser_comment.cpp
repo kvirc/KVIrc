@@ -49,7 +49,7 @@ KviKvsTreeNode * KviKvsParser::parseComment()
 				case '*':
 				{
 					const QChar * pBegin = KVSP_curCharPointer;
-					// c style , multiline
+					// c style, multiline
 					KVSP_skipChar;
 					for(;;)
 					{

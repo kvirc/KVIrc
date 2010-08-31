@@ -461,7 +461,7 @@ void KviIrcContext::connectToCurrentServer()
 			}
 		} else {
 			// !m_pAsynchronousConnectionData->szServer.isEmpty()
-			// ok , have a server to look for in the db
+			// ok, have a server to look for in the db
 			// FIXME: this is a bit ugly... could it be managed in some completly different and nicer way ?
 			KviServerDefinition d;
 			d.szServer = m_pAsynchronousConnectionData->szServer;

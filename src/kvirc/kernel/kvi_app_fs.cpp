@@ -328,8 +328,8 @@ bool KviApp::findImageInImageSearchPath(QString &szRetPath,const QString &filena
 	return false;
 }
 
-static KviApp::KvircSubdir pics_localsubdirs[2]={ KviApp::Pics , KviApp::Avatars };
-static KviApp::KvircSubdir pics_globalsubdirs[2]={ KviApp::Pics , KviApp::Avatars };
+static KviApp::KvircSubdir pics_localsubdirs[2]={ KviApp::Pics, KviApp::Avatars };
+static KviApp::KvircSubdir pics_globalsubdirs[2]={ KviApp::Pics, KviApp::Avatars };
 
 /*bool KviApp::mapImageFile(KviStr &szRetPath,const char * filename)
 {

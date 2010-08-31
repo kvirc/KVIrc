@@ -65,7 +65,7 @@ void KviFileDialog::goHome()
 */
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-bool KviFileDialog::askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool bShowNative, QWidget * pParent)
+bool KviFileDialog::askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool, bool bShowNative, QWidget * pParent)
 {
 	if(bShowNative)
 	{
@@ -74,7 +74,7 @@ bool KviFileDialog::askForOpenFileName(QString & szBuffer, const QString & szCap
 		return !szBuffer.isEmpty();
 	}
 #else
-bool KviFileDialog::askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool, bool , QWidget * pParent)
+bool KviFileDialog::askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool, bool, QWidget * pParent)
 {
 #endif
 	KviFileDialog * pDialog = new KviFileDialog(szInitial,szFilter,pParent,"open_file_name_dialog",true);
@@ -97,7 +97,7 @@ bool KviFileDialog::askForOpenFileName(QString & szBuffer, const QString & szCap
 }
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool bConfirmOverwrite, bool bShowNative, QWidget * pParent)
+bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool, bool bConfirmOverwrite, bool bShowNative, QWidget * pParent)
 {
 	if(bShowNative)
 	{
@@ -131,7 +131,7 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 		}
 	}
 #else
-bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool bConfirmOverwrite, bool , QWidget * pParent)
+bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool, bool bConfirmOverwrite, bool, QWidget * pParent)
 {
 #endif
 
@@ -190,7 +190,7 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 }
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool bShowNative, QWidget * pParent)
+bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool, bool bShowNative, QWidget * pParent)
 {
 	if(bShowNative)
 	{
@@ -199,7 +199,7 @@ bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCa
 		return !szBuffer.isEmpty();
 	}
 #else
-bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool , QWidget * pParent)
+bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool, bool, QWidget * pParent)
 {
 	#ifdef COMPILE_KDE_SUPPORT
 		// the KDE based dir selection dialog is now quite nice
@@ -230,7 +230,7 @@ bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCa
 }
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-bool KviFileDialog::askForOpenFileNames(QStringList & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool bShowNative, QWidget * pParent)
+bool KviFileDialog::askForOpenFileNames(QStringList & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool, bool bShowNative, QWidget * pParent)
 {
 	if(bShowNative)
 	{
@@ -238,7 +238,7 @@ bool KviFileDialog::askForOpenFileNames(QStringList & szBuffer, const QString & 
 		return (szBuffer.count() > 0);
 	}
 #else
-bool KviFileDialog::askForOpenFileNames(QStringList & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool , QWidget * pParent)
+bool KviFileDialog::askForOpenFileNames(QStringList & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool, bool, QWidget * pParent)
 {
 #endif
 

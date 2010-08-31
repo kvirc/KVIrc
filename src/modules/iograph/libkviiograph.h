@@ -53,7 +53,7 @@ protected:
 	virtual void paintEvent (QPaintEvent *e);
 };
 
-class KviIOGraphWindow : public KviWindow , public KviModuleExtension
+class KviIOGraphWindow : public KviWindow, public KviModuleExtension
 {
 	Q_OBJECT
 public:

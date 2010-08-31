@@ -1227,7 +1227,7 @@ void KviServerParser::parseCtcpRequestUserinfo(KviCtcpMessage *msg)
 	echoCtcpRequest(msg);
 }
 
-// FIXME: CTCP SEX , AGE , LOCATION!!! <--- so we will be safe :)
+// FIXME: CTCP SEX, AGE , LOCATION!!! <--- so we will be safe :)
 // FIXME: KEEP THIS TABLE UP TO DATE
 
 static const char * ctcpTagTable[][2]=

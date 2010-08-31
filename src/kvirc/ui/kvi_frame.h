@@ -75,7 +75,7 @@ public:
 
 
 
-class KVIRC_API KviFrame : public KviTalMainWindow // , public KviIrcContextManager
+class KVIRC_API KviFrame : public KviTalMainWindow //, public KviIrcContextManager
 {
 	friend class KviWindow;
 	friend class KviConsole;

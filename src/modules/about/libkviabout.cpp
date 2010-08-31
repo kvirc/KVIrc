@@ -95,7 +95,7 @@ KVIRC_MODULE(
 	"Szymon Stefanek <pragma at kvirc dot net>" \
 	"Elvio Basello <hellvis69 at netsons dot org>",
 	"Exports the /about.kvirc command\n",
-	about_module_init ,
+	about_module_init,
 	about_module_can_unload,
 	0,
 	about_module_cleanup,

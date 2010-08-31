@@ -874,7 +874,7 @@ static bool window_kvs_cmd_listtypes(KviKvsModuleCommandCall * c)
 		See [cmd]window.listtypes[/cmd] for a list of available window types in this KVIrc release.[br]
 		If <type> is the special word 'all', all the window types are listed.[br]
 		<irc_context_id> specifies the irc context in which the windows are searched.[br]
-		If no <irc_context_id> is specified , the current one is used.[br]
+		If no <irc_context_id> is specified, the current one is used.[br]
 		If <irc_context_id> is the special word 'all', all the irc context are searched.[br]
 		If <irc_context_id> is the special word 'none' then only windows not belonging to any
 		irc context are listed.[br]
@@ -899,7 +899,7 @@ static bool window_kvs_cmd_listtypes(KviKvsModuleCommandCall * c)
 			[comment]# List all the user windows created with $window.open[/comment]
 			[comment]# They may either belong to an irc context or not[/comment]
 			[cmd]echo[/cmd] $window.list(userwnd,any)
-			[comment]# Ok , let's use it[/comment]
+			[comment]# Ok, let's use it[/comment]
 			[comment]# A nice alias that allows iterating commands through all the consoles[/comment]
 			[comment]# Note the array returned by $window.list[/comment]
 			[comment]# This is by LatinSuD :)[/comment]

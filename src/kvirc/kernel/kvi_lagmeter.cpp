@@ -96,19 +96,19 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 		{
 			KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnLagAlarmTimeUp,
 				m_pConnection->console(),m_pConnection->serverInfo()->name(),QString(szLag.ptr()));
-			if(bDeletionSignal)return; // killed , probably by a quit -f -u
+			if(bDeletionSignal)return; // killed, probably by a quit -f -u
 			m_bOnAlarm = true;
 		} else if(m_bOnAlarm) 
 		{
 			KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnLagAlarmTimeDown,
 				m_pConnection->console(),m_pConnection->serverInfo()->name(),QString(szLag.ptr()));
-			if(bDeletionSignal)return; // killed , probably by a quit -f -u
+			if(bDeletionSignal)return; // killed, probably by a quit -f -u
 			m_bOnAlarm = false;
 		}
 
 		KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnLagCheck,
 			m_pConnection->console(),m_pConnection->serverInfo()->name(),QString(szLag.ptr()));
-		if(bDeletionSignal)return; // killed , probably by a quit -f -u
+		if(bDeletionSignal)return; // killed, probably by a quit -f -u
 
 		m_pDeletionSignal = 0;
 	}

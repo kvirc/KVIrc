@@ -141,7 +141,7 @@ public:
 	// FIXME: "Plugins" and "ConfigPlugins" should become "Modules" and "ConfigModules"
 	enum KvircSubdir
 	{
-		None,         Pics,          Config ,
+		None,         Pics,          Config,
 		Help,         HelpEN,        HelpNoIntl,
 		Log,          Incoming,      Audio,
 		Scripts,      Plugins,       ConfigPlugins,

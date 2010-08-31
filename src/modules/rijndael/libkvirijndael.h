@@ -46,7 +46,7 @@
 		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviStr &outBuffer);
 		virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviStr &plainText);
 	protected:
-		virtual bool binaryToAscii(const char *,int ,KviStr &){ return false; };
+		virtual bool binaryToAscii(const char *,int,KviStr &){ return false; };
 		virtual bool asciiToBinary(const char *,int *,char **){ return false; };
 		virtual int getKeyLen(){ return 32; };
 		virtual Rijndael::KeyLength getKeyLenId(){ return Rijndael::Key32Bytes; };

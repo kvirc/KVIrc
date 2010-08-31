@@ -300,27 +300,27 @@ void KviFrame::installAccelerators()
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_MINIMIZE),this,SLOT(minimizeWindow()),0,Qt::ApplicationShortcut);
 
 	static int accel_table[] = {
-		Qt::Key_1 + Qt::ControlModifier ,       // script accels...
-		Qt::Key_2 + Qt::ControlModifier ,
-		Qt::Key_3 + Qt::ControlModifier ,
-		Qt::Key_4 + Qt::ControlModifier ,
-		Qt::Key_5 + Qt::ControlModifier ,
-		Qt::Key_6 + Qt::ControlModifier ,
-		Qt::Key_7 + Qt::ControlModifier ,
-		Qt::Key_8 + Qt::ControlModifier ,
-		Qt::Key_9 + Qt::ControlModifier ,
-		Qt::Key_0 + Qt::ControlModifier ,
-		Qt::Key_F2 ,
-		Qt::Key_F3 ,
-		Qt::Key_F4 ,
-		Qt::Key_F5 ,
-		Qt::Key_F6 ,
-		Qt::Key_F7 ,
-		Qt::Key_F8 ,
-		Qt::Key_F9 ,
-		Qt::Key_F10 ,
-		Qt::Key_F11 ,
-		Qt::Key_F12 ,
+		Qt::Key_1 + Qt::ControlModifier,       // script accels...
+		Qt::Key_2 + Qt::ControlModifier,
+		Qt::Key_3 + Qt::ControlModifier,
+		Qt::Key_4 + Qt::ControlModifier,
+		Qt::Key_5 + Qt::ControlModifier,
+		Qt::Key_6 + Qt::ControlModifier,
+		Qt::Key_7 + Qt::ControlModifier,
+		Qt::Key_8 + Qt::ControlModifier,
+		Qt::Key_9 + Qt::ControlModifier,
+		Qt::Key_0 + Qt::ControlModifier,
+		Qt::Key_F2,
+		Qt::Key_F3,
+		Qt::Key_F4,
+		Qt::Key_F5,
+		Qt::Key_F6,
+		Qt::Key_F7,
+		Qt::Key_F8,
+		Qt::Key_F9,
+		Qt::Key_F10,
+		Qt::Key_F11,
+		Qt::Key_F12,
 		0
 	};
 
@@ -487,9 +487,9 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 
 			if(bDocked)
 			{
-				// when group settings are used , we always cascade the windows
+				// when group settings are used, we always cascade the windows
 				// this means that windows that have no specialized config group name
-				// are always cascaded : this is true for consoles , queries (and other windows) but not channels (and some other windows)
+				// are always cascaded : this is true for consoles, queries (and other windows) but not channels (and some other windows)
 				KviMdiChild * lpC = dockWindow(wnd,bGroupSettings,&rect);
 				lpC->setRestoredGeometry(rect);
 				wnd->triggerCreationEvents();

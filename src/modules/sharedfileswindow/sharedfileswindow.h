@@ -74,7 +74,7 @@ protected slots:
 };
 
 
-class KviSharedFilesWindow : public KviWindow , public KviModuleExtension
+class KviSharedFilesWindow : public KviWindow, public KviModuleExtension
 {
 	friend class KviSharedFilesItem;
 	Q_OBJECT

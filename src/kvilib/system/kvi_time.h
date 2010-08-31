@@ -53,7 +53,7 @@
 	*/
 	extern KVILIB_API void kvi_gettimeofday(struct timeval * tmv, struct timezone * tmz);
 #else
-	#include <sys/time.h> // gettimeofday() , struct timeval
+	#include <sys/time.h> // gettimeofday(), struct timeval
 
 	/**
 	* \brief Gets the time of the day

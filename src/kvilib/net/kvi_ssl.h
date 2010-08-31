@@ -144,9 +144,9 @@ public:
 class KVILIB_API KviSSL
 {
 public:
-	enum Method { Client , Server };
-	enum Result { Success , NotInitialized , WantRead , WantWrite , ZeroReturn , FileIoError ,
-					UnknownError , ObscureError , SSLError , SyscallError , RemoteEndClosedConnection };
+	enum Method { Client, Server };
+	enum Result { Success, NotInitialized, WantRead, WantWrite, ZeroReturn, FileIoError,
+					UnknownError, ObscureError, SSLError, SyscallError, RemoteEndClosedConnection };
 public:
 	KviSSL();
 	~KviSSL();

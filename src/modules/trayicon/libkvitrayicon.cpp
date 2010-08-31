@@ -155,23 +155,23 @@ void KviTrayIcon::flashingTimerShot()
 
 static const char * idlemsgs[NIDLEMSGS]=
 {
-	__tr("Nothing is happening...") ,
-	__tr("Just idling...") ,
-	__tr("Dum de dum de dum...") ,
-	__tr("Hey man... do something!") ,
-	__tr("Umpf!") ,
-	__tr("Silence speaking") ,
-	__tr("Are ya here?") ,
-	__tr("The world has stopped?") ,
-	__tr("Everything is all right") ,
-	__tr("idle()") ,
-	__tr("It's so cold here...") ,
-	__tr("Do not disturb... watching TV") ,
-	__tr("Just vegetating") ,
-	__tr("Hey... are ya sure that your network is up?") ,
-	__tr("Seems like the world has stopped spinning") ,
-	__tr("This silence is freaking me out!") ,
-	__tr("Mieeeeeowww!") ,
+	__tr("Nothing is happening..."),
+	__tr("Just idling..."),
+	__tr("Dum de dum de dum..."),
+	__tr("Hey man... do something!"),
+	__tr("Umpf!"),
+	__tr("Silence speaking"),
+	__tr("Are ya here?"),
+	__tr("The world has stopped?"),
+	__tr("Everything is all right"),
+	__tr("idle()"),
+	__tr("It's so cold here..."),
+	__tr("Do not disturb... watching TV"),
+	__tr("Just vegetating"),
+	__tr("Hey... are ya sure that your network is up?"),
+	__tr("Seems like the world has stopped spinning"),
+	__tr("This silence is freaking me out!"),
+	__tr("Mieeeeeowww!"),
 	__tr("idle idle idle idle!")
 };
 
@@ -550,7 +550,7 @@ static KviTrayIcon * trayicon_find(KviFrame *f)
 	@short:
 		Shows the dock widget for the current frame window
 	@keyterms:
-		dock widget , system tray
+		dock widget, system tray
 	@syntax:
 		trayicon.show
 	@description:
@@ -561,12 +561,12 @@ static KviTrayIcon * trayicon_find(KviFrame *f)
 		text in any console window, the square becomes red if the text is highlighted.[br]
 		The bottom right square appears when there is some new text in any channel window,
 		and it becomes red when the text is highlighted.[br] The upper right square refers to
-		query windows and the upper left one to any other kind of window (dcc , links...).[br]
+		query windows and the upper left one to any other kind of window (dcc, links...).[br]
 		If you move the mouse over the dock widget a tooltip will show you the last lines
 		of the "new" text in all these windows.[br]
 		This is useful when you keep the main KVIrc window minimized and you're working on something else:
-		if the dock widget shows nothing but the earth icon , nothing is happening in the main KVIrc window.
-		If the dock widget shows one or more white (or red) squares , you can move the mouse over
+		if the dock widget shows nothing but the earth icon, nothing is happening in the main KVIrc window.
+		If the dock widget shows one or more white (or red) squares, you can move the mouse over
 		and check what's happened exactly and eventually bring up the main KVIrc window by clicking on the widget.[br]
 		[big]tecnical details[/big]
 		The dock widget is currently working in KDE compilation mode only:
@@ -650,7 +650,7 @@ static bool trayicon_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
 	@syntax:
 		$reguser.isVisible()
 	@description:
-		Returns 1 if the dock widget is actually visible , 0 otherwise.
+		Returns 1 if the dock widget is actually visible, 0 otherwise.
 	@seealso:
 		[cmd]trayicon.show[/cmd]
 */
@@ -733,7 +733,7 @@ KVIRC_MODULE(
 	"Copyright (C) 2007 Alexey Uzhva <alexey at kvirc dot ru>" \
 	"Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dot org>",
 	"Exports the /trayicon.* interface\n",
-	trayicon_module_init ,
+	trayicon_module_init,
 	trayicon_module_can_unload,
 	0,
 	trayicon_module_cleanup,

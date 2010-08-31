@@ -36,7 +36,7 @@
 	@short:
 		Decription of the standard IRC masks
 	@keyterms:
-		irc masks , nickname , username , hostname , wildcard
+		irc masks, nickname, username, hostname, wildcard
 	@body:
 		[big]Simple masks[/big][br]
 		An irc mask is a string in a special format that identifies an user on irc.[br]
@@ -51,7 +51,7 @@
 		Some IRC servers allow specifying this username inside the login messages and do not connect
 		to the ident service at all.[br]
 		The <username> often has a special prefix character added by the irc server:[br]
-		this is rather server specific protocol , but the prefixes are somewhat standardized and
+		this is rather server specific protocol, but the prefixes are somewhat standardized and
 		the common meanings of them are:[br]
 		noprefix: I line with ident[br]
 		^: I line with OTHER type ident[br]
@@ -79,12 +79,12 @@
 		In some contexts the irc-masks can contain '*' and '?' wildcards.[br]
 		The wild masks are used to "match" an user within a set of them.[br]
 		'*' matches any sequence (eventually empty) of characters and '?' matches a single character.[br]
-		Wildcards are allowed only in the <nick> , <user> and <host> part: so the
+		Wildcards are allowed only in the <nick>, <user> and <host> part: so the
 		"wildest" mask possible is:[br]
 		[b]*!*@*[/b][br]
 		that designates "any nickname, any username on any host".[br]
 		Here are some examples of wild masks:[br]
-		Pragma!*pragma@212.101.102.*: matches any user with nickname "Pragma" , username that ends with "pragma" and
+		Pragma!*pragma@212.101.102.*: matches any user with nickname "Pragma", username that ends with "pragma" and
 		coming from any machine on the 212.101.102 network.[br]
 		*!solo@*.starwars.org: matches any nick with username solo (no prefix!) coming from any machine in
 		the starwars.org domain.[br]
@@ -171,7 +171,7 @@ const char * KviIrcMask::setUserhostMask(const char *szMask)
 	while(*p && ((*p=='*')||(*p=='=')||(*p=='+')||(*p=='-')) && (!isspace(*p)))p++;
 	// check...
 	if((!(*p)) || isspace(*p)){
-		// ooops  , finished or isspace
+		// ooops, finished or isspace
 		setHost("*");
 		setUsername("*");
 		while(*p && isspace(*p))p++;
@@ -315,7 +315,7 @@ bool KviIrcMask::hasNumericHost() const
 
 /**
 * Returns in szMask the specified (if possible) mask of this user.<br>
-* If the host or username are not known , the mask may contain less information
+* If the host or username are not known, the mask may contain less information
 * than requested.<br>
 * Mask types:<br>
 * 0 : nick!user@machine.host.top  (nick!user@XXX.XXX.XXX.XXX) (default)<br>
@@ -347,8 +347,8 @@ bool KviIrcMask::hasNumericHost() const
 * 24: *!~user@*.host.top          (*!~user@XXX.XXX.*)
 * 25: nick!*user@*.host.top          (nick!*user@XXX.XXX.*)
 * 26: *!*user@*.host.top          (*!user@*XXX.XXX.*)
-* If some data is missing , these types may change:<br>
-* For example , if hostname is missing , the mask type 3 or 4 may be reduced to type 5
+* If some data is missing, these types may change:<br>
+* For example, if hostname is missing, the mask type 3 or 4 may be reduced to type 5
 */
 
 /*

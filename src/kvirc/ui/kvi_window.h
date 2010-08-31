@@ -183,7 +183,7 @@ public:
 	// THIS is the function that should be used
 	inline const QString & windowName(){ return m_szName; };
 	void setWindowName(const QString &szName);
-	// Sets the progress for the WindowList item: if "progress" makes sense in your window , well , use this
+	// Sets the progress for the WindowList item: if "progress" makes sense in your window, well, use this
 	void setProgress(int progress);
 	// Window type management
 	inline int type() const { return m_iType; };

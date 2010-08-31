@@ -238,7 +238,7 @@
 	return 0;
 	}
 
-	QString KviKTorrentDBusInterface::fileName(int , int )
+	QString KviKTorrentDBusInterface::fileName(int, int )
 	{
 	/*
 		CHECK_RANGE_STRING(i, m_ti.size())
@@ -254,7 +254,7 @@
 	return QString();
 	}
 
-	QString KviKTorrentDBusInterface::filePriority(int , int )
+	QString KviKTorrentDBusInterface::filePriority(int, int )
 	{
 	/*
 		CHECK_RANGE_STRING(i, m_ti.size())
@@ -278,7 +278,7 @@
 	return QString();
 	}
 
-	bool KviKTorrentDBusInterface::setFilePriority(int , int , const QString &)
+	bool KviKTorrentDBusInterface::setFilePriority(int, int, const QString &)
 	{
 	/*
 		CHECK_RANGE_BOOL(i, m_ti.size())

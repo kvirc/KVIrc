@@ -427,7 +427,7 @@ bool kvi_matchWildExpr(register const char *m1,register const char *m2)
 		{
 			//Found a wildcard in m1
 			savePos1 = ++m1;            //move to the next char and save the position...this is our jolly
-			if(!*savePos1)return true;  //last was a wildcard , matches everything ahead...
+			if(!*savePos1)return true;  //last was a wildcard, matches everything ahead...
 			savePos2 = m2+1;            //next return state for the second string
 			continue;                   //and return
 		}
@@ -439,7 +439,7 @@ bool kvi_matchWildExpr(register const char *m1,register const char *m2)
 			m2++;                       //
 			if((!(*m1)) && *m2 && savePos1)
 			{
-				//m1 finished , but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
+				//m1 finished, but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
 				//retry matching the string following the * from the savePos2 (one char ahead last time)
 				m1 = savePos1;          //back to char after wildcard
 				m2 = savePos2;          //back to last savePos2
@@ -458,14 +458,14 @@ bool kvi_matchWildExpr(register const char *m1,register const char *m2)
 				savePos2 = m2 + 1;      //sync save pos2
 				continue;               //...and again
 			}
-			// m1 != m2 , m1 != * , m2 != *
+			// m1 != m2, m1 != *, m2 != *
 			if((*m1 == '?') || (*m2 == '?'))
 			{
 				m1++;
 				m2++;
 				if((!(*m1)) && *m2 && savePos1)
 				{
-					//m1 finished , but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
+					//m1 finished, but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
 					//retry matching the string following the * from the savePos2 (one char ahead last time)
 					m1 = savePos1;          //back to char after wildcard
 					m2 = savePos2;          //back to last savePos2
@@ -482,7 +482,7 @@ bool kvi_matchWildExpr(register const char *m1,register const char *m2)
 			}
 		}
 	}
-	return (!(*m2));                     //m1 surely finished , so for the match , m2 must be finished too
+	return (!(*m2));                     //m1 surely finished, so for the match, m2 must be finished too
 
 }
 
@@ -500,7 +500,7 @@ bool kvi_matchWildExprCS(register const char *m1,register const char *m2)
 		if(*m1=='*'){
 			//Found a wildcard in m1
 			savePos1 = ++m1;            //move to the next char and save the position...this is our jolly
-			if(!*savePos1)return true;  //last was a wildcard , matches everything ahead...
+			if(!*savePos1)return true;  //last was a wildcard, matches everything ahead...
 			savePos2 = m2+1;            //next return state for the second string
 			continue;                   //and return
 		}
@@ -510,7 +510,7 @@ bool kvi_matchWildExprCS(register const char *m1,register const char *m2)
 			m1++;                       //Go ahead in the two strings
 			m2++;                       //
 			if((!(*m1)) && *m2 && savePos1){
-				//m1 finished , but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
+				//m1 finished, but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
 				//retry matching the string following the * from the savePos2 (one char ahead last time)
 				m1 = savePos1;          //back to char after wildcard
 				m2 = savePos2;          //back to last savePos2
@@ -535,7 +535,7 @@ bool kvi_matchWildExprCS(register const char *m1,register const char *m2)
 			} else return false;        //No previous wildcards...not matched!
 		}
 	}
-	return (!(*m2));                     //m1 surely finished , so for the match , m2 must be finished too
+	return (!(*m2));                     //m1 surely finished, so for the match, m2 must be finished too
 
 }
 */
@@ -560,7 +560,7 @@ bool kvi_matchWildExprWithTerminator(register const char *m1,register const char
 			savePos1 = ++m1;            //move to the next char and save the position...this is our jolly
 			if(!NOT_AT_END(savePos1))
 			{
-				//last was a wildcard , matches everything ahead...
+				//last was a wildcard, matches everything ahead...
 				while(NOT_AT_END(m2))m2++;
 				*r1 = bSwapped ? m2 : m1;
 				*r2 = bSwapped ? m1 : m2;
@@ -577,7 +577,7 @@ bool kvi_matchWildExprWithTerminator(register const char *m1,register const char
 			m2++;                       //
 			if((!NOT_AT_END(m1)) && NOT_AT_END(m2) && savePos1)
 			{
-				//m1 finished , but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
+				//m1 finished, but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
 				//retry matching the string following the * from the savePos2 (one char ahead last time)
 				m1 = savePos1;          //back to char after wildcard
 				m2 = savePos2;          //back to last savePos2
@@ -597,14 +597,14 @@ bool kvi_matchWildExprWithTerminator(register const char *m1,register const char
 				savePos2 = m2 + 1;      //sync save pos2
 				continue;               //...and again
 			}
-			// m1 != m2 , m1 != * , m2 != *
+			// m1 != m2, m1 != *, m2 != *
 			if((*m1 == '?') || (*m2 == '?'))
 			{
 				m1++;
 				m2++;
 				if((!NOT_AT_END(m1)) && NOT_AT_END(m2) && savePos1)
 				{
-					//m1 finished , but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
+					//m1 finished, but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
 					//retry matching the string following the * from the savePos2 (one char ahead last time)
 					m1 = savePos1;          //back to char after wildcard
 					m2 = savePos2;          //back to last savePos2
@@ -624,7 +624,7 @@ bool kvi_matchWildExprWithTerminator(register const char *m1,register const char
 	*r1 = bSwapped ? m2 : m1;
 	*r2 = bSwapped ? m1 : m2;
 
-	return (!NOT_AT_END(m2));           //m1 surely finished , so for the match , m2 must be finished too
+	return (!NOT_AT_END(m2));           //m1 surely finished, so for the match, m2 must be finished too
 
 #undef NOT_AT_END
 }
@@ -1102,9 +1102,9 @@ KviStr::KviStr(KviFormatConstructorTag,const char *fmt,...)
 
 	//check if we failed
 	if(m_len < 0){
-		//yes , failed....
+		//yes, failed....
 		int dummy=256;
-		do{ //we failed , so retry with 256 more chars
+		do{ //we failed, so retry with 256 more chars
 			dummy+=256;
 			//realloc
 			m_ptr=(char *)kvi_realloc(m_ptr,dummy);
@@ -1461,7 +1461,7 @@ int KviStr::base64ToBuffer(char ** buffer,bool)
 				newLen -= 2;
 			} else {
 				// Single padding, two digits here
-				*auxBuf++ = (char)((aux1 << 2) | (aux2 >> 4)); // >> 4 is a shr , not a ror! :)
+				*auxBuf++ = (char)((aux1 << 2) | (aux2 >> 4)); // >> 4 is a shr, not a ror! :)
 				*auxBuf++ = (char)((aux2 << 4) | (aux3 >> 2));
 				newLen -= 1;
 			}
@@ -1473,7 +1473,7 @@ int KviStr::base64ToBuffer(char ** buffer,bool)
 				*buffer = 0;
 				return -1;
 			} else {
-				// Ok , no padding, three digits here
+				// Ok, no padding, three digits here
 				*auxBuf++ = (char)((aux1 << 2) | (aux2 >> 4));
 				*auxBuf++ = (char)((aux2 << 4) | (aux3 >> 2));
 				*auxBuf++ = (char)((aux3 << 6) | aux4);
@@ -1570,7 +1570,7 @@ void KviStr::append(const char *str,int len)
 	*(m_ptr + m_len)='\0';
 }
 
-void KviStr::append(KviFormatConstructorTag ,const char *fmt,...)
+void KviStr::append(KviFormatConstructorTag,const char *fmt,...)
 {
 	int auxLen;
 	m_ptr=(char *)kvi_realloc(m_ptr,m_len + 256);
@@ -1583,9 +1583,9 @@ void KviStr::append(KviFormatConstructorTag ,const char *fmt,...)
 
 	//check if we failed
 	if(auxLen < 0){
-		//yes , failed....
+		//yes, failed....
 		int dummy=256;
-		do{ //we failed , so retry with 256 more chars
+		do{ //we failed, so retry with 256 more chars
 			dummy+=256;
 			//realloc
 			m_ptr=(char *)kvi_realloc(m_ptr,m_len + dummy);
@@ -2450,7 +2450,7 @@ long KviStr::toLongExt(bool *bOk,int base)
 	char * endptr;
 	long result = strtol(m_ptr,&endptr,base);
 	if(*endptr){
-		// must be whitespaces , otherwise there is trailing garbage inside
+		// must be whitespaces, otherwise there is trailing garbage inside
 		while(isspace(*endptr) && (*endptr))endptr++;
 		if(*endptr){
 			// still not at the end
@@ -2464,7 +2464,7 @@ long KviStr::toLongExt(bool *bOk,int base)
 }
 
 //
-//working code , but unused in kvirc
+//working code, but unused in kvirc
 //
 //unsigned long KviStr::toULongExt(bool *bOk = 0,int base = 0)
 //{
@@ -2696,9 +2696,9 @@ KviStr & KviStr::vsprintf(const char *fmt,kvi_va_list list)
 	//check if we failed
 	if(m_len < 0)
 	{
-		//yes , failed....
+		//yes, failed....
 		int dummy=256;
-		do { //we failed , so retry with 256 more chars
+		do { //we failed, so retry with 256 more chars
 			dummy+=256;
 			//realloc
 			m_ptr=(char *)kvi_realloc(m_ptr,dummy);
@@ -2726,9 +2726,9 @@ KviStr & KviStr::sprintf(const char *fmt,...)
 
 	//check if we failed
 	if(m_len < 0){
-		//yes , failed....
+		//yes, failed....
 		int dummy=256;
-		do{ //we failed , so retry with 256 more chars
+		do{ //we failed, so retry with 256 more chars
 			dummy+=256;
 			//realloc
 			m_ptr=(char *)kvi_realloc(m_ptr,dummy);
@@ -2862,7 +2862,7 @@ int KviStr::findLastIdx(char c) const
 	register char *p=((m_ptr+m_len)-1);
 	//go back until we find a match or we run to the first char in the string.
 	while((*p != c) && (p > m_ptr))p--;
-	//if *p == c --> matched , else we are at the beginning of the string.
+	//if *p == c --> matched, else we are at the beginning of the string.
 	return ((*p == c)? p-m_ptr : -1);
 }
 
@@ -2926,7 +2926,7 @@ KviStr & KviStr::trimmed()
 	// skip initial spaces
 	while(isspace(*left))left++;
 	if(*left){
-		// valid string , left points to first non-space
+		// valid string, left points to first non-space
 		while((right >= left) && isspace(*right))right--;
 		// 0123456789
 		//    abcd   0
@@ -2990,7 +2990,7 @@ KviStr & KviStr::stripSpace()
 	// skip initial spaces
 	while((*left == ' ') || (*left == '\t'))left++;
 	if(*left){
-		// valid string , left points to first non-space
+		// valid string, left points to first non-space
 		while((right >= left) && ((*right == ' ') || (*right == '\t')))right--;
 		// 0123456789
 		//    abcd   0

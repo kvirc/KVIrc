@@ -603,9 +603,9 @@ KVIRC_MODULE(
 	"Rijndael crypt engine",
 	"4.0.1",
 	"Copyright ©      2009 Kai Wasserbäch <debian@carbon-project.org>" \
-	"          © 2000-2008 Szymon Stefanek <pragma at kvirc dot net>" ,
+	"          © 2000-2008 Szymon Stefanek <pragma at kvirc dot net>",
 	"Exports the rijndael crypt engine",
-	rijndael_module_init ,
+	rijndael_module_init,
 	rijndael_module_can_unload,
 	0,
 	rijndael_module_cleanup,

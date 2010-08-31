@@ -610,7 +610,7 @@ void KviDccMarshal::doSSLHandshake(int)
 			int err = kvi_socket_error();
 			if(kvi_socket_recoverableError(err))
 			{
-				// can recover ? (EAGAIN , EINTR ?)
+				// can recover ? (EAGAIN, EINTR ?)
 				m_pSn = new QSocketNotifier((int)m_fd,QSocketNotifier::Write);
 				QObject::connect(m_pSn,SIGNAL(activated(int)),this,SLOT(doSSLHandshake(int)));
 				m_pSn->setEnabled(true);

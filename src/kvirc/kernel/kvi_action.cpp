@@ -93,7 +93,7 @@ void KviAction::registerAccelerator()
 {
 	if(!m_szKeySequence.isEmpty())
 	{
-		m_pAccel = new QShortcut(m_szKeySequence,g_pFrame,0 ,0 , Qt::ApplicationShortcut);
+		m_pAccel = new QShortcut(m_szKeySequence, g_pFrame, 0, 0, Qt::ApplicationShortcut);
 		connect(m_pAccel,SIGNAL(activated()),this,SLOT(activate()));
 		//no way to have Ctrl+Alt+Key events fired as no-ambiguous, probably qt bug
 		connect(m_pAccel,SIGNAL(activatedAmbiguously()),this,SLOT(activate()));

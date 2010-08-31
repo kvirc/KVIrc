@@ -97,7 +97,7 @@ bool KviKvsTreeNodeData::evaluateReadOnlyInObjectScope(KviKvsObject *,KviKvsRunT
 	return false;
 }
 
-KviKvsRWEvaluationResult * KviKvsTreeNodeData::evaluateReadWriteInObjectScope(KviKvsObject * ,KviKvsRunTimeContext * c)
+KviKvsRWEvaluationResult * KviKvsTreeNodeData::evaluateReadWriteInObjectScope(KviKvsObject *,KviKvsRunTimeContext * c)
 {
 	c->error(this,__tr2qs_ctx("Internal error: trying to evaluate as read-write a read-only data location","kvs"));
 	return 0;

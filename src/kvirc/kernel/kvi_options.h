@@ -48,7 +48,7 @@
 		int          flags; \
 	public: \
 		_cname(const QString &n,_type o,int f) \
-		: name(n) , option(o) , flags(f) {}; \
+		: name(n), option(o), flags(f) {}; \
 		~_cname() {}; \
 	};
 

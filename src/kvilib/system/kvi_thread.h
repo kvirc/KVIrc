@@ -141,7 +141,7 @@
 			// We don't care about exit codes at all
 			#define kvi_threadExit() thr_exit(0)
 		#else
-// FIXME: 			#warning "Missing a decent thread implementation: we're going to fail , sorry!"
+// FIXME: 			#warning "Missing a decent thread implementation: we're going to fail, sorry!"
 		#endif
 	#endif
 #endif
@@ -197,7 +197,7 @@ public:
 	// Returns the state of the thread...safe to call from anywhere
 	bool isRunning();
 	// Returns the state of the thread...safe to call from anywhere
-	bool isStartingUp(); // start() called , but not in run() yet...
+	bool isStartingUp(); // start() called, but not in run() yet...
 	// Waits for the termination of this thread: call only from external threads!!! :)
 	void wait();
 	// DO NOT TOUCH THIS ONE!
@@ -269,11 +269,11 @@ protected:
 	KviThread * m_pSender;
 public:
 	KviThreadEvent(int evId,KviThread * sender = 0)
-		: QEvent((QEvent::Type)KVI_THREAD_EVENT) , m_eventId(evId) , m_pSender(sender) {};
+		: QEvent((QEvent::Type)KVI_THREAD_EVENT), m_eventId(evId), m_pSender(sender) {};
 	virtual ~KviThreadEvent(){};
 public:
 	// This is the sender of the event
-	// WARNING : this MAY be null , threads CAN send anonymous events
+	// WARNING : this MAY be null, threads CAN send anonymous events
 	KviThread * sender(){ return m_pSender; };
 	int id(){ return m_eventId; };
 };

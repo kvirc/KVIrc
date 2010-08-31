@@ -59,7 +59,7 @@ extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 	@description:
 		Adds <filename> to the list of the active shared files.
 		The users will be able to request the file via [cmd]dcc.get[/cmd].
-		If [user_mask] is specified , the access to the file is limited
+		If [user_mask] is specified, the access to the file is limited
 		to the users that match this mask, otherwise the mask will
 		be automatically set to '*!*@*'.[br]
 		If the 't' switch is used, the sharedfile will be removed after

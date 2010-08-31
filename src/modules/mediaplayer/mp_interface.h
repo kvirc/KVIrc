@@ -78,7 +78,7 @@ public:
 	// communication errors.
 	virtual QString nowPlaying() = 0;
 	// currently played media resource locator
-	// file://<filepath> for local files, dvb:// for dvb media , dvd:// for dvd's
+	// file://<filepath> for local files, dvb:// for dvb media, dvd:// for dvd's
 	// http:// for audio streams etc...
 	// empty if player is not playing (or in the tragic case that the player
 	// can't determine the url).

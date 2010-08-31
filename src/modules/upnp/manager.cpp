@@ -78,7 +78,7 @@ void Manager::initialize()
 
 	// Create the SSDP object to detect devices
 	m_pSsdpConnection = new SsdpConnection();
-	connect(m_pSsdpConnection, SIGNAL( deviceFound(const QString&,int,const QString&) ) ,
+	connect(m_pSsdpConnection, SIGNAL( deviceFound(const QString&,int,const QString&) ),
 		this, SLOT( slotDeviceFound(const QString&,int,const QString&) ) );
 
 	// Create a timer

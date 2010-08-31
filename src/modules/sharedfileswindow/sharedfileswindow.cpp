@@ -208,7 +208,7 @@ KviSharedFilesTreeWidgetItem::~KviSharedFilesTreeWidgetItem()
 
 
 KviSharedFilesWindow::KviSharedFilesWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm)
-: KviWindow(KVI_WINDOW_TYPE_TOOL,lpFrm,"shared files window",0) , KviModuleExtension(d)
+: KviWindow(KVI_WINDOW_TYPE_TOOL,lpFrm,"shared files window",0), KviModuleExtension(d)
 {
 	g_pSharedFilesWindow = this;
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
