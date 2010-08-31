@@ -1088,13 +1088,10 @@ void KviConsole::setAvatarFromOptions()
 
 	if(!e)return;
 
+	// a=0 => avatar unset
 	KviAvatar * a = defaultAvatarFromOptions();
-
-	if(a)
-	{
-		e->setAvatar(a);
-		avatarChanged(a,connection()->userInfo()->nickName(),QString(),QString(),QString());
-	}
+	e->setAvatar(a);
+	avatarChanged(a,connection()->userInfo()->nickName(),QString(),QString(),QString());
 }
 
 void KviConsole::applyOptions()

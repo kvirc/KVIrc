@@ -518,11 +518,11 @@ void KviIdentityAvatarOptionsWidget::commit(void)
 	{
 		KVI_OPTION_STRING(KviOption_stringMyAvatar) = szAvatarName;
 		KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar) = *m_pLocalAvatar;
-		g_pApp->setAvatarFromOptions();
 	} else {
 		KVI_OPTION_STRING(KviOption_stringMyAvatar) = "";
 		KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar) = KviPixmap();
 	}
+	g_pApp->setAvatarFromOptions();
 }
 
 void KviIdentityAvatarOptionsWidget::chooseAvatar()
