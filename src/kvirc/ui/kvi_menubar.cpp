@@ -47,9 +47,6 @@ KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
 	setAutoFillBackground(false);
 	m_pFrm = par;
 
-	m_iNumDefaultItems = 0;
-	m_pDefaultItemId = 0;
-
 	KviTalPopupMenu * pop = new KviTalPopupMenu(this,"KVIrc");
 	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupMainPopup()));
 #ifndef COMPILE_ON_MAC
@@ -91,16 +88,12 @@ KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
 KviMenuBar::~KviMenuBar()
 {
 	if(m_pScriptItemList)delete m_pScriptItemList;
-	if(m_pDefaultItemId)kvi_free(m_pDefaultItemId);
 }
 
 void KviMenuBar::addDefaultItem(const QString &text,KviTalPopupMenu * pop)
 {
-	m_iNumDefaultItems++;
-	m_pDefaultItemId = (int *)kvi_realloc((void *)m_pDefaultItemId,sizeof(int) * m_iNumDefaultItems);
 	pop->menuAction()->setText(text);
 	addAction(pop->menuAction());
-	m_pDefaultItemId[m_iNumDefaultItems - 1] = actions().indexOf(pop->menuAction());
 }
 
 void KviMenuBar::setupHelpPopup()
@@ -339,10 +332,10 @@ int KviMenuBar::getDefaultItemRealIndex(int iDefaultIndex)
 {
 	if(iDefaultIndex < 0)
 		iDefaultIndex = 0;
-	if(iDefaultIndex >= m_iNumDefaultItems)
-		return m_pDefaultItemId[m_iNumDefaultItems - 1] + 1;
+	if(iDefaultIndex > actions().count())
+		iDefaultIndex = actions().count();
 
-	return m_pDefaultItemId[iDefaultIndex];
+	return iDefaultIndex;
 }
 
 KviScriptMenuBarItem * KviMenuBar::findMenu(const QString &text)
@@ -372,7 +365,7 @@ bool KviMenuBar::removeMenu(const QString &text)
 	if(i)
 	{
 		disconnect(i->pPopup,SIGNAL(destroyed()),this,SLOT(menuDestroyed()));
-		removeAction(actions().at(i->id));
+		removeAction(i->pPopup->menuAction());
 		m_pScriptItemList->removeRef(i);
 		return true;
 	}
@@ -384,7 +377,7 @@ void KviMenuBar::menuDestroyed()
 	KviScriptMenuBarItem * i = findMenu(((KviKvsPopupMenu *)sender()));
 	if(i)
 	{
-		removeAction(actions().at(i->id));
+		// No need to remove the associated action: qt already did it (ticket #931)
 		m_pScriptItemList->removeRef(i);
 	}
 }
@@ -405,9 +398,7 @@ void KviMenuBar::addMenu(const QString &text,KviKvsPopupMenu * p,int index)
 	if(index == -1 || index >= actions().count())
 	{
 		addAction(it->pPopup->menuAction());
-		it->id = actions().indexOf(it->pPopup->menuAction());
 	} else {
-		it->id = index;
 		insertAction(actions().value(index), it->pPopup->menuAction());
 	}
 
