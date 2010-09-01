@@ -36,7 +36,6 @@ class KviKvsPopupMenu;
 
 typedef struct _KviScriptMenuBarItem
 {
-	int               id;
 	KviStr            szPopupName;
 	KviKvsPopupMenu * pPopup;
 	KviStr            szText;
@@ -54,8 +53,6 @@ protected:
 	KviTalPopupMenu                       * m_pRecentServersPopup;
 	KviFrame                         * m_pFrm;
 	KviPointerList<KviScriptMenuBarItem> * m_pScriptItemList;
-	int                                m_iNumDefaultItems;
-	int                              * m_pDefaultItemId;
 protected:
 	KviScriptMenuBarItem * findMenu(const QString &text);
 	KviScriptMenuBarItem * findMenu(KviKvsPopupMenu * p);

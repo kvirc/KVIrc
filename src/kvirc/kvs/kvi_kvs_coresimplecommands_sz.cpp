@@ -236,7 +236,7 @@ namespace KviKvsCoreSimpleCommands
 				}
 				if(!console)
 				{
-					// yep , have to search
+					// yep, have to search
 					console = KVSCSC_pWindow->frame()->firstNotConnectedConsole();
 					if(!console)
 					{
@@ -342,25 +342,27 @@ namespace KviKvsCoreSimpleCommands
 			Adds an [b]existing[/b] popup menu to the current frame's menu bar.[br]
 			<visible_text> is used as menu identification and obviously as the visible
 			menu bar text for the new popup.[br]
-			If a popup menu with the same <visible_text> already exists in the current frame
+			If a popup menu with the same <visible_text> or the same <menu_name> already exists in the current frame
 			it is removed first.[br]
 			<visible_text> can optionally contain the "&" character to identify
 			the popup menu accelerator.[br]
-			[menu_name] , if given , must be avalid name of a popup menu created earlier
+			[menu_name], if given, must be a valid name of a popup menu created earlier
 			with [cmd]defpopup[/cmd] (or the script center).[br]
-			If [menu_name] is not given , the popup menu identified by <visible_text> is removed.[br]
-			If the -i switch is used , <index> is a [b]zero based index[/b] of the default
+			If [menu_name] is not given, the popup menu identified by <visible_text> is removed.[br]
+			If the -i switch is used, <index> is a [b]zero based index[/b] of the default
 			menu-bar text item: the new popup menu will be placed on the left of that default item.[br]
-			If -q is used , this command prints no warnings (so you can safely use it to remove
+			If -q is used, this command prints no warnings (so you can safely use it to remove
 			popup menus without being sure that they actually are in there).
 			The warning itself serves to debugging purposes for the scripter.[br]
 		@seealso:
 			[cmd]defpopup[/cmd]
 		@examples:
+			[example]
 			setmenu -q -i=2 Test apopup
 			setmenu Test
 			setmenu ThisDoesNotExist
 			setmenu -q ThisDoesNotExist
+			[/example]
 	*/
 
 	KVSCSC(setmenu)
@@ -375,7 +377,7 @@ namespace KviKvsCoreSimpleCommands
 		{
 			if(!(KVSCSC_pWindow->frame()->mainMenuBar()->removeMenu(szVisibleText)))
 			{
-				if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs_ctx("No menu bar item with text '%Q'","kvs"),&szPopupName);
+				if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs_ctx("No menu bar item with text '%Q'","kvs"),&szVisibleText);
 			}
 			return true;
 		}

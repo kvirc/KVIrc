@@ -970,8 +970,12 @@ namespace KviKvsCoreFunctions
 					iTzOffsetM = iLocalTzM - iUtcM;
 					iTzOffset = iTzOffsetH * 100 + iTzOffsetM;
 
+					//clamp to -12:00 / +12:00 (ticket #924)
 					if(iTzOffset < 1200)
 						iTzOffset+= 2400;
+
+					if(iTzOffset > 1200)
+						iTzOffset-= 2400;
 
 					if(iTzOffset > 0)
 						szFmtTime += "+";
