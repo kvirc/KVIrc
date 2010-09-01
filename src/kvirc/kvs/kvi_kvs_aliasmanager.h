@@ -34,7 +34,7 @@
 
 class KVIRC_API KviKvsAliasManager : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 protected: // it only can be created and destroyed by KviKvsAliasManager::init()/done()
 	KviKvsAliasManager();
 	~KviKvsAliasManager();
@@ -61,7 +61,6 @@ public:
 
 	void completeCommand(const QString &word,KviPointerList<QString> * matches);
 signals:
-
 	void aliasRefresh(const QString &);
 };
 // namespaces are handled completly in the editing!

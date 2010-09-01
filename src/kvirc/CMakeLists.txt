@@ -74,6 +74,7 @@ SET(kvirc_MOC_HDRS
 	kvs/kvi_kvs_dnsmanager.h
 	kvs/kvi_kvs_object.h
 	kvs/kvi_kvs_popupmenu.h
+	kvs/kvi_kvs_popupmanager.h
 	kvs/kvi_kvs_processmanager.h
 	kvs/kvi_kvs_timermanager.h
 	kvs/kvi_kvs_useraction.h

@@ -341,5 +341,7 @@ bool KviKvsTreeNodeSpecialCommandDefpopup::execute(KviKvsRunTimeContext * c)
 		if(!bWasAlreadyThere)KviKvsPopupManager::instance()->remove(szName);
 		return false;
 	}
+	
+	KviKvsPopupManager::instance()->emitRefresh(szName);
 	return true;
 }

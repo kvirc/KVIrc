@@ -71,6 +71,17 @@ KviKvsPopupMenu * KviKvsPopupManager::get(const QString &szPopupName)
 	return m;
 }
 
+void KviKvsPopupManager::add(const QString &szPopupName,KviKvsPopupMenu * pPopup)
+{
+	m_pPopupDict->replace(szPopupName,pPopup);
+	emit popupRefresh(szPopupName);
+};
+
+void KviKvsPopupManager::emitRefresh(const QString &szPopupName)
+{
+	emit popupRefresh(szPopupName);
+}
+
 void KviKvsPopupManager::load(const QString &szFileName)
 {
 	m_pPopupDict->clear();

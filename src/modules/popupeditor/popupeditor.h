@@ -158,6 +158,7 @@ public:
 	bool                   m_bOneTimeSetupDone;
 	KviTalPopupMenu      * m_pContextPopup;
 	KviTalPopupMenu      * m_pEmptyContextPopup;
+	bool                   m_bSaving;
 public:
 	void commit();
 	void exportPopups(bool);
@@ -169,6 +170,7 @@ protected slots:
 	void exportSelected();
 	void exportCurrentPopup();
 	void removeCurrentPopup();
+	void popupRefresh(const QString &szName);
 protected:
 	void showEvent(QShowEvent *e);
 	void getExportPopupBuffer(QString &buffer,KviMenuTreeWidgetItem * it);

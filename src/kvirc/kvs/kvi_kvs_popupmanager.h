@@ -27,8 +27,9 @@
 #include "kvi_settings.h"
 #include "kvi_kvs_popupmenu.h"
 
-class KVIRC_API KviKvsPopupManager
+class KVIRC_API KviKvsPopupManager : public QObject
 {
+	Q_OBJECT
 protected: // can only be created by init/done
 	KviKvsPopupManager();
 	~KviKvsPopupManager();
@@ -45,12 +46,15 @@ public:
 
 	KviKvsPopupMenu * lookup(const QString &szPopupName){ return m_pPopupDict->find(szPopupName); };
 	KviKvsPopupMenu * get(const QString &szPopupName);
-	void add(const QString &szPopupName,KviKvsPopupMenu * pPopup){ m_pPopupDict->replace(szPopupName,pPopup); };
+	void add(const QString &szPopupName,KviKvsPopupMenu * pPopup);
 	void remove(const QString &szPopupName){ m_pPopupDict->remove(szPopupName); };
 	void clear(){ m_pPopupDict->clear(); };
 
 	void save(const QString & filename);
 	void load(const QString & filename);
+	void emitRefresh(const QString &szPopupName);
+signals:
+	void popupRefresh(const QString &szPopupName);
 };
 
 

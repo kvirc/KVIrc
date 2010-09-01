@@ -1003,6 +1003,8 @@ void KviMenuTreeWidgetItem::replacePopup(KviKvsPopupMenu * popup)
 KviPopupEditor::KviPopupEditor(QWidget * par)
 : QWidget(par)
 {
+	m_bSaving = false;
+
 	QGridLayout * l = new QGridLayout(this);
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this);
 	spl->setObjectName("popupeditor_horizontal_splitter");
@@ -1064,6 +1066,48 @@ void KviPopupEditor::oneTimeSetup()
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
 		this,SLOT(customContextMenuRequested(const QPoint &)));
+	connect(KviKvsPopupManager::instance(),SIGNAL(popupRefresh(const QString &)),this,SLOT(popupRefresh(const QString &)));
+}
+
+void KviPopupEditor::popupRefresh(const QString &szName)
+{
+	if(m_bSaving)
+		return;
+
+	KviPointerHashTable<QString,KviKvsPopupMenu> * pTable = KviKvsPopupManager::instance()->popupDict();
+	if(!pTable) return;
+	KviKvsPopupMenu * pPopup = pTable->find(szName);
+	if(!pPopup) return;
+
+	// if it already exists, replace its popup
+	for(int i=0; i<m_pTreeWidget->topLevelItemCount();i++)
+	{
+		KviMenuTreeWidgetItem * ch = (KviMenuTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+
+		if(KviQString::equalCI(szName,ch->m_pPopup->popupName()))
+		{
+			if(ch==m_pLastEditedItem)
+			{
+				if(
+					QMessageBox::warning(0,__tr2qs_ctx("OverWrite Current Popup","editor"),
+						__tr2qs_ctx("An external script has changed the popup you are currently editing. Do you want to accept the external changes?","editor"),
+						QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes
+				) return;
+			}
+			KviKvsPopupMenu * pCopy = new KviKvsPopupMenu(szName);
+			pCopy->copyFrom(pPopup);
+			ch->replacePopup(pCopy);
+			
+			//refresh current item
+			if(ch==m_pLastEditedItem)
+				m_pEditor->edit(m_pLastEditedItem);
+			return;
+		}
+	}
+	// create it
+	KviKvsPopupMenu * pCopy = new KviKvsPopupMenu(szName);
+	pCopy->copyFrom(pPopup);
+	new KviMenuTreeWidgetItem(m_pTreeWidget,pCopy);
 }
 
 void KviPopupEditor::customContextMenuRequested(const QPoint &pos)
@@ -1228,6 +1272,7 @@ void KviPopupEditor::showEvent(QShowEvent *e)
 
 void KviPopupEditor::commit()
 {
+	m_bSaving = true;
 	if(!m_bOneTimeSetupDone)return;
 
 	saveLastEditedItem();
@@ -1262,6 +1307,7 @@ void KviPopupEditor::commit()
 
 
 	g_pApp->savePopups();
+	m_bSaving = false;
 }
 
 void KviPopupEditor::getUniquePopupName(KviMenuTreeWidgetItem *item,QString &buffer)

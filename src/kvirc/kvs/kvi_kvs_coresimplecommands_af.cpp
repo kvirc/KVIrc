@@ -965,6 +965,7 @@ namespace KviKvsCoreSimpleCommands
 				KVSCSC_pContext->warning(__tr2qs_ctx("The menu item with id \"%Q\" does not exist in popup \"%Q\"","kvs"),&szItemId,&szPopupName);
 		}
 
+		KviKvsPopupManager::instance()->emitRefresh(szPopupName);
 		return true;
 	}
 
