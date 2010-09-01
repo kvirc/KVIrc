@@ -320,8 +320,8 @@ static bool toolbar_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<boolean> $toolbar.isVisible(<id:string>)
 	@description:
-		Returns 1 if the toolbar with the specified <id> is actually visible and 0 otherwise.[br]
-		If the toolbar is not defined at all this function still returns 0.[br]
+		Returns 1 if the toolbar with the specified <id> is visible,
+		or 0 when invisible or the given toolbar does not exist. 
 	@seealso:
 		[cmd]toolbar.show[/cmd]
 */
@@ -348,8 +348,8 @@ static bool toolbar_kvs_fnc_isVisible(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<array> $toolbar.list()
 	@description:
-		Returns a list of defined toolbar identifiers.[br]
-		You can use this function to loop thru all the toolbar definitions.[br]
+		Returns a list of defined toolbar identifiers -
+		this can be used to loop through all defined toolbars. 
 	@seealso:
 */
 

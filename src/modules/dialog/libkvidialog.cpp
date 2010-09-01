@@ -69,12 +69,18 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	setIcon(QMessageBox::NoIcon);
 	QMessageBox::StandardButtons buttons;
 	bool btn=false;
-	if (!szButton0.isEmpty()) {btn=true;buttons=QMessageBox::Yes | QMessageBox::Default;}
+	if (!szButton0.isEmpty()) {btn=true;buttons=QMessageBox::Yes;}
 	if (!szButton1.isEmpty()) {btn=true;buttons|=QMessageBox::No;}
-	if (!szButton2.isEmpty()) {btn=true;buttons|=QMessageBox::Cancel | QMessageBox::Escape;}
+	if (!szButton2.isEmpty()) {btn=true;buttons|=QMessageBox::Cancel; }
 
 	if (!btn) buttons=QMessageBox::Ok;
 	setStandardButtons(buttons);
+	setDefaultButton(QMessageBox::Yes);
+	if(szButton2.isEmpty())
+		setEscapeButton(QMessageBox::No);
+	else
+		setEscapeButton(QMessageBox::Cancel);
+	
 	g_pDialogModuleDialogList->append(this);
 
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
@@ -105,6 +111,13 @@ void KviKvsCallbackMessageBox::done(int code)
 	{
 		case QMessageBox::No: iVal = 1; break;
 		case QMessageBox::Cancel: iVal = 2; break;
+		case 0:
+			// user closed the dialog, fake an "escape button" press
+			if(standardButtons() & QMessageBox::Cancel)
+				iVal = 2;
+			else 
+				iVal = 1;
+			break;
 	}
 
 	KviKvsVariantList params;
@@ -137,20 +150,18 @@ void KviKvsCallbackMessageBox::done(int code)
 		<icon> can be a relative or absolute path to an image file, a signed number (in that case it defines
 		an internal KVIrc image) or one of the special strings "critical", "information" and "warning".[br]
 		<button0> is the text of the first button (on the left).[br]
-		<button1> is the text of the second button (if empty or not given at all, only one button will appear in the dialog).[br]
-		<button2> is the text of the third button (if empty or not given, only two buttons will appear in the dialog).[br]
-		The first button is always the default button: it is activated when the user presses the
-		enter key. The thirs, or the second if the third is not present, is the escape button
-		and is activated when the user presses the Esc key.[br]
-		<magic1>,<magic2>... are the magic parameters: evaluated at dialog.message call time and passed
+		<button1> is the text of the second button (if empty or specified, only one button will appear in the dialog).[br]
+		<button2> is the text of the third button (if empty or specified, only two buttons will appear in the dialog).[br]
+		The first button is always the default button - it is activated when the user presses the
+		enter key. The third (or the second if only two buttons are present) is treated as the escape button
+		and is activated when the user presses the Esc key or closes the dialog with the window manager close button.[br]
+		<magic1>,<magic2>... are the magic parameters - evaluated at dialog.message call time and passed
 		to the <callback_command> as positional parameters.[br]
-		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
-		it will appear above its parent widget and block its input until it's closed.[br]
-		Once the dialog has been shown, the user will click one of the buttons. At this point the dialog
-		is hidden and the <callback_command> is executed passing the number of the button clicked
+		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour -
+		it will appear above its parent widget and block its input until the dialog is closed.[br]
+		Once the dialog is displayed, the user will click one of the buttons. At this point the dialog
+		is hidden and the <callback_command> is executed, passing the number of the button clicked
 		as $0 and the magic parameters as positional parameters $1, $2, $3....[br]
-		Please note that if the user closes the window with the window manager close button,
-		the action is interpreted as a button2 click (that is usually sth as "Cancel").[br]
 	@examples:
 		[example]
 		[comment]# Just a warning dialog[/comment]

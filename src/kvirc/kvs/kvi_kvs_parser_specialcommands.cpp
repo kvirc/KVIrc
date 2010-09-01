@@ -1312,34 +1312,31 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 			Another flow control command
 		@description:
 			The switch command is based on the standard C 'switch' keyword.
-			It executes conditionally groups of commands chosen from
-			a larger set of command groups.[br]
+			It conditionally executes groups of commands chosen from a larger set of command groups.[br]
 			First <expression> is evaluated (<expression> is any arithmetic or string expression).[br]
-			Then the 'match','regexp','case' and 'default' labels are evaluated sequentially
+			Then the 'match', 'regexp', 'case' and 'default' labels are evaluated sequentially
 			in the order of appearance.[br]
 			[b]case(<value>)[:]<command>[/b][br]
 			The <value> is evaluated and is compared against the result of <expression>.
-			The comparison is case insensitive (if the values are strings).[br]
+			String comparison is case insensitive.[br]
 			If <value> is equal to <expression> then <command> is executed.
 			Please note that <command> must be either a single instruction or an instruction block [b]enclosed in braces[/b].
-			If <command> contains a [cmd]break[/cmd] statement inside or if [cmd]break[/cmd]
-			is specified just after the <command> then the execution of the switch is terminated
-			otherwise the nex label is evaluated.[br]
+			During or after <command> execution, if a [cmd]break[/cmd] statement is encountered the execution of the switch
+			is terminated, otherwise the next label is evaluated.[br]
 			If the -p (--passthrough) option is enabled, than the switch command will execute all the istructions blocks
-			until a [cmd]break[/cmd] statement is found.
+			until a [cmd]break[/cmd] statement is found.[br]
 			[b]match(<value>)[:]<command>[/b][br]
-			The <value> is expected to be a wildcard expression (containing '*' and '?' wildcards)
-			that is matched against <expression>.[br]
-			If there is a match (a complete case insensitive match!) then the related <command>
-			is executed. [cmd]brea[/cmd] is treated just like in the case label.[br]
+			The <value> is expected to be a wildcard expression (wildcard characters being '*' and '?')
+			that is matched in a case insensitive fashion against <expression>.[br]
+			If a match occurs, the related <command> is executed.
+			The [cmd]break[/cmd] statement is treated as in the case label.[br]
 			[b]regexp(<value>)[:]<command>[/b][br]
 			The <value> is expected to be a complete standard regular expression
-			that is matched agains <expression>.[br]
-			If there is a match (a complete case insensitive match!) then the related <command>
-			is executed. [cmd]brea[/cmd] is treated just like in the case label.[br]
+			that is matched in a case insensitive fashion against <expression>.[br]
+			If a match occurs, the related <command> is executed.
+			The [cmd]break[/cmd] statement is treated as in the case label.[br]
 			[b]default[:]<command>[/b][br]
-			The default label is executed unconditionally (unless there was a previous label
-			that terminated the execution with break).[br]
+			The default label is executed unconditionally if no previous label terminated execution with the [cmd]break[/cmd] statement.[br]
 		@examples:
 			[comment]# Try to change the 1 below to 2 or 3 to see the results[/comment]
 			[example]
