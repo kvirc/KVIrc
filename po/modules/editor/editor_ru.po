@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-31 10:02+0200\n"
+"POT-Creation-Date: 2010-09-01 15:53+0200\n"
 "PO-Revision-Date: 2010-06-14 10:48+0400\n"
 "Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -71,7 +71,7 @@ msgstr "&Добавить заготовку события..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1189
 #: src/modules/eventeditor/eventeditor.cpp:510
-#: src/modules/popupeditor/popupeditor.cpp:1315
+#: src/modules/popupeditor/popupeditor.cpp:1361
 #: src/modules/raweditor/raweditor.cpp:484
 msgid "&Apply"
 msgstr "Применить"
@@ -109,7 +109,7 @@ msgid "&Enable Handler"
 msgstr "Включить обработчик"
 
 #: src/modules/eventeditor/eventeditor.cpp:104
-#: src/modules/popupeditor/popupeditor.cpp:1019
+#: src/modules/popupeditor/popupeditor.cpp:1021
 #: src/modules/raweditor/raweditor.cpp:100
 msgid "&Export All To..."
 msgstr "&Экспортировать всё в..."
@@ -119,11 +119,11 @@ msgstr "&Экспортировать всё в..."
 msgid "&Export Handler To..."
 msgstr "&Экспорт обработчика в..."
 
-#: src/modules/popupeditor/popupeditor.cpp:1092
+#: src/modules/popupeditor/popupeditor.cpp:1136
 msgid "&Export Popup To..."
 msgstr "&Экспортировать всплывающее меню в..."
 
-#: src/modules/popupeditor/popupeditor.cpp:1021
+#: src/modules/popupeditor/popupeditor.cpp:1023
 msgid "&Export selected To..."
 msgstr "&Экспортировать выбранное в.."
 
@@ -132,15 +132,15 @@ msgstr "&Экспортировать выбранное в.."
 msgid "&New Handler"
 msgstr "&Новый обработчик"
 
-#: src/modules/popupeditor/popupeditor.cpp:1080
-#: src/modules/popupeditor/popupeditor.cpp:1101
+#: src/modules/popupeditor/popupeditor.cpp:1124
+#: src/modules/popupeditor/popupeditor.cpp:1145
 msgid "&New Popup"
 msgstr "&Новое всплывающее меню"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1184
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:505
-#: src/modules/popupeditor/popupeditor.cpp:1310
+#: src/modules/popupeditor/popupeditor.cpp:1356
 #: src/modules/raweditor/raweditor.cpp:429
 #: src/modules/raweditor/raweditor.cpp:479
 msgid "&OK"
@@ -299,6 +299,15 @@ msgstr ""
 "Внешний скрипт изменил алиас который вы сейчас реактируете. Вы хотите "
 "принять эти изменения?"
 
+#: src/modules/popupeditor/popupeditor.cpp:1093
+#, fuzzy
+msgid ""
+"An external script has changed the popup you are currently editing. Do you "
+"want to accept the external changes?"
+msgstr ""
+"Внешний скрипт изменил алиас который вы сейчас реактируете. Вы хотите "
+"принять эти изменения?"
+
 #: src/modules/actioneditor/actioneditor.cpp:879
 msgid "Apply"
 msgstr "Применить"
@@ -348,7 +357,7 @@ msgstr "Невозможно открыть файл %s на запись."
 #: src/modules/aliaseditor/aliaseditor.cpp:1194
 #: src/modules/editor/scripteditor.cpp:541
 #: src/modules/eventeditor/eventeditor.cpp:515
-#: src/modules/popupeditor/popupeditor.cpp:1320
+#: src/modules/popupeditor/popupeditor.cpp:1366
 #: src/modules/raweditor/raweditor.cpp:489
 #: src/modules/toolbareditor/toolbareditor.cpp:188
 #: src/modules/toolbareditor/toolbareditor.cpp:405
@@ -434,8 +443,8 @@ msgstr "Выберите каталог - KVIrc"
 #: src/modules/editor/scripteditor.cpp:880
 #: src/modules/eventeditor/eventeditor.cpp:446
 #: src/modules/eventeditor/eventeditor.cpp:487
-#: src/modules/popupeditor/popupeditor.cpp:1120
-#: src/modules/popupeditor/popupeditor.cpp:1170
+#: src/modules/popupeditor/popupeditor.cpp:1164
+#: src/modules/popupeditor/popupeditor.cpp:1214
 #: src/modules/raweditor/raweditor.cpp:422
 #: src/modules/raweditor/raweditor.cpp:460
 #: src/modules/toolbareditor/toolbareditor.cpp:396
@@ -957,8 +966,8 @@ msgstr "Обычный текст:"
 #: src/modules/classeditor/classeditor.cpp:1223
 #: src/modules/editor/scripteditor.cpp:537
 #: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1127
-#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/popupeditor/popupeditor.cpp:1171
+#: src/modules/popupeditor/popupeditor.cpp:1218
 #: src/modules/raweditor/raweditor.cpp:464
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:248
@@ -1013,6 +1022,11 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:321
 msgid "OverWrite Current Alias"
+msgstr "Переписать текущий алиас"
+
+#: src/modules/popupeditor/popupeditor.cpp:1092
+#, fuzzy
+msgid "OverWrite Current Popup"
 msgstr "Переписать текущий алиас"
 
 #: src/modules/popupeditor/popupeditor.cpp:440
@@ -1092,11 +1106,11 @@ msgstr "Пожалуйста, определите свойства для но�
 msgid "Please specify the properties for the toolbar \"%1\""
 msgstr "Пожалуйста, определите свойства для панели инструментов \"%1\""
 
-#: src/modules/popupeditor/popupeditor.cpp:1015
+#: src/modules/popupeditor/popupeditor.cpp:1017
 msgid "Popup"
 msgstr "Всплывающее меню"
 
-#: src/modules/popupeditor/popupeditor.cpp:1358
+#: src/modules/popupeditor/popupeditor.cpp:1404
 msgid "Popup Editor"
 msgstr "Редактор всплывающих меню"
 
@@ -1137,7 +1151,7 @@ msgstr "Низкоуровневое событие"
 msgid "Re&move Handler"
 msgstr "Удалить обработчик"
 
-#: src/modules/popupeditor/popupeditor.cpp:1086
+#: src/modules/popupeditor/popupeditor.cpp:1130
 msgid "Re&move Popup"
 msgstr "Удалить всплывающее меню"
 
@@ -1324,7 +1338,7 @@ msgid "Unable to write to the actions file."
 msgstr "Невозможно записать файл с действиями."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:819
-#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/popupeditor/popupeditor.cpp:1218
 msgid "Unable to write to the alias file."
 msgstr "Невозможно записать файл с алиасами."
 
@@ -1340,7 +1354,7 @@ msgstr "Невозможно записать файл с событием."
 msgid "Unable to write to the events file."
 msgstr "Невозможно записать файл с событиями."
 
-#: src/modules/popupeditor/popupeditor.cpp:1127
+#: src/modules/popupeditor/popupeditor.cpp:1171
 msgid "Unable to write to the popup file."
 msgstr "Невозможно записать файл с всплывающими меню."
 
@@ -1385,8 +1399,8 @@ msgstr "Слово для поиска"
 #: src/modules/classeditor/classeditor.cpp:1223
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1127
-#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/popupeditor/popupeditor.cpp:1171
+#: src/modules/popupeditor/popupeditor.cpp:1218
 #: src/modules/raweditor/raweditor.cpp:429
 #: src/modules/raweditor/raweditor.cpp:464
 #: src/modules/toolbareditor/toolbareditor.cpp:458
@@ -1431,7 +1445,7 @@ msgid "none"
 msgstr "нет"
 
 #: src/modules/eventeditor/eventeditor.cpp:227
-#: src/modules/popupeditor/popupeditor.cpp:1271
+#: src/modules/popupeditor/popupeditor.cpp:1317
 #: src/modules/raweditor/raweditor.cpp:192
 msgid "unnamed"
 msgstr "без имени"

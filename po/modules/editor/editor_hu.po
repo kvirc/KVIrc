@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-31 10:02+0200\n"
+"POT-Creation-Date: 2010-09-01 15:53+0200\n"
 "PO-Revision-Date: 2010-08-20 15:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -67,7 +67,7 @@ msgstr "Nyers Esemény hozzá&adása..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1189
 #: src/modules/eventeditor/eventeditor.cpp:510
-#: src/modules/popupeditor/popupeditor.cpp:1315
+#: src/modules/popupeditor/popupeditor.cpp:1361
 #: src/modules/raweditor/raweditor.cpp:484
 msgid "&Apply"
 msgstr "&Alkalmaz"
@@ -105,7 +105,7 @@ msgid "&Enable Handler"
 msgstr "Kezelő &Engedélyezése"
 
 #: src/modules/eventeditor/eventeditor.cpp:104
-#: src/modules/popupeditor/popupeditor.cpp:1019
+#: src/modules/popupeditor/popupeditor.cpp:1021
 #: src/modules/raweditor/raweditor.cpp:100
 msgid "&Export All To..."
 msgstr "Minden &Exportálása..."
@@ -115,11 +115,11 @@ msgstr "Minden &Exportálása..."
 msgid "&Export Handler To..."
 msgstr "Kezelő &Exportálása..."
 
-#: src/modules/popupeditor/popupeditor.cpp:1092
+#: src/modules/popupeditor/popupeditor.cpp:1136
 msgid "&Export Popup To..."
 msgstr "Popup &Exportálása..."
 
-#: src/modules/popupeditor/popupeditor.cpp:1021
+#: src/modules/popupeditor/popupeditor.cpp:1023
 msgid "&Export selected To..."
 msgstr "Kiválasztott &Exportálása..."
 
@@ -128,15 +128,15 @@ msgstr "Kiválasztott &Exportálása..."
 msgid "&New Handler"
 msgstr "Új Kezelő"
 
-#: src/modules/popupeditor/popupeditor.cpp:1080
-#: src/modules/popupeditor/popupeditor.cpp:1101
+#: src/modules/popupeditor/popupeditor.cpp:1124
+#: src/modules/popupeditor/popupeditor.cpp:1145
 msgid "&New Popup"
 msgstr "Új Popup"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1184
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:505
-#: src/modules/popupeditor/popupeditor.cpp:1310
+#: src/modules/popupeditor/popupeditor.cpp:1356
 #: src/modules/raweditor/raweditor.cpp:429
 #: src/modules/raweditor/raweditor.cpp:479
 msgid "&OK"
@@ -296,6 +296,15 @@ msgstr ""
 "Egy külső szkript megváltoztatta az aliast, amit épp szerkesztesz. Szeretnéd "
 "a külső változtatásokat elfogadni?"
 
+#: src/modules/popupeditor/popupeditor.cpp:1093
+#, fuzzy
+msgid ""
+"An external script has changed the popup you are currently editing. Do you "
+"want to accept the external changes?"
+msgstr ""
+"Egy külső szkript megváltoztatta az aliast, amit épp szerkesztesz. Szeretnéd "
+"a külső változtatásokat elfogadni?"
+
 #: src/modules/actioneditor/actioneditor.cpp:879
 msgid "Apply"
 msgstr "Alkalmaz"
@@ -345,7 +354,7 @@ msgstr "Nem tudom megnyitni írásra: %s"
 #: src/modules/aliaseditor/aliaseditor.cpp:1194
 #: src/modules/editor/scripteditor.cpp:541
 #: src/modules/eventeditor/eventeditor.cpp:515
-#: src/modules/popupeditor/popupeditor.cpp:1320
+#: src/modules/popupeditor/popupeditor.cpp:1366
 #: src/modules/raweditor/raweditor.cpp:489
 #: src/modules/toolbareditor/toolbareditor.cpp:188
 #: src/modules/toolbareditor/toolbareditor.cpp:405
@@ -431,8 +440,8 @@ msgstr "Válassz Mappát - KVIrc"
 #: src/modules/editor/scripteditor.cpp:880
 #: src/modules/eventeditor/eventeditor.cpp:446
 #: src/modules/eventeditor/eventeditor.cpp:487
-#: src/modules/popupeditor/popupeditor.cpp:1120
-#: src/modules/popupeditor/popupeditor.cpp:1170
+#: src/modules/popupeditor/popupeditor.cpp:1164
+#: src/modules/popupeditor/popupeditor.cpp:1214
 #: src/modules/raweditor/raweditor.cpp:422
 #: src/modules/raweditor/raweditor.cpp:460
 #: src/modules/toolbareditor/toolbareditor.cpp:396
@@ -954,8 +963,8 @@ msgstr "Normál szöveg:"
 #: src/modules/classeditor/classeditor.cpp:1223
 #: src/modules/editor/scripteditor.cpp:537
 #: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1127
-#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/popupeditor/popupeditor.cpp:1171
+#: src/modules/popupeditor/popupeditor.cpp:1218
 #: src/modules/raweditor/raweditor.cpp:464
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:248
@@ -1009,6 +1018,11 @@ msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:321
 msgid "OverWrite Current Alias"
+msgstr "Aktuális Alias Felülírása"
+
+#: src/modules/popupeditor/popupeditor.cpp:1092
+#, fuzzy
+msgid "OverWrite Current Popup"
 msgstr "Aktuális Alias Felülírása"
 
 #: src/modules/popupeditor/popupeditor.cpp:440
@@ -1084,11 +1098,11 @@ msgstr "Add meg az új eszköztár tulajdonságait."
 msgid "Please specify the properties for the toolbar \"%1\""
 msgstr "Kérlek add meg az eszköztár tulajdonságait: \"%1\""
 
-#: src/modules/popupeditor/popupeditor.cpp:1015
+#: src/modules/popupeditor/popupeditor.cpp:1017
 msgid "Popup"
 msgstr "Felbukkanó"
 
-#: src/modules/popupeditor/popupeditor.cpp:1358
+#: src/modules/popupeditor/popupeditor.cpp:1404
 msgid "Popup Editor"
 msgstr "Felbukkanó Szerkesztő"
 
@@ -1129,7 +1143,7 @@ msgstr "Nyers Esemény"
 msgid "Re&move Handler"
 msgstr "K&ezelő Eltávolítása"
 
-#: src/modules/popupeditor/popupeditor.cpp:1086
+#: src/modules/popupeditor/popupeditor.cpp:1130
 msgid "Re&move Popup"
 msgstr "Felbukkanó &Eltávolítása"
 
@@ -1313,7 +1327,7 @@ msgid "Unable to write to the actions file."
 msgstr "Az akciók fájl írása sikertelen."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:819
-#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/popupeditor/popupeditor.cpp:1218
 msgid "Unable to write to the alias file."
 msgstr "Az alias fájl írása sikertelen."
 
@@ -1329,7 +1343,7 @@ msgstr "Az esemény fájl írása sikertelen."
 msgid "Unable to write to the events file."
 msgstr "Az esemény fájl írása sikertelen."
 
-#: src/modules/popupeditor/popupeditor.cpp:1127
+#: src/modules/popupeditor/popupeditor.cpp:1171
 msgid "Unable to write to the popup file."
 msgstr "A felbukkanó írása sikertelen."
 
@@ -1374,8 +1388,8 @@ msgstr "Keresendő Szó"
 #: src/modules/classeditor/classeditor.cpp:1223
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1127
-#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/popupeditor/popupeditor.cpp:1171
+#: src/modules/popupeditor/popupeditor.cpp:1218
 #: src/modules/raweditor/raweditor.cpp:429
 #: src/modules/raweditor/raweditor.cpp:464
 #: src/modules/toolbareditor/toolbareditor.cpp:458
@@ -1420,7 +1434,7 @@ msgid "none"
 msgstr "nincs"
 
 #: src/modules/eventeditor/eventeditor.cpp:227
-#: src/modules/popupeditor/popupeditor.cpp:1271
+#: src/modules/popupeditor/popupeditor.cpp:1317
 #: src/modules/raweditor/raweditor.cpp:192
 msgid "unnamed"
 msgstr "névtelen"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-08-31 10:02+0200\n"
-"PO-Revision-Date: 2010-06-21 23:43+0200\n"
+"PO-Revision-Date: 2010-09-01 18:20+0200\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -349,7 +349,7 @@ msgstr "Policy di inserimento '%Q' invalida"
 
 #: src/modules/objects/class_trayicon.cpp:177
 msgid "Invalid message Icon: switch to default NoIcon '%Q'"
-msgstr ""
+msgstr "Icona invalida: metto l'icona predefinita NoIcon '%Q'"
 
 #: src/modules/objects/class_painter.cpp:1176
 msgid "Invalid mode '%Q'"
@@ -673,7 +673,6 @@ msgid "The parent of a layout must be a widget!"
 msgstr "Il padre di un layout deve essere una widget!"
 
 #: src/modules/objects/class_treewidgetitem.cpp:191
-#, fuzzy
 msgid ""
 "The parent of the listviewitem must be either another listviewitem or a "
 "listview"

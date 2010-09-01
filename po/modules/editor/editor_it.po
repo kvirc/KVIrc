@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-31 10:02+0200\n"
-"PO-Revision-Date: 2010-08-13 15:55+0200\n"
+"POT-Creation-Date: 2010-09-01 15:53+0200\n"
+"PO-Revision-Date: 2010-09-01 18:18+0200\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -72,7 +72,7 @@ msgstr "&Aggiungi Evento Raw"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1189
 #: src/modules/eventeditor/eventeditor.cpp:510
-#: src/modules/popupeditor/popupeditor.cpp:1315
+#: src/modules/popupeditor/popupeditor.cpp:1361
 #: src/modules/raweditor/raweditor.cpp:484
 msgid "&Apply"
 msgstr "&Applica"
@@ -110,7 +110,7 @@ msgid "&Enable Handler"
 msgstr "Abilita Gestore"
 
 #: src/modules/eventeditor/eventeditor.cpp:104
-#: src/modules/popupeditor/popupeditor.cpp:1019
+#: src/modules/popupeditor/popupeditor.cpp:1021
 #: src/modules/raweditor/raweditor.cpp:100
 msgid "&Export All To..."
 msgstr "&Esporta Tutto Su..."
@@ -120,11 +120,11 @@ msgstr "&Esporta Tutto Su..."
 msgid "&Export Handler To..."
 msgstr "&Esporta Gestore Su..."
 
-#: src/modules/popupeditor/popupeditor.cpp:1092
+#: src/modules/popupeditor/popupeditor.cpp:1136
 msgid "&Export Popup To..."
 msgstr "&Esporta Popup Su..."
 
-#: src/modules/popupeditor/popupeditor.cpp:1021
+#: src/modules/popupeditor/popupeditor.cpp:1023
 msgid "&Export selected To..."
 msgstr "&Esporta Selezione Su..."
 
@@ -133,15 +133,15 @@ msgstr "&Esporta Selezione Su..."
 msgid "&New Handler"
 msgstr "&Nuovo Gestore"
 
-#: src/modules/popupeditor/popupeditor.cpp:1080
-#: src/modules/popupeditor/popupeditor.cpp:1101
+#: src/modules/popupeditor/popupeditor.cpp:1124
+#: src/modules/popupeditor/popupeditor.cpp:1145
 msgid "&New Popup"
 msgstr "&Nuovo Popup"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1184
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:505
-#: src/modules/popupeditor/popupeditor.cpp:1310
+#: src/modules/popupeditor/popupeditor.cpp:1356
 #: src/modules/raweditor/raweditor.cpp:429
 #: src/modules/raweditor/raweditor.cpp:479
 msgid "&OK"
@@ -169,9 +169,8 @@ msgid "&Replace"
 msgstr "Sostituisci"
 
 #: src/modules/editor/scripteditor.cpp:1044
-#, fuzzy
 msgid "&Replace in all editor's items"
-msgstr "Sostituisci in tutti gli Alias"
+msgstr "Sostituisci in tutti gli elementi dell'editor"
 
 #: src/modules/classeditor/classeditor.cpp:1835
 msgid "&Save"
@@ -301,6 +300,14 @@ msgstr ""
 "Uno script esterno ha cambiato l'alias mentre lo stavi modificando. Vuoi "
 "accettare i cambiamenti esterni?"
 
+#: src/modules/popupeditor/popupeditor.cpp:1093
+msgid ""
+"An external script has changed the popup you are currently editing. Do you "
+"want to accept the external changes?"
+msgstr ""
+"Uno script esterno ha cambiato il popup che stavi modificando. Vuoi "
+"accettare i cambiamenti esterni?"
+
 #: src/modules/actioneditor/actioneditor.cpp:879
 msgid "Apply"
 msgstr "Applica"
@@ -350,7 +357,7 @@ msgstr "Impossible aprire il file %s in scrittura."
 #: src/modules/aliaseditor/aliaseditor.cpp:1194
 #: src/modules/editor/scripteditor.cpp:541
 #: src/modules/eventeditor/eventeditor.cpp:515
-#: src/modules/popupeditor/popupeditor.cpp:1320
+#: src/modules/popupeditor/popupeditor.cpp:1366
 #: src/modules/raweditor/raweditor.cpp:489
 #: src/modules/toolbareditor/toolbareditor.cpp:188
 #: src/modules/toolbareditor/toolbareditor.cpp:405
@@ -437,8 +444,8 @@ msgstr "Scegli una Directory - KVIrc"
 #: src/modules/editor/scripteditor.cpp:880
 #: src/modules/eventeditor/eventeditor.cpp:446
 #: src/modules/eventeditor/eventeditor.cpp:487
-#: src/modules/popupeditor/popupeditor.cpp:1120
-#: src/modules/popupeditor/popupeditor.cpp:1170
+#: src/modules/popupeditor/popupeditor.cpp:1164
+#: src/modules/popupeditor/popupeditor.cpp:1214
 #: src/modules/raweditor/raweditor.cpp:422
 #: src/modules/raweditor/raweditor.cpp:460
 #: src/modules/toolbareditor/toolbareditor.cpp:396
@@ -960,8 +967,8 @@ msgstr "Testo normale:"
 #: src/modules/classeditor/classeditor.cpp:1223
 #: src/modules/editor/scripteditor.cpp:537
 #: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1127
-#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/popupeditor/popupeditor.cpp:1171
+#: src/modules/popupeditor/popupeditor.cpp:1218
 #: src/modules/raweditor/raweditor.cpp:464
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:248
@@ -1017,6 +1024,10 @@ msgstr ""
 #: src/modules/aliaseditor/aliaseditor.cpp:321
 msgid "OverWrite Current Alias"
 msgstr "Sovrascivi l'alias corrente"
+
+#: src/modules/popupeditor/popupeditor.cpp:1092
+msgid "OverWrite Current Popup"
+msgstr "Sovrascivi Popup Corrente"
 
 #: src/modules/popupeditor/popupeditor.cpp:440
 msgid "Paste Above"
@@ -1094,11 +1105,11 @@ msgstr "Specifica le proprietà per la nuova ToolBar"
 msgid "Please specify the properties for the toolbar \"%1\""
 msgstr "Specifica le proprietà per la ToolBar \"%1\""
 
-#: src/modules/popupeditor/popupeditor.cpp:1015
+#: src/modules/popupeditor/popupeditor.cpp:1017
 msgid "Popup"
 msgstr "Popup"
 
-#: src/modules/popupeditor/popupeditor.cpp:1358
+#: src/modules/popupeditor/popupeditor.cpp:1404
 msgid "Popup Editor"
 msgstr "Editor Popup"
 
@@ -1139,7 +1150,7 @@ msgstr "Evento Raw"
 msgid "Re&move Handler"
 msgstr "Rimuovi Gestore"
 
-#: src/modules/popupeditor/popupeditor.cpp:1086
+#: src/modules/popupeditor/popupeditor.cpp:1130
 msgid "Re&move Popup"
 msgstr "Rimuovi Popup"
 
@@ -1247,9 +1258,8 @@ msgid "The exported file would be empty: cowardly refusing to write it"
 msgstr "Il file esportato sarà vuoto: mi rifiuto di scriverlo"
 
 #: src/modules/classeditor/classeditor.cpp:1139
-#, fuzzy
 msgid "The file \"%1\" exists. Do you want to replace it?"
-msgstr "Il file \"%Q\" esiste. Vuoi sovrascriverlo ?"
+msgstr "Il file \"%1\" esiste. Vuoi sovrascriverlo?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:746
 msgid "The file \"%Q\" exists. Do you want to replace it ?"
@@ -1279,9 +1289,8 @@ msgid "There is no selection!"
 msgstr "Non c'è selezione!"
 
 #: src/modules/classeditor/classeditor.cpp:1681
-#, fuzzy
 msgid "These inherited classes will be not compiled too:"
-msgstr "Queste classi ereditanti non verranno compilate:"
+msgstr "Queste classi ereditate non verranno compilate:"
 
 #: src/modules/classeditor/classeditor.cpp:692
 msgid "This name is already in use as Class name. Please choose another one."
@@ -1326,7 +1335,7 @@ msgid "Unable to write to the actions file."
 msgstr "Impossibile scrivere sul file delle azioni."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:819
-#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/popupeditor/popupeditor.cpp:1218
 msgid "Unable to write to the alias file."
 msgstr "Impossibile scrivere sul file dell'alias."
 
@@ -1342,7 +1351,7 @@ msgstr "Impossibile scrivere sul file dell'evento."
 msgid "Unable to write to the events file."
 msgstr "Impossibile scrivere sul file degli eventi."
 
-#: src/modules/popupeditor/popupeditor.cpp:1127
+#: src/modules/popupeditor/popupeditor.cpp:1171
 msgid "Unable to write to the popup file."
 msgstr "Impossibile scrivere sul file del popup."
 
@@ -1387,8 +1396,8 @@ msgstr "Parola da Trovare"
 #: src/modules/classeditor/classeditor.cpp:1223
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1127
-#: src/modules/popupeditor/popupeditor.cpp:1174
+#: src/modules/popupeditor/popupeditor.cpp:1171
+#: src/modules/popupeditor/popupeditor.cpp:1218
 #: src/modules/raweditor/raweditor.cpp:429
 #: src/modules/raweditor/raweditor.cpp:464
 #: src/modules/toolbareditor/toolbareditor.cpp:458
@@ -1433,7 +1442,7 @@ msgid "none"
 msgstr "niente"
 
 #: src/modules/eventeditor/eventeditor.cpp:227
-#: src/modules/popupeditor/popupeditor.cpp:1271
+#: src/modules/popupeditor/popupeditor.cpp:1317
 #: src/modules/raweditor/raweditor.cpp:192
 msgid "unnamed"
 msgstr "senza nome"

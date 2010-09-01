@@ -691,7 +691,7 @@ void KviApp::notifierMessage(KviWindow * pWnd, int iIconId, const QString & szMs
 		if(!pWnd)
 			return;
 		
-		QString szText = __tr2qs("Message arriving from %1\n").arg(pWnd->target());
+		QString szText = __tr2qs("Message arriving from %1:\n\n").arg(pWnd->target());
 		szText += KviMircCntrl::stripControlBytes(szMsg);
 
 		// org.freedesktop.Notifications.Notify
