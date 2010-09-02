@@ -116,6 +116,7 @@
 * \def KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT Previous highlighted window
 * \def KVI_SHORTCUTS_WIN_PREV_LINE Scroll the output window up one line
 * \def KVI_SHORTCUTS_WIN_PREV_PAGE Scroll the output window up one page
+* \def KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE Scroll to the last read line
 * \def KVI_SHORTCUTS_WIN_SEARCH Open "Find Text" dialog
 */
 
@@ -125,10 +126,10 @@
 #define KVI_SHORTCUTS_INPUT_BOLD "Ctrl+B"
 #define KVI_SHORTCUTS_INPUT_COPY "Ctrl+C"
 #define KVI_SHORTCUTS_WIN_SEARCH "Ctrl+F"
-#define KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE "Ctrl+L"
 #define KVI_SHORTCUTS_INPUT_ICON "Ctrl+I"
 #define KVI_SHORTCUTS_JOIN "Ctrl+J"
 #define KVI_SHORTCUTS_INPUT_COLOR "Ctrl+K"
+#define KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE "Ctrl+L"
 #define KVI_SHORTCUTS_CONTEXT "Ctrl+N"
 #define KVI_SHORTCUTS_INPUT_RESET "Ctrl+O"
 #define KVI_SHORTCUTS_INPUT_PLAINTEXT "Ctrl+P"
@@ -226,6 +227,7 @@
 		[b]Ctrl+I:[/b] Open "Insert icon" dialog[br]
 		[b]Ctrl+J:[/b] Open "Join Channels" dialog[br]
 		[b]Ctrl+K:[/b] Open "Insert Color" dialog[br]
+		[b]Ctrl+L:[/b] Scroll to the last read line[br]
 		[b]Ctrl+N:[/b] Open new context[br]
 		[b]Ctrl+O:[/b] Insert Reset control character[br]
 		[b]Ctrl+P:[/b] Insert "Plain text" control character[br]
@@ -269,6 +271,7 @@
 		[b]PageDown:[/b] Scroll the output window down one page[br]
 		[b]Shift+PageUp:[/b] Scroll the output window up one line[br]
 		[b]Shift+PageDown:[/b] Scroll the output window down one line[br]
+		[b]Ctrl+L:[/b] Scroll to the last read line[br]
 		[b]Ctrl+W:[/b] Close current window[br]
 
 		[big]Text editing related hotkeys:[/big][br]
