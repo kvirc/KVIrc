@@ -1604,7 +1604,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 
 	while(KVSP_curCharUnicode != '}')
 	{
-		// look for 'label', 'prologue', 'epilogue', 'popup', 'item', 'separator' or 'extpopup' label
+		// look for 'label', 'prologue', 'epilogue', 'popup', 'item', 'separator', 'separatorid' or 'extpopup' label
 		const QChar * pLabelBegin = KVSP_curCharPointer;
 		while(KVSP_curCharIsLetter)KVSP_skipChar;
 
@@ -1617,7 +1617,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 
 		if(KVSP_curCharPointer == pLabelBegin)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a 'prologue', 'separator', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a 'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 			delete pPopup;
 			return 0;
 		}
@@ -1733,13 +1733,20 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			if(pParameters)delete pParameters;
 		} else if(szLabelLow == "separator")
 		{
-			// FIXME: Separators can't have labels here :(((((
 			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_CONDITION
 			if(KVSP_curCharUnicode == ';')KVSP_skipChar;
-			QString szItemName = "dummySeparator"; // <------- FIXME!
+			QString szItemName = "dummySeparator";
 			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator(pLabelBegin,szCondition,szItemName));
-
+		} else if(szLabelLow == "separatorid")
+		{
+			/////////////////////////////////////////////////////////////////////////////////////////////////
+			EXTRACT_POPUP_LABEL_PARAMETERS
+			EXTRACT_POPUP_LABEL_CONDITION
+			if(KVSP_curCharUnicode == ';')KVSP_skipChar;
+			QString * pItemName = pParameters ? pParameters->first() : 0;
+			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator(pLabelBegin,szCondition,pItemName ? *pItemName : QString()));
+			delete pParameters;
 		} else if(szLabelLow == "label")
 		{
 			/////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1867,7 +1874,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			delete pParameters;
 		} else {
 			/////////////////////////////////////////////////////////////////////////////////////////////////
-			error(pLabelBegin,__tr2qs_ctx("Found token '%Q' where a 'prologue', 'separator', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected","kvs"),&szLabel);
+			error(pLabelBegin,__tr2qs_ctx("Found token '%Q' where a 'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected","kvs"),&szLabel);
 			delete pPopup;
 			return 0;
 		}
@@ -1914,6 +1921,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 				extpopup(<text>,<name>[,<icon>[,<id>]])[(<expression>)][;]
 
 				separator[(<expression>)][;]
+				separatorid[(<id>)][(<expression>)][;]
 				...
 			}
 		@short:
@@ -1941,6 +1949,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 			basically allows to nest popup menus and define their parts separately.
 			<icon> and <expression> have the same meaning as with the 'item' keyword.[br]
 			The 'separator' keyword adds a straight line between items (separator).[br]
+			The 'separatorid' keyword adds a straight line between items, but permits to
+			specify a separator id.[br]
 			The 'label' keywork adds a descriptive label that acts like a separator.[br]
 			The 'prologue' keyword adds a <prologue_command> to be executed
 			just before the popup is filled at [cmd]popup[/cmd] command call.[br]

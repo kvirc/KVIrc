@@ -129,6 +129,7 @@ void KviPopupTreeWidgetItem::setCondition(const QString & szCondition)
 		case Menu:
 		case Label:
 		case ExtMenu:
+		case Separator:
 			m_szCondition = szCondition;
 		break;
 		default:
@@ -704,6 +705,18 @@ void KviSinglePopupEditor::saveLastSelectedItem()
 		case KviPopupTreeWidgetItem::Label:
 		case KviPopupTreeWidgetItem::ExtMenu:
 			m_pLastSelectedItem->setItemText(m_pTextEditor->text());
+		break;
+		default:
+		break;
+	}
+
+	switch(m_pLastSelectedItem->m_type)
+	{
+		case KviPopupTreeWidgetItem::Menu:
+		case KviPopupTreeWidgetItem::Item:
+		case KviPopupTreeWidgetItem::Label:
+		case KviPopupTreeWidgetItem::ExtMenu:
+		case KviPopupTreeWidgetItem::Separator:
 			m_pLastSelectedItem->setCondition(m_pConditionEditor->text());
 		break;
 		default:
@@ -841,10 +854,22 @@ void KviSinglePopupEditor::selectionChanged()
 			case KviPopupTreeWidgetItem::Item:
 			case KviPopupTreeWidgetItem::Label:
 			case KviPopupTreeWidgetItem::ExtMenu:
-				m_pConditionEditor->setText(((KviPopupTreeWidgetItem *)it)->m_szCondition);
-				bConditionEditorEnabled = true;
 				m_pTextEditor->setText(((KviPopupTreeWidgetItem *)it)->m_szText);
 				bTextEditorEnabled = true;
+			break;
+			default:
+			break;
+		}
+
+		switch(((KviPopupTreeWidgetItem *)it)->m_type)
+		{
+			case KviPopupTreeWidgetItem::Menu:
+			case KviPopupTreeWidgetItem::Item:
+			case KviPopupTreeWidgetItem::Label:
+			case KviPopupTreeWidgetItem::ExtMenu:
+			case KviPopupTreeWidgetItem::Separator:
+				m_pConditionEditor->setText(((KviPopupTreeWidgetItem *)it)->m_szCondition);
+				bConditionEditorEnabled = true;
 			break;
 			default:
 			break;
@@ -918,6 +943,7 @@ void KviSinglePopupEditor::populateMenu(KviKvsPopupMenu * pop,KviPopupTreeWidget
 			case KviKvsPopupMenuItem::Separator:
 				if(par)theItem = new KviPopupTreeWidgetItem(par,theItem,KviPopupTreeWidgetItem::Separator);
 				else theItem = new KviPopupTreeWidgetItem(m_pTreeWidget,theItem,KviPopupTreeWidgetItem::Separator);
+				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
 				theItem->setId(item->name());
 			break;
 			case KviKvsPopupMenuItem::Menu:
