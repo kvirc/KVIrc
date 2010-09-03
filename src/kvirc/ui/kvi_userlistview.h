@@ -346,6 +346,13 @@ public:
 	void select(const QString & szNick);
 
 	/**
+	* \brief Ensures that a nickname is visible
+	* \param szNick The nickname
+	* \return void
+	*/
+	void ensureVisible(const QString & szNick);
+
+	/**
 	* \brief Applies the options
 	* \return void
 	*/

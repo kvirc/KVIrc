@@ -74,7 +74,6 @@ namespace KviKvsCoreFunctions
 {
 	/////////////////////////////////////////////////////////////////////////////////////////
 
-	// FIXME: #warning "THIS HAS TO WORK FOR QUERIES TOO!"
 	/*
 		@doc: selected
 		@type:
@@ -87,62 +86,15 @@ namespace KviKvsCoreFunctions
 			<array> $selected
 			<array> $selected(<window id:string>)
 		@description:
-			The form with the <window id> parameter returns an array of the selected
-			nicknames in the channel designated by <window id>.
-			The form without parameters returns an array of the selected nicknames
-			in the current window (assuming that it is a channel),
-			thus it is equivalent to calling $selected([fnc]$window[/fnc])
-			The returned value may be assigned to a dictionary too: it will be used to simulate an array.[br]
-			In a non-array/dictionary context it returns the selected nicknames as a comma separated list.
-		@examples:
-			[example]
-				[cmd]echo[/cmd] $selected
-				[cmd]foreach[/cmd](%i,$selected)[cmd]echo[/cmd] %i
-			[/example]
+			This is an internal alias for [fnc]$userlist.selected[/fnc].[br]
+			This function is deprecated and its use is discouraged.
 		@seealso:
-			[fnc]$window[/fnc],
-			[fnc]$channel[/fnc],
-			[doc:window_naming_conventions]Window naming conventions[/doc]
+			[fnc]$userlist.selected[/fnc]
 	*/
 
 	KVSCF(selected)
 	{
-		QString winId;
-		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("winId",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,winId)
-		KVSCF_PARAMETERS_END
-
-		KviWindow * wnd;
-		if(KVSCF_pParams->count() > 0)
-		{
-			wnd = g_pApp->findWindow(winId.toUtf8().data());
-			if(!wnd)
-			{
-				KVSCF_pContext->warning(__tr2qs_ctx("Window with ID '%s' not found, returning empty string","kvs"),winId.toUtf8().data());
-				KVSCF_pRetBuffer->setNothing();
-				return true;
-			}
-		} else {
-			wnd = KVSCF_pContext->window();
-		}
-
-		if(wnd->type() != KVI_WINDOW_TYPE_CHANNEL)
-		{
-			KVSCF_pContext->warning(__tr2qs_ctx("The specified window is not a channel","kvs"));
-			KVSCF_pRetBuffer->setNothing();
-			return true;
-		}
-
-		KviKvsArray * a = new KviKvsArray();
-
-		kvs_int_t i = 0;
-		for(QString * s = ((KviChannel *)wnd)->firstSelectedNickname();s;s = ((KviChannel *)wnd)->nextSelectedNickname())
-		{
-			a->set(i,new KviKvsVariant(*s));
-			i++;
-		}
-
-		KVSCF_pRetBuffer->setArray(a);
+		KviKvsScript::evaluate("$userlist.selected", KVSCF_pContext->window(), KVSCF_pParams,KVSCF_pRetBuffer);
 		return true;
 	}
 

@@ -1152,6 +1152,60 @@ void KviUserListView::select(const QString & szNick)
 	m_pViewArea->update();
 }
 
+void KviUserListView::ensureVisible(const QString & szNick)
+{
+	KviUserListEntry * pUserEntry = m_pEntryDict->find(szNick);
+	if(!pUserEntry)
+		return;
+
+	// so, first of all..check if this item is over, or below the top item
+	KviUserListEntry * pEntry = m_pHeadItem;
+	bool bGotTopItem = false;
+	bool bGotUserEntry = false;
+	int iHeight = 0;
+	while(pEntry)
+	{
+		if(pEntry == pUserEntry)
+		{
+			if(bGotTopItem)
+			{
+				iHeight+=pEntry->m_iHeight;
+				break;
+			} else {
+				bGotUserEntry=true;
+			}
+		}
+
+		if(pEntry == m_pTopItem)
+		{
+			if(bGotUserEntry)
+			{
+				iHeight-=pEntry->m_iHeight;
+				break;
+			} else {
+				bGotTopItem = true;
+			}
+		}
+
+		if(bGotTopItem) iHeight+=pEntry->m_iHeight;
+		if(bGotUserEntry) iHeight-=pEntry->m_iHeight;
+		pEntry = pEntry->m_pNext;
+	}
+
+	if(iHeight > m_pViewArea->height())
+	{
+		iHeight-= m_pViewArea->height();
+	} else if (iHeight>=0) {
+		//already visible
+		return;
+	}
+	
+
+	//the scrollbar will clamp this value itself
+	m_pViewArea->m_pScrollBar->setValue(m_pViewArea->m_pScrollBar->value() + iHeight);
+	m_pViewArea->m_iLastScrollBarVal = m_pViewArea->m_pScrollBar->value();
+}
+
 bool KviUserListView::partInternal(const QString & szNick, bool bRemoveDefinitively)
 {
 	KviUserListEntry * pUserEntry = m_pEntryDict->find(szNick);
@@ -2051,11 +2105,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 	{
 		if(m_pListView->m_pKviWindow->input())
 			((QWidget*)(m_pListView->m_pKviWindow->input()))->setFocus();
-	} else if(
-		(e->modifiers() & Qt::ControlModifier) &&
-		e->key() == 'a'
-		)
-	{
+	} else if(e->matches(QKeySequence::SelectAll)) {
 		KviUserListEntry * pAux = m_pListView->m_pHeadItem;
 		while(pAux)
 		{
@@ -2084,23 +2134,8 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 
 			if(pNick)
 			{
-				bool bThereWasSelection = false;
-				if(m_pListView->m_iSelectedCount > 0)
-				{
-					pAux = m_pListView->m_pHeadItem;
-					while(pAux)
-					{
-						pAux->m_bSelected = false;
-						pAux = pAux->m_pNext;
-					}
-					bThereWasSelection = true;
-				}
-				pNick->m_bSelected = true;
-				m_pListView->m_iSelectedCount = 1;
-
-				if(!bThereWasSelection)
-					g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
-				update();
+				m_pListView->select(pNick->nick());
+				m_pListView->ensureVisible(pNick->nick());
 			}
 		}
 	}
@@ -2200,8 +2235,7 @@ void KviUserListViewArea::mouseMoveEvent(QMouseEvent * e)
 					{
 						if(e->modifiers() & Qt::ControlModifier)
 						{
-							if(pBottom->m_bSelected)
-m_pListView->m_iSelectedCount--;
+							if(pBottom->m_bSelected)m_pListView->m_iSelectedCount--;
 							else m_pListView->m_iSelectedCount++;
 							pBottom->m_bSelected = ! pBottom->m_bSelected;
 							if(m_pListView->m_iSelectedCount == 0)

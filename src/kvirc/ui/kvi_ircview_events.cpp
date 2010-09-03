@@ -371,15 +371,6 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 										KVS_TRIGGER_EVENT(KviEvent_OnChannelNickPopupRequest,m_pKviWindow,pParams);
 									if(e->button() & Qt::LeftButton) {
 										KVS_TRIGGER_EVENT(KviEvent_OnChannelNickLinkClick,m_pKviWindow,pParams);
-										if(m_pKviWindow)
-										{
-											if(m_pKviWindow->inherits("KviChannel")) {
-												KviChannel *c = (KviChannel*)m_pKviWindow;
-												QString nick;
-												if(pParams->firstAsString(nick))
-													c->userListView()->select(nick);
-											}
-										}
 									}
 								} else bTrigger = true;
 							break;

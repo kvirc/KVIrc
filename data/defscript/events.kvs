@@ -89,7 +89,12 @@ event(OnDCCChatWindowCreated,default)
 
 event(OnChannelNickLinkClick,default)
 {
-	if($0 != "") window.insertInInputText $window $0$option(stringNickCompletionPostfix);
+	if($0 != "")
+	{
+		window.insertInInputText $window $0$option(stringNickCompletionPostfix);
+		userlist.select $0
+		userlist.ensureVisible $0
+	}
 }
 
 event(OnChannelNickPopupRequest,default)
