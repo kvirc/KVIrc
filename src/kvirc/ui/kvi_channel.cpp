@@ -190,6 +190,15 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 					iIconOn = KVI_SMALLICON_INVITEUNEXCEPT;
 					iIconOff = KVI_SMALLICON_INVITEEXCEPT;
 					break;
+				case 'a':
+					iIconOn = KVI_SMALLICON_CHANUNADMIN;
+					iIconOff = KVI_SMALLICON_CHANADMIN;
+					break;
+				case 'q':
+					// this could also be quiet bans..
+					iIconOn = KVI_SMALLICON_CHANUNOWNER;
+					iIconOff = KVI_SMALLICON_CHANOWNER;
+					break;
 				default:
 					iIconOn = KVI_SMALLICON_UNBAN;
 					iIconOff = KVI_SMALLICON_BAN;
@@ -692,6 +701,14 @@ void KviChannel::setDeadChan()
 	m_pUserListView->partAll();
 	m_pUserListView->enableUpdates(true);
 	m_pUserListView->setUserDataBase(0);
+	
+	//clear all mask editors
+	QMap<char, KviMaskEditor*>::const_iterator iter2 = m_pListEditors.constBegin();
+	while (iter2 != m_pListEditors.constEnd())
+	{
+		iter2.value()->clear();
+		++iter2;
+	}
 
 	//clear all mask lists (eg bans)
 	QMap<char, KviPointerList<KviMaskEntry>*>::const_iterator iter = m_pModeLists.constBegin();
@@ -700,15 +717,9 @@ void KviChannel::setDeadChan()
 		iter.value()->clear();
 		++iter;
 	}
-	
-	//clear all mask editors
-	QMap<char, KviMaskEditor*>::const_iterator iter2 = m_pListEditors.constBegin();
-	while (iter2 != m_pListEditors.constEnd())
-	{
-		iter.value()->clear();
-		++iter;
-	}
-	
+	m_pModeLists.clear();
+	m_szSentModeRequests.clear();
+
 	m_pTopicWidget->reset();
 
 	m_pActionHistory->clear();
@@ -748,6 +759,21 @@ void KviChannel::setAliveChan()
 	updateIcon();
 	updateCaption();
 	m_pTopicWidget->reset(); // reset the topic (fixes bug #20 signaled by Klaus Weidenbach)
+
+	//refresh all open mask editors
+	QMap<char, KviMaskEditor*>::const_iterator iter2 = m_pListEditors.constBegin();
+	while (iter2 != m_pListEditors.constEnd())
+	{
+		char cMode = iter2.value()->flag();
+		m_szSentModeRequests.append(cMode);
+
+		if(connection())
+		{
+			QByteArray szName = connection()->encodeText(m_szName);
+			connection()->sendFmtData("MODE %s %c",szName.data(),cMode);
+		}
+		++iter2;
+	}
 }
 
 void KviChannel::getTalkingUsersStats(QString & szBuffer, QStringList & list, bool bPast)
@@ -1316,7 +1342,14 @@ bool KviChannel::nickChange(const QString & szOldNick, const QString & szNewNick
 {
 	bool bWasHere = m_pUserListView->nickChange(szOldNick,szNewNick);
 	if(bWasHere)
+	{
 		channelAction(szNewNick,KVI_USERACTION_NICK,kvi_getUserActionTemperature(KVI_USERACTION_NICK));
+		// update any nick/mask editor; by now we limit to the q and a mode
+		if(m_pModeLists.contains('q'))
+			setMask('q', szOldNick, false, QString(), 0, szNewNick);
+		if(m_pModeLists.contains('a'))
+			setMask('a', szOldNick, false, QString(), 0, szNewNick);
+	}
 	return bWasHere;
 }
 
@@ -1324,7 +1357,14 @@ bool KviChannel::part(const QString & szNick)
 {
 	bool bWasHere = m_pUserListView->part(szNick);
 	if(bWasHere)
+	{
 		channelAction(szNick,KVI_USERACTION_PART,kvi_getUserActionTemperature(KVI_USERACTION_PART));
+		// update any nick/mask editor; by now we limit to the q and a mode
+		if(m_pModeLists.contains('q'))
+			setMask('q', szNick, false, QString(), 0);
+		if(m_pModeLists.contains('a'))
+			setMask('a', szNick, false, QString(), 0);
+	}
 	return bWasHere;
 }
 
@@ -1630,13 +1670,16 @@ int KviChannel::myFlags()
 	return m_pUserListView->flags(connection()->currentNickName());
 }
 
-void KviChannel::setMask(char cMode, const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt)
+void KviChannel::setMask(char cMode, const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, QString szChangeMask)
 {
 	if(!connection())
 		return;
 
 	if(!m_pModeLists.contains(cMode))
 	{
+		// we want to remove an item but we don't have any list? 
+		if(!bAdd)
+			return;
 		// lazily insert it
 		KviPointerList<KviMaskEntry>* pModeList = new KviPointerList<KviMaskEntry>;
 		pModeList->setAutoDelete(true);
@@ -1648,11 +1691,11 @@ void KviChannel::setMask(char cMode, const QString & szMask, bool bAdd, const QS
 	if(m_pListEditors.contains(cMode))
 		editor = m_pListEditors.value(cMode);
 
-	internalMask(szMask,bAdd,szSetBy,uSetAt,list,&editor);
+	internalMask(szMask,bAdd,szSetBy,uSetAt,list,&editor,szChangeMask);
 	m_pUserListView->setMaskEntries(cMode,(int)list->count());
 }
 
-void KviChannel::internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, KviPointerList<KviMaskEntry> * l, KviMaskEditor ** ppEd)
+void KviChannel::internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, KviPointerList<KviMaskEntry> * l, KviMaskEditor ** ppEd, QString & szChangeMask)
 {
 	KviMaskEntry * e = 0;
 	if(bAdd)
@@ -1678,9 +1721,20 @@ void KviChannel::internalMask(const QString & szMask, bool bAdd, const QString &
 
 		if(e)
 		{
+			//delete mask from the editor
 			if(*ppEd)
 				(*ppEd)->removeMask(e);
-			l->removeRef(e);
+			
+			if(szChangeMask.isNull())
+			{
+				//delete mask
+				l->removeRef(e);
+			} else {
+				//update mask
+				e->szMask = szChangeMask;
+				if(*ppEd)
+					(*ppEd)->addMask(e);
+			}
 		}
 	}
 }

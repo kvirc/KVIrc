@@ -77,7 +77,7 @@ KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEdi
 
 	QGridLayout * g = new QGridLayout(this);
 
-	QLabel * tl = new QLabel(__tr2qs("New mask must match an *!*@* expression"),this);
+	QLabel * tl = new QLabel(__tr2qs("Insert a nickname or a mask matching *!*@*"),this);
 	g->addWidget(tl,0,0,1,4);
 
 	m_pEdit=new QLineEdit(szMask,this);
@@ -92,11 +92,6 @@ KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEdi
 	connect(m_pChancelButton,SIGNAL(clicked()), this, SLOT(reject()));
 	g->addWidget(m_pChancelButton,2,2);
 	m_pChancelButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
-
-	QRegExp rx( "*!*@*", Qt::CaseInsensitive,QRegExp::Wildcard );
-	QValidator* validator = new QRegExpValidator( rx, this );
-
-	m_pEdit->setValidator( validator );
 }
 
 KviMaskInputDialog::~KviMaskInputDialog()
@@ -163,6 +158,13 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannel * pChannel,KviWindowToolPa
 			break;
 		case 'I':
 			m_iIconId = KVI_SMALLICON_INVITEEXCEPT;
+			break;
+		case 'a':
+			m_iIconId = KVI_SMALLICON_CHANADMIN;
+			break;
+		case 'q':
+			// this could also be quiet bans..
+			m_iIconId = KVI_SMALLICON_CHANOWNER;
 			break;
 		default:
 			m_iIconId = KVI_SMALLICON_BAN;

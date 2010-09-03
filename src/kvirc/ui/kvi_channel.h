@@ -324,9 +324,10 @@ public:
 	* \param bAdd Whether to add or remove the mask
 	* \param szSetBy Who set the mask
 	* \param uSetAt The datetime when the mask was set
+	* \param szChangeMask If bAdd is false and this string is set, the mask will be updated instead that removed
 	* \return void
 	*/
-	void setMask(char cMode, const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt);
+	void setMask(char cMode, const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, QString szChangeMask = QString());
 
 	/**
 	* \brief Returns the time of the last received WHO reply
@@ -950,9 +951,10 @@ protected:
 	* \param uSetAt The datetime when the mask was set
 	* \param l The list of masks in the channel lists
 	* \param ppEd The mask editor window
+	* \param szChangeMask If bAdd is false and this string is set, the mask will be updated instead that removed
 	* \return void
 	*/
-	void internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, KviPointerList<KviMaskEntry> * l, KviMaskEditor ** ppEd);
+	void internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, KviPointerList<KviMaskEntry> * l, KviMaskEditor ** ppEd, QString & szChangeMask);
 
 	/**
 	* \brief Checks the channel synchronization time
