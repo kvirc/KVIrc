@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: editor_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-09-01 15:53+0200\n"
-"PO-Revision-Date: 2010-08-29 13:38+0100\n"
+"PO-Revision-Date: 2010-09-03 21:31+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -301,12 +301,11 @@ msgstr ""
 "aceitar as mudanças externas?"
 
 #: src/modules/popupeditor/popupeditor.cpp:1093
-#, fuzzy
 msgid ""
 "An external script has changed the popup you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
-"Um 'script' externo mudou a alias que está actualmente a editar. Deseja "
+"Um 'script' externo mudou o menu que está actualmente a editar. Deseja "
 "aceitar as mudanças externas?"
 
 #: src/modules/actioneditor/actioneditor.cpp:879
@@ -1026,9 +1025,8 @@ msgid "OverWrite Current Alias"
 msgstr "Substituir Alias Actual"
 
 #: src/modules/popupeditor/popupeditor.cpp:1092
-#, fuzzy
 msgid "OverWrite Current Popup"
-msgstr "Substituir Alias Actual"
+msgstr "Substituir Menu Actual"
 
 #: src/modules/popupeditor/popupeditor.cpp:440
 msgid "Paste Above"
