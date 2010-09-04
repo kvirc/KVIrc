@@ -926,10 +926,10 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Deletes the item specified by <id> from the poup <popupname>.
 			If the -d flag is specified then the item with the specified
-			<id> is seached in the whole popup tree (containing submenus)
-			otherwise it is searched only in the first level.[br]
-			If the -q flag is specified the command does not complain
-			about inexisting items or inexisting popup menus.[br]
+			<id> is searched in the whole popup tree (containing submenus)
+			otherwise only the first level is searched. [br]
+			If the -q flag is specified, the command does not complain
+			about non-existent items or popup menus.[br]
 			See [cmd]defpopup[/cmd] for more information.[br]
 		@seealso:
 			[cmd]defpopup[/cmd], [cmd]popup[/cmd]

@@ -342,18 +342,18 @@ namespace KviKvsCoreSimpleCommands
 			Adds an [b]existing[/b] popup menu to the current frame's menu bar.[br]
 			<visible_text> is used as menu identification and obviously as the visible
 			menu bar text for the new popup.[br]
-			If a popup menu with the same <visible_text> or the same <menu_name> already exists in the current frame
-			it is removed first.[br]
+			If a popup menu with the same <visible_text> or the same <menu_name> already exists in
+			the current frame, it is removed first.[br]
 			<visible_text> can optionally contain the "&" character to identify
 			the popup menu accelerator.[br]
 			[menu_name], if given, must be a valid name of a popup menu created earlier
-			with [cmd]defpopup[/cmd] (or the script center).[br]
+			with [cmd]defpopup[/cmd] (or the Popup editor).[br]
 			If [menu_name] is not given, the popup menu identified by <visible_text> is removed.[br]
-			If the -i switch is used, <index> is a [b]zero based index[/b] of the default
+			If the -i switch is used, the new popup menu will be placed to the left of the default
+			menu-bar item specified in the [b]zero based[/b] <index>.[br]
 			menu-bar text item: the new popup menu will be placed on the left of that default item.[br]
-			If -q is used, this command prints no warnings (so you can safely use it to remove
-			popup menus without being sure that they actually are in there).
-			The warning itself serves to debugging purposes for the scripter.[br]
+			If -q is used, this command prints no warnings (intended for use when you are unsure that
+			the menu exists - normal warning messages are debugging aids and have no consequence).[br]
 		@seealso:
 			[cmd]defpopup[/cmd]
 		@examples:

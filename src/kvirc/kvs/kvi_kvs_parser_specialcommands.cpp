@@ -1928,10 +1928,11 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 			Defines a popup menu
 		@switches:
 			!sw: -m | --merge
-			Merges the new popup contents with an older popup version
+			Merges the new popup contents with the current named popup.
+			If the named popup does not exist, the popup is created. 
 		@description:
 			Defines the popup menu <popup_name>. If the -m switch is NOT used
-			the previous contents of the popups are cleared, otherwise are preserved.[br]
+			the previous contents of the popups are cleared before updating.[br]
 			The popup is generated 'on the fly' when the [cmd]popup[/cmd] command
 			is called.[br]
 			The 'item' keyword adds a menu item with visible <text>,
@@ -1941,9 +1942,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 			is given, it is evaluated at [cmd]popup[/cmd] call time and if the result
 			is 0, the item is not shown in the physical popup.[br]
 			The 'popup' keyword adds a submenu with visible <text>, the optional
-			<icon> and a popup body that follows exactly the same syntax
-			as the defpopup body. The <expression> has the same meaning as with the
-			'item' keyword.[br]
+			<icon> and a popup body that has identical syntax to the defpopup body.
+			The <expression> has the same meaning as with the 'item' keyword.[br]
 			The 'extpopup' keyword adds a submenu with visible <text>, the optional
 			icon and a popup body that is defined by the popup menu <name>. This
 			basically allows to nest popup menus and define their parts separately.
@@ -1970,14 +1970,14 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 				defpopup(test){}
 			[/example]
 			This will remove the popup 'test' and free its memory.
-			Popups have a special kind of local variables that have an extended lifetime:
-			these are called "extended scope variables" and are described in the [doc:data_structures]Data structures documentation[/doc].[br]
-			The syntax for these variables is:[br]
+			Popups have a special kind of local variables that have an extended lifetime,
+			called "extended scope" - this is described in the [doc:data_structures]Data structures documentation[/doc].[br]
+			The syntax for an "extended scope" variable is:[br]
 			[b]%:<variable name>[/b][br]
-			These variables are visible during all the "visible lifetime" of the popup:
-			from the [cmd]popup[/cmd] command call to the moment in that the user selects an item
-			and the corresponding code is executed (substantially from a [cmd]popup[/cmd] call to the next one).[br]
-			This allows you to pre-calculate data and conditions in the porologue of the popup
+			This type of variable is maintained during the entire "visible lifetime" of the popup -
+			from the [cmd]popup[/cmd] command call to the moment in that the user selects an item and the
+			corresponding code is executed (essentially from a [cmd]popup[/cmd] call to the next one).[br]
+			This allows you to pre-calculate data and conditions in the prologue of the popup
 			and then use it in the item handlers or item conditions.[br]
 		@seealso:
 			[cmd]popup[/cmd]
