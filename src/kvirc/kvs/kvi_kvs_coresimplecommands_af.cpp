@@ -36,7 +36,6 @@
 #include "kvi_scriptbutton.h"
 #include "kvi_iconmanager.h"
 
-#include "kvi_kvs_popupmanager.h"
 #include "kvi_kvs_eventmanager.h"
 #include "kvi_kvs_kernel.h"
 #include "kvi_kvs_object_controller.h"
@@ -924,48 +923,26 @@ namespace KviKvsCoreSimpleCommands
 			!sw: -d | --deep
 			Search the whole popup tree instead of only the first level
 		@description:
-			Deletes the item specified by <id> from the poup <popupname>.
-			If the -d flag is specified then the item with the specified
-			<id> is searched in the whole popup tree (containing submenus)
-			otherwise only the first level is searched. [br]
-			If the -q flag is specified, the command does not complain
-			about non-existent items or popup menus.[br]
-			See [cmd]defpopup[/cmd] for more information.[br]
+			This is an internal alias for [cmd]popup.delitem[/cmd].[br]
+			This function is deprecated and its use is discouraged.
 		@seealso:
-			[cmd]defpopup[/cmd], [cmd]popup[/cmd]
+			[cmd]popup.delitem[/cmd]
 	*/
-	// FIXME: #warning "Separator should have the expression too ?"
-
 
 	KVSCSC(delpopupitem)
 	{
-		QString szPopupName,szItemId;
+		QString szParams;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
-			KVSCSC_PARAMETER("item_id",KVS_PT_NONEMPTYSTRING,0,szItemId)
+			KVSCSC_PARAMETER("params",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szParams)
 		KVSCSC_PARAMETERS_END
 
-		KviKvsPopupMenu * p = KviKvsPopupManager::instance()->lookup(szPopupName);
-		if(!p)
-		{
-			if(!KVSCSC_pSwitches->find('q',"quiet"))
-				KVSCSC_pContext->warning(__tr2qs_ctx("Inexisting popup \"%Q\"","kvs"),&szPopupName);
-			return true;
-		}
+		// We just alias the popup.delitem function
+		QString szSwitches="";
+		if(KVSCSC_pSwitches->find('d',"deep"))szSwitches.append("-d ");
+		if(KVSCSC_pSwitches->find('q',"quiet"))szSwitches.append("-q ");
 
-		if(p->isLocked())
-		{
-			KVSCSC_pContext->error(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs"));
-			return false;
-		}
-
-		if(!p->removeItemByName(szItemId,KVSCSC_pSwitches->find('d',"deep")))
-		{
-			if(!KVSCSC_pSwitches->find('q',"quiet"))
-				KVSCSC_pContext->warning(__tr2qs_ctx("The menu item with id \"%Q\" does not exist in popup \"%Q\"","kvs"),&szItemId,&szPopupName);
-		}
-
-		KviKvsPopupManager::instance()->emitRefresh(szPopupName);
+		KviKvsScript s("delpopupitem","popup.delitem " + szSwitches + szParams);
+		s.run(KVSCSC_pContext->window());
 		return true;
 	}
 

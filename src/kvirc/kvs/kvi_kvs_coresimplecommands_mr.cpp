@@ -850,59 +850,23 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(popup)
 	{
-		QString szPopupName;
+		QString szParams;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("popup_name",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+			KVSCSC_PARAMETER("params",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szParams)
 		KVSCSC_PARAMETERS_END
 
-		// copy parameters
-		KviKvsVariantList * pPopupParams = new KviKvsVariantList();
-		KVSCSC_pParams->first();
-		while(KviKvsVariant * v = KVSCSC_pParams->next())pPopupParams->append(new KviKvsVariant(*v));
-
-		KviKvsPopupMenu * pMenu = KviKvsPopupManager::instance()->lookup(szPopupName);
-
-		if(!pMenu)
-		{
-			delete pPopupParams;
-			pPopupParams = 0;
-			KVSCSC_pContext->error(__tr2qs_ctx("Popup %Q is not defined","kvs"),&szPopupName);
-			return false;
-		}
-
-		if(pMenu->isLocked())
-		{
-			delete pPopupParams;
-			pPopupParams = 0;
-			KVSCSC_pContext->error(__tr2qs_ctx("A popup menu cannot be popped up twice","kvs"));
-			return false;
-		}
-
-		QPoint pnt = QCursor::pos();
-
+		// We just alias the popup.show function
+		QString szSwitches="";
 		KviKvsVariant * pCoords = KVSCSC_pSwitches->find('p',"point");
 		if(pCoords)
 		{
 			QString szCoords;
 			pCoords->asString(szCoords);
-
-			int idx = szCoords.indexOf(',');
-			bool bCoordsOk = true;
-			if(idx == -1)bCoordsOk = false;
-			else {
-				QString szX = szCoords.left(idx);
-				szCoords.remove(0,idx + 1);
-				bool bOk1,bOk2;
-				int iX = szX.toInt(&bOk1);
-				int iY = szCoords.toInt(&bOk2);
-				if(bOk1 && bOk2)pnt = QPoint(iX,iY);
-				else bCoordsOk = false;
-			}
-
-			if(!bCoordsOk)KVSCSC_pContext->warning(__tr2qs_ctx("Invalid syntax for screen coordinates, using cursor position","kvs"));
+			szSwitches.append(QString("-p=\"%1\" ").arg(szCoords));
 		}
 
-		pMenu->doPopup(pnt,KVSCSC_pContext->window(),pPopupParams);
+		KviKvsScript s("popup","popup.show " + szSwitches + szParams);
+		s.run(KVSCSC_pContext->window());
 		return true;
 	}
 
