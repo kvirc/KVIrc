@@ -31,7 +31,7 @@
 	if(iIdx == 0) \
 	{ \
 		if(!c->hasSwitch('q',"quiet")) \
-			c->warning(__tr2qs_ctx("Empty subpopup name supplied","kvs")); \
+			c->warning(__tr2qs_ctx("Empty popup name supplied","kvs")); \
 		return true; \
 	} \
 	if(iIdx > 0) \
@@ -79,7 +79,7 @@
 	int iIdx = szPopupName.indexOf(QChar('.')); \
 	if(iIdx == 0) \
 	{ \
-		c->warning(__tr2qs_ctx("Empty subpopup name supplied","kvs")); \
+		c->warning(__tr2qs_ctx("Empty popup name supplied","kvs")); \
 		return true; \
 	} \
 	if(iIdx > 0) \
@@ -98,22 +98,12 @@
 		c->warning(__tr2qs_ctx("Popup \"%Q\" does not exists","kvs"),&szPopupName); \
 		return true; \
 	} \
-	if(pPopup->isLocked()) \
-	{ \
-		c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs")); \
-		return true; \
-	} \
 	if(!szSubPopupName.isEmpty()) \
 	{ \
 		pPopup = pPopup->findChildPopupByName(szSubPopupName); \
 		if(!pPopup) \
 		{ \
 			c->warning(__tr2qs_ctx("Subpopup \"%Q.%Q\" does not exists","kvs"),&szPopupName, &szSubPopupName); \
-			return true; \
-		} \
-		if(pPopup->isLocked()) \
-		{ \
-			c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the subpopup is probably open)","kvs")); \
 			return true; \
 		} \
 	}
@@ -480,6 +470,92 @@ static bool popup_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 }
 
 /*
+	@doc: popup.create
+	@type:
+		command
+	@title:
+		popup.create
+	@syntax:
+		popup.create [-q] <popupname:string>
+	@short:
+		Creates a popup
+	@switches:
+		!sw: -q | --quiet
+		Run quietly: don't print warning and errors
+	@description:
+		Creates a popup named <popupname>; if the popup already exists, a warning is printed.
+		To create a nested popup, use [cmd]popup.addSubPopup[/cmd] instead.
+	@seealso:
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.destroy[/cmd], [fnc]popup.exists[/fnc]
+*/
+
+static bool popup_kvs_cmd_create(KviKvsModuleCommandCall * c)
+{
+	QString szPopupName, szSubPopupName;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+	KVSM_PARAMETERS_END(c)
+
+	if(KviKvsPopupManager::instance()->lookup(szPopupName))
+	{
+		if(!c->hasSwitch('q',"quiet"))
+			c->warning(__tr2qs_ctx("The popup \"%Q\" already exists","kvs"),&szPopupName);
+		return true;
+	}
+
+	KviKvsPopupMenu * pMenu = new KviKvsPopupMenu(szPopupName);
+	KviKvsPopupManager::instance()->add(szPopupName,pMenu);
+
+	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
+	return true;
+}
+/*
+	@doc: popup.destroy
+	@type:
+		command
+	@title:
+		popup.destroy
+	@syntax:
+		popup.destroy [-q] <popupname:string>
+	@short:
+		Destroies a popup
+	@switches:
+		!sw: -q | --quiet
+		Run quietly: don't print warning and errors
+	@description:
+		Destroies a popup named <popupname>.
+		To destroy a nested popup, use [cmd]popup.delItem[/cmd] instead.
+	@seealso:
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.create[/cmd], [fnc]popup.exists[/fnc]
+*/
+
+static bool popup_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
+{
+	QString szPopupName, szSubPopupName;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+	KVSM_PARAMETERS_END(c)
+
+	KviKvsPopupMenu * pPopup = KviKvsPopupManager::instance()->lookup(szPopupName);
+	if(!pPopup)
+	{
+		if(!c->hasSwitch('q',"quiet"))
+			c->warning(__tr2qs_ctx("Popup \"%Q\" does not exists","kvs"),&szPopupName);
+		return true;
+	}
+	if(pPopup->isLocked())
+	{
+		if(!c->hasSwitch('q',"quiet"))
+			c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs"));
+		return true;
+	}
+
+	KviKvsPopupManager::instance()->remove(szPopupName);
+
+	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
+	return true;
+}
+/*
 	@doc: popup.delitem
 	@type:
 		command
@@ -524,6 +600,65 @@ static bool popup_kvs_cmd_delItem(KviKvsModuleCommandCall * c)
 	}
 
 	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
+	return true;
+}
+
+/*
+	@doc: popup.exists
+	@type:
+		function
+	@title:
+		$popup.exists
+	@syntax:
+		$popup.exists(<popupname:string>)
+	@short:
+		Returns true if a popup exists
+	@description:
+		Returns true if a popup exists or false otherwise.
+	@seealso:
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.create[/cmd], [cmd]popup.destroy[/cmd]
+*/
+
+static bool popup_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
+{
+	QString szPopupName, szSubPopupName;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+	KVSM_PARAMETERS_END(c)
+
+	int iIdx = szPopupName.indexOf(QChar('.'));
+	if(iIdx == 0)
+	{
+		c->warning(__tr2qs_ctx("Empty subpopup name supplied","kvs"));
+		return true;
+	}
+	if(iIdx > 0)
+	{
+		if(iIdx == szPopupName.size())
+		{
+			c->warning(__tr2qs_ctx("Empty subpopup name supplied","kvs"));
+			return true;
+		}
+		szSubPopupName = szPopupName.mid(iIdx+1);
+		szPopupName.truncate(iIdx);
+	}
+	KviKvsPopupMenu * pPopup = KviKvsPopupManager::instance()->lookup(szPopupName);
+	if(!pPopup)
+	{
+		c->returnValue()->setBoolean(false);
+		return true; 
+	}
+	if(!szSubPopupName.isEmpty())
+	{
+		pPopup = pPopup->findChildPopupByName(szSubPopupName);
+		if(!pPopup)
+		{
+			c->returnValue()->setBoolean(false);
+			return true;
+		}
+	}
+
+	c->returnValue()->setBoolean(true);
 	return true;
 }
 
@@ -652,9 +787,12 @@ static bool popup_module_init(KviModule *m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"addSeparator",popup_kvs_cmd_addSeparator);
 	
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"clear",popup_kvs_cmd_clear);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"create",popup_kvs_cmd_create);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"delItem",popup_kvs_cmd_delItem);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"destroy",popup_kvs_cmd_destroy);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"show",popup_kvs_cmd_show);
-	
+
+	KVSM_REGISTER_FUNCTION(m,"exists",popup_kvs_fnc_exists);
 	KVSM_REGISTER_FUNCTION(m,"isEmpty",popup_kvs_fnc_isEmpty);
 	return true;
 }
