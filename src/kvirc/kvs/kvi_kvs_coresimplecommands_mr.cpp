@@ -835,17 +835,10 @@ namespace KviKvsCoreSimpleCommands
 		@switches:
 			!sw: -p=<screen_coordinates:string> | --point=<screen_coordinates:string>
 		@description:
-			Shows the popup menu <popup_name> at the current cursor position,
-			eventually passing the [parameters]. Please note that you can't
-			use this command inside one of the [cmd]defpopup[/cmd] command
-			handlers for <popup_name>. In other words, you can't "popup
-			a popup" while it is being popped up. :) (This would
-			be an endless recursive behaviour).[br]
-			If the -p switch is used, then <screen_coordinates> must be
-			in the form <x>,<y> and will be used as screen coordinates
-			for the placement of the popup (instead of the current cursor position).[br]
+			This is an internal alias for [cmd]popup.show[/cmd].[br]
+			This function is deprecated and its use is discouraged.
 		@seealso:
-			[cmd]defpopup[/cmd]
+			[cmd]popup.show[/cmd]
 	*/
 
 	KVSCSC(popup)

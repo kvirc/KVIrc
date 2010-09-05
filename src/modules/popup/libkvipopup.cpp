@@ -26,6 +26,459 @@
 #include "kvi_locale.h"
 #include "kvi_kvs_popupmanager.h"
 
+#define GET_KVS_POPUP \
+	int iIdx = szPopupName.indexOf(QChar('.')); \
+	if(iIdx == 0) \
+	{ \
+		if(!c->hasSwitch('q',"quiet")) \
+			c->warning(__tr2qs_ctx("Empty subpopup name supplied","kvs")); \
+		return true; \
+	} \
+	if(iIdx > 0) \
+	{ \
+		if(iIdx == szPopupName.size()) \
+		{ \
+			if(!c->hasSwitch('q',"quiet")) \
+				c->warning(__tr2qs_ctx("Empty subpopup name supplied","kvs")); \
+			return true; \
+		} \
+		szSubPopupName = szPopupName.mid(iIdx+1); \
+		szPopupName.truncate(iIdx); \
+	} \
+	KviKvsPopupMenu * pPopup = KviKvsPopupManager::instance()->lookup(szPopupName); \
+	if(!pPopup) \
+	{ \
+		if(!c->hasSwitch('q',"quiet")) \
+			c->warning(__tr2qs_ctx("Popup \"%Q\" does not exists","kvs"),&szPopupName); \
+		return true; \
+	} \
+	if(pPopup->isLocked()) \
+	{ \
+		if(!c->hasSwitch('q',"quiet")) \
+			c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs")); \
+		return true; \
+	} \
+	if(!szSubPopupName.isEmpty()) \
+	{ \
+		pPopup = pPopup->findChildPopupByName(szSubPopupName); \
+		if(!pPopup) \
+		{ \
+			if(!c->hasSwitch('q',"quiet")) \
+				c->warning(__tr2qs_ctx("Subpopup \"%Q.%Q\" does not exists","kvs"),&szPopupName, &szSubPopupName); \
+			return true; \
+		} \
+		if(pPopup->isLocked()) \
+		{ \
+			if(!c->hasSwitch('q',"quiet")) \
+				c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the subpopup is probably open)","kvs")); \
+			return true; \
+		} \
+	}
+
+#define GET_KVS_POPUP_FNC \
+	int iIdx = szPopupName.indexOf(QChar('.')); \
+	if(iIdx == 0) \
+	{ \
+		c->warning(__tr2qs_ctx("Empty subpopup name supplied","kvs")); \
+		return true; \
+	} \
+	if(iIdx > 0) \
+	{ \
+		if(iIdx == szPopupName.size()) \
+		{ \
+			c->warning(__tr2qs_ctx("Empty subpopup name supplied","kvs")); \
+			return true; \
+		} \
+		szSubPopupName = szPopupName.mid(iIdx+1); \
+		szPopupName.truncate(iIdx); \
+	} \
+	KviKvsPopupMenu * pPopup = KviKvsPopupManager::instance()->lookup(szPopupName); \
+	if(!pPopup) \
+	{ \
+		c->warning(__tr2qs_ctx("Popup \"%Q\" does not exists","kvs"),&szPopupName); \
+		return true; \
+	} \
+	if(pPopup->isLocked()) \
+	{ \
+		c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs")); \
+		return true; \
+	} \
+	if(!szSubPopupName.isEmpty()) \
+	{ \
+		pPopup = pPopup->findChildPopupByName(szSubPopupName); \
+		if(!pPopup) \
+		{ \
+			c->warning(__tr2qs_ctx("Subpopup \"%Q.%Q\" does not exists","kvs"),&szPopupName, &szSubPopupName); \
+			return true; \
+		} \
+		if(pPopup->isLocked()) \
+		{ \
+			c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the subpopup is probably open)","kvs")); \
+			return true; \
+		} \
+	}
+
+/*
+	@doc: popup.addItem
+	@type:
+		command
+	@title:
+		popup.addItem
+	@syntax:
+		popup.addItem [-q] (<popupname:string>, <text:string>[, <icon:string>[, <item_id:string>[, <condition:string>]]])
+		[{]
+			<command>
+		[}]
+	@short:
+		Adds an item to a popup
+	@switches:
+		!sw: -q | --quiet
+		Run quietly: don't print warning and errors
+	@description:
+		Adds a menu item with visible <text> and the optional <icon> to an already existing popup or 
+		nested popup named <popupname>. If you want to add an item to a nested popup, use the form 
+		"popup.item".[br]
+		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
+		identifiers and variables.[br]
+		<icon> is an optional [doc:image_id]image identifier[/doc].[br]
+		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
+		result is 0, the item is not shown in the physical popup.[br]
+		If this item gets clicked, the code inside <command> will be executed.
+		<command> can be a simple instruction or an instruction block delimited by curly brackets.[br]
+	@seealso:
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd]
+*/
+
+static bool popup_kvs_cmd_addItem(KviKvsModuleCallbackCommandCall * c)
+{
+	QString szPopupName, szSubPopupName, szItemId, szText, szIcon, szCondition;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+		KVSM_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szText)
+		KVSM_PARAMETER("icon",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
+		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
+		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
+	KVSM_PARAMETERS_END(c)
+
+	GET_KVS_POPUP
+
+	if(c->callback()->code().trimmed().isEmpty() && !c->hasSwitch('q',"quiet"))
+		c->warning(__tr2qs_ctx("Found empty instruction for popup item: maybe you need to fix the script?","kvs"));
+
+	pPopup->addItem(szItemId, c->callback()->code(), szText, szIcon, szCondition);
+
+	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
+	return true;
+}
+
+/*
+	@doc: popup.addPrologue
+	@type:
+		command
+	@title:
+		popup.addPrologue
+	@syntax:
+		popup.addPrologue [-q] (<popupname:string>[, <item_id:string>])
+		[{]
+			<command>
+		[}]
+	@short:
+		Adds a prologue to a popup
+	@switches:
+		!sw: -q | --quiet
+		Run quietly: don't print warning and errors
+	@description:
+		Adds a menu prologue to an already existing popup or nested popup named <popupname>. If you
+		want to add an item to a nested popup, use the form "popup.item".[br]
+		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		<command> will be executed just before the popup is filled at [cmd]popup.show[/cmd] command call.
+		<command> can be a simple instruction or an instruction block delimited by curly brackets.[br]
+	@seealso:
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.addEpilogue[/cmd]
+*/
+
+static bool popup_kvs_cmd_addPrologue(KviKvsModuleCallbackCommandCall * c)
+{
+	QString szPopupName, szSubPopupName,szItemId;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
+	KVSM_PARAMETERS_END(c)
+
+	GET_KVS_POPUP
+
+	if(c->callback()->code().trimmed().isEmpty() && !c->hasSwitch('q',"quiet"))
+		c->warning(__tr2qs_ctx("Found empty prologue block: maybe you need to fix the script?","kvs"));
+
+	pPopup->addPrologue(szItemId, c->callback()->code());
+
+	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
+	return true;
+}
+
+/*
+	@doc: popup.addEpilogue
+	@type:
+		command
+	@title:
+		popup.addEpilogue
+	@syntax:
+		popup.addEpilogue [-q] (<popupname:string>[, <item_id:string>])
+		[{]
+			<command>
+		[}]
+	@short:
+		Adds an epilogue to a popup
+	@switches:
+		!sw: -q | --quiet
+		Run quietly: don't print warning and errors
+	@description:
+		Adds a menu epilogue to an already existing popup or nested popup named <popupname>. If you
+		want to add an item to a nested popup, use the form "popup.item".[br]
+		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		<command> will be executed just after the popup is filled at [cmd]popup.show[/cmd] command call.
+		<command> can be a simple instruction or an instruction block delimited by curly brackets.[br]
+	@seealso:
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.addPrologue[/cmd]
+*/
+
+static bool popup_kvs_cmd_addEpilogue(KviKvsModuleCallbackCommandCall * c)
+{
+	QString szPopupName, szSubPopupName,szItemId;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
+	KVSM_PARAMETERS_END(c)
+
+	GET_KVS_POPUP
+
+	if(c->callback()->code().trimmed().isEmpty() && !c->hasSwitch('q',"quiet"))
+		c->warning(__tr2qs_ctx("Found empty epilogue block: maybe you need to fix the script?","kvs"));
+
+	pPopup->addEpilogue(szItemId, c->callback()->code());
+
+	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
+	return true;
+}
+
+/*
+	@doc: popup.addExtPopup
+	@type:
+		command
+	@title:
+		popup.addExtPopup
+	@syntax:
+		popup.addExtPopup [-q] <popupname:string> <external_popup:string> <text:string> [<icon:string> [<item_id:string> [<condition:string>]]]
+	@short:
+		Adds an external popup to a popup
+	@switches:
+		!sw: -q | --quiet
+		Run quietly: don't print warning and errors
+	@description:
+		Adds a nested popup item with visible <text> and the optional <icon> to an already existing popup or 
+		nested popup named <popupname>. If you want to add an item to a nested popup, use the form 
+		"popup.item".[br]
+		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
+		identifiers and variables.[br]
+		<icon> is an optional [doc:image_id]image identifier[/doc].[br]
+		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
+		result is 0, the item is not shown in the physical popup.[br]
+		If this item gets hovered, the neted popup <external_popup> will be shown.
+	@seealso:
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.addSubPopup[/cmd]
+*/
+
+static bool popup_kvs_cmd_addExtPopup(KviKvsModuleCommandCall * c)
+{
+	QString szPopupName, szSubPopupName, szItemId, szExtPopupName, szText, szIcon, szCondition;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+		KVSM_PARAMETER("external_popup",KVS_PT_NONEMPTYSTRING,0,szExtPopupName)
+		KVSM_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szText)
+		KVSM_PARAMETER("icon",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
+		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
+		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
+	KVSM_PARAMETERS_END(c)
+
+	GET_KVS_POPUP
+
+	pPopup->addExtPopup(szItemId, szExtPopupName, szText, szIcon, szCondition);
+
+	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
+	return true;
+}
+
+/*
+	@doc: popup.addLabel
+	@type:
+		command
+	@title:
+		popup.addLabel
+	@syntax:
+		popup.addLabel [-q] <popupname:string> <text:string> [<icon:string> [<item_id:string> [<condition:string>]]]
+	@short:
+		Adds a label to a popup
+	@switches:
+		!sw: -q | --quiet
+		Run quietly: don't print warning and errors
+	@description:
+		Adds a descriptive label with visible <text> and the optional <icon> to an already existing popup or
+		nested popup named <popupname>. If you want to add an item to a nested popup, use the form 
+		"popup.item". The label acts like a separator - it is not selectable or clickable.[br]
+		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
+		identifiers and variables.[br]
+		<icon> is an optional [doc:image_id]image identifier[/doc].[br]
+		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
+		result is 0, the item is not shown in the physical popup.[br]
+	@seealso:
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd]
+*/
+
+static bool popup_kvs_cmd_addLabel(KviKvsModuleCommandCall * c)
+{
+	QString szPopupName, szSubPopupName, szItemId, szText, szIcon, szCondition;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+		KVSM_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szText)
+		KVSM_PARAMETER("icon",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
+		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
+		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
+	KVSM_PARAMETERS_END(c)
+
+	GET_KVS_POPUP
+
+	pPopup->addLabel(szItemId, szText, szIcon, szCondition);
+
+	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
+	return true;
+}
+
+/*
+	@doc: popup.addSubPopup
+	@type:
+		command
+	@title:
+		popup.addSubPopup
+	@syntax:
+		popup.addSubPopup [-q] (<popupname:string>, <text:string>[, <icon:string>[, <item_id:string>[, <condition:string>]]])
+	@short:
+		Adds a nested popup to a popup
+	@switches:
+		!sw: -q | --quiet
+		Run quietly: don't print warning and errors
+	@description:
+		Adds an empty nested popup item with visible <text> and the optional <icon> to an already existing popup or 
+		nested popup named <popupname>. If you want to add an item to a nested popup, use the form 
+		"popup.item".[br]
+		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
+		identifiers and variables.[br]
+		<icon> is an optional [doc:image_id]image identifier[/doc].[br]
+		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
+		result is 0, the item is not shown in the physical popup.[br]
+		If this item gets hovered, the netsted popup will be shown.
+	@seealso:
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.addExtPopup[/cmd]
+*/
+
+static bool popup_kvs_cmd_addSubPopup(KviKvsModuleCommandCall * c)
+{
+	QString szPopupName, szSubPopupName, szItemId, szText, szIcon, szCondition;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+		KVSM_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szText)
+		KVSM_PARAMETER("icon",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
+		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
+		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
+	KVSM_PARAMETERS_END(c)
+
+	GET_KVS_POPUP
+
+	pPopup->addPopup(szItemId, szText, szIcon, szCondition);
+
+	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
+	return true;
+}
+
+/*
+	@doc: popup.addSeparator
+	@type:
+		command
+	@title:
+		popup.addSeparator
+	@syntax:
+		popup.addSeparator [-q] <popupname:string> [<item_id:string> [<condition:string>]]
+	@short:
+		Adds a separator to a popup
+	@switches:
+		!sw: -q | --quiet
+		Run quietly: don't print warning and errors
+	@description:
+		Adds a separator (tipically drawn as a straight line) to an already existing popup or
+		nested popup named <popupname>. If you want to add an item to a nested popup, use the form 
+		"popup.item". The separator is not selectable or clickable.[br]
+		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
+		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
+		result is 0, the item is not shown in the physical popup.[br]
+	@seealso:
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd]
+*/
+
+static bool popup_kvs_cmd_addSeparator(KviKvsModuleCommandCall * c)
+{
+	QString szPopupName, szSubPopupName, szItemId, szCondition;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
+		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
+	KVSM_PARAMETERS_END(c)
+
+	GET_KVS_POPUP
+
+	pPopup->addSeparator(szItemId, szCondition);
+
+	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
+	return true;
+}
+
+/*
+	@doc: popup.clear
+	@type:
+		command
+	@title:
+		popup.clear
+	@syntax:
+		popup.clear [-q] <popupname:string>
+	@short:
+		Clears all the items of a popup
+	@switches:
+		!sw: -q | --quiet
+		Run quietly: don't print warning and errors
+	@description:
+		Removes all the items from an already existing popup or nested popup named <popupname>.
+		If you want to clear a nested popup, use the form "popup.item".[br]
+	@seealso:
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [fnc]popup.isEmpty[/fnc]
+*/
+
+static bool popup_kvs_cmd_clear(KviKvsModuleCommandCall * c)
+{
+	QString szPopupName, szSubPopupName;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+	KVSM_PARAMETERS_END(c)
+
+	GET_KVS_POPUP
+
+	pPopup->doClear();
+
+	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
+	return true;
+}
+
 /*
 	@doc: popup.delitem
 	@type:
@@ -50,33 +503,21 @@
 		about non-existent items or popup menus.[br]
 		See [cmd]defpopup[/cmd] for more information.[br]
 	@seealso:
-		[cmd]defpopup[/cmd], [cmd]popup[/cmd]
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd]
 */
 
 
-static bool popup_kvs_cmd_delitem(KviKvsModuleCommandCall * c)
+static bool popup_kvs_cmd_delItem(KviKvsModuleCommandCall * c)
 {
-	QString szPopupName,szItemId;
+	QString szPopupName, szSubPopupName,szItemId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
 		KVSM_PARAMETER("item_id",KVS_PT_NONEMPTYSTRING,0,szItemId)
 	KVSM_PARAMETERS_END(c)
 
-	KviKvsPopupMenu * p = KviKvsPopupManager::instance()->lookup(szPopupName);
-	if(!p)
-	{
-		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs_ctx("Inexisting popup \"%Q\"","kvs"),&szPopupName);
-		return true;
-	}
+	GET_KVS_POPUP
 
-	if(p->isLocked())
-	{
-		c->error(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs"));
-		return false;
-	}
-
-	if(!p->removeItemByName(szItemId,c->hasSwitch('d',"deep")))
+	if(!pPopup->removeItemByName(szItemId,c->hasSwitch('d',"deep")))
 	{
 		if(!c->hasSwitch('q',"quiet"))
 			c->warning(__tr2qs_ctx("The menu item with id \"%Q\" does not exist in popup \"%Q\"","kvs"),&szItemId,&szPopupName);
@@ -86,35 +527,64 @@ static bool popup_kvs_cmd_delitem(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-	/*
-		@doc: popup
-		@type:
-			command
-		@title:
-			popup
-		@syntax:
-			popup [-p=<screen_coordinates:string>] <popup_name:string> [<parameter1:variant> [<parameter2:variant> [...]]]
-		@short:
-			Shows a popup menu
-		@switches:
-			!sw: -p=<screen_coordinates:string> | --point=<screen_coordinates:string>
-		@description:
-			Shows the popup menu <popup_name> at the current cursor position,
-			eventually passing the [parameters]. Please note that you can't
-			use this command inside one of the [cmd]defpopup[/cmd] command
-			handlers for <popup_name>. In other words, you can't "popup
-			a popup" while it is being popped up. :) (This would
-			be an endless recursive behaviour).[br]
-			If the -p switch is used, then <screen_coordinates> must be
-			in the form <x>,<y> and will be used as screen coordinates
-			for the placement of the popup (instead of the current cursor position).[br]
-		@seealso:
-			[cmd]defpopup[/cmd]
-	*/
+/*
+	@doc: popup.isEmpty
+	@type:
+		function
+	@title:
+		$popup.isEmpty
+	@syntax:
+		$popup.isEmpty(<popupname:string>)
+	@short:
+		Returns true if a popup is empty
+	@description:
+		Returns true if a popup is empty or false otherwise.
+	@seealso:
+		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.clear[/cmd]
+*/
+
+static bool popup_kvs_fnc_isEmpty(KviKvsModuleFunctionCall * c)
+{
+	QString szPopupName, szSubPopupName;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+	KVSM_PARAMETERS_END(c)
+
+	GET_KVS_POPUP_FNC
+	
+	c->returnValue()->setBoolean(pPopup->isEmpty());
+	return true;
+}
+
+/*
+	@doc: popup.show
+	@type:
+		command
+	@title:
+		popup.show
+	@syntax:
+		popup.show [-p=<screen_coordinates:string>] <popup_name:string> [<parameter1:variant> [<parameter2:variant> [...]]]
+	@short:
+		Shows a popup menu
+	@switches:
+		!sw: -p=<screen_coordinates:string> | --point=<screen_coordinates:string>
+	@description:
+		Shows the popup menu <popup_name> at the current cursor position,
+		eventually passing the [parameters]. Please note that you can't
+		use this command inside one of the [cmd]defpopup[/cmd] command
+		handlers for <popup_name>. In other words, you can't "popup
+		a popup" while it is being popped up. :) (This would
+		be an endless recursive behaviour).[br]
+		If the -p switch is used, then <screen_coordinates> must be
+		in the form <x>,<y> and will be used as screen coordinates
+		for the placement of the popup (instead of the current cursor position).[br]
+	@seealso:
+		[cmd]defpopup[/cmd]
+*/
 
 static bool popup_kvs_cmd_show(KviKvsModuleCommandCall * c)
 {
-	QString szPopupName;
+	QString szPopupName, szSubPopupName;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("popup_name",KVS_PT_NONEMPTYSTRING,0,szPopupName)
 	KVSM_PARAMETERS_END(c)
@@ -172,8 +642,20 @@ static bool popup_kvs_cmd_show(KviKvsModuleCommandCall * c)
 
 static bool popup_module_init(KviModule *m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"delitem",popup_kvs_cmd_delitem);
+	KVSM_REGISTER_CALLBACK_COMMAND(m,"addItem",popup_kvs_cmd_addItem);
+	KVSM_REGISTER_CALLBACK_COMMAND(m,"addPrologue",popup_kvs_cmd_addPrologue);
+	KVSM_REGISTER_CALLBACK_COMMAND(m,"addEpilogue",popup_kvs_cmd_addEpilogue);
+
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"addExtPopup",popup_kvs_cmd_addExtPopup);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"addLabel",popup_kvs_cmd_addLabel);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"addSubPopup",popup_kvs_cmd_addSubPopup);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"addSeparator",popup_kvs_cmd_addSeparator);
+	
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"clear",popup_kvs_cmd_clear);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"delItem",popup_kvs_cmd_delItem);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"show",popup_kvs_cmd_show);
+	
+	KVSM_REGISTER_FUNCTION(m,"isEmpty",popup_kvs_fnc_isEmpty);
 	return true;
 }
 
