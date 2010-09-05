@@ -788,17 +788,22 @@ namespace KviKvsCoreFunctions
 	{
 		KviKvsHash * pHash;
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("hash",KVS_PT_HASH,0,pHash)
+			KVSCF_PARAMETER("hash",KVS_PT_HASH,KVS_PF_OPTIONAL,pHash)
 		KVSCF_PARAMETERS_END
 
 		KviKvsArray * a = new KviKvsArray();
-		kvs_int_t idx = 0;
-		KviKvsHashIterator it(*(pHash->dict()));
-		while(it.current())
+		
+		// we have to support an empty hash, returning an empty array (ticket #940)
+		if(pHash)
 		{
-			a->set(idx,new KviKvsVariant(it.currentKey()));
-			idx++;
-			++it;
+			kvs_int_t idx = 0;
+			KviKvsHashIterator it(*(pHash->dict()));
+			while(it.current())
+			{
+				a->set(idx,new KviKvsVariant(it.currentKey()));
+				idx++;
+				++it;
+			}
 		}
 		KVSCF_pRetBuffer->setArray(a);
 		return true;

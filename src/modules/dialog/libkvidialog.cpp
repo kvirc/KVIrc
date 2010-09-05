@@ -249,7 +249,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 	KviTalHBox * box = new KviTalHBox(this);
 	g->addWidget(box,2,1,1,2);
 
-	m_iEscapeButton = 0;
+	m_iEscapeButton = -1;
 	m_iDefaultButton = 0;
 
 	if(!szButton0.isEmpty())
@@ -309,6 +309,16 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 		connect(pb3,SIGNAL(clicked()),this,SLOT(b2Clicked()));
 	}
 
+	if(m_iEscapeButton < 0)
+	{
+		//no escape button explicitly set, search for one:
+		if(!szButton2.isEmpty())
+			m_iEscapeButton = 2;
+		else if(!szButton1.isEmpty())
+			m_iEscapeButton = 1;
+		else 
+			m_iEscapeButton = 0;
+	}
 }
 
 KviKvsCallbackTextInput::~KviKvsCallbackTextInput()
