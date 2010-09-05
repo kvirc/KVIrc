@@ -54,18 +54,26 @@ KviThemedComboBox::~KviThemedComboBox()
 
 void KviThemedComboBox::applyOptions()
 {
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	bool bIsTrasparent = (KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing()) || g_pShadedChildGlobalDesktopBackground;
+#else
+	bool bIsTrasparent = false;
+#endif
+
 	if(style()->objectName() == "oxygen")
 	{
 		//workaround for broken oxygen in kde4.4: use palette() instead that stylesheet
 		setFont(KVI_OPTION_FONT(KviOption_fontLabel));
 		QPalette pal = palette();
-		pal.setBrush(QPalette::Base, Qt::transparent);
+		pal.setBrush(QPalette::Base, bIsTrasparent ? Qt::transparent : KVI_OPTION_COLOR(KviOption_colorLabelBackground));
 		//qcombobox forces QPalette::Text as its forecolor
-		pal.setBrush(QPalette::Text,KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()));
+		pal.setBrush(QPalette::Text, bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()) : KVI_OPTION_COLOR(KviOption_colorLabelForeground));
 		setPalette(pal);
 	} else {
-		QString szStyle = QString("QComboBox { background: transparent; color: %1; font-family: %2; font-size: %3pt; font-weight: %4; font-style: %5;}")
-		.arg(KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name())
+		QString szStyle = QString("QComboBox { background: %1; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
+	.arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
+	.arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : 
+				KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
 		.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
 		.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
 		.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
@@ -77,6 +85,7 @@ void KviThemedComboBox::applyOptions()
 
 void KviThemedComboBox::paintEvent ( QPaintEvent * event )
 {
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
 	QPainter * p = new QPainter(this);
 	QLineEdit *le = lineEdit();
 	if(le)
@@ -104,7 +113,6 @@ void KviThemedComboBox::paintEvent ( QPaintEvent * event )
 		p->setClipRect(r);
 	} // else not editable
 
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
 		p->setCompositionMode(QPainter::CompositionMode_Source);
@@ -115,13 +123,9 @@ void KviThemedComboBox::paintEvent ( QPaintEvent * event )
 	{
 		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
 		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
-	} else {
-#endif
-		p->fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
-#endif
 	delete p;
+#endif
 	QComboBox::paintEvent(event);
 }
 

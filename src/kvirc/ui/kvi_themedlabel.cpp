@@ -54,22 +54,29 @@ KviThemedLabel::~KviThemedLabel()
 
 void KviThemedLabel::applyOptions()
 {
-	//qDebug("KviThemedLabel::applyOptions()");
-	QString szStyle = QString("QLabel { background: transparent; color: %1; font-family: %2; font-size: %3pt; font-weight: %4; font-style: %5;}")
-		.arg(KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name())
-		.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
-		.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
-		.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
-		.arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
-	
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	bool bIsTrasparent = (KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing()) || g_pShadedChildGlobalDesktopBackground;
+#else
+	bool bIsTrasparent = false;
+#endif
+
+	QString szStyle = QString("QLabel { background: %1; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
+	.arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
+	.arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : 
+				KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
+	.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
+	.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
+	.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
+	.arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
+
 	setStyleSheet(szStyle);
 	update();
 }
 
 void KviThemedLabel::paintEvent(QPaintEvent *e)
 {
-	QPainter *p = new QPainter(this);
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
+	QPainter *p = new QPainter(this);
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
 		p->setCompositionMode(QPainter::CompositionMode_Source);
@@ -80,13 +87,9 @@ void KviThemedLabel::paintEvent(QPaintEvent *e)
 	{
 		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
 		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
-	} else {
-#endif
-	p->fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
-#endif
 	delete p;
+#endif
 	QLabel::paintEvent(e);
 }
 

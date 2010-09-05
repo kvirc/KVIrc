@@ -465,7 +465,7 @@ KviColorOption g_mirccolorOptionsTable[KVI_NUM_MIRCCOLOR_OPTIONS]=
 #define COLOR_OPTION(_name,_red,_green,_blue,_flags) \
 	KviColorOption(KVI_COLOR_OPTIONS_PREFIX _name, \
 		QColor(_red,_green,_blue), \
-		_flags | KviOption_resetUpdateGui | KviOption_groupTheme)
+		_flags | KviOption_resetUpdateGui | KviOption_groupTheme | KviOption_resetUpdatePseudoTransparency)
 
 KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS]=
 {
@@ -496,7 +496,7 @@ KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS]=
 	COLOR_OPTION("UserListViewSelectionForeground",255,255,255,KviOption_sectFlagUserListView),
 	COLOR_OPTION("LabelBackground",255,255,255,KviOption_sectFlagLabel),
 	COLOR_OPTION("LabelForeground",0,0,0,KviOption_sectFlagLabel),
-	COLOR_OPTION("GlobalTransparencyFade",255,255,255,KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency),
+	COLOR_OPTION("GlobalTransparencyFade",255,255,255,KviOption_sectFlagGui),
 	COLOR_OPTION("IrcToolBarAppletBackground",255,255,255,KviOption_sectFlagIrcToolBar),
 	COLOR_OPTION("IrcToolBarAppletForegroundLowContrast",180,180,180,KviOption_sectFlagIrcToolBar),
 	COLOR_OPTION("IrcToolBarAppletForegroundMidContrast",110,110,110,KviOption_sectFlagIrcToolBar),
