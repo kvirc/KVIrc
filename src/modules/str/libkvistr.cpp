@@ -686,7 +686,8 @@ static bool str_kvs_fnc_right(KviKvsModuleFunctionCall * c)
 	@description:
 		This function returns a substring of the first string parameter wich is the
 		string starting at the (numeric) index given with startidx and counting nchars
-		forward.
+		forward. If <nchars> is not given or is less than 1, all the characters until
+		the end of the string will be returned.
 */
 static bool str_kvs_fnc_mid(KviKvsModuleFunctionCall * c)
 {
@@ -695,9 +696,9 @@ static bool str_kvs_fnc_mid(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("data",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("startidx",KVS_PT_INTEGER,0,iIdx)
-		KVSM_PARAMETER("nchars",KVS_PT_INTEGER,0,iNchars)
+		KVSM_PARAMETER("nchars",KVS_PT_INTEGER,KVS_PF_OPTIONAL,iNchars)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.mid(iIdx,iNchars));
+	c->returnValue()->setString(szString.mid(iIdx,iNchars<1?-1:iNchars));
 	return true;
 }
 
