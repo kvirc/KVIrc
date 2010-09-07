@@ -1881,7 +1881,11 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 
 			case 'a':
 			case 'q':
-				if(msg->connection()->serverInfo()->supportedListModes().contains(*aux))
+				// note: unrealircd declares q,a as CHANMODES, while inspircd declares
+				// them as PREFIXes, so we need to check them both here (ticket #951)
+				if(msg->connection()->serverInfo()->supportedListModes().contains(*aux) ||
+					msg->connection()->serverInfo()->isSupportedModeFlag(*aux)
+				)
 				{
 					// (freenode) ircd-seven's quite ban (channel mode q with mask)
 					// (ircq) unrealircd's channel owner (channel mode q with nickname)

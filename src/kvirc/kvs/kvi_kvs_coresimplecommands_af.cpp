@@ -1100,8 +1100,7 @@ namespace KviKvsCoreSimpleCommands
 		@examples:
 			[example]
 			echo Hey! this is my first echo test!
-			echo -i=10 This text has a specified icon and colors
-			echo --icon=[fnc]$icon[/fnc](parser error) this has the colors of the parser error messages
+			echo -i=[fnc]$msgtype[/fnc](parsererror) this has the colors of the parser error messages
 			[/example]
 		@seealso:
 			[fnc]$window[/fnc],
