@@ -565,12 +565,12 @@ KVSO_CLASS_FUNCTION(socket,accept)
 
 KVSO_CLASS_FUNCTION(socket,setProtocol)
 {
-	QString m_szHex;
+	QString szProto;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("hex_string",KVS_PT_STRING,0,m_szHex)
+		KVSO_PARAMETER("protocol",KVS_PT_STRING,0,szProto)
 	KVSO_PARAMETERS_END(c)
 
-	m_bUdp=KviQString::equalCI(m_szHex,"udp");
+	m_bUdp = KviQString::equalCI(szProto,"udp");
 	return false;
 }
 
@@ -605,12 +605,12 @@ KVSO_CLASS_FUNCTION(socket,functionConnect)
 #endif
 	{
 		qDebug("ok connecting");
-		qDebug("connectinhg on ip %s ",m_szRemoteIp.toUtf8().data());
-		qDebug("non so ip");
+		qDebug("connecting on ip %s ",m_szRemoteIp.toUtf8().data());
+		qDebug("no ip");
 		m_iStatus = KVI_SCRIPT_SOCKET_STATUS_CONNECTING;
 		delayedConnect();
 	} else {
-		qDebug("connectinhg on ip %s port %d",m_szRemoteIp.toUtf8().data(),(int) m_uRemotePort);
+		qDebug("connecting on ip %s port %d",m_szRemoteIp.toUtf8().data(),(int) m_uRemotePort);
 		m_iStatus = KVI_SCRIPT_SOCKET_STATUS_DNS;
 		delayedLookupRemoteIp();
 	}
