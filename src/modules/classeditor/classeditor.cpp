@@ -494,8 +494,10 @@ bool KviClassEditor::hasSelectedItems()
 
 bool KviClassEditor::classExists(QString & szFullItemName)
 {
-	if (m_pClasses->find(szFullItemName)) return true;
-	else return false;
+	if(m_pClasses->find(szFullItemName))
+		return true;
+	else
+		return false;
 }
 
 void KviClassEditor::renameFunction()
@@ -534,20 +536,17 @@ void KviClassEditor::renameFunction()
 				}
 			}
 			currentItemChanged(pFunction,pFunction);
-
-		}
-		return;
-	}
-	if(findFunction(szNewFunctionName,pParentClass) && !KviQString::equalCS(szFunctionName,szNewFunctionName))
-	{
-		g_pClassEditorModule->lock();
-		QMessageBox::information(this,
+		} else {
+			g_pClassEditorModule->lock();
+			QMessageBox::information(this,
 			__tr2qs_ctx("Function already exists","editor"),
 			__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
 			__tr2qs_ctx("Ok, Let me try again...","editor"));
-		g_pClassEditorModule->unlock();
-		return;
+			g_pClassEditorModule->unlock();
+			return;
+		}
 	}
+	
 	pFunction->setName(szNewFunctionName);
 	pFunction->setReminder(szNewReminder);
 	currentItemChanged(pFunction,pFunction);
@@ -598,9 +597,7 @@ void KviClassEditor::renameClass(KviClassEditorTreeWidgetItem * pClassItem)
 	bool bOk = askForClassName(szNewClassName,szNewInheritsClassName,true);
 	if(!bOk)
 		return;
-	if(KviQString::equalCS(szClassName,szNewClassName) && KviQString::equalCS(szInheritsClassName,szNewInheritsClassName))
-		return;
-	if(classExists(szNewClassName) && KviQString::equalCS(szInheritsClassName,szNewInheritsClassName))
+	if(classExists(szNewClassName) && KviQString::equalCS(szClassName,szNewClassName) && KviQString::equalCS(szInheritsClassName,szNewInheritsClassName))
 	{
 		g_pClassEditorModule->lock();
 		QMessageBox::information(this,
