@@ -169,6 +169,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_file,"file","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"putch",putch)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"getch",getch)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"ungetch",unGetch)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readByte",readByte)
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readBlock",readBlock)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeBlock", writeBlock)
@@ -346,6 +347,17 @@ KVSO_CLASS_FUNCTION(file,getch)
 	if (!m_pFile->getChar(&ch)) c->warning(__tr2qs_ctx("Read error occured!","objects"));	// c->error ?
 	QString szChar = QChar(ch);
 	c->returnValue()->setString(szChar);
+	return true;
+}
+
+KVSO_CLASS_FUNCTION(file,readByte)
+{
+	CHECK_INTERNAL_POINTER(m_pFile)
+	CHECK_FILE_IS_OPEN
+	char ch;
+	if (!m_pFile->getChar(&ch)) c->warning(__tr2qs_ctx("Read error occured!","objects"));	// c->error ?
+	//QString szChar = QChar(ch);
+	c->returnValue()->setInteger((kvs_int_t) ch);
 	return true;
 }
 

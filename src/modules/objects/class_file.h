@@ -55,6 +55,7 @@ public:
 	bool seek(KviKvsObjectFunctionCall *c);
 	bool putch(KviKvsObjectFunctionCall *c);
 	bool getch(KviKvsObjectFunctionCall *c);
+	bool readByte(KviKvsObjectFunctionCall *c);
 	bool unGetch(KviKvsObjectFunctionCall *c);
 
 	bool readBlock(KviKvsObjectFunctionCall *c);
