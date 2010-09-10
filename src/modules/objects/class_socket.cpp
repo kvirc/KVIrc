@@ -156,12 +156,13 @@
                 ASCII characters 255. You can pass a [class]memorybuffer[/class] object to read binary data.
 
 
-                !fn: $write(<data, files or hobject>[,length])
+                !fn: $write(<data, array,files or hobject>[,length])
 		Writes <data> to the socket.[br]
                 This function can deal with binary data passing  a [class]memorybuffer[/class] object[br]
 		Please note that when this function finishes it does not mean that the data has reached the remote end.[br]
 		Basically it does not even mean that the data has been sent to the remote host.[br]
 		The data is enqueued for sending and will be sent as soon as possible.[br]
+                By array you can pass bytes or data string like this: @$write($array($(0xff),$(0xff),$(0xff),$(0xff),"This is an example"));
 		If you're going to [cmd]delete[/cmd] this object just after the $write call, you should
 		call [classfnc:socket]$close[/classfnc]() just before [cmd]delete[/cmd] to ensure the data delivery.
 
@@ -274,6 +275,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_socket,"socket","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,close)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,read)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,write)
+
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,setProtocol)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,listen)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,accept)
@@ -502,7 +504,48 @@ KVSO_CLASS_FUNCTION(socket,write)
 	}
 	else
 	{
-		QString szData;
+                if(pVariantData->isArray())
+                {
+                    KviKvsArray *pArray=pVariantData->array();
+                    for(unsigned int i=0;i<pArray->size();i++)
+                    {
+                        KviKvsVariant *pVar=pArray->at(i);
+                        kvs_int_t iValue;
+                        if(pVar->isInteger())
+                        {
+                            pVar->asInteger(iValue);
+                            if(iValue<256 && iValue>=0)
+                            {
+                                m_pOutBuffer->append((unsigned char)iValue);
+                                continue;
+                            }
+                            else
+                            {
+                                c->warning(__tr2qs_ctx("Only values in the range of 0-255 are hallowed: integer %d is out of range","objects"),iValue);
+                                return true;
+                            }
+
+                        }
+                        else{
+                            if(pVar->isString())
+                            {
+                                QString szData;
+                                pVar->asString(szData);
+                                QByteArray szData8 = szData.toUtf8();
+                                m_pOutBuffer->append((const unsigned char*)szData8.data(),szData8.length());
+                            }
+                            else
+                            {
+                                c->warning(__tr2qs_ctx("Datatype not supported","objects"));
+                                return true;
+                            }
+                        }
+
+                    }
+                    return true;
+                }
+
+                QString szData;
 		pVariantData->asString(szData);
 		if(!KviFileUtils::fileExists(szData))
 		{
@@ -571,7 +614,7 @@ KVSO_CLASS_FUNCTION(socket,setProtocol)
 	KVSO_PARAMETERS_END(c)
 
 	m_bUdp = KviQString::equalCI(szProto,"udp");
-	return true;
+        return true;
 }
 
 
@@ -1131,7 +1174,7 @@ void KviKvsObject_socket::readNotifierFired(int)
 	m_uInDataLen += readLength;
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant((kvs_int_t)readLength));
-	callFunction(this,"dataAvailableEvent",&lParams);
+        callFunction(this," ilableEvent",&lParams);
 	unsigned int uOldConnectionId = m_uConnectionId;
 	if(m_uConnectionId == uOldConnectionId)
 	{
