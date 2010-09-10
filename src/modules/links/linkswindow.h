@@ -30,13 +30,12 @@
 #include "kvi_sparser.h"
 #include "kvi_console.h"
 #include "kvi_irccontext.h"
-#include <QTreeWidget>
 #include "kvi_tal_popupmenu.h"
+#include "kvi_themedtreewidget.h"
 
 #include <QToolButton>
 
 class KviThemedLabel;
-
 
 typedef struct _KviLink
 {
@@ -46,11 +45,11 @@ typedef struct _KviLink
 	KviStr description;
 } KviLink;
 
-class KviLinksListView : public QTreeWidget
+class KviLinksListView : public KviThemedTreeWidget
 {
 	Q_OBJECT
 public:
-	KviLinksListView(QWidget*);
+	KviLinksListView(QWidget * par, KviWindow * wnd, const char * txt);
 	~KviLinksListView(){};
 protected:
 	void mousePressEvent (QMouseEvent *e);
@@ -65,14 +64,14 @@ public:
 	KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole);
 	~KviLinksWindow();
 protected:
-	QSplitter      * m_pVertSplitter;
-	QSplitter      * m_pTopSplitter;
-	KviLinksListView      * m_pListView;
+	QSplitter               * m_pVertSplitter;
+	QSplitter               * m_pTopSplitter;
+	KviLinksListView        * m_pListView;
 	KviPointerList<KviLink> * m_pLinkList;
-	KviTalPopupMenu     * m_pHostPopup;
-	QString          m_szRootServer;
-	QToolButton    * m_pRequestButton;
-	KviThemedLabel * m_pInfoLabel;
+	KviTalPopupMenu         * m_pHostPopup;
+	QString                   m_szRootServer;
+	QToolButton             * m_pRequestButton;
+	KviThemedLabel          * m_pInfoLabel;
 public: // Methods
 	virtual void control(int msg);
 	virtual void processData(KviIrcMessage * msg);

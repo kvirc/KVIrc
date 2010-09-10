@@ -31,8 +31,8 @@
 #include "kvi_sparser.h"
 #include "kvi_console.h"
 #include "kvi_irccontext.h"
-#include <QTreeWidget>
 #include "kvi_tal_popupmenu.h"
+#include "kvi_themedtreewidget.h"
 
 #include <QToolButton>
 #include <QLineEdit>
@@ -85,7 +85,7 @@ public:
 protected:
 	QSplitter                                    * m_pVertSplitter;
 	QSplitter                                    * m_pTopSplitter;
-	QTreeWidget                                  * m_pTreeWidget;
+	KviThemedTreeWidget                          * m_pTreeWidget;
 	QLineEdit                                    * m_pParamsEdit;
 	QToolButton                                  * m_pRequestButton;
 	QToolButton                                  * m_pStopListDownloadButton;

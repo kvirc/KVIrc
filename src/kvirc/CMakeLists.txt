@@ -55,6 +55,7 @@ SET(kvirc_MOC_HDRS
 	ui/kvi_themedcombobox.h
 	ui/kvi_themedlabel.h
 	ui/kvi_themedlineedit.h
+	ui/kvi_themedtreewidget.h
 	ui/kvi_toolbar.h
 	ui/kvi_toolwindows_container.h
 	ui/kvi_topicw.h
@@ -140,6 +141,7 @@ SET(kvirc_SRCS
 	ui/kvi_themedcombobox.cpp
 	ui/kvi_themedlabel.cpp
 	ui/kvi_themedlineedit.cpp
+	ui/kvi_themedtreewidget.cpp
 	ui/kvi_toolbar.cpp
 	ui/kvi_toolwindows_container.cpp
 	ui/kvi_topicw.cpp

@@ -165,10 +165,13 @@ KviListWindow::KviListWindow(KviFrame * lpFrm, KviConsole * lpConsole)
 
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("splitter");
+	m_pSplitter->setChildrenCollapsible(false);
 	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pTopSplitter->setObjectName("top_splitter");
+	m_pTopSplitter->setChildrenCollapsible(false);
 	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setObjectName("vsplitter");
+	m_pVertSplitter->setChildrenCollapsible(false);
 
 	KviTalHBox * pBox = new KviTalHBox(m_pTopSplitter);
 	pBox->setSpacing(1);
@@ -213,7 +216,7 @@ KviListWindow::KviListWindow(KviFrame * lpFrm, KviConsole * lpConsole)
 
 	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter, this, "info_label");
 
-	m_pTreeWidget  = new QTreeWidget(m_pVertSplitter);
+	m_pTreeWidget  = new KviThemedTreeWidget(m_pVertSplitter, this, "list_treewidget");
 	m_pTreeWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pTreeWidget->setItemDelegate(new KviChannelTreeWidgetItemDelegate(m_pTreeWidget));

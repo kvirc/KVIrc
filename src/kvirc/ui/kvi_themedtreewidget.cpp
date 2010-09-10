@@ -1,10 +1,10 @@
 //=============================================================================
 //
-//   File : kvi_themedlineedit.cpp
-//   Creation date : Sun Jan 10 2010 12:17:00 by Fabio Bas
+//   File : kvi_themedlabel.cpp
+//   Creation date : Tue Aug 29 2000 21:17:01 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2010 Fabio Bas (ctrlaltca at gmail dot com)
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#include "kvi_themedcombobox.h"
+#include "kvi_themedtreewidget.h"
 #include "kvi_options.h"
 #include "kvi_settings.h"
 #include "kvi_app.h"
@@ -32,27 +32,25 @@
 #include "kvi_mdimanager.h"
 
 #include <QPainter>
-#include <QLineEdit>
-#include <QStyleOptionFrameV2>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-KviThemedComboBox::KviThemedComboBox(QWidget * par, KviWindow * pWindow, const char * name)
-: QComboBox(par)
+KviThemedTreeWidget::KviThemedTreeWidget(QWidget * par, KviWindow * pWindow,const char * name)
+: QTreeWidget(par)
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
-	setAutoFillBackground(true);
+	setAutoFillBackground(false);
 	applyOptions();
 }
 
-KviThemedComboBox::~KviThemedComboBox()
+KviThemedTreeWidget::~KviThemedTreeWidget()
 {
 }
 
-void KviThemedComboBox::applyOptions()
+void KviThemedTreeWidget::applyOptions()
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	bool bIsTrasparent = (KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing()) || g_pShadedChildGlobalDesktopBackground;
@@ -60,59 +58,23 @@ void KviThemedComboBox::applyOptions()
 	bool bIsTrasparent = false;
 #endif
 
-	if(style()->objectName() == "oxygen")
-	{
-		//workaround for broken oxygen in kde4.4: use palette() instead that stylesheet
-		setFont(KVI_OPTION_FONT(KviOption_fontLabel));
-		QPalette pal = palette();
-		pal.setBrush(QPalette::Base, bIsTrasparent ? Qt::transparent : KVI_OPTION_COLOR(KviOption_colorLabelBackground));
-		//qcombobox forces QPalette::Text as its forecolor
-		pal.setBrush(QPalette::Text, bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()) : KVI_OPTION_COLOR(KviOption_colorLabelForeground));
-		setPalette(pal);
-	} else {
-		QString szStyle = QString("QComboBox { background: %1; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
+	QString szStyle = QString("QTreeWidget { background: %1; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
 	.arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
 	.arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : 
 				KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
-		.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
-		.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
-		.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
-		.arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
-		setStyleSheet(szStyle);
-	}
+	.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
+	.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
+	.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
+	.arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
+
+	setStyleSheet(szStyle);
 	update();
 }
 
-void KviThemedComboBox::paintEvent ( QPaintEvent * event )
+void KviThemedTreeWidget::paintEvent(QPaintEvent *e)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	QPainter * p = new QPainter(this);
-	QLineEdit *le = lineEdit();
-	if(le)
-	{
-		QRect r = rect();
-		QPalette pal = palette();
-		QStyleOptionFrameV2 option;
-
-		option.initFrom(this);
-		option.rect = contentsRect();
-		option.lineWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, le);
-		option.midLineWidth = 0;
-		option.state |= QStyle::State_Sunken;
-		if(le->isReadOnly())
-			option.state |= QStyle::State_ReadOnly;
-		option.features = QStyleOptionFrameV2::None;
-
-		r = style()->subElementRect(QStyle::SE_LineEditContents, &option, le);
-		int left, right, top, bottom;
-		le->getTextMargins(&left, &top, &right, &bottom);
-		r.setX(r.x() + left);
-		r.setY(r.y() + top);
-		r.setRight(r.right() - right);
-		r.setBottom(r.bottom() - bottom);
-		p->setClipRect(r);
-	} // else not editable
-
+	QPainter *p = new QPainter(this);
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
 		p->setCompositionMode(QPainter::CompositionMode_Source);
@@ -126,9 +88,9 @@ void KviThemedComboBox::paintEvent ( QPaintEvent * event )
 	}
 	delete p;
 #endif
-	QComboBox::paintEvent(event);
+	QTreeWidget::paintEvent(e);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_themedcombobox.moc"
+#include "kvi_themedtreewidget.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -52,7 +52,8 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 
 	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pTopSplitter->setObjectName("top_splitter");
-
+	m_pTopSplitter->setChildrenCollapsible(false);
+	
 	// The button box on the left
 	KviTalHBox * box = new KviTalHBox(m_pTopSplitter);
 
@@ -72,11 +73,13 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("splitter");
+	m_pSplitter->setChildrenCollapsible(false);
 
 	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setObjectName("vsplitter");
+	m_pVertSplitter->setChildrenCollapsible(false);
 
-	m_pListView  = new KviLinksListView(m_pVertSplitter);
+	m_pListView  = new KviLinksListView(m_pVertSplitter, this, "links_treewidget");
 
 	connect(m_pListView,SIGNAL(rightButtonPressed(QTreeWidgetItem *,const QPoint &)),
 			this,SLOT(showHostPopup(QTreeWidgetItem *,const QPoint &)));
@@ -461,8 +464,8 @@ void KviLinksWindow::applyOptions()
 	KviWindow::applyOptions();
 }
 
-KviLinksListView::KviLinksListView(QWidget * par)
-: QTreeWidget(par)
+KviLinksListView::KviLinksListView(QWidget * par, KviWindow * wnd, const char * txt)
+: KviThemedTreeWidget(par, wnd, txt)
 {
 	header()->setSortIndicatorShown(true);
 	setColumnCount(3);
