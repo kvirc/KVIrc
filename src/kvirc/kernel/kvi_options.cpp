@@ -408,7 +408,7 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS]=
 	STRING_OPTION("CtcpUserInfoGender","",KviOption_sectFlagUser),
 	STRING_OPTION("CtcpUserInfoLocation","",KviOption_sectFlagUser),
 	STRING_OPTION("CtcpUserInfoLanguages","",KviOption_sectFlagUser),
-	STRING_OPTION("WordSplitters",",\"';:|.%^~!\\$#()",KviOption_sectFlagIrcView),
+	STRING_OPTION("WordSplitters",",\"';:|.%^~!\\$#()?",KviOption_sectFlagIrcView),
 	STRING_OPTION("OnNewQueryOpenedSound","",KviOption_sectFlagFrame),
 	STRING_OPTION("OnHighlightedMessageSound","",KviOption_sectFlagFrame),
 	STRING_OPTION("OnMeKickedSound","",KviOption_sectFlagFrame),
