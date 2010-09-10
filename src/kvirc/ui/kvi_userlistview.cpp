@@ -564,6 +564,8 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 	m_iTotalHeight += pUserEntry->m_iHeight;
 
 	bool bGotTopItem = false;
+	bool bModeqHasPrefix = m_pKviWindow->connection()->serverInfo()->isSupportedModeFlag('q');
+	bool bModeaHasPrefix = m_pKviWindow->connection()->serverInfo()->isSupportedModeFlag('a');
 
 	int iFlag = 0;
 	if(pUserEntry->m_iFlags != 0)
@@ -594,13 +596,13 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 
 		if(pUserEntry->m_iFlags & KVI_USERFLAG_CHANADMIN)
 		{
-			iFlag = KVI_USERFLAG_CHANADMIN;
+			if(bModeaHasPrefix) iFlag = KVI_USERFLAG_CHANADMIN;
 			m_iChanAdminCount++;
 		}
 
 		if(pUserEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
 		{
-			iFlag = KVI_USERFLAG_CHANOWNER;
+			if(bModeqHasPrefix) iFlag = KVI_USERFLAG_CHANOWNER;
 			m_iChanOwnerCount++;
 		}
 	}
@@ -615,22 +617,22 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 	{
 		KviUserListEntry * pEntry = m_pHeadItem;
 
-		if(!(pUserEntry->m_iFlags & KVI_USERFLAG_CHANOWNER))
+		if(!(pUserEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) || !bModeqHasPrefix)
 		{
 			// the new user is not a channel owner...
 			// skip the channel owners
-			while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER))
+			while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) && bModeqHasPrefix)
 			{
 				if(pEntry == m_pTopItem)
 					bGotTopItem = true;
 				pEntry = pEntry->m_pNext;
 			}
 
-			if(!(pUserEntry->m_iFlags & KVI_USERFLAG_CHANADMIN))
+			if(!(pUserEntry->m_iFlags & KVI_USERFLAG_CHANADMIN) || !bModeaHasPrefix)
 			{
 				// the new user is not a channel admin...
 				// skip chan admins
-				while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN))
+				while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN) && bModeaHasPrefix)
 				{
 					if(pEntry == m_pTopItem)
 						bGotTopItem = true;
