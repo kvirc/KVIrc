@@ -1174,7 +1174,7 @@ void KviKvsObject_socket::readNotifierFired(int)
 	m_uInDataLen += readLength;
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant((kvs_int_t)readLength));
-        callFunction(this," ilableEvent",&lParams);
+        callFunction(this,"dataAvailableEvent",&lParams);
 	unsigned int uOldConnectionId = m_uConnectionId;
 	if(m_uConnectionId == uOldConnectionId)
 	{
