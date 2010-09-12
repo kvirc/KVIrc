@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-01 15:53+0200\n"
+"POT-Creation-Date: 2010-09-12 11:56+0100\n"
 "PO-Revision-Date: 2010-06-14 10:48+0400\n"
 "Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -61,7 +61,7 @@ msgstr "### Эпилог ###"
 msgid "### Prologue ###"
 msgstr "### Пролог ###"
 
-#: src/modules/classeditor/classeditor.cpp:2078
+#: src/modules/classeditor/classeditor.cpp:2075
 msgid "&Add"
 msgstr "Добавить"
 
@@ -71,17 +71,17 @@ msgstr "&Добавить заготовку события..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1189
 #: src/modules/eventeditor/eventeditor.cpp:510
-#: src/modules/popupeditor/popupeditor.cpp:1361
+#: src/modules/popupeditor/popupeditor.cpp:1387
 #: src/modules/raweditor/raweditor.cpp:484
 msgid "&Apply"
 msgstr "Применить"
 
-#: src/modules/classeditor/classeditor.cpp:1830
+#: src/modules/classeditor/classeditor.cpp:1827
 msgid "&Build"
 msgstr ""
 
-#: src/modules/classeditor/classeditor.cpp:1986
-#: src/modules/classeditor/classeditor.cpp:2088
+#: src/modules/classeditor/classeditor.cpp:1983
+#: src/modules/classeditor/classeditor.cpp:2085
 #: src/modules/editor/scripteditor.cpp:1049
 msgid "&Cancel"
 msgstr "Отмена"
@@ -90,11 +90,11 @@ msgstr "Отмена"
 msgid "&Configure Editor..."
 msgstr "&Настроить редактор..."
 
-#: src/modules/popupeditor/popupeditor.cpp:430
+#: src/modules/popupeditor/popupeditor.cpp:431
 msgid "&Copy"
 msgstr "Копировать"
 
-#: src/modules/classeditor/classeditor.cpp:1979
+#: src/modules/classeditor/classeditor.cpp:1976
 msgid "&Create Class"
 msgstr "Создать класс"
 
@@ -109,7 +109,7 @@ msgid "&Enable Handler"
 msgstr "Включить обработчик"
 
 #: src/modules/eventeditor/eventeditor.cpp:104
-#: src/modules/popupeditor/popupeditor.cpp:1021
+#: src/modules/popupeditor/popupeditor.cpp:1047
 #: src/modules/raweditor/raweditor.cpp:100
 msgid "&Export All To..."
 msgstr "&Экспортировать всё в..."
@@ -119,11 +119,11 @@ msgstr "&Экспортировать всё в..."
 msgid "&Export Handler To..."
 msgstr "&Экспорт обработчика в..."
 
-#: src/modules/popupeditor/popupeditor.cpp:1136
+#: src/modules/popupeditor/popupeditor.cpp:1162
 msgid "&Export Popup To..."
 msgstr "&Экспортировать всплывающее меню в..."
 
-#: src/modules/popupeditor/popupeditor.cpp:1023
+#: src/modules/popupeditor/popupeditor.cpp:1049
 msgid "&Export selected To..."
 msgstr "&Экспортировать выбранное в.."
 
@@ -132,15 +132,15 @@ msgstr "&Экспортировать выбранное в.."
 msgid "&New Handler"
 msgstr "&Новый обработчик"
 
-#: src/modules/popupeditor/popupeditor.cpp:1124
-#: src/modules/popupeditor/popupeditor.cpp:1145
+#: src/modules/popupeditor/popupeditor.cpp:1150
+#: src/modules/popupeditor/popupeditor.cpp:1171
 msgid "&New Popup"
 msgstr "&Новое всплывающее меню"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1184
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:505
-#: src/modules/popupeditor/popupeditor.cpp:1356
+#: src/modules/popupeditor/popupeditor.cpp:1382
 #: src/modules/raweditor/raweditor.cpp:429
 #: src/modules/raweditor/raweditor.cpp:479
 msgid "&OK"
@@ -150,15 +150,15 @@ msgstr "&Ok"
 msgid "&Open..."
 msgstr "&Открыть..."
 
-#: src/modules/popupeditor/popupeditor.cpp:435
+#: src/modules/popupeditor/popupeditor.cpp:436
 msgid "&Paste Below"
 msgstr "&Вставить снизу"
 
-#: src/modules/classeditor/classeditor.cpp:2080
+#: src/modules/classeditor/classeditor.cpp:2077
 msgid "&Rename"
 msgstr "Переименовать"
 
-#: src/modules/classeditor/classeditor.cpp:1977
+#: src/modules/classeditor/classeditor.cpp:1974
 msgid "&Rename Class"
 msgstr "Переименовать класс"
 
@@ -172,7 +172,7 @@ msgstr "Заменить"
 msgid "&Replace in all editor's items"
 msgstr "Заменить во всех алиасах"
 
-#: src/modules/classeditor/classeditor.cpp:1835
+#: src/modules/classeditor/classeditor.cpp:1832
 msgid "&Save"
 msgstr "Сохранить"
 
@@ -180,7 +180,7 @@ msgstr "Сохранить"
 msgid "&Save As..."
 msgstr "&Сохранить как..."
 
-#: src/modules/popupeditor/popupeditor.cpp:242
+#: src/modules/popupeditor/popupeditor.cpp:243
 msgid ""
 "<center><b>Boolean condition</b><br>Will be evaluated at popup call time in "
 "order to decide if this entry has to be shown.<br>An empty condition "
@@ -189,7 +189,7 @@ msgstr ""
 "<center><b>Булево условие</b><br>Будет определять показывать ли всплывающее "
 "меню во время вызова.<br>Пустое условие принимается за истину.</center>"
 
-#: src/modules/popupeditor/popupeditor.cpp:260
+#: src/modules/popupeditor/popupeditor.cpp:261
 msgid ""
 "<center><b>External menu name</b><br>This allows to nest externally defined "
 "popup menus. The popup menu with the specified name will be looked up at "
@@ -199,7 +199,7 @@ msgstr ""
 "всплывающее меню. Меню с этим именем будет искаться во время создания меню</"
 "center>"
 
-#: src/modules/popupeditor/popupeditor.cpp:251
+#: src/modules/popupeditor/popupeditor.cpp:252
 msgid ""
 "<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
 "path or a relative path.<br>Portable scripts should never use absolute paths."
@@ -209,7 +209,7 @@ msgstr ""
 "абсолютным или относительным путём.<br>Переносимые сценарии не должны "
 "содержать абсолютных путей</center>"
 
-#: src/modules/popupeditor/popupeditor.cpp:270
+#: src/modules/popupeditor/popupeditor.cpp:271
 msgid ""
 "<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
 "center>"
@@ -217,7 +217,7 @@ msgstr ""
 "<center><b>ID Пункта</b><br>Это позволит вам использовать delpopupitem позже."
 "</center>"
 
-#: src/modules/popupeditor/popupeditor.cpp:233
+#: src/modules/popupeditor/popupeditor.cpp:234
 msgid ""
 "<center><b>Visible text</b><br>May contain identifiers that will be "
 "evaluated at popup call time.<br>For labels, this text can contain also "
@@ -244,18 +244,18 @@ msgstr "Код действия"
 msgid "Add Alias"
 msgstr "Добавить алиас"
 
-#: src/modules/classeditor/classeditor.cpp:897
+#: src/modules/classeditor/classeditor.cpp:894
 msgid "Add Class"
 msgstr "Добавить класс"
 
-#: src/modules/classeditor/classeditor.cpp:906
+#: src/modules/classeditor/classeditor.cpp:903
 msgid "Add Member Function"
 msgstr "Добавить функцию-член"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:563
 #: src/modules/aliaseditor/aliaseditor.cpp:1129
-#: src/modules/classeditor/classeditor.cpp:888
-#: src/modules/classeditor/classeditor.cpp:1577
+#: src/modules/classeditor/classeditor.cpp:885
+#: src/modules/classeditor/classeditor.cpp:1574
 msgid "Add Namespace"
 msgstr "Добавить пространство имён"
 
@@ -299,7 +299,7 @@ msgstr ""
 "Внешний скрипт изменил алиас который вы сейчас реактируете. Вы хотите "
 "принять эти изменения?"
 
-#: src/modules/popupeditor/popupeditor.cpp:1093
+#: src/modules/popupeditor/popupeditor.cpp:1119
 #, fuzzy
 msgid ""
 "An external script has changed the popup you are currently editing. Do you "
@@ -329,9 +329,9 @@ msgstr "Некорректное имя алиаса"
 #: src/modules/aliaseditor/aliaseditor.cpp:1069
 #: src/modules/aliaseditor/aliaseditor.cpp:1083
 #: src/modules/aliaseditor/aliaseditor.cpp:1094
-#: src/modules/classeditor/classeditor.cpp:1503
-#: src/modules/classeditor/classeditor.cpp:1517
-#: src/modules/classeditor/classeditor.cpp:1528
+#: src/modules/classeditor/classeditor.cpp:1500
+#: src/modules/classeditor/classeditor.cpp:1514
+#: src/modules/classeditor/classeditor.cpp:1525
 msgid "Bad Namespace Name"
 msgstr "Некорректное имя для пространства имён"
 
@@ -357,7 +357,7 @@ msgstr "Невозможно открыть файл %s на запись."
 #: src/modules/aliaseditor/aliaseditor.cpp:1194
 #: src/modules/editor/scripteditor.cpp:541
 #: src/modules/eventeditor/eventeditor.cpp:515
-#: src/modules/popupeditor/popupeditor.cpp:1366
+#: src/modules/popupeditor/popupeditor.cpp:1392
 #: src/modules/raweditor/raweditor.cpp:489
 #: src/modules/toolbareditor/toolbareditor.cpp:188
 #: src/modules/toolbareditor/toolbareditor.cpp:405
@@ -433,18 +433,18 @@ msgstr ""
 "окнах заданных типов."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:726
-#: src/modules/classeditor/classeditor.cpp:1120
+#: src/modules/classeditor/classeditor.cpp:1117
 msgid "Choose a Directory - KVIrc"
 msgstr "Выберите каталог - KVIrc"
 
 #: src/modules/actioneditor/actioneditor.cpp:700
 #: src/modules/aliaseditor/aliaseditor.cpp:808
-#: src/modules/classeditor/classeditor.cpp:1212
+#: src/modules/classeditor/classeditor.cpp:1209
 #: src/modules/editor/scripteditor.cpp:880
 #: src/modules/eventeditor/eventeditor.cpp:446
 #: src/modules/eventeditor/eventeditor.cpp:487
-#: src/modules/popupeditor/popupeditor.cpp:1164
-#: src/modules/popupeditor/popupeditor.cpp:1214
+#: src/modules/popupeditor/popupeditor.cpp:1190
+#: src/modules/popupeditor/popupeditor.cpp:1240
 #: src/modules/raweditor/raweditor.cpp:422
 #: src/modules/raweditor/raweditor.cpp:460
 #: src/modules/toolbareditor/toolbareditor.cpp:396
@@ -456,28 +456,28 @@ msgid "Choose the category that best fits for this action"
 msgstr "Выберите категорию, наиболее пригодную для этого действия"
 
 #: src/modules/classeditor/classeditor.cpp:72
-#: src/modules/classeditor/classeditor.cpp:805
+#: src/modules/classeditor/classeditor.cpp:802
 msgid "Class"
 msgstr "Класс"
 
-#: src/modules/classeditor/classeditor.cpp:1823
+#: src/modules/classeditor/classeditor.cpp:1820
 msgid "Class Editor"
 msgstr "Редактор классов"
 
-#: src/modules/classeditor/classeditor.cpp:1114
-#: src/modules/classeditor/classeditor.cpp:1191
+#: src/modules/classeditor/classeditor.cpp:1111
+#: src/modules/classeditor/classeditor.cpp:1188
 msgid "Class Export"
 msgstr "Экспорт класса"
 
-#: src/modules/classeditor/classeditor.cpp:607
+#: src/modules/classeditor/classeditor.cpp:604
 msgid "Class already exists"
 msgstr "Класс уже существует"
 
-#: src/modules/classeditor/classeditor.cpp:1915
+#: src/modules/classeditor/classeditor.cpp:1912
 msgid "Class names can contain only letters, digits and underscores"
 msgstr "Имя класса может содержать только буквы, цифры, и нижние подчеркивания"
 
-#: src/modules/classeditor/classeditor.cpp:1840
+#: src/modules/classeditor/classeditor.cpp:1837
 #: src/modules/toolbareditor/toolbareditor.cpp:325
 msgid "Close"
 msgstr "Закрыть"
@@ -486,7 +486,7 @@ msgstr "Закрыть"
 msgid "Code"
 msgstr "Код"
 
-#: src/modules/classeditor/classeditor.cpp:955
+#: src/modules/classeditor/classeditor.cpp:952
 msgid "Collapse All Items"
 msgstr "Свернуть все элементы"
 
@@ -502,11 +502,11 @@ msgstr "Цвета"
 msgid "Comments:"
 msgstr "Комментарии:"
 
-#: src/modules/classeditor/classeditor.cpp:1690
+#: src/modules/classeditor/classeditor.cpp:1687
 msgid "Compilation error - KVIrc"
 msgstr "Ошибка компиляции - KVIrc"
 
-#: src/modules/popupeditor/popupeditor.cpp:236
+#: src/modules/popupeditor/popupeditor.cpp:237
 msgid "Condition:"
 msgstr "Условие:"
 
@@ -518,7 +518,7 @@ msgstr "Подтвердите удаление панели инструмен�
 msgid "Context sensitive help"
 msgstr "Контекстная подсказка"
 
-#: src/modules/popupeditor/popupeditor.cpp:425
+#: src/modules/popupeditor/popupeditor.cpp:426
 msgid "Cu&t"
 msgstr "Вырезать"
 
@@ -546,16 +546,16 @@ msgstr "Вы действительно хотите удалить панель
 msgid "Do you really want to remove the alias \"%Q\" ?"
 msgstr "Вы действительно хотите удалить алиас \"%Q\"?"
 
-#: src/modules/classeditor/classeditor.cpp:1340
+#: src/modules/classeditor/classeditor.cpp:1337
 msgid "Do you really want to remove the class \"%Q\" ?"
 msgstr "Вы действительно хотите удалить класс \"%Q\"?"
 
-#: src/modules/classeditor/classeditor.cpp:1348
+#: src/modules/classeditor/classeditor.cpp:1345
 msgid "Do you really want to remove the function \"%Q\" ?"
 msgstr "Вы действительно хотите удалить функцию \"%Q\"?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:924
-#: src/modules/classeditor/classeditor.cpp:1343
+#: src/modules/classeditor/classeditor.cpp:1340
 msgid "Do you really want to remove the namespace \"%Q\" ?"
 msgstr "Вы действительно хотите удалить пространство имён \"%Q\"?"
 
@@ -640,17 +640,17 @@ msgid "Export Actions..."
 msgstr "Экспортировать действия..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:594
-#: src/modules/classeditor/classeditor.cpp:941
+#: src/modules/classeditor/classeditor.cpp:938
 msgid "Export All..."
 msgstr "Экспортировать всё..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:587
-#: src/modules/classeditor/classeditor.cpp:934
+#: src/modules/classeditor/classeditor.cpp:931
 msgid "Export Selected in singles files..."
 msgstr "Экспортировать выделенное в отдельные файлы..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:581
-#: src/modules/classeditor/classeditor.cpp:928
+#: src/modules/classeditor/classeditor.cpp:925
 msgid "Export Selected..."
 msgstr "Экспортировать выделенное..."
 
@@ -662,7 +662,7 @@ msgstr "Экспортировать панель инструментов"
 msgid "External Menu"
 msgstr "Внешнее меню"
 
-#: src/modules/popupeditor/popupeditor.cpp:254
+#: src/modules/popupeditor/popupeditor.cpp:255
 msgid "External menu:"
 msgstr "Внешнее меню:"
 
@@ -682,11 +682,11 @@ msgstr "Найти в алиасах"
 msgid "Find In Aliases..."
 msgstr "Найти в алиасах..."
 
-#: src/modules/classeditor/classeditor.cpp:999
+#: src/modules/classeditor/classeditor.cpp:996
 msgid "Find In Classes"
 msgstr "Найти в классах"
 
-#: src/modules/classeditor/classeditor.cpp:949
+#: src/modules/classeditor/classeditor.cpp:946
 msgid "Find In Classes..."
 msgstr "Найти в классах..."
 
@@ -707,15 +707,15 @@ msgid "Found an empty namespace in alias name"
 msgstr "Найдено пустое пространство имён в имени алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1095
-#: src/modules/classeditor/classeditor.cpp:1529
+#: src/modules/classeditor/classeditor.cpp:1526
 msgid "Found an empty namespace in namespace name"
 msgstr "Найдена пустая строка в имени пространства имён"
 
-#: src/modules/classeditor/classeditor.cpp:545
+#: src/modules/classeditor/classeditor.cpp:542
 msgid "Function already exists"
 msgstr "Функция уже существует"
 
-#: src/modules/classeditor/classeditor.cpp:2033
+#: src/modules/classeditor/classeditor.cpp:2030
 msgid "Function names can contain only letters, digits and underscores"
 msgstr ""
 "Имя функции может содержать только буквы, цифры, и нижние подчеркивания"
@@ -732,7 +732,7 @@ msgstr "Скрыть дополнительные настройки"
 msgid "Icon"
 msgstr "Иконка"
 
-#: src/modules/popupeditor/popupeditor.cpp:245
+#: src/modules/popupeditor/popupeditor.cpp:246
 msgid "Icon:"
 msgstr "Иконка:"
 
@@ -740,7 +740,7 @@ msgstr "Иконка:"
 msgid "Id"
 msgstr "Идентификатор"
 
-#: src/modules/classeditor/classeditor.cpp:1919
+#: src/modules/classeditor/classeditor.cpp:1916
 msgid ""
 "In rename mode class names can contain only letters, digits and underscores "
 "and namespaces :: separator"
@@ -748,7 +748,7 @@ msgstr ""
 "В режиме переименования имя класса может содержать только буквы, цифры, "
 "нижние подчеркивания и '::' как разделитель пространств имён"
 
-#: src/modules/classeditor/classeditor.cpp:1932
+#: src/modules/classeditor/classeditor.cpp:1929
 msgid "Inherits Class:"
 msgstr ""
 
@@ -761,11 +761,11 @@ msgid "Invalid ToolBar Label"
 msgstr "Неверная метка панели инструментов"
 
 #: src/modules/popupeditor/popupeditor.cpp:80
-#: src/modules/popupeditor/popupeditor.cpp:210
+#: src/modules/popupeditor/popupeditor.cpp:211
 msgid "Item"
 msgstr "Пункт"
 
-#: src/modules/popupeditor/popupeditor.cpp:263
+#: src/modules/popupeditor/popupeditor.cpp:264
 msgid "Item Id:"
 msgstr "Идентификатор пункта"
 
@@ -794,7 +794,7 @@ msgstr "Загрузить файл скрипта - KVIrc"
 msgid "Manually"
 msgstr "Вручную"
 
-#: src/modules/classeditor/classeditor.cpp:815
+#: src/modules/classeditor/classeditor.cpp:812
 #, fuzzy
 msgid "Member Function"
 msgstr "Функции-члены:"
@@ -804,7 +804,7 @@ msgid "Missing Alias Name"
 msgstr "Отсутствует имя алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1056
-#: src/modules/classeditor/classeditor.cpp:1490
+#: src/modules/classeditor/classeditor.cpp:1487
 msgid "Missing Namespace Name"
 msgstr "Отсутствует имя пространства имён"
 
@@ -818,7 +818,7 @@ msgstr "Моё действие"
 msgid "My ToolBar"
 msgstr "Моя панель инструментов"
 
-#: src/modules/classeditor/classeditor.cpp:691
+#: src/modules/classeditor/classeditor.cpp:688
 msgid "Name already exists as Class name"
 msgstr "Имя уже используется как имя класса "
 
@@ -828,17 +828,17 @@ msgstr "Имя:"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:337
 #: src/modules/aliaseditor/aliaseditor.cpp:523
-#: src/modules/classeditor/classeditor.cpp:790
+#: src/modules/classeditor/classeditor.cpp:787
 msgid "Namespace"
 msgstr "Пространство имён"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:452
-#: src/modules/classeditor/classeditor.cpp:696
+#: src/modules/classeditor/classeditor.cpp:693
 msgid "Namespace already exists"
 msgstr "Пространство имён уже существует"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1070
-#: src/modules/classeditor/classeditor.cpp:1504
+#: src/modules/classeditor/classeditor.cpp:1501
 msgid ""
 "Namespace names can contain only letters, digits, underscores and '::' "
 "namespace separators"
@@ -858,59 +858,59 @@ msgstr "Требуется IRC контекст"
 msgid "New Action"
 msgstr "Новое действие"
 
-#: src/modules/popupeditor/popupeditor.cpp:416
+#: src/modules/popupeditor/popupeditor.cpp:417
 msgid "New External Menu Above"
 msgstr "Новое внешнее меню выше"
 
-#: src/modules/popupeditor/popupeditor.cpp:414
+#: src/modules/popupeditor/popupeditor.cpp:415
 msgid "New External Menu Below"
 msgstr "Новое внешнее меню ниже"
 
-#: src/modules/popupeditor/popupeditor.cpp:418
+#: src/modules/popupeditor/popupeditor.cpp:419
 msgid "New External Menu Inside"
 msgstr "Новое внешнее меню внутри"
 
-#: src/modules/popupeditor/popupeditor.cpp:400
+#: src/modules/popupeditor/popupeditor.cpp:401
 msgid "New Item Above"
 msgstr "Новый пункт выше"
 
-#: src/modules/popupeditor/popupeditor.cpp:398
+#: src/modules/popupeditor/popupeditor.cpp:399
 msgid "New Item Below"
 msgstr "Новый пункт ниже"
 
-#: src/modules/popupeditor/popupeditor.cpp:402
+#: src/modules/popupeditor/popupeditor.cpp:403
 msgid "New Item Inside"
 msgstr "Новый пункт внутри"
 
-#: src/modules/popupeditor/popupeditor.cpp:392
+#: src/modules/popupeditor/popupeditor.cpp:393
 msgid "New Label Above"
 msgstr "Новая метка выше"
 
-#: src/modules/popupeditor/popupeditor.cpp:390
+#: src/modules/popupeditor/popupeditor.cpp:391
 msgid "New Label Below"
 msgstr "Новая метка ниже"
 
-#: src/modules/popupeditor/popupeditor.cpp:394
+#: src/modules/popupeditor/popupeditor.cpp:395
 msgid "New Label Inside"
 msgstr "Новая метка внутри"
 
-#: src/modules/popupeditor/popupeditor.cpp:408
+#: src/modules/popupeditor/popupeditor.cpp:409
 msgid "New Menu Above"
 msgstr "Новое меню выше"
 
-#: src/modules/popupeditor/popupeditor.cpp:406
+#: src/modules/popupeditor/popupeditor.cpp:407
 msgid "New Menu Below"
 msgstr "Новое меню ниже"
 
-#: src/modules/popupeditor/popupeditor.cpp:462
+#: src/modules/popupeditor/popupeditor.cpp:463
 msgid "New Menu Epilogue"
 msgstr "Новое эпилог меню"
 
-#: src/modules/popupeditor/popupeditor.cpp:410
+#: src/modules/popupeditor/popupeditor.cpp:411
 msgid "New Menu Inside"
 msgstr "Новое меню внутри"
 
-#: src/modules/popupeditor/popupeditor.cpp:454
+#: src/modules/popupeditor/popupeditor.cpp:455
 msgid "New Menu Prologue"
 msgstr "Новое пролог меню"
 
@@ -918,15 +918,15 @@ msgstr "Новое пролог меню"
 msgid "New Raw Event"
 msgstr "Новое низкоуровневое событие"
 
-#: src/modules/popupeditor/popupeditor.cpp:384
+#: src/modules/popupeditor/popupeditor.cpp:385
 msgid "New Separator Above"
 msgstr "Новый разделитель выше"
 
-#: src/modules/popupeditor/popupeditor.cpp:382
+#: src/modules/popupeditor/popupeditor.cpp:383
 msgid "New Separator Below"
 msgstr "Новый разделитель ниже"
 
-#: src/modules/popupeditor/popupeditor.cpp:386
+#: src/modules/popupeditor/popupeditor.cpp:387
 msgid "New Separator Inside"
 msgstr "Новый разделитель внутри"
 
@@ -936,8 +936,8 @@ msgstr "Новая панель инструментов"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:747
 #: src/modules/aliaseditor/aliaseditor.cpp:930
-#: src/modules/classeditor/classeditor.cpp:1140
-#: src/modules/classeditor/classeditor.cpp:1352
+#: src/modules/classeditor/classeditor.cpp:1137
+#: src/modules/classeditor/classeditor.cpp:1349
 #: src/modules/toolbareditor/toolbareditor.cpp:404
 msgid "No"
 msgstr "Нет"
@@ -947,7 +947,7 @@ msgstr "Нет"
 #: src/modules/classeditor/classeditor.cpp:194
 #: src/modules/classeditor/classeditor.cpp:209
 #: src/modules/classeditor/classeditor.cpp:216
-#: src/modules/classeditor/classeditor.cpp:773
+#: src/modules/classeditor/classeditor.cpp:770
 #: src/modules/eventeditor/eventeditor.cpp:368
 msgid "No item selected"
 msgstr "Ничего не выбрано"
@@ -961,13 +961,13 @@ msgstr "Обычный текст:"
 #: src/modules/aliaseditor/aliaseditor.cpp:720
 #: src/modules/aliaseditor/aliaseditor.cpp:788
 #: src/modules/aliaseditor/aliaseditor.cpp:819
-#: src/modules/classeditor/classeditor.cpp:1114
-#: src/modules/classeditor/classeditor.cpp:1191
-#: src/modules/classeditor/classeditor.cpp:1223
+#: src/modules/classeditor/classeditor.cpp:1111
+#: src/modules/classeditor/classeditor.cpp:1188
+#: src/modules/classeditor/classeditor.cpp:1220
 #: src/modules/editor/scripteditor.cpp:537
 #: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1171
-#: src/modules/popupeditor/popupeditor.cpp:1218
+#: src/modules/popupeditor/popupeditor.cpp:1197
+#: src/modules/popupeditor/popupeditor.cpp:1244
 #: src/modules/raweditor/raweditor.cpp:464
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:248
@@ -985,14 +985,14 @@ msgstr "OK"
 #: src/modules/aliaseditor/aliaseditor.cpp:1071
 #: src/modules/aliaseditor/aliaseditor.cpp:1085
 #: src/modules/aliaseditor/aliaseditor.cpp:1096
-#: src/modules/classeditor/classeditor.cpp:547
-#: src/modules/classeditor/classeditor.cpp:609
-#: src/modules/classeditor/classeditor.cpp:693
-#: src/modules/classeditor/classeditor.cpp:698
-#: src/modules/classeditor/classeditor.cpp:1492
-#: src/modules/classeditor/classeditor.cpp:1505
-#: src/modules/classeditor/classeditor.cpp:1519
-#: src/modules/classeditor/classeditor.cpp:1530
+#: src/modules/classeditor/classeditor.cpp:544
+#: src/modules/classeditor/classeditor.cpp:606
+#: src/modules/classeditor/classeditor.cpp:690
+#: src/modules/classeditor/classeditor.cpp:695
+#: src/modules/classeditor/classeditor.cpp:1489
+#: src/modules/classeditor/classeditor.cpp:1502
+#: src/modules/classeditor/classeditor.cpp:1516
+#: src/modules/classeditor/classeditor.cpp:1527
 msgid "Ok, Let me try again..."
 msgstr "Хорошо, давайте попробую еще раз..."
 
@@ -1024,16 +1024,16 @@ msgstr ""
 msgid "OverWrite Current Alias"
 msgstr "Переписать текущий алиас"
 
-#: src/modules/popupeditor/popupeditor.cpp:1092
+#: src/modules/popupeditor/popupeditor.cpp:1118
 #, fuzzy
 msgid "OverWrite Current Popup"
 msgstr "Переписать текущий алиас"
 
-#: src/modules/popupeditor/popupeditor.cpp:440
+#: src/modules/popupeditor/popupeditor.cpp:441
 msgid "Paste Above"
 msgstr "Вставить выше"
 
-#: src/modules/popupeditor/popupeditor.cpp:444
+#: src/modules/popupeditor/popupeditor.cpp:445
 msgid "Paste Inside"
 msgstr "Вставить внутрь"
 
@@ -1041,11 +1041,11 @@ msgstr "Вставить внутрь"
 msgid "Please choose the icon for the ToolBar"
 msgstr "Пожалуйста, выберите иконку для панели инструментов"
 
-#: src/modules/classeditor/classeditor.cpp:1904
+#: src/modules/classeditor/classeditor.cpp:1901
 msgid "Please enter the name for the class:"
 msgstr "Пожалуйста, введите имя класса:"
 
-#: src/modules/classeditor/classeditor.cpp:2024
+#: src/modules/classeditor/classeditor.cpp:2021
 msgid "Please enter the name for the member function:"
 msgstr "Пожалуйста, введите имя функции-члена:"
 
@@ -1054,7 +1054,7 @@ msgid "Please enter the name for the new alias"
 msgstr "Пожалуйста, введите имя нового алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1129
-#: src/modules/classeditor/classeditor.cpp:1577
+#: src/modules/classeditor/classeditor.cpp:1574
 msgid "Please enter the name for the new namespace"
 msgstr "Пожалуйста, введите имя нового пространства имен"
 
@@ -1063,11 +1063,11 @@ msgid "Please enter the new name for the alias"
 msgstr "Пожалуйста, введите новое имя алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:428
-#: src/modules/classeditor/classeditor.cpp:680
+#: src/modules/classeditor/classeditor.cpp:677
 msgid "Please enter the new name for the namespace"
 msgstr "Пожалуйста, введите новое имя пространства имён"
 
-#: src/modules/classeditor/classeditor.cpp:2045
+#: src/modules/classeditor/classeditor.cpp:2042
 #, fuzzy
 msgid "Please enter the optional reminder string for the member function:"
 msgstr "Пожалуйста, введите имя функции-члена:"
@@ -1080,7 +1080,7 @@ msgstr ""
 "Пожалуйста, введите текст, который нужно найти. Алиасы, содержащие этот "
 "текст, будут подсвечены."
 
-#: src/modules/classeditor/classeditor.cpp:1000
+#: src/modules/classeditor/classeditor.cpp:997
 msgid ""
 "Please enter the text to be searched for. The matching function will be "
 "highlighted."
@@ -1088,7 +1088,7 @@ msgstr ""
 "Пожалуйста, введите текст, который нужно найти. Функции, содержащие этот "
 "текст, будут подсвечены."
 
-#: src/modules/classeditor/classeditor.cpp:1345
+#: src/modules/classeditor/classeditor.cpp:1342
 msgid ""
 "Please note that all the children classes/functions will be deleted too."
 msgstr ""
@@ -1106,15 +1106,15 @@ msgstr "Пожалуйста, определите свойства для но�
 msgid "Please specify the properties for the toolbar \"%1\""
 msgstr "Пожалуйста, определите свойства для панели инструментов \"%1\""
 
-#: src/modules/popupeditor/popupeditor.cpp:1017
+#: src/modules/popupeditor/popupeditor.cpp:1043
 msgid "Popup"
 msgstr "Всплывающее меню"
 
-#: src/modules/popupeditor/popupeditor.cpp:1404
+#: src/modules/popupeditor/popupeditor.cpp:1430
 msgid "Popup Editor"
 msgstr "Редактор всплывающих меню"
 
-#: src/modules/popupeditor/popupeditor.cpp:196
+#: src/modules/popupeditor/popupeditor.cpp:197
 msgid "Popup name"
 msgstr "Имя всплывающего меню"
 
@@ -1151,21 +1151,21 @@ msgstr "Низкоуровневое событие"
 msgid "Re&move Handler"
 msgstr "Удалить обработчик"
 
-#: src/modules/popupeditor/popupeditor.cpp:1130
+#: src/modules/popupeditor/popupeditor.cpp:1156
 msgid "Re&move Popup"
 msgstr "Удалить всплывающее меню"
 
-#: src/modules/classeditor/classeditor.cpp:825
+#: src/modules/classeditor/classeditor.cpp:822
 msgid "Reminder text."
 msgstr ""
 
 #: src/modules/aliaseditor/aliaseditor.cpp:573
-#: src/modules/classeditor/classeditor.cpp:920
+#: src/modules/classeditor/classeditor.cpp:917
 msgid "Remove Selected"
 msgstr "Удалить выбранное"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:930
-#: src/modules/classeditor/classeditor.cpp:1352
+#: src/modules/classeditor/classeditor.cpp:1349
 msgid "Remove item"
 msgstr "Удалить пункт"
 
@@ -1180,12 +1180,12 @@ msgid "Rename Alias"
 msgstr "Переименовать алиас"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:428
-#: src/modules/classeditor/classeditor.cpp:680
+#: src/modules/classeditor/classeditor.cpp:677
 msgid "Rename Namespace"
 msgstr "Переименовать пространство имён"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:747
-#: src/modules/classeditor/classeditor.cpp:1140
+#: src/modules/classeditor/classeditor.cpp:1137
 msgid "Replace file"
 msgstr "Заменить файл"
 
@@ -1206,7 +1206,7 @@ msgstr "Ошибка при сохранении - KVIrc"
 msgid "Separator"
 msgstr "Разделитель"
 
-#: src/modules/classeditor/classeditor.cpp:2058
+#: src/modules/classeditor/classeditor.cpp:2055
 msgid "Set as <b>Internal</b> Function: "
 msgstr ""
 
@@ -1221,7 +1221,7 @@ msgstr ""
 "Одиноуое ':' в имени алиаса. Может быть вы имели ввиду <namespace>::<name> ?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1084
-#: src/modules/classeditor/classeditor.cpp:1518
+#: src/modules/classeditor/classeditor.cpp:1515
 msgid ""
 "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
 msgstr ""
@@ -1232,11 +1232,11 @@ msgstr ""
 msgid "Submenu"
 msgstr "Подменю"
 
-#: src/modules/popupeditor/popupeditor.cpp:200
+#: src/modules/popupeditor/popupeditor.cpp:201
 msgid "Test"
 msgstr "Тест"
 
-#: src/modules/popupeditor/popupeditor.cpp:228
+#: src/modules/popupeditor/popupeditor.cpp:229
 msgid "Text:"
 msgstr "Текст:"
 
@@ -1254,11 +1254,11 @@ msgstr ""
 "<br>Должна быть 32х32 пикселя."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:788
-#: src/modules/classeditor/classeditor.cpp:1191
+#: src/modules/classeditor/classeditor.cpp:1188
 msgid "The exported file would be empty: cowardly refusing to write it"
 msgstr "Экспортируемый файл будет пустым: отменяю запись в него"
 
-#: src/modules/classeditor/classeditor.cpp:1139
+#: src/modules/classeditor/classeditor.cpp:1136
 #, fuzzy
 msgid "The file \"%1\" exists. Do you want to replace it?"
 msgstr "Файл \"%Q\" существует. Хотите переписать его?"
@@ -1287,23 +1287,23 @@ msgstr ""
 "панелями) или сделаете это вручную?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:720
-#: src/modules/classeditor/classeditor.cpp:1114
+#: src/modules/classeditor/classeditor.cpp:1111
 msgid "There is no selection!"
 msgstr "Ничего не выбрано!"
 
-#: src/modules/classeditor/classeditor.cpp:1681
+#: src/modules/classeditor/classeditor.cpp:1678
 msgid "These inherited classes will be not compiled too:"
 msgstr ""
 
-#: src/modules/classeditor/classeditor.cpp:692
+#: src/modules/classeditor/classeditor.cpp:689
 msgid "This name is already in use as Class name. Please choose another one."
 msgstr "Это имя уже используется как имя класса. Пожалуйста, выберите другое."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:441
 #: src/modules/aliaseditor/aliaseditor.cpp:453
-#: src/modules/classeditor/classeditor.cpp:546
-#: src/modules/classeditor/classeditor.cpp:608
-#: src/modules/classeditor/classeditor.cpp:697
+#: src/modules/classeditor/classeditor.cpp:543
+#: src/modules/classeditor/classeditor.cpp:605
+#: src/modules/classeditor/classeditor.cpp:694
 msgid "This name is already in use. Please choose another one."
 msgstr "Это имя уже используется. Пожалуйста, выберите другое."
 
@@ -1325,11 +1325,11 @@ msgstr "Экспорт панели инструментов"
 msgid "ToolBar Properties"
 msgstr "Свойства панели инструментов"
 
-#: src/modules/popupeditor/popupeditor.cpp:210
+#: src/modules/popupeditor/popupeditor.cpp:211
 msgid "Type"
 msgstr "Тип"
 
-#: src/modules/classeditor/classeditor.cpp:1674
+#: src/modules/classeditor/classeditor.cpp:1671
 msgid "Unable to compile class: "
 msgstr "Не могу скомпилировать класс:"
 
@@ -1338,11 +1338,11 @@ msgid "Unable to write to the actions file."
 msgstr "Невозможно записать файл с действиями."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:819
-#: src/modules/popupeditor/popupeditor.cpp:1218
+#: src/modules/popupeditor/popupeditor.cpp:1244
 msgid "Unable to write to the alias file."
 msgstr "Невозможно записать файл с алиасами."
 
-#: src/modules/classeditor/classeditor.cpp:1223
+#: src/modules/classeditor/classeditor.cpp:1220
 msgid "Unable to write to the class file."
 msgstr "Невозможно записать файл класса."
 
@@ -1354,7 +1354,7 @@ msgstr "Невозможно записать файл с событием."
 msgid "Unable to write to the events file."
 msgstr "Невозможно записать файл с событиями."
 
-#: src/modules/popupeditor/popupeditor.cpp:1171
+#: src/modules/popupeditor/popupeditor.cpp:1197
 msgid "Unable to write to the popup file."
 msgstr "Невозможно записать файл с всплывающими меню."
 
@@ -1396,11 +1396,11 @@ msgstr "Слово для поиска"
 
 #: src/modules/actioneditor/actioneditor.cpp:727
 #: src/modules/aliaseditor/aliaseditor.cpp:819
-#: src/modules/classeditor/classeditor.cpp:1223
+#: src/modules/classeditor/classeditor.cpp:1220
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1171
-#: src/modules/popupeditor/popupeditor.cpp:1218
+#: src/modules/popupeditor/popupeditor.cpp:1197
+#: src/modules/popupeditor/popupeditor.cpp:1244
 #: src/modules/raweditor/raweditor.cpp:429
 #: src/modules/raweditor/raweditor.cpp:464
 #: src/modules/toolbareditor/toolbareditor.cpp:458
@@ -1409,16 +1409,16 @@ msgstr "Ошибка записи - KVIrc"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:747
 #: src/modules/aliaseditor/aliaseditor.cpp:930
-#: src/modules/classeditor/classeditor.cpp:1140
-#: src/modules/classeditor/classeditor.cpp:1352
+#: src/modules/classeditor/classeditor.cpp:1137
+#: src/modules/classeditor/classeditor.cpp:1349
 #: src/modules/toolbareditor/toolbareditor.cpp:403
 msgid "Yes"
 msgstr "Да"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:747
 #: src/modules/aliaseditor/aliaseditor.cpp:930
-#: src/modules/classeditor/classeditor.cpp:1140
-#: src/modules/classeditor/classeditor.cpp:1352
+#: src/modules/classeditor/classeditor.cpp:1137
+#: src/modules/classeditor/classeditor.cpp:1349
 msgid "Yes to All"
 msgstr "Да для всех"
 
@@ -1427,7 +1427,7 @@ msgid "You must specify a valid name for the alias"
 msgstr "Вы должны указать корректное имя алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1057
-#: src/modules/classeditor/classeditor.cpp:1491
+#: src/modules/classeditor/classeditor.cpp:1488
 msgid "You must specify a valid name for the namespace"
 msgstr "Вы должны указать корректное имя пространства имён"
 
@@ -1436,7 +1436,7 @@ msgstr "Вы должны указать корректное имя прост�
 msgid "default"
 msgstr "по умолчанию"
 
-#: src/modules/classeditor/classeditor.cpp:809
+#: src/modules/classeditor/classeditor.cpp:806
 msgid "inherits from class "
 msgstr ""
 
@@ -1445,7 +1445,7 @@ msgid "none"
 msgstr "нет"
 
 #: src/modules/eventeditor/eventeditor.cpp:227
-#: src/modules/popupeditor/popupeditor.cpp:1317
+#: src/modules/popupeditor/popupeditor.cpp:1343
 #: src/modules/raweditor/raweditor.cpp:192
 msgid "unnamed"
 msgstr "без имени"
