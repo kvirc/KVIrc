@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-09-12 11:56+0100\n"
-"PO-Revision-Date: 2010-08-29 13:27+0100\n"
+"PO-Revision-Date: 2010-09-12 15:11+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -1058,10 +1058,10 @@ msgid ""
 "filenames for all the outgoing file transfers. This will fix filename "
 "handling with some buggy clients (e.g. some versions of mIRC)."
 msgstr ""
-"<center>Esta opção faz com que o KVirc substitua espaços por traços "
-"'underscore' nos nomes de ficheiros para todas as transferências de saída. "
-"Isto irá corrigir o tratamento de nomes de ficheiros com alguns clientes que "
-"não o aceitam (p.ex. algumas versões do mIRC)."
+"<center>Esta opção faz com que o KVirc substitua espaços por "
+"sublinhado nos nomes de ficheiros para todas as transferências de "
+"saída. Isto irá corrigir o tratamento dos nomes de ficheiros com alguns "
+"clientes (p.ex. algumas versões do mIRC)."
 
 #: src/modules/options/optw_dcc.cpp:216
 msgid ""
@@ -1071,9 +1071,10 @@ msgid ""
 "data.</center>"
 msgstr ""
 "<center>Esta opção faz com que o KVirc envie um reconhecimento zero-byte "
-"para responder/iniciar as transferências DCC com alguns clientes IRC com "
-"erros.<br>Use-o apenas se a sua transferência DCC parar logo após "
-"estabelecer uma conexão sem enviar quaisquer dados.</center>"
+"para iniciar as transferências DCC com alguns clientes IRC.<br>Use esta "
+"opção "
+"apenas se a sua transferência DCC parar logo após estabelecer uma conexão "
+"sem enviar quaisquer dados.</center>"
 
 #: src/modules/options/optw_query.cpp:82 src/modules/options/optw_dcc.cpp:332
 msgid ""
@@ -1081,9 +1082,9 @@ msgid ""
 "right corner of the screen when a new message is received and the KVIrc "
 "window is not active.</center>"
 msgstr ""
-"<center>Esta opção faz com que uma pequena janela de notificação seja "
-"mostrada no canto inferior direito do ecrã quando é recebida uma nova "
-"mensagem e a janela do KVirc não está activa.</center>"
+"<center>Esta opção faz com que uma pequena janela de notificação "
+"seja mostrada no canto inferior direito do ecrã quando é recebida uma "
+"nova mensagem e a janela do KVirc não está activa.</center>"
 
 #: src/modules/options/optw_channel.cpp:81
 msgid ""
@@ -1887,7 +1888,7 @@ msgstr "Resumir automaticamente quando auto-aceite"
 
 #: src/modules/options/optw_uparser.cpp:46
 msgid "Automatically unload unused modules"
-msgstr "Automaticamente descarregar módulos não usados"
+msgstr "Descarregar automaticamente módulos não usados"
 
 #: src/modules/options/optw_identity.h:177
 msgid "Avatar"
@@ -3079,7 +3080,7 @@ msgstr "Número máximo de tentativas (0: ilimitado):"
 
 #: src/modules/options/optw_ircview.cpp:154
 msgid "Maximum buffer size:"
-msgstr "Tamanho máximo do buffer:"
+msgstr "Tamanho máximo da janela:"
 
 #: src/modules/options/optw_dcc.cpp:134
 msgid "Maximum number of DCC sessions"
@@ -3598,7 +3599,7 @@ msgstr "Sufixo:"
 
 #: src/modules/options/optw_dcc.cpp:361
 msgid "Pre-buffer size:"
-msgstr "Tamanho pre-buffer:"
+msgstr "Tamanho prévio do 'buffer':"
 
 #: src/modules/options/optw_interfacefeatures.cpp:59
 msgid "Preferences"
