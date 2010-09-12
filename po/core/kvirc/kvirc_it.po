@@ -14,13 +14,13 @@ msgstr ""
 "Project-Id-Version: kvirc_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-09-12 11:56+0100\n"
-"PO-Revision-Date: 2010-09-01 18:15+0200\n"
+"PO-Revision-Date: 2010-09-12 20:32+0200\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:642
@@ -1479,9 +1479,8 @@ msgid "Block device"
 msgstr "Dispositivo a blocchi"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:344
-#, fuzzy
 msgid "Block forwarded users"
-msgstr "Utenti Voice"
+msgstr "Blocca utenti forwarded"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:417
 msgid "Block message matching"
@@ -1933,9 +1932,8 @@ msgid "Channel CTCP"
 msgstr "CTCP al Canale"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:421
-#, fuzzy
 msgid "Channel IRC op"
-msgstr "Topic del canale:"
+msgstr "IRC op del Canale"
 
 #: src/modules/list/listwindow.cpp:322
 #, c-format
@@ -4193,11 +4191,12 @@ msgid "Medium activity"
 msgstr "Attività media"
 
 #: src/kvirc/kernel/kvi_app.cpp:694
-#, fuzzy
 msgid ""
 "Message arriving from %1:\n"
 "\n"
-msgstr "Messaggio in arrivo da %1\n"
+msgstr ""
+"Messaggio in arrivo da %1:\n"
+"\n"
 
 #: src/kvirc/kernel/kvi_options.cpp:1266
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"

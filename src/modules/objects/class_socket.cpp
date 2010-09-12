@@ -155,17 +155,15 @@
                 By default this function can deal ascii data only: NULL characters are transformed to
                 ASCII characters 255. You can pass a [class]memorybuffer[/class] object to read binary data.
 
-
                 !fn: $write(<data, array,files or hobject>[,length])
 		Writes <data> to the socket.[br]
                 This function can deal with binary data passing  a [class]memorybuffer[/class] object[br]
 		Please note that when this function finishes it does not mean that the data has reached the remote end.[br]
 		Basically it does not even mean that the data has been sent to the remote host.[br]
 		The data is enqueued for sending and will be sent as soon as possible.[br]
-                By array you can pass bytes or data string like this: @$write($array($(0xff),$(0xff),$(0xff),$(0xff),"This is an example"));
+                Using an array you can pass bytes or data string like this: @$write($array($(0xff),$(0xff),$(0xff),$(0xff),"This is an example"));
 		If you're going to [cmd]delete[/cmd] this object just after the $write call, you should
 		call [classfnc:socket]$close[/classfnc]() just before [cmd]delete[/cmd] to ensure the data delivery.
-
 
 		!fn: $close()
 		Resets this socket state: kills any pending or active connection. After a close() call
@@ -330,7 +328,7 @@ KVSO_END_DESTRUCTOR(KviKvsObject_socket)
 
 KVSO_CLASS_FUNCTION(socket,status)
 {
-        c->returnValue()->setInteger(m_iStatus);
+	c->returnValue()->setInteger(m_iStatus);
 	return true;
 }
 
@@ -409,20 +407,19 @@ KVSO_CLASS_FUNCTION(socket,read)
 	if (hObject)
 	{
 		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-		if (!pObject)
+		if(!pObject)
 		{
 			c->warning(__tr2qs_ctx("Buffer parameter is not an object","objects"));
 			return true;
 		}
-		if (pObject->inheritsClass("memorybuffer"))
+		if(pObject->inheritsClass("memorybuffer"))
 		{
 			QByteArray *pBuffer=((KviKvsObject_memorybuffer *)pObject)->pBuffer();
 			int oldsize=pBuffer->size();
 			pBuffer->resize(oldsize+uLen);
 			kvi_memmove(pBuffer->data()+oldsize,m_pInBuffer,uLen);
 
-		}
-		else if (pObject->inheritsClass("file"))
+		} else if(pObject->inheritsClass("file"))
 		{
 			KviFile *pFile=((KviKvsObject_file *)pObject)->file();
 			if (!pFile->isOpen())
@@ -431,8 +428,7 @@ KVSO_CLASS_FUNCTION(socket,read)
 				return true;
 			}
 			pFile->write(m_pInBuffer,uLen);
-		}
-		else
+		} else
 		{
 			c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
 			return true;
@@ -464,86 +460,74 @@ KVSO_CLASS_FUNCTION(socket,write)
 	KviKvsVariant * pVariantData;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("data_or_file_or_memorybuffer",KVS_PT_VARIANT,0,pVariantData)
-			KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
+		KVSO_PARAMETER("data_or_file_or_memorybuffer",KVS_PT_VARIANT,0,pVariantData)
+		KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
 	KVSO_PARAMETERS_END(c)
 	if (pVariantData->isHObject())
 	{
 		pVariantData->asHObject(hObject);
-		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-		if (!pObject)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		if(!pObject)
 		{
 			c->warning(__tr2qs_ctx("Buffer parameter is not an object","objects"));
 			return true;
 		}
-		if (pObject->inheritsClass("memorybuffer"))
+		if(pObject->inheritsClass("memorybuffer"))
 		{
 			QByteArray *p=((KviKvsObject_memorybuffer *)pObject)->pBuffer();
-			m_pOutBuffer->append((const unsigned char*)p->data(),p->size());
-		}
-		else if (pObject->inheritsClass("file"))
+			m_pOutBuffer->append((const unsigned char *)p->data(),p->size());
+		} else if(pObject->inheritsClass("file"))
 		{
-			KviFile *pFile=((KviKvsObject_file *)pObject)->file();
-			if (!pFile->isOpen())
+			KviFile * pFile = ((KviKvsObject_file *)pObject)->file();
+			if(!pFile->isOpen())
 			{
 				c->warning(__tr2qs_ctx("File is not open!","objects"));
 				return true;
 			}
-			if (!uLen) uLen=pFile->size();
-                        kvs_int_t size=pFile->size();
+			if(!uLen)
+				uLen = pFile->size();
+                        kvs_int_t size = pFile->size();
 			pFile->flush();
 			m_pOutBuffer->append((const unsigned char*)pFile->read(uLen).data(),uLen);
                         c->returnValue()->setBoolean((size-pFile->pos()==0));
-		}
-		else
-		{
+		} else {
 			c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer or file object","objects"));
 			return true;
 		}
-
-	}
-	else
-	{
-                if(pVariantData->isArray())
-                {
-                    KviKvsArray *pArray=pVariantData->array();
-                    for(unsigned int i=0;i<pArray->size();i++)
-                    {
-                        KviKvsVariant *pVar=pArray->at(i);
-                        kvs_int_t iValue;
-                        if(pVar->isInteger())
-                        {
-                            pVar->asInteger(iValue);
-                            if(iValue<256 && iValue>=0)
-                            {
-                                m_pOutBuffer->append((unsigned char)iValue);
-                                continue;
-                            }
-                            else
-                            {
-                                c->warning(__tr2qs_ctx("Only values in the range of 0-255 are hallowed: integer %d is out of range","objects"),iValue);
-                                return true;
-                            }
-
-                        }
-                        else{
-                            if(pVar->isString())
-                            {
-                                QString szData;
-                                pVar->asString(szData);
-                                QByteArray szData8 = szData.toUtf8();
-                                m_pOutBuffer->append((const unsigned char*)szData8.data(),szData8.length());
-                            }
-                            else
-                            {
-                                c->warning(__tr2qs_ctx("Datatype not supported","objects"));
-                                return true;
-                            }
-                        }
-
-                    }
-                    return true;
-                }
+	} else {
+		if(pVariantData->isArray())
+		{
+			KviKvsArray * pArray = pVariantData->array();
+			for(unsigned int i=0; i < pArray->size(); i++)
+			{
+				KviKvsVariant * pVar = pArray->at(i);
+				kvs_int_t iValue;
+				if(pVar->isInteger())
+				{
+					pVar->asInteger(iValue);
+					if(iValue < 256 && iValue >= 0)
+					{
+						m_pOutBuffer->append((unsigned char)iValue);
+						continue;
+					} else {
+						c->warning(__tr2qs_ctx("Only values in the range of 0-255 are allowed: integer %d is out of range","objects"),iValue);
+						return true;
+					}
+				} else {
+					if(pVar->isString())
+					{
+						QString szData;
+						pVar->asString(szData);
+						QByteArray szData8 = szData.toUtf8();
+						m_pOutBuffer->append((const unsigned char*)szData8.data(),szData8.length());
+					} else {
+						c->warning(__tr2qs_ctx("Datatype not supported","objects"));
+						return true;
+					}
+				}
+			}
+			return true;
+		}
 
                 QString szData;
 		pVariantData->asString(szData);
@@ -552,12 +536,10 @@ KVSO_CLASS_FUNCTION(socket,write)
 			QByteArray szData8 = szData.toUtf8();
 			if(szData8.length() > 0)
 			{
-                                        qDebug("write on socket %s",szData8.data());
-					m_pOutBuffer->append((const unsigned char*)szData8.data(),szData8.length());
+				qDebug("write on socket %s",szData8.data());
+				m_pOutBuffer->append((const unsigned char*)szData8.data(),szData8.length());
 			}
-		}
-		else
-		{
+		} else {
 			KviFile f(szData);
 			f.open(QIODevice::ReadOnly);
 			QByteArray ar= f.readAll();
@@ -614,10 +596,8 @@ KVSO_CLASS_FUNCTION(socket,setProtocol)
 	KVSO_PARAMETERS_END(c)
 
 	m_bUdp = KviQString::equalCI(szProto,"udp");
-        return true;
+	return true;
 }
-
-
 
 KVSO_CLASS_FUNCTION(socket,functionConnect)
 {
@@ -626,7 +606,6 @@ KVSO_CLASS_FUNCTION(socket,functionConnect)
 		KVSO_PARAMETER("remote_port",KVS_PT_UNSIGNEDINTEGER,0,m_uRemotePort)
 	KVSO_PARAMETERS_END(c)
 	qDebug("Function connect");
-
 
 	if (m_uRemotePort>65535)
 	{
@@ -648,7 +627,7 @@ KVSO_CLASS_FUNCTION(socket,functionConnect)
 #endif
 	{
 		qDebug("ok connecting");
-		qDebug("connecting on ip %s ",m_szRemoteIp.toUtf8().data());
+		qDebug("connecting to ip %s ",m_szRemoteIp.toUtf8().data());
 		qDebug("no ip");
 		m_iStatus = KVI_SCRIPT_SOCKET_STATUS_CONNECTING;
 		delayedConnect();
@@ -719,7 +698,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 
 #ifdef COMPILE_IPV6_SUPPORT
 	m_sock = kvi_socket_create(m_bIPv6 ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,
-								m_bUdp ? KVI_SOCKET_TYPE_DGRAM : KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
+		m_bUdp ? KVI_SOCKET_TYPE_DGRAM : KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
 #else
 	m_sock = kvi_socket_create(KVI_SOCKET_PF_INET,m_bUdp ? KVI_SOCKET_TYPE_DGRAM : KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
 #endif
@@ -776,7 +755,6 @@ KVSO_CLASS_FUNCTION(socket,listen)
 			return true;
 		}
 	}
-
 
 	if(!kvi_socket_listen(m_sock,5))
 	{
