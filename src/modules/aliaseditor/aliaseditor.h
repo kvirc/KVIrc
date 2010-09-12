@@ -58,17 +58,17 @@ protected:
 	QString m_szBuffer;
 	int  m_cPos;
 public:
-	const QString & name(){ return m_szName; };
+	inline const QString & name(){ return m_szName; };
 	void setName(const QString &szName);
-	Type type(){ return m_eType; };
+	inline Type type(){ return m_eType; };
 	void setType(Type t);
-	bool isAlias(){ return m_eType == Alias; };
-	bool isNamespace(){ return m_eType == Namespace; };
+	inline bool isAlias(){ return m_eType == Alias; };
+	inline bool isNamespace(){ return m_eType == Namespace; };
 	void setParentItem(KviAliasEditorTreeWidgetItem* it){ m_pParentItem=it; };
 	KviAliasEditorTreeWidgetItem * parentItem(){ return m_pParentItem; };
-	void setBuffer(const QString &szBuffer){ m_szBuffer = szBuffer; };
-	const QString & buffer(){ return m_szBuffer; };
-	const int & cursorPosition(){return m_cPos; };
+	inline void setBuffer(const QString &szBuffer){ m_szBuffer = szBuffer; };
+	inline const QString & buffer(){ return m_szBuffer; };
+	inline const int & cursorPosition(){return m_cPos; };
 
 	void setCursorPosition(const int &cPos){ m_cPos = cPos; };
 };
@@ -151,7 +151,7 @@ protected:
 
 	QString askForAliasName(const QString &szAction,const QString &szText,const QString &szInitialText);
 	QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
-
+// 
 	bool itemExists(QTreeWidgetItem *pSearchFor);
 	bool namespaceExists(QString &szFullItemName);
 	bool aliasExists(QString &szFullItemName);

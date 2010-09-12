@@ -198,11 +198,15 @@ QString KviAliasEditor::buildFullItemName(KviAliasEditorTreeWidgetItem * it)
 	return szName;
 }
 
+//FIXME this should be called something like "findNamespace"
 KviAliasEditorTreeWidgetItem * KviAliasEditor::findTopLevelItem(const QString &szName)
 {
+	KviAliasEditorTreeWidgetItem *pItem =0;
 	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		if (m_pTreeWidget->topLevelItem(i)->text(0)==szName) return (KviAliasEditorTreeWidgetItem*)m_pTreeWidget->topLevelItem(i);
+		pItem = (KviAliasEditorTreeWidgetItem*) m_pTreeWidget->topLevelItem(i);
+		if (pItem->text(0)==szName && pItem->isNamespace())
+			return (KviAliasEditorTreeWidgetItem*)m_pTreeWidget->topLevelItem(i);
 	}
 	return 0;
 }
