@@ -270,9 +270,14 @@ namespace KviKvsCoreSimpleCommands
 			inject <text>
 		@short:
 			Injects <text> to the socket
+		@switches:
+			!sw: -q | --quiet
+			Does not print injection warnings on the console
 		@description:
 			Injects <text> to the socket as if it comes from the server.[br]
 			It's useful to test scripts without spamming or flooding the server.[br]
+			Each injection causes a warning to be displayed in the console window and in
+			the socketspy window (if open). The -q switch suppresses only the console warnings.
 		@examples:
 			[example]
 			[comment]Injects the string as we were sending a query message[/comment][br]
@@ -317,7 +322,8 @@ namespace KviKvsCoreSimpleCommands
 		}
 
 		// Send the warning to the right console
-		pActive->console()->output(KVI_WINDOW_TYPE_SOCKETSPY,__tr2qs_ctx("The following string was injected by the user:","kvs"));
+		if(!KVSCSC_pSwitches->find('q',"quiet"))
+			pActive->console()->output(KVI_WINDOW_TYPE_SOCKETSPY,__tr2qs_ctx("The following string was injected by the user:","kvs"));
 
 		// Encode the text for the socket
 		QByteArray szT = KVSCSC_pConnection->encodeText(szText);
