@@ -1883,16 +1883,10 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 				{
 					QPixmap * pIco = g_pIconManager->getSmallIcon(KVI_SMALLICON_SEXIRCOP);
 					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
-				}
-				
-				if(pEntry->globalData()->gender()!=KviIrcUserEntry::Unknown)
-				{
+				} else if(pEntry->globalData()->gender()!=KviIrcUserEntry::Unknown) {
 					QPixmap * pIco = g_pIconManager->getSmallIcon((pEntry->globalData()->gender()==KviIrcUserEntry::Male) ? KVI_SMALLICON_SEXMALE : KVI_SMALLICON_SEXFEMALE);
 					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
-				}
-
-				if(pEntry->globalData()->isBot())
-				{
+				} else if(pEntry->globalData()->isBot()) {
 					QPixmap * pIco = g_pIconManager->getSmallIcon(KVI_SMALLICON_SEXBOT);
 					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
 				}
