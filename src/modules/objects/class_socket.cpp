@@ -526,6 +526,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 					}
 				}
 			}
+			delayedFlush(0);
 			return true;
 		}
 
@@ -542,7 +543,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 		} else {
 			KviFile f(szData);
 			f.open(QIODevice::ReadOnly);
-			QByteArray ar= f.readAll();
+			QByteArray ar = f.readAll();
 			m_pOutBuffer->append((const unsigned char*)ar.data(),ar.size());
 			f.close();
 		}
