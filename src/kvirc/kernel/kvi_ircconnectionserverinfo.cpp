@@ -319,12 +319,14 @@ const QString & KviUnrealIrcServerInfo::getChannelModeDescription(char mode)
 		case 'N': return __tr2qs("Forbid nick change"); break;
 		case 'O': return __tr2qs("IRC-Op only channel"); break;
 		case 'Q': return __tr2qs("Disallow KICK (unless U-Line)"); break;
+		case 'R': return __tr2qs("Only registered nicks can join"); break;
 		case 'a': return __tr2qs("Protected/admin nicks"); break;
 		case 'c': return __tr2qs("No control codes (colors, bold, ..)"); break;
 		case 'f': return __tr2qs("Flood protection (<num><type>:<secs>)"); break;
 		case 'h': return __tr2qs("Half-operators");break;
 		case 'j': return __tr2qs("Join throttling (<num>:<secs>)"); break;
 		case 'q': return __tr2qs("Channel owners"); break;
+		case 'r': return __tr2qs("Registered"); break;
 		case 'u': return __tr2qs("Auditorium: /NAMES and /WHO show only ops"); break;
 		case 'z': return __tr2qs("Need SSL connection to join"); break;
 	}
