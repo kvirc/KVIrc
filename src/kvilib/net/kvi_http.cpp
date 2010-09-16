@@ -162,7 +162,7 @@ bool KviHttpRequest::start()
 		return false;
 	}
 
-	if((m_url.protocol()!="http") && (m_url.protocol()!="https"))
+        if(!KviQString::equalCI(m_url.protocol(),"http") && !KviQString::equalCI(m_url.protocol(),"https"))
 	{
 		resetInternalStatus();
 		m_szLastError=__tr2qs("Unsupported protocol %1").arg(m_url.protocol());
