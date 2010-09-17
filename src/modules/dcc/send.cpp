@@ -1020,8 +1020,9 @@ KviDccFileTransfer::KviDccFileTransfer(KviDccDescriptor * dcc)
 
 	m_szDccType = dcc->bRecvFile ? "RECV" : "SEND";
 	if(dcc->bIsTdcc) m_szDccType.prepend("T");
+#ifdef COMPILE_SSL_SUPPORT
 	if(dcc->bIsSSL) m_szDccType.prepend("S");
-
+#endif
 	m_pSlaveRecvThread = 0;
 	m_pSlaveSendThread = 0;
 
@@ -1806,8 +1807,9 @@ void KviDccFileTransfer::connectionInProgress()
 		{
 			szReq = "SEND";
 			if(m_pDescriptor->bIsTdcc) szReq.prepend("T");
+#ifdef COMPILE_SSL_SUPPORT
 			if(m_pDescriptor->bIsSSL) szReq.prepend("S");
-
+#endif
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %s %s %s %s%c",
 					m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
 					0x01,
