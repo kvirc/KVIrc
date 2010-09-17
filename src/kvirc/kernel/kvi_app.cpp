@@ -97,6 +97,7 @@
 #include <QTextCodec>
 #include <QMetaObject>
 #include <QTextDocument>
+#include <QCleanlooksStyle>
 
 #ifdef COMPILE_ON_WINDOWS
 	#include <QPluginLoader>
@@ -195,6 +196,7 @@ KviApp::KviApp(int &argc,char ** argv)
 #endif
 	m_iHeartbeatTimerId     = -1;
 	m_fntDefaultFont        = font();
+	m_pThemedStyle          = 0;
 	m_bSetupDone            = false;
 	kvi_socket_flushTrafficCounters();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -1948,6 +1950,21 @@ void KviApp::timerEvent(QTimerEvent * e)
 	kvi_time_t tNow = kvi_unixTime();
 
 	heartbeat(tNow);
+}
+
+QStyle * KviApp::themedStyle()
+{
+	if(!m_pThemedStyle)
+	{
+		// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, )
+		if(QString("QGtkStyle").compare(qApp->style()->metaObject()->className())==0)
+		{
+			m_pThemedStyle = new QCleanlooksStyle();
+		} else {
+			m_pThemedStyle = style();
+		}
+	}
+	return m_pThemedStyle;
 }
 
 // qvariant.h uses this, and it is included by the qt generated moc file for Qt >= 3.0.0

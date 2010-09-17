@@ -150,6 +150,8 @@ KviInputEditor::~KviInputEditor()
 
 void KviInputEditor::applyOptions()
 {
+	setStyle(g_pApp->themedStyle());
+
 	//set the font
 	QFont newFont(KVI_OPTION_FONT(KviOption_fontInput));
 	newFont.setKerning(false);

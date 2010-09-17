@@ -54,23 +54,17 @@ KviThemedLineEdit::~KviThemedLineEdit()
 
 void KviThemedLineEdit::applyOptions()
 {
+	setStyle(g_pApp->themedStyle());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	bool bIsTrasparent = (KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing()) || g_pShadedChildGlobalDesktopBackground;
 #else
 	bool bIsTrasparent = false;
 #endif
-
-	// workaround for gtk+ style forcing a crappy white background (ticket #777)
-	bool bIsCrappyGtkStyle = (QString("QGtkStyle").compare(qApp->style()->metaObject()->className())==0);
 	QString szStyle = QString("QLineEdit { background: %1; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
-	.arg(bIsTrasparent ?
-		"transparent" :
-		bIsCrappyGtkStyle ? QColor(255,255,255).name() : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name()
-	)
+	.arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
 	.arg(bIsTrasparent ?
 		KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() :
-		bIsCrappyGtkStyle ? QColor(0,0,0).name() : KVI_OPTION_COLOR(KviOption_colorLabelForeground).name()
-	 )
+		KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
 	.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
 	.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
 	.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")

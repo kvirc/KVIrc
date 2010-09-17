@@ -131,6 +131,7 @@ protected:
 	KviIpcSentinel                * m_pIpcSentinel;
 #endif
 	QFont                           m_fntDefaultFont;
+	QStyle                        * m_pThemedStyle;
 public:
 	// setup stuff (accessed from kvi_main.cpp: consider private othwerise)
 	QString	          m_szConfigFile;        // setup
@@ -314,7 +315,7 @@ public:
 	void checkSuggestRestoreDefaultScript();
 
 	void loadDefaultScript();
-
+	QStyle * themedStyle();
 protected:
 	void buildRecentChannels();
 	void saveRecentChannels();
