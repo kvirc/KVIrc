@@ -1625,14 +1625,10 @@ int KviKvsVariant::compare(const KviKvsVariant * pOther,bool bPreferNumeric) con
 
 void KviKvsVariant::escapeString(QString * szData)
 {
-	// escape any -$;\%(
+	// escape any \$%;
 	szData->replace("\\","\\\\");
 	szData->replace("\"","\\\"");
 	szData->replace("$","\\$");
 	szData->replace("%","\\%");
-	szData->replace("(","\\(");
-	szData->replace(")","\\)");
 	szData->replace(";","\\;");
-	szData->replace("-","\\-");
-	szData->replace("+","\\+");
 }
