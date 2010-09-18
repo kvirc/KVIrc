@@ -2117,6 +2117,26 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 		{
 			KviUserListEntry * pNick = 0;
 			KviUserListEntry * pAux = m_pListView->m_pHeadItem;
+
+			if(m_pListView->selectedCount() == 1)
+			{
+				bool bFoundSelected=false;
+				while(pAux)
+				{
+					if(pAux->nick().indexOf(szKey,0,Qt::CaseInsensitive)==0)
+					{
+						//match
+						if(bFoundSelected)
+							break;
+						if(pAux->m_bSelected)
+							bFoundSelected=true;
+					}
+					pAux = pAux->m_pNext;
+				}
+				if(!pAux)
+					pAux = m_pListView->m_pHeadItem;
+			}
+			
 			while(pAux)
 			{
 				//qDebug("%s %s %i %s %i",__FILE__,__FUNCTION__,__LINE__,aux->nick().toUtf8().data(),aux->nick().find(szKey,0,0));
