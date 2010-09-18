@@ -58,7 +58,7 @@ public:
 
 	void clear(){ m_pList->clear(); };
 
-	void append(const QString &szParam){ m_pList->append(new KviKvsVariant(szParam)); };
+	void append(const QString &szParam, bool bEscape=false){ m_pList->append(new KviKvsVariant(szParam, bEscape)); };
 	void append(kvs_int_t iInteger){ m_pList->append(new KviKvsVariant(iInteger)); };
 	void append(kvs_real_t dReal){ m_pList->append(new KviKvsVariant(dReal)); };
 	void append(bool bBoolean){ m_pList->append(new KviKvsVariant(bBoolean)); };

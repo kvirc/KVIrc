@@ -419,9 +419,9 @@ void KviHttpFileTransfer::transferTerminated(bool bSuccess)
 	m_tTransferEndTime = kvi_unixTime();
 
 	KviKvsVariantList vParams;
-	vParams.append(new KviKvsVariant(bSuccess));
-	vParams.append(new KviKvsVariant(m_pHttpRequest->url().url()));
-	vParams.append(new KviKvsVariant(m_pHttpRequest->fileName()));
+	vParams.append(bSuccess);
+	vParams.append(new KviKvsVariant(m_pHttpRequest->url().url(), true));
+	vParams.append(new KviKvsVariant(m_pHttpRequest->fileName(), true));
 	vParams.append(new KviKvsVariant(m_vMagicIdentifier));
 
 	if(m_szCompletionCallback.isNull())

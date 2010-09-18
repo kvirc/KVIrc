@@ -36,28 +36,31 @@ KviKvsVariant::KviKvsVariant()
 	m_pData = 0;
 }
 
-KviKvsVariant::KviKvsVariant(QString * pString)
+KviKvsVariant::KviKvsVariant(QString * pString, bool bEscape)
 {
 	m_pData = new KviKvsVariantData;
 	m_pData->m_eType = KviKvsVariantData::String;
 	m_pData->m_uRefs = 1;
 	m_pData->m_u.pString = pString;
+	if(bEscape) escapeString(m_pData->m_u.pString);
 }
 
-KviKvsVariant::KviKvsVariant(const QString &szString)
+KviKvsVariant::KviKvsVariant(const QString &szString, bool bEscape)
 {
 	m_pData = new KviKvsVariantData;
 	m_pData->m_eType = KviKvsVariantData::String;
 	m_pData->m_uRefs = 1;
 	m_pData->m_u.pString = new QString(szString);
+	if(bEscape) escapeString(m_pData->m_u.pString);
 }
 
-KviKvsVariant::KviKvsVariant(const char * szString)
+KviKvsVariant::KviKvsVariant(const char * szString, bool bEscape)
 {
 	m_pData = new KviKvsVariantData;
 	m_pData->m_eType = KviKvsVariantData::String;
 	m_pData->m_uRefs = 1;
 	m_pData->m_u.pString = new QString(QString::fromUtf8(szString));
+	if(bEscape) escapeString(m_pData->m_u.pString);
 }
 
 KviKvsVariant::KviKvsVariant(KviKvsArray * pArray)
@@ -101,7 +104,7 @@ KviKvsVariant::KviKvsVariant(bool bBoolean)
 	m_pData->m_u.bBoolean = bBoolean;
 }
 
-KviKvsVariant::KviKvsVariant(kvs_int_t iInteger)
+KviKvsVariant::KviKvsVariant(kvs_int_t iInteger, bool)
 {
 	m_pData = new KviKvsVariantData;
 	m_pData->m_eType = KviKvsVariantData::Integer;
@@ -1618,4 +1621,18 @@ int KviKvsVariant::compare(const KviKvsVariant * pOther,bool bPreferNumeric) con
 	}
 
 	return CMP_THISGREATER; // should never happen
+}
+
+void KviKvsVariant::escapeString(QString * szData)
+{
+	// escape any -$;\%(
+	szData->replace("\\","\\\\");
+	szData->replace("\"","\\\"");
+	szData->replace("$","\\$");
+	szData->replace("%","\\%");
+	szData->replace("(","\\(");
+	szData->replace(")","\\)");
+	szData->replace(";","\\;");
+	szData->replace("-","\\-");
+	szData->replace("+","\\+");
 }

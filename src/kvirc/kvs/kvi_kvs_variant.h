@@ -91,13 +91,13 @@ class KVIRC_API KviKvsVariant : public KviHeapObject
 	friend class KviKvsVariantComparison;
 public:
 	KviKvsVariant();
-	KviKvsVariant(kvs_int_t iInteger);
+	KviKvsVariant(kvs_int_t iInteger, bool bEscape=false);
 	KviKvsVariant(kvs_real_t dReal);
 	KviKvsVariant(kvs_real_t * pReal);
 	KviKvsVariant(bool bBoolean);
-	KviKvsVariant(const QString &szString);
-	KviKvsVariant(const char * szString); // without this gcc chooses the conversion (const char *)->(void *) instead of (const char *)->(QString) and obviously calls the wrong constructor
-	KviKvsVariant(QString * pString);
+	KviKvsVariant(const QString &szString, bool bEscape=false);
+	KviKvsVariant(const char * szString, bool bEscape=false); // without this gcc chooses the conversion (const char *)->(void *) instead of (const char *)->(QString) and obviously calls the wrong constructor
+	KviKvsVariant(QString * pString, bool bEscape=false);
 	KviKvsVariant(KviKvsArray * pArray);
 	KviKvsVariant(KviKvsHash * pHash);
 	KviKvsVariant(kvs_hobject_t hObject);
@@ -199,6 +199,13 @@ private:
 	static KviKvsVariant* unserializeRealOrInteger(const QChar** aux);
 	static KviKvsVariant* unserializeReal(const QChar** aux,QString& data);
 	static KviKvsVariant* unserializeInteger(const QChar** aux,QString& data);
+	
+	/**
+	* \brief Escapes any kvs special character from a string
+	* \param szData The string to escape
+	* \return void
+	*/
+	static void escapeString(QString * szData);
 };
 
 #include "kvi_kvs_array.h"

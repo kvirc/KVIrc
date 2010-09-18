@@ -143,10 +143,10 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 	szCmd.remove(0,1);
 
 	KviKvsVariantList * pParams = new KviKvsVariantList();
-	if(!szCmd.isEmpty()) pParams->append(szCmd);
-	else pParams->append(linkText);
-	pParams->append(linkText);
-	pParams->append(szCmd);
+	if(!szCmd.isEmpty()) pParams->append(szCmd, true);
+	else pParams->append(linkText, true);
+	pParams->append(linkText, true);
+	pParams->append(szCmd, true);
 
 
 	switch(linkCmd[0].unicode())
@@ -347,10 +347,10 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 	szCmd.remove(0,1);
 
 	KviKvsVariantList * pParams = new KviKvsVariantList();
-	if(!szCmd.isEmpty()) pParams->append(szCmd);
-	else pParams->append(linkText);
-	pParams->append(linkText);
-	pParams->append(szCmd);
+	if(!szCmd.isEmpty()) pParams->append(szCmd, true);
+	else pParams->append(linkText, true);
+	pParams->append(linkText, true);
+	pParams->append(szCmd, true);
 
 
 	if(!(e->modifiers() & Qt::ControlModifier))//(e->button() & Qt::RightButton) && (
