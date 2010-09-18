@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-12 11:56+0100\n"
+"POT-Creation-Date: 2010-09-18 16:12+0100\n"
 "PO-Revision-Date: 2010-07-27 01:44+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <elf@elf.no-ip.org>\n"
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Can't find the requested image"
 msgstr "要求した画像が見つかりません。"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:532
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:538
 msgid "Can't kill the timer '%Q' since it is not running"
 msgstr ""
 
@@ -480,7 +480,7 @@ msgstr ""
 msgid "Left operand didn't evaluate to a number"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:623
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:629
 msgid "List of active timers"
 msgstr ""
 
@@ -662,7 +662,7 @@ msgid ""
 "No target mask/channel specified and the current window is not a channel"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:649
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:655
 msgid "None"
 msgstr ""
 
@@ -683,7 +683,7 @@ msgid ""
 "Parameter identifiers are forbidden in object scope (after the '->' operator)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:634
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:640
 msgid "Persistent"
 msgstr ""
 
@@ -718,7 +718,7 @@ msgstr ""
 msgid "Senseless empty switch command: fix the script"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:640
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:646
 msgid "SingleShot"
 msgstr ""
 
@@ -911,11 +911,11 @@ msgstr ""
 msgid "The commandline for this url type seems to be broken (%Q)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:459
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:465
 msgid "The current window is not a channel"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:297
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:302
 msgid "The current window is not a channel, a query or a console"
 msgstr ""
 
@@ -925,8 +925,8 @@ msgid ""
 "(negative number) or be escaped"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:315
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:320
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:326
 msgid "The following string was injected by the user:"
 msgstr ""
 
@@ -1144,13 +1144,13 @@ msgstr ""
 msgid "Timer '%Q' has a broken callback handler: killing the timer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:526
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:532
 msgid ""
 "Timer name omitted but there is not current timer (this is not a timer "
 "callback)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:660
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:666
 #, c-format
 msgid "Total: %u timers running"
 msgstr ""
@@ -1359,7 +1359,7 @@ msgstr ""
 msgid "Unexpected read-only variable as 'foreach' iteration variable"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:643
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:649
 msgid "Unknown"
 msgstr ""
 
@@ -1416,7 +1416,7 @@ msgstr ""
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:637
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:643
 msgid "WindowLifetime"
 msgstr ""
 

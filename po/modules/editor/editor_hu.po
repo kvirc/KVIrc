@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-12 11:56+0100\n"
+"POT-Creation-Date: 2010-09-18 16:12+0100\n"
 "PO-Revision-Date: 2010-08-20 15:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -65,7 +65,7 @@ msgstr "Hozzá&ad"
 msgid "&Add Raw Event..."
 msgstr "Nyers Esemény hozzá&adása..."
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1189
+#: src/modules/aliaseditor/aliaseditor.cpp:1193
 #: src/modules/eventeditor/eventeditor.cpp:510
 #: src/modules/popupeditor/popupeditor.cpp:1387
 #: src/modules/raweditor/raweditor.cpp:484
@@ -133,7 +133,7 @@ msgstr "Új Kezelő"
 msgid "&New Popup"
 msgstr "Új Popup"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1184
+#: src/modules/aliaseditor/aliaseditor.cpp:1188
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:505
 #: src/modules/popupeditor/popupeditor.cpp:1382
@@ -236,8 +236,8 @@ msgstr "Akició Szerkesztő"
 msgid "Action code"
 msgstr "Akció kód"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:558
-#: src/modules/aliaseditor/aliaseditor.cpp:1122
+#: src/modules/aliaseditor/aliaseditor.cpp:562
+#: src/modules/aliaseditor/aliaseditor.cpp:1126
 msgid "Add Alias"
 msgstr "Alias Hozzáadása"
 
@@ -249,8 +249,8 @@ msgstr "Osztály Hozzáadása"
 msgid "Add Member Function"
 msgstr "Tag Függvény Hozzáadása"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:563
-#: src/modules/aliaseditor/aliaseditor.cpp:1129
+#: src/modules/aliaseditor/aliaseditor.cpp:567
+#: src/modules/aliaseditor/aliaseditor.cpp:1133
 #: src/modules/classeditor/classeditor.cpp:885
 #: src/modules/classeditor/classeditor.cpp:1574
 msgid "Add Namespace"
@@ -262,25 +262,25 @@ msgid "Advanced..."
 msgstr "Haladó..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:100
-#: src/modules/aliaseditor/aliaseditor.cpp:339
-#: src/modules/aliaseditor/aliaseditor.cpp:535
+#: src/modules/aliaseditor/aliaseditor.cpp:343
+#: src/modules/aliaseditor/aliaseditor.cpp:539
 msgid "Alias"
 msgstr "Alias"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1177
+#: src/modules/aliaseditor/aliaseditor.cpp:1181
 msgid "Alias Editor"
 msgstr "Alias Szerkesztő"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:720
-#: src/modules/aliaseditor/aliaseditor.cpp:788
+#: src/modules/aliaseditor/aliaseditor.cpp:724
+#: src/modules/aliaseditor/aliaseditor.cpp:792
 msgid "Alias Export"
 msgstr "Alias Exportálás"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:440
+#: src/modules/aliaseditor/aliaseditor.cpp:444
 msgid "Alias already exists"
 msgstr "Alias már létezik"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1002
+#: src/modules/aliaseditor/aliaseditor.cpp:1006
 msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
@@ -288,7 +288,7 @@ msgstr ""
 "Alias neve csak betűket, számokat, aláhúzást és '::' névtér elválasztókat "
 "tartalmazhat"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:322
+#: src/modules/aliaseditor/aliaseditor.cpp:326
 msgid ""
 "An external script has changed the alias you are currently editing. Do you "
 "want to accept the external changes?"
@@ -317,15 +317,15 @@ msgstr "Automatikus"
 msgid "Background:"
 msgstr "Háttér: "
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1001
-#: src/modules/aliaseditor/aliaseditor.cpp:1015
-#: src/modules/aliaseditor/aliaseditor.cpp:1026
+#: src/modules/aliaseditor/aliaseditor.cpp:1005
+#: src/modules/aliaseditor/aliaseditor.cpp:1019
+#: src/modules/aliaseditor/aliaseditor.cpp:1030
 msgid "Bad Alias Name"
 msgstr "Hibás Alias Név"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1069
-#: src/modules/aliaseditor/aliaseditor.cpp:1083
-#: src/modules/aliaseditor/aliaseditor.cpp:1094
+#: src/modules/aliaseditor/aliaseditor.cpp:1073
+#: src/modules/aliaseditor/aliaseditor.cpp:1087
+#: src/modules/aliaseditor/aliaseditor.cpp:1098
 #: src/modules/classeditor/classeditor.cpp:1500
 #: src/modules/classeditor/classeditor.cpp:1514
 #: src/modules/classeditor/classeditor.cpp:1525
@@ -351,7 +351,7 @@ msgid "Can't open the file %s for writing."
 msgstr "Nem tudom megnyitni írásra: %s"
 
 #: src/modules/actioneditor/actioneditor.cpp:884
-#: src/modules/aliaseditor/aliaseditor.cpp:1194
+#: src/modules/aliaseditor/aliaseditor.cpp:1198
 #: src/modules/editor/scripteditor.cpp:541
 #: src/modules/eventeditor/eventeditor.cpp:515
 #: src/modules/popupeditor/popupeditor.cpp:1392
@@ -429,13 +429,13 @@ msgstr ""
 "Jelöld be ezt az opciót, ha az akciót csak akkor akarod engedélyezni ha az "
 "aktív ablak a megadott típusú"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:726
+#: src/modules/aliaseditor/aliaseditor.cpp:730
 #: src/modules/classeditor/classeditor.cpp:1117
 msgid "Choose a Directory - KVIrc"
 msgstr "Válassz Mappát - KVIrc"
 
 #: src/modules/actioneditor/actioneditor.cpp:700
-#: src/modules/aliaseditor/aliaseditor.cpp:808
+#: src/modules/aliaseditor/aliaseditor.cpp:812
 #: src/modules/classeditor/classeditor.cpp:1209
 #: src/modules/editor/scripteditor.cpp:880
 #: src/modules/eventeditor/eventeditor.cpp:446
@@ -487,7 +487,7 @@ msgstr "Kód"
 msgid "Collapse All Items"
 msgstr "Minden Elem Összecsukása"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:608
+#: src/modules/aliaseditor/aliaseditor.cpp:612
 msgid "Collapse All Namespaces"
 msgstr "Minden Névtér Összecsukása"
 
@@ -539,7 +539,7 @@ msgstr "Leírás:"
 msgid "Do you really want to delete toolbar \"%1\" ?"
 msgstr "Tényleg törölni akarod ezt az eszköztárat: '%1'?"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:922
+#: src/modules/aliaseditor/aliaseditor.cpp:926
 msgid "Do you really want to remove the alias \"%Q\" ?"
 msgstr "Tényleg szeretnéd az alábbi aliast eltávolítani: \"%Q\" ?"
 
@@ -551,7 +551,7 @@ msgstr "Tényleg szeretnéd az alábbi osztályt eltávolítani: \"%Q\" ?"
 msgid "Do you really want to remove the function \"%Q\" ?"
 msgstr "Tényleg szeretnéd az alábbi függvényt eltávolítani: \"%Q\" ?"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:924
+#: src/modules/aliaseditor/aliaseditor.cpp:928
 #: src/modules/classeditor/classeditor.cpp:1340
 msgid "Do you really want to remove the namespace \"%Q\" ?"
 msgstr "Tényleg szeretnéd az alábbi névteret eltávolítani: \"Q\" ?"
@@ -638,17 +638,17 @@ msgstr "Esemény Szerkesztő"
 msgid "Export Actions..."
 msgstr "Akciók Exportálása..."
 
-#: src/modules/aliaseditor/aliaseditor.cpp:594
+#: src/modules/aliaseditor/aliaseditor.cpp:598
 #: src/modules/classeditor/classeditor.cpp:938
 msgid "Export All..."
 msgstr "Mindent Exportál..."
 
-#: src/modules/aliaseditor/aliaseditor.cpp:587
+#: src/modules/aliaseditor/aliaseditor.cpp:591
 #: src/modules/classeditor/classeditor.cpp:931
 msgid "Export Selected in singles files..."
 msgstr "Kijelöltek Exportálása külön fájlokként..."
 
-#: src/modules/aliaseditor/aliaseditor.cpp:581
+#: src/modules/aliaseditor/aliaseditor.cpp:585
 #: src/modules/classeditor/classeditor.cpp:925
 msgid "Export Selected..."
 msgstr "Kijelölt Exportálása..."
@@ -673,11 +673,11 @@ msgstr "Keres"
 msgid "Find & Replace"
 msgstr "Keresés és Csere"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:638
+#: src/modules/aliaseditor/aliaseditor.cpp:642
 msgid "Find In Aliases"
 msgstr "Keres az Aliasokban"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:602
+#: src/modules/aliaseditor/aliaseditor.cpp:606
 msgid "Find In Aliases..."
 msgstr "Keresés az Aliasokban"
 
@@ -701,11 +701,11 @@ msgstr "Flagek"
 msgid "Font:"
 msgstr "Betűtípus:"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1027
+#: src/modules/aliaseditor/aliaseditor.cpp:1031
 msgid "Found an empty namespace in alias name"
 msgstr "Üres névteret találtam az alias nevében"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1095
+#: src/modules/aliaseditor/aliaseditor.cpp:1099
 #: src/modules/classeditor/classeditor.cpp:1526
 msgid "Found an empty namespace in namespace name"
 msgstr "Üres névteret találtam a névtér nevében"
@@ -796,11 +796,11 @@ msgstr "Manuálisan"
 msgid "Member Function"
 msgstr "Tagfüggvény"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:988
+#: src/modules/aliaseditor/aliaseditor.cpp:992
 msgid "Missing Alias Name"
 msgstr "Hiányzó Alias Név"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1056
+#: src/modules/aliaseditor/aliaseditor.cpp:1060
 #: src/modules/classeditor/classeditor.cpp:1487
 msgid "Missing Namespace Name"
 msgstr "Hiányzó Névtér Név"
@@ -823,18 +823,18 @@ msgstr "A megadott Név már létezik mint egy Osztály neve"
 msgid "Name:"
 msgstr "Név:"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:337
-#: src/modules/aliaseditor/aliaseditor.cpp:523
+#: src/modules/aliaseditor/aliaseditor.cpp:341
+#: src/modules/aliaseditor/aliaseditor.cpp:527
 #: src/modules/classeditor/classeditor.cpp:787
 msgid "Namespace"
 msgstr "Névtér"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:452
+#: src/modules/aliaseditor/aliaseditor.cpp:456
 #: src/modules/classeditor/classeditor.cpp:693
 msgid "Namespace already exists"
 msgstr "Névtér már létezik"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1070
+#: src/modules/aliaseditor/aliaseditor.cpp:1074
 #: src/modules/classeditor/classeditor.cpp:1501
 msgid ""
 "Namespace names can contain only letters, digits, underscores and '::' "
@@ -931,8 +931,8 @@ msgstr "Új Elválasztó Bent"
 msgid "New ToolBar"
 msgstr "Új Eszköztár"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:747
-#: src/modules/aliaseditor/aliaseditor.cpp:930
+#: src/modules/aliaseditor/aliaseditor.cpp:751
+#: src/modules/aliaseditor/aliaseditor.cpp:934
 #: src/modules/classeditor/classeditor.cpp:1137
 #: src/modules/classeditor/classeditor.cpp:1349
 #: src/modules/toolbareditor/toolbareditor.cpp:404
@@ -940,7 +940,7 @@ msgid "No"
 msgstr "Nem"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:141
-#: src/modules/aliaseditor/aliaseditor.cpp:513
+#: src/modules/aliaseditor/aliaseditor.cpp:517
 #: src/modules/classeditor/classeditor.cpp:194
 #: src/modules/classeditor/classeditor.cpp:209
 #: src/modules/classeditor/classeditor.cpp:216
@@ -955,9 +955,9 @@ msgstr "Normál szöveg:"
 
 #: src/modules/actioneditor/actioneditor.cpp:727
 #: src/modules/actioneditor/actioneditor.cpp:874
-#: src/modules/aliaseditor/aliaseditor.cpp:720
-#: src/modules/aliaseditor/aliaseditor.cpp:788
-#: src/modules/aliaseditor/aliaseditor.cpp:819
+#: src/modules/aliaseditor/aliaseditor.cpp:724
+#: src/modules/aliaseditor/aliaseditor.cpp:792
+#: src/modules/aliaseditor/aliaseditor.cpp:823
 #: src/modules/classeditor/classeditor.cpp:1111
 #: src/modules/classeditor/classeditor.cpp:1188
 #: src/modules/classeditor/classeditor.cpp:1220
@@ -972,16 +972,16 @@ msgstr "Normál szöveg:"
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:442
-#: src/modules/aliaseditor/aliaseditor.cpp:454
-#: src/modules/aliaseditor/aliaseditor.cpp:990
-#: src/modules/aliaseditor/aliaseditor.cpp:1003
-#: src/modules/aliaseditor/aliaseditor.cpp:1017
-#: src/modules/aliaseditor/aliaseditor.cpp:1028
-#: src/modules/aliaseditor/aliaseditor.cpp:1058
-#: src/modules/aliaseditor/aliaseditor.cpp:1071
-#: src/modules/aliaseditor/aliaseditor.cpp:1085
-#: src/modules/aliaseditor/aliaseditor.cpp:1096
+#: src/modules/aliaseditor/aliaseditor.cpp:446
+#: src/modules/aliaseditor/aliaseditor.cpp:458
+#: src/modules/aliaseditor/aliaseditor.cpp:994
+#: src/modules/aliaseditor/aliaseditor.cpp:1007
+#: src/modules/aliaseditor/aliaseditor.cpp:1021
+#: src/modules/aliaseditor/aliaseditor.cpp:1032
+#: src/modules/aliaseditor/aliaseditor.cpp:1062
+#: src/modules/aliaseditor/aliaseditor.cpp:1075
+#: src/modules/aliaseditor/aliaseditor.cpp:1089
+#: src/modules/aliaseditor/aliaseditor.cpp:1100
 #: src/modules/classeditor/classeditor.cpp:544
 #: src/modules/classeditor/classeditor.cpp:606
 #: src/modules/classeditor/classeditor.cpp:690
@@ -1016,7 +1016,7 @@ msgstr ""
 "\"Ctrl\",\"Shift\",\"Alt\" és \"Meta\".<br> Például: \"Ctrl+X\", \"Ctrl+Alt+Z"
 "\", \"Ctrl+X, Ctrl+C\" ..."
 
-#: src/modules/aliaseditor/aliaseditor.cpp:321
+#: src/modules/aliaseditor/aliaseditor.cpp:325
 msgid "OverWrite Current Alias"
 msgstr "Aktuális Alias Felülírása"
 
@@ -1045,20 +1045,20 @@ msgstr "Kérlek adj meg egy nevet az osztálynak:"
 msgid "Please enter the name for the member function:"
 msgstr "Kérlek adj meg egy nevet a tagfüggvénynek:"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1122
+#: src/modules/aliaseditor/aliaseditor.cpp:1126
 msgid "Please enter the name for the new alias"
 msgstr "Kérlek adj meg egy nevet az új aliasnak"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1129
+#: src/modules/aliaseditor/aliaseditor.cpp:1133
 #: src/modules/classeditor/classeditor.cpp:1574
 msgid "Please enter the name for the new namespace"
 msgstr "Kérlek adj meg egy nevet az új névtérnek"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:426
+#: src/modules/aliaseditor/aliaseditor.cpp:430
 msgid "Please enter the new name for the alias"
 msgstr "Kérlek adj meg egy nevet az aliasnak"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:428
+#: src/modules/aliaseditor/aliaseditor.cpp:432
 #: src/modules/classeditor/classeditor.cpp:677
 msgid "Please enter the new name for the namespace"
 msgstr "Kérlek adj meg egy nevet a névtérnek"
@@ -1067,7 +1067,7 @@ msgstr "Kérlek adj meg egy nevet a névtérnek"
 msgid "Please enter the optional reminder string for the member function:"
 msgstr "Kérlek adj meg egy emlékeztetőt a tagfüggvényről:"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:639
+#: src/modules/aliaseditor/aliaseditor.cpp:643
 msgid ""
 "Please enter the text to be searched for. The matching aliases will be "
 "highlighted."
@@ -1086,7 +1086,7 @@ msgstr ""
 "Vedd figyelembe, hogy az ehhez tartozó osztályok/függvények is törlésre "
 "kerülnek."
 
-#: src/modules/aliaseditor/aliaseditor.cpp:926
+#: src/modules/aliaseditor/aliaseditor.cpp:930
 msgid "Please note that all the children items will be deleted too."
 msgstr "Vedd figyelembe, hogy az összes ehhez tartozó elem törlésre kerül."
 
@@ -1151,12 +1151,12 @@ msgstr "Felbukkanó &Eltávolítása"
 msgid "Reminder text."
 msgstr "Emlékeztető szöveg."
 
-#: src/modules/aliaseditor/aliaseditor.cpp:573
+#: src/modules/aliaseditor/aliaseditor.cpp:577
 #: src/modules/classeditor/classeditor.cpp:917
 msgid "Remove Selected"
 msgstr "Kijelölt Eltávolítása"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:930
+#: src/modules/aliaseditor/aliaseditor.cpp:934
 #: src/modules/classeditor/classeditor.cpp:1349
 msgid "Remove item"
 msgstr "Elem eltávolítása"
@@ -1167,16 +1167,16 @@ msgstr "Elem eltávolítása"
 msgid "Rename"
 msgstr "Átnevezés"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:426
+#: src/modules/aliaseditor/aliaseditor.cpp:430
 msgid "Rename Alias"
 msgstr "Alias Átnevezése"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:428
+#: src/modules/aliaseditor/aliaseditor.cpp:432
 #: src/modules/classeditor/classeditor.cpp:677
 msgid "Rename Namespace"
 msgstr "Névtér Átnevezése"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:747
+#: src/modules/aliaseditor/aliaseditor.cpp:751
 #: src/modules/classeditor/classeditor.cpp:1137
 msgid "Replace file"
 msgstr "Fájl cseréje"
@@ -1206,12 +1206,12 @@ msgstr "Beállítás <b>Belső</b> Függvényként: "
 msgid "Small Icon:"
 msgstr "Kis Ikon:"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1016
+#: src/modules/aliaseditor/aliaseditor.cpp:1020
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr "':' karakter az alias nevében: úgy érted... <névtér>::<név> ?"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1084
+#: src/modules/aliaseditor/aliaseditor.cpp:1088
 #: src/modules/classeditor/classeditor.cpp:1515
 msgid ""
 "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
@@ -1241,7 +1241,7 @@ msgstr ""
 "Az akcióhoz hozzárendelt nagy ikon.<br>Ez fog megjelenni az eszköztárban ha "
 "ezt az akciót beszúrod.<br>32x32 pixel méretűnek kell lennie."
 
-#: src/modules/aliaseditor/aliaseditor.cpp:788
+#: src/modules/aliaseditor/aliaseditor.cpp:792
 #: src/modules/classeditor/classeditor.cpp:1188
 msgid "The exported file would be empty: cowardly refusing to write it"
 msgstr "Az exportálandó fájl üres lenne: gyáván nem fogom létrehozni"
@@ -1251,7 +1251,7 @@ msgstr "Az exportálandó fájl üres lenne: gyáván nem fogom létrehozni"
 msgid "The file \"%1\" exists. Do you want to replace it?"
 msgstr "A \"%Q\" fájl már létezik. Szeretnéd cserélni?"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:746
+#: src/modules/aliaseditor/aliaseditor.cpp:750
 msgid "The file \"%Q\" exists. Do you want to replace it ?"
 msgstr "A \"%Q\" fájl már létezik. Szeretnéd cserélni?"
 
@@ -1273,7 +1273,7 @@ msgstr ""
 "hozzárendeljen egyet automatikusan (olyat, ami nem ütközik másik "
 "eszköztárral) vagy inkább megadod manuálisan?"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:720
+#: src/modules/aliaseditor/aliaseditor.cpp:724
 #: src/modules/classeditor/classeditor.cpp:1111
 msgid "There is no selection!"
 msgstr "Nincs semmi kijelölve!"
@@ -1288,8 +1288,8 @@ msgid "This name is already in use as Class name. Please choose another one."
 msgstr ""
 "Ez a név már létezik mint egy Osztály neve. Kérlek adj meg egy másikat."
 
-#: src/modules/aliaseditor/aliaseditor.cpp:441
-#: src/modules/aliaseditor/aliaseditor.cpp:453
+#: src/modules/aliaseditor/aliaseditor.cpp:445
+#: src/modules/aliaseditor/aliaseditor.cpp:457
 #: src/modules/classeditor/classeditor.cpp:543
 #: src/modules/classeditor/classeditor.cpp:605
 #: src/modules/classeditor/classeditor.cpp:694
@@ -1326,7 +1326,7 @@ msgstr "Osztály fordítása sikertelen: "
 msgid "Unable to write to the actions file."
 msgstr "Az akciók fájl írása sikertelen."
 
-#: src/modules/aliaseditor/aliaseditor.cpp:819
+#: src/modules/aliaseditor/aliaseditor.cpp:823
 #: src/modules/popupeditor/popupeditor.cpp:1244
 msgid "Unable to write to the alias file."
 msgstr "Az alias fájl írása sikertelen."
@@ -1384,7 +1384,7 @@ msgid "Word to Find"
 msgstr "Keresendő Szó"
 
 #: src/modules/actioneditor/actioneditor.cpp:727
-#: src/modules/aliaseditor/aliaseditor.cpp:819
+#: src/modules/aliaseditor/aliaseditor.cpp:823
 #: src/modules/classeditor/classeditor.cpp:1220
 #: src/modules/eventeditor/eventeditor.cpp:453
 #: src/modules/eventeditor/eventeditor.cpp:491
@@ -1396,26 +1396,26 @@ msgstr "Keresendő Szó"
 msgid "Write Failed - KVIrc"
 msgstr "Írás Sikertelen - KVIrc"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:747
-#: src/modules/aliaseditor/aliaseditor.cpp:930
+#: src/modules/aliaseditor/aliaseditor.cpp:751
+#: src/modules/aliaseditor/aliaseditor.cpp:934
 #: src/modules/classeditor/classeditor.cpp:1137
 #: src/modules/classeditor/classeditor.cpp:1349
 #: src/modules/toolbareditor/toolbareditor.cpp:403
 msgid "Yes"
 msgstr "Igen"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:747
-#: src/modules/aliaseditor/aliaseditor.cpp:930
+#: src/modules/aliaseditor/aliaseditor.cpp:751
+#: src/modules/aliaseditor/aliaseditor.cpp:934
 #: src/modules/classeditor/classeditor.cpp:1137
 #: src/modules/classeditor/classeditor.cpp:1349
 msgid "Yes to All"
 msgstr "Igen mindet"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:989
+#: src/modules/aliaseditor/aliaseditor.cpp:993
 msgid "You must specify a valid name for the alias"
 msgstr "Meg kell adnod egy érvényes nevet az aliasnak"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1057
+#: src/modules/aliaseditor/aliaseditor.cpp:1061
 #: src/modules/classeditor/classeditor.cpp:1488
 msgid "You must specify a valid name for the namespace"
 msgstr "Meg kell adnod egy érvényes nevet a névtérnek"

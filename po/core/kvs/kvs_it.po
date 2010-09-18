@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-12 11:56+0100\n"
+"POT-Creation-Date: 2010-09-18 16:12+0100\n"
 "PO-Revision-Date: 2010-09-12 20:30+0200\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -160,7 +160,7 @@ msgstr "Non trovo l'icona '%Q': ignoro"
 msgid "Can't find the requested image"
 msgstr "Non trovo l'immagine richiesta"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:532
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:538
 msgid "Can't kill the timer '%Q' since it is not running"
 msgstr "Non posso uccidere il timer '%Q' dal momento che non è attivo"
 
@@ -549,7 +549,7 @@ msgstr "Il lagometro non era abilitato"
 msgid "Left operand didn't evaluate to a number"
 msgstr "L'operando sinistro non viene valutato come un numero"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:623
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:629
 msgid "List of active timers"
 msgstr "Lista dei timer attivi"
 
@@ -751,7 +751,7 @@ msgstr ""
 "Nessun canale/maschera specificato come target e la finestra corrente non è "
 "un canale"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:649
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:655
 msgid "None"
 msgstr "Niente"
 
@@ -776,7 +776,7 @@ msgstr ""
 "Gli identificatori dei parametri sono vietati nella visibilità dell'oggetto "
 "(dopo l'operator '->')"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:634
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:640
 msgid "Persistent"
 msgstr "Persistente"
 
@@ -813,7 +813,7 @@ msgstr "Errore nell'analisi del comando say: problema nel comando."
 msgid "Senseless empty switch command: fix the script"
 msgstr "Parametro al comando vuoto e senza significato: sistema lo script"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:640
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:646
 msgid "SingleShot"
 msgstr "SingleShot"
 
@@ -1045,11 +1045,11 @@ msgstr "Il catalogo %Q non è stato caricato"
 msgid "The commandline for this url type seems to be broken (%Q)"
 msgstr "La linea di comando per questo url sembra avere un problema (%Q)"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:459
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:465
 msgid "The current window is not a channel"
 msgstr "La finestra corrente non è un canale"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:297
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:302
 msgid "The current window is not a channel, a query or a console"
 msgstr "La finestra corrente non è un canale, una query o una console"
 
@@ -1061,8 +1061,8 @@ msgstr ""
 "Il trattito dopo un comando dovrebbe essere seguito da una lettera (switch), "
 "da un numero (numero negativo) o essere messo come escape"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:315
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:320
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:326
 msgid "The following string was injected by the user:"
 msgstr "La stringa seguente è stata iniettata dall'utente:"
 
@@ -1301,7 +1301,7 @@ msgstr "Questa finestra non è associata a un contesto IRC"
 msgid "Timer '%Q' has a broken callback handler: killing the timer"
 msgstr "Il timer '%Q' ha un gestore corrotto: uccido il timer"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:526
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:532
 msgid ""
 "Timer name omitted but there is not current timer (this is not a timer "
 "callback)"
@@ -1309,7 +1309,7 @@ msgstr ""
 "Nome del timer omesso ma non c'è un timer corrente (questo non è un gestore "
 "timer)"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:660
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:666
 #, c-format
 msgid "Total: %u timers running"
 msgstr "Totale: %u timer avviati"
@@ -1563,7 +1563,7 @@ msgstr ""
 "Variabile in sola lettura non attesa come variabile di iterazione del "
 "'foreach'"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:643
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:649
 msgid "Unknown"
 msgstr "Sconosciuto"
 
@@ -1620,7 +1620,7 @@ msgstr "La finestra con ID '%s' non è stata trovata, ritorno una stringa vuota"
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr "Finestra con ID %Q non trovata: non eseguo il rebind"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:637
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:643
 msgid "WindowLifetime"
 msgstr "WindowLifetime"
 

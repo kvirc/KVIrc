@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-12 20:28+0200\n"
+"POT-Creation-Date: 2010-09-18 16:12+0100\n"
 "PO-Revision-Date: 2010-05-03 19:52+0400\n"
 "Last-Translator: Govorov Igor\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -82,8 +82,8 @@ msgstr "'%Q' не является верным путём"
 msgid "A string of 6 hex digits is required"
 msgstr "Требуется строка из 6 шестнадцатеричных символов"
 
-#: src/modules/objects/class_socket.cpp:617
-#: src/modules/objects/class_socket.cpp:648
+#: src/modules/objects/class_socket.cpp:618
+#: src/modules/objects/class_socket.cpp:649
 msgid "Another connection in progress"
 msgstr "Запускается следующее соединение"
 
@@ -95,8 +95,8 @@ msgstr "Аргумент слишком длинный, используется
 msgid "Argument too long, using only the first char"
 msgstr "Аргумент слишком длинный, используется только первый символ"
 
-#: src/modules/objects/class_socket.cpp:731
-#: src/modules/objects/class_socket.cpp:752
+#: src/modules/objects/class_socket.cpp:732
+#: src/modules/objects/class_socket.cpp:753
 msgid "Bind failure"
 msgstr "Ошибка связывания"
 
@@ -105,9 +105,9 @@ msgid "Block parameter must be a string or a memorybuffer object"
 msgstr "Параметр block должен быть строкой или объектом memorybuffer"
 
 #: src/modules/objects/class_pixmap.cpp:279
-#: src/modules/objects/class_socket.cpp:433
 #: src/modules/objects/class_file.cpp:400
 #: src/modules/objects/class_file.cpp:534
+#: src/modules/objects/class_socket.cpp:433
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr "Параметр Buffer не является объектом буфера памяти"
 
@@ -116,10 +116,10 @@ msgid "Buffer parameter is not a memorybuffer or file object"
 msgstr "Параметр Buffer не является объектом memorybuffer или файлом"
 
 #: src/modules/objects/class_pixmap.cpp:274
-#: src/modules/objects/class_socket.cpp:412
-#: src/modules/objects/class_socket.cpp:472
 #: src/modules/objects/class_file.cpp:395
 #: src/modules/objects/class_file.cpp:515
+#: src/modules/objects/class_socket.cpp:412
+#: src/modules/objects/class_socket.cpp:472
 msgid "Buffer parameter is not an object"
 msgstr "Параметр Buffer не является объектом"
 
@@ -132,11 +132,11 @@ msgstr "Buttongroup поддерживает только флажки или р
 msgid "Can't add a non-popupmenu object"
 msgstr "Невозможно добавить объект, не являющийся всплывающим меню"
 
-#: src/modules/objects/class_widget.cpp:1802
 #: src/modules/objects/class_wizard.cpp:146
 #: src/modules/objects/class_wizard.cpp:168
 #: src/modules/objects/class_window.cpp:143
 #: src/modules/objects/class_window.cpp:148
+#: src/modules/objects/class_widget.cpp:1802
 msgid "Can't add a non-widget object"
 msgstr "Невозможно добавить не видет объект"
 
@@ -169,7 +169,7 @@ msgstr ""
 "Нельзя установить объект, не являющийся виджетом, в качестве главного "
 "виджета или плавающего окна"
 
-#: src/modules/objects/class_socket.cpp:1012
+#: src/modules/objects/class_socket.cpp:1013
 msgid "Can't start the DNS thread"
 msgstr "Не могу запустить поток DNS"
 
@@ -185,24 +185,22 @@ msgstr "Класс '%Q' не определён"
 msgid "Color name or triplette RGB/HSV values required"
 msgstr "Требуется имя цвета или значение тройки RGB/HSV"
 
+#: src/modules/objects/class_listwidget.cpp:403
 #: src/modules/objects/class_painter.cpp:871
 #: src/modules/objects/class_painter.cpp:924
-#: src/modules/objects/class_listwidget.cpp:403
 msgid "Color name or triplette rgb/hsv value required"
 msgstr "Требуется имя цвета или значение тройки rgb/hsv"
 
-#: src/modules/objects/class_socket.cpp:983
+#: src/modules/objects/class_socket.cpp:984
 msgid "Connect attempt timed out"
 msgstr "Закончилось время попыток соединения"
 
-#: src/modules/objects/class_socket.cpp:956
+#: src/modules/objects/class_socket.cpp:957
 msgid "Connect failure: "
 msgstr "Ошибка соединения:"
 
-#: src/modules/objects/class_sql.cpp:239
-#: src/modules/objects/class_sql.cpp:272
-#: src/modules/objects/class_sql.cpp:289
-#: src/modules/objects/class_sql.cpp:306
+#: src/modules/objects/class_sql.cpp:239 src/modules/objects/class_sql.cpp:272
+#: src/modules/objects/class_sql.cpp:289 src/modules/objects/class_sql.cpp:306
 #: src/modules/objects/class_sql.cpp:323
 msgid "Connection %Q does not exists"
 msgstr "Соединение %Q не существует"
@@ -259,7 +257,7 @@ msgstr ""
 "Произошла ошибка: подходящий файл '%Q' не корректного формата или указан "
 "недействительный номер иконки."
 
-#: src/modules/objects/class_socket.cpp:922
+#: src/modules/objects/class_socket.cpp:923
 msgid "Failed to create the socket"
 msgstr "Ошибка создания сокета"
 
@@ -271,14 +269,14 @@ msgstr "Не один из путей до виджетов ('%Q::%Q') неве�
 msgid "Failed to find the widget to wrap"
 msgstr "Виджет не найден"
 
-#: src/modules/objects/class_socket.cpp:934
+#: src/modules/objects/class_socket.cpp:935
 msgid "Failed to setup a nonblocking socket"
 msgstr "Не могу настроить неблокирующий сокет"
 
-#: src/modules/objects/class_socket.cpp:427
-#: src/modules/objects/class_socket.cpp:484
 #: src/modules/objects/class_file.cpp:40
 #: src/modules/objects/class_file.cpp:506
+#: src/modules/objects/class_socket.cpp:427
+#: src/modules/objects/class_socket.cpp:484
 msgid "File is not open!"
 msgstr "Файл не открыт!"
 
@@ -286,10 +284,10 @@ msgstr "Файл не открыт!"
 msgid "Host '%Q' is not a valid url"
 msgstr "Адрес '%Q' не верен"
 
-#: src/modules/objects/class_multilineedit.cpp:723
+#: src/modules/objects/class_tbrowser.cpp:103
 #: src/modules/objects/class_pixmap.cpp:188
 #: src/modules/objects/class_pixmap.cpp:224
-#: src/modules/objects/class_tbrowser.cpp:103
+#: src/modules/objects/class_multilineedit.cpp:723
 msgid "I can't find the specified file '%Q'."
 msgstr "Не могу найти файл %Q"
 
@@ -334,12 +332,12 @@ msgstr "Целевой слот '%Q' для objects.connect не существ�
 msgid "Internal error: no valid pointer for this object"
 msgstr "Внутренняя ошибка: нет действительного указателя на этот объект"
 
-#: src/modules/objects/class_socket.cpp:894
+#: src/modules/objects/class_socket.cpp:895
 msgid "Invalid IP address "
 msgstr "Неверный IP адрес "
 
-#: src/modules/objects/class_socket.cpp:687
-#: src/modules/objects/class_socket.cpp:900
+#: src/modules/objects/class_socket.cpp:688
+#: src/modules/objects/class_socket.cpp:901
 msgid "Invalid IP address (%Q)"
 msgstr "Неверный IP адрес (%Q)"
 
@@ -383,19 +381,19 @@ msgstr "Недопустимый режим выделения '%Q'"
 msgid "Invalid selection mode '%Q' assuming single"
 msgstr "Недопустимый режим '%Q', принимаю одиночный"
 
-#: src/modules/objects/class_socket.cpp:723
-#: src/modules/objects/class_socket.cpp:744
+#: src/modules/objects/class_socket.cpp:724
+#: src/modules/objects/class_socket.cpp:745
 msgid "Invalid socket address"
 msgstr "Недействительный адрес сокета"
 
-#: src/modules/objects/class_socket.cpp:573
+#: src/modules/objects/class_socket.cpp:574
 msgid "Invalid socket object specified (it doesn't inherit from socket)"
 msgstr "Не действительный объект сокета (он не наследуется от сокета)"
 
-#: src/modules/objects/class_combobox.cpp:175
-#: src/modules/objects/class_combobox.cpp:192
 #: src/modules/objects/class_listwidget.cpp:441
 #: src/modules/objects/class_listwidget.cpp:459
+#: src/modules/objects/class_combobox.cpp:175
+#: src/modules/objects/class_combobox.cpp:192
 #, c-format
 msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
 msgstr "Индекс элемента [%d] слишком большой - должен быть $count() - 1 [%d]"
@@ -409,7 +407,7 @@ msgstr "Элемент вышел за размер tablewidget"
 msgid "Length of hex string is not multiple of 2"
 msgstr "Длина шестнадцатеричной строки не кратна двум"
 
-#: src/modules/objects/class_socket.cpp:761
+#: src/modules/objects/class_socket.cpp:762
 msgid "Listen failure"
 msgstr "Ошибка приёма"
 
@@ -421,7 +419,7 @@ msgstr "Отсутствует плагин Qt для базы данных %Q"
 msgid "Missing filename"
 msgstr "Отсутствует имя файла"
 
-#: src/modules/objects/class_socket.cpp:665
+#: src/modules/objects/class_socket.cpp:666
 msgid "No IPv6 support in this executable"
 msgstr "Нет поддержки IPv6 в этой сборке программы"
 
@@ -433,13 +431,13 @@ msgstr "Нет Layout-а ассоциированного с widget-ом"
 msgid "No query connection is open"
 msgstr "Нет открытого запроса соединения"
 
-#: src/modules/objects/class_socket.cpp:567
+#: src/modules/objects/class_socket.cpp:568
 msgid "No socket object specified"
 msgstr "Не определён объект сокета"
 
+#: src/modules/objects/class_listwidget.cpp:438
 #: src/modules/objects/class_combobox.cpp:172
 #: src/modules/objects/class_combobox.cpp:280
-#: src/modules/objects/class_listwidget.cpp:438
 msgid "No string parameter given - using empty string"
 msgstr "Не задано строкового параметра - используем пустую строку"
 
@@ -472,8 +470,8 @@ msgstr "Не шестнадцатеричный символ"
 msgid "Null mask"
 msgstr "Пустая маска"
 
-#: src/modules/objects/class_painter.cpp:848
 #: src/modules/objects/class_button.cpp:141
+#: src/modules/objects/class_painter.cpp:848
 msgid "Object Pixmap required!"
 msgstr "Требуется объект Pixmap!"
 
@@ -495,25 +493,25 @@ msgstr "Один из параметров массива не является 
 msgid "One of the array parameters is empty"
 msgstr "Один из параметров масива пуст"
 
+#: src/modules/objects/class_multilineedit.cpp:600
 #: src/modules/objects/class_widget.cpp:1260
 #: src/modules/objects/class_widget.cpp:1342
-#: src/modules/objects/class_multilineedit.cpp:600
 msgid "One of the colors array parameters didn't evaluate to an integer"
 msgstr "Один из цветов в массиве параметров не является целым числом"
 
+#: src/modules/objects/class_multilineedit.cpp:595
 #: src/modules/objects/class_widget.cpp:1254
 #: src/modules/objects/class_widget.cpp:1336
-#: src/modules/objects/class_multilineedit.cpp:595
 msgid "One of the colors array parameters is empty"
 msgstr "Один из цветов в массиве параметров пуст"
 
-#: src/modules/objects/class_painter.cpp:563
 #: src/modules/objects/class_widget.cpp:1165
+#: src/modules/objects/class_painter.cpp:563
 msgid "One of the geometry array parameters didn't evaluate to an integer"
 msgstr "Один из параметров массива геометрии не является числовым"
 
-#: src/modules/objects/class_painter.cpp:558
 #: src/modules/objects/class_widget.cpp:1160
+#: src/modules/objects/class_painter.cpp:558
 msgid "One of the geometry array parameters is empty"
 msgstr "Один из параметров в массиве геометрии пуст"
 
@@ -533,10 +531,10 @@ msgstr "Один из параметров массива не является 
 msgid "One of the resize array parameters is empty"
 msgstr "Один из параметров масива пуст"
 
+#: src/modules/objects/class_listwidget.cpp:408
 #: src/modules/objects/class_painter.cpp:876
 #: src/modules/objects/class_painter.cpp:929
 #: src/modules/objects/class_painter.cpp:1572
-#: src/modules/objects/class_listwidget.cpp:408
 msgid "One of the triplette parameters didn't evaluate to an integer"
 msgstr "Один из параметров тройки не является целым числом"
 
@@ -560,8 +558,8 @@ msgstr "Родитель должен быть widget-объектом"
 msgid "Pixmap object or image Id required"
 msgstr "Требуется Pixmap объект или рисунок"
 
-#: src/modules/objects/class_painter.cpp:1210
 #: src/modules/objects/class_widget.cpp:1896
+#: src/modules/objects/class_painter.cpp:1210
 msgid "Pixmap object required"
 msgstr "Требуется Pixmap обьект"
 
@@ -569,13 +567,13 @@ msgstr "Требуется Pixmap обьект"
 msgid "Pixmap or Widget parameter is not an object"
 msgstr "Pixmap или Widget параметры не являются объектом"
 
-#: src/modules/objects/class_painter.cpp:1205
 #: src/modules/objects/class_widget.cpp:1891
+#: src/modules/objects/class_painter.cpp:1205
 msgid "Pixmap parameter is not an object"
 msgstr "Параметр Pixmap не является объектом"
 
-#: src/modules/objects/class_painter.cpp:843
 #: src/modules/objects/class_button.cpp:135
+#: src/modules/objects/class_painter.cpp:843
 msgid "Pixmap parameter is not an object!"
 msgstr "Параметр Pixmap не является объектом!"
 
@@ -600,7 +598,7 @@ msgstr "Запрос для соединения %Q не существует"
 msgid "Read error occured!"
 msgstr "Произошла ошибка чтения!"
 
-#: src/modules/objects/class_socket.cpp:708
+#: src/modules/objects/class_socket.cpp:709
 msgid "Socket creation failed"
 msgstr "Создание сокета не удалось"
 
@@ -608,21 +606,21 @@ msgstr "Создание сокета не удалось"
 msgid "The added widget is not a child of this dock window"
 msgstr "Добавленный виджет не является потомком этого плавающего окна"
 
-#: src/modules/objects/class_painter.cpp:585
 #: src/modules/objects/class_widget.cpp:1603
 #: src/modules/objects/class_widget.cpp:1660
+#: src/modules/objects/class_painter.cpp:585
 msgid "The array passed as parameter must contain at least 2 elements"
 msgstr "Массив, переданный как параметр, должен иметь как минимум 2 элемента"
 
-#: src/modules/objects/class_painter.cpp:619
+#: src/modules/objects/class_multilineedit.cpp:586
 #: src/modules/objects/class_widget.cpp:1245
 #: src/modules/objects/class_widget.cpp:1327
-#: src/modules/objects/class_multilineedit.cpp:586
+#: src/modules/objects/class_painter.cpp:619
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr "Массив, переданный как параметр, должен иметь как минимум 3 элемента"
 
-#: src/modules/objects/class_painter.cpp:549
 #: src/modules/objects/class_widget.cpp:1147
+#: src/modules/objects/class_painter.cpp:549
 msgid "The array passed as parameter must contain at least 4 elements"
 msgstr "Массив, переданный как параметр, должен иметь как минимум 4 элемента"
 
@@ -635,15 +633,15 @@ msgstr "Класс '%Q' не существует"
 msgid "The file '%Q' does not exist"
 msgstr "Файл '%Q' не существует"
 
-#: src/modules/objects/class_painter.cpp:575
-#: src/modules/objects/class_painter.cpp:609
-#: src/modules/objects/class_painter.cpp:653
+#: src/modules/objects/class_multilineedit.cpp:636
 #: src/modules/objects/class_widget.cpp:1180
 #: src/modules/objects/class_widget.cpp:1302
 #: src/modules/objects/class_widget.cpp:1384
 #: src/modules/objects/class_widget.cpp:1627
 #: src/modules/objects/class_widget.cpp:1684
-#: src/modules/objects/class_multilineedit.cpp:636
+#: src/modules/objects/class_painter.cpp:575
+#: src/modules/objects/class_painter.cpp:609
+#: src/modules/objects/class_painter.cpp:653
 msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr "Первый параметр не определяет множество и не является целым числом"
 
@@ -667,10 +665,10 @@ msgstr "Listviewitem не может не иметь родителя"
 msgid "The memoryBuffer object is empty: nothing will be saved"
 msgstr "Объект memoryBuffer пуст: ничего не будет сохранено"
 
+#: src/modules/objects/class_listwidget.cpp:392
 #: src/modules/objects/class_painter.cpp:859
 #: src/modules/objects/class_painter.cpp:912
 #: src/modules/objects/class_painter.cpp:1554
-#: src/modules/objects/class_listwidget.cpp:392
 msgid "The opacity parameter didn't evaluate to integer"
 msgstr "Параметр прозрачности не является целым числом"
 
@@ -728,11 +726,11 @@ msgstr ""
 "Идентификатор окна, которому предшествует WinId должен быть первым объектом "
 "в пути поиска"
 
-#: src/modules/objects/class_socket.cpp:585
+#: src/modules/objects/class_socket.cpp:586
 msgid "There is no connection to accept!"
 msgstr "Соединение не принято!"
 
-#: src/modules/objects/class_socket.cpp:1162
+#: src/modules/objects/class_socket.cpp:1163
 msgid ""
 "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 msgstr "Слишком много необработанных входящих данных (вы оставили этот сокет?)"
@@ -758,15 +756,15 @@ msgstr "Неизвестная группа цвета '%Q'"
 msgid "Unknown Color Role '%Q'"
 msgstr "Неизвестная роль цвета '%Q'"
 
+#: src/modules/objects/class_hbox.cpp:197
 #: src/modules/objects/class_label.cpp:273
 #: src/modules/objects/class_multilineedit.cpp:758
-#: src/modules/objects/class_hbox.cpp:197
 #: src/modules/objects/class_groupbox.cpp:299
 msgid "Unknown alignment '%Q'"
 msgstr "Неизвестное выравнивание '%Q'"
 
-#: src/modules/objects/class_vbox.cpp:203
 #: src/modules/objects/class_layout.cpp:309
+#: src/modules/objects/class_vbox.cpp:203
 msgid "Unknown alignment: '%Q'"
 msgstr "Неизвестное выравнивание: '%Q'"
 
@@ -809,10 +807,10 @@ msgstr "Неизвестная позиция '%Q'"
 msgid "Unknown segment style '%Q'"
 msgstr "Неизвестный стиль сегмента '%Q'"
 
-#: src/modules/objects/class_label.cpp:327
-#: src/modules/objects/class_painter.cpp:682
-#: src/modules/objects/class_widget.cpp:1767
 #: src/modules/objects/class_listwidget.cpp:318
+#: src/modules/objects/class_label.cpp:327
+#: src/modules/objects/class_widget.cpp:1767
+#: src/modules/objects/class_painter.cpp:682
 msgid "Unknown style '%Q'"
 msgstr "Неизвестный стиль %Q"
 
@@ -850,7 +848,7 @@ msgstr ""
 msgid "Unsupported datatype '%Q'"
 msgstr "Неподдерживаемый тип данных '%Q'"
 
-#: src/modules/objects/class_socket.cpp:612
+#: src/modules/objects/class_socket.cpp:613
 #, c-format
 msgid "Value %d for port is out of range (values allowed are from 0 to 65535)"
 msgstr ""
@@ -861,12 +859,12 @@ msgstr ""
 msgid "Warning near line %d, column %d"
 msgstr "Предупреждение в строке %d, символ %d"
 
-#: src/modules/objects/class_mainwindow.cpp:95
 #: src/modules/objects/class_wizard.cpp:189
 #: src/modules/objects/class_wizard.cpp:208
 #: src/modules/objects/class_wizard.cpp:229
 #: src/modules/objects/class_wizard.cpp:249
 #: src/modules/objects/class_wizard.cpp:269
+#: src/modules/objects/class_mainwindow.cpp:95
 #: src/modules/objects/object_macros.h:120
 msgid "Widget object required"
 msgstr "Требуется Widget объект"
@@ -875,17 +873,17 @@ msgstr "Требуется Widget объект"
 msgid "Widget or Pixmap required "
 msgstr "Требуется Widget или Pixmap "
 
+#: src/modules/objects/class_toolbutton.cpp:269
 #: src/modules/objects/class_mainwindow.cpp:90
 #: src/modules/objects/class_widget.cpp:1791
-#: src/modules/objects/class_toolbutton.cpp:269
 #: src/modules/objects/class_trayicon.cpp:198
 #: src/modules/objects/object_macros.h:115
 msgid "Widget parameter is not a valid object"
 msgstr "Параметр Widget не является правильным объектом"
 
+#: src/modules/objects/class_toolbutton.cpp:264
 #: src/modules/objects/class_mainwindow.cpp:85
 #: src/modules/objects/class_widget.cpp:1786
-#: src/modules/objects/class_toolbutton.cpp:264
 #: src/modules/objects/class_trayicon.cpp:193
 #: src/modules/objects/object_macros.h:110
 msgid "Widget parameter is not an object"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-12 11:56+0100\n"
+"POT-Creation-Date: 2010-09-18 16:12+0100\n"
 "PO-Revision-Date: 2010-01-31 19:39+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -157,7 +157,7 @@ msgstr "Не могу найти иконку '%Q': проигнорирован
 msgid "Can't find the requested image"
 msgstr "Не могу найти запрошенное изображение"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:532
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:538
 msgid "Can't kill the timer '%Q' since it is not running"
 msgstr "Не могу убить таймер '%Q' так как он не запущен"
 
@@ -538,7 +538,7 @@ msgstr "Измерение задержки не включено"
 msgid "Left operand didn't evaluate to a number"
 msgstr "Левый операнд не определён как число"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:623
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:629
 msgid "List of active timers"
 msgstr "Список активных таймеров"
 
@@ -731,7 +731,7 @@ msgid ""
 "No target mask/channel specified and the current window is not a channel"
 msgstr "Не задана маска/канал, и текущее окно не является окном канала"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:649
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:655
 msgid "None"
 msgstr "Ничего"
 
@@ -755,7 +755,7 @@ msgid ""
 msgstr ""
 "Идентификаторы параметров запрещены в области объекта (после оператора '->')"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:634
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:640
 msgid "Persistent"
 msgstr "Постоянный"
 
@@ -793,7 +793,7 @@ msgstr "Ошибка грамматического разбора: Битая �
 msgid "Senseless empty switch command: fix the script"
 msgstr "Бессмысленная пустая команда: исправьте сценарий"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:640
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:646
 msgid "SingleShot"
 msgstr "Одноразовый режим"
 
@@ -1018,11 +1018,11 @@ msgstr "Каталог %Q не загружен"
 msgid "The commandline for this url type seems to be broken (%Q)"
 msgstr "Команда для этого типа url кажется битая (%Q)"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:459
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:465
 msgid "The current window is not a channel"
 msgstr "Текущее окно не является каналом"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:297
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:302
 msgid "The current window is not a channel, a query or a console"
 msgstr "Текущее окно не является каналом, приватом или консолью"
 
@@ -1034,8 +1034,8 @@ msgstr ""
 "Черта после команды должна сопровождаться буквой (ключ), цифрой "
 "(отрицательное число) или escaped"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:315
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:320
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:326
 msgid "The following string was injected by the user:"
 msgstr "Следующие строки были вставлены пользователем:"
 
@@ -1266,13 +1266,13 @@ msgstr "Это окно не ассоциировано с контекстом 
 msgid "Timer '%Q' has a broken callback handler: killing the timer"
 msgstr "Таймер '%Q' имеет битый возврат из обработчика: таймер убит"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:526
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:532
 msgid ""
 "Timer name omitted but there is not current timer (this is not a timer "
 "callback)"
 msgstr "Имя таймера не принадлежит текущему таймеру (это не возврат таймера)"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:660
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:666
 #, c-format
 msgid "Total: %u timers running"
 msgstr "Всего: %u таймеров запущено"
@@ -1509,7 +1509,7 @@ msgid "Unexpected read-only variable as 'foreach' iteration variable"
 msgstr ""
 "Неожиданная переменная только для чтения как переменная итерации 'foreach"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:643
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:649
 msgid "Unknown"
 msgstr "Неизвестный"
 
@@ -1566,7 +1566,7 @@ msgstr "Окно с ID '%s' не найдено, возвращается пус
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr "Окно с ID %Q не найдено: не возможно выполнить увязку"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:637
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:643
 msgid "WindowLifetime"
 msgstr "Время жизни окна"
 
