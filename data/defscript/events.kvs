@@ -107,6 +107,11 @@ event(OnChannelNickDefaultActionRequest,default)
 	if(!$isEmpty($0)) query $0;
 }
 
+event(OnURLLinkClick,default)
+{
+	openurl $0
+}
+
 event(OnURLLinkPopupRequest,URL popup)
 {
 	popup urlpopup $0

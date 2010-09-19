@@ -1629,6 +1629,5 @@ void KviKvsVariant::escapeString(QString * szData)
 	szData->replace("\\","\\\\");
 	szData->replace("\"","\\\"");
 	szData->replace("$","\\$");
-	szData->replace("%","\\%");
 	szData->replace(";","\\;");
 }

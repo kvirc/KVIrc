@@ -225,21 +225,8 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 		break;
 		case 'u':
 			{
-				QString urlText;
-				if(!szCmd.isEmpty()) urlText=szCmd;
-				else urlText=linkText;
-				if(
-					!KviQString::cmpCIN(urlText,"irc://",6) ||
-					!KviQString::cmpCIN(urlText,"irc6://",7) ||
-					!KviQString::cmpCIN(urlText,"ircs://",7) ||
-					!KviQString::cmpCIN(urlText,"ircs6://",8)
-					)
-				{
-					KviIrcUrl::run(urlText,KviIrcUrl::TryCurrentContext | KviIrcUrl::DoNotPartChans, console());
-				} else {
-					// Check for number of clicks
-					if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 2) cmd = "openurl $0";
-				}
+				if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 2)
+					KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick,m_pKviWindow,pParams);
 			}
 		break;
 		case 'c':
@@ -250,7 +237,6 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 					if(szCmd.length()>0) szChan=szCmd;
 					if(KviChannel * c = console()->connection()->findChannel(szChan))
 					{
-						// FIXME: #warning "Is this ok ?"
 						c->raise();
 						c->setFocus();
 					} else {
@@ -408,15 +394,8 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 				case 'u':
 					if(e->button() & Qt::RightButton)
 						KVS_TRIGGER_EVENT(KviEvent_OnURLLinkPopupRequest,m_pKviWindow,pParams);
-					if(e->button() & Qt::LeftButton)
-					{
+					if(e->button() & Qt::LeftButton && KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1)
 						KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick,m_pKviWindow,pParams);
-
-						// Check for clicks' number
-						QString cmd;
-						if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1) cmd = "openurl $0";
-						KviKvsScript::run(cmd,m_pKviWindow,pParams);
-					}
 				break;
 				case 'c':
 					if(e->button() & Qt::RightButton)
