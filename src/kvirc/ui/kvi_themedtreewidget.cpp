@@ -31,8 +31,6 @@
 #include "kvi_out.h"
 #include "kvi_mdimanager.h"
 
-#include <QPainter>
-
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
@@ -74,16 +72,16 @@ void KviThemedTreeWidget::applyOptions()
 void KviThemedTreeWidget::paintEvent(QPaintEvent *e)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	QPainter *p = new QPainter(this);
+	QPainter *p = new QPainter(this->viewport());
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
 		p->setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p->fillRect(contentsRect(), col);
+		p->fillRect(viewport()->contentsRect(), col);
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
+		QPoint pnt = m_pKviWindow->mdiParent() ? viewport()->mapTo(g_pFrame, contentsRect().topLeft() + viewport()->contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : viewport()->mapTo(m_pKviWindow, contentsRect().topLeft() + viewport()->contentsRect().topLeft());
 		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;

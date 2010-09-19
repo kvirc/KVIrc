@@ -44,6 +44,7 @@
 #include "kvi_fileextensions.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_tooltip.h"
+#include "kvi_themedlineedit.h"
 
 #include <QTimer>
 #include <QPainter>
@@ -152,7 +153,6 @@ void KviChannelTreeWidgetItemDelegate::paint(QPainter * p, const QStyleOptionVie
 	}
 }
 
-
 KviListWindow::KviListWindow(KviFrame * lpFrm, KviConsole * lpConsole)
 : KviWindow(KVI_WINDOW_TYPE_LIST,lpFrm,"list",lpConsole), KviExternalServerDataParser()
 {
@@ -205,7 +205,7 @@ KviListWindow::KviListWindow(KviFrame * lpFrm, KviConsole * lpConsole)
 	KviTalToolTip::add(m_pStopListDownloadButton,__tr2qs("Stop list download"));
 	connect(m_pStopListDownloadButton,SIGNAL(clicked()),this,SLOT(stoplistdownload()));
 
-	m_pParamsEdit = new QLineEdit(pBox);
+	m_pParamsEdit = new KviThemedLineEdit(pBox, this, "lineedit");
 	pBox->setStretchFactor(m_pParamsEdit,1);
 	KviTalToolTip::add(m_pParamsEdit,__tr2qs("<center><b>/LIST command parameters:</b><br>Many servers accept special parameters that " \
 		"allow you to filter the returned entries.<br>" \
@@ -574,7 +574,10 @@ void KviListWindow::itemDoubleClicked(QTreeWidgetItem * it, int)
 
 void KviListWindow::applyOptions()
 {
+	m_pTreeWidget->applyOptions();
 	m_pIrcView->applyOptions();
+	m_pParamsEdit->applyOptions();
+	m_pInfoLabel->applyOptions();
 	KviWindow::applyOptions();
 }
 

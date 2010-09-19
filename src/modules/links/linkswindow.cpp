@@ -460,6 +460,8 @@ void KviLinksWindow::processData(KviIrcMessage *msg)
 
 void KviLinksWindow::applyOptions()
 {
+	m_pListView->applyOptions();
+	m_pInfoLabel->applyOptions();
 	m_pIrcView->applyOptions();
 	KviWindow::applyOptions();
 }
@@ -483,8 +485,9 @@ void KviLinksListView::mousePressEvent (QMouseEvent *e)
 		QTreeWidgetItem *i=itemAt(e->pos());
 		if (i) emit rightButtonPressed(i,QCursor::pos());
 	}
-	QTreeWidget::mousePressEvent(e);
+	KviThemedTreeWidget::mousePressEvent(e);
 }
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_linkswindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

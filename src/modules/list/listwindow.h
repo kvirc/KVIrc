@@ -39,6 +39,7 @@
 #include <QItemDelegate>
 
 class KviThemedLabel;
+class KviThemedLineEdit;
 
 class KviChannelTreeWidgetItemDelegate : public QItemDelegate
 {
@@ -86,7 +87,7 @@ protected:
 	QSplitter                                    * m_pVertSplitter;
 	QSplitter                                    * m_pTopSplitter;
 	KviThemedTreeWidget                          * m_pTreeWidget;
-	QLineEdit                                    * m_pParamsEdit;
+	KviThemedLineEdit                            * m_pParamsEdit;
 	QToolButton                                  * m_pRequestButton;
 	QToolButton                                  * m_pStopListDownloadButton;
 	QToolButton                                  * m_pOpenButton;

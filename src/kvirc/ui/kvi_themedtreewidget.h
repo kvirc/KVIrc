@@ -1,5 +1,5 @@
-#ifndef _KVI_THEMEDLINEEDIT_H_
-#define _KVI_THEMEDLINEEDIT_H_
+#ifndef _KVI_THEMEDTREEWIDGET_H_
+#define _KVI_THEMEDTREEWIDGET_H_
 //=============================================================================
 //
 //   File : kvi_themedlineedit.h
@@ -27,6 +27,7 @@
 #include "kvi_settings.h"
 
 #include <QTreeWidget>
+#include <QPainter>
 
 class KviWindow;
 
@@ -37,7 +38,7 @@ class KVIRC_API KviThemedTreeWidget : public QTreeWidget
 public:
 	KviThemedTreeWidget(QWidget * par, KviWindow * pWindow, const char * name);
 	~KviThemedTreeWidget();
-private:
+protected:
 	KviWindow * m_pKviWindow;
 protected:
 	virtual void paintEvent ( QPaintEvent * event );
@@ -46,4 +47,4 @@ public:
 	void applyOptions();
 };
 
-#endif //_KVI_THEMEDLINEEDIT_H_
+#endif //_KVI_THEMEDTREEWIDGET_H_
