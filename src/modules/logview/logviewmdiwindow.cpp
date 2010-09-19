@@ -233,12 +233,16 @@ QSize KviLogViewMDIWindow::sizeHint() const
 
 void KviLogViewMDIWindow::setupItemList()
 {
+	if(m_logList.isEmpty())
+		return;
+
 	m_pFilterButton->setEnabled(false);
 	m_pListView->clear();
 
 	m_bAborted=false;
 	m_pBottomLayout->setVisible(true);
 	m_pProgressBar->setRange(0, m_logList.count());
+	m_pProgressBar->setValue(0);
 
 	m_pLastCategory=0;
 	m_pLastGroupItem=0;
@@ -253,8 +257,10 @@ void KviLogViewMDIWindow::abortFilter()
 
 void KviLogViewMDIWindow::filterNext()
 {
-	KviLogFile * pFile=m_logList.current();
 	QString szCurGroup;
+	KviLogFile * pFile=m_logList.current();
+	if(!pFile)
+		goto filter_last;
 
 	if(pFile->type()==KviLogFile::Channel && !m_pShowChannelsCheck->isChecked())
 		goto filter_next;
@@ -306,8 +312,9 @@ void KviLogViewMDIWindow::filterNext()
 	new KviLogListViewLog(m_pLastGroupItem,pFile->type(),pFile);
 
 filter_next:
-
 	pFile = m_logList.next();
+
+filter_last:
 	if(pFile && !m_bAborted)
 	{
 		m_pProgressBar->setValue(m_pProgressBar->value()+1);

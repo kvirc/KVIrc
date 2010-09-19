@@ -32,6 +32,8 @@
 #include <QTabWidget>
 #include <QLineEdit>
 
+class QProgressBar;
+class QPushButton;
 class QTextBrowser;
 class KviHelpWidget;
 
@@ -47,6 +49,9 @@ protected:
 	QTabWidget    * m_pTabWidget;
 	KviTalVBox    * m_pIndexTab;
 	KviTalVBox    * m_pSearchTab;
+	KviTalHBox    * m_pBottomLayout;
+	QPushButton   * m_pCancelButton;
+	QProgressBar  * m_pProgressBar;
 
 	KviTalListWidget* m_pIndexListWidget;
 	QLineEdit     * m_pIndexSearch;
@@ -54,6 +59,7 @@ protected:
 	QStringList     m_terms;
 	KviTalListWidget* m_pResultBox;
 	QLineEdit     * m_pTermsEdit;
+	QPushButton   * m_pBtnRefreshIndex;
 public:
 	KviHelpWidget * helpWidget(){ return m_pHelpWidget; };
 protected:
@@ -71,6 +77,11 @@ public slots:
 	void startSearch();
 	void searchSelected ( QListWidgetItem * );
 	void refreshIndex();
+	
+	void initialSetup();
+	void indexingStart( int iNum );
+	void indexingProgress( int iNum );
+	void indexingEnd();
 };
 
 #endif //_KVI_HELPWINDOW_H_

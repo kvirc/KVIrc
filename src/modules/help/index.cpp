@@ -48,8 +48,7 @@
 #include <QTextCodec>
 #include <ctype.h>
 #include <QTextDocument>
-#include <QProgressDialog>
-#include "kvi_locale.h"
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 
@@ -85,6 +84,11 @@ Index::Index( const QString &dp, const QString &hp )
     lastWindowClosed = false;
     connect( qApp, SIGNAL(lastWindowClosed()),
              this, SLOT(setLastWinClosed()) );
+
+	m_pTimer = new QTimer(this);
+	m_pTimer->setSingleShot(true);
+	m_pTimer->setInterval(0);
+	connect(m_pTimer, SIGNAL(timeout()), this, SLOT(filterNext()));
 }
 
 Index::Index( const QStringList &dl, const QString &hp )
@@ -118,38 +122,30 @@ void Index::setDocList( const QStringList &lst )
     docList = lst;
 }
 
-int Index::makeIndex()
+void Index::makeIndex()
 {
-    if ( !alreadyHaveDocList )
-        setupDocumentList();
-    if ( docList.isEmpty() )
-        return 1;
-    QStringList::Iterator it = docList.begin();
-    int steps = docList.count() / 100;
-    if ( !steps )
-        steps++;
-    int prog = 0;
-    
-    QProgressDialog* pProgressDialog = new QProgressDialog( __tr2qs("Indexing help files"), __tr2qs("Cancel"), 0, docList.count() );
-    pProgressDialog->setWindowTitle(__tr2qs("KVIrc"));
-    pProgressDialog->setMinimumDuration(500);
-    pProgressDialog->setWindowModality(Qt::WindowModal);
+	if ( !alreadyHaveDocList )
+		setupDocumentList();
 
-    for ( int i = 0; it != docList.end(); ++it, ++i ) {
-        if ( lastWindowClosed  ||pProgressDialog->wasCanceled()) {
-            delete pProgressDialog;
-            return -1;
-        }
-        QUrl url(*it);
-        parseDocument( url.toLocalFile(), i );
-        pProgressDialog->setValue(i);
-        if ( i%steps == 0 ) {
-            prog++;
-            emit indexingProgress( prog );
-        }
-    }
-    delete pProgressDialog;
-    return 0;
+	lastWindowClosed = false;
+	emit indexingStart( docList.count() );
+	dict.clear();
+	m_iCurItem = 0;
+	m_pTimer->start(); //singleshot
+}
+
+void Index::filterNext()
+{
+	if(m_iCurItem < docList.count() && !lastWindowClosed)
+	{
+		QUrl url(docList.at(m_iCurItem));
+		parseDocument( url.toLocalFile(), m_iCurItem );
+		emit indexingProgress( m_iCurItem );
+		m_iCurItem++;
+		m_pTimer->start(); //singleshot
+	} else {
+		emit indexingEnd();
+	}
 }
 
 void Index::setupDocumentList()

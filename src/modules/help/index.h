@@ -46,6 +46,8 @@
 #include <QFile>
 #include <QVector>
 
+class QTimer;
+
 QT_BEGIN_NAMESPACE
 
 struct Document {
@@ -88,7 +90,7 @@ public:
     Index( const QStringList &dl, const QString &hp );
     void writeDict();
     void readDict();
-    int makeIndex();
+    void makeIndex();
     QStringList query( const QStringList&, const QStringList&, const QStringList& );
     QString getDocumentTitle( const QString& );
     void setDictionaryFile( const QString& );
@@ -99,11 +101,13 @@ public:
     const QStringList& titlesList() { return titleList; };
 
 signals:
+    void indexingStart( int );
     void indexingProgress( int );
+    void indexingEnd();
 
 private slots:
     void setLastWinClosed();
-
+	void filterNext();
 private:
     void setupDocumentList();
     void parseDocument( const QString&, int );
@@ -126,6 +130,8 @@ private:
     bool alreadyHaveDocList;
     bool lastWindowClosed;
     QHash<QString, QString> documentTitleCache;
+    QTimer * m_pTimer;
+    int m_iCurItem;
 };
 
 #endif
