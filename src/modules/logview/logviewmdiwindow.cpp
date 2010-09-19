@@ -46,7 +46,6 @@
 #include <QHeaderView>
 #include <QLayout>
 #include <QPushButton>
-#include <QProgressDialog>
 #include <QTextCodec>
 #include <QDateTimeEdit>
 #include <QLineEdit>
@@ -56,6 +55,7 @@
 #include <QByteArray>
 #include <QMessageBox>
 #include <QSplitter>
+#include <QProgressBar>
 
 #ifdef COMPILE_ZLIB_SUPPORT
 	#include <zlib.h>
@@ -75,7 +75,15 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	m_pSplitter->setObjectName("main_splitter");
 	m_pSplitter->setChildrenCollapsible(false);
 
-	m_pTabWidget = new QTabWidget(m_pSplitter);
+	m_pLeftLayout = new KviTalVBox(m_pSplitter);
+	m_pTabWidget = new QTabWidget(m_pLeftLayout);
+	m_pBottomLayout = new KviTalHBox(m_pLeftLayout);
+	m_pProgressBar = new QProgressBar(m_pBottomLayout);
+	
+	m_pCancelButton = new QPushButton(m_pBottomLayout);
+	m_pCancelButton->setText(__tr2qs_ctx("Cancel","logview"));
+	connect(m_pCancelButton,SIGNAL(clicked()),this,SLOT(abortFilter()));
+	m_pBottomLayout->setVisible(false);
 
 	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
 	m_pTabWidget->addTab(m_pIndexTab,__tr2qs_ctx("Index","logview"));
@@ -163,6 +171,10 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	g_pApp->getLocalKvircDirectory(m_szLogDirectory,KviApp::Log);
 	KviQString::ensureLastCharIs(m_szLogDirectory,'/'); // Does this work on Windows?
 
+	m_pTimer = new QTimer(this);
+	m_pTimer->setSingleShot(true);
+	m_pTimer->setInterval(0);
+	connect(m_pTimer, SIGNAL(timeout()), this, SLOT(filterNext()));
 	//avoid to execute the long time-consuming procedure of log indexing here:
 	//we could still be inside the context of the "Browse log files" QAction
 	QTimer::singleShot( 0, this, SLOT(cacheFileList()) );
@@ -223,96 +235,89 @@ void KviLogViewMDIWindow::setupItemList()
 {
 	m_pFilterButton->setEnabled(false);
 	m_pListView->clear();
-	KviLogFile *pFile;
-	KviLogListViewItem *pLastCategory=0;
-	KviLogListViewItemFolder *pLastGroupItem=0;
-	QString szLastGroup;
+
+	m_bAborted=false;
+	m_pBottomLayout->setVisible(true);
+	m_pProgressBar->setRange(0, m_logList.count());
+
+	m_pLastCategory=0;
+	m_pLastGroupItem=0;
+	m_logList.first();
+	m_pTimer->start(); //singleshot
+}
+
+void KviLogViewMDIWindow::abortFilter()
+{
+	m_bAborted=true;
+}
+
+void KviLogViewMDIWindow::filterNext()
+{
+	KviLogFile * pFile=m_logList.current();
 	QString szCurGroup;
-	const bool bShowChannel=m_pShowChannelsCheck->isChecked();
-	const bool bShowQuery=m_pShowQueryesCheck->isChecked();
-	const bool bShowConsole=m_pShowConsolesCheck->isChecked();
-	const bool bShowOther=m_pShowOtherCheck->isChecked();
-	const bool bShowDccChat=m_pShowDccChatCheck->isChecked();
 
-	const bool filterFromDate=m_pEnableFromFilter->isChecked();
-	const bool filterToDate=m_pEnableToFilter->isChecked();
+	if(pFile->type()==KviLogFile::Channel && !m_pShowChannelsCheck->isChecked())
+		goto filter_next;
+	if(pFile->type()==KviLogFile::Console && !m_pShowConsolesCheck->isChecked())
+		goto filter_next;
+	if(pFile->type()==KviLogFile::DccChat && !m_pShowDccChatCheck->isChecked())
+		goto filter_next;
+	if(pFile->type()==KviLogFile::Other && !m_pShowOtherCheck->isChecked())
+		goto filter_next;
+	if(pFile->type()==KviLogFile::Query && !m_pShowQueryesCheck->isChecked())
+		goto filter_next;
 
-	const QString nameFilterText = m_pFileNameMask->text();
-	const bool enableNameFilter = !nameFilterText.isEmpty();
+	if(m_pEnableFromFilter->isChecked())
+		if(pFile->date()>m_pFromDateEdit->date())
+			goto filter_next;
 
-	const QString contentFilterText = m_pContentsMask->text();
-	const bool enableContentFilter = !contentFilterText.isEmpty();
+	if(m_pEnableToFilter->isChecked())
+		if(pFile->date()<m_pToDateEdit->date())
+			goto filter_next;
 
-	QDate fromDate = m_pFromDateEdit->date();
-	QDate toDate   = m_pToDateEdit->date();
+	if(!m_pFileNameMask->text().isEmpty())
+		if(!KviQString::matchString(m_pFileNameMask->text(),pFile->name()))
+			goto filter_next;
 
-	QString textBuffer;
-	QProgressDialog progress( __tr2qs_ctx("Filtering files...","logview"),
-		__tr2qs_ctx("Abort filtering","logview"), 0, m_logList.count(),
-		this);
-	progress.setObjectName("progress");
-
-	int i=0;
-	for(pFile=m_logList.first();pFile;pFile=m_logList.next())
+	if(!m_pContentsMask->text().isEmpty())
 	{
-		progress.setValue( i );
-		i++;
-		g_pApp->processEvents();
-
-		if ( progress.wasCanceled() )
-			break;
-
-		if(pFile->type()==KviLogFile::Channel && !bShowChannel)
-			continue;
-		if(pFile->type()==KviLogFile::Console && !bShowConsole)
-			continue;
-		if(pFile->type()==KviLogFile::DccChat && !bShowDccChat)
-			continue;
-		if(pFile->type()==KviLogFile::Other && !bShowOther)
-			continue;
-		if(pFile->type()==KviLogFile::Query && !bShowQuery)
-			continue;
-
-		if(filterFromDate)
-			if(pFile->date()>fromDate)
-				continue;
-
-		if(filterToDate)
-			if(pFile->date()<toDate)
-				continue;
-
-		if(enableNameFilter)
-			if(!KviQString::matchString(nameFilterText,pFile->name()))
-				continue;
-
-		if(enableContentFilter)
-		{
-			pFile->getText(textBuffer,m_szLogDirectory);
-			if(!KviQString::matchString(contentFilterText,textBuffer))
-				continue;
-		}
-
-		if(pLastCategory)
-		{
-			if(pLastCategory->m_type!=pFile->type())
-				pLastCategory = new KviLogListViewItemType(m_pListView,pFile->type());
-		} else {
-			pLastCategory = new KviLogListViewItemType(m_pListView,pFile->type());
-		}
-
-		KviQString::sprintf(szCurGroup,__tr2qs_ctx("%Q on %Q","logview"),&(pFile->name()),
-			&(pFile->network())
-			);
-
-		if(szLastGroup!=szCurGroup) {
-			szLastGroup=szCurGroup;
-			pLastGroupItem=new KviLogListViewItemFolder(pLastCategory,szLastGroup);
-		}
-		new KviLogListViewLog(pLastGroupItem,pFile->type(),pFile);
+		QString textBuffer;
+		pFile->getText(textBuffer,m_szLogDirectory);
+		if(!KviQString::matchString(m_pContentsMask->text(),textBuffer))
+			goto filter_next;
 	}
-	progress.setValue( m_logList.count() );
-	m_pListView->sortItems(0, Qt::AscendingOrder);
-	m_pFilterButton->setEnabled(true);
+
+	if(m_pLastCategory)
+	{
+		if(m_pLastCategory->m_type!=pFile->type())
+			m_pLastCategory = new KviLogListViewItemType(m_pListView,pFile->type());
+	} else {
+		m_pLastCategory = new KviLogListViewItemType(m_pListView,pFile->type());
+	}
+
+	KviQString::sprintf(szCurGroup, __tr2qs_ctx("%Q on %Q","logview"), &(pFile->name()), &(pFile->network()));
+
+	if(m_szLastGroup!=szCurGroup)
+	{
+		m_szLastGroup=szCurGroup;
+		m_pLastGroupItem=new KviLogListViewItemFolder(m_pLastCategory,m_szLastGroup);
+	}
+
+	new KviLogListViewLog(m_pLastGroupItem,pFile->type(),pFile);
+
+filter_next:
+
+	pFile = m_logList.next();
+	if(pFile && !m_bAborted)
+	{
+		m_pProgressBar->setValue(m_pProgressBar->value()+1);
+		m_pTimer->start(); //singleshot
+	} else {
+		m_pBottomLayout->setVisible(false);
+		m_pListView->sortItems(0, Qt::AscendingOrder);
+		m_pProgressBar->setValue(0);
+		m_pFilterButton->setEnabled(true);
+	}
 }
 
 void KviLogViewMDIWindow::cacheFileList()

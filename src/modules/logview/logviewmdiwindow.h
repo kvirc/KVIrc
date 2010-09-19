@@ -36,11 +36,13 @@
 #include <QDateTime>
 #include <QCheckBox>
 
+class QProgressBar;
 class QStringList;
 class QLineEdit;
 class QDateEdit;
 class KviLogViewWidget;
-
+class KviLogListViewItem;
+class KviLogListViewItemFolder;
 
 class KviLogFile {
 
@@ -117,8 +119,17 @@ protected:
 	QString              m_szLogDirectory;
 	QTabWidget         * m_pTabWidget;
 	KviTalVBox         * m_pIndexTab;
+	KviTalVBox         * m_pLeftLayout;
 	QWidget            * m_pSearchTab;
 	QPushButton        * m_pFilterButton;
+	QPushButton        * m_pCancelButton;
+	KviTalHBox         * m_pBottomLayout;
+	QProgressBar       * m_pProgressBar;
+	KviLogListViewItem * m_pLastCategory;
+	KviLogListViewItemFolder *m_pLastGroupItem;
+	QString              m_szLastGroup;
+	bool                 m_bAborted;
+	QTimer             * m_pTimer;
 protected:
 	QStringList getFileNames();
 
@@ -134,7 +145,9 @@ protected slots:
 	void itemSelected(QTreeWidgetItem * it, QTreeWidgetItem *);
 	void deleteCurrent();
 	void applyFilter();
+	void abortFilter();
 	void cacheFileList();
+	void filterNext();
 };
 
 #endif //_LOGVIEWMDIWINDOW_H_
