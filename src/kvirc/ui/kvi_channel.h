@@ -882,6 +882,12 @@ public:
 	* \return KviIrcConnectionServerInfo*
 	*/
 	KviIrcConnectionServerInfo * serverInfo();
+
+	/**
+	* \brief Checks the channel synchronization time
+	* \return void
+	*/
+	void checkChannelSync();
 protected:
 	/**
 	* \brief Filters the events
@@ -955,12 +961,6 @@ protected:
 	* \return void
 	*/
 	void internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, KviPointerList<KviMaskEntry> * l, KviMaskEditor ** ppEd, QString & szChangeMask);
-
-	/**
-	* \brief Checks the channel synchronization time
-	* \return void
-	*/
-	void checkChannelSync();
 
 	/**
 	* \brief Splits the channel view into two views
