@@ -357,7 +357,7 @@ static const char * g_szAboutText = "" \
 "]" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
-"Debian packages, moral support" \
+"Debian packages, official femal users supporter" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
 "\"One must make one's self superior to humanity, in power,\"" \
