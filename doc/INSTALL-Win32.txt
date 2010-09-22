@@ -30,23 +30,19 @@ Prerequisites
   Download the tool from http://www.cmake.org. The package you want is called
   "Windows (Win32 Installer) cmake-<version>-win32-x86.exe" (version may vary).
 
-  You need at least version 2.6.4 to compile KVirc. Version 2.8.0 has some
-  issues: its FindOpenSSl module is broken, but you can download a working one
-  from http://gdcm.svn.sf.net/viewvc/gdcm/trunk/CMake/FindOpenSSL.cmake?view=log
-
-  Update: CMake 2.8.1 has been released on 04.05.2010 and it's FindOpenSSL
-  module is fixed.
+  You need at least version 2.6.4 to compile KVirc. Avoid version 2.8.0; use 
+  version 2.8.2 instead.
 
   Recent versions of the cmake installer will ask if you want to add cmake to
-  the system PATH: you want it, preferably for all users.
+  the system PATH: you don't need it.
 
 
 - Qt 4 from Nokia
 
   [Graphic library, mandatory]
 
-  You need at least Qt 4.5 upwards, but >= 4.6.0 is recommended. Since version
-  4.6.0, we suggest you to get the "Qt SDK for Open Source C++ development on
+  You need at least Qt 4.6.0 upwards fo get a fully working KVIrc.
+  We suggest you to get the "Qt SDK for Open Source C++ development on
   Windows" you can get here: http://qt.nokia.com/downloads/sdk-windows-cpp
 
   The Qt SDK includes the Qt libraries and a working mingw environment, so you
@@ -58,31 +54,8 @@ Prerequisites
 
   If you installed the Qt SDK >= 4.6.0, you already have MinGW installed and
   you can jump to the next requisite. Otherwise you need to install MinGW 
-  manually. MinGW is still based on the 3.x brach of gcc; if you want to test 
-  the new gcc4 (it should create faster executables), follow these instructions:
-
-    Point your browser at: http://sourceforge.net/projects/mingw/, follow the
-    "view all files" link and download "Automated MinGW Installer" (MinGW-5.1.6.exe)
-    (version number may vary). Run the installer, choose the "Current" package and 
-    select "MinGW base tools", "g++ compiler", "MinGW Make" components.
-
-    Then go back to http://sourceforge.net/projects/mingw/, follow the 
-    "view all files" => "GCC Version 4" (Current Release_gcc-4.4.0)" link.
-    You'll find a file called "gcc-4.40-mingw32-notes.txt", read it carefully, 
-    at least twice. Then download these files:
-
-       gcc-core-4.4.0-mingw32-dll.tar.gz
-       gcc-core-4.4.0-mingw32-bin.tar.gz
-       gcc-c++-4.4.0-mingw32-dll.tar.gz
-       gcc-c++-4.4.0-mingw32-bin.tar.gz
-       pthreads-w32-2.8.0-mingw32-dll.tar.gz
-       gmp-4.2.4-mingw32-dll.tar.gz
-       mpfr-2.4.1-mingw32-dll.tar.gz
-
-    Uncompress all the gcc4 archives and copy it over the installation directory
-    previously created by the mingw installer (overwriting the old gcc3).
-    You can also use TDM's GCC/mingw32 Builds (these unofficial mingw packages
-    ships with gcc4 included) you can find here: http://www.tdragon.net/recentgcc/.
+  manually: refer to http://www.mingw.org/wiki/InstallationHOWTOforMinGW
+  Please note that you need to install gcc4 (gcc3 could work but is not supported).
 
 - Perl for Win32
 
@@ -97,15 +70,11 @@ Prerequisites
 
   Perl is needed to extract documentation from the source files and generate
   help files for kvirc.
- 
-  Run the following command from cmd prompt (start->run->cmd)
-  after you've installed perl:
+
+  Some perl releases misses dmake; if you get a strange error at compilation
+  time, run the following command from cmd prompt (start->run->cmd):
 
     # ppm install dmake
-
-  otherwise at you will have problems at compilation stage.
-
-  It's a good idea to make sure that the perl executable is on your %PATH%.
 
 - OpenSSL compiled for Win32
 
@@ -139,7 +108,6 @@ Prerequisites
    
    at the top. Then restart "make".
 
-
   Whatever way you choose, install OpenSSL somewhere (like C:\OpenSSL)
   and remember the path.
 
@@ -149,11 +117,6 @@ Prerequisites
 
   MinGW offers a zlib package: You'll need to download from 
   http://sourceforge.net/projects/mingw/ the packages:
-
-      zlib-1.2.3-1-mingw32-dll-1.tar.gz
-      zlib-1.2.3-1-mingw32-dev-1.tar.gz
-
-  Update: as of 01.06.2010 the packages seem to be named
 
       libz-1.2.3-1-mingw32-dll-1.tar.gz
       libz-1.2.3-1-mingw32-dev-1.tar.gz
@@ -195,30 +158,15 @@ Prerequisites
   
   Install the package somewhere (like c:\sed) and remember the path.
 
-- Phonon smplayer/vlc frontend for MinGW
-
-  [Multimedia library; needed to play multimedia files using phonon before
-  qt4.6, optional]
-
-  This is needed only for Qt 4.5.x: if your Qt is >= 4.6 you can skip this.
-
-  (Keeping the story short: the default Windows backend for Phonon is based 
-  on DirectShow 9 and before Qt 4.6.0 MinGW was not capable of compiling it,
-  that's why Trolltech didn't ship the DirectShow 9 backend with Qt4.5
-  for MinGW...)
-
-  Get it at http://code.google.com/p/phonon-vlc-mplayer/; it could need 
-  some tweaking to work: refer to the upstream documentation.
-
 - Subversion cli for windows
 
   [Versioning tool; needed for cmake to automatically set the correct 
   revision number in kvirc build; can be overridden (see below)]
 
-  Any version will work; We advice you to use the version you can find at
-  http://subversion.tigris.org/servlets/ProjectDocumentList?FolderID=8100 .
-  The package you want is called "Setup-Subversion-1.6.6.msi" (version 
-  numbers may vary).
+  Any version will work; Recently the subversion guys went nuts and despite
+  an official download page exists http://subversion.apache.org/packages.html
+  it requires you to download from a third party website. Those websites will
+  push you to download their "better" subversion client or needs registration.
 
   If you don't want to install subversion cli because you are already using
   another subversion tool (like TortoiseSvn), you can just force the correct
@@ -230,7 +178,7 @@ Prerequisites
   package for kvirc]
 
   Get it at http://nsis.sourceforge.net/Download ; the package you want 
-  is called "nsis-2.45-setup.exe" (version numbers may vary).
+  is called "nsis-2.46-setup.exe" (version numbers may vary).
 
 
 
@@ -253,7 +201,7 @@ Further reccomended download if you plan to develop KVIrc:
 
 -------------------------------------------------------------------------------
 Compilation
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Download KVIrc sources from KVIrc's website, a mirror or using svn (see 
 instructions on KVIrc website about how to do that). From now on I'll assume
@@ -315,8 +263,43 @@ those dlls recognized and loaded automatically from your OS.
 If you want to create an installer package, you need to:
 
 1) fill the binary directory (in our example: c:\KVIrc\build\release) with 
-  all the files that cmake doesn't create: needed dlls / locale translations 
-  / help files / qt plugins.
+  all the files that cmake doesn't create: 
+  - needed dlls: 
+        - Qt: QtCore4, QtGui4 (mandatory); QtNetwork4, QtSvg4, QtWebkit4,
+            QtXml, QtXmlPatterns (used in objects module);
+        - Zlib: libz.dll (aka libz-1.dll, zlib.dll, ...);
+        - Openssl: libeay32.dll, libssl32.dll (names may vary);
+        - MinGW: mingwm10.dll, libgcc_s_dw2-1.dll
+        - Perl: perl512.dll (version number may vary);
+        - Python: python26.dll (version number may vary);
+        - Amip: ac.dll / ac.ini (adds plug'n'play support for amip)
+		Choose the right dlls depending on your build options: for a debug
+		build you'll need debug version of Qt libraries (eg. QtCored4)
+
+  - qt plugins:
+        These have to be placed in a subdirectory named qt-plugins
+		(in our example: c:\KVirc\build\release\qt-plugins).
+        Currently KVIrc can use 4 types of plugins: codecs, imageformats,
+		phonon_backend, sqldrivers. Create a subdirectory and name it with the
+		type name of the plugins you'll place inside it;
+		(eg: c:\KVirc\build\release\qt-plugins\imageformats\qjpeg4.dll)
+        You can find them inside the "plugins" directory in the Qt Sdk.
+		Choose the right dlls depending on your build options: for a debug
+		build you'll need debug version of Qt plugins (eg. qjpegd4.dll)
+
+  - locale translations:
+        If you did not install or disabled gettext, your release folder misses
+		the "locale" folder tipically containing translation files. This means
+		kvirc won't be able to translate its user interface.
+		As a workaround, you can get translation files somewhere, create the
+		"locale" folder and manually place translations inside it.
+
+  - help file:
+        If you did not install or disabled perl, your release folder misses
+		the "help" folder tipically containing user help. This means
+		kvirc internal help will contain no help pages.
+		As a workaround, you can get help files somewhere, create the
+		"help/en" folder and manually place help files inside it.
 
 2) run the KVIrc.nsi script from the build directory (c:\kvirc\build in our example) .
   Just compile it using nsis and an installer package will be generated.
@@ -325,14 +308,6 @@ If you want to create an installer package, you need to:
 -------------------------------------------------------------------------------
 Common errors, pitfalls, ..
 -------------------------------------------------------------------------------
-
-- Currently we're double #define'ing some things, 
-  this causes some warnings like this one:
-  ----------
-  C:\kvirctrunk\src\kvirc\kvs\kvi_kvs_corefunctions.cpp:25:1: warning: "__KVIRC__" redefined
-  <command line>:15:1: warning: this is the location of the previous definition
-  ----------
-  This is a simple warning, it doesn't block compilation or affects any functionality.
 
 - On modules compilation we get a warning like this one:
   ----------
@@ -347,13 +322,3 @@ Common errors, pitfalls, ..
   In the compilation we call qt's moc to parse headers files and expand qt macros; 
   that warning simply means that moc found nothing to expand in that header file. We can fix this 
   removing headers that doesn't need to be moc-ed from the lists in CMakeLists.txt.
-
-- During the compilation, we get a lot of warnings like:
-  ----------
-  Warning: visibility attribute not supported in this configuration; ignored
-  ----------
-  The problem here is that visibility is an ELF feature, and windoze uses PE format, not ELF.
-
-
-
-

@@ -9,25 +9,26 @@ REM =======================================================================
 REM INSTALLATION PATHS
 REM =======================================================================
 
-set QTPATH=C:\Devel\Qt\2010.02.1
+set QTPATH=C:\Qt\2010.05
 
-set MINGWPATH=C:\Devel\Qt\2010.02.1\mingw
+set MINGWPATH=C:\Qt\2010.05\mingw
 
-set CMAKEPATH=C:\Programmi\CMake 2.8
+set CMAKEPATH=C:\Program Files\CMake 2.8
 
-set PYTHONPATH=C:\Programmi\Python26
+set PYTHONPATH=C:\Python26
 
-set PERLPATH=C:\Programmi\Perl
+set PERLPATH=C:\Perl
 
-set SUBVERSIONPATH=C:\Programmi\Subversion
+set SUBVERSIONPATH=C:\Program Files\Subversion
 
-set ZLIBPATH=C:\Programmi\GnuWin32
+set ZLIBPATH=C:\Program Files\GnuWin32
 
-set OPENSSLPATH=C:\Devel\OpenSSL\openssl-1.0.0
+set OPENSSLPATH=C:\OpenSSL
 
-set GETTEXTPATH=C:\Programmi\GnuWin32
+set GETTEXTPATH=C:\Program Files\GnuWin32
 
-set SEDPATH=C:\Programmi\GnuWin32
+set SEDPATH=C:\Program Files\GnuWin32
+
 
 REM =======================================================================
 REM REAL WORKS BEGIN HERE
@@ -44,12 +45,9 @@ set PATH=%PATH%;%GETTEXTPATH%\bin
 set PATH=%PATH%;%SEDPATH%\bin
 set PATH=%PATH%;C:\Windows\System32
 
+SET CMAKE_INCLUDE_DIR=%CMAKE_INCLUDE_DIR%;%OPENSSLPATH%\include;%ZLIBPATH%\include
+SET CMAKE_LIB_DIR=%CMAKE_LIB_DIR%;%OPENSSLPATH%\lib;%ZLIBPATH%\lib
 
 REM The windows command prompt is hopeless...
 
-cmake.exe -G "MinGW Makefiles" ^
-	-DZLIB_LIBRARY=%ZLIBPATH%\lib\zlib.lib ^
-	-DZLIB_INCLUDE_DIR=%ZLIBPATH%\include\ ^
-	-DOPENSSL_LIBRARIES=%OPENSSLPATH%\bin\libssl.dll.a ^
-	-DOPENSSL_INCLUDE_DIR=%OPENSSLPATH%\include ^
-	..
+cmake.exe -G "MinGW Makefiles" ..
