@@ -1131,20 +1131,23 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 			}
 		}
 		
-		if(!m_bHaveUnreadedHighlightedMessages && iMsgType == KVI_OUT_HIGHLIGHT)
-			m_bHaveUnreadedHighlightedMessages = true;
-		if(!m_bHaveUnreadedMessages && (
-			iMsgType == KVI_OUT_CHANPRIVMSG ||
-			iMsgType == KVI_OUT_CHANPRIVMSGCRYPTED ||
-			iMsgType == KVI_OUT_CHANNELNOTICE ||
-			iMsgType == KVI_OUT_CHANNELNOTICECRYPTED ||
-			iMsgType == KVI_OUT_ACTION ||
-			iMsgType == KVI_OUT_QUERYPRIVMSG ||
-			iMsgType == KVI_OUT_QUERYPRIVMSGCRYPTED ||
-			iMsgType == KVI_OUT_DCCCHATMSG ||
-			iMsgType == KVI_OUT_DCCCHATMSGCRYPTED ||
-			iMsgType == KVI_OUT_HIGHLIGHT
-		)) 
-			m_bHaveUnreadedMessages = true;
+		if(iFlags & TriggersNotification)
+		{
+			if(!m_bHaveUnreadedHighlightedMessages && iMsgType == KVI_OUT_HIGHLIGHT)
+				m_bHaveUnreadedHighlightedMessages = true;
+			if(!m_bHaveUnreadedMessages && (
+				iMsgType == KVI_OUT_CHANPRIVMSG ||
+				iMsgType == KVI_OUT_CHANPRIVMSGCRYPTED ||
+				iMsgType == KVI_OUT_CHANNELNOTICE ||
+				iMsgType == KVI_OUT_CHANNELNOTICECRYPTED ||
+				iMsgType == KVI_OUT_ACTION ||
+				iMsgType == KVI_OUT_QUERYPRIVMSG ||
+				iMsgType == KVI_OUT_QUERYPRIVMSGCRYPTED ||
+				iMsgType == KVI_OUT_DCCCHATMSG ||
+				iMsgType == KVI_OUT_DCCCHATMSGCRYPTED ||
+				iMsgType == KVI_OUT_HIGHLIGHT
+			)) 
+				m_bHaveUnreadedMessages = true;
+		}
 	}
 }
