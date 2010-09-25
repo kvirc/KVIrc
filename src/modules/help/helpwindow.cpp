@@ -127,6 +127,11 @@ void KviHelpWindow::initialSetup()
 
 		if ( QFileInfo( szDoclist ).exists() && QFileInfo( szDict ).exists() ) {
 			g_pDocIndex->readDict();
+			m_pIndexListWidget->clear();
+			QStringList docList=g_pDocIndex->titlesList();
+			m_pIndexListWidget->addItems(docList);
+			m_pIndexListWidget->sortItems();
+			m_pBtnRefreshIndex->setEnabled(true);
 		} else {
 			g_pDocIndex->makeIndex();
 		}
