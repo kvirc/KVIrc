@@ -158,7 +158,7 @@ QString KviTreeWindowListItem::key() const
 		{
 			ret.sprintf("%2d%4u",m_pWindow->type(),((KviConsole*)m_pWindow)->context() ? ((KviConsole*)m_pWindow)->context()->id() : 9999);
 		} else {
-			ret.sprintf("%2d%4d",m_pWindow->type(),parent()->indexOfChild((QTreeWidgetItem *)this));
+			ret.sprintf("%2d%4d",m_pWindow->type(),parent() ? parent()->indexOfChild((QTreeWidgetItem *)this) : 9999);
 		}
 	}
 	return ret;
