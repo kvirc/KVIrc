@@ -1,6 +1,7 @@
 # CMakeLists for data/config
 
 FILE(GLOB files "*.kvc")
+LIST(APPEND ${files} "style.css")
 
 IF(UNIX)
 	IF(APPLE)
