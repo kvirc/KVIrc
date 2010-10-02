@@ -205,7 +205,9 @@ protected:
 	virtual bool focusNextPrevChild(bool next);
 	virtual void changeEvent(QEvent * event);
 	virtual void contextMenuEvent(QContextMenuEvent * event);
-
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	virtual void paintEvent ( QPaintEvent * event );
+#endif
 	void updatePseudoTransparency();
 	void installAccelerators();
 protected slots:

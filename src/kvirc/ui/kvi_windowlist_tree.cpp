@@ -176,8 +176,6 @@ KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
 	setFont(KVI_OPTION_FONT(KviOption_fontTreeWindowList));
 	setFocusPolicy(Qt::NoFocus);
 	setFrameShape(NoFrame);
-	setAutoFillBackground(false);
-	viewport()->setAutoFillBackground(false);
 }
 
 KviTreeWindowListTreeWidget::~KviTreeWindowListTreeWidget()

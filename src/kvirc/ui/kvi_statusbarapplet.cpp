@@ -103,7 +103,6 @@ void KviStatusBarAppletDescriptor::unregisterApplet(KviStatusBarApplet * a)
 KviStatusBarApplet::KviStatusBarApplet(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
 : QLabel(pParent), m_pStatusBar(pParent), m_pDescriptor(pDescriptor)
 {
-	setAutoFillBackground(false);
 	m_pDescriptor->registerApplet(this);
 	m_pStatusBar->registerApplet(this);
 }

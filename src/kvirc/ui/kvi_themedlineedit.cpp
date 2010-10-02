@@ -43,7 +43,6 @@ KviThemedLineEdit::KviThemedLineEdit(QWidget * par, KviWindow * pWindow,const ch
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
-	setAutoFillBackground(false);
 	setContentsMargins(2,2,2,2);
 	applyOptions();
 }
@@ -104,16 +103,15 @@ void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 		p->setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p->fillRect(contentsRect(), col);
-		p->restore();
+		p->fillRect(event->rect(), col);
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt;
 		if(m_pKviWindow)
-			pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
+			pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, event->rect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, event->rect().topLeft());
 		else
 			pnt = mapToGlobal(event->rect().topLeft());
-		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+		p->drawTiledPixmap(event->rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;
 #endif

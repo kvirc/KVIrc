@@ -44,7 +44,6 @@ KviThemedComboBox::KviThemedComboBox(QWidget * par, KviWindow * pWindow, const c
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
-	setAutoFillBackground(true);
 	applyOptions();
 }
 
@@ -118,11 +117,11 @@ void KviThemedComboBox::paintEvent ( QPaintEvent * event )
 		p->setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p->fillRect(contentsRect(), col);
+		p->fillRect(event->rect(), col);
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
-		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, event->rect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, event->rect().topLeft());
+		p->drawTiledPixmap(event->rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;
 #endif

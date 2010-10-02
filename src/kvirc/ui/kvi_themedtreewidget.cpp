@@ -40,7 +40,6 @@ KviThemedTreeWidget::KviThemedTreeWidget(QWidget * par, KviWindow * pWindow,cons
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
-	setAutoFillBackground(false);
 	applyOptions();
 }
 
@@ -69,7 +68,7 @@ void KviThemedTreeWidget::applyOptions()
 	update();
 }
 
-void KviThemedTreeWidget::paintEvent(QPaintEvent *e)
+void KviThemedTreeWidget::paintEvent(QPaintEvent *event)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	QPainter *p = new QPainter(this->viewport());
@@ -78,15 +77,15 @@ void KviThemedTreeWidget::paintEvent(QPaintEvent *e)
 		p->setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p->fillRect(viewport()->contentsRect(), col);
+		p->fillRect(event->rect(), col);
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pKviWindow->mdiParent() ? viewport()->mapTo(g_pFrame, contentsRect().topLeft() + viewport()->contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : viewport()->mapTo(m_pKviWindow, contentsRect().topLeft() + viewport()->contentsRect().topLeft());
-		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+		QPoint pnt = m_pKviWindow->mdiParent() ? viewport()->mapTo(g_pFrame, event->rect().topLeft() + viewport()->contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : viewport()->mapTo(m_pKviWindow, event->rect().topLeft() + viewport()->contentsRect().topLeft());
+		p->drawTiledPixmap(event->rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;
 #endif
-	QTreeWidget::paintEvent(e);
+	QTreeWidget::paintEvent(event);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

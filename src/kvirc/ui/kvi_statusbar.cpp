@@ -54,8 +54,6 @@
 KviStatusBar::KviStatusBar(KviFrame * pFrame)
 : QStatusBar(pFrame)
 {
-	setAutoFillBackground(false);
-
 	setProperty("name","statusbar");
 	m_pFrame = pFrame;
 	// ugh :D

@@ -1626,7 +1626,6 @@ KviUserListViewArea::KviUserListViewArea(KviUserListView * pPar)
 : QWidget(pPar)
 {
 	m_pListView = pPar;
-	setAutoFillBackground(false);
 
 	m_pScrollBar = new QScrollBar(Qt::Vertical,this);
 	m_pScrollBar->setObjectName("scrollbar");

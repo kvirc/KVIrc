@@ -115,7 +115,6 @@ KviTopicWidget::KviTopicWidget(QWidget * par, KviChannel * pChannel, const char 
 	m_iCursorPosition = 0;
 	m_pInput = 0;
 	m_pLabel = 0;
-	setAutoFillBackground(false);
 
 	m_pLabel = new KviThemedLabel(this, pChannel, "topic_label");
 	m_pLabel->setTextFormat(Qt::RichText);

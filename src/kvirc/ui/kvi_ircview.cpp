@@ -226,10 +226,6 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	// Ok...here we go
 	// initialize the initializable
 
-	setAttribute(Qt::WA_NoSystemBackground); // This disables automatic qt double buffering
-// 	setAttribute(Qt::WA_OpaquePaintEvent);
-// 	setAttribute(Qt::WA_PaintOnScreen); // disable qt backing store (that would force us to trigger repaint() instead of the 10 times faster paintEvent(0))
-
 	m_iFlushTimer = 0;
 	m_pToolsPopup = 0;
 	m_pFirstLine               = 0;
@@ -285,9 +281,6 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pMessagesStoppedWhileSelecting = new KviPointerList<KviIrcViewLine>;
 	m_pMessagesStoppedWhileSelecting->setAutoDelete(false);
 
-	// say qt to avoid erasing on repaint
-	setAutoFillBackground(false);
-
 	m_pFm = 0; // will be updated in the first paint event
 	m_iFontDescent = 0;
 	m_iFontLineSpacing = 0;
@@ -297,7 +290,6 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 
 	// Create the scroll bar
 	m_pScrollBar = new QScrollBar(Qt::Vertical,this);
-	m_pScrollBar->setAutoFillBackground(true);
 	m_pScrollBar->setMaximum(0);
 	m_pScrollBar->setMinimum(0);
 	m_pScrollBar->setSingleStep(1);
@@ -311,7 +303,6 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 
 	m_pToolsButton = new QToolButton(this);
 	m_pToolsButton->setObjectName("btntools");
-	m_pToolsButton->setAutoFillBackground(true);
 
 	QIcon is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
 	m_pToolsButton->setAutoRaise(true);
@@ -1034,6 +1025,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	/*
 	 * Profane description: we start the real paint here: set some geometry, a font, and paint the background
 	 */
+
 	int rectTop    = r.y();
 	int rectHeight = r.height();
 	int rectBottom = rectTop + rectHeight;
@@ -1050,6 +1042,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		// by font().
 		recalcFontVariables(QFontMetrics(pa.font()),pa.fontInfo());
 	}
+	pa.setClipRect(0, 0, widgetWidth, rectHeight, Qt::IntersectClip);
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
@@ -1058,7 +1051,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		pa.setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		pa.fillRect(rect(), col);
+		pa.fillRect(r, col);
 		pa.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{

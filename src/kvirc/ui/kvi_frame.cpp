@@ -78,6 +78,7 @@
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	#include <QPixmap>
+	#include <QPainter>
 	// kvi_app.h
 	extern QPixmap * g_pShadedParentGlobalDesktopBackground;
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -93,10 +94,9 @@ KviFrame::KviFrame()
 : KviTalMainWindow(0,"kvirc_frame")
 {
 	g_pFrame = this;
-	setAutoFillBackground(false);
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
 	setAttribute(Qt::WA_TranslucentBackground);
-	//disable this flag that gets enabled by qt when using Qt::WA_TranslucentBackground
-	setAttribute(Qt::WA_NoSystemBackground, false);
+#endif
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
 	
 	m_pWinList  = new KviPointerList<KviWindow>;
@@ -1152,6 +1152,16 @@ void KviFrame::setUsesBigPixmaps(bool bUse)
 		}
 	}
 }
+
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+void KviFrame::paintEvent(QPaintEvent *e)
+{
+	QPainter *p = new QPainter(this);
+	p->fillRect(e->rect(), palette().color(backgroundRole()));
+	delete p;
+}
+#endif
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_frame.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
