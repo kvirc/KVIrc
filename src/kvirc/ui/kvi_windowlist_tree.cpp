@@ -343,13 +343,6 @@ KviTreeWindowList::KviTreeWindowList()
 		iMin = KVI_OPTION_UINT(KviOption_uintTreeWindowListMinimumWidth);
 	setMinimumWidth(iMin);
 
-	if(KVI_OPTION_UINT(KviOption_uintTreeWindowListMaximumWidth) < (unsigned int)iMin)
-		KVI_OPTION_UINT(KviOption_uintTreeWindowListMaximumWidth) = iMin;
-	int iMax = 600;
-	if(((unsigned int)iMax) > KVI_OPTION_UINT(KviOption_uintTreeWindowListMaximumWidth))
-		iMax = KVI_OPTION_UINT(KviOption_uintTreeWindowListMaximumWidth);
-	setMaximumWidth(iMax+4);
-
 	//tooltips
 	m_pToolTip = new KviDynamicToolTip(m_pTreeWidget->viewport(),"tree_windowlist_tooltip");
 	connect(m_pToolTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));

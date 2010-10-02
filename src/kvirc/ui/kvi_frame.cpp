@@ -837,6 +837,8 @@ void KviFrame::contextMenuEvent(QContextMenuEvent *)
 void KviFrame::updatePseudoTransparency()
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
+	uint uOpacity = KVI_OPTION_UINT(KviOption_uintGlobalWindowOpacityPercent) < 50 ? 50 : KVI_OPTION_UINT(KviOption_uintGlobalWindowOpacityPercent);
+	setWindowOpacity((float) uOpacity / 100);
 	if(g_pShadedParentGlobalDesktopBackground)m_pMdi->viewport()->update();
 
 	if(g_pShadedChildGlobalDesktopBackground)

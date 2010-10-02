@@ -548,8 +548,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintDccMaxPort 26                                  /* dcc::general */
 #define KviOption_uintSoundOfferTimeoutInSecs 27
 #define KviOption_uintMaximumRequestedAvatarSize 28                  /* ctcp::avatar */
-// FIXME: THIS IS NO LONGER NEEDED ?
-#define KviOption_uintTreeWindowListMaximumWidth 29
+#define KviOption_uintGlobalWindowOpacityPercent 29
 #define KviOption_uintPasteDelay 30
 // 0 = unlimited!
 #define KviOption_uintMaxDccSendTransfers 31
