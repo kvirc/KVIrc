@@ -294,7 +294,7 @@ void KviUserListView::emitRightClick()
 			QString szNicks;
 			appendSelectedNicknames(szNicks);
 			KviKvsVariantList vList;
-			vList.append(szNicks);
+			vList.append(szNicks, true);
 			KviKvsEventManager::instance()->trigger(iEv,m_pKviWindow,&vList);
 		} else {
 			g_pApp->checkSuggestRestoreDefaultScript();
