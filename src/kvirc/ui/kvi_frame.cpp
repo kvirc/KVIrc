@@ -94,9 +94,6 @@ KviFrame::KviFrame()
 : KviTalMainWindow(0,"kvirc_frame")
 {
 	g_pFrame = this;
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	setAttribute(Qt::WA_TranslucentBackground);
-#endif
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
 	
 	m_pWinList  = new KviPointerList<KviWindow>;
@@ -839,12 +836,22 @@ void KviFrame::updatePseudoTransparency()
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	uint uOpacity = KVI_OPTION_UINT(KviOption_uintGlobalWindowOpacityPercent) < 50 ? 50 : KVI_OPTION_UINT(KviOption_uintGlobalWindowOpacityPercent);
 	setWindowOpacity((float) uOpacity / 100);
+
 	if(g_pShadedParentGlobalDesktopBackground)m_pMdi->viewport()->update();
 
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
 		for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())wnd->updateBackgrounds();
 		m_pWindowList->updatePseudoTransparency();
+	}
+
+	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
+	{
+		setAttribute(Qt::WA_TranslucentBackground);
+		setAttribute(Qt::WA_NoSystemBackground);
+	} else {
+		setAttribute(Qt::WA_TranslucentBackground, false);
+		setAttribute(Qt::WA_NoSystemBackground, false);
 	}
 #endif
 }
@@ -1158,9 +1165,12 @@ void KviFrame::setUsesBigPixmaps(bool bUse)
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 void KviFrame::paintEvent(QPaintEvent *e)
 {
-	QPainter *p = new QPainter(this);
-	p->fillRect(e->rect(), palette().color(backgroundRole()));
-	delete p;
+	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
+	{
+		QPainter *p = new QPainter(this);
+		p->fillRect(e->rect(), palette().brush(QPalette::Window));
+		delete p;
+	}
 }
 #endif
 

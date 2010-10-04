@@ -224,6 +224,7 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 {
 	setObjectName("irc_view");
 	setAttribute(Qt::WA_NoSystemBackground);
+	setAttribute(Qt::WA_OpaquePaintEvent);
 
 	// Ok...here we go
 	// initialize the initializable
@@ -301,10 +302,11 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pScrollBar->setTracking(true);
 	m_pScrollBar->show();
 	m_pScrollBar->setFocusProxy(this);
-
+	m_pScrollBar->setAutoFillBackground(true);
 
 	m_pToolsButton = new QToolButton(this);
 	m_pToolsButton->setObjectName("btntools");
+	m_pToolsButton->setAutoFillBackground(true);
 
 	QIcon is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
 	m_pToolsButton->setAutoRaise(true);
@@ -1033,8 +1035,6 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	int rectBottom = rectTop + rectHeight;
 
 	QPainter pa(this);
-
-	SET_ANTI_ALIASING(pa);
 
 	pa.setFont(font());
 	if(!m_pFm)

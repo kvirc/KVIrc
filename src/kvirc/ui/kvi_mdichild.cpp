@@ -50,6 +50,10 @@
 
 #include <QTimer>
 
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
+#endif
+
 KviMdiChild::KviMdiChild(KviMdiManager * par, const char * name)
 : QMdiSubWindow(par)
 {

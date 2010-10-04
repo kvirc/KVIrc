@@ -127,13 +127,7 @@ KviThemeTransparencyOptionsWidget::~KviThemeTransparencyOptionsWidget()
 void KviThemeTransparencyOptionsWidget::enableGlobalBackgroundPixmapSelector(bool)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	#ifdef COMPILE_X11_SUPPORT
-		m_pGlobalBackgroundPixmapSelector->setEnabled(m_pUseTransparencyBoolSelector->isChecked() && !(m_pUseCompositingForTransparencyBoolSelector->isChecked()));
-	#elif defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		m_pGlobalBackgroundPixmapSelector->setEnabled(m_pUseTransparencyBoolSelector->isChecked() && !(m_pUseWindowsFakeDesktopTransparencyBoolSelector->isChecked()));
-        #else
-		m_pGlobalBackgroundPixmapSelector->setEnabled(m_pUseTransparencyBoolSelector->isChecked());
-	#endif
+	m_pGlobalBackgroundPixmapSelector->setEnabled(m_pUseTransparencyBoolSelector->isChecked() && !(m_pUseCompositingForTransparencyBoolSelector->isChecked()));
 #endif
 }
 

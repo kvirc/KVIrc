@@ -1625,10 +1625,15 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 KviUserListViewArea::KviUserListViewArea(KviUserListView * pPar)
 : QWidget(pPar)
 {
+	setAttribute(Qt::WA_NoSystemBackground);
+	setAttribute(Qt::WA_OpaquePaintEvent);
+
 	m_pListView = pPar;
 
 	m_pScrollBar = new QScrollBar(Qt::Vertical,this);
 	m_pScrollBar->setObjectName("scrollbar");
+	m_pScrollBar->setAutoFillBackground(true);
+
 	m_pScrollBar->setRange(0,0);
 	m_pScrollBar->setValue(0);
 	connect(m_pScrollBar,SIGNAL(valueChanged(int)),this,SLOT(scrollBarMoved(int)));
@@ -1702,14 +1707,18 @@ void KviUserListViewArea::scrollBarMoved(int iNewVal)
 
 void KviUserListViewArea::paintEvent(QPaintEvent * e)
 {
+	QPainter p(this);
+
 	// update the scroll bar
 	int iWidth = width() - m_pScrollBar->width();
 
 	QRect r = e->rect();
 	if(r.right() > iWidth)
+	{
 		r.setRight(iWidth);
-
-	QPainter p(this);
+// 		p.fillRect(iWidth, 0, m_pScrollBar->width(), m_pScrollBar->height(), palette().brush(backgroundRole()));
+	}
+	p.setClipRect(r);
 
 	QFontMetrics fm(p.fontMetrics());
 
@@ -1738,8 +1747,6 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
-
-	p.setClipRect(r);
 
 	KviUserListEntry * pEntry = m_pListView->m_pTopItem;
 
