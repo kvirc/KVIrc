@@ -401,8 +401,8 @@ void KviListWindow::importList()
 			m_pItemList->append(
 					new KviChannelTreeWidgetItemData(
 						it.currentKey(),
-						cfg.readQStringEntry("users","0"),
-						cfg.readQStringEntry("topic","")
+						cfg.readEntry("users","0"),
+						cfg.readEntry("topic","")
 					)
 				);
 			++it;

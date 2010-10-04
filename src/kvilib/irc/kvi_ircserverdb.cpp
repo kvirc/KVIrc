@@ -370,7 +370,7 @@ void KviServerDataBase::importFromMircIni(const QString & filename, const QStrin
 	if(mircCfg.hasGroup("mirc"))
 	{
 		mircCfg.setGroup("mirc");
-		szDefaultServer = mircCfg.readQStringEntry("host");
+		szDefaultServer = mircCfg.readEntry("host");
 	}
 
 	KviConfig cfg(filename,KviConfig::Read,true);
@@ -465,18 +465,18 @@ void KviServerDataBase::load(const QString & filename)
 			KviNetwork * pNewNet = new KviNetwork(it.currentKey());
 			addNetwork(pNewNet);
 			cfg.setGroup(it.currentKey());
-			pNewNet->m_szEncoding = cfg.readQStringEntry("Encoding");
-			pNewNet->m_szTextEncoding = cfg.readQStringEntry("TextEncoding");
-			pNewNet->m_szDescription = cfg.readQStringEntry("Description");
-			pNewNet->m_szNickName = cfg.readQStringEntry("NickName");
-			pNewNet->m_szRealName = cfg.readQStringEntry("RealName");
-			pNewNet->m_szUserName = cfg.readQStringEntry("UserName");
-			pNewNet->m_szPass = cfg.readQStringEntry("Pass");
-			pNewNet->m_szOnConnectCommand = cfg.readQStringEntry("OnConnectCommand");
-			pNewNet->m_szOnLoginCommand = cfg.readQStringEntry("OnLoginCommand");
+			pNewNet->m_szEncoding = cfg.readEntry("Encoding");
+			pNewNet->m_szTextEncoding = cfg.readEntry("TextEncoding");
+			pNewNet->m_szDescription = cfg.readEntry("Description");
+			pNewNet->m_szNickName = cfg.readEntry("NickName");
+			pNewNet->m_szRealName = cfg.readEntry("RealName");
+			pNewNet->m_szUserName = cfg.readEntry("UserName");
+			pNewNet->m_szPass = cfg.readEntry("Pass");
+			pNewNet->m_szOnConnectCommand = cfg.readEntry("OnConnectCommand");
+			pNewNet->m_szOnLoginCommand = cfg.readEntry("OnLoginCommand");
 			pNewNet->m_pNickServRuleSet = KviNickServRuleSet::load(&cfg,QString());
 			pNewNet->m_bAutoConnect = cfg.readBoolEntry("AutoConnect",false);
-			pNewNet->m_szUserIdentityId = cfg.readQStringEntry("UserIdentityId");
+			pNewNet->m_szUserIdentityId = cfg.readEntry("UserIdentityId");
 			if(pNewNet->m_bAutoConnect)
 			{
 				if(!m_pAutoConnectOnStartupNetworks)

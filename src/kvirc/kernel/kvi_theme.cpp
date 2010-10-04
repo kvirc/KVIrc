@@ -62,7 +62,7 @@ bool KviThemeInfo::load(const QString &szThemeFileName)
 
 	cfg.setGroup(KVI_THEMEINFO_CONFIG_GROUP);
 
-	m_szThemeEngineVersion = cfg.readQStringEntry("ThemeEngineVersion","1.0.0");
+	m_szThemeEngineVersion = cfg.readEntry("ThemeEngineVersion","1.0.0");
 	if(KviMiscUtils::compareVersions(m_szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION) < 0)
 	{
 		KviQString::sprintf(m_szLastError,__tr2qs("This KVIrc executable is too old for this theme (minimum theme engine version required is %Q while this theme engine has version %s)"),&m_szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION);
@@ -70,7 +70,7 @@ bool KviThemeInfo::load(const QString &szThemeFileName)
 	}
 
 	// mandatory fields
-	m_szName = cfg.readQStringEntry("Name","");
+	m_szName = cfg.readEntry("Name","");
 
 	if(m_szName.isEmpty())
 	{
@@ -79,18 +79,18 @@ bool KviThemeInfo::load(const QString &szThemeFileName)
 	}
 
 	// optional fields
-	m_szVersion = cfg.readQStringEntry("Version","");
+	m_szVersion = cfg.readEntry("Version","");
 	if(m_szVersion.isEmpty())
 		m_szVersion = "?.?.?";
-	m_szAuthor = cfg.readQStringEntry("Author","");
+	m_szAuthor = cfg.readEntry("Author","");
 	QString szUnknown = __tr2qs("Unknown");
 	if(m_szAuthor.isEmpty())
 		m_szAuthor = szUnknown;
-	m_szDescription = cfg.readQStringEntry("Description","");
-	m_szDate = cfg.readQStringEntry("Date","");
+	m_szDescription = cfg.readEntry("Description","");
+	m_szDate = cfg.readEntry("Date","");
 	if(m_szDate.isEmpty())
 		m_szDate = szUnknown;
-	m_szApplication = cfg.readQStringEntry("Application","");
+	m_szApplication = cfg.readEntry("Application","");
 	if(m_szApplication.isEmpty())
 		m_szApplication = szUnknown;
 

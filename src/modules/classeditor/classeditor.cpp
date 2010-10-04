@@ -1747,18 +1747,18 @@ void KviClassEditor::loadNotBuiltClasses()
 
 				if(KviQString::equalCI(*pszTmp,"@Inherits"))
 				{
-					pClassItem->setInheritsClass(cfg.readQStringEntry(*pszTmp,""));
+					pClassItem->setInheritsClass(cfg.readEntry(*pszTmp,""));
 					continue;
 				}
                                 if((*pszTmp).left(9) == "@Reminder")
 					continue;
-                                QString szCode = cfg.readQStringEntry(*pszTmp,"");
+                                QString szCode = cfg.readEntry(*pszTmp,"");
 				KviClassEditorTreeWidgetItem * pFunctionItem = findFunction(*pszTmp, pClassItem);
 				if(!pFunctionItem)
 					pFunctionItem = new KviClassEditorTreeWidgetItem(pClassItem,KviClassEditorTreeWidgetItem::Method,*pszTmp);
 				pFunctionItem->setBuffer(szCode);
                                 QString szEntry = "@Reminder|" + (*pszTmp);
-                                QString szReminder = cfg.readQStringEntry(szEntry,"");
+                                QString szReminder = cfg.readEntry(szEntry,"");
                                 pFunctionItem->setReminder(szReminder);
 			}
 		}

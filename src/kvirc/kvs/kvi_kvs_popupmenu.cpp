@@ -926,15 +926,15 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 		for(idx = 0;idx < cnt;idx++)
 		{
 			KviQString::sprintf(tmp,"%Q_Prologue%d",&(prefix),idx);
-			QString pr = cfg->readQStringEntry(tmp,"");
+			QString pr = cfg->readEntry(tmp,"");
 			KviQString::sprintf(tmp,"%Q_PrologueId%d",&(prefix),idx);
-			QString itemName = cfg->readQStringEntry(tmp,"");
+			QString itemName = cfg->readEntry(tmp,"");
 			if(!pr.isEmpty())addPrologue(itemName,pr);
 		}
 	} else {
 		// Might be old version!
 		KviQString::sprintf(tmp,"%Q_Prologue",&(prefix));
-		QString pr = cfg->readQStringEntry(tmp,"");
+		QString pr = cfg->readEntry(tmp,"");
 		if(!pr.isEmpty())addPrologue(QString(),pr);
 	}
 
@@ -946,15 +946,15 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 		for(idx = 0;idx < cnt;idx++)
 		{
 			KviQString::sprintf(tmp,"%Q_Epilogue%d",&prefix,idx);
-			QString ep = cfg->readQStringEntry(tmp,"");
+			QString ep = cfg->readEntry(tmp,"");
 			KviQString::sprintf(tmp,"%Q_PrologueId%d",&(prefix),idx);
-			QString itemName = cfg->readQStringEntry(tmp,"");
+			QString itemName = cfg->readEntry(tmp,"");
 			if(!ep.isEmpty())addEpilogue(itemName,ep);
 		}
 	} else {
 		// Might be old version!
 		KviQString::sprintf(tmp,"%Q_Epilogue",&prefix);
-		QString ep = cfg->readQStringEntry(tmp,"");
+		QString ep = cfg->readEntry(tmp,"");
 		if(!ep.isEmpty())addEpilogue(QString(),ep);
 	}
 
@@ -969,7 +969,7 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 		KviQString::sprintf(pre,"%Q_%d",&prefix,idx);
 
 		KviQString::sprintf(tmp,"%Q_Id",&pre);
-		QString itemName = cfg->readQStringEntry(tmp,QString());
+		QString itemName = cfg->readEntry(tmp,QString());
 		KviQString::sprintf(tmp,"%Q_Type",&pre);
 
 		int type = cfg->readIntEntry(tmp,3);
@@ -979,7 +979,7 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 			{
 				QString expr;
 				KviQString::sprintf(tmp,"%Q_Expr",&pre);
-				expr = cfg->readQStringEntry(tmp,"");
+				expr = cfg->readEntry(tmp,"");
 				addSeparator(itemName,expr);
 			}
 			break;
@@ -987,13 +987,13 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 			{
 				QString text,icon,code,expr;
 				KviQString::sprintf(tmp,"%Q_Text",&pre);
-				text = cfg->readQStringEntry(tmp,"Unnamed");
+				text = cfg->readEntry(tmp,"Unnamed");
 				KviQString::sprintf(tmp,"%Q_Icon",&pre);
-				icon = cfg->readQStringEntry(tmp,"");
+				icon = cfg->readEntry(tmp,"");
 				KviQString::sprintf(tmp,"%Q_Code",&pre);
-				code = cfg->readQStringEntry(tmp,"");
+				code = cfg->readEntry(tmp,"");
 				KviQString::sprintf(tmp,"%Q_Expr",&pre);
-				expr = cfg->readQStringEntry(tmp,"");
+				expr = cfg->readEntry(tmp,"");
 				addItem(itemName,code,text,icon,expr);
 			}
 			break;
@@ -1001,11 +1001,11 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 			{
 				QString text,icon,expr;
 				KviQString::sprintf(tmp,"%Q_Text",&pre);
-				text = cfg->readQStringEntry(tmp,"Unnamed");
+				text = cfg->readEntry(tmp,"Unnamed");
 				KviQString::sprintf(tmp,"%Q_Icon",&pre);
-				icon = cfg->readQStringEntry(tmp,"");
+				icon = cfg->readEntry(tmp,"");
 				KviQString::sprintf(tmp,"%Q_Expr",&pre);
-				expr = cfg->readQStringEntry(tmp,"");
+				expr = cfg->readEntry(tmp,"");
 				KviKvsPopupMenu * pop = addPopup(itemName,text,icon,expr);
 				pop->load(pre,cfg);
 			}
@@ -1014,11 +1014,11 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 			{
 				QString text,icon,expr;
 				KviQString::sprintf(tmp,"%Q_Text",&pre);
-				text = cfg->readQStringEntry(tmp,"Unnamed");
+				text = cfg->readEntry(tmp,"Unnamed");
 				KviQString::sprintf(tmp,"%Q_Icon",&pre);
-				icon = cfg->readQStringEntry(tmp,"");
+				icon = cfg->readEntry(tmp,"");
 				KviQString::sprintf(tmp,"%Q_Expr",&pre);
-				expr = cfg->readQStringEntry(tmp,"");
+				expr = cfg->readEntry(tmp,"");
 				addLabel(itemName,text,icon,expr);
 			}
 			break;
@@ -1026,13 +1026,13 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 			{
 				QString text,icon,code,expr;
 				KviQString::sprintf(tmp,"%Q_Text",&pre);
-				text = cfg->readQStringEntry(tmp,"Unnamed");
+				text = cfg->readEntry(tmp,"Unnamed");
 				KviQString::sprintf(tmp,"%Q_Icon",&pre);
-				icon = cfg->readQStringEntry(tmp,"");
+				icon = cfg->readEntry(tmp,"");
 				KviQString::sprintf(tmp,"%Q_ExtName",&pre);
-				code = cfg->readQStringEntry(tmp,"");
+				code = cfg->readEntry(tmp,"");
 				KviQString::sprintf(tmp,"%Q_Expr",&pre);
-				expr = cfg->readQStringEntry(tmp,"");
+				expr = cfg->readEntry(tmp,"");
 				addExtPopup(itemName,code,text,icon,expr);
 			}
 			break;

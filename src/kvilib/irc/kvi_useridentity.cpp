@@ -41,25 +41,25 @@ KviUserIdentity::~KviUserIdentity()
 bool KviUserIdentity::load(KviConfig &cfg)
 {
 	m_szId = cfg.group();
-	m_szNickName = cfg.readQStringEntry("NickName");
-	m_szAltNickName1 = cfg.readQStringEntry("AltNickName1");
-	m_szAltNickName2 = cfg.readQStringEntry("AltNickName2");
-	m_szAltNickName3 = cfg.readQStringEntry("AltNickName3");
-	m_szUserName = cfg.readQStringEntry("UserName");
+	m_szNickName = cfg.readEntry("NickName");
+	m_szAltNickName1 = cfg.readEntry("AltNickName1");
+	m_szAltNickName2 = cfg.readEntry("AltNickName2");
+	m_szAltNickName3 = cfg.readEntry("AltNickName3");
+	m_szUserName = cfg.readEntry("UserName");
 	// FIXME: At least scramble the pass ?
-	m_szPassword = cfg.readQStringEntry("Password");
+	m_szPassword = cfg.readEntry("Password");
 	KviPixmap def;
 	m_pixAvatar = cfg.readPixmapEntry("Avatar",def);
-	m_szPartMessage = cfg.readQStringEntry("PartMessage");
-	m_szQuitMessage= cfg.readQStringEntry("QuitMessage");
-	m_szAge = cfg.readQStringEntry("Age");
-	m_szGender = cfg.readQStringEntry("Gender");
-	m_szLocation = cfg.readQStringEntry("Location");
-	m_szLanguages = cfg.readQStringEntry("Languages");
-	m_szOtherInfo = cfg.readQStringEntry("OtherInfo");
-	m_szUserMode = cfg.readQStringEntry("UserMode");
-	m_szOnConnectCommand = cfg.readQStringEntry("OnConnectCommand");
-	m_szOnLoginCommand = cfg.readQStringEntry("OnLoginCommand");
+	m_szPartMessage = cfg.readEntry("PartMessage");
+	m_szQuitMessage= cfg.readEntry("QuitMessage");
+	m_szAge = cfg.readEntry("Age");
+	m_szGender = cfg.readEntry("Gender");
+	m_szLocation = cfg.readEntry("Location");
+	m_szLanguages = cfg.readEntry("Languages");
+	m_szOtherInfo = cfg.readEntry("OtherInfo");
+	m_szUserMode = cfg.readEntry("UserMode");
+	m_szOnConnectCommand = cfg.readEntry("OnConnectCommand");
+	m_szOnLoginCommand = cfg.readEntry("OnLoginCommand");
 	return !(m_szId.isEmpty() || m_szNickName.isEmpty());
 }
 
@@ -196,7 +196,7 @@ void KviUserIdentityManager::load(const QString &szFileName)
 
 	cfg.setGroup("KVIrc");
 
-	m_szDefaultIdentity = cfg.readQStringEntry("DefaultIdentity","");
+	m_szDefaultIdentity = cfg.readEntry("DefaultIdentity","");
 
 	KviConfigIterator it(*(cfg.dict()));
 	KviConfigGroup * grp;

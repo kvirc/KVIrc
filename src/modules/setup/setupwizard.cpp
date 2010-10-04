@@ -621,16 +621,16 @@ KviSetupWizard::KviSetupWizard()
 				{
 					g_bFoundMirc = true;
 					cfg.setGroup("mirc");
-					m_pNickSelector->setText(cfg.readQStringEntry("nick",KVI_OPTION_STRING(KviOption_stringNickname1)));
-					m_pRealNameSelector->setText(cfg.readQStringEntry("user",KVI_OPTION_STRING(KviOption_stringRealname)));
+					m_pNickSelector->setText(cfg.readEntry("nick",KVI_OPTION_STRING(KviOption_stringNickname1)));
+					m_pRealNameSelector->setText(cfg.readEntry("user",KVI_OPTION_STRING(KviOption_stringRealname)));
 					KVI_OPTION_STRING(KviOption_stringNickname2) =
-						cfg.readQStringEntry("anick",KVI_OPTION_STRING(KviOption_stringNickname2));
+						cfg.readEntry("anick",KVI_OPTION_STRING(KviOption_stringNickname2));
 					KVI_OPTION_STRING(KviOption_stringUsername)  =
-						cfg.readQStringEntry("email",KVI_OPTION_STRING(KviOption_stringUsername)).section('@',0,0);
+						cfg.readEntry("email",KVI_OPTION_STRING(KviOption_stringUsername)).section('@',0,0);
 
 					if(cfg.hasGroup("files"))
 					{
-						m_szMircServerIniFile = cfg.readQStringEntry("servers","servers.ini");
+						m_szMircServerIniFile = cfg.readEntry("servers","servers.ini");
 						m_szMircServerIniFile.prepend('/');
 						m_szMircServerIniFile.prepend(szMircDir);
 						if(KviFileUtils::fileExists(m_szMircServerIniFile))

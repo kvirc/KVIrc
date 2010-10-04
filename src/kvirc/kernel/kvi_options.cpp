@@ -912,7 +912,7 @@ void KviApp::loadOptions()
 
 		READ_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable,readRectEntry)
 		READ_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable,readBoolEntry)
-		READ_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable,readQStringEntry)
+		READ_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable,readEntry)
 		READ_OPTIONS(KVI_NUM_COLOR_OPTIONS,g_colorOptionsTable,readColorEntry)
 		READ_OPTIONS(KVI_NUM_PIXMAP_OPTIONS,g_pixmapOptionsTable,readPixmapEntry)
 		READ_OPTIONS(KVI_NUM_UINT_OPTIONS,g_uintOptionsTable,readUIntEntry)
@@ -1196,7 +1196,7 @@ namespace KviTheme
 
 		READ_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable,readRectEntry)
 		READ_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable,readBoolEntry)
-		READ_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable,readQStringEntry)
+		READ_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable,readEntry)
 		READ_OPTIONS(KVI_NUM_COLOR_OPTIONS,g_colorOptionsTable,readColorEntry)
 		READ_OPTIONS(KVI_NUM_UINT_OPTIONS,g_uintOptionsTable,readUIntEntry)
 		READ_OPTIONS(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable,readFontEntry)
@@ -1217,7 +1217,7 @@ namespace KviTheme
 			{
 				if(cfg.hasKey(g_pixmapOptionsTable[i].name))
 				{
-					QString szVal = cfg.readQStringEntry(g_pixmapOptionsTable[i].name,"");
+					QString szVal = cfg.readEntry(g_pixmapOptionsTable[i].name,"");
 					szVal.trimmed();
 					QString szBuffer;
 					if(!szVal.isEmpty())

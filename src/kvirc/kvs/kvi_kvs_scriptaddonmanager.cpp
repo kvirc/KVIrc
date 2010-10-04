@@ -133,19 +133,19 @@ bool KviKvsScriptAddon::load(KviConfig * cfg,const QString &szName)
 {
 	m_szName = szName;
 	cfg->setGroup(m_szName);
-	m_szVersion = cfg->readQStringEntry("Version");
-	m_szIconId = cfg->readQStringEntry("IconId");
+	m_szVersion = cfg->readEntry("Version");
+	m_szIconId = cfg->readEntry("IconId");
 	if(m_szVersion.isEmpty())return false;
 	QString tmp1,tmp2,tmp3;
-	tmp1 = cfg->readQStringEntry("VisibleNameCode");
-	tmp2 = cfg->readQStringEntry("DescriptionCode");
-	tmp3 = cfg->readQStringEntry("UninstallCallback");
+	tmp1 = cfg->readEntry("VisibleNameCode");
+	tmp2 = cfg->readEntry("DescriptionCode");
+	tmp3 = cfg->readEntry("UninstallCallback");
 	if(tmp1.isEmpty())return false;
 	allocateScripts(tmp1,tmp2,tmp3);
-	tmp1 = cfg->readQStringEntry("ConfigureCallback");
+	tmp1 = cfg->readEntry("ConfigureCallback");
 	if(!tmp1.isEmpty())
 		setConfigureCallback(tmp1);
-	tmp1 = cfg->readQStringEntry("HelpCallback");
+	tmp1 = cfg->readEntry("HelpCallback");
 	if(!tmp1.isEmpty())
 		setHelpCallback(tmp1);
 	m_lInstalledFiles = cfg->readStringListEntry("InstalledFiles");

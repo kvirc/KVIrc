@@ -345,11 +345,11 @@ void KviSharedFilesManager::load(const QString &filename)
 	{
 		QString tmp;
 		KviQString::sprintf(tmp,"%dFName",idx);
-		QString szName = cfg.readQStringEntry(tmp,"");
+		QString szName = cfg.readEntry(tmp,"");
 		KviQString::sprintf(tmp,"%dFilePath",idx);
-		QString szPath = cfg.readQStringEntry(tmp,"");
+		QString szPath = cfg.readEntry(tmp,"");
 		KviQString::sprintf(tmp,"%dUserMask",idx);
-		QString szMask = cfg.readQStringEntry(tmp,"");
+		QString szMask = cfg.readEntry(tmp,"");
 		if(!szMask.isEmpty() && !szPath.isEmpty() && !szName.isEmpty())
 			addSharedFile(szName,szPath,szMask,0);
 	}

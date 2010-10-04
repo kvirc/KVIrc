@@ -595,7 +595,7 @@ void KviWindow::loadProperties(KviConfig *cfg)
 {
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
-	setTextEncoding(cfg->readQStringEntry(szKey,KviQString::Empty).toUtf8().data());
+	setTextEncoding(cfg->readEntry(szKey,KviQString::Empty).toUtf8().data());
 	if(m_pInput)
 	{
 		m_pInput->setButtonsHidden(cfg->readBoolEntry("inputToolButtonsHidden",KVI_OPTION_BOOL(KviOption_boolHideInputToolButtons)));

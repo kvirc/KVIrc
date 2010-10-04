@@ -542,9 +542,9 @@ void KviKvsEventManager::loadRawEvents(const QString &szFileName)
 				for(unsigned int index = 0;index < nHandlers;index++)
 				{
 					KviQString::sprintf(tmp,"Name%u",index);
-					QString szName = cfg.readQStringEntry(tmp,"unnamed");
+					QString szName = cfg.readEntry(tmp,"unnamed");
 					KviQString::sprintf(tmp,"Buffer%u",index);
-					QString szCode = cfg.readQStringEntry(tmp,"");
+					QString szCode = cfg.readEntry(tmp,"");
 					KviQString::sprintf(tmp,"RawEvent%u::%Q",index,&szName);
 					KviKvsScriptEventHandler * s = new KviKvsScriptEventHandler(szName,tmp,szCode);
 					KviQString::sprintf(tmp,"Enabled%u",index);
@@ -612,9 +612,9 @@ void KviKvsEventManager::loadAppEvents(const QString &szFileName)
 				{
 					QString tmp;
 					KviQString::sprintf(tmp,"Name%u",index);
-					QString szName = cfg.readQStringEntry(tmp,"unnamed");
+					QString szName = cfg.readEntry(tmp,"unnamed");
 					KviQString::sprintf(tmp,"Buffer%u",index);
-					QString szCode = cfg.readQStringEntry(tmp,"");
+					QString szCode = cfg.readEntry(tmp,"");
 					KviQString::sprintf(tmp,"Enabled%u",index);
 					bool bEnabled = cfg.readBoolEntry(tmp,false);
 					QString szCntx;

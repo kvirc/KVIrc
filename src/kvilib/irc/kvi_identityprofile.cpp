@@ -70,28 +70,28 @@ bool KviIdentityProfile::load(KviConfig * pCfg, const QString & szPrefix)
 	QString szTmp;
 
 	KviQString::sprintf(szTmp,"%QName",&szPrefix);
-	m_szName = KviQString::trimmed(pCfg->readQStringEntry(szTmp));
+	m_szName = KviQString::trimmed(pCfg->readEntry(szTmp));
 	if(m_szName.isEmpty())
 		return false;
 
 	KviQString::sprintf(szTmp,"%QNetwork",&szPrefix);
-	m_szNetwork = pCfg->readQStringEntry(szTmp);
+	m_szNetwork = pCfg->readEntry(szTmp);
 	if(m_szNetwork.isEmpty())
 		return false;
 
 	KviQString::sprintf(szTmp,"%QNick",&szPrefix);
-	m_szNick = pCfg->readQStringEntry(szTmp);
+	m_szNick = pCfg->readEntry(szTmp);
 	if(m_szNick.isEmpty())
 		return false;
 
 	KviQString::sprintf(szTmp,"%QAltNick",&szPrefix);
-	m_szAltNick = pCfg->readQStringEntry(szTmp);
+	m_szAltNick = pCfg->readEntry(szTmp);
 
 	KviQString::sprintf(szTmp,"%QUserName",&szPrefix);
-	m_szUserName = pCfg->readQStringEntry(szTmp);
+	m_szUserName = pCfg->readEntry(szTmp);
 
 	KviQString::sprintf(szTmp,"%QRealName",&szPrefix);
-	m_szRealName = pCfg->readQStringEntry(szTmp);
+	m_szRealName = pCfg->readEntry(szTmp);
 	
 	return true;
 }

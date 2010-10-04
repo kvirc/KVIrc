@@ -309,7 +309,7 @@ bool KviKvsUserAction::load(KviConfig * cfg)
 {
 	m_szName = cfg->group();
 	if(m_szName.isEmpty())return false;
-	m_szVisibleName = cfg->readQStringEntry("VisibleName");
+	m_szVisibleName = cfg->readEntry("VisibleName");
 	if(m_szVisibleName.isEmpty())return false;
 	QString szKvsName = "action::";
 	szKvsName += m_szName;
@@ -320,7 +320,7 @@ bool KviKvsUserAction::load(KviConfig * cfg)
 	m_pVisibleNameScript = new KviKvsScript(szTmp,m_szVisibleName,KviKvsScript::Parameter);
 
 	if(m_szVisibleName.isEmpty())return false;
-	m_szDescription = cfg->readQStringEntry("Description");
+	m_szDescription = cfg->readEntry("Description");
 	szTmp = szKvsName;
 	szTmp += "::description";
 
@@ -328,14 +328,14 @@ bool KviKvsUserAction::load(KviConfig * cfg)
 	m_pDescriptionScript = new KviKvsScript(szTmp,m_szDescription,KviKvsScript::Parameter);
 
 
-	m_szBigIconId = cfg->readQStringEntry("BigIcon");
-	m_szSmallIconId = cfg->readQStringEntry("SmallIcon");
-	m_szKeySequence = cfg->readQStringEntry("KeySequence");
-	m_szCategory = cfg->readQStringEntry("Category");
+	m_szBigIconId = cfg->readEntry("BigIcon");
+	m_szSmallIconId = cfg->readEntry("SmallIcon");
+	m_szKeySequence = cfg->readEntry("KeySequence");
+	m_szCategory = cfg->readEntry("Category");
 	m_pCategory = KviActionManager::instance()->category(m_szCategory);
 	m_uFlags = cfg->readUIntEntry("Flags",0);
 
-	QString szCode = cfg->readQStringEntry("Code");
+	QString szCode = cfg->readEntry("Code");
 	if(szCode.isEmpty())return false;
 
 	m_szScript = QString(szCode);

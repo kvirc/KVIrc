@@ -145,7 +145,7 @@ void KviKvsAliasManager::load(const QString & filename)
 	for(QString * s = l.first();s;s = l.next())
 	{
 		cfg.setGroup(*s);
-		QString szCode = cfg.readQStringEntry("_Buffer","");
+		QString szCode = cfg.readEntry("_Buffer","");
 		if(!szCode.isEmpty())
 		{
 			KviKvsScript * m = new KviKvsScript(*s,szCode);

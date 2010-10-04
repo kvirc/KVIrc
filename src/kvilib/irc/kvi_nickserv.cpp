@@ -279,18 +279,18 @@ bool KviNickServRule::load(KviConfig * cfg,const QString &prefix)
 {
 	QString tmp;
 	KviQString::sprintf(tmp,"%QRegisteredNick",&prefix);
-	m_szRegisteredNick = KviQString::trimmed(cfg->readQStringEntry(tmp));
+	m_szRegisteredNick = KviQString::trimmed(cfg->readEntry(tmp));
 	if(m_szRegisteredNick.isEmpty())return false;
 	KviQString::sprintf(tmp,"%QNickServMask",&prefix);
-	m_szNickServMask = cfg->readQStringEntry(tmp);
+	m_szNickServMask = cfg->readEntry(tmp);
 	if(m_szNickServMask.isEmpty())return false;
 	KviQString::sprintf(tmp,"%QServerMask",&prefix);
-	m_szServerMask = cfg->readQStringEntry(tmp,QString());
+	m_szServerMask = cfg->readEntry(tmp,QString());
 	KviQString::sprintf(tmp,"%QMessageRegexp",&prefix);
-	m_szMessageRegexp = cfg->readQStringEntry(tmp);
+	m_szMessageRegexp = cfg->readEntry(tmp);
 	if(m_szMessageRegexp.isEmpty())return false;
 	KviQString::sprintf(tmp,"%QIdentifyCommand",&prefix);
-	m_szIdentifyCommand = cfg->readQStringEntry(tmp);
+	m_szIdentifyCommand = cfg->readEntry(tmp);
 	return !m_szIdentifyCommand.isEmpty();
 }
 

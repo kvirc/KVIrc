@@ -581,41 +581,18 @@ void KviConfig::writeEntry(const QString & szKey,const QString & szValue)
 	p_group->replace(szKey,p_data);
 }
 
-// FIXME: #warning "We have probs here ?"
-
-QString KviConfig::readEntry(const QString & szKey,const QString & szDefault)
+QString KviConfig::readEntry(const QString & szKey, const QString & szDefault)
 {
-	KviConfigGroup * p_group = getCurrentGroup();
-	QString * p_str = p_group->find(szKey);
-	if(!p_str)
+	KviConfigGroup * pGroup = getCurrentGroup();
+	QString * pStr = pGroup->find(szKey);
+	if(!pStr)
 	{
 		m_szStrBuffer = szDefault;
 	} else {
-		m_szStrBuffer = *p_str;
+		m_szStrBuffer = *pStr;
 	}
 	return m_szStrBuffer;
 }
-
-//////////////////////////////////// QString
-
-/*
-QString KviConfig::readQStringEntry(const char *szKey,const QString &szDefault)
-{
-	KviStrDict * p_group = getCurrentGroup();
-	KviStr * p_str = p_group->find(szKey);
-	if(!p_str)return szDefault;
-	return QString::fromUtf8(p_str->ptr());
-}
-*/
-
-/*
-void KviConfig::writeEntry(const char *szKey,const QString &szValue)
-{
-	m_bDirty = true;
-	KviStrDict * p_group = getCurrentGroup();
-	p_group->replace(szKey,new KviStr(szValue.toUtf8().data()));
-}
-*/
 
 ////////////////////////////////// QStringList
 

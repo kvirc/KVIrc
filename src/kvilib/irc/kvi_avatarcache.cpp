@@ -140,7 +140,7 @@ void KviAvatarCache::load(const QString &szFileName)
 		kvi_time_t tLastAccess = cfg.readUIntEntry("LastAccess",0);
 		if((tNow - tLastAccess) < MAX_UNACCESSED_TIME)
 		{
-			QString szIdString = cfg.readQStringEntry("Avatar","");
+			QString szIdString = cfg.readEntry("Avatar","");
 
 			if(!szIdString.isEmpty())
 			{

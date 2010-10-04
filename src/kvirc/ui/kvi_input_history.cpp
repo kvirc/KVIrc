@@ -89,7 +89,7 @@ void KviInputHistory::load(const QString & szFileName)
 	for(int i=0; i<iCount; i++)
 	{
 		szTmp.sprintf("S%d",i);
-		QString szEntry = c.readQStringEntry(szTmp.ptr(),"");
+		QString szEntry = c.readEntry(szTmp.ptr(),"");
 		if(!szEntry.isEmpty())
 			add(new QString(szEntry));
 	}

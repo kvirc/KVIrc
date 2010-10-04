@@ -185,17 +185,17 @@ bool KviCustomToolBarDescriptor::load(KviConfig * cfg)
 {
 	m_pActions->clear();
 	m_szId = cfg->group();
-	QString szLabelCode = cfg->readQStringEntry("Label");
+	QString szLabelCode = cfg->readEntry("Label");
 	if(szLabelCode.isEmpty())szLabelCode = "$tr(Unnamed)";
 	delete m_pLabelScript;
 	createLabelScript(szLabelCode);
-	m_szIconId = cfg->readQStringEntry("IconId","");
+	m_szIconId = cfg->readEntry("IconId","");
 	unsigned int n = cfg->readUIntEntry("Count",0);
 	QString tmp;
 	for(unsigned int i=0;i<n;i++)
 	{
 		tmp.setNum(i);
-		QString * p = new QString(cfg->readQStringEntry(tmp));
+		QString * p = new QString(cfg->readEntry(tmp));
 		if(p->isEmpty())delete p;
 		else m_pActions->append(p);
 	}
