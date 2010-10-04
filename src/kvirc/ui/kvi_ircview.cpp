@@ -223,6 +223,8 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 : QWidget(parent)
 {
 	setObjectName("irc_view");
+	setAttribute(Qt::WA_NoSystemBackground);
+
 	// Ok...here we go
 	// initialize the initializable
 
@@ -1042,7 +1044,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		// by font().
 		recalcFontVariables(QFontMetrics(pa.font()),pa.fontInfo());
 	}
-	pa.setClipRect(0, 0, widgetWidth, rectHeight, Qt::IntersectClip);
+	pa.setClipRect(0, 0, widgetWidth, widgetHeight);
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
