@@ -119,6 +119,7 @@ namespace KviKvsCoreSimpleCommands
 	KVSCSC(server);
 	KVSCSC(setmenu);
 	KVSCSC(setreturn);
+	KVSCSC(squery);
 	KVSCSC(srand);
 	KVSCSC(topic);
 	KVSCSC(trload);

@@ -124,7 +124,7 @@ namespace KviKvsCoreSimpleCommands
 		_REGCMD("setmenu",setmenu)
 		_REGCMD("setreturn",setreturn)
 		_REGCMD("sockets",rfc2812wrapper)
-		_REGCMD("squery",rfc2812wrapper)
+		_REGCMD("squery",squery)
 		_REGCMD("squit",rfc2812wrapper)
 		_REGCMD("srand",srand)
 		_REGCMD("stats",rfc2812wrapper)

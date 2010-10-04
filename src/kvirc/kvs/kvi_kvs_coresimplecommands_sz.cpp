@@ -36,6 +36,9 @@
 #include "kvi_netutils.h"
 #include "kvi_menubar.h"
 #include "kvi_userinput.h"
+#include "kvi_out.h"
+#include "kvi_channel.h"
+#include "kvi_query.h"
 #include <cstdlib>
 
 namespace KviKvsCoreSimpleCommands
@@ -476,14 +479,52 @@ namespace KviKvsCoreSimpleCommands
 		@title:
 			squery
 		@syntax:
-			squery <target> :<text>
+			squery <target> <text>
+		@switches:
+			!sw: -q | --quiet
+			Do not print any output
 		@short:
 			Sends a message to a service
 		@description:
 			Sends a message to a service in a form similar to [cmd]privmsg[/cmd].[br]
-			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
+			<target> must be a service(see RFC2812).
+			This command is [doc:connection_dependant_commands]connection dependant[/doc].[br]
+		@examples:
+			[example]
+			squery Alis LIST * -min 100
+			[/example]
 	*/
-	// RFC2821 wrapper
+
+	KVSCSC(squery)
+	{
+		QString szTarget,szText;
+		KVSCSC_PARAMETERS_BEGIN
+			KVSCSC_PARAMETER("target",KVS_PT_NONEMPTYSTRING,0,szTarget)
+			KVSCSC_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szText)
+		KVSCSC_PARAMETERS_END
+
+		KVSCSC_REQUIRE_CONNECTION
+
+		KviWindow * w = KVSCSC_pConnection->findChannel(szTarget);
+		if(!w)w = KVSCSC_pConnection->findQuery(szTarget);
+
+		if(w)
+			w->ownMessage(szText, !KVSCSC_pSwitches->find('q',"quiet"));
+		else {
+			QByteArray szT = KVSCSC_pConnection->encodeText(szTarget);
+			QByteArray szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
+			if(!szT.data())szT = ""; // encoding problems ?
+			if(!szD.data())szD = ""; // encoding problems ?
+
+			if(!(KVSCSC_pConnection->sendFmtData("SQUERY %s :%s",szT.data(),szD.data())))
+				return KVSCSC_pContext->warningNoIrcConnection();
+
+			if(!KVSCSC_pSwitches->find('q',"quiet"))
+				KVSCSC_pWindow->output(KVI_OUT_OWNPRIVMSG,"[SQUERY >>> %Q]: %Q",&szTarget,&szText);
+		}
+
+		return true;
+	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
