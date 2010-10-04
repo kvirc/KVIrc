@@ -244,6 +244,7 @@ public:
 	void setPath(QString & szPath){ m_szPath = szPath; };
 protected:
 	virtual void showEvent(QShowEvent *);
+protected slots:
 	virtual void accept();
 	virtual void reject();
 };
