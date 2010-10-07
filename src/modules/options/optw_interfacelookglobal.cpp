@@ -99,20 +99,36 @@ KviThemeTransparencyOptionsWidget::KviThemeTransparencyOptionsWidget(QWidget * p
 			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),c,SLOT(setEnabled(bool)));
 
-	m_pUseCompositingForTransparencyBoolSelector = addBoolSelector(0,5,1,5,__tr2qs_ctx("Use compositing for real transparency","options"),KviOption_boolUseCompositingForTransparency, KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+	#ifdef COMPILE_X11_SUPPORT
+		m_pUseCompositingForTransparencyBoolSelector = addBoolSelector(0,5,1,5,__tr2qs_ctx("Use compositing for real transparency","options"),KviOption_boolUseCompositingForTransparency, KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 
-	m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0,6,1,6,__tr2qs_ctx("Transparency blend image:","options"),KviOption_pixmapGlobalTransparencyBackground, KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && !KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency));
-	layout()->setRowStretch(6,1);
+		m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0,6,1,6,__tr2qs_ctx("Transparency blend image:","options"),KviOption_pixmapGlobalTransparencyBackground, KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && !KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency));
+		layout()->setRowStretch(7,1);
 
-	if(g_pApp->supportsCompositing())
-	{
-		connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),m_pUseCompositingForTransparencyBoolSelector,SLOT(setEnabled(bool)));
-		connect(m_pUseCompositingForTransparencyBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableGlobalBackgroundPixmapSelector(bool)));
-	} else {
-		m_pUseCompositingForTransparencyBoolSelector->setEnabled(false);
-		m_pUseCompositingForTransparencyBoolSelector->setChecked(false);
-		enableGlobalBackgroundPixmapSelector(true);
-    }
+		if(g_pApp->supportsCompositing())
+		{
+			connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),m_pUseCompositingForTransparencyBoolSelector,SLOT(setEnabled(bool)));
+			connect(m_pUseCompositingForTransparencyBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableGlobalBackgroundPixmapSelector(bool)));
+		} else {
+			m_pUseCompositingForTransparencyBoolSelector->setEnabled(false);
+			m_pUseCompositingForTransparencyBoolSelector->setChecked(false);
+			enableGlobalBackgroundPixmapSelector(true);
+		}
+
+	#elif defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		m_pUseWindowsFakeDesktopTransparencyBoolSelector = addBoolSelector(0,5,1,5,__tr2qs_ctx("Use desktop background for transparency","options"),KviOption_boolUseWindowsDesktopForTransparency, KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+
+		m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0,6,1,6,__tr2qs_ctx("Transparency blend image:","options"),KviOption_pixmapGlobalTransparencyBackground, KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && !KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency));
+		layout()->setRowStretch(7,1);
+
+		connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),m_pUseWindowsFakeDesktopTransparencyBoolSelector,SLOT(setEnabled(bool)));
+		connect(m_pUseWindowsFakeDesktopTransparencyBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableGlobalBackgroundPixmapSelector(bool)));
+
+	#else
+		m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0,5,1,5,__tr2qs_ctx("Transparency blend image:","options"),KviOption_pixmapGlobalTransparencyBackground, KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+		layout()->setRowStretch(6,1);
+	#endif //!COMPILE_X11_SUPPORT
+
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableGlobalBackgroundPixmapSelector(bool)));
 #else //!COMPILE_PSEUDO_TRANSPARENCY
 	createLayout();
@@ -127,7 +143,13 @@ KviThemeTransparencyOptionsWidget::~KviThemeTransparencyOptionsWidget()
 void KviThemeTransparencyOptionsWidget::enableGlobalBackgroundPixmapSelector(bool)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	m_pGlobalBackgroundPixmapSelector->setEnabled(m_pUseTransparencyBoolSelector->isChecked() && !(m_pUseCompositingForTransparencyBoolSelector->isChecked()));
+	#ifdef COMPILE_X11_SUPPORT
+		m_pGlobalBackgroundPixmapSelector->setEnabled(m_pUseTransparencyBoolSelector->isChecked() && !(m_pUseCompositingForTransparencyBoolSelector->isChecked()));
+	#elif defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		m_pGlobalBackgroundPixmapSelector->setEnabled(m_pUseTransparencyBoolSelector->isChecked() && !(m_pUseWindowsFakeDesktopTransparencyBoolSelector->isChecked()));
+        #else
+		m_pGlobalBackgroundPixmapSelector->setEnabled(m_pUseTransparencyBoolSelector->isChecked());
+	#endif
 #endif
 }
 

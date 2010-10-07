@@ -78,7 +78,6 @@
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	#include <QPixmap>
-	#include <QPainter>
 	// kvi_app.h
 	extern QPixmap * g_pShadedParentGlobalDesktopBackground;
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -94,6 +93,10 @@ KviFrame::KviFrame()
 : KviTalMainWindow(0,"kvirc_frame")
 {
 	g_pFrame = this;
+	setAutoFillBackground(false);
+	setAttribute(Qt::WA_TranslucentBackground);
+	//disable this flag that gets enabled by qt when using Qt::WA_TranslucentBackground
+	setAttribute(Qt::WA_NoSystemBackground, false);
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
 	
 	m_pWinList  = new KviPointerList<KviWindow>;
@@ -836,22 +839,12 @@ void KviFrame::updatePseudoTransparency()
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	uint uOpacity = KVI_OPTION_UINT(KviOption_uintGlobalWindowOpacityPercent) < 50 ? 50 : KVI_OPTION_UINT(KviOption_uintGlobalWindowOpacityPercent);
 	setWindowOpacity((float) uOpacity / 100);
-
 	if(g_pShadedParentGlobalDesktopBackground)m_pMdi->viewport()->update();
 
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
 		for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())wnd->updateBackgrounds();
 		m_pWindowList->updatePseudoTransparency();
-	}
-
-	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
-	{
-		setAttribute(Qt::WA_TranslucentBackground);
-		setAttribute(Qt::WA_NoSystemBackground);
-	} else {
-		setAttribute(Qt::WA_TranslucentBackground, false);
-		setAttribute(Qt::WA_NoSystemBackground, false);
 	}
 #endif
 }
@@ -1161,19 +1154,6 @@ void KviFrame::setUsesBigPixmaps(bool bUse)
 		}
 	}
 }
-
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-void KviFrame::paintEvent(QPaintEvent *e)
-{
-	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
-	{
-		QPainter *p = new QPainter(this);
-		p->fillRect(e->rect(), palette().brush(QPalette::Window));
-		delete p;
-	}
-}
-#endif
-
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_frame.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -69,6 +69,7 @@ KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par,const char * 
 
 	g_pToolBarGraphicalAppletList->append(this);
 
+	setAutoFillBackground(false);
 	setMouseTracking(true);
 	m_bResizeMode = false;
 

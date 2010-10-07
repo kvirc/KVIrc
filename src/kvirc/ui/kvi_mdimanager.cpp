@@ -79,6 +79,9 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 	m_pTileMethodPopup = new KviTalPopupMenu(this);
 	connect(m_pTileMethodPopup,SIGNAL(activated(int)),this,SLOT(tileMethodMenuActivated(int)));
 	connect(this, SIGNAL(subWindowActivated(QMdiSubWindow *)), this, SLOT(slotSubWindowActivated(QMdiSubWindow *)));
+	
+	setAutoFillBackground(false);
+	viewport()->setAutoFillBackground(false);
 
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);

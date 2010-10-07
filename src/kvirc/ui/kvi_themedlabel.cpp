@@ -32,7 +32,6 @@
 #include "kvi_mdimanager.h"
 
 #include <QPainter>
-#include <QStyleOptionFrameV2>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -45,6 +44,7 @@ KviThemedLabel::KviThemedLabel(QWidget * par, KviWindow * pWindow,const char * n
 	m_pKviWindow = pWindow;
 	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	setContentsMargins(2,2,2,2);
+	setAutoFillBackground(false);
 	applyOptions();
 }
 
@@ -73,26 +73,24 @@ void KviThemedLabel::applyOptions()
 	update();
 }
 
-void KviThemedLabel::paintEvent(QPaintEvent *event)
+void KviThemedLabel::paintEvent(QPaintEvent *e)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	QPainter *p = new QPainter(this);
-	p->setClipRect(contentsRect());
-
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
 		p->setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p->fillRect(event->rect(), col);
+		p->fillRect(contentsRect(), col);
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, event->rect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, event->rect().topLeft());
-		p->drawTiledPixmap(event->rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
+		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;
 #endif
-	QLabel::paintEvent(event);
+	QLabel::paintEvent(e);
 }
 
 void KviThemedLabel::mouseDoubleClickEvent(QMouseEvent *)

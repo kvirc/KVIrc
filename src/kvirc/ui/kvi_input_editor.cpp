@@ -111,6 +111,8 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 
+	setAutoFillBackground(false);
+
 	setFocusPolicy(Qt::StrongFocus);
 	setAcceptDrops(true);
 
@@ -231,28 +233,28 @@ QSize KviInputEditor::sizeHint() const
 
 void KviInputEditor::paintEvent(QPaintEvent *)
 {
-	QPainter *p = new QPainter(this);
+	QPainter p(this);
 	
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
-		p->save();
-		p->setCompositionMode(QPainter::CompositionMode_Source);
+		p.save();
+		p.setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p->fillRect(contentsRect(), col);
-		p->restore();
+		p.fillRect(contentsRect(), col);
+		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
-		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+		p.drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
-		p->fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorInputBackground));
+		p.fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorInputBackground));
 		
 		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap();
 		if(pix)
-			KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),contentsRect(),contentsRect().width(),contentsRect().height());
+			KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),contentsRect(),contentsRect().width(),contentsRect().height());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
@@ -271,7 +273,7 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 	//option.state &= ~(QStyle::State_HasFocus | QStyle::State_Active | QStyle::State_MouseOver); // kill any state that will cause an "active" frame to be painted
 	option.features = QStyleOptionFrameV2::None;
 
-	style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, p, this);
+	style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, &p, this);
 
 	QRect r = style()->subElementRect(QStyle::SE_LineEditContents, &option, this);
 
@@ -280,11 +282,10 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 	r.setRight(r.right() - KVI_INPUT_MARGIN - KVI_INPUT_PADDING);
 	r.setBottom(r.bottom() - KVI_INPUT_MARGIN - KVI_INPUT_PADDING);
 		
-	p->setClipRect(r);
+	p.setClipRect(r);
 
-	p->translate(r.topLeft());
-	drawContents(p);
-	delete p;
+	p.translate(r.topLeft());
+	drawContents(&p);
 }
 
 void KviInputEditor::drawContents(QPainter * p)

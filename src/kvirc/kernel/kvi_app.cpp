@@ -161,6 +161,10 @@ QPixmap                                 * g_pActivityMeterPixmap        = 0;
 
 	KVIRC_API QPixmap               * g_pShadedParentGlobalDesktopBackground = 0; // the pixmap that we use for MdiManager
 	KVIRC_API QPixmap               * g_pShadedChildGlobalDesktopBackground  = 0; // the pixmap that we use for MdiChild
+	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		#include <winuser.h>
+		#include <QDesktopWidget>
+	#endif
 #endif
 
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -1182,18 +1186,50 @@ void KviApp::updatePseudoTransparency()
 	m_bUpdatePseudoTransparencyPending = false;
 	if(KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency))
 	{
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		//TODO this has been tested only under mingw!
+		//TODO this needs winxp: #if (_WIN32_WINNT >= 0x0501)
+		if(KVI_OPTION_BOOL(KviOption_boolUseWindowsDesktopForTransparency))
+		{
+			QSize size = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen()).size();
+			// get the Program Manager
+			HWND hWnd = FindWindow ("Progman", "Program Manager");
+			// Create and setup bitmap
+			HDC bitmap_dc = CreateCompatibleDC(qt_win_display_dc());
+			HBITMAP bitmap = CreateCompatibleBitmap(qt_win_display_dc(), size.width(), size.height());
+			HGDIOBJ null_bitmap = SelectObject(bitmap_dc, bitmap);
+
+			PrintWindow (hWnd, bitmap_dc, 0);
+
+			SelectObject(bitmap_dc, null_bitmap);
+			DeleteDC(bitmap_dc);
+
+			QPixmap pix = QPixmap::fromWinHBITMAP(bitmap);
+
+			DeleteObject(bitmap);
+
+			createGlobalBackgrounds(&pix);
+		} else
+#endif // COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
+
 		if(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap())
 		{
 			createGlobalBackgrounds(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap());
 		} else {
 			//destroy pseudo transparency pixmaps
-			destroyPseudoTransparency();
-			//if we get here, no pseudo transparency method can be used / is enabled. test real transparency methods
+                        destroyPseudoTransparency();
+			//if we get here, no pseudo transparency method can be used / is enabled.
+#ifdef COMPILE_X11_SUPPORT
+			//under x11, we still have to check real transparency methods
 			if(!KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency))
 			{
 				//real transparency is off => turn off transparency support at all
 				KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
 			}
+#else
+			// on other platforms, no way to proceed
+			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
+#endif // COMPILE_X11_SUPPORT
 		}
 	} else {
 		//transparency is disabled
@@ -1243,7 +1279,7 @@ void KviApp::loadRecentEntries()
 	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_RECENT);
 	KviConfig cfg(szTmp,KviConfig::Read);
 	*g_pRecentTopicList = cfg.readStringListEntry("RecentTopicList",QStringList());
-	// *g_pBookmarkList = cfg.readStringListEntry("Bookmarks",QStringList());
+	//*g_pBookmarkList = cfg.readStringListEntry("Bookmarks",QStringList());
 }
 
 void KviApp::saveRecentEntries()

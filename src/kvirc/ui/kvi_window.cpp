@@ -134,6 +134,7 @@ KviWindow::KviWindow(int type,KviFrame * lpFrm,const QString &name,KviConsole * 
 	m_pWindowListItem = 0;
 
 	setMinimumSize(KVI_WINDOW_MIN_WIDTH,KVI_WINDOW_MIN_HEIGHT);
+	//setAutoFillBackground(false);
 	setFocusPolicy(Qt::StrongFocus);
 	connect(g_pApp,SIGNAL(reloadImages()),this,SLOT(reloadImages()));
 }

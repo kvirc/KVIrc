@@ -170,6 +170,12 @@ public:
 	void activate();
 protected:
 	/**
+	* \brief Updates the widget background when moving
+	* \return void
+	*/
+	virtual void moveEvent(QMoveEvent * e);
+
+	/**
 	* \brief Hooks into close event to make user decisions possible
 	* \return void
 	*/
@@ -209,6 +215,13 @@ private slots:
 	* \return void
 	*/
 	void updateSystemPopup();
+
+	/**
+	* \brief This is an ugly woraround for qt 4.6.1 that otherway will display the first console window as transparent
+	* \return void
+	*/
+	void transparencyWorkaround();
+	
 };
 
 #endif //_KVI_MDICHILD_H_

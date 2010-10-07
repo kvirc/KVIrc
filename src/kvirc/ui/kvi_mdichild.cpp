@@ -66,6 +66,8 @@ KviMdiChild::KviMdiChild(KviMdiManager * par, const char * name)
 
 	connect(systemMenu(), SIGNAL(aboutToShow()), this, SLOT(updateSystemPopup()));
 	connect(this, SIGNAL(windowStateChanged(Qt::WindowStates, Qt::WindowStates)), this, SLOT(windowStateChangedEvent(Qt::WindowStates, Qt::WindowStates)));
+
+	QTimer::singleShot( 0, this, SLOT(transparencyWorkaround()));
 }
 
 KviMdiChild::~KviMdiChild()
@@ -78,6 +80,11 @@ KviMdiChild::~KviMdiChild()
 	m_pManager->focusPreviousTopChild();
 }
 
+void KviMdiChild::transparencyWorkaround()
+{
+	setAutoFillBackground(true);
+}
+	
 void KviMdiChild::setRestoredGeometry(const QRect &r)
 {
 	setGeometry(r);
@@ -201,6 +208,21 @@ void KviMdiChild::updateCaption()
 		{
 			((KviWindow*)m_pClient)->updateCaption();
 		}
+}
+
+void KviMdiChild::moveEvent(QMoveEvent *e)
+{
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	//this is not needed for real transparency using compositing
+	if(m_pClient && g_pShadedChildGlobalDesktopBackground)
+	{
+		if(m_pClient->inherits("KviWindow")) // actually this is always the case
+		{
+			((KviWindow *)m_pClient)->updateBackgrounds();
+		}
+	}
+#endif
+	QMdiSubWindow::moveEvent(e);
 }
 
 void KviMdiChild::setClient(QWidget * w)

@@ -171,14 +171,13 @@ KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
 {
 	setObjectName("tree_windowlist");
 	setRootIsDecorated(true);
-	setAttribute(Qt::WA_NoSystemBackground);
-	setAttribute(Qt::WA_OpaquePaintEvent);
-
 	setSelectionMode(QAbstractItemView::NoSelection);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setFont(KVI_OPTION_FONT(KviOption_fontTreeWindowList));
 	setFocusPolicy(Qt::NoFocus);
 	setFrameShape(NoFrame);
+	setAutoFillBackground(false);
+	viewport()->setAutoFillBackground(false);
 }
 
 KviTreeWindowListTreeWidget::~KviTreeWindowListTreeWidget()
