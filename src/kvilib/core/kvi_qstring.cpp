@@ -1117,13 +1117,13 @@ namespace KviQString
 
 	bool matchString(const QString & szExp, const QString & szStr, bool bIsRegExp, bool bExact, bool bCs)
 	{
+#ifdef PURPOSE_UNCLEAR
 		QString szWildcard;
 		QChar * pPtr = (QChar*)szExp.constData();
 
 		if(!pPtr)
-		{
 			return 0;
-		}
+			
 		while(pPtr->unicode())
 		{
 			if((pPtr->unicode() == '[') || (pPtr->unicode() == ']'))
@@ -1137,11 +1137,11 @@ namespace KviQString
 			pPtr++;
 		}
 		QRegExp re(szWildcard,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive,bIsRegExp ? QRegExp::RegExp : QRegExp::Wildcard);
-
+#else
+		QRegExp re(szExp,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive,bIsRegExp ? QRegExp::RegExp : QRegExp::Wildcard);
+#endif
 		if(bExact)
-		{
 			return re.exactMatch(szStr);
-		}
 		return re.indexIn(szStr) != -1;
 	}
 
