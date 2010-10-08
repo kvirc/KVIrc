@@ -502,9 +502,8 @@ KVSO_CLASS_FUNCTION(socket,write)
 			{
 				KviKvsVariant * pVar = pArray->at(i);
 				kvs_int_t iValue;
-				if(pVar->isInteger())
+				if(pVar->asInteger(iValue))
 				{
-					pVar->asInteger(iValue);
 					if(iValue < 256 && iValue >= 0)
 					{
 						m_pOutBuffer->append((unsigned char)iValue);
