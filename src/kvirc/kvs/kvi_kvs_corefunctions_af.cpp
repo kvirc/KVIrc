@@ -43,6 +43,9 @@
 #include "kvi_sslmaster.h"
 #include "kvi_options.h"
 
+#include "kvi_kvs_aliasmanager.h"
+#include "kvi_kvs_script.h"
+
 // date includes
 #include <QDateTime>
 #include <QString>
@@ -101,6 +104,40 @@ namespace KviKvsCoreFunctions
 		}
 
 		KVSCF_pRetBuffer->setInteger((kvs_int_t)(wnd ? wnd->numericId() : 0));
+		return true;
+	}
+
+	///////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: aliasBody
+		@type:
+			function
+		@title:
+			$aliasBody
+		@short:
+			Returns the body of an alias, if it exists
+		@syntax:
+			<string> $aliasBody(<alias_name:string>)
+		@description:
+			Returns the KVS body of the specified alias.
+			If the alias doesn't exist it just returns an empty string.
+		@seealso:
+			[cmd]alias[/cmd]
+	*/
+
+	KVSCF(aliasBody)
+	{
+		QString szAliasName;
+		KVSCF_PARAMETERS_BEGIN
+			KVSCF_PARAMETER("alias_name",KVS_PT_STRING,0,szAliasName)
+		KVSCF_PARAMETERS_END
+
+		const KviKvsScript * pAlias = KviKvsAliasManager::instance()->lookup(szAliasName);
+		if(pAlias)
+			KVSCF_pRetBuffer->setString(pAlias->code());
+		else
+			KVSCF_pRetBuffer->setString(QString());
 		return true;
 	}
 

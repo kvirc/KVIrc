@@ -44,6 +44,7 @@ namespace KviKvsCoreFunctions
 
 		// a_f
 		_REGFNC("active",active)
+		_REGFNC("aliasBody",aliasBody)
 		_REGFNC("array",array)
 		_REGFNC("ascii",unicode)
 		_REGFNC("asciiToHex",asciiToHex)

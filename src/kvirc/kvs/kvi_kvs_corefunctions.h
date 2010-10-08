@@ -51,6 +51,7 @@ namespace KviKvsCoreFunctions
 {
 	// a_f
 	KVSCF(active);
+	KVSCF(aliasBody);
 	KVSCF(array);
 	KVSCF(asciiToBase64);
 	KVSCF(asciiToHex);
