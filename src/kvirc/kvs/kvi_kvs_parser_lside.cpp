@@ -470,7 +470,9 @@ end_of_the_param:
 		<search pattern> may contain parentheses to capture parts of the matched text.
 		<replacement string> can contain the escape sequences \\N where N is a number between 1 and 9
 		to be replaced by the captured text.[br]
-		(We use \\N because KVIrc will first unquote the string when parsing...)[br]
+		Please note that you need to double the backslashes in the search pattern 
+		since the KVS parser will first unquote the string and then pass it to the regexp engine.
+		That's also why we use \\N and not \N.[br]
 		\\0 is a special escape that will be replaced by the entire match (is always valid!).[br]
 		[flags] may be a combination of the letters 'g','i' and 'w'.[br]
 		'g' causes the search to be global and not stop after the first occurence of <search pattern>.[br]

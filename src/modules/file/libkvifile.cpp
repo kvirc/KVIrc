@@ -202,7 +202,7 @@ static bool file_kvs_cmd_delimagepath(KviKvsModuleCommandCall * c)
 	@keyterms:
 		writing data to files
 	@short:
-		Writes an ascii data string to a file
+		Writes character data string to a file
 	@syntax:
 		file.write [-a] [-l] <filename:string> <data:string>
 	@switches:
@@ -212,14 +212,16 @@ static bool file_kvs_cmd_delimagepath(KviKvsModuleCommandCall * c)
 		Causes the file to be written in the local 8 bit character set instead of the
 		default utf8.
 	@description:
-		Writes <data> (which is an ASCII string) to the file <filename>.[br]
+		Writes <data> (which is a string of characters) to the file <filename>.[br]
 		It does NOT append a traling LF character: if you want it you must explicitly specify it in the <data> parameter.[br]
 		-a causes the command to append the <data> to the file instead of overwriting the entire file.[br]
 		The path is adjusted according to the system that KVIrc
 		is running on so you don't have to bother about portability: it *should* be automatically
 		guaranteed. Just use UNIX style paths for them.[br]
 		The file is saved in utf8 unless the -l switch is specified (in that case the local 8 bit encoding is used).
-		Please note that uf8 is the only character set that preserves ALL the possible characters.
+		Please note that utf8 is the only character set that preserves ALL the possible characters
+		with the exception of the null terminator. If you want to write binary data
+		take a look at [fnc]$file.writeBytes[/cmd] instead.
 	@seealso:
 		[cmd]file.rename[/cmd], [fnc]$file.exists[/fnc]
 */
@@ -240,6 +242,84 @@ static bool file_kvs_cmd_write(KviKvsModuleCommandCall * c)
 
 	if(!bRet)
 		c->warning(__tr2qs("Failed to write to file %Q: the destination couldn't be opened"),&szFileName);
+
+	return true;
+}
+
+/*
+	@doc: file.writeBytes
+	@type:
+		command
+	@title:
+		file.writeBytes
+	@keyterms:
+		writing data to files
+	@short:
+		Writes binary data string to a file
+	@syntax:
+		file.writeBytes [-a] <filename:string> <dataArray:array>
+	@switches:
+		!sw: -a | --append
+		If the file already exists, append the data instead of overwriting the original contents.
+	@description:
+		Writes <dataArray> (which must be an array) to the file <filename>.[br]
+		The array should either contain integers between 0 and 255, which will be written as bytes,
+		or strings, which will be written in utf8 encoding.
+		-a causes the command to append the <data> to the file instead of overwriting the entire file.[br]
+		The path is adjusted according to the system that KVIrc
+		is running on so you don't have to bother about portability: it *should* be automatically
+		guaranteed. Just use UNIX style paths for them.[br]
+	@examples:
+		[example]
+			for(%i=0;%i<256;%i++)
+				%a[%i] = %i
+			file.writeBytes "/home/pragma/test.bin" %a
+		[/example]
+	@seealso:
+		[cmd]file.rename[/cmd], [fnc]$file.exists[/fnc], [fnc]$file.write[/fnc]
+*/
+static bool file_kvs_cmd_writeBytes(KviKvsModuleCommandCall * c)
+{
+	QString szFileName;
+	KviKvsArray * pArray = NULL;
+	
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("filename",KVS_PT_NONEMPTYSTRING,0,szFileName)
+		KVSM_PARAMETER("dataArray",KVS_PT_ARRAY,0,pArray)
+	KVSM_PARAMETERS_END(c)
+
+	KviFileUtils::adjustFilePath(szFileName);
+
+	if(!pArray)
+		return c->error(__tr2qs("Missing data array"));
+
+	KviFile f(szFileName);
+	if(!f.open(QFile::WriteOnly | (c->switches()->find('a',"append") ? QFile::Append : QFile::Truncate)))
+	{
+		c->warning(__tr2qs("Can't open file %1 for writing").arg(szFileName));
+		return true;
+	}
+
+	QByteArray aBuffer;
+
+	for(kvs_uint_t i=0;i<pArray->size();i++)
+	{
+		KviKvsVariant * pData = pArray->at(i);
+		kvs_int_t iValue;
+		if(pData->asInteger(iValue))
+		{
+			aBuffer.append((char)iValue);
+		} else {
+			QString szValue;
+			pData->asString(szValue);
+			aBuffer.append(szValue.toUtf8());
+		}
+	}
+
+	if(!aBuffer.data())
+		return true; // nothing to do
+	if(f.write(aBuffer.data(),aBuffer.length()) != ((unsigned int)(aBuffer.length())))
+		c->warning(__tr2qs("Error writing bytes to file %1").arg(szFileName));
 
 	return true;
 }
@@ -704,6 +784,7 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 		expect strange results.[br] If <size> is not specified, then KVIrc tries to read
 		the whole file up to the 1 MiB limit (so if you want to read a file that is
 		bigger thatn 1 MiB then you MUST specify the <size>).[br]
+		If you want read binary data (with null bytes inside) then take a look at [fnc]$file.readBytes[/fnc].
 		WARNING: always check the file size before attemting to read a whole file...
 		reading a CDROM iso image may sit down your system :) (and will prolly crash while
 		allocating memory, before attempting to read anything)[br]
@@ -717,7 +798,7 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 			echo $file.read(/proc/cpuinfo)
 		[/example]
 	@seealso:
-		[fnc]$file.readbinary[/fnc]
+		[fnc]$file.readBytes[/fnc]
 */
 static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 {
@@ -746,14 +827,6 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 
 	while((uReaded < uSize) && (!f.atEnd()))
 	{
-		int readedNow = f.read(buf + uReaded,uSize - uReaded);
-		if(readedNow < 0)
-		{
-			kvi_free(buf);
-			c->warning(__tr2qs("Read error for file %Q"),&szNameZ);
-			return true;
-		} else readedNow += uReaded;
-		uRetries ++;
 		if(uRetries > 1000)
 		{
 			// ops
@@ -761,7 +834,18 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 			c->warning(__tr2qs("Read error for file %Q (have been unable to read the requested size in 1000 retries)"),&szNameZ);
 			return true;
 		}
+
+		int readedNow = f.read(buf + uReaded,uSize - uReaded);
+
+		if(readedNow < 0)
+		{
+			kvi_free(buf);
+			c->warning(__tr2qs("Read error for file %Q"),&szNameZ);
+			return true;
+		}
+
 		uReaded += readedNow;
+		uRetries++;
 	}
 
 	buf[uReaded] = '\0';
@@ -770,6 +854,102 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 		c->returnValue()->setString(QString::fromUtf8(buf));
 	else
 		c->returnValue()->setString(QString::fromLocal8Bit(buf));
+
+	kvi_free(buf);
+
+	return true;
+}
+
+/*
+	@doc: file.readBytes
+	@type:
+		function
+	@title:
+		$file.readBytes
+	@short:
+		Reads a binary file
+	@syntax:
+		<array> $file.read(<filename:string>[,<size:integer>])
+	@description:
+		Reads at most <size> bytes of the file pointed by <filename>
+		and returns it as an array of integers (bytes).
+		<size> is an upper limit but may be not reached if the real file is smaller.[br]
+		If <size> is not specified, then KVIrc tries to read
+		the whole file up to the 1 MiB limit (so if you want to read a file that is
+		bigger thatn 1 MiB then you MUST specify the <size>).[br]
+		If you want simple text data then take a look at [fnc]$file.read[/fnc].
+		WARNING: always check the file size before attemting to read a whole file...
+		reading a CDROM iso image may sit down your system :) (and will prolly crash while
+		allocating memory, before attempting to read anything)[br]
+		An empty array (or just "nothing") is returned if a serious error occures.[br]
+		The <filename> is adjusted according to the system that KVIrc is running on.[br]
+	@examples:
+		[example]
+			echo $file.readBytes(/proc/cpuinfo)
+		[/example]
+	@seealso:
+		[fnc]$file.read[/fnc], [cmd]file.writeBytes[/cmd]
+*/
+static bool file_kvs_fnc_readBytes(KviKvsModuleFunctionCall * c)
+{
+	QString szNameZ;
+	kvs_uint_t uSize;
+	QString szFlags;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("filename",KVS_PT_NONEMPTYSTRING,0,szNameZ)
+		KVSM_PARAMETER("size",KVS_PT_UINT,KVS_PF_OPTIONAL,uSize)
+	KVSM_PARAMETERS_END(c)
+	KviFileUtils::adjustFilePath(szNameZ);
+
+	QFile f(szNameZ);
+	if(!f.open(QIODevice::ReadOnly))
+	{
+		c->warning(__tr2qs("Can't open the file \"%Q\" for reading"),&szNameZ);
+		return true;
+	}
+
+	if(c->params()->count() < 2)
+		uSize = 1024 * 1024; // 1 meg file default
+
+	unsigned char * buf = (unsigned char *)kvi_malloc(sizeof(char) * (uSize + 1));
+	unsigned int uReaded = 0;
+	unsigned int uRetries = 0;
+
+	while((uReaded < uSize) && (!f.atEnd()))
+	{
+		if(uRetries > 1000)
+		{
+			// ops
+			kvi_free(buf);
+			c->warning(__tr2qs("Read error for file %Q (have been unable to read the requested size in 1000 retries)"),&szNameZ);
+			return true;
+		}
+
+		int readedNow = f.read((char *)(buf + uReaded),uSize - uReaded);
+
+		if(readedNow < 0)
+		{
+			kvi_free(buf);
+			c->warning(__tr2qs("Read error for file %Q"),&szNameZ);
+			return true;
+		}
+
+		uReaded += readedNow;
+		uRetries++;
+	}
+
+	KviKvsArray * pArray = new KviKvsArray();
+
+	kvs_uint_t u = 0;
+	unsigned char * p = buf;
+	while(u < uReaded)
+	{
+		pArray->set(u,new KviKvsVariant((kvs_int_t)(*p)));
+		u++;
+		p++;
+	}
+
+	c->returnValue()->setArray(pArray);
 
 	kvi_free(buf);
 
@@ -1348,6 +1528,7 @@ static bool file_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"rename",file_kvs_cmd_rename);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"rmdir",file_kvs_cmd_rmdir);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"write",file_kvs_cmd_write);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"writeBytes",file_kvs_cmd_writeBytes);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"writeLines",file_kvs_cmd_writeLines);
 
 	KVSM_REGISTER_FUNCTION(m,"allsizes",file_kvs_fnc_allSizes);
@@ -1363,6 +1544,7 @@ static bool file_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"ls",file_kvs_fnc_ls);
 	KVSM_REGISTER_FUNCTION(m,"ps",file_kvs_fnc_ps);
 	KVSM_REGISTER_FUNCTION(m,"read",file_kvs_fnc_read);
+	KVSM_REGISTER_FUNCTION(m,"readBytes",file_kvs_fnc_readBytes);
 	KVSM_REGISTER_FUNCTION(m,"readLines",file_kvs_fnc_readLines);
 	KVSM_REGISTER_FUNCTION(m,"rootdir",file_kvs_fnc_rootdir);
 	KVSM_REGISTER_FUNCTION(m,"size",file_kvs_fnc_size);

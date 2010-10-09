@@ -334,6 +334,7 @@ namespace KviKvsParameterProcessor
 					} else {
 						*((KviKvsArray **)(pFmtArray->pContainer)) = v->array();
 					}
+				break;
 				case KVS_PT_BOOL:
 					// this never fails: anything is converted to a boolean
 					*((bool *)(pFmtArray->pContainer)) = v->asBoolean();
