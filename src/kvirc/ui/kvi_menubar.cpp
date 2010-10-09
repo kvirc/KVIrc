@@ -184,8 +184,11 @@ void KviMenuBar::setupSettingsPopup()
 	ACTION_POPUP_ITEM(KVI_COREACTION_MANAGETHEMES,opt)
 	ACTION_POPUP_ITEM(KVI_COREACTION_MANAGEADDONS,opt)
 
-	opt->insertSeparator();
-	opt->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)),__tr2qs("&Save Configuration"),g_pApp,SLOT(saveConfiguration()));
+	// In 2010 this is not professional :D
+	// The app must take care of saving user options whenever they are changed.
+	// 
+	//opt->insertSeparator();
+	//opt->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)),__tr2qs("&Save Configuration"),g_pApp,SLOT(saveConfiguration()));
 }
 
 void KviMenuBar::setupScriptingPopup()

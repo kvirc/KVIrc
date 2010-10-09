@@ -52,17 +52,22 @@ extern int g_iOptionWidgetInstances;
 	@title:
 		options.save
 	@short:
-		Saves the options to disk
+		Saves the configuration to disk
 	@syntax:
 		options.save
 	@description:
 		Saves the options to disk; this includes aliases, popups,
-		events and user preferences.
+		events and all user preferences. You shouldn't need to
+		call this as KVIrc *should* save the relevant part of
+		configuration when it's changed. However you might want it
+		in a debugging session or when testing an unstable version
+		where crashes are possible.
 */
 
 static bool options_kvs_cmd_save(KviKvsModuleCommandCall *)
 {
-	g_pApp->saveOptions();
+	//g_pApp->saveOptions();
+	g_pApp->saveConfiguration();
 	return true;
 }
 
