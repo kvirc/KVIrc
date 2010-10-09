@@ -2101,6 +2101,102 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 	{
 		if(m_pListView->m_pKviWindow->input())
 			((QWidget*)(m_pListView->m_pKviWindow->input()))->setFocus();
+	} else if(e->key() == Qt::Key_Up)
+	{
+		if(m_pListView->m_iSelectedCount == 0)
+		{
+			KviUserListEntry * pNick = m_pListView->m_pHeadItem;
+			if(pNick)
+			{
+				pNick->m_bSelected = true;
+				m_pListView->ensureVisible(pNick->nick());
+			}
+		} else {
+			KviUserListEntry * pAux = m_pListView->m_pHeadItem;
+			KviUserListEntry * pNick=0;
+			while(pAux)
+			{
+				if(pAux->m_bSelected)
+				{
+					if(e->modifiers() & Qt::ShiftModifier)
+					{
+						if(pAux != m_pListView->m_pHeadItem)
+						{
+							m_pListView->m_iSelectedCount++;
+							pNick = pAux->m_pPrev;
+						}
+						break;
+					} else {
+						pAux->m_bSelected=false;
+
+						if(!pNick)
+						{
+							if(pAux == m_pListView->m_pHeadItem)
+								pNick=m_pListView->m_pTailItem;
+							else 
+								pNick = pAux->m_pPrev;
+						}
+					}
+				}
+				pAux = pAux->m_pNext;
+			}
+
+			if(pNick)
+			{
+				pNick->m_bSelected=true;
+				m_pListView->ensureVisible(pNick->nick());
+			}
+		}
+		g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+		update();
+	} else if(e->key() == Qt::Key_Down)
+	{
+		if(m_pListView->m_iSelectedCount == 0)
+		{
+			KviUserListEntry * pNick = m_pListView->m_pHeadItem;
+			if(pNick)
+			{
+				pNick->m_bSelected = true;
+				m_pListView->ensureVisible(pNick->nick());
+			}
+		} else {
+			KviUserListEntry * pAux = m_pListView->m_pTailItem;
+			KviUserListEntry * pNick=0;
+			while(pAux)
+			{
+				if(pAux->m_bSelected)
+				{
+					if(e->modifiers() & Qt::ShiftModifier)
+					{
+						if(pAux != m_pListView->m_pTailItem)
+						{
+							m_pListView->m_iSelectedCount++;
+							pNick = pAux->m_pNext;
+						}
+						break;
+					} else {
+						pAux->m_bSelected=false;
+
+						if(!pNick)
+						{
+							if(pAux == m_pListView->m_pTailItem)
+								pNick=m_pListView->m_pHeadItem;
+							else 
+								pNick = pAux->m_pNext;
+						}
+					}
+				}
+				pAux = pAux->m_pPrev;
+			}
+
+			if(pNick)
+			{
+				pNick->m_bSelected=true;
+				m_pListView->ensureVisible(pNick->nick());
+			}
+		}
+		g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+		update();
 	} else if(e->matches(QKeySequence::SelectAll)) {
 		KviUserListEntry * pAux = m_pListView->m_pHeadItem;
 		while(pAux)
