@@ -843,10 +843,12 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(popup)
 	{
-		QString szParams;
+		KviKvsVariantList lParameters;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("params",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szParams)
+			KVSCSC_PARAMETER("params",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,lParameters)
 		KVSCSC_PARAMETERS_END
+
+		//c->warning(__tr2qs("/popup is deprecated: use /popup.show instead")); <-- do it sometime in the future
 
 		// We just alias the popup.show function
 		QString szSwitches="";
@@ -858,8 +860,12 @@ namespace KviKvsCoreSimpleCommands
 			szSwitches.append(QString("-p=\"%1\" ").arg(szCoords));
 		}
 
+		QString szParams;
+		for(unsigned int i=0;i<lParameters.count();i++)
+			szParams.append(QString::fromAscii(" $%1 ").arg(i));
+
 		KviKvsScript s("popup","popup.show " + szSwitches + szParams);
-		s.run(KVSCSC_pContext->window());
+		s.run(KVSCSC_pContext->window(),&lParameters,0,KviKvsScript::PreserveParams);
 		return true;
 	}
 

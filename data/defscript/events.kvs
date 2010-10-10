@@ -2,32 +2,32 @@
 
 event(OnDccChatPopupRequest,default)
 {
-	popup dccchat $dcc.remoteNick($0);
+	popup.show dccchat $dcc.remoteNick($0);
 }
 
 event(OnChannelPopupRequest,default)
 {
-	popup channeltextview $target;
+	popup.show channeltextview $target;
 }
 
 event(OnConsolePopupRequest,default)
 {
-	popup consoletextview;
+	popup.show consoletextview;
 }
 
 event(OnChannelLinkPopupRequest,default)
 {
-	if($0 != "") popup channelpopup $0;
+	if($0 != "") popup.show channelpopup.show $0;
 }
 
 event(OnQueryPopupRequest,default)
 {
-	if($target) popup querytextview $target;
+	if($target) popup.show querytextview $target;
 }
 
 event(OnQueryNickPopupRequest,default)
 {
-	if($0 != "") popup querytextview $0;
+	if($0 != "") popup.show querytextview $0;
 }
 
 event(OnQueryFileDropped,default)
@@ -42,7 +42,7 @@ event(OnNickLinkDefaultActionRequest,default)
 
 event(OnNickLinkPopupRequest,default)
 {
-	if($0 != "") popup defaulttextview $0;
+	if($0 != "") popup.show defaulttextview $0;
 }
 
 event(OnNotifyListDefaultActionRequest,default)
@@ -55,19 +55,19 @@ event(OnNotifyListDefaultActionRequest,default)
 
 event(OnNotifyListPopupRequest,default)
 {
-	if($0 != "") popup defaulttextview $0;
+	if($0 != "") popup.show defaulttextview $0;
 };
 
 event(OnWindowPopupRequest,default)
 {
-	popup windowpopup;
+	popup.show windowpopup;
 }
 
 event(OnChannelWindowCreated,default)
 {
 	button(w,Logging,119,Logging)
 	{
-		popup -p=$0,$1 logging;
+		popup.show -p=$0,$1 logging;
 	}
 }
 
@@ -75,7 +75,7 @@ event(OnQueryWindowCreated,default)
 {
 	button(w,Logging,119,Logging)
 	{
-		popup -p=$0,$1 logging;
+		popup.show -p=$0,$1 logging;
 	}
 }
 
@@ -83,7 +83,7 @@ event(OnDCCChatWindowCreated,default)
 {
 	button(w,Logging,119,Logging)
 	{
-		popup -p=$0,$1 logging;
+		popup.show -p=$0,$1 logging;
 	}
 }
 
@@ -99,7 +99,7 @@ event(OnChannelNickLinkClick,default)
 
 event(OnChannelNickPopupRequest,default)
 {
-	if($0 != "") popup channel $0;
+	if($0 != "") popup.show channel $0;
 }
 
 event(OnChannelNickDefaultActionRequest,default)
@@ -114,10 +114,10 @@ event(OnURLLinkClick,default)
 
 event(OnURLLinkPopupRequest,URL popup)
 {
-	popup urlpopup $0
+	popup.show urlpopup.show $0
 }
 
 event(OnHostLinkPopupRequest,default)
 {
-	popup hostpopup $0;
+	popup.show hostpopup.show $0;
 }
