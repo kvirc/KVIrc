@@ -199,13 +199,6 @@ private:
 	static KviKvsVariant* unserializeRealOrInteger(const QChar** aux);
 	static KviKvsVariant* unserializeReal(const QChar** aux,QString& data);
 	static KviKvsVariant* unserializeInteger(const QChar** aux,QString& data);
-	
-	/**
-	* \brief Escapes any kvs special character from a string
-	* \param szData The string to escape
-	* \return void
-	*/
-	static void escapeString(QString * szData);
 };
 
 #include "kvi_kvs_array.h"

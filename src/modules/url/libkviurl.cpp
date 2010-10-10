@@ -39,6 +39,7 @@
 #include "kvi_tal_popupmenu.h"
 #include "kvi_window.h"
 #include "kvi_options.h"
+#include "kvi_qstring.h"
 #include "kvi_out.h"
 
 #include <QFileDialog>
@@ -307,7 +308,9 @@ void UrlDialog::findtext()
 void UrlDialog::dblclk_url(QTreeWidgetItem *item, int)
 {
 	QString cmd="openurl ";
-	cmd.append(item->text(0));
+	QString szUrl = item->text(0);
+	KviQString::escapeKvs(&szUrl);
+	cmd.append(szUrl);
 	KviKvsScript::run(cmd,this);
 }
 
@@ -344,12 +347,18 @@ void UrlDialog::contextMenu(const QPoint &point)
 void UrlDialog::sayToWin(QAction * act)
 {
 	KviWindow *wnd = g_pApp->findWindowByCaption(act->text());
-	QString say=QString("PRIVMSG %1 %2").arg(wnd->windowName(), m_szUrl);
 	if(wnd)
 	{
+		QString szUrl = m_szUrl;
+		QString szWindow = wnd->windowName();
+		KviQString::escapeKvs(&szUrl);
+		KviQString::escapeKvs(&szWindow);
+		QString say=QString("PRIVMSG %1 %2").arg(szWindow, szUrl);
 		KviKvsScript::run(say,wnd);
 		g_pFrame->setActiveWindow(wnd);
-	} else QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),__tr2qs("Window not found."),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	} else {
+		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),__tr2qs("Window not found."),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	}
 }
 
 QPixmap *UrlDialog::myIconPtr()

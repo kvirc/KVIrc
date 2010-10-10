@@ -1337,4 +1337,30 @@ namespace KviQString
 			pcBuffer++;
 		}
 	}
+
+	void escapeKvs(QString * szData, uint uFlags)
+	{
+		// escape any $;\%
+		szData->replace("\\","\\\\");
+		szData->replace("\"","\\\"");
+		szData->replace(";","\\;");
+		if(!(uFlags & PermitFunctions))
+			szData->replace("$","\\$");
+		if(!(uFlags & PermitVariables))
+			szData->replace("%","\\%");
+		if(!(uFlags & PermitMultiLine))
+		{
+			szData->replace("\r"," ");
+			szData->replace("\n"," ");
+		}
+		if(uFlags & EscapeSpace)
+			szData->replace(" ","\\ ");
+
+		/*
+		szData->replace("(","\\(");
+		szData->replace(")","\\)");
+		szData->replace("-","\\-");
+		szData->replace("+","\\+");
+		*/
+	}
 }

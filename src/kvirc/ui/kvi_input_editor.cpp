@@ -39,6 +39,7 @@
 #include "kvi_mdimanager.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_options.h"
+#include "kvi_qstring.h"
 #include "kvi_out.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_texticonwin.h"
@@ -190,8 +191,8 @@ void KviInputEditor::dropEvent(QDropEvent * e)
 				if(szPath.endsWith(KVI_FILEEXTENSION_SCRIPT,Qt::CaseInsensitive))
 				{
 					//script, parse it
-					szPath.prepend("PARSE \"");
-					szPath.append("\"");
+					KviQString::escapeKvs(&szPath, KviQString::EscapeSpace);
+					szPath.prepend("PARSE ");
 					if(m_pKviWindow)
 						KviKvsScript::run(szPath,m_pKviWindow);
 				} else {
@@ -1029,11 +1030,11 @@ void KviInputEditor::stopPasteSlow()
 void KviInputEditor::pasteFile()
 {
 	QString szTmp = QFileDialog::getOpenFileName(this,"Choose a file","","");
-	if(szTmp != "")
+	if(!szTmp.isEmpty())
 	{
-		szTmp.replace("\"", "\\\"");
-		QString szTmp2 = QString("spaste.file \"%1\"").arg(szTmp);
-		KviKvsScript::run(szTmp2,g_pActiveWindow);
+		KviQString::escapeKvs(&szTmp, KviQString::EscapeSpace);
+		szTmp.prepend("spaste.file ");
+		KviKvsScript::run(szTmp, g_pActiveWindow);
 		m_bSpSlowFlag = true;
 	}
 }
@@ -1437,15 +1438,9 @@ void KviInputEditor::getWordBeforeCursor(QString & szBuffer, bool * bIsFirstWord
 
 void KviInputEditor::completionEscapeUnsafeToken(QString &szToken)
 {
-	szToken.replace("\\","\\\\");
-	szToken.replace(";","\\;");
-	szToken.replace("$","\\$");
-	szToken.replace("%","\\%");
-	szToken.replace("\"","\\\"");
-	szToken.replace(" ","\\ ");
+	if(!((KviInput *)(m_pInputParent))->isUserFriendly())
+		KviQString::escapeKvs(&szToken, KviQString::EscapeSpace);
 }
-
-
 
 void KviInputEditor::completion(bool bShift)
 {
@@ -1587,7 +1582,7 @@ void KviInputEditor::completion(bool bShift)
 				}
 			}
 
-			if(bInCommand)
+			if(bInCommand && !bIsCommand)
 			{
 				// escape crazy things like Nick\nquit
 				completionEscapeUnsafeToken(szMatch);

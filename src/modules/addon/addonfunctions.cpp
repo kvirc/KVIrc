@@ -229,17 +229,8 @@ namespace KviAddonFunctions
 		}
 
 		// Now we have all stuff in ~/.config/KVIrc/tmp/$rand
-		if(!
-				KviKvsScript::run(
-						QString::fromAscii("parse \"%1/install.kvs\"")
-								.arg(
-										szUnpackPath
-											.replace("\\","\\\\")
-											.replace("\"","\\\"")
-									),
-						g_pActiveWindow
-					)
-				)
+		KviQString::escapeKvs(&szUnpackPath, KviQString::EscapeSpace);
+		if(!KviKvsScript::run(QString::fromAscii("parse %1/install.kvs").arg(szUnpackPath), g_pActiveWindow))
 		{
 			// Parsing the script failed
 			// However, the user should already be notified via normal script output.

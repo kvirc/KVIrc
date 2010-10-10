@@ -39,7 +39,7 @@
 #include "kvi_ircuserdb.h"
 #include "kvi_frame.h"
 #include "kvi_statusbar.h"
-#include "kvi_userinput.h"
+#include "kvi_qstring.h"
 #include "kvi_sslmaster.h"
 #include "kvi_options.h"
 
@@ -1183,7 +1183,7 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szData)
 		KVSCF_PARAMETERS_END
 
-		KviUserInput::escapeString(szData);
+		KviQString::escapeKvs(&szData);
 
 		KVSCF_pRetBuffer->setString(szData);
 		return true;

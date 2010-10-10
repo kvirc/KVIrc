@@ -17,7 +17,7 @@ event(OnConsolePopupRequest,default)
 
 event(OnChannelLinkPopupRequest,default)
 {
-	if($0 != "") popup.show channelpopup.show $0;
+	if($0 != "") popup.show channelpopup $0;
 }
 
 event(OnQueryPopupRequest,default)
@@ -114,10 +114,10 @@ event(OnURLLinkClick,default)
 
 event(OnURLLinkPopupRequest,URL popup)
 {
-	popup.show urlpopup.show $0
+	popup.show urlpopup $0
 }
 
 event(OnHostLinkPopupRequest,default)
 {
-	popup.show hostpopup.show $0;
+	popup.show hostpopup $0;
 }

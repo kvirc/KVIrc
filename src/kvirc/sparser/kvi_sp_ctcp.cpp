@@ -1647,16 +1647,15 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 					QString szLocalFile = szRemoteFile;
 					g_pIconManager->urlToCachedFileName(szLocalFile);
 					g_pApp->getLocalKvircDirectory(szLocalFilePath,KviApp::Avatars,szLocalFile);
-					szLocalFilePath.replace('\\',"\\\\"); // <-- this is especially for windows
+					KviQString::escapeKvs(&szLocalFilePath, KviQString::EscapeSpace);
 					QString szCommand = "http.get -w=nm ";
 					unsigned int uMaxSize = KVI_OPTION_UINT(KviOption_uintMaximumRequestedAvatarSize);
 					if(uMaxSize > 0)KviQString::appendFormatted(szCommand,"-m=%u ",uMaxSize);
 					szRemoteFile = szRemoteFile.replace(";","%3B");
 					szRemoteFile = szRemoteFile.replace("\"","%22");
 					szCommand += "\""+szRemoteFile+"\"";
-					szCommand += " \"";
+					szCommand += " ";
 					szCommand += szLocalFilePath;
-					szCommand += "\"";
 
 					if(KviKvsScript::run(szCommand,msg->msg->console()))
 					{

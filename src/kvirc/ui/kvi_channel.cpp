@@ -1620,8 +1620,7 @@ void KviChannel::closeEvent(QCloseEvent * e)
 		if(connection())
 		{
 			QString szTmp = KVI_OPTION_STRING(KviOption_stringPartMessage);
-			szTmp.replace(";","\\;");
-			szTmp.replace("\n"," ");
+			KviQString::escapeKvs(&szTmp, KviQString::PermitVariables | KviQString::PermitFunctions);
 			KviKvsVariant vRet;
 
 			if(KviKvsScript::evaluate(szTmp,this,0,&vRet))

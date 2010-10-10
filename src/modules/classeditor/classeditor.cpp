@@ -1559,6 +1559,9 @@ void KviClassEditor::newClass()
 		return;
 	KviClassEditorTreeWidgetItem * pItem = newItem(szClassName,KviClassEditorTreeWidgetItem::Class);
 	
+	KviQString::escapeKvs(&szClassName, KviQString::EscapeSpace);
+	KviQString::escapeKvs(&szinheritsClassName, KviQString::EscapeSpace);
+
 	QString szClass = "class\(";
 	szClass += szClassName + "," + szinheritsClassName;
 	szClass += "){}\n";

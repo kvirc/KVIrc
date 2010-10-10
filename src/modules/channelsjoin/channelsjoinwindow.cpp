@@ -29,6 +29,7 @@
 #include "kvi_selectors.h"
 #include "kvi_app.h"
 #include "kvi_string.h"
+#include "kvi_qstring.h"
 #include "kvi_iconmanager.h"
 #include "kvi_console.h"
 #include "kvi_regchan.h"
@@ -301,6 +302,9 @@ void KviChannelsJoinWindow::joinClicked()
 	if(szTmp.isEmpty())
 		return;
 
+	KviQString::escapeKvs(&szTmp);
+	KviQString::escapeKvs(&szPass);
+
 	QString szCmd = "join ";
 	szCmd += szTmp;
 	szCmd += " ";
@@ -327,6 +331,7 @@ void KviChannelsJoinWindow::regClicked()
 	if(szTmp.isEmpty())
 		return;
 
+	KviQString::escapeKvs(&szTmp);
 	QString szCmd = "regchan.add ";
 	szCmd += szTmp;
 

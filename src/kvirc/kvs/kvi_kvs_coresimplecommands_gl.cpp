@@ -158,6 +158,7 @@ namespace KviKvsCoreSimpleCommands
 		if(szParams.endsWith("()"))
 			szParams.chop(2);
 
+		KviQString::escapeKvs(&szParams);
 		KviKvsScript s("help","help.open " + szSwitches + szParams);
 		s.run(KVSCSC_pContext->window());
 

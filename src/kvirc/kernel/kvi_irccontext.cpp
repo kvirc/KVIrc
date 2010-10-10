@@ -870,10 +870,9 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 			{
 				KVS_TRIGGER_EVENT_0(KviEvent_OnDisconnectRequest,m_pConsole);
 				QString szQuit = szQuitMsg;
-				if(szQuit.isEmpty())szQuit = KVI_OPTION_STRING(KviOption_stringQuitMessage);
-				szQuit.replace(";","\\;");
-				szQuit.replace("\n"," ");
-				szQuit.replace("\r"," ");
+				if(szQuit.isEmpty())
+					szQuit = KVI_OPTION_STRING(KviOption_stringQuitMessage);
+				KviQString::escapeKvs(&szQuit, KviQString::PermitVariables | KviQString::PermitFunctions);
 				QString buffer;
 				KviKvsVariant ret;
 				if(KviKvsScript::evaluate(szQuit,console(),0,&ret))

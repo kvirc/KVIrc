@@ -267,6 +267,7 @@ void KviScriptManagementDialog::uninstallScript()
 
 void KviScriptManagementDialog::getMoreScripts()
 {
+	// If change this introducing not-fixed text, remember to escape this using KviQString::escapeKvs()!
 	KviKvsScript::run("openurl http://www.kvirc.net/?id=addons&version=" KVI_VERSION "." KVI_SOURCES_DATE,g_pActiveWindow);
 }
 

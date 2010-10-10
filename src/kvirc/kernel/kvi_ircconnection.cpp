@@ -1125,9 +1125,7 @@ void KviIrcConnection::useRealName(const QString &szRealName)
 
 	if(!szRealNameBuffer.isEmpty())
 	{
-		szRealNameBuffer.replace(";","\\;");
-		szRealNameBuffer.replace("\n"," ");
-		szRealNameBuffer.replace("\r"," ");
+		KviQString::escapeKvs(&szRealNameBuffer, KviQString::PermitVariables | KviQString::PermitFunctions);
 
 		KviKvsVariant vRet;
 		if(KviKvsScript::evaluate(szRealNameBuffer,console(),0,&vRet))

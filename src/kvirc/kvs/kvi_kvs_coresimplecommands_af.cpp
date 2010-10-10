@@ -941,6 +941,7 @@ namespace KviKvsCoreSimpleCommands
 		if(KVSCSC_pSwitches->find('d',"deep"))szSwitches.append("-d ");
 		if(KVSCSC_pSwitches->find('q',"quiet"))szSwitches.append("-q ");
 
+		KviQString::escapeKvs(&szParams);
 		KviKvsScript s("delpopupitem","popup.delitem " + szSwitches + szParams);
 		s.run(KVSCSC_pContext->window());
 		return true;
@@ -1358,7 +1359,7 @@ namespace KviKvsCoreSimpleCommands
 			try to eval the string built by concatenating "echo" and the result of [fnc]$channel.name[/fnc]
 			inside a channel named "#test;quit" (yes, that's a valid channel name) you'll obtain
 			a disconnection as a side effect. To avoid this you need to use [fnc]$escape[/fnc]() around
-			[fnc]$channel.name[/fnc].
+			[fnc]$chan.name[/fnc].
 		@examples:
 			[example]
 				[comment]# evaluate a variable command[/comment]

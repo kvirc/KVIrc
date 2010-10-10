@@ -957,8 +957,10 @@ void KviChangeUserModeAction::popupActivated(int id)
 			if(idx < text.length())
 			{
 				QChar m = text[idx];
+				QString szNick = c->connection()->userInfo()->nickName();
+				KviQString::escapeKvs(&szNick);
 				QString command = "mode ";
-				command.append(c->connection()->userInfo()->nickName());
+				command.append(szNick);
 				command.append(c->connection()->userInfo()->hasUserMode(m) ? " -" : " +");
 				command.append(m);
 				KviKvsScript::run(command,c);

@@ -128,8 +128,8 @@ void KviAsyncAvatarSelectionDialog::okClicked()
 	if(!m_szAvatarName.isEmpty())
 	{
 		QString tmp = m_szAvatarName;
-		tmp.replace("\\","\\\\",Qt::CaseInsensitive);
-		QString szBuffer=QString("avatar.set \"%1\"").arg(tmp);
+		KviQString::escapeKvs(&tmp, KviQString::EscapeSpace);
+		QString szBuffer=QString("avatar.set %1").arg(tmp);
 		KviKvsScript::run(szBuffer,m_pConnection->console());
 	}
 
@@ -237,8 +237,8 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 			g_pIconManager->urlToCachedFileName(szLocalFile);
 			g_pApp->getLocalKvircDirectory(szLocalFilePath,KviApp::Avatars,szLocalFile);
 
-			szLocalFilePath.replace("\\","\\\\",Qt::CaseInsensitive);
-
+			KviQString::escapeKvs(&szAvatar);
+			KviQString::escapeKvs(&szLocalFilePath);
 			QString szCommand = "http.get -w=nm ";
 				szCommand += szAvatar;
 				szCommand += " ";

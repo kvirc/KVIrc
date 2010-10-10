@@ -46,6 +46,14 @@
 */
 namespace KviQString
 {
+	enum EscapeKvsFlags
+	{
+		EscapeSpace = 0x1,
+		PermitVariables = 0x2,
+		PermitFunctions = 0x4,
+		PermitMultiLine = 0x8
+	};
+
 	/**
 	* \brief A global empty string (note that this is ALSO NULL under Qt 3.x)
 	*/
@@ -830,6 +838,13 @@ namespace KviQString
 		return szNumber.toULongLong(bOk);
 #endif
 	}
+
+	/**
+	* \brief Escapes any kvs special character from a string
+	* \param szData The string to escape
+	* \return void
+	*/
+	extern KVILIB_API void escapeKvs(QString * szData, uint uFlags = 0);
 }
 
 #endif //_KVI_QSTRING_H_
