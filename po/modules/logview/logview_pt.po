@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_logview \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-31 10:02+0200\n"
+"POT-Creation-Date: 2010-10-10 23:23+0200\n"
 "PO-Revision-Date: 2010-03-26 01:08+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -18,21 +18,22 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/logview/logviewmdiwindow.cpp:303
+#: src/modules/logview/logviewmdiwindow.cpp:304
 msgid "%Q on %Q"
 msgstr "%Q em %Q"
 
-#: src/modules/logview/logviewmdiwindow.cpp:251
-msgid "Abort filtering"
-msgstr "Abortar filtragem"
-
-#: src/modules/logview/logviewmdiwindow.cpp:146
+#: src/modules/logview/logviewmdiwindow.cpp:154
 msgid "Apply filter"
 msgstr "Aplicar filtro"
 
 #: src/modules/logview/libkvilogview.cpp:135
 msgid "Browse &Log Files"
 msgstr "Procurar Ficheiros de &Registo"
+
+#: src/modules/logview/logviewmdiwindow.cpp:84
+#, fuzzy
+msgid "Cancel"
+msgstr "Canal"
 
 #: src/modules/logview/logviewwidget.cpp:70
 msgid "Channel"
@@ -42,7 +43,7 @@ msgstr "Canal"
 msgid "Console"
 msgstr "Consola"
 
-#: src/modules/logview/logviewmdiwindow.cpp:115
+#: src/modules/logview/logviewmdiwindow.cpp:123
 msgid "Contents filter"
 msgstr "Filtro de conteúdos"
 
@@ -50,39 +51,35 @@ msgstr "Filtro de conteúdos"
 msgid "DCC Chat"
 msgstr "Conversa DCC"
 
-#: src/modules/logview/logviewmdiwindow.cpp:90
+#: src/modules/logview/logviewmdiwindow.cpp:98
 msgid "Filter"
 msgstr "Filtro"
 
-#: src/modules/logview/logviewmdiwindow.cpp:250
-msgid "Filtering files..."
-msgstr "A filtrar ficheiros..."
-
-#: src/modules/logview/logviewmdiwindow.cpp:81
+#: src/modules/logview/logviewmdiwindow.cpp:89
 msgid "Index"
 msgstr "Índice"
 
-#: src/modules/logview/logviewmdiwindow.cpp:536
+#: src/modules/logview/logviewmdiwindow.cpp:548
 msgid "Log File"
 msgstr "Ficheiro de Registo"
 
-#: src/modules/logview/logviewmdiwindow.cpp:208
+#: src/modules/logview/logviewmdiwindow.cpp:220
 msgid "Log Viewer"
 msgstr "Visualizador de Registos"
 
-#: src/modules/logview/logviewmdiwindow.cpp:124
+#: src/modules/logview/logviewmdiwindow.cpp:132
 msgid "Log contents mask:"
 msgstr "Máscara de conteúdos do registo:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:118
+#: src/modules/logview/logviewmdiwindow.cpp:126
 msgid "Log name mask:"
 msgstr "Máscara de nome do registo:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:138
+#: src/modules/logview/logviewmdiwindow.cpp:146
 msgid "Only newier than"
 msgstr "Apenas mais recente que"
 
-#: src/modules/logview/logviewmdiwindow.cpp:130
+#: src/modules/logview/logviewmdiwindow.cpp:138
 msgid "Only older than"
 msgstr "Apenas mais antigo que"
 
@@ -94,30 +91,36 @@ msgstr "Outro"
 msgid "Query"
 msgstr "Pesquisar"
 
-#: src/modules/logview/logviewmdiwindow.cpp:377
+#: src/modules/logview/logviewmdiwindow.cpp:389
 msgid "Remove all these channel/query log files"
 msgstr "Remover todos estes registos de canais/privados"
 
-#: src/modules/logview/logviewmdiwindow.cpp:378
+#: src/modules/logview/logviewmdiwindow.cpp:390
 msgid "Remove file"
 msgstr "Remover ficheiro"
 
-#: src/modules/logview/logviewmdiwindow.cpp:106
+#: src/modules/logview/logviewmdiwindow.cpp:114
 msgid "Show DCC chat logs"
 msgstr "Mostrar registos de conversas DCC"
 
-#: src/modules/logview/logviewmdiwindow.cpp:94
+#: src/modules/logview/logviewmdiwindow.cpp:102
 msgid "Show channel logs"
 msgstr "Mostrar registos de canal"
 
-#: src/modules/logview/logviewmdiwindow.cpp:102
+#: src/modules/logview/logviewmdiwindow.cpp:110
 msgid "Show console logs"
 msgstr "Mostrar registos de consola"
 
-#: src/modules/logview/logviewmdiwindow.cpp:110
+#: src/modules/logview/logviewmdiwindow.cpp:118
 msgid "Show other logs"
 msgstr "Mostrar outros registos"
 
-#: src/modules/logview/logviewmdiwindow.cpp:98
+#: src/modules/logview/logviewmdiwindow.cpp:106
 msgid "Show query logs"
 msgstr "Mostrar registos de privado"
+
+#~ msgid "Abort filtering"
+#~ msgstr "Abortar filtragem"
+
+#~ msgid "Filtering files..."
+#~ msgstr "A filtrar ficheiros..."

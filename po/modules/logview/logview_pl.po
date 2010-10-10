@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-31 10:02+0200\n"
+"POT-Creation-Date: 2010-10-10 23:23+0200\n"
 "PO-Revision-Date: 2010-06-16 11:39+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -18,21 +18,22 @@ msgstr ""
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 
-#: src/modules/logview/logviewmdiwindow.cpp:303
+#: src/modules/logview/logviewmdiwindow.cpp:304
 msgid "%Q on %Q"
 msgstr "%Q na %Q"
 
-#: src/modules/logview/logviewmdiwindow.cpp:251
-msgid "Abort filtering"
-msgstr "Przerwij fitrowanie"
-
-#: src/modules/logview/logviewmdiwindow.cpp:146
+#: src/modules/logview/logviewmdiwindow.cpp:154
 msgid "Apply filter"
 msgstr "Zastosuj filtr"
 
 #: src/modules/logview/libkvilogview.cpp:135
 msgid "Browse &Log Files"
 msgstr "Przeglą&daj pliki dziennika"
+
+#: src/modules/logview/logviewmdiwindow.cpp:84
+#, fuzzy
+msgid "Cancel"
+msgstr "Kanał"
 
 #: src/modules/logview/logviewwidget.cpp:70
 msgid "Channel"
@@ -42,7 +43,7 @@ msgstr "Kanał"
 msgid "Console"
 msgstr "Konsola"
 
-#: src/modules/logview/logviewmdiwindow.cpp:115
+#: src/modules/logview/logviewmdiwindow.cpp:123
 msgid "Contents filter"
 msgstr "Filtr zawartości"
 
@@ -50,39 +51,35 @@ msgstr "Filtr zawartości"
 msgid "DCC Chat"
 msgstr "DCC Czat"
 
-#: src/modules/logview/logviewmdiwindow.cpp:90
+#: src/modules/logview/logviewmdiwindow.cpp:98
 msgid "Filter"
 msgstr "Filtr"
 
-#: src/modules/logview/logviewmdiwindow.cpp:250
-msgid "Filtering files..."
-msgstr "Filtrowanie plików..."
-
-#: src/modules/logview/logviewmdiwindow.cpp:81
+#: src/modules/logview/logviewmdiwindow.cpp:89
 msgid "Index"
 msgstr "Indeks"
 
-#: src/modules/logview/logviewmdiwindow.cpp:536
+#: src/modules/logview/logviewmdiwindow.cpp:548
 msgid "Log File"
 msgstr "Plik dziennika"
 
-#: src/modules/logview/logviewmdiwindow.cpp:208
+#: src/modules/logview/logviewmdiwindow.cpp:220
 msgid "Log Viewer"
 msgstr "Przeglądarka dziennika"
 
-#: src/modules/logview/logviewmdiwindow.cpp:124
+#: src/modules/logview/logviewmdiwindow.cpp:132
 msgid "Log contents mask:"
 msgstr "Maska zawartości dziennika:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:118
+#: src/modules/logview/logviewmdiwindow.cpp:126
 msgid "Log name mask:"
 msgstr "Maska nazwy dziennika:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:138
+#: src/modules/logview/logviewmdiwindow.cpp:146
 msgid "Only newier than"
 msgstr "Tylko nowsze niż"
 
-#: src/modules/logview/logviewmdiwindow.cpp:130
+#: src/modules/logview/logviewmdiwindow.cpp:138
 msgid "Only older than"
 msgstr "Tylko starsze niż"
 
@@ -94,30 +91,36 @@ msgstr "Inne"
 msgid "Query"
 msgstr "Rozmowa"
 
-#: src/modules/logview/logviewmdiwindow.cpp:377
+#: src/modules/logview/logviewmdiwindow.cpp:389
 msgid "Remove all these channel/query log files"
 msgstr "Usuń wszystkie te pliki dziennika kanału/rozmowy"
 
-#: src/modules/logview/logviewmdiwindow.cpp:378
+#: src/modules/logview/logviewmdiwindow.cpp:390
 msgid "Remove file"
 msgstr "Usuń plik"
 
-#: src/modules/logview/logviewmdiwindow.cpp:106
+#: src/modules/logview/logviewmdiwindow.cpp:114
 msgid "Show DCC chat logs"
 msgstr "Pokaż dzienniki czatu DCC"
 
-#: src/modules/logview/logviewmdiwindow.cpp:94
+#: src/modules/logview/logviewmdiwindow.cpp:102
 msgid "Show channel logs"
 msgstr "Pokaż dzienniki kanałów"
 
-#: src/modules/logview/logviewmdiwindow.cpp:102
+#: src/modules/logview/logviewmdiwindow.cpp:110
 msgid "Show console logs"
 msgstr "Pokaż dzienniki konsoli"
 
-#: src/modules/logview/logviewmdiwindow.cpp:110
+#: src/modules/logview/logviewmdiwindow.cpp:118
 msgid "Show other logs"
 msgstr "Pokaż dzienniki innych zdarzeń"
 
-#: src/modules/logview/logviewmdiwindow.cpp:98
+#: src/modules/logview/logviewmdiwindow.cpp:106
 msgid "Show query logs"
 msgstr "Pokaż dzienniki rozmowy"
+
+#~ msgid "Abort filtering"
+#~ msgstr "Przerwij fitrowanie"
+
+#~ msgid "Filtering files..."
+#~ msgstr "Filtrowanie plików..."

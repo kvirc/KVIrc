@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-18 16:12+0100\n"
+"POT-Creation-Date: 2010-10-10 23:23+0200\n"
 "PO-Revision-Date: 2010-05-18 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr "### Epílogo ###"
 msgid "### Prologue ###"
 msgstr "### Prólogo ###"
 
-#: src/modules/classeditor/classeditor.cpp:2075
+#: src/modules/classeditor/classeditor.cpp:2078
 msgid "&Add"
 msgstr "&Añadir"
 
@@ -67,12 +67,12 @@ msgstr "&Añadir evento en bruto..."
 msgid "&Apply"
 msgstr "&Aplicar"
 
-#: src/modules/classeditor/classeditor.cpp:1827
+#: src/modules/classeditor/classeditor.cpp:1830
 msgid "&Build"
 msgstr "&Compilar"
 
-#: src/modules/classeditor/classeditor.cpp:1983
-#: src/modules/classeditor/classeditor.cpp:2085
+#: src/modules/classeditor/classeditor.cpp:1986
+#: src/modules/classeditor/classeditor.cpp:2088
 #: src/modules/editor/scripteditor.cpp:1049
 msgid "&Cancel"
 msgstr "&Cancelar"
@@ -85,7 +85,7 @@ msgstr "&Configurar editor..."
 msgid "&Copy"
 msgstr "&Copy"
 
-#: src/modules/classeditor/classeditor.cpp:1976
+#: src/modules/classeditor/classeditor.cpp:1979
 msgid "&Create Class"
 msgstr "&Crear clase"
 
@@ -145,11 +145,11 @@ msgstr "&Abrir..."
 msgid "&Paste Below"
 msgstr "&Pegar debajo"
 
-#: src/modules/classeditor/classeditor.cpp:2077
+#: src/modules/classeditor/classeditor.cpp:2080
 msgid "&Rename"
 msgstr "&Renombrar"
 
-#: src/modules/classeditor/classeditor.cpp:1974
+#: src/modules/classeditor/classeditor.cpp:1977
 msgid "&Rename Class"
 msgstr "&Renombrar clase"
 
@@ -163,7 +163,7 @@ msgstr "&Reemplazar"
 msgid "&Replace in all editor's items"
 msgstr "&Reemplazar en todos los aliases"
 
-#: src/modules/classeditor/classeditor.cpp:1832
+#: src/modules/classeditor/classeditor.cpp:1835
 msgid "&Save"
 msgstr "&Guardar..."
 
@@ -247,7 +247,7 @@ msgstr "Añadir función miembro"
 #: src/modules/aliaseditor/aliaseditor.cpp:567
 #: src/modules/aliaseditor/aliaseditor.cpp:1133
 #: src/modules/classeditor/classeditor.cpp:885
-#: src/modules/classeditor/classeditor.cpp:1574
+#: src/modules/classeditor/classeditor.cpp:1577
 msgid "Add Namespace"
 msgstr "Añadir espacio de nombres"
 
@@ -453,7 +453,7 @@ msgstr "Elige la categoría que mejor defina esta acción"
 msgid "Class"
 msgstr "Clase"
 
-#: src/modules/classeditor/classeditor.cpp:1820
+#: src/modules/classeditor/classeditor.cpp:1823
 msgid "Class Editor"
 msgstr "Editor de clases"
 
@@ -466,12 +466,12 @@ msgstr "Exportar clase"
 msgid "Class already exists"
 msgstr "La clase ya existe"
 
-#: src/modules/classeditor/classeditor.cpp:1912
+#: src/modules/classeditor/classeditor.cpp:1915
 msgid "Class names can contain only letters, digits and underscores"
 msgstr ""
 "El nombre de la clase sólo puede contener letras, dígitos y barras bajas"
 
-#: src/modules/classeditor/classeditor.cpp:1837
+#: src/modules/classeditor/classeditor.cpp:1840
 #: src/modules/toolbareditor/toolbareditor.cpp:325
 msgid "Close"
 msgstr "Cerrar"
@@ -496,7 +496,7 @@ msgstr "Colores"
 msgid "Comments:"
 msgstr "Comentarios:"
 
-#: src/modules/classeditor/classeditor.cpp:1687
+#: src/modules/classeditor/classeditor.cpp:1690
 msgid "Compilation error - KVIrc"
 msgstr "Error de compilación - KVIrc"
 
@@ -712,7 +712,7 @@ msgstr ""
 msgid "Function already exists"
 msgstr "La función ya existe"
 
-#: src/modules/classeditor/classeditor.cpp:2030
+#: src/modules/classeditor/classeditor.cpp:2033
 msgid "Function names can contain only letters, digits and underscores"
 msgstr ""
 "Los nombres de las funciones sólo pueden contener letras, dígitos y barras "
@@ -738,7 +738,7 @@ msgstr "Icono:"
 msgid "Id"
 msgstr "ID"
 
-#: src/modules/classeditor/classeditor.cpp:1916
+#: src/modules/classeditor/classeditor.cpp:1919
 msgid ""
 "In rename mode class names can contain only letters, digits and underscores "
 "and namespaces :: separator"
@@ -746,7 +746,7 @@ msgstr ""
 "Los nombres de las clases sólo pueden contener letras, dígitos, barras bajas "
 "y separadores de espacio de nombres '::'"
 
-#: src/modules/classeditor/classeditor.cpp:1929
+#: src/modules/classeditor/classeditor.cpp:1932
 msgid "Inherits Class:"
 msgstr "Hereda la clase:"
 
@@ -1039,11 +1039,11 @@ msgstr "Pegar dentro"
 msgid "Please choose the icon for the ToolBar"
 msgstr "Por favor elige el icono para la barra de herramientas"
 
-#: src/modules/classeditor/classeditor.cpp:1901
+#: src/modules/classeditor/classeditor.cpp:1904
 msgid "Please enter the name for the class:"
 msgstr "Por favor introduce el nombre para la clase:"
 
-#: src/modules/classeditor/classeditor.cpp:2021
+#: src/modules/classeditor/classeditor.cpp:2024
 msgid "Please enter the name for the member function:"
 msgstr "Por favor introduce el nombre para la nueva función:"
 
@@ -1052,7 +1052,7 @@ msgid "Please enter the name for the new alias"
 msgstr "Por favor introduce el nombre para el nuevo alias"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1133
-#: src/modules/classeditor/classeditor.cpp:1574
+#: src/modules/classeditor/classeditor.cpp:1577
 msgid "Please enter the name for the new namespace"
 msgstr "Por favor introduce el nombre para el nuevo espacio de nombres"
 
@@ -1065,7 +1065,7 @@ msgstr "Por favor introduce el nuevo nombre para el alias"
 msgid "Please enter the new name for the namespace"
 msgstr "Por favor introduce el nuevo nombre para el espacio de nombres"
 
-#: src/modules/classeditor/classeditor.cpp:2042
+#: src/modules/classeditor/classeditor.cpp:2045
 #, fuzzy
 msgid "Please enter the optional reminder string for the member function:"
 msgstr "Por favor introduce el nombre para la nueva función:"
@@ -1208,7 +1208,7 @@ msgstr "Falló la Grabación - KVIrc"
 msgid "Separator"
 msgstr "Separador"
 
-#: src/modules/classeditor/classeditor.cpp:2055
+#: src/modules/classeditor/classeditor.cpp:2058
 msgid "Set as <b>Internal</b> Function: "
 msgstr "Configurar como función <b>interna</b>: "
 
@@ -1295,7 +1295,7 @@ msgstr ""
 msgid "There is no selection!"
 msgstr "¡No hay nada seleccionado!"
 
-#: src/modules/classeditor/classeditor.cpp:1678
+#: src/modules/classeditor/classeditor.cpp:1681
 #, fuzzy
 msgid "These inherited classes will be not compiled too:"
 msgstr "Estas clases heredadas no serán compiladas tampoco:"
@@ -1335,7 +1335,7 @@ msgstr "Propiedades de la barra de herramientas"
 msgid "Type"
 msgstr "Tipo"
 
-#: src/modules/classeditor/classeditor.cpp:1671
+#: src/modules/classeditor/classeditor.cpp:1674
 msgid "Unable to compile class: "
 msgstr "No se pudo compilar la clase: "
 

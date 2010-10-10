@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-31 10:02+0200\n"
+"POT-Creation-Date: 2010-10-10 23:23+0200\n"
 "PO-Revision-Date: 2007-03-14 01:19+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -16,21 +16,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/logview/logviewmdiwindow.cpp:303
+#: src/modules/logview/logviewmdiwindow.cpp:304
 msgid "%Q on %Q"
 msgstr "%Q na %Q"
 
-#: src/modules/logview/logviewmdiwindow.cpp:251
-msgid "Abort filtering"
-msgstr "Prekini filtriranje"
-
-#: src/modules/logview/logviewmdiwindow.cpp:146
+#: src/modules/logview/logviewmdiwindow.cpp:154
 msgid "Apply filter"
 msgstr "Prihvati filter"
 
 #: src/modules/logview/libkvilogview.cpp:135
 msgid "Browse &Log Files"
 msgstr "Pregledaj &Log Datoteke"
+
+#: src/modules/logview/logviewmdiwindow.cpp:84
+#, fuzzy
+msgid "Cancel"
+msgstr "Sobe"
 
 #: src/modules/logview/logviewwidget.cpp:70
 msgid "Channel"
@@ -40,7 +41,7 @@ msgstr "Sobe"
 msgid "Console"
 msgstr "Konzole"
 
-#: src/modules/logview/logviewmdiwindow.cpp:115
+#: src/modules/logview/logviewmdiwindow.cpp:123
 msgid "Contents filter"
 msgstr "Filter sadržaja"
 
@@ -48,39 +49,35 @@ msgstr "Filter sadržaja"
 msgid "DCC Chat"
 msgstr "DCC Razgovori"
 
-#: src/modules/logview/logviewmdiwindow.cpp:90
+#: src/modules/logview/logviewmdiwindow.cpp:98
 msgid "Filter"
 msgstr "Filter"
 
-#: src/modules/logview/logviewmdiwindow.cpp:250
-msgid "Filtering files..."
-msgstr "Filtriranje datoteka..."
-
-#: src/modules/logview/logviewmdiwindow.cpp:81
+#: src/modules/logview/logviewmdiwindow.cpp:89
 msgid "Index"
 msgstr "Indeks"
 
-#: src/modules/logview/logviewmdiwindow.cpp:536
+#: src/modules/logview/logviewmdiwindow.cpp:548
 msgid "Log File"
 msgstr "Log Datoteka"
 
-#: src/modules/logview/logviewmdiwindow.cpp:208
+#: src/modules/logview/logviewmdiwindow.cpp:220
 msgid "Log Viewer"
 msgstr "Log Preglednik"
 
-#: src/modules/logview/logviewmdiwindow.cpp:124
+#: src/modules/logview/logviewmdiwindow.cpp:132
 msgid "Log contents mask:"
 msgstr "Maska log sadržaja:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:118
+#: src/modules/logview/logviewmdiwindow.cpp:126
 msgid "Log name mask:"
 msgstr "Maska log imena:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:138
+#: src/modules/logview/logviewmdiwindow.cpp:146
 msgid "Only newier than"
 msgstr "Samo novije od"
 
-#: src/modules/logview/logviewmdiwindow.cpp:130
+#: src/modules/logview/logviewmdiwindow.cpp:138
 msgid "Only older than"
 msgstr "Samo starije od"
 
@@ -92,30 +89,36 @@ msgstr "Ostalo"
 msgid "Query"
 msgstr "Razgovori"
 
-#: src/modules/logview/logviewmdiwindow.cpp:377
+#: src/modules/logview/logviewmdiwindow.cpp:389
 msgid "Remove all these channel/query log files"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:378
+#: src/modules/logview/logviewmdiwindow.cpp:390
 msgid "Remove file"
 msgstr "Ukloni datoteku"
 
-#: src/modules/logview/logviewmdiwindow.cpp:106
+#: src/modules/logview/logviewmdiwindow.cpp:114
 msgid "Show DCC chat logs"
 msgstr "Prikaži logove DCC razgovora"
 
-#: src/modules/logview/logviewmdiwindow.cpp:94
+#: src/modules/logview/logviewmdiwindow.cpp:102
 msgid "Show channel logs"
 msgstr "Prikaži logove soba"
 
-#: src/modules/logview/logviewmdiwindow.cpp:102
+#: src/modules/logview/logviewmdiwindow.cpp:110
 msgid "Show console logs"
 msgstr "Prikaži logove konzola"
 
-#: src/modules/logview/logviewmdiwindow.cpp:110
+#: src/modules/logview/logviewmdiwindow.cpp:118
 msgid "Show other logs"
 msgstr "Prikaži ostale logove"
 
-#: src/modules/logview/logviewmdiwindow.cpp:98
+#: src/modules/logview/logviewmdiwindow.cpp:106
 msgid "Show query logs"
 msgstr "Prikaži logove razgovora"
+
+#~ msgid "Abort filtering"
+#~ msgstr "Prekini filtriranje"
+
+#~ msgid "Filtering files..."
+#~ msgstr "Filtriranje datoteka..."

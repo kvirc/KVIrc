@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-31 10:02+0200\n"
+"POT-Creation-Date: 2010-10-10 23:23+0200\n"
 "PO-Revision-Date: 2010-07-26 16:10+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <elf@elf.no-ip.org>\n"
@@ -15,21 +15,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/logview/logviewmdiwindow.cpp:303
+#: src/modules/logview/logviewmdiwindow.cpp:304
 msgid "%Q on %Q"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:251
-msgid "Abort filtering"
-msgstr "フィルター処理の中断"
-
-#: src/modules/logview/logviewmdiwindow.cpp:146
+#: src/modules/logview/logviewmdiwindow.cpp:154
 msgid "Apply filter"
 msgstr "フィルターの適用"
 
 #: src/modules/logview/libkvilogview.cpp:135
 msgid "Browse &Log Files"
 msgstr "ログファイルの参照(&L)"
+
+#: src/modules/logview/logviewmdiwindow.cpp:84
+#, fuzzy
+msgid "Cancel"
+msgstr "チャンネル"
 
 #: src/modules/logview/logviewwidget.cpp:70
 msgid "Channel"
@@ -39,7 +40,7 @@ msgstr "チャンネル"
 msgid "Console"
 msgstr "コンソール"
 
-#: src/modules/logview/logviewmdiwindow.cpp:115
+#: src/modules/logview/logviewmdiwindow.cpp:123
 msgid "Contents filter"
 msgstr "内容によるフィルター"
 
@@ -47,39 +48,35 @@ msgstr "内容によるフィルター"
 msgid "DCC Chat"
 msgstr "DCC チャット"
 
-#: src/modules/logview/logviewmdiwindow.cpp:90
+#: src/modules/logview/logviewmdiwindow.cpp:98
 msgid "Filter"
 msgstr "フィルター"
 
-#: src/modules/logview/logviewmdiwindow.cpp:250
-msgid "Filtering files..."
-msgstr "ファイルをフィルター処理しています..."
-
-#: src/modules/logview/logviewmdiwindow.cpp:81
+#: src/modules/logview/logviewmdiwindow.cpp:89
 msgid "Index"
 msgstr "索引"
 
-#: src/modules/logview/logviewmdiwindow.cpp:536
+#: src/modules/logview/logviewmdiwindow.cpp:548
 msgid "Log File"
 msgstr "ログ ファイル"
 
-#: src/modules/logview/logviewmdiwindow.cpp:208
+#: src/modules/logview/logviewmdiwindow.cpp:220
 msgid "Log Viewer"
 msgstr "ログ ビュアー"
 
-#: src/modules/logview/logviewmdiwindow.cpp:124
+#: src/modules/logview/logviewmdiwindow.cpp:132
 msgid "Log contents mask:"
 msgstr "ログの内容によるマスク"
 
-#: src/modules/logview/logviewmdiwindow.cpp:118
+#: src/modules/logview/logviewmdiwindow.cpp:126
 msgid "Log name mask:"
 msgstr "ログの名前のマスク:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:138
+#: src/modules/logview/logviewmdiwindow.cpp:146
 msgid "Only newier than"
 msgstr "より新しいもののみ"
 
-#: src/modules/logview/logviewmdiwindow.cpp:130
+#: src/modules/logview/logviewmdiwindow.cpp:138
 msgid "Only older than"
 msgstr "より古いもののみ"
 
@@ -91,30 +88,36 @@ msgstr "その他"
 msgid "Query"
 msgstr "問い合わせ"
 
-#: src/modules/logview/logviewmdiwindow.cpp:377
+#: src/modules/logview/logviewmdiwindow.cpp:389
 msgid "Remove all these channel/query log files"
 msgstr "全チャンネル/問い合わせのログ ファイルを削除する"
 
-#: src/modules/logview/logviewmdiwindow.cpp:378
+#: src/modules/logview/logviewmdiwindow.cpp:390
 msgid "Remove file"
 msgstr "ファイルの削除"
 
-#: src/modules/logview/logviewmdiwindow.cpp:106
+#: src/modules/logview/logviewmdiwindow.cpp:114
 msgid "Show DCC chat logs"
 msgstr "DCC チャットのログの表示"
 
-#: src/modules/logview/logviewmdiwindow.cpp:94
+#: src/modules/logview/logviewmdiwindow.cpp:102
 msgid "Show channel logs"
 msgstr "チャンネルのログの表示"
 
-#: src/modules/logview/logviewmdiwindow.cpp:102
+#: src/modules/logview/logviewmdiwindow.cpp:110
 msgid "Show console logs"
 msgstr "コンソールのログの表示"
 
-#: src/modules/logview/logviewmdiwindow.cpp:110
+#: src/modules/logview/logviewmdiwindow.cpp:118
 msgid "Show other logs"
 msgstr "その他のログの表示"
 
-#: src/modules/logview/logviewmdiwindow.cpp:98
+#: src/modules/logview/logviewmdiwindow.cpp:106
 msgid "Show query logs"
 msgstr "問い合わせのログの表示"
+
+#~ msgid "Abort filtering"
+#~ msgstr "フィルター処理の中断"
+
+#~ msgid "Filtering files..."
+#~ msgstr "ファイルをフィルター処理しています..."

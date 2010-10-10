@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-18 16:12+0100\n"
+"POT-Creation-Date: 2010-10-10 23:23+0200\n"
 "PO-Revision-Date: 2010-05-18 12:21+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -116,7 +116,7 @@ msgid "Export Addon - KVIrc"
 msgstr "Exportar addon - KVIrc"
 
 #: src/modules/addon/addonfunctions.cpp:227
-#: src/modules/addon/addonfunctions.cpp:252
+#: src/modules/addon/addonfunctions.cpp:243
 msgid "Failed to unpack the selected file: %Q"
 msgstr "No se pudo desempaquetar el archivo seleccionado: %Q"
 
@@ -182,8 +182,8 @@ msgstr "Pulsa el botón \"Siguiente\" para comenzar."
 msgid "Icon File"
 msgstr "Archivo de icono"
 
-#: src/modules/addon/managementdialog.cpp:292
-#: src/modules/addon/managementdialog.cpp:306
+#: src/modules/addon/managementdialog.cpp:293
+#: src/modules/addon/managementdialog.cpp:307
 msgid "Install Addon - KVIrc"
 msgstr "Instalar addon - KVIrc"
 
@@ -227,7 +227,7 @@ msgstr "No"
 msgid "No spaces allowed, like MyAddon"
 msgstr "No se permiten espacios, algo como MiAddon"
 
-#: src/modules/addon/addonfunctions.cpp:251
+#: src/modules/addon/addonfunctions.cpp:242
 msgid "One or more files can't be deleted"
 msgstr "Uno o más archivos no pudieron ser eliminados"
 
@@ -278,7 +278,7 @@ msgstr "Versión del paquete"
 msgid "Packaging failed"
 msgstr "Error empaquetando"
 
-#: src/modules/addon/managementdialog.cpp:279
+#: src/modules/addon/managementdialog.cpp:280
 msgid "Please select the addon installation file"
 msgstr "Por favor, selecciona el archivo de instalación del addon"
 
@@ -306,7 +306,8 @@ msgstr "Seleccionar el directorio fuente:"
 msgid "Show Help"
 msgstr "Mostrar ayuda"
 
-#: src/modules/addon/libkviaddon.cpp:691 src/modules/addon/libkviaddon.cpp:714
+#: src/modules/addon/libkviaddon.cpp:691
+#: src/modules/addon/libkviaddon.cpp:714
 msgid "Skipping inexisting entry '%1'"
 msgstr ""
 
@@ -318,9 +319,12 @@ msgstr ""
 msgid "Source Directory"
 msgstr "Directorio de fuente"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:647
 msgid "The addon \"%1\" does not exist"
 msgstr "El addon \"%1\" no existe"
 
@@ -410,7 +414,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Total: %d addons instalados"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Desinstalando el addon existente con la versión %Q"
 

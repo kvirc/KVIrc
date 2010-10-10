@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-18 16:12+0100\n"
+"POT-Creation-Date: 2010-10-10 23:23+0200\n"
 "PO-Revision-Date: 2010-06-14 10:48+0400\n"
 "Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -61,7 +61,7 @@ msgstr "### Эпилог ###"
 msgid "### Prologue ###"
 msgstr "### Пролог ###"
 
-#: src/modules/classeditor/classeditor.cpp:2075
+#: src/modules/classeditor/classeditor.cpp:2078
 msgid "&Add"
 msgstr "Добавить"
 
@@ -76,12 +76,12 @@ msgstr "&Добавить заготовку события..."
 msgid "&Apply"
 msgstr "Применить"
 
-#: src/modules/classeditor/classeditor.cpp:1827
+#: src/modules/classeditor/classeditor.cpp:1830
 msgid "&Build"
 msgstr ""
 
-#: src/modules/classeditor/classeditor.cpp:1983
-#: src/modules/classeditor/classeditor.cpp:2085
+#: src/modules/classeditor/classeditor.cpp:1986
+#: src/modules/classeditor/classeditor.cpp:2088
 #: src/modules/editor/scripteditor.cpp:1049
 msgid "&Cancel"
 msgstr "Отмена"
@@ -94,7 +94,7 @@ msgstr "&Настроить редактор..."
 msgid "&Copy"
 msgstr "Копировать"
 
-#: src/modules/classeditor/classeditor.cpp:1976
+#: src/modules/classeditor/classeditor.cpp:1979
 msgid "&Create Class"
 msgstr "Создать класс"
 
@@ -154,11 +154,11 @@ msgstr "&Открыть..."
 msgid "&Paste Below"
 msgstr "&Вставить снизу"
 
-#: src/modules/classeditor/classeditor.cpp:2077
+#: src/modules/classeditor/classeditor.cpp:2080
 msgid "&Rename"
 msgstr "Переименовать"
 
-#: src/modules/classeditor/classeditor.cpp:1974
+#: src/modules/classeditor/classeditor.cpp:1977
 msgid "&Rename Class"
 msgstr "Переименовать класс"
 
@@ -172,7 +172,7 @@ msgstr "Заменить"
 msgid "&Replace in all editor's items"
 msgstr "Заменить во всех алиасах"
 
-#: src/modules/classeditor/classeditor.cpp:1832
+#: src/modules/classeditor/classeditor.cpp:1835
 msgid "&Save"
 msgstr "Сохранить"
 
@@ -255,7 +255,7 @@ msgstr "Добавить функцию-член"
 #: src/modules/aliaseditor/aliaseditor.cpp:567
 #: src/modules/aliaseditor/aliaseditor.cpp:1133
 #: src/modules/classeditor/classeditor.cpp:885
-#: src/modules/classeditor/classeditor.cpp:1574
+#: src/modules/classeditor/classeditor.cpp:1577
 msgid "Add Namespace"
 msgstr "Добавить пространство имён"
 
@@ -460,7 +460,7 @@ msgstr "Выберите категорию, наиболее пригодную
 msgid "Class"
 msgstr "Класс"
 
-#: src/modules/classeditor/classeditor.cpp:1820
+#: src/modules/classeditor/classeditor.cpp:1823
 msgid "Class Editor"
 msgstr "Редактор классов"
 
@@ -473,11 +473,11 @@ msgstr "Экспорт класса"
 msgid "Class already exists"
 msgstr "Класс уже существует"
 
-#: src/modules/classeditor/classeditor.cpp:1912
+#: src/modules/classeditor/classeditor.cpp:1915
 msgid "Class names can contain only letters, digits and underscores"
 msgstr "Имя класса может содержать только буквы, цифры, и нижние подчеркивания"
 
-#: src/modules/classeditor/classeditor.cpp:1837
+#: src/modules/classeditor/classeditor.cpp:1840
 #: src/modules/toolbareditor/toolbareditor.cpp:325
 msgid "Close"
 msgstr "Закрыть"
@@ -502,7 +502,7 @@ msgstr "Цвета"
 msgid "Comments:"
 msgstr "Комментарии:"
 
-#: src/modules/classeditor/classeditor.cpp:1687
+#: src/modules/classeditor/classeditor.cpp:1690
 msgid "Compilation error - KVIrc"
 msgstr "Ошибка компиляции - KVIrc"
 
@@ -715,7 +715,7 @@ msgstr "Найдена пустая строка в имени простран�
 msgid "Function already exists"
 msgstr "Функция уже существует"
 
-#: src/modules/classeditor/classeditor.cpp:2030
+#: src/modules/classeditor/classeditor.cpp:2033
 msgid "Function names can contain only letters, digits and underscores"
 msgstr ""
 "Имя функции может содержать только буквы, цифры, и нижние подчеркивания"
@@ -740,7 +740,7 @@ msgstr "Иконка:"
 msgid "Id"
 msgstr "Идентификатор"
 
-#: src/modules/classeditor/classeditor.cpp:1916
+#: src/modules/classeditor/classeditor.cpp:1919
 msgid ""
 "In rename mode class names can contain only letters, digits and underscores "
 "and namespaces :: separator"
@@ -748,7 +748,7 @@ msgstr ""
 "В режиме переименования имя класса может содержать только буквы, цифры, "
 "нижние подчеркивания и '::' как разделитель пространств имён"
 
-#: src/modules/classeditor/classeditor.cpp:1929
+#: src/modules/classeditor/classeditor.cpp:1932
 msgid "Inherits Class:"
 msgstr ""
 
@@ -1041,11 +1041,11 @@ msgstr "Вставить внутрь"
 msgid "Please choose the icon for the ToolBar"
 msgstr "Пожалуйста, выберите иконку для панели инструментов"
 
-#: src/modules/classeditor/classeditor.cpp:1901
+#: src/modules/classeditor/classeditor.cpp:1904
 msgid "Please enter the name for the class:"
 msgstr "Пожалуйста, введите имя класса:"
 
-#: src/modules/classeditor/classeditor.cpp:2021
+#: src/modules/classeditor/classeditor.cpp:2024
 msgid "Please enter the name for the member function:"
 msgstr "Пожалуйста, введите имя функции-члена:"
 
@@ -1054,7 +1054,7 @@ msgid "Please enter the name for the new alias"
 msgstr "Пожалуйста, введите имя нового алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1133
-#: src/modules/classeditor/classeditor.cpp:1574
+#: src/modules/classeditor/classeditor.cpp:1577
 msgid "Please enter the name for the new namespace"
 msgstr "Пожалуйста, введите имя нового пространства имен"
 
@@ -1067,7 +1067,7 @@ msgstr "Пожалуйста, введите новое имя алиаса"
 msgid "Please enter the new name for the namespace"
 msgstr "Пожалуйста, введите новое имя пространства имён"
 
-#: src/modules/classeditor/classeditor.cpp:2042
+#: src/modules/classeditor/classeditor.cpp:2045
 #, fuzzy
 msgid "Please enter the optional reminder string for the member function:"
 msgstr "Пожалуйста, введите имя функции-члена:"
@@ -1206,7 +1206,7 @@ msgstr "Ошибка при сохранении - KVIrc"
 msgid "Separator"
 msgstr "Разделитель"
 
-#: src/modules/classeditor/classeditor.cpp:2055
+#: src/modules/classeditor/classeditor.cpp:2058
 msgid "Set as <b>Internal</b> Function: "
 msgstr ""
 
@@ -1291,7 +1291,7 @@ msgstr ""
 msgid "There is no selection!"
 msgstr "Ничего не выбрано!"
 
-#: src/modules/classeditor/classeditor.cpp:1678
+#: src/modules/classeditor/classeditor.cpp:1681
 msgid "These inherited classes will be not compiled too:"
 msgstr ""
 
@@ -1329,7 +1329,7 @@ msgstr "Свойства панели инструментов"
 msgid "Type"
 msgstr "Тип"
 
-#: src/modules/classeditor/classeditor.cpp:1671
+#: src/modules/classeditor/classeditor.cpp:1674
 msgid "Unable to compile class: "
 msgstr "Не могу скомпилировать класс:"
 

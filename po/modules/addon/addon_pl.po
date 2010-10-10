@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-18 16:12+0100\n"
+"POT-Creation-Date: 2010-10-10 23:23+0200\n"
 "PO-Revision-Date: 2010-06-22 19:03+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polski <PL@li.org>\n"
@@ -122,7 +122,7 @@ msgid "Export Addon - KVIrc"
 msgstr "Eksport dodatku - KVIrc"
 
 #: src/modules/addon/addonfunctions.cpp:227
-#: src/modules/addon/addonfunctions.cpp:252
+#: src/modules/addon/addonfunctions.cpp:243
 msgid "Failed to unpack the selected file: %Q"
 msgstr "Nie udało się rozpakować wybranego pliku: %Q"
 
@@ -186,8 +186,8 @@ msgstr "Naciśnij przycisk \"Dalej\" aby rozpocząć."
 msgid "Icon File"
 msgstr "Plik ikony"
 
-#: src/modules/addon/managementdialog.cpp:292
-#: src/modules/addon/managementdialog.cpp:306
+#: src/modules/addon/managementdialog.cpp:293
+#: src/modules/addon/managementdialog.cpp:307
 msgid "Install Addon - KVIrc"
 msgstr "Instalacja dodatku - KVIrc"
 
@@ -231,7 +231,7 @@ msgstr "Nie"
 msgid "No spaces allowed, like MyAddon"
 msgstr "Spacje są niedozwolone, przykład MójDodatek"
 
-#: src/modules/addon/addonfunctions.cpp:251
+#: src/modules/addon/addonfunctions.cpp:242
 msgid "One or more files can't be deleted"
 msgstr "Jeden lub więcej plików nie mogą zostać usunięte"
 
@@ -282,7 +282,7 @@ msgstr "Wersja pakietu"
 msgid "Packaging failed"
 msgstr "Pakowanie nie powiodło się"
 
-#: src/modules/addon/managementdialog.cpp:279
+#: src/modules/addon/managementdialog.cpp:280
 msgid "Please select the addon installation file"
 msgstr "Przoszę wybrać plik instalacyjny dodatku"
 
@@ -310,7 +310,8 @@ msgstr "Wybierz katalog źródłowy:"
 msgid "Show Help"
 msgstr "Pokazuje pomoc"
 
-#: src/modules/addon/libkviaddon.cpp:691 src/modules/addon/libkviaddon.cpp:714
+#: src/modules/addon/libkviaddon.cpp:691
+#: src/modules/addon/libkviaddon.cpp:714
 msgid "Skipping inexisting entry '%1'"
 msgstr ""
 
@@ -322,9 +323,12 @@ msgstr ""
 msgid "Source Directory"
 msgstr "Katalog źródłowy"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:647
 msgid "The addon \"%1\" does not exist"
 msgstr "Dodatek \"%1\" nie istnieje"
 
@@ -416,7 +420,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Całkowicie: %d dodatków zainstalowano"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Dezinstalacja istniejącego dodatku w wersji %Q"
 

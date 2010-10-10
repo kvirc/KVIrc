@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-18 16:12+0100\n"
+"POT-Creation-Date: 2010-10-10 23:23+0200\n"
 "PO-Revision-Date: 2010-08-29 13:42+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -123,7 +123,7 @@ msgid "Export Addon - KVIrc"
 msgstr "Exportar Extra - KVIrc"
 
 #: src/modules/addon/addonfunctions.cpp:227
-#: src/modules/addon/addonfunctions.cpp:252
+#: src/modules/addon/addonfunctions.cpp:243
 msgid "Failed to unpack the selected file: %Q"
 msgstr "Falha ao desempacotar o ficheiro seleccionado: %Q"
 
@@ -188,8 +188,8 @@ msgstr "Clique no botão \"Próximo\" para começar."
 msgid "Icon File"
 msgstr "Ficheiro do Ícone"
 
-#: src/modules/addon/managementdialog.cpp:292
-#: src/modules/addon/managementdialog.cpp:306
+#: src/modules/addon/managementdialog.cpp:293
+#: src/modules/addon/managementdialog.cpp:307
 msgid "Install Addon - KVIrc"
 msgstr "Instalar Extra - KVIrc"
 
@@ -233,7 +233,7 @@ msgstr "Não"
 msgid "No spaces allowed, like MyAddon"
 msgstr "Não são permitidos espaços, como OMeuExtra"
 
-#: src/modules/addon/addonfunctions.cpp:251
+#: src/modules/addon/addonfunctions.cpp:242
 msgid "One or more files can't be deleted"
 msgstr "Um ou mais ficheiros não podem ser apagados"
 
@@ -284,7 +284,7 @@ msgstr "Versão do Pacote"
 msgid "Packaging failed"
 msgstr "Empacotamento falhado"
 
-#: src/modules/addon/managementdialog.cpp:279
+#: src/modules/addon/managementdialog.cpp:280
 msgid "Please select the addon installation file"
 msgstr "Por favor seleccione o ficheiro extra de instalação"
 
@@ -312,7 +312,8 @@ msgstr "Seleccione o directório fonte:"
 msgid "Show Help"
 msgstr "Mostrar Ajuda"
 
-#: src/modules/addon/libkviaddon.cpp:691 src/modules/addon/libkviaddon.cpp:714
+#: src/modules/addon/libkviaddon.cpp:691
+#: src/modules/addon/libkviaddon.cpp:714
 msgid "Skipping inexisting entry '%1'"
 msgstr "A saltar a entrada inexistente '%1'"
 
@@ -324,9 +325,12 @@ msgstr "A saltar a entrada inválida '%1'"
 msgid "Source Directory"
 msgstr "Directório Fonte"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:647
 msgid "The addon \"%1\" does not exist"
 msgstr "O extra \"%1\" não existe"
 
@@ -415,7 +419,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Total: %d extras instalados"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "A desinstalar a versão do extra existente %Q"
 

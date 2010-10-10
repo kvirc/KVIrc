@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-18 16:12+0100\n"
+"POT-Creation-Date: 2010-10-10 23:23+0200\n"
 "PO-Revision-Date: 2010-08-13 16:00+0200\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -124,7 +124,7 @@ msgid "Export Addon - KVIrc"
 msgstr "Esporta Addon - KVIrc"
 
 #: src/modules/addon/addonfunctions.cpp:227
-#: src/modules/addon/addonfunctions.cpp:252
+#: src/modules/addon/addonfunctions.cpp:243
 msgid "Failed to unpack the selected file: %Q"
 msgstr "Impossibile spacchettare il file selezionato: %Q"
 
@@ -189,8 +189,8 @@ msgstr "Premi il pulsante \"Successivo\" per iniziare."
 msgid "Icon File"
 msgstr "File Icona"
 
-#: src/modules/addon/managementdialog.cpp:292
-#: src/modules/addon/managementdialog.cpp:306
+#: src/modules/addon/managementdialog.cpp:293
+#: src/modules/addon/managementdialog.cpp:307
 msgid "Install Addon - KVIrc"
 msgstr "Installa Addon - KVIrc"
 
@@ -234,7 +234,7 @@ msgstr "No"
 msgid "No spaces allowed, like MyAddon"
 msgstr "Niente spazi, come MioAddon"
 
-#: src/modules/addon/addonfunctions.cpp:251
+#: src/modules/addon/addonfunctions.cpp:242
 msgid "One or more files can't be deleted"
 msgstr "Uno o più file non possono essere cancellati"
 
@@ -285,7 +285,7 @@ msgstr "Versione Pacchetto"
 msgid "Packaging failed"
 msgstr "Pacchettizzazione fallita"
 
-#: src/modules/addon/managementdialog.cpp:279
+#: src/modules/addon/managementdialog.cpp:280
 msgid "Please select the addon installation file"
 msgstr "Seleziona il file di installazione dell'addon"
 
@@ -313,7 +313,8 @@ msgstr "Seleziona la directory dei sorgenti:"
 msgid "Show Help"
 msgstr "Mostra Aiuto"
 
-#: src/modules/addon/libkviaddon.cpp:691 src/modules/addon/libkviaddon.cpp:714
+#: src/modules/addon/libkviaddon.cpp:691
+#: src/modules/addon/libkviaddon.cpp:714
 msgid "Skipping inexisting entry '%1'"
 msgstr "Salto l'entry non esistente '%1'"
 
@@ -325,9 +326,12 @@ msgstr "Salto l'entry invalida '%1'"
 msgid "Source Directory"
 msgstr "Directory Sorgenti"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:647
 msgid "The addon \"%1\" does not exist"
 msgstr "L'addon \"%1\" non esiste"
 
@@ -417,7 +421,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Totale: %d addon installati"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Disinstallo l'addon esistente con versione %Q"
 

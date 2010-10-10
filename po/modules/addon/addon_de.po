@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-18 16:12+0100\n"
+"POT-Creation-Date: 2010-10-10 23:23+0200\n"
 "PO-Revision-Date: 2010-08-12 23:32+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -121,7 +121,7 @@ msgid "Export Addon - KVIrc"
 msgstr "Erweiterung exportieren - KVIrc"
 
 #: src/modules/addon/addonfunctions.cpp:227
-#: src/modules/addon/addonfunctions.cpp:252
+#: src/modules/addon/addonfunctions.cpp:243
 msgid "Failed to unpack the selected file: %Q"
 msgstr "Entpacken der ausgewählten Datei fehlgeschlagen: %Q"
 
@@ -188,8 +188,8 @@ msgstr "Auf »Weiter« klicken, um zu beginnen."
 msgid "Icon File"
 msgstr "Icon-Datei"
 
-#: src/modules/addon/managementdialog.cpp:292
-#: src/modules/addon/managementdialog.cpp:306
+#: src/modules/addon/managementdialog.cpp:293
+#: src/modules/addon/managementdialog.cpp:307
 msgid "Install Addon - KVIrc"
 msgstr "Erweiterung installieren - KVIrc"
 
@@ -233,7 +233,7 @@ msgstr "Nein"
 msgid "No spaces allowed, like MyAddon"
 msgstr "Keine Leerzeichen erlaubt, z.B. MeineErweiterung"
 
-#: src/modules/addon/addonfunctions.cpp:251
+#: src/modules/addon/addonfunctions.cpp:242
 msgid "One or more files can't be deleted"
 msgstr "Eine oder mehrere Dateien konnten nicht gelöscht werden"
 
@@ -284,7 +284,7 @@ msgstr "Paketversion"
 msgid "Packaging failed"
 msgstr "Paketierung fehlgeschlagen"
 
-#: src/modules/addon/managementdialog.cpp:279
+#: src/modules/addon/managementdialog.cpp:280
 msgid "Please select the addon installation file"
 msgstr "Bitte die Installationsdatei der Erweiterung auswählen"
 
@@ -312,7 +312,8 @@ msgstr "Quellverzeichnis auswählen:"
 msgid "Show Help"
 msgstr "Hilfe anzeigen"
 
-#: src/modules/addon/libkviaddon.cpp:691 src/modules/addon/libkviaddon.cpp:714
+#: src/modules/addon/libkviaddon.cpp:691
+#: src/modules/addon/libkviaddon.cpp:714
 msgid "Skipping inexisting entry '%1'"
 msgstr "Überspringe nicht existierenden Eintrag ›%1‹"
 
@@ -324,9 +325,12 @@ msgstr "Überspringe ungültigen Eintrag ›%1‹"
 msgid "Source Directory"
 msgstr "Quellverzeichnis"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:647
 msgid "The addon \"%1\" does not exist"
 msgstr "Die Erweiterung »%1« existiert nicht"
 
@@ -419,7 +423,8 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Gesamt: %d Erweiterungen installiert"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Deinstallieren der bestehenden Erweiterung Version %Q"
 
