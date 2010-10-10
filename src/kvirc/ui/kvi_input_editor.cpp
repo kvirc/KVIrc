@@ -1412,6 +1412,7 @@ void KviInputEditor::keyReleaseEvent(QKeyEvent * e)
 	e->ignore();
 }
 
+
 void KviInputEditor::getWordBeforeCursor(QString & szBuffer, bool * bIsFirstWordInLine)
 {
 	if(m_szTextBuffer.isEmpty() || m_iCursorPosition <= 0)
@@ -1433,6 +1434,18 @@ void KviInputEditor::getWordBeforeCursor(QString & szBuffer, bool * bIsFirstWord
 	if(iIdx > -1) szBuffer.remove(0,iIdx+1);
 	else *bIsFirstWordInLine = true;
 }
+
+void KviInputEditor::completionEscapeUnsafeToken(QString &szToken)
+{
+	szToken.replace("\\","\\\\");
+	szToken.replace(";","\\;");
+	szToken.replace("$","\\$");
+	szToken.replace("%","\\%");
+	szToken.replace("\"","\\\"");
+	szToken.replace(" ","\\ ");
+}
+
+
 
 void KviInputEditor::completion(bool bShift)
 {
@@ -1480,6 +1493,7 @@ void KviInputEditor::completion(bool bShift)
 			szWord.remove(0,2-iOffset);
 			if(szWord.isEmpty()) return;
 			KviKvsKernel::instance()->completeFunction(szWord,&tmp);
+			// function names don't need to be escaped
 			bIsFunction = true;
 		}
 		else if(bFirstWordInLine || iOffset)
@@ -1488,6 +1502,7 @@ void KviInputEditor::completion(bool bShift)
 			szWord.remove(0,1-iOffset);
 			if(szWord.isEmpty())return;
 			KviKvsKernel::instance()->completeCommand(szWord,&tmp);
+			// commands don't need to be escaped
 			bIsCommand = true;
 		} else {
 			// directory completion attempt
@@ -1508,14 +1523,14 @@ void KviInputEditor::completion(bool bShift)
 			if( (szWord.length()==1) && (m_pKviWindow->windowName()[0].unicode()==uc))
 			{
 				szMatch=m_pKviWindow->windowName();
+				completionEscapeUnsafeToken(szMatch);
 				szMatch.append(" ");
 				replaceWordBeforeCursor(szWord,szMatch,false);
 				repaintWithCursorOn();
 				return;
-			} else {
-				if(m_pKviWindow->console())
-					m_pKviWindow->console()->completeChannel(szWord,&tmp);
 			}
+			if(m_pKviWindow->console())
+				m_pKviWindow->console()->completeChannel(szWord,&tmp);
 		}
 
 	//FIXME: Complete also on irc:// starting strings, not only irc.?
@@ -1570,11 +1585,12 @@ void KviInputEditor::completion(bool bShift)
 					if(bFirstWordInLine || (!KVI_OPTION_BOOL(KviOption_boolUseNickCompletionPostfixForFirstWordOnly)))
 						szMatch.append(KVI_OPTION_STRING(KviOption_stringNickCompletionPostfix));
 				}
-				if(bInCommand)
-				{
-					// escape crazy things like Nick\nquit
-					szMatch.replace(QChar('\\'),QString::fromAscii("\\\\"));
-				}
+			}
+
+			if(bInCommand)
+			{
+				// escape crazy things like Nick\nquit
+				completionEscapeUnsafeToken(szMatch);
 			}
 		} else {
 			QString szAll;
@@ -1640,7 +1656,7 @@ void KviInputEditor::standardNickCompletionInsertCompletedText(const QString &sz
 	if(bInCommand)
 	{
 		// escape crazy things like Nick\nquit
-		szBuffer.replace(QChar('\\'),QString::fromAscii("\\\\"));
+		completionEscapeUnsafeToken(szBuffer);
 	}
 	replaceWordBeforeCursor(szReplacedWord,szBuffer,false);
 }

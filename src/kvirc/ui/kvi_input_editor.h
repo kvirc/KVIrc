@@ -815,6 +815,7 @@ private slots:
 	*/
 	void dummy();
 protected:
+	void completionEscapeUnsafeToken(QString &szToken);
 	void installShortcuts();
 	virtual void drawContents(QPainter *);
 	//virtual void resizeEvent(QResizeEvent * e);
