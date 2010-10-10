@@ -119,9 +119,9 @@
 //mouse events
 void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 {
-	QString cmd;
-	QString linkCmd;
-	QString linkText;
+	QString szKvsCommand;
+	QString szLinkCommandPart;
+	QString szLinkTextPart;
 
 	if(m_iMouseTimer)
 	{
@@ -131,138 +131,128 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 		m_pLastEvent = 0;
 	}
 
-	getLinkUnderMouse(e->pos().x(),e->pos().y(),0,&linkCmd,&linkText);
+	getLinkUnderMouse(e->pos().x(),e->pos().y(),0,&szLinkCommandPart,&szLinkTextPart);
 
-	if(linkCmd.isEmpty())
+	if(szLinkCommandPart.isEmpty())
 	{
 		KVS_TRIGGER_EVENT_0(KviEvent_OnTextViewDoubleClicked,m_pKviWindow);
 		return;
 	}
 
-	QString szCmd(linkCmd);
-	szCmd.remove(0,1);
+	KviKvsVariantList lParams;
+	lParams.append(szLinkTextPart);
 
-	KviKvsVariantList * pParams = new KviKvsVariantList();
-	if(!szCmd.isEmpty()) pParams->append(szCmd, true);
-	else pParams->append(linkText, true);
-	pParams->append(linkText, true);
-	pParams->append(szCmd, true);
-
-
-	switch(linkCmd[0].unicode())
+	switch(szLinkCommandPart[0].unicode())
 	{
 		case 'n':
 		{
-			bool bTrigger = false;
 			switch(m_pKviWindow->type())
 			{
 				case KVI_WINDOW_TYPE_CHANNEL:
-					if(((KviChannel *)m_pKviWindow)->isOn(linkText))
+					if(((KviChannel *)m_pKviWindow)->isOn(szLinkTextPart))
 					{
-						KVS_TRIGGER_EVENT(KviEvent_OnChannelNickDefaultActionRequest,m_pKviWindow,pParams);
-					} else bTrigger = true;
+						KVS_TRIGGER_EVENT(KviEvent_OnChannelNickDefaultActionRequest,m_pKviWindow,&lParams);
+						return;
+					}
 				break;
 				case KVI_WINDOW_TYPE_QUERY:
-					if(KviQString::equalCI(((KviQuery *)m_pKviWindow)->windowName(),linkText))
+					if(KviQString::equalCI(((KviQuery *)m_pKviWindow)->windowName(),szLinkTextPart))
 					{
-						KVS_TRIGGER_EVENT(KviEvent_OnQueryNickDefaultActionRequest,m_pKviWindow,pParams);
-					} else bTrigger = true;
+						KVS_TRIGGER_EVENT(KviEvent_OnQueryNickDefaultActionRequest,m_pKviWindow,&lParams);
+						return;
+					}
 				break;
 				default:
-					bTrigger = true;
+					return; // unhandled window type (FIXME: Let it go anyway ?)
 				break;
 			}
-			if(bTrigger)
+			if(console())
+				KVS_TRIGGER_EVENT(KviEvent_OnNickLinkDefaultActionRequest,m_pKviWindow,&lParams);
+			return;
+		}
+		break;
+		case 'm': // m+X / m-X (used to quickly undo mode changes)
+		{
+			if(szLinkCommandPart.length() < 3)
+				return; // malformed
+			if(m_pKviWindow->type() != KVI_WINDOW_TYPE_CHANNEL)
+				return; // must be on a channel to apply it
+			if(!(((KviChannel *)m_pKviWindow)->isMeOp()))
+				return; // i'm not op, can't do mode changes
+
+			QChar cPlusOrMinus = szLinkCommandPart[1];
+			if((cPlusOrMinus.unicode() != '+') && (cPlusOrMinus.unicode() == '-'))
+				return; // malformed
+
+			QChar cFlag = szLinkCommandPart[2];
+			switch(cFlag.unicode())
 			{
-				if(console())
-				{
-					KVS_TRIGGER_EVENT(KviEvent_OnNickLinkDefaultActionRequest,m_pKviWindow,pParams);
-				}
+				case 'o':
+				case 'v':
+					return; // We can do nothing here... (FIXME: Can't remember why...)
+				break;
+
+				case 'b':
+				case 'I':
+				case 'e':
+				case 'q':
+				case 'f':
+				case 'k':
+					KviQString::sprintf(szKvsCommand,"mode $chan.name %c%c $0",cPlusOrMinus.toLatin1(),cFlag.toLatin1());
+				break;
+				default:
+					KviQString::sprintf(szKvsCommand,"mode $chan.name %c%c",cPlusOrMinus.toLatin1(),cFlag.toLatin1());
+				break;
 			}
 		}
 		break;
-		case 'm':
-			if((linkCmd.length() > 2) && (m_pKviWindow->type() == KVI_WINDOW_TYPE_CHANNEL))
-			{
-				if(((KviChannel *)m_pKviWindow)->isMeOp())
-				{
-					QChar plmn = linkCmd[1];
-					if((plmn.unicode() == '+') || (plmn.unicode() == '-'))
-					{
-						QString target(m_pKviWindow->windowName());
-						target.replace("\\","\\\\");
-						target.replace("\"","\\\"");
-						target.replace(";","\\;");
-						target.replace("$","\\$");
-						target.replace("%","\\%");
-						QChar flag = linkCmd[2];
-						switch(flag.unicode())
-						{
-							case 'o':
-							case 'v':
-								// We can do nothing here...
-							break;
-
-							case 'b':
-							case 'I':
-							case 'e':
-							case 'q':
-							case 'f':
-							case 'k':
-								KviQString::sprintf(cmd,"mode %Q %c%c %Q",&target,plmn.toLatin1(),flag.toLatin1(),&linkText);
-							break;
-							default:
-								KviQString::sprintf(cmd,"mode %Q %c%c",&target,plmn.toLatin1(),flag.toLatin1());
-							break;
-						}
-					}
-				}
-			}
-		break;
 		case 'h':
-			m_pKviWindow->output(KVI_OUT_HOSTLOOKUP,__tr2qs("Looking up host %Q..."),&linkText);
-			cmd = "host -a $0";
+			m_pKviWindow->output(KVI_OUT_HOSTLOOKUP,__tr2qs("Looking up host %Q..."),&szLinkTextPart);
+			szKvsCommand = "host -a $0";
 		break;
 		case 'u':
+			if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 2) // <-- ??????????
 			{
-				if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 2)
-					KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick,m_pKviWindow,pParams);
+				KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick,m_pKviWindow,&lParams);
+				return;
 			}
 		break;
 		case 'c':
+		{
+			if(!console())
+				return;
+			if(!console()->connection())
+				return;
+
+			if(KviChannel * c = console()->connection()->findChannel(szLinkTextPart))
 			{
-				if(console() && console()->connection())
-				{
-					QString szChan=linkText;
-					if(szCmd.length()>0) szChan=szCmd;
-					if(KviChannel * c = console()->connection()->findChannel(szChan))
-					{
-						c->raise();
-						c->setFocus();
-					} else {
-						cmd = QString("join %1").arg(szChan);
-					}
-				}
+				// already there
+				c->raise();
+				c->setFocus();
+				return;
 			}
+
+			szKvsCommand = "join $0";
+		}
 		break;
 		case 's':
-			cmd = "motd $0";
+			szKvsCommand = "motd $0";
 		break;
 		default:
 		{
-			getLinkEscapeCommand(cmd,linkCmd,"[!dbl]");
-			if(cmd.isEmpty())
+			// extract the user-supplied double click command
+			getLinkEscapeCommand(szKvsCommand,szLinkCommandPart,"[!dbl]");
+			if(szKvsCommand.isEmpty())
 			{
 				KVS_TRIGGER_EVENT_0(KviEvent_OnTextViewDoubleClicked,m_pKviWindow);
+				return;
 			}
 		}
 		break;
 	}
-	if(!cmd.isEmpty())
-	{
-		KviKvsScript::run(cmd,m_pKviWindow,pParams);
-	}
-	delete pParams;
+
+	if(!szKvsCommand.isEmpty())
+		KviKvsScript::run(szKvsCommand,m_pKviWindow,&lParams);
 }
 
 void KviIrcView::mousePressEvent(QMouseEvent * e)
@@ -333,8 +323,10 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 	szCmd.remove(0,1);
 
 	KviKvsVariantList * pParams = new KviKvsVariantList();
-	if(!szCmd.isEmpty()) pParams->append(szCmd, true);
-	else pParams->append(linkText, true);
+
+	if(!szCmd.isEmpty()) pParams->append(szCmd, true); // <-- FIXME: why we do this ?
+	else pParams->append(linkText, true); // <-- FIXME: why we do this ?
+	
 	pParams->append(linkText, true);
 	pParams->append(szCmd, true);
 
