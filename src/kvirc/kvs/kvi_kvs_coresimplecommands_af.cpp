@@ -1329,7 +1329,7 @@ namespace KviKvsCoreSimpleCommands
 		@title:
 			eval
 		@syntax:
-			eval [-q] [-r=<window>] <command>
+			eval [-q] [-r=<window:integer>] <command:string>
 		@switches:
 			!sw: -q | --quiet
 			Disable any error output
@@ -1348,8 +1348,17 @@ namespace KviKvsCoreSimpleCommands
 			<command> shares the local variables with this command scope so you
 			can easily exchange data with it.
 			Remember that <command> is still a normal parameter and it must be
-			enclosed in quotes if youwant it to be a complex command sequence.
+			enclosed in quotes if you want it to be a complex command sequence.
 			eval propagates the <command> return value.[br]
+			[br]
+			[b]WARNING: If some part of the <command> comes from external input you MUST
+			sanitize it by using [fnc]$escape[/fnc]() in order to avoid command injection.[/b]
+			Note that nicknames, usernames, hostnames, channel names and any kind of text that
+			isn't generated under your control may contain malicious code. For instance, if you
+			try to eval the string built by concatenating "echo" and the result of [fnc]$channel.name[/fnc]
+			inside a channel named "#test;quit" (yes, that's a valid channel name) you'll obtain
+			a disconnection as a side effect. To avoid this you need to use [fnc]$escape[/fnc]() around
+			[fnc]$channel.name[/fnc]. See the examples below.
 		@examples:
 			[example]
 				[comment]# evaluate a variable command[/comment]
@@ -1378,6 +1387,18 @@ namespace KviKvsCoreSimpleCommands
 				iterate [cmd]echo[/cmd] Hi again!
 				[comment]# Evaluate a command block[/comment]
 				eval "{ echo First command!; echo Second command!; }"
+			[/example]
+			[example]
+				[comment]# Non properly sanitized event handler (will quit on channel #test;quit)[/comment]
+				[cmd]event[/cmd](OnChannelSync,non_sane)
+				{
+					eval "echo $channel.name sync'd in $0 msecs";
+				}
+				[comment]# Properly sanitized event handler (will properly print the sync time)[/comment]
+				[cmd]event[/cmd](OnChannelSync,sane)
+				{
+					eval "echo $escape($channel.name) sync'd in $0 msecs";
+				}
 			[/example]
 		@seealso:
 			[fnc]$escape[/fnc]
