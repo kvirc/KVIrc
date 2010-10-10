@@ -1358,7 +1358,7 @@ namespace KviKvsCoreSimpleCommands
 			try to eval the string built by concatenating "echo" and the result of [fnc]$channel.name[/fnc]
 			inside a channel named "#test;quit" (yes, that's a valid channel name) you'll obtain
 			a disconnection as a side effect. To avoid this you need to use [fnc]$escape[/fnc]() around
-			[fnc]$channel.name[/fnc]. See the examples below.
+			[fnc]$channel.name[/fnc].
 		@examples:
 			[example]
 				[comment]# evaluate a variable command[/comment]
@@ -1387,18 +1387,6 @@ namespace KviKvsCoreSimpleCommands
 				iterate [cmd]echo[/cmd] Hi again!
 				[comment]# Evaluate a command block[/comment]
 				eval "{ echo First command!; echo Second command!; }"
-			[/example]
-			[example]
-				[comment]# Non properly sanitized event handler (will quit on channel #test;quit)[/comment]
-				[cmd]event[/cmd](OnChannelSync,non_sane)
-				{
-					eval "echo $channel.name sync'd in $0 msecs";
-				}
-				[comment]# Properly sanitized event handler (will properly print the sync time)[/comment]
-				[cmd]event[/cmd](OnChannelSync,sane)
-				{
-					eval "echo $escape($channel.name) sync'd in $0 msecs";
-				}
 			[/example]
 		@seealso:
 			[fnc]$escape[/fnc]
