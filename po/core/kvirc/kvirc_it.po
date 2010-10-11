@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kvirc_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-10 23:23+0200\n"
-"PO-Revision-Date: 2010-09-12 20:32+0200\n"
+"PO-Revision-Date: 2010-10-11 18:29+0200\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1149,7 +1149,7 @@ msgstr "Indirizzo:"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:794
 msgid "Admin/protected nicks listing"
-msgstr ""
+msgstr "Lista nick admin/protetti"
 
 #: src/kvirc/ui/kvi_optionswidget.cpp:673
 msgid "Advanced..."
@@ -1250,6 +1250,8 @@ msgstr "Sono stato Voiced"
 #: src/modules/config/libkviconfig.cpp:593
 msgid "An error has occured while trying to save the config file with id '%Q'"
 msgstr ""
+"E' capitato un errore mentre provavo a salvare il file di configurazione con "
+"id '%Q'"
 
 #: src/modules/str/libkvistr.cpp:2450
 msgid "An error occured during signature verification."
@@ -1453,8 +1455,9 @@ msgid "Ban unexception matching my mask"
 msgstr "La limitazione del Ban combacia con la mia maschera"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:474
+#, fuzzy
 msgid "Bandwidth Saver"
-msgstr ""
+msgstr "Salvatore di Banda"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3043
 msgid "Bass"
@@ -1694,9 +1697,8 @@ msgid "Can't open file \"%Q\" for writing"
 msgstr "Impossibile aprire il file \"%Q\" in scrittura"
 
 #: src/modules/file/libkvifile.cpp:299
-#, fuzzy
 msgid "Can't open file %1 for writing"
-msgstr "Impossibile scrivere sul file"
+msgstr "Non riesco ad aprire il file %1 in scrittura"
 
 #: src/kvilib/core/kvi_error.cpp:139
 msgid "Can't open file for appending"
@@ -2393,7 +2395,7 @@ msgstr "Contatto l'Host %Q sulla porta %u"
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:450
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:464
 msgid "Contains hidden users (previously +D)"
-msgstr ""
+msgstr "Contiene utenti nascosti (precedentemente +D)"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:94
 msgid "Context"
@@ -2621,7 +2623,7 @@ msgstr "Tema Predefinito"
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:445
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:462
 msgid "Delay users join to first message"
-msgstr ""
+msgstr "Ritarda l'ingresso degli utenti al primo messaggio"
 
 #: src/kvilib/system/kvi_locale.cpp:1087
 msgid "Delete"
@@ -2856,7 +2858,7 @@ msgstr "Abilita cifratura"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:342
 msgid "Enable forwarding"
-msgstr ""
+msgstr "Abilita forwarding"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:106
 msgid "Encrypt key:"
@@ -2943,7 +2945,7 @@ msgstr "Errore nel caricamento del plugin."
 
 #: src/modules/file/libkvifile.cpp:322
 msgid "Error writing bytes to file %1"
-msgstr ""
+msgstr "Errore nella scrittura dei byte sul file %1"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:166
 msgid "Everything is all right"
@@ -3264,8 +3266,9 @@ msgid "Forward"
 msgstr "Successiva"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:351
+#, fuzzy
 msgid "Forward to another channel on uninvited"
-msgstr ""
+msgstr "Avanza verso un altro canale su disinvito"
 
 #: src/modules/help/helpwindow.cpp:216
 #: src/modules/help/helpwindow.cpp:225
@@ -3651,7 +3654,7 @@ msgstr "Inserisci Icona"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:80
 msgid "Insert a nickname or a mask matching *!*@*"
-msgstr ""
+msgstr "Inserisci un nickname o una maschera che matchi *!*@*"
 
 #: src/kvirc/kernel/kvi_app_setup.cpp:545
 msgid "Install Package"
@@ -3879,7 +3882,7 @@ msgstr "Messaggio di entrata"
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:382
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:420
 msgid "Join throttling (<num>:<secs>)"
-msgstr ""
+msgstr "Velocità di ingresso (<num>:<sec>)"
 
 #: src/kvirc/ui/kvi_userlistview.cpp:1596
 msgid "Joined on <b>%1</b>"
@@ -3982,7 +3985,7 @@ msgstr "Azione kick"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:418
 msgid "Kick/[*]ban on message flood ([*]<num>:<secs>)"
-msgstr ""
+msgstr "Kick/[*]ban su flood di messaggi ([*]<num>:<sec>)"
 
 #: src/modules/action/libkviaction.cpp:65
 msgid "Label: %Q"
@@ -4038,7 +4041,7 @@ msgstr "Icone grandi"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:343
 msgid "Large ban/exempt/invex lists (staff only)"
-msgstr ""
+msgstr "Liste estese ban/exempt/invex (solo staff)"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:290
 #, c-format
@@ -4345,9 +4348,8 @@ msgid "Missing closing brace"
 msgstr "Manca la parentesi graffa di chiusura"
 
 #: src/modules/file/libkvifile.cpp:294
-#, fuzzy
 msgid "Missing data array"
-msgstr "Nome della variabile mancante"
+msgstr "Dati dell'array mancanti"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:106
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:323
@@ -5230,7 +5232,7 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:806
 msgid "Please enter the new nickname"
-msgstr ""
+msgstr "Inserisci il nuovo nickname"
 
 #: src/modules/avatar/libkviavatar.cpp:74
 msgid ""
@@ -5384,7 +5386,7 @@ msgstr "Proprietà..."
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:416
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:480
 msgid "Protected/admin nicks"
-msgstr ""
+msgstr "Utenti protetti/admin"
 
 #: src/kvilib/net/kvi_http.cpp:801
 msgid "Protocol error: invalid chunk size"
@@ -5673,7 +5675,7 @@ msgstr "Redirigi se il canale è pieno (modo +l)"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:357
 msgid "Reduced moderation for ops"
-msgstr ""
+msgstr "Moderazione ridotta per gli op"
 
 #: src/modules/help/helpwindow.cpp:83
 msgid "Refresh index"
