@@ -201,6 +201,8 @@ KviApp::KviApp(int &argc,char ** argv)
 	kvi_socket_flushTrafficCounters();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_bPortable = KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable");
+	//workaround for #957
+	QApplication::setEffectEnabled(Qt::UI_FadeMenu, FALSE);
 #endif
 }
 
