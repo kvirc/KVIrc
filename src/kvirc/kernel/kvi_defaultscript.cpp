@@ -33,6 +33,7 @@
 #include "kvi_iconmanager.h"
 #include "kvi_customtoolbarmanager.h"
 
+#include <QFile>
 #include <QDate>
 #include <QCheckBox>
 #include <QPushButton>
@@ -45,6 +46,19 @@ KviDefaultScriptManager::KviDefaultScriptManager()
 : QObject()
 {
 	m_bNoNeedToRestore = false;
+
+	// Check if versions' file exists in personal settings
+	QString szLocal;
+	g_pApp->getLocalKvircDirectory(szLocal,KviApp::Config,"default.kvc");
+	qDebug("local: %s",szLocal.toUtf8().data());
+
+	if(!QFile::exists(szLocal))
+	{
+		QString szGlobal;
+		g_pApp->getGlobalKvircDirectory(szGlobal,KviApp::DefScript,"default.kvc");
+		qDebug("global: %s",szGlobal.toUtf8().data());
+		QFile::copy(szGlobal,szLocal);
+	}
 }
 
 KviDefaultScriptManager::~KviDefaultScriptManager()
