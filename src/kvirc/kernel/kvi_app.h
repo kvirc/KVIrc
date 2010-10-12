@@ -199,6 +199,7 @@ public:
 	void saveAliases();
 	void saveNickServ();
 	void saveIdentityProfiles();
+	void saveDefaultScripts();
 	void saveTextIcons();
 	void saveRegisteredChannels();
 	void saveInputHistory();
@@ -314,7 +315,7 @@ public:
 
 	void checkSuggestRestoreDefaultScript();
 
-	void loadDefaultScript();
+	void loadDefaultScript(QString szItem = QString());
 	QStyle * themedStyle();
 protected:
 	void buildRecentChannels();
@@ -330,7 +331,7 @@ public slots:
 	void saveConfiguration();
 	void updateGui();
 	void updatePseudoTransparency();
-	void restoreDefaultScript();
+	void restoreDefaultScript(bool bSuggest = false);
 	void addRecentUrl(const QString& text);
 private:
 	void createSplashScreen();

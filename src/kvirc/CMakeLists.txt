@@ -83,6 +83,7 @@ SET(kvirc_MOC_HDRS
 	kernel/kvi_actionmanager.h
 	kernel/kvi_app.h
 	kernel/kvi_coreactions.h
+	kernel/kvi_defaultscript.h
 	kernel/kvi_filetransfer.h
 	kernel/kvi_iconmanager.h
 	kernel/kvi_ipc.h
@@ -286,6 +287,7 @@ SET(kvirc_SRCS
 	kernel/kvi_coreactions.cpp
 	kernel/kvi_customtoolbardescriptor.cpp
 	kernel/kvi_customtoolbarmanager.cpp
+	kernel/kvi_defaultscript.cpp
 	kernel/kvi_filetransfer.cpp
 	kernel/kvi_htmlgenerator.cpp
 	kernel/kvi_iconmanager.cpp

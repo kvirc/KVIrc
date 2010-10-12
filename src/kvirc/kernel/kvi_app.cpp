@@ -53,6 +53,7 @@
 #include "kvi_splash.h"
 #include "kvi_nickserv.h"
 #include "kvi_identityprofile.h"
+#include "kvi_defaultscript.h"
 #include "kvi_xlib.h"
 #include "kvi_texticonmanager.h"
 #include "kvi_texticonwin.h"
@@ -282,23 +283,23 @@ void KviApp::setup()
 	else
 		qDebug("Aaargh... have no UTF-8 codec?");
 
-	QString tmp;
+	QString szTmp;
 /*
 	// Set the default help files search path
 	QStringList list;
 
-	getLocalKvircDirectory(tmp,Help); // localized help/lang or help if help/lang doesn't exist
-	list.append(tmp);
-	getLocalKvircDirectory(tmp,HelpEN); // help/en
-	list.append(tmp);
-	getLocalKvircDirectory(tmp,HelpNoIntl); // just help/
-	list.append(tmp);
-	getGlobalKvircDirectory(tmp,Help);
-	list.append(tmp);
-	getGlobalKvircDirectory(tmp,HelpEN);
-	list.append(tmp);
-	getGlobalKvircDirectory(tmp,HelpNoIntl);
-	list.append(tmp);
+	getLocalKvircDirectory(szTmp,Help); // localized help/lang or help if help/lang doesn't exist
+	list.append(szTmp);
+	getLocalKvircDirectory(szTmp,HelpEN); // help/en
+	list.append(szTmp);
+	getLocalKvircDirectory(szTmp,HelpNoIntl); // just help/
+	list.append(szTmp);
+	getGlobalKvircDirectory(szTmp,Help);
+	list.append(szTmp);
+	getGlobalKvircDirectory(szTmp,HelpEN);
+	list.append(szTmp);
+	getGlobalKvircDirectory(szTmp,HelpNoIntl);
+	list.append(szTmp);
 	QDir::setSearchPaths("help",list);
 */
 
@@ -323,8 +324,8 @@ void KviApp::setup()
 
 	KVI_SPLASH_SET_PROGRESS(5)
 
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_USERACTIONS))
-		KviActionManager::instance()->load(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_USERACTIONS))
+		KviActionManager::instance()->load(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(8);
 
@@ -333,8 +334,8 @@ void KviApp::setup()
 
 	KVI_SPLASH_SET_PROGRESS(9);
 
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_IDENTITIES))
-		KviUserIdentityManager::instance()->load(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_IDENTITIES))
+		KviUserIdentityManager::instance()->load(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(12);
 
@@ -359,58 +360,58 @@ void KviApp::setup()
 	KVI_SPLASH_SET_PROGRESS(48)
 
 	// Load the win properties config
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_WINPROPERTIES);
-	g_pWinPropertiesConfig = new KviConfig(tmp,KviConfig::ReadWrite);
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_WINPROPERTIES);
+	g_pWinPropertiesConfig = new KviConfig(szTmp,KviConfig::ReadWrite);
 
 	KVI_SPLASH_SET_PROGRESS(50)
 
 	// Load the server database
 	g_pServerDataBase   = new KviServerDataBase();
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_SERVERDB))
-		g_pServerDataBase->load(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_SERVERDB))
+		g_pServerDataBase->load(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(53)
 
 	// Load the proxy database
 	g_pProxyDataBase = new KviProxyDataBase();
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_PROXYDB))
-		g_pProxyDataBase->load(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_PROXYDB))
+		g_pProxyDataBase->load(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(54)
 
 	// Event manager
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_EVENTS))
-		KviKvs::loadAppEvents(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_EVENTS))
+		KviKvs::loadAppEvents(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(59)
 
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_RAWEVENTS))
-		KviKvs::loadRawEvents(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_RAWEVENTS))
+		KviKvs::loadRawEvents(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(62)
 
 	// Popup manager
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_POPUPS))
-		KviKvs::loadPopups(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_POPUPS))
+		KviKvs::loadPopups(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(67)
 
 	KviCustomToolBarManager::init();
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_CUSTOMTOOLBARS))
-		KviCustomToolBarManager::instance()->load(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_CUSTOMTOOLBARS))
+		KviCustomToolBarManager::instance()->load(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(70)
 
 	// Alias manager
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_ALIASES))
-		KviKvs::loadAliases(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_ALIASES))
+		KviKvs::loadAliases(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(75)
 
 	// Script addons manager (this in fact has delayed loading, so we don't even care
 	// about showing up an entry in the splash screen)
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_SCRIPTADDONS))
-		KviKvs::loadScriptAddons(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_SCRIPTADDONS))
+		KviKvs::loadScriptAddons(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(77)
 
@@ -429,57 +430,63 @@ void KviApp::setup()
 	// media manager
 	g_pMediaManager = new KviMediaManager();
 	g_pMediaManager->lock();
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_MEDIATYPES))
-		g_pMediaManager->load(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_MEDIATYPES))
+		g_pMediaManager->load(szTmp);
 	g_pMediaManager->unlock();
 
 	KVI_SPLASH_SET_PROGRESS(82)
 
 	// registered user data base
 	g_pRegisteredUserDataBase = new KviRegisteredUserDataBase();
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_REGUSERDB))
-		g_pRegisteredUserDataBase->load(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_REGUSERDB))
+		g_pRegisteredUserDataBase->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(84)
+	KVI_SPLASH_SET_PROGRESS(83)
 
 	// registered channel data base
 	g_pRegisteredChannelDataBase = new KviRegisteredChannelDataBase();
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_REGCHANDB))
-		g_pRegisteredChannelDataBase->load(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_REGCHANDB))
+		g_pRegisteredChannelDataBase->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(85)
+	KVI_SPLASH_SET_PROGRESS(84)
 
 	// file trader
 	g_pSharedFilesManager = new KviSharedFilesManager();
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_SHAREDFILES))
-		g_pSharedFilesManager->load(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_SHAREDFILES))
+		g_pSharedFilesManager->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(86)
+	KVI_SPLASH_SET_PROGRESS(85)
 
 	// nick serv data base
 	g_pNickServRuleSet = new KviNickServRuleSet();
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_NICKSERVDATABASE))
-		g_pNickServRuleSet->load(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_NICKSERVDATABASE))
+		g_pNickServRuleSet->load(szTmp);
 
-	KVI_SPLASH_SET_PROGRESS(87)
+	KVI_SPLASH_SET_PROGRESS(86)
 
 	// Identity profiles database
 	KviIdentityProfileSet::init();
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_PROFILESDATABASE))
-		KviIdentityProfileSet::instance()->load(tmp);
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_PROFILESDATABASE))
+		KviIdentityProfileSet::instance()->load(szTmp);
+
+	KVI_SPLASH_SET_PROGRESS(87)
+
+	KviAvatarCache::init();
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_AVATARCACHE))
+		KviAvatarCache::instance()->load(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(88)
 
-	KviAvatarCache::init();
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_AVATARCACHE))
-		KviAvatarCache::instance()->load(tmp);
+	KviInputHistory::init();
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_INPUTHISTORY))
+		KviInputHistory::instance()->load(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(89)
-
-	KviInputHistory::init();
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_INPUTHISTORY))
-		KviInputHistory::instance()->load(tmp);
-
+	
+	KviDefaultScriptManager::init();
+	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_DEFAULTSCRIPT))
+		KviDefaultScriptManager::instance()->load(szTmp);
+	
 	KVI_SPLASH_SET_PROGRESS(90)
 
 	// Eventually initialize the crypt engine manager
@@ -633,6 +640,8 @@ KviApp::~KviApp()
 	delete g_pNickServRuleSet;
 	saveIdentityProfiles();
 	KviIdentityProfileSet::done();
+	saveDefaultScripts();
+	KviDefaultScriptManager::done();
 	saveSharedFiles();
 	delete g_pSharedFilesManager;
 	saveAppEvents();
@@ -770,10 +779,14 @@ QTextCodec * KviApp::defaultSrvCodec()
 	return pCodec;
 }
 
-void KviApp::loadDefaultScript()
+void KviApp::loadDefaultScript(QString szItem)
 {
 	QString szCmd;
-	getGlobalKvircDirectory(szCmd,KviApp::DefScript,"default.kvs");
+
+	if(szItem.isEmpty())
+		szItem = "default";
+
+	getGlobalKvircDirectory(szCmd,KviApp::DefScript,QString("%1.kvs").arg(szItem));
 	szCmd.prepend("parse \"");
 	szCmd.append("\"");
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -829,26 +842,24 @@ void KviApp::checkSuggestRestoreDefaultScript()
 
 	bSuggestedOnce = true;
 
-	switch(QMessageBox::question(0,__tr2qs("Installation problems ?"),
-		__tr2qs("<b>Ooops...</b><br><br>" \
-			"<b>There are some reasons that make me think that your KVIrc installation is incomplete.</b><br><br>" \
-			"I might be wrong, but you seem to miss some of the features that the default KVIrc script provides." \
-			"This may happen because you have upgraded to an unstable svn version, " \
-			"because you have accidentally deleted or damaged your configuration files, " \
-			"because you have installed an incomplete script " \
-			"or because you have hit a bug in KVIrc.<br><br>" \
-			"I can repeat the installation of the default script in order " \
-			"to restore the missing features.<br>" \
-			"<b>Do you want the default script to be restored ?</b><br><br>" \
-			"<font size=\"-1\">Hint: If you're a scripter and have intentionally removed some of the scripting features " \
-			"then you may safely click on \"No and Don't Ask Me Again\", otherwise it might be " \
-			"a good idea to click \"Yes\". If you still want to choose \"No\" you can always restore the " \
-			"default script by choosing the appropriate entry from the \"Scripting\" menu.</font>"),
-		__tr2qs("No and Don't Ask Me Again"),
-		__tr2qs("No"),
-		__tr2qs("Yes"),
-		1,
-		1))
+	switch(
+		QMessageBox::question(0,__tr2qs("Installation problems?"),
+			__tr2qs("<b>Ooops...</b><br><br>" \
+				"<b>There are some reasons that make me think that your KVIrc installation is incomplete.</b><br><br>" \
+				"I might be wrong, but you seem to miss some of the features that the default KVIrc script provides." \
+				"This may happen because you have upgraded to an unstable svn version, " \
+				"because you have accidentally deleted or damaged your configuration files, " \
+				"because you have installed an incomplete script " \
+				"or because you have hit a bug in KVIrc.<br><br>" \
+				"I can repeat the installation of the default script in order " \
+				"to restore the missing features.<br>" \
+				"<b>Do you want the default script to be restored?</b><br><br>" \
+				"<font size=\"-1\">Hint: If you're a scripter and have intentionally removed some of the scripting features " \
+				"then you may safely click on \"No and Don't Ask Me Again\", otherwise it might be " \
+				"a good idea to click \"Yes\". If you still want to choose \"No\" you can always restore the " \
+				"default script by choosing the appropriate entry from the \"Scripting\" menu.</font>"),
+			__tr2qs("No and Don't Ask Me Again"),__tr2qs("No"),__tr2qs("Yes"),1,1)
+	)
 	{
 		case 0:
 			KVI_OPTION_BOOL(KviOption_boolDoNotSuggestRestoreDefaultScript) = true;
@@ -858,31 +869,14 @@ void KviApp::checkSuggestRestoreDefaultScript()
 			return;
 		break;
 		default:
-			restoreDefaultScript();
+			restoreDefaultScript(true);
 		break;
 	}
 }
 
-void KviApp::restoreDefaultScript()
+void KviApp::restoreDefaultScript(bool bSuggest)
 {
-	if(QMessageBox::warning(0,__tr2qs("Restore Default Script - KVIrc"),
-		__tr2qs("You are about to restore the default script.<br>This will erase any script changes you have made.<br>Do you wish to proceed?"),
-		QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes)
-		return;
-
-	KviKvs::clearAliases();
-	KviKvs::clearAppEvents();
-	KviKvs::clearRawEvents();
-	KviKvs::clearPopups();
-	KviKvs::clearScriptAddons();
-
-	KviActionManager::instance()->killAllKvsUserActions();
-	KviCustomToolBarManager::instance()->clear();
-
-	loadDefaultScript();
-
-	// and save settings to be sure...
-	saveOptions();
+	KviDefaultScriptManager::instance()->restore(bSuggest);
 }
 
 #ifndef COMPILE_NO_IPC
@@ -1242,7 +1236,8 @@ void KviApp::updatePseudoTransparency()
 		KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) = false;
 
 		//update widgets
-		if(g_pFrame)g_pFrame->updatePseudoTransparency();
+		if(g_pFrame)
+			g_pFrame->updatePseudoTransparency();
 	}
 #endif //COMPILE_PSEUDO_TRANSPARENCY
 }
@@ -1408,6 +1403,13 @@ void KviApp::saveIdentityProfiles()
 	KviIdentityProfileSet::instance()->save(szTmp);
 }
 
+void KviApp::saveDefaultScripts()
+{
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_DEFAULTSCRIPT);
+	KviDefaultScriptManager::instance()->save(szTmp);
+}
+
 void KviApp::saveSharedFiles()
 {
 	QString szTmp;
@@ -1447,6 +1449,7 @@ void KviApp::saveConfiguration()
 	saveRegisteredChannels();
 	saveNickServ();
 	saveIdentityProfiles();
+	saveDefaultScripts();
 	saveSharedFiles();
 	savePopups();
 	saveToolBars();

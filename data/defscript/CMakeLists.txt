@@ -1,6 +1,6 @@
 # CMakeLists for data/defscript
 
-FILE(GLOB files "*.kvs")
+FILE(GLOB files "*.kv?")
 
 IF(UNIX)
 	IF(APPLE)

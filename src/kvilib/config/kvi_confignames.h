@@ -57,6 +57,7 @@
 * \def KVI_CONFIGFILE_USERACTIONS Defines useractions.kvc
 * \def KVI_CONFIGFILE_SCRIPTADDONS Defines scriptaddons.kvc
 * \def KVI_CONFIGFILE_IDENTITIES Defines identities.kvc
+* \def KVI_CONFIGFILE_DEFAULTSCRIPT Defines default.kvc
 */
 
 #include "kvi_fileextensions.h"
@@ -85,5 +86,6 @@
 #define KVI_CONFIGFILE_USERACTIONS "useractions" KVI_FILEEXTENSION_CONFIG
 #define KVI_CONFIGFILE_SCRIPTADDONS "scriptaddons" KVI_FILEEXTENSION_CONFIG
 #define KVI_CONFIGFILE_IDENTITIES "identities" KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_DEFAULTSCRIPT "default" KVI_FILEEXTENSION_CONFIG
 
 #endif //_KVI_CONFIGNAMES_H_
