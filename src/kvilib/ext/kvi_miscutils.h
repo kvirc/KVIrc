@@ -24,21 +24,39 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_miscutils.h
+* \author Szymon Stefanek
+* \brief Helper functions
+*/
+
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 
-// this is the namespace for single function stuff that doesn't really fit anywhere else
-
+/**
+* \namespace KviMiscUtils
+* \brief A namespace for helper functions
+*
+* This namespace contains single function stuff that doesn't really fit anywhere else
+*/
 namespace KviMiscUtils
 {
-	// Compare two x.y.z... version strings.
-	// The function behaves like strcmp: it returns 0 when the versions
-	// are equal, -1 if the szVersion1 is greater and 1 if szVersion2 is greater
-	extern KVILIB_API int compareVersions(const QString &szVersion1,const QString &szVersion2);
+	/**
+	* \brief Compares two x.y.z... version strings
+	* The function behaves like strcmp: it returns 0 when the versions are equal, -1 if
+	* the szVersion1 is greater and 1 if szVersion2 is greater
+	* \param szVersion1 The first version to check
+	* \param szVersion2 The second version to check
+	* \return int
+	*/
+	extern KVILIB_API int compareVersions(const QString & szVersion1, const QString & szVersion2);
 
-	// Check if the argument string is a valid x.y.z.... version string
-	extern KVILIB_API bool isValidVersionString(const QString &szVersion);
-
+	/**
+	* \brief Checks if the argument string is a valid x.y.z... version string
+	* \param szVersion The version to check
+	* \return bool
+	*/
+	extern KVILIB_API bool isValidVersionString(const QString & szVersion);
 }
 
-#endif //!_KVI_MISCUTILS_H_
+#endif // _KVI_MISCUTILS_H_

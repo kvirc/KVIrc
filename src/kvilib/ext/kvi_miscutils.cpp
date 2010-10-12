@@ -28,7 +28,7 @@
 
 namespace KviMiscUtils
 {
-	int compareVersions(const QString &szVersion1,const QString &szVersion2)
+	int compareVersions(const QString & szVersion1, const QString & szVersion2)
 	{
 		QStringList sl1 = szVersion1.split(".");
 		QStringList sl2 = szVersion2.split(".");
@@ -39,39 +39,47 @@ namespace KviMiscUtils
 		{
 			bool bOk;
 			int i1 = (*it1).toInt(&bOk);
-			if(!bOk)return 1;
+			if(!bOk)
+				return 1;
 			int i2 = (*it2).toInt(&bOk);
-			if(!bOk)return -1;
+			if(!bOk)
+				return -1;
 			if(i1 != i2)
 			{
 				// field not equal
-				if(i1 > i2)return -1;
-				else return 1;
+				if(i1 > i2)
+					return -1;
+				else
+					return 1;
 			}
 			it1++;
 			it2++;
 		}
 		// both are equal until now
-		if(it1 != sl1.end())return -1; // 1 has at least one field more
-		if(it2 != sl2.end())return 1;  // 2 has at least one field more
+		if(it1 != sl1.end())
+			return -1; // 1 has at least one field more
+		if(it2 != sl2.end())
+			return 1;  // 2 has at least one field more
 		// both are equal also in length
 		return 0;
 	}
 
-	bool isValidVersionString(const QString &szVersion)
+	bool isValidVersionString(const QString & szVersion)
 	{
 		QStringList sl = szVersion.split(".");
 
-		if(sl.isEmpty())return false;
+		if(sl.isEmpty())
+			return false;
 		// must all be numbers
-		for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
+		for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
 		{
 			bool bOk;
 			int i = (*it).toInt(&bOk);
-			if(!bOk)return false;
-			if(i < 0)return false;
+			if(!bOk)
+				return false;
+			if(i < 0)
+				return false;
 		}
 		return true;
 	}
-
 }
