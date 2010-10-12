@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc 4.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-10 23:23+0200\n"
+"POT-Creation-Date: 2010-10-12 23:50+0200\n"
 "PO-Revision-Date: 2010-07-29 00:26+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <elf@elf.no-ip.org>\n"
@@ -857,7 +857,7 @@ msgstr "<b>KVIrc</b>"
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>中央クリック:</b><br>%Q"
 
-#: src/kvirc/kernel/kvi_app.cpp:831
+#: src/kvirc/kernel/kvi_app.cpp:847
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -867,7 +867,7 @@ msgid ""
 "because you have installed an incomplete script or because you have hit a "
 "bug in KVIrc.<br><br>I can repeat the installation of the default script in "
 "order to restore the missing features.<br><b>Do you want the default script "
-"to be restored ?</b><br><br><font size=\"-1\">Hint: If you're a scripter and "
+"to be restored?</b><br><br><font size=\"-1\">Hint: If you're a scripter and "
 "have intentionally removed some of the scripting features then you may "
 "safely click on \"No and Don't Ask Me Again\", otherwise it might be a good "
 "idea to click \"Yes\". If you still want to choose \"No\" you can always "
@@ -1020,6 +1020,11 @@ msgstr ""
 msgid "Acquires a Screenshot of the KVIrc main window"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:393
+#, fuzzy
+msgid "Actions"
+msgstr "IRC 操作"
+
 #: src/kvirc/kernel/kvi_actionmanager.cpp:65
 msgid "Actions related to settings"
 msgstr "設定に関連する操作"
@@ -1056,6 +1061,11 @@ msgstr ""
 msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:398
+#, fuzzy
+msgid "Addons"
+msgstr "追加"
+
 #: src/kvilib/core/kvi_error.cpp:156
 msgid "Address already in use"
 msgstr "アドレスは既に使用しています"
@@ -1069,12 +1079,22 @@ msgid "Admin/protected nicks listing"
 msgstr ""
 
 #: src/kvirc/ui/kvi_optionswidget.cpp:673
+#: src/kvirc/kernel/kvi_defaultscript.cpp:436
 msgid "Advanced..."
 msgstr "高度な設定..."
 
 #: src/modules/setup/setupwizard.cpp:358
 msgid "Age:"
 msgstr "年齢:"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:403
+#, fuzzy
+msgid "Aliases"
+msgstr "別名の編集..."
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:388
+msgid "All"
+msgstr ""
 
 #: src/kvilib/system/kvi_locale.cpp:1096
 msgid "All Files"
@@ -1266,7 +1286,7 @@ msgstr "利用できるユーザーのモード:"
 msgid "Avatar change"
 msgstr "アバターの変更"
 
-#: src/kvirc/kernel/kvi_app.cpp:1050
+#: src/kvirc/kernel/kvi_app.cpp:1046
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr ""
 
@@ -1717,6 +1737,7 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:91
 #: src/kvirc/ui/kvi_imagedialog.cpp:156
+#: src/kvirc/kernel/kvi_defaultscript.cpp:441
 #: src/kvirc/kernel/kvi_coreactions.cpp:808
 #: src/modules/setup/setupwizard.cpp:87
 #: src/modules/avatar/libkviavatar.cpp:109
@@ -2032,6 +2053,11 @@ msgstr ""
 #: src/kvilib/net/kvi_http.cpp:821
 msgid "Chunk header too long: exceeded 4096 bytes"
 msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:408
+#, fuzzy
+msgid "Classes"
+msgstr "閉じる"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:793
 msgid "Clear"
@@ -2803,6 +2829,11 @@ msgstr "プラグインの読み込み中にエラーです。"
 msgid "Error writing bytes to file %1"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:413
+#, fuzzy
+msgid "Events"
+msgstr "イベントの編集..."
+
 #: src/modules/trayicon/libkvitrayicon.cpp:166
 msgid "Everything is all right"
 msgstr ""
@@ -3005,19 +3036,19 @@ msgstr ""
 msgid "File I/O error while trying to use the public key file %s"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:1018
+#: src/kvirc/kernel/kvi_app.cpp:1014
 msgid "File download failed"
 msgstr "ファイルのダウンロードに失敗しました。"
 
-#: src/kvirc/kernel/kvi_app.cpp:1020
+#: src/kvirc/kernel/kvi_app.cpp:1016
 msgid "File download from %1 failed"
 msgstr "%1 からのファイルのダウンロードに失敗しました。"
 
-#: src/kvirc/kernel/kvi_app.cpp:1031
+#: src/kvirc/kernel/kvi_app.cpp:1027
 msgid "File download from %1 successfully complete"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:1029
+#: src/kvirc/kernel/kvi_app.cpp:1025
 msgid "File download successfully complete"
 msgstr "ファイルのダウンロードに成功しました。"
 
@@ -3509,8 +3540,8 @@ msgstr "パッケージのインストール"
 msgid "Install Theme Package"
 msgstr "テーマ パッケージのインストール"
 
-#: src/kvirc/kernel/kvi_app.cpp:830
-msgid "Installation problems ?"
+#: src/kvirc/kernel/kvi_app.cpp:846
+msgid "Installation problems?"
 msgstr ""
 
 #: src/kvilib/core/kvi_error.cpp:135
@@ -3806,7 +3837,7 @@ msgstr ""
 msgid "KVIrc is compiled without OpenSSL support."
 msgstr "この実行ファイルは暗号化のサポートをはずしてコンパイルされています。"
 
-#: src/kvirc/kernel/kvi_app.cpp:704
+#: src/kvirc/kernel/kvi_app.cpp:715
 msgid "KVIrc messaging system"
 msgstr ""
 
@@ -4081,7 +4112,7 @@ msgstr "再接続試行の最大数 (%d) に達しました: あきらめます"
 msgid "Medium activity"
 msgstr "そこそこ活発"
 
-#: src/kvirc/kernel/kvi_app.cpp:696
+#: src/kvirc/kernel/kvi_app.cpp:707
 msgid ""
 "Message arriving from %1:\n"
 "\n"
@@ -4367,7 +4398,7 @@ msgstr "ニックネーム:"
 #: src/kvirc/ui/kvi_input.cpp:254
 #: src/kvirc/ui/kvi_statusbar.cpp:554
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:888
-#: src/kvirc/kernel/kvi_app.cpp:846
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "No"
 msgstr "いいえ"
 
@@ -4392,7 +4423,7 @@ msgstr ""
 msgid "No activity"
 msgstr "活動していない"
 
-#: src/kvirc/kernel/kvi_app.cpp:845
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "No and Don't Ask Me Again"
 msgstr ""
 
@@ -5054,6 +5085,11 @@ msgid ""
 "your key(s) with \"cbc:\".\n"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:418
+#, fuzzy
+msgid "Popups"
+msgstr "ポップアップの編集..."
+
 #: src/kvirc/ui/kvi_ircview.cpp:2279
 #: src/kvirc/ui/kvi_ircview.cpp:2333
 #, c-format
@@ -5285,6 +5321,11 @@ msgstr "ネットワーク分割メッセージで終了"
 msgid "Quits KVIrc closing all the current connections"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:423
+#, fuzzy
+msgid "Raw Events"
+msgstr "生イベントの編集..."
+
 #: src/kvirc/kernel/kvi_options.cpp:737
 msgid "Raw data to server"
 msgstr "サーバーへ生データの送信"
@@ -5430,7 +5471,7 @@ msgstr ""
 msgid "Reload"
 msgstr "再読み込み"
 
-#: src/kvirc/kernel/kvi_app.cpp:914
+#: src/kvirc/kernel/kvi_app.cpp:910
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "リモートのコマンドを受信しました (%s ...)"
@@ -5483,11 +5524,23 @@ msgstr "リセット"
 msgid "Reset Temporary Background"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:447
+#, fuzzy
+msgid "Restore"
+msgstr "復元(&R)"
+
 #: src/kvirc/ui/kvi_menubar.cpp:214
 msgid "Restore &Default Script"
 msgstr "初期スクリプトの復元(&D)"
 
-#: src/kvirc/kernel/kvi_app.cpp:866
+#: src/kvirc/kernel/kvi_defaultscript.cpp:103
+#: src/kvirc/kernel/kvi_defaultscript.cpp:109
+#, fuzzy
+msgid "Restore Default Script - Error"
+msgstr "初期スクリプトの復元(&D)"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:80
+#: src/kvirc/kernel/kvi_defaultscript.cpp:367
 msgid "Restore Default Script - KVIrc"
 msgstr ""
 
@@ -5649,6 +5702,10 @@ msgstr "URL を選択します。"
 #: src/kvilib/system/kvi_locale.cpp:1038
 msgid "Select color"
 msgstr "色の選択"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:385
+msgid "Select default script's elements to restore:"
+msgstr ""
 
 #: src/kvirc/kernel/kvi_options.cpp:726
 msgid "Selection"
@@ -6656,6 +6713,18 @@ msgstr "接続中です。本当に"
 msgid "There is no $this pointer in this scope (unexpected @)"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:204
+msgid ""
+"There's something wrong in your personal data: my '%1' is %2, while yours is "
+"%3"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:232
+msgid ""
+"There's something wrong in your personal data: my settings are dated %1, "
+"while yours are dated %2"
+msgstr ""
+
 #: src/kvilib/core/kvi_error.cpp:83
 msgid "This KVIrc executable has no IPV6 support"
 msgstr "この KVIrc 実行形式は IPv6　をサポートしていません。"
@@ -6777,6 +6846,7 @@ msgstr "ティップ: %Q"
 
 #: src/kvirc/ui/kvi_toolbar.cpp:86
 #: src/kvirc/ui/kvi_menubar.cpp:169
+#: src/kvirc/kernel/kvi_defaultscript.cpp:428
 msgid "Toolbars"
 msgstr "ツールバー"
 
@@ -7474,7 +7544,7 @@ msgstr "パッケージのヘッダーを書き込んでいます。"
 #: src/kvirc/ui/kvi_input.cpp:253
 #: src/kvirc/ui/kvi_statusbar.cpp:552
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:888
-#: src/kvirc/kernel/kvi_app.cpp:847
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "Yes"
 msgstr "はい"
 
@@ -7482,7 +7552,14 @@ msgstr "はい"
 msgid "Yes, always"
 msgstr "常に「はい」"
 
-#: src/kvirc/kernel/kvi_app.cpp:867
+#: src/kvirc/kernel/kvi_defaultscript.cpp:374
+msgid ""
+"You are about to restore the default script.\n"
+"This will erase any script changes you have made.\n"
+"Do you wish to proceed?"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:81
 msgid ""
 "You are about to restore the default script.<br>This will erase any script "
 "changes you have made.<br>Do you wish to proceed?"
@@ -7563,6 +7640,12 @@ msgstr ""
 
 #: src/modules/links/linkswindow.cpp:415
 msgid "You're not connected to a server"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:225
+msgid ""
+"Your default script is up to date.\n"
+"Do you want to restore it anyway?"
 msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2168

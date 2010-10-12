@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-10 23:23+0200\n"
+"POT-Creation-Date: 2010-10-12 23:50+0200\n"
 "PO-Revision-Date: 2010-06-23 01:29+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <pl@li.org>\n"
@@ -881,7 +881,7 @@ msgstr "<b>KVIrc</b>"
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Środkowy-klik:</b><br>%Q"
 
-#: src/kvirc/kernel/kvi_app.cpp:831
+#: src/kvirc/kernel/kvi_app.cpp:847
 #, fuzzy
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
@@ -892,7 +892,7 @@ msgid ""
 "because you have installed an incomplete script or because you have hit a "
 "bug in KVIrc.<br><br>I can repeat the installation of the default script in "
 "order to restore the missing features.<br><b>Do you want the default script "
-"to be restored ?</b><br><br><font size=\"-1\">Hint: If you're a scripter and "
+"to be restored?</b><br><br><font size=\"-1\">Hint: If you're a scripter and "
 "have intentionally removed some of the scripting features then you may "
 "safely click on \"No and Don't Ask Me Again\", otherwise it might be a good "
 "idea to click \"Yes\". If you still want to choose \"No\" you can always "
@@ -1099,6 +1099,11 @@ msgstr "Nabycie zrzutu ekranu"
 msgid "Acquires a Screenshot of the KVIrc main window"
 msgstr "Nabywa zrzut ekranu głównego okna KVIrc"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:393
+#, fuzzy
+msgid "Actions"
+msgstr "Akcje irc"
+
 #: src/kvirc/kernel/kvi_actionmanager.cpp:65
 msgid "Actions related to settings"
 msgstr "Akcje związane do ustawień"
@@ -1136,6 +1141,11 @@ msgstr "Dodano %d sek oferty pliku dla pliku %Q (%Q) do odbiorcy %Q"
 msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
 msgstr "Dodano %d sekund oferty pliku dla pliku %Q (%Q) i odbiorcy %Q"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:398
+#, fuzzy
+msgid "Addons"
+msgstr "Dodaj"
+
 #: src/kvilib/core/kvi_error.cpp:156
 msgid "Address already in use"
 msgstr "Adres jest już w użyciu"
@@ -1149,12 +1159,22 @@ msgid "Admin/protected nicks listing"
 msgstr ""
 
 #: src/kvirc/ui/kvi_optionswidget.cpp:673
+#: src/kvirc/kernel/kvi_defaultscript.cpp:436
 msgid "Advanced..."
 msgstr "Zaawansowane...."
 
 #: src/modules/setup/setupwizard.cpp:358
 msgid "Age:"
 msgstr "Wiek:"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:403
+#, fuzzy
+msgid "Aliases"
+msgstr "Edycja aliasów..."
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:388
+msgid "All"
+msgstr ""
 
 #: src/kvilib/system/kvi_locale.cpp:1096
 msgid "All Files"
@@ -1349,7 +1369,7 @@ msgstr "Dostępne tryby użytkownika:"
 msgid "Avatar change"
 msgstr "Zmiana awataru"
 
-#: src/kvirc/kernel/kvi_app.cpp:1050
+#: src/kvirc/kernel/kvi_app.cpp:1046
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr "Pobieranie awataru nie powiodło się dla %Q!%Q@%Q i adresu url %Q: %Q"
 
@@ -1812,6 +1832,7 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:91
 #: src/kvirc/ui/kvi_imagedialog.cpp:156
+#: src/kvirc/kernel/kvi_defaultscript.cpp:441
 #: src/kvirc/kernel/kvi_coreactions.cpp:808
 #: src/modules/setup/setupwizard.cpp:87
 #: src/modules/avatar/libkviavatar.cpp:109
@@ -2135,6 +2156,11 @@ msgstr ""
 #: src/kvilib/net/kvi_http.cpp:821
 msgid "Chunk header too long: exceeded 4096 bytes"
 msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:408
+#, fuzzy
+msgid "Classes"
+msgstr "Zamknij"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:793
 msgid "Clear"
@@ -2911,6 +2937,11 @@ msgstr "Błąd podczas ładowania pluginu."
 msgid "Error writing bytes to file %1"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:413
+#, fuzzy
+msgid "Events"
+msgstr "Efekty"
+
 #: src/modules/trayicon/libkvitrayicon.cpp:166
 msgid "Everything is all right"
 msgstr "Wszystko jest w porządku"
@@ -3123,19 +3154,19 @@ msgstr ""
 msgid "File I/O error while trying to use the public key file %s"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:1018
+#: src/kvirc/kernel/kvi_app.cpp:1014
 msgid "File download failed"
 msgstr "Pobieranie pliku nie powiodło się"
 
-#: src/kvirc/kernel/kvi_app.cpp:1020
+#: src/kvirc/kernel/kvi_app.cpp:1016
 msgid "File download from %1 failed"
 msgstr "Pobieranie pliku od %1 nie powiodło się"
 
-#: src/kvirc/kernel/kvi_app.cpp:1031
+#: src/kvirc/kernel/kvi_app.cpp:1027
 msgid "File download from %1 successfully complete"
 msgstr "Pobieranie pliku od %1 pomyślnie zakończone"
 
-#: src/kvirc/kernel/kvi_app.cpp:1029
+#: src/kvirc/kernel/kvi_app.cpp:1025
 msgid "File download successfully complete"
 msgstr "Pobieranie pliku pomyślnie zakończone"
 
@@ -3633,8 +3664,9 @@ msgstr "Instaluj pakiet"
 msgid "Install Theme Package"
 msgstr "Instaluj pakiet motywu"
 
-#: src/kvirc/kernel/kvi_app.cpp:830
-msgid "Installation problems ?"
+#: src/kvirc/kernel/kvi_app.cpp:846
+#, fuzzy
+msgid "Installation problems?"
 msgstr "Problemy w instalacji ?"
 
 #: src/kvilib/core/kvi_error.cpp:135
@@ -3939,7 +3971,7 @@ msgstr ""
 msgid "KVIrc is compiled without OpenSSL support."
 msgstr "Ten plik wykonywalny został skompilowany bez wsparcia SSL"
 
-#: src/kvirc/kernel/kvi_app.cpp:704
+#: src/kvirc/kernel/kvi_app.cpp:715
 msgid "KVIrc messaging system"
 msgstr ""
 
@@ -4217,7 +4249,7 @@ msgstr "Limit podjętych prób połączenia wyczerpany (%d): poddaje się"
 msgid "Medium activity"
 msgstr "Średnia aktywność"
 
-#: src/kvirc/kernel/kvi_app.cpp:696
+#: src/kvirc/kernel/kvi_app.cpp:707
 msgid ""
 "Message arriving from %1:\n"
 "\n"
@@ -4506,7 +4538,7 @@ msgstr "Pseudonim:"
 #: src/kvirc/ui/kvi_input.cpp:254
 #: src/kvirc/ui/kvi_statusbar.cpp:554
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:888
-#: src/kvirc/kernel/kvi_app.cpp:846
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "No"
 msgstr "Nie"
 
@@ -4531,7 +4563,7 @@ msgstr ""
 msgid "No activity"
 msgstr "Brak aktywności"
 
-#: src/kvirc/kernel/kvi_app.cpp:845
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "No and Don't Ask Me Again"
 msgstr "Nie i nie pytaj mnie ponownie"
 
@@ -5239,6 +5271,11 @@ msgid ""
 "your key(s) with \"cbc:\".\n"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:418
+#, fuzzy
+msgid "Popups"
+msgstr "Edycja wyskakujących okien..."
+
 #: src/kvirc/ui/kvi_ircview.cpp:2279
 #: src/kvirc/ui/kvi_ircview.cpp:2333
 #, c-format
@@ -5474,6 +5511,11 @@ msgstr "Wyjście na wiadomość netsplit"
 msgid "Quits KVIrc closing all the current connections"
 msgstr "Wychodzi z KVIrc zamykając wszystkie aktualne połączenia"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:423
+#, fuzzy
+msgid "Raw Events"
+msgstr "Edycja surowych zdarzeń..."
+
 #: src/kvirc/kernel/kvi_options.cpp:737
 msgid "Raw data to server"
 msgstr "Surowe dane do serwera"
@@ -5626,7 +5668,7 @@ msgstr "Zarejestrowano weryfikację lagu z dokładnością %u (%s)"
 msgid "Reload"
 msgstr "Przeładuj"
 
-#: src/kvirc/kernel/kvi_app.cpp:914
+#: src/kvirc/kernel/kvi_app.cpp:910
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "Otrzymano zdalne polecenie (%s ...)"
@@ -5679,11 +5721,23 @@ msgstr "Resetuj"
 msgid "Reset Temporary Background"
 msgstr "Resetuj tymczasowe tlo"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:447
+#, fuzzy
+msgid "Restore"
+msgstr "&Przywróć okno"
+
 #: src/kvirc/ui/kvi_menubar.cpp:214
 msgid "Restore &Default Script"
 msgstr "Przywróć& domyślny skrypt"
 
-#: src/kvirc/kernel/kvi_app.cpp:866
+#: src/kvirc/kernel/kvi_defaultscript.cpp:103
+#: src/kvirc/kernel/kvi_defaultscript.cpp:109
+#, fuzzy
+msgid "Restore Default Script - Error"
+msgstr "Przywróć domyślny skrypt - KVIrc"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:80
+#: src/kvirc/kernel/kvi_defaultscript.cpp:367
 msgid "Restore Default Script - KVIrc"
 msgstr "Przywróć domyślny skrypt - KVIrc"
 
@@ -5847,6 +5901,10 @@ msgstr "Wybierz URL."
 #: src/kvilib/system/kvi_locale.cpp:1038
 msgid "Select color"
 msgstr "Wybierz kolor"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:385
+msgid "Select default script's elements to restore:"
+msgstr ""
 
 #: src/kvirc/kernel/kvi_options.cpp:726
 msgid "Selection"
@@ -6891,6 +6949,18 @@ msgstr "Są aktywne połączenia, czy napewno pragniesz "
 msgid "There is no $this pointer in this scope (unexpected @)"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:204
+msgid ""
+"There's something wrong in your personal data: my '%1' is %2, while yours is "
+"%3"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:232
+msgid ""
+"There's something wrong in your personal data: my settings are dated %1, "
+"while yours are dated %2"
+msgstr ""
+
 #: src/kvilib/core/kvi_error.cpp:83
 msgid "This KVIrc executable has no IPV6 support"
 msgstr "Ten plik wykonywalny KVIrc nie ma wsparcia IPV6"
@@ -7026,6 +7096,7 @@ msgstr "Wskazówka: %Q"
 
 #: src/kvirc/ui/kvi_toolbar.cpp:86
 #: src/kvirc/ui/kvi_menubar.cpp:169
+#: src/kvirc/kernel/kvi_defaultscript.cpp:428
 msgid "Toolbars"
 msgstr "Paski narzędzi"
 
@@ -7743,7 +7814,7 @@ msgstr "Zapisywanie nagłówka pakietu"
 #: src/kvirc/ui/kvi_input.cpp:253
 #: src/kvirc/ui/kvi_statusbar.cpp:552
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:888
-#: src/kvirc/kernel/kvi_app.cpp:847
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "Yes"
 msgstr "Tak"
 
@@ -7751,7 +7822,17 @@ msgstr "Tak"
 msgid "Yes, always"
 msgstr "Tak, zawsze"
 
-#: src/kvirc/kernel/kvi_app.cpp:867
+#: src/kvirc/kernel/kvi_defaultscript.cpp:374
+#, fuzzy
+msgid ""
+"You are about to restore the default script.\n"
+"This will erase any script changes you have made.\n"
+"Do you wish to proceed?"
+msgstr ""
+"Zamierzasz przywrócić domyślny skrypt.<br>To spowoduje wymazanie wszystkich "
+"zmian w skrypcie których dokonałeś.<br>Czy pragniesz kontynuować?"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:81
 msgid ""
 "You are about to restore the default script.<br>This will erase any script "
 "changes you have made.<br>Do you wish to proceed?"
@@ -7850,6 +7931,12 @@ msgstr "Nie jesteś operatorem kanału: nie możesz zmieniać trybów kanału"
 #: src/modules/links/linkswindow.cpp:415
 msgid "You're not connected to a server"
 msgstr "Nie jesteś połączony z serwerem"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:225
+msgid ""
+"Your default script is up to date.\n"
+"Do you want to restore it anyway?"
+msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2168
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2176

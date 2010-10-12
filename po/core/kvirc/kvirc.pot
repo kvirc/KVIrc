@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-10 23:23+0200\n"
+"POT-Creation-Date: 2010-10-12 23:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -515,6 +515,7 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_toolbar.cpp:86
 #: src/kvirc/ui/kvi_menubar.cpp:169
+#: src/kvirc/kernel/kvi_defaultscript.cpp:428
 msgid "Toolbars"
 msgstr ""
 
@@ -575,6 +576,7 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:91
 #: src/kvirc/ui/kvi_imagedialog.cpp:156
+#: src/kvirc/kernel/kvi_defaultscript.cpp:441
 #: src/kvirc/kernel/kvi_coreactions.cpp:808
 #: src/modules/setup/setupwizard.cpp:87
 #: src/modules/avatar/libkviavatar.cpp:109
@@ -1150,14 +1152,14 @@ msgstr ""
 #: src/kvirc/ui/kvi_input.cpp:253
 #: src/kvirc/ui/kvi_statusbar.cpp:552
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:888
-#: src/kvirc/kernel/kvi_app.cpp:847
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "Yes"
 msgstr ""
 
 #: src/kvirc/ui/kvi_input.cpp:254
 #: src/kvirc/ui/kvi_statusbar.cpp:554
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:888
-#: src/kvirc/kernel/kvi_app.cpp:846
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "No"
 msgstr ""
 
@@ -1335,6 +1337,7 @@ msgid "This option is also available as"
 msgstr ""
 
 #: src/kvirc/ui/kvi_optionswidget.cpp:673
+#: src/kvirc/kernel/kvi_defaultscript.cpp:436
 msgid "Advanced..."
 msgstr ""
 
@@ -2737,21 +2740,102 @@ msgstr ""
 msgid "Updating away state for channel %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:696
+#: src/kvirc/kernel/kvi_defaultscript.cpp:80
+#: src/kvirc/kernel/kvi_defaultscript.cpp:367
+msgid "Restore Default Script - KVIrc"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:81
+msgid ""
+"You are about to restore the default script.<br>This will erase any script "
+"changes you have made.<br>Do you wish to proceed?"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:103
+#: src/kvirc/kernel/kvi_defaultscript.cpp:109
+msgid "Restore Default Script - Error"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:204
+msgid ""
+"There's something wrong in your personal data: my '%1' is %2, while yours is "
+"%3"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:225
+msgid ""
+"Your default script is up to date.\n"
+"Do you want to restore it anyway?"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:232
+msgid ""
+"There's something wrong in your personal data: my settings are dated %1, "
+"while yours are dated %2"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:374
+msgid ""
+"You are about to restore the default script.\n"
+"This will erase any script changes you have made.\n"
+"Do you wish to proceed?"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:385
+msgid "Select default script's elements to restore:"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:388
+msgid "All"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:393
+msgid "Actions"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:398
+msgid "Addons"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:403
+msgid "Aliases"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:408
+msgid "Classes"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:413
+msgid "Events"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:418
+msgid "Popups"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:423
+msgid "Raw Events"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:447
+msgid "Restore"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_app.cpp:707
 msgid ""
 "Message arriving from %1:\n"
 "\n"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:704
+#: src/kvirc/kernel/kvi_app.cpp:715
 msgid "KVIrc messaging system"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:830
-msgid "Installation problems ?"
+#: src/kvirc/kernel/kvi_app.cpp:846
+msgid "Installation problems?"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:831
+#: src/kvirc/kernel/kvi_app.cpp:847
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -2761,7 +2845,7 @@ msgid ""
 "because you have installed an incomplete script or because you have hit a "
 "bug in KVIrc.<br><br>I can repeat the installation of the default script in "
 "order to restore the missing features.<br><b>Do you want the default script "
-"to be restored ?</b><br><br><font size=\"-1\">Hint: If you're a scripter and "
+"to be restored?</b><br><br><font size=\"-1\">Hint: If you're a scripter and "
 "have intentionally removed some of the scripting features then you may "
 "safely click on \"No and Don't Ask Me Again\", otherwise it might be a good "
 "idea to click \"Yes\". If you still want to choose \"No\" you can always "
@@ -2769,42 +2853,32 @@ msgid ""
 "\"Scripting\" menu.</font>"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:845
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "No and Don't Ask Me Again"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:866
-msgid "Restore Default Script - KVIrc"
-msgstr ""
-
-#: src/kvirc/kernel/kvi_app.cpp:867
-msgid ""
-"You are about to restore the default script.<br>This will erase any script "
-"changes you have made.<br>Do you wish to proceed?"
-msgstr ""
-
-#: src/kvirc/kernel/kvi_app.cpp:914
+#: src/kvirc/kernel/kvi_app.cpp:910
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:1018
+#: src/kvirc/kernel/kvi_app.cpp:1014
 msgid "File download failed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:1020
+#: src/kvirc/kernel/kvi_app.cpp:1016
 msgid "File download from %1 failed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:1029
+#: src/kvirc/kernel/kvi_app.cpp:1025
 msgid "File download successfully complete"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:1031
+#: src/kvirc/kernel/kvi_app.cpp:1027
 msgid "File download from %1 successfully complete"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:1050
+#: src/kvirc/kernel/kvi_app.cpp:1046
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr ""
 

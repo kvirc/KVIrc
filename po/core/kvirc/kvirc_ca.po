@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-10 23:23+0200\n"
+"POT-Creation-Date: 2010-10-12 23:50+0200\n"
 "PO-Revision-Date: 2005-04-23 17:52+0000\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Catal�<ca@li.org>\n"
@@ -908,7 +908,7 @@ msgstr ""
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Bot�central:</b><br>%Q"
 
-#: src/kvirc/kernel/kvi_app.cpp:831
+#: src/kvirc/kernel/kvi_app.cpp:847
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -918,7 +918,7 @@ msgid ""
 "because you have installed an incomplete script or because you have hit a "
 "bug in KVIrc.<br><br>I can repeat the installation of the default script in "
 "order to restore the missing features.<br><b>Do you want the default script "
-"to be restored ?</b><br><br><font size=\"-1\">Hint: If you're a scripter and "
+"to be restored?</b><br><br><font size=\"-1\">Hint: If you're a scripter and "
 "have intentionally removed some of the scripting features then you may "
 "safely click on \"No and Don't Ask Me Again\", otherwise it might be a good "
 "idea to click \"Yes\". If you still want to choose \"No\" you can always "
@@ -1108,6 +1108,11 @@ msgstr ""
 msgid "Acquires a Screenshot of the KVIrc main window"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:393
+#, fuzzy
+msgid "Actions"
+msgstr "Accions IRC"
+
 #: src/kvirc/kernel/kvi_actionmanager.cpp:65
 msgid "Actions related to settings"
 msgstr "Accions relacionades amb la configuraci"
@@ -1145,6 +1150,11 @@ msgstr "Afegint oferiment de %d segs de l'arxiu %Q (%Q) al receptor %Q"
 msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
 msgstr "Afegida l'oferta de %d segs de l'arxiu  %s (%s) i receptor %s"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:398
+#, fuzzy
+msgid "Addons"
+msgstr "Afegir"
+
 #: src/kvilib/core/kvi_error.cpp:156
 msgid "Address already in use"
 msgstr "Adre� ja en s"
@@ -1159,6 +1169,7 @@ msgid "Admin/protected nicks listing"
 msgstr ""
 
 #: src/kvirc/ui/kvi_optionswidget.cpp:673
+#: src/kvirc/kernel/kvi_defaultscript.cpp:436
 msgid "Advanced..."
 msgstr "Avan�t ..."
 
@@ -1166,6 +1177,15 @@ msgstr "Avan�t ..."
 #, fuzzy
 msgid "Age:"
 msgstr "Mode d'us"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:403
+#, fuzzy
+msgid "Aliases"
+msgstr "�ies"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:388
+msgid "All"
+msgstr ""
 
 #: src/kvilib/system/kvi_locale.cpp:1096
 msgid "All Files"
@@ -1367,7 +1387,7 @@ msgstr "Modes d'usuari disponibles:"
 msgid "Avatar change"
 msgstr "Canvi d'avatar"
 
-#: src/kvirc/kernel/kvi_app.cpp:1050
+#: src/kvirc/kernel/kvi_app.cpp:1046
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr "Fallida la desc�rega de l'avatar per a %Q!%Q@%Q i url %Q: %Q"
 
@@ -1856,6 +1876,7 @@ msgstr "No puc configurar un socket en escolta: fallida en l'enlla�(bind)"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:91
 #: src/kvirc/ui/kvi_imagedialog.cpp:156
+#: src/kvirc/kernel/kvi_defaultscript.cpp:441
 #: src/kvirc/kernel/kvi_coreactions.cpp:808
 #: src/modules/setup/setupwizard.cpp:87
 #: src/modules/avatar/libkviavatar.cpp:109
@@ -2190,6 +2211,11 @@ msgstr ""
 #, fuzzy
 msgid "Chunk header too long: exceeded 4096 bytes"
 msgstr "Cap�lera molt llarga: Excedeix els 4096 bytes"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:408
+#, fuzzy
+msgid "Classes"
+msgstr "Tancar"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:793
 msgid "Clear"
@@ -3031,6 +3057,11 @@ msgstr "Error en carregar el m�ul"
 msgid "Error writing bytes to file %1"
 msgstr "Errada al escriure l'arxiu %s"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:413
+#, fuzzy
+msgid "Events"
+msgstr "Event"
+
 #: src/modules/trayicon/libkvitrayicon.cpp:166
 msgid "Everything is all right"
 msgstr "Tot va b"
@@ -3266,21 +3297,21 @@ msgstr ""
 "[%s]: [ERROR SSL]: error de E/S en arxiu mentres intentava fer servir "
 "l'arxiu de clau privada %s"
 
-#: src/kvirc/kernel/kvi_app.cpp:1018
+#: src/kvirc/kernel/kvi_app.cpp:1014
 #, fuzzy
 msgid "File download failed"
 msgstr "Directori d'arxius descarregats:"
 
-#: src/kvirc/kernel/kvi_app.cpp:1020
+#: src/kvirc/kernel/kvi_app.cpp:1016
 msgid "File download from %1 failed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:1031
+#: src/kvirc/kernel/kvi_app.cpp:1027
 #, fuzzy
 msgid "File download from %1 successfully complete"
 msgstr "Arxiu descarregat: procesant..."
 
-#: src/kvirc/kernel/kvi_app.cpp:1029
+#: src/kvirc/kernel/kvi_app.cpp:1025
 #, fuzzy
 msgid "File download successfully complete"
 msgstr "Directori d'arxius descarregats:"
@@ -3805,8 +3836,8 @@ msgstr ""
 msgid "Install Theme Package"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:830
-msgid "Installation problems ?"
+#: src/kvirc/kernel/kvi_app.cpp:846
+msgid "Installation problems?"
 msgstr ""
 
 #: src/kvilib/core/kvi_error.cpp:135
@@ -4114,7 +4145,7 @@ msgstr ""
 msgid "KVIrc is compiled without OpenSSL support."
 msgstr "Aquest executable s'ha compilat sense suport SSL"
 
-#: src/kvirc/kernel/kvi_app.cpp:704
+#: src/kvirc/kernel/kvi_app.cpp:715
 msgid "KVIrc messaging system"
 msgstr ""
 
@@ -4397,7 +4428,7 @@ msgstr "S'ha arribat al nombre m�im d'intents de reconnexi�(%d): desisteixo"
 msgid "Medium activity"
 msgstr "Activitat mitja"
 
-#: src/kvirc/kernel/kvi_app.cpp:696
+#: src/kvirc/kernel/kvi_app.cpp:707
 msgid ""
 "Message arriving from %1:\n"
 "\n"
@@ -4693,7 +4724,7 @@ msgstr "Nick:"
 #: src/kvirc/ui/kvi_input.cpp:254
 #: src/kvirc/ui/kvi_statusbar.cpp:554
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:888
-#: src/kvirc/kernel/kvi_app.cpp:846
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "No"
 msgstr "No"
 
@@ -4721,7 +4752,7 @@ msgstr "No s'ha especificat el nom de l'opci"
 msgid "No activity"
 msgstr "Sense activitat"
 
-#: src/kvirc/kernel/kvi_app.cpp:845
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "No and Don't Ask Me Again"
 msgstr ""
 
@@ -5491,6 +5522,11 @@ msgstr ""
 "Llegeixis la documentaci�del m�ul rijndael\n"
 "per a obtenir m� informaci�sobre l'algoritme emprat.\n"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:418
+#, fuzzy
+msgid "Popups"
+msgstr "Men emergent"
+
 #: src/kvirc/ui/kvi_ircview.cpp:2279
 #: src/kvirc/ui/kvi_ircview.cpp:2333
 #, c-format
@@ -5730,6 +5766,11 @@ msgstr "Sortir amb el missatge de netsplit"
 msgid "Quits KVIrc closing all the current connections"
 msgstr "Sortir de KVIrc tancant totes les connexions actuals"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:423
+#, fuzzy
+msgid "Raw Events"
+msgstr "Events Raw"
+
 #: src/kvirc/kernel/kvi_options.cpp:737
 msgid "Raw data to server"
 msgstr "Dades raw al servidor"
@@ -5886,7 +5927,7 @@ msgstr "Comprobaci�de retr� registrada amb fiabilitat %u (%s)"
 msgid "Reload"
 msgstr "Recarregar"
 
-#: src/kvirc/kernel/kvi_app.cpp:914
+#: src/kvirc/kernel/kvi_app.cpp:910
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "Comanda remota rebuda (%s ...)"
@@ -5942,11 +5983,23 @@ msgstr "Reiniciar"
 msgid "Reset Temporary Background"
 msgstr "Triar Fons Temporal..."
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:447
+#, fuzzy
+msgid "Restore"
+msgstr "&Restaurar"
+
 #: src/kvirc/ui/kvi_menubar.cpp:214
 msgid "Restore &Default Script"
 msgstr "Restaurar Script per &Defecte"
 
-#: src/kvirc/kernel/kvi_app.cpp:866
+#: src/kvirc/kernel/kvi_defaultscript.cpp:103
+#: src/kvirc/kernel/kvi_defaultscript.cpp:109
+#, fuzzy
+msgid "Restore Default Script - Error"
+msgstr "Restaurar l'Script per defecte - KVIrc"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:80
+#: src/kvirc/kernel/kvi_defaultscript.cpp:367
 msgid "Restore Default Script - KVIrc"
 msgstr "Restaurar l'Script per defecte - KVIrc"
 
@@ -6114,6 +6167,10 @@ msgstr "Seleccioni una URL."
 #: src/kvilib/system/kvi_locale.cpp:1038
 msgid "Select color"
 msgstr "Seleccionar color"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:385
+msgid "Select default script's elements to restore:"
+msgstr ""
 
 #: src/kvirc/kernel/kvi_options.cpp:726
 msgid "Selection"
@@ -7217,6 +7274,18 @@ msgstr "Existeixen connexions actives, est�segur que dessitja "
 msgid "There is no $this pointer in this scope (unexpected @)"
 msgstr "No hi ha un punter $this en aquest �bit (@ inesperat)"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:204
+msgid ""
+"There's something wrong in your personal data: my '%1' is %2, while yours is "
+"%3"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:232
+msgid ""
+"There's something wrong in your personal data: my settings are dated %1, "
+"while yours are dated %2"
+msgstr ""
+
 #: src/kvilib/core/kvi_error.cpp:83
 msgid "This KVIrc executable has no IPV6 support"
 msgstr "Aquest executable de KVirc no t�suport IPv6"
@@ -7346,6 +7415,7 @@ msgstr "Llista: %Q"
 
 #: src/kvirc/ui/kvi_toolbar.cpp:86
 #: src/kvirc/ui/kvi_menubar.cpp:169
+#: src/kvirc/kernel/kvi_defaultscript.cpp:428
 msgid "Toolbars"
 msgstr "Barres d'eines"
 
@@ -8097,7 +8167,7 @@ msgstr ""
 #: src/kvirc/ui/kvi_input.cpp:253
 #: src/kvirc/ui/kvi_statusbar.cpp:552
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:888
-#: src/kvirc/kernel/kvi_app.cpp:847
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "Yes"
 msgstr "S"
 
@@ -8105,7 +8175,17 @@ msgstr "S"
 msgid "Yes, always"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:867
+#: src/kvirc/kernel/kvi_defaultscript.cpp:374
+#, fuzzy
+msgid ""
+"You are about to restore the default script.\n"
+"This will erase any script changes you have made.\n"
+"Do you wish to proceed?"
+msgstr ""
+"Es disposa a restaurar l'script per defecte.<br>Aix�esborrar�qualsevol canvi "
+"que hagi fet als scripts.<br>Dessitja continuar?"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:81
 msgid ""
 "You are about to restore the default script.<br>This will erase any script "
 "changes you have made.<br>Do you wish to proceed?"
@@ -8196,6 +8276,12 @@ msgstr "Vost�no � operador: No pot canviar els modes de canal"
 #: src/modules/links/linkswindow.cpp:415
 msgid "You're not connected to a server"
 msgstr "No est�connectat a un servidor"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:225
+msgid ""
+"Your default script is up to date.\n"
+"Do you want to restore it anyway?"
+msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2168
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2176
@@ -10622,10 +10708,6 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgstr "Acceptar RESUME erroni (mIRC arxiu.ext)"
 
 #, fuzzy
-#~ msgid "Action"
-#~ msgstr "Accions IRC"
-
-#, fuzzy
 #~ msgid "Action Editor"
 #~ msgstr "Editor d'�ies"
 
@@ -10714,9 +10796,6 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Alert/Highlight"
 #~ msgstr "Alerta/Ressaltat"
-
-#~ msgid "Alias"
-#~ msgstr "�ies"
 
 #~ msgid "Alias Editor"
 #~ msgstr "Editor d'�ies"
@@ -11738,9 +11817,6 @@ msgstr "z: Destinatari de missatges oper wallop"
 #, fuzzy
 #~ msgid "Error:not enough parameters!"
 #~ msgstr "No hi ha suficients par�etres"
-
-#~ msgid "Event"
-#~ msgstr "Event"
 
 #~ msgid "Event Editor"
 #~ msgstr "Editor d'Events"
@@ -13789,9 +13865,6 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Please specify the properties for the toolbar \"%1\""
 #~ msgstr "Per favor, especifiqui les propietats de la barra d'eines \"%1\""
 
-#~ msgid "Popup"
-#~ msgstr "Men emergent"
-
 #~ msgid "Popup %Q is not defined"
 #~ msgstr "El men emergent %Q no est�definit"
 
@@ -13911,9 +13984,6 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Raw Editor"
 #~ msgstr "Editor Raw"
-
-#~ msgid "Raw Event"
-#~ msgstr "Events Raw"
 
 #~ msgid "Raw event handler %s::%Q is broken: disabling"
 #~ msgstr "El manipulador d'events raw %s::%Q � erroni: deshabilitant"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-10 23:23+0200\n"
+"POT-Creation-Date: 2010-10-12 23:50+0200\n"
 "PO-Revision-Date: 2009-08-07 10:40+0300\n"
 "Last-Translator: CrabMan\n"
 "Language-Team: Ukrainian\n"
@@ -878,7 +878,7 @@ msgstr "<b>KVIrc</b>"
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Клич на середній кнопці:</b><br>%Q"
 
-#: src/kvirc/kernel/kvi_app.cpp:831
+#: src/kvirc/kernel/kvi_app.cpp:847
 #, fuzzy
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
@@ -889,7 +889,7 @@ msgid ""
 "because you have installed an incomplete script or because you have hit a "
 "bug in KVIrc.<br><br>I can repeat the installation of the default script in "
 "order to restore the missing features.<br><b>Do you want the default script "
-"to be restored ?</b><br><br><font size=\"-1\">Hint: If you're a scripter and "
+"to be restored?</b><br><br><font size=\"-1\">Hint: If you're a scripter and "
 "have intentionally removed some of the scripting features then you may "
 "safely click on \"No and Don't Ask Me Again\", otherwise it might be a good "
 "idea to click \"Yes\". If you still want to choose \"No\" you can always "
@@ -1087,6 +1087,11 @@ msgstr "Зробити скріншот"
 msgid "Acquires a Screenshot of the KVIrc main window"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:393
+#, fuzzy
+msgid "Actions"
+msgstr "Дія"
+
 #: src/kvirc/kernel/kvi_actionmanager.cpp:65
 msgid "Actions related to settings"
 msgstr "Дії, пов'язані з налаштуваннями"
@@ -1123,6 +1128,11 @@ msgstr "Додано %d сек файлу до файлу %Q (%Q) для отр�
 msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
 msgstr "На час %d сек файл %Q (%Q) доступний для %Q"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:398
+#, fuzzy
+msgid "Addons"
+msgstr "Додати"
+
 #: src/kvilib/core/kvi_error.cpp:156
 msgid "Address already in use"
 msgstr "Адреса вже використовується"
@@ -1136,12 +1146,22 @@ msgid "Admin/protected nicks listing"
 msgstr ""
 
 #: src/kvirc/ui/kvi_optionswidget.cpp:673
+#: src/kvirc/kernel/kvi_defaultscript.cpp:436
 msgid "Advanced..."
 msgstr "Додатково..."
 
 #: src/modules/setup/setupwizard.cpp:358
 msgid "Age:"
 msgstr "Вік:"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:403
+#, fuzzy
+msgid "Aliases"
+msgstr "Аліас"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:388
+msgid "All"
+msgstr ""
 
 #: src/kvilib/system/kvi_locale.cpp:1096
 msgid "All Files"
@@ -1339,7 +1359,7 @@ msgstr "Доступні користувальницькі режими:"
 msgid "Avatar change"
 msgstr "Зміна аватара"
 
-#: src/kvirc/kernel/kvi_app.cpp:1050
+#: src/kvirc/kernel/kvi_app.cpp:1046
 #, fuzzy
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr "Помилка завантаження аватара для %Q! %Q@%Q і url %Q: %Q"
@@ -1821,6 +1841,7 @@ msgstr "Не можу запустити прослуховування соке
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:91
 #: src/kvirc/ui/kvi_imagedialog.cpp:156
+#: src/kvirc/kernel/kvi_defaultscript.cpp:441
 #: src/kvirc/kernel/kvi_coreactions.cpp:808
 #: src/modules/setup/setupwizard.cpp:87
 #: src/modules/avatar/libkviavatar.cpp:109
@@ -2149,6 +2170,11 @@ msgstr ""
 #, fuzzy
 msgid "Chunk header too long: exceeded 4096 bytes"
 msgstr "Заголовок занадто довгий, перевищує 4096 байт"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:408
+#, fuzzy
+msgid "Classes"
+msgstr "Закрити"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:793
 msgid "Clear"
@@ -2969,6 +2995,11 @@ msgstr "Помилка завантаження модуля"
 msgid "Error writing bytes to file %1"
 msgstr ""
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:413
+#, fuzzy
+msgid "Events"
+msgstr "Подія"
+
 #: src/modules/trayicon/libkvitrayicon.cpp:166
 msgid "Everything is all right"
 msgstr "Всі добре"
@@ -3187,19 +3218,19 @@ msgstr ""
 "[ %s]: [ПОМИЛКА SSL]: Помилка файлового I/O при спробі використанні файлу "
 "приватного ключа %s"
 
-#: src/kvirc/kernel/kvi_app.cpp:1018
+#: src/kvirc/kernel/kvi_app.cpp:1014
 msgid "File download failed"
 msgstr "Помилка завантаження файлу"
 
-#: src/kvirc/kernel/kvi_app.cpp:1020
+#: src/kvirc/kernel/kvi_app.cpp:1016
 msgid "File download from %1 failed"
 msgstr "Скачування файлу від %1 завершилося помилкою"
 
-#: src/kvirc/kernel/kvi_app.cpp:1031
+#: src/kvirc/kernel/kvi_app.cpp:1027
 msgid "File download from %1 successfully complete"
 msgstr "Скачування файлу від %1 успішно завершено"
 
-#: src/kvirc/kernel/kvi_app.cpp:1029
+#: src/kvirc/kernel/kvi_app.cpp:1025
 msgid "File download successfully complete"
 msgstr "Скачування файлу успішно завершене"
 
@@ -3707,8 +3738,9 @@ msgstr "Установити пакет"
 msgid "Install Theme Package"
 msgstr "Установити пакет теми"
 
-#: src/kvirc/kernel/kvi_app.cpp:830
-msgid "Installation problems ?"
+#: src/kvirc/kernel/kvi_app.cpp:846
+#, fuzzy
+msgid "Installation problems?"
 msgstr "Проблеми з інсталяцією?"
 
 #: src/kvilib/core/kvi_error.cpp:135
@@ -4010,7 +4042,7 @@ msgstr "KVIrc зібраний без підтримки OpenSSL. Функція
 msgid "KVIrc is compiled without OpenSSL support."
 msgstr "Ця зборка програми не підтримує SSL"
 
-#: src/kvirc/kernel/kvi_app.cpp:704
+#: src/kvirc/kernel/kvi_app.cpp:715
 msgid "KVIrc messaging system"
 msgstr ""
 
@@ -4289,7 +4321,7 @@ msgstr ""
 msgid "Medium activity"
 msgstr "Середня активність"
 
-#: src/kvirc/kernel/kvi_app.cpp:696
+#: src/kvirc/kernel/kvi_app.cpp:707
 msgid ""
 "Message arriving from %1:\n"
 "\n"
@@ -4581,7 +4613,7 @@ msgstr "Нік:"
 #: src/kvirc/ui/kvi_input.cpp:254
 #: src/kvirc/ui/kvi_statusbar.cpp:554
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:888
-#: src/kvirc/kernel/kvi_app.cpp:846
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "No"
 msgstr "Ні"
 
@@ -4607,7 +4639,7 @@ msgstr "Не задане ім'я/номер дії"
 msgid "No activity"
 msgstr "Немає активності"
 
-#: src/kvirc/kernel/kvi_app.cpp:845
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "No and Don't Ask Me Again"
 msgstr "Немає й більше мене не запитувати"
 
@@ -5357,6 +5389,11 @@ msgstr ""
 "якщо ви хочете працювати з CBC режимом, ви повинні\n"
 "використати ключ(і) \"cbc:\".\n"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:418
+#, fuzzy
+msgid "Popups"
+msgstr "Спливаюче меню"
+
 #: src/kvirc/ui/kvi_ircview.cpp:2279
 #: src/kvirc/ui/kvi_ircview.cpp:2333
 #, c-format
@@ -5597,6 +5634,11 @@ msgstr "Повідомлення про вихід через втрату ме�
 msgid "Quits KVIrc closing all the current connections"
 msgstr "Вихід з KVIrc із закриттям всіх поточних з'єднань"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:423
+#, fuzzy
+msgid "Raw Events"
+msgstr "Заготівлі подій"
+
 #: src/kvirc/kernel/kvi_options.cpp:737
 msgid "Raw data to server"
 msgstr "Вихідні дані сервера"
@@ -5752,7 +5794,7 @@ msgstr "Визначена гарантована затримка %u (%s)"
 msgid "Reload"
 msgstr "Обновити"
 
-#: src/kvirc/kernel/kvi_app.cpp:914
+#: src/kvirc/kernel/kvi_app.cpp:910
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "Дистанційна команда отримала (%s ...)"
@@ -5807,11 +5849,23 @@ msgstr "Скидання"
 msgid "Reset Temporary Background"
 msgstr "Скинути тимчасове тло"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:447
+#, fuzzy
+msgid "Restore"
+msgstr "&Відновити"
+
 #: src/kvirc/ui/kvi_menubar.cpp:214
 msgid "Restore &Default Script"
 msgstr "Відновити сценарії по &умовчанню"
 
-#: src/kvirc/kernel/kvi_app.cpp:866
+#: src/kvirc/kernel/kvi_defaultscript.cpp:103
+#: src/kvirc/kernel/kvi_defaultscript.cpp:109
+#, fuzzy
+msgid "Restore Default Script - Error"
+msgstr "Відновлення сценаріїв за замовчуванням - KVirc"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:80
+#: src/kvirc/kernel/kvi_defaultscript.cpp:367
 msgid "Restore Default Script - KVIrc"
 msgstr "Відновлення сценаріїв за замовчуванням - KVirc"
 
@@ -5974,6 +6028,10 @@ msgstr "Вибрати URL."
 #: src/kvilib/system/kvi_locale.cpp:1038
 msgid "Select color"
 msgstr "Вибір кольорів"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:385
+msgid "Select default script's elements to restore:"
+msgstr ""
 
 #: src/kvirc/kernel/kvi_options.cpp:726
 msgid "Selection"
@@ -7042,6 +7100,18 @@ msgstr "Є активні з'єднання, ви дійсно хочете "
 msgid "There is no $this pointer in this scope (unexpected @)"
 msgstr "Немає покажчика $this (несподіваний @)"
 
+#: src/kvirc/kernel/kvi_defaultscript.cpp:204
+msgid ""
+"There's something wrong in your personal data: my '%1' is %2, while yours is "
+"%3"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:232
+msgid ""
+"There's something wrong in your personal data: my settings are dated %1, "
+"while yours are dated %2"
+msgstr ""
+
 #: src/kvilib/core/kvi_error.cpp:83
 msgid "This KVIrc executable has no IPV6 support"
 msgstr "KVirc зібраний без підтримки IPV6"
@@ -7175,6 +7245,7 @@ msgstr "Список: %Q"
 
 #: src/kvirc/ui/kvi_toolbar.cpp:86
 #: src/kvirc/ui/kvi_menubar.cpp:169
+#: src/kvirc/kernel/kvi_defaultscript.cpp:428
 msgid "Toolbars"
 msgstr "Панелі інструментів"
 
@@ -7899,7 +7970,7 @@ msgstr "Записую заголовок пакета"
 #: src/kvirc/ui/kvi_input.cpp:253
 #: src/kvirc/ui/kvi_statusbar.cpp:552
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:888
-#: src/kvirc/kernel/kvi_app.cpp:847
+#: src/kvirc/kernel/kvi_app.cpp:861
 msgid "Yes"
 msgstr "Так"
 
@@ -7907,7 +7978,17 @@ msgstr "Так"
 msgid "Yes, always"
 msgstr "Так, завжди"
 
-#: src/kvirc/kernel/kvi_app.cpp:867
+#: src/kvirc/kernel/kvi_defaultscript.cpp:374
+#, fuzzy
+msgid ""
+"You are about to restore the default script.\n"
+"This will erase any script changes you have made.\n"
+"Do you wish to proceed?"
+msgstr ""
+"Ви збираєтеся відновити сценарії по умовчанню<br>Це приведе до видаленню "
+"внесених раніше змін<br>Хочете продовжити?"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:81
 msgid ""
 "You are about to restore the default script.<br>This will erase any script "
 "changes you have made.<br>Do you wish to proceed?"
@@ -8001,6 +8082,12 @@ msgstr "Ви не оператор: Ви не можете змінювати р
 #: src/modules/links/linkswindow.cpp:415
 msgid "You're not connected to a server"
 msgstr "Ви не підключені до сервера"
+
+#: src/kvirc/kernel/kvi_defaultscript.cpp:225
+msgid ""
+"Your default script is up to date.\n"
+"Do you want to restore it anyway?"
+msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2168
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2176
@@ -9043,9 +9130,6 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "A string of 6 hex digits is required"
 #~ msgstr "Потрібна рядок з 6 шестнадцатерічних символів"
 
-#~ msgid "Action"
-#~ msgstr "Дія"
-
 #~ msgid "Action Editor"
 #~ msgstr "Редактор дій"
 
@@ -9079,9 +9163,6 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "Adds a new group"
 #~ msgstr "Додати нову групу"
-
-#~ msgid "Alias"
-#~ msgstr "Аліас"
 
 #~ msgid "Alias Editor"
 #~ msgstr "Редактор аліасов"
@@ -9612,9 +9693,6 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "Error: %Q"
 #~ msgstr "Помилка: %Q"
-
-#~ msgid "Event"
-#~ msgstr "Подія"
 
 #~ msgid "Event Editor"
 #~ msgstr "Редактор подій"
@@ -10643,9 +10721,6 @@ msgstr "z: Отримувач повідомлень wallop"
 #~ msgid "Please specify the properties for the toolbar \"%1\""
 #~ msgstr "Будь ласка визначите властивості для панелі інструментів \"%1\""
 
-#~ msgid "Popup"
-#~ msgstr "Спливаюче меню"
-
 #~ msgid "Popup %Q is not defined"
 #~ msgstr "Спливаюче меню %Q не визначено"
 
@@ -10706,9 +10781,6 @@ msgstr "z: Отримувач повідомлень wallop"
 
 #~ msgid "Raw Editor"
 #~ msgstr "Редактор заготівель"
-
-#~ msgid "Raw Event"
-#~ msgstr "Заготівлі подій"
 
 #~ msgid "Re&move Handler"
 #~ msgstr "В&идалити оброблювач"
