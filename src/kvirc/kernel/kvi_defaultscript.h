@@ -35,6 +35,7 @@
 #include <QObject>
 #include <QDialog>
 
+class QGroupBox;
 class QCheckBox;
 class KviConfig;
 class KviDefaultScriptDialog;
@@ -174,7 +175,7 @@ public:
 	*/
 	~KviDefaultScriptDialog();
 protected:
-	QWidget   * m_pAdvanced;
+	QGroupBox * m_pAdvanced;
 	QCheckBox * m_pAll;
 	QCheckBox * m_pAction;
 	QCheckBox * m_pAddon;

@@ -35,6 +35,7 @@
 
 #include <QFile>
 #include <QDate>
+#include <QGroupBox>
 #include <QCheckBox>
 #include <QPushButton>
 #include <QMessageBox>
@@ -389,60 +390,57 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 	pLayout->addWidget(pLabel,0,0,1,4);
 
 	// Construct the advanced widget
-	m_pAdvanced = new QWidget(this);
+	m_pAdvanced = new QGroupBox(__tr2qs("Select default script's elements to restore"),this);
 	m_pAdvanced->hide();
 
 	QGridLayout * pAdvLayout = new QGridLayout(m_pAdvanced);
 	pAdvLayout->setContentsMargins(0,10,0,0);
 	pLayout->addWidget(m_pAdvanced,1,0,1,4);
-	
-	pLabel = new QLabel(__tr2qs("Select default script's elements to restore:"),m_pAdvanced);
-	pAdvLayout->addWidget(pLabel,0,0);
 
 	m_pAll = new QCheckBox(__tr2qs("All"),m_pAdvanced);
 	m_pAll->setChecked(true);
-	pAdvLayout->addWidget(m_pAll,1,0);
+	pAdvLayout->addWidget(m_pAll,0,0);
 	connect(m_pAll,SIGNAL(clicked(bool)),this,SLOT(toggleAll(bool)));
 
 	m_pAction = new QCheckBox(__tr2qs("Actions"),m_pAdvanced);
 	m_pAction->setChecked(true);
 	m_pAction->setEnabled(false);
-	pAdvLayout->addWidget(m_pAction,2,0);
+	pAdvLayout->addWidget(m_pAction,1,0);
 
 	m_pAddon = new QCheckBox(__tr2qs("Addons"),m_pAdvanced);
 	m_pAddon->setChecked(true);
 	m_pAddon->setEnabled(false);
-	pAdvLayout->addWidget(m_pAddon,2,1);
+	pAdvLayout->addWidget(m_pAddon,1,1);
 
 	m_pAlias = new QCheckBox(__tr2qs("Aliases"),m_pAdvanced);
 	m_pAlias->setChecked(true);
 	m_pAlias->setEnabled(false);
-	pAdvLayout->addWidget(m_pAlias,3,0);
+	pAdvLayout->addWidget(m_pAlias,2,0);
 
 	m_pClass = new QCheckBox(__tr2qs("Classes"),m_pAdvanced);
 	m_pClass->setChecked(true);
 	m_pClass->setEnabled(false);
-	pAdvLayout->addWidget(m_pClass,3,1);
+	pAdvLayout->addWidget(m_pClass,2,1);
 
 	m_pEvent = new QCheckBox(__tr2qs("Events"),m_pAdvanced);
 	m_pEvent->setChecked(true);
 	m_pEvent->setEnabled(false);
-	pAdvLayout->addWidget(m_pEvent,4,0);
+	pAdvLayout->addWidget(m_pEvent,3,0);
 
 	m_pPopup = new QCheckBox(__tr2qs("Popups"),m_pAdvanced);
 	m_pPopup->setChecked(true);
 	m_pPopup->setEnabled(false);
-	pAdvLayout->addWidget(m_pPopup,4,1);
+	pAdvLayout->addWidget(m_pPopup,3,1);
 
 	m_pRaw = new QCheckBox(__tr2qs("Raw Events"),m_pAdvanced);
 	m_pRaw->setChecked(true);
 	m_pRaw->setEnabled(false);
-	pAdvLayout->addWidget(m_pRaw,5,0);
+	pAdvLayout->addWidget(m_pRaw,4,0);
 
 	m_pToolbar = new QCheckBox(__tr2qs("Toolbars"),m_pAdvanced);
 	m_pToolbar->setChecked(true);
 	m_pToolbar->setEnabled(false);
-	pAdvLayout->addWidget(m_pToolbar,5,1);
+	pAdvLayout->addWidget(m_pToolbar,4,1);
 
 	m_pAdvanced->setLayout(pAdvLayout);
 
