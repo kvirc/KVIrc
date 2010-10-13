@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-12 23:50+0200\n"
-"PO-Revision-Date: 2010-09-18 16:03+0100\n"
+"PO-Revision-Date: 2010-10-14 00:22+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -882,7 +882,6 @@ msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Clique com o botão do meio:</b><br>%Q"
 
 #: src/kvirc/kernel/kvi_app.cpp:847
-#, fuzzy
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -899,19 +898,26 @@ msgid ""
 "restore the default script by choosing the appropriate entry from the "
 "\"Scripting\" menu.</font>"
 msgstr ""
-"<b>Ooops...</b><br><br><b>Por alguma razão me faz pensar que a instalação do "
-"KVirc não está completa.</b><br><br>Posso estar enganado, mas parecem faltar "
-"algumas opções que o 'script' predefinido KVirc fornece. Isto pode acontecer "
-"se tiver actualizado para uma versão svn instável, ou porque acidentalmente "
+"<b>Ooops...</b><br><br><b>Existem algumas razões que me fazem pensar que "
+"a sua instalação KVirc não está completa.</b><br><br>Posso estar enganado, "
+"mas "
+"parecem faltar algumas opções que o 'script' predefinido KVirc fornece. Isto "
+"pode "
+"acontecer se tiver actualizado para uma versão svn instável, ou porque "
+"acidentalmente "
 "apagou ou danificou os seus ficheiros de configuração, ou porque instalou um "
 "'script' incompleto, ou porque encontrou algum erro no KVirc.<br><br>Pode-se "
 "repetir a instalação do 'script' predefinido para restaurar as opções em "
-"falta. <br><b>Deseja que o 'script' predefinido seja restaurado?</"
-"b><br><br><font size=\"-1\">Dica: se é um programador e removeu "
-"intencionalmente algumas opções do 'script' então pode com certeza clicar em "
-"\"Não perguntar novamente\", senão será melhor clicar em \"Sim\". Se ainda "
-"quiser escolher \"Não\", pode sempre restauraro 'script' predefinido ao "
-"escolher a entrada apropriada do menu \"Scripting\".</font>"
+"falta.\n"
+"<br><b>Deseja que o 'script' predefinido seja restaurado?</b><br><br><font "
+"size=\"-1\">\n"
+"Dica: se é um programador e removeu intencionalmente algumas opções do "
+"'script' "
+"então pode com certeza clicar em \"Não perguntar novamente\", senão será "
+"melhor "
+"clicar em \"Sim\". Se ainda quiser escolher \"Não\", pode sempre restaurar o "
+"'script' "
+"predefinido ao escolher a entrada apropriada do menu \"Scripting\".</font>"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:336
 msgid "<b>Right click</b> to add/remove applets"
@@ -1099,9 +1105,8 @@ msgid "Acquires a Screenshot of the KVIrc main window"
 msgstr "Captura uma imagem da janela principal do KVirc"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:393
-#, fuzzy
 msgid "Actions"
-msgstr "Acções IRC"
+msgstr "Acções"
 
 #: src/kvirc/kernel/kvi_actionmanager.cpp:65
 msgid "Actions related to settings"
@@ -1143,9 +1148,8 @@ msgstr ""
 "Adicionados %d seg à oferta do ficheiro para o ficheiro %Q (%Q) e receptor %Q"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:398
-#, fuzzy
 msgid "Addons"
-msgstr "Adicionar"
+msgstr "Extras"
 
 #: src/kvilib/core/kvi_error.cpp:156
 msgid "Address already in use"
@@ -1169,13 +1173,12 @@ msgid "Age:"
 msgstr "Idade:"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:403
-#, fuzzy
 msgid "Aliases"
-msgstr "&Sempre"
+msgstr "Aliases"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:388
 msgid "All"
-msgstr ""
+msgstr "Tudo"
 
 #: src/kvilib/system/kvi_locale.cpp:1096
 msgid "All Files"
@@ -1716,9 +1719,8 @@ msgid "Can't open file \"%Q\" for writing"
 msgstr "Não é possível abrir ficheiro \"%Q\" para escrita"
 
 #: src/modules/file/libkvifile.cpp:299
-#, fuzzy
 msgid "Can't open file %1 for writing"
-msgstr "Não é possível abrir ficheiro \"%Q\" para escrita"
+msgstr "Não é possível abrir ficheiro %1 para escrita"
 
 #: src/kvilib/core/kvi_error.cpp:139
 msgid "Can't open file for appending"
@@ -2171,9 +2173,8 @@ msgid "Chunk header too long: exceeded 4096 bytes"
 msgstr "Cabeçalho demasiado longo: excedeu 4096 bytes"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:408
-#, fuzzy
 msgid "Classes"
-msgstr "Fechar"
+msgstr "Classes"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:793
 msgid "Clear"
@@ -2973,12 +2974,11 @@ msgstr "Erro ao carregar módulo."
 
 #: src/modules/file/libkvifile.cpp:322
 msgid "Error writing bytes to file %1"
-msgstr ""
+msgstr "Erro ao gravar bytes no ficheiro %1"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:413
-#, fuzzy
 msgid "Events"
-msgstr "Editar Eventos Raw..."
+msgstr "Eventos"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:166
 msgid "Everything is all right"
@@ -3699,7 +3699,6 @@ msgid "Install Theme Package"
 msgstr "Instalar Pacote de Tema"
 
 #: src/kvirc/kernel/kvi_app.cpp:846
-#, fuzzy
 msgid "Installation problems?"
 msgstr "Problemas de instalação?"
 
@@ -4383,9 +4382,8 @@ msgid "Missing closing brace"
 msgstr "Falta chaveta de fecho"
 
 #: src/modules/file/libkvifile.cpp:294
-#, fuzzy
 msgid "Missing data array"
-msgstr "Falta parâmetro"
+msgstr "Matriz de dados em falta"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:106
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:323
@@ -5268,7 +5266,7 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:806
 msgid "Please enter the new nickname"
-msgstr ""
+msgstr "Por favor indique a nova alcunha"
 
 #: src/modules/avatar/libkviavatar.cpp:74
 msgid ""
@@ -5359,9 +5357,8 @@ msgstr ""
 "prefixo \"cbc:\" às suas chaves.\n"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:418
-#, fuzzy
 msgid "Popups"
-msgstr "Falta o nome do menu"
+msgstr "Menus"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2279
 #: src/kvirc/ui/kvi_ircview.cpp:2333
@@ -5594,9 +5591,8 @@ msgid "Quits KVIrc closing all the current connections"
 msgstr "Sai do KVirc fechando todas as conexões actuais"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:423
-#, fuzzy
 msgid "Raw Events"
-msgstr "Editar Eventos Raw..."
+msgstr "Eventos Brutos"
 
 #: src/kvirc/kernel/kvi_options.cpp:737
 msgid "Raw data to server"
@@ -5810,9 +5806,8 @@ msgid "Reset Temporary Background"
 msgstr "Restaurar Fundo Temporário"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:447
-#, fuzzy
 msgid "Restore"
-msgstr "&Restaurar"
+msgstr "Restaurar"
 
 #: src/kvirc/ui/kvi_menubar.cpp:214
 msgid "Restore &Default Script"
@@ -5820,9 +5815,8 @@ msgstr "Restaurar 'Script' Predefinido"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:103
 #: src/kvirc/kernel/kvi_defaultscript.cpp:109
-#, fuzzy
 msgid "Restore Default Script - Error"
-msgstr "Restaurar 'Script' Predefinido - KVIrc"
+msgstr "Restaurar 'Script' Predefinido - Erro"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:80
 #: src/kvirc/kernel/kvi_defaultscript.cpp:367
@@ -5992,7 +5986,7 @@ msgstr "Escolher cor"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:385
 msgid "Select default script's elements to restore:"
-msgstr ""
+msgstr "Seleccione os elementos do 'script' predefinido a restaurar:"
 
 #: src/kvirc/kernel/kvi_options.cpp:726
 msgid "Selection"
@@ -7065,12 +7059,16 @@ msgid ""
 "There's something wrong in your personal data: my '%1' is %2, while yours is "
 "%3"
 msgstr ""
+"Existe algum problema nos seus dados pessoais: o meu '%1' é %2, enquanto "
+"que o seu é %3"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:232
 msgid ""
 "There's something wrong in your personal data: my settings are dated %1, "
 "while yours are dated %2"
 msgstr ""
+"Existe algum problema nos seus dados pessoais: as minhas definições estão "
+"datadas de %1, enquanto que as suas estão datadas de %2"
 
 #: src/kvilib/core/kvi_error.cpp:83
 msgid "This KVIrc executable has no IPV6 support"
@@ -7933,14 +7931,14 @@ msgid "Yes, always"
 msgstr "Sim, sempre"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:374
-#, fuzzy
 msgid ""
 "You are about to restore the default script.\n"
 "This will erase any script changes you have made.\n"
 "Do you wish to proceed?"
 msgstr ""
-"Está prestes a restaurar o 'script' predefinido.<br>Isto irá apagar qualquer "
-"alteração que tenha feito no 'script'<br>Deseja continuar?"
+"Está prestes a restaurar o 'script' predefinido.\n"
+"Isto irá apagar qualquer alteração que tenha feito no 'script'.\n"
+"Deseja continuar?"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:81
 msgid ""
@@ -8045,6 +8043,8 @@ msgid ""
 "Your default script is up to date.\n"
 "Do you want to restore it anyway?"
 msgstr ""
+"O seu 'script' predefinido está actualizado.\n"
+"Deseja restaurá-lo na mesma?"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2168
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:2176
