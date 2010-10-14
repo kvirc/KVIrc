@@ -694,15 +694,18 @@ namespace KviKvsCoreSimpleCommands
 		@title:
 			debug
 		@syntax:
-			debug [-s] <text>
+                        debug [-s] [-c] <text>
 		@short:
 			Outputs text to the debug window
 		@switches:
 			!sw: -s | --system-console
 			Output to the system console instead of the debug window.
+                        !sw: -c | --scriptcontext-name
+                        Prepend the script's context name to the output.
 		@description:
 			If the -s switch is not specified then outputs the &lt;text&gt; to the debug window.
 			If the -s switch is used then the output is sent to the system console instead.
+                        If the -c switch is used then the script's context name will be prepended to the output.
 			This is useful if you need to debug destructors of objects
 			or events that are triggered at kvirc shutdown.
 		@seealso:
@@ -714,6 +717,8 @@ namespace KviKvsCoreSimpleCommands
 
 		QString szAll;
 		KVSCSC_pParams->allAsString(szAll);
+                if(KVSCSC_pSwitches->find('c',"scriptcontext-name"))
+                    szAll.prepend(__pContext->script()->name()+": ");
 		if(KVSCSC_pSwitches->find('s',"system-console"))
 			qDebug("%s",szAll.toUtf8().data());
 		else {
