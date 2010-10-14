@@ -155,9 +155,30 @@ void KviEventEditor::oneTimeSetup()
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 	connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),
 		this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
-
+        connect(KviKvsEventManager::instance(),SIGNAL(eventHandlerDisabled(const QString &)),this,SLOT(eventHandlerDisabled(const QString &)));
 	m_pContextPopup = new KviTalPopupMenu(this);
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
+}
+void KviEventEditor::eventHandlerDisabled(const QString &szHandler)
+{
+    QString szEventName=szHandler.split("::")[0];
+    QString szHandlerName=szHandler.split("::")[1];
+    qDebug("Handler %s of event %s : disabled",szHandlerName.toUtf8().data(),szEventName.toUtf8().data());
+    for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+    {
+        KviEventTreeWidgetItem *pItem=(KviEventTreeWidgetItem*)m_pTreeWidget->topLevelItem(i);
+        if(!KviQString::equalCI(szEventName,pItem->name())) continue;
+        for(int j=0;j<pItem->childCount();j++)
+        {
+            if(KviQString::equalCI(szHandlerName,((KviEventHandlerTreeWidgetItem *)pItem->child(j))->name()))
+            {
+                ((KviEventHandlerTreeWidgetItem *)pItem->child(j))->setEnabled(false);
+                return;
+            }
+
+        }
+    }
+
 }
 
 KviEventEditorTreeWidget::KviEventEditorTreeWidget(QWidget * par)

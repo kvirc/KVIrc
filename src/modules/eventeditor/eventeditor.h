@@ -106,6 +106,7 @@ protected slots:
 	void addHandlerForCurrentEvent();
 	void exportAllEvents();
 	void exportCurrentHandler();
+        void eventHandlerDisabled(const QString &szName);
 protected:
 	void showEvent(QShowEvent *e);
 private:

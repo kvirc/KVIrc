@@ -36,8 +36,9 @@ class KviKvsVariantList;
 
 #define KVI_KVS_NUM_RAW_EVENTS 1000
 
-class KVIRC_API KviKvsEventManager
+class KVIRC_API KviKvsEventManager: public QObject
 {
+        Q_OBJECT
 	friend class KviModule; // compatibility only!
 protected: // it only can be created and destroyed by KviKvsAliasManager::init()/done()
 	KviKvsEventManager();
@@ -113,6 +114,8 @@ public:
 	void saveAppEvents(const QString &szFileName);
 	void loadRawEvents(const QString &szFileName);
 	void saveRawEvents(const QString &szFileName);
+signals:
+        void eventHandlerDisabled(const QString &);
 };
 
 
