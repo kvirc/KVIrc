@@ -73,6 +73,7 @@ SET(kvirc_MOC_HDRS
 	kvs/kvi_kvs_asyncdnsoperation.h
 	kvs/kvi_kvs_asyncoperation.h
 	kvs/kvi_kvs_dnsmanager.h
+	kvs/kvi_kvs_eventmanager.h
 	kvs/kvi_kvs_object.h
 	kvs/kvi_kvs_popupmenu.h
 	kvs/kvi_kvs_popupmanager.h
