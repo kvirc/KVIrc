@@ -50,7 +50,7 @@
 		Event handlers can be created or destroyed by using the scriptcenter (graphic interface)
 		or even from the commandline (or script) by using the [cmd]event[/cmd] command.[br]
 		For example, the [event:onirc]OnIRC[/event] is triggered when the login operations have
-		been terminated and you can consider yourself "completely" on IRC. For example , you might
+		been terminated and you can consider yourself "completely" on IRC. For example, you might
 		want to "auto-join" some channels. Nothing easier! The following snippet of code
 		adds a handler to the OnIRC event that joins three channels:[br]
 		[example]
@@ -73,7 +73,7 @@
 		}
 		[/example]
 		(An even nicer idea would be to use the [cmd]awhois[/cmd] command...but that's left to the reader as exercise.[br]
-		To remove an event handler you still use the [cmd]event[/cmd] command , but with an empty code block:[br]
+		To remove an event handler you still use the [cmd]event[/cmd] command, but with an empty code block:[br]
 		[example]
 		[cmd]event[/cmd](OnIRC,lookforfred){}[br]
 		[/example]
@@ -105,7 +105,7 @@ void KviKvsEventManager::init()
 {
 	if(KviKvsEventManager::instance())
 	{
-		debug("WARNING: Trying to create KviKvsEventManager twice!");
+		qDebug("WARNING: Trying to create KviKvsEventManager twice!");
 		return;
 	}
 	(void) new KviKvsEventManager();
@@ -115,7 +115,7 @@ void KviKvsEventManager::done()
 {
 	if(!KviKvsEventManager::instance())
 	{
-		debug("WARNING: Trying to destroy the KviKvsEventManager twice!");
+		qDebug("WARNING: Trying to destroy the KviKvsEventManager twice!");
 		return;
 	}
 	delete KviKvsEventManager::instance();
@@ -499,6 +499,7 @@ bool KviKvsEventManager::triggerHandlers(KviPointerList<KviKvsEventHandler> * pH
 						{
 							((KviKvsScriptEventHandler *)h)->setEnabled(false);
 							pWnd->output(KVI_OUT_PARSERERROR,__tr2qs_ctx("Event handler %Q is broken: disabling","kvs"),&(s->name()));
+                                                        emit eventHandlerDisabled(s->name());
 						}
 					}
 					if(!bGotHalt)bGotHalt = (iRet & KviKvsScript::HaltEncountered);
@@ -542,9 +543,9 @@ void KviKvsEventManager::loadRawEvents(const QString &szFileName)
 				for(unsigned int index = 0;index < nHandlers;index++)
 				{
 					KviQString::sprintf(tmp,"Name%u",index);
-					QString szName = cfg.readQStringEntry(tmp,"unnamed");
+					QString szName = cfg.readEntry(tmp,"unnamed");
 					KviQString::sprintf(tmp,"Buffer%u",index);
-					QString szCode = cfg.readQStringEntry(tmp,"");
+					QString szCode = cfg.readEntry(tmp,"");
 					KviQString::sprintf(tmp,"RawEvent%u::%Q",index,&szName);
 					KviKvsScriptEventHandler * s = new KviKvsScriptEventHandler(szName,tmp,szCode);
 					KviQString::sprintf(tmp,"Enabled%u",index);
@@ -612,9 +613,9 @@ void KviKvsEventManager::loadAppEvents(const QString &szFileName)
 				{
 					QString tmp;
 					KviQString::sprintf(tmp,"Name%u",index);
-					QString szName = cfg.readQStringEntry(tmp,"unnamed");
+					QString szName = cfg.readEntry(tmp,"unnamed");
 					KviQString::sprintf(tmp,"Buffer%u",index);
-					QString szCode = cfg.readQStringEntry(tmp,"");
+					QString szCode = cfg.readEntry(tmp,"");
 					KviQString::sprintf(tmp,"Enabled%u",index);
 					bool bEnabled = cfg.readBoolEntry(tmp,false);
 					QString szCntx;
