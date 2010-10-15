@@ -345,20 +345,34 @@ void KviTrayIcon::fillContextPopup()
 
 void KviTrayIcon::toggleParentFrame()
 {
+	qDebug("KviTrayIcon::toggleParentFrame()");
 	if(m_pFrm->isMinimized())
 	{
+		qDebug("- frame is minimized");
 		m_pFrm->setWindowState(m_pFrm->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
 
 		if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
+		{
+			qDebug("- window was maximized so calling showMaximized()");
 			m_pFrm->showMaximized();
-		else m_pFrm->show();
+		} else {
+			qDebug("- window wasn't maximized so calling plain show()");
+			m_pFrm->show();
+		}
 	} else if(!m_pFrm->isVisible())
 	{
+		qDebug("- frame is not visible");
 		//restore mainwindow
 		if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
+		{
+			qDebug("- window was maximized so calling showMaximized()");
 			m_pFrm->showMaximized();
-		else m_pFrm->show();
+		} else {
+			qDebug("- window wasn't maximized so calling plain show()");
+			m_pFrm->show();
+		}
 	} else {
+		qDebug("- frame is visible: maximized state=%d, hiding",m_pFrm->isMaximized());
 		KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = m_pFrm->isMaximized();
 		m_pFrm->hide();
 	}
