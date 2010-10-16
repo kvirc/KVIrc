@@ -170,7 +170,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pLayout->addWidget(m_pHideToolsButton,0,2,2,1);
 	m_pLayout->addWidget(m_pButtonContainer,0,1,2,1);
 	m_pLayout->addWidget(m_pInputEditor,0,0,2,1);
-	
+
 	installShortcuts();
 }
 

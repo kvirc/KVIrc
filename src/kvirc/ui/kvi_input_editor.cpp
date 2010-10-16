@@ -47,6 +47,7 @@
 #include "kvi_userinput.h"
 #include "kvi_userlistview.h"
 #include "kvi_shortcuts.h"
+#include "kvi_kvs_eventtriggers.h"
 
 #include <QClipboard>
 #include <QLabel>
@@ -125,7 +126,7 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	setContentsMargins(KVI_INPUT_MARGIN,KVI_INPUT_MARGIN,KVI_INPUT_MARGIN,KVI_INPUT_MARGIN);
 	//set the font and font metrics
 	applyOptions();
-	
+
 	installShortcuts();
 }
 
@@ -235,7 +236,7 @@ QSize KviInputEditor::sizeHint() const
 void KviInputEditor::paintEvent(QPaintEvent *)
 {
 	QPainter p(this);
-	
+
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
@@ -252,7 +253,7 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 	} else {
 #endif
 		p.fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorInputBackground));
-		
+
 		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap();
 		if(pix)
 			KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),contentsRect(),contentsRect().width(),contentsRect().height());
@@ -266,11 +267,11 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 	option.rect = rect();
 	option.lineWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, this);
 	option.midLineWidth = 0;
-	
+
 	option.state |= QStyle::State_Sunken;
 	if(isReadOnly())
 		option.state |= QStyle::State_ReadOnly;
-	
+
 	//option.state &= ~(QStyle::State_HasFocus | QStyle::State_Active | QStyle::State_MouseOver); // kill any state that will cause an "active" frame to be painted
 	option.features = QStyleOptionFrameV2::None;
 
@@ -282,7 +283,7 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 	r.setY(r.y() + KVI_INPUT_MARGIN + KVI_INPUT_PADDING);
 	r.setRight(r.right() - KVI_INPUT_MARGIN - KVI_INPUT_PADDING);
 	r.setBottom(r.bottom() - KVI_INPUT_MARGIN - KVI_INPUT_PADDING);
-		
+
 	p.setClipRect(r);
 
 	p.translate(r.topLeft());
@@ -991,6 +992,9 @@ void KviInputEditor::pasteClipboardWithConfirmation()
 	if(!pClip) return;
 	QString szText = pClip->text(QClipboard::Clipboard);
 
+	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnInputBarPaste,m_pKviWindow,m_pKviWindow->id(),szText))
+		return;
+
 	if(szText.contains(QChar('\n')) > 0)
 	{
 		if(m_pInputParent->inherits("KviInput"))
@@ -1005,6 +1009,9 @@ void KviInputEditor::pasteSelectionWithConfirmation()
 	QClipboard * pClip = QApplication::clipboard();
 	if(!pClip) return;
 	QString szText = pClip->text(pClip->supportsSelection() ? QClipboard::Selection : QClipboard::Clipboard);
+
+	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnInputBarPaste,m_pKviWindow,m_pKviWindow->id(),szText))
+		return;
 
 	if(szText.contains(QChar('\n')) > 0)
 	{
@@ -1271,7 +1278,7 @@ void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 
 	// repaint
 	m_bUpdatesEnabled = true;
-		
+
 	repaintWithCursorOn();
 }
 
@@ -1330,7 +1337,7 @@ void KviInputEditor::installShortcuts()
 
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
 {
-	
+
 	// disable the keyPress handling when IM is in composition.
 	if(m_bIMComposing)
 	{
@@ -1683,10 +1690,10 @@ void KviInputEditor::standardNickCompletion(bool bAddMask,QString & szWord,bool 
 			m_bLastCompletionFinished=0;
 			// REPAINT CALLED FROM OUTSIDE!
 		} // else no match at all
-		
+
 		return;
 	}
-	
+
 	if(!m_bLastCompletionFinished)
 	{
 		// Old session
@@ -1711,10 +1718,10 @@ void KviInputEditor::standardNickCompletion(bool bAddMask,QString & szWord,bool 
 			m_bLastCompletionFinished=1;
 			m_szLastCompletedNick = "";
 		}
-		
+
 		return;
 	}
-	
+
 	// Old session finished
 	// re-extract
 	//word = m_szTextBuffer.left(m_iCursorPosition);
@@ -1855,7 +1862,7 @@ int KviInputEditor::xPositionFromCharIndex(int iChIdx)
 
 	if(m_szTextBuffer.isEmpty())
 		return iCurXPos;
-	
+
 	while(iCurChar < iChIdx)
 	{
 		QChar c = m_szTextBuffer.at(iCurChar);
@@ -2311,7 +2318,7 @@ void KviInputEditor::homeInternalSelection()
 			// There is selection
 			m_iSelectionEnd = m_iSelectionBegin - 1;
 		}
-		
+
 		m_iSelectionBegin = 0;
 		home();
 	}
@@ -2427,7 +2434,7 @@ void KviInputEditor::deleteHit()
 		removeSelected();
 		return;
 	}
-	
+
 	if(m_iCursorPosition < (int)m_szTextBuffer.length())
 	{
 		m_szTextBuffer.remove(m_iCursorPosition,1);

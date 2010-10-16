@@ -261,7 +261,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			(if that option was specified).[br]
 			$5 contains the original color/icon set of the message that depends on
 			the type of the message itself.[br]
-			Since the CTCP ACTION messages generally have different format of output, 
+			Since the CTCP ACTION messages generally have different format of output,
 			for your convenience $6 contains 1 if the message was caused by a
 			CTCP ACTION or 0 otherwise.[br]
 			If you call [cmd]halt[/cmd] in this event the message output will be completely disabled
@@ -3754,7 +3754,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = actual name\n" \
 		"$1 - visible name\n" \
 		"$2 - command name"),
-	
+
 	/*
 		@doc: onwindowtitlerequest
 		@type:
@@ -3775,6 +3775,29 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 	*/
 	EVENT("OnWindowTitleRequest", \
 		"$0 = window id\n" \
-		"$1 = default window title")
+		"$1 = default window title"),
+
+	/*
+		@doc: oninputbarpaste
+		@type:
+			event
+		@title:
+			OnInputBarPaste
+		@short:
+			Triggered when the user paste some text on the inputbar
+		@parameters:
+			none
+		@window:
+			Any window
+		@description:
+			This event is triggered when the user paste some text on the input bar.[br]
+			You can check the text, insert any other text and halt the orginal from being inserted in the input bar.[br]
+			Note that the text can contains binary data, end-of-line or other characters that could need a special treatment then parsed.
+		@seealso:
+			[cmd]window.insertInInputText[cmd]
+	*/
+	EVENT("OnInputBarPaste", \
+		"$0 = window id\n" \
+		"$1 = pasted text")
 
 };

@@ -56,6 +56,7 @@
 * \def KviEvent_OnIgnoredMessage Triggered when a message is ignored
 * \def KviEvent_OnServerNotice A server NOTICE have been issued
 * \def KviEvent_OnWindowTitleRequest A window title is needed
+* \def KviEvent_OnInputBarPaste User pasted some text on the inputbar
 */
 #define KviEvent_OnKVIrcStartup                    0
 #define KviEvent_OnKVIrcShutdown                   1
@@ -81,6 +82,7 @@
 #define KviEvent_OnIgnoredMessage                 21
 #define KviEvent_OnServerNotice                   22
 #define KviEvent_OnWindowTitleRequest            145
+#define KviEvent_OnInputBarPaste                 146
 
 // Connection
 /**
@@ -364,6 +366,6 @@
 #define KviEvent_OnQueryNickDefaultActionRequest   144
 
 /** \def KVI_KVS_NUM_APP_EVENTS Defines the number of events */
-#define KVI_KVS_NUM_APP_EVENTS 146
+#define KVI_KVS_NUM_APP_EVENTS 147
 
 #endif //_KVI_KVS_EVENTTABLE_H_
