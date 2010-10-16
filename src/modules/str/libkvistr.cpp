@@ -2087,27 +2087,31 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 					continue;
 				}
 				break;
+				case 'e':
+				case 'E':
+				case 'F':
+				case 'f':
 				case '.':
 				{
 					// precision mark
 					const QChar * save = fmt;
-					fmt++;
-					unsigned int uPrecision = 0;
-
 					char fmtbuffer[8];
 					fmtbuffer[0] = '%';
 					fmtbuffer[1] = '.';
-
 					int idx = 2;
 
-					while((fmt->unicode() >= '0') && (fmt->unicode() <= '9') && (idx < 6))
+					if(fmt->unicode() == '.')
 					{
-						uPrecision *= 10;
-						fmtbuffer[idx] = fmt->unicode();
-						uPrecision += fmtbuffer[idx] - '0';
+						// handle the optional precision parameter
 						fmt++;
-						idx++;
+						while((fmt->unicode() >= '0') && (fmt->unicode() <= '9') && (idx < 6))
+						{
+							fmtbuffer[idx] = fmt->unicode();
+							fmt++;
+							idx++;
+						}
 					}
+
 					fmtbuffer[idx] = fmt->unicode();
 					fmtbuffer[idx+1] = 0;
 
@@ -2249,7 +2253,7 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 			c->returnValue()->setString("");
 			return true;
 		}
-		
+
 		FILE * f = fopen(KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data(),"r");
 		if(!f)
 		{
@@ -2260,7 +2264,7 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 
 		szPass = KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass).toUtf8();
 		PEM_read_PrivateKey(f, &pKey, NULL, szPass.data());
-		
+
 		fclose(f);
 
 		if(!pKey)
@@ -2369,7 +2373,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 	KviSSL::globalSSLInit();
 	szSign = QByteArray::fromBase64(szSignB64);
 	const char * message = szMessage.data();
-	
+
 	EVP_MD_CTX md_ctx;
 	EVP_PKEY *pKey = 0;
 	X509 *cert = 0;
@@ -2384,7 +2388,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 			c->returnValue()->setString("");
 			return true;
 		}
-		
+
 		FILE * f = fopen(KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data(),"r");
 		if(!f)
 		{
@@ -2395,7 +2399,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 
 		szPass = KVI_OPTION_STRING(KviOption_stringSSLCertificatePass).toUtf8();
 		PEM_read_X509(f, &cert, NULL, szPass.data());
-		
+
 		fclose(f);
 
 		if(cert)
@@ -2414,7 +2418,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 		// get from parameter (with optional password)
 		BIO *in = BIO_new_mem_buf((unsigned char*)szCert.data(), szCert.size());
 		PEM_read_bio_X509(in, &cert, 0, szPass.data());
-		
+
 		if(cert)
 		{
 			pKey = (EVP_PKEY *) X509_get_pubkey(cert);
@@ -2424,7 +2428,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 		}
 
 		BIO_free(in);
-		
+
 		if(!pKey)
 		{
 			c->warning(__tr2qs("Can not read public key from the provided certificate."));
@@ -2511,7 +2515,7 @@ static bool str_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"word",str_kvs_fnc_word);
 	KVSM_REGISTER_FUNCTION(m,"evpSign",str_kvs_fnc_evpSign);
 	KVSM_REGISTER_FUNCTION(m,"evpVerify",str_kvs_fnc_evpVerify);
-	
+
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"toClipboard",str_kvs_cmd_toClipboard);
 	return true;
 }
