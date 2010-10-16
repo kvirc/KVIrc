@@ -71,8 +71,13 @@ static QColor g_clrKeyword(85,85,255);
 static QColor g_clrVariable(255,0,0);
 static QColor g_clrPunctuation(180,180,0);
 static QColor g_clrFind(0,0,0);
-static QFont g_fntNormal("Courier New",8);
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	#define KVI_SCRIPTEDITOR_DEFAULT_FONT "Courier New"
+#else
+	#define KVI_SCRIPTEDITOR_DEFAULT_FONT "Monospace"
+#endif
+static QFont g_fntNormal(KVI_SCRIPTEDITOR_DEFAULT_FONT,8);
 
 static bool bSemaphore=false;
 static bool bCompleterReady=false;
@@ -808,7 +813,7 @@ void KviScriptEditorImplementation::loadOptions()
 	g_clrVariable = cfg.readColorEntry("Variable",QColor(200,200,200));
 	g_clrPunctuation = cfg.readColorEntry("Punctuation",QColor(180,180,0));
 	g_clrFind = cfg.readColorEntry("Find",QColor(255,0,0));
-	g_fntNormal = cfg.readFontEntry("Font",QFont("Courier New",8));
+	g_fntNormal = cfg.readFontEntry("Font",QFont(KVI_SCRIPTEDITOR_DEFAULT_FONT,8));
 }
 
 bool KviScriptEditorImplementation::isModified()
