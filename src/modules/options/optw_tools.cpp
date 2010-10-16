@@ -36,8 +36,7 @@ KviToolsOptionsWidget::KviToolsOptionsWidget(QWidget * parent)
 	setObjectName("tools_options_widget");
 	createLayout();
 
-	QLabel * l;
-	l = addLabel(0,0,0,0,__tr2qs_ctx("This section contains irc tools<br>"\
+	addLabel(0,0,0,0,__tr2qs_ctx("This section contains irc tools<br>"\
 		"<p>like<b> away, lag and logging system. </b> " \
 		"</p>","options"));
 

@@ -131,7 +131,6 @@ void KviEventEditor::oneTimeSetup()
 	m_bOneTimeSetupDone = true;
 
 	KviEventTreeWidgetItem * it;
-	KviEventHandlerTreeWidgetItem * ch;
 
 	for(unsigned int i = 0;i < KVI_KVS_NUM_APP_EVENTS;i++)
 	{
@@ -144,7 +143,7 @@ void KviEventEditor::oneTimeSetup()
 			{
 				if(s->type() == KviKvsEventHandler::Script)
 				{
-					ch = new KviEventHandlerTreeWidgetItem(it,((KviKvsScriptEventHandler *)s)->name(),
+					new KviEventHandlerTreeWidgetItem(it,((KviKvsScriptEventHandler *)s)->name(),
 					((KviKvsScriptEventHandler *)s)->code(),((KviKvsScriptEventHandler *)s)->isEnabled());
 				}
 			}

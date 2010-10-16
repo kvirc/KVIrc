@@ -286,7 +286,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	m_pImportButton->setToolTip(__tr2qs_ctx("Import entries from a file exported earlier by the \"export\" function of this dialog.","register"));
 	m_pImportButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)));
 
-	
+
 	KviTalHBox * hbox = new KviTalHBox(this);
 	hbox->setSpacing(4);
 	g->addWidget(hbox,3,1,1,2);
@@ -451,7 +451,7 @@ void KviRegisteredUsersDialog::editGroup(KviRegisteredUserGroup* group)
 				m_pListView->setCurrentItem(pGroup);
 				break;
 			}
-		}	
+		}
 	}
 }
 

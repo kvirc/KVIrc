@@ -573,7 +573,6 @@ void KviIrcView::setTimestamp(bool bTimestamp)
 void KviIrcView::scrollBarPositionChanged(int newValue)
 {
 	if(!m_pCurLine)return;
-	int diff = 0;
 	if(newValue > m_iLastScrollBarValue)
 	{
 		while(newValue > m_iLastScrollBarValue)
@@ -581,7 +580,6 @@ void KviIrcView::scrollBarPositionChanged(int newValue)
 			if(m_pCurLine->pNext)
 			{
 				m_pCurLine=m_pCurLine->pNext;
-				diff++;
 			}
 			m_iLastScrollBarValue++;
 		}
@@ -952,12 +950,10 @@ void KviIrcView::fastScroll(int lines)
 
 	int widgetHeight = height();
 	int maxLineWidth = widgetWidth;
-	int defLeftCoord=KVI_IRCVIEW_HORIZONTAL_BORDER;
 
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
 	{
 		maxLineWidth -= KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH;
-		defLeftCoord+=KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
 	}
 
 

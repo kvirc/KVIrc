@@ -198,10 +198,7 @@ void resetmp3infoStruct(mp3info *i)
 
 int get_mp3_info(mp3info *mp3)
 {
-	int l,bitrate,lastrate,counter=0;
 //	mp3header header;
-
-	int sample_pos,data_start=0;
 
 	QFile fi(mp3->filename);
 	mp3->datasize=fi.size();//filestat.st_size;
@@ -210,11 +207,12 @@ int get_mp3_info(mp3info *mp3)
 
 	if(get_first_header(mp3,0L))
 	{
-		data_start=ftell(mp3->file);
-		lastrate=15-mp3->header.bitrate;
+		int bitrate,counter=0;
+		int data_start=ftell(mp3->file);
+		int lastrate=15-mp3->header.bitrate;
 		while((counter < NUM_SAMPLES) && lastrate)
 		{
-			sample_pos=(counter*(mp3->datasize/NUM_SAMPLES+1))+data_start;
+			int sample_pos=(counter*(mp3->datasize/NUM_SAMPLES+1))+data_start;
 			if(get_first_header(mp3,sample_pos))
 			{
 				bitrate=15-mp3->header.bitrate;
@@ -230,7 +228,7 @@ int get_mp3_info(mp3info *mp3)
 			counter++;
 
 		}
-		mp3->frames=(mp3->datasize-data_start)/(l=frame_length(&mp3->header));
+		mp3->frames=(mp3->datasize-data_start)/(frame_length(&mp3->header));
 		mp3->seconds = (int)((float)(frame_length(&mp3->header)*mp3->frames)/
 				       (float)(header_bitrate(&mp3->header)*125)+0.5);
 		mp3->vbr_average = (float)header_bitrate(&mp3->header);
@@ -383,15 +381,14 @@ int get_id3(mp3info *mp3)
 	// this will read ID3v1 tags
 	int retcode=0;
 	char fbuf[4];
-	size_t dummy; // make gcc happy
-	
+
 	if(mp3->datasize >= 128)
 	{
 		if(fseek(mp3->file, -128, SEEK_END ))
 		{
 			retcode |= 4;
 		} else {
-			dummy = fread(fbuf,1,3,mp3->file); fbuf[3] = '\0';
+			size_t dummy = fread(fbuf,1,3,mp3->file); fbuf[3] = '\0';
 			mp3->id3.genre[0]=255;
 
 			if(!strcmp((const char *)"TAG",(const char *)fbuf))

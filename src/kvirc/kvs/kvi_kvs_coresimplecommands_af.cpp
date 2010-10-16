@@ -322,7 +322,6 @@ namespace KviKvsCoreSimpleCommands
 
 		kvs_int_t pitch    = -1;
 		kvs_int_t duration = -1;
-		bool bSync   = (KVSCSC_pSwitches->find('s',"sync") != 0);
 
 		KviKvsVariant * pPitch = KVSCSC_pSwitches->find('p',"pitch");
 		if(pPitch)
@@ -351,8 +350,7 @@ namespace KviKvsCoreSimpleCommands
 #else
 	#ifdef COMPILE_X11_SUPPORT
 		#ifndef COMPILE_NO_X_BELL
-
-
+			bool bSync   = (KVSCSC_pSwitches->find('s',"sync") != 0);
 
 			XKeyboardState st;
 			XKeyboardControl ctl;
@@ -576,7 +574,7 @@ namespace KviKvsCoreSimpleCommands
 	{
 		return multipleModeCommand(__pContext,__pParams,__pSwitches,'+','a');
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
@@ -727,7 +725,7 @@ namespace KviKvsCoreSimpleCommands
 		}
 		return true;
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
@@ -759,7 +757,7 @@ namespace KviKvsCoreSimpleCommands
 	{
 		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','a');
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
@@ -791,7 +789,7 @@ namespace KviKvsCoreSimpleCommands
 	{
 		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','q');
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
@@ -983,7 +981,7 @@ namespace KviKvsCoreSimpleCommands
 	{
 		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','o');
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*

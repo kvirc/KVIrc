@@ -198,10 +198,10 @@ void KviScriptManagementDialog::fillListView()
 	KviPointerHashTable<QString,KviKvsScriptAddon> * d = KviKvsScriptAddonManager::instance()->addonDict();
 	if(!d)return;
 	KviPointerHashTableIterator<QString,KviKvsScriptAddon> it(*d);
-	KviScriptAddonListViewItem * item;
+
 	while(KviKvsScriptAddon * a = it.current())
 	{
-		item = new KviScriptAddonListViewItem(m_pListWidget,a);
+		new KviScriptAddonListViewItem(m_pListWidget,a);
 		++it;
 	}
 }

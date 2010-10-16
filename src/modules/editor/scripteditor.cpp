@@ -522,15 +522,16 @@ KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * p
 	m_pSelectorInterfaceList->append(f);
 	KviTalGroupBox * gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("Colors","editor"),box);
 	gbox->setInsideSpacing(0);
-	KviColorSelector * s = addColorSelector(gbox,__tr2qs_ctx("Background:","editor"),&g_clrBackground,true);
-	s = addColorSelector(gbox,__tr2qs_ctx("Normal text:","editor"),&g_clrNormalText,true);
-	s = addColorSelector(gbox,__tr2qs_ctx("Brackets:","editor"),&g_clrBracket,true);
-	s = addColorSelector(gbox,__tr2qs_ctx("Comments:","editor"),&g_clrComment,true);
-	s = addColorSelector(gbox,__tr2qs_ctx("Functions:","editor"),&g_clrFunction,true);
-	s = addColorSelector(gbox,__tr2qs_ctx("Keywords:","editor"),&g_clrKeyword,true);
-	s = addColorSelector(gbox,__tr2qs_ctx("Variables:","editor"),&g_clrVariable,true);
-	s = addColorSelector(gbox,__tr2qs_ctx("Punctuation:","editor"),&g_clrPunctuation,true);
-	s = addColorSelector(gbox,__tr2qs_ctx("Find:","editor"),&g_clrFind,true);
+
+	addColorSelector(gbox,__tr2qs_ctx("Background:","editor"),&g_clrBackground,true);
+	addColorSelector(gbox,__tr2qs_ctx("Normal text:","editor"),&g_clrNormalText,true);
+	addColorSelector(gbox,__tr2qs_ctx("Brackets:","editor"),&g_clrBracket,true);
+	addColorSelector(gbox,__tr2qs_ctx("Comments:","editor"),&g_clrComment,true);
+	addColorSelector(gbox,__tr2qs_ctx("Functions:","editor"),&g_clrFunction,true);
+	addColorSelector(gbox,__tr2qs_ctx("Keywords:","editor"),&g_clrKeyword,true);
+	addColorSelector(gbox,__tr2qs_ctx("Variables:","editor"),&g_clrVariable,true);
+	addColorSelector(gbox,__tr2qs_ctx("Punctuation:","editor"),&g_clrPunctuation,true);
+	addColorSelector(gbox,__tr2qs_ctx("Find:","editor"),&g_clrFind,true);
 
 	KviTalHBox * hbox = new KviTalHBox(box);
 

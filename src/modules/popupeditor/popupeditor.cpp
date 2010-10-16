@@ -1056,7 +1056,7 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 
 	m_pContextPopup = new KviTalPopupMenu(this);
 	m_pEmptyContextPopup = new KviTalPopupMenu(this);
-	
+
 	spl->setStretchFactor (0,20);
 	spl->setStretchFactor (1,80);
 
@@ -1077,14 +1077,12 @@ void KviPopupEditor::oneTimeSetup()
 
 	KviPointerHashTableIterator<QString,KviKvsPopupMenu> it(*a);
 
-	KviMenuTreeWidgetItem * item;
-
 	while(it.current())
 	{
 		KviKvsPopupMenu * popup = it.current();
 		KviKvsPopupMenu * copy = new KviKvsPopupMenu(popup->popupName());
 		copy->copyFrom(popup);
-		item = new KviMenuTreeWidgetItem(m_pTreeWidget,copy);
+		new KviMenuTreeWidgetItem(m_pTreeWidget,copy);
 		++it;
 	}
 
@@ -1123,7 +1121,7 @@ void KviPopupEditor::popupRefresh(const QString &szName)
 			KviKvsPopupMenu * pCopy = new KviKvsPopupMenu(szName);
 			pCopy->copyFrom(pPopup);
 			ch->replacePopup(pCopy);
-			
+
 			//refresh current item
 			if(ch==m_pLastEditedItem)
 				m_pEditor->edit(m_pLastEditedItem);

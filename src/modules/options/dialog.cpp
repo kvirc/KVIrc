@@ -414,12 +414,11 @@ void KviOptionsDialog::search(const QStringList &lKeywords)
 {
 	m_pTreeWidget->setUpdatesEnabled(false);
 
-	bool bFoundSomethingInside = false;
 	int count=m_pTreeWidget->topLevelItemCount();
 	for (int i=0;i<count;i++)
 	{
 		KviOptionsTreeWidgetItem * pChild = (KviOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
-		bFoundSomethingInside = recursiveSearch(pChild,lKeywords);
+		recursiveSearch(pChild,lKeywords);
 	}
 	m_pTreeWidget->setUpdatesEnabled(true);
 	m_pTreeWidget->update();

@@ -76,7 +76,8 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	m_pGroupBox = new KviTalGroupBox(Qt::Horizontal,__tr2qs("Channel" ),this);
 	QString szMsg = __tr2qs("Name");
 	szMsg.append(":");
-	QLabel * l = new QLabel(szMsg,m_pGroupBox);
+
+	new QLabel(szMsg,m_pGroupBox);
 
 	m_pChannelEdit = new QLineEdit(m_pGroupBox);
 	connect(m_pChannelEdit,SIGNAL(returnPressed()), this, SLOT(editReturnPressed()));
@@ -84,7 +85,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 
 	szMsg = __tr2qs("Password");
 	szMsg.append(":");
-	l = new QLabel(szMsg,m_pGroupBox);
+	QLabel(szMsg,m_pGroupBox);
 
 	m_pPass = new QLineEdit(m_pGroupBox);
 	m_pPass->setEchoMode(QLineEdit::Password);
@@ -200,7 +201,7 @@ void KviChannelsJoinWindow::fillListView()
 				par = new QTreeWidgetItem(par);
 				par->setText(0,__tr2qs("Current Network"));
 				par->setExpanded(true);
-	
+
 				for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
 				{
 					chld = new QTreeWidgetItem(par);

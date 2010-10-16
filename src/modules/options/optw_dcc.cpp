@@ -311,24 +311,23 @@ KviDccChatOptionsWidget::KviDccChatOptionsWidget(QWidget * parent)
 	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Chat Request","options"));
-	KviBoolSelector * b = addBoolSelector(g,__tr2qs_ctx("Automatically accept","options"),KviOption_boolAutoAcceptDccChat);
-	b = addBoolSelector(g,__tr2qs_ctx("Open minimized when auto-accepted","options"),KviOption_boolCreateMinimizedDccChatWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat));
+	addBoolSelector(g,__tr2qs_ctx("Automatically accept","options"),KviOption_boolAutoAcceptDccChat);
 
-	KviBoolSelector * b1 = addBoolSelector(0,1,0,1,__tr2qs_ctx("Always open as minimized","options"),KviOption_boolCreateMinimizedDccChat);
+	KviBoolSelector * b1 = addBoolSelector(g,__tr2qs_ctx("Open minimized when auto-accepted","options"),KviOption_boolCreateMinimizedDccChatWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat));
 
-	connect(b1,SIGNAL(toggled(bool)),b,SLOT(setNotEnabled(bool)));
+	KviBoolSelector * b2 = addBoolSelector(0,1,0,1,__tr2qs_ctx("Always open as minimized","options"),KviOption_boolCreateMinimizedDccChat);
 
-	KviBoolSelector * b2;
+	connect(b2,SIGNAL(toggled(bool)),b1,SLOT(setNotEnabled(bool)));
 
 #if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MINGW))
 	b2 = addBoolSelector(0,2,0,2,__tr2qs_ctx("Flash system taskbar on new dcc chat message","options"),KviOption_boolFlashDccChatWindowOnNewMessages);
-		mergeTip(b,
+		mergeTip(b2,
 			__tr2qs_ctx("<center>This option causes the system taskbar entry for KVIrc to flash when a new dcc chat message " \
 				"is received and the KVIrc window is not the active.</center>","options"));
 #endif
 
 	b2 = addBoolSelector(0,3,0,3, __tr2qs_ctx("Popup notifier on new dcc chat message","options"),KviOption_boolPopupNotifierOnNewDccChatMessages);
-	mergeTip(b,
+	mergeTip(b2,
 		__tr2qs_ctx("<center>This option causes a small notifier window to pop up " \
 			"in the low right corner of the screen when a new message is received " \
 			"and the KVIrc window is not active.</center>","options"));

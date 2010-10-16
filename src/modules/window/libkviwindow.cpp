@@ -1475,7 +1475,7 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 	QString szEngine;
 	QString szEncryptKey;
 	QString szDecryptKey;
-	KviWindow * pWnd;
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window_id",KVS_PT_STRING,0,szWnd)
 		KVSM_PARAMETER("enginename",KVS_PT_STRING,KVS_PF_OPTIONAL,szEngine)
@@ -1484,7 +1484,7 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 	if(szDecryptKey.isEmpty())szDecryptKey = szEncryptKey;
 #ifdef COMPILE_CRYPT_SUPPORT
-	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
+	KviWindow * pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q',"quiet"))

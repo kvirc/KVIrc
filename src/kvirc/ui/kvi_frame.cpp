@@ -1016,14 +1016,10 @@ void KviFrame::restoreToolBarPositions()
 
 	QFile f(szTemp);
 
-	bool bNeedDefaults = false;
-
 	if(f.open(QIODevice::ReadOnly))
 	{
 		if(!restoreState(f.readAll(),1))
 			qDebug("Error while restoring toolbars position");
-	} else {
-		bNeedDefaults = true;
 	}
 
 	if(m_pWindowList->inherits("KviTreeWindowList"))

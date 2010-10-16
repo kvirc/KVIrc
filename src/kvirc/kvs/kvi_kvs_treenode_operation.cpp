@@ -1229,11 +1229,10 @@ bool KviKvsTreeNodeOperationStringSubstitution::execute(KviKvsRunTimeContext * c
 
 	while((!str.isEmpty()) && (idx != -1))
 	{
-		int len;
 		idx = re.indexIn(str,idx);
 		if(idx != -1)
 		{
-			len = re.matchedLength();
+			int len = re.matchedLength();
 			if(len == 0)
 			{
 				c->warning(this,__tr2qs_ctx("The regular expression matched a zero-length substring: this is not valid in the s/// operator, skipping","kvs"));

@@ -1014,9 +1014,9 @@ static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
 	KVSM_PARAMETERS_END(c)
 	KviChannel * ch = chan_kvs_find_channel(c,szId);
-	kvs_int_t limit=0;
 	if (ch)
 	{
+		kvs_int_t limit=0;
 		if(ch->hasChannelMode('l'))
 			limit = ch->channelModeParam('l').toInt();
 		c->returnValue()->setInteger(limit);

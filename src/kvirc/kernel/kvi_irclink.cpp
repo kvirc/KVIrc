@@ -267,7 +267,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 			//   the disconnect and thus destroying the irc context).
 			// For now we try to rely on the remaining parts to handle correctly
 			// such conditions. Let's see...
-			if(strlen(cMessageBuffer) > 0)
+			if(*cMessageBuffer != 0)
 				m_pConnection->incomingMessage(cMessageBuffer);
 
 			if(m_pSocket->state() != KviIrcSocket::Connected)

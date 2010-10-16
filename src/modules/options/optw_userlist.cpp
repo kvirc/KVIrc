@@ -229,14 +229,14 @@ KviUserListFeaturesOptionsWidget::KviUserListFeaturesOptionsWidget(QWidget * par
 {
 	createLayout();
 
-	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Show gender icons","options"),KviOption_boolDrawGenderIcons);
-	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Show user channel icons","options"),KviOption_boolShowUserChannelIcons);
-	b = addBoolSelector(0,2,0,2,__tr2qs_ctx("Show user channel activity indicator","options"),KviOption_boolShowUserChannelState);
-	b = addBoolSelector(0,3,0,3,__tr2qs_ctx("Show label with userlist stats","options"),KviOption_boolShowUserListStatisticLabel);
-	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable user tooltips","options"),KviOption_boolShowUserListViewToolTips);
-	b = addBoolSelector(0,5,0,5,__tr2qs_ctx("Show avatars in userlist","options"),KviOption_boolShowAvatarsInUserlist);
-	b = addBoolSelector(0,6,0,6,__tr2qs_ctx("Enable animated avatars","options"),KviOption_boolEnableAnimatedAvatars);
-	b = addBoolSelector(0,7,0,7,__tr2qs_ctx("Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the normal nicks","options"),KviOption_boolPlaceNickWithNonAlphaCharsAtEnd);
+	addBoolSelector(0,0,0,0,__tr2qs_ctx("Show gender icons","options"),KviOption_boolDrawGenderIcons);
+	addBoolSelector(0,1,0,1,__tr2qs_ctx("Show user channel icons","options"),KviOption_boolShowUserChannelIcons);
+	addBoolSelector(0,2,0,2,__tr2qs_ctx("Show user channel activity indicator","options"),KviOption_boolShowUserChannelState);
+	addBoolSelector(0,3,0,3,__tr2qs_ctx("Show label with userlist stats","options"),KviOption_boolShowUserListStatisticLabel);
+	addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable user tooltips","options"),KviOption_boolShowUserListViewToolTips);
+	addBoolSelector(0,5,0,5,__tr2qs_ctx("Show avatars in userlist","options"),KviOption_boolShowAvatarsInUserlist);
+	addBoolSelector(0,6,0,6,__tr2qs_ctx("Enable animated avatars","options"),KviOption_boolEnableAnimatedAvatars);
+	addBoolSelector(0,7,0,7,__tr2qs_ctx("Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the normal nicks","options"),KviOption_boolPlaceNickWithNonAlphaCharsAtEnd);
 
 	addRowSpacer(0,8,0,8);
 }

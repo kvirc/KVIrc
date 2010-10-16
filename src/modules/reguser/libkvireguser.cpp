@@ -1014,7 +1014,6 @@ static bool reguser_kvs_fnc_mask(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsArray* pArray = new KviKvsArray();
-	int aid=0;
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
 	if(u)
 	{
@@ -1024,6 +1023,8 @@ static bool reguser_kvs_fnc_mask(KviKvsModuleFunctionCall * c)
 			KviIrcMask * m = u->maskList()->at(n.toInt());
 			if(m) c->returnValue()->setString(m->nick()+"!"+m->user()+"@"+m->host());
 		} else {
+			int aid=0;
+
 			for(KviIrcMask * m = u->maskList()->first();m;m = u->maskList()->next())
 			{
 				pArray->set(aid,new KviKvsVariant(QString(m->nick()+"!"+m->user()+"@"+m->host())));

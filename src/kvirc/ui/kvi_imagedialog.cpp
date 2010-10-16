@@ -235,13 +235,12 @@ void KviImageDialog::heartbeat()
 			while(m_iJobIndexHelper < max)
 			{
 				QString id = g_pIconManager->getSmallIconName(m_iJobIndexHelper);
-				KviImageDialogItem * it;
 				QString tip;
 				KviQString::sprintf(tip,__tr2qs("Builtin $icon(%Q) [index %d]"),&id,m_iJobIndexHelper);
 				QString image_id = "$icon(";
 				image_id += id;
 				image_id += ")";
-				it = new KviImageDialogItem(m_pListBox,*(g_pIconManager->getSmallIcon(m_iJobIndexHelper)),id,image_id,tip);
+				new KviImageDialogItem(m_pListBox,*(g_pIconManager->getSmallIcon(m_iJobIndexHelper)),id,image_id,tip);
 				m_iJobIndexHelper++;
 			}
 		}
@@ -271,8 +270,7 @@ void KviImageDialog::heartbeat()
 						QString tip = szFile;
 						tip += "<br><hr>";
 						tip += __tr2qs("directory");
-						KviImageDialogItem * it;
-						it = new KviImageDialogItem(m_pListBox,*(g_pIconManager->getBigIcon(KVI_BIGICON_FOLDER)),szFile,szPath,tip,true);
+						new KviImageDialogItem(m_pListBox,*(g_pIconManager->getBigIcon(KVI_BIGICON_FOLDER)),szFile,szPath,tip,true);
 					}
 				} else {
 					if(((int)fi.size()) < m_iMaxPreviewFileSize)
@@ -300,8 +298,7 @@ void KviImageDialog::heartbeat()
 						tip += __tr2qs("bytes");
 						tip += "<br>";
 
-						KviImageDialogItem * it;
-						it = new KviImageDialogItem(m_pListBox,pix,szFile,szPath,tip);
+						new KviImageDialogItem(m_pListBox,pix,szFile,szPath,tip);
 					}
 				}
 				idx++;

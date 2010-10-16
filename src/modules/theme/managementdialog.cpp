@@ -359,8 +359,7 @@ void KviThemeManagementDialog::fillThemeBox(const QString &szDir)
 		if(inf->loadFromDirectory(szTest))
 		{
 			inf->setSubdirectory(*it);
-			KviThemeListWidgetItem * item = 0;
-			item = new KviThemeListWidgetItem(m_pListWidget,inf);
+			KviThemeListWidgetItem * item = new KviThemeListWidgetItem(m_pListWidget,inf);
 		} else {
 			delete inf;
 		}

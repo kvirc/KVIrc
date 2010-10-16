@@ -297,7 +297,7 @@
 		A class is a collection of methods that define an object's behaviour.
 		Hehe... it is not easy to explain it, so I'll try with an example:[br]
 		[b]Please note, that this is pseudo code. KVI++ does by no means employs
-		a "field" directive as shown below![/b] 
+		a "field" directive as shown below![/b]
 		[example]
 		class HostAddress
 		{
@@ -792,7 +792,7 @@ KviKvsObject::~KviKvsObject()
 	// Kill function container
 	if(m_pFunctionHandlers)
 		delete m_pFunctionHandlers;
-		
+
 	// Bye bye :)
 }
 
@@ -1123,7 +1123,7 @@ bool KviKvsObject::function_killTimer(KviKvsObjectFunctionCall * c)
 
 bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 {
-	bool bArray;
+	bool bArray = false;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bArray",KVS_PT_BOOL,KVS_PF_OPTIONAL,bArray)
 	KVSO_PARAMETERS_END(c)
@@ -1558,11 +1558,11 @@ void KviKvsObject::killAllChildrenWithClass(KviKvsObjectClass *cl)
 {
 	KviPointerList< QPointer<KviKvsObject> > lDying;
 	lDying.setAutoDelete(true);
-	
+
 	KviKvsObject * pObject;
-	
+
 	QPointer<KviKvsObject> guard(this);
-	
+
 	for(pObject = m_pChildList->first();pObject;pObject = m_pChildList->next())
 	{
 		if(pObject->getClass() == cl)
@@ -1574,7 +1574,7 @@ void KviKvsObject::killAllChildrenWithClass(KviKvsObjectClass *cl)
 				break; // argh.. circular delete
 		}
 	}
-	
+
 	for(QPointer<KviKvsObject> * pObject = lDying.first();pObject;pObject = lDying.next())
 	{
 		if(pObject->isNull())

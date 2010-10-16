@@ -533,11 +533,10 @@ const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,KviStr &buff
 	//
 	// We're also assuming that *msg_ptr is not null here
 	//
-	char c;
 	if((*msg_ptr >= '0') && (*msg_ptr < '8'))
 	{
 		// a digit follows the backslash */
-		c = *msg_ptr - '0';
+		char c = *msg_ptr - '0';
 		msg_ptr++;
 		if((*msg_ptr >= '0') && (*msg_ptr < '8'))
 		{
@@ -586,11 +585,10 @@ const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,QByteArray &
 	//
 	// We're also assuming that *msg_ptr is not null here
 	//
-	char c;
 	if((*msg_ptr >= '0') && (*msg_ptr < '8'))
 	{
 		// a digit follows the backslash */
-		c = *msg_ptr - '0';
+		char c = *msg_ptr - '0';
 		msg_ptr++;
 		if((*msg_ptr >= '0') && (*msg_ptr < '8'))
 		{
@@ -639,10 +637,10 @@ const char * KviServerParser::extractCtcpParameter(const char * msg_ptr,KviStr &
 	// based CTCP message.
 	//
 
-	int bInString = 0;
 	if(!msg_ptr) return 0;
 	while(*msg_ptr == ' ')msg_ptr++; // skip leading spaces
 
+	int bInString = 0;
 	if(*msg_ptr == '"')
 	{
 		// a quoted parameter
@@ -1539,10 +1537,8 @@ void KviServerParser::parseCtcpRequestAvatar(KviCtcpMessage *msg)
 
 				if(!a->isRemote())
 				{
-					KviSharedFile * o;
-					if(!(o = g_pSharedFilesManager->addSharedFile(szFileName,a->localPath(),szUserMask,KVI_OPTION_UINT(KviOption_uintAvatarOfferTimeoutInSecs))))
+					if(!g_pSharedFilesManager->addSharedFile(szFileName,a->localPath(),szUserMask,KVI_OPTION_UINT(KviOption_uintAvatarOfferTimeoutInSecs)))
 					{
-						// Don't delete o...it has been already deleted by g_pSharedFilesManager
 						msg->msg->console()->output(KVI_OUT_SYSTEMWARNING,__tr2qs("Unable to add file offer for file %Q (File not readable?)"),&(a->localPath()));
 					} else {
 						if(_OUTPUT_VERBOSE)
@@ -1551,7 +1547,6 @@ void KviServerParser::parseCtcpRequestAvatar(KviCtcpMessage *msg)
 								KVI_OPTION_UINT(KviOption_uintAvatarOfferTimeoutInSecs),&(a->name()),&(a->localPath()),&szUserMask);
 						}
 					}
-					//if(o)szReply.append(QString(" %1").arg(o->fileSize()));
 				}
 
 				szReply.append(szGenderTag);

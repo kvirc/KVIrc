@@ -471,13 +471,12 @@
 	{
 		static char base64unmap[255];
 		static bool didinit=false;
-		int i;
 
 		if(!didinit)
 		{
 			// initialize base64unmap
-			for (i=0;i<255;++i)base64unmap[i]=0;
-			for (i=0;i<64;++i)base64unmap[fake_base64[i]]=i;
+			for (int i=0;i<255;++i)base64unmap[i]=0;
+			for (int i=0;i<64;++i)base64unmap[fake_base64[i]]=i;
 			didinit=true;
 		}
 

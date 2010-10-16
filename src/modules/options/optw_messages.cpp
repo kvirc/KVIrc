@@ -359,7 +359,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	KviTalVBox * box = new KviTalVBox(this);
 	addWidgetToLayout(box,3,0,3,0);
 
-	QLabel * l = new QLabel(__tr2qs_ctx("Background:","options"),box);
+	new QLabel(__tr2qs_ctx("Background:","options"),box);
 
 	m_pBackListWidget = new KviTalListWidget(box);
 	m_pBackListWidget->setMaximumWidth(150);
@@ -372,7 +372,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 		m_pBackItems[i] = new KviMessageColorListWidgetItem(m_pBackListWidget,i);
 	}
 
-	l = new QLabel(__tr2qs_ctx("Foreground:","options"),box);
+	new QLabel(__tr2qs_ctx("Foreground:","options"),box);
 
 	m_pForeListWidget = new KviTalListWidget(box);
 	m_pForeListWidget->setMaximumWidth(150);
@@ -384,16 +384,16 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 		m_pForeItems[i] = new KviMessageColorListWidgetItem(m_pForeListWidget,i);
 	}
 
-	l = new QLabel(__tr2qs_ctx("Alert level:","options"),box);
+	new QLabel(__tr2qs_ctx("Alert level:","options"),box);
 
 	m_pLevelListWidget = new KviTalListWidget(box);
 	m_pLevelListWidget->setMaximumWidth(150);
-	KviTalListWidgetText * lbt;
+
 	for(i=0;i<6;i++)
 	{
 		QString tmpn;
 		tmpn.setNum(i);
-		lbt = new KviTalListWidgetText(m_pLevelListWidget,tmpn);
+		new KviTalListWidgetText(m_pLevelListWidget,tmpn);
 	}
 
 	m_pIconButton = new QToolButton(box);
@@ -415,12 +415,8 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	connect(b,SIGNAL(clicked()),this,SLOT(save()));
 
 
-	KviMessageListWidgetItem * it;
-
 	for(i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
-	{
-		it = new KviMessageListWidgetItem(m_pListView,i);
-	}
+		new KviMessageListWidgetItem(m_pListView,i);
 
 	layout()->setRowStretch(0,1);
 	layout()->setColumnStretch(0,1);

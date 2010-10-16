@@ -120,9 +120,9 @@ KviTopicWidget::KviTopicWidget(QWidget * par, KviChannel * pChannel, const char 
 	m_pLabel = new KviThemedLabel(this, pChannel, "topic_label");
 	m_pLabel->setTextFormat(Qt::RichText);
 	connect(m_pLabel,SIGNAL(doubleClicked()),this,SLOT(switchMode()));
-	
+
 	reset();
-	
+
 	m_pCompletionBox=new KviTalListWidget(this,"topic_completion_box",Qt::Popup);
 	m_pCompletionBox->setFont( font() );
 	m_pCompletionBox->setPalette( palette() );
@@ -312,7 +312,7 @@ void KviTopicWidget::setTopic(const QString & topic)
 {
 	m_szTopic = topic;
 	m_pLabel->setText(KviHtmlGenerator::convertToHtml(Qt::escape(m_szTopic)));
-	
+
 	bool bFound = false;
 	for(QStringList::Iterator it=g_pRecentTopicList->begin();it != g_pRecentTopicList->end(); ++it)
 	{
@@ -624,11 +624,10 @@ void KviTopicWidget::historyClicked()
 	{
 		m_pCompletionBox->installEventFilter( this );
 		m_pCompletionBox->clear();
-		KviTopicListBoxItem* item;
-		for ( QStringList::Iterator it = g_pRecentTopicList->begin(); it != g_pRecentTopicList->end(); ++it )
-		{
-			item = new KviTopicListBoxItem(m_pCompletionBox,*it);
-		}
+
+		for(QStringList::Iterator it = g_pRecentTopicList->begin(); it != g_pRecentTopicList->end(); ++it)
+			new KviTopicListBoxItem(m_pCompletionBox,*it);
+
 		m_pCompletionBox->resize(m_pInput->width(),6*m_pCompletionBox->fontMetrics().height()+20);
 		QPoint point=m_pInput->mapToGlobal(QPoint(0,0));
 		point+=QPoint(0,m_pInput->height());

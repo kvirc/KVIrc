@@ -302,13 +302,11 @@ void KviSharedFilesWindow::fillFileView()
 	m_pTreeWidget->clear();
 	KviPointerHashTableIterator<QString,KviSharedFileList> it(*(g_pSharedFilesManager->sharedFileListDict()));
 
-	KviSharedFilesTreeWidgetItem * itm;
-
 	while(KviSharedFileList * l = it.current())
 	{
 		for(KviSharedFile * o = l->first();o;o = l->next())
 		{
-			itm = new KviSharedFilesTreeWidgetItem(m_pTreeWidget,o);
+			KviSharedFilesTreeWidgetItem * itm = new KviSharedFilesTreeWidgetItem(m_pTreeWidget,o);
 		}
 		++it;
 	}
@@ -317,8 +315,7 @@ void KviSharedFilesWindow::fillFileView()
 
 void KviSharedFilesWindow::sharedFileAdded(KviSharedFile * f)
 {
-	KviSharedFilesTreeWidgetItem * it;
-	it = new KviSharedFilesTreeWidgetItem(m_pTreeWidget,f);
+	KviSharedFilesTreeWidgetItem * it = new KviSharedFilesTreeWidgetItem(m_pTreeWidget,f);
 	enableButtons();
 }
 

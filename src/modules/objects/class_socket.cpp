@@ -669,18 +669,15 @@ KVSO_CLASS_FUNCTION(socket,listen)
 	}
 #endif
 
-	bool bGotIp = false;
-
 	if(!m_szLocalIp.isEmpty())
 	{
 
 		// Check the address type
-		if(KviNetUtils::isValidStringIp(m_szLocalIp))bGotIp = true;
-		else {
+		if(!KviNetUtils::isValidStringIp(m_szLocalIp))
+		{
 #ifdef COMPILE_IPV6_SUPPORT
 			if(KviNetUtils::isValidStringIPv6(m_szLocalIp))
 			{
-				bGotIp = true;
 				m_bIPv6 = true;
 			} else {
 #else

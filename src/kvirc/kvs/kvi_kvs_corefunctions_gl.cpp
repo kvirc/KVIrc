@@ -786,13 +786,13 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(keys)
 	{
-		KviKvsHash * pHash;
+		KviKvsHash * pHash = 0;
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("hash",KVS_PT_HASH,KVS_PF_OPTIONAL,pHash)
 		KVSCF_PARAMETERS_END
 
 		KviKvsArray * a = new KviKvsArray();
-		
+
 		// we have to support an empty hash, returning an empty array (ticket #940)
 		if(pHash)
 		{

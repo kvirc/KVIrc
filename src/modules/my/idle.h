@@ -60,8 +60,8 @@ public:
 	IdlePlatform();
 	~IdlePlatform();
 
-	bool init();
-	int secondsIdle();
+	bool init() const;
+	int secondsIdle() const;
 
 private:
 	class Private;

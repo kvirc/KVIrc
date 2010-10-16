@@ -120,7 +120,6 @@ void KviRawEditor::oneTimeSetup()
 	m_bOneTimeSetupDone = true;
 
 	KviRawTreeWidgetItem * it;
-	KviRawHandlerTreeWidgetItem * ch;
 
 	for(unsigned int i = 0;i < 999;i++)
 	{
@@ -132,7 +131,7 @@ void KviRawEditor::oneTimeSetup()
 			{
 				if(s->type() == KviKvsEventHandler::Script)
 				{
-					ch = new KviRawHandlerTreeWidgetItem(it,((KviKvsScriptEventHandler *)s)->name(),
+					new KviRawHandlerTreeWidgetItem(it,((KviKvsScriptEventHandler *)s)->name(),
 					((KviKvsScriptEventHandler *)s)->code(),((KviKvsScriptEventHandler *)s)->isEnabled());
 				}
 			}

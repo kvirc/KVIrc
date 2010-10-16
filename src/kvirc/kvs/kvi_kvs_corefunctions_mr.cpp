@@ -276,7 +276,7 @@ namespace KviKvsCoreFunctions
 		// prologue: parameter handling
 		QString szClassName;
 		QString szName;
-		kvs_hobject_t hParent;
+		kvs_hobject_t hParent = 0;
 		KviKvsVariantList vList;
 
 		KVSCF_PARAMETERS_BEGIN

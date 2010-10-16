@@ -1882,17 +1882,15 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 
 #define MEMINCREMENT 32
 
-	int reallen = 0;
-	int allocsize = MEMINCREMENT;
-
 	//s.setLength(allocsize);
 
 	const QChar * fmt = KviQString::nullTerminatedArray(szFormat);
 
 	if(fmt)
 	{
+		int reallen = 0;
+		int allocsize = MEMINCREMENT;
 		QChar * buffer = (QChar *)kvi_malloc(sizeof(QChar) * allocsize);
-		//QChar * p = (QChar *)s.unicode();
 
 		//9999999999999999999999999999999\0
 		char numberBuffer[1024];

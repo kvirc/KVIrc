@@ -464,12 +464,10 @@ KviWindowListItem * KviTreeWindowList::prevItem()
 KviWindowListItem * KviTreeWindowList::lastItem()
 {
 	// first find last toplevel item
-	int ctops, tops;
-
-	tops = m_pTreeWidget->topLevelItemCount();
+	int tops = m_pTreeWidget->topLevelItemCount();
 	if(tops > 0)
 	{
-		ctops = m_pTreeWidget->topLevelItem(tops - 1)->childCount();
+		int ctops = m_pTreeWidget->topLevelItem(tops - 1)->childCount();
 		if(ctops) {
 			return m_pCurrentItem = (KviTreeWindowListItem *) m_pTreeWidget->topLevelItem(tops - 1)->child(ctops -1);
 		} else {

@@ -2713,7 +2713,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		The second <type> parameter can be "local" or "remote", and refers to the certificate you want
 		to query the information from; if omitted, it defaults to "remote".[br]
 		If <dcc_id> is omitted then the DCC Session associated to the current window is assumed.[br]
-		If <dcc_id> is not a valid DCC session identifier (or it is omitted and the current window 
+		If <dcc_id> is not a valid DCC session identifier (or it is omitted and the current window
 		has no associated DCC session) then this function prints a warning and returns an empty sting.[br]
 		If the DCC session is not using ssl then this function returns an empty string.[br]
 		Some queries can accept an optional parameter <param1>[br]
@@ -2745,7 +2745,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		[/ul]
 		@examples:
 			[example]
-				# get a sha256 fingerprint of remote peer's certificate 
+				# get a sha256 fingerprint of remote peer's certificate
 				$dcc.getSSLCertInfo(fingerprintContents,remote,$dcc.session,sha256)
 			[/example]
 		@seealso:
@@ -2810,7 +2810,7 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 			c->returnValue()->setString("");
 			return true;
 		}
-		
+
 		KviSSL * pSSL = pSlaveThread->getSSL();
 		if(!pSSL)
 		{

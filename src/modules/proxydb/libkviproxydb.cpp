@@ -288,12 +288,11 @@ static bool proxydb_kvs_cmd_addProxy(KviKvsModuleCommandCall * c)
 	if(c->switches()->find('i',"ipv6")) pProxy->setIPv6(true);
 
 	QString tmp;
-	unsigned int uPort;
 
 	if(c->switches()->getAsStringIfExisting('p',"port",tmp))
 	{
 		bool bOk;
-		uPort = tmp.toInt(&bOk);
+		unsigned int uPort = tmp.toInt(&bOk);
 		if(!bOk) uPort = 6667;
 		pProxy->setPort(uPort);
 	}

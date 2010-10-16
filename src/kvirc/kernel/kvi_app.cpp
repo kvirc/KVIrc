@@ -1888,7 +1888,6 @@ void KviApp::fillRecentNicknamesPopup(KviTalPopupMenu * pMenu, KviConsole * pCon
 void KviApp::fillRecentChannelsPopup(KviTalPopupMenu * pMenu, KviConsole * pConsole)
 {
 	pMenu->clear();
-	int iId;
 	QStringList * pList = recentChannelsForNetwork(pConsole->currentNetworkName());
 	if(pList)
 	{
@@ -1896,7 +1895,7 @@ void KviApp::fillRecentChannelsPopup(KviTalPopupMenu * pMenu, KviConsole * pCons
 		{
 			if(*it == "")
 				continue; // ?
-			iId = pMenu->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),*it);
+			int iId = pMenu->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),*it);
 			if(!pConsole->isConnected())
 				pMenu->setItemEnabled(iId,false);
 			else

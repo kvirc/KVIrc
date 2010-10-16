@@ -36,8 +36,7 @@ KviCtcpOptionsWidget::KviCtcpOptionsWidget(QWidget * parent)
 
 	createLayout();
 
-	QLabel * l;
-	l = addLabel(0,0,0,0,__tr2qs_ctx("<center><b>Settings for CTCP.</b></center>"\
+	addLabel(0,0,0,0,__tr2qs_ctx("<center><b>Settings for CTCP.</b></center>"\
 		"<p>The <b>Client-To-Client Protocol</b> (CTCP) " \
 		"is used to transmit special control messages over an IRC connection. " \
 		"These messages can request information from clients or negotiate file transfers." \
