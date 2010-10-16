@@ -332,6 +332,7 @@ void KviUserListView::updateScrollBarRange()
 {
 	int iMax = m_iTotalHeight - (m_pViewArea->height() - (KVI_USERLIST_BORDER_WIDTH * 2));
 	m_pViewArea->m_pScrollBar->setRange(0,iMax > 0 ? iMax : 0);
+	m_pViewArea->m_pScrollBar->setVisible(iMax > 0);
 }
 
 void KviUserListView::applyOptions()
@@ -809,7 +810,6 @@ void KviUserListView::triggerUpdate()
 	// This stuff is useful on joins only
 	if(m_pViewArea->updatesEnabled())
 	{
-		//m_pViewArea->m_pScrollBar->setRange(0,m_iTotalHeight);
 		updateScrollBarRange();
 		m_pViewArea->update();
 		updateUsersLabel();
@@ -847,7 +847,6 @@ bool KviUserListView::avatarChanged(const QString & szNick)
 		int iHeightDiff = pUserEntry->m_iHeight - iOldHeight;
 		m_pViewArea->m_iLastScrollBarVal += iHeightDiff;
 		m_pViewArea->m_bIgnoreScrollBar = true;
-//			m_pViewArea->m_pScrollBar->setRange(0,m_iTotalHeight);
 		updateScrollBarRange();
 		m_pViewArea->m_pScrollBar->setValue(m_pViewArea->m_iLastScrollBarVal);
 		m_pViewArea->m_bIgnoreScrollBar = false;
@@ -858,7 +857,6 @@ bool KviUserListView::avatarChanged(const QString & szNick)
 		// range.... it should set the value to a good one
 		// and emit the signal
 		updateScrollBarRange();
-//			m_pViewArea->m_pScrollBar->setRange(0,m_iTotalHeight);
 		m_pViewArea->update();
 	}
 	return true;
@@ -1201,7 +1199,7 @@ void KviUserListView::ensureVisible(const QString & szNick)
 		//already visible
 		return;
 	}
-	
+
 
 	//the scrollbar will clamp this value itself
 	m_pViewArea->m_pScrollBar->setValue(m_pViewArea->m_pScrollBar->value() + iHeight);
@@ -1285,7 +1283,6 @@ bool KviUserListView::partInternal(const QString & szNick, bool bRemoveDefinitiv
 		m_pViewArea->m_bIgnoreScrollBar = true;
 		m_pViewArea->m_iLastScrollBarVal -= iHeight;
 		m_pViewArea->m_pScrollBar->setValue(m_pViewArea->m_iLastScrollBarVal);
-//			m_pViewArea->m_pScrollBar->setRange(0,m_iTotalHeight);
 		updateScrollBarRange();
 		m_pViewArea->m_bIgnoreScrollBar = false;
 		if(bRemoveDefinitively)
@@ -1528,7 +1525,7 @@ void KviUserListView::userStats(KviUserListViewUserStats * pStats)
 
 		if(pEntry->m_pGlobalData->isIrcOp())
 			pStats->uIrcOp++;
-		
+
 		if(pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
 			pStats->uChanOwner++;
 		else {
@@ -1578,7 +1575,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 				QString szTmp;
 				QDateTime date;
 				date.setTime_t(pEntry->m_joinTime);
-				
+
 				switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 				{
 					case 0:
@@ -1591,7 +1588,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 						szTmp = date.toString(Qt::SystemLocaleDate);
 						break;
 				}
-				
+
 				szBuffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
 				szBuffer += __tr2qs("Joined on <b>%1</b>").arg(szTmp);
 				szBuffer += "</font></nobr></td></tr>";
@@ -1608,7 +1605,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 				szBuffer += __tr2qs("Quiet for <b>%1h %2m %3s</b>").arg(iHours).arg(iMins).arg(iSecs);
 				szBuffer += "</font></nobr></td></tr>";
 			}
-			
+
 			if(pEntry->m_pGlobalData->isIrcOp())
 			{
 				szBuffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
@@ -1631,6 +1628,7 @@ KviUserListViewArea::KviUserListViewArea(KviUserListView * pPar)
 	m_pScrollBar = new QScrollBar(Qt::Vertical,this);
 	m_pScrollBar->setObjectName("scrollbar");
 	m_pScrollBar->setRange(0,0);
+	m_pScrollBar->setVisible(false);
 	m_pScrollBar->setValue(0);
 	connect(m_pScrollBar,SIGNAL(valueChanged(int)),this,SLOT(scrollBarMoved(int)));
 	m_pScrollBar->setPageStep(height());
@@ -1704,7 +1702,9 @@ void KviUserListViewArea::scrollBarMoved(int iNewVal)
 void KviUserListViewArea::paintEvent(QPaintEvent * e)
 {
 	// update the scroll bar
-	int iWidth = width() - m_pScrollBar->width();
+	int iWidth = width();
+	if(m_pScrollBar->isVisible())
+		iWidth-= m_pScrollBar->width();
 
 	QRect r = e->rect();
 	if(r.right() > iWidth)
@@ -2133,7 +2133,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 						{
 							if(pAux == m_pListView->m_pHeadItem)
 								pNick=m_pListView->m_pTailItem;
-							else 
+							else
 								pNick = pAux->m_pPrev;
 						}
 					}
@@ -2181,7 +2181,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 						{
 							if(pAux == m_pListView->m_pTailItem)
 								pNick=m_pListView->m_pHeadItem;
-							else 
+							else
 								pNick = pAux->m_pNext;
 						}
 					}
@@ -2232,7 +2232,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 				if(!pAux)
 					pAux = m_pListView->m_pHeadItem;
 			}
-			
+
 			while(pAux)
 			{
 				//qDebug("%s %s %i %s %i",__FILE__,__FUNCTION__,__LINE__,aux->nick().toUtf8().data(),aux->nick().find(szKey,0,0));
@@ -2278,7 +2278,7 @@ void KviUserListViewArea::mouseMoveEvent(QMouseEvent * e)
 					pEntry=m_pListView->m_pTopItem;
 				}
 			}
-			
+
 		} else if(e->pos().y() > (height() - KVI_USERLIST_BORDER_WIDTH))
 		{
 			KviUserListEntry * pBottom = m_pListView->m_pTopItem;
@@ -2301,7 +2301,7 @@ void KviUserListViewArea::mouseMoveEvent(QMouseEvent * e)
 			}
 		}
 	}
-	
+
 	if(!pEntry || !m_pLastEntryUnderMouse || pEntry == m_pLastEntryUnderMouse)
 		return;
 
@@ -2315,7 +2315,7 @@ void KviUserListViewArea::mouseMoveEvent(QMouseEvent * e)
 			g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,false);
 		else if(m_pListView->m_iSelectedCount == 1)
 				g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
-			
+
 		m_pLastEntryUnderMouse=pEntry;
 	} else {
 		KviUserListEntry * pCurEntry = m_pListView->m_pHeadItem;
