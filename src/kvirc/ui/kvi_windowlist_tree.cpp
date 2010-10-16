@@ -145,20 +145,28 @@ QString KviTreeWindowListItem::key() const
 	// This is the sorting function for KviTreeTaskBarItem
 	// 1) window type (console, other window..) 2) unique id [to avoid bug #9] 3) windowname (for alphabetical sorting of childs)
 	QString ret;
+	int iType = m_pWindow->type();
+
+	// ensure dead/alive channels and queries stay in the same position
+	if(iType == KVI_WINDOW_TYPE_DEADCHANNEL)
+		iType = KVI_WINDOW_TYPE_CHANNEL;
+	if(iType == KVI_WINDOW_TYPE_DEADQUERY)
+		iType = KVI_WINDOW_TYPE_QUERY;
+
 	if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName))
 	{
-		if(m_pWindow->type()==KVI_WINDOW_TYPE_CONSOLE)
+		if(iType==KVI_WINDOW_TYPE_CONSOLE)
 		{
-			ret.sprintf("%2d%4u",m_pWindow->type(),((KviConsole*)m_pWindow)->context() ? ((KviConsole*)m_pWindow)->context()->id() : 9999);
+			ret.sprintf("%2d%4u",iType,((KviConsole*)m_pWindow)->context() ? ((KviConsole*)m_pWindow)->context()->id() : 9999);
 		} else {
-			ret.sprintf("%2d%s",m_pWindow->type(),m_pWindow->windowName().toLower().toUtf8().data());
+			ret.sprintf("%2d%s",iType,m_pWindow->windowName().toLower().toUtf8().data());
 		}
 	} else {
-		if(m_pWindow->type()==KVI_WINDOW_TYPE_CONSOLE)
+		if(iType==KVI_WINDOW_TYPE_CONSOLE)
 		{
-			ret.sprintf("%2d%4u",m_pWindow->type(),((KviConsole*)m_pWindow)->context() ? ((KviConsole*)m_pWindow)->context()->id() : 9999);
+			ret.sprintf("%2d%4u",iType,((KviConsole*)m_pWindow)->context() ? ((KviConsole*)m_pWindow)->context()->id() : 9999);
 		} else {
-			ret.sprintf("%2d%4d",m_pWindow->type(),parent() ? parent()->indexOfChild((QTreeWidgetItem *)this) : 9999);
+			ret.sprintf("%2d%4d",iType,parent() ? parent()->indexOfChild((QTreeWidgetItem *)this) : 9999);
 		}
 	}
 	return ret;
@@ -194,7 +202,7 @@ void KviTreeWindowListTreeWidget::mouseMoveEvent(QMouseEvent *)
 void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent *e)
 {
 	// Mitigate bug #488:
-	//   When there is a scroll bar the wheel scrolls up and down 
+	//   When there is a scroll bar the wheel scrolls up and down
 	//   When there is no scroll bar the wheel changes selection in the tree
 
 	if(KVI_OPTION_BOOL(KviOption_boolWheelScrollsWindowsList))
