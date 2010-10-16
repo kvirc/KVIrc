@@ -243,7 +243,7 @@ void KviServerParser::parseLiteralJoin(KviIrcMessage *msg)
 
 		// FIXME: #warning "IF VERBOSE SAY THAT WE'RE REQUESTING MODES & BAN LIST" (Synching channel)
 		msg->connection()->requestQueue()->enqueueChannel(chan);
-		
+
 	} else {
 		// This must be someone else...(or desync)
 		int iFlags = 0;
@@ -923,7 +923,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 						g_pApp->notifierMessage(query,KVI_SMALLICON_QUERYPRIVMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 					}
 				}
-				
+
 				// if the message is identified (identify-msg CAP) then re-add the +/- char at the beginning
 				if(eCapState != IdentifyMsgCapNotUsed)
 					szMsgText = QString::fromAscii("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
@@ -1420,7 +1420,7 @@ void KviServerParser::parseLiteralTopic(KviIrcMessage *msg)
 
 	chan->topicWidget()->setTopic(szTopic);
 	chan->topicWidget()->setTopicSetBy(szNick);
-	
+
 	QString szTmp;
 	QDateTime date = QDateTime::currentDateTime();
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
@@ -1846,8 +1846,8 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 				if(msg->connection()->serverInfo()->isSupportedModeFlag(__modechar)) \
 				{ \
 					aParam = msg->connection()->decodeText(msg->safeParam(curParam++)); \
-					chan->__chanfunc(aParam,bSet); \
 					bIsMe = IS_ME(msg,aParam); \
+					chan->__chanfunc(aParam,bSet,bIsMe); \
 					if(bIsMe) \
 					{ \
 						if(KVS_TRIGGER_EVENT_3_HALTED(bSet ? __evmeset : __evmeunset,chan,szNick,szUser,szHost))msg->setHaltOutput(); \
@@ -1894,7 +1894,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 					// (ircq) unrealircd's channel owner (channel mode q with nickname)
 					// (ircq) unrealircd's channel admin (channel mode a with nickname)
 					// not existing but supported mode (channel mode a with mask)
-					
+
 					aParam = msg->connection()->decodeText(msg->safeParam(curParam++));
 					// we call setMask anyway to fill the "mode q editor"
 					chan->setMask(*aux,aParam,bSet,msg->connection()->decodeText(msg->safePrefix()),QDateTime::currentDateTime().toTime_t());
@@ -2138,10 +2138,10 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 	{
 		// :prefix CAP <nickname> LS [*] :<cap1> <cap2> <cap3> ....
 		// All but the last LS messages have the asterisk
-		
+
 		QString szAsterisk = msg->connection()->decodeText(msg->safeParam(2));
 		bool bLast = szAsterisk != "*";
-		
+
 		msg->connection()->serverInfo()->addSupportedCaps(szProtocols);
 
 		if(msg->connection()->stateData()->isInsideInitialCapLs())
@@ -2163,7 +2163,7 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 	{
 		// :prefix CAP <nickname> ACK [*] :<cap1> <cap2> <cap3> ....
 		// All but the last ACK messages have the asterisk
-	
+
 		msg->connection()->serverInfo()->addSupportedCaps(szProtocols);
 		msg->connection()->stateData()->changeEnabledCapList(szProtocols);
 
@@ -2180,10 +2180,10 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 
 		if(!msg->haltOutput())
 			msg->console()->output(KVI_OUT_CAP,__tr2qs("Capability change acknowledged: %Q"),&szProtocols);
-		
+
 		return;
 	}
-	
+
 	if(szCmd == "NAK")
 	{
 		// :prefix CAP <nickname> NAK :<cap1> <cap2> <cap3> ....
@@ -2200,7 +2200,7 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 		return;
 
 	}
-	
+
 	if(szCmd == "LIST")
 	{
 		// :prefix CAP <nickname> LIST [*] :<cap1> <cap2> <cap3> ....
@@ -2213,7 +2213,7 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 
 		return;
 	}
-	
+
 	if(!msg->haltOutput())
 		msg->console()->output(KVI_OUT_CAP,__tr2qs("Received unknown extended capability message: %Q %Q"),&szCmd,&szProtocols);
 }

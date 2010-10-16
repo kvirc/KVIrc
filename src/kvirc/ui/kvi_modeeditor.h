@@ -33,6 +33,7 @@
 
 class QCheckBox;
 class QLineEdit;
+class QPushButton;
 class KviIrcConnectionServerInfo;
 class KviChannel;
 
@@ -49,6 +50,7 @@ public:
 	~KviModeEditor();
 protected: // fields
 	KviChannel                * m_pChannel;
+	QPushButton               * m_pButton;
 	QMap<char, QCheckBox *>     m_pCheckBoxes;
 	QMap<char, QLineEdit *>     m_pLineEdits;
 protected:
@@ -60,6 +62,7 @@ signals:
 protected slots:
 	void checkBoxToggled(bool bChecked);
 	void commit();
+	void updateOpStatus();
 };
 
 #endif //_KVI_MODEEDITOR_H_

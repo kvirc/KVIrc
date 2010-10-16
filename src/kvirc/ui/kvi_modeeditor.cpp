@@ -45,18 +45,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 {
 	setObjectName(name);
 	m_pChannel = pChan;
-	bool bIsEnabled = true;
-	if(pChan)
-	{
-		if(!( pChan->isMeHalfOp() || 
-			pChan->isMeOp() || 
-			pChan->isMeChanOwner() || 
-			pChan->isMeChanAdmin() || 
-			pChan->connection()->userInfo()->hasUserMode('o') || 
-			pChan->connection()->userInfo()->hasUserMode('O') 
-		) ) bIsEnabled = false;
-	}
-	
+
 	QGridLayout *pMasterLayout = new QGridLayout(this);
 
 	setFocusPolicy(Qt::ClickFocus);
@@ -66,13 +55,13 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	pMasterLayout->addWidget(pScrollArea,0,0);
 
 	pMasterLayout->setRowStretch(1,1);
-	
-	QPushButton * b = new QPushButton(bIsEnabled ? __tr2qs("&Apply") : __tr2qs("Close"), this);
-	pMasterLayout->addWidget(b,1,0);
-	connect(b,SIGNAL(clicked()),this,SLOT(commit()));
+
+	m_pButton = new QPushButton("", this);
+	pMasterLayout->addWidget(m_pButton,1,0);
+	connect(m_pButton,SIGNAL(clicked()),this,SLOT(commit()));
 
 	QWidget * pBackground = new QWidget(pScrollArea->viewport());
-	
+
 	QGridLayout *g = new QGridLayout(pBackground);
 
 	QLabel * l = new QLabel("",pBackground);
@@ -105,7 +94,6 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 
 		KviQString::sprintf(szTmp,"%c: %Q",cMode, getModeDescription(cMode));
 		pCheckBox = new QCheckBox(szTmp,pBackground);
-		pCheckBox->setEnabled(bIsEnabled);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		if(pChan)
 			pCheckBox->setChecked(pChan->plainChannelMode().contains(cMode));
@@ -124,17 +112,15 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		KviQString::sprintf(szTmp,"%c: %Q",cMode, getModeDescription(cMode));
 		pCheckBox = new QCheckBox(szTmp,pBackground);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
-		pCheckBox->setEnabled(bIsEnabled);
 		iRow++;
 		g->addWidget(pCheckBox,iRow,0,1,3);
 
 		connect(pCheckBox,SIGNAL(toggled(bool)),this,SLOT(checkBoxToggled(bool)));
 		pLineEdit = new QLineEdit(pBackground);
 		m_pLineEdits.insert(cMode,pLineEdit);
-		pLineEdit->setEnabled(bIsEnabled);
 		iRow++;
 		g->addWidget(pLineEdit,iRow,1,1,2);
-		
+
 		if(pChan)
 		{
 			if(pChan->hasChannelMode(cMode))
@@ -176,7 +162,6 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 
 		KviQString::sprintf(szTmp,"%c: %Q",cMode, getModeDescription(cMode));
 		pCheckBox = new QCheckBox(szTmp,pBackground);
-		pCheckBox->setEnabled(bIsEnabled);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		if(pChan)
 			pCheckBox->setChecked(pChan->plainChannelMode().contains(cMode));
@@ -203,17 +188,15 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		KviQString::sprintf(szTmp,"%c: %Q",cMode, getModeDescription(cMode));
 		pCheckBox = new QCheckBox(szTmp,pBackground);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
-		pCheckBox->setEnabled(bIsEnabled);
 		iRow++;
 		g->addWidget(pCheckBox,iRow,0,1,3);
 
 		connect(pCheckBox,SIGNAL(toggled(bool)),this,SLOT(checkBoxToggled(bool)));
 		pLineEdit = new QLineEdit(pBackground);
 		m_pLineEdits.insert(cMode,pLineEdit);
-		pLineEdit->setEnabled(bIsEnabled);
 		iRow++;
 		g->addWidget(pLineEdit,iRow,1,1,2);
-		
+
 		if(pChan->hasChannelMode(cMode))
 		{
 			pCheckBox->setChecked(true);
@@ -226,15 +209,41 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	g->setRowStretch(++iRow,1);
 	g->setColumnStretch(2,1);
 	pScrollArea->setWidget(pBackground);
+
+	updateOpStatus();
+
+	if(m_pChannel)
+		connect(m_pChannel, SIGNAL(opStatusChanged()), this, SLOT(updateOpStatus()));
 }
 
 KviModeEditor::~KviModeEditor()
 {
-	for(int i=0;i<m_pLineEdits.count();++i)
-		delete m_pLineEdits.value(i);
+	qDeleteAll(m_pLineEdits);
+	qDeleteAll(m_pCheckBoxes);
+}
 
-	for(int i=0;i<m_pCheckBoxes.count();++i)
-		delete m_pCheckBoxes.value(i);
+void KviModeEditor::updateOpStatus()
+{
+	bool isEnabled=true;
+	if(m_pChannel)
+	{
+		if(!( m_pChannel->isMeHalfOp() ||
+			m_pChannel->isMeOp() ||
+			m_pChannel->isMeChanOwner() ||
+			m_pChannel->isMeChanAdmin() ||
+			m_pChannel->connection()->userInfo()->hasUserMode('o') ||
+			m_pChannel->connection()->userInfo()->hasUserMode('O'))
+		) isEnabled=false;
+	}
+
+	if(m_pButton)
+		m_pButton->setText(isEnabled ? __tr2qs("&Apply") : __tr2qs("Close"));
+
+	foreach(QLineEdit* pLineEdit, m_pLineEdits)
+		pLineEdit->setEnabled(isEnabled);
+
+	foreach(QCheckBox* pCheckBox, m_pCheckBoxes)
+		pCheckBox->setEnabled(isEnabled);
 }
 
 void KviModeEditor::checkBoxToggled(bool bChecked)
@@ -242,15 +251,15 @@ void KviModeEditor::checkBoxToggled(bool bChecked)
 	// enable/disable the lineedit if any
 	if(!sender())
 		return;
-	
+
 	QChar c = m_pCheckBoxes.key((QCheckBox *)sender());
 	if(c.isNull())
 		return;
-	
+
 	QLineEdit * pLineEdit = m_pLineEdits.value(c.unicode());
 	if(!pLineEdit)
 		return;
-	
+
 	pLineEdit->setEnabled(bChecked);
 }
 
@@ -285,7 +294,7 @@ void KviModeEditor::commit()
 			if(pCheckBox->isChecked())
 			{
 				// mode is checked
-				if(!m_pChannel->hasChannelMode(cMode) || 
+				if(!m_pChannel->hasChannelMode(cMode) ||
 					(pLineEdit->text().trimmed() != m_pChannel->channelModeParam(cMode)))
 				{
 					// mode was not checked before, or the parameter has changed
@@ -296,7 +305,7 @@ void KviModeEditor::commit()
 				if(m_pChannel->hasChannelMode(cMode))
 				{
 					// but it was checked before
-					
+
 					// checks if this specific mode does not need a parameter when set
 					if(modeNeedsParameterOnlyWhenSet(cMode))
 					{
@@ -358,7 +367,7 @@ void KviModeEditor::commit()
 				szParameters.clear();
 			}
 			iModes=0;
-			
+
 			emit setMode(szCommitModes);
 		}
 	}
@@ -388,7 +397,7 @@ void KviModeEditor::commit()
 				szParameters.clear();
 			}
 			iModes=0;
-			
+
 			emit setMode(szCommitModes);
 		}
 	}

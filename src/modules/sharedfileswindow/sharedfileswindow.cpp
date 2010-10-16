@@ -305,9 +305,8 @@ void KviSharedFilesWindow::fillFileView()
 	while(KviSharedFileList * l = it.current())
 	{
 		for(KviSharedFile * o = l->first();o;o = l->next())
-		{
-			KviSharedFilesTreeWidgetItem * itm = new KviSharedFilesTreeWidgetItem(m_pTreeWidget,o);
-		}
+			new KviSharedFilesTreeWidgetItem(m_pTreeWidget,o);
+
 		++it;
 	}
 	enableButtons();
@@ -315,7 +314,7 @@ void KviSharedFilesWindow::fillFileView()
 
 void KviSharedFilesWindow::sharedFileAdded(KviSharedFile * f)
 {
-	KviSharedFilesTreeWidgetItem * it = new KviSharedFilesTreeWidgetItem(m_pTreeWidget,f);
+	new KviSharedFilesTreeWidgetItem(m_pTreeWidget,f);
 	enableButtons();
 }
 
@@ -323,7 +322,6 @@ void KviSharedFilesWindow::sharedFileRemoved(KviSharedFile * f)
 {
 	QTreeWidgetItem * it;
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
-//	while(it)
 	{
 		it=(QTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
 		if(((KviSharedFilesTreeWidgetItem *)it)->readOnlySharedFilePointer() == f)
@@ -331,7 +329,6 @@ void KviSharedFilesWindow::sharedFileRemoved(KviSharedFile * f)
 			delete ((KviSharedFilesTreeWidgetItem *)it);
 			return;
 		}
-	//	it = it->nextSibling();
 	}
 	enableButtons();
 }

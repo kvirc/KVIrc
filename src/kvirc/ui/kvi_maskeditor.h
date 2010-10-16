@@ -116,6 +116,7 @@ protected slots:
 	void addClicked();
         void itemDoubleClicked( QTreeWidgetItem *,int);
 	void searchTextChanged ( const QString & );
+	void updateOpStatus();
 signals:
 	void removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *);
 };

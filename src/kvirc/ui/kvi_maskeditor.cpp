@@ -123,16 +123,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannel * pChannel,KviWindowToolPa
 : KviWindowToolWidget(par,button)
 {
 	setObjectName(name);
-	bool isEnabled=1;
 	m_pChannel = pChannel;
-	if(m_pChannel)
-	{
-		if(!( m_pChannel->isMeHalfOp() ||
-			m_pChannel->isMeOp() ||
-			m_pChannel->isMeChanOwner() ||
-			m_pChannel->isMeChanAdmin() ) 
-		) isEnabled=0;
-	}
 
 	setFocusPolicy(Qt::ClickFocus);
 
@@ -208,7 +199,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannel * pChannel,KviWindowToolPa
 	g->addWidget(m_pMaskBox,3,0,1,2);
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);
-	m_pRemoveMask->setEnabled(isEnabled);
+
 	m_pRemoveMask->setFocusPolicy(Qt::ClickFocus);
 	m_pRemoveMask->setFocusProxy(this);
 	g->addWidget(m_pRemoveMask,4,1);
@@ -216,7 +207,6 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannel * pChannel,KviWindowToolPa
 	m_pRemoveMask->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
 
 	m_pAddButton = new QPushButton(__tr2qs("&Add"),this);
-	m_pAddButton->setEnabled(isEnabled);
 	g->addWidget(m_pAddButton,4,0);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
@@ -224,11 +214,35 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannel * pChannel,KviWindowToolPa
 	g->setColumnStretch(1,1);
 
 	for(KviMaskEntry * e = maskList->first();e;e = maskList->next()) addMask(e);
+
+	updateOpStatus();
+
+	if(m_pChannel)
+		connect(m_pChannel, SIGNAL(opStatusChanged()), this, SLOT(updateOpStatus()));
 }
 
 KviMaskEditor::~KviMaskEditor()
 {
+}
 
+void KviMaskEditor::updateOpStatus()
+{
+	bool isEnabled=true;
+	if(m_pChannel)
+	{
+		if(!( m_pChannel->isMeHalfOp() ||
+			m_pChannel->isMeOp() ||
+			m_pChannel->isMeChanOwner() ||
+			m_pChannel->isMeChanAdmin() ||
+			m_pChannel->connection()->userInfo()->hasUserMode('o') ||
+			m_pChannel->connection()->userInfo()->hasUserMode('O'))
+		) isEnabled=false;
+	}
+
+	if(m_pRemoveMask)
+		m_pRemoveMask->setEnabled(isEnabled);
+	if(m_pAddButton)
+		m_pAddButton->setEnabled(isEnabled);
 }
 
 void KviMaskEditor::searchTextChanged ( const QString & text)

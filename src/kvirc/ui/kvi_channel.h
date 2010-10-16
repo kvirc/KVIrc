@@ -545,7 +545,7 @@ public:
 	* \param bOp Whether to set or unset the mode on the user
 	* \return bool
 	*/
-	bool setOp(const QString & szNick, bool bOp){ return m_pUserListView->setOp(szNick,bOp); };
+	bool setOp(const QString & szNick, bool bOp, bool bIsMe);
 
 	/**
 	* \brief Sets the half operator mode
@@ -553,7 +553,7 @@ public:
 	* \param bHalfOp Whether to set or unset the mode on the user
 	* \return bool
 	*/
-	bool setHalfOp(const QString & szNick, bool bHalfOp){ return m_pUserListView->setHalfOp(szNick,bHalfOp); };
+	bool setHalfOp(const QString & szNick, bool bHalfOp, bool ){ return m_pUserListView->setHalfOp(szNick,bHalfOp); };
 
 	/**
 	* \brief Sets the voice mode
@@ -561,7 +561,7 @@ public:
 	* \param bVoice Whether to set or unset the mode on the user
 	* \return bool
 	*/
-	bool setVoice(const QString & szNick, bool bVoice){ return m_pUserListView->setVoice(szNick,bVoice); };
+	bool setVoice(const QString & szNick, bool bVoice, bool ){ return m_pUserListView->setVoice(szNick,bVoice); };
 
 	/**
 	* \brief Sets the user operator mode
@@ -569,7 +569,7 @@ public:
 	* \param bUserOp Whether to set or unset the mode on the user
 	* \return bool
 	*/
-	bool setUserOp(const QString & szNick, bool bUserOp){ return m_pUserListView->setUserOp(szNick,bUserOp); };
+	bool setUserOp(const QString & szNick, bool bUserOp, bool ){ return m_pUserListView->setUserOp(szNick,bUserOp); };
 
 	/**
 	* \brief Returns true if the user is a chan owner
@@ -876,7 +876,7 @@ public:
 	* \return QByteArray
 	*/
 	QByteArray loadLogFile(const QString & szFileName, bool bGzip);
-	
+
 	/**
 	* \brief Gets the KviIrcConnectionServerInfo structure associated to the current connection
 	* \return KviIrcConnectionServerInfo*
@@ -1062,6 +1062,13 @@ private slots:
 	* \return void
 	*/
 	void toggleToolButtons();
+
+signals:
+	/**
+	* \brief Emitted when our op status change
+	* \return void
+	*/
+	void opStatusChanged();
 };
 
 #endif //_KVI_CHANNEL_H_

@@ -127,7 +127,7 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName(szName);
 	m_pSplitter->setChildrenCollapsible(false);
-	
+
 	// Spitted vertially on the left
 	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setChildrenCollapsible(false);
@@ -156,7 +156,7 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
 	// bans are hardcoded
 	cMode='b';
-	
+
 	if(pServerInfo)
 		szDescription = pServerInfo->getChannelModeDescription(cMode);
 	if(szDescription.isEmpty())
@@ -165,14 +165,14 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	pButton = new KviWindowToolPageButton(KVI_SMALLICON_UNBAN,KVI_SMALLICON_BAN,szDescription,buttonContainer(),false,"ban_editor_button");
 	connect(pButton,SIGNAL(clicked()),this,SLOT(toggleListModeEditor()));
 	m_pListEditorButtons.insert(cMode, pButton);
-	
+
 	//other list modes (dynamic)
 	QString szListModes = "";
 	if(pServerInfo)
 	{
 		szListModes = pServerInfo->supportedListModes();
 		szListModes.remove('b');
-	
+
 		for(int i=0;i<szListModes.size();++i)
 		{
 			char cMode = szListModes.at(i).unicode();
@@ -204,7 +204,7 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 					iIconOff = KVI_SMALLICON_BAN;
 					break;
 			}
-			
+
 			pButton = new KviWindowToolPageButton(iIconOn,iIconOff,szDescription,buttonContainer(),false,"list_mode_editor_button");
 			connect(pButton,SIGNAL(clicked()),this,SLOT(toggleListModeEditor()));
 			m_pListEditorButtons.insert(cMode, pButton);
@@ -258,14 +258,14 @@ KviChannel::~KviChannel()
 		if(connection())
 			connection()->unregisterChannel(this);
 	}
-	
+
 	// Then remove all the users and free mem
 	m_pUserListView->enableUpdates(false);
 	m_pUserListView->partAll();
 
 	delete m_pActionHistory;
 	delete m_pTmpHighLighted;
-	
+
 	qDeleteAll(m_pListEditors);
 	m_pListEditors.clear();
 	qDeleteAll(m_pListEditorButtons);
@@ -510,7 +510,7 @@ void KviChannel::toggleListModeEditor()
 
 	char cMode=0;
 	QMap<char, KviWindowToolPageButton*>::const_iterator iter = m_pListEditorButtons.constBegin();
-	
+
 	while (iter != m_pListEditorButtons.constEnd())
 	{
 		if(iter.value()==pButton)
@@ -520,7 +520,7 @@ void KviChannel::toggleListModeEditor()
 		}
 		++iter;
 	}
-	
+
 	if(!cMode)
 		return; //wtf?
 
@@ -649,7 +649,7 @@ void KviChannel::setChannelModeWithParam(char cMode, QString & szParam)
 {
 	if(szParam.isEmpty())
 		m_szChannelParameterModes.remove(cMode);
-	else 
+	else
 		m_szChannelParameterModes.insert(cMode,szParam);
 	updateModeLabel();
 	updateCaption();
@@ -692,6 +692,14 @@ void KviChannel::getChannelModeStringWithEmbeddedParams(QString & szBuffer)
 	}
 }
 
+bool KviChannel::setOp(const QString & szNick, bool bOp, bool bIsMe)
+{
+	bool bRet = m_pUserListView->setOp(szNick,bOp);
+	if(bIsMe)
+		emit opStatusChanged();
+	return bRet;
+}
+
 void KviChannel::setDeadChan()
 {
 	m_iStateFlags |= KVI_CHANNEL_STATE_DEADCHAN;
@@ -701,7 +709,7 @@ void KviChannel::setDeadChan()
 	m_pUserListView->partAll();
 	m_pUserListView->enableUpdates(true);
 	m_pUserListView->setUserDataBase(0);
-	
+
 	//clear all mask editors
 	QMap<char, KviMaskEditor*>::const_iterator iter2 = m_pListEditors.constBegin();
 	while (iter2 != m_pListEditors.constEnd())
@@ -1676,7 +1684,7 @@ void KviChannel::setMask(char cMode, const QString & szMask, bool bAdd, const QS
 
 	if(!m_pModeLists.contains(cMode))
 	{
-		// we want to remove an item but we don't have any list? 
+		// we want to remove an item but we don't have any list?
 		if(!bAdd)
 			return;
 		// lazily insert it
@@ -1723,7 +1731,7 @@ void KviChannel::internalMask(const QString & szMask, bool bAdd, const QString &
 			//delete mask from the editor
 			if(*ppEd)
 				(*ppEd)->removeMask(e);
-			
+
 			if(szChangeMask.isNull())
 			{
 				//delete mask
@@ -1789,7 +1797,7 @@ void KviChannel::checkChannelSync()
 	// check if we're in the on-join request queue list
 	if(connection()->requestQueue()->isQueued(this))
 		return;
-	
+
 	// check if there's any request still runinng
 	if(m_szSentModeRequests.size() != 0)
 		return;
