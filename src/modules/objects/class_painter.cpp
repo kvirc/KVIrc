@@ -37,25 +37,25 @@
 #include <QTextDocument>
 #include <QIcon>
 
-#define PAINTER_ROTATE(__angle)\
-	 QMatrix matrix;\
-     matrix.rotate(__angle);\
-     m_pPainter->setWorldMatrix(matrix,true);
+#define PAINTER_ROTATE(__angle,__axis)\
+         QTransform transform;\
+     transform.rotate(__angle,__axis);\
+     m_pPainter->setTransform(transform,true);
 
 #define PAINTER_TRANSLATE(__x,__y)\
-	 QMatrix matrix;\
-     matrix.translate(__x,__y);\
-     m_pPainter->setWorldMatrix(matrix,true);
+         QTransform transform;\
+     transform.translate(__x,__y);\
+      m_pPainter->setTransform(transform,true);
 
 #define PAINTER_SHEAR(__sH,__sV)\
-	 QMatrix matrix;\
-     matrix.shear(__sH,__sV);\
-     m_pPainter->setWorldMatrix(matrix,true);
+         QTransform transform;\
+    transform.shear(__sH,__sV);\
+     m_pPainter->setTransform(transform,true);
 
 #define PAINTER_SCALE(__sX,__sY)\
-	 QMatrix matrix;\
-     matrix.scale(__sX,__sY);\
-     m_pPainter->setWorldMatrix(matrix,true);
+         QTransform transform;\
+     transform.scale(__sX,__sY);\
+     m_pPainter->setTransform(transform,true);
 
 
 const Qt::PenStyle penstyles_cod[] = {
@@ -226,8 +226,10 @@ const char * const brushstyles_tbl[] = {
 		Returns the font metrics width for the painter's current font.
 		!fn: <integer>$fontMetricsHeight()
 		Returns the font metrics height for the painter's current font.
-		!fn: $rotate(<angle:real>)
-		Rotates the coordinate system a degrees counterclockwise.
+                !fn: $rotate(<angle:real>,[<axis:string>])
+                Rotates the coordinate system a degrees counterclockwise by the given angle about the optional parameter <axis>.
+                Valid values for axis are: ZAxis, XAxis, YAxis.
+                Optional parameter <axis>
 		!fn: $translate(<dx:real>,<dy:real>)
 		Translates the coordinate system by <dx>, <dy>.
 		!fn: $shear(<dh:real>,<dv:real>)
@@ -454,7 +456,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,htmlTextSize)
 
 
-	// Matrix Operation
+        // Transform Operation
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,rotate)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,shear)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,scale)
@@ -1218,11 +1220,18 @@ KVSO_CLASS_FUNCTION(painter,drawPixmap)
 KVSO_CLASS_FUNCTION(painter,rotate)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
-	kvs_real_t dAngle;
+        kvs_real_t dAngle;
+        QString szAxis;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("angle",KVS_PT_DOUBLE,0,dAngle)
+                KVSO_PARAMETER("axis",KVS_PT_STRING,KVS_PF_OPTIONAL,szAxis)
 	KVSO_PARAMETERS_END(c)
-	PAINTER_ROTATE(dAngle)
+        Qt::Axis axis = Qt::ZAxis;
+        if (KviQString::equalCI(szAxis,"XAxis"))axis=Qt::ZAxis;
+        else if (KviQString::equalCI(szAxis,"YAxis")) axis=Qt::YAxis;
+        else if (KviQString::equalCI(szAxis,"ZAxis")) axis=Qt::ZAxis;
+        else c->warning(__tr2qs_ctx("Unknown axis '%Q' switching to default ZAxis","objects"),&szAxis);
+        PAINTER_ROTATE(dAngle,axis)
 	return true;
 }
 
@@ -1235,13 +1244,7 @@ KVSO_CLASS_FUNCTION(painter,translate)
 		KVSO_PARAMETER("trasl_y",KVS_PT_DOUBLE,0,dYtrasl)
 	KVSO_PARAMETERS_END(c)
 	PAINTER_TRANSLATE(dXtrasl,dYtrasl)
-	//QWMatrix tmpMatrix;
-	//tmpMatrix.translate(dXtrasl,dYtrasl);
-	//tmpMatrix = m_pMatrix * tmpMatrix;
-	//m_pPainter->setWorldMatrix( tmpMatrix );
-	//m_pMatrix=tmpMatrix;
-	//m_pPainter->translate(dXtrasl,dYtrasl);
-	return true;
+        return true;
 }
 
 KVSO_CLASS_FUNCTION(painter,shear)
@@ -1253,10 +1256,7 @@ KVSO_CLASS_FUNCTION(painter,shear)
 		KVSO_PARAMETER("shear_v",KVS_PT_DOUBLE,0,dShearv)
 	KVSO_PARAMETERS_END(c)
 	PAINTER_SHEAR(dShearh,dShearv);
-	//m_pMatrix.shear(dShearh,dShearv);
-	//m_pPainter->setWorldMatrix(m_pMatrix);
-	//m_pPainter->shear(dShearh,dShearv);
-	return true;
+        return true;
 }
 
 KVSO_CLASS_FUNCTION(painter,scale)
@@ -1268,18 +1268,13 @@ KVSO_CLASS_FUNCTION(painter,scale)
 		KVSO_PARAMETER("scale_y",KVS_PT_DOUBLE,0,dScaley)
 	KVSO_PARAMETERS_END(c)
 	PAINTER_SCALE(dScalex,dScaley);
-	//m_pMatrix.scale(dScalex,dScaley);
-	//m_pPainter->setWorldMatrix(m_pMatrix);
-	//m_pPainter->scale(dScalex,dScaley);
-	return true;
+        return true;
 }
 
 KVSO_CLASS_FUNCTION(painter,reset)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
-	//m_pMatrix.reset();
-	//m_pPainter->setWorldMatrix( m_pMatrix );
-	m_pPainter->resetMatrix();
+        m_pPainter->resetTransform();
 	return true;
 }
 
@@ -1288,19 +1283,21 @@ KVSO_CLASS_FUNCTION(painter,drawHtmlText)
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	QString szText;
 	kvs_int_t iX,iY,iW,iH;
+
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x",KVS_PT_INT,0,iX)
 		KVSO_PARAMETER("y",KVS_PT_INT,0,iY)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
-		KVSO_PARAMETER("w",KVS_PT_INT,0,iW)
-		KVSO_PARAMETER("h",KVS_PT_INT,0,iH)
+                KVSO_PARAMETER("w",KVS_PT_INT,0,iW)
+                KVSO_PARAMETER("h",KVS_PT_INT,0,iH)
+
 	KVSO_PARAMETERS_END(c)
-	QTextDocument doc;
+        QTextDocument doc;
 	doc.setHtml(szText);
 	doc.setDefaultFont(m_pPainter->font());
 	m_pPainter->save();
 	m_pPainter->translate(iX,iY);
-	doc.setPageSize(QSize(iW,iH));
+        doc.setPageSize(QSize(iW,iH));
 	doc.drawContents(m_pPainter);
 	m_pPainter->restore();
 	return true;
