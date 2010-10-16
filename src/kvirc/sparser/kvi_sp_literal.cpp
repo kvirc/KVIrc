@@ -871,8 +871,14 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 				}
 
 				//check for query, since the user could have halt'ed its creation
-				if(query && KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
+				if(query)
+				{
+					if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
+						KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
+
+					if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
 					query->pasteLastLog();
+				}
 			}
 		}
 
@@ -1242,10 +1248,15 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 					query->setTarget(szNick,szUser,szHost);
 				}
 
-			//check for query, since the user could have halt'ed its creation
-			if(query && KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
-				query->pasteLastLog();
+				//check for query, since the user could have halt'ed its creation
+				if(query)
+				{
+					if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
+						KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
 
+					if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
+						query->pasteLastLog();
+				}
 			}
 		}
 
