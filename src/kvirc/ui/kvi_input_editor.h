@@ -561,175 +561,175 @@ private slots:
 	* \return void
 	*/
 	void openHistory();
-	
+
 	/**
 	* \brief Toggles the multiline editor
 	* \return void
 	*/
 	void toggleMultiLineEditor();
-	
+
 	/**
 	* \brief Moves to the previous character
 	* \return void
 	*/
 	void previousChar();
-	
+
 	/**
 	* \brief Moves to the next character
 	* \return void
 	*/
 	void nextChar();
-	
+
 	/**
 	* \brief Selects up to the previous character
 	* \return void
 	*/
 	void previousCharSelection();
-	
+
 	/**
 	* \brief Selects up to the next character
 	* \return void
 	*/
 	void nextCharSelection();
-	
+
 	/**
 	* \brief Moves to the beginning of the previous word
 	* \return void
 	*/
 	void previousWord();
-	
+
 	/**
 	* \brief Moves to the end of the next word
 	* \return void
 	*/
 	void nextWord();
-	
+
 	/**
 	* \brief Selects up to the beginning of the previous word
 	* \return void
 	*/
 	void previousWordSelection();
-	
+
 	/**
 	* \brief Selects up to the end of the next word
 	* \return void
 	*/
 	void nextWordSelection();
-	
+
 	/**
 	* \brief Inserts bold control character
 	* \return void
 	*/
 	void insertBold();
-	
+
 	/**
 	* \brief Inserts reset control character
 	* \return void
 	*/
 	void insertReset();
-	
+
 	/**
 	* \brief Inserts underline control character
 	* \return void
 	*/
 	void insertUnderline();
-	
+
 	/**
 	* \brief Inserts reverse control character
 	* \return void
 	*/
 	void insertReverse();
-	
+
 	/**
 	* \brief Inserts non-crypt (plain text) control character
 	* \return void
 	*/
 	void insertPlainText();
-	
+
 	/**
 	* \brief Inserts icon control character
 	* \return void
 	*/
 	void insertIcon();
-	
+
 	/**
 	* \brief Inserts color control character
 	* \return void
 	*/
 	void insertColor();
-	
+
 	/**
 	* \brief Copies to clipboard
 	* \return void
 	*/
 	void copyInternal();
-	
+
 	/**
 	* \brief Cuts to clipboard
 	* \return void
 	*/
 	void cutInternal();
-	
+
 	/**
 	* \brief Pastes clipboard contents
 	* \return void
 	*/
 	void pasteInternal();
-	
+
 	/**
 	* \brief Undoes last action
 	* \return void
 	*/
 	void undoInternal();
-	
+
 	/**
 	* \brief Redoes last action
 	* \return void
 	*/
 	void redoInternal();
-	
+
 	/**
 	* \brief Selects all
 	* \return void
 	*/
 	void selectAllInternal();
-	
+
 	/**
 	* \brief Deletes last word
 	* \return void
 	*/
 	void deleteWord();
-	
+
 	/**
 	* \brief Scrolls the output window up one line
 	* \return void
 	*/
 	void previousLine();
-	
+
 	/**
 	* \brief Scrolls the output window down one line
 	* \return void
 	*/
 	void nextLine();
-	
+
 	/**
 	* \brief Scrolls the output window up one page
 	* \return void
 	*/
 	void previousPage();
-	
+
 	/**
 	* \brief Scrolls the output window down one page
 	* \return void
 	*/
 	void nextPage();
-	
+
 	/**
 	* \brief Opens the search window
 	* \return void
 	*/
 	void search();
-	
+
 	/**
 	* \brief Scrolls the ircview to the last read line
 	* \return void
@@ -741,61 +741,61 @@ private slots:
 	* \return void
 	*/
 	void sendPlain();
-	
+
 	/**
 	* \brief Moves the cursor at the beginning
 	* \return void
 	*/
 	void homeInternal();
-	
+
 	/**
 	* \brief Moves the cursor at the end
 	* \return void
 	*/
 	void endInternal();
-	
+
 	/**
 	* \brief Selects until the beginning
 	* \return void
 	*/
 	void homeInternalSelection();
-	
+
 	/**
 	* \brief Selects until the end
 	* \return void
 	*/
 	void endInternalSelection();
-	
+
 	/**
 	* \brief Moves backward in the command history and in the history popup
 	* \return void
 	*/
 	void historyPrev();
-	
+
 	/**
 	* \brief Moves forward in the command history and in the history popup
 	* \return void
 	*/
 	void historyNext();
-	
+
 	/**
 	* \brief Run when return/enter key is pressed
 	* \return void
 	*/
 	void returnHit();
-	
+
 	/**
 	* \brief Run when backspace key is pressed
 	* \return void
 	*/
 	void backspaceHit();
-	
+
 	/**
 	* \brief Run when delete key is pressed
 	* \return void
 	*/
 	void deleteHit();
-	
+
 	/**
 	* \brief Run when escape key is pressed
 	* \return void
@@ -807,13 +807,25 @@ private slots:
 	* \return void
 	*/
 	void toggleCommandMode();
-	
+
 	/**
 	* \brief Does nothing but grabs some keys combinations
 	* \warning This is an hack. The keys combinations grabbed by this function write a non-printable chars which cause some troubles, eg duplication of chars opening/closing more times the multiline
 	* \return void
 	*/
 	void dummy();
+
+	/**
+	* \brief Increase the ircview font size
+	* \return void
+	*/
+	void zoomIn();
+
+	/**
+	* \brief Decrease the ircview font size
+	* \return void
+	*/
+	void zoomOut();
 protected:
 	void completionEscapeUnsafeToken(QString &szToken);
 	void installShortcuts();

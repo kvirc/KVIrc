@@ -118,6 +118,8 @@
 * \def KVI_SHORTCUTS_WIN_PREV_PAGE Scroll the output window up one page
 * \def KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE Scroll to the last read line
 * \def KVI_SHORTCUTS_WIN_SEARCH Open "Find Text" dialog
+* \def KVI_SHORTCUTS_WIN_ZOOM_IN Increase font size
+* \def KVI_SHORTCUTS_WIN_ZOOM_OUT Decrease font size
 */
 
 // Please keep this list ordered by shortcut key and not by name :)
@@ -204,7 +206,8 @@
 #define KVI_SHORTCUTS_INPUT_ESCAPE Qt::Key_Escape
 #define KVI_SHORTCUTS_INPUT_DUMMY Qt::ShiftModifier + Qt::Key_Escape
 #define KVI_SHORTCUTS_INPUT_DUMMY_2 Qt::ShiftModifier + Qt::Key_Delete
-
+#define KVI_SHORTCUTS_WIN_ZOOM_IN Qt::ControlModifier + Qt::Key_Plus
+#define KVI_SHORTCUTS_WIN_ZOOM_OUT Qt::ControlModifier + Qt::Key_Minus
 
 /*
 	@doc: keyboard
@@ -239,6 +242,8 @@
 		[b]Ctrl+X:[/b] Cut to clipboard[br]
 		[b]Ctrl+Y:[/b] Toggle the commandline's KVS/User-friendly mode[br]
 		[b]Ctrl+Z:[/b] Undo last action[br]
+		[b]Ctrl+"+":[/b] Increase font size[br]
+		[b]Ctrl+"-":[/b] Decrease font size[br]
 		[b]Ctrl+Shift+A:[/b] Go away/back[br]
 		[b]Ctrl+Shift+B:[/b] Open "Manage Toolbars" dialog[br]
 		[b]Ctrl+Shift+C:[/b] Connect/disconnect current irc context[br]
@@ -257,7 +262,7 @@
 		[b]Ctrl+Shift+U:[/b] Open "Registered users" dialog[br]
 		[b]Ctrl+Shift+X:[/b] Open "Execute Script" dialog[br]
 		[b]Ctrl+Shift+Z:[/b] Redo last action[br]
-		
+
 		[big]Window handling related keys:[/big][br]
 		[b]Alt+UpArrow:[/b] Previous window[br]
 		[b]Alt+DownArrow:[/b] Next window[br]

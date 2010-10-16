@@ -1063,7 +1063,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	} else {
 #endif
 		pa.fillRect(r,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
-		
+
 		QPixmap * pix = m_pPrivateBackgroundPixmap;
 
 		if(!pix)
@@ -1650,11 +1650,11 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 			ptr->pBlocks[ptr->iBlockCount].block_width = curBlockWidth;
 			curAttrBlock++;
 			ptr->iBlockCount++;
-			
+
 			// if we have no more blocks, return (with is ok)
 			if(curAttrBlock >= ptr->uChunkCount)
 				return;
-			
+
 			//Process the next block of data in the next loop
 			ptr->pBlocks = (KviIrcViewWrappedBlock *)kvi_realloc(ptr->pBlocks,(ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
 			ptr->pBlocks[ptr->iBlockCount].block_start = ptr->pChunks[curAttrBlock].iTextStart;
@@ -1675,7 +1675,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 			curBlockLen--;
 			curLineWidth -= IRCVIEW_WCHARWIDTH(*p);
 		}
-	
+
 		// Now look for a space (or a tabulation)
 		while((p->unicode() != ' ') && (p->unicode() != '\t') && (curBlockLen > 0))
 		{
@@ -2159,7 +2159,7 @@ void KviIrcView::ensureLineVisible(KviIrcViewLine * pLineToShow)
 		repaint();
 		return;
 	}
-	
+
 	// need to scroll
 	int sc = m_pScrollBar->value();
 
@@ -2168,7 +2168,7 @@ void KviIrcView::ensureLineVisible(KviIrcViewLine * pLineToShow)
 		// The cursor line is below the current line
 		// Go down counting scroll steps (and verify if the line is really there)
 		KviIrcViewLine * pLine = m_pCurLine;
-		
+
 		while(pLine && (pLine != pLineToShow))
 		{
 			pLine = pLine->pNext;
@@ -2439,7 +2439,7 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 
 				if(i >= l->iBlockCount)
 					return l->szText.size();
-					
+
 				//run up to the chunk containing the mouse position
 				for(;iLeft + l->pBlocks[i].block_width < xPos;)
 				{
@@ -2753,10 +2753,10 @@ void KviIrcView::animatedIconChange()
 void KviIrcView::scrollToMarker()
 {
 	KviIrcViewLine * pLine = m_pCurLine;
-	
+
 	while(pLine && (pLine->uIndex != m_uLineMarkLineIndex))
 		pLine = pLine->pPrev;
-	
+
 	if(pLine == 0)
 	{
 		// The buffer has already cleaned the marker line

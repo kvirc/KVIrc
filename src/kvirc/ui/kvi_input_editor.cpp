@@ -1333,6 +1333,23 @@ void KviInputEditor::installShortcuts()
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_COMMANDLINE),this,SLOT(toggleCommandMode()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY),this,SLOT(dummy()),0,Qt::WidgetShortcut);
 	new QShortcut(QKeySequence(KVI_SHORTCUTS_INPUT_DUMMY_2),this,SLOT(dummy()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_ZOOM_IN),this,SLOT(zoomIn()),0,Qt::WidgetShortcut);
+	new QShortcut(QKeySequence(KVI_SHORTCUTS_WIN_ZOOM_OUT),this,SLOT(zoomOut()),0,Qt::WidgetShortcut);
+
+}
+
+void KviInputEditor::zoomIn()
+{
+	if(m_pKviWindow)
+		if(m_pKviWindow->view())
+			m_pKviWindow->view()->increaseFontSize();
+}
+
+void KviInputEditor::zoomOut()
+{
+	if(m_pKviWindow)
+		if(m_pKviWindow->view())
+			m_pKviWindow->view()->decreaseFontSize();
 }
 
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
