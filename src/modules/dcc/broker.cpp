@@ -475,8 +475,11 @@ void KviDccBroker::passiveVideoExecute(KviDccDescriptor * dcc)
 	dcc->console()->frame()->addWindow(v,!bMinimized);
 	if(bMinimized)v->minimize();
 	m_pDccWindowList->append(v);
-}
+#else
+void KviDccBroker::passiveVideoExecute(KviDccDescriptor * dcc)
+{
 #endif
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -749,7 +752,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 			if(
 				(!bOk) ||                          // remote size is unknown
 				(iRemoteSize > (quint64)fi.size()) // or it is larger than the actual size on disk
-			) 
+			)
 			{
 				tmp = __tr2qs_ctx( \
 							"The file '<b>%1</b>' already exists " \
@@ -791,13 +794,13 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 				(bOk) &&                              // only if the remote size is really known
 				(iRemoteSize > (quint64)fi.size()) && // only if the remote size is larger than the local size
 				(!KviDccFileTransfer::nonFailedTransferWithLocalFileName(dcc->szLocalFileName)) // only if there is no transfer with this local file name yet
-			) 
+			)
 		{
 			// yep, auto resume...
 			dcc->bResume = true;
 			recvFileExecute(0,dcc);
 		} else if(iRemoteSize == (quint64)fi.size())
-		{ 
+		{
 			dcc->console()->output(KVI_OUT_DCCMSG,"Transfer aborted: file %Q already completed",&(dcc->szLocalFileName));
 			cancelDcc(0,dcc);
 		} else {
@@ -806,7 +809,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 		}
 		return;
 	}
-	
+
 	dcc->szLocalFileSize = "0";
 
 	// everything OK
@@ -918,7 +921,7 @@ void KviDccBroker::sendFileExecute(KviDccBox * box,KviDccDescriptor *dcc)
 		delete dcc;
 		return;
 	}
-	
+
 	dcc->szFileName = dcc->szLocalFileName;
 	dcc->szFileName = QFileInfo(dcc->szFileName).fileName();
 
@@ -960,7 +963,7 @@ bool KviDccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename
 			// valid zero port resume request
 			if(filePos >= t->m_uFileSize)
 				return false; // invalid resume size
-				
+
 			// ok!
 			t->m_uResumePosition = filePos;
 

@@ -306,7 +306,7 @@ void KviDccVideoThread::startRecording()
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	//qDebug("Start recording");
 	if(m_bRecording)return; // already started
-	
+
 //	qDebug("Posting event");
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
 	e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_START_RECORDING));
@@ -386,7 +386,7 @@ void KviDccVideoThread::run()
 		if(!readWriteStep())goto exit_dcc;
 		if(!videoStep())goto exit_dcc;
 		if(!textStep())goto exit_dcc;
-		
+
 		usleep(FRAME_DURATION*1000);
 // 		qDebug("in %d out %d in_sig %d out_sig %d", m_inFrameBuffer.size(), m_outFrameBuffer.size(), m_videoInSignalBuffer.size(), m_videoOutSignalBuffer.size());
 	}
@@ -407,7 +407,7 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pszTarget = 0;
 
 	m_pLayout = new QGridLayout(this);
-	
+
 	m_pButtonBox = new KviTalHBox(this);
 
 	m_pLabel = new KviThemedLabel(m_pButtonBox, this, "dcc_chat_label");
@@ -434,7 +434,7 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pInVideoLabel->setScaledContents(true);
 	m_pInVideoLabel->setAlignment(Qt::AlignCenter);
 	m_pLayout->addWidget(m_pInVideoLabel, 1, 0, 6, 1);
-	
+
 	//local video
 	m_pOutVideoLabel = new QLabel();
 	m_pOutVideoLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -448,7 +448,7 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pVideoLabel[0] = new QLabel();
 	m_pVideoLabel[0]->setText(__tr2qs_ctx("Video device:","dcc"));
 	m_pLayout->addWidget(m_pVideoLabel[0], 1, 2, 1, 1);
-	
+
 	m_pCDevices = new QComboBox();
 	m_pLayout->addWidget(m_pCDevices, 2, 2, 1, 1);
 
@@ -612,7 +612,7 @@ const QString & KviDccVideo::target()
 	// This may change on the fly...
 	if(!m_pszTarget)
 		m_pszTarget = new QString();
-		
+
 	m_pszTarget->sprintf("%s@%s:%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 	return *m_pszTarget;
 }
@@ -697,7 +697,7 @@ void KviDccVideo::ownMessage(const QString &text, bool bUserFeedback)
 				KviStr buf(KviStr::Format,"%s\r\n",d);
 				QString tmp = text.right(text.length() - 1);
 				m_tmpTextDataOut.append(buf.ptr(), buf.len());
-				
+
 				if(bUserFeedback)
 					m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 						m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
@@ -709,7 +709,7 @@ void KviDccVideo::ownMessage(const QString &text, bool bUserFeedback)
 #endif
 	KviStr buf(KviStr::Format,"%s\r\n",d);
 	m_tmpTextDataOut.append(buf.ptr(), buf.len());
-	
+
 	if(bUserFeedback)
 		m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 			m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
@@ -928,7 +928,7 @@ void KviDccVideo::connected()
 
 		connect(g_pVideoDevicePool, SIGNAL(deviceRegistered(const QString &) ), SLOT(deviceRegistered(const QString &)) );
 		connect(g_pVideoDevicePool, SIGNAL(deviceUnregistered(const QString &) ), SLOT(deviceUnregistered(const QString &)) );
-	}	
+	}
 #endif
 
 	m_pSlaveThread->start();

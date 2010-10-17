@@ -109,7 +109,7 @@ protected:
 	KviThemedLabel         * m_pLabel;
 	KviTalHBox             * m_pButtonBox;
 	KviTalHBox             * m_pButtonContainer;
-	
+
 	QLabel *m_pInVideoLabel;
 	QLabel *m_pOutVideoLabel;
 	QComboBox *m_pCDevices;

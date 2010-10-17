@@ -1191,7 +1191,7 @@ static bool dcc_kvs_cmd_video(KviKvsModuleCommandCall * c)
 #ifdef COMPILE_DISABLE_DCC_VIDEO
 	c->warning(__tr2qs_ctx("DCC VIDEO support not enabled at compilation time","dcc"));
 	return true;
-#endif
+#else
 
 	KviDccDescriptor * d = new KviDccDescriptor(c->window()->console());
 
@@ -1245,6 +1245,7 @@ static bool dcc_kvs_cmd_video(KviKvsModuleCommandCall * c)
 	}
 
 	return true;
+#endif
 }
 
 

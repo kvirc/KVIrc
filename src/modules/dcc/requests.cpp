@@ -1082,8 +1082,7 @@ static void dccModuleParseDccVideo(KviDccRequest *dcc)
 			__tr2qs_ctx("The above request cannot be accepted: DCC VIDEO support not enabled at compilation time ","dcc"));
 		return;
 	}
-#endif
-#ifndef COMPILE_DISABLE_DCC_VIDEO
+#else
 	//  Actually unused parameter
 	if(!kvi_dcc_video_is_valid_codec(dcc->szParam1.ptr()))
 	{
