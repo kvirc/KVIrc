@@ -1227,10 +1227,13 @@ KVSO_CLASS_FUNCTION(painter,rotate)
                 KVSO_PARAMETER("axis",KVS_PT_STRING,KVS_PF_OPTIONAL,szAxis)
 	KVSO_PARAMETERS_END(c)
         Qt::Axis axis = Qt::ZAxis;
-        if (KviQString::equalCI(szAxis,"XAxis"))axis=Qt::ZAxis;
-        else if (KviQString::equalCI(szAxis,"YAxis")) axis=Qt::YAxis;
-        else if (KviQString::equalCI(szAxis,"ZAxis")) axis=Qt::ZAxis;
-        else c->warning(__tr2qs_ctx("Unknown axis '%Q' switching to default ZAxis","objects"),&szAxis);
+        if(!szAxis.isEmpty())
+        {
+            if (KviQString::equalCI(szAxis,"XAxis"))axis=Qt::XAxis;
+            else if (KviQString::equalCI(szAxis,"YAxis")) axis=Qt::YAxis;
+            else if (KviQString::equalCI(szAxis,"ZAxis")) axis=Qt::ZAxis;
+            else c->warning(__tr2qs_ctx("Unknown axis '%Q' switching to default ZAxis","objects"),&szAxis);
+        }
         PAINTER_ROTATE(dAngle,axis)
 	return true;
 }
