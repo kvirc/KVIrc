@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-17 18:58+0200\n"
-"PO-Revision-Date: 2010-06-10 21:07+0200\n"
+"PO-Revision-Date: 2010-10-17 20:05+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/kvirc/kvs/kvi_kvs_object.cpp:1188
@@ -292,7 +292,7 @@ msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:563
 msgid "Error retrieving informations from the local certificate"
-msgstr ""
+msgstr "Fehler beim Auslesen der Informationen des lokalen Zertifikats"
 
 #: src/kvirc/kvs/kvi_kvs_processmanager.cpp:215
 msgid "Error triggered from process callback handler: killing process"
@@ -350,14 +350,15 @@ msgstr ""
 "›default‹- oder ›break‹-Label erwartet wurde"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1620
-#, fuzzy
 msgid ""
 "Found character %q (unicode %x) where a 'prologue', 'separator', "
 "'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was "
 "expected"
 msgstr ""
 "Zeichen %q (Unicode %x) gefunden, wo ein ›prologue‹-, ›separator‹-, "
-"›label‹-, ›popup‹-, ›item‹-, ›extpopup‹- oder ›epilogue‹-Label erwartet wurde"
+"›separatorid‹, ›label‹-, ›popup‹-, ›item‹-, ›extpopup‹- oder "
+"›epilogue‹-Label "
+"erwartet wurde"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:777
 msgid "Found character %q (unicode %x) where a 'while' keyword was expected"
@@ -451,13 +452,13 @@ msgstr ""
 "›break‹-Label erwartet wurde"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1877
-#, fuzzy
 msgid ""
 "Found token '%Q' where a 'prologue', 'separator', 'separatorid', 'label', "
 "'popup', 'item', 'extpopup' or 'epilogue' label was expected"
 msgstr ""
-"Token ›%Q‹ gefunden, wo ein ›prologue‹-, ›separator‹-, ›label‹-, ›popup‹-, "
-"›item‹-, ›extpopup‹- oder ›epilogue‹-Label erwartet wurde"
+"Token ›%Q‹ gefunden, wo ein ›prologue‹-, ›separator‹-, ›separatorid‹, "
+"›label‹-, "
+"›popup‹-, ›item‹-, ›extpopup‹- oder ›epilogue‹-Label erwartet wurde"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:813
 msgid "Garbage string after the expression in 'do' command: ignored"
@@ -1306,7 +1307,7 @@ msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:525
 msgid "This executable was built without SSL support"
-msgstr ""
+msgstr "Diese Version wurde ohne SSL-Unterstützung kompiliert"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands.cpp:162
 msgid "This is not a channel"
@@ -1375,7 +1376,7 @@ msgstr "Kann den Timer nicht hinzufügen: Nicht ausreichende Systemressourcen"
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:571
 msgid "Unable to get certificate informations: query not recognized"
-msgstr ""
+msgstr "Unmöglich, Zertifikatsinformationen zu erhalten: Frage nicht erkannt"
 
 #: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:919
 #: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:940

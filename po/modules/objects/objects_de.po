@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: objects_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-17 18:58+0200\n"
-"PO-Revision-Date: 2010-06-19 20:12+0200\n"
+"PO-Revision-Date: 2010-10-17 20:17+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/objects/class_painter.cpp:649
@@ -231,9 +231,8 @@ msgid "Data parameter is not an object"
 msgstr "Datenparameter ist kein Objekt"
 
 #: src/modules/objects/class_socket.cpp:523
-#, fuzzy
 msgid "Datatype not supported"
-msgstr "Typ-Wert %Q nicht unterstützt"
+msgstr "Datentyp nicht unterstützt"
 
 #: src/modules/objects/class_sql.cpp:209
 msgid "Duplicate connection name '%Q', old query connection removed"
@@ -356,7 +355,7 @@ msgstr "Ungültige Einfüge-Policy ›%Q‹"
 
 #: src/modules/objects/class_trayicon.cpp:177
 msgid "Invalid message Icon: switch to default NoIcon '%Q'"
-msgstr ""
+msgstr "Ungültiges Nachrichten-Icon: Wechsel zum Standard NoIcon ›%Q‹"
 
 #: src/modules/objects/class_painter.cpp:1178
 msgid "Invalid mode '%Q'"
@@ -562,6 +561,8 @@ msgstr "Nur memorybuffer-Klassenobjekte werden unterstützt"
 msgid ""
 "Only values in the range of 0-255 are allowed: integer %d is out of range"
 msgstr ""
+"Nur Werte im Bereich 0-255 sind erlaubt: Integer %d ist außerhalb dieses "
+"Bereichs"
 
 #: src/modules/objects/class_widget.cpp:1826
 msgid "Parent must be a widget object"
@@ -701,13 +702,13 @@ msgid "The parent of a layout must be a widget!"
 msgstr "Der Vatet eines Layouts muss ein Widget sein!"
 
 #: src/modules/objects/class_treewidgetitem.cpp:191
-#, fuzzy
 msgid ""
 "The parent of the listviewitem must be either another listviewitem or a "
 "listview"
 msgstr ""
-"Das übergeordnete Element eines listwidgetitem-Objekts muss ein anderes "
-"listwidgetitem- oder ein listwidget-Objekt sein"
+"Das übergeordnete Element eines listviewitem-Objekts muss entweder ein "
+"anderes "
+"listviewitem- oder ein listview-Objekt sein"
 
 #: src/modules/objects/class_toolbar.cpp:92
 msgid "The parent-widget isn't a MainWindow."
@@ -798,7 +799,7 @@ msgstr ""
 
 #: src/modules/objects/class_painter.cpp:1235
 msgid "Unknown axis '%Q' switching to default ZAxis"
-msgstr ""
+msgstr "Unbekannte Achse ›%Q‹, wechsle zum Standard Z-Achse"
 
 #: src/modules/objects/class_painter.cpp:1501
 msgid "Unknown brush style '%Q'"

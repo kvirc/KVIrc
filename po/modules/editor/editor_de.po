@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: editor_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-17 18:58+0200\n"
-"PO-Revision-Date: 2010-08-12 23:40+0200\n"
+"PO-Revision-Date: 2010-10-17 20:08+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -166,9 +166,8 @@ msgid "&Replace"
 msgstr "E&rsetzen"
 
 #: src/modules/editor/scripteditor.cpp:1050
-#, fuzzy
 msgid "&Replace in all editor's items"
-msgstr "In allen Aliassen e&rsetzen"
+msgstr "In allen Editoren e&rsetzen"
 
 #: src/modules/classeditor/classeditor.cpp:1835
 msgid "&Save"
@@ -299,12 +298,11 @@ msgstr ""
 "Sollen die externen Änderungen übernommen werden?"
 
 #: src/modules/popupeditor/popupeditor.cpp:1117
-#, fuzzy
 msgid ""
 "An external script has changed the popup you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
-"Ein externes Skript hat das Alias geändert, das gerade bearbeitet wird. "
+"Ein externes Skript hat das Popup geändert, das gerade bearbeitet wird. "
 "Sollen die externen Änderungen übernommen werden?"
 
 #: src/modules/actioneditor/actioneditor.cpp:879
@@ -1024,9 +1022,8 @@ msgid "OverWrite Current Alias"
 msgstr "Überschreibe aktuelles Alias"
 
 #: src/modules/popupeditor/popupeditor.cpp:1116
-#, fuzzy
 msgid "OverWrite Current Popup"
-msgstr "Überschreibe aktuelles Alias"
+msgstr "Aktuelles Popup überschreiben"
 
 #: src/modules/popupeditor/popupeditor.cpp:441
 msgid "Paste Above"
@@ -1260,9 +1257,8 @@ msgstr ""
 "Die exportierte Datei würde leer sein: Verweigere feige sie zu schreiben"
 
 #: src/modules/classeditor/classeditor.cpp:1136
-#, fuzzy
 msgid "The file \"%1\" exists. Do you want to replace it?"
-msgstr "Die Datei »%Q« existiert. Soll sie überschrieben werden?"
+msgstr "Die Datei »%1« existiert. Soll sie überschrieben werden?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:750
 msgid "The file \"%Q\" exists. Do you want to replace it ?"
@@ -1293,7 +1289,6 @@ msgid "There is no selection!"
 msgstr "Es wurde nichts ausgewählt!"
 
 #: src/modules/classeditor/classeditor.cpp:1681
-#, fuzzy
 msgid "These inherited classes will be not compiled too:"
 msgstr "Diese geerbten Klassen werden auch nicht kompiliert: "
 

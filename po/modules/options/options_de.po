@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-17 18:58+0200\n"
-"PO-Revision-Date: 2010-08-12 23:56+0200\n"
+"PO-Revision-Date: 2010-10-17 20:24+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -806,6 +806,12 @@ msgid ""
 "many channels at once.<br>Minimum value: <b>0 secs</b><br>Maximum value: "
 "<b>10 secs</b></center>"
 msgstr ""
+"<center>Dies ist eine künstliche Verzögerung für die Channel-Abfragen beim "
+"Join. "
+"<br>Diese kann erhöht werden, wenn der Server sich über Flooding beschwert, "
+"wenn "
+"viele Channel auf einmal betreten werden.<br>Mindestwert: <b>0 Sekunden</b><"
+"br>channelMaximalwert: <b>10 Sekunden</b></center>"
 
 #: src/modules/options/optw_servers.cpp:643
 msgid ""
@@ -2518,9 +2524,8 @@ msgid "Enable tooltips for:"
 msgstr "Kurzinfos aktivieren für:"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:70
-#, fuzzy
 msgid "Enable transparency"
-msgstr "Falsche Transparenz aktivieren"
+msgstr "Transparenz aktivieren"
 
 #: src/modules/options/optw_tray.cpp:43
 msgid "Enable tray icon"
@@ -2703,9 +2708,8 @@ msgid "Global application font:"
 msgstr "Globale Anwendungsschriftart:"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:67
-#, fuzzy
 msgid "Global window opacity percent:"
-msgstr "Kindfenster-Undurchsichtigkeit:"
+msgstr "Generelle Fenterundurchsichtigkeit in %:"
 
 #: src/modules/options/optw_userlist.cpp:85
 msgid "Grid color:"
@@ -3184,9 +3188,8 @@ msgid "Minimum alert level:"
 msgstr "Minimale Alarmstufe:"
 
 #: src/modules/options/optw_channel.cpp:120
-#, fuzzy
 msgid "Minimum delay between two channel requests:"
-msgstr "Minimale Verzögerung zwischen zwei Anfragen:"
+msgstr "Mindestverzögerung zwischen zwei Channel-Abfragen:"
 
 #: src/modules/options/optw_tray.cpp:55
 msgid "Minimum level for high-priority message"
@@ -3888,7 +3891,7 @@ msgstr "Fehlende Avatare anfordern"
 
 #: src/modules/options/optw_texticons.cpp:99
 msgid "Restore"
-msgstr ""
+msgstr "Wiederherstellen"
 
 #: src/modules/options/optw_highlighting.cpp:91
 msgid "Restrict alert"
