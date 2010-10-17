@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-10 23:23+0200\n"
+"POT-Creation-Date: 2010-10-17 18:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <FI@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -62,8 +63,8 @@ msgstr "Poista valitut teemat"
 msgid "Delete Theme - KVIrc"
 msgstr "Poista teema - KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:281
 #: src/modules/theme/savethemedialog.cpp:119
+#: src/modules/theme/packthemedialog.cpp:281
 msgid "Description:"
 msgstr "Kuvaus:"
 
@@ -110,8 +111,8 @@ msgstr "Vie teema - KVIrc"
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Ei voitu ottaa teemaa käyttöön: %Q"
 
-#: src/modules/theme/packthemedialog.cpp:369
 #: src/modules/theme/savethemedialog.cpp:198
+#: src/modules/theme/packthemedialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr "Ei voitu ladata valittua kuvaa"
 
@@ -169,8 +170,8 @@ msgstr ""
 #: src/modules/theme/packthemedialog.cpp:381
 #, fuzzy
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *%"
-"1 extension."
+"Here you must choose the file name for the theme package. It should have a *"
+"%1 extension."
 msgstr ""
 "Täällä sinun täytyy valita tiedostonimi teemapaketille. Sen pitäisi käyttää "
 "*.%1 -päätettä"
@@ -191,8 +192,8 @@ msgstr ""
 "Tänne sinun on annettava tietoja sinusta (paketoija) ja lyhyt kuvaus "
 "paketista jonka luot"
 
-#: src/modules/theme/packthemedialog.cpp:108
 #: src/modules/theme/savethemedialog.cpp:78
+#: src/modules/theme/packthemedialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr "Paina \"Seuraava\" -nappia aloittaaksesi."
 
@@ -351,8 +352,8 @@ msgstr "Ei voitu luoda teemakansiota."
 msgid "Unable to save theme: %Q"
 msgstr "Ei voitu tallentaa teemaa: %Q"
 
-#: src/modules/theme/packthemedialog.cpp:272
 #: src/modules/theme/savethemedialog.cpp:111
+#: src/modules/theme/packthemedialog.cpp:272
 msgid "Version:"
 msgstr "Versio:"
 
@@ -369,8 +370,8 @@ msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr ""
 "Varoitus: Tämä teema saattaa olla ei-yhteensopiva tämän KVIrc -version kanssa"
 
-#: src/modules/theme/packthemedialog.cpp:101
 #: src/modules/theme/savethemedialog.cpp:85
+#: src/modules/theme/packthemedialog.cpp:101
 msgid "Welcome"
 msgstr "Tervetuloa"
 

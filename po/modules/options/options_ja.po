@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-10 23:23+0200\n"
+"POT-Creation-Date: 2010-10-17 18:58+0200\n"
 "PO-Revision-Date: 2010-07-28 10:37+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <LL@li.org>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,8 +26,8 @@ msgstr " バイト"
 msgid " days"
 msgstr " 日"
 
-#: src/modules/options/optw_ircview.cpp:155
 #: src/modules/options/optw_query.cpp:98
+#: src/modules/options/optw_ircview.cpp:155
 #: src/modules/options/optw_channel.cpp:136
 msgid " lines"
 msgstr " 行"
@@ -35,12 +36,12 @@ msgstr " 行"
 msgid " min"
 msgstr " 分"
 
-#: src/modules/options/optw_ircview.cpp:157
-#: src/modules/options/optw_ircview.cpp:159
-#: src/modules/options/optw_connection.cpp:155
 #: src/modules/options/optw_dcc.cpp:276
 #: src/modules/options/optw_lag.cpp:45
 #: src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_ircview.cpp:157
+#: src/modules/options/optw_ircview.cpp:159
+#: src/modules/options/optw_connection.cpp:155
 msgid " msec"
 msgstr " ミリ秒"
 
@@ -53,11 +54,11 @@ msgid " requests"
 msgstr " リクエスト"
 
 #: src/modules/options/optw_avatar.cpp:96
-#: src/modules/options/optw_ctcpfloodprotection.cpp:92
+#: src/modules/options/optw_dcc.cpp:140
+#: src/modules/options/optw_channel.cpp:121
 #: src/modules/options/optw_connection.cpp:85
 #: src/modules/options/optw_connection.cpp:153
-#: src/modules/options/optw_channel.cpp:121
-#: src/modules/options/optw_dcc.cpp:140
+#: src/modules/options/optw_ctcpfloodprotection.cpp:92
 msgid " sec"
 msgstr " 秒"
 
@@ -81,7 +82,7 @@ msgstr "参照(&B)..."
 msgid "&Copy Server"
 msgstr ""
 
-#: src/modules/options/optw_mediatypes.cpp:145
+#: src/modules/options/optw_mediatypes.cpp:135
 msgid "&New"
 msgstr "新規(&N)"
 
@@ -93,10 +94,10 @@ msgstr "新規プロキシー(&N)"
 msgid "&New Server"
 msgstr "新しいサーバー情報(&N)"
 
+#: src/modules/options/container.cpp:72
 #: src/modules/options/optw_servers.cpp:366
 #: src/modules/options/optw_identity.cpp:234
 #: src/modules/options/dialog.cpp:229
-#: src/modules/options/container.cpp:72
 msgid "&OK"
 msgstr "&OK"
 
@@ -137,7 +138,7 @@ msgstr "<b>https://</b> のハンドラー コマンド:"
 msgid "<b>mailto:</b> handler command:"
 msgstr "<b>mailto://</b> のハンドラー コマンド:"
 
-#: src/modules/options/optw_ctcp.cpp:40
+#: src/modules/options/optw_ctcp.cpp:39
 msgid ""
 "<center><b>Settings for CTCP.</b></center><p>The <b>Client-To-Client "
 "Protocol</b> (CTCP) is used to transmit special control messages over an IRC "
@@ -514,13 +515,13 @@ msgid ""
 "with the same hostname and port in different networks (bouncers?)</center>"
 msgstr ""
 
-#: src/modules/options/optw_mediatypes.cpp:123
+#: src/modules/options/optw_mediatypes.cpp:116
 msgid ""
 "<center>This field contains the command to execute to open a local file."
 "<br><tt>$0</tt> is used in place of the filename</center>"
 msgstr ""
 
-#: src/modules/options/optw_mediatypes.cpp:131
+#: src/modules/options/optw_mediatypes.cpp:123
 msgid ""
 "<center>This field contains the command to execute when automatically "
 "opening a received file.<br><tt>$0</tt> is used in place of the filename</"
@@ -627,7 +628,7 @@ msgid ""
 "enter any word you like here. :D</center>"
 msgstr ""
 
-#: src/modules/options/optw_ctcp.cpp:66
+#: src/modules/options/optw_ctcp.cpp:65
 msgid ""
 "<center>This is the CTCP PAGE reply.<br>It should contain some sort of "
 "acknowledgement for CTCP PAGE messages.</center>"
@@ -777,8 +778,8 @@ msgid ""
 "data.</center>"
 msgstr ""
 
+#: src/modules/options/optw_dcc.cpp:331
 #: src/modules/options/optw_query.cpp:82
-#: src/modules/options/optw_dcc.cpp:332
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -799,7 +800,7 @@ msgid ""
 "typing something in a channel. :D</center>"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:326
+#: src/modules/options/optw_dcc.cpp:325
 msgid ""
 "<center>This option causes the system taskbar entry for KVIrc to flash when "
 "a new dcc chat message is received and the KVIrc window is not the active.</"
@@ -1064,13 +1065,13 @@ msgid ""
 "phrases here too.</center>"
 msgstr ""
 
-#: src/modules/options/optw_ctcp.cpp:56
+#: src/modules/options/optw_ctcp.cpp:55
 msgid ""
 "<center>This text will be appended to the CTCP SOURCE reply.<br>For example, "
 "you can place the source URL for a script here.</center>"
 msgstr ""
 
-#: src/modules/options/optw_ctcp.cpp:51
+#: src/modules/options/optw_ctcp.cpp:50
 msgid ""
 "<center>This text will be appended to the CTCP VERSION reply.<br>For "
 "example, you can place a script name here.</center>"
@@ -1221,23 +1222,23 @@ msgstr "追加"
 msgid "Add Profile"
 msgstr "プロフィールの追加"
 
-#: src/modules/options/optw_nickserv.cpp:264
 #: src/modules/options/optw_servers.cpp:332
+#: src/modules/options/optw_nickserv.cpp:264
 msgid "Add Rule"
 msgstr "ルールの追加"
 
 #: src/modules/options/optw_servers.cpp:972
+#: src/modules/options/optw_identity.h:202
+#: src/modules/options/optw_irc.h:57
 #: src/modules/options/optw_dcc.h:58
 #: src/modules/options/optw_dcc.h:102
-#: src/modules/options/optw_irc.h:57
 #: src/modules/options/optw_channel.h:64
-#: src/modules/options/optw_identity.h:202
 #: src/modules/options/optw_connection.h:45
 msgid "Advanced"
 msgstr "高度な設定"
 
-#: src/modules/options/optw_notifier.cpp:206
 #: src/modules/options/optw_notify.cpp:60
+#: src/modules/options/optw_notifier.cpp:206
 msgid "Advanced configuration"
 msgstr "高度な設定"
 
@@ -1322,7 +1323,7 @@ msgstr "代替ニックネーム"
 msgid "Alternatives..."
 msgstr "代替..."
 
-#: src/modules/options/optw_dcc.cpp:317
+#: src/modules/options/optw_dcc.cpp:318
 msgid "Always open as minimized"
 msgstr "常に最小化で開く"
 
@@ -1342,11 +1343,11 @@ msgstr "常に最小化で転送ウィンドウを開く"
 msgid "Anti-spam"
 msgstr "スパム対策"
 
-#: src/modules/options/optw_ctcp.cpp:53
+#: src/modules/options/optw_ctcp.cpp:52
 msgid "Append to SOURCE reply:"
 msgstr ""
 
-#: src/modules/options/optw_ctcp.cpp:48
+#: src/modules/options/optw_ctcp.cpp:47
 msgid "Append to VERSION reply:"
 msgstr ""
 
@@ -1373,7 +1374,7 @@ msgstr "自動的なログ"
 
 #: src/modules/options/optw_dcc.cpp:175
 #: src/modules/options/optw_dcc.cpp:314
-#: src/modules/options/optw_dcc.cpp:350
+#: src/modules/options/optw_dcc.cpp:349
 msgid "Automatically accept"
 msgstr "自動的に許可する"
 
@@ -1440,13 +1441,13 @@ msgstr "退席:"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:164
 #: src/modules/options/optw_interfacelookglobal.cpp:184
-#: src/modules/options/optw_windowlist.h:79
 #: src/modules/options/optw_userlist.h:46
+#: src/modules/options/optw_windowlist.h:79
 msgid "Background"
 msgstr "背景"
 
-#: src/modules/options/optw_userlist.cpp:126
 #: src/modules/options/optw_windowlist.cpp:119
+#: src/modules/options/optw_userlist.cpp:126
 msgid "Background Colors"
 msgstr "背景色"
 
@@ -1471,9 +1472,9 @@ msgstr "背景色"
 msgid "Background image"
 msgstr "背景画像"
 
-#: src/modules/options/optw_ircview.cpp:54
-#: src/modules/options/optw_userlist.cpp:131
 #: src/modules/options/optw_windowlist.cpp:123
+#: src/modules/options/optw_userlist.cpp:131
+#: src/modules/options/optw_ircview.cpp:54
 msgid "Background image:"
 msgstr "背景画像:"
 
@@ -1497,11 +1498,11 @@ msgstr "IPv6 接続で割り当てる:"
 msgid "Blend color:"
 msgstr ""
 
-#: src/modules/options/optw_ircview.cpp:71
+#: src/modules/options/optw_windowlist.cpp:140
 #: src/modules/options/optw_notifier.cpp:61
 #: src/modules/options/optw_userlist.cpp:148
-#: src/modules/options/optw_windowlist.cpp:140
 #: src/modules/options/optw_input.cpp:63
+#: src/modules/options/optw_ircview.cpp:71
 msgid "Bottom"
 msgstr "下"
 
@@ -1521,7 +1522,7 @@ msgstr ""
 msgid "CTCP"
 msgstr "CTCP"
 
-#: src/modules/options/optw_ctcp.cpp:47
+#: src/modules/options/optw_ctcp.cpp:46
 msgid "CTCP Replies"
 msgstr ""
 
@@ -1529,27 +1530,27 @@ msgstr ""
 msgid "Cache IP address"
 msgstr "IP アドレスのキャッシュ"
 
-#: src/modules/options/optw_nickserv.cpp:128
+#: src/modules/options/container.cpp:80
 #: src/modules/options/optw_servers.cpp:372
 #: src/modules/options/optw_servers.cpp:982
 #: src/modules/options/optw_identity.cpp:96
 #: src/modules/options/optw_identity.cpp:239
 #: src/modules/options/optw_identity.cpp:953
 #: src/modules/options/dialog.cpp:244
-#: src/modules/options/container.cpp:80
+#: src/modules/options/optw_nickserv.cpp:128
 msgid "Cancel"
 msgstr "取り消し"
 
-#: src/modules/options/optw_ircview.cpp:67
-#: src/modules/options/optw_ircview.cpp:72
+#: src/modules/options/optw_windowlist.cpp:136
+#: src/modules/options/optw_windowlist.cpp:141
 #: src/modules/options/optw_notifier.cpp:57
 #: src/modules/options/optw_notifier.cpp:62
 #: src/modules/options/optw_userlist.cpp:144
 #: src/modules/options/optw_userlist.cpp:149
-#: src/modules/options/optw_windowlist.cpp:136
-#: src/modules/options/optw_windowlist.cpp:141
 #: src/modules/options/optw_input.cpp:59
 #: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_ircview.cpp:67
+#: src/modules/options/optw_ircview.cpp:72
 msgid "Center"
 msgstr "中央"
 
@@ -1619,11 +1620,11 @@ msgstr "子ウィンドウの透過度:"
 msgid "Choose Avatar - KVIrc"
 msgstr "アバターの選択 - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:560
+#: src/modules/options/optw_messages.cpp:556
 msgid "Choose a Filename - KVIrc"
 msgstr "ファイル名の選択 - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:614
+#: src/modules/options/optw_messages.cpp:610
 msgid "Choose a Filename - KVIrc "
 msgstr "ファイル名の選択 - KVIrc "
 
@@ -1651,13 +1652,13 @@ msgstr ""
 msgid "Close in tray"
 msgstr "閉じるときはトレイに"
 
-#: src/modules/options/dialog.cpp:231
 #: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:231
 msgid "Close this dialog, accepting all changes."
 msgstr "全変更を許可し、ダイアログを閉じます。"
 
-#: src/modules/options/dialog.cpp:246
 #: src/modules/options/container.cpp:81
+#: src/modules/options/dialog.cpp:246
 msgid "Close this dialog, discarding all changes."
 msgstr "全変更を破棄し、このダイアログを閉じます。"
 
@@ -1674,9 +1675,9 @@ msgid "Commit all changes immediately."
 msgstr "すぐにすべての変更をコミットします。"
 
 #: src/modules/options/optw_notify.cpp:41
+#: src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_proxy.cpp:106
 #: src/modules/options/optw_connection.cpp:221
-#: src/modules/options/optw_lag.cpp:43
 msgid "Configuration"
 msgstr "構成"
 
@@ -1810,19 +1811,19 @@ msgstr "削除"
 msgid "Delete Profile"
 msgstr "プロフィールの削除"
 
-#: src/modules/options/optw_nickserv.cpp:272
 #: src/modules/options/optw_servers.cpp:341
+#: src/modules/options/optw_nickserv.cpp:272
 msgid "Delete Rule"
 msgstr "ルールの削除"
 
-#: src/modules/options/optw_servers.cpp:1241
 #: src/modules/options/optw_mediatypes.cpp:79
+#: src/modules/options/optw_servers.cpp:1241
 msgid "Description"
 msgstr "説明"
 
+#: src/modules/options/optw_mediatypes.cpp:87
 #: src/modules/options/optw_servers.cpp:117
 #: src/modules/options/optw_servers.cpp:518
-#: src/modules/options/optw_mediatypes.cpp:88
 msgid "Description:"
 msgstr "説明:"
 
@@ -1915,8 +1916,8 @@ msgstr ""
 msgid "Edit Profile"
 msgstr "プロフィールの編集"
 
-#: src/modules/options/optw_nickserv.cpp:268
 #: src/modules/options/optw_servers.cpp:337
+#: src/modules/options/optw_nickserv.cpp:268
 msgid "Edit Rule"
 msgstr "ルールの編集"
 
@@ -1932,8 +1933,8 @@ msgstr ""
 msgid "Enable Network Profiles"
 msgstr "ネットワーク プロフィールを有効にする"
 
-#: src/modules/options/optw_nickserv.cpp:232
 #: src/modules/options/optw_servers.cpp:304
+#: src/modules/options/optw_nickserv.cpp:232
 msgid "Enable NickServ Identification"
 msgstr "NickServ 認証を有効にする"
 
@@ -2071,9 +2072,9 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "ダウンロードの開始に失敗しました"
 
+#: src/modules/options/optw_userlist.h:103
 #: src/modules/options/optw_windowlist.h:98
 #: src/modules/options/optw_ircview.h:70
-#: src/modules/options/optw_userlist.h:103
 msgid "Features"
 msgstr ""
 
@@ -2085,11 +2086,11 @@ msgstr "女性"
 msgid "File Transfer"
 msgstr "ファイル転送"
 
-#: src/modules/options/optw_mediatypes.cpp:100
+#: src/modules/options/optw_mediatypes.cpp:97
 msgid "File pattern:"
 msgstr "ファイル名のパターン"
 
-#: src/modules/options/optw_dcc.cpp:324
+#: src/modules/options/optw_dcc.cpp:323
 msgid "Flash system taskbar on new dcc chat message"
 msgstr ""
 "新しい DCC チャットのメッセージが届いたらシステム タスクバーを点滅させる"
@@ -2112,19 +2113,19 @@ msgstr ""
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_notifier.cpp:38
-#: src/modules/options/optw_interfacelookglobal.cpp:182
 #: src/modules/options/optw_input.cpp:38
+#: src/modules/options/optw_interfacelookglobal.cpp:182
 msgid "Font"
 msgstr "フォント"
 
-#: src/modules/options/optw_ircview.cpp:51
-#: src/modules/options/optw_userlist.cpp:52
 #: src/modules/options/optw_windowlist.cpp:85
 #: src/modules/options/optw_windowlist.cpp:244
+#: src/modules/options/optw_userlist.cpp:52
+#: src/modules/options/optw_ircview.cpp:51
 msgid "Font:"
 msgstr "フォント:"
 
-#: src/modules/options/optw_dcc.cpp:355
+#: src/modules/options/optw_dcc.cpp:354
 msgid "Force half-duplex mode on sound device"
 msgstr ""
 
@@ -2140,8 +2141,8 @@ msgstr ""
 msgid "Force language:"
 msgstr "言語の強制設定:"
 
-#: src/modules/options/optw_windowlist.h:64
 #: src/modules/options/optw_userlist.h:67
+#: src/modules/options/optw_windowlist.h:64
 msgid "Foreground"
 msgstr "前景"
 
@@ -2161,12 +2162,12 @@ msgstr "性別:"
 
 #: src/modules/options/optw_servers.cpp:242
 #: src/modules/options/optw_messages.cpp:71
-#: src/modules/options/optw_dcc.h:45
-#: src/modules/options/optw_dcc.h:88
+#: src/modules/options/optw_identity.h:153
 #: src/modules/options/optw_irc.h:43
 #: src/modules/options/optw_interfacelookglobal.h:33
+#: src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_dcc.h:88
 #: src/modules/options/optw_channel.h:52
-#: src/modules/options/optw_identity.h:153
 msgid "General"
 msgstr "一般"
 
@@ -2269,10 +2270,10 @@ msgstr ""
 msgid "Horizontal Alignment:"
 msgstr "水平の位置あわせ:"
 
-#: src/modules/options/optw_ircview.cpp:56
-#: src/modules/options/optw_notifier.cpp:46
 #: src/modules/options/optw_windowlist.cpp:125
+#: src/modules/options/optw_notifier.cpp:46
 #: src/modules/options/optw_input.cpp:48
+#: src/modules/options/optw_ircview.cpp:56
 msgid "Horizontal align:"
 msgstr "水平の位置あわせ:"
 
@@ -2318,7 +2319,7 @@ msgstr "ISO 8601 形式"
 msgid "ISON delay (in seconds)"
 msgstr "ISON 遅延 (単位: 秒)"
 
-#: src/modules/options/optw_mediatypes.cpp:134
+#: src/modules/options/optw_mediatypes.cpp:126
 msgid "Icon"
 msgstr "アイコン"
 
@@ -2334,9 +2335,9 @@ msgstr "Ident サービス"
 msgid "Ident username:"
 msgstr "識別ユーザー名"
 
+#: src/modules/options/optw_servers.cpp:319
 #: src/modules/options/optw_nickserv.cpp:89
 #: src/modules/options/optw_nickserv.cpp:247
-#: src/modules/options/optw_servers.cpp:319
 msgid "Identify Command"
 msgstr "識別コマンド"
 
@@ -2469,11 +2470,11 @@ msgstr "言語"
 msgid "Languages:"
 msgstr "言語:"
 
-#: src/modules/options/optw_ircview.cpp:65
+#: src/modules/options/optw_windowlist.cpp:134
 #: src/modules/options/optw_notifier.cpp:55
 #: src/modules/options/optw_userlist.cpp:142
-#: src/modules/options/optw_windowlist.cpp:134
 #: src/modules/options/optw_input.cpp:57
+#: src/modules/options/optw_ircview.cpp:65
 msgid "Left"
 msgstr "左"
 
@@ -2517,7 +2518,7 @@ msgstr ""
 msgid "Load From..."
 msgstr "読み込む..."
 
-#: src/modules/options/optw_mediatypes.cpp:118
+#: src/modules/options/optw_mediatypes.cpp:112
 msgid "Local open command:"
 msgstr "ローカルを開くコマンド:"
 
@@ -2553,11 +2554,11 @@ msgstr "最低ポート:"
 msgid "MIME Type"
 msgstr "MIME の種類"
 
-#: src/modules/options/optw_mediatypes.cpp:94
+#: src/modules/options/optw_mediatypes.cpp:92
 msgid "MIME type:"
 msgstr "MIME の種類:"
 
-#: src/modules/options/optw_mediatypes.cpp:106
+#: src/modules/options/optw_mediatypes.cpp:102
 msgid "Magic bytes:"
 msgstr "マジック バイト"
 
@@ -2675,7 +2676,7 @@ msgstr "ボタンの最小幅設定"
 msgid "Minimum width:"
 msgstr "最小幅:"
 
-#: src/modules/options/optw_dcc.cpp:359
+#: src/modules/options/optw_dcc.cpp:358
 msgid "Mixer device:"
 msgstr "ミキサー デバイス:"
 
@@ -2745,7 +2746,7 @@ msgstr "ネットワークのプロパティ"
 msgid "Network:"
 msgstr "ネットワーク:"
 
-#: src/modules/options/optw_mediatypes.cpp:240
+#: src/modules/options/optw_mediatypes.cpp:229
 msgid "New Media Type"
 msgstr "新しいメディアの種類"
 
@@ -2793,20 +2794,20 @@ msgstr ""
 msgid "NickServ Authentication Rule"
 msgstr ""
 
+#: src/modules/options/optw_servers.cpp:317
 #: src/modules/options/optw_nickserv.cpp:63
 #: src/modules/options/optw_nickserv.cpp:245
-#: src/modules/options/optw_servers.cpp:317
 msgid "NickServ Mask"
 msgstr "NickServ マスク"
 
-#: src/modules/options/optw_nickserv.cpp:246
 #: src/modules/options/optw_servers.cpp:318
+#: src/modules/options/optw_nickserv.cpp:246
 msgid "NickServ Request Mask"
 msgstr ""
 
-#: src/modules/options/optw_nickserv.cpp:243
 #: src/modules/options/optw_servers.cpp:316
 #: src/modules/options/optw_identity.cpp:720
+#: src/modules/options/optw_nickserv.cpp:243
 msgid "Nickname"
 msgstr "ニックネーム"
 
@@ -2845,11 +2846,11 @@ msgstr ""
 msgid "Normal"
 msgstr "通常"
 
-#: src/modules/options/optw_userlist.cpp:55
-#: src/modules/options/optw_userlist.cpp:127
 #: src/modules/options/optw_windowlist.cpp:89
 #: src/modules/options/optw_windowlist.cpp:120
 #: src/modules/options/optw_windowlist.cpp:246
+#: src/modules/options/optw_userlist.cpp:55
+#: src/modules/options/optw_userlist.cpp:127
 msgid "Normal:"
 msgstr "通常:"
 
@@ -2878,16 +2879,16 @@ msgstr "通知に完了を通知する"
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr ""
 
-#: src/modules/options/optw_nickserv.cpp:133
-#: src/modules/options/optw_nickserv.cpp:154
 #: src/modules/options/optw_servers.cpp:976
 #: src/modules/options/optw_identity.cpp:842
 #: src/modules/options/optw_identity.cpp:957
+#: src/modules/options/optw_nickserv.cpp:133
+#: src/modules/options/optw_nickserv.cpp:154
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/options/optw_identity.cpp:99
 #: src/modules/options/optw_textencoding.cpp:160
+#: src/modules/options/optw_identity.cpp:99
 msgid "Ok"
 msgstr "OK"
 
@@ -2933,7 +2934,7 @@ msgstr "ログイン時"
 msgid "On Unexpected Disconnect"
 msgstr "期待しない切断時"
 
-#: src/modules/options/optw_dcc.cpp:349
+#: src/modules/options/optw_dcc.cpp:348
 msgid "On Voice Request"
 msgstr "ボイスの要求時"
 
@@ -2961,12 +2962,12 @@ msgstr "ダイアログ ウィンドウを開くとき"
 msgid "Open Query For"
 msgstr "問い合わせを開いたとき"
 
-#: src/modules/options/optw_dcc.cpp:348
+#: src/modules/options/optw_dcc.cpp:347
 msgid "Open all minimized"
 msgstr "すべて最小化で開く"
 
-#: src/modules/options/optw_dcc.cpp:315
-#: src/modules/options/optw_dcc.cpp:352
+#: src/modules/options/optw_dcc.cpp:316
+#: src/modules/options/optw_dcc.cpp:351
 msgid "Open minimized when auto-accepted"
 msgstr "自動許可のとき、最小化で開く"
 
@@ -2999,7 +3000,7 @@ msgstr ""
 msgid "PAGE"
 msgstr ""
 
-#: src/modules/options/optw_ctcp.cpp:63
+#: src/modules/options/optw_ctcp.cpp:62
 msgid "PAGE reply:"
 msgstr ""
 
@@ -3072,7 +3073,7 @@ msgid ""
 "image (including <b>http://</b>) can be entered manually."
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:330
+#: src/modules/options/optw_dcc.cpp:329
 msgid "Popup notifier on new dcc chat message"
 msgstr "新しい DCC チャットのメッセージが届いたら通知をポップアップする"
 
@@ -3097,7 +3098,7 @@ msgstr "ポート:"
 msgid "Postfix:"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:361
+#: src/modules/options/optw_dcc.cpp:360
 msgid "Pre-buffer size:"
 msgstr "プリバッファーの容量"
 
@@ -3261,7 +3262,7 @@ msgstr "静かに"
 msgid "Quit message:"
 msgstr "終了時のメッセージ"
 
-#: src/modules/options/optw_mediatypes.cpp:149
+#: src/modules/options/optw_mediatypes.cpp:139
 msgid "Re&move"
 msgstr "削除(&M)"
 
@@ -3315,7 +3316,7 @@ msgstr "登録済みユーザーのアバターを覚える"
 msgid "Remember window properties"
 msgstr "ウィンドウのプロパティを覚える"
 
-#: src/modules/options/optw_mediatypes.cpp:126
+#: src/modules/options/optw_mediatypes.cpp:119
 msgid "Remote open command:"
 msgstr "リモートを開くコマンド:"
 
@@ -3355,11 +3356,11 @@ msgstr ""
 msgid "Restrict alert"
 msgstr "アラートの制限"
 
-#: src/modules/options/optw_ircview.cpp:66
+#: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_notifier.cpp:56
 #: src/modules/options/optw_userlist.cpp:143
-#: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_input.cpp:58
+#: src/modules/options/optw_ircview.cpp:66
 msgid "Right"
 msgstr "右"
 
@@ -3395,7 +3396,7 @@ msgstr "保存場所"
 msgid "Save logs to folder:"
 msgstr "ログを保存するフォルダー"
 
-#: src/modules/options/optw_mediatypes.cpp:112
+#: src/modules/options/optw_mediatypes.cpp:107
 msgid "Save path:"
 msgstr "保存パス:"
 
@@ -3423,10 +3424,10 @@ msgstr "スクリプト エンジン"
 msgid "Select message levels to notify"
 msgstr ""
 
-#: src/modules/options/optw_userlist.cpp:56
-#: src/modules/options/optw_userlist.cpp:128
 #: src/modules/options/optw_windowlist.cpp:90
 #: src/modules/options/optw_windowlist.cpp:121
+#: src/modules/options/optw_userlist.cpp:56
+#: src/modules/options/optw_userlist.cpp:128
 msgid "Selected:"
 msgstr "選択中:"
 
@@ -3531,7 +3532,7 @@ msgstr "チャンネルの同期時間を表示する"
 msgid "Show compact mode changes"
 msgstr ""
 
-#: src/modules/options/optw_ctcp.cpp:70
+#: src/modules/options/optw_ctcp.cpp:69
 msgid "Show dialog for CTCP page requests"
 msgstr ""
 
@@ -3591,7 +3592,7 @@ msgstr ""
 msgid "Show server pings"
 msgstr ""
 
-#: src/modules/options/optw_ctcp.cpp:68
+#: src/modules/options/optw_ctcp.cpp:67
 msgid "Show the CTCP replies in the active window"
 msgstr ""
 
@@ -3652,7 +3653,7 @@ msgstr "音声"
 msgid "Sound System"
 msgstr "音声システム"
 
-#: src/modules/options/optw_dcc.cpp:358
+#: src/modules/options/optw_dcc.cpp:357
 msgid "Sound device:"
 msgstr "音声デバイス:"
 
@@ -3765,8 +3766,8 @@ msgstr ""
 msgid "This allows you to select the sound system to be used with KVIrc."
 msgstr ""
 
-#: src/modules/options/optw_nickserv.cpp:235
 #: src/modules/options/optw_servers.cpp:308
+#: src/modules/options/optw_nickserv.cpp:235
 msgid "This check enables the automatic identification with NickServ"
 msgstr ""
 
@@ -3865,13 +3866,13 @@ msgid ""
 "font setting"
 msgstr ""
 
-#: src/modules/options/optw_tools.cpp:40
+#: src/modules/options/optw_tools.cpp:39
 msgid ""
 "This section contains irc tools<br><p>like<b> away, lag and logging system. "
 "</b> </p>"
 msgstr ""
 
-#: src/modules/options/optw_generalopt.cpp:39
+#: src/modules/options/optw_generalopt.cpp:38
 msgid ""
 "This section contains the general client options<br><p>like<b> sound, "
 "mediafiles, URL handler </b> etc... </p>"
@@ -3883,16 +3884,16 @@ msgid ""
 "display the CTRL+I escape sequences and eventually the emoticons."
 msgstr ""
 
-#: src/modules/options/optw_ircview.cpp:64
-#: src/modules/options/optw_ircview.cpp:69
+#: src/modules/options/optw_windowlist.cpp:133
+#: src/modules/options/optw_windowlist.cpp:138
 #: src/modules/options/optw_notifier.cpp:54
 #: src/modules/options/optw_notifier.cpp:59
 #: src/modules/options/optw_userlist.cpp:141
 #: src/modules/options/optw_userlist.cpp:146
-#: src/modules/options/optw_windowlist.cpp:133
-#: src/modules/options/optw_windowlist.cpp:138
 #: src/modules/options/optw_input.cpp:56
 #: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_ircview.cpp:64
+#: src/modules/options/optw_ircview.cpp:69
 msgid "Tile"
 msgstr "題名"
 
@@ -3924,11 +3925,11 @@ msgstr "ツールバーの概観"
 msgid "Tools"
 msgstr "ツール"
 
-#: src/modules/options/optw_ircview.cpp:70
+#: src/modules/options/optw_windowlist.cpp:139
 #: src/modules/options/optw_notifier.cpp:60
 #: src/modules/options/optw_userlist.cpp:147
-#: src/modules/options/optw_windowlist.cpp:139
 #: src/modules/options/optw_input.cpp:62
+#: src/modules/options/optw_ircview.cpp:70
 msgid "Top"
 msgstr "上"
 
@@ -4215,10 +4216,10 @@ msgstr ""
 msgid "Vertical Alignment:"
 msgstr "垂直の位置あわせ:"
 
-#: src/modules/options/optw_ircview.cpp:60
-#: src/modules/options/optw_notifier.cpp:50
 #: src/modules/options/optw_windowlist.cpp:129
+#: src/modules/options/optw_notifier.cpp:50
 #: src/modules/options/optw_input.cpp:52
+#: src/modules/options/optw_ircview.cpp:60
 msgid "Vertical align:"
 msgstr "垂直の位置あわせ:"
 
@@ -4230,7 +4231,7 @@ msgstr "ボイス"
 msgid "Voice:"
 msgstr "ボイス:"
 
-#: src/modules/options/optw_dcc.cpp:356
+#: src/modules/options/optw_dcc.cpp:355
 msgid "Volume slider controls PCM, not Master"
 msgstr ""
 
@@ -4304,7 +4305,7 @@ msgstr ""
 msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
 msgstr ""
 
-#: src/modules/options/optw_mediatypes.cpp:194
+#: src/modules/options/optw_mediatypes.cpp:183
 msgid "[Unknown Media Type]"
 msgstr ""
 
@@ -4385,13 +4386,13 @@ msgstr ""
 msgid "sound,xmms,audio,play,amarok"
 msgstr ""
 
+#: src/modules/options/optw_interfacelookglobal.h:34
 #: src/modules/options/optw_windowlist.h:36
 #: src/modules/options/optw_windowlist.h:50
 #: src/modules/options/optw_windowlist.h:66
 #: src/modules/options/optw_windowlist.h:81
 #: src/modules/options/optw_windowlist.h:100
 #: src/modules/options/optw_windowlist.h:115
-#: src/modules/options/optw_interfacelookglobal.h:34
 msgid "theme"
 msgstr ""
 

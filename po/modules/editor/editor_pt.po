@@ -12,17 +12,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-10 23:23+0200\n"
+"POT-Creation-Date: 2010-10-17 18:58+0200\n"
 "PO-Revision-Date: 2010-09-03 21:31+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/eventeditor/eventeditor.cpp:393
+#: src/modules/eventeditor/eventeditor.cpp:413
 #, c-format
 msgid ""
 "\n"
@@ -41,7 +42,7 @@ msgstr ""
 "Parâmetros:\n"
 "%s"
 
-#: src/modules/raweditor/raweditor.cpp:368
+#: src/modules/raweditor/raweditor.cpp:367
 #, c-format
 msgid ""
 "\n"
@@ -66,14 +67,14 @@ msgstr "### Prólogo ###"
 msgid "&Add"
 msgstr "&Adicionar"
 
-#: src/modules/raweditor/raweditor.cpp:182
+#: src/modules/raweditor/raweditor.cpp:181
 msgid "&Add Raw Event..."
 msgstr "&Adicionar Evento..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1193
-#: src/modules/eventeditor/eventeditor.cpp:510
-#: src/modules/popupeditor/popupeditor.cpp:1387
-#: src/modules/raweditor/raweditor.cpp:484
+#: src/modules/eventeditor/eventeditor.cpp:530
+#: src/modules/popupeditor/popupeditor.cpp:1385
+#: src/modules/raweditor/raweditor.cpp:483
 msgid "&Apply"
 msgstr "&Aplicar"
 
@@ -83,11 +84,11 @@ msgstr "&Compilar"
 
 #: src/modules/classeditor/classeditor.cpp:1986
 #: src/modules/classeditor/classeditor.cpp:2088
-#: src/modules/editor/scripteditor.cpp:1049
+#: src/modules/editor/scripteditor.cpp:1055
 msgid "&Cancel"
 msgstr "&Cancelar"
 
-#: src/modules/editor/scripteditor.cpp:759
+#: src/modules/editor/scripteditor.cpp:765
 msgid "&Configure Editor..."
 msgstr "&Configurar Editor..."
 
@@ -99,13 +100,13 @@ msgstr "&Copiar"
 msgid "&Create Class"
 msgstr "&Criar Classe"
 
-#: src/modules/eventeditor/eventeditor.cpp:201
-#: src/modules/raweditor/raweditor.cpp:161
+#: src/modules/eventeditor/eventeditor.cpp:221
+#: src/modules/raweditor/raweditor.cpp:160
 msgid "&Disable Handler"
 msgstr "&Desactivar Manipulador"
 
-#: src/modules/eventeditor/eventeditor.cpp:197
-#: src/modules/raweditor/raweditor.cpp:157
+#: src/modules/eventeditor/eventeditor.cpp:217
+#: src/modules/raweditor/raweditor.cpp:156
 msgid "&Enable Handler"
 msgstr "Activar &Manipulador"
 
@@ -115,12 +116,12 @@ msgstr "Activar &Manipulador"
 msgid "&Export All To..."
 msgstr "&Exportar Tudo Para..."
 
-#: src/modules/eventeditor/eventeditor.cpp:209
-#: src/modules/raweditor/raweditor.cpp:169
+#: src/modules/eventeditor/eventeditor.cpp:229
+#: src/modules/raweditor/raweditor.cpp:168
 msgid "&Export Handler To..."
 msgstr "&Exportar Manipulador Para..."
 
-#: src/modules/popupeditor/popupeditor.cpp:1162
+#: src/modules/popupeditor/popupeditor.cpp:1160
 msgid "&Export Popup To..."
 msgstr "&Exportar Menu Para..."
 
@@ -128,26 +129,26 @@ msgstr "&Exportar Menu Para..."
 msgid "&Export selected To..."
 msgstr "&Exportar Seleccionado Para..."
 
-#: src/modules/eventeditor/eventeditor.cpp:214
-#: src/modules/raweditor/raweditor.cpp:174
+#: src/modules/eventeditor/eventeditor.cpp:234
+#: src/modules/raweditor/raweditor.cpp:173
 msgid "&New Handler"
 msgstr "&Novo Manipulador"
 
-#: src/modules/popupeditor/popupeditor.cpp:1150
-#: src/modules/popupeditor/popupeditor.cpp:1171
+#: src/modules/popupeditor/popupeditor.cpp:1148
+#: src/modules/popupeditor/popupeditor.cpp:1169
 msgid "&New Popup"
 msgstr "&Novo Menu"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1188
-#: src/modules/eventeditor/eventeditor.cpp:453
-#: src/modules/eventeditor/eventeditor.cpp:505
-#: src/modules/popupeditor/popupeditor.cpp:1382
-#: src/modules/raweditor/raweditor.cpp:429
-#: src/modules/raweditor/raweditor.cpp:479
+#: src/modules/eventeditor/eventeditor.cpp:473
+#: src/modules/eventeditor/eventeditor.cpp:525
+#: src/modules/popupeditor/popupeditor.cpp:1380
+#: src/modules/raweditor/raweditor.cpp:428
+#: src/modules/raweditor/raweditor.cpp:478
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/editor/scripteditor.cpp:756
+#: src/modules/editor/scripteditor.cpp:762
 msgid "&Open..."
 msgstr "&Abrir..."
 
@@ -163,12 +164,12 @@ msgstr "&Renomear"
 msgid "&Rename Class"
 msgstr "&Renomear Classe"
 
-#: src/modules/editor/scripteditor.cpp:251
-#: src/modules/editor/scripteditor.cpp:1054
+#: src/modules/editor/scripteditor.cpp:256
+#: src/modules/editor/scripteditor.cpp:1060
 msgid "&Replace"
 msgstr "&Substituir"
 
-#: src/modules/editor/scripteditor.cpp:1044
+#: src/modules/editor/scripteditor.cpp:1050
 msgid "&Replace in all editor's items"
 msgstr "&Substituir em todos os itens do editor"
 
@@ -176,7 +177,7 @@ msgstr "&Substituir em todos os itens do editor"
 msgid "&Save"
 msgstr "&Gravar"
 
-#: src/modules/editor/scripteditor.cpp:757
+#: src/modules/editor/scripteditor.cpp:763
 msgid "&Save As..."
 msgstr "&Gravar Como..."
 
@@ -300,7 +301,7 @@ msgstr ""
 "Um 'script' externo mudou a alias que está actualmente a editar. Deseja "
 "aceitar as mudanças externas?"
 
-#: src/modules/popupeditor/popupeditor.cpp:1119
+#: src/modules/popupeditor/popupeditor.cpp:1117
 msgid ""
 "An external script has changed the popup you are currently editing. Do you "
 "want to accept the external changes?"
@@ -316,7 +317,7 @@ msgstr "Aplicar"
 msgid "Automatically"
 msgstr "Automaticamente"
 
-#: src/modules/editor/scripteditor.cpp:525
+#: src/modules/editor/scripteditor.cpp:531
 msgid "Background:"
 msgstr "Fundo:"
 
@@ -339,26 +340,26 @@ msgstr "Nome do Nomedeespaço inválido"
 msgid "Big Icon:"
 msgstr "Ícone Grande:"
 
-#: src/modules/editor/scripteditor.cpp:527
+#: src/modules/editor/scripteditor.cpp:533
 msgid "Brackets:"
 msgstr "Chavetas:"
 
-#: src/modules/editor/scripteditor.cpp:982
+#: src/modules/editor/scripteditor.cpp:988
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "Não é possível abrir o ficheiro %s para leitura."
 
-#: src/modules/editor/scripteditor.cpp:893
+#: src/modules/editor/scripteditor.cpp:899
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Não é possível abrir o ficheiro %s para escrita."
 
 #: src/modules/actioneditor/actioneditor.cpp:884
 #: src/modules/aliaseditor/aliaseditor.cpp:1198
-#: src/modules/editor/scripteditor.cpp:541
-#: src/modules/eventeditor/eventeditor.cpp:515
-#: src/modules/popupeditor/popupeditor.cpp:1392
-#: src/modules/raweditor/raweditor.cpp:489
+#: src/modules/editor/scripteditor.cpp:547
+#: src/modules/eventeditor/eventeditor.cpp:535
+#: src/modules/popupeditor/popupeditor.cpp:1390
+#: src/modules/raweditor/raweditor.cpp:488
 #: src/modules/toolbareditor/toolbareditor.cpp:188
 #: src/modules/toolbareditor/toolbareditor.cpp:405
 msgid "Cancel"
@@ -441,13 +442,13 @@ msgstr "Escolha um Directório - KVIrc"
 #: src/modules/actioneditor/actioneditor.cpp:700
 #: src/modules/aliaseditor/aliaseditor.cpp:812
 #: src/modules/classeditor/classeditor.cpp:1209
-#: src/modules/editor/scripteditor.cpp:880
-#: src/modules/eventeditor/eventeditor.cpp:446
-#: src/modules/eventeditor/eventeditor.cpp:487
-#: src/modules/popupeditor/popupeditor.cpp:1190
-#: src/modules/popupeditor/popupeditor.cpp:1240
-#: src/modules/raweditor/raweditor.cpp:422
-#: src/modules/raweditor/raweditor.cpp:460
+#: src/modules/editor/scripteditor.cpp:886
+#: src/modules/eventeditor/eventeditor.cpp:466
+#: src/modules/eventeditor/eventeditor.cpp:507
+#: src/modules/popupeditor/popupeditor.cpp:1188
+#: src/modules/popupeditor/popupeditor.cpp:1238
+#: src/modules/raweditor/raweditor.cpp:421
+#: src/modules/raweditor/raweditor.cpp:459
 #: src/modules/toolbareditor/toolbareditor.cpp:396
 msgid "Choose a Filename - KVIrc"
 msgstr "Escolha um Nome de Ficheiro - KVIrc"
@@ -495,11 +496,11 @@ msgstr "Colapsar Todos os Items"
 msgid "Collapse All Namespaces"
 msgstr "Colapsar Todos os Nomedeespaços"
 
-#: src/modules/editor/scripteditor.cpp:523
+#: src/modules/editor/scripteditor.cpp:528
 msgid "Colors"
 msgstr "Cores"
 
-#: src/modules/editor/scripteditor.cpp:528
+#: src/modules/editor/scripteditor.cpp:534
 msgid "Comments:"
 msgstr "Comentários:"
 
@@ -515,7 +516,7 @@ msgstr "Condição:"
 msgid "Confirm ToolBar Deletion"
 msgstr "Confirmar Remoção de Barra de Ferramentas"
 
-#: src/modules/editor/scripteditor.cpp:250
+#: src/modules/editor/scripteditor.cpp:255
 msgid "Context sensitive help"
 msgstr "Contexto de ajuda sensitivo"
 
@@ -621,7 +622,7 @@ msgstr "Activar nas Janelas de Conversa DCC"
 msgid "Enable in Query Windows"
 msgstr "Activar nas Janelas de Privados"
 
-#: src/modules/raweditor/raweditor.cpp:222
+#: src/modules/raweditor/raweditor.cpp:221
 msgid "Enter the numeric code of the message (0-999)"
 msgstr "Indique o código numérico da mensagem  (0-999)"
 
@@ -629,11 +630,11 @@ msgstr "Indique o código numérico da mensagem  (0-999)"
 msgid "Epilogue"
 msgstr "Epílogo"
 
-#: src/modules/eventeditor/eventeditor.cpp:167
+#: src/modules/eventeditor/eventeditor.cpp:187
 msgid "Event"
 msgstr "Evento"
 
-#: src/modules/eventeditor/eventeditor.cpp:553
+#: src/modules/eventeditor/eventeditor.cpp:573
 msgid "Event Editor"
 msgstr "Editor de Eventos"
 
@@ -668,11 +669,11 @@ msgstr "Menu Externo"
 msgid "External menu:"
 msgstr "Menu externo:"
 
-#: src/modules/editor/scripteditor.cpp:768
+#: src/modules/editor/scripteditor.cpp:774
 msgid "Find"
 msgstr "Procurar"
 
-#: src/modules/editor/scripteditor.cpp:264
+#: src/modules/editor/scripteditor.cpp:269
 msgid "Find & Replace"
 msgstr "Procurar e Substituir"
 
@@ -692,7 +693,7 @@ msgstr "Procurar nas Classes"
 msgid "Find In Classes..."
 msgstr "Procurar nas Classes..."
 
-#: src/modules/editor/scripteditor.cpp:533
+#: src/modules/editor/scripteditor.cpp:539
 msgid "Find:"
 msgstr "Procurar:"
 
@@ -700,7 +701,7 @@ msgstr "Procurar:"
 msgid "Flags"
 msgstr "Opções"
 
-#: src/modules/editor/scripteditor.cpp:521
+#: src/modules/editor/scripteditor.cpp:526
 msgid "Font:"
 msgstr "Tipo de Letra:"
 
@@ -721,7 +722,7 @@ msgstr "A função já existe"
 msgid "Function names can contain only letters, digits and underscores"
 msgstr "Os nomes das funções podem conter apenas letras, dígito e sublinhado"
 
-#: src/modules/editor/scripteditor.cpp:529
+#: src/modules/editor/scripteditor.cpp:535
 msgid "Functions:"
 msgstr "Funções:"
 
@@ -774,7 +775,7 @@ msgstr "Item Id:"
 msgid "Key Sequence:"
 msgstr "Sequência do Identificador:"
 
-#: src/modules/editor/scripteditor.cpp:530
+#: src/modules/editor/scripteditor.cpp:536
 msgid "Keywords:"
 msgstr "Identificadores:"
 
@@ -787,7 +788,7 @@ msgstr "Etiqueta"
 msgid "Label:"
 msgstr "Etiqueta"
 
-#: src/modules/editor/scripteditor.cpp:968
+#: src/modules/editor/scripteditor.cpp:974
 msgid "Load Script File - KVIrc"
 msgstr "Carregar Ficheiro de Script - KVIrc"
 
@@ -914,7 +915,7 @@ msgstr "Novo Menu Dentro"
 msgid "New Menu Prologue"
 msgstr "Novo Prologo de Menu"
 
-#: src/modules/raweditor/raweditor.cpp:222
+#: src/modules/raweditor/raweditor.cpp:221
 msgid "New Raw Event"
 msgstr "Novo Evento"
 
@@ -948,11 +949,11 @@ msgstr "Não"
 #: src/modules/classeditor/classeditor.cpp:209
 #: src/modules/classeditor/classeditor.cpp:216
 #: src/modules/classeditor/classeditor.cpp:770
-#: src/modules/eventeditor/eventeditor.cpp:368
+#: src/modules/eventeditor/eventeditor.cpp:388
 msgid "No item selected"
 msgstr "Nenhum Item Seleccionado"
 
-#: src/modules/editor/scripteditor.cpp:526
+#: src/modules/editor/scripteditor.cpp:532
 msgid "Normal text:"
 msgstr "Texto normal:"
 
@@ -964,11 +965,11 @@ msgstr "Texto normal:"
 #: src/modules/classeditor/classeditor.cpp:1111
 #: src/modules/classeditor/classeditor.cpp:1188
 #: src/modules/classeditor/classeditor.cpp:1220
-#: src/modules/editor/scripteditor.cpp:537
-#: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1197
-#: src/modules/popupeditor/popupeditor.cpp:1244
-#: src/modules/raweditor/raweditor.cpp:464
+#: src/modules/editor/scripteditor.cpp:543
+#: src/modules/eventeditor/eventeditor.cpp:511
+#: src/modules/popupeditor/popupeditor.cpp:1195
+#: src/modules/popupeditor/popupeditor.cpp:1242
+#: src/modules/raweditor/raweditor.cpp:463
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:248
 #: src/modules/toolbareditor/toolbareditor.cpp:458
@@ -1002,7 +1003,7 @@ msgstr "Ok, deixe-me tentar novamente..."
 msgid "Only If There Are Selected Users"
 msgstr "Apenas Se Existirem Utilizadores Seleccionados"
 
-#: src/modules/editor/scripteditor.cpp:981
+#: src/modules/editor/scripteditor.cpp:987
 msgid "Open Failed - KVIrc"
 msgstr "Falha ao Abrir - KVIrc"
 
@@ -1024,7 +1025,7 @@ msgstr ""
 msgid "OverWrite Current Alias"
 msgstr "Substituir Alias Actual"
 
-#: src/modules/popupeditor/popupeditor.cpp:1118
+#: src/modules/popupeditor/popupeditor.cpp:1116
 msgid "OverWrite Current Popup"
 msgstr "Substituir Menu Actual"
 
@@ -1108,7 +1109,7 @@ msgstr "Por favor indique as propriedades para a barra de ferramentas \"%1\""
 msgid "Popup"
 msgstr "Menu"
 
-#: src/modules/popupeditor/popupeditor.cpp:1430
+#: src/modules/popupeditor/popupeditor.cpp:1428
 msgid "Popup Editor"
 msgstr "Editor de Menus"
 
@@ -1116,7 +1117,7 @@ msgstr "Editor de Menus"
 msgid "Popup name"
 msgstr "Nome do menu"
 
-#: src/modules/editor/scripteditor.cpp:515
+#: src/modules/editor/scripteditor.cpp:520
 msgid "Preferences"
 msgstr "Preferências"
 
@@ -1128,7 +1129,7 @@ msgstr "Prologo"
 msgid "Properties"
 msgstr "Propriedades"
 
-#: src/modules/editor/scripteditor.cpp:532
+#: src/modules/editor/scripteditor.cpp:538
 msgid "Punctuation:"
 msgstr "Pontuação:"
 
@@ -1136,7 +1137,7 @@ msgstr "Pontuação:"
 msgid "Put here a short description of your action"
 msgstr "Indique aqui um breve descrição da sua acção"
 
-#: src/modules/raweditor/raweditor.cpp:527
+#: src/modules/raweditor/raweditor.cpp:526
 msgid "Raw Editor"
 msgstr "Editor Bruto"
 
@@ -1144,12 +1145,12 @@ msgstr "Editor Bruto"
 msgid "Raw Event"
 msgstr "Evento Bruto"
 
-#: src/modules/eventeditor/eventeditor.cpp:205
-#: src/modules/raweditor/raweditor.cpp:165
+#: src/modules/eventeditor/eventeditor.cpp:225
+#: src/modules/raweditor/raweditor.cpp:164
 msgid "Re&move Handler"
 msgstr "Re&mover Manipulador"
 
-#: src/modules/popupeditor/popupeditor.cpp:1156
+#: src/modules/popupeditor/popupeditor.cpp:1154
 msgid "Re&move Popup"
 msgstr "Re&mover 'Popup'"
 
@@ -1187,16 +1188,16 @@ msgstr "Renomear Nomedeespaço"
 msgid "Replace file"
 msgstr "Substituir ficheiro"
 
-#: src/modules/editor/scripteditor.cpp:1032
+#: src/modules/editor/scripteditor.cpp:1038
 msgid "Replace with"
 msgstr "Substituir por"
 
-#: src/modules/editor/scripteditor.cpp:951
+#: src/modules/editor/scripteditor.cpp:957
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Linha: %d Coluna: %d"
 
-#: src/modules/editor/scripteditor.cpp:892
+#: src/modules/editor/scripteditor.cpp:898
 msgid "Save Failed - KVIrc"
 msgstr "Gravação Falhada - KVIrc"
 
@@ -1336,7 +1337,7 @@ msgid "Unable to write to the actions file."
 msgstr "Não é possível escrever para o ficheiro de acções."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:823
-#: src/modules/popupeditor/popupeditor.cpp:1244
+#: src/modules/popupeditor/popupeditor.cpp:1242
 msgid "Unable to write to the alias file."
 msgstr "Não é possível escrever para o ficheiro da alias."
 
@@ -1344,23 +1345,23 @@ msgstr "Não é possível escrever para o ficheiro da alias."
 msgid "Unable to write to the class file."
 msgstr "Não é possível escrever para o ficheiro da classe."
 
-#: src/modules/eventeditor/eventeditor.cpp:453
+#: src/modules/eventeditor/eventeditor.cpp:473
 msgid "Unable to write to the event file."
 msgstr "Não é possível escrever para o ficheiro de evento."
 
-#: src/modules/eventeditor/eventeditor.cpp:491
+#: src/modules/eventeditor/eventeditor.cpp:511
 msgid "Unable to write to the events file."
 msgstr "Não é possível escrever para o ficheiro de eventos."
 
-#: src/modules/popupeditor/popupeditor.cpp:1197
+#: src/modules/popupeditor/popupeditor.cpp:1195
 msgid "Unable to write to the popup file."
 msgstr "Não é possível escrever para o ficheiro de 'popup'."
 
-#: src/modules/raweditor/raweditor.cpp:429
+#: src/modules/raweditor/raweditor.cpp:428
 msgid "Unable to write to the raw event file."
 msgstr "Não é possível escrever para o ficheiro de evento bruto."
 
-#: src/modules/raweditor/raweditor.cpp:464
+#: src/modules/raweditor/raweditor.cpp:463
 msgid "Unable to write to the raw events file."
 msgstr "Não é possível escrever para o ficheiro de eventos bruto."
 
@@ -1368,7 +1369,7 @@ msgstr "Não é possível escrever para o ficheiro de eventos bruto."
 msgid "Unable to write to the toolbar file."
 msgstr "Não é possível escrever para o ficheiro da barra de ferramentas."
 
-#: src/modules/editor/scripteditor.cpp:531
+#: src/modules/editor/scripteditor.cpp:537
 msgid "Variables:"
 msgstr "Variáveis:"
 
@@ -1388,19 +1389,19 @@ msgstr ""
 "Descrição breve visível para esta acção.<br>Esta 'string' será mostrada ao "
 "utilizador como tal é boa ideia usar $tr() aqui"
 
-#: src/modules/editor/scripteditor.cpp:1023
+#: src/modules/editor/scripteditor.cpp:1029
 msgid "Word to Find"
 msgstr "Palavra a Procurar"
 
 #: src/modules/actioneditor/actioneditor.cpp:727
 #: src/modules/aliaseditor/aliaseditor.cpp:823
 #: src/modules/classeditor/classeditor.cpp:1220
-#: src/modules/eventeditor/eventeditor.cpp:453
-#: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1197
-#: src/modules/popupeditor/popupeditor.cpp:1244
-#: src/modules/raweditor/raweditor.cpp:429
-#: src/modules/raweditor/raweditor.cpp:464
+#: src/modules/eventeditor/eventeditor.cpp:473
+#: src/modules/eventeditor/eventeditor.cpp:511
+#: src/modules/popupeditor/popupeditor.cpp:1195
+#: src/modules/popupeditor/popupeditor.cpp:1242
+#: src/modules/raweditor/raweditor.cpp:428
+#: src/modules/raweditor/raweditor.cpp:463
 #: src/modules/toolbareditor/toolbareditor.cpp:458
 msgid "Write Failed - KVIrc"
 msgstr "Falha ao Gravar - KVIrc"
@@ -1429,8 +1430,8 @@ msgstr "Deve indicar um nome válido para a alias"
 msgid "You must specify a valid name for the namespace"
 msgstr "Deve indicar um nome válido para o nomedeespaço"
 
-#: src/modules/eventeditor/eventeditor.cpp:265
-#: src/modules/raweditor/raweditor.cpp:258
+#: src/modules/eventeditor/eventeditor.cpp:285
+#: src/modules/raweditor/raweditor.cpp:257
 msgid "default"
 msgstr "predefinido"
 
@@ -1438,13 +1439,13 @@ msgstr "predefinido"
 msgid "inherits from class "
 msgstr "herda da classe"
 
-#: src/modules/eventeditor/eventeditor.cpp:389
+#: src/modules/eventeditor/eventeditor.cpp:409
 msgid "none"
 msgstr "nenhum"
 
-#: src/modules/eventeditor/eventeditor.cpp:227
-#: src/modules/popupeditor/popupeditor.cpp:1343
-#: src/modules/raweditor/raweditor.cpp:192
+#: src/modules/eventeditor/eventeditor.cpp:247
+#: src/modules/popupeditor/popupeditor.cpp:1341
+#: src/modules/raweditor/raweditor.cpp:191
 msgid "unnamed"
 msgstr "sem nome"
 

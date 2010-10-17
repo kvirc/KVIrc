@@ -7,17 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-10 23:23+0200\n"
+"POT-Creation-Date: 2010-10-17 18:58+0200\n"
 "PO-Revision-Date: 2010-08-20 15:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/eventeditor/eventeditor.cpp:393
+#: src/modules/eventeditor/eventeditor.cpp:413
 #, c-format
 msgid ""
 "\n"
@@ -36,7 +37,7 @@ msgstr ""
 "Paraméterek:\n"
 "%s"
 
-#: src/modules/raweditor/raweditor.cpp:368
+#: src/modules/raweditor/raweditor.cpp:367
 #, c-format
 msgid ""
 "\n"
@@ -61,14 +62,14 @@ msgstr "### Prológus ###"
 msgid "&Add"
 msgstr "Hozzá&ad"
 
-#: src/modules/raweditor/raweditor.cpp:182
+#: src/modules/raweditor/raweditor.cpp:181
 msgid "&Add Raw Event..."
 msgstr "Nyers Esemény hozzá&adása..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1193
-#: src/modules/eventeditor/eventeditor.cpp:510
-#: src/modules/popupeditor/popupeditor.cpp:1387
-#: src/modules/raweditor/raweditor.cpp:484
+#: src/modules/eventeditor/eventeditor.cpp:530
+#: src/modules/popupeditor/popupeditor.cpp:1385
+#: src/modules/raweditor/raweditor.cpp:483
 msgid "&Apply"
 msgstr "&Alkalmaz"
 
@@ -78,11 +79,11 @@ msgstr ""
 
 #: src/modules/classeditor/classeditor.cpp:1986
 #: src/modules/classeditor/classeditor.cpp:2088
-#: src/modules/editor/scripteditor.cpp:1049
+#: src/modules/editor/scripteditor.cpp:1055
 msgid "&Cancel"
 msgstr "Mégsem"
 
-#: src/modules/editor/scripteditor.cpp:759
+#: src/modules/editor/scripteditor.cpp:765
 msgid "&Configure Editor..."
 msgstr "Szerkesztő beállításai..."
 
@@ -94,13 +95,13 @@ msgstr "Másol"
 msgid "&Create Class"
 msgstr "Osztály létrehozása"
 
-#: src/modules/eventeditor/eventeditor.cpp:201
-#: src/modules/raweditor/raweditor.cpp:161
+#: src/modules/eventeditor/eventeditor.cpp:221
+#: src/modules/raweditor/raweditor.cpp:160
 msgid "&Disable Handler"
 msgstr "Kezelő letiltása"
 
-#: src/modules/eventeditor/eventeditor.cpp:197
-#: src/modules/raweditor/raweditor.cpp:157
+#: src/modules/eventeditor/eventeditor.cpp:217
+#: src/modules/raweditor/raweditor.cpp:156
 msgid "&Enable Handler"
 msgstr "Kezelő &Engedélyezése"
 
@@ -110,12 +111,12 @@ msgstr "Kezelő &Engedélyezése"
 msgid "&Export All To..."
 msgstr "Minden &Exportálása..."
 
-#: src/modules/eventeditor/eventeditor.cpp:209
-#: src/modules/raweditor/raweditor.cpp:169
+#: src/modules/eventeditor/eventeditor.cpp:229
+#: src/modules/raweditor/raweditor.cpp:168
 msgid "&Export Handler To..."
 msgstr "Kezelő &Exportálása..."
 
-#: src/modules/popupeditor/popupeditor.cpp:1162
+#: src/modules/popupeditor/popupeditor.cpp:1160
 msgid "&Export Popup To..."
 msgstr "Popup &Exportálása..."
 
@@ -123,26 +124,26 @@ msgstr "Popup &Exportálása..."
 msgid "&Export selected To..."
 msgstr "Kiválasztott &Exportálása..."
 
-#: src/modules/eventeditor/eventeditor.cpp:214
-#: src/modules/raweditor/raweditor.cpp:174
+#: src/modules/eventeditor/eventeditor.cpp:234
+#: src/modules/raweditor/raweditor.cpp:173
 msgid "&New Handler"
 msgstr "Új Kezelő"
 
-#: src/modules/popupeditor/popupeditor.cpp:1150
-#: src/modules/popupeditor/popupeditor.cpp:1171
+#: src/modules/popupeditor/popupeditor.cpp:1148
+#: src/modules/popupeditor/popupeditor.cpp:1169
 msgid "&New Popup"
 msgstr "Új Popup"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1188
-#: src/modules/eventeditor/eventeditor.cpp:453
-#: src/modules/eventeditor/eventeditor.cpp:505
-#: src/modules/popupeditor/popupeditor.cpp:1382
-#: src/modules/raweditor/raweditor.cpp:429
-#: src/modules/raweditor/raweditor.cpp:479
+#: src/modules/eventeditor/eventeditor.cpp:473
+#: src/modules/eventeditor/eventeditor.cpp:525
+#: src/modules/popupeditor/popupeditor.cpp:1380
+#: src/modules/raweditor/raweditor.cpp:428
+#: src/modules/raweditor/raweditor.cpp:478
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/editor/scripteditor.cpp:756
+#: src/modules/editor/scripteditor.cpp:762
 msgid "&Open..."
 msgstr "Megnyitás"
 
@@ -158,12 +159,12 @@ msgstr "Átnevezés"
 msgid "&Rename Class"
 msgstr "Osztály Átnevezése"
 
-#: src/modules/editor/scripteditor.cpp:251
-#: src/modules/editor/scripteditor.cpp:1054
+#: src/modules/editor/scripteditor.cpp:256
+#: src/modules/editor/scripteditor.cpp:1060
 msgid "&Replace"
 msgstr "Cser&él"
 
-#: src/modules/editor/scripteditor.cpp:1044
+#: src/modules/editor/scripteditor.cpp:1050
 #, fuzzy
 msgid "&Replace in all editor's items"
 msgstr "Minden Aliasban Cse&rél"
@@ -172,7 +173,7 @@ msgstr "Minden Aliasban Cse&rél"
 msgid "&Save"
 msgstr "Menté&s"
 
-#: src/modules/editor/scripteditor.cpp:757
+#: src/modules/editor/scripteditor.cpp:763
 msgid "&Save As..."
 msgstr "Mentés másként"
 
@@ -296,7 +297,7 @@ msgstr ""
 "Egy külső szkript megváltoztatta az aliast, amit épp szerkesztesz. Szeretnéd "
 "a külső változtatásokat elfogadni?"
 
-#: src/modules/popupeditor/popupeditor.cpp:1119
+#: src/modules/popupeditor/popupeditor.cpp:1117
 #, fuzzy
 msgid ""
 "An external script has changed the popup you are currently editing. Do you "
@@ -313,7 +314,7 @@ msgstr "Alkalmaz"
 msgid "Automatically"
 msgstr "Automatikus"
 
-#: src/modules/editor/scripteditor.cpp:525
+#: src/modules/editor/scripteditor.cpp:531
 msgid "Background:"
 msgstr "Háttér: "
 
@@ -336,26 +337,26 @@ msgstr "Hibás Névtér Név"
 msgid "Big Icon:"
 msgstr "Nagy Ikon:"
 
-#: src/modules/editor/scripteditor.cpp:527
+#: src/modules/editor/scripteditor.cpp:533
 msgid "Brackets:"
 msgstr "Zárójelek: "
 
-#: src/modules/editor/scripteditor.cpp:982
+#: src/modules/editor/scripteditor.cpp:988
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "Nem tudom megnyitni írásra: %s"
 
-#: src/modules/editor/scripteditor.cpp:893
+#: src/modules/editor/scripteditor.cpp:899
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Nem tudom megnyitni írásra: %s"
 
 #: src/modules/actioneditor/actioneditor.cpp:884
 #: src/modules/aliaseditor/aliaseditor.cpp:1198
-#: src/modules/editor/scripteditor.cpp:541
-#: src/modules/eventeditor/eventeditor.cpp:515
-#: src/modules/popupeditor/popupeditor.cpp:1392
-#: src/modules/raweditor/raweditor.cpp:489
+#: src/modules/editor/scripteditor.cpp:547
+#: src/modules/eventeditor/eventeditor.cpp:535
+#: src/modules/popupeditor/popupeditor.cpp:1390
+#: src/modules/raweditor/raweditor.cpp:488
 #: src/modules/toolbareditor/toolbareditor.cpp:188
 #: src/modules/toolbareditor/toolbareditor.cpp:405
 msgid "Cancel"
@@ -437,13 +438,13 @@ msgstr "Válassz Mappát - KVIrc"
 #: src/modules/actioneditor/actioneditor.cpp:700
 #: src/modules/aliaseditor/aliaseditor.cpp:812
 #: src/modules/classeditor/classeditor.cpp:1209
-#: src/modules/editor/scripteditor.cpp:880
-#: src/modules/eventeditor/eventeditor.cpp:446
-#: src/modules/eventeditor/eventeditor.cpp:487
-#: src/modules/popupeditor/popupeditor.cpp:1190
-#: src/modules/popupeditor/popupeditor.cpp:1240
-#: src/modules/raweditor/raweditor.cpp:422
-#: src/modules/raweditor/raweditor.cpp:460
+#: src/modules/editor/scripteditor.cpp:886
+#: src/modules/eventeditor/eventeditor.cpp:466
+#: src/modules/eventeditor/eventeditor.cpp:507
+#: src/modules/popupeditor/popupeditor.cpp:1188
+#: src/modules/popupeditor/popupeditor.cpp:1238
+#: src/modules/raweditor/raweditor.cpp:421
+#: src/modules/raweditor/raweditor.cpp:459
 #: src/modules/toolbareditor/toolbareditor.cpp:396
 msgid "Choose a Filename - KVIrc"
 msgstr "Válassz Fájlnevet - KVIrc"
@@ -491,11 +492,11 @@ msgstr "Minden Elem Összecsukása"
 msgid "Collapse All Namespaces"
 msgstr "Minden Névtér Összecsukása"
 
-#: src/modules/editor/scripteditor.cpp:523
+#: src/modules/editor/scripteditor.cpp:528
 msgid "Colors"
 msgstr "Színek"
 
-#: src/modules/editor/scripteditor.cpp:528
+#: src/modules/editor/scripteditor.cpp:534
 msgid "Comments:"
 msgstr "Kommentek: "
 
@@ -511,7 +512,7 @@ msgstr "Feltétel:"
 msgid "Confirm ToolBar Deletion"
 msgstr "Eszköztár Törlésének Megerősítése"
 
-#: src/modules/editor/scripteditor.cpp:250
+#: src/modules/editor/scripteditor.cpp:255
 msgid "Context sensitive help"
 msgstr "Környezetérzékeny Súgó"
 
@@ -618,7 +619,7 @@ msgstr "Engedélyezve DCC Beszélgetéseknél"
 msgid "Enable in Query Windows"
 msgstr "Engedélyezve Privátoknál"
 
-#: src/modules/raweditor/raweditor.cpp:222
+#: src/modules/raweditor/raweditor.cpp:221
 msgid "Enter the numeric code of the message (0-999)"
 msgstr "Add meg az üzenet számkódját (0-999)"
 
@@ -626,11 +627,11 @@ msgstr "Add meg az üzenet számkódját (0-999)"
 msgid "Epilogue"
 msgstr "Epilógus"
 
-#: src/modules/eventeditor/eventeditor.cpp:167
+#: src/modules/eventeditor/eventeditor.cpp:187
 msgid "Event"
 msgstr "Esemény"
 
-#: src/modules/eventeditor/eventeditor.cpp:553
+#: src/modules/eventeditor/eventeditor.cpp:573
 msgid "Event Editor"
 msgstr "Esemény Szerkesztő"
 
@@ -665,11 +666,11 @@ msgstr "Külső Menü"
 msgid "External menu:"
 msgstr "Külső menü:"
 
-#: src/modules/editor/scripteditor.cpp:768
+#: src/modules/editor/scripteditor.cpp:774
 msgid "Find"
 msgstr "Keres"
 
-#: src/modules/editor/scripteditor.cpp:264
+#: src/modules/editor/scripteditor.cpp:269
 msgid "Find & Replace"
 msgstr "Keresés és Csere"
 
@@ -689,7 +690,7 @@ msgstr "Keres az Osztályokban"
 msgid "Find In Classes..."
 msgstr "Keresés az Osztályokban..."
 
-#: src/modules/editor/scripteditor.cpp:533
+#: src/modules/editor/scripteditor.cpp:539
 msgid "Find:"
 msgstr "Keres:"
 
@@ -697,7 +698,7 @@ msgstr "Keres:"
 msgid "Flags"
 msgstr "Flagek"
 
-#: src/modules/editor/scripteditor.cpp:521
+#: src/modules/editor/scripteditor.cpp:526
 msgid "Font:"
 msgstr "Betűtípus:"
 
@@ -718,7 +719,7 @@ msgstr "Függvény már létezik"
 msgid "Function names can contain only letters, digits and underscores"
 msgstr "Függvény neve csak betűt, számot és aláhúzást tartalmazhat"
 
-#: src/modules/editor/scripteditor.cpp:529
+#: src/modules/editor/scripteditor.cpp:535
 msgid "Functions:"
 msgstr "Függvények: "
 
@@ -771,7 +772,7 @@ msgstr "Elem azonosító:"
 msgid "Key Sequence:"
 msgstr "Billentyűparancs:"
 
-#: src/modules/editor/scripteditor.cpp:530
+#: src/modules/editor/scripteditor.cpp:536
 msgid "Keywords:"
 msgstr "Kulcsszavak: "
 
@@ -784,7 +785,7 @@ msgstr "Címke"
 msgid "Label:"
 msgstr "Címke:"
 
-#: src/modules/editor/scripteditor.cpp:968
+#: src/modules/editor/scripteditor.cpp:974
 msgid "Load Script File - KVIrc"
 msgstr "Szkript Fájl Betöltése - KVIrc"
 
@@ -911,7 +912,7 @@ msgstr "Új Menü Bent"
 msgid "New Menu Prologue"
 msgstr "Új Menü Prológus"
 
-#: src/modules/raweditor/raweditor.cpp:222
+#: src/modules/raweditor/raweditor.cpp:221
 msgid "New Raw Event"
 msgstr "Új Nyers Esemény"
 
@@ -945,11 +946,11 @@ msgstr "Nem"
 #: src/modules/classeditor/classeditor.cpp:209
 #: src/modules/classeditor/classeditor.cpp:216
 #: src/modules/classeditor/classeditor.cpp:770
-#: src/modules/eventeditor/eventeditor.cpp:368
+#: src/modules/eventeditor/eventeditor.cpp:388
 msgid "No item selected"
 msgstr "Nincs kiválasztott elem"
 
-#: src/modules/editor/scripteditor.cpp:526
+#: src/modules/editor/scripteditor.cpp:532
 msgid "Normal text:"
 msgstr "Normál szöveg:"
 
@@ -961,11 +962,11 @@ msgstr "Normál szöveg:"
 #: src/modules/classeditor/classeditor.cpp:1111
 #: src/modules/classeditor/classeditor.cpp:1188
 #: src/modules/classeditor/classeditor.cpp:1220
-#: src/modules/editor/scripteditor.cpp:537
-#: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1197
-#: src/modules/popupeditor/popupeditor.cpp:1244
-#: src/modules/raweditor/raweditor.cpp:464
+#: src/modules/editor/scripteditor.cpp:543
+#: src/modules/eventeditor/eventeditor.cpp:511
+#: src/modules/popupeditor/popupeditor.cpp:1195
+#: src/modules/popupeditor/popupeditor.cpp:1242
+#: src/modules/raweditor/raweditor.cpp:463
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:248
 #: src/modules/toolbareditor/toolbareditor.cpp:458
@@ -999,7 +1000,7 @@ msgstr "Megpróbálom újra..."
 msgid "Only If There Are Selected Users"
 msgstr "Csak Ha Felhasználók Ki Vannak Választva"
 
-#: src/modules/editor/scripteditor.cpp:981
+#: src/modules/editor/scripteditor.cpp:987
 msgid "Open Failed - KVIrc"
 msgstr "Megnyitás Sikertelen - KVIrc"
 
@@ -1020,7 +1021,7 @@ msgstr ""
 msgid "OverWrite Current Alias"
 msgstr "Aktuális Alias Felülírása"
 
-#: src/modules/popupeditor/popupeditor.cpp:1118
+#: src/modules/popupeditor/popupeditor.cpp:1116
 #, fuzzy
 msgid "OverWrite Current Popup"
 msgstr "Aktuális Alias Felülírása"
@@ -1102,7 +1103,7 @@ msgstr "Kérlek add meg az eszköztár tulajdonságait: \"%1\""
 msgid "Popup"
 msgstr "Felbukkanó"
 
-#: src/modules/popupeditor/popupeditor.cpp:1430
+#: src/modules/popupeditor/popupeditor.cpp:1428
 msgid "Popup Editor"
 msgstr "Felbukkanó Szerkesztő"
 
@@ -1110,7 +1111,7 @@ msgstr "Felbukkanó Szerkesztő"
 msgid "Popup name"
 msgstr "Felbukkanó név"
 
-#: src/modules/editor/scripteditor.cpp:515
+#: src/modules/editor/scripteditor.cpp:520
 msgid "Preferences"
 msgstr "Tulajdonságok"
 
@@ -1122,7 +1123,7 @@ msgstr "Prológus"
 msgid "Properties"
 msgstr "Tulajdonságok"
 
-#: src/modules/editor/scripteditor.cpp:532
+#: src/modules/editor/scripteditor.cpp:538
 msgid "Punctuation:"
 msgstr "Központozás: "
 
@@ -1130,7 +1131,7 @@ msgstr "Központozás: "
 msgid "Put here a short description of your action"
 msgstr "Adj meg itt egy rövid leírást az akciódról"
 
-#: src/modules/raweditor/raweditor.cpp:527
+#: src/modules/raweditor/raweditor.cpp:526
 msgid "Raw Editor"
 msgstr "Nyers Szerkesztő"
 
@@ -1138,12 +1139,12 @@ msgstr "Nyers Szerkesztő"
 msgid "Raw Event"
 msgstr "Nyers Esemény"
 
-#: src/modules/eventeditor/eventeditor.cpp:205
-#: src/modules/raweditor/raweditor.cpp:165
+#: src/modules/eventeditor/eventeditor.cpp:225
+#: src/modules/raweditor/raweditor.cpp:164
 msgid "Re&move Handler"
 msgstr "K&ezelő Eltávolítása"
 
-#: src/modules/popupeditor/popupeditor.cpp:1156
+#: src/modules/popupeditor/popupeditor.cpp:1154
 msgid "Re&move Popup"
 msgstr "Felbukkanó &Eltávolítása"
 
@@ -1181,16 +1182,16 @@ msgstr "Névtér Átnevezése"
 msgid "Replace file"
 msgstr "Fájl cseréje"
 
-#: src/modules/editor/scripteditor.cpp:1032
+#: src/modules/editor/scripteditor.cpp:1038
 msgid "Replace with"
 msgstr "Csere erre"
 
-#: src/modules/editor/scripteditor.cpp:951
+#: src/modules/editor/scripteditor.cpp:957
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Sor: %d Oszlop: %d"
 
-#: src/modules/editor/scripteditor.cpp:892
+#: src/modules/editor/scripteditor.cpp:898
 msgid "Save Failed - KVIrc"
 msgstr "Mentés Sikertelen - KVIrc"
 
@@ -1327,7 +1328,7 @@ msgid "Unable to write to the actions file."
 msgstr "Az akciók fájl írása sikertelen."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:823
-#: src/modules/popupeditor/popupeditor.cpp:1244
+#: src/modules/popupeditor/popupeditor.cpp:1242
 msgid "Unable to write to the alias file."
 msgstr "Az alias fájl írása sikertelen."
 
@@ -1335,23 +1336,23 @@ msgstr "Az alias fájl írása sikertelen."
 msgid "Unable to write to the class file."
 msgstr "Az osztály fájl írása sikertelen."
 
-#: src/modules/eventeditor/eventeditor.cpp:453
+#: src/modules/eventeditor/eventeditor.cpp:473
 msgid "Unable to write to the event file."
 msgstr "Az esemény fájl írása sikertelen."
 
-#: src/modules/eventeditor/eventeditor.cpp:491
+#: src/modules/eventeditor/eventeditor.cpp:511
 msgid "Unable to write to the events file."
 msgstr "Az esemény fájl írása sikertelen."
 
-#: src/modules/popupeditor/popupeditor.cpp:1197
+#: src/modules/popupeditor/popupeditor.cpp:1195
 msgid "Unable to write to the popup file."
 msgstr "A felbukkanó írása sikertelen."
 
-#: src/modules/raweditor/raweditor.cpp:429
+#: src/modules/raweditor/raweditor.cpp:428
 msgid "Unable to write to the raw event file."
 msgstr "A nyers esemény fájl írása sikertelen."
 
-#: src/modules/raweditor/raweditor.cpp:464
+#: src/modules/raweditor/raweditor.cpp:463
 msgid "Unable to write to the raw events file."
 msgstr "A nyers események fájlba írása sikertelen."
 
@@ -1359,7 +1360,7 @@ msgstr "A nyers események fájlba írása sikertelen."
 msgid "Unable to write to the toolbar file."
 msgstr "Az eszköztár fájl írása sikertelen."
 
-#: src/modules/editor/scripteditor.cpp:531
+#: src/modules/editor/scripteditor.cpp:537
 msgid "Variables:"
 msgstr "Változók: "
 
@@ -1379,19 +1380,19 @@ msgstr ""
 "Látható rövid leírás az akcióhoz.<br> Ez a karaktersor fog a felhasználónak "
 "megjelenni. Itt érdemes a $tr() függvényt használni."
 
-#: src/modules/editor/scripteditor.cpp:1023
+#: src/modules/editor/scripteditor.cpp:1029
 msgid "Word to Find"
 msgstr "Keresendő Szó"
 
 #: src/modules/actioneditor/actioneditor.cpp:727
 #: src/modules/aliaseditor/aliaseditor.cpp:823
 #: src/modules/classeditor/classeditor.cpp:1220
-#: src/modules/eventeditor/eventeditor.cpp:453
-#: src/modules/eventeditor/eventeditor.cpp:491
-#: src/modules/popupeditor/popupeditor.cpp:1197
-#: src/modules/popupeditor/popupeditor.cpp:1244
-#: src/modules/raweditor/raweditor.cpp:429
-#: src/modules/raweditor/raweditor.cpp:464
+#: src/modules/eventeditor/eventeditor.cpp:473
+#: src/modules/eventeditor/eventeditor.cpp:511
+#: src/modules/popupeditor/popupeditor.cpp:1195
+#: src/modules/popupeditor/popupeditor.cpp:1242
+#: src/modules/raweditor/raweditor.cpp:428
+#: src/modules/raweditor/raweditor.cpp:463
 #: src/modules/toolbareditor/toolbareditor.cpp:458
 msgid "Write Failed - KVIrc"
 msgstr "Írás Sikertelen - KVIrc"
@@ -1420,8 +1421,8 @@ msgstr "Meg kell adnod egy érvényes nevet az aliasnak"
 msgid "You must specify a valid name for the namespace"
 msgstr "Meg kell adnod egy érvényes nevet a névtérnek"
 
-#: src/modules/eventeditor/eventeditor.cpp:265
-#: src/modules/raweditor/raweditor.cpp:258
+#: src/modules/eventeditor/eventeditor.cpp:285
+#: src/modules/raweditor/raweditor.cpp:257
 msgid "default"
 msgstr "alapértelmezett"
 
@@ -1429,12 +1430,12 @@ msgstr "alapértelmezett"
 msgid "inherits from class "
 msgstr "öröklött az osztályból "
 
-#: src/modules/eventeditor/eventeditor.cpp:389
+#: src/modules/eventeditor/eventeditor.cpp:409
 msgid "none"
 msgstr "nincs"
 
-#: src/modules/eventeditor/eventeditor.cpp:227
-#: src/modules/popupeditor/popupeditor.cpp:1343
-#: src/modules/raweditor/raweditor.cpp:192
+#: src/modules/eventeditor/eventeditor.cpp:247
+#: src/modules/popupeditor/popupeditor.cpp:1341
+#: src/modules/raweditor/raweditor.cpp:191
 msgid "unnamed"
 msgstr "névtelen"

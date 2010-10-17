@@ -10,10 +10,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt_BR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-10 23:23+0200\n"
+"POT-Creation-Date: 2010-10-17 18:58+0200\n"
 "PO-Revision-Date: 2005-05-26 22:52+0000\n"
 "Last-Translator: \n"
 "Language-Team:  <pt@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,8 +30,8 @@ msgstr " bytes"
 msgid " days"
 msgstr ""
 
-#: src/modules/options/optw_ircview.cpp:155
 #: src/modules/options/optw_query.cpp:98
+#: src/modules/options/optw_ircview.cpp:155
 #: src/modules/options/optw_channel.cpp:136
 msgid " lines"
 msgstr " linhas"
@@ -39,12 +40,12 @@ msgstr " linhas"
 msgid " min"
 msgstr ""
 
-#: src/modules/options/optw_ircview.cpp:157
-#: src/modules/options/optw_ircview.cpp:159
-#: src/modules/options/optw_connection.cpp:155
 #: src/modules/options/optw_dcc.cpp:276
 #: src/modules/options/optw_lag.cpp:45
 #: src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_ircview.cpp:157
+#: src/modules/options/optw_ircview.cpp:159
+#: src/modules/options/optw_connection.cpp:155
 msgid " msec"
 msgstr " mseg"
 
@@ -58,11 +59,11 @@ msgid " requests"
 msgstr " pedidos"
 
 #: src/modules/options/optw_avatar.cpp:96
-#: src/modules/options/optw_ctcpfloodprotection.cpp:92
+#: src/modules/options/optw_dcc.cpp:140
+#: src/modules/options/optw_channel.cpp:121
 #: src/modules/options/optw_connection.cpp:85
 #: src/modules/options/optw_connection.cpp:153
-#: src/modules/options/optw_channel.cpp:121
-#: src/modules/options/optw_dcc.cpp:140
+#: src/modules/options/optw_ctcpfloodprotection.cpp:92
 msgid " sec"
 msgstr " segundos"
 
@@ -86,7 +87,7 @@ msgstr "&Procurar..."
 msgid "&Copy Server"
 msgstr "&Copiar Servidor"
 
-#: src/modules/options/optw_mediatypes.cpp:145
+#: src/modules/options/optw_mediatypes.cpp:135
 msgid "&New"
 msgstr "&Novo"
 
@@ -98,10 +99,10 @@ msgstr "&Novo Proxy"
 msgid "&New Server"
 msgstr "&Novo Servidor"
 
+#: src/modules/options/container.cpp:72
 #: src/modules/options/optw_servers.cpp:366
 #: src/modules/options/optw_identity.cpp:234
 #: src/modules/options/dialog.cpp:229
-#: src/modules/options/container.cpp:72
 msgid "&OK"
 msgstr "&Aceitar"
 
@@ -141,7 +142,7 @@ msgstr "Manipulador de comando <b>https://</b>:"
 msgid "<b>mailto:</b> handler command:"
 msgstr "Manipulador de comando <b>mailto:</b>:"
 
-#: src/modules/options/optw_ctcp.cpp:40
+#: src/modules/options/optw_ctcp.cpp:39
 #, fuzzy
 msgid ""
 "<center><b>Settings for CTCP.</b></center><p>The <b>Client-To-Client "
@@ -180,8 +181,8 @@ msgid ""
 "<br>Please note that these methods may NOT work when communicating with a "
 "non-KVIrc client.</center>"
 msgstr ""
-"<center>Ative esta opÃ§Ã£o se nÃ£o consegue aceitar conexÃµes.<br>O KVirc "
-"irÃ¡ tentar usar diferentes mÃ©todos para enviar e receber arquivos.<br>Por "
+"<center>Ative esta opÃ§Ã£o se nÃ£o consegue aceitar conexÃµes.<br>O KVirc irÃ"
+"¡ tentar usar diferentes mÃ©todos para enviar e receber arquivos.<br>Por "
 "favor note que este mÃ©todo pode NÃO funcionar quando estiver se comunicando "
 "com clientes que nÃ£o utilizem o KVirc.</center>"
 
@@ -214,8 +215,9 @@ msgid ""
 msgstr ""
 "<center>Ative esta opÃ§Ã£o quando a transferÃªncia de arquivos por DCC tenda "
 "a bloquear o seu computador ao consumir demasiadamente o tempo da CPU. "
-"Quando esta opÃ§Ã£o estÃ¡ ativa o intervalo de inatividade serÃ¡ "
-"forÃ§adamente inserido entre os pacotes de dados enviados/recebidos.</center>"
+"Quando esta opÃ§Ã£o estÃ¡ ativa o intervalo de inatividade serÃ"
+"¡ forÃ§adamente inserido entre os pacotes de dados enviados/recebidos.</"
+"center>"
 
 #: src/modules/options/optw_identity.cpp:64
 msgid ""
@@ -335,8 +337,8 @@ msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
 msgstr ""
-"<center>Se esta opÃ§Ã£o estiver habilitada, a Janela de Servidores "
-"aparecerÃ¡ toda vez que vocÃª executar o KVIrc</center>"
+"<center>Se esta opÃ§Ã£o estiver habilitada, a Janela de Servidores aparecerÃ"
+"¡ toda vez que vocÃª executar o KVIrc</center>"
 
 #: src/modules/options/optw_highlighting.cpp:98
 #, fuzzy
@@ -344,8 +346,8 @@ msgid ""
 "<center>If this option is enabled, the window list will also alert for "
 "messages which are shown in queries.</center>"
 msgstr ""
-"<center>Se esta opÃ§Ã£o estiver ativa, a barra de tarefas tambÃ©m irÃ¡ "
-"alertar para mensagens exibidas nos queries.</center>"
+"<center>Se esta opÃ§Ã£o estiver ativa, a barra de tarefas tambÃ©m irÃ"
+"¡ alertar para mensagens exibidas nos queries.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:95
 #, fuzzy
@@ -353,8 +355,8 @@ msgid ""
 "<center>If this option is enabled, the window list will also alert for "
 "messages which contain a word from the highlighted words list above.</center>"
 msgstr ""
-"<center>Se esta opÃ§Ã£o estiver ativa, a barra de tarefas tambÃ©m irÃ¡ "
-"alertar para mensagens que contenham uma palavra da lista de palavras "
+"<center>Se esta opÃ§Ã£o estiver ativa, a barra de tarefas tambÃ©m irÃ"
+"¡ alertar para mensagens que contenham uma palavra da lista de palavras "
 "destacadas.</center>"
 
 #: src/modules/options/optw_servers.cpp:560
@@ -409,8 +411,8 @@ msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
 "center>"
 msgstr ""
-"<center>Valor mÃ­nimo: <b>0 segundos</b><br>Valor mÃ¡ximo: <b>86400 "
-"segundos</b></center>"
+"<center>Valor mÃ­nimo: <b>0 segundos</b><br>Valor mÃ¡ximo: <b>86400 segundos</"
+"b></center>"
 
 #: src/modules/options/optw_query.cpp:99
 #: src/modules/options/optw_channel.cpp:137
@@ -419,8 +421,8 @@ msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
 "center>"
 msgstr ""
-"<center>Valor mÃ­nimo: <b>0 segundos</b><br>Valor mÃ¡ximo: <b>86400 "
-"segundos</b></center>"
+"<center>Valor mÃ­nimo: <b>0 segundos</b><br>Valor mÃ¡ximo: <b>86400 segundos</"
+"b></center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:88
 msgid ""
@@ -435,16 +437,15 @@ msgid ""
 "<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></"
 "center>"
 msgstr ""
-"<center>Valor mÃ­nimo: <b>0 segundos</b><br>Valor mÃ¡ximo: <b>86400 "
-"segundos</b></center>"
+"<center>Valor mÃ­nimo: <b>0 segundos</b><br>Valor mÃ¡ximo: <b>86400 segundos</"
+"b></center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:93
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
 msgstr ""
-"<center>Valor mÃ­nimo: <b>1 seg</b><br>Valor mÃ¡ximo: <b>3600 seg</b></"
-"center>"
+"<center>Valor mÃ­nimo: <b>1 seg</b><br>Valor mÃ¡ximo: <b>3600 seg</b></center>"
 
 #: src/modules/options/optw_connection.cpp:160
 msgid ""
@@ -476,8 +477,8 @@ msgid ""
 "<br>Most clients can handle this kind of optimisation so disable it only if "
 "you have problems.</center>"
 msgstr ""
-"<center>O mÃ©todo DCC \"send ahead\" permite que os dados sejam enviados "
-"rÃ¡pidamente ao quebrar algumas das regras do protocolo original DCC SEND."
+"<center>O mÃ©todo DCC \"send ahead\" permite que os dados sejam enviados rÃ"
+"¡pidamente ao quebrar algumas das regras do protocolo original DCC SEND."
 "<br>Muitos clientes podem tratar este tipo de otimizaÃ§Ã£o, entÃ£o desative-"
 "o apenas se tiver problemas.</center>"
 
@@ -668,8 +669,8 @@ msgstr ""
 "KVirc procure o nome de mÃ¡quina do servidor apenas uma vez."
 "<br><br>AvanÃ§ado: vocÃª tambÃ©m pode usar esta opÃ§Ã£o para forÃ§ar um "
 "certo nome de servidor a resolver para um endereÃ§o IP fixo quando o dns "
-"para esse servidor estiver temporariamente indisponÃ­vel ou quiser evitar "
-"uma procura demorada.</center>"
+"para esse servidor estiver temporariamente indisponÃ­vel ou quiser evitar uma "
+"procura demorada.</center>"
 
 #: src/modules/options/optw_lag.cpp:42
 msgid ""
@@ -687,7 +688,7 @@ msgid ""
 "with the same hostname and port in different networks (bouncers?)</center>"
 msgstr ""
 
-#: src/modules/options/optw_mediatypes.cpp:123
+#: src/modules/options/optw_mediatypes.cpp:116
 msgid ""
 "<center>This field contains the command to execute to open a local file."
 "<br><tt>$0</tt> is used in place of the filename</center>"
@@ -695,7 +696,7 @@ msgstr ""
 "<center>Este campo contem o comando para executar a abertura de um arquivo "
 "local.<br><tt>$0</tt> Ã© usado no lugar do nome do arquivo</center>"
 
-#: src/modules/options/optw_mediatypes.cpp:131
+#: src/modules/options/optw_mediatypes.cpp:123
 msgid ""
 "<center>This field contains the command to execute when automatically "
 "opening a received file.<br><tt>$0</tt> is used in place of the filename</"
@@ -761,12 +762,11 @@ msgid ""
 msgstr ""
 "<center>Esta Ã© a lista das regras de identificaÃ§Ã£o do NickServ. O KVirc "
 "irÃ¡ utilizÃ¡-las para modelar a sua interacÃ§Ã£o automÃ¡tica com o NickServ."
-"<br>Por favor tenha atenÃ§Ã£o porque esta caracterÃ­stica pode causar o "
-"roubo da sua senha do NickServ se for utilizada inaprÃ³priadamente. "
-"Certifique-se que compreendeu completamente o protocolo de autenticaÃ§Ã£o do "
-"NickServ. <br>Em outras palavras, tenha a certeza do que fazendo.<br>Note "
-"tambÃ©m que a senha que vocÃª forneceu Ã© salva como<b>TEXTO SIMPLES</b></"
-"center>"
+"<br>Por favor tenha atenÃ§Ã£o porque esta caracterÃ­stica pode causar o roubo "
+"da sua senha do NickServ se for utilizada inaprÃ³priadamente. Certifique-se "
+"que compreendeu completamente o protocolo de autenticaÃ§Ã£o do NickServ. "
+"<br>Em outras palavras, tenha a certeza do que fazendo.<br>Note tambÃ©m que "
+"a senha que vocÃª forneceu Ã© salva como<b>TEXTO SIMPLES</b></center>"
 
 #: src/modules/options/optw_identity.cpp:727
 msgid ""
@@ -851,7 +851,7 @@ msgstr ""
 "</br>Basicamente, vocÃª pode preencher com alguma palavra que vocÃª goste "
 "aqui. :D</center>"
 
-#: src/modules/options/optw_ctcp.cpp:66
+#: src/modules/options/optw_ctcp.cpp:65
 msgid ""
 "<center>This is the CTCP PAGE reply.<br>It should contain some sort of "
 "acknowledgement for CTCP PAGE messages.</center>"
@@ -870,8 +870,8 @@ msgstr ""
 "<center>Este Ã© o endereÃ§o IP ou nome de interface para ser usada por padrÃ"
 "£o para envio de transferÃªncias DCC. <br>Em sistemas UNIX que suportam "
 "isto, vocÃª tambÃ©m pode especificar nomes de interfaces IPv4 (tais como "
-"<b>ppp0</b>).<br>Se vocÃª definir para utilizar <b>0.0.0.0</b>, o KVirc irÃ¡ "
-"tentar usar a primeira interface IPv4 disponÃ­vel.</center>"
+"<b>ppp0</b>).<br>Se vocÃª definir para utilizar <b>0.0.0.0</b>, o KVirc irÃ"
+"¡ tentar usar a primeira interface IPv4 disponÃ­vel.</center>"
 
 #: src/modules/options/optw_dcc.cpp:141
 msgid ""
@@ -947,8 +947,8 @@ msgid ""
 "<center>This is the list of available proxy servers.<br>Right-click on the "
 "list to add or remove proxies.</center>"
 msgstr ""
-"<center>Esta Ã© a lista de servidores proxy disponÃ­veis.<br>Clique com o "
-"botÃ£o direito- na lista para adicionar ou remover proxies.</center>"
+"<center>Esta Ã© a lista de servidores proxy disponÃ­veis.<br>Clique com o botÃ"
+"£o direito- na lista para adicionar ou remover proxies.</center>"
 
 #: src/modules/options/optw_dcc.cpp:135
 msgid ""
@@ -1004,8 +1004,8 @@ msgid ""
 msgstr ""
 "<center>Esta opÃ§Ã£o lhe permite definir o intervalo de batimento do medidor "
 "de lag.<br>Quanto mais baixo for o intervalo de batimento maior serÃ¡ a "
-"exatidÃ£o da verificaÃ§Ã£o do lag mas tambÃ©m maior serÃ¡ o uso do CPU e "
-"trÃ¡fego de dados para o servidor.<br>Por favor note que NÃO Ã© o intervalo "
+"exatidÃ£o da verificaÃ§Ã£o do lag mas tambÃ©m maior serÃ¡ o uso do CPU e trÃ"
+"¡fego de dados para o servidor.<br>Por favor note que NÃO Ã© o intervalo "
 "entre os pings enviados para o servidor: os pings (se algum) serÃ£o enviados "
 "com muito menos frequÃªncia. 5000 Ã© o valor razoÃ¡vel .</center>"
 
@@ -1064,8 +1064,8 @@ msgstr ""
 "problemÃ¡ticos.<br>Utilize-o apenas se sua transferÃªncia DCC parar logo "
 "apÃ³s estabelecer uma conexÃ£o sem enviar quaisquer dados.</center> "
 
+#: src/modules/options/optw_dcc.cpp:331
 #: src/modules/options/optw_query.cpp:82
-#: src/modules/options/optw_dcc.cpp:332
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1098,7 +1098,7 @@ msgstr ""
 "janelas de query sejam instantaneamente exibidas enquanto esitiver digitando "
 "algo em um canal. :D</center>"
 
-#: src/modules/options/optw_dcc.cpp:326
+#: src/modules/options/optw_dcc.cpp:325
 #, fuzzy
 msgid ""
 "<center>This option causes the system taskbar entry for KVIrc to flash when "
@@ -1148,10 +1148,9 @@ msgid ""
 "(NOTICE) is received.<br>If you disable this, private notices will be shown "
 "in the active window or a common channel.</center>"
 msgstr ""
-"<center>Esta opÃ§Ã£o permite a criaÃ§Ã£o da janela de privado quando uma "
-"notÃ­cia privada (NOTICE) for recebida.<br>Se vocÃª desabilitar isto, as "
-"notÃ­cias privadas serÃ£o exibidas na janela ativa ou em um canal comum.</"
-"center>"
+"<center>Esta opÃ§Ã£o permite a criaÃ§Ã£o da janela de privado quando uma notÃ­"
+"cia privada (NOTICE) for recebida.<br>Se vocÃª desabilitar isto, as notÃ­cias "
+"privadas serÃ£o exibidas na janela ativa ou em um canal comum.</center>"
 
 #: src/modules/options/optw_query.cpp:87
 msgid ""
@@ -1228,8 +1227,8 @@ msgid ""
 "<center>This option sets the minimum alert level for the window list.</"
 "center>"
 msgstr ""
-"<center>Esta opÃ§Ã£o define o nÃ­vel de alerta mÃ­nimo para a barra de "
-"tarefas.</center>"
+"<center>Esta opÃ§Ã£o define o nÃ­vel de alerta mÃ­nimo para a barra de tarefas."
+"</center>"
 
 #: src/modules/options/optw_channel.cpp:57
 msgid ""
@@ -1432,9 +1431,8 @@ msgid ""
 "target user (e.g. joins and parts) will be displayed in the window.<br></"
 "center>"
 msgstr ""
-"<center>Esta opÃ§Ã£o permitirÃ¡ seguir um usuÃ¡rio. Algumas aÃ§Ãµes do "
-"usuÃ¡rio (ex: entrar e sair de um canal) serÃ£o exibidas na janela.<br></"
-"center>"
+"<center>Esta opÃ§Ã£o permitirÃ¡ seguir um usuÃ¡rio. Algumas aÃ§Ãµes do usuÃ"
+"¡rio (ex: entrar e sair de um canal) serÃ£o exibidas na janela.<br></center>"
 
 #: src/modules/options/optw_avatar.cpp:43
 msgid ""
@@ -1482,7 +1480,7 @@ msgstr ""
 "<br>Pretende-se que seja seu nome real, mas as pessoas tendem a pÃ´r aqui "
 "citaÃ§Ãµes e frases aleatÃ³rias .</center>"
 
-#: src/modules/options/optw_ctcp.cpp:56
+#: src/modules/options/optw_ctcp.cpp:55
 msgid ""
 "<center>This text will be appended to the CTCP SOURCE reply.<br>For example, "
 "you can place the source URL for a script here.</center>"
@@ -1490,7 +1488,7 @@ msgstr ""
 "<center>Este texto serÃ¡ anexado Ã  resposta CTCP SOURCE. <br>Por exemplo, "
 "pode substituir aqui a URL da origem de um script.</center>"
 
-#: src/modules/options/optw_ctcp.cpp:51
+#: src/modules/options/optw_ctcp.cpp:50
 msgid ""
 "<center>This text will be appended to the CTCP VERSION reply.<br>For "
 "example, you can place a script name here.</center>"
@@ -1563,8 +1561,8 @@ msgid ""
 "server belongs to, and if that is empty then the default nickname (specified "
 "in the \"Identity\" settings) will be used.</center>"
 msgstr ""
-"<center>VocÃª pode especificar um <b>Apelido</b> \"especial\" que serÃ¡ "
-"utilizado para entrar neste servidor.<br>Se deixar este campo vazio (caso "
+"<center>VocÃª pode especificar um <b>Apelido</b> \"especial\" que serÃ"
+"¡ utilizado para entrar neste servidor.<br>Se deixar este campo vazio (caso "
 "mais comum), o KVirc irÃ¡ primeiro procurar se um apelido estÃ¡ especificado "
 "para a rede que este servidor pertence, e se estiver vazio o Apelido padrÃ£o "
 "(especificado nas configuraÃ§oes de \"Identidade\") serÃ¡ usado.</center>"
@@ -1589,10 +1587,10 @@ msgid ""
 "server belongs to, and if that is empty the default \"real name\" (specified "
 "in the \"Identity\" settings) will be used.</center>"
 msgstr ""
-"<center>Pode especificar um <b>nome real</b> \"especial\" que serÃ¡ "
-"utilizado para entrar neste servidor.<br>Se deixar este campo vazio (caso "
-"mais comum), o KVirc irÃ¡ primeiro procurar se um nome real estÃ¡ "
-"especificado para a rede que este servidor pertence, e se estiver vazio o"
+"<center>Pode especificar um <b>nome real</b> \"especial\" que serÃ"
+"¡ utilizado para entrar neste servidor.<br>Se deixar este campo vazio (caso "
+"mais comum), o KVirc irÃ¡ primeiro procurar se um nome real estÃ"
+"¡ especificado para a rede que este servidor pertence, e se estiver vazio o"
 "\"nome real\" padrÃ£o (especificado nas configuraÃ§Ãµes de \"Identidade\") "
 "serÃ¡ usado.</center>"
 
@@ -1696,23 +1694,23 @@ msgstr "Adicionar"
 msgid "Add Profile"
 msgstr "PrÃ³logo"
 
-#: src/modules/options/optw_nickserv.cpp:264
 #: src/modules/options/optw_servers.cpp:332
+#: src/modules/options/optw_nickserv.cpp:264
 msgid "Add Rule"
 msgstr "Adicionar Regra"
 
 #: src/modules/options/optw_servers.cpp:972
+#: src/modules/options/optw_identity.h:202
+#: src/modules/options/optw_irc.h:57
 #: src/modules/options/optw_dcc.h:58
 #: src/modules/options/optw_dcc.h:102
-#: src/modules/options/optw_irc.h:57
 #: src/modules/options/optw_channel.h:64
-#: src/modules/options/optw_identity.h:202
 #: src/modules/options/optw_connection.h:45
 msgid "Advanced"
 msgstr "AvanÃ§ado"
 
-#: src/modules/options/optw_notifier.cpp:206
 #: src/modules/options/optw_notify.cpp:60
+#: src/modules/options/optw_notifier.cpp:206
 msgid "Advanced configuration"
 msgstr "ConfiguraÃ§Ã£o avanÃ§ada"
 
@@ -1800,7 +1798,7 @@ msgstr "Apelido Alt. 1:"
 msgid "Alternatives..."
 msgstr "Alternativos..."
 
-#: src/modules/options/optw_dcc.cpp:317
+#: src/modules/options/optw_dcc.cpp:318
 #, fuzzy
 msgid "Always open as minimized"
 msgstr "Abrir todos minimizados"
@@ -1823,11 +1821,11 @@ msgstr ""
 msgid "Anti-spam"
 msgstr "Anti-spam"
 
-#: src/modules/options/optw_ctcp.cpp:53
+#: src/modules/options/optw_ctcp.cpp:52
 msgid "Append to SOURCE reply:"
 msgstr "Anexar Ã  resposta SOURCE:"
 
-#: src/modules/options/optw_ctcp.cpp:48
+#: src/modules/options/optw_ctcp.cpp:47
 msgid "Append to VERSION reply:"
 msgstr "Anexar Ã  resposta VERSION:"
 
@@ -1855,7 +1853,7 @@ msgstr "Log AutomÃ¡tico"
 
 #: src/modules/options/optw_dcc.cpp:175
 #: src/modules/options/optw_dcc.cpp:314
-#: src/modules/options/optw_dcc.cpp:350
+#: src/modules/options/optw_dcc.cpp:349
 msgid "Automatically accept"
 msgstr "Aceitar automaticamente"
 
@@ -1925,13 +1923,13 @@ msgstr "Ausente"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:164
 #: src/modules/options/optw_interfacelookglobal.cpp:184
-#: src/modules/options/optw_windowlist.h:79
 #: src/modules/options/optw_userlist.h:46
+#: src/modules/options/optw_windowlist.h:79
 msgid "Background"
 msgstr "Plano de fundo"
 
-#: src/modules/options/optw_userlist.cpp:126
 #: src/modules/options/optw_windowlist.cpp:119
+#: src/modules/options/optw_userlist.cpp:126
 msgid "Background Colors"
 msgstr "Cores de fundo"
 
@@ -1956,9 +1954,9 @@ msgstr "Cor de fundo:"
 msgid "Background image"
 msgstr "Imagem de fundo"
 
-#: src/modules/options/optw_ircview.cpp:54
-#: src/modules/options/optw_userlist.cpp:131
 #: src/modules/options/optw_windowlist.cpp:123
+#: src/modules/options/optw_userlist.cpp:131
+#: src/modules/options/optw_ircview.cpp:54
 msgid "Background image:"
 msgstr "Imagem de fundo:"
 
@@ -1983,11 +1981,11 @@ msgstr "Fazer conexÃµes IPv4 usando:"
 msgid "Blend color:"
 msgstr "Cor de Mistura:"
 
-#: src/modules/options/optw_ircview.cpp:71
+#: src/modules/options/optw_windowlist.cpp:140
 #: src/modules/options/optw_notifier.cpp:61
 #: src/modules/options/optw_userlist.cpp:148
-#: src/modules/options/optw_windowlist.cpp:140
 #: src/modules/options/optw_input.cpp:63
+#: src/modules/options/optw_ircview.cpp:71
 msgid "Bottom"
 msgstr "Abaixo"
 
@@ -2007,7 +2005,7 @@ msgstr "CLIENTINFO"
 msgid "CTCP"
 msgstr "CTCP"
 
-#: src/modules/options/optw_ctcp.cpp:47
+#: src/modules/options/optw_ctcp.cpp:46
 #, fuzzy
 msgid "CTCP Replies"
 msgstr "Respostas"
@@ -2016,27 +2014,27 @@ msgstr "Respostas"
 msgid "Cache IP address"
 msgstr "Armazenar endereÃ§o IP"
 
-#: src/modules/options/optw_nickserv.cpp:128
+#: src/modules/options/container.cpp:80
 #: src/modules/options/optw_servers.cpp:372
 #: src/modules/options/optw_servers.cpp:982
 #: src/modules/options/optw_identity.cpp:96
 #: src/modules/options/optw_identity.cpp:239
 #: src/modules/options/optw_identity.cpp:953
 #: src/modules/options/dialog.cpp:244
-#: src/modules/options/container.cpp:80
+#: src/modules/options/optw_nickserv.cpp:128
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/modules/options/optw_ircview.cpp:67
-#: src/modules/options/optw_ircview.cpp:72
+#: src/modules/options/optw_windowlist.cpp:136
+#: src/modules/options/optw_windowlist.cpp:141
 #: src/modules/options/optw_notifier.cpp:57
 #: src/modules/options/optw_notifier.cpp:62
 #: src/modules/options/optw_userlist.cpp:144
 #: src/modules/options/optw_userlist.cpp:149
-#: src/modules/options/optw_windowlist.cpp:136
-#: src/modules/options/optw_windowlist.cpp:141
 #: src/modules/options/optw_input.cpp:59
 #: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_ircview.cpp:67
+#: src/modules/options/optw_ircview.cpp:72
 #, fuzzy
 msgid "Center"
 msgstr "Geral"
@@ -2107,11 +2105,11 @@ msgstr "Opacidade da janela criada:"
 msgid "Choose Avatar - KVIrc"
 msgstr "Escolha o Avatar - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:560
+#: src/modules/options/optw_messages.cpp:556
 msgid "Choose a Filename - KVIrc"
 msgstr "Escolha um arquivo - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:614
+#: src/modules/options/optw_messages.cpp:610
 msgid "Choose a Filename - KVIrc "
 msgstr "Escolher Nome de Arquivo - KVIrc "
 
@@ -2142,13 +2140,13 @@ msgstr "Limpar Lista"
 msgid "Close in tray"
 msgstr "Minimizar novos privados"
 
-#: src/modules/options/dialog.cpp:231
 #: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:231
 msgid "Close this dialog, accepting all changes."
 msgstr "Fecha esta caixa de diÃ¡logo, aceitando todas as alteraÃ§Ãµes."
 
-#: src/modules/options/dialog.cpp:246
 #: src/modules/options/container.cpp:81
+#: src/modules/options/dialog.cpp:246
 msgid "Close this dialog, discarding all changes."
 msgstr "Fecha esta caixa de diÃ¡logo, rejeitando todas as alteraÃ§Ãµes."
 
@@ -2166,9 +2164,9 @@ msgid "Commit all changes immediately."
 msgstr "Aplicar as alteraÃ§Ãµes imediatamente."
 
 #: src/modules/options/optw_notify.cpp:41
+#: src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_proxy.cpp:106
 #: src/modules/options/optw_connection.cpp:221
-#: src/modules/options/optw_lag.cpp:43
 msgid "Configuration"
 msgstr "ConfiguraÃ§Ã£o"
 
@@ -2311,19 +2309,19 @@ msgstr "Deletar"
 msgid "Delete Profile"
 msgstr "Deletar Regra"
 
-#: src/modules/options/optw_nickserv.cpp:272
 #: src/modules/options/optw_servers.cpp:341
+#: src/modules/options/optw_nickserv.cpp:272
 msgid "Delete Rule"
 msgstr "Deletar Regra"
 
-#: src/modules/options/optw_servers.cpp:1241
 #: src/modules/options/optw_mediatypes.cpp:79
+#: src/modules/options/optw_servers.cpp:1241
 msgid "Description"
 msgstr "DescriÃ§Ã£o"
 
+#: src/modules/options/optw_mediatypes.cpp:87
 #: src/modules/options/optw_servers.cpp:117
 #: src/modules/options/optw_servers.cpp:518
-#: src/modules/options/optw_mediatypes.cpp:88
 msgid "Description:"
 msgstr "DescriÃ§Ã£o:"
 
@@ -2423,8 +2421,8 @@ msgstr "Exibir tÃ³pico do canal"
 msgid "Edit Profile"
 msgstr "PrÃ³logo"
 
-#: src/modules/options/optw_nickserv.cpp:268
 #: src/modules/options/optw_servers.cpp:337
+#: src/modules/options/optw_nickserv.cpp:268
 msgid "Edit Rule"
 msgstr "Editar Regra"
 
@@ -2441,8 +2439,8 @@ msgstr "Habilitar Ignore para "
 msgid "Enable Network Profiles"
 msgstr "Propriedades da Rede"
 
-#: src/modules/options/optw_nickserv.cpp:232
 #: src/modules/options/optw_servers.cpp:304
+#: src/modules/options/optw_nickserv.cpp:232
 msgid "Enable NickServ Identification"
 msgstr "Ativar IdentificaÃ§Ã£o do NickServ"
 
@@ -2585,16 +2583,16 @@ msgid ""
 "Failed to load the avatar image.<br>It may be an unaccessible file or an "
 "unsupported image format."
 msgstr ""
-"Falhou ao carregar a imagem de avatar.<br>Pode ser um arquivo inacessÃ­vel "
-"ou um formato de imagem nÃ£o suportado."
+"Falhou ao carregar a imagem de avatar.<br>Pode ser um arquivo inacessÃ­vel ou "
+"um formato de imagem nÃ£o suportado."
 
 #: src/modules/options/optw_identity.cpp:161
 msgid "Failed to start the download"
 msgstr "Falhou ao iniciar a transferÃªncia"
 
+#: src/modules/options/optw_userlist.h:103
 #: src/modules/options/optw_windowlist.h:98
 #: src/modules/options/optw_ircview.h:70
-#: src/modules/options/optw_userlist.h:103
 msgid "Features"
 msgstr ""
 
@@ -2606,11 +2604,11 @@ msgstr ""
 msgid "File Transfer"
 msgstr "TransferÃªncia de Arquivo"
 
-#: src/modules/options/optw_mediatypes.cpp:100
+#: src/modules/options/optw_mediatypes.cpp:97
 msgid "File pattern:"
 msgstr "PadrÃ£o de Arquivo:"
 
-#: src/modules/options/optw_dcc.cpp:324
+#: src/modules/options/optw_dcc.cpp:323
 #, fuzzy
 msgid "Flash system taskbar on new dcc chat message"
 msgstr ""
@@ -2635,19 +2633,19 @@ msgstr "ProteÃ§Ã£o de Flood"
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_notifier.cpp:38
-#: src/modules/options/optw_interfacelookglobal.cpp:182
 #: src/modules/options/optw_input.cpp:38
+#: src/modules/options/optw_interfacelookglobal.cpp:182
 msgid "Font"
 msgstr "Fonte"
 
-#: src/modules/options/optw_ircview.cpp:51
-#: src/modules/options/optw_userlist.cpp:52
 #: src/modules/options/optw_windowlist.cpp:85
 #: src/modules/options/optw_windowlist.cpp:244
+#: src/modules/options/optw_userlist.cpp:52
+#: src/modules/options/optw_ircview.cpp:51
 msgid "Font:"
 msgstr "Fonte:"
 
-#: src/modules/options/optw_dcc.cpp:355
+#: src/modules/options/optw_dcc.cpp:354
 msgid "Force half-duplex mode on sound device"
 msgstr "ForÃ§ar modo Half-duplex no dispositivo de som"
 
@@ -2663,8 +2661,8 @@ msgstr "ForÃ§ar quit imediato"
 msgid "Force language:"
 msgstr ""
 
-#: src/modules/options/optw_windowlist.h:64
 #: src/modules/options/optw_userlist.h:67
+#: src/modules/options/optw_windowlist.h:64
 msgid "Foreground"
 msgstr "Primeiro Plano"
 
@@ -2685,12 +2683,12 @@ msgstr "Geral"
 
 #: src/modules/options/optw_servers.cpp:242
 #: src/modules/options/optw_messages.cpp:71
-#: src/modules/options/optw_dcc.h:45
-#: src/modules/options/optw_dcc.h:88
+#: src/modules/options/optw_identity.h:153
 #: src/modules/options/optw_irc.h:43
 #: src/modules/options/optw_interfacelookglobal.h:33
+#: src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_dcc.h:88
 #: src/modules/options/optw_channel.h:52
-#: src/modules/options/optw_identity.h:153
 msgid "General"
 msgstr "Geral"
 
@@ -2796,10 +2794,10 @@ msgstr "SugestÃ£o: Mova o cursor do mouse sobre os campos para obter ajuda"
 msgid "Horizontal Alignment:"
 msgstr ""
 
-#: src/modules/options/optw_ircview.cpp:56
-#: src/modules/options/optw_notifier.cpp:46
 #: src/modules/options/optw_windowlist.cpp:125
+#: src/modules/options/optw_notifier.cpp:46
 #: src/modules/options/optw_input.cpp:48
+#: src/modules/options/optw_ircview.cpp:56
 #, fuzzy
 msgid "Horizontal align:"
 msgstr "Local do certificado:"
@@ -2848,7 +2846,7 @@ msgstr ""
 msgid "ISON delay (in seconds)"
 msgstr "Intervalo para ISON (em segundos)"
 
-#: src/modules/options/optw_mediatypes.cpp:134
+#: src/modules/options/optw_mediatypes.cpp:126
 msgid "Icon"
 msgstr "Ãcone"
 
@@ -2865,9 +2863,9 @@ msgstr "ServiÃ§o de ident"
 msgid "Ident username:"
 msgstr "Nome de usuÃ¡rio do ident:"
 
+#: src/modules/options/optw_servers.cpp:319
 #: src/modules/options/optw_nickserv.cpp:89
 #: src/modules/options/optw_nickserv.cpp:247
-#: src/modules/options/optw_servers.cpp:319
 msgid "Identify Command"
 msgstr "Comando de IdentificaÃ§Ã£o"
 
@@ -3004,11 +3002,11 @@ msgstr ""
 msgid "Languages:"
 msgstr ""
 
-#: src/modules/options/optw_ircview.cpp:65
+#: src/modules/options/optw_windowlist.cpp:134
 #: src/modules/options/optw_notifier.cpp:55
 #: src/modules/options/optw_userlist.cpp:142
-#: src/modules/options/optw_windowlist.cpp:134
 #: src/modules/options/optw_input.cpp:57
+#: src/modules/options/optw_ircview.cpp:65
 msgid "Left"
 msgstr "Esquerda"
 
@@ -3052,7 +3050,7 @@ msgstr "Escutar em um endereÃ§o/interface:"
 msgid "Load From..."
 msgstr "Carregar de...."
 
-#: src/modules/options/optw_mediatypes.cpp:118
+#: src/modules/options/optw_mediatypes.cpp:112
 msgid "Local open command:"
 msgstr "Comando de abertura local:"
 
@@ -3090,11 +3088,11 @@ msgstr "Porta mais baixa:"
 msgid "MIME Type"
 msgstr "Tipo de MIME"
 
-#: src/modules/options/optw_mediatypes.cpp:94
+#: src/modules/options/optw_mediatypes.cpp:92
 msgid "MIME type:"
 msgstr "Tipo de MIME:"
 
-#: src/modules/options/optw_mediatypes.cpp:106
+#: src/modules/options/optw_mediatypes.cpp:102
 msgid "Magic bytes:"
 msgstr "Bytes mÃ¡gicos:"
 
@@ -3223,7 +3221,7 @@ msgstr "Largura mÃ­nima dos botÃµes:"
 msgid "Minimum width:"
 msgstr "Largura mÃ­nima:"
 
-#: src/modules/options/optw_dcc.cpp:359
+#: src/modules/options/optw_dcc.cpp:358
 msgid "Mixer device:"
 msgstr "Dispositivo misturador:"
 
@@ -3298,7 +3296,7 @@ msgstr "Propriedades da Rede"
 msgid "Network:"
 msgstr "Rede:"
 
-#: src/modules/options/optw_mediatypes.cpp:240
+#: src/modules/options/optw_mediatypes.cpp:229
 msgid "New Media Type"
 msgstr "Novo Tipo de Midia"
 
@@ -3347,20 +3345,20 @@ msgstr "NickServ"
 msgid "NickServ Authentication Rule"
 msgstr "Rugras de AutenticaÃ§Ã£o do NickServ"
 
+#: src/modules/options/optw_servers.cpp:317
 #: src/modules/options/optw_nickserv.cpp:63
 #: src/modules/options/optw_nickserv.cpp:245
-#: src/modules/options/optw_servers.cpp:317
 msgid "NickServ Mask"
 msgstr "MÃ¡scara do NickServ"
 
-#: src/modules/options/optw_nickserv.cpp:246
 #: src/modules/options/optw_servers.cpp:318
+#: src/modules/options/optw_nickserv.cpp:246
 msgid "NickServ Request Mask"
 msgstr "Pedido da MÃ¡scara do NickServ"
 
-#: src/modules/options/optw_nickserv.cpp:243
 #: src/modules/options/optw_servers.cpp:316
 #: src/modules/options/optw_identity.cpp:720
+#: src/modules/options/optw_nickserv.cpp:243
 msgid "Nickname"
 msgstr "Apelido"
 
@@ -3401,11 +3399,11 @@ msgstr "Sem opÃ§Ãµes de nome de classe na pÃ¡gina"
 msgid "Normal"
 msgstr "Normal"
 
-#: src/modules/options/optw_userlist.cpp:55
-#: src/modules/options/optw_userlist.cpp:127
 #: src/modules/options/optw_windowlist.cpp:89
 #: src/modules/options/optw_windowlist.cpp:120
 #: src/modules/options/optw_windowlist.cpp:246
+#: src/modules/options/optw_userlist.cpp:55
+#: src/modules/options/optw_userlist.cpp:127
 msgid "Normal:"
 msgstr "Normal:"
 
@@ -3434,16 +3432,16 @@ msgstr "Notificar a conclusÃ£o no notificador"
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr "Notificar ao outro extremo as negociaÃ§Ãµes de DCC que falharem"
 
-#: src/modules/options/optw_nickserv.cpp:133
-#: src/modules/options/optw_nickserv.cpp:154
 #: src/modules/options/optw_servers.cpp:976
 #: src/modules/options/optw_identity.cpp:842
 #: src/modules/options/optw_identity.cpp:957
+#: src/modules/options/optw_nickserv.cpp:133
+#: src/modules/options/optw_nickserv.cpp:154
 msgid "OK"
 msgstr "Aceitar"
 
-#: src/modules/options/optw_identity.cpp:99
 #: src/modules/options/optw_textencoding.cpp:160
+#: src/modules/options/optw_identity.cpp:99
 msgid "Ok"
 msgstr "Aceitar"
 
@@ -3491,7 +3489,7 @@ msgstr "Em Login"
 msgid "On Unexpected Disconnect"
 msgstr "Ao Desconectar Inesperadamente "
 
-#: src/modules/options/optw_dcc.cpp:349
+#: src/modules/options/optw_dcc.cpp:348
 msgid "On Voice Request"
 msgstr "Em Pedido de Voice"
 
@@ -3523,12 +3521,12 @@ msgstr "Abrir Janela de DiÃ¡logo Para"
 msgid "Open Query For"
 msgstr "Abrir privado com"
 
-#: src/modules/options/optw_dcc.cpp:348
+#: src/modules/options/optw_dcc.cpp:347
 msgid "Open all minimized"
 msgstr "Abrir todos minimizados"
 
-#: src/modules/options/optw_dcc.cpp:315
-#: src/modules/options/optw_dcc.cpp:352
+#: src/modules/options/optw_dcc.cpp:316
+#: src/modules/options/optw_dcc.cpp:351
 msgid "Open minimized when auto-accepted"
 msgstr "Abrir minimizado quando aceitar automaticamente"
 
@@ -3564,7 +3562,7 @@ msgstr "SaÃ­da detalhada"
 msgid "PAGE"
 msgstr "PAGE"
 
-#: src/modules/options/optw_ctcp.cpp:63
+#: src/modules/options/optw_ctcp.cpp:62
 msgid "PAGE reply:"
 msgstr "Resposta PAGE:"
 
@@ -3646,7 +3644,7 @@ msgstr ""
 "completa para uma imagem (incluindo <b>http://</b>) pode ser digitada "
 "manualmente."
 
-#: src/modules/options/optw_dcc.cpp:330
+#: src/modules/options/optw_dcc.cpp:329
 #, fuzzy
 msgid "Popup notifier on new dcc chat message"
 msgstr "Popup do notificador ao receber uma nova mensagem de privado"
@@ -3672,7 +3670,7 @@ msgstr "Porta:"
 msgid "Postfix:"
 msgstr "Sufixo:"
 
-#: src/modules/options/optw_dcc.cpp:361
+#: src/modules/options/optw_dcc.cpp:360
 msgid "Pre-buffer size:"
 msgstr "Tamanho do Pre-buffer:"
 
@@ -3848,7 +3846,7 @@ msgstr "Quieto"
 msgid "Quit message:"
 msgstr "Mensagem de saÃ­da"
 
-#: src/modules/options/optw_mediatypes.cpp:149
+#: src/modules/options/optw_mediatypes.cpp:139
 msgid "Re&move"
 msgstr "Re&mover"
 
@@ -3905,7 +3903,7 @@ msgstr "Armazenar avatar para usuÃ¡rios registados"
 msgid "Remember window properties"
 msgstr "Lembrar propriedades da janela"
 
-#: src/modules/options/optw_mediatypes.cpp:126
+#: src/modules/options/optw_mediatypes.cpp:119
 msgid "Remote open command:"
 msgstr "Comando de abertura remota:"
 
@@ -3947,11 +3945,11 @@ msgstr "&Restaurar"
 msgid "Restrict alert"
 msgstr "Alerta restrito"
 
-#: src/modules/options/optw_ircview.cpp:66
+#: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_notifier.cpp:56
 #: src/modules/options/optw_userlist.cpp:143
-#: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_input.cpp:58
+#: src/modules/options/optw_ircview.cpp:66
 msgid "Right"
 msgstr "Direita"
 
@@ -3992,7 +3990,7 @@ msgstr "&LocalizaÃ§Ã£o:"
 msgid "Save logs to folder:"
 msgstr "NÃ£o foi possÃ­vel registar no arquivo %s"
 
-#: src/modules/options/optw_mediatypes.cpp:112
+#: src/modules/options/optw_mediatypes.cpp:107
 msgid "Save path:"
 msgstr "Salvar caminho:"
 
@@ -4025,10 +4023,10 @@ msgstr "Scripting"
 msgid "Select message levels to notify"
 msgstr ""
 
-#: src/modules/options/optw_userlist.cpp:56
-#: src/modules/options/optw_userlist.cpp:128
 #: src/modules/options/optw_windowlist.cpp:90
 #: src/modules/options/optw_windowlist.cpp:121
+#: src/modules/options/optw_userlist.cpp:56
+#: src/modules/options/optw_userlist.cpp:128
 msgid "Selected:"
 msgstr "Selecionado:"
 
@@ -4138,7 +4136,7 @@ msgstr "Exibir o tempo de sincronizaÃ§Ã£o do canal"
 msgid "Show compact mode changes"
 msgstr "Exibir mudanÃ§as de modo compactas"
 
-#: src/modules/options/optw_ctcp.cpp:70
+#: src/modules/options/optw_ctcp.cpp:69
 msgid "Show dialog for CTCP page requests"
 msgstr "Exibir janela de dialogo para pedidos de CTCP page"
 
@@ -4202,7 +4200,7 @@ msgstr "Exibir saÃ­das prÃ³prias no console"
 msgid "Show server pings"
 msgstr "Exibir pings do Servidor"
 
-#: src/modules/options/optw_ctcp.cpp:68
+#: src/modules/options/optw_ctcp.cpp:67
 msgid "Show the CTCP replies in the active window"
 msgstr "Exibe as respostas CTCP na janela ativa"
 
@@ -4266,7 +4264,7 @@ msgstr "Som"
 msgid "Sound System"
 msgstr "Sistema de Som"
 
-#: src/modules/options/optw_dcc.cpp:358
+#: src/modules/options/optw_dcc.cpp:357
 msgid "Sound device:"
 msgstr "Dispositivo de som:"
 
@@ -4393,8 +4391,8 @@ msgid "This allows you to select the sound system to be used with KVIrc."
 msgstr ""
 "Isto permite a vocÃª selecionar o sistema de som para ser usado com o KVIrc."
 
-#: src/modules/options/optw_nickserv.cpp:235
 #: src/modules/options/optw_servers.cpp:308
+#: src/modules/options/optw_nickserv.cpp:235
 msgid "This check enables the automatic identification with NickServ"
 msgstr "Esta caixa ativa a identificaÃ§Ã£o automÃ¡tica do Nickserv"
 
@@ -4464,9 +4462,9 @@ msgstr ""
 "Esta Ã© a mÃ¡scara que deve concordar com NickServ para ser corretamente "
 "identificado como o servicio NickServ. Habitualmente serÃ¡ algo como "
 "<b>NickServ!service@services.dalnet</b>.<br>VocÃª pode usar comodines para "
-"este campo, mas isto Ã© considerado um falha de seguranÃ§a. Se estiver 100% "
-"seguro que NENHUM usuario na rede pode utilizar o apelido \"NickServ\", pode "
-"ser seguro utilizar a mÃ¡scara <b>NickServ!*@*</b> neste campo."
+"este campo, mas isto Ã© considerado um falha de seguranÃ§a. Se estiver "
+"100% seguro que NENHUM usuario na rede pode utilizar o apelido \"NickServ\", "
+"pode ser seguro utilizar a mÃ¡scara <b>NickServ!*@*</b> neste campo."
 
 #: src/modules/options/optw_nickserv.cpp:111
 msgid ""
@@ -4514,8 +4512,8 @@ msgid ""
 "reducing traffic by not sending a reply that would be empty."
 msgstr ""
 "Esta opÃ§Ã£o faz com que o KVirc ignore um pedido de canal CTCP AVATAR "
-"quando nÃ£o tiver nenhum avatar definido. Geralmente isto Ã© uma boa "
-"prÃ¡tica jÃ¡ que ajuda a reduzir o trÃ¡fego ao nÃ£o enviar uma resposta que "
+"quando nÃ£o tiver nenhum avatar definido. Geralmente isto Ã© uma boa prÃ"
+"¡tica jÃ¡ que ajuda a reduzir o trÃ¡fego ao nÃ£o enviar uma resposta que "
 "estaria vazia."
 
 #: src/modules/options/optw_interfacelookglobal.cpp:43
@@ -4524,13 +4522,13 @@ msgid ""
 "font setting"
 msgstr ""
 
-#: src/modules/options/optw_tools.cpp:40
+#: src/modules/options/optw_tools.cpp:39
 msgid ""
 "This section contains irc tools<br><p>like<b> away, lag and logging system. "
 "</b> </p>"
 msgstr ""
 
-#: src/modules/options/optw_generalopt.cpp:39
+#: src/modules/options/optw_generalopt.cpp:38
 msgid ""
 "This section contains the general client options<br><p>like<b> sound, "
 "mediafiles, URL handler </b> etc... </p>"
@@ -4545,16 +4543,16 @@ msgstr ""
 "utilizarÃ¡ para visualizar Ã s sequÃªncias de escape CTRL+I e eventualmente "
 "os Ã­cones emotivos."
 
-#: src/modules/options/optw_ircview.cpp:64
-#: src/modules/options/optw_ircview.cpp:69
+#: src/modules/options/optw_windowlist.cpp:133
+#: src/modules/options/optw_windowlist.cpp:138
 #: src/modules/options/optw_notifier.cpp:54
 #: src/modules/options/optw_notifier.cpp:59
 #: src/modules/options/optw_userlist.cpp:141
 #: src/modules/options/optw_userlist.cpp:146
-#: src/modules/options/optw_windowlist.cpp:133
-#: src/modules/options/optw_windowlist.cpp:138
 #: src/modules/options/optw_input.cpp:56
 #: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_ircview.cpp:64
+#: src/modules/options/optw_ircview.cpp:69
 msgid "Tile"
 msgstr ""
 
@@ -4589,11 +4587,11 @@ msgstr "Applet da Barra de Ferramentas"
 msgid "Tools"
 msgstr "Ferramentas"
 
-#: src/modules/options/optw_ircview.cpp:70
+#: src/modules/options/optw_windowlist.cpp:139
 #: src/modules/options/optw_notifier.cpp:60
 #: src/modules/options/optw_userlist.cpp:147
-#: src/modules/options/optw_windowlist.cpp:139
 #: src/modules/options/optw_input.cpp:62
+#: src/modules/options/optw_ircview.cpp:70
 msgid "Top"
 msgstr "Topo"
 
@@ -4896,10 +4894,10 @@ msgstr ""
 msgid "Vertical Alignment:"
 msgstr "Local do certificado:"
 
-#: src/modules/options/optw_ircview.cpp:60
-#: src/modules/options/optw_notifier.cpp:50
 #: src/modules/options/optw_windowlist.cpp:129
+#: src/modules/options/optw_notifier.cpp:50
 #: src/modules/options/optw_input.cpp:52
+#: src/modules/options/optw_ircview.cpp:60
 #, fuzzy
 msgid "Vertical align:"
 msgstr "Local do certificado:"
@@ -4912,7 +4910,7 @@ msgstr "Voice"
 msgid "Voice:"
 msgstr "Voice:"
 
-#: src/modules/options/optw_dcc.cpp:356
+#: src/modules/options/optw_dcc.cpp:355
 msgid "Volume slider controls PCM, not Master"
 msgstr "Controle de Volume PCM, nÃ£o Master"
 
@@ -4987,7 +4985,7 @@ msgstr ""
 msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
 msgstr "[PREFIXO]apelido[!usuÃ¡rio@mÃ¡quina][SUFIXO] mensagem"
 
-#: src/modules/options/optw_mediatypes.cpp:194
+#: src/modules/options/optw_mediatypes.cpp:183
 msgid "[Unknown Media Type]"
 msgstr "[Tipo de Midia Desconhecida]"
 
@@ -5073,13 +5071,13 @@ msgstr ""
 msgid "sound,xmms,audio,play,amarok"
 msgstr ""
 
+#: src/modules/options/optw_interfacelookglobal.h:34
 #: src/modules/options/optw_windowlist.h:36
 #: src/modules/options/optw_windowlist.h:50
 #: src/modules/options/optw_windowlist.h:66
 #: src/modules/options/optw_windowlist.h:81
 #: src/modules/options/optw_windowlist.h:100
 #: src/modules/options/optw_windowlist.h:115
-#: src/modules/options/optw_interfacelookglobal.h:34
 #, fuzzy
 msgid "theme"
 msgstr "Tema"
@@ -5212,11 +5210,11 @@ msgstr "dentro de:"
 #~ "alterado]]"
 
 #~ msgid ""
-#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r%"
-#~ "Q\r [%Q@\r!h\r%Q\r]: %Q"
+#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r"
+#~ "%Q\r [%Q@\r!h\r%Q\r]: %Q"
 #~ msgstr ""
-#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] acabou de ser kickado de \r!c\r%Q\r por \r!n\r%"
-#~ "Q\r [%Q@\r!h\r%Q\r]: %Q"
+#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] acabou de ser kickado de \r!c\r%Q\r por \r!n\r"
+#~ "%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #~ msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
 #~ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] acabou de entrar em \r!c\r%Q\r"
@@ -5976,9 +5974,9 @@ msgstr "dentro de:"
 #~ "configuration files, because you have installed an incomplete script or "
 #~ "because you have hit a bug in KVIrc.<br><br>I can repeat the installation "
 #~ "of the default script in order to restore the missing features.<br><b>Do "
-#~ "you want the default script to be restored ?</b><br><br><font size=\"-1"
-#~ "\">Hint: If you're a scripter and have intentionally removed some of the "
-#~ "scripting features then you may safely click on \"No and Don't Ask Me "
+#~ "you want the default script to be restored ?</b><br><br><font size="
+#~ "\"-1\">Hint: If you're a scripter and have intentionally removed some of "
+#~ "the scripting features then you may safely click on \"No and Don't Ask Me "
 #~ "Again\", otherwise it might be a good idea to click \"Yes\". If you still "
 #~ "want to choose \"No\" you can always restore the default script by "
 #~ "choosing the appropriate entry from the \"Scripting\" menu.</font>"
@@ -5991,12 +5989,12 @@ msgstr "dentro de:"
 #~ "arquivos de configuraÃ§Ã£o, porque vocÃª instalou um script incompleto ou "
 #~ "porque vocÃª encontrou algum erro no KVirc.<br><br>Eu posso repetir a "
 #~ "instalaÃ§Ã£o do script padrÃ£o para restaurar as opÃ§Ãµes que faltam. "
-#~ "<br><b>Deseja restaurar o script padrÃ£o ?</b><br><br><font size=\"-1"
-#~ "\">Nota: se vocÃª for um programador e removeu intencionalmente algumas "
-#~ "opÃ§Ãµes do script pode seguramente clicar em \"NÃ£o e NÃ£o me pergunte "
-#~ "novamente\", ou pode ser uma boa ideia clicar em \"Sim\". Se ainda quiser "
-#~ "escolher \"NÃ£o\" sempre poderÃ¡ restaurar o script padrÃ£o ao escolher a "
-#~ "entrada apropriada no menu \"Scripting\".</font>"
+#~ "<br><b>Deseja restaurar o script padrÃ£o ?</b><br><br><font size="
+#~ "\"-1\">Nota: se vocÃª for um programador e removeu intencionalmente "
+#~ "algumas opÃ§Ãµes do script pode seguramente clicar em \"NÃ£o e NÃ£o me "
+#~ "pergunte novamente\", ou pode ser uma boa ideia clicar em \"Sim\". Se "
+#~ "ainda quiser escolher \"NÃ£o\" sempre poderÃ¡ restaurar o script padrÃ£o "
+#~ "ao escolher a entrada apropriada no menu \"Scripting\".</font>"
 
 #~ msgid "<b>Right click</b> to add/remove applets"
 #~ msgstr "<b>Clique com o botÃ£o direito</b> para adicionar/remover applets"
@@ -6056,9 +6054,9 @@ msgstr "dentro de:"
 #~ "path or a relative path.<br>Portable scripts should never use absolute "
 #~ "paths.</center>"
 #~ msgstr ""
-#~ "<center><b>Ãcone Identificador</b><br>Pode ser um ID de Ã­cone interno, "
-#~ "um caminho absoluto ou um relativo<br>. Os scripts portÃ¡veis nunca "
-#~ "deveriam usar caminhos absolutos.</center>"
+#~ "<center><b>Ãcone Identificador</b><br>Pode ser um ID de Ã­cone interno, um "
+#~ "caminho absoluto ou um relativo<br>. Os scripts portÃ¡veis nunca deveriam "
+#~ "usar caminhos absolutos.</center>"
 
 #~ msgid ""
 #~ "<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
@@ -6089,8 +6087,8 @@ msgstr "dentro de:"
 #~ "<center>Here you can modify the URL that the list will be downloaded "
 #~ "from. In most cases the default URL is acceptable.</center>"
 #~ msgstr ""
-#~ "<center>Aqui vocÃª pode modificar a URL de onde a lista serÃ¡ "
-#~ "transferida. Na maior parte dos casos a URL padrÃ£o Ã© aceitÃ¡vel.</"
+#~ "<center>Aqui vocÃª pode modificar a URL de onde a lista serÃ"
+#~ "¡ transferida. Na maior parte dos casos a URL padrÃ£o Ã© aceitÃ¡vel.</"
 #~ "center>"
 
 #, fuzzy
@@ -6126,8 +6124,8 @@ msgstr "dentro de:"
 #~ "<center>This the <b>hostname</b> that will match this user. <b>*</b> will "
 #~ "match any hostname.</center>"
 #~ msgstr ""
-#~ "<center>Este Ã© o <b>nome de mÃ¡quina</b> que coincidirÃ¡ com este "
-#~ "usuÃ¡rio. <b>*</b> coincidirÃ¡ com qualquer nome de mÃ¡quina.</center>"
+#~ "<center>Este Ã© o <b>nome de mÃ¡quina</b> que coincidirÃ¡ com este usuÃ"
+#~ "¡rio. <b>*</b> coincidirÃ¡ com qualquer nome de mÃ¡quina.</center>"
 
 #~ msgid ""
 #~ "<center>This the <b>nickname</b> that will match this user, default value "
@@ -6140,8 +6138,8 @@ msgstr "dentro de:"
 #~ "<center>This the <b>username</b> that will match this user. <b>*</b> will "
 #~ "match any username.</center>"
 #~ msgstr ""
-#~ "<center>Este Ã© o <b>nome de usuÃ¡rio</b> que coincidirÃ¡ com este "
-#~ "usuÃ¡rio. <b>*</b> coincidirÃ¡ com qualquer nome de usuÃ¡rio.</center>"
+#~ "<center>Este Ã© o <b>nome de usuÃ¡rio</b> que coincidirÃ¡ com este usuÃ"
+#~ "¡rio. <b>*</b> coincidirÃ¡ com qualquer nome de usuÃ¡rio.</center>"
 
 #~ msgid ""
 #~ "<nobr><font color=\"%s\"><b>Channel List</b></font> <font color=\"%s\">"
@@ -6192,11 +6190,11 @@ msgstr "dentro de:"
 #~ "configuration.</p><p>Click \"<b>Next</b>\" to proceed.</p>"
 #~ msgstr ""
 #~ "<p><h2>Bem vindo :)</h2>Esta Ã© a primeira execuÃ§Ã£o desta versÃ£o do "
-#~ "KVIrc.<br>Este assistente lhe ajudarÃ¡ atravÃ©s dos poucos passos "
-#~ "necessÃ¡rios para completar a configuraÃ§Ã£o.<br><br>Caso tenha instalado "
-#~ "uma versÃ£o anterior do KVIrc nÃ£o se preocupe, terÃ¡ oportunidade de "
-#~ "manter sua configuraÃ§Ã£o antiga.</p><p>Clique em \"<b>PrÃ³ximo</b>\" "
-#~ "para continuar.</p>"
+#~ "KVIrc.<br>Este assistente lhe ajudarÃ¡ atravÃ©s dos poucos passos necessÃ"
+#~ "¡rios para completar a configuraÃ§Ã£o.<br><br>Caso tenha instalado uma "
+#~ "versÃ£o anterior do KVIrc nÃ£o se preocupe, terÃ¡ oportunidade de manter "
+#~ "sua configuraÃ§Ã£o antiga.</p><p>Clique em \"<b>PrÃ³ximo</b>\" para "
+#~ "continuar.</p>"
 
 #~ msgid ""
 #~ "<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
@@ -6352,9 +6350,9 @@ msgstr "dentro de:"
 #~ "configurar algumas de suas propriedades. O KVIrc serÃ¡ capaz "
 #~ "(confiantemente) de reconhecer o usuÃ¡rio, adicionÃ¡-lo a lista de "
 #~ "notificaÃ§Ãµes, exibir seu avatar associado, etc...<br><br>Primeiramente, "
-#~ "deve escrever o <b>nome de entrada ou o nome Real</b> do usuÃ¡rio que "
-#~ "serÃ¡ registrado. O nome serÃ¡ usado para identificar a entrada da base "
-#~ "de dados e nÃ£o tem nenhum requerimento especÃ­fico, pode ser um nome, um "
+#~ "deve escrever o <b>nome de entrada ou o nome Real</b> do usuÃ¡rio que serÃ"
+#~ "¡ registrado. O nome serÃ¡ usado para identificar a entrada da base de "
+#~ "dados e nÃ£o tem nenhum requerimento especÃ­fico, pode ser um nome, um "
 #~ "apelido ou somente um texto que te lembre a pessoa.<br>Exemplos: \"Luis "
 #~ "InÃ¡cio Lula da Silva\", \"Lula\".\n"
 #~ "</p>"
@@ -6374,8 +6372,8 @@ msgstr "dentro de:"
 #~ "tr><tr><td><br><br><center><b>Estas seÃ§Ãµes contÃ©m vÃ¡rias "
 #~ "configuraÃ§Ãµes para o KVIrc</b></center><br><br><p>Quando tiver acabado "
 #~ "clique em \"<b>Aceitar</b>\" para aceitar as alteraÃ§Ãµes ou "
-#~ "\"<b>Cancelar</b>\" para rejeitar. Ao clicar em \"<b>Aplicar</b>\" irÃ¡ "
-#~ "efetuar as alteraÃ§Ãµes, sem que a janela seja fechada.</td></"
+#~ "\"<b>Cancelar</b>\" para rejeitar. Ao clicar em \"<b>Aplicar</b>\" irÃ"
+#~ "¡ efetuar as alteraÃ§Ãµes, sem que a janela seja fechada.</td></"
 #~ "tr><tr><td>Muitas configuraÃ§Ãµes tÃªm dicas que sÃ£o exibidas ao passar "
 #~ "o cursor do mouse por cima delas por alguns segundos.</p></td></tr></"
 #~ "table>"
@@ -6928,8 +6926,8 @@ msgstr "dentro de:"
 
 #~ msgid "Can't export the registered users database: Write error."
 #~ msgstr ""
-#~ "NÃ£o foi possÃ­vel exportar a base de dados de usuÃ¡rios registrados: "
-#~ "Erro de escrita."
+#~ "NÃ£o foi possÃ­vel exportar a base de dados de usuÃ¡rios registrados: Erro "
+#~ "de escrita."
 
 #~ msgid ""
 #~ "Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the "
@@ -7037,8 +7035,8 @@ msgstr "dentro de:"
 
 #~ msgid "Can't import the registered users database: Read error."
 #~ msgstr ""
-#~ "NÃ£o foi possÃ­vel importar a base de dados de usuÃ¡rios registrados: "
-#~ "Erro de leitura."
+#~ "NÃ£o foi possÃ­vel importar a base de dados de usuÃ¡rios registrados: Erro "
+#~ "de leitura."
 
 #~ msgid "Can't kill a builtin class"
 #~ msgstr "NÃ£o pode matar uma classe interna "
@@ -7096,14 +7094,14 @@ msgstr "dentro de:"
 
 #~ msgid "Can't rebind the command sequence: window with id %s not found"
 #~ msgstr ""
-#~ "NÃ£o foi possÃ­vel religar a sequÃªncia de comandos: janela com id %s nÃ"
-#~ "£o encontrado"
+#~ "NÃ£o foi possÃ­vel religar a sequÃªncia de comandos: janela com id %s nÃ£o "
+#~ "encontrado"
 
 #~ msgid ""
 #~ "Can't rebind the command: missing window identifier after the -r switch"
 #~ msgstr ""
-#~ "NÃ£o foi possÃ­vel religar o comando: faltando o identificador da janela "
-#~ "a apÃ³s Ã  opÃ§Ã£o -r"
+#~ "NÃ£o foi possÃ­vel religar o comando: faltando o identificador da janela a "
+#~ "apÃ³s Ã  opÃ§Ã£o -r"
 
 #~ msgid "Can't rebind the command: window with id %s not found"
 #~ msgstr ""
@@ -7183,8 +7181,8 @@ msgstr "dentro de:"
 #~ "Cannot call internal object function $%Q (for object named \"%Q\" of "
 #~ "class %Q) from this context"
 #~ msgstr ""
-#~ "NÃ£o foi possÃ­vel encontrar a funÃ§Ã£o de objeto $%Q para o objeto \"%Q"
-#~ "\" da classe %Q"
+#~ "NÃ£o foi possÃ­vel encontrar a funÃ§Ã£o de objeto $%Q para o objeto \"%Q\" "
+#~ "da classe %Q"
 
 #~ msgid ""
 #~ "Cannot create directory %s.\n"
@@ -7197,14 +7195,14 @@ msgstr "dentro de:"
 
 #~ msgid "Cannot find object function $%Q for object named \"%Q\" of class %Q"
 #~ msgstr ""
-#~ "NÃ£o foi possÃ­vel encontrar a funÃ§Ã£o de objeto $%Q para o objeto \"%Q"
-#~ "\" da classe %Q"
+#~ "NÃ£o foi possÃ­vel encontrar a funÃ§Ã£o de objeto $%Q para o objeto \"%Q\" "
+#~ "da classe %Q"
 
 #~ msgid ""
 #~ "Cannot find object function $%Q::%Q for object named \"%Q\" of class %Q"
 #~ msgstr ""
-#~ "NÃ£o foi possÃ­vel encontra a funÃ§Ã£o de obejto $%Q::%Q para o objeto \"%"
-#~ "Q\" da classe %Q"
+#~ "NÃ£o foi possÃ­vel encontra a funÃ§Ã£o de obejto $%Q::%Q para o objeto \"%Q"
+#~ "\" da classe %Q"
 
 #, fuzzy
 #~ msgid "Cannot open install.kvs for reading."
@@ -7758,8 +7756,8 @@ msgstr "dentro de:"
 #~ "Declaring global variables with an uppercase letter is deprecated. Global "
 #~ "variables should be declared with 'global'"
 #~ msgstr ""
-#~ "Declarar variÃ¡veis globais com uma letra mÃ¡iuscula Ã© depreciado. "
-#~ "VariÃ¡veis globais devem ser declaradas com 'global'"
+#~ "Declarar variÃ¡veis globais com uma letra mÃ¡iuscula Ã© depreciado. VariÃ"
+#~ "¡veis globais devem ser declaradas com 'global'"
 
 #~ msgid "Decrypt key:"
 #~ msgstr "Chave descriptogrÃ¡fica:"
@@ -8054,8 +8052,8 @@ msgstr "dentro de:"
 #~ "starting index. This will evaluate to a single parameter identifier."
 #~ msgstr ""
 #~ "O Ã­ndice final de um identificador de parÃ¢metro mÃºltiplo Ã© mais baixo "
-#~ "ou igual ao Ã­ndice inicial. Isto avaliarÃ¡ para um identificador de parÃ¢"
-#~ "metro simples."
+#~ "ou igual ao Ã­ndice inicial. Isto avaliarÃ¡ para um identificador de parÃ"
+#~ "¢metro simples."
 
 #~ msgid "Engine not initialized"
 #~ msgstr "Motor nÃ£o inicializado"
@@ -8147,13 +8145,11 @@ msgstr "dentro de:"
 
 #~ msgid "Executing scheduled network specific \"on login\" commands"
 #~ msgstr ""
-#~ "Executando os comandos especÃ­ficos da rede programados \"ao entrar/login"
-#~ "\""
+#~ "Executando os comandos especÃ­ficos da rede programados \"ao entrar/login\""
 
 #~ msgid "Executing scheduled server specific \"on connect\" commands"
 #~ msgstr ""
-#~ "Executando os comandos especÃ­ficos do servidor programados \"ao conectar"
-#~ "\""
+#~ "Executando os comandos especÃ­ficos do servidor programados \"ao conectar\""
 
 #~ msgid "Executing scheduled server specific \"on login\" commands"
 #~ msgstr ""
@@ -8480,8 +8476,8 @@ msgstr "dentro de:"
 #~ "Caracter '%q' (unicode %x) encontrado onde era esperado uma instruÃ§Ã£o"
 
 #~ msgid ""
-#~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help %"
-#~ "s\" for the command syntax"
+#~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help "
+#~ "%s\" for the command syntax"
 #~ msgstr ""
 #~ "Caracter '%q' (unicode 0x%x) encontrado onde '%c' era esperado: ver \"/"
 #~ "help %s\" para a sintax de comando"
@@ -10414,8 +10410,8 @@ msgstr "dentro de:"
 #~ "Notify list: Unexpected inconsistency, expected \r!n\r%Q\r in the "
 #~ "registered user DB"
 #~ msgstr ""
-#~ "Lista de NotificaÃ§Ã£o: InconsistÃªncia inesperada, o esperado era \r!n\r%"
-#~ "Q\r no registo de usuÃ¡rio da Base de Dados"
+#~ "Lista de NotificaÃ§Ã£o: InconsistÃªncia inesperada, o esperado era \r!n\r"
+#~ "%Q\r no registo de usuÃ¡rio da Base de Dados"
 
 #~ msgid ""
 #~ "Notify list: Unexpected inconsistency, registered user DB modified? "
@@ -10433,8 +10429,8 @@ msgstr "dentro de:"
 
 #~ msgid "Notify list: Unexpected inconsistency, userhost list is empty!"
 #~ msgstr ""
-#~ "Lista de NotificaÃ§Ã£o: InconsistÃªncia inesperada, a lista usuario-"
-#~ "mÃ¡quina estÃ¡ vazia!"
+#~ "Lista de NotificaÃ§Ã£o: InconsistÃªncia inesperada, a lista usuario-mÃ"
+#~ "¡quina estÃ¡ vazia!"
 
 #~ msgid "Notify nicknames:"
 #~ msgstr "Notificar apelidos:"
@@ -10500,10 +10496,10 @@ msgstr "dentro de:"
 #~ "disponiveis.\n"
 #~ "Isto Ã© causado por um daemon RFC1459 nÃ£o compatÃ­vel ou uma resposta de "
 #~ "servidor quebrada.\n"
-#~ "Os umodes do servidor parecem ser '%s' e os modos de canal parecem ser '%"
-#~ "s'.\n"
-#~ "Ignorando esta resposta e assumindo que o ajuste de modos bÃ¡sico estÃ¡ "
-#~ "disponÃ­vel.\n"
+#~ "Os umodes do servidor parecem ser '%s' e os modos de canal parecem ser "
+#~ "'%s'.\n"
+#~ "Ignorando esta resposta e assumindo que o ajuste de modos bÃ¡sico estÃ"
+#~ "¡ disponÃ­vel.\n"
 #~ "Se vocÃª tiver problemas estranhos, tente mudar de servidor."
 
 #~ msgid "Online for"
@@ -10747,12 +10743,12 @@ msgstr "dentro de:"
 #~ "will be able to change it later in the Identity properties, or with the /"
 #~ "NICK command."
 #~ msgstr ""
-#~ "Por favor, escolha um apelido.<br><br>Seu apelido Ã© o nome que vocÃª "
-#~ "serÃ¡ conhecido pelos outros usuÃ¡rios do IRC. NÃ£o pode conter espaÃ§os "
-#~ "ou carÃ¡cteres de pontuaÃ§Ã£o. Algumas redes de IRC reduzirÃ£o seu "
-#~ "apelido se tiver mais de 9 carÃ¡cteres.<br><br>Em caso de dÃºvida, digite "
-#~ "o primeiro apelido que vier Ã  cabeÃ§a. VocÃª poderÃ¡ trocÃ¡-lo mais "
-#~ "tarde nas propriedades do diÃ¡logo de Identidade, ou com o comando /NICK."
+#~ "Por favor, escolha um apelido.<br><br>Seu apelido Ã© o nome que vocÃª serÃ"
+#~ "¡ conhecido pelos outros usuÃ¡rios do IRC. NÃ£o pode conter espaÃ§os ou "
+#~ "carÃ¡cteres de pontuaÃ§Ã£o. Algumas redes de IRC reduzirÃ£o seu apelido "
+#~ "se tiver mais de 9 carÃ¡cteres.<br><br>Em caso de dÃºvida, digite o "
+#~ "primeiro apelido que vier Ã  cabeÃ§a. VocÃª poderÃ¡ trocÃ¡-lo mais tarde "
+#~ "nas propriedades do diÃ¡logo de Identidade, ou com o comando /NICK."
 
 #~ msgid "Please choose the icon for the ToolBar"
 #~ msgstr "Por favor escolha o Ã­cone da Barra de Ferramentas"
@@ -11023,8 +11019,8 @@ msgstr "dentro de:"
 #~ "Read error for file %Q (have been unable to read the requested size in "
 #~ "1000 retries)"
 #~ msgstr ""
-#~ "Erro de leitura para o arquivo %Q (nÃ£o foi possÃ­vel ler o tamanho "
-#~ "pedido em 1000 tentativas)"
+#~ "Erro de leitura para o arquivo %Q (nÃ£o foi possÃ­vel ler o tamanho pedido "
+#~ "em 1000 tentativas)"
 
 #~ msgid "Read error for file %s"
 #~ msgstr "Erro de leitura para o arquivo %s"
@@ -11607,8 +11603,8 @@ msgstr "dentro de:"
 #~ msgstr "Slash (/) carÃ¡ter esperado"
 
 #~ msgid ""
-#~ "Slot target object destroyed while emitting signal '%Q' from object '%Q::%"
-#~ "Q'"
+#~ "Slot target object destroyed while emitting signal '%Q' from object '%Q::"
+#~ "%Q'"
 #~ msgstr ""
 #~ "Slot do objeto de destino destruido ao emitir o sinal '%Q' do objeto '%Q::"
 #~ "%Q'"
@@ -11659,13 +11655,13 @@ msgstr "dentro de:"
 #~ "Something really weird is happening: the server is refusing all the login "
 #~ "nicknames..."
 #~ msgstr ""
-#~ "Alguma coisa muito esquisita estÃ¡ acontecendo: o servidor estÃ¡ "
-#~ "recusandologin de todos os nicks..."
+#~ "Alguma coisa muito esquisita estÃ¡ acontecendo: o servidor estÃ"
+#~ "¡ recusandologin de todos os nicks..."
 
 #~ msgid "Sorry , I can't find a sound system to use on this machine"
 #~ msgstr ""
-#~ "Desculpe, nÃ£o foi possÃ­vel encontrar um sistema de som para usar nesta "
-#~ "mÃ¡quina"
+#~ "Desculpe, nÃ£o foi possÃ­vel encontrar um sistema de som para usar nesta mÃ"
+#~ "¡quina"
 
 #~ msgid "Sorry, no crypt engines available"
 #~ msgstr "Lamento, nenhum motror de criptografia disponÃ­vel"
@@ -11759,16 +11755,16 @@ msgstr "dentro de:"
 #, fuzzy
 #~ msgid "Stray '::' sequence or invalid following alias name"
 #~ msgstr ""
-#~ "Caracter ponto ('.') disperso ou apÃ³s um nome de comando do mÃ³dulo "
-#~ "invÃ¡lido"
+#~ "Caracter ponto ('.') disperso ou apÃ³s um nome de comando do mÃ³dulo invÃ"
+#~ "¡lido"
 
 #~ msgid "Stray backslash at the end of the script"
 #~ msgstr "Barra no fim do script"
 
 #~ msgid "Stray dot ('.') character or invalid following module command name"
 #~ msgstr ""
-#~ "Caracter ponto ('.') disperso ou apÃ³s um nome de comando do mÃ³dulo "
-#~ "invÃ¡lido"
+#~ "Caracter ponto ('.') disperso ou apÃ³s um nome de comando do mÃ³dulo invÃ"
+#~ "¡lido"
 
 #~ msgid "Stream exceeded expected length"
 #~ msgstr "Stream excedeu o comprimento esperado"
@@ -11988,15 +11984,15 @@ msgstr "dentro de:"
 #~ "The argument of the [] subscript didn't evaluate to an array: automatic "
 #~ "conversion from %Q supplied"
 #~ msgstr ""
-#~ "O argumento do subscript [] nÃ£o avaliou para um array: conversÃ£o "
-#~ "automÃ¡tica de %Q fornecida "
+#~ "O argumento do subscript [] nÃ£o avaliou para um array: conversÃ£o automÃ"
+#~ "¡tica de %Q fornecida "
 
 #~ msgid ""
 #~ "The argument of the [] subscript didn't evaluate to an array: automatic "
 #~ "conversion from type '%Q' supplied"
 #~ msgstr ""
-#~ "O argumento do subscript [] nÃ£o avaliou para um array: conversÃ£o "
-#~ "automÃ¡tica do tipo %Q fornecida"
+#~ "O argumento do subscript [] nÃ£o avaliou para um array: conversÃ£o automÃ"
+#~ "¡tica do tipo %Q fornecida"
 
 #~ msgid ""
 #~ "The argument of the array count '#' operator didn't evaluate to an array: "
@@ -12093,8 +12089,8 @@ msgstr "dentro de:"
 #~ "The crypto engine was unable to encrypt the current message (%Q): %s, no "
 #~ "data sent to the server"
 #~ msgstr ""
-#~ "O motor de criptografia foi incapaz de criptografar a mensagem atual (%"
-#~ "Q): %s, nenhum dado enviado para o servidor"
+#~ "O motor de criptografia foi incapaz de criptografar a mensagem atual "
+#~ "(%Q): %s, nenhum dado enviado para o servidor"
 
 #~ msgid "The current network is %Q"
 #~ msgstr "A rede atual Ã© %Q"
@@ -12127,8 +12123,8 @@ msgstr "dentro de:"
 
 #~ msgid "The file %s doesn't appear to be a valid registered users database."
 #~ msgstr ""
-#~ "O arquivo %s nÃ£o parece ser uma base de dados de usuÃ¡rios registrados "
-#~ "vÃ¡lida."
+#~ "O arquivo %s nÃ£o parece ser uma base de dados de usuÃ¡rios registrados vÃ"
+#~ "¡lida."
 
 #, fuzzy
 #~ msgid "The file '%s' is not readable"
@@ -12411,13 +12407,13 @@ msgstr "dentro de:"
 #, fuzzy
 #~ msgid "The specified KVIrc version \"%Q\" is not a valid version string"
 #~ msgstr ""
-#~ "A versÃ£o \"%s\" do KVIrc especificada nÃ£o Ã© uma string de versÃ£o "
-#~ "vÃ¡lida"
+#~ "A versÃ£o \"%s\" do KVIrc especificada nÃ£o Ã© uma string de versÃ£o vÃ"
+#~ "¡lida"
 
 #~ msgid "The specified KVIrc version \"%s\" is not a valid version string"
 #~ msgstr ""
-#~ "A versÃ£o \"%s\" do KVIrc especificada nÃ£o Ã© uma string de versÃ£o "
-#~ "vÃ¡lida"
+#~ "A versÃ£o \"%s\" do KVIrc especificada nÃ£o Ã© uma string de versÃ£o vÃ"
+#~ "¡lida"
 
 #~ msgid ""
 #~ "The specified ToolBar Id already exists.<br>Would you like KVIrc to "
@@ -12694,8 +12690,8 @@ msgstr "dentro de:"
 
 #~ msgid "This server supports the WATCH notify list method, it will be used"
 #~ msgstr ""
-#~ "Este servidor suporta o mÃ©todo WATCH da lista de notificaÃ§Ã£o, e serÃ¡ "
-#~ "utilizado"
+#~ "Este servidor suporta o mÃ©todo WATCH da lista de notificaÃ§Ã£o, e serÃ"
+#~ "¡ utilizado"
 
 #~ msgid "This server supports: %s"
 #~ msgstr "Este servidor suporta: %s"
@@ -12900,8 +12896,8 @@ msgstr "dentro de:"
 
 #~ msgid "Unable to look it up hostname: Hostname appears to be masked"
 #~ msgstr ""
-#~ "NÃ£o foi possÃ­vel encontrar o nome da mÃ¡quina: o nome da mÃ¡quina "
-#~ "parece estar mÃ¡scarado"
+#~ "NÃ£o foi possÃ­vel encontrar o nome da mÃ¡quina: o nome da mÃ¡quina parece "
+#~ "estar mÃ¡scarado"
 
 #~ msgid "Unable to look it up hostname: Unknown host"
 #~ msgstr ""
@@ -13572,15 +13568,15 @@ msgstr "dentro de:"
 #~ "Visible name for this action.<br>This string will be displayed to the "
 #~ "user so it is a good idea to use $tr() here"
 #~ msgstr ""
-#~ "Nome visÃ­vel para esta aÃ§Ã£o.<br>Esta string serÃ¡ exibida para o "
-#~ "usuÃ¡rioentÃ£o Ã© uma boa ideia utilizar $tr() aqui "
+#~ "Nome visÃ­vel para esta aÃ§Ã£o.<br>Esta string serÃ¡ exibida para o usuÃ"
+#~ "¡rioentÃ£o Ã© uma boa ideia utilizar $tr() aqui "
 
 #~ msgid ""
 #~ "Visible short description for this action.<br>This string will be "
 #~ "displayed to the user so it is a good idea to use $tr() here"
 #~ msgstr ""
-#~ "Pequena descriÃ§Ã£o visÃ­vel para esta aÃ§Ã£o.<br>Esta string serÃ¡ "
-#~ "exibida para o usuÃ¡rio entÃ£o Ã© uma boa ideia utilizar $tr() aqui"
+#~ "Pequena descriÃ§Ã£o visÃ­vel para esta aÃ§Ã£o.<br>Esta string serÃ"
+#~ "¡ exibida para o usuÃ¡rio entÃ£o Ã© uma boa ideia utilizar $tr() aqui"
 
 #~ msgid "Voice Chat"
 #~ msgstr "Chat com voz"
@@ -13595,13 +13591,13 @@ msgstr "dentro de:"
 #~ msgstr "AVISO: NÃ£o foi possÃ­vel carregar a biblioteca de imagem %s"
 
 #~ msgid ""
-#~ "WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %"
-#~ "cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal "
+#~ "WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, "
+#~ "%cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal "
 #~ "name%c: %Q"
 #~ msgstr ""
-#~ "Entrada WHO para %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cCanal%c: \r!c\r%Q\r, %"
-#~ "cServidor%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAusente%c: %Q, %"
-#~ "cNome Real %c: %Q"
+#~ "Entrada WHO para %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cCanal%c: \r!c\r%Q\r, "
+#~ "%cServidor%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAusente%c: %Q, "
+#~ "%cNome Real %c: %Q"
 
 #~ msgid "Wallops message"
 #~ msgstr "Mensagem wallops"

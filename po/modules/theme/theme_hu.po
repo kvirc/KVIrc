@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-10 23:23+0200\n"
+"POT-Creation-Date: 2010-10-17 18:58+0200\n"
 "PO-Revision-Date: 2008-03-03 10:04+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -62,8 +63,8 @@ msgstr "Kiválasztott Kinézet(ek) Törlése"
 msgid "Delete Theme - KVIrc"
 msgstr "Kinézet Törlése - KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:281
 #: src/modules/theme/savethemedialog.cpp:119
+#: src/modules/theme/packthemedialog.cpp:281
 msgid "Description:"
 msgstr "Leírás:"
 
@@ -110,8 +111,8 @@ msgstr "Kinézet Exportálása - KVIrc"
 msgid "Failed to apply the specified theme: %Q"
 msgstr "A megadott kinézet alkalmazása sikertelen: Q"
 
-#: src/modules/theme/packthemedialog.cpp:369
 #: src/modules/theme/savethemedialog.cpp:198
+#: src/modules/theme/packthemedialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr "Kiválasztott kép betöltése sikertelen"
 
@@ -171,8 +172,8 @@ msgstr ""
 #: src/modules/theme/packthemedialog.cpp:381
 #, fuzzy
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *%"
-"1 extension."
+"Here you must choose the file name for the theme package. It should have a *"
+"%1 extension."
 msgstr ""
 "Itt ki kell választanod a fájlnevet a kinézet csomagodhoz. A kiterjesztésnek "
 "%1 -nek kell lennie."
@@ -193,8 +194,8 @@ msgstr ""
 "Itt meg kell adnod néhány információt magadról (csomagkészítő) és egy rövid "
 "leírást a csomagról, amit készítesz."
 
-#: src/modules/theme/packthemedialog.cpp:108
 #: src/modules/theme/savethemedialog.cpp:78
+#: src/modules/theme/packthemedialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr "Kattints a \"Következő\" gombra a kezdéshez."
 
@@ -354,8 +355,8 @@ msgstr "Kinézet könyvtár létrehozása sikertelen."
 msgid "Unable to save theme: %Q"
 msgstr "%Q kinézet mentése sikertelen."
 
-#: src/modules/theme/packthemedialog.cpp:272
 #: src/modules/theme/savethemedialog.cpp:111
+#: src/modules/theme/packthemedialog.cpp:272
 msgid "Version:"
 msgstr "Verzió:"
 
@@ -373,8 +374,8 @@ msgstr ""
 "Figyelmeztetés: A kinézet nem biztos, hogy kompatibilis a KVIrc ezen "
 "verziójával"
 
-#: src/modules/theme/packthemedialog.cpp:101
 #: src/modules/theme/savethemedialog.cpp:85
+#: src/modules/theme/packthemedialog.cpp:101
 msgid "Welcome"
 msgstr "Üdvözlet"
 

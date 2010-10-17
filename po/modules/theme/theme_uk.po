@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-10 23:23+0200\n"
+"POT-Creation-Date: 2010-10-17 18:58+0200\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team: Ukrainian\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -62,8 +63,8 @@ msgstr "Видалити обрані теми"
 msgid "Delete Theme - KVIrc"
 msgstr "Видалити тему - KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:281
 #: src/modules/theme/savethemedialog.cpp:119
+#: src/modules/theme/packthemedialog.cpp:281
 msgid "Description:"
 msgstr "Опис:"
 
@@ -110,8 +111,8 @@ msgstr "Експорт теми - KVIrc"
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Не можу застосувати обрану тему: %Q"
 
-#: src/modules/theme/packthemedialog.cpp:369
 #: src/modules/theme/savethemedialog.cpp:198
+#: src/modules/theme/packthemedialog.cpp:369
 msgid "Failed to load the selected image"
 msgstr "Не можу завантажити обране зображення"
 
@@ -169,8 +170,8 @@ msgstr ""
 #: src/modules/theme/packthemedialog.cpp:381
 #, fuzzy
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *%"
-"1 extension."
+"Here you must choose the file name for the theme package. It should have a *"
+"%1 extension."
 msgstr ""
 "Тут ви можете вибрати ім'я файлу вашого пакета теми. воно повинне мати "
 "розширення *. %1"
@@ -189,8 +190,8 @@ msgid ""
 "description of the package you're creating."
 msgstr "Тут ви повинні вказати інформацію про себе й короткий опис пакета."
 
-#: src/modules/theme/packthemedialog.cpp:108
 #: src/modules/theme/savethemedialog.cpp:78
+#: src/modules/theme/packthemedialog.cpp:108
 msgid "Hit the \"Next\" button to begin."
 msgstr "Натисніть \"Далі\" для продовження."
 
@@ -349,8 +350,8 @@ msgstr "Не можу створити папку теми"
 msgid "Unable to save theme: %Q"
 msgstr "Не можу зберегти тему: %Q"
 
-#: src/modules/theme/packthemedialog.cpp:272
 #: src/modules/theme/savethemedialog.cpp:111
+#: src/modules/theme/packthemedialog.cpp:272
 msgid "Version:"
 msgstr "Версія:"
 
@@ -366,8 +367,8 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Попередження: тема може бути не сумісна з вашою версією KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:101
 #: src/modules/theme/savethemedialog.cpp:85
+#: src/modules/theme/packthemedialog.cpp:101
 msgid "Welcome"
 msgstr "Ласкаво просимо"
 
