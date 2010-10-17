@@ -44,7 +44,7 @@
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	#include <QPixmap>
-	extern QPixmap       * g_pShadedChildGlobalDesktopBackground;
+	extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 extern KviNotifierWindow * g_pNotifierWindow;
