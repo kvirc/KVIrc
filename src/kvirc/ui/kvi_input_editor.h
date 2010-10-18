@@ -826,6 +826,12 @@ private slots:
 	* \return void
 	*/
 	void zoomOut();
+
+	/**
+	* \brief Restore the ircview font (and its size)
+	* \return void
+	*/
+	void zoomDefault();
 protected:
 	void completionEscapeUnsafeToken(QString &szToken);
 	void installShortcuts();

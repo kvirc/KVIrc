@@ -2089,6 +2089,11 @@ void KviIrcView::decreaseFontSize()
 	setFont(f);
 }
 
+void KviIrcView::resetDefaultFont()
+{
+	setFont(KVI_OPTION_FONT(KviOption_fontIrcView));
+}
+
 void KviIrcView::chooseFont()
 {
 	bool bOk;

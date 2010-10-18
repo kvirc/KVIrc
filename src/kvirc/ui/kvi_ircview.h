@@ -235,6 +235,7 @@ public slots:
 	void toggleToolWidget();
 	void increaseFontSize();
 	void decreaseFontSize();
+	void resetDefaultFont();
 	void chooseFont();
 	void chooseBackground();
 	void resetBackground();

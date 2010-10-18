@@ -206,8 +206,9 @@
 #define KVI_SHORTCUTS_INPUT_ESCAPE Qt::Key_Escape
 #define KVI_SHORTCUTS_INPUT_DUMMY Qt::ShiftModifier + Qt::Key_Escape
 #define KVI_SHORTCUTS_INPUT_DUMMY_2 Qt::ShiftModifier + Qt::Key_Delete
-#define KVI_SHORTCUTS_WIN_ZOOM_IN Qt::ControlModifier + Qt::Key_Plus
-#define KVI_SHORTCUTS_WIN_ZOOM_OUT Qt::ControlModifier + Qt::Key_Minus
+#define KVI_SHORTCUTS_WIN_ZOOM_IN QKeySequence::ZoomIn
+#define KVI_SHORTCUTS_WIN_ZOOM_OUT QKeySequence::ZoomOut
+#define KVI_SHORTCUTS_WIN_ZOOM_DEFAULT Qt::ControlModifier + Qt::Key_0
 
 /*
 	@doc: keyboard
@@ -244,6 +245,7 @@
 		[b]Ctrl+Z:[/b] Undo last action[br]
 		[b]Ctrl+"+":[/b] Increase font size[br]
 		[b]Ctrl+"-":[/b] Decrease font size[br]
+		[b]Ctrl+0:[/b] Restore default font (and font size)[br]
 		[b]Ctrl+Shift+A:[/b] Go away/back[br]
 		[b]Ctrl+Shift+B:[/b] Open "Manage Toolbars" dialog[br]
 		[b]Ctrl+Shift+C:[/b] Connect/disconnect current irc context[br]

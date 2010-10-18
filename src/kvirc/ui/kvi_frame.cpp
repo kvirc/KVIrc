@@ -98,7 +98,7 @@ KviFrame::KviFrame()
 	//disable this flag that gets enabled by qt when using Qt::WA_TranslucentBackground
 	setAttribute(Qt::WA_NoSystemBackground, false);
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
-	
+
 	m_pWinList  = new KviPointerList<KviWindow>;
 	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
 	m_pWinList->setAutoDelete(false);
@@ -327,7 +327,7 @@ void KviFrame::installAccelerators()
 	int i=0, keys=0;
 	while((keys = accel_table[i]))
 	{
-		new QShortcut(QKeySequence(keys),this,SLOT(accelActivated()),0,Qt::ApplicationShortcut);
+		new QShortcut(QKeySequence(keys),this,SLOT(accelActivated()),SLOT(accelActivated()),Qt::ApplicationShortcut);
 		i++;
 	}
 }
@@ -504,7 +504,7 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 			} else {
 				wnd->setGeometry(rect);
 				wnd->triggerCreationEvents();
-				
+
 				if(bShow)
 				{
 					if(bMaximized)
@@ -717,7 +717,7 @@ void KviFrame::childWindowActivated(KviWindow *wnd, bool bForce)
 			g_pActiveWindow->lostUserFocus();
 		g_pActiveWindow = wnd;
 	}
-	
+
 	m_pWindowList->setActiveItem(wnd->windowListItem());
 
 	bool bActiveContextChanged = (m_pActiveContext != wnd->context());
@@ -755,7 +755,7 @@ void KviFrame::changeEvent(QEvent * e)
 	}
 	KviTalMainWindow::changeEvent(e);
 }
-			
+
 void KviFrame::closeEvent(QCloseEvent *e)
 {
 	//check if the user just want us to minimize in tray; if we're not the sender
