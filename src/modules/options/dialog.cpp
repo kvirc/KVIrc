@@ -99,7 +99,7 @@ KviOptionsTreeWidgetItem::~KviOptionsTreeWidgetItem()
 }
 
 KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
-: QDialog(par)
+: QWidget(par)
 {
 	setObjectName("general_options_dialog");
 
@@ -300,7 +300,7 @@ void KviOptionsDialog::showEvent(QShowEvent *e)
 
 	setGeometry((w - ww) / 2,(h - wh) / 2,ww,wh);
 
-	QDialog::showEvent(e);
+	QWidget::showEvent(e);
 }
 
 void KviOptionsDialog::searchLineEditTextChanged(const QString &)

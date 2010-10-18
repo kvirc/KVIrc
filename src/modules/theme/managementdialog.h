@@ -31,7 +31,7 @@
 #include "kvi_tal_wizard.h"
 #include "kvi_tal_listwidget.h"
 
-#include <QDialog>
+#include <QWidget>
 #include <QComboBox>
 #include <QCursor>
 #include <QTextDocument>
@@ -57,7 +57,7 @@ public:
 };
 
 
-class KviThemeManagementDialog : public QDialog
+class KviThemeManagementDialog : public QWidget
 {
 	Q_OBJECT
 public:
@@ -72,7 +72,7 @@ protected:
 	QToolButton         * m_pPackThemeButton;
 public:
 	static KviThemeManagementDialog * instance(){ return m_pInstance; };
-	static void display();
+	static void display(bool bTopLevel);
 	static void cleanup();
 protected:
 	void fillThemeBox(const QString &szDir);
@@ -93,15 +93,5 @@ protected slots:
 	//void tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt);
 	void tipRequest(QListWidgetItem *item,const QPoint &pnt);
 };
-/*
-class KviThemeDelegate : public QItemDelegate
-{
-public:
-	KviThemeDelegate(QListWidget * pWidget)
-		: QItemDelegate(pWidget){};
-	~KviThemeDelegate(){};
-	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
-	 void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
-};
-*/
+
 #endif //!_MANAGEMENTDIALOG_H_

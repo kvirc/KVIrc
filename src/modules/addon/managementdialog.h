@@ -29,7 +29,6 @@
 
 #include <QWidget>
 #include <QLabel>
-#include <QDialog>
 #include <QColor>
 #include <QTextDocument>
 #include <QListWidget>
@@ -55,7 +54,7 @@ public:
 };
 
 
-class KviScriptManagementDialog : public QDialog
+class KviScriptManagementDialog : public QWidget
 {
 	Q_OBJECT
 protected:
@@ -71,7 +70,7 @@ protected:
 	QToolButton                      * m_pUninstallButton;
 public:
 	static KviScriptManagementDialog * instance(){ return m_pInstance; };
-	static void display();
+	static void display(bool bTopLevel);
 	static void cleanup();
 protected:
 	void fillListView();

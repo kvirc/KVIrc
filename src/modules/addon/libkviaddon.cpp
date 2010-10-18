@@ -765,14 +765,17 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 	@short:
 		Shows the addon addon management editor
 	@syntax:
-		addon.dialog
+		addon.dialog [-t]
 	@description:
-		Shows the addon addon management editor
+		Shows the addon addon management editor.[br]
+		If the [-t] switch is used, the dialog is opened as toplevel window,
+		otherwise it is opened as part of the current frame window.[br]
 */
 
-static bool addon_kvs_cmd_dialog(KviKvsModuleCommandCall *)
+static bool addon_kvs_cmd_dialog(KviKvsModuleCommandCall *c)
 {
-	KviScriptManagementDialog::display();
+
+	KviScriptManagementDialog::display(c->hasSwitch('t',"toplevel"));
 	return true;
 }
 

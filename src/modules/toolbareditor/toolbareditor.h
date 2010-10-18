@@ -28,6 +28,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QWidget>
 #include <QDialog>
 #include <QColor>
 
@@ -38,7 +39,7 @@ class QPushButton;
 class KviActionDrawer;
 
 
-class KviCustomizeToolBarsDialog : public QDialog
+class KviCustomizeToolBarsDialog : public QWidget
 {
 	Q_OBJECT
 protected:
@@ -53,7 +54,7 @@ protected:
 	QPushButton * m_pExportToolBarButton;
 public:
 	static KviCustomizeToolBarsDialog * instance(){ return m_pInstance; };
-	static void display();
+	static void display(bool bTopLevel);
 	static void cleanup();
 protected:
 	virtual void showEvent(QShowEvent * e);

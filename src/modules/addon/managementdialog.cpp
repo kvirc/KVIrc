@@ -87,7 +87,7 @@ KviScriptAddonListViewItem::~KviScriptAddonListViewItem()
 }
 
 KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
-: QDialog(p)
+: QWidget(p)
 {
 	setWindowTitle(__tr2qs_ctx("Manage Script-Based Addons","addon"));
 	setObjectName("Addon manager");
@@ -324,7 +324,7 @@ void KviScriptManagementDialog::showEvent(QShowEvent * e)
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
 	move((rect.width() - width())/2,(rect.height() - height())/2);
 
-	QDialog::showEvent(e);
+	QWidget::showEvent(e);
 }
 
 void KviScriptManagementDialog::closeClicked()
@@ -339,11 +339,33 @@ void KviScriptManagementDialog::cleanup()
 	m_pInstance = 0;
 }
 
-void KviScriptManagementDialog::display()
+void KviScriptManagementDialog::display(bool bTopLevel)
 {
-	if(m_pInstance)return;
-	m_pInstance = new KviScriptManagementDialog(g_pFrame);
+	if(m_pInstance)
+	{
+		if(bTopLevel)
+		{
+			if(m_pInstance->parent())
+			{
+				m_pInstance->setParent(0);
+			}
+		} else {
+			if(m_pInstance->parent() != g_pFrame->splitter())
+			{
+				m_pInstance->setParent(g_pFrame->splitter());
+			}
+		}
+	} else {
+		if(bTopLevel)
+		{
+			m_pInstance = new KviScriptManagementDialog(0);
+		} else {
+			m_pInstance = new KviScriptManagementDialog(g_pFrame->splitter());
+		}
+	}
 	m_pInstance->show();
+	m_pInstance->raise();
+	m_pInstance->setFocus();
 }
 
 void KviScriptManagementDialog::closeEvent(QCloseEvent * e)

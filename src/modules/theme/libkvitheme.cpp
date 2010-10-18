@@ -263,14 +263,17 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 	@short:
 		Shows the theme theme management editor
 	@syntax:
-		theme.dialog
+		theme.dialog [-t]
 	@description:
-		Shows the theme theme management editor
+		Shows the theme theme management editor[br]
+		If the [-t] switch is used, the dialog is opened as toplevel window,
+		otherwise it is opened as part of the current frame window.[br]
 */
 
-static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall *)
+static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall *c)
 {
-	KviThemeManagementDialog::display();
+
+	KviThemeManagementDialog::display(c->hasSwitch('t',"toplevel"));
 	return true;
 }
 

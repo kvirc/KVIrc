@@ -91,7 +91,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_SERVEROPTIONS,
-		"options.edit KviServerOptionsWidget",
+		"options.edit -t KviServerOptionsWidget",
 		__tr2qs("Configure Servers..."),
 		__tr2qs("Allows you to configure the servers and eventually to connect to them"),
 		KviActionManager::categorySettings(),
@@ -102,7 +102,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_MANAGEADDONS,
-		"addon.dialog",
+		"addon.dialog -t",
 		__tr2qs("Manage Addons..."),
 		__tr2qs("Allows you to manage the script-based addons"),
 		KviActionManager::categorySettings(),
@@ -124,7 +124,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_IDENTITYOPTIONS,
-		"options.edit KviIdentityOptionsWidget",
+		"options.edit -t KviIdentityOptionsWidget",
 		__tr2qs("Configure Identity..."),
 		__tr2qs("Allows you to configure nickname, username, avatar etc..."),
 		KviActionManager::categorySettings(),
@@ -168,7 +168,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_GENERALOPTIONS,
-		"options.dialog",
+		"options.dialog -t",
 		__tr2qs("Configure KVIrc..."),
 		__tr2qs("Shows the general options dialog"),
 		KviActionManager::categorySettings(),
@@ -179,7 +179,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_THEMEOPTIONS,
-		"options.dialog theme",
+		"options.dialog -t theme",
 		__tr2qs("Configure Theme..."),
 		__tr2qs("Shows the theme options dialog"),
 		KviActionManager::categorySettings(),
@@ -190,7 +190,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_MANAGETHEMES,
-		"theme.dialog",
+		"theme.dialog -t",
 		__tr2qs("Manage Themes..."),
 		__tr2qs("Allows you to manage the themes"),
 		KviActionManager::categorySettings(),
@@ -201,7 +201,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_TOOLBAREDITOR,
-		"toolbareditor.open",
+		"toolbareditor.open -t",
 		__tr2qs("Customize Toolbars..."),
 		__tr2qs("Shows a window that allows editing script toolbars"),
 		KviActionManager::categorySettings(),
@@ -802,7 +802,7 @@ KviChangeNickAction::KviChangeNickAction(QObject * pParent)
 : KviSubmenuAction(
 	pParent,
 	QString(KVI_COREACTION_NICKNAMEMENU),
-	QString("dialog.textinput(\"" + __tr2qs("Change Nickname") + "\",\"" + 
+	QString("dialog.textinput(\"" + __tr2qs("Change Nickname") + "\",\"" +
 			__tr2qs("Please enter the new nickname") + "\",\"" +
 			__tr2qs("OK") + "\",\"" +
 			__tr2qs("Cancel") + "\"){ if($0 == 0 && $1 != \"\")nick $1; }"),

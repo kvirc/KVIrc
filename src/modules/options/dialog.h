@@ -30,7 +30,7 @@
 #include "kvi_optionswidget.h"
 #include <QTreeWidget>
 
-#include <QDialog>
+#include <QWidget>
 #include <QStringList>
 #include <QToolButton>
 #include <QPainter>
@@ -60,7 +60,7 @@ public:
 	KviOptionsWidget              * m_pOptionsWidget;
 };
 
-class KviOptionsDialog : public QDialog
+class KviOptionsDialog : public QWidget
 {
 	Q_OBJECT
 public:

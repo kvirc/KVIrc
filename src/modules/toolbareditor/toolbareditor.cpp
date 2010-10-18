@@ -50,6 +50,7 @@
 #include <QDir>
 #include <QTimer>
 #include <QEvent>
+#include <QSplitter>
 #include <QDropEvent>
 #include <QDesktopWidget>
 
@@ -287,7 +288,7 @@ void KviCustomToolBarPropertiesDialog::advancedClicked()
 
 
 KviCustomizeToolBarsDialog::KviCustomizeToolBarsDialog(QWidget * p)
-: QDialog(p)
+: QWidget(p)
 {
 	setObjectName("Toolbar_editor");
 	setWindowTitle(__tr2qs_ctx("Customize Toolbars","editor"));
@@ -366,7 +367,7 @@ void KviCustomizeToolBarsDialog::showEvent(QShowEvent * e)
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
 	move((rect.width() - width())/2,(rect.height() - height())/2);
 
-	QDialog::showEvent(e);
+	QWidget::showEvent(e);
 }
 
 void KviCustomizeToolBarsDialog::deleteToolBar()
@@ -525,11 +526,33 @@ void KviCustomizeToolBarsDialog::cleanup()
 	m_pInstance = 0;
 }
 
-void KviCustomizeToolBarsDialog::display()
+void KviCustomizeToolBarsDialog::display(bool bTopLevel)
 {
-	if(m_pInstance)return;
-	m_pInstance = new KviCustomizeToolBarsDialog(g_pFrame);
+	if(m_pInstance)
+	{
+		if(bTopLevel)
+		{
+			if(m_pInstance->parent())
+			{
+				m_pInstance->setParent(0);
+			}
+		} else {
+			if(m_pInstance->parent() != g_pFrame->splitter())
+			{
+				m_pInstance->setParent(g_pFrame->splitter());
+			}
+		}
+	} else {
+		if(bTopLevel)
+		{
+			m_pInstance = new KviCustomizeToolBarsDialog(0);
+		} else {
+			m_pInstance = new KviCustomizeToolBarsDialog(g_pFrame->splitter());
+		}
+	}
 	m_pInstance->show();
+	m_pInstance->raise();
+	m_pInstance->setFocus();
 }
 
 void KviCustomizeToolBarsDialog::closeEvent(QCloseEvent * e)

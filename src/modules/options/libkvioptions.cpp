@@ -217,15 +217,7 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 
 	QWidget * w;
 
-	if(c->hasSwitch('m',"modal"))
-	{
-		w = g_pApp->activeModalWidget();
-		if(!w)w = g_pFrame;
-	} else {
-		w = g_pFrame;
-	}
-
-	KviOptionsWidgetContainer * wc = new KviOptionsWidgetContainer(w,c->hasSwitch('m',"modal"));
+	KviOptionsWidgetContainer * wc = new KviOptionsWidgetContainer(0,c->hasSwitch('m',"modal"));
 
 	wc->setup(g_pOptionsInstanceManager->getInstance(e,wc));
 

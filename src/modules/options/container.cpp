@@ -42,13 +42,14 @@
 extern KviOptionsInstanceManager * g_pOptionsInstanceManager;
 
 KviOptionsWidgetContainer::KviOptionsWidgetContainer(QWidget * par,bool bModal)
-: QDialog(par)
+: QWidget(par)
 {
 	m_pLayout = new QGridLayout(this);
 
 	setObjectName("container");
 	m_pOptionsWidget = 0;
-	setModal(bModal);
+	if(bModal)
+		setWindowModality(Qt::ApplicationModal);
 }
 
 KviOptionsWidgetContainer::~KviOptionsWidgetContainer()

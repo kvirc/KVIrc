@@ -42,15 +42,17 @@ QRect g_rectToolBarEditorDialogGeometry(0,0,0,0);
 	@short:
 		Shows the script toolbar editor
 	@syntax:
-		toolbareditor.open
+		toolbareditor.open [-t]
 	@description:
-		Opens the script toolbar editor dialog.
+		Opens the script toolbar editor dialog.[br]
+		If the [-t] switch is used, the dialog is opened as toplevel window,
+		otherwise it is opened as part of the current frame window.[br]
 */
 
 
-static bool toolbareditor_kvs_cmd_open(KviKvsModuleCommandCall *)
+static bool toolbareditor_kvs_cmd_open(KviKvsModuleCommandCall *c)
 {
-	KviCustomizeToolBarsDialog::display();
+	KviCustomizeToolBarsDialog::display(c->hasSwitch('t',"toplevel"));
 	return true;
 }
 

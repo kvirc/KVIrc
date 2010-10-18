@@ -60,6 +60,7 @@
 #include <QImage>
 #include <QBuffer>
 #include <QCloseEvent>
+#include <QSplitter>
 #include <QTextDocument>
 #include <QAbstractTextDocumentLayout>
 
@@ -106,14 +107,12 @@ KviThemeManagementDialog * KviThemeManagementDialog::m_pInstance = 0;
 
 
 KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
-: QDialog(parent)
+: QWidget(parent)
 {
 	m_pItemDelegate=0;
 	setObjectName("theme_options_widget");
 	setWindowTitle(__tr2qs_ctx("Manage Themes - KVIrc","theme"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_THEME)));
-
-	setModal(true);
 
 	m_pInstance = this;
 
@@ -225,11 +224,33 @@ void KviThemeManagementDialog::closeClicked()
 	m_pInstance = 0;
 }
 
-void KviThemeManagementDialog::display()
+void KviThemeManagementDialog::display(bool bTopLevel)
 {
-	if(!m_pInstance)
-		m_pInstance = new KviThemeManagementDialog(g_pFrame);
+	if(m_pInstance)
+	{
+		if(bTopLevel)
+		{
+			if(m_pInstance->parent())
+			{
+				m_pInstance->setParent(0);
+			}
+		} else {
+			if(m_pInstance->parent() != g_pFrame->splitter())
+			{
+				m_pInstance->setParent(g_pFrame->splitter());
+			}
+		}
+	} else {
+		if(bTopLevel)
+		{
+			m_pInstance = new KviThemeManagementDialog(0);
+		} else {
+			m_pInstance = new KviThemeManagementDialog(g_pFrame->splitter());
+		}
+	}
 	m_pInstance->show();
+	m_pInstance->raise();
+	m_pInstance->setFocus();
 }
 
 void KviThemeManagementDialog::cleanup()
@@ -359,7 +380,7 @@ void KviThemeManagementDialog::fillThemeBox(const QString &szDir)
 		if(inf->loadFromDirectory(szTest))
 		{
 			inf->setSubdirectory(*it);
-			KviThemeListWidgetItem * item = new KviThemeListWidgetItem(m_pListWidget,inf);
+			new KviThemeListWidgetItem(m_pListWidget,inf);
 		} else {
 			delete inf;
 		}
