@@ -215,8 +215,6 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	QWidget * w;
-
 	KviOptionsWidgetContainer * wc = new KviOptionsWidgetContainer(0,c->hasSwitch('m',"modal"));
 
 	wc->setup(g_pOptionsInstanceManager->getInstance(e,wc));
