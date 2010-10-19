@@ -41,7 +41,11 @@
 
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#define KVIMODULEEXPORT extern "C" __declspec(dllexport) __attribute__((visibility("default")))
+	#if defined(COMPILE_ON_MINGW)
+		#define KVIMODULEEXPORT extern "C" __declspec(dllexport) __attribute__((visibility("default")))
+	#else
+		#define KVIMODULEEXPORT extern "C" __declspec(dllexport)
+	#endif	
 	#define KVIMODULEEXPORTDATA KVIMODULEEXPORT
 	#define KVIMODULEEXPORTFUNC KVIMODULEEXPORT
 #else

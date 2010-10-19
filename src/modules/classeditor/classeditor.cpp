@@ -1562,7 +1562,7 @@ void KviClassEditor::newClass()
 	KviQString::escapeKvs(&szClassName, KviQString::EscapeSpace);
 	KviQString::escapeKvs(&szinheritsClassName, KviQString::EscapeSpace);
 
-	QString szClass = "class\(";
+	QString szClass = "class(";
 	szClass += szClassName + "," + szinheritsClassName;
 	szClass += "){}\n";
 	pItem->setInheritsClass(szinheritsClassName);

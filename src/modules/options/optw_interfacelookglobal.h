@@ -62,7 +62,7 @@ protected:
 	KviBoolSelector * m_pUseTransparencyBoolSelector;
 	#ifdef COMPILE_X11_SUPPORT
 		KviBoolSelector * m_pUseCompositingForTransparencyBoolSelector;
-	#elif defined(COMPILE_ON_MINGW) // || defined(COMPILE_ON_WINDOWS)
+	#elif defined(COMPILE_ON_WINDOWS)
 		KviBoolSelector * m_pUseWindowsFakeDesktopTransparencyBoolSelector;
 	#endif
 #endif

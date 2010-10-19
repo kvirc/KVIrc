@@ -46,8 +46,7 @@
 	 * \def COMPILE_WITH_SYSTEM_MEMMOVE This flag will disable kvirc's internal optimized memmove functions
 	 * \def COMPILE_ON_WINDOWS This flag will enable specific code for windows/visual studio compilation
 	 */
-	
-	#define COMPILE_WITH_SYSTEM_MEMMOVE
+
 	#define COMPILE_ON_WINDOWS
 
 	/**
@@ -56,10 +55,10 @@
 	 */
 
 	#ifdef __KVILIB__
-		#define KVILIB_API __declspec(dllexport) __attribute__((visibility("default")))
+		#define KVILIB_API __declspec(dllexport)
 		#define KVILIB_API_TYPEDEF __declspec(dllexport)
 	#else
-		#define KVILIB_API __declspec(dllimport) __attribute__((visibility("default")))
+		#define KVILIB_API __declspec(dllimport)
 		#define KVILIB_API_TYPEDEF __declspec(dllimport)
 	#endif
 
@@ -68,11 +67,11 @@
 	 * \def KVIRC_API_TYPEDEF This prefix before a typedef enables the export of its symbol outside kvirc; needed for win32/visual studio, win32/mingw
 	 */
 
-        #ifdef __KVIRC__
-		#define KVIRC_API __declspec(dllexport) __attribute__((visibility("default")))
+	#ifdef __KVIRC__
+		#define KVIRC_API __declspec(dllexport)
 		#define KVIRC_API_TYPEDEF __declspec(dllexport)
 	#else
-		#define KVIRC_API __declspec(dllimport) __attribute__((visibility("default")))
+		#define KVIRC_API __declspec(dllimport)
 		#define KVIRC_API_TYPEDEF __declspec(dllimport)
 	#endif
 #else

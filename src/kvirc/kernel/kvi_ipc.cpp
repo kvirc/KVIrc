@@ -141,7 +141,11 @@
 			cpd.lpData = (void *)message;
 			DWORD dwResult;
 			qDebug(message);
+#if defined(COMPILE_ON_WINDOWS) && !(defined(MINGW))
+			::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,(PDWORD_PTR)&dwResult);
+#else
 			::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,&dwResult);
+#endif
 			return true;
 		}
 #else

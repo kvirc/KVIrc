@@ -78,7 +78,11 @@ namespace KviNickColors
 		char* comb= (char*)kvi_malloc(6);
 		int numm=0;
 		// TODO handle KVI_TRANSPARENT and KVI_NOCHANGE (ticket #812)
+#if defined(COMPILE_ON_WINDOWS) && !(defined(MINGW))
+		_snprintf(comb, 6, "%d,%d", iFore % 16, iBack % 16);
+#else
 		snprintf(comb, 6, "%d,%d", iFore % 16, iBack % 16);
+#endif
 // 		qDebug("Nick color %s",comb);
 		for(int i=0; i<KVI_NUM_NICK_COLORS;++i)
 		{

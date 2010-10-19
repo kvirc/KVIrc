@@ -540,7 +540,7 @@ void KviRegisteredUserEntryDialog::notifyCheckClicked(bool bChecked)
 {
 	m_pNotifyNick->setEnabled(bChecked);
 	m_pNotifyLabel->setEnabled(bChecked);
-	if(bChecked and m_pNotifyNick->text().isEmpty())
+	if(bChecked && m_pNotifyNick->text().isEmpty())
 	{
 		QString szMask;
 		if(m_pUser)

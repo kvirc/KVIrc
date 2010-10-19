@@ -10,12 +10,7 @@ ENDIF()
 ADD_LIBRARY(${kvi_module_name} MODULE ${${kvi_module_name}_SRCS} ${${kvi_module_name}_MOC_SRCS})
 
 IF(WIN32)
-	IF(MSVC)
-		TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${LIBS})
-	ELSE()
-		#mingw needs these flags for linking
-		TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS})
-	ENDIF()
+	TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS})
 ELSE()
 	TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${LIBS})
 ENDIF()

@@ -103,7 +103,13 @@ inline void kvi_hash_key_copy(const char * const &szFrom,const char * &szTo,bool
 {
 	if(bDeepCopy)
 	{
+#if defined(COMPILE_ON_WINDOWS)
+		// strlen() returns size_t under windows, which is 32 bits long on a 32 bits
+		// system and 64 bits long on a 64 bits one. cast it to avoid a warning
+		int len = (int)kvi_strLen(szFrom);
+#else
 		int len = kvi_strLen(szFrom);
+#endif
 		char * dst = (char *)kvi_malloc(len+1);
 		kvi_fastmove(dst,szFrom,len+1);
 		szTo = dst;
