@@ -1,4 +1,4 @@
-# CMakeLists for po/defscript
+# CMakeLists for po/core/defscript/
 
 # sed will cut paths at this directory
 SET(TRANSLATION_BASEDIR "data")

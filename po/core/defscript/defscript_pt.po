@@ -1,158 +1,160 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# , 2010.
+# Zé <mmodem00@gmail.com>, 2010.
+# Zé <mmodem00@gmal.com>, 2010.
+# Zé <ze@mandriva.org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 18:58+0200\n"
-"PO-Revision-Date: 2010-08-20 10:47+0100\n"
-"Last-Translator: Fibinger Ádám <vfiber@gmail.com>\n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2010-10-20 15:05+0200\n"
+"PO-Revision-Date: 2010-09-18 15:55+0100\n"
+"Last-Translator: Zé <mmodem00@gmail.com>\n"
+"Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"Language: pt\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/defscript/popups.kvs:541
 msgid "&Administrator"
-msgstr "&Adminisztrátor"
+msgstr "&Administrador"
 
 #: data/defscript/popups.kvs:465
 #: data/defscript/popups.kvs:599
 msgid "&Ban"
-msgstr "Tilt"
+msgstr "&Banir"
 
 #: data/defscript/popups.kvs:527
 msgid "&Control"
-msgstr "Vezérlés"
+msgstr "&Controlo"
 
 #: data/defscript/popups.kvs:546
 msgid "&Deadministrator"
-msgstr "Adminisztrátor elvétele"
+msgstr "Remover &Administrador"
 
 #: data/defscript/popups.kvs:566
 msgid "&Dehalfop"
-msgstr "&Féloperátor elvétele"
+msgstr "Remover &Semi-op"
 
 #: data/defscript/popups.kvs:556
 msgid "&Deop"
-msgstr "&Operátor elvétele"
+msgstr "Remover &Op"
 
 #: data/defscript/popups.kvs:536
 msgid "&Deowner"
-msgstr "Tulajdonos elvétele"
+msgstr "Remover &Dono"
 
 #: data/defscript/popups.kvs:561
 msgid "&Halfop"
-msgstr "Féloperátor"
+msgstr "&Semi-op"
 
 #: data/defscript/popups.kvs:649
 #: data/defscript/popups.kvs:755
 #: data/defscript/popups.kvs:1302
 msgid "&Highlight"
-msgstr "Kiemelés"
+msgstr "&Destacar"
 
 #: data/defscript/popups.kvs:722
 msgid "&Hop"
-msgstr "&Hop"
+msgstr "&Entrar/Sair"
 
 #: data/defscript/popups.kvs:1158
 msgid "&Ignore"
-msgstr "Mellőzés"
+msgstr "&Ignorar"
 
 #: data/defscript/popups.kvs:497
 #: data/defscript/popups.kvs:782
 #: data/defscript/popups.kvs:1120
 #: data/defscript/popups.kvs:1260
 msgid "&Information"
-msgstr "&Információ"
+msgstr "&Informação"
 
 #: data/defscript/popups.kvs:663
 msgid "&Join"
-msgstr "Csatlakozás"
+msgstr "&Entrar"
 
 #: data/defscript/popups.kvs:715
 #: data/defscript/popups.kvs:777
 msgid "&Join Channels..."
-msgstr "Csatlakozás Csatornákhoz..."
+msgstr "&Canais..."
 
 #: data/defscript/popups.kvs:583
 #: data/defscript/popups.kvs:590
 msgid "&Kick"
-msgstr "&Kirúgás"
+msgstr "&Expulsar"
 
 #: data/defscript/popups.kvs:616
 msgid "&Kick/Ban"
-msgstr "&Kirúgás/Tiltás"
+msgstr "&Expulsar/Banir"
 
 #: data/defscript/popups.kvs:551
 msgid "&Op"
-msgstr "&Operátor"
+msgstr "&Op"
 
 #: data/defscript/popups.kvs:912
 msgid "&Page"
-msgstr ""
+msgstr "&Paginar"
 
 #: data/defscript/popups.kvs:668
 #: data/defscript/popups.kvs:727
 msgid "&Part"
-msgstr "Lelépés"
+msgstr "&Partir"
 
 #: data/defscript/popups.kvs:634
 #: data/defscript/popups.kvs:1287
 msgid "&Query"
-msgstr "Privát"
+msgstr "&Privado"
 
 #: data/defscript/popups.kvs:647
 #: data/defscript/popups.kvs:1160
 #: data/defscript/popups.kvs:1300
 msgid "&Registration"
-msgstr "&Regisztráció"
+msgstr "&Registo"
 
 #: data/defscript/popups.kvs:571
 msgid "&Voice"
-msgstr "Hang"
+msgstr "&Voz"
 
 #: data/defscript/aliases.kvs:103
 msgid "-a: send notice to all channel admins"
-msgstr "-a: értesítő küldése minden csatorna adminisztrátornak"
+msgstr "-a: envia uma noticia para todos os administradores do canal"
 
 #: data/defscript/aliases.kvs:105
 msgid "-h: send notice to all channel halfops"
-msgstr "-h: értesítő küldése minden csatorna féloperátornak"
+msgstr "-h: envia uma noticia para todos os semi-operadores do canal"
 
 #: data/defscript/aliases.kvs:101
 msgid "-m: send a message instead of a notice"
-msgstr "-m: üzenet küldése értesítő helyett"
+msgstr "-m: envia uma mensagem em vez de uma noticia"
 
 #: data/defscript/aliases.kvs:104
 msgid "-o: send notice to all channel ops"
-msgstr "-o: értesítő küldése minden csatorna operátornak"
+msgstr "-o: envia uma noticia para todos os operadores do canal"
 
 #: data/defscript/aliases.kvs:107
 msgid "-q: quiet mode"
-msgstr "-q: csöndes mód"
+msgstr "-q: modo quieto"
 
 #: data/defscript/aliases.kvs:106
 msgid "-v: send notice to all channel voices"
-msgstr "-v:  értesítő küldése mindenkinek aki rendelkezik hanggal a csatornán"
+msgstr "-v: envia uma noticia para todas as vozes do canal"
 
 #: data/defscript/aliases.kvs:102
 msgid "-w: send notice to all channel owners"
-msgstr "-w: üzenet küldése minden csatorna tulajdonosnak"
+msgstr "-w: envia uma noticia para todos os donos do canal"
 
 #: data/defscript/popups.kvs:395
 msgid "Add to Notify"
-msgstr "Értesítésekhez adás"
+msgstr "Adicionar ao Notificador"
 
 #: data/defscript/popups.kvs:29
 #: data/defscript/popups.kvs:62
 msgid "Always Highlight"
-msgstr "Mindig Kiemel"
+msgstr "Destacar Sempre"
 
 #: data/defscript/popups.kvs:405
 msgid "Avatar"
@@ -160,47 +162,47 @@ msgstr "Avatar"
 
 #: data/defscript/popups.kvs:455
 msgid "Ban"
-msgstr "Tilt"
+msgstr "Banir"
 
 #: data/defscript/popups.kvs:590
 #: data/defscript/popups.kvs:616
 #: data/defscript/popups.kvs:912
 msgid "Cancel"
-msgstr "Mégsem"
+msgstr "Cancelar"
 
 #: data/defscript/aliases.kvs:433
 msgid "Channel Administrator"
-msgstr "Csatorna Adminisztrátor"
+msgstr "Administrador do Canal"
 
 #: data/defscript/aliases.kvs:435
 msgid "Channel Operator"
-msgstr "Csatorna Operátor"
+msgstr "Operador do Canal"
 
 #: data/defscript/aliases.kvs:431
 msgid "Channel Owner"
-msgstr "Csatorna Tulajdonos"
+msgstr "Dono do Canal"
 
 #: data/defscript/popups.kvs:713
 #: data/defscript/popups.kvs:773
 msgid "Channels"
-msgstr "Csatornák"
+msgstr "Canais"
 
 #: data/defscript/popups.kvs:933
 msgid "Chat with"
-msgstr "Beszélgetés: "
+msgstr "Conversar com"
 
 #: data/defscript/popups.kvs:409
 msgid "Choose Avatar Image File"
-msgstr "Válassz Avatar Kép Fájlt"
+msgstr "Escolher Ficheiro de Imagem Avatar"
 
 #: data/defscript/popups.kvs:1217
 #: data/defscript/popups.kvs:1225
 msgid "Choose Log Filename"
-msgstr "Válassz Naplózási Fájlnevet"
+msgstr "Escolher Nome do Ficheiro de Registo"
 
 #: data/defscript/popups.kvs:407
 msgid "Choose..."
-msgstr "Kiválaszt..."
+msgstr "Escolher..."
 
 #: data/defscript/popups.kvs:762
 #: data/defscript/popups.kvs:865
@@ -208,76 +210,76 @@ msgstr "Kiválaszt..."
 #: data/defscript/popups.kvs:1169
 #: data/defscript/popups.kvs:1313
 msgid "Clear Buffer"
-msgstr "Puffer Ürítése"
+msgstr "Limpar Janela"
 
 #: data/defscript/popups.kvs:423
 msgid "Clear Default"
-msgstr "Alapértelmezés törlése"
+msgstr "Limpar Predefinido"
 
 #: data/defscript/popups.kvs:626
 msgid "Configure ban mask..."
-msgstr "Tiltási maszk konfigurálása..."
+msgstr "Configurar máscara de banir..."
 
 #: data/defscript/popups.kvs:686
 msgid "Copy Channel Address"
-msgstr "Csatorna Címének Másolása"
+msgstr "Copiar Endereço do Canal"
 
 #: data/defscript/popups.kvs:757
 msgid "Copy Channel URL to Clipboard"
-msgstr "Csatorna Címének Másolása Vágólapra"
+msgstr "Copiar &URL do Canal para Área de Transferência"
 
 #: data/defscript/popups.kvs:434
 msgid "Copy To Clipboard"
-msgstr "Másolás Vágólapra"
+msgstr "Copiar Para Área de Transferência"
 
 #: data/defscript/popups.kvs:576
 msgid "D&evoice"
-msgstr "Hang elvétele"
+msgstr "R&emover Voz"
 
 #: data/defscript/popups.kvs:516
 #: data/defscript/popups.kvs:1139
 msgid "DNS for"
-msgstr "DNS:"
+msgstr "DNS para"
 
 #: data/defscript/popups.kvs:986
 msgid "Default"
-msgstr "Alapértelmezett"
+msgstr "Predefinido"
 
 #: data/defscript/popups.kvs:383
 msgid "Edit Registration..."
-msgstr "Regisztráció Szerkesztése..."
+msgstr "Editar Registo..."
 
 #: data/defscript/popups.kvs:115
 msgid "Enable Ignore"
-msgstr "Mellőzés Engedélyezése"
+msgstr "Activar Ignore"
 
 #: data/defscript/popups.kvs:590
 msgid "Enter a kick reason"
-msgstr "Add meg a kirúgás indokát"
+msgstr "Indique a razão para expulsar"
 
 #: data/defscript/popups.kvs:616
 msgid "Enter a kick/ban reason"
-msgstr "Add meg a kirúgás/tiltás indokát"
+msgstr "Indique a razão para expulsar/banir"
 
 #: data/defscript/popups.kvs:912
 msgid "Enter the message text"
-msgstr "Add meg az üzenet szövegét"
+msgstr "Indique a mensagem de texto"
 
 #: data/defscript/popups.kvs:1191
 msgid "Flush Log File"
-msgstr "Naplófájl Frissítése"
+msgstr "Apagar Ficheiro de Registo"
 
 #: data/defscript/aliases.kvs:437
 msgid "Half Operator"
-msgstr "Féloperátor"
+msgstr "Semi-Operador"
 
 #: data/defscript/default.kvs:37
 msgid "Happy ircing :)"
-msgstr "Kellemes IRCelést :)"
+msgstr "Boas conversas :)"
 
 #: data/defscript/toolbars.kvs:22
 msgid "Help"
-msgstr "Súgó"
+msgstr "Ajuda"
 
 #: data/defscript/popups.kvs:31
 #: data/defscript/popups.kvs:36
@@ -286,16 +288,16 @@ msgstr "Súgó"
 #: data/defscript/popups.kvs:51
 #: data/defscript/popups.kvs:56
 msgid "Highlight as"
-msgstr "Kiemel mint "
+msgstr "Destacar como"
 
 #: data/defscript/toolbars.kvs:3
 msgid "IRC Context"
-msgstr "IRC Környezet"
+msgstr "Contexto IRC"
 
 #: data/defscript/popups.kvs:651
 #: data/defscript/popups.kvs:1304
 msgid "Ig&nore"
-msgstr "Mellőzés"
+msgstr "Ig&norar"
 
 #: data/defscript/popups.kvs:122
 #: data/defscript/popups.kvs:129
@@ -325,109 +327,109 @@ msgstr "Mellőzés"
 #: data/defscript/popups.kvs:297
 #: data/defscript/popups.kvs:304
 msgid "Ignore as"
-msgstr "Mellőzés mint"
+msgstr "Ignorar como"
 
 #: data/defscript/popups.kvs:120
 msgid "Ignore as..."
-msgstr "Mellőzés mint..."
+msgstr "Ignorar como..."
 
 #: data/defscript/popups.kvs:1210
 #: data/defscript/popups.kvs:1223
 msgid "Include Existing Buffer"
-msgstr "Belevéve a Meglévő Puffert"
+msgstr "Incluir Janela Existente"
 
 #: data/defscript/popups.kvs:588
 msgid "K&ick"
-msgstr "K&irúgás"
+msgstr "&Expulsar"
 
 #: data/defscript/popups.kvs:590
 msgid "Kick Reason"
-msgstr "Kirúgás Indoka"
+msgstr "Razão para Expulsar"
 
 #: data/defscript/popups.kvs:609
 #: data/defscript/popups.kvs:614
 msgid "Kick/Ban"
-msgstr "Kirúgás/Tiltás"
+msgstr "Expulsar/Banir"
 
 #: data/defscript/popups.kvs:616
 msgid "Kick/Ban Reason"
-msgstr "Kirúgás/Tiltás Indoka"
+msgstr "Razão para Expulsar/Banir"
 
 #: data/defscript/popups.kvs:1210
 msgid "Log To Default File"
-msgstr "Naplózás az Alapértelmezett Fájlba"
+msgstr "Registar Para Ficheiro Predefinido"
 
 #: data/defscript/popups.kvs:1205
 msgid "Log To Default File,"
-msgstr "Naplózás az alapértelmezett fájlba, "
+msgstr "Registar Para Ficheiro Predefinido,"
 
 #: data/defscript/popups.kvs:1215
 #: data/defscript/popups.kvs:1223
 msgid "Log To..."
-msgstr "Naplózás..."
+msgstr "Registar Para..."
 
 #: data/defscript/popups.kvs:1189
 msgid "Logging to"
-msgstr "Naplózás:"
+msgstr "Gravar registos para"
 
 #: data/defscript/popups.kvs:521
 #: data/defscript/popups.kvs:1144
 msgid "Mask for"
-msgstr "Maszk:"
+msgstr "Máscara para"
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
-msgstr "Hiányzó cél, akció nem történt"
+msgstr "Destino em falta, nenhuma acção tomada"
 
 #: data/defscript/popups.kvs:459
 #: data/defscript/popups.kvs:1061
 #: data/defscript/popups.kvs:1108
 #: data/defscript/popups.kvs:1248
 msgid "Multiple Users"
-msgstr "Több Felhasználó"
+msgstr "Múltiplos Utilizadores"
 
 #: data/defscript/aliases.kvs:491
 msgid "No such user:"
-msgstr "Nincs ilyen felhasználó:"
+msgstr "Nenhum utilizador:"
 
 #: data/defscript/aliases.kvs:443
 msgid "Normal User"
-msgstr "Normál Felhasználó"
+msgstr "Utilizador Normal"
 
 #: data/defscript/popups.kvs:1203
 msgid "Not Logging"
-msgstr "Nem Naplóz"
+msgstr "Não Registar"
 
 #: data/defscript/popups.kvs:653
 #: data/defscript/popups.kvs:748
 #: data/defscript/popups.kvs:1074
 #: data/defscript/popups.kvs:1162
 msgid "Notify Avatar"
-msgstr "Értesítés Avatarról"
+msgstr "&Avatar de Notificação"
 
 #: data/defscript/popups.kvs:1306
 msgid "Notify avatar"
-msgstr "Értesítés avatarról"
+msgstr "Avatar de notificação"
 
 #: data/defscript/popups.kvs:531
 msgid "O&wner"
-msgstr "Tulajdonos"
+msgstr "&Dono"
 
 #: data/defscript/popups.kvs:1369
 msgid "Open "
-msgstr "Megnyitás "
+msgstr "Abrir "
 
 #: data/defscript/toolbars.kvs:15
 msgid "Options"
-msgstr "Opciók"
+msgstr "Opções"
 
 #: data/defscript/aliases.kvs:115
 msgid "Parameter message missing"
-msgstr "Paraméter üzenet hiányzik"
+msgstr "Parâmetro de mensagem em falta"
 
 #: data/defscript/popups.kvs:350
 msgid "Quick Registration"
-msgstr "Gyors Regisztráció"
+msgstr "Registo Rápido"
 
 #: data/defscript/popups.kvs:352
 #: data/defscript/popups.kvs:357
@@ -436,124 +438,123 @@ msgstr "Gyors Regisztráció"
 #: data/defscript/popups.kvs:372
 #: data/defscript/popups.kvs:377
 msgid "Register as"
-msgstr "Regisztráció mint"
+msgstr "Registar como"
 
 #: data/defscript/popups.kvs:345
 msgid "Register..."
-msgstr "Regisztráció..."
+msgstr "Registar..."
 
 #: data/defscript/popups.kvs:400
 msgid "Remove from Notify"
-msgstr "Eltávolítás az Értesítésekből "
+msgstr "Remover da Notificação"
 
 #: data/defscript/popups.kvs:938
 msgid "Reverse Chat with"
-msgstr "Fordított Beszélgetés:"
+msgstr "Conversa Reversa com"
 
 #: data/defscript/popups.kvs:960
 msgid "Reverse Send to"
-msgstr "Fordított Küldés"
+msgstr "Envio Reverso para"
 
 #: data/defscript/toolbars.kvs:30
 msgid "Scripting"
-msgstr "Szkriptelés"
+msgstr "'Scripting'"
 
 #: data/defscript/popups.kvs:943
 msgid "Secure Chat with"
-msgstr "Biztonságos Beszélgetés"
+msgstr "Conversa Segura com"
 
 #: data/defscript/popups.kvs:965
 msgid "Secure Reverse Send to"
-msgstr "Biztonságos Fordított Küldés"
+msgstr "Envio Reverso Seguro para"
 
 #: data/defscript/popups.kvs:955
 msgid "Secure send to"
-msgstr "Biztonságos Küldés"
+msgstr "Envio seguro para"
 
 #: data/defscript/popups.kvs:950
 msgid "Send to"
-msgstr "Küldés:"
+msgstr "Enviar para"
 
 #: data/defscript/aliases.kvs:150
 msgid "Sending wallop to"
-msgstr "Wallop küldése"
+msgstr "A enviar 'wallop' para"
 
 #: data/defscript/popups.kvs:418
 msgid "Set as Default"
-msgstr "Beállítás alapértelmezettként"
+msgstr "Definir como Predefinido"
 
 #: data/defscript/popups.kvs:24
 #: data/defscript/popups.kvs:88
 msgid "Start Highlighting (Local)"
-msgstr "Kiemelés Indítása (Helyi)"
+msgstr "Iniciar Destacamento (Local)"
 
 #: data/defscript/popups.kvs:67
 msgid "Stop Highlighting"
-msgstr "Kiemelés Leállítása"
+msgstr "Parar Destacamento"
 
 #: data/defscript/popups.kvs:19
 #: data/defscript/popups.kvs:83
 msgid "Stop Highlighting (Local)"
-msgstr "Kiemelés leállítása (Helyi)"
+msgstr "Parar Destacamento (Local)"
 
 #: data/defscript/popups.kvs:1198
 msgid "Stop Logging"
-msgstr "Naplózás Leállítása"
+msgstr "Parar Registo"
 
 #: data/defscript/popups.kvs:977
 msgid "TDCC Reverse Send to"
-msgstr "TDCC Fordított küldés"
+msgstr "Envio Reverso TDCC para"
 
 #: data/defscript/popups.kvs:972
 msgid "TDCC Send to"
-msgstr "TDCC Küldés"
+msgstr "Envio TDCC para"
 
 #: data/defscript/popups.kvs:1374
 msgid "Telnet to "
-msgstr "Telnet: "
+msgstr "Telnet para "
 
 #: data/defscript/default.kvs:34
 msgid "The default script has been successfully installed."
-msgstr "Az alapértelmezett szkriptek sikeresen telepítve lettek."
+msgstr "O 'script' predefinido foi instalado com sucesso."
 
 #: data/defscript/aliases.kvs:245
 #: data/defscript/aliases.kvs:426
 msgid "This is not a channel window"
-msgstr "Ez nem egy csatorna ablak"
+msgstr "Esta não é uma janela de canal"
 
 #: data/defscript/default.kvs:35
 msgid "To connect to a server, type /server <server name>"
-msgstr ""
-"Szerverhez kapcsolódáshoz add ki a \" /server <szerver neve>\" parancsot"
+msgstr "Para conectar a um servidor, digite /server <nome do servidor>"
 
 #: data/defscript/popups.kvs:1381
 msgid "Traceroute to "
-msgstr "Traceroute: "
+msgstr "Traceroute para "
 
 #: data/defscript/popups.kvs:1387
 msgid "Traceroute6 to "
-msgstr "Traceroute6: "
+msgstr "Traceroute6 para"
 
 #: data/defscript/aliases.kvs:116
 msgid "Type /gnotice for help"
-msgstr "/gnotice további információkért"
+msgstr "Digite /gnotice para ajuda"
 
 #: data/defscript/popups.kvs:312
 msgid "Unignore"
-msgstr "Mellőzés visszavonása"
+msgstr "Remover Ignore"
 
 #: data/defscript/popups.kvs:388
 msgid "Unregister"
-msgstr "Regisztráció törlése"
+msgstr "Remover Registo"
 
 #: data/defscript/aliases.kvs:408
 msgid "Unsupported type:"
-msgstr "Nem támogatott típus:"
+msgstr "Tipo não suportado:"
 
 #: data/defscript/aliases.kvs:100
 #: data/defscript/aliases.kvs:145
 msgid "Usage"
-msgstr "Használat"
+msgstr "Uso"
 
 #: data/defscript/aliases.kvs:185
 #: data/defscript/aliases.kvs:197
@@ -565,131 +566,132 @@ msgstr "Használat"
 #: data/defscript/aliases.kvs:420
 #: data/defscript/aliases.kvs:480
 msgid "Usage:"
-msgstr "Használat:"
+msgstr "Uso:"
 
 #: data/defscript/aliases.kvs:441
 msgid "User Operator"
-msgstr "Felhasználói Operátor"
+msgstr "Utilizador Operador"
 
 #: data/defscript/aliases.kvs:439
 msgid "Voice"
-msgstr "Hang"
+msgstr "Voz"
 
 #: data/defscript/popups.kvs:984
 msgid "Voice Chat"
-msgstr "Élőhangos Beszélgetés"
+msgstr "Conversa com Voz"
 
 #: data/defscript/toolbars.kvs:40
 msgid "Window operations"
-msgstr "Ablakműveletek"
+msgstr "Operações de janelas"
 
 #: data/defscript/popups.kvs:588
 #: data/defscript/popups.kvs:614
 msgid "With..."
-msgstr "indoklással..."
+msgstr "Com..."
 
 #: data/defscript/aliases.kvs:474
 msgid "You must be connected to a server"
-msgstr "Kapcsolódnod kell egy szerverhez"
+msgstr "Tem que estar conectado a um servidor"
 
 #: data/defscript/aliases.kvs:468
 msgid "You must use DNS in an IRC context"
-msgstr "DNS-t kell használnod az IRC környezetben"
+msgstr "Tem que usar o DNS num contexto IRC"
 
 #: data/defscript/popups.kvs:771
 msgid "You're not connected to a server"
-msgstr "Nem vagy szerverhez csatlakozva"
+msgstr "Não está conectado a um servidor"
 
 #: data/defscript/classes.kvs:18
 msgid ""
 "[Installer] Error: the first argument of copyFiles must be a source directory"
 msgstr ""
-"[Telepítő] Hiba: a copyFiles első argomentumának a forrás könyvtárnak kell "
-"lennie"
+"Erro do [Instalador]: o primeiro argumento de copyFiles tem que ser um "
+"directório de origem"
 
 #: data/defscript/classes.kvs:24
 msgid ""
 "[Installer] Error: the second argument of copyFiles must be a file name or "
 "file regexp"
 msgstr ""
-"[Telepítő] Hiba: a copyFiles második argomentumának egy helyes fájlnévnek "
-"vagy fájl regexpnek kell lennie"
+"Erro do [Instalador]: o segundo argumento de copyFiles tem que ser um nome "
+"de ficheiro ou uma expressão regular"
 
 #: data/defscript/classes.kvs:30
 msgid ""
 "[Installer] Error: the third argument of copyFiles must be a destination "
 "directory"
 msgstr ""
-"[Telepítő] Hiba: a copyFiles harmadik argomentumának a célmappát kell megadni"
+"Erro do [Instalador]: o terceiro argumento de copyFiles tem que ter um "
+"directório de destino"
 
 #: data/defscript/aliases.kvs:100
 msgid "channel"
-msgstr "csatorna"
+msgstr "canal"
 
 #: data/defscript/popups.kvs:336
 msgid "has a default avatar"
-msgstr "rendelkezik avatarral"
+msgstr "tem um avatar predefinido"
 
 #: data/defscript/popups.kvs:489
 #: data/defscript/popups.kvs:1113
 #: data/defscript/popups.kvs:1253
 msgid "idle time"
-msgstr "tétlenség ideje"
+msgstr "tempo inactivo"
 
 #: data/defscript/popups.kvs:104
 msgid "is being ignored"
-msgstr "mellőzve lett "
+msgstr "está a ser ignorado"
 
 #: data/defscript/popups.kvs:333
 msgid "is in the notify list"
-msgstr "az értesítési listában van"
+msgstr "está na lista de notificação"
 
 #: data/defscript/popups.kvs:105
 #: data/defscript/popups.kvs:109
 msgid "is not being ignored"
-msgstr "nincs mellőzve"
+msgstr "não está a ser ignorado"
 
 #: data/defscript/popups.kvs:339
 msgid "is not registered"
-msgstr "nincs regisztrálva"
+msgstr "não está registado"
 
 #: data/defscript/popups.kvs:330
 msgid "is registered as"
-msgstr "regisztrált, mint "
+msgstr "está registado como"
 
 #: data/defscript/popups.kvs:806
 msgid "l (Connections)"
-msgstr "l (Kapcsolatok)"
+msgstr "l (Conexões)"
 
 #: data/defscript/popups.kvs:811
 msgid "m (Command Usage)"
-msgstr "m (Parancs Használata)"
+msgstr "m (Uso do Comando)"
 
 #: data/defscript/aliases.kvs:100
 #: data/defscript/aliases.kvs:145
 msgid "message"
-msgstr "üzenet"
+msgstr "mensagem"
 
 #: data/defscript/popups.kvs:816
 msgid "o (Operators)"
-msgstr "o (Operátorok)"
+msgstr "o (Operadores)"
 
 #: data/defscript/aliases.kvs:239
 msgid "reason"
-msgstr "ok"
+msgstr "razão"
 
 #: data/defscript/popups.kvs:821
 msgid "t (Connection stats ?)"
-msgstr "t (Kapcsolódási statisztikák ?)"
+msgstr "t (Estatísticas da conexão?)"
 
 #: data/defscript/popups.kvs:826
 msgid "u (Uptime)"
-msgstr "u (Idő Online)"
+msgstr "u (Tempo ligado)"
 
 #: data/defscript/popups.kvs:831
 msgid "y (y-Lines)"
-msgstr "y (y-Lines)"
+msgstr "y (Linhas-y)"
 
 #: data/defscript/popups.kvs:836
 msgid "z (Debug Stats?)"
-msgstr ""
+msgstr "z (Estatísticas de Depuração?)"

@@ -68,7 +68,7 @@ IF(USE_GETTEXT_TRANSLATIONS)
 				COMMENT "Extracting ctx messages for default script ${_potBasename}"
 				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} --language=C -ktr -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
 				TARGET messages-extract-${_potBasename}
-			)		
+			)
 		ELSE()
 			ADD_CUSTOM_COMMAND(
 				COMMENT "Extracting ctx messages for ${_potBasename}"

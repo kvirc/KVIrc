@@ -1,205 +1,206 @@
-# Japanese translation for defscript (KVIrc)
-# Copyright (C) 2010 KVIrc Development Team
-# This file is distributed under the same license as the KVIrc package.
-# Tadashi Jokagi <elf@elf.no-ip.org>, 2010.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 #
+# Elvio Basello <hell at hellvis69 dot netsons dot org>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: defscript_ja\n"
+"Project-Id-Version: kvirc_defscript_it 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 18:58+0200\n"
-"PO-Revision-Date: 2010-07-25 01:51+0900\n"
-"Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
-"Language-Team: Japanese <elf@elf.no-ip.org>\n"
-"Language: ja\n"
+"POT-Creation-Date: 2010-10-20 15:05+0200\n"
+"PO-Revision-Date: 2010-07-29 18:15+0200\n"
+"Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/defscript/popups.kvs:541
 msgid "&Administrator"
-msgstr "管理者(&A)"
+msgstr "Amministratore"
 
 #: data/defscript/popups.kvs:465
 #: data/defscript/popups.kvs:599
 msgid "&Ban"
-msgstr "禁止(&B)"
+msgstr "Ban"
 
 #: data/defscript/popups.kvs:527
 msgid "&Control"
-msgstr "制御(&C)"
+msgstr "Control"
 
 #: data/defscript/popups.kvs:546
 msgid "&Deadministrator"
-msgstr "管理社会所(&D)"
+msgstr "Deamministratore"
 
 #: data/defscript/popups.kvs:566
 msgid "&Dehalfop"
-msgstr ""
+msgstr "Dehalfop"
 
 #: data/defscript/popups.kvs:556
 msgid "&Deop"
-msgstr "オペレーター解除(&D)"
+msgstr "Deop"
 
 #: data/defscript/popups.kvs:536
 msgid "&Deowner"
-msgstr "所有者解除(&D)"
+msgstr "Deowner"
 
 #: data/defscript/popups.kvs:561
 msgid "&Halfop"
-msgstr ""
+msgstr "Halfop"
 
 #: data/defscript/popups.kvs:649
 #: data/defscript/popups.kvs:755
 #: data/defscript/popups.kvs:1302
 msgid "&Highlight"
-msgstr "ハイライト(&H)"
+msgstr "Evidenziazione"
 
 #: data/defscript/popups.kvs:722
 msgid "&Hop"
-msgstr "ホップ(&H)"
+msgstr "Hop"
 
 #: data/defscript/popups.kvs:1158
 msgid "&Ignore"
-msgstr "無視(&I)"
+msgstr "Ignora"
 
 #: data/defscript/popups.kvs:497
 #: data/defscript/popups.kvs:782
 #: data/defscript/popups.kvs:1120
 #: data/defscript/popups.kvs:1260
 msgid "&Information"
-msgstr "情報(&I)"
+msgstr "Informazione"
 
 #: data/defscript/popups.kvs:663
 msgid "&Join"
-msgstr "参加(&J)"
+msgstr "Entra"
 
 #: data/defscript/popups.kvs:715
 #: data/defscript/popups.kvs:777
 msgid "&Join Channels..."
-msgstr "チャンネルへ参加(&J)..."
+msgstr "Entra Nei Canali..."
 
 #: data/defscript/popups.kvs:583
 #: data/defscript/popups.kvs:590
 msgid "&Kick"
-msgstr "追放(&K)"
+msgstr "Kick"
 
 #: data/defscript/popups.kvs:616
 msgid "&Kick/Ban"
-msgstr "追放/禁止(&K)"
+msgstr "Kick/Ban"
 
 #: data/defscript/popups.kvs:551
 msgid "&Op"
-msgstr "オペレーター(&O)"
+msgstr "Op"
 
 #: data/defscript/popups.kvs:912
 msgid "&Page"
-msgstr "ページ(&P)"
+msgstr "Pagina"
 
 #: data/defscript/popups.kvs:668
 #: data/defscript/popups.kvs:727
 msgid "&Part"
-msgstr "退室(&P)"
+msgstr "Part"
 
 #: data/defscript/popups.kvs:634
 #: data/defscript/popups.kvs:1287
 msgid "&Query"
-msgstr "問い合わせ(&Q)"
+msgstr "Query"
 
 #: data/defscript/popups.kvs:647
 #: data/defscript/popups.kvs:1160
 #: data/defscript/popups.kvs:1300
 msgid "&Registration"
-msgstr "登録(&R)"
+msgstr "Registrazione"
 
 #: data/defscript/popups.kvs:571
 msgid "&Voice"
-msgstr "ボイス(&V)"
+msgstr "Voice"
 
 #: data/defscript/aliases.kvs:103
 msgid "-a: send notice to all channel admins"
-msgstr "-a: 全チャンネルの管理者に通知を送る"
+msgstr "-a: invia un notice a tutti gli amministratori del canale"
 
 #: data/defscript/aliases.kvs:105
 msgid "-h: send notice to all channel halfops"
-msgstr ""
+msgstr "-h: invia un notice a tutti i semi-operatore del canale"
 
 #: data/defscript/aliases.kvs:101
 msgid "-m: send a message instead of a notice"
-msgstr "-m: 通知の代わりにメッセージを送る"
+msgstr "-m: invia un messaggio invece di un notice"
 
 #: data/defscript/aliases.kvs:104
 msgid "-o: send notice to all channel ops"
-msgstr "-o: 全チャンネルのオペレーターに通知を送る"
+msgstr "-o: invia un notice a tutti gli operatori del canale"
 
 #: data/defscript/aliases.kvs:107
 msgid "-q: quiet mode"
-msgstr "-q: 静かなモード"
+msgstr "-q: quieto"
 
 #: data/defscript/aliases.kvs:106
 msgid "-v: send notice to all channel voices"
-msgstr ""
+msgstr "-v: invia un notice a tutti i voice del canale"
 
 #: data/defscript/aliases.kvs:102
 msgid "-w: send notice to all channel owners"
-msgstr "-w: 全チャンネルの所有者に通知を送る"
+msgstr "-w: invia un notice a tutti i proprietari del canale"
 
 #: data/defscript/popups.kvs:395
 msgid "Add to Notify"
-msgstr "通知へ追加"
+msgstr "Aggiungi alla Notify"
 
 #: data/defscript/popups.kvs:29
 #: data/defscript/popups.kvs:62
 msgid "Always Highlight"
-msgstr ""
+msgstr "Evidenzia Sempre"
 
 #: data/defscript/popups.kvs:405
 msgid "Avatar"
-msgstr "アバター"
+msgstr "Avatar"
 
 #: data/defscript/popups.kvs:455
 msgid "Ban"
-msgstr "禁止"
+msgstr "Ban"
 
 #: data/defscript/popups.kvs:590
 #: data/defscript/popups.kvs:616
 #: data/defscript/popups.kvs:912
 msgid "Cancel"
-msgstr "取り消し"
+msgstr "Annulla"
 
 #: data/defscript/aliases.kvs:433
 msgid "Channel Administrator"
-msgstr "チャンネルの管理者"
+msgstr "Amministratore Canale"
 
 #: data/defscript/aliases.kvs:435
 msgid "Channel Operator"
-msgstr "チャンネルのオペレーター"
+msgstr "Operatore Canale"
 
 #: data/defscript/aliases.kvs:431
 msgid "Channel Owner"
-msgstr "チャンネルの所有者"
+msgstr "Proprietario Canale"
 
 #: data/defscript/popups.kvs:713
 #: data/defscript/popups.kvs:773
 msgid "Channels"
-msgstr "チャンネル"
+msgstr "Canali"
 
 #: data/defscript/popups.kvs:933
 msgid "Chat with"
-msgstr ""
+msgstr "Chatta con"
 
 #: data/defscript/popups.kvs:409
 msgid "Choose Avatar Image File"
-msgstr "アバター画像ファイルの選択"
+msgstr "Scegli il file Avatar"
 
 #: data/defscript/popups.kvs:1217
 #: data/defscript/popups.kvs:1225
 msgid "Choose Log Filename"
-msgstr "ログ ファイル名の選択"
+msgstr "Scegli Nome del Log"
 
 #: data/defscript/popups.kvs:407
 msgid "Choose..."
-msgstr "選択..."
+msgstr "Scegli..."
 
 #: data/defscript/popups.kvs:762
 #: data/defscript/popups.kvs:865
@@ -207,76 +208,76 @@ msgstr "選択..."
 #: data/defscript/popups.kvs:1169
 #: data/defscript/popups.kvs:1313
 msgid "Clear Buffer"
-msgstr "バッファの消去"
+msgstr "Pulisci Buffer"
 
 #: data/defscript/popups.kvs:423
 msgid "Clear Default"
-msgstr "標準の消去"
+msgstr "Rimuovi predefinito"
 
 #: data/defscript/popups.kvs:626
 msgid "Configure ban mask..."
-msgstr "禁止マスクの設定..."
+msgstr "Configura mascjera ban..."
 
 #: data/defscript/popups.kvs:686
 msgid "Copy Channel Address"
-msgstr "チャンネル アドレスのコピー"
+msgstr "Copia Indirizzo Canale"
 
 #: data/defscript/popups.kvs:757
 msgid "Copy Channel URL to Clipboard"
-msgstr "チャンネルの URL をクリップボードへコピー"
+msgstr "Copia URL canale negli appunti"
 
 #: data/defscript/popups.kvs:434
 msgid "Copy To Clipboard"
-msgstr "クリップボートへコピー"
+msgstr "Copia negli appunti"
 
 #: data/defscript/popups.kvs:576
 msgid "D&evoice"
-msgstr "ボイス解除(&V)"
+msgstr "Devoice"
 
 #: data/defscript/popups.kvs:516
 #: data/defscript/popups.kvs:1139
 msgid "DNS for"
-msgstr ""
+msgstr "DNS per"
 
 #: data/defscript/popups.kvs:986
 msgid "Default"
-msgstr "標準"
+msgstr "Predefinito"
 
 #: data/defscript/popups.kvs:383
 msgid "Edit Registration..."
-msgstr "登録の編集..."
+msgstr "Modifica registrazione..."
 
 #: data/defscript/popups.kvs:115
 msgid "Enable Ignore"
-msgstr ""
+msgstr "Attiva Ignora"
 
 #: data/defscript/popups.kvs:590
 msgid "Enter a kick reason"
-msgstr "追放の理由を入力してください"
+msgstr "Scrivi la ragione del kick"
 
 #: data/defscript/popups.kvs:616
 msgid "Enter a kick/ban reason"
-msgstr "追放/禁止の理由を入力してください"
+msgstr "Scrivi la ragione del kick/ban"
 
 #: data/defscript/popups.kvs:912
 msgid "Enter the message text"
-msgstr "メッセージ分を入力してください"
+msgstr "Scrivi il testo del messaggio"
 
 #: data/defscript/popups.kvs:1191
 msgid "Flush Log File"
-msgstr ""
+msgstr "Scrivi File di Log"
 
 #: data/defscript/aliases.kvs:437
 msgid "Half Operator"
-msgstr ""
+msgstr "Half Operator"
 
 #: data/defscript/default.kvs:37
 msgid "Happy ircing :)"
-msgstr ""
+msgstr "Buona chattata :)"
 
 #: data/defscript/toolbars.kvs:22
 msgid "Help"
-msgstr "ヘルプ"
+msgstr "Aiuto"
 
 #: data/defscript/popups.kvs:31
 #: data/defscript/popups.kvs:36
@@ -285,16 +286,16 @@ msgstr "ヘルプ"
 #: data/defscript/popups.kvs:51
 #: data/defscript/popups.kvs:56
 msgid "Highlight as"
-msgstr ""
+msgstr "Evidenzia come"
 
 #: data/defscript/toolbars.kvs:3
 msgid "IRC Context"
-msgstr "IRC コンテキスト"
+msgstr "Contesto IRC"
 
 #: data/defscript/popups.kvs:651
 #: data/defscript/popups.kvs:1304
 msgid "Ig&nore"
-msgstr "無視(&N)"
+msgstr "Ignora"
 
 #: data/defscript/popups.kvs:122
 #: data/defscript/popups.kvs:129
@@ -324,109 +325,109 @@ msgstr "無視(&N)"
 #: data/defscript/popups.kvs:297
 #: data/defscript/popups.kvs:304
 msgid "Ignore as"
-msgstr ""
+msgstr "Ignora come"
 
 #: data/defscript/popups.kvs:120
 msgid "Ignore as..."
-msgstr ""
+msgstr "Ignora come..."
 
 #: data/defscript/popups.kvs:1210
 #: data/defscript/popups.kvs:1223
 msgid "Include Existing Buffer"
-msgstr "既存バッファへ含む"
+msgstr "Includi buffer esistente"
 
 #: data/defscript/popups.kvs:588
 msgid "K&ick"
-msgstr "追放(&I)"
+msgstr "Kick"
 
 #: data/defscript/popups.kvs:590
 msgid "Kick Reason"
-msgstr "追放の理由"
+msgstr "Ragione del Kick"
 
 #: data/defscript/popups.kvs:609
 #: data/defscript/popups.kvs:614
 msgid "Kick/Ban"
-msgstr "追放/禁止"
+msgstr "Kick/Ban"
 
 #: data/defscript/popups.kvs:616
 msgid "Kick/Ban Reason"
-msgstr "追放/禁止の理由"
+msgstr "Ragione del Kick/Ban"
 
 #: data/defscript/popups.kvs:1210
 msgid "Log To Default File"
-msgstr "標準ファイルに記録"
+msgstr "Logga sul file predefinito"
 
 #: data/defscript/popups.kvs:1205
 msgid "Log To Default File,"
-msgstr ""
+msgstr "Logga sul file predefinito"
 
 #: data/defscript/popups.kvs:1215
 #: data/defscript/popups.kvs:1223
 msgid "Log To..."
-msgstr ""
+msgstr "Logga su..."
 
 #: data/defscript/popups.kvs:1189
 msgid "Logging to"
-msgstr ""
+msgstr "Log su"
 
 #: data/defscript/popups.kvs:521
 #: data/defscript/popups.kvs:1144
 msgid "Mask for"
-msgstr ""
+msgstr "Maschera per"
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
-msgstr ""
+msgstr "Obiettivo mancante, nessuna azione eseguita"
 
 #: data/defscript/popups.kvs:459
 #: data/defscript/popups.kvs:1061
 #: data/defscript/popups.kvs:1108
 #: data/defscript/popups.kvs:1248
 msgid "Multiple Users"
-msgstr "複数ユーザー"
+msgstr "Utenti Multipli"
 
 #: data/defscript/aliases.kvs:491
 msgid "No such user:"
-msgstr "ユーザーがいません:"
+msgstr "L'utente non esiste:"
 
 #: data/defscript/aliases.kvs:443
 msgid "Normal User"
-msgstr "通常ユーザー"
+msgstr "Utente Normale"
 
 #: data/defscript/popups.kvs:1203
 msgid "Not Logging"
-msgstr "記録なし"
+msgstr "Log disattivato"
 
 #: data/defscript/popups.kvs:653
 #: data/defscript/popups.kvs:748
 #: data/defscript/popups.kvs:1074
 #: data/defscript/popups.kvs:1162
 msgid "Notify Avatar"
-msgstr "アバター通知"
+msgstr "Notifica Avatar"
 
 #: data/defscript/popups.kvs:1306
 msgid "Notify avatar"
-msgstr ""
+msgstr "Notifica avatar"
 
 #: data/defscript/popups.kvs:531
 msgid "O&wner"
-msgstr "所有者(&W)"
+msgstr "Owner"
 
 #: data/defscript/popups.kvs:1369
 msgid "Open "
-msgstr ""
+msgstr "Apri"
 
 #: data/defscript/toolbars.kvs:15
 msgid "Options"
-msgstr "オプション"
+msgstr "Opzioni"
 
 #: data/defscript/aliases.kvs:115
 msgid "Parameter message missing"
-msgstr ""
+msgstr "Parametro del messaggio mancante"
 
 #: data/defscript/popups.kvs:350
 msgid "Quick Registration"
-msgstr "クイック登録"
+msgstr "Registrazione Veloce"
 
 #: data/defscript/popups.kvs:352
 #: data/defscript/popups.kvs:357
@@ -435,123 +436,123 @@ msgstr "クイック登録"
 #: data/defscript/popups.kvs:372
 #: data/defscript/popups.kvs:377
 msgid "Register as"
-msgstr "別名で登録"
+msgstr "Registra come"
 
 #: data/defscript/popups.kvs:345
 msgid "Register..."
-msgstr "登録..."
+msgstr "Registra..."
 
 #: data/defscript/popups.kvs:400
 msgid "Remove from Notify"
-msgstr "通知から削除"
+msgstr "Rimuovi dalla Notifica"
 
 #: data/defscript/popups.kvs:938
 msgid "Reverse Chat with"
-msgstr ""
+msgstr "Chat invertita con"
 
 #: data/defscript/popups.kvs:960
 msgid "Reverse Send to"
-msgstr ""
+msgstr "Invio invertito a"
 
 #: data/defscript/toolbars.kvs:30
 msgid "Scripting"
-msgstr ""
+msgstr "Scripting"
 
 #: data/defscript/popups.kvs:943
 msgid "Secure Chat with"
-msgstr ""
+msgstr "Chat sicura con"
 
 #: data/defscript/popups.kvs:965
 msgid "Secure Reverse Send to"
-msgstr ""
+msgstr "Invio invertito sicuro a"
 
 #: data/defscript/popups.kvs:955
 msgid "Secure send to"
-msgstr ""
+msgstr "Invio sicuro a"
 
 #: data/defscript/popups.kvs:950
 msgid "Send to"
-msgstr ""
+msgstr "Invio a"
 
 #: data/defscript/aliases.kvs:150
 msgid "Sending wallop to"
-msgstr ""
+msgstr "Invio wallop a"
 
 #: data/defscript/popups.kvs:418
 msgid "Set as Default"
-msgstr "標準として設定"
+msgstr "Imposta come Predefinito"
 
 #: data/defscript/popups.kvs:24
 #: data/defscript/popups.kvs:88
 msgid "Start Highlighting (Local)"
-msgstr ""
+msgstr "Attiva Evidenzia (Locale)"
 
 #: data/defscript/popups.kvs:67
 msgid "Stop Highlighting"
-msgstr ""
+msgstr "Disattiva Evidenzia"
 
 #: data/defscript/popups.kvs:19
 #: data/defscript/popups.kvs:83
 msgid "Stop Highlighting (Local)"
-msgstr ""
+msgstr "Disattiva Evidenzia (Locale)"
 
 #: data/defscript/popups.kvs:1198
 msgid "Stop Logging"
-msgstr "記録の停止"
+msgstr "Ferma Log"
 
 #: data/defscript/popups.kvs:977
 msgid "TDCC Reverse Send to"
-msgstr ""
+msgstr "Invio invertito TDCC a"
 
 #: data/defscript/popups.kvs:972
 msgid "TDCC Send to"
-msgstr ""
+msgstr "Invio TDCC a"
 
 #: data/defscript/popups.kvs:1374
 msgid "Telnet to "
-msgstr ""
+msgstr "Telnet su"
 
 #: data/defscript/default.kvs:34
 msgid "The default script has been successfully installed."
-msgstr ""
+msgstr "Lo script predefinito è strato installato."
 
 #: data/defscript/aliases.kvs:245
 #: data/defscript/aliases.kvs:426
 msgid "This is not a channel window"
-msgstr "これはチャンネルウィンドウではありません。"
+msgstr "Questa finestra non è un canale"
 
 #: data/defscript/default.kvs:35
 msgid "To connect to a server, type /server <server name>"
-msgstr ""
+msgstr "Per connetterti ad un server, scrivi /server <nome server>"
 
 #: data/defscript/popups.kvs:1381
 msgid "Traceroute to "
-msgstr ""
+msgstr "Traceroute su"
 
 #: data/defscript/popups.kvs:1387
 msgid "Traceroute6 to "
-msgstr ""
+msgstr "Traceroute6 su"
 
 #: data/defscript/aliases.kvs:116
 msgid "Type /gnotice for help"
-msgstr ""
+msgstr "Sctivi /gnotice per aiuto"
 
 #: data/defscript/popups.kvs:312
 msgid "Unignore"
-msgstr "無視解除"
+msgstr "Disignora"
 
 #: data/defscript/popups.kvs:388
 msgid "Unregister"
-msgstr "登録解除"
+msgstr "Deregistra"
 
 #: data/defscript/aliases.kvs:408
 msgid "Unsupported type:"
-msgstr "未サポートの種類:"
+msgstr "Tipo non supportato:"
 
 #: data/defscript/aliases.kvs:100
 #: data/defscript/aliases.kvs:145
 msgid "Usage"
-msgstr "使い方"
+msgstr "Uso"
 
 #: data/defscript/aliases.kvs:185
 #: data/defscript/aliases.kvs:197
@@ -563,126 +564,132 @@ msgstr "使い方"
 #: data/defscript/aliases.kvs:420
 #: data/defscript/aliases.kvs:480
 msgid "Usage:"
-msgstr "使い方:"
+msgstr "Uso:"
 
 #: data/defscript/aliases.kvs:441
 msgid "User Operator"
-msgstr "オペレーター ユーザー"
+msgstr "User Operator"
 
 #: data/defscript/aliases.kvs:439
 msgid "Voice"
-msgstr "ボイス"
+msgstr "Voice"
 
 #: data/defscript/popups.kvs:984
 msgid "Voice Chat"
-msgstr "ボイス チャット"
+msgstr "Chat vocale"
 
 #: data/defscript/toolbars.kvs:40
 msgid "Window operations"
-msgstr "ウィンドウ操作"
+msgstr "Operazioni sulle Finestre"
 
 #: data/defscript/popups.kvs:588
 #: data/defscript/popups.kvs:614
 msgid "With..."
-msgstr ""
+msgstr "Con..."
 
 #: data/defscript/aliases.kvs:474
 msgid "You must be connected to a server"
-msgstr ""
+msgstr "Devi essere connesso ad un server"
 
 #: data/defscript/aliases.kvs:468
 msgid "You must use DNS in an IRC context"
-msgstr ""
+msgstr "Devi usare DNS in un contesto IRC"
 
 #: data/defscript/popups.kvs:771
 msgid "You're not connected to a server"
-msgstr "サーバーへ接続していません"
+msgstr "Non sei connesso ad un server"
 
 #: data/defscript/classes.kvs:18
 msgid ""
 "[Installer] Error: the first argument of copyFiles must be a source directory"
 msgstr ""
+"[Installer] Errore: il primo argomento di copyFiles deve essere una "
+"directory sorgente"
 
 #: data/defscript/classes.kvs:24
 msgid ""
 "[Installer] Error: the second argument of copyFiles must be a file name or "
 "file regexp"
 msgstr ""
+"[Installer] Errore: il secondo argomento di copyFiles deve essere un nome di "
+"file o un'espressione regolare"
 
 #: data/defscript/classes.kvs:30
 msgid ""
 "[Installer] Error: the third argument of copyFiles must be a destination "
 "directory"
 msgstr ""
+"[Installer] Errore: il terzo argomento di copyFiles deve essere una "
+"directory di destinazione"
 
 #: data/defscript/aliases.kvs:100
 msgid "channel"
-msgstr "チャンネル"
+msgstr "canale"
 
 #: data/defscript/popups.kvs:336
 msgid "has a default avatar"
-msgstr "は標準のアバターです"
+msgstr "ha un avatar predefinito"
 
 #: data/defscript/popups.kvs:489
 #: data/defscript/popups.kvs:1113
 #: data/defscript/popups.kvs:1253
 msgid "idle time"
-msgstr ""
+msgstr "tempo inattività"
 
 #: data/defscript/popups.kvs:104
 msgid "is being ignored"
-msgstr ""
+msgstr "è ignorato"
 
 #: data/defscript/popups.kvs:333
 msgid "is in the notify list"
-msgstr ""
+msgstr "è in lista notifiche"
 
 #: data/defscript/popups.kvs:105
 #: data/defscript/popups.kvs:109
 msgid "is not being ignored"
-msgstr ""
+msgstr "non è ignorato"
 
 #: data/defscript/popups.kvs:339
 msgid "is not registered"
-msgstr "は未登録です"
+msgstr "non è registrato"
 
 #: data/defscript/popups.kvs:330
 msgid "is registered as"
-msgstr ""
+msgstr "è registrato come"
 
 #: data/defscript/popups.kvs:806
 msgid "l (Connections)"
-msgstr "1 (接続)"
+msgstr "l (Connessioni)"
 
 #: data/defscript/popups.kvs:811
 msgid "m (Command Usage)"
-msgstr "m (コマンドの使い方)"
+msgstr "m (Uso comando)"
 
 #: data/defscript/aliases.kvs:100
 #: data/defscript/aliases.kvs:145
 msgid "message"
-msgstr "メッセージ"
+msgstr "messaggio"
 
 #: data/defscript/popups.kvs:816
 msgid "o (Operators)"
-msgstr "o (オペレーター)"
+msgstr "o (Operatori)"
 
 #: data/defscript/aliases.kvs:239
 msgid "reason"
-msgstr "理由"
+msgstr "ragione"
 
 #: data/defscript/popups.kvs:821
 msgid "t (Connection stats ?)"
-msgstr ""
+msgstr "t (Statistiche connessione ?)"
 
 #: data/defscript/popups.kvs:826
 msgid "u (Uptime)"
-msgstr ""
+msgstr "u (Uptime)"
 
 #: data/defscript/popups.kvs:831
 msgid "y (y-Lines)"
-msgstr ""
+msgstr "y (y-Lines)"
 
 #: data/defscript/popups.kvs:836
 msgid "z (Debug Stats?)"
-msgstr ""
+msgstr "z (Statistiche Debug?)"
