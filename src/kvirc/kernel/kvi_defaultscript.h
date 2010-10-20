@@ -177,6 +177,7 @@ public:
 protected:
 	QGroupBox * m_pAdvanced;
 	QCheckBox * m_pAll;
+	QCheckBox * m_pData;
 	QCheckBox * m_pAction;
 	QCheckBox * m_pAddon;
 	QCheckBox * m_pAlias;

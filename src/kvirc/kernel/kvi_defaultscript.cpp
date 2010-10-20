@@ -51,13 +51,11 @@ KviDefaultScriptManager::KviDefaultScriptManager()
 	// Check if versions' file exists in personal settings
 	QString szLocal;
 	g_pApp->getLocalKvircDirectory(szLocal,KviApp::Config,"default.kvc");
-	qDebug("local: %s",szLocal.toUtf8().data());
 
 	if(!QFile::exists(szLocal))
 	{
 		QString szGlobal;
 		g_pApp->getGlobalKvircDirectory(szGlobal,KviApp::DefScript,"default.kvc");
-		qDebug("global: %s",szGlobal.toUtf8().data());
 		QFile::copy(szGlobal,szLocal);
 	}
 }
@@ -84,8 +82,6 @@ void KviDefaultScriptManager::done()
 
 void KviDefaultScriptManager::restore(bool bSuggest)
 {
-	qDebug("Version: %s\nDate: %s\nActionVersion: %s\nAliasVersion: %s\nClassVersion: %s\nEventVersion: %s\nPopupVersion: %s\nRawVersion: %s\nToolbarVersion: %s",m_szVersion.toUtf8().data(),m_szDate.toUtf8().data(),m_szAction.toUtf8().data(),m_szAlias.toUtf8().data(),m_szClass.toUtf8().data(),m_szEvent.toUtf8().data(),m_szPopup.toUtf8().data(),m_szRaw.toUtf8().data(),m_szToolbar.toUtf8().data());
-
 	QString szConfig, szError;
 	g_pApp->getGlobalKvircDirectory(szConfig,KviApp::DefScript,"default.kvc");
 
@@ -97,20 +93,16 @@ void KviDefaultScriptManager::restore(bool bSuggest)
 		QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes)
 			return;
 
-		qDebug("restore upon suggest");
 		restoreInternal(bSuggest);
 		return;
 	}
 
-	qDebug("asking clear");
 	m_pDialog = new KviDefaultScriptDialog();
 	if(m_pDialog->exec() == QDialog::Rejected)
 	{
-		qDebug("fail, don't restore");
 		delete m_pDialog;
 		return;
 	}
-	qDebug("ok, let's restore");
 
 	// Check data
 	if(!compareVersions(szConfig,&szError))
@@ -132,8 +124,6 @@ void KviDefaultScriptManager::restore(bool bSuggest)
 
 void KviDefaultScriptManager::restoreInternal(bool bSuggest)
 {
-	qDebug("restore!");
-
 	if(bSuggest)
 	{
 		// Clear all data and reload the default script
@@ -163,21 +153,24 @@ void KviDefaultScriptManager::restoreInternal(bool bSuggest)
 	// Select elements to restore
 	if(m_pDialog->m_pAction->isEnabled() && m_pDialog->m_pAction->isChecked())
 	{
-		KviActionManager::instance()->killAllKvsUserActions();
+		if(m_pDialog->m_pData->isEnabled() && m_pDialog->m_pData->isChecked())
+			KviActionManager::instance()->killAllKvsUserActions();
 		// No need to load here since we haven't a default actions script yet
 		//g_pApp->loadDefaultScript("action");
 	}
 
 	if(m_pDialog->m_pAddon->isEnabled() && m_pDialog->m_pAddon->isChecked())
 	{
-		KviKvs::clearScriptAddons();
+		if(m_pDialog->m_pData->isEnabled() && m_pDialog->m_pData->isChecked())
+			KviKvs::clearScriptAddons();
 		// No need to load here since we haven't a default actions script yet
 		//g_pApp->loadDefaultScript("addons");
 	}
 
 	if(m_pDialog->m_pAlias->isEnabled() && m_pDialog->m_pAlias->isChecked())
 	{
-		KviKvs::clearAliases();
+		if(m_pDialog->m_pData->isEnabled() && m_pDialog->m_pData->isChecked())
+			KviKvs::clearAliases();
 		g_pApp->loadDefaultScript("aliases");
 	}
 
@@ -189,26 +182,30 @@ void KviDefaultScriptManager::restoreInternal(bool bSuggest)
 
 	if(m_pDialog->m_pEvent->isEnabled() && m_pDialog->m_pEvent->isChecked())
 	{
-		KviKvs::clearAppEvents();
+		if(m_pDialog->m_pData->isEnabled() && m_pDialog->m_pData->isChecked())
+			KviKvs::clearAppEvents();
 		g_pApp->loadDefaultScript("events");
 	}
 
 	if(m_pDialog->m_pPopup->isEnabled() && m_pDialog->m_pPopup->isChecked())
 	{
-		KviKvs::clearPopups();
+		if(m_pDialog->m_pData->isEnabled() && m_pDialog->m_pData->isChecked())
+			KviKvs::clearPopups();
 		g_pApp->loadDefaultScript("popups");
 	}
 
 	if(m_pDialog->m_pRaw->isEnabled() && m_pDialog->m_pRaw->isChecked())
 	{
-		KviKvs::clearRawEvents();
+		if(m_pDialog->m_pData->isEnabled() && m_pDialog->m_pData->isChecked())
+			KviKvs::clearRawEvents();
 		// No need to load here since we haven't a default raw events script yet
 		//g_pApp->loadDefaultScript("raws");
 	}
 
 	if(m_pDialog->m_pToolbar->isEnabled() && m_pDialog->m_pToolbar->isChecked())
 	{
-		KviCustomToolBarManager::instance()->clear();
+		if(m_pDialog->m_pData->isEnabled() && m_pDialog->m_pData->isChecked())
+			KviCustomToolBarManager::instance()->clear();
 		g_pApp->loadDefaultScript("toolbars");
 	}
 }
@@ -238,7 +235,6 @@ bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszE
 	{
 		m_bNoNeedToRestore = true;
 		*pszError = __tr2qs("Your default script is up to date.\nDo you want to restore it anyway?");
-		qDebug("equal dates");
 		return true;
 	}
 
@@ -386,7 +382,7 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 	QGridLayout * pLayout = new QGridLayout(this);
 
 	QLabel * pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs("You are about to restore the default script.\nThis will erase any script changes you have made.\nDo you wish to proceed?"));
+	pLabel->setText(__tr2qs("You are about to restore the default script.\nAny any script changes you have made will be erased if you\nrestore all stuff or \"Clear personal data\" is selected.\n\nDo you wish to proceed?\n"));
 	pLayout->addWidget(pLabel,0,0,1,4);
 
 	// Construct the advanced widget
@@ -402,45 +398,53 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 	pAdvLayout->addWidget(m_pAll,0,0);
 	connect(m_pAll,SIGNAL(clicked(bool)),this,SLOT(toggleAll(bool)));
 
+	m_pData = new QCheckBox(__tr2qs("Clear personal data"),m_pAdvanced);
+	m_pData->setChecked(false);
+	m_pData->setEnabled(false);
+	pAdvLayout->addWidget(m_pData,0,1);
+
+	pLabel = new QLabel(m_pAdvanced);
+	pAdvLayout->addWidget(pLabel,1,1,1,2);
+
 	m_pAction = new QCheckBox(__tr2qs("Actions"),m_pAdvanced);
 	m_pAction->setChecked(true);
 	m_pAction->setEnabled(false);
-	pAdvLayout->addWidget(m_pAction,1,0);
+	pAdvLayout->addWidget(m_pAction,2,0);
 
 	m_pAddon = new QCheckBox(__tr2qs("Addons"),m_pAdvanced);
 	m_pAddon->setChecked(true);
 	m_pAddon->setEnabled(false);
-	pAdvLayout->addWidget(m_pAddon,1,1);
+	pAdvLayout->addWidget(m_pAddon,2,1);
 
 	m_pAlias = new QCheckBox(__tr2qs("Aliases"),m_pAdvanced);
 	m_pAlias->setChecked(true);
 	m_pAlias->setEnabled(false);
-	pAdvLayout->addWidget(m_pAlias,2,0);
+	pAdvLayout->addWidget(m_pAlias,3,0);
 
 	m_pClass = new QCheckBox(__tr2qs("Classes"),m_pAdvanced);
 	m_pClass->setChecked(true);
 	m_pClass->setEnabled(false);
-	pAdvLayout->addWidget(m_pClass,2,1);
+	pAdvLayout->addWidget(m_pClass,3,1);
 
 	m_pEvent = new QCheckBox(__tr2qs("Events"),m_pAdvanced);
 	m_pEvent->setChecked(true);
 	m_pEvent->setEnabled(false);
-	pAdvLayout->addWidget(m_pEvent,3,0);
+	pAdvLayout->addWidget(m_pEvent,4,0);
 
 	m_pPopup = new QCheckBox(__tr2qs("Popups"),m_pAdvanced);
 	m_pPopup->setChecked(true);
 	m_pPopup->setEnabled(false);
-	pAdvLayout->addWidget(m_pPopup,3,1);
+	pAdvLayout->addWidget(m_pPopup,4,1);
 
 	m_pRaw = new QCheckBox(__tr2qs("Raw Events"),m_pAdvanced);
 	m_pRaw->setChecked(true);
 	m_pRaw->setEnabled(false);
-	pAdvLayout->addWidget(m_pRaw,4,0);
+	pAdvLayout->addWidget(m_pRaw,5,0);
 
 	m_pToolbar = new QCheckBox(__tr2qs("Toolbars"),m_pAdvanced);
 	m_pToolbar->setChecked(true);
 	m_pToolbar->setEnabled(false);
-	pAdvLayout->addWidget(m_pToolbar,4,1);
+	pAdvLayout->addWidget(m_pToolbar,5,1);
 
 	m_pAdvanced->setLayout(pAdvLayout);
 
@@ -467,6 +471,7 @@ KviDefaultScriptDialog::~KviDefaultScriptDialog()
 
 void KviDefaultScriptDialog::toggleAll(bool)
 {
+	m_pData->setEnabled(!m_pData->isEnabled());
 	m_pAction->setEnabled(!m_pAction->isEnabled());
 	m_pAddon->setEnabled(!m_pAddon->isEnabled());
 	m_pAlias->setEnabled(!m_pAlias->isEnabled());
