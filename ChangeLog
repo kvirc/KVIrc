@@ -1,22 +1,65 @@
 This is KVIrc's changelog. It tipically lists new added features and changes that modify
-kvirc's previous behaviour. For a more detailed (and up to date) log, point your browser at:
-  https://svn.kvirc.de/kvirc/timeline
+KVIrc's previous behaviour. For a more detailed (and up to date) log, point your browser at:
+https://svn.kvirc.de/kvirc/timeline
 
 October 2010
    [HelLViS69]
    - Added the default script manager: from now on you can restore the default script
-     choosing which parts of it to restore
+     choosing which parts of it to restore, without loosing user personal data
+   - Cleaned code and added Doxygen documentation
+   - Moved defscript translation to core
+   [Pragma]
+   - Added $aliasBody(), $file.readBytes() functions and file.writeBytes command
+   [CtrlAltCa]
+   - Added keyboard support in userlist
+   - Added OnInputBarPaste event
+   - Added shortcuts for font {in/de}creasing and restoring original font
+   [Noldor]
+   - KVS code improvements
+
+September 2010
+   [CtrlAltCa]
+   - Added userlist and popup modules
+   - Reworked logviewer and help modules
+   [Noldor]
+   - KVS code improvements
 
 August 2010
    [HelLViS69]
    - Added DBus notification system
    - Tweaked Update Applet to allow checking of SVN revisions
    - Tweaked last read marker icon to allow scrolling back when clicked
+   - Added IRCop icons as gender icon
+   - Cleaned code and added Doxygen documentation
    [CtrlAltCa]
    - Added SSL backend to DCC transfer
-   - Added ssl-certificate related functions: $dcc.getSSLCertInfo(), $certificate(), $str.evpSign(), $str.evpVerify()
-   - Implemented better parser for 005 CHANMODES and added automatic modes discovery ability to mode widget and mode editor
-   - added $chan.modeParam()
+   - Added ssl-certificate related functions: $dcc.getSSLCertInfo(), $certificate(), $str.evpSign(),
+     $str.evpVerify()
+   - Implemented better parser for 005 CHANMODES and added automatic modes discovery ability
+     to mode widget and mode editor
+   - Added $chan.modeParam()
+   - Added line-marker shortcut
+   [Noldor]
+   - Added the trayicon KVS class
+
+*** Released KVIrc 4.0.2 (r4744) - 2010-08-01 ***
+
+Jun 2010
+   [CtrlAltCa]
+   - Added $escape() function
+   - Updated avdevice library
+   - Improved kvirc-script
+   [Pragma]
+   - Improved python interpreter
+   - Rewrited parts of the regchan module
+   - Added debug macros and tools
+   [Noldor]
+   - Improved object classes and KVS code
+   - Memory leaks fixes
+   [HelLViS69]
+   - Added Japanese translation files
+
+*** Released KVIrc 4.0.0 (r4555) - 2010-06-29 ***
 
 Jun 2010
    [Pragma]
