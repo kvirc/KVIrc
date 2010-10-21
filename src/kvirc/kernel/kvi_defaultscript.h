@@ -99,16 +99,20 @@ public:
 
 	/**
 	* \brief Restores the default script
+	*
 	* If this function is suggested by KVIrc, the default script will be wiped out and then
 	* it will be reloaded. Otherwise, when the user wants to restore it, he can choose which
 	* part of the default script have to be restored
+	*
 	* This is an external helper to the real function
+	* \param bSuggest Whether the restore is suggested by KVIrc
 	* \return void
 	*/
 	void restore(bool bSuggest = false);
 
 	/**
 	* \brief Loads the configuration of the default script
+	*
 	* This is an external helper to the real function
 	* \param szConfigFile The file where to load
 	* \return void
@@ -117,6 +121,7 @@ public:
 
 	/**
 	* \brief Saves the configuration of the default script
+	*
 	* This is an external helper to the real function
 	* \param szConfigFile The file to save
 	* \return void
@@ -125,13 +130,17 @@ public:
 private:
 	/**
 	* \brief Restores the default script
+	*
 	* This is the real function
+	* \param bSuggest Whether the restore is suggested by KVIrc
 	* \return void
+	* \todo This function still misses class clearing due to a missing function in class editor
 	*/
 	void restoreInternal(bool bSuggest = false);
 
 	/**
 	* \brief Loads the configuration of the default script
+	*
 	* This is the real function
 	* \param pCfg The configuration file
 	* \return void
@@ -140,6 +149,7 @@ private:
 
 	/**
 	* \brief Saves the configuration of the default script
+	*
 	* This is the real function
 	* \param pCfg The configuration file
 	* \return void
@@ -189,6 +199,7 @@ protected:
 protected slots:
 	/**
 	* \brief Enables or disables all checkboxes
+	*
 	* Called when the user (de)selects the 'All' one
 	* \return void
 	*/
@@ -196,6 +207,7 @@ protected slots:
 
 	/**
 	* \brief Open/close the advanced widget
+	*
 	* Called when the user clicks on 'Advanced...'
 	* \return void
 	*/
@@ -203,6 +215,7 @@ protected slots:
 
 	/**
 	* \brief Accepts the dialog
+	*
 	* Called when the user clicks on 'Ok'
 	* \return void
 	*/
@@ -210,6 +223,7 @@ protected slots:
 
 	/**
 	* \brief Rejects the dialog
+	*
 	* Called when the user clicks on 'Cancel' or closes the dialog using the window
 	* decoration or pressing ESC
 	* \return void

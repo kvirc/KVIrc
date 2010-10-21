@@ -6,7 +6,7 @@
 //   Creation date : Sat 11 Oct 2003 02:20:51 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,58 +24,298 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_kvs_variantlist.h
+* \author Szymon Stefanek
+* \brief Parser class to handle variant variables lists
+*/
+
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
 #include "kvi_kvs_variant.h"
 
-
-
+/**
+* \class KviKvsVariantList
+* \brief Class to handle variant variables lists
+*/
 class KVIRC_API KviKvsVariantList
 {
 public:
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \return KviKvsVariantList
+	*/
 	KviKvsVariantList();
-	KviKvsVariantList(KviKvsVariant * v1);
-	KviKvsVariantList(KviKvsVariant * v1,KviKvsVariant * v2);
-	KviKvsVariantList(KviKvsVariant * v1,KviKvsVariant * v2,KviKvsVariant * v3);
-	KviKvsVariantList(KviKvsVariant * v1,KviKvsVariant * v2,KviKvsVariant * v3,KviKvsVariant * v4);
-	KviKvsVariantList(KviKvsVariant * v1,KviKvsVariant * v2,KviKvsVariant * v3,KviKvsVariant * v4,KviKvsVariant * v5);
-	KviKvsVariantList(KviKvsVariant * v1,KviKvsVariant * v2,KviKvsVariant * v3,KviKvsVariant * v4,KviKvsVariant * v5,KviKvsVariant * v6);
-	KviKvsVariantList(KviKvsVariant * v1,KviKvsVariant * v2,KviKvsVariant * v3,KviKvsVariant * v4,KviKvsVariant * v5,KviKvsVariant * v6,KviKvsVariant * v7);
-	KviKvsVariantList(QString * s1);
-	KviKvsVariantList(QString * s1,QString * s2);
-	KviKvsVariantList(QString * s1,QString * s2,QString * s3);
-	KviKvsVariantList(QString * s1,QString * s2,QString * s3,QString * s4);
-	KviKvsVariantList(QString * s1,QString * s2,QString * s3,QString * s4,QString * s5);
-	KviKvsVariantList(QString * s1,QString * s2,QString * s3,QString * s4,QString * s5,QString * s6);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pV1 The first element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(KviKvsVariant * pV1);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pV1 The first element's list
+	* \param pV2 The second element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(KviKvsVariant * pV1, KviKvsVariant * pV2);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pV1 The first element's list
+	* \param pV2 The second element's list
+	* \param pV3 The third element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(KviKvsVariant * pV1, KviKvsVariant * pV2, KviKvsVariant * pV3);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pV1 The first element's list
+	* \param pV2 The second element's list
+	* \param pV3 The third element's list
+	* \param pV4 The fourth element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(KviKvsVariant * pV1, KviKvsVariant * pV2, KviKvsVariant * pV3, KviKvsVariant * pV4);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pV1 The first element's list
+	* \param pV2 The second element's list
+	* \param pV3 The third element's list
+	* \param pV4 The fourth element's list
+	* \param pV5 The fifth element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(KviKvsVariant * pV1, KviKvsVariant * pV2, KviKvsVariant * pV3, KviKvsVariant * pV4, KviKvsVariant * pV5);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pV1 The first element's list
+	* \param pV2 The second element's list
+	* \param pV3 The third element's list
+	* \param pV4 The fourth element's list
+	* \param pV5 The fifth element's list
+	* \param pV6 The sixth element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(KviKvsVariant * pV1, KviKvsVariant * pV2, KviKvsVariant * pV3, KviKvsVariant * pV4, KviKvsVariant * pV5, KviKvsVariant * pV6);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pV1 The first element's list
+	* \param pV2 The second element's list
+	* \param pV3 The third element's list
+	* \param pV4 The fourth element's list
+	* \param pV5 The fifth element's list
+	* \param pV6 The sixth element's list
+	* \param pV7 The seventh element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(KviKvsVariant * pV1, KviKvsVariant * pV2, KviKvsVariant * pV3, KviKvsVariant * pV4, KviKvsVariant * pV5, KviKvsVariant * pV6, KviKvsVariant * pV7);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pS1 The first element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(QString * pS1);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pS1 The first element's list
+	* \param pS2 The second element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(QString * pS1, QString * pS2);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pS1 The first element's list
+	* \param pS2 The second element's list
+	* \param pS3 The third element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(QString * pS1, QString * pS2, QString * pS3);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pS1 The first element's list
+	* \param pS2 The second element's list
+	* \param pS3 The third element's list
+	* \param pS4 The fourth element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(QString * pS1, QString * pS2, QString * pS3, QString * pS4);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pS1 The first element's list
+	* \param pS2 The second element's list
+	* \param pS3 The third element's list
+	* \param pS4 The fourth element's list
+	* \param pS5 The fifth element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(QString * pS1, QString * pS2, QString * pS3, QString * pS4, QString * pS5);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pS1 The first element's list
+	* \param pS2 The second element's list
+	* \param pS3 The third element's list
+	* \param pS4 The fourth element's list
+	* \param pS5 The fifth element's list
+	* \param pS6 The sixth element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(QString * pS1, QString * pS2, QString * pS3, QString * pS4, QString * pS5, QString * pS6);
+
+	/**
+	* \brief Constructs the KviKvsVariantList object
+	* \param pS1 The first element's list
+	* \param pS2 The second element's list
+	* \param pS3 The third element's list
+	* \param pS4 The fourth element's list
+	* \param pS5 The fifth element's list
+	* \param pS6 The sixth element's list
+	* \param pS7 The seventh element's list
+	* \return KviKvsVariantList
+	*/
+	KviKvsVariantList(QString * pS1, QString * pS2, QString * pS3, QString * pS4, QString * pS5, QString * pS6, QString * pS7);
+
+	/**
+	* \brief Destroys the KviKvsVariantList object
+	*/
 	~KviKvsVariantList();
 protected:
 	KviPointerList<KviKvsVariant> * m_pList;
 public:
+	/**
+	* \brief Returns the first element of the list
+	* \return KviKvsVariant *
+	*/
 	KviKvsVariant * first(){ return m_pList->first(); };
+
+	/**
+	* \brief Returns the next element of the list
+	* \return KviKvsVariant *
+	*/
 	KviKvsVariant * next(){ return m_pList->next(); };
+
+	/**
+	* \brief Returns the element of the list at the given index
+	* \param iIdx The index of the list we want to extract
+	* \return KviKvsVariant *
+	*/
 	KviKvsVariant * at(int iIdx){ return m_pList->at(iIdx); };
+
+	/**
+	* \brief Returns the size of the list
+	* \return unsigned int
+	*/
 	unsigned int count(){ return m_pList->count(); };
 
+	/**
+	* \brief Clears the list
+	* \return void
+	*/
 	void clear(){ m_pList->clear(); };
 
-	void append(const QString &szParam, bool bEscape=false){ m_pList->append(new KviKvsVariant(szParam, bEscape)); };
-	void append(kvs_int_t iInteger){ m_pList->append(new KviKvsVariant(iInteger)); };
+	/**
+	* \brief Appends an element to the list
+	* \param pItem The element to append
+	* \return void
+	*/
+	void append(KviKvsVariant * pItem){ m_pList->append(pItem); };
+
+	/**
+	* \brief Prepends an element to the list
+	* \param pItem The element to prepend
+	* \return void
+	*/
+	void prepend(KviKvsVariant * pItem){ m_pList->prepend(pItem); };
+
+	/**
+	* \brief Appends an element to the list
+	* \param szParam The string element to append
+	* \param bEscape Whether the string has to be escaped for KVS
+	* \return void
+	*/
+	void append(const QString & szParam, bool bEscape = false){ m_pList->append(new KviKvsVariant(szParam,bEscape)); };
+
+	/**
+	* \brief Appends an element to the list
+	* \param iInt The integer element to append
+	* \return void
+	*/
+	void append(kvs_int_t iInt){ m_pList->append(new KviKvsVariant(iInt)); };
+
+	/**
+	* \brief Appends an element to the list
+	* \param dReal The real element to append
+	* \return void
+	*/
 	void append(kvs_real_t dReal){ m_pList->append(new KviKvsVariant(dReal)); };
+
+	/**
+	* \brief Appends an element to the list
+	* \param bBoolean The boolean element to append
+	* \return void
+	*/
 	void append(bool bBoolean){ m_pList->append(new KviKvsVariant(bBoolean)); };
+
+	/**
+	* \brief Appends an element to the list
+	* \param hObject The hObject element to append
+	* \return void
+	*/
 	void append(kvs_hobject_t hObject){ m_pList->append(new KviKvsVariant(hObject)); };
+
+	/**
+	* \brief Appends an element to the list
+	* \param pArray The array element to append
+	* \return void
+	*/
 	void append(KviKvsArray * pArray){ m_pList->append(new KviKvsVariant(pArray)); };
+
+	/**
+	* \brief Appends an element to the list
+	* \param pHash The hash element to append
+	* \return void
+	*/
 	void append(KviKvsHash * pHash){ m_pList->append(new KviKvsVariant(pHash)); };
 
-	void append(KviKvsVariant * v){ m_pList->append(v); };
-	void prepend(KviKvsVariant * v){ m_pList->prepend(v); };
-
+	/**
+	* \brief Sets the auto delete flag on the list
+	* \param bAutoDelete Whether the list has to auto delete itself
+	* \return void
+	*/
 	void setAutoDelete(bool bAutoDelete); // this is TRUE by default
 
-	void allAsString(QString &szBuffer);
-	// returns true if there was a first parameter at all
-	bool firstAsString(QString &szBuffer);
-	// returns true if there was a next parameter at all
-	bool nextAsString(QString &szBuffer);
+	/**
+	* \brief Appends all elements in a single string delimited by spaces
+	* \param szBuffer The buffer where to store the string
+	* \return void
+	*/
+	void allAsString(QString & szBuffer);
+
+	/**
+	* \brief Returns true if there was a first parameter at all
+	* \param szBuffer The buffer where to store the string
+	* \return bool
+	*/
+	bool firstAsString(QString & szBuffer);
+
+	/**
+	* \brief Returns true if there was a next parameter at all
+	* \param szBuffer The buffer where to store the string
+	* \return bool
+	*/
+	bool nextAsString(QString & szBuffer);
 };
 
-#endif //!_KVI_KVS_VARIANTLIST_H_
+#endif // _KVI_KVS_VARIANTLIST_H_
