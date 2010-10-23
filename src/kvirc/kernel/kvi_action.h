@@ -6,7 +6,7 @@
 //   Creation date : Sun 21 Nov 2004 03:36:34 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,26 +24,28 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_action.h
+* \author Szymon Stefanek
+* \brief Actions handling
+*/
+
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
 
 #include <QObject>
-#include <QString>
-#include <QShortcut>
 
-// The action name is INTERNAL: it should be never shown to the user
-// if it contains a dot then the part before the dot is considered to
-// be a module name to be loaded when the
-
-// Known categories are: general (or empty), irc, script
-//
-
-class KviTalPopupMenu;
-class QWidget;
-class KviCustomToolBar;
+class QShortcut;
 class QPixmap;
-class KviKvsScript;
+class KviTalPopupMenu;
+class KviCustomToolBar;
 
+/**
+* \class KviActionCategory
+* \brief Holds the categories of an action
+* 
+* Known categories are: general (or empty), irc, script
+*/
 class KVIRC_API KviActionCategory
 {
 protected:
@@ -51,98 +53,323 @@ protected:
 	QString m_szVisibleName;
 	QString m_szDescription;
 public:
-	KviActionCategory(const QString &szName,const QString &szVisibleName,const QString &szDescription)
-		: m_szName(szName), m_szVisibleName(szVisibleName), m_szDescription(szDescription) {};
-	~KviActionCategory(){};
+	/**
+	* \brief Constructs an action category object
+	* \param szName The name of the category
+	* \param szVisibleName Permanent visible name, visible at least in the action drawer
+	* \param szDescription Description of the category
+	* \return KviActionCategory
+	*/
+	KviActionCategory(const QString & szName, const QString & szVisibleName, const QString & szDescription);
+
+	/**
+	* \brief Destroys an action category object
+	*/
+	~KviActionCategory();
 public:
+	/**
+	* \brief Returns the name of the category
+	* \return const QString &
+	*/
 	const QString & name(){ return m_szName; };
+
+	/**
+	* \brief Returns the visible name of the category
+	* \return const QString &
+	*/
 	const QString & visibleName(){ return m_szVisibleName; };
+
+	/**
+	* \brief Returns the description of the category
+	* \return const QString &
+	*/
 	const QString & description(){ return m_szDescription; };
 };
 
-// these flags are INTERNAL
-#define KVI_ACTION_FLAG_ENABLED 1
-#define KVI_ACTION_FLAG_SETUPDONE 2
-
+/**
+* \class KviAction
+* \brief Defines an action inside KVIrc
+*/
 class KVIRC_API KviAction : public QObject
 {
 	friend class KviActionManager;
 	Q_OBJECT
-protected:
-	QString m_szName;                               // the internal name of the action, must be in form [module.]name
-	QString m_szVisibleName;
-	QString m_szDescription;
-	KviActionCategory * m_pCategory;                // may be 0, not owned!
-	QString m_szBigIconId;
-	QString m_szSmallIconId;
-	KviPointerList<QWidget> * m_pWidgetList;
-	unsigned short int m_uInternalFlags;
-	unsigned int m_uFlags;
-	QString m_szKeySequence;
-	QShortcut * m_pAccel;
 public:
+	/**
+	* \enum InternalFlags
+	* \brief Holds the internal flags of an action
+	*/
+	enum InternalFlags {
+		Enabled   = 1,   /**< the action is enabled */
+		SetupDone = 2    /**< the setup of the action is done */
+	};
+
+	/**
+	* \enum Flags
+	* \brief Holds the flags of an action
+	*/
 	enum Flags {
-		NeedsContext = 1,
-		NeedsConnection = 2,             // implies NeedsContext
-		WindowConsole = 4,
-		WindowChannel = 8,
-		WindowQuery = 16,
-		WindowDccChat = 32,
-		InternalWindowMask = WindowConsole | WindowChannel | WindowQuery | WindowDccChat,
-		EnableAtLogin = 64,              // implies NeedsConnection
-		WindowOnlyIfUsersSelected = 128  // implies at least one of WindowConsole | WindowChannel | WindowQuery
+		NeedsContext              = 1,    /**< the action needs a context */
+		NeedsConnection           = 2,    /**< the action needs a connection; implies NeedsContext */
+		WindowConsole             = 4,    /**< the action is bound to a console window */
+		WindowChannel             = 8,    /**< the action is bound to a channel window */
+		WindowQuery               = 16,   /**< the action is bound to a query window */
+		WindowDccChat             = 32,   /**< the action is bound to a DCC Chat window */
+		InternalWindowMask        = WindowConsole | WindowChannel | WindowQuery | WindowDccChat,                    /**< the action is bound to a window */
+		EnableAtLogin             = 64,   /**< the action is enabled at login; implies NeedsConnection */
+		WindowOnlyIfUsersSelected = 128   /**< the action is bound to a window only if it's selected by the user; implies at least one of WindowConsole | WindowChannel | WindowQuery */
 	};
 public:
-	KviAction(QObject * pParent,                    // can be 0, but using a QObject will help in deleting this action :)
-			const QString &szName,                      // internal name of this action, in form [module.]name
-			const QString &szVisibleName,               // permanent visible name, visible at least in the action drawer
-			const QString &szDescription,               // what this action does ?
-			KviActionCategory * pCategory = NULL,       // one of KviActionManager::category*() or 0 (default category)
-			const QString &szBigIconId = QString(),
-			const QString &szSmallIconId = QString(),
-			unsigned int uFlags = 0,
-			const QString &szKeySequence = QString()
-		);
+	/**
+	* \brief Constructs the action object
+	* \param pParent The parent object
+	* 
+	* It can be 0, but using a QObject will help in deleting this action :)
+	* \param szName Internal name of this action, in form [module.]name
+	* 
+	* The action name is INTERNAL: it should be never shown to the user. If it contains a dot
+	* then the part before the dot is considered to be a module name to be loaded when the
+	* module is loaded.
+	* \param szVisibleName Permanent visible name, visible at least in the action drawer
+	* \param szDescription What this action does
+	* \param pCategory One of KviActionManager::category*() or 0 (default category), not owned!
+	* \param szBigIconId The big icon associated to the action (32x32)
+	* \param szSmallIconId The small icon associated to the action (16x16)
+	* \param uFlags The flags of the action, like needs and configuration
+	* \param szKeySequence The shortcut to activate the action
+	* \return KviAction
+	*/
+	KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory = NULL, const QString & szBigIconId = QString(), const QString & szSmallIconId = QString(), unsigned int uFlags = 0, const QString & szKeySequence = QString());
+
+	/**
+	* \brief Destroys the action object
+	*/
 	virtual ~KviAction();
-public:
-	static int validateFlags(int iFlagsToValidate);
-	const QString & name() const { return m_szName; };
-	virtual const QString & visibleName();
-	virtual const QString & description();
-	const QString & keySequence() const { return m_szKeySequence; };
-	const QString & bigIconId() const { return m_szBigIconId; };
-	const QString & smallIconId() const { return m_szSmallIconId; };
-	KviActionCategory * category() const { return m_pCategory; };
-	bool isEnabled() const { return (m_uInternalFlags & KVI_ACTION_FLAG_ENABLED); };
-	unsigned int flags(){ return m_uFlags; };
-	virtual bool isKviUserActionNeverOverrideThis();
-	virtual void setEnabled(bool bEnabled);
-	virtual QPixmap * smallIcon(); // FIXME: maybe doesn't need to be virtual anymore
-	virtual QPixmap * bigIcon();   // FIXME: maybe doesn't need to be virtual anymore
-	virtual bool addToPopupMenu(KviTalPopupMenu *pMenu);
-	virtual QWidget * addToCustomToolBar(KviCustomToolBar *pParentToolBar);
-	void suicide() { delete this; };
 protected:
-	// called once before the FIRST button or menu item is created
-	bool setupDone() const { return (m_uInternalFlags & KVI_ACTION_FLAG_SETUPDONE); };
+	QString                   m_szName;
+	QString                   m_szVisibleName;
+	QString                   m_szDescription;
+	KviActionCategory       * m_pCategory;
+	QString                   m_szBigIconId;
+	QString                   m_szSmallIconId;
+	KviPointerList<QWidget> * m_pWidgetList;
+	unsigned short int        m_uInternalFlags;
+	unsigned int              m_uFlags;
+	QString                   m_szKeySequence;
+	QShortcut                 * m_pAccel;
+public:
+	/**
+	* \brief Validates the flags of the action
+	* \param iFlagsToValidate The flags to validate
+	* \return int
+	*/
+	static int validateFlags(int iFlagsToValidate);
+
+	/**
+	* \brief Returns the name of the action
+	* \return const QString &
+	*/
+	const QString & name() const { return m_szName; };
+
+	/**
+	* \brief Returns the visible name of the action
+	* \return const QString &
+	*/
+	virtual const QString & visibleName();
+
+	/**
+	* \brief Returns the description of the action
+	* \return const QString &
+	*/
+	virtual const QString & description();
+
+	/**
+	* \brief Returns the shortcut of the action
+	* \return const QString &
+	*/
+	const QString & keySequence() const { return m_szKeySequence; };
+
+	/**
+	* \brief Returns the id of the big icon associated to the action
+	* \return const QString &
+	*/
+	const QString & bigIconId() const { return m_szBigIconId; };
+
+	/**
+	* \brief Returns the id of the small icon associated to the action
+	* \return const QString &
+	*/
+	const QString & smallIconId() const { return m_szSmallIconId; };
+
+	/**
+	* \brief Returns the category of the action
+	* \return const QString &
+	*/
+	KviActionCategory * category() const { return m_pCategory; };
+
+	/**
+	* \brief Returns true if the action is enabled
+	* \return bool
+	*/
+	bool isEnabled() const { return (m_uInternalFlags & KviAction::Enabled); };
+
+	/**
+	* \brief Returns the flag associated to the action
+	* \return unsigned int
+	*/
+	unsigned int flags(){ return m_uFlags; };
+
+	/**
+	* \brief Returns true if the action is user-defined
+	* \warning By default, this function returns always false
+	* \return bool
+	*/
+	virtual bool isKviUserActionNeverOverrideThis();
+
+	/**
+	* \brief Enables the action
+	* \param bEnabled Whether to enable the action
+	* \return void
+	*/
+	virtual void setEnabled(bool bEnabled);
+
+	/**
+	* \brief Returns the small icon associated to the action
+	* \return const QString &
+	*/
+	QPixmap * smallIcon();
+
+	/**
+	* \brief Returns the big icon associated to the action
+	* \return const QString &
+	*/
+	QPixmap * bigIcon();
+
+	/**
+	* \brief Adds the action to the given popup
+	* \param pMenu The menu where to add the action
+	* \return bool
+	*/
+	virtual bool addToPopupMenu(KviTalPopupMenu * pMenu);
+
+	/**
+	* \brief Adds the action to the given toolbar
+	* \param pParentToolBar The toolbar where to add the action
+	* \return QWidget *
+	*/
+	virtual QWidget * addToCustomToolBar(KviCustomToolBar * pParentToolBar);
+
+	/**
+	* \brief Destroys itself. Maybe the best function in the whole APIs :)
+	* \return void
+	*/
+	void suicide(){ delete this; };
+protected:
+	/**
+	* \brief Returns true if the setup is finished
+	* \note Called once before the FIRST button or menu item is created
+	* \return bool
+	*/
+	bool setupDone() const { return (m_uInternalFlags & KviAction::SetupDone); };
+
+	/**
+	* \brief Enables or disables the action upon starting KVIrc
+	* \return void
+	*/
 	virtual void setup();
+
+	/**
+	* \brief Returns the list of widgets associated to the action
+	* \return KviPointerList<QWidget> *
+	*/
 	KviPointerList<QWidget> * widgetList(){ return m_pWidgetList; };
+
+	/**
+	* \brief Registers the action shortcut in the application
+	* \return void
+	*/
 	void registerAccelerator();
+
+	/**
+	* \brief Removes the action shortcut from the application
+	* \return void
+	*/
 	void unregisterAccelerator();
-	void registerWidget(QWidget * b);
-protected slots:
-	virtual void widgetDestroyed();
-	virtual void reloadImages();
-	virtual void activeContextChanged();
-	virtual void activeContextStateChanged();
-	virtual void activeWindowChanged();
-	virtual void activeWindowSelectionStateChanged(bool bSelectedNow);
+
+	/**
+	* \brief Adds the widget to the list
+	* \param pWidget The widget to add
+	* \return void
+	*/
+	void registerWidget(QWidget * pWidget);
 public slots:
+	/**
+	* \brief Activates the action
+	* 
+	* It's called when the user activates the action clicking on the toolbar, the menu or by
+	* hitting its shortcut.
+	* \return void
+	*/
 	virtual void activate();
+protected slots:
+	/**
+	* \brief Removes the widget from the list
+	* 
+	* Called when the widget is being destroyed
+	* \return void
+	*/
+	virtual void widgetDestroyed();
+
+	/**
+	* \brief Reloads the images
+	* 
+	* Called when the application wants to refresh the images in the toolbar
+	* \return void
+	*/
+	virtual void reloadImages();
+
+	/**
+	* \brief Enables or disables the action upon checking the active context
+	* 
+	* If the context doesn't exist, the action is disabled
+	* 
+	* Called when the frame changes the active context.
+	* \note It works only if NeedsContext is specified
+	* \return void
+	*/
+	virtual void activeContextChanged();
+
+	/**
+	* \brief Enables or disables the action upon checking the active context
+	* 
+	* Called when the frame changes the state of the context
+	* \return void
+	*/
+	virtual void activeContextStateChanged();
+
+	/**
+	* \brief Enables or disables the action upon checking the active window
+	* 
+	* Called when the frame changes the active window.
+	* \return void
+	*/
+	virtual void activeWindowChanged();
+
+	/**
+	* \brief Enables or disables the action upon checking the active window
+	* 
+	* Called when the frame changes the active window.
+	* \note We jump here ONLY if m_uFlags & WindowOnlyIfUsersSelected and thus also
+	* m_uFlags & InternalWindowMask
+	* \return void
+	*/
+	virtual void activeWindowSelectionStateChanged(bool bSelectedNow);
 signals:
+	/**
+	* \brief Emitted when the action is being activated
+	* \return void
+	*/
 	void activated();
 };
 
-
-
-#endif //!_KVI_ACTION_H_
+#endif // _KVI_ACTION_H_

@@ -22,53 +22,40 @@
 //
 //=============================================================================
 
-
 #include "kvi_action.h"
 #include "kvi_customtoolbar.h"
 #include "kvi_frame.h"
 #include "kvi_irccontext.h"
-#include "kvi_ircconnection.h"
 #include "kvi_iconmanager.h"
 #include "kvi_app.h"
 #include "kvi_window.h"
 #include "kvi_channel.h"
-#include "kvi_console.h"
 #include "kvi_query.h"
 #include "kvi_tal_popupmenu.h"
 
-KviAction::KviAction(
-			QObject * pParent,
-			const QString &szName,
-			const QString &szVisibleName,
-			const QString &szDescription,
-			KviActionCategory * pCategory,
-			const QString &szBigIconId,
-			const QString &szSmallIconId,
-			unsigned int uFlags,
-			const QString &szKeySequence
-		)
-	: QObject(pParent),
-		m_szName(szName),
-		m_szVisibleName(szVisibleName),
-		m_szDescription(szDescription),
-		m_pCategory(pCategory),
-		m_szBigIconId(szBigIconId),
-		m_szSmallIconId(szSmallIconId),
-		m_pWidgetList(NULL),
-		m_uInternalFlags(KVI_ACTION_FLAG_ENABLED),
-		m_uFlags(uFlags),
-		m_szKeySequence(szKeySequence),
-		m_pAccel(NULL)
+#include <QShortcut>
+
+KviActionCategory::KviActionCategory(const QString & szName, const QString & szVisibleName, const QString & szDescription)
+: m_szName(szName), m_szVisibleName(szVisibleName), m_szDescription(szDescription)
 {
 }
 
+KviActionCategory::~KviActionCategory()
+{
+}
+
+
+KviAction::KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, const QString & szSmallIconId, unsigned int uFlags, const QString & szKeySequence)
+: QObject(pParent),m_szName(szName),m_szVisibleName(szVisibleName),m_szDescription(szDescription),m_pCategory(pCategory),m_szBigIconId(szBigIconId),m_szSmallIconId(szSmallIconId),m_pWidgetList(NULL),m_uInternalFlags(KviAction::Enabled),m_uFlags(uFlags),m_szKeySequence(szKeySequence),m_pAccel(NULL)
+{
+}
 
 KviAction::~KviAction()
 {
 	if(m_pWidgetList)
 	{
-		for(QWidget * b = m_pWidgetList->first();b;b = m_pWidgetList->next())
-			disconnect(b,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
+		for(QWidget * pWidget = m_pWidgetList->first(); pWidget; pWidget = m_pWidgetList->next())
+			disconnect(pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
 		m_pWidgetList->setAutoDelete(true);
 		delete m_pWidgetList;
 	}
@@ -93,7 +80,7 @@ void KviAction::registerAccelerator()
 {
 	if(!m_szKeySequence.isEmpty())
 	{
-		m_pAccel = new QShortcut(m_szKeySequence, g_pFrame, 0, 0, Qt::ApplicationShortcut);
+		m_pAccel = new QShortcut(m_szKeySequence,g_pFrame,0,0,Qt::ApplicationShortcut);
 		connect(m_pAccel,SIGNAL(activated()),this,SLOT(activate()));
 		//no way to have Ctrl+Alt+Key events fired as no-ambiguous, probably qt bug
 		connect(m_pAccel,SIGNAL(activatedAmbiguously()),this,SLOT(activate()));
@@ -113,19 +100,25 @@ void KviAction::unregisterAccelerator()
 void KviAction::setEnabled(bool bEnabled)
 {
 	if(bEnabled)
-		m_uInternalFlags |= KVI_ACTION_FLAG_ENABLED;
+		m_uInternalFlags |= KviAction::Enabled;
 	else
-		m_uInternalFlags &= ~KVI_ACTION_FLAG_ENABLED;
+		m_uInternalFlags &= ~KviAction::Enabled;
 
 	if(m_pWidgetList)
 	{
 		if(bEnabled)
 		{
-			for(QWidget * t = m_pWidgetList->first();t;t = m_pWidgetList->next())
-				if(!t->isEnabled())t->setEnabled(true);
+			for(QWidget * pWidget = m_pWidgetList->first(); pWidget; pWidget = m_pWidgetList->next())
+			{
+				if(!pWidget->isEnabled())
+					pWidget->setEnabled(true);
+			}
 		} else {
-			for(QWidget * t = m_pWidgetList->first();t;t = m_pWidgetList->next())
-				if(t->isEnabled())t->setEnabled(false);
+			for(QWidget * pWidget = m_pWidgetList->first(); pWidget; pWidget = m_pWidgetList->next())
+			{
+				if(pWidget->isEnabled())
+					pWidget->setEnabled(false);
+			}
 		}
 	}
 }
@@ -172,10 +165,11 @@ void KviAction::setup()
 		{
 			connect(g_pFrame,SIGNAL(activeContextChanged()),this,SLOT(activeContextChanged()));
 			connect(g_pFrame,SIGNAL(activeContextStateChanged()),this,SLOT(activeContextStateChanged()));
-			KviIrcContext * c = g_pFrame->activeContext();
-			if(!c)setEnabled(false);
+			KviIrcContext * pContext = g_pFrame->activeContext();
+			if(!pContext)
+				setEnabled(false);
 			else {
-				switch(c->state())
+				switch(pContext->state())
 				{
 					case KviIrcContext::LoggingIn:
 						setEnabled(m_uFlags & EnableAtLogin);
@@ -192,24 +186,27 @@ void KviAction::setup()
 			if(m_uFlags & NeedsContext)
 			{
 				connect(g_pFrame,SIGNAL(activeContextChanged()),this,SLOT(activeContextChanged()));
-				if(!g_pFrame->activeContext())setEnabled(false);
-				else setEnabled(true);
+				if(!g_pFrame->activeContext())
+					setEnabled(false);
+				else
+					setEnabled(true);
 			}
 		}
 	}
 
-	m_uInternalFlags |= KVI_ACTION_FLAG_SETUPDONE;
+	m_uInternalFlags |= KviAction::SetupDone;
 }
 
 
 void KviAction::reloadImages()
 {
-	if(!m_pWidgetList)return;
-	QPixmap * p = bigIcon();
-	for(QWidget * b = m_pWidgetList->first();b;b = m_pWidgetList->next())
+	if(!m_pWidgetList)
+		return;
+	QPixmap * pPix = bigIcon();
+	for(QWidget * pWidget = m_pWidgetList->first(); pWidget; pWidget = m_pWidgetList->next())
 	{
-		if(b->inherits("QToolButton"))
-			((QToolButton *)b)->setIcon(p ? *p : QPixmap());
+		if(pWidget->inherits("QToolButton"))
+			((QToolButton *)pWidget)->setIcon(pPix ? *pPix : QPixmap());
 	}
 }
 
@@ -219,7 +216,8 @@ void KviAction::activeWindowChanged()
 	{
 		if(!g_pFrame->activeContext())
 		{
-			if(isEnabled())setEnabled(false);
+			if(isEnabled())
+				setEnabled(false);
 			return;
 		}
 	}
@@ -231,7 +229,8 @@ void KviAction::activeWindowChanged()
 			case KviIrcContext::LoggingIn:
 				if(!(m_uFlags & EnableAtLogin))
 				{
-					if(isEnabled())setEnabled(false);
+					if(isEnabled())
+						setEnabled(false);
 					return;
 				}
 			break;
@@ -239,7 +238,8 @@ void KviAction::activeWindowChanged()
 				// this is ok
 			break;
 			default:
-				if(isEnabled())setEnabled(false);
+				if(isEnabled())
+					setEnabled(false);
 				return;
 			break;
 		}
@@ -247,7 +247,8 @@ void KviAction::activeWindowChanged()
 
 	if(!g_pActiveWindow)
 	{
-		if(isEnabled())setEnabled(false);
+		if(isEnabled())
+			setEnabled(false);
 		return;
 	}
 
@@ -259,12 +260,15 @@ void KviAction::activeWindowChanged()
 				if(m_uFlags & WindowOnlyIfUsersSelected)
 				{
 					bool bEnabled = ((KviConsole *)g_pActiveWindow)->selectedCount() > 0;
-					if(bEnabled != isEnabled())setEnabled(bEnabled);
+					if(bEnabled != isEnabled())
+						setEnabled(bEnabled);
 				} else {
-					if(!isEnabled())setEnabled(true);
+					if(!isEnabled())
+						setEnabled(true);
 				}
 			} else {
-				if(isEnabled())setEnabled(false);
+				if(isEnabled())
+					setEnabled(false);
 			}
 			break;
 		case KVI_WINDOW_TYPE_CHANNEL:
@@ -273,12 +277,15 @@ void KviAction::activeWindowChanged()
 				if(m_uFlags & WindowOnlyIfUsersSelected)
 				{
 					bool bEnabled = ((KviChannel *)g_pActiveWindow)->selectedCount() > 0;
-					if(bEnabled != isEnabled())setEnabled(bEnabled);
+					if(bEnabled != isEnabled())
+						setEnabled(bEnabled);
 				} else {
-					if(!isEnabled())setEnabled(true);
+					if(!isEnabled())
+						setEnabled(true);
 				}
 			} else {
-				if(isEnabled())setEnabled(false);
+				if(isEnabled())
+					setEnabled(false);
 			}
 			break;
 		case KVI_WINDOW_TYPE_QUERY:
@@ -287,33 +294,39 @@ void KviAction::activeWindowChanged()
 				if(m_uFlags & WindowOnlyIfUsersSelected)
 				{
 					bool bEnabled = ((KviQuery *)g_pActiveWindow)->selectedCount() > 0;
-					if(bEnabled != isEnabled())setEnabled(bEnabled);
+					if(bEnabled != isEnabled())
+						setEnabled(bEnabled);
 				} else {
-					if(!isEnabled())setEnabled(true);
+					if(!isEnabled())
+						setEnabled(true);
 				}
 			} else {
-				if(isEnabled())setEnabled(false);
+				if(isEnabled())
+					setEnabled(false);
 			}
 			break;
 		case KVI_WINDOW_TYPE_DCCCHAT:
 			if(m_uFlags & WindowDccChat)
 			{
-				if(!isEnabled())setEnabled(true);
+				if(!isEnabled())
+					setEnabled(true);
 			} else {
-				if(isEnabled())setEnabled(false);
+				if(isEnabled())
+					setEnabled(false);
 			}
 			break;
 		default:
 			if(m_uFlags & InternalWindowMask)
 			{
-				if(isEnabled())setEnabled(false);
+				if(isEnabled())
+					setEnabled(false);
 			} else {
-				if(!isEnabled())setEnabled(true);
+				if(!isEnabled())
+					setEnabled(true);
 			}
 			break;
 	}
 }
-
 
 void KviAction::activeWindowSelectionStateChanged(bool bSelectedNow)
 {
@@ -324,140 +337,163 @@ void KviAction::activeWindowSelectionStateChanged(bool bSelectedNow)
 		case KVI_WINDOW_TYPE_CONSOLE:
 			if(m_uFlags & WindowConsole)
 			{
-				if(bSelectedNow != isEnabled())setEnabled(bSelectedNow);
+				if(bSelectedNow != isEnabled())
+					setEnabled(bSelectedNow);
 			} else {
-				if(isEnabled())setEnabled(false);
+				if(isEnabled())
+					setEnabled(false);
 			}
 			break;
 		case KVI_WINDOW_TYPE_CHANNEL:
 			if(m_uFlags & WindowChannel)
 			{
-				if(bSelectedNow != isEnabled())setEnabled(bSelectedNow);
+				if(bSelectedNow != isEnabled())
+					setEnabled(bSelectedNow);
 			} else {
-				if(isEnabled())setEnabled(false);
+				if(isEnabled())
+					setEnabled(false);
 			}
 			break;
 		case KVI_WINDOW_TYPE_QUERY:
 			if(m_uFlags & WindowQuery)
 			{
-				if(bSelectedNow != isEnabled())setEnabled(bSelectedNow);
+				if(bSelectedNow != isEnabled())
+					setEnabled(bSelectedNow);
 			} else {
-				if(isEnabled())setEnabled(false);
+				if(isEnabled())
+					setEnabled(false);
 			}
 			break;
 		case KVI_WINDOW_TYPE_DCCCHAT:
 			if(m_uFlags & WindowDccChat)
 			{
-				if(!isEnabled())setEnabled(true);
+				if(!isEnabled())
+					setEnabled(true);
 			} else {
-				if(isEnabled())setEnabled(false);
+				if(isEnabled())
+					setEnabled(false);
 			}
 			break;
 		default:
-			if(isEnabled())setEnabled(false);
+			if(isEnabled())
+				setEnabled(false);
 			break;
 	}
 }
 
-
 void KviAction::activeContextChanged()
 {
 	// works only if NeedsContext is specified!
-	KviIrcContext * c = g_pFrame->activeContext();
-	if(c)
+	KviIrcContext * pContext = g_pFrame->activeContext();
+	if(pContext)
 	{
 		if(m_uFlags & NeedsConnection)
 			activeContextStateChanged();
 		else
-			if(!isEnabled())setEnabled(true);
+			if(!isEnabled())
+				setEnabled(true);
 	} else {
-		if(isEnabled())setEnabled(false);
+		if(isEnabled())
+			setEnabled(false);
 	}
 }
 
 void KviAction::activeContextStateChanged()
 {
-	KviIrcContext * c = g_pFrame->activeContext();
-	if(c)
+	KviIrcContext * pContext = g_pFrame->activeContext();
+	if(pContext)
 	{
-		switch(c->state())
+		switch(pContext->state())
 		{
 			case KviIrcContext::Idle:
 			case KviIrcContext::Connecting:
-				if(isEnabled())setEnabled(false);
+				if(isEnabled())
+					setEnabled(false);
 			break;
 			case KviIrcContext::LoggingIn:
 				if(m_uFlags & EnableAtLogin)
 				{
-					if(!isEnabled())setEnabled(true);
+					if(!isEnabled())
+						setEnabled(true);
 				} else {
-					if(isEnabled())setEnabled(false);
+					if(isEnabled())
+						setEnabled(false);
 				}
 			break;
 			case KviIrcContext::Connected:
-				if(!isEnabled())setEnabled(true);
+				if(!isEnabled())
+					setEnabled(true);
 			break;
 			default:
-				if(isEnabled())setEnabled(false);
+				if(isEnabled())
+					setEnabled(false);
 			break;
 		}
 	} else {
-		if(isEnabled())setEnabled(false);
+		if(isEnabled())
+			setEnabled(false);
 	}
 }
 
-bool KviAction::addToPopupMenu(KviTalPopupMenu *pMenu)
+bool KviAction::addToPopupMenu(KviTalPopupMenu * pMenu)
 {
-	if(!setupDone())setup();
-	QPixmap * p = smallIcon();
-	int id;
-	QString t = visibleName();
-	if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-	if(p)
-	{
-		id = pMenu->insertItem(*p,t,this,SLOT(activate()));
-	} else {
-		id = pMenu->insertItem(t,this,SLOT(activate()));
-	}
-	if(!isEnabled())pMenu->setItemEnabled(id,false);
+	if(!setupDone())
+		setup();
+	QPixmap * pPix = smallIcon();
+	int iId;
+	QString szTmp = visibleName();
+
+	if(!m_szKeySequence.isEmpty())
+		szTmp += '\t' + m_szKeySequence;
+
+	if(pPix)
+		iId = pMenu->insertItem(*pPix,szTmp,this,SLOT(activate()));
+	else
+		iId = pMenu->insertItem(szTmp,this,SLOT(activate()));
+
+	if(!isEnabled())
+		pMenu->setItemEnabled(iId,false);
 	return true;
 }
 
 void KviAction::widgetDestroyed()
 {
-	if(!m_pWidgetList)return;
-	QWidget * b = (QWidget *)sender();
-	m_pWidgetList->removeRef(b);
+	if(!m_pWidgetList)
+		return;
+	QWidget * pWidget = (QWidget *)sender();
+	m_pWidgetList->removeRef(pWidget);
 }
 
-void KviAction::registerWidget(QWidget * b)
+void KviAction::registerWidget(QWidget * pWidget)
 {
-	connect(b,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
+	connect(pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
 	if(!m_pWidgetList)
 	{
 		m_pWidgetList = new KviPointerList<QWidget>;
 		m_pWidgetList->setAutoDelete(false);
 	}
-	m_pWidgetList->append(b);
+	m_pWidgetList->append(pWidget);
 }
 
-QWidget * KviAction::addToCustomToolBar(KviCustomToolBar *pParentToolBar)
+QWidget * KviAction::addToCustomToolBar(KviCustomToolBar * pParentToolBar)
 {
-	if(!setupDone())setup();
-	QPixmap * p = bigIcon();
-	QToolButton * b = new QToolButton(pParentToolBar);
+	if(!setupDone())
+		setup();
+	QPixmap * pPix = bigIcon();
+	QToolButton * pTool = new QToolButton(pParentToolBar);
 
-	b->setIcon(p ? *p : QPixmap());
-	b->setText(visibleName());
-	b->setToolTip(visibleName());
-	b->setObjectName(m_szName.toUtf8().data());
-	connect(b,SIGNAL(clicked()),this,SLOT(activate()));
+	pTool->setIcon(pPix ? *pPix : QPixmap());
+	pTool->setText(visibleName());
+	pTool->setToolTip(visibleName());
+	pTool->setObjectName(m_szName.toUtf8().data());
+	connect(pTool,SIGNAL(clicked()),this,SLOT(activate()));
 
-	QAction *a = pParentToolBar->addWidget(b);
-	a->setVisible(true);
-	if(!isEnabled())b->setEnabled(false);
-	registerWidget(b);
-	return b;
+	QAction * pAction = pParentToolBar->addWidget(pTool);
+	pAction->setVisible(true);
+	if(!isEnabled())
+		pTool->setEnabled(false);
+	registerWidget(pTool);
+	return pTool;
 }
 
 void KviAction::activate()

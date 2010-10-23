@@ -4,7 +4,7 @@
 //   Creation date : Sat 04 Dec 2004 04:22:12 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,39 +22,15 @@
 //
 //=============================================================================
 
-
-
 #include "kvi_kvs_action.h"
 #include "kvi_kvs_script.h"
 #include "kvi_window.h"
 
-KviKvsAction::KviKvsAction(
-		QObject * pParent,
-		const QString &szName,
-		const QString &szScriptCode,
-		const QString &szVisibleName,
-		const QString &szDescription,
-		KviActionCategory * pCategory,
-		const QString &szBigIconId,
-		const QString &szSmallIconId,
-		unsigned int uFlags,
-		const QString &szKeySequence
-	)
-	: KviAction(
-		pParent,
-		szName,
-		szVisibleName,
-		szDescription,
-		pCategory,
-		szBigIconId,
-		szSmallIconId,
-		uFlags,
-		szKeySequence
-	)
+KviKvsAction::KviKvsAction(QObject * pParent, const QString & szName, const QString & szScriptCode, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, const QString & szSmallIconId, unsigned int uFlags, const QString & szKeySequence)
+: KviAction(pParent,szName,szVisibleName,szDescription,pCategory,szBigIconId,szSmallIconId,uFlags,szKeySequence)
 {
 	m_szScript = QString(szScriptCode);
 }
-
 
 KviKvsAction::~KviKvsAction()
 {
@@ -68,6 +44,7 @@ const QString & KviKvsAction::scriptCode()
 
 void KviKvsAction::activate()
 {
-	if(!isEnabled())return; // no way
+	if(!isEnabled())
+		return; // no way
 	KviKvsScript::run(m_szScript,g_pActiveWindow);
 }

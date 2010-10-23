@@ -27,7 +27,7 @@
 /**
 * \file kvi_kvs_variant.h
 * \author Szymon Stefanek
-* \brief Handling of variant data
+* \brief Handling of variant data type in KVS
 */
 
 #include "kvi_settings.h"
@@ -331,7 +331,7 @@ public:
 
 /**
 * \class KviKvsVariant
-* \brief This class holds the variant data
+* \brief This class defines a new data type which contains variant data
 * 
 * A variant data is a data which can assume different data types. This is very useful when you
 * don't know in advance which data type you have to manage.

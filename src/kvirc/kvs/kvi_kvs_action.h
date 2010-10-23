@@ -6,7 +6,7 @@
 //   Creation date : Sat 04 Dec 2004 04:22:12 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,33 +24,59 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_kvs_action.h
+* \author Szymon Stefanek
+* \brief Actions handling
+*/
+
 #include "kvi_settings.h"
 #include "kvi_action.h"
 
 class KviKvsScript;
 
+/**
+* \class KviKvsAction
+* \brief This class handles the actions
+*/
 class KVIRC_API KviKvsAction : public KviAction
 {
 	Q_OBJECT
 protected:
 	QString m_szScript;
 public:
-	KviKvsAction(
-			QObject * pParent,
-			const QString &szName,
-			const QString &szScriptCode,
-			const QString &szVisibleName,
-			const QString &szDescription,
-			KviActionCategory * pCategory = NULL,
-			const QString &szBigIconId = QString(),
-			const QString &szSmallIconId = QString(),
-			unsigned int uFlags = 0,
-			const QString &szKeySequence = QString()
-		);
+	/**
+	* \brief Contructs the action object
+	* \param pParent The parent object
+	* \param szName The name of the action
+	* \param szScriptCode The code of the script contained in the action
+	* \param szVisibleName Permanent visible name, visible at least in the action drawer
+	* \param szDescription The description of the action
+	* \param pCategory One of KviActionManager::category*() or 0 (default category)
+	* \param szBigIconId The id of a big icon (32x32)
+	* \param szSmallIconId The id of a small icon (16x16)
+	* \param uFlags Flags of the action like connection needed, context needed, ...
+	* \param szKeySequence The shortcut to activate the action
+	* \return KviKvsAction
+	*/
+	KviKvsAction(QObject * pParent, const QString & szName, const QString & szScriptCode, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory = NULL, const QString & szBigIconId = QString(), const QString & szSmallIconId = QString(), unsigned int uFlags = 0, const QString & szKeySequence = QString());
+
+	/**
+	* \brief Destroys the action object
+	*/
 	~KviKvsAction();
 public:
+	/**
+	* \brief Returns the code of the script contained in the action
+	* \return const QString &
+	*/
 	const QString & scriptCode();
+
+	/**
+	* \brief Executes the action
+	* \return void
+	*/
 	virtual void activate();
 };
 
-#endif //!_KVI_KVSACTION_H_
+#endif // _KVI_KVSACTION_H_

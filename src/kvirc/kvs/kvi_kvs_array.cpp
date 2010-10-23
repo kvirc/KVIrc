@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "kvi_kvs_array.h"
 #include "kvi_malloc.h"
 
@@ -39,18 +37,21 @@ KviKvsArray::KviKvsArray()
 	m_uAllocSize = 0;
 }
 
-KviKvsArray::KviKvsArray(const KviKvsArray &a)
+KviKvsArray::KviKvsArray(const KviKvsArray & array)
 : KviHeapObject()
 {
-	m_uSize = a.m_uSize;
-	m_uAllocSize = a.m_uAllocSize;
+	m_uSize = array.m_uSize;
+	m_uAllocSize = array.m_uAllocSize;
 	if(m_uAllocSize > 0)
 	{
 		m_pData = (KviKvsVariant **)kvi_malloc((sizeof(KviKvsVariant *)) * m_uAllocSize);
-		kvs_uint_t i;
-		for(i=0;i<m_uSize;i++)
-			if(a.m_pData[i])m_pData[i] = new KviKvsVariant(*(a.m_pData[i]));
-			else m_pData[i] = 0;
+		kvs_uint_t u;
+		for(u = 0; u < m_uSize; u++)
+		{
+			if(array.m_pData[u])
+				m_pData[u] = new KviKvsVariant(*(array.m_pData[u]));
+			else m_pData[u] = 0;
+		}
 	} else {
 		m_pData = 0;
 	}
@@ -60,44 +61,53 @@ KviKvsArray::~KviKvsArray()
 {
 	if(m_pData)
 	{
-		for(kvs_uint_t i=0;i<m_uSize;i++)
-			if(m_pData[i])delete m_pData[i];
+		for(kvs_uint_t u = 0; u < m_uSize; u++)
+		{
+			if(m_pData[u])
+				delete m_pData[u];
+		}
 		kvi_free(m_pData);
 	}
 }
 
-static int kvs_array_reverse_compare_func(const void * v1,const void * v2)
+int KviKvsArray::compareReverse(const void * pV1, const void * pV2)
 {
-	if(*((KviKvsVariant **)v1))return (*((KviKvsVariant **)v1))->compare(*((KviKvsVariant **)v2));
-	if(*((KviKvsVariant **)v2))return -(*((KviKvsVariant **)v2))->compare(*((KviKvsVariant **)v1));
+	if(*((KviKvsVariant **)pV1))
+		return (*((KviKvsVariant **)pV1))->compare(*((KviKvsVariant **)pV2));
+	if(*((KviKvsVariant **)pV2))
+		return -(*((KviKvsVariant **)pV2))->compare(*((KviKvsVariant **)pV1));
 	return 0;
 }
 
-static int kvs_array_compare_func(const void * v1,const void * v2)
+int KviKvsArray::compare(const void * pV1, const void * pV2)
 {
-	if(*((KviKvsVariant **)v1))return -(*((KviKvsVariant **)v1))->compare(*((KviKvsVariant **)v2));
-	if(*((KviKvsVariant **)v2))return (*((KviKvsVariant **)v2))->compare(*((KviKvsVariant **)v1));
+	if(*((KviKvsVariant **)pV1))
+		return -(*((KviKvsVariant **)pV1))->compare(*((KviKvsVariant **)pV2));
+	if(*((KviKvsVariant **)pV2))
+		return (*((KviKvsVariant **)pV2))->compare(*((KviKvsVariant **)pV1));
 	return 0;
 }
-
 
 void KviKvsArray::sort()
 {
-	if(m_uSize < 2)return; // already sorted
-	qsort(m_pData,m_uSize,sizeof(KviKvsVariant *),kvs_array_compare_func);
+	if(m_uSize < 2)
+		return; // already sorted
+	qsort(m_pData,m_uSize,sizeof(KviKvsVariant *),compare);
 	findNewSize();
 }
 
 void KviKvsArray::rsort()
 {
-	if(m_uSize < 2)return; // already sorted
-	qsort(m_pData,m_uSize,sizeof(KviKvsVariant *),kvs_array_reverse_compare_func);
+	if(m_uSize < 2)
+		return; // already sorted
+	qsort(m_pData,m_uSize,sizeof(KviKvsVariant *),compareReverse);
 	findNewSize();
 }
 
 void KviKvsArray::unset(kvs_uint_t uIdx)
 {
-	if(uIdx >= m_uSize)return;
+	if(uIdx >= m_uSize)
+		return;
 
 	if(m_pData[uIdx])
 	{
@@ -114,14 +124,18 @@ void KviKvsArray::unset(kvs_uint_t uIdx)
 void KviKvsArray::findNewSize()
 {
 	// find the new size
-	if(m_uSize == 0)return;
+	if(m_uSize == 0)
+		return;
 	kvs_uint_t u = m_uSize - 1;
 	while(u > 0)
 	{
-		if(m_pData[u])break;
+		if(m_pData[u])
+			break;
 		u--;
 	}
-	if(m_pData[u])m_uSize = u + 1;
+
+	if(m_pData[u])
+		m_uSize = u + 1;
 	else {
 		// u == 0, and there is no data in there
 		m_uSize = 0;
@@ -142,26 +156,27 @@ void KviKvsArray::findNewSize()
 	}
 }
 
-void KviKvsArray::set(kvs_uint_t uIdx,KviKvsVariant * pVal)
+void KviKvsArray::set(kvs_uint_t uIdx, KviKvsVariant * pVal)
 {
 	if(uIdx >= m_uSize)
 	{
 		if(uIdx == m_uSize)
-		{
 			m_uAllocSize += KVI_KVS_ARRAY_ALLOC_CHUNK; // sequential set
-		} else {
+		else
 			m_uAllocSize = uIdx + 1;
-		}
+
 		if(m_pData)
 			m_pData = (KviKvsVariant **)kvi_realloc(m_pData,(sizeof(KviKvsVariant *)) * m_uAllocSize);
 		else
 			m_pData = (KviKvsVariant **)kvi_malloc((sizeof(KviKvsVariant *)) * m_uAllocSize);
+
 		for(kvs_uint_t u=m_uSize;u<uIdx;u++)
 			m_pData[u] = 0;
 		m_uSize = uIdx+1;
 		m_pData[uIdx] = pVal;
 	} else {
-		if(m_pData[uIdx])delete m_pData[uIdx];
+		if(m_pData[uIdx])
+			delete m_pData[uIdx];
 		m_pData[uIdx] = pVal;
 	}
 }
@@ -171,16 +186,16 @@ KviKvsVariant * KviKvsArray::getAt(kvs_uint_t uIdx)
 	if(uIdx >= m_uSize)
 	{
 		if(uIdx == m_uSize)
-		{
 			m_uAllocSize += KVI_KVS_ARRAY_ALLOC_CHUNK; // sequential set
-		} else {
+		else
 			m_uAllocSize = uIdx + 1;
-		}
+
 		if(m_pData)
 			m_pData = (KviKvsVariant **)kvi_realloc(m_pData,(sizeof(KviKvsVariant *)) * m_uAllocSize);
 		else
 			m_pData = (KviKvsVariant **)kvi_malloc((sizeof(KviKvsVariant *)) * m_uAllocSize);
-		for(kvs_uint_t u=m_uSize;u<uIdx;u++)
+
+		for(kvs_uint_t u = m_uSize; u < uIdx; u++)
 			m_pData[u] = 0;
 		m_uSize = uIdx+1;
 		m_pData[uIdx] = new KviKvsVariant();
@@ -191,36 +206,44 @@ KviKvsVariant * KviKvsArray::getAt(kvs_uint_t uIdx)
 	return m_pData[uIdx];
 }
 
-void KviKvsArray::serialize(QString& result)
+void KviKvsArray::serialize(QString & szResult)
 {
-	QString tmpBuffer;
-	result="[";
+	QString szBuffer;
+	szResult = "[";
 	kvs_uint_t u = 0;
 	bool bNeedComma = false;
 	while(u < m_uSize)
 	{
-		if(bNeedComma)result.append(',');
-		else bNeedComma = true;
-		if(m_pData[u]) {
-			m_pData[u]->serialize(tmpBuffer);
-			result.append(tmpBuffer);
+		if(bNeedComma)
+			szResult.append(',');
+		else
+			bNeedComma = true;
+
+		if(m_pData[u])
+		{
+			m_pData[u]->serialize(szBuffer);
+			szResult.append(szBuffer);
 		} else {
-			result.append("null");
+			szResult.append("null");
 		}
 		u++;
 	}
-	result.append(']');
+	szResult.append(']');
 }
 
-void KviKvsArray::appendAsString(QString &szBuffer)
+void KviKvsArray::appendAsString(QString & szBuffer)
 {
 	kvs_uint_t u = 0;
 	bool bNeedComma = false;
 	while(u < m_uSize)
 	{
-		if(bNeedComma)szBuffer.append(',');
-		else bNeedComma = true;
-		if(m_pData[u])m_pData[u]->appendAsString(szBuffer);
+		if(bNeedComma)
+			szBuffer.append(',');
+		else
+			bNeedComma = true;
+
+		if(m_pData[u])
+			m_pData[u]->appendAsString(szBuffer);
 		u++;
 	}
 }

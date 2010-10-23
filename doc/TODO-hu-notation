@@ -264,10 +264,8 @@ kvirc/kvs:
 kvi_kvs_object_class.h
 kvi_kvs_object_functionhandlerimpl.h
 kvi_kvs_object_functionhandler.h
-kvi_kvs_action.h
 kvi_kvs_treenode_variable.h
 kvi_kvs_scriptaddonmanager.h
-kvi_kvs_variant.h
 kvi_kvs_treenode_parameterreturn.h
 kvi_kvs_timermanager.h
 kvi_kvs_object.h
@@ -286,7 +284,6 @@ kvi_kvs_treenode_extendedscopevariable.h
 kvi_kvs_runtimecall.h
 kvi_kvs_hash.h
 kvi_kvs_kernel.h
-kvi_kvs_array.h
 kvi_kvs_treenode_baseobjectfunctioncall.h
 kvi_kvs_corefunctions.h
 kvi_kvs_corecallbackcommands.h
@@ -389,7 +386,6 @@ kvi_kvs_moduleinterface.cpp
 kvi_kvs_treenode_corefunctioncall.cpp
 kvi_kvs_treenode_parameterreturn.cpp
 kvi_kvs_treenode_callbackcommand.cpp
-kvi_kvs_array.cpp
 kvi_kvs_parser_expression.cpp
 kvi_kvs_coresimplecommands_sz.cpp
 kvi_kvs_treenode_coresimplecommand.cpp
@@ -457,7 +453,6 @@ kvi_kvs_treenode_indirectdata.cpp
 kvi_kvs_treenode_command.cpp
 kvi_kvs_corefunctions_mr.cpp
 kvi_kvs_treenode_arrayorhashelement.cpp
-kvi_kvs_variant.cpp
 kvi_kvs_treenode_voidfunctioncall.cpp
 kvi_kvs_treenode_singleparameteridentifier.cpp
 kvi_kvs_treenode_specialcommandbreak.cpp
@@ -469,7 +464,6 @@ kvi_kvs_treenode_instructionblock.cpp
 kvi_kvs_report.cpp
 kvi_kvs_corefunctions_sz.cpp
 kvi_kvs_object_controller.cpp
-kvi_kvs_action.cpp
 kvi_kvs_hash.cpp
 kvi_kvs_object_class.cpp
 kvi_kvs_kernel.cpp
@@ -512,7 +506,6 @@ kvi_customtoolbardescriptor.h
 kvi_coreactionnames.h
 kvi_notifylist.h
 kvi_ircconnectiontarget.h
-kvi_action.h
 kvi_customtoolbarmanager.h
 kvi_internalcmd.h
 kvi_ircsocket.h
@@ -532,7 +525,6 @@ kvi_asynchronousconnectiondata.h
 kvi_ircconnection.cpp
 kvi_ircconnectionstatedata.cpp
 kvi_ircdatastreammonitor.cpp
-kvi_action.cpp
 kvi_useraction.cpp
 kvi_ircconnectionnetsplitdetectordata.cpp
 kvi_asynchronousconnectiondata.cpp
