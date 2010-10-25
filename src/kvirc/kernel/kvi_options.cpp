@@ -346,12 +346,12 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	#define RUN_THE_BROWSER "run \"cmd.exe /c start \\\"\\\" \\\"$0\\\"\""
 #else
 	#ifdef COMPILE_KDE_SUPPORT
-		#define RUN_THE_BROWSER "run kfmclient openURL $0"
+		#define RUN_THE_BROWSER "run xdg-open openURL $0"
 	#else
 		#ifdef COMPILE_ON_MAC
 			#define RUN_THE_BROWSER "run open $0"
 		#else
-			#define RUN_THE_BROWSER "run x-www-browser $0"
+			#define RUN_THE_BROWSER "run xdg-open $0"
 		#endif
 	#endif
 #endif
