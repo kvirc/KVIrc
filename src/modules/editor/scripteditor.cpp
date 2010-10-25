@@ -578,7 +578,6 @@ KviScriptEditorSyntaxHighlighter::KviScriptEditorSyntaxHighlighter(KviScriptEdit
 	// FIX-ME: "function ..." - "function internal ..."
 	// FIX-ME: "@$"
 	// FIX-ME: "\" escape char
-	// FIX-ME: comment multiline with empty line
 	updateSyntaxtTextFormat();
 
 	KviScriptHighlightingRule rule;
@@ -603,13 +602,6 @@ KviScriptEditorSyntaxHighlighter::KviScriptEditorSyntaxHighlighter(KviScriptEdit
 	rule.pattern=QRegExp("([{}])+");
 	rule.format=bracketFormat;
 	highlightingRules.append(rule);
-
-	rule.pattern=QRegExp("(//[^\\n]*)|(#[^\\n]*)");
-	rule.format=commentFormat;
-	highlightingRules.append(rule);
-
-	commentStartExpression = QRegExp("/\\*");
-	commentEndExpression = QRegExp("\\*/");
 }
 
 KviScriptEditorSyntaxHighlighter::~KviScriptEditorSyntaxHighlighter()
@@ -627,6 +619,17 @@ void KviScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 	findFormat.setForeground(g_clrFind);
 }
 
+#define SKIP_SPACES \
+	while(iIndexStart < szText.size()) \
+	{ \
+		if(szText.at(iIndexStart).unicode()=='\t' || szText.at(iIndexStart).unicode()==' ') \
+		{ \
+			iIndexStart++; \
+		} else { \
+			break; \
+		} \
+	} \
+
 void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 {
 	if(szText.isEmpty())
@@ -636,8 +639,8 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 
 	if(previousBlockState() == 1)
 	{
-		// in comment
-		int iCommentEnd = szText.indexOf(commentEndExpression);
+		// inside a multiline comment
+		int iCommentEnd = szText.indexOf("*/");
 		if(iCommentEnd < 0)
 		{
 			// not found: comment until the end of the block
@@ -645,35 +648,86 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 			setFormat(iIndexStart,szText.length(),commentFormat);
 			return;
 		}
+		// skip 2 chars
+		iCommentEnd+=2;
 		// end of comment found
 		setFormat(iIndexStart,iCommentEnd - iIndexStart,commentFormat);
 		setCurrentBlockState(0);
 		iIndexStart = iCommentEnd;
 	}
 
-	// skip tabulations and spaces
-	while(iIndexStart < szText.size())
-	{
-		if(szText.at(iIndexStart).unicode()=='\t' || szText.at(iIndexStart).unicode()==' ')
-		{
-			iIndexStart++;
-		} else {
-			break;
-		}
-	}
+	SKIP_SPACES
 
 	if (iIndexStart == szText.size())
 		return;
 
-	// check 'commands'
+	// check 'commands' and comments
 	int iCommandStart=iIndexStart;
 	if (szText.at(iIndexStart).unicode()!='$' && szText.at(iIndexStart).unicode()!='{' && szText.at(iIndexStart).unicode()!='}' && szText.at(iIndexStart).unicode()!='%')
 	{
-		while(iIndexStart<szText.size() && (szText.at(iIndexStart).isLetterOrNumber() || (szText.at(iIndexStart).unicode() == '.') || (szText.at(iIndexStart).unicode() == '_') || (szText.at(iIndexStart).unicode()== ':') ))
+		switch(szText.at(iIndexStart).unicode())
 		{
-			iIndexStart++;
+			case '#':
+				// single line comment, bash style
+				while(iIndexStart<szText.size() && szText.at(iIndexStart).unicode() != '\n')
+					iIndexStart++;
+				setFormat(iCommandStart,iIndexStart-iCommandStart,commentFormat);
+				break;
+			case '/':
+				if((iIndexStart+1)<szText.size())
+				{
+					if(szText.at(iIndexStart+1).unicode()=='/')
+					{
+						// single line comment, c++ style
+						iIndexStart++;
+						while(iIndexStart<szText.size() && szText.at(iIndexStart).unicode() != '\n')
+							iIndexStart++;
+						setFormat(iCommandStart,iIndexStart-iCommandStart,commentFormat);
+						break;
+					}
+
+					if(szText.at(iIndexStart+1).unicode()=='*')
+					{
+						// multi line comment, c style
+						iIndexStart++;
+						setCurrentBlockState(1);
+						while(iIndexStart<szText.size())
+						{
+							if((iIndexStart+2)<szText.size())
+							{
+								if(szText.at(iIndexStart).unicode() == '*' &&
+									szText.at(iIndexStart+1).unicode() == '/')
+								{
+									iIndexStart+=2;
+									setCurrentBlockState(0);
+									break;
+								}
+							}
+							iIndexStart++;
+						}
+						setFormat(iCommandStart,iIndexStart-iCommandStart,commentFormat);
+
+						SKIP_SPACES
+
+						if(currentBlockState()==0)
+						{
+							iCommandStart=iIndexStart;
+						} else {
+							break;
+						}
+						// else fallback to command (a command can start at the end of a /* comment */)
+					}
+					// else not a comment, fallback to command
+				}
+			default:
+				//command
+				while(iIndexStart<szText.size() && (szText.at(iIndexStart).isLetterOrNumber() || (szText.at(iIndexStart).unicode() == '.') || (szText.at(iIndexStart).unicode() == '_') || (szText.at(iIndexStart).unicode()== ':') ))
+				{
+					iIndexStart++;
+				}
+				setFormat(iCommandStart,iIndexStart-iCommandStart,keywordFormat);
+				break;
 		}
-		setFormat(iCommandStart,iIndexStart-iCommandStart,keywordFormat);
 	}
 
 	// code from QT4 example
@@ -691,27 +745,6 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 			setFormat(index, length, rule.format);
 			index = szText.indexOf(expression, index + length);
 		}
-	}
-
-	setCurrentBlockState(0);
-
-	int startIndex = 0;
-	if (previousBlockState() != 1)
-		startIndex = szText.indexOf(commentStartExpression);
-
-	while (startIndex >= 0)
-	{
-		int endIndex = szText.indexOf(commentEndExpression, startIndex);
-		int commentLength;
-		if (endIndex == -1)
-		{
-			setCurrentBlockState(1);
-			commentLength = szText.length() - startIndex;
-		} else {
-			commentLength = endIndex - startIndex + commentEndExpression.matchedLength();
-		}
-		setFormat(startIndex, commentLength, commentFormat);
-		startIndex = szText.indexOf(commentStartExpression, startIndex + commentLength);
 	}
 
 	// 'found matches' highlighting
