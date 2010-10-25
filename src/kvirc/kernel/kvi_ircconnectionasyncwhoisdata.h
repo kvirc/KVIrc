@@ -45,6 +45,7 @@ public:
 	QString szSignon;
 	QString szChannels;
 	QString szAway;	// The szSpecial member is renamed szAway as its sole purpose is to tell whether the user is away or not
+	QString szAuth;
 	KviKvsScript * pCallback;
 	KviKvsVariant * pMagic;
 	KviWindow * pWindow;

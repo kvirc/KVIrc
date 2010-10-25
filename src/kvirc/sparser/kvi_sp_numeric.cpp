@@ -1485,6 +1485,13 @@ void KviServerParser::parseNumericWhoisAuth(KviIrcMessage *msg)
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 	QString szAuth = msg->connection()->decodeText(msg->safeParam(2));
 
+	KviAsyncWhoisInfo * pInfo = msg->connection()->asyncWhoisData()->lookup(szNick);
+	if(pInfo)
+	{
+		pInfo->szAuth = szAuth;
+		return;
+	}
+
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
@@ -1557,6 +1564,7 @@ void KviServerParser::parseNumericEndOfWhois(KviIrcMessage *msg)
 		vl.append(new KviKvsVariant(QString(msg->safePrefix())));
 		vl.append(new KviKvsVariant(i->szAway)); // szSpecial is renamed szAway
 		vl.append(new KviKvsVariant(*(i->pMagic)));
+		vl.append(new KviKvsVariant(i->szAuth));
 		i->pCallback->run(i->pWindow,&vl,0,KviKvsScript::PreserveParams);
 		msg->connection()->asyncWhoisData()->remove(i);
 		return;
