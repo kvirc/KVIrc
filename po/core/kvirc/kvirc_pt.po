@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-20 14:18+0200\n"
-"PO-Revision-Date: 2010-10-14 00:22+0100\n"
+"PO-Revision-Date: 2010-10-25 22:20+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -2203,7 +2203,7 @@ msgstr "Limpar Lista de Servidores Recente"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:401
 msgid "Clear personal data"
-msgstr ""
+msgstr "Limpar dados pessoais"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:859
 msgid "Click to open this link"
@@ -5985,9 +5985,8 @@ msgid "Select color"
 msgstr "Escolher cor"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:389
-#, fuzzy
 msgid "Select default script's elements to restore"
-msgstr "Seleccione os elementos do 'script' predefinido a restaurar:"
+msgstr "Seleccionar elementos do 'script' predefinido para restaurar"
 
 #: src/kvirc/kernel/kvi_options.cpp:726
 msgid "Selection"
@@ -7932,7 +7931,6 @@ msgid "Yes, always"
 msgstr "Sim, sempre"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:385
-#, fuzzy
 msgid ""
 "You are about to restore the default script.\n"
 "Any any script changes you have made will be erased if you\n"
@@ -7941,8 +7939,11 @@ msgid ""
 "Do you wish to proceed?\n"
 msgstr ""
 "Está prestes a restaurar o 'script' predefinido.\n"
-"Isto irá apagar qualquer alteração que tenha feito no 'script'.\n"
-"Deseja continuar?"
+"Qualquer alteração que tenha feito será apagada se\n"
+"restaurar tudo ou se a opção \"Limpar dados pessoais\"\n"
+"estiver seleccionada.\n"
+"\n"
+"Deseja continuar?\n"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:92
 msgid ""
