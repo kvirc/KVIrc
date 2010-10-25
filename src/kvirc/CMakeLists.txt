@@ -55,7 +55,6 @@ SET(kvirc_MOC_HDRS
 	ui/kvi_themedcombobox.h
 	ui/kvi_themedlabel.h
 	ui/kvi_themedlineedit.h
-	ui/kvi_themedtreewidget.h
 	ui/kvi_toolbar.h
 	ui/kvi_toolwindows_container.h
 	ui/kvi_topicw.h
@@ -73,10 +72,8 @@ SET(kvirc_MOC_HDRS
 	kvs/kvi_kvs_asyncdnsoperation.h
 	kvs/kvi_kvs_asyncoperation.h
 	kvs/kvi_kvs_dnsmanager.h
-	kvs/kvi_kvs_eventmanager.h
 	kvs/kvi_kvs_object.h
 	kvs/kvi_kvs_popupmenu.h
-	kvs/kvi_kvs_popupmanager.h
 	kvs/kvi_kvs_processmanager.h
 	kvs/kvi_kvs_timermanager.h
 	kvs/kvi_kvs_useraction.h
@@ -84,7 +81,6 @@ SET(kvirc_MOC_HDRS
 	kernel/kvi_actionmanager.h
 	kernel/kvi_app.h
 	kernel/kvi_coreactions.h
-	kernel/kvi_defaultscript.h
 	kernel/kvi_filetransfer.h
 	kernel/kvi_iconmanager.h
 	kernel/kvi_ipc.h
@@ -143,7 +139,6 @@ SET(kvirc_SRCS
 	ui/kvi_themedcombobox.cpp
 	ui/kvi_themedlabel.cpp
 	ui/kvi_themedlineedit.cpp
-	ui/kvi_themedtreewidget.cpp
 	ui/kvi_toolbar.cpp
 	ui/kvi_toolwindows_container.cpp
 	ui/kvi_topicw.cpp
@@ -288,7 +283,6 @@ SET(kvirc_SRCS
 	kernel/kvi_coreactions.cpp
 	kernel/kvi_customtoolbardescriptor.cpp
 	kernel/kvi_customtoolbarmanager.cpp
-	kernel/kvi_defaultscript.cpp
 	kernel/kvi_filetransfer.cpp
 	kernel/kvi_htmlgenerator.cpp
 	kernel/kvi_iconmanager.cpp

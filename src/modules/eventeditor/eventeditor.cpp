@@ -155,30 +155,9 @@ void KviEventEditor::oneTimeSetup()
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 	connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),
 		this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
-        connect(KviKvsEventManager::instance(),SIGNAL(eventHandlerDisabled(const QString &)),this,SLOT(eventHandlerDisabled(const QString &)));
+
 	m_pContextPopup = new KviTalPopupMenu(this);
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
-}
-void KviEventEditor::eventHandlerDisabled(const QString &szHandler)
-{
-    QString szEventName=szHandler.split("::")[0];
-    QString szHandlerName=szHandler.split("::")[1];
-    qDebug("Handler %s of event %s : disabled",szHandlerName.toUtf8().data(),szEventName.toUtf8().data());
-    for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
-    {
-        KviEventTreeWidgetItem *pItem=(KviEventTreeWidgetItem*)m_pTreeWidget->topLevelItem(i);
-        if(!KviQString::equalCI(szEventName,pItem->name())) continue;
-        for(int j=0;j<pItem->childCount();j++)
-        {
-            if(KviQString::equalCI(szHandlerName,((KviEventHandlerTreeWidgetItem *)pItem->child(j))->name()))
-            {
-                ((KviEventHandlerTreeWidgetItem *)pItem->child(j))->setEnabled(false);
-                return;
-            }
-
-        }
-    }
-
 }
 
 KviEventEditorTreeWidget::KviEventEditorTreeWidget(QWidget * par)
@@ -204,7 +183,7 @@ void KviEventEditorTreeWidget::mousePressEvent (QMouseEvent *e)
 
 void KviEventEditor::itemPressed(QTreeWidgetItem *it,const QPoint &pnt)
 {
-	KVI_ASSERT(m_bOneTimeSetupDone);
+	__range_valid(m_bOneTimeSetupDone);
 
 	if(it)
 	{
@@ -242,7 +221,7 @@ void KviEventEditor::itemPressed(QTreeWidgetItem *it,const QPoint &pnt)
 
 void KviEventEditor::getUniqueHandlerName(KviEventTreeWidgetItem *it,QString &buffer)
 {
-	KVI_ASSERT(m_bOneTimeSetupDone);
+	__range_valid(m_bOneTimeSetupDone);
 
 	QString newName = buffer;
 	if(newName.isEmpty())newName = __tr2qs_ctx("unnamed","editor");
@@ -272,7 +251,7 @@ void KviEventEditor::getUniqueHandlerName(KviEventTreeWidgetItem *it,QString &bu
 
 void KviEventEditor::addHandlerForCurrentEvent()
 {
-	KVI_ASSERT(m_bOneTimeSetupDone);
+	__range_valid(m_pOneTimeSetupDone);
 
 	if(!m_pTreeWidget->selectedItems().isEmpty())
 	{
@@ -294,7 +273,7 @@ void KviEventEditor::addHandlerForCurrentEvent()
 
 void KviEventEditor::removeCurrentHandler()
 {
-	KVI_ASSERT(m_bOneTimeSetupDone);
+	__range_valid(m_pOneTimeSetupDone);
 	if(m_pLastEditedItem)
 	{
 		QTreeWidgetItem * it = m_pLastEditedItem;
@@ -315,7 +294,7 @@ void KviEventEditor::removeCurrentHandler()
 
 void KviEventEditor::toggleCurrentHandlerEnabled()
 {
-	KVI_ASSERT(m_bOneTimeSetupDone);
+	__range_valid(m_pOneTimeSetupDone);
 	if(m_pLastEditedItem)
 	{
 		m_pLastEditedItem->setEnabled(!(m_pLastEditedItem->m_bEnabled));
@@ -361,7 +340,7 @@ void KviEventEditor::commit()
 
 void KviEventEditor::saveLastEditedItem()
 {
-	KVI_ASSERT(m_bOneTimeSetupDone);
+	__range_valid(m_bOneTimeSetupDone);
 	if(!m_pLastEditedItem)return;
 	((KviEventHandlerTreeWidgetItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
 	QString buffer = m_pNameEditor->text();
@@ -381,7 +360,7 @@ void KviEventEditor::saveLastEditedItem()
 
 void KviEventEditor::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *)
 {
-	KVI_ASSERT(m_bOneTimeSetupDone);
+	__range_valid(m_bOneTimeSetupDone);
 	saveLastEditedItem();
 
 	if(!it)
@@ -585,7 +564,7 @@ void KviEventEditorWindow::saveProperties(KviConfig *) //cfg
 #ifdef COMPILE_SCRIPTTOOLBAR
 	cfg->writeEntry("Sizes",m_pEditor->sizes());
 	cfg->writeEntry("LastEvent",m_pEditor->lastEditedEvent().ptr());
-	//qDebug("LAST EDITED=%s",m_pEditor->lastEditedEvent().ptr());
+	//debug("LAST EDITED=%s",m_pEditor->lastEditedEvent().ptr());
 #endif // COMPILE_SCRIPTTOOLBAR
 */
 }
@@ -600,7 +579,7 @@ void KviEventEditorWindow::loadProperties(KviConfig *) //cfg
 	m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
 	KviStr tmp = cfg->readEntry("LastEvent","");
 	m_pEditor->editEvent(tmp);
-	//qDebug("LAST EDITED WAS %s",tmp.ptr());
+	//debug("LAST EDITED WAS %s",tmp.ptr());
 #endif // COMPILE_SCRIPTTOOLBAR
 */
 }
