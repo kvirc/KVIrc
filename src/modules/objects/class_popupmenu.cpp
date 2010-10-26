@@ -57,6 +57,9 @@
 	@functions:
 		!fn: $insertItem(<text:string>,[icon_id:string])
 		Inserts menu items into a popup menu with optional icon and return the popup identifier.
+                !fn: $addMenu(<popupmenu:hobject,[idx:uinteger])
+                Add a popupmenu.
+                With the optional parameter idx the popup will be inserted.
 		!fn: $setTitle(<text:string>)
 		Sets the popupmenu title to text.
 		!fn: $exec([<widget:objects>,<x:uinteger>,<y:integer>])
@@ -169,6 +172,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_popupmenu,"popupmenu","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,exec)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,insertSeparator)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,removeItem)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,addMenu)
 
 	// events
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,highlightedEvent)
@@ -253,6 +257,47 @@ KVSO_CLASS_FUNCTION(popupmenu,exec)
 	((QMenu *)widget())->exec(((QWidget *)(pObject->object()))->mapToGlobal(QPoint(iX,iY)) );
 
 	return true;
+}
+
+
+
+KVSO_CLASS_FUNCTION(popupmenu,addMenu)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        KviKvsObject *pObject;
+        kvs_uint_t iIdx;
+        kvs_hobject_t hObject;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("popupmenu",KVS_PT_HOBJECT,0,hObject)
+                KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,iIdx)
+        KVSO_PARAMETERS_END(c)
+        pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+        if (!pObject)\
+        {
+            c->warning(__tr2qs_ctx("Popup menu parameter is not an object","objects"));\
+            return true;
+        }
+        if (!pObject->object())\
+        {
+            c->warning(__tr2qs_ctx("Popup menu parameter is not a valid object","objects"));\
+            return true;\
+        }
+        if(!pObject->inheritsClass("popupmenu"))\
+        {\
+            c->warning(__tr2qs_ctx("Popupmenu object required","objects"));\
+            return true;\
+        }
+        QAction *pAction;
+        if(iIdx)
+        {
+            QAction *pActionBefore=actionsDict[iIdx];
+            pAction=((QMenu *)widget())->insertMenu(pActionBefore,(QMenu*)pObject->object());
+        }
+        else pAction=((QMenu *)widget())->addMenu((QMenu*)pObject->object());
+        actionsDict[identifier]=pAction;
+        c->returnValue()->setInteger(identifier);
+        identifier++;
+        return true;
 }
 
 KVSO_CLASS_FUNCTION(popupmenu,removeItem)

@@ -43,7 +43,7 @@ protected:
 	int identifier;
 	bool insertItem(KviKvsObjectFunctionCall *c);
 	bool setTitle(KviKvsObjectFunctionCall *c);
-	//bool insertWidget(KviKvsObjectFunctionCall *c);
+        bool addMenu(KviKvsObjectFunctionCall *c);
 	//bool insertHandle(KviKvsObjectFunctionCall *c);
 	bool exec(KviKvsObjectFunctionCall *c);
 	bool removeItem(KviKvsObjectFunctionCall *c);
