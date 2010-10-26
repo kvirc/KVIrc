@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-20 14:18+0200\n"
-"PO-Revision-Date: 2010-10-25 22:20+0100\n"
+"PO-Revision-Date: 2010-10-26 15:04+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <>\n"
 "MIME-Version: 1.0\n"
@@ -554,7 +554,7 @@ msgstr "&Ajuda"
 
 #: src/kvirc/ui/kvi_menubar.cpp:106
 msgid "&Help Browser (Panel)"
-msgstr "Navegador de &Ajuda (Painel)"
+msgstr "Painel de &Ajuda"
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:100
 msgid "&Join"
@@ -3172,7 +3172,7 @@ msgstr "O Ficheiro Existe - KVirc"
 
 #: src/kvilib/core/kvi_error.cpp:141
 msgid "File I/O error"
-msgstr "Erro E/S do Ficheiro"
+msgstr "Erro E/S do ficheiro"
 
 #: src/modules/str/libkvistr.cpp:2258
 #, c-format
@@ -3259,11 +3259,12 @@ msgstr "Disquete"
 #: src/kvirc/kernel/kvi_options.cpp:1265
 msgid "Font options (family,pointsize,style,charset,weight,flags (biusf))"
 msgstr ""
-"Opções de letra (familia,tamanho,estiolo,carater,peso,bandeiras (biusf))"
+"Opções do tipo de letra (família,tamanho,estilo,caracter,peso,bandeiras "
+"(biusf))"
 
 #: src/kvilib/system/kvi_locale.cpp:1049
 msgid "Font st&yle"
-msgstr "Es&tilo do Tipo de Letra"
+msgstr "Es&tilo do tipo de letra"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:316
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:406
@@ -3298,7 +3299,7 @@ msgstr "Formato"
 
 #: src/kvilib/system/kvi_locale.cpp:1059
 msgid "Forward"
-msgstr "Seguinte"
+msgstr "Encaminhar"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:351
 msgid "Forward to another channel on uninvited"
@@ -3307,7 +3308,7 @@ msgstr "Encaminhar para outro canal ao ser 'desconvidado'"
 #: src/modules/help/helpwindow.cpp:216
 #: src/modules/help/helpwindow.cpp:225
 msgid "Full Text Search"
-msgstr "Procurar de Texto Completa"
+msgstr "Procura de Texto Completa"
 
 #: src/kvirc/ui/kvi_imagedialog.cpp:136
 msgid "Full path"
@@ -3378,17 +3379,17 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_options.cpp:814
 msgid "Half-deop mode change"
-msgstr "Mudança de modo remover semioperador"
+msgstr "Mudança do modo remover semi-operador"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:326
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:388
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:482
 msgid "Half-operators"
-msgstr "Semi operadores"
+msgstr "Semi-operadores"
 
 #: src/kvirc/kernel/kvi_options.cpp:807
 msgid "Halfop mode change"
-msgstr "Mudança de modo semioperador"
+msgstr "Mudança do modo semioperador"
 
 #: src/kvilib/net/kvi_http.cpp:662
 msgid "Header too long: exceeded 4096 bytes"
@@ -3401,7 +3402,7 @@ msgstr "Ajuda"
 
 #: src/modules/help/helpwindow.cpp:316
 msgid "Help Browser"
-msgstr "Navegador de Ajuda"
+msgstr "Painel de Ajuda"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:315
 msgid "Help Index"
@@ -6906,11 +6907,12 @@ msgid ""
 "in a sealed wrapper that the reader must choose to open - e.g. for posting "
 "things that might offend some readers, or spoilers."
 msgstr ""
-"A cifra Caesar de encriptação simples que substitui cada letra por 13 "
+"A cifra de encriptação simples Caesar, que substitui cada letra por 13 "
 "lugares  para a frente ou para trás ao longo do alfabeto; é usada para "
-"incluir o textonum invólucro lacrado que o leitor deve optar por abrir - por "
-"exemplo, para o lançamento de coisas que possam ofender alguns leitores, ou "
-"'spoilers'."
+"incluir o texto num invólucro lacrado que o leitor deve optar por abrir - "
+"por "
+"exemplo, ao escrever determinadas coisas que possam ofender alguns "
+"leitores, ou 'spoilers'."
 
 #: src/modules/window/libkviwindow.cpp:1136
 msgid "The specified IRC context is not valid: creating a context free window"
