@@ -29,6 +29,11 @@
 #include "class_widget.h"
 #include "object_macros.h"
 #include <QHash>
+#include <QMenu>
+
+
+
+
 class KviKvsObject_popupmenu : public KviKvsObject_widget
 {
 	Q_OBJECT
@@ -39,12 +44,9 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	QHash<int,QAction *> actionsDict;
-	int identifier;
 	bool insertItem(KviKvsObjectFunctionCall *c);
 	bool setTitle(KviKvsObjectFunctionCall *c);
         bool addMenu(KviKvsObjectFunctionCall *c);
-	//bool insertHandle(KviKvsObjectFunctionCall *c);
 	bool exec(KviKvsObjectFunctionCall *c);
 	bool removeItem(KviKvsObjectFunctionCall *c);
 	bool removeItemAt(KviKvsObjectFunctionCall *c);
@@ -55,6 +57,7 @@ protected:
 protected slots:
 	void slottriggered(QAction *);
 	void slothighlighted(int);
+        void aboutToDie(QObject *);
 };
 
 #endif	// !_CLASS_POPUPMENU_H_
