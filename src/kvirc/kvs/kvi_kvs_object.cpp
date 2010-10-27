@@ -1361,7 +1361,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			m_pObject->setProperty(szName.toUtf8().data(),QVariant(fnt));
 		}
 		break;
-		case QVariant::Pixmap:
+                case QVariant::Pixmap|QVariant::Icon:
 			{
 			if(v->isHObject())
 			{
