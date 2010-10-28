@@ -1402,9 +1402,12 @@ MP_KVS_FUNCTION(localFile)
 	if(szRet.isEmpty())return true;
 	if(szRet.startsWith("file://",Qt::CaseInsensitive))
 	{
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		c->returnValue()->setString(szRet.mid(7));
+#else
 		QUrl url(szRet);
-		qDebug("local file %s", url.toLocalFile().toUtf8().data());
 		c->returnValue()->setString(url.toLocalFile());
+#endif
 	}
 	return true;
 }
