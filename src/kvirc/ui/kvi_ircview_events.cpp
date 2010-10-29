@@ -258,7 +258,7 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 void KviIrcView::mousePressEvent(QMouseEvent * e)
 {
 	if(m_pKviWindow->input()) m_pKviWindow->input()->setFocus();
-	
+
 	if(e->button() & Qt::LeftButton)
 	{
 		// We are inside the line marker
@@ -324,11 +324,11 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 
 	KviKvsVariantList * pParams = new KviKvsVariantList();
 
-	if(!szCmd.isEmpty()) pParams->append(szCmd, true); // <-- FIXME: why we do this ?
-	else pParams->append(linkText, true); // <-- FIXME: why we do this ?
-	
-	pParams->append(linkText, true);
-	pParams->append(szCmd, true);
+	if(!szCmd.isEmpty()) pParams->append(szCmd); // <-- FIXME: why we do this ?
+	else pParams->append(linkText); // <-- FIXME: why we do this ?
+
+	pParams->append(linkText);
+	pParams->append(szCmd);
 
 
 	if(!(e->modifiers() & Qt::ControlModifier))//(e->button() & Qt::RightButton) && (
@@ -670,12 +670,12 @@ void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 	{
 		bCursorOverMarker = true;
 	}
-	
+
 	if(bCursorOverMarker)
 		setCursor(Qt::PointingHandCursor);
 	else
 		setCursor(Qt::ArrowCursor);
-	
+
 	if(m_bMouseIsDown && (e->buttons() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
 	{
 		if(m_iSelectTimer == 0)
