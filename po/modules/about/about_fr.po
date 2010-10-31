@@ -1,22 +1,23 @@
 # translation of about_fr.po to Français
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Ahinu <ahinu@wanadoo.fr>, 2005.
-# Ahinu <ahinu.laman@gmail.com>, 2006.
 #
+# Ahinu <ahinu@wanadoo.fr>, 2005.
+# Ahinu <ahinu.laman@gmail.com>, 2006, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: about_fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-17 18:58+0200\n"
-"PO-Revision-Date: 2010-08-03 19:16+0100\n"
+"PO-Revision-Date: 2010-10-31 15:59+0100\n"
 "Last-Translator: \n"
-"Language-Team: Français <kde-francophone@kde.org>\n"
+"Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: Lokalize 1.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/about/aboutdialog.cpp:108
 msgid "About"
@@ -32,7 +33,7 @@ msgstr "Architecture"
 
 #: src/modules/about/aboutdialog.cpp:163
 msgid "Build Command"
-msgstr "Chemin du constructeur"
+msgstr "Commande de compilation"
 
 #: src/modules/about/aboutdialog.cpp:143
 msgid "Build Date"
@@ -40,7 +41,7 @@ msgstr "Date de la compilation"
 
 #: src/modules/about/aboutdialog.cpp:167
 msgid "Build Flags"
-msgstr "Drapeaux du constructeur"
+msgstr "Drapeaux de la compilation"
 
 #: src/modules/about/aboutdialog.cpp:141
 msgid "Build Info"
@@ -48,7 +49,7 @@ msgstr "Information de compilation"
 
 #: src/modules/about/aboutdialog.cpp:159
 msgid "CPU Name"
-msgstr "Nom CPU"
+msgstr "Nom du CPU"
 
 #: src/modules/about/aboutdialog.cpp:80
 msgid "Close"
@@ -108,3 +109,4 @@ msgstr "Nom du système"
 #: src/modules/about/aboutdialog.cpp:132
 msgid "System Version"
 msgstr "Version du système"
+
