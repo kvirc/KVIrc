@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: sharedfileswindow_fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-17 18:58+0200\n"
-"PO-Revision-Date: 2010-07-20 14:36+0100\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2010-10-31 14:45+0100\n"
+"Last-Translator: ealexp <ealexp@ealexp.eu>\n"
 "Language-Team: Français <kde-francophone@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: KBabel 1.3.1\n"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:232
-#, fuzzy, c-format
+#, c-format
 msgid "    Expires in %d hours %d minutes %d seconds"
 msgstr "    Expires dans %d heure(s) %d minute(s) %d seconde(s)"
 
@@ -28,7 +28,7 @@ msgid "    File: %s (%u bytes)"
 msgstr "    Fichier : %s (%u octets)"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:223
-#, fuzzy, c-format
+#, c-format
 msgid "    Mask: %s"
 msgstr "    Masque : %s"
 
@@ -66,7 +66,7 @@ msgstr "Expire le :"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:227
 msgid "Expires"
-msgstr "Expirations"
+msgstr "Expire"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:69
 msgid "File path:"
@@ -98,7 +98,6 @@ msgid "Manage S&hared Files"
 msgstr "Gérer les fichiers p&artagés"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:225
-#, fuzzy
 msgid "Mask"
 msgstr "Masque"
 
@@ -115,9 +114,8 @@ msgid "No active file sharedfile"
 msgstr "Pas de fichier partagé actif"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:159
-#, fuzzy
 msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
-msgstr "Aucun fichier partagé dont le nom est '%Q' et masque '%Q'"
+msgstr "Aucun fichier partagé dont le nom est '%Q' et le masque '%Q'"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:163
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:171
@@ -126,9 +124,8 @@ msgid "OK"
 msgstr "OK"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:121
-#, fuzzy
 msgid "Ops..failed to add the sharedfile..."
-msgstr "Oups... je n'est pas pu ajouter le fichier au partage..."
+msgstr "Oups... impossible d'ajouter le fichier au partage..."
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:245
 msgid "Re&move"
@@ -143,13 +140,8 @@ msgid "Shared Files"
 msgstr "Fichiers partagés"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:161
-#, fuzzy
-msgid ""
-"The expire date/time is in the past: please either remove the \"expires"
-"\"check mark or specify a expire date/time in the future"
-msgstr ""
-"La date d'expiration est dépassé : décochez \"Expirations\" ou spécifiez une "
-"date future"
+msgid "The expire date/time is in the past: please either remove the \"expires\"check mark or specify a expire date/time in the future"
+msgstr "La date d'expiration est dans le passé : veuillez soit décocher \"Expire\" soit spécifier une date dans le future"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:85
 msgid "The file '%Q' is not readable"
@@ -164,11 +156,11 @@ msgid "The share name can't be empty, please correct it"
 msgstr "Le nom de partage ne peut pas être vide !"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:243
-#, fuzzy, c-format
+#, c-format
 msgid "Total: %d sharedfile"
-msgstr "Totale de fichier partagé : %d"
+msgstr "Total : %d fichier(s) partagé(s)"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:80
-#, fuzzy
 msgid "User mask:"
 msgstr "Masque utilisateur :"
+

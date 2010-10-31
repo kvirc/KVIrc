@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: torrent_fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-17 18:57+0200\n"
-"PO-Revision-Date: 2010-07-16 15:52+0100\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2010-10-31 14:49+0100\n"
+"Last-Translator: ealexp <ealexp@ealexp.eu>\n"
 "Language-Team: Français <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
-msgstr "On choisie l'interface client \"%Q\""
+msgstr "On choisit l'interface client \"%Q\""
 
 #: src/modules/torrent/libkvitorrent.cpp:719
 msgid "Invalid client interface \"%Q\"!"
@@ -38,23 +38,19 @@ msgstr "Dernière erreur :"
 
 #: src/modules/torrent/tc_statusbarapplet.cpp:92
 msgid "No client selected!"
-msgstr "Pas de client sélectionner !"
+msgstr "Pas de client sélectionné !"
 
 #: src/modules/torrent/libkvitorrent.cpp:118
 msgid "No torrent client interface selected. Try /torrent.detect"
-msgstr "Pas de client torrent selectionner. Essayer /torrent.detect"
+msgstr "Pas de client torrent selectionné. Essayer /torrent.detect"
 
 #: src/modules/torrent/libkvitorrent.cpp:109
 msgid "Seems that there is no usable torrent client on this machine"
-msgstr ""
-"Il semble ne pas y avoir de client torrent utilisable sur cette machine"
+msgstr "Il semble ne pas y avoir de client torrent utilisable sur cette machine"
 
 #: src/modules/torrent/libkvitorrent.cpp:128
-msgid ""
-"The selected torrent client interface failed to execute the requested "
-"function"
-msgstr ""
-"Le client torrent selectionner à échouer lors de l'exécution de la requête"
+msgid "The selected torrent client interface failed to execute the requested function"
+msgstr "Le client torrent selectionné à échoué lors de l'exécution de la requête"
 
 #: src/modules/torrent/tc_statusbarapplet.cpp:44
 #: src/modules/torrent/tc_statusbarapplet.cpp:61
@@ -63,8 +59,9 @@ msgstr "Client torrent"
 
 #: src/modules/torrent/libkvitorrent.cpp:62
 msgid "Trying torrent client interface \"%Q\": score %d"
-msgstr "Teste de l'interface du client \"%Q\" : score %d"
+msgstr "Test de l'interface du client \"%Q\" : score %d"
 
 #: src/modules/torrent/libkvitorrent.cpp:711
 msgid "Using client interface \"%Q\"."
 msgstr "Utilisation de l'interface du client \"%Q\"."
+
