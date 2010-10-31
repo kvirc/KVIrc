@@ -54,7 +54,6 @@ KviThemedLineEdit::~KviThemedLineEdit()
 
 void KviThemedLineEdit::applyOptions()
 {
-	setStyle(g_pApp->themedStyle());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	bool bIsTrasparent = (KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing()) || g_pShadedChildGlobalDesktopBackground;
 #else

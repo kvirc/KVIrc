@@ -112,32 +112,31 @@ public:
 
 protected:
 	// directories
-	QString                          m_szGlobalKvircDir;
-	QString                          m_szLocalKvircDir;
-	int				m_iHeartbeatTimerId;
-	bool                            m_bFirstTimeRun;
+	QString                                    m_szGlobalKvircDir;
+	QString                                    m_szLocalKvircDir;
+	int                                        m_iHeartbeatTimerId;
+	bool                                       m_bFirstTimeRun;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	bool				m_bPortable;
+	bool                                       m_bPortable;
 #endif
-	KviWindow                     * m_pActiveWindow;
-	bool                            m_bUpdateGuiPending;
-	KviPointerList<KviPendingAvatarChange> * m_pPendingAvatarChanges;
+	KviWindow                                * m_pActiveWindow;
+	bool                                       m_bUpdateGuiPending;
+	KviPointerList<KviPendingAvatarChange>   * m_pPendingAvatarChanges;
 	bool                            m_bSetupDone;
 	KviPointerHashTable<QString,QStringList> * m_pRecentChannelDict;
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	bool                            m_bUpdatePseudoTransparencyPending;
+	bool                                       m_bUpdatePseudoTransparencyPending;
 #endif
 #ifndef COMPILE_NO_IPC
-	KviIpcSentinel                * m_pIpcSentinel;
+	KviIpcSentinel                           * m_pIpcSentinel;
 #endif
-	QFont                           m_fntDefaultFont;
-	QStyle                        * m_pThemedStyle;
+	QFont                                      m_fntDefaultFont;
 public:
 	// setup stuff (accessed from kvi_main.cpp: consider private othwerise)
-	QString	          m_szConfigFile;        // setup
-	bool              m_bCreateConfig;      // setup
-	KviStr            m_szExecAfterStartup;
-	bool              m_bShowSplashScreen;
+	QString	                                   m_szConfigFile;        // setup
+	bool                                       m_bCreateConfig;      // setup
+	KviStr                                     m_szExecAfterStartup;
+	bool                                       m_bShowSplashScreen;
 public:
 	// FIXME: "Plugins" and "ConfigPlugins" should become "Modules" and "ConfigModules"
 	enum KvircSubdir
@@ -304,7 +303,7 @@ public:
 	{
 		return m_pRecentChannelDict;
 	}
-	
+
 
 	void addRecentServer(const QString& server);
 	void fillRecentServersPopup(KviTalPopupMenu * m);

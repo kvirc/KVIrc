@@ -197,7 +197,6 @@ KviApp::KviApp(int &argc,char ** argv)
 #endif
 	m_iHeartbeatTimerId     = -1;
 	m_fntDefaultFont        = font();
-	m_pThemedStyle          = 0;
 	m_bSetupDone            = false;
 	kvi_socket_flushTrafficCounters();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -205,6 +204,10 @@ KviApp::KviApp(int &argc,char ** argv)
 	//workaround for #957
 	QApplication::setEffectEnabled(Qt::UI_FadeMenu, FALSE);
 #endif
+	// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, #1009, ..)
+	if(QString("QGtkStyle").compare(qApp->style()->metaObject()->className())==0)
+		setStyle(new QCleanlooksStyle());
+
 }
 
 void KviApp::setup()
@@ -482,11 +485,11 @@ void KviApp::setup()
 		KviInputHistory::instance()->load(szTmp);
 
 	KVI_SPLASH_SET_PROGRESS(89)
-	
+
 	KviDefaultScriptManager::init();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_DEFAULTSCRIPT))
 		KviDefaultScriptManager::instance()->load(szTmp);
-	
+
 	KVI_SPLASH_SET_PROGRESS(90)
 
 	// Eventually initialize the crypt engine manager
@@ -703,7 +706,7 @@ void KviApp::notifierMessage(KviWindow * pWnd, int iIconId, const QString & szMs
 	{
 		if(!pWnd)
 			return;
-		
+
 		QString szText = __tr2qs("Message arriving from %1:\n\n").arg(pWnd->target());
 		szText += KviMircCntrl::stripControlBytes(szMsg);
 
@@ -717,7 +720,7 @@ void KviApp::notifierMessage(KviWindow * pWnd, int iIconId, const QString & szMs
 		args << QStringList();                                   // actions, optional
 		args << QVariantMap();                                   // hints, optional
 		args << (int)uMessageLifetime*1000;                      // timeout in msecs
-		
+
 		QDBusInterface * pNotify = new QDBusInterface("org.freedesktop.Notifications","/org/freedesktop/Notifications","org.freedesktop.Notifications",QDBusConnection::sessionBus(),this);
 		QDBusMessage reply = pNotify->callWithArgumentList(QDBus::Block,"Notify",args);
 		if(reply.type() == QDBusMessage::ErrorMessage)
@@ -1795,13 +1798,13 @@ void KviApp::buildRecentChannels()
 	{
 		if((*it).isEmpty())
 			continue;
-			
+
 		szChan = (*it).section(KVI_RECENT_CHANNELS_SEPARATOR,0,0);
 		szNet = (*it).section(KVI_RECENT_CHANNELS_SEPARATOR,1);
 
 		if(szNet.isEmpty())
 			continue;
-			
+
 		QStringList * pList = m_pRecentChannelDict->find(szNet);
 		if(!pList)
 		{
@@ -1954,21 +1957,6 @@ void KviApp::timerEvent(QTimerEvent * e)
 	kvi_time_t tNow = kvi_unixTime();
 
 	heartbeat(tNow);
-}
-
-QStyle * KviApp::themedStyle()
-{
-	if(!m_pThemedStyle)
-	{
-		// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, )
-		if(QString("QGtkStyle").compare(qApp->style()->metaObject()->className())==0)
-		{
-			m_pThemedStyle = new QCleanlooksStyle();
-		} else {
-			m_pThemedStyle = style();
-		}
-	}
-	return m_pThemedStyle;
 }
 
 // qvariant.h uses this, and it is included by the qt generated moc file for Qt >= 3.0.0
