@@ -66,7 +66,7 @@
 	if(KviKvsEventManager::instance()->hasAppHandlers(__idx)) \
 	{ \
 		KviKvsVariantList _vLocalParamList( \
-				new KviKvsVariant(__param1, true) \
+				new KviKvsVariant(__param1) \
 			); \
 		KviKvsEventManager::instance()->trigger(__idx,__wnd,&_vLocalParamList); \
 	}
@@ -75,8 +75,8 @@
 	if(KviKvsEventManager::instance()->hasAppHandlers(__idx)) \
 	{ \
 		KviKvsVariantList _vLocalParamList( \
-				new KviKvsVariant(__param1, true), \
-				new KviKvsVariant(__param2, true) \
+				new KviKvsVariant(__param1), \
+				new KviKvsVariant(__param2) \
 			); \
 		KviKvsEventManager::instance()->trigger(__idx,__wnd,&_vLocalParamList); \
 	}
@@ -85,9 +85,9 @@
 	if(KviKvsEventManager::instance()->hasAppHandlers(__idx)) \
 	{ \
 		KviKvsVariantList _vLocalParamList( \
-				new KviKvsVariant(__param1, true), \
-				new KviKvsVariant(__param2, true), \
-				new KviKvsVariant(__param3, true) \
+				new KviKvsVariant(__param1), \
+				new KviKvsVariant(__param2), \
+				new KviKvsVariant(__param3) \
 			); \
 		KviKvsEventManager::instance()->trigger(__idx,__wnd,&_vLocalParamList); \
 	}
@@ -96,10 +96,10 @@
 	if(KviKvsEventManager::instance()->hasAppHandlers(__idx)) \
 	{ \
 		KviKvsVariantList _vLocalParamList( \
-				new KviKvsVariant(__param1, true), \
-				new KviKvsVariant(__param2, true), \
-				new KviKvsVariant(__param3, true), \
-				new KviKvsVariant(__param4, true) \
+				new KviKvsVariant(__param1), \
+				new KviKvsVariant(__param2), \
+				new KviKvsVariant(__param3), \
+				new KviKvsVariant(__param4) \
 			); \
 		KviKvsEventManager::instance()->trigger(__idx,__wnd,&_vLocalParamList); \
 	}
@@ -108,11 +108,11 @@
 	if(KviKvsEventManager::instance()->hasAppHandlers(__idx)) \
 	{ \
 		KviKvsVariantList _vLocalParamList( \
-				new KviKvsVariant(__param1, true), \
-				new KviKvsVariant(__param2, true), \
-				new KviKvsVariant(__param3, true), \
-				new KviKvsVariant(__param4, true), \
-				new KviKvsVariant(__param5, true) \
+				new KviKvsVariant(__param1), \
+				new KviKvsVariant(__param2), \
+				new KviKvsVariant(__param3), \
+				new KviKvsVariant(__param4), \
+				new KviKvsVariant(__param5) \
 			); \
 		KviKvsEventManager::instance()->trigger(__idx,__wnd,&_vLocalParamList); \
 	}
@@ -121,12 +121,12 @@
 	if(KviKvsEventManager::instance()->hasAppHandlers(__idx)) \
 	{ \
 		KviKvsVariantList _vLocalParamList( \
-				new KviKvsVariant(__param1, true), \
-				new KviKvsVariant(__param2, true), \
-				new KviKvsVariant(__param3, true), \
-				new KviKvsVariant(__param4, true), \
-				new KviKvsVariant(__param5, true), \
-				new KviKvsVariant(__param6, true) \
+				new KviKvsVariant(__param1), \
+				new KviKvsVariant(__param2), \
+				new KviKvsVariant(__param3), \
+				new KviKvsVariant(__param4), \
+				new KviKvsVariant(__param5), \
+				new KviKvsVariant(__param6) \
 			); \
 		KviKvsEventManager::instance()->trigger(__idx,__wnd,&_vLocalParamList); \
 	}
@@ -135,13 +135,13 @@
 	if(KviKvsEventManager::instance()->hasAppHandlers(__idx)) \
 	{ \
 		KviKvsVariantList _vLocalParamList( \
-				new KviKvsVariant(__param1, true), \
-				new KviKvsVariant(__param2, true), \
-				new KviKvsVariant(__param3, true), \
-				new KviKvsVariant(__param4, true), \
-				new KviKvsVariant(__param5, true), \
-				new KviKvsVariant(__param6, true), \
-				new KviKvsVariant(__param7, true) \
+				new KviKvsVariant(__param1), \
+				new KviKvsVariant(__param2), \
+				new KviKvsVariant(__param3), \
+				new KviKvsVariant(__param4), \
+				new KviKvsVariant(__param5), \
+				new KviKvsVariant(__param6), \
+				new KviKvsVariant(__param7) \
 			); \
 		KviKvsEventManager::instance()->trigger(__idx,__wnd,&_vLocalParamList); \
 	}
@@ -168,7 +168,7 @@
 					__idx, \
 					__wnd, \
 					new KviKvsVariantList( \
-							new KviKvsVariant(__param1, true) \
+							new KviKvsVariant(__param1) \
 						) \
 				) \
 		: \
@@ -183,8 +183,8 @@
 					__idx, \
 					__wnd, \
 					new KviKvsVariantList( \
-							new KviKvsVariant(__param1, true), \
-							new KviKvsVariant(__param2, true) \
+							new KviKvsVariant(__param1), \
+							new KviKvsVariant(__param2) \
 						) \
 				) \
 		: \
@@ -199,9 +199,9 @@
 					__idx, \
 					__wnd, \
 					new KviKvsVariantList( \
-							new KviKvsVariant(__param1, true), \
-							new KviKvsVariant(__param2, true), \
-							new KviKvsVariant(__param3, true) \
+							new KviKvsVariant(__param1), \
+							new KviKvsVariant(__param2), \
+							new KviKvsVariant(__param3) \
 						) \
 				) \
 		: \
@@ -216,10 +216,10 @@
 					__idx, \
 					__wnd, \
 					new KviKvsVariantList( \
-							new KviKvsVariant(__param1, true), \
-							new KviKvsVariant(__param2, true), \
-							new KviKvsVariant(__param3, true), \
-							new KviKvsVariant(__param4, true) \
+							new KviKvsVariant(__param1), \
+							new KviKvsVariant(__param2), \
+							new KviKvsVariant(__param3), \
+							new KviKvsVariant(__param4) \
 						) \
 				) \
 		: \
@@ -234,11 +234,11 @@
 					__idx, \
 					__wnd, \
 					new KviKvsVariantList( \
-							new KviKvsVariant(__param1, true), \
-							new KviKvsVariant(__param2, true), \
-							new KviKvsVariant(__param3, true), \
-							new KviKvsVariant(__param4, true), \
-							new KviKvsVariant(__param5, true) \
+							new KviKvsVariant(__param1), \
+							new KviKvsVariant(__param2), \
+							new KviKvsVariant(__param3), \
+							new KviKvsVariant(__param4), \
+							new KviKvsVariant(__param5) \
 						) \
 				) \
 		: \
@@ -253,12 +253,12 @@
 					__idx, \
 					__wnd, \
 					new KviKvsVariantList( \
-							new KviKvsVariant(__param1, true), \
-							new KviKvsVariant(__param2, true), \
-							new KviKvsVariant(__param3, true), \
-							new KviKvsVariant(__param4, true), \
-							new KviKvsVariant(__param5, true), \
-							new KviKvsVariant(__param6, true) \
+							new KviKvsVariant(__param1), \
+							new KviKvsVariant(__param2), \
+							new KviKvsVariant(__param3), \
+							new KviKvsVariant(__param4), \
+							new KviKvsVariant(__param5), \
+							new KviKvsVariant(__param6) \
 						) \
 				) \
 		: \
@@ -273,13 +273,13 @@
 					__idx, \
 					__wnd, \
 					new KviKvsVariantList( \
-							new KviKvsVariant(__param1, true), \
-							new KviKvsVariant(__param2, true), \
-							new KviKvsVariant(__param3, true), \
-							new KviKvsVariant(__param4, true), \
-							new KviKvsVariant(__param5, true), \
-							new KviKvsVariant(__param6, true), \
-							new KviKvsVariant(__param7, true) \
+							new KviKvsVariant(__param1), \
+							new KviKvsVariant(__param2), \
+							new KviKvsVariant(__param3), \
+							new KviKvsVariant(__param4), \
+							new KviKvsVariant(__param5), \
+							new KviKvsVariant(__param6), \
+							new KviKvsVariant(__param7) \
 						) \
 				) \
 		: \
