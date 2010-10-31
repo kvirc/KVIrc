@@ -198,6 +198,7 @@ KviApp::KviApp(int &argc,char ** argv)
 	m_iHeartbeatTimerId     = -1;
 	m_fntDefaultFont        = font();
 	m_bSetupDone            = false;
+	m_bClosingDown          = false;
 	kvi_socket_flushTrafficCounters();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_bPortable = KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable");
@@ -206,7 +207,10 @@ KviApp::KviApp(int &argc,char ** argv)
 #endif
 	// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, #1009, ..)
 	if(QString("QGtkStyle").compare(qApp->style()->metaObject()->className())==0)
+	{
 		setStyle(new QCleanlooksStyle());
+		setPalette(style()->standardPalette());
+	}
 
 }
 
@@ -577,6 +581,8 @@ KviApp::~KviApp()
 {
 	// Another critical phase.
 	// We shutdown our subsystems in the right order here.
+
+	m_bClosingDown = true;
 
 #ifndef COMPILE_NO_IPC
 	destroyIpcSentinel();
@@ -1526,6 +1532,7 @@ void KviApp::createFrame()
 
 void KviApp::destroyFrame()
 {
+	m_bClosingDown=true;
 	if(g_pFrame)
 		g_pFrame->deleteLater();
 	g_pActiveWindow = 0;

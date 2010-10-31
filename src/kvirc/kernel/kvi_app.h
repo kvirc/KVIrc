@@ -116,6 +116,7 @@ protected:
 	QString                                    m_szLocalKvircDir;
 	int                                        m_iHeartbeatTimerId;
 	bool                                       m_bFirstTimeRun;
+	bool                                       m_bClosingDown;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	bool                                       m_bPortable;
 #endif
@@ -162,7 +163,9 @@ public:
 
 	static int getGloballyUniqueId(); // returns an unique integer identifier across the application
 
-	bool firstTimeRun(){ return m_bFirstTimeRun; };
+	inline bool firstTimeRun() const { return m_bFirstTimeRun; };
+	inline bool closingDown() const { return m_bClosingDown; };
+
 	inline bool supportsCompositing()
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
