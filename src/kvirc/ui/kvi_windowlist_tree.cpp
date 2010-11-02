@@ -65,9 +65,8 @@ KviTreeWindowListItem::~KviTreeWindowListItem()
 
 void KviTreeWindowListItem::applyOptions()
 {
-	//sort the widget if necessary
-	if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName))
-		treeWidget()->sortItems(0,Qt::AscendingOrder);
+	//sort the widget
+	treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
 
 void KviTreeWindowListItem::captionChanged()
@@ -98,8 +97,7 @@ void KviTreeWindowListItem::captionChanged()
 		szText.prepend('(').append(')');
 
 	//sort the widget
-	if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName))
-		treeWidget()->sortItems(0,Qt::AscendingOrder);
+	treeWidget()->sortItems(0,Qt::AscendingOrder);
 
 	setData(0, Qt::DisplayRole, szText);
 }
@@ -146,11 +144,21 @@ QString KviTreeWindowListItem::key() const
 	// This is the sorting function for KviTreeTaskBarItem
 	// 1) window type (console, other window..) 2) unique id [to avoid bug #9] 3) windowname (for alphabetical sorting of childs)
 	QString ret;
-	if(m_pWindow->type()==KVI_WINDOW_TYPE_CONSOLE)
+	if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName))
 	{
-		ret.sprintf("%d%u",m_pWindow->type(),((KviConsole*)m_pWindow)->context() ? ((KviConsole*)m_pWindow)->context()->id() : 9999);
+		if(m_pWindow->type()==KVI_WINDOW_TYPE_CONSOLE)
+		{
+			ret.sprintf("%2d%4u",m_pWindow->type(),((KviConsole*)m_pWindow)->context() ? ((KviConsole*)m_pWindow)->context()->id() : 9999);
+		} else {
+			ret.sprintf("%2d%s",m_pWindow->type(),m_pWindow->windowName().toLower().toUtf8().data());
+		}
 	} else {
-		ret.sprintf("%d%s",m_pWindow->type(),m_pWindow->windowName().toLower().toUtf8().data());
+		if(m_pWindow->type()==KVI_WINDOW_TYPE_CONSOLE)
+		{
+			ret.sprintf("%2d%4u",m_pWindow->type(),((KviConsole*)m_pWindow)->context() ? ((KviConsole*)m_pWindow)->context()->id() : 9999);
+		} else {
+			ret.sprintf("%2d%4d",m_pWindow->type(),parent() ? parent()->indexOfChild((QTreeWidgetItem *)this) : 9999);
+		}
 	}
 	return ret;
 }

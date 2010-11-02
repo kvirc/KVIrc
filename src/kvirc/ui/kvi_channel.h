@@ -1018,6 +1018,12 @@ public:
 	* \return QByteArray
 	*/
 	QByteArray loadLogFile(const QString & szFileName, bool bGzip);
+
+	/**
+	* \brief Checks the channel synchronization time
+	* \return void
+	*/
+	void checkChannelSync();
 protected:
 	/**
 	* \brief Filters the events
@@ -1101,12 +1107,6 @@ protected:
 	* \return void
 	*/
 	void internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, KviPointerList<KviMaskEntry> * l, KviMaskEditor ** ppEd);
-
-	/**
-	* \brief Checks the channel synchronization time
-	* \return void
-	*/
-	void checkChannelSync();
 
 	/**
 	* \brief Splits the channel view into two views

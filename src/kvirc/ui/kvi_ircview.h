@@ -150,7 +150,7 @@ public:
 	void enableDnd(bool bEnable);
 	bool haveUnreadedMessages() { return m_bHaveUnreadedMessages; };
 	bool haveUnreadedHighlightedMessages() { return m_bHaveUnreadedHighlightedMessages; };
-	enum AppendTextFlags { NoRepaint = 1, NoTimestamp = 2, SetLineMark = 4 };
+	enum AppendTextFlags { NoRepaint = 1, NoTimestamp = 2, SetLineMark = 4, TriggersNotification = 8 };
 	void appendText(int msg_type,const kvi_wchar_t *data_ptr,int iFlags = 0);
 	void clearLineMark(bool bRepaint=false);
 	bool hasLineMark(){ return m_uLineMarkLineIndex != KVI_IRCVIEW_INVALID_LINE_MARK_INDEX; };

@@ -738,6 +738,9 @@ void KviStatusBarUpdateIndicator::responseReceived(const QString & szResponse)
 void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer & buffer)
 {
 	// Got data
+	if(!buffer.data() || buffer.size()<=0)
+		return;
+
 	KviStr szData((const char *)buffer.data(),buffer.size());
 
 	// The version returned by remote server is newer than ours

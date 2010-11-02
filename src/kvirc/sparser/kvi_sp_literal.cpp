@@ -872,7 +872,8 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 					query->setTarget(szNick,szUser,szHost);
 				}
 
-				if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
+				//check for query, since the user could have halt'ed its creation
+				if(query && KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
 					query->pasteLastLog();
 			}
 		}
@@ -1243,7 +1244,8 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 					query->setTarget(szNick,szUser,szHost);
 				}
 
-			if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
+			//check for query, since the user could have halt'ed its creation
+			if(query && KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
 				query->pasteLastLog();
 
 			}

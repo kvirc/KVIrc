@@ -1219,6 +1219,7 @@ void KviWindow::internalOutput(KviIrcView * pView,int msg_type,const kvi_wchar_t
 	{
 		if((this != g_pActiveWindow) || (!isActiveWindow()))
 		{
+			iFlags |= KviIrcView::TriggersNotification;
 			if(!pView->hasLineMark())
 			{
 				iFlags |= KviIrcView::SetLineMark;

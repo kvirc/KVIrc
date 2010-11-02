@@ -801,7 +801,7 @@ KviChangeNickAction::KviChangeNickAction(QObject * pParent)
 : KviSubmenuAction(
 	pParent,
 	QString(KVI_COREACTION_NICKNAMEMENU),
-	QString("dialog.textinput(\"Change Nickname\",\"Please enter the new nickname\",\"Cancel\",\"default=OK\"){ if($0 == 1)nick $1; }"),
+	QString("dialog.textinput(\"Change Nickname\",\"Please enter the new nickname\",\"OK\",\"Cancel\"){ if($0 == 0 && $1 != \"\")nick $1; }"),
 	__tr2qs("Change Nickname"),
 	__tr2qs("Shows a popup menu that allows quickly changing the nickname"),
 	KviActionManager::categoryIrc(),

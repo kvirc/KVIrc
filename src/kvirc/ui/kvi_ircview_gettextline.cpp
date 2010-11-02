@@ -1126,15 +1126,25 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 				m_uLineMarkLineIndex = line_ptr->uIndex;
 				iFlags &= ~SetLineMark;
 			}
-			m_bHaveUnreadedHighlightedMessages = m_bHaveUnreadedHighlightedMessages || iMsgType == KVI_OUT_HIGHLIGHT;
-			m_bHaveUnreadedMessages = m_bHaveUnreadedMessages ||
+		}
+		
+		if(iFlags & TriggersNotification)
+		{
+			if(!m_bHaveUnreadedHighlightedMessages && iMsgType == KVI_OUT_HIGHLIGHT)
+				m_bHaveUnreadedHighlightedMessages = true;
+			if(!m_bHaveUnreadedMessages && (
 				iMsgType == KVI_OUT_CHANPRIVMSG ||
 				iMsgType == KVI_OUT_CHANPRIVMSGCRYPTED ||
 				iMsgType == KVI_OUT_CHANNELNOTICE ||
 				iMsgType == KVI_OUT_CHANNELNOTICECRYPTED ||
 				iMsgType == KVI_OUT_ACTION ||
-				iMsgType == KVI_OUT_OWNPRIVMSGCRYPTED ||
-				iMsgType == KVI_OUT_HIGHLIGHT;
+				iMsgType == KVI_OUT_QUERYPRIVMSG ||
+				iMsgType == KVI_OUT_QUERYPRIVMSGCRYPTED ||
+				iMsgType == KVI_OUT_DCCCHATMSG ||
+				iMsgType == KVI_OUT_DCCCHATMSGCRYPTED ||
+				iMsgType == KVI_OUT_HIGHLIGHT
+			)) 
+				m_bHaveUnreadedMessages = true;
 		}
 	}
 }

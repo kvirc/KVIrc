@@ -246,14 +246,12 @@ namespace KviStringConversion
 		if(bOk && (i >= 0))buffer.setStyleHint((QFont::StyleHint)i);
 		i = weight.toInt(&bOk);
 		if(bOk && (i >= 0))buffer.setWeight(i);
-		if(!str.isEmpty())
-		{
-			buffer.setBold(str.contains("b"));
-			buffer.setItalic(str.contains("i"));
-			buffer.setUnderline(str.contains("u"));
-			buffer.setStrikeOut(str.contains("s"));
-			buffer.setFixedPitch(str.contains("f"));
-		}
+
+		buffer.setBold(str.contains("b"));
+		buffer.setItalic(str.contains("i"));
+		buffer.setUnderline(str.contains("u"));
+		buffer.setStrikeOut(str.contains("s"));
+		buffer.setFixedPitch(str.contains("f"));
 		return true;
 	}
 

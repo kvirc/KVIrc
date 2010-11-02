@@ -571,7 +571,7 @@ KVSO_CLASS_FUNCTION(socket,setProtocol)
 	KVSO_PARAMETERS_END(c)
 
 	m_bUdp=KviQString::equalCI(m_szHex,"udp");
-	return false;
+	return true;
 }
 
 

@@ -769,6 +769,7 @@ void KviFrame::closeEvent(QCloseEvent *e)
 		if(dockExtension())
 		{
 			e->ignore();
+			KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = isMaximized();
 			QTimer::singleShot( 0, this, SLOT(hide()) );
 		}
 		return;

@@ -1472,7 +1472,7 @@ void KviUserListView::userStats(KviUserListViewUserStats * pStats)
 
 		if(pEntry->m_pGlobalData->isIrcOp())
 			pStats->uIrcOp++;
-		
+
 		if(pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
 			pStats->uChanOwner++;
 		else {
@@ -1522,7 +1522,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 				QString szTmp;
 				QDateTime date;
 				date.setTime_t(pEntry->m_joinTime);
-				
+
 				switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 				{
 					case 0:
@@ -1535,7 +1535,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 						szTmp = date.toString(Qt::SystemLocaleDate);
 						break;
 				}
-				
+
 				szBuffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
 				szBuffer += __tr2qs("Joined on <b>%1</b>").arg(szTmp);
 				szBuffer += "</font></nobr></td></tr>";
@@ -1552,7 +1552,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 				szBuffer += __tr2qs("Quiet for <b>%1h %2m %3s</b>").arg(iHours).arg(iMins).arg(iSecs);
 				szBuffer += "</font></nobr></td></tr>";
 			}
-			
+
 			if(pEntry->m_pGlobalData->isIrcOp())
 			{
 				szBuffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
@@ -1827,9 +1827,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 				{
 					QPixmap * pIco = g_pIconManager->getBigIcon((pEntry->globalData()->gender()==KviIrcUserEntry::Male) ? "kvi_icon_male.png" : "kvi_icon_female.png");
 					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
-				}
-
-				if(pEntry->globalData()->isBot())
+				} else if(pEntry->globalData()->isBot())
 				{
 					QPixmap * pIco = g_pIconManager->getBigIcon("kvi_icon_bot.png");
 					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
