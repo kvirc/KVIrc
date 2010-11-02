@@ -718,12 +718,12 @@ void KviStatusBarUpdateIndicator::checkVersion()
 {
 	m_bCheckDone = true;
 	QString szUrl,szFileName;
-	
+
 	if(m_bUpdateRevision)
 		szUrl = "http://kvirc.net/checkversion.php?svn=1";
 	else
 		szUrl = "http://kvirc.net/checkversion.php";
-	
+
 	KviUrl url(szUrl);
 
 	m_pHttpRequest = new KviHttpRequest();
@@ -761,9 +761,12 @@ void KviStatusBarUpdateIndicator::responseReceived(const QString & szResponse)
 void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer & buffer)
 {
 	// Got data
+	if(!buffer.data() || buffer.size()<=0)
+		return;
+
 	KviStr szData((const char *)buffer.data(),buffer.size());
 	bool bRemoteNew = false;
-	
+
 	if(m_bUpdateRevision)
 	{
 		if(szData.toUInt() > KviBuildInfo::buildRevision().toUInt())
@@ -772,7 +775,7 @@ void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer & buffe
 		if(KviMiscUtils::compareVersions(szData.ptr(),KVI_VERSION) < 0)
 			bRemoteNew = true;
 	}
-	
+
 	if(bRemoteNew)
 	{
 		m_szNewVersion = QString(szData.ptr());
@@ -796,7 +799,7 @@ void KviStatusBarUpdateIndicator::getNewVersion()
 {
 	// Set build platform
 	QString szUrl;
-	
+
 	if(m_bUpdateRevision)
 	{
 		szUrl = "https://svn.kvirc.de/kvirc/changeset/";
