@@ -157,15 +157,15 @@ KviSetupWizard::KviSetupWizard()
 	m_pWelcome = new KviSetupPage(this);
 
 	// here we go...
-	QString szText  = __tr2qs("<p>" \
-			"<h2>Welcome :)</h2>" \
-			"This is your first time running this version of KVIrc.<br>" \
-			"This wizard will guide you through the few steps " \
-			"required to complete the setup.<br><br>" \
-			"If you had a previous version of KVIrc installed, no worries. You will " \
-			"have a chance to preserve the old configuration." \
-			"</p>" \
-			"<p>Click \"<b>Next</b>\" to proceed.</p>");
+	QString szText = __tr2qs("<p>" \
+		"<h2>Welcome :)</h2>" \
+		"This is your first time running this version of KVIrc.<br>" \
+		"This wizard will guide you through the few steps " \
+		"required to complete the setup.<br><br>" \
+		"If you had a previous version of KVIrc installed, no worries. You will " \
+		"have a chance to preserve the old configuration." \
+		"</p>" \
+		"<p>Click \"<b>Next</b>\" to proceed.</p>");
 
 	m_pWelcome->m_pTextLabel->setText(szText);
 
@@ -218,8 +218,8 @@ KviSetupWizard::KviSetupWizard()
 	m_pDirectory->m_pTextLabel->setText(__tr2qs("<p>Please choose a folder for " \
 		"KVIrc to store its settings and other data, and another for downloaded files. " \
 		"Make sure that you have permission to write to both folders.<br><br>" \
-		"The suggested locations are fine in most cases, so if you don't know what " \
-		"is this about, just click \"<b>Next</b>\".<br><br>" \
+		"The suggested locations are fine in most cases. If you don't know what " \
+		"this is about, just click \"<b>Next</b>\".<br><br>" \
 		"If you had a previous version of KVIrc installed, you can choose " \
 		"the existing directory for the settings, and your configuration " \
 		"will be preserved." \
