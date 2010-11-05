@@ -345,9 +345,9 @@ void KviIrcConnection::linkEstabilished()
 
 		m_pStateData->setInsideInitialCapLs(true);
 		m_pStateData->setIgnoreOneYouHaveNotRegisteredError(true);
-		
+
 		// FIXME: The PING method does NOT work with bouncers. We need a timeout here.
-		
+
 		sendFmtData("CAP LS\r\nPING :%Q",&(target()->server()->hostName()));
 	} else {
 		loginToIrcServer();
@@ -362,7 +362,7 @@ void KviIrcConnection::handleInitialCapLs()
 	m_pStateData->setInsideInitialCapLs(false);
 
 	// STARTTLS support: this has to be checked first because it could imply
-	// a full cap renegotiation 
+	// a full cap renegotiation
 #ifdef COMPILE_SSL_SUPPORT
 	if(
 		KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable) &&
@@ -411,7 +411,7 @@ void KviIrcConnection::handleInitialCapAck()
 		return; // We shouldn't be here
 
 	m_pStateData->setInsideInitialCapReq(false);
-	
+
 	bool bUsed=false;
 
 	//SASL
@@ -620,7 +620,7 @@ KviChannel * KviIrcConnection::createChannel(const QString & szName)
 	} else {
 		c = new KviChannel(m_pConsole->frame(),m_pConsole,szName);
 		m_pConsole->frame()->addWindow(c,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels));
-		
+
 		if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin))
 			c->pasteLastLog();
 	}
@@ -758,14 +758,14 @@ bool KviIrcConnection::sendFmtData(const char * pcFmt, ...)
 			m_pConsole->outputNoFmt(KVI_OUT_SOCKETWARNING,__tr2qs("[LINK WARNING]: Socket message truncated to 512 bytes."));
 	}
 
-	QString szMsg = QString::fromAscii((const char *)(pData->data()), iLen-2);
+	QString szMsg = QString::fromLatin1((const char *)(pData->data()), iLen-2);
 
 	// notify the monitors
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
 		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
 		{
-			if(m->outgoingMessage(szMsg.toAscii().data()))
+			if(m->outgoingMessage(szMsg.toLatin1().data()))
 				return true;
 		}
 	}
@@ -1280,7 +1280,7 @@ void KviIrcConnection::loginToIrcServer()
 	}
 
 	unsigned int iGenderAvatarTag=0;
-	
+
 	if(KVI_OPTION_BOOL(KviOption_boolPrependGenderInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).isEmpty())
 	{
 		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",Qt::CaseInsensitive))
@@ -1421,8 +1421,8 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 	// Well.. we should already have stopped ignoring the errors as we should have received
 	// the one we expected (because of the PING after CAP LS). Moreover the server shouldn't
 	// be sending these messages after the login has been completed.
-	// ...but to be on the safe side we just disable the special handling here. 
-	m_pStateData->setIgnoreOneYouHaveNotRegisteredError(false); 
+	// ...but to be on the safe side we just disable the special handling here.
+	m_pStateData->setIgnoreOneYouHaveNotRegisteredError(false);
 
 	context()->loginComplete();
 
