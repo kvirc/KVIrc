@@ -81,7 +81,7 @@ void KviDccVoiceNullCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
 {
 	if(stream->size() < 1)return;
 	signal->append(stream->data(),stream->size());
-	
+
 	stream->resize(0);
 }
 
@@ -144,7 +144,7 @@ KviDccVideoSJpegCodec::~KviDccVideoSJpegCodec()
 
 void KviDccVideoSJpegCodec::encodeVideo(KviDataBuffer * videoSignal,KviDataBuffer * stream)
 {
-	
+
 	if(videoSignal->size() < 1) return;
 
 	QImage img(videoSignal->data(), 320, 240, 1280, QImage::Format_ARGB32);
@@ -191,7 +191,7 @@ void KviDccVideoSJpegCodec::decode(KviDataBuffer * stream,KviDataBuffer * videoS
 	int txtEnd = stream->find(irct_magic_end, 9);
 
 	int jpgStart = stream->find(jpg_magic_init, 4);
-		
+
 	if(txtStart!=-1 && txtEnd !=-1 && txtStart<jpgStart)
 	{
 		qDebug("a txtStart %d txtEnd %d",txtStart,txtEnd);
@@ -208,6 +208,8 @@ void KviDccVideoSJpegCodec::decode(KviDataBuffer * stream,KviDataBuffer * videoS
 		stream->remove(len+9);
 	}
 
+	if(stream->size() < 1)return;
+
 	jpgStart = stream->find(jpg_magic_init, 4);
 	int jpgEnd = stream->find(jpg_magic_end, 2);
 
@@ -216,9 +218,11 @@ void KviDccVideoSJpegCodec::decode(KviDataBuffer * stream,KviDataBuffer * videoS
 // 		qDebug("jpgStart %d jpgEnd %d",jpgStart,jpgEnd);
 		QImage img;
 		//remove junk before jpeg start
-		stream->remove(jpgStart);
+		if(jpgStart > 0)
+			stream->remove(jpgStart);
+
 		int len = jpgEnd - jpgStart + 1;
-		
+
 		img.loadFromData(stream->data(), stream->size());
 		if(!img.isNull())
 		{

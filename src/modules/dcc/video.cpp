@@ -301,6 +301,24 @@ bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool 
 	return true;
 }
 
+void KviDccVideoThread::restartRecording(int iDevice, int iInput, int)
+{
+#ifndef COMPILE_DISABLE_DCC_VIDEO
+	m_bRecording=false;
+	if(!g_pVideoDevicePool)
+		g_pVideoDevicePool = Kopete::AV::VideoDevicePool::self();
+
+	g_pVideoDevicePool->stopCapturing();
+	g_pVideoDevicePool->open(iDevice);
+	g_pVideoDevicePool->setSize(320, 240);
+	if(iInput >= 0)
+		g_pVideoDevicePool->selectInput(iInput);
+	g_pVideoDevicePool->startCapturing();
+
+	m_bRecording=true;
+#endif
+}
+
 void KviDccVideoThread::startRecording()
 {
 #ifndef COMPILE_DISABLE_DCC_VIDEO
@@ -482,6 +500,10 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	connect(m_pMarshal,SIGNAL(error(int)),this,SLOT(handleMarshalError(int)));
 	connect(m_pMarshal,SIGNAL(connected()),this,SLOT(connected()));
 	connect(m_pMarshal,SIGNAL(inProgress()),this,SLOT(connectionInProgress()));
+
+	connect(m_pCDevices, SIGNAL(currentIndexChanged(int)), this, SLOT(videoInputChanged(int)));
+	connect(m_pCInputs, SIGNAL(currentIndexChanged(int)), this, SLOT(videoInputChanged(int)));
+	connect(m_pCStandards, SIGNAL(currentIndexChanged(int)), this, SLOT(videoInputChanged(int)));
 
 	startConnection();
 }
@@ -995,6 +1017,12 @@ void KviDccVideo::deviceUnregistered(const QString & )
 	g_pVideoDevicePool->fillInputQComboBox(m_pCInputs);
 	g_pVideoDevicePool->fillStandardQComboBox(m_pCStandards);
 #endif
+}
+
+void KviDccVideo::videoInputChanged(int )
+{
+	if(m_pSlaveThread)
+		m_pSlaveThread->restartRecording(m_pCDevices->currentIndex(), m_pCInputs->currentIndex(), m_pCStandards->currentIndex());
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

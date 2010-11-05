@@ -89,6 +89,7 @@ protected:
 	bool videoStep();
 	bool textStep();
 	void startRecording();
+	void restartRecording(int iDevice, int iInput, int iStandard);
 	void stopRecording();
 	void startPlaying();
 	void stopPlaying();
@@ -110,17 +111,17 @@ protected:
 	KviTalHBox             * m_pButtonBox;
 	KviTalHBox             * m_pButtonContainer;
 
-	QLabel *m_pInVideoLabel;
-	QLabel *m_pOutVideoLabel;
-	QComboBox *m_pCDevices;
-	QComboBox *m_pCInputs;
-	QComboBox *m_pCStandards;
-	QGridLayout *m_pLayout;
-	QTimer m_Timer;
-	QLabel * m_pVideoLabel[2];
+	QLabel                 * m_pInVideoLabel;
+	QLabel                 * m_pOutVideoLabel;
+	QComboBox              * m_pCDevices;
+	QComboBox              * m_pCInputs;
+	QComboBox              * m_pCStandards;
+	QGridLayout            * m_pLayout;
+	QTimer                   m_Timer;
+	QLabel                 * m_pVideoLabel[2];
 	QString                * m_pszTarget;
 	KviDccVideoThread      * m_pSlaveThread;
-	QByteArray m_tmpTextDataOut;
+	QByteArray               m_tmpTextDataOut;
 	QString                  m_szLocalNick;
 protected:
 	virtual void triggerCreationEvents();
@@ -145,6 +146,7 @@ protected slots:
 	void deviceRegistered(const QString &);
 	void deviceUnregistered(const QString &);
 	void textViewRightClicked();
+	void videoInputChanged(int );
 };
 
 
