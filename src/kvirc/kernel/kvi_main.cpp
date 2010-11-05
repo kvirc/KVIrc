@@ -437,7 +437,7 @@ int main(int argc, char ** argv)
 			delete pTheApp;
 			return 0;
 		}
-		
+
 		if(a.bExecuteCommandAndClose)
 		{
 			delete pTheApp;

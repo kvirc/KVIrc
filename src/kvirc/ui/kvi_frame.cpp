@@ -236,6 +236,8 @@ KviFrame::~KviFrame()
 	delete m_pWinList;
 
 	g_pFrame = 0;
+
+	g_pApp->quit();
 }
 
 void KviFrame::registerModuleExtensionToolBar(KviMexToolBar * t)

@@ -83,6 +83,7 @@ public:
 	bool readOnly(){ return m_bReadOnly; };
 	void setReadOnly(bool bReadOnly){ m_bReadOnly = bReadOnly; };
 	bool dirty(){ return m_bDirty; };
+	bool ensureWritable();
 	//
 	// This sets the save path for the config file
 	// In this way you can load a system-wide read-only config file

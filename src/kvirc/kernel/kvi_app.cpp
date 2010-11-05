@@ -1536,7 +1536,6 @@ void KviApp::destroyFrame()
 	if(g_pFrame)
 		g_pFrame->deleteLater();
 	g_pActiveWindow = 0;
-	quit();
 }
 
 bool KviApp::connectionExists(KviIrcConnection * pConn)

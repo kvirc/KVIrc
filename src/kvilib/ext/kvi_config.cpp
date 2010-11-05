@@ -435,6 +435,18 @@ bool KviConfig::load()
 
 */
 
+bool KviConfig::ensureWritable()
+{
+	if(m_bReadOnly) return false;
+
+	KviFile f(m_szFileName);
+	if(!f.open(QFile::WriteOnly | QFile::Truncate)) return false;
+	if(f.write("# KVIrc configuration file\n",27) != 27) return false;
+	if(!f.flush()) return false;
+	f.close();
+	return true;
+}
+
 bool KviConfig::save()
 {
 	static unsigned char encode_table[256]=
