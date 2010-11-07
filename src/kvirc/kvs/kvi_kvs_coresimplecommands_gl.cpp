@@ -152,9 +152,6 @@ namespace KviKvsCoreSimpleCommands
 		if(KVSCSC_pSwitches->find('m',"mdi"))szSwitches.append("-m ");
 		if(KVSCSC_pSwitches->find('n',"new"))szSwitches.append("-n ");
 
-		if(szParams[0]==QChar('$'))
-			szParams.prepend('\\');
-
 		if(szParams.endsWith("()"))
 			szParams.chop(2);
 

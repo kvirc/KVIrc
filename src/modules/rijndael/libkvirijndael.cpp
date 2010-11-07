@@ -430,6 +430,8 @@
 			szIn.cutLeft(5);
 		else if(kvi_strEqualCSN(inBuffer,"+OK ",4))
 			szIn.cutLeft(4);
+		else if(kvi_strEqualCSN(inBuffer,"OK ",3)) // some servers strip out the +
+			szIn.cutLeft(3);
 		else {
 			plainText = szIn;
 			return KviCryptEngine::DecryptOkWasPlainText;
