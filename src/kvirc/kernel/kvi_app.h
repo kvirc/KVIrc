@@ -163,8 +163,8 @@ public:
 
 	static int getGloballyUniqueId(); // returns an unique integer identifier across the application
 
-	inline bool firstTimeRun() const { return m_bFirstTimeRun; };
-	inline bool closingDown() const { return m_bClosingDown; };
+	bool firstTimeRun() const { return m_bFirstTimeRun; };
+	bool kviClosingDown() const { return m_bClosingDown; };
 
 	inline bool supportsCompositing()
 	{

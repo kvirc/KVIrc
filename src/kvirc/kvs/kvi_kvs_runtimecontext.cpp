@@ -73,7 +73,7 @@ void KviKvsRunTimeContext::enterBlockingSection()
 
 bool KviKvsRunTimeContext::leaveBlockingSection()
 {
-	if(g_pApp->closingDown())return false;            // application quitting
+	if(g_pApp->kviClosingDown())return false;            // application quitting
 	if(!g_pApp->windowExists(m_pWindow))return false; // window lost
 	return true;
 }

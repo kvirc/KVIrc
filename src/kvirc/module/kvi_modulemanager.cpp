@@ -258,7 +258,7 @@ bool KviModuleManager::loadModule(const QString &modName)
 		}
 	}
 	// be verbose if needed....just make sure that we're not shutting down...
-	if(_OUTPUT_VERBOSE && !g_pApp->closingDown())
+	if(_OUTPUT_VERBOSE && !g_pApp->kviClosingDown())
 	{
 		if(g_pFrame)g_pFrame->firstConsole()->output(KVI_OUT_VERBOSE,
 			__tr2qs("Loaded module '%s' (%s)"),modName.toUtf8().data(),szName.toUtf8().data());
@@ -295,7 +295,7 @@ bool KviModuleManager::unloadModule(KviModule * module)
 		if(m_pCleanupTimer->isActive())m_pCleanupTimer->stop();
 	}
 
-	if(_OUTPUT_VERBOSE && !g_pApp->closingDown())
+	if(_OUTPUT_VERBOSE && !g_pApp->kviClosingDown())
 	{
 		if(g_pFrame)g_pFrame->firstConsole()->output(KVI_OUT_VERBOSE,
 			__tr2qs("Unloaded module '%s'"),szModName.toUtf8().data());

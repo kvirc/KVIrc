@@ -539,7 +539,7 @@ void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds
 	int * pRowrecall = bHorizontal ? rowrecall : colrecall;
 
 	ensureNoMaximized();
-	if (g_pApp->closingDown()) return;
+	if (g_pApp->kviClosingDown()) return;
 
 	KviMdiChild * lpTop = topChild();
 	if (!lpTop) return;
