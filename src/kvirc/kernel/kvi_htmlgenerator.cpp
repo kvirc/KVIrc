@@ -34,10 +34,10 @@
 
 namespace KviHtmlGenerator
 {
-	
+
 	QString convertToHtml(const QString &szText)
 	{
-		QString szResult;
+		QString szResult="<qt>";
 		bool bCurBold      = false;
 		bool bCurUnderline = false;
 		bool bIgnoreIcons = false;
@@ -297,6 +297,7 @@ namespace KviHtmlGenerator
 				break;
 			}
 		}
+		szResult.append("</qt>");
 		//qDebug("%s",szResult.toUtf8().data());
 		return szResult;
 	}

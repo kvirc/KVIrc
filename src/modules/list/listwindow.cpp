@@ -43,7 +43,7 @@
 #include "kvi_msgbox.h"
 #include "kvi_fileextensions.h"
 #include "kvi_tal_hbox.h"
-#include "kvi_tal_tooltip.h"
+#include "kvi_htmlgenerator.h"
 #include "kvi_themedlineedit.h"
 
 #include <QTimer>
@@ -52,6 +52,7 @@
 #include <QToolTip>
 #include <QDateTime>
 #include <QByteArray>
+#include <QTextDocument> // for Qt::escape
 
 extern KviPointerList<KviListWindow> * g_pListWindowList;
 
@@ -70,6 +71,9 @@ KviChannelTreeWidgetItemData::~KviChannelTreeWidgetItemData()
 KviChannelTreeWidgetItem::KviChannelTreeWidgetItem(QTreeWidget * v,KviChannelTreeWidgetItemData * pData)
 : QTreeWidgetItem(v), m_pData(pData)
 {
+	setToolTip(0, m_pData->m_szChan);
+	setToolTip(1, m_pData->m_szUsers);
+	setToolTip(2, KviHtmlGenerator::convertToHtml(Qt::escape(m_pData->m_szTopic)));
 }
 
 KviChannelTreeWidgetItem::~KviChannelTreeWidgetItem()
@@ -458,7 +462,7 @@ void KviListWindow::startOfList()
 void KviListWindow::liveSearch(const QString & szText)
 {
 	QRegExp res(szText,Qt::CaseInsensitive,QRegExp::Wildcard);
-	
+
 	KviChannelTreeWidgetItem * pItem=0;
 	for(int i=0; i<m_pTreeWidget->topLevelItemCount(); i++)
 	{
