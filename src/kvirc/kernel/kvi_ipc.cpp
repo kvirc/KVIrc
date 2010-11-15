@@ -191,6 +191,7 @@
 		setObjectName("kvirc4_ipc_sentinel");
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		setWindowTitle("kvirc4_ipc_sentinel");
+		setWindowFlags(Qt::FramelessWindowHint | Qt::Tool);
 #else
 	#ifdef COMPILE_X11_SUPPORT
 		kvi_ipcLoadAtoms();
@@ -204,6 +205,11 @@
 
 		move(-50,-50);
 		resize(1,1);
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		// we need to show the window once otherwise it will never get "realized"
+		// and we will not be able to find it via FindWindow()
+		show();
+#endif
 		hide();
 
 	}
