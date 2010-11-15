@@ -56,7 +56,7 @@
 		~KviIpcSentinel();
 	protected: // protected members
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		virtual bool winEvent(MSG * msg);
+		virtual bool winEvent(MSG * msg, long * result);
 #else
 	#ifdef COMPILE_X11_SUPPORT
 		virtual bool x11Event(XEvent *e);

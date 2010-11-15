@@ -132,6 +132,7 @@
 	bool kvi_sendIpcMessage(const char * message)
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+
 		HWND hSentinel = kvi_win_findIpcSentinel();
 		if(hSentinel != NULL)
 		{
@@ -140,12 +141,15 @@
 			cpd.dwData = KVI_WINDOWS_IPC_MESSAGE;
 			cpd.lpData = (void *)message;
 			DWORD dwResult;
-			qDebug(message);
+			//qDebug(message);
 #if defined(COMPILE_ON_WINDOWS) && !(defined(MINGW))
-			::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,(PDWORD_PTR)&dwResult);
+			if(!::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,(PDWORD_PTR)&dwResult))
 #else
-			::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,&dwResult);
+			if(!::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,&dwResult))
 #endif
+			{
+				qDebug("Failed to send IPC message: error code 0x%x",::GetLastError());
+			}
 			return true;
 		}
 #else
@@ -220,7 +224,7 @@
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
-	bool KviIpcSentinel::winEvent(MSG * msg)
+	bool KviIpcSentinel::winEvent(MSG * msg, long * result)
 	{
 		if(msg->message == WM_COPYDATA)
 		{
@@ -230,7 +234,10 @@
 				if(cpd->dwData == KVI_WINDOWS_IPC_MESSAGE)
 				{
 					qDebug((char *)(cpd->lpData));
-					if(g_pApp)g_pApp->ipcMessage((char *)(cpd->lpData));
+					if(g_pApp)
+						g_pApp->ipcMessage((char *)(cpd->lpData));
+					if(result)
+						*result = 0;
 					return true;
 				}
 			}
