@@ -42,6 +42,12 @@
 #include <QDragEnterEvent>
 #include <QMimeData>
 
+/* NOTICE: this class contains some bad hacks:
+ * - the qt way to delete/remove a widget is not fully cross-os compatible, so we had to introduce different ways to do it
+ *   (this is mostly a qt problem, since they don't consider removing items on the fly an option)
+ * - we mix up handling widgets and their corrispective actions (when qt will support drag&drop editing, we'll be able to clean this)
+ */
+
 KviCustomToolBar::KviCustomToolBar(KviCustomToolBarDescriptor * pDesc, const QString & szLabel, Qt::ToolBarArea type, bool bNewLine, const char * pcName)
 : KviToolBar(szLabel,type,bNewLine,pcName)
 {
@@ -71,7 +77,7 @@ KviCustomToolBar::~KviCustomToolBar()
 			KviActionManager::instance()->setCurrentToolBar(0);
 	}
 
-	if(m_pFilteredChildren) 
+	if(m_pFilteredChildren)
 		delete m_pFilteredChildren;
 }
 
@@ -103,8 +109,6 @@ void KviCustomToolBar::filterChild(QObject * o)
 	bool * pBool = new bool(((QWidget *)o)->isEnabled());
 	if(m_pFilteredChildren)
 		m_pFilteredChildren->insert(o,pBool);
-	if(!*pBool)
-		((QWidget *)o)->setEnabled(true);
 	o->installEventFilter(this);
 	connect(o,SIGNAL(destroyed()),this,SLOT(filteredChildDestroyed()));
 }
@@ -116,8 +120,6 @@ void KviCustomToolBar::unfilterChild(QObject * o)
 		bool * pBool = m_pFilteredChildren->find(o);
 		if(pBool)
 		{
-			if(!*pBool)
-				((QWidget *)o)->setEnabled(false);
 			o->removeEventFilter(this);
 			disconnect(o,SIGNAL(destroyed()),this,SLOT(filteredChildDestroyed()));
 		}
@@ -150,8 +152,6 @@ void KviCustomToolBar::endCustomize()
 			unfilterChild(*it);
 	}
 
-	// FIXME: We SHOULD MAKE SURE that the children are re-enabled...
-	// this could be done by calling setEnabled(isEnabled()) on each action ?
 	if(m_pFilteredChildren)
 	{
 		delete m_pFilteredChildren;
@@ -208,7 +208,7 @@ void KviCustomToolBar::childEvent(QChildEvent * e)
 done:
 	KviToolBar::childEvent(e);
 }
- 
+
 void KviCustomToolBar::dragEnterEvent(QDragEnterEvent * e)
 {
 	if(!KviActionManager::customizingToolBars())
@@ -255,6 +255,7 @@ void KviCustomToolBar::dragMoveEvent(QDragMoveEvent *e)
 		return;
 
 	QAction * pAction=0;
+	bool bWasEnabled = m_pDraggedChild->isEnabled();
 	removeAction(pMyOwnAction);
 	if(pWidgetToMove)
 	{
@@ -273,6 +274,7 @@ void KviCustomToolBar::dragMoveEvent(QDragMoveEvent *e)
 	if(!bDone)
 		pAction = addWidget(m_pDraggedChild);
 	pAction->setVisible(true);
+	pAction->setEnabled(bWasEnabled);
 
 	QEvent ev(QEvent::LayoutRequest);
 	QApplication::sendEvent(this,&ev);
@@ -288,7 +290,7 @@ void KviCustomToolBar::dragLeaveEvent(QDragLeaveEvent *)
 		QAction* widgetAction = actionForWidget(m_pDraggedChild);
 		if(widgetAction)
 			widgetAction->setVisible(false);
-			
+
 	/*
 	 * This is quite broken at least in qt4.6:
 	 * Windows: we have to delete the item, or it will stay on the toolbar creating duplicates (ticket #915)

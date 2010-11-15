@@ -62,14 +62,14 @@ protected:
 	QWidget * widgetAt(int iIndex);
 	QAction * actionForWidget(QWidget * pWidget);
 	void drag(QWidget * pChild, const QPoint & pnt);
-	void filterChild(QObject * o); 
-	void unfilterChild(QObject * o); 
+	void filterChild(QObject * o);
+	void unfilterChild(QObject * o);
 	virtual void paintEvent(QPaintEvent * e);
 	void syncDescriptor();
 protected slots:
 	void beginCustomize();
 	void endCustomize();
-	void filteredChildDestroyed(); 
+	void filteredChildDestroyed();
 };
 
 class KviCustomToolBarSeparator : public QWidget
