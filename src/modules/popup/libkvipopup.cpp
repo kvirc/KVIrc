@@ -275,7 +275,7 @@ static bool popup_kvs_cmd_addEpilogue(KviKvsModuleCallbackCommandCall * c)
 		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
 		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
 		result is 0, the item is not shown in the physical popup.[br]
-		If this item gets hovered, the neted popup <external_popup> will be shown.
+		If this item is hovered over, the nested popup <external_popup> will be shown.
 	@seealso:
 		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.addSubPopup[/cmd]
 */
@@ -369,7 +369,7 @@ static bool popup_kvs_cmd_addLabel(KviKvsModuleCommandCall * c)
 		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
 		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
 		result is 0, the item is not shown in the physical popup.[br]
-		If this item gets hovered, the netsted popup will be shown.
+		If this item is hovered over, the nested popup will be shown.
 	@seealso:
 		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.addExtPopup[/cmd]
 */
@@ -407,7 +407,7 @@ static bool popup_kvs_cmd_addSubPopup(KviKvsModuleCommandCall * c)
 		!sw: -q | --quiet
 		Run quietly: don't print warning and errors
 	@description:
-		Adds a separator (tipically drawn as a straight line) to an already existing popup or
+		Adds a separator (typically drawn as a straight line) to an already existing popup or
 		nested popup named <popupname>. If you want to add an item to a nested popup, use the form 
 		"popup.item". The separator is not selectable or clickable.[br]
 		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
@@ -523,7 +523,7 @@ static bool popup_kvs_cmd_create(KviKvsModuleCommandCall * c)
 		!sw: -q | --quiet
 		Run quietly: don't print warning and errors
 	@description:
-		Destroies a popup named <popupname>.
+		Destroys a popup named <popupname>.
 		To destroy a nested popup, use [cmd]popup.delItem[/cmd] instead.
 	@seealso:
 		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.create[/cmd], [fnc]popup.exists[/fnc]

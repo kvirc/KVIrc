@@ -656,8 +656,8 @@ static bool config_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 		All the key=value pairs in the section are destroyed.[br]
 		<id> must be a a valid config file identifier returned by [fnc]$config.open[/fnc].[br]
 		If the <id> does not match any open config file, a warning is printed.
-		If <section_name> was also the current section, the current section is set to the default one.[br]
-		No warning is printed if the section wasn't existing.[br]
+		If <section_name> is also the current section, the default section is made current.[br]
+		No warning is printed if the section does not exist.[br]
 	@seealso:
 		[module:config]Config module documentation[/module]
 */

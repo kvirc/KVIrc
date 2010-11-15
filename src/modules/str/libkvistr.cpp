@@ -684,7 +684,7 @@ static bool str_kvs_fnc_right(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<string> $str.mid(<data:string>,<startidx:int>,<nchars:int>)
 	@description:
-		This function returns a substring of the first string parameter wich is the
+		This function returns a substring of the first string parameter which is the
 		string starting at the (numeric) index given with startidx and counting nchars
 		forward. If <nchars> is not given or is less than 1, all the characters until
 		the end of the string will be returned.
