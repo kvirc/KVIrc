@@ -191,7 +191,7 @@
 		setObjectName("kvirc4_ipc_sentinel");
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		setWindowTitle("kvirc4_ipc_sentinel");
-		setWindowFlags(Qt::FramelessWindowHint | Qt::Tool);
+		setWindowFlags(Qt::FramelessWindowHint);
 #else
 	#ifdef COMPILE_X11_SUPPORT
 		kvi_ipcLoadAtoms();
