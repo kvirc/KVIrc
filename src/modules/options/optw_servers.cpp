@@ -1336,7 +1336,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	tb->setMenu(m_pRecentPopup);
 	tb->setAutoRaise(true);
 	tb->setPopupMode(QToolButton::InstantPopup);
-	
+
 	KviTalToolTip::add(tb,__tr2qs_ctx("<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>","options"));
 
 
@@ -1346,7 +1346,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 		m_pConnectCurrent = new QPushButton(__tr2qs_ctx("Connect &Now","options"),this);
 		addWidgetToLayout(m_pConnectCurrent,0,2,1,2);
 		connect(m_pConnectCurrent,SIGNAL(clicked()),this,SLOT(connectCurrentClicked()));
-	
+
 		QPalette pal(QColor(0,0,128));
 
 		pal.setColor(QPalette::Active,QPalette::Button,QColor(0,0,220));
@@ -1367,14 +1367,14 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 		if(pWindowsStyle)
 			m_pConnectCurrent->setStyle(pWindowsStyle);
 #endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
-		
+
 		m_pConnectCurrent->setPalette(pal);
-	
+
 		QFont fnt = m_pConnectCurrent->font();
 		fnt.setPointSizeF(fnt.pointSizeF() * 1.4);
 		fnt.setBold(true);
 		m_pConnectCurrent->setFont(fnt);
-	
+
 		KviTalToolTip::add(m_pConnectCurrent,__tr2qs_ctx("<center>Hit this button to connect to the currently selected server.</center>","options"));
 
 		KviOptionsWidgetContainer * pContainer = dynamic_cast<KviOptionsWidgetContainer *>(parent);
@@ -1455,36 +1455,36 @@ void KviServerOptionsWidget::selectBestServerByUrl(const QString &szUrl)
 
 	int uCount = m_pTreeWidget->topLevelItemCount();
 	int uIdx = 0;
-	
+
 	KviServerOptionsTreeWidgetItem * pBestCandidate = NULL;
 	kvi_u32_t uBestCandidateScore = 0;
-	
+
 	while(uIdx < uCount)
 	{
 		KviServerOptionsTreeWidgetItem * pNet = static_cast<KviServerOptionsTreeWidgetItem *>(m_pTreeWidget->topLevelItem(uIdx));
-		
+
 		uIdx++;
-		
+
 		if(!pNet)
 			continue; // huh ?
-		
+
 		int uServerCount = pNet->childCount();
 		int uChildIdx = 0;
 		while(uChildIdx < uServerCount)
 		{
 			KviServerOptionsTreeWidgetItem * pServer = static_cast<KviServerOptionsTreeWidgetItem *>(pNet->child(uChildIdx));
 			uChildIdx++;
-			
+
 			if(!pServer)
 				continue; // huh ?
-			
+
 			KviServer * pServerData = pServer->serverData();
-			
+
 			if(!pServerData)
 				continue; // umphf...
 
 			kvi_u32_t uScore = 0;
-			
+
 			if(pServerData->hostName().toLower() == oParts.szHost.toLower())
 				uScore++;
 			if(pServerData->port() == oParts.iPort)
@@ -1493,7 +1493,7 @@ void KviServerOptionsWidget::selectBestServerByUrl(const QString &szUrl)
 				uScore++;
 			if(pServerData->useSSL() == oParts.bSsl)
 				uScore++;
-			
+
 			if(uScore > uBestCandidateScore)
 			{
 				uBestCandidateScore = uScore;

@@ -3580,18 +3580,24 @@ void KviOptionsInstanceManager::widgetDestroyed()
 KviOptionsWidget * KviOptionsInstanceManager::getInstance(KviOptionsWidgetInstanceEntry * e,QWidget * par)
 {
 	if(!e)return 0;
+	if(e->pWidget)
+	{
+		if(e->pWidget->parent() != par)
+		{
+			QWidget * oldPar = (QWidget *)e->pWidget->parent();
+			e->pWidget->setParent(par);
+			oldPar->deleteLater();
+			e->pWidget=0;
+		}
+	}
+
 	if(!(e->pWidget))
 	{
 		e->pWidget = e->createProc(par);
 		g_iOptionWidgetInstances++;
 		connect(e->pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
 	}
-	if(e->pWidget->parent() != par)
-	{
-		QWidget * oldPar = (QWidget *)e->pWidget->parent();
-		e->pWidget->setParent(par); //reparent(par,QPoint(0,0));
-		delete oldPar;
-	}
+
 	if(e->bIsContainer)
 	{
 		// need to create the container structure!
