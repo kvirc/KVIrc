@@ -1483,7 +1483,8 @@ void KviServerParser::parseLiteralNick(KviIrcMessage *msg)
 
 	// reset any cached smart nick color information
 	KviIrcUserEntry * pUserEntry = msg->connection()->userDataBase()->find(szNick);
-	if(pUserEntry) pUserEntry->setSmartNickColor(-1);
+	if(pUserEntry)
+		pUserEntry->setSmartNickColor(-1);
 
 	for(KviChannel * c = console->connection()->channelList()->first();c;c = console->connection()->channelList()->next())
 	{
@@ -1494,7 +1495,8 @@ void KviServerParser::parseLiteralNick(KviIrcMessage *msg)
 					&szNick,&szUser,&szHost,&szNewNick);
 			// FIXME if(bIsMe)output(YOU ARE now known as.. ?)
 		}
-		if(bIsMe)c->updateCaption();
+		if(bIsMe)
+			c->updateCaption();
 	}
 
 
@@ -1517,30 +1519,34 @@ void KviServerParser::parseLiteralNick(KviIrcMessage *msg)
 			}
 		}
 	}
+
 	KviQuery * q = console->connection()->findQuery(szNick);
+
 	// It CAN happen that szNewNick first queries us without being
 	// on any channel then he QUITS, he reconnects, he joins
 	// a channel with szNick, queries us and changes nick to szNewNick : gotcha!
 	// should merge the queries!
+
 	KviQuery * old = console->connection()->findQuery(szNewNick);
 	if(old && (old != q))
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolEnableQueryTracing) && (!_OUTPUT_QUIET))
 		{
-		old->output(KVI_OUT_QUERYTRACE,
-			__tr2qs("The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!h\r%Q\r] changed his nickname to \r!n\r%Q\r"),
-			&szNick,&szUser,&szHost,&szNewNick);
+			old->output(KVI_OUT_QUERYTRACE,
+				__tr2qs("The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!h\r%Q\r] changed his nickname to \r!n\r%Q\r"),
+				&szNick,&szUser,&szHost,&szNewNick);
 		}
+
 		if(q)
 		{
 			bool bQWasActive = (q == g_pActiveWindow);
 			if(!_OUTPUT_MUTE)
-				{
+			{
 				old->output(KVI_OUT_SYSTEMWARNING,
 						__tr2qs("The recent nickname change from \r!n\r%Q\r to \r!n\r%Q\r caused a query collision: merging output"),
 						&szNick,&szNewNick);
 			}
-				old->mergeQuery(q);
+			old->mergeQuery(q);
 			q->frame()->closeWindow(q); // deleted path
 			if(!msg->haltOutput())
 					old->output(KVI_OUT_NICK,__tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"),

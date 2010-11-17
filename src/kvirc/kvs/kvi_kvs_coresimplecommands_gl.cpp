@@ -311,17 +311,20 @@ namespace KviKvsCoreSimpleCommands
 		for(KviWindow * pWnd = pList->first(); pWnd; pWnd = pList->next())
 		{
 			// Search for the right socketspy
-			if((QString(pWnd->typeString()) == "socketspy") &&
-				(pWnd->context()->id() == pActive->context()->id()))
+			if(
+					(pWnd->type() == KVI_WINDOW_TYPE_SOCKETSPY) &&
+					(pWnd->context() == pActive->context())
+				)
 			{
 				// Ok, found... send the warning
 				pWnd->outputNoFmt(KVI_OUT_SOCKETMESSAGE,__tr2qs_ctx("The following string was injected by the user:","kvs"));
+				break;
 			}
 		}
 
 		// Send the warning to the right console
 		if(!KVSCSC_pSwitches->find('q',"quiet"))
-			pActive->console()->output(KVI_WINDOW_TYPE_SOCKETSPY,__tr2qs_ctx("The following string was injected by the user:","kvs"));
+			pActive->console()->output(KVI_WINDOW_TYPE_SOCKETSPY,__tr2qs_ctx("Injected incoming data: %1","kvs").arg(szText));
 
 		// Encode the text for the socket
 		QByteArray szT = KVSCSC_pConnection->encodeText(szText);
