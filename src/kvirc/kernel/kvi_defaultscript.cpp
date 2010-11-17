@@ -107,16 +107,14 @@ void KviDefaultScriptManager::restore(bool bSuggest)
 	// Check data
 	if(!compareVersions(szConfig,&szError))
 	{
-		QMessageBox::critical(0,__tr2qs("Restore Default Script - Error"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+		QMessageBox::warning(0,__tr2qs("Restore Default Script - Error"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return;
 	}
 
 	if(m_bNoNeedToRestore)
 	{
-		if(QMessageBox::warning(0,__tr2qs("Restore Default Script - Error"),szError,QMessageBox::Ok | QMessageBox::Cancel,QMessageBox::Cancel) == QMessageBox::Cancel)
-		{
+		if(QMessageBox::warning(0,__tr2qs("Restore Default Script - Warning"),szError,QMessageBox::Yes | QMessageBox::No,QMessageBox::Cancel) != QMessageBox::Yes)
 			return;
-		}
 	}
 
 	restoreInternal();
