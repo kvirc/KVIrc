@@ -398,8 +398,9 @@ namespace KviKvsCoreSimpleCommands
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		if(KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers))
 		{
-			ShellExecute(NULL, "open", szUrl.toLocal8Bit().data(),
-                NULL, NULL, SW_SHOWNORMAL);
+			int iRet = (int)::ShellExecute(NULL, "open", szUrl.toLocal8Bit().data(),NULL, NULL, SW_SHOWNORMAL);
+			if(iRet <= 32)
+				KVSCSC_pContext->warning(__tr2qs_ctx("The system handler for the url failed to execute: system error is %1","kvs").arg(iRet));
 		} else {
 #endif
 			if(szCommand.isEmpty())szCommand = KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand);
