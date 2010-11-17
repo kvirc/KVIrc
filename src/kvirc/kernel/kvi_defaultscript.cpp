@@ -231,12 +231,16 @@ bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszE
 	QDate cfgDate = QDate::fromString(szTmp2,"yyyy-MM-dd");
 	QDate userDate = QDate::fromString(m_szDate,"yyyy-MM-dd");
 
-	if(cfgDate == userDate)
+	if(cfgDate <= userDate)
 	{
 		m_bNoNeedToRestore = true;
 		*pszError = __tr2qs("Your default script is up to date.\nDo you want to restore it anyway?");
 		return true;
 	}
+
+
+#if 0
+	// FIXME: The checks here below fail for me all the times.. what does it mean ?
 
 	if(cfgDate < userDate)
 	{
@@ -275,6 +279,7 @@ bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszE
 	szTmp = "ToolbarVersion";
 	szTmp2 = pCfg->readEntry(szTmp);
 	CHECK(szTmp,szTmp2,m_szToolbar)
+#endif
 
 	return true;
 }
