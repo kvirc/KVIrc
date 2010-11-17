@@ -518,11 +518,12 @@ void KviOptionsDialog::treeWidgetItemSelectionChanged(QTreeWidgetItem* it, QTree
 			m_pWidgetStack->addWidget(i->m_pOptionsWidget);
 		}
 
-		int idx = m_pWidgetStack->indexOf(i->m_pOptionsWidget);
-		m_pWidgetStack->setCurrentWidget(m_pWidgetStack->widget(idx));
+		//int idx = m_pWidgetStack->indexOf(i->m_pOptionsWidget);
+		m_pWidgetStack->setCurrentWidget(i->m_pOptionsWidget);
 		m_pCategoryLabel->setText(str);
 	}
 }
+
 /*
 KviOptionsTreeWidgetItem * KviOptionsDialog::findItemByPage(KviOptionsTreeWidgetItem *it,KviOptionsWidget * pPage)
 {

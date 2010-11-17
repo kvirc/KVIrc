@@ -42,7 +42,9 @@ QString KviOptionsWidget::m_szBasicTipEnd;
 KviOptionsWidget::KviOptionsWidget(QWidget * parent,const char * name,bool)
 : QFrame(parent), KviSelectorInterface()
 {
-	setObjectName(name);
+	if(name)
+		setObjectName(name);
+	
 	if(m_szBasicTipStart.isEmpty())
 	{
 		m_szBasicTipStart = "<center><font color=\"#a0a0a0\">";
@@ -58,7 +60,7 @@ KviOptionsWidget::KviOptionsWidget(QWidget * parent,const char * name,bool)
 	m_pTabWidget = 0;
 	m_iResetFlags = 0;
 	m_iSelectors = 0;
-	m_pSelectorInterfaceList = new KviPointerList<KviSelectorInterface>;
+	m_pSelectorInterfaceList = new KviPointerList<KviSelectorInterface>();
 	m_pSelectorInterfaceList->setAutoDelete(false);
 }
 
@@ -87,7 +89,8 @@ void KviOptionsWidget::mergeTip(QWidget * w,const QString &tip)
 
 void KviOptionsWidget::createLayout()
 {
-	if(m_pLayout)delete m_pLayout;
+	if(m_pLayout)
+		delete m_pLayout;
 	m_pLayout = new QGridLayout(this);//,rows,cols,KVI_OPTIONSWIDGET_GRIDLAYOUT_BORDER,KVI_OPTIONSWIDGET_GRIDLAYOUT_SPACE);
 	m_pLayout->setMargin(3);
 	m_pLayout->setSpacing(2);
@@ -95,19 +98,74 @@ void KviOptionsWidget::createLayout()
 
 void KviOptionsWidget::createTabbedPage()
 {
+	if(m_pTabWidget)
+		return; // already created (may happen with reparenting)
 	createLayout();
 	layout()->setMargin(3);
 	layout()->setSpacing(2);
 	m_pTabWidget = new QTabWidget(this);
+	m_pTabWidget->installEventFilter(this);
 	addWidgetToLayout(m_pTabWidget,0,0,0,0);
+}
+
+
+bool KviOptionsWidget::eventFilter(QObject * watched,QEvent * e)
+{
+	// this is the tab widget
+
+	if((watched == m_pTabWidget) && (e->type() == QEvent::ChildRemoved))
+	{
+		QChildEvent * ev = static_cast<QChildEvent *>(e);
+		if(ev->child()->inherits("KviOptionsWidget"))
+		{
+			KviOptionsWidget * pWidget = static_cast<KviOptionsWidget *>(ev->child());
+			Q_ASSERT(pWidget);
+			QObject::disconnect(pWidget,SIGNAL(destroyed()),this,SLOT(childOptionsWidgetDestroyed()));
+			m_pSelectorInterfaceList->removeRef(pWidget);
+			return false; // continue processing
+		}
+	}
+
+	return QFrame::eventFilter(watched,e);
+}
+
+void KviOptionsWidget::childEvent(QChildEvent * e)
+{
+	// handle reparents of child widgets
+	if(e->type() == QEvent::ChildRemoved)
+	{
+		if(e->child()->inherits("KviOptionsWidget"))
+		{
+			KviOptionsWidget * pWidget = static_cast<KviOptionsWidget *>(e->child());
+			Q_ASSERT(pWidget);
+			QObject::disconnect(pWidget,SIGNAL(destroyed()),this,SLOT(childOptionsWidgetDestroyed()));
+			m_pSelectorInterfaceList->removeRef(pWidget);
+		}
+	}
+
+	QFrame::childEvent(e);
+}
+
+void KviOptionsWidget::childOptionsWidgetDestroyed()
+{
+	// dynamic_cast<KviOptionsWidget> doesn't work here since the signal is emitted from QObject...
+	KviOptionsWidget * pWidget = static_cast<KviOptionsWidget *>(sender());
+	Q_ASSERT(pWidget);
+	m_pSelectorInterfaceList->removeRef(pWidget);
 }
 
 void KviOptionsWidget::addOptionsWidget(const QString &szText,const QIcon &iconSet,KviOptionsWidget * pWidget)
 {
+	if(m_pSelectorInterfaceList->findRef(pWidget) >= 0)
+		return; // already there ?
+
 	if(pWidget->layout())
 		pWidget->layout()->setMargin(3);
-	m_pTabWidget->addTab(pWidget,iconSet,szText);
+
 	m_pSelectorInterfaceList->append(pWidget);
+	QObject::connect(pWidget,SIGNAL(destroyed()),this,SLOT(childOptionsWidgetDestroyed()));
+
+	m_pTabWidget->addTab(pWidget,iconSet,szText);
 }
 
 

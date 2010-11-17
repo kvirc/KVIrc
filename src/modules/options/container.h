@@ -47,10 +47,12 @@ public:
 protected:
 	virtual void closeEvent(QCloseEvent *e);
 	virtual void showEvent(QShowEvent *e);
+	virtual void childEvent(QChildEvent * e);
 	virtual void reject();
 protected slots:
 	void okClicked();
 	void cancelClicked();
+	void optionsWidgetDestroyed();
 };
 
 #endif //_CONTAINER_H_

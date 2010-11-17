@@ -47,14 +47,17 @@ KviOptionsWidgetContainer::KviOptionsWidgetContainer(QWidget * par,bool bModal)
 	m_pLayout = new QGridLayout(this);
 
 	setObjectName("container");
-	m_pOptionsWidget = 0;
+
+	m_pOptionsWidget = NULL;
+
 	if(bModal)
 		setWindowModality(Qt::ApplicationModal);
 }
 
 KviOptionsWidgetContainer::~KviOptionsWidgetContainer()
 {
-	if(m_pOptionsWidget)delete m_pOptionsWidget;
+	if(m_pOptionsWidget)
+		delete m_pOptionsWidget;
 }
 
 void KviOptionsWidgetContainer::setLeftCornerWidget(QWidget * pWidget)
@@ -64,9 +67,33 @@ void KviOptionsWidgetContainer::setLeftCornerWidget(QWidget * pWidget)
 	m_pLayout->addWidget(pWidget,1,0);
 }
 
+void KviOptionsWidgetContainer::optionsWidgetDestroyed()
+{
+	m_pOptionsWidget = NULL;
+}
+
+void KviOptionsWidgetContainer::childEvent(QChildEvent * e)
+{
+	// This handles reparents which may happen when
+	// options.edit and options.dialog are used without closing
+	// the corresponding widgets.
+	if(m_pOptionsWidget && (e->type() == QEvent::ChildRemoved))
+	{
+		if(e->child() == static_cast<QObject *>(m_pOptionsWidget))
+		{
+			QObject::disconnect(m_pOptionsWidget,SIGNAL(destroyed()),this,SLOT(optionsWidgetDestroyed()));
+			m_pOptionsWidget = NULL;
+		}
+	}
+	
+	QWidget::childEvent(e);
+}
 
 void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 {
+	if(m_pOptionsWidget)
+		QObject::disconnect(m_pOptionsWidget,SIGNAL(destroyed()),this,SLOT(optionsWidgetDestroyed()));
+
 	m_pLayout->addWidget(w,0,0,1,3);
 	//g->addMultiCellWidget(w,0,0,0,2);
 
@@ -96,6 +123,9 @@ void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 	}
 
 	m_pOptionsWidget = w;
+
+	if(m_pOptionsWidget)
+		QObject::connect(m_pOptionsWidget,SIGNAL(destroyed()),this,SLOT(optionsWidgetDestroyed()));
 }
 
 void KviOptionsWidgetContainer::closeEvent(QCloseEvent *e)
@@ -122,7 +152,8 @@ void KviOptionsWidgetContainer::reject()
 
 void KviOptionsWidgetContainer::okClicked()
 {
-	if(m_pOptionsWidget)m_pOptionsWidget->commit();
+	if(m_pOptionsWidget)
+		m_pOptionsWidget->commit();
 	g_pApp->saveOptions();
 	delete this;
 }

@@ -330,7 +330,8 @@ void KviOptionsInstanceManager::deleteInstanceTree(KviPointerList<KviOptionsWidg
 
 KviOptionsInstanceManager::~KviOptionsInstanceManager()
 {
-	if(m_pInstanceTree)qDebug("Ops...KviOptionsInstanceManager::cleanup() not called ?");
+	if(m_pInstanceTree)
+		qDebug("Ops...KviOptionsInstanceManager::cleanup() not called ?");
 }
 
 void KviOptionsInstanceManager::cleanup(KviModule *)
@@ -342,14 +343,19 @@ void KviOptionsInstanceManager::cleanup(KviModule *)
 void KviOptionsInstanceManager::widgetDestroyed()
 {
 	KviOptionsWidgetInstanceEntry * e = findInstanceEntry(sender(),m_pInstanceTree);
-	if(e)e->pWidget = 0;
-	if(g_iOptionWidgetInstances > 0)g_iOptionWidgetInstances--;
+	if(e)
+		e->pWidget = 0;
+	if(g_iOptionWidgetInstances > 0)
+		g_iOptionWidgetInstances--;
 
 }
 
 KviOptionsWidget * KviOptionsInstanceManager::getInstance(KviOptionsWidgetInstanceEntry * e,QWidget * par)
 {
-	if(!e)return 0;
+	if(!e)
+		return NULL;
+
+#if 0
 	if(e->pWidget)
 	{
 		if(e->pWidget->parent() != par)
@@ -360,12 +366,22 @@ KviOptionsWidget * KviOptionsInstanceManager::getInstance(KviOptionsWidgetInstan
 			e->pWidget=0;
 		}
 	}
+#endif
 
 	if(!(e->pWidget))
 	{
 		e->pWidget = e->createProc(par);
 		g_iOptionWidgetInstances++;
 		connect(e->pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
+	}
+
+	if(e->pWidget->parent() != par)
+	{
+		QWidget * oldPar = (QWidget *)e->pWidget->parent();
+		e->pWidget->setParent(par); //reparent(par,QPoint(0,0));
+		if(oldPar->inherits("KviOptionsWidgetContainer"))
+			delete oldPar;
+		// else it's very likely a QStackedWidget, child of a KviOptionsWidget: don't delete
 	}
 
 	if(e->bIsContainer)

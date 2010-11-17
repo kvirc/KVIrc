@@ -145,11 +145,16 @@ public:
 	void addAdvancedButton(int x1,int y1,int x2,int y2);
 
 	virtual void commit();
+	virtual void childEvent(QChildEvent * e);
+
+	virtual bool eventFilter(QObject * watched,QEvent * e);
+
 protected slots:
 	// this is internal to the options dialog (options module)
 	// it attempts to show all the hidden subitems (usually the "Advanced...") page
 	// and switch to the first of them
 	void switchToAdvancedPage();
+	void childOptionsWidgetDestroyed();
 signals:
 	// internal signal used for the stuff above
 	void wantToSwitchToAdvancedPage(KviOptionsWidget *);
