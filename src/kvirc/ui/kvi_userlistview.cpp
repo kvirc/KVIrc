@@ -2197,6 +2197,126 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 		}
 		g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 		update();
+	} else if(e->key() == Qt::Key_PageUp)
+	{
+		if(m_pListView->m_iSelectedCount == 0)
+		{
+			KviUserListEntry * pNick = m_pListView->m_pHeadItem;
+			if(pNick)
+			{
+				pNick->m_bSelected = true;
+				m_pListView->ensureVisible(pNick->nick());
+			}
+		} else {
+			KviUserListEntry * pAux = m_pListView->m_pHeadItem;
+			KviUserListEntry * pNick=0;
+			while(pAux)
+			{
+				if(pAux->m_bSelected)
+				{
+					if(e->modifiers() & Qt::ShiftModifier)
+					{
+						int i=10;
+						pNick = pAux;
+						while(pNick != m_pListView->m_pHeadItem && i > 0)
+						{
+							m_pListView->m_iSelectedCount++;
+							pNick->m_bSelected=true;
+							pNick = pNick->m_pPrev;
+							i--;
+						}
+						if(pNick)
+							pNick->m_bSelected=true;
+						break;
+					} else {
+						pAux->m_bSelected=false;
+
+						if(!pNick)
+						{
+							pNick = pAux;
+							for(int i=10; i>0; i--)
+							{
+								if(pNick == m_pListView->m_pHeadItem)
+								{
+									pNick=m_pListView->m_pTailItem;
+									i = 0;
+								} else {
+									pNick = pNick->m_pPrev;
+								}
+							}
+						}
+					}
+					if(pNick)
+						pNick->m_bSelected=true;
+				}
+				pAux = pAux->m_pNext;
+			}
+
+			if(pNick)
+				m_pListView->ensureVisible(pNick->nick());
+		}
+		g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+		update();
+	} else if(e->key() == Qt::Key_PageDown)
+	{
+		if(m_pListView->m_iSelectedCount == 0)
+		{
+			KviUserListEntry * pNick = m_pListView->m_pHeadItem;
+			if(pNick)
+			{
+				pNick->m_bSelected = true;
+				m_pListView->ensureVisible(pNick->nick());
+			}
+		} else {
+			KviUserListEntry * pAux = m_pListView->m_pTailItem;
+			KviUserListEntry * pNick=0;
+			while(pAux)
+			{
+				if(pAux->m_bSelected)
+				{
+					if(e->modifiers() & Qt::ShiftModifier)
+					{
+						int i=10;
+						pNick = pAux;
+						while(pNick != m_pListView->m_pTailItem && i > 0)
+						{
+							m_pListView->m_iSelectedCount++;
+							pNick->m_bSelected=true;
+							pNick = pNick->m_pNext;
+							i--;
+						}
+						if(pNick)
+							pNick->m_bSelected=true;
+						break;
+					} else {
+						pAux->m_bSelected=false;
+
+						if(!pNick)
+						{
+							pNick = pAux;
+							for(int i=10; i>0; i--)
+							{
+								if(pNick == m_pListView->m_pTailItem)
+								{
+									pNick=m_pListView->m_pHeadItem;
+									i = 0;
+								} else {
+									pNick = pNick->m_pNext;
+								}
+							}
+						}
+					}
+					if(pNick)
+						pNick->m_bSelected=true;
+				}
+				pAux = pAux->m_pPrev;
+			}
+
+			if(pNick)
+				m_pListView->ensureVisible(pNick->nick());
+		}
+		g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+		update();
 	} else if(e->matches(QKeySequence::SelectAll)) {
 		KviUserListEntry * pAux = m_pListView->m_pHeadItem;
 		while(pAux)

@@ -138,7 +138,7 @@ namespace KviKvsCoreFunctions
 			Decodes JSON-encoded string
 			$serialize() returns a string containing a byte-stream representation of value that can be stored anywhere.
 		@seealso:
-			[fnc]$serialize[/fnc]
+			[fnc]$unserialize[/fnc]
 	*/
 	KVSCF(serialize)
 	{
