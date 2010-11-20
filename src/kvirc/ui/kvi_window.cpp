@@ -533,7 +533,7 @@ void KviWindow::getDefaultLogFileName(QString &buffer)
 	// FIXME: #warning "Make it configurable ?"
 	QString szDate;
 	QDate date(QDate::currentDate());
-	
+
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
 		case 0:
@@ -730,64 +730,6 @@ void KviWindow::createSystemTextEncodingPopup()
 	connect(g_pMdiWindowSystemTextEncodingPopupStandard,SIGNAL(activated(int)),this,SLOT(systemTextEncodingPopupStandardActivated(int)));
 }
 
-KviTalPopupMenu * KviWindow::generatePopup()
-{
-	if(!g_pMdiWindowSystemMainPopup)
-		g_pMdiWindowSystemMainPopup = new KviTalPopupMenu();
-	else
-	{
-		g_pMdiWindowSystemMainPopup->clear();
-		g_pMdiWindowSystemMainPopup->disconnect();
-	}
-
-	if(mdiParent())
-		g_pMdiWindowSystemMainPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_UNDOCK)),
-		                                        __tr2qs("&Undock"),this,SLOT(undock()));
-	else
-		g_pMdiWindowSystemMainPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DOCK)),
-		                                        __tr2qs("&Dock"),this,SLOT(dock()));
-
-	g_pMdiWindowSystemMainPopup->insertSeparator();
-
-	int id = g_pMdiWindowSystemMainPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINIMIZE)),
-		                                        __tr2qs("Mi&nimize"),this,SLOT(minimize()));
-	g_pMdiWindowSystemMainPopup->setItemEnabled(id,!isMinimized());
-	id = g_pMdiWindowSystemMainPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MAXIMIZE)),
-		                                        __tr2qs("Ma&ximize"),this,SLOT(maximize()));
-	g_pMdiWindowSystemMainPopup->setItemEnabled(id,!isMaximized());
-	id = g_pMdiWindowSystemMainPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RESTORE)),
-		                                        __tr2qs("&Restore"),this,SLOT(restore()));
-	g_pMdiWindowSystemMainPopup->setItemEnabled(id,isMinimized()||isMaximized());
-
-	g_pMdiWindowSystemMainPopup->insertSeparator();
-
-	g_pMdiWindowSystemMainPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)),
-	                                        __tr2qs("Close"),this,SLOT(close()));
-
-	g_pMdiWindowSystemMainPopup->insertSeparator();
-
-	if(m_pTextEncodingButton)
-	{
-		createSystemTextEncodingPopup();
-		g_pMdiWindowSystemMainPopup->insertItem(__tr2qs("Text &Encoding"),g_pMdiWindowSystemTextEncodingPopup);
-	} // else we don't support setting private encoding anyway
-
-
-	g_pMdiWindowSystemMainPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_XY)),
-	                                        __tr2qs("Set Window Props as &default"),this,SLOT(savePropertiesAsDefault()));
-
-	fillContextPopup(g_pMdiWindowSystemMainPopup);
-
-	return g_pMdiWindowSystemMainPopup;
-}
-
-void KviWindow::systemPopupRequest(const QPoint &pnt)
-{
-	generatePopup();
-
-	g_pMdiWindowSystemMainPopup->popup(pnt);
-}
-
 void KviWindow::systemTextEncodingPopupDefault()
 {
 	// default
@@ -837,12 +779,7 @@ void KviWindow::savePropertiesAsDefault()
 
 void KviWindow::contextPopup()
 {
-	systemPopupRequest(QCursor::pos());
-}
-
-void KviWindow::fillContextPopup(KviTalPopupMenu *)
-{
-	// nothing here
+	KVS_TRIGGER_EVENT_0(KviEvent_OnWindowPopupRequest,this);
 }
 
 void KviWindow::undock()

@@ -178,7 +178,6 @@ public:
 	// The global ID of this window: unique in the application
 	inline QString id(){ return QString("%1").arg(m_uId); };
 	inline unsigned long int numericId(){ return m_uId; };
-	KviTalPopupMenu * generatePopup();
 
 	// THIS is the function that should be used
 	inline const QString & windowName(){ return m_szName; };
@@ -266,7 +265,6 @@ public:
 	void delayedClose(); // close that jumps out of the current event loop
 
 	// Interesting overridables:
-	virtual void fillContextPopup(KviTalPopupMenu * p);
 	virtual void getConfigGroupName(QString &buf);
 	virtual void getBaseLogFileName(QString &buffer);
 	virtual void updateCaption();
@@ -295,7 +293,7 @@ public:
 	void listWindowTypes();
 
 	void activateSelf();
-	
+
 	// call this in the constructor if your caption is fixed:
 	// it will set m_szPlainTextCaption to szCaption and it will
 	// automatically use it without the need of overriding fillCaptionBuffers
@@ -308,13 +306,12 @@ public slots:
 	void minimize();
 	void restore();
 	void reloadImages();
-protected slots:
 	void savePropertiesAsDefault();
+protected slots:
 	void toggleCryptController();     // This has to be here even if the crypt support is enabled...moc does not support conditionals
 	void cryptControllerFinished();   // same as above
 	void cryptSessionInfoDestroyed(); //  same as above
 	void textEncodingButtonClicked();
-	void systemPopupRequest(const QPoint &pnt);
 	void systemTextEncodingPopupSmartActivated(int id);
 	void systemTextEncodingPopupSmartUtf8Activated(int id);
 	void systemTextEncodingPopupStandardActivated(int id);

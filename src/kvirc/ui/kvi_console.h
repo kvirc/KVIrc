@@ -104,7 +104,6 @@ protected:
 	virtual void closeEvent(QCloseEvent *e);
 	virtual void getBaseLogFileName(QString &buffer);
 	virtual void getWindowListTipText(QString &buffer);
-	virtual void fillContextPopup(KviTalPopupMenu * p);
 	virtual QSize sizeHint() const;
 	virtual void applyOptions();
 	virtual void triggerCreationEvents();

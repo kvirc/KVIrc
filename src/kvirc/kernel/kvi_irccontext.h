@@ -183,7 +183,6 @@ signals:
 	void stateChanged();
 protected slots:
 	void asynchronousConnect();
-	void unhighlightAllWindows();
 };
 
 

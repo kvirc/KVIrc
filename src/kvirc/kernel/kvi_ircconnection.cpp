@@ -579,15 +579,6 @@ void KviIrcConnection::unhighlightAllQueries()
 		c->unhighlight();
 }
 
-void KviIrcConnection::partAllChannels()
-{
-	for(KviChannel * c = m_pChannelList->first(); c; c = m_pChannelList->next())
-	{
-		c->close();
-		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
-	}
-}
-
 void KviIrcConnection::closeAllChannels()
 {
 	while(m_pChannelList->first())

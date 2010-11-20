@@ -127,11 +127,6 @@ KviIrcContext::~KviIrcContext()
 	if(m_pSavedAsynchronousConnectionData)delete m_pSavedAsynchronousConnectionData;
 }
 
-void KviIrcContext::unhighlightAllWindows()
-{
-	m_pFrame->unhighlightWindowsOfContext(this);
-}
-
 void KviIrcContext::registerDataStreamMonitor(KviIrcDataStreamMonitor * m)
 {
 	if(!m_pMonitorList)
@@ -442,7 +437,7 @@ void KviIrcContext::connectToCurrentServer()
 				if(m_pSavedAsynchronousConnectionData->m_pReconnectInfo)
 					m_pAsynchronousConnectionData->m_pReconnectInfo = new KviServerReconnectInfo(*(m_pSavedAsynchronousConnectionData->m_pReconnectInfo));
 				else m_pAsynchronousConnectionData->m_pReconnectInfo = 0;
-					
+
 				// and the other info, only if not overridden by the user
 				if(m_pAsynchronousConnectionData->szBindAddress.isEmpty())
 					m_pAsynchronousConnectionData->szBindAddress = m_pSavedAsynchronousConnectionData->szBindAddress;

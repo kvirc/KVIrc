@@ -221,7 +221,7 @@ private slots:
 	* \return void
 	*/
 	void transparencyWorkaround();
-	
+
 };
 
 #endif //_KVI_MDICHILD_H_

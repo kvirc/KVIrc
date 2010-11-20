@@ -639,12 +639,6 @@ void KviFrame::childWindowCloseRequest(KviWindow *wnd)
 	closeWindow(wnd);
 }
 
-void KviFrame::unhighlightWindowsOfContext(KviIrcContext * c)
-{
-	for(KviWindow *w = m_pWinList->first();w;w = m_pWinList->next())
-		if(w->context() == c)w->unhighlight();
-}
-
 void KviFrame::setActiveWindow(KviWindow *wnd)
 {
 	// ASSERT(m_pWinList->findRef(wnd))

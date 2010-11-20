@@ -217,7 +217,7 @@ public:
 	* \return State
 	*/
 	inline State state(){ return m_eState; };
-	
+
 	/**
 	* \brief Returns a pointer to the big connection user database.
 	*
@@ -343,7 +343,7 @@ public:
 	* \return KviRequestQueue *
 	*/
 	inline KviRequestQueue * requestQueue(){ return m_pRequestQueue; };
-	
+
 	/**
 	* \brief Returns the list of the channels bound to the current connection.
 	*
@@ -448,10 +448,16 @@ public:
 	void keepChannelsOpenAfterDisconnect();
 
 	/**
-	* \brief Closes all the currently open channels not marked as dead).
+	* \brief Closes all the currently open channels not marked as dead.
 	* \return void
 	*/
 	void closeAllChannels();
+
+	/**
+	* \brief Closes all the currently open queries not marked as dead.
+	* \return void
+	*/
+	void closeAllQueries();
 
 	//
 	// Query management
@@ -866,12 +872,6 @@ private:
 	void setupSrvCodec();
 public slots:
 	/**
-	* \brief Called when we parts from all channels
-	* \return void
-	*/
-	void partAllChannels();
-
-	/**
 	* \brief Called when we unhighlight all channels
 	* \return void
 	*/
@@ -888,12 +888,6 @@ public slots:
 	* \return void
 	*/
 	void restartNotifyList();
-
-	/**
-	* \brief Called when we close all queries
-	* \return void
-	*/
-	void closeAllQueries();
 private slots:
 	/**
 	* \brief Called when the hostname lookup is finished

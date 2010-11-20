@@ -167,7 +167,7 @@ public:
 	* \return void
 	*/
 	void setUsesBigPixmaps(bool bUse);
-	
+
 public slots:
 	void newConsole();
 	void executeInternalCommand(int index);
@@ -178,8 +178,6 @@ protected:
 	void saveModuleExtensionToolBars();
 	void registerModuleExtensionToolBar(KviMexToolBar * t);
 	void unregisterModuleExtensionToolBar(KviMexToolBar * t);
-
-	void unhighlightWindowsOfContext(KviIrcContext * c);
 
 	void createWindowList();
 	void recreateWindowList();

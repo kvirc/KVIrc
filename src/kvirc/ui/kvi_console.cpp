@@ -216,42 +216,6 @@ void KviConsole::triggerCreationEvents()
 	KVS_TRIGGER_EVENT_0(KviEvent_OnIrcContextCreated,this);
 }
 
-void KviConsole::fillContextPopup(KviTalPopupMenu * p)
-{
-	int id;
-	int cc = 0;
-	int qc = 0;
-
-	if(connection())
-	{
-		cc = connection()->channelList()->count();
-		qc = connection()->queryList()->count();
-		p->insertSeparator();
-		id = p->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Part All Channels"),connection(),SLOT(partAllChannels()));
-		if(!cc)
-			p->setItemEnabled(id,false);
-		id = p->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUERY)),__tr2qs("Close All Queries"),connection(),SLOT(closeAllQueries()));
-		if(!qc)
-			p->setItemEnabled(id,false);
-	}
-
-	if(m_pContext->firstDeadChannel())
-		p->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DEADCHANNEL)),__tr2qs("Close All Dead Channels"),m_pContext,SLOT(closeAllDeadChannels()));
-	if(m_pContext->firstDeadQuery())
-		p->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DEADQUERY)),__tr2qs("Close All Dead Queries"),m_pContext,SLOT(closeAllDeadQueries()));
-
-	p->insertSeparator();
-	p->insertItem(__tr2qs("Unhighlight All Windows"),context(),SLOT(unhighlightAllWindows()));
-
-	if(connection())
-	{
-		id = p->insertItem(__tr2qs("Unhighlight All Channels"),connection(),SLOT(unhighlightAllChannels()));
-		if(!cc)p->setItemEnabled(id,false);
-		id = p->insertItem(__tr2qs("Unhighlight All Queries"),connection(),SLOT(unhighlightAllQueries()));
-		if(!qc)p->setItemEnabled(id,false);
-	}
-}
-
 void KviConsole::completeChannel(const QString &word,KviPointerList<QString> * matches)
 {
 	// FIXME: first look in our context ?
@@ -788,7 +752,7 @@ void KviConsole::outputPrivmsg(KviWindow *wnd,
 					}
 					pUserEntry->setSmartNickColor(sum);
 				}
-				
+
 				szNick.prepend(KviNickColors::getSmartColor(sum));
 			} else {
 				/*

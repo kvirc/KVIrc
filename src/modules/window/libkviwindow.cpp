@@ -176,7 +176,7 @@ static bool window_kvs_cmd_close(KviKvsModuleCommandCall * c)
 		no operation is performed. If the specified window
 		does not exist a warning is printed unless the -q switch is used.
 	@seealso:
-		[cmd]window.undock[/cmd]
+		[cmd]window.undock[/cmd], [fnc]$window.isDocked[/fnc]
 */
 
 static bool window_kvs_cmd_dock(KviKvsModuleCommandCall * c)
@@ -205,7 +205,7 @@ static bool window_kvs_cmd_dock(KviKvsModuleCommandCall * c)
 		no operation is performed. If the specified window
 		does not exist a warning is printed unless the -q switch is used.
 	@seealso:
-		[cmd]window.dock[/cmd]
+		[cmd]window.dock[/cmd], [fnc]$window.isDocked[/fnc]
 */
 
 static bool window_kvs_cmd_undock(KviKvsModuleCommandCall * c)
@@ -475,6 +475,35 @@ static bool window_kvs_fnc_activityTemperature(KviKvsModuleFunctionCall * c)
 		c->returnValue()->setInteger(t);
 	} else {
 		c->returnValue()->setInteger(0);
+	}
+	return true;
+}
+
+/*
+	@doc: window.isDocked
+	@type:
+		function
+	@title:
+		$window.isDocked
+	@short:
+		Checks if a window is currently docked
+	@syntax:
+		$window.isDocked
+		$window.isDocked(<window_id>)
+	@description:
+		Returns 1 if the window specified by <window_id> is currently docked and 0 otherwise.
+		The form with no parameters works on the current window. If the specified window
+		doesn't exist then 0 is returned.
+	@seealso:
+		[cmd]window.dock[/cmd], [cmd]window.undock[/cmd]
+*/
+
+static bool window_kvs_fnc_isDocked(KviKvsModuleFunctionCall * c)
+{
+	GET_KVS_FNC_WINDOW_ID
+	if(pWnd)
+	{
+		c->returnValue()->setBoolean(pWnd->mdiParent() ? true : false);
 	}
 	return true;
 }
@@ -1428,6 +1457,31 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 		[fnc]$asciiToHex[/fnc], [fnc]$features[/fnc]
 */
 
+/*
+	@doc: window.savePropertiesAsDefault
+	@type:
+		command
+	@title:
+		window.savePropertiesAsDefault
+	@short:
+		Saves the window properties as default
+	@syntax:
+		window.savePropertiesAsDefault [window_id]
+	@description:
+		Saves the window properties of the specified window as default for every window
+		of the same type (eg: all queries, all channels, ..).
+		If window_id is missing then the current window properties are used.
+*/
+
+static bool window_kvs_cmd_savePropertiesAsDefault(KviKvsModuleCommandCall * c)
+{
+	GET_KVS_WINDOW_ID
+	if(pWnd)
+	{
+		pWnd->savePropertiesAsDefault();
+	}
+	return true;
+}
 
 #ifdef COMPILE_CRYPT_SUPPORT
 static bool initializeCryptEngine(KviCryptEngine * eng,KviStr &szEncryptKey,KviStr &szDecryptKey,QString &szError)
@@ -1554,6 +1608,7 @@ static bool window_module_init(KviModule *m)
 	KVSM_REGISTER_FUNCTION(m,"console",window_kvs_fnc_console);
 	KVSM_REGISTER_FUNCTION(m,"hasUserFocus",window_kvs_fnc_hasUserFocus);
 	KVSM_REGISTER_FUNCTION(m,"hasOutput",window_kvs_fnc_hasOutput);
+	KVSM_REGISTER_FUNCTION(m,"isDocked",window_kvs_fnc_isDocked);
 	KVSM_REGISTER_FUNCTION(m,"isMinimized",window_kvs_fnc_isMinimized);
 	KVSM_REGISTER_FUNCTION(m,"isMaximized",window_kvs_fnc_isMaximized);
 	KVSM_REGISTER_FUNCTION(m,"caption",window_kvs_fnc_caption);
@@ -1581,6 +1636,7 @@ static bool window_module_init(KviModule *m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setCryptEngine",window_kvs_cmd_setCryptEngine);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setInputText",window_kvs_cmd_setInputText);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"insertInInputText",window_kvs_cmd_insertInInputText);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"savePropertiesAsDefault",window_kvs_cmd_savePropertiesAsDefault);
 
 	// saveOutput (view()->saveBuffer())
 /*

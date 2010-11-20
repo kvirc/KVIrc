@@ -1183,7 +1183,8 @@ defpopup(logging)
 
 		# If this window is being logged actually , $log.file will be non empty
 		# and pointing to the log file actually open.
-		%:logfile = $file.extractfilename($log.file)
+		if($isSet($log.file))
+			%:logfile = $file.extractfilename($log.file)
 	}
 
 	label($tr("Logging to","defscript"):<br><b>%:logfile</b>) ("%:logfile" != "")
@@ -1324,35 +1325,74 @@ file.addimagepath %mypath/pics/
 #
 
 
-#
-# A default popup for the middle click in a text view
-# This should manage logging , buffer saving and other
-# stuff common to ALL windows
-#
+# window popup
 
 defpopup(windowpopup)
 {
+	item($tr("Dock","defscript"), 6) (!$window.isDocked()) window.dock
+	item($tr("Undock","defscript"), 7) ($window.isDocked()) window.undock
+
+	separator
+
+	item($tr("Minimize","defscript"), 3) (!$window.isMinimized()) window.minimize
+	item($tr("Maximize","defscript"), 2) (!$window.isMaximized()) window.maximize
+	item($tr("Restore","defscript"), 4) ($window.isMinimized() || $window.isMaximized()) window.restore
+
+	separator
+
 	extpopup(Logging,logging,119)
 
-#	popup(Buffer)
-#	{
-#		item($tr("Save to file...","defscript"))window.savebuffer
-#		item($tr("Clear","defscript"))window.clear
-#		item($tr("Find...","defscript"))window.findtext
-#	}
-#	popup(View)
-#	{
-#		item($tr("Show images","defscript"))($window.images == 0)window.images 1
-#		item($tr("Enable timestamps","defscript"))($window.timestamp == 0)window.timestamp 1
-#		item($tr("Disable timestamps","defscript"))($window.timestam == 1)window.timestamp 0
-#		item($tr("Set font...","defscript"))$window.setfont
-#		item($tr("Set background...","defscript"))$window.setbackground
-#	}
-#	popup(Mdi)
-#	{
-#		item($tr("Minimize","defscript"))window.minimize
-#		item($tr("Maximize","defscript"))window.maximize
-#	}
+	item($tr("Set window props as default","defscript"), 10) window.savePropertiesAsDefault
+
+	separator
+
+# start: console-specific items
+
+	item($tr("Part All Channels","defscript"), 31) ($window.type=="console" && $context.state=="connected")
+	{
+		foreach(%x,$window.list(channel))
+			window.close %x
+	}
+
+	item($tr("Close All Queries","defscript"), 47) ($window.type=="console" && $context.state=="connected")
+	{
+		foreach(%x,$window.list(query))
+			window.close %x
+	}
+
+	item($tr("Close All Dead Channels" ,"defscript"), 232) ($window.type=="console" && $context.state=="connected")
+	{
+		foreach(%x,$window.list(deadchannel))
+			window.close %x
+	}
+
+	item($tr("Close All Dead Queries" ,"defscript"), 233) ($window.type=="console" && $context.state=="connected")
+	{
+		foreach(%x,$window.list(deadquery))
+			window.close %x
+	}
+
+	separator
+
+	item($tr("Unhighlight All Windows" ,"defscript")) ($window.type=="console" && $context.state=="connected")
+	{
+		foreach(%x,$window.list(all))
+			window.highlight 0 %x
+	}
+
+	item($tr("Unhighlight All Channels" ,"defscript")) ($window.type=="console" && $context.state=="connected")
+	{
+		foreach(%x,$window.list(channel))
+			window.highlight 0 %x
+	}
+
+	item($tr("Unhighlight All Queries" ,"defscript")) ($window.type=="console" && $context.state=="connected")
+	{
+		foreach(%x,$window.list(query))
+			window.highlight 0 %x
+	}
+
+# end: console-specific items
 }
 
 # Host link popup

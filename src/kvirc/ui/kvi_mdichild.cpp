@@ -43,6 +43,7 @@
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_irccontext.h"
 #include "kvi_network.h"
+#include "kvi_kvs_eventtriggers.h"
 
 #ifdef COMPILE_ON_MAC
 	#include "kvi_app.h"  //Needed for g_pApp
@@ -84,7 +85,7 @@ void KviMdiChild::transparencyWorkaround()
 {
 	setAutoFillBackground(true);
 }
-	
+
 void KviMdiChild::setRestoredGeometry(const QRect &r)
 {
 	setGeometry(r);
@@ -265,10 +266,7 @@ void KviMdiChild::updateSystemPopup()
 		if(m_pClient->inherits("KviWindow"))
 		{
 			systemMenu()->clear();
-			QMenu * tmp = ((KviWindow*) m_pClient)->generatePopup();
-			if (tmp)
-			{
-				systemMenu()->addActions(tmp->actions());
-			}
+			//FIXME this is an hack
+			KVS_TRIGGER_EVENT_0(KviEvent_OnWindowPopupRequest, ((KviWindow*) m_pClient));
 		}
 }
