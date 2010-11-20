@@ -127,7 +127,7 @@ bool KviApp::checkFileAssociations()
 		free(pcBuffer);
 		return false;
 	}
-	
+
 	if((err=RegQueryValueEx(hKey,0,0,0,(LPBYTE)pcBuffer,&len)) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
@@ -552,38 +552,6 @@ void KviApp::setupFileAssociations()
 #endif
 }
 
-/*
-//#ifdef BRAIN_DAMAGED_AUTHOR_PARANOIA
-//#define I_DO_NOT_WANT_TO_HEAR_IT_ANYMORE_THAT_KVIRC_CAN_NOT_FIND_THE_BASE_PIXMAPS
-
-// search paths for Unix-like platforms
-#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-	const char * usualKvircGlobalPrePath[]=
-	{
-		"/usr/local",       "/opt/kde",       "/usr",
-		"/usr/local/lib",   "/opt/kde3",      "/usr/lib",
-		"/usr/local/kde",   "/opt",           "/usr/etc",
-		"/usr/local/kde3",  "/usr/lib/X11R6", "/usr/X11R6",
-		"/usr/local/X11R6", "/lib/X11",       "/usr/kde",
-		"/usr/local/X11",   "/etc",           "/usr/kde3",
-		"/usr/local/etc",   "/lib",           "/usr/X11",
-		"/etc/X11",         "/home",          "/home/kvirc",
-		0
-	};
-
-	const char * usualKvircGlobalDir[]=
-	{
-		"/share/kvirc/",            "/share/apps/kvirc/",
-		"/apps/kvirc/",             "/kvirc/",
-		"/kvirc/share/apps/kvirc/", "/kvirc/share/kvirc/", //<------ ???!!!???
-		"/kvirc/share/",            0
-	};
-
-#endif
-
-//#endif //BRAIN_DAMAGED_AUTHOR_PARANOIA
-*/
-
 void KviApp::findGlobalKvircDirectory()
 {
 	// Look for the installation directory
@@ -607,33 +575,6 @@ void KviApp::findGlobalKvircDirectory()
 		"Trying to run anyway...\n",&m_szGlobalKvircDir);
 #else
 
-	// Since I had many problems with it
-	// because of strange distributions or KDEDIRS
-	// I do it in that way...
-	/* does not work with kde4...
-	#ifdef COMPILE_KDE_SUPPORT
-		// KDE compilation ...
-		// The things usually go installed into $KDEDIR/share/apps/kvirc/$VERSION_BRANCH
-		// Look in the main KDE directory
-		KStandardDirs * d = dirs();
-		if(d)
-		{
-			m_szGlobalKvircDir = locate("appdata","");
-			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
-			#ifdef HAVE_GETENV
-				//KDEDIR sanity check...
-				m_szGlobalKvircDir = getenv("KDEDIR");
-				#warning you must change back hardcoded 4.0 to VERSION_BRANCH
-				//m_szGlobalKvircDir+="/share/apps/kvirc/" VERSION_BRANCH;
-				m_szGlobalKvircDir+="/share/apps/kvirc/4.0/";
-				if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
-			#endif
-		}
-		// FAILED ? Check the usual way...
-	#endif //COMPILE_WITH_KDE
-*/
-	// Non KDE compilation, or not found under $KDEDIR/share/apps/kvirc/$VERSION_BRANCH
-
 	// Check for MacOS X Bundle compilation
 	#ifdef COMPILE_ON_MAC
 		m_szGlobalKvircDir = applicationDirPath();
@@ -645,36 +586,6 @@ void KviApp::findGlobalKvircDirectory()
 	if(checkGlobalKvircDirectory(m_szGlobalKvircDir))
 		return;
 
-/*
-	// Check usual directories...
-
-	for(int j=0;usualKvircGlobalPrePath[j] != 0;j++){
-		for(int i=0;usualKvircGlobalDir[i] != 0;i++){
-			m_szGlobalKvircDir = usualKvircGlobalPrePath[j];
-			m_szGlobalKvircDir+= usualKvircGlobalDir[i];
-			m_szGlobalKvircDir+= KVIRC_VERSION_BRANCH;
-			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
-		}
-	}
-
-	//Last resource, try $HOME and $HOME/.kde
-	for(int k=0;usualKvircGlobalDir[k] != 0;k++){
-		m_szGlobalKvircDir = QDir::homePath();
-		m_szGlobalKvircDir+= usualKvircGlobalDir[k];
-		m_szGlobalKvircDir+= KVIRC_VERSION_BRANCH;
-		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
-	}
-
-	#ifdef COMPILE_KDE_SUPPORT
-		for(int k=0;usualKvircGlobalDir[k] != 0;k++){
-			m_szGlobalKvircDir = QDir::homePath();
-			m_szGlobalKvircDir+= "/.kde";
-			m_szGlobalKvircDir+= usualKvircGlobalDir[k];
-			m_szGlobalKvircDir+= KVIRC_VERSION_BRANCH;
-			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
-		}
-	#endif //COMPILE_KDE_SUPPORT
-*/
 	m_szGlobalKvircDir = "";
 
 	// DO NOT TRANSLATE THIS
@@ -716,7 +627,7 @@ bool KviApp::findLocalKvircDirectory()
 	// and we have the kvirc local directory saved somewhere
 #ifdef COMPILE_KDE_SUPPORT
 	if(m_szConfigFile.isEmpty())
-	{ 
+	{
 		// don't do that if user supplied a config file :)
 		KConfig oKCfg("kvirc");
 		KConfigGroup oKCfgMainGroup(&oKCfg, "Main");
@@ -791,7 +702,7 @@ void KviApp::loadDirectories()
 
 	if(m_bFirstTimeRun)
 		setupBegin();
-	
+
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(m_bPortable) return;
 #endif
@@ -896,14 +807,6 @@ void KviApp::setupFinish()
 
 void KviApp::saveKvircDirectory()
 {
-/*
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#warning you must change back hardcoded 4.0 to VERSION_BRANCH
-	KviStr szKey(KviStr::Format,"LocalKvircDirectory%s",VERSION_BRANCH);
-	KviStr szKey(KviStr::Format,"LocalKvircDirectory%s",4.0);
-	WritePrivateProfileString("kvirc",szKey.ptr(),m_szLocalKvircDir.ptr(),KVI_HOME_CONFIG_FILE_NAME);
-#else //!COMPILE_ON_WINDOWS
-*/
 	// Here we save the local directory path
 #ifdef COMPILE_KDE_SUPPORT
 	// In KDE we use the application config file

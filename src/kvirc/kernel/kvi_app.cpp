@@ -291,24 +291,6 @@ void KviApp::setup()
 		qDebug("Aaargh... have no UTF-8 codec?");
 
 	QString szTmp;
-/*
-	// Set the default help files search path
-	QStringList list;
-
-	getLocalKvircDirectory(szTmp,Help); // localized help/lang or help if help/lang doesn't exist
-	list.append(szTmp);
-	getLocalKvircDirectory(szTmp,HelpEN); // help/en
-	list.append(szTmp);
-	getLocalKvircDirectory(szTmp,HelpNoIntl); // just help/
-	list.append(szTmp);
-	getGlobalKvircDirectory(szTmp,Help);
-	list.append(szTmp);
-	getGlobalKvircDirectory(szTmp,HelpEN);
-	list.append(szTmp);
-	getGlobalKvircDirectory(szTmp,HelpNoIntl);
-	list.append(szTmp);
-	QDir::setSearchPaths("help",list);
-*/
 
 	KVI_SPLASH_SET_PROGRESS(1)
 
@@ -812,6 +794,36 @@ void KviApp::checkSuggestRestoreDefaultScript()
 	if(bSuggestedOnce)
 		return; // already suggested in this kvirc session
 
+	// first: check if the user configuration has ever been updated to the current version
+	if(!KviDefaultScriptManager::instance()->isDefscriptUpToDate())
+	{
+		switch(
+			QMessageBox::question(0,__tr2qs("Update default scripts"),
+				__tr2qs("<b>Hi!</b><br><br>" \
+					"<b>It seems that you have just upgraded KVirc from a previous version.</b><br><br>" \
+					"The KVIrc default scripts needs to be updated too, to play nice with your fresh new KVIrc.<br>" \
+					"You may want to avoid this update if you plan to revert to a previous KVIrc version soon," \
+					"or if you have created a lot of custom scripts and want to stay safe and avoid any deletion or overwrite.<br>" \
+					"If you want to update the default scripts, i can restore the new default script for you.<br>" \
+					"<b>Do you want the default script to be restored?</b><br><br>"),
+				__tr2qs("No and Don't Ask Me Again"),__tr2qs("No"),__tr2qs("Yes"),1,1)
+		)
+		{
+			case 0:
+				KVI_OPTION_BOOL(KviOption_boolDoNotSuggestRestoreDefaultScript) = true;
+				return;
+			break;
+			case 1:
+				// we want to execute the next checks, don't return now
+			break;
+			default:
+				restoreDefaultScript();
+				// we want to execute the next checks after the attempted restore, don't return now
+			break;
+		}
+	}
+
+	//second, check for some common corruptions in scripts
 	int iScore = 0;
 
 	if(KviCustomToolBarManager::instance()->descriptorCount() < 1)
@@ -878,14 +890,14 @@ void KviApp::checkSuggestRestoreDefaultScript()
 			return;
 		break;
 		default:
-			restoreDefaultScript(true);
+			restoreDefaultScript();
 		break;
 	}
 }
 
-void KviApp::restoreDefaultScript(bool bSuggest)
+void KviApp::restoreDefaultScript()
 {
-	KviDefaultScriptManager::instance()->restore(bSuggest);
+	KviDefaultScriptManager::instance()->restore();
 }
 
 #ifndef COMPILE_NO_IPC

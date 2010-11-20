@@ -66,6 +66,7 @@ private:
 	QString                          m_szVersion;
 	QString                          m_szDate;
 	QString                          m_szAction;
+	QString                          m_szAddon;
 	QString                          m_szAlias;
 	QString                          m_szClass;
 	QString                          m_szEvent;
@@ -98,6 +99,12 @@ public:
 	unsigned int count(){ return m_uCount; };
 
 	/**
+	* \brief Checks if the local defscript is up to date
+	* \return bool
+	*/
+	bool isDefscriptUpToDate();
+
+	/**
 	* \brief Restores the default script
 	*
 	* If this function is suggested by KVIrc, the default script will be wiped out and then
@@ -105,10 +112,9 @@ public:
 	* part of the default script have to be restored
 	*
 	* This is an external helper to the real function
-	* \param bSuggest Whether the restore is suggested by KVIrc
 	* \return void
 	*/
-	void restore(bool bSuggest = false);
+	void restore();
 
 	/**
 	* \brief Loads the configuration of the default script
@@ -132,11 +138,10 @@ private:
 	* \brief Restores the default script
 	*
 	* This is the real function
-	* \param bSuggest Whether the restore is suggested by KVIrc
 	* \return void
 	* \todo This function still misses class clearing due to a missing function in class editor
 	*/
-	void restoreInternal(bool bSuggest = false);
+	void restoreInternal();
 
 	/**
 	* \brief Loads the configuration of the default script

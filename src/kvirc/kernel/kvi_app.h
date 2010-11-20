@@ -333,7 +333,7 @@ public slots:
 	void saveConfiguration();
 	void updateGui();
 	void updatePseudoTransparency();
-	void restoreDefaultScript(bool bSuggest = false);
+	void restoreDefaultScript();
 	void addRecentUrl(const QString& text);
 private:
 	void createSplashScreen();
