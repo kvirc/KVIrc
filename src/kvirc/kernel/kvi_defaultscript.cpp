@@ -113,7 +113,7 @@ void KviDefaultScriptManager::restore(bool bSuggest)
 
 	if(m_bNoNeedToRestore)
 	{
-		if(QMessageBox::warning(0,__tr2qs("Restore Default Script - Warning"),szError,QMessageBox::Yes | QMessageBox::No,QMessageBox::Cancel) != QMessageBox::Yes)
+		if(QMessageBox::warning(0,__tr2qs("Restore Default Script - Warning"),szError,QMessageBox::Yes, QMessageBox::No,QMessageBox::Cancel) != QMessageBox::Yes)
 			return;
 	}
 
