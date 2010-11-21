@@ -209,6 +209,7 @@ void KviInput::inputEditorEnterPressed()
 	QString szText = m_pInputEditor->text();
 	KviUserInput::parse(szText,m_pWindow,QString(),m_pCommandlineModeButton->isChecked());
 	m_pInputEditor->setText("");
+	m_pInputEditor->clearUndoStack();
 }
 
 void KviInput::installShortcuts()

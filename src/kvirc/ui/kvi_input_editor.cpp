@@ -77,6 +77,8 @@ int            KviInputEditor::g_iInputInstances = 0;
 int            KviInputEditor::g_iInputFontCharWidth[256];
 QFontMetrics * KviInputEditor::g_pLastFontMetrics = 0;
 
+#define KVI_INPUT_MAX_UNDO_SIZE 256
+
 KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView * pView)
 	: QWidget(pPar)
 {
@@ -108,8 +110,9 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_pHistory             = new KviPointerList<QString>;
 	m_pHistory->setAutoDelete(true);
 	m_bReadOnly            = false;
-	m_iUndoState              = 0;
-	separator              = false;
+
+	m_pUndoStack = NULL;
+	m_pRedoStack = NULL;
 
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 
@@ -144,6 +147,11 @@ KviInputEditor::~KviInputEditor()
 		delete m_pIconMenu;
 
 	delete m_pHistory;
+	
+	if(m_pUndoStack)
+		delete m_pUndoStack;
+	if(m_pRedoStack)
+		delete m_pRedoStack;
 
 	if(m_iCursorTimer)
 		killTimer(m_iCursorTimer);
@@ -894,15 +902,16 @@ void KviInputEditor::moveCursorTo(int iIdx, bool bRepaint)
 		m_iCursorPosition = iIdx;
 		if(m_iFirstVisibleChar > m_iCursorPosition)m_iFirstVisibleChar = m_iCursorPosition;
 	}
-	if(bRepaint) repaintWithCursorOn();
+	if(bRepaint)
+		repaintWithCursorOn();
 }
 
 void KviInputEditor::removeSelected()
 {
-	if(!hasSelection()) return;
+	if(!hasSelection())
+		return;
 
-	addUndo(Command(SetSelection, m_iCursorPosition, 0, m_iSelectionBegin, m_iSelectionEnd));
-	addUndo(Command(DeleteSelection, m_iCursorPosition, m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd-m_iSelectionBegin+1), -1, -1));
+	addUndo(new EditCommand(EditCommand::RemoveText,m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd-m_iSelectionBegin+1),m_iSelectionBegin));
 
 	m_szTextBuffer.remove(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1);
 	moveCursorTo(m_iSelectionBegin,false);
@@ -912,13 +921,14 @@ void KviInputEditor::removeSelected()
 
 void KviInputEditor::cut()
 {
-	if(!hasSelection()) return;
+	if(!hasSelection())
+		return;
 	QClipboard * pClip = QApplication::clipboard();
-	if(!pClip) return;
+	if(!pClip)
+		return;
 	pClip->setText(m_szTextBuffer.mid(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1),QClipboard::Clipboard);
 
-	addUndo(Command(SetSelection, m_iCursorPosition, 0, m_iSelectionBegin, m_iSelectionEnd));
-	addUndo (Command(DeleteSelection, m_iSelectionBegin, m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd-m_iSelectionBegin+1), -1, -1));
+	addUndo(new EditCommand(EditCommand::RemoveText,m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd-m_iSelectionBegin+1),m_iSelectionBegin));
 
 	m_szTextBuffer.remove(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1);
 	moveCursorTo(m_iSelectionBegin,false);
@@ -939,7 +949,8 @@ void KviInputEditor::insertText(const QString & szTxt)
 
 	if(szText.indexOf('\n') == -1)
 	{
-		addUndo(Command(Insert, m_iCursorPosition, szText, -1, -1));
+		addUndo(new EditCommand(EditCommand::InsertText,szText,m_iCursorPosition));
+
 		m_szTextBuffer.insert(m_iCursorPosition,szText);
 		m_szTextBuffer.truncate(m_iMaxBufferSize);
 		moveCursorTo(m_iCursorPosition + szText.length());
@@ -973,7 +984,9 @@ void KviInputEditor::insertText(const QString & szTxt)
 
 int KviInputEditor::replaceSegment(int iStart, int iLength, const QString & szText)
 {
+	addUndo(new EditCommand(EditCommand::InsertText,m_szTextBuffer.mid(iStart,iLength),iStart));
 	m_szTextBuffer.remove(iStart, iLength);
+	addUndo(new EditCommand(EditCommand::InsertText,szText,iStart));
 	m_szTextBuffer.insert(iStart, szText);
 	m_szTextBuffer.truncate(m_iMaxBufferSize);
 	repaintWithCursorOn();
@@ -1056,6 +1069,7 @@ void KviInputEditor::selectAll()
 
 void KviInputEditor::clear()
 {
+	addUndo(new EditCommand(EditCommand::RemoveText,m_szTextBuffer,0));
 	m_szTextBuffer = "";
 	selectOneChar(-1);
 	home();
@@ -1063,6 +1077,8 @@ void KviInputEditor::clear()
 
 void KviInputEditor::setText(const QString szText)
 {
+	addUndo(new EditCommand(EditCommand::RemoveText,m_szTextBuffer,0));
+	addUndo(new EditCommand(EditCommand::RemoveText,szText,0));
 	m_szTextBuffer = szText;
 	m_szTextBuffer.truncate(m_iMaxBufferSize);
 	selectOneChar(-1);
@@ -1164,11 +1180,27 @@ void KviInputEditor::returnPressed(bool)
 			g_pColorWindow->hide();
 
 	KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
-	if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)m_pHistory->removeLast();
+	if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
+		m_pHistory->removeLast();
 
 	m_iCurHistoryIdx = -1;
 
 	emit enterPressed();
+}
+
+void KviInputEditor::clearUndoStack()
+{
+	if(m_pUndoStack)
+	{
+		delete m_pUndoStack;
+		m_pUndoStack = NULL;
+	}
+	
+	if(m_pRedoStack)
+	{
+		delete m_pRedoStack;
+		m_pRedoStack = NULL;
+	}
 }
 
 void KviInputEditor::focusInEvent(QFocusEvent *)
@@ -1806,7 +1838,7 @@ void KviInputEditor::insertChar(QChar c)
 	selectOneChar(-1);
 	m_szTextBuffer.insert(m_iCursorPosition,c);
 
-	addUndo(Command(Insert, m_iCursorPosition, c, -1, -1));
+	addUndo(new EditCommand(EditCommand::InsertText,c,m_iCursorPosition));
 
 	moveRightFirstVisibleCharToShowCursor();
 	m_iCursorPosition++;
@@ -1844,7 +1876,6 @@ void KviInputEditor::repaintWithCursorOn()
 
 void KviInputEditor::selectOneChar(int iPos)
 {
-	separate();
 	m_iSelectionBegin = iPos;
 	m_iSelectionEnd   = iPos;
 }
@@ -1896,99 +1927,113 @@ int KviInputEditor::xPositionFromCharIndex(int iChIdx)
 	return iCurXPos;
 }
 
-void KviInputEditor::undo(int iUntil)
+void KviInputEditor::undo()
 {
-	if (!isUndoAvailable())
+	if(!isUndoAvailable())
 		return;
+
+	if(!m_pUndoStack)
+		return; // this should be ensured by isUndoAvailable() but well...
+
 	selectOneChar(-1);
-	while (m_iUndoState && m_iUndoState > iUntil)
+
+	EditCommand * pCommand = m_pUndoStack->takeLast();
+
+	Q_ASSERT(pCommand); // should be true: we delete the empty undo stack
+
+	if(m_pUndoStack->isEmpty())
 	{
-		Command& cmd = m_vUndoStack[--m_iUndoState];
-		switch (cmd.type) {
-			case Insert:
-				m_szTextBuffer.remove(cmd.pos, cmd.us.size());
-				moveCursorTo(cmd.pos);
-				break;
-			case SetSelection:
-				m_iSelectionBegin = cmd.selStart;
-				m_iSelectionEnd   = cmd.selEnd;
-				moveCursorTo(cmd.pos);
-				break;
-			case Remove:
-			case RemoveSelection:
-				m_szTextBuffer.insert(cmd.pos, cmd.us);
-				moveCursorTo(cmd.pos + cmd.us.size());
-				break;
-			case Delete:
-			case DeleteSelection:
-				m_szTextBuffer.insert(cmd.pos, cmd.us);
-				moveCursorTo(cmd.pos);
-				break;
-			case Separator:
-				continue;
-		}
-		if (iUntil < 0 && m_iUndoState)
-		{
-			Command& next = m_vUndoStack[m_iUndoState-1];
-			if (next.type != cmd.type && next.type < RemoveSelection && (cmd.type < RemoveSelection || next.type == Separator))
-				break;
-		}
+		delete m_pUndoStack;
+		m_pUndoStack = NULL;
 	}
+
+	switch(pCommand->type())
+	{
+		case EditCommand::InsertText:
+			m_szTextBuffer.remove(pCommand->startPosition(),pCommand->text().length());
+			moveCursorTo(pCommand->startPosition());
+		break;
+		case EditCommand::RemoveText:
+			m_szTextBuffer.insert(pCommand->startPosition(),pCommand->text());
+			moveCursorTo(pCommand->startPosition()+pCommand->text().length());
+		break;
+		default:
+			Q_ASSERT_X(false,"KviInputEditor::undo","Unexpected EditCommand type");
+			delete pCommand; // argh
+			return;
+		break;
+	}
+	
+	if(!m_pRedoStack)
+	{
+		m_pRedoStack = new KviPointerList<EditCommand>;
+		m_pRedoStack->setAutoDelete(true);
+	}
+	
+	m_pRedoStack->append(pCommand);
+	if(m_pRedoStack->count() > KVI_INPUT_MAX_UNDO_SIZE)
+		m_pRedoStack->removeFirst(); // will delete it
 }
 
 void KviInputEditor::redo()
 {
-	if (!isRedoAvailable())
+	if(!isRedoAvailable())
 		return;
+
+	if(!m_pRedoStack)
+		return; // this should be ensured by isUndoAvailable() but well...
+
 	selectOneChar(-1);
-	while (m_iUndoState < (int)m_vUndoStack.size())
+
+	EditCommand * pCommand = m_pRedoStack->takeLast();
+
+	Q_ASSERT(pCommand); // should be true: we delete the empty redo stack
+
+	if(m_pRedoStack->isEmpty())
 	{
-		Command& cmd = m_vUndoStack[m_iUndoState++];
-		switch (cmd.type)
-		{
-			case Insert:
-				m_szTextBuffer.insert(cmd.pos, cmd.us);
-				moveCursorTo(cmd.pos+cmd.us.size());
-				break;
-			case SetSelection:
-				m_iSelectionBegin = cmd.selStart;
-				m_iSelectionEnd   = cmd.selEnd;
-				moveCursorTo(cmd.pos);
-				break;
-			case Remove:
-			case Delete:
-			case RemoveSelection:
-			case DeleteSelection:
-				m_szTextBuffer.remove(cmd.pos, cmd.us.size());
-				moveCursorTo(cmd.pos);
-				break;
-			case Separator:
-				m_iSelectionBegin = cmd.selStart;
-				m_iSelectionEnd   = cmd.selEnd;
-				moveCursorTo(cmd.pos);
-				break;
-		}
-		if (m_iUndoState < (int)m_vUndoStack.size())
-		{
-			Command& next = m_vUndoStack[m_iUndoState];
-			if (next.type != cmd.type && cmd.type < RemoveSelection && next.type != Separator
-				&& (next.type < RemoveSelection || cmd.type == Separator))
-				break;
-		}
+		delete m_pRedoStack;
+		m_pRedoStack = NULL;
 	}
+
+	switch(pCommand->type())
+	{
+		case EditCommand::InsertText:
+			m_szTextBuffer.insert(pCommand->startPosition(),pCommand->text());
+			moveCursorTo(pCommand->startPosition()+pCommand->text().length());
+		break;
+		case EditCommand::RemoveText:
+			m_szTextBuffer.remove(pCommand->startPosition(),pCommand->text().length());
+			moveCursorTo(pCommand->startPosition());
+		break;
+		default:
+			Q_ASSERT_X(false,"KviInputEditor::redo","Unexpected EditCommand type");
+			delete pCommand; // argh
+			return;
+		break;
+	}
+	
+	if(!m_pUndoStack)
+	{
+		m_pUndoStack = new KviPointerList<EditCommand>;
+		m_pUndoStack->setAutoDelete(true);
+	}
+	
+	m_pUndoStack->append(pCommand);
+	if(m_pUndoStack->count() > KVI_INPUT_MAX_UNDO_SIZE)
+		m_pUndoStack->removeFirst(); // will delete it
 }
 
-void KviInputEditor::addUndo(const Command & cmd)
+void KviInputEditor::addUndo(EditCommand * pCommand)
 {
-	if (separator && m_iUndoState && m_vUndoStack[m_iUndoState-1].type != Separator)
+	if(!m_pUndoStack)
 	{
-		m_vUndoStack.resize(m_iUndoState + 2);
-		m_vUndoStack[m_iUndoState++] = Command(Separator, m_iCursorPosition, 0, m_iSelectionBegin, m_iSelectionEnd);
-	} else {
-		m_vUndoStack.resize(m_iUndoState + 1);
+		m_pUndoStack = new KviPointerList<EditCommand>;
+		m_pUndoStack->setAutoDelete(true);
 	}
-	separator = false;
-	m_vUndoStack[m_iUndoState++] = cmd;
+	m_pUndoStack->append(pCommand);
+
+	if(m_pUndoStack->count() > KVI_INPUT_MAX_UNDO_SIZE)
+		m_pUndoStack->removeFirst(); // will delete it
 }
 
 void KviInputEditor::openHistory()
@@ -2207,12 +2252,14 @@ void KviInputEditor::pasteInternal()
 
 void KviInputEditor::undoInternal()
 {
-	if(!m_bReadOnly) undo();
+	if(!m_bReadOnly)
+		undo();
 }
 
 void KviInputEditor::redoInternal()
 {
-	if(!m_bReadOnly) redo();
+	if(!m_bReadOnly)
+		redo();
 }
 
 void KviInputEditor::selectAllInternal()
@@ -2432,6 +2479,7 @@ void KviInputEditor::backspaceHit()
 	if(hasSelection() && (m_iSelectionEnd >= m_iCursorPosition-1) && (m_iSelectionBegin <= m_iCursorPosition))
 	{
 		//remove the selection
+		addUndo(new EditCommand(EditCommand::RemoveText,m_szTextBuffer.mid(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1),m_iSelectionBegin));
 		m_szTextBuffer.remove(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1);
 		m_iCursorPosition = m_iSelectionBegin;
 		if(m_iFirstVisibleChar > m_iCursorPosition)
@@ -2439,6 +2487,7 @@ void KviInputEditor::backspaceHit()
 	} else if(m_iCursorPosition > 0)
 	{
 		m_iCursorPosition--;
+		addUndo(new EditCommand(EditCommand::RemoveText,m_szTextBuffer.mid(m_iCursorPosition,1),m_iCursorPosition));
 		m_szTextBuffer.remove(m_iCursorPosition,1);
 		if(m_iFirstVisibleChar > m_iCursorPosition)
 			m_iFirstVisibleChar--;

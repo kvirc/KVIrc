@@ -629,7 +629,8 @@ public:
 	*/
 	T * takeFirst()
 	{
-		if(!m_pHead)return NULL;
+		if(!m_pHead)
+			return NULL;
 		T * pData = (T *)m_pHead->m_pData;
 		if(m_pHead->m_pNext)
 		{
@@ -641,6 +642,32 @@ public:
 			m_pHead = NULL;
 			m_pTail = NULL;
 		}
+		m_pAux = NULL;
+		m_uCount--;
+		return pData;
+	}
+
+
+	/**
+	* \brief Removes the last item (if any) and returns it.  This function obviously never
+	* deletes the item (regadless of autoDeletion()).
+	*/
+	T * takeLast()
+	{
+		if(!m_pTail)
+			return NULL;
+		T * pData = (T *)m_pTail->m_pData;
+		if(m_pTail->m_pPrev)
+		{
+			m_pTail = m_pTail->m_pPrev;
+			delete m_pTail->m_pNext;
+			m_pTail->m_pNext = NULL;
+		} else {
+			delete m_pTail;
+			m_pHead = NULL;
+			m_pTail = NULL;
+		}
+		m_pAux = NULL;
 		m_uCount--;
 		return pData;
 	}

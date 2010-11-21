@@ -150,18 +150,105 @@ protected:
 	KviTalPopupMenu         * m_pIconMenu;
 	bool                      m_bReadOnly;
 
-	// undo/redo handling
-	enum CommandType { Separator, Insert, Remove, Delete, RemoveSelection, DeleteSelection, SetSelection };
-	struct Command {
-		inline Command() {}
-		inline Command(CommandType t, int p, QString c, int ss, int se) : type(t),us(c),pos(p),selStart(ss),selEnd(se) {}
-		uint type : 4;
-		QString us;
-		int pos, selStart, selEnd;
+	class EditCommand
+	{
+	public:
+		enum Type
+		{
+			///
+			/// Text insertion. Has text, position previous to the insert and length of the insert.
+			///
+			InsertText,
+			///
+			/// Text removal, Has text, position previous to the removal and length of the removed data.
+			///
+			RemoveText
+		};
+	private:
+		///
+		/// the type of the command
+		///
+		Type m_eType;
+
+		///
+		/// the text of the command
+		///
+		QString m_szText;
+
+		///
+		/// the start position
+		///
+		int m_iStartPosition;
+
+	public:
+		EditCommand(Type eType,const QString &szText,int iStartPosition)
+			: m_eType(eType), m_szText(szText), m_iStartPosition(iStartPosition)
+		{
+		}
+
+		///
+		/// Sets the start position
+		///
+		void setStartPosition(int iStartPosition)
+		{
+			m_iStartPosition = iStartPosition;
+		}
+	
+		///
+		/// Returns the start position
+		///
+		int startPosition() const
+		{
+			return m_iStartPosition;
+		}
+	
+
+		///
+		/// Sets the text of the command
+		///
+		void setText(const QString &szText)
+		{
+			m_szText = szText;
+		}
+	
+		///
+		/// Returns the text of the command
+		///
+		const QString & text() const
+		{
+			return m_szText;
+		}
+	
+
+		///
+		/// Sets the type of the command
+		///
+		void setType(const Type &eType)
+		{
+			m_eType = eType;
+		}
+	
+		///
+		/// Returns the type of the command
+		///
+		const Type & type() const
+		{
+			return m_eType;
+		}
 	};
-	QVector<Command>          m_vUndoStack;
-	int                       m_iUndoState; // FIXME: this is an index, not a state
-	bool                      separator;
+
+	///
+	/// The undo stack. Contains owned pointers and has autodelete set to true.
+	/// The most recent command is at the end. Null when no undo is available.
+	///
+	KviPointerList<EditCommand> * m_pUndoStack;
+
+	///
+	/// The redo stack. Contains owned pointers and has autodelete set to true.
+	/// The most recently undone command is at the end. Null when no redo is available.
+	///
+	KviPointerList<EditCommand> * m_pRedoStack;
+
 public:
 	/**
 	* \brief Returns the height of the editor
@@ -227,6 +314,12 @@ public:
 	* \return bool
 	*/
 	bool isReadOnly() const { return m_bReadOnly; };
+
+	/**
+	* \brief Clears the undo stack.
+	*/
+	void clearUndoStack();
+
 private:
 	/**
 	* \brief Replaces the word before the cursor
@@ -415,26 +508,20 @@ private:
 	* \brief Returns true is there are some action in the undo stack
 	* \return bool
 	*/
-	inline bool isUndoAvailable() const { return !m_bReadOnly && m_iUndoState; }
+	inline bool isUndoAvailable() const { return !m_bReadOnly && m_pUndoStack; }
 
 	/**
 	* \brief Returns true is there are some action in the redo stack
 	* \return bool
 	*/
-	inline bool isRedoAvailable() const { return !m_bReadOnly && m_iUndoState < (int)m_vUndoStack.size(); }
-
-	/**
-	* \brief Inserts an action separator in the undo stack
-	* \return void
-	*/
-	inline void separate(){ separator = true;}
+	inline bool isRedoAvailable() const { return !m_bReadOnly && m_pRedoStack; }
 
 	/**
 	* \brief Inserts one action in the undo stack
 	* \param cmd The command struct representing the action
 	* \return void
 	*/
-	void addUndo(const Command & cmd);
+	void addUndo(EditCommand * pCommand);
 
 	/**
 	* \brief Returns the current input editor font metrics (globally shared)
@@ -500,10 +587,9 @@ public slots:
 
 	/**
 	* \brief Undo the last action
-	* \param iUntil Undo all actions up to the one with id iUntil
 	* \return void
 	*/
-	void undo(int iUntil = -1);
+	void undo();
 
 	/**
 	* \brief Redo the last undo-ed action
