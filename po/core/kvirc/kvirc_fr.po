@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kvirc_fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-10-20 14:18+0200\n"
-"PO-Revision-Date: 2010-10-31 13:08+0100\n"
+"PO-Revision-Date: 2010-11-21 16:05+0100\n"
 "Last-Translator: ealexp <ealexp@ealexp.eu>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:643
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] a été kické(e) de \r!c\r%Q\r par \r!n\r%Q\r [%Q@\r!h\r%Q\r : %Q"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] a été kické(e) de \r!c\r%Q\r par \r!n\r%Q\r [%Q@\r!h\r%Q\r] : %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1456
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""
@@ -142,7 +142,7 @@ msgstr "%1 est %2 (%3)"
 
 #: src/kvirc/ui/kvi_userlistview.cpp:1612
 msgid "%1 is an <b>IrcOp</b>"
-msgstr "%1 est un <b>IrcOp</b>"
+msgstr "%1 est un <b>opérateur IRC</b>"
 
 #: src/kvirc/ui/kvi_query.cpp:203
 msgid "%1 is probably away"
@@ -1944,11 +1944,11 @@ msgstr "Choisir la police d'écriture"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2065
 msgid "Choose Temporary Background..."
-msgstr "Choisissez un fond Temporaire..."
+msgstr "Choisir un fond temporaire..."
 
 #: src/kvirc/ui/kvi_ircview.cpp:2064
 msgid "Choose Temporary Font..."
-msgstr "Choisissez une police Temporaire..."
+msgstr "Choisir une police temporaire..."
 
 #: src/modules/setup/setupwizard.cpp:773
 msgid "Choose a Configuration Folder - KVIrc Setup"
@@ -5095,11 +5095,11 @@ msgstr "Privé"
 
 #: src/kvirc/ui/kvi_window.cpp:415
 msgid "Private Text Encoding"
-msgstr "Encodage du Texte Privé"
+msgstr "Encodage de mon texte"
 
 #: src/kvirc/ui/kvi_console.cpp:386
 msgid "Probably Away"
-msgstr "Probablement Absent"
+msgstr "Probablement absent"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1782
 msgid "Processing DCC %Q request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%s %s)"
@@ -5416,7 +5416,7 @@ msgstr "Enregistré"
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:170
 msgid "Registered Channels"
-msgstr "Salons Enregistrés"
+msgstr "Salons enregistrés"
 
 #: src/kvirc/ui/kvi_console.cpp:344
 msgid "Registered as"
@@ -5736,7 +5736,7 @@ msgstr "Le serveur %Q a le pseudonyme : %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:199
 msgid "Server %Q version %S supporting user modes '%S' and channel modes '%S'"
-msgstr "Le serveur %Q, version %S,  ne supporte pas les modes utilisateur '%S' et modes de salon '%S'"
+msgstr "Le serveur %Q, version %S, supporte les modes utilisateur '%S' et les modes de salon '%S'"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:154
 msgid "Server ERROR: %Q"
@@ -5748,7 +5748,7 @@ msgstr "Message du jour du serveur"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:930
 msgid "Server Notices (+s)"
-msgstr "Notices Serveur (+s)"
+msgstr "Notices du serveur (+s)"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:1262
 msgid "Server X509 certificate"
@@ -5760,7 +5760,7 @@ msgstr "Le serveur semble être un concentrateur du réseau<br>"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2168
 msgid "Server capabilities: %Q"
-msgstr "Capacité du serveru : %Q"
+msgstr "Capacité du serveur : %Q"
 
 #: src/kvirc/kernel/kvi_options.cpp:858
 msgid "Server error"
@@ -6466,7 +6466,7 @@ msgstr "Le serveur n'a pas fourni un certificat"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1115
 msgid "The server does not support STARTTLS command. Your connection will NOT be encrypted"
-msgstr "Le serveur ne supporte pas la commande STARTTLS. Votre connexion ne sera PAS crypter."
+msgstr "Le serveur ne supporte pas la commande STARTTLS. Votre connexion ne sera PAS cryptée"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1027
 msgid "The server is refusing all the login nicknames: giving up, you must send the nickname manually"
@@ -6475,7 +6475,7 @@ msgstr "Le serveur refuse tous les pseudos d'enregistrement : vous devez donc e
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1437
 #, c-format
 msgid "The server refused the suggested nickname (%s) and named you %s instead"
-msgstr "Le serveur refuse le pseudo que vous avez suggéré (%s) et vous a renommé en %s à la place"
+msgstr "Le serveur a refusé le pseudo que vous avez suggéré (%s) et vous a renommé en %s à la place"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:983
 msgid "The server reports a hostname differing from what KVIrc set for the local hostname."
@@ -7127,7 +7127,7 @@ msgstr "Mise à jour du statut d'absence pour le salon %Q"
 
 #: src/kvirc/ui/kvi_window.cpp:699
 msgid "Use Default Encoding"
-msgstr "Utiliser l'Encodage par Défaut"
+msgstr "Utiliser l'encodage par défaut"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:179
 msgid "Use doubleclick to edit item"
@@ -7148,7 +7148,7 @@ msgstr "Utiliser le moteur de chiffrage"
 #: src/kvirc/ui/kvi_channel.cpp:149
 #: src/kvirc/ui/kvi_channel.cpp:233
 msgid "User List"
-msgstr "Liste des Utilisateurs"
+msgstr "Liste des utilisateurs"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:910
 msgid "User Mode"
@@ -7272,11 +7272,11 @@ msgstr "Besoin d'une variable ou d'un identifiant"
 
 #: src/kvirc/kernel/kvi_options.cpp:853
 msgid "Verbose/Debug"
-msgstr "Verbose/Débogage"
+msgstr "Verbeux/Débogage"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3059
 msgid "Vertical Center"
-msgstr "Centrage Vertical"
+msgstr "Centrage vertical"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:190
 #: src/kvilib/ext/avdevice/videodevice.cpp:3057
@@ -7554,11 +7554,11 @@ msgstr "Votre mode utilisateur est %s"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2062
 msgid "Zoom In"
-msgstr "Zoom Positif"
+msgstr "Zoom positif"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2063
 msgid "Zoom Out"
-msgstr "Zoom Négatif"
+msgstr "Zoom négatif"
 
 #: src/kvirc/kernel/kvi_sslmaster.cpp:140
 #: src/kvirc/kernel/kvi_sslmaster.cpp:163
