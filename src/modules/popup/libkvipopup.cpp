@@ -49,7 +49,7 @@
 	if(!pPopup) \
 	{ \
 		if(!c->hasSwitch('q',"quiet")) \
-			c->warning(__tr2qs_ctx("Popup \"%Q\" does not exists","kvs"),&szPopupName); \
+			c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szPopupName); \
 		return true; \
 	} \
 	if(pPopup->isLocked()) \
@@ -64,7 +64,7 @@
 		if(!pPopup) \
 		{ \
 			if(!c->hasSwitch('q',"quiet")) \
-				c->warning(__tr2qs_ctx("Subpopup \"%Q.%Q\" does not exists","kvs"),&szPopupName, &szSubPopupName); \
+				c->warning(__tr2qs_ctx("Subpopup \"%Q.%Q\" does not exist","kvs"),&szPopupName, &szSubPopupName); \
 			return true; \
 		} \
 		if(pPopup->isLocked()) \
@@ -95,7 +95,7 @@
 	KviKvsPopupMenu * pPopup = KviKvsPopupManager::instance()->lookup(szPopupName); \
 	if(!pPopup) \
 	{ \
-		c->warning(__tr2qs_ctx("Popup \"%Q\" does not exists","kvs"),&szPopupName); \
+		c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szPopupName); \
 		return true; \
 	} \
 	if(!szSubPopupName.isEmpty()) \
@@ -103,7 +103,7 @@
 		pPopup = pPopup->findChildPopupByName(szSubPopupName); \
 		if(!pPopup) \
 		{ \
-			c->warning(__tr2qs_ctx("Subpopup \"%Q.%Q\" does not exists","kvs"),&szPopupName, &szSubPopupName); \
+			c->warning(__tr2qs_ctx("Subpopup \"%Q.%Q\" does not exist","kvs"),&szPopupName, &szSubPopupName); \
 			return true; \
 		} \
 	}
@@ -125,8 +125,8 @@
 		!sw: -q | --quiet
 		Run quietly: don't print warning and errors
 	@description:
-		Adds a menu item with visible <text> and the optional <icon> to an already existing popup or 
-		nested popup named <popupname>. If you want to add an item to a nested popup, use the form 
+		Adds a menu item with visible <text> and the optional <icon> to an already existing popup or
+		nested popup named <popupname>. If you want to add an item to a nested popup, use the form
 		"popup.item".[br]
 		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
 		identifiers and variables.[br]
@@ -266,8 +266,8 @@ static bool popup_kvs_cmd_addEpilogue(KviKvsModuleCallbackCommandCall * c)
 		!sw: -q | --quiet
 		Run quietly: don't print warning and errors
 	@description:
-		Adds a nested popup item with visible <text> and the optional <icon> to an already existing popup or 
-		nested popup named <popupname>. If you want to add an item to a nested popup, use the form 
+		Adds a nested popup item with visible <text> and the optional <icon> to an already existing popup or
+		nested popup named <popupname>. If you want to add an item to a nested popup, use the form
 		"popup.item".[br]
 		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
 		identifiers and variables.[br]
@@ -315,7 +315,7 @@ static bool popup_kvs_cmd_addExtPopup(KviKvsModuleCommandCall * c)
 		Run quietly: don't print warning and errors
 	@description:
 		Adds a descriptive label with visible <text> and the optional <icon> to an already existing popup or
-		nested popup named <popupname>. If you want to add an item to a nested popup, use the form 
+		nested popup named <popupname>. If you want to add an item to a nested popup, use the form
 		"popup.item". The label acts like a separator - it is not selectable or clickable.[br]
 		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
 		identifiers and variables.[br]
@@ -360,8 +360,8 @@ static bool popup_kvs_cmd_addLabel(KviKvsModuleCommandCall * c)
 		!sw: -q | --quiet
 		Run quietly: don't print warning and errors
 	@description:
-		Adds an empty nested popup item with visible <text> and the optional <icon> to an already existing popup or 
-		nested popup named <popupname>. If you want to add an item to a nested popup, use the form 
+		Adds an empty nested popup item with visible <text> and the optional <icon> to an already existing popup or
+		nested popup named <popupname>. If you want to add an item to a nested popup, use the form
 		"popup.item".[br]
 		<text> is a string that is evaluated at [cmd]popup[/cmd] call time and may contain
 		identifiers and variables.[br]
@@ -408,7 +408,7 @@ static bool popup_kvs_cmd_addSubPopup(KviKvsModuleCommandCall * c)
 		Run quietly: don't print warning and errors
 	@description:
 		Adds a separator (typically drawn as a straight line) to an already existing popup or
-		nested popup named <popupname>. If you want to add an item to a nested popup, use the form 
+		nested popup named <popupname>. If you want to add an item to a nested popup, use the form
 		"popup.item". The separator is not selectable or clickable.[br]
 		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
 		If <condition> is given, it is evaluated at [cmd]popup.show[/cmd] call time and if the
@@ -540,7 +540,7 @@ static bool popup_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 	if(!pPopup)
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs_ctx("Popup \"%Q\" does not exists","kvs"),&szPopupName);
+			c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szPopupName);
 		return true;
 	}
 	if(pPopup->isLocked())
@@ -646,7 +646,7 @@ static bool popup_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 	if(!pPopup)
 	{
 		c->returnValue()->setBoolean(false);
-		return true; 
+		return true;
 	}
 	if(!szSubPopupName.isEmpty())
 	{
@@ -686,7 +686,7 @@ static bool popup_kvs_fnc_isEmpty(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	GET_KVS_POPUP_FNC
-	
+
 	c->returnValue()->setBoolean(pPopup->isEmpty());
 	return true;
 }
@@ -785,7 +785,7 @@ static bool popup_module_init(KviModule *m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"addLabel",popup_kvs_cmd_addLabel);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"addSubPopup",popup_kvs_cmd_addSubPopup);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"addSeparator",popup_kvs_cmd_addSeparator);
-	
+
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"clear",popup_kvs_cmd_clear);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"create",popup_kvs_cmd_create);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"delItem",popup_kvs_cmd_delItem);
