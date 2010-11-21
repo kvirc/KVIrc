@@ -1340,6 +1340,10 @@ defpopup(windowpopup)
 
 	separator
 
+	item($tr("Close","defscript"), 1) window.close
+
+	separator
+
 	extpopup(Logging,logging,119)
 
 	item($tr("Set window props as default","defscript"), 10) window.savePropertiesAsDefault
