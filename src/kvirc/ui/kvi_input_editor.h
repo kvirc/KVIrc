@@ -159,8 +159,8 @@ protected:
 		QString us;
 		int pos, selStart, selEnd;
 	};
-	QVector<Command>          history;
-	int                       undoState;
+	QVector<Command>          m_vUndoStack;
+	int                       m_iUndoState; // FIXME: this is an index, not a state
 	bool                      separator;
 public:
 	/**
@@ -415,13 +415,13 @@ private:
 	* \brief Returns true is there are some action in the undo stack
 	* \return bool
 	*/
-	inline bool isUndoAvailable() const { return !m_bReadOnly && undoState; }
+	inline bool isUndoAvailable() const { return !m_bReadOnly && m_iUndoState; }
 
 	/**
 	* \brief Returns true is there are some action in the redo stack
 	* \return bool
 	*/
-	inline bool isRedoAvailable() const { return !m_bReadOnly && undoState < (int)history.size(); }
+	inline bool isRedoAvailable() const { return !m_bReadOnly && m_iUndoState < (int)m_vUndoStack.size(); }
 
 	/**
 	* \brief Inserts an action separator in the undo stack
@@ -434,7 +434,7 @@ private:
 	* \param cmd The command struct representing the action
 	* \return void
 	*/
-	void addCommand(const Command & cmd);
+	void addUndo(const Command & cmd);
 
 	/**
 	* \brief Returns the current input editor font metrics (globally shared)
