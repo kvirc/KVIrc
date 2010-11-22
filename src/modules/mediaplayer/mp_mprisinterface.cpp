@@ -539,4 +539,22 @@ KviMediaPlayerInterface::PlayerStatus KviSongbirdInterface::status()
 	return KviMediaPlayerInterface::Playing;
 }
 
+/* Totem interface */
+MP_IMPLEMENT_DESCRIPTOR(
+	KviTotemInterface,
+	"totem",
+	__tr2qs_ctx(
+		"An interface to Totem.\n" \
+		"Download it from http://projects.gnome.org/totem/\n"
+		,
+		"mediaplayer"
+	)
+)
+
+KviTotemInterface::KviTotemInterface()
+: KviMPRISInterface()
+{
+	m_szServiceName = "org.mpris.Totem";
+}
+
 #endif //COMPILE_ON_WINDOWS

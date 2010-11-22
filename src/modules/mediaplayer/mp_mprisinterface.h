@@ -102,12 +102,18 @@
 	public:
 		KviXmms2Interface();
 	};
-	
+
 	class KviSongbirdInterface : public KviMPRISInterface
 	{
 	public:
 		KviSongbirdInterface();
 		virtual KviMediaPlayerInterface::PlayerStatus status();
+	};
+
+	class KviTotemInterface : public KviMPRISInterface
+	{
+	public:
+		KviTotemInterface();
 	};
 
 	MP_DECLARE_DESCRIPTOR(KviAudaciousInterface)
@@ -116,6 +122,7 @@
 	MP_DECLARE_DESCRIPTOR(KviQmmpInterface)
 	MP_DECLARE_DESCRIPTOR(KviXmms2Interface)
 	MP_DECLARE_DESCRIPTOR(KviSongbirdInterface)
+	MP_DECLARE_DESCRIPTOR(KviTotemInterface)
 
 #endif //COMPILE_ON_WINDOWS
 
