@@ -53,7 +53,13 @@ The source tree
 |
 |-- po                    Internationalization (i18n :)
 |   |
-|   |-- core              Translations for kvilib and the main KVIrc executable
+|   |-- core              Translations for the main application
+|   |   |
+|   |   |-- defscript     Translations for the default script
+|   |   |
+|   |   |-- kvirc         Translations for kvilib and main KVIrc executable
+|   |   |
+|   |   `-- kvs           Translations for the script parser
 |   |
 |   `-- modules           Translations for the modules
 |

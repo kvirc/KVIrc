@@ -4,7 +4,7 @@
 //   Creation date : Tue 07 Oct 2003 01:22:37 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "kvi_kvs_hash.h"
 
 KviKvsHash::KviKvsHash()
@@ -32,11 +30,11 @@ KviKvsHash::KviKvsHash()
 	m_pDict->setAutoDelete(true);
 }
 
-KviKvsHash::KviKvsHash(const KviKvsHash &h)
+KviKvsHash::KviKvsHash(const KviKvsHash & hash)
 {
 	m_pDict = new KviPointerHashTable<QString,KviKvsVariant>();
 	m_pDict->setAutoDelete(true);
-	KviPointerHashTableIterator<QString,KviKvsVariant> it(*(h.m_pDict));
+	KviPointerHashTableIterator<QString,KviKvsVariant> it(*(hash.m_pDict));
 	while(it.current())
 	{
 		m_pDict->replace(it.currentKey(),new KviKvsVariant(*(it.current())));
@@ -49,48 +47,53 @@ KviKvsHash::~KviKvsHash()
 	delete m_pDict;
 }
 
-void KviKvsHash::appendAsString(QString &szBuffer) const
+void KviKvsHash::appendAsString(QString & szBuffer) const
 {
 	KviPointerHashTableIterator<QString,KviKvsVariant> it(*m_pDict);
 	bool bNeedComma = false;
-	while(KviKvsVariant * s = it.current())
+	while(KviKvsVariant * pVariant = it.current())
 	{
-		if(bNeedComma)szBuffer.append(',');
-		else bNeedComma = true;
-		s->appendAsString(szBuffer);
+		if(bNeedComma)
+			szBuffer.append(',');
+		else
+			bNeedComma = true;
+		pVariant->appendAsString(szBuffer);
 		++it;
 	}
 }
 
-void KviKvsHash::serialize(QString& result)
+void KviKvsHash::serialize(QString & szResult)
 {
-	QString tmpBuffer;
-	result="{";
+	QString szTmp;
+	szResult = "{";
 	KviPointerHashTableIterator<QString,KviKvsVariant> it(*m_pDict);
 	bool bNeedComma = false;
-	while(KviKvsVariant * s = it.current())
+	while(KviKvsVariant * pVariant = it.current())
 	{
-		if(bNeedComma)result.append(',');
-		else bNeedComma = true;
+		if(bNeedComma)
+			szResult.append(',');
+		else
+			bNeedComma = true;
 
-		tmpBuffer = it.currentKey();
-		KviKvsVariant::serializeString(tmpBuffer);
-		result.append(tmpBuffer);
+		szTmp = it.currentKey();
+		KviKvsVariant::serializeString(szTmp);
+		szResult.append(szTmp);
 
-		result.append(":");
-		s->serialize(tmpBuffer);
-		result.append(tmpBuffer);
+		szResult.append(":");
+		pVariant->serialize(szTmp);
+		szResult.append(szTmp);
 
 		++it;
 	}
-	result.append('}');
+	szResult.append('}');
 }
 
-KviKvsVariant * KviKvsHash::get(const QString &szKey)
+KviKvsVariant * KviKvsHash::get(const QString & szKey)
 {
-	KviKvsVariant * v = m_pDict->find(szKey);
-	if(v)return v;
-	v = new KviKvsVariant();
-	m_pDict->replace(szKey,v);
-	return v;
+	KviKvsVariant * pVariant = m_pDict->find(szKey);
+	if(pVariant)
+		return pVariant;
+	pVariant = new KviKvsVariant();
+	m_pDict->replace(szKey,pVariant);
+	return pVariant;
 }

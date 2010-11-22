@@ -6,7 +6,7 @@
 //   Creation date : Thu 25 Sep 2003 05.12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2003-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -52,9 +52,6 @@ class KviKvsRunTimeContext;
 	#undef Success
 #endif
 
-
-
-
 /**
 * \class KviKvsScript
 * \brief The KVIrc Script class
@@ -67,32 +64,35 @@ class KVIRC_API KviKvsScript : public KviHeapObject
 public:
 	/**
 	* \enum RunStatus
+	* \brief Holds the run status of the script
 	*/
 	enum RunStatus {
-		Error = 0, /**< The script returned an error */
-		Success = 1, /**< The script ran successfully */
-		HaltEncountered = 2 /**< The script ran successfully and halt was encountered */
+		Error           = 0,   /**< The script returned an error */
+		Success         = 1,   /**< The script ran successfully */
+		HaltEncountered = 2    /**< The script ran successfully and halt was encountered */
 	};
 
 	/**
 	* \enum ScriptType
+	* \brief Holds the type of the script
 	*/
 	enum ScriptType {
-		InstructionList, /**< The most common script type: a sequence of instructions */
-		Expression, /**< An expression to be evaluated as in a $() call (pRetVal should be always set!) */
-		Parameter /**< A parameter to be evaluated (pRetVal should be always set!) */
+		InstructionList,   /**< The most common script type: a sequence of instructions */
+		Expression,        /**< An expression to be evaluated as in a $() call (pRetVal should be always set!) */
+		Parameter          /**< A parameter to be evaluated (pRetVal should be always set!) */
 	};
 
 	/**
 	* \enum RunFlags
+	* \brief Holds the run flags of the script
 	*/
 	enum RunFlags {
-		PreserveParams = 1, /**< Do not delete the eventual parameters passed (only execute() and run()) */
+		PreserveParams = 1,   /**< Do not delete the eventual parameters passed (only execute() and run()) */
 		// FIXME: This should be a global option, eventually
-		AssumeLocals = 2, /**< Assume that the variables are local unless explicitly declared (flag used only for parse()) */
+		AssumeLocals   = 2,   /**< Assume that the variables are local unless explicitly declared (flag used only for parse()) */
 		// FIXME: This should be a global option, eventually
-		Pedantic = 4, /**< Be more pedantic: spit more warnings and sometimes more errors */
-		Quiet = 8 /**< Don't print any errors */
+		Pedantic       = 4,   /**< Be more pedantic: spit more warnings and sometimes more errors */
+		Quiet          = 8    /**< Don't print any errors */
 	};
 public:
 	/**

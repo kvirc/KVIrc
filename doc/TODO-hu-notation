@@ -282,7 +282,6 @@ kvi_kvs_object_functioncall.h
 kvi_kvs_treenode_arraycount.h
 kvi_kvs_treenode_extendedscopevariable.h
 kvi_kvs_runtimecall.h
-kvi_kvs_hash.h
 kvi_kvs_kernel.h
 kvi_kvs_treenode_baseobjectfunctioncall.h
 kvi_kvs_corefunctions.h
@@ -351,7 +350,6 @@ kvi_kvs_treenode_modulecallbackcommand.h
 kvi_kvs_treenode_scopeoperator.h
 kvi_kvs_runtimecontext.h
 kvi_kvs_treenode_hashcount.h
-kvi_kvs_script.h
 kvi_kvs_treenode_specialcommandcontinue.h
 kvi_kvs_treenode_arrayreferenceassert.h
 kvi_kvs_asyncdnsoperation.h
@@ -395,7 +393,6 @@ kvi_kvs_object_functioncall.cpp
 kvi_kvs_treenode_scopeoperator.cpp
 kvi_kvs_runtimecall.cpp
 kvi_kvs_treenode_arrayreferenceassert.cpp
-kvi_kvs_script.cpp
 kvi_kvs_treenode_functioncall.cpp
 kvi_kvs_treenode_expression.cpp
 kvi_kvs_runtimecontext.cpp
@@ -464,7 +461,6 @@ kvi_kvs_treenode_instructionblock.cpp
 kvi_kvs_report.cpp
 kvi_kvs_corefunctions_sz.cpp
 kvi_kvs_object_controller.cpp
-kvi_kvs_hash.cpp
 kvi_kvs_object_class.cpp
 kvi_kvs_kernel.cpp
 kvi_kvs_corefunctions.cpp

@@ -6,7 +6,7 @@
 //   Creation date : Tue 07 Oct 2003 01:22:37 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,41 +24,114 @@
 //
 //=============================================================================
 
-#include "kvi_settings.h"
+/**
+* \file kvi_kvs_hash.h
+* \author Szymon Stefanek
+* \brief Handling of hash data type in KVS
+*/
 
+#include "kvi_settings.h"
 #include "kvi_pointerhashtable.h"
 #include "kvi_qstring.h"
-
 #include "kvi_kvs_variant.h"
 #include "kvi_heapobject.h"
 
 typedef KVIRC_API_TYPEDEF KviPointerHashTableIterator<QString,KviKvsVariant> KviKvsHashIterator;
 
-// This class must not have virtual funcitons nor destructor
-// Otherwise it will happily crash on windows when it is
-// allocated in modules and destroyed anywhere else around...
+/**
+* \class KviKvsHash
+* \brief This class defines a new data type which contains hash data
+* \warning This class must not have virtual functions nor destructor. Otherwise it will happily
+* crash on windows when it is allocated in modules and destroyed anywhere else around
+*/
 class KVIRC_API KviKvsHash : public KviHeapObject
 {
 public:
+	/**
+	* \brief Constructs the hash data
+	* \return KviKvsHash
+	*/
 	KviKvsHash();
-	KviKvsHash(const KviKvsHash &h);
+
+	/**
+	* \brief Constructs the hash data
+	* 
+	* This is a carbon copy
+	* \param array The hash to copy from
+	* \return KviKvsHash
+	*/
+	KviKvsHash(const KviKvsHash & hash);
+
+	/**
+	* \brief Destroys the array data
+	*/
 	~KviKvsHash();
 protected:
 	KviPointerHashTable<QString,KviKvsVariant> * m_pDict;
 public:
-	void unset(const QString &szKey){ m_pDict->remove(szKey); };
-	void set(const QString &szKey,KviKvsVariant * pVal){ m_pDict->replace(szKey,pVal); };
-	KviKvsVariant * find(const QString &szKey) const { return m_pDict->find(szKey); };
-	KviKvsVariant * get(const QString &szKey);
+	/**
+	* \brief Unsets an element from the hash
+	* \param szKey The key of the element to unset
+	* \return void
+	*/
+	void unset(const QString & szKey){ m_pDict->remove(szKey); };
 
+	/**
+	* \brief Sets an element into the hash
+	* \param szKey The key of the element to set
+	* \param pVal The value to set
+	* \return void
+	*/
+	void set(const QString & szKey, KviKvsVariant * pVal){ m_pDict->replace(szKey,pVal); };
+
+	/**
+	* \brief Returns the element associated to the given key
+	* \param szKey The key of the element to retrieve
+	* \return KviKvsVariant *
+	*/
+	KviKvsVariant * find(const QString & szKey) const { return m_pDict->find(szKey); };
+
+	/**
+	* \brief Returns the element associated to the given key
+	* 
+	* If the element doesn't exists, it returns an empty element. If the index is out of
+	* hash bounds, it increases the hash size, fillin the hash in with empty strings.
+	* \param szKey The key of the element to retrieve
+	* \return KviKvsVariant *
+	*/
+	KviKvsVariant * get(const QString & szKey);
+
+	/**
+	* \brief Returns true if the hash is empty
+	* \return bool
+	*/
 	bool isEmpty() const { return m_pDict->isEmpty(); };
+
+	/**
+	* \brief Returns the size of the hash
+	* \return kvs_uint_t
+	*/
 	kvs_uint_t size() const { return m_pDict->count(); };
 
-	void appendAsString(QString &szBuffer) const;
+	/**
+	* \brief Appends data to the hash converting it into a string
+	* \param szBuffer The string to append
+	* \return void
+	*/
+	void appendAsString(QString & szBuffer) const;
 
+	/**
+	* \brief Returns the internal dictionary of the hash
+	* \return const KviPointerHashTable<QString,KviKvsVariant> *
+	*/
 	const KviPointerHashTable<QString,KviKvsVariant> * dict(){ return m_pDict; };
 
-	void serialize(QString& result);
+	/**
+	* \brief Serializes the hash to a given buffer
+	* \param szResult The buffer to store
+	* \return void
+	*/
+	void serialize(QString & szResult);
 };
 
-#endif //!_KVI_KVS_HASH_H_
+#endif // _KVI_KVS_HASH_H_

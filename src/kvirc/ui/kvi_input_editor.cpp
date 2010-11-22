@@ -1701,7 +1701,7 @@ void KviInputEditor::replaceWordBeforeCursor(const QString & szWord, const QStri
 		repaintWithCursorOn();
 }
 
-void KviInputEditor::standardNickCompletionInsertCompletedText(const QString &szReplacedWord,const QString &szCompletedText,bool bFirstWordInLine,bool bInCommand)
+void KviInputEditor::standardNickCompletionInsertCompletedText(const QString & szReplacedWord, const QString & szCompletedText, bool bFirstWordInLine, bool bInCommand)
 {
 	QString szBuffer = szCompletedText;
 

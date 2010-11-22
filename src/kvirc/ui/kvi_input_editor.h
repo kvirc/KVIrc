@@ -150,103 +150,108 @@ protected:
 	KviTalPopupMenu         * m_pIconMenu;
 	bool                      m_bReadOnly;
 
+	/**
+	* \class EditCommand
+	* \brief Holds the command used in the {un,re}do operations
+	*/
 	class EditCommand
 	{
 	public:
+		/**
+		* \enum Type
+		* \brief Defines the type of the command
+		*/
 		enum Type
 		{
-			///
-			/// Text insertion. Has text, position previous to the insert and length of the insert.
-			///
-			InsertText,
-			///
-			/// Text removal, Has text, position previous to the removal and length of the removed data.
-			///
-			RemoveText
+			InsertText,   /**< Text insertion. Has text, position previous to the insert and length of the insert */
+			RemoveText    /**< Text removal, Has text, position previous to the removal and length of the removed data */
 		};
 	private:
-		///
-		/// the type of the command
-		///
+		/**
+		* \var m_eType
+		* \brief The type of the command
+		*/
 		Type m_eType;
 
-		///
-		/// the text of the command
-		///
+		/**
+		* \var m_szText
+		* \brief The text of the command
+		*/
 		QString m_szText;
 
-		///
-		/// the start position
-		///
+		/**
+		* \var m_iStartPosition
+		* \brief The start position
+		*/
 		int m_iStartPosition;
-
 	public:
-		EditCommand(Type eType,const QString &szText,int iStartPosition)
-			: m_eType(eType), m_szText(szText), m_iStartPosition(iStartPosition)
+		/**
+		* \brief Contructs the command object
+		* \param eType The type of the command
+		* \param szText The text of the command
+		* \param iStartPosition The start position of the command
+		* \return EditCommand
+		*/
+		EditCommand(Type eType, const QString & szText, int iStartPosition)
+		: m_eType(eType), m_szText(szText), m_iStartPosition(iStartPosition)
 		{
 		}
 
-		///
-		/// Sets the start position
-		///
-		void setStartPosition(int iStartPosition)
-		{
-			m_iStartPosition = iStartPosition;
-		}
+		/**
+		* \brief Sets the start position
+		* \param iStartPosition The position
+		* \return void
+		*/
+		void setStartPosition(int iStartPosition){ m_iStartPosition = iStartPosition; }
 	
-		///
-		/// Returns the start position
-		///
-		int startPosition() const
-		{
-			return m_iStartPosition;
-		}
-	
+		/**
+		* \brief Returns the start position
+		* \return int
+		*/
+		int startPosition() const { return m_iStartPosition; }
 
-		///
-		/// Sets the text of the command
-		///
-		void setText(const QString &szText)
-		{
-			m_szText = szText;
-		}
+		/**
+		* \brief Sets the text of the command
+		* \param szText The text to set
+		*/
+		void setText(const QString & szText){ m_szText = szText; }
 	
-		///
-		/// Returns the text of the command
-		///
-		const QString & text() const
-		{
-			return m_szText;
-		}
-	
+		/**
+		* \brief Returns the text of the command
+		* \return const QString &
+		*/
+		const QString & text() const { return m_szText; }
 
-		///
-		/// Sets the type of the command
-		///
-		void setType(const Type &eType)
-		{
-			m_eType = eType;
-		}
+		/**
+		* \brief Sets the type of the command
+		* \param eType The type of the command
+		* \return void
+		*/
+		void setType(const Type & eType){ m_eType = eType; }
 	
-		///
-		/// Returns the type of the command
-		///
-		const Type & type() const
-		{
-			return m_eType;
-		}
+		/**
+		* \brief Returns the type of the command
+		* \return const Type &
+		*/
+		const Type & type() const { return m_eType; }
 	};
 
-	///
-	/// The undo stack. Contains owned pointers and has autodelete set to true.
-	/// The most recent command is at the end. Null when no undo is available.
-	///
+	/**
+	* \var m_pUndoStack
+	* \brief The undo stack.
+	* 
+	* Contains owned pointers and has autodelete set to true. The most recent command
+	* is at the end. Null when no undo is available.
+	*/
 	KviPointerList<EditCommand> * m_pUndoStack;
 
-	///
-	/// The redo stack. Contains owned pointers and has autodelete set to true.
-	/// The most recently undone command is at the end. Null when no redo is available.
-	///
+	/**
+	* \var m_pRedoStack
+	* \brief The redo stack.
+	* 
+	* Contains owned pointers and has autodelete set to true. The most recently undone
+	* command is at the end. Null when no redo is available.
+	*/
 	KviPointerList<EditCommand> * m_pRedoStack;
 
 public:
@@ -480,15 +485,20 @@ private:
 	* \param bAddMask Whether to complete with the mask of the nickname
 	* \param szWord The nickname to complete
 	* \param bFirstWordInLine Whether the word to complete is the first word in the text line (so the suffix from option panel is added)
-	* \param bInCommand true if the completion happens inside a kvs command (and thus the completed word should be kvs-escaped)
+	* \param bInCommand Whether the completion happens inside a kvs command (and thus the completed word should be kvs-escaped)
 	* \return void
 	*/
 	void standardNickCompletion(bool bAddMask, QString & szWord, bool bFirstWordInLine, bool bInCommand);
 
 	/**
-	* Internal helper for standardNickCompletion()
+	* \brief Internal helper for standardNickCompletion()
+	* \param szReplacedWord The word replaced before the cursor
+	* \param szCompletedText The text to be completed
+	* \param bFirstWordInLine Whether the word to complete is the first word in the text line (so the suffix from option panel is added)
+	* \param bInCommand Whether the completion happens inside a kvs command (and thus the completed word should be kvs-escaped)
+	* \return void
 	*/
-	void standardNickCompletionInsertCompletedText(const QString &szReplacedWord,const QString &szCompletedText,bool bFirstWordInLine,bool bInCommand);
+	void standardNickCompletionInsertCompletedText(const QString & szReplacedWord, const QString & szCompletedText, bool bFirstWordInLine, bool bInCommand);
 
 	/**
 	* \brief Moves the cursor one character to the right
@@ -518,7 +528,7 @@ private:
 
 	/**
 	* \brief Inserts one action in the undo stack
-	* \param cmd The command struct representing the action
+	* \param pCommand The command representing the action
 	* \return void
 	*/
 	void addUndo(EditCommand * pCommand);
@@ -563,6 +573,7 @@ public slots:
 	*
 	* If the system supports the mouse clipboard, the text will be
 	* copied there
+	* \param bDonNotCopyToClipboard Whether to copy the text to the system clipboard
 	* \return void
 	*/
 	void copyToSelection(bool bDonNotCopyToClipboard = true);
