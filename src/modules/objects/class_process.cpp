@@ -46,10 +46,10 @@
 		The Process class  is used to start external programs and to communicate with them.[br]
 		!WARNING AT LAST YOU HAVE TO CLOSE THE PROCESS!
 	@functions:
-		!fn: $addArg(<process-name:string>)
+                !fn: $addArgument(<process-name:string>)
 		With this command you give the process name (or more arguments) for comunication.
 		Es: see the next example.
-		!fn: $start()
+                !fn: $startProcess()
 		Tries to run the process.[br]
 		Es: [br]
 		%process=$new(process);[br]
@@ -97,8 +97,8 @@
 		%layoutA->$addwidget(%bterminate,5,0)[br]
 
 		%Process=$new(process)[br]
-		%Process->$addArg("cmd.exe")[br]
-		%Process->$start();[br]
+                %Process->$addArgument("cmd.exe")[br]
+                %Process->$startProcess();[br]
 
 		connect %Process readyReadStdout %tt slotReadStdout[br]
 		connect %Process readyReadStderr %tt slotReadStderr[br]
@@ -203,7 +203,7 @@ KVSO_CLASS_FUNCTION(process,addArgument)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("argument",KVS_PT_NONEMPTYSTRING,0,szArgument)
 	KVSO_PARAMETERS_END(c)
-	args.append(szArgument);
+        m_szArgs.append(szArgument);
 	return true;
 }
 
@@ -213,8 +213,8 @@ KVSO_CLASS_FUNCTION(process,startProcess)
 	CHECK_INTERNAL_POINTER(m_pProcess)
 	QString szcmd;
 
-	szcmd = args.takeFirst();
-	m_pProcess->start(szcmd, args);
+        szcmd = m_szArgs.takeFirst();
+        m_pProcess->start(szcmd, m_szArgs);
 
 	if(m_pProcess->state()==KviProcess::NotRunning)
 	{

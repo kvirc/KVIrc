@@ -42,7 +42,7 @@ public:
 protected:
 	KviProcess * m_pProcess;
 private:
-	QStringList args;
+        QStringList m_szArgs;
 public:
 
 	bool addArgument(KviKvsObjectFunctionCall *c);
