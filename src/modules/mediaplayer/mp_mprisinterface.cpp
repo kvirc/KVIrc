@@ -557,4 +557,23 @@ KviTotemInterface::KviTotemInterface()
 	m_szServiceName = "org.mpris.Totem";
 }
 
+/* Vlc interface */
+MP_IMPLEMENT_DESCRIPTOR(
+	KviVlcInterface,
+	"vlc",
+	__tr2qs_ctx(
+		"An interface to Vlc.\n" \
+		"Download it from http://www.videolan.org/\n" \
+		"You need to manually enable the DBus control\n" \
+		"interface in the Vlc preferences\n" \
+		,
+		"mediaplayer"
+	)
+)
+
+KviVlcInterface::KviVlcInterface()
+: KviMPRISInterface()
+{
+	m_szServiceName = "org.mpris.vlc";
+}
 #endif //COMPILE_ON_WINDOWS

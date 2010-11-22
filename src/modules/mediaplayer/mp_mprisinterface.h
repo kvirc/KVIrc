@@ -116,6 +116,12 @@
 		KviTotemInterface();
 	};
 
+	class KviVlcInterface : public KviMPRISInterface
+	{
+	public:
+		KviVlcInterface();
+	};
+
 	MP_DECLARE_DESCRIPTOR(KviAudaciousInterface)
 	MP_DECLARE_DESCRIPTOR(KviBmpxInterface)
 	MP_DECLARE_DESCRIPTOR(KviAmarok2Interface)
@@ -123,7 +129,7 @@
 	MP_DECLARE_DESCRIPTOR(KviXmms2Interface)
 	MP_DECLARE_DESCRIPTOR(KviSongbirdInterface)
 	MP_DECLARE_DESCRIPTOR(KviTotemInterface)
-
+	MP_DECLARE_DESCRIPTOR(KviVlcInterface)
 #endif //COMPILE_ON_WINDOWS
 
 #endif //_MP_AUDACIOUSINTERFACE_H_
