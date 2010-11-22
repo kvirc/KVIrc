@@ -633,9 +633,13 @@ void KviScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 {
 	if(szText.isEmpty())
+	{
+		setCurrentBlockState(previousBlockState());
 		return;
+	}
 
 	int iIndexStart=0;
+	setCurrentBlockState(0);
 
 	if(previousBlockState() == 1)
 	{
@@ -652,7 +656,6 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 		iCommentEnd+=2;
 		// end of comment found
 		setFormat(iIndexStart,iCommentEnd - iIndexStart,commentFormat);
-		setCurrentBlockState(0);
 		iIndexStart = iCommentEnd;
 	}
 
@@ -693,7 +696,7 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 						setCurrentBlockState(1);
 						while(iIndexStart<szText.size())
 						{
-							if((iIndexStart+2)<szText.size())
+							if((iIndexStart+1)<szText.size())
 							{
 								if(szText.at(iIndexStart).unicode() == '*' &&
 									szText.at(iIndexStart+1).unicode() == '/')
