@@ -374,7 +374,7 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 	QGridLayout * pLayout = new QGridLayout(this);
 
 	QLabel * pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs("You are about to restore the default script.\nAny any script changes you have made will be erased if you\nrestore all stuff or \"Clear personal data\" is selected.\n\nDo you wish to proceed?\n"));
+	pLabel->setText(__tr2qs("You are about to restore the default script.\nAny script changes you have made will be erased if you\nrestore all stuff or \"Clear personal data\" is selected.\n\nDo you wish to proceed?\n"));
 	pLayout->addWidget(pLabel,0,0,1,4);
 
 	// Construct the advanced widget
