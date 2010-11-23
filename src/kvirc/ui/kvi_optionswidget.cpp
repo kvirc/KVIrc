@@ -44,7 +44,7 @@ KviOptionsWidget::KviOptionsWidget(QWidget * parent,const char * name,bool)
 {
 	if(name)
 		setObjectName(name);
-	
+
 	if(m_szBasicTipStart.isEmpty())
 	{
 		m_szBasicTipStart = "<center><font color=\"#a0a0a0\">";
@@ -162,10 +162,14 @@ void KviOptionsWidget::addOptionsWidget(const QString &szText,const QIcon &iconS
 	if(pWidget->layout())
 		pWidget->layout()->setMargin(3);
 
+	m_pTabWidget->addTab(pWidget,iconSet,szText);
+
+	// add the widget to the selector interface *after* adding its widget to m_pTabWidget,
+	// or it will we removed from m_pSelectorInterfaceList because of the addTab() call:
+	// QTabWidget::addTab => QTabWidget::insertTab => KviOptionsWidget::eventFilter(m_pTabWidget, QEvent::ChildRemoved);
 	m_pSelectorInterfaceList->append(pWidget);
 	QObject::connect(pWidget,SIGNAL(destroyed()),this,SLOT(childOptionsWidgetDestroyed()));
 
-	m_pTabWidget->addTab(pWidget,iconSet,szText);
 }
 
 
