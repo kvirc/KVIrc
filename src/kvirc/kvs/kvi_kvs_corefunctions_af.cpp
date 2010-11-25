@@ -473,7 +473,7 @@ namespace KviKvsCoreFunctions
 		@title:
 			$certificate
 		@short:
-			Returns informations about the local certificate
+			Returns information about the local certificate
 		@syntax:
 			<string> $certificate(<query:string>[,<param1:string>])
 		@description:
@@ -560,7 +560,7 @@ namespace KviKvsCoreFunctions
 		
 		if(!pCert)
 		{
-			KVSCF_pContext->warning(__tr2qs_ctx("Error retrieving informations from the local certificate","dcc"));
+			KVSCF_pContext->warning(__tr2qs_ctx("Error retrieving information from the local certificate","dcc"));
 			KVSCF_pRetBuffer->setString("");
 			return true;
 		}
@@ -568,7 +568,7 @@ namespace KviKvsCoreFunctions
 		if(KviSSLMaster::getSSLCertInfo(pCert, szQuery, szParam1, KVSCF_pRetBuffer))
 			return true;
 
-		KVSCF_pContext->warning(__tr2qs_ctx("Unable to get certificate informations: query not recognized","dcc"));
+		KVSCF_pContext->warning(__tr2qs_ctx("Unable to get certificate information: query not recognized","dcc"));
 		KVSCF_pRetBuffer->setString("");
 		return true;
 #endif

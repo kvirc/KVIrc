@@ -2794,7 +2794,7 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 	{
 		if(!dcc->isSSL())
 		{
-			c->warning(__tr2qs_ctx("Unable to get SSL informations: DCC session is not using SSL","dcc"));
+			c->warning(__tr2qs_ctx("Unable to get SSL information: DCC session is not using SSL","dcc"));
 			c->returnValue()->setString("");
 			return true;
 		}
@@ -2807,7 +2807,7 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 
 		if(!pSlaveThread)
 		{
-			c->warning(__tr2qs_ctx("Unable to get SSL informations: DCC session not initialized yet","dcc"));
+			c->warning(__tr2qs_ctx("Unable to get SSL information: DCC session not initialized yet","dcc"));
 			c->returnValue()->setString("");
 			return true;
 		}
@@ -2815,7 +2815,7 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 		KviSSL * pSSL = pSlaveThread->getSSL();
 		if(!pSSL)
 		{
-			c->warning(__tr2qs_ctx("Unable to get SSL informations: SSL non initialized yet in DCC session","dcc"));
+			c->warning(__tr2qs_ctx("Unable to get SSL information: SSL non initialized yet in DCC session","dcc"));
 			c->returnValue()->setString("");
 			return true;
 		}
@@ -2824,7 +2824,7 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 
 		if(!pCert)
 		{
-			c->warning(__tr2qs_ctx("Unable to get SSL informations: No peer certificate available","dcc"));
+			c->warning(__tr2qs_ctx("Unable to get SSL information: No peer certificate available","dcc"));
 			c->returnValue()->setString("");
 			return true;
 		}
@@ -2832,7 +2832,7 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 		if(KviSSLMaster::getSSLCertInfo(pCert, szQuery, szParam1, c->returnValue()))
 			return true;
 
-		c->warning(__tr2qs_ctx("Unable to get SSL informations: query not recognized","dcc"));
+		c->warning(__tr2qs_ctx("Unable to get SSL information: query not recognized","dcc"));
 		c->returnValue()->setString("");
 		return true;
 	}

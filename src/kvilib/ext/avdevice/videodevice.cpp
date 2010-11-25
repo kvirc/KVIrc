@@ -81,7 +81,7 @@ VideoDevice::~VideoDevice()
     \brief Sets up the supported video-controls for the current input
     
     Determines which video-controls are supported for the current input,
-    reads all needed informations about them and stores the data to the local members
+    reads all needed information about them and stores the data to the local members
  */
 void VideoDevice::setupControls()
 {

@@ -66,7 +66,7 @@ class KviDataBuffer;
 
 /**
 * \struct KviTheoraGeometry
-* \brief Contains all the needed geometry informations of a theora video stream
+* \brief Contains all the needed geometry information of a theora video stream
 */
 
 typedef struct _KviTheoraGeometry

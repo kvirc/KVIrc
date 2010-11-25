@@ -2,7 +2,7 @@ echo OFF
 
 REM =======================================================================
 REM Windows cmake launch helper script.
-REM See INSTALL-Win32.txt for informations about this file.
+REM See INSTALL-Win32.txt for more information about this file.
 REM =======================================================================
 
 REM =======================================================================
