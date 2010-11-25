@@ -517,6 +517,7 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	{
 		//selection colored background
 		p->fillRect(option.rect, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
+#ifndef COMPILE_ON_MAC
 	} else {
 		if(KVI_OPTION_BOOL(KviOption_boolEnableVisualEffects) && option.state & QStyle::State_MouseOver)
 		{
@@ -525,6 +526,7 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			col.setAlpha(127);
 			p->fillRect(option.rect, col);
 		}
+#endif
 	}
 	//draw window icon, irc context indicator (a colored square), set font properties for text
 	int im = option.rect.left();
