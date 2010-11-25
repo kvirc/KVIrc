@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 18:58+0200\n"
+"POT-Creation-Date: 2010-11-25 10:30+0100\n"
 "PO-Revision-Date: 2010-09-03 21:31+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -84,11 +84,11 @@ msgstr "&Compilar"
 
 #: src/modules/classeditor/classeditor.cpp:1986
 #: src/modules/classeditor/classeditor.cpp:2088
-#: src/modules/editor/scripteditor.cpp:1055
+#: src/modules/editor/scripteditor.cpp:1091
 msgid "&Cancel"
 msgstr "&Cancelar"
 
-#: src/modules/editor/scripteditor.cpp:765
+#: src/modules/editor/scripteditor.cpp:801
 msgid "&Configure Editor..."
 msgstr "&Configurar Editor..."
 
@@ -148,7 +148,7 @@ msgstr "&Novo Menu"
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/editor/scripteditor.cpp:762
+#: src/modules/editor/scripteditor.cpp:798
 msgid "&Open..."
 msgstr "&Abrir..."
 
@@ -165,11 +165,11 @@ msgid "&Rename Class"
 msgstr "&Renomear Classe"
 
 #: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1060
+#: src/modules/editor/scripteditor.cpp:1096
 msgid "&Replace"
 msgstr "&Substituir"
 
-#: src/modules/editor/scripteditor.cpp:1050
+#: src/modules/editor/scripteditor.cpp:1086
 msgid "&Replace in all editor's items"
 msgstr "&Substituir em todos os itens do editor"
 
@@ -177,7 +177,7 @@ msgstr "&Substituir em todos os itens do editor"
 msgid "&Save"
 msgstr "&Gravar"
 
-#: src/modules/editor/scripteditor.cpp:763
+#: src/modules/editor/scripteditor.cpp:799
 msgid "&Save As..."
 msgstr "&Gravar Como..."
 
@@ -261,8 +261,8 @@ msgstr "Adicionar Função Membro"
 msgid "Add Namespace"
 msgstr "Adicionar Nome de espaço"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:193
-#: src/modules/toolbareditor/toolbareditor.cpp:280
+#: src/modules/toolbareditor/toolbareditor.cpp:194
+#: src/modules/toolbareditor/toolbareditor.cpp:281
 msgid "Advanced..."
 msgstr "Avançado..."
 
@@ -313,7 +313,7 @@ msgstr ""
 msgid "Apply"
 msgstr "Aplicar"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:265
+#: src/modules/toolbareditor/toolbareditor.cpp:266
 msgid "Automatically"
 msgstr "Automaticamente"
 
@@ -344,12 +344,12 @@ msgstr "Ícone Grande:"
 msgid "Brackets:"
 msgstr "Chavetas:"
 
-#: src/modules/editor/scripteditor.cpp:988
+#: src/modules/editor/scripteditor.cpp:1024
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "Não é possível abrir o ficheiro %s para leitura."
 
-#: src/modules/editor/scripteditor.cpp:899
+#: src/modules/editor/scripteditor.cpp:935
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Não é possível abrir o ficheiro %s para escrita."
@@ -360,8 +360,8 @@ msgstr "Não é possível abrir o ficheiro %s para escrita."
 #: src/modules/eventeditor/eventeditor.cpp:535
 #: src/modules/popupeditor/popupeditor.cpp:1390
 #: src/modules/raweditor/raweditor.cpp:488
-#: src/modules/toolbareditor/toolbareditor.cpp:188
-#: src/modules/toolbareditor/toolbareditor.cpp:405
+#: src/modules/toolbareditor/toolbareditor.cpp:189
+#: src/modules/toolbareditor/toolbareditor.cpp:406
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -442,14 +442,14 @@ msgstr "Escolha um Directório - KVIrc"
 #: src/modules/actioneditor/actioneditor.cpp:700
 #: src/modules/aliaseditor/aliaseditor.cpp:812
 #: src/modules/classeditor/classeditor.cpp:1209
-#: src/modules/editor/scripteditor.cpp:886
+#: src/modules/editor/scripteditor.cpp:922
 #: src/modules/eventeditor/eventeditor.cpp:466
 #: src/modules/eventeditor/eventeditor.cpp:507
 #: src/modules/popupeditor/popupeditor.cpp:1188
 #: src/modules/popupeditor/popupeditor.cpp:1238
 #: src/modules/raweditor/raweditor.cpp:421
 #: src/modules/raweditor/raweditor.cpp:459
-#: src/modules/toolbareditor/toolbareditor.cpp:396
+#: src/modules/toolbareditor/toolbareditor.cpp:397
 msgid "Choose a Filename - KVIrc"
 msgstr "Escolha um Nome de Ficheiro - KVIrc"
 
@@ -480,7 +480,7 @@ msgid "Class names can contain only letters, digits and underscores"
 msgstr "Os nomes das classes podem conter apenas letras, dígitos e sublinhado"
 
 #: src/modules/classeditor/classeditor.cpp:1840
-#: src/modules/toolbareditor/toolbareditor.cpp:325
+#: src/modules/toolbareditor/toolbareditor.cpp:326
 msgid "Close"
 msgstr "Fechar"
 
@@ -512,7 +512,7 @@ msgstr "Erro de compilação - KVIrc"
 msgid "Condition:"
 msgstr "Condição:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:377
+#: src/modules/toolbareditor/toolbareditor.cpp:378
 msgid "Confirm ToolBar Deletion"
 msgstr "Confirmar Remoção de Barra de Ferramentas"
 
@@ -524,7 +524,7 @@ msgstr "Contexto de ajuda sensitivo"
 msgid "Cu&t"
 msgstr "Cor&tar"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:293
+#: src/modules/toolbareditor/toolbareditor.cpp:294
 msgid "Customize Toolbars"
 msgstr "Personalizar Barra de Ferramentas"
 
@@ -532,7 +532,7 @@ msgstr "Personalizar Barra de Ferramentas"
 msgid "Delete Actions"
 msgstr "Apagar Acções"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:306
+#: src/modules/toolbareditor/toolbareditor.cpp:307
 msgid "Delete ToolBar"
 msgstr "Apagar Barra de Ferramentas"
 
@@ -540,7 +540,7 @@ msgstr "Apagar Barra de Ferramentas"
 msgid "Description:"
 msgstr "Descrição:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:378
+#: src/modules/toolbareditor/toolbareditor.cpp:379
 msgid "Do you really want to delete toolbar \"%1\" ?"
 msgstr "Deseja realmente apagar a barra de ferramentas \"%1\"?"
 
@@ -561,20 +561,20 @@ msgstr "Deseja realmente remover a função \"%Q\" ?"
 msgid "Do you really want to remove the namespace \"%Q\" ?"
 msgstr "Deseja realmente remover o nomedeespaço \"%Q\" ?"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:402
+#: src/modules/toolbareditor/toolbareditor.cpp:403
 msgid "Do you want the associated actions to be exported with the toolbar ?"
 msgstr ""
 "Deseja que as acções associadas sejam exportadas com a barra de ferramentas?"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:65
+#: src/modules/toolbareditor/toolbareditor.cpp:66
 msgid "Drop here the icons from the toolbars to remove them"
 msgstr "Deixe aqui os ícones das barras de ferramentas para os remover"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:261
+#: src/modules/toolbareditor/toolbareditor.cpp:262
 msgid "Duplicate ToolBar Id"
 msgstr "Duplicar Id da Barra de Ferramentas"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:310
+#: src/modules/toolbareditor/toolbareditor.cpp:311
 msgid "Edit ToolBar"
 msgstr "Editar Barra de Ferramentas"
 
@@ -657,7 +657,7 @@ msgstr "Exportar Seleccionado em ficheiros únicos"
 msgid "Export Selected..."
 msgstr "Exportar Seleccionado..."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:318
+#: src/modules/toolbareditor/toolbareditor.cpp:319
 msgid "Export ToolBar"
 msgstr "Exportar Barra de Ferramentas"
 
@@ -669,7 +669,7 @@ msgstr "Menu Externo"
 msgid "External menu:"
 msgstr "Menu externo:"
 
-#: src/modules/editor/scripteditor.cpp:774
+#: src/modules/editor/scripteditor.cpp:810
 msgid "Find"
 msgstr "Procurar"
 
@@ -726,11 +726,11 @@ msgstr "Os nomes das funções podem conter apenas letras, dígito e sublinhado"
 msgid "Functions:"
 msgstr "Funções:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:283
+#: src/modules/toolbareditor/toolbareditor.cpp:284
 msgid "Hide Advanced"
 msgstr "Esconder Avançado"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:152
+#: src/modules/toolbareditor/toolbareditor.cpp:153
 msgid "Icon"
 msgstr "Ícone"
 
@@ -738,7 +738,7 @@ msgstr "Ícone"
 msgid "Icon:"
 msgstr "Ícone:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:168
+#: src/modules/toolbareditor/toolbareditor.cpp:169
 msgid "Id"
 msgstr "Id"
 
@@ -758,7 +758,7 @@ msgstr "Herda da Classe:"
 msgid "Internal unique name for the action"
 msgstr "Nome único interno para a acção"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:248
+#: src/modules/toolbareditor/toolbareditor.cpp:249
 msgid "Invalid ToolBar Label"
 msgstr "Etiqueta da Barra de Ferramentas inválida"
 
@@ -780,7 +780,7 @@ msgid "Keywords:"
 msgstr "Identificadores:"
 
 #: src/modules/popupeditor/popupeditor.cpp:93
-#: src/modules/toolbareditor/toolbareditor.cpp:144
+#: src/modules/toolbareditor/toolbareditor.cpp:145
 msgid "Label"
 msgstr "Etiqueta"
 
@@ -788,11 +788,11 @@ msgstr "Etiqueta"
 msgid "Label:"
 msgstr "Etiqueta"
 
-#: src/modules/editor/scripteditor.cpp:974
+#: src/modules/editor/scripteditor.cpp:1010
 msgid "Load Script File - KVIrc"
 msgstr "Carregar Ficheiro de Script - KVIrc"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:265
+#: src/modules/toolbareditor/toolbareditor.cpp:266
 msgid "Manually"
 msgstr "Manualmente"
 
@@ -814,8 +814,8 @@ msgstr "Nome de Nomedeespaço em Falta"
 msgid "My Action"
 msgstr "A Minha Acção"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:495
 #: src/modules/toolbareditor/toolbareditor.cpp:496
+#: src/modules/toolbareditor/toolbareditor.cpp:497
 msgid "My ToolBar"
 msgstr "A Minha Barra de Ferramentas"
 
@@ -931,7 +931,7 @@ msgstr "Novo Separador em Baixo"
 msgid "New Separator Inside"
 msgstr "Novo Separador Dentro"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:302
+#: src/modules/toolbareditor/toolbareditor.cpp:303
 msgid "New ToolBar"
 msgstr "Nova Barra de Ferramentas"
 
@@ -939,7 +939,7 @@ msgstr "Nova Barra de Ferramentas"
 #: src/modules/aliaseditor/aliaseditor.cpp:934
 #: src/modules/classeditor/classeditor.cpp:1137
 #: src/modules/classeditor/classeditor.cpp:1349
-#: src/modules/toolbareditor/toolbareditor.cpp:404
+#: src/modules/toolbareditor/toolbareditor.cpp:405
 msgid "No"
 msgstr "Não"
 
@@ -970,9 +970,9 @@ msgstr "Texto normal:"
 #: src/modules/popupeditor/popupeditor.cpp:1195
 #: src/modules/popupeditor/popupeditor.cpp:1242
 #: src/modules/raweditor/raweditor.cpp:463
-#: src/modules/toolbareditor/toolbareditor.cpp:183
-#: src/modules/toolbareditor/toolbareditor.cpp:248
-#: src/modules/toolbareditor/toolbareditor.cpp:458
+#: src/modules/toolbareditor/toolbareditor.cpp:184
+#: src/modules/toolbareditor/toolbareditor.cpp:249
+#: src/modules/toolbareditor/toolbareditor.cpp:459
 msgid "OK"
 msgstr "OK"
 
@@ -1003,7 +1003,7 @@ msgstr "Ok, deixe-me tentar novamente..."
 msgid "Only If There Are Selected Users"
 msgstr "Apenas Se Existirem Utilizadores Seleccionados"
 
-#: src/modules/editor/scripteditor.cpp:987
+#: src/modules/editor/scripteditor.cpp:1023
 msgid "Open Failed - KVIrc"
 msgstr "Falha ao Abrir - KVIrc"
 
@@ -1037,7 +1037,7 @@ msgstr "Colar em Cima"
 msgid "Paste Inside"
 msgstr "Colar Dentro"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:224
+#: src/modules/toolbareditor/toolbareditor.cpp:225
 msgid "Please choose the icon for the ToolBar"
 msgstr "Por favor escolha o ícone para a barra de ferramentas"
 
@@ -1097,11 +1097,11 @@ msgstr ""
 msgid "Please note that all the children items will be deleted too."
 msgstr "Por favor note que todas os itens filhos serão apagados também."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:494
+#: src/modules/toolbareditor/toolbareditor.cpp:495
 msgid "Please specify the properties for the new toolbar"
 msgstr "Por favor indique as propriedades para a nova barra de ferramentas"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:468
+#: src/modules/toolbareditor/toolbareditor.cpp:469
 msgid "Please specify the properties for the toolbar \"%1\""
 msgstr "Por favor indique as propriedades para a barra de ferramentas \"%1\""
 
@@ -1188,16 +1188,16 @@ msgstr "Renomear Nomedeespaço"
 msgid "Replace file"
 msgstr "Substituir ficheiro"
 
-#: src/modules/editor/scripteditor.cpp:1038
+#: src/modules/editor/scripteditor.cpp:1074
 msgid "Replace with"
 msgstr "Substituir por"
 
-#: src/modules/editor/scripteditor.cpp:957
+#: src/modules/editor/scripteditor.cpp:993
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Linha: %d Coluna: %d"
 
-#: src/modules/editor/scripteditor.cpp:898
+#: src/modules/editor/scripteditor.cpp:934
 msgid "Save Failed - KVIrc"
 msgstr "Gravação Falhada - KVIrc"
 
@@ -1240,7 +1240,7 @@ msgstr "Testar"
 msgid "Text:"
 msgstr "Texto:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:248
+#: src/modules/toolbareditor/toolbareditor.cpp:249
 msgid "The ToolBar Label can't be empty!"
 msgstr "A etiqueta da barra de ferramentas não pode estar vazia!"
 
@@ -1274,7 +1274,7 @@ msgstr ""
 "O ícone pequeno associado a esta acção.<br>Irá aparecer pelo menos nos menus "
 "que aparecem quando esta acção é inserida.<br>Tem que ter 16x16 pontos."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:262
+#: src/modules/toolbareditor/toolbareditor.cpp:263
 msgid ""
 "The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
 "it automatically (so it doesn't collide with any other toolbar) or you "
@@ -1316,11 +1316,11 @@ msgstr ""
 "Isto irá activar a acção apenas se houver utilizadores seleccionados na "
 "janela activa"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:401
+#: src/modules/toolbareditor/toolbareditor.cpp:402
 msgid "ToolBar Export"
 msgstr "Exportação de Barra de Ferramentas"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:135
+#: src/modules/toolbareditor/toolbareditor.cpp:136
 msgid "ToolBar Properties"
 msgstr "Propriedades da Barra de Ferramentas"
 
@@ -1365,7 +1365,7 @@ msgstr "Não é possível escrever para o ficheiro de evento bruto."
 msgid "Unable to write to the raw events file."
 msgstr "Não é possível escrever para o ficheiro de eventos bruto."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:458
+#: src/modules/toolbareditor/toolbareditor.cpp:459
 msgid "Unable to write to the toolbar file."
 msgstr "Não é possível escrever para o ficheiro da barra de ferramentas."
 
@@ -1389,7 +1389,7 @@ msgstr ""
 "Descrição breve visível para esta acção.<br>Esta 'string' será mostrada ao "
 "utilizador como tal é boa ideia usar $tr() aqui"
 
-#: src/modules/editor/scripteditor.cpp:1029
+#: src/modules/editor/scripteditor.cpp:1065
 msgid "Word to Find"
 msgstr "Palavra a Procurar"
 
@@ -1402,7 +1402,7 @@ msgstr "Palavra a Procurar"
 #: src/modules/popupeditor/popupeditor.cpp:1242
 #: src/modules/raweditor/raweditor.cpp:428
 #: src/modules/raweditor/raweditor.cpp:463
-#: src/modules/toolbareditor/toolbareditor.cpp:458
+#: src/modules/toolbareditor/toolbareditor.cpp:459
 msgid "Write Failed - KVIrc"
 msgstr "Falha ao Gravar - KVIrc"
 
@@ -1410,7 +1410,7 @@ msgstr "Falha ao Gravar - KVIrc"
 #: src/modules/aliaseditor/aliaseditor.cpp:934
 #: src/modules/classeditor/classeditor.cpp:1137
 #: src/modules/classeditor/classeditor.cpp:1349
-#: src/modules/toolbareditor/toolbareditor.cpp:403
+#: src/modules/toolbareditor/toolbareditor.cpp:404
 msgid "Yes"
 msgstr "Sim"
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: about_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 18:58+0200\n"
+"POT-Creation-Date: 2010-11-25 10:30+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -31,8 +31,7 @@ msgstr "\"будь-який\""
 msgid "%1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1523
-#: src/modules/dcc/send.cpp:1530
+#: src/modules/dcc/send.cpp:1523 src/modules/dcc/send.cpp:1530
 #, fuzzy
 msgid "%1 of %2 (%3%)"
 msgstr "%1 до %2 байт (%3%)"
@@ -82,8 +81,7 @@ msgstr "&Pie"
 msgid "&Polygons"
 msgstr "&Багатокутники"
 
-#: src/modules/dcc/canvaswidget.cpp:1479
-#: src/modules/dcc/canvaswidget.cpp:1487
+#: src/modules/dcc/canvaswidget.cpp:1479 src/modules/dcc/canvaswidget.cpp:1487
 msgid "&Rectangle"
 msgstr "&Прямокутник"
 
@@ -107,15 +105,12 @@ msgstr "&Форма"
 msgid "&Triangle"
 msgstr "&Трикутник"
 
-#: src/modules/dcc/requests.cpp:788
-#: src/modules/dcc/requests.cpp:958
+#: src/modules/dcc/requests.cpp:788 src/modules/dcc/requests.cpp:958
 msgid "(unknown)"
 msgstr "(невідомо)"
 
-#: src/modules/dcc/libkvidcc.cpp:434
-#: src/modules/dcc/libkvidcc.cpp:657
-#: src/modules/dcc/libkvidcc.cpp:1159
-#: src/modules/dcc/libkvidcc.cpp:1226
+#: src/modules/dcc/libkvidcc.cpp:434 src/modules/dcc/libkvidcc.cpp:657
+#: src/modules/dcc/libkvidcc.cpp:1159 src/modules/dcc/libkvidcc.cpp:1226
 msgid "-c requires -i and -p"
 msgstr "-c потрібно -i і -p"
 
@@ -127,7 +122,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> запит <b>Direct Client Connection</b> в <b>%4</b> режимі."
 "<br>"
 
-#: src/modules/dcc/broker.cpp:493
+#: src/modules/dcc/broker.cpp:496
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
@@ -155,7 +150,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> запит <br><b>Direct Client Connection</b> в <b>VOICE</b> "
 "режимі<br> Метою з'єднання є хост <b>%4</b> через порт <b>%5</b><br>"
 
-#: src/modules/dcc/broker.cpp:585
+#: src/modules/dcc/broker.cpp:588
 #, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
@@ -164,7 +159,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> хоче вислати вам файл '<b>%4</b>', розміром <b>%5</b> "
 "байт<br>Метою з'єднання є хост <b>%6</b> через порт <b>%7</b><br>"
 
-#: src/modules/dcc/broker.cpp:598
+#: src/modules/dcc/broker.cpp:601
 #, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
@@ -173,7 +168,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> хоче вислати вам файл '<b>%4</b>', розміром <b>%5</b> "
 "байт<br> Ви будете пасивною стороною з'єднання<br>"
 
-#: src/modules/dcc/broker.cpp:611
+#: src/modules/dcc/broker.cpp:614
 msgid ""
 "<center><b>Note:</b></center>The file appears to be an avatar that you have "
 "requested. You should not change its filename. Save it in a location where "
@@ -191,9 +186,8 @@ msgstr ""
 "можете указати KVIrc щоб він автоматично приймав вхідні аватари встановивши "
 "опцію <tt>boolAutoAcceptIncomingAvatars</tt> в true.<br>"
 
-#: src/modules/dcc/requests.cpp:455
+#: src/modules/dcc/libkvidcc.cpp:634 src/modules/dcc/requests.cpp:455
 #: src/modules/dcc/requests.cpp:755
-#: src/modules/dcc/libkvidcc.cpp:634
 msgid "<unknown size>"
 msgstr "<невідомий розмір>"
 
@@ -201,8 +195,7 @@ msgstr "<невідомий розмір>"
 msgid "Abort"
 msgstr "Перервати"
 
-#: src/modules/dcc/send.cpp:1196
-#: src/modules/dcc/send.cpp:1207
+#: src/modules/dcc/send.cpp:1196 src/modules/dcc/send.cpp:1207
 msgid "Aborted"
 msgstr "Перервано"
 
@@ -226,8 +219,7 @@ msgstr ""
 "Приймаю запит файлу з %Q [%Q@%Q] для '%s' (реальний файл: %Q), пропоную DCC "
 "%s оскільки ми не можемо приймати вхідні з'єднання (опція користувача)"
 
-#: src/modules/dcc/voice.cpp:930
-#: src/modules/dcc/video.cpp:918
+#: src/modules/dcc/voice.cpp:930 src/modules/dcc/video.cpp:940
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Поточний використовуваний кодек - '%s'"
@@ -245,7 +237,7 @@ msgstr "Спроба пасивного DCC %s з'єднання"
 msgid "Attempting a passive DCC CANVAS connection"
 msgstr "Спроба пасивного DCC CANVAS з'єднання"
 
-#: src/modules/dcc/video.cpp:569
+#: src/modules/dcc/video.cpp:591
 #, fuzzy
 msgid "Attempting a passive DCC VIDEO connection"
 msgstr "Спроба пасивного з'єднання DCC VOICE"
@@ -267,7 +259,7 @@ msgstr "Спроба активного DCC %s з'єднання"
 msgid "Attempting an active DCC CANVAS connection"
 msgstr "Спроба активного DCC CANVAS з'єднання"
 
-#: src/modules/dcc/video.cpp:574
+#: src/modules/dcc/video.cpp:596
 #, fuzzy
 msgid "Attempting an active DCC VIDEO connection"
 msgstr "Спроба активного з'єднання DCC VOICE"
@@ -276,12 +268,12 @@ msgstr "Спроба активного з'єднання DCC VOICE"
 msgid "Attempting an active DCC VOICE connection"
 msgstr "Спроба активного з'єднання DCC VOICE"
 
-#: src/modules/dcc/broker.cpp:639
+#: src/modules/dcc/broker.cpp:642
 #, fuzzy
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
 msgstr "Автоматичний прийом DCC %Q запиту з %Q! %Q@%Q для файлу %Q"
 
-#: src/modules/dcc/broker.cpp:721
+#: src/modules/dcc/broker.cpp:724
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
 msgstr "Автозбереження DCC %Q файлу %Q як \r![!dbl]play $0\r%Q\r"
 
@@ -298,8 +290,7 @@ msgstr ""
 "Не можу слухати інтерфейс '%s': виправте його в діалозі опцій, або виключите "
 "опцію (тоді ймовірно dcc буде працювати)"
 
-#: src/modules/dcc/broker.cpp:207
-#: src/modules/dcc/broker.cpp:916
+#: src/modules/dcc/broker.cpp:207 src/modules/dcc/broker.cpp:919
 msgid "Can't open file %Q for reading"
 msgstr "Неможливо відкрити файл %Q на читання"
 
@@ -328,25 +319,21 @@ msgstr "Не можу знайти придатний локальний IPV4 а
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Неможливо відіслати DCC %Q запит в %Q: IRC з'єднання закрите"
 
-#: src/modules/dcc/dialogs.cpp:158
-#: src/modules/dcc/send.cpp:2206
+#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:2206
 msgid "Cancel"
 msgstr "Скасування"
 
-#: src/modules/dcc/chat.cpp:297
-#: src/modules/dcc/chat.cpp:400
-#: src/modules/dcc/video.cpp:643
-#: src/modules/dcc/video.cpp:746
+#: src/modules/dcc/video.cpp:665 src/modules/dcc/video.cpp:768
+#: src/modules/dcc/chat.cpp:297 src/modules/dcc/chat.cpp:400
 msgid "Cannot send data: No active connection"
 msgstr "Неможливо відіслати дані: Немає активних з'єднань"
 
-#: src/modules/dcc/broker.cpp:706
+#: src/modules/dcc/broker.cpp:709
 #, fuzzy
 msgid "Choose Files to Save - KVIrc"
 msgstr "Виберіть файл для передачі - KVIrc"
 
-#: src/modules/dcc/broker.cpp:167
-#: src/modules/dcc/broker.cpp:879
+#: src/modules/dcc/broker.cpp:167 src/modules/dcc/broker.cpp:882
 msgid "Choose Files to Send - KVIrc"
 msgstr "Виберіть файл для передачі - KVIrc"
 
@@ -368,10 +355,8 @@ msgstr "Конфігурування пропускної здатності д�
 msgid "Connected to %1:%2"
 msgstr "Підключення до%1:%2"
 
-#: src/modules/dcc/voice.cpp:910
-#: src/modules/dcc/canvas.cpp:284
-#: src/modules/dcc/chat.cpp:564
-#: src/modules/dcc/video.cpp:902
+#: src/modules/dcc/voice.cpp:910 src/modules/dcc/video.cpp:924
+#: src/modules/dcc/chat.cpp:564 src/modules/dcc/canvas.cpp:284
 msgid "Connected to %Q:%Q"
 msgstr "Підключення до %Q:%Q"
 
@@ -379,15 +364,12 @@ msgstr "Підключення до %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Підключення до хосту %1 на порт %2"
 
-#: src/modules/dcc/voice.cpp:755
-#: src/modules/dcc/canvas.cpp:108
-#: src/modules/dcc/chat.cpp:184
-#: src/modules/dcc/video.cpp:584
+#: src/modules/dcc/voice.cpp:755 src/modules/dcc/video.cpp:606
+#: src/modules/dcc/chat.cpp:184 src/modules/dcc/canvas.cpp:108
 msgid "Contacting host %Q on port %Q"
 msgstr "Підключення до хосту %Q на порт %Q"
 
-#: src/modules/dcc/broker.cpp:296
-#: src/modules/dcc/broker.cpp:626
+#: src/modules/dcc/broker.cpp:296 src/modules/dcc/broker.cpp:629
 msgid "DCC %1 Request - KVIrc"
 msgstr "Запит DCC %1 - KVIrc"
 
@@ -407,7 +389,7 @@ msgstr "DCC %Q запит не відісланий, очікую ручного
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr "DCC %s передача з %Q@%Q:%Q завершена: \r![!dbl]play $0\r%s\r"
 
-#: src/modules/dcc/broker.cpp:499
+#: src/modules/dcc/broker.cpp:502
 msgid "DCC CANVAS request"
 msgstr "Запит DCC CANVAS"
 
@@ -415,9 +397,8 @@ msgstr "Запит DCC CANVAS"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "DCC CANVAS запит не відісланий: очікую ручного з'єднання"
 
-#: src/modules/dcc/voice.cpp:901
+#: src/modules/dcc/voice.cpp:901 src/modules/dcc/video.cpp:919
 #: src/modules/dcc/canvas.cpp:279
-#: src/modules/dcc/video.cpp:897
 msgid "DCC Failed: %Q"
 msgstr "Помилка DCC: %Q"
 
@@ -426,7 +407,7 @@ msgstr "Помилка DCC: %Q"
 msgid "DCC VIDEO request"
 msgstr "Запит DCC VOICE"
 
-#: src/modules/dcc/video.cpp:606
+#: src/modules/dcc/video.cpp:628
 #, fuzzy
 msgid "DCC VIDEO request not sent: awaiting manual connection"
 msgstr "Запит DCC VOICE не відісланий: очікується ручне з'єднання"
@@ -460,13 +441,12 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Передача даних завершилася 30 сек. назад, закриваю з'єднання"
 
-#: src/modules/dcc/voice.cpp:818
+#: src/modules/dcc/voice.cpp:818 src/modules/dcc/video.cpp:782
 #: src/modules/dcc/chat.cpp:415
-#: src/modules/dcc/video.cpp:760
 msgid "ERROR: %Q"
 msgstr "ПОМИЛКА: %Q"
 
-#: src/modules/dcc/broker.cpp:845
+#: src/modules/dcc/broker.cpp:848
 msgid "File %s exists, auto-renaming to %Q"
 msgstr "Файл %s існує, автоматичне перейменування в %Q"
 
@@ -503,7 +483,7 @@ msgstr "Вхідний буфер"
 msgid "Input buffer: %d bytes"
 msgstr "Вхідний буфер: %d байт"
 
-#: src/modules/dcc/video.cpp:456
+#: src/modules/dcc/video.cpp:474
 msgid "Input:"
 msgstr ""
 
@@ -573,10 +553,8 @@ msgstr "Межа при передачі"
 msgid "Listening on interface %1 port %2"
 msgstr "Прослуховування інтерфейсу %1 на порту %2"
 
-#: src/modules/dcc/voice.cpp:758
-#: src/modules/dcc/canvas.cpp:84
-#: src/modules/dcc/chat.cpp:186
-#: src/modules/dcc/video.cpp:587
+#: src/modules/dcc/voice.cpp:758 src/modules/dcc/video.cpp:609
+#: src/modules/dcc/chat.cpp:186 src/modules/dcc/canvas.cpp:84
 msgid "Listening on interface %Q port %Q"
 msgstr "Прослуховування на інтерфейсі %Q порту %Q"
 
@@ -584,15 +562,12 @@ msgstr "Прослуховування на інтерфейсі %Q порту %
 msgid "Local end is %1:%2"
 msgstr "Локальне закінчення %1:%2"
 
-#: src/modules/dcc/voice.cpp:912
-#: src/modules/dcc/canvas.cpp:286
-#: src/modules/dcc/chat.cpp:566
-#: src/modules/dcc/video.cpp:904
+#: src/modules/dcc/voice.cpp:912 src/modules/dcc/video.cpp:926
+#: src/modules/dcc/chat.cpp:566 src/modules/dcc/canvas.cpp:286
 msgid "Local end is %Q:%Q"
 msgstr "Локальне закінчення %Q:%Q"
 
-#: src/modules/dcc/send.cpp:1852
-#: src/modules/dcc/chat.cpp:246
+#: src/modules/dcc/chat.cpp:246 src/modules/dcc/send.cpp:1852
 msgid "Low-level transport connection established"
 msgstr "Установлене з'єднання по низькорівневому транспорті"
 
@@ -600,8 +575,7 @@ msgstr "Установлене з'єднання по низькорівнево
 msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
 msgstr "Немає файлу з ім'ям '%s' (розміром %s) доступного для %Q [%Q@%Q]"
 
-#: src/modules/dcc/requests.cpp:794
-#: src/modules/dcc/requests.cpp:944
+#: src/modules/dcc/requests.cpp:794 src/modules/dcc/requests.cpp:944
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr ""
 "Не підходящий інтерфейс для прослуховування, намагаюся продовжити в будь-"
@@ -682,7 +656,7 @@ msgstr ""
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "Відісланий DCC RESUME запит %1, очікую ACCEPT"
 
-#: src/modules/dcc/video.cpp:604
+#: src/modules/dcc/video.cpp:626
 #, fuzzy
 msgid ""
 "Sent DCC VIDEO (%s) request to %Q, waiting for the remote client to "
@@ -710,12 +684,11 @@ msgstr "Досягнуть ліміт слотів (%u слотів з %u)"
 msgid "Spd:"
 msgstr "Швидкість:"
 
-#: src/modules/dcc/video.cpp:463
+#: src/modules/dcc/video.cpp:481
 msgid "Standard:"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1853
-#: src/modules/dcc/chat.cpp:247
+#: src/modules/dcc/chat.cpp:247 src/modules/dcc/send.cpp:1853
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Запуск з'єднання через SSL"
 
@@ -749,8 +722,7 @@ msgstr ""
 "Неможливо прийняти зазначений запит: Підтримка DCC VOICE не включена в час "
 "компіляції"
 
-#: src/modules/dcc/requests.cpp:1018
-#: src/modules/dcc/requests.cpp:1093
+#: src/modules/dcc/requests.cpp:1018 src/modules/dcc/requests.cpp:1092
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
 msgstr "Неможливо прийняти зазначений запит: Непідтримуваний кодек '%s'"
@@ -762,10 +734,8 @@ msgid ""
 msgstr ""
 "У зазначеному запиті відсутній розмір файлу, приймаю підсумковий розмір 0"
 
-#: src/modules/dcc/requests.cpp:463
-#: src/modules/dcc/requests.cpp:473
-#: src/modules/dcc/requests.cpp:624
-#: src/modules/dcc/requests.cpp:763
+#: src/modules/dcc/requests.cpp:463 src/modules/dcc/requests.cpp:473
+#: src/modules/dcc/requests.cpp:624 src/modules/dcc/requests.cpp:763
 msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
@@ -773,8 +743,7 @@ msgstr ""
 "Зазначений запит є битим: Ім'я файлу містить компоненти шляху, видаляю їх і "
 "намагаюся продовжити"
 
-#: src/modules/dcc/requests.cpp:453
-#: src/modules/dcc/requests.cpp:753
+#: src/modules/dcc/requests.cpp:453 src/modules/dcc/requests.cpp:753
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -805,8 +774,7 @@ msgstr "Підключення до хосту <b>%1</b> на порт <b>%2</b>
 msgid "The connection will be secured using SSL.<br>"
 msgstr "З'єднання буде використати SSL.<br>"
 
-#: src/modules/dcc/chat.cpp:343
-#: src/modules/dcc/video.cpp:689
+#: src/modules/dcc/video.cpp:711 src/modules/dcc/chat.cpp:343
 #, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
@@ -815,13 +783,12 @@ msgstr ""
 "Крипто машина не здатна зашифрувати поточне повідомлення(%Q): %s, ніякі дані "
 "не відіслані"
 
-#: src/modules/dcc/libkvidcc.cpp:1641
-#: src/modules/dcc/libkvidcc.cpp:2606
-#: src/modules/dcc/libkvidcc.cpp:2626
+#: src/modules/dcc/libkvidcc.cpp:1642 src/modules/dcc/libkvidcc.cpp:2607
+#: src/modules/dcc/libkvidcc.cpp:2627
 msgid "The current window has no associated DCC session"
 msgstr "Поточне вікно не асоціюється з DCC сесією"
 
-#: src/modules/dcc/broker.cpp:755
+#: src/modules/dcc/broker.cpp:758
 #, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
@@ -832,7 +799,7 @@ msgstr ""
 "<br><b>переписати</b> існуючий файл,<br> <b>автоматично перейменувати</b> "
 "новий файл, або<br><b>продовжити</b> незавершене завантаження?"
 
-#: src/modules/dcc/broker.cpp:767
+#: src/modules/dcc/broker.cpp:770
 #, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is larger than the offered one."
@@ -842,8 +809,7 @@ msgstr ""
 "Файл більшого розміру '<b>%1</b>' уже існує<br>Ви хочете <br><b>переписати</"
 "b> існуючий файл, або<br> <b>автоматично перейменувати</b> новий файл?"
 
-#: src/modules/dcc/chat.cpp:475
-#: src/modules/dcc/video.cpp:819
+#: src/modules/dcc/video.cpp:841 src/modules/dcc/chat.cpp:475
 #, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
@@ -852,15 +818,13 @@ msgstr ""
 "Наступне повідомлення зашифроване, але криптовальна машина не може його "
 "розшифрувати: %s"
 
-#: src/modules/dcc/send.cpp:1789
-#: src/modules/dcc/chat.cpp:213
+#: src/modules/dcc/chat.cpp:213 src/modules/dcc/send.cpp:1789
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "Локальний IP адреса є приватним і немає IRC сервера для його визначення"
 
-#: src/modules/dcc/send.cpp:1786
-#: src/modules/dcc/chat.cpp:210
+#: src/modules/dcc/chat.cpp:210 src/modules/dcc/send.cpp:1786
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
@@ -881,15 +845,15 @@ msgstr "Локальний IP адреса є приватним, визначе
 msgid "The remote client is listening on interface %s and port %s"
 msgstr "Вилучений клієнт прослуховує інтерфейс %s на порту %s"
 
-#: src/modules/dcc/libkvidcc.cpp:1646
+#: src/modules/dcc/libkvidcc.cpp:1647
 msgid "The specified parameter is not a valid DCC identifier"
 msgstr "Заданий параметр не є дійсним ідентифікатором DCC"
 
-#: src/modules/dcc/libkvidcc.cpp:2617
+#: src/modules/dcc/libkvidcc.cpp:2618
 msgid "The specified window identifier is not valid"
 msgstr "Заданий ідентифікатор вікна недійсний"
 
-#: src/modules/dcc/libkvidcc.cpp:1726
+#: src/modules/dcc/libkvidcc.cpp:1727
 msgid "This DCC session is not a DCC transfer session"
 msgstr ""
 
@@ -936,7 +900,7 @@ msgstr ""
 msgid "This executable has no SSL support, -s switch ignored"
 msgstr "Ця зборка не підтримує SSL, ключ -s зігнорований"
 
-#: src/modules/dcc/libkvidcc.cpp:2774
+#: src/modules/dcc/libkvidcc.cpp:2775
 #, fuzzy
 msgid "This executable was built without SSL support"
 msgstr "Ця зборка програми не має підтримки SSL, ключ -s зігнорований"
@@ -969,8 +933,7 @@ msgstr "Журнал передачі"
 msgid "Transfer completed"
 msgstr "Передача завершена"
 
-#: src/modules/dcc/send.cpp:1206
-#: src/modules/dcc/send.cpp:1878
+#: src/modules/dcc/send.cpp:1206 src/modules/dcc/send.cpp:1878
 #: src/modules/dcc/send.cpp:1957
 msgid "Transfer failed: "
 msgstr "Помилка передачі: "
@@ -979,24 +942,24 @@ msgstr "Помилка передачі: "
 msgid "Transferring data"
 msgstr "Передача даних"
 
-#: src/modules/dcc/libkvidcc.cpp:2796
-msgid "Unable to get SSL informations: DCC session is not using SSL"
+#: src/modules/dcc/libkvidcc.cpp:2797
+msgid "Unable to get SSL information: DCC session is not using SSL"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2809
-msgid "Unable to get SSL informations: DCC session not initialized yet"
+#: src/modules/dcc/libkvidcc.cpp:2810
+msgid "Unable to get SSL information: DCC session not initialized yet"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2826
-msgid "Unable to get SSL informations: No peer certificate available"
+#: src/modules/dcc/libkvidcc.cpp:2827
+msgid "Unable to get SSL information: No peer certificate available"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2817
-msgid "Unable to get SSL informations: SSL non initialized yet in DCC session"
+#: src/modules/dcc/libkvidcc.cpp:2818
+msgid "Unable to get SSL information: SSL non initialized yet in DCC session"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:2834
-msgid "Unable to get SSL informations: query not recognized"
+#: src/modules/dcc/libkvidcc.cpp:2835
+msgid "Unable to get SSL information: query not recognized"
 msgstr ""
 
 #: src/modules/dcc/libkvidcc.cpp:129
@@ -1007,7 +970,7 @@ msgstr "Неможливо одержати адресу інтерфейсу %Q
 msgid "Unable to process the above request: %Q, %Q"
 msgstr "Не можу обробити зазначений запит: %Q, %Q"
 
-#: src/modules/dcc/requests.cpp:1251
+#: src/modules/dcc/requests.cpp:1250
 #, c-format
 msgid "Unknown DCC type '%s'"
 msgstr "Невідомий DCC тип '%s'"
@@ -1020,7 +983,7 @@ msgstr ""
 "Використається %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p="
 "%s  %Q\r%c для відправлення файлу (або подвійний клич на сокете)"
 
-#: src/modules/dcc/video.cpp:449
+#: src/modules/dcc/video.cpp:467
 msgid "Video device:"
 msgstr ""
 
@@ -1065,7 +1028,7 @@ msgstr ""
 "ПОПЕРЕДЖЕННЯ: не можу встановити запитане значення швидкості (%d): устрій "
 "використає найближче підходяще (%d)"
 
-#: src/modules/dcc/libkvidcc.cpp:2785
+#: src/modules/dcc/libkvidcc.cpp:2786
 msgid "You specified a bad string for the parameter \"type\""
 msgstr ""
 
@@ -1092,24 +1055,15 @@ msgstr "[ПОМИЛКА SSL]: %s"
 msgid "bytes/sec"
 msgstr "байт/сек"
 
-#: src/modules/dcc/requests.cpp:142
-#: src/modules/dcc/requests.cpp:143
-#: src/modules/dcc/requests.cpp:144
-#: src/modules/dcc/descriptor.cpp:65
-#: src/modules/dcc/marshal.cpp:490
-#: src/modules/dcc/marshal.cpp:520
-#: src/modules/dcc/marshal.cpp:525
-#: src/modules/dcc/libkvidcc.cpp:111
-#: src/modules/dcc/libkvidcc.cpp:408
-#: src/modules/dcc/libkvidcc.cpp:443
-#: src/modules/dcc/libkvidcc.cpp:642
-#: src/modules/dcc/libkvidcc.cpp:666
-#: src/modules/dcc/libkvidcc.cpp:803
-#: src/modules/dcc/libkvidcc.cpp:805
-#: src/modules/dcc/libkvidcc.cpp:1121
-#: src/modules/dcc/libkvidcc.cpp:1171
-#: src/modules/dcc/libkvidcc.cpp:1199
-#: src/modules/dcc/libkvidcc.cpp:1238
+#: src/modules/dcc/libkvidcc.cpp:111 src/modules/dcc/libkvidcc.cpp:408
+#: src/modules/dcc/libkvidcc.cpp:443 src/modules/dcc/libkvidcc.cpp:642
+#: src/modules/dcc/libkvidcc.cpp:666 src/modules/dcc/libkvidcc.cpp:803
+#: src/modules/dcc/libkvidcc.cpp:805 src/modules/dcc/libkvidcc.cpp:1121
+#: src/modules/dcc/libkvidcc.cpp:1171 src/modules/dcc/libkvidcc.cpp:1199
+#: src/modules/dcc/libkvidcc.cpp:1238 src/modules/dcc/requests.cpp:142
+#: src/modules/dcc/requests.cpp:143 src/modules/dcc/requests.cpp:144
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/marshal.cpp:490
+#: src/modules/dcc/marshal.cpp:520 src/modules/dcc/marshal.cpp:525
 msgid "unknown"
 msgstr "невідомий"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 18:58+0200\n"
+"POT-Creation-Date: 2010-11-25 10:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,33 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/modules/mediaplayer/mp_amipinterface.cpp:108
-msgid ""
-"An interface to the AMIP plug-in.\n"
-"You can download it from http://amip.tools-for.net\n"
-"To use this interface you must install AMIP plug-in for your player."
-msgstr ""
-
-#: src/modules/mediaplayer/mp_winampinterface.cpp:184
-msgid "Can't find a running winamp window"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_winampinterface.cpp:194
-msgid ""
-"An interface to the popupar Winamp media player.\n"
-"You can download it from http://www.winamp.com.\n"
-"To use all the features of this interface you must copy the gen_kvirc.dll "
-"plugin found in the KVIrc distribution directory to the Winamp plugins "
-"folder and restart winamp."
-msgstr ""
-
-#: src/modules/mediaplayer/mp_winampinterface.cpp:316
-#: src/modules/mediaplayer/mp_winampinterface.cpp:350
-msgid ""
-"The winamp plugin has not been installed properly. Check /help mediaplayer."
-"nowplaying"
-msgstr ""
 
 #: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
 msgid ""
@@ -64,53 +37,11 @@ msgstr ""
 msgid "Can't find symbol %s in %Q"
 msgstr ""
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
-msgid "Trying media player interface \"%Q\": score %d"
-msgstr ""
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:73
+#: src/modules/mediaplayer/mp_amipinterface.cpp:108
 msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr ""
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
-msgid "Choosing media player interface \"%Q\""
-msgstr ""
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:104
-msgid "Seems that there is no usable media player on this machine"
-msgstr ""
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
-msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr ""
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:133
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:570
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:593
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:635
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:674
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1182
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1318
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1552
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1595
-msgid ""
-"The selected media player interface failed to execute the requested function"
-msgstr ""
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:134
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:571
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:594
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:636
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:675
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1183
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1319
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1553
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1596
-msgid "Last interface error: "
+"An interface to the AMIP plug-in.\n"
+"You can download it from http://amip.tools-for.net\n"
+"To use this interface you must install AMIP plug-in for your player."
 msgstr ""
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:320
@@ -151,6 +82,89 @@ msgid ""
 "addons.songbirdnest.com/addon/1626.\n"
 msgstr ""
 
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:547
+msgid ""
+"An interface to Totem.\n"
+"Download it from http://projects.gnome.org/totem/\n"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:565
+msgid ""
+"An interface to Vlc.\n"
+"Download it from http://www.videolan.org/\n"
+"You need to manually enable the DBus control\n"
+"interface in the Vlc preferences\n"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_winampinterface.cpp:184
+msgid "Can't find a running winamp window"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_winampinterface.cpp:194
+msgid ""
+"An interface to the popupar Winamp media player.\n"
+"You can download it from http://www.winamp.com.\n"
+"To use all the features of this interface you must copy the gen_kvirc.dll "
+"plugin found in the KVIrc distribution directory to the Winamp plugins "
+"folder and restart winamp."
+msgstr ""
+
+#: src/modules/mediaplayer/mp_winampinterface.cpp:316
+#: src/modules/mediaplayer/mp_winampinterface.cpp:350
+msgid ""
+"The winamp plugin has not been installed properly. Check /help mediaplayer."
+"nowplaying"
+msgstr ""
+
 #: src/modules/mediaplayer/mp_interface.cpp:43
 msgid "Function not implemented"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
+msgid "Trying media player interface \"%Q\": score %d"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:73
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
+msgid "Choosing media player interface \"%Q\""
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:104
+msgid "Seems that there is no usable media player on this machine"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:133
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:570
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:593
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:635
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:674
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1182
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1318
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1555
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1598
+msgid ""
+"The selected media player interface failed to execute the requested function"
+msgstr ""
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:134
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:571
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:594
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:636
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:675
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1183
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1319
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1556
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1599
+msgid "Last interface error: "
 msgstr ""

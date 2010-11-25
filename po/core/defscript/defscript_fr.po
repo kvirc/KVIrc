@@ -6,14 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: defscript_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-20 15:05+0200\n"
+"POT-Creation-Date: 2010-11-25 10:30+0100\n"
 "PO-Revision-Date: 2010-11-21 16:08+0100\n"
 "Last-Translator: ealexp <ealexp@ealexp.eu>\n"
 "Language-Team: Français <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: data/defscript/popups.kvs:541
 msgid "&Administrator"
@@ -51,7 +51,7 @@ msgstr ""
 
 #: data/defscript/popups.kvs:649
 #: data/defscript/popups.kvs:755
-#: data/defscript/popups.kvs:1302
+#: data/defscript/popups.kvs:1303
 msgid "&Highlight"
 msgstr ""
 
@@ -67,7 +67,7 @@ msgstr "Ignoré"
 #: data/defscript/popups.kvs:497
 #: data/defscript/popups.kvs:782
 #: data/defscript/popups.kvs:1120
-#: data/defscript/popups.kvs:1260
+#: data/defscript/popups.kvs:1261
 msgid "&Information"
 msgstr "&Informations"
 
@@ -108,14 +108,14 @@ msgid "&Part"
 msgstr "Partir"
 
 #: data/defscript/popups.kvs:634
-#: data/defscript/popups.kvs:1287
+#: data/defscript/popups.kvs:1288
 #, fuzzy
 msgid "&Query"
 msgstr "Conversation"
 
 #: data/defscript/popups.kvs:647
 #: data/defscript/popups.kvs:1160
-#: data/defscript/popups.kvs:1300
+#: data/defscript/popups.kvs:1301
 msgid "&Registration"
 msgstr ""
 
@@ -202,8 +202,8 @@ msgstr "Converser avec"
 msgid "Choose Avatar Image File"
 msgstr "Choisir une image "
 
-#: data/defscript/popups.kvs:1217
-#: data/defscript/popups.kvs:1225
+#: data/defscript/popups.kvs:1218
+#: data/defscript/popups.kvs:1226
 #, fuzzy
 msgid "Choose Log Filename"
 msgstr "Choisir le nom de fichier du journal"
@@ -216,13 +216,29 @@ msgstr "Choisir..."
 #: data/defscript/popups.kvs:865
 #: data/defscript/popups.kvs:1081
 #: data/defscript/popups.kvs:1169
-#: data/defscript/popups.kvs:1313
+#: data/defscript/popups.kvs:1314
 msgid "Clear Buffer"
 msgstr "Vider le tampon"
 
 #: data/defscript/popups.kvs:423
 msgid "Clear Default"
 msgstr "Mettre par défaut"
+
+#: data/defscript/popups.kvs:1343
+msgid "Close"
+msgstr ""
+
+#: data/defscript/popups.kvs:1367
+msgid "Close All Dead Channels"
+msgstr ""
+
+#: data/defscript/popups.kvs:1373
+msgid "Close All Dead Queries"
+msgstr ""
+
+#: data/defscript/popups.kvs:1361
+msgid "Close All Queries"
+msgstr ""
 
 #: data/defscript/popups.kvs:626
 msgid "Configure ban mask..."
@@ -253,6 +269,10 @@ msgstr "DNS pour"
 msgid "Default"
 msgstr "Défaut"
 
+#: data/defscript/popups.kvs:1332
+msgid "Dock"
+msgstr ""
+
 #: data/defscript/popups.kvs:383
 msgid "Edit Registration..."
 msgstr ""
@@ -275,7 +295,7 @@ msgstr "Entrez un raison de Kick/Ban"
 msgid "Enter the message text"
 msgstr "Entré un message"
 
-#: data/defscript/popups.kvs:1191
+#: data/defscript/popups.kvs:1192
 msgid "Flush Log File"
 msgstr "Vider le journal"
 
@@ -305,7 +325,7 @@ msgid "IRC Context"
 msgstr "Contexte IRC"
 
 #: data/defscript/popups.kvs:651
-#: data/defscript/popups.kvs:1304
+#: data/defscript/popups.kvs:1305
 #, fuzzy
 msgid "Ig&nore"
 msgstr "Ignoré"
@@ -344,8 +364,8 @@ msgstr ""
 msgid "Ignore as..."
 msgstr ""
 
-#: data/defscript/popups.kvs:1210
-#: data/defscript/popups.kvs:1223
+#: data/defscript/popups.kvs:1211
+#: data/defscript/popups.kvs:1224
 msgid "Include Existing Buffer"
 msgstr ""
 
@@ -368,20 +388,20 @@ msgstr "Kick/Ban"
 msgid "Kick/Ban Reason"
 msgstr "Raison de Kick/Ban"
 
-#: data/defscript/popups.kvs:1210
+#: data/defscript/popups.kvs:1211
 msgid "Log To Default File"
 msgstr "Journaliser vers le fichier par défaut"
 
-#: data/defscript/popups.kvs:1205
+#: data/defscript/popups.kvs:1206
 msgid "Log To Default File,"
 msgstr "Journaliser vers le fichier par défaut,"
 
-#: data/defscript/popups.kvs:1215
-#: data/defscript/popups.kvs:1223
+#: data/defscript/popups.kvs:1216
+#: data/defscript/popups.kvs:1224
 msgid "Log To..."
 msgstr "Journaliser vers..."
 
-#: data/defscript/popups.kvs:1189
+#: data/defscript/popups.kvs:1190
 msgid "Logging to"
 msgstr "Connexion à"
 
@@ -390,6 +410,14 @@ msgstr "Connexion à"
 msgid "Mask for"
 msgstr "Masque pour"
 
+#: data/defscript/popups.kvs:1338
+msgid "Maximize"
+msgstr ""
+
+#: data/defscript/popups.kvs:1337
+msgid "Minimize"
+msgstr ""
+
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
 msgstr ""
@@ -397,7 +425,7 @@ msgstr ""
 #: data/defscript/popups.kvs:459
 #: data/defscript/popups.kvs:1061
 #: data/defscript/popups.kvs:1108
-#: data/defscript/popups.kvs:1248
+#: data/defscript/popups.kvs:1249
 msgid "Multiple Users"
 msgstr "Utilisateur multiple"
 
@@ -410,7 +438,7 @@ msgstr "Pas d'utilisateur :"
 msgid "Normal User"
 msgstr "Utilisateur normale"
 
-#: data/defscript/popups.kvs:1203
+#: data/defscript/popups.kvs:1204
 msgid "Not Logging"
 msgstr "Ne pas journaliser"
 
@@ -421,7 +449,7 @@ msgstr "Ne pas journaliser"
 msgid "Notify Avatar"
 msgstr ""
 
-#: data/defscript/popups.kvs:1306
+#: data/defscript/popups.kvs:1307
 msgid "Notify avatar"
 msgstr ""
 
@@ -429,7 +457,7 @@ msgstr ""
 msgid "O&wner"
 msgstr ""
 
-#: data/defscript/popups.kvs:1369
+#: data/defscript/popups.kvs:1413
 msgid "Open "
 msgstr "Ouvrir"
 
@@ -440,6 +468,11 @@ msgstr "Options"
 #: data/defscript/aliases.kvs:115
 msgid "Parameter message missing"
 msgstr "Paramètres du message manquant"
+
+#: data/defscript/popups.kvs:1355
+#, fuzzy
+msgid "Part All Channels"
+msgstr "Salons"
 
 #: data/defscript/popups.kvs:350
 msgid "Quick Registration"
@@ -460,6 +493,10 @@ msgstr "Enregistrer..."
 
 #: data/defscript/popups.kvs:400
 msgid "Remove from Notify"
+msgstr ""
+
+#: data/defscript/popups.kvs:1339
+msgid "Restore"
 msgstr ""
 
 #: data/defscript/popups.kvs:938
@@ -500,6 +537,11 @@ msgstr "Envoyer un wallop à"
 msgid "Set as Default"
 msgstr "Mettre par défaut"
 
+#: data/defscript/popups.kvs:1349
+#, fuzzy
+msgid "Set window props as default"
+msgstr "Mettre par défaut"
+
 #: data/defscript/popups.kvs:24
 #: data/defscript/popups.kvs:88
 msgid "Start Highlighting (Local)"
@@ -514,7 +556,7 @@ msgstr ""
 msgid "Stop Highlighting (Local)"
 msgstr ""
 
-#: data/defscript/popups.kvs:1198
+#: data/defscript/popups.kvs:1199
 msgid "Stop Logging"
 msgstr "Arrêter la journalisation"
 
@@ -526,7 +568,7 @@ msgstr ""
 msgid "TDCC Send to"
 msgstr ""
 
-#: data/defscript/popups.kvs:1374
+#: data/defscript/popups.kvs:1418
 msgid "Telnet to "
 msgstr "Connexion telnet à"
 
@@ -541,19 +583,37 @@ msgstr "Ceci n'est pas une fenêtre de salon"
 
 #: data/defscript/default.kvs:35
 msgid "To connect to a server, type /server <server name>"
-msgstr "Pour vous connecter à un serveur, tapez /server <nom du serveur> ou /s <nom du serveur>"
+msgstr ""
+"Pour vous connecter à un serveur, tapez /server <nom du serveur> ou /s <nom "
+"du serveur>"
 
-#: data/defscript/popups.kvs:1381
+#: data/defscript/popups.kvs:1425
 msgid "Traceroute to "
 msgstr "Traceroute à "
 
-#: data/defscript/popups.kvs:1387
+#: data/defscript/popups.kvs:1431
 msgid "Traceroute6 to "
 msgstr "Traceroute6 à "
 
 #: data/defscript/aliases.kvs:116
 msgid "Type /gnotice for help"
 msgstr "Taper /gnotice pour de l'aide"
+
+#: data/defscript/popups.kvs:1333
+msgid "Undock"
+msgstr ""
+
+#: data/defscript/popups.kvs:1387
+msgid "Unhighlight All Channels"
+msgstr ""
+
+#: data/defscript/popups.kvs:1393
+msgid "Unhighlight All Queries"
+msgstr ""
+
+#: data/defscript/popups.kvs:1381
+msgid "Unhighlight All Windows"
+msgstr ""
 
 #: data/defscript/popups.kvs:312
 msgid "Unignore"
@@ -619,15 +679,20 @@ msgid "You're not connected to a server"
 msgstr "Vous n'êtes pas connecté à un serveur"
 
 #: data/defscript/classes.kvs:18
-msgid "[Installer] Error: the first argument of copyFiles must be a source directory"
+msgid ""
+"[Installer] Error: the first argument of copyFiles must be a source directory"
 msgstr ""
 
 #: data/defscript/classes.kvs:24
-msgid "[Installer] Error: the second argument of copyFiles must be a file name or file regexp"
+msgid ""
+"[Installer] Error: the second argument of copyFiles must be a file name or "
+"file regexp"
 msgstr ""
 
 #: data/defscript/classes.kvs:30
-msgid "[Installer] Error: the third argument of copyFiles must be a destination directory"
+msgid ""
+"[Installer] Error: the third argument of copyFiles must be a destination "
+"directory"
 msgstr ""
 
 #: data/defscript/aliases.kvs:100
@@ -640,7 +705,7 @@ msgstr "à un avatar par défaut"
 
 #: data/defscript/popups.kvs:489
 #: data/defscript/popups.kvs:1113
-#: data/defscript/popups.kvs:1253
+#: data/defscript/popups.kvs:1254
 msgid "idle time"
 msgstr "temps inactif"
 
@@ -702,4 +767,3 @@ msgstr "y (y-Lines)"
 #: data/defscript/popups.kvs:836
 msgid "z (Debug Stats?)"
 msgstr ""
-

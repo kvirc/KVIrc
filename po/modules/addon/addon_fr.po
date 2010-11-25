@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: addon_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 18:58+0200\n"
+"POT-Creation-Date: 2010-11-25 10:30+0100\n"
 "PO-Revision-Date: 2010-08-07 19:43+0200\n"
 "Last-Translator: _Otaku\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -116,7 +116,7 @@ msgstr "Voulez-vous procéder à l'installation ?"
 msgid "Empty file list"
 msgstr "Liste de fichiers vide"
 
-#: src/modules/addon/libkviaddon.cpp:804
+#: src/modules/addon/libkviaddon.cpp:807
 msgid "Error installing addon package: %Q"
 msgstr "Erreur à l'installation du paquet d'extension : %Q"
 
@@ -327,8 +327,7 @@ msgstr "Sélectionner le répertoire source :"
 msgid "Show Help"
 msgstr "Montrez l'aide"
 
-#: src/modules/addon/libkviaddon.cpp:691
-#: src/modules/addon/libkviaddon.cpp:714
+#: src/modules/addon/libkviaddon.cpp:691 src/modules/addon/libkviaddon.cpp:714
 msgid "Skipping inexisting entry '%1'"
 msgstr ""
 
@@ -341,12 +340,9 @@ msgstr ""
 msgid "Source Directory"
 msgstr "Chemin de la source"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:647
 msgid "The addon \"%1\" does not exist"
 msgstr "L'extension \"%1\" n'existe pas"
 
@@ -438,8 +434,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Il y a %d extension(s) installer"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 #, fuzzy
 msgid "Uninstalling existing addon version %Q"
 msgstr "Désinstallation de l'extension (version %Q)"

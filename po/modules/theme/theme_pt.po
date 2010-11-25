@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_theme \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 18:58+0200\n"
+"POT-Creation-Date: 2010-11-25 10:30+0100\n"
 "PO-Revision-Date: 2010-05-25 00:28+0100\n"
 "Last-Translator: Zé <mmodem00@gmal.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/theme/managementdialog.cpp:263
+#: src/modules/theme/managementdialog.cpp:284
 msgid "&Apply Theme"
 msgstr "&Aplicar Tema"
 
-#: src/modules/theme/managementdialog.cpp:262
+#: src/modules/theme/managementdialog.cpp:283
 msgid "&Remove Theme"
 msgstr "&Remover Tema"
 
@@ -32,10 +32,9 @@ msgstr "&Remover Tema"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Adquirir Captura de Ecrã - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:109
-#: src/modules/theme/libkvitheme.cpp:123
-#: src/modules/theme/managementdialog.cpp:279
-#: src/modules/theme/managementdialog.cpp:292
+#: src/modules/theme/libkvitheme.cpp:109 src/modules/theme/libkvitheme.cpp:123
+#: src/modules/theme/managementdialog.cpp:300
+#: src/modules/theme/managementdialog.cpp:313
 msgid "Apply theme - KVIrc"
 msgstr "Aplicar tema - KVIrc"
 
@@ -58,16 +57,16 @@ msgstr "Criado em"
 msgid "Created with"
 msgstr "Criado com"
 
-#: src/modules/theme/managementdialog.cpp:150
+#: src/modules/theme/managementdialog.cpp:149
 msgid "Delete Selected Themes"
 msgstr "Apagar Temas Seleccionados"
 
-#: src/modules/theme/managementdialog.cpp:305
+#: src/modules/theme/managementdialog.cpp:326
 msgid "Delete Theme - KVIrc"
 msgstr "Apagar Tema - KVIrc"
 
-#: src/modules/theme/savethemedialog.cpp:119
 #: src/modules/theme/packthemedialog.cpp:281
+#: src/modules/theme/savethemedialog.cpp:119
 msgid "Description:"
 msgstr "Descrição:"
 
@@ -75,7 +74,7 @@ msgstr "Descrição:"
 msgid "Do Not Install"
 msgstr "Não Instalar"
 
-#: src/modules/theme/managementdialog.cpp:306
+#: src/modules/theme/managementdialog.cpp:327
 msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
 msgstr "Deseja realmente apagar o tema \"%Q\" (versão %Q)?"
 
@@ -84,7 +83,7 @@ msgid "Do you want to proceed with the installation ?"
 msgstr "Deseja prosseguir com a instalação ?"
 
 #: src/modules/theme/libkvitheme.cpp:110
-#: src/modules/theme/managementdialog.cpp:280
+#: src/modules/theme/managementdialog.cpp:301
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Deseja aplicar o tema \"%Q\" (versão %Q)?"
 
@@ -96,7 +95,7 @@ msgstr "Erro ao instalar o pacote de tema: %Q"
 msgid "Error making screenshot"
 msgstr "Erro ao criar a captura de ecrã"
 
-#: src/modules/theme/managementdialog.cpp:144
+#: src/modules/theme/managementdialog.cpp:143
 msgid "Export Selected Themes to a Distributable Package"
 msgstr "Exportar Temas Seleccionados para um Pacote de Distribuição"
 
@@ -110,12 +109,12 @@ msgid "Export Theme - KVIrc"
 msgstr "Exportar Tema - KVIrc"
 
 #: src/modules/theme/libkvitheme.cpp:122
-#: src/modules/theme/managementdialog.cpp:291
+#: src/modules/theme/managementdialog.cpp:312
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Falha ao aplicar o tema especificado: %Q"
 
-#: src/modules/theme/savethemedialog.cpp:198
 #: src/modules/theme/packthemedialog.cpp:369
+#: src/modules/theme/savethemedialog.cpp:198
 msgid "Failed to load the selected image"
 msgstr "Falha ao carregar a imagem seleccionada"
 
@@ -141,7 +140,7 @@ msgstr ""
 "Finalmente clique no botão \"Terminar\" para finalizar a operação de "
 "empacotamento."
 
-#: src/modules/theme/managementdialog.cpp:166
+#: src/modules/theme/managementdialog.cpp:165
 msgid "Get More Themes..."
 msgstr "Obter Mais Temas..."
 
@@ -197,8 +196,8 @@ msgstr ""
 "Aqui precisa fornecer informação acerca de si (o empacotador) e uma breve "
 "descrição do pacote que está a criar."
 
-#: src/modules/theme/savethemedialog.cpp:78
 #: src/modules/theme/packthemedialog.cpp:108
+#: src/modules/theme/savethemedialog.cpp:78
 msgid "Hit the \"Next\" button to begin."
 msgstr "Clique no botão \"Próximo\" para começar."
 
@@ -210,7 +209,7 @@ msgstr "Ícone/Captura de ecrã"
 msgid "Install Theme Pack - KVIrc"
 msgstr "Instalar Pacote de Tema - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:160
+#: src/modules/theme/managementdialog.cpp:159
 msgid "Install Theme Package From Disk"
 msgstr "Instalar Pacote de Tema A Partir de Disco"
 
@@ -218,11 +217,11 @@ msgstr "Instalar Pacote de Tema A Partir de Disco"
 msgid "Make Screenshot Now"
 msgstr "Capturar Ecrã Agora"
 
-#: src/modules/theme/managementdialog.cpp:113
+#: src/modules/theme/managementdialog.cpp:114
 msgid "Manage Themes - KVIrc"
 msgstr "Gerir Temas - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:319
+#: src/modules/theme/managementdialog.cpp:340
 msgid "Open Theme - KVIrc"
 msgstr "Abrir Tema - KVIrc"
 
@@ -260,7 +259,7 @@ msgstr "Coloque uma descrição do pacote aqui..."
 msgid "Save Current Theme - KVIrc"
 msgstr "Gravar Tema Actual - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:133
+#: src/modules/theme/managementdialog.cpp:132
 msgid "Save Current Theme..."
 msgstr "Gravar Tema Actual..."
 
@@ -288,8 +287,7 @@ msgstr "O ficheiro seleccionado não parece ser um pacote KVIrc válido: %Q"
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "O ficheiro seleccionado não parece ser um pacote de tema KVIrc válido"
 
-#: src/modules/theme/libkvitheme.cpp:128
-#: src/modules/theme/libkvitheme.cpp:171
+#: src/modules/theme/libkvitheme.cpp:128 src/modules/theme/libkvitheme.cpp:171
 msgid "The theme package '%Q' does not exists"
 msgstr "O pacote do tema '%Q' não existe"
 
@@ -359,8 +357,8 @@ msgstr "Não é possível criar o directório do tema."
 msgid "Unable to save theme: %Q"
 msgstr "Não é possível gravar o tema: %Q"
 
-#: src/modules/theme/savethemedialog.cpp:111
 #: src/modules/theme/packthemedialog.cpp:272
+#: src/modules/theme/savethemedialog.cpp:111
 msgid "Version:"
 msgstr "Versão:"
 
@@ -376,8 +374,8 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Aviso: O tema pode ser incompatível com esta versão do KVIrc"
 
-#: src/modules/theme/savethemedialog.cpp:85
 #: src/modules/theme/packthemedialog.cpp:101
+#: src/modules/theme/savethemedialog.cpp:85
 msgid "Welcome"
 msgstr "Bem vindo"
 
@@ -413,6 +411,6 @@ msgstr "Está prestes a instalar o seguinte pacote de tema"
 msgid "Your name here"
 msgstr "O seu nome aqui"
 
-#: src/modules/theme/managementdialog.cpp:86
+#: src/modules/theme/managementdialog.cpp:87
 msgid "by"
 msgstr "por"

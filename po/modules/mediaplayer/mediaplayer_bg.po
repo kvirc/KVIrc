@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 18:58+0200\n"
+"POT-Creation-Date: 2010-11-25 10:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,6 +33,20 @@ msgstr ""
 msgid ""
 "An interface to Qmmp.\n"
 "Download it from http://qmmp.ylsoftware.com\n"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:547
+msgid ""
+"An interface to Totem.\n"
+"Download it from http://projects.gnome.org/totem/\n"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:565
+msgid ""
+"An interface to Vlc.\n"
+"Download it from http://www.videolan.org/\n"
+"You need to manually enable the DBus control\n"
+"interface in the Vlc preferences\n"
 msgstr ""
 
 #: src/modules/mediaplayer/mp_amipinterface.cpp:108
@@ -111,8 +125,8 @@ msgstr ""
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1183
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1319
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1553
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1596
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1556
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1599
 msgid "Last interface error: "
 msgstr ""
 
@@ -137,8 +151,8 @@ msgstr ""
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1182
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1318
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1552
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1595
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1555
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1598
 msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr ""

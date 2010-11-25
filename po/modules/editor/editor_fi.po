@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 18:58+0200\n"
+"POT-Creation-Date: 2010-11-25 10:30+0100\n"
 "PO-Revision-Date: 2007-11-21 18:00+0200\n"
 "Last-Translator: Santeri Piippo <aleksanteri4028@gmail.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,12 +67,12 @@ msgstr ""
 
 #: src/modules/classeditor/classeditor.cpp:1986
 #: src/modules/classeditor/classeditor.cpp:2088
-#: src/modules/editor/scripteditor.cpp:1055
+#: src/modules/editor/scripteditor.cpp:1091
 #, fuzzy
 msgid "&Cancel"
 msgstr "Peruuta"
 
-#: src/modules/editor/scripteditor.cpp:765
+#: src/modules/editor/scripteditor.cpp:801
 msgid "&Configure Editor..."
 msgstr "&Konfiguroi editori..."
 
@@ -132,7 +132,7 @@ msgstr ""
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/editor/scripteditor.cpp:762
+#: src/modules/editor/scripteditor.cpp:798
 msgid "&Open..."
 msgstr "&Avaa..."
 
@@ -149,11 +149,11 @@ msgid "&Rename Class"
 msgstr ""
 
 #: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1060
+#: src/modules/editor/scripteditor.cpp:1096
 msgid "&Replace"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:1050
+#: src/modules/editor/scripteditor.cpp:1086
 msgid "&Replace in all editor's items"
 msgstr ""
 
@@ -162,7 +162,7 @@ msgstr ""
 msgid "&Save"
 msgstr "&Tallenna nimellä..."
 
-#: src/modules/editor/scripteditor.cpp:763
+#: src/modules/editor/scripteditor.cpp:799
 msgid "&Save As..."
 msgstr "&Tallenna nimellä..."
 
@@ -233,8 +233,8 @@ msgstr ""
 msgid "Add Namespace"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:193
-#: src/modules/toolbareditor/toolbareditor.cpp:280
+#: src/modules/toolbareditor/toolbareditor.cpp:194
+#: src/modules/toolbareditor/toolbareditor.cpp:281
 msgid "Advanced..."
 msgstr ""
 
@@ -279,7 +279,7 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:265
+#: src/modules/toolbareditor/toolbareditor.cpp:266
 msgid "Automatically"
 msgstr ""
 
@@ -310,12 +310,12 @@ msgstr ""
 msgid "Brackets:"
 msgstr "Hakasulkeet:"
 
-#: src/modules/editor/scripteditor.cpp:988
+#: src/modules/editor/scripteditor.cpp:1024
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "Ei voitu avata tiedostoa %s luettavaksi."
 
-#: src/modules/editor/scripteditor.cpp:899
+#: src/modules/editor/scripteditor.cpp:935
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Ei voitu avata tidostoa %s kirjoitettavaksi."
@@ -326,8 +326,8 @@ msgstr "Ei voitu avata tidostoa %s kirjoitettavaksi."
 #: src/modules/eventeditor/eventeditor.cpp:535
 #: src/modules/popupeditor/popupeditor.cpp:1390
 #: src/modules/raweditor/raweditor.cpp:488
-#: src/modules/toolbareditor/toolbareditor.cpp:188
-#: src/modules/toolbareditor/toolbareditor.cpp:405
+#: src/modules/toolbareditor/toolbareditor.cpp:189
+#: src/modules/toolbareditor/toolbareditor.cpp:406
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -392,14 +392,14 @@ msgstr "Valitse tiedostonimi - KVIrc"
 #: src/modules/actioneditor/actioneditor.cpp:700
 #: src/modules/aliaseditor/aliaseditor.cpp:812
 #: src/modules/classeditor/classeditor.cpp:1209
-#: src/modules/editor/scripteditor.cpp:886
+#: src/modules/editor/scripteditor.cpp:922
 #: src/modules/eventeditor/eventeditor.cpp:466
 #: src/modules/eventeditor/eventeditor.cpp:507
 #: src/modules/popupeditor/popupeditor.cpp:1188
 #: src/modules/popupeditor/popupeditor.cpp:1238
 #: src/modules/raweditor/raweditor.cpp:421
 #: src/modules/raweditor/raweditor.cpp:459
-#: src/modules/toolbareditor/toolbareditor.cpp:396
+#: src/modules/toolbareditor/toolbareditor.cpp:397
 msgid "Choose a Filename - KVIrc"
 msgstr "Valitse tiedostonimi - KVIrc"
 
@@ -430,7 +430,7 @@ msgid "Class names can contain only letters, digits and underscores"
 msgstr ""
 
 #: src/modules/classeditor/classeditor.cpp:1840
-#: src/modules/toolbareditor/toolbareditor.cpp:325
+#: src/modules/toolbareditor/toolbareditor.cpp:326
 msgid "Close"
 msgstr ""
 
@@ -463,7 +463,7 @@ msgstr ""
 msgid "Condition:"
 msgstr "Funktiot:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:377
+#: src/modules/toolbareditor/toolbareditor.cpp:378
 msgid "Confirm ToolBar Deletion"
 msgstr ""
 
@@ -475,7 +475,7 @@ msgstr ""
 msgid "Cu&t"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:293
+#: src/modules/toolbareditor/toolbareditor.cpp:294
 msgid "Customize Toolbars"
 msgstr ""
 
@@ -483,7 +483,7 @@ msgstr ""
 msgid "Delete Actions"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:306
+#: src/modules/toolbareditor/toolbareditor.cpp:307
 msgid "Delete ToolBar"
 msgstr ""
 
@@ -491,7 +491,7 @@ msgstr ""
 msgid "Description:"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:378
+#: src/modules/toolbareditor/toolbareditor.cpp:379
 msgid "Do you really want to delete toolbar \"%1\" ?"
 msgstr ""
 
@@ -512,19 +512,19 @@ msgstr ""
 msgid "Do you really want to remove the namespace \"%Q\" ?"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:402
+#: src/modules/toolbareditor/toolbareditor.cpp:403
 msgid "Do you want the associated actions to be exported with the toolbar ?"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:65
+#: src/modules/toolbareditor/toolbareditor.cpp:66
 msgid "Drop here the icons from the toolbars to remove them"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:261
+#: src/modules/toolbareditor/toolbareditor.cpp:262
 msgid "Duplicate ToolBar Id"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:310
+#: src/modules/toolbareditor/toolbareditor.cpp:311
 msgid "Edit ToolBar"
 msgstr ""
 
@@ -607,7 +607,7 @@ msgstr ""
 msgid "Export Selected..."
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:318
+#: src/modules/toolbareditor/toolbareditor.cpp:319
 msgid "Export ToolBar"
 msgstr ""
 
@@ -619,7 +619,7 @@ msgstr ""
 msgid "External menu:"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:774
+#: src/modules/editor/scripteditor.cpp:810
 #, fuzzy
 msgid "Find"
 msgstr "Etsi:"
@@ -677,11 +677,11 @@ msgstr ""
 msgid "Functions:"
 msgstr "Funktiot:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:283
+#: src/modules/toolbareditor/toolbareditor.cpp:284
 msgid "Hide Advanced"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:152
+#: src/modules/toolbareditor/toolbareditor.cpp:153
 msgid "Icon"
 msgstr ""
 
@@ -690,7 +690,7 @@ msgstr ""
 msgid "Icon:"
 msgstr "Fontti:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:168
+#: src/modules/toolbareditor/toolbareditor.cpp:169
 msgid "Id"
 msgstr ""
 
@@ -708,7 +708,7 @@ msgstr ""
 msgid "Internal unique name for the action"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:248
+#: src/modules/toolbareditor/toolbareditor.cpp:249
 msgid "Invalid ToolBar Label"
 msgstr ""
 
@@ -730,7 +730,7 @@ msgid "Keywords:"
 msgstr "Avainsanat:"
 
 #: src/modules/popupeditor/popupeditor.cpp:93
-#: src/modules/toolbareditor/toolbareditor.cpp:144
+#: src/modules/toolbareditor/toolbareditor.cpp:145
 msgid "Label"
 msgstr ""
 
@@ -738,11 +738,11 @@ msgstr ""
 msgid "Label:"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:974
+#: src/modules/editor/scripteditor.cpp:1010
 msgid "Load Script File - KVIrc"
 msgstr "Lataa skriptitiedosto - KVIrc"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:265
+#: src/modules/toolbareditor/toolbareditor.cpp:266
 msgid "Manually"
 msgstr ""
 
@@ -765,8 +765,8 @@ msgstr ""
 msgid "My Action"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:495
 #: src/modules/toolbareditor/toolbareditor.cpp:496
+#: src/modules/toolbareditor/toolbareditor.cpp:497
 msgid "My ToolBar"
 msgstr ""
 
@@ -880,7 +880,7 @@ msgstr ""
 msgid "New Separator Inside"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:302
+#: src/modules/toolbareditor/toolbareditor.cpp:303
 msgid "New ToolBar"
 msgstr ""
 
@@ -888,7 +888,7 @@ msgstr ""
 #: src/modules/aliaseditor/aliaseditor.cpp:934
 #: src/modules/classeditor/classeditor.cpp:1137
 #: src/modules/classeditor/classeditor.cpp:1349
-#: src/modules/toolbareditor/toolbareditor.cpp:404
+#: src/modules/toolbareditor/toolbareditor.cpp:405
 msgid "No"
 msgstr ""
 
@@ -919,9 +919,9 @@ msgstr "Normaali teksti:"
 #: src/modules/popupeditor/popupeditor.cpp:1195
 #: src/modules/popupeditor/popupeditor.cpp:1242
 #: src/modules/raweditor/raweditor.cpp:463
-#: src/modules/toolbareditor/toolbareditor.cpp:183
-#: src/modules/toolbareditor/toolbareditor.cpp:248
-#: src/modules/toolbareditor/toolbareditor.cpp:458
+#: src/modules/toolbareditor/toolbareditor.cpp:184
+#: src/modules/toolbareditor/toolbareditor.cpp:249
+#: src/modules/toolbareditor/toolbareditor.cpp:459
 #, fuzzy
 msgid "OK"
 msgstr "&OK"
@@ -953,7 +953,7 @@ msgstr ""
 msgid "Only If There Are Selected Users"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:987
+#: src/modules/editor/scripteditor.cpp:1023
 msgid "Open Failed - KVIrc"
 msgstr "Avaus epäonnistui - KVIrc"
 
@@ -982,7 +982,7 @@ msgstr ""
 msgid "Paste Inside"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:224
+#: src/modules/toolbareditor/toolbareditor.cpp:225
 msgid "Please choose the icon for the ToolBar"
 msgstr ""
 
@@ -1037,11 +1037,11 @@ msgstr ""
 msgid "Please note that all the children items will be deleted too."
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:494
+#: src/modules/toolbareditor/toolbareditor.cpp:495
 msgid "Please specify the properties for the new toolbar"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:468
+#: src/modules/toolbareditor/toolbareditor.cpp:469
 msgid "Please specify the properties for the toolbar \"%1\""
 msgstr ""
 
@@ -1128,16 +1128,16 @@ msgstr ""
 msgid "Replace file"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:1038
+#: src/modules/editor/scripteditor.cpp:1074
 msgid "Replace with"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:957
+#: src/modules/editor/scripteditor.cpp:993
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Rivi: %d Merkki: %d"
 
-#: src/modules/editor/scripteditor.cpp:898
+#: src/modules/editor/scripteditor.cpp:934
 msgid "Save Failed - KVIrc"
 msgstr "Tallennus epäonnistui - KVIrc"
 
@@ -1176,7 +1176,7 @@ msgstr ""
 msgid "Text:"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:248
+#: src/modules/toolbareditor/toolbareditor.cpp:249
 msgid "The ToolBar Label can't be empty!"
 msgstr ""
 
@@ -1205,7 +1205,7 @@ msgid ""
 "popup menus when this action is inserted.<br>It has to be 16x16 pixels."
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:262
+#: src/modules/toolbareditor/toolbareditor.cpp:263
 msgid ""
 "The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
 "it automatically (so it doesn't collide with any other toolbar) or you "
@@ -1241,11 +1241,11 @@ msgid ""
 "window"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:401
+#: src/modules/toolbareditor/toolbareditor.cpp:402
 msgid "ToolBar Export"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:135
+#: src/modules/toolbareditor/toolbareditor.cpp:136
 msgid "ToolBar Properties"
 msgstr ""
 
@@ -1290,7 +1290,7 @@ msgstr ""
 msgid "Unable to write to the raw events file."
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:458
+#: src/modules/toolbareditor/toolbareditor.cpp:459
 msgid "Unable to write to the toolbar file."
 msgstr ""
 
@@ -1310,7 +1310,7 @@ msgid ""
 "to the user so it is a good idea to use $tr() here"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:1029
+#: src/modules/editor/scripteditor.cpp:1065
 msgid "Word to Find"
 msgstr ""
 
@@ -1323,7 +1323,7 @@ msgstr ""
 #: src/modules/popupeditor/popupeditor.cpp:1242
 #: src/modules/raweditor/raweditor.cpp:428
 #: src/modules/raweditor/raweditor.cpp:463
-#: src/modules/toolbareditor/toolbareditor.cpp:458
+#: src/modules/toolbareditor/toolbareditor.cpp:459
 #, fuzzy
 msgid "Write Failed - KVIrc"
 msgstr "Avaus epäonnistui - KVIrc"
@@ -1332,7 +1332,7 @@ msgstr "Avaus epäonnistui - KVIrc"
 #: src/modules/aliaseditor/aliaseditor.cpp:934
 #: src/modules/classeditor/classeditor.cpp:1137
 #: src/modules/classeditor/classeditor.cpp:1349
-#: src/modules/toolbareditor/toolbareditor.cpp:403
+#: src/modules/toolbareditor/toolbareditor.cpp:404
 msgid "Yes"
 msgstr ""
 

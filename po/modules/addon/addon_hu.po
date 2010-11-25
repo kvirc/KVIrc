@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-17 18:58+0200\n"
+"POT-Creation-Date: 2010-11-25 10:30+0100\n"
 "PO-Revision-Date: 2010-08-20 11:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -109,7 +109,7 @@ msgstr "Folytassam a telepítést?"
 msgid "Empty file list"
 msgstr "Üres fájl lista"
 
-#: src/modules/addon/libkviaddon.cpp:804
+#: src/modules/addon/libkviaddon.cpp:807
 msgid "Error installing addon package: %Q"
 msgstr "Hiba az addon csomag telepítése közben: %Q"
 
@@ -310,8 +310,7 @@ msgstr "Forrás mappa kiválasztása:"
 msgid "Show Help"
 msgstr "Súgó Megjelenítése"
 
-#: src/modules/addon/libkviaddon.cpp:691
-#: src/modules/addon/libkviaddon.cpp:714
+#: src/modules/addon/libkviaddon.cpp:691 src/modules/addon/libkviaddon.cpp:714
 msgid "Skipping inexisting entry '%1'"
 msgstr "'%1' nem létező elem kihagyása"
 
@@ -323,12 +322,9 @@ msgstr "Helytelen elem kihagyása: '%1'"
 msgid "Source Directory"
 msgstr "Forrás Mappa"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:647
 msgid "The addon \"%1\" does not exist"
 msgstr "Addon nem létezik: %1"
 
@@ -418,8 +414,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Összesen: %d addon telepítve"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "%Q verziójú addon eltávolítása"
 
