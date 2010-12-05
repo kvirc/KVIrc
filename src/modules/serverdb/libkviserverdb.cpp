@@ -104,7 +104,7 @@ extern KVIRC_API KviServerDataBase * g_pServerDataBase;
 		$serverdb.networkExists
 	@short:
 		Checks if the network already exists in the DB
-	@synthax:
+	@syntax:
 		<bool> $serverdb.networkExists
 	@description:
 		Checks if the network already exists in the DB.[br]
@@ -145,7 +145,7 @@ static bool serverdb_kvs_fnc_networkExists(KviKvsModuleFunctionCall * c)
 		$serverdb.serverExists
 	@short:
 		Checks if the network already exists in the DB
-	@synthax:
+	@syntax:
 		<bool> $serverdb.serverExists(<string:servername>[,<string:networkname>])
 	@description:
 		Checks if the server already exists for a network in the DB.[br]
@@ -288,7 +288,7 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 		$serverdb.networkNickName
 	@short:
 		Returns the nickname
-	@synthax:
+	@syntax:
 		<string> $serverdb.networkNickName(<string:network>)
 	@description:
 		Returns the nickname set for the network <network> if set
@@ -305,7 +305,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkNickName,nickName)
 		$serverdb.networkUserName
 	@short:
 		Returns the username
-	@synthax:
+	@syntax:
 		<string> $serverdb.networkUserName(<string:network>)
 	@description:
 		Returns the username set for the network <network> if set
@@ -322,7 +322,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkUserName,userName)
 		$serverdb.networkRealName
 	@short:
 		Returns the realname
-	@synthax:
+	@syntax:
 		<string> $serverdb.networkRealName(<string:network>)
 	@description:
 		Returns the realname set for the network <network> if set
@@ -339,7 +339,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkRealName,realName)
 		$serverdb.networkEncoding
 	@short:
 		Returns the encoding
-	@synthax:
+	@syntax:
 		<string> $serverdb.networkEncoding(<string:network>)
 	@description:
 		Returns the encoding used for the network <network> for server specific messages, like channel and nick names, if set
@@ -356,7 +356,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkEncoding,encoding)
 		$serverdb.networkTextEncoding
 	@short:
 		Returns the encoding
-	@synthax:
+	@syntax:
 		<string> $serverdb.networkTextEncoding(<string:network>)
 	@description:
 		Returns the encoding used for the network <network> for text messages, if set
@@ -373,7 +373,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkTextEncoding,textEncoding)
 		$serverdb.networkDescription
 	@short:
 		Returns the description
-	@synthax:
+	@syntax:
 		<string> $serverdb.networkDescription(<string:network>)
 	@description:
 		Returns the description set for the network <network> if set
@@ -390,7 +390,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkDescription,description)
 		$serverdb.networkConnectCommand
 	@short:
 		Returns the connect command
-	@synthax:
+	@syntax:
 		<string> $serverdb.networkConnectCommand(<string:network>)
 	@description:
 		Returns the connect command set for the network <network> if set
@@ -407,7 +407,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkConnectCommand,onConnectCo
 		$serverdb.networkLoginCommand
 	@short:
 		Returns the login command
-	@synthax:
+	@syntax:
 		<string> $serverdb.networkLoginCommand(<string:network>)
 	@description:
 		Returns the login command set for the network <network> if set
@@ -424,7 +424,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkLoginCommand,onLoginComman
 		$serverdb.networkName
 	@short:
 		Returns the name
-	@synthax:
+	@syntax:
 		<string> $serverdb.networkName(<string:network>)
 	@description:
 		Returns the name of the network <network>
@@ -441,11 +441,11 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkName,name)
 		$serverdb.networkJoinChannels
 	@short:
 		Returns the list of autojoin channels
-	@synthax:
+	@syntax:
 		<string> $serverdb.networkJoinChannels(<string:network>)
 	@description:
 		Returns a comma-separated list of autojoin channels and their relative passwords set for the network <network>[br]
-		Each item in the array is in the format <string:channel>:<string:password>
+		Each item in the list is in the format <string:channel>:<string:password>
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
@@ -459,7 +459,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkJoinChannels,autoJoinChann
 		$serverdb.serverNickName
 	@short:
 		Returns the nickname
-	@synthax:
+	@syntax:
 		<string> $serverdb.serverNickName(<string:network>,<string:server>)
 	@description:
 		Returns the nickname set for the server <server> of the network <network> if set
@@ -476,7 +476,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverNickName,nickName,setString)
 		$serverdb.serverUserName
 	@short:
 		Returns the username
-	@synthax:
+	@syntax:
 		<string> $serverdb.serverUserName(<string:network>,<string:server>)
 	@description:
 		Returns the username set for the server <server> of the network <network> if set
@@ -493,7 +493,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverUserName,userName,setString)
 		$serverdb.serverRealName
 	@short:
 		Returns the realname
-	@synthax:
+	@syntax:
 		<string> $serverdb.serverRealName(<string:network>,<string:server>)
 	@description:
 		Returns the realname set for the server <server> of the network <network> if set
@@ -510,7 +510,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverRealName,realName,setString)
 		$serverdb.serverEncoding
 	@short:
 		Returns the encoding
-	@synthax:
+	@syntax:
 		<string> $serverdb.serverEncoding(<string:network>,<string:server>)
 	@description:
 		Returns the encoding used for the server <server> of the network <network> for server specific messages, like channel and nick names, if set
@@ -527,7 +527,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverEncoding,encoding,setString)
 		$serverdb.serverTextEncoding
 	@short:
 		Returns the encoding
-	@synthax:
+	@syntax:
 		<string> $serverdb.serverTextEncoding(<string:network>,<string:server>)
 	@description:
 		Returns the encoding used for the server <server> of the network <network> for server specific messages, like channel and nick names, if set
@@ -544,7 +544,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverTextEncoding,textEncoding,se
 		$serverdb.serverDescription
 	@short:
 		Returns the description
-	@synthax:
+	@syntax:
 		<string> $serverdb.serverDescription(<string:network>,<string:server>)
 	@description:
 		Returns the description set for the server <server> of the network <network> if set
@@ -561,7 +561,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverDescription,description,setS
 		$serverdb.serverConnectCommand
 	@short:
 		Returns the connect command
-	@synthax:
+	@syntax:
 		<string> $serverdb.serverConnectCommand(<string:network>,<string:server>)
 	@description:
 		Returns the connect command set for the server <server> of the network <network> if set
@@ -578,7 +578,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverConnectCommand,onConnectComm
 		$serverdb.serverLoginCommand
 	@short:
 		Returns the login command
-	@synthax:
+	@syntax:
 		<string> $serverdb.serverLoginCommand(<string:network>,<string:server>)
 	@description:
 		Returns the login command set for the server <server> of the network <network> if set
@@ -595,7 +595,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverLoginCommand,onLoginCommand,
 		$serverdb.serverIp
 	@short:
 		Returns the IP address
-	@synthax:
+	@syntax:
 		<string> $serverdb.serverIp(<string:network>,<string:server>)
 	@description:
 		Returns the IP address of the server <server> of the network <network>
@@ -612,7 +612,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIp,ip,setString)
 		$serverdb.serverId
 	@short:
 		Returns the ID
-	@synthax:
+	@syntax:
 		<string> $serverdb.serverId(<string:network>,<string:server>)
 	@description:
 		Returns the ID of the server <server> of the network <network>
@@ -629,7 +629,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverId,id,setString)
 		$serverdb.serverPassword
 	@short:
 		Returns the password
-	@synthax:
+	@syntax:
 		<string> $serverdb.serverPassword(<string:network>,<string:server>)
 	@description:
 		Returns the password of the server <server> of the network <network> if set
@@ -646,7 +646,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPassword,password,setString)
 		$serverdb.serverPort
 	@short:
 		Returns the port
-	@synthax:
+	@syntax:
 		<int> $serverdb.serverPort(<string:network>,<string:server>)
 	@description:
 		Returns the port of the server <server> of the network <network> if set
@@ -663,7 +663,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPort,port,setInteger)
 		$serverdb.isAutoConnect
 	@short:
 		Returns the autoconnect status
-	@synthax:
+	@syntax:
 		<bool> $serverdb.isAutoConnect(<string:network>,<string:server>)
 	@description:
 		Returns true if the server <server> of the network <network> if set to autoconnect, false otherwise
@@ -680,7 +680,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverAutoConnect,autoConnect,setB
 		$serverdb.isIPv6
 	@short:
 		Returns the IPv6 status
-	@synthax:
+	@syntax:
 		<bool> $serverdb.isIPv6(<string:network>,<string:server>)
 	@description:
 		Returns true if the server <server> of the network <network> if set to connect using IPv6 sockets, false otherwise
@@ -697,7 +697,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIPv6,isIPv6,setBoolean)
 		$serverdb.isSSL
 	@short:
 		Returns the SSL status
-	@synthax:
+	@syntax:
 		<bool> $serverdb.isSSL(<string:network>,<string:server>)
 	@description:
 		Returns true if the server <server> of the network <network> if set to connect using SSL (Secure Socket Layer) sockets, false otherwise
@@ -714,7 +714,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverSSL,useSSL,setBoolean)
 		$serverdb.cacheIp
 	@short:
 		Returns the cache-ip status
-	@synthax:
+	@syntax:
 		<bool> $serverdb.cacheIp(<string:network>,<string:server>)
 	@description:
 		Returns true if KVIrc is set to cache the ip of the server <server> of the network <network>, false otherwise
@@ -731,7 +731,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverCacheIp,cacheIp,setBoolean)
 		$serverdb.serverJoinChannels
 	@short:
 		Returns the list of autojoin channels
-	@synthax:
+	@syntax:
 		<string> $serverdb.serverJoinChannels(<string:network>,<string:server>)
 	@description:
 		Returns a comma-separated list of autojoin channels and their relative passwords set for the server <server> of the network <network>[br]

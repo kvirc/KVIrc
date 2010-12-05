@@ -862,7 +862,7 @@ namespace KviKvsCoreSimpleCommands
 			so, if use the -i switch, test your script 10 times before releasing it.
 			The -q switch causes the command to run a bit more silently: it still
 			complains if the parameter passed is not an object reference, but
-			it fails silently if the reference just points to an inexisting object (or is null).
+			it fails silently if the reference just points to an inexistant object (or is null).
 		@examples:
 			[example]
 			[/example]
@@ -897,7 +897,7 @@ namespace KviKvsCoreSimpleCommands
 			if(!o)
 			{
 				if(!KVSCSC_pSwitches->find('q',"quiet"))
-					KVSCSC_pContext->warning(__tr2qs_ctx("Can't delete an inexisting object","kvs"));
+					KVSCSC_pContext->warning(__tr2qs_ctx("Can't delete an inexistant object","kvs"));
 			} else {
 				if(KVSCSC_pSwitches->find('i',"immediate"))
 					o->dieNow();

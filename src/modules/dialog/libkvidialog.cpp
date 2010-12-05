@@ -80,7 +80,7 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 		setEscapeButton(QMessageBox::No);
 	else
 		setEscapeButton(QMessageBox::Cancel);
-	
+
 	g_pDialogModuleDialogList->append(this);
 
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
@@ -115,7 +115,7 @@ void KviKvsCallbackMessageBox::done(int code)
 			// user closed the dialog, fake an "escape button" press
 			if(standardButtons() & QMessageBox::Cancel)
 				iVal = 2;
-			else 
+			else
 				iVal = 1;
 			break;
 	}
@@ -152,9 +152,13 @@ void KviKvsCallbackMessageBox::done(int code)
 		<button0> is the text of the first button (on the left).[br]
 		<button1> is the text of the second button (if empty or specified, only one button will appear in the dialog).[br]
 		<button2> is the text of the third button (if empty or specified, only two buttons will appear in the dialog).[br]
-		The first button is always the default button - it is activated when the user presses the
+		The first button is the default button - it is activated when the user presses the
 		enter key. The third (or the second if only two buttons are present) is treated as the escape button
 		and is activated when the user presses the Esc key or closes the dialog with the window manager close button.[br]
+		If one of the button text strings starts with a "default=" prefix then that button is assumed
+		to be the default button of the dialog.[br]
+		If one of the button text strings starts with a "escape=" prefix then that button is assumed
+		to be the escape button of the dialog.[br]
 		<magic1>,<magic2>... are the magic parameters - evaluated at dialog.message call time and passed
 		to the <callback_command> as positional parameters.[br]
 		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour -
@@ -327,7 +331,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 			m_iEscapeButton = 2;
 		else if(!szButton1.isEmpty())
 			m_iEscapeButton = 1;
-		else 
+		else
 			m_iEscapeButton = 0;
 	}
 }
@@ -421,7 +425,7 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		!sw: -d=<default_text> | --default=<default_text>
 		Set the initial text input value to <default_text>
 		!sw: -i=<icon> | --icon=<icon>
-		Display the specified icon, just of the left of the informational text
+		Display the specified icon, to the left of the informational text
 		!sw: -m | --multiline
 		Input multiline text instead of single line
 	@description:
@@ -432,12 +436,18 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		<button0> is the text of the first button (on the left).[br]
 		<button1> is the text of the second button (if empty or not given at all, only one button will appear in the dialog).[br]
 		<button2> is the text of the third button (if empty or not given, only two buttons will appear in the dialog).[br]
-		If one of the text strings starts with a "default=" prefix then the button is assumed
-		to be the default button of the dialog and will be also activated when the user presses enter.
+		The first button is the default button - it is activated when the user presses the
+		enter key. The third (or the second if only two buttons are present) is treated as the escape button
+		and is activated when the user presses the Esc key or closes the dialog with the window manager close button.[br]
+		If one of the button text strings starts with a "default=" prefix then that button is assumed
+		to be the default button of the dialog.[br]
+		If one of the button text strings starts with a "escape=" prefix then that button is assumed
+		to be the escape button of the dialog.[br]
 		If the -m switch is used, the dialog will be a multi-line text input, otherwise the user will be able to
 		input only a single line of text.[br]
 		If the -d switch is used, the initial text input value is set to <default text>.[br]
-		If the -i switch is used, the dialog displays also the icon <icon>, just on the left ot the <info_text>[br]
+		If the -i switch is used, the dialog displays also the icon <icon> to the left of <info_text>.
+		<icon> is an image identifier (a relative or absolute path to an image file, or a signed number that maps to an internal KVIrc image). [br]
 		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
 		it will appear above its parent widget and block its input until it's closed.[br]
 		In that case <icon> is an [doc:image_id]image identifier[/doc] (can be a relative or absolute
@@ -447,8 +457,6 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		Once the dialog has been shown, the user will click one of the buttons. At this point the dialog
 		is hidden and the <callback_command> is executed passing the text input value in $1, the number of the button clicked
 		as $0, and the magic parameters as positional parameters $2, $3, $4....[br]
-		Please note that if the user closes the window with the window manager close button,
-		the action is interpreted as a button2 click (that is usually sth as "Cancel").[br]
 	@examples:
 		[example]
 		[comment]# We need a single line "reason"[/comment]

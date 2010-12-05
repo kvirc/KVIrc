@@ -262,17 +262,17 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 	obSrc=KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
 	if(!obTrg)
 	{
-		c->warning(__tr2qs_ctx("Inexisting target object for objects.connect","objects"));
+		c->warning(__tr2qs_ctx("Inexistant target object for objects.connect","objects"));
 		return true;
 	}
 	if(!obSrc)
 	{
-		c->warning(__tr2qs_ctx("Inexisting source object for objects.connect","objects"));
+		c->warning(__tr2qs_ctx("Inexistant source object for objects.connect","objects"));
 		return true;
 	}
 	if(!obSrc->connectSignal(szSignal,obTrg,szSlot))
 	{
-		c->warning(__tr2qs_ctx("Inexisting target slot '%Q' for objects.connect","objects"),&szSlot);
+		c->warning(__tr2qs_ctx("Inexistant target slot '%Q' for objects.connect","objects"),&szSlot);
 		return true;
 	}
 	return true;
@@ -558,7 +558,7 @@ static bool objects_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 	obSrcClass = KviKvsKernel::instance()->objectController()->lookupObject(hClass);
 	if(!obSrcClass)
 	{
-		c->warning(__tr2qs_ctx("Inexisting class object for objects.name","objects"));
+		c->warning(__tr2qs_ctx("Inexistant class object for objects.name","objects"));
 		return true;
 	}
 
@@ -601,12 +601,12 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 	obSrc=KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
 	if(!obTrg)
 	{
-		c->warning(__tr2qs_ctx("Inexisting target object for objects.disconnect","objects"));
+		c->warning(__tr2qs_ctx("Inexistant target object for objects.disconnect","objects"));
 		return true;
 	}
 	if(!obSrc)
 	{
-		c->warning(__tr2qs_ctx("Inexisting source object for objects.disconnect","objects"));
+		c->warning(__tr2qs_ctx("Inexistant source object for objects.disconnect","objects"));
 		return true;
 	}
 	obSrc->disconnectSignal(szSignal,obTrg,szSlot);

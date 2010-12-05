@@ -52,9 +52,9 @@
 		See also [classfnc]$setChecked[/classfnc]().
 		!fn: $setChecked([<bChecked:bool>])
 		Sets the check box 'checked state' to <bool>.
-		!fn: $setText([<text:string>])
-		Sets the check box 'checked state' to <bool>.[br]
 		See also [classfnc]$isChecked[/classfnc]().
+		!fn: $setText([<text:string>])
+		Sets the label text associated with the checkbox to <text>.[br]
 		!fn: $toggleEvent(<bToggled:bool>)
 		Called by KVIrc when the checkbox state is toggled.
 		The default implementation emits the toggled(<bool>) signal.

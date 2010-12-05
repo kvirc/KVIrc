@@ -109,7 +109,7 @@
 			}
 			e = e->next;
 		}
-		fprintf(stderr,"Attempt to realloc an inexisting pointer (%p) (called from %p (%p))\n",ptr,__builtin_return_address(1),__builtin_return_address(2));
+		fprintf(stderr,"Attempt to realloc an inexistant pointer (%p) (called from %p (%p))\n",ptr,__builtin_return_address(1),__builtin_return_address(2));
 		return realloc(ptr,size);
 	}
 
@@ -138,7 +138,7 @@
 			}
 			e = e->next;
 		}
-		fprintf(stderr,"Attempt to free an inexisting pointer (%p) (called from %p (%p))\n",ptr,__builtin_return_address(1),__builtin_return_address(2));
+		fprintf(stderr,"Attempt to free an inexistant pointer (%p) (called from %p (%p))\n",ptr,__builtin_return_address(1),__builtin_return_address(2));
 	}
 
 	void kvi_memory_profile() __attribute__((destructor));

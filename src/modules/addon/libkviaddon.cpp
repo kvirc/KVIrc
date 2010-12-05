@@ -603,8 +603,8 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 	@switches:
 		!sw: -q | --quiet
 			Makes the command run quietly
-		!sw: -s | --skip-inexisting
-			Skip inexisting entries in the [files] list
+		!sw: -s | --skip-inexistant
+			Skip inexistant entries in the [files] list
 	@description:
 		Installs the [files] for the addon identified by the specified <id>.
 		The files will be automatically removed when the addon is uninstalled.
@@ -638,7 +638,8 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	bool bQuiet = c->switches()->find('q',"quiet");
-	bool bSkipInexisting = c->switches()->find('i',"skip-inexisting");
+	// we had a typo here, support the old switch name for backward scripts compatibility
+	bool bSkipInexistant = c->switches()->find('i',"skip-inexistant") || c->switches()->find('i',"skip-inexisting");
 
 	KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
 	if(!a)
@@ -685,10 +686,10 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 			QDir dir(szPath);
 			if(!dir.exists())
 			{
-				if(!bSkipInexisting)
+				if(!bSkipInexistant)
 					return c->error(__tr2qs_ctx("The directory '%1' doesn't exist","addon").arg(szPath));
 				if(!bQuiet)
-					c->warning(__tr2qs_ctx("Skipping inexisting entry '%1'","addon").arg(szEntry));
+					c->warning(__tr2qs_ctx("Skipping inexistant entry '%1'","addon").arg(szEntry));
 				continue;
 			}
 
@@ -708,16 +709,16 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 		QFileInfo inf(szEntry);
 		if(!inf.exists())
 		{
-			if(!bSkipInexisting)
+			if(!bSkipInexistant)
 				return c->error(__tr2qs_ctx("The file '%1' doesn't exist","addon").arg(szEntry));
 			if(!bQuiet)
-				c->warning(__tr2qs_ctx("Skipping inexisting entry '%1'","addon").arg(szEntry));
+				c->warning(__tr2qs_ctx("Skipping inexistant entry '%1'","addon").arg(szEntry));
 			continue;
 		}
 
 		if(!inf.isFile())
 		{
-			if(!bSkipInexisting)
+			if(!bSkipInexistant)
 				return c->error(__tr2qs_ctx("The entry '%1' is not a file","addon").arg(szEntry));
 			if(!bQuiet)
 				c->warning(__tr2qs_ctx("Skipping invalid entry '%1'","addon").arg(szEntry));

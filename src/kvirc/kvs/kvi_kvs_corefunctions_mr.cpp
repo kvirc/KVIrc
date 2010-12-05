@@ -262,6 +262,7 @@ namespace KviKvsCoreFunctions
 			the parent object <parent_id> and the specified <name>.[br]
 			<name> and <parent_id> are optional: if not specified, <name>
 			is assumed to be an empty string and <parent_id> default to 0 (parentless object).[br]
+			This function accepts a list of optional parameters that will be passed to the <class>'s constructor.
 			Please see the [doc:objects]objects documentation[/doc] for more information.[br]
 		@examples:
 			[example]

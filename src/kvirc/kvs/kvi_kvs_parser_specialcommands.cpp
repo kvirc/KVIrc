@@ -366,7 +366,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			It's rather dangerous to use this command inside an object
 			function handler: if the class definition <class> was already
 			existing and it is a parent of the object's class, you might
-			end up executing "inexisting" code.[br]
+			end up executing "inexistant" code.[br]
 			As a thumb rule, use this command only outside object function handlers.[br]
 			[br][br]
 			Only for the curious: implementing protected and private access
@@ -1929,7 +1929,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 		@switches:
 			!sw: -m | --merge
 			Merges the new popup contents with the current named popup.
-			If the named popup does not exist, the popup is created. 
+			If the named popup does not exist, the popup is created.
 		@description:
 			Defines the popup menu <popup_name>. If the -m switch is NOT used
 			the previous contents of the popups are cleared before updating.[br]
