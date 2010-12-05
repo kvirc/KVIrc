@@ -1798,13 +1798,13 @@ KviKvsObject * KviKvsObject::findChild(const QString &szClass,const QString &szN
 			// any class matches
 			if(szName.isEmpty())return o; // any name matches
 			// name must match
-			if(KviQString::equalCI(szName,o->objectName()))return o;
+			if(KviQString::equalCI(szName,o->getName()))return o;
 		} else {
 			if(KviQString::equalCI(szClass,o->getClass()->name()))
 			{
 				if(szName.isEmpty())return o; // any name matches
 				// name must match
-				if(KviQString::equalCI(szName,o->objectName()))return o;
+				if(KviQString::equalCI(szName,o->getName()))return o;
 			}
 		}
 		KviKvsObject * c = o->findChild(szClass,szName);
