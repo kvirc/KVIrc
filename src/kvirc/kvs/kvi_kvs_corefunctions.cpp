@@ -96,6 +96,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("length",length)
 		_REGFNC("lf",lf)
 		_REGFNC("link",link)
+		_REGFNC("listtimers",listtimers)
 		// m_r
 		_REGFNC("mask",mask)
 		_REGFNC("me",me)

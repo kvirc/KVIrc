@@ -63,9 +63,9 @@ namespace KviKvsCoreSimpleCommands
 	{
 		return multipleModeCommand(__pContext,__pParams,__pSwitches,'+','h');
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/*
 		@doc: halt
 		@type:
@@ -509,7 +509,7 @@ namespace KviKvsCoreSimpleCommands
 			in this case the current timer will be scheduled for killing immediately
 			after it has returned control to KVIrc.
 		@seealso:
-			[cmd]timer[/cmd], [fnc]$isTimer[/fnc], [cmd]listtimers[/cmd]
+			[cmd]timer[/cmd], [fnc]$isTimer[/fnc], [cmd]listtimers[/cmd], [fnc]$listtimers[/fnc]
 	*/
 
 	KVSCSC(killtimer)

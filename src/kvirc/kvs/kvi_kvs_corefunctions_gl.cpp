@@ -981,4 +981,68 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
+	/*
+		@doc: listtimers
+		@title:
+			$listtimers
+		@type:
+			function
+		@short:
+			Returns a list of the active timers
+		@syntax:
+			<array> $listtimers([<name:string>][,<flags:string>])
+		@description:
+			Returns a list of all the active timers.[br]
+			If you specify a <name>, only timers matching that name are returned;
+			You can use the * and ? wildcards in <name>.[br]
+			<flags> can be any combination of the characters 's' and 'r'[br]
+			If the flag 'r' is specified then <name> is assumed to be a standard regular expression.
+			If the flag 's' is specified the matches are case sensitive.[br]
+
+		@seealso:
+			[cmd]timer[/cmd], [fnc]$isTimer[/fnc], [cmd]killtimer[/cmd], [cmd]listtimers[/cmd]
+	*/
+
+	KVSCF(listtimers)
+	{
+		QString szText, szFlags;
+		KVSCF_PARAMETERS_BEGIN
+			KVSCF_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL,szText)
+			KVSM_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
+		KVSCF_PARAMETERS_END
+
+		bool bCaseSensitive = szFlags.indexOf('s',0,Qt::CaseInsensitive) != -1;
+		bool bRegexp = szFlags.indexOf('r',0,Qt::CaseInsensitive) != -1;
+		bool bMatch = !szText.isEmpty();
+
+		KviPointerHashTable<QString,KviKvsTimer> * pTimerDict = KviKvsTimerManager::instance()->timerDict();
+		KviKvsArray * a = new KviKvsArray();
+
+		if(!pTimerDict)
+			return true;
+
+		QRegExp re(szText,bCaseSensitive?Qt::CaseSensitive:Qt::CaseInsensitive,bRegexp?QRegExp::RegExp:QRegExp::Wildcard);
+		KviPointerHashTableIterator<QString,KviKvsTimer> it(*pTimerDict);
+		kvs_int_t idx=0;
+
+		while(KviKvsTimer * pTimer = it.current())
+		{
+			if(bMatch)
+			{
+				if(!re.exactMatch(pTimer->name()))
+				{
+					++it;
+					continue;
+				}
+			}
+
+			a->set(idx,new KviKvsVariant(pTimer->name()));
+			idx++;
+			++it;
+		}
+
+		KVSCF_pRetBuffer->setArray(a);
+		return true;
+	}
+
 };

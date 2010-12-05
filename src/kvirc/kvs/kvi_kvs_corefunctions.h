@@ -105,6 +105,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(length);
 	KVSCF(lf);
 	KVSCF(link);
+	KVSCF(listtimers);
 	// m_r
 	KVSCF(mask);
 	KVSCF(me);
