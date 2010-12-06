@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-11-25 10:30+0100\n"
-"PO-Revision-Date: 2010-12-06 01:10+0000\n"
+"PO-Revision-Date: 2010-12-06 01:23+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -15,13 +15,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.1\n"
+"Language-Team: Portuguese <>\n"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:643
 msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %"
 "Q"
 msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] foi expulso de \r!c\r%Q\r por \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] foi expulso de \r!c\r%Q\r por \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %SQL"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1456
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""
@@ -7158,7 +7159,7 @@ msgstr "Umpf!"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:110
 msgid "Un&dock"
-msgstr "&Desacoplar"
+msgstr "&Desatracar"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1542
 msgid "Unable to add file offer for file %Q (File not readable?)"
