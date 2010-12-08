@@ -129,16 +129,6 @@
 
 #define KVI_DEF_BACK 200
 
-// FIXME: #warning "The scrollbar should NOT have a fixed size : the KDE styles can configure the size (sizeHint() ?)"
-
-//
-// FIXME: PgUp and PgDn scrolls a fixed number of lines!
-//        Make it view height dependant
-//
-// FIXME: This widget is quite slow on a 300 MHz processor
-//
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Globals
@@ -478,7 +468,7 @@ bool KviIrcView::saveBuffer(const char *filename)
 void KviIrcView::prevLine(){ m_pScrollBar->triggerAction(QAbstractSlider::SliderSingleStepSub); }
 void KviIrcView::nextLine(){ m_pScrollBar->triggerAction(QAbstractSlider::SliderSingleStepAdd); }
 void KviIrcView::prevPage(){ m_pScrollBar->triggerAction(QAbstractSlider::SliderPageStepSub); }
-void KviIrcView::nextPage(){ m_pScrollBar->triggerAction(QAbstractSlider::SliderPageStepAdd);}
+void KviIrcView::nextPage(){ m_pScrollBar->triggerAction(QAbstractSlider::SliderPageStepAdd); }
 
 void KviIrcView::setPrivateBackgroundPixmap(const QPixmap &pixmap,bool bRepaint)
 {
@@ -1105,7 +1095,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		pCurTextLine=0;
 
 	bool bLineMarkPainted = !KVI_OPTION_BOOL(KviOption_boolTrackLastReadTextViewLine);
-
+	int iLinesPerPage = 0;
 
 	// And loop thru lines until we not run over the upper bound of the view
 	while((curBottomCoord >= KVI_IRCVIEW_VERTICAL_BORDER) && pCurTextLine)
@@ -1515,7 +1505,11 @@ no_selection_paint:
 		}
 
 		pCurTextLine    = pCurTextLine->pPrev;
+		iLinesPerPage++;
 	}
+
+	if(pCurTextLine && iLinesPerPage > 0 && iLinesPerPage != m_pScrollBar->pageStep())
+		m_pScrollBar->setPageStep(iLinesPerPage);
 
 	if(!bLineMarkPainted && pCurTextLine && (rectTop <= (KVI_IRCVIEW_VERTICAL_BORDER + 5)))
 	{
