@@ -71,7 +71,7 @@ KviPythonInterpreter::~KviPythonInterpreter()
 {
 	done();
 }
-	
+
 bool KviPythonInterpreter::init()
 {
 // get the global lock
@@ -100,7 +100,7 @@ bool KviPythonInterpreter::init()
 	PyEval_ReleaseLock();
 	return true;
 }
-	
+
 void KviPythonInterpreter::done()
 {
 	if(!m_pThreadState)return;
@@ -138,20 +138,6 @@ bool KviPythonInterpreter::execute(
 	// swap in my thread state
 	PyThreadState_Swap(m_pThreadState);
 
-	
-
-#if 0 // now it's done in the initialization function of the interpreter
-	//prepend some helping functions
-	QString szPreCode= QString("import kvirc\n" \
-		"import sys\n" \
-		"class kvirc_stderr_grabber:\n" \
-		"\tdef write(self,s):\n" \
-		"\t\tkvirc.error(s)\n" \
-		"sys.stderr=kvirc_stderr_grabber()\n"
-	);
-	PyRun_SimpleString(szPreCode.toUtf8().data());
-#endif
-
 	QString szVarCode = "aArgs = [";
 
 	bool bFirst = true;
@@ -169,8 +155,11 @@ bool KviPythonInterpreter::execute(
 
 	PyRun_SimpleString(szVarCode.toUtf8().data());
 
+	//clean "cr" from the python code (ticket #1028)
+	QString szCleanCode = szCode;
+	szCleanCode.replace(QRegExp("\r\n?"), "\n");
 	// execute some python code
-	retVal = PyRun_SimpleString(szCode.toUtf8().data());
+	retVal = PyRun_SimpleString(szCleanCode.toUtf8().data());
 
 	szRetVal.setNum(retVal);
 
