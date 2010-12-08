@@ -661,6 +661,8 @@ static char * g_hNextObjectHandle = (char *)0;
 KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,const QString &szName)
 : QObject(pParent)
 {
+	setObjectName(szName);
+
 	if(g_hNextObjectHandle == 0)g_hNextObjectHandle++; // make sure it's never 0
 	m_hObject = (kvs_hobject_t)g_hNextObjectHandle;
 	g_hNextObjectHandle++;
@@ -1798,13 +1800,13 @@ KviKvsObject * KviKvsObject::findChild(const QString &szClass,const QString &szN
 			// any class matches
 			if(szName.isEmpty())return o; // any name matches
 			// name must match
-			if(KviQString::equalCI(szName,o->getName()))return o;
+			if(KviQString::equalCI(szName,o->objectName()))return o;
 		} else {
 			if(KviQString::equalCI(szClass,o->getClass()->name()))
 			{
 				if(szName.isEmpty())return o; // any name matches
 				// name must match
-				if(KviQString::equalCI(szName,o->getName()))return o;
+				if(KviQString::equalCI(szName,o->objectName()))return o;
 			}
 		}
 		KviKvsObject * c = o->findChild(szClass,szName);
