@@ -103,11 +103,10 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	 * 2) local help (in user directory)
 	 * 3) global help (in kvirc directory)
 	 */
-	
+
 	// try absolute path
 	QFileInfo f(szParam);
-
-	if(!f.exists())
+	if(!f.exists() || !f.isAbsolute())
 	{
 		// try relative path (to local help)
 		g_pApp->getLocalKvircDirectory(szHelpDir,KviApp::Help);
