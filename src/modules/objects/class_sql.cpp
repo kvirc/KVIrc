@@ -85,6 +85,8 @@ static void KviKvsSqlInstanceUnregister(KviKvsObject_sql *instance)
                       Connects to the DBMS using the connection <connection_name> and selecting the database <database_name>.[br]
                       If the optional parameter <database_driver> is passed, it will be used the corresponding driver (if present), otherwise Sqlite will be used.
                       Returns true if the operation is successful, false otherwise.
+                      !fn:: <array or string> $connectionNames([<stringreturnflag>:'s'])
+                      Returns as array or, if the flag 's' is passed, as a comma separate string all the database active connection's names.
                       !fn: <array> $tablesList(<connection_name:string>)
                       Returns as array the database tables list.
                       !fn: $queryInit(<connection_name:string>)
@@ -142,6 +144,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_sql,"sql","object")
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,commit)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,beginTransaction)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,setConnection)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,connectionNames)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,setCurrentQuery)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,tablesList)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,currentQuery)
@@ -217,6 +220,32 @@ KVSO_CLASS_FUNCTION(sql,setConnection)
         c->returnValue()->setBoolean(db.open());
         return true;
 }
+
+KVSO_CLASS_FUNCTION(sql,connectionNames)
+{
+
+         QString szFlag;
+         KVSO_PARAMETERS_BEGIN(c)
+            KVSO_PARAMETER("stringreturnflag",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlag)
+         KVSO_PARAMETERS_END(c)
+         QStringList szConnectionsList=QSqlDatabase::connectionNames();
+         if(szFlag.indexOf('s',0,Qt::CaseInsensitive) != -1)
+         {
+             QString szConnections=szConnectionsList.join(",");
+             c->returnValue()->setString(szConnections);
+         }
+         else
+         {
+             KviKvsArray *pArray=new KviKvsArray();
+             for(int i=0;i<szConnectionsList.count();i++)
+             {
+                 pArray->set(i,new KviKvsVariant(szConnectionsList.at(i)));
+             }
+             c->returnValue()->setArray(pArray);
+         }
+         return true;
+}
+
 KVSO_CLASS_FUNCTION(sql,queryLastInsertId)
 {
         CHECK_QUERY_IS_INIT
