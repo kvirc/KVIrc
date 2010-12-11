@@ -725,7 +725,7 @@ void KviIrcContext::connectionTerminated()
 
 	// we consider it unexpected when we haven't sent a QUIT message and we're connected
 	// or alternatively when a simulation of such a termination is requested (this is used to keep the queries open etc..)
-	bool bUnexpectedDisconnect = (!(connection()->stateData()->sentQuit())) && ((m_eState == KviIrcContext::Connected) || (m_eState == KviIrcContext::Connecting) || connection()->stateData()->simulateUnexpectedDisconnect());
+	bool bUnexpectedDisconnect = ((!(connection()->stateData()->sentQuit())) && ((m_eState == KviIrcContext::Connected) || (m_eState == KviIrcContext::Connecting))) || connection()->stateData()->simulateUnexpectedDisconnect();
 
 	if(bUnexpectedDisconnect)
 	{
@@ -853,7 +853,7 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 {
 	if(!connection())return; // hm ?
 
-	if(bSimulateUnexpectedDisconnect)connection()->stateData()->setSimulateUnexpectedDisconnect();
+	connection()->stateData()->setSimulateUnexpectedDisconnect(bSimulateUnexpectedDisconnect);
 
 	switch(m_eState)
 	{

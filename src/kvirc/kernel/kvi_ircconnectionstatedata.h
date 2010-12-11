@@ -97,7 +97,7 @@ public:
 	void setLastReceivedWhoisReply(kvi_time_t tTime){ m_tLastReceivedWhoisReply = tTime; };
 
 	bool simulateUnexpectedDisconnect(){ return m_bSimulateUnexpectedDisconnect; };
-	void setSimulateUnexpectedDisconnect(){ m_bSimulateUnexpectedDisconnect = true; };
+	void setSimulateUnexpectedDisconnect(bool bSimulate){ m_bSimulateUnexpectedDisconnect = bSimulate; };
 
 	unsigned int loginNickIndex(){ return m_uLoginNickIndex; };
 	void setLoginNickIndex(unsigned int uNickIdx){ m_uLoginNickIndex = uNickIdx; };
