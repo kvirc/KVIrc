@@ -2,21 +2,23 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Alexander Antsev <kagami@crossplatform.ru>, 2010.
+# Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-11-25 10:30+0100\n"
-"PO-Revision-Date: 2010-01-31 19:39+0300\n"
-"Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
-"Language-Team: Russian <>\n"
+"PO-Revision-Date: 2010-12-13 02:18+0600\n"
+"Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
+"org>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/kvirc/kvs/kvi_kvs_object.cpp:1188
 #, c-format
@@ -196,17 +198,16 @@ msgid "Class '%Q' is not defined"
 msgstr "Класс '%Q' не определён"
 
 #: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:110
-#, fuzzy
 msgid ""
 "Class names can contain only letters, digits, underscores and '::' namespace "
 "separators"
 msgstr ""
-"Имя алиаса может содержать только цифры, буквы, нижние подчеркивания и '::' "
+"Имя класса может содержать только цифры, буквы, нижние подчеркивания и '::' "
 "как разделитель пространств имён"
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:970
 msgid "Couldn't construct QDateTime object."
-msgstr ""
+msgstr "Не смог сконструировать объект QDateTime."
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:261
 msgid ""
@@ -285,7 +286,7 @@ msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:563
 msgid "Error retrieving information from the local certificate"
-msgstr ""
+msgstr "Ошибка при получении информации из локального сертификата"
 
 #: src/kvirc/kvs/kvi_kvs_processmanager.cpp:215
 msgid "Error triggered from process callback handler: killing process"
@@ -340,14 +341,14 @@ msgstr ""
 "'case','match','regexp','default' или 'break'"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1620
-#, fuzzy
 msgid ""
 "Found character %q (unicode %x) where a 'prologue', 'separator', "
 "'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was "
 "expected"
 msgstr ""
 "Найден символ %q (уникод %x) там где ожидается "
-"prologue','separator','label','popup','item','extpopup' или 'epilogue'"
+"'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' "
+"или 'epilogue'"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:777
 msgid "Found character %q (unicode %x) where a 'while' keyword was expected"
@@ -437,13 +438,13 @@ msgstr ""
 "'break'"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1877
-#, fuzzy
 msgid ""
 "Found token '%Q' where a 'prologue', 'separator', 'separatorid', 'label', "
 "'popup', 'item', 'extpopup' or 'epilogue' label was expected"
 msgstr ""
 "Найден знак '%Q' там где ожидается "
-"'prologue','separator','label','popup','item','extpopup' или 'epilogue'"
+"'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' "
+"или 'epilogue'"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:813
 msgid "Garbage string after the expression in 'do' command: ignored"
@@ -953,7 +954,6 @@ msgstr ""
 "Указанная проблема могла быть обусловлена тире и следующим знаком равенства"
 
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:278
-#, fuzzy
 msgid "The alias '%Q' does not exist"
 msgstr "Псевдоним %Q не существует"
 
@@ -1307,7 +1307,7 @@ msgstr "Не могу добавить таймер: недостаточно с
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:571
 msgid "Unable to get certificate information: query not recognized"
-msgstr ""
+msgstr "Не могу получить информацию о сертификате: запрос не распознан"
 
 #: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:919
 #: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:940
@@ -1331,13 +1331,13 @@ msgid "Unexpected character '%q' (unicode %x)"
 msgstr "Неожиданный символ '%q' (уникод %x)"
 
 #: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:78
-#, fuzzy
 msgid ""
 "Unexpected character '%q' (unicode %x) after a slash (is it a typo or a "
 "malformed comment begin?)"
 msgstr ""
-"Неожиданный символ '%q' (уникод %x) после слеша (это опечатка или начало "
-"комментария?)"
+"Неожиданный символ '%q' (уникод %x) после слеша (это опечатка или попытка "
+"начать "
+"комментарий?)"
 
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:2913
 msgid "Unexpected character '%q' (unicode %x) after a switch dash"

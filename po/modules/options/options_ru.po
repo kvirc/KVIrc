@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: options_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-11-25 10:30+0100\n"
-"PO-Revision-Date: 2010-07-09 11:44+0700\n"
+"PO-Revision-Date: 2010-12-12 23:58+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -24,9 +24,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 
 #: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:285
@@ -306,7 +306,7 @@ msgid ""
 "if the specified alert level is reached.</center>"
 msgstr ""
 "<center>Если включена эта опция, KVIrc будет подсвечивать панель задач "
-"только если достигнут заданный уровень предупреждений.</center>"
+"только если достигнут заданный уровень подсветки.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:69
 msgid ""
@@ -339,7 +339,7 @@ msgid ""
 "<center>If this option is enabled, the window list will also alert for "
 "messages which are shown in queries.</center>"
 msgstr ""
-"<center>Если эта опция включена, панель задач будет также предупреждать о "
+"<center>Если эта опция включена, панель задач будет также подсвечена при "
 "сообщениях в приватах.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:95
@@ -347,7 +347,7 @@ msgid ""
 "<center>If this option is enabled, the window list will also alert for "
 "messages which contain a word from the highlighted words list above.</center>"
 msgstr ""
-"<center>Если включена эта опция, панель задач будет предупреждать о "
+"<center>Если включена эта опция, панель задач будет подсвечена при "
 "появлении сообщений содержащих указанные в списке слова.</center>"
 
 #: src/modules/options/optw_servers.cpp:560
@@ -786,6 +786,12 @@ msgid ""
 "many channels at once.<br>Minimum value: <b>0 secs</b><br>Maximum value: "
 "<b>10 secs</b></center>"
 msgstr ""
+"<center>Это искусственная задержка для запросов захода на каналы, "
+"выполняемых при заходе на каналы."
+"<br>Увеличьте её, если сервер выкидывает вас за флуд, когда заходите на "
+"много каналов."
+"<br>Минимальное значение: <b>0 сек</b>"
+"<br>Максимальное значение: <b>10 сек</b></center>"
 
 #: src/modules/options/optw_servers.cpp:643
 msgid ""
@@ -1230,7 +1236,7 @@ msgid ""
 "<center>This option sets the minimum alert level for the window list.</"
 "center>"
 msgstr ""
-"<center>Эта опция задаёт минимальный уровень предупреждений для списка окон."
+"<center>Эта опция задаёт минимальный уровень подсветки для списка окон."
 "</center>"
 
 #: src/modules/options/optw_channel.cpp:57
@@ -1724,47 +1730,47 @@ msgstr "Возраст:"
 #: src/modules/options/optw_windowlist.cpp:91
 #: src/modules/options/optw_windowlist.cpp:248
 msgid "Alert Level 1:"
-msgstr "Уровень предупреждений 1:"
+msgstr "Уровень подсветки 1:"
 
 #: src/modules/options/optw_windowlist.cpp:92
 #: src/modules/options/optw_windowlist.cpp:249
 msgid "Alert Level 2:"
-msgstr "Уровень предупреждений 2:"
+msgstr "Уровень подсветки 2:"
 
 #: src/modules/options/optw_windowlist.cpp:93
 #: src/modules/options/optw_windowlist.cpp:250
 msgid "Alert Level 3:"
-msgstr "Уровень предупреждений 3:"
+msgstr "Уровень подсветки 3:"
 
 #: src/modules/options/optw_windowlist.cpp:94
 #: src/modules/options/optw_windowlist.cpp:251
 msgid "Alert Level 4:"
-msgstr "Уровень предупреждений 4:"
+msgstr "Уровень подсветки 4:"
 
 #: src/modules/options/optw_windowlist.cpp:95
 #: src/modules/options/optw_windowlist.cpp:252
 msgid "Alert Level 5:"
-msgstr "Уровень предупреждений 5:"
+msgstr "Уровень подсветки 5:"
 
 #: src/modules/options/optw_highlighting.cpp:90
 msgid "Alert Restrictions"
-msgstr "Ограничение предупреждений"
+msgstr "Ограничение подсветки"
 
 #: src/modules/options/optw_highlighting.cpp:94
 msgid "Alert for highlighted words"
-msgstr "Предупреждать при появлении подсвечиваемых слов"
+msgstr "Мигать панелью задач при появлении подсвечиваемых слов"
 
 #: src/modules/options/optw_highlighting.cpp:97
 msgid "Alert for query messages"
-msgstr "Предупреждать при получении личных сообщений"
+msgstr "Мигать панелью задач при получении личных сообщений"
 
 #: src/modules/options/optw_messages.cpp:387
 msgid "Alert level:"
-msgstr "Уровень предупреждений:"
+msgstr "Уровень подсветки:"
 
 #: src/modules/options/optw_highlighting.h:30
 msgid "Alert/Highlight"
-msgstr "Предупреждения и подсветка"
+msgstr "Подсветка"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:86
 msgid "Allow up to:"
@@ -1897,9 +1903,8 @@ msgid "Avatars"
 msgstr "Аватары"
 
 #: src/modules/options/optw_away.h:30
-#, fuzzy
 msgid "Away"
-msgstr "Отошёл:"
+msgstr "Отошёл"
 
 #: src/modules/options/optw_away.cpp:45
 msgid "Away Nickname"
@@ -1990,7 +1995,7 @@ msgstr "CLIENTINFO"
 
 #: src/modules/options/optw_ctcp.h:30
 msgid "CTCP"
-msgstr ""
+msgstr "CTCP"
 
 #: src/modules/options/optw_ctcp.cpp:46
 msgid "CTCP Replies"
@@ -2051,9 +2056,8 @@ msgid "Channel admin:"
 msgstr "Администратор канала:"
 
 #: src/modules/options/optw_ircview.cpp:168
-#, fuzzy
 msgid "Channel links"
-msgstr "Окна каналов"
+msgstr "Ссылки на каналы"
 
 #: src/modules/options/optw_userlist.cpp:58
 msgid "Channel owner:"
@@ -2206,7 +2210,7 @@ msgstr "Другой ник (%nick% означает текущий ник):"
 
 #: src/modules/options/optw_dcc.h:30
 msgid "DCC"
-msgstr ""
+msgstr "DCC"
 
 #: src/modules/options/optw_logging.cpp:43
 msgid "DCC Chat windows"
@@ -2461,14 +2465,12 @@ msgid "Enable the notifier"
 msgstr "Включить извещатель"
 
 #: src/modules/options/optw_ircview.cpp:162
-#, fuzzy
 msgid "Enable tooltips for:"
-msgstr "Включить всплывающие подсказки по пользователям"
+msgstr "Включить всплывающие подсказки о:"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:70
-#, fuzzy
 msgid "Enable transparency"
-msgstr "Включить имитацию полупрозрачности"
+msgstr "Включить полупрозрачность"
 
 #: src/modules/options/optw_tray.cpp:43
 msgid "Enable tray icon"
@@ -2496,7 +2498,7 @@ msgstr "Включить подсветку слов"
 
 #: src/modules/options/optw_ircview.cpp:169
 msgid "Escape sequences"
-msgstr ""
+msgstr "Escape-последовательности"
 
 #: src/modules/options/optw_input.cpp:147
 msgid "Expand tabulations in input using this amount of spaces:"
@@ -2649,9 +2651,8 @@ msgid "Global application font:"
 msgstr "Глобальный шрифт:"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:67
-#, fuzzy
 msgid "Global window opacity percent:"
-msgstr "Затемнённость дочерних окон:"
+msgstr "Непрозрачность главного окна, в процентах:"
 
 #: src/modules/options/optw_userlist.cpp:85
 msgid "Grid color:"
@@ -2754,9 +2755,8 @@ msgid "Horizontal align:"
 msgstr "Горизонтальное расположение:"
 
 #: src/modules/options/optw_ircview.cpp:164
-#, fuzzy
 msgid "Host links"
-msgstr " строк"
+msgstr "Хостовые части масок"
 
 #: src/modules/options/optw_urlhandlers.cpp:51
 msgid "How many click to open links?"
@@ -2780,9 +2780,8 @@ msgid "IPv6 Settings"
 msgstr "Настройки IPv6"
 
 #: src/modules/options/optw_irc.h:30
-#, fuzzy
 msgid "IRC"
-msgstr "Оператор IRC:"
+msgstr "IRC"
 
 #: src/modules/options/optw_userlist.cpp:57
 msgid "IRC Op:"
@@ -3133,12 +3132,11 @@ msgstr "Минимизированный:"
 
 #: src/modules/options/optw_highlighting.cpp:105
 msgid "Minimum alert level:"
-msgstr "Минимальный уровень предупреждений:"
+msgstr "Минимальный уровень подсветки:"
 
 #: src/modules/options/optw_channel.cpp:120
-#, fuzzy
 msgid "Minimum delay between two channel requests:"
-msgstr "Задержка между запросами:"
+msgstr "Минимальная задержка между запросами захода на каналы:"
 
 #: src/modules/options/optw_tray.cpp:55
 msgid "Minimum level for high-priority message"
@@ -3161,9 +3159,8 @@ msgid "Mixer device:"
 msgstr "Устройство микшера:"
 
 #: src/modules/options/optw_ircview.cpp:166
-#, fuzzy
 msgid "Mode links"
-msgstr " строк"
+msgstr "Ссылки смены режимов"
 
 #: src/modules/options/optw_urlhandlers.cpp:49
 msgid "Mouse handler"
@@ -3262,9 +3259,8 @@ msgid "Nick completion postfix string"
 msgstr "Окончание при завершении ника"
 
 #: src/modules/options/optw_ircview.cpp:167
-#, fuzzy
 msgid "Nick links"
-msgstr "Завершение ника"
+msgstr "Ссылки на ники"
 
 #: src/modules/options/optw_servers.cpp:364
 #: src/modules/options/optw_nickserv.h:41
@@ -3797,7 +3793,7 @@ msgstr "Входить на канал после повторного подк�
 
 #: src/modules/options/optw_uparser.cpp:51
 msgid "Relay errors and warnings to debug window"
-msgstr "Записывать ошибки и предупреждение в отладочное окно"
+msgstr "Записывать ошибки и предупреждения в отладочное окно"
 
 #: src/modules/options/optw_avatar.cpp:89
 msgid "Remember avatars for registered users"
@@ -3842,11 +3838,11 @@ msgstr "Запрашивать отсутствующие аватары"
 
 #: src/modules/options/optw_texticons.cpp:99
 msgid "Restore"
-msgstr ""
+msgstr "Восстановить"
 
 #: src/modules/options/optw_highlighting.cpp:91
 msgid "Restrict alert"
-msgstr "Ограничить предупреждения"
+msgstr "Ограничить подсветку панели задач"
 
 #: src/modules/options/optw_input.cpp:58
 #: src/modules/options/optw_windowlist.cpp:135
@@ -3866,7 +3862,7 @@ msgstr "SOURCE"
 
 #: src/modules/options/optw_connection.h:59
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: src/modules/options/optw_servers.cpp:900
 msgid "Sasl Nickname:"
@@ -3960,9 +3956,8 @@ msgid "Server Encoding:"
 msgstr "Кодировка сервера:"
 
 #: src/modules/options/optw_ircview.cpp:165
-#, fuzzy
 msgid "Server links"
-msgstr "Ответы сервера"
+msgstr "Ccылки на серверы"
 
 #: src/modules/options/optw_nickserv.cpp:106
 #: src/modules/options/optw_nickserv.cpp:244
@@ -4122,7 +4117,7 @@ msgstr "Один клик"
 
 #: src/modules/options/optw_connection.h:76
 msgid "Socket"
-msgstr ""
+msgstr "Сокет"
 
 #: src/modules/options/optw_ircview.cpp:201
 msgid "SolidLine"
@@ -4192,7 +4187,7 @@ msgstr "Смайлики"
 #: src/modules/options/optw_windowlist.cpp:87
 #: src/modules/options/optw_windowlist.cpp:245
 msgid "Text/Alert Colors"
-msgstr "Цвета текста/предупреждений"
+msgstr "Цвета текста/подсветки"
 
 #: src/modules/options/optw_nickserv.cpp:188
 msgid "The Identify Command can't be empty!"
@@ -4305,7 +4300,6 @@ msgstr ""
 "помощью CTCP USERINFO"
 
 #: src/modules/options/optw_notifier.cpp:146
-#, fuzzy
 msgid ""
 "This is an option for the impatient: it allows to forcibly and permanently "
 "disable the notifier window. Please note that if this option is not "
@@ -4392,6 +4386,10 @@ msgid ""
 "one.<br>This is cool if you want to better integrate KVIrc inside KDE. Note "
 "that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's"
 msgstr ""
+"Эта опция заменяет встроенный извещатель KVIrc на извещатель, основанный на "
+"DBus (типа KDE KNotify).<br> "
+"Это хорошо, если вы хотите сильнее интегрировать KVIrc с KDE. Однако, он не "
+"такой гибкий как встроенный, и не имеет табов."
 
 #: src/modules/options/optw_avatar.cpp:107
 msgid ""
@@ -4468,7 +4466,7 @@ msgstr "Цвет переднего плана заголовка"
 
 #: src/modules/options/optw_interfacelookglobal.h:87
 msgid "ToolBar Applets"
-msgstr ""
+msgstr "Апплеты нижней панели"
 
 #: src/modules/options/optw_tools.h:33
 msgid "Tools"
@@ -4546,9 +4544,8 @@ msgid "Unspecified"
 msgstr "Не задано"
 
 #: src/modules/options/optw_ircview.cpp:163
-#, fuzzy
 msgid "Url links"
-msgstr " строк"
+msgstr "URL"
 
 #: src/modules/options/optw_dcc.cpp:120
 msgid "Use \"broken bouncer hack\" to detect address"
@@ -4614,7 +4611,7 @@ msgstr "Использовать композитное расширение д�
 
 #: src/modules/options/optw_highlighting.cpp:102
 msgid "Use custom alert level"
-msgstr "Использовать заданный уровень предупреждений"
+msgstr "Использовать заданный уровень подсветки для панели задач"
 
 #: src/modules/options/optw_servers.cpp:591
 msgid "Use default user mode"
@@ -4674,7 +4671,7 @@ msgstr "Использовать системные обработчики URL"
 
 #: src/modules/options/optw_notifier.cpp:159
 msgid "Use the DBus-based notifiers"
-msgstr ""
+msgstr "Использовать извещатель, основанный на DBus"
 
 #: src/modules/options/optw_connection.cpp:89
 msgid "Use the SASL authentication protocol if available"
@@ -4817,7 +4814,7 @@ msgstr "Список окон"
 
 #: src/modules/options/optw_highlighting.h:57
 msgid "Window List Alert"
-msgstr ""
+msgstr "Подсветка окон"
 
 #: src/modules/options/optw_antispam.cpp:46
 msgid "Words considered spam:"

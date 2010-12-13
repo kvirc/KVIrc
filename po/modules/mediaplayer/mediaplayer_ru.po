@@ -1,22 +1,26 @@
 # translation of mediaplayer_ru.po to russian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# Valerius <valeragir@mail.ru>, 2005.
-# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010
 #
+# Valerius <valeragir@mail.ru>, 2005.
+# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010.
+# Alexey "DarthGandalf" Sokolov <somebody shift-2 shellium org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-11-25 10:30+0100\n"
-"PO-Revision-Date: 2010-01-24 11:05+0400\n"
-"Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
-"Language-Team: russian\n"
+"PO-Revision-Date: 2010-12-13 01:54+0600\n"
+"Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
+"org>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: Lokalize 1.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:470
 msgid ""
@@ -27,13 +31,12 @@ msgstr ""
 "Вы можете загрузить его с http://amarok.kde.org\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:446
-#, fuzzy
 msgid ""
 "An interface to BMPx.\n"
 "Download it from http://sourceforge.net/projects/beepmp\n"
 msgstr ""
 "Интерфейс к BMPx.\n"
-"Вы можете загрузить его с http://bmpx.backtrace.info\n"
+"Вы можете загрузить его с http://sourceforge.net/projects/beepmp\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:488
 msgid ""
@@ -44,13 +47,12 @@ msgstr ""
 "Вы можете загрузить его с http://qmmp.ylsoftware.com\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:547
-#, fuzzy
 msgid ""
 "An interface to Totem.\n"
 "Download it from http://projects.gnome.org/totem/\n"
 msgstr ""
-"Интерфейс к Amarok2.\n"
-"Вы можете загрузить его с http://amarok.kde.org\n"
+"Интерфейс к Totem.\n"
+"Вы можете загрузить его с http://projects.gnome.org/totem/\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:565
 msgid ""
@@ -59,16 +61,19 @@ msgid ""
 "You need to manually enable the DBus control\n"
 "interface in the Vlc preferences\n"
 msgstr ""
+"Интерфейс к VLC.\n"
+"Вы можете загрузить его с http://www.videolan.org/\n"
+"Необходимо вручную включить управление через DBus\n"
+"в настройках VLC\n"
 
 #: src/modules/mediaplayer/mp_amipinterface.cpp:108
-#, fuzzy
 msgid ""
 "An interface to the AMIP plug-in.\n"
 "You can download it from http://amip.tools-for.net\n"
 "To use this interface you must install AMIP plug-in for your player."
 msgstr ""
 "Интерфейс к плагину AMIP.\n"
-"Вы можете загрузить его с http://amip.tools-for.net.\n"
+"Вы можете загрузить его с http://amip.tools-for.net\n"
 "Для использования этого интерфейса вы должны установить плагин AMIP для "
 "вашего проигрывателя."
 
@@ -85,13 +90,12 @@ msgstr ""
 "по адресу http://addons.songbirdnest.com/addon/1626.\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:506
-#, fuzzy
 msgid ""
 "An interface to the Xmms2 media player.\n"
 "Download it from http://xmms2.org\n"
 msgstr ""
-"Интерфейс к популярному в UNIX медиаплееру xmms.\n"
-"Вы можете загрузить его с http://www.xmms.org\n"
+"Интерфейс к медиаплееру Xmms2.\n"
+"Вы можете загрузить его с http://xmms2.org\n"
 
 #: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
 msgid ""
@@ -102,13 +106,12 @@ msgstr ""
 "Вы можете загрузить его с http://audacious-media-player.org\n"
 
 #: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
-#, fuzzy
 msgid ""
 "An interface to the popular UNIX xmms media player.\n"
 "Download it from http://legacy.xmms2.org\n"
 msgstr ""
 "Интерфейс к популярному в UNIX медиаплееру xmms.\n"
-"Вы можете загрузить его с http://www.xmms.org\n"
+"Вы можете загрузить его с http://legacy.xmms2.org\n"
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:320
 msgid ""
