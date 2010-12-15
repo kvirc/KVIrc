@@ -209,6 +209,13 @@ KviApp::KviApp(int &argc,char ** argv)
 	m_bPortable = KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable");
 	//workaround for #957
 	QApplication::setEffectEnabled(Qt::UI_FadeMenu, FALSE);
+
+	// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, #1009, ..) 
+	if(QString("QGtkStyle").compare(qApp->style()->metaObject()->className())==0) 
+	{
+		setStyle(new QCleanlooksStyle());
+		setPalette(style()->standardPalette());
+	}
 #endif
 }
 
