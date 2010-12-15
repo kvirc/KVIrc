@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-// FIXME: Indentation in this file sux :D
-
 #include "class_tablewidget.h"
 #include "class_painter.h"
 #include "class_pixmap.h"
@@ -71,18 +69,18 @@ const char * const itemflags_tbl[] = {
 #define itemflags_num	(sizeof(itemflags_tbl) / sizeof(itemflags_tbl[0]))
 
 /*
-        @doc:tablewidget
+	@doc:tablewidget
 	@title:
-                tablewidget class
+		tablewidget class
 	@type:
 		class
 	@short:
-                Tablewidget widget.
+		Tablewidget widget.
 	@inherits:
 		[class]object[/class]
-                [class]widget[/class]
+		[class]widget[/class]
 	@description:
-                This widget provides a table.
+		This widget provides a table.
 	@functions:
 		!fn: $setText(<row:uint>,<col:uint>,[<text:string>])
 		Sets the contents of the cell pointeid by row and col to text.
@@ -90,17 +88,17 @@ const char * const itemflags_tbl[] = {
 		Sets the tooltip of the cell pointeid by row and col to text.
 		!fn: $setNumber(<row:uint>,<col:uint>,[<number:integer>]).
 		Sets the contents of the cell pointeid by row and col to number.
-                !fn: <string> $text(<row:integer>,<col:integer>)
+		!fn: <string> $text(<row:integer>,<col:integer>)
 		Returns  the text of the cell pointed by row and col.
-                !fn: $setHorizontalHeaderLabels(<string array>)
+		!fn: $setHorizontalHeaderLabels(<string array>)
 		Sets the horizontal header labels using labels.
-                !fn: $showHorizontalHeader()
+		!fn: $showHorizontalHeader()
 		Shows the horizontal header.
-                !fn: $hideHorizontalHeader()
+		!fn: $hideHorizontalHeader()
 		Hides the horizontal header.
-                !fn: $setVerticalHeaderLabels(<string array>)
+		!fn: $setVerticalHeaderLabels(<string array>)
 		Sets the vertical header labels using labels.
-                !fn: $showVerticalHeader()
+		!fn: $showVerticalHeader()
 		Shows the vertical header.
 		!fn: $hideVerticalHeader()
 		Hides the vertical header.
@@ -164,8 +162,12 @@ const char * const itemflags_tbl[] = {
 		The framework will pass the row/col coordinates, cell's width and height, and, as parameter, a [class]painter[/class]object.
 		You don't need to begin/end/delete the painter.
 		!fn: $sizeHintCellRequestEvent()
+		This event handler can be reimplemented to pass a custom size hint for this cell to the table layout
 		!fn; $resizeRowsToContents()
-            @signals:
+		This function will try to redistribute the available space according to the space requirement of each row
+		!fn; $resizeColumnsToContents()
+		This function will try to redistribute the available space according to the space requirement of each column
+	@signals:
 		!sg: $clicked()
 		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
 
@@ -253,7 +255,7 @@ bool KviKvsObject_tablewidget::init(KviKvsRunTimeContext *c,KviKvsVariantList *)
 	connect(widget(),SIGNAL(itemEntered(QTableWidgetItem *)),this,SLOT(slotItemEntered(QTableWidgetItem *)));
 	connect(widget(),SIGNAL(cellActivated(int,int)),this,SLOT(cellActivated(int,int)));
 	connect(widget(),SIGNAL(cellDoubleClicked(int,int)),this,SLOT(cellDoubleClicked(int,int)));
-        return true;
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(tablewidget,clear)
@@ -288,7 +290,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setText)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
 		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,uCol)
-                KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 	KVSO_PARAMETERS_END(c)
 	if(uRow >= (uint)((QTableWidget *)widget())->rowCount() || uRow >= (uint)((QTableWidget *)widget())->rowCount())
 	c->warning(__tr2qs_ctx("Item out of the tablewidget size","objects"));
@@ -393,19 +395,19 @@ KVSO_CLASS_FUNCTION(tablewidget,setIcon)
 		pix=((KviKvsObject_pixmap *)obPixmap)->getPixmap();
 	} else {
 			QString szPix;
-                        vPixmap->asString(szPix);
-                        pix=g_pIconManager->getImage(szPix);
-                        if(!pix)
-                        {
+			vPixmap->asString(szPix);
+			pix=g_pIconManager->getImage(szPix);
+			if(!pix)
+			{
 				c->warning(__tr2qs_ctx("Error occured: the suitable file '%Q' is not of the correct format or it is not a valid icon number.","objects"),&szPix);
 				return true;
-                        }
+			}
 	}
 	QTableWidgetItem * pItem = ((QTableWidget *)widget())->item(uRow,uCol);
 	if(!pItem)
 	{
 		pItem = new QTableWidgetItem();
-                ((QTableWidget *)widget())->setItem(uRow,uCol,pItem);
+		((QTableWidget *)widget())->setItem(uRow,uCol,pItem);
 	}
 	pItem->setIcon(QIcon(*pix));
 	return true;
@@ -485,7 +487,7 @@ KVSO_CLASS_FUNCTION(tablewidget,itemRowColAt)
 		pArray->set(1,new KviKvsVariant((kvs_int_t)pItem->column()));
 	}
 	c->returnValue()->setArray(pArray);
-        return true;
+	return true;
 }
 
 KVSO_CLASS_FUNCTION(tablewidget,setToolTip)
@@ -685,8 +687,8 @@ KVSO_CLASS_FUNCTION(tablewidget,setItemFlags)
 		}
 		if(flag)
 		{
-			//      if (flag==Qt::ItemIsUserCheckable)
-			//                    pItem->setCheckState(0,Qt::Unchecked);
+			// if (flag==Qt::ItemIsUserCheckable)
+			//	pItem->setCheckState(0,Qt::Unchecked);
 			sum = sum | flag;
 		} else {
 			c->warning(__tr2qs_ctx("Unknown item flag '%Q'","objects"),&itemflags.at(i));
