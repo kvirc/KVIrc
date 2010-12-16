@@ -174,6 +174,15 @@ void KviIrcSocket::reset()
 	setState(Idle);
 }
 
+void KviIrcSocket::clearOutputQueue(bool bPrivateMessagesOnly)
+{
+	if(bPrivateMessagesOnly)
+		queue_removePrivateMessages();
+	else
+		queue_removeAllMessages();
+}
+
+
 void KviIrcSocket::outputSSLMessage(const QString & szMsg)
 {
 	m_pConsole->output(KVI_OUT_SSL,__tr2qs("[SSL]: %Q"),&szMsg);
@@ -1698,6 +1707,39 @@ void KviIrcSocket::queue_removeAllMessages()
 {
 	if(m_pSendQueueHead)
 		while(queue_removeMessage()) {}
+}
+
+void KviIrcSocket::queue_removePrivateMessages()
+{
+	KviIrcSocketMsgEntry * pPrevEntry = 0;
+	KviIrcSocketMsgEntry * pEntry = m_pSendQueueHead;
+	while(pEntry)
+	{
+		if(pEntry->pData->size() > 7)
+		{
+			if(kvi_strEqualCIN((char *)(pEntry->pData->data()),"PRIVMSG",7))
+			{
+				// remove it
+				if(pPrevEntry)
+				{
+					pPrevEntry->next_ptr = pEntry->next_ptr;
+					if(!pPrevEntry->next_ptr)
+						m_pSendQueueTail = 0;
+					free_msgEntry(pEntry);
+					pEntry = pPrevEntry->next_ptr;
+				} else {
+					m_pSendQueueHead = pEntry->next_ptr;
+					if(!m_pSendQueueHead)
+						m_pSendQueueTail = 0;
+					free_msgEntry(pEntry);
+					pEntry = m_pSendQueueHead;
+				}
+				continue;
+			}
+		}
+		pPrevEntry = pEntry;
+		pEntry = pEntry->next_ptr;
+	}
 }
 
 void KviIrcSocket::flushSendQueue()

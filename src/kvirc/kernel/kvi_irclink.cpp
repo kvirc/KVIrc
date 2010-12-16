@@ -324,6 +324,21 @@ void KviIrcLink::processData(char * buffer, int iLen)
 // Outgoing data processing
 //
 
+void KviIrcLink::clearOutputQueue(bool bPrivateMessagesOnly)
+{
+	if(!m_pSocket)
+		return; // we have no queue at all
+	
+	if(m_pLinkFilter)
+	{
+		m_pLinkFilter->clearOutputQueue(bPrivateMessagesOnly);
+		return;
+	}
+	
+	m_pSocket->clearOutputQueue(bPrivateMessagesOnly);
+}
+
+
 bool KviIrcLink::sendPacket(KviDataBuffer * pData)
 {
 	if(!m_pSocket)

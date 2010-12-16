@@ -476,7 +476,7 @@ void KviDccBroker::passiveVideoExecute(KviDccDescriptor * dcc)
 	if(bMinimized)v->minimize();
 	m_pDccWindowList->append(v);
 #else
-void KviDccBroker::passiveVideoExecute(KviDccDescriptor * dcc)
+void KviDccBroker::passiveVideoExecute(KviDccDescriptor *)
 {
 #endif
 }

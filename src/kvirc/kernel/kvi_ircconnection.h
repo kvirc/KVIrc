@@ -590,6 +590,13 @@ public:
 	bool sendFmtData(const char * pcFmt, ...);
 
 	/**
+	* Clears the underlying output queue.
+	* Exposed basically for /context.clearQueue
+	* You shouldn't need it for any other reason :)
+	*/
+	void clearOutputQueue(bool bPrivateMessagesOnly);
+
+	/**
 	* \brief This function is part of the networking stack.
 	*
 	* It's called by KviIrcLink OR KviMexLinkFilter when a message is arriving

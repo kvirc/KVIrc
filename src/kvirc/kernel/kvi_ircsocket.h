@@ -227,6 +227,12 @@ public:
 	* \return bool
 	*/
 	bool getLocalHostIp(QString & szIp, bool bIPv6);
+	
+	/**
+	* Clears the output queue
+	*/
+	void clearOutputQueue(bool bPrivateMessagesOnly);
+	
 protected:
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -401,6 +407,12 @@ protected:
 	* \return void
 	*/
 	void queue_removeAllMessages();
+
+	/**
+	* \brief Removes private messages from the queue.
+	* \return void
+	*/
+	void queue_removePrivateMessages();
 
 	/**
 	* \brief Sets the state of the socket

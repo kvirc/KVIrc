@@ -143,6 +143,13 @@ protected:
 	virtual bool sendPacket(KviDataBuffer * pData);
 
 	/**
+	* \brief Clears the output queue
+	*
+	* Requests to clear the underlying packet queue.
+	*/
+	virtual void clearOutputQueue(bool bPrivateMessagesOnly);
+
+	/**
 	* \brief Aborts any connection or attempt
 	* \return void
 	*/

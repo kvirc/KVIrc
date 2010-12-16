@@ -2512,6 +2512,7 @@ KviKvsTreeNodeData * KviKvsParser::parsePercentOrDollar(bool bInObjScope)
 		if(!r)return 0;
 	} else {
 		// this is @
+		
 		static QString szStrayAtRoutineName("@");
 		static QString szMightBeStrayAtOrThisRoutineName("@?");
 

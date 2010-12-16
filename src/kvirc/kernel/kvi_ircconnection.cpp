@@ -160,6 +160,11 @@ KviIrcConnection::~KviIrcConnection()
 	m_pRequestQueue->deleteLater();
 }
 
+void KviIrcConnection::clearOutputQueue(bool bPrivateMessagesOnly)
+{
+	m_pLink->clearOutputQueue(bPrivateMessagesOnly);
+}
+
 void KviIrcConnection::setEncoding(const QString & szEncoding)
 {
 	QTextCodec * c = KviLocale::codecForName(szEncoding.toLatin1());

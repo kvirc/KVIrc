@@ -415,6 +415,42 @@ static bool context_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+
+/*
+	@doc: context.clearqueue
+	@type:
+		command
+	@title:
+		context.clearqueue
+	@syntax:
+		context.clearqueue [-a]
+	@switches:
+		!sw: -a | --all
+		Remove ALL messages, not just the private messages.
+	@short:
+		Removes messages from the socked output queue.
+	@description:
+		Removes the PRIVMSG messages from the socket output queue.
+		This can be used to save yourself in-extremis if you have pasted a huge amount of text
+		but otherwise you shouldn't need it. Do not use in scripts.
+		Be aware that the -a switch MAY CONFUSE KVIRC quite a bit: do not use it unless
+		you REALLY know what you're doing.
+*/
+static bool context_kvs_cmd_clearQueue(KviKvsModuleCommandCall * c)
+{
+	QString szTarget;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("target",KVS_PT_NONEMPTYSTRING,0,szTarget)
+	KVSM_PARAMETERS_END(c)
+
+	KVSM_REQUIRE_CONNECTION(c)
+
+	c->window()->connection()->clearOutputQueue(!c->switches()->find('a',"all"));
+
+	return true;
+}
+
+
 static bool context_module_init(KviModule * m)
 {
 	KVSM_REGISTER_FUNCTION(m,"serverHostName",context_kvs_fnc_serverHostName);
@@ -427,6 +463,8 @@ static bool context_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"state",context_kvs_fnc_state);
 	KVSM_REGISTER_FUNCTION(m,"list",context_kvs_fnc_list);
 	KVSM_REGISTER_FUNCTION(m,"serverSoftware",context_kvs_fnc_serverSoftware);
+
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"clearQueue",context_kvs_cmd_clearQueue);
 
 	return true;
 }
