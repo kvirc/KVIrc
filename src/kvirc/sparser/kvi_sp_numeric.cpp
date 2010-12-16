@@ -1518,8 +1518,9 @@ void KviServerParser::parseNumericWhoisOther(KviIrcMessage *msg)
 	KviAsyncWhoisInfo * i = msg->connection()->asyncWhoisData()->lookup(szNick);
 	if(i)
 	{
-		if(!(i->szServer.isEmpty()))i->szServer.append(',');
-		i->szServer.append(szOth);
+		if(!(i->szAdditional.isEmpty()))
+			i->szAdditional.append(',');
+		i->szAdditional.append(szOth);
 		return;
 	}
 
@@ -1565,6 +1566,7 @@ void KviServerParser::parseNumericEndOfWhois(KviIrcMessage *msg)
 		vl.append(new KviKvsVariant(i->szAway)); // szSpecial is renamed szAway
 		vl.append(new KviKvsVariant(*(i->pMagic)));
 		vl.append(new KviKvsVariant(i->szAuth));
+		vl.append(new KviKvsVariant(i->szAdditional));
 		i->pCallback->run(i->pWindow,&vl,0,KviKvsScript::PreserveParams);
 		msg->connection()->asyncWhoisData()->remove(i);
 		return;
