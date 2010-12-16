@@ -167,7 +167,7 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 				return; // i'm not op, can't do mode changes
 
 			QChar cPlusOrMinus = szLinkCommandPart[1];
-			if((cPlusOrMinus.unicode() != '+') && (cPlusOrMinus.unicode() == '-'))
+			if((cPlusOrMinus.unicode() != '+') && (cPlusOrMinus.unicode() != '-'))
 				return; // malformed
 
 			QChar cFlag = szLinkCommandPart[2];
