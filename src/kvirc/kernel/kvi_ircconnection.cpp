@@ -1557,7 +1557,10 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 		}
 		delete target()->server()->m_pReconnectInfo;
 		target()->server()->m_pReconnectInfo=0;
-	} else {
+	}
+	
+	if(true) //FIXME rejoining standard channels on reconnection, too
+	{
 		if(target()->network()->autoJoinChannelList())
 		{
 			if(_OUTPUT_VERBOSE)
