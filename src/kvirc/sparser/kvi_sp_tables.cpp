@@ -426,7 +426,7 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 335
 	0,                                               // 336
 	0,                                               // 337
-	PTM(parseNumericWhoisOther),                     // 338 RPL_WHOISACTUALLY
+	PTM(parseNumericWhoisActually),                  // 338 RPL_WHOISACTUALLY
 	PTM(parseNumericWhoisOther),                     // 339
 	0,                                               // 340
 	PTM(parseNumericInviting)                      , // 351 RPL_INVITING

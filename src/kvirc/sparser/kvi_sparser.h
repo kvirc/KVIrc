@@ -165,6 +165,7 @@ private:
 	void parseNumericWhoisChannels(KviIrcMessage *msg);
 	void parseNumericWhoisIdle(KviIrcMessage *msg);
 	void parseNumericWhoisServer(KviIrcMessage *msg);
+	void parseNumericWhoisActually(KviIrcMessage *msg);
 	void parseNumericWhoisOther(KviIrcMessage *msg);
 	void parseNumericWhoisAuth(KviIrcMessage *msg);
 	void parseNumericWhowasUser(KviIrcMessage *msg);

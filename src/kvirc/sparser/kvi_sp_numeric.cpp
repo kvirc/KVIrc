@@ -1502,6 +1502,38 @@ void KviServerParser::parseNumericWhoisAuth(KviIrcMessage *msg)
 	}
 }
 
+void KviServerParser::parseNumericWhoisActually(KviIrcMessage *msg)
+{
+	// 338: RPL_WHOISACTUALLY [U]
+	// :prefix 338 <target> <nick> <user@host> <ip address> :Actual user@host, Actual IP
+
+	// FIXME: #warning "and NICK LINKS"
+	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
+
+	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
+	QString szUserHost = msg->connection()->decodeText(msg->safeParam(2));
+	QString szIpAddr = msg->connection()->decodeText(msg->safeParam(3));
+	QString szOth = msg->connection()->decodeText(msg->safeTrailing());
+	
+	KviAsyncWhoisInfo * i = msg->connection()->asyncWhoisData()->lookup(szNick);
+	if(i)
+	{
+		if(!(i->szAdditional.isEmpty()))
+			i->szAdditional.append(',');
+		i->szAdditional.append(szOth + ": " + szUserHost + " " + szIpAddr);
+		return;
+	}
+
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		pOut->output(
+			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c %Q: %Q, %Q"),KVI_TEXT_BOLD,
+			&szNick,KVI_TEXT_BOLD, &szOth, &szUserHost, &szIpAddr);
+	}
+}
+
 void KviServerParser::parseNumericWhoisOther(KviIrcMessage *msg)
 {
 	// *: RPL_WHOIS* [?]
