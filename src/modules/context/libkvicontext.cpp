@@ -432,17 +432,14 @@ static bool context_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	@description:
 		Removes the PRIVMSG messages from the socket output queue.
 		This can be used to save yourself in-extremis if you have pasted a huge amount of text
-		but otherwise you shouldn't need it. Do not use in scripts.
+		but otherwise you shouldn't need it. This also makes sense
+		only if the "limit outgoing traffic" option is currently set otherwise
+		the data is immediately sent to the server and the queue is usually empty.
 		Be aware that the -a switch MAY CONFUSE KVIRC quite a bit: do not use it unless
 		you REALLY know what you're doing.
 */
 static bool context_kvs_cmd_clearQueue(KviKvsModuleCommandCall * c)
 {
-	QString szTarget;
-	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("target",KVS_PT_NONEMPTYSTRING,0,szTarget)
-	KVSM_PARAMETERS_END(c)
-
 	KVSM_REQUIRE_CONNECTION(c)
 
 	c->window()->connection()->clearOutputQueue(!c->switches()->find('a',"all"));
