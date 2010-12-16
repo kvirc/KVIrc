@@ -95,7 +95,7 @@
 #include <QTextCodec>
 #include <QMetaObject>
 #include <QTextDocument>
-
+#include <QCleanlooksStyle>
 /*
 HACK These 2 hacks are defined because X11 defines Unsorted and None
 which conflicts with QDir and KviApp::KvircSubdir
@@ -209,14 +209,13 @@ KviApp::KviApp(int &argc,char ** argv)
 	m_bPortable = KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable");
 	//workaround for #957
 	QApplication::setEffectEnabled(Qt::UI_FadeMenu, FALSE);
-
-	// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, #1009, ..) 
+#endif
+	// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, #1010, ..) 
 	if(QString("QGtkStyle").compare(qApp->style()->metaObject()->className())==0) 
 	{
 		setStyle(new QCleanlooksStyle());
 		setPalette(style()->standardPalette());
 	}
-#endif
 }
 
 void KviApp::setup()
