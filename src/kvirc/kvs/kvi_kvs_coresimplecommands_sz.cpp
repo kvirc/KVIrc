@@ -277,6 +277,11 @@ namespace KviKvsCoreSimpleCommands
 				d->szPass = szPassword;
 				d->szNick = szNick;
 				d->szLinkFilter = szSocketFilter;
+
+				d->m_pReconnectInfo = new KviServerReconnectInfo();
+				d->m_pReconnectInfo->m_szNick = szNick;
+				d->m_pReconnectInfo->m_szPass = szPassword;
+				
 				console->context()->setAsynchronousConnectionData(d);
 				console->context()->connectToCurrentServer();
 			}
@@ -298,6 +303,11 @@ namespace KviKvsCoreSimpleCommands
 			d->szBindAddress = szBindAddress;
 			d->szPass = szPassword;
 			d->szNick = szNick;
+			
+			d->m_pReconnectInfo = new KviServerReconnectInfo();
+			d->m_pReconnectInfo->m_szNick = szNick;
+			d->m_pReconnectInfo->m_szPass = szPassword;
+
 			console->context()->setAsynchronousConnectionData(d);
 			console->context()->beginAsynchronousConnect(0);
 		}

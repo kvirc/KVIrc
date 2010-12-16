@@ -1147,76 +1147,124 @@ void KviIrcConnection::loginToIrcServer()
 	KviServer * pServer = target()->server();
 	KviNetwork * pNet = target()->network();
 
-	// Username
-	pServer->m_szUser.trimmed();
-	if(!pServer->m_szUser.isEmpty())
-	{
-		if(!_OUTPUT_MUTE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific username (%Q)"),&(pServer->m_szUser));
-	} else {
-		if(!pNet->userName().isEmpty())
-		{
-			if(!_OUTPUT_MUTE)
-				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific username (%Q)"),&(pNet->userName()));
-			pServer->m_szUser = pNet->userName();
-		} else {
-			pServer->m_szUser = KVI_OPTION_STRING(KviOption_stringUsername);
-		}
-	}
-
-	pServer->m_szUser.trimmed();
-	if(pServer->m_szUser.isEmpty())
-		pServer->m_szUser = KVI_DEFAULT_USERNAME;
-
 	// For now this is the only we know
-	m_pUserInfo->setUserName(pServer->m_szUser);
 	m_pServerInfo->setName(pServer->m_szHostname);
 
-	// Nick stuff
-	pServer->m_szNick.trimmed();
-	if(pServer->m_pReconnectInfo)
+	QString szTmpNick, szTmpUser, szTmpPass, szTmpName;
+	// Username
+	szTmpUser = pServer->m_szUser.trimmed();
+	if(!szTmpUser.isEmpty())
 	{
 		if(!_OUTPUT_MUTE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using reconnect specific nickname (%Q)"),&(pServer->m_pReconnectInfo->m_szNick));
-		m_pUserInfo->setNickName(pServer->m_pReconnectInfo->m_szNick);
-		m_pStateData->setLoginNickIndex(0);
-	}else if(!pServer->m_szNick.isEmpty())
-	{
-		if(!_OUTPUT_MUTE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific nickname (%Q)"),&(pServer->m_szNick));
-		m_pUserInfo->setNickName(pServer->m_szNick);
-		m_pStateData->setLoginNickIndex(0);
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific username (%Q)"),&(szTmpUser));
 	} else {
-		if(!pNet->nickName().isEmpty())
+		szTmpUser = pNet->userName().trimmed();
+		if(!szTmpUser.isEmpty())
 		{
 			if(!_OUTPUT_MUTE)
-				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific nickname (%Q)"),&(pNet->nickName()));
-			m_pUserInfo->setNickName(pNet->nickName());
-			m_pStateData->setLoginNickIndex(0);
+				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific username (%Q)"),&(szTmpUser));
 		} else {
-			if(KVI_OPTION_STRING(KviOption_stringNickname1).trimmed().isEmpty())
-				KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
-			m_pUserInfo->setNickName(KVI_OPTION_STRING(KviOption_stringNickname1).trimmed());
-			m_pStateData->setLoginNickIndex(1);
+			szTmpUser = KVI_OPTION_STRING(KviOption_stringUsername).trimmed();
+			if(szTmpUser.isEmpty())
+				szTmpUser = KVI_DEFAULT_USERNAME;
 		}
 	}
 
-	// Real name
-	if(!pServer->m_szRealName.trimmed().isEmpty())
+	m_pUserInfo->setUserName(szTmpUser);
+	
+	// Nick
+	if(pServer->m_pReconnectInfo)
+	{
+		szTmpNick=pServer->m_pReconnectInfo->m_szNick;
+	}
+	
+	if(!szTmpNick.isEmpty())
 	{
 		if(!_OUTPUT_MUTE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific real name (%Q)"),&(pServer->m_szRealName));
-		useRealName(pServer->m_szRealName.trimmed());
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using connection specific nickname (%Q)"),&(szTmpNick));
+		m_pStateData->setLoginNickIndex(0);
 	} else {
-		if(!pNet->realName().isEmpty())
+		szTmpNick = pServer->m_szNick.trimmed();
+		if(!szTmpNick.isEmpty())
 		{
 			if(!_OUTPUT_MUTE)
-				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific real name (%Q)"),&(pNet->realName()));
-			useRealName(pNet->realName());
+				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific nickname (%Q)"),&(szTmpNick));
+			m_pStateData->setLoginNickIndex(0);
 		} else {
-			useRealName(KVI_OPTION_STRING(KviOption_stringRealname));
+			szTmpNick = pNet->nickName().trimmed();
+			if(!szTmpNick.isEmpty())
+			{
+				if(!_OUTPUT_MUTE)
+					m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific nickname (%Q)"),&(szTmpNick));
+				m_pStateData->setLoginNickIndex(0);
+			} else {
+				szTmpNick = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
+				if(szTmpNick.isEmpty())
+				{
+					szTmpNick = KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
+				}
+				m_pStateData->setLoginNickIndex(1);
+			}
 		}
 	}
+	
+	m_pUserInfo->setNickName(szTmpNick);
+
+	// Real name
+	szTmpName=pServer->m_szRealName.trimmed();
+	if(!szTmpName.isEmpty())
+	{
+		if(!_OUTPUT_MUTE)
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific real name (%Q)"),&(szTmpName));
+	} else {
+		szTmpName=pNet->realName().trimmed();
+		if(!szTmpName.isEmpty())
+		{
+			if(!_OUTPUT_MUTE)
+				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific real name (%Q)"),&(szTmpName));
+		} else {
+			szTmpName=KVI_OPTION_STRING(KviOption_stringRealname);
+		}
+	}
+
+	useRealName(szTmpName);
+
+	// Pass
+	if(pServer->m_pReconnectInfo)
+	{
+		szTmpPass=pServer->m_pReconnectInfo->m_szPass;
+	}
+	
+	if(!szTmpPass.isEmpty())
+	{
+		if(!_OUTPUT_MUTE)
+		{
+			QString szHidden = QString(szTmpPass.length(), QChar('*'));
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using connection specific password (%Q)"),&(szHidden));
+		}
+	} else {
+		szTmpPass = pServer->m_szPass.trimmed();
+		if(!szTmpPass.isEmpty())
+		{
+			if(!_OUTPUT_MUTE)
+			{
+				QString szHidden = QString(szTmpPass.length(), QChar('*'));
+				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific password (%Q)"),&(szHidden));
+			}
+		} else {
+			szTmpPass = pNet->password().trimmed();
+			if(!szTmpPass.isEmpty())
+			{
+				if(!_OUTPUT_MUTE)
+				{
+					QString szHidden = QString(szTmpPass.length(), QChar('*'));
+					m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific password (%Q)"),&(szHidden));
+				}
+			}
+		}
+	}
+	
+	m_pUserInfo->setPassword(szTmpPass);
 
 	// Check for identity profiles
 	KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();
@@ -1228,8 +1276,10 @@ void KviIrcConnection::loginToIrcServer()
 	QByteArray szNick = encodeText(m_pUserInfo->nickName()); // never empty
 	QByteArray szUser = encodeText(m_pUserInfo->userName()); // never empty
 	QByteArray szReal = encodeText(m_pUserInfo->realName()); // may be empty
-
+	QByteArray szPass = encodeText(m_pUserInfo->password()); // may be empty
+	
 	if(!szReal.data())szReal = "";
+	if(!szPass.data())szReal = "";
 
 	if(!_OUTPUT_MUTE)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Logging in as %Q!%Q :%Q"),
@@ -1239,30 +1289,9 @@ void KviIrcConnection::loginToIrcServer()
 	// first the PASS, then NICK and then USER
 
 	// The pass ?
-	pServer->m_szPass.trimmed();
-	if(!pServer->m_szPass.isEmpty())
+	if(!m_pUserInfo->password().isEmpty())
 	{
-		QString szHidden = QString(pServer->m_szPass.length(), QChar('*'));
-
-		if(!_OUTPUT_MUTE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific password (%s)"),szHidden.toUtf8().data());
-
-		// The colon should allow user to use passwords with whitespaces.
-		// Non-whitespace passwords are unaffected.
-		if(!sendFmtData("PASS :%s",encodeText(pServer->m_szPass).data()))
-		{
-			// disconnected in the meantime
-			return;
-		}
-	} else if(!pNet->password().isEmpty()) {
-		QString szHidden = QString(pNet->password().length(), QChar('*'));
-
-		if(!_OUTPUT_MUTE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific password (%s)"),szHidden.toUtf8().data());
-
-		// The colon should allow user to use passwords with whitespaces.
-		// Non-whitespace passwords are unaffected.
-		if(!sendFmtData("PASS :%s",encodeText(pNet->password()).data()))
+		if(!sendFmtData("PASS :%s",szPass.data()))
 		{
 			// disconnected in the meantime
 			return;
@@ -1348,8 +1377,7 @@ void KviIrcConnection::loginToIrcServer()
 
 	// on connect stuff ?
 
-	QString szTmp = pNet->onConnectCommand();
-	szTmp.trimmed();
+	QString szTmp = pNet->onConnectCommand().trimmed();
 	if(!szTmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
@@ -1357,8 +1385,7 @@ void KviIrcConnection::loginToIrcServer()
 		KviKvsScript::run(szTmp,m_pConsole);
 	}
 
-	szTmp = pServer->onConnectCommand();
-	szTmp.trimmed();
+	szTmp = pServer->onConnectCommand().trimmed();
 	if(!szTmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
@@ -1366,8 +1393,7 @@ void KviIrcConnection::loginToIrcServer()
 		KviKvsScript::run(szTmp,m_pConsole);
 	}
 
-	szTmp = m_pUserIdentity->onConnectCommand();
-	szTmp.trimmed();
+	szTmp = m_pUserIdentity->onConnectCommand().trimmed();
 	if(!szTmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
@@ -1446,8 +1472,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 	resurrectDeadQueries();
 
 	// on connect stuff ?
-	QString szTmp = target()->network()->onLoginCommand();
-	szTmp.trimmed();
+	QString szTmp = target()->network()->onLoginCommand().trimmed();
 	if(!szTmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
@@ -1455,8 +1480,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 		KviKvsScript::run(szTmp,m_pConsole);
 	}
 
-	szTmp = target()->server()->onLoginCommand();
-	szTmp.trimmed();
+	szTmp = target()->server()->onLoginCommand().trimmed();
 	if(!szTmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
@@ -1464,8 +1488,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 		KviKvsScript::run(szTmp,m_pConsole);
 	}
 
-	szTmp = m_pUserIdentity->onLoginCommand();
-	szTmp.trimmed();
+	szTmp = m_pUserIdentity->onLoginCommand().trimmed();
 	if(!szTmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)

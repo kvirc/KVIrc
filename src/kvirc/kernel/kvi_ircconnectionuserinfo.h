@@ -39,6 +39,7 @@ protected:
 private:
 	QString    m_szRealName;          // the actual real name sent from the server
 	QString    m_szNickName;          // the actual nick name acknowledged by the server
+	QString    m_szPassword;          // the password used connecting to the server
 	QString    m_szUserMode;          // the actual user mode
 	QString    m_szUserName;          // user name with ident char
 	QString    m_szLocalHostIp;       // the local host ip as found by resolveLocalHost() at connection startup
@@ -60,6 +61,7 @@ public:
 	const QString & nickName(){ return m_szNickName; };
 	const QString & userMode(){ return m_szUserMode; };
 	const QString & userName(){ return m_szUserName; };
+	const QString & password(){ return m_szPassword; };
 	const QString & localHostIp(){ return m_szLocalHostIp; };
 	const QString & hostName(){ return m_szHostName; };
 	const QString & unmaskedHostName(){ return m_szUnmaskedHostName; };
@@ -74,6 +76,7 @@ protected:
 	void setNickName(const QString &szNickName){ m_szNickName = szNickName; };
 	void setUserMode(const QString &szUserMode){ m_szUserMode = szUserMode; };
 	void setUserName(const QString &szUserName){ m_szUserName = szUserName; };
+	void setPassword(const QString &szPassword){ m_szPassword = szPassword; };
 	void setHostName(const QString &szHostName){ m_szHostName = szHostName; };
 	void setUnmaskedHostName(const QString &szHostName){ m_szUnmaskedHostName = szHostName; };
 	void setHostIp(const QString &szHostIp){ m_szHostIp = szHostIp; };

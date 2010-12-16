@@ -398,6 +398,7 @@ KviServerReconnectInfo::~KviServerReconnectInfo()
 KviServerReconnectInfo::KviServerReconnectInfo(const KviServerReconnectInfo & info)
 {
 	m_szNick         = info.m_szNick;
+	m_szPass         = info.m_szPass;
 	m_szAwayReason   = info.m_szAwayReason;
 	m_szJoinChannels = info.m_szJoinChannels;
 	m_szOpenQueryes  = info.m_szOpenQueryes;

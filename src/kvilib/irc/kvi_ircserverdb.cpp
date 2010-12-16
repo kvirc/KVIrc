@@ -253,13 +253,6 @@ search_finished:
 
 	if(r && pServer)
 	{
-		if(!d->szNick.isEmpty())
-			pServer->m_szNick = d->szNick;
-		if(!d->szPass.isEmpty())
-			pServer->m_szPass = d->szPass; // don't clear the pass!
-		if(!d->szInitUMode.isEmpty())
-			pServer->m_szInitUMode = d->szInitUMode;
-
 		m_szCurrentNetwork = r->name();
 		r->setCurrentServer(pServer);
 		return true;

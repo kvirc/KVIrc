@@ -82,6 +82,7 @@ public:
 	~KviServerReconnectInfo();
 public:
 	QString               m_szNick;
+	QString               m_szPass;
 	QString               m_szAwayReason;
 	QString               m_szJoinChannels;
 	QStringList           m_szOpenQueryes;

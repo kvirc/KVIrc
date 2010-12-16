@@ -718,6 +718,7 @@ void KviIrcContext::connectionTerminated()
 
 	KviServerReconnectInfo info, *pInfo(&info);
 	pInfo->m_szNick = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
+	pInfo->m_szPass = connection()->userInfo()->password();
 	pInfo->m_bIsAway = connection()->userInfo()->isAway();
 	pInfo->m_szAwayReason = connection()->userInfo()->awayReason();
 
