@@ -1529,8 +1529,8 @@ void KviServerParser::parseNumericWhoisActually(KviIrcMessage *msg)
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
 		pOut->output(
-			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c %Q: %Q, %Q"),KVI_TEXT_BOLD,
-			&szNick,KVI_TEXT_BOLD, &szOth, &szUserHost, &szIpAddr);
+			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c's actual user@host: %Q, actual ip: %Q"),KVI_TEXT_BOLD,
+			&szNick,KVI_TEXT_BOLD, &szUserHost, &szIpAddr);
 	}
 }
 
