@@ -395,7 +395,7 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 304
 	PTM(parseNumericBackFromAway)                  , // 305 RPL_UNAWAY
 	PTM(parseNumericAway)                          , // 306 RPL_NOWAWAY
-	PTM(parseNumericWhoisOther)                    , // 307 RPL_WHOISREGNICK
+	PTM(parseNumericWhoisAuth)                     , // 307 RPL_WHOISREGNICK
 	PTM(parseNumericWhoisOther)                    , // 308 RPL_WHOISADMIN
 	PTM(parseNumericWhoisOther)                    , // 309 RPL_WHOISSADMIN
 	PTM(parseNumericWhoisOther)                    , // 310 RPL_WHOISHELPOP

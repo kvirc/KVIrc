@@ -1478,12 +1478,15 @@ void KviServerParser::parseNumericWhoisServer(KviIrcMessage *msg)
 
 void KviServerParser::parseNumericWhoisAuth(KviIrcMessage *msg)
 {
-	// :prefix RPL_WHOISAUTH <target> <nick> :is authed as
-	// actually seen only on Quakenet
+	// 330 RPL_WHOISAUTH
+	// :prefix RPL_WHOISAUTH <target> <nick> <nick>:is authed as
+	// 307 RPL_WHOISREGNICK
+	// :prefix RPL_WHOISREGNICK <target> <nick> :is a registered nick
+
 	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
 
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
-	QString szAuth = msg->connection()->decodeText(msg->safeParam(2));
+	QString szAuth = (msg->numeric()==307) ? szNick : msg->connection()->decodeText(msg->safeParam(2));
 
 	KviAsyncWhoisInfo * pInfo = msg->connection()->asyncWhoisData()->lookup(szNick);
 	if(pInfo)
