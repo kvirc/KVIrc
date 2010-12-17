@@ -950,10 +950,12 @@ namespace KviKvsCoreFunctions
 			when interpreted locally. Sending this text to the server you can
 			get unpredictable results, depending on the irc client other people
 			is using.
+			The returned string format is described by [doc:escape_sequences]the escape sequences documentation[/doc]
+			and you might also take a look at [fnc]$fmtlink[/fnc] which has related functionality.
 		@examples:
 			echo $link(pragma,nick)
 		@seealso:
-			[cmd]echo[/cmd]
+			[cmd]echo[/cmd], [fnc]$fmtlink[/fnc].
 	*/
 
 	KVSCF(link)

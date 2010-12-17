@@ -1501,9 +1501,10 @@ namespace KviKvsCoreFunctions
 			to prevent the evaluation.[br]
 			You might also take a look at [doc:escape_sequences]the escape sequences documentation[/doc]
 			to learn more about how the links are implemented and how to create more powerful links (add
-			right and middle button actions, use predefined kvirc links etc...)
+			right and middle button actions, use predefined kvirc links etc...). Also take a look at [fnc]$link[/fnc]
+			which has related functionality.
 		@seealso:
-			[doc:escape_sequences]the escape sequences documentation[/doc]
+			[cmd]echo[/cmd], [doc:escape_sequences]the escape sequences documentation[/doc], [fnc]$link[/fnc]
 	*/
 
 	KVSCF(fmtlink)
