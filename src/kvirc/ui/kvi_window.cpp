@@ -1276,37 +1276,37 @@ void KviWindow::unhighlight()
 	m_pWindowListItem->unhighlight();
 }
 
-/* This messes up a bit: for example it breaks the WHOIS output where
-   escapes are already present (checking for them here would be an overkill).
-   This should be eventually done ONLY for remote user message texts
-   in the server parser.
-
-	Fixed
-*/
-
 void KviWindow::preprocessMessage(QString & szMessage)
 {
-	// slow
+	// FIXME: slow
+
+	if(!m_pConsole)
+		return;
+	if(!m_pConsole->connection())
+		return;
+
+	static QString szNonStandardLinkPrefix = QString::fromAscii("\r![");
+
+	if(szMessage.contains(szNonStandardLinkPrefix))
+		return; // contains a non standard link that may contain spaces, do not break it.
+
+	// FIXME: This STILL breaks $fmtlink() in certain configurations
+
 	QStringList strings = szMessage.split(" ");
-	for ( QStringList::Iterator it = strings.begin(); it != strings.end(); ++it ) {
+	for ( QStringList::Iterator it = strings.begin(); it != strings.end(); ++it )
+	{
 		QString tmp(*it);
-		if(tmp.contains('\r')) continue;
-		tmp = KviMircCntrl::stripControlBytes(tmp);
-		tmp.trimmed();
-		if(m_pConsole)
+		tmp = KviMircCntrl::stripControlBytes(tmp).trimmed();
+		if(tmp.length() < 1)
+			continue;
+		if(tmp.contains('\r'))
+			return;
+		if(m_pConsole->connection()->serverInfo()->supportedChannelTypes().contains(tmp[0]))
 		{
-			if(m_pConsole->connection())
-			{
-				if(m_pConsole->connection()->serverInfo()->supportedChannelTypes().contains(tmp[0]))
-				{
-					if((*it)==tmp)
-					{
-						*it=QString("\r!c\r%1\r").arg(*it);
-					} else {
-						*it=QString("\r!c%1\r%2\r").arg(tmp, *it);
-					}
-				}
-			}
+			if((*it)==tmp)
+				*it=QString("\r!c\r%1\r").arg(*it);
+			else
+				*it=QString("\r!c%1\r%2\r").arg(tmp, *it);
 		}
 	}
 	szMessage=strings.join(" ");

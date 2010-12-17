@@ -1520,6 +1520,7 @@ namespace KviKvsCoreFunctions
 		if(!szToolTip.isEmpty())KviQString::appendFormatted(szPart,"[!txt]%Q",&szToolTip);
 		QString szLink;
 		KviQString::sprintf(szLink,"\r!%Q\r%Q\r",&szPart,&szLinkText);
+		
 		KVSCF_pRetBuffer->setString(szLink);
 		return true;
 	}

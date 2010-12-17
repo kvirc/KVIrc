@@ -1829,25 +1829,37 @@ bool KviChannel::eventFilter(QObject * o, QEvent * e)
 
 void KviChannel::preprocessMessage(QString & szMessage)
 {
+	// FIXME: slow
+
+	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
+	if(!pServerInfo)
+		return;
+
+	static QString szNonStandardLinkPrefix = QString::fromAscii("\r![");
+
+	if(szMessage.contains(szNonStandardLinkPrefix))
+		return; // contains a non standard link that may contain spaces, do not break it.
+
 	QStringList strings = szMessage.split(" ",QString::KeepEmptyParts);
 	for(QStringList::Iterator it = strings.begin(); it != strings.end(); ++it)
 	{
-		if((*it).contains('\r'))
+		QString szTmp = KviMircCntrl::stripControlBytes(*it).trimmed();
+		if(szTmp.length() < 1)
 			continue;
 
-		QString szTmp = KviMircCntrl::stripControlBytes(*it);
+		if(szTmp.contains('\r'))
+			continue;
+
+		// FIXME: Do we REALLY need this ?
 		if(findEntry(*it))
 			*it = QString("\r!n\r%1\r").arg(*it);
-		KviIrcConnectionServerInfo * pServerInfo = serverInfo();
-		if(pServerInfo)
+
+		if(pServerInfo->supportedChannelTypes().contains(szTmp[0]))
 		{
-			if(pServerInfo->supportedChannelTypes().contains(szTmp[0]))
-			{
-				if((*it) == szTmp)
-					*it = QString("\r!c\r%1\r").arg(*it);
-				else
-					*it = QString("\r!c%1\r%2\r").arg(szTmp, *it);
-			}
+			if((*it) == szTmp)
+				*it = QString("\r!c\r%1\r").arg(*it);
+			else
+				*it = QString("\r!c%1\r%2\r").arg(szTmp, *it);
 		}
 	}
 	szMessage = strings.join(" ");
