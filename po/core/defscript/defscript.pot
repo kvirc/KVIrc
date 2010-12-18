@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-25 10:30+0100\n"
+"POT-Creation-Date: 2010-12-18 17:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,23 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: data/defscript/classes.kvs:18
-msgid ""
-"[Installer] Error: the first argument of copyFiles must be a source directory"
-msgstr ""
-
-#: data/defscript/classes.kvs:24
-msgid ""
-"[Installer] Error: the second argument of copyFiles must be a file name or "
-"file regexp"
-msgstr ""
-
-#: data/defscript/classes.kvs:30
-msgid ""
-"[Installer] Error: the third argument of copyFiles must be a destination "
-"directory"
-msgstr ""
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
@@ -99,8 +82,8 @@ msgstr ""
 #: data/defscript/aliases.kvs:238
 #: data/defscript/aliases.kvs:320
 #: data/defscript/aliases.kvs:362
-#: data/defscript/aliases.kvs:420
-#: data/defscript/aliases.kvs:480
+#: data/defscript/aliases.kvs:432
+#: data/defscript/aliases.kvs:492
 msgid "Usage:"
 msgstr ""
 
@@ -109,51 +92,51 @@ msgid "reason"
 msgstr ""
 
 #: data/defscript/aliases.kvs:245
-#: data/defscript/aliases.kvs:426
+#: data/defscript/aliases.kvs:438
 msgid "This is not a channel window"
 msgstr ""
 
-#: data/defscript/aliases.kvs:408
+#: data/defscript/aliases.kvs:420
 msgid "Unsupported type:"
 msgstr ""
 
-#: data/defscript/aliases.kvs:431
+#: data/defscript/aliases.kvs:443
 msgid "Channel Owner"
 msgstr ""
 
-#: data/defscript/aliases.kvs:433
+#: data/defscript/aliases.kvs:445
 msgid "Channel Administrator"
 msgstr ""
 
-#: data/defscript/aliases.kvs:435
+#: data/defscript/aliases.kvs:447
 msgid "Channel Operator"
 msgstr ""
 
-#: data/defscript/aliases.kvs:437
+#: data/defscript/aliases.kvs:449
 msgid "Half Operator"
 msgstr ""
 
-#: data/defscript/aliases.kvs:439
+#: data/defscript/aliases.kvs:451
 msgid "Voice"
 msgstr ""
 
-#: data/defscript/aliases.kvs:441
+#: data/defscript/aliases.kvs:453
 msgid "User Operator"
 msgstr ""
 
-#: data/defscript/aliases.kvs:443
+#: data/defscript/aliases.kvs:455
 msgid "Normal User"
 msgstr ""
 
-#: data/defscript/aliases.kvs:468
+#: data/defscript/aliases.kvs:480
 msgid "You must use DNS in an IRC context"
 msgstr ""
 
-#: data/defscript/aliases.kvs:474
+#: data/defscript/aliases.kvs:486
 msgid "You must be connected to a server"
 msgstr ""
 
-#: data/defscript/aliases.kvs:491
+#: data/defscript/aliases.kvs:503
 msgid "No such user:"
 msgstr ""
 
@@ -742,4 +725,21 @@ msgstr ""
 
 #: data/defscript/popups.kvs:1431
 msgid "Traceroute6 to "
+msgstr ""
+
+#: data/defscript/classes.kvs:18
+msgid ""
+"[Installer] Error: the first argument of copyFiles must be a source directory"
+msgstr ""
+
+#: data/defscript/classes.kvs:24
+msgid ""
+"[Installer] Error: the second argument of copyFiles must be a file name or "
+"file regexp"
+msgstr ""
+
+#: data/defscript/classes.kvs:30
+msgid ""
+"[Installer] Error: the third argument of copyFiles must be a destination "
+"directory"
 msgstr ""

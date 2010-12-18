@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: addon_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-25 10:30+0100\n"
+"POT-Creation-Date: 2010-12-18 17:56+0100\n"
 "PO-Revision-Date: 2010-08-07 19:43+0200\n"
 "Last-Translator: _Otaku\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -112,11 +112,11 @@ msgstr "Voulez-vous vraiment désinstaller l'extension \"%1\""
 msgid "Do you want to proceed with the installation ?"
 msgstr "Voulez-vous procéder à l'installation ?"
 
-#: src/modules/addon/libkviaddon.cpp:660
+#: src/modules/addon/libkviaddon.cpp:661
 msgid "Empty file list"
 msgstr "Liste de fichiers vide"
 
-#: src/modules/addon/libkviaddon.cpp:807
+#: src/modules/addon/libkviaddon.cpp:808
 msgid "Error installing addon package: %Q"
 msgstr "Erreur à l'installation du paquet d'extension : %Q"
 
@@ -212,7 +212,7 @@ msgstr "Installer une extension (paquet) - KVIrc"
 msgid "Install Addon Package From Disk"
 msgstr "Installer une extension sous forme de paquet depuis le disque"
 
-#: src/modules/addon/libkviaddon.cpp:749
+#: src/modules/addon/libkviaddon.cpp:750
 msgid "Installing file '%1' into '%2'"
 msgstr "Installation du fichier '%1' dans '%2'"
 
@@ -327,11 +327,11 @@ msgstr "Sélectionner le répertoire source :"
 msgid "Show Help"
 msgstr "Montrez l'aide"
 
-#: src/modules/addon/libkviaddon.cpp:691 src/modules/addon/libkviaddon.cpp:714
-msgid "Skipping inexisting entry '%1'"
+#: src/modules/addon/libkviaddon.cpp:692 src/modules/addon/libkviaddon.cpp:715
+msgid "Skipping inexistant entry '%1'"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:723
+#: src/modules/addon/libkviaddon.cpp:724
 msgid "Skipping invalid entry '%1'"
 msgstr ""
 
@@ -342,7 +342,7 @@ msgstr "Chemin de la source"
 
 #: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
 #: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:648
 msgid "The addon \"%1\" does not exist"
 msgstr "L'extension \"%1\" n'existe pas"
 
@@ -358,15 +358,15 @@ msgstr ""
 msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
 msgstr "L'extension \"%Q\" existe déjà en version %Q qui est supérieur que %Q"
 
-#: src/modules/addon/libkviaddon.cpp:689
+#: src/modules/addon/libkviaddon.cpp:690
 msgid "The directory '%1' doesn't exist"
 msgstr "Le dossier '%1' n'existe pas"
 
-#: src/modules/addon/libkviaddon.cpp:721
+#: src/modules/addon/libkviaddon.cpp:722
 msgid "The entry '%1' is not a file"
 msgstr "L'entrée '%1' n'est pas un fichier"
 
-#: src/modules/addon/libkviaddon.cpp:712
+#: src/modules/addon/libkviaddon.cpp:713
 msgid "The file '%1' doesn't exist"
 msgstr "Le fichier '%1' n'existe pas"
 
@@ -399,11 +399,11 @@ msgstr "La version spécifier de KVIrc \"%Q\", n'est pas formater correctement"
 msgid "The specified version \"%Q\" is not a valid version string"
 msgstr "La version spécifier \"%Q\", n'est pas formater correctement"
 
-#: src/modules/addon/libkviaddon.cpp:652
+#: src/modules/addon/libkviaddon.cpp:653
 msgid "The target path can't be empty"
 msgstr "Le chemin ne peux pas être vide"
 
-#: src/modules/addon/libkviaddon.cpp:655
+#: src/modules/addon/libkviaddon.cpp:656
 msgid "The target path can't contain .."
 msgstr "Le chemin ne peux pas contenir"
 

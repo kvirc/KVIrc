@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-25 10:30+0100\n"
+"POT-Creation-Date: 2010-12-18 17:56+0100\n"
 "PO-Revision-Date: 2010-04-09 14:28+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -215,7 +215,7 @@ msgid ""
 "DCC %s since we can't accept incoming connections (user option)"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:930 src/modules/dcc/video.cpp:940
+#: src/modules/dcc/video.cpp:940 src/modules/dcc/voice.cpp:930
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Aktualnie używany kodek to  '%s'"
@@ -318,7 +318,7 @@ msgstr ""
 "Nie mogę wysłać żądania DCC %Q do %Q: Połączenie z serwerem IRC zostało "
 "zakończone"
 
-#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:2206
+#: src/modules/dcc/send.cpp:2206 src/modules/dcc/dialogs.cpp:158
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -353,8 +353,8 @@ msgstr "Konfiguruj przepustowość dla DCC transferu %1"
 msgid "Connected to %1:%2"
 msgstr "Połączony z %1:%2"
 
-#: src/modules/dcc/voice.cpp:910 src/modules/dcc/video.cpp:924
-#: src/modules/dcc/chat.cpp:564 src/modules/dcc/canvas.cpp:284
+#: src/modules/dcc/video.cpp:924 src/modules/dcc/chat.cpp:564
+#: src/modules/dcc/voice.cpp:910 src/modules/dcc/canvas.cpp:284
 msgid "Connected to %Q:%Q"
 msgstr "Połączony z %Q:%Q"
 
@@ -362,8 +362,8 @@ msgstr "Połączony z %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Kontaktuję się z hostem %1 na porcie %2"
 
-#: src/modules/dcc/voice.cpp:755 src/modules/dcc/video.cpp:606
-#: src/modules/dcc/chat.cpp:184 src/modules/dcc/canvas.cpp:108
+#: src/modules/dcc/video.cpp:606 src/modules/dcc/chat.cpp:184
+#: src/modules/dcc/voice.cpp:755 src/modules/dcc/canvas.cpp:108
 msgid "Contacting host %Q on port %Q"
 msgstr "Kontaktuję się z hostem %Q na porcie %Q"
 
@@ -396,7 +396,7 @@ msgstr "DCC CANVAS żądanie"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:901 src/modules/dcc/video.cpp:919
+#: src/modules/dcc/video.cpp:919 src/modules/dcc/voice.cpp:901
 #: src/modules/dcc/canvas.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "DCC nieudany: %Q"
@@ -439,8 +439,8 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Transfer danych został zakończony 30 sekund temu, zamykam połączenie"
 
-#: src/modules/dcc/voice.cpp:818 src/modules/dcc/video.cpp:782
-#: src/modules/dcc/chat.cpp:415
+#: src/modules/dcc/video.cpp:782 src/modules/dcc/chat.cpp:415
+#: src/modules/dcc/voice.cpp:818
 msgid "ERROR: %Q"
 msgstr "BŁĄD: %Q"
 
@@ -552,8 +552,8 @@ msgstr "Ogranicz pasmo wysyłania do"
 msgid "Listening on interface %1 port %2"
 msgstr "Nasłuch na interfejsie %1 port %2"
 
-#: src/modules/dcc/voice.cpp:758 src/modules/dcc/video.cpp:609
-#: src/modules/dcc/chat.cpp:186 src/modules/dcc/canvas.cpp:84
+#: src/modules/dcc/video.cpp:609 src/modules/dcc/chat.cpp:186
+#: src/modules/dcc/voice.cpp:758 src/modules/dcc/canvas.cpp:84
 msgid "Listening on interface %Q port %Q"
 msgstr "Nasłuch na interfejsie %Q port %Q"
 
@@ -561,8 +561,8 @@ msgstr "Nasłuch na interfejsie %Q port %Q"
 msgid "Local end is %1:%2"
 msgstr "Lokalna końcówka to %1:%2"
 
-#: src/modules/dcc/voice.cpp:912 src/modules/dcc/video.cpp:926
-#: src/modules/dcc/chat.cpp:566 src/modules/dcc/canvas.cpp:286
+#: src/modules/dcc/video.cpp:926 src/modules/dcc/chat.cpp:566
+#: src/modules/dcc/voice.cpp:912 src/modules/dcc/canvas.cpp:286
 msgid "Local end is %Q:%Q"
 msgstr "Lokalna końcówka to %Q:%Q"
 
@@ -1054,15 +1054,15 @@ msgstr "[BŁĄD SSL]: %s"
 msgid "bytes/sec"
 msgstr "bajtów/sek"
 
-#: src/modules/dcc/libkvidcc.cpp:111 src/modules/dcc/libkvidcc.cpp:408
-#: src/modules/dcc/libkvidcc.cpp:443 src/modules/dcc/libkvidcc.cpp:642
-#: src/modules/dcc/libkvidcc.cpp:666 src/modules/dcc/libkvidcc.cpp:803
-#: src/modules/dcc/libkvidcc.cpp:805 src/modules/dcc/libkvidcc.cpp:1121
-#: src/modules/dcc/libkvidcc.cpp:1171 src/modules/dcc/libkvidcc.cpp:1199
-#: src/modules/dcc/libkvidcc.cpp:1238 src/modules/dcc/requests.cpp:142
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
+#: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
+#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
+#: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
+#: src/modules/dcc/libkvidcc.cpp:1199 src/modules/dcc/libkvidcc.cpp:1238
+#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/requests.cpp:142
 #: src/modules/dcc/requests.cpp:143 src/modules/dcc/requests.cpp:144
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/marshal.cpp:490
-#: src/modules/dcc/marshal.cpp:520 src/modules/dcc/marshal.cpp:525
 msgid "unknown"
 msgstr "nieznany"
 

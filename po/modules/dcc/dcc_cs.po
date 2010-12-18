@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-25 10:30+0100\n"
+"POT-Creation-Date: 2010-12-18 17:56+0100\n"
 "PO-Revision-Date: 2007-12-05 17:57+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -209,7 +209,7 @@ msgstr ""
 "nabízí DCC %s, dokud nebude možné přijmout příchozí spojení (uživatelská "
 "možnost)"
 
-#: src/modules/dcc/voice.cpp:930 src/modules/dcc/video.cpp:940
+#: src/modules/dcc/video.cpp:940 src/modules/dcc/voice.cpp:930
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Aktuálně použitý kodek je '%s'"
@@ -307,7 +307,7 @@ msgstr "Nelze získat použitelnou lokální IPV4 adresu"
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Nelze poslat DCC %Q požadavek %Q: IRC spojení bylo přerušeno"
 
-#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:2206
+#: src/modules/dcc/send.cpp:2206 src/modules/dcc/dialogs.cpp:158
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -342,8 +342,8 @@ msgstr "Konfigurovat přenosové pásmo pro DCC přenos %1"
 msgid "Connected to %1:%2"
 msgstr "Připojen k %1:%2"
 
-#: src/modules/dcc/voice.cpp:910 src/modules/dcc/video.cpp:924
-#: src/modules/dcc/chat.cpp:564 src/modules/dcc/canvas.cpp:284
+#: src/modules/dcc/video.cpp:924 src/modules/dcc/chat.cpp:564
+#: src/modules/dcc/voice.cpp:910 src/modules/dcc/canvas.cpp:284
 msgid "Connected to %Q:%Q"
 msgstr "Spojeno s %Q:%Q"
 
@@ -351,8 +351,8 @@ msgstr "Spojeno s %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Kontaktuji hosta %1 na portu %2"
 
-#: src/modules/dcc/voice.cpp:755 src/modules/dcc/video.cpp:606
-#: src/modules/dcc/chat.cpp:184 src/modules/dcc/canvas.cpp:108
+#: src/modules/dcc/video.cpp:606 src/modules/dcc/chat.cpp:184
+#: src/modules/dcc/voice.cpp:755 src/modules/dcc/canvas.cpp:108
 msgid "Contacting host %Q on port %Q"
 msgstr "Kontaktuje se hostitel %Q na portu %Q"
 
@@ -384,7 +384,7 @@ msgstr "DCC CANVAS požadavek"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "DCC CANVAS požadavek nebyl odeslán: očekává se manuální připojeni"
 
-#: src/modules/dcc/voice.cpp:901 src/modules/dcc/video.cpp:919
+#: src/modules/dcc/video.cpp:919 src/modules/dcc/voice.cpp:901
 #: src/modules/dcc/canvas.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "DCC Selhání: %Q"
@@ -427,8 +427,8 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Přenos dat byl stornován před 30-ti sekundami, uzavírám spojení"
 
-#: src/modules/dcc/voice.cpp:818 src/modules/dcc/video.cpp:782
-#: src/modules/dcc/chat.cpp:415
+#: src/modules/dcc/video.cpp:782 src/modules/dcc/chat.cpp:415
+#: src/modules/dcc/voice.cpp:818
 msgid "ERROR: %Q"
 msgstr "CHYBA: %Q"
 
@@ -539,8 +539,8 @@ msgstr "Omezit odchozí šířku pásma na"
 msgid "Listening on interface %1 port %2"
 msgstr "Naslouchám na rozhraní %1 port %2"
 
-#: src/modules/dcc/voice.cpp:758 src/modules/dcc/video.cpp:609
-#: src/modules/dcc/chat.cpp:186 src/modules/dcc/canvas.cpp:84
+#: src/modules/dcc/video.cpp:609 src/modules/dcc/chat.cpp:186
+#: src/modules/dcc/voice.cpp:758 src/modules/dcc/canvas.cpp:84
 msgid "Listening on interface %Q port %Q"
 msgstr "Naslouchám na interfacu %Q port %Q"
 
@@ -548,8 +548,8 @@ msgstr "Naslouchám na interfacu %Q port %Q"
 msgid "Local end is %1:%2"
 msgstr "Lokální konec je %1:%2"
 
-#: src/modules/dcc/voice.cpp:912 src/modules/dcc/video.cpp:926
-#: src/modules/dcc/chat.cpp:566 src/modules/dcc/canvas.cpp:286
+#: src/modules/dcc/video.cpp:926 src/modules/dcc/chat.cpp:566
+#: src/modules/dcc/voice.cpp:912 src/modules/dcc/canvas.cpp:286
 msgid "Local end is %Q:%Q"
 msgstr "Lokální konec je %Q:%Q"
 
@@ -1058,15 +1058,15 @@ msgstr "[SSL CHYBA]: %s"
 msgid "bytes/sec"
 msgstr "bajtů/sek"
 
-#: src/modules/dcc/libkvidcc.cpp:111 src/modules/dcc/libkvidcc.cpp:408
-#: src/modules/dcc/libkvidcc.cpp:443 src/modules/dcc/libkvidcc.cpp:642
-#: src/modules/dcc/libkvidcc.cpp:666 src/modules/dcc/libkvidcc.cpp:803
-#: src/modules/dcc/libkvidcc.cpp:805 src/modules/dcc/libkvidcc.cpp:1121
-#: src/modules/dcc/libkvidcc.cpp:1171 src/modules/dcc/libkvidcc.cpp:1199
-#: src/modules/dcc/libkvidcc.cpp:1238 src/modules/dcc/requests.cpp:142
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
+#: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
+#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
+#: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
+#: src/modules/dcc/libkvidcc.cpp:1199 src/modules/dcc/libkvidcc.cpp:1238
+#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/requests.cpp:142
 #: src/modules/dcc/requests.cpp:143 src/modules/dcc/requests.cpp:144
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/marshal.cpp:490
-#: src/modules/dcc/marshal.cpp:520 src/modules/dcc/marshal.cpp:525
 msgid "unknown"
 msgstr "neznámý"
 

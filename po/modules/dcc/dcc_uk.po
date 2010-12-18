@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: about_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-25 10:30+0100\n"
+"POT-Creation-Date: 2010-12-18 17:56+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -219,7 +219,7 @@ msgstr ""
 "Приймаю запит файлу з %Q [%Q@%Q] для '%s' (реальний файл: %Q), пропоную DCC "
 "%s оскільки ми не можемо приймати вхідні з'єднання (опція користувача)"
 
-#: src/modules/dcc/voice.cpp:930 src/modules/dcc/video.cpp:940
+#: src/modules/dcc/video.cpp:940 src/modules/dcc/voice.cpp:930
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Поточний використовуваний кодек - '%s'"
@@ -319,7 +319,7 @@ msgstr "Не можу знайти придатний локальний IPV4 а
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Неможливо відіслати DCC %Q запит в %Q: IRC з'єднання закрите"
 
-#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:2206
+#: src/modules/dcc/send.cpp:2206 src/modules/dcc/dialogs.cpp:158
 msgid "Cancel"
 msgstr "Скасування"
 
@@ -355,8 +355,8 @@ msgstr "Конфігурування пропускної здатності д�
 msgid "Connected to %1:%2"
 msgstr "Підключення до%1:%2"
 
-#: src/modules/dcc/voice.cpp:910 src/modules/dcc/video.cpp:924
-#: src/modules/dcc/chat.cpp:564 src/modules/dcc/canvas.cpp:284
+#: src/modules/dcc/video.cpp:924 src/modules/dcc/chat.cpp:564
+#: src/modules/dcc/voice.cpp:910 src/modules/dcc/canvas.cpp:284
 msgid "Connected to %Q:%Q"
 msgstr "Підключення до %Q:%Q"
 
@@ -364,8 +364,8 @@ msgstr "Підключення до %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Підключення до хосту %1 на порт %2"
 
-#: src/modules/dcc/voice.cpp:755 src/modules/dcc/video.cpp:606
-#: src/modules/dcc/chat.cpp:184 src/modules/dcc/canvas.cpp:108
+#: src/modules/dcc/video.cpp:606 src/modules/dcc/chat.cpp:184
+#: src/modules/dcc/voice.cpp:755 src/modules/dcc/canvas.cpp:108
 msgid "Contacting host %Q on port %Q"
 msgstr "Підключення до хосту %Q на порт %Q"
 
@@ -397,7 +397,7 @@ msgstr "Запит DCC CANVAS"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "DCC CANVAS запит не відісланий: очікую ручного з'єднання"
 
-#: src/modules/dcc/voice.cpp:901 src/modules/dcc/video.cpp:919
+#: src/modules/dcc/video.cpp:919 src/modules/dcc/voice.cpp:901
 #: src/modules/dcc/canvas.cpp:279
 msgid "DCC Failed: %Q"
 msgstr "Помилка DCC: %Q"
@@ -441,8 +441,8 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Передача даних завершилася 30 сек. назад, закриваю з'єднання"
 
-#: src/modules/dcc/voice.cpp:818 src/modules/dcc/video.cpp:782
-#: src/modules/dcc/chat.cpp:415
+#: src/modules/dcc/video.cpp:782 src/modules/dcc/chat.cpp:415
+#: src/modules/dcc/voice.cpp:818
 msgid "ERROR: %Q"
 msgstr "ПОМИЛКА: %Q"
 
@@ -553,8 +553,8 @@ msgstr "Межа при передачі"
 msgid "Listening on interface %1 port %2"
 msgstr "Прослуховування інтерфейсу %1 на порту %2"
 
-#: src/modules/dcc/voice.cpp:758 src/modules/dcc/video.cpp:609
-#: src/modules/dcc/chat.cpp:186 src/modules/dcc/canvas.cpp:84
+#: src/modules/dcc/video.cpp:609 src/modules/dcc/chat.cpp:186
+#: src/modules/dcc/voice.cpp:758 src/modules/dcc/canvas.cpp:84
 msgid "Listening on interface %Q port %Q"
 msgstr "Прослуховування на інтерфейсі %Q порту %Q"
 
@@ -562,8 +562,8 @@ msgstr "Прослуховування на інтерфейсі %Q порту %
 msgid "Local end is %1:%2"
 msgstr "Локальне закінчення %1:%2"
 
-#: src/modules/dcc/voice.cpp:912 src/modules/dcc/video.cpp:926
-#: src/modules/dcc/chat.cpp:566 src/modules/dcc/canvas.cpp:286
+#: src/modules/dcc/video.cpp:926 src/modules/dcc/chat.cpp:566
+#: src/modules/dcc/voice.cpp:912 src/modules/dcc/canvas.cpp:286
 msgid "Local end is %Q:%Q"
 msgstr "Локальне закінчення %Q:%Q"
 
@@ -1055,15 +1055,15 @@ msgstr "[ПОМИЛКА SSL]: %s"
 msgid "bytes/sec"
 msgstr "байт/сек"
 
-#: src/modules/dcc/libkvidcc.cpp:111 src/modules/dcc/libkvidcc.cpp:408
-#: src/modules/dcc/libkvidcc.cpp:443 src/modules/dcc/libkvidcc.cpp:642
-#: src/modules/dcc/libkvidcc.cpp:666 src/modules/dcc/libkvidcc.cpp:803
-#: src/modules/dcc/libkvidcc.cpp:805 src/modules/dcc/libkvidcc.cpp:1121
-#: src/modules/dcc/libkvidcc.cpp:1171 src/modules/dcc/libkvidcc.cpp:1199
-#: src/modules/dcc/libkvidcc.cpp:1238 src/modules/dcc/requests.cpp:142
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
+#: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
+#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
+#: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
+#: src/modules/dcc/libkvidcc.cpp:1199 src/modules/dcc/libkvidcc.cpp:1238
+#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/requests.cpp:142
 #: src/modules/dcc/requests.cpp:143 src/modules/dcc/requests.cpp:144
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/marshal.cpp:490
-#: src/modules/dcc/marshal.cpp:520 src/modules/dcc/marshal.cpp:525
 msgid "unknown"
 msgstr "невідомий"
 

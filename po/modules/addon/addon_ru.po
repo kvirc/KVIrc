@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-25 10:30+0100\n"
+"POT-Creation-Date: 2010-12-18 17:56+0100\n"
 "PO-Revision-Date: 2010-06-14 10:47+0400\n"
 "Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -106,11 +106,11 @@ msgstr "Вы действительно хотите удалить дополн
 msgid "Do you want to proceed with the installation ?"
 msgstr "Вы хотите продолжить установку?"
 
-#: src/modules/addon/libkviaddon.cpp:660
+#: src/modules/addon/libkviaddon.cpp:661
 msgid "Empty file list"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:807
+#: src/modules/addon/libkviaddon.cpp:808
 msgid "Error installing addon package: %Q"
 msgstr "Не могу установить пакет дополнения: %Q"
 
@@ -198,7 +198,7 @@ msgstr "Установить пакет дополнения - KVIrc"
 msgid "Install Addon Package From Disk"
 msgstr "Установить пакет дополнения с локального диска"
 
-#: src/modules/addon/libkviaddon.cpp:749
+#: src/modules/addon/libkviaddon.cpp:750
 msgid "Installing file '%1' into '%2'"
 msgstr ""
 
@@ -309,11 +309,11 @@ msgstr "Выберите исходную директорию:"
 msgid "Show Help"
 msgstr "Показать помощь"
 
-#: src/modules/addon/libkviaddon.cpp:691 src/modules/addon/libkviaddon.cpp:714
-msgid "Skipping inexisting entry '%1'"
+#: src/modules/addon/libkviaddon.cpp:692 src/modules/addon/libkviaddon.cpp:715
+msgid "Skipping inexistant entry '%1'"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:723
+#: src/modules/addon/libkviaddon.cpp:724
 msgid "Skipping invalid entry '%1'"
 msgstr ""
 
@@ -323,7 +323,7 @@ msgstr "Исходная директория"
 
 #: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
 #: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:648
 msgid "The addon \"%1\" does not exist"
 msgstr "Дополнение \"%1\" не существует"
 
@@ -339,16 +339,16 @@ msgstr "Действие \"%1\" не имеет помощи"
 msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
 msgstr "Дополнение \"%Q\" уже установлено версии %Q, которая новее чем %Q"
 
-#: src/modules/addon/libkviaddon.cpp:689
+#: src/modules/addon/libkviaddon.cpp:690
 #, fuzzy
 msgid "The directory '%1' doesn't exist"
 msgstr "Заданный каталог не существует."
 
-#: src/modules/addon/libkviaddon.cpp:721
+#: src/modules/addon/libkviaddon.cpp:722
 msgid "The entry '%1' is not a file"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:712
+#: src/modules/addon/libkviaddon.cpp:713
 #, fuzzy
 msgid "The file '%1' doesn't exist"
 msgstr "Дополнение \"%1\" не существует"
@@ -382,11 +382,11 @@ msgstr "Заданная версия KVirc \"%Q\" не является кор�
 msgid "The specified version \"%Q\" is not a valid version string"
 msgstr "Заданная версия \"%Q\" не имеет формата строки версии"
 
-#: src/modules/addon/libkviaddon.cpp:652
+#: src/modules/addon/libkviaddon.cpp:653
 msgid "The target path can't be empty"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:655
+#: src/modules/addon/libkviaddon.cpp:656
 msgid "The target path can't contain .."
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-25 10:30+0100\n"
+"POT-Creation-Date: 2010-12-18 17:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,6 +37,167 @@ msgstr ""
 #: src/modules/regchan/libkviregchan.cpp:238
 #, c-format
 msgid "Total %d channels"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:78
+msgid "Property Editor"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:91
+msgid "Property"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:92
+msgid "Value"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:102
+msgid "&New"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:106
+msgid "&Remove"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:114
+#: src/modules/reguser/edituser.cpp:258
+#: src/modules/reguser/edituser.cpp:470
+#: src/modules/reguser/dialog.cpp:297
+msgid "&OK"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:118
+#: src/modules/reguser/edituser.cpp:262
+#: src/modules/reguser/edituser.cpp:469
+#: src/modules/reguser/dialog.cpp:302
+msgid "Cancel"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:212
+msgid "Mask Editor"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:216
+msgid ""
+"Insert a mask for this user.<br>It can contain the wildcard characters '*' "
+"and '?'."
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:226
+msgid ""
+"<center>This is the <b>nickname</b> that will match this user, default value "
+"is the registered name.</center>"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:235
+msgid ""
+"<center>This is the <b>username</b> that will match this user. <b>*</b> will "
+"match any username.</center>"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:244
+msgid ""
+"<center>This is the <b>hostname</b> that will match this user. <b>*</b> will "
+"match any hostname.</center>"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:320
+msgid "Registered User Entry"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:326
+msgid "Name:"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:332
+#: src/modules/reguser/dialog.cpp:134
+msgid "Comment:"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:342
+msgid "Masks:"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:355
+#: src/modules/reguser/dialog.cpp:246
+msgid "&Add..."
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:359
+#: src/modules/reguser/dialog.cpp:256
+msgid "Re&move"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:364
+msgid "&Edit"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:372
+msgid "Identity"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:378
+msgid "Notify when user is online"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:381
+msgid "Notify nicknames:"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:384
+msgid "<center>You can enter a space separated list of nicknames.</center>"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:409
+msgid "Avatar"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:416
+msgid "Use custom color in userlist"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:424
+msgid "All Properties..."
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:431
+msgid "Properties"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:437
+msgid "Enable ignore for this user"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:439
+msgid "Ignore features"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:446
+msgid "Ignore query messages"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:449
+msgid "Ignore channel messages"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:452
+msgid "Ignore notice messages"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:455
+msgid "Ignore CTCP messages"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:458
+msgid "Ignore invites"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:461
+msgid "Ignore DCCs"
+msgstr ""
+
+#: src/modules/reguser/edituser.cpp:467
+msgid "Ignore"
 msgstr ""
 
 #: src/modules/reguser/dialog.cpp:81
@@ -68,11 +229,6 @@ msgstr ""
 msgid "No comment set"
 msgstr ""
 
-#: src/modules/reguser/dialog.cpp:134
-#: src/modules/reguser/edituser.cpp:332
-msgid "Comment:"
-msgstr ""
-
 #: src/modules/reguser/dialog.cpp:223
 msgid "Registered Users - KVIrc"
 msgstr ""
@@ -85,11 +241,6 @@ msgstr ""
 msgid "Add a registered user by means of a user-friendly wizard."
 msgstr ""
 
-#: src/modules/reguser/dialog.cpp:246
-#: src/modules/reguser/edituser.cpp:355
-msgid "&Add..."
-msgstr ""
-
 #: src/modules/reguser/dialog.cpp:248
 msgid "Open the edit dialog to create a new user entry."
 msgstr ""
@@ -100,11 +251,6 @@ msgstr ""
 
 #: src/modules/reguser/dialog.cpp:253
 msgid "Adds a new group"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:256
-#: src/modules/reguser/edituser.cpp:359
-msgid "Re&move"
 msgstr ""
 
 #: src/modules/reguser/dialog.cpp:259
@@ -146,20 +292,6 @@ msgstr ""
 msgid ""
 "Import entries from a file exported earlier by the \"export\" function of "
 "this dialog."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:297
-#: src/modules/reguser/edituser.cpp:114
-#: src/modules/reguser/edituser.cpp:258
-#: src/modules/reguser/edituser.cpp:470
-msgid "&OK"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:302
-#: src/modules/reguser/edituser.cpp:118
-#: src/modules/reguser/edituser.cpp:262
-#: src/modules/reguser/edituser.cpp:469
-msgid "Cancel"
 msgstr ""
 
 #: src/modules/reguser/dialog.cpp:411
@@ -301,138 +433,6 @@ msgstr ""
 
 #: src/modules/reguser/wizard.cpp:258
 msgid "Registration Complete"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:78
-msgid "Property Editor"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:91
-msgid "Property"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:92
-msgid "Value"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:102
-msgid "&New"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:106
-msgid "&Remove"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:212
-msgid "Mask Editor"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:216
-msgid ""
-"Insert a mask for this user.<br>It can contain the wildcard characters '*' "
-"and '?'."
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:226
-msgid ""
-"<center>This is the <b>nickname</b> that will match this user, default value "
-"is the registered name.</center>"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:235
-msgid ""
-"<center>This is the <b>username</b> that will match this user. <b>*</b> will "
-"match any username.</center>"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:244
-msgid ""
-"<center>This is the <b>hostname</b> that will match this user. <b>*</b> will "
-"match any hostname.</center>"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:320
-msgid "Registered User Entry"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:326
-msgid "Name:"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:342
-msgid "Masks:"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:364
-msgid "&Edit"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:372
-msgid "Identity"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:378
-msgid "Notify when user is online"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:381
-msgid "Notify nicknames:"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:384
-msgid "<center>You can enter a space separated list of nicknames.</center>"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:409
-msgid "Avatar"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:416
-msgid "Use custom color in userlist"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:424
-msgid "All Properties..."
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:431
-msgid "Properties"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:437
-msgid "Enable ignore for this user"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:439
-msgid "Ignore features"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:446
-msgid "Ignore query messages"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:449
-msgid "Ignore channel messages"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:452
-msgid "Ignore notice messages"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:455
-msgid "Ignore CTCP messages"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:458
-msgid "Ignore invites"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:461
-msgid "Ignore DCCs"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:467
-msgid "Ignore"
 msgstr ""
 
 #: src/modules/reguser/libkvireguser.cpp:188

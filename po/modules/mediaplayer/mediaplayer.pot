@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-25 10:30+0100\n"
+"POT-Creation-Date: 2010-12-18 17:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,33 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
-msgid ""
-"An interface to the popular UNIX xmms media player.\n"
-"Download it from http://legacy.xmms2.org\n"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
-msgid ""
-"An interface to the popular UNIX audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:136
-msgid "Can't load the player library (%Q)"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:145
-msgid "Can't find symbol %s in %Q"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_amipinterface.cpp:108
-msgid ""
-"An interface to the AMIP plug-in.\n"
-"You can download it from http://amip.tools-for.net\n"
-"To use this interface you must install AMIP plug-in for your player."
-msgstr ""
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:320
 msgid ""
@@ -118,6 +91,33 @@ msgstr ""
 
 #: src/modules/mediaplayer/mp_interface.cpp:43
 msgid "Function not implemented"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://legacy.xmms2.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
+msgid ""
+"An interface to the popular UNIX audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:136
+msgid "Can't load the player library (%Q)"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:145
+msgid "Can't find symbol %s in %Q"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_amipinterface.cpp:108
+msgid ""
+"An interface to the AMIP plug-in.\n"
+"You can download it from http://amip.tools-for.net\n"
+"To use this interface you must install AMIP plug-in for your player."
 msgstr ""
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:65

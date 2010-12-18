@@ -94,9 +94,9 @@ extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
 
 KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 #ifdef COMPILE_ON_WINDOWS
-: KviWindow(KVI_WINDOW_TYPE_CONSOLE,lpFrm,"CONSOLE",0)
+: KviWindow(KVI_WINDOW_TYPE_CONSOLE,lpFrm,__tr2qs("CONSOLE"),0)
 #else
-: KviWindow(KVI_WINDOW_TYPE_CONSOLE,lpFrm,"CONSOLE",this)
+: KviWindow(KVI_WINDOW_TYPE_CONSOLE,lpFrm,__tr2qs("CONSOLE"),this)
 #endif
 {
 	m_pConsole = this;
