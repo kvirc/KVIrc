@@ -1522,10 +1522,15 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 		KviKvsScript::run(tmp.ptr(),m_pConsole);
 	}
 
+	bool bJoinStdChannels=true;
+	
 	if(target()->server()->m_pReconnectInfo)
 	{
 		if(!target()->server()->m_pReconnectInfo->m_szJoinChannels.isEmpty())
+		{
+			bJoinStdChannels=false;
 			sendFmtData("JOIN %s",encodeText(target()->server()->m_pReconnectInfo->m_szJoinChannels).data());
+		}
 
 		KviQuery * pQuery;
 
@@ -1559,7 +1564,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 		target()->server()->m_pReconnectInfo=0;
 	}
 	
-	if(true) //FIXME rejoining standard channels on reconnection, too
+	if(bJoinStdChannels)
 	{
 		if(target()->network()->autoJoinChannelList())
 		{
