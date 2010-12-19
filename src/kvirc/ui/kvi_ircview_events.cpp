@@ -651,16 +651,7 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 
 void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 {
-	bool bCursorOverMarker = false;
-	if(checkMarkerArea(m_lineMarkArea,e->pos()))
-	{
-		bCursorOverMarker = true;
-	}
-
-	if(bCursorOverMarker)
-		setCursor(Qt::PointingHandCursor);
-	else
-		setCursor(Qt::ArrowCursor);
+	bool bCursorOverMarker = checkMarkerArea(m_lineMarkArea,e->pos());
 
 	if(m_bMouseIsDown && (e->buttons() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
 	{
@@ -709,7 +700,6 @@ void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 		m_pLastLinkUnderMouse = newLinkUnderMouse;
 		if(m_pLastLinkUnderMouse)
 		{
-			setCursor(Qt::PointingHandCursor);
 			if(rectTop < 0)rectTop = 0;
 			if((rectTop + rectHeight) > height())rectHeight = height() - rectTop;
 
@@ -729,7 +719,6 @@ void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 			m_iLastLinkRectTop = rectTop;
 			m_iLastLinkRectHeight = rectHeight;
 		} else {
-			setCursor(Qt::ArrowCursor);
 			if(m_iLastLinkRectHeight > -1)
 			{
 				// There was a previous bottom rect
@@ -740,6 +729,11 @@ void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 			}
 		}
 	}
+
+	if(bCursorOverMarker || m_pLastLinkUnderMouse)
+		setCursor(Qt::PointingHandCursor);
+	else
+		setCursor(Qt::ArrowCursor);
 }
 
 void KviIrcView::leaveEvent(QEvent * )
