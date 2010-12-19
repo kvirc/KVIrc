@@ -412,7 +412,7 @@ void KviWindow::createCryptControllerButton(QWidget *)
 void KviWindow::createTextEncodingButton(QWidget * par)
 {
 	if(m_pTextEncodingButton)delete m_pTextEncodingButton;
-	m_pTextEncodingButton = createToolButton(par,"text_encoding_button",KVI_SMALLICON_TEXTENCODING,KVI_SMALLICON_TEXTENCODING,__tr2qs("Private Text Encoding"),false);
+	m_pTextEncodingButton = createToolButton(par,"text_encoding_button",KVI_SMALLICON_TEXTENCODING,KVI_SMALLICON_TEXTENCODING,__tr2qs("Text Encoding"),false);
 	connect(m_pTextEncodingButton,SIGNAL(clicked()),this,SLOT(textEncodingButtonClicked()));
 }
 

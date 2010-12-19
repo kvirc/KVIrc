@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kvirc_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-12-18 17:56+0100\n"
-"PO-Revision-Date: 2010-12-13 21:00+0600\n"
+"PO-Revision-Date: 2010-12-19 21:06+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -1458,14 +1458,12 @@ msgid "Balance"
 msgstr "О&тмена"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:269
-#, fuzzy
 msgid "Ban Exceptions"
-msgstr "Активные исключения из банов"
+msgstr "Редактор исключений из банов"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:268
-#, fuzzy
 msgid "Ban Masks"
-msgstr "Маска бана"
+msgstr "Редактор банов"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:792
 msgid "Ban exception listing"
@@ -3814,9 +3812,8 @@ msgid "Invisible (+i)"
 msgstr "Невидимый (+i)"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:265
-#, fuzzy
 msgid "Invite Exceptions"
-msgstr "Активные исключения из приглашений"
+msgstr "Редактор активных приглашений"
 
 #: src/kvirc/kernel/kvi_options.cpp:833
 msgid "Invite exception matching my mask"
@@ -5349,7 +5346,7 @@ msgstr "Приватный"
 
 #: src/kvirc/ui/kvi_window.cpp:415
 msgid "Private Text Encoding"
-msgstr "Кодировка приватов"
+msgstr "Кодировка текста"
 
 #: src/kvirc/ui/kvi_console.cpp:350
 msgid "Probably Away"
