@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: kvirc_defscript_it 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-12-18 17:56+0100\n"
-"PO-Revision-Date: 2010-07-29 18:15+0200\n"
+"PO-Revision-Date: 2010-12-20 17:56+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/defscript/popups.kvs:541
@@ -216,19 +216,19 @@ msgstr "Rimuovi predefinito"
 
 #: data/defscript/popups.kvs:1343
 msgid "Close"
-msgstr ""
+msgstr "Chiudi"
 
 #: data/defscript/popups.kvs:1367
 msgid "Close All Dead Channels"
-msgstr ""
+msgstr "Chiudi Tutti I Canali Morti"
 
 #: data/defscript/popups.kvs:1373
 msgid "Close All Dead Queries"
-msgstr ""
+msgstr "Chiudi Tutti Le Query Morte"
 
 #: data/defscript/popups.kvs:1361
 msgid "Close All Queries"
-msgstr ""
+msgstr "Chiudi Tutte Le Query"
 
 #: data/defscript/popups.kvs:626
 msgid "Configure ban mask..."
@@ -261,7 +261,7 @@ msgstr "Predefinito"
 
 #: data/defscript/popups.kvs:1332
 msgid "Dock"
-msgstr ""
+msgstr "Aggancia"
 
 #: data/defscript/popups.kvs:383
 msgid "Edit Registration..."
@@ -397,11 +397,11 @@ msgstr "Maschera per"
 
 #: data/defscript/popups.kvs:1338
 msgid "Maximize"
-msgstr ""
+msgstr "Massimizza"
 
 #: data/defscript/popups.kvs:1337
 msgid "Minimize"
-msgstr ""
+msgstr "Minimizza"
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
@@ -454,9 +454,8 @@ msgid "Parameter message missing"
 msgstr "Parametro del messaggio mancante"
 
 #: data/defscript/popups.kvs:1355
-#, fuzzy
 msgid "Part All Channels"
-msgstr "Canali"
+msgstr "Esci Da Tutti I Canali"
 
 #: data/defscript/popups.kvs:350
 msgid "Quick Registration"
@@ -481,7 +480,7 @@ msgstr "Rimuovi dalla Notifica"
 
 #: data/defscript/popups.kvs:1339
 msgid "Restore"
-msgstr ""
+msgstr "Ripristina"
 
 #: data/defscript/popups.kvs:938
 msgid "Reverse Chat with"
@@ -520,9 +519,8 @@ msgid "Set as Default"
 msgstr "Imposta come Predefinito"
 
 #: data/defscript/popups.kvs:1349
-#, fuzzy
 msgid "Set window props as default"
-msgstr "Imposta come Predefinito"
+msgstr "Imposta le proprietà della finestra come predefinite"
 
 #: data/defscript/popups.kvs:24
 #: data/defscript/popups.kvs:88
@@ -581,20 +579,19 @@ msgstr "Sctivi /gnotice per aiuto"
 
 #: data/defscript/popups.kvs:1333
 msgid "Undock"
-msgstr ""
+msgstr "Sgancia"
 
 #: data/defscript/popups.kvs:1387
-#, fuzzy
 msgid "Unhighlight All Channels"
-msgstr "Evidenzia come"
+msgstr "Deseleziona Tutti I Canali"
 
 #: data/defscript/popups.kvs:1393
 msgid "Unhighlight All Queries"
-msgstr ""
+msgstr "Deseleziona Tutte Le Query"
 
 #: data/defscript/popups.kvs:1381
 msgid "Unhighlight All Windows"
-msgstr ""
+msgstr "Deseleziona Tutte Le Finestre"
 
 #: data/defscript/popups.kvs:312
 msgid "Unignore"
@@ -752,3 +749,4 @@ msgstr "y (y-Lines)"
 #: data/defscript/popups.kvs:836
 msgid "z (Debug Stats?)"
 msgstr "z (Statistiche Debug?)"
+

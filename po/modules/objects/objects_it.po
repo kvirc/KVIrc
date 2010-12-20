@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-12-18 17:56+0100\n"
-"PO-Revision-Date: 2010-09-12 20:34+0200\n"
+"PO-Revision-Date: 2010-12-20 18:15+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -306,32 +306,26 @@ msgid "Image parameter missing"
 msgstr "Parametri dell'immagine mancanti"
 
 #: src/modules/objects/libkviobjects.cpp:561
-#, fuzzy
 msgid "Inexistant class object for objects.name"
 msgstr "Oggetto classe inesistente per objects.name"
 
 #: src/modules/objects/libkviobjects.cpp:270
-#, fuzzy
 msgid "Inexistant source object for objects.connect"
 msgstr "Oggetto sorgente inesistente per objects.connect"
 
 #: src/modules/objects/libkviobjects.cpp:609
-#, fuzzy
 msgid "Inexistant source object for objects.disconnect"
 msgstr "Oggetto sorgente inesistente per objects.disconnect"
 
 #: src/modules/objects/libkviobjects.cpp:265
-#, fuzzy
 msgid "Inexistant target object for objects.connect"
 msgstr "Oggetto target inesistente per objects.connect"
 
 #: src/modules/objects/libkviobjects.cpp:604
-#, fuzzy
 msgid "Inexistant target object for objects.disconnect"
 msgstr "Oggetto target inesistente per objects.disconnect"
 
 #: src/modules/objects/libkviobjects.cpp:275
-#, fuzzy
 msgid "Inexistant target slot '%Q' for objects.connect"
 msgstr "Slot target '%Q' inesistente per objects.connect"
 
@@ -587,19 +581,16 @@ msgid "Pixmap parameter is not an object!"
 msgstr "Il parametro pixmap non è un oggetto!"
 
 #: src/modules/objects/class_popupmenu.cpp:312
-#, fuzzy
 msgid "Popup menu parameter is not a valid object"
-msgstr "Il parametro widget non è un oggetto valido"
+msgstr "Il parametro popup menu non è un oggetto valido"
 
 #: src/modules/objects/class_popupmenu.cpp:307
-#, fuzzy
 msgid "Popup menu parameter is not an object"
-msgstr "Il parametro buffer non è un oggetto"
+msgstr "Il parametro popup menu non è un oggetto"
 
 #: src/modules/objects/class_popupmenu.cpp:317
-#, fuzzy
 msgid "Popupmenu object required"
-msgstr "Oggetto pixmap richiesto"
+msgstr "Oggetto popupmenu richiesto"
 
 #: src/modules/objects/class_process.cpp:221
 msgid "Process could not be started."
@@ -799,7 +790,7 @@ msgstr "Proporzioni %Q sconosciute - Cambio a KeepAspectRatio"
 
 #: src/modules/objects/class_painter.cpp:1235
 msgid "Unknown axis '%Q' switching to default ZAxis"
-msgstr ""
+msgstr "Asse '%Q' sconosciuto, passo al predefinito ZAxis"
 
 #: src/modules/objects/class_painter.cpp:1501
 msgid "Unknown brush style '%Q'"

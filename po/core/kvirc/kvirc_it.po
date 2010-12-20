@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kvirc_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-12-18 17:56+0100\n"
-"PO-Revision-Date: 2010-10-20 14:21+0200\n"
+"PO-Revision-Date: 2010-12-20 18:07+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -308,9 +308,8 @@ msgid "%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 msgstr "%c\r!n\r%Q\r%c era %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1535
-#, fuzzy
 msgid "%c\r!n\r%Q\r%c's actual user@host: %Q, actual ip: %Q"
-msgstr "La codifica di %c\r!n\r%Q\r%c è %Q: %Q"
+msgstr "%c\r!n\r%Q\r%c user@host attuale: %Q, IP attuale: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1365
 msgid "%c\r!n\r%Q\r%c's channels: %Q"
@@ -870,6 +869,15 @@ msgid ""
 "the new default script for you.<br><b>Do you want the default script to be "
 "restored?</b><br><br>"
 msgstr ""
+"<b>Ciao!</b><br><br><br>Sembra che tu abbia appena aggiornato KVIrc da una "
+"versione precedente.</b><br><br>Lo script predefinito di KVIrc necessita di "
+"essere aggiornato, per poter funzionare meglio col tuo nuovo KVIrc.<br>"
+"Potresti voler evitare questo passaggio se intendi tornare a una vecchia "
+"versione di KVIrc, o se hai creato un po' di script personalizzati e vuoi "
+"essere sicuro di evitare cancellazioni o sovrascritture.<br>Se vuoi "
+"aggiornare gli script predefiniti, posso ripristinare il nuovo script "
+"predefinito per te.<br><br>Vuoi aggiornare gli script predefiniti?</b><br><"
+"br>"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:90
 msgid "<b>KVIrc</b>"
@@ -1026,7 +1034,6 @@ msgstr ""
 "sei indeciso su quale opzione scegliere, usa quellla predefinita.</p>"
 
 #: src/modules/setup/setupwizard.cpp:218
-#, fuzzy
 msgid ""
 "<p>Please choose a folder for KVIrc to store its settings and other data, "
 "and another for downloaded files. Make sure that you have permission to "
@@ -1037,7 +1044,8 @@ msgid ""
 "preserved.</p>"
 msgstr ""
 "<p>Scegli una directory per la configurazione di KVIrc, e un'altra per i "
-"file scaricati.<br><br>I percorsi suggeriti vanno bene in molti casi, quindi "
+"file scaricati. Assicurati di avere i permessi di scrittura in entrambe le "
+"directory.<br><br>I percorsi suggeriti vanno bene in molti casi, quindi "
 "se non sai di cosa si sta parlando, premi semplicemente \"<b>Prossimo</b>\"."
 "<br><br>Se hai avuto una precedente versione di KVIrc, puoi scegliere la "
 "directory esistente per la configurazione, e la tua configurazione verrà "
@@ -1463,9 +1471,8 @@ msgid "Ban unexception matching my mask"
 msgstr "La limitazione del Ban combacia con la mia maschera"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:474
-#, fuzzy
 msgid "Bandwidth Saver"
-msgstr "Salvatore di Banda"
+msgstr "Risparmiatore di Banda"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3043
 msgid "Bass"
@@ -1590,7 +1597,7 @@ msgstr "C&ase sensitive"
 
 #: src/kvirc/ui/kvi_console.cpp:97 src/kvirc/ui/kvi_console.cpp:99
 msgid "CONSOLE"
-msgstr ""
+msgstr "CONSOLE"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1498
 msgid "CTCP ACTION from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -2185,7 +2192,7 @@ msgstr "Pulisci La Lista Dei Server Recenti"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:393
 msgid "Clear custom scripts"
-msgstr ""
+msgstr "Cancella script personali"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:845
 msgid "Click to open this link"
@@ -3256,9 +3263,8 @@ msgid "Forward"
 msgstr "Successiva"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:351
-#, fuzzy
 msgid "Forward to another channel on uninvited"
-msgstr "Avanza verso un altro canale su disinvito"
+msgstr "Manda verso un altro canale su disinvito"
 
 #: src/modules/help/helpwindow.cpp:216 src/modules/help/helpwindow.cpp:225
 msgid "Full Text Search"
@@ -3467,6 +3473,10 @@ msgid ""
 "Please ensure the directory exists and that you have the proper permissions "
 "before continue, or any custom configuration will be lost."
 msgstr ""
+"Non posso scrivere sul file di configurazione principale:\n"
+"\t%1\n"
+"Assicurati che la directory esista e che tu abbia i giusti permessi prima di "
+"continuare, o tutte le configurazioni fatte andranno perse."
 
 #: src/modules/iograph/libkviiograph.cpp:73
 msgid "I/O Traffic Graph"
@@ -3963,9 +3973,8 @@ msgid "KVIrc messaging system"
 msgstr "Sistema di messaggistica KVIrc"
 
 #: src/kvirc/kernel/kvi_options.cpp:952
-#, fuzzy
 msgid "KVIrc warning"
-msgstr "Avviso generico "
+msgstr "Avviso di KVIrc"
 
 #: src/kvilib/core/kvi_error.cpp:93
 msgid "Kernel networking panic"
@@ -5744,9 +5753,8 @@ msgid "Restore Default Script - KVIrc"
 msgstr "Ripristina Script predefiniti - KVIrc"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:117
-#, fuzzy
 msgid "Restore Default Script - Warning"
-msgstr "Ripristina Script Predefiniti - Errore"
+msgstr "Ripristina Script Predefiniti - Attenzione"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1911
 msgid "Restoring pre-away nickname (%Q)"
@@ -7468,9 +7476,8 @@ msgid "Update Indicator"
 msgstr "Indicatore Aggiornamenti"
 
 #: src/kvirc/kernel/kvi_app.cpp:809
-#, fuzzy
 msgid "Update default scripts"
-msgstr "Ripristina Script pre&definiti"
+msgstr "Aggiorna Script predefiniti"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:841
 msgid "Update failed"
@@ -7572,14 +7579,12 @@ msgid "Using cached server IP address (%s)"
 msgstr "Uso l'indirizzo IP del Server che ho in memoria (%s)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1184
-#, fuzzy
 msgid "Using connection specific nickname (%Q)"
-msgstr "Uso il nickname specificato per la rete (%Q)"
+msgstr "Uso il nickname specificato per la connessione (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1243
-#, fuzzy
 msgid "Using connection specific password (%Q)"
-msgstr "Uso la password specificata per la rete (%s)"
+msgstr "Uso la password specificata per la connessione (%Q)"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:137
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
@@ -7590,9 +7595,8 @@ msgid "Using network specific nickname (%Q)"
 msgstr "Uso il nickname specificato per la rete (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1261
-#, fuzzy
 msgid "Using network specific password (%Q)"
-msgstr "Uso la password specificata per la rete (%s)"
+msgstr "Uso la password specificata per la rete (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1224
 msgid "Using network specific real name (%Q)"
@@ -7611,9 +7615,8 @@ msgid "Using server specific nickname (%Q)"
 msgstr "Uso il nickname specificato per il Server (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1252
-#, fuzzy
 msgid "Using server specific password (%Q)"
-msgstr "Uso la password specificata per il server (%s)"
+msgstr "Uso la password specificata per il server (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1218
 msgid "Using server specific real name (%Q)"
@@ -7816,7 +7819,6 @@ msgid "Yes, always"
 msgstr "Sì sempre"
 
 #: src/kvirc/kernel/kvi_defaultscript.cpp:377
-#, fuzzy
 msgid ""
 "You are about to restore the default script.\n"
 "Any script changes you have made will be erased if you\n"

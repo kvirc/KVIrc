@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kvs_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-12-18 17:56+0100\n"
-"PO-Revision-Date: 2010-09-12 20:30+0200\n"
+"PO-Revision-Date: 2010-12-20 18:09+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -117,7 +117,6 @@ msgid "Can't delete a null object reference"
 msgstr "Non posso cancellare una referenza a un oggetto nullo"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:900
-#, fuzzy
 msgid "Can't delete an inexistant object"
 msgstr "Non posso cancellare un oggetto inesistente"
 
@@ -290,9 +289,8 @@ msgstr ""
 "Errore nella chiamata '%Q' interna alla funzione, chiamata da questo contesto"
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:563
-#, fuzzy
 msgid "Error retrieving information from the local certificate"
-msgstr "Errore nel prendere le informazioni dal certificato locale"
+msgstr "Errore nel recuperare le informazioni dal certificato locale"
 
 #: src/kvirc/kvs/kvi_kvs_processmanager.cpp:215
 msgid "Error triggered from process callback handler: killing process"
@@ -480,7 +478,7 @@ msgstr "Indirizzo IP %s: %Q"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:327
 msgid "Injected incoming data: %1"
-msgstr ""
+msgstr "Dati iniettati in arrivo: %1"
 
 #: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:83
 msgid "Internal error: pure virtual evaluateReadOnly called"
@@ -1246,6 +1244,8 @@ msgstr "La finestra specificata non ha contenitore per pulsanti"
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:403
 msgid "The system handler for the url failed to execute: system error is %1"
 msgstr ""
+"Il gestore degli url di sistema ha fallito nell'esecuzione: l'errore di "
+"sistema è %1"
 
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:153
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:204
@@ -1345,7 +1345,6 @@ msgid "Unable to add the timer: insufficient system resources"
 msgstr "Impossibile aggiungere il timer: risorse del sistema insufficienti"
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:571
-#, fuzzy
 msgid "Unable to get certificate information: query not recognized"
 msgstr ""
 "Impossibile prendere le informazioni del certificato: query non riconosciuta"
