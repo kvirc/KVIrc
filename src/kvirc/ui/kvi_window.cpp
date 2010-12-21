@@ -1345,12 +1345,12 @@ void KviWindow::preprocessMessage(QString & szMessage)
 	QStringList strings = szMessage.split(" ");
 	for ( QStringList::Iterator it = strings.begin(); it != strings.end(); ++it )
 	{
+		if(it->contains('\r'))
+			continue;
 		QString tmp(*it);
 		tmp = KviMircCntrl::stripControlBytes(tmp).trimmed();
 		if(tmp.length() < 1)
 			continue;
-		if(tmp.contains('\r'))
-			return;
 		if(m_pConsole->connection()->serverInfo()->supportedChannelTypes().contains(tmp[0]))
 		{
 			if((*it)==tmp)

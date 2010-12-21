@@ -1843,11 +1843,11 @@ void KviChannel::preprocessMessage(QString & szMessage)
 	QStringList strings = szMessage.split(" ",QString::KeepEmptyParts);
 	for(QStringList::Iterator it = strings.begin(); it != strings.end(); ++it)
 	{
-		QString szTmp = KviMircCntrl::stripControlBytes(*it).trimmed();
-		if(szTmp.length() < 1)
+		if(it->contains('\r'))
 			continue;
 
-		if(szTmp.contains('\r'))
+		QString szTmp = KviMircCntrl::stripControlBytes(*it).trimmed();
+		if(szTmp.length() < 1)
 			continue;
 
 		// FIXME: Do we REALLY need this ?
