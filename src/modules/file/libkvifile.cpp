@@ -484,12 +484,19 @@ static bool file_kvs_cmd_rmdir(KviKvsModuleCommandCall * c)
 	@title:
 		$file.exists
 	@short:
-		Check if a file exists
+		Check if a file or directory exists
 	@syntax:
-		<boolean> $file.exists(<filename:string>)
+		<boolean> $file.exists(<file or directory path:string>)
 	@description:
-		Returns true if the file <filename> exists (this is also valid for directories!).[br]
-		The <filename> should be an unix-style file path and is adjusted according to the system that KVIrc is running on.[br]
+		Returns true if the specified file or directory exists.[br]
+		The path should be given in UNIX-style and is adjusted according to the system that KVIrc is running on.[br]
+	@examples:
+		[example]
+			# Windows
+			echo $file.exists(c:/windows/notepad.exe);
+			# Linux, other unixes
+			echo $file.exists(/etc/passwd);
+		[/example]
 */
 static bool file_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 {
@@ -566,11 +573,12 @@ static bool file_kvs_fnc_size(KviKvsModuleFunctionCall * c)
 	@title:
 		$file.allSizes
 	@short:
-		Returns all sizes of a specified directory.
+		Returns the size of each file in a specified directory.
 	@syntax:
 	<array> $file.allSize(<dirname:string>)
 	@description:
-	Returns the size of every files of the specified directory as an array.[br]
+	Returns the size of each file in a specified directory as an array.[br]
+	This function is not recursive: it wont return the size of files in subdirectories of <dirname>.
 */
 static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
 {
