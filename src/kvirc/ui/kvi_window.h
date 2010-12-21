@@ -312,10 +312,7 @@ protected slots:
 	void cryptControllerFinished();   // same as above
 	void cryptSessionInfoDestroyed(); //  same as above
 	void textEncodingButtonClicked();
-	void systemTextEncodingPopupSmartActivated(int id);
-	void systemTextEncodingPopupSmartUtf8Activated(int id);
-	void systemTextEncodingPopupStandardActivated(int id);
-	void systemTextEncodingPopupDefault();
+	void systemTextEncodingPopupActivated(QAction *pAction);
 	void childDestroyed();
 signals:
 	void windowNameChanged();

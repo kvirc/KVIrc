@@ -43,12 +43,15 @@ namespace KviLocale
 		const char * szName;
 		char   bSmart; // is it a smart codec ?
 		char   bSendUtf8; // does it send utf8 or the local charset ?
+		uint   uGroup; // group 
 		const char * szDescription;
 	} EncodingDescription;
 
 	// you MUST start iterating from 0 and terminate when
 	// you get an entry with a NULL szName
 	KVILIB_API EncodingDescription * encodingDescription(int iIdx);
+	KVILIB_API uint encodingGroups();
+	KVILIB_API const char * encodingGroup(int iIdx);
 	KVILIB_API QTextCodec * codecForName(const char * szName);
 	KVILIB_API const KviStr & localeName();
 	KVILIB_API bool findCatalogue(QString &szBuffer,const QString& name,const QString& szLocaleDir);

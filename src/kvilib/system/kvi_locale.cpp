@@ -608,146 +608,192 @@ namespace KviLocale
 {
 #ifndef QT_NO_BIG_CODECS
 	#define NUM_ENCODINGS 109
+	#define NUM_ENCODING_GROUPS 8
 #else
 	#define NUM_ENCODINGS 85
+	#define NUM_ENCODING_GROUPS 5
 #endif
+
+	static const char * encoding_groups[] = 
+	{
+		"Unicode",
+		"West European",
+		"East European",
+		"Cyrillic",
+		"Middle Eastern",
+#ifndef QT_NO_BIG_CODECS
+		"Chinese",
+		"Japanese",
+		"Other asiatic",
+#endif
+		0
+	};
 
 	static EncodingDescription supported_encodings[]=
 	{
-		{ "UTF-8"                , 0 , 0 , "8-bit Unicode" },
-		{ "ISO-8859-1"           , 0 , 0 , "Western, Latin-1" },
-		{ "ISO-8859-2"           , 0 , 0 , "Central European 1" },
-		{ "ISO-8859-3"           , 0 , 0 , "Central European 2" },
-		{ "ISO-8859-4"           , 0 , 0 , "Baltic, Standard" },
-		{ "ISO-8859-5"           , 0 , 0 , "Cyrillic, ISO" },
-		{ "ISO-8859-6"           , 0 , 0 , "Arabic, Standard" },
-		{ "ISO-8859-7"           , 0 , 0 , "Greek" },
-		{ "ISO-8859-8"           , 0 , 0 , "Hebrew, visually ordered" },
-		{ "ISO-8859-8-i"         , 0 , 0 , "Hebrew, logically ordered" },
-		{ "ISO-8859-9"           , 0 , 0 , "Turkish, Latin-5" },
-		{ "ISO-8859-15"          , 0 , 0 , "Western, Latin-1 + Euro" },
-		{ "KOI8-R"               , 0 , 0 , "Cyrillic, KOI" },
-		{ "KOI8-U"               , 0 , 0 , "Ukrainian" },
-		{ "CP-1250"              , 0 , 0 , "Central European 3" },
-		{ "CP-1251"              , 0 , 0 , "Cyrillic, Windows" },
-		{ "CP-1252"              , 0 , 0 , "Western, CP" },
-		{ "CP-1253"              , 0 , 0 , "Greek, CP" },
-		{ "CP-1256"              , 0 , 0 , "Arabic, CP" },
-		{ "CP-1257"              , 0 , 0 , "Baltic, CP" },
-		{ "CP-1255"              , 0 , 0 , "Hebrew, CP" },
-		{ "CP-1254"              , 0 , 0 , "Turkish, CP" },
-		{ "TIS-620"              , 0 , 0 , "Thai" },
+		// Unicode
+		{ "UTF-8"                , 0 , 0 , 0, "8-bit Unicode" },
+		// West European
+		{ "ISO-8859-1"           , 0 , 0 , 1, "Western, Latin-1" },
+		{ "ISO-8859-15"          , 0 , 0 , 1, "Western, Latin-1 + Euro" },
+		{ "IBM-850"              , 0 , 0 , 1, "IBM-850" },
+		{ "CP-1252"              , 0 , 0 , 1, "Western Codepage" },
+		{ "ISO-8859-14"          , 0 , 0 , 1, "Celtic" },
+		{ "ISO-8859-7"           , 0 , 0 , 1, "Greek" },
+		{ "CP-1253"              , 0 , 0 , 1, "Greek Codepage" },
+		{ "ISO-8859-10"          , 0 , 0 , 1, "Nordic" },
+		{ "ISO-8859-3"           , 0 , 0 , 1, "South European" },
+		// East European
+		{ "ISO-8859-4"           , 0 , 0 , 2, "Baltic, Standard" },
+		{ "ISO-8859-13"          , 0 , 0 , 2, "Baltic" },
+		{ "CP-1257"              , 0 , 0 , 2, "Baltic Codepage" },
+		{ "ISO-8859-2"           , 0 , 0 , 2, "Central European" },
+		{ "CP-1250"              , 0 , 0 , 2, "Central European Codepage" },
+		{ "ISO-8859-9"           , 0 , 0 , 2, "Turkish, Latin-5" },
+		{ "CP-1254"              , 0 , 0 , 2, "Turkish Codepage" },
+		// Cyrillic
+		{ "ISO-8859-5"           , 0 , 0 , 3, "Cyrillic, ISO" },
+		{ "CP-1251"              , 0 , 0 , 3, "Cyrillic Codepage" },
+		{ "KOI8-R"               , 0 , 0 , 3, "Cyrillic, KOI" },
+		{ "KOI8-U"               , 0 , 0 , 3, "Cyrillic/Ukrainian" },
+		{ "IBM-866"              , 0 , 0 , 3, "IBM-866" },
+		// Middle Eastern
+		{ "ISO-8859-6"           , 0 , 0 , 4, "Arabic, Standard" },
+		{ "CP-1256"              , 0 , 0 , 4, "Arabic Codepage" },
+		{ "ISO-8859-8"           , 0 , 0 , 4, "Hebrew, visually ordered" },
+		{ "ISO-8859-8-i"         , 0 , 0 , 4, "Hebrew, logically ordered" },
+		{ "CP-1255"              , 0 , 0 , 4, "Hebrew Codepage" },
+		// Other asiatic
+		{ "TIS-620"              , 0 , 0 , 7, "Thai" },
+		{ "CP874"                , 0 , 0 , 7, "Thai Codepage" },
 #ifndef QT_NO_BIG_CODECS
-		{ "Big5"                 , 0 , 0 , "Chinese Traditional" },
-		{ "Big5-HKSCS"           , 0 , 0 , "Chinese Traditional, Hong Kong" },
-		{ "GB18030"              , 0 , 0 , "Chinese Simplified" },
-		{ "JIS7"                 , 0 , 0 , "Japanese (JIS7)" },
-		{ "Shift-JIS"            , 0 , 0 , "Japanese (Shift-JIS)" },
-		{ "EUC-JP"               , 0 , 0 , "Japanese (EUC-JP)" },
-		{ "EUC-KR"               , 0 , 0 , "Korean" },
-		{ "TSCII"                , 0 , 0 , "Tamil" },
+		// Chinese
+		{ "Big5"                 , 0 , 0 , 5, "Chinese Traditional" },
+		{ "Big5-HKSCS"           , 0 , 0 , 5, "Chinese Traditional, Hong Kong" },
+		{ "GB18030"              , 0 , 0 , 5, "Chinese Simplified" },
+		// Japanese
+		{ "JIS7"                 , 0 , 0 , 6, "Japanese (JIS7)" },
+		{ "Shift-JIS"            , 0 , 0 , 6, "Japanese (Shift-JIS)" },
+		{ "EUC-JP"               , 0 , 0 , 6, "Japanese (EUC-JP)" },
+		// Other asiatic
+		{ "EUC-KR"               , 0 , 0 , 7, "Korean" },
+		{ "TSCII"                , 0 , 0 , 7, "Tamil" },
 #endif
-		{ "ISO-8859-10"          , 0 , 0 , "ISO-8859-10" },
-		{ "ISO-8859-13"          , 0 , 0 , "ISO-8859-13" },
-		{ "ISO-8859-14"          , 0 , 0 , "ISO-8859-14" },
-		{ "IBM-850"              , 0 , 0 , "IBM-850" },
-		{ "IBM-866"              , 0 , 0 , "IBM-866" },
-		{ "CP874"                , 0 , 0 , "CP874" },
-
+		
 		// smart codecs that send in the local charset
-		{ "ISO-8859-1 [UTF-8]"     , 1 , 0 , "I: 8-bit Unicode / Western Latin-1, O: Western Latin-1" },
-		{ "ISO-8859-2 [UTF-8]"     , 1 , 0 , "I: 8-bit Unicode / Central European 1, O: Central European 1" },
-		{ "ISO-8859-3 [UTF-8]"     , 1 , 0 , "I: 8-bit Unicode / Central European 2, O: Central European 2" },
-		{ "ISO-8859-4 [UTF-8]"     , 1 , 0 , "I: 8-bit Unicode / Baltic, Standard, O: Baltic, Standard" },
-		{ "ISO-8859-5 [UTF-8]"     , 1 , 0 , "I: 8-bit Unicode / Cyrillic, ISO, O: Cyrillic, ISO" },
-		{ "ISO-8859-6 [UTF-8]"     , 1 , 0 , "I: 8-bit Unicode / Arabic, Standard, O: Arabic, Standard" },
-		{ "ISO-8859-7 [UTF-8]"     , 1 , 0 , "I: 8-bit Unicode / Greek, O: Greek" },
-		{ "ISO-8859-8 [UTF-8]"     , 1 , 0 , "I: 8-bit Unicode / Hebrew, visually ordered, O: Hebrew, visually ordered" },
-		{ "ISO-8859-8-i [UTF-8]"   , 1 , 0 , "I: 8-bit Unicode / Hebrew, logically ordered, O: Hebrew, logically ordered" },
-		{ "ISO-8859-9 [UTF-8]"     , 1 , 0 , "I: 8-bit Unicode / Turkish, Latin-5, O: Turkish, Latin-5" },
-		{ "ISO-8859-15 [UTF-8]"    , 1 , 0 , "I: 8-bit Unicode / Western, Latin-1 + Euro, O: Western, Latin-1 + Euro" },
-		{ "KOI8-R [UTF-8]"         , 1 , 0 , "I: 8-bit Unicode / Cyrillic, KOI, O: Cyrillic, KOI" },
-		{ "KOI8-U [UTF-8]"         , 1 , 0 , "I: 8-bit Unicode / Ukrainian, O: Ukrainian" },
-		{ "CP-1250 [UTF-8]"        , 1 , 0 , "I: 8-bit Unicode / Central European 3, O: Central European 3" },
-		{ "CP-1251 [UTF-8]"        , 1 , 0 , "I: 8-bit Unicode / Cyrillic, Windows, O: Cyrillic, Windows" },
-		{ "CP-1252 [UTF-8]"        , 1 , 0 , "I: 8-bit Unicode / Western, CP, O: Western, CP" },
-		{ "CP-1253 [UTF-8]"        , 1 , 0 , "I: 8-bit Unicode / Greek, CP, O: Greek, CP" },
-		{ "CP-1256 [UTF-8]"        , 1 , 0 , "I: 8-bit Unicode / Arabic, CP, O: Arabic, CP" },
-		{ "CP-1257 [UTF-8]"        , 1 , 0 , "I: 8-bit Unicode / Baltic, CP, O: Baltic, CP" },
-		{ "CP-1255 [UTF-8]"        , 1 , 0 , "I: 8-bit Unicode / Hebrew, CP, O: Hebrew, CP" },
-		{ "CP-1254 [UTF-8]"        , 1 , 0 , "I: 8-bit Unicode / Turkish, CP, O: Turkish, CP" },
-		{ "TIS-620 [UTF-8]"        , 1 , 0 , "I: 8-bit Unicode / Thai, O: Thai" },
+		// West European
+		{ "ISO-8859-1 [UTF-8]"   , 1 , 0 , 1, "Western, Latin-1 - Unicode" },
+		{ "ISO-8859-15 [UTF-8]"  , 1 , 0 , 1, "Western, Latin-1 + Euro - Unicode" },
+		{ "IBM-850 [UTF-8]"      , 1 , 0 , 1, "IBM-850 - Unicode" },
+		{ "CP-1252 [UTF-8]"      , 1 , 0 , 1, "Western Codepage - Unicode" },
+		{ "ISO-8859-14 [UTF-8]"  , 1 , 0 , 1, "Celtic - Unicode" },
+		{ "ISO-8859-7 [UTF-8]"   , 1 , 0 , 1, "Greek - Unicode" },
+		{ "CP-1253 [UTF-8]"      , 1 , 0 , 1, "Greek Codepage - Unicode" },
+		{ "ISO-8859-10 [UTF-8]"  , 1 , 0 , 1, "Nordic - Unicode" },
+		{ "ISO-8859-3 [UTF-8]"   , 1 , 0 , 1, "South European - Unicode" },
+		// East European
+		{ "ISO-8859-4 [UTF-8]"   , 1 , 0 , 2, "Baltic, Standard - Unicode" },
+		{ "ISO-8859-13 [UTF-8]"  , 1 , 0 , 2, "Baltic - Unicode" },
+		{ "CP-1257 [UTF-8]"      , 1 , 0 , 2, "Baltic Codepage - Unicode" },
+		{ "ISO-8859-2 [UTF-8]"   , 1 , 0 , 2, "Central European - Unicode" },
+		{ "CP-1250 [UTF-8]"      , 1 , 0 , 2, "Central European Codepage - Unicode" },
+		{ "ISO-8859-9 [UTF-8]"   , 1 , 0 , 2, "Turkish, Latin-5 - Unicode" },
+		{ "CP-1254 [UTF-8]"      , 1 , 0 , 2, "Turkish Codepage - Unicode" },
+		// Cyrillic
+		{ "ISO-8859-5 [UTF-8]"   , 1 , 0 , 3, "Cyrillic, ISO - Unicode" },
+		{ "CP-1251 [UTF-8]"      , 1 , 0 , 3, "Cyrillic Codepage - Unicode" },
+		{ "KOI8-R [UTF-8]"       , 1 , 0 , 3, "Cyrillic, KOI - Unicode" },
+		{ "KOI8-U [UTF-8]"       , 1 , 0 , 3, "Cyrillic/Ukrainian - Unicode" },
+		{ "IBM-866 [UTF-8]"      , 1 , 0 , 3, "IBM-866 - Unicode" },
+		// Middle Eastern
+		{ "ISO-8859-6 [UTF-8]"   , 1 , 0 , 4, "Arabic, Standard - Unicode" },
+		{ "CP-1256 [UTF-8]"      , 1 , 0 , 4, "Arabic Codepage - Unicode" },
+		{ "ISO-8859-8 [UTF-8]"   , 1 , 0 , 4, "Hebrew, visually ordered - Unicode" },
+		{ "ISO-8859-8-i [UTF-8]" , 1 , 0 , 4, "Hebrew, logically ordered - Unicode" },
+		{ "CP-1255 [UTF-8]"      , 1 , 0 , 4, "Hebrew Codepage - Unicode" },
+		// Other asiatic
+		{ "TIS-620 [UTF-8]"      , 1 , 0 , 7, "Thai - Unicode" },
+		{ "CP874 [UTF-8]"        , 1 , 0 , 7, "Thai Codepage - Unicode" },
 #ifndef QT_NO_BIG_CODECS
-		{ "Big5 [UTF-8]"           , 1 , 0 , "I: 8-bit Unicode / Chinese Traditional, O: Chinese Traditional" },
-		{ "Big5-HKSCS [UTF-8]"     , 1 , 0 , "I: 8-bit Unicode / Chinese Traditional, Hong Kong, O: Chinese Traditional, Hong Kong" },
-		{ "GB18030 [UTF-8]"        , 1 , 0 , "I: 8-bit Unicode / Chinese Simplified, O: Chinese Simplified" },
-		{ "JIS7 [UTF-8]"           , 1 , 0 , "I: 8-bit Unicode / Japanese (JIS7), O: Japanese " },
-		{ "Shift-JIS [UTF-8]"      , 1 , 0 , "I: 8-bit Unicode / Japanese (Shift-JIS), O: Japanese (Shift-JIS)" },
-		{ "EUC-JP [UTF-8]"         , 1 , 0 , "I: 8-bit Unicode / Japanese (EUC-JP), O: Japanese (EUC-JP)" },
-		{ "EUC-KR [UTF-8]"         , 1 , 0 , "I: 8-bit Unicode / Korean, O: Korean" },
-		{ "TSCII [UTF-8]"          , 1 , 0 , "I: 8-bit Unicode / Tamil, O: Tamil" },
+		// Chinese
+		{ "Big5 [UTF-8]"         , 1 , 0 , 5, "Chinese Traditional - Unicode" },
+		{ "Big5-HKSCS [UTF-8]"   , 1 , 0 , 5, "Chinese Traditional, Hong Kong - Unicode" },
+		{ "GB18030 [UTF-8]"      , 1 , 0 , 5, "Chinese Simplified - Unicode" },
+		// Japanese
+		{ "JIS7 [UTF-8]"         , 1 , 0 , 6, "Japanese (JIS7) - Unicode" },
+		{ "Shift-JIS [UTF-8]"    , 1 , 0 , 6, "Japanese (Shift-JIS) - Unicode" },
+		{ "EUC-JP [UTF-8]"       , 1 , 0 , 6, "Japanese (EUC-JP) - Unicode" },
+		// Other asiatic
+		{ "EUC-KR [UTF-8]"       , 1 , 0 , 7, "Korean - Unicode" },
+		{ "TSCII [UTF-8]"        , 1 , 0 , 7, "Tamil - Unicode" },
 #endif
-		{ "ISO-8859-10 [UTF-8]"    , 1 , 0 , "I: 8-bit Unicode / ISO-8859-10, O: ISO-8859-10" },
-		{ "ISO-8859-13 [UTF-8]"    , 1 , 0 , "I: 8-bit Unicode / ISO-8859-13, O: ISO-8859-13" },
-		{ "ISO-8859-14 [UTF-8]"    , 1 , 0 , "I: 8-bit Unicode / ISO-8859-14, O: ISO-8859-14" },
-		{ "IBM-850 [UTF-8]"        , 1 , 0 , "I: 8-bit Unicode / IBM-850, O: IBM-850" },
-		{ "IBM-866 [UTF-8]"        , 1 , 0 , "I: 8-bit Unicode / IBM-866, O: IBM-866" },
-		{ "CP874 [UTF-8]"          , 1 , 0 , "I: 8-bit Unicode / CP874, O: CP874" },
 
 		// smart codecs that send in utf8
-		{ "UTF-8 [ISO-8859-1]"     , 1 , 1 , "I: 8-bit Unicode / Western Latin-1, O: 8-bit Unicode" },
-		{ "UTF-8 [ISO-8859-2]"     , 1 , 1 , "I: 8-bit Unicode / Central European 1, O: 8-bit Unicode" },
-		{ "UTF-8 [ISO-8859-3]"     , 1 , 1 , "I: 8-bit Unicode / Central European 2, O: 8-bit Unicode" },
-		{ "UTF-8 [ISO-8859-4]"     , 1 , 1 , "I: 8-bit Unicode / Baltic, Standard, O: 8-bit Unicode" },
-
-		{ "UTF-8 [ISO-8859-5]"     , 1 , 1 , "I: 8-bit Unicode / Cyrillic, ISO, O: 8-bit Unicode" },
-		{ "UTF-8 [ISO-8859-6]"     , 1 , 1 , "I: 8-bit Unicode / Arabic, Standard, O: 8-bit Unicode" },
-		{ "UTF-8 [ISO-8859-7]"     , 1 , 1 , "I: 8-bit Unicode / Greek, O: 8-bit Unicode" },
-		{ "UTF-8 [ISO-8859-8]"     , 1 , 1 , "I: 8-bit Unicode / Hebrew, visually ordered, O: 8-bit Unicode" },
-
-		{ "UTF-8 [ISO-8859-8-i]"   , 1 , 1 , "I: 8-bit Unicode / Hebrew, logically ordered, O: 8-bit Unicode" },
-		{ "UTF-8 [ISO-8859-9]"     , 1 , 1 , "I: 8-bit Unicode / Turkish, Latin-5, O: 8-bit Unicode" },
-		{ "UTF-8 [ISO-8859-15]"    , 1 , 1 , "I: 8-bit Unicode / Western, Latin-1 + Euro, O: 8-bit Unicode" },
-		{ "UTF-8 [KOI8-R]"         , 1 , 1 , "I: 8-bit Unicode / Cyrillic, KOI, O: 8-bit Unicode" },
-
-		{ "UTF-8 [KOI8-U]"         , 1 , 1 , "I: 8-bit Unicode / Ukrainian, O: 8-bit Unicode" },
-		{ "UTF-8 [CP-1250]"        , 1 , 1 , "I: 8-bit Unicode / Central European 3, O: 8-bit Unicode" },
-		{ "UTF-8 [CP-1251]"        , 1 , 1 , "I: 8-bit Unicode / Cyrillic, Windows, O: 8-bit Unicode" },
-		{ "UTF-8 [CP-1252]"        , 1 , 1 , "I: 8-bit Unicode / Western, CP, O: 8-bit Unicode" },
-
-		{ "UTF-8 [CP-1253]"        , 1 , 1 , "I: 8-bit Unicode / Greek, CP, O: 8-bit Unicode" },
-		{ "UTF-8 [CP-1256]"        , 1 , 1 , "I: 8-bit Unicode / Arabic, CP, O: 8-bit Unicode" },
-		{ "UTF-8 [CP-1257]"        , 1 , 1 , "I: 8-bit Unicode / Baltic, CP, O: 8-bit Unicode" },
-		{ "UTF-8 [CP-1255]"        , 1 , 1 , "I: 8-bit Unicode / Hebrew, CP, O: 8-bit Unicode" },
-
-		{ "UTF-8 [CP-1254]"        , 1 , 1 , "I: 8-bit Unicode / Turkish, CP, O: 8-bit Unicode" },
-		{ "UTF-8 [TIS-620]"        , 1 , 1 , "I: 8-bit Unicode / Thai, O: 8-bit Unicode" },
+		// West European
+		{ "UTF-8 [ISO-8859-1]"   , 1 , 1 , 1, "Unicode - Western, Latin-1" },
+		{ "UTF-8 [ISO-8859-15]"  , 1 , 1 , 1, "Unicode - Western, Latin-1 + Euro" },
+		{ "UTF-8 [IBM-850]"      , 1 , 1 , 1, "Unicode - IBM-850" },
+		{ "UTF-8 [CP-1252]"      , 1 , 1 , 1, "Unicode - Western Codepage" },
+		{ "UTF-8 [ISO-8859-14]"  , 1 , 1 , 1, "Unicode - Celtic" },
+		{ "UTF-8 [ISO-8859-7]"   , 1 , 1 , 1, "Unicode - Greek" },
+		{ "UTF-8 [CP-1253]"      , 1 , 1 , 1, "Unicode - Greek Codepage" },
+		{ "UTF-8 [ISO-8859-10]"  , 1 , 1 , 1, "Unicode - Nordic" },
+		{ "UTF-8 [ISO-8859-3]"   , 1 , 1 , 1, "Unicode - South European" },
+		// East European
+		{ "UTF-8 [ISO-8859-4]"   , 1 , 1 , 2, "Unicode - Baltic, Standard" },
+		{ "UTF-8 [ISO-8859-13]"  , 1 , 1 , 2, "Unicode - Baltic" },
+		{ "UTF-8 [CP-1257]"      , 1 , 1 , 2, "Unicode - Baltic Codepage" },
+		{ "UTF-8 [ISO-8859-2]"   , 1 , 1 , 2, "Unicode - Central European" },
+		{ "UTF-8 [CP-1250]"      , 1 , 1 , 2, "Unicode - Central European Codepage" },
+		{ "UTF-8 [ISO-8859-9]"   , 1 , 1 , 2, "Unicode - Turkish, Latin-5" },
+		{ "UTF-8 [CP-1254]"      , 1 , 1 , 2, "Unicode - Turkish Codepage" },
+		// Cyrillic
+		{ "UTF-8 [ISO-8859-5]"   , 1 , 1 , 3, "Unicode - Cyrillic, ISO" },
+		{ "UTF-8 [CP-1251]"      , 1 , 1 , 3, "Unicode - Cyrillic Codepage" },
+		{ "UTF-8 [KOI8-R]"       , 1 , 1 , 3, "Unicode - Cyrillic, KOI" },
+		{ "UTF-8 [KOI8-U]"       , 1 , 1 , 3, "Unicode - Cyrillic/Ukrainian" },
+		{ "UTF-8 [IBM-866]"      , 1 , 1 , 3, "Unicode - IBM-866" },
+		// Middle Eastern
+		{ "UTF-8 [ISO-8859-6]"   , 1 , 1 , 4, "Unicode - Arabic, Standard" },
+		{ "UTF-8 [CP-1256]"      , 1 , 1 , 4, "Unicode - Arabic Codepage" },
+		{ "UTF-8 [ISO-8859-8]"   , 1 , 1 , 4, "Unicode - Hebrew, visually ordered" },
+		{ "UTF-8 [ISO-8859-8-i]" , 1 , 1 , 4, "Unicode - Hebrew, logically ordered" },
+		{ "UTF-8 [CP-1255]"      , 1 , 1 , 4, "Unicode - Hebrew Codepage" },
+		// Other asiatic
+		{ "UTF-8 [TIS-620]"      , 1 , 1 , 7, "Unicode - Thai" },
+		{ "UTF-8 [CP874]"        , 1 , 1 , 7, "Unicode - Thai Codepage" },
 #ifndef QT_NO_BIG_CODECS
-		{ "UTF-8 [Big5]"           , 1 , 1 , "I: 8-bit Unicode / Chinese Traditional, O: 8-bit Unicode" },
-		{ "UTF-8 [Big5-HKSCS]"     , 1 , 1 , "I: 8-bit Unicode / Chinese Traditional, Hong Kong, O: 8-bit Unicode" },
-
-		{ "UTF-8 [GB18030]"        , 1 , 1 , "I: 8-bit Unicode / Chinese Simplified, O: 8-bit Unicode" },
-		{ "UTF-8 [JIS7]"           , 1 , 1 , "I: 8-bit Unicode / Japanese (JIS7), O: 8-bit Unicode" },
-		{ "UTF-8 [Shift-JIS]"      , 1 , 1 , "I: 8-bit Unicode / Japanese (Shift-JIS), O: Japanese (Shift-JIS)" },
-		{ "UTF-8 [EUC-JP]"         , 1 , 1 , "I: 8-bit Unicode / Japanese (EUC-JP), O: Japanese (EUC-JP)" },
-
-		{ "UTF-8 [EUC-KR]"         , 1 , 1 , "I: 8-bit Unicode / Korean, O: 8-bit Unicode" },
-		{ "UTF-8 [TSCII]"          , 1 , 1 , "I: 8-bit Unicode / Tamil, O: 8-bit Unicode" },
+		// Chinese
+		{ "UTF-8 [Big5]"         , 1 , 1 , 5, "Unicode - Chinese Traditional" },
+		{ "UTF-8 [Big5-HKSCS]"   , 1 , 1 , 5, "Unicode - Chinese Traditional, Hong Kong" },
+		{ "UTF-8 [GB18030]"      , 1 , 1 , 5, "Unicode - Chinese Simplified" },
+		// Japanese
+		{ "UTF-8 [JIS7]"         , 1 , 1 , 6, "Unicode - Japanese (JIS7)" },
+		{ "UTF-8 [Shift-JIS]"    , 1 , 1 , 6, "Unicode - Japanese (Shift-JIS)" },
+		{ "UTF-8 [EUC-JP]"       , 1 , 1 , 6, "Unicode - Japanese (EUC-JP)" },
+		// Other asiatic
+		{ "UTF-8 [EUC-KR]"       , 1 , 1 , 7, "Unicode - Korean" },
+		{ "UTF-8 [TSCII]"        , 1 , 1 , 7, "Unicode - Tamil" },
 #endif
-		{ "UTF-8 [ISO-8859-10]"    , 1 , 1 , "I: 8-bit Unicode / ISO-8859-10, O: 8-bit Unicode" },
-		{ "UTF-8 [ISO-8859-13]"    , 1 , 1 , "I: 8-bit Unicode / ISO-8859-13, O: 8-bit Unicode" },
-
-		{ "UTF-8 [ISO-8859-14]"    , 1 , 1 , "I: 8-bit Unicode / ISO-8859-14, O: 8-bit Unicode" },
-		{ "UTF-8 [IBM-850]"        , 1 , 1 , "I: 8-bit Unicode / IBM-850, O: 8-bit Unicode" },
-		{ "UTF-8 [IBM-866]"        , 1 , 1 , "I: 8-bit Unicode / IBM-866, O: 8-bit Unicode" },
-		{ "UTF-8 [CP874]"          , 1 , 1 , "I: 8-bit Unicode / CP874, O: 8-bit Unicode" },
-
-		{ 0                        , 0 , 0 , 0 }
+		{ 0                      , 0 , 0 , 0 , 0 }
 	};
+
+	uint encodingGroups()
+	{
+		return NUM_ENCODING_GROUPS;
+	}
+
+	const char * encodingGroup(int iIdx)
+	{
+		if(iIdx > NUM_ENCODING_GROUPS)
+			return encoding_groups[NUM_ENCODING_GROUPS];
+		return encoding_groups[iIdx];
+	}
 
 	EncodingDescription * encodingDescription(int iIdx)
 	{
-		if(iIdx > NUM_ENCODINGS)return &(supported_encodings[NUM_ENCODINGS]);
+		if(iIdx > NUM_ENCODINGS)
+			return &(supported_encodings[NUM_ENCODINGS]);
 		return &(supported_encodings[iIdx]);
 	}
 

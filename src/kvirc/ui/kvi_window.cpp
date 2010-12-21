@@ -74,6 +74,7 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QIcon>
+#include <QActionGroup>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
@@ -95,6 +96,9 @@ static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopup = 0;
 static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopupStandard = 0;
 static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopupSmart = 0;
 static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = 0;
+static QActionGroup    * g_pMdiWindowSystemTextEncodingActionGroup = 0;
+static QAction         * g_pMdiWindowSystemTextEncodingCurrentAction = 0;
+static QAction         * g_pMdiWindowSystemTextEncodingDefaultAction = 0;
 
 unsigned long int g_uUniqueWindowId = 1;
 
@@ -665,102 +669,148 @@ void KviWindow::updateCaption()
 void KviWindow::createSystemTextEncodingPopup()
 {
 	if(!g_pMdiWindowSystemTextEncodingPopup)
+	{
+		// first time called, create the menu
 		g_pMdiWindowSystemTextEncodingPopup = new KviTalPopupMenu();
-	else
-	{
-		g_pMdiWindowSystemTextEncodingPopup->clear();
-	}
-
-	if(!g_pMdiWindowSystemTextEncodingPopupStandard)
 		g_pMdiWindowSystemTextEncodingPopupStandard = new KviTalPopupMenu();
-	else
-	{
-		g_pMdiWindowSystemTextEncodingPopupStandard->clear();
-		disconnect(g_pMdiWindowSystemTextEncodingPopupStandard,SIGNAL(activated(int)),0,0);
-	}
-
-	if(!g_pMdiWindowSystemTextEncodingPopupSmart)
 		g_pMdiWindowSystemTextEncodingPopupSmart = new KviTalPopupMenu();
-	else
-	{
-		g_pMdiWindowSystemTextEncodingPopupSmart->clear();
-		disconnect(g_pMdiWindowSystemTextEncodingPopupSmart,SIGNAL(activated(int)),0,0);
-	}
-
-	if(!g_pMdiWindowSystemTextEncodingPopupSmartUtf8)
 		g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = new KviTalPopupMenu();
-	else
-	{
-		g_pMdiWindowSystemTextEncodingPopupSmartUtf8->clear();
-		disconnect(g_pMdiWindowSystemTextEncodingPopupSmartUtf8,SIGNAL(activated(int)),0,0);
+		g_pMdiWindowSystemTextEncodingActionGroup = new QActionGroup(g_pMdiWindowSystemTextEncodingPopup);
+		connect(g_pMdiWindowSystemTextEncodingActionGroup, SIGNAL(triggered(QAction*)), this, SLOT(systemTextEncodingPopupActivated(QAction*)));
+
+		//default action
+		QTextCodec * c = defaultTextCodec();
+		QString tmp = __tr2qs("Use Default Encoding");
+		if(c)
+		{
+			tmp += " (";
+			tmp += c->name();
+			tmp += ")";
+		}
+
+		g_pMdiWindowSystemTextEncodingDefaultAction = g_pMdiWindowSystemTextEncodingPopup->addAction(tmp);
+		g_pMdiWindowSystemTextEncodingActionGroup->addAction(g_pMdiWindowSystemTextEncodingDefaultAction);
+		g_pMdiWindowSystemTextEncodingDefaultAction->setData(-1);
+		if(m_szTextEncoding.isEmpty())
+		{
+			g_pMdiWindowSystemTextEncodingDefaultAction->setCheckable(true);
+			g_pMdiWindowSystemTextEncodingDefaultAction->setChecked(true);
+		}
+
+		//current action
+		g_pMdiWindowSystemTextEncodingCurrentAction = g_pMdiWindowSystemTextEncodingPopup->addAction(__tr2qs("Current: "));
+		g_pMdiWindowSystemTextEncodingActionGroup->addAction(g_pMdiWindowSystemTextEncodingCurrentAction);
+		g_pMdiWindowSystemTextEncodingCurrentAction->setVisible(false);
+		
+		// other first level menus
+		g_pMdiWindowSystemTextEncodingPopup->insertSeparator();
+
+		g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Standard"),g_pMdiWindowSystemTextEncodingPopupStandard);
+		g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart (Send Local)"),g_pMdiWindowSystemTextEncodingPopupSmart);
+		g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart (Send UTF-8)"),g_pMdiWindowSystemTextEncodingPopupSmartUtf8);
+
+		// second level menus (encoding groups)
+		uint uGroups = KviLocale::encodingGroups();
+		QMenu * aPopupStandard[uGroups];
+		QMenu * aPopupSmart[uGroups];
+		QMenu * aPopupSmartUtf8[uGroups];
+
+		uint j = 0;	
+		const char * szEncodingGroup = KviLocale::encodingGroup(j);
+
+		while(szEncodingGroup)
+		{
+			aPopupStandard[j] = g_pMdiWindowSystemTextEncodingPopupStandard->addMenu(szEncodingGroup);
+			if(j) //only standard popup contains unicode menu
+			{
+				aPopupSmart[j] = g_pMdiWindowSystemTextEncodingPopupSmart->addMenu(szEncodingGroup);
+				aPopupSmartUtf8[j] = g_pMdiWindowSystemTextEncodingPopupSmartUtf8->addMenu(szEncodingGroup);
+			}
+			
+			szEncodingGroup = KviLocale::encodingGroup(++j);
+		}
+
+		// third level menus (encodings)
+		uint i=0;
+		KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
+		while(d->szName)
+		{
+			KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
+			if(KviQString::equalCI(m_szTextEncoding,d->szName))
+			{
+				g_pMdiWindowSystemTextEncodingCurrentAction->setText(__tr2qs("Current: ") + tmp);
+				g_pMdiWindowSystemTextEncodingCurrentAction->setCheckable(true);
+				g_pMdiWindowSystemTextEncodingCurrentAction->setChecked(true);
+				g_pMdiWindowSystemTextEncodingCurrentAction->setVisible(true);
+				g_pMdiWindowSystemTextEncodingCurrentAction->setData(i);
+			} else {
+				QMenu * ppp = d->bSmart ? (d->bSendUtf8 ? 
+								aPopupSmartUtf8[d->uGroup] : 
+								aPopupSmart[d->uGroup]
+							) : aPopupStandard[d->uGroup];
+			
+				QAction * pAction = ppp->addAction(tmp);
+				pAction->setData(i);
+				g_pMdiWindowSystemTextEncodingActionGroup->addAction(pAction);
+			}
+
+			d = KviLocale::encodingDescription(++i);
+		}
+	} else {
+		//default action: refresh the name
+		QTextCodec * c = defaultTextCodec();
+		QString tmp = __tr2qs("Use Default Encoding");
+		if(c)
+		{
+			tmp += " (";
+			tmp += c->name();
+			tmp += ")";
+		}
+
+		g_pMdiWindowSystemTextEncodingDefaultAction->setText(tmp);
+
+		//menu already exists, choose the right item
+		if(m_szTextEncoding.isEmpty())
+		{
+			//default action; hide the current action
+			g_pMdiWindowSystemTextEncodingCurrentAction->setVisible(false);
+
+			g_pMdiWindowSystemTextEncodingDefaultAction->setCheckable(true);
+			g_pMdiWindowSystemTextEncodingDefaultAction->setChecked(true);
+		} else {
+			int i=0;
+			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
+			while(d->szName)
+			{
+				if(KviQString::equalCI(m_szTextEncoding,d->szName))
+				{
+					KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
+					g_pMdiWindowSystemTextEncodingCurrentAction->setText(__tr2qs("Current: ") + tmp);
+					g_pMdiWindowSystemTextEncodingCurrentAction->setCheckable(true);
+					g_pMdiWindowSystemTextEncodingCurrentAction->setChecked(true);
+					g_pMdiWindowSystemTextEncodingCurrentAction->setVisible(true);
+					g_pMdiWindowSystemTextEncodingCurrentAction->setData(i);
+					break;
+				}
+
+				d = KviLocale::encodingDescription(++i);
+			}
+		}
 	}
+}
 
-	QTextCodec * c = defaultTextCodec();
-	QString tmp = __tr2qs("Use Default Encoding");
-	if(c)
+void KviWindow::systemTextEncodingPopupActivated(QAction * pAction)
+{
+	if(!pAction || pAction == g_pMdiWindowSystemTextEncodingCurrentAction)
+		return;
+	if(pAction == g_pMdiWindowSystemTextEncodingDefaultAction)
 	{
-		tmp += " (";
-		tmp += c->name();
-		tmp += ")";
+		setTextEncoding("");
+	} else {
+		QString tmp = pAction->text();
+		KviQString::cutFromFirst(tmp," (");
+		setTextEncoding(tmp);
 	}
-
-	int id = g_pMdiWindowSystemTextEncodingPopup->insertItem(tmp,this,SLOT(systemTextEncodingPopupDefault()));
-	if(m_szTextEncoding.isEmpty())g_pMdiWindowSystemTextEncodingPopup->setItemChecked(id,true);
-	g_pMdiWindowSystemTextEncodingPopup->insertSeparator();
-
-	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Standard"),g_pMdiWindowSystemTextEncodingPopupStandard);
-	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart (Send Local)"),g_pMdiWindowSystemTextEncodingPopupSmart);
-	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart (Send UTF-8)"),g_pMdiWindowSystemTextEncodingPopupSmartUtf8);
-
-	int i = 0;
-	KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
-	while(d->szName)
-	{
-		KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
-		KviTalPopupMenu * ppp = d->bSmart ? (d->bSendUtf8 ? g_pMdiWindowSystemTextEncodingPopupSmartUtf8 : g_pMdiWindowSystemTextEncodingPopupSmart) : g_pMdiWindowSystemTextEncodingPopupStandard;
-		id = ppp->insertItem(tmp);
-		if(KviQString::equalCI(m_szTextEncoding,d->szName))
-			ppp->setItemChecked(id,true);
-		i = i + 1;
-		d = KviLocale::encodingDescription(i);
-	}
-
-	connect(g_pMdiWindowSystemTextEncodingPopupSmart,SIGNAL(activated(int)),this,SLOT(systemTextEncodingPopupSmartActivated(int)));
-	connect(g_pMdiWindowSystemTextEncodingPopupSmartUtf8,SIGNAL(activated(int)),this,SLOT(systemTextEncodingPopupSmartUtf8Activated(int)));
-	connect(g_pMdiWindowSystemTextEncodingPopupStandard,SIGNAL(activated(int)),this,SLOT(systemTextEncodingPopupStandardActivated(int)));
-}
-
-void KviWindow::systemTextEncodingPopupDefault()
-{
-	// default
-	setTextEncoding("");
-}
-
-void KviWindow::systemTextEncodingPopupSmartActivated(int id)
-{
-	if(!g_pMdiWindowSystemTextEncodingPopupSmart)
-		return;
-	QString tmp = g_pMdiWindowSystemTextEncodingPopupSmart->text(id);
-	KviQString::cutFromFirst(tmp," (");
-	setTextEncoding(tmp);
-}
-
-void KviWindow::systemTextEncodingPopupSmartUtf8Activated(int id)
-{
-	if(!g_pMdiWindowSystemTextEncodingPopupSmartUtf8)
-		return;
-	QString tmp = g_pMdiWindowSystemTextEncodingPopupSmartUtf8->text(id);
-	KviQString::cutFromFirst(tmp," (");
-	setTextEncoding(tmp);
-}
-
-void KviWindow::systemTextEncodingPopupStandardActivated(int id)
-{
-	if(!g_pMdiWindowSystemTextEncodingPopupStandard)
-		return;
-	QString tmp = g_pMdiWindowSystemTextEncodingPopupStandard->text(id);
-	KviQString::cutFromFirst(tmp," (");
-	setTextEncoding(tmp);
 }
 
 void KviWindow::savePropertiesAsDefault()
