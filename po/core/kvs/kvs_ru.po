@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-18 17:56+0100\n"
+"POT-Creation-Date: 2010-12-22 09:55+0100\n"
 "PO-Revision-Date: 2010-12-13 02:18+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
@@ -127,7 +127,8 @@ msgstr ""
 "свойство приндексировано и определено, но возвращаемое значение не "
 "действительно"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1222 src/kvirc/kvs/kvi_kvs_object.cpp:1452
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1222
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1452
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed but it doesn't really exist"
@@ -253,7 +254,8 @@ msgstr "Пустой бесконечный цикл 'for': исправьте �
 msgid "Empty instruction block for command evaluation"
 msgstr "Пустой блок инструкций для оценки команды"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:146 src/kvirc/kvs/kvi_kvs_parser.cpp:164
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:146
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:164
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:185
 msgid "Empty script"
 msgstr "Сценарий пуст"
@@ -675,7 +677,8 @@ msgstr ""
 "Вложенный символ %q соответствует ожидаемому признаку окончания, лучше "
 "заключать это в кавычки"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1215 src/kvirc/kvs/kvi_kvs_object.cpp:1443
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1215
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1443
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr "Нет Qt-свойства с именем '%Q' для объекта '%Q' класса '%Q'"
 
@@ -769,7 +772,8 @@ msgstr "Постоянный"
 msgid "Properties for Qt class %s"
 msgstr "Свойства Qt-класса %s"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1408 src/kvirc/kvs/kvi_kvs_object.cpp:1551
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1408
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1551
 msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
 "type"
@@ -1114,7 +1118,8 @@ msgstr ""
 "В левой части оператора задана недействительная ссылка на объект (объект не "
 "существует)"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1208 src/kvirc/kvs/kvi_kvs_object.cpp:1430
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1208
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1430
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "Объект \"''%Q\" класса %Q не является Qt-свойством"
 
@@ -1443,7 +1448,8 @@ msgstr ""
 "Неожиданный конец строки в хеше ключа (не хватает символа '}' или новой "
 "строки)"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3023 src/kvirc/kvs/kvi_kvs_parser.cpp:3090
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3023
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3090
 msgid "Unexpected end of line in parameter list"
 msgstr "Неожиданный конец строки в списке параметров"
 
@@ -1485,7 +1491,8 @@ msgstr "Неожиданный конец сценария в блоке инс�
 msgid "Unexpected end of script in multiline comment"
 msgstr "Неожиданный конец сценария в многострочном комментарии"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3017 src/kvirc/kvs/kvi_kvs_parser.cpp:3084
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3017
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3084
 msgid "Unexpected end of script in parameter list"
 msgstr "Неожиданный конец сценария в списке параметров"
 
@@ -1543,7 +1550,8 @@ msgstr "Неизвестный оператор"
 msgid "Unterminated c-style multiline comment"
 msgstr "С-стиль многострочных комментариев"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3469 src/kvirc/kvs/kvi_kvs_parser.cpp:3476
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3469
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3476
 msgid "Unterminated hash key"
 msgstr "Не закрытый хеш ключа"
 
@@ -1551,7 +1559,8 @@ msgstr "Не закрытый хеш ключа"
 msgid "Unterminated instruction block"
 msgstr "Незаконченный блок инструкций"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3755 src/kvirc/kvs/kvi_kvs_parser.cpp:3762
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3755
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3762
 msgid "Unterminated string constant"
 msgstr "Строка с константой не закрыта"
 
@@ -1618,7 +1627,8 @@ msgstr "[KVS]%c Ошибка при компиляции: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Ошибка при выполнении: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:191 src/kvirc/kvs/kvi_kvs_report.cpp:199
+#: src/kvirc/kvs/kvi_kvs_report.cpp:191
+#: src/kvirc/kvs/kvi_kvs_report.cpp:199
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Предупреждение: %Q"
 

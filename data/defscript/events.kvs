@@ -65,7 +65,7 @@ event(OnWindowPopupRequest,default)
 
 event(OnChannelWindowCreated,default)
 {
-	button(w,Logging,119,Logging)
+	button(w,Logging,119,$tr("Logging","defscript"))
 	{
 		popup.show -p=$0,$1 logging;
 	}
@@ -73,7 +73,7 @@ event(OnChannelWindowCreated,default)
 
 event(OnQueryWindowCreated,default)
 {
-	button(w,Logging,119,Logging)
+	button(w,Logging,119,$tr("Logging","defscript"))
 	{
 		popup.show -p=$0,$1 logging;
 	}
@@ -81,7 +81,7 @@ event(OnQueryWindowCreated,default)
 
 event(OnDCCChatWindowCreated,default)
 {
-	button(w,Logging,119,Logging)
+	button(w,Logging,119,$tr("Logging","defscript"))
 	{
 		popup.show -p=$0,$1 logging;
 	}

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-18 17:56+0100\n"
+"POT-Creation-Date: 2010-12-22 09:55+0100\n"
 "PO-Revision-Date: 2010-12-20 18:09+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -128,7 +128,8 @@ msgstr ""
 "Non trovo la proprietà '%Q' per l'oggetto '%Q' della classe '%Q': la "
 "proprietà è indicizzata e definita ma il valore ritornato non è valido"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1222 src/kvirc/kvs/kvi_kvs_object.cpp:1452
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1222
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1452
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed but it doesn't really exist"
@@ -252,7 +253,8 @@ msgstr "Ciclo infinito 'for' vuoto: sistema lo script"
 msgid "Empty instruction block for command evaluation"
 msgstr "Blocco di istruzioni vuoto per la valutazione del comando"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:146 src/kvirc/kvs/kvi_kvs_parser.cpp:164
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:146
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:164
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:185
 msgid "Empty script"
 msgstr "Script vuoto"
@@ -690,7 +692,8 @@ msgstr ""
 "Il carattere %q annidato corrisponde ad un terminatore, questo può "
 "confondermi un po': è una buona idea racchiuderlo tra virgolette"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1215 src/kvirc/kvs/kvi_kvs_object.cpp:1443
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1215
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1443
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr ""
 "Nessuna proprietà Qt chiamata '%Q' per l'oggetto chiamato '%Q' della classe "
@@ -790,7 +793,8 @@ msgstr "Persistente"
 msgid "Properties for Qt class %s"
 msgstr "Proprietà della classe Qt %s"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1408 src/kvirc/kvs/kvi_kvs_object.cpp:1551
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1408
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1551
 msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
 "type"
@@ -1147,7 +1151,8 @@ msgstr ""
 "La parte sinistra dello scope dell'operatore è valutata come una referenza a "
 "un oggetto invalido (l'oggetto non esiste)"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1208 src/kvirc/kvs/kvi_kvs_object.cpp:1430
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1208
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1430
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "L'oggetto '%Q' della classe '%Q' non ha proprietà Qt"
 
@@ -1488,7 +1493,8 @@ msgstr ""
 "Fine della riga non attesa nella chiave hash (manca il carattere '}' o nuova "
 "riga senza escape)"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3023 src/kvirc/kvs/kvi_kvs_parser.cpp:3090
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3023
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3090
 msgid "Unexpected end of line in parameter list"
 msgstr "Fine della riga non attesa nella lista dei parametri"
 
@@ -1536,7 +1542,8 @@ msgstr ""
 msgid "Unexpected end of script in multiline comment"
 msgstr "Fine dello script non prevista nel commento multilinea"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3017 src/kvirc/kvs/kvi_kvs_parser.cpp:3084
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3017
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3084
 msgid "Unexpected end of script in parameter list"
 msgstr "Fine dello script non prevista nella lista dei parametri"
 
@@ -1601,7 +1608,8 @@ msgstr "Operatore sconosciuto"
 msgid "Unterminated c-style multiline comment"
 msgstr "Commento multilinea in stile C non terminato"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3469 src/kvirc/kvs/kvi_kvs_parser.cpp:3476
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3469
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3476
 msgid "Unterminated hash key"
 msgstr "Chiave hash non terminata"
 
@@ -1609,7 +1617,8 @@ msgstr "Chiave hash non terminata"
 msgid "Unterminated instruction block"
 msgstr "Blocco di istruzioni non terminato"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3755 src/kvirc/kvs/kvi_kvs_parser.cpp:3762
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3755
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3762
 msgid "Unterminated string constant"
 msgstr "Costante stringa non terminata"
 
@@ -1676,7 +1685,8 @@ msgstr "[KVS]%c Errore di Compilazione: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Errore di Esecuzione: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:191 src/kvirc/kvs/kvi_kvs_report.cpp:199
+#: src/kvirc/kvs/kvi_kvs_report.cpp:191
+#: src/kvirc/kvs/kvi_kvs_report.cpp:199
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Attenzione: %Q"
 

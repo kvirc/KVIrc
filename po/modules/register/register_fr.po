@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: register_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-18 17:56+0100\n"
+"POT-Creation-Date: 2010-12-22 09:55+0100\n"
 "PO-Revision-Date: 2010-10-31 14:26+0100\n"
 "Last-Translator: ealexp <ealexp@ealexp.eu>\n"
 "Language-Team: Français <LL@li.org>\n"
@@ -44,7 +44,8 @@ msgstr " Utilisateur : %c%Q"
 msgid "&Add Group..."
 msgstr "&Ajouter un groupe..."
 
-#: src/modules/reguser/edituser.cpp:355 src/modules/reguser/dialog.cpp:246
+#: src/modules/reguser/edituser.cpp:355
+#: src/modules/reguser/dialog.cpp:246
 msgid "&Add..."
 msgstr "&Ajouter..."
 
@@ -60,8 +61,10 @@ msgstr "&Éditer..."
 msgid "&New"
 msgstr "&Nouveau"
 
-#: src/modules/reguser/edituser.cpp:114 src/modules/reguser/edituser.cpp:258
-#: src/modules/reguser/edituser.cpp:470 src/modules/reguser/dialog.cpp:297
+#: src/modules/reguser/edituser.cpp:114
+#: src/modules/reguser/edituser.cpp:258
+#: src/modules/reguser/edituser.cpp:470
+#: src/modules/reguser/dialog.cpp:297
 msgid "&OK"
 msgstr "&OK"
 
@@ -236,8 +239,10 @@ msgstr "Impossible d'ouvrir le fichier %Q en écriture"
 msgid "Can't open file %s for reading."
 msgstr "Impossible d'ouvrir le fichier %s pour la lecture"
 
-#: src/modules/reguser/edituser.cpp:118 src/modules/reguser/edituser.cpp:262
-#: src/modules/reguser/edituser.cpp:469 src/modules/reguser/dialog.cpp:302
+#: src/modules/reguser/edituser.cpp:118
+#: src/modules/reguser/edituser.cpp:262
+#: src/modules/reguser/edituser.cpp:469
+#: src/modules/reguser/dialog.cpp:302
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -245,16 +250,20 @@ msgstr "Annuler"
 msgid "Channel: %1%2@%3"
 msgstr "Salon: %1%2@%3"
 
-#: src/modules/reguser/dialog.cpp:719 src/modules/reguser/dialog.cpp:823
+#: src/modules/reguser/dialog.cpp:719
+#: src/modules/reguser/dialog.cpp:823
 msgid "Choose a Filename - KVIrc"
 msgstr "Choisissez un nom de fichier - KVIrc"
 
-#: src/modules/reguser/edituser.cpp:332 src/modules/reguser/dialog.cpp:134
+#: src/modules/reguser/edituser.cpp:332
+#: src/modules/reguser/dialog.cpp:134
 msgid "Comment:"
 msgstr "Commentaire :"
 
-#: src/modules/reguser/dialog.cpp:520 src/modules/reguser/dialog.cpp:523
-#: src/modules/reguser/dialog.cpp:524 src/modules/reguser/dialog.cpp:526
+#: src/modules/reguser/dialog.cpp:520
+#: src/modules/reguser/dialog.cpp:523
+#: src/modules/reguser/dialog.cpp:524
+#: src/modules/reguser/dialog.cpp:526
 #: src/modules/reguser/dialog.cpp:528
 msgid "Default"
 msgstr "Défaut"
@@ -285,7 +294,8 @@ msgstr ""
 msgid "Flags"
 msgstr "Drapeaux :"
 
-#: src/modules/reguser/dialog.cpp:411 src/modules/reguser/dialog.cpp:424
+#: src/modules/reguser/dialog.cpp:411
+#: src/modules/reguser/dialog.cpp:424
 msgid "Group name:"
 msgstr "Nom du groupe :"
 
@@ -447,7 +457,8 @@ msgstr "Propriété"
 msgid "Property Editor"
 msgstr "Éditeur de propriétés"
 
-#: src/modules/reguser/edituser.cpp:359 src/modules/reguser/dialog.cpp:256
+#: src/modules/reguser/edituser.cpp:359
+#: src/modules/reguser/dialog.cpp:256
 msgid "Re&move"
 msgstr "Supprim&er"
 
