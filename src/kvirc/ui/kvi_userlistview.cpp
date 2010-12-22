@@ -117,10 +117,11 @@ void KviUserListEntry::detachAvatarData()
 		return;
 
 	m_pAvatarPixmap->stop();
-	if (receivers(SIGNAL(frameChanged())) > 0)
-		QObject::disconnect(m_pAvatarPixmap,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
-	if (receivers(SIGNAL(destroyed())) > 0)
-		QObject::disconnect(m_pAvatarPixmap,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
+	//FIXME these checks did not work since these are m_pAvatarPixmap's SIGNALs
+// 	if (receivers(SIGNAL(frameChanged())) > 0)
+	QObject::disconnect(m_pAvatarPixmap,SIGNAL(frameChanged()),this,SLOT(avatarFrameChanged()));
+// 	if (receivers(SIGNAL(destroyed())) > 0)
+	QObject::disconnect(m_pAvatarPixmap,SIGNAL(destroyed()),this,SLOT(avatarDestroyed()));
 	m_pAvatarPixmap = NULL;
 }
 
