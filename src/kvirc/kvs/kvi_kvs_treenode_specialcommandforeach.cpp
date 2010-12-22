@@ -97,9 +97,26 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 						return false;
 					KviKvsVariant * pOne = pArg->array()->at(idx);
 					if(pOne)
-						v->result()->copyFrom(*pOne);
-					else
-						v->result()->setNothing();
+					{
+						if(bIncludeEmptyScalars || (!pOne->isEqualToNothing()))
+						{
+							v->result()->copyFrom(*pOne);
+						} else {
+							delete v; // we're done with it for this iteration
+							idx++;
+							continue;
+						}
+					} else {
+						if(bIncludeEmptyScalars)
+						{
+							v->result()->setNothing();
+						} else {
+							delete v; // we're done with it for this iteration
+							idx++;
+							continue;
+						}
+						
+					}
 					delete v; // we're done with it for this iteration
 
 					if(!m_pLoop->execute(c))
@@ -139,7 +156,15 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 					KviKvsRWEvaluationResult * v = m_pIterationVariable->evaluateReadWrite(c);
 					if(!v)
 						return false;
-					v->result()->copyFrom(*pOne);
+					
+					if(bIncludeEmptyScalars || (!pOne->isEqualToNothing()))
+					{
+						v->result()->copyFrom(*pOne);
+					} else {
+						delete v; // we're done with it for this iteration
+						++it;
+						continue;
+					}
 					delete v; // we're done with it for this iteration
 
 					if(!m_pLoop->execute(c))
@@ -169,7 +194,7 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 			}
 			break;
 			default:
-				if(bIncludeEmptyScalars || (!pArg->isNothing()))
+				if(bIncludeEmptyScalars || (!pArg->isEqualToNothing()))
 				{
 					// we evaluate this each time (as it may actually be killed at each iteration)
 					// FIXME: maybe some kind of reference counting or a observer pattern might be a bit more efficient here
