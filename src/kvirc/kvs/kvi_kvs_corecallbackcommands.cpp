@@ -179,21 +179,20 @@ namespace KviKvsCoreCallbackCommands
 			Adds the alias <alias_name> with the specified <implementation> code.
 			The implementation code can be either a single KVS instruction
 			or an instruction block (instruction list enclosed in braces).[br]
-			If the alias was already existing, it is replaced with the
-			new implementation.[br]
+			If the alias already exists, it is replaced with the new implementation.[br]
 			If the <implementation> is empty (eg. "{}" or just a ";")
-			the alias <alias_name> is removed instead of being added.
-			If the "remove" form is used but the specified <alias_name> is
-			not existing in the alias store then a warning is printed unless
+			the alias <alias_name> is removed.
+			If the "remove" form is used but the specified <alias_name> does not exist
+			in the alias store then a warning is printed unless
 			the -q (--quiet) switch is used.
 			If <alias_name> contains a "<name>::" prefix, then the alias
 			is created in the namespace specified by <name>.
-			If the namespace is not existing, it is created.
+			If the namespace does not exist, it is created.
 			Any alias without the "<name>::" prefix is created in the root
 			namespace. Namespaces are useful to avoid collisions in alias names
 			between scripts. Only really common aliases should be created
-			in the root namespace: all your script internal functionality
-			should be hidden in your own namespace.
+			in the root namespace - all of the internal functionality of your 
+			scripts should be hidden in your own namespace.
 		@examples:
 			[example]
 				[comment]# Add the alias j[/comment]

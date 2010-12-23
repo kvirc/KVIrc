@@ -400,7 +400,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			High-Lag Alarm Started
 		@parameters:
 			$0 = server
-			$1 = Lag value in miliseconds
+			$1 = Lag value in milliseconds
 		@window:
 			Console
 		@description:
@@ -408,7 +408,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 	*/
 	EVENT("OnLagAlarmTimeUp", \
 		"$0 = server\n" \
-		"$1 = lag time in miliseconds"),
+		"$1 = lag time in milliseconds"),
 
 	/*
 		@doc: onlagalarmtimedown
@@ -420,7 +420,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			High-Lag Alarm Stopped
 		@parameters:
 			$0 = server
-			$1 = Lag value in miliseconds
+			$1 = Lag value in milliseconds
 		@window:
 			Console
 		@description:
@@ -428,7 +428,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 	*/
 	EVENT("OnLagAlarmTimeDown", \
 		"$0 = server\n" \
-		"$1 = lag time in miliseconds"),
+		"$1 = lag time in milliseconds"),
 
 	/*
 		@doc: onlagcheck
@@ -440,15 +440,15 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			The lag metering engine has checked the lag
 		@parameters:
 			$0 = server
-			$1 = Lag value in miliseconds
+			$1 = Lag value in milliseconds
 		@window:
 			Console
 		@description:
-			Triggered when the lag metering engine calculate a new current lag.[br]
+			Triggered when the lag metering engine periodically calculates the current lag (the interval is configurable under settings -> IRC -> Tools -> Lag). 
 	*/
 	EVENT("OnLagCheck", \
 		"$0 = server\n" \
-		"$1 = lag time in miliseconds"),
+		"$1 = lag time in milliseconds"),
 
 	/*
 		@doc: ontextinput
@@ -779,7 +779,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			OnOutboundTraffic
 		@short:
 			Triggered on outbound traffic.[br]
-			USE THIS EVENT WITH REALLY CAUTION: an improper use can leads to many problems to KVIrc; especially avoid the use of 'halt' command.
+			USE THIS EVENT WITH REAL CAUTION: an improper use can leads to many problems to KVIrc; especially avoid the use of 'halt' command.
 		@parameters:
 			$0 = outbound string
 		@window:
@@ -1162,18 +1162,18 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnChannelSync
 		@short:
-			Triggered when all the channel information have been received
+			Triggered when all channel information have been received
 		@parameters:
 			$0 = channel sync time in milliseconds
 		@window:
 			Channel
 		@description:
 			This event is triggered after you have joined a channel
-			and all the information have been received.[br]
+			and all information have been received.[br]
 			This includes the channel users list, the ban list,
 			the channel mode, the topic and eventually
 			the invite and ban exception lists.[br]
-			Calling halt in this even stops the "channel synchronized" output.[br]
+			Calling halt in this even stops the "channel synchronized" output.
 			(the output will be halted anyway if [fnc]$option[/fnc](boolShowChannelSyncTime) evaluates to false)
 		@seealso:
 			[event:ondccchatpopuprequest]OnDCCChatPopupRequest[/event],
@@ -3011,7 +3011,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			console
 		@description:
 			Triggered when a notice is received and the source user is recognized as
-			the NickServ service.<br>
+			the NickServ service (the source nick is 'NickServ' or its mask matches 
+			a mask defined in the Nickserver identify options).[br]
 			Calling [cmd]halt[/cmd] stops the message output.
 		@seealso:
 			[event:onquerynotice]OnQueryNotice[/event]

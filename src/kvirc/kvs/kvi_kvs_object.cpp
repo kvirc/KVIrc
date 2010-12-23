@@ -558,10 +558,10 @@
 	@inherits:
 		none
 	@description:
-		This is the base class for all the builtin KVirc object classes.
-		It exports the functions to retrieve the object name, to iterate
-		through children objects and to lookup a child object by name or class.
-		Additionally, this class provides the builtin timer functionality.
+		This is the base class for all builtin KVirc object classes.
+		It exports functions to retrieve an object's name, to iterate
+		through child objects and to lookup a child object by name or class.
+		Additionally, this class provides builtin timer functionality.
 		The [classfnc]$constructor[/classfnc] and [classfnc]$destructor[/classfnc]
 		functions are empty implementations that all the other classes inherit.
 	@functions:
@@ -582,9 +582,9 @@
 		and [classfnc]$killTimer[/classfnc]().
 		!fn: $startTimer(<timeout>)
 		Starts a builtin timer for this object and returns its timer id
-		as a string or '-1' if the <timeout> was invalid.
+		as a string or '-1' if <timeout> was invalid.
 		The [classfnc]$timerEvent[/classfnc]() handler function
-		will be called at each <timeout>. The <timeout> is in milliseconds.
+		will be called every <timeout> milliseconds until the timer is stopped by $killTimer(). 
 		!fn: $killTimer(<timer id>)
 		Stops the timer specified by <timer id>.
 		!fn: $className()
@@ -596,34 +596,32 @@
 		This function traverses the entire tree of children
 		but is NOT recursive.
 		!fn: $childCount()
-		Returns the number of children objects
+		Returns the number of child objects
 		!fn: $emit(<signal_name>[,parameters])
 		Emits the signal <signal_name> passing the optional [parameters].
 		See the [doc:objects]objects documentation[/doc] for an overview of signals and slots.
 		!fn: $children()
-		Returns an array of children object identifiers.
+		Returns an array of child object identifiers.
 		!fn: $signalSender()
 		Returns the current signal sender when in a slot connected to a signal.
 		In other contexts this function returns an empty string.
 		You can safely use it to test if the current function has been
 		triggered directly or from a signal emission.
 		!fn: $signalName()
-		Returns the name of the signal last signal that has triggered
-		one of this object's slots.
-		This means that in a slot handler it returns the name of the signal
-		that has triggered it.
+		Returns the name of the last signal that has triggered one of this object's slots.
+		When called in a slot handler, the triggering signal name is returned. 
 		!fn: $property(<Qt property name>[,bNowarning:boolean])
 		This is for really advanced scripting.[br]
 		All KVIrc widgets are based on the Qt library ones.[br]
-		The Qt library allow to set and read special properties.[br]
+		The Qt library allows to set and read special properties.[br]
 		You will have to take a look at the Qt documentation for each widget type
 		to see the available property names.[br]
 		The supported property types are: Rect, Size, Point, Color, String, CString,
 		Int, UInt, Bool and enumeration types.[br]
 		For example, the widget's x coordinate can be retrieved by using the [classfnc]$x[/classfnc]()
 		function or by calling $property(x).[br]
-		There are many properties that are available ony through the [classfnc]$property()[classfnc]" call:[br]
-		For example, you can find out if the widget accepts drops by calling [classfnc]$property(acceptDrops)[classfnc].[br]
+		There are many properties that are available ony through the [classfnc]$property[/classfnc]() call:[br]
+		For example, you can find out if the widget accepts drops by calling [classfnc]$property[/classfnc](acceptDrops).[br]
 		This function will be mainly useful in the [class]wrapper[/class] class.
 		!fn: $setProperty(<Qt property>,<property value>)
 		Sets a qt property for this widget.[br]
@@ -631,9 +629,9 @@
 		For example, the [class]multilineedit[/class] widgets can be set to
 		the "password" echo mode only by using this function call:[br]
 		[example]
-			%X=$new(lineedit, 0, a_name)
-			%X-&gt;$show()
-			%X-&gt;$setProperty(echoMode,Password)
+			%X=$new(lineedit, 0, a_name)[br]
+			%X-&gt;$show()[br]
+			%X-&gt;$setProperty(echoMode,Password)[br]
 		[/example]
 		The available properties to be set are listed by [classfnc]$listProperties[/classfnc]()[br]
 		and must appear in the list as writeable.[br]
