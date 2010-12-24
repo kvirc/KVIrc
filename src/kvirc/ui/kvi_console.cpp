@@ -545,9 +545,13 @@ void KviConsole::closeEvent(QCloseEvent *e)
 // internal helper for applyHighlighting
 int KviConsole::triggerOnHighlight(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg,const QString &trigger)
 {
-	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && wnd!=g_pActiveWindow) KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound))));
+	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && wnd!=g_pActiveWindow)
+		KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound))));
+
 	QString szMessageType;
+
 	KviQString::sprintf(szMessageType,"%d",type);
+
 	if(KVS_TRIGGER_EVENT_7_HALTED(KviEvent_OnHighlight,
 					wnd,nick,user,host,
 					szMsg,trigger,
@@ -578,21 +582,27 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 	QRegExp rgxHlite;
 	if(KVI_OPTION_BOOL(KviOption_boolAlwaysHighlightNick) && connection())
 	{
-		if(!szPattern.isEmpty())
-			rgxHlite.setPattern(
-				QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(
-					QRegExp::escape(szPattern), QRegExp::escape(connection()->userInfo()->nickName())
-				)
-			);
-		else
-			rgxHlite.setPattern(
-				QString("(?:\\s|^)%1(?:\\s|$)").arg(
-					QRegExp::escape(connection()->userInfo()->nickName())
-				)
-			);
-		rgxHlite.setCaseSensitivity(Qt::CaseInsensitive);
-		if(szStripMsg.contains(rgxHlite))
-			return triggerOnHighlight(wnd,type,nick,user,host,szMsg,connection()->userInfo()->nickName());
+		if(KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting))
+		{
+			if(szStripMsg.contains(connection()->userInfo()->nickName()))
+				return triggerOnHighlight(wnd,type,nick,user,host,szMsg,connection()->userInfo()->nickName());
+		} else {
+			if(!szPattern.isEmpty())
+				rgxHlite.setPattern(
+					QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(
+						QRegExp::escape(szPattern), QRegExp::escape(connection()->userInfo()->nickName())
+					)
+				);
+			else
+				rgxHlite.setPattern(
+					QString("(?:\\s|^)%1(?:\\s|$)").arg(
+						QRegExp::escape(connection()->userInfo()->nickName())
+					)
+				);
+			rgxHlite.setCaseSensitivity(Qt::CaseInsensitive);
+			if(szStripMsg.contains(rgxHlite))
+				return triggerOnHighlight(wnd,type,nick,user,host,szMsg,connection()->userInfo()->nickName());
+		}
 	}
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseWordHighlighting))
@@ -602,12 +612,11 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 		{
 			if((*it).isEmpty())
 				continue;
+
 			if(KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting))
 			{
 				if(szStripMsg.contains(*it))
-				{
 					return triggerOnHighlight(wnd,type,nick,user,host,szMsg,*it);
-				}
 			} else {
 				if(!szPattern.isEmpty())
 					rgxHlite.setPattern(
@@ -623,9 +632,7 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 					);
 				rgxHlite.setCaseSensitivity(Qt::CaseInsensitive);
 				if(szStripMsg.contains(rgxHlite))
-				{
 					return triggerOnHighlight(wnd,type,nick,user,host,szMsg,*it);
-				}
 			}
 		}
 	}

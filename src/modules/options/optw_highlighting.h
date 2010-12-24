@@ -26,6 +26,9 @@
 
 #include "kvi_optionswidget.h"
 
+class QRadioButton;
+class QLineEdit;
+
 #define KVI_OPTIONS_WIDGET_ICON_KviAlertHighlightingOptionsWidget KVI_SMALLICON_RAW
 #define KVI_OPTIONS_WIDGET_NAME_KviAlertHighlightingOptionsWidget __tr2qs_no_lookup("Alert/Highlight")
 #define KVI_OPTIONS_WIDGET_PARENT_KviAlertHighlightingOptionsWidget KviToolsOptionsWidget
@@ -50,6 +53,14 @@ class KviHighlightingOptionsWidget : public KviOptionsWidget
 public:
 	KviHighlightingOptionsWidget(QWidget * parent);
 	~KviHighlightingOptionsWidget();
+private:
+	QRadioButton * m_pHighlightAllOccurencesRadioButton;
+	QRadioButton * m_pHighlightWholeWordsOnlyRadioButton;
+	QLineEdit * m_pWordSplitterCharactersEdit;
+
+protected:
+	virtual void commit();
+
 };
 
 

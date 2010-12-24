@@ -78,6 +78,8 @@ void KviTalGroupBox::childEvent(QChildEvent * e)
 		return;
 	if(e->child()->parent() != this)
 		return;
+	if(!m_pLayout)
+		return;
 	if(m_pLayout != layout())
 		return;
 
@@ -108,7 +110,10 @@ void KviTalGroupBox::addSpace(int iSpace)
 void KviTalGroupBox::setOrientation(Qt::Orientation orientation)
 {
 	if(m_pLayout)
+	{
 		delete m_pLayout;
+		m_pLayout = NULL;
+	}
 
 	mOrientation = orientation;
 
@@ -122,7 +127,10 @@ void KviTalGroupBox::setOrientation(Qt::Orientation orientation)
 void KviTalGroupBox::setLayout(QLayout * layout)
 {
 	if(m_pLayout)
+	{
 		delete m_pLayout;
+		m_pLayout = NULL;
+	}
 
 	QGroupBox::setLayout(layout);
 }

@@ -30,6 +30,9 @@
 
 #include <QLayout>
 #include <QLabel>
+#include <QRadioButton>
+
+#include "kvi_tal_tooltip.h"
 
 KviAlertHighlightingOptionsWidget::KviAlertHighlightingOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
@@ -49,35 +52,60 @@ KviHighlightingOptionsWidget::KviHighlightingOptionsWidget(QWidget * parent)
 
 	createLayout();
 
-	KviBoolSelector * b;
+	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable word highlighting","options"),KviOption_boolUseWordHighlighting);
+	KviStringListSelector * sl = addStringListSelector(0,1,0,1,__tr2qs_ctx("Words to highlight:","options"),KviOption_stringlistHighlightWords,KVI_OPTION_BOOL(KviOption_boolUseWordHighlighting));
 
-	connect(
-		addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable word highlighting","options"),KviOption_boolUseWordHighlighting),
-		SIGNAL(toggled(bool)),
-		addStringListSelector(0,1,0,1,__tr2qs_ctx("Words to highlight:","options"),KviOption_stringlistHighlightWords,KVI_OPTION_BOOL(KviOption_boolUseWordHighlighting)),
-		SLOT(setEnabled(bool)));
-
-	connect(
-		addBoolSelector(0,2,0,2,__tr2qs_ctx("Highlight every occurence of a word inside text","options"),KviOption_boolUseFullWordHighlighting),
-		SIGNAL(toggled(bool)),
-		addStringSelector(0,3,0,3,__tr2qs_ctx("Highlight only whole words using these word splitters:","options"),KviOption_stringWordSplitters,!KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting)),
-		SLOT(setDisabled(bool)));
-
+	connect(b,SIGNAL(toggled(bool)),sl,SLOT(setEnabled(bool)));
 
 	// This can be used even without Word highlighting
-	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Highlight messages containing my nickname","options"),KviOption_boolAlwaysHighlightNick);
+	b = addBoolSelector(0,2,0,2,__tr2qs_ctx("Highlight messages containing my nickname","options"),KviOption_boolAlwaysHighlightNick);
 	mergeTip(b,__tr2qs_ctx("<center>If this option is enabled, KVIrc will highlight any user message containing your current nickname</center>","options"));
-	b = addBoolSelector(0,5,0,5,__tr2qs_ctx("Flash the system taskbar entry on highlighted messages","options"),KviOption_boolFlashWindowOnHighlightedMessages);
+
+
+	KviTalGroupBox * gbox = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Highlighting Method","options"));
+
+	QGridLayout * g = new QGridLayout(gbox);
+	gbox->setLayout(g);
+
+	m_pHighlightAllOccurencesRadioButton = new QRadioButton(__tr2qs_ctx("Highlight every occurence of a word inside text","options"),gbox);
+	g->addWidget(m_pHighlightAllOccurencesRadioButton,0,0,1,2);
+	m_pHighlightAllOccurencesRadioButton->setChecked(KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting));
+	KviTalToolTip::add(m_pHighlightAllOccurencesRadioButton,__tr2qs_ctx("<center>This selection will cause KVIrc to search for the highlighted words or nicknames inside the whole text. This will also highlight parts of words (eg. if your nickname is Mark then Markus will be highlighted too).</center>","options"));
+
+	m_pHighlightWholeWordsOnlyRadioButton = new QRadioButton(__tr2qs_ctx("Highlight only whole words splitting on space and on:","options"),gbox);
+	g->addWidget(m_pHighlightWholeWordsOnlyRadioButton,1,0,1,1);
+	m_pHighlightWholeWordsOnlyRadioButton->setChecked(!KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting));
+	KviTalToolTip::add(m_pHighlightWholeWordsOnlyRadioButton,__tr2qs_ctx("<center>This selection will first split the string on the specified boundaries (including space) and then will compare all the parts with the highlighted words.</center>","options"));
+
+	m_pWordSplitterCharactersEdit = new QLineEdit(gbox);
+	m_pWordSplitterCharactersEdit->setText(KVI_OPTION_STRING(KviOption_stringWordSplitters));
+	m_pWordSplitterCharactersEdit->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting));
+	g->addWidget(m_pWordSplitterCharactersEdit,1,1,1,1);
+
+	connect(m_pHighlightWholeWordsOnlyRadioButton,SIGNAL(toggled(bool)),m_pWordSplitterCharactersEdit,SLOT(setEnabled(bool)));
+
+	gbox = addGroupBox(0,4,0,4,Qt::Horizontal,__tr2qs_ctx("Alert Options","options"));
+
+	b = addBoolSelector(gbox,__tr2qs_ctx("Flash the system taskbar entry on highlighted messages","options"),KviOption_boolFlashWindowOnHighlightedMessages);
 	mergeTip(b,__tr2qs_ctx("<center>If this option is enabled, KVIrc will (attempt to) flash the system taskbar entry when a highlighted message is printed and KVIrc is not the active window</center>","options"));
-	b = addBoolSelector(0,6,0,6,__tr2qs_ctx("Popup the notifier window on highlighted messages","options"),KviOption_boolPopupNotifierOnHighlightedMessages);
+	b = addBoolSelector(gbox,__tr2qs_ctx("Popup the notifier window on highlighted messages","options"),KviOption_boolPopupNotifierOnHighlightedMessages);
 	mergeTip(b,__tr2qs_ctx("<center>If this option is enabled, KVIrc will popup a little notifier window in the low right corner of your desktop when a highlighted message is printed and KVIrc is not the active window</center>","options"));
 
-	addRowSpacer(0,7,0,7);
+	addRowSpacer(0,5,0,5);
 }
 
 KviHighlightingOptionsWidget::~KviHighlightingOptionsWidget()
 {
 }
+
+void KviHighlightingOptionsWidget::commit()
+{
+	KVI_OPTION_STRING(KviOption_stringWordSplitters) = m_pWordSplitterCharactersEdit->text().trimmed();
+	KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting) = m_pHighlightAllOccurencesRadioButton->isChecked();
+
+	KviOptionsWidget::commit();
+}
+
 
 
 KviAlertOptionsWidget::KviAlertOptionsWidget(QWidget * parent)
