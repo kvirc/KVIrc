@@ -1555,7 +1555,7 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.grep
 	@short:
-		Emulates the GNU Regular Expression Parser
+		Performs searches in arrays of strings via regular expression matching
 	@syntax:
 		<array> $str.grep(<match:string>,<strings:array>[,<flags:string>,<offset:integer>])
 	@description:
