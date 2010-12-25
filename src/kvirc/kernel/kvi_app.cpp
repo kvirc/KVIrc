@@ -1138,7 +1138,8 @@ QImage & kimageeffect_fade(QImage &img,float val,const QColor &color)
 	if (img.depth() <= 8)
 	{
 		// pseudo color
-		for(int i=0; i<img.numColors(); i++)
+		int c = img.numColors();
+		for(int i=0; i<c; i++)
 		{
 			col = img.color(i);
 			cr = qRed(col); cg = qGreen(col); cb = qBlue(col);
@@ -1152,10 +1153,12 @@ QImage & kimageeffect_fade(QImage &img,float val,const QColor &color)
 		}
 	} else {
 	// truecolor
-		for(int y=0; y<img.height(); y++)
+		int h = img.height();
+		int w = img.width();
+		for(int y=0; y<h; y++)
 		{
 			QRgb *data = (QRgb *) img.scanLine(y);
-			for (int x=0; x<img.width(); x++)
+			for (int x=0; x<w; x++)
 			{
 				col = *data;
 				cr = qRed(col); cg = qGreen(col); cb = qBlue(col);
