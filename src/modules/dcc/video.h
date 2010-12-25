@@ -47,6 +47,10 @@
 	#include "avdevice/videodevicepool.h"
 #endif
 
+#ifdef COMPILE_CRYPT_SUPPORT
+	class KviCryptSessionInfo;
+#endif
+
 class QSlider;
 class KviDccMarshal;
 

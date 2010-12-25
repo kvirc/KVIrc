@@ -50,8 +50,7 @@
 #include <QTextDocument> //for Qt::escape
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "KviCryptEngine.h"
-	#include "KviCryptEngine.h"
+	#include "kvi_cryptcontroller.h"
 #endif
 
 #ifdef COMPILE_SSL_SUPPORT
