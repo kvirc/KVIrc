@@ -1419,7 +1419,7 @@ defpopup(windowpopup)
 		}
 	}
 
-	item($str.printf($tr("Stop Joining Channel on Server '?s'","defscript"),%:szServer),$icon("part"))(%:bIsChannel && %:bIsAutoJoinedOnServer)
+	item($str.printf($tr("Stop Auto-Joining Channel on Server '?s'","defscript"),%:szServer),$icon("part"))(%:bIsChannel && %:bIsAutoJoinedOnServer)
 	{
 		%aChans = $array()
 		foreach(%szChanAndPass,$serverdb.serverJoinChannels(%:szNetwork,%:szServer))
@@ -1432,7 +1432,7 @@ defpopup(windowpopup)
 		serverdb.setServerJoinChannels %:szNetwork %:szServer %aChans
 	}
 
-	item($str.printf($tr("Stop Joining Channel on Network '?s'","defscript"),%:szNetwork),$icon("part"))(%:bIsChannel && %:bIsAutoJoinedOnNetwork)
+	item($str.printf($tr("Stop Auto-Joining Channel on Network '?s'","defscript"),%:szNetwork),$icon("part"))(%:bIsChannel && %:bIsAutoJoinedOnNetwork)
 	{
 		%aChans = $array()
 		foreach(%szChanAndPass,$serverdb.networkJoinChannels(%:szNetwork))
@@ -1449,25 +1449,25 @@ defpopup(windowpopup)
 
 	separator(%:bIsConnectedConsole)
 
-	item($tr("Part All Channels","defscript"), 31) (%:bIsConnectedConsole)
+	item($tr("Part All Channels","defscript"), 31) (%:bIsConnectedConsole && ($window.list(channel)))
 	{
 		foreach(%x,$window.list(channel))
 			window.close %x
 	}
 
-	item($tr("Close All Queries","defscript"), 47) (%:bIsConnectedConsole)
+	item($tr("Close All Queries","defscript"), 47) (%:bIsConnectedConsole && ($window.list(query)))
 	{
 		foreach(%x,$window.list(query))
 			window.close %x
 	}
 
-	item($tr("Close All Dead Channels" ,"defscript"), 232) (%:bIsConnectedConsole)
+	item($tr("Close All Dead Channels" ,"defscript"), 232) (%:bIsConnectedConsole && ($window.list(deadchannel)))
 	{
 		foreach(%x,$window.list(deadchannel))
 			window.close %x
 	}
 
-	item($tr("Close All Dead Queries" ,"defscript"), 233) (%:bIsConnectedConsole)
+	item($tr("Close All Dead Queries" ,"defscript"), 233) (%:bIsConnectedConsole && ($window.list(deadquery)))
 	{
 		foreach(%x,$window.list(deadquery))
 			window.close %x
@@ -1481,13 +1481,13 @@ defpopup(windowpopup)
 			window.highlight 0 %x
 	}
 
-	item($tr("Unhighlight All Channels" ,"defscript")) (%:bIsConnectedConsole)
+	item($tr("Unhighlight All Channels" ,"defscript")) (%:bIsConnectedConsole && ($window.list(channel)))
 	{
 		foreach(%x,$window.list(channel))
 			window.highlight 0 %x
 	}
 
-	item($tr("Unhighlight All Queries" ,"defscript")) (%:bIsConnectedConsole)
+	item($tr("Unhighlight All Queries" ,"defscript")) (%:bIsConnectedConsole && ($window.list(query)))
 	{
 		foreach(%x,$window.list(query))
 			window.highlight 0 %x
