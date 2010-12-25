@@ -175,14 +175,20 @@ QString KviServer::ircUri()
 
 void KviServer::setAutoJoinChannelList(QStringList * pNewChannelList)
 {
-	if(m_pAutoJoinChannelList) delete m_pAutoJoinChannelList;
+	if(m_pAutoJoinChannelList)
+		delete m_pAutoJoinChannelList;
 	m_pAutoJoinChannelList = pNewChannelList;
 }
 
 void KviServer::setAutoJoinChannelList(const QString & szNewChannelList)
 {
-	if(m_pAutoJoinChannelList)delete m_pAutoJoinChannelList;
-	m_pAutoJoinChannelList = new QStringList(szNewChannelList.split(","));
+	if(m_pAutoJoinChannelList)
+		delete m_pAutoJoinChannelList;
+	QStringList lChans = szNewChannelList.split(",");
+	if(lChans.isEmpty())
+		m_pAutoJoinChannelList = NULL;
+	else
+		m_pAutoJoinChannelList = new QStringList(lChans);
 }
 
 bool KviServer::load(KviConfig * cfg, const QString & szPrefix)

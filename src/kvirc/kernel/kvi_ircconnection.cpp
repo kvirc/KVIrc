@@ -1516,6 +1516,11 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 
 
 	// join saved channels
+	
+	// FIXME: It should be possible to delay the channel join process after identification
+	//        (or maybe just delay by a fixed amount ?)
+	//        (or maybe retry joining after a while ?)
+	
 	QString szChannels,szProtectedChannels,szPasswords,szCurPass,szCurChan;
 
 	if(!(m_pStateData->commandToExecAfterConnect().isEmpty()))
@@ -1574,30 +1579,28 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Auto-joining network specific channels"));
 
 			QStringList * l = target()->network()->autoJoinChannelList();
-			if(l->count()!=0)
+			for(QStringList::Iterator it = l->begin(); it != l->end(); ++it)
 			{
-				for(QStringList::Iterator it = l->begin(); it != l->end(); ++it)
+				szCurPass=(*it).section(':',1);
+				szCurChan = (*it).section(':',0,0);
+				if(szCurChan.isEmpty())
+					continue;
+				if(szCurPass.isEmpty())
 				{
-					szCurPass=(*it).section(':',1);
-					if(szCurPass.isEmpty())
-					{
-						if(!szChannels.isEmpty())
-							szChannels.append(",");
-						szCurChan = (*it).section(':',0,0);
-						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'  || szCurChan[0]=='+'))
-							szCurChan.prepend('#');
-						szChannels.append(szCurChan);
-					} else {
-						if(!szProtectedChannels.isEmpty())
-							szProtectedChannels.append(",");
-						szCurChan = (*it).section(':',0,0);
-						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'  || szCurChan[0]=='+'))
-							szCurChan.prepend('#');
-						szProtectedChannels.append(szCurChan);
-						if(!szPasswords.isEmpty())
-							szPasswords.append(",");
-						szPasswords.append(szCurPass);
-					}
+					if(!szChannels.isEmpty())
+						szChannels.append(",");
+					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'  || szCurChan[0]=='+'))
+						szCurChan.prepend('#');
+					szChannels.append(szCurChan);
+				} else {
+					if(!szProtectedChannels.isEmpty())
+						szProtectedChannels.append(",");
+					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'  || szCurChan[0]=='+'))
+						szCurChan.prepend('#');
+					szProtectedChannels.append(szCurChan);
+					if(!szPasswords.isEmpty())
+						szPasswords.append(",");
+					szPasswords.append(szCurPass);
 				}
 			}
 		}
@@ -1608,30 +1611,28 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Auto-joining server specific channels"));
 
 			QStringList * l = target()->server()->autoJoinChannelList();
-			if(l->count()!=0)
+			for(QStringList::Iterator it = l->begin(); it != l->end(); ++it)
 			{
-				for(QStringList::Iterator it = l->begin(); it != l->end(); ++it)
+				szCurPass=(*it).section(':',1);
+				szCurChan = (*it).section(':',0,0);
+				if(szCurChan.isEmpty())
+					continue;
+				if(szCurPass.isEmpty())
 				{
-					szCurPass=(*it).section(':',1);
-					if(szCurPass.isEmpty())
-					{
-						if(!szChannels.isEmpty())
-							szChannels.append(",");
-						szCurChan = (*it).section(':',0,0);
-						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!' || szCurChan[0]=='+'))
-							szCurChan.prepend('#');
-						szChannels.append(szCurChan);
-					} else {
-						if(!szProtectedChannels.isEmpty())
-							szProtectedChannels.append(",");
-						szCurChan = (*it).section(':',0,0);
-						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!' || szCurChan[0]=='+'))
-							szCurChan.prepend('#');
-						szProtectedChannels.append(szCurChan);
-						if(!szPasswords.isEmpty())
-							szPasswords.append(",");
-						szPasswords.append(szCurPass);
-					}
+					if(!szChannels.isEmpty())
+						szChannels.append(",");
+					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!' || szCurChan[0]=='+'))
+						szCurChan.prepend('#');
+					szChannels.append(szCurChan);
+				} else {
+					if(!szProtectedChannels.isEmpty())
+						szProtectedChannels.append(",");
+					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!' || szCurChan[0]=='+'))
+						szCurChan.prepend('#');
+					szProtectedChannels.append(szCurChan);
+					if(!szPasswords.isEmpty())
+						szPasswords.append(",");
+					szPasswords.append(szCurPass);
 				}
 			}
 		}

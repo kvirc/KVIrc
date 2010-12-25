@@ -61,8 +61,13 @@ void KviNetwork::setAutoJoinChannelList(QStringList * pNewChannelList)
 
 void KviNetwork::setAutoJoinChannelList(const QString & szNewChannelList)
 {
-	if(m_pChannelList)delete m_pChannelList;
-	m_pChannelList = new QStringList(szNewChannelList.split(","));
+	if(m_pChannelList)
+		delete m_pChannelList;
+	QStringList lChans = szNewChannelList.split(",");
+	if(lChans.isEmpty())
+		m_pChannelList = NULL;
+	else
+		m_pChannelList = new QStringList(lChans);
 }
 
 void KviNetwork::setNickServRuleSet(KviNickServRuleSet * s)
