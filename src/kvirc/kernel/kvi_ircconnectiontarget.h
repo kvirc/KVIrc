@@ -38,32 +38,63 @@ class KVIRC_API KviIrcConnectionTarget : public KviHeapObject
 public:
 	// pServer is a shallow pointer: this class makes a copy of it internally, must NOT be null
 	// pProxy may be null if a proxy is not desired. this class makes a copy of it internally
-	KviIrcConnectionTarget(const KviNetwork * pNetwork,
-							const KviServer * pServer,
-							const KviProxy * pProxy = 0,
-							const QString &szBindAddress = QString());
+	KviIrcConnectionTarget(
+			const KviNetwork * pNetwork,
+			const KviServer * pServer,
+			const KviProxy * pProxy = 0,
+			const QString &szBindAddress = QString()
+		);
 	~KviIrcConnectionTarget();
 private:
-	KviNetwork      * m_pNetwork;        // owned, never null
-	KviServer       * m_pServer;         // owned, never null
-	KviProxy        * m_pProxy;          // owned, may be null
+	KviNetwork      * m_pNetwork;        // owned, never null, it's a COPY of the entry in the db
+	KviServer       * m_pServer;         // owned, never null, it's a COPY of the entry in the db
+	KviProxy        * m_pProxy;          // owned, may be null, it's a COPY of the entry in the db
 	QString           m_szBindAddress;   // forced bind address
+
 public:
-	KviServer * server(){ return m_pServer; };
-	KviNetwork * network(){ return m_pNetwork; };
-	KviProxy * proxy(){ return m_pProxy; };
-	const QString & bindAddress(){ return m_szBindAddress; };
-	bool hasBindAddress(){ return (!m_szBindAddress.isEmpty()); };
+
+	KviServer * server()
+	{
+		return m_pServer;
+	}
+	
+	KviNetwork * network()
+	{
+		return m_pNetwork;
+	}
+	
+	KviProxy * proxy()
+	{
+		return m_pProxy;
+	}
+	
+	const QString & bindAddress()
+	{
+		return m_szBindAddress;
+	}
+	
+	bool hasBindAddress()
+	{
+		return (!m_szBindAddress.isEmpty());
+	}
+
+#if 0
 	const QString & networkName();
+
 	// this allows to force the network name: it should be used only by KviConsole
 	// but it's KviServerParser (kvi_sp_numeric.cpp) that first
 	// gets the new network name... thus we make it public
 	// to remove one level of indirection.
 	void setNetworkName(const QString &szNetName);
+#endif
+
 protected:
 	// this is for KviIrcConnectionTargetResolver only
 	void clearProxy();
-	void setBindAddress(const QString &szBindAddress){ m_szBindAddress = szBindAddress; };
+	void setBindAddress(const QString &szBindAddress)
+	{
+		m_szBindAddress = szBindAddress;
+	}
 };
 
 #endif //!_KVI_IRCCONNECTIONTARGET_H_

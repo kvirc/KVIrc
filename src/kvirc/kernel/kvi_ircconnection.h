@@ -353,10 +353,10 @@ public:
 	inline KviPointerList<KviChannel> * channelList(){ return m_pChannelList; };
 
 	/**
-	* \brief Forwarder from KviIrcConnectionTarget, always non-empty string
+	* \brief Helper that provides a shortcut for really common access to serverInfo()->networkName()
 	* \return const QString &
 	*/
-	const QString & networkName();
+	const QString & currentNetworkName();
 
 	/**
 	* \brief Helper that provides a shortcut for really common access to userInfo()->nickName()

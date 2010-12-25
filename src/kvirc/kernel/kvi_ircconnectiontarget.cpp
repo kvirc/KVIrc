@@ -29,14 +29,16 @@
 #include "kvi_network.h"
 #include "kvi_proxydb.h"
 
-KviIrcConnectionTarget::KviIrcConnectionTarget(const KviNetwork * pNetwork,
-							const KviServer * pServer,
-							const KviProxy * pProxy,
-							const QString &szBindAddress)
+KviIrcConnectionTarget::KviIrcConnectionTarget(
+		const KviNetwork * pNetwork,
+		const KviServer * pServer,
+		const KviProxy * pProxy,
+		const QString &szBindAddress
+	)
 {
 	m_pNetwork = new KviNetwork(*pNetwork);
 	m_pServer = new KviServer(*pServer);
-	m_pProxy = pProxy ? new KviProxy(*pProxy) : 0;
+	m_pProxy = pProxy ? new KviProxy(*pProxy) : NULL;
 	m_szBindAddress = szBindAddress;
 }
 
@@ -44,9 +46,11 @@ KviIrcConnectionTarget::~KviIrcConnectionTarget()
 {
 	delete m_pNetwork;
 	delete m_pServer;
-	if(m_pProxy)delete m_pProxy;
+	if(m_pProxy)
+		delete m_pProxy;
 }
 
+#if 0
 const QString & KviIrcConnectionTarget::networkName()
 {
 	return m_pNetwork->name();
@@ -56,6 +60,7 @@ void KviIrcConnectionTarget::setNetworkName(const QString &szNetName)
 {
 	m_pNetwork->setName(szNetName);
 }
+#endif
 
 
 void KviIrcConnectionTarget::clearProxy()

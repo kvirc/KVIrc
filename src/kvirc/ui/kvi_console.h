@@ -239,7 +239,7 @@ inline bool KviConsole::isNotConnected()
 
 inline QString KviConsole::currentNetworkName()
 {
-	return (connection() ? connection()->networkName() : QString());
+	return (connection() ? connection()->currentNetworkName() : QString());
 }
 
 #endif //_KVI_CONSOLE_H_

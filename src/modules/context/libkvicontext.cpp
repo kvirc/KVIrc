@@ -105,15 +105,50 @@
 		If the irc_context_id specification is not valid then this function
 		returns nothing. If the specified IRC context is not currently connected
 		then this function returns nothing.
+		The network name is the one that the server reports or
+		the one stored in the server database if the server reports no
+		network name. This is equivalent to [fnc]$my.network[/fnc].
 	@seealso:
 		[fnc]$context.serverHostName[/fnc]
+		[fnc]$context.serverdbNetworkName[/fnc]
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		context_kvs_fnc_networkName,
-		c->returnValue()->setString(pConnection->target()->network()->name())
+		c->returnValue()->setString(pConnection->currentNetworkName())
 	)
 
+/*
+	@doc: context.serverdbNetworkName
+	@type:
+		function
+	@title:
+		$context.serverdbNetworkName
+	@short:
+		Returns the original IRC network name of an IRC context
+	@syntax:
+		<string> $context.serverdbNetworkName
+		<string> $context.serverdbNetworkName(<irc_context_id:uint>)
+	@description:
+		Returns the name of the network for the specified IRC context.
+		If no irc_context_id is specified then the current irc_context is used.
+		If the irc_context_id specification is not valid then this function
+		returns nothing. If the specified IRC context is not currently connected
+		then this function returns nothing.
+		The returned network name is the one that has been specified
+		in the server database and may not correspond to the real network
+		name. However, this is the network name you want to use if
+		you want to manipulate the serverdb entries related to the current
+		connection.
+	@seealso:
+		[fnc]$context.serverHostName[/fnc]
+		[fnc]$context.networkName[/fnc]
+*/
+
+STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
+		context_kvs_fnc_serverdbNetworkName,
+		c->returnValue()->setString(pConnection->target()->network()->name())
+	)
 
 /*
 	@doc: context.serverHostName
@@ -133,11 +168,14 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		If the irc_context_id specification is not valid then this function
 		returns nothing. If the specified IRC context is not currently connected
 		then this function returns nothing.
-		If the returned value is non empty then it will always be a valid
-		DNS hostname that can be used to perform a real connection.
-		Please note that this is different from $my.server() which might
-		return an invalid DNS entry.
+		Please note that this function returns the name of the server as reported
+		by the server itself. Some servers report a bogus value for this field.
+		You should take a look at [fnc]$context.serverIpAddress[/fnc] if you want a value that
+		can be used to really reconnect to this server. If you want a value
+		to manipulate the server entry via the serverdb functions then
+		you probably need [fnc]$context.serverdbServerHostName[/fnc].
 	@seealso:
+		[fnc]$context.serverdbServerHostName[/fnc]
 		[fnc]$context.serverPort[/fnc],
 		[fnc]$context.serverIpAddress[/fnc],
 		[fnc]$context.serverPassword[/fnc]
@@ -145,6 +183,40 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		context_kvs_fnc_serverHostName,
+		c->returnValue()->setString(pConnection->currentServerName())
+	)
+
+/*
+	@doc: context.serverdbServerHostName
+	@type:
+		function
+	@title:
+		$context.serverdbServerHostName
+	@short:
+		Returns the original IRC server name of an IRC context
+	@syntax:
+		<string> $context.serverdbServerHostName
+		<string> $context.serverdbServerHostName(<irc_context_id:uint>)
+	@description:
+		Returns the host name of the IRC server that was used to perform
+		the connection in the specified irc context.
+		If no irc_context_id is specified then the current irc_context is used.
+		If the irc_context_id specification is not valid then this function
+		returns nothing. If the specified IRC context is not currently connected
+		then this function returns nothing.
+		The returned server name is the one that has been specified
+		in the server database and may refer to a round-robin dns entry.
+		However, this is the server name you want to use if you want to manipulate
+		the serverdb entries related to the current connection.
+	@seealso:
+		[fnc]$context.serverHostName[/fnc],
+		[fnc]$context.serverPort[/fnc],
+		[fnc]$context.serverIpAddress[/fnc],
+		[fnc]$context.serverPassword[/fnc]
+*/
+
+STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
+		context_kvs_fnc_serverdbServerHostName,
 		c->returnValue()->setString(pConnection->target()->server()->hostName())
 	)
 
@@ -457,6 +529,8 @@ static bool context_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"serverIsSSL",context_kvs_fnc_serverIsSSL);
 	KVSM_REGISTER_FUNCTION(m,"serverPassword",context_kvs_fnc_serverPassword);
 	KVSM_REGISTER_FUNCTION(m,"networkName",context_kvs_fnc_networkName);
+	KVSM_REGISTER_FUNCTION(m,"serverdbNetworkName",context_kvs_fnc_serverdbNetworkName);
+	KVSM_REGISTER_FUNCTION(m,"serverdbServerHostName",context_kvs_fnc_serverdbServerHostName);
 	KVSM_REGISTER_FUNCTION(m,"state",context_kvs_fnc_state);
 	KVSM_REGISTER_FUNCTION(m,"list",context_kvs_fnc_list);
 	KVSM_REGISTER_FUNCTION(m,"serverSoftware",context_kvs_fnc_serverSoftware);

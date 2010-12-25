@@ -358,7 +358,7 @@ void KviListWindow::exportList()
 				break;
 		}
 		KviQString::sprintf(szFile,__tr2qs("Channel list for %Q - %Q"),
-			&(connection()->networkName()),&(szDate));
+			&(connection()->currentNetworkName()),&(szDate));
 	} else {
 		szFile = __tr2qs("Channel list");
 	}

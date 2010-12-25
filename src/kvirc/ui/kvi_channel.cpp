@@ -305,7 +305,7 @@ void KviChannel::getBaseLogFileName(QString & szBuffer)
 	{
 		szBuffer = szChan;
 		szBuffer.append(".");
-		szBuffer.append(connection()->networkName());
+		szBuffer.append(connection()->currentNetworkName());
 	} else {
 		szBuffer = szChan;
 		szBuffer.append(".");
@@ -338,7 +338,7 @@ void KviChannel::getConfigGroupName(QString & szBuffer)
 // 	if(connection())
 // 	{
 // 		szBuffer.append("@");
-// 		szBuffer.append(connection()->networkName());
+// 		szBuffer.append(connection()->currentNetworkName());
 // 	}
 }
 

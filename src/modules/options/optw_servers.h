@@ -221,6 +221,7 @@ protected slots:
 	void recentServersPopupAboutToShow();
 	void recentServersPopupClicked(int id);
 	void importPopupActivated(int id);
+	void serverNetworkEditTextEdited(const QString &szNewText);
 public:
 	virtual void commit();
 };

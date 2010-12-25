@@ -296,7 +296,10 @@ void KviServerParser::parseNumeric005(KviIrcMessage *msg)
 			{
 				p += 8;
 				QString tmp = p;
-				if(!tmp.isEmpty())msg->console()->connection()->target()->setNetworkName(tmp);
+
+				if(!tmp.isEmpty())
+					msg->console()->connection()->serverInfo()->setNetworkName(tmp);
+
 				if((!_OUTPUT_MUTE) && (!msg->haltOutput()) && KVI_OPTION_BOOL(KviOption_boolShowExtendedServerInfo))
 				{
 					msg->console()->output(KVI_OUT_SERVERINFO,__tr2qs("The current network is %Q"),&tmp);
@@ -961,7 +964,7 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 	KviIdentityProfile * pProfile = 0;
 	if(bProfilesEnabled)
 	{
-		pProfile = pSet->findNetwork(msg->connection()->networkName());
+		pProfile = pSet->findNetwork(msg->connection()->currentNetworkName());
 		if(pProfile)
 		{
 			szNextNick = pProfile->altNick();

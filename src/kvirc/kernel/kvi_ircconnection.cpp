@@ -282,9 +282,10 @@ void KviIrcConnection::serverInfoReceived(const QString & szServerName, const QS
 	m_pConsole->frame()->childConnectionServerInfoChange(this);
 }
 
-const QString & KviIrcConnection::networkName()
+const QString & KviIrcConnection::currentNetworkName()
 {
-	return m_pTarget->networkName();
+	//return m_pTarget->networkName();
+	return m_pServerInfo->networkName();
 }
 
 void KviIrcConnection::abort()
@@ -311,7 +312,8 @@ void KviIrcConnection::linkEstabilished()
 	// setup reasonable defaults before notifying anyone
 	m_pStatistics->setConnectionStartTime(kvi_unixTime());
 	m_pStatistics->setLastMessageTime(kvi_unixTime());
-	m_pServerInfo->setName(target()->server()->m_szHostname);
+	m_pServerInfo->setName(target()->server()->hostName());
+	m_pServerInfo->setNetworkName(target()->network()->name());
 
 	// FIXME: With STARTTLS this is called TWICE!
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
@@ -661,7 +663,7 @@ void KviIrcConnection::registerChannel(KviChannel * c)
 {
 	m_pChannelList->append(c);
 	if(KVI_OPTION_BOOL(KviOption_boolLogChannelHistory))
-		g_pApp->addRecentChannel(c->windowName(),m_pTarget->networkName());
+		g_pApp->addRecentChannel(c->windowName(),m_pServerInfo->networkName());
 	emit(channelRegistered(c));
 	emit(chanListChanged());
 }

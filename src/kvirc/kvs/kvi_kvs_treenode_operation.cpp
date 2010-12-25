@@ -779,7 +779,9 @@ void KviKvsTreeNodeOperationSelfSum::dump(const char * prefix)
 bool KviKvsTreeNodeOperationSelfSum::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c,&v))
+		return false;
+
 	KviKvsNumber rnum;
 
 	if(!v.asNumber(rnum))

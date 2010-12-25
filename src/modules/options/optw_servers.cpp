@@ -1321,6 +1321,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pSrvNetLabel = new QLabel(__tr2qs_ctx("Server:","options"),gbox);
 
 	m_pSrvNetEdit = new QLineEdit(gbox);
+	connect(m_pSrvNetEdit,SIGNAL(textEdited(const QString &)),this,SLOT(serverNetworkEditTextEdited(const QString &)));
 	KviTalToolTip::add(m_pSrvNetEdit,__tr2qs_ctx("<center>This is the name of the currently selected server or network</center>","options"));
 
 	m_pDetailsButton = new QPushButton(__tr2qs_ctx("Advanced...","options"),gbox);
@@ -1513,7 +1514,6 @@ void KviServerOptionsWidget::selectBestServerByUrl(const QString &szUrl)
 
 }
 
-
 void KviServerOptionsWidget::connectCurrentClicked()
 {
 	saveLastItem();
@@ -1604,19 +1604,36 @@ void KviServerOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetI
 	}
 }
 
+void KviServerOptionsWidget::serverNetworkEditTextEdited(const QString &)
+{
+	if(!m_pLastEditedItem)
+		return;
+
+	saveLastItem();
+
+	// make sure the current item is currently visible (if it still exists)
+	if(m_pLastEditedItem)
+		m_pTreeWidget->scrollToItem(m_pLastEditedItem,QTreeWidget::EnsureVisible);
+}
+
+
 void KviServerOptionsWidget::saveLastItem()
 {
-	if(!m_pLastEditedItem)return;
+	if(!m_pLastEditedItem)
+		return;
+
 	if(m_pLastEditedItem->m_pServerData)
 	{
 		KviStr tmp = m_pSrvNetEdit->text();
-		if(tmp.isEmpty())tmp = "irc.unknown.net";
+		if(tmp.isEmpty())
+			tmp = "irc.unknown.net";
 		m_pLastEditedItem->m_pServerData->m_szHostname = tmp;
 		m_pLastEditedItem->updateVisibleStrings();
 	} else if(m_pLastEditedItem->m_pNetworkData)
 	{
 		QString tmp = m_pSrvNetEdit->text();
-		if(tmp.isEmpty())tmp = __tr2qs_ctx("UnknownNet","options");
+		if(tmp.isEmpty())
+			tmp = __tr2qs_ctx("UnknownNet","options");
 		m_pLastEditedItem->m_pNetworkData->setName(tmp);
 		m_pLastEditedItem->updateVisibleStrings();
 	}

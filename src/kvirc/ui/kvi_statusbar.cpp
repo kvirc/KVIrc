@@ -555,7 +555,7 @@ void KviStatusBar::mouseDoubleClickEvent(QMouseEvent *)
 
 	szText += __tr2qs("Network");
 	szText += ": ";
-	szText += c->connection()->networkName();
+	szText += c->connection()->currentNetworkName();
 	szText += "<br>";
 	szText += __tr2qs("Server");
 	szText += ": ";

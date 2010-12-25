@@ -101,7 +101,7 @@ void KviWindowListBase::getTextForConsole(QString &szText,KviConsole * pConsole)
 			// FIXME: Should never show "Standalone Servers" or "orphan_servers".
 			//        It would also be nice to have a number appended to
 			//        multiple entries with the same server name...but this costs too much.
-			szText = pConsole->connection()->networkName();
+			szText = pConsole->connection()->currentNetworkName();
 			if(szText.isEmpty())
 				szText = pConsole->connection()->currentServerName();
 		} else {

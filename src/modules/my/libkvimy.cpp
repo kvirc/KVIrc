@@ -343,8 +343,10 @@ static bool my_kvs_fnc_serverIsSSL(KviKvsModuleFunctionCall * c)
 		in that irc_context.[br]
 		Please note that this function returns the name of the server as reported
 		by the server itself. Some servers report a bogus value for this field.
-		You should take a look at $context.serverIpAddress or $context.serverHostName
-		if you want a value that can be used to really reconnect to this server.
+		You should take a look at [fnc]$context.serverIpAddress[/fnc] if you want a value that
+		can be used to really reconnect to this server. If you want a value
+		to manipulate the server entry via the serverdb functions then
+		you probably need [fnc]$context.serverdbServerHostName[/fnc].
 */
 
 static bool my_kvs_fnc_server(KviKvsModuleFunctionCall * c)
@@ -353,7 +355,7 @@ static bool my_kvs_fnc_server(KviKvsModuleFunctionCall * c)
 	if(wnd)
 	{
 		if(wnd->connection())
-			c->returnValue()->setString(wnd->connection()->serverInfo()->name());
+			c->returnValue()->setString(wnd->connection()->currentServerName());
 	}
 	return true;
 }
@@ -381,7 +383,7 @@ static bool my_kvs_fnc_network(KviKvsModuleFunctionCall * c)
 	if(wnd)
 	{
 		if(wnd->connection())
-			c->returnValue()->setString(wnd->currentNetworkName().toUtf8().data());
+			c->returnValue()->setString(wnd->currentNetworkName());
 	}
 	return true;
 }

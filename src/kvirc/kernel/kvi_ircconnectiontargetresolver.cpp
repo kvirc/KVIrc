@@ -158,7 +158,7 @@ void KviIrcConnectionTargetResolver::asyncStartResolve()
 		__tr2qs("Attempting %Q to %Q (%Q) on port %u"),
 		m_pTarget->server()->useSSL() ? &(__tr2qs("secure connection")) : &(__tr2qs("connection")),
 		&(m_pTarget->server()->m_szHostname),
-		&(m_pTarget->networkName()),
+		&(m_pTarget->network()->name()),
 		m_pTarget->server()->m_uPort);
 
 	if(m_pTarget->proxy())

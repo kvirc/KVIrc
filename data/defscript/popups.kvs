@@ -1329,6 +1329,55 @@ file.addimagepath %mypath/pics/
 
 defpopup(windowpopup)
 {
+	prologue
+	{
+		%:bIsConnectedConsole = $(($window.type == "console") && ($context.state == "connected"));
+
+		if($window.type == "channel")
+		{
+			%:bIsChannel = $true;
+			%:szNetwork = $context.serverdbNetworkName()
+			%:szServer = $context.serverdbServerHostName()
+			%:bIsAutoJoinedOnNetwork = $false;
+			%:bIsAutoJoinedOnServer = $false;
+	
+			if($serverdb.networkExists(%:szNetwork))
+			{
+				foreach(%szChanAndPass,$serverdb.networkJoinChannels(%:szNetwork))
+				{
+					%aChanAndPass = $str.split(":",%szChanAndPass)
+				
+					if(%aChanAndPass[0] == $chan.name)
+					{
+						%:bIsAutoJoinedOnNetwork = $true;
+						break;
+					}
+				}
+				if($serverdb.serverExists(%:szServer,%:szNetwork))
+				{
+					foreach(%szChanAndPass,$serverdb.serverJoinChannels(%:szNetwork,%:szServer))
+					{
+						%aChanAndPass = $str.split(":",%szChanAndPass)
+				
+						if(%aChanAndPass[0] == $chan.name)
+						{
+							%:bIsAutoJoinedOnServer = $true;
+							break;
+						}
+					}
+				} else {
+					%:szServer = ""
+				}
+			} else {
+				%:szNetwork = ""
+			}
+			%:bIsAutoJoined = $(%:bIsAutoJoinedOnNetwork || %:bIsAutoJoinedOnServer)
+		} else {
+			%:bIsChannel = $false;
+		}
+	}
+
+
 	item($tr("Dock","defscript"), 6) (!$window.isDocked()) window.dock
 	item($tr("Undock","defscript"), 7) ($window.isDocked()) window.undock
 
@@ -1348,49 +1397,97 @@ defpopup(windowpopup)
 
 	item($tr("Set window props as default","defscript"), 10) window.savePropertiesAsDefault
 
-	separator
+	# channel-specific items
 
-# start: console-specific items
+	separator(%:bIsChannel)
 
-	item($tr("Part All Channels","defscript"), 31) ($window.type=="console" && $context.state=="connected")
+	popup($tr("Automatically Join Channel","defscript"),$icon("join"))(%:bIsChannel && (!%:bIsAutoJoined) && ((%:szServer != "") || (%:szNetwork != "")))
+	{
+
+		item($str.printf($tr("When Connecting to Server '?s'","defscript"),%:szServer),$icon("server"))(%:szServer != "")
+		{
+			%aChans = $serverdb.serverJoinChannels(%:szNetwork,%:szServer)
+			%aChans <+ $chan.name
+			serverdb.setServerJoinChannels %:szNetwork %:szServer %aChans
+		}
+
+		item($str.printf($tr("When Connecting to Network '?s'","defscript"),%:szNetwork),$icon("world"))(%:szNetwork != "")
+		{
+			%aChans = $serverdb.networkJoinChannels(%:szNetwork)
+			%aChans <+ $chan.name
+			serverdb.setNetworkJoinChannels %:szNetwork %aChans
+		}
+	}
+
+	item($str.printf($tr("Stop Joining Channel on Server '?s'","defscript"),%:szServer),$icon("part"))(%:bIsChannel && %:bIsAutoJoinedOnServer)
+	{
+		%aChans = $array()
+		foreach(%szChanAndPass,$serverdb.serverJoinChannels(%:szNetwork,%:szServer))
+		{
+			%aChanAndPass = $str.split(":",%szChanAndPass)
+	
+			if(%aChanAndPass[0] != $chan.name)
+				%aChans <+ %szChanAndPass;
+		}
+		serverdb.setServerJoinChannels %:szNetwork %:szServer %aChans
+	}
+
+	item($str.printf($tr("Stop Joining Channel on Network '?s'","defscript"),%:szNetwork),$icon("part"))(%:bIsChannel && %:bIsAutoJoinedOnNetwork)
+	{
+		%aChans = $array()
+		foreach(%szChanAndPass,$serverdb.networkJoinChannels(%:szNetwork))
+		{
+			%aChanAndPass = $str.split(":",%szChanAndPass)
+	
+			if(%aChanAndPass[0] != $chan.name)
+				%aChans <+ %szChanAndPass;
+		}
+		serverdb.setNetworkJoinChannels %:szNetwork %aChans
+	}
+
+	# console-specific items
+
+	separator(%:bIsConnectedConsole)
+
+	item($tr("Part All Channels","defscript"), 31) (%:bIsConnectedConsole)
 	{
 		foreach(%x,$window.list(channel))
 			window.close %x
 	}
 
-	item($tr("Close All Queries","defscript"), 47) ($window.type=="console" && $context.state=="connected")
+	item($tr("Close All Queries","defscript"), 47) (%:bIsConnectedConsole)
 	{
 		foreach(%x,$window.list(query))
 			window.close %x
 	}
 
-	item($tr("Close All Dead Channels" ,"defscript"), 232) ($window.type=="console" && $context.state=="connected")
+	item($tr("Close All Dead Channels" ,"defscript"), 232) (%:bIsConnectedConsole)
 	{
 		foreach(%x,$window.list(deadchannel))
 			window.close %x
 	}
 
-	item($tr("Close All Dead Queries" ,"defscript"), 233) ($window.type=="console" && $context.state=="connected")
+	item($tr("Close All Dead Queries" ,"defscript"), 233) (%:bIsConnectedConsole)
 	{
 		foreach(%x,$window.list(deadquery))
 			window.close %x
 	}
 
-	separator
+	separator(%:bIsConnectedConsole)
 
-	item($tr("Unhighlight All Windows" ,"defscript")) ($window.type=="console" && $context.state=="connected")
+	item($tr("Unhighlight All Windows" ,"defscript")) (%:bIsConnectedConsole)
 	{
 		foreach(%x,$window.list(all))
 			window.highlight 0 %x
 	}
 
-	item($tr("Unhighlight All Channels" ,"defscript")) ($window.type=="console" && $context.state=="connected")
+	item($tr("Unhighlight All Channels" ,"defscript")) (%:bIsConnectedConsole)
 	{
 		foreach(%x,$window.list(channel))
 			window.highlight 0 %x
 	}
 
-	item($tr("Unhighlight All Queries" ,"defscript")) ($window.type=="console" && $context.state=="connected")
+	item($tr("Unhighlight All Queries" ,"defscript")) (%:bIsConnectedConsole)
 	{
 		foreach(%x,$window.list(query))
 			window.highlight 0 %x

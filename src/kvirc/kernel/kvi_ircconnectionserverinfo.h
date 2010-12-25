@@ -165,6 +165,7 @@ protected:
 	~KviIrcConnectionServerInfo();
 private:
 	KviBasicIrcServerInfo * m_pServInfo;
+	QString m_szNetworkName;               // the most actual network name (may be the one we specify or the one that the server reports)
 	QString m_szName;                      // the most actual server name (may be the one we specify or the one that the server wants to be known as)
 	QString m_szSupportedUserModes;        // the supported user modes
 	QString m_szSupportedChannelModes;     // the supported channel modes (all of them)
@@ -192,6 +193,7 @@ public:
 	const char * software() { return m_pServInfo ? m_pServInfo->getSoftware() : 0; };
 	bool getNeedsOpToListModeseI() { return m_pServInfo ? m_pServInfo->getNeedsOpToListModeseI() : false; };
 	const QString & name() { return m_szName; };
+	const QString & networkName() { return m_szNetworkName; };
 	const QString & supportedUserModes() { return m_szSupportedUserModes; };
 	const QString & supportedChannelModes() { return m_szSupportedChannelModes; };
 	const QString & supportedChannelTypes() { return m_szSupportedChannelTypes; };
@@ -221,6 +223,7 @@ public:
 	kvi_u32_t modeFlagFromPrefixChar(QChar c);
 	kvi_u32_t modeFlagFromModeChar(QChar c);
 protected:
+	void setNetworkName(const QString &szName){ m_szNetworkName = szName; };
 	void setName(const QString &szName) { m_szName = szName; };
 	void setSupportedUserModes(const QString &szSupportedUserModes) { m_szSupportedUserModes = szSupportedUserModes; };
 	void setSupportedChannelModes(const QString &szSupportedChannelModes);
