@@ -4,7 +4,7 @@
 //   Creation date : Tue 07 Dec 2004 02:00:24 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,12 +24,12 @@
 
 #include "kvi_kvs_useraction.h"
 #include "kvi_kvs_script.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_iconmanager.h"
 #include "kvi_actionmanager.h"
 #include "kvi_kvs_script.h"
 #include "kvi_window.h"
-#include "kvi_cmdformatter.h"
+#include "KviCommandFormatter.h"
 
 KviKvsUserAction::KviKvsUserAction(QObject * pParent,
 		const QString &szName,
@@ -305,7 +305,7 @@ bool KviKvsUserAction::isKviUserActionNeverOverrideThis()
 	return true;
 }
 
-bool KviKvsUserAction::load(KviConfig * cfg)
+bool KviKvsUserAction::load(KviConfigurationFile * cfg)
 {
 	m_szName = cfg->group();
 	if(m_szName.isEmpty())return false;
@@ -343,7 +343,7 @@ bool KviKvsUserAction::load(KviConfig * cfg)
 	return true;
 }
 
-void KviKvsUserAction::save(KviConfig * cfg)
+void KviKvsUserAction::save(KviConfigurationFile * cfg)
 {
 	cfg->setGroup(m_szName);
 	if(m_pVisibleNameScript)cfg->writeEntry("VisibleName",m_pVisibleNameScript->code());

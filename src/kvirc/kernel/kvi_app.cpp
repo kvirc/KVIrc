@@ -4,7 +4,7 @@
 //   Creation date : Sun Jun 18 2000 12:39:45 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -32,49 +32,49 @@
 #include "kvi_iconmanager.h"
 #include "kvi_input.h"
 #include "kvi_input_history.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_colorwin.h"
 #include "kvi_window.h"
-#include "kvi_ircserverdb.h"
-#include "kvi_proxydb.h"
+#include "KviIrcServerDataBase.h"
+#include "KviProxyDataBase.h"
 #include "kvi_menubar.h"
 #include "kvi_options.h"
 #include "kvi_sparser.h"
 #include "kvi_modulemanager.h"
-#include "kvi_mediatype.h"
-#include "kvi_regusersdb.h"
-#include "kvi_thread.h"
-#include "kvi_sharedfiles.h"
+#include "KviMediaType.h"
+#include "KviRegisteredUserDataBase.h"
+#include "KviThread.h"
+#include "KviSharedFilesManager.h"
 #include "kvi_confignames.h"
 #include "kvi_windowlist.h"
 #include "kvi_defaults.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_out.h"
 #include "kvi_splash.h"
-#include "kvi_nickserv.h"
-#include "kvi_identityprofile.h"
+#include "KviNickServRuleSet.h"
+#include "KviIdentityProfile.h"
 #include "kvi_defaultscript.h"
 #include "kvi_xlib.h"
 #include "kvi_texticonmanager.h"
 #include "kvi_texticonwin.h"
 #include "kvi_historywin.h"
 #include "kvi_ctcppagedialog.h"
-#include "kvi_regchan.h"
+#include "KviRegisteredChannel.h"
 #include "kvi_moduleextension.h"
 #include "kvi_internalcmd.h"
 #include "kvi_filetransfer.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_ircurl.h"
-#include "kvi_avatarcache.h"
+#include "KviAvatarCache.h"
 #include "kvi_actionmanager.h"
 #include "kvi_customtoolbarmanager.h"
-#include "kvi_fileutils.h"
-#include "kvi_time.h"
-#include "kvi_stringconversion.h"
-#include "kvi_useridentity.h"
+#include "KviFileUtils.h"
+#include "KviTimeUtils.h"
+#include "KviStringConversion.h"
+#include "KviUserIdentity.h"
 #include "kvi_ircview.h"
-#include "kvi_env.h"
-#include "kvi_animatedpixmapcache.h"
+#include "KviEnvironment.h"
+#include "KviAnimatedPixmapCache.h"
 #include "kvi_kvs.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_popupmanager.h"
@@ -82,7 +82,7 @@
 #include "kvi_kvs_object_controller.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 #include "kvi_tal_popupmenu.h"
 
 #ifndef COMPILE_NO_IPC
@@ -130,7 +130,7 @@ DO NOT REMOVE THEM EVEN IF THEY ARE DEFINED ALSO IN kvi_app.h
 // Global application pointer
 KVIRC_API KviApp                        * g_pApp                        = 0;
 
-KviConfig                               * g_pWinPropertiesConfig        = 0;
+KviConfigurationFile                               * g_pWinPropertiesConfig        = 0;
 KVIRC_API KviServerDataBase             * g_pServerDataBase             = 0;
 KVIRC_API KviProxyDataBase              * g_pProxyDataBase              = 0;
 
@@ -170,7 +170,7 @@ QPixmap                                 * g_pActivityMeterPixmap        = 0;
 #endif
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "kvi_crypt.h"
+	#include "KviCryptEngine.h"
 	// global crypt engine manager
 	KVIRC_API KviCryptEngineManager * g_pCryptEngineManager = 0;
 #endif
@@ -189,7 +189,7 @@ KviApp::KviApp(int &argc,char ** argv)
 	// Disable the native menubar on MacOSX as in Qt 4.6 it's quite buggy and
 	// *very* often crashes in QMenuBar::macUpdateMenuBar()->QAction::isVisible().
 	// FIXME: Check it with later Qt versions
-	kvi_setenv("QT_MAC_NO_NATIVE_MENUBAR","1");
+	KviEnvironment::setVariable("QT_MAC_NO_NATIVE_MENUBAR","1");
 #endif //COMPILE_ON_MAC
 
 	// Ok...everything begins here
@@ -358,7 +358,7 @@ void KviApp::setup()
 
 	// Load the win properties config
 	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_WINPROPERTIES);
-	g_pWinPropertiesConfig = new KviConfig(szTmp,KviConfig::ReadWrite);
+	g_pWinPropertiesConfig = new KviConfigurationFile(szTmp,KviConfigurationFile::ReadWrite);
 
 	KVI_SPLASH_SET_PROGRESS(50)
 
@@ -930,7 +930,7 @@ void KviApp::ipcMessage(char * pcMessage)
 		return;
 	if(_OUTPUT_VERBOSE)
 	{
-		KviStr szCmd = pcMessage;
+		KviCString szCmd = pcMessage;
 		if(szCmd.len() > 30)
 			szCmd.cutRight(szCmd.len() - 30);
 		int iIdx = szCmd.findFirstIdx('\n');
@@ -1303,7 +1303,7 @@ void KviApp::loadRecentEntries()
 {
 	QString szTmp;
 	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_RECENT);
-	KviConfig cfg(szTmp,KviConfig::Read);
+	KviConfigurationFile cfg(szTmp,KviConfigurationFile::Read);
 	*g_pRecentTopicList = cfg.readStringListEntry("RecentTopicList",QStringList());
 	//*g_pBookmarkList = cfg.readStringListEntry("Bookmarks",QStringList());
 }
@@ -1312,7 +1312,7 @@ void KviApp::saveRecentEntries()
 {
 	QString szTmp;
 	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_RECENT);
-	KviConfig cfg(szTmp,KviConfig::Write);
+	KviConfigurationFile cfg(szTmp,KviConfigurationFile::Write);
 	cfg.writeEntry("RecentTopicList",*g_pRecentTopicList);
 	//cfg.writeEntry("Bookmarks",*g_pBookmarkList);
 }

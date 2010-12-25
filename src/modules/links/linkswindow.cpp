@@ -4,7 +4,7 @@
 //   Creation date : Thu Dec 21 2001 12:41:18 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,10 +29,10 @@
 #include "kvi_ircview.h"
 #include "kvi_out.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
-#include "kvi_qstring.h"
+#include "KviLocale.h"
+#include "KviQString.h"
 #include "kvi_out.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_themedlabel.h"
 #include "kvi_irccontext.h"
 #include "kvi_ircconnection.h"
@@ -201,7 +201,7 @@ void KviLinksWindow::endOfLinks()
 	int farLinks    = 0;
 	int wildServers = 0;
 
-	KviStr szMaxHop,szMaxLinks;
+	KviCString szMaxHop,szMaxLinks;
 
 	m_pListView->setUpdatesEnabled(false);
 	for(KviLink *l=m_pLinkList->first();l;l=m_pLinkList->next()){
@@ -236,7 +236,7 @@ void KviLinksWindow::endOfLinks()
 				brokenLinks++;
 				QString tmp;
 				KviQString::sprintf(tmp,__tr2qs("%s: Parent link %s"),l->description.ptr(),l->parent.ptr());
-				KviStr tmp2(KviStr::Format,"%d",l->hops);
+				KviCString tmp2(KviCString::Format,"%d",l->hops);
 				if(root)
 				{
 					it = new QTreeWidgetItem(root);
@@ -322,7 +322,7 @@ QTreeWidgetItem * KviLinksWindow::insertLink(KviLink *l)
 	{
 		return 0;
 	} else {
-		KviStr hops(KviStr::Format,"%d",l->hops);
+		KviCString hops(KviCString::Format,"%d",l->hops);
 		it = new QTreeWidgetItem(i);
 		it->setText(0,QString(l->host.ptr()));
 		it->setText(1,QString(hops.ptr()));
@@ -334,7 +334,7 @@ QTreeWidgetItem * KviLinksWindow::insertLink(KviLink *l)
 
 QTreeWidgetItem * KviLinksWindow::getItemByHost(const char *host,QTreeWidgetItem * par)
 {
-	KviStr tmp;
+	KviCString tmp;
 	if(par)
 	{
 		for(int i=0;i<par->childCount();i++)
@@ -359,10 +359,10 @@ QTreeWidgetItem * KviLinksWindow::getItemByHost(const char *host,QTreeWidgetItem
 void KviLinksWindow::showHostPopup(QTreeWidgetItem *i,const QPoint &p)
 {
 	if(!i)return;
-	KviStr host=i->text(0);
+	KviCString host=i->text(0);
 	if(host.isEmpty())return;
 	m_pHostPopup->clear();
-	KviStr tmp(KviStr::Format,"LINKS %s *",host.ptr());
+	KviCString tmp(KviCString::Format,"LINKS %s *",host.ptr());
 	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINKS)),tmp.ptr());
 	m_pHostPopup->insertSeparator();
 	tmp.sprintf("TIME %s",host.ptr());
@@ -409,7 +409,7 @@ void KviLinksWindow::showHostPopup(QTreeWidgetItem *i,const QPoint &p)
 
 void KviLinksWindow::hostPopupClicked(int id)
 {
-	KviStr tmp = m_pHostPopup->text(id);
+	KviCString tmp = m_pHostPopup->text(id);
 	if(tmp.hasData())
 	{
 		if(!connection())output(KVI_OUT_SYSTEMERROR,__tr2qs("You're not connected to a server"));
@@ -437,7 +437,7 @@ void KviLinksWindow::processData(KviIrcMessage *msg)
 	{
 		const char *aux = tr;
 		while(*tr && (isdigit(*tr)))tr++;
-		KviStr tmp(aux,tr - aux);
+		KviCString tmp(aux,tr - aux);
 		l->hops = tmp.toInt();
 	} else {
 		outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Broken message syntax, can't extract hops number, assuming 0"));

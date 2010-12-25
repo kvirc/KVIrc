@@ -6,7 +6,7 @@
 //   Creation date : Tue Oct  2 18:22:05 2001 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,12 +24,12 @@
 //
 //=============================================================================
 
-#include "kvi_thread.h"
+#include "KviThread.h"
 #include "kvi_sockettype.h"
-#include "kvi_string.h"
-#include "kvi_time.h"
+#include "KviCString.h"
+#include "KviTimeUtils.h"
 #include "kvi_settings.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 
 #include <QObject>
 
@@ -40,17 +40,17 @@ public:
 	~KviIdentRequest();
 public:
 	kvi_socket_t       m_sock;
-	KviStr             m_szData;
-	KviStr             m_szHost;
+	KviCString             m_szData;
+	KviCString             m_szHost;
 	kvi_u32_t m_uPort;
 	time_t             m_tStart;
 };
 
 typedef struct _KviIdentMessageData
 {
-	KviStr             szMessage;
-	KviStr             szHost;
-	KviStr             szAux;
+	KviCString             szMessage;
+	KviCString             szHost;
+	KviCString             szAux;
 	unsigned int       uPort;
 } KviIdentMessageData;
 
@@ -71,7 +71,7 @@ public:
 	KviIdentDaemon();
 	~KviIdentDaemon();
 private:
-	KviStr                    m_szUser;
+	KviCString                    m_szUser;
 	kvi_u32_t        m_uPort;
 	bool                      m_bEnableIPv6;
 	bool                      m_bIPv6ContainsIPv4;

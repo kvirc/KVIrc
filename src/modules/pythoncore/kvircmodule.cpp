@@ -41,7 +41,7 @@
 
 extern KviKvsRunTimeContext * g_pCurrentKvsContext;
 extern bool g_bExecuteQuiet;
-extern KviStr g_szLastReturnValue;
+extern KviCString g_szLastReturnValue;
 extern QStringList g_lWarningList;
 extern QString g_lError;
 

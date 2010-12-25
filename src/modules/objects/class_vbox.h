@@ -25,7 +25,7 @@
 //
 //=============================================================================
 
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "class_widget.h"
 #include "object_macros.h"
 

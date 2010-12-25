@@ -6,7 +6,7 @@
 //   Creation date : Tue Apr 22 2003 02:00:12 GMT by Szymon Stefanek
 //
 //   This config is part of the KVirc irc client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2003-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@
 
 #include "kvi_filetransfer.h"
 #include "kvi_http.h"
-#include "kvi_time.h"
+#include "KviTimeUtils.h"
 #include "kvi_kvs_variant.h"
 
 #include <QStringList>
@@ -85,7 +85,7 @@ public:
 protected slots:
 	void statusMessage(const QString &txt);
 	void transferTerminated(bool bSuccess);
-	void headersReceived(KviPointerHashTable<const char *,KviStr> *h);
+	void headersReceived(KviPointerHashTable<const char *,KviCString> *h);
 	void requestSent(const QStringList &sl);
 
 	void resolvingHost(const QString &hostname);

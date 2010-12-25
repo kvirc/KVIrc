@@ -3,7 +3,7 @@
 //   File : libkvifiletransferwindow.cpp
 //   Creation date : Mon Apr 21 2003 23:14:12 CEST by Szymon Stefanek
 //
-//   Copyright (C) 2003-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2003-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,7 +27,7 @@
 #include "kvi_app.h"
 #include "kvi_frame.h"
 #include "kvi_window.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_iconmanager.h"
 
 #include <QSplitter>

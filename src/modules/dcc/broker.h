@@ -6,7 +6,7 @@
 //   Creation date : Tue Sep 19 09 2000 10:20:01 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,10 +27,10 @@
 #include "descriptor.h"
 
 #include "kvi_settings.h"
-#include "kvi_string.h"
-#include "kvi_pointerlist.h"
+#include "KviCString.h"
+#include "KviPointerList.h"
 #include "kvi_sparser.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 
 #include <QDateTime>
 #include <QObject>

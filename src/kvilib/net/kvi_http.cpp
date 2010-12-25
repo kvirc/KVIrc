@@ -4,7 +4,7 @@
 //   Creation date : Sat Aug 17 13:43:32 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,13 +29,13 @@
 //#include <zlib.h>
 
 #include "kvi_http.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_netutils.h"
 #include "kvi_dns.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"
 #include "kvi_socket.h"
-#include "kvi_time.h"
+#include "KviTimeUtils.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_ssl.h"
@@ -306,7 +306,7 @@ bool KviHttpRequest::event(QEvent *e)
 						if(m_pBuffer->size() > 0)
 						{
 							// something left in the buffer and has no trailing LF
-							KviStr tmp((const char *)(m_pBuffer->data()),m_pBuffer->size());
+							KviCString tmp((const char *)(m_pBuffer->data()),m_pBuffer->size());
 							emit data(tmp);
 						}
 					break;
@@ -325,7 +325,7 @@ bool KviHttpRequest::event(QEvent *e)
 			break;
 			case KVI_THREAD_EVENT_ERROR:
 			{
-				KviStr * err = ((KviThreadDataEvent<KviStr> *)e)->getData();
+				KviCString * err = ((KviThreadDataEvent<KviCString> *)e)->getData();
 				m_szLastError = __tr2qs_no_xgettext(err->ptr());
 				delete err;
 				resetInternalStatus();
@@ -335,7 +335,7 @@ bool KviHttpRequest::event(QEvent *e)
 			break;
 			case KVI_THREAD_EVENT_MESSAGE:
 			{
-				KviStr * msg = ((KviThreadDataEvent<KviStr> *)e)->getData();
+				KviCString * msg = ((KviThreadDataEvent<KviCString> *)e)->getData();
 				emit status(__tr2qs_no_xgettext(msg->ptr()));
 				delete msg;
 				return true;
@@ -351,7 +351,7 @@ void KviHttpRequest::emitLines(KviDataBuffer * pDataBuffer)
 	int idx = pDataBuffer->find((const unsigned char *)"\n",1);
 	while(idx != -1)
 	{
-		KviStr tmp((const char *)(m_pBuffer->data()),idx);
+		KviCString tmp((const char *)(m_pBuffer->data()),idx);
 		tmp.stripRight('\r');
 		pDataBuffer->remove(idx + 1);
 		idx = pDataBuffer->find((const unsigned char *)"\n",1);
@@ -453,10 +453,10 @@ bool KviHttpRequest::openFile()
 }
 
 
-bool KviHttpRequest::processHeader(KviStr &szHeader)
+bool KviHttpRequest::processHeader(KviCString &szHeader)
 {
 	int idx = szHeader.findFirstIdx("\r\n");
-	KviStr szResponse;
+	KviCString szResponse;
 	if(idx != -1)
 	{
 		szResponse = szHeader.left(idx);
@@ -475,11 +475,11 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 	// check the response value
 	if(kvi_strEqualCSN(szResponse.ptr(),"HTTP",4))
 	{
-		KviStr szR = szResponse;
+		KviCString szR = szResponse;
 		szR.cutToFirst(' ');
 		szR.trimmed();
 		int idx = szR.findFirstIdx(' ');
-		KviStr szNumber;
+		KviCString szNumber;
 		if(idx != -1)szNumber = szR.left(idx);
 		else szNumber = szR;
 		bool bOk;
@@ -503,7 +503,7 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 	emit status(tmp);
 	emit receivedResponse(szUniResponse);
 
-	KviPointerList<KviStr> hlist;
+	KviPointerList<KviCString> hlist;
 	hlist.setAutoDelete(true);
 
 	idx = szHeader.findFirstIdx("\r\n");
@@ -511,30 +511,30 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 	{
 		if(idx > 0)
 		{
-			hlist.append(new KviStr(szHeader.ptr(),idx));
+			hlist.append(new KviCString(szHeader.ptr(),idx));
 			szHeader.cutLeft(idx + 2);
 		}
 		idx = szHeader.findFirstIdx("\r\n");
 	}
-	if(szHeader.hasData())hlist.append(new KviStr(szHeader));
+	if(szHeader.hasData())hlist.append(new KviCString(szHeader));
 
-	KviPointerHashTable<const char *,KviStr> hdr(11,false,true);
+	KviPointerHashTable<const char *,KviCString> hdr(11,false,true);
 	hdr.setAutoDelete(true);
 
-	for(KviStr * s = hlist.first();s;s = hlist.next())
+	for(KviCString * s = hlist.first();s;s = hlist.next())
 	{
 		idx = s->findFirstIdx(":");
 		if(idx != -1)
 		{
-			KviStr szName = s->left(idx);
+			KviCString szName = s->left(idx);
 			s->cutLeft(idx + 1);
 			s->trimmed();
-			hdr.replace(szName.ptr(),new KviStr(*s));
+			hdr.replace(szName.ptr(),new KviCString(*s));
 			//qDebug("FOUND HEADER (%s)=(%s)",szName.ptr(),s->ptr());
 		}
 	}
 
-	KviStr * size = hdr.find("Content-length");
+	KviCString * size = hdr.find("Content-length");
 	if(size)
 	{
 		bool bOk;
@@ -542,13 +542,13 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 		if(!bOk)m_uTotalSize = 0;
 	}
 
-	KviStr * contentEncoding = hdr.find("Content-encoding");
+	KviCString * contentEncoding = hdr.find("Content-encoding");
 	if(contentEncoding)
 	{
 		m_bGzip = contentEncoding->equalsCI("gzip");
 	}
 
-	KviStr * transferEncoding = hdr.find("Transfer-Encoding");
+	KviCString * transferEncoding = hdr.find("Transfer-Encoding");
 	if(transferEncoding)
 	{
 		if(kvi_strEqualCI(transferEncoding->ptr(),"chunked"))
@@ -664,7 +664,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 			}
 			return;
 		}
-		KviStr szHeader((const char *)(m_pBuffer->data()),idx);
+		KviCString szHeader((const char *)(m_pBuffer->data()),idx);
 		m_pBuffer->remove(idx + 4);
 
 		if(!processHeader(szHeader))return;
@@ -789,7 +789,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 						m_pBuffer->remove(2);
 					} else {
 						// got a chunk header
-						KviStr szHeader((const char *)(m_pBuffer->data()),crlf);
+						KviCString szHeader((const char *)(m_pBuffer->data()),crlf);
 						szHeader.cutFromFirst(' ');
 						// now szHeader should contain a hexadecimal chunk length... (why the hell it is hex and not decimal ????)
 						QString szHexHeader = szHeader.ptr();
@@ -917,9 +917,9 @@ bool KviHttpRequestThread::failure(const char *error)
 {
 	if(error)
 	{
-		postEvent(m_pRequest,new KviThreadDataEvent<KviStr>(KVI_THREAD_EVENT_ERROR,new KviStr(error)));
+		postEvent(m_pRequest,new KviThreadDataEvent<KviCString>(KVI_THREAD_EVENT_ERROR,new KviCString(error)));
 	} /*else {
-		postEvent(m_pRequest,new KviThreadDataEvent<KviStr>(KVI_THREAD_EVENT_ERROR,new KviStr(__tr2qs("Aborted"))));
+		postEvent(m_pRequest,new KviThreadDataEvent<KviCString>(KVI_THREAD_EVENT_ERROR,new KviCString(__tr2qs("Aborted"))));
 	}*/
 	return false;
 }
@@ -984,7 +984,7 @@ bool KviHttpRequestThread::selectForWrite(int iTimeoutInSecs)
 bool KviHttpRequestThread::sslFailure()
 {
 #ifdef COMPILE_SSL_SUPPORT
-	KviStr buffer;
+	KviCString buffer;
 	if(m_pSSL->getLastErrorString(buffer))
 	{
 		failure(buffer.ptr());
@@ -1383,7 +1383,7 @@ void KviHttpRequestThread::runInternal()
 
 	// FIXME: Other headers ?
 
-	KviStr szMethod;
+	KviCString szMethod;
 	switch(m_eRequestMethod)
 	{
 		case Head: szMethod = "HEAD"; break;
@@ -1391,7 +1391,7 @@ void KviHttpRequestThread::runInternal()
 		case Get: szMethod = "GET"; break;
 	}
 
-	KviStr szRequest(KviStr::Format,"%s %s HTTP/1.1\r\n" \
+	KviCString szRequest(KviCString::Format,"%s %s HTTP/1.1\r\n" \
 				"Host: %s\r\n" \
 				"Connection: Close\r\n" \
 				"User-Agent: KVIrc-http-slave/1.0.0\r\n" \
@@ -1399,11 +1399,11 @@ void KviHttpRequestThread::runInternal()
 				szMethod.ptr(),KviQString::toUtf8(m_szPath).data(),KviQString::toUtf8(m_szHost).data());
 
 	if(m_uContentOffset > 0)
-		szRequest.append(KviStr::Format,"Range: bytes=%u-\r\n",m_uContentOffset);
+		szRequest.append(KviCString::Format,"Range: bytes=%u-\r\n",m_uContentOffset);
 
 	if(m_eRequestMethod == Post)
 	{
-		szRequest.append(KviStr::Format,"Content-Type: application/x-www-form-urlencoded\r\n" \
+		szRequest.append(KviCString::Format,"Content-Type: application/x-www-form-urlencoded\r\n" \
 				"Content-Length: %u\r\n" \
 				"Cache-control: no-cache\r\n" \
 				"Pragma: no-cache\r\n",m_szPostData.length());

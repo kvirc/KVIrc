@@ -4,7 +4,7 @@
 //   Creation date : Tue Oct  2 18:22:04 2001 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,7 +29,7 @@
 #include "kvi_app.h"
 #include "kvi_out.h"
 #include "kvi_netutils.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_window.h"
 #include "kvi_options.h"
 #include "kvi_defaults.h"
@@ -463,7 +463,7 @@ ipv6_failure:
 				if(idx != -1)
 				{
 					// Ok...parse the request
-					KviStr szReq = r->m_szData.left(idx);
+					KviCString szReq = r->m_szData.left(idx);
 					r->m_szData.cutLeft(idx + 1);
 					szReq.trimmed();
 
@@ -473,10 +473,10 @@ ipv6_failure:
 
 						if(kvi_strEqualCI("VERSION",szReq.ptr()))
 						{
-							KviStr reply("Quad-Echelon 7.12-r-244");
+							KviCString reply("Quad-Echelon 7.12-r-244");
 							kvi_socket_write(r->m_sock,reply.ptr(),reply.len());
 						} else {
-							KviStr reply(KviStr::Format,"%s : USERID : UNIX : %s\r\n",szReq.ptr(),m_szUser.ptr());
+							KviCString reply(KviCString::Format,"%s : USERID : UNIX : %s\r\n",szReq.ptr(),m_szUser.ptr());
 							kvi_socket_write(r->m_sock,reply.ptr(),reply.len());
 						}
 

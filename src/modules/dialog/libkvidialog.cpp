@@ -4,7 +4,7 @@
 //   Creation date : Sat Sep 15 2001 01:13:25 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,7 +25,7 @@
 
 #include "libkvidialog.h"
 
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_module.h"
 #include "kvi_modulemanager.h"
 #include "kvi_error.h"
@@ -817,13 +817,13 @@ static void dialog_module_exiting_local_loop(KviModule * m)
 	g_iLocalEventLoops--;
 }
 
-static bool dialog_module_fnc_textline(KviModule *m,KviCommand *c,KviParameterList * parms,KviStr &buffer)
+static bool dialog_module_fnc_textline(KviModule *m,KviCommand *c,KviParameterList * parms,KviCString &buffer)
 {
 	ENTER_STACK_FRAME(c,"dialog_module_fnc_textline");
 
-	KviStr caption = parms->safeFirstParam();
-	KviStr info    = parms->safeNextParam();
-	KviStr initial = parms->safeNextParam();
+	KviCString caption = parms->safeFirstParam();
+	KviCString info    = parms->safeNextParam();
+	KviCString initial = parms->safeNextParam();
 
 	dialog_module_entering_local_loop(m);
 	QMessageBox::information(0,caption.ptr(),info.ptr(),QMessageBox::Ok);

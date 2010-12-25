@@ -4,7 +4,7 @@
 //   Creation date : Mon Dec 23 2002 20:28:18 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -26,19 +26,19 @@
 
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_imagedialog.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_filedialog.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_scripteditor.h"
 #include "kvi_debug.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_app.h"
 #include "kvi_kvs_popupmanager.h"
 #include "kvi_kvs_popupmenu.h"
 #include "kvi_kvs_variantlist.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 #include "kvi_tal_vbox.h"
 #include "kvi_fileextensions.h"
 
@@ -1433,7 +1433,7 @@ void KviPopupEditorWindow::getConfigGroupName(QString &szName)
 	szName = "popupeditor";
 }
 
-void KviPopupEditorWindow::saveProperties(KviConfig *) //cfg
+void KviPopupEditorWindow::saveProperties(KviConfigurationFile *) //cfg
 {
 /*
 #ifdef COMPILE_SCRIPTTOOLBAR
@@ -1444,7 +1444,7 @@ void KviPopupEditorWindow::saveProperties(KviConfig *) //cfg
 */
 }
 
-void KviPopupEditorWindow::loadProperties(KviConfig *) // cfg
+void KviPopupEditorWindow::loadProperties(KviConfigurationFile *) // cfg
 {
 /*
 #ifdef COMPILE_SCRIPTTOOLBAR
@@ -1452,7 +1452,7 @@ void KviPopupEditorWindow::loadProperties(KviConfig *) // cfg
 	def.append(20);
 	def.append(80);
 	m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
-	KviStr tmp = cfg->readEntry("LastPopup","");
+	KviCString tmp = cfg->readEntry("LastPopup","");
 	m_pEditor->editPopup(tmp);
 	//qDebug("LAST EDITED WAS %s",tmp.ptr());
 #endif // COMPILE_SCRIPTTOOLBAR

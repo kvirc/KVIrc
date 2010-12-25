@@ -4,7 +4,7 @@
 //   Creation date : Sat Jan 20 2002 17:06:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@
 
 #include "kvi_module.h"
 #include "kvi_debug.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 
 
@@ -48,9 +48,9 @@
 #ifdef COMPILE_CRYPT_SUPPORT
 	
 	#include "kvi_memmove.h"
-	#include "kvi_malloc.h"
+	#include "KviMemory.h"
 
-	#include "kvi_pointerlist.h"
+	#include "KviPointerList.h"
 
 	static KviPointerList<KviCryptEngine> * g_pEngineList = 0;
 
@@ -144,7 +144,7 @@
 	};
 	
 	
-	KviCryptEngine::EncryptResult KviLamerizerEngine::encrypt(const char * plainText,KviStr &outBuffer)
+	KviCryptEngine::EncryptResult KviLamerizerEngine::encrypt(const char * plainText,KviCString &outBuffer)
 	{
 		outBuffer = plainText;
 		unsigned char * aux = (unsigned char *)outBuffer.ptr();
@@ -178,7 +178,7 @@
 		return KviCryptEngine::Encoded;
 	}
 
-	KviCryptEngine::DecryptResult KviLamerizerEngine::decrypt(const char * inBuffer,KviStr &plainText)
+	KviCryptEngine::DecryptResult KviLamerizerEngine::decrypt(const char * inBuffer,KviCString &plainText)
 	{
 		plainText = inBuffer;
 		return KviCryptEngine::DecryptOkWasPlainText;

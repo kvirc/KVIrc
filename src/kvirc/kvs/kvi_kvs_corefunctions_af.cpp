@@ -4,7 +4,7 @@
 //   Creation date : Fri 31 Oct 2003 01:52:04 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2010 Szymon Stefanek <pragma at kvirc dot net>
 //   Copyright ©        2010 Kai Wasserbäch <debian@carbon-project.org>
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -28,18 +28,18 @@
 #include "kvi_kvs_corefunctions.h"
 #include "kvi_kvs_kernel.h"
 #include "kvi_kvs_object_controller.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_app.h"
 #include "kvi_channel.h"
 #include "kvi_console.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
-#include "kvi_mirccntrl.h"
-#include "kvi_avatar.h"
-#include "kvi_ircuserdb.h"
+#include "KviMircCntrl.h"
+#include "KviAvatar.h"
+#include "KviIrcUserDataBase.h"
 #include "kvi_frame.h"
 #include "kvi_statusbar.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_sslmaster.h"
 #include "kvi_options.h"
 
@@ -190,10 +190,10 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("ascii_string",KVS_PT_STRING,0,szAscii)
 		KVSCF_PARAMETERS_END
 
-		KviStr tmp1(szAscii);
+		KviCString tmp1(szAscii);
 		if(tmp1.len() > 0)
 		{
-			KviStr tmp2;
+			KviCString tmp2;
 			tmp2.bufferToBase64(tmp1.ptr(),tmp1.len());
 			KVSCF_pRetBuffer->setString(QString(tmp2.ptr()));
 		} else {
@@ -232,10 +232,10 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("ascii_string",KVS_PT_STRING,0,szAscii)
 		KVSCF_PARAMETERS_END
 
-		KviStr tmp1(szAscii);
+		KviCString tmp1(szAscii);
 		if(tmp1.len() > 0)
 		{
-			KviStr tmp2;
+			KviCString tmp2;
 			tmp2.bufferToHex(tmp1.ptr(),tmp1.len());
 			KVSCF_pRetBuffer->setString(QString(tmp2.ptr()));
 		} else {
@@ -398,13 +398,13 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("base64_encoded_string",KVS_PT_STRING,0,szBase64)
 		KVSCF_PARAMETERS_END
 
-		KviStr tmp1(szBase64);
+		KviCString tmp1(szBase64);
 		char * buf;
 		int len = tmp1.base64ToBuffer(&buf,true);
 		QString szRet(buf);
 		szRet.truncate(len);
 		KVSCF_pRetBuffer->setString(szRet);
-		KviStr::freeBuffer(buf);
+		KviCString::freeBuffer(buf);
 		return true;
 	}
 

@@ -4,7 +4,7 @@
 //   Creation date : Thu 03 Nov 2003 13.11 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2003-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,7 +27,7 @@
 #include "kvi_kvs_report.h"
 #include "kvi_kvs_kernel.h"
 #include "kvi_kvs_parser_macros.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 
 /*

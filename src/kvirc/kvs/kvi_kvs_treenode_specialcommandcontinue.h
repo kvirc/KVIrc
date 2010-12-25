@@ -26,7 +26,7 @@
 
 
 #include "kvi_settings.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_kvs_treenode_specialcommand.h"
 
 class KviKvsRunTimeContext;

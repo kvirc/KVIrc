@@ -4,7 +4,7 @@
 //   Creation date : Sat Oct  6 02:06:53 2001 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,15 +27,15 @@ bool g_bFoundMirc;
 #include "setupwizard.h"
 
 #include "kvi_app.h"
-#include "kvi_locale.h"
-#include "kvi_fileutils.h"
+#include "KviLocale.h"
+#include "KviFileUtils.h"
 #include "kvi_defaults.h"
 #include "kvi_msgbox.h"
 #include "kvi_tal_filedialog.h"
-#include "kvi_qstring.h"
-#include "kvi_env.h"
+#include "KviQString.h"
+#include "KviEnvironment.h"
 #include "kvi_options.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_tal_hbox.h"
 
 #include <QTextEdit>
@@ -324,7 +324,7 @@ KviSetupWizard::KviSetupWizard()
 		"You will be able to change it later in the Identity properties, or with the /NICK command."));
 
 	QString nick;
-	char * nnn = kvi_getenv("USER");
+	char * nnn = KviEnvironment::getVariable("USER");
 	if(nnn)nick = nnn;
 	else nick = "newbie";
 	if(nick.isEmpty())nick = "newbie";
@@ -562,7 +562,7 @@ KviSetupWizard::KviSetupWizard()
 	g_pApp->getGlobalKvircDirectory(szTmp,KviApp::Config,"preinstalled.kvc");
 	if(KviFileUtils::fileExists(szTmp))
 	{
-		KviConfig cfg(szTmp,KviConfig::Read);
+		KviConfigurationFile cfg(szTmp,KviConfigurationFile::Read);
 		cfg.setGroup("Setup");
 		if(cfg.readBoolEntry("hideServerList",FALSE))
 		{
@@ -616,7 +616,7 @@ KviSetupWizard::KviSetupWizard()
 				szMircIni = szMircDir + "/pirc.ini";
 
 			if(KviFileUtils::fileExists(szMircIni)){
-				KviConfig cfg(szMircIni,KviConfig::Read,true);
+				KviConfigurationFile cfg(szMircIni,KviConfigurationFile::Read,true);
 				if(cfg.hasGroup("mirc"))
 				{
 					g_bFoundMirc = true;

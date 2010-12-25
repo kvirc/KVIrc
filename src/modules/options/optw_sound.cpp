@@ -4,7 +4,7 @@
 //   Creation date : Fri Sep  6 02:18:23 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVsound sound client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvsound dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvsound dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,11 +25,11 @@
 #include "optw_sound.h"
 
 #include "kvi_settings.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_options.h"
 #include "kvi_modulemanager.h"
-#include "kvi_pointerlist.h"
-#include "kvi_string.h"
+#include "KviPointerList.h"
+#include "KviCString.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_tooltip.h"
 #include "kvi_app.h"

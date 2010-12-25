@@ -30,16 +30,16 @@
 #include "kvi_window.h"
 #include "kvi_query.h"
 #include "kvi_out.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_ircsocket.h"
 #include "kvi_options.h"
 #include "kvi_channel.h"
 #include "kvi_topicw.h"
-#include "kvi_ircuserdb.h"
+#include "KviIrcUserDataBase.h"
 #include "kvi_defaults.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_frame.h"
-#include "kvi_parameterlist.h"
+#include "KviParameterList.h"
 #include "kvi_app.h"
 #include "kvi_notifylist.h"
 #include "kvi_numeric.h"
@@ -49,12 +49,12 @@
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_ircconnectionasyncwhoisdata.h"
 #include "kvi_ircconnectiontarget.h"
-#include "kvi_time.h"
+#include "KviTimeUtils.h"
 #include "kvi_lagmeter.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variantlist.h"
-#include "kvi_identityprofile.h"
+#include "KviIdentityProfile.h"
 
 #include <QPixmap>
 #include <QDateTime>
@@ -120,17 +120,17 @@ void KviServerParser::parseNumeric004(KviIrcMessage *msg)
 
 	if(uParams < 2)uParams = 2;
 
-	KviStr version   = msg->safeParam(2);
+	KviCString version   = msg->safeParam(2);
 	msg->connection()->serverInfo()->setServerVersion(msg->safeParam(2));
 
-	KviStr umodes;
+	KviCString umodes;
 	// skip version number (great, thanks WEBMASTER INCORPORATED -_-)
 	do
 	{
 		umodes      = msg->safeParam(uModeParam);
 	} while (((umodes.contains('.')) || (umodes.contains('-'))) && uModeParam++ < uParams);
 
-	KviStr chanmodes = msg->safeParam(uModeParam+1);
+	KviCString chanmodes = msg->safeParam(uModeParam+1);
 
 	if(uModeParam > 3)
 	{
@@ -261,9 +261,9 @@ void KviServerParser::parseNumeric005(KviIrcMessage *msg)
 				p+=8;
 				const char * pModes = p;
 				while(*p && (*p != ')'))p++;
-				KviStr szModeFlags(pModes,p-pModes);
+				KviCString szModeFlags(pModes,p-pModes);
 				if(*p)p++;
-				KviStr szModePrefixes = p;
+				KviCString szModePrefixes = p;
 				if(szModePrefixes.hasData() && (szModePrefixes.len() == szModeFlags.len()))
 				{
 					msg->connection()->serverInfo()->setSupportedModePrefixes(szModePrefixes.ptr(),szModeFlags.ptr());
@@ -271,7 +271,7 @@ void KviServerParser::parseNumeric005(KviIrcMessage *msg)
 			} else if(kvi_strEqualCIN("CHANTYPES=",p,10))
 			{
 				p+=10;
-				KviStr tmp = p;
+				KviCString tmp = p;
 				if(tmp.hasData())
 				{
 					msg->connection()->serverInfo()->setSupportedChannelTypes(tmp.ptr());
@@ -573,7 +573,7 @@ void KviServerParser::parseNumericTopicWhoTime(KviIrcMessage *msg)
 	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
 	KviChannel * chan = msg->connection()->findChannel(szChan);
 
-	KviStr tmp = msg->safeParam(3);
+	KviCString tmp = msg->safeParam(3);
 	bool bOk = false;
 	unsigned long t = 0;
 	if(tmp.hasData())t = tmp.toUInt(&bOk);
@@ -637,7 +637,7 @@ void KviServerParser::parseNumericChannelModeIs(KviIrcMessage *msg)
 	QString szSource = msg->connection()->decodeText(msg->safePrefix());
 	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
 	KviChannel * chan = msg->connection()->findChannel(szChan);
-	KviStr modefl = msg->safeParam(2);
+	KviCString modefl = msg->safeParam(2);
 	if(chan)parseChannelMode(szSource,"*","*",chan,modefl,msg,3);
 	else {
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
@@ -655,7 +655,7 @@ void KviServerParser::parseNumericChannelModeIs(KviIrcMessage *msg)
 
 void getDateTimeStringFromCharTimeT(QString & szBuffer, const char * time_t_string)
 {
-	KviStr szTmp = time_t_string;
+	KviCString szTmp = time_t_string;
 	bool bOk = false;
 	unsigned int uTime = szTmp.toUInt(&bOk);
 	if(bOk)
@@ -811,8 +811,8 @@ void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 	bool bAway = szFlag.indexOf('G') != -1;
 	bool bIrcOp = szFlag.indexOf('*') != -1;
 
-	KviStr trailing = msg->safeTrailing();
-	KviStr hops = trailing.getToken(' ');
+	KviCString trailing = msg->safeTrailing();
+	KviCString hops = trailing.getToken(' ');
 	bool bHopsOk = false;
 	int iHops = hops.toInt(&bHopsOk);
 
@@ -919,7 +919,7 @@ void KviServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
 		chan->setLastReceivedWhoReply(tNow);
 		if(msg->connection()->lagMeter())
 		{
-			KviStr tmp(KviStr::Format,"WHO %s",msg->safeParam(1));
+			KviCString tmp(KviCString::Format,"WHO %s",msg->safeParam(1));
 			msg->connection()->lagMeter()->lagCheckComplete(tmp.ptr());
 		}
 
@@ -1395,8 +1395,8 @@ void KviServerParser::parseNumericWhoisIdle(KviIrcMessage *msg)
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
-		KviStr idle = msg->safeParam(2); // shouldn't be encoded
-		KviStr sign = msg->safeParam(3); // shouldn't be encoded
+		KviCString idle = msg->safeParam(2); // shouldn't be encoded
+		KviCString sign = msg->safeParam(3); // shouldn't be encoded
 
 		bool bOk;
 		unsigned int uTime = idle.toUInt(&bOk);
@@ -1706,7 +1706,7 @@ void KviServerParser::parseNumericCreationTime(KviIrcMessage *msg)
 	// :prefix 329 <target> <channel> <creation_time>
 	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
 	KviChannel * chan = msg->connection()->findChannel(szChan);
-	KviStr tmstr = msg->safeParam(2);
+	KviCString tmstr = msg->safeParam(2);
 	QDateTime date;
 	date.setTime_t((time_t)tmstr.toUInt());
 
@@ -2001,8 +2001,8 @@ void KviServerParser::parseNumericStats(KviIrcMessage * msg)
 		KviWindow * pOut = (KviWindow *)(msg->console());
 		if(msg->paramCount() > 2)
 		{
-			KviStr szParms;
-			KviStr *p = msg->firstParam();
+			KviCString szParms;
+			KviCString *p = msg->firstParam();
 			for(p = msg->nextParam();p;p = msg->nextParam())
 			{
 				if(szParms.hasData())szParms.append(' ');

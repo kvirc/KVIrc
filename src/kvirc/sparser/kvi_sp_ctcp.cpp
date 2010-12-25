@@ -4,7 +4,7 @@
 //   Creation date : Thu Aug 16 2000 13:34:42 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,24 +26,24 @@
 // FIXME: #warning "CTCP BEEP == WAKEUP == AWAKE"
 // FIXME: #warning "CTCP AVATARREQ or QUERYAVATAR"
 
-#include "kvi_mirccntrl.h"
-#include "kvi_osinfo.h"
+#include "KviMircCntrl.h"
+#include "KviOsInfo.h"
 #include "kvi_app.h"
 #include "kvi_sparser.h"
 #include "kvi_window.h"
 #include "kvi_out.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_ircsocket.h"
 #include "kvi_channel.h"
 #include "kvi_defaults.h"
 #include "kvi_channel.h"
 #include "kvi_query.h"
-#include "kvi_ircuserdb.h"
+#include "KviIrcUserDataBase.h"
 #include "kvi_iconmanager.h"
 #include "kvi_modulemanager.h"
-#include "kvi_sharedfiles.h"
-#include "kvi_time.h"
-#include "kvi_fileutils.h"
+#include "KviSharedFilesManager.h"
+#include "KviTimeUtils.h"
+#include "KviFileUtils.h"
 #include "kvi_ctcppagedialog.h"
 #include "kvi_useraction.h"
 #include "kvi_options.h"
@@ -54,7 +54,7 @@
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_kvs_script.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_regusersdb.h"
+#include "KviRegisteredUserDataBase.h"
 #include "kvi_buildinfo.h"
 
 #include <stdlib.h>
@@ -384,7 +384,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 
 
 
-void KviServerParser::encodeCtcpParameter(const char * param,KviStr &buffer,bool bSpaceBreaks)
+void KviServerParser::encodeCtcpParameter(const char * param,KviCString &buffer,bool bSpaceBreaks)
 {
 	//
 	// This one encodes a single ctcp parameter with the simplest
@@ -522,7 +522,7 @@ void KviServerParser::encodeCtcpParameter(const char * parametr,QString &resultB
 
 
 
-const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,KviStr &buffer)
+const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,KviCString &buffer)
 {
 	//
 	// This one decodes an octal sequence
@@ -624,7 +624,7 @@ const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,QByteArray &
 }
 
 
-const char * KviServerParser::extractCtcpParameter(const char * msg_ptr,KviStr &buffer,bool bSpaceBreaks, bool bSafeOnly)
+const char * KviServerParser::extractCtcpParameter(const char * msg_ptr,KviCString &buffer,bool bSpaceBreaks, bool bSafeOnly)
 {
 	//
 	// This one extracts the "next" ctcp parameter in msg_ptr
@@ -1091,7 +1091,7 @@ void KviServerParser::parseCtcpReplyPing(KviCtcpMessage * msg)
 		unsigned int uSecs;
 		unsigned int uMSecs = 0;
 
-		KviStr szTime;
+		KviCString szTime;
 
 		struct timeval tv;
 		kvi_gettimeofday(&tv,0);
@@ -1102,7 +1102,7 @@ void KviServerParser::parseCtcpReplyPing(KviCtcpMessage * msg)
 
 		if(szTime.contains('.'))
 		{
-			KviStr szUSecs = szTime;
+			KviCString szUSecs = szTime;
 			szUSecs.cutToFirst('.');
 			szTime.cutFromFirst('.');
 
@@ -1253,7 +1253,7 @@ void KviServerParser::parseCtcpRequestClientinfo(KviCtcpMessage *msg)
 	{
 		if(!KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpClientinfo))
 		{
-			KviStr szTag;
+			KviCString szTag;
 			msg->pData = extractCtcpParameter(msg->pData,szTag,false);
 			szTag.trimmed();
 			szTag.toUpper();
@@ -1273,7 +1273,7 @@ void KviServerParser::parseCtcpRequestClientinfo(KviCtcpMessage *msg)
 				{
 					if(kvi_strEqualCS(ctcpTagTable[i][0],szTag.ptr()))
 					{
-						KviStr reply(KviStr::Format,"%s: %s",ctcpTagTable[i][0],ctcpTagTable[i][1]);
+						KviCString reply(KviCString::Format,"%s: %s",ctcpTagTable[i][0],ctcpTagTable[i][1]);
 						replyCtcp(msg,reply.ptr());
 						bFound = true;
 					}
@@ -1281,7 +1281,7 @@ void KviServerParser::parseCtcpRequestClientinfo(KviCtcpMessage *msg)
 				if(!bFound)
 				{
 					msg->szTag= "ERRMSG";
-					KviStr reply(KviStr::Format,"Unsupported tag %s",szTag.ptr());
+					KviCString reply(KviCString::Format,"Unsupported tag %s",szTag.ptr());
 					replyCtcp(msg,reply.ptr());
 				}
 			}
@@ -1298,11 +1298,11 @@ void KviServerParser::parseCtcpRequestFinger(KviCtcpMessage *msg)
 	{
 		if(!KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpFinger))
 		{
-			KviStr username = getenv("USER");
+			KviCString username = getenv("USER");
 			if(username.isEmpty())username = getenv("LOGNAME");
 			if(username.isEmpty())username = msg->msg->connection()->userInfo()->userName();
 			// FIXME: #warning "UTSNAME ?...AND OTHER INFO ?...SYSTEM IDLE TIME ?...KVIRC IDLE TIME ?"
-			KviStr reply(KviStr::Format,"%s",username.ptr());
+			KviCString reply(KviCString::Format,"%s",username.ptr());
 			replyCtcp(msg,reply.ptr());
 		} else msg->bIgnored = true;
 	}
@@ -1371,7 +1371,7 @@ void KviServerParser::parseCtcpRequestPage(KviCtcpMessage *msg)
 			if(KVI_OPTION_BOOL(KviOption_boolShowDialogOnCtcpPage))
 			{
 				if(!g_pCtcpPageDialog)g_pCtcpPageDialog = new KviCtcpPageDialog();
-				KviStr szData8;
+				KviCString szData8;
 				szData8 = msg->pData;
 				QString szData = Qt::escape(msg->msg->connection()->decodeText(szData8.ptr()));
 				g_pCtcpPageDialog->addPage(msg->pSource->nick(),msg->pSource->user(),msg->pSource->host(),szData);
@@ -1385,7 +1385,7 @@ void KviServerParser::parseCtcpRequestPage(KviCtcpMessage *msg)
 
 void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 {
-	KviStr szData8;
+	KviCString szData8;
 	// CTCP ACTION is a special exception... most clients do not encode/decode it.
 	//msg->pData = extractCtcpParameter(msg->pData,szData8,false);
 	szData8 = msg->pData;
@@ -1493,7 +1493,7 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 				__tr2qs("The following CTCP ACTION has unrecognized target %Q"),
 				&(msg->szTarget));
 		}
-		KviStr buffer1,buffer2;
+		KviCString buffer1,buffer2;
 		pOut->output(type,
 			__tr2qs("CTCP ACTION from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),
 			&(msg->pSource->nick()),&(msg->pSource->user()),
@@ -1717,7 +1717,7 @@ typedef void (*dccModuleCtcpDccParseRoutine)(KviDccRequest *par);
 void KviServerParser::parseCtcpRequestDcc(KviCtcpMessage *msg)
 {
 	KviDccRequest p;
-	KviStr aux    = msg->pData;
+	KviCString aux    = msg->pData;
 	msg->pData    = extractCtcpParameter(msg->pData,p.szType, true, true);
 	msg->pData    = extractCtcpParameter(msg->pData,p.szParam1);
 	msg->pData    = extractCtcpParameter(msg->pData,p.szParam2);
@@ -1859,7 +1859,7 @@ void KviServerParser::parseCtcpReplyGeneric(KviCtcpMessage *msg)
 void KviServerParser::parseCtcpReplyLagcheck(KviCtcpMessage * msg)
 {
 	// this is an internal CTCP used for checking lag
-	KviStr szTag;
+	KviCString szTag;
 	msg->pData = extractCtcpParameter(msg->pData,szTag,true);
 	if(msg->msg->console()->connection()->lagMeter())
 		msg->msg->console()->connection()->lagMeter()->lagCheckComplete(szTag.ptr());

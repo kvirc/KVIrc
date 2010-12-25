@@ -6,7 +6,7 @@
 //   Creation date : Tue 07 Dec 2004 02:00:24 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_kvs_action.h"
 
-class KviConfig;
+class KviConfigurationFile;
 class KviKvsScript;
 
 class KVIRC_API KviKvsUserAction : public KviKvsAction
@@ -53,7 +53,7 @@ public:
 	// Static allocator function.
 	// This MUST be used by the modules to allocate action structures
 	// instead of the new operator.
-	// See kvi_heapobject.cpp for an explaination.
+	// See KviHeapObject.cpp for an explaination.
 	static KviKvsUserAction * createInstance(
 			QObject * pParent,
 			const QString &szName,
@@ -73,8 +73,8 @@ protected:
 	KviKvsScript * m_pVisibleNameScript;
 protected:
 	virtual bool isKviUserActionNeverOverrideThis();
-	bool load(KviConfig * cfg);
-	void save(KviConfig * cfg);
+	bool load(KviConfigurationFile * cfg);
+	void save(KviConfigurationFile * cfg);
 public:
 	virtual const QString & visibleName();
 	virtual const QString & description();

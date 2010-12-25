@@ -4,7 +4,7 @@
 //   Creation date : Tue Jun 20 2000 12:49:41 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,9 +23,9 @@
 //=============================================================================
 
 #include "kvi_msgbox.h"
-#include "kvi_malloc.h"
-#include "kvi_string.h"
-#include "kvi_locale.h"
+#include "KviMemory.h"
+#include "KviCString.h"
+#include "KviLocale.h"
 
 // FIXME: #warning "This should go into TAL as layer ...then maybe a wrapper in KviApp!"
 #ifdef COMPILE_KDE_SUPPORT

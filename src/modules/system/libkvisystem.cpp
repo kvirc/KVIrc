@@ -4,7 +4,7 @@
 //   Creation date : Fri Nov 16 03:50:12 2001 GMT by Szymon Stefanek
 //
 //   This system is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright ©        2009 Kai Wasserbäch <debian@carbon-project.org>
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -27,12 +27,12 @@
 
 #include "kvi_settings.h"
 #include "kvi_module.h"
-#include "kvi_string.h"
-#include "kvi_thread.h"
-#include "kvi_locale.h"
+#include "KviCString.h"
+#include "KviThread.h"
+#include "KviLocale.h"
 #include "kvi_app.h"
-#include "kvi_env.h"
-#include "kvi_osinfo.h"
+#include "KviEnvironment.h"
+#include "KviOsInfo.h"
 #include "kvi_modulemanager.h"
 
 #include <QClipboard>
@@ -212,7 +212,7 @@ static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall *c)
 	c->returnValue()->setString(env.isEmpty() ? QString::fromLocal8Bit(env) : QString::fromLocal8Bit(def));
 #else
 */
-	char * b = kvi_getenv(szVar.data());
+	char * b = KviEnvironment::getVariable(szVar.data());
 	c->returnValue()->setString(b ? QString::fromLocal8Bit(b) : QString());
 //#endif
 	return true;
@@ -492,7 +492,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 
 	for ( QStringList::Iterator it = parms.begin(); it != parms.end(); ++it )
 	{
-		KviStr tmp = *it;
+		KviCString tmp = *it;
 
 		if(tmp.isEmpty())
 		{
@@ -500,7 +500,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 			return false;
 		}
 
-		KviStr szType = tmp.leftToFirst('=',false);
+		KviCString szType = tmp.leftToFirst('=',false);
 		tmp.cutToFirst('=',true);
 		if(szType.isEmpty())szType = "int";
 		bool bOk;
@@ -630,7 +630,7 @@ static bool system_kvs_cmd_setenv(KviKvsModuleCommandCall * c)
 	QByteArray szVar = szVariable.toLocal8Bit();
 	QByteArray szVal = szValue.toLocal8Bit();
 
-	if(szVal.isEmpty())kvi_unsetenv(szVar.data());
+	if(szVal.isEmpty())KviEnvironment::unsetVariable(szVar.data());
 	else
 	{
 /*#ifdef COMPILE_ON_WINDOWS
@@ -639,8 +639,8 @@ static bool system_kvs_cmd_setenv(KviKvsModuleCommandCall * c)
 		Var			=	szVal.data();
 		VarAndVal	=	Var+"="+Val;
 		putenv(VarAndVal);
-#else*/ // <-- this stuff is implicit in kvi_setenv: that's why we have the kvi_ version.
-		kvi_setenv(szVar.data(),szVal.data());
+#else*/ // <-- this stuff is implicit in KviEnvironment::setVariable: that's why we have the kvi_ version.
+		KviEnvironment::setVariable(szVar.data(),szVal.data());
 /*#endif*/
 	}
 	return true;

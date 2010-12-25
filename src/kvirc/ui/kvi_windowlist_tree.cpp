@@ -27,7 +27,7 @@
 #include "kvi_console.h"
 #include "kvi_dynamictooltip.h"
 #include "kvi_frame.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_options.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_window.h"

@@ -4,7 +4,7 @@
 //   Creation date : Tue 7 Dec 00:05:59 2002 GMT by Szymon Stefanek
 //
 //   This toolbar is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,15 +25,15 @@
 #include "kvi_module.h"
 #include "kvi_action.h"
 #include "kvi_actionmanager.h"
-#include "kvi_locale.h"
-#include "kvi_qstring.h"
-#include "kvi_parameterlist.h"
-#include "kvi_cmdformatter.h"
-#include "kvi_qstring.h"
+#include "KviLocale.h"
+#include "KviQString.h"
+#include "KviParameterList.h"
+#include "KviCommandFormatter.h"
+#include "KviQString.h"
 #include "kvi_error.h"
 #include "kvi_out.h"
 #include "kvi_iconmanager.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_kvs_useraction.h"
 #include "kvi_kvs_script.h"
 

@@ -6,7 +6,7 @@
 //   Creation date : Sat Aug 17 13:43:31 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,15 +25,15 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_heapobject.h"
-#include "kvi_string.h"
-#include "kvi_thread.h"
+#include "KviHeapObject.h"
+#include "KviCString.h"
+#include "KviThread.h"
 #include "kvi_sockettype.h"
-#include "kvi_databuffer.h"
+#include "KviDataBuffer.h"
 #include "kvi_inttypes.h"
 #include "kvi_url.h"
-#include "kvi_pointerhashtable.h"
-#include "kvi_file.h"
+#include "KviPointerHashTable.h"
+#include "KviFile.h"
 
 #include <QObject>
 #include <QStringList>
@@ -100,7 +100,7 @@ protected:
 	bool startDnsLookup();
 	virtual bool event(QEvent *e);
 	void processData(KviDataBuffer * data);
-	bool processHeader(KviStr &szHeader);
+	bool processHeader(KviCString &szHeader);
 	bool openFile();
 	void emitLines(KviDataBuffer * pDataBuffer);
 
@@ -158,9 +158,9 @@ signals:
 
 
 	void status(const QString &message);
-	void data(const KviStr &data);
+	void data(const KviCString &data);
 	void binaryData(const KviDataBuffer &data);
-	void header(KviPointerHashTable<const char *,KviStr> * hdr);
+	void header(KviPointerHashTable<const char *,KviCString> * hdr);
 	void requestSent(const QStringList &request);
 };
 

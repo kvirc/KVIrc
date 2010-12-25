@@ -4,7 +4,7 @@
 //   Creation date : Tue Jul 6 1999 14:52:11 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -41,18 +41,18 @@
 #include "kvi_windowlist.h"
 #include "kvi_iconmanager.h"
 #include "kvi_mdichild.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_ircview.h"
 #include "kvi_out.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_input.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_options.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_irccontext.h"
 #include "kvi_console.h"
 #include "kvi_ircconnectionserverinfo.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_toolwindows_container.h"
 #include "kvi_kvs_script.h"
 #include "kvi_tal_popupmenu.h"
@@ -77,7 +77,7 @@
 #include <QActionGroup>
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "kvi_crypt.h"
+	#include "KviCryptEngine.h"
 	#include "kvi_cryptcontroller.h"
 #endif
 
@@ -571,7 +571,7 @@ void KviWindow::getBaseLogFileName(QString &buffer)
 	buffer = m_szName;
 }
 
-void KviWindow::saveProperties(KviConfig *cfg)
+void KviWindow::saveProperties(KviConfigurationFile *cfg)
 {
 	// store only the non-default text encoding.
 	QString szCodec = m_szTextEncoding;
@@ -596,7 +596,7 @@ void KviWindow::saveProperties(KviConfig *cfg)
 	*/
 }
 
-void KviWindow::loadProperties(KviConfig *cfg)
+void KviWindow::loadProperties(KviConfigurationFile *cfg)
 {
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
@@ -1290,7 +1290,7 @@ void KviWindow::output(int msg_type,const QString &szFmt,...)
 
 void KviWindow::output(int msg_type,const kvi_wchar_t *format,...)
 {
-	QString szFmt=QString::fromUtf8(KviStr(format).ptr());
+	QString szFmt=QString::fromUtf8(KviCString(format).ptr());
 	kvi_va_list l;
 	kvi_va_start(l,format);
 	QString szBuf;

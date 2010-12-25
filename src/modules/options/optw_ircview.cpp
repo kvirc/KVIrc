@@ -26,7 +26,7 @@
 #include "optw_ircview.h"
 
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 #include <QLayout>
 

@@ -4,7 +4,7 @@
 //   Creation date : Tue Sep 20 09 2000 15:14:14 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -35,20 +35,20 @@
 #include "kvi_options.h"
 #include "kvi_ircview.h"
 #include "kvi_iconmanager.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_error.h"
 #include "kvi_out.h"
 #include "kvi_netutils.h"
 #include "kvi_console.h"
 #include "kvi_frame.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_memmove.h"
-#include "kvi_thread.h"
+#include "KviThread.h"
 #include "kvi_ircsocket.h"
-#include "kvi_mediatype.h"
+#include "KviMediaType.h"
 #include "kvi_socket.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_parameterlist.h"
+#include "KviParameterList.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_sparser.h"
@@ -87,7 +87,7 @@ extern KVIRC_API KviMediaManager * g_pMediaManager; // kvi_app.cpp
 static KviPointerList<KviDccFileTransfer> * g_pDccFileTransfers = 0;
 static QPixmap * g_pDccFileTransferIcon = 0;
 
-//#warning "The events that have a KviStr data pointer should become real classes, that take care of deleting the data pointer!"
+//#warning "The events that have a KviCString data pointer should become real classes, that take care of deleting the data pointer!"
 //#warning "Otherwise, when left undispatched we will be leaking memory (event class destroyed but not the data ptr)"
 
 KviDccRecvThread::KviDccRecvThread(QObject * par,kvi_socket_t fd,KviDccRecvThreadOptions * opt)
@@ -165,8 +165,8 @@ void KviDccRecvThread::updateStats()
 
 void KviDccRecvThread::postMessageEvent(const char * m)
 {
-	KviThreadDataEvent<KviStr> * e = new KviThreadDataEvent<KviStr>(KVI_DCC_THREAD_EVENT_MESSAGE);
-	e->setData(new KviStr(m));
+	KviThreadDataEvent<KviCString> * e = new KviThreadDataEvent<KviCString>(KVI_DCC_THREAD_EVENT_MESSAGE);
+	e->setData(new KviCString(m));
 	postEvent(parent(),e);
 }
 
@@ -562,7 +562,7 @@ void KviDccSendThread::run()
 	int iAckHackRounds        = 0;
 	
 	if(m_pOpt->iPacketSize < 32)m_pOpt->iPacketSize = 32;
-	char * buffer = (char *)kvi_malloc(m_pOpt->iPacketSize * sizeof(char));
+	char * buffer = (char *)KviMemory::allocate(m_pOpt->iPacketSize * sizeof(char));
 
 	QFile * pFile = new QFile(QString::fromUtf8(m_pOpt->szFileName.ptr()));
 
@@ -796,8 +796,8 @@ void KviDccSendThread::run()
 
 									if(!handleInvalidSocketRead(readLen))break;
 								} else {
-									KviThreadDataEvent<KviStr> * e = new KviThreadDataEvent<KviStr>(KVI_DCC_THREAD_EVENT_MESSAGE);
-									e->setData(new KviStr(__tr2qs_ctx("WARNING: Received data in a DCC TSEND, there should be no acknowledges","dcc")));
+									KviThreadDataEvent<KviCString> * e = new KviThreadDataEvent<KviCString>(KVI_DCC_THREAD_EVENT_MESSAGE);
+									e->setData(new KviCString(__tr2qs_ctx("WARNING: Received data in a DCC TSEND, there should be no acknowledges","dcc")));
 									postEvent(parent(),e);
 								}
 							}
@@ -967,7 +967,7 @@ handle_system_error:
 	}
 
 exit_dcc:
-	kvi_free(buffer);
+	KviMemory::free(buffer);
 	pFile->close();
 	delete pFile;
 	pFile = 0;
@@ -1430,7 +1430,7 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 
 			p->setPen(Qt::black);
 
-			KviStr szRemote(KviStr::Format,"dcc://%s@%s:%s/%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),
+			KviCString szRemote(KviCString::Format,"dcc://%s@%s:%s/%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),
 					m_pDescriptor->szFileName.toUtf8().data());
 
 			p->drawText(rect.left() + 4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,
@@ -1792,7 +1792,7 @@ void KviDccFileTransfer::connectionInProgress()
 			}
 		}
 
-		KviStr port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
+		KviCString port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
 		//#warning "OPTION FOR SENDING 127.0.0.1 and so on (not an unsigned nuumber)"
 		struct in_addr a;
 		if(KviNetUtils::stringIpToBinaryIp(ip,&a))ip.setNum(htonl(a.s_addr));
@@ -1810,7 +1810,7 @@ void KviDccFileTransfer::connectionInProgress()
 
 		KviServerParser::encodeCtcpParameter(tmp.toUtf8().data(),fName);
 		// Zero port requests want DCC SEND as back-request
-		KviStr szReq;
+		KviCString szReq;
 
 		if(m_pDescriptor->isZeroPortRequest())
 		{
@@ -1934,7 +1934,7 @@ bool KviDccFileTransfer::event(QEvent *e)
 			break;
 			case KVI_DCC_THREAD_EVENT_MESSAGE:
 			{
-				KviStr * str = ((KviThreadDataEvent<KviStr> *)e)->getData();
+				KviCString * str = ((KviThreadDataEvent<KviCString> *)e)->getData();
 				outputAndLog(QString(__tr_no_xgettext_ctx(str->ptr(),"dcc")));
 				delete str;
 				return true;
@@ -2142,7 +2142,7 @@ bool KviDccFileTransfer::doResume(const char * filename,const char * port,quint6
 
 	m_pDescriptor->szFileSize.setNum(filePos);
 
-	KviStr szBuffy;
+	KviCString szBuffy;
 	KviServerParser::encodeCtcpParameter(filename,szBuffy);
 
 	m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC ACCEPT %s %s %u%c",

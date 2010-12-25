@@ -5,7 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2001 Juanjo Alvarez
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,8 +27,8 @@
 #include "kvi_module.h"
 #include "kvi_window.h"
 #include "kvi_frame.h"
-#include "kvi_locale.h"
-#include "kvi_config.h"
+#include "KviLocale.h"
+#include "KviConfigurationFile.h"
 
 #include <QSplitter>
 
@@ -68,7 +68,7 @@ static bool channelsjoin_module_init(KviModule * m)
 {
 	QString fName;
 	m->getDefaultConfigFileName(fName);
-	KviConfig cfg(fName,KviConfig::Read);
+	KviConfigurationFile cfg(fName,KviConfigurationFile::Read);
 
 	g_rectChannelsJoinGeometry = cfg.readRectEntry("geometry",QRect(30,30,320,410));
 
@@ -80,7 +80,7 @@ static bool channelsjoin_module_cleanup(KviModule *m)
 {
 	QString fName;
 	m->getDefaultConfigFileName(fName);
-	KviConfig cfg(fName,KviConfig::Write);
+	KviConfigurationFile cfg(fName,KviConfigurationFile::Write);
 
 	cfg.writeEntry("geometry",g_rectChannelsJoinGeometry);
 

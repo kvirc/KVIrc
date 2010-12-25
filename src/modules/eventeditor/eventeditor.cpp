@@ -4,7 +4,7 @@
 //   Creation date : Mon Dec 23 2002 20:28:18 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -26,17 +26,17 @@
 
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_imagedialog.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_filedialog.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_scripteditor.h"
 #include "kvi_debug.h"
 #include "kvi_app.h"
-#include "kvi_cmdformatter.h"
+#include "KviCommandFormatter.h"
 #include "kvi_fileextensions.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_filedialog.h"
 #include "kvi_kvs_eventmanager.h"
 #include "kvi_tal_vbox.h"
@@ -578,7 +578,7 @@ void KviEventEditorWindow::getConfigGroupName(QString &szName)
 	szName = "eventeditor";
 }
 
-void KviEventEditorWindow::saveProperties(KviConfig *) //cfg
+void KviEventEditorWindow::saveProperties(KviConfigurationFile *) //cfg
 {
 /*
 #ifdef COMPILE_SCRIPTTOOLBAR
@@ -589,7 +589,7 @@ void KviEventEditorWindow::saveProperties(KviConfig *) //cfg
 */
 }
 
-void KviEventEditorWindow::loadProperties(KviConfig *) //cfg
+void KviEventEditorWindow::loadProperties(KviConfigurationFile *) //cfg
 {
 /*
 #ifdef COMPILE_SCRIPTTOOLBAR
@@ -597,7 +597,7 @@ void KviEventEditorWindow::loadProperties(KviConfig *) //cfg
 	def.append(20);
 	def.append(80);
 	m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
-	KviStr tmp = cfg->readEntry("LastEvent","");
+	KviCString tmp = cfg->readEntry("LastEvent","");
 	m_pEditor->editEvent(tmp);
 	//qDebug("LAST EDITED WAS %s",tmp.ptr());
 #endif // COMPILE_SCRIPTTOOLBAR

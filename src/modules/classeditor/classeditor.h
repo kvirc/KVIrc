@@ -31,10 +31,10 @@
 */
 
 #include "kvi_window.h"
-#include "kvi_string.h"
-#include "kvi_pointerlist.h"
+#include "KviCString.h"
+#include "KviPointerList.h"
 #include "kvi_tal_popupmenu.h"
-#include "kvi_heapobject.h"
+#include "KviHeapObject.h"
 #include "kvi_kvs_object_class.h"
 
 #include <QWidget>
@@ -298,14 +298,14 @@ public:
 	* \param pCfg The configuration file
 	* \return void
 	*/
-	virtual void saveProperties(KviConfig * pCfg);
+	virtual void saveProperties(KviConfigurationFile * pCfg);
 	
 	/**
 	* \brief Called to load the window properties
 	* \param pCfg The configuration file
 	* \return void
 	*/
-	virtual void loadProperties(KviConfig * pCfg);
+	virtual void loadProperties(KviConfigurationFile * pCfg);
 	
 	/**
 	* \brief Builds the class!
@@ -505,14 +505,14 @@ protected:
 	* \param pCfg The configuration file
 	* \return void
 	*/
-	virtual void saveProperties(KviConfig * pCfg);
+	virtual void saveProperties(KviConfigurationFile * pCfg);
 	
 	/**
 	* \brief Called to load the window properties
 	* \param pCfg The configuration file
 	* \return void
 	*/
-	virtual void loadProperties(KviConfig * pCfg);
+	virtual void loadProperties(KviConfigurationFile * pCfg);
 protected slots:
 	/**
 	* \brief Called when we click the cancel button

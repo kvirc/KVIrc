@@ -4,7 +4,7 @@
 //   Creation date : Sun 24 Apr 2005 05:23:04 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,7 +24,7 @@
 
 #include "kvi_kvs_object_controller.h"
 #include "kvi_modulemanager.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_app.h"
 
 #include <QPointer>

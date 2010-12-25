@@ -4,7 +4,7 @@
 //   Creation date : Tue Apr 22 2003 02:00:12 GMT by Szymon Stefanek
 //
 //   This config is part of the KVirc irc client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2003-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@
 
 #include "kvi_app.h"
 #include "kvi_out.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_window.h"
 #include "kvi_iconmanager.h"
 #include "kvi_netutils.h"
@@ -60,7 +60,7 @@ KviHttpFileTransfer::KviHttpFileTransfer()
 
 	connect(m_pHttpRequest,SIGNAL(status(const QString &)),this,SLOT(statusMessage(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(transferTerminated(bool)));
-	connect(m_pHttpRequest,SIGNAL(header(KviPointerHashTable<const char *,KviStr> *)),this,SLOT(headersReceived(KviPointerHashTable<const char *,KviStr> *)));
+	connect(m_pHttpRequest,SIGNAL(header(KviPointerHashTable<const char *,KviCString> *)),this,SLOT(headersReceived(KviPointerHashTable<const char *,KviCString> *)));
 	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(resolvingHost(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(requestSent(const QStringList &)),this,SLOT(requestSent(const QStringList &)));
 	connect(m_pHttpRequest,SIGNAL(contactingHost(const QString &)),this,SLOT(contactingHost(const QString &)));
@@ -458,14 +458,14 @@ void KviHttpFileTransfer::transferTerminated(bool bSuccess)
 	}
 }
 
-void KviHttpFileTransfer::headersReceived(KviPointerHashTable<const char *,KviStr> *h)
+void KviHttpFileTransfer::headersReceived(KviPointerHashTable<const char *,KviCString> *h)
 {
 	if(!h)return;
 	KviWindow * out = transferWindow();
 
 	if(out && (!m_bNoOutput))out->output(KVI_OUT_GENERICSTATUS,__tr2qs_ctx("[HTTP %d]: Response headers:","http"),id());
-	KviPointerHashTableIterator<const char *,KviStr> it(*h);
-	while(KviStr * s = it.current())
+	KviPointerHashTableIterator<const char *,KviCString> it(*h);
+	while(KviCString * s = it.current())
 	{
 		QString szHeader = it.currentKey();
 		szHeader += ": ";

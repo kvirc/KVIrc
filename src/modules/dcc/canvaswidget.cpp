@@ -4,7 +4,7 @@
 //   Creation date : Mon Jul 30 07 2001 04:50:50 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,8 +25,8 @@
 #include "canvaswidget.h"
 
 #ifdef COMPILE_DCC_CANVAS
-	#include "kvi_string.h"
-	#include "kvi_locale.h"
+	#include "KviCString.h"
+	#include "KviLocale.h"
 	#include "kvi_tal_popupmenu.h"
 
 	#include <QCursor>
@@ -1300,13 +1300,13 @@
 			break;
 			case QVariant::Font:
 			{
-				KviStr txt = ((QComboBox *)w)->currentText();
+				KviCString txt = ((QComboBox *)w)->currentText();
 				if(txt.hasData())
 				{
-					KviStr fam = txt;
+					KviCString fam = txt;
 					fam.cutFromFirst(',',true);
 					fam.trimmed();
-					KviStr psz = txt;
+					KviCString psz = txt;
 					psz.cutToFirst(',',true);
 					psz.trimmed();
 					bool bOk;

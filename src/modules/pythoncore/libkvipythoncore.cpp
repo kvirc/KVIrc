@@ -25,9 +25,9 @@
 
 #include "kvi_settings.h"
 #include "kvi_module.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 //#include "kvi_modulemanager.h"
-//#include "kvi_fileutils.h"
+//#include "KviFileUtils.h"
 //#include "kvi_app.h"
 //#include "kvi_options.h"
 //#include "kvi_out.h"
@@ -42,7 +42,7 @@ KviKvsRunTimeContext * g_pCurrentKvsContext = 0;
 bool g_bExecuteQuiet = false;
 QStringList g_lWarningList;
 QString g_lError;
-static KviStr g_szLastReturnValue("");
+static KviCString g_szLastReturnValue("");
 
 static PyThreadState * mainThreadState = NULL;
 

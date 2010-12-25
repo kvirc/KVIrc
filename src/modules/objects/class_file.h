@@ -27,7 +27,7 @@
 
 #include "object_macros.h"
 #include "class_widget.h"
-#include "kvi_file.h"
+#include "KviFile.h"
 
 
 class KviKvsObject_file : public KviKvsObject_widget

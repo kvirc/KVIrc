@@ -4,7 +4,7 @@
 //   Creation date : Fri 31 Oct 2003 00:04:25 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,7 +27,7 @@
 
 #include "kvi_window.h"
 #include "kvi_out.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
 #include "kvi_ircview.h" // this is only for KviIrcView::NoTimestamp

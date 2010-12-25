@@ -4,7 +4,7 @@
 //   Creation date : Thu 14 Apr 2005 02:44:00 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,7 +25,7 @@
 #include "kvi_kvs_treenode_specialcommandunset.h"
 #include "kvi_kvs_runtimecontext.h"
 #include "kvi_kvs_rwevaluationresult.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 KviKvsTreeNodeSpecialCommandUnset::KviKvsTreeNodeSpecialCommandUnset(const QChar * pLocation,KviPointerList<KviKvsTreeNodeVariable> * pVariableList)
 : KviKvsTreeNodeSpecialCommand(pLocation,"unset")

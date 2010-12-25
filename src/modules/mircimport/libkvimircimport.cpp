@@ -4,7 +4,7 @@
 //   Creation date : Tue Aug 27 01:20:35 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,12 +26,12 @@
 
 #include "kvi_module.h"
 #include "kvi_filedialog.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_fileextensions.h"
-#include "kvi_locale.h"
-#include "kvi_config.h"
+#include "KviLocale.h"
+#include "KviConfigurationFile.h"
 #include "kvi_app.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_tal_vbox.h"
 
 #include <QMessageBox>
@@ -55,7 +55,7 @@ KviMircServersIniImport::~KviMircServersIniImport()
 
 int KviMircServersIniImport::doImport(const QString& filename)
 {
-	KviConfig cfg(filename,KviConfig::Read,true);
+	KviConfigurationFile cfg(filename,KviConfigurationFile::Read,true);
 	int iCount = 0;
 	if(cfg.hasGroup("servers"))
 	{
@@ -120,7 +120,7 @@ int KviMircServersIniImport::doImport(const QString& filename)
 
 void KviMircServersIniImport::start()
 {
-	//KviStr buffer;
+	//KviCString buffer;
 	QString buffer;
 	if(!KviFileDialog::askForOpenFileName(buffer,__tr("Choose a servers.ini file"),0,KVI_FILTER_INI,false,true))return;
 

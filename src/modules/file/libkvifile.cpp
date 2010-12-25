@@ -4,7 +4,7 @@
 //   Creation date : Fri Nov  9 03:27:59 2001 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,13 +23,13 @@
 //=============================================================================
 
 #include "kvi_module.h"
-#include "kvi_fileutils.h"
-#include "kvi_locale.h"
-#include "kvi_malloc.h"
+#include "KviFileUtils.h"
+#include "KviLocale.h"
+#include "KviMemory.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
 #include "kvi_kvs_arraycast.h"
-#include "kvi_file.h"
+#include "KviFile.h"
 
 #include <QFileInfo>
 #include <QDir>
@@ -829,7 +829,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 
 	if(c->params()->count() < 2)uSize = 1024 * 1024; // 1 meg file default
 
-	char * buf = (char *)kvi_malloc(sizeof(char) * (uSize + 1));
+	char * buf = (char *)KviMemory::allocate(sizeof(char) * (uSize + 1));
 	unsigned int uReaded = 0;
 	unsigned int uRetries = 0;
 
@@ -838,7 +838,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 		if(uRetries > 1000)
 		{
 			// ops
-			kvi_free(buf);
+			KviMemory::free(buf);
 			c->warning(__tr2qs("Read error for file %Q (have been unable to read the requested size in 1000 retries)"),&szNameZ);
 			return true;
 		}
@@ -847,7 +847,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 
 		if(readedNow < 0)
 		{
-			kvi_free(buf);
+			KviMemory::free(buf);
 			c->warning(__tr2qs("Read error for file %Q"),&szNameZ);
 			return true;
 		}
@@ -863,7 +863,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 	else
 		c->returnValue()->setString(QString::fromLocal8Bit(buf));
 
-	kvi_free(buf);
+	KviMemory::free(buf);
 
 	return true;
 }
@@ -919,7 +919,7 @@ static bool file_kvs_fnc_readBytes(KviKvsModuleFunctionCall * c)
 	if(c->params()->count() < 2)
 		uSize = 1024 * 1024; // 1 meg file default
 
-	unsigned char * buf = (unsigned char *)kvi_malloc(sizeof(char) * (uSize + 1));
+	unsigned char * buf = (unsigned char *)KviMemory::allocate(sizeof(char) * (uSize + 1));
 	unsigned int uReaded = 0;
 	unsigned int uRetries = 0;
 
@@ -928,7 +928,7 @@ static bool file_kvs_fnc_readBytes(KviKvsModuleFunctionCall * c)
 		if(uRetries > 1000)
 		{
 			// ops
-			kvi_free(buf);
+			KviMemory::free(buf);
 			c->warning(__tr2qs("Read error for file %Q (have been unable to read the requested size in 1000 retries)"),&szNameZ);
 			return true;
 		}
@@ -937,7 +937,7 @@ static bool file_kvs_fnc_readBytes(KviKvsModuleFunctionCall * c)
 
 		if(readedNow < 0)
 		{
-			kvi_free(buf);
+			KviMemory::free(buf);
 			c->warning(__tr2qs("Read error for file %Q"),&szNameZ);
 			return true;
 		}
@@ -959,7 +959,7 @@ static bool file_kvs_fnc_readBytes(KviKvsModuleFunctionCall * c)
 
 	c->returnValue()->setArray(pArray);
 
-	kvi_free(buf);
+	KviMemory::free(buf);
 
 	return true;
 }

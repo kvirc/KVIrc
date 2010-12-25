@@ -4,7 +4,7 @@
 //   Creation date : Thu Dec 27 2001 17:13:12 GMT by Szymon Stefanek
 //
 //   This str is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright ©        2009 Kai Wasserbäch <debian@carbon-project.org>
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -26,12 +26,12 @@
 //#warning: FIXME: Incomplete documentation ('seealso', 'example', etc)
 
 #include "kvi_module.h"
-#include "kvi_locale.h"
-#include "kvi_mirccntrl.h"
-#include "kvi_qstring.h"
+#include "KviLocale.h"
+#include "KviMircCntrl.h"
+#include "KviQString.h"
 #include "kvi_debug.h"
 #include "kvi_settings.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_kvs_arraycast.h"
 #include "kvi_options.h"
 
@@ -1890,7 +1890,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 	{
 		int reallen = 0;
 		int allocsize = MEMINCREMENT;
-		QChar * buffer = (QChar *)kvi_malloc(sizeof(QChar) * allocsize);
+		QChar * buffer = (QChar *)KviMemory::allocate(sizeof(QChar) * allocsize);
 
 		//9999999999999999999999999999999\0
 		char numberBuffer[1024];
@@ -1905,14 +1905,14 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 	#define INCREMENT_MEM \
 		{ \
 			allocsize += MEMINCREMENT; \
-			buffer = (QChar *)kvi_realloc(buffer,sizeof(QChar) * allocsize); \
+			buffer = (QChar *)KviMemory::reallocate(buffer,sizeof(QChar) * allocsize); \
 			p = buffer + reallen; \
 		}
 
 	#define INCREMENT_MEM_BY(numchars) \
 		{ \
 			allocsize += numchars + MEMINCREMENT; \
-			buffer = (QChar *)kvi_realloc(buffer,sizeof(QChar) * allocsize); \
+			buffer = (QChar *)KviMemory::reallocate(buffer,sizeof(QChar) * allocsize); \
 			p = buffer + reallen; \
 		}
 
@@ -2175,7 +2175,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 		}
 
 		s.setUnicode(buffer,reallen);
-		kvi_free(buffer);
+		KviMemory::free(buffer);
 	}
 
 	c->returnValue()->setString(s);
@@ -2287,7 +2287,7 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 	}
 
 	len = EVP_PKEY_size(pKey);
-	sig = (unsigned char*)kvi_malloc(len*sizeof(char));
+	sig = (unsigned char*)KviMemory::allocate(len*sizeof(char));
 
 	EVP_SignInit(&md_ctx, EVP_sha1());
 	EVP_SignUpdate(&md_ctx, (unsigned char *)szMessage.data(), szMessage.length());

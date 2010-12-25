@@ -4,7 +4,7 @@
 //   Creation date : Fri Aug 4 2000 12:09:21 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,8 +26,8 @@
 
 #include "kvi_topicw.h"
 #include "kvi_options.h"
-#include "kvi_mirccntrl.h"
-#include "kvi_locale.h"
+#include "KviMircCntrl.h"
+#include "KviLocale.h"
 #include "kvi_defaults.h"
 #include "kvi_settings.h"
 #include "kvi_iconmanager.h"
@@ -41,7 +41,7 @@
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_htmlgenerator.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_tal_tooltip.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_themedlabel.h"
@@ -291,7 +291,7 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 				unsigned int icoStart = idx;
 				while((idx < (unsigned int)text.length()) && (text[(int)idx].unicode() > 32))idx++;
 
-				KviStr lookupString = text.mid(icoStart,idx - icoStart);
+				KviCString lookupString = text.mid(icoStart,idx - icoStart);
 
 				KviTextIcon * icon = g_pTextIconManager->lookupTextIcon(lookupString.ptr());
 				if(icon)

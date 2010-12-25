@@ -4,7 +4,7 @@
 //   Creation date : Tue Dec 26 2000 12:24:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,21 +28,21 @@
 #include "wizard.h"
 #include "dialog.h"
 
-#include "kvi_regusersdb.h"
-#include "kvi_locale.h"
-#include "kvi_ircmask.h"
+#include "KviRegisteredUserDataBase.h"
+#include "KviLocale.h"
+#include "KviIrcMask.h"
 #include "kvi_debug.h"
 #include "kvi_iconmanager.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
-#include "kvi_file.h"
+#include "KviFile.h"
 #include "kvi_filedialog.h"
 #include "kvi_msgbox.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_settings.h"
-#include "kvi_stringconversion.h"
+#include "KviStringConversion.h"
 #include "kvi_options.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_vbox.h"
 
@@ -283,7 +283,7 @@ void KviReguserMaskDialog::closeEvent(QCloseEvent *e)
 
 void KviReguserMaskDialog::okClicked()
 {
-	KviStr szTmp = m_pNickEdit->text();
+	KviCString szTmp = m_pNickEdit->text();
 	if(szTmp.isEmpty())szTmp = "*";
 	m_pMask->setNick(szTmp.ptr());
 
@@ -741,7 +741,7 @@ void KviRegisteredUserEntryDialog::editAllPropertiesClicked()
 	{
 		m_pPropertyDict->remove("avatar");
 	} else {
-		KviStr szPath = m_pAvatar->path();
+		KviCString szPath = m_pAvatar->path();
 		if(szPath.isEmpty())m_pPropertyDict->remove("avatar");
 		else m_pPropertyDict->replace("avatar",new QString(szPath));
 	}

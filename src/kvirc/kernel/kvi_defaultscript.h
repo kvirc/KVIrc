@@ -37,7 +37,7 @@
 
 class QGroupBox;
 class QCheckBox;
-class KviConfig;
+class KviConfigurationFile;
 class KviDefaultScriptDialog;
 
 /**
@@ -150,7 +150,7 @@ private:
 	* \param pCfg The configuration file
 	* \return void
 	*/
-	void loadInternal(KviConfig * pCfg);
+	void loadInternal(KviConfigurationFile * pCfg);
 
 	/**
 	* \brief Saves the configuration of the default script
@@ -159,7 +159,7 @@ private:
 	* \param pCfg The configuration file
 	* \return void
 	*/
-	void saveInternal(KviConfig * pCfg);
+	void saveInternal(KviConfigurationFile * pCfg);
 
 	/**
 	* \brief Compares versions between global and personal data

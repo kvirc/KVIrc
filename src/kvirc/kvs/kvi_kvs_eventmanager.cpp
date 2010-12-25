@@ -4,7 +4,7 @@
 //   Creation date : Thu Aug 17 2000 13:59:12 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2000-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,11 +23,11 @@
 //=============================================================================
 
 #include "kvi_kvs_eventmanager.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variant.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_out.h"
 #include "kvi_module.h"
 #include "kvi_window.h"
@@ -524,7 +524,7 @@ bool KviKvsEventManager::triggerHandlers(KviPointerList<KviKvsEventHandler> * pH
 
 void KviKvsEventManager::loadRawEvents(const QString &szFileName)
 {
-	KviConfig cfg(szFileName,KviConfig::Read);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
 	removeAllScriptRawHandlers();
 	int i;
 
@@ -559,7 +559,7 @@ void KviKvsEventManager::loadRawEvents(const QString &szFileName)
 
 void KviKvsEventManager::saveRawEvents(const QString &szFileName)
 {
-	KviConfig cfg(szFileName,KviConfig::Write);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
 	cfg.clear();
 	int i;
 
@@ -593,7 +593,7 @@ void KviKvsEventManager::saveRawEvents(const QString &szFileName)
 
 void KviKvsEventManager::loadAppEvents(const QString &szFileName)
 {
-	KviConfig cfg(szFileName,KviConfig::Read);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
 	removeAllScriptAppHandlers();
 
 	int i;
@@ -631,7 +631,7 @@ void KviKvsEventManager::loadAppEvents(const QString &szFileName)
 
 void KviKvsEventManager::saveAppEvents(const QString &szFileName)
 {
-	KviConfig cfg(szFileName,KviConfig::Write);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
 	cfg.clear();
 	int i;
 	bool bCompat = FALSE;

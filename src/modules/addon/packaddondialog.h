@@ -34,7 +34,7 @@
 */
 
 #include "kvi_settings.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 #include "kvi_selectors.h"
 
 #include <QWizard>

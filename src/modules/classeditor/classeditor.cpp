@@ -27,21 +27,21 @@
 
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_imagedialog.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_filedialog.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_scripteditor.h"
 #include "kvi_debug.h"
 #include "kvi_app.h"
 #include "kvi_frame.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_kvs_kernel.h"
 #include "kvi_kvs_object_class.h"
 #include "kvi_kvs_object_controller.h"
 #include "kvi_filedialog.h"
-#include "kvi_cmdformatter.h"
+#include "KviCommandFormatter.h"
 #include "kvi_module.h"
 #include "kvi_tal_vbox.h"
 #include "kvi_fileextensions.h"
@@ -1222,7 +1222,7 @@ void KviClassEditor::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 	}
 }
 
-void KviClassEditor::saveProperties(KviConfig * pCfg)
+void KviClassEditor::saveProperties(KviConfigurationFile * pCfg)
 {
 	pCfg->writeEntry("Sizes",m_pSplitter->sizes());
 	QString szName;
@@ -1231,7 +1231,7 @@ void KviClassEditor::saveProperties(KviConfig * pCfg)
 	pCfg->writeEntry("LastClass",szName);
 }
 
-void KviClassEditor::loadProperties(KviConfig * pCfg)
+void KviClassEditor::loadProperties(KviConfigurationFile * pCfg)
 {
 	QList<int> def;
 	def.append(20);
@@ -1704,7 +1704,7 @@ void KviClassEditor::build()
 		QString szFileName = "libkviclasseditortmp.kvc";
 		QString szBuffer;
 		g_pApp->getLocalKvircDirectory(szBuffer,KviApp::ConfigPlugins,szFileName);
-		KviConfig cfg(szBuffer,KviConfig::Write);
+		KviConfigurationFile cfg(szBuffer,KviConfigurationFile::Write);
 		cfg.clear();
 		cfg.sync();
 	}
@@ -1716,8 +1716,8 @@ void KviClassEditor::loadNotBuiltClasses()
 	QString szFileName = "libkviclasseditortmp.kvc";
 	QString szBuffer;
 	g_pApp->getLocalKvircDirectory(szBuffer,KviApp::ConfigPlugins,szFileName);
-	KviConfig cfg(szBuffer,KviConfig::Read);
-	KviConfigIterator it(*(cfg.dict()));
+	KviConfigurationFile cfg(szBuffer,KviConfigurationFile::Read);
+	KviConfigurationFileIterator it(*(cfg.dict()));
 
 	KviPointerList<QString> l;
 	l.setAutoDelete(true);
@@ -1734,10 +1734,10 @@ void KviClassEditor::loadNotBuiltClasses()
 		KviClassEditorTreeWidgetItem * pClassItem = createFullItem(*pszTmp);
 		m_pClasses->insert(*pszTmp,pClassItem);
 		pClassItem->setClassNotBuilt(true);
-		KviConfigGroup * pDict = cfg.dict()->find(*pszTmp);
+		KviConfigurationFileGroup * pDict = cfg.dict()->find(*pszTmp);
 		if(pDict)
 		{
-			KviConfigGroupIterator it(*pDict);
+			KviConfigurationFileGroupIterator it(*pDict);
 			KviPointerList<QString> names;
 			names.setAutoDelete(true);
 			while(it.current())
@@ -1775,7 +1775,7 @@ void KviClassEditor::saveNotBuiltClasses()
 	QString szFileName = "libkviclasseditortmp.kvc";
 	QString szBuffer;
 	g_pApp->getLocalKvircDirectory(szBuffer,KviApp::ConfigPlugins,szFileName);
-	KviConfig cfg(szBuffer,KviConfig::Write);
+	KviConfigurationFile cfg(szBuffer,KviConfigurationFile::Write);
 	cfg.clear();
 
 	while(it.current())
@@ -1877,12 +1877,12 @@ void KviClassEditorWindow::configGroupName(QString &szName)
 	szName = "classeditor";
 }
 
-void KviClassEditorWindow::saveProperties(KviConfig * pCfg)
+void KviClassEditorWindow::saveProperties(KviConfigurationFile * pCfg)
 {
 	m_pEditor->saveProperties(pCfg);
 }
 
-void KviClassEditorWindow::loadProperties(KviConfig * pCfg)
+void KviClassEditorWindow::loadProperties(KviConfigurationFile * pCfg)
 {
 	m_pEditor->loadProperties(pCfg);
 }

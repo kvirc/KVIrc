@@ -4,7 +4,7 @@
 //   Creation date : Tue Jul 30 19:25:18 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,15 +24,15 @@
 
 
 #include "kvi_ircsocket.h"
-#include "kvi_ircserver.h"
-#include "kvi_proxydb.h"
+#include "KviIrcServer.h"
+#include "KviProxyDataBase.h"
 #include "kvi_netutils.h"
 #include "kvi_settings.h"
 #include "kvi_error.h"
-#include "kvi_locale.h"
-#include "kvi_malloc.h"
+#include "KviLocale.h"
+#include "KviMemory.h"
 #include "kvi_debug.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_options.h"
 #include "kvi_memmove.h"
 #include "kvi_socket.h"
@@ -40,7 +40,7 @@
 #include "kvi_out.h"
 #include "kvi_irclink.h"
 #include "kvi_ircconnection.h"
-#include "kvi_databuffer.h"
+#include "KviDataBuffer.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_sslmaster.h"
@@ -677,16 +677,16 @@ void KviIrcSocket::proxyLoginHttp()
 		outputProxyMessage(__tr2qs("Using HTTP protocol."));
 
 	setState(ProxyFinalHttp);
-	KviStr szTmp(KviStr::Format,"CONNECT %s:%u HTTP/1.0\r\n",m_pIrcServer->hostName().toUtf8().data(),(unsigned int)(m_pIrcServer->port()));
+	KviCString szTmp(KviCString::Format,"CONNECT %s:%u HTTP/1.0\r\n",m_pIrcServer->hostName().toUtf8().data(),(unsigned int)(m_pIrcServer->port()));
 
-	szTmp.append(KviStr::Format,"User-Agent: KVIrc-ProxyClient/4.0\r\n");
+	szTmp.append(KviCString::Format,"User-Agent: KVIrc-ProxyClient/4.0\r\n");
 
 	if(m_pProxy->hasUser())
 	{
-		KviStr szAuth(KviStr::Format,"%s:%s",m_pProxy->user().toUtf8().data(),m_pProxy->pass().toUtf8().data());
-		KviStr szEncoded;
+		KviCString szAuth(KviCString::Format,"%s:%s",m_pProxy->user().toUtf8().data(),m_pProxy->pass().toUtf8().data());
+		KviCString szEncoded;
 		szEncoded.bufferToBase64(szAuth.ptr(),szAuth.len());
-		szTmp.append(KviStr::Format,"Proxy-Authorization: Basic %s\r\n\r\n",szEncoded.ptr());
+		szTmp.append(KviCString::Format,"Proxy-Authorization: Basic %s\r\n\r\n",szEncoded.ptr());
 	} else {
 		szTmp.append("\r\n");
 	}
@@ -729,7 +729,7 @@ void KviIrcSocket::proxyLoginV4()
 	// the protocol does not specify the "userid" format...
 	// so build an userid from the pass and/or username...
 
-	KviStr szUserAndPass = m_pProxy->user();
+	KviCString szUserAndPass = m_pProxy->user();
 	if(m_pProxy->hasPass()){
 		if(szUserAndPass.hasData())
 			szUserAndPass.append(' ');
@@ -954,7 +954,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 		);
 	int iBufLen = bRemoteDns ? 4 + 1 + m_pIrcServer->hostName().toUtf8().length() + 2
 		: (m_pIrcServer->isIPv6() ? 22 : 10);
-	char * pcBufToSend = (char *)kvi_malloc(sizeof(char) * iBufLen);
+	char * pcBufToSend = (char *)KviMemory::allocate(sizeof(char) * iBufLen);
 	pcBufToSend[0] = (unsigned char)5;           //Proto 5
 	pcBufToSend[1] = (unsigned char)1;           //CONNECT
 	pcBufToSend[2] = (unsigned char)0;           //RSV
@@ -999,7 +999,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 	// send it into hyperspace...
 	setState(ProxyFinalV5);
 	sendRawData(pcBufToSend,iBufLen);
-	kvi_free(pcBufToSend);
+	KviMemory::free(pcBufToSend);
 	// and wait for reply...
 }
 
@@ -1206,7 +1206,7 @@ void KviIrcSocket::proxyHandleHttpFinalReply(const char * pcBuffer, int)
 	//
 	// HTTP/1.0 200 Connection established
 
-	KviStr szTmp = pcBuffer;
+	KviCString szTmp = pcBuffer;
 	// FIXME: #warning "We could even show the proxy output here...!"
 	szTmp.cutFromFirst('\n');
 	szTmp.trimmed();
@@ -1292,7 +1292,7 @@ void KviIrcSocket::printSSLCipherInfo()
 
 void KviIrcSocket::raiseSSLError()
 {
-	KviStr szBuffer;
+	KviCString szBuffer;
 	while(m_pSSL->getLastErrorString(szBuffer))
 	{
 		outputSSLError(szBuffer.ptr());
@@ -1514,7 +1514,7 @@ void KviIrcSocket::processData(char * buffer,int)
 	register char *p=buffer;
 	char *beginOfCurData = buffer;
 	int   bufLen = 0;
-	char *messageBuffer = (char *)kvi_malloc(1);
+	char *messageBuffer = (char *)KviMemory::allocate(1);
 
 	// Shut up the socket notifier
 	// in case that we enter in a local loop somewhere
@@ -1536,16 +1536,16 @@ void KviIrcSocket::processData(char * buffer,int)
 			//check for previous unterminated data
 			if(m_uReadBufferLen > 0){
 				KVI_ASSERT(m_pReadBuffer);
-				messageBuffer = (char *)kvi_realloc(messageBuffer,bufLen + m_uReadBufferLen + 1);
+				messageBuffer = (char *)KviMemory::reallocate(messageBuffer,bufLen + m_uReadBufferLen + 1);
 				kvi_memmove(messageBuffer,m_pReadBuffer,m_uReadBufferLen);
 				kvi_memmove((void *)(messageBuffer + m_uReadBufferLen),beginOfCurData,bufLen);
 				*(messageBuffer + bufLen + m_uReadBufferLen) = '\0';
 				m_uReadBufferLen = 0;
-				kvi_free(m_pReadBuffer);
+				KviMemory::free(m_pReadBuffer);
 				m_pReadBuffer = 0;
 			} else {
 				__range_invalid(m_pReadBuffer);
-				messageBuffer = (char *)kvi_realloc(messageBuffer,bufLen + 1);
+				messageBuffer = (char *)KviMemory::reallocate(messageBuffer,bufLen + 1);
 				kvi_memmove(messageBuffer,beginOfCurData,bufLen);
 				*(messageBuffer + bufLen) = '\0';
 			}
@@ -1575,7 +1575,7 @@ void KviIrcSocket::processData(char * buffer,int)
 				//
 				// We handle it by simply returning control to readData() which
 				// will return immediately (and safely) control to Qt
-				kvi_free(messageBuffer);
+				KviMemory::free(messageBuffer);
 				m_bInProcessData = false;
 				return;
 			}
@@ -1597,14 +1597,14 @@ void KviIrcSocket::processData(char * buffer,int)
 		if(m_uReadBufferLen > 0){
 			//and there was more stuff saved... (really slow connection)
 			KVI_ASSERT(m_pReadBuffer);
-			m_pReadBuffer =(char *)kvi_realloc(m_pReadBuffer,m_uReadBufferLen + bufLen);
+			m_pReadBuffer =(char *)KviMemory::reallocate(m_pReadBuffer,m_uReadBufferLen + bufLen);
 			kvi_memmove((void *)(m_pReadBuffer+m_uReadBufferLen),beginOfCurData,bufLen);
 			m_uReadBufferLen += bufLen;
 		} else {
 			//
 			__range_invalid(m_pReadBuffer);
 			m_uReadBufferLen = bufLen;
-			m_pReadBuffer =(char *)kvi_malloc(m_uReadBufferLen);
+			m_pReadBuffer =(char *)KviMemory::allocate(m_uReadBufferLen);
 			kvi_memmove(m_pReadBuffer,beginOfCurData,m_uReadBufferLen);
 		}
 		//The m_pReadBuffer contains at max 1 irc message...
@@ -1612,7 +1612,7 @@ void KviIrcSocket::processData(char * buffer,int)
 		// FIXME: Is this limit *really* valid on all servers ?
 		if(m_uReadBufferLen > 510)qDebug("WARNING : Receiving an invalid irc message from server.");
 	}
-	kvi_free(messageBuffer);
+	KviMemory::free(messageBuffer);
 
 	// re-enable the socket notifier...
 	m_pRsn->setEnabled(true);
@@ -1681,7 +1681,7 @@ void KviIrcSocket::free_msgEntry(KviIrcSocketMsgEntry * e)
 		delete e->pData;
 
 	e->pData = 0;
-	kvi_free(e);
+	KviMemory::free(e);
 }
 
 bool KviIrcSocket::queue_removeMessage()
@@ -1694,7 +1694,7 @@ bool KviIrcSocket::queue_removeMessage()
 
 	KviIrcSocketMsgEntry * pEntry = m_pSendQueueHead;
 	m_pSendQueueHead = pEntry->next_ptr;
-	kvi_free((void *)pEntry);
+	KviMemory::free((void *)pEntry);
 
 	if(m_pSendQueueHead == 0)
 	{
@@ -1931,7 +1931,7 @@ bool KviIrcSocket::sendFmtData(const char *fmt,...)
 {
 	if(m_state != Connected)return false;
 	//new buffer
-	KviIrcSocketMsgEntry *ptr = (KviIrcSocketMsgEntry *)kvi_malloc(sizeof(KviIrcSocketMsgEntry));
+	KviIrcSocketMsgEntry *ptr = (KviIrcSocketMsgEntry *)KviMemory::allocate(sizeof(KviIrcSocketMsgEntry));
 	ptr->pData = new KviDataBuffer(512);
 	kvi_va_list(list);
 	kvi_va_start(list,fmt);
@@ -1957,7 +1957,7 @@ bool KviIrcSocket::sendData(const char *buffer,int buflen)
 {
 	if(m_state != Connected)return false;
 	//new buffer
-	KviIrcSocketMsgEntry *ptr = (KviIrcSocketMsgEntry *)kvi_malloc(sizeof(KviIrcSocketMsgEntry));
+	KviIrcSocketMsgEntry *ptr = (KviIrcSocketMsgEntry *)KviMemory::allocate(sizeof(KviIrcSocketMsgEntry));
 	if(buflen < 0)buflen = strlen(buffer);
 	if(buflen > 510)
 	{
@@ -1982,7 +1982,7 @@ bool KviIrcSocket::sendRawData(const char * pcBuffer, int iBuflen)
 		return false;
 
 	//new buffer
-	KviIrcSocketMsgEntry * pEntry = (KviIrcSocketMsgEntry *)kvi_malloc(sizeof(KviIrcSocketMsgEntry));
+	KviIrcSocketMsgEntry * pEntry = (KviIrcSocketMsgEntry *)KviMemory::allocate(sizeof(KviIrcSocketMsgEntry));
 	pEntry->pData = new KviDataBuffer(iBuflen);
 
 	kvi_memmove(pEntry->pData->data(),pcBuffer,iBuflen);
@@ -2003,7 +2003,7 @@ bool KviIrcSocket::sendPacket(KviDataBuffer * pData)
 		return false;
 	}
 
-	KviIrcSocketMsgEntry * pEntry = (KviIrcSocketMsgEntry *)kvi_malloc(sizeof(KviIrcSocketMsgEntry));
+	KviIrcSocketMsgEntry * pEntry = (KviIrcSocketMsgEntry *)KviMemory::allocate(sizeof(KviIrcSocketMsgEntry));
 	pEntry->pData = pData;
 	queue_insertMessage(pEntry);
 

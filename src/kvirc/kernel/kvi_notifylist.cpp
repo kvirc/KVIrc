@@ -4,7 +4,7 @@
 //   Creation date : Fri Oct 27 2000 23:41:01 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,20 +29,20 @@
 #include "kvi_notifylist.h"
 #include "kvi_console.h"
 #include "kvi_ircsocket.h"
-#include "kvi_regusersdb.h"
+#include "KviRegisteredUserDataBase.h"
 #include "kvi_userlistview.h"
 #include "kvi_channel.h"
 #include "kvi_options.h"
 #include "kvi_window.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_out.h"
 #include "kvi_sparser.h"
-#include "kvi_ircmask.h"
+#include "KviIrcMask.h"
 #include "kvi_numeric.h"
-#include "kvi_parameterlist.h"
+#include "KviParameterList.h"
 #include "kvi_ircconnection.h"
 #include "kvi_app.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_lagmeter.h"
 #include "kvi_kvs_eventtriggers.h"
 
@@ -522,7 +522,7 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage *msg)
 	KviPointerList<QString> tmplist;
 	tmplist.setAutoDelete(false);
 
-	KviStr nk;
+	KviCString nk;
 	const char * aux = msg->trailing();
 
 	while(*aux)
@@ -790,7 +790,7 @@ bool KviIsOnNotifyListManager::handleUserhost(KviIrcMessage *msg)
 	KviPointerList<KviIrcMask> tmplist;
 	tmplist.setAutoDelete(true);
 
-	KviStr nk;
+	KviCString nk;
 	const char * aux = msg->trailing();
 
 	while(*aux)
@@ -800,9 +800,9 @@ bool KviIsOnNotifyListManager::handleUserhost(KviIrcMessage *msg)
 		if(nk.hasData())
 		{
 			// split it in a mask
-			KviStr nick;
-			KviStr user;
-			KviStr host;
+			KviCString nick;
+			KviCString user;
+			KviCString host;
 
 			int idx = nk.findFirstIdx('=');
 			if(idx != -1)
@@ -985,7 +985,7 @@ bool KviStupidNotifyListManager::handleIsOn(KviIrcMessage * msg)
 	if(m_pConnection->lagMeter())
 		m_pConnection->lagMeter()->lagCheckComplete("@notify_naive");
 
-	KviStr nk;
+	KviCString nk;
 	const char * aux = msg->trailing();
 	while(*aux)
 	{

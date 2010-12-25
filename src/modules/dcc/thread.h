@@ -6,7 +6,7 @@
 //   Creation date : Tue Sep 20 09 2000 18:28:44 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,9 +25,9 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_thread.h"
+#include "KviThread.h"
 #include "kvi_sockettype.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 
 #include <QObject>
 
@@ -37,11 +37,11 @@
 
 // KviThreadDataEvent<int>
 #define KVI_DCC_THREAD_EVENT_ERROR (KVI_THREAD_USER_EVENT_BASE + 1)
-// KviThreadDataEvent<KviStr>
+// KviThreadDataEvent<KviCString>
 #define KVI_DCC_THREAD_EVENT_DATA (KVI_THREAD_USER_EVENT_BASE + 2)
 // KviThreadEvent
 #define KVI_DCC_THREAD_EVENT_SUCCESS (KVI_THREAD_USER_EVENT_BASE + 3)
-// KviThreadDataEvent<KviStr>
+// KviThreadDataEvent<KviCString>
 #define KVI_DCC_THREAD_EVENT_MESSAGE (KVI_THREAD_USER_EVENT_BASE + 4)
 // KviThreadDataEvent<int>
 #define KVI_DCC_THREAD_EVENT_ACTION (KVI_THREAD_USER_EVENT_BASE + 5)

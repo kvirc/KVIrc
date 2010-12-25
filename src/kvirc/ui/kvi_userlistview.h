@@ -6,7 +6,7 @@
 //   Creation date : Tue Aug 1 2000 21:03:41 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -38,13 +38,13 @@
 */
 
 #include "kvi_settings.h"
-#include "kvi_pointerlist.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerList.h"
+#include "KviPointerHashTable.h"
 #include "kvi_toolwindows_container.h"
-#include "kvi_string.h"
-#include "kvi_ircuserdb.h"
-#include "kvi_ircmask.h"
-#include "kvi_time.h"
+#include "KviCString.h"
+#include "KviIrcUserDataBase.h"
+#include "KviIrcMask.h"
+#include "KviTimeUtils.h"
 #include "kvi_tal_tooltip.h"
 
 #include <time.h>

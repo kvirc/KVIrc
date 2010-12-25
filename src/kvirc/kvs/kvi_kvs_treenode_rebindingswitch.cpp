@@ -4,7 +4,7 @@
 //   Creation date : Mon 15 Aug 2005 13:32:31 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@
 #include "kvi_kvs_treenode_data.h"
 #include "kvi_window.h"
 #include "kvi_app.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_kvs_runtimecontext.h"
 
 KviKvsTreeNodeRebindingSwitch::KviKvsTreeNodeRebindingSwitch(const QChar * pLocation,KviKvsTreeNodeData * pTargetWindow,KviKvsTreeNodeCommand * pChildCommand)

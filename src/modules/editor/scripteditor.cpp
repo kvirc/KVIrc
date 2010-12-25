@@ -26,21 +26,21 @@
 
 #include "scripteditor.h"
 
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_fileextensions.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_filedialog.h"
-#include "kvi_qstring.h"
-#include "kvi_config.h"
+#include "KviQString.h"
+#include "KviConfigurationFile.h"
 #include "kvi_module.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 #include "kvi_app.h"
 #include "kvi_console.h"
 #include "kvi_window.h"
 #include "kvi_iconmanager.h"
 #include "kvi_kvs_kernel.h"
 #include "kvi_modulemanager.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_groupbox.h"
@@ -839,7 +839,7 @@ void KviScriptEditorImplementation::loadOptions()
 	QString szTmp;
 	g_pEditorModulePointer->getDefaultConfigFileName(szTmp);
 
-	KviConfig cfg(szTmp,KviConfig::Read);
+	KviConfigurationFile cfg(szTmp,KviConfigurationFile::Read);
 	g_clrBackground = cfg.readColorEntry("Background",QColor(0,0,0));;
 	g_clrNormalText = cfg.readColorEntry("NormalText",QColor(100,255,0));
 	g_clrBracket = cfg.readColorEntry("Bracket",QColor(255,0,0));
@@ -885,7 +885,7 @@ void KviScriptEditorImplementation::saveOptions()
 	QString szTmp;
 	g_pEditorModulePointer->getDefaultConfigFileName(szTmp);
 
-	KviConfig cfg(szTmp,KviConfig::Write);
+	KviConfigurationFile cfg(szTmp,KviConfigurationFile::Write);
 	cfg.writeEntry("Background",g_clrBackground);;
 	cfg.writeEntry("NormalText",g_clrNormalText);
 	cfg.writeEntry("Bracket",g_clrBracket);
@@ -926,7 +926,7 @@ void KviScriptEditorImplementation::saveToFile()
 		QString szBuffer = m_pEditor->toPlainText();
 
 		//if(tmp.isEmpty())tmp = "";
-		//KviStr buffer = tmp.toUtf8().data();
+		//KviCString buffer = tmp.toUtf8().data();
 		if(!KviFileUtils::writeFile(szFileName,szBuffer))
 		{
 			QString szTmp;

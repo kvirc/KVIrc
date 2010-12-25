@@ -28,7 +28,7 @@
 #include "kvi_settings.h"
 
 //base class
-#include "kvi_crypt.h"
+#include "KviCryptEngine.h"
 
 // class definitions for the libcrypto++ case
 #include <cryptopp/aes.h>
@@ -55,8 +55,8 @@ private:
 	std::string m_szDecKey;
 public:
 	virtual bool init(const char * pcEncKey, int iEncKeyLen, const char * pcDecKey, int iDecKeyLen);
-	virtual KviCryptEngine::EncryptResult encrypt(const char * pcPlainText, KviStr & szOutBuffer);
-	virtual KviCryptEngine::DecryptResult decrypt(const char * pcInBuffer, KviStr & szPlainText);
+	virtual KviCryptEngine::EncryptResult encrypt(const char * pcPlainText, KviCString & szOutBuffer);
+	virtual KviCryptEngine::DecryptResult decrypt(const char * pcInBuffer, KviCString & szPlainText);
 };
 
 class KviRijndael128HexEngine : public KviRijndaelEngine
@@ -134,8 +134,8 @@ public:
 	~KviMircryptionEngine();
 	
 	virtual bool init(const char * pcEncKey, int iEncKeyLen, const char * pcDecKey, int iDecKeyLen);
-	virtual KviCryptEngine::EncryptResult encrypt(const char * pcPlainText, KviStr & szOutBuffer);
-	virtual KviCryptEngine::DecryptResult decrypt(const char * pcInBuffer, KviStr & szPlainText);
+	virtual KviCryptEngine::EncryptResult encrypt(const char * pcPlainText, KviCString & szOutBuffer);
+	virtual KviCryptEngine::DecryptResult decrypt(const char * pcInBuffer, KviCString & szPlainText);
 private:
 	std::string m_szEncKey;
 	std::string m_szDecKey;

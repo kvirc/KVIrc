@@ -6,7 +6,7 @@
 //   Creation date : Thu Aug 23 04:08:10 2001 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -30,7 +30,7 @@
 #include "window.h"
 
 #include "kvi_window.h"
-#include "kvi_databuffer.h"
+#include "KviDataBuffer.h"
 #include "kvi_sockettype.h"
 #include "kvi_tal_hbox.h"
 
@@ -55,7 +55,7 @@ typedef struct _KviDccVoiceThreadOptions
 	bool               bForceHalfDuplex;
 	int                iPreBufferSize;
 	int                iSampleRate;
-	KviStr             szSoundDevice;
+	KviCString             szSoundDevice;
 	KviDccVoiceCodec * pCodec;
 } KviDccVoiceThreadOptions;
 

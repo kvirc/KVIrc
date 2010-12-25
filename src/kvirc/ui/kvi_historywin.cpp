@@ -6,7 +6,7 @@
 //   Creation date : Mon Aug 19 01:34:48 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,7 +29,7 @@
 #include "kvi_options.h"
 #include "kvi_input.h"
 #include "kvi_input_history.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 
 #include <QEvent>
 #include <QMouseEvent>
@@ -109,7 +109,7 @@ bool KviHistoryWindow::findTypedSeq()
 	bool bFullMax = false;
 	for(int i=0;i<cnt;i++)
 	{
-		KviStr szIt = text(i);
+		KviCString szIt = text(i);
 		int j;
 		for(j=0;j<szIt.len();j++)
 		{
@@ -166,7 +166,7 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent * e)
 			doHide();
 			if(findTypedSeq())
 			{
-				KviStr szItem = m_szTypedSeq;
+				KviCString szItem = m_szTypedSeq;
 				szItem.append(' ');
 				if(m_pOwner)m_pOwner->insertText(szItem);
 			} else {
@@ -177,7 +177,7 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent * e)
 		case Qt::Key_Tab:
 			doHide();
 			findTypedSeq();
-			KviStr szItem = m_szCurFullSeq;
+			KviCString szItem = m_szCurFullSeq;
 			szItem.append(KVI_TEXT_ICON);
 			if(m_pOwner)m_pOwner->insertText(szItem);
 			return;

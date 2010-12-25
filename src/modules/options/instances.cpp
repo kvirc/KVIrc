@@ -5,7 +5,7 @@
 //   File : instances.cpp
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (stefanek@tin.it)
+//   Copyright (C) 2001-2010 Szymon Stefanek (stefanek@tin.it)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -70,7 +70,7 @@
 #include "optw_userlist.h"
 #include "optw_windowlist.h"
 
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_iconmanager.h"
 #include "instances.h"
 

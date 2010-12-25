@@ -33,7 +33,7 @@
 
 #include "rootservice.h"
 #include "xmlfunctions.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_out.h"
 #include "kvi_app.h"
 #include "kvi_console.h"

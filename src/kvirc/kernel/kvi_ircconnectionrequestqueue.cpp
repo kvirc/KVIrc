@@ -130,7 +130,7 @@ void KviRequestQueue::timerSlot()
 					pChan->connection()->stateData()->setLastSentChannelWhoRequest(kvi_unixTime());
 					if(pChan->connection()->lagMeter())
 					{
-						KviStr tmp;
+						KviCString tmp;
 						tmp.sprintf("WHO %s",encodedChan.data());
 						pChan->connection()->lagMeter()->lagCheckRegister(tmp.ptr(),60);
 					}

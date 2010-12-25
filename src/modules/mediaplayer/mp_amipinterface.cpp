@@ -4,7 +4,7 @@
 //   Creation date : Sun 27 Mar 2005 16:55:09 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,7 +29,7 @@
 
 #include <QTextCodec>
 
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_module.h"
 
 #include <windows.h>
@@ -392,7 +392,7 @@ bool KviAmipInterface::amipExec(const QString &cmd)
 {
 	if(!amip_dll) return false;
 	QTextCodec *c=mediaplayer_get_codec();
-	KviStr szCmd = c ? c->fromUnicode(cmd) : cmd.toUtf8();
+	KviCString szCmd = c ? c->fromUnicode(cmd) : cmd.toUtf8();
 	return (ac_exec(szCmd) == AC_ERR_NOERROR);
 }
 
@@ -401,7 +401,7 @@ QString KviAmipInterface::amipEval(const QString &cmd)
 	QString ret;
 	if(!amip_dll) return ret;
 	QTextCodec *c=mediaplayer_get_codec();
-	KviStr szCmd = c ? c->fromUnicode(cmd) : cmd.toUtf8();
+	KviCString szCmd = c ? c->fromUnicode(cmd) : cmd.toUtf8();
 	char buff[AC_BUFFER_SIZE];
 	if((ac_eval(szCmd, buff) == AC_ERR_NOERROR)) {
 		QString s = buff;

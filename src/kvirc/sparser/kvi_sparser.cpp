@@ -4,7 +4,7 @@
 //   Creation date : Sun Jun 30 2000 03:25:17 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,7 +27,7 @@
 #include "kvi_sparser.h"
 #include "kvi_window.h"
 #include "kvi_out.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_ircsocket.h"
 #include "kvi_options.h"
 #include "kvi_kvs_eventmanager.h"
@@ -60,7 +60,7 @@ void KviServerParser::parseMessage(const char * message,KviIrcConnection * pConn
 				parms.append(pConnection->decodeText(msg.safePrefix()));
 				parms.append(pConnection->decodeText(msg.command()));
 
-				for(KviStr * str = msg.firstParam();str;str = msg.nextParam())
+				for(KviCString * str = msg.firstParam();str;str = msg.nextParam())
 					parms.append(pConnection->console()->decodeText(str->ptr()));
 
 				if(KviKvsEventManager::instance()->triggerRaw(msg.numeric(),pConnection->console(),&parms))
@@ -114,7 +114,7 @@ void KviServerParser::parseMessage(const char * message,KviIrcConnection * pConn
 				parms.append(pConnection->decodeText(msg.safePrefix()));
 				parms.append(pConnection->decodeText(msg.command()));
 
-				for(KviStr * str = msg.firstParam();str;str = msg.nextParam())
+				for(KviCString * str = msg.firstParam();str;str = msg.nextParam())
 					parms.append(pConnection->console()->decodeText(str->ptr()));
 
 				if(KviKvsEventManager::instance()->trigger(KviEvent_OnUnhandledLiteral,pConnection->console(),&parms))

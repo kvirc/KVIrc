@@ -28,10 +28,10 @@
 #include "notifiersettings.h"
 
 #include "kvi_settings.h"
-#include "kvi_qstring.h"
-#include "kvi_pointerlist.h"
+#include "KviQString.h"
+#include "KviPointerList.h"
 #include "kvi_tal_popupmenu.h"
-#include "kvi_time.h"
+#include "KviTimeUtils.h"
 
 #include <QBitmap>
 #include <QColor>

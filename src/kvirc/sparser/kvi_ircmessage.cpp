@@ -4,7 +4,7 @@
 //   Creation date : Fri Aug  2 23:08:57 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -37,7 +37,7 @@ KviIrcMessage::KviIrcMessage(const char * message,KviIrcConnection * pConnection
 	const char * aux;
 	m_ptr = message;
 
-	m_pParams = new KviPointerList<KviStr>;
+	m_pParams = new KviPointerList<KviCString>;
 	m_pParams->setAutoDelete(true);
 
 	//m_pcParams = new KviPointerList<QCString>;
@@ -64,14 +64,14 @@ KviIrcMessage::KviIrcMessage(const char * message,KviIrcConnection * pConnection
 			if(*m_ptr == ':')
 			{
 				++m_ptr;
-				m_pParams->append(new KviStr(m_ptr));
+				m_pParams->append(new KviCString(m_ptr));
 				//m_pcParams->append(new QCString(m_ptr));
 				break; // this was the last
 			} else {
 				aux = m_ptr;
 				while(*m_ptr && (*m_ptr != ' '))++m_ptr;
-				m_pParams->append(new KviStr(aux,m_ptr));
-				//m_pcParams->append(new QCString(KviStr(aux,m_ptr).ptr()));
+				m_pParams->append(new KviCString(aux,m_ptr));
+				//m_pcParams->append(new QCString(KviCString(aux,m_ptr).ptr()));
 				while(*m_ptr == ' ')++m_ptr;
 			}
 		}

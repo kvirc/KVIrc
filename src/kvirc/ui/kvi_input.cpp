@@ -36,7 +36,7 @@
 #include "kvi_colorwin.h"
 #include "kvi_texticonwin.h"
 #include "kvi_window.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_scripteditor.h"
 #include "kvi_historywin.h"
 #include "kvi_userinput.h"

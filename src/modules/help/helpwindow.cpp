@@ -4,7 +4,7 @@
 //   Creation date : Tue Aug 11 2000 18:08:22 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the m_terms of the GNU General Public License
@@ -28,9 +28,9 @@
 #include "kvi_app.h"
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_module.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_sourcesdate.h"
 
 #include <QList>
@@ -162,13 +162,13 @@ void KviHelpWindow::indexingEnd()
 	m_pBtnRefreshIndex->setEnabled(true);
 }
 
-void KviHelpWindow::saveProperties(KviConfig *cfg)
+void KviHelpWindow::saveProperties(KviConfigurationFile *cfg)
 {
 	KviWindow::saveProperties(cfg);
 	cfg->writeEntry("Splitter",m_pSplitter->sizes());
 }
 
-void KviHelpWindow::loadProperties(KviConfig *cfg)
+void KviHelpWindow::loadProperties(KviConfigurationFile *cfg)
 {
 	QList<int> def;
 	int w = width();

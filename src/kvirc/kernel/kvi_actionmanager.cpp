@@ -4,7 +4,7 @@
 //   Creation date : Sun 21 Nov 2004 03:37:57 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,10 +28,10 @@
 #include "kvi_customtoolbar.h"
 #include "kvi_customtoolbarmanager.h"
 #include "kvi_app.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_kvs_useraction.h"
-#include "kvi_config.h"
-#include "kvi_qstring.h"
+#include "KviConfigurationFile.h"
+#include "KviQString.h"
 #include "kvi_frame.h"
 
 KviActionManager * KviActionManager::m_pInstance = 0;
@@ -93,9 +93,9 @@ KviActionManager::~KviActionManager()
 
 void KviActionManager::load(const QString &szFileName)
 {
-	KviConfig cfg(szFileName,KviConfig::Read);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
 
-	KviConfigIterator it(*(cfg.dict()));
+	KviConfigurationFileIterator it(*(cfg.dict()));
 	while(it.current())
 	{
 		cfg.setGroup(it.currentKey());
@@ -108,7 +108,7 @@ void KviActionManager::load(const QString &szFileName)
 
 void KviActionManager::save(const QString &szFileName)
 {
-	KviConfig cfg(szFileName,KviConfig::Write);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
 	cfg.clear();
 
 	KviPointerHashTableIterator<QString,KviAction> it(*m_pActions);

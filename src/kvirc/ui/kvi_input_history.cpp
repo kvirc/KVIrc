@@ -25,8 +25,8 @@
 //============================================================================
 
 #include "kvi_input_history.h"
-#include "kvi_config.h"
-#include "kvi_string.h"
+#include "KviConfigurationFile.h"
+#include "KviCString.h"
 
 KviInputHistory * KviInputHistory::m_pSelf = NULL;
 unsigned int KviInputHistory::m_uCount = 0;
@@ -77,14 +77,14 @@ void KviInputHistory::add(QString * szString)
 
 void KviInputHistory::load(const QString & szFileName)
 {
-	KviConfig c(szFileName,KviConfig::Read);
+	KviConfigurationFile c(szFileName,KviConfigurationFile::Read);
 
 	int iCount = c.readIntEntry("Count",0);
 
 	if(iCount > KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES)
 		iCount = KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES;
 
-	KviStr szTmp;
+	KviCString szTmp;
 
 	for(int i=0; i<iCount; i++)
 	{
@@ -97,12 +97,12 @@ void KviInputHistory::load(const QString & szFileName)
 
 void KviInputHistory::save(const QString & szFileName)
 {
-	KviConfig c(szFileName,KviConfig::Write);
+	KviConfigurationFile c(szFileName,KviConfigurationFile::Write);
 	c.clear();
 
 	c.writeEntry("Count",m_pStringList->count());
 
-	KviStr szTmp;
+	KviCString szTmp;
 	int iIdx = 0;
 
 	for(QString * szString = m_pStringList->first(); szString; szString = m_pStringList->next())

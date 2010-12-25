@@ -4,7 +4,7 @@
 //   Creation date : Wed Jan  6 1999 04:30:20 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -68,7 +68,7 @@ void KviColorWindow::paintEvent(QPaintEvent *)
 	{
 		p.fillRect((i % 8) * 18,(i / 8) * 18,18,18,KVI_OPTION_MIRCCOLOR(i));
 		p.setPen(KVI_OPTION_MIRCCOLOR(clrIdx[i]));
-		KviStr szI(KviStr::Format,"%d",i);
+		KviCString szI(KviCString::Format,"%d",i);
 		p.drawText((i % 8) * 18,(i / 8) * 18,18,18,Qt::AlignVCenter | Qt::AlignHCenter,szI.ptr());
 	}
 }

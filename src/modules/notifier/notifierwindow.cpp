@@ -29,11 +29,11 @@
 #include "notifierwindowtab.h"
 
 #include "kvi_iconmanager.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_window.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_frame.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_options.h"
 #include "kvi_userinput.h"
 #include "kvi_themedlineedit.h"
@@ -1114,7 +1114,7 @@ void KviNotifierWindow::returnPressed()
 	QString szHtml = szTxt;
 	szHtml.replace("<","&lt;");
 	szHtml.replace(">","&gt;");
-	KviStr szTmp(KviStr::Format,"%d",KVI_SMALLICON_OWNPRIVMSG);
+	KviCString szTmp(KviCString::Format,"%d",KVI_SMALLICON_OWNPRIVMSG);
 
 	addMessage(pTab->wnd(),szTmp.ptr(),szHtml,0);
 	m_pLineEdit->setText("");

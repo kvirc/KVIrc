@@ -4,7 +4,7 @@
 //   Creation date : Wed Sep 09 2000 20:59:01 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -32,10 +32,10 @@
 
 #include "kvi_debug.h"
 #include "kvi_settings.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_module.h"
 #include "kvi_sparser.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_out.h"
 #include "kvi_console.h"
 #include "kvi_netutils.h"
@@ -44,7 +44,7 @@
 #include "kvi_error.h"
 #include "kvi_options.h"
 #include "kvi_defaults.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_app.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
@@ -953,7 +953,7 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 		szFileName.append('"');
 	}
 
-	KviStr szDCC("GET");
+	KviCString szDCC("GET");
 #ifdef COMPILE_SSL_SUPPORT
 	if(c->switches()->find('s',"ssl"))szDCC.prepend('S');
 #else
@@ -1254,7 +1254,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 {
 	ENTER_STACK_FRAME(c,"dcc_module_cmd_canvas");
 
-	KviStr target;
+	KviCString target;
 	if(!g_pUserParser->parseCmdFinalPart(c,target))return false;
 
 	if(target.isEmpty())return c->error(KviError_notEnoughParameters,"%s",__tr_ctx("Missing target nickname","dcc"));
@@ -1272,7 +1272,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 
 	if(d->bOverrideMinimize)
 	{
-		KviStr tmpVal;
+		KviCString tmpVal;
 		if(!(c->getSwitchValue('m',tmpVal)))d->bShowMinimized = false;
 		else d->bShowMinimized = kvi_strEqualCI(tmpVal.ptr(),"1");
 	}

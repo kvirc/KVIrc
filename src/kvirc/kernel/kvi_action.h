@@ -31,7 +31,7 @@
 */
 
 #include "kvi_settings.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 
 #include <QObject>
 

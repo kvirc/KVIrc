@@ -6,7 +6,7 @@
 //   Creation date : Thu May 10 2001 13:49:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,8 +24,8 @@
 //
 //=============================================================================
 
-#include "kvi_string.h"
-#include "kvi_config.h"
+#include "KviCString.h"
+#include "KviConfigurationFile.h"
 
 #include <QWidget>
 #include <QFrame>
@@ -54,7 +54,7 @@ public:
 protected:
 	KviTipFrame * m_pTipFrame;
 	QCheckBox   * m_pShowAtStartupCheck;
-	KviConfig   * m_pConfig;
+	KviConfigurationFile   * m_pConfig;
 	QString        m_szConfigFileName; // no path!
 protected:
 	virtual void closeEvent(QCloseEvent *e);

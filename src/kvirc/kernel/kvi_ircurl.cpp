@@ -4,7 +4,7 @@
 //   Creation date : Sun Mar 04 2001 14:20:12 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,15 +22,15 @@
 //
 //=============================================================================
 
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_inttypes.h"
-#include "kvi_qstring.h"
-#include "kvi_ircserver.h"
+#include "KviQString.h"
+#include "KviIrcServer.h"
 #include "kvi_kvs_script.h"
 #include "kvi_msgbox.h"
 #include "kvi_channel.h"
 #include "kvi_app.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_ircconnection.h"
 #include "kvi_irccontext.h"
@@ -41,15 +41,15 @@
 #include "kvi_ircurl.h"
 
 
-bool KviIrcUrl::parse(const char * url,KviStr &cmdBuffer,int contextSpec)
+bool KviIrcUrl::parse(const char * url,KviCString &cmdBuffer,int contextSpec)
 {
 	// irc[6]://<server>[:<port>][/<channel>[?<pass>]]
-	KviStr szUrl = url;
+	KviCString szUrl = url;
 	//szUrl.replaceAll("$","\\$");
 	//szUrl.replaceAll(";","\\;");
 	bool bIPv6 = false;
 	bool bSSL = false;
-	KviStr szServer;
+	KviCString szServer;
 	kvi_u32_t uPort = 0;
 	bool bGotPort = false;
 	if(kvi_strEqualCIN(szUrl.ptr(),"irc://",6))
@@ -70,7 +70,7 @@ bool KviIrcUrl::parse(const char * url,KviStr &cmdBuffer,int contextSpec)
 		szUrl.cutLeft(8);
 	} else return false;
 
-	KviStr szServerAndPort;
+	KviCString szServerAndPort;
 
 	int idx = szUrl.findFirstIdx('/');
 	if(idx != -1)
@@ -113,8 +113,8 @@ bool KviIrcUrl::parse(const char * url,KviStr &cmdBuffer,int contextSpec)
 
 	if(szUrl.hasData())
 	{
-		KviStr szChannel;
-		KviStr szPass;
+		KviCString szChannel;
+		KviCString szPass;
 
 		idx = szUrl.findFirstIdx('?');
 		if(idx != -1)
@@ -130,13 +130,13 @@ bool KviIrcUrl::parse(const char * url,KviStr &cmdBuffer,int contextSpec)
 		if(!(szChannel.firstCharIs('#') || szChannel.firstCharIs('!') || szChannel.firstCharIs('&')))
 				szChannel.prepend('#');
 
-		if(szPass.isEmpty())cmdBuffer.append(KviStr::Format," -c=\"join %s\" ",szChannel.ptr());
-		else cmdBuffer.append(KviStr::Format," -c=\"join %s %s\" ",szChannel.ptr(),szPass.ptr());
+		if(szPass.isEmpty())cmdBuffer.append(KviCString::Format," -c=\"join %s\" ",szChannel.ptr());
+		else cmdBuffer.append(KviCString::Format," -c=\"join %s %s\" ",szChannel.ptr(),szPass.ptr());
 
 	}
 
 	cmdBuffer.append(szServer);
-	if(bGotPort)cmdBuffer.append(KviStr::Format," %d",uPort);
+	if(bGotPort)cmdBuffer.append(KviCString::Format," %d",uPort);
 
 	cmdBuffer.append(';');
 

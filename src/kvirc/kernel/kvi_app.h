@@ -7,7 +7,7 @@
 //   Creation date : Sun Jun 18 2000 12:40:00 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,12 +26,12 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_string.h"
-#include "kvi_qstring.h"
+#include "KviCString.h"
+#include "KviQString.h"
 #include "kvi_tal_application.h"
-#include "kvi_pointerlist.h"
-#include "kvi_time.h"
-#include "kvi_pointerhashtable.h" // ?
+#include "KviPointerList.h"
+#include "KviTimeUtils.h"
+#include "KviPointerHashTable.h" // ?
 
 #include <QFont>
 #include <QStringList>
@@ -56,7 +56,7 @@
 class KviTalPopupMenu;
 class KviTalListBox;
 class KviConsole;
-class KviConfig;
+class KviConfigurationFile;
 class KviRegisteredUser;
 class KviIrcConnection;
 class KviServerDataBase;
@@ -136,7 +136,7 @@ public:
 	// setup stuff (accessed from kvi_main.cpp: consider private othwerise)
 	QString	                                   m_szConfigFile;        // setup
 	bool                                       m_bCreateConfig;      // setup
-	KviStr                                     m_szExecAfterStartup;
+	KviCString                                     m_szExecAfterStartup;
 	bool                                       m_bShowSplashScreen;
 public:
 	// FIXME: "Plugins" and "ConfigPlugins" should become "Modules" and "ConfigModules"
@@ -239,10 +239,10 @@ public:
 	bool findSmallIcon(QString &szRetPath,const QString &filename);
 	// tries to map the full path filename to one of the KVIrc's mapped directories
 	// if it doesn't succeed it just returns the complete filename in szRetPath
-	//bool mapImageFile(KviStr &szRetPath,const char * filename);
+	//bool mapImageFile(KviCString &szRetPath,const char * filename);
 	bool mapImageFile(QString &szRetPath,const QString &filename);
 
-	//void getDefaultDccSaveFilePath(KviStr &path,const char *filename);
+	//void getDefaultDccSaveFilePath(KviCString &path,const char *filename);
 	void completeDirectory(const QString &word,KviPointerList<QString> * matches);
 	//
 	// Returns a config path suitable for reading (at least)

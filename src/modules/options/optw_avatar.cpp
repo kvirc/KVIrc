@@ -24,7 +24,7 @@
 
 #include "optw_avatar.h"
 
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_selectors.h"
 #include "kvi_options.h"
 #include "kvi_tal_tooltip.h"

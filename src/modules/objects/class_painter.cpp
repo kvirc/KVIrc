@@ -29,10 +29,10 @@
 #include "class_widget.h"
 
 #include "kvi_debug.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_error.h"
 #include "kvi_iconmanager.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
  #include <QPrintDialog>
 #include <QTextDocument>
 #include <QIcon>

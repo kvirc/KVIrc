@@ -24,10 +24,10 @@
 
 #include "kvi_kvs_scriptaddonmanager.h"
 #include "kvi_kvs_script.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_window.h"
 #include "kvi_iconmanager.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_app.h"
 
 #include <QFileInfo>
@@ -129,7 +129,7 @@ const QString & KviKvsScriptAddon::helpCallbackCode()
 	return KviQString::Empty;
 }
 
-bool KviKvsScriptAddon::load(KviConfig * cfg,const QString &szName)
+bool KviKvsScriptAddon::load(KviConfigurationFile * cfg,const QString &szName)
 {
 	m_szName = szName;
 	cfg->setGroup(m_szName);
@@ -215,7 +215,7 @@ void KviKvsScriptAddon::allocateScripts(const QString &szVisibleNameCode,const Q
 	m_pUninstallCallback = new KviKvsScript(szTmp,szUninstallCallbackCode,KviKvsScript::InstructionList);
 }
 
-void KviKvsScriptAddon::save(KviConfig * cfg)
+void KviKvsScriptAddon::save(KviConfigurationFile * cfg)
 {
 	cfg->setGroup(m_szName);
 	cfg->writeEntry("Version",m_szVersion);
@@ -298,7 +298,7 @@ void KviKvsScriptAddonManager::save(const QString &szFileName)
 	// we're stored here from now on...
 	m_szFileName = szFileName;
 
-	KviConfig cfg(szFileName,KviConfig::Write);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
 
 	cfg.clear();
 
@@ -321,12 +321,12 @@ void KviKvsScriptAddonManager::delayedLoad()
 	// So finally m_szFileName may be empty here
 	if(m_szFileName.isEmpty())return;
 
-	KviConfig cfg(m_szFileName,KviConfig::Read);
+	KviConfigurationFile cfg(m_szFileName,KviConfigurationFile::Read);
 
-	KviPointerHashTable<QString,KviConfigGroup> * d = cfg.dict();
+	KviPointerHashTable<QString,KviConfigurationFileGroup> * d = cfg.dict();
 	if(!d)return;
 
-	KviPointerHashTableIterator<QString,KviConfigGroup> it(*d);
+	KviPointerHashTableIterator<QString,KviConfigurationFileGroup> it(*d);
 	while(it.current())
 	{
 		QString szName = it.currentKey();

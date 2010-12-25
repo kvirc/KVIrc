@@ -4,7 +4,7 @@
 //   Creation date : Tue 08 Jun 2004 14:11:59 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,9 +25,9 @@
 
 
 #include "kvi_ircconnectiontarget.h"
-#include "kvi_ircserver.h"
-#include "kvi_network.h"
-#include "kvi_proxydb.h"
+#include "KviIrcServer.h"
+#include "KviNetwork.h"
+#include "KviProxyDataBase.h"
 
 KviIrcConnectionTarget::KviIrcConnectionTarget(
 		const KviNetwork * pNetwork,

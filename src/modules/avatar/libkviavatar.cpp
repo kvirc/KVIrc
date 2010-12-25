@@ -4,7 +4,7 @@
 //   Creation date : Thu Nov 12 02:32:59 2004 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2004-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,25 +25,25 @@
 #include "libkviavatar.h"
 
 #include "kvi_module.h"
-#include "kvi_fileutils.h"
-#include "kvi_locale.h"
-#include "kvi_malloc.h"
+#include "KviFileUtils.h"
+#include "KviLocale.h"
+#include "KviMemory.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
 #include "kvi_http.h"
 #include "kvi_iconmanager.h"
-#include "kvi_avatar.h"
-#include "kvi_ircuserdb.h"
+#include "KviAvatar.h"
+#include "KviIrcUserDataBase.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_console.h"
 #include "kvi_filedialog.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 #include "kvi_frame.h"
-#include "kvi_sharedfiles.h"
+#include "KviSharedFilesManager.h"
 #include "kvi_sparser.h"
 #include "kvi_out.h"
-#include "kvi_ircmask.h"
+#include "KviIrcMask.h"
 #include "kvi_tal_hbox.h"
 
 #include <QLineEdit>

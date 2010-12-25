@@ -25,7 +25,7 @@
 #include "classeditor.h"
 
 #include "kvi_module.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_frame.h"
 
 

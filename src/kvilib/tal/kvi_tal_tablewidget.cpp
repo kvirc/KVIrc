@@ -25,7 +25,7 @@
 
 #include "kvi_tal_tablewidget.h"
 /*
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 
 #include <QPainter>
 #include <QStyle>

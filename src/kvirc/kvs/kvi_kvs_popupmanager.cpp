@@ -4,7 +4,7 @@
 //   Creation date : Tue 7 Jan 2004 02:11:41 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,8 +23,8 @@
 //=============================================================================
 
 #include "kvi_kvs_popupmanager.h"
-#include "kvi_locale.h"
-#include "kvi_config.h"
+#include "KviLocale.h"
+#include "KviConfigurationFile.h"
 
 KviKvsPopupManager * KviKvsPopupManager::m_pInstance = 0;
 
@@ -85,9 +85,9 @@ void KviKvsPopupManager::emitRefresh(const QString &szPopupName)
 void KviKvsPopupManager::load(const QString &szFileName)
 {
 	m_pPopupDict->clear();
-	KviConfig cfg(szFileName,KviConfig::Read);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
 
-	KviConfigIterator it(*(cfg.dict()));
+	KviConfigurationFileIterator it(*(cfg.dict()));
 
 	KviPointerList<QString> l;
 	l.setAutoDelete(true);
@@ -110,7 +110,7 @@ void KviKvsPopupManager::load(const QString &szFileName)
 
 void KviKvsPopupManager::save(const QString &szFileName)
 {
-	KviConfig cfg(szFileName,KviConfig::Write);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
 	cfg.clear();
 
 	KviPointerHashTableIterator<QString,KviKvsPopupMenu> it(*m_pPopupDict);

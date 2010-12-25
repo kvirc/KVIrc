@@ -33,19 +33,19 @@
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_ircconnectionstatistics.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_app.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_modulemanager.h"
 #include "kvi_console.h"
 #include "kvi_lagmeter.h"
 #include "kvi_options.h"
 #include "kvi_kvs_script.h"
-#include "kvi_time.h"
-#include "kvi_qstring.h"
+#include "KviTimeUtils.h"
+#include "KviQString.h"
 #include "kvi_buildinfo.h"
 #include "kvi_settings.h"
-#include "kvi_miscutils.h"
+#include "KviMiscUtils.h"
 #include "kvi_http.h"
 #include "kvi_url.h"
 #include "kvi_tal_popupmenu.h"
@@ -164,15 +164,15 @@ void KviStatusBarAwayIndicator::fillContextPopup(KviTalPopupMenu * p)
 	p->setItemChecked(id,m_bAwayOnAllContexts);
 }
 
-void KviStatusBarAwayIndicator::loadState(const char * pcPrefix, KviConfig * pCfg)
+void KviStatusBarAwayIndicator::loadState(const char * pcPrefix, KviConfigurationFile * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_AwayOnAllContexts",pcPrefix);
+	KviCString tmp(KviCString::Format,"%s_AwayOnAllContexts",pcPrefix);
 	m_bAwayOnAllContexts = pCfg->readBoolEntry(tmp.ptr(),false);
 }
 
-void KviStatusBarAwayIndicator::saveState(const char * pcPrefix, KviConfig * pCfg)
+void KviStatusBarAwayIndicator::saveState(const char * pcPrefix, KviConfigurationFile * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_AwayOnAllContexts",pcPrefix);
+	KviCString tmp(KviCString::Format,"%s_AwayOnAllContexts",pcPrefix);
 	pCfg->writeEntry(tmp.ptr(),m_bAwayOnAllContexts);
 }
 
@@ -490,24 +490,24 @@ void KviStatusBarClock::changeFormat(QAction * pAct)
 	if(!bOk) return;
 }
 
-void KviStatusBarClock::loadState(const char * pcPrefix, KviConfig * pCfg)
+void KviStatusBarClock::loadState(const char * pcPrefix, KviConfigurationFile * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_Utc",pcPrefix);
+	KviCString tmp(KviCString::Format,"%s_Utc",pcPrefix);
 	m_bUtc = pCfg->readBoolEntry(tmp.ptr(),false);
-	KviStr tmp2(KviStr::Format,"%s_24h",pcPrefix);
+	KviCString tmp2(KviCString::Format,"%s_24h",pcPrefix);
 	m_b24h = pCfg->readBoolEntry(tmp2.ptr(),false);
-	KviStr tmp3(KviStr::Format,"%s_Format",pcPrefix);
+	KviCString tmp3(KviCString::Format,"%s_Format",pcPrefix);
 	m_iType = pCfg->readIntEntry(tmp3.ptr(),KviStatusBarClock::HMS);
 	adjustMinWidth();
 }
 
-void KviStatusBarClock::saveState(const char * pcPrefix, KviConfig * pCfg)
+void KviStatusBarClock::saveState(const char * pcPrefix, KviConfigurationFile * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_Utc",pcPrefix);
+	KviCString tmp(KviCString::Format,"%s_Utc",pcPrefix);
 	pCfg->writeEntry(tmp.ptr(),m_bUtc);
-	KviStr tmp2(KviStr::Format,"%s_24h",pcPrefix);
+	KviCString tmp2(KviCString::Format,"%s_24h",pcPrefix);
 	pCfg->writeEntry(tmp2.ptr(),m_b24h);
-	KviStr tmp3(KviStr::Format,"%s_Format",pcPrefix);
+	KviCString tmp3(KviCString::Format,"%s_Format",pcPrefix);
 	pCfg->writeEntry(tmp3.ptr(),m_iType);
 }
 
@@ -580,15 +580,15 @@ void KviStatusBarConnectionTimer::fillContextPopup(KviTalPopupMenu * p)
 	p->setItemChecked(id,m_bTotal);
 }
 
-void KviStatusBarConnectionTimer::loadState(const char * pcPrefix, KviConfig * pCfg)
+void KviStatusBarConnectionTimer::loadState(const char * pcPrefix, KviConfigurationFile * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_Total",pcPrefix);
+	KviCString tmp(KviCString::Format,"%s_Total",pcPrefix);
 	m_bTotal = pCfg->readBoolEntry(tmp.ptr(),false);
 }
 
-void KviStatusBarConnectionTimer::saveState(const char * pcPrefix, KviConfig * pCfg)
+void KviStatusBarConnectionTimer::saveState(const char * pcPrefix, KviConfigurationFile * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_Total",pcPrefix);
+	KviCString tmp(KviCString::Format,"%s_Total",pcPrefix);
 	pCfg->writeEntry(tmp.ptr(),m_bTotal);
 }
 
@@ -682,21 +682,21 @@ void KviStatusBarUpdateIndicator::fillContextPopup(KviTalPopupMenu * p)
 	p->setItemChecked(id,m_bUpdateRevision);
 }
 
-void KviStatusBarUpdateIndicator::loadState(const char * pcPrefix, KviConfig * pCfg)
+void KviStatusBarUpdateIndicator::loadState(const char * pcPrefix, KviConfigurationFile * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_UpdateOnStartup",pcPrefix);
+	KviCString tmp(KviCString::Format,"%s_UpdateOnStartup",pcPrefix);
 	m_bUpdateOnStartup = pCfg->readBoolEntry(tmp.ptr(),false);
-	KviStr tmp2(KviStr::Format,"%s_UpdateRevision",pcPrefix);
+	KviCString tmp2(KviCString::Format,"%s_UpdateRevision",pcPrefix);
 	m_bUpdateRevision = pCfg->readBoolEntry(tmp2.ptr(),false);
 
 	if(m_bUpdateOnStartup) checkVersion();
 }
 
-void KviStatusBarUpdateIndicator::saveState(const char * pcPrefix, KviConfig * pCfg)
+void KviStatusBarUpdateIndicator::saveState(const char * pcPrefix, KviConfigurationFile * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_UpdateOnStartup",pcPrefix);
+	KviCString tmp(KviCString::Format,"%s_UpdateOnStartup",pcPrefix);
 	pCfg->writeEntry(tmp.ptr(),m_bUpdateOnStartup);
-	KviStr tmp2(KviStr::Format,"%s_UpdateRevision",pcPrefix);
+	KviCString tmp2(KviCString::Format,"%s_UpdateRevision",pcPrefix);
 	pCfg->writeEntry(tmp2.ptr(),m_bUpdateRevision);
 }
 
@@ -764,7 +764,7 @@ void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer & buffe
 	if(!buffer.data() || buffer.size()<=0)
 		return;
 
-	KviStr szData((const char *)buffer.data(),buffer.size());
+	KviCString szData((const char *)buffer.data(),buffer.size());
 	bool bRemoteNew = false;
 
 	if(m_bUpdateRevision)

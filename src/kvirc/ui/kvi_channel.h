@@ -6,7 +6,7 @@
 //   Creation date : Tue Aug  1 2000 01:42:00 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -33,13 +33,13 @@
 #include "kvi_settings.h"
 #include "kvi_console.h"
 #include "kvi_window.h"
-#include "kvi_string.h"
-#include "kvi_ircuserdb.h"
-#include "kvi_pixmap.h"
+#include "KviCString.h"
+#include "KviIrcUserDataBase.h"
+#include "KviPixmap.h"
 #include "kvi_userlistview.h"
-#include "kvi_time.h"
+#include "KviTimeUtils.h"
 #include "kvi_modew.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 
 #include <QList>
 #include <QDateTime>
@@ -921,14 +921,14 @@ protected:
 	* \param cfg The config file
 	* \return void
 	*/
-	virtual void saveProperties(KviConfig * cfg);
+	virtual void saveProperties(KviConfigurationFile * cfg);
 
 	/**
 	* \brief Loads the properties from file
 	* \param cfg The config file
 	* \return void
 	*/
-	virtual void loadProperties(KviConfig * cfg);
+	virtual void loadProperties(KviConfigurationFile * cfg);
 
 	/**
 	* \brief Applies the options

@@ -5,7 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2000 Till Bush (buti@geocities.com)
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,9 +28,9 @@
 
 #include "kvi_module.h"
 #include "kvi_debug.h"
-#include "kvi_locale.h"
-#include "kvi_mirccntrl.h"
-#include "kvi_time.h"
+#include "KviLocale.h"
+#include "KviMircCntrl.h"
+#include "KviTimeUtils.h"
 
 //#warning "Other engines: mircStrip koi2win colorizer lamerizer etc.."
 
@@ -63,8 +63,8 @@
 
 #if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
 	#include "kvi_memmove.h"
-	#include "kvi_malloc.h"
-	#include "kvi_pointerlist.h"
+	#include "KviMemory.h"
+	#include "KviPointerList.h"
 
 	static KviPointerList<KviCryptEngine> * g_pEngineList = 0;
 
@@ -119,8 +119,8 @@
 
 		int defLen = getKeyLen();
 
-		char * encryptKey = (char *)kvi_malloc(defLen);
-		char * decryptKey = (char *)kvi_malloc(defLen);
+		char * encryptKey = (char *)KviMemory::allocate(defLen);
+		char * decryptKey = (char *)KviMemory::allocate(defLen);
 
 		if(encKeyLen > defLen)encKeyLen = defLen;
 		kvi_memmove(encryptKey,encKey,encKeyLen);
@@ -132,10 +132,10 @@
 
 		m_pEncryptCipher = new Rijndael();
 		int retVal = m_pEncryptCipher->init(Rijndael::CBC,Rijndael::Encrypt,(unsigned char *)encryptKey,getKeyLenId());
-		kvi_free(encryptKey);
+		KviMemory::free(encryptKey);
 		if(retVal != RIJNDAEL_SUCCESS)
 		{
-			kvi_free(decryptKey);
+			KviMemory::free(decryptKey);
 			delete m_pEncryptCipher;
 			m_pEncryptCipher = 0;
 			setLastErrorFromRijndaelErrorCode(retVal);
@@ -144,7 +144,7 @@
 
 		m_pDecryptCipher = new Rijndael();
 		retVal = m_pDecryptCipher->init(Rijndael::CBC,Rijndael::Decrypt,(unsigned char *)decryptKey,getKeyLenId());
-		kvi_free(decryptKey);
+		KviMemory::free(decryptKey);
 		if(retVal != RIJNDAEL_SUCCESS)
 		{
 			delete m_pEncryptCipher;
@@ -174,7 +174,7 @@
 		}
 	}
 
-	KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,KviStr &outBuffer)
+	KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,KviCString &outBuffer)
 	{
 		if(!m_pEncryptCipher)
 		{
@@ -182,22 +182,22 @@
 			return KviCryptEngine::EncryptError;
 		}
 		int len = (int)kvi_strLen(plainText);
-		char * buf = (char *)kvi_malloc(len + 16);
+		char * buf = (char *)KviMemory::allocate(len + 16);
 
 		int retVal = m_pEncryptCipher->padEncrypt((const unsigned char *)plainText,len,(unsigned char *)buf);
 		if(retVal < 0)
 		{
-			kvi_free(buf);
+			KviMemory::free(buf);
 			setLastErrorFromRijndaelErrorCode(retVal);
 			return KviCryptEngine::EncryptError;
 		}
 
 		if(!binaryToAscii(buf,retVal,outBuffer))
 		{
-			kvi_free(buf);
+			KviMemory::free(buf);
 			return KviCryptEngine::EncryptError;
 		}
-		kvi_free(buf);
+		KviMemory::free(buf);
 
 		if(outBuffer.len() > maxEncryptLen())
 		{
@@ -211,7 +211,7 @@
 		return KviCryptEngine::Encrypted;
 	}
 
-	KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer,KviStr &plainText)
+	KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer,KviCString &plainText)
 	{
 		if(!m_pDecryptCipher)
 		{
@@ -238,14 +238,14 @@
 
 		if(!asciiToBinary(inBuffer,&len,&binary))return KviCryptEngine::DecryptError;
 
-		char * buf = (char *)kvi_malloc(len + 1);
+		char * buf = (char *)KviMemory::allocate(len + 1);
 
 		int retVal = m_pDecryptCipher->padDecrypt((const unsigned char *)binary,len,(unsigned char *)buf);
-		kvi_free(binary);
+		KviMemory::free(binary);
 
 		if(retVal < 0)
 		{
-			kvi_free(buf);
+			KviMemory::free(buf);
 			setLastErrorFromRijndaelErrorCode(retVal);
 			return KviCryptEngine::DecryptError;
 		}
@@ -254,11 +254,11 @@
 
 		plainText = buf;
 
-		kvi_free(buf);
+		KviMemory::free(buf);
 		return KviCryptEngine::DecryptOkWasEncrypted;
 	}
 
-	bool KviRijndaelHexEngine::binaryToAscii(const char * inBuffer,int len,KviStr &outBuffer)
+	bool KviRijndaelHexEngine::binaryToAscii(const char * inBuffer,int len,KviCString &outBuffer)
 	{
 		outBuffer.bufferToHex(inBuffer,len);
 		return true;
@@ -266,7 +266,7 @@
 
 	bool KviRijndaelHexEngine::asciiToBinary(const char * inBuffer,int * len,char ** outBuffer)
 	{
-		KviStr hex(inBuffer);
+		KviCString hex(inBuffer);
 		char * tmpBuf;
 		*len = hex.hexToBuffer(&tmpBuf,false);
 		if(*len < 0)
@@ -276,15 +276,15 @@
 		} else {
 			if(len > 0)
 			{
-				*outBuffer = (char *)kvi_malloc(*len);
+				*outBuffer = (char *)KviMemory::allocate(*len);
 				kvi_memmove(*outBuffer,tmpBuf,*len);
-				KviStr::freeBuffer(tmpBuf);
+				KviCString::freeBuffer(tmpBuf);
 			}
 		}
 		return true;
 	}
 
-	bool KviRijndaelBase64Engine::binaryToAscii(const char * inBuffer,int len,KviStr &outBuffer)
+	bool KviRijndaelBase64Engine::binaryToAscii(const char * inBuffer,int len,KviCString &outBuffer)
 	{
 		outBuffer.bufferToBase64(inBuffer,len);
 		return true;
@@ -292,7 +292,7 @@
 
 	bool KviRijndaelBase64Engine::asciiToBinary(const char * inBuffer,int * len,char ** outBuffer)
 	{
-		KviStr base64(inBuffer);
+		KviCString base64(inBuffer);
 		char * tmpBuf;
 		*len = base64.base64ToBuffer(&tmpBuf,false);
 		if(*len < 0)
@@ -302,9 +302,9 @@
 		} else {
 			if(len > 0)
 			{
-				*outBuffer = (char *)kvi_malloc(*len);
+				*outBuffer = (char *)KviMemory::allocate(*len);
 				kvi_memmove(*outBuffer,tmpBuf,*len);
-				KviStr::freeBuffer(tmpBuf);
+				KviCString::freeBuffer(tmpBuf);
 			}
 		}
 		return true;
@@ -382,8 +382,8 @@
 				return false;
 			}
 		}
-		m_szEncryptKey = KviStr(encKey,encKeyLen);
-		m_szDecryptKey = KviStr(decKey,decKeyLen);
+		m_szEncryptKey = KviCString(encKey,encKeyLen);
+		m_szDecryptKey = KviCString(decKey,decKeyLen);
 		if(kvi_strEqualCIN("cbc:",m_szEncryptKey.ptr(),4) && (m_szEncryptKey.len() > 4))
 			m_szEncryptKey.cutLeft(4);
 		else
@@ -395,9 +395,9 @@
 		return true;
 	}
 
-	KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * plainText,KviStr &outBuffer)
+	KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * plainText,KviCString &outBuffer)
 	{
-		KviStr szPlain = plainText;
+		KviCString szPlain = plainText;
 		outBuffer = "";
 		if(m_bEncryptCBC)
 		{
@@ -421,10 +421,10 @@
 		return KviCryptEngine::Encrypted;
 	}
 
-	KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffer,KviStr &plainText)
+	KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffer,KviCString &plainText)
 	{
 		plainText = "";
-		KviStr szIn = inBuffer;
+		KviCString szIn = inBuffer;
 		// various old versions
 		if(kvi_strEqualCSN(inBuffer,"mcps ",5))
 			szIn.cutLeft(5);
@@ -459,7 +459,7 @@
 			idx = szIn.findFirstIdx(MCPS2_ENDTAG);
 			if(idx != -1)
 			{
-				KviStr toDecrypt = szIn.left(idx);
+				KviCString toDecrypt = szIn.left(idx);
 				if(!doDecrypt(toDecrypt,plainText))return false;
 			}
 			szIn.cutLeft(idx + len2);
@@ -500,7 +500,7 @@
 		}
 	}
 
-	bool KviMircryptionEngine::doEncryptECB(KviStr &plain,KviStr &encoded)
+	bool KviMircryptionEngine::doEncryptECB(KviCString &plain,KviCString &encoded)
 	{
 		// make sure it is a multiple of 8 bytes (eventually pad with zeroes)
 		if(plain.len() % 8)
@@ -514,7 +514,7 @@
 
 		//byteswap_buffer((unsigned char *)plain.ptr(),plain.len());
 
-		unsigned char * out =(unsigned char *)kvi_malloc(plain.len()); // we use this to avoid endiannes problems
+		unsigned char * out =(unsigned char *)KviMemory::allocate(plain.len()); // we use this to avoid endiannes problems
 
 		BlowFish bf((unsigned char *)m_szEncryptKey.ptr(),m_szEncryptKey.len());
 		bf.ResetChain();
@@ -552,11 +552,11 @@
 			*p++ = fake_base64[*dd1 & 0x3f];
 		}
 
-		kvi_free(out);
+		KviMemory::free(out);
 		return true;
 	}
 
-	bool KviMircryptionEngine::doDecryptECB(KviStr &encoded,KviStr &plain)
+	bool KviMircryptionEngine::doDecryptECB(KviCString &encoded,KviCString &plain)
 	{
 		// encoded is in this strange base64...
 		// make sure its length is multiple of 12 (eventually pad with zeroes)
@@ -573,7 +573,7 @@
 		// and stuff 6 bytes at a time into a 32 bit long...
 		int ll = (encoded.len() * 2) / 3;
 
-		unsigned char * buf = (unsigned char *)kvi_malloc(ll);
+		unsigned char * buf = (unsigned char *)KviMemory::allocate(ll);
 		unsigned char * p = (unsigned char *)encoded.ptr();
 		unsigned char * e = p + encoded.len();
 		int i;
@@ -600,12 +600,12 @@
 
 		//byteswap_buffer((unsigned char *)plain.ptr(),ll);
 
-		kvi_free(buf);
+		KviMemory::free(buf);
 
 		return true;
 	}
 
-	bool KviMircryptionEngine::doEncryptCBC(KviStr &plain,KviStr &encoded)
+	bool KviMircryptionEngine::doEncryptCBC(KviCString &plain,KviCString &encoded)
 	{
 		// make sure it is a multiple of 8 bytes (eventually pad with zeroes)
 		if(plain.len() % 8)
@@ -618,7 +618,7 @@
 		}
 
 		int ll = plain.len() + 8;
-		unsigned char * in = (unsigned char *)kvi_malloc(ll);
+		unsigned char * in = (unsigned char *)KviMemory::allocate(ll);
 
 		// choose an IV
 		static bool bDidInit = false;
@@ -636,21 +636,21 @@
 		kvi_fastmove(in+8,plain.ptr(),plain.len());
 
 		// encrypt
-		unsigned char * out = (unsigned char *)kvi_malloc(ll);
+		unsigned char * out = (unsigned char *)KviMemory::allocate(ll);
 		BlowFish bf((unsigned char *)m_szEncryptKey.ptr(),m_szEncryptKey.len());
 		bf.ResetChain();
 		bf.Encrypt(in,out,ll,BlowFish::CBC);
-		kvi_free(in);
+		KviMemory::free(in);
 
 		encoded.bufferToBase64((const char *)out,ll);
-		kvi_free(out);
+		KviMemory::free(out);
 
 		encoded.prepend('*'); // prepend the signature
 
 		return true;
 	}
 
-	bool KviMircryptionEngine::doDecryptCBC(KviStr &encoded,KviStr &plain)
+	bool KviMircryptionEngine::doDecryptCBC(KviCString &encoded,KviCString &plain)
 	{
 		if(*(encoded.ptr()) != '*')
 		{
@@ -669,7 +669,7 @@
 		if((len < 8) || (len % 8))
 		{
 			setLastError(__tr2qs("The message doesn't seem to be encoded with CBC Mircryption"));
-			if(len > 0)KviStr::freeBuffer(tmpBuf);
+			if(len > 0)KviCString::freeBuffer(tmpBuf);
 			return false;
 		}
 
@@ -681,7 +681,7 @@
 		// kill the first 8 bytes (random IV)
 		plain.cutLeft(8);
 
-		KviStr::freeBuffer(tmpBuf);
+		KviCString::freeBuffer(tmpBuf);
 
 		return true;
 	}

@@ -29,7 +29,7 @@
 #include "kvi_settings.h"
 #include "kvi_app.h"
 #include "kvi_module.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_memmove.h"
 #include "kvi_windowlist.h"
 #include "kvi_window.h"

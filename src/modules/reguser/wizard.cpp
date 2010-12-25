@@ -4,7 +4,7 @@
 //   Creation date : Fri Jun 26 2002 21:21:21 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,13 +25,13 @@
 
 #include "wizard.h"
 
-#include "kvi_locale.h"
-#include "kvi_pointerlist.h"
+#include "KviLocale.h"
+#include "KviPointerList.h"
 #include "kvi_app.h"
-#include "kvi_ircmask.h"
+#include "KviIrcMask.h"
 #include "kvi_selectors.h"
-#include "kvi_pixmap.h"
-#include "kvi_regusersdb.h"
+#include "KviPixmap.h"
+#include "KviRegisteredUserDataBase.h"
 #include "kvi_iconmanager.h"
 
 #include <QDesktopWidget>
@@ -114,7 +114,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 
 	m_pPage2Layout->addWidget(m_pLabel2,0,0,1,5);
 
-	//KviStr szMask;
+	//KviCString szMask;
 
 	//mask.mask(szMask,11);
 
@@ -405,9 +405,9 @@ void KviRegistrationWizard::showEvent(QShowEvent *e)
 
 void KviRegistrationWizard::maskChanged(const QString &)
 {
-	KviStr tmp1 = m_pNicknameEdit1->text();
-	KviStr tmp2 = m_pUsernameEdit1->text();
-	KviStr tmp3 = m_pHostEdit1->text();
+	KviCString tmp1 = m_pNicknameEdit1->text();
+	KviCString tmp2 = m_pUsernameEdit1->text();
+	KviCString tmp3 = m_pHostEdit1->text();
 
 	if(tmp1.isEmpty())
 	{
@@ -427,7 +427,7 @@ void KviRegistrationWizard::maskChanged(const QString &)
 		return;
 	}
 
-	KviStr mask(KviStr::Format,"%s!%s@%s",tmp1.ptr(),tmp2.ptr(),tmp3.ptr());
+	KviCString mask(KviCString::Format,"%s!%s@%s",tmp1.ptr(),tmp2.ptr(),tmp3.ptr());
 
 	//KviIrcMask m(mask.ptr());
 
@@ -447,7 +447,7 @@ void KviRegistrationWizard::notifyNickChanged(const QString &)
 	if(!bYes)
 	{
 		// we need at least one nickname then :)
-		KviStr tmp = m_pNotifyNickEdit1->text();
+		KviCString tmp = m_pNotifyNickEdit1->text();
 		if(tmp.hasData())
 		{
 			bYes = true;

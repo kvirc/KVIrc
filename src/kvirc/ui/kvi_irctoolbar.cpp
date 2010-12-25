@@ -4,7 +4,7 @@
 //   Creation date : Thu Oct 29 2000 14:13:13 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@
 #include "kvi_irctoolbar.h"
 #include "kvi_console.h"
 #include "kvi_frame.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_iconmanager.h"
 #include "kvi_settings.h"
 #include "kvi_options.h"
@@ -35,7 +35,7 @@
 #include "kvi_dynamictooltip.h"
 #include "kvi_ircurl.h"
 #include "kvi_internalcmd.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_irccontext.h"
@@ -291,8 +291,8 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip,const QPoint &)
 			txt += nb;
 			txt += br;
 		} else {
-			KviStr nickAndMode = ic->userInfo()->nickName();
-			if(!(ic->userInfo()->userMode().isEmpty()))nickAndMode.append(KviStr::Format," (+%s)",ic->userInfo()->userMode().toUtf8().data());
+			KviCString nickAndMode = ic->userInfo()->nickName();
+			if(!(ic->userInfo()->userMode().isEmpty()))nickAndMode.append(KviCString::Format," (+%s)",ic->userInfo()->userMode().toUtf8().data());
 
 			txt += ic->currentServerName();
 			txt += nb;

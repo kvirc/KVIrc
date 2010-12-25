@@ -25,11 +25,11 @@
 #include "plugin.h"
 
 #include "kvi_module.h"
-#include "kvi_string.h"
-#include "kvi_thread.h"
-#include "kvi_locale.h"
+#include "KviCString.h"
+#include "KviThread.h"
+#include "KviLocale.h"
 #include "kvi_app.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 
 #include <QDir>
 #include <QFileInfo>

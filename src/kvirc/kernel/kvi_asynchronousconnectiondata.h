@@ -6,7 +6,7 @@
 //   Creation date : Sun 04 Jul 2004 16:22:25 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,9 +26,9 @@
 
 
 #include "kvi_settings.h"
-#include "kvi_qstring.h"
-#include "kvi_heapobject.h"
-#include "kvi_ircserver.h"
+#include "KviQString.h"
+#include "KviHeapObject.h"
+#include "KviIrcServer.h"
 
 class KviAsynchronousConnectionData : public KviHeapObject
 {

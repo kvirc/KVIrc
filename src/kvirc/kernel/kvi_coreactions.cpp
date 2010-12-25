@@ -4,7 +4,7 @@
 //   Creation date : Mon 22 Nov 2004 02:30:47 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,7 +27,7 @@
 #include "kvi_coreactions.h"
 #include "kvi_shortcuts.h"
 #include "kvi_frame.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_irccontext.h"
 #include "kvi_iconmanager.h"
 #include "kvi_app.h"
@@ -37,7 +37,7 @@
 #include "kvi_kvs_action.h"
 #include "kvi_mdimanager.h"
 #include "kvi_irctoolbar.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_ircurl.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
@@ -891,7 +891,7 @@ void KviConnectToServerAction::popupActivated(int id)
 		{
 			KviKvsScript::run("option stringlistRecentServers",c);
 		} else {
-			KviStr szCommand;
+			KviCString szCommand;
 			QString szText = szItemText;
 			if(KviIrcUrl::parse(szText.toUtf8().data(),szCommand,KVI_IRCURL_CONTEXT_FIRSTFREE))
 			{

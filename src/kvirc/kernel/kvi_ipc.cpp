@@ -4,7 +4,7 @@
 //   Creation date : Tue Apr 10 2001 15:04:45 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -32,7 +32,7 @@
 
 	#include "kvi_memmove.h"
 	#include "kvi_app.h"
-	#include "kvi_qstring.h"
+	#include "KviQString.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
@@ -62,7 +62,7 @@
 		static Atom kvi_atom_ipc_sentinel_window;
 		static Atom kvi_atom_ipc_remote_command;
 		static Atom kvi_atom_ipc_remote_message;
-		static KviStr kvi_sentinel_id;
+		static KviCString kvi_sentinel_id;
 		static bool g_bIpcAtomsLoaded = false;
 
 		static void kvi_ipcLoadAtoms()
@@ -257,7 +257,7 @@
 					int format;
 					unsigned long nItems,after;
 					unsigned char * data = 0;
-					KviStr szData;
+					KviCString szData;
 					if(XGetWindowProperty(kvi_ipc_get_xdisplay(),winId(),kvi_atom_ipc_remote_command,0,1024,FALSE,XA_STRING,
 						&type,&format,&nItems,&after,&data) == Success)
 					{

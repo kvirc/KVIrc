@@ -4,7 +4,7 @@
 //   Creation date : Wed Jun 12 2000 03:29:51 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -30,14 +30,14 @@
 
 #include "kvi_query.h"
 #include "kvi_channel.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_iconmanager.h"
-#include "kvi_ircserverdb.h"
+#include "KviIrcServerDataBase.h"
 #include "kvi_ipeditor.h"
 #include "kvi_netutils.h"
 #include "kvi_settings.h"
 #include "kvi_filedialog.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_scripteditor.h"
 #include "kvi_options.h"
 #include "kvi_app.h"
@@ -48,10 +48,10 @@
 #include "kvi_moduleextension.h"
 #include "kvi_msgbox.h"
 #include "kvi_mexserverimport.h"
-#include "kvi_nickserv.h"
-#include "kvi_proxydb.h"
+#include "KviNickServRuleSet.h"
+#include "KviProxyDataBase.h"
 #include "kvi_kvs_script.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_tooltip.h"
 
@@ -592,7 +592,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	KviTalToolTip::add(m_pUseDefaultInitUMode,__tr2qs_ctx("<center>If this is enabled, the global initial <b>user mode</b> (configured from"\
 		" the identity dialog) will be used. If disabled, you can configure an initial user mode for this server","options"));
 	bool bHasUmode = !(s->initUMode().isEmpty());
-	KviStr szDefUMode = KVI_OPTION_STRING(KviOption_stringDefaultUserMode);
+	KviCString szDefUMode = KVI_OPTION_STRING(KviOption_stringDefaultUserMode);
 	m_pUseDefaultInitUMode->setChecked(!bHasUmode);
 	connect(m_pUseDefaultInitUMode,SIGNAL(toggled(bool)),this,SLOT(useDefaultInitUModeToggled(bool)));
 
@@ -1088,7 +1088,7 @@ void KviServerDetailsWidget::fillData(KviServer * s)
 
 	if(m_pUseDefaultInitUMode)
 	{
-		KviStr szUMode;
+		KviCString szUMode;
 		if(!m_pUseDefaultInitUMode->isChecked())
 		{
 			if(m_pIMode->isChecked())szUMode.append('i');
@@ -1518,7 +1518,7 @@ void KviServerOptionsWidget::connectCurrentClicked()
 {
 	saveLastItem();
 	commit();
-	KviStr szServer = m_pSrvNetEdit->text();
+	KviCString szServer = m_pSrvNetEdit->text();
 	if(szServer.isEmpty())return;
 	KviKvsScript::run("server -u",g_pApp->activeConsole());
 }
@@ -1624,7 +1624,7 @@ void KviServerOptionsWidget::saveLastItem()
 
 	if(m_pLastEditedItem->m_pServerData)
 	{
-		KviStr tmp = m_pSrvNetEdit->text();
+		KviCString tmp = m_pSrvNetEdit->text();
 		if(tmp.isEmpty())
 			tmp = "irc.unknown.net";
 		m_pLastEditedItem->m_pServerData->m_szHostname = tmp;

@@ -4,7 +4,7 @@
 //   Creation date : Mon 03 May 2004 01:45:42 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,9 +25,9 @@
 
 #include "kvi_irclink.h"
 #include "kvi_dns.h"
-#include "kvi_locale.h"
-#include "kvi_ircserverdb.h"
-#include "kvi_proxydb.h"
+#include "KviLocale.h"
+#include "KviIrcServerDataBase.h"
+#include "KviProxyDataBase.h"
 #include "kvi_error.h"
 #include "kvi_out.h"
 #include "kvi_options.h"
@@ -38,13 +38,13 @@
 #include "kvi_frame.h"
 #include "kvi_mexlinkfilter.h"
 //#include "kvi_garbage.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_memmove.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_ircconnectiontargetresolver.h"
 #include "kvi_ircsocket.h"
-#include "kvi_databuffer.h"
+#include "KviDataBuffer.h"
 #include "kvi_debug.h"
 
 #include <QTimer>
@@ -80,7 +80,7 @@ KviIrcLink::~KviIrcLink()
 	destroySocket();
 
 	if(m_pReadBuffer)
-		kvi_free(m_pReadBuffer);
+		KviMemory::free(m_pReadBuffer);
 }
 
 
@@ -227,7 +227,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 	register char * p = buffer;
 	char * cBeginOfCurData = buffer;
 	int iBufLen = 0;
-	char * cMessageBuffer = (char *)kvi_malloc(1);
+	char * cMessageBuffer = (char *)KviMemory::allocate(1);
 
 	while(*p)
 	{
@@ -240,16 +240,16 @@ void KviIrcLink::processData(char * buffer, int iLen)
 			if(m_uReadBufferLen > 0)
 			{
 				KVI_ASSERT(m_pReadBuffer);
-				cMessageBuffer = (char *)kvi_realloc(cMessageBuffer,iBufLen + m_uReadBufferLen + 1);
+				cMessageBuffer = (char *)KviMemory::reallocate(cMessageBuffer,iBufLen + m_uReadBufferLen + 1);
 				kvi_memmove(cMessageBuffer,m_pReadBuffer,m_uReadBufferLen);
 				kvi_memmove((void *)(cMessageBuffer + m_uReadBufferLen),cBeginOfCurData,iBufLen);
 				*(cMessageBuffer + iBufLen + m_uReadBufferLen) = '\0';
 				m_uReadBufferLen = 0;
-				kvi_free(m_pReadBuffer);
+				KviMemory::free(m_pReadBuffer);
 				m_pReadBuffer = 0;
 			} else {
 				KVI_ASSERT(!m_pReadBuffer);
-				cMessageBuffer = (char *)kvi_realloc(cMessageBuffer,iBufLen + 1);
+				cMessageBuffer = (char *)KviMemory::reallocate(cMessageBuffer,iBufLen + 1);
 				kvi_memmove(cMessageBuffer,cBeginOfCurData,iBufLen);
 				*(cMessageBuffer + iBufLen) = '\0';
 			}
@@ -279,7 +279,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 				//
 				// We handle it by simply returning control to readData() which
 				// will return immediately (and safely) control to Qt
-				kvi_free(cMessageBuffer);
+				KviMemory::free(cMessageBuffer);
 				return;
 			}
 
@@ -301,14 +301,14 @@ void KviIrcLink::processData(char * buffer, int iLen)
 		{
 			//and there was more stuff saved... (really slow connection)
 			KVI_ASSERT(m_pReadBuffer);
-			m_pReadBuffer =(char *)kvi_realloc(m_pReadBuffer,m_uReadBufferLen + iBufLen);
+			m_pReadBuffer =(char *)KviMemory::reallocate(m_pReadBuffer,m_uReadBufferLen + iBufLen);
 			kvi_memmove((void *)(m_pReadBuffer+m_uReadBufferLen),cBeginOfCurData,iBufLen);
 			m_uReadBufferLen += iBufLen;
 		} else {
 			//
 			KVI_ASSERT(!m_pReadBuffer);
 			m_uReadBufferLen = iBufLen;
-			m_pReadBuffer =(char *)kvi_malloc(m_uReadBufferLen);
+			m_pReadBuffer =(char *)KviMemory::allocate(m_uReadBufferLen);
 			kvi_memmove(m_pReadBuffer,cBeginOfCurData,m_uReadBufferLen);
 		}
 		//The m_pReadBuffer contains at max 1 irc message...
@@ -316,7 +316,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 		// FIXME: Is this limit *really* valid on all servers ?
 		if(m_uReadBufferLen > 510) qDebug("WARNING: Receiving an invalid irc message from server.");
 	}
-	kvi_free(cMessageBuffer);
+	KviMemory::free(cMessageBuffer);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////

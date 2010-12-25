@@ -29,7 +29,7 @@
 
 #include <qpainter.h>
 #include <qpaintdevice.h>
-#include "kvi_string.h"
+#include "KviCString.h"
 #include <QPainterPath>
 #include "object_macros.h"
 

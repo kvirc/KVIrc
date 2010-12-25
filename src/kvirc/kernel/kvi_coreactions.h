@@ -6,7 +6,7 @@
 //   Creation date : Mon 22 Nov 2004 02:30:47 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_action.h"
 #include "kvi_kvs_action.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 
 class KviConnectAction : public KviAction
 {

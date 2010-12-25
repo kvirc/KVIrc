@@ -31,9 +31,9 @@
 #include "kvi_hstrEqualCIN.h"
 #include "kvi_ircviewprivate.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_memmove.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_options.h"
 #include "kvi_out.h"
 #include "kvi_texticonmanager.h"
@@ -160,7 +160,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 
 	//Alloc the first attribute
 	line_ptr->uChunkCount = 1;
-	line_ptr->pChunks = (KviIrcViewLineChunk *)kvi_malloc(sizeof(KviIrcViewLineChunk));
+	line_ptr->pChunks = (KviIrcViewLineChunk *)KviMemory::allocate(sizeof(KviIrcViewLineChunk));
 	//And fill it up
 	line_ptr->pChunks[0].type = KVI_TEXT_COLOR;
 	line_ptr->pChunks[0].iTextStart = 0;
@@ -185,7 +185,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 			line_ptr->pChunks[0].iTextLen = 0;
 
 			line_ptr->uChunkCount=3;
-			line_ptr->pChunks=(KviIrcViewLineChunk *)kvi_realloc((void *)line_ptr->pChunks,3 * sizeof(KviIrcViewLineChunk));
+			line_ptr->pChunks=(KviIrcViewLineChunk *)KviMemory::reallocate((void *)line_ptr->pChunks,3 * sizeof(KviIrcViewLineChunk));
 
 			line_ptr->pChunks[1].type = KVI_TEXT_COLOR;
 			line_ptr->pChunks[1].iTextStart = 0;
@@ -262,7 +262,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 
 #define NEW_LINE_CHUNK(_chunk_type) \
 	line_ptr->uChunkCount++; \
-	line_ptr->pChunks=(KviIrcViewLineChunk *)kvi_realloc((void *)line_ptr->pChunks, \
+	line_ptr->pChunks=(KviIrcViewLineChunk *)KviMemory::reallocate((void *)line_ptr->pChunks, \
 			line_ptr->uChunkCount * sizeof(KviIrcViewLineChunk)); \
 	iCurChunk++; \
 	line_ptr->pChunks[iCurChunk].type = _chunk_type; \
@@ -564,7 +564,7 @@ found_command_escape:
 						p+=2; //point after \r!
 
 						blockLen = (next_cr - p);
-						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)kvi_malloc(((next_cr - p) + 1) * sizeof(kvi_wchar_t));
+						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate(((next_cr - p) + 1) * sizeof(kvi_wchar_t));
 						kvi_fastmoveodd((void *)(line_ptr->pChunks[iCurChunk].szPayload),p,blockLen * sizeof(kvi_wchar_t));
 
 						line_ptr->pChunks[iCurChunk].szPayload[blockLen] = 0;
@@ -657,7 +657,7 @@ found_icon_escape:
 					{
 						APPEND_LAST_TEXT_BLOCK(data_ptr,beginPtr - data_ptr)
 						NEW_LINE_CHUNK(KVI_TEXT_ICON)
-						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)kvi_malloc((datalen + 1) * sizeof(kvi_wchar_t));
+						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((datalen + 1) * sizeof(kvi_wchar_t));
 						kvi_fastmoveodd((void *)(line_ptr->pChunks[iCurChunk].szPayload),icon_name,datalen * sizeof(kvi_wchar_t));
 						line_ptr->pChunks[iCurChunk].szPayload[datalen] = 0;
 						line_ptr->pChunks[iCurChunk].szSmileId=line_ptr->pChunks[iCurChunk].szPayload;
@@ -910,7 +910,7 @@ got_url:
 		//	int urlLen = KVI_OPTION_STRING(KviOption_stringUrlLinkCommand).len() + 1;
 
 		//write into null-terminated char* szPayload an 'u' that means that this chunk represents an url
-		line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)kvi_malloc(2 * sizeof(kvi_wchar_t));
+		line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate(2 * sizeof(kvi_wchar_t));
 		line_ptr->pChunks[iCurChunk].szPayload[0] = 'u';
 		line_ptr->pChunks[iCurChunk].szPayload[1] = 0x0;
 		//set the color for this chunk
@@ -1037,11 +1037,11 @@ check_emoticon_char:
 						int emolen = p - begin;
 						int reallen=item2 ? 3 : 2;
 
-						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)kvi_malloc((emolen + 1) * sizeof(kvi_wchar_t));
+						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((emolen + 1) * sizeof(kvi_wchar_t));
 						kvi_fastmoveodd(line_ptr->pChunks[iCurChunk].szPayload,begin,emolen * sizeof(kvi_wchar_t));
 						line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
 
-						line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)kvi_malloc((reallen + 1) * sizeof(kvi_wchar_t));
+						line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)KviMemory::allocate((reallen + 1) * sizeof(kvi_wchar_t));
 						kvi_fastmoveodd(line_ptr->pChunks[iCurChunk].szSmileId,ng,reallen * sizeof(kvi_wchar_t));
 						line_ptr->pChunks[iCurChunk].szSmileId[reallen] = 0;
 
@@ -1052,11 +1052,11 @@ check_emoticon_char:
 						while(count > 0)
 						{
 							NEW_LINE_CHUNK(KVI_TEXT_ICON)
-							line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)kvi_malloc((emolen + 1) * sizeof(kvi_wchar_t));
+							line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((emolen + 1) * sizeof(kvi_wchar_t));
 							kvi_fastmoveodd(line_ptr->pChunks[iCurChunk].szPayload,begin,emolen * sizeof(kvi_wchar_t));
 							line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
 
-							line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)kvi_malloc((reallen + 1) * sizeof(kvi_wchar_t));
+							line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)KviMemory::allocate((reallen + 1) * sizeof(kvi_wchar_t));
 							kvi_fastmoveodd(line_ptr->pChunks[iCurChunk].szSmileId,ng,reallen * sizeof(kvi_wchar_t));
 							line_ptr->pChunks[iCurChunk].szSmileId[reallen] = 0;
 

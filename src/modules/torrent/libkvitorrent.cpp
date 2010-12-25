@@ -30,7 +30,7 @@
 #include "kvi_module.h"
 #include "kvi_options.h"
 #include "kvi_frame.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_out.h"
 
 static KviPointerList<KviTorrentInterfaceDescriptor> * g_pDescriptorList = 0;

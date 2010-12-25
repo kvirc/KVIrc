@@ -30,7 +30,7 @@
 #include "window.h"
 
 #include "kvi_window.h"
-#include "kvi_databuffer.h"
+#include "KviDataBuffer.h"
 #include "kvi_sockettype.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_themedlabel.h"

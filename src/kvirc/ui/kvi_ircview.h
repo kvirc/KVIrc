@@ -6,7 +6,7 @@
 //   Creation date : Fri Mar 19 1999 05:39:01 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,8 +25,8 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_string.h"
-#include "kvi_pointerlist.h"
+#include "KviCString.h"
+#include "KviPointerList.h"
 
 #include <QToolButton>
 #include <QWidget>

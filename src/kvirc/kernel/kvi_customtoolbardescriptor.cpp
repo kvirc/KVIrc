@@ -4,7 +4,7 @@
 //   Creation date : Sun 05 Dec 2004 18:20:58 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,11 +26,11 @@
 
 #include "kvi_customtoolbardescriptor.h"
 #include "kvi_customtoolbar.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_action.h"
 #include "kvi_actionmanager.h"
 #include "kvi_app.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_kvs_script.h"
 #include "kvi_window.h"
 
@@ -181,7 +181,7 @@ void KviCustomToolBarDescriptor::clear()
 	}
 }
 
-bool KviCustomToolBarDescriptor::load(KviConfig * cfg)
+bool KviCustomToolBarDescriptor::load(KviConfigurationFile * cfg)
 {
 	m_pActions->clear();
 	m_szId = cfg->group();
@@ -202,7 +202,7 @@ bool KviCustomToolBarDescriptor::load(KviConfig * cfg)
 	return true;
 }
 
-void KviCustomToolBarDescriptor::save(KviConfig * cfg)
+void KviCustomToolBarDescriptor::save(KviConfigurationFile * cfg)
 {
 	cfg->setGroup(m_szId);
 	cfg->writeEntry("Label",m_pLabelScript->code());

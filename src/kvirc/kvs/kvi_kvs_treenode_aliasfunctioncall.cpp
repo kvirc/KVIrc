@@ -4,7 +4,7 @@
 //   Creation date : Tue 07 Oct 2003 03:21:23 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,8 +25,8 @@
 #include "kvi_kvs_treenode_aliasfunctioncall.h"
 #include "kvi_kvs_variantlist.h"
 #include "kvi_kvs_aliasmanager.h"
-#include "kvi_locale.h"
-#include "kvi_qstring.h"
+#include "KviLocale.h"
+#include "KviQString.h"
 
 KviKvsTreeNodeAliasFunctionCall::KviKvsTreeNodeAliasFunctionCall(const QChar * pLocation, const QString & szAliasName, KviKvsTreeNodeDataList * pParams)
 : KviKvsTreeNodeFunctionCall(pLocation,szAliasName,pParams)

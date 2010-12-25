@@ -7,7 +7,7 @@
 //   Copyright (C) 1999 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2000 Christian Strmmen
 //   Copyright (C) 2000 Till Bush (buti at geocities dot com)
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,7 +28,7 @@
 #include "aboutdialog.h"
 
 #include "kvi_module.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 KviAboutDialog * g_pAboutDialog = 0;
 

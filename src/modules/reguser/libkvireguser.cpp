@@ -4,7 +4,7 @@
 //   Creation date : Fri Dec 01 2000 14:53:10 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,16 +28,16 @@
 #include "dialog.h"
 
 #include "kvi_module.h"
-#include "kvi_regusersdb.h"
-#include "kvi_ircuserdb.h"
+#include "KviRegisteredUserDataBase.h"
+#include "KviIrcUserDataBase.h"
 #include "kvi_out.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_window.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_app.h"
 #include "kvi_window.h"
 #include "kvi_frame.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 
 #include <QSplitter> // FIXME: REmove this!
 
@@ -936,7 +936,7 @@ static bool reguser_kvs_fnc_exactMatch(KviKvsModuleFunctionCall * c)
 //		[module:reguser]reguser module documentation[/module]
 //*/
 
-//static void search_reguser_list(KviRegisteredUserList * l,KviWindow * w,const char * mask,KviStr & buffer)
+//static void search_reguser_list(KviRegisteredUserList * l,KviWindow * w,const char * mask,KviCString & buffer)
 //{
 //	for(KviRegisteredUser * u = l->first();u;u = l->next())
 //	{
@@ -948,11 +948,11 @@ static bool reguser_kvs_fnc_exactMatch(KviKvsModuleFunctionCall * c)
 //	}
 //}
 
-//static bool reguser_module_fnc_matches(KviModule *m,KviCommand *c,KviParameterList * parms,KviStr &buffer)
+//static bool reguser_module_fnc_matches(KviModule *m,KviCommand *c,KviParameterList * parms,KviCString &buffer)
 //{
 //	ENTER_STACK_FRAME(c,"reguser.matches");
 //
-//	KviStr list;
+//	KviCString list;
 //
 //	const KviPointerHashTable<const char *,KviRegisteredUserList> * d = g_pRegisteredUserDataBase->nickDict();
 //	KviPointerHashTableIterator<const char *,KviRegisteredUserList> it(*d);
@@ -1017,7 +1017,7 @@ static bool reguser_kvs_fnc_mask(KviKvsModuleFunctionCall * c)
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
 	if(u)
 	{
-		KviStr n = szName;
+		KviCString n = szName;
 		if(n.hasData() && n.isUnsignedNum())
 		{
 			KviIrcMask * m = u->maskList()->at(n.toInt());

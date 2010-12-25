@@ -6,7 +6,7 @@
 //   Creation date : Wed 03 Jan 2007 01:11:44 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2007-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2007-2010 Szymon Stefanek <pragma at kvirc dot net>
 //   Copyright (C) 2010 Elvio Basello <hell at hellvis69 dot netsons dot org>
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -26,7 +26,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 #include "kvi_theme.h"
 
 #include <QWizard>

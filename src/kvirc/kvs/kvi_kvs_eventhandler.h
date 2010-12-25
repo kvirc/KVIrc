@@ -6,7 +6,7 @@
 //   Creation date : Mon 23 Feb 2004 03:04:58 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,9 +26,9 @@
 
 #include "kvi_settings.h"
 #include "kvi_kvs_script.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_kvs_moduleinterface.h"
-#include "kvi_heapobject.h"
+#include "KviHeapObject.h"
 
 class KVIRC_API KviKvsEventHandler : public KviHeapObject
 {
@@ -65,7 +65,7 @@ public:
 	// Static allocator function.
 	// This MUST be used by the modules to allocate event structures
 	// instead of the new operator.
-	// See kvi_heapobject.cpp for an explaination.
+	// See KviHeapObject.cpp for an explaination.
 	static KviKvsScriptEventHandler * createInstance(const QString &szHandlerName,const QString &szContextName,const QString &szCode,bool bEnabled = true);
 };
 

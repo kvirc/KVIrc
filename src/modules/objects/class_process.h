@@ -31,7 +31,7 @@
 
 
 #include "object_macros.h"
-#include "kvi_process.h"
+#include "QProcess"
 
 
 class KviKvsObject_process : public KviKvsObject
@@ -40,7 +40,7 @@ class KviKvsObject_process : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_process)
 protected:
-	KviProcess * m_pProcess;
+	QProcess * m_pProcess;
 private:
         QStringList m_szArgs;
 public:

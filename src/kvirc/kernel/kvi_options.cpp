@@ -4,7 +4,7 @@
 //   Creation date : Tue Jun 20 2000 11:42:00 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,21 +28,21 @@
 
 #include "kvi_options.h"
 #include "kvi_defaults.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_app.h"
 #include "kvi_iconmanager.h"
-#include "kvi_mirccntrl.h"
-#include "kvi_locale.h"
+#include "KviMircCntrl.h"
+#include "KviLocale.h"
 #include "kvi_confignames.h"
 #include "kvi_window.h"
 #include "kvi_out.h"
-#include "kvi_stringconversion.h"
+#include "KviStringConversion.h"
 #include "kvi_settings.h"
 #include "kvi_splash.h"
 #include "kvi_frame.h"
 #include "kvi_internalcmd.h"
 #include "kvi_theme.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 //#include "kvi_textencoding.h"
 
 #include <QMessageBox>
@@ -703,16 +703,16 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 };
 
 #define MSGTYPE_OPTION(_name,_text,_icon,_levl) \
-	KviMsgTypeOption( \
+	KviMessageTypeSettingsOption( \
 		KVI_MSGTYPE_OPTIONS_PREFIX _name, \
-		KviMsgType(_text,_icon,KVI_BLACK,KVI_TRANSPARENT,true,_levl), \
+		KviMessageTypeSettings(_text,_icon,KVI_BLACK,KVI_TRANSPARENT,true,_levl), \
 		KviOption_sectFlagMsgType | KviOption_groupTheme \
 	)
 
 #define MSGTYPE_OPTION_SPEC(_name,_text,_icon,_fore,_back,_levl) \
-	KviMsgTypeOption( \
+	KviMessageTypeSettingsOption( \
 		KVI_MSGTYPE_OPTIONS_PREFIX _name, \
-		KviMsgType(_text,_icon,_fore,_back,true,_levl), \
+		KviMessageTypeSettings(_text,_icon,_fore,_back,true,_levl), \
 		KviOption_sectFlagMsgType | KviOption_groupTheme \
 	)
 
@@ -720,7 +720,7 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 
 // FIXME: #warning "FIX THE ICONS HERE!!!"
 
-KviMsgTypeOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
+KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 {
 	MSGTYPE_OPTION("Echo",__tr_no_lookup("Normal text"),KVI_SMALLICON_NONE,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION_SPEC("Selection",__tr_no_lookup("Selection"),KVI_SMALLICON_NONE,KVI_WHITE,KVI_BLACK,KVI_MSGTYPE_LEVEL_1),
@@ -882,7 +882,7 @@ static const char * options_section_table[KVI_NUM_OPTION_SECT_FLAGS] =
 	"Recent",        "Geometry"
 };
 
-static void config_set_section(int flag,KviConfig * cfg)
+static void config_set_section(int flag,KviConfigurationFile * cfg)
 {
 	int index = flag & KviOption_sectMask;
 	if((index < KVI_NUM_OPTION_SECT_FLAGS) && (index >= 0))
@@ -896,7 +896,7 @@ void KviApp::loadOptions()
 	QString buffer;
 	if(getReadOnlyConfigPath(buffer,KVI_CONFIGFILE_MAIN))
 	{
-		KviConfig cfg(buffer,KviConfig::Read);
+		KviConfigurationFile cfg(buffer,KviConfigurationFile::Read);
 
 		int prg = 12;
 		int i;
@@ -945,7 +945,7 @@ void KviApp::saveOptions()
 	saveRecentChannels();
 
 	getLocalKvircDirectory(buffer,Config,KVI_CONFIGFILE_MAIN);
-	KviConfig cfg(buffer,KviConfig::Write);
+	KviConfigurationFile cfg(buffer,KviConfigurationFile::Write);
 
 	if(!cfg.ensureWritable())
 	{
@@ -1042,7 +1042,7 @@ namespace KviTheme
 		szD.append(KVI_PATH_SEPARATOR_CHAR);
 		szD.append(KVI_THEMEDATA_FILE_NAME);
 
-		KviConfig cfg(szD,KviConfig::Write);
+		KviConfigurationFile cfg(szD,KviConfigurationFile::Write);
 
 		cfg.setGroup(KVI_THEMEDATA_CONFIG_GROUP);
 
@@ -1168,7 +1168,7 @@ namespace KviTheme
 		KviQString::ensureLastCharIs(szD,KVI_PATH_SEPARATOR_CHAR);
 		szD.append(KVI_THEMEDATA_FILE_NAME);
 
-		KviConfig cfg(szD,KviConfig::Read);
+		KviConfigurationFile cfg(szD,KviConfigurationFile::Read);
 
 		cfg.setGroup(KVI_THEMEDATA_CONFIG_GROUP);
 

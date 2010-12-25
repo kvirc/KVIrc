@@ -4,7 +4,7 @@
 //   Creation date : Thu 15 May 2002 12:04:12 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,12 +26,12 @@
 
 #include "kvi_iconmanager.h"
 #include "kvi_texticonmanager.h"
-#include "kvi_string.h"
-#include "kvi_pointerlist.h"
-#include "kvi_config.h"
+#include "KviCString.h"
+#include "KviPointerList.h"
+#include "KviConfigurationFile.h"
 #include "kvi_app.h"
 #include "kvi_confignames.h"
-#include "kvi_animatedpixmap.h"
+#include "KviAnimatedPixmap.h"
 #include "kvi_options.h"
 
 #include <QPixmap>
@@ -214,15 +214,15 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 {
 	if(!bMerge) m_pTextIconDict->clear();
 
-	KviConfig cfg(szFileName,KviConfig::Read);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
 
 	cfg.setGroup("Manager");
 	int iUpd = cfg.readIntEntry("ConfigUpdate",0);
 
-	KviConfigGroup * pDict = cfg.dict()->find("TextIcons");
+	KviConfigurationFileGroup * pDict = cfg.dict()->find("TextIcons");
 	if(pDict)
 	{
-		KviConfigGroupIterator it(*pDict);
+		KviConfigurationFileGroupIterator it(*pDict);
 
 		KviPointerList<QString> names;
 		names.setAutoDelete(true);
@@ -286,7 +286,7 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 
 void KviTextIconManager::save(const QString & szFileName)
 {
-	KviConfig cfg(szFileName,KviConfig::Write);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
 
 	cfg.setGroup("Manager");
 	cfg.writeEntry("ConfigUpdate",TEXTICONMANAGER_CURRENT_CONFIG_UPDATE);

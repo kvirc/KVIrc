@@ -4,7 +4,7 @@
 //   Creation date : Mon Dec 23 2002 20:28:18 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -26,14 +26,14 @@
 
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
-#include "kvi_config.h"
+#include "KviLocale.h"
+#include "KviConfigurationFile.h"
 #include "kvi_filedialog.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_scripteditor.h"
 #include "kvi_app.h"
 #include "kvi_console.h"
-#include "kvi_parameterlist.h"
+#include "KviParameterList.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variantlist.h"
 #include "kvi_tal_popupmenu.h"
@@ -114,7 +114,7 @@ void KviCodeTesterWindow::getConfigGroupName(QString &szName)
 	szName = "codetester";
 }
 
-void KviCodeTesterWindow::saveProperties(KviConfig *) //cfg
+void KviCodeTesterWindow::saveProperties(KviConfigurationFile *) //cfg
 {
 /*
 #ifdef COMPILE_SCRIPTTOOLBAR
@@ -125,7 +125,7 @@ void KviCodeTesterWindow::saveProperties(KviConfig *) //cfg
 */
 }
 
-void KviCodeTesterWindow::loadProperties(KviConfig *) //cfg
+void KviCodeTesterWindow::loadProperties(KviConfigurationFile *) //cfg
 {
 /*
 #ifdef COMPILE_SCRIPTTOOLBAR
@@ -133,7 +133,7 @@ void KviCodeTesterWindow::loadProperties(KviConfig *) //cfg
 	def.append(20);
 	def.append(80);
 	m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
-	KviStr tmp = cfg->readEntry("LastRaw","");
+	KviCString tmp = cfg->readEntry("LastRaw","");
 	m_pEditor->editRaw(tmp);
 	//qDebug("LAST EDITED WAS %s",tmp.ptr());
 #endif // COMPILE_SCRIPTTOOLBAR

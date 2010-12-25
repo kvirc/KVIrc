@@ -29,7 +29,7 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
-	#include "kvi_crypt.h"
+	#include "KviCryptEngine.h"
 
 	class KviLamerizerEngine : public KviCryptEngine
 	{
@@ -41,8 +41,8 @@
 		bool m_bLight;
 	public:
 		virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
-		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviStr &outBuffer);
-		virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviStr &plainText);
+		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviCString &outBuffer);
+		virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviCString &plainText);
 	};
 
 #endif // COMPILE_CRYPT_SUPPORT

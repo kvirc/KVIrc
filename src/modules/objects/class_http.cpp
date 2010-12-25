@@ -26,7 +26,7 @@
 
 #include "kvi_debug.h"
 #include "kvi_error.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 #include <QHttp>
 #include <QUrl>

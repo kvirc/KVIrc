@@ -4,7 +4,7 @@
 //   Creation date : Sat 30 Dec 2006 14:54:56 by Szymon Stefanek
 //
 //   This toolbar is part of the KVirc irc client distribution
-//   Copyright (C) 2006-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2006-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,17 +27,17 @@
 
 #include "kvi_msgbox.h"
 #include "kvi_module.h"
-#include "kvi_locale.h"
-#include "kvi_qstring.h"
-#include "kvi_parameterlist.h"
-#include "kvi_cmdformatter.h"
+#include "KviLocale.h"
+#include "KviQString.h"
+#include "KviParameterList.h"
+#include "KviCommandFormatter.h"
 #include "kvi_error.h"
 #include "kvi_out.h"
 #include "kvi_iconmanager.h"
-#include "kvi_mirccntrl.h"
-#include "kvi_config.h"
+#include "KviMircCntrl.h"
+#include "KviConfigurationFile.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_filedialog.h"
 #include "kvi_theme.h"
 
@@ -289,7 +289,7 @@ static bool theme_module_init(KviModule *m)
 
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);
-	KviConfig cfg(szBuf,KviConfig::Read);
+	KviConfigurationFile cfg(szBuf,KviConfigurationFile::Read);
 	g_rectManagementDialogGeometry = cfg.readRectEntry("EditorGeometry",QRect(10,10,390,440));
 
 	return true;
@@ -301,7 +301,7 @@ static bool theme_module_cleanup(KviModule *m)
 
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);
-	KviConfig cfg(szBuf,KviConfig::Write);
+	KviConfigurationFile cfg(szBuf,KviConfigurationFile::Write);
 	cfg.writeEntry("EditorGeometry",g_rectManagementDialogGeometry);
 
 	return true;

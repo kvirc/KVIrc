@@ -24,14 +24,14 @@
 
 #include "addonfunctions.h"
 
-#include "kvi_packagefile.h"
-#include "kvi_locale.h"
+#include "KviPackageFile.h"
+#include "KviLocale.h"
 #include "kvi_msgbox.h"
 #include "kvi_app.h"
 #include "kvi_htmldialog.h"
 #include "kvi_iconmanager.h"
-#include "kvi_fileutils.h"
-#include "kvi_miscutils.h"
+#include "KviFileUtils.h"
+#include "KviMiscUtils.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_frame.h"
 #include "kvi_kvs_script.h"

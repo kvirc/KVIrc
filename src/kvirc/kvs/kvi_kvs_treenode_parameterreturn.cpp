@@ -4,7 +4,7 @@
 //   Creation date : Fri 30 Jan 2004 01:31:01 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@
 #include "kvi_kvs_treenode_datalist.h"
 #include "kvi_kvs_runtimecontext.h"
 #include "kvi_kvs_variantlist.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 KviKvsTreeNodeParameterReturn::KviKvsTreeNodeParameterReturn(const QChar * pLocation,KviKvsTreeNodeDataList * pDataList)
 : KviKvsTreeNodeInstruction(pLocation)

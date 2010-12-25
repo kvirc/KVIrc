@@ -4,7 +4,7 @@
 //   Creation date : Fri Now 22 2002 00:50:01 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2009 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,7 +24,7 @@
 
 #define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "class_layout.h"
 
 #include <QGridLayout>

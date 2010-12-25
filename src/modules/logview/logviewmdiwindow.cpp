@@ -5,7 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2002 Juanjo Alvarez
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,14 +27,14 @@
 #include "logviewwidget.h"
 
 #include "kvi_iconmanager.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_module.h"
 #include "kvi_options.h"
 #include "kvi_frame.h"
 #include "kvi_ircview.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_app.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_tal_popupmenu.h"
 
 #include <QList>
@@ -482,7 +482,7 @@ KviLogFile::KviLogFile(const QString & szName)
 	else
 		m_type = Other;
 
-	KviStr szUndecoded = szTmpName.section('.',0,0);
+	KviCString szUndecoded = szTmpName.section('.',0,0);
 	szUndecoded.cutToFirst('_');
 	m_szName = szUndecoded.hexDecode(szUndecoded.ptr()).ptr();
 

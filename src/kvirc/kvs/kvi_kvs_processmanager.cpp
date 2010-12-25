@@ -4,7 +4,7 @@
 //   Creation date : Wed 07 Apr 2004 03:03:52 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,8 +25,8 @@
 #include "kvi_kvs_processmanager.h"
 #include "kvi_window.h"
 #include "kvi_out.h"
-#include "kvi_locale.h"
-#include "kvi_parameterlist.h"
+#include "KviLocale.h"
+#include "KviParameterList.h"
 #include "kvi_app.h"
 #include "kvi_console.h"
 #include "kvi_kvs_script.h"
@@ -89,20 +89,20 @@ bool KviKvsProcessAsyncOperation::start()
 		args.append(m_pData->szCommandline);
 	}
 
-	m_pProcess = new KviProcess(this);
+	m_pProcess = new QProcess(this);
 
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDOUT)
 	{
 		connect(m_pProcess,SIGNAL(readyReadStandardOutput()),this,SLOT(readStdout()));
 	} else {
-		m_pProcess->closeReadChannel(KviProcess::StandardOutput);
+		m_pProcess->closeReadChannel(QProcess::StandardOutput);
 	}
 
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDERR)
 	{
 		connect(m_pProcess,SIGNAL(readyReadStandardError()),this,SLOT(readStderr()));
 	} else {
-		m_pProcess->closeReadChannel(KviProcess::StandardError);
+		m_pProcess->closeReadChannel(QProcess::StandardError);
 	}
 
 	connect(m_pProcess,SIGNAL(finished(int)),this,SLOT(processExited(int)));
@@ -115,7 +115,7 @@ bool KviKvsProcessAsyncOperation::start()
 	szcmd = args.takeFirst();
 	m_pProcess->start(szcmd, args);
 
-	if(m_pProcess->state()==KviProcess::NotRunning)
+	if(m_pProcess->state()==QProcess::NotRunning)
 	{
 		return false;
 	}
@@ -199,7 +199,7 @@ bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e,const QString &szData)
 				params.append(new KviKvsVariant(QString("ping")));
 			break;
 			default:
-				qDebug("Ops... unknown trigger() CallbackEvent parameter in KviProcessDescriptor::trigger()");
+				qDebug("Ops... unknown trigger() CallbackEvent parameter in QProcessDescriptor::trigger()");
 				return false;
 			break;
 		}
@@ -242,7 +242,7 @@ void KviKvsProcessAsyncOperation::readStdout()
 		if(a.size() > 0)
 			m_szStdoutBuffer += QString(a);
 	} else {
-		m_pProcess->setReadChannel(KviProcess::StandardOutput);
+		m_pProcess->setReadChannel(QProcess::StandardOutput);
 		QString l;
 		bool bBreak = false;
 		while((m_pProcess->canReadLine()) && (!bBreak))
@@ -269,7 +269,7 @@ void KviKvsProcessAsyncOperation::readStderr()
 		if(a.size() > 0)
 			m_szStderrBuffer += QString(a);
 	} else {
-		m_pProcess->setReadChannel(KviProcess::StandardError);
+		m_pProcess->setReadChannel(QProcess::StandardError);
 		QString l;
 		bool bBreak = false;
 		while((m_pProcess->canReadLine()) && (!bBreak))
@@ -355,7 +355,7 @@ KviKvsProcessManager::~KviKvsProcessManager()
 void KviKvsProcessManager::init()
 {
 	if(m_pInstance)return;
-	m_pInstance = new KviProcessManager();
+	m_pInstance = new QProcessManager();
 }
 
 void KviKvsProcessManager::done()

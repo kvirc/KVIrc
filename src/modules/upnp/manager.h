@@ -37,7 +37,7 @@
 #include <QObject>
 #include <QTimer>
 
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 #include "igdcontrolpoint.h"
 #include "ssdpconnection.h"
 

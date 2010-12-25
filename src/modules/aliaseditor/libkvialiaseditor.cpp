@@ -4,7 +4,7 @@
 //   Creation date : Mon 23 Dec 2002 14:30:59 2002 GMT by Szymon Stefanek
 //
 //   This toolbar is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,7 +25,7 @@
 #include "aliaseditor.h"
 
 #include "kvi_module.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_frame.h"
 
 
@@ -84,7 +84,7 @@ static bool aliaseditor_module_cleanup(KviModule *)
 KVIRC_MODULE(
 	"AliasEditor",                                                       // module name
 	"4.0.0",                                                             // module version
-	"Copyright (C) 2002-2005 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Editor for the script aliases",
 	aliaseditor_module_init,
 	aliaseditor_module_can_unload,

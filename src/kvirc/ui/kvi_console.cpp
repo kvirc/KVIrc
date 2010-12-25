@@ -4,7 +4,7 @@
 //   Creation date : Sun Jun 25 2000 15:01:34 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -30,33 +30,33 @@
 #include "kvi_frame.h"
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_ircview.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_input.h"
 #include "kvi_error.h"
-#include "kvi_proxydb.h"
+#include "KviProxyDataBase.h"
 #include "kvi_netutils.h"
-#include "kvi_ircserver.h"
-#include "kvi_ircserverdb.h"
+#include "KviIrcServer.h"
+#include "KviIrcServerDataBase.h"
 #include "kvi_dns.h"
 #include "kvi_defaults.h"
-#include "kvi_ircuserdb.h"
+#include "KviIrcUserDataBase.h"
 #include "kvi_channel.h"
 #include "kvi_query.h"
-#include "kvi_parameterlist.h"
-#include "kvi_regusersdb.h"
+#include "KviParameterList.h"
+#include "KviRegisteredUserDataBase.h"
 #include "kvi_userlistview.h"
 #include "kvi_out.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_irctoolbar.h"
 #include "kvi_internalcmd.h"
 #include "kvi_sparser.h"
 #include "kvi_modulemanager.h"
-#include "kvi_fileutils.h"
-#include "kvi_time.h"
+#include "KviFileUtils.h"
+#include "KviTimeUtils.h"
 #include "kvi_mexlinkfilter.h"
-#include "kvi_avatarcache.h"
+#include "KviAvatarCache.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_ircconnectionserverinfo.h"
@@ -71,7 +71,7 @@
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_popupmenu.h"
-#include "kvi_nickcolors.h"
+#include "KviNickColors.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_sslmaster.h"
@@ -223,7 +223,7 @@ void KviConsole::completeChannel(const QString &word,KviPointerList<QString> * m
 	if(!connection())return;
 	for(KviChannel * c = connection()->channelList()->first();c;c = connection()->channelList()->next())
 	{
-		if(kvi_strEqualCIN(c->windowName(),word.ptr(),word.len()))matches->append(new KviStr((*it)
+		if(kvi_strEqualCIN(c->windowName(),word.ptr(),word.len()))matches->append(new KviCString((*it)
 	}
 	*/
 	QStringList *pList = g_pApp->recentChannelsForNetwork(currentNetworkName());
@@ -362,7 +362,7 @@ void KviConsole::executeInternalCommand(int index)
 	KviKvsScript::run(kvi_getInternalCommandBuffer(index),this);
 }
 
-void KviConsole::saveProperties(KviConfig *cfg)
+void KviConsole::saveProperties(KviConfigurationFile *cfg)
 {
 	KviWindow::saveProperties(cfg);
 	QList<int> sizes;
@@ -388,7 +388,7 @@ void KviConsole::showNotifyList(bool bShow)
 	}
 }
 
-void KviConsole::loadProperties(KviConfig *cfg)
+void KviConsole::loadProperties(KviConfigurationFile *cfg)
 {
 	int iWidth = width();
 	QList<int> def;

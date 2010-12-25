@@ -29,7 +29,7 @@
 #ifdef COMPILE_KDE_SUPPORT
 
 	#include "kvi_app.h"
-	#include "kvi_locale.h"
+	#include "KviLocale.h"
 
 	#include <QTimer>
 

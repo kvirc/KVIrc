@@ -4,7 +4,7 @@
 //   Creation date : Sun 05 Dec 2004 18:20:18 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,8 +26,8 @@
 
 #include "kvi_customtoolbarmanager.h"
 #include "kvi_customtoolbardescriptor.h"
-#include "kvi_config.h"
-#include "kvi_locale.h"
+#include "KviConfigurationFile.h"
+#include "KviLocale.h"
 
 KviCustomToolBarManager * KviCustomToolBarManager::m_pInstance = 0;
 
@@ -184,9 +184,9 @@ void KviCustomToolBarManager::updateVisibleToolBars()
 
 void KviCustomToolBarManager::load(const QString &szFileName)
 {
-	KviConfig cfg(szFileName,KviConfig::Read);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
 
-	KviConfigIterator it(*(cfg.dict()));
+	KviConfigurationFileIterator it(*(cfg.dict()));
 	while(it.current())
 	{
 		cfg.setGroup(it.currentKey());
@@ -200,7 +200,7 @@ void KviCustomToolBarManager::load(const QString &szFileName)
 
 void KviCustomToolBarManager::save(const QString &szFileName)
 {
-	KviConfig cfg(szFileName,KviConfig::Write);
+	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
 	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{

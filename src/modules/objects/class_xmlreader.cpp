@@ -4,7 +4,7 @@
 //   Created on Tue 27 Dec 2005 00:14:09 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,12 +24,12 @@
 
 #include "class_xmlreader.h"
 #include "class_memorybuffer.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 #include "kvi_kvs_variantlist.h"
 #include "kvi_kvs_hash.h"
 
-#include "kvi_qstring.h"
+#include "KviQString.h"
 
 
 /*

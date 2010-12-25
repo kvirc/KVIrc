@@ -27,8 +27,8 @@
 #include "kvi_error.h"
 #include "kvi_debug.h"
 #include "kvi_settings.h"
-#include "kvi_locale.h"
-#include "kvi_process.h"
+#include "KviLocale.h"
+#include "QProcess"
 
 /*
 	@doc:	process
@@ -182,7 +182,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_process,"process","object")
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_process,KviKvsObject)
 
-	m_pProcess = new KviProcess();
+	m_pProcess = new QProcess();
 	connect(m_pProcess,SIGNAL(readyReadStandardOutput()),this,SLOT(slotReadStdout()));
 	connect(m_pProcess,SIGNAL(readyReadStandardError()),this,SLOT(slotReadStderr()));
 
@@ -216,7 +216,7 @@ KVSO_CLASS_FUNCTION(process,startProcess)
         szcmd = m_szArgs.takeFirst();
         m_pProcess->start(szcmd, m_szArgs);
 
-	if(m_pProcess->state()==KviProcess::NotRunning)
+	if(m_pProcess->state()==QProcess::NotRunning)
 	{
 		c->warning( __tr2qs_ctx("Process could not be started.","objects"));
 	}
@@ -287,21 +287,21 @@ KVSO_CLASS_FUNCTION(process,tryTerminate)
 KVSO_CLASS_FUNCTION(process,closeStdin)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	m_pProcess->closeReadChannel(KviProcess::StandardOutput);
+	m_pProcess->closeReadChannel(QProcess::StandardOutput);
 	return true;
 }
 //->Returns if the process still runnig
 KVSO_CLASS_FUNCTION(process,isRunning)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	c->returnValue()->setBoolean(m_pProcess->state()==KviProcess::Running);
+	c->returnValue()->setBoolean(m_pProcess->state()==QProcess::Running);
 	return true;
 }
 //->Returns if the process exited.
 KVSO_CLASS_FUNCTION(process,normalExit)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	c->returnValue()->setBoolean(m_pProcess->state()==KviProcess::NotRunning && m_pProcess->exitStatus()==KviProcess::NormalExit);
+	c->returnValue()->setBoolean(m_pProcess->state()==QProcess::NotRunning && m_pProcess->exitStatus()==QProcess::NormalExit);
 	return true;
 }
 

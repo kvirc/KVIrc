@@ -6,7 +6,7 @@
 //   Creation date : Wed 07 Apr 2004 03:03:52 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,19 +26,19 @@
 
 #include "kvi_settings.h"
 #include "kvi_kvs_asyncoperation.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_window.h"
 #include "kvi_kvs_variant.h"
 #include "kvi_kvs_runtimecontext.h"
 #include "kvi_kvs_variant.h"
 
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 
 #ifdef Unsorted
 	#undef Unsorted
 #endif
 
-#include "kvi_process.h"
+#include "QProcess"
 
 #include <QTimer>
 
@@ -79,7 +79,7 @@ public:
 protected:
 	enum CallbackEvent { EventStarted,EventTerminated,EventStdout,EventStderr,EventPing };
 private:
-	KviProcess                  * m_pProcess;
+	QProcess                  * m_pProcess;
 	KviKvsExtendedRunTimeData   * m_pExtendedRunTimeData;
 	QString                       m_szStdoutBuffer;
 	QString                       m_szStderrBuffer;

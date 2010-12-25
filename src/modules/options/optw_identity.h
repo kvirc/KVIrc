@@ -7,7 +7,7 @@
 //   Creation date : Tue Nov 14 2000 23:06:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -30,7 +30,7 @@
 #include "kvi_optionswidget.h"
 #include "kvi_settings.h"
 #include "kvi_selectors.h"
-#include "kvi_pixmap.h"
+#include "KviPixmap.h"
 
 #include <QDialog>
 
@@ -214,7 +214,7 @@ protected:
 	bool               m_bI;
 	bool               m_bW;
 	bool               m_bS;
-	KviStr             m_sModeStr;
+	KviCString             m_sModeStr;
 	KviBoolSelector  * m_pISelector;
 	KviBoolSelector  * m_pWSelector;
 	KviBoolSelector  * m_pSSelector;

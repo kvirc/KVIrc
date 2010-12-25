@@ -4,7 +4,7 @@
 //   Creation date : Thu Oct 7 2001 13:27:55 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2009 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the lists of the GNU General Public License
@@ -29,16 +29,16 @@
 #include "kvi_ircview.h"
 #include "kvi_out.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_out.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_themedlabel.h"
 #include "kvi_options.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnection.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_topicw.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_filedialog.h"
 #include "kvi_msgbox.h"
 #include "kvi_fileextensions.h"
@@ -263,7 +263,7 @@ void KviListWindow::requestList()
 {
 	if(m_pConsole->isConnected())
 	{
-		KviStr parms = m_pParamsEdit->text();
+		KviCString parms = m_pParamsEdit->text();
 		if(parms.isEmpty())
 			m_pConsole->connection()->sendFmtData("list");
 		else
@@ -368,7 +368,7 @@ void KviListWindow::exportList()
 		if(QFileInfo(szFile).completeSuffix() != "kvc")
 			szFile.append(".kvc");
 
-		KviConfig cfg(szFile,KviConfig::Write);
+		KviConfigurationFile cfg(szFile,KviConfigurationFile::Write);
 		cfg.clear();
 
 		KviChannelTreeWidgetItem * it;
@@ -397,8 +397,8 @@ void KviListWindow::importList()
 		m_pTreeWidget->clear();
 
 
-		KviConfig cfg(szFile,KviConfig::Read);
-		KviConfigIterator it(*cfg.dict());
+		KviConfigurationFile cfg(szFile,KviConfigurationFile::Read);
+		KviConfigurationFileIterator it(*cfg.dict());
 		while(it.current())
 		{
 			cfg.setGroup(it.currentKey());

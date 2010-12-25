@@ -32,7 +32,7 @@
 */
 
 #include "kvi_settings.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 
 #include <QMdiSubWindow>
 #include <QWindowStateChangeEvent>

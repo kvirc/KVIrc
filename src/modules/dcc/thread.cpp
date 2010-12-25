@@ -4,7 +4,7 @@
 //   Creation date : Tue Sep 20 09 2000 18:29:51 CEST Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,7 +28,7 @@
 #include "kvi_window.h"
 #include "kvi_error.h"
 #include "kvi_memmove.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_netutils.h"
 #include "kvi_socket.h"
 
@@ -90,10 +90,10 @@ bool KviDccThread::handleInvalidSocketRead(int readLen)
 #ifdef COMPILE_SSL_SUPPORT
 void KviDccThread::raiseSSLError()
 {
-	KviStr buffer;
+	KviCString buffer;
 	while(m_pSSL->getLastErrorString(buffer))
 	{
-		KviStr msg(KviStr::Format,"[SSL ERROR]: %s",buffer.ptr());
+		KviCString msg(KviCString::Format,"[SSL ERROR]: %s",buffer.ptr());
 		postMessageEvent(msg.ptr());
 	}
 }
@@ -108,7 +108,7 @@ void KviDccThread::postErrorEvent(int err)
 
 void KviDccThread::postMessageEvent(const char * message)
 {
-	KviThreadDataEvent<KviStr> * e = new KviThreadDataEvent<KviStr>(KVI_DCC_THREAD_EVENT_MESSAGE);
-	e->setData(new KviStr(message));
+	KviThreadDataEvent<KviCString> * e = new KviThreadDataEvent<KviCString>(KVI_DCC_THREAD_EVENT_MESSAGE);
+	e->setData(new KviCString(message));
 	postEvent(m_pParent,e);
 }

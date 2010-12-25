@@ -4,7 +4,7 @@
 //   Creation date : Sun Jul 18 2005 14:12:22 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2005-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,10 +29,10 @@
 #include "kvi_ircview.h"
 #include "kvi_input.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
-#include "kvi_config.h"
+#include "KviLocale.h"
+#include "KviConfigurationFile.h"
 
-#include "kvi_parameterlist.h"
+#include "KviParameterList.h"
 #include "kvi_frame.h"
 
 #include <QList>
@@ -72,13 +72,13 @@ void KviDebugWindow::getBaseLogFileName(QString &buffer)
 	buffer = "debug";
 }
 
-void KviDebugWindow::saveProperties(KviConfig *cfg)
+void KviDebugWindow::saveProperties(KviConfigurationFile *cfg)
 {
 	KviWindow::saveProperties(cfg);
 	cfg->writeEntry("Splitter",m_pSplitter->sizes());
 }
 
-void KviDebugWindow::loadProperties(KviConfig *cfg)
+void KviDebugWindow::loadProperties(KviConfigurationFile *cfg)
 {
 	int w = width();
 	KviWindow::loadProperties(cfg);

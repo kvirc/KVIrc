@@ -4,7 +4,7 @@
 //   Creation date : Fri May 11 23:24:18 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,9 +26,9 @@
 
 #include "kvi_ircconnectiontargetresolver.h"
 #include "kvi_dns.h"
-#include "kvi_locale.h"
-#include "kvi_ircserverdb.h"
-#include "kvi_proxydb.h"
+#include "KviLocale.h"
+#include "KviIrcServerDataBase.h"
+#include "KviProxyDataBase.h"
 #include "kvi_error.h"
 #include "kvi_out.h"
 #include "kvi_options.h"
@@ -39,7 +39,7 @@
 #include "kvi_frame.h"
 #include "kvi_mexlinkfilter.h"
 //#include "kvi_garbage.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_memmove.h"
 #include "kvi_debug.h"
 #include "kvi_ircconnection.h"

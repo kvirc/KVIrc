@@ -4,7 +4,7 @@
 //   Creation date : Thu May 10 2001 13:50:11 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,11 +25,11 @@
 #include "libkvitip.h"
 
 #include "kvi_module.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_app.h"
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 
 #include <QPushButton>
 #include <QFont>
@@ -135,7 +135,7 @@ bool KviTipWindow::openConfig(QString filename,bool bEnsureExists)
 		if(!KviFileUtils::fileExists(buffer))return false;
 	}
 
-	m_pConfig = new KviConfig(buffer,KviConfig::Read);
+	m_pConfig = new KviConfigurationFile(buffer,KviConfigurationFile::Read);
 
 	return true;
 }
@@ -153,8 +153,8 @@ void KviTipWindow::nextTip()
 {
 	if(!m_pConfig)
 	{
-		KviStr szLocale = KviLocale::localeName();
-		KviStr szFile;
+		KviCString szLocale = KviLocale::localeName();
+		KviCString szFile;
 		szFile.sprintf("libkvitip_%s.kvc",szLocale.ptr());
 		if(!openConfig(szFile.ptr(),true))
 		{
@@ -175,7 +175,7 @@ void KviTipWindow::nextTip()
 	uCurTip++;
 	if(uCurTip >= uNumTips)uCurTip = 0;
 
-	KviStr tmp(KviStr::Format,"%u",uCurTip);
+	KviCString tmp(KviCString::Format,"%u",uCurTip);
 	QString szTip = m_pConfig->readEntry(tmp.ptr(),__tr2qs("<b>Can't find any tip... :(</b>"));
 
 	//qDebug("REDECODED=%s",szTip.toUtf8().data());
@@ -189,8 +189,8 @@ void KviTipWindow::prevTip()
 {
 	if(!m_pConfig)
 	{
-		KviStr szLocale = KviLocale::localeName();
-		KviStr szFile;
+		KviCString szLocale = KviLocale::localeName();
+		KviCString szFile;
 		szFile.sprintf("libkvitip_%s.kvc",szLocale.ptr());
 		if(!openConfig(szFile.ptr(),true))
 		{
@@ -212,7 +212,7 @@ void KviTipWindow::prevTip()
 	if(uCurTip == 0)uCurTip = uNumTips-1;
 	else uCurTip--;
 
-	KviStr tmp(KviStr::Format,"%u",uCurTip);
+	KviCString tmp(KviCString::Format,"%u",uCurTip);
 	QString szTip = m_pConfig->readEntry(tmp.ptr(),__tr2qs("<b>Can't find any tip... :(</b>"));
 
 	//qDebug("REDECODED=%s",szTip.toUtf8().data());

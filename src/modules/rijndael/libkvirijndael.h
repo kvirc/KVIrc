@@ -7,7 +7,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2000 Till Bush (buti@geocities.com)
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,7 +29,7 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
-	#include "kvi_crypt.h"
+	#include "KviCryptEngine.h"
 	#include "rijndael.h"
 
 	class KviRijndaelEngine : public KviCryptEngine
@@ -43,10 +43,10 @@
 		Rijndael * m_pDecryptCipher;
 	public:
 		virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
-		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviStr &outBuffer);
-		virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviStr &plainText);
+		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviCString &outBuffer);
+		virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviCString &plainText);
 	protected:
-		virtual bool binaryToAscii(const char *,int,KviStr &){ return false; };
+		virtual bool binaryToAscii(const char *,int,KviCString &){ return false; };
 		virtual bool asciiToBinary(const char *,int *,char **){ return false; };
 		virtual int getKeyLen(){ return 32; };
 		virtual Rijndael::KeyLength getKeyLenId(){ return Rijndael::Key32Bytes; };
@@ -61,7 +61,7 @@
 		KviRijndaelHexEngine() : KviRijndaelEngine() {};
 		virtual ~KviRijndaelHexEngine(){};
 	protected:
-		virtual bool binaryToAscii(const char * inBuffer,int len,KviStr &outBuffer);
+		virtual bool binaryToAscii(const char * inBuffer,int len,KviCString &outBuffer);
 		virtual bool asciiToBinary(const char * inBuffer,int * len,char ** outBuffer);
 	};
 
@@ -104,7 +104,7 @@
 		KviRijndaelBase64Engine() : KviRijndaelEngine() {};
 		virtual ~KviRijndaelBase64Engine(){};
 	protected:
-		virtual bool binaryToAscii(const char * inBuffer,int len,KviStr &outBuffer);
+		virtual bool binaryToAscii(const char * inBuffer,int len,KviCString &outBuffer);
 		virtual bool asciiToBinary(const char * inBuffer,int * len,char ** outBuffer);
 	};
 
@@ -151,20 +151,20 @@
 		KviMircryptionEngine();
 		~KviMircryptionEngine();
 	protected:
-		KviStr m_szEncryptKey;
+		KviCString m_szEncryptKey;
 		bool m_bEncryptCBC;
-		KviStr m_szDecryptKey;
+		KviCString m_szDecryptKey;
 		bool m_bDecryptCBC;
 	public:
 		virtual bool isCryptographicEngine(){ return false; }; // we need to return false since it doesn't use the Qt::CTRL+P escape
 		virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
-		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviStr &outBuffer);
-		virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviStr &plainText);
+		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviCString &outBuffer);
+		virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviCString &plainText);
 	protected:
-		bool doDecryptECB(KviStr &encoded,KviStr &plain);
-		bool doDecryptCBC(KviStr &encoded,KviStr &plain);
-		bool doEncryptECB(KviStr &plain,KviStr &encoded);
-		bool doEncryptCBC(KviStr &plain,KviStr &encoded);
+		bool doDecryptECB(KviCString &encoded,KviCString &plain);
+		bool doDecryptCBC(KviCString &encoded,KviCString &plain);
+		bool doEncryptECB(KviCString &plain,KviCString &encoded);
+		bool doEncryptCBC(KviCString &plain,KviCString &encoded);
 	};
 
 #endif // COMPILE_CRYPT_SUPPORT

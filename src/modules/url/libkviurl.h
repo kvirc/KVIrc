@@ -24,8 +24,8 @@
 //
 //=============================================================================
 
-#include "kvi_locale.h"
-#include "kvi_config.h"
+#include "KviLocale.h"
+#include "KviConfigurationFile.h"
 #include "kvi_irctoolbar.h"
 #include "kvi_window.h"
 #include "kvi_tal_menubar.h"
@@ -105,7 +105,7 @@ class BanFrame : public QFrame
 public:
 	BanFrame(QWidget *parent=0, const char *name=0, bool banEnable = false);
 	~BanFrame();
-	void saveBans(KviConfig *cfg);
+	void saveBans(KviConfigurationFile *cfg);
 private:
 	QCheckBox     *m_pEnable;
 	QListWidget   *m_pBanList;

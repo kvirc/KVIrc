@@ -4,7 +4,7 @@
 //   Creation date : Mon May 27 2002 21:36:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,13 +25,13 @@
 
 
 #include "kvi_ssl.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 
-#include "kvi_thread.h"
+#include "KviThread.h"
 #include "kvi_memmove.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 
 #include <openssl/asn1.h>
 #include <openssl/err.h>
@@ -294,12 +294,12 @@ KviSSL::~KviSSL()
 
 	void * KviSSL::operator new(size_t tSize)
 	{
-		return kvi_malloc(tSize);
+		return KviMemory::allocate(tSize);
 	}
 
 	void KviSSL::operator delete(void * p)
 	{
-		kvi_free(p);
+		KviMemory::free(p);
 	}
 
 #endif
@@ -375,7 +375,7 @@ bool KviSSL::initSocket(kvi_socket_t fd)
 
 static int cb(char *buf, int size, int, void *u)
 {
-	KviStr * p = (KviStr *)u;
+	KviCString * p = (KviCString *)u;
 	int len = p->len();
 	if(len >= size)return 0;
 	kvi_memmove(buf,p->ptr(),len + 1);
@@ -444,7 +444,7 @@ unsigned long KviSSL::getLastError(bool bPeek)
 	return bPeek ? ERR_peek_error() : ERR_get_error();
 }
 
-bool KviSSL::getLastErrorString(KviStr &buffer,bool bPeek)
+bool KviSSL::getLastErrorString(KviCString &buffer,bool bPeek)
 {
 	unsigned long uErr = getLastError(bPeek);
 	if(uErr != 0)
@@ -552,9 +552,9 @@ KviSSLCipherInfo * KviSSL::getCurrentCipherInfo()
 
 KviSSLCertificate::KviSSLCertificate(X509 * x509)
 {
-	m_pSubject = new KviPointerHashTable<const char *,KviStr>(17);
+	m_pSubject = new KviPointerHashTable<const char *,KviCString>(17);
 	m_pSubject->setAutoDelete(true);
-	m_pIssuer = new KviPointerHashTable<const char *,KviStr>(17);
+	m_pIssuer = new KviPointerHashTable<const char *,KviCString>(17);
 	m_pIssuer->setAutoDelete(true);
 	m_pX509 = 0;
 	setX509(x509);
@@ -573,7 +573,7 @@ const char * KviSSLCertificate::getX509Base64()
 	BIO* mem = BIO_new(BIO_s_mem());
 	PEM_write_bio_X509(mem, m_pX509);
 	int iLen = BIO_get_mem_data(mem, &bptr);
-	char * szTmp = (char *) kvi_malloc(iLen+1);
+	char * szTmp = (char *) KviMemory::allocate(iLen+1);
 	kvi_fastmove(szTmp, bptr, iLen);
 	*(szTmp+iLen) = '\0';
 	BIO_free_all(mem);
@@ -590,12 +590,12 @@ const char * KviSSLCertificate::getX509Base64()
 
 	void * KviSSLCertificate::operator new(size_t tSize)
 	{
-		return kvi_malloc(tSize);
+		return KviMemory::allocate(tSize);
 	}
 
 	void KviSSLCertificate::operator delete(void * p)
 	{
-		kvi_free(p);
+		KviMemory::free(p);
 	}
 
 #endif
@@ -722,11 +722,11 @@ void KviSSLCertificate::extractIssuer()
 	splitX509String(m_pIssuer,t);
 }
 
-void KviSSLCertificate::splitX509String(KviPointerHashTable<const char *,KviStr> * dict,const char * t)
+void KviSSLCertificate::splitX509String(KviPointerHashTable<const char *,KviCString> * dict,const char * t)
 {
-	KviStr buf = t;
+	KviCString buf = t;
 	int cnt;
-	KviStr ** arr = buf.splitToArray('/',50,&cnt);
+	KviCString ** arr = buf.splitToArray('/',50,&cnt);
 	if(arr)
 	{
 		if(cnt > 0)
@@ -736,31 +736,31 @@ void KviSSLCertificate::splitX509String(KviPointerHashTable<const char *,KviStr>
 				int idx = arr[i]->findFirstIdx('=');
 				if(idx != -1)
 				{
-					KviStr szTok = arr[i]->left(idx);
+					KviCString szTok = arr[i]->left(idx);
 					arr[i]->cutLeft(idx + 1);
 					if(szTok.hasData() && arr[i]->hasData())
 					{
-						dict->replace(szTok.ptr(),new KviStr(arr[i]->ptr()));
+						dict->replace(szTok.ptr(),new KviCString(arr[i]->ptr()));
 					}
 				}
 			}
 		}
 
-		KviStr::freeArray(arr);
+		KviCString::freeArray(arr);
 	}
 }
 
 
-const char * KviSSLCertificate::dictEntry(KviPointerHashTable<const char *,KviStr> * dict,const char * entry)
+const char * KviSSLCertificate::dictEntry(KviPointerHashTable<const char *,KviCString> * dict,const char * entry)
 {
-	KviStr * t = dict->find(entry);
+	KviCString * t = dict->find(entry);
 	if(!t)return __tr("Unknown");
 	return t->ptr();
 }
 
 
 /*
-void KviSSLCertificate::getPKeyType(int type,KviStr &buffer)
+void KviSSLCertificate::getPKeyType(int type,KviCString &buffer)
 {
 	switch(type)
 	{
@@ -853,12 +853,12 @@ KviSSLCipherInfo::~KviSSLCipherInfo()
 
 	void * KviSSLCipherInfo::operator new(size_t tSize)
 	{
-		return kvi_malloc(tSize);
+		return KviMemory::allocate(tSize);
 	}
 
 	void KviSSLCipherInfo::operator delete(void * p)
 	{
-		kvi_free(p);
+		KviMemory::free(p);
 	}
 
 #endif

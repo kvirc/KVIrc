@@ -4,7 +4,7 @@
 //   Creation date : Tue Dec 26 2000 12:24:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,21 +28,21 @@
 #include "wizard.h"
 #include "dialog.h"
 
-#include "kvi_regusersdb.h"
-#include "kvi_locale.h"
-#include "kvi_ircmask.h"
+#include "KviRegisteredUserDataBase.h"
+#include "KviLocale.h"
+#include "KviIrcMask.h"
 #include "kvi_debug.h"
 #include "kvi_iconmanager.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
-#include "kvi_file.h"
+#include "KviFile.h"
 #include "kvi_filedialog.h"
 #include "kvi_msgbox.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_settings.h"
-#include "kvi_stringconversion.h"
+#include "KviStringConversion.h"
 #include "kvi_options.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_vbox.h"
 
@@ -817,7 +817,7 @@ void KviRegisteredUsersDialog::selectAllClicked()
 
 void KviRegisteredUsersDialog::importClicked()
 {
-	//KviStr buffer;
+	//KviCString buffer;
 	QString buffer;
 
 	if(!KviFileDialog::askForOpenFileName(buffer,__tr2qs_ctx("Choose a Filename - KVIrc","register")))return;

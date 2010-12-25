@@ -4,7 +4,7 @@
 //   Creation date : Sun Nov 11 03:13:45 2001 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,22 +27,22 @@
 #include "class_file.h"
 
 #include "kvi_settings.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 
 #define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
 
-#include "kvi_file.h"
-#include "kvi_fileutils.h"
-#include "kvi_locale.h"
+#include "KviFile.h"
+#include "KviFileUtils.h"
+#include "KviLocale.h"
 #include "kvi_error.h"
 #include "kvi_netutils.h"
 #include "kvi_dns.h"
 #include "kvi_error.h"
 #include "kvi_socket.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_memmove.h"
-#include "kvi_databuffer.h"
+#include "KviDataBuffer.h"
 
 #include <QByteArray>
 
@@ -316,7 +316,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_socket)
 	m_pFlushTimer=0;
 
 
-	if(m_pInBuffer)kvi_free(m_pInBuffer);
+	if(m_pInBuffer)KviMemory::free(m_pInBuffer);
 	if(m_pDelayTimer)delete m_pDelayTimer;
 	if(m_pDns)delete m_pDns;
 	if(m_pSn)delete m_pSn;
@@ -1099,7 +1099,7 @@ void KviKvsObject_socket::readNotifierFired(int)
 	{
 		m_uInBufferLen += KVI_IN_BUFFER_ALLOC_CHUNK;
 		//m_pInBuffer->resize(m_uInBufferLen);
-		m_pInBuffer = (char *)kvi_realloc(m_pInBuffer,m_uInBufferLen);
+		m_pInBuffer = (char *)KviMemory::reallocate(m_pInBuffer,m_uInBufferLen);
 	}
 
 	//int readLength = kvi_socket_recv(m_sock,m_pInBuffer->data() + m_uInDataLen,KVI_READ_CHUNK);
@@ -1179,7 +1179,7 @@ void KviKvsObject_socket::eatInData(unsigned int uLen)
 	if(uSpace > KVI_IN_BUFFER_ALLOC_CHUNK)
 	{
 		m_uInBufferLen -= KVI_IN_BUFFER_ALLOC_CHUNK;
-		m_pInBuffer = (char *)kvi_realloc(m_pInBuffer,m_uInBufferLen);
+		m_pInBuffer = (char *)KviMemory::reallocate(m_pInBuffer,m_uInBufferLen);
 	}
 }
 
@@ -1259,7 +1259,7 @@ void KviKvsObject_socket::reset()
 	}
 	if(m_pInBuffer)
 	{
-		kvi_free(m_pInBuffer);
+		KviMemory::free(m_pInBuffer);
 		m_pInBuffer = 0;
 	}
 	if(m_secondarySock)

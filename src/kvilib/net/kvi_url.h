@@ -6,7 +6,7 @@
 //   Creation date : Sat Aug 17 14:09:16 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,8 +24,8 @@
 //
 //=============================================================================
 
-#include "kvi_string.h"
-#include "kvi_heapobject.h"
+#include "KviCString.h"
+#include "KviHeapObject.h"
 #include "kvi_inttypes.h"
 
 class KVILIB_API KviUrl : public KviHeapObject

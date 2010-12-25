@@ -42,8 +42,8 @@
 */
 
 #include "kvi_settings.h"
-#include "kvi_pointerlist.h"
-#include "kvi_string.h"
+#include "KviPointerList.h"
+#include "KviCString.h"
 #include "kvi_window.h"
 
 #include <QString>
@@ -132,7 +132,7 @@ protected:
 	KviPointerList<QString> * m_pHistory;
 	int                       m_iCurHistoryIdx;
 
-	KviStr                    m_szSaveTextBuffer;
+	KviCString                    m_szSaveTextBuffer;
 
 	// Nick completion
 	KviUserListView         * m_pUserListView;
@@ -144,7 +144,7 @@ protected:
 	bool                      m_bLastCompletionFinished;
 
 	bool                      m_bUpdatesEnabled;
-	KviStr                    m_szAltKeyCode;
+	KviCString                    m_szAltKeyCode;
 	KviWindow               * m_pKviWindow;
 	QWidget                 * m_pInputParent;
 	KviTalPopupMenu         * m_pIconMenu;

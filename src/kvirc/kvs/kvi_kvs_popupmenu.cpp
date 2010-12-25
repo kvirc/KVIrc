@@ -4,7 +4,7 @@
 //   Creation date : Wed 07 Jan 2004 05:02:57 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,14 +23,14 @@
 //=============================================================================
 
 #include "kvi_kvs_popupmenu.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_iconmanager.h"
 #include "kvi_out.h"
 #include "kvi_app.h"
 #include "kvi_kvs_popupmanager.h"
 #include "kvi_console.h"
-#include "kvi_config.h"
-#include "kvi_cmdformatter.h"
+#include "KviConfigurationFile.h"
+#include "KviCommandFormatter.h"
 #include "kvi_options.h"
 
 // popup names
@@ -909,7 +909,7 @@ void KviKvsPopupMenu::itemClicked(int itemId)
 }
 
 
-void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
+void KviKvsPopupMenu::load(const QString &prefix,KviConfigurationFile * cfg)
 {
 	doClear();
 
@@ -1045,7 +1045,7 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 
 // FIXME: #warning "NOBODY EDITS THE POPUPS IN THE CONFIG!...A binary config would be faster and work better for sure here"
 
-void KviKvsPopupMenu::save(const QString & prefix,KviConfig * cfg)
+void KviKvsPopupMenu::save(const QString & prefix,KviConfigurationFile * cfg)
 {
 	int idx;
 

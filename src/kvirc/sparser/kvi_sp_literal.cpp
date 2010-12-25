@@ -29,24 +29,24 @@
 #include "kvi_window.h"
 #include "kvi_console.h"
 #include "kvi_out.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_ircsocket.h"
 #include "kvi_options.h"
-#include "kvi_ircmask.h"
+#include "KviIrcMask.h"
 #include "kvi_channel.h"
 #include "kvi_topicw.h"
 #include "kvi_frame.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_query.h"
 #include "kvi_userlistview.h"
 #include "kvi_antispam.h"
-#include "kvi_nickserv.h"
-#include "kvi_parameterlist.h"
-#include "kvi_ircuserdb.h"
+#include "KviNickServRuleSet.h"
+#include "KviParameterList.h"
+#include "KviIrcUserDataBase.h"
 #include "kvi_app.h"
-#include "kvi_regusersdb.h"
+#include "KviRegisteredUserDataBase.h"
 #include "kvi_debug.h"
-#include "kvi_time.h"
+#include "KviTimeUtils.h"
 #include "kvi_useraction.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
@@ -57,19 +57,19 @@
 #include "kvi_ircconnectionnetsplitdetectordata.h"
 #include "kvi_iconmanager.h"
 #include "kvi_lagmeter.h"
-#include "kvi_ircserver.h"
+#include "KviIrcServer.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_network.h"
+#include "KviNetwork.h"
 #include "kvi_settings.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "kvi_crypt.h"
+	#include "KviCryptEngine.h"
 	#include "kvi_cryptcontroller.h"
 #endif
 
 #include "kvi_kvs_script.h"
 
-//#include "kvi_regusersdb.h"
+//#include "KviRegisteredUserDataBase.h"
 //#include "kvi_iconmanager.h"
 #include <QDateTime>
 #include <QTextDocument>
@@ -449,8 +449,8 @@ void KviServerParser::parseLiteralQuit(KviIrcMessage *msg)
 
 			if(!bDuplicate)
 			{
-				KviStr sz1(aux,daSpace - aux);
-				KviStr sz2(daSpace + 1);
+				KviCString sz1(aux,daSpace - aux);
+				KviCString sz2(daSpace + 1);
 
 				QString szD1 = msg->connection()->decodeText(sz1.ptr());
 				QString szD2 = msg->connection()->decodeText(sz2.ptr());
@@ -717,7 +717,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 
 	PrivmsgIdentifyMsgCapState eCapState = IdentifyMsgCapNotUsed;
 
-	KviStr * pTrailing = msg->trailingString();
+	KviCString * pTrailing = msg->trailingString();
 	if(pTrailing)
 	{
 		if(msg->connection()->stateData()->identifyMsgCapabilityEnabled())
@@ -794,13 +794,13 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 		//						while(((*tmp) == ' ') || ((*tmp) == '\t'))tmp++;
 		//						if(*tmp)
 		//						{
-		//							KviStr file = tmp;
-		//							KviStr filePath;
+		//							KviCString file = tmp;
+		//							KviCString filePath;
 		//							m_pFrm->findMultimediaFileOffert(filePath,file);
 		//							if(filePath.hasData())
 		//							{
 		//								m_pFrm->activeWindow()->output(KVI_OUT_INTERNAL,__tr("%s requests previously offered file %s: sending (%s)"),talker.nick(),file.ptr(),filePath.ptr());
-		//								KviStr cmd(KviStr::Format,"DCC SEND %s %s",talker.nick(),filePath.ptr());
+		//								KviCString cmd(KviCString::Format,"DCC SEND %s %s",talker.nick(),filePath.ptr());
 		//								m_pFrm->m_pUserParser->parseUserCommand(cmd,m_pConsole);
 		//								return;
 
@@ -828,10 +828,10 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 			// spam message...
 			if(KVI_OPTION_BOOL(KviOption_boolUseAntiSpamOnPrivmsg))
 			{
-				KviStr * theMsg = msg->trailingString();
+				KviCString * theMsg = msg->trailingString();
 				if(theMsg)
 				{
-					KviStr spamWord;
+					KviCString spamWord;
 					if(kvi_mayBeSpam(theMsg,spamWord))
 					{
 						// FIXME: OnSpam ?
@@ -889,7 +889,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 			query->userAction(szNick,szUser,szHost,KVI_USERACTION_PRIVMSG);
 
 			// decrypt the message if needed
-			KviStr szBuffer;
+			KviCString szBuffer;
 			const char * txtptr;
 			int msgtype;
 
@@ -1034,7 +1034,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 		} else {
 			chan->userAction(szNick,szUser,szHost,KVI_USERACTION_PRIVMSG);
 
-			KviStr szBuffer; const char * txtptr; int msgtype;
+			KviCString szBuffer; const char * txtptr; int msgtype;
 			DECRYPT_IF_NEEDED(chan,msg->safeTrailing(),KVI_OUT_CHANPRIVMSG,KVI_OUT_CHANPRIVMSGCRYPTED,szBuffer,txtptr,msgtype)
 
 			QString szMsgText = chan->decodeText(txtptr);
@@ -1079,7 +1079,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 
 	// FIXME: "DEDICATED CTCP WINDOW ?"
 
-	KviStr * pTrailing = msg->trailingString();
+	KviCString * pTrailing = msg->trailingString();
 	if(pTrailing)
 	{
 		if(*(pTrailing->ptr()) == 0x01){
@@ -1206,10 +1206,10 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 			// spam message...
 			if(KVI_OPTION_BOOL(KviOption_boolUseAntiSpamOnNotice))
 			{
-				KviStr * theMsg = msg->trailingString(); // FIXME
+				KviCString * theMsg = msg->trailingString(); // FIXME
 				if(theMsg)
 				{
-					KviStr spamWord;
+					KviCString spamWord;
 					if(kvi_mayBeSpam(theMsg,spamWord))
 					{
 						// FIXME: OnSpam ?
@@ -1266,7 +1266,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 			// ok, we have the query. Trigger the user action anyway
 			query->userAction(szNick,szUser,szHost,KVI_USERACTION_NOTICE);
 			// decrypt it if needed
-			KviStr szBuffer; const char * txtptr; int msgtype;
+			KviCString szBuffer; const char * txtptr; int msgtype;
 			DECRYPT_IF_NEEDED(query,msg->safeTrailing(),KVI_OUT_QUERYNOTICE,KVI_OUT_QUERYNOTICECRYPTED,szBuffer,txtptr,msgtype)
 			QString szMsgText = query->decodeText(txtptr);
 			// trigger the script event and eventually kill the output
@@ -1380,7 +1380,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 		//CHANNEL NOTICE
 		chan->userAction(szNick,szUser,szHost,KVI_USERACTION_NOTICE);
 
-		KviStr szBuffer; const char * txtptr; int msgtype;
+		KviCString szBuffer; const char * txtptr; int msgtype;
 		DECRYPT_IF_NEEDED(chan,msg->safeTrailing(),KVI_OUT_CHANNELNOTICE,KVI_OUT_CHANNELNOTICECRYPTED,szBuffer,txtptr,msgtype)
 		QString szMsgText = chan->decodeText(txtptr);
 
@@ -1694,12 +1694,12 @@ void KviServerParser::parseLiteralMode(KviIrcMessage *msg)
 	//	if(!source.hasHost())
 	//	{
 	//		// This is a server or a channel service
-	//		KviStr snick = source.nick();
+	//		KviCString snick = source.nick();
 	//		if(snick.contains('.'))source.setHost(source.nick()); // this is a server
 	//	}
 
 	QString szTarget = msg->connection()->decodeText(msg->safeParam(0));
-	KviStr modefl(msg->safeParam(1));
+	KviCString modefl(msg->safeParam(1));
 
 	if(IS_ME(msg,szTarget))
 	{
@@ -1721,7 +1721,7 @@ void KviServerParser::parseLiteralMode(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUser,const QString &szHost,KviChannel * chan,KviStr &modefl,KviIrcMessage *msg,int curParam)
+void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUser,const QString &szHost,KviChannel * chan,KviCString &modefl,KviIrcMessage *msg,int curParam)
 {
 	bool bSet = true;
 	// bIsMultiMode: +snt
@@ -2238,6 +2238,6 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 void KviServerParser::parseLiteralAuthenticate(KviIrcMessage *msg)
 {
 	// :AUTHENTICATE +
-	KviStr szAuth(msg->safeParam(0));
+	KviCString szAuth(msg->safeParam(0));
 	msg->connection()->handleAuthenticate(szAuth);
 }

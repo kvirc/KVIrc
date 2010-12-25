@@ -6,7 +6,7 @@
 //   Creation date : Tue Sep 24 09 2000 15:06:12 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,11 +29,11 @@
 #include "thread.h"
 
 #include "kvi_window.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_sockettype.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 #include "kvi_filetransfer.h"
-#include "kvi_time.h"
+#include "KviTimeUtils.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_vbox.h"
@@ -53,7 +53,7 @@ class KviTalPopupMenu;
 
 typedef struct _KviDccSendThreadOptions
 {
-	KviStr       szFileName;
+	KviCString       szFileName;
 	quint64      uStartPosition;
 	int          iPacketSize;
 	int          iIdleStepLengthInMSec;
@@ -101,7 +101,7 @@ protected:
 typedef struct _KviDccRecvThreadOptions
 {
 	bool         bResume;
-	KviStr       szFileName;
+	KviCString       szFileName;
 	quint64      uTotalFileSize;
 	int          iIdleStepLengthInMSec;
 	bool         bSendZeroAck;
@@ -179,8 +179,8 @@ private:
 	KviDccDescriptor       * m_pDescriptor;
 	KviDccMarshal          * m_pMarshal;
 
-	KviStr                   m_szTarget;
-	KviStr                   m_szDccType;
+	KviCString                   m_szTarget;
+	KviCString                   m_szDccType;
 	QString                  m_szTransferIdString;
 
 	QString                  m_szStatusString;

@@ -6,7 +6,7 @@
 //   Creation date : Sun Jun 25 2000 15:00:20 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,10 +29,10 @@
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_window.h"
 #include "kvi_ircsocket.h"
-#include "kvi_ircserver.h"
-#include "kvi_string.h"
+#include "KviIrcServer.h"
+#include "KviCString.h"
 #include "kvi_irccontext.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 #include "kvi_userlistview.h"
 #include "kvi_themedcombobox.h"
 
@@ -112,8 +112,8 @@ protected:
 	//void socketStateChange();
 	//void registerLinkMonitor(KviIrcSocketMonitor * m);
 	//void unregisterLinkMonitor(KviIrcSocketMonitor * m);
-	virtual void loadProperties(KviConfig * cfg);
-	virtual void saveProperties(KviConfig * cfg);
+	virtual void loadProperties(KviConfigurationFile * cfg);
+	virtual void saveProperties(KviConfigurationFile * cfg);
 
 	void destroyConnection();
 	// internal helper for applyHighlighting

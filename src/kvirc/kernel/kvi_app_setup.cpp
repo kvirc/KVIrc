@@ -4,7 +4,7 @@
 //   Creation date : Fri Apr 2 1999 02:38:05 by Szymon Stefanek
 //
 //   This file is part of the Kvirc irc client distribution
-//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -32,12 +32,12 @@
 #include "kvi_window.h"
 #include "kvi_frame.h"
 #include "kvi_app.h"
-#include "kvi_fileutils.h"
-#include "kvi_locale.h"
+#include "KviFileUtils.h"
+#include "KviLocale.h"
 #include "kvi_msgbox.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_iconmanager.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <shlwapi.h>
@@ -315,8 +315,8 @@ bool KviApp::checkUriAssociations(const char * pcProto)
 	pcBuffer = (char*)malloc(len*sizeof(char));
 	HKEY hKey;
 
-	KviStr szStoredKey = pcProto;
-	KviStr szKey = szStoredKey;
+	KviCString szStoredKey = pcProto;
+	KviCString szKey = szStoredKey;
 
 	len = QUERY_BUFFER;
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,szKey,0,KEY_READ,&hKey) != ERROR_SUCCESS)
@@ -423,8 +423,8 @@ void KviApp::setupUriAssociations(const char * pcProto)
 	HKEY hKey;
 	DWORD err;
 
-	KviStr szStoredKey = pcProto;
-	KviStr szKey = szStoredKey;
+	KviCString szStoredKey = pcProto;
+	KviCString szKey = szStoredKey;
 
 	QByteArray tmp;
 	QString szAppPath = applicationFilePath();
@@ -671,7 +671,7 @@ bool KviApp::findLocalKvircDirectory()
 	}
 
 	//If the file exists, read the first non empty line.
-	KviConfig cfgx(szF,KviConfig::Read);
+	KviConfigurationFile cfgx(szF,KviConfigurationFile::Read);
 
 	cfgx.setGroup("Main");
 	m_szLocalKvircDir = cfgx.readEntry("LocalKvircDirectory","");
@@ -848,7 +848,7 @@ void KviApp::saveKvircDirectory()
 	}
 	//FIXME: LOCALE BROKEN!!!
 
-	KviConfig cfgx(szF,KviConfig::Write);
+	KviConfigurationFile cfgx(szF,KviConfigurationFile::Write);
 
 	cfgx.setGroup("Main");
 	cfgx.writeEntry("LocalKvircDirectory",m_szLocalKvircDir);

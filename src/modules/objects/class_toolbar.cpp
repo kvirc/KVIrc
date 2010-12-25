@@ -28,7 +28,7 @@
 #include "kvi_debug.h"
 #include "kvi_tal_toolbar.h"
 #include "kvi_tal_mainwindow.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_iconmanager.h"
 #include "class_mainwindow.h"
 

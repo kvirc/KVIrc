@@ -4,7 +4,7 @@
 //   Creation date : Mon Nov 13 2000 15:22:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,9 +26,9 @@
 #define _KVI_SELECTORS_CPP_
 
 #include "kvi_selectors.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_options.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_filedialog.h"
 #include "kvi_kvs_script.h"
 #include "kvi_tal_popupmenu.h"
@@ -86,7 +86,7 @@ KviUIntSelector::KviUIntSelector(QWidget * par,const QString & txt,unsigned int 
 	m_pSpinBox->setMinimum(m_uLowBound);
 	m_pSpinBox->setMaximum(m_uHighBound);
 
-	//KviStr tmp(KviStr::Format,"%u",bShortInt ? (unsigned int) *((unsigned short int *)pOption) : *pOption);
+	//KviCString tmp(KviCString::Format,"%u",bShortInt ? (unsigned int) *((unsigned short int *)pOption) : *pOption);
 	//m_pLineEdit->setText(tmp.ptr());
 	m_pSpinBox->setValue(bShortInt ? (unsigned int) *((unsigned short int *)pOption) : *pOption);
 
@@ -106,7 +106,7 @@ void KviUIntSelector::setSuffix(const QString & txt)
 
 void KviUIntSelector::commit()
 {
-	KviStr tmp = m_pSpinBox->cleanText();
+	KviCString tmp = m_pSpinBox->cleanText();
 	bool bOk;
 	unsigned int val = tmp.toUInt(&bOk);
 	if(!bOk)val = m_uDefault;
@@ -455,7 +455,7 @@ void KviFileSelector::setSelection(const QString &szSelection)
 
 void KviFileSelector::select()
 {
-	//KviStr tmp;
+	//KviCString tmp;
 	QString tmp = *m_pOption;
 	if(m_uFlags & ChooseSaveFileName)
 	{

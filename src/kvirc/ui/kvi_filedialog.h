@@ -6,7 +6,7 @@
 //   Creation date : Mon Nov 20 2000 03:52:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -35,7 +35,7 @@
 #endif
 
 #include "kvi_settings.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_tal_filedialog.h"
 
 #include <QStringList>

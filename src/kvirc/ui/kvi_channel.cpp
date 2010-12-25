@@ -4,7 +4,7 @@
 //   Creation date : Tue Aug  1 2000 02:20:22 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,18 +28,18 @@
 #include "kvi_ircview.h"
 #include "kvi_input.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_topicw.h"
 #include "kvi_ircsocket.h"
 #include "kvi_out.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_windowlist.h"
 #include "kvi_frame.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_maskeditor.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_settings.h"
-#include "kvi_parameterlist.h"
+#include "KviParameterList.h"
 #include "kvi_modeeditor.h"
 #include "kvi_app.h"
 #include "kvi_useraction.h"
@@ -51,14 +51,14 @@
 #include "kvi_defaults.h"
 #include "kvi_sparser.h"
 #include "kvi_modew.h"
-#include "kvi_mirccntrl.h"
-#include "kvi_pointerhashtable.h"
+#include "KviMircCntrl.h"
+#include "KviPointerHashTable.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_tal_popupmenu.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "kvi_crypt.h"
+	#include "KviCryptEngine.h"
 	#include "kvi_cryptcontroller.h"
 #endif
 
@@ -342,7 +342,7 @@ void KviChannel::getConfigGroupName(QString & szBuffer)
 // 	}
 }
 
-void KviChannel::saveProperties(KviConfig * cfg)
+void KviChannel::saveProperties(KviConfigurationFile * cfg)
 {
 	KviWindow::saveProperties(cfg);
 	cfg->writeEntry("TopSplitter",m_pTopSplitter->sizes());
@@ -358,7 +358,7 @@ void KviChannel::saveProperties(KviConfig * cfg)
 	cfg->writeEntry("ToolButtonsHidden",buttonContainer()->isHidden());
 }
 
-void KviChannel::loadProperties(KviConfig * cfg)
+void KviChannel::loadProperties(KviConfigurationFile * cfg)
 {
 	int iWidth = width();
 	QList<int> def;
@@ -1177,7 +1177,7 @@ void KviChannel::ownMessage(const QString & szBuffer, bool bUserFeedback)
 		{
 			if(*d != KVI_TEXT_CRYPTESCAPE)
 			{
-				KviStr encrypted;
+				KviCString encrypted;
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(maxMsgLen);
 				switch(cryptSessionInfo()->m_pEngine->encrypt(d,encrypted))
 				{
@@ -1749,7 +1749,7 @@ void KviChannel::internalMask(const QString & szMask, bool bAdd, const QString &
 void KviChannel::updateModeLabel()
 {
 	QString szTip = __tr2qs("<b>Channel mode:</b>");
-	KviStr szMod = m_szChannelMode;
+	KviCString szMod = m_szChannelMode;
 	const char * pcAux = szMod.ptr();
 	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
 

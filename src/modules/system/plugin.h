@@ -26,7 +26,7 @@
 //=============================================================================
 
 #include "kvi_module.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 #include <QLibrary>
 
 typedef int (*plugin_function)(int argc, char* argv[], char ** buffer);

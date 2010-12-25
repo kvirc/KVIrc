@@ -7,7 +7,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2002 Juanjo Álvarez (juanjux@yahoo.es)
-//   Copyright (C) 2002-2008 Szymon Stefanek (kvirc@tin.it)
+//   Copyright (C) 2002-2010 Szymon Stefanek (kvirc@tin.it)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,7 +27,7 @@
 
 
 #include "kvi_window.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 
 #include <QObject>
 #include <QStringList>
@@ -40,7 +40,7 @@ public:
 	SPasteController(KviWindow * w,int id);
 	~SPasteController();
 
-	//bool pasteFileInit(KviStr * fileName);
+	//bool pasteFileInit(KviCString * fileName);
 	bool pasteFileInit(QString &fileName);
 	bool pasteClipboardInit(void);
 	int getId(void){return m_pId;};

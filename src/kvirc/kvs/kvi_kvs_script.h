@@ -31,12 +31,12 @@
 */
 
 #include "kvi_settings.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_window.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 #include "kvi_kvs_variant.h"
 #include "kvi_kvs_variantlist.h"
-#include "kvi_heapobject.h"
+#include "KviHeapObject.h"
 
 class KviKvsTreeNodeInstruction;
 class KviKvsExtendedRunTimeData;

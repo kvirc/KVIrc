@@ -27,9 +27,9 @@
 
 #include "kvi_module.h"
 #include "kvi_debug.h"
-#include "kvi_locale.h"
-#include "kvi_mirccntrl.h"
-#include "kvi_pointerlist.h"
+#include "KviLocale.h"
+#include "KviMircCntrl.h"
+#include "KviPointerList.h"
 
 #include <cryptopp/aes.h>
 #include <cryptopp/blowfish.h>
@@ -129,7 +129,7 @@ bool KviRijndaelEngine::init(const char * pcEncKey, int iEncKeyLen, const char *
 		return true;
 }
 
-KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * pcPlainText, KviStr & szOutBuffer)
+KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * pcPlainText, KviCString & szOutBuffer)
 {
 	std::string szCipher;
 	// byte is a typedef by Crypto++ for unsigned char.
@@ -186,7 +186,7 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * pcPlainTex
 	return KviCryptEngine::Encrypted;
 }
 
-KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * pcInBuffer, KviStr & szPlainText)
+KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * pcInBuffer, KviCString & szPlainText)
 {
 	std::string szPlain;
 	byte key[m_szDecKey.size()],iv[CryptoPP::AES::BLOCKSIZE];
@@ -347,7 +347,7 @@ bool KviMircryptionEngine::init(const char * pcEncKey, int iEncKeyLen, const cha
 	return true;
 }
 
-KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * pcPlainText, KviStr & szOutBuffer)
+KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * pcPlainText, KviCString & szOutBuffer)
 {
 	std::string szCipher;
 	byte key[m_szEncKey.size()], iv[CryptoPP::Blowfish::BLOCKSIZE];
@@ -399,7 +399,7 @@ KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * pcPlain
 	return KviCryptEngine::Encrypted;
 }
 
-KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * pcInBuffer, KviStr & szPlainText)
+KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * pcInBuffer, KviCString & szPlainText)
 {
 	std::string szPlain;
 	std::string szIn = pcInBuffer;
@@ -603,7 +603,7 @@ KVIRC_MODULE(
 	"Rijndael crypt engine",
 	"4.0.1",
 	"Copyright ©      2009 Kai Wasserbäch <debian@carbon-project.org>" \
-	"          © 2000-2008 Szymon Stefanek <pragma at kvirc dot net>",
+	"          © 2000-2010 Szymon Stefanek <pragma at kvirc dot net>",
 	"Exports the rijndael crypt engine",
 	rijndael_module_init,
 	rijndael_module_can_unload,

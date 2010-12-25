@@ -27,10 +27,10 @@
 #include "class_widget.h"
 
 #include "class_memorybuffer.h"
-#include "kvi_animatedpixmap.h"
+#include "KviAnimatedPixmap.h"
 
 #include "kvi_debug.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 #include <QFile>
 

@@ -4,7 +4,7 @@
 //   Creation date : Thu Jan 31 2002 22:50:12 GMT by Szymon Stefanek
 //
 //   This config is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma@kvirc.net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma@kvirc.net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,14 +23,14 @@
 //=============================================================================
 
 #include "kvi_module.h"
-#include "kvi_string.h"
-#include "kvi_config.h"
-#include "kvi_fileutils.h"
+#include "KviCString.h"
+#include "KviConfigurationFile.h"
+#include "KviFileUtils.h"
 #include "kvi_app.h"
-#include "kvi_locale.h"
-#include "kvi_pointerhashtable.h"
+#include "KviLocale.h"
+#include "KviPointerHashTable.h"
 
-static KviPointerHashTable<QString,KviConfig> * g_pConfigDict = 0;
+static KviPointerHashTable<QString,KviConfigurationFile> * g_pConfigDict = 0;
 static int g_iNextConfigId = 0;
 
 /*
@@ -89,15 +89,15 @@ static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szMode)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig::FileMode fileMode;
+	KviConfigurationFile::FileMode fileMode;
 
 	if(szMode.contains('r'))
 	{
-		if(szMode.contains('w'))fileMode = KviConfig::ReadWrite;
-		else fileMode = KviConfig::Read;
+		if(szMode.contains('w'))fileMode = KviConfigurationFile::ReadWrite;
+		else fileMode = KviConfigurationFile::Read;
 	} else {
-		if(szMode.contains('w'))fileMode = KviConfig::Write;
-		else fileMode = KviConfig::ReadWrite;
+		if(szMode.contains('w'))fileMode = KviConfigurationFile::Write;
+		else fileMode = KviConfigurationFile::ReadWrite;
 	}
 
 	KviFileUtils::adjustFilePath(szFile);
@@ -106,13 +106,13 @@ static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	if(KviFileUtils::isAbsolutePath(szFile))szAbsFile = szFile;
 	else g_pApp->getLocalKvircDirectory(szAbsFile,KviApp::ConfigScripts,szFile,true);
 
-	KviPointerHashTableIterator<QString,KviConfig> it(*g_pConfigDict);
+	KviPointerHashTableIterator<QString,KviConfigurationFile> it(*g_pConfigDict);
 	while(it.current())
 	{
 		if(KviQString::equalCI(it.current()->fileName(),szAbsFile))
 		{
 			c->returnValue()->setString(it.currentKey());
-			if(it.current()->readOnly() && (fileMode & KviConfig::Write))
+			if(it.current()->readOnly() && (fileMode & KviConfigurationFile::Write))
 			{
 				it.current()->setReadOnly(false);
 			}
@@ -121,7 +121,7 @@ static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 		++it;
 	}
 
-	KviConfig * cfg = new KviConfig(szAbsFile,fileMode);
+	KviConfigurationFile * cfg = new KviConfigurationFile(szAbsFile,fileMode);
 	g_iNextConfigId++;
 	QString tmp = QString("%1").arg(g_iNextConfigId);
 	g_pConfigDict->insert(tmp,cfg);
@@ -162,7 +162,7 @@ static bool config_kvs_fnc_id(KviKvsModuleFunctionCall * c)
 	if(KviFileUtils::isAbsolutePath(szFile))szAbsFile = szFile;
 	else g_pApp->getLocalKvircDirectory(szAbsFile,KviApp::ConfigScripts,szFile,true);
 
-	KviPointerHashTableIterator<QString,KviConfig> it(*g_pConfigDict);
+	KviPointerHashTableIterator<QString,KviConfigurationFile> it(*g_pConfigDict);
 	while(it.current())
 	{
 		if(KviQString::equalCI(it.current()->fileName(),szAbsFile))
@@ -210,7 +210,7 @@ static bool config_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("default",KVS_PT_STRING,KVS_PF_OPTIONAL,szDefault)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -246,7 +246,7 @@ static bool config_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -284,7 +284,7 @@ static bool config_kvs_fnc_readonly(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -322,7 +322,7 @@ static bool config_kvs_fnc_filename(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -359,7 +359,7 @@ static bool config_kvs_fnc_hassection(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szSect)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -395,11 +395,11 @@ static bool config_kvs_fnc_sectionlist(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
-		KviConfigIterator it(*(cfg->dict()));
+		KviConfigurationFileIterator it(*(cfg->dict()));
 		KviKvsArray* pArray = new KviKvsArray();
 		int id=0;
 		while(it.current())
@@ -439,14 +439,14 @@ static bool config_kvs_fnc_keylist(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
-		KviConfigGroup * d = cfg->dict()->find(cfg->group());
+		KviConfigurationFileGroup * d = cfg->dict()->find(cfg->group());
 		if(!d)return true;
 
-		KviConfigGroupIterator it(*d);
+		KviConfigurationFileGroupIterator it(*d);
 
 		KviKvsArray* pArray = new KviKvsArray();
 		int id=0;
@@ -487,7 +487,7 @@ static bool config_kvs_fnc_filelist(KviKvsModuleFunctionCall * c)
 	KviKvsArray* pArray = new KviKvsArray();
 	int id=0;
 
-	KviPointerHashTableIterator<QString,KviConfig> it(*g_pConfigDict);
+	KviPointerHashTableIterator<QString,KviConfigurationFile> it(*g_pConfigDict);
 	while(it.current())
 	{
 		pArray->set(id++, new KviKvsVariant(it.currentKey()));
@@ -527,7 +527,7 @@ static bool config_kvs_cmd_close(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -582,7 +582,7 @@ static bool config_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -627,7 +627,7 @@ static bool config_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -671,7 +671,7 @@ static bool config_kvs_cmd_clearsection(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("section",KVS_PT_STRING,0,szSect)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -721,7 +721,7 @@ static bool config_kvs_cmd_write(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("value",KVS_PT_STRING,0,szVal)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -767,7 +767,7 @@ static bool config_kvs_cmd_setsection(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("section",KVS_PT_STRING,0,szSect)
 	KVSM_PARAMETERS_END(c)
 
-	KviConfig * cfg = g_pConfigDict->find(szId);
+	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -839,7 +839,7 @@ static bool config_kvs_cmd_setsection(KviKvsModuleCommandCall * c)
 
 static bool config_module_init(KviModule * m)
 {
-	g_pConfigDict = new KviPointerHashTable<QString,KviConfig>;
+	g_pConfigDict = new KviPointerHashTable<QString,KviConfigurationFile>;
 	g_pConfigDict->setAutoDelete(true);
 
 	KVSM_REGISTER_FUNCTION(m,"open",config_kvs_fnc_open);

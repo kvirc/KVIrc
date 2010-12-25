@@ -26,9 +26,9 @@
 
 #include "kvi_app.h"
 #include "kvi_kvs.h"
-#include "kvi_config.h"
-#include "kvi_locale.h"
-#include "kvi_miscutils.h"
+#include "KviConfigurationFile.h"
+#include "KviLocale.h"
+#include "KviMiscUtils.h"
 #include "kvi_actionmanager.h"
 #include "kvi_iconmanager.h"
 #include "kvi_customtoolbarmanager.h"
@@ -84,7 +84,7 @@ bool KviDefaultScriptManager::isDefscriptUpToDate()
 {
 	QString szConfig, szTmp;
 	g_pApp->getGlobalKvircDirectory(szConfig,KviApp::DefScript,"default.kvc");
-	KviConfig * pCfg = new KviConfig(szConfig,KviConfig::Read);
+	KviConfigurationFile * pCfg = new KviConfigurationFile(szConfig,KviConfigurationFile::Read);
 
 	szTmp = pCfg->readEntry("Date");
 	QDate cfgDate = QDate::fromString(szTmp,"yyyy-MM-dd");
@@ -125,7 +125,7 @@ void KviDefaultScriptManager::restoreInternal()
 {
 	QString szConfig, szTmp;
 	g_pApp->getGlobalKvircDirectory(szConfig,KviApp::DefScript,"default.kvc");
-	KviConfig * pCfg = new KviConfig(szConfig,KviConfig::Read);
+	KviConfigurationFile * pCfg = new KviConfigurationFile(szConfig,KviConfigurationFile::Read);
 
 	m_szDate = pCfg->readEntry("Date");
 
@@ -211,7 +211,7 @@ bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszE
 	if(pszError)
 		*pszError = "";
 
-	KviConfig * pCfg = new KviConfig(szConfig,KviConfig::Read);
+	KviConfigurationFile * pCfg = new KviConfigurationFile(szConfig,KviConfigurationFile::Read);
 
 	szTmp = "Date";
 	szTmp2 = pCfg->readEntry(szTmp);
@@ -266,7 +266,7 @@ bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszE
 
 void KviDefaultScriptManager::load(const QString & szConfigFile)
 {
-	KviConfig cfg(szConfigFile,KviConfig::Read);
+	KviConfigurationFile cfg(szConfigFile,KviConfigurationFile::Read);
 	loadInternal(&cfg);
 }
 
@@ -274,7 +274,7 @@ void KviDefaultScriptManager::load(const QString & szConfigFile)
 	if(__var.isEmpty()) \
 		__var = __default;
 
-void KviDefaultScriptManager::loadInternal(KviConfig * pCfg)
+void KviDefaultScriptManager::loadInternal(KviConfigurationFile * pCfg)
 {
 	QString szTmp;
 	QString szDate = QDate::currentDate().toString("yyyy-MM-dd");
@@ -322,12 +322,12 @@ void KviDefaultScriptManager::loadInternal(KviConfig * pCfg)
 
 void KviDefaultScriptManager::save(const QString & szConfigFile)
 {
-	KviConfig cfg(szConfigFile,KviConfig::Write);
+	KviConfigurationFile cfg(szConfigFile,KviConfigurationFile::Write);
 	cfg.clear();
 	saveInternal(&cfg);
 }
 
-void KviDefaultScriptManager::saveInternal(KviConfig * pCfg)
+void KviDefaultScriptManager::saveInternal(KviConfigurationFile * pCfg)
 {
 	QString szTmp;
 

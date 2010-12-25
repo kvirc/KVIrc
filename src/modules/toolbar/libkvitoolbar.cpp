@@ -4,7 +4,7 @@
 //   Creation date : Wed 6 Nov 22:51:59 2002 GMT by Szymon Stefanek
 //
 //   This toolbar is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,11 +23,11 @@
 //=============================================================================
 
 #include "kvi_module.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_window.h"
 #include "kvi_app.h"
 #include "kvi_error.h"
-#include "kvi_cmdformatter.h"
+#include "KviCommandFormatter.h"
 #include "kvi_customtoolbar.h"
 #include "kvi_customtoolbardescriptor.h"
 #include "kvi_customtoolbarmanager.h"

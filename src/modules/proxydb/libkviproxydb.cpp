@@ -24,8 +24,8 @@
 
 #include "kvi_module.h"
 #include "kvi_app.h"
-#include "kvi_locale.h"
-#include "kvi_proxydb.h"
+#include "KviLocale.h"
+#include "KviProxyDataBase.h"
 
 #include <QString>
 #include <QHostAddress>

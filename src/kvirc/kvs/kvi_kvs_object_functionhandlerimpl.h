@@ -6,7 +6,7 @@
 //   Creation date : Sun 24 Apr 2005 04:01:14 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,7 +29,7 @@
 #include "kvi_kvs_object.h"
 #include "kvi_kvs_object_class.h"
 #include "kvi_kvs_object_functionhandler.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 
 class KviKvsObjectClass;
 class KviKvsScript;

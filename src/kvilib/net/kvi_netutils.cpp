@@ -4,7 +4,7 @@
 //   Creation date : Sun Jun 18 2000 18:37:27 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -46,7 +46,7 @@
 #endif
 
 #include <sys/types.h>
-#include "kvi_qstring.h"
+#include "KviQString.h"
 
 #ifdef COMPILE_GET_INTERFACE_ADDRESS
 	#include <sys/ioctl.h>
@@ -698,7 +698,7 @@ KviSockaddr::KviSockaddr(const char * szIpAddress,kvi_u32_t uPort,bool bIPv6,boo
 
 	hints.ai_protocol = 0;
 	m_pData = 0;
-	KviStr szPort(KviStr::Format,"%u",uPort);
+	KviCString szPort(KviCString::Format,"%u",uPort);
 	getaddrinfo(szIpAddress,szPort.ptr(),&hints,&m_pData);
 }
 
@@ -716,7 +716,7 @@ KviSockaddr::KviSockaddr(kvi_u32_t uPort,bool bIPv6,bool bUdp) // passive sockad
 	hints.ai_socktype = bUdp ? SOCK_DGRAM : SOCK_STREAM;
 	hints.ai_protocol = 0;
 	m_pData = 0;
-	KviStr szPort(KviStr::Format,"%u",uPort);
+	KviCString szPort(KviCString::Format,"%u",uPort);
 	getaddrinfo(0,szPort.ptr(),&hints,&m_pData);
 }
 

@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_socket.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 
 #include <QSocketNotifier>
 #include <QTimer>

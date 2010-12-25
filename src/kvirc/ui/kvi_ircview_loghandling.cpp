@@ -28,10 +28,10 @@
 
 #include "kvi_ircview.h"
 #include "kvi_ircviewprivate.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_options.h"
 #include "kvi_out.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_window.h"
 
 #ifdef COMPILE_ZLIB_SUPPORT

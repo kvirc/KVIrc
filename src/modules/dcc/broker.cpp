@@ -4,7 +4,7 @@
 //   Creation date : Tue Sep 19 09 2000 10:21:54 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -40,14 +40,14 @@
 
 #include "kvi_app.h"
 #include "kvi_frame.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_options.h"
 #include "kvi_console.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_out.h"
-#include "kvi_mediatype.h"
+#include "KviMediaType.h"
 #include "kvi_ircconnection.h"
-#include "kvi_sharedfiles.h"
+#include "KviSharedFilesManager.h"
 
 #include <QFileInfo>
 #include <QString>
@@ -319,7 +319,7 @@ void KviDccBroker::executeChat(KviDccBox *box,KviDccDescriptor * dcc)
 		dcc->setConsole(g_pApp->activeConsole());
 	}
 
-	KviStr szSubProto = dcc->szType;
+	KviCString szSubProto = dcc->szType;
 	szSubProto.toLower();
 
 	QString tmp = QString("dcc: %1 %2@%3:%4").arg(szSubProto.ptr(), dcc->szNick, dcc->szIp, dcc->szPort);
@@ -373,7 +373,7 @@ void KviDccBroker::activeVoiceExecute(KviDccBox *box,KviDccDescriptor * dcc)
 		dcc->setConsole(g_pApp->activeConsole());
 	}
 
-	KviStr tmp(KviStr::Format,"dcc: voice %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
+	KviCString tmp(KviCString::Format,"dcc: voice %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
 	KviDccVoice * v = new KviDccVoice(dcc->console()->frame(),dcc,tmp.ptr());
 
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : \
@@ -393,7 +393,7 @@ void KviDccBroker::activeVoiceExecute(KviDccBox *box,KviDccDescriptor * dcc)
 
 void KviDccBroker::passiveVoiceExecute(KviDccDescriptor * dcc)
 {
-	KviStr tmp(KviStr::Format,"dcc: voice %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
+	KviCString tmp(KviCString::Format,"dcc: voice %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
 	KviDccVoice * v = new KviDccVoice(dcc->console()->frame(),dcc,tmp.ptr());
 	//#warning "Create minimized dcc voice ?... or maybe it's too much ? :)"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
@@ -443,7 +443,7 @@ void KviDccBroker::activeVideoExecute(KviDccBox *box,KviDccDescriptor * dcc)
 		dcc->setConsole(g_pApp->activeConsole());
 	}
 
-	KviStr tmp(KviStr::Format,"dcc: video %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
+	KviCString tmp(KviCString::Format,"dcc: video %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
 	KviDccVideo * v = new KviDccVideo(dcc->console()->frame(),dcc,tmp.ptr());
 
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : \
@@ -468,7 +468,7 @@ void KviDccBroker::activeVideoExecute(KviDccBox *,KviDccDescriptor *)
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 void KviDccBroker::passiveVideoExecute(KviDccDescriptor * dcc)
 {
-	KviStr tmp(KviStr::Format,"dcc: video %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
+	KviCString tmp(KviCString::Format,"dcc: video %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
 	KviDccVideo * v = new KviDccVideo(dcc->console()->frame(),dcc,tmp.ptr());
 	//#warning "Create minimized dcc video ?... or maybe it's too much ? :)"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
@@ -524,7 +524,7 @@ void KviDccBroker::activeCanvasExecute(KviDccBox *box,KviDccDescriptor * dcc)
 		dcc->setConsole(g_pApp->activeConsole());
 	}
 
-	KviStr tmp(KviStr::Format,"dcc: canvas %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
+	KviCString tmp(KviCString::Format,"dcc: canvas %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
 	KviDccCanvas * cnv = new KviDccCanvas(dcc->console()->frame(),dcc,tmp.ptr());
 
 	//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
@@ -548,7 +548,7 @@ void KviDccBroker::activeCanvasExecute(KviDccBox *,KviDccDescriptor *)
 #ifdef COMPILE_DCC_CANVAS
 void KviDccBroker::passiveCanvasExecute(KviDccDescriptor * dcc)
 {
-	KviStr tmp(KviStr::Format,"dcc: canvas %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
+	KviCString tmp(KviCString::Format,"dcc: canvas %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
 	KviDccCanvas * cnv = new KviDccCanvas(dcc->console()->frame(),dcc,tmp.ptr());
 	//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
@@ -823,10 +823,10 @@ void KviDccBroker::renameDccSendFile(KviDccBox *box,KviDccDescriptor * dcc)
 
 	if(QFileInfo(dcc->szLocalFileName).exists())
 	{
-		KviStr szOrig = dcc->szLocalFileName;
+		KviCString szOrig = dcc->szLocalFileName;
 		int i = 1;
 		do {
-			KviStr szNum;
+			KviCString szNum;
 			szNum.setNum(i);
 			int idx = szOrig.findLastIdx('.');
 			if(idx != -1)
@@ -967,7 +967,7 @@ bool KviDccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename
 			// ok!
 			t->m_uResumePosition = filePos;
 
-			KviStr szBuffy;
+			KviCString szBuffy;
 			KviServerParser::encodeCtcpParameter(filename,szBuffy);
 
 			dcc->ctcpMsg->msg->console()->connection()->sendFmtData(

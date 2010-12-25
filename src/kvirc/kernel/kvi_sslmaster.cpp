@@ -4,7 +4,7 @@
 //   Creation date : Mon Jun 17 2002 20:34:00 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,8 +29,8 @@
 #include "kvi_window.h"
 #include "kvi_options.h"
 #include "kvi_out.h"
-#include "kvi_mirccntrl.h"
-#include "kvi_locale.h"
+#include "KviMircCntrl.h"
+#include "KviLocale.h"
 #include "kvi_kvs_variant.h"
 
 #ifdef COMPILE_ON_WINDOWS
@@ -81,7 +81,7 @@ KVIRC_API void printSSLCertificate(KviWindow * wnd,const char * description,KviS
 	wnd->output(KVI_OUT_SSL,__tr2qs("[SSL]:     Locality: %c%s"),KVI_TEXT_BOLD,c->issuerLocality());
 	wnd->output(KVI_OUT_SSL,__tr2qs("[SSL]:   Public key: %c%s (%d bits)"),KVI_TEXT_BOLD,c->publicKeyType(),c->publicKeyBits());
 	wnd->output(KVI_OUT_SSL,__tr2qs("[SSL]:   Signature type: %c%s"),KVI_TEXT_BOLD,c->signatureType());
-	KviStr tmp = c->signatureContents();
+	KviCString tmp = c->signatureContents();
 	if(tmp.len() > 40)
 	{
 		tmp.cutRight(tmp.len() - 40);
@@ -118,7 +118,7 @@ KVIRC_API KviSSL * allocSSL(KviWindow * wnd,kvi_socket_t sock,KviSSL::Method m,c
 		return 0;
 	}
 
-	if(!contextString)contextString = KviStr::emptyString().ptr();
+	if(!contextString)contextString = KviCString::emptyString().ptr();
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate))
 	{
@@ -134,7 +134,7 @@ KVIRC_API KviSSL * allocSSL(KviWindow * wnd,kvi_socket_t sock,KviSSL::Method m,c
 			break;
 			default:
 			{
-				KviStr buffer;
+				KviCString buffer;
 				while(s->getLastErrorString(buffer))
 				{
 					if(wnd)wnd->output(KVI_OUT_SSL,__tr2qs("[%s]: [SSL ERROR]: %s"),contextString,buffer.ptr());
@@ -157,7 +157,7 @@ KVIRC_API KviSSL * allocSSL(KviWindow * wnd,kvi_socket_t sock,KviSSL::Method m,c
 			break;
 			default:
 			{
-				KviStr buffer;
+				KviCString buffer;
 				while(s->getLastErrorString(buffer))
 				{
 					if(wnd)wnd->output(KVI_OUT_SSL,__tr2qs("[%s]: [SSL ERROR]: %s"),contextString,buffer.ptr());

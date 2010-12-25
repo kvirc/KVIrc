@@ -5,7 +5,7 @@
 //   Based on dlg_options.cpp: Tue Jun 11 2000 02:39:12 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2000-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,10 +27,10 @@
 
 #include "kvi_app.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_iconmanager.h"
 #include "kvi_module.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_tooltip.h"
 #include "kvi_tal_popupmenu.h"

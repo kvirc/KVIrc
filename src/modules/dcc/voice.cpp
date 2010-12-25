@@ -4,7 +4,7 @@
 //   Creation date : Thu Aug 23 04:08:09 2001 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -31,13 +31,13 @@
 #include "kvi_settings.h"
 #include "kvi_iconmanager.h"
 #include "kvi_ircview.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_out.h"
 #include "kvi_error.h"
 #include "kvi_netutils.h"
 #include "kvi_options.h"
 #include "kvi_console.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_socket.h"
 #include "kvi_ircconnection.h"
 #include "kvi_tal_vbox.h"
@@ -208,7 +208,7 @@ bool KviDccVoiceThread::openSoundcard(int mode)
 	if(ioctl(m_soundFd,SNDCTL_DSP_SPEED,&speed)<0)goto exit_false;
 	if(speed != m_pOpt->iSampleRate)
 	{
-		KviStr tmp(KviStr::Format,__tr2qs_ctx("WARNING: failed to set the requested sample rate (%d): the device used closest match (%d)","dcc").toUtf8().data(),
+		KviCString tmp(KviCString::Format,__tr2qs_ctx("WARNING: failed to set the requested sample rate (%d): the device used closest match (%d)","dcc").toUtf8().data(),
 						m_pOpt->iSampleRate,speed);
 		postMessageEvent(tmp.ptr());
 	}
@@ -761,7 +761,7 @@ void KviDccVoice::connectionInProgress()
 		if(m_pDescriptor->bSendRequest)
 		{
 			QString ip     = !m_pDescriptor->szFakeIp.isEmpty() ? m_pDescriptor->szFakeIp : m_pDescriptor->szListenIp;
-			KviStr port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
+			KviCString port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
 //#warning "OPTION FOR SENDING 127.0.0.1 and so on (not an unsigned nuumber)"
 			struct in_addr a;
 			if(KviNetUtils::stringIpToBinaryIp(ip,&a)) {
@@ -793,7 +793,7 @@ void KviDccVoice::getBaseLogFileName(QString &buffer)
 
 void KviDccVoice::fillCaptionBuffers()
 {
-	KviStr tmp(KviStr::Format,"DCC Voice %s@%s:%s %s",
+	KviCString tmp(KviCString::Format,"DCC Voice %s@%s:%s %s",
 		m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),
 		m_pDescriptor->szLocalFileName.toUtf8().data());
 
@@ -827,7 +827,7 @@ bool KviDccVoice::event(QEvent *e)
 			break;
 			case KVI_DCC_THREAD_EVENT_MESSAGE:
 			{
-				KviStr * str = ((KviThreadDataEvent<KviStr> *)e)->getData();
+				KviCString * str = ((KviThreadDataEvent<KviCString> *)e)->getData();
 				outputNoFmt(KVI_OUT_DCCMSG,__tr_no_xgettext_ctx(str->ptr(),"dcc"));
 				delete str;
 				return true;
@@ -873,7 +873,7 @@ void KviDccVoice::updateInfo()
 		int iOSize = m_pSlaveThread->m_iOutputBufferSize;
 		int iISize = m_pSlaveThread->m_iInputBufferSize;
 		m_pSlaveThread->m_pInfoMutex->unlock();
-		KviStr tmp(KviStr::Format,__tr_ctx("Input buffer: %d bytes","dcc"),iISize);
+		KviCString tmp(KviCString::Format,__tr_ctx("Input buffer: %d bytes","dcc"),iISize);
 		m_pInputLabel->setText(tmp.ptr());
 		tmp.sprintf(__tr_ctx("Output buffer: %d bytes","dcc"),iOSize);
 		m_pOutputLabel->setText(tmp.ptr());

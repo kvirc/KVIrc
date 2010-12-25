@@ -6,7 +6,7 @@
 //   Creation date : Sat 30 Dec 2006 14:54:56 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2006-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2006-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_optionswidget.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 #include "kvi_theme.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_wizard.h"

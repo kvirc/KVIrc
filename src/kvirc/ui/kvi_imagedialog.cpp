@@ -4,7 +4,7 @@
 //   Creation date : Sun Dec 22 2002 19:42 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,8 +23,8 @@
 //=============================================================================
 
 #include "kvi_imagedialog.h"
-#include "kvi_fileutils.h"
-#include "kvi_locale.h"
+#include "KviFileUtils.h"
+#include "KviLocale.h"
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
 #include "kvi_app.h"

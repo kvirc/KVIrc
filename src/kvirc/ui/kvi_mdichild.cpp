@@ -32,8 +32,8 @@
 #include "kvi_debug.h"
 #include "kvi_mdichild.h"
 #include "kvi_mdimanager.h"
-#include "kvi_string.h"
-#include "kvi_locale.h"
+#include "KviCString.h"
+#include "KviLocale.h"
 #include "kvi_options.h"
 #include "kvi_settings.h"
 #include "kvi_iconmanager.h"
@@ -42,7 +42,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_irccontext.h"
-#include "kvi_network.h"
+#include "KviNetwork.h"
 #include "kvi_kvs_eventtriggers.h"
 
 #ifdef COMPILE_ON_MAC
@@ -241,7 +241,7 @@ void KviMdiChild::setClient(QWidget * w)
 			tmp1.append(pConnection->target()->network()->name()+"_");
 	}
 
-	KviStr tmp(KviStr::Format,"mdi_child_%s%s",tmp1.toUtf8().data(),w->objectName().toUtf8().data());
+	KviCString tmp(KviCString::Format,"mdi_child_%s%s",tmp1.toUtf8().data(),w->objectName().toUtf8().data());
 	setObjectName(tmp.ptr());
 }
 

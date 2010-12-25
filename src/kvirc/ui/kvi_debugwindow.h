@@ -6,7 +6,7 @@
 //   Creation date : Sun Jul 18 2005 14:14:00 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2005-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_window.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 
 class QSplitter;
 
@@ -45,8 +45,8 @@ protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void loadProperties(KviConfig * cfg);
-	virtual void saveProperties(KviConfig * cfg);
+	virtual void loadProperties(KviConfigurationFile * cfg);
+	virtual void saveProperties(KviConfigurationFile * cfg);
 	virtual void getBaseLogFileName(QString &buffer);
 	virtual QSize sizeHint() const;
 };

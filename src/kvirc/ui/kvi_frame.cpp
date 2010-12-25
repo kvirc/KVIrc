@@ -4,7 +4,7 @@
 //   Creation date : Sun Jun 18 2000 17:59:02 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -38,16 +38,16 @@
 #include "kvi_windowlist.h"
 #include "kvi_windowlist_tree.h"
 #include "kvi_console.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_internalcmd.h"
 #include "kvi_console.h"
 #include "kvi_debug.h"
 #include "kvi_irctoolbar.h"
 #include "kvi_confignames.h"
-#include "kvi_parameterlist.h"
+#include "KviParameterList.h"
 #include "kvi_module.h"
 #include "kvi_mextoolbar.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_irccontext.h"
 #include "kvi_statusbar.h"
 #include "kvi_customtoolbar.h"
@@ -86,7 +86,7 @@
 #define KVI_DEFAULT_FRAME_CAPTION "KVIrc " KVI_VERSION " " KVI_RELEASE_NAME
 
 // Declared and managed by KviApp (kvi_app.cpp)
-extern KviConfig * g_pWinPropertiesConfig;
+extern KviConfigurationFile * g_pWinPropertiesConfig;
 KVIRC_API KviFrame * g_pFrame = 0; // the one and only frame object
 
 KviFrame::KviFrame()
@@ -260,7 +260,7 @@ void KviFrame::restoreModuleExtensionToolBars()
 		{
 			QString szMod = szEntry.left(idx);
 			szEntry.remove(0,idx + 1);
-			g_pModuleExtensionManager->allocateExtension("toolbar",KviStr(szEntry),firstConsole(),0,0,szMod);
+			g_pModuleExtensionManager->allocateExtension("toolbar",KviCString(szEntry),firstConsole(),0,0,szMod);
 		}
 	}
 }
@@ -354,7 +354,7 @@ void KviFrame::saveWindowProperties(KviWindow * wnd,const QString &szSection)
 	while(g_pWinPropertiesConfig->groupsCount() > 80)
 	{
 		// Kill the oldest group
-		KviConfigIterator it(*(g_pWinPropertiesConfig->dict()));
+		KviConfigurationFileIterator it(*(g_pWinPropertiesConfig->dict()));
 		QString minKey;
 		unsigned int minVal = time(0);
 		while(it.current() && minVal)

@@ -4,7 +4,7 @@
 //   Creation date : Thu 09 Oct 2003 02:40:00 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@
 #include "kvi_kvs_treenode_expression.h"
 #include "kvi_kvs_treenode_instruction.h"
 #include "kvi_kvs_runtimecontext.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 KviKvsTreeNodeSpecialCommandIf::KviKvsTreeNodeSpecialCommandIf(const QChar * pLocation,KviKvsTreeNodeExpression * e,KviKvsTreeNodeInstruction * pIf,KviKvsTreeNodeInstruction * pElse)
 : KviKvsTreeNodeSpecialCommand(pLocation,"if")

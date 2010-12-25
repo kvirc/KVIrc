@@ -6,7 +6,7 @@
 //   Creation date : Sun Aug 26 04:19:34 2001 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,9 +24,9 @@
 //
 //=============================================================================
 
-#include "kvi_string.h"
-#include "kvi_oggtheora.h"
-#include "kvi_databuffer.h"
+#include "KviCString.h"
+#include "KviTheoraDecoder.h"
+#include "KviDataBuffer.h"
 
 class KviDccVoiceCodec
 {
@@ -34,7 +34,7 @@ public:
 	KviDccVoiceCodec();
 	virtual ~KviDccVoiceCodec();
 protected:
-	KviStr m_szName;
+	KviCString m_szName;
 public:
 	const char * name();
 	virtual void encode(KviDataBuffer * signal,KviDataBuffer * stream);
@@ -61,7 +61,7 @@ public:
 	KviDccVideoCodec();
 	virtual ~KviDccVideoCodec();
 protected:
-	KviStr m_szName;
+	KviCString m_szName;
 public:
 	const char * name();
 	virtual void encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream);

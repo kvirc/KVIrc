@@ -4,7 +4,7 @@
 //   Creation date : Sun Jul 29 07 2001 20:23:13 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -38,15 +38,15 @@
 	#include "kvi_input.h"
 	#include "kvi_ircview.h"
 	#include "kvi_iconmanager.h"
-	#include "kvi_locale.h"
+	#include "KviLocale.h"
 	#include "kvi_error.h"
 	#include "kvi_out.h"
 	#include "kvi_netutils.h"
 	#include "kvi_console.h"
 	#include "kvi_frame.h"
-	#include "kvi_malloc.h"
+	#include "KviMemory.h"
 	#include "kvi_memmove.h"
-	#include "kvi_thread.h"
+	#include "KviThread.h"
 	#include "kvi_ircsocket.h"
 	#include "kvi_settings.h"
 	#include "kvi_ircconnection.h"
@@ -135,7 +135,7 @@
 
 	void KviDccCanvas::fillCaptionBuffers()
 	{
-		KviStr tmp(KviStr::Format,"DCC Canvas %s@%s:%s",
+		KviCString tmp(KviCString::Format,"DCC Canvas %s@%s:%s",
 			m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 
 		m_szPlainTextCaption = tmp;
@@ -151,14 +151,14 @@
 		return g_pIconManager->getSmallIcon(KVI_SMALLICON_CANVAS);
 	}
 
-	void KviDccCanvas::getBaseLogFileName(KviStr &buffer)
+	void KviDccCanvas::getBaseLogFileName(KviCString &buffer)
 	{
 		buffer.sprintf("%s_%s_%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 	}
 
 	void KviDccCanvas::ownMessage(const char * text, bool bUserFeedback)
 	{
-		KviStr buf(KviStr::Format,"%s\r\n",text);
+		KviCString buf(KviCString::Format,"%s\r\n",text);
 	//	m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
 		
 		if(bUserFeedback)
@@ -169,7 +169,7 @@
 
 	void KviDccCanvas::ownAction(const char * text)
 	{
-		KviStr buf(KviStr::Format,"%cACTION %s%c\r\n",text);
+		KviCString buf(KviCString::Format,"%cACTION %s%c\r\n",text);
 	//	m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
 		output(KVI_OUT_ACTION,"%Q %s",&(m_pDescriptor->szLocalNick),text);
 	}
@@ -190,7 +190,7 @@
 	//			break;
 	//			case KVI_DCC_THREAD_EVENT_DATA:
 	//			{
-	//				KviStr * d = ((KviThreadDataEvent<KviStr> *)e)->getData();
+	//				KviCString * d = ((KviThreadDataEvent<KviCString> *)e)->getData();
 	//				if(d->firstCharIs(0x01))
 	//				{
 	//					d->cutLeft(1);
@@ -207,7 +207,7 @@
 	//						{
 	//							if(cinf->pEngine->isCryptographicEngine() && (*(d->ptr()) == KVI_TEXT_CRYPT))
 	//							{
-	//								KviStr decryptedStuff;
+	//								KviCString decryptedStuff;
 	//								if(cinf->pEngine->decrypt(d->ptr() + 1,decryptedStuff))
 	//								{
 	//									m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSGCRYPTED,
@@ -226,7 +226,7 @@
 	//							} else {
 	//								if(!(cinf->pEngine->isCryptographicEngine()))
 	//								{
-	//									KviStr decryptedStuff;
+	//									KviCString decryptedStuff;
 	//									if(cinf->pEngine->decrypt(d->ptr(),decryptedStuff))
 	//									{
 	//										m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,

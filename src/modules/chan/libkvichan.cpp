@@ -6,7 +6,7 @@
 //   This chan is part of the KVirc irc client distribution
 //   Copyright (C) 2002 Szymon Stefanek (pragma@kvirc.net)
 //   Copyright (C) 2002 Juanjo Alvarez  (juanjux@yahoo.es)
-//   Copyright (C) 2004-2008 Szymon Stefanek (pragma@kvirc.net)
+//   Copyright (C) 2004-2010 Szymon Stefanek (pragma@kvirc.net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,12 +25,12 @@
 //=============================================================================
 
 #include "kvi_module.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_app.h"
 #include "kvi_channel.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_topicw.h"
-#include "kvi_ircmask.h"
+#include "KviIrcMask.h"
 #include "kvi_maskeditor.h"
 #include "kvi_ircurl.h"
 #include "kvi_ircconnectiontarget.h"

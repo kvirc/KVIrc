@@ -4,7 +4,7 @@
 //   Creation date : Mon 03 May 2004 01:45:42 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -38,9 +38,9 @@
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_irclink.h"
 #include "kvi_ircsocket.h"
-#include "kvi_locale.h"
-#include "kvi_ircserverdb.h"
-#include "kvi_proxydb.h"
+#include "KviLocale.h"
+#include "KviIrcServerDataBase.h"
+#include "KviProxyDataBase.h"
 #include "kvi_error.h"
 #include "kvi_out.h"
 #include "kvi_options.h"
@@ -49,27 +49,27 @@
 #include "kvi_internalcmd.h"
 #include "kvi_frame.h"
 #include "kvi_mexlinkfilter.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_memmove.h"
 #include "kvi_debug.h"
 #include "kvi_channel.h"
 #include "kvi_query.h"
 #include "kvi_app.h"
-#include "kvi_databuffer.h"
+#include "KviDataBuffer.h"
 #include "kvi_notifylist.h"
 #include "kvi_dns.h"
 #include "kvi_defaults.h"
 #include "kvi_sparser.h"
 #include "kvi_ircdatastreammonitor.h"
-#include "kvi_databuffer.h"
+#include "KviDataBuffer.h"
 #include "kvi_lagmeter.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_kvs_script.h"
-#include "kvi_mirccntrl.h"
-#include "kvi_useridentity.h"
-#include "kvi_identityprofile.h"
+#include "KviMircCntrl.h"
+#include "KviUserIdentity.h"
+#include "KviIdentityProfile.h"
 #include "kvi_sasl.h"
-#include "kvi_nickcolors.h"
+#include "KviNickColors.h"
 
 #include <QTimer>
 #include <QTextCodec>
@@ -441,7 +441,7 @@ void KviIrcConnection::handleInitialCapAck()
 		endInitialCapNegotiation();
 }
 
-void KviIrcConnection::handleAuthenticate(KviStr & szAuth)
+void KviIrcConnection::handleAuthenticate(KviCString & szAuth)
 {
 	//SASL
 	if(!m_pStateData->isInsideAuthenticate())
@@ -452,7 +452,7 @@ void KviIrcConnection::handleAuthenticate(KviStr & szAuth)
 	if(szAuth=="+")
 	{
 		//PLAIN
-		KviStr szOut;
+		KviCString szOut;
 		if(KviSASL::plainMethod(szAuth,
 					szOut,
 					szNick,
@@ -465,7 +465,7 @@ void KviIrcConnection::handleAuthenticate(KviStr & szAuth)
 		}
 	} else {
 		//DH-BLOWFISH sasl auth
-		KviStr szOut;
+		KviCString szOut;
 		if(KviSASL::dh_blowfishMethod(szAuth,
 					szOut,
 					szNick,
@@ -1525,7 +1525,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 
 	if(!(m_pStateData->commandToExecAfterConnect().isEmpty()))
 	{
-		KviStr tmp = m_pStateData->commandToExecAfterConnect();
+		KviCString tmp = m_pStateData->commandToExecAfterConnect();
 		KviKvsScript::run(tmp.ptr(),m_pConsole);
 	}
 
@@ -1716,7 +1716,7 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 							console()->output(KVI_OUT_VERBOSE,__tr2qs("Updating away state for channel %Q"),&szChanName);
 						if(lagMeter())
 						{
-							KviStr tmp(KviStr::Format,"WHO %s",encodeText(pOldest->windowName()).data());
+							KviCString tmp(KviCString::Format,"WHO %s",encodeText(pOldest->windowName()).data());
 							lagMeter()->lagCheckRegister(tmp.ptr(),70);
 						}
 						pOldest->setSentSyncWhoRequest();

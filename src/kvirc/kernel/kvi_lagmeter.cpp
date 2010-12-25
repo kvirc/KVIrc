@@ -5,7 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 1999 Juanjo Álvarez
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,16 +28,16 @@
 #include "kvi_lagmeter.h"
 #include "kvi_options.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_parameterlist.h"
+#include "KviParameterList.h"
 #include "kvi_ircconnection.h"
 #include "kvi_irccontext.h"
 #include "kvi_frame.h"
 #include "kvi_console.h"
-#include "kvi_time.h"
+#include "KviTimeUtils.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_out.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 KviLagMeter::KviLagMeter(KviIrcConnection * c)
 : QObject()
@@ -87,7 +87,7 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 		m_uLastEmittedLag = m_uLag;
 		g_pFrame->childConnectionLagChange(m_pConnection);
 
-		KviStr szLag(KviStr::Format,"%u",m_uLag);
+		KviCString szLag(KviCString::Format,"%u",m_uLag);
 		
 		bool bDeletionSignal = false;
 		m_pDeletionSignal = &bDeletionSignal;
@@ -166,7 +166,7 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 
 		// we have already sent a ping but we got no reply
 		// try with another method... even if this will reset our idle time
-		KviStr tmp(KviStr::Format,"%d%d-yeah-:)",tv.tv_sec,tv.tv_usec);
+		KviCString tmp(KviCString::Format,"%d%d-yeah-:)",tv.tv_sec,tv.tv_usec);
 		lagCheckRegister(tmp.ptr(),100); // almost impossible to fool
 		m_pConnection->sendFmtData("NOTICE %s :%cLAGCHECK %s%c",
 			m_pConnection->encodeText( m_pConnection->userInfo()->nickName() ).data(),

@@ -24,7 +24,7 @@
 
 #define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "class_hbox.h"
 #include "kvi_tal_hbox.h"
 

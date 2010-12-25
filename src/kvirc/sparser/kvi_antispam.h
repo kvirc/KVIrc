@@ -6,7 +6,7 @@
 //   Creation date : Sun Apr 18 1999 05:36:55 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,9 +25,9 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 
-extern KVIRC_API bool kvi_mayBeSpam(KviStr * msg,KviStr &spamWord);
+extern KVIRC_API bool kvi_mayBeSpam(KviCString * msg,KviCString &spamWord);
 
 
 #endif // _KVI_ANTISPAM_H_

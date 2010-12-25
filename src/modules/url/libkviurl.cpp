@@ -34,12 +34,12 @@
 #include "kvi_action.h"
 #include "kvi_actionmanager.h"
 #include "kvi_windowlist.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 #include "kvi_kvs_eventmanager.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_window.h"
 #include "kvi_options.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_out.h"
 
 #include <QFileDialog>
@@ -168,7 +168,7 @@ UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
 
 	m_pMenuBar = new KviTalMenuBar(this,"url menu");
 	//m_pUrlList = new KviListView(this,"list");
-	KviConfig cfg(szConfigPath,KviConfig::Read);
+	KviConfigurationFile cfg(szConfigPath,KviConfigurationFile::Read);
 /*
 	KviTalPopupMenu *pop;
 
@@ -289,9 +289,9 @@ void UrlDialog::findtext()
 	}
 	for(KviUrl *tmp=g_pList->first();tmp;tmp=g_pList->next())
 	{
-		if (tmp->url == KviStr(m_pUrlList->currentItem()->text(0))) {
+		if (tmp->url == KviCString(m_pUrlList->currentItem()->text(0))) {
 			g_pList->find(tmp);
-			KviStr ft="findtext %";
+			KviCString ft="findtext %";
 			ft.replaceAll('%',tmp->url.ptr());
 			KviWindow *wnd = m_pFrm->findWindow(tmp->window.ptr());
 			if (wnd) {
@@ -396,7 +396,7 @@ void UrlDialog::resizeEvent(QResizeEvent *)
 UrlDialog::~UrlDialog()
 {
 	/*
-	KviConfig cfg(szConfigPath,KviConfig::Write);
+	KviConfigurationFile cfg(szConfigPath,KviConfigurationFile::Write);
 	cfg.setGroup("ConfigDialog");
 	if (cfg.readBoolEntry("SaveColumnWidthOnClose",false)) {
 		cfg.setGroup("ColsWidth");
@@ -426,7 +426,7 @@ ConfigDialog::ConfigDialog()
 
 	QGridLayout *g = new QGridLayout(this);
 
-	KviConfig *cfg = new KviConfig(szConfigPath,KviConfig::Read);
+	KviConfigurationFile *cfg = new KviConfigurationFile(szConfigPath,KviConfigurationFile::Read);
 	cfg->setGroup("ConfigDialog");
 
 	cb[0] = new QCheckBox(__tr2qs("Save URL list on module unload"),this);
@@ -467,7 +467,7 @@ void ConfigDialog::discardbtn()
 
 void ConfigDialog::acceptbtn()
 {
-	KviConfig *cfg = new KviConfig(szConfigPath,KviConfig::Write);
+	KviConfigurationFile *cfg = new KviConfigurationFile(szConfigPath,KviConfigurationFile::Write);
 	cfg->setGroup("ConfigDialog");
 
 	if (m_pBanFrame) m_pBanFrame->saveBans(cfg);
@@ -571,7 +571,7 @@ void BanFrame::removeBan()
 
 }
 
-void BanFrame::saveBans(KviConfig *cfg)
+void BanFrame::saveBans(KviConfigurationFile *cfg)
 {
 	cfg->writeEntry("BanEnabled",m_pEnable->isChecked());
 	if (m_pEnable->isChecked()) saveBanList();
@@ -908,7 +908,7 @@ static bool url_module_init(KviModule *m)
 
 static bool url_module_cleanup(KviModule *)
 {
-	KviConfig cfg(szConfigPath,KviConfig::Read);
+	KviConfigurationFile cfg(szConfigPath,KviConfigurationFile::Read);
 	cfg.setGroup("ConfigDialog");
 	if (cfg.readBoolEntry("SaveUrlListOnUnload",false) == true) saveUrlList();
 	for (UrlDlgList *tmpitem=g_pUrlDlgList->first();tmpitem;tmpitem=g_pUrlDlgList->next()) {

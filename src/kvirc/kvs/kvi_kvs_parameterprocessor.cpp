@@ -4,7 +4,7 @@
 //   Creation date : Sun 17 Apr 2005 16:47:09 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -30,9 +30,9 @@
 #include "kvi_kvs_arraycast.h"
 #include "kvi_kvs_hash.h"
 #include "kvi_kvs_object.h"
-#include "kvi_qstring.h"
-#include "kvi_locale.h"
-#include "kvi_pointerlist.h"
+#include "KviQString.h"
+#include "KviLocale.h"
+#include "KviPointerList.h"
 
 #include <QStringList>
 

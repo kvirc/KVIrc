@@ -4,7 +4,7 @@
 //   Creation date : Fri 31 Oct 2003 04:07:58 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -35,12 +35,12 @@
 #include "kvi_kvs_processmanager.h"
 #include "kvi_kvs_object_controller.h"
 
-#include "kvi_cmdformatter.h"
+#include "KviCommandFormatter.h"
 #include "kvi_ircconnectionasyncwhoisdata.h"
 #include "kvi_ircconnection.h"
 #include "kvi_scriptbutton.h"
 #include "kvi_iconmanager.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 #include "kvi_tal_tooltip.h"
 

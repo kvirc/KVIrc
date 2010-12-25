@@ -5,7 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,10 +26,10 @@
 #include "class_widget.h"
 #include "class_pixmap.h"
 
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_debug.h"
 #include "kvi_error.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
 #include "kvi_app.h"

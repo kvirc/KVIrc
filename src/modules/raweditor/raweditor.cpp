@@ -4,7 +4,7 @@
 //   Creation date : Mon Dec 23 2002 20:28:18 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -27,16 +27,16 @@
 #include "kvi_iconmanager.h"
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_imagedialog.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_filedialog.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_scripteditor.h"
 #include "kvi_debug.h"
 #include "kvi_fileextensions.h"
 #include "kvi_app.h"
-#include "kvi_cmdformatter.h"
+#include "KviCommandFormatter.h"
 #include "kvi_kvs_eventmanager.h"
 #include "kvi_kvs_eventhandler.h"
 #include "kvi_tal_vbox.h"
@@ -531,7 +531,7 @@ void KviRawEditorWindow::getConfigGroupName(QString &szName)
 	szName = "raweditor";
 }
 
-void KviRawEditorWindow::saveProperties(KviConfig *)
+void KviRawEditorWindow::saveProperties(KviConfigurationFile *)
 {
 	/*
 	#ifdef COMPILE_SCRIPTTOOLBAR
@@ -542,7 +542,7 @@ void KviRawEditorWindow::saveProperties(KviConfig *)
 	*/
 }
 
-void KviRawEditorWindow::loadProperties(KviConfig *)
+void KviRawEditorWindow::loadProperties(KviConfigurationFile *)
 {
 	/*
 	#ifdef COMPILE_SCRIPTTOOLBAR
@@ -550,7 +550,7 @@ void KviRawEditorWindow::loadProperties(KviConfig *)
 		def.append(20);
 		def.append(80);
 		m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
-		KviStr tmp = cfg->readEntry("LastRaw","");
+		KviCString tmp = cfg->readEntry("LastRaw","");
 		m_pEditor->editRaw(tmp);
 		//qDebug("LAST EDITED WAS %s",tmp.ptr());
 	#endif // COMPILE_SCRIPTTOOLBAR

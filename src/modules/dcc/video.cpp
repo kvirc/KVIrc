@@ -31,17 +31,17 @@
 #include "kvi_iconmanager.h"
 #include "kvi_ircview.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_out.h"
 #include "kvi_error.h"
 #include "kvi_netutils.h"
 #include "kvi_options.h"
 #include "kvi_console.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_socket.h"
 #include "kvi_ircconnection.h"
 #include "kvi_tal_vbox.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_frame.h"
 
 #include <QToolTip>
@@ -50,8 +50,8 @@
 #include <QTextDocument> //for Qt::escape
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "kvi_crypt.h"
-	#include "kvi_cryptcontroller.h"
+	#include "KviCryptEngine.h"
+	#include "KviCryptEngine.h"
 #endif
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -213,7 +213,7 @@ bool KviDccVideoThread::textStep()
 		{
 			KviDccThreadIncomingData data;
 			data.iLen = m_textInSignalBuffer.size();
-			data.buffer = (char*) kvi_malloc(data.iLen);
+			data.buffer = (char*) KviMemory::allocate(data.iLen);
 			memcpy(data.buffer, m_textInSignalBuffer.data(), data.iLen);
 			handleIncomingData(&data,false);
 
@@ -249,12 +249,12 @@ bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool 
 	{
 		if((*aux == '\n') || (*aux == '\0'))
 		{
-			KviThreadDataEvent<KviStr> * e = new KviThreadDataEvent<KviStr>(KVI_DCC_THREAD_EVENT_DATA);
+			KviThreadDataEvent<KviCString> * e = new KviThreadDataEvent<KviCString>(KVI_DCC_THREAD_EVENT_DATA);
 			// The left part is len chars long
 			int len = aux - data->buffer;
 //			qDebug("LEN = %d, iLen = %d",len,data->iLen);
 //#warning "DO IT BETTER (the \r cutting)"
-			KviStr * s = new KviStr(data->buffer,len);
+			KviCString * s = new KviCString(data->buffer,len);
 			if(s->lastCharIs('\r'))s->cutRight(1);
 			e->setData(s);
 			// but we cut also \n (or \0)
@@ -268,13 +268,13 @@ bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool 
 				// memmove the remaining part to the beginning
 				// aux points after \n or \0
 				kvi_memmove(data->buffer,aux,data->iLen);
-				data->buffer = (char *)kvi_realloc(data->buffer,data->iLen);
+				data->buffer = (char *)KviMemory::reallocate(data->buffer,data->iLen);
 				end = data->buffer + data->iLen;
 				aux = data->buffer;
 			} else {
 				// no more data in the buffer
 				KVI_ASSERT(data->iLen == 0);
-				kvi_free(data->buffer);
+				KviMemory::free(data->buffer);
 				data->buffer = end = aux = 0;
 			}
 			postEvent(parent(),e);
@@ -288,12 +288,12 @@ bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool 
 		if(data->iLen > 0)
 		{
 			// in the last part there are no NULL and \n chars
-			KviThreadDataEvent<KviStr> * e = new KviThreadDataEvent<KviStr>(KVI_DCC_THREAD_EVENT_DATA);
-			KviStr * s = new KviStr(data->buffer,data->iLen);
+			KviThreadDataEvent<KviCString> * e = new KviThreadDataEvent<KviCString>(KVI_DCC_THREAD_EVENT_DATA);
+			KviCString * s = new KviCString(data->buffer,data->iLen);
 			if(s->lastCharIs('\r'))s->cutRight(1);
 			e->setData(s);
 			data->iLen = 0;
-			kvi_free(data->buffer);
+			KviMemory::free(data->buffer);
 			data->buffer = 0;
 			postEvent(parent(),e);
 		}
@@ -612,7 +612,7 @@ void KviDccVideo::connectionInProgress()
 		if(m_pDescriptor->bSendRequest)
 		{
 			QString ip     = !m_pDescriptor->szFakeIp.isEmpty() ? m_pDescriptor->szFakeIp : m_pDescriptor->szListenIp;
-			KviStr port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
+			KviCString port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
 //#warning "OPTION FOR SENDING 127.0.0.1 and so on (not an unsigned nuumber)"
 			struct in_addr a;
 			if(KviNetUtils::stringIpToBinaryIp(ip,&a)) {
@@ -646,7 +646,7 @@ void KviDccVideo::getBaseLogFileName(QString &buffer)
 
 void KviDccVideo::fillCaptionBuffers()
 {
-	KviStr tmp(KviStr::Format,"DCC Video %s@%s:%s %s",
+	KviCString tmp(KviCString::Format,"DCC Video %s@%s:%s %s",
 		m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),
 		m_pDescriptor->szLocalFileName.toUtf8().data());
 
@@ -677,13 +677,13 @@ void KviDccVideo::ownMessage(const QString &text, bool bUserFeedback)
 		{
 			if(*d != KVI_TEXT_CRYPTESCAPE)
 			{
-				KviStr encrypted;
+				KviCString encrypted;
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(-1);
 				switch(cryptSessionInfo()->m_pEngine->encrypt(d,encrypted))
 				{
 					case KviCryptEngine::Encrypted:
 					{
-						KviStr buf(KviStr::Format,"%s\r\n",encrypted.ptr());
+						KviCString buf(KviCString::Format,"%s\r\n",encrypted.ptr());
 						m_tmpTextDataOut.append(buf.ptr(), buf.len());
 						if(bUserFeedback)
 							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
@@ -693,7 +693,7 @@ void KviDccVideo::ownMessage(const QString &text, bool bUserFeedback)
 					break;
 					case KviCryptEngine::Encoded:
 					{
-						KviStr buf(KviStr::Format,"%s\r\n",encrypted.ptr());
+						KviCString buf(KviCString::Format,"%s\r\n",encrypted.ptr());
 						m_tmpTextDataOut.append(buf.ptr(), buf.len());
 						if(bUserFeedback)
 						{
@@ -716,7 +716,7 @@ void KviDccVideo::ownMessage(const QString &text, bool bUserFeedback)
 				return;
 			} else {
 				d++; //eat the escape code
-				KviStr buf(KviStr::Format,"%s\r\n",d);
+				KviCString buf(KviCString::Format,"%s\r\n",d);
 				QString tmp = text.right(text.length() - 1);
 				m_tmpTextDataOut.append(buf.ptr(), buf.len());
 
@@ -729,7 +729,7 @@ void KviDccVideo::ownMessage(const QString &text, bool bUserFeedback)
 		}
 	}
 #endif
-	KviStr buf(KviStr::Format,"%s\r\n",d);
+	KviCString buf(KviCString::Format,"%s\r\n",d);
 	m_tmpTextDataOut.append(buf.ptr(), buf.len());
 
 	if(bUserFeedback)
@@ -761,7 +761,7 @@ void KviDccVideo::ownAction(const QString &text)
 		QByteArray szData = encodeText(szTmpBuffer);
 		const char * d = szData.data();
 		if(!d)return;
-		KviStr buf(KviStr::Format,"%cACTION %s%c\r\n",0x01,d,0x01);
+		KviCString buf(KviCString::Format,"%cACTION %s%c\r\n",0x01,d,0x01);
 		m_tmpTextDataOut.append(buf.ptr(), buf.len());
 		output(KVI_OUT_ACTION,"%Q %Q",&(m_pDescriptor->szLocalNick),&szTmpBuffer);
 	} else {
@@ -786,8 +786,8 @@ bool KviDccVideo::event(QEvent *e)
 			break;
 			case KVI_DCC_THREAD_EVENT_DATA:
 			{
-				KviStr * encoded = ((KviThreadDataEvent<KviStr> *)e)->getData();
-				KviStr d=KviStr(decodeText(encoded->ptr()));
+				KviCString * encoded = ((KviThreadDataEvent<KviCString> *)e)->getData();
+				KviCString d=KviCString(decodeText(encoded->ptr()));
 				if(d.firstCharIs(0x01))
 				{
 					d.cutLeft(1);
@@ -818,7 +818,7 @@ bool KviDccVideo::event(QEvent *e)
 					{
 						if(cinf->m_bDoDecrypt)
 						{
-							KviStr decryptedStuff;
+							KviCString decryptedStuff;
 							switch(cinf->m_pEngine->decrypt(d.ptr(),decryptedStuff))
 							{
 								case KviCryptEngine::DecryptOkWasEncrypted:
@@ -875,7 +875,7 @@ bool KviDccVideo::event(QEvent *e)
 
 			case KVI_DCC_THREAD_EVENT_MESSAGE:
 			{
-				KviStr * str = ((KviThreadDataEvent<KviStr> *)e)->getData();
+				KviCString * str = ((KviThreadDataEvent<KviCString> *)e)->getData();
 				outputNoFmt(KVI_OUT_DCCMSG,__tr_no_xgettext_ctx(str->ptr(),"dcc"));
 				delete str;
 				return true;

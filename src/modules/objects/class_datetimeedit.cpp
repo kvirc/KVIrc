@@ -23,10 +23,10 @@
 //=============================================================================
 
 #include "kvi_debug.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_error.h"
 #include "kvi_iconmanager.h"
-#include "kvi_file.h"
+#include "KviFile.h"
 
 #include "class_datetimeedit.h"
 #include "class_pixmap.h"

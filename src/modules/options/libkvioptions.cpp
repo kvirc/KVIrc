@@ -4,7 +4,7 @@
 //   Creation date : Fri Aug 18 2000 15:04:09 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -31,11 +31,11 @@
 #include "kvi_app.h"
 #include "kvi_frame.h"
 #include "kvi_window.h"
-#include "kvi_locale.h"
-#include "kvi_mirccntrl.h"
+#include "KviLocale.h"
+#include "KviMircCntrl.h"
 #include "kvi_out.h"
 #include "kvi_splash.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 
 #include <QSplitter>
 
@@ -153,7 +153,7 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 static void options_kvs_module_print_pages(KviKvsModuleCommandCall * c,KviOptionsWidgetInstanceEntry * e,const char * prefix)
 {
 	c->window()->output(KVI_OUT_SYSTEMMESSAGE,"%s%c%s%c  (%Q)",prefix,KVI_TEXT_BOLD,e->szClassName,KVI_TEXT_BOLD,&(e->szName));
-	KviStr szPre = prefix;
+	KviCString szPre = prefix;
 	szPre.append("  ");
 	if(e->pChildList)
 	{

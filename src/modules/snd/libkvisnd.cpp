@@ -5,7 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2002 Juanjo Alvarez (juanjux at yahoo dot es)
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,12 +27,12 @@
 
 #include "kvi_module.h"
 #include "kvi_debug.h"
-#include "kvi_fileutils.h"
-#include "kvi_malloc.h"
+#include "KviFileUtils.h"
+#include "KviMemory.h"
 #include "kvi_window.h"
 #include "kvi_out.h"
-#include "kvi_locale.h"
-#include "kvi_qstring.h"
+#include "KviLocale.h"
+#include "KviQString.h"
 
 #include <QSound>
 
@@ -496,7 +496,7 @@ void KviSoundThread::run()
 
 				frameSize = afGetVirtualFrameSize(file, AF_DEFAULT_TRACK, 1);
 				channelCount = afGetVirtualChannels(file, AF_DEFAULT_TRACK);
-				buffer = kvi_malloc(int(BUFFER_FRAMES * frameSize));
+				buffer = KviMemory::allocate(int(BUFFER_FRAMES * frameSize));
 
 				int audiofd_c = open("/dev/dsp", O_WRONLY /*| O_EXCL | O_NDELAY*/);
 
@@ -547,7 +547,7 @@ void KviSoundThread::run()
 				audiofd.close();
 				if(audiofd_c >= 0)close(audiofd_c);
 				afCloseFile(file);
-				kvi_free(buffer);
+				KviMemory::free(buffer);
 			}
 		#endif //COMPILE_AUDIOFILE_SUPPORT
 

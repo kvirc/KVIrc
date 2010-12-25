@@ -4,7 +4,7 @@
 //   Creation date : Mon Nov 20 2000 12:20:42 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,13 +23,13 @@
 //=============================================================================
 
 #include "kvi_filedialog.h"
-#include "kvi_mediatype.h"
+#include "KviMediaType.h"
 #include "kvi_iconmanager.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_app.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_frame.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_tal_tooltip.h"
 
 #include <QDir>
@@ -53,7 +53,7 @@ KviFileDialog::~KviFileDialog()
 /*
 void KviFileDialog::goKvirc()
 {
-	KviStr tmp;
+	KviCString tmp;
 	g_pApp->getLocalKvircDirectory(tmp,KviApp::None);
 	setDir(QDir(tmp.ptr()));
 }

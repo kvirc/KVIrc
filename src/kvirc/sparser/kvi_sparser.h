@@ -7,7 +7,7 @@
 //   Creation date : Sat Jun 29 2000 14:23:11 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -27,8 +27,8 @@
 
 
 #include "kvi_settings.h"
-#include "kvi_pointerlist.h"
-#include "kvi_qstring.h"
+#include "KviPointerList.h"
+#include "KviQString.h"
 #include "kvi_console.h"
 #include "kvi_ircmessage.h"
 
@@ -76,12 +76,12 @@ typedef struct _KviCtcpMessage
 
 typedef struct _KviDccRequest
 {
-	KviStr           szType;
-	KviStr           szParam1;
-	KviStr           szParam2;
-	KviStr           szParam3;
-	KviStr           szParam4;
-	KviStr           szParam5;
+	KviCString           szType;
+	KviCString           szParam1;
+	KviCString           szParam2;
+	KviCString           szParam3;
+	KviCString           szParam4;
+	KviCString           szParam5;
 	bool             bIPv6;
 	KviCtcpMessage * ctcpMsg;
 	KviConsole     * pConsole;
@@ -126,9 +126,9 @@ private:
 	static KviLiteralMessageParseStruct m_literalParseProcTable[];
 	static KviCtcpMessageParseStruct    m_ctcpRequestParseProcTable[];
 	static KviCtcpMessageParseStruct    m_ctcpReplyParseProcTable[];
-	KviStr                              m_szLastParserError;
+	KviCString                              m_szLastParserError;
 
-//	KviStr                              m_szNoAwayNick; //<-- moved to kvi_console.h in KviConnectionInfo
+//	KviCString                              m_szNoAwayNick; //<-- moved to kvi_console.h in KviConnectionInfo
 public:
 	void parseMessage(const char * message,KviIrcConnection *pConnection);
 private:
@@ -226,7 +226,7 @@ private:
 	void parseLiteralWallops(KviIrcMessage *msg);
 	void parseLiteralPong(KviIrcMessage *msg);
 	void parseLiteralError(KviIrcMessage *msg);
-	void parseChannelMode(const QString &szNick,const QString &szUser,const QString &szHost,KviChannel * chan,KviStr &modefl,KviIrcMessage *msg,int curParam);
+	void parseChannelMode(const QString &szNick,const QString &szUser,const QString &szHost,KviChannel * chan,KviCString &modefl,KviIrcMessage *msg,int curParam);
 	void parseUserMode(KviIrcMessage *msg,const char * modeflptr);
 	void parseLiteralCap(KviIrcMessage * msg);
 	void parseLiteralAuthenticate(KviIrcMessage * msg);
@@ -263,11 +263,11 @@ private:
 	void parseNumericSaslFail(KviIrcMessage * msg);
 	
 public:
-	static void encodeCtcpParameter(const char * param,KviStr &buffer,bool bSpaceBreaks = true);
+	static void encodeCtcpParameter(const char * param,KviCString &buffer,bool bSpaceBreaks = true);
 	static void encodeCtcpParameter(const char * param,QString &buffer,bool bSpaceBreaks = true);
-	static const char * decodeCtcpEscape(const char * msg_ptr,KviStr &buffer);
+	static const char * decodeCtcpEscape(const char * msg_ptr,KviCString &buffer);
 	static const char * decodeCtcpEscape(const char * msg_ptr,QByteArray &buffer);
-	static const char * extractCtcpParameter(const char * msg_ptr,KviStr &buffer,bool bSpaceBreaks = true, bool bSafeOnly=false);
+	static const char * extractCtcpParameter(const char * msg_ptr,KviCString &buffer,bool bSpaceBreaks = true, bool bSafeOnly=false);
 	static const char * extractCtcpParameter(const char * msg_ptr,QString &buffer,bool bSpaceBreaks = true, bool bSafeOnly=false);
 };
 

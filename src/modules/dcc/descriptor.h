@@ -6,7 +6,7 @@
 //   Creation date : Tue Jul 23 01:11:52 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (oragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (oragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,9 +24,9 @@
 //
 //=============================================================================
 
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_console.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 
 class KviDccWindow;
 class KviDccFileTransfer;
@@ -41,7 +41,7 @@ protected:
 	KviConsole         * m_pConsole;
 
 	// mIrc zero port reverse send/chat extension
-	KviStr               m_szZeroPortRequestTag;
+	KviCString               m_szZeroPortRequestTag;
 
 	unsigned int         m_uId; // this dcc session ID
 	QString              m_szId;
@@ -64,7 +64,7 @@ public:
 	// mIrc zero port reverse send/chat extension
 	bool isZeroPortRequest() const { return m_szZeroPortRequestTag.hasData(); };
 	const char * zeroPortRequestTag() const { return m_szZeroPortRequestTag.ptr(); };
-	void setZeroPortRequestTag(const KviStr &szTag){ m_szZeroPortRequestTag = szTag; };
+	void setZeroPortRequestTag(const KviCString &szTag){ m_szZeroPortRequestTag = szTag; };
 
 	unsigned int id() const { return m_uId; };
 	const QString & idString() const { return m_szId; };
@@ -127,7 +127,7 @@ public:
 	bool            bIsIncomingAvatar; // It is an Incoming Avatar DCC SEND ?
 
 	// DCC VOICE
-	KviStr          szCodec;           // codec name
+	KviCString          szCodec;           // codec name
 	int             iSampleRate;       // Sample rate
 public:
 	QString protocol() const { return szType; };

@@ -24,7 +24,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_module.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_netutils.h"
 
 #include "manager.h"

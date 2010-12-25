@@ -6,7 +6,7 @@
 //   Creation date : Fri Aug 11 2000 18:05:59 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_window.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_listwidget.h"
 
@@ -66,8 +66,8 @@ protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void saveProperties(KviConfig * cfg);
-	virtual void loadProperties(KviConfig * cfg);
+	virtual void saveProperties(KviConfigurationFile * cfg);
+	virtual void loadProperties(KviConfigurationFile * cfg);
 public:
 	QTextBrowser * textBrowser();
 public slots:

@@ -32,7 +32,7 @@
 * \brief Comparison function kvi_hstrEqualCIN
 */
 
-#include "kvi_string.h"
+#include "KviCString.h"
 
 /**
 * \brief Returns true if the string are equals casa insensitive

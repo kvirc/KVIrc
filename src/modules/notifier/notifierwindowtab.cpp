@@ -29,8 +29,8 @@
 #include "notifiersettings.h"
 
 #include "kvi_app.h"
-#include "kvi_config.h"
-#include "kvi_locale.h"
+#include "KviConfigurationFile.h"
+#include "KviLocale.h"
 #include "kvi_frame.h"
 #include "kvi_options.h"
 #include "kvi_window.h"

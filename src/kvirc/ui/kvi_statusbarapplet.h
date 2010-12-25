@@ -26,10 +26,10 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_pointerlist.h"
-#include "kvi_heapobject.h"
+#include "KviPointerList.h"
+#include "KviHeapObject.h"
 #include "kvi_statusbar.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 #include "kvi_http.h"
 
 #include <QString>
@@ -40,7 +40,7 @@
 class QTimer;
 class QLabel;
 class KviTalPopupMenu;
-class KviConfig;
+class KviConfigurationFile;
 class KviFrame;
 class KviIrcContext;
 class KviIrcConnection;
@@ -99,8 +99,8 @@ public:
 	inline int index() const { return mIndex; };
 protected:
 	virtual void fillContextPopup(KviTalPopupMenu *){};
-	virtual void loadState(const char *, KviConfig *){};
-	virtual void saveState(const char *, KviConfig *){};
+	virtual void loadState(const char *, KviConfigurationFile *){};
+	virtual void saveState(const char *, KviConfigurationFile *){};
 	virtual QString tipText(const QPoint &);
 };
 
@@ -128,8 +128,8 @@ protected:
 	virtual void fillContextPopup(KviTalPopupMenu * p);
 	virtual void timerEvent(QTimerEvent * e);
 
-	virtual void loadState(const char * pcPrefix, KviConfig * pCfg);
-	virtual void saveState(const char * pcPrefix, KviConfig * pCfg);
+	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
+	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
 	void adjustMinWidth();
 protected slots:
 	void toggleUtc();
@@ -149,8 +149,8 @@ protected:
 protected:
 	virtual void timerEvent(QTimerEvent * e);
 	virtual void fillContextPopup(KviTalPopupMenu * p);
-	virtual void loadState(const char * pcPrefix, KviConfig * pCfg);
-	virtual void saveState(const char * pcPrefix, KviConfig * pCfg);
+	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
+	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
 public:
 	static void selfRegister(KviStatusBar * pBar);
 protected slots:
@@ -183,8 +183,8 @@ protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual QString tipText(const QPoint &);
 	virtual void fillContextPopup(KviTalPopupMenu * p);
-	virtual void loadState(const char * pcPrefix, KviConfig * pCfg);
-	virtual void saveState(const char * pcPrefix, KviConfig * pCfg);
+	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
+	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
 protected slots:
 	void updateDisplay();
 	void toggleContext();
@@ -218,8 +218,8 @@ protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual QString tipText(const QPoint &);
 	virtual void fillContextPopup(KviTalPopupMenu * p);
-	virtual void loadState(const char * pcPrefix, KviConfig * pCfg);
-	virtual void saveState(const char * pcPrefix, KviConfig * pCfg);
+	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
+	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
 	void checkVersion();
 	void getNewVersion();
 protected slots:

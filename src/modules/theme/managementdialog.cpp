@@ -4,7 +4,7 @@
 //   Creation date : Sat 30 Dec 2006 14:54:56 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2006-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2006-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,14 +28,14 @@
 #include "themefunctions.h"
 
 #include "kvi_options.h"
-#include "kvi_locale.h"
-#include "kvi_config.h"
-#include "kvi_fileutils.h"
+#include "KviLocale.h"
+#include "KviConfigurationFile.h"
+#include "KviFileUtils.h"
 #include "kvi_app.h"
 #include "kvi_frame.h"
 #include "kvi_iconmanager.h"
 #include "kvi_internalcmd.h"
-#include "kvi_packagefile.h"
+#include "KviPackageFile.h"
 #include "kvi_fileextensions.h"
 #include "kvi_filedialog.h"
 #include "kvi_dynamictooltip.h"

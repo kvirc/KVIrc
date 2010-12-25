@@ -4,7 +4,7 @@
 //   Creation date : Mon 23 Dec 2002 20:23:59 2002 GMT by Szymon Stefanek
 //
 //   This toolbar is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,9 +25,9 @@
 #include "codetester.h"
 
 #include "kvi_module.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_frame.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 
 
 KviPointerList<KviCodeTesterWindow> * g_pCodeTesterWindowList = 0;

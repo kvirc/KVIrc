@@ -4,7 +4,7 @@
 //   Creation date : Tue Jul 23 02:44:38 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -37,10 +37,10 @@
 
 #include "kvi_debug.h"
 #include "kvi_settings.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_module.h"
 #include "kvi_sparser.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_out.h"
 #include "kvi_console.h"
 #include "kvi_netutils.h"
@@ -49,8 +49,8 @@
 #include "kvi_error.h"
 #include "kvi_options.h"
 #include "kvi_defaults.h"
-#include "kvi_sharedfiles.h"
-#include "kvi_mirccntrl.h"
+#include "KviSharedFilesManager.h"
+#include "KviMircCntrl.h"
 #include "kvi_app.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
@@ -154,7 +154,7 @@ static void dcc_module_set_dcc_type(KviDccDescriptor * d,const char * szBaseType
 	if(d->bIsTdcc)d->szType.prepend('T');
 }
 
-static bool dcc_module_normalize_target_data(KviDccRequest * dcc,KviStr &ipaddr,KviStr &port)
+static bool dcc_module_normalize_target_data(KviDccRequest * dcc,KviCString &ipaddr,KviCString &port)
 {
 	if(!port.isUnsignedNum())
 	{
@@ -185,7 +185,7 @@ static bool dcc_module_normalize_target_data(KviDccRequest * dcc,KviStr &ipaddr,
 		}
 		ipaddr = tmp;
 	} else {
-		//FIXME: KviStr -> QString
+		//FIXME: KviCString -> QString
 		if(!KviNetUtils::stringIpToBinaryIp(QString(ipaddr),&addr))
 		{
 #ifdef COMPILE_IPV6_SUPPORT
@@ -270,7 +270,7 @@ static void dccModuleParseDccChat(KviDccRequest *dcc)
 		}
 	}
 
-	KviStr szExtensions = dcc->szType;
+	KviCString szExtensions = dcc->szType;
 	szExtensions.cutRight(4); // cut off CHAT
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -475,7 +475,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 		dcc->szParam1.cutToLast("%2F");
 	}
 
-	KviStr szExtensions = dcc->szType;
+	KviCString szExtensions = dcc->szType;
 	szExtensions.cutRight(4); // cut off SEND
 
 	bool bTurboExtension = szExtensions.contains('T',false);
@@ -626,7 +626,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 		dcc->szParam1.cutToLast('/');
 	}
 
-	KviStr szExtensions = dcc->szType;
+	KviCString szExtensions = dcc->szType;
 	szExtensions.cutRight(4); // cut off RECV
 
 	bool bTurboExtension = szExtensions.contains('T',false);
@@ -712,7 +712,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 			dcc->szParam1.ptr());
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
 			__tr2qs_ctx("The remote client is listening on interface %s and port %s","dcc"),dcc->szParam2.ptr(),dcc->szParam3.ptr());
-		KviStr szSwitches = "-c";
+		KviCString szSwitches = "-c";
 		if(bTurboExtension)szSwitches.prepend("-t ");
 #ifdef COMPILE_SSL_SUPPORT
 		if(bSSLExtension)szSwitches.prepend("-s ");
@@ -765,7 +765,7 @@ static void dccModuleParseDccRSend(KviDccRequest *dcc)
 		dcc->szParam1.cutToLast('/');
 	}
 
-	KviStr szExtensions = dcc->szType;
+	KviCString szExtensions = dcc->szType;
 	szExtensions.cutRight(4); // cut off SEND
 
 	bool bTurboExtension = szExtensions.contains('T',false);
@@ -848,7 +848,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 	if(!dcc_module_check_limits(dcc))return;
 	if(!dcc_module_check_concurrent_transfers_limit(dcc))return;
 
-	KviStr szExtensions = dcc->szType;
+	KviCString szExtensions = dcc->szType;
 	szExtensions.cutRight(3); // cut off GET
 
 	bool bTurboExtension = szExtensions.contains('T',false);
@@ -888,7 +888,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 	if(KVI_OPTION_BOOL(KviOption_boolCantAcceptIncomingDccConnections))
 	{
 		// we have to use DCC RSEND, otherwise it will not work
-		KviStr szSubproto("RSEND");
+		KviCString szSubproto("RSEND");
 		szSubproto.prepend(szExtensions);
 
 

@@ -77,7 +77,7 @@ char * getLocal(varname)
 	char * varname
 	CODE:
 		QString tmp;
-		KviStr hack;
+		KviCString hack;
 		if(g_pCurrentKvsContext)
 		{
 			KviKvsVariant * pVar = g_pCurrentKvsContext->localVariables()->find(varname);
@@ -110,7 +110,7 @@ char * getGlobal(varname)
 	char * varname
 	CODE:
 		QString tmp;
-		KviStr hack;
+		KviCString hack;
 		if(g_pCurrentKvsContext)
 		{
 			KviKvsVariant * pVar = g_pCurrentKvsContext->globalVariables()->find(varname);

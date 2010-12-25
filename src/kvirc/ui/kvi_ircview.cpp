@@ -4,7 +4,7 @@
 //   Creation date : Tue Jul 6 1999 14:45:20 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -78,17 +78,17 @@
 #include "kvi_app.h"
 #include "kvi_settings.h"
 #include "kvi_options.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_defaults.h"
 #include "kvi_window.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_frame.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_iconmanager.h"
 #include "kvi_out.h"
-#include "kvi_parameterlist.h"
+#include "KviParameterList.h"
 #include "kvi_console.h"
-#include "kvi_ircuserdb.h"
+#include "KviIrcUserDataBase.h"
 #include "kvi_channel.h"
 #include "kvi_filedialog.h"
 #include "kvi_msgbox.h"
@@ -97,7 +97,7 @@
 #include "kvi_mdimanager.h"
 #include "kvi_userinput.h"
 #include "kvi_tal_popupmenu.h"
-#include "kvi_animatedpixmap.h"
+#include "KviAnimatedPixmap.h"
 
 #include <QBitmap>
 #include <QPainter>
@@ -345,12 +345,12 @@ static inline void delete_text_line(KviIrcViewLine * line,QHash<KviIrcViewLine*,
 		if((line->pChunks[i].type == KVI_TEXT_ESCAPE) || (line->pChunks[i].type == KVI_TEXT_ICON))
 		{
 			if( (line->pChunks[i].type == KVI_TEXT_ICON) && (line->pChunks[i].szPayload!=line->pChunks[i].szSmileId) )
-				kvi_free(line->pChunks[i].szSmileId);
-			kvi_free(line->pChunks[i].szPayload);
+				KviMemory::free(line->pChunks[i].szSmileId);
+			KviMemory::free(line->pChunks[i].szPayload);
 		}
 	}
-	kvi_free(line->pChunks);                        //free attributes data
-	if(line->iBlockCount)kvi_free(line->pBlocks);
+	KviMemory::free(line->pChunks);                        //free attributes data
+	if(line->iBlockCount)KviMemory::free(line->pBlocks);
 	delete line;
 }
 
@@ -1605,9 +1605,9 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 		return;
 
 	if(ptr->iBlockCount != 0)
-		kvi_free(ptr->pBlocks); // free any previous wrap blocks
+		KviMemory::free(ptr->pBlocks); // free any previous wrap blocks
 
-	ptr->pBlocks              = (KviIrcViewWrappedBlock *)kvi_malloc(sizeof(KviIrcViewWrappedBlock)); // alloc one block
+	ptr->pBlocks              = (KviIrcViewWrappedBlock *)KviMemory::allocate(sizeof(KviIrcViewWrappedBlock)); // alloc one block
 	ptr->iMaxLineWidth        = maxWidth; // calculus for this width
 	ptr->iBlockCount          = 0;        // it will be ++
 	ptr->uLineWraps           = 0;        // no line wraps yet
@@ -1662,7 +1662,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 				return;
 
 			//Process the next block of data in the next loop
-			ptr->pBlocks = (KviIrcViewWrappedBlock *)kvi_realloc(ptr->pBlocks,(ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
+			ptr->pBlocks = (KviIrcViewWrappedBlock *)KviMemory::reallocate(ptr->pBlocks,(ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
 			ptr->pBlocks[ptr->iBlockCount].block_start = ptr->pChunks[curAttrBlock].iTextStart;
 			ptr->pBlocks[ptr->iBlockCount].block_len = 0;
 			ptr->pBlocks[ptr->iBlockCount].block_width = 0;
@@ -1701,7 +1701,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 				ptr->pBlocks[ptr->iBlockCount].pChunk  = 0;
 				ptr->pBlocks[ptr->iBlockCount].block_width = 0;
 				ptr->iBlockCount++;
-				ptr->pBlocks = (KviIrcViewWrappedBlock *)kvi_realloc(ptr->pBlocks,(ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
+				ptr->pBlocks = (KviIrcViewWrappedBlock *)KviMemory::reallocate(ptr->pBlocks,(ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
 				ptr->pBlocks[ptr->iBlockCount].block_start = p - unicode;
 				ptr->pBlocks[ptr->iBlockCount].block_len   = 0;
 				ptr->pBlocks[ptr->iBlockCount].block_width = 0;
@@ -1740,7 +1740,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 		ptr->pBlocks[ptr->iBlockCount].block_width = -1; // word wrap --> negative block_width
 		maxBlockLen-=curBlockLen;
 		ptr->iBlockCount++;
-		ptr->pBlocks = (KviIrcViewWrappedBlock *)kvi_realloc(ptr->pBlocks,(ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
+		ptr->pBlocks = (KviIrcViewWrappedBlock *)KviMemory::reallocate(ptr->pBlocks,(ptr->iBlockCount + 1) * sizeof(KviIrcViewWrappedBlock));
 		ptr->pBlocks[ptr->iBlockCount].block_start = p - unicode;
 		ptr->pBlocks[ptr->iBlockCount].block_len   = 0;
 		ptr->pBlocks[ptr->iBlockCount].block_width = 0;

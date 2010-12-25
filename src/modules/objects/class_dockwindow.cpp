@@ -4,7 +4,7 @@
 //   Creation date : Thu 29 Dec 2005 23:45:11 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2005-2009 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,8 +25,8 @@
 #include "class_dockwindow.h"
 
 #include "kvi_frame.h"
-#include "kvi_locale.h"
-#include "kvi_qstring.h"
+#include "KviLocale.h"
+#include "KviQString.h"
 
 #include <QDockWidget>
 #define QT_DOCK_WINDOW QDockWidget

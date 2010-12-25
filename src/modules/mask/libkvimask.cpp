@@ -4,7 +4,7 @@
 //   Creation date : Thu Dec 27 2001 17:13:12 GMT by Szymon Stefanek
 //
 //   This str is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,9 +23,9 @@
 //=============================================================================
 
 #include "kvi_module.h"
-#include "kvi_locale.h"
-#include "kvi_string.h"
-#include "kvi_ircmask.h"
+#include "KviLocale.h"
+#include "KviCString.h"
+#include "KviIrcMask.h"
 
 /*
 	@doc: mask.match

@@ -4,7 +4,7 @@
 //   Creation date : Sat Aug 12 2000 20:30:29 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -150,18 +150,18 @@ KviModule::~KviModule()
 	delete m_pLibrary;
 }
 
-KviModuleExtensionDescriptor * KviModule::registerExtension(const KviStr &szType,const KviStr &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r)
+KviModuleExtensionDescriptor * KviModule::registerExtension(const KviCString &szType,const KviCString &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r)
 {
 	QPixmap pix; // null
 	return g_pModuleExtensionManager->registerExtension(this,szType,szName,szVisibleName,r,pix);
 }
 
-KviModuleExtensionDescriptor * KviModule::registerExtension(const KviStr &szType,const KviStr &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r,const QPixmap &icon)
+KviModuleExtensionDescriptor * KviModule::registerExtension(const KviCString &szType,const KviCString &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r,const QPixmap &icon)
 {
 	return g_pModuleExtensionManager->registerExtension(this,szType,szName,szVisibleName,r,icon);
 }
 
-KviModuleExtensionDescriptor * KviModule::findExtensionDescriptor(const KviStr &szType,const KviStr &szName)
+KviModuleExtensionDescriptor * KviModule::findExtensionDescriptor(const KviCString &szType,const KviCString &szName)
 {
 	return g_pModuleExtensionManager->findExtensionDescriptor(szType,szName);
 }

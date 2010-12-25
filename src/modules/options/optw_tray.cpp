@@ -27,7 +27,7 @@
 #include "kvi_frame.h"
 #include "kvi_internalcmd.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_tal_tooltip.h"
 
 #include <QLayout>

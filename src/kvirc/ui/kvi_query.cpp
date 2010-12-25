@@ -4,7 +4,7 @@
 //   Creation date : Tue Aug 7 2000 14:23:22 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,27 +29,27 @@
 #include "kvi_ircview.h"
 #include "kvi_input.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_settings.h"
 #include "kvi_ircsocket.h"
 #include "kvi_out.h"
-#include "kvi_config.h"
-#include "kvi_mirccntrl.h"
+#include "KviConfigurationFile.h"
+#include "KviMircCntrl.h"
 #include "kvi_settings.h"
 #include "kvi_themedlabel.h"
 #include "kvi_useraction.h"
-#include "kvi_parameterlist.h"
+#include "KviParameterList.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_sparser.h"
-#include "kvi_ircuserdb.h"
-#include "kvi_mirccntrl.h"
+#include "KviIrcUserDataBase.h"
+#include "KviMircCntrl.h"
 #include "kvi_toolwindows_container.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_tal_hbox.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "kvi_crypt.h"
+	#include "KviCryptEngine.h"
 	#include "kvi_cryptcontroller.h"
 #endif
 
@@ -311,7 +311,7 @@ void KviQuery::textViewRightClicked()
 	KVS_TRIGGER_EVENT_0(KviEvent_OnQueryPopupRequest,this);
 }
 
-void KviQuery::saveProperties(KviConfig * cfg)
+void KviQuery::saveProperties(KviConfigurationFile * cfg)
 {
 	KviWindow::saveProperties(cfg);
 	QList<int> sizes;
@@ -320,7 +320,7 @@ void KviQuery::saveProperties(KviConfig * cfg)
 	cfg->writeEntry("UserListViewVisible",m_pUserListView->isVisible());
 }
 
-void KviQuery::loadProperties(KviConfig * cfg)
+void KviQuery::loadProperties(KviConfigurationFile * cfg)
 {
 	int iWidth = width();
 	KviWindow::loadProperties(cfg);
@@ -583,7 +583,7 @@ void KviQuery::ownMessage(const QString & szBuffer, bool bUserFeedback)
 		{
 			if(*d != KVI_TEXT_CRYPTESCAPE)
 			{
-				KviStr encrypted;
+				KviCString encrypted;
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(500 - szName.length());
 				switch(cryptSessionInfo()->m_pEngine->encrypt(d,encrypted))
 				{

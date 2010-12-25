@@ -6,7 +6,7 @@
 //   Creation date : Mon Dec 23 2002 14:35:55 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -25,10 +25,10 @@
 //=============================================================================
 
 #include "kvi_window.h"
-#include "kvi_string.h"
-#include "kvi_pointerlist.h"
+#include "KviCString.h"
+#include "KviPointerList.h"
 #include "kvi_tal_popupmenu.h"
-#include "kvi_heapobject.h"
+#include "KviHeapObject.h"
 
 #include <QWidget>
 #include <QLineEdit>
@@ -106,8 +106,8 @@ public:
 	void exportAliases(bool,bool=false);
 	void exportSelectionInSinglesFiles(KviPointerList<KviAliasEditorTreeWidgetItem> *l);
 
-	void saveProperties(KviConfig *);
-	void loadProperties(KviConfig *);
+	void saveProperties(KviConfigurationFile *);
+	void loadProperties(KviConfigurationFile *);
 	static void splitFullAliasOrNamespaceName(const QString &szFullName,QStringList &lNamespaces,QString &szName);
 protected slots:
 	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *);
@@ -179,8 +179,8 @@ protected:
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void getConfigGroupName(QString &szName);
-	virtual void saveProperties(KviConfig *);
-	virtual void loadProperties(KviConfig *);
+	virtual void saveProperties(KviConfigurationFile *);
+	virtual void loadProperties(KviConfigurationFile *);
 protected slots:
 	void cancelClicked();
 	void okClicked();

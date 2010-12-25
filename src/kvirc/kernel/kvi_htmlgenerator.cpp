@@ -25,7 +25,7 @@
 #include "kvi_htmlgenerator.h"
 
 #include "kvi_iconmanager.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_options.h"
 #include "kvi_texticonmanager.h"
 

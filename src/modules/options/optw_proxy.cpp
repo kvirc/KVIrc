@@ -4,7 +4,7 @@
 //   Creation date : Mon Jun 24 2000 22:02:11 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,9 +24,9 @@
 
 #include "optw_proxy.h"
 
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_iconmanager.h"
-#include "kvi_proxydb.h"
+#include "KviProxyDataBase.h"
 #include "kvi_ipeditor.h"
 #include "kvi_netutils.h"
 #include "kvi_settings.h"
@@ -199,7 +199,7 @@ void KviProxyOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetIt
 
 		for(int i=0;i<m_pProtocolBox->count();i++)
 		{
-			KviStr txt = m_pProtocolBox->itemText(i);
+			KviCString txt = m_pProtocolBox->itemText(i);
 			if(kvi_strEqualCI(m_pLastEditedItem->m_pProxyData->protocolName().toUtf8().data(),txt.ptr()))
 			{
 				m_pProtocolBox->setCurrentIndex(i);
@@ -226,7 +226,7 @@ void KviProxyOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetIt
 
 		m_pUserEdit->setText(m_pLastEditedItem->m_pProxyData->m_szUser);
 		m_pPassEdit->setText(m_pLastEditedItem->m_pProxyData->m_szPass);
-		KviStr tmp(KviStr::Format,"%u",m_pLastEditedItem->m_pProxyData->m_uPort);
+		KviCString tmp(KviCString::Format,"%u",m_pLastEditedItem->m_pProxyData->m_uPort);
 		m_pPortEdit->setText(tmp.ptr());
 	} else {
 		m_pProxyEdit->setText("");
@@ -242,7 +242,7 @@ void KviProxyOptionsWidget::saveLastItem()
 {
 	if(m_pLastEditedItem)
 	{
-		KviStr tmp = m_pProxyEdit->text();
+		KviCString tmp = m_pProxyEdit->text();
 		if(tmp.isEmpty())tmp = "irc.unknown.net";
 		m_pLastEditedItem->setText(0,tmp.ptr());
 		m_pLastEditedItem->m_pProxyData->m_szHostname = tmp;

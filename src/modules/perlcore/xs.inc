@@ -126,7 +126,7 @@ XS(XS_KVIrc_getLocal)
 	dXSTARG;
 #line 55 "KVIrc.xs"
 		QString tmp;
-		KviStr hack;
+		KviCString hack;
 		if(g_pCurrentKvsContext)
 		{
 			KviKvsVariant * pVar = g_pCurrentKvsContext->localVariables()->find(varname);
@@ -180,7 +180,7 @@ XS(XS_KVIrc_getGlobal)
 	dXSTARG;
 #line 88 "KVIrc.xs"
 		QString tmp;
-		KviStr hack;
+		KviCString hack;
 		if(g_pCurrentKvsContext)
 		{
 			KviKvsVariant * pVar = g_pCurrentKvsContext->globalVariables()->find(varname);

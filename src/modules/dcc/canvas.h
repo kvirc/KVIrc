@@ -6,7 +6,7 @@
 //   Creation date : Sun Jul 29 07 2001 20:17:12 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -32,8 +32,8 @@
 	#include "thread.h"
 
 	#include "kvi_window.h"
-	#include "kvi_string.h"
-	#include "kvi_pointerlist.h"
+	#include "KviCString.h"
+	#include "KviPointerList.h"
 
 	class KviDccMarshal;
 	class KviCanvasWidget;
@@ -53,7 +53,7 @@
 	protected:
 		virtual const QString &target();
 		virtual void fillCaptionBuffers();
-		virtual void getBaseLogFileName(KviStr &buffer);
+		virtual void getBaseLogFileName(KviCString &buffer);
 		virtual QPixmap * myIconPtr();
 		virtual void resizeEvent(QResizeEvent *e);
 		virtual QSize sizeHint() const;

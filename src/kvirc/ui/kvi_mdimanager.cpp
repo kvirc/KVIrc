@@ -33,7 +33,7 @@
 #include "kvi_settings.h"
 #include "kvi_mdimanager.h"
 #include "kvi_mdichild.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_options.h"
 #include "kvi_iconmanager.h"
 #include "kvi_frame.h"

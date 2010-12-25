@@ -4,7 +4,7 @@
 //   Creation date : Fri 31 Oct 2003 01:52:04 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,15 +28,15 @@
 #include "kvi_kvs_kernel.h"
 #include "kvi_kvs_timermanager.h"
 #include "kvi_kvs_arraycast.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_input.h"
 #include "kvi_app.h"
 #include "kvi_channel.h"
 #include "kvi_console.h"
 #include "kvi_iconmanager.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_frame.h"
-#include "kvi_time.h"
+#include "KviTimeUtils.h"
 #include "kvi_kvs_eventmanager.h"
 #include "kvi_kvs_eventhandler.h"
 #include "kvi_lagmeter.h"
@@ -156,11 +156,11 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("hex_encoded_string",KVS_PT_STRING,0,szHex)
 		KVSCF_PARAMETERS_END
 
-		KviStr tmp1(szHex);
+		KviCString tmp1(szHex);
 		char * buf;
 		int len = tmp1.hexToBuffer(&buf,true);
 		KVSCF_pRetBuffer->setString(QString(QByteArray(buf,len)));
-		KviStr::freeBuffer(buf);
+		KviCString::freeBuffer(buf);
 		return true;
 	}
 

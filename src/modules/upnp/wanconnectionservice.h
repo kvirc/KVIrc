@@ -35,7 +35,7 @@
 #define UPNP_WANCONNECTIONSERVICE_H
 
 #include "service.h"
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 
 namespace UPnP
 {

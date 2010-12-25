@@ -6,7 +6,7 @@
 //   Creation date : Mon Apr 21 2003 23:14:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2003-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -25,11 +25,11 @@
 //=============================================================================
 
 #include "kvi_window.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_sparser.h"
 #include "kvi_console.h"
 #include "kvi_moduleextension.h"
-#include "kvi_sharedfiles.h"
+#include "KviSharedFilesManager.h"
 #include <QTreeWidget>
 
 #include <QDialog>

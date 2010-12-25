@@ -6,7 +6,7 @@
 //   Creation date : Tue Jul 6 1999 14:52:20 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -31,8 +31,8 @@
 
 
 #include "kvi_app.h"
-#include "kvi_string.h"
-#include "kvi_qstring.h"
+#include "KviCString.h"
+#include "KviQString.h"
 #include "kvi_settings.h"
 #include "kvi_irccontext.h"
 #include "kvi_ircconnection.h"
@@ -58,7 +58,7 @@ class QPixmap;
 class QTextCodec;
 class KviFrame;
 class KviWindowListItem;
-class KviConfig;
+class KviConfigurationFile;
 class KviIrcView;
 class KviConsole;
 class KviIrcConnection;
@@ -319,8 +319,8 @@ signals:
 protected:
 	// Loading and saving of properties
 	// Protected: only KviFrame can call these
-	virtual void saveProperties(KviConfig *cfg);
-	virtual void loadProperties(KviConfig *cfg);
+	virtual void saveProperties(KviConfigurationFile *cfg);
+	virtual void loadProperties(KviConfigurationFile *cfg);
 	// Creation and destruction events: overridden in windows that have script events bound to creation and destruction
 	virtual void triggerCreationEvents(){};
 	virtual void triggerDestructionEvents(){};

@@ -4,7 +4,7 @@
 //   Creation date : Mon Jan 08 2007 03:23:00 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2007-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2007-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,10 +24,10 @@
 
 
 #include "kvi_theme.h"
-#include "kvi_fileutils.h"
-#include "kvi_config.h"
-#include "kvi_locale.h"
-#include "kvi_miscutils.h"
+#include "KviFileUtils.h"
+#include "KviConfigurationFile.h"
+#include "KviLocale.h"
+#include "KviMiscUtils.h"
 #include "kvi_sourcesdate.h"
 
 #include <QImage>
@@ -58,7 +58,7 @@ bool KviThemeInfo::load(const QString &szThemeFileName)
 		return false;
 	}
 
-	KviConfig cfg(szThemeFileName,KviConfig::Read);
+	KviConfigurationFile cfg(szThemeFileName,KviConfigurationFile::Read);
 
 	cfg.setGroup(KVI_THEMEINFO_CONFIG_GROUP);
 
@@ -99,7 +99,7 @@ bool KviThemeInfo::load(const QString &szThemeFileName)
 
 bool KviThemeInfo::save(const QString &szThemeFileName)
 {
-	KviConfig inf(szThemeFileName,KviConfig::Write);
+	KviConfigurationFile inf(szThemeFileName,KviConfigurationFile::Write);
 
 	inf.clear();
 

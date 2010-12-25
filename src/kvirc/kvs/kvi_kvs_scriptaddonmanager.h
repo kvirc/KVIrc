@@ -6,7 +6,7 @@
 //   Creation date : Thu 31 Mar 2005 01:21:23 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,13 +25,13 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_heapobject.h"
-#include "kvi_qstring.h"
-#include "kvi_pointerhashtable.h"
+#include "KviHeapObject.h"
+#include "KviQString.h"
+#include "KviPointerHashTable.h"
 
 #include <QStringList>
 
-class KviConfig;
+class KviConfigurationFile;
 class KviKvsScript;
 class KviWindow;
 class QPixmap;
@@ -88,8 +88,8 @@ public:
 	void executeConfigureCallback(KviWindow * pWnd);
 	void executeHelpCallback(KviWindow * pWnd);
 protected:
-	bool load(KviConfig * cfg,const QString &szName);
-	void save(KviConfig * cfg);
+	bool load(KviConfigurationFile * cfg,const QString &szName);
+	void save(KviConfigurationFile * cfg);
 	void executeUninstallCallback(KviWindow * pWnd);
 	// this assumes that the script pointers are clean (i.e. not needing to be freed!)
 	void allocateScripts(const QString &sVisibleNameCode,const QString &szDescriptionCode,const QString &szUninstallCallbackCode);

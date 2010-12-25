@@ -4,7 +4,7 @@
 //   Creation date : Mon Dec 23 2002 14:36:18 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -27,19 +27,19 @@
 
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_imagedialog.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_filedialog.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_scripteditor.h"
 #include "kvi_debug.h"
 #include "kvi_app.h"
 #include "kvi_frame.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_kvs_aliasmanager.h"
 #include "kvi_filedialog.h"
-#include "kvi_cmdformatter.h"
+#include "KviCommandFormatter.h"
 #include "kvi_module.h"
 #include "kvi_tal_vbox.h"
 #include "kvi_fileextensions.h"
@@ -835,7 +835,7 @@ void KviAliasEditor::buildAliasesFile(KviPointerList<KviAliasEditorTreeWidgetIte
 	}
 }
 
-void KviAliasEditor::saveProperties(KviConfig *cfg)
+void KviAliasEditor::saveProperties(KviConfigurationFile *cfg)
 {
 	cfg->writeEntry("Sizes",m_pSplitter->sizes());
 	QString szName;
@@ -844,7 +844,7 @@ void KviAliasEditor::saveProperties(KviConfig *cfg)
 	cfg->writeEntry("LastAlias",szName);
 }
 
-void KviAliasEditor::loadProperties(KviConfig *cfg)
+void KviAliasEditor::loadProperties(KviConfigurationFile *cfg)
 {
 	QList<int> def;
 	def.append(20);
@@ -1236,12 +1236,12 @@ void KviAliasEditorWindow::getConfigGroupName(QString &szName)
 	szName = "aliaseditor";
 }
 
-void KviAliasEditorWindow::saveProperties(KviConfig *cfg)
+void KviAliasEditorWindow::saveProperties(KviConfigurationFile *cfg)
 {
 	m_pEditor->saveProperties(cfg);
 }
 
-void KviAliasEditorWindow::loadProperties(KviConfig *cfg)
+void KviAliasEditorWindow::loadProperties(KviConfigurationFile *cfg)
 {
 	m_pEditor->loadProperties(cfg);
 }

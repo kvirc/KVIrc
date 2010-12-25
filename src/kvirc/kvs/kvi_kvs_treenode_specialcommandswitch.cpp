@@ -4,7 +4,7 @@
 //   Creation date : Fri 02 Jan 2004 14:09:00 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@
 #include "kvi_kvs_treenode_expression.h"
 #include "kvi_kvs_treenode_instruction.h"
 #include "kvi_kvs_runtimecontext.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 #include <QRegExp>
 

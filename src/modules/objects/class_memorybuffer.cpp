@@ -28,10 +28,10 @@
 #include "kvi_error.h"
 #include "kvi_debug.h"
 #include "kvi_settings.h"
-#include "kvi_locale.h"
-#include "kvi_process.h"
-#include "kvi_fileutils.h"
-#include "kvi_file.h"
+#include "KviLocale.h"
+#include "QProcess"
+#include "KviFileUtils.h"
+#include "KviFile.h"
 
 #include <QFileInfo>
 

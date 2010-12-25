@@ -4,7 +4,7 @@
 //   Creation date : Tue 07 Oct 2003 01:07:31 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,7 +23,7 @@
 //=============================================================================
 
 #include "kvi_kvs_array.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 
 #include <stdlib.h>
 
@@ -44,7 +44,7 @@ KviKvsArray::KviKvsArray(const KviKvsArray & array)
 	m_uAllocSize = array.m_uAllocSize;
 	if(m_uAllocSize > 0)
 	{
-		m_pData = (KviKvsVariant **)kvi_malloc((sizeof(KviKvsVariant *)) * m_uAllocSize);
+		m_pData = (KviKvsVariant **)KviMemory::allocate((sizeof(KviKvsVariant *)) * m_uAllocSize);
 		kvs_uint_t u;
 		for(u = 0; u < m_uSize; u++)
 		{
@@ -66,7 +66,7 @@ KviKvsArray::~KviKvsArray()
 			if(m_pData[u])
 				delete m_pData[u];
 		}
-		kvi_free(m_pData);
+		KviMemory::free(m_pData);
 	}
 }
 
@@ -148,9 +148,9 @@ void KviKvsArray::findNewSize()
 		// m_pData is non-zero here since was m_uSize > 0 initally
 		if(m_uSize > 0)
 		{
-			m_pData = (KviKvsVariant **)kvi_realloc(m_pData,(sizeof(KviKvsVariant *)) * m_uAllocSize);
+			m_pData = (KviKvsVariant **)KviMemory::reallocate(m_pData,(sizeof(KviKvsVariant *)) * m_uAllocSize);
 		} else {
-			kvi_free(m_pData);
+			KviMemory::free(m_pData);
 			m_pData = 0;
 		}
 	}
@@ -166,9 +166,9 @@ void KviKvsArray::set(kvs_uint_t uIdx, KviKvsVariant * pVal)
 			m_uAllocSize = uIdx + 1;
 
 		if(m_pData)
-			m_pData = (KviKvsVariant **)kvi_realloc(m_pData,(sizeof(KviKvsVariant *)) * m_uAllocSize);
+			m_pData = (KviKvsVariant **)KviMemory::reallocate(m_pData,(sizeof(KviKvsVariant *)) * m_uAllocSize);
 		else
-			m_pData = (KviKvsVariant **)kvi_malloc((sizeof(KviKvsVariant *)) * m_uAllocSize);
+			m_pData = (KviKvsVariant **)KviMemory::allocate((sizeof(KviKvsVariant *)) * m_uAllocSize);
 
 		for(kvs_uint_t u=m_uSize;u<uIdx;u++)
 			m_pData[u] = 0;
@@ -191,9 +191,9 @@ KviKvsVariant * KviKvsArray::getAt(kvs_uint_t uIdx)
 			m_uAllocSize = uIdx + 1;
 
 		if(m_pData)
-			m_pData = (KviKvsVariant **)kvi_realloc(m_pData,(sizeof(KviKvsVariant *)) * m_uAllocSize);
+			m_pData = (KviKvsVariant **)KviMemory::reallocate(m_pData,(sizeof(KviKvsVariant *)) * m_uAllocSize);
 		else
-			m_pData = (KviKvsVariant **)kvi_malloc((sizeof(KviKvsVariant *)) * m_uAllocSize);
+			m_pData = (KviKvsVariant **)KviMemory::allocate((sizeof(KviKvsVariant *)) * m_uAllocSize);
 
 		for(kvs_uint_t u = m_uSize; u < uIdx; u++)
 			m_pData[u] = 0;

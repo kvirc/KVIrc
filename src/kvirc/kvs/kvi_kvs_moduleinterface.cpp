@@ -4,7 +4,7 @@
 //   Creation date : Tue 16 Dec 2003 00:27:54 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,7 +26,7 @@
 #include "kvi_kvs_eventmanager.h"
 #include "kvi_module.h"
 #include "kvi_modulemanager.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_kvs_treenode_data.h"
 #include "kvi_kvs_treenode_datalist.h"
 

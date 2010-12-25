@@ -4,7 +4,7 @@
 //   Creation date : Sun Jun 18 2000 12:38:45 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,7 +25,7 @@
 
 
 #include "kvi_app.h"
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_settings.h"
 #include "kvi_ircurl.h"
 #include "kvi_defaults.h"
@@ -34,7 +34,7 @@
 #include "kvi_buildinfo.h"
 #ifdef COMPILE_DBUS_SUPPORT
 	#ifndef COMPILE_KDE_SUPPORT // 'cause kde adds an interface itself
-		#include "kvi_dbusadaptor.h"
+		#include "KviDbusAdaptor.h"
 	#endif
 #endif
 #ifndef COMPILE_NO_IPC
@@ -63,14 +63,14 @@ typedef struct _ParseArgs
 	bool      bShowPopup;
 	bool      bShowSplashScreen;
 	bool      bExecuteCommandAndClose;
-	KviStr    szExecCommand;
-	KviStr    szExecRemoteCommand;
+	KviCString    szExecCommand;
+	KviCString    szExecRemoteCommand;
 } ParseArgs;
 
 int parseArgs(ParseArgs * a)
 {
-	KviStr szServer;
-	KviStr szPort;
+	KviCString szServer;
+	KviCString szPort;
 	int idx;
 
 	if(a->argc < 2)return KVI_ARGS_RETCODE_OK;
@@ -256,7 +256,7 @@ int parseArgs(ParseArgs * a)
 			p = a->argv[idx];
 			if(kvi_strEqualCIN(p,"irc://",6) || kvi_strEqualCIN(p,"irc6://",7) || kvi_strEqualCIN(p,"ircs://",7) || kvi_strEqualCIN(p,"ircs6://",8))
 			{
-				KviStr tmp = QString::fromLocal8Bit(p);
+				KviCString tmp = QString::fromLocal8Bit(p);
 				a->szExecCommand ="openurl ";
 				tmp.replaceAll("$",""); // the urls can't contain $ signs
 				tmp.replaceAll(";",""); // the urls can't contain ; signs
@@ -272,7 +272,7 @@ int parseArgs(ParseArgs * a)
 			// no dash
 			if(kvi_strEqualCIN(p,"irc://",6) || kvi_strEqualCIN(p,"irc6://",7) || kvi_strEqualCIN(p,"ircs://",7) || kvi_strEqualCIN(p,"ircs6://",8))
 			{
-				KviStr szTmp = QString::fromLocal8Bit(p);
+				KviCString szTmp = QString::fromLocal8Bit(p);
 				if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
 				a->szExecCommand.append("openurl ");
 				szTmp.replaceAll("$",""); // the urls can't contain $ signs
@@ -384,7 +384,7 @@ int main(int argc, char ** argv)
 	#endif
 #endif
 
-	KviStr szRemoteCommand = a.szExecCommand;
+	KviCString szRemoteCommand = a.szExecCommand;
 	if(a.szExecRemoteCommand.hasData())
 	{
 		if(szRemoteCommand.hasData())
@@ -426,7 +426,7 @@ int main(int argc, char ** argv)
 		{
 			if(szRemoteCommand.isEmpty())
 			{
-				KviStr szTmp(KviStr::Format,"Another KVIrc session is already running on this display and with this user id.\nUse %s -f if you want to force a new session.",argv[0]);
+				KviCString szTmp(KviCString::Format,"Another KVIrc session is already running on this display and with this user id.\nUse %s -f if you want to force a new session.",argv[0]);
 				if(a.bShowPopup)
 				{
 					QMessageBox::information(0,"Session - KVIrc",szTmp.ptr(),QMessageBox::Ok);

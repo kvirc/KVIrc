@@ -4,7 +4,7 @@
 //   Creation date : Sat Oct 2 03:40:28 CET 2004 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2004-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,7 +23,7 @@
 //=============================================================================
 
 #include "kvi_error.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_debug.h"
 #include "class_list.h"
 #include "class_listwidget.h"

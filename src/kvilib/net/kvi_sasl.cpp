@@ -26,7 +26,7 @@
 
 #include "kvi_sasl.h"
 
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 
@@ -42,12 +42,12 @@
 namespace KviSASL
 {
 
-	bool plainMethod(KviStr & szIn, KviStr & szOut, QByteArray & baNick, QByteArray & baPass)
+	bool plainMethod(KviCString & szIn, KviCString & szOut, QByteArray & baNick, QByteArray & baPass)
 	{
 		if(szIn=="+")
 		{
 			int answerLen = 3 + (2 * baNick.size()) + baPass.size();
-			char * answer = (char *) kvi_malloc(answerLen);
+			char * answer = (char *) KviMemory::allocate(answerLen);
 			char * answer2 = answer;
 
 			memcpy(answer, baNick.data(), baNick.size());
@@ -66,7 +66,7 @@ namespace KviSASL
 			answer++;
 
 			szOut.bufferToBase64(answer2,answerLen);
-			kvi_free(answer2);
+			KviMemory::free(answer2);
 
 			return true;
 		}
@@ -74,7 +74,7 @@ namespace KviSASL
 	}
 
 #ifdef COMPILE_SSL_SUPPORT
-	bool dh_blowfishMethod(KviStr & szIn, KviStr & szOut, QByteArray & baNick, QByteArray & baPass)
+	bool dh_blowfishMethod(KviCString & szIn, KviCString & szOut, QByteArray & baNick, QByteArray & baPass)
 	{
 		/*
 		 * The format of the auth token is quite complex; the server sends us 3 strings:
@@ -131,20 +131,20 @@ namespace KviSASL
 		if(!DH_generate_key(dh))
 			return false;
 
-		secret=(unsigned char *) kvi_malloc(DH_size(dh));
+		secret=(unsigned char *) KviMemory::allocate(DH_size(dh));
 		// note: any memory checking tool (as valgrind) will complain on this call. blame openssl
 		if(-1 == (secretLen = DH_compute_key(secret, BN_bin2bn((unsigned char*) tmpBuf, size, NULL), dh)))
 			return false;
 
 		pKlen=BN_num_bytes(dh->pub_key);
-		pubKey = (unsigned char *) kvi_malloc(pKlen);
+		pubKey = (unsigned char *) KviMemory::allocate(pKlen);
 		BN_bn2bin(dh->pub_key, pubKey);
 
 		//create crypto buffers
 		int passLen = baPass.size() + ((8 -( baPass.size() % 8)) % 8);
 		int passC = 0;
-		unsigned char *passIn = (unsigned char *) kvi_malloc(passLen);
-		unsigned char *passOut = (unsigned char *) kvi_malloc(passLen);
+		unsigned char *passIn = (unsigned char *) KviMemory::allocate(passLen);
+		unsigned char *passOut = (unsigned char *) KviMemory::allocate(passLen);
 
 		memset(passIn, 0, passLen);
 		memset(passOut, 0, passLen);
@@ -181,15 +181,15 @@ namespace KviSASL
 		szOut.bufferToBase64(answer2,answerLen);
 
 		//clean up
-		kvi_free(secret);
-		kvi_free(pubKey);
-		kvi_free(passIn);
-		kvi_free(passOut);
+		KviMemory::free(secret);
+		KviMemory::free(pubKey);
+		KviMemory::free(passIn);
+		KviMemory::free(passOut);
 
 		return true;
 	}
 #else
-	bool dh_blowfishMethod(KviStr & szIn, KviStr & szOut, QByteArray & baNick, QByteArray & baPass)
+	bool dh_blowfishMethod(KviCString & szIn, KviCString & szOut, QByteArray & baNick, QByteArray & baPass)
 	{
 		return false;
 	}

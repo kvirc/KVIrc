@@ -6,7 +6,7 @@
 //   Creation date : Mon May 27 2002 21:36:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,10 +28,10 @@
 
 #ifdef COMPILE_SSL_SUPPORT
 
-#include "kvi_string.h"
+#include "KviCString.h"
 #include "kvi_sockettype.h"
 
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 
 #include <openssl/ssl.h>
 
@@ -43,22 +43,22 @@ public:
 	~KviSSLCertificate();
 protected:
 	X509 * m_pX509;
-	KviPointerHashTable<const char *,KviStr> * m_pSubject;
-	KviPointerHashTable<const char *,KviStr> * m_pIssuer;
+	KviPointerHashTable<const char *,KviCString> * m_pSubject;
+	KviPointerHashTable<const char *,KviCString> * m_pIssuer;
 	int                  m_iPubKeyBits;
-	KviStr               m_szPubKeyType;
+	KviCString               m_szPubKeyType;
 	int                  m_iSerialNumber;
 	int                  m_iVersion;
-	KviStr               m_szSignatureType;
-	KviStr               m_szSignatureContents;
+	KviCString               m_szSignatureType;
+	KviCString               m_szSignatureContents;
 private:
 	void extractSubject();
 	void extractIssuer();
 	void extractPubKeyInfo();
 	void extractSerialNumber();
 	void extractSignature();
-	const char * dictEntry(KviPointerHashTable<const char *,KviStr> * dict,const char * entry);
-	void splitX509String(KviPointerHashTable<const char *,KviStr> * dict,const char * t);
+	const char * dictEntry(KviPointerHashTable<const char *,KviCString> * dict,const char * entry);
+	void splitX509String(KviPointerHashTable<const char *,KviCString> * dict,const char * t);
 	int getFingerprint(unsigned char * bufferData, unsigned int * bufferLen, const char * digestName);
 public:
 	void setX509(X509 * x509);
@@ -114,11 +114,11 @@ public:
 #endif
 	~KviSSLCipherInfo();
 protected:
-	KviStr       m_szVersion;
+	KviCString       m_szVersion;
 	int          m_iNumBits;
 	int          m_iNumBitsUsed;
-	KviStr       m_szName;
-	KviStr       m_szDescription;
+	KviCString       m_szName;
+	KviCString       m_szDescription;
 public:
 	const char * name(){ return m_szName.ptr(); };
 	const char * description(){ return m_szDescription.ptr(); };
@@ -153,7 +153,7 @@ public:
 public:
 	SSL        * m_pSSL;
 	SSL_CTX    * m_pSSLCtx;
-	KviStr       m_szPass;
+	KviCString       m_szPass;
 public:
 	static void globalInit();
 	static void globalDestroy();
@@ -169,7 +169,7 @@ public:
 	int write(const char * buffer,int len);
 	// SSL ERRORS
 	unsigned long getLastError(bool bPeek = false);
-	bool getLastErrorString(KviStr &buffer,bool bPeek = false);
+	bool getLastErrorString(KviCString &buffer,bool bPeek = false);
 	// Protocol error
 	KviSSL::Result getProtocolError(int ret);
 	KviSSLCertificate * getPeerCertificate();

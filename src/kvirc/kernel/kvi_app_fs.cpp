@@ -4,7 +4,7 @@
 //   Creation date : Thu Dec 24 1998 04:05:26 by Szymon Stefanek
 //
 //   This file is part of the Kvirc irc client distribution
-//   Copyright (C) 1998-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1998-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,11 +25,11 @@
 
 #include "kvi_debug.h"
 #include "kvi_app.h"
-#include "kvi_locale.h"
-#include "kvi_fileutils.h"
-#include "kvi_mediatype.h"
-#include "kvi_env.h"
-#include "kvi_time.h"
+#include "KviLocale.h"
+#include "KviFileUtils.h"
+#include "KviMediaType.h"
+#include "KviEnvironment.h"
+#include "KviTimeUtils.h"
 #include "kvi_options.h"
 #include "kvi_defaults.h"
 #include "kvi_iconmanager.h"
@@ -331,7 +331,7 @@ bool KviApp::findImageInImageSearchPath(QString &szRetPath,const QString &filena
 static KviApp::KvircSubdir pics_localsubdirs[2]={ KviApp::Pics, KviApp::Avatars };
 static KviApp::KvircSubdir pics_globalsubdirs[2]={ KviApp::Pics, KviApp::Avatars };
 
-/*bool KviApp::mapImageFile(KviStr &szRetPath,const char * filename)
+/*bool KviApp::mapImageFile(KviCString &szRetPath,const char * filename)
 {
 	QString buff;
 	bool ret=mapImageFile(buff,filename);

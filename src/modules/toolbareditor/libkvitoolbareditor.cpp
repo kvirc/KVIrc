@@ -4,7 +4,7 @@
 //   Creation date : Sun 10 Nov 2002 23:25:59 2002 GMT by Szymon Stefanek
 //
 //   This toolbar is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,10 +25,10 @@
 #include "toolbareditor.h"
 
 #include "kvi_module.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_frame.h"
 #include "kvi_actionmanager.h"
-#include "kvi_config.h"
+#include "KviConfigurationFile.h"
 #include "kvi_app.h"
 
 QRect g_rectToolBarEditorDialogGeometry(0,0,0,0);
@@ -61,7 +61,7 @@ static bool toolbareditor_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",toolbareditor_kvs_cmd_open);
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);
-	KviConfig cfg(szBuf,KviConfig::Read);
+	KviConfigurationFile cfg(szBuf,KviConfigurationFile::Read);
 	g_rectToolBarEditorDialogGeometry = cfg.readRectEntry("EditorGeometry",QRect(10,10,390,440));
 
 	return true;
@@ -78,7 +78,7 @@ static bool toolbareditor_module_cleanup(KviModule *m)
 
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);
-	KviConfig cfg(szBuf,KviConfig::Write);
+	KviConfigurationFile cfg(szBuf,KviConfigurationFile::Write);
 	cfg.writeEntry("EditorGeometry",g_rectToolBarEditorDialogGeometry);
 
 	return true;

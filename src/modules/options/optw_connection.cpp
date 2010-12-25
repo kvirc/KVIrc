@@ -26,7 +26,7 @@
 #include "optw_connection.h"
 
 #include "kvi_settings.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_options.h"
 #include "kvi_iconmanager.h"
 

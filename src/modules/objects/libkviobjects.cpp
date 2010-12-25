@@ -4,7 +4,7 @@
 //   Creation date : Wed Sep 09 2000 20:59:01 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2009 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -74,15 +74,15 @@
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
 #include "kvi_out.h"
-#include "kvi_mirccntrl.h"
+#include "KviMircCntrl.h"
 #include "kvi_app.h"
 #include "kvi_module.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_error.h"
-#include "kvi_cmdformatter.h"
+#include "KviCommandFormatter.h"
 #include "kvi_out.h"
 #include "kvi_app.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 
 #include <QDir>
 #include <QImage>
@@ -656,7 +656,7 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 	if (bFlag) cmd->window()->output(80, "Objects dump:");
 		QWidgetList list = g_pApp->topLevelWidgets();
 
-	KviStr spacing = ">";
+	KviCString spacing = ">";
 	QString  szTemp;
 	KviKvsArray * n = new KviKvsArray();
 	int idx=0;

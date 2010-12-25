@@ -6,7 +6,7 @@
 //   Creation date : Wed 07 Jan 2004 05:02:57 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_window.h"
 #include "kvi_kvs_hash.h"
 #include "kvi_kvs_variantlist.h"
@@ -277,8 +277,8 @@ protected:
 	void addItemInternal(KviKvsPopupMenuItem * it);
 	void executePrologues(KviKvsPopupMenuTopLevelData * pData);
 	void executeEpilogues(KviKvsPopupMenuTopLevelData * pData);
-	void load(const QString &prefix,KviConfig * cfg);
-	void save(const QString &prefix,KviConfig * cfg);
+	void load(const QString &prefix,KviConfigurationFile * cfg);
+	void save(const QString &prefix,KviConfigurationFile * cfg);
 private slots:
 	void setupMenuContents();
 protected:

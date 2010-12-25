@@ -4,7 +4,7 @@
 //   Creation date : Tue 07 Sep 2004 03:56:46 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,11 +29,11 @@
 #include "kvi_irccontext.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_app.h"
-#include "kvi_config.h"
-#include "kvi_time.h"
-#include "kvi_qstring.h"
+#include "KviConfigurationFile.h"
+#include "KviTimeUtils.h"
+#include "KviQString.h"
 #include "kvi_modulemanager.h"
 #include "kvi_statusbarapplet.h"
 #include "kvi_dynamictooltip.h"
@@ -178,14 +178,14 @@ void KviStatusBar::load()
 	QString szBuf;
 	if(!g_pApp->getReadOnlyConfigPath(szBuf,"statusbar.kvc"))return; // no config file at all
 
-	KviConfig cfg(szBuf,KviConfig::Read);
+	KviConfigurationFile cfg(szBuf,KviConfigurationFile::Read);
 	cfg.setGroup("Applets");
 
 	int iApplets = cfg.readIntEntry("Count",0);
 	for(int i=0; i<iApplets; i++)
 	{
-		KviStr prefix(KviStr::Format,"Applet%d",i);
-		KviStr tmp(KviStr::Format,"%s_InternalName",prefix.ptr());
+		KviCString prefix(KviCString::Format,"Applet%d",i);
+		KviCString tmp(KviCString::Format,"%s_InternalName",prefix.ptr());
 		QString szInternalName = cfg.readEntry(tmp.ptr(),"");
 // 		qDebug("load applet %d %s",i,szInternalName.toUtf8().data());
 		if(!szInternalName.isEmpty())
@@ -210,7 +210,7 @@ void KviStatusBar::save()
 	QString szBuf;
 	g_pApp->getLocalKvircDirectory(szBuf,KviApp::Config,"statusbar.kvc");
 
-	KviConfig cfg(szBuf,KviConfig::Write);
+	KviConfigurationFile cfg(szBuf,KviConfigurationFile::Write);
 	cfg.setGroup("Applets");
 
 	cfg.writeEntry("Count",m_pAppletList->count());
@@ -222,8 +222,8 @@ void KviStatusBar::save()
 	for(KviStatusBarApplet * pApplet = m_pAppletList->first(); pApplet; pApplet = m_pAppletList->next())
 	{
 // 		qDebug("save applet %d %s index %d",i,pApplet->descriptor()->internalName().toUtf8().data(),pApplet->index());
-		KviStr prefix(KviStr::Format,"Applet%d",i);
-		KviStr tmp(KviStr::Format,"%s_InternalName",prefix.ptr());
+		KviCString prefix(KviCString::Format,"Applet%d",i);
+		KviCString tmp(KviCString::Format,"%s_InternalName",prefix.ptr());
 		cfg.writeEntry(tmp.ptr(),pApplet->descriptor()->internalName());
 		pApplet->saveState(prefix.ptr(),&cfg);
 		if(!(pApplet->descriptor()->preloadModule().isEmpty()))

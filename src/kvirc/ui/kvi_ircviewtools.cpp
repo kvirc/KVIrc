@@ -28,8 +28,8 @@
 #include "kvi_ircview.h"
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
-#include "kvi_malloc.h"
+#include "KviLocale.h"
+#include "KviMemory.h"
 #include "kvi_msgbox.h"
 #include "kvi_filedialog.h"
 #include "kvi_app.h"
@@ -162,7 +162,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 
 
 
-	m_pFilterItems = (KviIrcMessageCheckListItem **)kvi_malloc(KVI_NUM_MSGTYPE_OPTIONS * sizeof(KviIrcMessageCheckListItem *));
+	m_pFilterItems = (KviIrcMessageCheckListItem **)KviMemory::allocate(KVI_NUM_MSGTYPE_OPTIONS * sizeof(KviIrcMessageCheckListItem *));
 
 	for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
 	{

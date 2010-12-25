@@ -4,7 +4,7 @@
 //   Creation date : Tue 29 Dec 2004 02:45:59 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2004-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -25,14 +25,14 @@
 
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_imagedialog.h"
-#include "kvi_config.h"
-#include "kvi_fileutils.h"
+#include "KviConfigurationFile.h"
+#include "KviFileUtils.h"
 #include "kvi_scripteditor.h"
 #include "kvi_debug.h"
 #include "kvi_app.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_kvs_aliasmanager.h"
 #include "kvi_filedialog.h"
 #include "kvi_actionmanager.h"
@@ -922,13 +922,13 @@ void KviActionEditorWindow::getConfigGroupName(QString &szName)
 	szName = "actioneditor";
 }
 
-void KviActionEditorWindow::saveProperties(KviConfig *cfg)
+void KviActionEditorWindow::saveProperties(KviConfigurationFile *cfg)
 {
 	KviWindow::saveProperties(cfg);
 	cfg->writeEntry("Splitter",m_pEditor->m_pSplitter->sizes());
 }
 
-void KviActionEditorWindow::loadProperties(KviConfig *cfg)
+void KviActionEditorWindow::loadProperties(KviConfigurationFile *cfg)
 {
 	int w = width();
 	KviWindow::loadProperties(cfg);

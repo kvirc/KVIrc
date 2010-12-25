@@ -1,10 +1,10 @@
 //=============================================================================
 //
-//   File : kvi_cryptcontroller.cpp
+//   File : KviCryptEngine.cpp
 //   Creation date : Fri Nov 03 2000 14:16:33 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,15 +29,15 @@
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_cryptcontroller.h"
 	#include "kvi_window.h"
-	#include "kvi_locale.h"
+	#include "KviLocale.h"
 	#include "kvi_out.h"
 	#include "kvi_iconmanager.h"
 	#include "kvi_modulemanager.h"
 	#include "kvi_module.h"
-	#include "kvi_malloc.h"
+	#include "KviMemory.h"
 	#include "kvi_memmove.h"
 	#include "kvi_toolwindows_container.h"
-	#include "kvi_pointerhashtable.h"
+	#include "KviPointerHashTable.h"
 
 	#include <QLayout>
 
@@ -289,8 +289,8 @@
 
 	bool KviCryptController::initializeEngine(KviCryptEngine * pEngine)
 	{
-		KviStr szEncryptKey;
-		KviStr szDecryptKey;
+		KviCString szEncryptKey;
+		KviCString szDecryptKey;
 
 		char * pcEncKey = 0;
 		char * pcDecKey = 0;
@@ -306,12 +306,12 @@
 				iEncKeyLen = szEncryptKey.hexToBuffer(&pcTmpKey,false);
 				if(iEncKeyLen > 0)
 				{
-					pcEncKey = (char *)kvi_malloc(iEncKeyLen);
+					pcEncKey = (char *)KviMemory::allocate(iEncKeyLen);
 					kvi_memmove(pcEncKey,pcTmpKey,iEncKeyLen);
-					KviStr::freeBuffer(pcTmpKey);
+					KviCString::freeBuffer(pcTmpKey);
 				}
 			} else {
-				pcEncKey = (char *)kvi_malloc(szEncryptKey.len());
+				pcEncKey = (char *)KviMemory::allocate(szEncryptKey.len());
 				kvi_memmove(pcEncKey,szEncryptKey.ptr(),szEncryptKey.len());
 				iEncKeyLen = szEncryptKey.len();
 			}
@@ -326,12 +326,12 @@
 				iDecKeyLen = szDecryptKey.hexToBuffer(&pcTmpKey,false);
 				if(iDecKeyLen > 0)
 				{
-					pcDecKey = (char *)kvi_malloc(iDecKeyLen);
+					pcDecKey = (char *)KviMemory::allocate(iDecKeyLen);
 					kvi_memmove(pcDecKey,pcTmpKey,iDecKeyLen);
-					KviStr::freeBuffer(pcTmpKey);
+					KviCString::freeBuffer(pcTmpKey);
 				}
 			} else {
-				pcDecKey = (char *)kvi_malloc(szDecryptKey.len());
+				pcDecKey = (char *)KviMemory::allocate(szDecryptKey.len());
 				kvi_memmove(pcDecKey,szDecryptKey.ptr(),szDecryptKey.len());
 				iDecKeyLen = szDecryptKey.len();
 			}
@@ -339,9 +339,9 @@
 
 		bool bRet = pEngine->init(pcEncKey,iEncKeyLen,pcDecKey,iDecKeyLen);
 		if(pcEncKey)
-			kvi_free(pcEncKey);
+			KviMemory::free(pcEncKey);
 		if(pcDecKey)
-			kvi_free(pcDecKey);
+			KviMemory::free(pcDecKey);
 
 		return bRet;
 	}

@@ -26,12 +26,12 @@
 #include "aboutdialog.h"
 
 #include "kvi_defaults.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_app.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_buildinfo.h"
-#include "kvi_osinfo.h"
+#include "KviOsInfo.h"
 
 #include <QTextEdit>
 #include <QWidget>

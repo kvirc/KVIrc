@@ -32,7 +32,7 @@
 
 #include "kvi_module.h"
 #include "kvi_options.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_out.h"
 #include <QUrl>
 
@@ -1741,7 +1741,7 @@ static bool mediaplayer_module_ctrl(KviModule *,const char * operation,void * pa
 KVIRC_MODULE(
 	"mediaplayer",
 	"4.0.0",
-	"Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)," \
+	"Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)," \
 		"Christoph Thielecke (crissi99 at gmx dot de)," \
 		"Tonino Imbesi (grifisx at barmes dot org)," \
 		"Alessandro Carbone (elfonol at gmail dot com)," \

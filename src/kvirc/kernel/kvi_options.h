@@ -7,7 +7,7 @@
 //   Creation date : Tue Jun 20 2000 12:42:07 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,9 +26,9 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_string.h"
-#include "kvi_pixmap.h"
-#include "kvi_msgtype.h"
+#include "KviCString.h"
+#include "KviPixmap.h"
+#include "KviMessageTypeSettings.h"
 
 #include <QRect>
 #include <QPixmap>
@@ -60,7 +60,7 @@ DECLARE_OPTION_STRUCT(KviFontOption,QFont)
 DECLARE_OPTION_STRUCT(KviPixmapOption,KviPixmap)
 //DECLARE_OPTION_STRUCT(KviIntOption,int)
 DECLARE_OPTION_STRUCT(KviUIntOption,unsigned int)
-DECLARE_OPTION_STRUCT(KviMsgTypeOption,KviMsgType)
+DECLARE_OPTION_STRUCT(KviMessageTypeSettingsOption,KviMessageTypeSettings)
 DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 
 #define KVI_COLOR_EXT_USER_OP 		50
@@ -663,7 +663,7 @@ extern KVIRC_API KviPixmapOption     g_pixmapOptionsTable[KVI_NUM_PIXMAP_OPTIONS
 //	extern KviIntOption        g_intOptionsTable[KVI_NUM_INT_OPTIONS];
 extern KVIRC_API KviUIntOption       g_uintOptionsTable[KVI_NUM_UINT_OPTIONS];
 extern KVIRC_API KviFontOption       g_fontOptionsTable[KVI_NUM_FONT_OPTIONS];
-extern KVIRC_API KviMsgTypeOption    g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS];
+extern KVIRC_API KviMessageTypeSettingsOption    g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS];
 extern KVIRC_API KviColorOption      g_mirccolorOptionsTable[KVI_NUM_MIRCCOLOR_OPTIONS];
 extern KVIRC_API KviColorOption      g_iccolorOptionsTable[KVI_NUM_ICCOLOR_OPTIONS];
 extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST_OPTIONS];

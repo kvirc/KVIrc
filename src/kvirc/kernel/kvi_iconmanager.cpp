@@ -4,7 +4,7 @@
 //   Creation date : Sat Jun 24 2000 14:50:11 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,8 +29,8 @@
 #include "kvi_app.h"
 #include "kvi_settings.h"
 #include "kvi_defaults.h"
-#include "kvi_locale.h"
-#include "kvi_fileutils.h"
+#include "KviLocale.h"
+#include "KviFileUtils.h"
 #include "kvi_options.h"
 
 #include <QLayout>
@@ -392,19 +392,19 @@ void KviIconWidget::init()
 	int i;
 	for(i = 0;i < 20;i++)
 	{
-		KviStr tmp(KviStr::Format,"%d",i);
+		KviCString tmp(KviCString::Format,"%d",i);
 		QLabel * l = new QLabel(tmp.ptr(),this);
 		g->addWidget(l,0,i + 1);
 	}
 	for(i = 0;i < rows;i++)
 	{
-		KviStr tmp(KviStr::Format,"%d",i * 20);
+		KviCString tmp(KviCString::Format,"%d",i * 20);
 		QLabel * l = new QLabel(tmp.ptr(),this);
 		g->addWidget(l,i + 1,0);
 	}
 	for(i = 0;i < KVI_NUM_SMALL_ICONS;i++)
 	{
-		KviStr tmp(KviStr::Format,"%d",i);
+		KviCString tmp(KviCString::Format,"%d",i);
 		QLabel * l = new QLabel(this);
 		l->setObjectName(tmp.ptr());
 		l->setPixmap(*(g_pIconManager->getSmallIcon(i)));
@@ -430,7 +430,7 @@ bool KviIconWidget::eventFilter(QObject * o,QEvent *e)
 	{
 		if(o->inherits("QLabel"))
 		{
-			KviStr szName = ((QLabel *)o)->objectName();
+			KviCString szName = ((QLabel *)o)->objectName();
 			bool bOk;
 			int iVal = szName.toInt(&bOk);
 			if(bOk)emit selected(iVal);
@@ -932,7 +932,7 @@ void KviIconManager::cacheCleanup()
 		{
 			// unused since 2 minutes
 			// time to cleanup it...
-			l.append(new KviStr(it.currentKey()));
+			l.append(new KviCString(it.currentKey()));
 		}
 		++it;
 	}
@@ -943,7 +943,7 @@ void KviIconManager::cacheCleanup()
 	}
 */
 /*
-	for(KviStr * p =l.first();p;p = l.next())
+	for(KviCString * p =l.first();p;p = l.next())
 	{
 		m_pCachedImages->remove(p->ptr());
 	}

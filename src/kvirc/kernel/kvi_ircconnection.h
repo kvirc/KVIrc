@@ -6,7 +6,7 @@
 //   Creation date : Mon 03 May 2004 01:45:42 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -31,9 +31,9 @@
 */
 
 #include "kvi_settings.h"
-#include "kvi_qstring.h"
-#include "kvi_pointerlist.h"
-#include "kvi_time.h"
+#include "KviQString.h"
+#include "KviPointerList.h"
+#include "KviTimeUtils.h"
 
 #include <QObject>
 #include <QByteArray>
@@ -66,7 +66,7 @@ class KviNotifyListManager;
 class KviDns;
 class KviUserIdentity;
 class KviIdentityProfileSet;
-class KviStr;
+class KviCString;
 
 
 /**
@@ -745,7 +745,7 @@ protected:
 	* \brief Called when AUTHENTICATE answer is received
 	* \return void
 	*/
-	void handleAuthenticate(KviStr & szResponse);
+	void handleAuthenticate(KviCString & szResponse);
 
 	/**
 	* \brief Called when CAP LS answer is received

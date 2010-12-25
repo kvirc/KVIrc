@@ -31,8 +31,8 @@
 */
 
 #include "kvi_settings.h"
-#include "kvi_qstring.h"
-#include "kvi_heapobject.h"
+#include "KviQString.h"
+#include "KviHeapObject.h"
 #include "kvi_kvs_types.h"
 
 class KviKvsVariant;

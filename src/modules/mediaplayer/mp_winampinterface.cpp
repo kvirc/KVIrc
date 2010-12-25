@@ -4,7 +4,7 @@
 //   Creation date : Mon 28 Mar 2005 23:41:50 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,7 +29,7 @@
 
 #include <QTextCodec>
 
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_module.h"
 
 #include <windows.h>
@@ -377,7 +377,7 @@ bool KviWinampInterface::playMrl(const QString &mrl)
 	if(hWinamp)
 	{
 		QTextCodec *c=mediaplayer_get_codec();
-		KviStr szMrl = c ? c->fromUnicode(mrl) : mrl.toUtf8();
+		KviCString szMrl = c ? c->fromUnicode(mrl) : mrl.toUtf8();
 		COPYDATASTRUCT cds;
 		cds.dwData = IPC_PLAYFILE;
 		cds.lpData = (void *)szMrl.ptr();

@@ -24,7 +24,7 @@
 
 #include "kvi_kvs_treenode_specialcommandcontinue.h"
 #include "kvi_kvs_runtimecontext.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 KviKvsTreeNodeSpecialCommandContinue::KviKvsTreeNodeSpecialCommandContinue(const QChar * pLocation)
 : KviKvsTreeNodeSpecialCommand(pLocation,"continue")

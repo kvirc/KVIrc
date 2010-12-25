@@ -7,7 +7,7 @@
 //   Creation date : Sat Aug 12 2000 18:34:22 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,17 +26,17 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_string.h"
-#include "kvi_parameterlist.h"
+#include "KviCString.h"
+#include "KviParameterList.h"
 #include <QLibrary>
-#include "kvi_pointerlist.h"
+#include "KviPointerList.h"
 #include "kvi_moduleextension.h"
 #include "kvi_kvs_moduleinterface.h"
 
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "kvi_crypt.h"
+	#include "KviCryptEngine.h"
 #endif
 
 
@@ -190,9 +190,9 @@ public:
 	void unregisterCryptEngines();
 #endif
 
-	KviModuleExtensionDescriptor * registerExtension(const KviStr &szType,const KviStr &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r);
-	KviModuleExtensionDescriptor * registerExtension(const KviStr &szType,const KviStr &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r,const QPixmap &icon);
-	KviModuleExtensionDescriptor * findExtensionDescriptor(const KviStr &szType,const KviStr &szName);
+	KviModuleExtensionDescriptor * registerExtension(const KviCString &szType,const KviCString &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r);
+	KviModuleExtensionDescriptor * registerExtension(const KviCString &szType,const KviCString &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r,const QPixmap &icon);
+	KviModuleExtensionDescriptor * findExtensionDescriptor(const KviCString &szType,const KviCString &szName);
 	void unregisterAllExtensions();
 };
 

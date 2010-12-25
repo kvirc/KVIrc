@@ -4,7 +4,7 @@
 //   Creation date : Thu Nov 6 2001 12:41:18 by Juanjo �varez
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -24,15 +24,15 @@
 
 #include "channelsjoinwindow.h"
 
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_options.h"
 #include "kvi_selectors.h"
 #include "kvi_app.h"
-#include "kvi_string.h"
-#include "kvi_qstring.h"
+#include "KviCString.h"
+#include "KviQString.h"
 #include "kvi_iconmanager.h"
 #include "kvi_console.h"
-#include "kvi_regchan.h"
+#include "KviRegisteredChannel.h"
 #include "kvi_kvs_script.h"
 #include "kvi_tal_groupbox.h"
 
@@ -375,13 +375,13 @@ void KviChannelsJoinWindow::clearClicked()
 /*
 void KviChannelsJoinWindow::whoClicked()
 {
-	KviStr tmp = m_pChannelEdit->text();
+	KviCString tmp = m_pChannelEdit->text();
 	if(!tmp.isEmpty())doCmd("who", tmp.ptr());
 }
 
 void KviChannelsJoinWindow::namesClicked()
 {
-	KviStr tmp = m_pChannelEdit->text();
+	KviCString tmp = m_pChannelEdit->text();
 	//FIXME: I must be a nice guy and implement /names in the core...
 	if(!tmp.isEmpty())doCmd("raw names", tmp.ptr());
 }
@@ -389,7 +389,7 @@ void KviChannelsJoinWindow::namesClicked()
 void KviChannelsJoinWindow::itemDoubleClicked(KviTalListBoxItem * it)
 {
 	if (it == 0)return;
-	KviStr tmp = it->text();
+	KviCString tmp = it->text();
 	doCmd("join", tmp.ptr());
 //	if(KVI_OPTION_BOOL(KviOption_boolCloseChannelsJoinAfterJoin))
 //		g_pApp->collectGarbage(this);

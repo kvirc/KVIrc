@@ -5,7 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2002 Juanjo Alvarez (juanjux@yahoo.es)
-//   Copyright (C) 2002-2009 Szymon Stefanek (kvirc@tin.it)
+//   Copyright (C) 2002-2010 Szymon Stefanek (kvirc@tin.it)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,7 +25,7 @@
 
 
 #include "kvi_module.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_channel.h"
 
 /*

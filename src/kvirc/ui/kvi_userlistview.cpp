@@ -4,7 +4,7 @@
 //   Creation date : Tue Aug 1 2000 21:05:22 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,22 +28,22 @@
 #include "kvi_debug.h"
 #include "kvi_userlistview.h"
 #include "kvi_settings.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_options.h"
 #include "kvi_defaults.h"
 #include "kvi_iconmanager.h"
-#include "kvi_regusersdb.h"
-#include "kvi_parameterlist.h"
+#include "KviRegisteredUserDataBase.h"
+#include "KviParameterList.h"
 #include "kvi_window.h"
 #include "kvi_console.h"
 #include "kvi_app.h"
 #include "kvi_useraction.h"
-#include "kvi_qstring.h"
+#include "KviQString.h"
 #include "kvi_frame.h"
 #include "kvi_mdimanager.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_toolwindows_container.h"
-#include "kvi_stringconversion.h"
+#include "KviStringConversion.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionserverinfo.h"
 
@@ -1334,26 +1334,26 @@ void KviUserListView::updateUsersLabel()
 	if(!KVI_OPTION_BOOL(KviOption_boolShowUserListStatisticLabel))
 		return;
 
-	KviStr tmp;
+	KviCString tmp;
 	tmp.sprintf("<nobr><b>[%u]</b>",m_pEntryDict->count());
 	if(m_iChanOwnerCount)
-		tmp.append(KviStr::Format," q:%d",m_iChanOwnerCount);
+		tmp.append(KviCString::Format," q:%d",m_iChanOwnerCount);
 	if(m_iChanAdminCount)
-		tmp.append(KviStr::Format," a:%d",m_iChanAdminCount);
+		tmp.append(KviCString::Format," a:%d",m_iChanAdminCount);
 	if(m_iOpCount)
-		tmp.append(KviStr::Format," o:%d",m_iOpCount);
+		tmp.append(KviCString::Format," o:%d",m_iOpCount);
 	if(m_iHalfOpCount)
-		tmp.append(KviStr::Format," h:%d",m_iHalfOpCount);
+		tmp.append(KviCString::Format," h:%d",m_iHalfOpCount);
 	if(m_iVoiceCount)
-		tmp.append(KviStr::Format," v:%d",m_iVoiceCount);
+		tmp.append(KviCString::Format," v:%d",m_iVoiceCount);
 	if(m_iUserOpCount)
-		tmp.append(KviStr::Format," u:%d",m_iUserOpCount);
+		tmp.append(KviCString::Format," u:%d",m_iUserOpCount);
 	if(m_ibEntries)
-		tmp.append(KviStr::Format," b:%d",m_ibEntries);
+		tmp.append(KviCString::Format," b:%d",m_ibEntries);
 	if(m_ieEntries)
-		tmp.append(KviStr::Format," e:%d",m_ieEntries);
+		tmp.append(KviCString::Format," e:%d",m_ieEntries);
 	if(m_iIEntries)
-		tmp.append(KviStr::Format," I:%d",m_iIEntries);
+		tmp.append(KviCString::Format," I:%d",m_iIEntries);
 	tmp.append("</nobr>");
 	m_pUsersLabel->setText(tmp.ptr());
 }

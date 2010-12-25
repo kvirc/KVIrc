@@ -14,16 +14,16 @@ INCLUDE_DIRECTORIES(
 # Please note that the sources have alphabetic order here
 
 SET(kvilib_MOC_HDRS
-	ext/kvi_animatedpixmap.h
-	ext/kvi_animatedpixmapcache.h
-	ext/kvi_crypt.h
-	ext/kvi_regusersdb.h
-	ext/kvi_sharedfiles.h
-	irc/kvi_ircuserdb.h
+	ext/KviAnimatedPixmap.h
+	ext/KviAnimatedPixmapCache.h
+	ext/KviCryptEngine.h
+	ext/KviRegisteredUserDataBase.h
+	ext/KviSharedFilesManager.h
+	irc/KviIrcUserDataBase.h
 	net/kvi_dns.h
 	net/kvi_http.h
-	system/kvi_locale.h
-	system/kvi_thread.h
+	system/KviLocale.h
+	system/KviThread.h
 	tal/kvi_tal_application.h
 	tal/kvi_tal_filedialog.h
 	tal/kvi_tal_groupbox.h
@@ -42,7 +42,7 @@ SET(kvilib_MOC_HDRS
 
 IF(COMPILE_DBUS_SUPPORT)
 	LIST(APPEND kvilib_MOC_HDRS
-		ext/kvi_dbusadaptor.h
+		ext/KviDbusAdaptor.h
 	)
 ENDIF()
 
@@ -57,46 +57,45 @@ ENDIF()
 SET(kvilib_SRCS
 	config/kvi_buildinfo.cpp
 	core/kvi_error.cpp
-	core/kvi_heapobject.cpp
+	core/KviHeapObject.cpp
 	core/kvi_hstrEqualCIN.cpp
-	core/kvi_malloc.cpp
+	core/KviMemory.cpp
 	core/kvi_memmove.cpp
-	core/kvi_qstring.cpp
-	core/kvi_string.cpp
-	ext/kvi_cmdformatter.cpp
-	ext/kvi_config.cpp
-	ext/kvi_crypt.cpp
-	ext/kvi_databuffer.cpp
-	ext/kvi_dbusadaptor.cpp
-	ext/kvi_debugcontext.cpp
-	ext/kvi_garbage.cpp
-	ext/kvi_mediatype.cpp
-	ext/kvi_miscutils.cpp
-	ext/kvi_msgtype.cpp
-	ext/kvi_osinfo.cpp
-	ext/kvi_pixmap.cpp
-	ext/kvi_animatedpixmap.cpp
-	ext/kvi_animatedpixmapcache.cpp
-	ext/kvi_nickcolors.cpp
-	ext/kvi_proxydb.cpp
-	ext/kvi_regchan.cpp
-	ext/kvi_regusersdb.cpp
-	ext/kvi_sharedfiles.cpp
-	ext/kvi_stringconversion.cpp
-	file/kvi_file.cpp
-	file/kvi_fileutils.cpp
-	file/kvi_packagefile.cpp
-	irc/kvi_avatar.cpp
-	irc/kvi_avatarcache.cpp
-	irc/kvi_identityprofile.cpp
-	irc/kvi_ircmask.cpp
-	irc/kvi_ircserver.cpp
-	irc/kvi_ircserverdb.cpp
-	irc/kvi_ircuserdb.cpp
-	irc/kvi_mirccntrl.cpp
-	irc/kvi_network.cpp
-	irc/kvi_nickserv.cpp
-	irc/kvi_useridentity.cpp
+	core/KviQString.cpp
+	core/KviCString.cpp
+	ext/KviCommandFormatter.cpp
+	ext/KviConfigurationFile.cpp
+	ext/KviCryptEngine.cpp
+	ext/KviDataBuffer.cpp
+	ext/KviDbusAdaptor.cpp
+	ext/KviDebugContext.cpp
+	ext/KviMediaType.cpp
+	ext/KviMiscUtils.cpp
+	ext/KviMessageTypeSettings.cpp
+	ext/KviOsInfo.cpp
+	ext/KviPixmap.cpp
+	ext/KviAnimatedPixmap.cpp
+	ext/KviAnimatedPixmapCache.cpp
+	ext/KviNickColors.cpp
+	ext/KviProxyDataBase.cpp
+	ext/KviRegisteredChannel.cpp
+	ext/KviRegisteredUserDataBase.cpp
+	ext/KviSharedFilesManager.cpp
+	ext/KviStringConversion.cpp
+	file/KviFile.cpp
+	file/KviFileUtils.cpp
+	file/KviPackageFile.cpp
+	irc/KviAvatar.cpp
+	irc/KviAvatarCache.cpp
+	irc/KviIdentityProfile.cpp
+	irc/KviIrcMask.cpp
+	irc/KviIrcServer.cpp
+	irc/KviIrcServerDataBase.cpp
+	irc/KviIrcUserDataBase.cpp
+	irc/KviMircCntrl.cpp
+	irc/KviNetwork.cpp
+	irc/KviNickServRuleSet.cpp
+	irc/KviUserIdentity.cpp
 	net/kvi_dns.cpp
 	net/kvi_http.cpp
 	net/kvi_netutils.cpp
@@ -104,10 +103,10 @@ SET(kvilib_SRCS
 	net/kvi_socket.cpp
 	net/kvi_ssl.cpp
 	net/kvi_url.cpp
-	system/kvi_env.cpp
-	system/kvi_locale.cpp
-	system/kvi_thread.cpp
-	system/kvi_time.cpp
+	system/KviEnvironment.cpp
+	system/KviLocale.cpp
+	system/KviThread.cpp
+	system/KviTimeUtils.cpp
 	tal/kvi_tal_application.cpp
 	tal/kvi_tal_filedialog.cpp
 	tal/kvi_tal_groupbox.cpp
@@ -138,7 +137,7 @@ ENDIF()
 
 IF(NOT DEFINED COMPILE_DISABLE_OGG_THEORA)
 	LIST(APPEND kvilib_SRCS
-		ext/kvi_oggtheora.cpp
+		ext/KviTheoraDecoder.cpp
 	)
 ENDIF()
 

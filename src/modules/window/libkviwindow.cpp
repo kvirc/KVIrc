@@ -4,7 +4,7 @@
 //   Creation date : Sat Sep 01 2001 17:13:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,7 +29,7 @@
 #include "kvi_options.h"
 #include "kvi_ircsocket.h"
 #include "kvi_frame.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 #include "kvi_app.h"
 #include "kvi_error.h"
 #include "kvi_ircview.h"
@@ -37,16 +37,16 @@
 #include "kvi_iconmanager.h"
 #include "kvi_modulemanager.h"
 #include "kvi_memmove.h"
-#include "kvi_malloc.h"
+#include "KviMemory.h"
 #include "kvi_mdichild.h"
 #include "kvi_channel.h"
-#include "kvi_pointerhashtable.h"
+#include "KviPointerHashTable.h"
 
 #include <QTimer>
 
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "kvi_crypt.h"
+	#include "KviCryptEngine.h"
 	#include "kvi_cryptcontroller.h"
 	// kvi_app.cpp
 	extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
@@ -1484,7 +1484,7 @@ static bool window_kvs_cmd_savePropertiesAsDefault(KviKvsModuleCommandCall * c)
 }
 
 #ifdef COMPILE_CRYPT_SUPPORT
-static bool initializeCryptEngine(KviCryptEngine * eng,KviStr &szEncryptKey,KviStr &szDecryptKey,QString &szError)
+static bool initializeCryptEngine(KviCryptEngine * eng,KviCString &szEncryptKey,KviCString &szDecryptKey,QString &szError)
 {
 	char * encKey = 0;
 	int encKeyLen = 0;
@@ -1493,9 +1493,9 @@ static bool initializeCryptEngine(KviCryptEngine * eng,KviStr &szEncryptKey,KviS
 	encKeyLen = szEncryptKey.hexToBuffer(&tmpKey,false);
 	if(encKeyLen > 0)
 	{
-		encKey = (char *)kvi_malloc(encKeyLen);
+		encKey = (char *)KviMemory::allocate(encKeyLen);
 		kvi_memmove(encKey,tmpKey,encKeyLen);
-		KviStr::freeBuffer(tmpKey);
+		KviCString::freeBuffer(tmpKey);
 	} else {
 		szError = __tr2qs("The encrypt key wasn't a valid hexadecimal string");
 		return false;
@@ -1507,9 +1507,9 @@ static bool initializeCryptEngine(KviCryptEngine * eng,KviStr &szEncryptKey,KviS
 	decKeyLen = szDecryptKey.hexToBuffer(&tmpKey,false);
 	if(decKeyLen > 0)
 	{
-		decKey = (char *)kvi_malloc(decKeyLen);
+		decKey = (char *)KviMemory::allocate(decKeyLen);
 		kvi_memmove(decKey,tmpKey,decKeyLen);
-		KviStr::freeBuffer(tmpKey);
+		KviCString::freeBuffer(tmpKey);
 	} else {
 		szError = __tr2qs("The decrypt key wasn't a valid hexadecimal string");
 		return false;
@@ -1517,8 +1517,8 @@ static bool initializeCryptEngine(KviCryptEngine * eng,KviStr &szEncryptKey,KviS
 	bool bRet = eng->init(encKey,encKeyLen,decKey,decKeyLen);
 	if(!bRet)
 		szError = eng->lastError();
-	if(encKey)kvi_free(encKey);
-	if(decKey)kvi_free(decKey);
+	if(encKey)KviMemory::free(encKey);
+	if(decKey)KviMemory::free(decKey);
 	return bRet;
 }
 #endif
@@ -1567,8 +1567,8 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 		KviCryptEngine * e = g_pCryptEngineManager->allocateEngine(szEngine.toUtf8().data());
 		if(e)
 		{
-			KviStr enc = KviStr(szEncryptKey.toUtf8().data());
-			KviStr dec = KviStr(szDecryptKey.toUtf8().data());
+			KviCString enc = KviCString(szEncryptKey.toUtf8().data());
+			KviCString dec = KviCString(szDecryptKey.toUtf8().data());
 			QString szError;
 			if(initializeCryptEngine(e,enc,dec,szError))
 			{

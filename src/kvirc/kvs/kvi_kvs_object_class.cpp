@@ -4,7 +4,7 @@
 //   Creation date : Sat 23 Apr 2005 20:31:32 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -31,10 +31,10 @@
 #include "kvi_kvs_runtimecontext.h"
 #include "kvi_kvs_variantlist.h"
 #include "kvi_kvs_script.h"
-#include "kvi_fileutils.h"
+#include "KviFileUtils.h"
 #include "kvi_window.h"
-#include "kvi_cmdformatter.h"
-#include "kvi_locale.h"
+#include "KviCommandFormatter.h"
+#include "KviLocale.h"
 
 KviKvsObjectClass::KviKvsObjectClass(
 		KviKvsObjectClass * pParent,

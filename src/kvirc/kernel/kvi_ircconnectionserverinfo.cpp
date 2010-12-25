@@ -4,7 +4,7 @@
 //   Creation date : Tue 22 Jun 2004 03:57:32 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,9 +25,9 @@
 
 
 #include "kvi_ircconnectionserverinfo.h"
-#include "kvi_locale.h"
-#include "kvi_malloc.h"
-#include "kvi_ircuserdb.h"
+#include "KviLocale.h"
+#include "KviMemory.h"
+#include "KviIrcUserDataBase.h"
 
 KviIrcConnectionServerInfo::KviIrcConnectionServerInfo()
 {
@@ -55,7 +55,7 @@ KviIrcConnectionServerInfo::~KviIrcConnectionServerInfo()
 	if(m_pServInfo)
 		delete m_pServInfo;
 	if(m_pModePrefixTable)
-		kvi_free(m_pModePrefixTable);
+		KviMemory::free(m_pModePrefixTable);
 }
 
 void KviIrcConnectionServerInfo::addSupportedCaps(const QString &szCapList)
@@ -119,13 +119,13 @@ void KviIrcConnectionServerInfo::setSupportedModePrefixes(const QString &szSuppo
 
 void KviIrcConnectionServerInfo::buildModePrefixTable()
 {
-	if(m_pModePrefixTable) kvi_free(m_pModePrefixTable);
+	if(m_pModePrefixTable) KviMemory::free(m_pModePrefixTable);
 	const QChar * cPrefix = KviQString::nullTerminatedArray(m_szSupportedModePrefixes);
 	const QChar * cFlag = KviQString::nullTerminatedArray(m_szSupportedModeFlags);
 	if(!cPrefix || !cFlag)return; // eh ?
 
 	m_uPrefixes=qMin(m_szSupportedModePrefixes.length(),m_szSupportedModePrefixes.length());
-	m_pModePrefixTable=(kvi_u32_t*)kvi_malloc(sizeof(kvi_u32_t)*3*m_uPrefixes);
+	m_pModePrefixTable=(kvi_u32_t*)KviMemory::allocate(sizeof(kvi_u32_t)*3*m_uPrefixes);
 
 	unsigned short uPrefix,uFlag;
 

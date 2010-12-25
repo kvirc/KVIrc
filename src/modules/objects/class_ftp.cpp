@@ -25,7 +25,7 @@
 #include "kvi_debug.h"
 #include "kvi_error.h"
 #include "class_ftp.h"
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 #include <QFtp>
 #include <QHashIterator>

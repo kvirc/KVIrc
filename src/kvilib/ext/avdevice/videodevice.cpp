@@ -54,7 +54,7 @@
 #include "bayer.h"
 #include "sonix_compress.h"
 
-#include "kvi_locale.h"
+#include "KviLocale.h"
 
 #define CLEAR(x) memset (&(x), 0, sizeof (x))
 

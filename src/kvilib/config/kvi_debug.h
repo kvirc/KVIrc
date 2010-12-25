@@ -7,7 +7,7 @@
 //   Creation date : Fri Mar 19 1999 03:10:39 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2009 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -108,7 +108,7 @@
 				} \
 			} while(0)
 
-	#include "kvi_debugcontext.h"
+	#include "KviDebugContext.h"
 
 	// The following two macros are used to create unique variable names
 	// by the means of the __LINE__ builtin macro.

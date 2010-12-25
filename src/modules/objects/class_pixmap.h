@@ -30,8 +30,8 @@
 #include <qpixmap.h>
 #include <qimage.h>
 #include <QMatrix>
-#include <kvi_animatedpixmap.h>
-#include "kvi_string.h"
+#include <KviAnimatedPixmap.h>
+#include "KviCString.h"
 
 
 #include "object_macros.h"
