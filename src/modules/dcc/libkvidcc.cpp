@@ -270,8 +270,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		be sure to know how [doc:dcc_connection]DCC negotiation and connections[/doc] work.
 		If the 'i' switch is specified, the local listening socket
 		will be bound to the specified <interface> (which is an IP address, IPv4 or IPv6),
-		otherwise it will be bound to the interface of the
-		current IRC connection.[br]
+		otherwise it will be bound to the interface of the current IRC connection.[br]
 		You can also specify a local interface name to get the address from (this works only for IPv4 interfaces
 		since IPv6 ones seem to be unsupported by the system ioctl() calls at the moment (in Linux at least)).[br]
 		Here are some examples:[br]
@@ -1662,7 +1661,7 @@ static KviDccDescriptor * dcc_kvs_find_dcc_descriptor(const kvs_uint_t &uId,KviK
 	@description:
 		Terminates the Direct Client Connection specified by <dcc_id>.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function doesn't abort anything and prints a warning unless the -q switch is used.[br]
@@ -1704,7 +1703,7 @@ static bool dcc_kvs_cmd_abort(KviKvsModuleCommandCall * c)
 	@description:
 		Terminates the Direct Client Connection specified by <dcc_id>.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function  prints a warning unless the -q switch is used.[br]
@@ -1744,7 +1743,7 @@ static bool dcc_kvs_cmd_setBandwidthLimit(KviKvsModuleCommandCall * c)
 		Returns the string describing the protocol of the
 		Direct Client Connection specified by <dcc_id>.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -1781,7 +1780,7 @@ static bool dcc_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 		Returns the string "ACTIVE" for active DCC connections
 		and the string "PASSIVE" for passive DCC connections.
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -1817,7 +1816,7 @@ static bool dcc_kvs_fnc_connectionType(KviKvsModuleFunctionCall * c)
 		Returns 1 if the specified Direct Client Connection
 		is a file transfer and 0 otherwise.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this and returns 0.[br]
@@ -1853,7 +1852,7 @@ static bool dcc_kvs_fnc_isFileTransfer(KviKvsModuleFunctionCall * c)
 		Returns 1 if the specified Direct Client Connection
 		is an upload file transfer and 0 otherwise.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns 0.[br]
@@ -1889,7 +1888,7 @@ static bool dcc_kvs_fnc_isFileUpload(KviKvsModuleFunctionCall * c)
 		Returns 1 if the specified Direct Client Connection
 		is a download file transfer and 0 otherwise.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns 0.[br]
@@ -1917,14 +1916,14 @@ static bool dcc_kvs_fnc_isFileDownload(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.localNick
 	@short:
-		Returns the local nickname associated to the specified DCC
+		Returns the local nickname associated with the specified DCC
 	@syntax:
 		<string> $dcc.localNick
 		<string> $dcc.localNick(<dcc_id:uint>)
 	@description:
-		Returns the local nickname associated to the specified DCC.[br]
+		Returns the local nickname associated with the specified DCC.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -1952,14 +1951,14 @@ static bool dcc_kvs_fnc_localNick(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.localUser
 	@short:
-		Returns the local username associated to the specified DCC
+		Returns the local username associated with the specified DCC
 	@syntax:
 		<string> $dcc.localUser
 		<string> $dcc.localUser(<dcc_id:uint>)
 	@description:
-		Returns the local username associated to the specified DCC.[br]
+		Returns the local username associated with the specified DCC.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -1986,14 +1985,14 @@ static bool dcc_kvs_fnc_localUser(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.localHost
 	@short:
-		Returns the local hostname associated to the specified DCC
+		Returns the local hostname associated with the specified DCC
 	@syntax:
 		<string> $dcc.localHost
 		<string> $dcc.localHost(<dcc_id:uint>)
 	@description:
-		Returns the local hostname associated to the specified DCC.[br]
+		Returns the local hostname associated with the specified DCC.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -2021,14 +2020,14 @@ static bool dcc_kvs_fnc_localHost(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.localIp
 	@short:
-		Returns the local ip address associated to the specified DCC
+		Returns the local ip address associated with the specified DCC
 	@syntax:
 		<string> $dcc.localIp
 		<string> $dcc.localIp(<dcc_id:uint>)
 	@description:
-		Returns the local ip address associated to the specified DCC.[br]
+		Returns the local ip address associated with the specified DCC.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -2056,14 +2055,14 @@ static bool dcc_kvs_fnc_localIp(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.localPort
 	@short:
-		Returns the local port associated to the specified DCC
+		Returns the local port associated with the specified DCC
 	@syntax:
 		<integer> $dcc.localPort
 		<integer> $dcc.localPort(<dcc_id:uint>)
 	@description:
-		Returns the local port associated to the specified DCC.[br]
+		Returns the local port associated with the specified DCC.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier then
 		this function prints a warning and returns an empty sting.[br]
 		See the [module:dcc]dcc module[/module] documentation for more information.[br]
@@ -2090,11 +2089,11 @@ static bool dcc_kvs_fnc_localPort(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.localFileName
 	@short:
-		Returns the local file name associated to the specified DCC
+		Returns the local file name associated with the specified DCC
 	@syntax:
 		<string> $dcc.localFileName(<dcc_id:uint>)
 	@description:
-		Returns the local file name associated to the specified DCC.[br]
+		Returns the local file name associated with the specified DCC.[br]
 		If <dcc_id> does not identify a file transfer DCC then this
 		function returns an empty string.
 		If <dcc_id> is not a valid Direct Client Connection identifier
@@ -2122,11 +2121,11 @@ static bool dcc_kvs_fnc_localFileName(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.localFileSize
 	@short:
-		Returns the local file size associated to the specified DCC
+		Returns the local file size associated with the specified DCC
 	@syntax:
 		<integer> $dcc.localFileSize(<dcc_id:uint>)
 	@description:
-		Returns the local file size associated to the specified DCC.[br]
+		Returns the local file size associated with the specified DCC.[br]
 		If <dcc_id> does not identify a file transfer DCC then this
 		function returns '0'[br]
 		If <dcc_id> is not a valid Direct Client Connection identifier
@@ -2159,14 +2158,14 @@ static bool dcc_kvs_fnc_localFileSize(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.remoteNick
 	@short:
-		Returns the remote nickname associated to the specified DCC
+		Returns the remote nickname associated with the specified DCC
 	@syntax:
 		<string> $dcc.remoteNick
 		<string> $dcc.remoteNick(<dcc_id:uint>)
 	@description:
-		Returns the remote nickname associated to the specified DCC.[br]
+		Returns the remote nickname associated with the specified DCC.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -2194,14 +2193,14 @@ static bool dcc_kvs_fnc_remoteNick(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.remoteUser
 	@short:
-		Returns the remote username associated to the specified DCC
+		Returns the remote username associated with the specified DCC
 	@syntax:
 		<string> $dcc.remoteUser
 		<string> $dcc.remoteUser(<dcc_id:uint>)
 	@description:
-		Returns the remote username associated to the specified DCC.[br]
+		Returns the remote username associated with the specified DCC.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -2228,14 +2227,14 @@ static bool dcc_kvs_fnc_remoteUser(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.remoteHost
 	@short:
-		Returns the remote hostname associated to the specified DCC
+		Returns the remote hostname associated with the specified DCC
 	@syntax:
 		<string> $dcc.remoteHost
 		<string> $dcc.remoteHost(<dcc_id:uint>)
 	@description:
-		Returns the remote hostname associated to the specified DCC.[br]
+		Returns the remote hostname associated with the specified DCC.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -2262,14 +2261,14 @@ static bool dcc_kvs_fnc_remoteHost(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.remoteIp
 	@short:
-		Returns the remote ip address associated to the specified DCC
+		Returns the remote ip address associated with the specified DCC
 	@syntax:
 		<string> $dcc.remoteIp
 		<string> $dcc.remoteIp(<dcc_id:uint>)
 	@description:
-		Returns the remote ip address associated to the specified DCC.[br]
+		Returns the remote ip address associated with the specified DCC.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -2297,14 +2296,14 @@ static bool dcc_kvs_fnc_remoteIp(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.remotePort
 	@short:
-		Returns the remote port associated to the specified DCC
+		Returns the remote port associated with the specified DCC
 	@syntax:
 		<integer> $dcc.remotePort
 		<integer> $dcc.remotePort(<dcc_id:uint>)
 	@description:
-		Returns the remote port associated to the specified DCC.[br]
+		Returns the remote port associated with the specified DCC.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -2332,11 +2331,11 @@ static bool dcc_kvs_fnc_remotePort(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.remoteFileName
 	@short:
-		Returns the remote file name associated to the specified DCC
+		Returns the remote file name associated with the specified DCC
 	@syntax:
 		<string> $dcc.remoteFileName(<dcc_id:uint>)
 	@description:
-		Returns the remote file name associated to the specified DCC.[br]
+		Returns the remote file name associated with the specified DCC.[br]
 		If <dcc_id> does not identify a file transfer DCC then this
 		function returns an empty string.
 		If <dcc_id> is not a valid Direct Client Connection identifier
@@ -2364,11 +2363,11 @@ static bool dcc_kvs_fnc_remoteFileName(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.remoteFileSize
 	@short:
-		Returns the remote file size associated to the specified DCC
+		Returns the remote file size associated with the specified DCC
 	@syntax:
 		<integer> $dcc.remoteFileSize(<dcc_id:uint>)
 	@description:
-		Returns the remote file size associated to the specified DCC.[br]
+		Returns the remote file size associated with the specified DCC.[br]
 		If <dcc_id> does not identify a file transfer DCC then this
 		function returns '0'[br]
 		If <dcc_id> is not a valid Direct Client Connection identifier
@@ -2411,7 +2410,7 @@ static bool dcc_kvs_fnc_remoteFileSize(KviKvsModuleFunctionCall * c)
 		When the DCC is not originated from an IRC context
 		then this function returns '0' : an invalid irc context id.
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns 0.[br]
@@ -2449,7 +2448,7 @@ static bool dcc_kvs_fnc_ircContext(KviKvsModuleFunctionCall * c)
 		The status is one of the strings "connecting", "transferring", "success" and "failure".
 		"success" and "failure" are reported when the transfer is terminated.
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -2494,7 +2493,7 @@ static bool dcc_kvs_fnc_transferStatus(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the number of transferred bytes in the specified DCC session.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -2540,7 +2539,7 @@ static bool dcc_kvs_fnc_transferredBytes(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns the average speed (in bytes/sec) of the specified DCC session.[br]
 		If <dcc_id> is omitted then the DCC Session associated
-		to the current window is assumed.[br]
+		with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
@@ -2579,14 +2578,14 @@ static bool dcc_kvs_fnc_averageSpeed(KviKvsModuleFunctionCall * c)
 	@title:
 		$dcc.session
 	@short:
-		Returns the DCC session identifier associated to a window
+		Returns the DCC session identifier associated with a window
 	@syntax:
 		<uint> $dcc.session
 		<uint> $dcc.session(<window_id>)
 	@description:
-		Returns the DCC session identifier associated to the DCC window specified
+		Returns the DCC session identifier associated with the DCC window specified
 		by <window_id>. If <window_id> is omitted then the DCC session identifier
-		associated to the current window is returned. If the specified window
+		associated with the current window is returned. If the specified window
 		has no associated DCC session then a warning is printed and 0 is returned.[br]
 */
 
@@ -2713,7 +2712,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		Returns the requested information about certificates used in an ssl-enabled dcc session.[br]
 		The second <type> parameter can be "local" or "remote", and refers to the certificate you want
 		to query the information from; if omitted, it defaults to "remote".[br]
-		If <dcc_id> is omitted then the DCC Session associated to the current window is assumed.[br]
+		If <dcc_id> is omitted then the DCC Session associated with the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted and the current window
 		has no associated DCC session) then this function prints a warning and returns an empty sting.[br]
 		If the DCC session is not using ssl then this function returns an empty string.[br]
