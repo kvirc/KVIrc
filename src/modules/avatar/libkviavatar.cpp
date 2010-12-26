@@ -30,7 +30,7 @@
 #include "KviMemory.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
-#include "kvi_http.h"
+#include "KviHttpRequest.h"
 #include "kvi_iconmanager.h"
 #include "KviAvatar.h"
 #include "KviIrcUserDataBase.h"
@@ -44,7 +44,7 @@
 #include "kvi_sparser.h"
 #include "kvi_out.h"
 #include "KviIrcMask.h"
-#include "kvi_tal_hbox.h"
+#include "KviTalHBox.h"
 
 #include <QLineEdit>
 #include <QPushButton>

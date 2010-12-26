@@ -39,7 +39,7 @@ class KviConsole;
 class KviServer;
 class KviProxy;
 class KviIrcSocket;
-class KviDns;
+class KviDnsResolver;
 class KviIrcConnection;
 class KviIrcConnectionTarget;
 class KviIrcConnectionTargetResolver;

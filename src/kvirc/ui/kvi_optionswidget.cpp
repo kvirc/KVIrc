@@ -31,7 +31,7 @@
 
 #include "KviLocale.h"
 #include "kvi_app.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalToolTip.h"
 
 #define KVI_OPTIONSWIDGET_GRIDLAYOUT_BORDER 4
 #define KVI_OPTIONSWIDGET_GRIDLAYOUT_SPACE 6

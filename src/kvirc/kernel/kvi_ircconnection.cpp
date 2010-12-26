@@ -45,7 +45,7 @@
 #include "kvi_out.h"
 #include "kvi_options.h"
 #include "kvi_console.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "kvi_internalcmd.h"
 #include "kvi_frame.h"
 #include "kvi_mexlinkfilter.h"
@@ -57,7 +57,7 @@
 #include "kvi_app.h"
 #include "KviDataBuffer.h"
 #include "kvi_notifylist.h"
-#include "kvi_dns.h"
+#include "KviDnsResolver.h"
 #include "kvi_defaults.h"
 #include "kvi_sparser.h"
 #include "kvi_ircdatastreammonitor.h"
@@ -68,7 +68,7 @@
 #include "KviMircCntrl.h"
 #include "KviUserIdentity.h"
 #include "KviIdentityProfile.h"
-#include "kvi_sasl.h"
+#include "KviSASL.h"
 #include "KviNickColors.h"
 
 #include <QTimer>
@@ -116,7 +116,7 @@ KviIrcConnection::~KviIrcConnection()
 	m_bIdentdAttached = false;
 	if(m_pLocalhostDns)
 	{
-		QObject::disconnect(m_pLocalhostDns,SIGNAL(lookupDone(KviDns *)),0,0);
+		QObject::disconnect(m_pLocalhostDns,SIGNAL(lookupDone(KviDnsResolver *)),0,0);
 		if(m_pLocalhostDns->isRunning())
 		{
 			m_pLocalhostDns->deleteLater();
@@ -1037,10 +1037,10 @@ void KviIrcConnection::userInfoReceived(const QString & szUserName, const QStrin
 			// look it up too
 			if(m_pLocalhostDns)
 				delete m_pLocalhostDns; // it could be only another local host lookup
-			m_pLocalhostDns = new KviDns();
-			connect(m_pLocalhostDns,SIGNAL(lookupDone(KviDns *)),this,SLOT(hostNameLookupTerminated(KviDns *)));
+			m_pLocalhostDns = new KviDnsResolver();
+			connect(m_pLocalhostDns,SIGNAL(lookupDone(KviDnsResolver *)),this,SLOT(hostNameLookupTerminated(KviDnsResolver *)));
 
-			if(!m_pLocalhostDns->lookup(szHostName,KviDns::Any))
+			if(!m_pLocalhostDns->lookup(szHostName,KviDnsResolver::Any))
 			{
 				if(!_OUTPUT_MUTE)
 				{
@@ -1058,7 +1058,7 @@ void KviIrcConnection::userInfoReceived(const QString & szUserName, const QStrin
 	}
 }
 
-void KviIrcConnection::hostNameLookupTerminated(KviDns *)
+void KviIrcConnection::hostNameLookupTerminated(KviDnsResolver *)
 {
 	if(!m_pLocalhostDns)
 	{
@@ -1066,7 +1066,7 @@ void KviIrcConnection::hostNameLookupTerminated(KviDns *)
 		return;
 	}
 
-	if(m_pLocalhostDns->state() != KviDns::Success)
+	if(m_pLocalhostDns->state() != KviDnsResolver::Success)
 	{
 		QString szErr = KviError::getDescription(m_pLocalhostDns->error());
 		if(!m_pUserInfo->hostIp().isEmpty())

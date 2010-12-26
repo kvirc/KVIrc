@@ -42,14 +42,14 @@
 
 #ifdef COMPILE_X11_SUPPORT
 	#ifndef COMPILE_NO_X_BELL
-		#include "kvi_xlib.h" // XBell : THIS SHOULD BE INCLUDED AS LAST!
+		#include "KviXlib.h" // XBell : THIS SHOULD BE INCLUDED AS LAST!
 		#include <unistd.h>   // for usleep();
 
 		#include <qx11info_x11.h>
 		#define get_xdisplay QX11Info::display
 	#endif
 #endif
-#include "kvi_tal_tooltip.h"
+#include "KviTalToolTip.h"
 
 // kvi_app.cpp
 extern KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;

@@ -26,7 +26,7 @@
 
 #include "index.h"
 
-#include "kvi_tal_hbox.h"
+#include "KviTalHBox.h"
 
 #include <QTextBrowser>
 #include <QProgressBar>

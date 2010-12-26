@@ -54,7 +54,7 @@
 #include "KviNickServRuleSet.h"
 #include "KviIdentityProfile.h"
 #include "kvi_defaultscript.h"
-#include "kvi_xlib.h"
+#include "KviXlib.h"
 #include "kvi_texticonmanager.h"
 #include "kvi_texticonwin.h"
 #include "kvi_historywin.h"
@@ -83,14 +83,14 @@
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_sourcesdate.h"
 #include "KviPointerHashTable.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #ifndef COMPILE_NO_IPC
 	#include "kvi_ipc.h"
 #endif
 
 #ifdef COMPILE_SSL_SUPPORT
-	#include "kvi_ssl.h"
+	#include "KviSSL.h"
 #endif
 
 #include <QSplitter>

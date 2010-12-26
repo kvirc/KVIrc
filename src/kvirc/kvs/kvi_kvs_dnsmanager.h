@@ -30,7 +30,7 @@
 #include <QObject>
 #include <QString>
 
-class KviDns;
+class KviDnsResolver;
 class KviWindow;
 class KviKvsScript;
 class KviKvsVariantList;
@@ -38,7 +38,7 @@ class KviKvsVariantList;
 class KviKvsDnsObject
 {
 public:
-	KviKvsDnsObject(KviDns * pDns,
+	KviKvsDnsObject(KviDnsResolver * pDns,
 				KviWindow * pWnd,
 				const QString &szQuery,
 				bool bRebindOnWindowClose = true,
@@ -46,14 +46,14 @@ public:
 				KviKvsVariantList * pParameterList = 0);
 	~KviKvsDnsObject();
 protected:
-	KviDns                    * m_pDns;
+	KviDnsResolver                    * m_pDns;
 	KviWindow                 * m_pWindow;
 	QString                     m_szQuery;
 	KviKvsScript              * m_pCallback;        // callback to be executed when the dns terminates
 	KviKvsVariantList         * m_pParameterList;   // parameter list (magic)
 	bool                        m_bRebindOnWindowClose; // should we trigger the callback even if m_pWindow no longer exists ?
 public:
-	KviDns * dns(){ return m_pDns; };
+	KviDnsResolver * dns(){ return m_pDns; };
 	KviWindow * window(){ return m_pWindow; };
 	KviKvsScript * callback(){ return m_pCallback; };
 	KviKvsVariantList * parameterList(){ return m_pParameterList; };
@@ -79,7 +79,7 @@ public:
 
 	void addDns(KviKvsDnsObject * pObject);
 protected slots:
-	void dnsLookupTerminated(KviDns * pDns);
+	void dnsLookupTerminated(KviDnsResolver * pDns);
 private:
 	void abortAll();
 };

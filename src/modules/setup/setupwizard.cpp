@@ -31,12 +31,12 @@ bool g_bFoundMirc;
 #include "KviFileUtils.h"
 #include "kvi_defaults.h"
 #include "kvi_msgbox.h"
-#include "kvi_tal_filedialog.h"
+#include "KviTalFileDialog.h"
 #include "KviQString.h"
 #include "KviEnvironment.h"
 #include "kvi_options.h"
 #include "KviConfigurationFile.h"
-#include "kvi_tal_hbox.h"
+#include "KviTalHBox.h"
 
 #include <QTextEdit>
 #include <QMessageBox>

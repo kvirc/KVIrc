@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "kvi_tal_tabdialog.h"
+#include "KviTalTabDialog.h"
 
 class KviAboutDialog : public KviTalTabDialog
 {

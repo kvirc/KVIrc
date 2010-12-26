@@ -26,7 +26,7 @@
 
 #include "kvi_optionswidget.h"
 #include "KviMessageTypeSettings.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #include <QTreeWidget>
 #include <QItemDelegate>

@@ -37,8 +37,8 @@
 #include "kvi_irccontext.h"
 #include "kvi_ircconnection.h"
 #include "kvi_input.h"
-#include "kvi_tal_hbox.h"
-#include "kvi_tal_splitter.h"
+#include "KviTalHBox.h"
+#include "KviTalSplitter.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	// The brain-damaged MSVC compiler can't instantiate QList templates without a destructor definition

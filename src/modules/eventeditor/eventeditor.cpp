@@ -39,8 +39,8 @@
 #include "KviQString.h"
 #include "kvi_filedialog.h"
 #include "kvi_kvs_eventmanager.h"
-#include "kvi_tal_vbox.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalVBox.h"
+#include "KviTalPopupMenu.h"
 
 #include <QMessageBox>
 #include <QSplitter>

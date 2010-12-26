@@ -28,8 +28,8 @@
 #include "KviCString.h"
 #include "kvi_app.h"
 #include "kvi_input_editor.h"
-#include "kvi_tal_listwidget.h"
-#include "kvi_tal_itemdelegates.h"
+#include "KviTalListWidget.h"
+#include "KviTalIconAndRichTextItemDelegate.h"
 
 #include <QFrame>
 #include <QPushButton>

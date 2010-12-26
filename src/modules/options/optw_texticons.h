@@ -26,8 +26,8 @@
 
 #include "kvi_optionswidget.h"
 #include "kvi_texticonmanager.h"
-#include "kvi_tal_popupmenu.h"
-#include "kvi_tal_hbox.h"
+#include "KviTalPopupMenu.h"
+#include "KviTalHBox.h"
 
 #include <QToolButton>
 #include <QTableWidget>

@@ -27,10 +27,10 @@
 #include "kvi_settings.h"
 #include "KviCString.h"
 #include "kvi_selectors.h"
-#include "kvi_tal_wizard.h"
-#include "kvi_tal_vbox.h"
-#include "kvi_tal_hbox.h"
-#include "kvi_tal_groupbox.h"
+#include "KviTalWizard.h"
+#include "KviTalVBox.h"
+#include "KviTalHBox.h"
+#include "KviTalGroupBox.h"
 
 #include <QLabel>
 #include <QPixmap>

@@ -34,9 +34,9 @@
 #include "KviPointerList.h"
 #include "kvi_filetransfer.h"
 #include "KviTimeUtils.h"
-#include "kvi_tal_popupmenu.h"
-#include "kvi_tal_hbox.h"
-#include "kvi_tal_vbox.h"
+#include "KviTalPopupMenu.h"
+#include "KviTalHBox.h"
+#include "KviTalVBox.h"
 
 #include <QLabel>
 #include <QProgressBar>

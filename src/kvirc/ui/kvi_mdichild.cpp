@@ -38,7 +38,7 @@
 #include "kvi_settings.h"
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_irccontext.h"

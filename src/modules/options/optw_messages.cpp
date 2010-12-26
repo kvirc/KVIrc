@@ -34,7 +34,7 @@
 #include "KviMircCntrl.h"
 #include "KviConfigurationFile.h"
 #include "kvi_filedialog.h"
-#include "kvi_tal_vbox.h"
+#include "KviTalVBox.h"
 
 #include <QLayout>
 #include <QPushButton>

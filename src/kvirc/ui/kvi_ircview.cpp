@@ -96,7 +96,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_mdimanager.h"
 #include "kvi_userinput.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 #include "KviAnimatedPixmap.h"
 
 #include <QBitmap>

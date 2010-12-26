@@ -27,9 +27,9 @@
 #include "kvi_optionswidget.h"
 #include "KviPointerList.h"
 #include "kvi_theme.h"
-#include "kvi_tal_popupmenu.h"
-#include "kvi_tal_wizard.h"
-#include "kvi_tal_listwidget.h"
+#include "KviTalPopupMenu.h"
+#include "KviTalWizard.h"
+#include "KviTalListWidget.h"
 
 #include <QWidget>
 #include <QComboBox>

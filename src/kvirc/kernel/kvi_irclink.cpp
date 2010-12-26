@@ -24,7 +24,7 @@
 
 
 #include "kvi_irclink.h"
-#include "kvi_dns.h"
+#include "KviDnsResolver.h"
 #include "KviLocale.h"
 #include "KviIrcServerDataBase.h"
 #include "KviProxyDataBase.h"
@@ -33,7 +33,7 @@
 #include "kvi_options.h"
 #include "kvi_ircsocket.h"
 #include "kvi_console.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "kvi_internalcmd.h"
 #include "kvi_frame.h"
 #include "kvi_mexlinkfilter.h"

@@ -208,9 +208,9 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_PARAMETER("dnsquery",KVS_PT_NONEMPTYSTRING,0,szQuery)
 		KVSCSC_PARAMETERS_END
 
-		KviDns::QueryType queryType = KviDns::IPv4;
-		if(KVSCSC_pSwitches->find('i',"ipv6"))queryType = KviDns::IPv6;
-		if(KVSCSC_pSwitches->find('a',"any"))queryType = KviDns::Any;
+		KviDnsResolver::QueryType queryType = KviDnsResolver::IPv4;
+		if(KVSCSC_pSwitches->find('i',"ipv6"))queryType = KviDnsResolver::IPv6;
+		if(KVSCSC_pSwitches->find('a',"any"))queryType = KviDnsResolver::Any;
 
 		new KviKvsAsyncDnsOperation(
 			KVSCSC_pContext->window(),

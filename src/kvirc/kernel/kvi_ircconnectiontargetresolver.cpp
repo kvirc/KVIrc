@@ -25,7 +25,7 @@
 
 
 #include "kvi_ircconnectiontargetresolver.h"
-#include "kvi_dns.h"
+#include "KviDnsResolver.h"
 #include "KviLocale.h"
 #include "KviIrcServerDataBase.h"
 #include "KviProxyDataBase.h"
@@ -34,7 +34,7 @@
 #include "kvi_options.h"
 #include "kvi_ircsocket.h"
 #include "kvi_console.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "kvi_internalcmd.h"
 #include "kvi_frame.h"
 #include "kvi_mexlinkfilter.h"
@@ -229,11 +229,11 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 				m_pProxyDns = 0;
 			}
 
-			m_pProxyDns = new KviDns();
-			connect(m_pProxyDns,SIGNAL(lookupDone(KviDns *)),this,SLOT(proxyLookupTerminated(KviDns *)));
+			m_pProxyDns = new KviDnsResolver();
+			connect(m_pProxyDns,SIGNAL(lookupDone(KviDnsResolver *)),this,SLOT(proxyLookupTerminated(KviDnsResolver *)));
 
 			if(!m_pProxyDns->lookup(m_pTarget->proxy()->m_szHostname,
-				m_pTarget->proxy()->isIPv6() ? KviDns::IPv6 : KviDns::IPv4))
+				m_pTarget->proxy()->isIPv6() ? KviDnsResolver::IPv6 : KviDnsResolver::IPv4))
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,
 						__tr2qs("Unable to look up the IRC proxy hostname: Can't start the DNS slave"));
@@ -254,9 +254,9 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 	}
 }
 
-void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDns *)
+void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDnsResolver *)
 {
-	if(m_pProxyDns->state() != KviDns::Success)
+	if(m_pProxyDns->state() != KviDnsResolver::Success)
 	{
 		QString szErr = KviError::getDescription(m_pProxyDns->error());
 		m_pConsole->output(KVI_OUT_SYSTEMERROR,
@@ -346,11 +346,11 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 				delete m_pServerDns;
 				m_pServerDns = 0;
 			}
-			m_pServerDns = new KviDns();
-			connect(m_pServerDns,SIGNAL(lookupDone(KviDns *)),this,
-				SLOT(serverLookupTerminated(KviDns *)));
+			m_pServerDns = new KviDnsResolver();
+			connect(m_pServerDns,SIGNAL(lookupDone(KviDnsResolver *)),this,
+				SLOT(serverLookupTerminated(KviDnsResolver *)));
 			if(!m_pServerDns->lookup(m_pTarget->server()->m_szHostname,
-				m_pTarget->server()->isIPv6() ? KviDns::IPv6 : KviDns::IPv4))
+				m_pTarget->server()->isIPv6() ? KviDnsResolver::IPv6 : KviDnsResolver::IPv4))
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
 					__tr2qs("Unable to look up the server hostname: Can't start the DNS slave"));
@@ -366,9 +366,9 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 }
 
 
-void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDns *)
+void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 {
-	if(m_pServerDns->state() != KviDns::Success)
+	if(m_pServerDns->state() != KviDnsResolver::Success)
 	{
 		QString szErr = KviError::getDescription(m_pServerDns->error());
 		m_pConsole->output(KVI_OUT_SYSTEMERROR,

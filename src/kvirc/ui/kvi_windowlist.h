@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "KviPointerList.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalToolTip.h"
 
 #include <QPushButton>
 #include <QFrame>

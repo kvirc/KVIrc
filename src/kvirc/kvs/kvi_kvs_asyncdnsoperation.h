@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_kvs_asyncoperation.h"
 #include "KviQString.h"
-#include "kvi_dns.h"
+#include "KviDnsResolver.h"
 
 class KviWindow;
 class KviKvsScript;
@@ -37,16 +37,16 @@ class KVIRC_API KviKvsAsyncDnsOperation : public KviKvsAsyncOperation
 {
 	Q_OBJECT
 public:
-	KviKvsAsyncDnsOperation(KviWindow * pWnd,QString &szQuery,KviDns::QueryType eType,KviKvsScript * pCallback = 0,KviKvsVariant * pMagic = 0);
+	KviKvsAsyncDnsOperation(KviWindow * pWnd,QString &szQuery,KviDnsResolver::QueryType eType,KviKvsScript * pCallback = 0,KviKvsVariant * pMagic = 0);
 	virtual ~KviKvsAsyncDnsOperation();
 protected:
-	KviDns * m_pDns;
-	KviDns::QueryType m_eType;
+	KviDnsResolver * m_pDns;
+	KviDnsResolver::QueryType m_eType;
 	KviKvsVariant * m_pMagic;
 	KviKvsScript * m_pCallback;
 	QString m_szQuery;
 protected slots:
-	void lookupTerminated(KviDns *);
+	void lookupTerminated(KviDnsResolver *);
 	void dnsStartFailed();
 };
 

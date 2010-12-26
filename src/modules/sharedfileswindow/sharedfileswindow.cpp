@@ -35,8 +35,8 @@
 #include "kvi_themedlabel.h"
 #include "kvi_input.h"
 #include "kvi_filedialog.h"
-#include "kvi_tal_hbox.h"
-#include "kvi_tal_vbox.h"
+#include "KviTalHBox.h"
+#include "KviTalVBox.h"
 
 #include <QDateTimeEdit>
 #include <QLabel>

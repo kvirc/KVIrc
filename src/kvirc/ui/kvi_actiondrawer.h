@@ -32,7 +32,7 @@
 
 #include "kvi_settings.h"
 #include "KviQString.h"
-#include "kvi_tal_listwidget.h"
+#include "KviTalListWidget.h"
 
 #include <QWidget>
 #include <QTabWidget>

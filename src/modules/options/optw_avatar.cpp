@@ -27,7 +27,7 @@
 #include "KviLocale.h"
 #include "kvi_selectors.h"
 #include "kvi_options.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalToolTip.h"
 
 KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)

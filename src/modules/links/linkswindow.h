@@ -30,7 +30,7 @@
 #include "kvi_sparser.h"
 #include "kvi_console.h"
 #include "kvi_irccontext.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 #include "kvi_themedtreewidget.h"
 
 #include <QToolButton>

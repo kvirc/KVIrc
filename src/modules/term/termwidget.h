@@ -30,7 +30,7 @@
 	#include <QFrame>
 	#include <QLabel>
 	#include <QPushButton>
-	#include "kvi_tal_hbox.h"
+	#include "KviTalHBox.h"
 
 	#include "kparts/part.h"
 

@@ -23,7 +23,7 @@
 //
 //=============================================================================
 
-#include <kvi_tal_wizard.h>
+#include <KviTalWizard.h>
 
 #include "class_wizard.h"
 #include "kvi_error.h"

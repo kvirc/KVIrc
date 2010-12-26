@@ -37,7 +37,7 @@
 #include "kvi_modulemanager.h"
 #include "kvi_statusbarapplet.h"
 #include "kvi_dynamictooltip.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #include <QPainter>
 #include <QStyle>

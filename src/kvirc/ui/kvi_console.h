@@ -43,7 +43,7 @@
 class QToolBar;
 
 class KviAvatar;
-class KviDns;
+class KviDnsResolver;
 class KviIrcUserDataBase;
 class KviIrcUserEntry;
 class KviServer;

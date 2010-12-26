@@ -43,8 +43,8 @@
 #include "KviStringConversion.h"
 #include "kvi_options.h"
 #include "KviPointerHashTable.h"
-#include "kvi_tal_hbox.h"
-#include "kvi_tal_vbox.h"
+#include "KviTalHBox.h"
+#include "KviTalVBox.h"
 
 #include <QLayout>
 #include <QLabel>

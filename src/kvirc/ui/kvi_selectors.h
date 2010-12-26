@@ -29,9 +29,9 @@
 #include "kvi_settings.h"
 #include "KviCString.h"
 #include "KviPixmap.h"
-#include "kvi_tal_hbox.h"
-#include "kvi_tal_vbox.h"
-#include "kvi_tal_listwidget.h"
+#include "KviTalHBox.h"
+#include "KviTalVBox.h"
+#include "KviTalListWidget.h"
 
 #include <QTreeWidget>
 #include <QScrollArea>

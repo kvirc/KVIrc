@@ -29,11 +29,11 @@
 #include "KviLocale.h"
 #include "kvi_window.h"
 #include "kvi_iconmanager.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_console.h"
 #include "kvi_kvs_script.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #include <QPainter>
 
@@ -335,7 +335,7 @@ void KviHttpFileTransfer::init()
 	g_pHttpFileTransfers = new KviPointerList<KviHttpFileTransfer>;
 	g_pHttpFileTransfers->setAutoDelete(false);
 
-	QPixmap * pix = g_pIconManager->getImage("kvi_httpicons.png", false);
+	QPixmap * pix = g_pIconManager->getImage("KviHttpRequesticons.png", false);
 	if(pix)g_pHttpIcon = new QPixmap(*pix);
 	else g_pHttpIcon = 0;
 }

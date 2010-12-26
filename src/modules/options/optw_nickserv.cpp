@@ -29,7 +29,7 @@
 #include "KviLocale.h"
 #include "KviNickServRuleSet.h"
 #include "KviIrcMask.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalToolTip.h"
 #include <QTreeWidget>
 
 #include <QLayout>

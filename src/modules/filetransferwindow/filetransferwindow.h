@@ -32,9 +32,9 @@
 #include "kvi_moduleextension.h"
 #include "kvi_filetransfer.h"
 #include "kvi_dynamictooltip.h"
-#include "kvi_tal_tablewidget.h"
-#include "kvi_tal_popupmenu.h"
-#include "kvi_tal_itemdelegates.h"
+#include "KviTalTableWidget.h"
+#include "KviTalPopupMenu.h"
+#include "KviTalIconAndRichTextItemDelegate.h"
 
 #include <QTimer>
 #include <QPixmap>

@@ -32,7 +32,7 @@
 #include "kvi_window.h"
 #include "KviDataBuffer.h"
 #include "kvi_sockettype.h"
-#include "kvi_tal_hbox.h"
+#include "KviTalHBox.h"
 
 #include <QLabel>
 #include <QToolButton>

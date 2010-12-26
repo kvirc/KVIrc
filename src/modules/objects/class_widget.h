@@ -27,7 +27,7 @@
 
 #include "kvi_settings.h"
 #include "KviCString.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalToolTip.h"
 #include "object_macros.h"
 
 #ifdef COMPILE_WEBKIT_SUPPORT

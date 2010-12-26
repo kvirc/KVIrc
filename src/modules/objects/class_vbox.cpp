@@ -29,7 +29,7 @@
 
 #include "class_vbox.h"
 
-#include "kvi_tal_vbox.h"
+#include "KviTalVBox.h"
 
 
 // Tables used in $setAlignment & $alignment

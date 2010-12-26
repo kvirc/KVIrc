@@ -28,7 +28,7 @@
 
 #ifdef COMPILE_SSL_SUPPORT
 
-#include "kvi_ssl.h"
+#include "KviSSL.h"
 #include "kvi_sockettype.h"
 
 class KviWindow;

@@ -39,8 +39,8 @@
 #include "kvi_frame.h"
 #include "kvi_menubar.h"
 #include "kvi_app.h"
-#include "kvi_tal_popupmenu.h"
-#include "kvi_tal_hbox.h"
+#include "KviTalPopupMenu.h"
+#include "KviTalHBox.h"
 
 #include <QMenuBar>
 #include <QLayout>

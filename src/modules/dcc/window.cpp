@@ -24,7 +24,7 @@
 
 #include "window.h"
 
-#include "kvi_tal_hbox.h"
+#include "KviTalHBox.h"
 
 KviDccWindow::KviDccWindow(int type,KviFrame * lpFrm,const char * name,KviDccDescriptor * d)
 : KviWindow(type,lpFrm,name, d->console())

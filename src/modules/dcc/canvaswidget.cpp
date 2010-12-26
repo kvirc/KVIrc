@@ -27,7 +27,7 @@
 #ifdef COMPILE_DCC_CANVAS
 	#include "KviCString.h"
 	#include "KviLocale.h"
-	#include "kvi_tal_popupmenu.h"
+	#include "KviTalPopupMenu.h"
 
 	#include <QCursor>
 	#include <QPainter>

@@ -63,7 +63,7 @@ class KviIrcConnectionStatistics;
 class KviRequestQueue;
 class KviLagMeter;
 class KviNotifyListManager;
-class KviDns;
+class KviDnsResolver;
 class KviUserIdentity;
 class KviIdentityProfileSet;
 class KviCString;
@@ -172,7 +172,7 @@ private:
 
 	KviIrcConnectionStatistics           * m_pStatistics;           // owned, never null
 
-	KviDns                               * m_pLocalhostDns;         // FIXME: this should go to an aux structure
+	KviDnsResolver                               * m_pLocalhostDns;         // FIXME: this should go to an aux structure
 
 	QTextCodec                           * m_pSrvCodec;             // connection codec: never null
 	QTextCodec                           * m_pTextCodec;            // connection codec: never null
@@ -900,7 +900,7 @@ private slots:
 	* \brief Called when the hostname lookup is finished
 	* \return void
 	*/
-	void hostNameLookupTerminated(KviDns * pDns);
+	void hostNameLookupTerminated(KviDnsResolver * pDns);
 signals:
 	/**
 	* \brief Emitted when the away state changes

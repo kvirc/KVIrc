@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "KviCString.h"
-#include "kvi_tal_wizard.h"
+#include "KviTalWizard.h"
 
 #include <QCheckBox>
 

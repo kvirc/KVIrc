@@ -27,7 +27,7 @@
 
 #include "kvi_settings.h"
 #include "KviPointerList.h"
-#include "kvi_tal_tablewidget.h"
+#include "KviTalTableWidget.h"
 
 #include <QObject>
 

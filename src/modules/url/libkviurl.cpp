@@ -36,7 +36,7 @@
 #include "kvi_windowlist.h"
 #include "KviPointerList.h"
 #include "kvi_kvs_eventmanager.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 #include "kvi_window.h"
 #include "kvi_options.h"
 #include "KviQString.h"

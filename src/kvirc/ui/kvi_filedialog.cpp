@@ -30,7 +30,7 @@
 #include "KviFileUtils.h"
 #include "kvi_frame.h"
 #include "KviQString.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalToolTip.h"
 
 #include <QDir>
 #include <QIcon>

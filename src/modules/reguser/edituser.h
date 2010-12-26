@@ -29,8 +29,8 @@
 #include "kvi_selectors.h"
 #include "KviPointerHashTable.h"
 #include <QTreeWidget>
-#include "kvi_tal_popupmenu.h"
-#include <kvi_tal_tabdialog.h>
+#include "KviTalPopupMenu.h"
+#include <KviTalTabDialog.h>
 
 #include <QListWidget>
 #include <QWidget>

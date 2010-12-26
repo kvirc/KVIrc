@@ -30,7 +30,7 @@
 #include "kvi_settings.h"
 #include "KviQString.h"
 #include "KviPointerList.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 #include "KviTimeUtils.h"
 
 #include <QBitmap>

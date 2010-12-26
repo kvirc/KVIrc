@@ -30,7 +30,7 @@
 	#include "KviCryptEngine.h"
 	#include "KviHeapObject.h"
 	#include "kvi_toolwindows_container.h"
-	#include "kvi_tal_listwidget.h"
+	#include "KviTalListWidget.h"
 
 	#include <QWidget>
 	#include <QPushButton>

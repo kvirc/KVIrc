@@ -28,7 +28,7 @@
 #include "kvi_scripteditor.h"
 #include "KviPointerList.h"
 #include "kvi_selectors.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #include <QCompleter>
 #include <QLabel>

@@ -41,7 +41,7 @@
 	#include "KviLocale.h"
 	#include "kvi_error.h"
 	#include "kvi_out.h"
-	#include "kvi_netutils.h"
+	#include "KviNetUtils.h"
 	#include "kvi_console.h"
 	#include "kvi_frame.h"
 	#include "KviMemory.h"

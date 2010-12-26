@@ -34,7 +34,7 @@
 #include "kvi_console.h"
 #include "KviRegisteredChannel.h"
 #include "kvi_kvs_script.h"
-#include "kvi_tal_groupbox.h"
+#include "KviTalGroupBox.h"
 
 #include <QTreeWidget>
 #include <QLabel>

@@ -25,7 +25,7 @@
 #include "marshal.h"
 
 #include "kvi_settings.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "kvi_error.h"
 #include "kvi_options.h"
 #include "KviLocale.h"

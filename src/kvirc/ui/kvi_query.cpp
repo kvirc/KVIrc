@@ -46,7 +46,7 @@
 #include "KviMircCntrl.h"
 #include "kvi_toolwindows_container.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_tal_hbox.h"
+#include "KviTalHBox.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "KviCryptEngine.h"

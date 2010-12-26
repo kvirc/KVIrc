@@ -36,7 +36,7 @@
 #include "KviParameterList.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variantlist.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #include <QPushButton>
 #include <QLayout>

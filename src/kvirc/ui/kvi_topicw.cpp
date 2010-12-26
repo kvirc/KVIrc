@@ -42,8 +42,8 @@
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_htmlgenerator.h"
 #include "KviMircCntrl.h"
-#include "kvi_tal_tooltip.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalToolTip.h"
+#include "KviTalPopupMenu.h"
 #include "kvi_themedlabel.h"
 
 #include <QLineEdit>

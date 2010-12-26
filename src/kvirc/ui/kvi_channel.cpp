@@ -55,7 +55,7 @@
 #include "KviPointerHashTable.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "KviCryptEngine.h"

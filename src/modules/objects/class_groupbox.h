@@ -27,7 +27,7 @@
 
 
 
-#include <kvi_tal_groupbox.h>
+#include <KviTalGroupBox.h>
 #include "class_widget.h"
 #include "object_macros.h"
 

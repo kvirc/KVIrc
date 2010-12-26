@@ -32,7 +32,7 @@
 #include "KviConfigurationFile.h"
 #include "kvi_app.h"
 #include "KviQString.h"
-#include "kvi_tal_vbox.h"
+#include "KviTalVBox.h"
 
 #include <QMessageBox>
 #include <QDir>

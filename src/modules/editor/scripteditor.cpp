@@ -41,9 +41,9 @@
 #include "kvi_kvs_kernel.h"
 #include "kvi_modulemanager.h"
 #include "KviConfigurationFile.h"
-#include "kvi_tal_vbox.h"
-#include "kvi_tal_hbox.h"
-#include "kvi_tal_groupbox.h"
+#include "KviTalVBox.h"
+#include "KviTalHBox.h"
+#include "KviTalGroupBox.h"
 
 #include <QScrollBar>
 #include <QLayout>

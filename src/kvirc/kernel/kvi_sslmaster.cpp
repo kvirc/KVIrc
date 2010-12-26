@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : kvi_sslmanager.cpp
+//   File : KviSSLmanager.cpp
 //   Creation date : Mon Jun 17 2002 20:34:00 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution

@@ -26,8 +26,8 @@
 
 #include "kvi_mexserverimport.h"
 #include "KviCString.h"
-#include "kvi_http.h"
-#include <kvi_tal_wizard.h>
+#include "KviHttpRequest.h"
+#include <KviTalWizard.h>
 
 #include <QLineEdit>
 #include <QLabel>

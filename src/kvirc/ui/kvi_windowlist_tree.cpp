@@ -29,7 +29,7 @@
 #include "kvi_frame.h"
 #include "KviLocale.h"
 #include "kvi_options.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 #include "kvi_window.h"
 #include "kvi_windowlist_tree.h"
 

@@ -32,7 +32,7 @@
 #include <QLabel>
 #include <QRadioButton>
 
-#include "kvi_tal_tooltip.h"
+#include "KviTalToolTip.h"
 
 KviAlertHighlightingOptionsWidget::KviAlertHighlightingOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)

@@ -35,10 +35,10 @@
 #include "kvi_filedialog.h"
 #include "kvi_fileextensions.h"
 #include "kvi_iconmanager.h"
-#include "kvi_http.h"
+#include "KviHttpRequest.h"
 #include "KviIdentityProfile.h"
-#include "kvi_tal_tooltip.h"
-#include "kvi_tal_hbox.h"
+#include "KviTalToolTip.h"
+#include "KviTalHBox.h"
 #include <QTreeWidget>
 
 #include <QCheckBox>

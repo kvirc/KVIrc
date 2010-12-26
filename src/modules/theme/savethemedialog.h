@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "KviPointerList.h"
 #include "kvi_theme.h"
-#include "kvi_tal_wizard.h"
+#include "KviTalWizard.h"
 
 #include <QDialog>
 

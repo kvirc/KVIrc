@@ -30,8 +30,8 @@
 #include "kvi_modulemanager.h"
 #include "KviPointerList.h"
 #include "KviCString.h"
-#include "kvi_tal_hbox.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalHBox.h"
+#include "KviTalToolTip.h"
 #include "kvi_app.h"
 
 #include <QLabel>

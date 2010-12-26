@@ -41,8 +41,8 @@
 #include "kvi_dynamictooltip.h"
 #include "kvi_iconmanager.h"
 #include "kvi_msgbox.h"
-#include "kvi_tal_popupmenu.h"
-#include "kvi_tal_listwidget.h"
+#include "KviTalPopupMenu.h"
+#include "KviTalListWidget.h"
 
 
 #include <QLayout>

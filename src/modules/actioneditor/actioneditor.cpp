@@ -39,9 +39,9 @@
 #include "kvi_action.h"
 #include "kvi_kvs_useraction.h"
 #include "kvi_customtoolbarmanager.h"
-#include "kvi_tal_vbox.h"
-#include <kvi_tal_groupbox.h>
-#include "kvi_tal_itemdelegates.h"
+#include "KviTalVBox.h"
+#include <KviTalGroupBox.h>
+#include "KviTalIconAndRichTextItemDelegate.h"
 #include "kvi_fileextensions.h"
 
 #include <QList>

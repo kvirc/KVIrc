@@ -26,7 +26,7 @@
 #include "kvi_options.h"
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_ircconnectionuserinfo.h"
-#include "kvi_tal_hbox.h"
+#include "KviTalHBox.h"
 
 #include <QEvent>
 #include <QResizeEvent>

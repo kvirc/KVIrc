@@ -34,7 +34,7 @@
 #include "kvi_iconmanager.h"
 #include "KviIrcServerDataBase.h"
 #include "kvi_ipeditor.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "kvi_settings.h"
 #include "kvi_filedialog.h"
 #include "KviConfigurationFile.h"
@@ -52,8 +52,8 @@
 #include "KviProxyDataBase.h"
 #include "kvi_kvs_script.h"
 #include "KviPointerHashTable.h"
-#include "kvi_tal_popupmenu.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalPopupMenu.h"
+#include "KviTalToolTip.h"
 
 #include <QLineEdit>
 #include <QCursor>

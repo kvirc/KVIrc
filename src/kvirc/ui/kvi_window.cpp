@@ -55,8 +55,8 @@
 #include "KviMircCntrl.h"
 #include "kvi_toolwindows_container.h"
 #include "kvi_kvs_script.h"
-#include "kvi_tal_popupmenu.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalPopupMenu.h"
+#include "KviTalToolTip.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_eventtriggers.h"
 

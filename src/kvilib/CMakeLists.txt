@@ -20,24 +20,24 @@ SET(kvilib_MOC_HDRS
 	ext/KviRegisteredUserDataBase.h
 	ext/KviSharedFilesManager.h
 	irc/KviIrcUserDataBase.h
-	net/kvi_dns.h
-	net/kvi_http.h
+	net/KviDnsResolver.h
+	net/KviHttpRequest.h
 	system/KviLocale.h
 	system/KviThread.h
-	tal/kvi_tal_application.h
-	tal/kvi_tal_filedialog.h
-	tal/kvi_tal_groupbox.h
-	tal/kvi_tal_hbox.h
-	tal/kvi_tal_listwidget.h
-	tal/kvi_tal_mainwindow.h
-	tal/kvi_tal_menubar.h
-	tal/kvi_tal_popupmenu.h
-	tal/kvi_tal_tabdialog.h
-	tal/kvi_tal_tablewidget.h
-	tal/kvi_tal_toolbar.h
-	tal/kvi_tal_tooltip.h
-	tal/kvi_tal_vbox.h
-	tal/kvi_tal_wizard.h
+	tal/KviTalApplication.h
+	tal/KviTalFileDialog.h
+	tal/KviTalGroupBox.h
+	tal/KviTalHBox.h
+	tal/KviTalListWidget.h
+	tal/KviTalMainWindow.h
+	tal/KviTalMenuBar.h
+	tal/KviTalPopupMenu.h
+	tal/KviTalTabDialog.h
+	tal/KviTalTableWidget.h
+	tal/KviTalToolBar.h
+	tal/KviTalToolTip.h
+	tal/KviTalVBox.h
+	tal/KviTalWizard.h
 )
 
 IF(COMPILE_DBUS_SUPPORT)
@@ -96,33 +96,33 @@ SET(kvilib_SRCS
 	irc/KviNetwork.cpp
 	irc/KviNickServRuleSet.cpp
 	irc/KviUserIdentity.cpp
-	net/kvi_dns.cpp
-	net/kvi_http.cpp
-	net/kvi_netutils.cpp
-	net/kvi_sasl.cpp
+	net/KviDnsResolver.cpp
+	net/KviHttpRequest.cpp
+	net/KviNetUtils.cpp
+	net/KviSASL.cpp
 	net/kvi_socket.cpp
-	net/kvi_ssl.cpp
-	net/kvi_url.cpp
+	net/KviSSL.cpp
+	net/KviUrl.cpp
 	system/KviEnvironment.cpp
 	system/KviLocale.cpp
 	system/KviThread.cpp
 	system/KviTimeUtils.cpp
-	tal/kvi_tal_application.cpp
-	tal/kvi_tal_filedialog.cpp
-	tal/kvi_tal_groupbox.cpp
-	tal/kvi_tal_hbox.cpp
-	tal/kvi_tal_itemdelegates.cpp
-	tal/kvi_tal_listwidget.cpp
-	tal/kvi_tal_mainwindow.cpp
-	tal/kvi_tal_menubar.cpp
-	tal/kvi_tal_popupmenu.cpp
-	tal/kvi_tal_splitter.cpp
-	tal/kvi_tal_tabdialog.cpp
-	tal/kvi_tal_tablewidget.cpp
-	tal/kvi_tal_toolbar.cpp
-	tal/kvi_tal_tooltip.cpp
-	tal/kvi_tal_vbox.cpp
-	tal/kvi_tal_wizard.cpp
+	tal/KviTalApplication.cpp
+	tal/KviTalFileDialog.cpp
+	tal/KviTalGroupBox.cpp
+	tal/KviTalHBox.cpp
+	tal/KviTalIconAndRichTextItemDelegate.cpp
+	tal/KviTalListWidget.cpp
+	tal/KviTalMainWindow.cpp
+	tal/KviTalMenuBar.cpp
+	tal/KviTalPopupMenu.cpp
+	tal/KviTalSplitter.cpp
+	tal/KviTalTabDialog.cpp
+	tal/KviTalTableWidget.cpp
+	tal/KviTalToolBar.cpp
+	tal/KviTalToolTip.cpp
+	tal/KviTalVBox.cpp
+	tal/KviTalWizard.cpp
 )
 
 IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)

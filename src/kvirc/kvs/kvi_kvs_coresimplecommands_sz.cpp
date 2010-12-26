@@ -33,7 +33,7 @@
 #include "kvi_app.h"
 #include "kvi_asynchronousconnectiondata.h"
 #include "kvi_frame.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "kvi_menubar.h"
 #include "kvi_userinput.h"
 #include "kvi_out.h"

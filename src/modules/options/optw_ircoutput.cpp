@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_options.h"
 #include "KviLocale.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalToolTip.h"
 
 #include <QLayout>
 #include <QComboBox>

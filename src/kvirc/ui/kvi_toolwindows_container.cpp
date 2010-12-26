@@ -26,7 +26,7 @@
 
 #include "kvi_toolwindows_container.h"
 #include "kvi_iconmanager.h"
-#include "kvi_tal_vbox.h"
+#include "KviTalVBox.h"
 
 #include <QPainter>
 #include <QApplication>

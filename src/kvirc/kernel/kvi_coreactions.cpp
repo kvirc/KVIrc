@@ -44,7 +44,7 @@
 #include "kvi_coreactionnames.h"
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_kvs_script.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #include <QObject>
 

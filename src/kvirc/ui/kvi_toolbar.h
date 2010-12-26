@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "kvi_tal_toolbar.h"
+#include "KviTalToolBar.h"
 
 class KVIRC_API KviToolBar : public KviTalToolBar
 {

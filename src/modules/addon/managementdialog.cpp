@@ -37,8 +37,8 @@
 #include "kvi_fileextensions.h"
 #include "kvi_kvs_script.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_tal_listwidget.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalListWidget.h"
+#include "KviTalToolTip.h"
 
 #include <QPainter>
 #include <QPixmap>

@@ -40,7 +40,7 @@
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_irccontext.h"
 #include "kvi_lagmeter.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 #include "kvi_mdimanager.h"
 
 #include <QStyle>

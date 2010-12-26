@@ -28,7 +28,7 @@
 #include "kvi_socket.h"
 #include "kvi_app.h"
 #include "kvi_out.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "KviLocale.h"
 #include "kvi_window.h"
 #include "kvi_options.h"

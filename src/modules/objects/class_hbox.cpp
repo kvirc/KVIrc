@@ -26,7 +26,7 @@
 #include "kvi_debug.h"
 #include "KviLocale.h"
 #include "class_hbox.h"
-#include "kvi_tal_hbox.h"
+#include "KviTalHBox.h"
 
 const char * const align_tbl[] = {
 	"Left",

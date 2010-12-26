@@ -36,7 +36,7 @@
 
 #include "kvi_settings.h"
 #include "KviCString.h"
-#include "kvi_tal_filedialog.h"
+#include "KviTalFileDialog.h"
 
 #include <QStringList>
 

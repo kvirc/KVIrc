@@ -29,7 +29,7 @@
 #include "kvi_error.h"
 #include "kvi_memmove.h"
 #include "KviMemory.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "kvi_socket.h"
 
 #ifdef COMPILE_SSL_SUPPORT

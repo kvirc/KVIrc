@@ -42,7 +42,7 @@
 #include "kvi_filedialog.h"
 #include "kvi_msgbox.h"
 #include "kvi_fileextensions.h"
-#include "kvi_tal_hbox.h"
+#include "KviTalHBox.h"
 #include "kvi_htmlgenerator.h"
 #include "kvi_themedlineedit.h"
 

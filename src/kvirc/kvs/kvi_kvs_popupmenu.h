@@ -32,7 +32,7 @@
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_runtimecontext.h"
 
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #include <QLabel>
 #include <QPixmap>

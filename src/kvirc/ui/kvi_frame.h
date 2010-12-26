@@ -33,7 +33,7 @@
 
 #include "kvi_settings.h"
 
-#include "kvi_tal_mainwindow.h"
+#include "KviTalMainWindow.h"
 #include "KviQString.h"
 #include "KviPointerList.h"
 

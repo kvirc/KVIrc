@@ -41,7 +41,7 @@
 #include "kvi_options.h"
 #include "KviQString.h"
 #include "kvi_out.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 #include "kvi_texticonwin.h"
 #include "kvi_texticonmanager.h"
 #include "kvi_userinput.h"

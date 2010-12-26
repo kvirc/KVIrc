@@ -28,7 +28,7 @@
 
 #include "kvi_options.h"
 #include "KviLocale.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "kvi_ircsocket.h"
 #include "kvi_irclink.h"
 #include "KviQString.h"

@@ -46,10 +46,10 @@
 #include "kvi_buildinfo.h"
 #include "kvi_settings.h"
 #include "KviMiscUtils.h"
-#include "kvi_http.h"
-#include "kvi_url.h"
-#include "kvi_tal_popupmenu.h"
-#include "kvi_tal_tooltip.h"
+#include "KviHttpRequest.h"
+#include "KviUrl.h"
+#include "KviTalPopupMenu.h"
+#include "KviTalToolTip.h"
 
 #include <QPainter>
 #include <QStyle>

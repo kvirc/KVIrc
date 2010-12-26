@@ -50,7 +50,7 @@
 #include "kvi_app.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_kvs_script.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "kvi_ircurl.h"
 #include "KviUserIdentity.h"
 

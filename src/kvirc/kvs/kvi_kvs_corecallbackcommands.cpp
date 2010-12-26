@@ -42,7 +42,7 @@
 #include "kvi_iconmanager.h"
 #include "KviLocale.h"
 
-#include "kvi_tal_tooltip.h"
+#include "KviTalToolTip.h"
 
 #include <QRegExp>
 
@@ -143,9 +143,9 @@ namespace KviKvsCoreCallbackCommands
 			KVSCCC_PARAMETER("magic",KVS_PT_VARIANT,KVS_PF_OPTIONAL,pMagicPtr)
 		KVSCCC_PARAMETERS_END
 
-		KviDns::QueryType queryType = KviDns::IPv4;
-		if(KVSCCC_pSwitches->find('i',"ipv6"))queryType = KviDns::IPv6;
-		if(KVSCCC_pSwitches->find('a',"any"))queryType = KviDns::Any;
+		KviDnsResolver::QueryType queryType = KviDnsResolver::IPv4;
+		if(KVSCCC_pSwitches->find('i',"ipv6"))queryType = KviDnsResolver::IPv6;
+		if(KVSCCC_pSwitches->find('a',"any"))queryType = KviDnsResolver::Any;
 
 		KviKvsVariant * pMagic = pMagicPtr ? new KviKvsVariant(*pMagicPtr) : new KviKvsVariant();
 

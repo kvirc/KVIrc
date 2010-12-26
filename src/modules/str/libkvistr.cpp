@@ -40,7 +40,7 @@
 
 #if defined( COMPILE_SSL_SUPPORT ) && !defined( COMPILE_NO_EMBEDDED_CODE )
 	// The current implementation
-	#include <kvi_ssl.h>
+	#include <KviSSL.h>
 	#include <openssl/evp.h>
 	#include <openssl/pem.h>
 #elif defined(COMPILE_NO_EMBEDDED_CODE)

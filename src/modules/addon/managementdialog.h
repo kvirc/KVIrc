@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_tal_listwidget.h"
+#include "KviTalListWidget.h"
 
 #include <QWidget>
 #include <QLabel>

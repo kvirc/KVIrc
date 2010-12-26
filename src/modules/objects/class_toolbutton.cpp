@@ -29,7 +29,7 @@
 
 #include "KviLocale.h"
 #include "kvi_iconmanager.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 /*
 	@doc:	toolbutton
 	@keyterms:

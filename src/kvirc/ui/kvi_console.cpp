@@ -36,10 +36,10 @@
 #include "kvi_input.h"
 #include "kvi_error.h"
 #include "KviProxyDataBase.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "KviIrcServer.h"
 #include "KviIrcServerDataBase.h"
-#include "kvi_dns.h"
+#include "KviDnsResolver.h"
 #include "kvi_defaults.h"
 #include "KviIrcUserDataBase.h"
 #include "kvi_channel.h"
@@ -69,8 +69,8 @@
 #include "kvi_msgbox.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_tal_hbox.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalHBox.h"
+#include "KviTalPopupMenu.h"
 #include "KviNickColors.h"
 
 #ifdef COMPILE_SSL_SUPPORT

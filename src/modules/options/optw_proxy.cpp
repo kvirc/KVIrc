@@ -28,12 +28,12 @@
 #include "kvi_iconmanager.h"
 #include "KviProxyDataBase.h"
 #include "kvi_ipeditor.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "kvi_settings.h"
 #include "kvi_options.h"
-#include "kvi_tal_groupbox.h"
-#include "kvi_tal_popupmenu.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalGroupBox.h"
+#include "KviTalPopupMenu.h"
+#include "KviTalToolTip.h"
 
 #include <QLabel>
 #include <QLineEdit>

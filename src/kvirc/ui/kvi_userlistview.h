@@ -45,7 +45,7 @@
 #include "KviIrcUserDataBase.h"
 #include "KviIrcMask.h"
 #include "KviTimeUtils.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalToolTip.h"
 
 #include <time.h>
 

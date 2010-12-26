@@ -28,7 +28,7 @@
 #include "kvi_settings.h"
 #include "kvi_window.h"
 #include "kvi_moduleextension.h"
-#include "kvi_tal_vbox.h"
+#include "KviTalVBox.h"
 #include <QTreeWidget>
 #include "KviPointerList.h"
 

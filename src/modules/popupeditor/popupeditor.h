@@ -27,7 +27,7 @@
 #include "kvi_window.h"
 #include "KviCString.h"
 #include <QTreeWidget>
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #include <QWidget>
 #include <QLineEdit>

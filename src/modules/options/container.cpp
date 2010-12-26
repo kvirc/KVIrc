@@ -28,7 +28,7 @@
 #include "KviLocale.h"
 #include "kvi_iconmanager.h"
 #include "kvi_app.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalToolTip.h"
 
 #include <QLayout>
 #include <QPushButton>

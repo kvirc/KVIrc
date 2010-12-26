@@ -30,7 +30,7 @@
 #include "kvi_app.h"
 #include "kvi_actionmanager.h"
 #include "kvi_customtoolbardescriptor.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #include <QCursor>
 #include <QLayout>

@@ -26,7 +26,7 @@
 #include "kvi_frame.h"
 #include "KviLocale.h"
 #include "kvi_app.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #include <QCursor>
 #include <QEvent>

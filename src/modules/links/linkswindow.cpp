@@ -36,7 +36,7 @@
 #include "kvi_themedlabel.h"
 #include "kvi_irccontext.h"
 #include "kvi_ircconnection.h"
-#include "kvi_tal_hbox.h"
+#include "KviTalHBox.h"
 
 #include <QToolTip>
 #include <QLabel>

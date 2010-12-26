@@ -41,7 +41,7 @@
 #include "kvi_filedialog.h"
 #include "KviCommandFormatter.h"
 #include "kvi_module.h"
-#include "kvi_tal_vbox.h"
+#include "KviTalVBox.h"
 #include "kvi_fileextensions.h"
 
 #include <QList>

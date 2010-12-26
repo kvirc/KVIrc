@@ -41,7 +41,7 @@
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_options.h"
 #include "kvi_ircview.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #include <QPixmap>
 #include <QPainter>

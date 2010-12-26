@@ -26,7 +26,7 @@
 #include "kvi_ircsocket.h"
 #include "KviIrcServer.h"
 #include "KviProxyDataBase.h"
-#include "kvi_netutils.h"
+#include "KviNetUtils.h"
 #include "kvi_settings.h"
 #include "kvi_error.h"
 #include "KviLocale.h"

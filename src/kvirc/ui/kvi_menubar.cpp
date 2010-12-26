@@ -39,7 +39,7 @@
 #include "kvi_actionmanager.h"
 #include "kvi_coreactionnames.h"
 #include "kvi_kvs_script.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
       : KviTalMenuBar(par,name)

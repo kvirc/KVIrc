@@ -23,7 +23,7 @@
 //
 //=============================================================================
 
-#include "kvi_tal_mainwindow.h"
+#include "KviTalMainWindow.h"
 #include "class_mainwindow.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"

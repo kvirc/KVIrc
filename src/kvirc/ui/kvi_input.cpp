@@ -41,9 +41,9 @@
 #include "kvi_historywin.h"
 #include "kvi_userinput.h"
 #include "kvi_shortcuts.h"
-#include "kvi_tal_popupmenu.h"
-#include "kvi_tal_hbox.h"
-#include "kvi_tal_tooltip.h"
+#include "KviTalPopupMenu.h"
+#include "KviTalHBox.h"
+#include "KviTalToolTip.h"
 
 #include <QLabel>
 #include <QFileDialog>

@@ -58,7 +58,7 @@
 #include "kvi_ircview.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 #include "kvi_texticonmanager.h"
 #include "kvi_shortcuts.h"
 

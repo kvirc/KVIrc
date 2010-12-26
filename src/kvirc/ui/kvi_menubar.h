@@ -28,7 +28,7 @@
 #include "kvi_settings.h"
 #include "KviPointerList.h"
 #include "KviCString.h"
-#include "kvi_tal_menubar.h"
+#include "KviTalMenuBar.h"
 
 class KviFrame;
 class KviTalPopupMenu;

@@ -31,10 +31,10 @@
 #include "kvi_iconmanager.h"
 #include "kvi_module.h"
 #include "KviPointerHashTable.h"
-#include "kvi_tal_vbox.h"
-#include "kvi_tal_tooltip.h"
-#include "kvi_tal_popupmenu.h"
-#include "kvi_tal_groupbox.h"
+#include "KviTalVBox.h"
+#include "KviTalToolTip.h"
+#include "KviTalPopupMenu.h"
+#include "KviTalGroupBox.h"
 
 #include <QLayout>
 #include <QLabel>

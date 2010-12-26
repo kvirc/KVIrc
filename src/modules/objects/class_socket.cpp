@@ -36,8 +36,8 @@
 #include "KviFileUtils.h"
 #include "KviLocale.h"
 #include "kvi_error.h"
-#include "kvi_netutils.h"
-#include "kvi_dns.h"
+#include "KviNetUtils.h"
+#include "KviDnsResolver.h"
 #include "kvi_error.h"
 #include "kvi_socket.h"
 #include "KviMemory.h"
@@ -1000,9 +1000,9 @@ void KviKvsObject_socket::lookupRemoteIp()
 	if(m_pDelayTimer)delete m_pDelayTimer;
 	m_pDelayTimer = 0;
 	if(m_pDns)delete m_pDns;
-	m_pDns = new KviDns();
-	connect(m_pDns,SIGNAL(lookupDone(KviDns *)),this,SLOT(lookupDone(KviDns *)));
-	if(!m_pDns->lookup(m_szRemoteIp,KviDns::Any))
+	m_pDns = new KviDnsResolver();
+	connect(m_pDns,SIGNAL(lookupDone(KviDnsResolver *)),this,SLOT(lookupDone(KviDnsResolver *)));
+	if(!m_pDns->lookup(m_szRemoteIp,KviDnsResolver::Any))
 	{
 		unsigned int uOldConnectionId = m_uConnectionId;
 		KviKvsVariantList lParams;
@@ -1013,10 +1013,10 @@ void KviKvsObject_socket::lookupRemoteIp()
 	}
 }
 
-void KviKvsObject_socket::lookupDone(KviDns *pDns)
+void KviKvsObject_socket::lookupDone(KviDnsResolver *pDns)
 {
 
-	if(pDns->state() != KviDns::Success)
+	if(pDns->state() != KviDnsResolver::Success)
 	{
 		unsigned int uOldConnectionId = m_uConnectionId;
 		KviKvsVariantList lParams;

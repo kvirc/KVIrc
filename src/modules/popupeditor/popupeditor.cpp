@@ -39,7 +39,7 @@
 #include "kvi_kvs_popupmenu.h"
 #include "kvi_kvs_variantlist.h"
 #include "KviPointerHashTable.h"
-#include "kvi_tal_vbox.h"
+#include "KviTalVBox.h"
 #include "kvi_fileextensions.h"
 
 #include <QMessageBox>

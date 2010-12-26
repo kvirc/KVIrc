@@ -25,7 +25,7 @@
 
 
 #include "kvi_kvs_asyncdnsoperation.h"
-#include "kvi_dns.h"
+#include "KviDnsResolver.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variant.h"
 #include "kvi_app.h"
@@ -37,15 +37,15 @@
 #include <QTimer>
 
 
-KviKvsAsyncDnsOperation::KviKvsAsyncDnsOperation(KviWindow * pWnd,QString &szQuery,KviDns::QueryType eType,KviKvsScript * pCallback,KviKvsVariant * pMagic)
+KviKvsAsyncDnsOperation::KviKvsAsyncDnsOperation(KviWindow * pWnd,QString &szQuery,KviDnsResolver::QueryType eType,KviKvsScript * pCallback,KviKvsVariant * pMagic)
 : KviKvsAsyncOperation(pWnd)
 {
-	m_pDns = new KviDns();
+	m_pDns = new KviDnsResolver();
 	m_szQuery = szQuery;
 	m_eType = eType;
 	m_pCallback = pCallback;
 	m_pMagic = pMagic;
-	connect(m_pDns,SIGNAL(lookupDone(KviDns *)),this,SLOT(lookupTerminated(KviDns *)));
+	connect(m_pDns,SIGNAL(lookupDone(KviDnsResolver *)),this,SLOT(lookupTerminated(KviDnsResolver *)));
 	if(!m_pDns->lookup(szQuery,eType))
 		QTimer::singleShot(10,this,SLOT(dnsStartFailed()));
 }
@@ -62,7 +62,7 @@ void KviKvsAsyncDnsOperation::dnsStartFailed()
 	lookupTerminated(m_pDns);
 }
 
-void KviKvsAsyncDnsOperation::lookupTerminated(KviDns *)
+void KviKvsAsyncDnsOperation::lookupTerminated(KviDnsResolver *)
 {
 	KviWindow * pWnd = window();
 	if(!g_pApp->windowExists(pWnd))pWnd = g_pActiveWindow;
@@ -71,7 +71,7 @@ void KviKvsAsyncDnsOperation::lookupTerminated(KviDns *)
 	{
 		KviKvsVariantList params;
 		params.setAutoDelete(true);
-		if(m_pDns->state() == KviDns::Failure)
+		if(m_pDns->state() == KviDnsResolver::Failure)
 		{
 			params.append(new KviKvsVariant(m_szQuery));
 			params.append(new KviKvsVariant((kvs_int_t)0));
@@ -99,7 +99,7 @@ void KviKvsAsyncDnsOperation::lookupTerminated(KviDns *)
 	QString szQuery = m_pDns->query();
 	pWnd->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("DNS Lookup result for query \"%Q\"","kvs"),&szQuery);
 
-	if(m_pDns->state() == KviDns::Failure)
+	if(m_pDns->state() == KviDnsResolver::Failure)
 	{
 		QString strDescription(KviError::getDescription(m_pDns->error()));
 		pWnd->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("Error: %Q","kvs"),&strDescription);

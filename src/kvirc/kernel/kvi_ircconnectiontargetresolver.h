@@ -30,7 +30,7 @@
 #include <QObject>
 
 class KviConsole;
-class KviDns;
+class KviDnsResolver;
 class KviIrcConnection;
 class KviIrcConnectionTarget;
 
@@ -55,8 +55,8 @@ private:
 
 	// Auxiliary stuff
 	QTimer                       * m_pStartTimer;       // timer used to start the connection
-	KviDns                       * m_pProxyDns;         // the dns object for the proxy hostnames
-	KviDns                       * m_pServerDns;        // the dns object for the server hostnames
+	KviDnsResolver                       * m_pProxyDns;         // the dns object for the proxy hostnames
+	KviDnsResolver                       * m_pServerDns;        // the dns object for the server hostnames
 
 	char                         * m_pReadBuffer;
 	unsigned int                   m_uReadBufferLen;
@@ -73,8 +73,8 @@ public:
 	void abort();
 protected slots:
 	void asyncStartResolve();
-	void serverLookupTerminated(KviDns *);
-	void proxyLookupTerminated(KviDns *);
+	void serverLookupTerminated(KviDnsResolver *);
+	void proxyLookupTerminated(KviDnsResolver *);
 private:
 	void cleanup();
 	void lookupProxyHostname();

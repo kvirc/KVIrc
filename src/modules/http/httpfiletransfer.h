@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_filetransfer.h"
-#include "kvi_http.h"
+#include "KviHttpRequest.h"
 #include "KviTimeUtils.h"
 #include "kvi_kvs_variant.h"
 

@@ -23,7 +23,7 @@
 //
 //=============================================================================
 
-#include <kvi_tal_groupbox.h>
+#include <KviTalGroupBox.h>
 #include "class_groupbox.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"

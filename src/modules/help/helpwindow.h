@@ -26,8 +26,8 @@
 
 #include "kvi_window.h"
 #include "KviCString.h"
-#include "kvi_tal_vbox.h"
-#include "kvi_tal_listwidget.h"
+#include "KviTalVBox.h"
+#include "KviTalListWidget.h"
 
 #include <QTabWidget>
 #include <QLineEdit>

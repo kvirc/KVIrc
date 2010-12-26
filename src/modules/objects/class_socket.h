@@ -36,7 +36,7 @@
 #define KVI_SCRIPT_SOCKET_STATUS_LISTENING 3
 #define KVI_SCRIPT_SOCKET_STATUS_CONNECTED 4
 
-class KviDns;
+class KviDnsResolver;
 class KviDataBuffer;
 #include "object_macros.h"
 
@@ -56,7 +56,7 @@ protected:
 	kvi_u32_t          m_uLocalPort;
 	unsigned int       m_uConnectTimeout;
 	QSocketNotifier  * m_pSn;
-	KviDns           * m_pDns;
+	KviDnsResolver           * m_pDns;
 	QTimer           * m_pDelayTimer;
 	char				* m_pInBuffer;
 	unsigned int       m_uInBufferLen;
@@ -103,7 +103,7 @@ protected:
 protected slots:
 	void doConnect();
 	void lookupRemoteIp();
-	void lookupDone(KviDns * pDns);
+	void lookupDone(KviDnsResolver * pDns);
 	void connectTimeoutSlot();
 	void writeNotifierFired(int);
 	void readNotifierFired(int);

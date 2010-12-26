@@ -39,7 +39,7 @@
 #include "KviPointerList.h"
 #include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
-#include "kvi_tal_hbox.h"
+#include "KviTalHBox.h"
 
 #include <QString>
 #include <QStatusBar>

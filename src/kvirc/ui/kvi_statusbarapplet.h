@@ -30,7 +30,7 @@
 #include "KviHeapObject.h"
 #include "kvi_statusbar.h"
 #include "KviPointerHashTable.h"
-#include "kvi_http.h"
+#include "KviHttpRequest.h"
 
 #include <QString>
 #include <QStatusBar>

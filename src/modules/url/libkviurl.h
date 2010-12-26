@@ -28,7 +28,7 @@
 #include "KviConfigurationFile.h"
 #include "kvi_irctoolbar.h"
 #include "kvi_window.h"
-#include "kvi_tal_menubar.h"
+#include "KviTalMenuBar.h"
 #include "kvi_mextoolbar.h"
 #include "kvi_kvs_action.h"
 #include <QTreeWidget>

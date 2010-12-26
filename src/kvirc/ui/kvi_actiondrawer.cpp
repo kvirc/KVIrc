@@ -30,7 +30,7 @@
 #include "kvi_actionmanager.h"
 #include "kvi_iconmanager.h"
 #include "KviLocale.h"
-#include "kvi_tal_listwidget.h"
+#include "KviTalListWidget.h"
 
 #include <QLayout>
 #include <QLabel>

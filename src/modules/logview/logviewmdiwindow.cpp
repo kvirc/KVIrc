@@ -35,7 +35,7 @@
 #include "KviQString.h"
 #include "kvi_app.h"
 #include "KviFileUtils.h"
-#include "kvi_tal_popupmenu.h"
+#include "KviTalPopupMenu.h"
 
 #include <QList>
 #include <QPixmap>
