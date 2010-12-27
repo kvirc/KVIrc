@@ -27,7 +27,7 @@
 #include "class_file.h"
 #include "kvi_debug.h"
 #include "KviLocale.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviFile.h"
 #include "KviFileUtils.h"
 #include "class_memorybuffer.h"

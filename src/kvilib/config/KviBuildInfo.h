@@ -2,7 +2,7 @@
 #define _KVI_BUILDINFO_H_
 //=============================================================================
 //
-//   File : kvi_buildinfo.h
+//   File : KviBuildInfo.h
 //   Creation date : Sat 19 Apr 2008 17:01:57 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
@@ -26,7 +26,7 @@
 //=============================================================================
 
 /**
-* \file kvi_buildinfo.h
+* \file KviBuildInfo.h
 * \author Szymon Stefanek
 * \brief Useful functions which returns compilation and runtime info
 */

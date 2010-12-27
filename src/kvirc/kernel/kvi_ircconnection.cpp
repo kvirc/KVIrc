@@ -41,7 +41,7 @@
 #include "KviLocale.h"
 #include "KviIrcServerDataBase.h"
 #include "KviProxyDataBase.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_out.h"
 #include "kvi_options.h"
 #include "kvi_console.h"
@@ -74,7 +74,7 @@
 #include <QTimer>
 #include <QTextCodec>
 
-extern KVIRC_API KviServerDataBase   * g_pServerDataBase;
+extern KVIRC_API KviIrcServerDataBase   * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase    * g_pProxyDataBase;
 
 KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget,KviUserIdentity * pIdentity)
@@ -1146,8 +1146,8 @@ void KviIrcConnection::useProfileData(KviIdentityProfileSet * pSet, const QStrin
 
 void KviIrcConnection::loginToIrcServer()
 {
-	KviServer * pServer = target()->server();
-	KviNetwork * pNet = target()->network();
+	KviIrcServer * pServer = target()->server();
+	KviIrcNetwork * pNet = target()->network();
 
 	// For now this is the only we know
 	m_pServerInfo->setName(pServer->m_szHostname);

@@ -26,7 +26,7 @@
 #include "KviLocale.h"
 #include "kvi_window.h"
 #include "kvi_app.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviCommandFormatter.h"
 #include "kvi_customtoolbar.h"
 #include "kvi_customtoolbardescriptor.h"

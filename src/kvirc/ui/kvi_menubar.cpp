@@ -253,7 +253,7 @@ void KviMenuBar::newConnectionToServer(int id)
 	{
 		if(text == __tr2qs("&Other..."))
 		{
-			KviKvsScript::run("options.edit KviServerOptionsWidget",m_pFrm->firstConsole());
+			KviKvsScript::run("options.edit KviIrcServerOptionsWidget",m_pFrm->firstConsole());
 		} else {
 			text.replace(QString("&"),QString(""));
 			KviCString szCommand;

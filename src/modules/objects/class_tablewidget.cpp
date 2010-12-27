@@ -29,7 +29,7 @@
 #include "kvi_debug.h"
 #include "kvi_app.h"
 #include "KviLocale.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_iconmanager.h"
 #include "KviFile.h"
 #include "kvi_kvs_arraycast.h"

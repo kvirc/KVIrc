@@ -2,7 +2,7 @@
 #define KVI_NETWORK_H_
 //=============================================================================
 //
-//   File : KviNetwork.cpp
+//   File : KviIrcNetwork.cpp
 //   Creation date : Wed Aug 27 2008 17:44:56 by Alexey Uzhva
 //
 //   This file is part of the KVirc irc client distribution
@@ -25,7 +25,7 @@
 //=============================================================================
 
 /**
-* \file KviNetwork.cpp
+* \file KviIrcNetwork.cpp
 * \author Alexey Uzhva
 * \brief Network handling
 */
@@ -38,35 +38,35 @@
 #include <QStringList>
 
 class KviNickServRuleSet;
-class KviServer;
+class KviIrcServer;
 class QStringList;
 
 /**
-* \class KviNetwork
+* \class KviIrcNetwork
 * \brief Network handling class
 */
-class KVILIB_API KviNetwork : public KviHeapObject
+class KVILIB_API KviIrcNetwork : public KviHeapObject
 {
-	friend class KviServerDataBase;
+	friend class KviIrcServerDataBase;
 public:
 	/**
 	* \brief Construct the network object
 	* \param name The name of the network
-	* \return KviNetwork
+	* \return KviIrcNetwork
 	*/
-	KviNetwork(const QString & name);
+	KviIrcNetwork(const QString & name);
 
 	/**
 	* \brief Carbon copy
 	* \param src The source network
-	* \return KviNetwork
+	* \return KviIrcNetwork
 	*/
-	KviNetwork(const KviNetwork & src);
+	KviIrcNetwork(const KviIrcNetwork & src);
 
 	/**
 	* \brief Destroys the network object
 	*/
-	~KviNetwork();
+	~KviIrcNetwork();
 protected:
 	QString              m_szName;
 	QString              m_szDescription;
@@ -83,9 +83,9 @@ protected:
 	bool                 m_bAutoConnect;              // autoconnect
 	QString              m_szUserIdentityId;          // The user identity to use for this server: if empty
 	                                                  // Then use the global primary identity
-	//moved from KviServerDataBaseRecord
-	KviPointerList<KviServer> * m_pServerList;
-	KviServer                 * m_pCurrentServer;
+	//moved from KviIrcServerDataBaseRecord
+	KviPointerList<KviIrcServer> * m_pServerList;
+	KviIrcServer                 * m_pCurrentServer;
 public:
 	/**
 	* \brief Returns the name of the network
@@ -194,7 +194,7 @@ public:
 	* \param d The source network to copy from
 	* \return void
 	*/
-	void copyFrom(const KviNetwork & d);
+	void copyFrom(const KviIrcNetwork & d);
 
 	/**
 	* \brief Sets the name of the network
@@ -300,43 +300,43 @@ public:
 
 	/**
 	* \brief Returns a list of servers associated to the network
-	* \return KviPointerList<KviServer> *
+	* \return KviPointerList<KviIrcServer> *
 	*/
-	inline KviPointerList<KviServer> * serverList(){ return m_pServerList; };
+	inline KviPointerList<KviIrcServer> * serverList(){ return m_pServerList; };
 
 	/**
 	* \brief Returns the current server
-	* \return KviServer
+	* \return KviIrcServer
 	*/
-	KviServer * currentServer();
+	KviIrcServer * currentServer();
 
 	/**
 	* \brief Adds a new server to the network
 	* \param srv The source server to add
 	* \return void
 	*/
-	void        insertServer(KviServer * srv);
+	void        insertServer(KviIrcServer * srv);
 
 	/**
 	* \brief Searches for a server in the network
 	* \param szHostname The hostname of the server to find
-	* \return KviServer
+	* \return KviIrcServer
 	*/
-	KviServer * findServer(const QString & szHostname);
+	KviIrcServer * findServer(const QString & szHostname);
 
 	/**
 	* \brief Searches for a server in the network
 	* \param pServer The server to find
-	* \return KviServer
+	* \return KviIrcServer
 	*/
-	KviServer * findServer(const KviServer * pServer);
+	KviIrcServer * findServer(const KviIrcServer * pServer);
 
 	/**
 	* \brief Sets the current server
 	* \param srv The source server
 	* \return void
 	*/
-	void setCurrentServer(KviServer * srv);
+	void setCurrentServer(KviIrcServer * srv);
 };
 
 #endif // KVI_NETWORK_H_

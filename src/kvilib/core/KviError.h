@@ -2,7 +2,7 @@
 #define _KVI_ERROR_H_
 //=============================================================================
 //
-//   File : kvi_error.h
+//   File : KviError.h
 //   Creation date : Sun Jul 02 2000 18:35:56 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
@@ -25,7 +25,7 @@
 //=============================================================================
 
 /**
-* \file kvi_error.h
+* \file KviError.h
 * \author Szymon Stefanek
 * \brief Error List
 */

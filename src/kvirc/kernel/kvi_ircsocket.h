@@ -40,7 +40,7 @@
 
 class QTimer;
 class QSocketNotifier;
-class KviServer;
+class KviIrcServer;
 class KviProxy;
 class KviIrcConnection;
 class KviIrcConnectionTarget;
@@ -107,7 +107,7 @@ protected:
 	SocketState            m_state;
 	QSocketNotifier      * m_pWsn;
 	QSocketNotifier      * m_pRsn;
-	KviServer            * m_pIrcServer;
+	KviIrcServer            * m_pIrcServer;
 	KviProxy             * m_pProxy;
 	QTimer               * m_pTimeoutTimer;
 	unsigned int           m_uReadBytes;
@@ -195,7 +195,7 @@ public:
 	* \param pcBindAddress The address to bind the connection to
 	* \return int
 	*/
-	int startConnection(KviServer * pServer, KviProxy * pProxy = 0, const char * pcBindAddress = 0);
+	int startConnection(KviIrcServer * pServer, KviProxy * pProxy = 0, const char * pcBindAddress = 0);
 
 #ifdef COMPILE_SSL_SUPPORT
 	/**

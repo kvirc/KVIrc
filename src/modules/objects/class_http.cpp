@@ -25,7 +25,7 @@
 #include "class_http.h"
 
 #include "kvi_debug.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviLocale.h"
 
 #include <QHttp>

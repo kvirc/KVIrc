@@ -34,15 +34,15 @@
 #include <QMessageBox>
 #include <QCheckBox>
 
-KviServerDataBase::KviServerDataBase()
+KviIrcServerDataBase::KviIrcServerDataBase()
 {
-	m_pRecords = new KviPointerHashTable<QString,KviNetwork>(17,false);
+	m_pRecords = new KviPointerHashTable<QString,KviIrcNetwork>(17,false);
 	m_pRecords->setAutoDelete(true);
 	m_pAutoConnectOnStartupServers = 0;
 	m_pAutoConnectOnStartupNetworks = 0;
 }
 
-KviServerDataBase::~KviServerDataBase()
+KviIrcServerDataBase::~KviIrcServerDataBase()
 {
 	delete m_pRecords;
 	if(m_pAutoConnectOnStartupServers)
@@ -51,7 +51,7 @@ KviServerDataBase::~KviServerDataBase()
 		delete m_pAutoConnectOnStartupNetworks;
 }
 
-void KviServerDataBase::clearAutoConnectOnStartupServers()
+void KviIrcServerDataBase::clearAutoConnectOnStartupServers()
 {
 	if(!m_pAutoConnectOnStartupServers)
 		return;
@@ -60,7 +60,7 @@ void KviServerDataBase::clearAutoConnectOnStartupServers()
 	m_pAutoConnectOnStartupServers = 0;
 }
 
-void KviServerDataBase::clearAutoConnectOnStartupNetworks()
+void KviIrcServerDataBase::clearAutoConnectOnStartupNetworks()
 {
 	if(!m_pAutoConnectOnStartupNetworks)
 		return;
@@ -69,32 +69,32 @@ void KviServerDataBase::clearAutoConnectOnStartupNetworks()
 	m_pAutoConnectOnStartupNetworks = 0;
 }
 
-void KviServerDataBase::clear()
+void KviIrcServerDataBase::clear()
 {
 	m_pRecords->clear();
 	m_szCurrentNetwork = "";
 }
 
-void KviServerDataBase::addNetwork(KviNetwork * n)
+void KviIrcServerDataBase::addNetwork(KviIrcNetwork * n)
 {
 	m_pRecords->replace(n->name(),n);
 }
 
-KviNetwork * KviServerDataBase::findNetwork(const QString & szName)
+KviIrcNetwork * KviIrcServerDataBase::findNetwork(const QString & szName)
 {
-	KviNetwork * r = m_pRecords->find(szName);
+	KviIrcNetwork * r = m_pRecords->find(szName);
 	return r;
 }
 
-unsigned int KviServerDataBase::networkCount() const
+unsigned int KviIrcServerDataBase::networkCount() const
 {
 	return m_pRecords->count();
 }
 
 
-KviNetwork * KviServerDataBase::currentNetwork()
+KviIrcNetwork * KviIrcServerDataBase::currentNetwork()
 {
-	KviNetwork * r = 0;
+	KviIrcNetwork * r = 0;
 	if(!m_szCurrentNetwork.isEmpty())
 		r = m_pRecords->find(m_szCurrentNetwork);
 	if(r)
@@ -103,7 +103,7 @@ KviNetwork * KviServerDataBase::currentNetwork()
 	return 0;
 }
 
-bool KviServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetName, KviNetwork * r, QString & szError)
+bool KviIrcServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetName, KviIrcNetwork * r, QString & szError)
 {
 	m_szCurrentNetwork = szNetName;
 	// find a round-robin server in that network
@@ -114,7 +114,7 @@ bool KviServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetName
 		return false;
 	}
 
-	for(KviServer * s = r->m_pServerList->first(); s; s = r->m_pServerList->next())
+	for(KviIrcServer * s = r->m_pServerList->first(); s; s = r->m_pServerList->next())
 	{
 		if(s->m_szDescription.contains("random",Qt::CaseInsensitive) ||
 			(s->m_szDescription.contains("round",Qt::CaseInsensitive) &&
@@ -133,7 +133,7 @@ bool KviServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetName
 	KviQString::sprintf(szTryAlso2,"irc.%Q.net",&szNetName);
 	KviQString::sprintf(szTryAlso3,"irc.%Q.com",&szNetName);
 
-	for(KviServer * ss = r->m_pServerList->first(); ss; ss = r->m_pServerList->next())
+	for(KviIrcServer * ss = r->m_pServerList->first(); ss; ss = r->m_pServerList->next())
 	{
 		if(KviQString::equalCI(ss->m_szHostname,szTryAlso1) ||
 			KviQString::equalCI(ss->m_szHostname,szTryAlso2) ||
@@ -148,20 +148,20 @@ bool KviServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetName
 	return true;
 }
 
-bool KviServerDataBase::makeCurrentServer(KviServerDefinition * d, QString & szError)
+bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * d, QString & szError)
 {
-	KviServer * pServer = 0;
+	KviIrcServer * pServer = 0;
 
-	KviPointerHashTableIterator<QString,KviNetwork> it(*m_pRecords);
-	KviNetwork * r = 0;
-	KviServer * srv;
+	KviPointerHashTableIterator<QString,KviIrcNetwork> it(*m_pRecords);
+	KviIrcNetwork * r = 0;
+	KviIrcServer * srv;
 
 	if(KviQString::equalCIN(d->szServer,"net:",4))
 	{
 		// net:networkname form
 		QString szNet = d->szServer;
 		szNet.remove(0,4);
-		KviNetwork * r = m_pRecords->find(szNet);
+		KviIrcNetwork * r = m_pRecords->find(szNet);
 		if(r)return makeCurrentBestServerInNetwork(szNet,r,szError);
 		szError = __tr2qs("The server specification seems to be in the net:<string> but the network couln't be found in the database");
 		return false;
@@ -272,7 +272,7 @@ search_finished:
 		if(!d->szServer.contains('.'))
 		{
 			// assume it is a network name!
-			KviNetwork * r = m_pRecords->find(d->szServer);
+			KviIrcNetwork * r = m_pRecords->find(d->szServer);
 			if(r)return makeCurrentBestServerInNetwork(d->szServer,r,szError);
 			// else probably not a network name
 		}
@@ -283,11 +283,11 @@ search_finished:
 	r = m_pRecords->find(__tr2qs("Standalone Servers"));
 	if(!r)
 	{
-		r = new KviNetwork(__tr2qs("Standalone Servers"));
+		r = new KviIrcNetwork(__tr2qs("Standalone Servers"));
 		m_pRecords->replace(r->name(),r);
 	}
 
-	KviServer * s = new KviServer();
+	KviIrcServer * s = new KviIrcServer();
 	s->m_szHostname = d->szServer;
 	if(bIsValidIPv4)
 	{
@@ -354,7 +354,7 @@ QString & szDescription,QString & szHost,QString & szPort,bool & bSsl,kvi_u32_t 
 	}
 }
 
-void KviServerDataBase::importFromMircIni(const QString & filename, const QString & szMircIni, QStringList & recentServers)
+void KviIrcServerDataBase::importFromMircIni(const QString & filename, const QString & szMircIni, QStringList & recentServers)
 {
 	clear();
 	recentServers.clear();
@@ -418,14 +418,14 @@ void KviServerDataBase::importFromMircIni(const QString & filename, const QStrin
 				parseMircServerRecord(entry,szNet,
 						   szDescription,szHost,szPort,bSsl,uPort);
 
-				KviNetwork * r = findNetwork(szNet);
+				KviIrcNetwork * r = findNetwork(szNet);
 
 				if(!r) {
-					r = new KviNetwork(szNet);
+					r = new KviIrcNetwork(szNet);
 					addNetwork(r);
 				}
 
-				KviServer *s = new KviServer();
+				KviIrcServer *s = new KviIrcServer();
 				s->m_szHostname = szHost;
 				s->m_szDescription = szDescription;
 				s->m_uPort = uPort;
@@ -442,7 +442,7 @@ void KviServerDataBase::importFromMircIni(const QString & filename, const QStrin
 	}
 }
 
-void KviServerDataBase::load(const QString & filename)
+void KviIrcServerDataBase::load(const QString & filename)
 {
 	clear();
 	KviConfigurationFile cfg(filename,KviConfigurationFile::Read);
@@ -455,7 +455,7 @@ void KviServerDataBase::load(const QString & filename)
 	{
 		if(it.current()->count() > 0)
 		{
-			KviNetwork * pNewNet = new KviNetwork(it.currentKey());
+			KviIrcNetwork * pNewNet = new KviIrcNetwork(it.currentKey());
 			addNetwork(pNewNet);
 			cfg.setGroup(it.currentKey());
 			pNewNet->m_szEncoding = cfg.readEntry("Encoding");
@@ -474,7 +474,7 @@ void KviServerDataBase::load(const QString & filename)
 			{
 				if(!m_pAutoConnectOnStartupNetworks)
 				{
-					m_pAutoConnectOnStartupNetworks = new KviPointerList<KviNetwork>;
+					m_pAutoConnectOnStartupNetworks = new KviPointerList<KviIrcNetwork>;
 					m_pAutoConnectOnStartupNetworks->setAutoDelete(false);
 				}
 				m_pAutoConnectOnStartupNetworks->append(pNewNet);
@@ -487,7 +487,7 @@ void KviServerDataBase::load(const QString & filename)
 			int nServers = cfg.readIntEntry("NServers",0);
 			for(int i=0;i < nServers;i++)
 			{
-				KviServer *s = new KviServer();
+				KviIrcServer *s = new KviIrcServer();
 				KviQString::sprintf(tmp,"%d_",i);
 				if(s->load(&cfg,tmp))
 				{
@@ -498,7 +498,7 @@ void KviServerDataBase::load(const QString & filename)
 					{
 						if(!m_pAutoConnectOnStartupServers)
 						{
-							m_pAutoConnectOnStartupServers = new KviPointerList<KviServer>;
+							m_pAutoConnectOnStartupServers = new KviPointerList<KviIrcServer>;
 							m_pAutoConnectOnStartupServers->setAutoDelete(false);
 						}
 						m_pAutoConnectOnStartupServers->append(s);
@@ -511,17 +511,17 @@ void KviServerDataBase::load(const QString & filename)
 	}
 }
 
-void KviServerDataBase::save(const QString &filename)
+void KviIrcServerDataBase::save(const QString &filename)
 {
 	KviConfigurationFile cfg(filename,KviConfigurationFile::Write);
 
 	cfg.clear(); // clear any old entry
 
-	KviPointerHashTableIterator<QString,KviNetwork> it(*m_pRecords);
+	KviPointerHashTableIterator<QString,KviIrcNetwork> it(*m_pRecords);
 
 	QString tmp;
 
-	while(KviNetwork * pNetwork = it.current())
+	while(KviIrcNetwork * pNetwork = it.current())
 	{
 		cfg.setGroup(pNetwork->name());
 		cfg.writeEntry("NServers",pNetwork->m_pServerList->count());
@@ -552,7 +552,7 @@ void KviServerDataBase::save(const QString &filename)
 		if(!pNetwork->m_szUserIdentityId.isEmpty())
 			cfg.writeEntry("UserIdentityId",pNetwork->m_szUserIdentityId);
 		int i=0;
-		for(KviServer *s = pNetwork->m_pServerList->first();s;s = pNetwork->m_pServerList->next())
+		for(KviIrcServer *s = pNetwork->m_pServerList->first();s;s = pNetwork->m_pServerList->next())
 		{
 			KviQString::sprintf(tmp,"%d_",i);
 			s->save(&cfg,tmp);

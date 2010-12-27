@@ -43,7 +43,7 @@
 #include "KviMircCntrl.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_socket.h"
-#include "kvi_buildinfo.h"
+#include "KviBuildInfo.h"
 
 #include <stdlib.h> // rand & srand
 

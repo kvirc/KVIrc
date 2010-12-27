@@ -28,7 +28,7 @@
 #include "KviLocale.h"
 #include "KviIrcServerDataBase.h"
 #include "KviProxyDataBase.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_out.h"
 #include "kvi_options.h"
 #include "kvi_ircsocket.h"
@@ -49,7 +49,7 @@
 
 #include <QTimer>
 
-extern KVIRC_API KviServerDataBase   * g_pServerDataBase;
+extern KVIRC_API KviIrcServerDataBase   * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase    * g_pProxyDataBase;
 //extern KVIRC_API KviGarbageCollector * g_pGarbageCollector;
 

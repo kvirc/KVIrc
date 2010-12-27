@@ -26,7 +26,7 @@
 #include <KviTalWizard.h>
 
 #include "class_wizard.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_debug.h"
 
 #include "KviLocale.h"

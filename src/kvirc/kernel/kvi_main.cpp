@@ -31,7 +31,7 @@
 #include "kvi_defaults.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_msgbox.h"
-#include "kvi_buildinfo.h"
+#include "KviBuildInfo.h"
 #ifdef COMPILE_DBUS_SUPPORT
 	#ifndef COMPILE_KDE_SUPPORT // 'cause kde adds an interface itself
 		#include "KviDbusAdaptor.h"

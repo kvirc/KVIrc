@@ -55,8 +55,8 @@ ENDIF()
 # Please note that the sources have alphabetic order here
 
 SET(kvilib_SRCS
-	config/kvi_buildinfo.cpp
-	core/kvi_error.cpp
+	config/KviBuildInfo.cpp
+	core/KviError.cpp
 	core/KviHeapObject.cpp
 	core/kvi_hstrEqualCIN.cpp
 	core/KviMemory.cpp
@@ -92,7 +92,7 @@ SET(kvilib_SRCS
 	irc/KviIrcServerDataBase.cpp
 	irc/KviIrcUserDataBase.cpp
 	irc/KviMircCntrl.cpp
-	irc/KviNetwork.cpp
+	irc/KviIrcNetwork.cpp
 	irc/KviNickServRuleSet.cpp
 	irc/KviUserIdentity.cpp
 	net/KviDnsResolver.cpp

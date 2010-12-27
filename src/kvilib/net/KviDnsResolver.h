@@ -30,8 +30,7 @@
 #include "KviThread.h"
 #include "KviQString.h"
 
-
-class KviDnsResolverThread; // not part of the API
+class KviDnsResolverThread;
 
 
 class KVILIB_API KviDnsResolverResult : public KviHeapObject
@@ -43,20 +42,44 @@ protected:
 public:
 	~KviDnsResolverResult();
 protected:
-	int             m_iError;
+	int m_iError;
 	KviPointerList<QString> * m_pHostnameList;
 	KviPointerList<QString> * m_pIpAddressList;
-	QString               m_szQuery;
+	QString m_szQuery;
 public:
-	int error(){ return m_iError; };
+	int error()
+	{
+		return m_iError;
+	}
+
 	// never store nor delete these pointers!
 	// (these are NEVER 0)
-	KviPointerList<QString> * hostnameList(){ return m_pHostnameList; };
-	KviPointerList<QString> * ipAddressList(){ return m_pIpAddressList; };
-	const QString &query(){ return m_szQuery; };
+	KviPointerList<QString> * hostnameList()
+	{
+		return m_pHostnameList;
+	}
+	
+	KviPointerList<QString> * ipAddressList()
+	{
+		return m_pIpAddressList;
+	}
+
+	const QString &query()
+	{
+		return m_szQuery;
+	}
+
 protected:
-	void setError(int iError){ m_iError = iError; };
-	void setQuery(const QString &query){ m_szQuery = query; };
+	void setError(int iError)
+	{
+		m_iError = iError;
+	}
+
+	void setQuery(const QString &query)
+	{
+		m_szQuery = query;
+	}
+
 	void appendHostname(const QString &host);
 	void appendAddress(const QString &addr);
 };
@@ -69,15 +92,15 @@ class KVILIB_API KviDnsResolver : public QObject, public KviHeapObject
 	Q_PROPERTY(bool blockingDelete READ isRunning)
 public:
 	KviDnsResolver();
-	~KviDnsResolver();
+	virtual ~KviDnsResolver();
 public:
 	enum QueryType { IPv4, IPv6, Any };
 	enum State     { Idle, Busy, Failure, Success };
 protected:
-	void         * m_pAuxData;
+	void * m_pAuxData;
 	KviDnsResolverThread * m_pSlaveThread;
 	KviDnsResolverResult * m_pDnsResult;
-	State          m_state;
+	State m_state;
 public:
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
@@ -125,7 +148,7 @@ class KviDnsResolverThread : public KviThread
 	friend class KviDnsResolver;
 protected:
 	KviDnsResolverThread(KviDnsResolver * pDns);
-	~KviDnsResolverThread();
+	virtual ~KviDnsResolverThread();
 protected:
 	QString              m_szQuery;
 	KviDnsResolver::QueryType    m_queryType;

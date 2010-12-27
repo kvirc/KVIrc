@@ -32,7 +32,7 @@
 #include "kvi_kvs_variantlist.h"
 #include "KviCString.h"
 #include "KviLocale.h"
-#include "kvi_error.h"
+#include "KviError.h"
 
 KviKvsDnsManager * KviKvsDnsManager::m_pInstance = 0;
 

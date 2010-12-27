@@ -30,7 +30,7 @@
 
 #include <QString>
 
-extern KVIRC_API KviServerDataBase * g_pServerDataBase;
+extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 
 /*
 	@doc: serverdb
@@ -126,7 +126,7 @@ static bool serverdb_kvs_fnc_networkExists(KviKvsModuleFunctionCall * c)
 		return false;
 	}
 
-	KviNetwork * pNetwork = g_pServerDataBase->findNetwork(szNetwork);
+	KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(szNetwork);
 	if(!pNetwork)
 	{
 		c->returnValue()->setBoolean(false);
@@ -172,14 +172,14 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 	if(!szNetwork.isEmpty())
 	{
 		// Check in the given network
-		KviNetwork * pRecord = g_pServerDataBase->findNetwork(szNetwork);
+		KviIrcNetwork * pRecord = g_pServerDataBase->findNetwork(szNetwork);
 		if(!pRecord)
 		{
 			c->returnValue()->setBoolean(false);
 			return true;
 		}
 
-		KviServer * pCheckServer = pRecord->findServer(szServer);
+		KviIrcServer * pCheckServer = pRecord->findServer(szServer);
 		if(!pCheckServer)
 		{
 			c->returnValue()->setBoolean(false);
@@ -189,13 +189,13 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 		c->returnValue()->setBoolean(true);
 	} else {
 		// Check through all networks
-		KviPointerHashTableIterator<QString,KviNetwork> it(*(g_pServerDataBase->recordDict()));
+		KviPointerHashTableIterator<QString,KviIrcNetwork> it(*(g_pServerDataBase->recordDict()));
 
-		while(KviNetwork * r = it.current())
+		while(KviIrcNetwork * r = it.current())
 		{
-			KviPointerList<KviServer> * sl = r->serverList();
+			KviPointerList<KviIrcServer> * sl = r->serverList();
 
-			for(KviServer * s = sl->first(); s; s = sl->next())
+			for(KviIrcServer * s = sl->first(); s; s = sl->next())
 			{
 				if(QString::compare(s->hostName().toUtf8().data(),szServer,Qt::CaseInsensitive)==0)
 				{
@@ -227,7 +227,7 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 			return false; \
 		} \
 		\
-		KviNetwork * pNetwork = g_pServerDataBase->findNetwork(szName); \
+		KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(szName); \
 		if(!pNetwork) \
 		{ \
 			c->error(__tr2qs_ctx("The specified network does not exist","serverdb")); \
@@ -268,14 +268,14 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 			return false; \
 		} \
 		\
-		KviNetwork * pRecord = g_pServerDataBase->findNetwork(szNetName); \
+		KviIrcNetwork * pRecord = g_pServerDataBase->findNetwork(szNetName); \
 		if(!pRecord) \
 		{ \
 			c->error(__tr2qs_ctx("The specified network does not exist","serverdb")); \
 			return false; \
 		} \
 		\
-		KviServer * pServer = pRecord->findServer(szServName); \
+		KviIrcServer * pServer = pRecord->findServer(szServName); \
 		if(!pServer) \
 		{ \
 			c->error(__tr2qs_ctx("The specified server does not exist","serverdb")); \
@@ -826,7 +826,7 @@ static bool serverdb_kvs_cmd_addNetwork(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	KviNetwork * pNetwork = g_pServerDataBase->findNetwork(szNetName);
+	KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(szNetName);
 	if(pNetwork)
 	{
 		if(c->switches()->find('q',"quiet")) return true;
@@ -834,7 +834,7 @@ static bool serverdb_kvs_cmd_addNetwork(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	pNetwork = new KviNetwork(szNetName);
+	pNetwork = new KviIrcNetwork(szNetName);
 	if(c->switches()->find('a',"autoconnect")) pNetwork->setAutoConnect(true);
 
 	g_pServerDataBase->addNetwork(pNetwork);
@@ -903,7 +903,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	KviNetwork * pRecord = g_pServerDataBase->findNetwork(szNetwork);
+	KviIrcNetwork * pRecord = g_pServerDataBase->findNetwork(szNetwork);
 	if(!pRecord)
 	{
 		// FIXME: default to orphan servers
@@ -911,10 +911,10 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	KviServer * pServer = new KviServer();
+	KviIrcServer * pServer = new KviIrcServer();
 	pServer->setHostName(szServer);
 
-	KviServer * pServerRecord = pRecord->findServer(pServer);
+	KviIrcServer * pServerRecord = pRecord->findServer(pServer);
 	if(pServerRecord)
 	{
 		if(c->switches()->find('q',"quiet")) return true;
@@ -960,7 +960,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 			return false; \
 		} \
 		\
-		KviNetwork * pNetwork = g_pServerDataBase->findNetwork(szName); \
+		KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(szName); \
 		if(!pNetwork) \
 		{ \
 			if(c->switches()->find('q',"quiet")) return true; \
@@ -996,7 +996,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 			return false; \
 		} \
 		\
-		KviNetwork * pRecord = g_pServerDataBase->findNetwork(szNetName); \
+		KviIrcNetwork * pRecord = g_pServerDataBase->findNetwork(szNetName); \
 		if(!pRecord) \
 		{ \
 			if(c->switches()->find('q',"quiet")) return true; \
@@ -1004,7 +1004,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 			return false; \
 		} \
 		\
-		KviServer * pServer = pRecord->findServer(szServName); \
+		KviIrcServer * pServer = pRecord->findServer(szServName); \
 		if(!pServer) \
 		{ \
 			if(c->switches()->find('q',"quiet")) return true; \

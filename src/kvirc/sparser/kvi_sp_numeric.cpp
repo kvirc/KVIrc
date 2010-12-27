@@ -71,7 +71,7 @@
 // FIXME: #warning "IN ALL OUTPUT ADD ESCAPE SEQUENCES!!!!"
 // FIXME: #warning "parseErrorUnknownModeChar() for modes e and I, parseErrorUnknownCommand for WATCH"
 
-void KviServerParser::parseNumeric001(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumeric001(KviIrcMessage *msg)
 {
 	// 001: RPL_WELCOME
 	// :prefix 001 target :Welcome to the Internet Relay Network <usermask>
@@ -90,7 +90,7 @@ void KviServerParser::parseNumeric001(KviIrcMessage *msg)
 		msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,szText);
 }
 
-void KviServerParser::parseNumeric002(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumeric002(KviIrcMessage *msg)
 {
 	// 002: RPL_YOURHOST [I,E,U,D]
 	// :prefix 002 target :Your host is <server name>, running version <server version>
@@ -99,7 +99,7 @@ void KviServerParser::parseNumeric002(KviIrcMessage *msg)
 	if(!msg->haltOutput())msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,msg->connection()->decodeText(msg->safeTrailing()));
 }
 
-void KviServerParser::parseNumeric003(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumeric003(KviIrcMessage *msg)
 {
 	// 003: RPL_CREATED [I,E,U,D]
 	// :prefix 003 target :This server was created <date>
@@ -108,7 +108,7 @@ void KviServerParser::parseNumeric003(KviIrcMessage *msg)
 	if(!msg->haltOutput())msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,msg->connection()->decodeText(msg->safeTrailing()));
 }
 
-void KviServerParser::parseNumeric004(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumeric004(KviIrcMessage *msg)
 {
 	// 004: RPL_MYINFO [I,E,U,D]
 	// :prefix 004 target <server_name> <srv_version> <u_modes> <ch_modes>
@@ -201,7 +201,7 @@ void KviServerParser::parseNumeric004(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumeric005(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumeric005(KviIrcMessage *msg)
 {
 	// 005: RPL_PROTOCTL [D]
 	// :prefix 005 target <proto> <proto> .... :are available/supported on this server
@@ -376,7 +376,7 @@ void KviServerParser::parseNumeric005(KviIrcMessage *msg)
 	// }
 }
 
-void KviServerParser::parseNumericMotd(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericMotd(KviIrcMessage *msg)
 {
 	// 372: RPL_MOTD [I,E,U,D]
 	// :prefix 372 target : - <motd>
@@ -396,7 +396,7 @@ void KviServerParser::parseNumericMotd(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericEndOfNames(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericEndOfNames(KviIrcMessage *msg)
 {
 	// 366: RPL_ENDOFNAMES [I,E,U,D]
 	// :prefix 366 target <channel> :End of /NAMES list.
@@ -420,7 +420,7 @@ void KviServerParser::parseNumericEndOfNames(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumeric020(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumeric020(KviIrcMessage *msg)
 {
 	// 020: RPL_CONNECTING
 	//:irc.dotsrc.org 020 * :Please wait while we process your connection.
@@ -434,7 +434,7 @@ void KviServerParser::parseNumeric020(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericNames(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericNames(KviIrcMessage *msg)
 {
 	// 353: RPL_NAMREPLY [I,E,U,D]
 	// :prefix 353 target [=|*|@] <channel> :<space_separated_list_of_nicks>
@@ -515,7 +515,7 @@ void KviServerParser::parseNumericNames(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericTopic(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericTopic(KviIrcMessage *msg)
 {
 	// 332: RPL_TOPIC [I,E,U,D]
 	// :prefix 332 target <channel> :<topic>
@@ -543,7 +543,7 @@ void KviServerParser::parseNumericTopic(KviIrcMessage *msg)
 
 }
 
-void KviServerParser::parseNumericNoTopic(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericNoTopic(KviIrcMessage *msg)
 {
 	// 331: RPL_NOTOPIC [I,E,U,D]
 	// :prefix 331 target <channel> :No topic is set
@@ -565,7 +565,7 @@ void KviServerParser::parseNumericNoTopic(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericTopicWhoTime(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericTopicWhoTime(KviIrcMessage *msg)
 {
 	// 333: RPL_TOPICWHOTIME [e,U,D]
 	// :prefix 333 target <channel> <whoset> <time>
@@ -630,7 +630,7 @@ void KviServerParser::parseNumericTopicWhoTime(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericChannelModeIs(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericChannelModeIs(KviIrcMessage *msg)
 {
 	// 324: RPL_CHANNELMODEIS [I,E,U,D]
 	// :prefix 324 target <channel> +<chanmode>
@@ -679,7 +679,7 @@ void getDateTimeStringFromCharTimeT(QString & szBuffer, const char * time_t_stri
 }
 
 // Freenode likes it hard, so it's using the same numeric for bans and quiet bans
-void KviServerParser::parseNumeric367(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumeric367(KviIrcMessage *msg)
 {
 	// 367: RPL_BANLIST [I,E,U,D]
 	// :prefix 367 target <channel> <banmask> [bansetby] [bansetat]
@@ -712,7 +712,7 @@ void KviServerParser::parseNumeric367(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumeric368(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumeric368(KviIrcMessage *msg)
 {
 	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
 	KviChannel * chan = msg->connection()->findChannel(szChan);
@@ -738,7 +738,7 @@ void KviServerParser::parseNumeric368(KviIrcMessage *msg)
 }
 
 #define PARSE_NUMERIC_ENDOFLIST(__funcname,__modechar,__daicon,__szWhatQString) \
-	void KviServerParser::__funcname(KviIrcMessage *msg) \
+	void KviIrcServerParser::__funcname(KviIrcMessage *msg) \
 	{ \
 		QString szChan = msg->connection()->decodeText(msg->safeParam(1)); \
 		KviChannel * chan = msg->connection()->findChannel(szChan); \
@@ -766,7 +766,7 @@ PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfAList,'a',KVI_OUT_BAN,__tr2qs("protecte
 PARSE_NUMERIC_ENDOFLIST(parseNumericEndOfReopList,'R',KVI_OUT_BAN,__tr2qs("reop list"))
 
 #define PARSE_NUMERIC_LIST(__funcname,__modechar,__ico,__szWhatQString) \
-	void KviServerParser::__funcname(KviIrcMessage *msg) \
+	void KviIrcServerParser::__funcname(KviIrcMessage *msg) \
 	{ \
 		QString szChan   = msg->connection()->decodeText(msg->safeParam(1)); \
 		QString banmask  = msg->connection()->decodeText(msg->safeParam(2)); \
@@ -797,7 +797,7 @@ PARSE_NUMERIC_LIST(parseNumericQList,'q',KVI_OUT_BAN,__tr2qs("Owner listing"));
 PARSE_NUMERIC_LIST(parseNumericAList,'a',KVI_OUT_BAN,__tr2qs("Admin/protected nicks listing"));
 PARSE_NUMERIC_LIST(parseNumericReopList,'R',KVI_OUT_BAN,__tr2qs("Reop masks listing"));
 
-void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 {
 	// 352: RPL_WHOREPLY [I,E,U,D]
 	// :prefix 352 target <chan> <usr> <hst> <srv> <nck> <stat> :<hops> <real>
@@ -905,7 +905,7 @@ void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 
 }
 
-void KviServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
 {
 	// 315: RPL_ENDOFWHO [I,E,U,D]
 	// :prefix 315 target <channel/nick> :End of /WHO List.
@@ -952,7 +952,7 @@ void KviServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
+void KviIrcServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 {
 	// ops...not logged in yet...
 	QString szNextNick;
@@ -1045,7 +1045,7 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 	msg->connection()->sendFmtData("NICK %s",d.data());
 }
 
-void KviServerParser::parseNumericUnavailResource(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericUnavailResource(KviIrcMessage *msg)
 {
 	// 437: ERR_UNAVAILRESOURCE [I]
 	// :prefix 437 <target> <nick/channel> :Nick/Channel is temporairly unavailable
@@ -1063,7 +1063,7 @@ void KviServerParser::parseNumericUnavailResource(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericCantJoinChannel(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericCantJoinChannel(KviIrcMessage *msg)
 {
 	// 471: ERR_CHANNELISFULL [I,E,U,D]
 	// 473: ERR_INVITEONLYCHAN [I,E,U,D]
@@ -1083,7 +1083,7 @@ void KviServerParser::parseNumericCantJoinChannel(KviIrcMessage *msg)
 
 // Keep the source ordered: this should be named "parseOtherChannelError"
 
-void KviServerParser::otherChannelError(KviIrcMessage *msg)
+void KviIrcServerParser::otherChannelError(KviIrcMessage *msg)
 {
 	// 482: ERR_CHANOPRIVSNEEDED
 	// 467: ERR_KEYSET
@@ -1099,7 +1099,7 @@ void KviServerParser::otherChannelError(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseCommandSyntaxHelp(KviIrcMessage *msg)
+void KviIrcServerParser::parseCommandSyntaxHelp(KviIrcMessage *msg)
 {
 	// 704 RPL_COMMANDSYNTAX
 	// :prefix 704 <target> <command> :text
@@ -1113,7 +1113,7 @@ void KviServerParser::parseCommandSyntaxHelp(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseCommandHelp(KviIrcMessage *msg)
+void KviIrcServerParser::parseCommandHelp(KviIrcMessage *msg)
 {
 	// 705 RPL_COMMANDHELP
 	// :prefix 705 <target> <command> :text
@@ -1126,7 +1126,7 @@ void KviServerParser::parseCommandHelp(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseChannelHelp(KviIrcMessage *msg)
+void KviIrcServerParser::parseChannelHelp(KviIrcMessage *msg)
 {
 	// 477 RPL_CHANNELHELP (freenode)
 	// :prefix 477 <target> <channel> :text
@@ -1147,7 +1147,7 @@ void KviServerParser::parseChannelHelp(KviIrcMessage *msg)
 }
 
 
-void KviServerParser::parseCommandEndOfHelp(KviIrcMessage *msg)
+void KviIrcServerParser::parseCommandEndOfHelp(KviIrcMessage *msg)
 {
 	// 704 RPL_COMMANDSYNTAX
 	// 705 RPL_COMMANDHELP
@@ -1161,7 +1161,7 @@ void KviServerParser::parseCommandEndOfHelp(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericNicknameProblem(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericNicknameProblem(KviIrcMessage *msg)
 {
 	// 433: ERR_NICKNAMEINUSE [I,E,U,D]
 	// :prefix 433 <target> <nick> :Nickname is already in use.
@@ -1183,7 +1183,7 @@ void KviServerParser::parseNumericNicknameProblem(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericWhoisAway(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericWhoisAway(KviIrcMessage * msg)
 {
 // FIXME: #warning "Need an icon here too: sth like KVI_OUT_WHOISSERVER, but with 'A' letter"
 	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
@@ -1216,7 +1216,7 @@ void KviServerParser::parseNumericWhoisAway(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericWhoisUser(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericWhoisUser(KviIrcMessage *msg)
 {
 	// 311: RPL_WHOISUSER [I,E,U,D]
 	// :prefix 311 <target> <nick> <user> <host> * :<real_name>
@@ -1282,7 +1282,7 @@ void KviServerParser::parseNumericWhoisUser(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericWhowasUser(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericWhowasUser(KviIrcMessage * msg)
 {
 	// 314: RPL_WHOWASUSER [I,E,U,D]
 	// :prefix 314 <target> <nick> <user> <host> * :<real_name>
@@ -1307,7 +1307,7 @@ void KviServerParser::parseNumericWhowasUser(KviIrcMessage * msg)
 }
 
 
-void KviServerParser::parseNumericWhoisChannels(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericWhoisChannels(KviIrcMessage *msg)
 {
 	// 319: RPL_WHOISCHANNELS [I,E,U,D]
 	// :prefix 319 <target> <nick> :<channel list>
@@ -1370,7 +1370,7 @@ void KviServerParser::parseNumericWhoisChannels(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericWhoisIdle(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericWhoisIdle(KviIrcMessage *msg)
 {
 	// 317: RPL_WHOISIDLE [I,E,U,D]
 	// :prefix 317 <target> <nick> <number> <number> :seconds idle, signon time
@@ -1442,7 +1442,7 @@ void KviServerParser::parseNumericWhoisIdle(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericWhoisServer(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericWhoisServer(KviIrcMessage *msg)
 {
 	// 312: RPL_WHOISSERVER [I,E,U,D] (sent also in response to WHOWAS)
 	// :prefix 312 <target> <nick> <server> :<server description / last whowas date>
@@ -1479,7 +1479,7 @@ void KviServerParser::parseNumericWhoisServer(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericWhoisAuth(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericWhoisAuth(KviIrcMessage *msg)
 {
 	// 330 RPL_WHOISAUTH
 	// :prefix RPL_WHOISAUTH <target> <nick> <nick>:is authed as
@@ -1508,7 +1508,7 @@ void KviServerParser::parseNumericWhoisAuth(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericWhoisActually(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericWhoisActually(KviIrcMessage *msg)
 {
 	// 338: RPL_WHOISACTUALLY
 	// u2 (irc-hispano)
@@ -1550,7 +1550,7 @@ void KviServerParser::parseNumericWhoisActually(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericWhoisOther(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericWhoisOther(KviIrcMessage *msg)
 {
 	// *: RPL_WHOIS* [?]
 	// :prefix * <target> <nick> :<description>
@@ -1585,7 +1585,7 @@ void KviServerParser::parseNumericWhoisOther(KviIrcMessage *msg)
 
 // FIXME: #warning "WHOWAS MISSING"
 
-void KviServerParser::parseNumericEndOfWhois(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericEndOfWhois(KviIrcMessage *msg)
 {
 	// 318: RPL_ENDOFWHOIS [I,E,U,D]
 	// :prefix 318 <target> <nick> :End of /WHOIS list
@@ -1633,7 +1633,7 @@ void KviServerParser::parseNumericEndOfWhois(KviIrcMessage *msg)
 }
 
 
-void KviServerParser::parseNumericEndOfWhowas(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericEndOfWhowas(KviIrcMessage *msg)
 {
 	// 369: RPL_ENDOFWHOWAS [I,E,U,D]
 	// :prefix 369 <target> <nick> :End of /WHOWAS list
@@ -1649,7 +1649,7 @@ void KviServerParser::parseNumericEndOfWhowas(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericNoSuchNick(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericNoSuchNick(KviIrcMessage *msg)
 {
 	// 401: ERR_NOSUCHNICK [I,E,U,D]
 	// 406: ERR_WASNOSUCHNICK [I,E,U,D]
@@ -1700,7 +1700,7 @@ void KviServerParser::parseNumericNoSuchNick(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericCreationTime(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericCreationTime(KviIrcMessage *msg)
 {
 	// 329: RPL_CREATIONTIME
 	// :prefix 329 <target> <channel> <creation_time>
@@ -1744,7 +1744,7 @@ void KviServerParser::parseNumericCreationTime(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericIsOn(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericIsOn(KviIrcMessage *msg)
 {
 	// 303: RPL_ISON
 	// :prefix 303 <target> :<ison replies>
@@ -1766,7 +1766,7 @@ void KviServerParser::parseNumericIsOn(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericUserhost(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericUserhost(KviIrcMessage *msg)
 {
 	// 302: RPL_USERHOST
 	// :prefix 302 <target> :<userhost replies>
@@ -1784,7 +1784,7 @@ void KviServerParser::parseNumericUserhost(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericListStart(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericListStart(KviIrcMessage *msg)
 {
 	// 321: RPL_LISTSTART [I,E,U,D]
 	// :prefix 321 <target> :Channel users name
@@ -1805,7 +1805,7 @@ void KviServerParser::parseNumericListStart(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericList(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericList(KviIrcMessage *msg)
 {
 	// 322: RPL_LIST [I,E,U,D]
 	// :prefix 364 <target> <channel> <users> :<topic>
@@ -1832,7 +1832,7 @@ void KviServerParser::parseNumericList(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericListEnd(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericListEnd(KviIrcMessage *msg)
 {
 	// 323: RPL_LISTEND [I,E,U,D]
 	// :prefix 323 <target> :End of /LIST
@@ -1847,7 +1847,7 @@ void KviServerParser::parseNumericListEnd(KviIrcMessage *msg)
 
 }
 
-void KviServerParser::parseNumericLinks(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericLinks(KviIrcMessage *msg)
 {
 	// 364: RPL_LINKS [I,E,U,D]
 	// :prefix 364 <target> <host> <parent> :<hops> <description>
@@ -1871,7 +1871,7 @@ void KviServerParser::parseNumericLinks(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericEndOfLinks(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericEndOfLinks(KviIrcMessage *msg)
 {
 	// 365: RPL_ENDOFLINKS [I,E,U,D]
 	// :prefix 365 <target> :End of /LINKS
@@ -1886,7 +1886,7 @@ void KviServerParser::parseNumericEndOfLinks(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericBackFromAway(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericBackFromAway(KviIrcMessage * msg)
 {
 	// 305: RPL_UNAWAY [I,E,U,D]
 	// :prefix 305 <target> :You are no longer away
@@ -1928,7 +1928,7 @@ void KviServerParser::parseNumericBackFromAway(KviIrcMessage * msg)
 
 }
 
-void KviServerParser::parseNumericAway(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericAway(KviIrcMessage * msg)
 {
 	// 306: RPL_NOWAWAY [I,E,U,D]
 	// :prefix 305 <target> :You're away man
@@ -1965,7 +1965,7 @@ void KviServerParser::parseNumericAway(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericWatch(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericWatch(KviIrcMessage *msg)
 {
 	// 600: RPL_LOGON
 	// :prefix 600 <target> <nick> <user> <host> <logintime> :logged online
@@ -1994,7 +1994,7 @@ void KviServerParser::parseNumericWatch(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericStats(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericStats(KviIrcMessage * msg)
 {
 	if(!msg->haltOutput())
 	{
@@ -2015,7 +2015,7 @@ void KviServerParser::parseNumericStats(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericServerAdminInfoTitle(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericServerAdminInfoTitle(KviIrcMessage * msg)
 {
 	//RPL_ADMINME          256
 	if(!msg->haltOutput())
@@ -2024,7 +2024,7 @@ void KviServerParser::parseNumericServerAdminInfoTitle(KviIrcMessage * msg)
 			pOut->outputNoFmt(KVI_OUT_SERVERINFO,msg->connection()->decodeText(msg->safeTrailing()).toUtf8().data());
 	}
 }
-void KviServerParser::parseNumericServerAdminInfoServerName(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericServerAdminInfoServerName(KviIrcMessage * msg)
 {
 	//RPL_ADMINLOC1        257
 	if(!msg->haltOutput())
@@ -2035,7 +2035,7 @@ void KviServerParser::parseNumericServerAdminInfoServerName(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericServerAdminInfoAdminName(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericServerAdminInfoAdminName(KviIrcMessage * msg)
 {
 	//RPL_ADMINLOC2        258
 	if(!msg->haltOutput())
@@ -2046,7 +2046,7 @@ void KviServerParser::parseNumericServerAdminInfoAdminName(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericServerAdminInfoAdminContact(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericServerAdminInfoAdminContact(KviIrcMessage * msg)
 {
 	//RPL_ADMINEMAIL       259
 	if(!msg->haltOutput())
@@ -2057,7 +2057,7 @@ void KviServerParser::parseNumericServerAdminInfoAdminContact(KviIrcMessage * ms
 	}
 }
 
-void KviServerParser::parseNumericCommandSyntax(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericCommandSyntax(KviIrcMessage * msg)
 {
 	//RPL_COMMANDSYNTAX    334
 	if(!msg->haltOutput())
@@ -2067,7 +2067,7 @@ void KviServerParser::parseNumericCommandSyntax(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericInviting(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericInviting(KviIrcMessage * msg)
 {
 	//RPL_INVITING         341
 	if(!msg->haltOutput())
@@ -2086,7 +2086,7 @@ void KviServerParser::parseNumericInviting(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericInfo(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericInfo(KviIrcMessage * msg)
 {
 	//RPL_INFO             371
 	if(!msg->haltOutput())
@@ -2097,7 +2097,7 @@ void KviServerParser::parseNumericInfo(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericInfoStart(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericInfoStart(KviIrcMessage * msg)
 {
 	//RPL_INFOSTART        373
 	if(!msg->haltOutput())
@@ -2107,7 +2107,7 @@ void KviServerParser::parseNumericInfoStart(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericInfoEnd(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericInfoEnd(KviIrcMessage * msg)
 {
 	//RPL_ENDOFINFO        374
 	if(!msg->haltOutput())
@@ -2117,7 +2117,7 @@ void KviServerParser::parseNumericInfoEnd(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericTime(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericTime(KviIrcMessage * msg)
 {
 	//RPL_TIME             391
 	if(!msg->haltOutput())
@@ -2128,7 +2128,7 @@ void KviServerParser::parseNumericTime(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericNoSuchServer(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericNoSuchServer(KviIrcMessage * msg)
 {
 	//ERR_NOSUCHSERVER     402
 
@@ -2166,7 +2166,7 @@ void KviServerParser::parseNumericNoSuchServer(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericNoSuchChannel(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericNoSuchChannel(KviIrcMessage * msg)
 {
 	// ERR_NOSUCHCHANNEL    403
 	if(!msg->haltOutput())
@@ -2177,7 +2177,7 @@ void KviServerParser::parseNumericNoSuchChannel(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericCannotSendColor(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericCannotSendColor(KviIrcMessage * msg)
 {
 	// ERR_NOCOLORSONCHAN   408
 	if(!msg->haltOutput())
@@ -2195,7 +2195,7 @@ void KviServerParser::parseNumericCannotSendColor(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericCannotSend(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericCannotSend(KviIrcMessage * msg)
 {
 	// ERR_CANNOTSENDTOCHAN 404
 	if(!msg->haltOutput())
@@ -2213,7 +2213,7 @@ void KviServerParser::parseNumericCannotSend(KviIrcMessage * msg)
 	}
 }
 
-void KviServerParser::parseNumericCodePageSet(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericCodePageSet(KviIrcMessage *msg)
 {
 	// a nice extension for irc.wenet.ru
 	// 700: RPL_CODEPAGESET
@@ -2243,7 +2243,7 @@ void KviServerParser::parseNumericCodePageSet(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericCodePageScheme(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericCodePageScheme(KviIrcMessage *msg)
 {
 	// a nice extension for irc.wenet.ru
 	// 703: RPL_WHOISSCHEME
@@ -2276,7 +2276,7 @@ void KviServerParser::parseNumericCodePageScheme(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericUserMode(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericUserMode(KviIrcMessage *msg)
 {
 	// 321: RPL_UMODEIS [I,E,U,D]
 	// :prefix 221 <target> <modeflags>
@@ -2290,7 +2290,7 @@ void KviServerParser::parseNumericUserMode(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseNumericEndOfStats(KviIrcMessage *msg)
+void KviIrcServerParser::parseNumericEndOfStats(KviIrcMessage *msg)
 {
 	// 219: RPL_ENDOFSTATS [I,E,U,D]
 	if(!msg->haltOutput())
@@ -2302,7 +2302,7 @@ void KviServerParser::parseNumericEndOfStats(KviIrcMessage *msg)
 }
 
 // STARTTLS support
-void KviServerParser::parseNumericStartTls(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericStartTls(KviIrcMessage * msg)
 {
 	// 670: RPL_STARTTLSOK
 	// :prefix 670 <nickname> :STARTTLS successful, go ahead with TLS handshake
@@ -2336,7 +2336,7 @@ void KviServerParser::parseNumericStartTls(KviIrcMessage * msg)
 #endif //!COMPILE_SSL_SUPPORT
 }
 
-void KviServerParser::parseNumericNotRegistered(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericNotRegistered(KviIrcMessage * msg)
 {
 	// 451: ERR_NOTREGISTERED
 	// :prefix 451 PING :You have not registered
@@ -2366,7 +2366,7 @@ void KviServerParser::parseNumericNotRegistered(KviIrcMessage * msg)
 }
 
 // SASL support
-void KviServerParser::parseNumericSaslLogin(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericSaslLogin(KviIrcMessage * msg)
 {
 	// 900: RPL_SASLLOGIN
 	// :prefix 900 <nickname> <usermask> <authuser>: You are now logged in as <authuser>
@@ -2382,7 +2382,7 @@ void KviServerParser::parseNumericSaslLogin(KviIrcMessage * msg)
 		msg->connection()->endInitialCapNegotiation();
 }
 
-void KviServerParser::parseNumericSaslSuccess(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericSaslSuccess(KviIrcMessage * msg)
 {
 	// 903: RPL_SASLSUCCESS
 	// :prefix 903 <nickname> :SASL authentication successful
@@ -2397,7 +2397,7 @@ void KviServerParser::parseNumericSaslSuccess(KviIrcMessage * msg)
 		msg->connection()->endInitialCapNegotiation();
 }
 
-void KviServerParser::parseNumericSaslFail(KviIrcMessage * msg)
+void KviIrcServerParser::parseNumericSaslFail(KviIrcMessage * msg)
 {
 	// 904: RPL_SASLFAILED
 	// :prefix 904 * :SASL authentication failed

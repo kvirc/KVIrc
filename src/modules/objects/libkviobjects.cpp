@@ -78,7 +78,7 @@
 #include "kvi_app.h"
 #include "kvi_module.h"
 #include "KviLocale.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviCommandFormatter.h"
 #include "kvi_out.h"
 #include "kvi_app.h"

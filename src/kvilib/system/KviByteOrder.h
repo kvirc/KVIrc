@@ -5,9 +5,11 @@
 //
 //   File : KviByteOrder.h
 //   Creation date : Mon Dec 25 2006 19:56:16 CEST by Szymon Stefanek
+//   Based on file : kvi_bswap.h
+//   Creation date : Fri Mar 19 1999 03:15:21 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2006-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,57 +28,100 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_bswap.h"
 #include "kvi_inttypes.h"
 
 namespace KviByteOrder
 {
+	/**
+	* \brief Swaps the endianess of a kvi_u64_t
+	*
+	* \param i the original value
+	* \return kvi_u64_t
+	*/
+	inline kvi_u64_t swap64(kvi_u64_t i)
+	{
+		// abcdefgh to hgfedcba
+		return ((i << 56) |                /* h to a */
+			((i & 0xff00) << 40) |     /* g to b */
+			((i & 0xff0000) << 24) |   /* f to c */
+			((i & 0xff000000) << 8) |  /* e to d */
+			((i >> 8) & 0xff000000) |  /* d to e */
+			((i >> 24) & 0xff0000) |   /* c to f */
+			((i >> 40) & 0xff00) |     /* b to g */
+			(i >> 56));                /* a to h */
+	}
+	
+	/**
+	* \brief Swaps the endianess of a kvi_u32_t
+	*
+	* \param i the original value
+	* \return kvi_u32_t
+	*/
+	inline kvi_u32_t swap32(kvi_u32_t i)
+	{
+		// abcd to dcba
+		return ((i << 24) | ((i & 0xff00) << 8) | ((i >> 8) & 0xff00) | (i >> 24));
+	}
+	
+	/**
+	* \brief Swaps the endianess of a kvi_u16_t
+	*
+	* \param i the original value
+	* \return kvi_u16_t
+	*/
+	inline kvi_u16_t swap16(kvi_u16_t i)
+	{
+		// ab to ba
+		return ((i << 8) | (i >> 8));
+	}
+	
 
-//
-// Byte Orders Reminder
-//   Number                             0xaabbccdd
-//   Little Endian Stores               0xdd 0xcc 0xbb 0xaa
-//   Big Endian Stores                  0xaa 0xbb 0xcc 0xdd
-//   Perverse Middle Endian             0xbb 0xaa 0xdd 0xcc or another braindamaged combination (unsupported)
-//   Network Byte Order is Big Endian
-//   Intel Stuff uses Little Endian
-//   PPC is Big Endian
-//   Universal binaries on MacOSX use both Big and Little Endian
-//
+	//
+	// Byte Orders Reminder
+	//   Number                             0xaabbccdd
+	//   Little Endian Stores               0xdd 0xcc 0xbb 0xaa
+	//   Big Endian Stores                  0xaa 0xbb 0xcc 0xdd
+	//   Perverse Middle Endian             0xbb 0xaa 0xdd 0xcc or another braindamaged combination (unsupported)
+	//   Network Byte Order is Big Endian
+	//   Intel Stuff uses Little Endian
+	//   PPC is Big Endian
+	//   Universal binaries on MacOSX use both Big and Little Endian
+	//
 
 #ifdef BIG_ENDIAN_MACHINE_BYTE_ORDER
 
 	inline kvi_u16_t localCpuToLittleEndian16(kvi_u16_t u)
 	{
-		return kvi_swap16(u);
+		return swap16(u);
 	}
 	
 	inline kvi_u32_t localCpuToLittleEndian32(kvi_u32_t u)
 	{
-		return kvi_swap32(u);
+		return swap32(u);
 	}
 
 	inline kvi_u64_t localCpuToLittleEndian64(kvi_u64_t u)
 	{
-		return kvi_swap64(u);
+		return swap64(u);
 	}
 
 	inline kvi_u16_t littleEndianToLocalCpu16(kvi_u16_t u)
 	{
-		return kvi_swap16(u);
+		return swap16(u);
 	}
 
 	inline kvi_u32_t littleEndianToLocalCpu32(kvi_u32_t u)
 	{
-		return kvi_swap32(u);
+		return swap32(u);
 	}
 
 	inline kvi_u64_t littleEndianToLocalCpu64(kvi_u64_t u)
 	{
-		return kvi_swap64(u);
+		return swap64(u);
 	}
 
-#else
+#else //!BIG_ENDIAN_MACHINE_BYTE_ORDER
+
 	// We ASSUME that the local cpu is little endian.. if it isn't.. well :)
 	#define LOCAL_CPU_LITTLE_ENDIAN 1
 
@@ -110,9 +155,14 @@ namespace KviByteOrder
 		return u;
 	}
 
-#endif
+#endif //!BIG_ENDIAN_MACHINE_BYTE_ORDER
 
 } // namespace KviByteOrder
+
+
+
+
+
 
 
 #endif // !_KVI_BYTEORDER_H_

@@ -28,7 +28,7 @@
 
 #include "KviMemory.h"
 #include "kvi_debug.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviLocale.h"
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"

@@ -43,7 +43,7 @@
 
 //extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
-KviServer::KviServer()
+KviIrcServer::KviIrcServer()
 {
 	m_pReconnectInfo       = 0;
 	m_uFlags               = 0;
@@ -53,7 +53,7 @@ KviServer::KviServer()
 	m_iProxy               = -1;
 }
 
-KviProxy * KviServer::proxyServer(KviProxyDataBase * pDb)
+KviProxy * KviIrcServer::proxyServer(KviProxyDataBase * pDb)
 {
 	int i = 0;
 	if(proxy() < 0) return 0;
@@ -66,7 +66,7 @@ KviProxy * KviServer::proxyServer(KviProxyDataBase * pDb)
 	return 0;
 }
 
-KviServer::KviServer(const KviServer & serv)
+KviIrcServer::KviIrcServer(const KviIrcServer & serv)
 {
 	m_szHostname         = serv.m_szHostname;
 	m_szIp               = serv.m_szIp;
@@ -95,11 +95,11 @@ KviServer::KviServer(const KviServer & serv)
 	else m_pAutoJoinChannelList = 0;
 
 	if(serv.m_pReconnectInfo)
-		m_pReconnectInfo = new KviServerReconnectInfo(*(serv.m_pReconnectInfo));
+		m_pReconnectInfo = new KviIrcServerReconnectInfo(*(serv.m_pReconnectInfo));
 	else m_pReconnectInfo = 0;
 }
 
-void KviServer::operator=(const KviServer & serv)
+void KviIrcServer::operator=(const KviIrcServer & serv)
 {
 	m_szHostname         = serv.m_szHostname;
 	m_szIp               = serv.m_szIp;
@@ -130,11 +130,11 @@ void KviServer::operator=(const KviServer & serv)
 
 	if(m_pReconnectInfo) delete m_pReconnectInfo;
 	if(serv.m_pReconnectInfo)
-		m_pReconnectInfo = new KviServerReconnectInfo(*(serv.m_pReconnectInfo));
+		m_pReconnectInfo = new KviIrcServerReconnectInfo(*(serv.m_pReconnectInfo));
 	else m_pReconnectInfo = 0;
 }
 
-KviServer::~KviServer()
+KviIrcServer::~KviIrcServer()
 {
 	if(m_pAutoJoinChannelList)
 	{
@@ -148,14 +148,14 @@ KviServer::~KviServer()
 	}
 }
 
-void KviServer::generateUniqueId()
+void KviIrcServer::generateUniqueId()
 {
 	struct timeval tv;
 	kvi_gettimeofday(&tv,0);
 	KviQString::sprintf(m_szId,"myserver%d%d%d",tv.tv_usec,rand() % 1000,rand() % 1000);
 }
 
-QString KviServer::ircUri()
+QString KviIrcServer::ircUri()
 {
 	QString szUri("irc");
 	if(useSSL()) szUri += "s";
@@ -173,14 +173,14 @@ QString KviServer::ircUri()
 	return szUri;
 }
 
-void KviServer::setAutoJoinChannelList(QStringList * pNewChannelList)
+void KviIrcServer::setAutoJoinChannelList(QStringList * pNewChannelList)
 {
 	if(m_pAutoJoinChannelList)
 		delete m_pAutoJoinChannelList;
 	m_pAutoJoinChannelList = pNewChannelList;
 }
 
-void KviServer::setAutoJoinChannelList(const QString & szNewChannelList)
+void KviIrcServer::setAutoJoinChannelList(const QString & szNewChannelList)
 {
 	if(m_pAutoJoinChannelList)
 		delete m_pAutoJoinChannelList;
@@ -191,7 +191,7 @@ void KviServer::setAutoJoinChannelList(const QString & szNewChannelList)
 		m_pAutoJoinChannelList = new QStringList(lChans);
 }
 
-bool KviServer::load(KviConfigurationFile * cfg, const QString & szPrefix)
+bool KviIrcServer::load(KviConfigurationFile * cfg, const QString & szPrefix)
 {
 	QString szTmp;
 	KviQString::sprintf(szTmp,"%QHostname",&szPrefix);
@@ -257,7 +257,7 @@ bool KviServer::load(KviConfigurationFile * cfg, const QString & szPrefix)
 	return true;
 }
 
-void KviServer::save(KviConfigurationFile * cfg, const QString & szPrefix)
+void KviIrcServer::save(KviConfigurationFile * cfg, const QString & szPrefix)
 {
 	QString szTmp;
 	KviQString::sprintf(szTmp,"%QHostname",&szPrefix);
@@ -392,16 +392,16 @@ void KviServer::save(KviConfigurationFile * cfg, const QString & szPrefix)
 }
 
 
-KviServerReconnectInfo::KviServerReconnectInfo()
+KviIrcServerReconnectInfo::KviIrcServerReconnectInfo()
 {
 	m_bIsAway = false;
 }
 
-KviServerReconnectInfo::~KviServerReconnectInfo()
+KviIrcServerReconnectInfo::~KviIrcServerReconnectInfo()
 {
 }
 
-KviServerReconnectInfo::KviServerReconnectInfo(const KviServerReconnectInfo & info)
+KviIrcServerReconnectInfo::KviIrcServerReconnectInfo(const KviIrcServerReconnectInfo & info)
 {
 	m_szNick         = info.m_szNick;
 	m_szPass         = info.m_szPass;

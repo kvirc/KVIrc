@@ -43,7 +43,7 @@
 
 #include "KviCString.h"
 #include "kvi_settings.h"
-#include "kvi_error.h"
+#include "KviError.h"
 
 
 #include <QApplication>

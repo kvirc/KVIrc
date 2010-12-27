@@ -33,42 +33,7 @@
 * \file kvi_debug.h
 * \author Szymon Stefanek
 * \brief This file contains the definition of the debug macros;
-*        You can enable ALL the debugging output by uncommenting the line that defines _KVI_DEBUG_CHECK_RANGE_
 */
-
-#if 0
-
-//=============================================================================
-//
-// You can enable ALL the debugging output by uncommenting the next line
-// #define _KVI_DEBUG_CHECK_RANGE_
-//
-//=============================================================================
-
-/**
-* \brief Debug macros
-*
-* \def KVI_ASSERT Assert that ensures that its parameter is true
-* \def __range_invalid Assert that ensures that its parameter is false
-* \def __ASSERT Assert that ensures that its parameter is true; enabled only if _KVI_DEBUG_or __KVI_DEBUG__ is defined
-*/
-
-#ifdef _KVI_DEBUG_CHECK_RANGE_
-	#define KVI_ASSERT(_expr) if(!(_expr))qDebug("[kvirc]: ASSERT FAILED: \"%s\" is false in %s (%d)",#_expr,__FILE__,__LINE__)
-	#define __range_invalid(_expr) if(_expr)qDebug("[kvirc]: ASSERT FAILED: \"%s\" is true in %s (%d)",#_expr,__FILE__,__LINE__)
-#else
-	#define KVI_ASSERT(_expr)
-	#define __range_invalid(_expr)
-#endif
-
-#if defined(_KVI_DEBUG_) || defined(__KVI_DEBUG__)
-	#define __ASSERT(_expr) if(!(_expr))qDebug("[kvirc]: ASSERT FAILED: \"%s\" is false in %s (%d)",#_expr,__FILE__,__LINE__)
-#else
-	#define __ASSERT(_expr)
-#endif
-
-#endif
-
 
 #include <stdlib.h> // abort
 
@@ -89,7 +54,6 @@
 	#define KVI_PRETTY_FUNCTION __FUNCTION__
 
 #endif //!__GNUC__
-
 
 #ifdef COMPILE_DEBUG_MODE
 

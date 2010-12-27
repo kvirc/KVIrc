@@ -33,15 +33,15 @@
 #include "kvi_settings.h"
 #include "KviQString.h"
 #include "KviIrcServer.h"
-#include "KviNetwork.h"
+#include "KviIrcNetwork.h"
 #include "KviPointerHashTable.h"
 
 /**
-* \typedef KviServerDefinition
-* \struct _KviServerDefinition
+* \typedef KviIrcServerDefinition
+* \struct _KviIrcServerDefinition
 * \brief Server definition
 */
-typedef struct _KviServerDefinition
+typedef struct _KviIrcServerDefinition
 {
 	QString            szServer;
 	kvi_u32_t          uPort;
@@ -54,30 +54,30 @@ typedef struct _KviServerDefinition
 	QString            szNick;
 	QString            szInitUMode;
 	QString            szId;
-} KviServerDefinition;
+} KviIrcServerDefinition;
 
 /**
-* \class KviServerDataBase
+* \class KviIrcServerDataBase
 * \brief Irc server database handling class
 */
-class KVILIB_API KviServerDataBase
+class KVILIB_API KviIrcServerDataBase
 {
 public:
 	/**
 	* \brief Constructs the server database object
-	* \return KviServerDataBase
+	* \return KviIrcServerDataBase
 	*/
-	KviServerDataBase();
+	KviIrcServerDataBase();
 
 	/**
 	* \brief Destroys the server database object
 	*/
-	~KviServerDataBase();
+	~KviIrcServerDataBase();
 private:
-	KviPointerHashTable<QString,KviNetwork> * m_pRecords;
+	KviPointerHashTable<QString,KviIrcNetwork> * m_pRecords;
 	QString                                   m_szCurrentNetwork;
-	KviPointerList<KviServer>               * m_pAutoConnectOnStartupServers;
-	KviPointerList<KviNetwork>              * m_pAutoConnectOnStartupNetworks;
+	KviPointerList<KviIrcServer>               * m_pAutoConnectOnStartupServers;
+	KviPointerList<KviIrcNetwork>              * m_pAutoConnectOnStartupNetworks;
 public:
 	/**
 	* \brief Deletes the database
@@ -87,9 +87,9 @@ public:
 
 	/**
 	* \brief Returns the record dictionary of the database
-	* \return KviPointerHashTable<QString,KviNetwork> *
+	* \return KviPointerHashTable<QString,KviIrcNetwork> *
 	*/
-	inline KviPointerHashTable<QString,KviNetwork> * recordDict(){ return m_pRecords; };
+	inline KviPointerHashTable<QString,KviIrcNetwork> * recordDict(){ return m_pRecords; };
 
 	/**
 	* \brief Returns a list of servers to connect on startup
@@ -99,9 +99,9 @@ public:
 	* only during the startup phase because it contains shallow pointers to the
 	* servers really contained in the server/network list and it is never updated
 	* later.
-	* \return KviPointerList<KviServer> *
+	* \return KviPointerList<KviIrcServer> *
 	*/
-	inline KviPointerList<KviServer>  * autoConnectOnStartupServers(){ return m_pAutoConnectOnStartupServers; };
+	inline KviPointerList<KviIrcServer>  * autoConnectOnStartupServers(){ return m_pAutoConnectOnStartupServers; };
 
 	/**
 	* \brief Returns a list of networks to connect on startup
@@ -111,9 +111,9 @@ public:
 	* only during the startup phase because it contains shallow pointers to the
 	* networks really contained in the server/network list and it is never
 	* updated later.
-	* \return KviPointerList<KviNetwork> *
+	* \return KviPointerList<KviIrcNetwork> *
 	*/
-	inline KviPointerList<KviNetwork> * autoConnectOnStartupNetworks(){ return m_pAutoConnectOnStartupNetworks; };
+	inline KviPointerList<KviIrcNetwork> * autoConnectOnStartupNetworks(){ return m_pAutoConnectOnStartupNetworks; };
 
 	/**
 	* \brief Deletes the list of autoconnect servers
@@ -142,23 +142,23 @@ public:
 
 	/**
 	* \brief Returns the current network
-	* \return KviNetwork
+	* \return KviIrcNetwork
 	*/
-	KviNetwork * currentNetwork();
+	KviIrcNetwork * currentNetwork();
 
 	/**
 	* \brief Adds a network to the database
 	* \param n The source network
 	* \return void
 	*/
-	void addNetwork(KviNetwork * n);
+	void addNetwork(KviIrcNetwork * n);
 
 	/**
 	* \brief Searches for a network
 	* \param name The name of the network to find
-	* \return KviNetwork
+	* \return KviIrcNetwork
 	*/
-	KviNetwork * findNetwork(const QString & name);
+	KviIrcNetwork * findNetwork(const QString & name);
 
 	/**
 	* \brief Returns the number of networks
@@ -195,7 +195,7 @@ public:
 	* \param szError The container for a possible error
 	* \return bool
 	*/
-	bool makeCurrentServer(KviServerDefinition * d, QString  & szError);
+	bool makeCurrentServer(KviIrcServerDefinition * d, QString  & szError);
 
 	/**
 	* \brief Marks the current servers as the best in the network
@@ -204,7 +204,7 @@ public:
 	* \param szError The container for a possible error
 	* \return bool
 	*/
-	bool makeCurrentBestServerInNetwork(const QString & szNetName, KviNetwork * d, QString & szError);
+	bool makeCurrentBestServerInNetwork(const QString & szNetName, KviIrcNetwork * d, QString & szError);
 };
 
 #endif //_KVI_IRCSERVERDB_H_

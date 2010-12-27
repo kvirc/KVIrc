@@ -968,7 +968,7 @@ bool KviDccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename
 			t->m_uResumePosition = filePos;
 
 			KviCString szBuffy;
-			KviServerParser::encodeCtcpParameter(filename,szBuffy);
+			KviIrcServerParser::encodeCtcpParameter(filename,szBuffy);
 
 			dcc->ctcpMsg->msg->console()->connection()->sendFmtData(
 					"PRIVMSG %s :%cDCC ACCEPT %s %s %u %s%c",

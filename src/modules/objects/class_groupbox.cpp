@@ -25,7 +25,7 @@
 
 #include <KviTalGroupBox.h>
 #include "class_groupbox.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_debug.h"
 
 #include "KviLocale.h"

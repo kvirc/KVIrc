@@ -27,7 +27,7 @@
 //#define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
 #include "KviMemory.h"
-#include "kvi_bswap.h"
+#include "KviByteOrder.h"
 
 #define _KVI_LOCALE_CPP_
 #include "KviLocale.h"
@@ -367,7 +367,7 @@ struct GnuMoStringDescriptor
 	kvi_u32_t offset;
 };
 
-#define KVI_SWAP_IF_NEEDED(flag,value) (flag ? kvi_swap32(value) : (value))
+#define KVI_SWAP_IF_NEEDED(flag,value) (flag ? KviByteOrder::swap32(value) : (value))
 
 ////////////////////////////////////////////////////////////////////////////////////////   End of gettext.h & gettextP.h
 //////////////////////////////////////////////////////////////////////////////////////

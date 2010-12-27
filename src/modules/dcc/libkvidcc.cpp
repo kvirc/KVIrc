@@ -41,7 +41,7 @@
 #include "KviNetUtils.h"
 #include "kvi_frame.h"
 #include "kvi_console.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_options.h"
 #include "kvi_defaults.h"
 #include "KviMircCntrl.h"

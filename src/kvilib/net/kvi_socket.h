@@ -46,22 +46,23 @@
 
 	#define KVI_INVALID_SOCKET INVALID_SOCKET
 
-        //every decent win version should contain IPPROTO_IPV6
+	//every decent win version should contain IPPROTO_IPV6
 
-        //old mingw win32 headers doesn't contain this
-        #ifndef IPV6_PROTECTION_LEVEL
-        # define IPV6_PROTECTION_LEVEL          23
-	# define PROTECTION_LEVEL_UNRESTRICTED  10  /* for peer-to-peer apps  */
-	# define PROTECTION_LEVEL_DEFAULT       20  /* default level          */
-        # define PROTECTION_LEVEL_RESTRICTED    30  /* for Intranet apps      */
-        #endif
+	//old mingw win32 headers doesn't contain this
+	#ifndef IPV6_PROTECTION_LEVEL
+		#define IPV6_PROTECTION_LEVEL          23
+		#define PROTECTION_LEVEL_UNRESTRICTED  10  /* for peer-to-peer apps  */
+		#define PROTECTION_LEVEL_DEFAULT       20  /* default level          */
+		#define PROTECTION_LEVEL_RESTRICTED    30  /* for Intranet apps      */
+	#endif
 
 	#define KVI_IPV6_PROTECTION_LEVEL          IPV6_PROTECTION_LEVEL
 	#define KVI_PROTECTION_LEVEL_RESTRICTED    PROTECTION_LEVEL_RESTRICTED
 	#define KVI_PROTECTION_LEVEL_DEFAULT       PROTECTION_LEVEL_DEFAULT
 	#define KVI_PROTECTION_LEVEL_UNRESTRICTED  PROTECTION_LEVEL_UNRESTRICTED
-        #define KVI_IPPROTO_IPV6                   IPPROTO_IPV6
-#else
+	#define KVI_IPPROTO_IPV6                   IPPROTO_IPV6
+	
+#else //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
 
 	#include <sys/time.h>
 	#include <sys/types.h>
@@ -72,14 +73,12 @@
 	#include <unistd.h>
 
 	#define KVI_INVALID_SOCKET (-1)
-#endif
+#endif //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
 
 #ifndef MSG_NOSIGNAL
 	// At least solaris seems to not have it
 	#define MSG_NOSIGNAL 0
-#endif
-
-//#include "kvi_socketcalls.h"
+#endif //!MSG_NOSIGNAL
 
 
 //================================================================================================

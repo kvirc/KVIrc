@@ -70,7 +70,7 @@
 	#include <QWindowsStyle>
 #endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
-KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
+KviIrcNetworkDetailsWidget::KviIrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n)
 	: QDialog(par)
 {
 	setModal(true);
@@ -381,13 +381,13 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 }
 
 
-KviNetworkDetailsWidget::~KviNetworkDetailsWidget()
+KviIrcNetworkDetailsWidget::~KviIrcNetworkDetailsWidget()
 {
 	if(m_pOnConnectEditor) KviScriptEditor::destroyInstance(m_pOnConnectEditor);
 	if(m_pOnLoginEditor) KviScriptEditor::destroyInstance(m_pOnLoginEditor);
 }
 
-void KviNetworkDetailsWidget::editNickServRule()
+void KviIrcNetworkDetailsWidget::editNickServRule()
 {
 	QTreeWidgetItem * it = (QTreeWidgetItem *) m_pNickServTreeWidget->currentItem();
 	if(!it)return;
@@ -402,7 +402,7 @@ void KviNetworkDetailsWidget::editNickServRule()
 	}
 }
 
-void KviNetworkDetailsWidget::addNickServRule()
+void KviIrcNetworkDetailsWidget::addNickServRule()
 {
 	KviNickServRule r;
 	KviNickServRuleEditor ed(this,false);
@@ -416,7 +416,7 @@ void KviNetworkDetailsWidget::addNickServRule()
 	}
 }
 
-void KviNetworkDetailsWidget::delNickServRule()
+void KviIrcNetworkDetailsWidget::delNickServRule()
 {
 	QTreeWidgetItem * it = (QTreeWidgetItem *)m_pNickServTreeWidget->currentItem();
 	if(!it)return;
@@ -424,7 +424,7 @@ void KviNetworkDetailsWidget::delNickServRule()
 	enableDisableNickServControls();
 }
 
-void KviNetworkDetailsWidget::enableDisableNickServControls()
+void KviIrcNetworkDetailsWidget::enableDisableNickServControls()
 {
 	bool bEnabled = m_pNickServCheck->isChecked();
 	m_pNickServTreeWidget->setEnabled(bEnabled);
@@ -434,7 +434,7 @@ void KviNetworkDetailsWidget::enableDisableNickServControls()
 	m_pEditRuleButton->setEnabled(bEnabled);
 }
 
-void KviNetworkDetailsWidget::fillData(KviNetwork * n)
+void KviIrcNetworkDetailsWidget::fillData(KviIrcNetwork * n)
 {
 	n->setUserName(m_pUserEditor->text());
 	n->setPassword(m_pPassEditor->text());
@@ -497,7 +497,7 @@ void KviNetworkDetailsWidget::fillData(KviNetwork * n)
 }
 
 
-KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
+KviIrcServerDetailsWidget::KviIrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 : QDialog(par)
 {
 	setModal(true);
@@ -993,13 +993,13 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	setHeaderLabelText();
 }
 
-KviServerDetailsWidget::~KviServerDetailsWidget()
+KviIrcServerDetailsWidget::~KviIrcServerDetailsWidget()
 {
 	if(m_pOnConnectEditor) KviScriptEditor::destroyInstance(m_pOnConnectEditor);
 	if(m_pOnLoginEditor) KviScriptEditor::destroyInstance(m_pOnLoginEditor);
 }
 
-void KviServerDetailsWidget::useIPV6CheckToggled(bool)
+void KviIrcServerDetailsWidget::useIPV6CheckToggled(bool)
 {
 #ifdef COMPILE_IPV6_SUPPORT
 	m_pIpEditor->setAddressType(m_pUseIPV6Check->isChecked() ? KviIpEditor::IPv6 : KviIpEditor::IPv4);
@@ -1009,12 +1009,12 @@ void KviServerDetailsWidget::useIPV6CheckToggled(bool)
 	setHeaderLabelText();
 }
 
-void KviServerDetailsWidget::portEditorTextChanged(const QString &)
+void KviIrcServerDetailsWidget::portEditorTextChanged(const QString &)
 {
 	setHeaderLabelText();
 }
 
-void KviServerDetailsWidget::setHeaderLabelText()
+void KviIrcServerDetailsWidget::setHeaderLabelText()
 {
 	QString szTmp = "<font size=\"+1\"><b>irc";
 	if(m_pUseIPV6Check->isChecked())szTmp += "6";
@@ -1034,7 +1034,7 @@ void KviServerDetailsWidget::setHeaderLabelText()
 	m_pHeaderLabel->setText(szTmp);
 }
 
-void KviServerDetailsWidget::fillData(KviServer * s)
+void KviIrcServerDetailsWidget::fillData(KviIrcServer * s)
 {
 	s->setUserName(m_pUserEditor->text());
 	s->setPassword(m_pPassEditor->text());
@@ -1164,7 +1164,7 @@ void KviServerDetailsWidget::fillData(KviServer * s)
 		s->setProxy(m_pProxyEditor->currentIndex()-2);
 }
 
-void KviServerDetailsWidget::useDefaultInitUModeToggled(bool b)
+void KviIrcServerDetailsWidget::useDefaultInitUModeToggled(bool b)
 {
 	m_pIMode->setEnabled(!b);
 	m_pWMode->setEnabled(!b);
@@ -1172,35 +1172,35 @@ void KviServerDetailsWidget::useDefaultInitUModeToggled(bool b)
 }
 
 // kvi_app.cpp
-extern KVIRC_API KviServerDataBase * g_pServerDataBase;
+extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 
-KviServerOptionsTreeWidgetItem::KviServerOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,const KviNetwork *n)
+KviIrcServerOptionsTreeWidgetItem::KviIrcServerOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,const KviIrcNetwork *n)
     : QTreeWidgetItem(parent)
 {
 	setIcon(0,QIcon(pm));
 	m_pServerData = 0;
-	m_pNetworkData = new KviNetwork(*n);
+	m_pNetworkData = new KviIrcNetwork(*n);
 	setText(0,n->name());
 	setText(1,n->description());
 }
 
-KviServerOptionsTreeWidgetItem::KviServerOptionsTreeWidgetItem(QTreeWidgetItem *parent,const QPixmap &pm,const KviServer *s)
+KviIrcServerOptionsTreeWidgetItem::KviIrcServerOptionsTreeWidgetItem(QTreeWidgetItem *parent,const QPixmap &pm,const KviIrcServer *s)
     : QTreeWidgetItem(parent)
 {
 	setIcon(0,QIcon(pm));
-	m_pServerData = new KviServer(*s);
+	m_pServerData = new KviIrcServer(*s);
 	setText(0,s->hostName());
 	setText(1,s->description());
 	m_pNetworkData = 0;
 }
 
-KviServerOptionsTreeWidgetItem::~KviServerOptionsTreeWidgetItem()
+KviIrcServerOptionsTreeWidgetItem::~KviIrcServerOptionsTreeWidgetItem()
 {
 	if(m_pServerData)delete m_pServerData;
 	if(m_pNetworkData)delete m_pNetworkData;
 }
 
-void KviServerOptionsTreeWidgetItem::updateVisibleStrings()
+void KviIrcServerOptionsTreeWidgetItem::updateVisibleStrings()
 {
 	if(m_pNetworkData)
 	{
@@ -1216,7 +1216,7 @@ void KviServerOptionsTreeWidgetItem::updateVisibleStrings()
 }
 
 
-KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
+KviIrcServerOptionsWidget::KviIrcServerOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {
 	setObjectName("server_options_widget");
@@ -1401,7 +1401,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	setMinimumWidth(600);
 }
 
-KviServerOptionsWidget::~KviServerOptionsWidget()
+KviIrcServerOptionsWidget::~KviIrcServerOptionsWidget()
 {
 	if(m_pImportFilter)
 	{
@@ -1418,7 +1418,7 @@ KviServerOptionsWidget::~KviServerOptionsWidget()
 		delete m_pNetworkDetailsDialog;
 }
 
-void KviServerOptionsWidget::recentServersPopupAboutToShow()
+void KviIrcServerOptionsWidget::recentServersPopupAboutToShow()
 {
 	g_pApp->fillRecentServersPopup(m_pRecentPopup);
 
@@ -1426,7 +1426,7 @@ void KviServerOptionsWidget::recentServersPopupAboutToShow()
 	m_pRecentPopup->insertItem(__tr2qs("Clear Recent Servers List"));
 }
 
-void KviServerOptionsWidget::recentServersPopupClicked(int id)
+void KviIrcServerOptionsWidget::recentServersPopupClicked(int id)
 {
 	KviConsole * c = g_pActiveWindow->console();
 	if(!c)
@@ -1445,7 +1445,7 @@ void KviServerOptionsWidget::recentServersPopupClicked(int id)
 	selectBestServerByUrl(szItemText);
 }
 
-void KviServerOptionsWidget::selectBestServerByUrl(const QString &szUrl)
+void KviIrcServerOptionsWidget::selectBestServerByUrl(const QString &szUrl)
 {
 	if(szUrl.isEmpty())
 		return;
@@ -1457,12 +1457,12 @@ void KviServerOptionsWidget::selectBestServerByUrl(const QString &szUrl)
 	int uCount = m_pTreeWidget->topLevelItemCount();
 	int uIdx = 0;
 
-	KviServerOptionsTreeWidgetItem * pBestCandidate = NULL;
+	KviIrcServerOptionsTreeWidgetItem * pBestCandidate = NULL;
 	kvi_u32_t uBestCandidateScore = 0;
 
 	while(uIdx < uCount)
 	{
-		KviServerOptionsTreeWidgetItem * pNet = static_cast<KviServerOptionsTreeWidgetItem *>(m_pTreeWidget->topLevelItem(uIdx));
+		KviIrcServerOptionsTreeWidgetItem * pNet = static_cast<KviIrcServerOptionsTreeWidgetItem *>(m_pTreeWidget->topLevelItem(uIdx));
 
 		uIdx++;
 
@@ -1473,13 +1473,13 @@ void KviServerOptionsWidget::selectBestServerByUrl(const QString &szUrl)
 		int uChildIdx = 0;
 		while(uChildIdx < uServerCount)
 		{
-			KviServerOptionsTreeWidgetItem * pServer = static_cast<KviServerOptionsTreeWidgetItem *>(pNet->child(uChildIdx));
+			KviIrcServerOptionsTreeWidgetItem * pServer = static_cast<KviIrcServerOptionsTreeWidgetItem *>(pNet->child(uChildIdx));
 			uChildIdx++;
 
 			if(!pServer)
 				continue; // huh ?
 
-			KviServer * pServerData = pServer->serverData();
+			KviIrcServer * pServerData = pServer->serverData();
 
 			if(!pServerData)
 				continue; // umphf...
@@ -1514,7 +1514,7 @@ void KviServerOptionsWidget::selectBestServerByUrl(const QString &szUrl)
 
 }
 
-void KviServerOptionsWidget::connectCurrentClicked()
+void KviIrcServerOptionsWidget::connectCurrentClicked()
 {
 	saveLastItem();
 	commit();
@@ -1523,26 +1523,26 @@ void KviServerOptionsWidget::connectCurrentClicked()
 	KviKvsScript::run("server -u",g_pApp->activeConsole());
 }
 
-void KviServerOptionsWidget::fillServerList()
+void KviIrcServerOptionsWidget::fillServerList()
 {
-	KviServerOptionsTreeWidgetItem * net;
-	KviServerOptionsTreeWidgetItem * srv;
-	KviServerOptionsTreeWidgetItem * cur = 0;
+	KviIrcServerOptionsTreeWidgetItem * net;
+	KviIrcServerOptionsTreeWidgetItem * srv;
+	KviIrcServerOptionsTreeWidgetItem * cur = 0;
 
-	KviPointerHashTableIterator<QString,KviNetwork> it(*(g_pServerDataBase->recordDict()));
+	KviPointerHashTableIterator<QString,KviIrcNetwork> it(*(g_pServerDataBase->recordDict()));
 
 	if(m_pConnectCurrent)
 		m_pConnectCurrent->setEnabled(false);
 
-	while(KviNetwork * r = it.current())
+	while(KviIrcNetwork * r = it.current())
 	{
-		net = new KviServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),r);
-		KviPointerList<KviServer> * sl = r->serverList();
+		net = new KviIrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),r);
+		KviPointerList<KviIrcServer> * sl = r->serverList();
 		bool bCurrent = r->name() == g_pServerDataBase->currentNetworkName().toUtf8().data();
 		net->setExpanded(bCurrent);
-		for(KviServer * s = sl->first();s;s = sl->next())
+		for(KviIrcServer * s = sl->first();s;s = sl->next())
 		{
-			srv = new KviServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),s);
+			srv = new KviIrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),s);
 
 			if((s == r->currentServer()) && bCurrent)
 			{
@@ -1562,15 +1562,15 @@ void KviServerOptionsWidget::fillServerList()
 	}
 }
 
-void KviServerOptionsWidget::itemDoubleClicked(QTreeWidgetItem*, int )
+void KviIrcServerOptionsWidget::itemDoubleClicked(QTreeWidgetItem*, int )
 {
 	detailsClicked();
 }
 
-void KviServerOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
+void KviIrcServerOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 {
 	saveLastItem();
-	m_pLastEditedItem = (KviServerOptionsTreeWidgetItem *)it;
+	m_pLastEditedItem = (KviIrcServerOptionsTreeWidgetItem *)it;
 
 	if(m_pLastEditedItem)
 	{
@@ -1604,7 +1604,7 @@ void KviServerOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetI
 	}
 }
 
-void KviServerOptionsWidget::serverNetworkEditTextEdited(const QString &)
+void KviIrcServerOptionsWidget::serverNetworkEditTextEdited(const QString &)
 {
 	if(!m_pLastEditedItem)
 		return;
@@ -1617,7 +1617,7 @@ void KviServerOptionsWidget::serverNetworkEditTextEdited(const QString &)
 }
 
 
-void KviServerOptionsWidget::saveLastItem()
+void KviIrcServerOptionsWidget::saveLastItem()
 {
 	if(!m_pLastEditedItem)
 		return;
@@ -1639,32 +1639,32 @@ void KviServerOptionsWidget::saveLastItem()
 	}
 }
 
-void KviServerOptionsWidget::commit()
+void KviIrcServerOptionsWidget::commit()
 {
 	saveLastItem();
 	g_pServerDataBase->clear();
 
-	KviServerOptionsTreeWidgetItem * network;
+	KviIrcServerOptionsTreeWidgetItem * network;
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		network=(KviServerOptionsTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
+		network=(KviIrcServerOptionsTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
 		QString tmp = network->m_pNetworkData->name();
-		KviNetwork * pNetwork = g_pServerDataBase->findNetwork(tmp);
+		KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(tmp);
 		if(pNetwork)
 		{
 			pNetwork->copyFrom(*(network->m_pNetworkData));
 		} else {
-			pNetwork = new KviNetwork(tmp);
+			pNetwork = new KviIrcNetwork(tmp);
 			pNetwork->copyFrom(*(network->m_pNetworkData));
 			g_pServerDataBase->addNetwork(pNetwork);
 		}
 		if(network == m_pLastEditedItem)g_pServerDataBase->setCurrentNetwork(pNetwork->name());
 
-		KviServerOptionsTreeWidgetItem * ch;
+		KviIrcServerOptionsTreeWidgetItem * ch;
 		for (int j=0;j<network->childCount();j++)
 		{
-			KviServer *srv;
-			ch=(KviServerOptionsTreeWidgetItem *)network->child(j);
+			KviIrcServer *srv;
+			ch=(KviIrcServerOptionsTreeWidgetItem *)network->child(j);
 			if(ch->m_pServerData)
 			{
 				if(!ch->m_pServerData->m_szHostname.isEmpty())
@@ -1672,7 +1672,7 @@ void KviServerOptionsWidget::commit()
 					srv = pNetwork->findServer(ch->m_pServerData);
 					if(!srv)
 					{
-						srv = new KviServer(*(ch->m_pServerData));
+						srv = new KviIrcServer(*(ch->m_pServerData));
 						pNetwork->insertServer(srv);
 					} else *srv = *(ch->m_pServerData);
 					if(srv->id().isEmpty())srv->generateUniqueId();
@@ -1693,11 +1693,11 @@ void KviServerOptionsWidget::commit()
 	g_pApp->saveIrcServerDataBase();
 }
 
-void KviServerOptionsWidget::customContextMenuRequested(const QPoint &pnt)
+void KviIrcServerOptionsWidget::customContextMenuRequested(const QPoint &pnt)
 {
 	int id;
 	QTreeWidgetItem *it=(QTreeWidgetItem *) m_pTreeWidget->itemAt(pnt);
-	bool bServer = (it && ((KviServerOptionsTreeWidgetItem *)it)->m_pServerData);
+	bool bServer = (it && ((KviIrcServerOptionsTreeWidgetItem *)it)->m_pServerData);
 	m_pContextPopup->clear();
 	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
 	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()));
@@ -1719,7 +1719,7 @@ void KviServerOptionsWidget::customContextMenuRequested(const QPoint &pnt)
 	m_pContextPopup->popup(QCursor::pos());
 }
 
-void KviServerOptionsWidget::importPopupAboutToShow()
+void KviIrcServerOptionsWidget::importPopupAboutToShow()
 {
 	g_pModuleManager->loadModulesByCaps("serverimport");
 	m_pImportPopup->clear();
@@ -1740,7 +1740,7 @@ void KviServerOptionsWidget::importPopupAboutToShow()
 	}
 }
 
-void KviServerOptionsWidget::importPopupActivated(int id)
+void KviIrcServerOptionsWidget::importPopupActivated(int id)
 {
 	// ensure that we have all the modules : they could have been unloaded while the popup was displayed
 	g_pModuleManager->loadModulesByCaps("serverimport");
@@ -1773,31 +1773,31 @@ void KviServerOptionsWidget::importPopupActivated(int id)
 		return;
 	}
 
-	connect(m_pImportFilter,SIGNAL(server(const KviServer &,const QString&)),this,SLOT(importServer(const KviServer &,const QString&)));
+	connect(m_pImportFilter,SIGNAL(server(const KviIrcServer &,const QString&)),this,SLOT(importServer(const KviIrcServer &,const QString&)));
 	connect(m_pImportFilter,SIGNAL(destroyed()),this,SLOT(importerDead()));
 
 	m_pImportFilter->start();
 }
 
-void KviServerOptionsWidget::importerDead()
+void KviIrcServerOptionsWidget::importerDead()
 {
 	m_pImportFilter = 0;
 }
 
-void KviServerOptionsWidget::importServer(const KviServer &s,const QString &network)
+void KviIrcServerOptionsWidget::importServer(const KviIrcServer &s,const QString &network)
 {
-	KviServerOptionsTreeWidgetItem * net = findNetItem(network);
+	KviIrcServerOptionsTreeWidgetItem * net = findNetItem(network);
 	if(!net)
 	{
-		KviNetwork d(network);
-		net = new KviServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),&d);
+		KviIrcNetwork d(network);
+		net = new KviIrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),&d);
 		net->setExpanded(true);
 	}
 
-	KviServerOptionsTreeWidgetItem * srv ;
+	KviIrcServerOptionsTreeWidgetItem * srv ;
 	for(int i=0;i<net->childCount();i++)
 	{
-		srv=(KviServerOptionsTreeWidgetItem *) net->child(i);
+		srv=(KviIrcServerOptionsTreeWidgetItem *) net->child(i);
 		if((srv)->m_pServerData->useSSL() == s.useSSL())
 		{
 			if(srv->m_pServerData->isIPv6() == s.isIPv6())
@@ -1818,39 +1818,39 @@ void KviServerOptionsWidget::importServer(const KviServer &s,const QString &netw
 	}
 
 	// not found : add it!
-	KviServerOptionsTreeWidgetItem * newServer = new KviServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),&s);
+	KviIrcServerOptionsTreeWidgetItem * newServer = new KviIrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),&s);
 	m_pTreeWidget->setCurrentItem(newServer);
 	m_pTreeWidget->scrollToItem(newServer);
 }
 
-void KviServerOptionsWidget::newNetwork()
+void KviIrcServerOptionsWidget::newNetwork()
 {
-	KviNetwork d(__tr2qs_ctx("New Network","options"));
-	KviServerOptionsTreeWidgetItem * it = new KviServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),&d);
+	KviIrcNetwork d(__tr2qs_ctx("New Network","options"));
+	KviIrcServerOptionsTreeWidgetItem * it = new KviIrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),&d);
 	it->setExpanded(true);
 	it->setSelected(true);
 	m_pTreeWidget->setCurrentItem(it);
 	m_pTreeWidget->scrollToItem(it);
 }
 
-void KviServerOptionsWidget::newServer()
+void KviIrcServerOptionsWidget::newServer()
 {
 	if(m_pLastEditedItem)
 	{
-		KviServerOptionsTreeWidgetItem * net;
+		KviIrcServerOptionsTreeWidgetItem * net;
 		if(m_pLastEditedItem->m_pServerData)
 		{
-			net = (KviServerOptionsTreeWidgetItem *)m_pLastEditedItem->parent();
+			net = (KviIrcServerOptionsTreeWidgetItem *)m_pLastEditedItem->parent();
 			if(!net)return;
 		}
 		else net = m_pLastEditedItem;
 
-		KviServer tmp;
+		KviIrcServer tmp;
 		tmp.m_szHostname = __tr2qs_ctx("irc.unknown.net","options");
 		tmp.setCacheIp(false);
 		tmp.generateUniqueId();
 
-		KviServerOptionsTreeWidgetItem * it = new KviServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),&tmp);
+		KviIrcServerOptionsTreeWidgetItem * it = new KviIrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),&tmp);
 
 		net->setExpanded(true);
 
@@ -1860,34 +1860,34 @@ void KviServerOptionsWidget::newServer()
 	}
 }
 
-void KviServerOptionsWidget::copyServer()
+void KviIrcServerOptionsWidget::copyServer()
 {
 	if(m_pLastEditedItem)
 	{
 		if(m_pLastEditedItem->m_pServerData)
 		{
-			if(!m_pClipboard)m_pClipboard = new KviServer();
+			if(!m_pClipboard)m_pClipboard = new KviIrcServer();
 			*m_pClipboard = *(m_pLastEditedItem->m_pServerData);
 			m_pPasteServerButton->setEnabled(true);
 		}
 	}
 }
 
-void KviServerOptionsWidget::pasteServer()
+void KviIrcServerOptionsWidget::pasteServer()
 {
 	if(m_pClipboard)
 	{
 		if(m_pLastEditedItem)
 		{
-			KviServerOptionsTreeWidgetItem * net;
+			KviIrcServerOptionsTreeWidgetItem * net;
 			if(m_pLastEditedItem->m_pServerData)
 			{
-				net = (KviServerOptionsTreeWidgetItem *)m_pLastEditedItem->parent();
+				net = (KviIrcServerOptionsTreeWidgetItem *)m_pLastEditedItem->parent();
 				if(!net)return;
 			}
 			else net = m_pLastEditedItem;
 
-			KviServerOptionsTreeWidgetItem * it = new KviServerOptionsTreeWidgetItem(net,
+			KviIrcServerOptionsTreeWidgetItem * it = new KviIrcServerOptionsTreeWidgetItem(net,
 							*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),m_pClipboard);
 
 			net->setExpanded(true);
@@ -1899,7 +1899,7 @@ void KviServerOptionsWidget::pasteServer()
 	}
 }
 
-void KviServerOptionsWidget::removeCurrent()
+void KviIrcServerOptionsWidget::removeCurrent()
 {
 	if(m_pLastEditedItem)
 	{
@@ -1926,33 +1926,33 @@ void KviServerOptionsWidget::removeCurrent()
 	}
 }
 
-KviServerOptionsTreeWidgetItem * KviServerOptionsWidget::findNetItem(const QString &netname)
+KviIrcServerOptionsTreeWidgetItem * KviIrcServerOptionsWidget::findNetItem(const QString &netname)
 {
 
-	KviServerOptionsTreeWidgetItem * it;
+	KviIrcServerOptionsTreeWidgetItem * it;
 	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		it=(KviServerOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+		it=(KviIrcServerOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		if(KviQString::equalCI(it->text(0),netname))return it;
 	}
 	return 0;
 }
 
-void KviServerOptionsWidget::clearList()
+void KviIrcServerOptionsWidget::clearList()
 {
 	m_pTreeWidget->clear();
 	m_pLastEditedItem = 0;
 	currentItemChanged(0,0);
 }
 
-void KviServerOptionsWidget::detailsClicked()
+void KviIrcServerOptionsWidget::detailsClicked()
 {
 	if(!m_pLastEditedItem)return;
 	if(m_pLastEditedItem->m_pServerData)
 	{
 		saveLastItem();
 
-		m_pServerDetailsDialog = new KviServerDetailsWidget(this,m_pLastEditedItem->m_pServerData);
+		m_pServerDetailsDialog = new KviIrcServerDetailsWidget(this,m_pLastEditedItem->m_pServerData);
 
 		int retCode = m_pServerDetailsDialog->exec();
 		if(retCode == QDialog::Accepted)
@@ -1975,7 +1975,7 @@ void KviServerOptionsWidget::detailsClicked()
 	{
 		saveLastItem();
 
-		m_pNetworkDetailsDialog = new KviNetworkDetailsWidget(this,m_pLastEditedItem->m_pNetworkData);
+		m_pNetworkDetailsDialog = new KviIrcNetworkDetailsWidget(this,m_pLastEditedItem->m_pNetworkData);
 
 		int retCode = m_pNetworkDetailsDialog->exec();
 		if(retCode == QDialog::Accepted)

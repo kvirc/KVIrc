@@ -47,7 +47,7 @@ class KviConfigurationFile;
 class KviNickServRuleSet;
 class KviProxy;
 class KviProxyDataBase;
-class KviServer;
+class KviIrcServer;
 
 #define KVI_IRCSERVER_FLAG_IPV6 1
 #define KVI_IRCSERVER_FLAG_CACHEIP 2
@@ -57,29 +57,29 @@ class KviServer;
 #define KVI_IRCSERVER_FLAG_CAP 32
 
 /**
-* \class KviServerReconnectInfo
+* \class KviIrcServerReconnectInfo
 * \brief A class for reconnecting purposes
 */
-class KVILIB_API KviServerReconnectInfo
+class KVILIB_API KviIrcServerReconnectInfo
 {
 public:
 	/**
 	* \brief Constructs the server reconnect info object
-	* \return KviServerReconnectInfo
+	* \return KviIrcServerReconnectInfo
 	*/
-	KviServerReconnectInfo();
+	KviIrcServerReconnectInfo();
 
 	/**
 	* \brief Carbon copy
 	* \param info The object to copy the info from
-	* \return KviServerReconnectInfo
+	* \return KviIrcServerReconnectInfo
 	*/
-	KviServerReconnectInfo(const KviServerReconnectInfo & info);
+	KviIrcServerReconnectInfo(const KviIrcServerReconnectInfo & info);
 
 	/**
 	* \brief Destroys the server reconnect info object
 	*/
-	~KviServerReconnectInfo();
+	~KviIrcServerReconnectInfo();
 public:
 	QString               m_szNick;
 	QString               m_szPass;
@@ -90,31 +90,31 @@ public:
 };
 
 /**
-* \class KviServer
+* \class KviIrcServer
 * \brief The class which manages the irc servers
 */
-class KVILIB_API KviServer : public KviHeapObject
+class KVILIB_API KviIrcServer : public KviHeapObject
 {
 public:
 	/**
 	* \brief Constructs the server object
-	* \return KviServer
+	* \return KviIrcServer
 	*/
-	KviServer();
+	KviIrcServer();
 
 	/**
 	* \brief Carbon copy
 	* \param serv The irc server
-	* \return KviServer
+	* \return KviIrcServer
 	*/
-	KviServer(const KviServer & serv);
+	KviIrcServer(const KviIrcServer & serv);
 
 	/**
 	* \brief Destroys the server object
 	*/
-	~KviServer();
+	~KviIrcServer();
 public:
-	KviServerReconnectInfo * m_pReconnectInfo;
+	KviIrcServerReconnectInfo * m_pReconnectInfo;
 	QString            m_szHostname;          // the server hostname (or ip eventually)
 	QString            m_szIp;                // the server's cached ip (if we're caching)
 	QString            m_szDescription;       // the server description
@@ -580,7 +580,7 @@ public:
 	* \param s The server to copy
 	* \return void
 	*/
-	void operator=(const KviServer & s);
+	void operator=(const KviIrcServer & s);
 };
 
 #endif //_KVI_IRCSERVER_H_

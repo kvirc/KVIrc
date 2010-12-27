@@ -34,20 +34,20 @@
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_ircconnectionstatedata.h"
 
-KviServerParser * g_pServerParser = 0;
+KviIrcServerParser * g_pServerParser = 0;
 
 
-KviServerParser::KviServerParser()
+KviIrcServerParser::KviIrcServerParser()
 : QObject(0)
 {
 	setObjectName("server_parser");
 }
 
-KviServerParser::~KviServerParser()
+KviIrcServerParser::~KviIrcServerParser()
 {
 }
 
-void KviServerParser::parseMessage(const char * message,KviIrcConnection * pConnection)
+void KviIrcServerParser::parseMessage(const char * message,KviIrcConnection * pConnection)
 {
 	if(*message != 0 )
 	{

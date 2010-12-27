@@ -61,20 +61,17 @@ __KVI_EXTERN KVILIB_API bool kvi_qstringEqualCI(const QString &s1,const QString 
 
 
 // Include inlined assembly implementations if required
-#ifdef COMPILE_ix86_ASM
-	#include "kvi_strasm.h"
-#else
-	// Returns true if the string str1 is equal to str2. case sensitive.
-	__KVI_EXTERN KVILIB_API bool kvi_strEqualCS(const char *str1,const char *str2);
-	// Returns true if the forst len characters of string str1 are equal to str2.
-	// case sensitive.
-	// Note that if str1 or str2 are shorter than len characters then are considered as NOT equal!
-	__KVI_EXTERN KVILIB_API bool kvi_strEqualCSN(const char *str1,const char *str2,int len);
-	// no such tricks in non-asm
-	#define kvi_strEqualNoLocaleCI(str1,str2) kvi_strEqualCI(str1,str2)
-	#define kvi_strEqualNoLocaleCIN(str1,str2,len) kvi_strEqualCIN(str1,str2,len)
-	#define kvi_strLen(str) strlen(str)
-#endif
+
+// Returns true if the string str1 is equal to str2. case sensitive.
+__KVI_EXTERN KVILIB_API bool kvi_strEqualCS(const char *str1,const char *str2);
+// Returns true if the forst len characters of string str1 are equal to str2.
+// case sensitive.
+// Note that if str1 or str2 are shorter than len characters then are considered as NOT equal!
+__KVI_EXTERN KVILIB_API bool kvi_strEqualCSN(const char *str1,const char *str2,int len);
+// no such tricks in non-asm
+#define kvi_strEqualNoLocaleCI(str1,str2) kvi_strEqualCI(str1,str2)
+#define kvi_strEqualNoLocaleCIN(str1,str2,len) kvi_strEqualCIN(str1,str2,len)
+#define kvi_strLen(str) strlen(str)
 
 // Returns true if the string str1 is equal to str2.
 // case insensitive.

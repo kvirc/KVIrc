@@ -39,7 +39,7 @@
 
 class KviWindow;
 class KviChannel;
-class KviServerParser;
+class KviIrcServerParser;
 class KviFrame;
 class KviIrcConnection;
 
@@ -51,7 +51,7 @@ class KviIrcConnection;
 
 #define IS_ME(_msg,_nick) KviQString::equalCI(_msg->connection()->currentNickName(),_nick)
 
-typedef void (KviServerParser::*messageParseProc)(KviIrcMessage *);
+typedef void (KviIrcServerParser::*messageParseProc)(KviIrcMessage *);
 
 typedef struct _KviLiteralMessageParseStruct
 {
@@ -87,7 +87,7 @@ typedef struct _KviDccRequest
 	KviConsole     * pConsole;
 } KviDccRequest;
 
-typedef void (KviServerParser::*ctcpParseProc)(KviCtcpMessage *);
+typedef void (KviIrcServerParser::*ctcpParseProc)(KviCtcpMessage *);
 
 #define KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT 1
 
@@ -115,12 +115,12 @@ public:
 };
 
 
-class KVIRC_API KviServerParser : public QObject
+class KVIRC_API KviIrcServerParser : public QObject
 {
 	Q_OBJECT
 public:
-	KviServerParser();
-	~KviServerParser();
+	KviIrcServerParser();
+	~KviIrcServerParser();
 private:
 	static messageParseProc             m_numericParseProcTable[1000];
 	static KviLiteralMessageParseStruct m_literalParseProcTable[];
@@ -272,7 +272,7 @@ public:
 };
 
 #ifndef _KVI_SPARSER_CPP_
-	extern KVIRC_API KviServerParser * g_pServerParser;
+	extern KVIRC_API KviIrcServerParser * g_pServerParser;
 #endif
 
 

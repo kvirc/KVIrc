@@ -31,7 +31,7 @@
 #include "kvi_modulemanager.h"
 #include "kvi_console.h"
 #include "KviLocale.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_out.h"
 #include "KviMircCntrl.h"
 #include "kvi_iconmanager.h"

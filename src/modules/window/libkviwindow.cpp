@@ -31,7 +31,7 @@
 #include "kvi_frame.h"
 #include "KviLocale.h"
 #include "kvi_app.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_ircview.h"
 #include "kvi_input.h"
 #include "kvi_iconmanager.h"

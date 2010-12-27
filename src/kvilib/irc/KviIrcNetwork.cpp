@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviNetwork.cpp
+//   File : KviIrcNetwork.cpp
 //   Creation date : Wed Aug 27 2008 17:44:56 by Alexey Uzhva
 //
 //   This file is part of the KVirc irc client distribution
@@ -22,44 +22,44 @@
 //
 //=============================================================================
 
-#include "KviNetwork.h"
+#include "KviIrcNetwork.h"
 #include "KviIrcServer.h"
 #include "KviNickServRuleSet.h"
 
-KviNetwork::KviNetwork(const KviNetwork &src)
+KviIrcNetwork::KviIrcNetwork(const KviIrcNetwork &src)
 {
 	m_pChannelList = 0;
 	m_pNickServRuleSet = 0;
-	m_pServerList = new KviPointerList<KviServer>;
+	m_pServerList = new KviPointerList<KviIrcServer>;
 	m_pServerList->setAutoDelete(true);
 	copyFrom(src);
 }
 
-KviNetwork::KviNetwork(const QString &name)
+KviIrcNetwork::KviIrcNetwork(const QString &name)
 {
 	m_szName = name;
 	m_pChannelList = 0;
 	m_pNickServRuleSet = 0;
 	m_bAutoConnect = false;
-	m_pServerList = new KviPointerList<KviServer>;
+	m_pServerList = new KviPointerList<KviIrcServer>;
 	m_pServerList->setAutoDelete(true);
 	m_pCurrentServer = 0;
 }
 
-KviNetwork::~KviNetwork()
+KviIrcNetwork::~KviIrcNetwork()
 {
 	if(m_pChannelList)delete m_pChannelList;
 	if(m_pNickServRuleSet)delete m_pNickServRuleSet;
 	delete m_pServerList;
 }
 
-void KviNetwork::setAutoJoinChannelList(QStringList * pNewChannelList)
+void KviIrcNetwork::setAutoJoinChannelList(QStringList * pNewChannelList)
 {
 	if(m_pChannelList)delete m_pChannelList;
 	m_pChannelList = pNewChannelList;
 }
 
-void KviNetwork::setAutoJoinChannelList(const QString & szNewChannelList)
+void KviIrcNetwork::setAutoJoinChannelList(const QString & szNewChannelList)
 {
 	if(m_pChannelList)
 		delete m_pChannelList;
@@ -70,13 +70,13 @@ void KviNetwork::setAutoJoinChannelList(const QString & szNewChannelList)
 		m_pChannelList = new QStringList(lChans);
 }
 
-void KviNetwork::setNickServRuleSet(KviNickServRuleSet * s)
+void KviIrcNetwork::setNickServRuleSet(KviNickServRuleSet * s)
 {
 	if(m_pNickServRuleSet)delete m_pNickServRuleSet;
 	m_pNickServRuleSet = s;
 }
 
-void KviNetwork::copyFrom(const KviNetwork &src)
+void KviIrcNetwork::copyFrom(const KviIrcNetwork &src)
 {
 	m_szName = src.m_szName;
 	m_szEncoding = src.m_szEncoding;
@@ -97,24 +97,24 @@ void KviNetwork::copyFrom(const KviNetwork &src)
 	if(src.m_pNickServRuleSet)m_pNickServRuleSet = new KviNickServRuleSet(*(src.m_pNickServRuleSet));
 	else m_pNickServRuleSet = 0;
 /*
-	// We don't copy the server list, since this function is called in KviServerOptionsWidget::commit()
+	// We don't copy the server list, since this function is called in KviIrcServerOptionsWidget::commit()
 	// to recreate the server list from scratch; copying the original servers will mean duplicate servers
 	// (see bug ticket #300)
-	for (KviServer *s = src.m_pServerList->first(); s; s = src.m_pServerList->next())
+	for (KviIrcServer *s = src.m_pServerList->first(); s; s = src.m_pServerList->next())
 	{
-		m_pServerList->append(new KviServer(*s));
+		m_pServerList->append(new KviIrcServer(*s));
 	}
 */
 }
 
-void KviNetwork::insertServer(KviServer *srv)
+void KviIrcNetwork::insertServer(KviIrcServer *srv)
 {
 	m_pServerList->append(srv);
 }
 
-KviServer * KviNetwork::findServer(const QString & szHostname)
+KviIrcServer * KviIrcNetwork::findServer(const QString & szHostname)
 {
-	for (KviServer *s = m_pServerList->first(); s; s = m_pServerList->next())
+	for (KviIrcServer *s = m_pServerList->first(); s; s = m_pServerList->next())
 	{
 		if (KviQString::equalCI(s->m_szHostname, szHostname))
 			return s;
@@ -122,9 +122,9 @@ KviServer * KviNetwork::findServer(const QString & szHostname)
 	return 0;
 }
 
-KviServer * KviNetwork::findServer(const KviServer * pServer)
+KviIrcServer * KviIrcNetwork::findServer(const KviIrcServer * pServer)
 {
-	for (KviServer *s = m_pServerList->first(); s; s = m_pServerList->next())
+	for (KviIrcServer *s = m_pServerList->first(); s; s = m_pServerList->next())
 	{
 		// we better go with the unique id first
 		if(!s->m_szId.isEmpty())
@@ -144,12 +144,12 @@ KviServer * KviNetwork::findServer(const KviServer * pServer)
 	return 0;
 }
 
-void KviNetwork::setCurrentServer(KviServer *srv)
+void KviIrcNetwork::setCurrentServer(KviIrcServer *srv)
 {
 	if(m_pServerList->findRef(srv) != -1)m_pCurrentServer = srv;
 }
 
-KviServer * KviNetwork::currentServer()
+KviIrcServer * KviIrcNetwork::currentServer()
 {
 	if(m_pCurrentServer)return m_pCurrentServer;
 	m_pCurrentServer = m_pServerList->first();

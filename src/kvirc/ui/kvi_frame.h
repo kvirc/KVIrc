@@ -80,7 +80,7 @@ class KVIRC_API KviFrame : public KviTalMainWindow //, public KviIrcContextManag
 	friend class KviWindow;
 	friend class KviConsole;
 	friend class KviApp;
-	friend class KviServerParser;
+	friend class KviIrcServerParser;
 	friend class KviMexToolBar;
 	friend class KviMdiManager;
 	friend class KviIrcContext;

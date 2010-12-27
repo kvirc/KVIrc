@@ -31,7 +31,7 @@
 #include "KviQString.h"
 #include "KviParameterList.h"
 #include "KviCommandFormatter.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_out.h"
 #include "kvi_iconmanager.h"
 #include "KviMircCntrl.h"

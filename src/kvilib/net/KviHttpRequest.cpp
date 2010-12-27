@@ -32,7 +32,7 @@
 #include "KviLocale.h"
 #include "KviNetUtils.h"
 #include "KviDnsResolver.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_debug.h"
 #include "kvi_socket.h"
 #include "KviTimeUtils.h"

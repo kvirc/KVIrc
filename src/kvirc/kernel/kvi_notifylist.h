@@ -43,7 +43,7 @@ class KVIRC_API KviNotifyListManager : public QObject
 {
 	friend class KviConsole;
 	friend class KviConnectionInfo;
-	friend class KviServerParser;
+	friend class KviIrcServerParser;
 	friend class KviIrcConnection;
 	Q_OBJECT
 protected:
@@ -67,7 +67,7 @@ public:
 class KVIRC_API KviIsOnNotifyListManager : public KviNotifyListManager
 {
 	friend class KviConsole;
-	friend class KviServerParser;
+	friend class KviIrcServerParser;
 	friend class KviIrcConnection;
 	Q_OBJECT
 protected:
@@ -115,7 +115,7 @@ private slots:
 class KVIRC_API KviStupidNotifyListManager : public KviNotifyListManager
 {
 	friend class KviConsole;
-	friend class KviServerParser;
+	friend class KviIrcServerParser;
 	friend class KviIrcConnection;
 	Q_OBJECT
 protected:
@@ -140,7 +140,7 @@ private:
 class KVIRC_API KviWatchNotifyListManager : public KviNotifyListManager
 {
 	friend class KviConsole;
-	friend class KviServerParser;
+	friend class KviIrcServerParser;
 	friend class KviIrcConnection;
 	Q_OBJECT
 public:

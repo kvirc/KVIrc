@@ -23,7 +23,7 @@
 //=============================================================================
 
 #include "KviDnsResolver.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviNetUtils.h"
 
 #include <errno.h>

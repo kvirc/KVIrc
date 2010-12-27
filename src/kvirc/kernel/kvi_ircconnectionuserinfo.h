@@ -31,7 +31,7 @@
 class KVIRC_API KviIrcConnectionUserInfo
 {
 	friend class KviIrcConnection;
-	friend class KviServerParser;
+	friend class KviIrcServerParser;
 	friend class KviConsole;
 protected:
 	KviIrcConnectionUserInfo();

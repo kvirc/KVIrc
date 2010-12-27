@@ -105,18 +105,11 @@ public:
 */
 namespace KviTimeUtils
 {
-	/** \enum FormatTimeSpanFlags */
-	enum FormatTimeSpanFlags {
-		NoLeadingEmptyIntervals = 1,    /**< Causes the leading empty intervals to be omitted */
-		NoLeadingZeroes = 2,            /**< No leading zeroes are printed in hours and seconds */
-		FillWithHypens = 4              /**< Uses only -- %d -- %h -- etc.. discards all other flags */
-	};
-
 	/**
 	* \brief Returns the current time mills
 	* \return long long
 	*/
-	long long getCurrentTimeMills();
+	KVILIB_API long long getCurrentTimeMills();
 
 	/**
 	* \brief Splits the time span uSecs in days, hours, minutes and seconds
@@ -129,6 +122,14 @@ namespace KviTimeUtils
 	*/
 	KVILIB_API void secondsToDaysHoursMinsSecs(unsigned int uSecs,
 		unsigned int * uD, unsigned int * uH, unsigned int * uM, unsigned int * uS);
+
+	/** \enum FormatTimeSpanFlags */
+	enum FormatTimeSpanFlags
+	{
+		NoLeadingEmptyIntervals = 1,    /**< Causes the leading empty intervals to be omitted */
+		NoLeadingZeroes = 2,            /**< No leading zeroes are printed in hours and seconds */
+		FillWithHypens = 4              /**< Uses only -- %d -- %h -- etc.. discards all other flags */
+	};
 
 	/**
 	* \brief Returns a string formatted like x d x h xx m xx s

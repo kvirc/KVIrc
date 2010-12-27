@@ -36,7 +36,7 @@
 #include <QObject>
 
 class KviConsole;
-class KviServer;
+class KviIrcServer;
 class KviProxy;
 class KviIrcSocket;
 class KviDnsResolver;

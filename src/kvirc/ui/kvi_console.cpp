@@ -34,7 +34,7 @@
 #include "kvi_ircview.h"
 #include "KviMircCntrl.h"
 #include "kvi_input.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviProxyDataBase.h"
 #include "KviNetUtils.h"
 #include "KviIrcServer.h"
@@ -89,7 +89,7 @@
 #define __KVI_DEBUG__
 #include "kvi_debug.h"
 
-extern KVIRC_API KviServerDataBase           * g_pServerDataBase;
+extern KVIRC_API KviIrcServerDataBase           * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
 
 KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
@@ -431,7 +431,7 @@ void KviConsole::updateUri()
 	QString uri;
 	if(connection())
 	{
-		KviServer* server = connection()->target()->server();
+		KviIrcServer* server = connection()->target()->server();
 		if(server)
 		{
 			KviIrcUrl::join(uri,server);

@@ -41,8 +41,8 @@
 class QTimer;
 class QTextCodec;
 class KviConsole;
-class KviNetworkData;
-class KviServer;
+class KviIrcNetworkData;
+class KviIrcServer;
 class KviProxy;
 class KviIrcSocket;
 class KviIrcLink;
@@ -95,7 +95,7 @@ class KVIRC_API KviIrcConnection : public QObject
 	friend class KviConsole;
 	friend class KviIrcContext;
 	friend class KviIrcLink;
-	friend class KviServerParser;
+	friend class KviIrcServerParser;
 	Q_OBJECT
 protected:
 	/**
@@ -723,7 +723,7 @@ protected:
 	void loginToIrcServer();
 
 	//
-	// KviServerParser interface
+	// KviIrcServerParser interface
 	//
 
 	/**

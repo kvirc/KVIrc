@@ -278,7 +278,7 @@ namespace KviKvsCoreSimpleCommands
 				d->szNick = szNick;
 				d->szLinkFilter = szSocketFilter;
 
-				d->m_pReconnectInfo = new KviServerReconnectInfo();
+				d->m_pReconnectInfo = new KviIrcServerReconnectInfo();
 				d->m_pReconnectInfo->m_szNick = szNick;
 				d->m_pReconnectInfo->m_szPass = szPassword;
 				
@@ -304,7 +304,7 @@ namespace KviKvsCoreSimpleCommands
 			d->szPass = szPassword;
 			d->szNick = szNick;
 			
-			d->m_pReconnectInfo = new KviServerReconnectInfo();
+			d->m_pReconnectInfo = new KviIrcServerReconnectInfo();
 			d->m_pReconnectInfo->m_szNick = szNick;
 			d->m_pReconnectInfo->m_szPass = szPassword;
 

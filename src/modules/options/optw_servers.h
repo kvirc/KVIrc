@@ -39,33 +39,33 @@ class QLineEdit;
 class QComboBox;
 class QPushButton;
 class KviIpEditor;
-class KviServer;
+class KviIrcServer;
 class KviTalPopupMenu;
 class KviScriptEditor;
 class KviNickServRule;
 class KviNickServRuleEditor;
-class KviServer;
-class KviNetwork;
-class KviNetworkData;
+class KviIrcServer;
+class KviIrcNetwork;
+class KviIrcNetworkData;
 class KviMexServerImport;
 
 
-class KviServerOptionsTreeWidgetItem : public QTreeWidgetItem
+class KviIrcServerOptionsTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviServerOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,const KviNetwork *n);
-	KviServerOptionsTreeWidgetItem(QTreeWidgetItem *parent,const QPixmap &pm,const KviServer *s);
-	~KviServerOptionsTreeWidgetItem();
+	KviIrcServerOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,const KviIrcNetwork *n);
+	KviIrcServerOptionsTreeWidgetItem(QTreeWidgetItem *parent,const QPixmap &pm,const KviIrcServer *s);
+	~KviIrcServerOptionsTreeWidgetItem();
 public:
-	KviServer * m_pServerData;
-	KviNetwork * m_pNetworkData;
+	KviIrcServer * m_pServerData;
+	KviIrcNetwork * m_pNetworkData;
 public:
-	KviServer * serverData() const
+	KviIrcServer * serverData() const
 	{
 		return m_pServerData;
 	}
 	
-	KviNetwork * networkData() const
+	KviIrcNetwork * networkData() const
 	{
 		return m_pNetworkData;
 	}
@@ -74,12 +74,12 @@ public:
 };
 
 
-class KviNetworkDetailsWidget : public QDialog
+class KviIrcNetworkDetailsWidget : public QDialog
 {
 	Q_OBJECT
 public:
-	KviNetworkDetailsWidget(QWidget * par,KviNetwork * d);
-	~KviNetworkDetailsWidget();
+	KviIrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * d);
+	~KviIrcNetworkDetailsWidget();
 protected:
 	KviScriptEditor       * m_pOnConnectEditor;
 	KviScriptEditor       * m_pOnLoginEditor;
@@ -104,7 +104,7 @@ protected:
 	QStringList             m_lstChannels;
 	KviChannelListSelector * m_pChannelListSelector;
 public:
-	void fillData(KviNetwork * d);
+	void fillData(KviIrcNetwork * d);
 protected slots:
 	void enableDisableNickServControls();
 	void addNickServRule();
@@ -112,12 +112,12 @@ protected slots:
 	void editNickServRule();
 };
 
-class KviServerDetailsWidget : public QDialog
+class KviIrcServerDetailsWidget : public QDialog
 {
 	Q_OBJECT
 public:
-	KviServerDetailsWidget(QWidget * par,KviServer * s);
-	~KviServerDetailsWidget();
+	KviIrcServerDetailsWidget(QWidget * par,KviIrcServer * s);
+	~KviIrcServerDetailsWidget();
 protected:
 	QString                 m_szHostname;
 	QLabel                * m_pHeaderLabel;
@@ -157,22 +157,22 @@ protected slots:
 	void useIPV6CheckToggled(bool);
 public:
 	void setHeaderLabelText();
-	void fillData(KviServer *s);
+	void fillData(KviIrcServer *s);
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviServerOptionsWidget KVI_SMALLICON_SERVER
-#define KVI_OPTIONS_WIDGET_NAME_KviServerOptionsWidget __tr2qs_no_lookup("Servers")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviServerOptionsWidget __tr2qs_no_lookup("connection")
-//#define KVI_OPTIONS_WIDGET_NOPARENT_KviServerOptionsWidget KviConnectionOptionsWidget
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviServerOptionsWidget 99000
+#define KVI_OPTIONS_WIDGET_ICON_KviIrcServerOptionsWidget KVI_SMALLICON_SERVER
+#define KVI_OPTIONS_WIDGET_NAME_KviIrcServerOptionsWidget __tr2qs_no_lookup("Servers")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcServerOptionsWidget __tr2qs_no_lookup("connection")
+//#define KVI_OPTIONS_WIDGET_NOPARENT_KviIrcServerOptionsWidget KviConnectionOptionsWidget
+#define KVI_OPTIONS_WIDGET_PRIORITY_KviIrcServerOptionsWidget 99000
 
-class KviServerOptionsWidget : public KviOptionsWidget
+class KviIrcServerOptionsWidget : public KviOptionsWidget
 {
 	Q_OBJECT
 public:
-	KviServerOptionsWidget(QWidget * parent);
-	~KviServerOptionsWidget();
+	KviIrcServerOptionsWidget(QWidget * parent);
+	~KviIrcServerOptionsWidget();
 protected:
 	QTreeWidget                  * m_pTreeWidget;
 	QLabel                       * m_pSrvNetLabel;
@@ -183,13 +183,13 @@ protected:
 	KviTalPopupMenu              * m_pRecentPopup;
 	KviTalPopupMenu              * m_pContextPopup;
 	KviTalPopupMenu              * m_pImportPopup;
-	KviServer                    * m_pClipboard;
+	KviIrcServer                    * m_pClipboard;
 	//QCheckBox                  * m_pIPv6Check;
 	QPushButton                  * m_pConnectCurrent;
 	QPushButton                  * m_pConnectNew;
-	KviServerOptionsTreeWidgetItem * m_pLastEditedItem;
-	KviServerDetailsWidget       * m_pServerDetailsDialog;
-	KviNetworkDetailsWidget      * m_pNetworkDetailsDialog;
+	KviIrcServerOptionsTreeWidgetItem * m_pLastEditedItem;
+	KviIrcServerDetailsWidget       * m_pServerDetailsDialog;
+	KviIrcNetworkDetailsWidget      * m_pNetworkDetailsDialog;
 	KviMexServerImport           * m_pImportFilter;
 
 	QToolButton                  * m_pNewServerButton;
@@ -201,11 +201,11 @@ protected:
 private:
 	void fillServerList();
 	void saveLastItem();
-	KviServerOptionsTreeWidgetItem * findNetItem(const QString &netname);
+	KviIrcServerOptionsTreeWidgetItem * findNetItem(const QString &netname);
 	void selectBestServerByUrl(const QString &szUrl);
 protected slots:
 	void importerDead();
-	void importServer(const KviServer & s,const QString &network);
+	void importServer(const KviIrcServer & s,const QString &network);
 	void importPopupAboutToShow();
 	void currentItemChanged(QTreeWidgetItem *cur,QTreeWidgetItem *prev);
 	void customContextMenuRequested(const QPoint &pnt);

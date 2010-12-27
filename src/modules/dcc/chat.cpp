@@ -37,7 +37,7 @@
 #include "kvi_ircview.h"
 #include "kvi_iconmanager.h"
 #include "KviLocale.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_out.h"
 #include "KviNetUtils.h"
 #include "kvi_console.h"

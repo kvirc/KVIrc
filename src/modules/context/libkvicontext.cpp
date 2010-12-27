@@ -32,7 +32,7 @@
 #include "kvi_console.h"
 #include "kvi_app.h"
 #include "KviIrcServer.h"
-#include "KviNetwork.h"
+#include "KviIrcNetwork.h"
 #include "kvi_irccontext.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionserverinfo.h"

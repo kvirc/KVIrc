@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "KviNetUtils.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_options.h"
 #include "KviLocale.h"
 #include "KviMemory.h"

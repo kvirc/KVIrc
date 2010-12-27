@@ -36,7 +36,7 @@
 #include "kvi_ircview.h"
 #include "kvi_iconmanager.h"
 #include "KviLocale.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_out.h"
 #include "KviNetUtils.h"
 #include "kvi_console.h"
@@ -1100,7 +1100,7 @@ void KviDccFileTransfer::startConnection()
 	if(m_pDescriptor->bResume && m_pDescriptor->bRecvFile)
 	{
 		QString fName;
-		KviServerParser::encodeCtcpParameter(m_pDescriptor->szFileName.toUtf8().data(),fName);
+		KviIrcServerParser::encodeCtcpParameter(m_pDescriptor->szFileName.toUtf8().data(),fName);
 		if(m_pDescriptor->isZeroPortRequest())
 		{
 		m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC RESUME %s %s %s %s%c",
@@ -1808,7 +1808,7 @@ void KviDccFileTransfer::connectionInProgress()
 		if(KVI_OPTION_BOOL(KviOption_boolDCCFileTransferReplaceOutgoingSpacesWithUnderscores))
 			tmp.replace(" ","_");
 
-		KviServerParser::encodeCtcpParameter(tmp.toUtf8().data(),fName);
+		KviIrcServerParser::encodeCtcpParameter(tmp.toUtf8().data(),fName);
 		// Zero port requests want DCC SEND as back-request
 		KviCString szReq;
 
@@ -2143,7 +2143,7 @@ bool KviDccFileTransfer::doResume(const char * filename,const char * port,quint6
 	m_pDescriptor->szFileSize.setNum(filePos);
 
 	KviCString szBuffy;
-	KviServerParser::encodeCtcpParameter(filename,szBuffy);
+	KviIrcServerParser::encodeCtcpParameter(filename,szBuffy);
 
 	m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC ACCEPT %s %s %u%c",
 			m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),

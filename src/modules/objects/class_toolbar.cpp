@@ -24,7 +24,7 @@
 //=============================================================================
 
 #include "class_toolbar.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_debug.h"
 #include "KviTalToolBar.h"
 #include "KviTalMainWindow.h"

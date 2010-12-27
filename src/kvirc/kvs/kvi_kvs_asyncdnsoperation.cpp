@@ -31,7 +31,7 @@
 #include "kvi_app.h"
 #include "kvi_out.h"
 #include "KviLocale.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_kvs_variantlist.h"
 
 #include <QTimer>

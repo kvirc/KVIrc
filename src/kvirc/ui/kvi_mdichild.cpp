@@ -42,7 +42,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_irccontext.h"
-#include "KviNetwork.h"
+#include "KviIrcNetwork.h"
 #include "kvi_kvs_eventtriggers.h"
 
 #ifdef COMPILE_ON_MAC

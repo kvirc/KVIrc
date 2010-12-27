@@ -28,7 +28,7 @@
 #include "KviLocale.h"
 #include "kvi_module.h"
 #include "kvi_modulemanager.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_app.h"
 #include "kvi_iconmanager.h"
 #include "kvi_console.h"

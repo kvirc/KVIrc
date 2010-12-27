@@ -43,7 +43,7 @@
 #include "kvi_kvs_script.h"
 #include "KviTimeUtils.h"
 #include "KviQString.h"
-#include "kvi_buildinfo.h"
+#include "KviBuildInfo.h"
 #include "kvi_settings.h"
 #include "KviMiscUtils.h"
 #include "KviHttpRequest.h"

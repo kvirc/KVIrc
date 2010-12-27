@@ -53,7 +53,7 @@ static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
 	"openurl http://www.kvirc.net",
 	"list.open",
 	"if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open",
-	"if($option(boolShowServersConnectDialogAsToplevel))options.edit -t KviServerOptionsWidget;else options.edit KviServerOptionsWidget",
+	"if($option(boolShowServersConnectDialogAsToplevel))options.edit -t KviIrcServerOptionsWidget;else options.edit KviIrcServerOptionsWidget",
 	"url.list",
 	"openurl http://www.kvirc.net/?id=themes",
 	"openurl http://www.kvirc.net/?id=mailinglist",

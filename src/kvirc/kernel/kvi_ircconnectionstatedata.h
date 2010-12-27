@@ -40,7 +40,7 @@
 class KVIRC_API KviIrcConnectionStateData
 {
 	friend class KviIrcConnection;
-	friend class KviServerParser;
+	friend class KviIrcServerParser;
 	friend class KviUserParser;
 public:
 	KviIrcConnectionStateData();

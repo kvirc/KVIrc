@@ -380,7 +380,7 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 			szTmp.replace(" ","_");
 
 		// escape the spaces with the right octal code
-		KviServerParser::encodeCtcpParameter(szTmp.toUtf8().data(),avatar);
+		KviIrcServerParser::encodeCtcpParameter(szTmp.toUtf8().data(),avatar);
 	}
 
 	KviSharedFile * o = 0;

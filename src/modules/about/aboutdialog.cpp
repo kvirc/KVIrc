@@ -30,7 +30,7 @@
 #include "kvi_app.h"
 #include "KviFileUtils.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_buildinfo.h"
+#include "KviBuildInfo.h"
 #include "KviOsInfo.h"
 
 #include <QTextEdit>

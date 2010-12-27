@@ -381,9 +381,9 @@ KviOptionsWidget * classKviQueryOptionsWidget_createInstanceProc(QWidget * paren
 	return new KviQueryOptionsWidget(parent);
 }
 
-KviOptionsWidget * classKviServerOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classKviIrcServerOptionsWidget_createInstanceProc(QWidget * parent)
 {
-	return new KviServerOptionsWidget(parent);
+	return new KviIrcServerOptionsWidget(parent);
 }
 
 KviOptionsWidget * classKviSoundOptionsWidget_createInstanceProc(QWidget * parent)
@@ -615,8 +615,8 @@ static const char * g_szName_KviProxyOptionsWidget = KVI_OPTIONS_WIDGET_NAME_Kvi
 static const char * g_szClassName_KviProxyOptionsWidget = "KviProxyOptionsWidget";
 static const char * g_szName_KviQueryOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviQueryOptionsWidget;
 static const char * g_szClassName_KviQueryOptionsWidget = "KviQueryOptionsWidget";
-static const char * g_szName_KviServerOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviServerOptionsWidget;
-static const char * g_szClassName_KviServerOptionsWidget = "KviServerOptionsWidget";
+static const char * g_szName_KviIrcServerOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIrcServerOptionsWidget;
+static const char * g_szClassName_KviIrcServerOptionsWidget = "KviIrcServerOptionsWidget";
 static const char * g_szName_KviSoundOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviSoundOptionsWidget;
 static const char * g_szClassName_KviSoundOptionsWidget = "KviSoundOptionsWidget";
 static const char * g_szName_KviSoundGeneralOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviSoundGeneralOptionsWidget;
@@ -3085,36 +3085,36 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->pChildList = 0;
 
 	e0 = new KviOptionsWidgetInstanceEntry;
-	e0->createProc = &classKviServerOptionsWidget_createInstanceProc;
+	e0->createProc = &classKviIrcServerOptionsWidget_createInstanceProc;
 	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviServerOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviServerOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviServerOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviServerOptionsWidget;
+	e0->szClassName = g_szClassName_KviIrcServerOptionsWidget;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIrcServerOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIrcServerOptionsWidget
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIrcServerOptionsWidget;
 	#else
 	e0->iPriority = 0;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviServerOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviServerOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcServerOptionsWidget
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcServerOptionsWidget;
 	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviServerOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviServerOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcServerOptionsWidget
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcServerOptionsWidget;
 	#else
 	e0->szGroup = "general";
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviServerOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviServerOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIrcServerOptionsWidget
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIrcServerOptionsWidget;
 	#else
 	e0->bIsContainer = false;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviServerOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviServerOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcServerOptionsWidget
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcServerOptionsWidget;
 	#else
 	e0->bIsNotContained = false;
 	#endif
-	e0->szNameNoLocale = g_szName_KviServerOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviServerOptionsWidget,"options");
+	e0->szNameNoLocale = g_szName_KviIrcServerOptionsWidget;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcServerOptionsWidget,"options");
 	m_pInstanceTree->append(e0);
 	e0->pChildList = 0;
 

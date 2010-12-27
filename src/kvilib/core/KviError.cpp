@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : kvi_error.cpp
+//   File : KviError.cpp
 //   Creation date : Sun Jul 02 2000 18:37:02 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
@@ -26,7 +26,7 @@
 #define _KVI_ERROR_CPP_
 
 #include "KviLocale.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "kvi_settings.h"
 
 

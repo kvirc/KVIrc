@@ -59,7 +59,7 @@
 #include "kvi_lagmeter.h"
 #include "KviIrcServer.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "KviNetwork.h"
+#include "KviIrcNetwork.h"
 #include "kvi_settings.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -83,7 +83,7 @@ extern KviNickServRuleSet * g_pNickServRuleSet;
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void KviServerParser::parseLiteralPing(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralPing(KviIrcMessage *msg)
 {
 	// PING
 	// <optional_prefix> PING :<argument>
@@ -108,7 +108,7 @@ void KviServerParser::parseLiteralPing(KviIrcMessage *msg)
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void KviServerParser::parseLiteralPong(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralPong(KviIrcMessage *msg)
 {
 	QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
 	QString szAllParams = msg->connection()->decodeText(msg->allParams());
@@ -136,7 +136,7 @@ void KviServerParser::parseLiteralPong(KviIrcMessage *msg)
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void KviServerParser::parseLiteralError(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralError(KviIrcMessage *msg)
 {
 	// ERROR
 	// <optional_prefix> ERROR :<argument>
@@ -161,7 +161,7 @@ void KviServerParser::parseLiteralError(KviIrcMessage *msg)
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void KviServerParser::parseLiteralJoin(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralJoin(KviIrcMessage *msg)
 {
 	// JOIN
 	// :<joiner_mask> JOIN :<channel>
@@ -302,7 +302,7 @@ void KviServerParser::parseLiteralJoin(KviIrcMessage *msg)
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void KviServerParser::parseLiteralPart(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralPart(KviIrcMessage *msg)
 {
 	// PART
 	// :<source_mask> PART <channel> :<part message>
@@ -401,7 +401,7 @@ void KviServerParser::parseLiteralPart(KviIrcMessage *msg)
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void KviServerParser::parseLiteralQuit(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralQuit(KviIrcMessage *msg)
 {
 	// QUIT
 	// :<source_mask> QUIT :<quit message>
@@ -543,7 +543,7 @@ void KviServerParser::parseLiteralQuit(KviIrcMessage *msg)
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void KviServerParser::parseLiteralKick(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralKick(KviIrcMessage *msg)
 {
 	// KICK
 	// :<source_mask> KICK <channel> <nick> :<kick message>
@@ -701,7 +701,7 @@ enum PrivmsgIdentifyMsgCapState
 };
 
 
-void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 {
 	// PRIVMSG
 	// :source PRIVMSG <target> :<message>
@@ -1063,7 +1063,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 }
 
 
-void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 {
 	// NOTICE
 	// :source NOTICE <target> :<message>
@@ -1407,7 +1407,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void KviServerParser::parseLiteralTopic(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralTopic(KviIrcMessage *msg)
 {
 	// TOPIC
 	// :<source_mask> TOPIC <channel> :<topic>
@@ -1458,7 +1458,7 @@ void KviServerParser::parseLiteralTopic(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseLiteralNick(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralNick(KviIrcMessage *msg)
 {
 	// NICK
 	// :source NICK <newnick>
@@ -1578,7 +1578,7 @@ void KviServerParser::parseLiteralNick(KviIrcMessage *msg)
 // FIXME: #warning "UPDATE ALL THE OTHER CONNECTION RELATED WINDOW CAPTIONS WHEN bIsMe!!"
 }
 
-void KviServerParser::parseLiteralInvite(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralInvite(KviIrcMessage *msg)
 {
 	// INVITE
 	// :source INVITE <target> <channel>
@@ -1625,7 +1625,7 @@ void KviServerParser::parseLiteralInvite(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseLiteralWallops(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralWallops(KviIrcMessage *msg)
 {
 	// WALLOPS
 	// :source WALLOPS :msg
@@ -1646,7 +1646,7 @@ void KviServerParser::parseLiteralWallops(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseUserMode(KviIrcMessage *msg,const char * modeflptr)
+void KviIrcServerParser::parseUserMode(KviIrcMessage *msg,const char * modeflptr)
 {
 	// changed my user mode
 	bool bSet = true;
@@ -1682,7 +1682,7 @@ void KviServerParser::parseUserMode(KviIrcMessage *msg,const char * modeflptr)
 
 
 
-void KviServerParser::parseLiteralMode(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralMode(KviIrcMessage *msg)
 {
 	// MODE
 	// :source MODE target <params>
@@ -1721,7 +1721,7 @@ void KviServerParser::parseLiteralMode(KviIrcMessage *msg)
 	}
 }
 
-void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUser,const QString &szHost,KviChannel * chan,KviCString &modefl,KviIrcMessage *msg,int curParam)
+void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &szUser,const QString &szHost,KviChannel * chan,KviCString &modefl,KviIrcMessage *msg,int curParam)
 {
 	bool bSet = true;
 	// bIsMultiMode: +snt
@@ -2136,7 +2136,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 	}
 }
 
-void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralCap(KviIrcMessage *msg)
 {
 	// CAP
 	// CAP LS
@@ -2235,7 +2235,7 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 		msg->console()->output(KVI_OUT_CAP,__tr2qs("Received unknown extended capability message: %Q %Q"),&szCmd,&szProtocols);
 }
 
-void KviServerParser::parseLiteralAuthenticate(KviIrcMessage *msg)
+void KviIrcServerParser::parseLiteralAuthenticate(KviIrcMessage *msg)
 {
 	// :AUTHENTICATE +
 	KviCString szAuth(msg->safeParam(0));

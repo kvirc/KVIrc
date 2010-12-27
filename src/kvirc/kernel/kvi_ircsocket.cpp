@@ -28,7 +28,7 @@
 #include "KviProxyDataBase.h"
 #include "KviNetUtils.h"
 #include "kvi_settings.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviLocale.h"
 #include "KviMemory.h"
 #include "kvi_debug.h"
@@ -251,7 +251,7 @@ void KviIrcSocket::raiseError(int iError)
 		outputSocketError(KviError::getDescription(iError));
 }
 
-int KviIrcSocket::startConnection(KviServer * pServer, KviProxy * pProxy, const char * pcBindAddress)
+int KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * pProxy, const char * pcBindAddress)
 {
 	// Attempts to estabilish an IRC connection
 	// to the server specified by *srv.
@@ -270,7 +270,7 @@ int KviIrcSocket::startConnection(KviServer * pServer, KviProxy * pProxy, const 
 	}
 
 	// Copy the server
-	m_pIrcServer = new KviServer(*pServer);
+	m_pIrcServer = new KviIrcServer(*pServer);
 
 	bool bTargetIPv6 = false;
 	bool bNeedServerIp = !pProxy;

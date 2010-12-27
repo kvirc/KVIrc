@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : kvi_buildinfo.cpp
+//   File : KviBuildInfo.cpp
 //   Creation date : Sat 19 Apr 2008 17:01:57 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
@@ -23,7 +23,7 @@
 //
 //=============================================================================
 
-#include "kvi_buildinfo.h"
+#include "KviBuildInfo.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_sysbuildinfo.h"
 

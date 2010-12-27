@@ -24,7 +24,7 @@
 //=============================================================================
 
 
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviLocale.h"
 #include "kvi_debug.h"
 #include "class_list.h"

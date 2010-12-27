@@ -59,7 +59,7 @@ class KviConsole;
 class KviConfigurationFile;
 class KviRegisteredUser;
 class KviIrcConnection;
-class KviServerDataBase;
+class KviIrcServerDataBase;
 class QPixmap;
 class QTextCodec;
 class QDomElement;
@@ -377,7 +377,7 @@ signals:
 
 #ifndef _KVI_APP_CPP_
 	extern KVIRC_API KviApp * g_pApp;
-	extern KVIRC_API KviServerDataBase * g_pServerDataBase;
+	extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 #endif
 
 #endif //_KVI_APP_H_

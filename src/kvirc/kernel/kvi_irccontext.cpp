@@ -45,7 +45,7 @@
 #include "kvi_options.h"
 #include "KviLocale.h"
 #include "kvi_ircdatastreammonitor.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviThread.h" // for KviThread::msleep()
 #include "kvi_app.h"
 #include "kvi_kvs_eventtriggers.h"
@@ -63,7 +63,7 @@
 // the irc context identifiers start from 1
 static unsigned int g_uNextIrcContextId = 1;
 
-extern KVIRC_API KviServerDataBase * g_pServerDataBase;
+extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 
@@ -435,7 +435,7 @@ void KviIrcContext::connectToCurrentServer()
 				m_pAsynchronousConnectionData->bUseSSL = m_pSavedAsynchronousConnectionData->bUseSSL;
 				m_pAsynchronousConnectionData->bSTARTTLS = m_pSavedAsynchronousConnectionData->bSTARTTLS;
 				if(m_pSavedAsynchronousConnectionData->m_pReconnectInfo)
-					m_pAsynchronousConnectionData->m_pReconnectInfo = new KviServerReconnectInfo(*(m_pSavedAsynchronousConnectionData->m_pReconnectInfo));
+					m_pAsynchronousConnectionData->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(m_pSavedAsynchronousConnectionData->m_pReconnectInfo));
 				else m_pAsynchronousConnectionData->m_pReconnectInfo = 0;
 
 				// and the other info, only if not overridden by the user
@@ -458,7 +458,7 @@ void KviIrcContext::connectToCurrentServer()
 			// !m_pAsynchronousConnectionData->szServer.isEmpty()
 			// ok, have a server to look for in the db
 			// FIXME: this is a bit ugly... could it be managed in some completly different and nicer way ?
-			KviServerDefinition d;
+			KviIrcServerDefinition d;
 			d.szServer = m_pAsynchronousConnectionData->szServer;
 			d.bPortIsValid = m_pAsynchronousConnectionData->bPortIsOk;
 			d.uPort = m_pAsynchronousConnectionData->uPort;
@@ -480,15 +480,15 @@ void KviIrcContext::connectToCurrentServer()
 		} // else we just connect to the globally selected irc server in the options dialog
 	}
 
-	KviNetwork * net = g_pServerDataBase->currentNetwork();
-	KviServer  * srv = net ? net->currentServer() : 0;
+	KviIrcNetwork * net = g_pServerDataBase->currentNetwork();
+	KviIrcServer  * srv = net ? net->currentServer() : 0;
 
 	KviProxy   * prx = 0;
 
 	if(!srv)
 	{
 		if(g_pServerDataBase->networkCount())
-			KviKvsScript::run("options.edit KviServerOptionsWidget",m_pConsole);
+			KviKvsScript::run("options.edit KviIrcServerOptionsWidget",m_pConsole);
 		else
 			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("No servers available. Check the options dialog or use the /SERVER command"));
 		destroyAsynchronousConnectionData();
@@ -522,7 +522,7 @@ void KviIrcContext::connectToCurrentServer()
 	{
 		szBindAddress = m_pAsynchronousConnectionData->szBindAddress;
 		if(m_pAsynchronousConnectionData->m_pReconnectInfo)
-			srv->m_pReconnectInfo = new KviServerReconnectInfo(*(m_pAsynchronousConnectionData->m_pReconnectInfo));
+			srv->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(m_pAsynchronousConnectionData->m_pReconnectInfo));
 	}
 
 	// Find out the identity we'll be using in this connection
@@ -581,7 +581,7 @@ void KviIrcContext::connectToCurrentServer()
 	m_pSavedAsynchronousConnectionData->szServerId = srv->id();
 	m_pSavedAsynchronousConnectionData->szInitUMode = srv->m_szInitUMode;
 	if(srv->m_pReconnectInfo)
-		m_pSavedAsynchronousConnectionData->m_pReconnectInfo = new KviServerReconnectInfo(*(srv->m_pReconnectInfo));
+		m_pSavedAsynchronousConnectionData->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(srv->m_pReconnectInfo));
 	else m_pSavedAsynchronousConnectionData->m_pReconnectInfo = 0;
 
 	// this never fails!
@@ -623,7 +623,7 @@ void KviIrcContext::connectionFailed(int iError)
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,tmp);
 			}
 
-			KviServer oldServer(*(connection()->target()->server()));
+			KviIrcServer oldServer(*(connection()->target()->server()));
 			QString oldNickname = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
 
 			KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
@@ -701,22 +701,22 @@ void KviIrcContext::connectionEstabilished()
 
 	// save the last server this console used
 	//if(m_pLastIrcServer)delete m_pLastIrcServer;
-	//m_pLastIrcServer = new KviServer(*(connection()->server()));
+	//m_pLastIrcServer = new KviIrcServer(*(connection()->server()));
 }
 
 void KviIrcContext::connectionTerminated()
 {
 	if(!m_pConnection)return; // this may happen in the destructor!
 
-	KviServer oldServer(*(connection()->target()->server()));
+	KviIrcServer oldServer(*(connection()->target()->server()));
 	if(oldServer.m_pReconnectInfo)
 	{
-		KviServerReconnectInfo *pOldInfo = oldServer.m_pReconnectInfo;
+		KviIrcServerReconnectInfo *pOldInfo = oldServer.m_pReconnectInfo;
 		oldServer.m_pReconnectInfo = 0;
 		delete pOldInfo;
 	}
 
-	KviServerReconnectInfo info, *pInfo(&info);
+	KviIrcServerReconnectInfo info, *pInfo(&info);
 	pInfo->m_szNick = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
 	pInfo->m_szPass = connection()->userInfo()->password();
 	pInfo->m_bIsAway = connection()->userInfo()->isAway();
@@ -821,7 +821,7 @@ void KviIrcContext::connectionTerminated()
 		d->bSTARTTLS = oldServer.enabledSTARTTLS();
 		d->szPass = oldServer.password();
 		d->szInitUMode = oldServer.m_szInitUMode;
-		d->m_pReconnectInfo = new KviServerReconnectInfo(*(pInfo));
+		d->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(pInfo));
 		setAsynchronousConnectionData(d);
 
 		beginAsynchronousConnect(1000 * KVI_OPTION_UINT(KviOption_uintAutoReconnectDelay));

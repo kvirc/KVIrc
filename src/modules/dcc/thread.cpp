@@ -26,7 +26,7 @@
 
 #include "kvi_debug.h"
 #include "kvi_window.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviMemory.h"
 #include "KviMemory.h"
 #include "KviNetUtils.h"

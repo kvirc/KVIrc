@@ -26,18 +26,18 @@
 
 #include "kvi_ircconnectiontarget.h"
 #include "KviIrcServer.h"
-#include "KviNetwork.h"
+#include "KviIrcNetwork.h"
 #include "KviProxyDataBase.h"
 
 KviIrcConnectionTarget::KviIrcConnectionTarget(
-		const KviNetwork * pNetwork,
-		const KviServer * pServer,
+		const KviIrcNetwork * pNetwork,
+		const KviIrcServer * pServer,
 		const KviProxy * pProxy,
 		const QString &szBindAddress
 	)
 {
-	m_pNetwork = new KviNetwork(*pNetwork);
-	m_pServer = new KviServer(*pServer);
+	m_pNetwork = new KviIrcNetwork(*pNetwork);
+	m_pServer = new KviIrcServer(*pServer);
 	m_pProxy = pProxy ? new KviProxy(*pProxy) : NULL;
 	m_szBindAddress = szBindAddress;
 }

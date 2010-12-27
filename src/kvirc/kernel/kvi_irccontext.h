@@ -39,8 +39,8 @@ class KviIrcDataStreamMonitor;
 class KviWindow;
 class QTimer;
 class KviConsole;
-class KviNetwork;
-class KviServer;
+class KviIrcNetwork;
+class KviIrcServer;
 /*
 	KviIrcContext is the structure that groups the objects and resources
 	usable for a single irc connection: a console, a set of channels and queries,

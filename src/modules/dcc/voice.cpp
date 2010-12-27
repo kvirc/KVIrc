@@ -33,7 +33,7 @@
 #include "kvi_ircview.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviNetUtils.h"
 #include "kvi_options.h"
 #include "kvi_console.h"
@@ -52,7 +52,7 @@
 	#include <unistd.h>
 	#include <errno.h>
 	#include <fcntl.h>
-	//#include "kvi_error.h"
+	//#include "KviError.h"
 	#include <sys/stat.h>   // for open()
 	#include <sys/ioctl.h>  // for ioctl()
 #endif

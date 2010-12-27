@@ -25,9 +25,9 @@
 
 #include "kvi_sparser.h"
 
-#define PTM(__m) KVI_PTR2MEMBER(KviServerParser::__m)
+#define PTM(__m) KVI_PTR2MEMBER(KviIrcServerParser::__m)
 
-KviLiteralMessageParseStruct KviServerParser::m_literalParseProcTable[]=
+KviLiteralMessageParseStruct KviIrcServerParser::m_literalParseProcTable[]=
 {
 	{ "AUTHENTICATE" , PTM(parseLiteralAuthenticate) },
 	{ "CAP"          , PTM(parseLiteralCap)          },
@@ -49,7 +49,7 @@ KviLiteralMessageParseStruct KviServerParser::m_literalParseProcTable[]=
 };
 
 // FIXME: #warning "Merge these two tables into one"
-KviCtcpMessageParseStruct KviServerParser::m_ctcpRequestParseProcTable[]=
+KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpRequestParseProcTable[]=
 {
 	{ "ACTION"     , PTM(parseCtcpRequestAction)     , 0 },
 	{ "AVATAR"     , PTM(parseCtcpRequestAvatar)     , 0 },
@@ -67,7 +67,7 @@ KviCtcpMessageParseStruct KviServerParser::m_ctcpRequestParseProcTable[]=
 	{ 0            , 0                               , 0 }
 };
 
-KviCtcpMessageParseStruct KviServerParser::m_ctcpReplyParseProcTable[]=
+KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpReplyParseProcTable[]=
 {
 	{ "ACTION"     , PTM(parseCtcpRequestAction)     , 0 },
 	{ "AVATAR"     , PTM(parseCtcpReplyAvatar)       , 0 },
@@ -86,7 +86,7 @@ KviCtcpMessageParseStruct KviServerParser::m_ctcpReplyParseProcTable[]=
 	{ 0            , 0                               , 0 }
 };
 
-messageParseProc KviServerParser::m_numericParseProcTable[1000]=
+messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 {
 	0,                                               // 000
 	PTM(parseNumeric001)                           , // 001 RPL_WELCOME

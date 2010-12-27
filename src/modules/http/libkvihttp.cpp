@@ -30,7 +30,7 @@
 #include "KviLocale.h"
 #include "kvi_filedialog.h"
 #include "kvi_window.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "KviCommandFormatter.h"
 
 static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QString &szFileName,const QString &szCallback)

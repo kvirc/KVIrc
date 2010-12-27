@@ -131,7 +131,7 @@ DO NOT REMOVE THEM EVEN IF THEY ARE DEFINED ALSO IN kvi_app.h
 KVIRC_API KviApp                        * g_pApp                        = 0;
 
 KviConfigurationFile                               * g_pWinPropertiesConfig        = 0;
-KVIRC_API KviServerDataBase             * g_pServerDataBase             = 0;
+KVIRC_API KviIrcServerDataBase             * g_pServerDataBase             = 0;
 KVIRC_API KviProxyDataBase              * g_pProxyDataBase              = 0;
 
 // Global windows
@@ -363,7 +363,7 @@ void KviApp::setup()
 	KVI_SPLASH_SET_PROGRESS(50)
 
 	// Load the server database
-	g_pServerDataBase   = new KviServerDataBase();
+	g_pServerDataBase   = new KviIrcServerDataBase();
 	if(getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_SERVERDB))
 		g_pServerDataBase->load(szTmp);
 
@@ -497,7 +497,7 @@ void KviApp::setup()
 	g_pInputPopup = new KviTalPopupMenu();
 
 	// create the server parser
-	g_pServerParser = new KviServerParser();
+	g_pServerParser = new KviIrcServerParser();
 
 	KVI_SPLASH_SET_PROGRESS(91)
 
@@ -1495,10 +1495,10 @@ void KviApp::saveConfiguration()
 
 void KviApp::autoConnectToServers()
 {
-	KviPointerList<KviServer> * pList = g_pServerDataBase->autoConnectOnStartupServers();
+	KviPointerList<KviIrcServer> * pList = g_pServerDataBase->autoConnectOnStartupServers();
 	if(pList)
 	{
-		for(KviServer * pServer = pList->first(); pServer; pServer = pList->next())
+		for(KviIrcServer * pServer = pList->first(); pServer; pServer = pList->next())
 		{
 			QString szCommand = "server -u \"id:";
 			if(pServer->id().isEmpty())
@@ -1510,10 +1510,10 @@ void KviApp::autoConnectToServers()
 		g_pServerDataBase->clearAutoConnectOnStartupServers();
 	}
 
-	KviPointerList<KviNetwork> * pListNet = g_pServerDataBase->autoConnectOnStartupNetworks();
+	KviPointerList<KviIrcNetwork> * pListNet = g_pServerDataBase->autoConnectOnStartupNetworks();
 	if(pListNet)
 	{
-		for(KviNetwork * pNetwork = pListNet->first(); pNetwork; pNetwork = pListNet->next())
+		for(KviIrcNetwork * pNetwork = pListNet->first(); pNetwork; pNetwork = pListNet->next())
 		{
 			QString szCommandx = "server -u \"net:";
 			szCommandx += pNetwork->name();

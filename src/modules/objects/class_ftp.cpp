@@ -23,7 +23,7 @@
 //=============================================================================
 
 #include "kvi_debug.h"
-#include "kvi_error.h"
+#include "KviError.h"
 #include "class_ftp.h"
 #include "KviLocale.h"
 
