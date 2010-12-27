@@ -443,22 +443,10 @@ General notes for the installation of the 4.0 release of KVIrc
     -DWITHOUT_DOXYGEN
         Disables docs generation through Doxygen.
 
-    -DWITHOUT_SYSTEM_MEMMOVE
-        This will disable the use of the system memmove() memcpy() and
-        memset() functions and enable the bundled implementations. Use
-        it if you have undefined references to these functions while
-        compiling.
-
     -DWITHOUT_GSM
         Explicitly disable the usage of the GSM library. This will
         disable the DCC VOICE gsm codec but might help when the
         compilation stops complaining of something related to GSM. :)
-
-    -DWITH_ix86_ASM
-        KVIrc contains some ix86 assembly routines that *could* performs
-        some things faster (this is not always true, depends on the compiler).
-        You might want to try it if your KVIrc seems to be really slow...
-        Note: don't enable this on x86_64 or other platforms!
 
     -DWITH_IGNORE_SIGALARM
         Under Solaris, both usleep() and threads implementation are based on
