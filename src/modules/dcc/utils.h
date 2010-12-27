@@ -30,7 +30,7 @@
 #include "KviKvsModuleInterface.h"
 
 #ifndef _UTILS_CPP_
-	extern bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pConsole,QString &szListenIp);
+	extern bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsoleWindow * pConsole,QString &szListenIp);
 #endif
 
 #endif //_UTILS_H_

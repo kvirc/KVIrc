@@ -222,7 +222,7 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_PARAMETER("port",KVS_PT_UINT,KVS_PF_OPTIONAL,uPort)
 		KVSCSC_PARAMETERS_END
 
-		KviConsole * console = 0;
+		KviConsoleWindow * console = 0;
 		if(KVSCSC_pSwitches->find('n',"new-context"))console = KVSCSC_pWindow->frame()->createNewConsole();
 		else {
 			if(KVSCSC_pSwitches->find('u',"unused-context"))

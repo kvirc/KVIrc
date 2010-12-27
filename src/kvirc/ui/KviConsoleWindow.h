@@ -74,7 +74,7 @@ class KviWindowToolPageButton;
 #define KVI_CONSOLE_FLAG_FIRSTINFRAME 2
 
 
-class KVIRC_API KviConsole : public KviWindow
+class KVIRC_API KviConsoleWindow : public KviWindow
 {
 	friend class KviMainWindow;
 	friend class KviIrcSocket;
@@ -83,9 +83,9 @@ class KVIRC_API KviConsole : public KviWindow
 	friend class KviIrcContext;
 	Q_OBJECT
 protected:
-	KviConsole(KviMainWindow * lpFrm,int iFlags);
+	KviConsoleWindow(KviMainWindow * lpFrm,int iFlags);
 public:
-	~KviConsole();
+	~KviConsoleWindow();
 protected:
 	int                                m_iFlags; // FIXME: make this a KviWindow property ?
 	// UI
@@ -221,23 +221,23 @@ protected slots:
 	void textViewRightClicked();
 };
 
-inline int KviConsole::selectedCount()
+inline int KviConsoleWindow::selectedCount()
 {
 	return m_pNotifyListView->selectedCount();
 }
 
-inline bool KviConsole::isIPv6Connection()
+inline bool KviConsoleWindow::isIPv6Connection()
 {
 	KVI_ASSERT(connection());
 	return connection()->target()->server()->isIPv6();
 }
 
-inline bool KviConsole::isNotConnected()
+inline bool KviConsoleWindow::isNotConnected()
 {
 	return (context()->state() == KviIrcContext::Idle);
 }
 
-inline QString KviConsole::currentNetworkName()
+inline QString KviConsoleWindow::currentNetworkName()
 {
 	return (connection() ? connection()->currentNetworkName() : QString());
 }

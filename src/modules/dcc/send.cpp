@@ -1897,7 +1897,7 @@ bool KviDccFileTransfer::event(QEvent *e)
 				// File Upload/Download terminated, or something like this
 				if(KVI_OPTION_BOOL(KviOption_boolNotifyDccSendSuccessInConsole))
 				{
-					KviConsole *c;
+					KviConsoleWindow *c;
 					if(!g_pApp->windowExists(m_pDescriptor->console())) c=g_pApp->activeConsole();
 					else c=m_pDescriptor->console();
 					c->output(KVI_OUT_DCCMSG,__tr2qs_ctx("DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r","dcc"),

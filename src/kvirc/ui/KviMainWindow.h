@@ -41,7 +41,7 @@ class KviMenuBar;
 class KviMdiChild;
 class KviMdiManager;
 class KviWindow;
-class KviConsole;
+class KviConsoleWindow;
 class KviWindowListBase;
 class QSplitter;
 class KviConfigurationFile;
@@ -78,7 +78,7 @@ public:
 class KVIRC_API KviMainWindow : public KviTalMainWindow //, public KviIrcContextManager
 {
 	friend class KviWindow;
-	friend class KviConsole;
+	friend class KviConsoleWindow;
 	friend class KviApplication;
 	friend class KviIrcServerParser;
 	friend class KviMexToolBar;
@@ -138,16 +138,16 @@ public:
 	bool windowExists(KviWindow * wnd){ return (m_pWinList->findRef(wnd) != -1); };
 	// The number of consoles in this frame
 	unsigned int consoleCount();
-	// Creates a new console window. DON'T use the KviConsole constructor directly.
+	// Creates a new console window. DON'T use the KviConsoleWindow constructor directly.
 	// (The script creation events are triggered from here)
-	KviConsole * createNewConsole(bool bFirstInFrame = false);
+	KviConsoleWindow * createNewConsole(bool bFirstInFrame = false);
 	// Returns the first available console.
 	// There is almost always an available console.
 	// Exceptions are the startup and the shutdown (see activeWindow())
-	KviConsole * firstConsole();
+	KviConsoleWindow * firstConsole();
 	// Returns the first console that has no connection in progress
 	// This function CAN return 0 if all the consoles are connected
-	KviConsole * firstNotConnectedConsole();
+	KviConsoleWindow * firstNotConnectedConsole();
 	// this is explicitly dedicated to the DockExtension applets
 	void setDockExtension(KviDockExtension * e){ m_pDockExtension = e; };
 	// returns the dockExtension applet. Useful for calling refresh() when

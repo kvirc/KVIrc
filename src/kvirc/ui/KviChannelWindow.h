@@ -47,7 +47,7 @@
 #include <QToolButton>
 
 
-class KviConsole;
+class KviConsoleWindow;
 class KviTopicWidget;
 class KviIrcMask;
 class KviThemedLabel;
@@ -162,7 +162,7 @@ public:
 	* \param szName The name of the channel
 	* \return KviChannelWindow
 	*/
-	KviChannelWindow(KviMainWindow * lpFrm, KviConsole * lpConsole, const QString & szName);
+	KviChannelWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole, const QString & szName);
 
 	/**
 	* \brief Destroys the channel object

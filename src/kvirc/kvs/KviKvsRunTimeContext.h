@@ -33,7 +33,7 @@
 #include "KviKvsSwitchList.h"
 
 class KviKvsScript;
-class KviConsole;
+class KviConsoleWindow;
 class KviIrcContext;
 class KviIrcConnection;
 class KviKvsTreeNode;
@@ -137,7 +137,7 @@ public:
 	KviIrcContext * context()
 		{ return m_pWindow->context(); };
 	// quick access to the console that this script is bound to (it MAY be zero, if there is no console)
-	KviConsole * console()
+	KviConsoleWindow * console()
 		{ return m_pWindow->console(); };
 	// quick access to the connection: it MAY be zero!
 	KviIrcConnection * connection()

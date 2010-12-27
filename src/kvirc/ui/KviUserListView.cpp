@@ -505,7 +505,7 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, const QStrin
 
 	// FIXME: completion should skip my own nick or place it as last entry in the chain (?)
 
-	//	if(KviConsole * c = m_pKviWindow->console())
+	//	if(KviConsoleWindow * c = m_pKviWindow->console())
 	//	{
 	//		if(kvi_strEqualCI(entry->m_szNick.ptr(),c->currentNickName())
 	//	}

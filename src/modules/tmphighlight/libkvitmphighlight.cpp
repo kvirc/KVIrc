@@ -154,7 +154,7 @@ static bool tmphighlight_kvs_cmd_addchannel(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	((KviConsole *)pWnd->console())->addHighlightedChannel(pWnd->windowName());
+	((KviConsoleWindow *)pWnd->console())->addHighlightedChannel(pWnd->windowName());
 
 	return true;
 }
@@ -206,7 +206,7 @@ static bool tmphighlight_kvs_cmd_removechannel(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	((KviConsole *)pWnd->console())->removeHighlightedChannel(pWnd->windowName());
+	((KviConsoleWindow *)pWnd->console())->removeHighlightedChannel(pWnd->windowName());
 
 	return true;
 }
@@ -294,7 +294,7 @@ static bool tmphighlight_kvs_fnc_ischannelhighlighted(KviKvsModuleFunctionCall *
 		return false;
 	}
 
-	c->returnValue()->setBoolean(((KviConsole *)pWnd->console())->isHighlightedChannel(pWnd->windowName()));
+	c->returnValue()->setBoolean(((KviConsoleWindow *)pWnd->console())->isHighlightedChannel(pWnd->windowName()));
 	return true;
 }
 

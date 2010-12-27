@@ -38,7 +38,7 @@ class KviAsynchronousConnectionData;
 class KviIrcDataStreamMonitor;
 class KviWindow;
 class QTimer;
-class KviConsole;
+class KviConsoleWindow;
 class KviIrcNetwork;
 class KviIrcServer;
 /*
@@ -51,20 +51,20 @@ class KviIrcServer;
 	Each irc context has its own unique numeric identifier. The identifiers start
 	from 1 so 0 is an invalid irc context id (this is useful in the scripting engine).
 
-	The irc context is created in the KviConsole constructor and destroyed
-	in the KviConsole destructor. No other class can allocate KviIrcContext objects.
+	The irc context is created in the KviConsoleWindow constructor and destroyed
+	in the KviConsoleWindow destructor. No other class can allocate KviIrcContext objects.
 */
 
 class KVIRC_API KviIrcContext : public QObject
 {
-	friend class KviConsole;
+	friend class KviConsoleWindow;
 	friend class KviChannelWindow;
 	friend class KviQueryWindow;
 	friend class KviIrcConnection;
 	friend class KviIrcContextToolBar;
 	Q_OBJECT
 protected:
-	KviIrcContext(KviConsole * pConsole); // only KviConsole can create this
+	KviIrcContext(KviConsoleWindow * pConsole); // only KviConsoleWindow can create this
 public:
 	~KviIrcContext();
 public:
@@ -76,7 +76,7 @@ public:
 		Connected     // connection() != 0
 	};
 protected:
-	KviConsole                       * m_pConsole;             // shallow, never null
+	KviConsoleWindow                       * m_pConsole;             // shallow, never null
 	KviIrcConnection                 * m_pConnection;
 
 	unsigned int                       m_uId;                  // this irc context id
@@ -108,7 +108,7 @@ protected:
 public:
 	inline unsigned int id(){ return m_uId; };
 	// never null and always the same!
-	inline KviConsole * console(){ return m_pConsole; };
+	inline KviConsoleWindow * console(){ return m_pConsole; };
 	// never null and always the same
 	inline KviMainWindow * frame(){ return m_pFrame; };
 	// may be null and may change!
@@ -146,7 +146,7 @@ public:
 	void setAsynchronousConnectionData(KviAsynchronousConnectionData * d);
 	inline KviAsynchronousConnectionData * asynchronousConnectionData(){ return m_pAsynchronousConnectionData; };
 	void destroyAsynchronousConnectionData();
-	// used by KviConsole (for now) and KviUserParser
+	// used by KviConsoleWindow (for now) and KviUserParser
 	void connectToCurrentServer();
 
 	void beginAsynchronousConnect(unsigned int uDelayInMSecs);
@@ -162,9 +162,9 @@ public slots:
 protected:
 	// called by KviIrcContextToolBar: this will DIE in favor of connectOrDisconnect()
 	void connectButtonClicked();
-	// used by KviConsole (for now)
+	// used by KviConsoleWindow (for now)
 	void destroyConnection();
-	// for KviConsole (for now) . later will be used only internally
+	// for KviConsoleWindow (for now) . later will be used only internally
 	void setState(State eState);
 	// called by KviIrcConnection
 	void loginComplete();

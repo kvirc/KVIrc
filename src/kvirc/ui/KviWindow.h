@@ -60,7 +60,7 @@ class KviMainWindow;
 class KviWindowListItem;
 class KviConfigurationFile;
 class KviIrcView;
-class KviConsole;
+class KviConsoleWindow;
 class KviIrcConnection;
 class KviWindowToolPageButton;
 class KviTalPopupMenu;
@@ -141,12 +141,12 @@ class KVIRC_API KviWindow : public QWidget
 	Q_PROPERTY(int KviProperty_ChildFocusOwner READ type)
 	Q_OBJECT
 public:
-	KviWindow(int type,KviMainWindow * lpFrm,const QString &name,KviConsole * pConsole = 0);
+	KviWindow(int type,KviMainWindow * lpFrm,const QString &name,KviConsoleWindow * pConsole = 0);
 	virtual ~KviWindow();
 protected: // almost private: don't touch :D
 	QString                               m_szName;                  // the current window name (usually also the target)
 	KviMainWindow                            * m_pFrm;
-	KviConsole                          * m_pConsole;
+	KviConsoleWindow                          * m_pConsole;
 
 	int                                   m_iType;
 
@@ -202,7 +202,7 @@ public:
 	// The mdiParent widget: may be nulll if the window is undocked
 	inline KviMdiChild * mdiParent(){ return (KviMdiChild *)parent(); };
 	// The console that this window belongs to: may be null for windows that aren't bound to irc contexts
-	inline KviConsole * console(){ return m_pConsole; };
+	inline KviConsoleWindow * console(){ return m_pConsole; };
 	KviIrcContext * context();
 	// the current IRC connection (if any)
 	KviIrcConnection * connection();

@@ -78,7 +78,7 @@ void KviTreeWindowListItem::captionChanged()
 	{
 		case KVI_WINDOW_TYPE_CONSOLE:
 		{
-			KviWindowListBase::getTextForConsole(szText,(KviConsole *)m_pWindow);
+			KviWindowListBase::getTextForConsole(szText,(KviConsoleWindow *)m_pWindow);
 		}
 		break;
 		case KVI_WINDOW_TYPE_CHANNEL:
@@ -157,14 +157,14 @@ QString KviTreeWindowListItem::key() const
 	{
 		if(iType==KVI_WINDOW_TYPE_CONSOLE)
 		{
-			ret.sprintf("%2d%4u",iType,((KviConsole*)m_pWindow)->context() ? ((KviConsole*)m_pWindow)->context()->id() : 9999);
+			ret.sprintf("%2d%4u",iType,((KviConsoleWindow*)m_pWindow)->context() ? ((KviConsoleWindow*)m_pWindow)->context()->id() : 9999);
 		} else {
 			ret.sprintf("%2d%s",iType,m_pWindow->windowName().toLower().toUtf8().data());
 		}
 	} else {
 		if(iType==KVI_WINDOW_TYPE_CONSOLE)
 		{
-			ret.sprintf("%2d%4u",iType,((KviConsole*)m_pWindow)->context() ? ((KviConsole*)m_pWindow)->context()->id() : 9999);
+			ret.sprintf("%2d%4u",iType,((KviConsoleWindow*)m_pWindow)->context() ? ((KviConsoleWindow*)m_pWindow)->context()->id() : 9999);
 		} else {
 			ret.sprintf("%2d%4d",iType,parent() ? parent()->indexOfChild((QTreeWidgetItem *)this) : 9999);
 		}

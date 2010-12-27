@@ -251,7 +251,7 @@ void KviTrayIcon::doAway(bool)
 		{
 			if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
 			{
-				KviConsole* pConsole=(KviConsole*)wnd;
+				KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
 				if(pConsole->isConnected())
 				{
 					if(id==-2)
@@ -267,7 +267,7 @@ void KviTrayIcon::doAway(bool)
  			++it;
 		}
 	} else {
-		KviConsole* pConsole=g_pApp->findConsole((unsigned int)id);
+		KviConsoleWindow* pConsole=g_pApp->findConsole((unsigned int)id);
 		if(pConsole)
 		{
 			if(pConsole->isConnected())
@@ -309,7 +309,7 @@ void KviTrayIcon::fillContextPopup()
 		{
 			if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
 			{
-				KviConsole* pConsole=(KviConsole*)wnd;
+				KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
 				if(pConsole->isConnected())
 				{
 					QAction* id;

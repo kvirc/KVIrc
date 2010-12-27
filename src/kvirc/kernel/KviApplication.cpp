@@ -925,7 +925,7 @@ void KviApplication::ipcMessage(char * pcMessage)
 {
 	if(!g_pFrame)
 		return;
-	KviConsole * pConsole = g_pFrame->firstConsole();
+	KviConsoleWindow * pConsole = g_pFrame->firstConsole();
 	if(!pConsole)
 		return;
 	if(_OUTPUT_VERBOSE)
@@ -962,14 +962,14 @@ void KviApplication::setAvatarFromOptions()
 	{
 		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
 		{
-			((KviConsole *)it.current())->setAvatarFromOptions();
+			((KviConsoleWindow *)it.current())->setAvatarFromOptions();
 		}
 		++it;
 	}
 
 }
 
-void KviApplication::setAvatarOnFileReceived(KviConsole * pConsole, const QString & szRemoteUrl, const QString & szNick, const QString & szUser, const QString & szHost)
+void KviApplication::setAvatarOnFileReceived(KviConsoleWindow * pConsole, const QString & szRemoteUrl, const QString & szNick, const QString & szUser, const QString & szHost)
 {
 	if(!m_pPendingAvatarChanges)
 	{
@@ -992,7 +992,7 @@ void KviApplication::setAvatarOnFileReceived(KviConsole * pConsole, const QStrin
 	m_pPendingAvatarChanges->append(pAvatar);
 }
 
-KviPendingAvatarChange * KviApplication::findPendingAvatarChange(KviConsole * pConsole, const QString & szNick, const QString & szRemoteUrl)
+KviPendingAvatarChange * KviApplication::findPendingAvatarChange(KviConsoleWindow * pConsole, const QString & szNick, const QString & szRemoteUrl)
 {
 	if(!m_pPendingAvatarChanges)
 		return 0;
@@ -1592,7 +1592,7 @@ unsigned int KviApplication::windowCount()
 	return g_pGlobalWindowDict->count();
 }
 
-KviConsole * KviApplication::findConsole(QString & szServer, QString & szNick)
+KviConsoleWindow * KviApplication::findConsole(QString & szServer, QString & szNick)
 {
 	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
@@ -1600,26 +1600,26 @@ KviConsole * KviApplication::findConsole(QString & szServer, QString & szNick)
 	{
 		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
 		{
-			if(((KviConsole *)it.current())->isConnected())
+			if(((KviConsoleWindow *)it.current())->isConnected())
 			{
 				if(!szServer.isEmpty())
 				{
 					if(KviQString::equalCI(szServer,
-						((KviConsole *)it.current())->connection()->currentServerName()))
+						((KviConsoleWindow *)it.current())->connection()->currentServerName()))
 					{
 						if(!szNick.isEmpty())
 						{
 							if(KviQString::equalCI(szNick,
-								((KviConsole *)it.current())->connection()->currentNickName()))
-									return ((KviConsole *)it.current());
-						} else return ((KviConsole *)it.current());
+								((KviConsoleWindow *)it.current())->connection()->currentNickName()))
+									return ((KviConsoleWindow *)it.current());
+						} else return ((KviConsoleWindow *)it.current());
 					}
 				} else {
 					if(!szNick.isEmpty())
 					{
 						if(KviQString::equalCI(szNick,
-							((KviConsole *)it.current())->connection()->currentNickName()))
-								return ((KviConsole *)it.current());
+							((KviConsoleWindow *)it.current())->connection()->currentNickName()))
+								return ((KviConsoleWindow *)it.current());
 					}
 				}
 			}
@@ -1637,8 +1637,8 @@ void KviApplication::restartLagMeters()
 	{
 		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
 		{
-			if(((KviConsole *)it.current())->connection())
-				((KviConsole *)it.current())->connection()->restartLagMeter();
+			if(((KviConsoleWindow *)it.current())->connection())
+				((KviConsoleWindow *)it.current())->connection()->restartLagMeter();
 		}
 		++it;
 	}
@@ -1652,8 +1652,8 @@ void KviApplication::restartNotifyLists()
 	{
 		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
 		{
-			if(((KviConsole *)it.current())->connection())
-				((KviConsole *)it.current())->connection()->restartNotifyList();
+			if(((KviConsoleWindow *)it.current())->connection())
+				((KviConsoleWindow *)it.current())->connection()->restartNotifyList();
 		}
 		++it;
 	}
@@ -1667,13 +1667,13 @@ void KviApplication::resetAvatarForMatchingUsers(KviRegisteredUser * pUser)
 	{
 		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
 		{
-			((KviConsole *)it.current())->resetAvatarForMatchingUsers(pUser);
+			((KviConsoleWindow *)it.current())->resetAvatarForMatchingUsers(pUser);
 		}
 		++it;
 	}
 }
 
-KviConsole * KviApplication::findConsole(unsigned int uIrcContextId)
+KviConsoleWindow * KviApplication::findConsole(unsigned int uIrcContextId)
 {
 	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
@@ -1681,19 +1681,19 @@ KviConsole * KviApplication::findConsole(unsigned int uIrcContextId)
 	{
 		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
 		{
-			if(((KviConsole *)it.current())->context()->id() == uIrcContextId)
-				return ((KviConsole *)it.current());
+			if(((KviConsoleWindow *)it.current())->context()->id() == uIrcContextId)
+				return ((KviConsoleWindow *)it.current());
 		}
 		++it;
 	}
 	return 0;
 }
 
-KviConsole * KviApplication::topmostConnectedConsole()
+KviConsoleWindow * KviApplication::topmostConnectedConsole()
 {
 	// check the foreground window console
 
-	KviConsole * pConsole = activeConsole();
+	KviConsoleWindow * pConsole = activeConsole();
 	if(!pConsole)
 		return 0;
 	if(pConsole->isConnected())
@@ -1707,8 +1707,8 @@ KviConsole * KviApplication::topmostConnectedConsole()
 	{
 		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
 		{
-			if(((KviConsole *)it.current())->isConnected())
-				return (KviConsole *)(it.current());
+			if(((KviConsoleWindow *)it.current())->isConnected())
+				return (KviConsoleWindow *)(it.current());
 		}
 		++it;
 	}
@@ -1745,7 +1745,7 @@ void KviApplication::unregisterWindow(KviWindow * pWnd)
 	g_pGlobalWindowDict->remove(pWnd->id());
 }
 
-KviConsole * KviApplication::activeConsole()
+KviConsoleWindow * KviApplication::activeConsole()
 {
 	if(!g_pFrame)
 		return 0;
@@ -1893,7 +1893,7 @@ void KviApplication::fillRecentServersPopup(KviTalPopupMenu * pMenu)
 	}
 }
 
-void KviApplication::fillRecentNicknamesPopup(KviTalPopupMenu * pMenu, KviConsole * pConsole)
+void KviApplication::fillRecentNicknamesPopup(KviTalPopupMenu * pMenu, KviConsoleWindow * pConsole)
 {
 	pMenu->clear();
 	int iId;
@@ -1917,7 +1917,7 @@ void KviApplication::fillRecentNicknamesPopup(KviTalPopupMenu * pMenu, KviConsol
 	}
 }
 
-void KviApplication::fillRecentChannelsPopup(KviTalPopupMenu * pMenu, KviConsole * pConsole)
+void KviApplication::fillRecentChannelsPopup(KviTalPopupMenu * pMenu, KviConsoleWindow * pConsole)
 {
 	pMenu->clear();
 	QStringList * pList = recentChannelsForNetwork(pConsole->currentNetworkName());

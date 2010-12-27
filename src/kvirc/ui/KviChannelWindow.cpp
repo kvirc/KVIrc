@@ -83,7 +83,7 @@
 // FIXME: #warning "OnChannelFlood event...."
 
 
-KviChannelWindow::KviChannelWindow(KviMainWindow * lpFrm, KviConsole * lpConsole, const QString & szName)
+KviChannelWindow::KviChannelWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole, const QString & szName)
 : KviWindow(KVI_WINDOW_TYPE_CHANNEL,lpFrm,szName,lpConsole)
 {
 	// Init some member variables
@@ -1186,7 +1186,7 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 							return;
 						if(bUserFeedback)
 							m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
-									QString(),QString(),QString(),szBuffer,KviConsole::NoNotifications);
+									QString(),QString(),QString(),szBuffer,KviConsoleWindow::NoNotifications);
 					break;
 					case KviCryptEngine::Encoded:
 					{
@@ -1197,7 +1197,7 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 							// ugly,but we must redecode here
 							QString szRedecoded = decodeText(encrypted.ptr());
 							m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
-								QString(),QString(),QString(),szRedecoded,KviConsole::NoNotifications);
+								QString(),QString(),QString(),szRedecoded,KviConsoleWindow::NoNotifications);
 						}
 					}
 					break;
@@ -1291,7 +1291,7 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 			{
 				//feeedback the user
 				if(bUserFeedback)
-					m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szCurSubString,KviConsole::NoNotifications);
+					m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szCurSubString,KviConsoleWindow::NoNotifications);
 				userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);
 			} else {
 				// skipped a part in this multi message.. we don't want to continue
@@ -1307,7 +1307,7 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 		if(connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),d))
 		{
 			if(bUserFeedback)
-				m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szTmpBuffer,KviConsole::NoNotifications);
+				m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szTmpBuffer,KviConsoleWindow::NoNotifications);
 			userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);
 		}
 	}

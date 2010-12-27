@@ -152,7 +152,7 @@ KviChannelsJoinWindow::~KviChannelsJoinWindow()
 	g_pChannelsWindow = 0;
 }
 
-void KviChannelsJoinWindow::setConsole(KviConsole  * pConsole)
+void KviChannelsJoinWindow::setConsole(KviConsoleWindow  * pConsole)
 {
 	m_pConsole = pConsole;
 	fillListView();
@@ -272,7 +272,7 @@ void KviChannelsJoinWindow::editTextChanged(const QString &)
 void KviChannelsJoinWindow::enableJoin()
 {
 	QString szTmp = m_pChannelEdit->text();
-	KviConsole * c = g_pApp->topmostConnectedConsole();
+	KviConsoleWindow * c = g_pApp->topmostConnectedConsole();
 	if(c)
 	{
 		if(szTmp.isEmpty())
@@ -311,7 +311,7 @@ void KviChannelsJoinWindow::joinClicked()
 	szCmd += " ";
 	szCmd += szPass;
 
-	KviConsole * c = g_pApp->topmostConnectedConsole();
+	KviConsoleWindow * c = g_pApp->topmostConnectedConsole();
 	if(!c)
 		return; // no connection
 
@@ -336,7 +336,7 @@ void KviChannelsJoinWindow::regClicked()
 	QString szCmd = "regchan.add ";
 	szCmd += szTmp;
 
-	KviConsole * c = g_pApp->topmostConnectedConsole();
+	KviConsoleWindow * c = g_pApp->topmostConnectedConsole();
 	if(!c)
 		return; // no connection
 
@@ -360,7 +360,7 @@ void KviChannelsJoinWindow::clearClicked()
 {
 	QString szCmd = "option stringlistRecentChannels";
 
-	KviConsole * c = g_pApp->topmostConnectedConsole();
+	KviConsoleWindow * c = g_pApp->topmostConnectedConsole();
 	if(!c)
 		return; // no connection
 

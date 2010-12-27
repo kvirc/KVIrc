@@ -157,7 +157,7 @@ void KviChannelTreeWidgetItemDelegate::paint(QPainter * p, const QStyleOptionVie
 	}
 }
 
-KviListWindow::KviListWindow(KviMainWindow * lpFrm, KviConsole * lpConsole)
+KviListWindow::KviListWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole)
 : KviWindow(KVI_WINDOW_TYPE_LIST,lpFrm,"list",lpConsole), KviExternalServerDataParser()
 {
 	g_pListWindowList->append(this);

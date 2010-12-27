@@ -44,7 +44,7 @@ KviDccDescriptor::KviDccDescriptor(const KviDccDescriptor & src)
 	copyFrom(src);
 }
 
-KviDccDescriptor::KviDccDescriptor(KviConsole * pConsole)
+KviDccDescriptor::KviDccDescriptor(KviConsoleWindow * pConsole)
 {
 	m_pConsole   = pConsole;
 	m_pDccWindow = 0;

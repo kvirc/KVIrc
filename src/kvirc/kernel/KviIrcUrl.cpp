@@ -267,7 +267,7 @@ void KviIrcUrl::makeJoinCmd(const QStringList& chans, QString& szJoinCommand)
 		}
 }
 
-int KviIrcUrl::run(const QString& text,int contextSpec,KviConsole* pConsole)
+int KviIrcUrl::run(const QString& text,int contextSpec,KviConsoleWindow* pConsole)
 {
 	KviIrcUrlParts parts;
 	KviIrcUrl::split(text,parts);

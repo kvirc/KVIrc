@@ -33,12 +33,12 @@ class KviDccFileTransfer;
 class KviDccDescriptor
 {
 public:
-	KviDccDescriptor(KviConsole * pConsole);
+	KviDccDescriptor(KviConsoleWindow * pConsole);
 	KviDccDescriptor(const KviDccDescriptor & src);
 
 	~KviDccDescriptor();
 protected:
-	KviConsole         * m_pConsole;
+	KviConsoleWindow         * m_pConsole;
 
 	// mIrc zero port reverse send/chat extension
 	KviCString               m_szZeroPortRequestTag;
@@ -52,8 +52,8 @@ protected:
 	bool                 m_bCreationEventTriggered;
 public:
 	// A console that this DCC is bound to (might be replaced while we wait for user acknowledge in dialogs)
-	KviConsole * console() const { return m_pConsole; };
-	void setConsole(KviConsole * c){ m_pConsole = c; };
+	KviConsoleWindow * console() const { return m_pConsole; };
+	void setConsole(KviConsoleWindow * c){ m_pConsole = c; };
 
 	KviDccWindow * window() const { return m_pDccWindow; };
 	void setWindow(KviDccWindow * w){ m_pDccWindow = w; };

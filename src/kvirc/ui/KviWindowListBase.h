@@ -37,7 +37,7 @@ class QPixmap;
 class KviWindow;
 class KviMainWindow;
 class KviDynamicToolTip;
-class KviConsole;
+class KviConsoleWindow;
 
 //
 // KviWindowListItem
@@ -107,7 +107,7 @@ public:
 	virtual void updatePseudoTransparency(){};
 	virtual void applyOptions();
 	virtual void wheelEvent(QWheelEvent *e);
-	static void getTextForConsole(QString &szText,KviConsole * pConsole);
+	static void getTextForConsole(QString &szText,KviConsoleWindow * pConsole);
 	Qt::DockWidgetArea currentDockArea() { return currentArea; };
 protected slots:
 	virtual void updateActivityMeter();

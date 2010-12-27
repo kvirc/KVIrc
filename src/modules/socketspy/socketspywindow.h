@@ -28,13 +28,13 @@
 #include "KviCString.h"
 #include "KviIrcDataStreamMonitor.h"
 
-class KviConsole;
+class KviConsoleWindow;
 
 class KviSocketSpyWindow : public KviWindow, public KviIrcDataStreamMonitor
 {
 	Q_OBJECT
 public:
-	KviSocketSpyWindow(KviMainWindow * lpFrm,KviConsole * lpConsole);
+	KviSocketSpyWindow(KviMainWindow * lpFrm,KviConsoleWindow * lpConsole);
 	~KviSocketSpyWindow();
 protected:
 	virtual QPixmap * myIconPtr();

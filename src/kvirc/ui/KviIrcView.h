@@ -41,7 +41,7 @@ class KviTalPopupMenu;
 
 class KviWindow;
 class KviMainWindow;
-class KviConsole;
+class KviConsoleWindow;
 class KviIrcViewToolWidget;
 class KviIrcViewToolTip;
 class KviAnimatedPixmap;
@@ -164,7 +164,7 @@ public:
 	void findNext(const QString& szText,bool bCaseS = false,bool bRegExp = false,bool bExtended = false);
 	void findPrev(const QString& szText,bool bCaseS = false,bool bRegExp = false,bool bExtended = false);
 	KviWindow * parentKviWindow(){ return m_pKviWindow; };
-	KviConsole * console();
+	KviConsoleWindow * console();
 	// A null pixmap passed here unsets the private backgrdound.
 	void setPrivateBackgroundPixmap(const QPixmap &pixmap,bool bRepaint=true);
 	bool hasPrivateBackgroundPixmap(){ return (m_pPrivateBackgroundPixmap != 0); };

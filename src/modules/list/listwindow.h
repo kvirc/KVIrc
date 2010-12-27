@@ -81,7 +81,7 @@ class KviListWindow : public KviWindow, public KviExternalServerDataParser
 {
 	Q_OBJECT
 public:
-	KviListWindow(KviMainWindow * lpFrm, KviConsole * lpConsole);
+	KviListWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole);
 	~KviListWindow();
 protected:
 	QSplitter                                    * m_pVertSplitter;

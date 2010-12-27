@@ -123,7 +123,7 @@ namespace KviUserInput
 					{
 						QByteArray data = pWindow->connection()->encodeText(buf);
 
-						if(((KviConsole *)pWindow)->connection()->sendData(data.data()))
+						if(((KviConsoleWindow *)pWindow)->connection()->sendData(data.data()))
 						{
 							pWindow->output(KVI_OUT_RAW,"[RAW]: %Q",&buf);
 							return;

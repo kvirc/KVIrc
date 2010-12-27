@@ -2746,7 +2746,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 	return 0;
 }
 
-KviConsole * KviIrcView::console()
+KviConsoleWindow * KviIrcView::console()
 {
 	return m_pKviWindow->console();
 }

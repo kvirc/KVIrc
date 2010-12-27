@@ -1428,7 +1428,7 @@ void KviIrcServerOptionsWidget::recentServersPopupAboutToShow()
 
 void KviIrcServerOptionsWidget::recentServersPopupClicked(int id)
 {
-	KviConsole * c = g_pActiveWindow->console();
+	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c)
 		return;
 

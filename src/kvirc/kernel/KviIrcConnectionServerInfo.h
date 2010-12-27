@@ -157,7 +157,7 @@ public:
 
 class KVIRC_API KviIrcConnectionServerInfo
 {
-	friend class KviConsole; // for now
+	friend class KviConsoleWindow; // for now
 	friend class KviIrcServerParser;
 	friend class KviIrcConnection;
 protected:

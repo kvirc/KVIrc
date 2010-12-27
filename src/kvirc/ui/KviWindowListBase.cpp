@@ -92,7 +92,7 @@ void KviWindowListBase::updateActivityMeter()
 
 }
 
-void KviWindowListBase::getTextForConsole(QString &szText,KviConsole * pConsole)
+void KviWindowListBase::getTextForConsole(QString &szText,KviConsoleWindow * pConsole)
 {
 	if(pConsole->isConnected())
 	{
@@ -130,7 +130,7 @@ void KviWindowListBase::switchWindow(bool bNext,bool bInContextOnly,bool bHighli
 {
 	if(!g_pActiveWindow)return;
 
-	KviConsole * cons = g_pActiveWindow->console();
+	KviConsoleWindow * cons = g_pActiveWindow->console();
 	KviWindowListItem * cur = g_pActiveWindow->windowListItem();
 	KviWindowListItem * it = cur;
 
@@ -390,7 +390,7 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 			QFont f = QFont(KVI_OPTION_FONT(KviOption_fontWindowList));
 			f.setBold(true);
 			pPainter->setFont(f);
-			KviWindowListBase::getTextForConsole(szText,(KviConsole *)m_pWindow);
+			KviWindowListBase::getTextForConsole(szText,(KviConsoleWindow *)m_pWindow);
 		}
 		break;
 		case KVI_WINDOW_TYPE_CHANNEL:

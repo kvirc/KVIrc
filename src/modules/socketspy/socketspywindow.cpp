@@ -34,7 +34,7 @@
 
 extern KviPointerList<KviSocketSpyWindow> * g_pSocketSpyWindowList;
 
-KviSocketSpyWindow::KviSocketSpyWindow(KviMainWindow * lpFrm,KviConsole * lpConsole)
+KviSocketSpyWindow::KviSocketSpyWindow(KviMainWindow * lpFrm,KviConsoleWindow * lpConsole)
 : KviWindow(KVI_WINDOW_TYPE_SOCKETSPY,lpFrm,"socket_spy",lpConsole), KviIrcDataStreamMonitor(lpConsole->context())
 {
 	g_pSocketSpyWindowList->append(this);

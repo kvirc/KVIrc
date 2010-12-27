@@ -76,7 +76,7 @@ void KviCodeTester::execute()
 	QString parms = m_pParams->text();
 	QString buffer;
 	m_pEditor->getText(buffer);
-	KviConsole * con = g_pApp->activeConsole();
+	KviConsoleWindow * con = g_pApp->activeConsole();
 	//KviParameterList * l = new KviParameterList(parms.ptr());
 	KviKvsScript::run(buffer,con,new KviKvsVariantList(new QString(parms)));
 }

@@ -1568,7 +1568,7 @@ void KviIrcSocket::processData(char * buffer,int)
 
 			if(m_state != Connected)
 			{
-				// Disconnected in KviConsole::incomingMessage() call.
+				// Disconnected in KviConsoleWindow::incomingMessage() call.
 				// This may happen for several reasons (local event loop
 				// with the user hitting the disconnect button, a scripting
 				// handler event that disconnects explicitly)

@@ -29,7 +29,7 @@
 #include "kvi_inttypes.h"
 
 class KviIrcServer;
-class KviConsole;
+class KviConsoleWindow;
 
 #include <QStringList>
 
@@ -69,7 +69,7 @@ namespace KviIrcUrl
 
 	extern KVIRC_API bool parse(const char * url,KviCString &cmdBuffer,int contextSpec = KVI_IRCURL_CONTEXT_FIRSTFREE);
 
-	extern KVIRC_API int  run(const QString& url,int contextSpec = FirstFreeContext,KviConsole* pConsole = 0);
+	extern KVIRC_API int  run(const QString& url,int contextSpec = FirstFreeContext,KviConsoleWindow* pConsole = 0);
 
 	extern KVIRC_API void split(QString url, KviIrcUrlParts& parts);
 	extern KVIRC_API void join(QString &url, KviIrcServer* server);

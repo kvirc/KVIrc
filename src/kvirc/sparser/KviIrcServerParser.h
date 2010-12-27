@@ -84,7 +84,7 @@ typedef struct _KviDccRequest
 	KviCString           szParam5;
 	bool             bIPv6;
 	KviCtcpMessage * ctcpMsg;
-	KviConsole     * pConsole;
+	KviConsoleWindow     * pConsole;
 } KviDccRequest;
 
 typedef void (KviIrcServerParser::*ctcpParseProc)(KviCtcpMessage *);
@@ -113,7 +113,6 @@ public:
 	virtual void control(int){};
 	virtual void die(){ delete this; };
 };
-
 
 class KVIRC_API KviIrcServerParser : public QObject
 {

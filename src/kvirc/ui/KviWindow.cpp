@@ -102,7 +102,7 @@ static QAction         * g_pMdiWindowSystemTextEncodingDefaultAction = 0;
 
 unsigned long int g_uUniqueWindowId = 1;
 
-KviWindow::KviWindow(int type,KviMainWindow * lpFrm,const QString &name,KviConsole * lpConsole)
+KviWindow::KviWindow(int type,KviMainWindow * lpFrm,const QString &name,KviConsoleWindow * lpConsole)
 		: QWidget(0)
 {
 	m_uId = g_uUniqueWindowId;
@@ -1387,7 +1387,7 @@ KviIrcContext * KviWindow::context()
 	{
 		if(console() == this)
 		{
-			return ((KviConsole*)this)->context();
+			return ((KviConsoleWindow*)this)->context();
 		} else {
 			return console()->context();
 		}

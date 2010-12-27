@@ -39,7 +39,7 @@
 class QCheckBox;
 class QPushButton;
 class QLineEdit;
-class KviConsole;
+class KviConsoleWindow;
 class KviTalGroupBox;
 
 /**
@@ -72,7 +72,7 @@ protected:
 	QPushButton      * m_pJoinButton;
 	QPushButton      * m_pRegButton;
 	QPushButton      * m_pClearButton;
-	KviConsole       * m_pConsole;
+	KviConsoleWindow       * m_pConsole;
 public:
 	virtual void closeEvent(QCloseEvent * e);
 
@@ -93,7 +93,7 @@ public:
 	* \param pConsole The source console
 	* \return void
 	*/
-	void setConsole(KviConsole * pConsole);
+	void setConsole(KviConsoleWindow * pConsole);
 protected slots:
 	/**
 	* \brief Called when the text changes

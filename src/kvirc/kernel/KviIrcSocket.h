@@ -46,7 +46,7 @@ class KviIrcConnection;
 class KviIrcConnectionTarget;
 class KviIrcLink;
 class KviSSL;
-class KviConsole;
+class KviConsoleWindow;
 class KviDataBuffer;
 
 /**
@@ -102,7 +102,7 @@ public:
 protected:
 	unsigned int           m_uId;
 	KviIrcLink           * m_pLink;
-	KviConsole           * m_pConsole;
+	KviConsoleWindow           * m_pConsole;
 	kvi_socket_t           m_sock;
 	SocketState            m_state;
 	QSocketNotifier      * m_pWsn;
@@ -125,9 +125,9 @@ protected:
 public:
 	/**
 	* \brief Returns the console
-	* \return KviConsole *
+	* \return KviConsoleWindow *
 	*/
-	KviConsole * console(){ return m_pConsole; };
+	KviConsoleWindow * console(){ return m_pConsole; };
 
 	/**
 	* \brief Returns the link

@@ -37,7 +37,7 @@ Idle* g_pIdle;
 
 #define GET_KVS_CONSOLE \
 	kvs_uint_t  uiWnd; \
-	KviConsole *wnd =0; \
+	KviConsoleWindow *wnd =0; \
 	KVSM_PARAMETERS_BEGIN(c) \
 		KVSM_PARAMETER("context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uiWnd) \
 	KVSM_PARAMETERS_END(c) \

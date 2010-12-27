@@ -35,7 +35,7 @@
 
 #include <QObject>
 
-class KviConsole;
+class KviConsoleWindow;
 class KviIrcServer;
 class KviProxy;
 class KviIrcSocket;
@@ -70,7 +70,7 @@ protected:
 	/**
 	* \brief Constructs the IrcLink object
 	*
-	* Only KviConsole can create this.
+	* Only KviConsoleWindow can create this.
 	* pConsole must NOT be null;
 	* pServer is a shallow pointer: Connection makes a copy of it internally,
 	* must NOT be null;
@@ -88,7 +88,7 @@ protected:
 private:
 	KviIrcConnection               * m_pConnection;       // shallow, never null
 	KviIrcConnectionTarget         * m_pTarget;           // shallow, never null
-	KviConsole                     * m_pConsole;          // shallow, never null
+	KviConsoleWindow                     * m_pConsole;          // shallow, never null
 	KviIrcSocket                   * m_pSocket;           // owned, may be null!
 	KviMexLinkFilter               * m_pLinkFilter;       // owned, may be null!
 
@@ -120,9 +120,9 @@ public:
 	* \brief Returns the console
 	*
 	* Never null
-	* \return KviConsole *
+	* \return KviConsoleWindow *
 	*/
-	KviConsole * console(){ return m_pConsole; };
+	KviConsoleWindow * console(){ return m_pConsole; };
 
 	/**
 	* \brief Returns the state of the socket

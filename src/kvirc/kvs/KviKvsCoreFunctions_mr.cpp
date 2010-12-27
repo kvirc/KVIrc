@@ -165,7 +165,7 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("irc_context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uCntx)
 		KVSCF_PARAMETERS_END
 
-		KviConsole * cns;
+		KviConsoleWindow * cns;
 
 		if(KVSCF_pParams->count() > 0)
 		{
@@ -488,7 +488,7 @@ namespace KviKvsCoreFunctions
 		{
 			if(KVSCF_pParams->count() > 1)
 			{
-				KviConsole * cons = g_pApp->findConsole(uContextId);
+				KviConsoleWindow * cons = g_pApp->findConsole(uContextId);
 				if(!cons)KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)","kvs"),uContextId);
 				else {
 					if(cons->connection())

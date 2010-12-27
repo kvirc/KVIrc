@@ -81,7 +81,7 @@ public:
 #if 0
 	const QString & networkName();
 
-	// this allows to force the network name: it should be used only by KviConsole
+	// this allows to force the network name: it should be used only by KviConsoleWindow
 	// but it's KviIrcServerParser (KviIrcServerParser_numericHandlers.cpp) that first
 	// gets the new network name... thus we make it public
 	// to remove one level of indirection.

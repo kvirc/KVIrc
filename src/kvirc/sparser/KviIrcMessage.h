@@ -56,12 +56,12 @@ private:
 	KviCString                m_szPrefix;           // the extracted prefix string
 	KviCString                m_szCommand;          // the extracted command (may be numeric)
 	KviPointerList<KviCString>  * m_pParams;            // the list of parameters
-	KviConsole          * m_pConsole;           // the console we're attacched to
+	KviConsoleWindow          * m_pConsole;           // the console we're attacched to
 	KviIrcConnection    * m_pConnection;        // the connection we're attacched to
 	int                   m_iNumericCommand;    // the numeric of the command (0 if non numeric)
 	int                   m_iFlags;             // yes.. flags :D
 public:
-	KviConsole       * console(){ return m_pConsole; };
+	KviConsoleWindow       * console(){ return m_pConsole; };
 	KviIrcConnection * connection(){ return m_pConsole->connection(); };
 
 	bool               isNumeric(){ return (m_iNumericCommand >= 0); };

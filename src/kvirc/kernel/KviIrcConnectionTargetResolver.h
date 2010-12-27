@@ -29,7 +29,7 @@
 
 #include <QObject>
 
-class KviConsole;
+class KviConsoleWindow;
 class KviDnsResolver;
 class KviIrcConnection;
 class KviIrcConnectionTarget;
@@ -49,7 +49,7 @@ public:
 private:
 	KviIrcConnection             * m_pConnection;       // shallow, never null
 	KviIrcConnectionTarget       * m_pTarget;           // shallow, never null
-	KviConsole                   * m_pConsole;          // shallow, never null
+	KviConsoleWindow                   * m_pConsole;          // shallow, never null
 	Status                         m_eStatus;
 	State                          m_eState;
 

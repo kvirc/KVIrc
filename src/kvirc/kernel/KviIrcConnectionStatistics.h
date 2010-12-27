@@ -31,7 +31,7 @@
 
 class KVIRC_API KviIrcConnectionStatistics
 {
-	friend class KviConsole; // to be removed
+	friend class KviConsoleWindow; // to be removed
 	friend class KviIrcConnection;
 public:
 	KviIrcConnectionStatistics();

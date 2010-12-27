@@ -44,7 +44,7 @@
 	KVSM_PARAMETERS_BEGIN(c) \
 		KVSM_PARAMETER("irc_context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,iContextId) \
 	KVSM_PARAMETERS_END(c) \
-	KviConsole * pConsole = NULL; \
+	KviConsoleWindow * pConsole = NULL; \
 	if(c->parameterCount() > 0) \
 		pConsole = g_pApp->findConsole(iContextId); \
 	else \
@@ -478,7 +478,7 @@ static bool context_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	{
 		if(pWnd->type() == KVI_WINDOW_TYPE_CONSOLE)
 		{
-			pArray->set(idx,new KviKvsVariant((kvs_int_t)((KviConsole *)pWnd)->context()->id()));
+			pArray->set(idx,new KviKvsVariant((kvs_int_t)((KviConsoleWindow *)pWnd)->context()->id()));
 			idx++;
 		}
 	}

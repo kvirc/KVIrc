@@ -1156,7 +1156,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	int iFlags = 0;
 	if(szFlags.contains('i'))iFlags |= KviUserWindow::HasInput;
 
-	KviConsole * pConsole = 0;
+	KviConsoleWindow * pConsole = 0;
 	if(c->parameterList()->count() >= 3)
 	{
 		pConsole = g_pApp->findConsole(uCtx);

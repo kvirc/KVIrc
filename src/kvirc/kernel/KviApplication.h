@@ -55,7 +55,7 @@
 
 class KviTalPopupMenu;
 class KviTalListBox;
-class KviConsole;
+class KviConsoleWindow;
 class KviConfigurationFile;
 class KviRegisteredUser;
 class KviIrcConnection;
@@ -67,7 +67,7 @@ class QStringList;
 
 typedef struct _KviPendingAvatarChange
 {
-	KviConsole * pConsole;
+	KviConsoleWindow * pConsole;
 	QString      szRemoteUrl;
 	QString      szNick;
 	QString      szUser;
@@ -270,10 +270,10 @@ public:
 	// KviApplication.cpp : Window stuff
 	KviWindow       * findWindow(const QString &windowId);
 	KviWindow       * findWindowByCaption(const QString &windowCaption,int iContextId=-1);
-	KviConsole      * findConsole(unsigned int ircContextId);
-	KviConsole      * findConsole(QString & servr,QString & nick);
-	KviConsole      * topmostConnectedConsole();
-	KviConsole      * activeConsole();
+	KviConsoleWindow      * findConsole(unsigned int ircContextId);
+	KviConsoleWindow      * findConsole(QString & servr,QString & nick);
+	KviConsoleWindow      * topmostConnectedConsole();
+	KviConsoleWindow      * activeConsole();
 	bool              windowExists(KviWindow *wnd);
 	bool              connectionExists(KviIrcConnection *cnn);
 	unsigned int      windowCount();
@@ -288,8 +288,8 @@ public:
 #endif
 
 	// KviApplication.cpp : DCC (and CTCP AVATAR & SOUND) related stuff
-	void setAvatarOnFileReceived(KviConsole * pConsole,const QString &szRemoteUrl,const QString &szNick,const QString &szUser,const QString &szHost);
-	KviPendingAvatarChange * findPendingAvatarChange(KviConsole * pConsole,const QString &szNick,const QString &szRemoteUrl);
+	void setAvatarOnFileReceived(KviConsoleWindow * pConsole,const QString &szRemoteUrl,const QString &szNick,const QString &szUser,const QString &szHost);
+	KviPendingAvatarChange * findPendingAvatarChange(KviConsoleWindow * pConsole,const QString &szNick,const QString &szRemoteUrl);
 	void fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,const QString &szLocalFileName,const QString &szNick = QString(),const QString &szError = QString(),bool bQuiet = false);
 
 	void setAvatarFromOptions();
@@ -310,8 +310,8 @@ public:
 
 	void addRecentServer(const QString& server);
 	void fillRecentServersPopup(KviTalPopupMenu * m);
-	void fillRecentNicknamesPopup(KviTalPopupMenu * m,KviConsole * pConsole);
-	void fillRecentChannelsPopup(KviTalPopupMenu * m,KviConsole * pConsole);
+	void fillRecentNicknamesPopup(KviTalPopupMenu * m,KviConsoleWindow * pConsole);
+	void fillRecentChannelsPopup(KviTalPopupMenu * m,KviConsoleWindow * pConsole);
 //
 	void autoConnectToServers();
 

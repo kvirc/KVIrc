@@ -40,7 +40,7 @@
 
 class QTimer;
 class QTextCodec;
-class KviConsole;
+class KviConsoleWindow;
 class KviIrcNetworkData;
 class KviIrcServer;
 class KviProxy;
@@ -74,7 +74,7 @@ class KviCString;
 * \brief An abstraction of a connection to an IRC server
 *
 * This class deals with the high-level logic of a connection to an IRC server.
-* It's always attached to a KviIrcContext and thus to a KviConsole window.
+* It's always attached to a KviIrcContext and thus to a KviConsoleWindow window.
 * The connection has a KviIrcConnectionTarget object which specifies the
 * data of the server that needs to be contacted and a KviUserIdentity object
 * which specifies the user data to use.
@@ -92,7 +92,7 @@ class KviCString;
 */
 class KVIRC_API KviIrcConnection : public QObject
 {
-	friend class KviConsole;
+	friend class KviConsoleWindow;
 	friend class KviIrcContext;
 	friend class KviIrcLink;
 	friend class KviIrcServerParser;
@@ -101,7 +101,7 @@ protected:
 	/**
 	* \brief Creates a KviIrcConnection object.
 	*
-	* This is actually used only by KviConsole.
+	* This is actually used only by KviConsoleWindow.
 	*
 	* pContext must not be NULL and is kept as shallow pointer (that is, it's
 	* not owned and must persists for the entire life of KviIrcConnection:
@@ -120,7 +120,7 @@ protected:
 	KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget,KviUserIdentity * pIdentity);
 
 	/**
-	* \brief Destroys a KviIrcConnection object. KviConsole uses this.
+	* \brief Destroys a KviIrcConnection object. KviConsoleWindow uses this.
 	*/
 	~KviIrcConnection();
 public:
@@ -135,7 +135,7 @@ public:
 		Connected   /**< We're connected to an IRC server */
 	};
 private:
-	KviConsole                           * m_pConsole;              // shallow, never null
+	KviConsoleWindow                           * m_pConsole;              // shallow, never null
 	KviIrcContext                        * m_pContext;              // shallow, never null
 
 	State                                  m_eState;
@@ -182,9 +182,9 @@ public:
 	* \brief Returns a pointer to the owning console
 	*
 	* The pointer is never NULL
-	* \return KviConsole *
+	* \return KviConsoleWindow *
 	*/
-	inline KviConsole * console(){ return m_pConsole; };
+	inline KviConsoleWindow * console(){ return m_pConsole; };
 
 	/**
 	* \brief Returns a pointer to the owning KviIrcContext.

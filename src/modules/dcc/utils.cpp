@@ -34,7 +34,7 @@
 #include "KviQString.h"
 
 /*
-bool dcc_module_get_listen_ip_address(KviCommand *c,KviConsole * pConsole,QString &szListenIp)
+bool dcc_module_get_listen_ip_address(KviCommand *c,KviConsoleWindow * pConsole,QString &szListenIp)
 {
 	//
 	// Find an interface suitable for listening....
@@ -102,7 +102,7 @@ bool dcc_module_get_listen_ip_address(KviCommand *c,KviConsole * pConsole,QStrin
 }
 */
 
-bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pConsole,QString &szListenIp)
+bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsoleWindow * pConsole,QString &szListenIp)
 {
 	//
 	// Find an interface suitable for listening....

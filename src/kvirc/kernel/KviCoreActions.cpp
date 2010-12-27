@@ -762,7 +762,7 @@ KviJoinChannelAction::KviJoinChannelAction(QObject * pParent)
 
 void KviJoinChannelAction::popupAboutToShow()
 {
-	KviConsole * c = g_pActiveWindow->console();
+	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c) return;
 
 	g_pApp->fillRecentChannelsPopup(m_pPopup,c);
@@ -775,7 +775,7 @@ void KviJoinChannelAction::popupAboutToShow()
 
 void KviJoinChannelAction::popupActivated(int id)
 {
-	KviConsole * c = g_pActiveWindow->console();
+	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c)return;
 
 	QString szItemText = m_pPopup->text(id);
@@ -817,7 +817,7 @@ KviChangeNickAction::KviChangeNickAction(QObject * pParent)
 
 void KviChangeNickAction::popupAboutToShow()
 {
-	KviConsole * c = g_pActiveWindow->console();
+	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c)return;
 
 	g_pApp->fillRecentNicknamesPopup(m_pPopup,c);
@@ -831,7 +831,7 @@ void KviChangeNickAction::popupAboutToShow()
 
 void KviChangeNickAction::popupActivated(int id)
 {
-	KviConsole * c = g_pActiveWindow->console();
+	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c)return;
 
 	QString text = m_pPopup->text(id);
@@ -878,7 +878,7 @@ void KviConnectToServerAction::popupAboutToShow()
 
 void KviConnectToServerAction::popupActivated(int id)
 {
-	KviConsole * c = g_pActiveWindow->console();
+	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c)return;
 
 	QString szItemText = m_pPopup->text(id);
@@ -918,7 +918,7 @@ KviChangeUserModeAction::KviChangeUserModeAction(QObject * pParent)
 
 void KviChangeUserModeAction::popupAboutToShow()
 {
-	KviConsole * c = g_pActiveWindow->console();
+	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c)return;
 
 	m_pPopup->clear();
@@ -946,7 +946,7 @@ void KviChangeUserModeAction::popupAboutToShow()
 
 void KviChangeUserModeAction::popupActivated(int id)
 {
-	KviConsole * c = g_pActiveWindow->console();
+	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c)return;
 
 	QString text = m_pPopup->text(id);

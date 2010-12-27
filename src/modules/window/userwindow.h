@@ -33,7 +33,7 @@ class KviUserWindow : public KviWindow
 public:
 	enum CreationFlags { HasInput = 1 };
 public:
-	KviUserWindow(KviMainWindow * pFrm,const char * name,int iIcon,KviConsole * pConsole = 0,int iCreationFlags = 0);
+	KviUserWindow(KviMainWindow * pFrm,const char * name,int iIcon,KviConsoleWindow * pConsole = 0,int iCreationFlags = 0);
 	~KviUserWindow();
 protected:
 	int m_iIcon;

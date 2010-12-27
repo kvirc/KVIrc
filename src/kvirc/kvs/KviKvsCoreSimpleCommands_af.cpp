@@ -131,7 +131,7 @@ namespace KviKvsCoreSimpleCommands
 					{
 						if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
 						{
-							KviConsole* pConsole=(KviConsole*)wnd;
+							KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
 							if(pConsole->isConnected())
 								pConsole->connection()->sendFmtData("AWAY");
 						}
@@ -154,7 +154,7 @@ namespace KviKvsCoreSimpleCommands
 			{
 				if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
 				{
-					KviConsole* pConsole=(KviConsole*)wnd;
+					KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
 					if(pConsole->isConnected())
 						pConsole->connection()->sendFmtData("AWAY :%s",
 								pConsole->connection()->encodeText(szReason).data()
@@ -209,7 +209,7 @@ namespace KviKvsCoreSimpleCommands
 			{
 				if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
 				{
-					KviConsole* pConsole=(KviConsole*)wnd;
+					KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
 					if(pConsole->isConnected())
 						pConsole->connection()->sendFmtData("AWAY");
 				}
@@ -1240,7 +1240,7 @@ namespace KviKvsCoreSimpleCommands
 
 		int type = KVI_OUT_NONE;
 		KviWindow * pWnd = KVSCSC_pWindow;
-		KviConsole * pConsole = pWnd->console();
+		KviConsoleWindow * pConsole = pWnd->console();
 		if(!pConsole)pConsole = g_pApp->activeConsole();
 
 		KviKvsVariant * v;
@@ -1283,9 +1283,9 @@ namespace KviKvsCoreSimpleCommands
 		}
 
 		int iFlags = 0;
-		if(KVSCSC_pSwitches->find('n',"no-highlighting"))iFlags |= KviConsole::NoHighlighting;
-		if(KVSCSC_pSwitches->find('f',"no-flashing"))iFlags |= KviConsole::NoWindowFlashing;
-		if(KVSCSC_pSwitches->find('x',"no-notifier"))iFlags |= KviConsole::NoNotifier;
+		if(KVSCSC_pSwitches->find('n',"no-highlighting"))iFlags |= KviConsoleWindow::NoHighlighting;
+		if(KVSCSC_pSwitches->find('f',"no-flashing"))iFlags |= KviConsoleWindow::NoWindowFlashing;
+		if(KVSCSC_pSwitches->find('x',"no-notifier"))iFlags |= KviConsoleWindow::NoNotifier;
 
 		pConsole->outputPrivmsg(pWnd,type,
 				szNick,szUser,szHost,szText,

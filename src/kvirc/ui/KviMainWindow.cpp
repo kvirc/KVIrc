@@ -405,7 +405,7 @@ void KviMainWindow::saveWindowProperties(KviWindow * wnd,const QString &szSectio
 
 void KviMainWindow::closeWindow(KviWindow *wnd)
 {
-	if (wnd->inherits("KviConsole"))
+	if (wnd->inherits("KviConsoleWindow"))
 	{
 		if (consoleCount() <= 1)
 		{
@@ -581,13 +581,13 @@ void KviMainWindow::newConsole()
 	createNewConsole();
 }
 
-KviConsole * KviMainWindow::createNewConsole(bool bFirstInFrame)
+KviConsoleWindow * KviMainWindow::createNewConsole(bool bFirstInFrame)
 {
 	// the first console must be created BEFORE the toolbars visible
 	// at startup otherwise we cannot execute script code
 	// which is necessary for the actions that are going to be added
 	// to the toolbars
-	KviConsole * c = new KviConsole(this,bFirstInFrame ? KVI_CONSOLE_FLAG_FIRSTINFRAME : 0);
+	KviConsoleWindow * c = new KviConsoleWindow(this,bFirstInFrame ? KVI_CONSOLE_FLAG_FIRSTINFRAME : 0);
 	addWindow(c);
 
 	if(bFirstInFrame)
@@ -611,24 +611,24 @@ unsigned int KviMainWindow::consoleCount()
 	return count;
 }
 
-KviConsole * KviMainWindow::firstConsole()
+KviConsoleWindow * KviMainWindow::firstConsole()
 {
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
 	{
-		if(wnd->type() == KVI_WINDOW_TYPE_CONSOLE)return (KviConsole *)wnd;
+		if(wnd->type() == KVI_WINDOW_TYPE_CONSOLE)return (KviConsoleWindow *)wnd;
 	}
 	KVI_ASSERT(false);
 	return 0; //should newer be here!.. but sometimes we are ?
 }
 
-KviConsole * KviMainWindow::firstNotConnectedConsole()
+KviConsoleWindow * KviMainWindow::firstNotConnectedConsole()
 {
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
 	{
 		if(wnd->type() == KVI_WINDOW_TYPE_CONSOLE)
 		{
-			if(!((KviConsole *)wnd)->connectionInProgress())
-				return (KviConsole *)wnd;
+			if(!((KviConsoleWindow *)wnd)->connectionInProgress())
+				return (KviConsoleWindow *)wnd;
 		}
 	}
 	return 0;
@@ -780,7 +780,7 @@ void KviMainWindow::closeEvent(QCloseEvent *e)
 		{
 			if(w->type() == KVI_WINDOW_TYPE_CONSOLE)
 			{
-				if(((KviConsole *)w)->connectionInProgress())
+				if(((KviConsoleWindow *)w)->connectionInProgress())
 				{
 					bGotRunningConnection = true;
 					break;

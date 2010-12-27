@@ -273,7 +273,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip,const QPoint &)
 {
 	QString txt;
 
-	KviConsole * c = g_pActiveWindow->console();
+	KviConsoleWindow * c = g_pActiveWindow->console();
 
 	static QString b = "<b>";
 	static QString nb = "</b>";
@@ -348,7 +348,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 {
 	// The context indicator
 	KviWindow * wnd = g_pActiveWindow;
-	KviConsole * c = wnd ? wnd->console() : 0;
+	KviConsoleWindow * c = wnd ? wnd->console() : 0;
 
 	if(c)
 	{

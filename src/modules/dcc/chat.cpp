@@ -320,7 +320,7 @@ void KviDccChat::ownMessage(const QString &text, bool bUserFeedback)
 						if(bUserFeedback)
 							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
 								m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
-								m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsole::NoNotifications);
+								m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsoleWindow::NoNotifications);
 					}
 					break;
 					case KviCryptEngine::Encoded:
@@ -332,7 +332,7 @@ void KviDccChat::ownMessage(const QString &text, bool bUserFeedback)
 							QString encr = decodeText(encrypted.ptr());
 							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 								m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
-								m_pDescriptor->szLocalHost.toUtf8().data(),encr,KviConsole::NoNotifications);
+								m_pDescriptor->szLocalHost.toUtf8().data(),encr,KviConsoleWindow::NoNotifications);
 						}
 					}
 					break;
@@ -355,7 +355,7 @@ void KviDccChat::ownMessage(const QString &text, bool bUserFeedback)
 				if(bUserFeedback)
 					m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 						m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
-						m_pDescriptor->szLocalHost.toUtf8().data(),tmp,KviConsole::NoNotifications);
+						m_pDescriptor->szLocalHost.toUtf8().data(),tmp,KviConsoleWindow::NoNotifications);
 				return;
 			}
 		}
@@ -367,7 +367,7 @@ void KviDccChat::ownMessage(const QString &text, bool bUserFeedback)
 	if(bUserFeedback)
 		m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 			m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
-			m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsole::NoNotifications);
+			m_pDescriptor->szLocalHost.toUtf8().data(),text,KviConsoleWindow::NoNotifications);
 }
 
 const QString & KviDccChat::localNick()

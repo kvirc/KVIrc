@@ -183,7 +183,7 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("irc_context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uCntx)
 		KVSCF_PARAMETERS_END
 
-		KviConsole * cns;
+		KviConsoleWindow * cns;
 
 		if(KVSCF_pParams->count() > 0)
 		{

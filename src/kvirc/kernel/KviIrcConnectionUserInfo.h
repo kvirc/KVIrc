@@ -32,7 +32,7 @@ class KVIRC_API KviIrcConnectionUserInfo
 {
 	friend class KviIrcConnection;
 	friend class KviIrcServerParser;
-	friend class KviConsole;
+	friend class KviConsoleWindow;
 protected:
 	KviIrcConnectionUserInfo();
 	~KviIrcConnectionUserInfo(){};

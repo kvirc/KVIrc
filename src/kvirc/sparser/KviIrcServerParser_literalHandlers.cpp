@@ -195,7 +195,7 @@ void KviIrcServerParser::parseLiteralJoin(KviIrcMessage *msg)
 	}
 
 	// Now lookup the channel
-	KviConsole * console = msg->console();
+	KviConsoleWindow * console = msg->console();
 	KviChannelWindow * chan = msg->connection()->findChannel(channel);
 
 	bool bIsMe = IS_ME(msg,szNick);
@@ -312,7 +312,7 @@ void KviIrcServerParser::parseLiteralPart(KviIrcMessage *msg)
 	QString szChan = msg->connection()->decodeText(msg->safeParam(0));
 
 	// Now lookup the channel
-	KviConsole * console = msg->console();
+	KviConsoleWindow * console = msg->console();
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
 
 	if(!chan)
@@ -408,7 +408,7 @@ void KviIrcServerParser::parseLiteralQuit(KviIrcMessage *msg)
 	QString szNick,szUser,szHost;
 	msg->decodeAndSplitPrefix(szNick,szUser,szHost);
 
-	KviConsole * console = msg->console();
+	KviConsoleWindow * console = msg->console();
 
 	// NETSPLIT DETECTION STUFF
 	// this doesn't need to be decoded for the moment
@@ -553,7 +553,7 @@ void KviIrcServerParser::parseLiteralKick(KviIrcMessage *msg)
 	QString szChan = msg->connection()->decodeText(msg->safeParam(0));
 	QString victim = msg->connection()->decodeText(msg->safeParam(1));
 
-	KviConsole * console = msg->console();
+	KviConsoleWindow * console = msg->console();
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
 
 	if(!chan){
@@ -711,7 +711,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 	QString szTarget = msg->connection()->decodeText(msg->safeParam(0));
 	QString szMsg = msg->connection()->decodeText(msg->safeTrailing());
 
-	KviConsole * console = msg->console();
+	KviConsoleWindow * console = msg->console();
 	KviRegisteredUser * u = msg->connection()->userDataBase()->registeredUser(szNick,szUser,szHost);
 	//Highlight it?
 
@@ -917,13 +917,13 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 					if(KVI_OPTION_BOOL(KviOption_boolFlashQueryWindowOnNewMessages))
 					{
 						// avoid double window flashing
-						iFlags |= KviConsole::NoWindowFlashing;
+						iFlags |= KviConsoleWindow::NoWindowFlashing;
 						query->demandAttention();
 					}
 					if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewQueryMessages))
 					{
 						// don't send the message to the notifier twice
-						iFlags |= KviConsole::NoNotifier;
+						iFlags |= KviConsoleWindow::NoNotifier;
 						QString szMsg = Qt::escape(szMsgText);
 						//qDebug("KviIrcServerParser_literalHandlers.cpp:908 debug: %s",szMsgText.data());
 						g_pApp->notifierMessage(query,KVI_SMALLICON_QUERYPRIVMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
@@ -1070,7 +1070,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 	QString szNick,szUser,szHost;
 	msg->decodeAndSplitPrefix(szNick,szUser,szHost);
 
-	KviConsole * console = msg->console();
+	KviConsoleWindow * console = msg->console();
 	bool bIsServerNotice = false;
 
 	//Check is it's a server notice (szNick = irc.xxx.net)
@@ -1282,13 +1282,13 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 					if(KVI_OPTION_BOOL(KviOption_boolFlashQueryWindowOnNewMessages))
 					{
 						// avoid double window flashing
-						iFlags |= KviConsole::NoWindowFlashing;
+						iFlags |= KviConsoleWindow::NoWindowFlashing;
 						query->demandAttention();
 					}
 					if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewQueryMessages))
 					{
 						// don't send the message twice to the notifier
-						iFlags |= KviConsole::NoNotifier;
+						iFlags |= KviConsoleWindow::NoNotifier;
 						QString szMsg = Qt::escape(szMsgText);
 						//qDebug("KviIrcServerParser_literalHandlers.cpp:1262 debug: %s",szMsgText.data());
 						g_pApp->notifierMessage(query,KVI_SMALLICON_QUERYNOTICE,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
@@ -1464,7 +1464,7 @@ void KviIrcServerParser::parseLiteralNick(KviIrcMessage *msg)
 	// :source NICK <newnick>
 	QString szNick,szUser,szHost;
 	msg->decodeAndSplitPrefix(szNick,szUser,szHost);
-	KviConsole * console = msg->console();
+	KviConsoleWindow * console = msg->console();
 	QString szNewNick = msg->connection()->decodeText(msg->safeTrailing());
 
 	bool bIsMe = IS_ME(msg,szNick);
@@ -1588,7 +1588,7 @@ void KviIrcServerParser::parseLiteralInvite(KviIrcMessage *msg)
 	QString szTarget = msg->connection()->decodeText(msg->safeParam(0));
 	QString szChannel = msg->connection()->decodeText(msg->safeParam(1));
 
-	KviConsole * console = msg->console();
+	KviConsoleWindow * console = msg->console();
 	KviRegisteredUser * u = msg->connection()->userDataBase()->registeredUser(szNick,szUser,szHost);
 	//Ignore it?
 	if(u)

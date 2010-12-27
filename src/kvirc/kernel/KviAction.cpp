@@ -259,7 +259,7 @@ void KviAction::activeWindowChanged()
 			{
 				if(m_uFlags & WindowOnlyIfUsersSelected)
 				{
-					bool bEnabled = ((KviConsole *)g_pActiveWindow)->selectedCount() > 0;
+					bool bEnabled = ((KviConsoleWindow *)g_pActiveWindow)->selectedCount() > 0;
 					if(bEnabled != isEnabled())
 						setEnabled(bEnabled);
 				} else {

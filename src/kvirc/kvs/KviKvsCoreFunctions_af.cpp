@@ -93,7 +93,7 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETERS_END
 
 		KviWindow * wnd;
-		KviConsole * cons;
+		KviConsoleWindow * cons;
 		if(KVSCF_pParams->count() > 0)
 		{
 			cons = g_pApp->findConsole(uContextId);
@@ -316,7 +316,7 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("irc_context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uCntx)
 		KVSCF_PARAMETERS_END
 
-		KviConsole * cns;
+		KviConsoleWindow * cns;
 
 		if(KVSCF_pParams->count() > 0)
 		{
@@ -615,7 +615,7 @@ namespace KviKvsCoreFunctions
 		{
 			if(KVSCF_pParams->count() > 1)
 			{
-				KviConsole * cons = g_pApp->findConsole(uContextId);
+				KviConsoleWindow * cons = g_pApp->findConsole(uContextId);
 				if(!cons)KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)","kvs"),uContextId);
 				else {
 					if(cons->connection())
@@ -736,7 +736,7 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uContextId)
 		KVSCF_PARAMETERS_END
 
-		KviConsole * cons;
+		KviConsoleWindow * cons;
 		if(KVSCF_pParams->count() > 0)
 		{
 			cons = g_pApp->findConsole(uContextId);
@@ -792,7 +792,7 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("nick",KVS_PT_STRING,KVS_PF_OPTIONAL,szNick)
 		KVSCF_PARAMETERS_END
 
-		KviConsole * cons;
+		KviConsoleWindow * cons;
 		if(!(szServer.isEmpty() && szNick.isEmpty()))
 		{
 			cons = g_pApp->findConsole(szServer,szNick);
@@ -1393,7 +1393,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KviConsole * c = g_pApp->topmostConnectedConsole();
+		KviConsoleWindow * c = g_pApp->topmostConnectedConsole();
 		// FIXME: The window id's should be numeric!!!
 		KVSCF_pRetBuffer->setString(c ? c->id() : "0");
 		return true;

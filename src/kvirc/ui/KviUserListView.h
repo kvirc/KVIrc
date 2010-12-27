@@ -55,7 +55,7 @@ class QLabel;
 class QScrollBar;
 class KviUserListView;
 class KviUserListViewArea;
-class KviConsole;
+class KviConsoleWindow;
 class KviWindow;
 
 #define KVI_USERLISTVIEW_GRIDTYPE_3DGRID 0
@@ -223,7 +223,7 @@ class KVIRC_API KviUserListView : public KviWindowToolWidget
 	friend class KviUserListEntry;
 	friend class KviUserListViewArea;
 	friend class KviUserListToolTip;
-	friend class KviConsole;
+	friend class KviConsoleWindow;
 	friend class KviChannelWindow;
 	friend class KviQueryWindow;
 	Q_OBJECT

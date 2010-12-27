@@ -34,14 +34,14 @@
 #include <QObject>
 #include <QTimer>
 
-class KviConsole;
+class KviConsoleWindow;
 class KviIrcMessage;
 class KviIrcMask;
 class KviIrcConnection;
 
 class KVIRC_API KviNotifyListManager : public QObject
 {
-	friend class KviConsole;
+	friend class KviConsoleWindow;
 	friend class KviConnectionInfo;
 	friend class KviIrcServerParser;
 	friend class KviIrcConnection;
@@ -50,7 +50,7 @@ protected:
 	KviNotifyListManager(KviIrcConnection * pConnection);
 	~KviNotifyListManager();
 protected:
-	KviConsole       * m_pConsole;
+	KviConsoleWindow       * m_pConsole;
 	KviIrcConnection * m_pConnection;
 protected:
 	virtual void start();
@@ -61,12 +61,12 @@ protected:
 	void notifyOnLine(const QString &nick,const QString &user = QString(),const QString &host = QString(),const QString &szReason = QString(),bool bJoin=true);
 	void notifyOffLine(const QString &nick,const QString &user = QString(),const QString &host = QString(),const QString &szReason = QString());
 public:
-	KviConsole * console(){ return m_pConsole;  };
+	KviConsoleWindow * console(){ return m_pConsole;  };
 };
 
 class KVIRC_API KviIsOnNotifyListManager : public KviNotifyListManager
 {
-	friend class KviConsole;
+	friend class KviConsoleWindow;
 	friend class KviIrcServerParser;
 	friend class KviIrcConnection;
 	Q_OBJECT
@@ -114,7 +114,7 @@ private slots:
 
 class KVIRC_API KviStupidNotifyListManager : public KviNotifyListManager
 {
-	friend class KviConsole;
+	friend class KviConsoleWindow;
 	friend class KviIrcServerParser;
 	friend class KviIrcConnection;
 	Q_OBJECT
@@ -139,7 +139,7 @@ private:
 
 class KVIRC_API KviWatchNotifyListManager : public KviNotifyListManager
 {
-	friend class KviConsole;
+	friend class KviConsoleWindow;
 	friend class KviIrcServerParser;
 	friend class KviIrcConnection;
 	Q_OBJECT

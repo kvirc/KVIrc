@@ -35,7 +35,7 @@
 #include <QDateTime>
 #include <QObject>
 
-class KviConsole;
+class KviConsoleWindow;
 class KviDccBroker;
 class KviWindow;
 class KviDccBox;

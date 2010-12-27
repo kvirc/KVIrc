@@ -67,7 +67,7 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 
-KviIrcContext::KviIrcContext(KviConsole * pConsole)
+KviIrcContext::KviIrcContext(KviConsoleWindow * pConsole)
 : QObject(0)
 {
 	m_uId = g_uNextIrcContextId;

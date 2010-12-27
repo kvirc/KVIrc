@@ -92,7 +92,7 @@
 extern KVIRC_API KviIrcServerDataBase           * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
 
-KviConsole::KviConsole(KviMainWindow * lpFrm,int iFlags)
+KviConsoleWindow::KviConsoleWindow(KviMainWindow * lpFrm,int iFlags)
 #ifdef COMPILE_ON_WINDOWS
 : KviWindow(KVI_WINDOW_TYPE_CONSOLE,lpFrm,__tr2qs("CONSOLE"),0)
 #else
@@ -152,7 +152,7 @@ KviConsole::KviConsole(KviMainWindow * lpFrm,int iFlags)
 	applyOptions();
 }
 
-void KviConsole::recentUrlsChanged()
+void KviConsoleWindow::recentUrlsChanged()
 {
 	QString cur = m_pAddressEdit->currentText();
 	m_pAddressEdit->clear();
@@ -174,14 +174,14 @@ void KviConsole::recentUrlsChanged()
 	}
 }
 
-bool KviConsole::connectionInProgress()
+bool KviConsoleWindow::connectionInProgress()
 {
 	if(context()->asynchronousConnectionData() != 0)return true;
 	if(context()->state() != KviIrcContext::Idle)return true;
 	return false;
 }
 
-KviConsole::~KviConsole()
+KviConsoleWindow::~KviConsoleWindow()
 {
 	// FIXME: #warning "WARNING : THIS SHOULD BECOME A COMMAND /QUIT $option() so the idents are parsed!"
 
@@ -198,7 +198,7 @@ KviConsole::~KviConsole()
 	delete m_pTmpHighLightedChannels;
 }
 
-void KviConsole::triggerCreationEvents()
+void KviConsoleWindow::triggerCreationEvents()
 {
 	if(m_iFlags & KVI_CONSOLE_FLAG_FIRSTINAPP) // this is the first context in the application
 	{
@@ -216,7 +216,7 @@ void KviConsole::triggerCreationEvents()
 	KVS_TRIGGER_EVENT_0(KviEvent_OnIrcContextCreated,this);
 }
 
-void KviConsole::completeChannel(const QString &word,KviPointerList<QString> * matches)
+void KviConsoleWindow::completeChannel(const QString &word,KviPointerList<QString> * matches)
 {
 	// FIXME: first look in our context ?
 	/*
@@ -236,7 +236,7 @@ void KviConsole::completeChannel(const QString &word,KviPointerList<QString> * m
 	}
 }
 
-void KviConsole::completeServer(const QString &word, KviPointerList<QString> * matches)
+void KviConsoleWindow::completeServer(const QString &word, KviPointerList<QString> * matches)
 {
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).end(); ++it)
 	{
@@ -253,7 +253,7 @@ void KviConsole::completeServer(const QString &word, KviPointerList<QString> * m
 	}
 }
 
-void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &buffer)
+void KviConsoleWindow::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &buffer)
 {
 	KviRegisteredMask *u = g_pRegisteredUserDataBase->findMatchingMask(nick,e->user(),e->host());
 
@@ -352,17 +352,17 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 	}
 }
 
-void KviConsole::toggleNotifyView()
+void KviConsoleWindow::toggleNotifyView()
 {
 	showNotifyList(!m_pNotifyListView->isVisible());
 }
 
-void KviConsole::executeInternalCommand(int index)
+void KviConsoleWindow::executeInternalCommand(int index)
 {
 	KviKvsScript::run(kvi_getInternalCommandBuffer(index),this);
 }
 
-void KviConsole::saveProperties(KviConfigurationFile *cfg)
+void KviConsoleWindow::saveProperties(KviConfigurationFile *cfg)
 {
 	KviWindow::saveProperties(cfg);
 	QList<int> sizes;
@@ -371,12 +371,12 @@ void KviConsole::saveProperties(KviConfigurationFile *cfg)
 	cfg->writeEntry("NotifyListViewVisible",m_pNotifyViewButton->isChecked());
 }
 
-void KviConsole::getBaseLogFileName(QString &buffer)
+void KviConsoleWindow::getBaseLogFileName(QString &buffer)
 {
 	buffer=QString("CONSOLE%1").arg(context()->id());
 }
 
-void KviConsole::showNotifyList(bool bShow)
+void KviConsoleWindow::showNotifyList(bool bShow)
 {
 	if(!bShow)
 	{
@@ -388,7 +388,7 @@ void KviConsole::showNotifyList(bool bShow)
 	}
 }
 
-void KviConsole::loadProperties(KviConfigurationFile *cfg)
+void KviConsoleWindow::loadProperties(KviConfigurationFile *cfg)
 {
 	int iWidth = width();
 	QList<int> def;
@@ -405,20 +405,20 @@ void KviConsole::loadProperties(KviConfigurationFile *cfg)
 	showNotifyList(cfg->readBoolEntry("NotifyListViewVisible",false));
 }
 
-void KviConsole::textViewRightClicked()
+void KviConsoleWindow::textViewRightClicked()
 {
 	KVS_TRIGGER_EVENT_0(KviEvent_OnConsolePopupRequest,this);
 }
 
 
-KviWindow * KviConsole::activeWindow()
+KviWindow * KviConsoleWindow::activeWindow()
 {
 	if(!g_pActiveWindow)return this;
 	if(g_pActiveWindow->console() == this)return g_pActiveWindow;
 	return this;
 }
 
-void KviConsole::ircUriChanged(const QString & text){
+void KviConsoleWindow::ircUriChanged(const QString & text){
 	if(KviIrcUrl::run(text,KviIrcUrl::CurrentContext,this) & KviIrcUrl::InvalidProtocol)
 	{
 		KviMessageBox::warning(__tr2qs("KVIrc can accept only irc://, irc6://, ircs:// or irc6s:// URL's\n"
@@ -426,7 +426,7 @@ void KviConsole::ircUriChanged(const QString & text){
 	}
 }
 
-void KviConsole::updateUri()
+void KviConsoleWindow::updateUri()
 {
 	QString uri;
 	if(connection())
@@ -459,7 +459,7 @@ void KviConsole::updateUri()
 	}
 }
 
-void KviConsole::connectionAttached()
+void KviConsoleWindow::connectionAttached()
 {
 	//need to update URI
 	connect(m_pContext->connection(),SIGNAL(chanListChanged()),this,SLOT(updateUri()));
@@ -467,14 +467,14 @@ void KviConsole::connectionAttached()
 	m_pNotifyListView->setUserDataBase(connection()->userDataBase());
 }
 
-void KviConsole::connectionDetached()
+void KviConsoleWindow::connectionDetached()
 {
 	//need to update URI?
 	m_pNotifyListView->partAll();
 	m_pNotifyListView->setUserDataBase(0); // this is rather for crash tests
 }
 
-void KviConsole::closeEvent(QCloseEvent *e)
+void KviConsoleWindow::closeEvent(QCloseEvent *e)
 {
 	if(g_pFrame->consoleCount() > 1)
 	{
@@ -543,7 +543,7 @@ void KviConsole::closeEvent(QCloseEvent *e)
 }
 
 // internal helper for applyHighlighting
-int KviConsole::triggerOnHighlight(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg,const QString &trigger)
+int KviConsoleWindow::triggerOnHighlight(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg,const QString &trigger)
 {
 	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && wnd!=g_pActiveWindow)
 		KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound))));
@@ -560,7 +560,7 @@ int KviConsole::triggerOnHighlight(KviWindow *wnd,int type,const QString &nick,c
 	return KVI_OUT_HIGHLIGHT;
 }
 
-void KviConsole::addHighlightedChannel(const QString & szChan)
+void KviConsoleWindow::addHighlightedChannel(const QString & szChan)
 {
 	if(m_pTmpHighLightedChannels->contains(szChan,Qt::CaseInsensitive))
 		return;
@@ -568,13 +568,13 @@ void KviConsole::addHighlightedChannel(const QString & szChan)
    		m_pTmpHighLightedChannels->append(szChan);
 }
 
-void KviConsole::removeHighlightedChannel(const QString & szChan)
+void KviConsoleWindow::removeHighlightedChannel(const QString & szChan)
 {
 	m_pTmpHighLightedChannels->removeOne(szChan);
 }
 
 // if it returns -1 you should just return and not display the message
-int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg)
+int KviConsoleWindow::applyHighlighting(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg)
 {
 	QString szPattern=KVI_OPTION_STRING(KviOption_stringWordSplitters);
 	QString szSource;
@@ -660,7 +660,7 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 }
 
 
-void KviConsole::outputPrivmsg(KviWindow *wnd,
+void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 	int type,
 	const QString &daNick,
 	const QString &daUser,
@@ -852,7 +852,7 @@ void KviConsole::outputPrivmsg(KviWindow *wnd,
 	else wnd->outputNoFmt(type,szMessage);
 }
 
-void KviConsole::avatarChangedUpdateWindows(const QString &nick,const QString &textLine)
+void KviConsoleWindow::avatarChangedUpdateWindows(const QString &nick,const QString &textLine)
 {
 	if(!connection())return; //ops...
 
@@ -876,7 +876,7 @@ void KviConsole::avatarChangedUpdateWindows(const QString &nick,const QString &t
 	m_pNotifyListView->avatarChanged(nick); // recalc the item height here too!
 }
 
-void KviConsole::avatarChanged(KviAvatar * avatar,const QString &nick,const QString &user,const QString &host,const QString &textLine)
+void KviConsoleWindow::avatarChanged(KviAvatar * avatar,const QString &nick,const QString &user,const QString &host,const QString &textLine)
 {
 	if(!connection())return; //ops...
 
@@ -909,7 +909,7 @@ void KviConsole::avatarChanged(KviAvatar * avatar,const QString &nick,const QStr
 	avatarChangedUpdateWindows(nick,textLine);
 }
 
-void KviConsole::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const QString &user,const QString &host)
+void KviConsoleWindow::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const QString &user,const QString &host)
 {
 	// look it up in the cache
 	QString szAvatar = KviAvatarCache::instance()->lookup(KviIrcMask(nick,user,host),currentNetworkName());
@@ -949,7 +949,7 @@ void KviConsole::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const
 	}
 }
 
-void KviConsole::resetAvatarForMatchingUsers(KviRegisteredUser * u)
+void KviConsoleWindow::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 {
 	if(!connection())return;
 
@@ -972,7 +972,7 @@ void KviConsole::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 	}
 }
 
-KviAvatar * KviConsole::setAvatar(const QString &nick,const QString &user,const QString &host,const QString &szLocalPath,const QString &szName)
+KviAvatar * KviConsoleWindow::setAvatar(const QString &nick,const QString &user,const QString &host,const QString &szLocalPath,const QString &szName)
 {
 	if(!connection())return 0;
 	KviIrcUserEntry * e = connection()->userDataBase()->find(nick);
@@ -1004,7 +1004,7 @@ KviAvatar * KviConsole::setAvatar(const QString &nick,const QString &user,const 
 	return 0;
 }
 
-KviAvatar * KviConsole::defaultAvatarFromOptions()
+KviAvatar * KviConsoleWindow::defaultAvatarFromOptions()
 {
 	QPixmap * avatar = KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar).pixmap();
 
@@ -1026,7 +1026,7 @@ KviAvatar * KviConsole::defaultAvatarFromOptions()
 	return 0;
 }
 
-KviAvatar * KviConsole::currentAvatar()
+KviAvatar * KviConsoleWindow::currentAvatar()
 {
 	if(!connection())
 		return 0;
@@ -1051,7 +1051,7 @@ KviAvatar * KviConsole::currentAvatar()
 	return a;
 }
 
-void KviConsole::setAvatarFromOptions()
+void KviConsoleWindow::setAvatarFromOptions()
 {
 	if(!connection())
 		return;
@@ -1065,7 +1065,7 @@ void KviConsole::setAvatarFromOptions()
 	avatarChanged(a,connection()->userInfo()->nickName(),QString(),QString(),QString());
 }
 
-void KviConsole::applyOptions()
+void KviConsoleWindow::applyOptions()
 {
 	m_pAddressEdit->applyOptions();
 	m_pNotifyListView->applyOptions();
@@ -1093,7 +1093,7 @@ void KviConsole::applyOptions()
 	}
 }
 
-void KviConsole::resizeEvent(QResizeEvent *)
+void KviConsoleWindow::resizeEvent(QResizeEvent *)
 {
 	int hght = m_pInput->heightHint();
 	int hght2 = m_pButtonBox->sizeHint().height();
@@ -1102,13 +1102,13 @@ void KviConsole::resizeEvent(QResizeEvent *)
 	m_pInput->setGeometry(0,height() - hght,width(),hght);
 }
 
-QSize KviConsole::sizeHint() const
+QSize KviConsoleWindow::sizeHint() const
 {
 	QSize ret(m_pIrcView->sizeHint().height(),m_pIrcView->sizeHint().height() + m_pInput->heightHint());
 	return ret;
 }
 
-void KviConsole::fillStatusString()
+void KviConsoleWindow::fillStatusString()
 {
 	switch(context()->state())
 	{
@@ -1149,7 +1149,7 @@ void KviConsole::fillStatusString()
 	}
 }
 
-void KviConsole::fillCaptionBuffers()
+void KviConsoleWindow::fillCaptionBuffers()
 {
 	fillStatusString();
 
@@ -1159,12 +1159,12 @@ void KviConsole::fillCaptionBuffers()
 	m_szPlainTextCaption += QChar(']');
 }
 
-QPixmap * KviConsole::myIconPtr()
+QPixmap * KviConsoleWindow::myIconPtr()
 {
 	return g_pIconManager->getSmallIcon(isConnected() ? KVI_SMALLICON_LINKS : KVI_SMALLICON_CONSOLE);
 }
 
-void KviConsole::getWindowListTipText(QString &buffer)
+void KviConsoleWindow::getWindowListTipText(QString &buffer)
 {
 	fillStatusString();
 

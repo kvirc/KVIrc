@@ -48,10 +48,10 @@ cat >> instances.h <<EOF
 // so any change should go in that script
 //
 
-#include "kvi_optionswidget.h"
-#include "kvi_module.h"
-#include "kvi_pointerlist.h"
-#include "kvi_qstring.h"
+#include "KviOptionsWidget.h"
+#include "KviModule.h"
+#include "KviPointerList.h"
+#include "KviQString.h"
 
 typedef struct _KviOptionsWidgetInstanceEntry KviOptionsWidgetInstanceEntry;
 
@@ -152,8 +152,8 @@ done
 #################################################################################
 cat >> instances.cpp <<EOF
 
-#include "kvi_locale.h"
-#include "kvi_iconmanager.h"
+#include "KviLocale.h"
+#include "KviIconManager.h"
 #include "instances.h"
 
 int g_iOptionWidgetInstances = 0;
