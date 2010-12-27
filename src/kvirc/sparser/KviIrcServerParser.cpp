@@ -145,5 +145,5 @@ void KviIrcServerParser::parseMessage(const char * message,KviIrcConnection * pC
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_sparser.moc"
+#include "KviIrcServerParser.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

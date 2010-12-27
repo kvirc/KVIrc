@@ -2533,5 +2533,5 @@ void KviInputEditor::dummy()
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_input_editor.moc"
+#include "KviInputEditor.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

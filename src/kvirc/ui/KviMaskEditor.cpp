@@ -351,5 +351,5 @@ void KviMaskEditor::itemDoubleClicked( QTreeWidgetItem * pItem, int )
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_maskeditor.moc"
+#include "KviMaskEditor.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

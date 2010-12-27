@@ -696,5 +696,5 @@ QChar KviTopicWidget::getSubstituteChar(unsigned short control_code)
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_topicw.moc"
+#include "KviTopicWidget.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

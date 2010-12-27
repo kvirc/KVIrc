@@ -772,5 +772,5 @@ void KviOptionsWidget::switchToAdvancedPage()
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_optionswidget.moc"
+#include "KviOptionsWidget.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

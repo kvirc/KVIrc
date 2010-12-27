@@ -1290,5 +1290,5 @@ bool KviWatchNotifyListManager::handleWatchReply(KviIrcMessage *msg)
 
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_notifylist.moc"
+#include "KviNotifyList.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

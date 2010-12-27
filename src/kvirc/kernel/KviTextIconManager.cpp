@@ -305,5 +305,5 @@ void KviTextIconManager::save(const QString & szFileName)
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_texticonmanager.moc"
+#include "KviTextIconManager.moc"
 #endif //COMPILE_USE_STANDALONE_MOC_SOURCES

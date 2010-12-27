@@ -902,5 +902,5 @@ QByteArray KviQueryWindow::loadLogFile(const QString & szFileName, bool bGzip)
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_query.moc"
+#include "KviQueryWindow.moc"
 #endif //COMPILE_USE_STANDALONE_MOC_SOURCES

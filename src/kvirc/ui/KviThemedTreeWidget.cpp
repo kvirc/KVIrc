@@ -90,5 +90,5 @@ void KviThemedTreeWidget::paintEvent(QPaintEvent *e)
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_themedtreewidget.moc"
+#include "KviThemedTreeWidget.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

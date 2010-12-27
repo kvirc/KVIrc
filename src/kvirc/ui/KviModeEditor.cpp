@@ -437,5 +437,5 @@ inline bool KviModeEditor::modeNeedsParameterOnlyWhenSet(char cMode)
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_modeeditor.moc"
+#include "KviModeEditor.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

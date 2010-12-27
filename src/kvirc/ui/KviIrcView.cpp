@@ -2778,5 +2778,5 @@ void KviIrcView::scrollToMarker()
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_ircview.moc"
+#include "KviIrcView.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

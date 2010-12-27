@@ -1396,5 +1396,5 @@ KviIrcContext * KviWindow::context()
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_window.moc"
+#include "KviWindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -2475,5 +2475,5 @@ void KviUserListViewArea::wheelEvent(QWheelEvent * e)
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_userlistview.moc"
+#include "KviUserListView.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

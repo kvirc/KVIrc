@@ -413,5 +413,5 @@ void KviMenuBar::addMenu(const QString &text,KviKvsPopupMenu * p,int index)
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_menubar.moc"
+#include "KviMenuBar.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

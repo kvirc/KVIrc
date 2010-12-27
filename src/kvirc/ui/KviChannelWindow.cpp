@@ -2023,5 +2023,5 @@ QByteArray KviChannelWindow::loadLogFile(const QString & szFileName, bool bGzip)
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "kvi_channel.moc"
+	#include "KviChannelWindow.moc"
 #endif

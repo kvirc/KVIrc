@@ -1280,5 +1280,5 @@ void KviConsoleWindow::getWindowListTipText(QString &buffer)
 	buffer += "</table>";
 }
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_console.moc"
+#include "KviConsoleWindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

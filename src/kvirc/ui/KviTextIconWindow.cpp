@@ -184,5 +184,5 @@ void KviTextIconWindow::cellSelected(int row, int column)
 
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_texticonwin.moc"
+#include "KviTextIconWindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

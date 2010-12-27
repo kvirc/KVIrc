@@ -259,5 +259,5 @@ bool KviFileDialog::askForOpenFileNames(QStringList & szBuffer, const QString & 
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_filedialog.moc"
+#include "KviFileDialog.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

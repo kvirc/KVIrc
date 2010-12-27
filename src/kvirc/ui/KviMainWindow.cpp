@@ -1148,6 +1148,6 @@ void KviMainWindow::setUsesBigPixmaps(bool bUse)
 	}
 }
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_frame.moc"
+#include "KviMainWindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

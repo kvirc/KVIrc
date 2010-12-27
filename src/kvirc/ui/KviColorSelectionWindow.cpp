@@ -127,5 +127,5 @@ void KviColorWindow::timerEvent(QTimerEvent *)
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_colorwin.moc"
+#include "KviColorSelectionWindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

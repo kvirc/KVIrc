@@ -262,5 +262,5 @@ void KviLagMeter::lagCheckAbort(const char * key)
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_lagmeter.moc"
+#include "KviLagMeter.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

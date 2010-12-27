@@ -369,6 +369,6 @@
 		*ppInfo = 0;
 	}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "kvi_cryptcontroller.moc"
+	#include "KviCryptController.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 #endif //COMPILE_CRYPT_SUPPORT

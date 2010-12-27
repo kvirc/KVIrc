@@ -442,5 +442,5 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 	#undef Bool
 #endif
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_irctoolbar.moc"
+#include "KviIrcToolBar.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
