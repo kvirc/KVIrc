@@ -14,6 +14,10 @@ INCLUDE_DIRECTORIES(
 	../kvilib/system/
 	../kvirc/kernel/
 	../kvirc/kvs/
+	../kvirc/kvs/event/
+	../kvirc/kvs/object/
+	../kvirc/kvs/parser/
+	../kvirc/kvs/tree/
 	../kvirc/module/
 	../kvirc/sparser/
 	../kvirc/ui/

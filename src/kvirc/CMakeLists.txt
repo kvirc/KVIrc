@@ -3,6 +3,10 @@
 INCLUDE_DIRECTORIES(
 	kernel
 	kvs
+	kvs/event
+	kvs/object
+	kvs/parser
+	kvs/tree
 	module
 	sparser
 	ui
@@ -73,13 +77,13 @@ SET(kvirc_MOC_HDRS
 	kvs/KviKvsAsyncDnsOperation.h
 	kvs/KviKvsAsyncOperation.h
 	kvs/KviKvsDnsManager.h
-	kvs/KviKvsEventManager.h
-	kvs/KviKvsObject.h
 	kvs/KviKvsPopupMenu.h
 	kvs/KviKvsPopupManager.h
 	kvs/KviKvsProcessManager.h
 	kvs/KviKvsTimerManager.h
 	kvs/KviKvsUserAction.h
+	kvs/event/KviKvsEventManager.h
+	kvs/object/KviKvsObject.h
 	kernel/KviAction.h
 	kernel/KviActionManager.h
 	kernel/KviApplication.h
@@ -184,27 +188,10 @@ SET(kvirc_SRCS
 	kvs/KviKvsCoreSimpleCommands_mr.cpp
 	kvs/KviKvsCoreSimpleCommands_sz.cpp
 	kvs/KviKvsDnsManager.cpp
-	kvs/KviKvsEvent.cpp
-	kvs/KviKvsEventHandler.cpp
-	kvs/KviKvsEventManager.cpp
-	kvs/KviKvsEventTable.cpp
 	kvs/KviKvsHash.cpp
 	kvs/KviKvsKernel.cpp
 	kvs/KviKvsModuleInterface.cpp
-	kvs/KviKvsObject.cpp
-	kvs/KviKvsObjectClass.cpp
-	kvs/KviKvsObjectController.cpp
-	kvs/KviKvsObjectFunctionCall.cpp
-	kvs/KviKvsObjectFunctionHandler.cpp
-	kvs/KviKvsObjectFunctionHandlerImpl.cpp
 	kvs/KviKvsParameterProcessor.cpp
-	kvs/KviKvsParser.cpp
-	kvs/KviKvsParser_command.cpp
-	kvs/KviKvsParser_comment.cpp
-	kvs/KviKvsParser_dollar.cpp
-	kvs/KviKvsParser_expression.cpp
-	kvs/KviKvsParser_lside.cpp
-	kvs/KviKvsParser_specialCommands.cpp
 	kvs/KviKvsPopupManager.cpp
 	kvs/KviKvsPopupMenu.cpp
 	kvs/KviKvsProcessManager.cpp
@@ -216,69 +203,86 @@ SET(kvirc_SRCS
 	kvs/KviKvsScriptAddonManager.cpp
 	kvs/KviKvsSwitchList.cpp
 	kvs/KviKvsTimerManager.cpp
-	kvs/KviKvsTreeNodeAliasFunctionCall.cpp
-	kvs/KviKvsTreeNodeAliasSimpleCommand.cpp
-	kvs/KviKvsTreeNodeArrayCount.cpp
-	kvs/KviKvsTreeNodeArrayElement.cpp
-	kvs/KviKvsTreeNodeArrayOrHashElement.cpp
-	kvs/KviKvsTreeNodeArrayReferenceAssert.cpp
-	kvs/KviKvsTreeNodeBase.cpp
-	kvs/KviKvsTreeNodeBaseObjectFunctionCall.cpp
-	kvs/KviKvsTreeNodeCallbackCommand.cpp
-	kvs/KviKvsTreeNodeCommand.cpp
-	kvs/KviKvsTreeNodeCommandEvaluation.cpp
-	kvs/KviKvsTreeNodeCommandWithParameters.cpp
-	kvs/KviKvsTreeNodeCompositeData.cpp
-	kvs/KviKvsTreeNodeConstantData.cpp
-	kvs/KviKvsTreeNodeCoreCallbackCommand.cpp
-	kvs/KviKvsTreeNodeCoreFunctionCall.cpp
-	kvs/KviKvsTreeNodeCoreSimpleCommand.cpp
-	kvs/KviKvsTreeNodeData.cpp
-	kvs/KviKvsTreeNodeDataList.cpp
-	kvs/KviKvsTreeNodeExpression.cpp
-	kvs/KviKvsTreeNodeExpressionReturn.cpp
-	kvs/KviKvsTreeNodeExtendedScopeVariable.cpp
-	kvs/KviKvsTreeNodeFunctionCall.cpp
-	kvs/KviKvsTreeNodeGlobalVariable.cpp
-	kvs/KviKvsTreeNodeHashCount.cpp
-	kvs/KviKvsTreeNodeHashElement.cpp
-	kvs/KviKvsTreeNodeHashReferenceAssert.cpp
-	kvs/KviKvsTreeNodeIndirectData.cpp
-	kvs/KviKvsTreeNodeInstruction.cpp
-	kvs/KviKvsTreeNodeInstructionBlock.cpp
-	kvs/KviKvsTreeNodeLocalVariable.cpp
-	kvs/KviKvsTreeNodeModuleCallbackCommand.cpp
-	kvs/KviKvsTreeNodeModuleFunctionCall.cpp
-	kvs/KviKvsTreeNodeModuleSimpleCommand.cpp
-	kvs/KviKvsTreeNodeMultipleParameterIdentifier.cpp
-	kvs/KviKvsTreeNodeObjectField.cpp
-	kvs/KviKvsTreeNodeObjectFunctionCall.cpp
-	kvs/KviKvsTreeNodeOperation.cpp
-	kvs/KviKvsTreeNodeParameterReturn.cpp
-	kvs/KviKvsTreeNodeRebindingSwitch.cpp
-	kvs/KviKvsTreeNodeScopeOperator.cpp
-	kvs/KviKvsTreeNodeSimpleCommand.cpp
-	kvs/KviKvsTreeNodeSingleParameterIdentifier.cpp
-	kvs/KviKvsTreeNodeSpecialCommand.cpp
-	kvs/KviKvsTreeNodeSpecialCommandBreak.cpp
-	kvs/KviKvsTreeNodeSpecialCommandClass.cpp
-	kvs/KviKvsTreeNodeSpecialCommandContinue.cpp
-	kvs/KviKvsTreeNodeSpecialCommandDefpopup.cpp
-	kvs/KviKvsTreeNodeSpecialCommandDo.cpp
-	kvs/KviKvsTreeNodeSpecialCommandFor.cpp
-	kvs/KviKvsTreeNodeSpecialCommandForeach.cpp
-	kvs/KviKvsTreeNodeSpecialCommandIf.cpp
-	kvs/KviKvsTreeNodeSpecialCommandSwitch.cpp
-	kvs/KviKvsTreeNodeSpecialCommandUnset.cpp
-	kvs/KviKvsTreeNodeSpecialCommandWhile.cpp
-	kvs/KviKvsTreeNodeStringCase.cpp
-	kvs/KviKvsTreeNodeSwitchList.cpp
-	kvs/KviKvsTreeNodeThisObjectFunctionCall.cpp
-	kvs/KviKvsTreeNodeVariable.cpp
-	kvs/KviKvsTreeNodeVoidFunctionCall.cpp
 	kvs/KviKvsUserAction.cpp
 	kvs/KviKvsVariant.cpp
 	kvs/KviKvsVariantList.cpp
+	kvs/event/KviKvsEvent.cpp
+	kvs/event/KviKvsEventHandler.cpp
+	kvs/event/KviKvsEventManager.cpp
+	kvs/event/KviKvsEventTable.cpp
+	kvs/object/KviKvsObject.cpp
+	kvs/object/KviKvsObjectClass.cpp
+	kvs/object/KviKvsObjectController.cpp
+	kvs/object/KviKvsObjectFunctionCall.cpp
+	kvs/object/KviKvsObjectFunctionHandler.cpp
+	kvs/object/KviKvsObjectFunctionHandlerImpl.cpp
+	kvs/parser/KviKvsParser.cpp
+	kvs/parser/KviKvsParser_command.cpp
+	kvs/parser/KviKvsParser_comment.cpp
+	kvs/parser/KviKvsParser_dollar.cpp
+	kvs/parser/KviKvsParser_expression.cpp
+	kvs/parser/KviKvsParser_lside.cpp
+	kvs/parser/KviKvsParser_specialCommands.cpp
+	kvs/tree/KviKvsTreeNodeAliasFunctionCall.cpp
+	kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp
+	kvs/tree/KviKvsTreeNodeArrayCount.cpp
+	kvs/tree/KviKvsTreeNodeArrayElement.cpp
+	kvs/tree/KviKvsTreeNodeArrayOrHashElement.cpp
+	kvs/tree/KviKvsTreeNodeArrayReferenceAssert.cpp
+	kvs/tree/KviKvsTreeNodeBase.cpp
+	kvs/tree/KviKvsTreeNodeBaseObjectFunctionCall.cpp
+	kvs/tree/KviKvsTreeNodeCallbackCommand.cpp
+	kvs/tree/KviKvsTreeNodeCommand.cpp
+	kvs/tree/KviKvsTreeNodeCommandEvaluation.cpp
+	kvs/tree/KviKvsTreeNodeCommandWithParameters.cpp
+	kvs/tree/KviKvsTreeNodeCompositeData.cpp
+	kvs/tree/KviKvsTreeNodeConstantData.cpp
+	kvs/tree/KviKvsTreeNodeCoreCallbackCommand.cpp
+	kvs/tree/KviKvsTreeNodeCoreFunctionCall.cpp
+	kvs/tree/KviKvsTreeNodeCoreSimpleCommand.cpp
+	kvs/tree/KviKvsTreeNodeData.cpp
+	kvs/tree/KviKvsTreeNodeDataList.cpp
+	kvs/tree/KviKvsTreeNodeExpression.cpp
+	kvs/tree/KviKvsTreeNodeExpressionReturn.cpp
+	kvs/tree/KviKvsTreeNodeExtendedScopeVariable.cpp
+	kvs/tree/KviKvsTreeNodeFunctionCall.cpp
+	kvs/tree/KviKvsTreeNodeGlobalVariable.cpp
+	kvs/tree/KviKvsTreeNodeHashCount.cpp
+	kvs/tree/KviKvsTreeNodeHashElement.cpp
+	kvs/tree/KviKvsTreeNodeHashReferenceAssert.cpp
+	kvs/tree/KviKvsTreeNodeIndirectData.cpp
+	kvs/tree/KviKvsTreeNodeInstruction.cpp
+	kvs/tree/KviKvsTreeNodeInstructionBlock.cpp
+	kvs/tree/KviKvsTreeNodeLocalVariable.cpp
+	kvs/tree/KviKvsTreeNodeModuleCallbackCommand.cpp
+	kvs/tree/KviKvsTreeNodeModuleFunctionCall.cpp
+	kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp
+	kvs/tree/KviKvsTreeNodeMultipleParameterIdentifier.cpp
+	kvs/tree/KviKvsTreeNodeObjectField.cpp
+	kvs/tree/KviKvsTreeNodeObjectFunctionCall.cpp
+	kvs/tree/KviKvsTreeNodeOperation.cpp
+	kvs/tree/KviKvsTreeNodeParameterReturn.cpp
+	kvs/tree/KviKvsTreeNodeRebindingSwitch.cpp
+	kvs/tree/KviKvsTreeNodeScopeOperator.cpp
+	kvs/tree/KviKvsTreeNodeSimpleCommand.cpp
+	kvs/tree/KviKvsTreeNodeSingleParameterIdentifier.cpp
+	kvs/tree/KviKvsTreeNodeSpecialCommand.cpp
+	kvs/tree/KviKvsTreeNodeSpecialCommandBreak.cpp
+	kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp
+	kvs/tree/KviKvsTreeNodeSpecialCommandContinue.cpp
+	kvs/tree/KviKvsTreeNodeSpecialCommandDefpopup.cpp
+	kvs/tree/KviKvsTreeNodeSpecialCommandDo.cpp
+	kvs/tree/KviKvsTreeNodeSpecialCommandFor.cpp
+	kvs/tree/KviKvsTreeNodeSpecialCommandForeach.cpp
+	kvs/tree/KviKvsTreeNodeSpecialCommandIf.cpp
+	kvs/tree/KviKvsTreeNodeSpecialCommandSwitch.cpp
+	kvs/tree/KviKvsTreeNodeSpecialCommandUnset.cpp
+	kvs/tree/KviKvsTreeNodeSpecialCommandWhile.cpp
+	kvs/tree/KviKvsTreeNodeStringCase.cpp
+	kvs/tree/KviKvsTreeNodeSwitchList.cpp
+	kvs/tree/KviKvsTreeNodeThisObjectFunctionCall.cpp
+	kvs/tree/KviKvsTreeNodeVariable.cpp
+	kvs/tree/KviKvsTreeNodeVoidFunctionCall.cpp
 	kernel/KviAction.cpp
 	kernel/KviActionManager.cpp
 	kernel/KviApplication.cpp
