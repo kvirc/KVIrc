@@ -43,7 +43,7 @@
 #include "kvi_console.h"
 #include "kvi_frame.h"
 #include "KviMemory.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "KviThread.h"
 #include "kvi_ircsocket.h"
 #include "kvi_settings.h"
@@ -751,7 +751,7 @@ bool KviDccChatThread::handleIncomingData(KviDccThreadIncomingData * data,bool b
 			{
 				// memmove the remaining part to the beginning
 				// aux points after \n or \0
-				kvi_memmove(data->buffer,aux,data->iLen);
+				KviMemory::move(data->buffer,aux,data->iLen);
 				data->buffer = (char *)KviMemory::reallocate(data->buffer,data->iLen);
 				end = data->buffer + data->iLen;
 				aux = data->buffer;

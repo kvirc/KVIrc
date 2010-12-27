@@ -47,7 +47,7 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
-	#include "kvi_memmove.h"
+	#include "KviMemory.h"
 	#include "KviMemory.h"
 
 	#include "KviPointerList.h"

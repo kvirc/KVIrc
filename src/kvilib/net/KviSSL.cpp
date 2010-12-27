@@ -30,7 +30,7 @@
 #ifdef COMPILE_SSL_SUPPORT
 
 #include "KviThread.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "KviMemory.h"
 
 #include <openssl/asn1.h>
@@ -378,7 +378,7 @@ static int cb(char *buf, int size, int, void *u)
 	KviCString * p = (KviCString *)u;
 	int len = p->len();
 	if(len >= size)return 0;
-	kvi_memmove(buf,p->ptr(),len + 1);
+	KviMemory::move(buf,p->ptr(),len + 1);
 //	qDebug("PASS REQYESTED: %s",p->ptr());
 	return len;
 }
@@ -574,7 +574,7 @@ const char * KviSSLCertificate::getX509Base64()
 	PEM_write_bio_X509(mem, m_pX509);
 	int iLen = BIO_get_mem_data(mem, &bptr);
 	char * szTmp = (char *) KviMemory::allocate(iLen+1);
-	kvi_fastmove(szTmp, bptr, iLen);
+	KviMemory::copy(szTmp, bptr, iLen);
 	*(szTmp+iLen) = '\0';
 	BIO_free_all(mem);
 	return szTmp;

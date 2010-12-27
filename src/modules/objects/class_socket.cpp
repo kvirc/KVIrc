@@ -41,7 +41,7 @@
 #include "kvi_error.h"
 #include "kvi_socket.h"
 #include "KviMemory.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "KviDataBuffer.h"
 
 #include <QByteArray>
@@ -417,7 +417,7 @@ KVSO_CLASS_FUNCTION(socket,read)
 			QByteArray *pBuffer=((KviKvsObject_memorybuffer *)pObject)->pBuffer();
 			int oldsize=pBuffer->size();
 			pBuffer->resize(oldsize+uLen);
-			kvi_memmove(pBuffer->data()+oldsize,m_pInBuffer,uLen);
+			KviMemory::move(pBuffer->data()+oldsize,m_pInBuffer,uLen);
 
 		} else if(pObject->inheritsClass("file"))
 		{
@@ -1171,7 +1171,7 @@ void KviKvsObject_socket::eatInData(unsigned int uLen)
 
 	if(m_uInDataLen > 0)
 	{
-		kvi_memmove(m_pInBuffer,m_pInBuffer + uLen,m_uInDataLen);
+		KviMemory::move(m_pInBuffer,m_pInBuffer + uLen,m_uInDataLen);
 	}
 
 	unsigned int uSpace = m_uInBufferLen - m_uInDataLen;

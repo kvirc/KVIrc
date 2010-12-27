@@ -30,7 +30,7 @@
 
 #ifndef COMPILE_NO_IPC
 
-	#include "kvi_memmove.h"
+	#include "KviMemory.h"
 	#include "kvi_app.h"
 	#include "KviQString.h"
 
@@ -165,7 +165,7 @@
 			kvi_ipcSetRemoteCommand(sentinel,message);
 
 			XEvent e;
-			kvi_memset(&e,0,sizeof(XEvent));
+			KviMemory::set(&e,0,sizeof(XEvent));
 			e.type = ClientMessage;
 			e.xclient.display = kvi_ipc_get_xdisplay();
 			e.xclient.window = sentinel;

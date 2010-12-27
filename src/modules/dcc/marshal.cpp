@@ -29,7 +29,7 @@
 #include "kvi_error.h"
 #include "kvi_options.h"
 #include "KviLocale.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "kvi_socket.h"
 #include "KviFileUtils.h"
 

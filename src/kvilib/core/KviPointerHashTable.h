@@ -35,7 +35,7 @@
 #include "KviCString.h"
 #include "KviQString.h"
 #include "KviMemory.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "kvi_debug.h"
 
 #include <ctype.h>
@@ -111,7 +111,7 @@ inline void kvi_hash_key_copy(const char * const &szFrom,const char * &szTo,bool
 		int len = kvi_strLen(szFrom);
 #endif
 		char * dst = (char *)KviMemory::allocate(len+1);
-		kvi_fastmove(dst,szFrom,len+1);
+		KviMemory::copy(dst,szFrom,len+1);
 		szTo = dst;
 	} else {
 		szTo = szFrom; // we never modify it anyway

@@ -40,7 +40,7 @@
 #include "kvi_mexlinkfilter.h"
 //#include "kvi_garbage.h"
 #include "KviMemory.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "kvi_debug.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectiontarget.h"

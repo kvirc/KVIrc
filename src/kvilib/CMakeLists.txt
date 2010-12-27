@@ -60,7 +60,6 @@ SET(kvilib_SRCS
 	core/KviHeapObject.cpp
 	core/kvi_hstrEqualCIN.cpp
 	core/KviMemory.cpp
-	core/kvi_memmove.cpp
 	core/KviQString.cpp
 	core/KviCString.cpp
 	ext/KviCommandFormatter.cpp

@@ -30,7 +30,7 @@
 #include "kvi_app.h"
 #include "kvi_module.h"
 #include "KviLocale.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "kvi_windowlist.h"
 #include "kvi_window.h"
 #include "kvi_dynamictooltip.h"

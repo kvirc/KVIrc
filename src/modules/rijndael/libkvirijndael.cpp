@@ -62,7 +62,7 @@
 
 
 #if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
-	#include "kvi_memmove.h"
+	#include "KviMemory.h"
 	#include "KviMemory.h"
 	#include "KviPointerList.h"
 
@@ -123,12 +123,12 @@
 		char * decryptKey = (char *)KviMemory::allocate(defLen);
 
 		if(encKeyLen > defLen)encKeyLen = defLen;
-		kvi_memmove(encryptKey,encKey,encKeyLen);
-		if(encKeyLen < defLen)kvi_memset(encryptKey + encKeyLen,'0',defLen - encKeyLen);
+		KviMemory::move(encryptKey,encKey,encKeyLen);
+		if(encKeyLen < defLen)KviMemory::set(encryptKey + encKeyLen,'0',defLen - encKeyLen);
 
 		if(decKeyLen > defLen)decKeyLen = defLen;
-		kvi_memmove(decryptKey,decKey,decKeyLen);
-		if(decKeyLen < defLen)kvi_memset(decryptKey + decKeyLen,'0',defLen - decKeyLen);
+		KviMemory::move(decryptKey,decKey,decKeyLen);
+		if(decKeyLen < defLen)KviMemory::set(decryptKey + decKeyLen,'0',defLen - decKeyLen);
 
 		m_pEncryptCipher = new Rijndael();
 		int retVal = m_pEncryptCipher->init(Rijndael::CBC,Rijndael::Encrypt,(unsigned char *)encryptKey,getKeyLenId());
@@ -277,7 +277,7 @@
 			if(len > 0)
 			{
 				*outBuffer = (char *)KviMemory::allocate(*len);
-				kvi_memmove(*outBuffer,tmpBuf,*len);
+				KviMemory::move(*outBuffer,tmpBuf,*len);
 				KviCString::freeBuffer(tmpBuf);
 			}
 		}
@@ -303,7 +303,7 @@
 			if(len > 0)
 			{
 				*outBuffer = (char *)KviMemory::allocate(*len);
-				kvi_memmove(*outBuffer,tmpBuf,*len);
+				KviMemory::move(*outBuffer,tmpBuf,*len);
 				KviCString::freeBuffer(tmpBuf);
 			}
 		}
@@ -633,7 +633,7 @@
 
 		for(int i=0;i<8;i++)in[i] = (unsigned char)(rand() % 256);
 
-		kvi_fastmove(in+8,plain.ptr(),plain.len());
+		KviMemory::copy(in+8,plain.ptr(),plain.len());
 
 		// encrypt
 		unsigned char * out = (unsigned char *)KviMemory::allocate(ll);

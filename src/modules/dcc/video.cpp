@@ -266,7 +266,7 @@ bool KviDccVideoThread::handleIncomingData(KviDccThreadIncomingData * data,bool 
 			{
 				// memmove the remaining part to the beginning
 				// aux points after \n or \0
-				kvi_memmove(data->buffer,aux,data->iLen);
+				KviMemory::move(data->buffer,aux,data->iLen);
 				data->buffer = (char *)KviMemory::reallocate(data->buffer,data->iLen);
 				end = data->buffer + data->iLen;
 				aux = data->buffer;

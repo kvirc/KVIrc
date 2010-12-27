@@ -31,7 +31,7 @@
 #endif
 
 #include "KviNetUtils.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 
 #include <QStringList>
 
@@ -582,7 +582,7 @@ namespace KviNetUtils
 		int len = szInterfaceName.length();
 		if(len > (IFNAMSIZ - 1))return false; // invalid interface anyway
 
-		kvi_memmove(ifr.ifr_name,KviQString::toUtf8(szInterfaceName).data(),len + 1);
+		KviMemory::move(ifr.ifr_name,KviQString::toUtf8(szInterfaceName).data(),len + 1);
 
 		int fd = socket(AF_INET,SOCK_STREAM,0);
 		if(fd < 0)return false;
@@ -686,7 +686,7 @@ bool kvi_getLocalHostAddress(QString &buffer)
 KviSockaddr::KviSockaddr(const char * szIpAddress,kvi_u32_t uPort,bool bIPv6,bool bUdp)
 {
 	struct addrinfo hints;
-	kvi_memset((void *)&hints,0,sizeof(hints));
+	KviMemory::set((void *)&hints,0,sizeof(hints));
 	hints.ai_flags = AI_NUMERICHOST;
 #ifdef COMPILE_IPV6_SUPPORT
 	hints.ai_family = bIPv6 ? PF_INET6 : PF_INET;
@@ -706,7 +706,7 @@ KviSockaddr::KviSockaddr(kvi_u32_t uPort,bool bIPv6,bool bUdp) // passive sockad
 
 {
 	struct addrinfo hints;
-	kvi_memset((void *)&hints,0,sizeof(hints));
+	KviMemory::set((void *)&hints,0,sizeof(hints));
 	hints.ai_flags = AI_NUMERICHOST | AI_PASSIVE;
 #ifdef COMPILE_IPV6_SUPPORT
 	hints.ai_family = bIPv6 ? PF_INET6 : PF_INET;

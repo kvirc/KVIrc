@@ -50,7 +50,7 @@
 #include "kvi_frame.h"
 #include "kvi_mexlinkfilter.h"
 #include "KviMemory.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "kvi_debug.h"
 #include "kvi_channel.h"
 #include "kvi_query.h"
@@ -786,7 +786,7 @@ bool KviIrcConnection::sendData(const char * pcBuffer, int iBuflen)
 	}
 
 	KviDataBuffer * pData = new KviDataBuffer(iBuflen + 2);
-	kvi_memmove(pData->data(),pcBuffer,iBuflen);
+	KviMemory::move(pData->data(),pcBuffer,iBuflen);
 	*(pData->data() + iBuflen) = '\r';
 	*(pData->data() + iBuflen + 1) = '\n';
 

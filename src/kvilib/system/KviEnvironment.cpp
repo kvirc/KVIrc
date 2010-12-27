@@ -27,7 +27,7 @@
 #include "KviEnvironment.h"
 #include "KviCString.h"
 #include "KviMemory.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 
 namespace KviEnvironment
 {
@@ -45,9 +45,9 @@ bool setVariable(const char * name,const char * value)
 		int iLen1 = kvi_strLen(name);
 		int iLen2 = kvi_strLen(value);
 		char * buf = (char *)KviMemory::allocate(iLen1 + iLen2 + 2);
-		kvi_memmove(buf,name,iLen1);
+		KviMemory::move(buf,name,iLen1);
 		*(buf + iLen1) = '=';
-		kvi_memmove(buf + iLen1 + 1,value,iLen2);
+		KviMemory::move(buf + iLen1 + 1,value,iLen2);
 		*(buf + iLen1 + iLen2 + 1) = '\0';
 		int iRet = putenv(buf);
 		if(iRet != 0)
@@ -75,7 +75,7 @@ void unsetVariable(const char * name)
 {
 		int iLen1 = kvi_strLen(name);
 		char * buf = (char *)KviMemory::allocate(iLen1 + 1);
-		kvi_memmove(buf,name,iLen1);
+		KviMemory::move(buf,name,iLen1);
 		*(buf + iLen1) = '\0';
 		int iRet = putenv(buf);
 		if(iRet != 0)

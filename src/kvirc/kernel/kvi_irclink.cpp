@@ -39,7 +39,7 @@
 #include "kvi_mexlinkfilter.h"
 //#include "kvi_garbage.h"
 #include "KviMemory.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_ircconnectiontargetresolver.h"
@@ -241,8 +241,8 @@ void KviIrcLink::processData(char * buffer, int iLen)
 			{
 				KVI_ASSERT(m_pReadBuffer);
 				cMessageBuffer = (char *)KviMemory::reallocate(cMessageBuffer,iBufLen + m_uReadBufferLen + 1);
-				kvi_memmove(cMessageBuffer,m_pReadBuffer,m_uReadBufferLen);
-				kvi_memmove((void *)(cMessageBuffer + m_uReadBufferLen),cBeginOfCurData,iBufLen);
+				KviMemory::move(cMessageBuffer,m_pReadBuffer,m_uReadBufferLen);
+				KviMemory::move((void *)(cMessageBuffer + m_uReadBufferLen),cBeginOfCurData,iBufLen);
 				*(cMessageBuffer + iBufLen + m_uReadBufferLen) = '\0';
 				m_uReadBufferLen = 0;
 				KviMemory::free(m_pReadBuffer);
@@ -250,7 +250,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 			} else {
 				KVI_ASSERT(!m_pReadBuffer);
 				cMessageBuffer = (char *)KviMemory::reallocate(cMessageBuffer,iBufLen + 1);
-				kvi_memmove(cMessageBuffer,cBeginOfCurData,iBufLen);
+				KviMemory::move(cMessageBuffer,cBeginOfCurData,iBufLen);
 				*(cMessageBuffer + iBufLen) = '\0';
 			}
 			m_uReadPackets++;
@@ -302,14 +302,14 @@ void KviIrcLink::processData(char * buffer, int iLen)
 			//and there was more stuff saved... (really slow connection)
 			KVI_ASSERT(m_pReadBuffer);
 			m_pReadBuffer =(char *)KviMemory::reallocate(m_pReadBuffer,m_uReadBufferLen + iBufLen);
-			kvi_memmove((void *)(m_pReadBuffer+m_uReadBufferLen),cBeginOfCurData,iBufLen);
+			KviMemory::move((void *)(m_pReadBuffer+m_uReadBufferLen),cBeginOfCurData,iBufLen);
 			m_uReadBufferLen += iBufLen;
 		} else {
 			//
 			KVI_ASSERT(!m_pReadBuffer);
 			m_uReadBufferLen = iBufLen;
 			m_pReadBuffer =(char *)KviMemory::allocate(m_uReadBufferLen);
-			kvi_memmove(m_pReadBuffer,cBeginOfCurData,m_uReadBufferLen);
+			KviMemory::move(m_pReadBuffer,cBeginOfCurData,m_uReadBufferLen);
 		}
 		//The m_pReadBuffer contains at max 1 irc message...
 		//that can not be longer than 510 bytes (the message is not CRLF terminated)

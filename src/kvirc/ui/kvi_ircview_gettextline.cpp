@@ -32,7 +32,7 @@
 #include "kvi_ircviewprivate.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "KviMemory.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "KviMircCntrl.h"
 #include "kvi_options.h"
 #include "kvi_out.h"
@@ -44,7 +44,7 @@
 // FIXME: Get rid of this!!!!!!!!!
 #define WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
 
-#define _WSTRING_WMEMCPY(_dst,_src,_len) kvi_fastmoveodd((void *)(_dst),(const void *)(_src),sizeof(kvi_wchar_t) * (_len))
+#define _WSTRING_WMEMCPY(_dst,_src,_len) KviMemory::copy((void *)(_dst),(const void *)(_src),sizeof(kvi_wchar_t) * (_len))
 
 void kvi_appendWCharToQStringWithLength(QString * qstrptr,const kvi_wchar_t * ptr,kvi_wslen_t len)
 {
@@ -565,7 +565,7 @@ found_command_escape:
 
 						blockLen = (next_cr - p);
 						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate(((next_cr - p) + 1) * sizeof(kvi_wchar_t));
-						kvi_fastmoveodd((void *)(line_ptr->pChunks[iCurChunk].szPayload),p,blockLen * sizeof(kvi_wchar_t));
+						KviMemory::copy((void *)(line_ptr->pChunks[iCurChunk].szPayload),p,blockLen * sizeof(kvi_wchar_t));
 
 						line_ptr->pChunks[iCurChunk].szPayload[blockLen] = 0;
 
@@ -658,7 +658,7 @@ found_icon_escape:
 						APPEND_LAST_TEXT_BLOCK(data_ptr,beginPtr - data_ptr)
 						NEW_LINE_CHUNK(KVI_TEXT_ICON)
 						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((datalen + 1) * sizeof(kvi_wchar_t));
-						kvi_fastmoveodd((void *)(line_ptr->pChunks[iCurChunk].szPayload),icon_name,datalen * sizeof(kvi_wchar_t));
+						KviMemory::copy((void *)(line_ptr->pChunks[iCurChunk].szPayload),icon_name,datalen * sizeof(kvi_wchar_t));
 						line_ptr->pChunks[iCurChunk].szPayload[datalen] = 0;
 						line_ptr->pChunks[iCurChunk].szSmileId=line_ptr->pChunks[iCurChunk].szPayload;
 
@@ -1038,11 +1038,11 @@ check_emoticon_char:
 						int reallen=item2 ? 3 : 2;
 
 						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((emolen + 1) * sizeof(kvi_wchar_t));
-						kvi_fastmoveodd(line_ptr->pChunks[iCurChunk].szPayload,begin,emolen * sizeof(kvi_wchar_t));
+						KviMemory::copy(line_ptr->pChunks[iCurChunk].szPayload,begin,emolen * sizeof(kvi_wchar_t));
 						line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
 
 						line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)KviMemory::allocate((reallen + 1) * sizeof(kvi_wchar_t));
-						kvi_fastmoveodd(line_ptr->pChunks[iCurChunk].szSmileId,ng,reallen * sizeof(kvi_wchar_t));
+						KviMemory::copy(line_ptr->pChunks[iCurChunk].szSmileId,ng,reallen * sizeof(kvi_wchar_t));
 						line_ptr->pChunks[iCurChunk].szSmileId[reallen] = 0;
 
 						APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(begin,emolen)
@@ -1053,11 +1053,11 @@ check_emoticon_char:
 						{
 							NEW_LINE_CHUNK(KVI_TEXT_ICON)
 							line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((emolen + 1) * sizeof(kvi_wchar_t));
-							kvi_fastmoveodd(line_ptr->pChunks[iCurChunk].szPayload,begin,emolen * sizeof(kvi_wchar_t));
+							KviMemory::copy(line_ptr->pChunks[iCurChunk].szPayload,begin,emolen * sizeof(kvi_wchar_t));
 							line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
 
 							line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)KviMemory::allocate((reallen + 1) * sizeof(kvi_wchar_t));
-							kvi_fastmoveodd(line_ptr->pChunks[iCurChunk].szSmileId,ng,reallen * sizeof(kvi_wchar_t));
+							KviMemory::copy(line_ptr->pChunks[iCurChunk].szSmileId,ng,reallen * sizeof(kvi_wchar_t));
 							line_ptr->pChunks[iCurChunk].szSmileId[reallen] = 0;
 
 							APPEND_ZERO_LENGTH_BLOCK(data_ptr)

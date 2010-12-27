@@ -103,11 +103,11 @@ const char * KviIrcMask::setMask(const char *szMask,char c)
 	int len = p - szMask;
 	if(len > 0){
 		m_nick_ptr = (char *)KviMemory::reallocate(m_nick_ptr,len+1);
-		kvi_memmove((void *)m_nick_ptr,(void *)szMask,len);
+		KviMemory::move((void *)m_nick_ptr,(void *)szMask,len);
 	} else { //Empty nick...set it to "*"
 		len = 1;
 		m_nick_ptr = (char *)KviMemory::reallocate(m_nick_ptr,len+1);
-		kvi_memmove((void *)m_nick_ptr,(void *)"*",len);
+		KviMemory::move((void *)m_nick_ptr,(void *)"*",len);
 	}
 	*(m_nick_ptr+len) = '\0'; //With zero length nick it will be just an empty-string
 	if(!(*p)){
@@ -121,11 +121,11 @@ const char * KviIrcMask::setMask(const char *szMask,char c)
 	len = p - szMask;
 	if(len > 0){
 		m_user_ptr = (char *)KviMemory::reallocate(m_user_ptr,len+1);
-		kvi_memmove((void *)m_user_ptr,(void *)szMask,len);
+		KviMemory::move((void *)m_user_ptr,(void *)szMask,len);
 	} else {
 		len = 1;
 		m_user_ptr = (char *)KviMemory::reallocate(m_user_ptr,len+1);
-		kvi_memmove((void *)m_user_ptr,(void *)"*",len);
+		KviMemory::move((void *)m_user_ptr,(void *)"*",len);
 	}
 	*(m_user_ptr+len) = '\0';
 	if(!(*p)){
@@ -138,11 +138,11 @@ const char * KviIrcMask::setMask(const char *szMask,char c)
 	len = p - szMask;
 	if(len > 0){
 		m_host_ptr = (char *)KviMemory::reallocate(m_host_ptr,len+1);
-		kvi_memmove((void *)m_host_ptr,(void *)szMask,len);
+		KviMemory::move((void *)m_host_ptr,(void *)szMask,len);
 	} else {
 		len = 1;
 		m_host_ptr = (char *)KviMemory::reallocate(m_host_ptr,len+1);
-		kvi_memmove((void *)m_host_ptr,(void *)"*",len);
+		KviMemory::move((void *)m_host_ptr,(void *)"*",len);
 	}
 	*(m_host_ptr+len) = '\0';
 	return p;
@@ -160,11 +160,11 @@ const char * KviIrcMask::setUserhostMask(const char *szMask)
 	int len = p - szMask;
 	if(len > 0){
 		m_nick_ptr = (char *)KviMemory::reallocate(m_nick_ptr,len+1);
-		kvi_memmove((void *)m_nick_ptr,(void *)szMask,len);
+		KviMemory::move((void *)m_nick_ptr,(void *)szMask,len);
 	} else { //Empty nick...set it to "*"
 		len = 1;
 		m_nick_ptr = (char *)KviMemory::reallocate(m_nick_ptr,len+1);
-		kvi_memmove((void *)m_nick_ptr,(void *)"*",len);
+		KviMemory::move((void *)m_nick_ptr,(void *)"*",len);
 	}
 	*(m_nick_ptr+len) = '\0'; //With zero length nick it will be just an empty-string
 	// now skip all the flags
@@ -184,11 +184,11 @@ const char * KviIrcMask::setUserhostMask(const char *szMask)
 	len = p - szMask;
 	if(len > 0){
 		m_user_ptr = (char *)KviMemory::reallocate(m_user_ptr,len+1);
-		kvi_memmove((void *)m_user_ptr,(void *)szMask,len);
+		KviMemory::move((void *)m_user_ptr,(void *)szMask,len);
 	} else {
 		len = 1;
 		m_user_ptr = (char *)KviMemory::reallocate(m_user_ptr,len+1);
-		kvi_memmove((void *)m_user_ptr,(void *)"*",len);
+		KviMemory::move((void *)m_user_ptr,(void *)"*",len);
 	}
 	*(m_user_ptr+len) = '\0';
 
@@ -204,11 +204,11 @@ const char * KviIrcMask::setUserhostMask(const char *szMask)
 	len = p - szMask;
 	if(len > 0){
 		m_host_ptr = (char *)KviMemory::reallocate(m_host_ptr,len+1);
-		kvi_memmove((void *)m_host_ptr,(void *)szMask,len);
+		KviMemory::move((void *)m_host_ptr,(void *)szMask,len);
 	} else {
 		len = 1;
 		m_host_ptr = (char *)KviMemory::reallocate(m_host_ptr,len+1);
-		kvi_memmove((void *)m_host_ptr,(void *)"*",len);
+		KviMemory::move((void *)m_host_ptr,(void *)"*",len);
 	}
 	*(m_host_ptr+len) = '\0';
 	while(*p && isspace(*p))p++;

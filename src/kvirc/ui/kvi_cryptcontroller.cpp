@@ -35,7 +35,7 @@
 	#include "kvi_modulemanager.h"
 	#include "kvi_module.h"
 	#include "KviMemory.h"
-	#include "kvi_memmove.h"
+	#include "KviMemory.h"
 	#include "kvi_toolwindows_container.h"
 	#include "KviPointerHashTable.h"
 
@@ -307,12 +307,12 @@
 				if(iEncKeyLen > 0)
 				{
 					pcEncKey = (char *)KviMemory::allocate(iEncKeyLen);
-					kvi_memmove(pcEncKey,pcTmpKey,iEncKeyLen);
+					KviMemory::move(pcEncKey,pcTmpKey,iEncKeyLen);
 					KviCString::freeBuffer(pcTmpKey);
 				}
 			} else {
 				pcEncKey = (char *)KviMemory::allocate(szEncryptKey.len());
-				kvi_memmove(pcEncKey,szEncryptKey.ptr(),szEncryptKey.len());
+				KviMemory::move(pcEncKey,szEncryptKey.ptr(),szEncryptKey.len());
 				iEncKeyLen = szEncryptKey.len();
 			}
 		}
@@ -327,12 +327,12 @@
 				if(iDecKeyLen > 0)
 				{
 					pcDecKey = (char *)KviMemory::allocate(iDecKeyLen);
-					kvi_memmove(pcDecKey,pcTmpKey,iDecKeyLen);
+					KviMemory::move(pcDecKey,pcTmpKey,iDecKeyLen);
 					KviCString::freeBuffer(pcTmpKey);
 				}
 			} else {
 				pcDecKey = (char *)KviMemory::allocate(szDecryptKey.len());
-				kvi_memmove(pcDecKey,szDecryptKey.ptr(),szDecryptKey.len());
+				KviMemory::move(pcDecKey,szDecryptKey.ptr(),szDecryptKey.len());
 				iDecKeyLen = szDecryptKey.len();
 			}
 		}

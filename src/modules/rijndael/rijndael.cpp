@@ -59,7 +59,7 @@
 
 #include "rijndael.h"
 
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 
 //#include <stdio.h>
 //#include <stdlib.h>
@@ -1103,7 +1103,7 @@ int Rijndael::blockEncrypt(const UINT8 *input,int inputLen,UINT8 *outBuffer)
 		break;
 		case CFB1:
 #if STRICT_ALIGN
-			kvi_memmove(iv,m_initVector,16);
+			KviMemory::move(iv,m_initVector,16);
 #else  /* !STRICT_ALIGN */
 			*((UINT32*)iv[0]) = *((UINT32*)(m_initVector   ));
 			*((UINT32*)iv[1]) = *((UINT32*)(m_initVector + 4));
@@ -1170,8 +1170,8 @@ int Rijndael::padEncrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer)
 			}
 			padLen = 16 - (inputOctets - 16*numBlocks);
 //			assert(padLen > 0 && padLen <= 16);
-			kvi_memmove(block, input, 16 - padLen);
-			kvi_memset(block + 16 - padLen, padLen, padLen);
+			KviMemory::move(block, input, 16 - padLen);
+			KviMemory::set(block + 16 - padLen, padLen, padLen);
 			encrypt(block,outBuffer);
 		break;
 		case CBC:
@@ -1229,7 +1229,7 @@ int Rijndael::blockDecrypt(const UINT8 *input, int inputLen, UINT8 *outBuffer)
 		break;
 		case CBC:
 #if STRICT_ALIGN
-			kvi_memmove(iv,m_initVector,16);
+			KviMemory::move(iv,m_initVector,16);
 #else
 			*((UINT32*)iv[0]) = *((UINT32*)(m_initVector  ));
 			*((UINT32*)iv[1]) = *((UINT32*)(m_initVector+ 4));
@@ -1244,8 +1244,8 @@ int Rijndael::blockDecrypt(const UINT8 *input, int inputLen, UINT8 *outBuffer)
 				((UINT32*)block)[2] ^= *((UINT32*)iv[2]);
 				((UINT32*)block)[3] ^= *((UINT32*)iv[3]);
 #if STRICT_ALIGN
-				kvi_memmove(iv, input, 16);
-				kvi_memmove(outBuf, block, 16);
+				KviMemory::move(iv, input, 16);
+				KviMemory::move(outBuf, block, 16);
 #else
 				*((UINT32*)iv[0]) = ((UINT32*)input)[0]; ((UINT32*)outBuffer)[0] = ((UINT32*)block)[0];
 				*((UINT32*)iv[1]) = ((UINT32*)input)[1]; ((UINT32*)outBuffer)[1] = ((UINT32*)block)[1];
@@ -1258,7 +1258,7 @@ int Rijndael::blockDecrypt(const UINT8 *input, int inputLen, UINT8 *outBuffer)
 			break;
 		case CFB1:
 #if STRICT_ALIGN
-			kvi_memmove(iv, m_initVector, 16);
+			KviMemory::move(iv, m_initVector, 16);
 #else
 			*((UINT32*)iv[0]) = *((UINT32*)(m_initVector));
 			*((UINT32*)iv[1]) = *((UINT32*)(m_initVector+ 4));
@@ -1333,10 +1333,10 @@ int Rijndael::padDecrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer)
 			{
 				if(block[i] != padLen)return RIJNDAEL_CORRUPTED_DATA;
 			}
-			kvi_memmove(outBuffer, block, 16 - padLen);
+			KviMemory::move(outBuffer, block, 16 - padLen);
 		break;
 		case CBC:
-			kvi_memmove(iv, m_initVector, 16);
+			KviMemory::move(iv, m_initVector, 16);
 			/* all blocks but last */
 			for (i = numBlocks - 1; i > 0; i--)
 			{
@@ -1345,8 +1345,8 @@ int Rijndael::padDecrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer)
 				((UINT32*)block)[1] ^= iv[1];
 				((UINT32*)block)[2] ^= iv[2];
 				((UINT32*)block)[3] ^= iv[3];
-				kvi_memmove(iv, input, 16);
-				kvi_memmove(outBuffer, block, 16);
+				KviMemory::move(iv, input, 16);
+				KviMemory::move(outBuffer, block, 16);
 				input += 16;
 				outBuffer += 16;
 			}
@@ -1362,7 +1362,7 @@ int Rijndael::padDecrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer)
 			{
 				if(block[i] != padLen)return RIJNDAEL_CORRUPTED_DATA;
 			}
-			kvi_memmove(outBuffer, block, 16 - padLen);
+			KviMemory::move(outBuffer, block, 16 - padLen);
 			break;
 
 		default:

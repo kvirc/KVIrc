@@ -33,7 +33,7 @@
 #include "kvi_msgbox.h"
 #include "kvi_filedialog.h"
 #include "kvi_app.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "kvi_shortcuts.h"
 #include "kvi_window.h"
 
@@ -249,7 +249,7 @@ void KviIrcViewToolWidget::filterLoad()
 		if(f.open(QIODevice::ReadOnly))
 		{
 			char cBuffer[KVI_NUM_MSGTYPE_OPTIONS];
-			kvi_memset(cBuffer,0,KVI_NUM_MSGTYPE_OPTIONS);
+			KviMemory::set(cBuffer,0,KVI_NUM_MSGTYPE_OPTIONS);
 			f.read(cBuffer,KVI_NUM_MSGTYPE_OPTIONS);
 			f.close();
 			for(int i=0; i < KVI_NUM_MSGTYPE_OPTIONS; i++)

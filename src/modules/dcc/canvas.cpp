@@ -45,7 +45,7 @@
 	#include "kvi_console.h"
 	#include "kvi_frame.h"
 	#include "KviMemory.h"
-	#include "kvi_memmove.h"
+	#include "KviMemory.h"
 	#include "KviThread.h"
 	#include "kvi_ircsocket.h"
 	#include "kvi_settings.h"

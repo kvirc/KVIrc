@@ -36,7 +36,7 @@
 #include "kvi_input.h"
 #include "kvi_iconmanager.h"
 #include "kvi_modulemanager.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "KviMemory.h"
 #include "kvi_mdichild.h"
 #include "kvi_channel.h"
@@ -1494,7 +1494,7 @@ static bool initializeCryptEngine(KviCryptEngine * eng,KviCString &szEncryptKey,
 	if(encKeyLen > 0)
 	{
 		encKey = (char *)KviMemory::allocate(encKeyLen);
-		kvi_memmove(encKey,tmpKey,encKeyLen);
+		KviMemory::move(encKey,tmpKey,encKeyLen);
 		KviCString::freeBuffer(tmpKey);
 	} else {
 		szError = __tr2qs("The encrypt key wasn't a valid hexadecimal string");
@@ -1508,7 +1508,7 @@ static bool initializeCryptEngine(KviCryptEngine * eng,KviCString &szEncryptKey,
 	if(decKeyLen > 0)
 	{
 		decKey = (char *)KviMemory::allocate(decKeyLen);
-		kvi_memmove(decKey,tmpKey,decKeyLen);
+		KviMemory::move(decKey,tmpKey,decKeyLen);
 		KviCString::freeBuffer(tmpKey);
 	} else {
 		szError = __tr2qs("The decrypt key wasn't a valid hexadecimal string");

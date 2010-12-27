@@ -23,7 +23,7 @@
 //=============================================================================
 
 #include "ablowfish.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
@@ -318,11 +318,11 @@ BlowFish::BlowFish(unsigned char* ucKey, unsigned int keysize, const SBlock& roC
 		keysize = 56;
 	unsigned char aucLocalKey[56];
 	unsigned int i, j;
-	kvi_fastmove(aucLocalKey, ucKey, keysize);
+	KviMemory::copy(aucLocalKey, ucKey, keysize);
 	//Reflexive Initialization of the Blowfish.
 	//Generating the Subkeys from the Key flood P and S boxes with PI
-	kvi_fastmove(m_auiP, scm_auiInitP, sizeof(m_auiP));
-	kvi_fastmove(m_auiS, scm_auiInitS, sizeof(m_auiS));
+	KviMemory::copy(m_auiP, scm_auiInitP, sizeof(m_auiP));
+	KviMemory::copy(m_auiS, scm_auiInitS, sizeof(m_auiS));
 	//Load P boxes with key bytes
 	const unsigned char* p = aucLocalKey;
 	unsigned int x=0;

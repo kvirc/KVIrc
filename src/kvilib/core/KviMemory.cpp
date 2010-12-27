@@ -34,6 +34,10 @@
 
 #include <stdio.h>
 
+#ifdef COMPILE_MEMORY_PROFILE
+	#include "KviPointerList.h"
+#endif //COMPILE_MEMORY_PROFILE
+
 
 namespace KviMemory
 {
@@ -44,8 +48,6 @@ namespace KviMemory
 	// Memory profile stuff
 	// Used to find memory leaks etc...
 	//
-
-	#include "kvi_pointerlist.h"
 
 	typedef struct _KviMallocEntry {
 		struct _KviMallocEntry * prev;
@@ -197,5 +199,203 @@ namespace KviMemory
 	#endif //COMPILE_MEMORY_CHECKS
 
 #endif //!COMPILE_MEMORY_PROFILE
+
+
+#if 0
+
+	// The code below is unused and remains here only for historical reasons.
+	// At the time KVIrc was first written there were some platforms with weak
+	// memmove and memcpy implementations.
+	//
+	// Modern compilers coupled with decent C library implementations we have these days
+	// can do better than plain assembler. The glibc memcpy implementation, for instance,
+	// can copy entire pages of memory at very low cost by using virtual address manipulation
+	// tricks. 64bit architectures can move bytes in larger chunks too.
+
+
+	#ifdef COMPILE_ix86_ASM
+
+	// WE WANT repnz; movsq\n"!!!
+
+	inline void copy(void * dst_ptr,const void *src_ptr,int len)
+	{
+		__asm__ __volatile__(
+			"	cld\n"
+			"	shr $1,%0\n"
+			"	jnc 1f\n"
+			"	movsb\n"
+			"1:\n"
+			"	shr $1,%0\n"
+			"	jnc 2f\n"
+			"	movsw\n"
+			"2:\n"
+			"	repnz; movsl\n"
+			: "=c" (len), "=&S" (src_ptr), "=&D" (dst_ptr)
+			: "0"  (len), "1"   (src_ptr), "2"   (dst_ptr)
+		);
+	}
+
+	inline void copy(void * dst_ptr,const void *src_ptr,int len)
+	{
+		__asm__ __volatile__(
+			"	cld\n"
+			"	shr $2,%0\n"
+			"	jnc 1f\n"
+			"	movsw\n"
+			"1:\n"
+			"	repnz; movsl\n"
+			: "=c" (len), "=&S" (src_ptr), "=&D" (dst_ptr)
+			: "0"  (len), "1"   (src_ptr), "2"   (dst_ptr)
+		);
+	}
+
+	void * move(void * dst_ptr,const void *src_ptr,int len)
+	{
+		KVI_ASSERT(dst_ptr);
+		KVI_ASSERT(src_ptr);
+		KVI_ASSERT(len >= 0);
+		// Save pointer registers
+		asm("	pushl %esi");                     // save %esi
+		asm("	pushl %edi");                     // save %edi
+		// Load arguments
+		asm("	movl 16(%ebp),%ecx");             // %ecx = len
+		asm("	movl 12(%ebp),%esi");             // %esi = src
+		asm("	movl 8(%ebp),%edi");              // %edi = dst
+		// Compare src and dest
+		asm("	cmpl %esi,%edi");                 // %edi - %esi
+		asm("	jbe move_from_bottom_to_top");    // if(%edi < %esi) jump to move_from_bottom_to_top
+		// dst_ptr > src_ptr
+		asm("	addl %ecx,%esi");                 // %esi += %ecx (src_ptr += len);
+		asm("	addl %ecx,%edi");                 // %edi += %ecx (dst_ptr += len);
+		asm("	decl %esi");                      // %esi--; (src_ptr--);
+		asm("	decl %edi");                      // %edi--; (dst_ptr--);
+		asm("	std");                            // set direction flag (decrement esi and edi in movsb)
+		// Optimization : check for non-odd len (1,3,5,7...)
+		asm("	shr $1,%ecx");                    // %ecx >> 1, shifted bit -> CF
+		asm("	jnc move_two_bytes_top_to_bottom_directly");  // if !carry (CF == 0) skip this move
+		// Move the first byte (non-odd)
+		asm("	movsb %ds:(%esi),%es:(%edi)");    // *dst-- = *src-- if DF  else *dst++ = *src++
+		asm("move_two_bytes_top_to_bottom_directly:");
+		asm("	decl %esi");                      // %esi--; (src_ptr--);
+		asm("	decl %edi");                      // %edi--; (dst_ptr--);
+		asm("move_two_bytes_top_to_bottom:");
+		asm("	shr $1,%ecx");                    // %ecx >> 1, shifted bit -> CF
+		asm("	jnc move_the_rest_top_to_bottom_directly"); // if !carry (CF == 0) skip this move
+		// Move the next two bytes
+		asm("	movsw %ds:(%esi),%es:(%edi)");    // *((word *)dst)-- = *((word)src)-- if DF else *((word *)dst)++ = *((word)src)++
+		asm("move_the_rest_top_to_bottom_directly:");
+		asm("	subl $2,%esi");                   // %esi-=2; (src-=2);
+		asm("   subl $2,%edi");                   // %edi-=2; (dst-=2);
+		asm("   jmp move_the_rest");              // call last repnz movsl
+		// dst_ptr <= src_ptr
+		asm("move_from_bottom_to_top:");
+		asm("	cld");                            // clear direction flag (increment esi and edi in movsb)
+		// Optimization : check for non-odd len (1,3,5,7...)
+		asm("	shr $1,%ecx");                    // %ecx >> 1, shifted bit -> CF
+		asm("	jnc move_two_bytes");             // if !carry (CF == 0) skip this move
+		// Move the first byte (non-odd)
+		asm("	movsb %ds:(%esi),%es:(%edi)");    // *dst-- = *src-- if DF  else *dst++ = *src++
+		// Optimization : pass 2, check for %2 and %3
+		asm("move_two_bytes:");
+		asm("	shr $1,%ecx");                    // %ecx >> 1, shifted bit -> CF
+		asm("	jnc move_the_rest");              // if !carry (CF == 0) skip this move
+		// Move the next two bytes
+		asm("	movsw %ds:(%esi),%es:(%edi)");    // *((word *)dst)-- = *((word)src)-- if DF else *((word *)dst)++ = *((word)src)++
+		// Main move remaining part
+		asm("move_the_rest:");
+		asm("	repnz; movsl %ds:(%esi),%es:(%edi)"); // loop moving 4 bytes at once (increment or decrement as above)
+		// Restore pointer registers
+		asm("	popl %edi");                      // restore %edi
+		asm("	popl %esi");                      // restore %esi
+		return dst_ptr; //asm("   movl 8(%ebp),%eax"); <-- gcc will put that (AFTER THE OPTIMISATION PASS!)
+	}
+
+	void * move(void * dst_ptr,const void *src_ptr,int len)
+	{
+		KVI_ASSERT(dst_ptr);
+		KVI_ASSERT(src_ptr);
+		KVI_ASSERT(len >= 0);
+		// Save pointer registers
+		asm("	pushl %esi");                     // save %esi
+		asm("	pushl %edi");                     // save %edi
+		// Load arguments
+		asm("	movl 16(%ebp),%ecx");             // %ecx = len
+		asm("	movl 12(%ebp),%esi");             // %esi = src
+		asm("	movl 8(%ebp),%edi");              // %edi = dst
+		// Compare src and dest
+		asm("	cmpl %esi,%edi");                 // %edi - %esi
+		asm("	jbe xmove_from_bottom_to_top");    // if(%edi < %esi) jump to move_from_bottom_to_top
+		// dst_ptr > src_ptr
+		asm("	addl %ecx,%esi");                 // %esi += %ecx (src_ptr += len);
+		asm("	addl %ecx,%edi");                 // %edi += %ecx (dst_ptr += len);
+		asm("	std");                            // set direction flag (decrement esi and edi in movsb)
+		// start moving
+		asm("	shr $2,%ecx");                    // %ecx >> 2, last shifted bit -> CF
+		asm("	jnc xmove_the_rest_top_to_bottom_directly"); // if !carry (CF == 0) skip this move
+		// Move the next two bytes
+		asm("	subl $2,%esi");                   // %esi-=2; (src_ptr-=2);
+		asm("	subl $2,%edi");                   // %edi-=2; (dst_ptr-=2);
+		asm("	movsw %ds:(%esi),%es:(%edi)");    // *((word *)dst)-- = *((word)src)-- if DF else *((word *)dst)++ = *((word)src)++
+		asm("	subl $2,%esi");                   // %esi-=2; (src_ptr-=2);
+		asm("	subl $2,%edi");                   // %edi-=2; (dst_ptr-=2);
+		asm("   jmp xmove_the_rest");
+		asm("xmove_the_rest_top_to_bottom_directly:");
+		asm("	subl $4,%esi");                   // %esi-=4; (src-=4);
+		asm("   subl $4,%edi");                   // %edi-=4; (dst-=4);
+		asm("   jmp xmove_the_rest");              // call last repnz movsl
+		// dst_ptr <= src_ptr
+		asm("xmove_from_bottom_to_top:");
+		asm("	cld");                            // clear direction flag (increment esi and edi in movsb)
+		// move it
+		asm("	shr $2,%ecx");                    // %ecx >> 2, last shifted bit -> CF
+		asm("	jnc xmove_the_rest");              // if !carry (CF == 0) skip this move
+		// Move the next two bytes
+		asm("	movsw %ds:(%esi),%es:(%edi)");    // *((word *)dst)-- = *((word)src)-- if DF else *((word *)dst)++ = *((word)src)++
+		// Main move remaining part
+		asm("xmove_the_rest:");
+		asm("	repnz; movsl %ds:(%esi),%es:(%edi)"); // loop moving 4 bytes at once (increment or decrement as above)
+		// Restore pointer registers
+		asm("	popl %edi");                      // restore %edi
+		asm("	popl %esi");                      // restore %esi
+		return dst_ptr; //asm("   movl 8(%ebp),%eax"); <-- gcc will put that (AFTER THE OPTIMISATION PASS!)
+	}
+
+	#endif COMPILE_ix86_ASM
+
+	// The next 4 functions could be optimized with the & and shift technique
+	// used in the assembly implementations but the compilers usually
+	// will not translate the carry bit trick producing code
+	// that works slower on short block of memory (really near the average case)
+
+	// The trick would be:
+	//
+	//    if(len & 1) // the length is even
+	//       *dst-- = *src--; // move one byte
+	//    len >> 1; // drop the last bit (thus divide by 2)
+	//    if(len & 1) // the length is still even
+	//       *((short *)dst)-- = *((short *)src)--; // move two bytes
+	//    len >> 1; // again drop the last bit (thus divide by 2)
+	//    while(len--)*((int *)dst)-- = *((int *)src)--; // move four bytes at a time
+
+	void * move(void *dst_ptr,const void *src_ptr,int len)
+	{
+		KVI_ASSERT(dst_ptr);
+		KVI_ASSERT(src_ptr);
+		KVI_ASSERT(len >= 0);
+		register char *dst;
+		register const char *src;
+		if(dst_ptr > src_ptr){
+			dst = (char *)dst_ptr + len - 1;
+			src = (const char *)src_ptr + len - 1;
+			while(len--)*dst-- = *src--;
+		} else { //it is valid even if dst_ptr == src_ptr
+			dst = (char *)dst_ptr;
+			src = (const char *)src_ptr;
+			while(len--)*dst++ = *src++;
+		}
+		return dst_ptr;
+	}
+
+#endif //0
 
 }

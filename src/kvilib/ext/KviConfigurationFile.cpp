@@ -28,7 +28,7 @@
 #include "KviPixmap.h"
 #include "KviMessageTypeSettings.h"
 #include "KviStringConversion.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 #include "KviMemory.h"
 #include "KviFile.h"
 
@@ -344,7 +344,7 @@ bool KviConfigurationFile::load()
 			remainingLen = endp-begin;
 			if(buffer != begin)
 			{
-				kvi_memmove(buffer,begin,remainingLen);
+				KviMemory::move(buffer,begin,remainingLen);
 				p = buffer + remainingLen;
 			} // else p remains where it is
 		} else {

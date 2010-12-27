@@ -32,6 +32,7 @@
 #include "kvi_settings.h"
 
 #include <stdlib.h>
+#include <string.h>
 
 /**
 * \file KviMemory.h
@@ -94,7 +95,7 @@ namespace KviMemory
 
 		inline void * allocate(int size)
 		{
-			void * ptr = malloc(size);
+			void * ptr = ::malloc(size);
 			if(!ptr)
 				outOfMemory();
 			return ptr;
@@ -102,7 +103,7 @@ namespace KviMemory
 
 		inline void * reallocate(void * ptr,int size)
 		{
-			ptr = realloc(ptr,size);
+			ptr = ::realloc(ptr,size);
 			if(!ptr)
 				outOfMemory();
 			return ptr;
@@ -126,6 +127,46 @@ namespace KviMemory
 	inline void free(void * ptr)
 	{
 		::free(ptr);
+	}
+
+	/**
+	* \brief Moves len bytes from src_ptr to dst_ptr
+	*
+	* \param dst_ptr The destination memory pointer
+	* \param src_ptr The source memory pointer
+	* \param len the number of bytes to move
+	* \return void *
+	*/
+	inline void move(void *dst_ptr,const void *src_ptr,int len)
+	{
+		memmove(dst_ptr,src_ptr,len);
+	}
+	
+	/**
+	* \brief Initializes len bytes of memory starting from dst_ptr to c
+	*
+	* \param dst_ptr The destination memory pointer
+	* \param c The character that will fill the memory
+	* \param len the number of bytes to initialize
+	* \return void *
+	*/
+	inline void set(void *dst_ptr,char c,int len)
+	{
+		memset(dst_ptr,c,len);
+	}
+
+	/**
+	* \brief Moves len bytes from src_ptr to dst_ptr
+	*
+	* \param dst_ptr The destination memory pointer
+	* \param src_ptr The source memory pointer
+	* \param len the number of bytes to move
+	* \return void *
+	* \warning In fastmove the src and dst may not overlap
+	*/
+	inline void copy(void *dst_ptr,const void *src_ptr,int len)
+	{
+		memcpy(dst_ptr,src_ptr,len);
 	}
 
 #endif //!COMPILE_MEMORY_PROFILE

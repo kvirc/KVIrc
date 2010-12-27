@@ -29,7 +29,7 @@
 
 #include "KviDataBuffer.h"
 #include "KviMemory.h"
-#include "kvi_memmove.h"
+#include "KviMemory.h"
 
 // FIXME: this could resize in chunks!...this would be damn faster :)
 
@@ -38,7 +38,7 @@ KviDataBuffer::KviDataBuffer(int uSize,const unsigned char * data)
 	KVI_ASSERT(uSize > 0);
 	m_uSize = uSize;
 	m_pData = (unsigned char *)KviMemory::allocate(sizeof(unsigned char) * uSize);
-	if(data)kvi_memmove(m_pData,data,uSize);
+	if(data)KviMemory::move(m_pData,data,uSize);
 }
 
 KviDataBuffer::KviDataBuffer()
@@ -106,7 +106,7 @@ void KviDataBuffer::remove(int uSize)
 
 	if(m_uSize > 0)
 	{
-		kvi_memmove(m_pData,m_pData + uSize,m_uSize);
+		KviMemory::move(m_pData,m_pData + uSize,m_uSize);
 		m_pData = (unsigned char *)KviMemory::reallocate(m_pData,m_uSize * sizeof(unsigned char));
 	} else {
 		KviMemory::free(m_pData);
@@ -130,6 +130,6 @@ void KviDataBuffer::resize(int uSize)
 void KviDataBuffer::append(const unsigned char * data,int uSize)
 {
 	m_pData = (unsigned char *)KviMemory::reallocate(m_pData,m_uSize + uSize);
-	kvi_memmove(m_pData + m_uSize,data,uSize);
+	KviMemory::move(m_pData + m_uSize,data,uSize);
 	m_uSize += uSize;
 }
