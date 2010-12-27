@@ -25,7 +25,7 @@
 #include "optw_nickserv.h"
 
 #include "KviQString.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviNickServRuleSet.h"
 #include "KviIrcMask.h"
@@ -38,7 +38,7 @@
 #include <QMessageBox>
 
 
-// kvi_app.cpp
+// KviApplication.cpp
 extern KVIRC_API KviNickServRuleSet * g_pNickServRuleSet;
 
 

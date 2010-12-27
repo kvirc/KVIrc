@@ -25,22 +25,22 @@
 
 #include "aliaseditor.h"
 
-#include "kvi_iconmanager.h"
-#include "kvi_options.h"
+#include "KviIconManager.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
-#include "kvi_imagedialog.h"
+#include "KviImageDialog.h"
 #include "KviConfigurationFile.h"
-#include "kvi_filedialog.h"
+#include "KviFileDialog.h"
 #include "KviFileUtils.h"
-#include "kvi_scripteditor.h"
+#include "KviScriptEditor.h"
 #include "kvi_debug.h"
-#include "kvi_app.h"
-#include "kvi_frame.h"
+#include "KviApplication.h"
+#include "KviMainWindow.h"
 #include "KviQString.h"
-#include "kvi_kvs_aliasmanager.h"
-#include "kvi_filedialog.h"
+#include "KviKvsAliasManager.h"
+#include "KviFileDialog.h"
 #include "KviCommandFormatter.h"
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviTalVBox.h"
 #include "kvi_fileextensions.h"
 
@@ -1173,7 +1173,7 @@ void KviAliasEditor::commit()
 }
 
 
-KviAliasEditorWindow::KviAliasEditorWindow(KviFrame * lpFrm)
+KviAliasEditorWindow::KviAliasEditorWindow(KviMainWindow * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,lpFrm,"aliaseditor",0)
 {
 	g_pAliasEditorWindow = this;

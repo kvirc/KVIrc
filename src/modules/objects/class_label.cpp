@@ -27,7 +27,7 @@
 #include "kvi_debug.h"
 #include "class_label.h"
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 
 #include <QFont>
 #include <QPixmap>

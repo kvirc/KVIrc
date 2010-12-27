@@ -22,11 +22,11 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviCString.h"
 #include "KviConfigurationFile.h"
 #include "KviFileUtils.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviLocale.h"
 #include "KviPointerHashTable.h"
 
@@ -104,7 +104,7 @@ static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	QString szAbsFile;
 
 	if(KviFileUtils::isAbsolutePath(szFile))szAbsFile = szFile;
-	else g_pApp->getLocalKvircDirectory(szAbsFile,KviApp::ConfigScripts,szFile,true);
+	else g_pApp->getLocalKvircDirectory(szAbsFile,KviApplication::ConfigScripts,szFile,true);
 
 	KviPointerHashTableIterator<QString,KviConfigurationFile> it(*g_pConfigDict);
 	while(it.current())
@@ -160,7 +160,7 @@ static bool config_kvs_fnc_id(KviKvsModuleFunctionCall * c)
 	QString szAbsFile;
 
 	if(KviFileUtils::isAbsolutePath(szFile))szAbsFile = szFile;
-	else g_pApp->getLocalKvircDirectory(szAbsFile,KviApp::ConfigScripts,szFile,true);
+	else g_pApp->getLocalKvircDirectory(szAbsFile,KviApplication::ConfigScripts,szFile,true);
 
 	KviPointerHashTableIterator<QString,KviConfigurationFile> it(*g_pConfigDict);
 	while(it.current())

@@ -25,11 +25,11 @@
 
 #include "controller.h"
 
-#include "kvi_window.h"
-#include "kvi_console.h"
+#include "KviWindow.h"
+#include "KviConsoleWindow.h"
 #include "KviMircCntrl.h"
-#include "kvi_app.h"
-#include "kvi_options.h"
+#include "KviApplication.h"
+#include "KviOptions.h"
 
 #include <QTimer>
 #include <QString>

@@ -26,8 +26,8 @@
 
 #include "kvi_settings.h"
 #include "KviCString.h"
-#include "kvi_console.h"
-#include "kvi_kvs_moduleinterface.h"
+#include "KviConsoleWindow.h"
+#include "KviKvsModuleInterface.h"
 
 #ifndef _UTILS_CPP_
 	extern bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pConsole,QString &szListenIp);

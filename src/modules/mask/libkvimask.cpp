@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
 #include "KviCString.h"
 #include "KviIrcMask.h"

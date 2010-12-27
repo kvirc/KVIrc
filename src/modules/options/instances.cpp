@@ -71,7 +71,7 @@
 #include "optw_windowlist.h"
 
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "instances.h"
 
 int g_iOptionWidgetInstances = 0;

@@ -26,7 +26,7 @@
 #include "kvi_debug.h"
 #include "KviLocale.h"
 #include "KviError.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviFile.h"
 
 #include "class_button.h"

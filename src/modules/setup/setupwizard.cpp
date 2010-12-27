@@ -26,15 +26,15 @@ bool g_bFoundMirc;
 
 #include "setupwizard.h"
 
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviLocale.h"
 #include "KviFileUtils.h"
 #include "kvi_defaults.h"
-#include "kvi_msgbox.h"
+#include "KviMessageBox.h"
 #include "KviTalFileDialog.h"
 #include "KviQString.h"
 #include "KviEnvironment.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviConfigurationFile.h"
 #include "KviTalHBox.h"
 
@@ -142,7 +142,7 @@ KviSetupWizard::KviSetupWizard()
 	QString szLabelText;
 
 	QString szImagePath;
-	g_pApp->getGlobalKvircDirectory(szImagePath,KviApp::Pics,"kvi_setup_label.png");
+	g_pApp->getGlobalKvircDirectory(szImagePath,KviApplication::Pics,"kvi_setup_label.png");
 
 	m_pLabelPixmap = new QPixmap(szImagePath);
 	if(m_pLabelPixmap->isNull())
@@ -193,7 +193,7 @@ KviSetupWizard::KviSetupWizard()
 	ed->setWordWrapMode(QTextOption::NoWrap);
 	QString szLicense;
 	QString szLicensePath;
-	g_pApp->getGlobalKvircDirectory(szLicensePath,KviApp::License,"COPYING");
+	g_pApp->getGlobalKvircDirectory(szLicensePath,KviApplication::License,"COPYING");
 	if(!KviFileUtils::loadFile(szLicensePath,szLicense))
 	{
 		szLicense = __tr("Oops... can't find the license file.\n" \
@@ -436,7 +436,7 @@ KviSetupWizard::KviSetupWizard()
 	m_pThemeButtonGroup->setLayout(pThemeGrid);
 
 	QString szThemeImagePath;
-	g_pApp->getGlobalKvircDirectory(szThemeImagePath,KviApp::Pics,"kvi_setup_theme_hires.png");
+	g_pApp->getGlobalKvircDirectory(szThemeImagePath,KviApplication::Pics,"kvi_setup_theme_hires.png");
 
 	QPixmap* pHiResPixmap = new QPixmap(szThemeImagePath);
 	if(pHiResPixmap->isNull())
@@ -456,7 +456,7 @@ KviSetupWizard::KviSetupWizard()
 	m_pThemeHiRes = new QRadioButton(__tr2qs("&Fancy Theme"),m_pThemeButtonGroup);
 	pThemeGrid->addWidget(m_pThemeHiRes, 2,1);
 
-	g_pApp->getGlobalKvircDirectory(szThemeImagePath,KviApp::Pics,"kvi_setup_theme_lowres.png");
+	g_pApp->getGlobalKvircDirectory(szThemeImagePath,KviApplication::Pics,"kvi_setup_theme_lowres.png");
 	QPixmap* pLowResPixmap = new QPixmap(szThemeImagePath);
 	if(pLowResPixmap->isNull())
 	{
@@ -559,7 +559,7 @@ KviSetupWizard::KviSetupWizard()
 	// Preconfigured values
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QString szTmp;
-	g_pApp->getGlobalKvircDirectory(szTmp,KviApp::Config,"preinstalled.kvc");
+	g_pApp->getGlobalKvircDirectory(szTmp,KviApplication::Config,"preinstalled.kvc");
 	if(KviFileUtils::fileExists(szTmp))
 	{
 		KviConfigurationFile cfg(szTmp,KviConfigurationFile::Read);

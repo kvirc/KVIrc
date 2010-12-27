@@ -26,8 +26,8 @@
 #include "notifiermessage.h"
 #include "notifiersettings.h"
 
-#include "kvi_htmlgenerator.h"
-#include "kvi_options.h"
+#include "KviHtmlGenerator.h"
+#include "KviOptions.h"
 
 #include <QRect>
 #include <QResizeEvent>

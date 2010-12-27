@@ -25,11 +25,11 @@
 
 #include "dialog.h"
 
-#include "kvi_app.h"
-#include "kvi_options.h"
+#include "KviApplication.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
-#include "kvi_module.h"
+#include "KviIconManager.h"
+#include "KviModule.h"
 #include "KviPointerHashTable.h"
 #include "KviTalVBox.h"
 #include "KviTalToolTip.h"
@@ -55,7 +55,7 @@
 //extern KviModule * g_pOptionsModule;
 extern KviPointerHashTable<QString,KviOptionsDialog> * g_pOptionsDialogDict;
 
-extern KVIRC_API KviApp * g_pApp;
+extern KVIRC_API KviApplication * g_pApp;
 extern KviOptionsInstanceManager * g_pOptionsInstanceManager;
 
 KviGeneralOptionsFrontWidget::KviGeneralOptionsFrontWidget(QWidget *parent,const QString &szText)

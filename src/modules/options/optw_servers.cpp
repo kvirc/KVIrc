@@ -28,29 +28,29 @@
 
 #include "container.h"
 
-#include "kvi_query.h"
-#include "kvi_channel.h"
+#include "KviQueryWindow.h"
+#include "KviChannelWindow.h"
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviIrcServerDataBase.h"
-#include "kvi_ipeditor.h"
+#include "KviIpEditor.h"
 #include "KviNetUtils.h"
 #include "kvi_settings.h"
-#include "kvi_filedialog.h"
+#include "KviFileDialog.h"
 #include "KviConfigurationFile.h"
-#include "kvi_scripteditor.h"
-#include "kvi_options.h"
-#include "kvi_app.h"
-#include "kvi_console.h"
-#include "kvi_ircurl.h"
-#include "kvi_module.h"
-#include "kvi_modulemanager.h"
-#include "kvi_moduleextension.h"
-#include "kvi_msgbox.h"
-#include "kvi_mexserverimport.h"
+#include "KviScriptEditor.h"
+#include "KviOptions.h"
+#include "KviApplication.h"
+#include "KviConsoleWindow.h"
+#include "KviIrcUrl.h"
+#include "KviModule.h"
+#include "KviModuleManager.h"
+#include "KviModuleExtension.h"
+#include "KviMessageBox.h"
+#include "KviMexServerImport.h"
 #include "KviNickServRuleSet.h"
 #include "KviProxyDataBase.h"
-#include "kvi_kvs_script.h"
+#include "KviKvsScript.h"
 #include "KviPointerHashTable.h"
 #include "KviTalPopupMenu.h"
 #include "KviTalToolTip.h"
@@ -1171,7 +1171,7 @@ void KviIrcServerDetailsWidget::useDefaultInitUModeToggled(bool b)
 	m_pSMode->setEnabled(!b);
 }
 
-// kvi_app.cpp
+// KviApplication.cpp
 extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 
 KviIrcServerOptionsTreeWidgetItem::KviIrcServerOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,const KviIrcNetwork *n)

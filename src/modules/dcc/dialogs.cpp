@@ -25,8 +25,8 @@
 #include "dialogs.h"
 
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
-#include "kvi_app.h"
+#include "KviIconManager.h"
+#include "KviApplication.h"
 
 #include <QLayout>
 #include <QPushButton>

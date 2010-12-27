@@ -27,9 +27,9 @@
 #include "window.h"
 
 #include "KviLocale.h"
-#include "kvi_kvs_eventtriggers.h"
-#include "kvi_window.h"
-#include "kvi_app.h"
+#include "KviKvsEventTriggers.h"
+#include "KviWindow.h"
+#include "KviApplication.h"
 
 static unsigned int g_uNextDescriptorId = 1; // we use 0 as an invalid descriptor id
 static KviPointerHashTable<int,KviDccDescriptor> * g_pDescriptorDict = 0;

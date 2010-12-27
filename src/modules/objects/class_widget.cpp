@@ -30,11 +30,11 @@
 #include "kvi_debug.h"
 #include "KviError.h"
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
-#include "kvi_window.h"
-#include "kvi_app.h"
-#include "kvi_frame.h"
-#include "kvi_statusbar.h"
+#include "KviIconManager.h"
+#include "KviWindow.h"
+#include "KviApplication.h"
+#include "KviMainWindow.h"
+#include "KviStatusBar.h"
 #include "class_painter.h"
 
 #include <QKeyEvent>

@@ -28,15 +28,15 @@
 #include "notifierwindowborder.h"
 #include "notifierwindowtab.h"
 
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviConfigurationFile.h"
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviLocale.h"
-#include "kvi_frame.h"
+#include "KviMainWindow.h"
 #include "KviMircCntrl.h"
-#include "kvi_options.h"
-#include "kvi_userinput.h"
-#include "kvi_themedlineedit.h"
+#include "KviOptions.h"
+#include "KviUserInput.h"
+#include "KviThemedLineEdit.h"
 
 #include <QApplication>
 #include <QImage>

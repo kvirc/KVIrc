@@ -26,11 +26,11 @@
 
 #include "KviLocale.h"
 #include "KviConfigurationFile.h"
-#include "kvi_irctoolbar.h"
-#include "kvi_window.h"
+#include "KviIrcToolBar.h"
+#include "KviWindow.h"
 #include "KviTalMenuBar.h"
-#include "kvi_mextoolbar.h"
-#include "kvi_kvs_action.h"
+#include "KviMexToolBar.h"
+#include "KviKvsAction.h"
 #include <QTreeWidget>
 
 #include <QDialog>

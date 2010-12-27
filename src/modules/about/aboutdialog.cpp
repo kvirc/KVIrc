@@ -27,7 +27,7 @@
 
 #include "kvi_defaults.h"
 #include "KviLocale.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviFileUtils.h"
 #include "kvi_sourcesdate.h"
 #include "KviBuildInfo.h"
@@ -207,7 +207,7 @@ KviAboutDialog::KviAboutDialog()
 	QString szLicense;
 
 	QString szLicensePath;
-	g_pApp->getGlobalKvircDirectory(szLicensePath,KviApp::License,"COPYING");
+	g_pApp->getGlobalKvircDirectory(szLicensePath,KviApplication::License,"COPYING");
 
 	if(!KviFileUtils::loadFile(szLicensePath,szLicense))
 	{

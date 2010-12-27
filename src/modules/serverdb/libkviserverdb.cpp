@@ -22,8 +22,8 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
-#include "kvi_app.h"
+#include "KviModule.h"
+#include "KviApplication.h"
 #include "KviLocale.h"
 #include "KviIrcServer.h"
 #include "KviIrcServerDataBase.h"

@@ -24,11 +24,11 @@
 //
 //=============================================================================
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviCString.h"
-#include "kvi_sparser.h"
-#include "kvi_console.h"
-#include "kvi_moduleextension.h"
+#include "KviIrcServerParser.h"
+#include "KviConsoleWindow.h"
+#include "KviModuleExtension.h"
 #include "KviSharedFilesManager.h"
 #include <QTreeWidget>
 
@@ -79,7 +79,7 @@ class KviSharedFilesWindow : public KviWindow, public KviModuleExtension
 	friend class KviSharedFilesItem;
 	Q_OBJECT
 public:
-	KviSharedFilesWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm);
+	KviSharedFilesWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm);
 	~KviSharedFilesWindow();
 protected:
 	QSplitter           * m_pVertSplitter;

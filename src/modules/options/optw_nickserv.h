@@ -27,7 +27,7 @@
 
 
 #include "kvi_settings.h"
-#include "kvi_optionswidget.h"
+#include "KviOptionsWidget.h"
 
 #include <QDialog>
 #include <QCheckBox>

@@ -24,14 +24,14 @@
 
 #include "optw_mediatypes.h"
 
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviTalToolTip.h"
 
 #include <QLayout>
 #include <QLabel>
 
-// kvi_app.cpp
+// KviApplication.cpp
 extern KVIRC_API KviMediaManager * g_pMediaManager;
 
 static void copyMediaType(KviMediaType * dst,const KviMediaType * src)

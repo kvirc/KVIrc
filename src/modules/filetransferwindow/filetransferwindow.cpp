@@ -25,19 +25,19 @@
 #include "filetransferwindow.h"
 
 #include "kvi_debug.h"
-#include "kvi_iconmanager.h"
-#include "kvi_ircview.h"
+#include "KviIconManager.h"
+#include "KviIrcView.h"
 #include "kvi_out.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
 #include "KviMircCntrl.h"
-#include "kvi_themedlabel.h"
-#include "kvi_input.h"
+#include "KviThemedLabel.h"
+#include "KviInput.h"
 #include "KviQString.h"
 #include "KviTalHBox.h"
-#include "kvi_frame.h"
-#include "kvi_mdimanager.h"
+#include "KviMainWindow.h"
+#include "KviMdiManager.h"
 
 #include <QToolTip>
 #include <QPainter>
@@ -237,7 +237,7 @@ QSize KviFileTransferItemDelegate::sizeHint(const QStyleOptionViewItem &, const 
 	return QSize(((KviFileTransferWidget*)parent())->viewport()->size().width(), 68);
 }
 
-KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm)
+KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_TOOL,lpFrm,"file transfer window",0), KviModuleExtension(d)
 {
 	g_pFileTransferWindow = this;

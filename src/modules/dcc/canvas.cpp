@@ -34,29 +34,29 @@
 
 	#define _KVI_DEBUG_CHECK_RANGE_
 	#include "kvi_debug.h"
-	#include "kvi_options.h"
-	#include "kvi_input.h"
-	#include "kvi_ircview.h"
-	#include "kvi_iconmanager.h"
+	#include "KviOptions.h"
+	#include "KviInput.h"
+	#include "KviIrcView.h"
+	#include "KviIconManager.h"
 	#include "KviLocale.h"
 	#include "KviError.h"
 	#include "kvi_out.h"
 	#include "KviNetUtils.h"
-	#include "kvi_console.h"
-	#include "kvi_frame.h"
+	#include "KviConsoleWindow.h"
+	#include "KviMainWindow.h"
 	#include "KviMemory.h"
 	#include "KviMemory.h"
 	#include "KviThread.h"
-	#include "kvi_ircsocket.h"
+	#include "KviIrcSocket.h"
 	#include "kvi_settings.h"
-	#include "kvi_ircconnection.h"
+	#include "KviIrcConnection.h"
 
 	#include <QSplitter>
 
 	extern KviDccBroker * g_pDccBroker;
 
 
-	KviDccCanvas::KviDccCanvas(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
+	KviDccCanvas::KviDccCanvas(KviMainWindow *pFrm,KviDccDescriptor * dcc,const char * name)
 	: KviDccWindow(KVI_WINDOW_TYPE_DCCCANVAS,pFrm,name,dcc)
 	{
 		m_pSplitter = new QSplitter(QSplitter::Vertical,this,"splitter");

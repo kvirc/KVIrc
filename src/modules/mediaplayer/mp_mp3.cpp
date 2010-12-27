@@ -38,7 +38,7 @@
 //=============================================================================
 
 #include "mp_mp3.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 
 #include <QFileInfo>
 #include <QTextCodec>

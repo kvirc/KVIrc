@@ -29,7 +29,7 @@
 #include "KviTalToolBar.h"
 #include "KviTalMainWindow.h"
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "class_mainwindow.h"
 
 /*

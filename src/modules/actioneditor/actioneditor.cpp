@@ -23,22 +23,22 @@
 //=============================================================================
 #include "actioneditor.h"
 
-#include "kvi_iconmanager.h"
-#include "kvi_options.h"
+#include "KviIconManager.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
-#include "kvi_imagedialog.h"
+#include "KviImageDialog.h"
 #include "KviConfigurationFile.h"
 #include "KviFileUtils.h"
-#include "kvi_scripteditor.h"
+#include "KviScriptEditor.h"
 #include "kvi_debug.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviQString.h"
-#include "kvi_kvs_aliasmanager.h"
-#include "kvi_filedialog.h"
-#include "kvi_actionmanager.h"
-#include "kvi_action.h"
-#include "kvi_kvs_useraction.h"
-#include "kvi_customtoolbarmanager.h"
+#include "KviKvsAliasManager.h"
+#include "KviFileDialog.h"
+#include "KviActionManager.h"
+#include "KviAction.h"
+#include "KviKvsUserAction.h"
+#include "KviCustomToolBarManager.h"
 #include "KviTalVBox.h"
 #include <KviTalGroupBox.h>
 #include "KviTalIconAndRichTextItemDelegate.h"
@@ -860,7 +860,7 @@ void KviActionEditor::commit()
 }
 
 
-KviActionEditorWindow::KviActionEditorWindow(KviFrame * lpFrm)
+KviActionEditorWindow::KviActionEditorWindow(KviMainWindow * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,lpFrm,"actioneditor",0)
 {
 	g_pActionEditorWindow = this;

@@ -25,12 +25,12 @@
 #include <math.h>
 
 #include "libkviiograph.h"
-#include "kvi_frame.h"
-#include "kvi_iconmanager.h"
+#include "KviMainWindow.h"
+#include "KviIconManager.h"
 #include "KviLocale.h"
-#include "kvi_mdimanager.h"
-#include "kvi_module.h"
-#include "kvi_options.h"
+#include "KviMdiManager.h"
+#include "KviModule.h"
+#include "KviOptions.h"
 #include "kvi_socket.h"
 
 #include <QPainter>
@@ -42,7 +42,7 @@
 
 KviIOGraphWindow* g_pIOGraphWindow = 0;
 
-KviIOGraphWindow::KviIOGraphWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm,const char * name)
+KviIOGraphWindow::KviIOGraphWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm,const char * name)
 : KviWindow(KVI_WINDOW_TYPE_IOGRAPH,lpFrm,name), KviModuleExtension(d)
 {
 	m_pIOGraph = new KviIOGraphWidget(this);

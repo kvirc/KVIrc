@@ -26,11 +26,11 @@
 #include "helpwindow.h"
 #include "index.h"
 #include "KviLocale.h"
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviFileUtils.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_app.h"
-#include "kvi_frame.h"
+#include "KviApplication.h"
+#include "KviMainWindow.h"
 
 #include <QDir>
 #include <QFileInfo>
@@ -109,7 +109,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	if(!f.exists() || !f.isAbsolute())
 	{
 		// try relative path (to local help)
-		g_pApp->getLocalKvircDirectory(szHelpDir,KviApp::Help);
+		g_pApp->getLocalKvircDirectory(szHelpDir,KviApplication::Help);
 		dirHelp = QDir(szHelpDir);
 		szDoc = dirHelp.absoluteFilePath(szParam);
 		qDebug("No abs path, trying local relative path: %s",szDoc.toUtf8().data());
@@ -118,7 +118,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		if(!f.exists())
 		{
 			//try relative path (to global help)
-			g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
+			g_pApp->getGlobalKvircDirectory(szHelpDir,KviApplication::Help);
 			dirHelp = QDir(szHelpDir);
 
 			szDoc = dirHelp.absoluteFilePath(szParam);
@@ -136,8 +136,8 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 			if (!g_pDocIndex->documentList().count())
 			{
 				QString szDoclist,szDict;
-				g_pApp->getLocalKvircDirectory(szDoclist,KviApp::Help,"help.doclist." KVI_SOURCES_DATE);
-				g_pApp->getLocalKvircDirectory(szDict,KviApp::Help,"help.dict." KVI_SOURCES_DATE);
+				g_pApp->getLocalKvircDirectory(szDoclist,KviApplication::Help,"help.doclist." KVI_SOURCES_DATE);
+				g_pApp->getLocalKvircDirectory(szDict,KviApplication::Help,"help.dict." KVI_SOURCES_DATE);
 				if ( KviFileUtils::fileExists(szDoclist) && KviFileUtils::fileExists( szDict ))
 				{
 					g_pDocIndex->readDict();
@@ -204,13 +204,13 @@ static bool help_module_init(KviModule * m)
 {
 	QString szHelpDir,szDocList;
 
-	g_pApp->getLocalKvircDirectory(szDocList,KviApp::Help,"help.doclist." KVI_SOURCES_DATE);
-	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
+	g_pApp->getLocalKvircDirectory(szDocList,KviApplication::Help,"help.doclist." KVI_SOURCES_DATE);
+	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApplication::Help);
 
 	g_pDocIndex = new Index(szHelpDir,szDocList);
 	g_pDocIndex->setDocListFile(szDocList);
 
-	g_pApp->getLocalKvircDirectory(szHelpDir,KviApp::Help,"help.dict." KVI_SOURCES_DATE);
+	g_pApp->getLocalKvircDirectory(szHelpDir,KviApplication::Help,"help.dict." KVI_SOURCES_DATE);
 	g_pDocIndex->setDictionaryFile(szHelpDir);
 
 	g_pHelpWidgetList = new KviPointerList<KviHelpWidget>;

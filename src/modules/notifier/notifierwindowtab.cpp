@@ -28,12 +28,12 @@
 #include "notifierwindow.h"
 #include "notifiersettings.h"
 
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviConfigurationFile.h"
 #include "KviLocale.h"
-#include "kvi_frame.h"
-#include "kvi_options.h"
-#include "kvi_window.h"
+#include "KviMainWindow.h"
+#include "KviOptions.h"
+#include "KviWindow.h"
 
 #include <QScrollBar>
 #include <QResizeEvent>

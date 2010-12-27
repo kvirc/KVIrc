@@ -24,21 +24,21 @@
 
 #include "libkviurl.h"
 
-#include "kvi_module.h"
-#include "kvi_app.h"
-#include "kvi_frame.h"
-#include "kvi_menubar.h"
-#include "kvi_mdimanager.h"
-#include "kvi_internalcmd.h"
-#include "kvi_iconmanager.h"
-#include "kvi_action.h"
-#include "kvi_actionmanager.h"
-#include "kvi_windowlist.h"
+#include "KviModule.h"
+#include "KviApplication.h"
+#include "KviMainWindow.h"
+#include "KviMenuBar.h"
+#include "KviMdiManager.h"
+#include "KviInternalCommand.h"
+#include "KviIconManager.h"
+#include "KviAction.h"
+#include "KviActionManager.h"
+#include "KviWindowListBase.h"
 #include "KviPointerList.h"
-#include "kvi_kvs_eventmanager.h"
+#include "KviKvsEventManager.h"
 #include "KviTalPopupMenu.h"
-#include "kvi_window.h"
-#include "kvi_options.h"
+#include "KviWindow.h"
+#include "KviOptions.h"
 #include "KviQString.h"
 #include "kvi_out.h"
 
@@ -587,7 +587,7 @@ BanFrame::~BanFrame()
 void saveUrlList()
 {
 	QString urllist;
-	g_pApp->getLocalKvircDirectory(urllist,KviApp::ConfigPlugins);
+	g_pApp->getLocalKvircDirectory(urllist,KviApplication::ConfigPlugins);
 	urllist += g_pUrlListFilename;
 	QFile file;
 	file.setFileName(urllist);
@@ -611,7 +611,7 @@ void saveUrlList()
 void loadUrlList()
 {
 	QString urllist;
-	g_pApp->getLocalKvircDirectory(urllist,KviApp::ConfigPlugins);
+	g_pApp->getLocalKvircDirectory(urllist,KviApplication::ConfigPlugins);
 	urllist += g_pUrlListFilename;
 	QFile file;
 	file.setFileName(urllist);
@@ -651,7 +651,7 @@ void loadUrlList()
 void saveBanList()
 {
 	QString banlist;
-	g_pApp->getLocalKvircDirectory(banlist,KviApp::ConfigPlugins);
+	g_pApp->getLocalKvircDirectory(banlist,KviApplication::ConfigPlugins);
 	banlist += g_pBanListFilename;
 	QFile file;
 	file.setFileName(banlist);
@@ -671,7 +671,7 @@ void saveBanList()
 void loadBanList()
 {
 	QString banlist;
-	g_pApp->getLocalKvircDirectory(banlist,KviApp::ConfigPlugins);
+	g_pApp->getLocalKvircDirectory(banlist,KviApplication::ConfigPlugins);
 	banlist += g_pBanListFilename;
 	QFile file;
 	file.setFileName(banlist);
@@ -894,7 +894,7 @@ static bool url_module_init(KviModule *m)
 
 	m->kvsRegisterAppEventHandler(KviEvent_OnURL,urllist_module_event_onUrl);
 
-	g_pApp->getLocalKvircDirectory(szConfigPath,KviApp::ConfigPlugins,"url.conf");
+	g_pApp->getLocalKvircDirectory(szConfigPath,KviApplication::ConfigPlugins,"url.conf");
 
 	loadUrlList();
 	loadBanList();

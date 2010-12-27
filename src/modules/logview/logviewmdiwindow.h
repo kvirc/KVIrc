@@ -26,8 +26,8 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_window.h"
-#include "kvi_moduleextension.h"
+#include "KviWindow.h"
+#include "KviModuleExtension.h"
 #include "KviTalVBox.h"
 #include <QTreeWidget>
 #include "KviPointerList.h"
@@ -91,7 +91,7 @@ class KviLogViewMDIWindow : public KviWindow, public KviModuleExtension
 {
     Q_OBJECT
 public:
-	KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm);
+	KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm);
 	~KviLogViewMDIWindow();
 protected:
 	KviPointerList<KviLogFile> m_logList;

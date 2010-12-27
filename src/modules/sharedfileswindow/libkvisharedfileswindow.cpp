@@ -23,12 +23,12 @@
 
 #include "sharedfileswindow.h"
 
-#include "kvi_module.h"
-#include "kvi_app.h"
-#include "kvi_frame.h"
-#include "kvi_window.h"
+#include "KviModule.h"
+#include "KviApplication.h"
+#include "KviMainWindow.h"
+#include "KviWindow.h"
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 
 #include <QSplitter>
 

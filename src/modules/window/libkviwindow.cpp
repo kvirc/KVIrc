@@ -24,22 +24,22 @@
 
 #include "userwindow.h"
 
-#include "kvi_module.h"
-#include "kvi_console.h"
-#include "kvi_options.h"
-#include "kvi_ircsocket.h"
-#include "kvi_frame.h"
+#include "KviModule.h"
+#include "KviConsoleWindow.h"
+#include "KviOptions.h"
+#include "KviIrcSocket.h"
+#include "KviMainWindow.h"
 #include "KviLocale.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviError.h"
-#include "kvi_ircview.h"
-#include "kvi_input.h"
-#include "kvi_iconmanager.h"
-#include "kvi_modulemanager.h"
+#include "KviIrcView.h"
+#include "KviInput.h"
+#include "KviIconManager.h"
+#include "KviModuleManager.h"
 #include "KviMemory.h"
 #include "KviMemory.h"
-#include "kvi_mdichild.h"
-#include "kvi_channel.h"
+#include "KviMdiChild.h"
+#include "KviChannelWindow.h"
 #include "KviPointerHashTable.h"
 
 #include <QTimer>
@@ -47,13 +47,13 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "KviCryptEngine.h"
-	#include "kvi_cryptcontroller.h"
-	// kvi_app.cpp
+	#include "KviCryptController.h"
+	// KviApplication.cpp
 	extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 #endif
 
 
-// kvi_app.cpp
+// KviApplication.cpp
 extern KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;
 KviPointerList<KviUserWindow> * g_pUserWindowList = 0;
 
@@ -125,7 +125,7 @@ static bool window_kvs_cmd_clearOutput(KviKvsModuleCommandCall * c)
 		if(pWnd->view())pWnd->view()->clearBuffer();
 		if(pWnd->type() == KVI_WINDOW_TYPE_CHANNEL)
 		{
-			KviChannel *chan = (KviChannel *)pWnd;
+			KviChannelWindow *chan = (KviChannelWindow *)pWnd;
 			if(chan->messageView()) chan->messageView()->clearBuffer();
 		}
 	}

@@ -24,12 +24,12 @@
 //
 //=============================================================================
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviCString.h"
 #include "KviParameterList.h"
-#include "kvi_filedialog.h"
-#include "kvi_imagedialog.h"
-#include "kvi_kvs_callbackobject.h"
+#include "KviFileDialog.h"
+#include "KviImageDialog.h"
+#include "KviKvsCallbackObject.h"
 
 #include <QMessageBox>
 #include <QDialog>

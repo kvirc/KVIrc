@@ -27,7 +27,7 @@
 
 #include "aboutdialog.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
 
 KviAboutDialog * g_pAboutDialog = 0;

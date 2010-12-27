@@ -24,10 +24,10 @@
 
 #include "optw_texticons.h"
 
-#include "kvi_iconmanager.h"
-#include "kvi_texticonmanager.h"
+#include "KviIconManager.h"
+#include "KviTextIconManager.h"
 #include "KviLocale.h"
-#include "kvi_filedialog.h"
+#include "KviFileDialog.h"
 #include "kvi_fileextensions.h"
 #include "KviTalHBox.h"
 

@@ -27,7 +27,7 @@
 
 #include "instances.h"
 
-#include "kvi_optionswidget.h"
+#include "KviOptionsWidget.h"
 #include <QTreeWidget>
 
 #include <QWidget>

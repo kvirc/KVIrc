@@ -24,7 +24,7 @@
 
 #include "class_dockwindow.h"
 
-#include "kvi_frame.h"
+#include "KviMainWindow.h"
 #include "KviLocale.h"
 #include "KviQString.h"
 

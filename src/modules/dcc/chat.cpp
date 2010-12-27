@@ -32,27 +32,27 @@
 #endif
 
 #include "kvi_debug.h"
-#include "kvi_options.h"
-#include "kvi_input.h"
-#include "kvi_ircview.h"
-#include "kvi_iconmanager.h"
+#include "KviOptions.h"
+#include "KviInput.h"
+#include "KviIrcView.h"
+#include "KviIconManager.h"
 #include "KviLocale.h"
 #include "KviError.h"
 #include "kvi_out.h"
 #include "KviNetUtils.h"
-#include "kvi_console.h"
-#include "kvi_frame.h"
+#include "KviConsoleWindow.h"
+#include "KviMainWindow.h"
 #include "KviMemory.h"
 #include "KviMemory.h"
 #include "KviThread.h"
-#include "kvi_ircsocket.h"
+#include "KviIrcSocket.h"
 #include "kvi_settings.h"
 #include "kvi_socket.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviParameterList.h"
-#include "kvi_ircconnection.h"
-#include "kvi_ircconnectionuserinfo.h"
-#include "kvi_kvs_eventtriggers.h"
+#include "KviIrcConnection.h"
+#include "KviIrcConnectionUserInfo.h"
+#include "KviKvsEventTriggers.h"
 #include "KviMircCntrl.h"
 #include "KviTalVBox.h"
 
@@ -63,11 +63,11 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "KviCryptEngine.h"
-	#include "kvi_cryptcontroller.h"
+	#include "KviCryptController.h"
 #endif
 
 #ifdef COMPILE_SSL_SUPPORT
-	#include "kvi_sslmaster.h"
+	#include "KviSSLMaster.h"
 #endif
 
 extern KviDccBroker * g_pDccBroker;
@@ -82,7 +82,7 @@ extern KviDccBroker * g_pDccBroker;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-KviDccChat::KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
+KviDccChat::KviDccChat(KviMainWindow *pFrm,KviDccDescriptor * dcc,const char * name)
 : KviDccWindow(KVI_WINDOW_TYPE_DCCCHAT,pFrm,name,dcc)
 {
 	m_pButtonBox = new KviTalHBox(this);
@@ -441,7 +441,7 @@ bool KviDccChat::event(QEvent *e)
 							szMsg += m_pDescriptor->szNick;
 							szMsg += "</b> ";
 							szMsg += Qt::escape(QString(d.ptr()));
-							//qDebug("kvi_sp_ctcp.cpp:975 debug: %s",szMsg.data());
+							//qDebug("KviIrcServerParser_ctcp.cpp:975 debug: %s",szMsg.data());
 							g_pApp->notifierMessage(this,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 						}
 					}

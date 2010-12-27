@@ -26,11 +26,11 @@
 
 #include "utils.h"
 
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviNetUtils.h"
-#include "kvi_ircsocket.h"
-#include "kvi_irclink.h"
+#include "KviIrcSocket.h"
+#include "KviIrcLink.h"
 #include "KviQString.h"
 
 /*

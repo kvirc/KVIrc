@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "KviLocale.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 
 
 KviWindowListOptionsWidget::KviWindowListOptionsWidget(QWidget * parent)

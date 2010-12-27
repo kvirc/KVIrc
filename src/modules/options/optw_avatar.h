@@ -25,7 +25,7 @@
 //
 //=============================================================================
 
-#include "kvi_optionswidget.h"
+#include "KviOptionsWidget.h"
 
 
 #define KVI_OPTIONS_WIDGET_ICON_KviAvatarAdvancedOptionsWidget KVI_SMALLICON_AVATAR

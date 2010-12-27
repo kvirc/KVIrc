@@ -24,20 +24,20 @@
 
 //#warning: FIXME: Incomplete documentation ('example', etc)
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
 #include "KviQString.h"
-#include "kvi_window.h"
-#include "kvi_frame.h"
-#include "kvi_console.h"
-#include "kvi_app.h"
+#include "KviWindow.h"
+#include "KviMainWindow.h"
+#include "KviConsoleWindow.h"
+#include "KviApplication.h"
 #include "KviIrcServer.h"
 #include "KviIrcNetwork.h"
-#include "kvi_irccontext.h"
-#include "kvi_ircconnection.h"
-#include "kvi_ircconnectionserverinfo.h"
-#include "kvi_ircconnectionuserinfo.h"
-#include "kvi_ircconnectiontarget.h"
+#include "KviIrcContext.h"
+#include "KviIrcConnection.h"
+#include "KviIrcConnectionServerInfo.h"
+#include "KviIrcConnectionUserInfo.h"
+#include "KviIrcConnectionTarget.h"
 
 #define GET_CONSOLE_FROM_STANDARD_PARAMS \
 	kvs_uint_t iContextId; \

@@ -31,28 +31,28 @@
 #include "window.h"
 
 #include "kvi_debug.h"
-#include "kvi_app.h"
-#include "kvi_options.h"
-#include "kvi_ircview.h"
-#include "kvi_iconmanager.h"
+#include "KviApplication.h"
+#include "KviOptions.h"
+#include "KviIrcView.h"
+#include "KviIconManager.h"
 #include "KviLocale.h"
 #include "KviError.h"
 #include "kvi_out.h"
 #include "KviNetUtils.h"
-#include "kvi_console.h"
-#include "kvi_frame.h"
+#include "KviConsoleWindow.h"
+#include "KviMainWindow.h"
 #include "KviMemory.h"
 #include "KviMemory.h"
 #include "KviThread.h"
-#include "kvi_ircsocket.h"
+#include "KviIrcSocket.h"
 #include "KviMediaType.h"
 #include "kvi_socket.h"
-#include "kvi_kvs_eventtriggers.h"
+#include "KviKvsEventTriggers.h"
 #include "KviParameterList.h"
-#include "kvi_ircconnection.h"
-#include "kvi_ircconnectionuserinfo.h"
-#include "kvi_sparser.h"
-#include "kvi_kvs_script.h"
+#include "KviIrcConnection.h"
+#include "KviIrcConnectionUserInfo.h"
+#include "KviIrcServerParser.h"
+#include "KviKvsScript.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	// Ugly Windoze compiler...
@@ -81,7 +81,7 @@
 
 extern KviDccBroker * g_pDccBroker;
 
-extern KVIRC_API KviMediaManager * g_pMediaManager; // kvi_app.cpp
+extern KVIRC_API KviMediaManager * g_pMediaManager; // KviApplication.cpp
 
 
 static KviPointerList<KviDccFileTransfer> * g_pDccFileTransfers = 0;

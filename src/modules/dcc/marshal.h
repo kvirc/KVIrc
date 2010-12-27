@@ -36,7 +36,7 @@ class KviWindow;
 class KviDccMarshal;
 
 #ifdef COMPILE_SSL_SUPPORT
-	#include "kvi_sslmaster.h"
+	#include "KviSSLMaster.h"
 #endif
 
 

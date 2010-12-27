@@ -24,17 +24,17 @@
 
 #include "socketspywindow.h"
 
-#include "kvi_iconmanager.h"
-#include "kvi_ircview.h"
+#include "KviIconManager.h"
+#include "KviIrcView.h"
 #include "kvi_out.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
-#include "kvi_console.h"
-//#include "kvi_module.h"
+#include "KviConsoleWindow.h"
+//#include "KviModule.h"
 
 extern KviPointerList<KviSocketSpyWindow> * g_pSocketSpyWindowList;
 
-KviSocketSpyWindow::KviSocketSpyWindow(KviFrame * lpFrm,KviConsole * lpConsole)
+KviSocketSpyWindow::KviSocketSpyWindow(KviMainWindow * lpFrm,KviConsole * lpConsole)
 : KviWindow(KVI_WINDOW_TYPE_SOCKETSPY,lpFrm,"socket_spy",lpConsole), KviIrcDataStreamMonitor(lpConsole->context())
 {
 	g_pSocketSpyWindowList->append(this);

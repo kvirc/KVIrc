@@ -28,7 +28,7 @@
 #include "class_widget.h"
 #include "object_macros.h"
 
-#include "kvi_kvs_runtimecontext.h"
+#include "KviKvsRunTimeContext.h"
 
 #include <QtSql>
 #include <QTableWidgetItem>

@@ -31,7 +31,7 @@
 	#include "window.h"
 	#include "thread.h"
 
-	#include "kvi_window.h"
+	#include "KviWindow.h"
 	#include "KviCString.h"
 	#include "KviPointerList.h"
 
@@ -43,7 +43,7 @@
 	{
 		Q_OBJECT
 	public:
-		KviDccCanvas(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name);
+		KviDccCanvas(KviMainWindow *pFrm,KviDccDescriptor * dcc,const char * name);
 		~KviDccCanvas();
 	protected:
 	//	KviDccCanvasThread     * m_pSlaveThread;

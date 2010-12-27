@@ -28,7 +28,7 @@
 #include "class_list.h"
 #include "class_listwidget.h"
 #include "class_pixmap.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include <QListWidget>
 
 const int item_flags[] = {

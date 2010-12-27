@@ -25,7 +25,7 @@
 //
 //=============================================================================
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 
 typedef struct _SPasteThreadData {
 	QString   * strData;

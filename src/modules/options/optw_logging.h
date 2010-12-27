@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "kvi_optionswidget.h"
+#include "KviOptionsWidget.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_KviLoggingOptionsWidget KVI_SMALLICON_LOG
 #define KVI_OPTIONS_WIDGET_NAME_KviLoggingOptionsWidget __tr2qs_no_lookup("Logging")

@@ -24,9 +24,9 @@
 
 #include "popupeditor.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
-#include "kvi_frame.h"
+#include "KviMainWindow.h"
 
 
 KviPopupEditorWindow * g_pPopupEditorWindow = 0;

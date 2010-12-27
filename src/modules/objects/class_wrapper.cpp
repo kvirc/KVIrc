@@ -28,12 +28,12 @@
 #include "kvi_debug.h"
 
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 
 #include "class_widget.h"
 #include <qwidget.h>
-#include "kvi_app.h"
-#include "kvi_frame.h"
+#include "KviApplication.h"
+#include "KviMainWindow.h"
 
 
 /*
@@ -61,37 +61,37 @@
                 The difference is that there are more toplevel widgets (and so more than one tree).[br]
                 You can use [fnc]$objects.dump()[/fnc] to take a look at the KVIrc Qt objects tree.[br]
                 Here is a part of the tree:[br][br]
-                Ptr 14332520: top level object: kvirc_frame, class KviFrame, visible, rect = -4, -4, 1024, 708
+                Ptr 14332520: top level object: kvirc_frame, class KviMainWindow, visible, rect = -4, -4, 1024, 708
                    Ptr 17296024: object: qt_top_dock, class QDockArea
                 Ptr 14882136: object: qt_custom_toolbar, class KviCustomToolBar
              Ptr 18143368: object: qt_dockwidget_internal, class QDockWindowTitleBar
                 [br][br]
                 Every listed widget has a "name", a "class" and a set of properties.[br]
-                The first entry in this example is a KVIrc server window, class "KviFrame" and name "kvirc_frame":
+                The first entry in this example is a KVIrc server window, class "KviMainWindow" and name "kvirc_frame":
                 it is a toplevel widget.[br]
                 The "qt_top_dock", "qt_custom_toolbar" and the "qt_dockwidget_internal" are
                 direct children of that widget.[br]
                 To indicate a specific widget we will use the "class::name" form.[br]
-                So to indicate the main KVIrc frame you will use "KviFrame::kvirc_main_frame".
+                So to indicate the main KVIrc frame you will use "KviMainWindow::kvirc_main_frame".
                 Look at this example:[br]
-                %A=$new(wrapper,0,test,KviFrame::kvirc_frame,KviStatusBar::unnamed)[br]
+                %A=$new(wrapper,0,test,KviMainWindow::kvirc_frame,KviStatusBar::unnamed)[br]
                 %A->$setBackGroundColor(FFFFFF)[br]
                 For first thing we create an object type wrapper,then we flow the tree that there from the command /object.dump and we will have:[br]
                 .  [br]
                 .  [br]
-                Ptr 14196288: top level object: kvirc_frame, class KviFrame, visible, rect = -4, -4, 1024, 712  [br]
+                Ptr 14196288: top level object: kvirc_frame, class KviMainWindow, visible, rect = -4, -4, 1024, 712  [br]
 .                  [br]
                         Ptr 17197360: object: unnamed, class KviStatusBar  [br]
                 .  [br]
                 .  [br]
-                in this way we can follow the order, father->child from the top-level widget(KviFrame::kvirc_frame)[br]
+                in this way we can follow the order, father->child from the top-level widget(KviMainWindow::kvirc_frame)[br]
                 to reach the child that interests us (KviStatusBar::unnamed)[br]
                 Then, following the syntax we will have:
-                %A=$new(wrapper,0,test,KviFrame::kvirc_frame,KviStatusBar::unnamed)
+                %A=$new(wrapper,0,test,KviMainWindow::kvirc_frame,KviStatusBar::unnamed)
                 Now %A. will be point to the wrapped object, therefore we could modify its property or to consider it as if it were an object created by us in scripting. [br]
                 Obviously, deleting the created object (for example %A) you don't will delete the object of Kvirc (in this case the statusbar). [br]
                 Another example could be this:[br]
-                %A=$new(wrapper,0,test,KviFrame::kvirc_frame,QToolButton::kvirc.identityoptions)[br]
+                %A=$new(wrapper,0,test,KviMainWindow::kvirc_frame,QToolButton::kvirc.identityoptions)[br]
                 %A->$setProperty(usesBigPixmap,0)[br]
                 In this fool example with the function $setProperty, we has setted the property usesBigPixmap to False, making to become the small icons of the ToolBar.[br]
                 [br]

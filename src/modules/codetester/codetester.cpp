@@ -24,18 +24,18 @@
 
 #include "codetester.h"
 
-#include "kvi_iconmanager.h"
-#include "kvi_options.h"
+#include "KviIconManager.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviConfigurationFile.h"
-#include "kvi_filedialog.h"
+#include "KviFileDialog.h"
 #include "KviFileUtils.h"
-#include "kvi_scripteditor.h"
-#include "kvi_app.h"
-#include "kvi_console.h"
+#include "KviScriptEditor.h"
+#include "KviApplication.h"
+#include "KviConsoleWindow.h"
 #include "KviParameterList.h"
-#include "kvi_kvs_script.h"
-#include "kvi_kvs_variantlist.h"
+#include "KviKvsScript.h"
+#include "KviKvsVariantList.h"
 #include "KviTalPopupMenu.h"
 
 #include <QPushButton>
@@ -81,7 +81,7 @@ void KviCodeTester::execute()
 	KviKvsScript::run(buffer,con,new KviKvsVariantList(new QString(parms)));
 }
 
-KviCodeTesterWindow::KviCodeTesterWindow(KviFrame * lpFrm)
+KviCodeTesterWindow::KviCodeTesterWindow(KviMainWindow * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,lpFrm,"codetester",0)
 {
 	g_pCodeTesterWindowList->append(this);

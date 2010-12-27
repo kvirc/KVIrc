@@ -22,17 +22,17 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
-#include "kvi_window.h"
-#include "kvi_app.h"
+#include "KviWindow.h"
+#include "KviApplication.h"
 #include "KviError.h"
 #include "KviCommandFormatter.h"
-#include "kvi_customtoolbar.h"
-#include "kvi_customtoolbardescriptor.h"
-#include "kvi_customtoolbarmanager.h"
-#include "kvi_actionmanager.h"
-#include "kvi_kvs_useraction.h"
+#include "KviCustomToolBar.h"
+#include "KviCustomToolBarDescriptor.h"
+#include "KviCustomToolBarManager.h"
+#include "KviActionManager.h"
+#include "KviKvsUserAction.h"
 
 /*
 	@doc: toolbar.create

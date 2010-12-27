@@ -25,16 +25,16 @@
 #include "sharedfileswindow.h"
 
 #include "kvi_debug.h"
-#include "kvi_iconmanager.h"
-#include "kvi_ircview.h"
+#include "KviIconManager.h"
+#include "KviIrcView.h"
 #include "kvi_out.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
 #include "KviMircCntrl.h"
-#include "kvi_themedlabel.h"
-#include "kvi_input.h"
-#include "kvi_filedialog.h"
+#include "KviThemedLabel.h"
+#include "KviInput.h"
+#include "KviFileDialog.h"
 #include "KviTalHBox.h"
 #include "KviTalVBox.h"
 
@@ -207,7 +207,7 @@ KviSharedFilesTreeWidgetItem::~KviSharedFilesTreeWidgetItem()
 }
 
 
-KviSharedFilesWindow::KviSharedFilesWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm)
+KviSharedFilesWindow::KviSharedFilesWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_TOOL,lpFrm,"shared files window",0), KviModuleExtension(d)
 {
 	g_pSharedFilesWindow = this;

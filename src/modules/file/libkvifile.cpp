@@ -22,13 +22,13 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
 #include "KviMemory.h"
-#include "kvi_app.h"
-#include "kvi_options.h"
-#include "kvi_kvs_arraycast.h"
+#include "KviApplication.h"
+#include "KviOptions.h"
+#include "KviKvsArrayCast.h"
 #include "KviFile.h"
 
 #include <QFileInfo>
@@ -1172,7 +1172,7 @@ static bool file_kvs_fnc_localdir(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 	if(szName.isEmpty())szName.append(KVI_PATH_SEPARATOR_CHAR);
 	QString szPath;
-	g_pApp->getLocalKvircDirectory(szPath,KviApp::None,szName);
+	g_pApp->getLocalKvircDirectory(szPath,KviApplication::None,szName);
 	KviFileUtils::adjustFilePath(szPath);
 	c->returnValue()->setString(szPath);
 	return true;
@@ -1313,7 +1313,7 @@ static bool file_kvs_fnc_globaldir(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 	if(szName.isEmpty())szName.append(KVI_PATH_SEPARATOR_CHAR);
 	QString szPath;
-	g_pApp->getGlobalKvircDirectory(szPath,KviApp::None,szName);
+	g_pApp->getGlobalKvircDirectory(szPath,KviApplication::None,szName);
 	KviFileUtils::adjustFilePath(szPath);
 	c->returnValue()->setString(szPath);
 	return true;

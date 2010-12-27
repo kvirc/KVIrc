@@ -25,7 +25,7 @@
 #include "notifierwindowborder.h"
 #include "notifierwindowtab.h"
 
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 
 #include <QPainter>
 

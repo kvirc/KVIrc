@@ -25,9 +25,9 @@
 //
 //=============================================================================
 
-#include "kvi_scripteditor.h"
+#include "KviScriptEditor.h"
 #include "KviPointerList.h"
-#include "kvi_selectors.h"
+#include "KviSelectors.h"
 #include "KviTalPopupMenu.h"
 
 #include <QCompleter>

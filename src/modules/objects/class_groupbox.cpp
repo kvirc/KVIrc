@@ -29,7 +29,7 @@
 #include "kvi_debug.h"
 
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 
 
 // Tables used in $setAlignment, $alignment and in $setOrientation & $orientation

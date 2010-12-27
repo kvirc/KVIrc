@@ -24,20 +24,20 @@
 
 #include "popupeditor.h"
 
-#include "kvi_iconmanager.h"
-#include "kvi_options.h"
+#include "KviIconManager.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
-#include "kvi_imagedialog.h"
+#include "KviImageDialog.h"
 #include "KviConfigurationFile.h"
-#include "kvi_filedialog.h"
+#include "KviFileDialog.h"
 #include "KviFileUtils.h"
-#include "kvi_scripteditor.h"
+#include "KviScriptEditor.h"
 #include "kvi_debug.h"
 #include "KviLocale.h"
-#include "kvi_app.h"
-#include "kvi_kvs_popupmanager.h"
-#include "kvi_kvs_popupmenu.h"
-#include "kvi_kvs_variantlist.h"
+#include "KviApplication.h"
+#include "KviKvsPopupManager.h"
+#include "KviKvsPopupMenu.h"
+#include "KviKvsVariantList.h"
 #include "KviPointerHashTable.h"
 #include "KviTalVBox.h"
 #include "kvi_fileextensions.h"
@@ -1368,7 +1368,7 @@ void KviPopupEditor::getUniquePopupName(KviMenuTreeWidgetItem *item,QString &buf
 }
 
 
-KviPopupEditorWindow::KviPopupEditorWindow(KviFrame * lpFrm)
+KviPopupEditorWindow::KviPopupEditorWindow(KviMainWindow * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,lpFrm,"popupeditor",0)
 {
 	g_pPopupEditorWindow = this;

@@ -26,8 +26,8 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_optionswidget.h"
-#include "kvi_selectors.h"
+#include "KviOptionsWidget.h"
+#include "KviSelectors.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_KviToolsOptionsWidget KVI_SMALLICON_ADDONS
 #define KVI_OPTIONS_WIDGET_NAME_KviToolsOptionsWidget __tr2qs_no_lookup("Tools")

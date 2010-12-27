@@ -23,9 +23,9 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_module.h"
-#include "kvi_window.h"
-#include "kvi_frame.h"
+#include "KviModule.h"
+#include "KviWindow.h"
+#include "KviMainWindow.h"
 #include "KviPointerList.h"
 
 #include <QSplitter>

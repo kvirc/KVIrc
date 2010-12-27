@@ -26,15 +26,15 @@
 #include "instances.h"
 #include "dialog.h"
 
-#include "kvi_module.h"
-#include "kvi_options.h"
-#include "kvi_app.h"
-#include "kvi_frame.h"
-#include "kvi_window.h"
+#include "KviModule.h"
+#include "KviOptions.h"
+#include "KviApplication.h"
+#include "KviMainWindow.h"
+#include "KviWindow.h"
 #include "KviLocale.h"
 #include "KviMircCntrl.h"
 #include "kvi_out.h"
-#include "kvi_splash.h"
+#include "KviSplashScreen.h"
 #include "KviPointerHashTable.h"
 
 #include <QSplitter>

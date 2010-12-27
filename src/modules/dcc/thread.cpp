@@ -25,7 +25,7 @@
 #include "thread.h"
 
 #include "kvi_debug.h"
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviError.h"
 #include "KviMemory.h"
 #include "KviMemory.h"
@@ -33,7 +33,7 @@
 #include "kvi_socket.h"
 
 #ifdef COMPILE_SSL_SUPPORT
-	#include "kvi_sslmaster.h"
+	#include "KviSSLMaster.h"
 #endif
 
 KviDccThread::KviDccThread(QObject * par,kvi_socket_t fd)

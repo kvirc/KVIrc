@@ -24,19 +24,19 @@
 
 #include "edituser.h"
 #include "wizard.h"
-#include "kvi_ircconnection.h"
+#include "KviIrcConnection.h"
 #include "dialog.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviRegisteredUserDataBase.h"
 #include "KviIrcUserDataBase.h"
 #include "kvi_out.h"
 #include "KviMircCntrl.h"
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviLocale.h"
-#include "kvi_app.h"
-#include "kvi_window.h"
-#include "kvi_frame.h"
+#include "KviApplication.h"
+#include "KviWindow.h"
+#include "KviMainWindow.h"
 #include "KviPointerList.h"
 
 #include <QSplitter> // FIXME: REmove this!
@@ -46,7 +46,7 @@
 
 //#warning "THIS MODULE HAS TO BE REVISED (notify list consistency!!!)"
 
-// kvi_app.cpp
+// KviApplication.cpp
 
 
 extern KVIRC_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase;

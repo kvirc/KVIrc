@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "KviQString.h"
-#include "kvi_kvs_types.h"
+#include "KviKvsTypes.h"
 
 class KviMediaPlayerInterface
 {

@@ -24,11 +24,11 @@
 
 #include "libkvitip.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
-#include "kvi_app.h"
-#include "kvi_iconmanager.h"
-#include "kvi_options.h"
+#include "KviApplication.h"
+#include "KviIconManager.h"
+#include "KviOptions.h"
 #include "KviFileUtils.h"
 
 #include <QPushButton>
@@ -128,7 +128,7 @@ bool KviTipWindow::openConfig(QString filename,bool bEnsureExists)
 //	m_szConfigFileName.cutToLast('/');
 
 	QString buffer;
-	g_pApp->getReadOnlyConfigPath(buffer,m_szConfigFileName.toUtf8().data(),KviApp::ConfigPlugins,true);
+	g_pApp->getReadOnlyConfigPath(buffer,m_szConfigFileName.toUtf8().data(),KviApplication::ConfigPlugins,true);
 	qDebug("Check path %s and file %s",buffer.toUtf8().data(),m_szConfigFileName.toUtf8().data());
 	if(bEnsureExists)
 	{
@@ -143,7 +143,7 @@ bool KviTipWindow::openConfig(QString filename,bool bEnsureExists)
 void KviTipWindow::closeConfig()
 {
 	QString buffer;
-	g_pApp->getLocalKvircDirectory(buffer,KviApp::ConfigPlugins,m_szConfigFileName);
+	g_pApp->getLocalKvircDirectory(buffer,KviApplication::ConfigPlugins,m_szConfigFileName);
 	m_pConfig->setSavePath(buffer);
 	delete m_pConfig;
 	m_pConfig = 0;

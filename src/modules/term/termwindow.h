@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 
 #ifdef COMPILE_KDE_SUPPORT
-	#include "kvi_window.h"
+	#include "KviWindow.h"
 	#include "KviCString.h"
 
 	class KviTermWidget;
@@ -36,7 +36,7 @@
 	{
 		Q_OBJECT
 	public:
-		KviTermWindow(KviFrame * lpFrm,const char * name);
+		KviTermWindow(KviMainWindow * lpFrm,const char * name);
 		~KviTermWindow();
 	protected:
 		KviTermWidget * m_pTermWidget;

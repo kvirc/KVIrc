@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviCString.h"
 
 #include <QLineEdit>
@@ -53,7 +53,7 @@ class KviCodeTesterWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	KviCodeTesterWindow(KviFrame * lpFrm);
+	KviCodeTesterWindow(KviMainWindow * lpFrm);
 	~KviCodeTesterWindow();
 protected:
 	KviCodeTester * m_pTester;

@@ -29,17 +29,17 @@
 #include "KviFileUtils.h"
 #include "kvi_fileextensions.h"
 #include "KviLocale.h"
-#include "kvi_filedialog.h"
+#include "KviFileDialog.h"
 #include "KviQString.h"
 #include "KviConfigurationFile.h"
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviPointerList.h"
-#include "kvi_app.h"
-#include "kvi_console.h"
-#include "kvi_window.h"
-#include "kvi_iconmanager.h"
-#include "kvi_kvs_kernel.h"
-#include "kvi_modulemanager.h"
+#include "KviApplication.h"
+#include "KviConsoleWindow.h"
+#include "KviWindow.h"
+#include "KviIconManager.h"
+#include "KviKvsKernel.h"
+#include "KviModuleManager.h"
 #include "KviConfigurationFile.h"
 #include "KviTalVBox.h"
 #include "KviTalHBox.h"
@@ -100,7 +100,7 @@ KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
 	iModulesCount=0;
 	iIndex=0;
 	QString szPath;
-	g_pApp->getLocalKvircDirectory(szPath,KviApp::ConfigPlugins,tmp);
+	g_pApp->getLocalKvircDirectory(szPath,KviApplication::ConfigPlugins,tmp);
 
 	if(!KviFileUtils::fileExists(szPath))
 	{
@@ -147,7 +147,7 @@ void KviScriptEditorWidget::asyncCompleterCreation()
 		m_pListCompletition = new QStringList();
 		QString szPath;
 
-		g_pApp->getGlobalKvircDirectory(szPath,KviApp::Modules);
+		g_pApp->getGlobalKvircDirectory(szPath,KviApplication::Modules);
 
 		QDir d(szPath);
 
@@ -188,7 +188,7 @@ void KviScriptEditorWidget::asyncCompleterCreation()
 		m_pStartTimer = 0;
 		QString szTmp("kvscompleter.idx");
 		QString szPath;
-		g_pApp->getLocalKvircDirectory(szPath,KviApp::ConfigPlugins,szTmp);
+		g_pApp->getLocalKvircDirectory(szPath,KviApplication::ConfigPlugins,szTmp);
 		KviKvsKernel::instance()->getAllFunctionsCommandsCore(m_pListCompletition);
 		QString szBuffer = m_pListCompletition->join(",");
 		QFile f(szPath);
@@ -209,7 +209,7 @@ void KviScriptEditorWidget::loadCompleterFromFile()
 	QStringList szListFunctionsCommand;
 	QString szTmp("kvscompleter.idx");
 	QString szPath;
-	g_pApp->getLocalKvircDirectory(szPath,KviApp::ConfigPlugins,szTmp);
+	g_pApp->getLocalKvircDirectory(szPath,KviApplication::ConfigPlugins,szTmp);
 	QString szBuffer;
 	QFile f(szPath);
 	f.open(QIODevice::ReadOnly);

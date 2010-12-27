@@ -25,21 +25,21 @@
 #include "managementdialog.h"
 #include "addonfunctions.h"
 
-#include "kvi_module.h"
-#include "kvi_kvs_scriptaddonmanager.h"
+#include "KviModule.h"
+#include "KviKvsScriptAddonManager.h"
 #include "KviLocale.h"
 #include "KviQString.h"
 #include "KviParameterList.h"
 #include "KviCommandFormatter.h"
 #include "KviError.h"
 #include "kvi_out.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviMircCntrl.h"
 #include "KviConfigurationFile.h"
 #include "kvi_sourcesdate.h"
 #include "KviMiscUtils.h"
 #include "KviFileUtils.h"
-#include "kvi_filedialog.h"
+#include "KviFileDialog.h"
 
 #include <QFileInfo>
 
@@ -730,7 +730,7 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 
 	// create target path
 	QString szTargetPath;
-	g_pApp->getLocalKvircDirectory(szTargetPath,KviApp::None,szTarget);
+	g_pApp->getLocalKvircDirectory(szTargetPath,KviApplication::None,szTarget);
 
 	KviFileUtils::makeDir(szTargetPath);
 
@@ -744,7 +744,7 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 		}
 
 		QString szEntry = QString("%1%2%3").arg(szTarget).arg(QString(KVI_PATH_SEPARATOR_CHAR)).arg(inf.fileName());
-		g_pApp->getLocalKvircDirectory(szTargetPath,KviApp::None,szEntry);
+		g_pApp->getLocalKvircDirectory(szTargetPath,KviApplication::None,szEntry);
 
 		if(!bQuiet)
 			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Installing file '%1' into '%2'","addon").arg(*it).arg(szTargetPath));

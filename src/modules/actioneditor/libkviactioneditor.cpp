@@ -24,9 +24,9 @@
 
 #include "actioneditor.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
-#include "kvi_frame.h"
+#include "KviMainWindow.h"
 
 KviActionEditorWindow * g_pActionEditorWindow = 0;
 

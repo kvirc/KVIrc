@@ -26,15 +26,15 @@
 
 #include "kvi_defaults.h"
 #include "kvi_settings.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
-#include "kvi_app.h"
-#include "kvi_window.h"
-#include "kvi_console.h"
-#include "kvi_optionswidget.h"
-#include "kvi_filedialog.h"
+#include "KviApplication.h"
+#include "KviWindow.h"
+#include "KviConsoleWindow.h"
+#include "KviOptionsWidget.h"
+#include "KviFileDialog.h"
 #include "kvi_fileextensions.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviHttpRequest.h"
 #include "KviIdentityProfile.h"
 #include "KviTalToolTip.h"
@@ -153,7 +153,7 @@ void KviAvatarDownloadDialog::startDownload()
 
 	QString tmp = m_szUrl;
 	g_pIconManager->urlToCachedFileName(tmp);
-	g_pApp->getLocalKvircDirectory(m_szLocalFileName,KviApp::Avatars,tmp);
+	g_pApp->getLocalKvircDirectory(m_szLocalFileName,KviApplication::Avatars,tmp);
 
 	m_pRequest->setExistingFileAction(KviHttpRequest::RenameExisting);
 	if(!m_pRequest->get(KviUrl(m_szUrl),KviHttpRequest::StoreToFile,m_szLocalFileName.toUtf8().data()))

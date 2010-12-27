@@ -25,7 +25,7 @@
 
 #include "optw_topiclabel.h"
 
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 
 

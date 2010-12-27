@@ -94,7 +94,7 @@ public:
 	/**
 	* \brief Returns a list of servers to connect on startup
 	* This list is computed when the data are loaded from disk during the startup
-	* and is used by KviApp to start the connections.
+	* and is used by KviApplication to start the connections.
 	* The pointer is zero if there are no autoConnect servers. The list is valid
 	* only during the startup phase because it contains shallow pointers to the
 	* servers really contained in the server/network list and it is never updated
@@ -106,7 +106,7 @@ public:
 	/**
 	* \brief Returns a list of networks to connect on startup
 	* This list is computed when the data are loaded from disk during the startup
-	* and is used by KviApp to start the connections.
+	* and is used by KviApplication to start the connections.
 	* The pointer is zero if there are no autoConnect networks. The list is valid
 	* only during the startup phase because it contains shallow pointers to the
 	* networks really contained in the server/network list and it is never

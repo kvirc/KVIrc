@@ -23,9 +23,9 @@
 
 #include "socketspywindow.h"
 
-#include "kvi_module.h"
-#include "kvi_frame.h"
-#include "kvi_window.h"
+#include "KviModule.h"
+#include "KviMainWindow.h"
+#include "KviWindow.h"
 #include "KviLocale.h"
 
 #include <QSplitter>

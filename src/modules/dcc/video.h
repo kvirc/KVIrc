@@ -29,11 +29,11 @@
 #include "thread.h"
 #include "window.h"
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviDataBuffer.h"
 #include "kvi_sockettype.h"
 #include "KviTalHBox.h"
-#include "kvi_themedlabel.h"
+#include "KviThemedLabel.h"
 
 #include <QLabel>
 #include <QToolButton>
@@ -108,7 +108,7 @@ class KviDccVideo : public KviDccWindow
 	Q_OBJECT
 	friend class KviDccVideoThread;
 public:
-	KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name);
+	KviDccVideo(KviMainWindow *pFrm,KviDccDescriptor * dcc,const char * name);
 	~KviDccVideo();
 protected:
 	KviThemedLabel         * m_pLabel;

@@ -32,16 +32,16 @@
 #include "KviLocale.h"
 #include "KviIrcMask.h"
 #include "kvi_debug.h"
-#include "kvi_iconmanager.h"
-#include "kvi_app.h"
-#include "kvi_options.h"
+#include "KviIconManager.h"
+#include "KviApplication.h"
+#include "KviOptions.h"
 #include "KviFile.h"
-#include "kvi_filedialog.h"
-#include "kvi_msgbox.h"
+#include "KviFileDialog.h"
+#include "KviMessageBox.h"
 #include "KviFileUtils.h"
 #include "kvi_settings.h"
 #include "KviStringConversion.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviPointerHashTable.h"
 #include "KviTalHBox.h"
 #include "KviTalVBox.h"
@@ -896,7 +896,7 @@ void KviRegisteredUsersDialog::importClicked()
 			int rnm = 0 ;
 			do
 			{
-				g_pApp->getLocalKvircDirectory(fPath,KviApp::Avatars,fName);
+				g_pApp->getLocalKvircDirectory(fPath,KviApplication::Avatars,fName);
 				fPath.append(QString("%1.png").arg(rnm));
 				rnm++;
 			} while(KviFileUtils::fileExists(fPath));

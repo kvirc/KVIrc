@@ -33,8 +33,8 @@
 // so any change should go in that script
 //
 
-#include "kvi_optionswidget.h"
-#include "kvi_module.h"
+#include "KviOptionsWidget.h"
+#include "KviModule.h"
 #include "KviPointerList.h"
 #include "KviQString.h"
 

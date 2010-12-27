@@ -22,7 +22,7 @@
 //
 //===========================================================================
 //
-// This file was originally part of kvi_ircview.cpp
+// This file was originally part of KviIrcView.cpp
 //
 //===========================================================================
 

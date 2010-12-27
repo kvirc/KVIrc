@@ -30,12 +30,12 @@
 * \brief Class Editor window
 */
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviCString.h"
 #include "KviPointerList.h"
 #include "KviTalPopupMenu.h"
 #include "KviHeapObject.h"
-#include "kvi_kvs_object_class.h"
+#include "KviKvsObjectClass.h"
 
 #include <QWidget>
 #include <QComboBox>
@@ -478,7 +478,7 @@ public:
 	* \param pFrm The parent frame
 	* \return KviClassEditorWindow
 	*/
-	KviClassEditorWindow(KviFrame * pFrm);
+	KviClassEditorWindow(KviMainWindow * pFrm);
 	
 	/**
 	* \brief Destroys the class editor window

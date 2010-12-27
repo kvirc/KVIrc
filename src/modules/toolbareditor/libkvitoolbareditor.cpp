@@ -24,12 +24,12 @@
 
 #include "toolbareditor.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
-#include "kvi_frame.h"
-#include "kvi_actionmanager.h"
+#include "KviMainWindow.h"
+#include "KviActionManager.h"
 #include "KviConfigurationFile.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 
 QRect g_rectToolBarEditorDialogGeometry(0,0,0,0);
 

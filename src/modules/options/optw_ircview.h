@@ -27,7 +27,7 @@
 //=============================================================================
 
 
-#include "kvi_optionswidget.h"
+#include "KviOptionsWidget.h"
 
 #include <QComboBox>
 

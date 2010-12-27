@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "kvi_mexserverimport.h"
+#include "KviMexServerImport.h"
 #include "KviCString.h"
 #include "KviHttpRequest.h"
 #include <KviTalWizard.h>

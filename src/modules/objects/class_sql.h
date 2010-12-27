@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "KviCString.h"
 #include "KviPointerList.h"
-#include "kvi_kvs_variant.h"
+#include "KviKvsVariant.h"
 #include "object_macros.h"
 #include <QtSql>
 #include <QHash>

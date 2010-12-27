@@ -71,17 +71,17 @@
 #include "class_datetimeedit.h"
 
 
-#include "kvi_iconmanager.h"
-#include "kvi_window.h"
+#include "KviIconManager.h"
+#include "KviWindow.h"
 #include "kvi_out.h"
 #include "KviMircCntrl.h"
-#include "kvi_app.h"
-#include "kvi_module.h"
+#include "KviApplication.h"
+#include "KviModule.h"
 #include "KviLocale.h"
 #include "KviError.h"
 #include "KviCommandFormatter.h"
 #include "kvi_out.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviFileUtils.h"
 
 #include <QDir>
@@ -506,7 +506,7 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 		++it;
 	}
 	QString szPath;
-	g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes);
+	g_pApp->getLocalKvircDirectory(szPath,KviApplication::Classes);
 	QDir d(szPath);
 	QStringList sl;
 	sl = d.entryList(QDir::Files);

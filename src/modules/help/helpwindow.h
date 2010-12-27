@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviCString.h"
 #include "KviTalVBox.h"
 #include "KviTalListWidget.h"
@@ -41,7 +41,7 @@ class KviHelpWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	KviHelpWindow(KviFrame * lpFrm,const char * name);
+	KviHelpWindow(KviMainWindow * lpFrm,const char * name);
 	~KviHelpWindow();
 protected:
 	KviHelpWidget * m_pHelpWidget;

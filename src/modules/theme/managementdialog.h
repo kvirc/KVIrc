@@ -24,9 +24,9 @@
 //
 //=============================================================================
 
-#include "kvi_optionswidget.h"
+#include "KviOptionsWidget.h"
 #include "KviPointerList.h"
-#include "kvi_theme.h"
+#include "KviTheme.h"
 #include "KviTalPopupMenu.h"
 #include "KviTalWizard.h"
 #include "KviTalListWidget.h"

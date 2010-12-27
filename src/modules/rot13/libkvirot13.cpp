@@ -25,7 +25,7 @@
 
 #include "libkvirot13.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "kvi_debug.h"
 #include "KviLocale.h"
 

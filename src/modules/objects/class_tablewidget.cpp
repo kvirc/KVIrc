@@ -27,12 +27,12 @@
 #include "class_pixmap.h"
 
 #include "kvi_debug.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviLocale.h"
 #include "KviError.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviFile.h"
-#include "kvi_kvs_arraycast.h"
+#include "KviKvsArrayCast.h"
 
 #include <QTableWidget>
 #include <QHeaderView>

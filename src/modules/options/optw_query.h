@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "kvi_optionswidget.h"
+#include "KviOptionsWidget.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_KviQueryOptionsWidget KVI_SMALLICON_QUERY
 #define KVI_OPTIONS_WIDGET_NAME_KviQueryOptionsWidget __tr2qs_no_lookup("Query")

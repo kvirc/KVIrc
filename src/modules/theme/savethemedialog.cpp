@@ -25,18 +25,18 @@
 #include "savethemedialog.h"
 #include "themefunctions.h"
 
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviConfigurationFile.h"
 #include "KviFileUtils.h"
-#include "kvi_app.h"
-#include "kvi_frame.h"
-#include "kvi_iconmanager.h"
+#include "KviApplication.h"
+#include "KviMainWindow.h"
+#include "KviIconManager.h"
 #include "KviPackageFile.h"
 #include "kvi_fileextensions.h"
-#include "kvi_filedialog.h"
-#include "kvi_msgbox.h"
-#include "kvi_selectors.h"
+#include "KviFileDialog.h"
+#include "KviMessageBox.h"
+#include "KviSelectors.h"
 #include "KviMiscUtils.h"
 #include "kvi_sourcesdate.h"
 
@@ -264,7 +264,7 @@ bool KviSaveThemeDialog::saveTheme()
 	sto.setSubdirectory(szSubdir);
 
 	QString szAbsDir;
-	g_pApp->getLocalKvircDirectory(szAbsDir,KviApp::Themes,sto.subdirectory(),true);
+	g_pApp->getLocalKvircDirectory(szAbsDir,KviApplication::Themes,sto.subdirectory(),true);
 	if(!KviFileUtils::makeDir(szAbsDir))
 	{
 		QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme - KVIrc","theme"),__tr2qs_ctx("Unable to create theme directory.","theme"),

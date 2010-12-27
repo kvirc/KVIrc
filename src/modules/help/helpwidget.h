@@ -33,14 +33,14 @@
 
 class QToolButton;
 class QLineEdit;
-class KviFrame;
+class KviMainWindow;
 //class QProcess;
 
 class KviHelpWidget : public QWidget
 {
 	Q_OBJECT
 public:
-	KviHelpWidget(QWidget *par,KviFrame * lpFrm,bool bIsStandalone = false);
+	KviHelpWidget(QWidget *par,KviMainWindow * lpFrm,bool bIsStandalone = false);
 	~KviHelpWidget();
 private:
 	QToolButton  * m_pBtnIndex;

@@ -27,9 +27,9 @@
 //=============================================================================
 
 
-#include "kvi_optionswidget.h"
+#include "KviOptionsWidget.h"
 #include "kvi_settings.h"
-#include "kvi_selectors.h"
+#include "KviSelectors.h"
 #include "KviPixmap.h"
 
 #include <QDialog>

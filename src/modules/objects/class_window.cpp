@@ -29,11 +29,11 @@
 #include "kvi_debug.h"
 
 #include "KviLocale.h"
-#include "kvi_frame.h"
+#include "KviMainWindow.h"
 
 
 
-KviKvsScriptWindowWindow::KviKvsScriptWindowWindow(KviFrame * pParent,const QString &szName)
+KviKvsScriptWindowWindow::KviKvsScriptWindowWindow(KviMainWindow * pParent,const QString &szName)
 : KviWindow(KVI_WINDOW_TYPE_SCRIPTOBJECT,pParent,szName)
 {
 	m_pCentralWidget = 0;

@@ -25,7 +25,7 @@
 //
 //=============================================================================
 
-#include "kvi_optionswidget.h"
+#include "KviOptionsWidget.h"
 #include <QCheckBox>
 
 #define KVI_OPTIONS_WIDGET_ICON_KviInterfaceFeaturesOptionsWidget KVI_SMALLICON_IDEA

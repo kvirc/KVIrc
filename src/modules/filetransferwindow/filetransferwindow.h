@@ -24,14 +24,14 @@
 //
 //=============================================================================
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviCString.h"
-#include "kvi_ircsocket.h"
-#include "kvi_sparser.h"
-#include "kvi_console.h"
-#include "kvi_moduleextension.h"
-#include "kvi_filetransfer.h"
-#include "kvi_dynamictooltip.h"
+#include "KviIrcSocket.h"
+#include "KviIrcServerParser.h"
+#include "KviConsoleWindow.h"
+#include "KviModuleExtension.h"
+#include "KviFileTransfer.h"
+#include "KviDynamicToolTip.h"
 #include "KviTalTableWidget.h"
 #include "KviTalPopupMenu.h"
 #include "KviTalIconAndRichTextItemDelegate.h"
@@ -91,7 +91,7 @@ class KviFileTransferWindow : public KviWindow, public KviModuleExtension
 	friend class KviFileTransferItemDelegate;
 	Q_OBJECT
 public:
-	KviFileTransferWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm);
+	KviFileTransferWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm);
 	~KviFileTransferWindow();
 protected:
 	QSplitter		* m_pVertSplitter;

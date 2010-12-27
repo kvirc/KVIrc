@@ -24,16 +24,16 @@
 
 #include "userwindow.h"
 
-#include "kvi_iconmanager.h"
-#include "kvi_input.h"
-#include "kvi_ircview.h"
-#include "kvi_frame.h"
-#include "kvi_console.h"
+#include "KviIconManager.h"
+#include "KviInput.h"
+#include "KviIrcView.h"
+#include "KviMainWindow.h"
+#include "KviConsoleWindow.h"
 
 extern KviPointerList<KviUserWindow> * g_pUserWindowList;
 
 
-KviUserWindow::KviUserWindow(KviFrame * pFrm,const char * name,int iIcon,KviConsole * pConsole,int iCreationFlags)
+KviUserWindow::KviUserWindow(KviMainWindow * pFrm,const char * name,int iIcon,KviConsole * pConsole,int iCreationFlags)
 : KviWindow(KVI_WINDOW_TYPE_USERWINDOW,pFrm,name,pConsole)
 {
 	g_pUserWindowList->append(this);

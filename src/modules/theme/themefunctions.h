@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "KviQString.h"
-#include "kvi_htmldialog.h"
+#include "KviHtmlDialog.h"
 
 #include <QWidget>
 #include <QPixmap>

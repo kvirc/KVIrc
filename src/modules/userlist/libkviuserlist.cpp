@@ -22,10 +22,10 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
-#include "kvi_channel.h"
-#include "kvi_userlistview.h"
+#include "KviChannelWindow.h"
+#include "KviUserListView.h"
 
 #define GET_KVS_WINDOW_ID_AND_NICK \
 	QString szWnd, szNick; \
@@ -113,7 +113,7 @@ static bool userlist_kvs_fnc_selected(KviKvsModuleFunctionCall * c)
 	KviKvsArray * a = new KviKvsArray();
 
 	kvs_int_t i = 0;
-	for(QString * s = ((KviChannel *)pWnd)->firstSelectedNickname();s;s = ((KviChannel *)pWnd)->nextSelectedNickname())
+	for(QString * s = ((KviChannelWindow *)pWnd)->firstSelectedNickname();s;s = ((KviChannelWindow *)pWnd)->nextSelectedNickname())
 	{
 		a->set(i,new KviKvsVariant(*s));
 		i++;
@@ -133,7 +133,7 @@ static bool userlist_kvs_cmd_select(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	((KviUserListView*)((KviChannel *)pWnd)->userListView())->select(szNick);
+	((KviUserListView*)((KviChannelWindow *)pWnd)->userListView())->select(szNick);
 	return true;
 }
 
@@ -147,7 +147,7 @@ static bool userlist_kvs_cmd_ensureVisible(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	((KviUserListView*)((KviChannel *)pWnd)->userListView())->ensureVisible(szNick);
+	((KviUserListView*)((KviChannelWindow *)pWnd)->userListView())->ensureVisible(szNick);
 	return true;
 }
 

@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "KviCString.h"
-#include "kvi_console.h"
+#include "KviConsoleWindow.h"
 #include "KviPointerHashTable.h"
 
 class KviDccWindow;

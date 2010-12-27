@@ -23,7 +23,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviCString.h"
 
 #include <math.h>

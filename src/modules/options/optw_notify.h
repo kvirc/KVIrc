@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "kvi_optionswidget.h"
+#include "KviOptionsWidget.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_KviNotifyOptionsWidget KVI_SMALLICON_REGUSERS
 #define KVI_OPTIONS_WIDGET_NAME_KviNotifyOptionsWidget __tr2qs_no_lookup("Contacts")

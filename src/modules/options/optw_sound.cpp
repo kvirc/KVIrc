@@ -26,13 +26,13 @@
 
 #include "kvi_settings.h"
 #include "KviLocale.h"
-#include "kvi_options.h"
-#include "kvi_modulemanager.h"
+#include "KviOptions.h"
+#include "KviModuleManager.h"
 #include "KviPointerList.h"
 #include "KviCString.h"
 #include "KviTalHBox.h"
 #include "KviTalToolTip.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 
 #include <QLabel>
 #include <QPushButton>

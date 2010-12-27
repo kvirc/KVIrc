@@ -25,8 +25,8 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_optionswidget.h"
-#include "kvi_selectors.h"
+#include "KviOptionsWidget.h"
+#include "KviSelectors.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_KviProtectionOptionsWidget KVI_SMALLICON_SPY
 #define KVI_OPTIONS_WIDGET_NAME_KviProtectionOptionsWidget __tr2qs_no_lookup("Protection")

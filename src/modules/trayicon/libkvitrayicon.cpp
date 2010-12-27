@@ -27,20 +27,20 @@
 #include "libkvitrayicon.h"
 
 #include "kvi_settings.h"
-#include "kvi_app.h"
-#include "kvi_module.h"
+#include "KviApplication.h"
+#include "KviModule.h"
 #include "KviLocale.h"
 #include "KviMemory.h"
-#include "kvi_windowlist.h"
-#include "kvi_window.h"
-#include "kvi_dynamictooltip.h"
-#include "kvi_iconmanager.h"
-#include "kvi_internalcmd.h"
-#include "kvi_console.h"
-#include "kvi_ircconnection.h"
-#include "kvi_ircconnectionuserinfo.h"
-#include "kvi_options.h"
-#include "kvi_ircview.h"
+#include "KviWindowListBase.h"
+#include "KviWindow.h"
+#include "KviDynamicToolTip.h"
+#include "KviIconManager.h"
+#include "KviInternalCommand.h"
+#include "KviConsoleWindow.h"
+#include "KviIrcConnection.h"
+#include "KviIrcConnectionUserInfo.h"
+#include "KviOptions.h"
+#include "KviIrcView.h"
 #include "KviTalPopupMenu.h"
 
 #include <QPixmap>
@@ -65,7 +65,7 @@ static QPixmap * g_pDock1 = 0;
 static QPixmap * g_pDock2 = 0;
 static QPixmap * g_pDock3 = 0;
 
-KviTrayIcon::KviTrayIcon(KviFrame * frm)
+KviTrayIcon::KviTrayIcon(KviMainWindow * frm)
 : QSystemTrayIcon(frm), m_CurrentPixmap(ICON_SIZE,ICON_SIZE)
 {
 	m_pContextPopup = new KviTalPopupMenu(0);
@@ -545,7 +545,7 @@ void KviTrayIcon::updateIcon()
 	setIcon(QIcon(m_CurrentPixmap));
 }
 
-static KviTrayIcon * trayicon_find(KviFrame *f)
+static KviTrayIcon * trayicon_find(KviMainWindow *f)
 {
 	if(!g_pTrayIconList)return 0;
 	for(KviTrayIcon * w = g_pTrayIconList->first();w;w = g_pTrayIconList->next())

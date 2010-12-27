@@ -28,11 +28,11 @@
 #include "window.h"
 #include "thread.h"
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviCString.h"
 #include "kvi_sockettype.h"
 #include "KviPointerList.h"
-#include "kvi_filetransfer.h"
+#include "KviFileTransfer.h"
 #include "KviTimeUtils.h"
 #include "KviTalPopupMenu.h"
 #include "KviTalHBox.h"

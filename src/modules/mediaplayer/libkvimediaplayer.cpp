@@ -30,8 +30,8 @@
 #include "mp_winampinterface.h"
 #include "mp_xmmsinterface.h"
 
-#include "kvi_module.h"
-#include "kvi_options.h"
+#include "KviModule.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
 #include <QUrl>

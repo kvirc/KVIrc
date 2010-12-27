@@ -24,21 +24,21 @@
 
 #include "eventeditor.h"
 
-#include "kvi_iconmanager.h"
-#include "kvi_options.h"
+#include "KviIconManager.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
-#include "kvi_imagedialog.h"
+#include "KviImageDialog.h"
 #include "KviConfigurationFile.h"
-#include "kvi_filedialog.h"
+#include "KviFileDialog.h"
 #include "KviFileUtils.h"
-#include "kvi_scripteditor.h"
+#include "KviScriptEditor.h"
 #include "kvi_debug.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviCommandFormatter.h"
 #include "kvi_fileextensions.h"
 #include "KviQString.h"
-#include "kvi_filedialog.h"
-#include "kvi_kvs_eventmanager.h"
+#include "KviFileDialog.h"
+#include "KviKvsEventManager.h"
 #include "KviTalVBox.h"
 #include "KviTalPopupMenu.h"
 
@@ -513,7 +513,7 @@ void KviEventEditor::exportAllEvents()
 }
 
 
-KviEventEditorWindow::KviEventEditorWindow(KviFrame * lpFrm)
+KviEventEditorWindow::KviEventEditorWindow(KviMainWindow * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,lpFrm,"eventeditor",0)
 {
 	g_pEventEditorWindow = this;

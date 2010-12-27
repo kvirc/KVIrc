@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include <QTreeWidget>
 
 #include <QWidget>
@@ -186,7 +186,7 @@ class KviActionEditorWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	KviActionEditorWindow(KviFrame * lpFrm);
+	KviActionEditorWindow(KviMainWindow * lpFrm);
 	~KviActionEditorWindow();
 protected:
 	KviActionEditor * m_pEditor;

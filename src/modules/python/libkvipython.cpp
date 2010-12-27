@@ -23,12 +23,12 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_module.h"
-#include "kvi_modulemanager.h"
+#include "KviModule.h"
+#include "KviModuleManager.h"
 //#include "KviFileUtils.h"
 #include "KviLocale.h"
-//#include "kvi_app.h"
-//#include "kvi_options.h"
+//#include "KviApplication.h"
+//#include "KviOptions.h"
 //#include "kvi_out.h"
 
 #ifdef COMPILE_PYTHON_SUPPORT

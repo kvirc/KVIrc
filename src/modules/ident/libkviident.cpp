@@ -24,14 +24,14 @@
 
 #include "libkviident.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "kvi_socket.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "kvi_out.h"
 #include "KviNetUtils.h"
 #include "KviLocale.h"
-#include "kvi_window.h"
-#include "kvi_options.h"
+#include "KviWindow.h"
+#include "KviOptions.h"
 #include "kvi_defaults.h"
 
 #define KVI_IDENT_THREAD_EVENT_EXITING KVI_THREAD_USER_EVENT_BASE + 111

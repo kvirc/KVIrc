@@ -24,11 +24,11 @@
 
 #include "plugin.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviCString.h"
 #include "KviThread.h"
 #include "KviLocale.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviFileUtils.h"
 
 #include <QDir>
@@ -372,12 +372,12 @@ bool KviPluginManager::findPlugin(QString& szPath)
 		return true;
 	} else {
 		//Plugin not found in direct way. Looking in kvirc local dir
-		g_pApp->getGlobalKvircDirectory(szPath,KviApp::EasyPlugins,szFileName);
+		g_pApp->getGlobalKvircDirectory(szPath,KviApplication::EasyPlugins,szFileName);
 
 		if(!KviFileUtils::fileExists(szPath))
 		{
 			//Plugin not found in kvirc local dir. Looking in kvirc global dir
-			g_pApp->getLocalKvircDirectory(szPath,KviApp::EasyPlugins,szFileName);
+			g_pApp->getLocalKvircDirectory(szPath,KviApplication::EasyPlugins,szFileName);
 
 			if(!KviFileUtils::fileExists(szPath))
 			{

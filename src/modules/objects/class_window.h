@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "class_widget.h"
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "object_macros.h"
 
 class KviKvsObject_window : public KviKvsObject_widget
@@ -48,7 +48,7 @@ class KviKvsScriptWindowWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	KviKvsScriptWindowWindow(KviFrame * pParent,const QString &szName);
+	KviKvsScriptWindowWindow(KviMainWindow * pParent,const QString &szName);
 	~KviKvsScriptWindowWindow();
 protected:
 	KviKvsObject_widget * m_pCentralWidgetObject;

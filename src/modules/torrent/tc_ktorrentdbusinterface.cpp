@@ -28,7 +28,7 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 
-	#include "kvi_app.h"
+	#include "KviApplication.h"
 	#include "KviLocale.h"
 
 	#include <QTimer>

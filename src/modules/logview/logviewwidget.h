@@ -27,8 +27,8 @@
 
 #include "logviewmdiwindow.h"
 
-#include "kvi_window.h"
-#include "kvi_scripteditor.h"
+#include "KviWindow.h"
+#include "KviScriptEditor.h"
 #include <QTreeWidget>
 
 class KviScriptEditor;

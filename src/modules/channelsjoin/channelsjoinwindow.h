@@ -30,7 +30,7 @@
 * \brief Channels join window
 */
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviCString.h"
 #include <QTreeWidget>
 

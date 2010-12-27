@@ -31,7 +31,7 @@
 #include "kvi_debug.h"
 #include "KviLocale.h"
 #include "KviError.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviMemory.h"
  #include <QPrintDialog>
 #include <QTextDocument>

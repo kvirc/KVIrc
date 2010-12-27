@@ -24,24 +24,24 @@
 
 #include "libkviavatar.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
 #include "KviMemory.h"
-#include "kvi_app.h"
-#include "kvi_options.h"
+#include "KviApplication.h"
+#include "KviOptions.h"
 #include "KviHttpRequest.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviAvatar.h"
 #include "KviIrcUserDataBase.h"
-#include "kvi_ircconnection.h"
-#include "kvi_ircconnectionuserinfo.h"
-#include "kvi_console.h"
-#include "kvi_filedialog.h"
+#include "KviIrcConnection.h"
+#include "KviIrcConnectionUserInfo.h"
+#include "KviConsoleWindow.h"
+#include "KviFileDialog.h"
 #include "KviPointerList.h"
-#include "kvi_frame.h"
+#include "KviMainWindow.h"
 #include "KviSharedFilesManager.h"
-#include "kvi_sparser.h"
+#include "KviIrcServerParser.h"
 #include "kvi_out.h"
 #include "KviIrcMask.h"
 #include "KviTalHBox.h"
@@ -235,7 +235,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 			QString szLocalFilePath;
 			QString szLocalFile = szAvatar;
 			g_pIconManager->urlToCachedFileName(szLocalFile);
-			g_pApp->getLocalKvircDirectory(szLocalFilePath,KviApp::Avatars,szLocalFile);
+			g_pApp->getLocalKvircDirectory(szLocalFilePath,KviApplication::Avatars,szLocalFile);
 
 			KviQString::escapeKvs(&szAvatar);
 			KviQString::escapeKvs(&szLocalFilePath);

@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "kvi_optionswidget.h"
+#include "KviOptionsWidget.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_KviIrcOptionsWidget KVI_SMALLICON_IRC
 #define KVI_OPTIONS_WIDGET_NAME_KviIrcOptionsWidget __tr2qs_no_lookup("IRC")

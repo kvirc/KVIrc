@@ -27,12 +27,12 @@
 
 #include "KviLocale.h"
 #include "KviPointerList.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviIrcMask.h"
-#include "kvi_selectors.h"
+#include "KviSelectors.h"
 #include "KviPixmap.h"
 #include "KviRegisteredUserDataBase.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 
 #include <QDesktopWidget>
 #include <QLabel>

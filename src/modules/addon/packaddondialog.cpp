@@ -27,12 +27,12 @@
 
 #include "KviLocale.h"
 #include "KviFileUtils.h"
-#include "kvi_app.h"
-#include "kvi_iconmanager.h"
+#include "KviApplication.h"
+#include "KviIconManager.h"
 #include "KviPackageFile.h"
 #include "kvi_fileextensions.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 
 #include <QTextEdit>
 #include <QLineEdit>

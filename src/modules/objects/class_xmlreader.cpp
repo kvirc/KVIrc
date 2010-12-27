@@ -26,8 +26,8 @@
 #include "class_memorybuffer.h"
 #include "KviLocale.h"
 
-#include "kvi_kvs_variantlist.h"
-#include "kvi_kvs_hash.h"
+#include "KviKvsVariantList.h"
+#include "KviKvsHash.h"
 
 #include "KviQString.h"
 

@@ -22,9 +22,9 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
-#include "kvi_action.h"
-#include "kvi_actionmanager.h"
+#include "KviModule.h"
+#include "KviAction.h"
+#include "KviActionManager.h"
 #include "KviLocale.h"
 #include "KviQString.h"
 #include "KviParameterList.h"
@@ -32,10 +32,10 @@
 #include "KviQString.h"
 #include "KviError.h"
 #include "kvi_out.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviMircCntrl.h"
-#include "kvi_kvs_useraction.h"
-#include "kvi_kvs_script.h"
+#include "KviKvsUserAction.h"
+#include "KviKvsScript.h"
 
 /*
 	@doc: action.list

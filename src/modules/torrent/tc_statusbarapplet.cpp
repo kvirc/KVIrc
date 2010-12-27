@@ -28,7 +28,7 @@
 #include "tc_statusbarapplet.h"
 
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 
 #include "QTimer"
 

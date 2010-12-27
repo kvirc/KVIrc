@@ -24,14 +24,14 @@
 
 #include "setupwizard.h"
 
-#include "kvi_module.h"
-#include "kvi_options.h"
+#include "KviModule.h"
+#include "KviOptions.h"
 #include "kvi_defaults.h"
-#include "kvi_app.h"
-#include "kvi_kvs_script.h"
-#include "kvi_kvs_variantlist.h"
-#include "kvi_window.h"
-#include "kvi_theme.h"
+#include "KviApplication.h"
+#include "KviKvsScript.h"
+#include "KviKvsVariantList.h"
+#include "KviWindow.h"
+#include "KviTheme.h"
 #include "KviIrcServerDataBase.h"
 
 #include <QString>
@@ -51,7 +51,7 @@ QString szMircIni;
 
 
 
-// this is called by KviApp when no local kvirc directory has been found
+// this is called by KviApplication when no local kvirc directory has been found
 // we have nothing to rely on yet... (settings have not been loaded yet)
 KVIMODULEEXPORTFUNC bool setup_begin()
 {
@@ -91,11 +91,11 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		switch(g_iThemeToApply)
 		{
 			case THEME_APPLY_HIRES:
-				g_pApp->getGlobalKvircDirectory(szDir,KviApp::Themes,"YellowIRC-1.0.0");
+				g_pApp->getGlobalKvircDirectory(szDir,KviApplication::Themes,"YellowIRC-1.0.0");
 				KviTheme::load(szDir,out);
 			break;
 			case THEME_APPLY_LORES:
-				g_pApp->getGlobalKvircDirectory(szDir,KviApp::Themes,"MinimalDark-1.0.0");
+				g_pApp->getGlobalKvircDirectory(szDir,KviApplication::Themes,"MinimalDark-1.0.0");
 				KviTheme::load(szDir,out);
 			break;
 			// default: no theme

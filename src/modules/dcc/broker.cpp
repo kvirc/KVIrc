@@ -38,21 +38,21 @@
 	#include "canvas.h"
 #endif
 
-#include "kvi_app.h"
-#include "kvi_frame.h"
+#include "KviApplication.h"
+#include "KviMainWindow.h"
 #include "KviLocale.h"
-#include "kvi_options.h"
-#include "kvi_console.h"
+#include "KviOptions.h"
+#include "KviConsoleWindow.h"
 #include "KviFileUtils.h"
 #include "kvi_out.h"
 #include "KviMediaType.h"
-#include "kvi_ircconnection.h"
+#include "KviIrcConnection.h"
 #include "KviSharedFilesManager.h"
 
 #include <QFileInfo>
 #include <QString>
 
-// kvi_app.cpp
+// KviApplication.cpp
 extern KVIRC_API KviMediaManager * g_pMediaManager;
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 
@@ -655,7 +655,7 @@ void KviDccBroker::chooseSaveFileName(KviDccBox *box,KviDccDescriptor *dcc)
 
 	dcc->szLocalFileName = "";
 
-	if(dcc->bIsIncomingAvatar)g_pApp->getLocalKvircDirectory(dcc->szLocalFileName,KviApp::Avatars);
+	if(dcc->bIsIncomingAvatar)g_pApp->getLocalKvircDirectory(dcc->szLocalFileName,KviApplication::Avatars);
 	else {
 
 		if(KVI_OPTION_BOOL(KviOption_boolUseIncomingDccMediaTypeSavePath))
@@ -685,7 +685,7 @@ void KviDccBroker::chooseSaveFileName(KviDccBox *box,KviDccDescriptor *dcc)
 
 		if(dcc->szLocalFileName.isEmpty())
 		{
-			g_pApp->getLocalKvircDirectory(dcc->szLocalFileName,KviApp::Incoming);
+			g_pApp->getLocalKvircDirectory(dcc->szLocalFileName,KviApplication::Incoming);
 			if(KVI_OPTION_BOOL(KviOption_boolSortReceivedByDccFilesByNicks))
 			{
 				KviQString::ensureLastCharIs(dcc->szLocalFileName,KVI_PATH_SEPARATOR_CHAR);

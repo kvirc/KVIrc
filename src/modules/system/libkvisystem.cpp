@@ -26,14 +26,14 @@
 #include "plugin.h"
 
 #include "kvi_settings.h"
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviCString.h"
 #include "KviThread.h"
 #include "KviLocale.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviEnvironment.h"
 #include "KviOsInfo.h"
-#include "kvi_modulemanager.h"
+#include "KviModuleManager.h"
 
 #include <QClipboard>
 #include <QByteArray>

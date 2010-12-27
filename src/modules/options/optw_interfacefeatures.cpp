@@ -24,9 +24,9 @@
 
 #include "optw_interfacefeatures.h"
 
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviFileUtils.h"
 
 #include <QLayout>
@@ -46,7 +46,7 @@ KviInterfaceFeaturesOptionsWidget::KviInterfaceFeaturesOptionsWidget(QWidget * p
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Remember window properties","options"),KviOption_boolWindowsRememberProperties);
 
 	QString szSplashDisableFile;
-	g_pApp->getLocalKvircDirectory(szSplashDisableFile,KviApp::Pics,"disable-splash." KVI_VERSION);
+	g_pApp->getLocalKvircDirectory(szSplashDisableFile,KviApplication::Pics,"disable-splash." KVI_VERSION);
 	bool bDisableSplash = KviFileUtils::fileExists(szSplashDisableFile);
 	m_pDisableSplash = new QCheckBox(__tr2qs_ctx("Disable splash screen","options"),this);
 	addWidgetToLayout(m_pDisableSplash,0,3,0,3);
@@ -73,7 +73,7 @@ void KviInterfaceFeaturesOptionsWidget::commit()
 	KviOptionsWidget::commit();
 
 	QString szSplashDisableFile;
-	g_pApp->getLocalKvircDirectory(szSplashDisableFile,KviApp::Pics,"disable-splash." KVI_VERSION);
+	g_pApp->getLocalKvircDirectory(szSplashDisableFile,KviApplication::Pics,"disable-splash." KVI_VERSION);
 
 	if(m_pDisableSplash->isChecked())
 	{

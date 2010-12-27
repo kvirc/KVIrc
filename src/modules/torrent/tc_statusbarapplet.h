@@ -26,8 +26,8 @@
 //
 //=============================================================================
 
-#include "kvi_statusbar.h"
-#include "kvi_statusbarapplet.h"
+#include "KviStatusBar.h"
+#include "KviStatusBarApplet.h"
 
 // TODO: check if it gets destroyed
 // TODO: proper icon!

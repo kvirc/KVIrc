@@ -26,8 +26,8 @@
 #include "KviError.h"
 #include "kvi_debug.h"
 #include "KviLocale.h"
-#include "kvi_frame.h"
-#include "kvi_app.h"
+#include "KviMainWindow.h"
+#include "KviApplication.h"
 
 #include <QDialog>
 

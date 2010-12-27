@@ -24,14 +24,14 @@
 //
 //=============================================================================
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviCString.h"
-#include "kvi_ircsocket.h"
-#include "kvi_sparser.h"
-#include "kvi_console.h"
-#include "kvi_irccontext.h"
+#include "KviIrcSocket.h"
+#include "KviIrcServerParser.h"
+#include "KviConsoleWindow.h"
+#include "KviIrcContext.h"
 #include "KviTalPopupMenu.h"
-#include "kvi_themedtreewidget.h"
+#include "KviThemedTreeWidget.h"
 
 #include <QToolButton>
 
@@ -61,7 +61,7 @@ class KviLinksWindow : public KviWindow, public KviExternalServerDataParser
 {
 	Q_OBJECT
 public:
-	KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole);
+	KviLinksWindow(KviMainWindow * lpFrm,KviConsole * lpConsole);
 	~KviLinksWindow();
 protected:
 	QSplitter               * m_pVertSplitter;

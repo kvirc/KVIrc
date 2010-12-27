@@ -26,15 +26,15 @@
 #include "libkvidialog.h"
 
 #include "KviLocale.h"
-#include "kvi_module.h"
-#include "kvi_modulemanager.h"
+#include "KviModule.h"
+#include "KviModuleManager.h"
 #include "KviError.h"
-#include "kvi_app.h"
-#include "kvi_iconmanager.h"
-#include "kvi_console.h"
-#include "kvi_iconmanager.h"
-#include "kvi_kvs_script.h"
-#include "kvi_msgbox.h"
+#include "KviApplication.h"
+#include "KviIconManager.h"
+#include "KviConsoleWindow.h"
+#include "KviIconManager.h"
+#include "KviKvsScript.h"
+#include "KviMessageBox.h"
 #include "KviTalHBox.h"
 
 #include <QMessageBox>

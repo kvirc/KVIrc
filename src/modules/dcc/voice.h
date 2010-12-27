@@ -29,7 +29,7 @@
 #include "thread.h"
 #include "window.h"
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviDataBuffer.h"
 #include "kvi_sockettype.h"
 #include "KviTalHBox.h"
@@ -106,7 +106,7 @@ class KviDccVoice : public KviDccWindow
 {
 	Q_OBJECT
 public:
-	KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name);
+	KviDccVoice(KviMainWindow *pFrm,KviDccDescriptor * dcc,const char * name);
 	~KviDccVoice();
 protected:
 	KviTalHBox                  * m_pHBox;

@@ -24,9 +24,9 @@
 
 #include "eventeditor.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
-#include "kvi_frame.h"
+#include "KviMainWindow.h"
 
 KviEventEditorWindow * g_pEventEditorWindow = 0;
 

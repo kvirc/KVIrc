@@ -24,10 +24,10 @@
 
 #include "optw_textencoding.h"
 
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviQString.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviFileUtils.h"
 
 #include <QDir>
@@ -99,7 +99,7 @@ KviTextEncodingOptionsWidget::KviTextEncodingOptionsWidget(QWidget * parent)
 	}
 
 	QString szLocaleDir;
-	g_pApp->getGlobalKvircDirectory(szLocaleDir,KviApp::Locale);
+	g_pApp->getGlobalKvircDirectory(szLocaleDir,KviApplication::Locale);
 
 	QStringList list=QDir(szLocaleDir).entryList(QStringList("kvirc_*.mo"),QDir::Files);
 

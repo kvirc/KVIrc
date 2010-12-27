@@ -24,9 +24,9 @@
 
 #include "optw_tray.h"
 
-#include "kvi_frame.h"
-#include "kvi_internalcmd.h"
-#include "kvi_options.h"
+#include "KviMainWindow.h"
+#include "KviInternalCommand.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviTalToolTip.h"
 

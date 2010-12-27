@@ -25,12 +25,12 @@
 #include "helpwidget.h"
 #include "helpwindow.h"
 
-#include "kvi_frame.h"
-#include "kvi_iconmanager.h"
+#include "KviMainWindow.h"
+#include "KviIconManager.h"
 #include "KviLocale.h"
-#include "kvi_app.h"
-#include "kvi_msgbox.h"
-#include "kvi_module.h"
+#include "KviApplication.h"
+#include "KviMessageBox.h"
+#include "KviModule.h"
 #include "KviFileUtils.h"
 
 #include <QToolButton>
@@ -44,7 +44,7 @@ extern Index        * g_pDocIndex;
 extern KviPointerList<KviHelpWindow> * g_pHelpWindowList;
 extern KviPointerList<KviHelpWidget> * g_pHelpWidgetList;
 
-KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame *,bool bIsStandalone)
+KviHelpWidget::KviHelpWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 : QWidget(par)
 {
 	setObjectName("help_widget");
@@ -96,7 +96,7 @@ void KviHelpWidget::showIndex()
 	QString szHelpDir;
         QDir dirHelp;
 
-	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
+	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApplication::Help);
         dirHelp = QDir(szHelpDir);
 
 	m_pTextBrowser->setSource(QUrl::fromLocalFile(dirHelp.absoluteFilePath("index.html")));

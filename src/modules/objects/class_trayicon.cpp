@@ -24,7 +24,7 @@
 
 #include "class_trayicon.h"
 #include "class_popupmenu.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "kvi_debug.h"
 #include "KviError.h"
 #include "KviLocale.h"

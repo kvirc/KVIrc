@@ -24,9 +24,9 @@
 //=============================================================================
 
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
-#include "kvi_channel.h"
+#include "KviChannelWindow.h"
 
 /*
 	@doc: tmphighlight.addNick
@@ -63,7 +63,7 @@ static bool tmphighlight_kvs_cmd_addnick(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	((KviChannel *)c->window())->addHighlightedUser(szNick);
+	((KviChannelWindow *)c->window())->addHighlightedUser(szNick);
 
 	return true;
 }
@@ -101,7 +101,7 @@ static bool tmphighlight_kvs_cmd_removenick(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	((KviChannel *)c->window())->removeHighlightedUser(szNick);
+	((KviChannelWindow *)c->window())->removeHighlightedUser(szNick);
 	return true;
 }
 
@@ -243,7 +243,7 @@ static bool tmphighlight_kvs_fnc_isnickhighlighted(KviKvsModuleFunctionCall * c)
 		c->warning(__tr2qs("Current window is not a channel"));
 		return false;
 	}
-	c->returnValue()->setBoolean(((KviChannel *)c->window())->isHighlightedUser(szNick));
+	c->returnValue()->setBoolean(((KviChannelWindow *)c->window())->isHighlightedUser(szNick));
 	return true;
 }
 

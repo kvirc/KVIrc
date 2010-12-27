@@ -23,14 +23,14 @@
 //=============================================================================
 
 #include "mp_winampinterface.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 #include <QTextCodec>
 
 #include "KviLocale.h"
-#include "kvi_module.h"
+#include "KviModule.h"
 
 #include <windows.h>
 

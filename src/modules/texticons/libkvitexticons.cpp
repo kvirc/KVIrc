@@ -22,8 +22,8 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
-#include "kvi_texticonmanager.h"
+#include "KviModule.h"
+#include "KviTextIconManager.h"
 
 /*
 	@doc: texticons.get

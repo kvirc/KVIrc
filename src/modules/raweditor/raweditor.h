@@ -24,10 +24,10 @@
 //
 //=============================================================================
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviQString.h"
 #include <QTreeWidget>
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 
 #include <QWidget>
 #include <QLineEdit>
@@ -122,7 +122,7 @@ class KviRawEditorWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	KviRawEditorWindow(KviFrame * lpFrm);
+	KviRawEditorWindow(KviMainWindow * lpFrm);
 	~KviRawEditorWindow();
 protected:
 	KviRawEditor * m_pEditor;

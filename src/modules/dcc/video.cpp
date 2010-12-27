@@ -28,21 +28,21 @@
 #include "marshal.h"
 #include "broker.h"
 
-#include "kvi_iconmanager.h"
-#include "kvi_ircview.h"
-#include "kvi_kvs_eventtriggers.h"
+#include "KviIconManager.h"
+#include "KviIrcView.h"
+#include "KviKvsEventTriggers.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
 #include "KviError.h"
 #include "KviNetUtils.h"
-#include "kvi_options.h"
-#include "kvi_console.h"
+#include "KviOptions.h"
+#include "KviConsoleWindow.h"
 #include "KviMemory.h"
 #include "kvi_socket.h"
-#include "kvi_ircconnection.h"
+#include "KviIrcConnection.h"
 #include "KviTalVBox.h"
 #include "KviMircCntrl.h"
-#include "kvi_frame.h"
+#include "KviMainWindow.h"
 
 #include <QToolTip>
 #include <QByteArray>
@@ -50,11 +50,11 @@
 #include <QTextDocument> //for Qt::escape
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "kvi_cryptcontroller.h"
+	#include "KviCryptController.h"
 #endif
 
 #ifdef COMPILE_SSL_SUPPORT
-	#include "kvi_sslmaster.h"
+	#include "KviSSLMaster.h"
 #endif
 
 #include <sys/ioctl.h>
@@ -416,7 +416,7 @@ exit_dcc:
 	m_fd = KVI_INVALID_SOCKET;
 }
 
-KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
+KviDccVideo::KviDccVideo(KviMainWindow *pFrm,KviDccDescriptor * dcc,const char * name)
 : KviDccWindow(KVI_WINDOW_TYPE_DCCVIDEO,pFrm,name,dcc)
 {
 	m_pDescriptor = dcc;
@@ -806,7 +806,7 @@ bool KviDccVideo::event(QEvent *e)
 							szMsg += m_pDescriptor->szNick;
 							szMsg += "</b> ";
 							szMsg += Qt::escape(QString(d.ptr()));
-							//qDebug("kvi_sp_ctcp.cpp:975 debug: %s",szMsg.data());
+							//qDebug("KviIrcServerParser_ctcp.cpp:975 debug: %s",szMsg.data());
 							g_pApp->notifierMessage(this,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 						}
 					}

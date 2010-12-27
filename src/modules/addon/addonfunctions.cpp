@@ -26,15 +26,15 @@
 
 #include "KviPackageFile.h"
 #include "KviLocale.h"
-#include "kvi_msgbox.h"
-#include "kvi_app.h"
-#include "kvi_htmldialog.h"
-#include "kvi_iconmanager.h"
+#include "KviMessageBox.h"
+#include "KviApplication.h"
+#include "KviHtmlDialog.h"
+#include "KviIconManager.h"
 #include "KviFileUtils.h"
 #include "KviMiscUtils.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_frame.h"
-#include "kvi_kvs_script.h"
+#include "KviMainWindow.h"
+#include "KviKvsScript.h"
 
 #include <QDir>
 
@@ -207,7 +207,7 @@ namespace KviAddonFunctions
 		QString szTmpPath, szUnpackPath;
 		QString szRandomDir = createRandomDir();
 
-		g_pApp->getLocalKvircDirectory(szTmpPath,KviApp::Tmp);
+		g_pApp->getLocalKvircDirectory(szTmpPath,KviApplication::Tmp);
 		KviQString::ensureLastCharIs(szTmpPath,QChar(KVI_PATH_SEPARATOR_CHAR));
 		szUnpackPath = szTmpPath + szRandomDir;
 		QDir szTmpDir(szUnpackPath);

@@ -27,14 +27,14 @@
 #include "descriptor.h"
 #include "marshal.h"
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 class KviDccThread;
 
 class KviDccWindow : public KviWindow, public KviDccMarshalOutputContext
 {
 	Q_OBJECT
 public:
-	KviDccWindow(int type,KviFrame * lpFrm,const char * name,KviDccDescriptor * d);
+	KviDccWindow(int type,KviMainWindow * lpFrm,const char * name,KviDccDescriptor * d);
 	~KviDccWindow();
 protected:
 	KviDccDescriptor       * m_pDescriptor;

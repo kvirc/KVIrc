@@ -25,11 +25,11 @@
 #include "helpwindow.h"
 #include "helpwidget.h"
 
-#include "kvi_app.h"
-#include "kvi_iconmanager.h"
-#include "kvi_options.h"
+#include "KviApplication.h"
+#include "KviIconManager.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviConfigurationFile.h"
 #include "kvi_sourcesdate.h"
 
@@ -47,7 +47,7 @@ extern KviPointerList<KviHelpWindow> * g_pHelpWindowList;
 extern KviPointerList<KviHelpWidget> * g_pHelpWidgetList;
 
 bool g_bIndexingDone = FALSE;
-KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
+KviHelpWindow::KviHelpWindow(KviMainWindow * lpFrm,const char * name)
 : KviWindow(KVI_WINDOW_TYPE_HELP,lpFrm,name)
 {
 	g_pHelpWindowList->append(this);
@@ -122,8 +122,8 @@ void KviHelpWindow::initialSetup()
 		g_bIndexingDone=TRUE;
 		QString szDoclist,szDict;
 
-		g_pApp->getLocalKvircDirectory(szDoclist,KviApp::Help,"help.doclist." KVI_SOURCES_DATE);
-		g_pApp->getLocalKvircDirectory(szDict,KviApp::Help,"help.dict." KVI_SOURCES_DATE);
+		g_pApp->getLocalKvircDirectory(szDoclist,KviApplication::Help,"help.doclist." KVI_SOURCES_DATE);
+		g_pApp->getLocalKvircDirectory(szDict,KviApplication::Help,"help.dict." KVI_SOURCES_DATE);
 
 		if ( QFileInfo( szDoclist ).exists() && QFileInfo( szDict ).exists() ) {
 			g_pDocIndex->readDict();

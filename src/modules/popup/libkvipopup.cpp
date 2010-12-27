@@ -22,9 +22,9 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
-#include "kvi_kvs_popupmanager.h"
+#include "KviKvsPopupManager.h"
 
 #define GET_KVS_POPUP \
 	int iIdx = szPopupName.indexOf(QChar('.')); \

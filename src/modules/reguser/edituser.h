@@ -26,7 +26,7 @@
 
 #include "KviCString.h"
 #include "KviRegisteredUserDataBase.h"
-#include "kvi_selectors.h"
+#include "KviSelectors.h"
 #include "KviPointerHashTable.h"
 #include <QTreeWidget>
 #include "KviTalPopupMenu.h"

@@ -27,20 +27,20 @@
 #include "savethemedialog.h"
 #include "themefunctions.h"
 
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviConfigurationFile.h"
 #include "KviFileUtils.h"
-#include "kvi_app.h"
-#include "kvi_frame.h"
-#include "kvi_iconmanager.h"
-#include "kvi_internalcmd.h"
+#include "KviApplication.h"
+#include "KviMainWindow.h"
+#include "KviIconManager.h"
+#include "KviInternalCommand.h"
 #include "KviPackageFile.h"
 #include "kvi_fileextensions.h"
-#include "kvi_filedialog.h"
-#include "kvi_dynamictooltip.h"
-#include "kvi_iconmanager.h"
-#include "kvi_msgbox.h"
+#include "KviFileDialog.h"
+#include "KviDynamicToolTip.h"
+#include "KviIconManager.h"
+#include "KviMessageBox.h"
 #include "KviTalPopupMenu.h"
 #include "KviTalListWidget.h"
 
@@ -392,9 +392,9 @@ void KviThemeManagementDialog::fillThemeBox()
 	m_pListWidget->clear();
 
 	QString szDir;
-	g_pApp->getGlobalKvircDirectory(szDir,KviApp::Themes);
+	g_pApp->getGlobalKvircDirectory(szDir,KviApplication::Themes);
 	fillThemeBox(szDir);
-	g_pApp->getLocalKvircDirectory(szDir,KviApp::Themes);
+	g_pApp->getLocalKvircDirectory(szDir,KviApplication::Themes);
 	fillThemeBox(szDir);
 
 	enableDisableButtons();

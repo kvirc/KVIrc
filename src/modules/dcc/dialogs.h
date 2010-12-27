@@ -26,7 +26,7 @@
 
 #include "broker.h"
 
-#include "kvi_filedialog.h"
+#include "KviFileDialog.h"
 
 #include <QWidget>
 

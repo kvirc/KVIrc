@@ -24,9 +24,9 @@
 
 #include "aliaseditor.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
-#include "kvi_frame.h"
+#include "KviMainWindow.h"
 
 
 KviAliasEditorWindow * g_pAliasEditorWindow = 0;

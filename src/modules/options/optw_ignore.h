@@ -25,8 +25,8 @@
 //
 //=============================================================================
 
-#include "kvi_optionswidget.h"
-#include "kvi_selectors.h"
+#include "KviOptionsWidget.h"
+#include "KviSelectors.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_KviIgnoreOptionsWidget KVI_SMALLICON_IGNORE
 #define KVI_OPTIONS_WIDGET_NAME_KviIgnoreOptionsWidget __tr2qs_no_lookup("Ignore")

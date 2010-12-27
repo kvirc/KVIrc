@@ -26,17 +26,17 @@
 #include "termwidget.h"
 
 #ifdef COMPILE_KDE_SUPPORT
-	#include "kvi_iconmanager.h"
-	#include "kvi_options.h"
+	#include "KviIconManager.h"
+	#include "KviOptions.h"
 	#include "KviLocale.h"
-	#include "kvi_module.h"
+	#include "KviModule.h"
 
 	extern KviModule * g_pTermModule;
 	extern KviPointerList<KviTermWindow> * g_pTermWindowList;
 	extern KviPointerList<KviTermWidget> * g_pTermWidgetList;
 	extern KviIconManager * g_pIconManager;
 
-	KviTermWindow::KviTermWindow(KviFrame * lpFrm,const char * name)
+	KviTermWindow::KviTermWindow(KviMainWindow * lpFrm,const char * name)
 	: KviWindow(KVI_WINDOW_TYPE_TERM,lpFrm,name)
 	{
 		g_pTermWindowList->append(this);

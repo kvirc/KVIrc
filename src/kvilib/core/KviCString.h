@@ -173,7 +173,7 @@ public:
 	int len() const                 { return m_len; };
 
 	// I hate this operator...but sometimes it is really useful
-	// especially in macros (kvi_options.cpp)
+	// especially in macros (KviOptions.cpp)
 	operator const char * () const  { return m_ptr; };
 
 	bool isEmpty() const            { return (m_len == 0); };

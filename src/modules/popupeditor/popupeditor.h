@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "KviCString.h"
 #include <QTreeWidget>
 #include "KviTalPopupMenu.h"
@@ -186,7 +186,7 @@ class KviPopupEditorWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	KviPopupEditorWindow(KviFrame * lpFrm);
+	KviPopupEditorWindow(KviMainWindow * lpFrm);
 	~KviPopupEditorWindow();
 protected:
 	KviPopupEditor * m_pEditor;

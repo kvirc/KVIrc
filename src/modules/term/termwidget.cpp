@@ -25,9 +25,9 @@
 #include "termwidget.h"
 #include "termwindow.h"
 
-#include "kvi_module.h"
-#include "kvi_frame.h"
-#include "kvi_iconmanager.h"
+#include "KviModule.h"
+#include "KviMainWindow.h"
+#include "KviIconManager.h"
 #include "KviLocale.h"
 #include "KviPointerList.h"
 
@@ -46,7 +46,7 @@
 	extern KviPointerList<KviTermWidget> * g_pTermWidgetList;
 	extern KviPointerList<KviTermWindow> * g_pTermWindowList;
 
-	KviTermWidget::KviTermWidget(QWidget * par,KviFrame *,bool bIsStandalone)
+	KviTermWidget::KviTermWidget(QWidget * par,KviMainWindow *,bool bIsStandalone)
 	: QFrame(par)
 	{
 		setObjectName("term_widget");

@@ -25,8 +25,8 @@
 #include "optw_avatar.h"
 
 #include "KviLocale.h"
-#include "kvi_selectors.h"
-#include "kvi_options.h"
+#include "KviSelectors.h"
+#include "KviOptions.h"
 #include "KviTalToolTip.h"
 
 KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)

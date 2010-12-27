@@ -26,15 +26,15 @@
 #include "notifierwindow.h"
 #include "notifiermessage.h"
 
-#include "kvi_module.h"
-#include "kvi_kvs_variant.h"
-#include "kvi_app.h"
-#include "kvi_frame.h"
-#include "kvi_window.h"
+#include "KviModule.h"
+#include "KviKvsVariant.h"
+#include "KviApplication.h"
+#include "KviMainWindow.h"
+#include "KviWindow.h"
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviTimeUtils.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 
 #include <QSplitter>
 

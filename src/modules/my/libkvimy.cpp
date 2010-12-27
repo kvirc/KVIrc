@@ -22,14 +22,14 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
-#include "kvi_console.h"
-#include "kvi_app.h"
+#include "KviModule.h"
+#include "KviConsoleWindow.h"
+#include "KviApplication.h"
 #include "KviLocale.h"
-#include "kvi_irclink.h"
-#include "kvi_ircconnection.h"
-#include "kvi_ircconnectionuserinfo.h"
-#include "kvi_ircconnectionserverinfo.h"
+#include "KviIrcLink.h"
+#include "KviIrcConnection.h"
+#include "KviIrcConnectionUserInfo.h"
+#include "KviIrcConnectionServerInfo.h"
 #include "KviIrcServer.h"
 
 #include "idle.h"

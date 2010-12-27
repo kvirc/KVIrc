@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "kvi_optionswidget.h"
+#include "KviOptionsWidget.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_KviUParserOptionsWidget KVI_SMALLICON_PARSERWARNING
 #define KVI_OPTIONS_WIDGET_NAME_KviUParserOptionsWidget __tr2qs_no_lookup("Scripting Engine")

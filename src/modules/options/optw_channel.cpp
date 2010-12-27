@@ -29,7 +29,7 @@
 
 #include "optw_channel.h"
 
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "kvi_settings.h"
 #include "KviIrcMask.h"

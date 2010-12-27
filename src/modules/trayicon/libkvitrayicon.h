@@ -27,7 +27,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_frame.h"
+#include "KviMainWindow.h"
 
 #include <QSystemTrayIcon>
 #include <QLabel>
@@ -36,16 +36,16 @@ class QPixmap;
 class QTimer;
 class KviTalPopupMenu;
 class KviDynamicToolTip;
-//class KviFrame;
+//class KviMainWindow;
 
 class KviTrayIcon : public QSystemTrayIcon, public KviDockExtension
 {
 	Q_OBJECT
 public:
-	KviTrayIcon(KviFrame * win);
+	KviTrayIcon(KviMainWindow * win);
 	~KviTrayIcon();
 protected:
-	KviFrame               * m_pFrm;
+	KviMainWindow               * m_pFrm;
 	KviDynamicToolTip      * m_pTip;
 	KviTalPopupMenu        * m_pContextPopup;
 	KviTalPopupMenu        * m_pAwayPopup;
@@ -63,7 +63,7 @@ protected:
 	unsigned int m_iQueries;
 	unsigned int m_iOther;
 public:
-	KviFrame * frame(){ return m_pFrm; };
+	KviMainWindow * frame(){ return m_pFrm; };
 public:
 	virtual void refresh();
 	virtual void die();

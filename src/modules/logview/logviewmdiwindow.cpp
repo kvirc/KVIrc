@@ -26,14 +26,14 @@
 #include "logviewmdiwindow.h"
 #include "logviewwidget.h"
 
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviLocale.h"
-#include "kvi_module.h"
-#include "kvi_options.h"
-#include "kvi_frame.h"
-#include "kvi_ircview.h"
+#include "KviModule.h"
+#include "KviOptions.h"
+#include "KviMainWindow.h"
+#include "KviIrcView.h"
 #include "KviQString.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviFileUtils.h"
 #include "KviTalPopupMenu.h"
 
@@ -65,7 +65,7 @@
 
 extern KviLogViewMDIWindow * g_pLogViewWindow;
 
-KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm)
+KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_LOGVIEW,lpFrm,"logview"), KviModuleExtension(d)
 {
 	g_pLogViewWindow = this;
@@ -168,7 +168,7 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	li.append(width()-110);
 	m_pSplitter->setSizes(li);
 
-	g_pApp->getLocalKvircDirectory(m_szLogDirectory,KviApp::Log);
+	g_pApp->getLocalKvircDirectory(m_szLogDirectory,KviApplication::Log);
 	KviQString::ensureLastCharIs(m_szLogDirectory,'/'); // Does this work on Windows?
 
 	m_pTimer = new QTimer(this);
@@ -373,7 +373,7 @@ void KviLogViewMDIWindow::itemSelected(QTreeWidgetItem * it,QTreeWidgetItem *)
 QStringList KviLogViewMDIWindow::getFileNames()
 {
 	QString logPath;
-	g_pApp->getLocalKvircDirectory(logPath,KviApp::Log);
+	g_pApp->getLocalKvircDirectory(logPath,KviApplication::Log);
 	QString qPath(logPath);
 	QDir logDir(qPath);
 	return logDir.entryList();
@@ -430,7 +430,7 @@ void KviLogViewMDIWindow::deleteCurrent()
 				if(!pCurItem->fileName().isNull())
 				{
 					QString szFname;
-					g_pApp->getLocalKvircDirectory(szFname,KviApp::Log,pCurItem->fileName());
+					g_pApp->getLocalKvircDirectory(szFname,KviApplication::Log,pCurItem->fileName());
 					KviFileUtils::removeFile(szFname);
 				}
 			}
@@ -440,7 +440,7 @@ void KviLogViewMDIWindow::deleteCurrent()
 			if(!pItem->fileName().isNull())
 		{
 			QString szFname;
-			g_pApp->getLocalKvircDirectory(szFname,KviApp::Log,pItem->fileName());
+			g_pApp->getLocalKvircDirectory(szFname,KviApplication::Log,pItem->fileName());
 			KviFileUtils::removeFile(szFname);
 			delete pItem;
 			m_pIrcView->clearBuffer();

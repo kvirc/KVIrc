@@ -26,11 +26,11 @@
 #include "logviewmdiwindow.h"
 
 #include "KviConfigurationFile.h"
-#include "kvi_module.h"
-#include "kvi_frame.h"
-#include "kvi_iconmanager.h"
+#include "KviModule.h"
+#include "KviMainWindow.h"
+#include "KviIconManager.h"
 #include "KviLocale.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 
 static QRect                 g_rectLogViewGeometry;
 KviLogViewMDIWindow        * g_pLogViewWindow = 0;

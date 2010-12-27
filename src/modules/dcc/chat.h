@@ -30,9 +30,9 @@
 
 #include "KviDataBuffer.h"
 #include "KviPointerList.h"
-#include "kvi_themedlabel.h"
+#include "KviThemedLabel.h"
 #include "KviCString.h"
-#include "kvi_window.h"
+#include "KviWindow.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 	class KviSSL;
@@ -68,7 +68,7 @@ class KviDccChat : public KviDccWindow
 {
 	Q_OBJECT
 public:
-	KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name);
+	KviDccChat(KviMainWindow *pFrm,KviDccDescriptor * dcc,const char * name);
 	~KviDccChat();
 	QFrame * buttonContainer() { return (QFrame*)m_pButtonContainer; };
 protected:

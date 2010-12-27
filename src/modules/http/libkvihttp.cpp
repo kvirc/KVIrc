@@ -24,12 +24,12 @@
 
 #include "httpfiletransfer.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviCString.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviLocale.h"
-#include "kvi_filedialog.h"
-#include "kvi_window.h"
+#include "KviFileDialog.h"
+#include "KviWindow.h"
 #include "KviError.h"
 #include "KviCommandFormatter.h"
 
@@ -55,7 +55,7 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 			tmp.replace('@',"_");
 			tmp.replace('?',"_");
 			// http____path_path2_path3_filename.ext
-			g_pApp->getLocalKvircDirectory(szFileName,KviApp::Incoming,tmp);
+			g_pApp->getLocalKvircDirectory(szFileName,KviApplication::Incoming,tmp);
 		} else {
 			if(!KviFileDialog::askForSaveFileName(szFileName,__tr2qs_ctx("Choose a save file name","http")))
 				return true;

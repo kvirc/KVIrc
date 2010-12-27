@@ -25,15 +25,15 @@
 #include "channelsjoinwindow.h"
 
 #include "KviLocale.h"
-#include "kvi_options.h"
-#include "kvi_selectors.h"
-#include "kvi_app.h"
+#include "KviOptions.h"
+#include "KviSelectors.h"
+#include "KviApplication.h"
 #include "KviCString.h"
 #include "KviQString.h"
-#include "kvi_iconmanager.h"
-#include "kvi_console.h"
+#include "KviIconManager.h"
+#include "KviConsoleWindow.h"
 #include "KviRegisteredChannel.h"
-#include "kvi_kvs_script.h"
+#include "KviKvsScript.h"
 #include "KviTalGroupBox.h"
 
 #include <QTreeWidget>
@@ -49,7 +49,7 @@
 
 extern KviChannelsJoinWindow * g_pChannelsWindow;
 extern QRect                   g_rectChannelsJoinGeometry;
-// kvi_app.cpp
+// KviApplication.cpp
 extern KVIRC_API KviRegisteredChannelDataBase * g_pRegisteredChannelDataBase;
 
 

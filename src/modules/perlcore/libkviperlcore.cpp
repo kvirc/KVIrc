@@ -22,15 +22,15 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "kvi_settings.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
-#include "kvi_window.h"
-#include "kvi_app.h"
-#include "kvi_kvs_script.h"
-#include "kvi_kvs_variant.h"
-#include "kvi_userinput.h"
+#include "KviWindow.h"
+#include "KviApplication.h"
+#include "KviKvsScript.h"
+#include "KviKvsVariant.h"
+#include "KviUserInput.h"
 #include "KviPointerHashTable.h"
 
 #include <QByteArray>
@@ -70,7 +70,7 @@
 
 	#include "ppport.h"
 
-	#include "kvi_kvs_runtimecontext.h"
+	#include "KviKvsRunTimeContext.h"
 
 	static KviKvsRunTimeContext * g_pCurrentKvsContext = 0;
 	static bool g_bExecuteQuiet = false;

@@ -27,13 +27,13 @@
 #include "optw_messages.h"
 
 #include "kvi_settings.h"
-#include "kvi_options.h"
-#include "kvi_app.h"
+#include "KviOptions.h"
+#include "KviApplication.h"
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviMircCntrl.h"
 #include "KviConfigurationFile.h"
-#include "kvi_filedialog.h"
+#include "KviFileDialog.h"
 #include "KviTalVBox.h"
 
 #include <QLayout>
@@ -551,7 +551,7 @@ void KviMessageColorsOptionsWidget::save()
 {
 	QString szName;
 	QString szInit;
-	g_pApp->getLocalKvircDirectory(szInit,KviApp::MsgColors);
+	g_pApp->getLocalKvircDirectory(szInit,KviApplication::MsgColors);
 
 	if(KviFileDialog::askForSaveFileName(szName,__tr2qs_ctx("Choose a Filename - KVIrc","options"),szInit))
 	{
@@ -591,14 +591,14 @@ void KviMessageColorsOptionsWidget::load()
 
 	QString szName;
 	QString szInit;
-	g_pApp->getLocalKvircDirectory(szInit,KviApp::MsgColors);
+	g_pApp->getLocalKvircDirectory(szInit,KviApplication::MsgColors);
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	// symlink local to global
 	QString szGlobal;
-	g_pApp->getGlobalKvircDirectory(szGlobal,KviApp::MsgColors);
+	g_pApp->getGlobalKvircDirectory(szGlobal,KviApplication::MsgColors);
 	QString szLocal;
-	g_pApp->getLocalKvircDirectory(szLocal,KviApp::MsgColors,"presets");
+	g_pApp->getLocalKvircDirectory(szLocal,KviApplication::MsgColors,"presets");
 	//qDebug("SYMLINKING %s to %s",szGlobal.ptr(),szLocal.ptr());
 	//qDebug("SYMLINK RETURNS %d (%d)",::symlink(szGlobal.ptr(),szLocal.ptr()));
 	//qDebug("ERRNO (%d)",errno);

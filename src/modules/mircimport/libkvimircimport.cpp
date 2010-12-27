@@ -24,13 +24,13 @@
 
 #include "libkvimircimport.h"
 
-#include "kvi_module.h"
-#include "kvi_filedialog.h"
+#include "KviModule.h"
+#include "KviFileDialog.h"
 #include "KviFileUtils.h"
 #include "kvi_fileextensions.h"
 #include "KviLocale.h"
 #include "KviConfigurationFile.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviQString.h"
 #include "KviTalVBox.h"
 

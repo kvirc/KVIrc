@@ -168,7 +168,7 @@
 #define KVI_OUT_CAP 141
 
 //#define KVI_NUM_MSGTYPE_OPTIONS 142
-// UPDATE THE TOTAL COUNT IN kvi_options.h !!!!
+// UPDATE THE TOTAL COUNT IN KviOptions.h !!!!
 
 
 #endif //_KVI_OPTIONS_H_

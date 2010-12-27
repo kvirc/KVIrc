@@ -325,7 +325,7 @@ protected:
 };
 
 // =============================================================================================//
-// This is private stuff...only KviThread and KviApp may use it
+// This is private stuff...only KviThread and KviApplication may use it
 // and may call only specific functions...don't touch.
 
 typedef struct _KviThreadPendingEvent
@@ -336,7 +336,7 @@ typedef struct _KviThreadPendingEvent
 
 class KVILIB_API KviThreadManager : public QObject
 {
-	friend class KviApp;
+	friend class KviApplication;
 	friend class KviThread;
 	Q_OBJECT
 protected:
@@ -368,7 +368,7 @@ protected:
 
 	void postSlaveEvent(QObject *o,QEvent *e);
 	void killPendingEventsByReceiver(QObject * receiver);
-	// Public to KviApp only
+	// Public to KviApplication only
 	static void globalInit();
 	static void globalDestroy();
 private slots:

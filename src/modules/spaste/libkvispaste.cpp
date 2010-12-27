@@ -26,13 +26,13 @@
 #include "libkvispaste.h"
 #include "controller.h"
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviFileUtils.h"
 #include "KviQString.h"
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "KviLocale.h"
-#include "kvi_console.h"
-#include "kvi_options.h"
+#include "KviConsoleWindow.h"
+#include "KviOptions.h"
 #include "kvi_out.h"
 
 #include <QFile>

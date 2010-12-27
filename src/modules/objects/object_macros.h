@@ -24,11 +24,11 @@
 //
 //=============================================================================
 
-#include "kvi_kvs_kernel.h"
-#include "kvi_kvs_object.h"
-#include "kvi_kvs_object_class.h"
-#include "kvi_kvs_object_controller.h"
-#include "kvi_kvs_object_functioncall.h"
+#include "KviKvsKernel.h"
+#include "KviKvsObject.h"
+#include "KviKvsObjectClass.h"
+#include "KviKvsObjectController.h"
+#include "KviKvsObjectFunctionCall.h"
 
 #define KVSO_DECLARE_OBJECT(__className) \
 	__className(KviKvsObjectClass * pClass,KviKvsObject * pParent,const QString &szName); \

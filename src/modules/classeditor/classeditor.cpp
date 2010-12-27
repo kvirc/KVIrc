@@ -25,27 +25,27 @@
 
 #include "classeditor.h"
 
-#include "kvi_iconmanager.h"
-#include "kvi_options.h"
+#include "KviIconManager.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
-#include "kvi_imagedialog.h"
+#include "KviImageDialog.h"
 #include "KviConfigurationFile.h"
-#include "kvi_filedialog.h"
+#include "KviFileDialog.h"
 #include "KviFileUtils.h"
-#include "kvi_scripteditor.h"
+#include "KviScriptEditor.h"
 #include "kvi_debug.h"
-#include "kvi_app.h"
-#include "kvi_frame.h"
+#include "KviApplication.h"
+#include "KviMainWindow.h"
 #include "KviQString.h"
-#include "kvi_kvs_kernel.h"
-#include "kvi_kvs_object_class.h"
-#include "kvi_kvs_object_controller.h"
-#include "kvi_filedialog.h"
+#include "KviKvsKernel.h"
+#include "KviKvsObjectClass.h"
+#include "KviKvsObjectController.h"
+#include "KviFileDialog.h"
 #include "KviCommandFormatter.h"
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviTalVBox.h"
 #include "kvi_fileextensions.h"
-#include "kvi_modulemanager.h"
+#include "KviModuleManager.h"
 
 #include <QList>
 #include <QSplitter>
@@ -383,7 +383,7 @@ void KviClassEditor::oneTimeSetup()
 	QStringList sl;
 	QString szClassName;
 	QString szPath;
-	g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes);
+	g_pApp->getLocalKvircDirectory(szPath,KviApplication::Classes);
 	QDir d(szPath);
 	
 	QString szExtension = QString("*%1").arg(KVI_FILEEXTENSION_SCRIPT); // *.kvs
@@ -531,7 +531,7 @@ void KviClassEditor::renameFunction()
 					QString szFileName = szClassName.toLower();
 					szFileName += ".kvs";
 					szFileName.replace("::","--");
-					g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes,szFileName);
+					g_pApp->getLocalKvircDirectory(szPath,KviApplication::Classes,szFileName);
 					pClass->save(szPath);
 				}
 			}
@@ -1381,7 +1381,7 @@ bool KviClassEditor::removeItem(KviClassEditorTreeWidgetItem * pItem, KviPointer
 			szFileName.replace("::","--");
 			szFileName.append(KVI_FILEEXTENSION_SCRIPT);
 			QString szPath;
-			g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes);
+			g_pApp->getLocalKvircDirectory(szPath,KviApplication::Classes);
 			QDir d(szPath);
 			if(d.exists(szFileName))
 			{
@@ -1703,7 +1703,7 @@ void KviClassEditor::build()
 	else {
 		QString szFileName = "libkviclasseditortmp.kvc";
 		QString szBuffer;
-		g_pApp->getLocalKvircDirectory(szBuffer,KviApp::ConfigPlugins,szFileName);
+		g_pApp->getLocalKvircDirectory(szBuffer,KviApplication::ConfigPlugins,szFileName);
 		KviConfigurationFile cfg(szBuffer,KviConfigurationFile::Write);
 		cfg.clear();
 		cfg.sync();
@@ -1715,7 +1715,7 @@ void KviClassEditor::loadNotBuiltClasses()
 {
 	QString szFileName = "libkviclasseditortmp.kvc";
 	QString szBuffer;
-	g_pApp->getLocalKvircDirectory(szBuffer,KviApp::ConfigPlugins,szFileName);
+	g_pApp->getLocalKvircDirectory(szBuffer,KviApplication::ConfigPlugins,szFileName);
 	KviConfigurationFile cfg(szBuffer,KviConfigurationFile::Read);
 	KviConfigurationFileIterator it(*(cfg.dict()));
 
@@ -1774,7 +1774,7 @@ void KviClassEditor::saveNotBuiltClasses()
 	KviPointerHashTableIterator<QString,KviClassEditorTreeWidgetItem> it (*m_pClasses);
 	QString szFileName = "libkviclasseditortmp.kvc";
 	QString szBuffer;
-	g_pApp->getLocalKvircDirectory(szBuffer,KviApp::ConfigPlugins,szFileName);
+	g_pApp->getLocalKvircDirectory(szBuffer,KviApplication::ConfigPlugins,szFileName);
 	KviConfigurationFile cfg(szBuffer,KviConfigurationFile::Write);
 	cfg.clear();
 
@@ -1815,7 +1815,7 @@ void KviClassEditor::searchInheritedClasses(const QString szClass, KviPointerLis
 	}
 }
 
-KviClassEditorWindow::KviClassEditorWindow(KviFrame * pFrm)
+KviClassEditorWindow::KviClassEditorWindow(KviMainWindow * pFrm)
 : KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,pFrm,"classeditor",0)
 {
 	g_pClassEditorWindow = this;

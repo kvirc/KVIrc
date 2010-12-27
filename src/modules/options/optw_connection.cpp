@@ -27,8 +27,8 @@
 
 #include "kvi_settings.h"
 #include "KviLocale.h"
-#include "kvi_options.h"
-#include "kvi_iconmanager.h"
+#include "KviOptions.h"
+#include "KviIconManager.h"
 
 #include <QRadioButton>
 

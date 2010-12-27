@@ -24,8 +24,8 @@
 
 #include "scripteditor.h"
 
-#include "kvi_module.h"
-#include "kvi_window.h"
+#include "KviModule.h"
+#include "KviWindow.h"
 
 
 KviModule * g_pEditorModulePointer = 0;
@@ -45,7 +45,7 @@ static bool editor_module_init(KviModule * m)
 static bool editor_module_cleanup(KviModule *)
 {
 	/*
-	 * This causes 2 crashes: one in KviApp destructor (closing windows needs
+	 * This causes 2 crashes: one in KviApplication destructor (closing windows needs
 	 * g_pFrame, that is deleted before this unloading routine) and the second in
 	 * the codetester window (it deletes us in its denstructor, and we tries to back-delete it)
 	 * So it's commented out by now..

@@ -24,7 +24,7 @@
 
 #include "optw_ctcpfloodprotection.h"
 
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 
 #include <QLayout>

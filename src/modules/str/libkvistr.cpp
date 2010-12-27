@@ -25,15 +25,15 @@
 
 //#warning: FIXME: Incomplete documentation ('seealso', 'example', etc)
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviLocale.h"
 #include "KviMircCntrl.h"
 #include "KviQString.h"
 #include "kvi_debug.h"
 #include "kvi_settings.h"
 #include "KviMemory.h"
-#include "kvi_kvs_arraycast.h"
-#include "kvi_options.h"
+#include "KviKvsArrayCast.h"
+#include "KviOptions.h"
 
 #include <QRegExp>
 #include <QClipboard>

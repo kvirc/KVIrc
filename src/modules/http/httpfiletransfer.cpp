@@ -24,15 +24,15 @@
 
 #include "httpfiletransfer.h"
 
-#include "kvi_app.h"
+#include "KviApplication.h"
 #include "kvi_out.h"
 #include "KviLocale.h"
-#include "kvi_window.h"
-#include "kvi_iconmanager.h"
+#include "KviWindow.h"
+#include "KviIconManager.h"
 #include "KviNetUtils.h"
-#include "kvi_kvs_eventtriggers.h"
-#include "kvi_console.h"
-#include "kvi_kvs_script.h"
+#include "KviKvsEventTriggers.h"
+#include "KviConsoleWindow.h"
+#include "KviKvsScript.h"
 #include "KviTalPopupMenu.h"
 
 #include <QPainter>

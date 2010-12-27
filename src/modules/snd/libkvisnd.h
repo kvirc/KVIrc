@@ -28,7 +28,7 @@
 #include "kvi_settings.h"
 #include "KviPointerList.h"
 #include "KviPointerHashTable.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviThread.h"
 #include "KviCString.h"
 

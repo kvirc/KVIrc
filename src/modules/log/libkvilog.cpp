@@ -22,11 +22,11 @@
 //
 //==============================================================================
 
-#include "kvi_module.h"
-#include "kvi_window.h"
-#include "kvi_app.h"
+#include "KviModule.h"
+#include "KviWindow.h"
+#include "KviApplication.h"
 #include "KviLocale.h"
-#include "kvi_ircview.h"
+#include "KviIrcView.h"
 
 
 //#warning "log.stats"

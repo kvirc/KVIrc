@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "KviCString.h"
-#include "kvi_selectors.h"
+#include "KviSelectors.h"
 #include "KviTalWizard.h"
 #include "KviTalVBox.h"
 #include "KviTalHBox.h"

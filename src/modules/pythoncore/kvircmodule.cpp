@@ -31,11 +31,11 @@
 #define KVIRC_MODULE
 
 #include "kvircmodule.h"
-#include "kvi_app.h"
-#include "kvi_window.h"
-#include "kvi_userinput.h"
-#include "kvi_kvs_runtimecontext.h"
-#include "kvi_kvs_script.h"
+#include "KviApplication.h"
+#include "KviWindow.h"
+#include "KviUserInput.h"
+#include "KviKvsRunTimeContext.h"
+#include "KviKvsScript.h"
 
 #include <QThread>
 

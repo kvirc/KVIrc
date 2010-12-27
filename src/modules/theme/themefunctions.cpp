@@ -26,14 +26,14 @@
 
 #include "KviPackageFile.h"
 #include "KviLocale.h"
-#include "kvi_msgbox.h"
-#include "kvi_app.h"
-#include "kvi_htmldialog.h"
-#include "kvi_iconmanager.h"
+#include "KviMessageBox.h"
+#include "KviApplication.h"
+#include "KviHtmlDialog.h"
+#include "KviIconManager.h"
 #include "KviMiscUtils.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_theme.h"
-#include "kvi_frame.h"
+#include "KviTheme.h"
+#include "KviMainWindow.h"
 
 
 //#include <qmime.h>
@@ -291,7 +291,7 @@ namespace KviThemeFunctions
 		if(bInstall)
 		{
 			QString szUnpackPath;
-			g_pApp->getLocalKvircDirectory(szUnpackPath,KviApp::Themes);
+			g_pApp->getLocalKvircDirectory(szUnpackPath,KviApplication::Themes);
 			if(!r.unpack(szThemePackageFileName,szUnpackPath))
 			{
 				QString szErr2 = r.lastError();

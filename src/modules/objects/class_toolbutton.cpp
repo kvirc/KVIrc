@@ -28,7 +28,7 @@
 #include "kvi_debug.h"
 
 #include "KviLocale.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviTalPopupMenu.h"
 /*
 	@doc:	toolbutton

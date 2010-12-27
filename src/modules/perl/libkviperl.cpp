@@ -23,12 +23,12 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
-#include "kvi_app.h"
-#include "kvi_options.h"
-#include "kvi_modulemanager.h"
+#include "KviApplication.h"
+#include "KviOptions.h"
+#include "KviModuleManager.h"
 #include "kvi_out.h"
 
 #ifdef COMPILE_PERL_SUPPORT

@@ -34,14 +34,14 @@
 
 	#include "kparts/part.h"
 
-	class KviFrame;
+	class KviMainWindow;
 
 	class KviTermWidget : public QFrame
 	{
 		Q_OBJECT
 		Q_PROPERTY( int KviProperty_ChildFocusOwner READ dummy )
 	public:
-		KviTermWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone = false);
+		KviTermWidget(QWidget * par,KviMainWindow * lpFrm,bool bIsStandalone = false);
 		~KviTermWidget();
 	private:
 		KviTalHBox   * m_pHBox;

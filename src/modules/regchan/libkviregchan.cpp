@@ -23,15 +23,15 @@
 //=============================================================================
 
 // incomplete
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviRegisteredChannel.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
 #include "KviMircCntrl.h"
-#include "kvi_window.h"
+#include "KviWindow.h"
 #include "kvi_debug.h"
 
-// kvi_app.cpp
+// KviApplication.cpp
 extern KVIRC_API KviRegisteredChannelDataBase * g_pRegisteredChannelDataBase;
 
 /*

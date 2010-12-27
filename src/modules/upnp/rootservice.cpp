@@ -35,8 +35,8 @@
 #include "xmlfunctions.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
-#include "kvi_app.h"
-#include "kvi_console.h"
+#include "KviApplication.h"
+#include "KviConsoleWindow.h"
 
 #include <QDebug>
 

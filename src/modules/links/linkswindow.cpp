@@ -25,17 +25,17 @@
 #include "linkswindow.h"
 
 #include "kvi_debug.h"
-#include "kvi_iconmanager.h"
-#include "kvi_ircview.h"
+#include "KviIconManager.h"
+#include "KviIrcView.h"
 #include "kvi_out.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviQString.h"
 #include "kvi_out.h"
 #include "KviMircCntrl.h"
-#include "kvi_themedlabel.h"
-#include "kvi_irccontext.h"
-#include "kvi_ircconnection.h"
+#include "KviThemedLabel.h"
+#include "KviIrcContext.h"
+#include "KviIrcConnection.h"
 #include "KviTalHBox.h"
 
 #include <QToolTip>
@@ -45,7 +45,7 @@
 
 extern KviPointerList<KviLinksWindow> * g_pLinksWindowList;
 
-KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
+KviLinksWindow::KviLinksWindow(KviMainWindow * lpFrm,KviConsole * lpConsole)
 : KviWindow(KVI_WINDOW_TYPE_LINKS,lpFrm,"links",lpConsole), KviExternalServerDataParser()
 {
 	g_pLinksWindowList->append(this);

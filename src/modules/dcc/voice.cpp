@@ -29,17 +29,17 @@
 #include "gsmcodec.h"
 
 #include "kvi_settings.h"
-#include "kvi_iconmanager.h"
-#include "kvi_ircview.h"
+#include "KviIconManager.h"
+#include "KviIrcView.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
 #include "KviError.h"
 #include "KviNetUtils.h"
-#include "kvi_options.h"
-#include "kvi_console.h"
+#include "KviOptions.h"
+#include "KviConsoleWindow.h"
 #include "KviMemory.h"
 #include "kvi_socket.h"
-#include "kvi_ircconnection.h"
+#include "KviIrcConnection.h"
 #include "KviTalVBox.h"
 
 #include <QFrame>
@@ -638,7 +638,7 @@ exit_dcc:
 }
 
 
-KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
+KviDccVoice::KviDccVoice(KviMainWindow *pFrm,KviDccDescriptor * dcc,const char * name)
 : KviDccWindow(KVI_WINDOW_TYPE_DCCVOICE,pFrm,name,dcc)
 {
 	m_pDescriptor = dcc;

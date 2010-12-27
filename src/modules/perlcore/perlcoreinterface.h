@@ -27,7 +27,7 @@
 
 #include "kvi_settings.h"
 #include "KviQString.h"
-#include "kvi_kvs_runtimecontext.h"
+#include "KviKvsRunTimeContext.h"
 
 #include <QStringList>
 

@@ -24,10 +24,10 @@
 //
 //=============================================================================
 
-#include "kvi_filetransfer.h"
+#include "KviFileTransfer.h"
 #include "KviHttpRequest.h"
 #include "KviTimeUtils.h"
-#include "kvi_kvs_variant.h"
+#include "KviKvsVariant.h"
 
 #include <QStringList>
 #include <QTimer>

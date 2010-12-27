@@ -22,15 +22,15 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
+#include "KviModule.h"
 #include "KviSharedFilesManager.h"
 #include "KviIrcMask.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
 #include "KviMircCntrl.h"
-#include "kvi_window.h"
-#include "kvi_frame.h"
+#include "KviWindow.h"
+#include "KviMainWindow.h"
 #include "KviPointerHashTable.h"
 
 #include <time.h>

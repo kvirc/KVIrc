@@ -25,21 +25,21 @@
 #include "managementdialog.h"
 #include "themefunctions.h"
 
-#include "kvi_msgbox.h"
-#include "kvi_module.h"
+#include "KviMessageBox.h"
+#include "KviModule.h"
 #include "KviLocale.h"
 #include "KviQString.h"
 #include "KviParameterList.h"
 #include "KviCommandFormatter.h"
 #include "KviError.h"
 #include "kvi_out.h"
-#include "kvi_iconmanager.h"
+#include "KviIconManager.h"
 #include "KviMircCntrl.h"
 #include "KviConfigurationFile.h"
 #include "kvi_sourcesdate.h"
 #include "KviFileUtils.h"
-#include "kvi_filedialog.h"
-#include "kvi_theme.h"
+#include "KviFileDialog.h"
+#include "KviTheme.h"
 
 #include <QFileInfo>
 #include <QMessageBox>
@@ -99,7 +99,7 @@ static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("package_name",KVS_PT_STRING,0,szThemePackFile)
 	KVSM_PARAMETERS_END(c)
 	QString szDir;
-	g_pApp->getLocalKvircDirectory(szDir,KviApp::Themes);
+	g_pApp->getLocalKvircDirectory(szDir,KviApplication::Themes);
 	szDir += KVI_PATH_SEPARATOR_CHAR;
 	szDir += szThemePackFile;
 	KviThemeInfo * themeInfo = new KviThemeInfo();
@@ -150,7 +150,7 @@ static bool theme_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("package_name",KVS_PT_STRING,0,szThemePackFile)
 	KVSM_PARAMETERS_END(c)
 	QString szDir;
-	g_pApp->getLocalKvircDirectory(szDir,KviApp::Themes);
+	g_pApp->getLocalKvircDirectory(szDir,KviApplication::Themes);
 	szDir += KVI_PATH_SEPARATOR_CHAR;
 	szDir += szThemePackFile;
 	KviThemeInfo * themeInfo = new KviThemeInfo();
@@ -188,7 +188,7 @@ static bool theme_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 static bool theme_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 {
 	QString szDir;
-	g_pApp->getLocalKvircDirectory(szDir,KviApp::Themes);
+	g_pApp->getLocalKvircDirectory(szDir,KviApplication::Themes);
 	QDir d(szDir);
 	QStringList sl = d.entryList(QDir::Dirs);
 	QStringList szThemes;

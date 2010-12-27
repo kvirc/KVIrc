@@ -25,26 +25,26 @@
 #include "listwindow.h"
 
 #include "kvi_debug.h"
-#include "kvi_iconmanager.h"
-#include "kvi_ircview.h"
+#include "KviIconManager.h"
+#include "KviIrcView.h"
 #include "kvi_out.h"
-#include "kvi_options.h"
+#include "KviOptions.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
 #include "KviMircCntrl.h"
-#include "kvi_themedlabel.h"
-#include "kvi_options.h"
-#include "kvi_ircconnection.h"
-#include "kvi_ircconnection.h"
+#include "KviThemedLabel.h"
+#include "KviOptions.h"
+#include "KviIrcConnection.h"
+#include "KviIrcConnection.h"
 #include "KviQString.h"
-#include "kvi_topicw.h"
+#include "KviTopicWidget.h"
 #include "KviConfigurationFile.h"
-#include "kvi_filedialog.h"
-#include "kvi_msgbox.h"
+#include "KviFileDialog.h"
+#include "KviMessageBox.h"
 #include "kvi_fileextensions.h"
 #include "KviTalHBox.h"
-#include "kvi_htmlgenerator.h"
-#include "kvi_themedlineedit.h"
+#include "KviHtmlGenerator.h"
+#include "KviThemedLineEdit.h"
 
 #include <QTimer>
 #include <QPainter>
@@ -157,7 +157,7 @@ void KviChannelTreeWidgetItemDelegate::paint(QPainter * p, const QStyleOptionVie
 	}
 }
 
-KviListWindow::KviListWindow(KviFrame * lpFrm, KviConsole * lpConsole)
+KviListWindow::KviListWindow(KviMainWindow * lpFrm, KviConsole * lpConsole)
 : KviWindow(KVI_WINDOW_TYPE_LIST,lpFrm,"list",lpConsole), KviExternalServerDataParser()
 {
 	g_pListWindowList->append(this);

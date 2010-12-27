@@ -27,9 +27,9 @@
 #include "tc_ktorrentdbusinterface.h"
 #include "tc_statusbarapplet.h"
 
-#include "kvi_module.h"
-#include "kvi_options.h"
-#include "kvi_frame.h"
+#include "KviModule.h"
+#include "KviOptions.h"
+#include "KviMainWindow.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
 
