@@ -1685,16 +1685,16 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 	@description:
 		Splits the <data> string by <separator> and returns an array of substrings.[br]
 		<flags> may be a combination of the characters 's', 'w', 'r' and 'n'.[br]
-		If s is specified, <separator> matching is case sensitive, otherwise is case insensitive.[br]
+		If s is specified, <separator> matching is case sensitive, otherwise it is case insensitive.[br]
 		If w is specified, <separator> is treated as a wildcard-type regular expression
-		(with * and ? wildcars).[br]
+		(with * and ? wildcards).[br]
 		If r is specified, <separator> is treated as a extended-type regular expression
 		(with character classes, special escapes etc..).[br]
-		If both w and r are specified w takes precedence.[br]
-		If none of w and r are specified <separator> is treated as a simple string to be matched.[br]
-		If 'n' is specified then eventual empty fields are discarded.[br]
-		If <maxfield> is specified then at most <maxfields> items are returned in the array (i.e. the last
-		item may be not splitted completly).
+		If both w and r are specified, w takes precedence.[br]
+		If neither w and r are specified <separator> is treated as a simple string to be matched.[br]
+		If 'n' is specified then any resulting empty fields are discarded.[br]
+		If <maxfield> is specified, then at most <maxfields> items are returned in the array (i.e. the last
+		item may be not completely split).
 	@examples:
 		[example]
 			[comment]# Split the fields[/comment]
@@ -1714,7 +1714,7 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 			%Test[] = $str.split("Y*H","hihiYeaHhohohoyeahYepYEAHhi",sw)
 			echo %Test[]
 		[/example]
-		If used in "non-array" context it returns just a comma separated list of substrings:[br]
+		If used outside of an array context, a comma-separated list of substrings is returned:[br]
 		[example]
 			[cmd]echo[/cmd] $str.split("[ ]*","Condense spaces and change &nbsp; &nbsp; all &nbsp; &nbsp; &nbsp; it in commas",r)
 		[/example]

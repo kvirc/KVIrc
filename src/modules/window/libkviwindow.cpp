@@ -609,15 +609,15 @@ static bool window_kvs_fnc_hasUserFocus(KviKvsModuleFunctionCall * c)
 	@title:
 		$window.console
 	@short:
-		Returns the console that a window is attacched to
+		Returns the console that a window is attached to
 	@syntax:
 		$window.console
 		$window.console(<window_id>)
 	@description:
-		Returns the id of the console window that the window specified by window_id is attacched to.
+		Returns the id of the console window that the window specified by window_id is attached to.
 		The console is the main (and only) console of the IRC context. If window_id is missing then
 		the current window is used. If this window does not belong to an irc context (and thus has
-		no attacched console) then 0 is returned.
+		no attached console) then 0 is returned.
 	@seealso:
 */
 
@@ -1117,7 +1117,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 		If <caption> is given then the new window will have it as the initial plain text <caption>.
 		You can change the caption later by calling [cmd]window.setWindowTitle[/cmd].[br]
 		If <irc_context> is given then the new window is bound to the specified irc context
-		and will be destroyed when the attacched console closes.
+		and will be destroyed when the attached console closes.
 		If <irc_context> is omitted or is 0 then the window will be context free (not bound
 		to any context) and will exist until it is closed by the GUI, by a [cmd]window.close[/cmd]
 		call or until KVIrc terminates. When <irc_context> is given but is not valid

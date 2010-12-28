@@ -464,7 +464,7 @@ static bool context_kvs_fnc_state(KviKvsModuleFunctionCall * c)
 		Print the names of the currently connected servers
 		[example]
 			foreach(%ic,$context.list)
-				echo "IRC Context" %ic ": " $context.serverHostName
+				echo "IRC Context" %ic ": " $context.serverHostName(%ic)
 		[/example]
 */
 

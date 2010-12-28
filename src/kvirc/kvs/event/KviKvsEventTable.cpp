@@ -1482,7 +1482,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Channel
 		@description:
 			Triggered just after a non-local user has joined a channel.[br]
-			Sine this event is triggered in the chanel window,
+			Since this event is triggered in the channel window,
 			you can get the channel name by using the [fnc]$target[/fnc] function.[br]
 			Calling 'halt' in this event will stop the join message output.[br]
 		@seealso:
@@ -1507,7 +1507,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Channel
 		@description:
 			Triggered just after the local user has joined a channel.[br]
-			Sine this event is triggered in the chanel window,
+			Since this event is triggered in the channel window,
 			you can get the channel name by using the [fnc]$target[/fnc] function.[br]
 			Calling 'halt' in this event will stop the join message output.[br]
 		@seealso:
@@ -1538,7 +1538,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			this event, thus the handler is called effectively just BEFORE the
 			user effectively leaves the channel (and thus BEFORE the user-related channel data gets
 			destroyed).[br]
-			Since this event is triggered in the chanel window,
+			Since this event is triggered in the channel window,
 			you can get the channel name by using the [fnc]$target[/fnc] function.[br]
 			Calling 'halt' in this event will stop the part message output.[br]
 		@seealso:
@@ -1571,7 +1571,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			this event, thus the handler is called effectively just BEFORE the
 			user effectively leaves the channel (and thus BEFORE the channel window gets
 			destroyed).[br]
-			Sine this event is triggered in the chanel window,
+			Since this event is triggered in the channel window,
 			you can get the channel name by using the [fnc]$target[/fnc] function.[br]
 			Calling 'halt' in this event will stop the part message output.[br]
 		@seealso:
@@ -1604,7 +1604,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			On the other side, it might be useful to access the user-related channel data from
 			this event, thus the handler is called effectively just BEFORE the
 			user is effectively removed from the channel internal structures.[br]
-			Sine this event is triggered in the chanel window,
+			Since this event is triggered in the channel window,
 			you can get the channel name by using the [fnc]$target[/fnc] function.[br]
 			Calling 'halt' in this event will stop the kick message output.[br]
 		@seealso:
@@ -1640,7 +1640,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			this event, thus the handler is called effectively just BEFORE the
 			user is effectively removed from the channel internal structures
 			(and thus BEFORE the channel data itself gets destroyed).[br]
-			Sine this event is triggered in the chanel window,
+			Since this event is triggered in the channel window,
 			you can get the channel name by using the [fnc]$target[/fnc] function.[br]
 			Calling 'halt' in this event will stop the kick message output.[br]
 		@seealso:
@@ -1673,7 +1673,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			so you can still access the old topic by the channel functions.[br]
 			The new topic is passed as fourth parameter and will effectively
 			become the current topic just after this event handler has been executed.[br]
-			Sine this event is triggered in the chanel window,
+			Since this event is triggered in the channel window,
 			you can get the channel name by using the [fnc]$target[/fnc] function.[br]
 			Calling 'halt' in this event will stop the topic message output.[br]
 		@seealso:

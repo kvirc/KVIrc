@@ -768,18 +768,17 @@ namespace KviKvsCoreFunctions
 			If no context matches the server and nickname, and invalid
 			[b]IRC context ID[/b] is returned (0).[br]
 			If <server> is an empty string, the first context that matches
-			the specified nickname is returned. If <nickname> is an empty string
+			the specified nickname is returned. If <nickname> is an empty string, 
 			the first context that uses the specified server is returned.
 			If both parameters are missing this function returns the
 			id of the current IRC context, or '0' if the
-			window in that this call is executed is not bound to any IRC context.
+			window that this call is executed in is not bound to any IRC context.
 			Please note that in this last case you may find an [b]IRC context[/b]
 			that is 'not connected'.
 			This can only happen if the current window is a console that is
-			in "idle" state, with no connection established yet.[br]
+			in the "idle" state, with no connection established yet.[br]
 			It is a good idea to take a look at the
 			[doc:window_naming_conventions]window naming conventions[/doc].
-			This identifier is equivalent to [fnc]$ic[/fnc].[br]
 		@seealso:
 			[fnc]$window.context[/fnc]
 	*/
