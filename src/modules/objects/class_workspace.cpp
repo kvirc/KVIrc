@@ -49,6 +49,10 @@
 	@description:
 		This widget provides a workspace window that can contain decorated window.
 	@functions:
+		!fn: $addSubWindow(<widget>)
+		Adds a widget as a subwindow of this workspace.
+		!fn: $removeSubWindow(<widget>)
+		Removes a subwindow from this this workspace.
 		!fn: <object> $activeWindow()
 		Returns the active window, or 0 if no window is active.
 		!fn: <boolean> $scrollBarsEnabled()

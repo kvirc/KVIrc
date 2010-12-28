@@ -589,6 +589,7 @@ void saveUrlList()
 	QString urllist;
 	g_pApp->getLocalKvircDirectory(urllist,KviApplication::ConfigPlugins);
 	urllist += g_pUrlListFilename;
+	qDebug("%s",urllist.toUtf8().data());
 	QFile file;
 	file.setFileName(urllist);
 	file.open(QIODevice::WriteOnly);
