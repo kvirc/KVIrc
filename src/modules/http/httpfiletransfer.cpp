@@ -128,7 +128,8 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 				case Success: offset = 96; break;
 				case Failure: offset = 144; break;
 			}
-			p->drawPixmap(rect.left() + 3, rect.top() + 3,*g_pHttpIcon,offset,0,48,64);
+			if(g_pHttpIcon)
+				p->drawPixmap(rect.left() + 3, rect.top() + 3,*g_pHttpIcon,offset,0,48,64);
 		}
 		break;
 		case COLUMN_FILEINFO:
@@ -335,9 +336,11 @@ void KviHttpFileTransfer::init()
 	g_pHttpFileTransfers = new KviPointerList<KviHttpFileTransfer>;
 	g_pHttpFileTransfers->setAutoDelete(false);
 
-	QPixmap * pix = g_pIconManager->getImage("KviHttpRequesticons.png", false);
-	if(pix)g_pHttpIcon = new QPixmap(*pix);
-	else g_pHttpIcon = 0;
+	QPixmap * pix = g_pIconManager->getImage("kvi_httpicons.png", false);
+	if(pix)
+		g_pHttpIcon = new QPixmap(*pix);
+	else
+		g_pHttpIcon = 0;
 }
 
 void KviHttpFileTransfer::done()
@@ -347,8 +350,11 @@ void KviHttpFileTransfer::done()
 		delete t;
 	delete g_pHttpFileTransfers;
 	g_pHttpFileTransfers = 0;
-	delete g_pHttpIcon;
-	g_pHttpIcon = 0;
+	if(g_pHttpIcon)
+	{
+		delete g_pHttpIcon;
+		g_pHttpIcon = 0;
+	}
 }
 
 unsigned int KviHttpFileTransfer::runningTransfers()
