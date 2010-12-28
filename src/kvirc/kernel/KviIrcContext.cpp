@@ -924,3 +924,4 @@ void KviIrcContext::timerEvent(QTimerEvent * e)
 	if(m_pConnection)
 		m_pConnection->heartbeat(tNow);
 }
+

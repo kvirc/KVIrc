@@ -28,7 +28,6 @@
 
 #include "KviChannelWindow.h"
 #include "KviIrcView.h"
-#include "kvi_hstrEqualCIN.h"
 #include "KviIrcView_private.h"
 #include "KviKvsEventTriggers.h"
 #include "KviMemory.h"
@@ -40,20 +39,19 @@
 #include "KviWindow.h"
 
 #include <QDateTime>
+#include <QChar>
 
-// FIXME: Get rid of this!!!!!!!!!
-#define WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
-
-#define _WSTRING_WMEMCPY(_dst,_src,_len) KviMemory::copy((void *)(_dst),(const void *)(_src),sizeof(kvi_wchar_t) * (_len))
+#define WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR 1
 
 void kvi_appendWCharToQStringWithLength(QString * qstrptr,const kvi_wchar_t * ptr,kvi_wslen_t len)
 {
+	KVI_ASSERT(qstrptr);
 	kvi_wslen_t oldLen = qstrptr->length();
 	qstrptr->resize(oldLen + len);
 	#ifdef WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
-		_WSTRING_WMEMCPY(qstrptr->unicode() + oldLen,ptr,len);
+		KviMemory::copy((void *)(qstrptr->unicode() + oldLen),ptr,sizeof(kvi_wchar_t) * len);
 	#else // !WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
-		QChar * c = (qstrptr->unicode() + oldLen);
+		QChar * c = (QChar *)(qstrptr->unicode() + oldLen);
 		while(*ptr)
 		{
 			c->unicode() = *ptr;
@@ -137,6 +135,26 @@ static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
 	
 	return p;
 }
+
+static inline bool url_compare_helper(const kvi_wchar_t * pData1,const kvi_wchar_t * pData2,int iData2Len)
+{
+	KVI_ASSERT(pData1);
+	KVI_ASSERT(pData2);
+
+	// pData1 is null-terminated and may be shorter than pData2
+	// pData2 is NOT null terminated and is lower case
+
+	while(iData2Len)
+	{
+		if(!*pData1)
+			return false; // not equal
+		if(QChar::toLower(*pData1) != *pData2)
+			return false; // not equal
+		iData2Len--;
+	}
+	return true; // all equal up to iData2Len
+}
+
 
 const kvi_wchar_t * KviIrcView::getTextLine(
 		int iMsgType,
@@ -726,7 +744,10 @@ check_http_url:
 			 * character and try to match the complete url protocol tag
 	 		 */
 			p--;
-			if(kvi_hstrEqualCIN(p,"http://",7))
+
+			static kvi_wchar_t aHttpUrl[] = { 'h', 't', 't', 'p', ':', '/', '/' };
+
+			if(url_compare_helper(p,aHttpUrl,7))
 			{
 				partLen = 7;
 				/*
@@ -734,7 +755,10 @@ check_http_url:
 				*/
 				goto got_url;
 			}
-			if(kvi_hstrEqualCIN(p,"https://",8))
+
+			static kvi_wchar_t aHttpsUrl[] = { 'h', 't', 't', 'p', 's', ':', '/', '/' };
+
+			if(url_compare_helper(p,aHttpsUrl,8))
 			{
 				partLen = 8;
 				goto got_url;
@@ -756,7 +780,10 @@ check_file_or_ftp_url:
 		if((*p == 'i') || (*p == 'I'))
 		{
 			p--;
-			if(kvi_hstrEqualCIN(p,"file://",7))
+
+			static kvi_wchar_t aFileUrl[] = { 'f', 'i', 'l', 'e', ':', '/', '/' };
+
+			if(url_compare_helper(p,aFileUrl,7))
 			{
 				partLen = 7;
 				goto got_url;
@@ -765,12 +792,18 @@ check_file_or_ftp_url:
 		} else if((*p == 't') || (*p == 'T'))
 		{
 			p--;
-			if(kvi_hstrEqualCIN(p,"ftp://",6))
+
+			static kvi_wchar_t aFtp1Url[] = { 'f', 't', 'p', ':', '/', '/' };
+
+			if(url_compare_helper(p,aFtp1Url,6))
 			{
 				partLen = 6;
 				goto got_url;
 			}
-			if(kvi_hstrEqualCIN(p,"ftp.",4))
+
+			static kvi_wchar_t aFtp2Url[] = { 'f', 't', 'p', '.' };
+
+			if(url_compare_helper(p,aFtp2Url,4))
 			{
 				partLen = 4;
 				goto got_url;
@@ -791,7 +824,10 @@ check_e2k_url:
 		if((*p == 'd') || (*p == 'D'))
 		{
 			p--;
-			if(kvi_hstrEqualCIN(p,"ed2k://",7))
+
+			static kvi_wchar_t aEd2kUrl[] = { 'e', 'd', '2', 'k', ':', '/', '/' };
+
+			if(url_compare_helper(p,aEd2kUrl,7))
 			{
 				partLen = 7;
 				goto got_url;
@@ -812,7 +848,10 @@ check_www_url:
 		if((*p == 'w') || (*p == 'W'))
 		{
 			p--;
-			if(kvi_hstrEqualCIN(p,"www.",4))
+
+			static kvi_wchar_t aWwwUrl[] = { 'w', 'w', 'w', '.' };
+
+			if(url_compare_helper(p,aWwwUrl,4))
 			{
 				partLen = 4;
 				goto got_url;
@@ -833,22 +872,34 @@ check_irc_url:
 		if((*p == 'r') || (*p == 'R'))
 		{
 			p--;
-			if(kvi_hstrEqualCIN(p,"irc://",6))
+
+			static kvi_wchar_t aIrcUrl[] = { 'i', 'r', 'c', ':', '/', '/' };
+
+			if(url_compare_helper(p,aIrcUrl,6))
 			{
 				partLen = 6;
 				goto got_url;
 			}
-			if(kvi_hstrEqualCIN(p,"irc6://",7))
+
+			static kvi_wchar_t aIrc6Url[] = { 'i', 'r', 'c', '6', ':', '/', '/' };
+
+			if(url_compare_helper(p,aIrc6Url,7))
 			{
 				partLen = 7;
 				goto got_url;
 			}
-			if(kvi_hstrEqualCIN(p,"ircs://",7))
+
+			static kvi_wchar_t aIrcsUrl[] = { 'i', 'r', 'c', 's', ':', '/', '/' };
+
+			if(url_compare_helper(p,aIrcsUrl,7))
 			{
 				partLen = 7;
 				goto got_url;
 			}
-			if(kvi_hstrEqualCIN(p,"ircs6://",8))
+
+			static kvi_wchar_t aIrcs6Url[] = { 'i', 'r', 'c', 's', '6', ':', '/', '/' };
+
+			if(url_compare_helper(p,aIrcs6Url,8))
 			{
 				partLen = 8;
 				goto got_url;
@@ -869,7 +920,10 @@ check_mailto_url:
 		if((*p == 'a') || (*p == 'A'))
 		{
 			p--;
-			if(kvi_hstrEqualCIN(p,"mailto:",7))
+
+			static kvi_wchar_t aMailtoUrl[] = { 'm', 'a', 'i', 'l', 't', 'o', ':' };
+
+			if(url_compare_helper(p,aMailtoUrl,7))
 			{
 				partLen = 7;
 				goto got_url;
