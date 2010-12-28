@@ -4,7 +4,23 @@ https://svn.kvirc.de/kvirc/timeline
 
 December 2010
    [Pragma]
-   - Reorganized the whole code in subdirs, renamed files, ...
+   - Reorganized the whole code in subdirs, renamed files, removed very old code, ...
+   - Added context.clearQueue
+   - Added the new "autojoin this channel" feature
+   [CtrlAltCa]
+   - Added $listtimers function
+   - Improved ignore alias
+   - Improved support for some RAW events
+   - Reworked the text encoding menu
+
+November 2010
+   [Pragma]
+   - Tweaked the IPC code
+   - Reworked the undo/redo implementation
+   [CtrlAltCa]
+   - Added $window.isDocked and window.savePropertiesAsDefault, removed some hardcoded
+     functionality to a new GUI popup
+   - Added support for Vlc and Totem mediaplayer
 
 October 2010
    [HelLViS69]
