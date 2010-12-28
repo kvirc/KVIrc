@@ -184,6 +184,9 @@ static bool popup_kvs_cmd_addItem(KviKvsModuleCallbackCommandCall * c)
 		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
 		<command> will be executed just before the popup is filled at [cmd]popup.show[/cmd] command call.
 		<command> can be a simple instruction or an instruction block delimited by curly brackets.[br]
+		WARNING: Please note that some instructions are not allowed here, an can potentially make kvirc
+		crash. You tipically don't want to delete the popup that's running (calling [cmd]popup.clear[/cmd] or
+		[cmd]popup.destroy[/cmd]) or create an infinite loop (calling [cmd]popup.addPrologue[/cmd])
 	@seealso:
 		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.addEpilogue[/cmd]
 */
@@ -229,6 +232,9 @@ static bool popup_kvs_cmd_addPrologue(KviKvsModuleCallbackCommandCall * c)
 		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
 		<command> will be executed just after the popup is filled at [cmd]popup.show[/cmd] command call.
 		<command> can be a simple instruction or an instruction block delimited by curly brackets.[br]
+		WARNING: Please note that some instructions are not allowed here, an can potentially make kvirc
+		crash. You tipically don't want to delete the popup that's running (calling [cmd]popup.clear[/cmd] or
+		[cmd]popup.destroy[/cmd]) or create an infinite loop (calling [cmd]popup.addEpilogue[/cmd])
 	@seealso:
 		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.addPrologue[/cmd]
 */
@@ -692,6 +698,60 @@ static bool popup_kvs_fnc_isEmpty(KviKvsModuleFunctionCall * c)
 }
 
 /*
+	@doc: popup.currentItemId
+	@type:
+		function
+	@title:
+		$popup.currentItemId
+	@syntax:
+		$popup.currentItemId()
+	@short:
+		Returns the current id popup
+	@description:
+		When called inside a popup item's callback, this functions returns the id of that popup item.
+		This function returns $null when called outside a popup item's callback.
+	@examples:
+		[example]
+			#clean any previous popup by the same name
+			setmenu test
+			popup.clear test
+			popup.destroy test
+			#create the popup
+			popup.create test
+			popup.addPrologue(test)
+			{
+				# loop ten times
+				foreach(%i,0,1,2,3,4,5,6,7,8,9)
+				{
+					# delete previous created item to avoid duplication
+					popup.delItem test %i
+					# create a test item using %i as its "item id"
+					popup.addItem(test, item%i, , %i)
+					{
+						#get back "item id" inside the callback
+						debug "chosen item $popup.currentItemId()";
+					}
+				}
+			}
+			setmenu test test
+		[/example]
+	@seealso:
+		[cmd]popup.show[/cmd], [cmd]popup.addItem[/cmd]
+*/
+
+static bool popup_kvs_fnc_currentItemId(KviKvsModuleFunctionCall * c)
+{
+	QString * pPopupId = c->context()->popupId();
+	if(pPopupId)
+	{
+		c->returnValue()->setString(pPopupId);
+	} else {
+		c->returnValue()->setNothing();
+	}
+	return true;
+}
+
+/*
 	@doc: popup.show
 	@type:
 		command
@@ -794,6 +854,8 @@ static bool popup_module_init(KviModule *m)
 
 	KVSM_REGISTER_FUNCTION(m,"exists",popup_kvs_fnc_exists);
 	KVSM_REGISTER_FUNCTION(m,"isEmpty",popup_kvs_fnc_isEmpty);
+	KVSM_REGISTER_FUNCTION(m,"currentItemId",popup_kvs_fnc_currentItemId);
+
 	return true;
 }
 

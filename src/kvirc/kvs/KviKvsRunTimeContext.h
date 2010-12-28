@@ -49,6 +49,7 @@ protected:
 	KviKvsObject     * m_pThisObject;             // the current object for object function calls
 	QString          * m_pScriptFilePath;         // the current script file path, shallow, may be 0
 	bool               m_bAutoDelete;
+	QString          * m_pPopupId;
 public:
 	// all shallow data, all may be 0
 	KviKvsExtendedRunTimeData()
@@ -56,35 +57,40 @@ public:
 		m_pAliasSwitchList(0),
 		m_pThisObject(0),
 		m_pScriptFilePath(0),
-		m_bAutoDelete(FALSE)
+		m_bAutoDelete(FALSE),
+		m_pPopupId(0)
 		{};
 	KviKvsExtendedRunTimeData(KviKvsHash * pExtScopeVariables,bool autoDelete=FALSE)
 		: m_pExtendedScopeVariables(pExtScopeVariables),
 		m_pAliasSwitchList(0),
 		m_pThisObject(0),
 		m_pScriptFilePath(0),
-		m_bAutoDelete(autoDelete)
+		m_bAutoDelete(autoDelete),
+		m_pPopupId(0)
 		{};
 	KviKvsExtendedRunTimeData(KviKvsSwitchList * pAliasSwitchList,bool autoDelete=FALSE)
 		: m_pExtendedScopeVariables(0),
 		m_pAliasSwitchList(pAliasSwitchList),
 		m_pThisObject(0),
 		m_pScriptFilePath(0),
-		m_bAutoDelete(autoDelete)
+		m_bAutoDelete(autoDelete),
+		m_pPopupId(0)
 		{};
 	KviKvsExtendedRunTimeData(KviKvsObject * pThisObject,bool autoDelete=FALSE)
 		: m_pExtendedScopeVariables(0),
 		m_pAliasSwitchList(0),
 		m_pThisObject(pThisObject),
 		m_pScriptFilePath(0),
-		m_bAutoDelete(autoDelete)
+		m_bAutoDelete(autoDelete),
+		m_pPopupId(0)
 		{};
 	KviKvsExtendedRunTimeData(QString * pScriptFilePath,bool autoDelete=FALSE)
 		: m_pExtendedScopeVariables(0),
 		m_pAliasSwitchList(0),
 		m_pThisObject(0),
 		m_pScriptFilePath(pScriptFilePath),
-		m_bAutoDelete(autoDelete)
+		m_bAutoDelete(autoDelete),
+		m_pPopupId(0)
 		{};
 	~KviKvsExtendedRunTimeData();
 public:
@@ -92,6 +98,8 @@ public:
 	KviKvsSwitchList * aliasSwitchList(){ return m_pAliasSwitchList; };
 	KviKvsObject * thisObject(){ return m_pThisObject; };
 	QString * scriptFilePath(){ return m_pScriptFilePath; };
+	QString * popupId(){ return m_pPopupId; };
+	void setPopupId(QString * pPopupId);
 };
 
 
@@ -173,6 +181,8 @@ public:
 		{ return m_pExtendedData ? m_pExtendedData->thisObject() : 0; };
 	QString * scriptFilePath()
 		{ return m_pExtendedData ? m_pExtendedData->scriptFilePath() : 0; };
+	QString * popupId()
+		{ return m_pExtendedData ? m_pExtendedData->popupId() : 0; };
 
 	// this MUST be called before any blocking call that might return to the main event loop
 	// and eventually quit kvirc or close the window that this command is associated to

@@ -821,14 +821,12 @@ void KviKvsPopupMenu::setupMenuContents()
 		return;
 	}
 
-
-	lock(true);
-
-
 	if(!g_pApp->windowExists(d->window()))d->setWindow(g_pApp->activeConsole());
 
 	if(!d->testMode())
 		executePrologues(d);
+
+	lock(true);
 
 	// Fill this menu contents
 	int idx = 0;
@@ -838,10 +836,10 @@ void KviKvsPopupMenu::setupMenuContents()
 		++idx;
 	}
 
+	lock(false);
+
 	if(!d->testMode())
 		executeEpilogues(d);
-
-	lock(false);
 
 }
 
@@ -894,6 +892,8 @@ void KviKvsPopupMenu::itemClicked(int itemId)
 				// FIXME: we could avoid locking since scripts can be shared now!
 				// see KviKvsTimerManager implementation
 				lock(true);
+				if(d->extendedRunTimeData())
+					d->extendedRunTimeData()->setPopupId(new QString(it->name()));
 				((KviKvsPopupMenuItemItem *)it)->kvsCode()->run(
 						d->window(),
 						d->parameters(),

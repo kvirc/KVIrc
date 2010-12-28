@@ -40,8 +40,16 @@ KviKvsExtendedRunTimeData::~KviKvsExtendedRunTimeData()
 		if(m_pAliasSwitchList) delete m_pAliasSwitchList;
 		if(m_pThisObject) delete m_pThisObject;
 		if(m_pScriptFilePath) delete m_pScriptFilePath;
+		// don't delete m_pPopupId;
 	}
 }
+
+void KviKvsExtendedRunTimeData::setPopupId(QString * pPopupId)
+{
+/*	if(m_pPopupId)
+		delete m_pPopupId;*/
+	m_pPopupId=pPopupId;
+};
 
 KviKvsRunTimeContext::KviKvsRunTimeContext(KviKvsScript * pScript,KviWindow * pWnd,KviKvsVariantList * pParams,KviKvsVariant * pRetVal,KviKvsExtendedRunTimeData * pExtData)
 {
