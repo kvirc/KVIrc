@@ -151,6 +151,8 @@ static inline bool url_compare_helper(const kvi_wchar_t * pData1,const kvi_wchar
 		if(QChar::toLower(*pData1) != *pData2)
 			return false; // not equal
 		iData2Len--;
+		pData1++;
+		pData2++;
 	}
 	return true; // all equal up to iData2Len
 }
@@ -904,6 +906,7 @@ check_irc_url:
 				partLen = 8;
 				goto got_url;
 			}
+			
 			p++;
 		}
 	}
