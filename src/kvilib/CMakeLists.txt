@@ -64,6 +64,7 @@ SET(kvilib_SRCS
 	ext/KviCommandFormatter.cpp
 	ext/KviConfigurationFile.cpp
 	ext/KviCryptEngine.cpp
+	ext/KviCryptEngineManager.cpp
 	ext/KviDataBuffer.cpp
 	ext/KviDbusAdaptor.cpp
 	ext/KviDebugContext.cpp

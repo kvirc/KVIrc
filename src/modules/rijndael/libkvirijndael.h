@@ -26,6 +26,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
+#include "KviCString.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 

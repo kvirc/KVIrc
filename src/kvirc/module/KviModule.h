@@ -37,6 +37,8 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "KviCryptEngine.h"
+	#include "KviCryptEngineDescription.h"
+	#include "KviCryptEngineManager.h"
 #endif
 
 

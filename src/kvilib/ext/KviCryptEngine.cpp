@@ -25,6 +25,7 @@
 
 #include "KviCryptEngine.h"
 #include "KviLocale.h"
+#include "KviCString.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include "KviMemory.h"
@@ -183,63 +184,6 @@
 	{
 //		qDebug("Pure virtual KviCryptEngine::decrypt() called");
 		return DecryptError;
-	}
-
-
-	KviCryptEngineManager::KviCryptEngineManager()
-	{
-		m_pEngineDict = new KviPointerHashTable<QString,KviCryptEngineDescription>;
-		m_pEngineDict->setAutoDelete(true);
-	}
-
-	KviCryptEngineManager::~KviCryptEngineManager()
-	{
-		delete m_pEngineDict;
-	}
-
-	void KviCryptEngineManager::registerEngine(KviCryptEngineDescription * pDesc)
-	{
-		m_pEngineDict->replace(pDesc->m_szName,pDesc);
-	}
-
-	void KviCryptEngineManager::unregisterEngine(const QString & szName)
-	{
-		m_pEngineDict->remove(szName);
-	}
-
-	void KviCryptEngineManager::unregisterEngines(void * providerHandle)
-	{
-		KviPointerList<QString> lEnginesToRemove;
-		lEnginesToRemove.setAutoDelete(true);
-
-		for(KviPointerHashTableEntry<QString,KviCryptEngineDescription> * pDesc = m_pEngineDict->firstEntry();pDesc;pDesc = m_pEngineDict->nextEntry())
-		{
-			if(pDesc->data()->m_providerHandle == providerHandle)
-				lEnginesToRemove.append(new QString(pDesc->key()));
-		}
-
-		for(QString * pszEngineName = lEnginesToRemove.first();pszEngineName;pszEngineName = lEnginesToRemove.next())
-			m_pEngineDict->remove(*pszEngineName);
-	}
-
-	KviCryptEngine * KviCryptEngineManager::allocateEngine(const QString & szName)
-	{
-		KviCryptEngineDescription * pDesc =  m_pEngineDict->find(szName);
-		if(!pDesc)
-			return 0;
-		KviCryptEngine * pEngine = pDesc->m_allocFunc();
-		if(!pEngine)
-			return 0;
-		pEngine->m_deallocFunc = pDesc->m_deallocFunc; // remember the dealloc func from now on
-		return pEngine;
-	}
-
-	void KviCryptEngineManager::deallocateEngine(KviCryptEngine * pEngine)
-	{
-		if(!pEngine)
-			return;
-		crypt_engine_deallocator_func deallocFunc = pEngine->m_deallocFunc;
-		deallocFunc(pEngine);
 	}
 
 #endif //COMPILE_CRYPT_SUPPORT

@@ -1,5 +1,5 @@
-#ifndef _KVI_CRYPT_H_
-#define _KVI_CRYPT_H_
+#ifndef _KVI_CRYPT_ENGINE_H_
+#define _KVI_CRYPT_ENGINE_H_
 
 //=============================================================================
 //
@@ -37,12 +37,11 @@
 //
 
 
-#include "KviQString.h"
-#include "KviCString.h"
 #include "KviHeapObject.h"
-#include "KviPointerHashTable.h"
 
 #include <QObject>
+
+class KviCString;
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	class KviCryptEngine;
@@ -59,6 +58,26 @@
 		Q_OBJECT
 		friend class KviCryptEngineManager;
 	public:
+		enum EngineFlag {
+			CanEncrypt     = 1,
+			CanDecrypt     = 2,
+			WantEncryptKey = 4,
+			WantDecryptKey = 8
+		};
+		
+		enum EncryptResult {
+			Encrypted,
+			Encoded,
+			EncryptError
+		};
+		
+		enum DecryptResult {
+			DecryptOkWasEncrypted,
+			DecryptOkWasEncoded,
+			DecryptOkWasPlainText,
+			DecryptError
+		};
+
 		KviCryptEngine();
 		virtual ~KviCryptEngine();
 
@@ -85,7 +104,6 @@
 		// Theoretically we could allow NULLs in plainText
 		// but this is not the case of KVIrc.
 		//
-		enum EncryptResult { Encrypted, Encoded, EncryptError };
 		virtual EncryptResult encrypt(const char * plainText,KviCString &outBuffer);
 		//
 		// Decrypts the utf8 data in inBuffer and puts the decrypted utf8
@@ -94,14 +112,13 @@
 		// follows the same rules.
 		// Should return false in case of error.
 		//
-		enum DecryptResult { DecryptOkWasEncrypted, DecryptOkWasEncoded, DecryptOkWasPlainText, DecryptError };
 		virtual DecryptResult decrypt(const char * inBuffer,KviCString &plainText);
 		//
 		// Returns the string containing the description
 		// of the last error or an empty string if there
 		// was no error after the last init() call.
 		//
-		const QString &lastError(){ return m_szLastError; };
+		const QString & lastError(){ return m_szLastError; };
 	protected:
 		//
 		// The following two should have clear meaning
@@ -111,50 +128,4 @@
 #endif //COMPILE_CRYPT_SUPPORT
 	};
 
-#ifdef COMPILE_CRYPT_SUPPORT
-	#define KVI_CRYPTENGINE_CAN_ENCRYPT 1
-	#define KVI_CRYPTENGINE_CAN_DECRYPT 2
-	#define KVI_CRYPTENGINE_WANT_ENCRYPT_KEY 4
-	#define KVI_CRYPTENGINE_WANT_DECRYPT_KEY 8
-
-	class KVILIB_API KviCryptEngineDescription : public KviHeapObject
-	{
-	public:
-		KviCryptEngineDescription(){};
-		virtual ~KviCryptEngineDescription(){};
-	public:
-		QString                       m_szName;           // engine name
-		QString                       m_szDescription;    // details
-		QString                       m_szAuthor;         // algorithm author
-		int                           m_iFlags;           // properties
-		crypt_engine_allocator_func   m_allocFunc;        // engine allocator
-		crypt_engine_deallocator_func m_deallocFunc;      // deallocation function (if called from outside the origin module)
-		void                        * m_providerHandle;   // used to identify the provider module
-	};
-
-
-	class KVILIB_API KviCryptEngineManager
-	{
-	public:
-		KviCryptEngineManager();
-		virtual ~KviCryptEngineManager();
-	private:
-		KviPointerHashTable<QString,KviCryptEngineDescription> * m_pEngineDict;
-	public:
-		const KviPointerHashTable<QString,KviCryptEngineDescription> * engineDict(){ return m_pEngineDict; };
-		void registerEngine(KviCryptEngineDescription * d);
-		void unregisterEngine(const QString &szName);
-		void unregisterEngines(void * providerHandle);
-		//
-		// Allocates a crypt engine
-		// Please note that the engine may be deleted from outside
-		// so you'd better connect the "destroyed" signal
-		//
-		KviCryptEngine * allocateEngine(const QString &szName);
-		void deallocateEngine(KviCryptEngine * e);
-	};
-
-#endif //COMPILE_CRYPT_SUPPORT
-
-
-#endif //!_KVI_CRYPT_H_
+#endif // _KVI_CRYPT_ENGINE_H_

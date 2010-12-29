@@ -122,7 +122,7 @@ static bool rot13_module_init(KviModule * m)
 	d->m_szName = "ROT13";
 	d->m_szAuthor = "Aeriana";
 	d->m_szDescription = __tr2qs("The simple Caesar-cypher encryption that replaces each letter with the one 13 places forward or back along the alphabet; it is used to enclose the text in a sealed wrapper that the reader must choose to open - e.g. for posting things that might offend some readers, or spoilers.");
-	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT;
+	d->m_iFlags = KviCryptEngine::CanEncrypt;
 	d->m_allocFunc = allocRot13Engine;
 	d->m_deallocFunc = deallocRot13Engine;
 	m->registerCryptEngine(d);

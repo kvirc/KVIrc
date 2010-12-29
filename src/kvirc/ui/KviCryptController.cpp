@@ -192,19 +192,19 @@
 			szDesc += "<br><br>";
 			szDesc += __tr2qs("If you don't want to encrypt a particular text line then just start it with the CTRL+P prefix");
 			m_pDescriptionLabel->setText(szDesc);
-			m_pEnableEncrypt->setEnabled(pEngine->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT);
-			m_pEncryptKeyLabel->setEnabled((pEngine->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT) &&
-				(pEngine->m_iFlags & KVI_CRYPTENGINE_WANT_ENCRYPT_KEY));
-			m_pEncryptKeyEdit->setEnabled((pEngine->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT) &&
-				(pEngine->m_iFlags & KVI_CRYPTENGINE_WANT_ENCRYPT_KEY));
+			m_pEnableEncrypt->setEnabled(pEngine->m_iFlags & KviCryptEngine::CanEncrypt);
+			m_pEncryptKeyLabel->setEnabled((pEngine->m_iFlags & KviCryptEngine::CanEncrypt) &&
+				(pEngine->m_iFlags & KviCryptEngine::WantEncryptKey));
+			m_pEncryptKeyEdit->setEnabled((pEngine->m_iFlags & KviCryptEngine::CanEncrypt) &&
+				(pEngine->m_iFlags & KviCryptEngine::WantEncryptKey));
 			m_pEnableEncrypt->setChecked(m_pEncryptKeyEdit->isEnabled());
-			m_pEnableDecrypt->setEnabled(pEngine->m_iFlags & KVI_CRYPTENGINE_CAN_DECRYPT);
+			m_pEnableDecrypt->setEnabled(pEngine->m_iFlags & KviCryptEngine::CanDecrypt);
 			m_pEncryptHexKeyCheck->setEnabled(m_pEncryptKeyEdit->isEnabled());
 			m_pEncryptHexKeyCheck->setChecked(false);
-			m_pDecryptKeyLabel->setEnabled((pEngine->m_iFlags & KVI_CRYPTENGINE_CAN_DECRYPT) &&
-				(pEngine->m_iFlags & KVI_CRYPTENGINE_WANT_DECRYPT_KEY));
-			m_pDecryptKeyEdit->setEnabled((pEngine->m_iFlags & KVI_CRYPTENGINE_CAN_DECRYPT) &&
-				(pEngine->m_iFlags & KVI_CRYPTENGINE_WANT_DECRYPT_KEY));
+			m_pDecryptKeyLabel->setEnabled((pEngine->m_iFlags & KviCryptEngine::CanDecrypt) &&
+				(pEngine->m_iFlags & KviCryptEngine::WantDecryptKey));
+			m_pDecryptKeyEdit->setEnabled((pEngine->m_iFlags & KviCryptEngine::CanDecrypt) &&
+				(pEngine->m_iFlags & KviCryptEngine::WantDecryptKey));
 			m_pEnableDecrypt->setChecked(m_pDecryptKeyEdit->isEnabled());
 			m_pDecryptHexKeyCheck->setEnabled(m_pDecryptKeyEdit->isEnabled());
 			m_pDecryptHexKeyCheck->setChecked(false);
@@ -223,12 +223,12 @@
 		m_pListBox->setEnabled(bEnabled);
 		m_pAuthorLabel->setEnabled(bEnabled && m_pLastItem);
 		m_pDescriptionLabel->setEnabled(bEnabled && m_pLastItem);
-		bool bCanDecrypt = m_pLastItem ? m_pLastItem->m_iFlags & KVI_CRYPTENGINE_CAN_DECRYPT : false;
-		bool bCanEncrypt = m_pLastItem ? m_pLastItem->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT : false;
+		bool bCanDecrypt = m_pLastItem ? m_pLastItem->m_iFlags & KviCryptEngine::CanDecrypt : false;
+		bool bCanEncrypt = m_pLastItem ? m_pLastItem->m_iFlags & KviCryptEngine::CanEncrypt : false;
 		m_pEnableEncrypt->setEnabled(bEnabled && bCanEncrypt);
 		m_pEnableDecrypt->setEnabled(bEnabled && bCanDecrypt);
-		bool bWantDecryptKey = m_pLastItem ? (bCanDecrypt && (m_pLastItem->m_iFlags & KVI_CRYPTENGINE_WANT_DECRYPT_KEY)) : false;
-		bool bWantEncryptKey = m_pLastItem ? (bCanEncrypt && (m_pLastItem->m_iFlags & KVI_CRYPTENGINE_WANT_ENCRYPT_KEY)) : false;
+		bool bWantDecryptKey = m_pLastItem ? (bCanDecrypt && (m_pLastItem->m_iFlags & KviCryptEngine::WantDecryptKey)) : false;
+		bool bWantEncryptKey = m_pLastItem ? (bCanEncrypt && (m_pLastItem->m_iFlags & KviCryptEngine::WantEncryptKey)) : false;
 		m_pEncryptKeyLabel->setEnabled(bEnabled && m_pEnableEncrypt->isChecked() && bWantEncryptKey);
 		m_pDecryptKeyLabel->setEnabled(bEnabled && m_pEnableDecrypt->isChecked() && bWantDecryptKey);
 		m_pEncryptKeyEdit->setEnabled(m_pEncryptKeyLabel->isEnabled());
