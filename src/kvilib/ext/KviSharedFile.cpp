@@ -1,10 +1,10 @@
 //=============================================================================
 //
-//   File : KviRegisteredChannel.cpp
-//   Creation date : Sat Jun 29 01:01:16 2002 GMT by Szymon Stefanek
+//   File : KviSharedFile.h
+//   Creation date : Wed Dec 29 2010 03:40:05 CEST by Elvio Basello
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2010 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,17 +22,20 @@
 //
 //=============================================================================
 
-#include "kvi_debug.h"
-#include "KviRegisteredChannel.h"
+#include "KviSharedFile.h"
 
-KviRegisteredChannel::KviRegisteredChannel(const QString & szName, const QString & szNetMask)
+KviSharedFile::KviSharedFile(const QString & szName, const QString & szAbsPath, const QString & szUserMask, time_t expireTime, unsigned int uFileSize)
 {
 	m_szName = szName;
-	m_szNetMask = szNetMask;
-	m_pPropertyDict = new QHash<QString,QString>();
+	m_szAbsFilePath = szAbsPath;
+	m_szUserMask = szUserMask;
+	m_expireTime = expireTime;
+	m_uFileSize = uFileSize;
+
+	m_uWildCount = m_szUserMask.count('*');
+	m_uNonWildCount = m_szUserMask.length() - m_uWildCount;
 }
 
-KviRegisteredChannel::~KviRegisteredChannel()
+KviSharedFile::~KviSharedFile()
 {
-	delete m_pPropertyDict;
 }

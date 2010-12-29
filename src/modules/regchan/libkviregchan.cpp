@@ -24,7 +24,7 @@
 
 // incomplete
 #include "KviModule.h"
-#include "KviRegisteredChannel.h"
+#include "KviRegisteredChannelDataBase.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
 #include "KviMircCntrl.h"

@@ -1,10 +1,13 @@
+#ifndef _KVIREGCHANDB_H_
+#define _KVIREGCHANDB_H_
+
 //=============================================================================
 //
-//   File : KviRegisteredChannel.cpp
-//   Creation date : Sat Jun 29 01:01:16 2002 GMT by Szymon Stefanek
+//   File : KviRegisteredChannelDataBase.h
+//   Creation date : Wed Dec 29 2010 03:28:05 CEST by Elvio Basello
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2010 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,17 +25,32 @@
 //
 //=============================================================================
 
-#include "kvi_debug.h"
+// this file was originally part of KviRegisteredChannel.h
+
+#include "kvi_settings.h"
 #include "KviRegisteredChannel.h"
 
-KviRegisteredChannel::KviRegisteredChannel(const QString & szName, const QString & szNetMask)
-{
-	m_szName = szName;
-	m_szNetMask = szNetMask;
-	m_pPropertyDict = new QHash<QString,QString>();
-}
+#include <QHash>
 
-KviRegisteredChannel::~KviRegisteredChannel()
+class KVILIB_API KviRegisteredChannelDataBase
 {
-	delete m_pPropertyDict;
-}
+public:
+	KviRegisteredChannelDataBase();
+	~KviRegisteredChannelDataBase();
+protected:
+	QHash<QString,KviRegisteredChannelList *> * m_pChannelDict;
+public:
+	QHash<QString,KviRegisteredChannelList *> * channelDict(){ return m_pChannelDict; }
+
+	KviRegisteredChannel * find(const QString & szName, const QString & szNetMask);
+
+	KviRegisteredChannel * findExact(const QString & szName,const QString & szNetMask);
+
+	void remove(KviRegisteredChannel * pChan);
+	void add(KviRegisteredChannel * pChan);
+
+	void load(const QString & szFilename);
+	void save(const QString & szFilename);
+};
+
+#endif // _KVIREGCHANDB_H_

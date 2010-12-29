@@ -33,6 +33,7 @@
 #include "KviIconManager.h"
 #include "KviConsoleWindow.h"
 #include "KviRegisteredChannel.h"
+#include "KviRegisteredChannelDataBase.h"
 #include "KviKvsScript.h"
 #include "KviTalGroupBox.h"
 

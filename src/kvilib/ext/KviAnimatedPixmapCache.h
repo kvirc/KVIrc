@@ -24,19 +24,14 @@
 //
 //=============================================================================
 
+#include "kvi_settings.h"
+#include "KviAnimatedPixmapInterface.h"
+
 #include <QMutex>
 #include <QPixmap>
 #include <QMultiHash>
 #include <QMultiMap>
 #include <QTimer>
-#include "kvi_settings.h"
-
-class KviAnimatedPixmapInterface
-{
-public:
-	 virtual void nextFrame(bool) = 0;
-	 virtual ~KviAnimatedPixmapInterface() {};
-};
 
 class KVILIB_API KviAnimatedPixmapCache : public QObject
 {

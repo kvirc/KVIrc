@@ -59,7 +59,7 @@
 #include "KviTextIconWindow.h"
 #include "KviHistoryWindow.h"
 #include "KviCtcpPageDialog.h"
-#include "KviRegisteredChannel.h"
+#include "KviRegisteredChannelDataBase.h"
 #include "KviModuleExtension.h"
 #include "KviInternalCommand.h"
 #include "KviFileTransfer.h"

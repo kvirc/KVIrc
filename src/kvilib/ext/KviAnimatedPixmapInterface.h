@@ -1,10 +1,13 @@
+#ifndef _KVIANIPIXINTERFACE_H_
+#define _KVIANIPIXINTERFACE_H_
+
 //=============================================================================
 //
-//   File : KviRegisteredChannel.cpp
-//   Creation date : Sat Jun 29 01:01:16 2002 GMT by Szymon Stefanek
+//   File : KviAnimatedPixmapInterface.h
+//   Creation date : Wed Dec 29 2010 03:19:21 CEST by Elvio Basello
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2010 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,17 +25,13 @@
 //
 //=============================================================================
 
-#include "kvi_debug.h"
-#include "KviRegisteredChannel.h"
+// this file was originally part of KviAnimatedPixmapCache.h
 
-KviRegisteredChannel::KviRegisteredChannel(const QString & szName, const QString & szNetMask)
+class KviAnimatedPixmapInterface
 {
-	m_szName = szName;
-	m_szNetMask = szNetMask;
-	m_pPropertyDict = new QHash<QString,QString>();
-}
+public:
+	virtual void nextFrame(bool) = 0;
+	virtual ~KviAnimatedPixmapInterface(){};
+};
 
-KviRegisteredChannel::~KviRegisteredChannel()
-{
-	delete m_pPropertyDict;
-}
+#endif // _KVIANIPIXINTERFACE_H_

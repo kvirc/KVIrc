@@ -35,69 +35,26 @@ class KVILIB_API KviRegisteredChannel : public KviHeapObject
 {
 	friend class KviRegisteredChannelDataBase;
 public:
-	KviRegisteredChannel(const QString &name,const QString &netmask);
+	KviRegisteredChannel(const QString & szName, const QString & szNetMask);
 	~KviRegisteredChannel();
 protected:
 	QString                  m_szName;
 	QString                  m_szNetMask;
 	QHash<QString,QString> * m_pPropertyDict;
 public:
-	QHash<QString,QString> * propertyDict()
-	{
-		return m_pPropertyDict;
-	}
+	QHash<QString,QString> * propertyDict(){ return m_pPropertyDict; }
 
-	const QString & name()
-	{
-		return m_szName;
-	}
+	const QString & name(){ return m_szName; }
 
-	const QString & netMask()
-	{
-		return m_szNetMask;
-	}
+	const QString & netMask(){ return m_szNetMask; }
 
-	QString property(const QString &name)
-	{
-		return m_pPropertyDict->value(name);
-	}
+	QString property(const QString & szName){ return m_pPropertyDict->value(szName); }
 
-	void setProperty(const QString &name,const QString &val)
-	{
-		m_pPropertyDict->insert(name,val);
-	}
+	void setProperty(const QString & szName,const QString & szValue){ m_pPropertyDict->insert(szName,szValue); }
 
-	void removeProperty(const QString &name)
-	{
-		m_pPropertyDict->remove(name);
-	}
+	void removeProperty(const QString & szName){ m_pPropertyDict->remove(szName); }
 };
 
 typedef KVILIB_API_TYPEDEF KviPointerList<KviRegisteredChannel> KviRegisteredChannelList;
-
-class KVILIB_API KviRegisteredChannelDataBase
-{
-public:
-	KviRegisteredChannelDataBase();
-	~KviRegisteredChannelDataBase();
-protected:
-	QHash<QString,KviRegisteredChannelList *> * m_pChannelDict;
-public:
-	QHash<QString,KviRegisteredChannelList *> * channelDict()
-	{
-		return m_pChannelDict;
-	}
-
-	KviRegisteredChannel * find(const QString &name,const QString &net);
-
-	KviRegisteredChannel * findExact(const QString &name,const QString &netmask);
-
-	void remove(KviRegisteredChannel * c);
-	void add(KviRegisteredChannel * c);
-
-	void load(const QString &filename);
-	void save(const QString &filename);
-};
-
 
 #endif //_KVI_REGCHAN_H_

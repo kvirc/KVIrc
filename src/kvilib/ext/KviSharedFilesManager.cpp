@@ -22,12 +22,10 @@
 //
 //=============================================================================
 
-
-
 #include "KviSharedFilesManager.h"
-
 #include "KviConfigurationFile.h"
 #include "KviFileUtils.h"
+#include "KviIrcMask.h"
 
 #include <QFileInfo>
 
@@ -77,22 +75,6 @@
 		Don't share any really important files: this *might* be like putting it on your webpage :D[br]
 		Please don't send complains if someone stoles your /etc/passwd : it is because you have permitted that.[br]
 */
-
-KviSharedFile::KviSharedFile(const QString &szName,const QString &szAbsPath,const QString &szUserMask,time_t expireTime,unsigned int uFileSize)
-{
-	m_szName = szName;
-	m_szAbsFilePath = szAbsPath;
-	m_szUserMask = szUserMask;
-	m_expireTime = expireTime;
-	m_uFileSize = uFileSize;
-
-	m_uWildCount = m_szUserMask.count('*');
-	m_uNonWildCount = m_szUserMask.length() - m_uWildCount;
-}
-
-KviSharedFile::~KviSharedFile()
-{
-}
 
 
 KviSharedFilesManager::KviSharedFilesManager()

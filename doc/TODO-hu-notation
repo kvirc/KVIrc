@@ -1,9 +1,13 @@
 ################################################################
 # In this file, there are all files which have to be ported to #
-# the Hungarian Notation. Files with a '+' are already ported. #
+# the Hungarian Notation.                                      #
 # http://en.wikipedia.org/wiki/Hungarian_notation              #
 #                                                              #
-# Please keep it updated!                                      #
+# PLEASE KEEP IT UPDATED!                                      #
+#                                                              #
+# Legend:                                                      #
+# + -> file already ported                                     #
+# - -> file in which the porting is incomplete in any part     #
 ################################################################
 
 
@@ -49,6 +53,7 @@ KviAnimatedPixmap.cpp
 KviAnimatedPixmap.h
 KviAnimatedPixmapCache.cpp
 KviAnimatedPixmapCache.h
++ KviAnimatedPixmapInterface.h
 KviCommandFormatter.cpp
 KviCommandFormatter.h
 KviConfigurationFile.cpp
@@ -61,9 +66,6 @@ KviDbusAdaptor.cpp
 KviDbusAdaptor.h
 KviDebugContext.cpp
 KviDebugContext.h
-KviOggIrcText.h
-KviOsInfo.cpp
-KviOsInfo.h
 KviMediaManager.cpp
 KviMediaManager.h
 KviMediaType.h
@@ -73,6 +75,9 @@ KviMiscUtils.cpp
 KviMiscUtils.h
 KviNickColors.cpp
 KviNickColors.h
+KviOggIrcText.h
+KviOsInfo.cpp
+KviOsInfo.h
 KviParameterList.cpp
 KviParameterList.h
 KviPixmap.cpp
@@ -83,8 +88,10 @@ KviProxy.cpp
 KviProxy.h
 KviProxyDataBase.cpp
 KviProxyDataBase.h
-KviRegisteredChannel.cpp
-KviRegisteredChannel.h
++ KviRegisteredChannel.cpp
++ KviRegisteredChannel.h
+KviRegisteredChannelDataBase.cpp
++ KviRegisteredChannelDataBase.h
 + KviRegisteredMask.cpp
 + KviRegisteredMask.h
 KviRegisteredUser.cpp
@@ -93,6 +100,8 @@ KviRegisteredUserDataBase.cpp
 KviRegisteredUserDataBase.h
 + KviRegisteredUserGroup.cpp
 + KviRegisteredUserGroup.h
++ KviSharedFile.cpp
++ KviSharedFile.h
 KviSharedFilesManager.cpp
 KviSharedFilesManager.h
 KviStringConversion.cpp

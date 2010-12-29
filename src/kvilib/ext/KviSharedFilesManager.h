@@ -25,51 +25,12 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
-#include "KviCString.h"
-#include "KviIrcMask.h"
-#include "KviPointerList.h"
-#include "KviQString.h"
-
 #include "KviPointerHashTable.h"
+#include "KviSharedFile.h"
 
-#include <time.h>
 #include <QTimer>
 
-
-class KVILIB_API KviSharedFile : public KviHeapObject
-{
-public:
-	KviSharedFile(const QString &szName,const QString &szAbsPath,const QString &szUserMask,time_t expireTime,unsigned int uFileSize);
-	~KviSharedFile();
-private:
-	QString         m_szName;
-	QString         m_szAbsFilePath;
-	time_t          m_expireTime;
-	QString         m_szUserMask;
-	unsigned int    m_uFileSize;
-	unsigned int    m_uWildCount;
-	unsigned int    m_uNonWildCount;
-public:
-	const QString &name(){ return m_szName; };
-
-	const QString &absFilePath(){ return m_szAbsFilePath; };
-
-	const QString &userMask(){ return m_szUserMask; };
-
-	time_t       expireTime(){ return m_expireTime; };
-	bool         expires(){ return (m_expireTime != 0); };
-
-	unsigned int fileSize(){ return m_uFileSize; };
-
-	unsigned int wildcardCount(){ return m_uWildCount; };
-	unsigned int nonWildcardCount(){ return m_uNonWildCount; };
-	int          maskLength(){ return m_szUserMask.length(); };
-};
-
-
-typedef KviPointerList<KviSharedFile> KviSharedFileList;
-
+class KviIrcMask;
 
 class KVILIB_API KviSharedFilesManager : public QObject
 {
@@ -99,35 +60,5 @@ signals:
 	void sharedFileAdded(KviSharedFile * f);
 	void sharedFileRemoved(KviSharedFile * f);
 };
-
-
-/*
-class KviSharedFile
-{
-	KviSharedFile();
-	KviSharedFile(const KviCString &filePath,const KviCString &userMask);
-	~KviSharedFile();
-protected:
-	KviCString             m_szFilePath;
-	KviCString             m_szVisibleName;
-	KviCString             m_szMd5Sum;
-	KviCString             m_szUserMask;
-	unsigned short int m_uWildCount;
-	unsigned short int m_uNonWildCount;
-
-	unsigned int       m_uFileSize;
-	time_t             m_tExpireTime;
-public:
-	void setFilePath(const KviCString &filePath);
-	void setUserMask(const KviCString &userMask);
-	void setVisibleName(const KviCString &visibleName);
-	void setMd5Sum(const KviCString &md5Sum);
-	void setFileSize(unsigned int uFileSize);
-	void setExpireTime(time_t expireTime);
-	void doNotExpire(){ setExpireTime((time_t)0); };
-
-	void computeMd5Sum();
-};
-*/
 
 #endif //_KVI_FILETRADER_H_
