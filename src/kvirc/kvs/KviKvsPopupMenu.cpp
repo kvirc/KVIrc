@@ -479,7 +479,7 @@ void KviKvsPopupMenuItemExtMenu::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTop
 	KviKvsPopupMenu * source = KviKvsPopupManager::instance()->lookup(m_szMenuName);
 	if(source)
 	{
-		if(source->isLocked())
+		if(source->isHardLocked())
 		{
 			pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Recursive definition detected for popup '%Q': ignoring","kvs"),&(pMenu->popupName()));
 			return;
@@ -506,7 +506,7 @@ KviKvsPopupMenuTopLevelData::KviKvsPopupMenuTopLevelData(KviKvsVariantList * pPa
 	m_pParameters = pParameters;
 	m_pWindow = pWindow;
 	m_bTestMode = false;
-	m_bLocked = false;
+	m_eLocked = Unlocked;
 }
 
 KviKvsPopupMenuTopLevelData::~KviKvsPopupMenuTopLevelData()
@@ -656,13 +656,19 @@ bool KviKvsPopupMenu::removeItemByName(const QString &szItemName,bool bRecursive
 	return false;
 }
 
-bool KviKvsPopupMenu::isLocked()
+bool KviKvsPopupMenu::isSoftLocked()
 {
 	if(topLevelPopup()->isVisible())return true;
 	KviKvsPopupMenuTopLevelData * d = topLevelData();
-	return d ? d->isLocked() : false;
+	return d ? d->isSoftLocked() : false;
 }
 
+bool KviKvsPopupMenu::isHardLocked()
+{
+	if(topLevelPopup()->isVisible())return true;
+	KviKvsPopupMenuTopLevelData * d = topLevelData();
+	return d ? d->isHardLocked() : false;
+}
 
 KviKvsPopupMenu * KviKvsPopupMenu::topLevelPopup()
 {
@@ -718,7 +724,8 @@ void KviKvsPopupMenu::addExtPopup(const QString &szItemName,const QString &szPop
 
 void KviKvsPopupMenu::addItemInternal(KviKvsPopupMenuItem * it)
 {
-	if(isLocked())qDebug("Ooops... KviKvsPopupMenu is locked in ::addItem()");
+	if(isHardLocked())
+		qDebug("Ooops... KviKvsPopupMenu is locked in ::addItem()");
 	m_pItemList->append(it);
 }
 
@@ -776,11 +783,12 @@ void KviKvsPopupMenu::doClear()
 }
 
 
-void KviKvsPopupMenu::lock(bool bLock)
+void KviKvsPopupMenu::lock(KviKvsPopupMenuTopLevelData::LockStatus eLock)
 {
 	KviKvsPopupMenuTopLevelData * d = topLevelData();
-	if(!d)return;
-	d->setLocked(bLock);
+	if(!d)
+		return;
+	d->setLocked(eLock);
 }
 
 
@@ -823,10 +831,12 @@ void KviKvsPopupMenu::setupMenuContents()
 
 	if(!g_pApp->windowExists(d->window()))d->setWindow(g_pApp->activeConsole());
 
+	lock(KviKvsPopupMenuTopLevelData::SoftLocked);
+
 	if(!d->testMode())
 		executePrologues(d);
 
-	lock(true);
+	lock(KviKvsPopupMenuTopLevelData::HardLocked);
 
 	// Fill this menu contents
 	int idx = 0;
@@ -836,11 +846,12 @@ void KviKvsPopupMenu::setupMenuContents()
 		++idx;
 	}
 
-	lock(false);
+	lock(KviKvsPopupMenuTopLevelData::SoftLocked);
 
 	if(!d->testMode())
 		executeEpilogues(d);
 
+	lock(KviKvsPopupMenuTopLevelData::Unlocked);
 }
 
 void KviKvsPopupMenu::executePrologues(KviKvsPopupMenuTopLevelData * pData)
@@ -891,7 +902,7 @@ void KviKvsPopupMenu::itemClicked(int itemId)
 				if(!g_pApp->windowExists(d->window()))d->setWindow(g_pApp->activeConsole());
 				// FIXME: we could avoid locking since scripts can be shared now!
 				// see KviKvsTimerManager implementation
-				lock(true);
+				lock(KviKvsPopupMenuTopLevelData::HardLocked);
 				if(d->extendedRunTimeData())
 					d->extendedRunTimeData()->setPopupId(new QString(it->name()));
 				((KviKvsPopupMenuItemItem *)it)->kvsCode()->run(
@@ -901,7 +912,7 @@ void KviKvsPopupMenu::itemClicked(int itemId)
 						KviKvsScript::PreserveParams,
 						d->extendedRunTimeData());
 				// FIXME: should we print somethng if run() returns false ?
-				lock(false);
+				lock(KviKvsPopupMenuTopLevelData::Unlocked);
 			}
 		} else qDebug("oops....clicked something that is not an item at position %d",param);
 		// FIXME: #warning "Maybe tell that the window has changed"

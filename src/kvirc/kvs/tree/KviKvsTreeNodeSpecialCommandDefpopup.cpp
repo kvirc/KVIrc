@@ -318,7 +318,7 @@ bool KviKvsTreeNodeSpecialCommandDefpopup::execute(KviKvsRunTimeContext * c)
 	} else {
 		bWasAlreadyThere = true;
 
-		if(pPopup->isLocked())
+		if(pPopup->isHardLocked())
 		{
 			c->error(__tr2qs_ctx("The popup '%s' is actually locked: 'self-modifications' are not allowed","kvs"),&szName);
 			return false;

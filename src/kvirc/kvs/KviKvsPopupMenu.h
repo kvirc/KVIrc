@@ -45,18 +45,20 @@ class KVIRC_API KviKvsPopupMenuTopLevelData
 public:
 	KviKvsPopupMenuTopLevelData(KviKvsVariantList * pParameters,KviWindow * pWindow);
 	~KviKvsPopupMenuTopLevelData();
+	enum LockStatus { Unlocked, SoftLocked, HardLocked };
 protected:
 	KviKvsExtendedRunTimeData * m_pExtendedRunTimeData;
 	KviKvsVariantList         * m_pParameters;
 	KviWindow                 * m_pWindow;
-	bool                        m_bLocked;
+	LockStatus                  m_eLocked;
 	bool                        m_bTestMode;
 public:
 	KviKvsExtendedRunTimeData * extendedRunTimeData(){ return m_pExtendedRunTimeData; };
 	//KviKvsHash * extScopeVariables(){ return m_pExtScopeVariables; };
 	KviKvsVariantList * parameters(){ return m_pParameters; };
-	bool isLocked(){ return m_bLocked; };
-	void setLocked(bool bLocked){ m_bLocked = bLocked; };
+	bool isSoftLocked(){ return m_eLocked != Unlocked; };
+	bool isHardLocked(){ return m_eLocked == HardLocked; };
+	void setLocked(LockStatus eLocked){ m_eLocked = eLocked; };
 	KviWindow * window(){ return m_pWindow; };
 	void setWindow(KviWindow * pWindow){ m_pWindow = pWindow; };
 	bool testMode(){ return m_bTestMode; };
@@ -253,8 +255,9 @@ public:
 	void copyFrom(const KviKvsPopupMenu * src);
 	KviKvsPopupMenuTopLevelData * topLevelData();
 	KviKvsPopupMenu * topLevelPopup();
-	bool isLocked();
-	void lock(bool bLock);
+	bool isSoftLocked();
+	bool isHardLocked();
+	void lock(KviKvsPopupMenuTopLevelData::LockStatus eLock);
 	KviKvsPopupMenu * addPopup(const QString &szItemName,const QString &szText,const QString &szIcon,const QString &szCondition);
 	void addSeparator(const QString &szItemName,const QString &szCondition);
 	void addLabel(const QString &szItemName,const QString &szText,const QString &szIcon,const QString &szCondition);

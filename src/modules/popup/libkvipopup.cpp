@@ -26,7 +26,7 @@
 #include "KviLocale.h"
 #include "KviKvsPopupManager.h"
 
-#define GET_KVS_POPUP \
+#define GET_KVS_POPUP(LOCKING_CHECK) \
 	int iIdx = szPopupName.indexOf(QChar('.')); \
 	if(iIdx == 0) \
 	{ \
@@ -52,7 +52,7 @@
 			c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szPopupName); \
 		return true; \
 	} \
-	if(pPopup->isLocked()) \
+	if(pPopup->LOCKING_CHECK()) \
 	{ \
 		if(!c->hasSwitch('q',"quiet")) \
 			c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs")); \
@@ -67,7 +67,7 @@
 				c->warning(__tr2qs_ctx("Subpopup \"%Q.%Q\" does not exist","kvs"),&szPopupName, &szSubPopupName); \
 			return true; \
 		} \
-		if(pPopup->isLocked()) \
+		if(pPopup->LOCKING_CHECK()) \
 		{ \
 			if(!c->hasSwitch('q',"quiet")) \
 				c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the subpopup is probably open)","kvs")); \
@@ -151,7 +151,7 @@ static bool popup_kvs_cmd_addItem(KviKvsModuleCallbackCommandCall * c)
 		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
 	KVSM_PARAMETERS_END(c)
 
-	GET_KVS_POPUP
+	GET_KVS_POPUP(isHardLocked)
 
 	if(c->callback()->code().trimmed().isEmpty() && !c->hasSwitch('q',"quiet"))
 		c->warning(__tr2qs_ctx("Found empty instruction for popup item: maybe you need to fix the script?","kvs"));
@@ -184,9 +184,9 @@ static bool popup_kvs_cmd_addItem(KviKvsModuleCallbackCommandCall * c)
 		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
 		<command> will be executed just before the popup is filled at [cmd]popup.show[/cmd] command call.
 		<command> can be a simple instruction or an instruction block delimited by curly brackets.[br]
-		WARNING: Please note that some instructions are not allowed here, an can potentially make kvirc
-		crash. You tipically don't want to delete the popup that's running (calling [cmd]popup.clear[/cmd] or
-		[cmd]popup.destroy[/cmd]) or create an infinite loop (calling [cmd]popup.addPrologue[/cmd])
+		Please note that some instructions are not allowed here, You can't delete the prologue's parent
+		popup (calling [cmd]popup.clear[/cmd] or [cmd]popup.destroy[/cmd]) or modify prologues/epilogues
+		(calling [cmd]popup.addPrologue[/cmd] or [cmd]popup.addEpilogue[/cmd])
 	@seealso:
 		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.addEpilogue[/cmd]
 */
@@ -199,7 +199,7 @@ static bool popup_kvs_cmd_addPrologue(KviKvsModuleCallbackCommandCall * c)
 		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
 	KVSM_PARAMETERS_END(c)
 
-	GET_KVS_POPUP
+	GET_KVS_POPUP(isSoftLocked)
 
 	if(c->callback()->code().trimmed().isEmpty() && !c->hasSwitch('q',"quiet"))
 		c->warning(__tr2qs_ctx("Found empty prologue block: maybe you need to fix the script?","kvs"));
@@ -232,9 +232,9 @@ static bool popup_kvs_cmd_addPrologue(KviKvsModuleCallbackCommandCall * c)
 		<item_id> is the optional item id - if not specified, it will be generated automatically.[br]
 		<command> will be executed just after the popup is filled at [cmd]popup.show[/cmd] command call.
 		<command> can be a simple instruction or an instruction block delimited by curly brackets.[br]
-		WARNING: Please note that some instructions are not allowed here, an can potentially make kvirc
-		crash. You tipically don't want to delete the popup that's running (calling [cmd]popup.clear[/cmd] or
-		[cmd]popup.destroy[/cmd]) or create an infinite loop (calling [cmd]popup.addEpilogue[/cmd])
+		Please note that some instructions are not allowed here, You can't delete the prologue's parent
+		popup (calling [cmd]popup.clear[/cmd] or [cmd]popup.destroy[/cmd]) or modify prologues/epilogues
+		(calling [cmd]popup.addPrologue[/cmd] or [cmd]popup.addEpilogue[/cmd])
 	@seealso:
 		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd], [cmd]popup.addPrologue[/cmd]
 */
@@ -247,7 +247,7 @@ static bool popup_kvs_cmd_addEpilogue(KviKvsModuleCallbackCommandCall * c)
 		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
 	KVSM_PARAMETERS_END(c)
 
-	GET_KVS_POPUP
+	GET_KVS_POPUP(isSoftLocked)
 
 	if(c->callback()->code().trimmed().isEmpty() && !c->hasSwitch('q',"quiet"))
 		c->warning(__tr2qs_ctx("Found empty epilogue block: maybe you need to fix the script?","kvs"));
@@ -298,7 +298,7 @@ static bool popup_kvs_cmd_addExtPopup(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
 	KVSM_PARAMETERS_END(c)
 
-	GET_KVS_POPUP
+	GET_KVS_POPUP(isHardLocked)
 
 	pPopup->addExtPopup(szItemId, szExtPopupName, szText, szIcon, szCondition);
 
@@ -344,7 +344,7 @@ static bool popup_kvs_cmd_addLabel(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
 	KVSM_PARAMETERS_END(c)
 
-	GET_KVS_POPUP
+	GET_KVS_POPUP(isHardLocked)
 
 	pPopup->addLabel(szItemId, szText, szIcon, szCondition);
 
@@ -391,7 +391,7 @@ static bool popup_kvs_cmd_addSubPopup(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
 	KVSM_PARAMETERS_END(c)
 
-	GET_KVS_POPUP
+	GET_KVS_POPUP(isHardLocked)
 
 	pPopup->addPopup(szItemId, szText, szIcon, szCondition);
 
@@ -432,7 +432,7 @@ static bool popup_kvs_cmd_addSeparator(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
 	KVSM_PARAMETERS_END(c)
 
-	GET_KVS_POPUP
+	GET_KVS_POPUP(isHardLocked)
 
 	pPopup->addSeparator(szItemId, szCondition);
 
@@ -467,7 +467,7 @@ static bool popup_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
 	KVSM_PARAMETERS_END(c)
 
-	GET_KVS_POPUP
+	GET_KVS_POPUP(isSoftLocked)
 
 	pPopup->doClear();
 
@@ -549,7 +549,7 @@ static bool popup_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 			c->warning(__tr2qs_ctx("Popup \"%Q\" does not exist","kvs"),&szPopupName);
 		return true;
 	}
-	if(pPopup->isLocked())
+	if(pPopup->isSoftLocked())
 	{
 		if(!c->hasSwitch('q',"quiet"))
 			c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs"));
@@ -597,7 +597,7 @@ static bool popup_kvs_cmd_delItem(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("item_id",KVS_PT_NONEMPTYSTRING,0,szItemId)
 	KVSM_PARAMETERS_END(c)
 
-	GET_KVS_POPUP
+	GET_KVS_POPUP(isHardLocked)
 
 	if(!pPopup->removeItemByName(szItemId,c->hasSwitch('d',"deep")))
 	{
@@ -799,7 +799,7 @@ static bool popup_kvs_cmd_show(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	if(pMenu->isLocked())
+	if(pMenu->isSoftLocked())
 	{
 		delete pPopupParams;
 		pPopupParams = 0;
