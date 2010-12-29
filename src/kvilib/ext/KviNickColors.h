@@ -5,7 +5,7 @@
 //   File : KviNickColors.h
 //   Creation date : Sun Apr 11 2010 15:00:01 CEST by Fabio Bas
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2009 Fabio Bas (ctrlaltca at libero dot it)
 //
 //   This program is FREE software. You can redistribute it and/or

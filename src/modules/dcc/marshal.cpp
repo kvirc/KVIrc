@@ -3,7 +3,7 @@
 //   File : marshal.cpp
 //   Creation date : Sun Sep 17 2000 15:59:11 by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

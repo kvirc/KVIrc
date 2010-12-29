@@ -1,9 +1,9 @@
 //=============================================================================
 //
-//   File : KviRegisteredMask.cpp
+//   File : KviRegisteredUserMask.cpp
 //   Creation date : Wed Dec 29 2010 02:39:05 CEST by Elvio Basello
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2010 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -22,9 +22,9 @@
 //
 //=============================================================================
 
-#include "KviRegisteredMask.h"
+#include "KviRegisteredUserMask.h"
 
-KviRegisteredMask::KviRegisteredMask(KviRegisteredUser * pUser, KviIrcMask * pMask)
+KviRegisteredUserMask::KviRegisteredUserMask(KviRegisteredUser * pUser, KviIrcMask * pMask)
 {
 	m_pUser = pUser;
 	m_pMask = pMask;

@@ -6,7 +6,7 @@
 //   File : kvi_stdarg.h
 //   Creation date : Sat Jan 03 2004 02:08:14 CEST by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2004-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

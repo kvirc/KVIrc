@@ -3,7 +3,7 @@
 //   File : KviImageDialog.cpp
 //   Creation date : Sun Dec 22 2002 19:42 by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

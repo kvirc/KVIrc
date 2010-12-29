@@ -3,7 +3,7 @@
 //   File : libkvitmphighlight.cpp
 //   Creation date :  Oct 10 01:06:09 CEST 2002 by Juanjo Alvarez
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2002 Juanjo Alvarez (juanjux@yahoo.es)
 //   Copyright (C) 2002-2010 Szymon Stefanek (kvirc@tin.it)
 //

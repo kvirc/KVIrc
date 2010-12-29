@@ -5,7 +5,7 @@
 //   File : controller.h
 //   Creation date : Thu Apr 30 2002 17:13:12 GMT by Juanjo Álvarez
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2002 Juanjo Álvarez (juanjux@yahoo.es)
 //   Copyright (C) 2002-2010 Szymon Stefanek (kvirc@tin.it)
 //

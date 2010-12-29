@@ -5,7 +5,7 @@
 //   File : KviMexToolBar.h
 //   Creation date : Thu Sep 12 22:11:45 2002 GMT by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

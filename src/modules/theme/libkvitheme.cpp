@@ -3,7 +3,7 @@
 //   File : libkvitheme.cpp
 //   Creation date : Sat 30 Dec 2006 14:54:56 by Szymon Stefanek
 //
-//   This toolbar is part of the KVirc irc client distribution
+//   This toolbar is part of the KVIrc irc client distribution
 //   Copyright (C) 2006-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

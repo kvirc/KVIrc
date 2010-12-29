@@ -3,7 +3,7 @@
 //   File : KviMessageBox.cpp
 //   Creation date : Tue Jun 20 2000 12:49:41 by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

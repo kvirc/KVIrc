@@ -3,7 +3,7 @@
 //   File : sonix_compress.cpp
 //   Creation date : Tue Nov 10 18:08:09 2009 GMT by Fabio Bas
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2009 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

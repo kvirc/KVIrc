@@ -3,7 +3,7 @@
 //   File : KviIrcServerParser_literalHandlers.cpp
 //   Creation date : Thu Aug 3 2000 01:29:12 by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)
 //

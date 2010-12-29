@@ -5,7 +5,7 @@
 //   File : class_tablewidget.h
 //   Creation date : Wed 4 Feb 2009 09:30:05 CEST by Carbone Alessandro
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //

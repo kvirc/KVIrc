@@ -5,7 +5,7 @@
 //   File : kvi_shortcuts.h
 //   Creation date : Fri Dec 11 2009 16:24:46 CEST by Elvio Basello
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2009 Elvio Basello (hell at hellvis69 dot netsons dot org)
 //
 //   This program is FREE software. You can redistribute it and/or

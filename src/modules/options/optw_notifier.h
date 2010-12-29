@@ -6,7 +6,7 @@
 //   File : optw_notifier.h
 //   Creation date : Thu Jul 09 2009 10:54:39 CEST by Fabio Bas
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

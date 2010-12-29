@@ -5,7 +5,7 @@
 //   File : logviewmdiwindow.h
 //   Creation date : Tue Apr 23 2002 18:05:59 by Juanjo Alvarez
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2002 Juanjo Alvarez
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //

@@ -3,7 +3,7 @@
 //   File : channelsjoinwindow.cpp
 //   Creation date : Thu Nov 6 2001 12:41:18 by Juanjo �varez
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

@@ -3,7 +3,7 @@
 //   File : raweditor.cpp
 //   Creation date : Mon Dec 23 2002 20:28:18 by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

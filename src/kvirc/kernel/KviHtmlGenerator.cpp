@@ -3,7 +3,7 @@
 //   File : KviHtmlGenerator.cpp
 //   Creation date : Mon 04 Jan 2010 22:09:18 by Fabio Bas
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2010 Fabio Bas < ctrlaltca at gmail dot com >
 //
 //   This program is FREE software. You can redistribute it and/or

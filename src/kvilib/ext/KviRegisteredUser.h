@@ -1,9 +1,11 @@
+#ifndef _KviRegisteredUser_h_
+#define _KviRegisteredUser_h_
 //=============================================================================
 //
 //   File : KviRegisteredUser.h
 //   Creation date : Wed Dec 29 2010 02:44:05 CEST by Elvio Basello
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2010 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -83,3 +85,5 @@ public:
 	// this is never zero (but may contain no masks)
 	KviPointerList<KviIrcMask> * maskList(){ return m_pMaskList; };
 };
+
+#endif //!_KviRegisteredUser_h_

@@ -3,7 +3,7 @@
 //   File : class_widget.cpp
 //   Creation date : Mon Sep 11 16:35:32 CET 2000 by Krzysztof Godlewski
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //

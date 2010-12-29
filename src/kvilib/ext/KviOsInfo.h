@@ -6,7 +6,7 @@
 //   File : KviOsInfo.h
 //   Creation date : Thu Jan 19 2006 13:50:11 GMT by Alexey Uzhva
 //
-//   This toolbar is part of the KVirc irc client distribution
+//   This toolbar is part of the KVIrc irc client distribution
 //   Copyright (C) 2006-2008 Alexey Uzhva (wizard at opendoor dot ru)
 //
 //   This program is FREE software. You can redistribute it and/or

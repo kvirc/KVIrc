@@ -3,7 +3,7 @@
 //   File : KviTextIconWindow.cpp
 //   Creation date : Fri May 17 2002 02:35:20 by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

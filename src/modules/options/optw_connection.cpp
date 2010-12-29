@@ -3,7 +3,7 @@
 //   File : optw_connection.cpp
 //   Creation date : Sat Nov 24 04:25:16 2001 GMT by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
 //   copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)
 //

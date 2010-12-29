@@ -3,7 +3,7 @@
 //   File : KviRegisteredUserDataBase.cpp
 //   Creation date : Sat Sep 09 2000 15:46:12 by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -130,10 +130,10 @@ KviRegisteredUserDataBase::KviRegisteredUserDataBase()
 	m_pUserDict = new KviPointerHashTable<QString,KviRegisteredUser>(31,false); // do not copy keys
 	m_pUserDict->setAutoDelete(true);
 
-	m_pWildMaskList = new KviRegisteredMaskList;
+	m_pWildMaskList = new KviRegisteredUserMaskList;
 	m_pWildMaskList->setAutoDelete(true);
 
-	m_pMaskDict = new KviPointerHashTable<QString,KviRegisteredMaskList>(49,false); // copy keys here!
+	m_pMaskDict = new KviPointerHashTable<QString,KviRegisteredUserMaskList>(49,false); // copy keys here!
 	m_pMaskDict->setAutoDelete(true);
 
 	m_pGroupDict = new  KviPointerHashTable<QString,KviRegisteredUserGroup>(5,false); // copy keys here!
@@ -180,11 +180,11 @@ KviRegisteredUser * KviRegisteredUserDataBase::getUser(const QString & name)
 	return u;
 }
 
-static void append_mask_to_list(KviRegisteredMaskList *l,KviRegisteredUser *u,KviIrcMask *mask)
+static void append_mask_to_list(KviRegisteredUserMaskList *l,KviRegisteredUser *u,KviIrcMask *mask)
 {
-	KviRegisteredMask * newMask = new KviRegisteredMask(u,mask);
+	KviRegisteredUserMask * newMask = new KviRegisteredUserMask(u,mask);
 	int idx = 0;
-	for(KviRegisteredMask * m = l->first();m;m = l->next())
+	for(KviRegisteredUserMask * m = l->first();m;m = l->next())
 	{
 		if(m->nonWildChars() < newMask->nonWildChars())
 		{
@@ -201,10 +201,10 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u,Kvi
 	if(!u || !mask) return 0;
 	KVI_ASSERT(u == m_pUserDict->find(u->name()));
 
-	KviRegisteredMaskList * l;
+	KviRegisteredUserMaskList * l;
 	if(mask->hasWildNick())
 	{
-		for(KviRegisteredMask * m = m_pWildMaskList->first();m;m = m_pWildMaskList->next())
+		for(KviRegisteredUserMask * m = m_pWildMaskList->first();m;m = m_pWildMaskList->next())
 		{
 			if(*(m->mask()) == *mask)
 			{
@@ -221,7 +221,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u,Kvi
 		if(l)
 		{
 			// FIXME: #warning "Here we could compare the host and username only: nick matches for sure"
-			for(KviRegisteredMask * m = l->first();m;m = l->next())
+			for(KviRegisteredUserMask * m = l->first();m;m = l->next())
 			{
 				if(*(m->mask()) == *mask)
 				{
@@ -234,7 +234,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u,Kvi
 		} else {
 			// not found ...ok... add it
 			// this is the first mask in the list
-			l = new KviRegisteredMaskList;
+			l = new KviRegisteredUserMaskList;
 			l->setAutoDelete(true);
 			if(!u->addMask(mask))
 			{
@@ -328,7 +328,7 @@ bool KviRegisteredUserDataBase::removeGroup(const QString & name)
 bool KviRegisteredUserDataBase::removeMask(const KviIrcMask &mask)
 {
 	// find the mask pointer
-	KviRegisteredMask * m = findExactMask(mask);
+	KviRegisteredUserMask * m = findExactMask(mask);
 	// and remove it
 	if(m){
 		if(removeMaskByPointer(m->mask()))
@@ -345,7 +345,7 @@ bool KviRegisteredUserDataBase::removeMaskByPointer(KviIrcMask * mask)
 	if(mask->hasWildNick())
 	{
 		// remove from the wild list
-		for(KviRegisteredMask * m = m_pWildMaskList->first();m;m = m_pWildMaskList->next())
+		for(KviRegisteredUserMask * m = m_pWildMaskList->first();m;m = m_pWildMaskList->next())
 		{
 			if(m->mask() == mask)
 			{
@@ -358,11 +358,11 @@ bool KviRegisteredUserDataBase::removeMaskByPointer(KviIrcMask * mask)
 		}
 		// not found ...opz :)
 	} else {
-		KviRegisteredMaskList * l = m_pMaskDict->find(mask->nick());
+		KviRegisteredUserMaskList * l = m_pMaskDict->find(mask->nick());
 		if(l)
 		{
 			// FIXME: #warning "Here we could compare the host and username only: nick matches for sure"
-			for(KviRegisteredMask * m = l->first();m;m = l->next())
+			for(KviRegisteredUserMask * m = l->first();m;m = l->next())
 			{
 				if(m->mask() == mask)
 				{
@@ -387,16 +387,16 @@ bool KviRegisteredUserDataBase::removeMaskByPointer(KviIrcMask * mask)
 KviRegisteredUser * KviRegisteredUserDataBase::findMatchingUser(const KviIrcMask &mask)
 {
 	// first lookup the nickname in the maskDict
-	KviRegisteredMaskList * l = m_pMaskDict->find(mask.nick());
+	KviRegisteredUserMaskList * l = m_pMaskDict->find(mask.nick());
 	if(l)
 	{
-		for(KviRegisteredMask *m = l->first();m;m = l->next())
+		for(KviRegisteredUserMask *m = l->first();m;m = l->next())
 		{
 			if(m->mask()->matchesFixed(0,mask.user(),mask.host()))return m->user();
 		}
 	}
 	// not found....lookup the wild ones
-	for(KviRegisteredMask * m = m_pWildMaskList->first();m;m = m_pWildMaskList->next())
+	for(KviRegisteredUserMask * m = m_pWildMaskList->first();m;m = m_pWildMaskList->next())
 	{
 		if(m->mask()->matchesFixed(mask))return m->user();
 	}
@@ -405,25 +405,25 @@ KviRegisteredUser * KviRegisteredUserDataBase::findMatchingUser(const KviIrcMask
 */
 KviRegisteredUser * KviRegisteredUserDataBase::findMatchingUser(const QString & nick,const QString &user,const QString & host)
 {
-	KviRegisteredMask * m = findMatchingMask(nick,user,host);
+	KviRegisteredUserMask * m = findMatchingMask(nick,user,host);
 	if(m)return m->user();
 	return 0; // no match at all
 }
 
-KviRegisteredMask * KviRegisteredUserDataBase::findMatchingMask(const QString & nick,const QString &user,const QString & host)
+KviRegisteredUserMask * KviRegisteredUserDataBase::findMatchingMask(const QString & nick,const QString &user,const QString & host)
 {
 	// first lookup the nickname in the maskDict
 	if(nick.isEmpty()) return false;
-	KviRegisteredMaskList * l = m_pMaskDict->find(nick);
+	KviRegisteredUserMaskList * l = m_pMaskDict->find(nick);
 	if(l)
 	{
-		for(KviRegisteredMask *m = l->first();m;m = l->next())
+		for(KviRegisteredUserMask *m = l->first();m;m = l->next())
 		{
 			if(m->mask()->matchesFixed(nick,user,host))return m;
 		}
 	}
 	// not found....lookup the wild ones
-	for(KviRegisteredMask * m = m_pWildMaskList->first();m;m = m_pWildMaskList->next())
+	for(KviRegisteredUserMask * m = m_pWildMaskList->first();m;m = m_pWildMaskList->next())
 	{
 		if(m->mask()->matchesFixed(nick,user,host))return m;
 	}
@@ -432,25 +432,25 @@ KviRegisteredMask * KviRegisteredUserDataBase::findMatchingMask(const QString & 
 
 KviRegisteredUser * KviRegisteredUserDataBase::findUserWithMask(const KviIrcMask &mask)
 {
-	KviRegisteredMask * m = findExactMask(mask);
+	KviRegisteredUserMask * m = findExactMask(mask);
 	if(m)return m->user();
 	return 0;
 }
 
-KviRegisteredMask * KviRegisteredUserDataBase::findExactMask(const KviIrcMask &mask)
+KviRegisteredUserMask * KviRegisteredUserDataBase::findExactMask(const KviIrcMask &mask)
 {
 	// first lookup the nickname in the maskDict
 	if(mask.nick()=="") return 0;
-	KviRegisteredMaskList * l = m_pMaskDict->find(mask.nick());
+	KviRegisteredUserMaskList * l = m_pMaskDict->find(mask.nick());
 	if(l)
 	{
-		for(KviRegisteredMask *m = l->first();m;m = l->next())
+		for(KviRegisteredUserMask *m = l->first();m;m = l->next())
 		{
 			if(*(m->mask()) == mask)return m;
 		}
 	}
 	// not found....lookup the wild ones
-	for(KviRegisteredMask * m = m_pWildMaskList->first();m;m = m_pWildMaskList->next())
+	for(KviRegisteredUserMask * m = m_pWildMaskList->first();m;m = m_pWildMaskList->next())
 	{
 		if(*(m->mask()) == mask)return m;
 	}

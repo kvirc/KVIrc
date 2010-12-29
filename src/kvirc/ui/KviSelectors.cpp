@@ -3,7 +3,7 @@
 //   File : KviSelectors.cpp
 //   Creation date : Mon Nov 13 2000 15:22:12 CEST by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

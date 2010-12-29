@@ -3,7 +3,7 @@
 //   File : KviIrcView_getTextLine.cpp
 //   Creation date : Wed Oct 1 2008 17:18:20 by Fabio Bas
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -144,13 +144,14 @@ static inline bool url_compare_helper(const kvi_wchar_t * pData1,const kvi_wchar
 	// pData1 is null-terminated and may be shorter than pData2
 	// pData2 is NOT null terminated and is lower case
 
-	while(iData2Len)
+	const kvi_wchar_t * pData2End = pData2 + iData2Len;
+
+	while(pData2 < pData2End)
 	{
 		if(!*pData1)
 			return false; // not equal
 		if(QChar::toLower(*pData1) != *pData2)
 			return false; // not equal
-		iData2Len--;
 		pData1++;
 		pData2++;
 	}

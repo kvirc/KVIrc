@@ -3,7 +3,7 @@
 //   File : optw_generalopt.cpp
 //   Creation date : Wed Nov 19 09:25:16 2005 GMT by Grifisx & Noldor
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

@@ -3,10 +3,10 @@
 
 //=============================================================================
 //
-//   File : KviRegisteredMask.h
+//   File : KviRegisteredUserMask.h
 //   Creation date : Wed Dec 29 2010 02:39:05 CEST by Elvio Basello
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2010 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -31,21 +31,21 @@
 #include "KviIrcMask.h"
 #include "KviRegisteredUser.h"
 
-class KVILIB_API KviRegisteredMask
+class KVILIB_API KviRegisteredUserMask
 {
 private:
 	KviRegisteredUser * m_pUser;               // pointer, not owned!
 	KviIrcMask        * m_pMask;               // pointer, not owned!
 	int                 m_iMaskNonWildChars;
 public:
-	KviRegisteredMask(KviRegisteredUser * pUser, KviIrcMask * pMask);
-	~KviRegisteredMask(){};
+	KviRegisteredUserMask(KviRegisteredUser * pUser, KviIrcMask * pMask);
+	~KviRegisteredUserMask(){};
 public:
 	int                 nonWildChars(){ return m_iMaskNonWildChars; };
 	KviRegisteredUser * user(){ return m_pUser; };
 	KviIrcMask        * mask(){ return m_pMask; };
 };
 
-typedef KviPointerList<KviRegisteredMask> KviRegisteredMaskList;
+typedef KviPointerList<KviRegisteredUserMask> KviRegisteredUserMaskList;
 
 #endif // _KVIREGMASK_H_

@@ -4,7 +4,7 @@
 //   Creation date : Sat Nov  3 19:28:25 2001 GMT by Szymon Stefanek
 //   Renamed to file : libkvimediaplayer.cpp on Fri Mar 25 2005
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2008 Tomasz Moń (desowin at gmail dot com)
 //

@@ -5,7 +5,7 @@
 //   File : libkvitrayicon.h
 //   Creation date : Tue Jan 02 2001 14:34:12 CEST by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2007 Alexey Uzhva (wizard at opendoor dot ru)
 //   Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)

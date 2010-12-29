@@ -5,7 +5,7 @@
 //   File : KviRegisteredUserDataBase.h
 //   Creation date : Sat Sep 09 2000 15:30:56 by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -36,19 +36,19 @@
 #include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
 #include "KviRegisteredUserGroup.h"
-#include "KviRegisteredMask.h"
+#include "KviRegisteredUserMask.h"
 
 #include <QObject>
 
 
 //=================================================================================================
 //
-// KviRegisteredUsersDb
+// KviRegisteredUserDataBase
 //
 //    Manages a set of KviRegisteredUser instances stored in the m_pUserDict dictionary
 //    The users are identified by masks stored in m_pMaskDict and m_pWildMaskList
-//    m_pMaskDict contains lists of non wild-nick KviRegisteredMask that point to users
-//    m_pWildMaskList is a list of wild-nick KviRegisteredMask that point to users
+//    m_pMaskDict contains lists of non wild-nick KviRegisteredUserMask that point to users
+//    m_pWildMaskList is a list of wild-nick KviRegisteredUserMask that point to users
 //
 
 class KVILIB_API KviRegisteredUserDataBase : public QObject
@@ -59,8 +59,8 @@ public:
 	~KviRegisteredUserDataBase();
 private:
 	KviPointerHashTable<QString,KviRegisteredUser>     * m_pUserDict; // unique namespace, owns the objects, does not copy keys
-	KviPointerHashTable<QString,KviRegisteredMaskList> * m_pMaskDict; // owns the objects, copies the keys
-	KviRegisteredMaskList          * m_pWildMaskList; // owns the objects
+	KviPointerHashTable<QString,KviRegisteredUserMaskList> * m_pMaskDict; // owns the objects, copies the keys
+	KviRegisteredUserMaskList          * m_pWildMaskList; // owns the objects
 	KviPointerHashTable<QString,KviRegisteredUserGroup>* m_pGroupDict;
 public:
 	void copyFrom(KviRegisteredUserDataBase * db);
@@ -76,8 +76,8 @@ public:
 	bool removeMask(const KviIrcMask &mask);
 	KviRegisteredUser * findMatchingUser(const QString &nick,const QString &user,const QString &host);
 	KviRegisteredUser * findUserWithMask(const KviIrcMask &mask);
-	KviRegisteredMask * findExactMask(const KviIrcMask &mask);
-	KviRegisteredMask * findMatchingMask(const QString &nick,const QString &user,const QString &host);
+	KviRegisteredUserMask * findExactMask(const KviIrcMask &mask);
+	KviRegisteredUserMask * findMatchingMask(const QString &nick,const QString &user,const QString &host);
 	//Only used in few places (actually one) of the code, but lot of times;perfect for inlining...
 	//bool isIgnoredUser(const char * nick,const char * user,const char * host);
 	void load(const QString &filename);

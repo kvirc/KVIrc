@@ -3,7 +3,7 @@
 //   File : kvircmodule.cpp
 //   Creation date : Wed Nov 19 19:11:29 2008 GMT by Elvio Basello
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)
 //
 //   This program is FREE software. You can redistribute it and/or

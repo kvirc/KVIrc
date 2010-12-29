@@ -5,7 +5,7 @@
 //   File : libkvirot13.h
 //   Creation date : Sat Now 4 2000 15:41:41 CEST by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2009 Aeriana (aeriana at quasarnet dot org)
 //   Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)
 //

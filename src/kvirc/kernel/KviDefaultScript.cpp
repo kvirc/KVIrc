@@ -3,7 +3,7 @@
 //   File : KviDefaultScript.cpp
 //   Creation date : Fri Oct 01 2010 19:14:48 by Elvio Basello
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2010 Elvio Basello (hell at hellvis69 dot netsons dot org)
 //
 //   This program is FREE software. You can redistribute it and/or

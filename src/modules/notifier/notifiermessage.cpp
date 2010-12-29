@@ -3,7 +3,7 @@
 //   File : notifiermessage.cpp
 //   Creation date : Mar 02 Nov 2004 02:41:18 by Iacopo Palazzi
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2004-2008 Iacopo <iakko@siena.linux.it>
 //   Copyright (C) 2009 Fabio Bas < ctrlaltca at gmail dot com >
 //

@@ -6,7 +6,7 @@
 //   File : KviRegisteredUserGroup.h
 //   Creation date : Wed Dec 29 2010 02:24:21 CEST by Elvio Basello
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2010 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

@@ -3,7 +3,7 @@
 //   File : libkvirot13.cpp
 //   Creation date : Fri Jan 30 2002 09:25:15 GMT by Aeriana
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2009 Aeriana (aeriana at quasarnet dot org)
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //

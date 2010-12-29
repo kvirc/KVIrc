@@ -5,7 +5,7 @@
 //   File : kvi_fileextensions.h
 //   Creation date : Tue Dec 26 2006 05:09:22 CEST by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)
 //

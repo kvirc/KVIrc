@@ -5,7 +5,7 @@
 //   File : detector.h
 //   Creation date : Sun May 11 1999 00:07:20 CET by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 1999-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

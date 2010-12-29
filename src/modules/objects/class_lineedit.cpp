@@ -3,7 +3,7 @@
 //   File : class_lineedit.cpp
 //   Creation date : Wed 20 Sep 2000 04:34:40 CEST by Krzysztof Godlewski
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //

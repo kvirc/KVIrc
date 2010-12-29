@@ -3,7 +3,7 @@
 //   File : libkvistr.cpp
 //   Creation date : Thu Dec 27 2001 17:13:12 GMT by Szymon Stefanek
 //
-//   This str is part of the KVirc irc client distribution
+//   This str is part of the KVIrc irc client distribution
 //   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright ©        2009 Kai Wasserbäch <debian@carbon-project.org>
 //

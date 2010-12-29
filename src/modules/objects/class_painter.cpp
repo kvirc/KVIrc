@@ -5,7 +5,7 @@
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //   Lucia Papini (^ashura^)  English Translation.
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

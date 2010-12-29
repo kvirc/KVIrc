@@ -3,7 +3,7 @@
 //   File : libkvichan.cpp
 //   Creation date : Sun Feb 02 2002 05:27:11 GMT by Szymon Stefanek
 //
-//   This chan is part of the KVirc irc client distribution
+//   This chan is part of the KVIrc irc client distribution
 //   Copyright (C) 2002 Szymon Stefanek (pragma@kvirc.net)
 //   Copyright (C) 2002 Juanjo Alvarez  (juanjux@yahoo.es)
 //   Copyright (C) 2004-2010 Szymon Stefanek (pragma@kvirc.net)

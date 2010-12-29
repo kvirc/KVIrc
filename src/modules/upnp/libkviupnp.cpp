@@ -3,7 +3,7 @@
 //   File : libkviupnp.cpp
 //   Creation date : Fri Aug 08 18:00:00 2008 GMT by Fabio Bas
 //
-//   This math is part of the KVirc irc client distribution
+//   This math is part of the KVIrc irc client distribution
 //   Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

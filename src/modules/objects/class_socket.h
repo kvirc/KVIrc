@@ -5,7 +5,7 @@
 //   File : class_socket.h
 //   Creation date : Sun Nov 11 03:13:46 2001 GMT by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

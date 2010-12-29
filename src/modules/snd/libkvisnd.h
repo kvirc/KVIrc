@@ -5,7 +5,7 @@
 //   File : libkvisnd.h
 //   Creation date : Thu Dec 27 2002 17:13:12 GMT by Juanjo Alvarez
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2002 Juanjo Alvarez (juanjux at yahoo dot es)
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //

@@ -5,7 +5,7 @@
 //   File : tc_ktorrentdbusinterface.h
 //   Creation date : Mod Nov 17 13:46:00 2008 GMT by Fabio Bas
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

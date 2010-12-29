@@ -3,7 +3,7 @@
 //   File : mp_mp3.h
 //   Creation date : Fri Mar 25 20:01:25 2005 GMT by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2005-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This file is based on the mp3tech.h. It is released under the original

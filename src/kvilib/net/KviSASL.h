@@ -5,7 +5,7 @@
 //   File : KviSASL.h
 //   Creation date : Mon Feb 14 2010 19:36:12 CEST by Fabio Bas
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2010 Fabio Bas (ctrlaltca at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

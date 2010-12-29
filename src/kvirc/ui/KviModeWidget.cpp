@@ -3,7 +3,7 @@
 //   File : KviModeWidget.cpp
 //   Creation date : Sat Nov 12 2005 23:50:12 by Alexey Uzhva
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2005-2008 Alexey Uzhva (wizard at opendoor dot ru)
 //
 //   This program is FREE software. You can redistribute it and/or

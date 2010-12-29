@@ -3,7 +3,7 @@
 //   File : libkvirijndael.cpp
 //   Creation date : Sat Now 4 2000 15:33:12 CEST by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000 Till Bush (buti@geocities.com)
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //

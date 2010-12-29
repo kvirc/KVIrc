@@ -3,7 +3,7 @@
 //   File : KviTalPopupMenu.cpp
 //   Creation date : Mon May 05 2008 11:25:08 by Alessandro Carbone
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2008 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or

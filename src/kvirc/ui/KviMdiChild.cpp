@@ -3,7 +3,7 @@
 //   File : KviMdiChild.cpp
 //   Creation date : Wed Jun 21 2000 17:35:45 by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2008 TheXception (kvirc at thexception dot net)
 //

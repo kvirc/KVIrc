@@ -5,7 +5,7 @@
 //   File : notifierwindow.h
 //   Creation date : Tue Jul 6 2004 20:25:12 CEST by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2005-2008 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
 //

@@ -80,10 +80,10 @@ SET(kvilib_SRCS
 	ext/KviProxyDataBase.cpp
 	ext/KviRegisteredChannel.cpp
 	ext/KviRegisteredChannelDataBase.cpp
-	ext/KviRegisteredMask.cpp
 	ext/KviRegisteredUser.cpp
 	ext/KviRegisteredUserDataBase.cpp
 	ext/KviRegisteredUserGroup.cpp
+	ext/KviRegisteredUserMask.cpp
 	ext/KviSharedFile.cpp
 	ext/KviSharedFilesManager.cpp
 	ext/KviStringConversion.cpp
@@ -99,6 +99,7 @@ SET(kvilib_SRCS
 	irc/KviIrcUserDataBase.cpp
 	irc/KviMircCntrl.cpp
 	irc/KviIrcNetwork.cpp
+	irc/KviNickServRule.cpp
 	irc/KviNickServRuleSet.cpp
 	irc/KviUserIdentity.cpp
 	net/KviDnsResolver.cpp

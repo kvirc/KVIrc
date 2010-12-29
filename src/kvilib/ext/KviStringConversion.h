@@ -6,7 +6,7 @@
 //   File : KviStringConversion.h
 //   Creation date : Thu Oct 20 2000 13:27:12 CEST by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

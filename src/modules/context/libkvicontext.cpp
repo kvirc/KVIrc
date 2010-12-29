@@ -3,7 +3,7 @@
 //   File : libkvicontext.cpp
 //   Creation date : Wed Jan 02 2007 03:04:12 GMT by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2007-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

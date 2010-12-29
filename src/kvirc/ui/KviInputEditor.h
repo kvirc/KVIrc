@@ -5,7 +5,7 @@
 //   File : KviInputEditor.h
 //   Creation date : Fri Sep 5 2008 17:26:34 by Elvio Basello
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2008 Elvio Basello (hell at hellvis69 dot netsons dot org)
 //
 //   This program is FREE software. You can redistribute it and/or

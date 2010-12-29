@@ -3,7 +3,7 @@
 //   File : KviIrcNetwork.cpp
 //   Creation date : Wed Aug 27 2008 17:44:56 by Alexey Uzhva
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2008 Alexey Uzhva (wizard at opendoor dot ru)
 //
 //   This program is FREE software. You can redistribute it and/or

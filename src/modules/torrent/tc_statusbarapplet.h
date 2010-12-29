@@ -7,7 +7,7 @@
 //   File : tc_statusbarapplet.h
 //   Creation date : Fri Jan 1 15:42:25 2007 GMT by Alexander Stillich
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2007-2008 Alexander Stillich (torque at pltn dot org)
 //
 //   This program is FREE software. You can redistribute it and/or

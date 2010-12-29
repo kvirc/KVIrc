@@ -5,7 +5,7 @@
 //   File : KviTheoraDecoder.h
 //   Creation date : Sat Nov 21 2009 22:53:21 CEST by Fabio Bas
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2009 Fabio Bas (ctrlaltca at libero dot it)
 //
 //   This program is FREE software. You can redistribute it and/or

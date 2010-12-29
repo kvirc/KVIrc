@@ -3,7 +3,7 @@
 //   File : KviTreeWindowList.cpp
 //   Creation date : Thu Jan 7 1999 03:56:50 by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 1999 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com)
 //

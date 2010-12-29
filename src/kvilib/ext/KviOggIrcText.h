@@ -5,7 +5,7 @@
 //   File : KviOggIrcText.h
 //   Creation date : Sat Apr 8 2010 22:10:10 CEST by Fabio Bas
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2010 Fabio Bas (ctrlaltca at libero dot it)
 //
 //   This program is FREE software. You can redistribute it and/or

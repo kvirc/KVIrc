@@ -3,7 +3,7 @@
 //   File : optw_interfacefeatures.cpp
 //   Creation date : Sat Jun 2 2001 14:52:53 CEST by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or

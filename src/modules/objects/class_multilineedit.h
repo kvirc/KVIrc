@@ -5,7 +5,7 @@
 //   File : class_multilineedit.cpp
 //   Creation date : Mon Feb 19 2000 00:45:34 CET by Krzysztof Godlewski
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
 //   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
 //

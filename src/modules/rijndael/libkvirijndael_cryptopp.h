@@ -6,7 +6,7 @@
 //   Creation date : Fri, 17 Jul 2009 22:04:54 +0200 by Kai Wasserbäch
 //      based on libkvirjndael.h as this is aimed as drop-in replacement.
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright ©        2009 Kai Wasserbäch <debian@carbon-project.org>
 //
 //   This program is FREE software. You can redistribute it and/or

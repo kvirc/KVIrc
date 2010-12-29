@@ -3,7 +3,7 @@
 //   File : KviLagMeter.cpp
 //   Creation date : Fri Oct 18 13:31:36 CEST 1999 by Juanjo Álvarez
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 1999 Juanjo Álvarez
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //

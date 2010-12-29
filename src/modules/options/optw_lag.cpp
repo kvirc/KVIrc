@@ -3,7 +3,7 @@
 //   File : optw_lag.cpp
 //   Creation date : Wed Cct 16 10:45:54 CEST 2002 by Juanjo Álvarez (juanjux@yahoo.es)
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2002 Juanjo Álvarez
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //

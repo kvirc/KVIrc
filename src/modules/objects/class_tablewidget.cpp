@@ -3,7 +3,7 @@
 //   File : class_tablewidget.cpp
 //   Creation date : Wed 04 Feb 2009 09:30:05 CEST by Carbone Alessandro
 //
-//   This file is part of the KVirc irc client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
