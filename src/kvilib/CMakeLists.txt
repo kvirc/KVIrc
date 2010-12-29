@@ -79,7 +79,10 @@ SET(kvilib_SRCS
 	ext/KviProxy.cpp
 	ext/KviProxyDataBase.cpp
 	ext/KviRegisteredChannel.cpp
+	ext/KviRegisteredMask.cpp
+	ext/KviRegisteredUser.cpp
 	ext/KviRegisteredUserDataBase.cpp
+	ext/KviRegisteredUserGroup.cpp
 	ext/KviSharedFilesManager.cpp
 	ext/KviStringConversion.cpp
 	file/KviFile.cpp

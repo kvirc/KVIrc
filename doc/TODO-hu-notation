@@ -1,6 +1,6 @@
 ################################################################
 # In this file, there are all files which have to be ported to #
-# the Hungarian Notation.                                      #
+# the Hungarian Notation. Files with a '+' are already ported. #
 # http://en.wikipedia.org/wiki/Hungarian_notation              #
 #                                                              #
 # Please keep it updated!                                      #
@@ -79,12 +79,20 @@ KviPixmap.cpp
 KviPixmap.h
 KviPixmapUtils.cpp
 KviPixmapUtils.h
+KviProxy.cpp
+KviProxy.h
 KviProxyDataBase.cpp
 KviProxyDataBase.h
 KviRegisteredChannel.cpp
 KviRegisteredChannel.h
++ KviRegisteredMask.cpp
++ KviRegisteredMask.h
+KviRegisteredUser.cpp
++ KviRegisteredUser.h
 KviRegisteredUserDataBase.cpp
 KviRegisteredUserDataBase.h
++ KviRegisteredUserGroup.cpp
++ KviRegisteredUserGroup.h
 KviSharedFilesManager.cpp
 KviSharedFilesManager.h
 KviStringConversion.cpp
