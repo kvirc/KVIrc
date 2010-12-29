@@ -25,6 +25,7 @@
 #include "KviModule.h"
 #include "KviApplication.h"
 #include "KviLocale.h"
+#include "KviProxy.h"
 #include "KviProxyDataBase.h"
 
 #include <QString>

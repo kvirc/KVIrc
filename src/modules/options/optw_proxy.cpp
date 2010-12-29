@@ -26,6 +26,7 @@
 
 #include "KviLocale.h"
 #include "KviIconManager.h"
+#include "KviProxy.h"
 #include "KviProxyDataBase.h"
 #include "KviIpEditor.h"
 #include "KviNetUtils.h"

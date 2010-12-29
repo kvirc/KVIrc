@@ -28,6 +28,7 @@
 #include "KviDnsResolver.h"
 #include "KviLocale.h"
 #include "KviIrcServerDataBase.h"
+#include "KviProxy.h"
 #include "KviProxyDataBase.h"
 #include "KviError.h"
 #include "kvi_out.h"

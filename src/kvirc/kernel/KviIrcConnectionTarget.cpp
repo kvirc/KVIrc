@@ -27,6 +27,7 @@
 #include "KviIrcConnectionTarget.h"
 #include "KviIrcServer.h"
 #include "KviIrcNetwork.h"
+#include "KviProxy.h"
 #include "KviProxyDataBase.h"
 
 KviIrcConnectionTarget::KviIrcConnectionTarget(

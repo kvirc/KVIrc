@@ -31,10 +31,9 @@
 */
 
 /**
-* \class KviOggIrcText
+* \namespace KviOggIrcText
 * \brief A namespace implementing our tricky codec to send and receive text multiplexed inside an ogg stream
 */
-
 namespace KviOggIrcText
 {
 	/**

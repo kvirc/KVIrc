@@ -25,63 +25,7 @@
 
 #include "KviProxyDataBase.h"
 #include "KviConfigurationFile.h"
-#include "KviQString.h"
-
-
-KviProxy::KviProxy()
-{
-	m_szHostname = "proxy.example.net";
-	m_uPort      = 1080;
-	m_protocol   = Socks4;
-	m_bIsIPv6    = false;
-}
-
-KviProxy::KviProxy(const KviProxy &prx)
-{
-	m_szHostname = prx.m_szHostname;
-	m_szIp       = prx.m_szIp;
-	m_szUser     = prx.m_szUser;
-	m_szPass     = prx.m_szPass;
-	m_uPort      = prx.m_uPort;
-	m_protocol   = prx.m_protocol;
-	m_bIsIPv6    = prx.m_bIsIPv6;
-}
-
-KviProxy::~KviProxy()
-{
-}
-
-static const QString proxy_protocols_table[3]= { "SOCKSv4", "SOCKSv5", "HTTP" };
-
-const QString KviProxy::protocolName() const
-{
-	switch(m_protocol)
-	{
-		case Socks5: return proxy_protocols_table[1]; break;
-		case Http:   return proxy_protocols_table[2]; break;
-		default:     return proxy_protocols_table[0]; break;
-	}
-
-	return proxy_protocols_table[0];
-}
-
-void KviProxy::setNamedProtocol(const char * proto)
-{
-	if(kvi_strEqualCI(proto,"SOCKSv5"))m_protocol = KviProxy::Socks5;
-	else if(kvi_strEqualCI(proto,"HTTP"))m_protocol = KviProxy::Http;
-	else m_protocol = KviProxy::Socks4;
-}
-
-void KviProxy::getSupportedProtocolNames(QStringList & buf)
-{
-	for(int i=0;i<3;i++)buf.append(QString(proxy_protocols_table[i]));
-}
-
-void KviProxy::normalizeUserAndPass()
-{
-	m_szUser.trimmed();
-	m_szPass.trimmed();
-}
+#include "KviProxy.h"
 
 KviProxyDataBase::KviProxyDataBase()
 {

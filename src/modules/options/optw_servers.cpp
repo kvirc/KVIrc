@@ -49,6 +49,7 @@
 #include "KviMessageBox.h"
 #include "KviMexServerImport.h"
 #include "KviNickServRuleSet.h"
+#include "KviProxy.h"
 #include "KviProxyDataBase.h"
 #include "KviKvsScript.h"
 #include "KviPointerHashTable.h"

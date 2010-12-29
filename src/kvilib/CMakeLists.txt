@@ -76,6 +76,7 @@ SET(kvilib_SRCS
 	ext/KviAnimatedPixmap.cpp
 	ext/KviAnimatedPixmapCache.cpp
 	ext/KviNickColors.cpp
+	ext/KviProxy.cpp
 	ext/KviProxyDataBase.cpp
 	ext/KviRegisteredChannel.cpp
 	ext/KviRegisteredUserDataBase.cpp
