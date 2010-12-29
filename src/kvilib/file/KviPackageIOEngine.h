@@ -64,12 +64,15 @@ public:
 	* \brief Destroys the object
 	*/
 	virtual ~KviPackageIOEngine();
-protected:
+
+private:
+
 	QString                                   m_szLastError;
 	KviPointerHashTable<QString,QString>    * m_pStringInfoFields;
 	KviPointerHashTable<QString,QByteArray> * m_pBinaryInfoFields;
 	QProgressDialog                         * m_pProgressDialog;
 	QLabel                                  * m_pProgressDialogLabel;
+
 public:
 	/**
 	* \brief Returns the last error

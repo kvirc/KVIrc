@@ -33,13 +33,16 @@
 #include "kvi_settings.h"
 
 #include "KviQString.h"
-#include "KviPointerList.h"
 #include "KviPackageIOEngine.h"
 
 #include <QByteArray>
 
 class QFileInfo;
 class KviFile;
+
+class KviPackageWriterPrivate;
+class KviPackageWriterDataField;
+
 
 /**
 * \class KviPackageWriter
@@ -51,6 +54,7 @@ class KviFile;
 class KVILIB_API KviPackageWriter : public KviPackageIOEngine
 {
 public:
+
 	/**
 	* \brief Creates the package writer object
 	* \return KviPackageWriter
@@ -61,30 +65,21 @@ public:
 	* \brief Destroys the object
 	*/
 	virtual ~KviPackageWriter();
-protected:
-	/**
-	* \class DataField
-	* \brief This class holds the data for the fields
-	*/
-	class DataField
-	{
-	public:
-		kvi_u32_t m_uType;
-		// output length of the field
-		kvi_u32_t m_uWrittenFieldLength;
-		// data fields for the File DataFieldType
-		bool m_bFileAllowCompression;
-		QString m_szFileLocalName;
-		QString m_szFileTargetName;
-	};
 
-	KviPointerList<DataField> * m_pDataFields;
-	int m_iCurrentProgress;
+private:
+
+	/**
+	* Hidden private data
+	*/
+	KviPackageWriterPrivate * m_p;
+
 public:
+
 	/**
 	* \enum AddFileFlags
 	*/
-	enum AddFileFlags {
+	enum AddFileFlags
+	{
 		NoCompression = 1, /**< If you don't want to compress the file */
 		FollowSymLinks = 2 /**< If you want to follow the symlinks */
 	};
@@ -92,7 +87,8 @@ public:
 	/**
 	* \enum PackFlags
 	*/
-	enum PackFlags {
+	enum PackFlags
+	{
 		NoProgressDialog = 1 /**< If you want to avoid the progress dialog */
 	};
 
@@ -147,6 +143,7 @@ public:
 	* \return bool
 	*/
 	bool pack(const QString & szFileName, kvi_u32_t uPackFlags = 0);
+
 private:
 	/**
 	* \brief Attempts to pack everything and store it as the specified file.
@@ -166,7 +163,7 @@ private:
 	* \param pDataField The data field for the package
 	* \return bool
 	*/
-	bool packFile(KviFile * pFile, DataField * pDataField);
+	bool packFile(KviFile * pFile, KviPackageWriterDataField * pDataField);
 
 	/**
 	* \brief Adds a file to the package.
@@ -179,7 +176,8 @@ private:
 	* \return bool
 	*/
 	bool addFileInternal(const QFileInfo * fi, const QString & szLocalFileName, const QString & szTargetFileName, kvi_u32_t uAddFileFlags = 0);
-};
+
+}; // class KviPackageWriter
 
 
 

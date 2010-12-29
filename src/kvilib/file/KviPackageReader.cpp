@@ -87,8 +87,8 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 	if(!pFile->load(uCount))
 		return writeError();
 
-	m_pStringInfoFields->clear();
-	m_pBinaryInfoFields->clear();
+	stringInfoFields()->clear();
+	binaryInfoFields()->clear();
 
 	kvi_u32_t uIdx = 0;
 	while(uIdx < uCount)
@@ -105,7 +105,7 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 			{
 				QString szValue;
 				if(!pFile->load(szValue))return readError();
-				m_pStringInfoFields->replace(szKey,new QString(szValue));
+				stringInfoFields()->replace(szKey,new QString(szValue));
 			}
 			break;
 			case KVI_PACKAGE_INFOFIELD_TYPE_BINARYBUFFER:
@@ -116,7 +116,7 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 					delete pbValue;
 					return readError();
 				}
-				m_pBinaryInfoFields->replace(szKey,pbValue);
+				binaryInfoFields()->replace(szKey,pbValue);
 			}
 			break;
 			default:
@@ -374,7 +374,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 bool KviPackageReader::getStringInfoField(const QString &szName,QString &szBuffer)
 {
-	QString * pVal = m_pStringInfoFields->find(szName);
+	QString * pVal = stringInfoFields()->find(szName);
 	if(!pVal)
 		return false;
 	szBuffer = *pVal;

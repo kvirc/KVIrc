@@ -27,6 +27,8 @@
 #include "KviFile.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
+#include "KviPointerList.h"
+
 #include "kvi_inttypes.h"
 
 #include <QDir>
@@ -40,26 +42,48 @@
 //
 
 
+class KviPackageWriterDataField
+{
+public:
+	kvi_u32_t m_uType;
+	// output length of the field
+	kvi_u32_t m_uWrittenFieldLength;
+	// data fields for the File KviPackageWriterDataFieldType
+	bool m_bFileAllowCompression;
+	QString m_szFileLocalName;
+	QString m_szFileTargetName;
+};
+
+class KviPackageWriterPrivate
+{
+public:
+	KviPointerList<KviPackageWriterDataField> * pDataFields;
+	int iCurrentProgress;
+};
+
+
 KviPackageWriter::KviPackageWriter()
 : KviPackageIOEngine()
 {
-	m_pDataFields = new KviPointerList<DataField>();
-	m_pDataFields->setAutoDelete(true);
+	m_p = new KviPackageWriterPrivate();
+	m_p->pDataFields = new KviPointerList<KviPackageWriterDataField>();
+	m_p->pDataFields->setAutoDelete(true);
 }
 
 KviPackageWriter::~KviPackageWriter()
 {
-	delete m_pDataFields;
+	delete m_p->pDataFields;
+	delete m_p;
 }
 
 void KviPackageWriter::addInfoField(const QString &szName,const QString &szValue)
 {
-	m_pStringInfoFields->replace(szName,new QString(szValue));
+	stringInfoFields()->replace(szName,new QString(szValue));
 }
 
 void KviPackageWriter::addInfoField(const QString &szName,QByteArray * pValue)
 {
-	m_pBinaryInfoFields->replace(szName,pValue);
+	binaryInfoFields()->replace(szName,pValue);
 }
 
 bool KviPackageWriter::addFile(const QString &szLocalFileName,const QString &szTargetFileName,kvi_u32_t uAddFileFlags)
@@ -79,12 +103,12 @@ bool KviPackageWriter::addFileInternal(const QFileInfo * fi,const QString &szLoc
 			return true; // do NOT add a symlink
 	}
 
-	DataField * f = new DataField();
+	KviPackageWriterDataField * f = new KviPackageWriterDataField();
 	f->m_uType = KVI_PACKAGE_DATAFIELD_TYPE_FILE;
 	f->m_bFileAllowCompression = !(uAddFileFlags & NoCompression);
 	f->m_szFileLocalName = szLocalFileName;
 	f->m_szFileTargetName = szTargetFileName;
-	m_pDataFields->append(f);
+	m_p->pDataFields->append(f);
 
 	return true;
 }
@@ -138,11 +162,11 @@ bool KviPackageWriter::addDirectory(const QString &szLocalDirectoryName,const QS
 
 #define BUFFER_SIZE 32768
 
-bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
+bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDataField)
 {
 	QString szProgressText;
 	KviQString::sprintf(szProgressText,__tr2qs("Packaging file %Q"),&(pDataField->m_szFileLocalName));
-	if(!updateProgress(m_iCurrentProgress,szProgressText))
+	if(!updateProgress(m_p->iCurrentProgress,szProgressText))
 		return false; // aborted
 
 
@@ -252,7 +276,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 					QString szTmp;
 					KviQString::sprintf(szTmp,QString(" (%d of %d bytes)"),zstr.total_in,uSize);
 					QString szPrg = szProgressText + szTmp;
-					if(!updateProgress(m_iCurrentProgress,szPrg))
+					if(!updateProgress(m_p->iCurrentProgress,szPrg))
 						return false; // aborted
 				}
 			}
@@ -320,7 +344,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 				QString szTmp;
 				KviQString::sprintf(szTmp,QString(" (%d of %d bytes)"),iTotalFileSize,uSize);
 				QString szPrg = szProgressText + szTmp;
-				if(!updateProgress(m_iCurrentProgress,szPrg))
+				if(!updateProgress(m_p->iCurrentProgress,szPrg))
 					return false; // aborted
 			}
 			pDataField->m_uWrittenFieldLength += iReaded;
@@ -338,11 +362,11 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 
 bool KviPackageWriter::pack(const QString &szFileName,kvi_u32_t uPackFlags)
 {
-	m_iCurrentProgress = 0;
+	m_p->iCurrentProgress = 0;
 	if(!(uPackFlags & NoProgressDialog))
 	{
 		showProgressDialog(__tr2qs("Creating package..."),100);
-		updateProgress(m_iCurrentProgress,__tr2qs("Writing package header"));
+		updateProgress(m_p->iCurrentProgress,__tr2qs("Writing package header"));
 	}
 
 	bool bRet = packInternal(szFileName,uPackFlags);
@@ -385,16 +409,16 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 	// write PackageInfo
 
 	// InfoFieldCount
-	kvi_u32_t uCount = m_pStringInfoFields->count() + m_pBinaryInfoFields->count();
+	kvi_u32_t uCount = stringInfoFields()->count() + binaryInfoFields()->count();
 	if(!f.save(uCount))
 		return writeError();
 
-	m_iCurrentProgress = 5;
-	if(!updateProgress(m_iCurrentProgress,__tr2qs("Writing informational fields")))
+	m_p->iCurrentProgress = 5;
+	if(!updateProgress(m_p->iCurrentProgress,__tr2qs("Writing informational fields")))
 		return false; // aborted
 
 	// InfoFields (string)
-	KviPointerHashTableIterator<QString,QString> it(*m_pStringInfoFields);
+	KviPointerHashTableIterator<QString,QString> it(*stringInfoFields());
 	while(QString * s = it.current())
 	{
 		if(!f.save(it.currentKey()))
@@ -408,7 +432,7 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 	}
 
 	// InfoFields (binary)
-	KviPointerHashTableIterator<QString,QByteArray> it2(*m_pBinaryInfoFields);
+	KviPointerHashTableIterator<QString,QByteArray> it2(*binaryInfoFields());
 	while(QByteArray * b = it2.current())
 	{
 		if(!f.save(it2.currentKey()))
@@ -421,22 +445,22 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 		++it2;
 	}
 
-	m_iCurrentProgress = 10;
-	if(!updateProgress(m_iCurrentProgress,__tr2qs("Writing package data")))
+	m_p->iCurrentProgress = 10;
+	if(!updateProgress(m_p->iCurrentProgress,__tr2qs("Writing package data")))
 		return false; // aborted
 
 	// write PackageData
 	int iIdx = 0;
-	for(DataField * pDataField = m_pDataFields->first();pDataField;pDataField = m_pDataFields->next())
+	for(KviPackageWriterDataField * pDataField = m_p->pDataFields->first();pDataField;pDataField = m_p->pDataFields->next())
 	{
-		kvi_u32_t uDataFieldType = pDataField->m_uType;
-		if(!f.save(uDataFieldType))return writeError();
+		kvi_u32_t uKviPackageWriterDataFieldType = pDataField->m_uType;
+		if(!f.save(uKviPackageWriterDataFieldType))return writeError();
 
 		kvi_file_offset_t savedLenOffset = f.pos();
 		// here we will store the length of the field once it's written
-		if(!f.save(uDataFieldType))return writeError();
+		if(!f.save(uKviPackageWriterDataFieldType))return writeError();
 
-		m_iCurrentProgress = 10 + ((90 * iIdx) / m_pDataFields->count());
+		m_p->iCurrentProgress = 10 + ((90 * iIdx) / m_p->pDataFields->count());
 
 		switch(pDataField->m_uType)
 		{
