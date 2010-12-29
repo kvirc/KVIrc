@@ -78,13 +78,6 @@ public:
 	const QString & lastError(){ return m_szLastError; };
 
 	/**
-	* \brief Sets the last error
-	* \param szLastError The string error
-	* \return void
-	*/
-	void setLastError(const QString & szLastError){ m_szLastError = szLastError; };
-
-	/**
 	* \brief Returns the string info fields
 	* \return KviPointerHashTable<QString,QString> *
 	*/
@@ -96,6 +89,14 @@ public:
 	*/
 	KviPointerHashTable<QString,QByteArray> * binaryInfoFields(){ return m_pBinaryInfoFields; };
 protected:
+
+	/**
+	* \brief Sets the last error
+	* \param szLastError The string error
+	* \return void
+	*/
+	void setLastError(const QString & szLastError){ m_szLastError = szLastError; };
+
 	/**
 	* \brief Shows the progress dialog
 	* \param szCaption The caption of the dialog window
