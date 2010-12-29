@@ -50,6 +50,7 @@
 #include "KviUrl.h"
 #include "KviTalPopupMenu.h"
 #include "KviTalToolTip.h"
+#include "KviDataBuffer.h"
 
 #include <QPainter>
 #include <QStyle>

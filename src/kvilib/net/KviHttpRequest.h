@@ -1,5 +1,5 @@
-#ifndef _KVI_HTTP_H_
-#define _KVI_HTTP_H_
+#ifndef _KviHttpRequest_h_
+#define _KviHttpRequest_h_
 //=============================================================================
 //
 //   File : KviHttpRequest.h
@@ -25,12 +25,10 @@
 //=============================================================================
 
 #include "kvi_settings.h"
+#include "kvi_inttypes.h"
+
 #include "KviHeapObject.h"
 #include "KviCString.h"
-#include "KviThread.h"
-#include "kvi_sockettype.h"
-#include "KviDataBuffer.h"
-#include "kvi_inttypes.h"
 #include "KviUrl.h"
 #include "KviPointerHashTable.h"
 #include "KviFile.h"
@@ -39,6 +37,7 @@
 #include <QStringList>
 
 class KviDnsResolver;
+class KviDataBuffer;
 class KviSSL;
 class KviHttpRequestThread;
 
@@ -47,6 +46,8 @@ class KviHttpRequestThread;
 // It's able to send GET, POST and HEAD requests,
 // download stuff to a file or to a qt SLOT().
 //
+
+// FIXME: Document and hide internals.
 
 class KVILIB_API KviHttpRequest : public QObject, public KviHeapObject
 {
@@ -165,61 +166,4 @@ signals:
 };
 
 
-class KviHttpRequestThread : public KviSensitiveThread
-{
-	friend class KviHttpRequest;
-public:
-	enum RequestMethod { Post, Get, Head };
-protected:
-	KviHttpRequestThread(KviHttpRequest * r,
-			const QString &szHost,
-			const QString &szIp,
-			unsigned short uPort,
-			const QString &szPath,
-			unsigned int uContentOffset,
-			RequestMethod m,
-			const QString &szPostData = QString(),
-			bool bUseSSL = false
-		);
-
-public:
-	~KviHttpRequestThread();
-protected:
-	KviHttpRequest * m_pRequest;
-
-	QString           m_szHost;
-	QString          m_szIp;
-	QString          m_szPath;
-	unsigned int     m_uContentOffset;
-	RequestMethod    m_eRequestMethod;
-	QString          m_szPostData;
-
-	unsigned short   m_uPort;
-	kvi_socket_t     m_sock;
-	bool             m_bUseSSL;
-	unsigned int     m_uConnectionTimeout;
-#ifdef COMPILE_SSL_SUPPORT
-	KviSSL         * m_pSSL;
-#endif
-protected:
-	void setConnectionTimeout(unsigned int uTimeout)
-	{
-		m_uConnectionTimeout = uTimeout;
-		if(m_uConnectionTimeout < 5)
-			m_uConnectionTimeout = 5; // keep it sane
-	}
-	int selectForReadStep();
-	bool selectForRead(int iTimeoutInSecs);
-	bool readDataStep();
-	bool sendBuffer(const char *buffer,int bufLen,int iTimeoutInSecs);
-	bool failure(const char *error=0);
-	bool sslFailure();
-	bool selectForWrite(int iTimeoutInSecs);
-	bool connectToRemoteHost();
-	bool processInternalEvents();
-	void runInternal();
-	virtual void run();
-};
-
-
-#endif //_KVI_HTTP_H_
+#endif //_KviHttpRequest_h_
