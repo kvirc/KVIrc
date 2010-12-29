@@ -1,120 +1,127 @@
-################################################################
-# In this file, there are all files which have to be ported to #
-# the Hungarian Notation.                                      #
-# http://en.wikipedia.org/wiki/Hungarian_notation              #
-#                                                              #
-# PLEASE KEEP IT UPDATED!                                      #
-#                                                              #
-# Legend:                                                      #
-# + -> file already ported                                     #
-# - -> file in which the porting is incomplete in any part     #
-################################################################
+##################################################################
+# In this file, there are all files which have to be documented. #
+#                                                                #
+# Documenting these files involves two steps:
+# 1. port the files to the Hungarian Notation                    #
+#    http://en.wikipedia.org/wiki/Hungarian_notation             #
+# 2. adding Doxygen documentation using its special comments to  #
+#    complete the milestone "Code cleanups and documentation"    #
+#    https://svn.kvirc.de/kvirc/roadmap                          #
+#                                                                #
+# Legend:                                                        #
+# The first column refers to step 1, the second one to step 2    #
+# + -> the file is documented                                    #
+# - -> the file is partially documented                          #
+#                                                                #
+# PLEASE KEEP IT UPDATED!                                        #
+#                                                                #
+##################################################################
 
 
 #################
 # kvilib/config #
 #################
 
-KviBuildInfo.cpp
-KviBuildInfo.h
-kvi_shortcuts.h
-kvi_settings.h
-kvi_defaults.h
-kvi_debug.h
-kvi_confignames.h
-kvi_sourcesdate.h
-kvi_fileextensions.h
+  KviBuildInfo.cpp
+  KviBuildInfo.h
+  kvi_shortcuts.h
+  kvi_settings.h
+  kvi_defaults.h
+  kvi_debug.h
+  kvi_confignames.h
+  kvi_sourcesdate.h
+  kvi_fileextensions.h
 
 
 ###############
 # kvilib/core #
 ###############
 
-KviCString.cpp
-KviCString.h
-KviError.cpp
-KviError.h
-KviHeapObject.cpp
-KviHeapObject.h
-KviMemory.cpp
-KviMemory.h
-KviPointerList.h
-KviPointerHashTable.h
-KviQString.cpp
-KviQString.h
-kvi_inttypes.h
+  KviCString.cpp
+  KviCString.h
+  KviError.cpp
+  KviError.h
+  KviHeapObject.cpp
+  KviHeapObject.h
+  KviMemory.cpp
+  KviMemory.h
+  KviPointerList.h
+  KviPointerHashTable.h
+  KviQString.cpp
+  KviQString.h
+  kvi_inttypes.h
 
 
 ##############
 # kvilib/ext #
 ##############
 
-KviAnimatedPixmap.cpp
-KviAnimatedPixmap.h
-KviAnimatedPixmapCache.cpp
-KviAnimatedPixmapCache.h
+  KviAnimatedPixmap.cpp
+  KviAnimatedPixmap.h
+  KviAnimatedPixmapCache.cpp
+  KviAnimatedPixmapCache.h
 + KviAnimatedPixmapInterface.h
-KviCommandFormatter.cpp
-KviCommandFormatter.h
-KviConfigurationFile.cpp
-KviConfigurationFile.h
-KviCryptEngine.cpp
-KviCryptEngine.h
+  KviCommandFormatter.cpp
+  KviCommandFormatter.h
+  KviConfigurationFile.cpp
+  KviConfigurationFile.h
+  KviCryptEngine.cpp
+  KviCryptEngine.h
 + KviCryptEngineDescription.h
 + KviCryptEngineManager.cpp
 + KviCryptEngineManager.h
-KviDataBuffer.cpp
-KviDataBuffer.h
-KviDbusAdaptor.cpp
-KviDbusAdaptor.h
-KviDebugContext.cpp
-KviDebugContext.h
-KviMediaManager.cpp
-KviMediaManager.h
-KviMediaType.h
-KviMessageTypeSettings.cpp
-KviMessageTypeSettings.h
-KviMiscUtils.cpp
-KviMiscUtils.h
-KviNickColors.cpp
-KviNickColors.h
-KviOggIrcText.h
-KviOggTheoraDecoder.cpp
-KviOggTheoraDecoder.h
-KviOggTheoraEncoder.cpp
-KviOggTheoraEncoder.h
-KviOggTheoraGeometry.h
-KviOsInfo.cpp
-KviOsInfo.h
-KviParameterList.cpp
-KviParameterList.h
-KviPixmap.cpp
-KviPixmap.h
-KviPixmapUtils.cpp
-KviPixmapUtils.h
-KviProxy.cpp
-KviProxy.h
-KviProxyDataBase.cpp
-KviProxyDataBase.h
+  KviDataBuffer.cpp
+  KviDataBuffer.h
+  KviDbusAdaptor.cpp
+  KviDbusAdaptor.h
+  KviDebugContext.cpp
+  KviDebugContext.h
+  KviMediaManager.cpp
+  KviMediaManager.h
+  KviMediaType.h
+  KviMessageTypeSettings.cpp
+  KviMessageTypeSettings.h
+  KviMiscUtils.cpp
+  KviMiscUtils.h
+  KviNickColors.cpp
+  KviNickColors.h
+  KviOggIrcText.h
+  KviOggTheoraDecoder.cpp
+  KviOggTheoraDecoder.h
+  KviOggTheoraEncoder.cpp
+  KviOggTheoraEncoder.h
+  KviOggTheoraGeometry.h
+  KviOsInfo.cpp
+  KviOsInfo.h
+  KviParameterList.cpp
+  KviParameterList.h
+  KviPixmap.cpp
+  KviPixmap.h
+  KviPixmapUtils.cpp
+  KviPixmapUtils.h
+  KviProxy.cpp
+  KviProxy.h
+  KviProxyDataBase.cpp
+  KviProxyDataBase.h
 + KviRegisteredChannel.cpp
 + KviRegisteredChannel.h
-KviRegisteredChannelDataBase.cpp
+  KviRegisteredChannelDataBase.cpp
 + KviRegisteredChannelDataBase.h
-KviRegisteredUser.cpp
+  KviRegisteredUser.cpp
 + KviRegisteredUser.h
-KviRegisteredUserDataBase.cpp
-KviRegisteredUserDataBase.h
+  KviRegisteredUserDataBase.cpp
+  KviRegisteredUserDataBase.h
 + KviRegisteredUserGroup.cpp
 + KviRegisteredUserGroup.h
 + KviRegisteredUserMask.cpp
 + KviRegisteredUserMask.h
 + KviSharedFile.cpp
 + KviSharedFile.h
-KviSharedFilesManager.cpp
-KviSharedFilesManager.h
-KviStringConversion.cpp
-KviStringConversion.h
-KviXlib.h
+  KviSharedFilesManager.cpp
+  KviSharedFilesManager.h
+  KviStringConversion.cpp
+  KviStringConversion.h
+  KviXlib.h
 
 
 #######################
@@ -137,66 +144,66 @@ videoinput.h
 # kvilib/file #
 ###############
 
-KviPackageIOEngine.cpp
-KviPackageIOEngine.h
-KviPackageReader.cpp
-KviPackageReader.h
-KviPackageWriter.cpp
-KviPackageWriter.h
-KviFileUtils.cpp
-KviFileUtils.h
-KviFile.cpp
-KviFile.h
+  KviPackageIOEngine.cpp
+  KviPackageIOEngine.h
+  KviPackageReader.cpp
+  KviPackageReader.h
+  KviPackageWriter.cpp
+  KviPackageWriter.h
+  KviFileUtils.cpp
+  KviFileUtils.h
+  KviFile.cpp
+  KviFile.h
 
 
 ##############
 # kvilib/irc #
 ##############
 
-KviAvatar.cpp
-KviAvatar.h
-KviAvatarCache.cpp
-KviAvatarCache.h
-KviIdentityProfile.cpp
-KviIdentityProfile.h
-KviIrcMask.cpp
-KviIrcMask.h
-KviIrcNetwork.cpp
-KviIrcNetwork.h
-KviIrcServer.cpp
-KviIrcServer.h
-KviIrcServerDataBase.cpp
-KviIrcServerDataBase.h
-KviIrcUserDataBase.cpp
-KviIrcUserDataBase.h
-KviMircCntrl.cpp
-KviMircCntrl.h
-KviNickServRule.cpp
-KviNickServRule.h
-KviNickServRuleSet.cpp
-KviNickServRuleSet.h
-KviUserIdentity.cpp
-KviUserIdentity.h
+  KviAvatar.cpp
+  KviAvatar.h
+  KviAvatarCache.cpp
+  KviAvatarCache.h
+  KviIdentityProfile.cpp
+  KviIdentityProfile.h
+  KviIrcMask.cpp
+  KviIrcMask.h
+  KviIrcNetwork.cpp
+  KviIrcNetwork.h
+  KviIrcServer.cpp
+  KviIrcServer.h
+  KviIrcServerDataBase.cpp
+  KviIrcServerDataBase.h
+  KviIrcUserDataBase.cpp
+  KviIrcUserDataBase.h
+  KviMircCntrl.cpp
+  KviMircCntrl.h
+  KviNickServRule.cpp
+  KviNickServRule.h
+  KviNickServRuleSet.cpp
+  KviNickServRuleSet.h
+  KviUserIdentity.cpp
+  KviUserIdentity.h
 
 
 ##############
 # kvilib/net #
 ##############
 
-KviDnsResolver.cpp
-KviDnsResolver.h
-KviHttpRequest.cpp
-KviHttpRequest.h
-KviHttpRequestThread.cpp
-KviHttpRequestThread.h
-KviNetUtils.cpp
-KviNetUtils.h
-KviSASL.cpp
-KviSASL.h
-KviSSL.cpp
-KviSSL.h
-KviUrl.cpp
-KviUrl.h
+  KviDnsResolver.cpp
+  KviDnsResolver.h
+  KviHttpRequest.cpp
+  KviHttpRequest.h
+  KviHttpRequestThread.cpp
+  KviHttpRequestThread.h
+  KviNetUtils.cpp
+  KviNetUtils.h
+  KviSASL.cpp
+  KviSASL.h
+  KviSSL.cpp
+  KviSSL.h
+  KviUrl.cpp
+  KviUrl.h
 kvi_socket.cpp
 kvi_socket.h
 kvi_sockettype.h
@@ -206,15 +213,15 @@ kvi_sockettype.h
 # kvilib/system #
 #################
 
-KviByteOrder.h
-KviEnvironment.cpp
-KviEnvironment.h
-KviLocale.cpp
-KviLocale.h
-KviThread.cpp
-KviThread.h
-KviTimeUtils.cpp
-KviTimeUtils.h
+  KviByteOrder.h
+  KviEnvironment.cpp
+  KviEnvironment.h
+  KviLocale.cpp
+  KviLocale.h
+  KviThread.cpp
+  KviThread.h
+  KviTimeUtils.cpp
+  KviTimeUtils.h
 kvi_stdarg.h
 
 
@@ -222,515 +229,515 @@ kvi_stdarg.h
 # kvilib/tal #
 ##############
 
-KviTalApplication.cpp
-KviTalApplication.h
-KviTalFileDialog.cpp
-KviTalFileDialog.h
-KviTalGroupBox.cpp
-KviTalGroupBox.h
-KviTalHBox.cpp
-KviTalHBox.h
-KviTalIconAndRichTextItemDelegate.cpp
-KviTalIconAndRichTextItemDelegate.h
-KviTalListWidget.cpp
-KviTalListWidget.h
-KviTalMainWindow.cpp
-KviTalMainWindow.h
-KviTalMenuBar.cpp
-KviTalMenuBar.h
-KviTalPopupMenu.cpp
-KviTalPopupMenu.h
-KviTalSplitter.cpp
-KviTalSplitter.h
-KviTalTabDialog.cpp
-KviTalTabDialog.h
-KviTalTableWidget.cpp
-KviTalTableWidget.h
-KviTalToolBar.cpp
-KviTalToolBar.h
-KviTalToolTip.cpp
-KviTalToolTip.h
-KviTalVBox.cpp
-KviTalVBox.h
-KviTalWizard.cpp
-KviTalWizard.h
+  KviTalApplication.cpp
+  KviTalApplication.h
+  KviTalFileDialog.cpp
+  KviTalFileDialog.h
+  KviTalGroupBox.cpp
+  KviTalGroupBox.h
+  KviTalHBox.cpp
+  KviTalHBox.h
+  KviTalIconAndRichTextItemDelegate.cpp
+  KviTalIconAndRichTextItemDelegate.h
+  KviTalListWidget.cpp
+  KviTalListWidget.h
+  KviTalMainWindow.cpp
+  KviTalMainWindow.h
+  KviTalMenuBar.cpp
+  KviTalMenuBar.h
+  KviTalPopupMenu.cpp
+  KviTalPopupMenu.h
+  KviTalSplitter.cpp
+  KviTalSplitter.h
+  KviTalTabDialog.cpp
+  KviTalTabDialog.h
+  KviTalTableWidget.cpp
+  KviTalTableWidget.h
+  KviTalToolBar.cpp
+  KviTalToolBar.h
+  KviTalToolTip.cpp
+  KviTalToolTip.h
+  KviTalVBox.cpp
+  KviTalVBox.h
+  KviTalWizard.cpp
+  KviTalWizard.h
 
 
 ################
 # kvirc/kernel #
 ################
 
-KviAction.cpp
-KviAction.h
-KviActionManager.cpp
-KviActionManager.h
-KviApplication.cpp
-KviApplication.h
-KviApplication_filesystem.cpp
-KviApplication_setup.cpp
-KviAsynchronousConnectionData.cpp
-KviAsynchronousConnectionData.h
-KviCoreActions.cpp
-KviCoreActions.h
-KviCustomToolBarDescriptor.cpp
-KviCustomToolBarDescriptor.h
-KviCustomToolBarManager.cpp
-KviCustomToolBarManager.h
-KviDefaultScript.cpp
-KviDefaultScript.h
-KviFileTransfer.cpp
-KviFileTransfer.h
-KviHtmlGenerator.cpp
-KviHtmlGenerator.h
-KviIconManager.cpp
-KviIconManager.h
-KviInternalCommand.cpp
-KviInternalCommand.h
-KviIpcSentinel.cpp
-KviIpcSentinel.h
-KviIrcConnection.cpp
-KviIrcConnection.h
-KviIrcConnectionAntiCtcpFloodData.cpp
-KviIrcConnectionAntiCtcpFloodData.h
-KviIrcConnectionAsyncData.h
-KviIrcConnectionAsyncWhoisData.cpp
-KviIrcConnectionAsyncWhoisData.h
-KviIrcConnectionNetsplitDetectorData.cpp
-KviIrcConnectionNetsplitDetectorData.h
-KviIrcConnectionRequestQueue.cpp
-KviIrcConnectionRequestQueue.h
-KviIrcConnectionServerInfo.cpp
-KviIrcConnectionServerInfo.h
-KviIrcConnectionStateData.cpp
-KviIrcConnectionStateData.h
-KviIrcConnectionStatistics.cpp
-KviIrcConnectionStatistics.h
-KviIrcConnectionTarget.cpp
-KviIrcConnectionTarget.h
-KviIrcConnectionTargetResolver.cpp
-KviIrcConnectionTargetResolver.h
-KviIrcConnectionUserInfo.cpp
-KviIrcConnectionUserInfo.h
-KviIrcContext.cpp
-KviIrcContext.h
-KviIrcDataStreamMonitor.cpp
-KviIrcDataStreamMonitor.h
-KviIrcLink.cpp
-KviIrcLink.h
-KviIrcSocket.cpp
-KviIrcSocket.h
-KviIrcUrl.cpp
-KviIrcUrl.h
-KviLagMeter.cpp
-KviLagMeter.h
-KviMain.cpp
-KviNotifyList.cpp
-KviNotifyList.h
-KviOptions.cpp
-KviOptions.h
-KviSSLMaster.cpp
-KviSSLMaster.h
-KviTextIconManager.cpp
-KviTextIconManager.h
-KviTheme.cpp
-KviTheme.h
-KviUserAction.cpp
-KviUserAction.h
-KviUserInput.cpp
-KviUserInput.h
-kvi_coreactionnames.h
-kvi_out.h
+  KviAction.cpp
+  KviAction.h
+  KviActionManager.cpp
+  KviActionManager.h
+  KviApplication.cpp
+  KviApplication.h
+  KviApplication_filesystem.cpp
+  KviApplication_setup.cpp
+  KviAsynchronousConnectionData.cpp
+  KviAsynchronousConnectionData.h
+  KviCoreActions.cpp
+  KviCoreActions.h
+  KviCustomToolBarDescriptor.cpp
+  KviCustomToolBarDescriptor.h
+  KviCustomToolBarManager.cpp
+  KviCustomToolBarManager.h
+  KviDefaultScript.cpp
+  KviDefaultScript.h
+  KviFileTransfer.cpp
+  KviFileTransfer.h
+  KviHtmlGenerator.cpp
+  KviHtmlGenerator.h
+  KviIconManager.cpp
+  KviIconManager.h
+  KviInternalCommand.cpp
+  KviInternalCommand.h
+  KviIpcSentinel.cpp
+  KviIpcSentinel.h
+  KviIrcConnection.cpp
+  KviIrcConnection.h
+  KviIrcConnectionAntiCtcpFloodData.cpp
+  KviIrcConnectionAntiCtcpFloodData.h
+  KviIrcConnectionAsyncData.h
+  KviIrcConnectionAsyncWhoisData.cpp
+  KviIrcConnectionAsyncWhoisData.h
+  KviIrcConnectionNetsplitDetectorData.cpp
+  KviIrcConnectionNetsplitDetectorData.h
+  KviIrcConnectionRequestQueue.cpp
+  KviIrcConnectionRequestQueue.h
+  KviIrcConnectionServerInfo.cpp
+  KviIrcConnectionServerInfo.h
+  KviIrcConnectionStateData.cpp
+  KviIrcConnectionStateData.h
+  KviIrcConnectionStatistics.cpp
+  KviIrcConnectionStatistics.h
+  KviIrcConnectionTarget.cpp
+  KviIrcConnectionTarget.h
+  KviIrcConnectionTargetResolver.cpp
+  KviIrcConnectionTargetResolver.h
+  KviIrcConnectionUserInfo.cpp
+  KviIrcConnectionUserInfo.h
+  KviIrcContext.cpp
+  KviIrcContext.h
+  KviIrcDataStreamMonitor.cpp
+  KviIrcDataStreamMonitor.h
+  KviIrcLink.cpp
+  KviIrcLink.h
+  KviIrcSocket.cpp
+  KviIrcSocket.h
+  KviIrcUrl.cpp
+  KviIrcUrl.h
+  KviLagMeter.cpp
+  KviLagMeter.h
+  KviMain.cpp
+  KviNotifyList.cpp
+  KviNotifyList.h
+  KviOptions.cpp
+  KviOptions.h
+  KviSSLMaster.cpp
+  KviSSLMaster.h
+  KviTextIconManager.cpp
+  KviTextIconManager.h
+  KviTheme.cpp
+  KviTheme.h
+  KviUserAction.cpp
+  KviUserAction.h
+  KviUserInput.cpp
+  KviUserInput.h
+  kvi_coreactionnames.h
+  kvi_out.h
 
 
 #############
 # kvirc/kvs #
 #############
 
-KviKvs.cpp
-KviKvs.h
-KviKvsAction.cpp
-KviKvsAction.h
-KviKvsAliasManager.cpp
-KviKvsAliasManager.h
-KviKvsArray.cpp
-KviKvsArray.h
-KviKvsArrayCast.cpp
-KviKvsArrayCast.h
-KviKvsAsyncDnsOperation.cpp
-KviKvsAsyncDnsOperation.h
-KviKvsAsyncOperation.cpp
-KviKvsAsyncOperation.h
-KviKvsCallbackObject.cpp
-KviKvsCallbackObject.h
-KviKvsCoreCallbackCommands.cpp
-KviKvsCoreCallbackCommands.h
-KviKvsCoreFunctions.cpp
-KviKvsCoreFunctions.h
-KviKvsCoreFunctions_af.cpp
-KviKvsCoreFunctions_gl.cpp
-KviKvsCoreFunctions_mr.cpp
-KviKvsCoreFunctions_sz.cpp
-KviKvsCoreSimpleCommands.cpp
-KviKvsCoreSimpleCommands.h
-KviKvsCoreSimpleCommands_af.cpp
-KviKvsCoreSimpleCommands_gl.cpp
-KviKvsCoreSimpleCommands_mr.cpp
-KviKvsCoreSimpleCommands_sz.cpp
-KviKvsDnsManager.cpp
-KviKvsDnsManager.h
-KviKvsHash.cpp
-KviKvsHash.h
-KviKvsKernel.cpp
-KviKvsKernel.h
-KviKvsModuleInterface.cpp
-KviKvsModuleInterface.h
-KviKvsParameterProcessor.cpp
-KviKvsParameterProcessor.h
-KviKvsPopupManager.cpp
-KviKvsPopupManager.h
-KviKvsPopupMenu.cpp
-KviKvsPopupMenu.h
-KviKvsProcessManager.cpp
-KviKvsProcessManager.h
-KviKvsReport.cpp
-KviKvsReport.h
-KviKvsRunTimeCall.cpp
-KviKvsRunTimeCall.h
-KviKvsRunTimeContext.cpp
-KviKvsRunTimeContext.h
-KviKvsRWEvaluationResult.cpp
-KviKvsRWEvaluationResult.h
-KviKvsScript.cpp
-KviKvsScript.h
-KviKvsScriptAddonManager.cpp
-KviKvsScriptAddonManager.h
-KviKvsSwitchList.cpp
-KviKvsSwitchList.h
-KviKvsTimerManager.cpp
-KviKvsTimerManager.h
-KviKvsTypes.h
-KviKvsUserAction.cpp
-KviKvsUserAction.h
-KviKvsVariant.cpp
-KviKvsVariant.h
-KviKvsVariantList.cpp
-KviKvsVariantList.h
+  KviKvs.cpp
+  KviKvs.h
+  KviKvsAction.cpp
+  KviKvsAction.h
+  KviKvsAliasManager.cpp
+  KviKvsAliasManager.h
+  KviKvsArray.cpp
+  KviKvsArray.h
+  KviKvsArrayCast.cpp
+  KviKvsArrayCast.h
+  KviKvsAsyncDnsOperation.cpp
+  KviKvsAsyncDnsOperation.h
+  KviKvsAsyncOperation.cpp
+  KviKvsAsyncOperation.h
+  KviKvsCallbackObject.cpp
+  KviKvsCallbackObject.h
+  KviKvsCoreCallbackCommands.cpp
+  KviKvsCoreCallbackCommands.h
+  KviKvsCoreFunctions.cpp
+  KviKvsCoreFunctions.h
+  KviKvsCoreFunctions_af.cpp
+  KviKvsCoreFunctions_gl.cpp
+  KviKvsCoreFunctions_mr.cpp
+  KviKvsCoreFunctions_sz.cpp
+  KviKvsCoreSimpleCommands.cpp
+  KviKvsCoreSimpleCommands.h
+  KviKvsCoreSimpleCommands_af.cpp
+  KviKvsCoreSimpleCommands_gl.cpp
+  KviKvsCoreSimpleCommands_mr.cpp
+  KviKvsCoreSimpleCommands_sz.cpp
+  KviKvsDnsManager.cpp
+  KviKvsDnsManager.h
+  KviKvsHash.cpp
+  KviKvsHash.h
+  KviKvsKernel.cpp
+  KviKvsKernel.h
+  KviKvsModuleInterface.cpp
+  KviKvsModuleInterface.h
+  KviKvsParameterProcessor.cpp
+  KviKvsParameterProcessor.h
+  KviKvsPopupManager.cpp
+  KviKvsPopupManager.h
+  KviKvsPopupMenu.cpp
+  KviKvsPopupMenu.h
+  KviKvsProcessManager.cpp
+  KviKvsProcessManager.h
+  KviKvsReport.cpp
+  KviKvsReport.h
+  KviKvsRunTimeCall.cpp
+  KviKvsRunTimeCall.h
+  KviKvsRunTimeContext.cpp
+  KviKvsRunTimeContext.h
+  KviKvsRWEvaluationResult.cpp
+  KviKvsRWEvaluationResult.h
+  KviKvsScript.cpp
+  KviKvsScript.h
+  KviKvsScriptAddonManager.cpp
+  KviKvsScriptAddonManager.h
+  KviKvsSwitchList.cpp
+  KviKvsSwitchList.h
+  KviKvsTimerManager.cpp
+  KviKvsTimerManager.h
+  KviKvsTypes.h
+  KviKvsUserAction.cpp
+  KviKvsUserAction.h
+  KviKvsVariant.cpp
+  KviKvsVariant.h
+  KviKvsVariantList.cpp
+  KviKvsVariantList.h
 
 
 ###################
 # kvirc/event #
 ###################
 
-KviKvsEvent.cpp
-KviKvsEvent.h
-KviKvsEventHandler.cpp
-KviKvsEventHandler.h
-KviKvsEventManager.cpp
-KviKvsEventManager.h
-KviKvsEventTable.cpp
-KviKvsEventTable.h
-KviKvsEventTriggers.h
+  KviKvsEvent.cpp
+  KviKvsEvent.h
+  KviKvsEventHandler.cpp
+  KviKvsEventHandler.h
+  KviKvsEventManager.cpp
+  KviKvsEventManager.h
+  KviKvsEventTable.cpp
+  KviKvsEventTable.h
+  KviKvsEventTriggers.h
 
 
 ####################
 # kvirc/object #
 ####################
 
-KviKvsObject.cpp
-KviKvsObject.h
-KviKvsObjectClass.cpp
-KviKvsObjectClass.h
-KviKvsObjectController.cpp
-KviKvsObjectController.h
-KviKvsObjectFunctionCall.cpp
-KviKvsObjectFunctionCall.h
-KviKvsObjectFunctionHandler.cpp
-KviKvsObjectFunctionHandler.h
-KviKvsObjectFunctionHandlerImpl.cpp
-KviKvsObjectFunctionHandlerImpl.h
+  KviKvsObject.cpp
+  KviKvsObject.h
+  KviKvsObjectClass.cpp
+  KviKvsObjectClass.h
+  KviKvsObjectController.cpp
+  KviKvsObjectController.h
+  KviKvsObjectFunctionCall.cpp
+  KviKvsObjectFunctionCall.h
+  KviKvsObjectFunctionHandler.cpp
+  KviKvsObjectFunctionHandler.h
+  KviKvsObjectFunctionHandlerImpl.cpp
+  KviKvsObjectFunctionHandlerImpl.h
 
 
 ####################
 # kvirc/parser #
 ####################
 
-KviKvsParser.cpp
-KviKvsParser.h
-KviKvsParser_command.cpp
-KviKvsParser_comment.cpp
-KviKvsParser_dollar.cpp
-KviKvsParser_expression.cpp
-KviKvsParser_lside.cpp
-KviKvsParser_specialCommands.cpp
-KviKvsParserMacros.h
+  KviKvsParser.cpp
+  KviKvsParser.h
+  KviKvsParser_command.cpp
+  KviKvsParser_comment.cpp
+  KviKvsParser_dollar.cpp
+  KviKvsParser_expression.cpp
+  KviKvsParser_lside.cpp
+  KviKvsParser_specialCommands.cpp
+  KviKvsParserMacros.h
 
 
 ##################
 # kvirc/tree #
 ##################
 
-KviKvsTreeNode.h
-KviKvsTreeNodeAliasFunctionCall.cpp
-KviKvsTreeNodeAliasFunctionCall.h
-KviKvsTreeNodeAliasSimpleCommand.cpp
-KviKvsTreeNodeAliasSimpleCommand.h
-KviKvsTreeNodeArrayCount.cpp
-KviKvsTreeNodeArrayCount.h
-KviKvsTreeNodeArrayElement.cpp
-KviKvsTreeNodeArrayElement.h
-KviKvsTreeNodeArrayOrHashElement.cpp
-KviKvsTreeNodeArrayOrHashElement.h
-KviKvsTreeNodeArrayReferenceAssert.cpp
-KviKvsTreeNodeArrayReferenceAssert.h
-KviKvsTreeNodeBase.cpp
-KviKvsTreeNodeBase.h
-KviKvsTreeNodeBaseObjectFunctionCall.cpp
-KviKvsTreeNodeBaseObjectFunctionCall.h
-KviKvsTreeNodeCallbackCommand.cpp
-KviKvsTreeNodeCallbackCommand.h
-KviKvsTreeNodeCommand.cpp
-KviKvsTreeNodeCommand.h
-KviKvsTreeNodeCommandEvaluation.cpp
-KviKvsTreeNodeCommandEvaluation.h
-KviKvsTreeNodeCommandWithParameters.cpp
-KviKvsTreeNodeCommandWithParameters.h
-KviKvsTreeNodeCompositeData.cpp
-KviKvsTreeNodeCompositeData.h
-KviKvsTreeNodeConstantData.cpp
-KviKvsTreeNodeConstantData.h
-KviKvsTreeNodeCoreCallbackCommand.cpp
-KviKvsTreeNodeCoreCallbackCommand.h
-KviKvsTreeNodeCoreFunctionCall.cpp
-KviKvsTreeNodeCoreFunctionCall.h
-KviKvsTreeNodeCoreSimpleCommand.cpp
-KviKvsTreeNodeCoreSimpleCommand.h
-KviKvsTreeNodeData.cpp
-KviKvsTreeNodeData.h
-KviKvsTreeNodeDataList.cpp
-KviKvsTreeNodeDataList.h
-KviKvsTreeNodeExpression.cpp
-KviKvsTreeNodeExpression.h
-KviKvsTreeNodeExpressionReturn.cpp
-KviKvsTreeNodeExpressionReturn.h
-KviKvsTreeNodeExtendedScopeVariable.cpp
-KviKvsTreeNodeExtendedScopeVariable.h
-KviKvsTreeNodeFunctionCall.cpp
-KviKvsTreeNodeFunctionCall.h
-KviKvsTreeNodeGlobalVariable.cpp
-KviKvsTreeNodeGlobalVariable.h
-KviKvsTreeNodeHashCount.cpp
-KviKvsTreeNodeHashCount.h
-KviKvsTreeNodeHashElement.cpp
-KviKvsTreeNodeHashElement.h
-KviKvsTreeNodeHashReferenceAssert.cpp
-KviKvsTreeNodeHashReferenceAssert.h
-KviKvsTreeNodeIndirectData.cpp
-KviKvsTreeNodeIndirectData.h
-KviKvsTreeNodeInstruction.cpp
-KviKvsTreeNodeInstruction.h
-KviKvsTreeNodeInstructionBlock.cpp
-KviKvsTreeNodeInstructionBlock.h
-KviKvsTreeNodeLocalVariable.cpp
-KviKvsTreeNodeLocalVariable.h
-KviKvsTreeNodeModuleCallbackCommand.cpp
-KviKvsTreeNodeModuleCallbackCommand.h
-KviKvsTreeNodeModuleFunctionCall.cpp
-KviKvsTreeNodeModuleFunctionCall.h
-KviKvsTreeNodeModuleSimpleCommand.cpp
-KviKvsTreeNodeModuleSimpleCommand.h
-KviKvsTreeNodeMultipleParameterIdentifier.cpp
-KviKvsTreeNodeMultipleParameterIdentifier.h
-KviKvsTreeNodeObjectField.cpp
-KviKvsTreeNodeObjectField.h
-KviKvsTreeNodeObjectFunctionCall.cpp
-KviKvsTreeNodeObjectFunctionCall.h
-KviKvsTreeNodeOperation.cpp
-KviKvsTreeNodeOperation.h
-KviKvsTreeNodeParameterReturn.cpp
-KviKvsTreeNodeParameterReturn.h
-KviKvsTreeNodeRebindingSwitch.cpp
-KviKvsTreeNodeRebindingSwitch.h
-KviKvsTreeNodeScopeOperator.cpp
-KviKvsTreeNodeScopeOperator.h
-KviKvsTreeNodeSimpleCommand.cpp
-KviKvsTreeNodeSimpleCommand.h
-KviKvsTreeNodeSingleParameterIdentifier.cpp
-KviKvsTreeNodeSingleParameterIdentifier.h
-KviKvsTreeNodeSpecialCommand.cpp
-KviKvsTreeNodeSpecialCommand.h
-KviKvsTreeNodeSpecialCommandBreak.cpp
-KviKvsTreeNodeSpecialCommandBreak.h
-KviKvsTreeNodeSpecialCommandClass.cpp
-KviKvsTreeNodeSpecialCommandClass.h
-KviKvsTreeNodeSpecialCommandContinue.cpp
-KviKvsTreeNodeSpecialCommandContinue.h
-KviKvsTreeNodeSpecialCommandDefpopup.cpp
-KviKvsTreeNodeSpecialCommandDefpopup.h
-KviKvsTreeNodeSpecialCommandDo.cpp
-KviKvsTreeNodeSpecialCommandDo.h
-KviKvsTreeNodeSpecialCommandFor.cpp
-KviKvsTreeNodeSpecialCommandFor.h
-KviKvsTreeNodeSpecialCommandForeach.cpp
-KviKvsTreeNodeSpecialCommandForeach.h
-KviKvsTreeNodeSpecialCommandIf.cpp
-KviKvsTreeNodeSpecialCommandIf.h
-KviKvsTreeNodeSpecialCommandWhile.cpp
-KviKvsTreeNodeSpecialCommandWhile.h
-KviKvsTreeNodeSpecialCommandSwitch.cpp
-KviKvsTreeNodeSpecialCommandSwitch.h
-KviKvsTreeNodeSpecialCommandUnset.cpp
-KviKvsTreeNodeSpecialCommandUnset.h
-KviKvsTreeNodeStringCase.cpp
-KviKvsTreeNodeStringCase.h
-KviKvsTreeNodeSwitchList.cpp
-KviKvsTreeNodeSwitchList.h
-KviKvsTreeNodeThisObjectFunctionCall.cpp
-KviKvsTreeNodeThisObjectFunctionCall.h
-KviKvsTreeNodeVariable.cpp
-KviKvsTreeNodeVariable.h
-KviKvsTreeNodeVoidFunctionCall.cpp
-KviKvsTreeNodeVoidFunctionCall.h
+  KviKvsTreeNode.h
+  KviKvsTreeNodeAliasFunctionCall.cpp
+  KviKvsTreeNodeAliasFunctionCall.h
+  KviKvsTreeNodeAliasSimpleCommand.cpp
+  KviKvsTreeNodeAliasSimpleCommand.h
+  KviKvsTreeNodeArrayCount.cpp
+  KviKvsTreeNodeArrayCount.h
+  KviKvsTreeNodeArrayElement.cpp
+  KviKvsTreeNodeArrayElement.h
+  KviKvsTreeNodeArrayOrHashElement.cpp
+  KviKvsTreeNodeArrayOrHashElement.h
+  KviKvsTreeNodeArrayReferenceAssert.cpp
+  KviKvsTreeNodeArrayReferenceAssert.h
+  KviKvsTreeNodeBase.cpp
+  KviKvsTreeNodeBase.h
+  KviKvsTreeNodeBaseObjectFunctionCall.cpp
+  KviKvsTreeNodeBaseObjectFunctionCall.h
+  KviKvsTreeNodeCallbackCommand.cpp
+  KviKvsTreeNodeCallbackCommand.h
+  KviKvsTreeNodeCommand.cpp
+  KviKvsTreeNodeCommand.h
+  KviKvsTreeNodeCommandEvaluation.cpp
+  KviKvsTreeNodeCommandEvaluation.h
+  KviKvsTreeNodeCommandWithParameters.cpp
+  KviKvsTreeNodeCommandWithParameters.h
+  KviKvsTreeNodeCompositeData.cpp
+  KviKvsTreeNodeCompositeData.h
+  KviKvsTreeNodeConstantData.cpp
+  KviKvsTreeNodeConstantData.h
+  KviKvsTreeNodeCoreCallbackCommand.cpp
+  KviKvsTreeNodeCoreCallbackCommand.h
+  KviKvsTreeNodeCoreFunctionCall.cpp
+  KviKvsTreeNodeCoreFunctionCall.h
+  KviKvsTreeNodeCoreSimpleCommand.cpp
+  KviKvsTreeNodeCoreSimpleCommand.h
+  KviKvsTreeNodeData.cpp
+  KviKvsTreeNodeData.h
+  KviKvsTreeNodeDataList.cpp
+  KviKvsTreeNodeDataList.h
+  KviKvsTreeNodeExpression.cpp
+  KviKvsTreeNodeExpression.h
+  KviKvsTreeNodeExpressionReturn.cpp
+  KviKvsTreeNodeExpressionReturn.h
+  KviKvsTreeNodeExtendedScopeVariable.cpp
+  KviKvsTreeNodeExtendedScopeVariable.h
+  KviKvsTreeNodeFunctionCall.cpp
+  KviKvsTreeNodeFunctionCall.h
+  KviKvsTreeNodeGlobalVariable.cpp
+  KviKvsTreeNodeGlobalVariable.h
+  KviKvsTreeNodeHashCount.cpp
+  KviKvsTreeNodeHashCount.h
+  KviKvsTreeNodeHashElement.cpp
+  KviKvsTreeNodeHashElement.h
+  KviKvsTreeNodeHashReferenceAssert.cpp
+  KviKvsTreeNodeHashReferenceAssert.h
+  KviKvsTreeNodeIndirectData.cpp
+  KviKvsTreeNodeIndirectData.h
+  KviKvsTreeNodeInstruction.cpp
+  KviKvsTreeNodeInstruction.h
+  KviKvsTreeNodeInstructionBlock.cpp
+  KviKvsTreeNodeInstructionBlock.h
+  KviKvsTreeNodeLocalVariable.cpp
+  KviKvsTreeNodeLocalVariable.h
+  KviKvsTreeNodeModuleCallbackCommand.cpp
+  KviKvsTreeNodeModuleCallbackCommand.h
+  KviKvsTreeNodeModuleFunctionCall.cpp
+  KviKvsTreeNodeModuleFunctionCall.h
+  KviKvsTreeNodeModuleSimpleCommand.cpp
+  KviKvsTreeNodeModuleSimpleCommand.h
+  KviKvsTreeNodeMultipleParameterIdentifier.cpp
+  KviKvsTreeNodeMultipleParameterIdentifier.h
+  KviKvsTreeNodeObjectField.cpp
+  KviKvsTreeNodeObjectField.h
+  KviKvsTreeNodeObjectFunctionCall.cpp
+  KviKvsTreeNodeObjectFunctionCall.h
+  KviKvsTreeNodeOperation.cpp
+  KviKvsTreeNodeOperation.h
+  KviKvsTreeNodeParameterReturn.cpp
+  KviKvsTreeNodeParameterReturn.h
+  KviKvsTreeNodeRebindingSwitch.cpp
+  KviKvsTreeNodeRebindingSwitch.h
+  KviKvsTreeNodeScopeOperator.cpp
+  KviKvsTreeNodeScopeOperator.h
+  KviKvsTreeNodeSimpleCommand.cpp
+  KviKvsTreeNodeSimpleCommand.h
+  KviKvsTreeNodeSingleParameterIdentifier.cpp
+  KviKvsTreeNodeSingleParameterIdentifier.h
+  KviKvsTreeNodeSpecialCommand.cpp
+  KviKvsTreeNodeSpecialCommand.h
+  KviKvsTreeNodeSpecialCommandBreak.cpp
+  KviKvsTreeNodeSpecialCommandBreak.h
+  KviKvsTreeNodeSpecialCommandClass.cpp
+  KviKvsTreeNodeSpecialCommandClass.h
+  KviKvsTreeNodeSpecialCommandContinue.cpp
+  KviKvsTreeNodeSpecialCommandContinue.h
+  KviKvsTreeNodeSpecialCommandDefpopup.cpp
+  KviKvsTreeNodeSpecialCommandDefpopup.h
+  KviKvsTreeNodeSpecialCommandDo.cpp
+  KviKvsTreeNodeSpecialCommandDo.h
+  KviKvsTreeNodeSpecialCommandFor.cpp
+  KviKvsTreeNodeSpecialCommandFor.h
+  KviKvsTreeNodeSpecialCommandForeach.cpp
+  KviKvsTreeNodeSpecialCommandForeach.h
+  KviKvsTreeNodeSpecialCommandIf.cpp
+  KviKvsTreeNodeSpecialCommandIf.h
+  KviKvsTreeNodeSpecialCommandWhile.cpp
+  KviKvsTreeNodeSpecialCommandWhile.h
+  KviKvsTreeNodeSpecialCommandSwitch.cpp
+  KviKvsTreeNodeSpecialCommandSwitch.h
+  KviKvsTreeNodeSpecialCommandUnset.cpp
+  KviKvsTreeNodeSpecialCommandUnset.h
+  KviKvsTreeNodeStringCase.cpp
+  KviKvsTreeNodeStringCase.h
+  KviKvsTreeNodeSwitchList.cpp
+  KviKvsTreeNodeSwitchList.h
+  KviKvsTreeNodeThisObjectFunctionCall.cpp
+  KviKvsTreeNodeThisObjectFunctionCall.h
+  KviKvsTreeNodeVariable.cpp
+  KviKvsTreeNodeVariable.h
+  KviKvsTreeNodeVoidFunctionCall.cpp
+  KviKvsTreeNodeVoidFunctionCall.h
 
 
 ################
 # kvirc/module #
 ################
 
-KviMexLinkFilter.cpp
-KviMexLinkFilter.h
-KviMexServerImport.cpp
-KviMexServerImport.h
-KviMexToolBar.cpp
-KviMexToolBar.h
-KviModule.cpp
-KviModule.h
-KviModuleExtension.cpp
-KviModuleExtension.h
-KviModuleManager.cpp
-KviModuleManager.h
+  KviMexLinkFilter.cpp
+  KviMexLinkFilter.h
+  KviMexServerImport.cpp
+  KviMexServerImport.h
+  KviMexToolBar.cpp
+  KviMexToolBar.h
+  KviModule.cpp
+  KviModule.h
+  KviModuleExtension.cpp
+  KviModuleExtension.h
+  KviModuleManager.cpp
+  KviModuleManager.h
 
 
 #################
 # kvirc/sparser #
 #################
 
-KviAntiSpam.cpp
-KviAntiSpam.h
-KviIrcMessage.cpp
-KviIrcMessage.h
-KviIrcNumericCodes.h
-KviIrcServerParser.cpp
-KviIrcServerParser.h
-KviIrcServerParser_ctcp.cpp
-KviIrcServerParser_literalHandlers.cpp
-KviIrcServerParser_numericHandlers.cpp
-KviIrcServerParser_tables.cpp
+  KviAntiSpam.cpp
+  KviAntiSpam.h
+  KviIrcMessage.cpp
+  KviIrcMessage.h
+  KviIrcNumericCodes.h
+  KviIrcServerParser.cpp
+  KviIrcServerParser.h
+  KviIrcServerParser_ctcp.cpp
+  KviIrcServerParser_literalHandlers.cpp
+  KviIrcServerParser_numericHandlers.cpp
+  KviIrcServerParser_tables.cpp
 
 
 ############
 # kvirc/ui #
 ############
 
-KviActionDrawer.cpp
-KviActionDrawer.h
-KviChannelWindow.cpp
-KviChannelWindow.h
-KviColorSelectionWindow.cpp
-KviColorSelectionWindow.h
-KviConsoleWindow.cpp
-KviConsoleWindow.h
-KviCryptController.cpp
-KviCryptController.h
-KviCtcpPageDialog.cpp
-KviCtcpPageDialog.h
-KviCustomToolBar.cpp
-KviCustomToolBar.h
-KviDebugWindow.cpp
-KviDebugWindow.h
-KviDynamicToolTip.cpp
-KviDynamicToolTip.h
-KviFileDialog.cpp
-KviFileDialog.h
-KviHistoryWindow.cpp
-KviHistoryWindow.h
-KviHtmlDialog.cpp
-KviHtmlDialog.h
-KviImageDialog.cpp
-KviImageDialog.h
-KviInput.cpp
-KviInput.h
-KviInputEditor.cpp
-KviInputEditor.h
-KviInputHistory.cpp
-KviInputHistory.h
-KviIpEditor.cpp
-KviIpEditor.h
-KviIrcToolBar.cpp
-KviIrcToolBar.h
-KviIrcView.cpp
-KviIrcView.h
-KviIrcView_events.cpp
-KviIrcView_getTextLine.cpp
-KviIrcView_loghandling.cpp
-KviIrcView_private.h
-KviIrcView_tools.cpp
-KviIrcView_tools.h
-KviMainWindow.cpp
-KviMainWindow.h
-KviMaskEditor.cpp
-KviMaskEditor.h
-KviMenuBar.cpp
-KviMenuBar.h
-KviMessageBox.cpp
-KviMessageBox.h
-KviMdiChild.cpp
-KviMdiChild.h
-KviMdiManager.cpp
-KviMdiManager.h
-KviModeEditor.cpp
-KviModeEditor.h
-KviModeWidget.cpp
-KviModeWidget.h
-KviOptionsWidget.cpp
-KviOptionsWidget.h
-KviQueryWindow.cpp
-KviQueryWindow.h
-KviScriptButton.cpp
-KviScriptButton.h
-KviScriptEditor.cpp
-KviScriptEditor.h
-KviSelectors.cpp
-KviSelectors.h
-KviSplashScreen.cpp
-KviSplashScreen.h
-KviStatusBar.cpp
-KviStatusBar.h
-KviStatusBarApplet.cpp
-KviStatusBarApplet.h
-KviTextIconWindow.cpp
-KviTextIconWindow.h
-KviThemedComboBox.cpp
-KviThemedComboBox.h
-KviThemedLabel.cpp
-KviThemedLabel.h
-KviThemedLineEdit.cpp
-KviThemedLineEdit.h
-KviThemedTreeWidget.cpp
-KviThemedTreeWidget.h
-KviToolBar.cpp
-KviToolBar.h
-KviTopicWidget.cpp
-KviTopicWidget.h
-KviTreeWindowList.cpp
-KviTreeWindowList.h
-KviUserListView.cpp
-KviUserListView.h
-KviWindow.cpp
-KviWindow.h
-KviWindowListBase.cpp
-KviWindowListBase.h
-KviWindowToolWidget.cpp
-KviWindowToolWidget.h
+  KviActionDrawer.cpp
+  KviActionDrawer.h
+  KviChannelWindow.cpp
+  KviChannelWindow.h
+  KviColorSelectionWindow.cpp
+  KviColorSelectionWindow.h
+  KviConsoleWindow.cpp
+  KviConsoleWindow.h
+  KviCryptController.cpp
+  KviCryptController.h
+  KviCtcpPageDialog.cpp
+  KviCtcpPageDialog.h
+  KviCustomToolBar.cpp
+  KviCustomToolBar.h
+  KviDebugWindow.cpp
+  KviDebugWindow.h
+  KviDynamicToolTip.cpp
+  KviDynamicToolTip.h
+  KviFileDialog.cpp
+  KviFileDialog.h
+  KviHistoryWindow.cpp
+  KviHistoryWindow.h
+  KviHtmlDialog.cpp
+  KviHtmlDialog.h
+  KviImageDialog.cpp
+  KviImageDialog.h
+  KviInput.cpp
+  KviInput.h
+  KviInputEditor.cpp
+  KviInputEditor.h
+  KviInputHistory.cpp
+  KviInputHistory.h
+  KviIpEditor.cpp
+  KviIpEditor.h
+  KviIrcToolBar.cpp
+  KviIrcToolBar.h
+  KviIrcView.cpp
+  KviIrcView.h
+  KviIrcView_events.cpp
+  KviIrcView_getTextLine.cpp
+  KviIrcView_loghandling.cpp
+  KviIrcView_private.h
+  KviIrcView_tools.cpp
+  KviIrcView_tools.h
+  KviMainWindow.cpp
+  KviMainWindow.h
+  KviMaskEditor.cpp
+  KviMaskEditor.h
+  KviMenuBar.cpp
+  KviMenuBar.h
+  KviMessageBox.cpp
+  KviMessageBox.h
+  KviMdiChild.cpp
+  KviMdiChild.h
+  KviMdiManager.cpp
+  KviMdiManager.h
+  KviModeEditor.cpp
+  KviModeEditor.h
+  KviModeWidget.cpp
+  KviModeWidget.h
+  KviOptionsWidget.cpp
+  KviOptionsWidget.h
+  KviQueryWindow.cpp
+  KviQueryWindow.h
+  KviScriptButton.cpp
+  KviScriptButton.h
+  KviScriptEditor.cpp
+  KviScriptEditor.h
+  KviSelectors.cpp
+  KviSelectors.h
+  KviSplashScreen.cpp
+  KviSplashScreen.h
+  KviStatusBar.cpp
+  KviStatusBar.h
+  KviStatusBarApplet.cpp
+  KviStatusBarApplet.h
+  KviTextIconWindow.cpp
+  KviTextIconWindow.h
+  KviThemedComboBox.cpp
+  KviThemedComboBox.h
+  KviThemedLabel.cpp
+  KviThemedLabel.h
+  KviThemedLineEdit.cpp
+  KviThemedLineEdit.h
+  KviThemedTreeWidget.cpp
+  KviThemedTreeWidget.h
+  KviToolBar.cpp
+  KviToolBar.h
+  KviTopicWidget.cpp
+  KviTopicWidget.h
+  KviTreeWindowList.cpp
+  KviTreeWindowList.h
+  KviUserListView.cpp
+  KviUserListView.h
+  KviWindow.cpp
+  KviWindow.h
+  KviWindowListBase.cpp
+  KviWindowListBase.h
+  KviWindowToolWidget.cpp
+  KviWindowToolWidget.h
 
 
 
