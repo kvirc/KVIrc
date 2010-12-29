@@ -25,8 +25,12 @@
 //=============================================================================
 
 #include "KviCString.h"
-#include "KviTheoraDecoder.h"
 #include "KviDataBuffer.h"
+
+#ifndef COMPILE_DISABLE_OGG_THEORA
+	#include "KviOggTheoraDecoder.h"
+	#include "KviOggTheoraEncoder.h"
+#endif
 
 class KviDccVoiceCodec
 {
@@ -97,8 +101,8 @@ public:
 	virtual int encodedFrameSize();
 	virtual int decodedFrameSize();
 private:
-	KviTheoraEncoder *m_pEncoder;
-	KviTheoraDecoder *m_pDecoder;
+	KviOggTheoraEncoder * m_pEncoder;
+	KviOggTheoraDecoder * m_pDecoder;
 };
 #endif // COMPILE_DISABLE_OGG_THEORA
 #endif //_CODEC_H_

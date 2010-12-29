@@ -288,7 +288,7 @@ void KviDccVideoTheoraCodec::encodeVideo(KviDataBuffer * videoSignal,KviDataBuff
 	if(videoSignal->size() < 1) return;
 
 	if(!m_pEncoder)
-		m_pEncoder = new KviTheoraEncoder(stream);
+		m_pEncoder = new KviOggTheoraEncoder(stream);
 
 	m_pEncoder->addVideoFrame((QRgb *) videoSignal->data(),videoSignal->size());
 	videoSignal->clear();
@@ -299,7 +299,7 @@ void KviDccVideoTheoraCodec::encodeText(KviDataBuffer * textSignal, KviDataBuffe
 	if(textSignal->size() < 1) return;
 
 	if(!m_pEncoder)
-		m_pEncoder = new KviTheoraEncoder(stream);
+		m_pEncoder = new KviOggTheoraEncoder(stream);
 
 	m_pEncoder->addTextFrame(textSignal->data(),textSignal->size());
 	textSignal->clear();
@@ -310,7 +310,7 @@ void KviDccVideoTheoraCodec::decode(KviDataBuffer * stream,KviDataBuffer * video
 	if(stream->size() < 1)return;
 
 	if(!m_pDecoder)
-		m_pDecoder = new KviTheoraDecoder(videoSignal, textSignal);
+		m_pDecoder = new KviOggTheoraDecoder(videoSignal, textSignal);
 
 	m_pDecoder->addData(stream);
 }

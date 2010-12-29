@@ -146,7 +146,8 @@ ENDIF()
 
 IF(NOT DEFINED COMPILE_DISABLE_OGG_THEORA)
 	LIST(APPEND kvilib_SRCS
-		ext/KviTheoraDecoder.cpp
+		ext/KviOggTheoraDecoder.cpp
+		ext/KviOggTheoraEncoder.cpp
 	)
 ENDIF()
 

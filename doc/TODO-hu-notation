@@ -76,6 +76,11 @@ KviMiscUtils.h
 KviNickColors.cpp
 KviNickColors.h
 KviOggIrcText.h
+KviOggTheoraDecoder.cpp
+KviOggTheoraDecoder.h
+KviOggTheoraEncoder.cpp
+KviOggTheoraEncoder.h
+KviOggTheoraGeometry.h
 KviOsInfo.cpp
 KviOsInfo.h
 KviParameterList.cpp
@@ -92,22 +97,20 @@ KviProxyDataBase.h
 + KviRegisteredChannel.h
 KviRegisteredChannelDataBase.cpp
 + KviRegisteredChannelDataBase.h
-+ KviRegisteredMask.cpp
-+ KviRegisteredMask.h
 KviRegisteredUser.cpp
 + KviRegisteredUser.h
 KviRegisteredUserDataBase.cpp
 KviRegisteredUserDataBase.h
 + KviRegisteredUserGroup.cpp
 + KviRegisteredUserGroup.h
++ KviRegisteredUserMask.cpp
++ KviRegisteredUserMask.h
 + KviSharedFile.cpp
 + KviSharedFile.h
 KviSharedFilesManager.cpp
 KviSharedFilesManager.h
 KviStringConversion.cpp
 KviStringConversion.h
-KviTheoraDecoder.cpp
-KviTheoraDecoder.h
 KviXlib.h
 
 
@@ -131,8 +134,12 @@ videoinput.h
 # kvilib/file #
 ###############
 
-KviPackageFile.cpp
-KviPackageFile.h
+KviPackageIOEngine.cpp
+KviPackageIOEngine.h
+KviPackageReader.cpp
+KviPackageReader.h
+KviPackageWriter.cpp
+KviPackageWriter.h
 KviFileUtils.cpp
 KviFileUtils.h
 KviFile.cpp
@@ -161,6 +168,8 @@ KviIrcUserDataBase.cpp
 KviIrcUserDataBase.h
 KviMircCntrl.cpp
 KviMircCntrl.h
+KviNickServRule.cpp
+KviNickServRule.h
 KviNickServRuleSet.cpp
 KviNickServRuleSet.h
 KviUserIdentity.cpp
@@ -175,6 +184,8 @@ KviDnsResolver.cpp
 KviDnsResolver.h
 KviHttpRequest.cpp
 KviHttpRequest.h
+KviHttpRequestThread.cpp
+KviHttpRequestThread.h
 KviNetUtils.cpp
 KviNetUtils.h
 KviSASL.cpp

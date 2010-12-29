@@ -459,7 +459,10 @@ General notes for the installation of the 4.0 release of KVIrc
         It will disable the sound support (and thus render DCC VOICE unusable).
 
     -DWITH_DCC_VIDEO
-        Enables EXPERIMENTAL DCC VIDEO support. 
+        Enables EXPERIMENTAL DCC VIDEO support.
+
+    -DWITH_OGG_THEORA
+        Enables EXPERIMENTAL Ogg/Vorbis+Theora Support
 
     -DWITH_DCC_CANVAS
         Enables OBSOLETE DCC CANVAS support.
