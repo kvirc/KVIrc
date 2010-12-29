@@ -46,24 +46,24 @@ class KviDataBuffer;
 
 
 /**
-* \class KviTheoraDecoder
+* \class KviOggTheoraDecoder
 * \brief An ogg/theora+irct decoder class; accepts a proper ogg stream, outputs argb32 images and binary text
 */
-class KVILIB_API KviTheoraDecoder
+class KVILIB_API KviOggTheoraDecoder
 {
 public:
 	/**
-	* \brief Constructs the KviTheoraDecoder object
+	* \brief Constructs the KviOggTheoraDecoder object
 	* \param videoSignal the output video stream object
 	* \param textSignal the output text stream object
-	* \return KviTheoraDecoder
+	* \return KviOggTheoraDecoder
 	*/
-	KviTheoraDecoder(KviDataBuffer * videoSignal,KviDataBuffer * textSignal);
+	KviOggTheoraDecoder(KviDataBuffer * videoSignal,KviDataBuffer * textSignal);
 
 	/**
 	* \brief Destroys the KviTheoraEncoder object
 	*/
-	virtual ~KviTheoraDecoder();
+	virtual ~KviOggTheoraDecoder();
 
 	/**
 	* \brief Feeds the decoded with some received data to decode

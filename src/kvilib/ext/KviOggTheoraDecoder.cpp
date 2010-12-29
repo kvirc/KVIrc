@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviTheoraDecoder.cpp
+//   File : KviOggTheoraDecoder.cpp
 //   Creation date : Sat Nov 21 2009 22:53:21 CEST by Fabio Bas
 //
 //   This file is part of the KVIrc irc client distribution
@@ -55,7 +55,7 @@ using namespace KviOggIrcText;
 //------------------------------------------------------------------------------
 #define OC_CLAMP255(_x)     ((unsigned char)((((_x)<0)-1)&((_x)|-((_x)>255))))
 
-KviTheoraDecoder::KviTheoraDecoder(KviDataBuffer * videoSignal,KviDataBuffer * textSignal)
+KviOggTheoraDecoder::KviOggTheoraDecoder(KviDataBuffer * videoSignal,KviDataBuffer * textSignal)
 {
 	m_pVideoSignal=videoSignal;
 	m_pTextSignal=textSignal;
@@ -89,7 +89,7 @@ KviTheoraDecoder::KviTheoraDecoder(KviDataBuffer * videoSignal,KviDataBuffer * t
 	}
 }
 
-KviTheoraDecoder::~KviTheoraDecoder()
+KviOggTheoraDecoder::~KviOggTheoraDecoder()
 {
 	if(theora_p){
 		ogg_stream_clear(&to);
@@ -107,7 +107,7 @@ KviTheoraDecoder::~KviTheoraDecoder()
 	ogg_sync_clear(&oy);
 }
 
-void KviTheoraDecoder::addData(KviDataBuffer * stream)
+void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 {
 // 	qDebug("adddata signal %p stream size %d",m_pVideoSignal, stream->size() );
 	if(stream->size()==0)return;
@@ -293,14 +293,14 @@ void KviTheoraDecoder::addData(KviDataBuffer * stream)
 /* helper: push a page into the appropriate steam */
 /* this can be done blindly; a stream won't accept a page
                 that doesn't belong to it */
-int KviTheoraDecoder::queue_page(ogg_page *page)
+int KviOggTheoraDecoder::queue_page(ogg_page *page)
 {
 	if(theora_p)ogg_stream_pagein(&to,page);
 	if(irct_p)ogg_stream_pagein(&zo,page);
 	return 0;
 }
 
-void KviTheoraDecoder::video_write(void)
+void KviOggTheoraDecoder::video_write(void)
 {
 	th_ycbcr_buffer yuv;
 	int y_offset;
