@@ -89,7 +89,9 @@ SET(kvilib_SRCS
 	ext/KviStringConversion.cpp
 	file/KviFile.cpp
 	file/KviFileUtils.cpp
-	file/KviPackageFile.cpp
+	file/KviPackageIOEngine.cpp
+	file/KviPackageReader.cpp
+	file/KviPackageWriter.cpp
 	irc/KviAvatar.cpp
 	irc/KviAvatarCache.cpp
 	irc/KviIdentityProfile.cpp

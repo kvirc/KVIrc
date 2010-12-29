@@ -33,7 +33,7 @@
 #include "KviApplication.h"
 #include "KviMainWindow.h"
 #include "KviIconManager.h"
-#include "KviPackageFile.h"
+#include "KviPackageWriter.h"
 #include "kvi_fileextensions.h"
 #include "KviFileDialog.h"
 //#include "KviMessageBox.h"

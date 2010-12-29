@@ -29,7 +29,7 @@
 #include "KviFileUtils.h"
 #include "KviApplication.h"
 #include "KviIconManager.h"
-#include "KviPackageFile.h"
+#include "KviPackageWriter.h"
 #include "kvi_fileextensions.h"
 #include "kvi_sourcesdate.h"
 #include "KviOptions.h"

@@ -24,7 +24,7 @@
 
 #include "themefunctions.h"
 
-#include "KviPackageFile.h"
+#include "KviPackageReader.h"
 #include "KviLocale.h"
 #include "KviMessageBox.h"
 #include "KviApplication.h"

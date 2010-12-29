@@ -35,7 +35,7 @@
 #include "KviMainWindow.h"
 #include "KviIconManager.h"
 #include "KviInternalCommand.h"
-#include "KviPackageFile.h"
+#include "KviPackageReader.h"
 #include "kvi_fileextensions.h"
 #include "KviFileDialog.h"
 #include "KviDynamicToolTip.h"
