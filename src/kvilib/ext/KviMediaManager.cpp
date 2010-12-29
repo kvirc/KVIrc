@@ -1,10 +1,10 @@
 //=============================================================================
 //
-//   File : KviMediaType.cpp
-//   Creation date : Mon Aug 21 2000 17:51:56 CEST by Szymon Stefanek
+//   File : KviMediaManager.cpp
+//   Creation date : Wed Dec 29 2010 00:37:56 CEST by Elvio basello
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2010 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,9 +26,8 @@
 //#define _KVI_DEBUG_CHECK_RANGE_
 
 
-
+#include "KviMediaManager.h"
 #include "kvi_debug.h"
-#include "KviMediaType.h"
 #include "KviConfigurationFile.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
@@ -423,15 +422,6 @@ KviMediaType * KviMediaManager::findMediaTypeForRegularFile(const char * szFullP
 
 	return mtd;
 }
-
-typedef struct _KviDefaultMediaType
-{
-	const char * filemask;
-	const char * magicbytes;
-	const char * ianatype;
-	const char * description;
-	const char * commandline;
-} KviDefaultMediaType;
 
 
 // FIXME : default handlers for windows ?

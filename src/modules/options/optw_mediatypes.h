@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "KviOptionsWidget.h"
-#include "KviMediaType.h"
+#include "KviMediaManager.h"
 #include <QTreeWidget>
 
 #include <QLineEdit>

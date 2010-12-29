@@ -52,11 +52,4 @@ public:
 	void setNull();
 };
 
-namespace KviPixmapUtils
-{
-	extern KVILIB_API void drawPixmapWithPainter(QPainter* p,QPixmap * pix,int flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight,int dx,int dy);
-	inline void drawPixmapWithPainter(QPainter* p,QPixmap * pix,int flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight)
-		{ KviPixmapUtils::drawPixmapWithPainter(p,pix,flags,paintRect,iWidgetWidth,iWidgetHeight,paintRect.left(),paintRect.top()); }
-}
-
 #endif //_KVI_PIXMAP_H_

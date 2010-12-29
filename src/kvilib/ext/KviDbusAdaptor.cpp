@@ -26,7 +26,8 @@
 
 #ifdef COMPILE_DBUS_SUPPORT
 
-KviDbusAdaptor::KviDbusAdaptor(QObject * obj) : QDBusAbstractAdaptor(obj)
+KviDbusAdaptor::KviDbusAdaptor(QObject * pObj)
+: QDBusAbstractAdaptor(pObj)
 {
 }
 

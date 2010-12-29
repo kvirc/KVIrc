@@ -23,7 +23,7 @@
 //=============================================================================
 
 #include "KviFileDialog.h"
-#include "KviMediaType.h"
+#include "KviMediaManager.h"
 #include "KviIconManager.h"
 #include "KviLocale.h"
 #include "KviApplication.h"

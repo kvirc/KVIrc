@@ -39,6 +39,7 @@
 #include "KviMdiManager.h"
 #include "KviMircCntrl.h"
 #include "KviOptions.h"
+#include "KviPixmapUtils.h"
 #include "KviQString.h"
 #include "kvi_out.h"
 #include "KviTalPopupMenu.h"

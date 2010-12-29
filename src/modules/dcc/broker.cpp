@@ -45,7 +45,7 @@
 #include "KviConsoleWindow.h"
 #include "KviFileUtils.h"
 #include "kvi_out.h"
-#include "KviMediaType.h"
+#include "KviMediaManager.h"
 #include "KviIrcConnection.h"
 #include "KviSharedFilesManager.h"
 

@@ -1,5 +1,6 @@
 #ifndef _KVI_MEDIATYPE_H_
 #define _KVI_MEDIATYPE_H_
+
 //=============================================================================
 //
 //   File : KviMediaType.h
@@ -27,9 +28,6 @@
 #include "kvi_settings.h"
 #include "KviHeapObject.h"
 #include "KviCString.h"
-#include "KviThread.h"
-
-#include "KviPointerList.h"
 
 
 //
@@ -41,6 +39,14 @@
 //          to KviMediaManager::lock() and KviMediaManager::unlock()
 //
 
+typedef struct _KviDefaultMediaType
+{
+	const char * filemask;
+	const char * magicbytes;
+	const char * ianatype;
+	const char * description;
+	const char * commandline;
+} KviDefaultMediaType;
 
 class KVILIB_API KviMediaType : public KviHeapObject
 {
@@ -57,29 +63,5 @@ public:
 	KviCString szRemoteExecCommandline;
 	KviCString szIcon;
 };
-
-class KVILIB_API KviMediaManager : public KviMutex
-{
-public:
-	KviMediaManager();
-	~KviMediaManager();
-protected:
-	KviPointerList<KviMediaType> * m_pMediaTypeList;
-private:
-	KviMediaType * findMediaTypeForRegularFile(const char * szFullPath,const char * szFileName,bool bCheckMagic);
-public:
-	KviPointerList<KviMediaType> * mediaTypeList(){ return m_pMediaTypeList; };
-	KviMediaType * findMediaTypeByFileMask(const char * filemask);
-	KviMediaType * findMediaTypeByIanaType(const char * ianaType);
-	bool removeMediaType(KviMediaType * t){ return m_pMediaTypeList->removeRef(t); };
-	void clear(){ m_pMediaTypeList->clear(); };
-	void insertMediaType(KviMediaType * t);
-	KviMediaType * findMediaType(const char * filename,bool bCheckMagic = true);
-	static void copyMediaType(KviMediaType * dst,KviMediaType * src);
-
-	void load(const QString &filename);
-	void save(const QString &filename);
-};
-
 
 #endif //_KVI_MEDIATYPE_H_

@@ -28,37 +28,36 @@
 #include "KviCString.h"
 #include "kvi_settings.h"
 
-#include "KviQString.h"
 #include <QStringList>
 
 namespace KviCommandFormatter
 {
-	extern KVILIB_API bool hasLeadingChars(KviCString * array,char c);
-	extern KVILIB_API bool hasLeadingChars(QStringList &list,const QChar &c);
+	extern KVILIB_API bool hasLeadingChars(KviCString * pszArray, char c);
+	extern KVILIB_API bool hasLeadingChars(QStringList & list, const QChar & c);
 
-	extern KVILIB_API void trimLeading(KviCString ** array);
+	extern KVILIB_API void trimLeading(KviCString ** pszArray);
 	extern KVILIB_API void trimLeading(QStringList &list);
 
-	extern KVILIB_API void addLeading(KviCString ** array,char c);
-	extern KVILIB_API void addLeading(QStringList &list,const QChar &c);
+	extern KVILIB_API void addLeading(KviCString ** pszArray, char c);
+	extern KVILIB_API void addLeading(QStringList & list, const QChar & c);
 
-	extern KVILIB_API void trimBlockBraces(KviCString &buffer);
-	extern KVILIB_API void trimBlockBraces(QString &buffer);
+	extern KVILIB_API void trimBlockBraces(KviCString & szBuffer);
+	extern KVILIB_API void trimBlockBraces(QString & szBuffer);
 
-	extern KVILIB_API void unindent(KviCString &buffer);
-	extern KVILIB_API void unindent(QString &buffer);
+	extern KVILIB_API void unindent(KviCString & szBuffer);
+	extern KVILIB_API void unindent(QString & szBuffer);
 
-	extern KVILIB_API void bufferFromBlock(KviCString &buffer);
-	extern KVILIB_API void bufferFromBlock(QString &buffer);
+	extern KVILIB_API void bufferFromBlock(KviCString & szBuffer);
+	extern KVILIB_API void bufferFromBlock(QString & szBuffer);
 
-	extern KVILIB_API void addBlockBraces(KviCString &buffer);
-	extern KVILIB_API void addBlockBraces(QString &buffer);
+	extern KVILIB_API void addBlockBraces(KviCString & szBuffer);
+	extern KVILIB_API void addBlockBraces(QString & szBuffer);
 
-	extern KVILIB_API void indent(KviCString &buffer);
-	extern KVILIB_API void indent(QString &buffer);
+	extern KVILIB_API void indent(KviCString & szBuffer);
+	extern KVILIB_API void indent(QString & szBuffer);
 
-	extern KVILIB_API void blockFromBuffer(KviCString &buffer);
-	extern KVILIB_API void blockFromBuffer(QString &buffer);
+	extern KVILIB_API void blockFromBuffer(KviCString & szBuffer);
+	extern KVILIB_API void blockFromBuffer(QString & szBuffer);
 }
 
 #endif //_KVI_CMDFORMATTER_H_

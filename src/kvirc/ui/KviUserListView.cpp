@@ -46,6 +46,7 @@
 #include "KviStringConversion.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionServerInfo.h"
+#include "KviPixmapUtils.h"
 
 #include <QLabel>
 #include <QScrollBar>

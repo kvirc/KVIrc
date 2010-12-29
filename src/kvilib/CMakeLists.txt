@@ -67,11 +67,12 @@ SET(kvilib_SRCS
 	ext/KviDataBuffer.cpp
 	ext/KviDbusAdaptor.cpp
 	ext/KviDebugContext.cpp
-	ext/KviMediaType.cpp
+	ext/KviMediaManager.cpp
 	ext/KviMiscUtils.cpp
 	ext/KviMessageTypeSettings.cpp
 	ext/KviOsInfo.cpp
 	ext/KviPixmap.cpp
+	ext/KviPixmapUtils.cpp
 	ext/KviAnimatedPixmap.cpp
 	ext/KviAnimatedPixmapCache.cpp
 	ext/KviNickColors.cpp

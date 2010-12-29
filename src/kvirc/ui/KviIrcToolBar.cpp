@@ -42,6 +42,7 @@
 #include "KviLagMeter.h"
 #include "KviTalPopupMenu.h"
 #include "KviMdiManager.h"
+#include "KviPixmapUtils.h"
 
 #include <QStyle>
 #include <QPainter>

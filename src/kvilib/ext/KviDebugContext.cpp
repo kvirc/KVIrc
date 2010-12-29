@@ -8,20 +8,18 @@
 //=============================================================================
 
 #include "KviDebugContext.h"
-
 #include "kvi_stdarg.h"
-#include "KviCString.h"
 #include "kvi_debug.h"
 
 
 static KviCString g_szIndentPrefix;
 
-KviDebugContext::KviDebugContext(const char * szContext,...)
+KviDebugContext::KviDebugContext(const char * pcContext, ...)
 {
 	kvi_va_list list;
-	kvi_va_start(list,szContext);
+	kvi_va_start(list,pcContext);
 
-	m_szContext.vsprintf(szContext,list);
+	m_szContext.vsprintf(pcContext,list);
 
 	kvi_va_end(list);
 	
@@ -34,7 +32,6 @@ KviDebugContext::KviDebugContext(const char * szContext,...)
 	
 	g_szIndentPrefix.append("  ");
 }
-
 
 KviDebugContext::~KviDebugContext()
 {
@@ -50,13 +47,13 @@ KviDebugContext::~KviDebugContext()
 	qDebug(szPrefix.ptr(),m_szContext.ptr());
 }
 
-void KviDebugContext::trace(const char * szFmt,...)
+void KviDebugContext::trace(const char * pcFmt, ...)
 {
 	kvi_va_list list;
-	kvi_va_start(list,szFmt);
+	kvi_va_start(list,pcFmt);
 
 	KviCString szOut;
-	szOut.vsprintf(szFmt,list);
+	szOut.vsprintf(pcFmt,list);
 
 	kvi_va_end(list);
 	
@@ -67,4 +64,3 @@ void KviDebugContext::trace(const char * szFmt,...)
 	
 	qDebug(szPrefix.ptr(),szOut.ptr());
 }
-

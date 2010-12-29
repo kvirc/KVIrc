@@ -1,12 +1,13 @@
-#ifndef _KVI_DBUSADAPTOR_H_
-#define _KVI_DBUSADAPTOR_H_
+#ifndef _KVIPIXMAPUTILS_H_
+#define _KVIPIXMAPUTILS_H_
+
 //=============================================================================
 //
-//   File : KviDbusAdaptor.h
-//   Creation date : Thu May 08 2008 21:41:45 by Voker57
+//   File : KviPixmapUtils.h
+//   Creation date : Wed Dec 29 2010 01:10:05 CEST by Elvio Basello
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2008 Voker57 (voker57 at gmail dot com)
+//   Copyright (C) 2010 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,21 +25,16 @@
 //
 //=============================================================================
 
+// this file was originally part of KviPixmap.h
+
 #include "kvi_settings.h"
 
-#ifdef COMPILE_DBUS_SUPPORT
-	#include <QDBusAbstractAdaptor>
-	#include <QDBusInterface>
-	#include <QObject>
+#include <QPainter>
 
-	class KVILIB_API KviDbusAdaptor: public QDBusAbstractAdaptor
-	{
-		Q_OBJECT
-		Q_CLASSINFO("KVIrc D-Bus Interface", "org.kvirc.KVIrc")
+namespace KviPixmapUtils
+{
+	extern KVILIB_API void drawPixmapWithPainter(QPainter* p,QPixmap * pix,int flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight,int dx,int dy);
+	inline void drawPixmapWithPainter(QPainter* p,QPixmap * pix,int flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight){ KviPixmapUtils::drawPixmapWithPainter(p,pix,flags,paintRect,iWidgetWidth,iWidgetHeight,paintRect.left(),paintRect.top()); }
+}
 
-	public:
-		KviDbusAdaptor(QObject * pObj);
-	};
-#endif // COMPILE_DBUS_SUPPORT
-
-#endif // _KVI_DBUSADAPTOR_H_
+#endif // _KVIPIXMAPUTILS_H_

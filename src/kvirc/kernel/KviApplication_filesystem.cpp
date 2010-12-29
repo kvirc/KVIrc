@@ -27,7 +27,7 @@
 #include "KviApplication.h"
 #include "KviLocale.h"
 #include "KviFileUtils.h"
-#include "KviMediaType.h"
+#include "KviMediaManager.h"
 #include "KviEnvironment.h"
 #include "KviTimeUtils.h"
 #include "KviOptions.h"

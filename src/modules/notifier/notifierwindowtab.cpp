@@ -33,6 +33,7 @@
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 #include "KviOptions.h"
+#include "KviPixmapUtils.h"
 #include "KviWindow.h"
 
 #include <QScrollBar>

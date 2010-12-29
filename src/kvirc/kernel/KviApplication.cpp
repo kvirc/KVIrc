@@ -41,7 +41,7 @@
 #include "KviOptions.h"
 #include "KviIrcServerParser.h"
 #include "KviModuleManager.h"
-#include "KviMediaType.h"
+#include "KviMediaManager.h"
 #include "KviRegisteredUserDataBase.h"
 #include "KviThread.h"
 #include "KviSharedFilesManager.h"
