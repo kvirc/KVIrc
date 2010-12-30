@@ -165,7 +165,8 @@ namespace KviError
 		OperationAborted                      = 116,
 		UnexpectedToken                       = 117,
 		ScopeObjectAlreadyDefined             = 118,
-		NoThisObject                          = 119
+		NoThisObject                          = 119,
+		ErrorCount                            = 120
 	};
 
 	/**

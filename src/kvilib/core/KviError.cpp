@@ -45,7 +45,7 @@
 //
 // WARNING: getDescription() is not even thread safe... it will die in the near future
 
-const char * g_errorTable[KVI_NUM_ERRORS]=
+const char * g_errorTable[KviError::ErrorCount]=
 {
 	__tr_no_lookup("Success"),                                                  // 000: success
 	__tr_no_lookup("Unknown error"),                                            // 001: unkonwnError
