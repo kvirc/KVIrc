@@ -33,8 +33,6 @@
 #include "kvi_settings.h"
 #include "KviQString.h"
 
-#define KVI_NUM_ERRORS 120
-
 /**
 * \namespace KviError
 * \brief This namespace handle the error codes
