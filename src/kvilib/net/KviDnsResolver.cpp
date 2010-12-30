@@ -58,7 +58,7 @@
 
 KviDnsResolverResult::KviDnsResolverResult()
 {
-	m_iError = KviError_success;
+	m_eError = KviError::Success;
 	m_pHostnameList = new KviPointerList<QString>;
 	m_pHostnameList->setAutoDelete(true);
 	m_pIpAddressList = new KviPointerList<QString>;
@@ -94,47 +94,47 @@ KviDnsResolverThread::~KviDnsResolverThread()
 {
 }
 
-int KviDnsResolverThread::translateDnsError(int iErr)
+KviError::Code KviDnsResolverThread::translateDnsError(int iErr)
 {
 #if defined(COMPILE_IPV6_SUPPORT) || (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW))
 
 	switch(iErr)
 	{
-		case EAI_FAMILY:     return KviError_unsupportedAddressFamily; break;
+		case EAI_FAMILY:     return KviError::UnsupportedAddressFamily; break;
 #if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)) && defined(EAI_ADDRFAMILY) && (EAI_ADDRFAMILY != EAI_FAMILY)
-		case EAI_ADDRFAMILY: return KviError_unsupportedAddressFamily; break;
+		case EAI_ADDRFAMILY: return KviError::UnsupportedAddressFamily; break;
 #endif
 // NOT FreeBSD ARE WE?
 #if defined(EAI_NODATA) && (EAI_NODATA != EAI_NONAME)
 // YARR
-		case EAI_NODATA:     return KviError_validNameButNoIpAddress; break;
+		case EAI_NODATA:     return KviError::ValidNameButNoIpAddress; break;
 #endif
-		case EAI_FAIL:       return KviError_unrecoverableNameserverError; break;
-		case EAI_AGAIN:      return KviError_dnsTemporaneousFault; break;
+		case EAI_FAIL:       return KviError::UnrecoverableNameserverError; break;
+		case EAI_AGAIN:      return KviError::DNSTemporaneousFault; break;
 		// this should never happen
-		case EAI_BADFLAGS:   return KviError_dnsInternalErrorBadFlags; break;
-		case EAI_MEMORY:     return KviError_dnsInternalErrorOutOfMemory; break;
+		case EAI_BADFLAGS:   return KviError::DNSInternalErrorBadFlags; break;
+		case EAI_MEMORY:     return KviError::DNSInternalErrorOutOfMemory; break;
 		// got this when experimenting with protocols
-		case EAI_SERVICE:    return KviError_dnsInternalErrorServiceNotSupported; break;
+		case EAI_SERVICE:    return KviError::DNSInternalErrorServiceNotSupported; break;
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-		case EAI_NONAME:     return KviError_dnsNoName; break;
+		case EAI_NONAME:     return KviError::DNSNoName; break;
 #endif
 		// got this when experimenting with protocols
-		case EAI_SOCKTYPE:   return KviError_dnsInternalErrorUnsupportedSocketType; break;
+		case EAI_SOCKTYPE:   return KviError::DNSInternalErrorUnsupportedSocketType; break;
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-		case EAI_SYSTEM:     return -errno;
+		case EAI_SYSTEM:     return KviError::DNSQueryFailed;
 #endif
 	}
 
 #endif
-	return KviError_dnsQueryFailed;
+	return KviError::DNSQueryFailed;
 }
 
-void KviDnsResolverThread::postDnsError(KviDnsResolverResult * dns,int iErr)
+void KviDnsResolverThread::postDnsError(KviDnsResolverResult * pDns, KviError::Code error)
 {
-	dns->setError(iErr);
+	pDns->setError(error);
 	KviThreadDataEvent<KviDnsResolverResult> * e = new KviThreadDataEvent<KviDnsResolverResult>(KVI_DNS_THREAD_EVENT_DATA);
-	e->setData(dns);
+	e->setData(pDns);
 	postEvent(m_pParentDns,e);
 }
 
@@ -146,7 +146,7 @@ void KviDnsResolverThread::run()
 
 	if(m_szQuery.isEmpty())
 	{
-		postDnsError(dns,KviError_noHostToResolve);
+		postDnsError(dns,KviError::NoHostToResolve);
 		return;
 	}
 
@@ -155,7 +155,7 @@ void KviDnsResolverThread::run()
 	{
 		if(m_queryType == KviDnsResolver::IPv6)
 		{
-			postDnsError(dns,KviError_noIPv6Support);
+			postDnsError(dns,KviError::NoIPv6Support);
 			return;
 		}
 		m_queryType = KviDnsResolver::IPv4;
@@ -166,7 +166,7 @@ void KviDnsResolverThread::run()
 
 	if(m_queryType == KviDnsResolver::IPv6)
 	{
-		postDnsError(dns,KviError_noIPv6Support);
+		postDnsError(dns,KviError::NoIPv6Support);
 		return;
 	}
 
@@ -188,11 +188,11 @@ void KviDnsResolverThread::run()
 	{
 		switch(h_errno)
 		{
-			case HOST_NOT_FOUND: dns->setError(KviError_hostNotFound); break;
-			case NO_ADDRESS:     dns->setError(KviError_validNameButNoIpAddress); break;
-			case NO_RECOVERY:    dns->setError(KviError_unrecoverableNameserverError); break;
-			case TRY_AGAIN:      dns->setError(KviError_dnsTemporaneousFault); break;
-			default:             dns->setError(KviError_dnsQueryFailed); break;
+			case HOST_NOT_FOUND: dns->setError(KviError::HostNotFound); break;
+			case NO_ADDRESS:     dns->setError(KviError::ValidNameButNoIpAddress); break;
+			case NO_RECOVERY:    dns->setError(KviError::UnrecoverableNameserverError); break;
+			case TRY_AGAIN:      dns->setError(KviError::DNSTemporaneousFault); break;
+			default:             dns->setError(KviError::DNSQueryFailed); break;
 		}
 	} else {
 		dns->appendHostname(pHostEntry->h_name);
@@ -370,22 +370,25 @@ bool KviDnsResolver::isRunning() const
 
 bool KviDnsResolver::lookup(const QString &query,QueryType type)
 {
-	if(m_state == Busy)return false;
+	if(m_state == Busy)
+		return false;
 	m_pSlaveThread->setQuery(KviQString::trimmed(query),type);
 	bool bStarted = m_pSlaveThread->start();
 	m_state = bStarted ? Busy : Failure;
 	return bStarted;
 }
 
-int KviDnsResolver::error()
+KviError::Code KviDnsResolver::error()
 {
-	if(!m_pDnsResult)return KviError_dnsQueryFailed;
+	if(!m_pDnsResult)
+		return KviError::DNSQueryFailed;
 	return m_pDnsResult->error();
 }
 
 KviDnsResolverResult * KviDnsResolver::result()
 {
-	if(!m_pDnsResult)m_pDnsResult = new KviDnsResolverResult();
+	if(!m_pDnsResult)
+		m_pDnsResult = new KviDnsResolverResult();
 	return m_pDnsResult;
 }
 
@@ -436,7 +439,7 @@ bool KviDnsResolver::event(QEvent *e)
 		{
 			if(m_pDnsResult)delete m_pDnsResult;
 			m_pDnsResult = ((KviThreadDataEvent<KviDnsResolverResult> *)e)->getData();
-			m_state = (m_pDnsResult->error() == KviError_success) ? Success : Failure;
+			m_state = (m_pDnsResult->error() == KviError::Success) ? Success : Failure;
 			emit lookupDone(this);
 			return true;
 		} // else ops... unknown thread event ?

@@ -210,14 +210,17 @@ bool KviHttpRequestThread::connectToRemoteHost()
 		return false;
 
 	int sockError;
-	int iSize=sizeof(sockError);
+	int iSize = sizeof(sockError);
 	if(!kvi_socket_getsockopt(m_sock,SOL_SOCKET,SO_ERROR,(void *)&sockError,&iSize))sockError = -1;
 	if(sockError != 0)
 	{
 		//failed
-		if(sockError > 0)sockError = KviError::translateSystemError(sockError);
-		else sockError = KviError_unknownError;
-		return failure(KviError::getUntranslatedDescription(sockError));
+		KviError::Code eError;
+		if(sockError > 0)
+			eError = KviError::translateSystemError(sockError);
+		else
+			eError = KviError::UnknownError;
+		return failure(KviError::getUntranslatedDescription(eError));
 	}
 
 #ifdef COMPILE_SSL_SUPPORT

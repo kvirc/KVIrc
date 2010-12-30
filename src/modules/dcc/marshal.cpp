@@ -26,7 +26,6 @@
 
 #include "kvi_settings.h"
 #include "KviNetUtils.h"
-#include "KviError.h"
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviMemory.h"
@@ -105,9 +104,10 @@ void KviDccMarshal::reset()
 	m_bIPv6 = false;
 }
 
-int KviDccMarshal::dccListen(const QString &ip,const QString &port,bool bUseTimeout,bool bUseSSL)
+KviError::Code KviDccMarshal::dccListen(const QString &ip,const QString &port,bool bUseTimeout,bool bUseSSL)
 {
-	if(m_fd != KVI_INVALID_SOCKET)return KviError_anotherConnectionInProgress;
+	if(m_fd != KVI_INVALID_SOCKET)
+		return KviError::AnotherConnectionInProgress;
 
 	m_szIp = ip;
 	m_szPort = port;
@@ -125,11 +125,12 @@ int KviDccMarshal::dccListen(const QString &ip,const QString &port,bool bUseTime
 #ifdef COMPILE_SSL_SUPPORT
 	m_bUseSSL = bUseSSL;
 #else
-	if(bUseSSL)return KviError_noSSLSupport;
+	if(bUseSSL)
+		return KviError::NoSSLSupport;
 #endif
 	QTimer::singleShot(100, this, SLOT(doListen()));
 
-	return KviError_success;
+	return KviError::Success;
 }
 
 void KviDccMarshal::doListen()
@@ -140,11 +141,11 @@ void KviDccMarshal::doListen()
 #ifdef COMPILE_IPV6_SUPPORT
 		if(!KviNetUtils::isValidStringIPv6(m_szIp))
 		{
-			emit error(KviError_invalidIpAddress);
+			emit error(KviError::InvalidIpAddress);
 			return;
 		} else m_bIPv6 = true;
 #else
-		emit error(KviError_invalidIpAddress);
+		emit error(KviError::InvalidIpAddress);
 		return;
 #endif
 	}
@@ -153,14 +154,14 @@ void KviDccMarshal::doListen()
 	m_uPort = m_szPort.toUInt(&bOk);
 	if(!bOk)
 	{
-		emit error(KviError_invalidPortNumber);
+		emit error(KviError::InvalidPortNumber);
 		return;
 	}
 
 #ifndef COMPILE_IPV6_SUPPORT
 	if(m_bIPv6)
 	{
-		emit error(KviError_noIPv6Support);
+		emit error(KviError::NoIPv6Support);
 		return;
 	}
 #endif
@@ -175,7 +176,7 @@ void KviDccMarshal::doListen()
 
 	if(m_fd == KVI_INVALID_SOCKET)
 	{
-		emit error(KviError_socketCreationFailed);
+		emit error(KviError::SocketCreationFailed);
 		return;
 	}
 
@@ -190,14 +191,14 @@ void KviDccMarshal::doListen()
 		if(!sa.socketAddress())
 		{
 			reset();
-			emit error(KviError_bindFailed);
+			emit error(KviError::BindFailed);
 			return;
 		}
 
 		if(!kvi_socket_bind(m_fd,sa.socketAddress(),sa.addressLength()))
 		{
 			reset();
-			emit error(KviError_bindFailed);
+			emit error(KviError::BindFailed);
 			return;
 		}
 
@@ -214,7 +215,7 @@ void KviDccMarshal::doListen()
 			if(!sa.socketAddress())
 			{
 				reset();
-				emit error(KviError_bindFailed);
+				emit error(KviError::BindFailed);
 				return;
 			}
 
@@ -225,7 +226,7 @@ void KviDccMarshal::doListen()
 				if(m_uPort == 65535)
 				{
 					reset();
-					emit error(KviError_bindFailed);
+					emit error(KviError::BindFailed);
 					return;
 				}
 				m_uPort++;
@@ -236,7 +237,7 @@ void KviDccMarshal::doListen()
 		if(!bBindSuccess)
 		{
 			reset();
-			emit error(KviError_bindFailed);
+			emit error(KviError::BindFailed);
 			return;
 		}
 
@@ -245,7 +246,7 @@ void KviDccMarshal::doListen()
 	if(!kvi_socket_listen(m_fd,1))
 	{
 		reset();
-		emit error(KviError_listenFailed);
+		emit error(KviError::ListenFailed);
 		return;
 	}
 
@@ -299,9 +300,10 @@ void KviDccMarshal::doListen()
 	emit inProgress();
 }
 
-int KviDccMarshal::dccConnect(const char * ip,const char * port,bool bUseTimeout,bool bUseSSL)
+KviError::Code KviDccMarshal::dccConnect(const char * ip,const char * port,bool bUseTimeout,bool bUseSSL)
 {
-	if(m_fd != KVI_INVALID_SOCKET)return KviError_anotherConnectionInProgress;
+	if(m_fd != KVI_INVALID_SOCKET)
+		return KviError::AnotherConnectionInProgress;
 
 	m_bUseTimeout = bUseTimeout;
 	m_szIp = ip;
@@ -311,11 +313,12 @@ int KviDccMarshal::dccConnect(const char * ip,const char * port,bool bUseTimeout
 #ifdef COMPILE_SSL_SUPPORT
 	m_bUseSSL = bUseSSL;
 #else
-	if(bUseSSL)return KviError_noSSLSupport;
+	if(bUseSSL)
+		return KviError::NoSSLSupport;
 #endif
 
 	QTimer::singleShot(100, this, SLOT(doConnect()));
-	return KviError_success;
+	return KviError::Success;
 }
 
 void KviDccMarshal::doConnect()
@@ -331,11 +334,11 @@ void KviDccMarshal::doConnect()
 #ifdef COMPILE_IPV6_SUPPORT
 		if(!KviNetUtils::isValidStringIPv6(m_szIp))
 		{
-			emit error(KviError_invalidIpAddress);
+			emit error(KviError::InvalidIpAddress);
 			return;
 		} else m_bIPv6 = true;
 #else
-		emit error(KviError_invalidIpAddress);
+		emit error(KviError::InvalidIpAddress);
 		return;
 #endif
 	}
@@ -344,7 +347,7 @@ void KviDccMarshal::doConnect()
 	m_uPort = m_szPort.toUInt(&bOk);
 	if(!bOk)
 	{
-		emit error(KviError_invalidPortNumber);
+		emit error(KviError::InvalidPortNumber);
 		return;
 	}
 
@@ -359,7 +362,7 @@ void KviDccMarshal::doConnect()
 #endif
 	if(m_fd == KVI_INVALID_SOCKET)
 	{
-		emit error(KviError_socketCreationFailed);
+		emit error(KviError::SocketCreationFailed);
 		return;
 	}
 
@@ -367,7 +370,7 @@ void KviDccMarshal::doConnect()
 	if(!kvi_socket_setNonBlocking(m_fd))
 	{
 		reset();
-		emit error(KviError_asyncSocketFailed);
+		emit error(KviError::AsyncSocketFailed);
 		return;
 	}
 
@@ -383,7 +386,7 @@ void KviDccMarshal::doConnect()
 	if(!sa.socketAddress())
 	{
 		reset();
-		emit error(KviError_socketCreationFailed);
+		emit error(KviError::SocketCreationFailed);
 		return;
 	}
 
@@ -406,7 +409,7 @@ void KviDccMarshal::doConnect()
 			reset();
 			// And declare problems :)
 			if(sockError)emit error(KviError::translateSystemError(sockError));
-			else emit error(KviError_unknownError); //Error 0 ?
+			else emit error(KviError::UnknownError); //Error 0 ?
 			return;
 		}
 	}
@@ -475,7 +478,7 @@ void KviDccMarshal::snActivated(int)
 		{
 			//failed
 			if(sockError > 0)sockError = KviError::translateSystemError(sockError);
-			else sockError = KviError_unknownError; //Error 0 ?
+			else sockError = KviError::UnknownError; //Error 0 ?
 			reset();
 			emit error(sockError);
 			return;
@@ -531,7 +534,7 @@ void KviDccMarshal::snActivated(int)
 			if(!kvi_socket_setNonBlocking(m_fd))
 			{
 				reset();
-				emit error(KviError_asyncSocketFailed);
+				emit error(KviError::AsyncSocketFailed);
 				return;
 			}
 
@@ -553,7 +556,7 @@ void KviDccMarshal::snActivated(int)
 			doSSLHandshake(0);
 		} else {
 			reset();
-			emit error(KviError_SSLError);
+			emit error(KviError::SSLError);
 		}
 		return;
 	}
@@ -576,7 +579,7 @@ void KviDccMarshal::doSSLHandshake(int)
 	{
 		qDebug("Ops... I've lost the SSL class ?");
 		reset();
-		emit error(KviError_internalError);
+		emit error(KviError::InternalError);
 		return; // ops ?
 	}
 
@@ -602,7 +605,7 @@ void KviDccMarshal::doSSLHandshake(int)
 		break;
 		case KviSSL::RemoteEndClosedConnection:
 			reset();
-			emit error(KviError_remoteEndClosedConnection);
+			emit error(KviError::RemoteEndClosedConnection);
 		break;
 		case KviSSL::SyscallError:
 		{
@@ -618,7 +621,7 @@ void KviDccMarshal::doSSLHandshake(int)
 			} else {
 				// Declare problems :)
 				reset();
-				emit error(err ? KviError::translateSystemError(err) : KviError_unknownError);
+				emit error(err ? KviError::translateSystemError(err) : KviError::UnknownError);
 			}
 		}
 		break;
@@ -627,7 +630,7 @@ void KviDccMarshal::doSSLHandshake(int)
 			KviCString buffer;
 			while(m_pSSL->getLastErrorString(buffer))emit sslError(buffer.ptr());
 			reset();
-			emit error(KviError_SSLError);
+			emit error(KviError::SSLError);
 		}
 		break;
 	}
@@ -645,7 +648,7 @@ void KviDccMarshal::abort()
 void KviDccMarshal::connectionTimedOut()
 {
 	reset();
-	emit error(KviError_connectionTimedOut);
+	emit error(KviError::ConnectionTimedOut);
 }
 
 

@@ -25,6 +25,7 @@
 //=============================================================================
 
 #include "KviCString.h"
+#include "KviError.h"
 #include "kvi_sockettype.h"
 #include "kvi_inttypes.h"
 
@@ -84,8 +85,8 @@ public:
 	const QString & localPort() const { return m_bOutgoing ? m_szSecondaryPort : m_szPort; };
 	const QString & remoteIp() const { return m_bOutgoing ? m_szIp : m_szSecondaryIp; };
 	const QString & remotePort() const { return m_bOutgoing ? m_szPort : m_szSecondaryPort; };
-	int dccListen(const QString &ip,const QString &port,bool bUseTimeout,bool bUseSSL = false);
-	int dccConnect(const char * ip,const char * port,bool bUseTimeout,bool bUseSSL = false);
+	KviError::Code dccListen(const QString &ip,const QString &port,bool bUseTimeout,bool bUseSSL = false);
+	KviError::Code dccConnect(const char * ip,const char * port,bool bUseTimeout,bool bUseSSL = false);
 	kvi_socket_t releaseSocket();
 #ifdef COMPILE_SSL_SUPPORT
 	KviSSL * releaseSSL();

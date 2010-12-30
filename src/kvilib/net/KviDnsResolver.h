@@ -29,9 +29,9 @@
 #include "KviHeapObject.h"
 #include "KviThread.h"
 #include "KviQString.h"
+#include "KviError.h"
 
 class KviDnsResolverThread;
-
 
 class KVILIB_API KviDnsResolverResult : public KviHeapObject
 {
@@ -42,14 +42,14 @@ protected:
 public:
 	~KviDnsResolverResult();
 protected:
-	int m_iError;
+	KviError::Code m_eError;
 	KviPointerList<QString> * m_pHostnameList;
 	KviPointerList<QString> * m_pIpAddressList;
 	QString m_szQuery;
 public:
-	int error()
+	KviError::Code error()
 	{
-		return m_iError;
+		return m_eError;
 	}
 
 	// never store nor delete these pointers!
@@ -70,18 +70,18 @@ public:
 	}
 
 protected:
-	void setError(int iError)
+	void setError(KviError::Code eError)
 	{
-		m_iError = iError;
+		m_eError = eError;
 	}
 
-	void setQuery(const QString &query)
+	void setQuery(const QString & szQuery)
 	{
-		m_szQuery = query;
+		m_szQuery = szQuery;
 	}
 
-	void appendHostname(const QString &host);
-	void appendAddress(const QString &addr);
+	void appendHostname(const QString & szHost);
+	void appendAddress(const QString & szAddr);
 };
 
 
@@ -108,13 +108,13 @@ public:
 	//
 
 	// Lookup start
-	bool lookup(const QString &szQuery,QueryType type);
+	bool lookup(const QString & szQuery, QueryType type);
 
 	// Current object state
 	State state(){ return m_state; };
 
 	// Results (return always non null-data..but valid results only if state() == Success or Failure)
-	int error();
+	KviError::Code error();
 	const QString & firstHostname();
 	const QString & firstIpAddress();
 	int hostnameCount();
@@ -150,15 +150,15 @@ protected:
 	KviDnsResolverThread(KviDnsResolver * pDns);
 	virtual ~KviDnsResolverThread();
 protected:
-	QString              m_szQuery;
+	QString                      m_szQuery;
 	KviDnsResolver::QueryType    m_queryType;
 	KviDnsResolver             * m_pParentDns;
 public:
-	void setQuery(const QString &query,KviDnsResolver::QueryType type){ m_szQuery = query; m_queryType = type; };
+	void setQuery(const QString & szQuery, KviDnsResolver::QueryType type){ m_szQuery = szQuery; m_queryType = type; };
 protected:
 	virtual void run();
-	int translateDnsError(int iErr);
-	void postDnsError(KviDnsResolverResult * dns,int iErr);
+	KviError::Code translateDnsError(int iErr);
+	void postDnsError(KviDnsResolverResult * pDns, KviError::Code error);
 };
 
 

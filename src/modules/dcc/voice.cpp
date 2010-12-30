@@ -33,7 +33,6 @@
 #include "KviIrcView.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
-#include "KviError.h"
 #include "KviNetUtils.h"
 #include "KviOptions.h"
 #include "KviConsoleWindow.h"
@@ -738,13 +737,15 @@ void KviDccVoice::startConnection()
 	{
 		// PASSIVE CONNECTION
 		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Attempting a passive DCC VOICE connection","dcc"));
-		int ret = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
-		if(ret != KviError_success)handleMarshalError(ret);
+		KviError::Code eError = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
+		if(eError != KviError::Success)
+			handleMarshalError(eError);
 	} else {
 		// ACTIVE CONNECTION
 		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Attempting an active DCC VOICE connection","dcc"));
-		int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
-		if(ret != KviError_success)handleMarshalError(ret);
+		KviError::Code eError = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
+		if(eError != KviError::Success)
+			handleMarshalError(eError);
 	}
 }
 
@@ -813,10 +814,10 @@ bool KviDccVoice::event(QEvent *e)
 		{
 			case KVI_DCC_THREAD_EVENT_ERROR:
 			{
-				int * err = ((KviThreadDataEvent<int> *)e)->getData();
-				QString ssss = KviError::getDescription(*err);
+				KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
+				QString ssss = KviError::getDescription(*pError);
 				output(KVI_OUT_DCCERROR,__tr2qs_ctx("ERROR: %Q","dcc"),&(ssss));
-				delete err;
+				delete pError;
 				m_pUpdateTimer->stop();
 				updateInfo();
 				m_pTalkButton->setEnabled(false);
@@ -895,9 +896,9 @@ QSize KviDccVoice::sizeHint() const
 	return ret;
 }
 
-void KviDccVoice::handleMarshalError(int err)
+void KviDccVoice::handleMarshalError(KviError::Code eError)
 {
-	QString ssss = KviError::getDescription(err);
+	QString ssss = KviError::getDescription(eError);
 	output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC Failed: %Q","dcc"),&ssss);
 	m_pTalkButton->setEnabled(false);
 	m_pTalkButton->setChecked(false);

@@ -241,7 +241,7 @@ protected slots:
 	void connectionInProgress();
 	void sslError(const char * msg);
 	void startingSSLHandshake();
-	void handleMarshalError(int err);
+	void handleMarshalError(KviError::Code);
 	void connected();
 	void bandwidthDialogDestroyed();
 	void configureBandwidth();

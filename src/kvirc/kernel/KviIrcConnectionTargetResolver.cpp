@@ -73,7 +73,7 @@ KviIrcConnectionTargetResolver::KviIrcConnectionTargetResolver(KviIrcConnection 
 	m_eState = Idle;
 	m_eStatus = Success;
 
-	m_iLastError = KviError_success;
+	m_iLastError = KviError::Success;
 }
 
 KviIrcConnectionTargetResolver::~KviIrcConnectionTargetResolver()
@@ -144,7 +144,7 @@ void KviIrcConnectionTargetResolver::abort()
 	if(m_eState == Terminated)return;
 
 	m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Hostname resolution aborted"));
-	terminate(Error,KviError_operationAborted);
+	terminate(Error,KviError::OperationAborted);
 }
 
 void KviIrcConnectionTargetResolver::asyncStartResolve()
@@ -199,7 +199,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 		if(m_pTarget->proxy()->protocol() != KviProxy::Http
 			&& m_pTarget->proxy()->protocol() != KviProxy::Socks5)
 				lookupServerHostname();
-		else terminate(Success,KviError_success);
+		else terminate(Success,KviError::Success);
 	} else {
 #ifdef COMPILE_IPV6_SUPPORT
 		if(m_pTarget->proxy()->isIPv6())
@@ -219,7 +219,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 			{
 				lookupServerHostname();
 			} else {
-				terminate(Success,KviError_success);
+				terminate(Success,KviError::Success);
 			}
 		} else {
 
@@ -296,7 +296,7 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDnsResolver *)
 		if(m_pTarget->proxy()->protocol() == KviProxy::Http
 			|| m_pTarget->proxy()->protocol() == KviProxy::Socks5)
 		{
-			terminate(Success,KviError_success);
+			terminate(Success,KviError::Success);
 			return;
 		}
 	}
@@ -355,7 +355,7 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
 					__tr2qs("Unable to look up the server hostname: Can't start the DNS slave"));
-				terminate(Error,KviError_internalError);
+				terminate(Error,KviError::InternalError);
 			} else {
 				if(!_OUTPUT_MUTE)
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
@@ -570,7 +570,7 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 	}
 
 	m_pTarget->setBindAddress(bindAddress);
-	terminate(Success,KviError_success);
+	terminate(Success,KviError::Success);
 }
 
 void KviIrcConnectionTargetResolver::terminate(Status s,int iLastError)

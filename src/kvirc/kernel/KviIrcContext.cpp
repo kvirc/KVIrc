@@ -597,7 +597,7 @@ void KviIrcContext::connectionFailed(int iError)
 		m_pConnection->target()->server()->m_szHostname.toUtf8().data());
 
 	// if the connection has been aborted by the user then just go idle
-	if(iError == KviError_operationAborted)
+	if(iError == KviError::OperationAborted)
 		goto enter_idle_state;
 
 	// FIXME: this should stop on critical errors !
@@ -655,10 +655,10 @@ void KviIrcContext::connectionFailed(int iError)
 
 	if(connection()->target()->server()->cacheIp())
 	{
-		if((((int)iError) == KviError_connectionTimedOut) ||
-			(((int)iError) == KviError_connectionRefused) ||
-			(((int)iError) == KviError_networkUnreachable) ||
-			(((int)iError) == KviError_hostUnreachable))
+		if((((int)iError) == KviError::ConnectionTimedOut) ||
+			(((int)iError) == KviError::ConnectionRefused) ||
+			(((int)iError) == KviError::NetworkUnreachable) ||
+			(((int)iError) == KviError::HostUnreachable))
 		{
 			m_pConsole->output(KVI_OUT_SYSTEMWARNING,__tr2qs("The connection attempt failed while using a cached IP address for the current server"));
 			m_pConsole->output(KVI_OUT_SYSTEMWARNING,__tr2qs("The problem *might* be caused by an updated DNS entry"));

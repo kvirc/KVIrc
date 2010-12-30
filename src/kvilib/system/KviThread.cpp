@@ -164,14 +164,13 @@ void KviThreadManager::globalInit()
 void KviThreadManager::globalDestroy()
 {
 	delete g_pThreadManager;
-    g_pThreadManager = 0;
+	g_pThreadManager = 0;
 }
 
 KviThreadManager::KviThreadManager()
 : QObject()
 {
 	if(g_pThreadManager)qDebug("Hey...what are ya doing ?");
-
 
 	m_pMutex = new KviMutex();
 	m_pThreadList = new KviPointerList<KviThread>;

@@ -33,6 +33,7 @@
 #include "KviDataBuffer.h"
 #include "kvi_sockettype.h"
 #include "KviTalHBox.h"
+#include "KviError.h"
 
 #include <QLabel>
 #include <QToolButton>
@@ -133,7 +134,7 @@ protected:
 	void startConnection();
 	int getMixerVolume(void) const;
 protected slots:
-	void handleMarshalError(int err);
+	void handleMarshalError(KviError::Code eError);
 	void connected();
 	void updateInfo();
 	void startOrStopTalking(bool bStart);

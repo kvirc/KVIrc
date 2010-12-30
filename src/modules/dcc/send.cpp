@@ -130,7 +130,7 @@ bool KviDccRecvThread::sendAck(int filePos)
 
 	if(iRet != 4)
 	{
-		postErrorEvent(KviError_acknowledgeError);
+		postErrorEvent(KviError::AcknowledgeError);
 		return false;
 	}
 	return true;
@@ -206,13 +206,13 @@ void KviDccRecvThread::run()
 	{
 		if(!m_pFile->open(QIODevice::WriteOnly | QIODevice::Append))
 		{
-			postErrorEvent(KviError_cantOpenFileForAppending);
+			postErrorEvent(KviError::CantOpenFileForAppending);
 			goto exit_dcc;
 		} // else pFile is already at end
 	} else {
 		if(!m_pFile->open(QIODevice::WriteOnly))
 		{
-			postErrorEvent(KviError_cantOpenFileForWriting);
+			postErrorEvent(KviError::CantOpenFileForWriting);
 			goto exit_dcc;
 		}
 	}
@@ -283,14 +283,14 @@ void KviDccRecvThread::run()
 							if(readLen > 0)
 							{
 								if(m_pFile->write(buffer,readLen) != readLen)
-									postErrorEvent(KviError_fileIOError);
+									postErrorEvent(KviError::FileIOError);
 							}
 							break;
 
 						} else {
 							if(m_pFile->write(buffer,readLen) != readLen)
 							{
-								postErrorEvent(KviError_fileIOError);
+								postErrorEvent(KviError::FileIOError);
 								break;
 							}
 						}
@@ -358,7 +358,7 @@ void KviDccRecvThread::run()
 									if(iE != 0)
 									{
 										raiseSSLError();
-										postErrorEvent(KviError_SSLError);
+										postErrorEvent(KviError::SSLError);
 										goto exit_dcc;
 									}
 								}
@@ -366,13 +366,13 @@ void KviDccRecvThread::run()
 								case KviSSL::SSLError:
 								{
 									raiseSSLError();
-									postErrorEvent(KviError_SSLError);
+									postErrorEvent(KviError::SSLError);
 									goto exit_dcc;
 								}
 								break;
 								default:
 									// Raise unknown SSL ERROR
-									postErrorEvent(KviError_SSLError);
+									postErrorEvent(KviError::SSLError);
 									goto exit_dcc;
 								break;
 							}
@@ -568,13 +568,13 @@ void KviDccSendThread::run()
 
 	if(!pFile->open(QIODevice::ReadOnly))
 	{
-		postErrorEvent(KviError_cantOpenFileForReading);
+		postErrorEvent(KviError::CantOpenFileForReading);
 		goto exit_dcc;
 	}
 
 	if(pFile->size() < 1)
 	{
-		postErrorEvent(KviError_cantSendAZeroSizeFile);
+		postErrorEvent(KviError::CantSendAZeroSizeFile);
 		goto exit_dcc;
 	}
 
@@ -589,7 +589,7 @@ void KviDccSendThread::run()
 		// seek
 		if(!(pFile->seek(m_pOpt->uStartPosition)))
 		{
-			postErrorEvent(KviError_fileIOError);
+			postErrorEvent(KviError::FileIOError);
 			goto exit_dcc;
 		}
 	}
@@ -645,7 +645,7 @@ void KviDccSendThread::run()
 							if(iNewAck > pFile->pos())
 							{
 								// the peer is drunk or is trying to fool us
-								postErrorEvent(KviError_acknowledgeError);
+								postErrorEvent(KviError::AcknowledgeError);
 								break;
 							}
 							if(iNewAck < uLastAck)
@@ -656,7 +656,7 @@ void KviDccSendThread::run()
 									iAckHackRounds++;
 								} else {
 									// the peer is drunk or is trying to fool us
-									postErrorEvent(KviError_acknowledgeError);
+									postErrorEvent(KviError::AcknowledgeError);
 									break;
 								}
 							}
@@ -690,7 +690,7 @@ void KviDccSendThread::run()
 									if(iE != 0)
 									{
 										raiseSSLError();
-										postErrorEvent(KviError_SSLError);
+										postErrorEvent(KviError::SSLError);
 										goto exit_dcc;
 									}
 								}
@@ -698,13 +698,13 @@ void KviDccSendThread::run()
 								case KviSSL::SSLError:
 								{
 									raiseSSLError();
-									postErrorEvent(KviError_SSLError);
+									postErrorEvent(KviError::SSLError);
 									goto exit_dcc;
 								}
 								break;
 								default:
 									// Raise unknown SSL ERROR
-									postErrorEvent(KviError_SSLError);
+									postErrorEvent(KviError::SSLError);
 									goto exit_dcc;
 								break;
 							}
@@ -773,7 +773,7 @@ void KviDccSendThread::run()
 												if(iE != 0)
 												{
 													raiseSSLError();
-													postErrorEvent(KviError_SSLError);
+													postErrorEvent(KviError::SSLError);
 													goto exit_dcc;
 												}
 											}
@@ -781,13 +781,13 @@ void KviDccSendThread::run()
 											case KviSSL::SSLError:
 											{
 												raiseSSLError();
-												postErrorEvent(KviError_SSLError);
+												postErrorEvent(KviError::SSLError);
 												goto exit_dcc;
 											}
 											break;
 											default:
 												// Raise unknown SSL ERROR
-												postErrorEvent(KviError_SSLError);
+												postErrorEvent(KviError::SSLError);
 												goto exit_dcc;
 											break;
 										}
@@ -832,7 +832,7 @@ void KviDccSendThread::run()
 							int readed = pFile->read(buffer,toRead);
 							if(readed < toRead)
 							{
-								postErrorEvent(KviError_fileIOError);
+								postErrorEvent(KviError::FileIOError);
 								break;
 							}
 							// send it out
@@ -867,14 +867,14 @@ void KviDccSendThread::run()
 												if(written == 0)
 												{
 													raiseSSLError();
-													postErrorEvent(KviError_remoteEndClosedConnection);
+													postErrorEvent(KviError::RemoteEndClosedConnection);
 													goto exit_dcc;
 												} else {
 													int iSSLErr = m_pSSL->getLastError(true);
 													if(iSSLErr != 0)
 													{
 														raiseSSLError();
-														postErrorEvent(KviError_SSLError);
+														postErrorEvent(KviError::SSLError);
 														goto exit_dcc;
 													} else {
 														goto handle_system_error;
@@ -883,11 +883,11 @@ void KviDccSendThread::run()
 											break;
 											case KviSSL::SSLError:
 												raiseSSLError();
-												postErrorEvent(KviError_SSLError);
+												postErrorEvent(KviError::SSLError);
 												goto exit_dcc;
 											break;
 											default:
-												postErrorEvent(KviError_SSLError);
+												postErrorEvent(KviError::SSLError);
 												goto exit_dcc;
 											break;
 										}
@@ -1144,18 +1144,20 @@ void KviDccFileTransfer::listenOrConnect()
 	if(!(m_pDescriptor->bActive))
 	{
 #ifdef COMPILE_SSL_SUPPORT
-		int ret = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout,m_pDescriptor->bIsSSL);
+		KviError::Code eError = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout,m_pDescriptor->bIsSSL);
 #else
-		int ret = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
+		KviError::Code eError = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
 #endif
-		if(ret != KviError_success)handleMarshalError(ret);
+		if(eError != KviError::Success)
+			handleMarshalError(eError);
 	} else {
 #ifdef COMPILE_SSL_SUPPORT
-		int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout,m_pDescriptor->bIsSSL);
+		KviError::Code eError = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout,m_pDescriptor->bIsSSL);
 #else
-		int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
+		KviError::Code eError = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
 #endif
-		if(ret != KviError_success)handleMarshalError(ret);
+		if(eError != KviError::Success)
+			handleMarshalError(eError);
 	}
 
 	displayUpdate();
@@ -1168,7 +1170,7 @@ void KviDccFileTransfer::resumeTimedOut()
 		delete m_pResumeTimer;
 		m_pResumeTimer = 0;
 	}
-	handleMarshalError(KviError_connectionTimedOut);
+	handleMarshalError(KviError::ConnectionTimedOut);
 }
 
 KviWindow * KviDccFileTransfer::dccMarshalOutputWindow()
@@ -1869,9 +1871,9 @@ bool KviDccFileTransfer::event(QEvent *e)
 		{
 			case KVI_DCC_THREAD_EVENT_ERROR:
 			{
-				int * err = ((KviThreadDataEvent<int> *)e)->getData();
-				QString szErrorString = KviError::getDescription(*err);
-				delete err;
+				KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
+				QString szErrorString = KviError::getDescription(*pError);
+				delete pError;
 				if(m_pDescriptor->bRecvFile)
 					g_pApp->fileDownloadTerminated(false,m_pDescriptor->szFileName.toUtf8().data(),m_pDescriptor->szLocalFileName.toUtf8().data(),m_pDescriptor->szNick.toUtf8().data(),szErrorString.toUtf8().data());
 
@@ -1950,9 +1952,9 @@ bool KviDccFileTransfer::event(QEvent *e)
 	return KviFileTransfer::event(e);
 }
 
-void KviDccFileTransfer::handleMarshalError(int err)
+void KviDccFileTransfer::handleMarshalError(KviError::Code eError)
 {
-	QString szErr = KviError::getDescription(err);
+	QString szErr = KviError::getDescription(eError);
 	m_eGeneralStatus = Failure;
 	m_szStatusString = __tr2qs_ctx("Transfer failed: ","dcc");
 	m_szStatusString += szErr;
@@ -2057,7 +2059,7 @@ bool KviDccFileTransfer::resumeAccepted(const char *filename,const char *port,co
 	int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),
 					m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
 
-	if(ret != KviError_success)handleMarshalError(ret);
+	if(ret != KviError::Success)handleMarshalError(ret);
 	else {
 		m_szStatusString = __tr2qs_ctx("Contacting host %1 on port %2","dcc").arg(m_pDescriptor->szIp, m_pDescriptor->szPort);
 		outputAndLog(m_szStatusString);

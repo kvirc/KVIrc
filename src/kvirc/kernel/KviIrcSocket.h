@@ -35,6 +35,7 @@
 #include "kvi_sockettype.h"
 #include "KviTimeUtils.h"
 #include "KviPointerList.h"
+#include "KviError.h"
 
 #include <QObject>
 
@@ -102,17 +103,17 @@ public:
 protected:
 	unsigned int           m_uId;
 	KviIrcLink           * m_pLink;
-	KviConsoleWindow           * m_pConsole;
+	KviConsoleWindow     * m_pConsole;
 	kvi_socket_t           m_sock;
 	SocketState            m_state;
 	QSocketNotifier      * m_pWsn;
 	QSocketNotifier      * m_pRsn;
-	KviIrcServer            * m_pIrcServer;
+	KviIrcServer         * m_pIrcServer;
 	KviProxy             * m_pProxy;
 	QTimer               * m_pTimeoutTimer;
 	unsigned int           m_uReadBytes;
 	unsigned int           m_uSentBytes;
-	int                    m_iLastError;
+	KviError::Code         m_eLastError;
 	unsigned int           m_uSentPackets;
 	KviIrcSocketMsgEntry * m_pSendQueueHead;
 	KviIrcSocketMsgEntry * m_pSendQueueTail;
@@ -145,7 +146,7 @@ public:
 	* \brief Returns the last error
 	* \return int
 	*/
-	int lastError(){ return m_iLastError; };
+	int lastError(){ return m_eLastError; };
 
 	/**
 	* \brief Returns the id of the socket
@@ -195,7 +196,7 @@ public:
 	* \param pcBindAddress The address to bind the connection to
 	* \return int
 	*/
-	int startConnection(KviIrcServer * pServer, KviProxy * pProxy = 0, const char * pcBindAddress = 0);
+	KviError::Code startConnection(KviIrcServer * pServer, KviProxy * pProxy = 0, const char * pcBindAddress = 0);
 
 #ifdef COMPILE_SSL_SUPPORT
 	/**
@@ -268,7 +269,7 @@ protected:
 	* \param iError The error to raise
 	* \return void
 	*/
-	void raiseError(int iError);
+	void raiseError(KviError::Code eError);
 
 	/**
 	* \brief Called when the connection has been estabilished

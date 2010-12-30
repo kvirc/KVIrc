@@ -37,7 +37,6 @@
 #include "KviIrcView.h"
 #include "KviIconManager.h"
 #include "KviLocale.h"
-#include "KviError.h"
 #include "kvi_out.h"
 #include "KviNetUtils.h"
 #include "KviConsoleWindow.h"
@@ -160,20 +159,22 @@ void KviDccChat::startConnection()
 		// PASSIVE CONNECTION
 		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Attempting a passive DCC %s connection","dcc"),m_pDescriptor->szType.toUtf8().data());
 #ifdef COMPILE_SSL_SUPPORT
-		int ret = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout,m_pDescriptor->bIsSSL);
+		KviError::Code eError = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout,m_pDescriptor->bIsSSL);
 #else
-		int ret = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
+		KviError::Code eError = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
 #endif
-		if(ret != KviError_success)handleMarshalError(ret);
+		if(eError != KviError::Success)
+			handleMarshalError(eError);
 	} else {
 		// ACTIVE CONNECTION
 		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Attempting an active DCC %s connection","dcc"),m_pDescriptor->szType.toUtf8().data());
 #ifdef COMPILE_SSL_SUPPORT
-		int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout,m_pDescriptor->bIsSSL);
+		KviError::Code eError = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout,m_pDescriptor->bIsSSL);
 #else
-		int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
+		KviError::Code eError = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
 #endif
-		if(ret != KviError_success)handleMarshalError(ret);
+		if(eError != KviError::Success)
+			handleMarshalError(eError);
 	}
 }
 
@@ -392,7 +393,8 @@ void KviDccChat::ownAction(const QString &text)
 
 		QByteArray szData = encodeText(szTmpBuffer);
 		const char * d = szData.data();
-		if(!d)return;
+		if(!d)
+			return;
 		KviCString buf(KviCString::Format,"%cACTION %s%c\r\n",0x01,d,0x01);
 		m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
 		output(KVI_OUT_ACTION,"%Q %Q",&(m_pDescriptor->szLocalNick),&szTmpBuffer);
@@ -409,12 +411,12 @@ bool KviDccChat::event(QEvent *e)
 		{
 			case KVI_DCC_THREAD_EVENT_ERROR:
 			{
-				int * err = ((KviThreadDataEvent<int> *)e)->getData();
-				QString szErr = KviError::getDescription(*err);
+				KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
+				QString szErr = KviError::getDescription(*pError);
 				if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatError,this,szErr,m_pDescriptor->idString()))
 					output(KVI_OUT_DCCERROR,__tr2qs_ctx("ERROR: %Q","dcc"),&szErr);
 				KVS_TRIGGER_EVENT_1(KviEvent_OnDCCChatDisconnected,this,m_pDescriptor->idString());
-				delete err;
+				delete pError;
 				return true;
 			}
 			break;
@@ -528,9 +530,9 @@ QSize KviDccChat::sizeHint() const
 	return ret;
 }
 
-void KviDccChat::handleMarshalError(int err)
+void KviDccChat::handleMarshalError(KviError::Code eError)
 {
-	QString szErr = KviError::getDescription(err);
+	QString szErr = KviError::getDescription(eError);
 	if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatError,this,szErr,m_pDescriptor->idString()))
 		output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC %Q failed: %Q","dcc"),&(m_pDescriptor->szType),&szErr);
 }
@@ -666,7 +668,7 @@ void KviDccChatThread::run()
 								if(iE != 0)
 								{
 									raiseSSLError();
-									postErrorEvent(KviError_SSLError);
+									postErrorEvent(KviError::SSLError);
 									goto out_of_the_loop;
 								}
 							}
@@ -674,13 +676,13 @@ void KviDccChatThread::run()
 							case KviSSL::SSLError:
 							{
 								raiseSSLError();
-								postErrorEvent(KviError_SSLError);
+								postErrorEvent(KviError::SSLError);
 								goto out_of_the_loop;
 							}
 							break;
 							default:
 								// Raise unknown SSL ERROR
-								postErrorEvent(KviError_SSLError);
+								postErrorEvent(KviError::SSLError);
 								goto out_of_the_loop;
 							break;
 						}
@@ -833,7 +835,7 @@ bool KviDccChatThread::tryFlushOutBuffers()
 						if(sentLen == 0)
 						{
 							raiseSSLError();
-							postErrorEvent(KviError_remoteEndClosedConnection);
+							postErrorEvent(KviError::RemoteEndClosedConnection);
 							bRet = false;
 							goto out_of_the_loop;
 						} else {
@@ -841,7 +843,7 @@ bool KviDccChatThread::tryFlushOutBuffers()
 							if(iSSLErr != 0)
 							{
 								raiseSSLError();
-								postErrorEvent(KviError_SSLError);
+								postErrorEvent(KviError::SSLError);
 								bRet = false;
 								goto out_of_the_loop;
 							} else {
@@ -851,12 +853,12 @@ bool KviDccChatThread::tryFlushOutBuffers()
 					break;
 					case KviSSL::SSLError:
 						raiseSSLError();
-						postErrorEvent(KviError_SSLError);
+						postErrorEvent(KviError::SSLError);
 						bRet = false;
 						goto out_of_the_loop;
 					break;
 					default:
-						postErrorEvent(KviError_SSLError);
+						postErrorEvent(KviError::SSLError);
 						bRet = false;
 						goto out_of_the_loop;
 					break;

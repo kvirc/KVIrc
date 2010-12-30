@@ -195,19 +195,19 @@ void KviIrcLink::resolverTerminated()
 
 	createSocket(m_pTarget->server()->linkFilter());
 
-	int iErr = m_pSocket->startConnection(m_pTarget->server(),m_pTarget->proxy(),
+	KviError::Code eError = m_pSocket->startConnection(m_pTarget->server(),m_pTarget->proxy(),
 		m_pTarget->bindAddress().isEmpty() ? 0 : m_pTarget->bindAddress().toUtf8().data());
 
-	if(iErr != KviError_success)
+	if(eError != KviError::Success)
 	{
-		QString szStrDescription(KviError::getDescription(iErr));
+		QString szStrDescription(KviError::getDescription(eError));
 		m_pConsole->output(KVI_OUT_SYSTEMERROR,
 			__tr2qs("Failed to start the connection: %Q"),
 			&szStrDescription);
-//			&(KviError::getDescription(iErr)));
+//			&(KviError::getDescription(eError)));
 
 		m_eState = Idle;
-		m_pConnection->linkAttemptFailed(iErr);
+		m_pConnection->linkAttemptFailed(eError);
 	}
 }
 

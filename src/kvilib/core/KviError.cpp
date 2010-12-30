@@ -145,7 +145,6 @@ const char * g_errorTable[KVI_NUM_ERRORS]=
 	__tr_no_lookup("Missing popup name"),
 	__tr_no_lookup("'item', 'popup', 'label' or 'separator' keyword expected"),
 	__tr_no_lookup("Self modification not allowed"),
-	__tr_no_lookup("UNUSED"),
 	__tr_no_lookup("Feature not available"),
 	__tr_no_lookup("Unexpected characters in array index"),
 	__tr_no_lookup("Unexpected end in expression"),
@@ -172,62 +171,63 @@ const char * g_errorTable[KVI_NUM_ERRORS]=
 
 namespace KviError
 {
-	const char * getUntranslatedDescription(int iErrorCode)
+	const char * getUntranslatedDescription(KviError::Code eError)
 	{
-		if((iErrorCode < KVI_NUM_ERRORS) && (iErrorCode >= 0))
-			return g_errorTable[iErrorCode];
+		if((eError < KVI_NUM_ERRORS) && (eError >= 0))
+			return g_errorTable[eError];
 #ifdef HAVE_STRERROR
-		if(iErrorCode < 0)return strerror(-iErrorCode);
+		if(eError < 0)
+			return strerror(-eError);
 #endif
-		return g_errorTable[KviError_unknownError];
+		return g_errorTable[KviError::UnknownError];
 	}
 
-	QString getDescription(int iErrorCode)
+	QString getDescription(KviError::Code eError)
 	{
-		return __tr2qs_no_xgettext(getUntranslatedDescription(iErrorCode));
+		return __tr2qs_no_xgettext(getUntranslatedDescription(eError));
 	}
 
-	int translateSystemError(int iErrNo)
+	KviError::Code translateSystemError(int iErrNo)
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		switch(iErrNo)
 		{
-			case EBADF:            return KviError_badFileDescriptor;          break;
+			case EBADF:            return KviError::BadFileDescriptor;          break;
 			case WSAEINVAL:
 			case WSAEFAULT:
-			case EFAULT:           return KviError_outOfAddressSpace;          break;
-			case WSAECONNREFUSED:  return KviError_connectionRefused;          break;
-			case WSAENOTSOCK:      return KviError_kernelNetworkingPanic;      break;
-			case WSAETIMEDOUT:     return KviError_connectionTimedOut;         break;
-			case WSAENETUNREACH:   return KviError_networkUnreachable;         break;
-			case EPIPE:            return KviError_brokenPipe;                 break;
-			case WSAENOTCONN:      return KviError_socketNotConnected;         break;
-			case WSAEACCES:        return KviError_accessDenied;               break;
-			case WSAEADDRINUSE:    return KviError_addressAlreadyInUse;        break;
-			case WSAEADDRNOTAVAIL: return KviError_cantAssignRequestedAddress; break;
-			case WSAEAFNOSUPPORT:  return KviError_unsupportedAddressFamily;   break;
-			case WSAECONNRESET:    return KviError_connectionResetByPeer;      break;
-			case WSAEHOSTUNREACH:  return KviError_hostUnreachable;            break;
+			case EFAULT:           return KviError::OutOfAddressSpace;          break;
+			case WSAECONNREFUSED:  return KviError::ConnectionRefused;          break;
+			case WSAENOTSOCK:      return KviError::KernelNetworkingPanic;      break;
+			case WSAETIMEDOUT:     return KviError::ConnectionTimedOut;         break;
+			case WSAENETUNREACH:   return KviError::NetworkUnreachable;         break;
+			case EPIPE:            return KviError::BrokenPipe;                 break;
+			case WSAENOTCONN:      return KviError::SocketNotConnected;         break;
+			case WSAEACCES:        return KviError::AccessDenied;               break;
+			case WSAEADDRINUSE:    return KviError::AddressAlreadyInUse;        break;
+			case WSAEADDRNOTAVAIL: return KviError::CantAssignRequestedAddress; break;
+			case WSAEAFNOSUPPORT:  return KviError::UnsupportedAddressFamily;   break;
+			case WSAECONNRESET:    return KviError::ConnectionResetByPeer;      break;
+			case WSAEHOSTUNREACH:  return KviError::HostUnreachable;            break;
 
-			//case ENOBUFS:      return KviError_insufficientResources; break;
+			//case ENOBUFS:          return KviError::InsufficientResources;      break;
 			// Unhandled error...pass errno to the strerror function
-			default:              return -iErrNo;                              break;
+			default:              return KviError::UnknownError;                break;
 		}
 #else
 		switch(iErrNo)
 		{
-			case EBADF:        return KviError_badFileDescriptor;     break;
-			case EFAULT:       return KviError_outOfAddressSpace;     break;
-			case ECONNREFUSED: return KviError_connectionRefused;     break;
-			case ENOTSOCK:     return KviError_kernelNetworkingPanic; break;
-			case ETIMEDOUT:    return KviError_connectionTimedOut;    break;
-			case ENETUNREACH:  return KviError_networkUnreachable;    break;
-			case EPIPE:        return KviError_brokenPipe;            break;
-			case ENOTCONN:     return KviError_socketNotConnected;    break;
-			case ENOBUFS:      return KviError_insufficientResources; break;
-			case EHOSTUNREACH: return KviError_hostUnreachable;       break;
+			case EBADF:        return KviError::BadFileDescriptor;     break;
+			case EFAULT:       return KviError::OutOfAddressSpace;     break;
+			case ECONNREFUSED: return KviError::ConnectionRefused;     break;
+			case ENOTSOCK:     return KviError::KernelNetworkingPanic; break;
+			case ETIMEDOUT:    return KviError::ConnectionTimedOut;    break;
+			case ENETUNREACH:  return KviError::NetworkUnreachable;    break;
+			case EPIPE:        return KviError::BrokenPipe;            break;
+			case ENOTCONN:     return KviError::SocketNotConnected;    break;
+			case ENOBUFS:      return KviError::InsufficientResources; break;
+			case EHOSTUNREACH: return KviError::HostUnreachable;       break;
 			// Unhandled error...pass errno to the strerror function
-			default:           return -iErrNo;                        break;
+			default:           return KviError::UnknownError;          break;
 		}
 #endif
 	}

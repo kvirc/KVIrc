@@ -33,156 +33,7 @@
 #include "kvi_settings.h"
 #include "KviQString.h"
 
-#define KviError_success 0
-#define KviError_unknownError 1
-#define KviError_internalError 2
-#define KviError_unknownCommand 3
-#define KviError_missingClosingBrace 4
-#define KviError_unexpectedEndInString 5
-#define KviError_unexpectedEndInDictionaryKey 6
-#define KviError_switchDashWithoutSwitchLetter 7
-#define KviError_unknownFunction 8
-#define KviError_unexpectedEndInParenthesis 9
-#define KviError_unexpectedEndInFunctionParams 10
-#define KviError_missingVariableName 11
-#define KviError_variableOrIdentifierExpected 12
-#define KviError_leftOperandIsNotANumber 13
-#define KviError_multipleOpsNotSupportedForOperator 14
-#define KviError_divisionByZero 15
-#define KviError_moduloByZero 16
-#define KviError_rightOperandIsNotANumber 17
-#define KviError_unterminatedExpression 18
-#define KviError_unterminatedSubexpression 19
-#define KviError_unexpectedCharacter 20
-#define KviError_unknownOperator 21
-
-#define KviError_noHostToResolve 22
-#define KviError_unsupportedAddressFamily 23
-#define KviError_validNameButNoIpAddress 24
-#define KviError_unrecoverableNameserverError 25
-#define KviError_dnsTemporaneousFault 26
-#define KviError_dnsInternalErrorBadFlags 27
-#define KviError_dnsInternalErrorOutOfMemory 28
-#define KviError_dnsInternalErrorServiceNotSupported 29
-#define KviError_dnsNoName 30
-#define KviError_dnsInternalErrorUnsupportedSocketType 31
-#define KviError_dnsQueryFailed 32
-#define KviError_noIPv6Support 33
-#define KviError_hostNotFound 34
-#define KviError_dnsInternalIPCFailure 35
-
-#define KviError_anotherConnectionInProgress 36
-#define KviError_invalidIpAddress 37
-#define KviError_socketCreationFailed 38
-#define KviError_asyncSocketFailed 39
-#define KviError_badFileDescriptor 40
-#define KviError_outOfAddressSpace 41
-#define KviError_connectionRefused 42
-#define KviError_kernelNetworkingPanic 43
-#define KviError_connectionTimedOut 44
-#define KviError_networkUnreachable 45
-#define KviError_brokenPipe 46
-#define KviError_invalidProxyAddress 47
-#define KviError_remoteEndClosedConnection 48
-
-#define KviError_invalidIrcContextId 49
-#define KviError_errorInLoadingModule 50
-#define KviError_noSuchModuleCommand 51
-#define KviError_noSuchModuleFunction 52
-
-#define KviError_leftOperandIsNotADictionaryReference 53
-#define KviError_rightOperandIsNotADictionaryReference 54
-
-#define KviError_missingObjectClassName 55
-#define KviError_noSuchObjectClass 56
-#define KviError_noSuchObject 57
-#define KviError_noSuchObjectFunction 58
-
-#define KviError_invalidLeftOperand 59
-
-#define KviError_notEnoughParameters 60
-#define KviError_integerParameterExpected 61
-#define KviError_invalidParameter 62
-
-#define KviError_noSuchFile 63
-
-#define KviError_openParenthesisExpected 64
-#define KviError_openBraceExpected 65
-
-#define KviError_cantKillABuiltinClass 66
-#define KviError_socksV4LacksIPv6Support 67
-#define KviError_unrecognizedProxyReply 68
-#define KviError_proxyAuthFailed 69
-#define KviError_proxyNoAcceptableAuthMethod 70
-
-#define KviError_proxyReply91RequestFailed 71
-#define KviError_proxyReply92IdentFailed 72
-#define KviError_proxyReply93IdentNotMatching 73
-#define KviError_proxyReply01GeneralSOCKSFailure 74
-#define KviError_proxyReply02ConnectionNotAllowed 75
-#define KviError_proxyReply03NetworkUnreachable 76
-#define KviError_proxyReply04HostUnreachable 77
-#define KviError_proxyReply05ConnectionRefused 78
-#define KviError_proxyReply06TTLExpired 79
-#define KviError_proxyReply07CommandNotSupported 80
-#define KviError_proxyReply08AddressTypeNotSupported 81
-#define KviError_proxyReply09InvalidAddress 82
-
-#define KviError_invalidPortNumber 83
-#define KviError_socketNotConnected 84
-#define KviError_insufficientResources 85
-#define KviError_bindFailed 86
-#define KviError_cantResolveLocalhost 87
-
-#define KviError_unsupportedImageFormat 88
-
-#define KviError_cantOpenFileForAppending 89
-#define KviError_cantOpenFileForWriting 90
-#define KviError_fileIOError 91
-#define KviError_acknowledgeError 92
-#define KviError_cantOpenFileForReading 93
-#define KviError_cantSendAZeroSizeFile 94
-
-#define KviError_missingPopupName 95
-#define KviError_itemPopupOrSeparatorExpected 96
-#define KviError_selfModificationNotAllowed 97
-
-//#define KviError_recursionTooDeep 98
-#define KviError_featureNotAvailable 99
-
-#define KviError_unexpectedCharactersInArrayIndex 100
-#define KviError_unexpectedEndInExpression 101
-#define KviError_unexpectedEndInArrayIndex 102
-
-#define KviError_proxyHttpFailure 103
-#define KviError_caseMatchRegexpDefaultOrBreakExpected 104
-
-
-#define KviError_accessDenied 105
-#define KviError_addressAlreadyInUse 106
-#define KviError_cantAssignRequestedAddress 107
-#define KviError_connectionResetByPeer 108
-#define KviError_hostUnreachable 109
-
-#define KviError_variableExpected 110
-#define KviError_invalidArrayIndex 111
-
-#define KviError_listenFailed 112
-
-#define KviError_noSSLSupport 113
-#define KviError_SSLError 114
-
-#define KviError_slashCharacterExpected 115
-#define KviError_unknownStringManipulationOperator 116
-
-#define KviError_operationAborted 117
-
-#define KviError_unexpectedToken 118
-
-#define KviError_scopeObjectAlreadyDefined 119
-#define KviError_noThisObject 120
-
-#define KVI_NUM_ERRORS 121
+#define KVI_NUM_ERRORS 120
 
 /**
 * \namespace KviError
@@ -191,25 +42,152 @@
 namespace KviError
 {
 	/**
+	* \enum Code
+	* \brief Contains all error codes
+	*/
+	enum Code {
+		Success                               =   0,
+		UnknownError                          =   1,
+		InternalError                         =   2,
+		UnknownCommand                        =   3,
+		MissingClosingBrace                   =   4,
+		UnexpectedEndInString                 =   5,
+		UnexpectedEndInDictionaryKey          =   6,
+		SwitchDashWithoutSwitchLetter         =   7,
+		UnknownFunction                       =   8,
+		UnexpectedEndInParenthesis            =   9,
+		UnexpectedEndInFunctionParams         =  10,
+		MissingVariableName                   =  11,
+		VariableOrIdentifierExpected          =  12,
+		LeftOperandIsNotANumber               =  13,
+		MultipleOpsNotSupportedForOperator    =  14,
+		DivisionByZero                        =  15,
+		ModuloByZero                          =  16,
+		RightOperandIsNotANumber              =  17,
+		UnterminatedExpression                =  18,
+		UnterminatedSubexpression             =  19,
+		UnexpectedCharacter                   =  20,
+		UnknownOperator                       =  21,
+		NoHostToResolve                       =  22,
+		UnsupportedAddressFamily              =  23,
+		ValidNameButNoIpAddress               =  24,
+		UnrecoverableNameserverError          =  25,
+		DNSTemporaneousFault                  =  26,
+		DNSInternalErrorBadFlags              =  27,
+		DNSInternalErrorOutOfMemory           =  28,
+		DNSInternalErrorServiceNotSupported   =  29,
+		DNSNoName                             =  30,
+		DNSInternalErrorUnsupportedSocketType =  31,
+		DNSQueryFailed                        =  32,
+		NoIPv6Support                         =  33,
+		HostNotFound                          =  34,
+		DNSInternalIPCFailure                 =  35,
+		AnotherConnectionInProgress           =  36,
+		InvalidIpAddress                      =  37,
+		SocketCreationFailed                  =  38,
+		AsyncSocketFailed                     =  39,
+		BadFileDescriptor                     =  40,
+		OutOfAddressSpace                     =  41,
+		ConnectionRefused                     =  42,
+		KernelNetworkingPanic                 =  43,
+		ConnectionTimedOut                    =  44,
+		NetworkUnreachable                    =  45,
+		BrokenPipe                            =  46,
+		InvalidProxyAddress                   =  47,
+		RemoteEndClosedConnection             =  48,
+		InvalidIrcContextId                   =  49,
+		ErrorInLoadingModule                  =  50,
+		NoSuchModuleCommand                   =  51,
+		NoSuchModuleFunction                  =  52,
+		LeftOperandIsNotADictionaryReference  =  53,
+		RightOperandIsNotADictionaryReference =  54,
+		MissingObjectClassName                =  55,
+		NoSuchObjectClass                     =  56,
+		NoSuchObject                          =  57,
+		NoSuchObjectFunction                  =  58,
+		InvalidLeftOperand                    =  59,
+		NotEnoughParameters                   =  60,
+		IntegerParameterExpected              =  61,
+		InvalidParameter                      =  62,
+		NoSuchFile                            =  63,
+		OpenParenthesisExpected               =  64,
+		OpenBraceExpected                     =  65,
+		CantKillABuiltinClass                 =  66,
+		SocksV4LacksIPv6Support               =  67,
+		UnrecognizedProxyReply                =  68,
+		ProxyAuthFailed                       =  69,
+		ProxyNoAcceptableAuthMethod           =  70,
+		ProxyReply91RequestFailed             =  71,
+		ProxyReply92IdentFailed               =  72,
+		ProxyReply93IdentNotMatching          =  73,
+		ProxyReply01GeneralSOCKSFailure       =  74,
+		ProxyReply02ConnectionNotAllowed      =  75,
+		ProxyReply03NetworkUnreachable        =  76,
+		ProxyReply04HostUnreachable           =  77,
+		ProxyReply05ConnectionRefused         =  78,
+		ProxyReply06TTLExpired                =  79,
+		ProxyReply07CommandNotSupported       =  80,
+		ProxyReply08AddressTypeNotSupported   =  81,
+		ProxyReply09InvalidAddress            =  82,
+		InvalidPortNumber                     =  83,
+		SocketNotConnected                    =  84,
+		InsufficientResources                 =  85,
+		BindFailed                            =  86,
+		CantResolveLocalhost                  =  87,
+		UnsupportedImageFormat                =  88,
+		CantOpenFileForAppending              =  89,
+		CantOpenFileForWriting                =  90,
+		FileIOError                           =  91,
+		AcknowledgeError                      =  92,
+		CantOpenFileForReading                =  93,
+		CantSendAZeroSizeFile                 =  94,
+		MissingPopupName                      =  95,
+		ItemPopupOrSeparatorExpected          =  96,
+		SelfModificationNotAllowed            =  97,
+		FeatureNotAvailable                   =  98,
+		UnexpectedCharactersInArrayIndex      =  99,
+		UnexpectedEndInExpression             = 100,
+		UnexpectedEndInArrayIndex             = 101,
+		ProxyHttpFailure                      = 102,
+		CaseMatchRegexpDefaultOrBreakExpected = 103,
+		AccessDenied                          = 104,
+		AddressAlreadyInUse                   = 105,
+		CantAssignRequestedAddress            = 106,
+		ConnectionResetByPeer                 = 107,
+		HostUnreachable                       = 108,
+		VariableExpected                      = 109,
+		InvalidArrayIndex                     = 110,
+		ListenFailed                          = 111,
+		NoSSLSupport                          = 112,
+		SSLError                              = 113,
+		SlashCharacterExpected                = 114,
+		UnknownStringManipulationOperator     = 115,
+		OperationAborted                      = 116,
+		UnexpectedToken                       = 117,
+		ScopeObjectAlreadyDefined             = 118,
+		NoThisObject                          = 119
+	};
+
+	/**
 	* \brief Returns the description of the error
-	* \param iErrorCode The code number of the error
+	* \param error The code number of the error
 	* \return QString
 	*/
-	KVILIB_API QString getDescription(int iErrorCode);
+	KVILIB_API QString getDescription(KviError::Code eError);
 
 	/**
 	* \brief Returns an untranslated description of the error
-	* \param iErrorCode The code number of the error
+	* \param error The code number of the error
 	* \return const char *
 	*/
-	KVILIB_API const char * getUntranslatedDescription(int iErrorCode);
+	KVILIB_API const char * getUntranslatedDescription(KviError::Code eError);
 
 	/**
 	* \brief Gets system errors and returns their code number
 	* \param iErrNo The code number of the system error
 	* \return int
 	*/
-	KVILIB_API int translateSystemError(int iErrNo);
+	KVILIB_API KviError::Code translateSystemError(int iErrNo);
 }
 
 #endif //_KVI_ERROR_H_

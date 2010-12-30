@@ -204,9 +204,8 @@ void KviHttpRequest::dnsLookupDone(KviDnsResolver *d)
 		emit status(tmp);
 		haveServerIp();
 	} else {
-		int iErr = d->error();
 		resetInternalStatus();
-		m_szLastError = KviError::getDescription(iErr);
+		m_szLastError = KviError::getDescription(d->error());
 		emit terminated(false);
 	}
 }

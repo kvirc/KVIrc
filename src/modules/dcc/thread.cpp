@@ -73,7 +73,7 @@ bool KviDccThread::handleInvalidSocketRead(int readLen)
 	if(readLen == 0)
 	{
 		// connection closed
-		postErrorEvent(KviError_remoteEndClosedConnection);
+		postErrorEvent(KviError::RemoteEndClosedConnection);
 		return false;
 	} else {
 		// error ?

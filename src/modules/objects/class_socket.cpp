@@ -1057,11 +1057,14 @@ void KviKvsObject_socket::writeNotifierFired(int)
 	{
 		//qDebug("Failed here %d",sockError);
 		//failed
-		if(sockError > 0)sockError = KviError::translateSystemError(sockError);
-		else sockError = KviError_unknownError; //Error 0 ?
+		KviError::Code eError;
+		if(sockError > 0)
+			eError = KviError::translateSystemError(sockError);
+		else
+			eError = KviError::UnknownError; //Error 0 ?
 		unsigned int uOldConnectionId = m_uConnectionId;
 		KviKvsVariantList lParams;
-		lParams.append(new KviKvsVariant(KviError::getDescription(sockError)));
+		lParams.append(new KviKvsVariant(KviError::getDescription(eError)));
 		callFunction(this,"connectFailedEvent",&lParams);
 		if(m_uConnectionId == uOldConnectionId)reset();
 		// else it has already been called!
@@ -1126,7 +1129,6 @@ void KviKvsObject_socket::readNotifierFired(int)
 			{
 				unsigned int uOldConnectionId = m_uConnectionId;
 				if(err > 0)
-
 				{
 					//	QString error=KviError::translateSystemError(err);
 						KviKvsVariantList lParams;
@@ -1134,7 +1136,7 @@ void KviKvsObject_socket::readNotifierFired(int)
 						callFunction(this,"disconnectEvent",&lParams);
 				} else {
 						KviKvsVariantList lParams;
-						lParams.append(new KviKvsVariant(KviError::getDescription(KviError_remoteEndClosedConnection)));
+						lParams.append(new KviKvsVariant(KviError::getDescription(KviError::RemoteEndClosedConnection)));
 						callFunction(this,"disconnectEvent",&lParams);
 
 				}

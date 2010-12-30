@@ -29,7 +29,6 @@
 #include "KviProxyDataBase.h"
 #include "KviNetUtils.h"
 #include "kvi_settings.h"
-#include "KviError.h"
 #include "KviLocale.h"
 #include "KviMemory.h"
 #include "kvi_debug.h"
@@ -87,7 +86,7 @@ KviIrcSocket::KviIrcSocket(KviIrcLink * pLink)
 	m_pSendQueueHead = 0;            // data queue
 	m_pSendQueueTail = 0;            //
 
-	m_iLastError     = KviError_success;
+	m_eLastError     = KviError::Success;
 
 #ifdef COMPILE_SSL_SUPPORT
 	m_pSSL           = 0;
@@ -241,24 +240,24 @@ void KviIrcSocket::setState(SocketState state)
 	}
 }
 
-void KviIrcSocket::raiseError(int iError)
+void KviIrcSocket::raiseError(KviError::Code eError)
 {
-	m_iLastError = iError;
+	m_eLastError = eError;
 	//m_pConsole->socketError(iError);
-	if((m_iLastError == KviError_remoteEndClosedConnection) &&
-		( m_state == ProxyHttpError))
-		outputSocketMessage(KviError::getDescription(iError));
+	if((m_eLastError == KviError::RemoteEndClosedConnection) &&
+		(m_state == ProxyHttpError))
+		outputSocketMessage(KviError::getDescription(eError));
 	else
-		outputSocketError(KviError::getDescription(iError));
+		outputSocketError(KviError::getDescription(eError));
 }
 
-int KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * pProxy, const char * pcBindAddress)
+KviError::Code KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * pProxy, const char * pcBindAddress)
 {
 	// Attempts to estabilish an IRC connection
 	// to the server specified by *srv.
 	// Uses the proxy *prx if not 0
 	if(m_state != Idle)
-		return KviError_anotherConnectionInProgress;
+		return KviError::AnotherConnectionInProgress;
 
 	// Coherent state, thnx.
 	reset();
@@ -266,7 +265,7 @@ int KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * pProxy, con
 	if(pServer->useSSL())
 	{
 #ifndef COMPILE_SSL_SUPPORT
-		return KviError_noSSLSupport;
+		return KviError::NoSSLSupport;
 #endif //COMPILE_SSL_SUPPORT
 	}
 
@@ -294,17 +293,17 @@ int KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * pProxy, con
 #ifdef COMPILE_IPV6_SUPPORT
 			bTargetIPv6 = true;
 			if(!KviNetUtils::isValidStringIPv6(m_pProxy->ip()))
-				return KviError_invalidProxyAddress;
+				return KviError::InvalidProxyAddress;
 			// SOCKSv4 does not support IPv6 addresses
 			if(m_pProxy->protocol() == KviProxy::Socks4)
-				return KviError_socksV4LacksIPv6Support;
+				return KviError::SocksV4LacksIPv6Support;
 #else
-			return KviError_noIPv6Support;
+			return KviError::NoIPv6Support;
 #endif
 		} else {
 			// IPv4 proxy
 			if(!KviNetUtils::isValidStringIp(m_pProxy->ip()))
-				return KviError_invalidProxyAddress;
+				return KviError::InvalidProxyAddress;
 		}
 	}
 
@@ -316,14 +315,14 @@ int KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * pProxy, con
 		{
 			// We have an IPv6 server host (Interesting if proxy is IPv4)
 			if( !KviNetUtils::isValidStringIPv6(m_pIrcServer->ip()) )
-				return KviError_invalidIpAddress;
+				return KviError::InvalidIpAddress;
 			if(!m_pProxy)
 				bTargetIPv6 = true; // otherwise the proxy rules
 		} else {
 #endif
 			// We have an IPv4 server host
 			if(!KviNetUtils::isValidStringIp(m_pIrcServer->ip()))
-				return KviError_invalidIpAddress;
+				return KviError::InvalidIpAddress;
 #ifdef COMPILE_IPV6_SUPPORT
 		}
 #endif
@@ -332,7 +331,7 @@ int KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * pProxy, con
 	KviSockaddr sa(pProxy ? m_pProxy->ip().toUtf8().data() : m_pIrcServer->ip().toUtf8().data(), pProxy ? m_pProxy->port() : m_pIrcServer->port(),bTargetIPv6);
 
 	if(!sa.socketAddress())
-		return KviError_invalidIpAddress;
+		return KviError::InvalidIpAddress;
 
 	// create the socket
 #ifdef COMPILE_IPV6_SUPPORT
@@ -342,7 +341,7 @@ int KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * pProxy, con
 #endif
 
 	if(m_sock < 0)
-		return KviError_socketCreationFailed;
+		return KviError::SocketCreationFailed;
 
 	if(pcBindAddress)
 	{
@@ -372,7 +371,7 @@ int KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * pProxy, con
 	if(!kvi_socket_setNonBlocking(m_sock))
 	{
 		reset();
-		return KviError_asyncSocketFailed;
+		return KviError::AsyncSocketFailed;
 	}
 
 	if(!kvi_socket_connect(m_sock,sa.socketAddress(),((int)(sa.addressLength()))))
@@ -396,7 +395,7 @@ int KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * pProxy, con
 			// And declare problems :)
 			if(iSockError)
 				return KviError::translateSystemError(iSockError);
-			else return KviError_unknownError; //Error 0 ?
+			else return KviError::UnknownError; //Error 0 ?
 		}
 	}
 
@@ -418,13 +417,13 @@ int KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * pProxy, con
 	// and wait for connect
 	setState(Connecting);
 
-	return KviError_success;
+	return KviError::Success;
 }
 
 void KviIrcSocket::connectionTimedOut()
 {
 	// the m_pTimeoutTimer fired :(
-	raiseError(KviError_connectionTimedOut);
+	raiseError(KviError::ConnectionTimedOut);
 	reset();
 }
 
@@ -447,11 +446,12 @@ void KviIrcSocket::writeNotifierFired(int)
 	if(iSockError != 0)
 	{
 		//failed
+		KviError::Code eError;
 		if(iSockError > 0)
-			iSockError = KviError::translateSystemError(iSockError);
-		else iSockError = KviError_unknownError; //Error 0 ?
+			eError = KviError::translateSystemError(iSockError);
+		else eError = KviError::UnknownError; //Error 0 ?
 
-		raiseError(iSockError);
+		raiseError(eError);
 		reset();
 		return;
 	}
@@ -545,7 +545,7 @@ void KviIrcSocket::enterSSLMode()
 	if(!m_pSSL)
 	{
 		raiseSSLError();
-		raiseError(KviError_SSLError);
+		raiseError(KviError::SSLError);
 		reset();
 		return;
 	}
@@ -583,7 +583,7 @@ void KviIrcSocket::readProxyData(int)
 					if(iE != 0)
 					{
 						raiseSSLError();
-						raiseError(KviError_SSLError);
+						raiseError(KviError::SSLError);
 						reset();
 						return;
 					}
@@ -591,12 +591,12 @@ void KviIrcSocket::readProxyData(int)
 				break;
 				case KviSSL::SSLError:
 					raiseSSLError();
-					raiseError(KviError_SSLError);
+					raiseError(KviError::SSLError);
 					reset();
 					return;
 				break;
 				default:
-					raiseError(KviError_SSLError);
+					raiseError(KviError::SSLError);
 					reset();
 					return;
 				break;
@@ -628,7 +628,7 @@ void KviIrcSocket::readProxyData(int)
 		// - remote host is not a SOCKS/HTTP server
 		// Anyway....it is always a meaningless reply
 		// better to try again later :)
-		raiseError(KviError_unrecognizedProxyReply);
+		raiseError(KviError::UnrecognizedProxyReply);
 		reset();
 		return;
 	}
@@ -659,7 +659,7 @@ void KviIrcSocket::readProxyData(int)
 			break;
 		default:
 			// what ?
-			raiseError(KviError_unrecognizedProxyReply);
+			raiseError(KviError::UnrecognizedProxyReply);
 			reset();
 			break;
 	}
@@ -1026,7 +1026,7 @@ void KviIrcSocket::proxyHandleV5AuthReply(unsigned char cReply)
 		proxySendTargetDataV5();
 		return;
 	}
-	raiseError(KviError_proxyAuthFailed);
+	raiseError(KviError::ProxyAuthFailed);
 	reset();
 }
 
@@ -1073,11 +1073,11 @@ void KviIrcSocket::proxyHandleV5MethodReply(unsigned char cReply)
 	//Request rejected
 	if(cReply == 0xFF)
 	{
-		raiseError(KviError_proxyNoAcceptableAuthMethod);
+		raiseError(KviError::ProxyNoAcceptableAuthMethod);
 		reset();
 	} else {
 		// unrecognized...
-		raiseError(KviError_unrecognizedProxyReply);
+		raiseError(KviError::UnrecognizedProxyReply);
 		reset();
 	}
 }
@@ -1126,21 +1126,21 @@ void KviIrcSocket::proxyHandleV5FinalReply(unsigned char cReply)
 		connectedToIrcServer();
 	} else {
 		//Request rejected
-		int iErr;
+		KviError::Code eError;
 		switch(cReply)
 		{
-			case 1: iErr = KviError_proxyReply01GeneralSOCKSFailure; break;
-			case 2: iErr = KviError_proxyReply02ConnectionNotAllowed; break;
-			case 3: iErr = KviError_proxyReply03NetworkUnreachable; break;
-			case 4: iErr = KviError_proxyReply04HostUnreachable; break;
-			case 5: iErr = KviError_proxyReply05ConnectionRefused; break;
-			case 6: iErr = KviError_proxyReply06TTLExpired; break;
-			case 7: iErr = KviError_proxyReply07CommandNotSupported; break;
-			case 8: iErr = KviError_proxyReply08AddressTypeNotSupported; break;
-			case 9: iErr = KviError_proxyReply09InvalidAddress; break;
-			default: iErr = KviError_unrecognizedProxyReply; break;
+			case 1: eError = KviError::ProxyReply01GeneralSOCKSFailure; break;
+			case 2: eError = KviError::ProxyReply02ConnectionNotAllowed; break;
+			case 3: eError = KviError::ProxyReply03NetworkUnreachable; break;
+			case 4: eError = KviError::ProxyReply04HostUnreachable; break;
+			case 5: eError = KviError::ProxyReply05ConnectionRefused; break;
+			case 6: eError = KviError::ProxyReply06TTLExpired; break;
+			case 7: eError = KviError::ProxyReply07CommandNotSupported; break;
+			case 8: eError = KviError::ProxyReply08AddressTypeNotSupported; break;
+			case 9: eError = KviError::ProxyReply09InvalidAddress; break;
+			default: eError = KviError::UnrecognizedProxyReply; break;
 		}
-		raiseError(iErr);
+		raiseError(eError);
 		reset();
 	}
 }
@@ -1183,15 +1183,15 @@ void KviIrcSocket::proxyHandleV4FinalReply(unsigned char cReply)
 		connectedToIrcServer();
 	} else {
 		//Request rejected
-		int iErr;
+		KviError::Code eError;
 		switch(cReply)
 		{
-			case 91: iErr = KviError_proxyReply91RequestFailed; break;
-			case 92: iErr = KviError_proxyReply92IdentFailed; break;
-			case 93: iErr = KviError_proxyReply93IdentNotMatching; break;
-			default: iErr = KviError_unrecognizedProxyReply; break;
+			case 91: eError = KviError::ProxyReply91RequestFailed; break;
+			case 92: eError = KviError::ProxyReply92IdentFailed; break;
+			case 93: eError = KviError::ProxyReply93IdentNotMatching; break;
+			default: eError = KviError::UnrecognizedProxyReply; break;
 		}
-		raiseError(iErr);
+		raiseError(eError);
 		reset();
 	}
 	// Just looked out of the window...
@@ -1252,7 +1252,7 @@ void KviIrcSocket::proxyHandleHttpFinalReply(const char * pcBuffer, int)
 
 	setState(ProxyHttpError);
 
-	//raiseError(KviError_proxyHttpFailure);
+	//raiseError(KviError::ProxyHttpFailure);
 	//reset();
 }
 
@@ -1345,12 +1345,12 @@ void KviIrcSocket::doSSLHandshake(int)
 			m_pWsn->setEnabled(true);
 		break;
 		case KviSSL::RemoteEndClosedConnection:
-			raiseError(KviError_remoteEndClosedConnection);
+			raiseError(KviError::RemoteEndClosedConnection);
 // 			reset();
 		break;
 		case KviSSL::SSLError:
 			raiseSSLError();
-			raiseError(KviError_SSLError);
+			raiseError(KviError::SSLError);
 // 			reset();
 		break;
 		case KviSSL::SyscallError:
@@ -1360,7 +1360,7 @@ void KviIrcSocket::doSSLHandshake(int)
 			if(!kvi_socket_recoverableError(iErr))
 			{
 				// Declare problems :)
-				raiseError((iErr ? KviError::translateSystemError(iErr) : KviError_unknownError));
+				raiseError((iErr ? KviError::translateSystemError(iErr) : KviError::UnknownError));
 			} else {
 				// can recover ? (EAGAIN, EINTR ?)
 				m_pWsn = new QSocketNotifier((int)m_sock,QSocketNotifier::Write);
@@ -1372,7 +1372,7 @@ void KviIrcSocket::doSSLHandshake(int)
 		}
 		break;
 		default:
-			raiseError(KviError_SSLError);
+			raiseError(KviError::SSLError);
 // 			reset();
 		break;
 	}
@@ -1443,7 +1443,7 @@ void KviIrcSocket::readData(int)
 					if(iE != 0)
 					{
 						raiseSSLError();
-						raiseError(KviError_SSLError);
+						raiseError(KviError::SSLError);
 						reset();
 						return;
 					}
@@ -1451,12 +1451,12 @@ void KviIrcSocket::readData(int)
 				break;
 				case KviSSL::SSLError:
 					raiseSSLError();
-					raiseError(KviError_SSLError);
+					raiseError(KviError::SSLError);
 					reset();
 					return;
 				break;
 				default:
-					raiseError(KviError_SSLError);
+					raiseError(KviError::SSLError);
 					reset();
 					return;
 				break;
@@ -1630,7 +1630,7 @@ void KviIrcSocket::abort()
 	if(m_state == Connected)
 		flushSendQueue();
 	if(m_state != Idle)
-		raiseError(KviError_operationAborted);
+		raiseError(KviError::OperationAborted);
 	// and reset
 	reset();
 }
@@ -1640,7 +1640,7 @@ void KviIrcSocket::handleInvalidSocketRead(int iReadLength)
 	KVI_ASSERT(iReadLength <= 0);
 	if(iReadLength == 0)
 	{
-		raiseError(KviError_remoteEndClosedConnection);
+		raiseError(KviError::RemoteEndClosedConnection);
 		reset();
 	} else {
 		//check for transmission errors
@@ -1654,7 +1654,7 @@ void KviIrcSocket::handleInvalidSocketRead(int iReadLength)
 			if(iErr > 0)
 				raiseError((KviError::translateSystemError(iErr)));
 			else
-				raiseError(KviError_remoteEndClosedConnection);
+				raiseError(KviError::RemoteEndClosedConnection);
 			reset();
 		} //else transient error...wait again...
 	}
@@ -1816,7 +1816,7 @@ void KviIrcSocket::flushSendQueue()
 							if(iResult == 0)
 							{
 								raiseSSLError();
-								raiseError(KviError_remoteEndClosedConnection);
+								raiseError(KviError::RemoteEndClosedConnection);
 								reset();
 								return;
 							} else {
@@ -1824,7 +1824,7 @@ void KviIrcSocket::flushSendQueue()
 								if(iSSLErr != 0)
 								{
 									raiseSSLError();
-									raiseError(KviError_SSLError);
+									raiseError(KviError::SSLError);
 									reset();
 									return;
 								} else {
@@ -1834,12 +1834,12 @@ void KviIrcSocket::flushSendQueue()
 						break;
 						case KviSSL::SSLError:
 							raiseSSLError();
-							raiseError(KviError_SSLError);
+							raiseError(KviError::SSLError);
 							reset();
 							return;
 						break;
 						default:
-							raiseError(KviError_SSLError);
+							raiseError(KviError::SSLError);
 							reset();
 							return;
 						break;

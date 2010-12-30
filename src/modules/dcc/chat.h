@@ -33,6 +33,7 @@
 #include "KviThemedLabel.h"
 #include "KviCString.h"
 #include "KviWindow.h"
+#include "KviError.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 	class KviSSL;
@@ -94,7 +95,7 @@ protected:
 	void startConnection();
 	virtual KviDccThread * getSlaveThread() { return m_pSlaveThread; };
 protected slots:
-	void handleMarshalError(int err);
+	void handleMarshalError(KviError::Code eError);
 	void connected();
 	void sslError(const char * msg);
 	void connectionInProgress();
