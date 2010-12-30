@@ -39,7 +39,7 @@
 
 class KviNickServRuleSet;
 class KviIrcServer;
-class QStringList;
+
 
 /**
 * \class KviIrcNetwork
@@ -70,20 +70,18 @@ public:
 protected:
 	QString              m_szName;
 	QString              m_szDescription;
-	QString              m_szEncoding;                // if empty, use system default
-	QString              m_szTextEncoding;            // if empty, use system default
-	QString              m_szNickName;                // preferred nick name
-	QString              m_szUserName;                // preferred user name
-	QString              m_szRealName;                // preferred real name
-	QString              m_szPass;                    // special password
-	QString              m_szOnConnectCommand;        // the command to run on connect
-	QString              m_szOnLoginCommand;          // the command to run after login
-	QStringList        * m_pChannelList;              // Channels to auto join
-	KviNickServRuleSet * m_pNickServRuleSet;          // set of nick serv rules
-	bool                 m_bAutoConnect;              // autoconnect
-	QString              m_szUserIdentityId;          // The user identity to use for this server: if empty
-	                                                  // Then use the global primary identity
-	//moved from KviIrcServerDataBaseRecord
+	QString              m_szEncoding;                /**< if empty, use system default */
+	QString              m_szTextEncoding;            /**< if empty, use system default */
+	QString              m_szNickName;                /**< preferred nick name */
+	QString              m_szUserName;                /**< preferred user name */
+	QString              m_szRealName;                /**< preferred real name */
+	QString              m_szPass;                    /**< special password */
+	QString              m_szOnConnectCommand;        /**< the command to run on connect */
+	QString              m_szOnLoginCommand;          /**< the command to run after login */
+	QStringList        * m_pChannelList;              /**< Channels to auto join */
+	KviNickServRuleSet * m_pNickServRuleSet;          /**< set of nick serv rules */
+	bool                 m_bAutoConnect;              /**< autoconnect */
+	QString              m_szUserIdentityId;          /**< The user identity to use for this server: if empty then use the global primary identity moved from KviIrcServerDataBaseRecord */
 	KviPointerList<KviIrcServer> * m_pServerList;
 	KviIrcServer                 * m_pCurrentServer;
 public:
@@ -187,14 +185,14 @@ public:
 	* \param s The rule set where to add rules
 	* \return void
 	*/
-	void setNickServRuleSet(KviNickServRuleSet * s);
+	void setNickServRuleSet(KviNickServRuleSet * pSet);
 
 	/**
 	* \brief Carbon copy
-	* \param d The source network to copy from
+	* \param net The source network to copy from
 	* \return void
 	*/
-	void copyFrom(const KviIrcNetwork & d);
+	void copyFrom(const KviIrcNetwork & net);
 
 	/**
 	* \brief Sets the name of the network
@@ -231,44 +229,45 @@ public:
 
 	/**
 	* \brief Sets the list of commands to run on network connection
-	* \param cmd The commands list to run
+	* \param szCmd The commands list to run
 	* \return void
 	*/
-	inline void setOnConnectCommand(const QString & cmd){ m_szOnConnectCommand = cmd; };
+	inline void setOnConnectCommand(const QString & szCmd){ m_szOnConnectCommand = szCmd; };
 
 	/**
 	* \brief Sets the list of commands to run on network login
-	* \param cmd The commands list to run
+	* \param szCmd The commands list to run
 	* \return void
 	*/
-	inline void setOnLoginCommand(const QString & cmd){ m_szOnLoginCommand = cmd; };
+	inline void setOnLoginCommand(const QString & szCmd){ m_szOnLoginCommand = szCmd; };
 
 	/**
 	* \brief Sets the nickname of the user associated to the network
-	* \param n The nickname
+	* \param szNick The nickname
 	* \return void
 	*/
-	inline void setNickName(const QString & n){ m_szNickName = n; };
+	inline void setNickName(const QString & szNick){ m_szNickName = szNick; };
 
 	/**
 	* \brief Sets the realname of the user associated to the network
-	* \param r The realname
+	* \param szReal The realname
 	* \return void
 	*/
-	inline void setRealName(const QString & r){ m_szRealName = r; };
+	inline void setRealName(const QString & szReal){ m_szRealName = szReal; };
 
 	/**
 	* \brief Sets the username of the user associated to the network
-	* \param u The username
+	* \param szUser The username
 	* \return void
 	*/
-	inline void setUserName(const QString & u){ m_szUserName = u; };
+	inline void setUserName(const QString & szUser){ m_szUserName = szUser; };
 
 	/**
 	* \brief Sets the password of the user associated to the network
+	* \param szPass The password
 	* \return void
 	*/
-	inline void setPassword(const QString & p){ m_szPass = p; };
+	inline void setPassword(const QString & szPass){ m_szPass = szPass; };
 	
 	/**
 	* \brief Sets the list of channels to mark for autojoin
@@ -312,10 +311,10 @@ public:
 
 	/**
 	* \brief Adds a new server to the network
-	* \param srv The source server to add
+	* \param pServer The source server to add
 	* \return void
 	*/
-	void        insertServer(KviIrcServer * srv);
+	void insertServer(KviIrcServer * pServer);
 
 	/**
 	* \brief Searches for a server in the network
@@ -333,10 +332,10 @@ public:
 
 	/**
 	* \brief Sets the current server
-	* \param srv The source server
+	* \param pServer The source server
 	* \return void
 	*/
-	void setCurrentServer(KviIrcServer * srv);
+	void setCurrentServer(KviIrcServer * pServer);
 };
 
 #endif // KVI_NETWORK_H_

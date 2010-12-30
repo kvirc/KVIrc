@@ -67,7 +67,7 @@
 #include "KviKvsScript.h"
 #include "KviMircCntrl.h"
 #include "KviUserIdentity.h"
-#include "KviIdentityProfile.h"
+#include "KviIdentityProfileSet.h"
 #include "KviSASL.h"
 #include "KviNickColors.h"
 

@@ -96,6 +96,7 @@ SET(kvilib_SRCS
 	irc/KviAvatar.cpp
 	irc/KviAvatarCache.cpp
 	irc/KviIdentityProfile.cpp
+	irc/KviIdentityProfileSet.cpp
 	irc/KviIrcMask.cpp
 	irc/KviIrcServer.cpp
 	irc/KviIrcServerDataBase.cpp

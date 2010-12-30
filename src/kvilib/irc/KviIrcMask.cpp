@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "kvi_debug.h"
 #include "KviIrcMask.h"
 
@@ -91,278 +89,7 @@
 		Pragma!*@*: matches any user with nickname "Pragma".[br]
 */
 
-/*
-const char * KviIrcMask::setMask(const char *szMask,char c)
-{
-	KVI_ASSERT(szMask);
-	//nick!username@host.top
-	//0123456789
-	register const char *p=szMask;
-	//Run over nick....
-	while(*p && (*p != '!'))p++;
-	int len = p - szMask;
-	if(len > 0){
-		m_nick_ptr = (char *)KviMemory::reallocate(m_nick_ptr,len+1);
-		KviMemory::move((void *)m_nick_ptr,(void *)szMask,len);
-	} else { //Empty nick...set it to "*"
-		len = 1;
-		m_nick_ptr = (char *)KviMemory::reallocate(m_nick_ptr,len+1);
-		KviMemory::move((void *)m_nick_ptr,(void *)"*",len);
-	}
-	*(m_nick_ptr+len) = '\0'; //With zero length nick it will be just an empty-string
-	if(!(*p)){
-		setHost("*");
-		setUsername("*");
-		return p;
-	}
-	szMask = ++p;
-	//The username
-	while(*p && (*p != '@'))p++;
-	len = p - szMask;
-	if(len > 0){
-		m_user_ptr = (char *)KviMemory::reallocate(m_user_ptr,len+1);
-		KviMemory::move((void *)m_user_ptr,(void *)szMask,len);
-	} else {
-		len = 1;
-		m_user_ptr = (char *)KviMemory::reallocate(m_user_ptr,len+1);
-		KviMemory::move((void *)m_user_ptr,(void *)"*",len);
-	}
-	*(m_user_ptr+len) = '\0';
-	if(!(*p)){
-		setHost("*");
-		return p;
-	}
-	szMask = ++p;
-	//And finally the host
-	while(*p && (*p != c))p++;
-	len = p - szMask;
-	if(len > 0){
-		m_host_ptr = (char *)KviMemory::reallocate(m_host_ptr,len+1);
-		KviMemory::move((void *)m_host_ptr,(void *)szMask,len);
-	} else {
-		len = 1;
-		m_host_ptr = (char *)KviMemory::reallocate(m_host_ptr,len+1);
-		KviMemory::move((void *)m_host_ptr,(void *)"*",len);
-	}
-	*(m_host_ptr+len) = '\0';
-	return p;
-}
-
-const char * KviIrcMask::setUserhostMask(const char *szMask)
-{
-	KVI_ASSERT(szMask);
-	//nick[*]=<+!->username@host.top
-	//0123456789
-	register const char *p=szMask;
-	// Run over nick....
-	while(*p && (*p != '*') && (*p != '=') && (!isspace(*p)))p++;
-	// extract it
-	int len = p - szMask;
-	if(len > 0){
-		m_nick_ptr = (char *)KviMemory::reallocate(m_nick_ptr,len+1);
-		KviMemory::move((void *)m_nick_ptr,(void *)szMask,len);
-	} else { //Empty nick...set it to "*"
-		len = 1;
-		m_nick_ptr = (char *)KviMemory::reallocate(m_nick_ptr,len+1);
-		KviMemory::move((void *)m_nick_ptr,(void *)"*",len);
-	}
-	*(m_nick_ptr+len) = '\0'; //With zero length nick it will be just an empty-string
-	// now skip all the flags
-	while(*p && ((*p=='*')||(*p=='=')||(*p=='+')||(*p=='-')) && (!isspace(*p)))p++;
-	// check...
-	if((!(*p)) || isspace(*p)){
-		// ooops, finished or isspace
-		setHost("*");
-		setUsername("*");
-		while(*p && isspace(*p))p++;
-		return p;
-	}
-
-	szMask = p;
-	//The username
-	while(*p && (*p != '@') && (!isspace(*p)))p++;
-	len = p - szMask;
-	if(len > 0){
-		m_user_ptr = (char *)KviMemory::reallocate(m_user_ptr,len+1);
-		KviMemory::move((void *)m_user_ptr,(void *)szMask,len);
-	} else {
-		len = 1;
-		m_user_ptr = (char *)KviMemory::reallocate(m_user_ptr,len+1);
-		KviMemory::move((void *)m_user_ptr,(void *)"*",len);
-	}
-	*(m_user_ptr+len) = '\0';
-
-	if((!(*p))||isspace(*p)){
-		// oops finished or isspace
-		setHost("*");
-		while(*p && isspace(*p))p++;
-		return p;
-	}
-	szMask = ++p;
-	//And finally the host
-	while(*p && (!isspace(*p)))p++;
-	len = p - szMask;
-	if(len > 0){
-		m_host_ptr = (char *)KviMemory::reallocate(m_host_ptr,len+1);
-		KviMemory::move((void *)m_host_ptr,(void *)szMask,len);
-	} else {
-		len = 1;
-		m_host_ptr = (char *)KviMemory::reallocate(m_host_ptr,len+1);
-		KviMemory::move((void *)m_host_ptr,(void *)"*",len);
-	}
-	*(m_host_ptr+len) = '\0';
-	while(*p && isspace(*p))p++;
-	return p;
-}
-
-*/
-
-KviIrcMask::KviIrcMask()
-{
-	m_szHost = m_szWild;
-	m_szUser = m_szWild;
-	m_szNick = m_szWild;
-}
-
-KviIrcMask::KviIrcMask(const QString &szMask)
-{
-	static QString szWild("*");
-	const QChar * b = KviQString::nullTerminatedArray(szMask);
-	if(b)
-	{
-		const QChar * p = b;
-		while(p->unicode() && (p->unicode() != '!'))p++;
-		if(p->unicode())
-		{
-			if(p != b)
-			{
-				m_szNick.setUnicode(b,p-b);
-			} else {
-				m_szNick = szWild; // ???
-			}
-		} else {
-			if(p != b)m_szNick.setUnicode(b,p-b);
-			else m_szNick = szWild; // ???
-			m_szUser = szWild;
-			m_szHost = szWild;
-			return;
-		}
-		p++;
-		b = p;
-		while(p->unicode() && (p->unicode() != '@'))p++;
-		if(p->unicode())
-		{
-			if(p != b)
-			{
-				m_szUser.setUnicode(b,p-b);
-			} else {
-				m_szUser = szWild; // ???
-			}
-		} else {
-			if(p != b)m_szUser.setUnicode(b,p-b);
-			else m_szUser = szWild; // ???
-			m_szHost = szWild;
-			return;
-		}
-		p++;
-		b=p;
-		while(p->unicode())p++;
-		if(p != b)
-		{
-			m_szHost.setUnicode(b,p-b);
-		} else {
-			m_szHost = szWild; // ???
-		}
-
-	} else {
-		m_szUser = szWild;
-		m_szHost = szWild;
-		m_szNick = szWild;
-	}
-}
-
-QString KviIrcMask::m_szWild("*");
-
-bool KviIrcMask::hasNumericHost() const
-{
-	const QChar * p = KviQString::nullTerminatedArray(m_szHost);
-	if(!p)return false;
-	int nPoints = 0;
-	int nDoublePoints = 0;
-	unsigned short uc;
-
-	if(m_szHost.endsWith("=")) // for CR servers, see ticket #358
-		return true;
-
-	while((uc = p->unicode()))
-	{
-		if(uc == '.')nPoints++; // ipv6 masks can contain dots too!
-		else {
-			if(uc == ':')nDoublePoints++;
-			else {
-				if((uc < '0') || (uc > '9'))
-				{
-					uc = p->toUpper().unicode();
-					if((uc < 'A') || (uc > 'F'))return false;
-				}
-			}
-		}
-		p++;
-	}
-	return ((nPoints == 3) || (nDoublePoints > 1));
-}
-
-
-/**
-* Returns in szMask the specified (if possible) mask of this user.<br>
-* If the host or username are not known, the mask may contain less information
-* than requested.<br>
-* Mask types:<br>
-* 0 : nick!user@machine.host.top  (nick!user@XXX.XXX.XXX.XXX) (default)<br>
-* 1 : nick!user@*.host.top        (nick!user@XXX.XXX.XXX.*)<br>
-* 2 : nick!user@*<br>
-* 3 : nick!*@machine.host.top     (nick!user@XXX.XXX.XXX.XXX)<br>
-* 4 : nick!*@*.host.top           (nick!user@XXX.XXX.XXX.*)<br>
-* 5 : nick!*@*<br>
-* 6 : *!user@machine.host.top     (*!user@XXX.XXX.XXX.XX)<br>
-* 7 : *!user@*.host.top           (*!user@XXX.XXX.XXX.*)<br>
-* 8 : *!user@*<br>
-* 9 : *!*@machine.host.top        (*!*@XXX.XXX.XXX.XXX)<br>
-* 10: *!*@*.host.top              (*!*@XXX.XXX.XXX.*)<br>
-* 11: nick!*user@machine.host.top (nick!*user@machine.host.top)<br>
-* 12: nick!*user@*.host.top       (nick!*user@*.host.top)<br>
-* 13: nick!*user@*<br>
-* 14: *!*user@machine.host.top    (*!*user@machine.host.top)<br>
-* 15: *!*user@*.host.top          (*!*user@*.host.top)<br>
-* 16: *!*user@*<br>
-* 17: nick!~user@*.host.top       (nick!~user@XXX.XXX.*)
-* 18: nick!*@*.host.top          (nick!*@XXX.XXX.*)
-* 19: *!~user@*.host.top          (*!~user@XXX.XXX.*)
-* 20: nick!*user@*.host.top          (nick!*user@XXX.XXX.*)
-* 21: *!*user@*.host.top          (*!user@*XXX.XXX.*)
-* smart versions of the masks 17-21 that try take care of masked ip addresses
-* in the form xxx.xxx.INVALID-TOP-MASK
-* 22: nick!~user@*.host.top       (nick!~user@XXX.XXX.*)
-* 23: nick!*@*.host.top          (nick!*@XXX.XXX.*)
-* 24: *!~user@*.host.top          (*!~user@XXX.XXX.*)
-* 25: nick!*user@*.host.top          (nick!*user@XXX.XXX.*)
-* 26: *!*user@*.host.top          (*!user@*XXX.XXX.*)
-* If some data is missing, these types may change:<br>
-* For example, if hostname is missing, the mask type 3 or 4 may be reduced to type 5
-*/
-
-/*
-** ident is fun.. ahem
-** prefixes used:
-** 	none	I line with ident
-**	^	I line with OTHER type ident
-**	~	I line, no ident
-** 	+	i line with ident
-**	=	i line with OTHER type ident
-**	-	i line, no ident
-*/
-
-static unsigned char maskTable[27][3] = {
+static unsigned char ucMaskTable[27][3] = {
 	{ 0 , 0 , 0 }, //0 means normal block
 	{ 0 , 0 , 2 }, //2 in the third field means type *.abc.host.top (or XXX.XXX.XXX.*) host mask
 	{ 0 , 0 , 1 }, //2 in the second field means *user (strip prefixes)
@@ -392,12 +119,113 @@ static unsigned char maskTable[27][3] = {
 	{ 1 , 2 , 4 }
 };
 
-void KviIrcMask::mask(QString &szMask,MaskType eMaskType) const
+KviIrcMask::KviIrcMask()
 {
-	if((((int)eMaskType) > 26)||(((int)eMaskType) < 0))eMaskType = NickUserHost;
-	szMask = maskTable[((int)eMaskType)][0] ? m_szWild : m_szNick;
+	m_szHost = m_szWild;
+	m_szUser = m_szWild;
+	m_szNick = m_szWild;
+}
+
+KviIrcMask::KviIrcMask(const QString & szMask)
+{
+	static QString szWild("*");
+	const QChar * pChar = KviQString::nullTerminatedArray(szMask);
+	if(pChar)
+	{
+		const QChar * pChar2 = pChar;
+		while(pChar2->unicode() && (pChar2->unicode() != '!'))
+			pChar2++;
+		if(pChar2->unicode())
+		{
+			if(pChar2 != pChar)
+				m_szNick.setUnicode(pChar,pChar2-pChar);
+			else
+				m_szNick = szWild; // ???
+		} else {
+			if(pChar2 != pChar)
+				m_szNick.setUnicode(pChar,pChar2-pChar);
+			else
+				m_szNick = szWild; // ???
+			m_szUser = szWild;
+			m_szHost = szWild;
+			return;
+		}
+		pChar2++;
+		pChar = pChar2;
+		while(pChar2->unicode() && (pChar2->unicode() != '@'))
+			pChar2++;
+		if(pChar2->unicode())
+		{
+			if(pChar2 != pChar)
+				m_szUser.setUnicode(pChar,pChar2-pChar);
+			else
+				m_szUser = szWild; // ???
+		} else {
+			if(pChar2 != pChar)
+				m_szUser.setUnicode(pChar,pChar2-pChar);
+			else
+				m_szUser = szWild; // ???
+			m_szHost = szWild;
+			return;
+		}
+		pChar2++;
+		pChar = pChar2;
+		while(pChar2->unicode())
+			pChar2++;
+		if(pChar2 != pChar)
+			m_szHost.setUnicode(pChar,pChar2-pChar);
+		else
+			m_szHost = szWild; // ???
+
+	} else {
+		m_szUser = szWild;
+		m_szHost = szWild;
+		m_szNick = szWild;
+	}
+}
+
+QString KviIrcMask::m_szWild("*");
+
+bool KviIrcMask::hasNumericHost() const
+{
+	const QChar * pChar = KviQString::nullTerminatedArray(m_szHost);
+	if(!pChar)
+		return false;
+	int iPoints = 0;
+	int iDoublePoints = 0;
+	unsigned short uc;
+
+	if(m_szHost.endsWith("=")) // for CR servers, see ticket #358
+		return true;
+
+	while((uc = pChar->unicode()))
+	{
+		if(uc == '.')
+			iPoints++; // ipv6 masks can contain dots too!
+		else {
+			if(uc == ':')
+				iDoublePoints++;
+			else {
+				if((uc < '0') || (uc > '9'))
+				{
+					uc = pChar->toUpper().unicode();
+					if((uc < 'A') || (uc > 'F'))
+						return false;
+				}
+			}
+		}
+		pChar++;
+	}
+	return ((iPoints == 3) || (iDoublePoints > 1));
+}
+
+void KviIrcMask::mask(QString & szMask, MaskType eMaskType) const
+{
+	if((((int)eMaskType) > 26)||(((int)eMaskType) < 0))
+		eMaskType = NickUserHost;
+	szMask = ucMaskTable[((int)eMaskType)][0] ? m_szWild : m_szNick;
 	szMask.append("!");
-	switch(maskTable[((int)eMaskType)][1])
+	switch(ucMaskTable[((int)eMaskType)][1])
 	{
 		case 0:
 			szMask.append(m_szUser);
@@ -406,21 +234,23 @@ void KviIrcMask::mask(QString &szMask,MaskType eMaskType) const
 			szMask.append(m_szWild);
 			break;
 		default:
-			if (m_szUser.length() > 0) {
+			if(m_szUser.length() > 0)
+			{
 				if(m_szUser[0].unicode() != '*')
 					szMask.append(m_szWild);
-				if ((m_szUser[0].unicode() == '~') ||
+				if((m_szUser[0].unicode() == '~') ||
 					(m_szUser[0].unicode() == '^') ||
 					(m_szUser[0].unicode() == '+') ||
 					(m_szUser[0].unicode() == '-') ||
-					(m_szUser[0].unicode() == '='))szMask.append(m_szUser.right(m_szUser.length() - 1));
+					(m_szUser[0].unicode() == '='))
+					szMask.append(m_szUser.right(m_szUser.length() - 1));
 				else
 					szMask.append(m_szUser);
 			}
 		break;
 	}
 	szMask.append('@');
-	switch(maskTable[((int)eMaskType)][2])
+	switch(ucMaskTable[((int)eMaskType)][2])
 	{
 		case 0:
 			szMask.append(m_szHost);
@@ -479,237 +309,150 @@ void KviIrcMask::mask(QString &szMask,MaskType eMaskType) const
 	}
 }
 
-
-/*
-bool KviIrcMask::matches(const char *szMask)
-{
-	const char * ret1;
-	const char * ret2;
-
-	if(kvi_matchWildExprWithTerminator(szMask,m_nick_ptr,'!',&ret1,&ret2))
-	{
-		if(*ret1 == '!')
-		{
-			ret1++;
-			if(kvi_matchWildExprWithTerminator(ret1,m_user_ptr,'@',&ret1,&ret2))
-			{
-				if(*ret1 == '@')
-				{
-					ret1++;
-					return kvi_matchWildExpr(ret1,m_host_ptr);
-				}
-			}
-		}
-	}
-	return false;
-}
-*/
-
-/*
-bool KviIrcMask::matchesFixed(const char *szMask) const
-{
-	const char * ret1;
-	const char * ret2;
-
-	if(kvi_matchStringWithTerminator(m_nick_ptr,szMask,'!',&ret1,&ret2))
-	{
-		if(*ret2 == '!')
-		{
-			ret2++;
-			if(kvi_matchStringWithTerminator(m_user_ptr,ret2,'@',&ret1,&ret2))
-			{
-				if(*ret2 == '@')
-				{
-					ret2++;
-					return kvi_matchString(m_host_ptr,ret2);
-				}
-			}
-		}
-	}
-	return false;
-}
-*/
-
-/*
-bool KviIrcMask::matchedBy(const QString &szMask) const
-{
-	const char * ret1;
-	const char * ret2;
-
-	if(kvi_matchStringWithTerminator(szMask,m_nick_ptr,'!',&ret1,&ret2))
-	{
-		if(*ret1 == '!')
-		{
-			ret1++;
-			if(kvi_matchStringWithTerminator(ret1,m_user_ptr,'@',&ret1,&ret2))
-			{
-				if(*ret1 == '@')
-				{
-					ret1++;
-					return kvi_matchString(ret1,m_host_ptr);
-				}
-			}
-		}
-	}
-	return false;
-}
-*/
-
-bool KviIrcMask::matches(const KviIrcMask &mask) const
+bool KviIrcMask::matches(const KviIrcMask & mask) const
 {
 	if(KviQString::matchWildExpressions(m_szNick,mask.m_szNick))
 	{
 		if(KviQString::matchWildExpressions(m_szUser,mask.m_szUser))
 		{
-			if(KviQString::matchWildExpressions(m_szHost,mask.m_szHost))return true;
+			if(KviQString::matchWildExpressions(m_szHost,mask.m_szHost))
+				return true;
 		}
 	}
 	return false;
 }
 
-bool KviIrcMask::matchesFixed(const KviIrcMask &mask) const
+bool KviIrcMask::matchesFixed(const KviIrcMask & mask) const
 {
 	if(KviQString::matchString(m_szNick,mask.m_szNick,false,true))
 	{
 		if(KviQString::matchString(m_szUser,mask.m_szUser,false,true))
 		{
 			if(KviQString::matchString(m_szHost,mask.m_szHost,false,true))
-			{
 				return true;
-			}
 		}
 	}
 	return false;
 }
 
-/*
-bool KviIrcMask::matches(const char * nick,const char * user,const char * host)
+bool KviIrcMask::matchesFixed(const QString & szNick, const QString & szUser, const QString & szHost) const
 {
-	if(nick)
-	{
-		if(!kvi_matchWildExpr(m_nick_ptr,nick))return false;
-	}
-
-	if(user)
-	{
-		if(!kvi_matchWildExpr(m_user_ptr,user))return false;
-	}
-
-	if(host)
-	{
-		if(!kvi_matchWildExpr(m_host_ptr,host))return false;
-	}
+	if(!KviQString::matchString(m_szNick,szNick,false,true))
+		return false;
+	if(!KviQString::matchString(m_szUser,szUser,false,true))
+		return false;
+	if(!KviQString::matchString(m_szHost,szHost,false,true))
+		return false;
 	return true;
 }
-*/
-
-bool KviIrcMask::matchesFixed(const QString &nick,const QString &user,const QString &host) const
-{
-	if(!KviQString::matchString(m_szNick,nick,false,true)) return false;
-	if(!KviQString::matchString(m_szUser,user,false,true)) return false;
-	if(!KviQString::matchString(m_szHost,host,false,true)) return false;
-	return true;
-}
-
-//Internals for mask()
 
 int KviIrcMask::getIpDomainMaskLen() const
 {
-	int len = m_szHost.length();
-	const QChar *p = m_szHost.unicode();
-	const QChar *b = p;
-	p += len;
-	if(b < p)
+	int iLen = m_szHost.length();
+	const QChar * pChar = m_szHost.unicode();
+	const QChar * pChar2 = pChar;
+	pChar += iLen;
+	if(pChar2 < pChar)
 	{
-		p--;
-		while((b < p) && (p->unicode() != '.') && (p->unicode() != ':'))p--;
+		pChar--;
+		while((pChar2 < pChar) && (pChar->unicode() != '.') && (pChar->unicode() != ':'))
+			pChar--;
 	}
 	// 000.000.000.000
-	//            p
+	//            pChar
 	//
-	return (p == b) ? 0 : ((p-b) + 1);
+	return (pChar == pChar2) ? 0 : ((pChar-pChar2) + 1);
 }
 
 
 int KviIrcMask::getLargeIpDomainMaskLen() const
 {
-	int len = m_szHost.length();
-	const QChar *p = m_szHost.unicode();
-	const QChar *b = p;
-	p += len;
-	if(b < p)
+	int iLen = m_szHost.length();
+	const QChar * pChar = m_szHost.unicode();
+	const QChar * pChar2 = pChar;
+	pChar += iLen;
+	if(pChar2 < pChar)
 	{
-		p--;
-		while((b < p) && (p->unicode() != '.') && (p->unicode() != ':'))p--;
-		if(b < p)
+		pChar--;
+		while((pChar2 < pChar) && (pChar->unicode() != '.') && (pChar->unicode() != ':'))
+			pChar--;
+		if(pChar2 < pChar)
 		{
-			p--;
-			while((b < p) && (p->unicode() != '.') && (p->unicode() != ':'))p--;
+			pChar--;
+			while((pChar2 < pChar) && (pChar->unicode() != '.') && (pChar->unicode() != ':'))
+				pChar--;
 		}
 	}
 	// 000.000.000.000
-	//        p
+	//        pChar
 	//
-	return (p == b) ? 0 : ((p-b) + 1);
+	return (pChar == pChar2) ? 0 : ((pChar-pChar2) + 1);
 }
 
 QString KviIrcMask::getHostDomainMask() const
 {
-	int len = m_szHost.length();
-	const QChar *p=KviQString::nullTerminatedArray(m_szHost);
-	if(!p)return QString();
-	const QChar *b = p;
-	while(p->unicode() && p->unicode() != '.')p++;
-	QString ret(p,len - (p - b));
-	return ret;
+	int iLen = m_szHost.length();
+	const QChar * pChar = KviQString::nullTerminatedArray(m_szHost);
+	if(!pChar)
+		return QString();
+	const QChar * pChar2 = pChar;
+	while(pChar->unicode() && pChar->unicode() != '.')
+		pChar++;
+	QString szRet(pChar,iLen - (pChar - pChar2));
+	return szRet;
 }
 
 QString KviIrcMask::getLargeHostDomainMask() const
 {
-	int len = m_szHost.length();
-	const QChar *p = m_szHost.unicode();
-	const QChar *b = p;
-	p += len;
+	int iLen = m_szHost.length();
+	const QChar * pChar = m_szHost.unicode();
+	const QChar * pChar2 = pChar;
+	pChar += iLen;
 
-	if(b < p)
+	if(pChar2 < pChar)
 	{
-		p--;
-		while((b < p) && (p->unicode() != '.'))p--;
-		if(b < p)
+		pChar--;
+		while((pChar2 < pChar) && (pChar->unicode() != '.'))
+			pChar--;
+		if(pChar2 < pChar)
 		{
-			p--;
-			while((b < p) && (p->unicode() != '.'))p--;
+			pChar--;
+			while((pChar2 < pChar) && (pChar->unicode() != '.'))
+				pChar--;
 		}
 	}
 
 	// xyz.klm.abc.host.top
-	//            p
+	//            pChar
 
-	QString ret(p,len - (p - b));
-	return ret;
+	QString szRet(pChar,iLen - (pChar - pChar2));
+	return szRet;
 }
 
 bool KviIrcMask::hasMaskedIp() const
 {
-	int len = m_szHost.length();
-	const QChar *p = m_szHost.unicode();
-	const QChar *b = p;
-	if(len == 0)return false;
+	int iLen = m_szHost.length();
+	const QChar * pChar = m_szHost.unicode();
+	const QChar * pChar2 = pChar;
+	if(iLen == 0)
+		return false;
 	//run to the end
-	p += len;
-	const QChar *e = p;
-	p--;
-	while((b < p) && (p->unicode() != '.'))p--;
-	return ((e - p) > 4); // at the moment 4 should be enough : the largest top part is "name"
+	pChar += iLen;
+	const QChar * pChar3 = pChar;
+	pChar--;
+	while((pChar2 < pChar) && (pChar->unicode() != '.'))
+		pChar--;
+	return ((pChar3 - pChar) > 4); // at the moment 4 should be enough : the largest top part is "name"
 }
 
-bool KviIrcMask::operator==(const KviIrcMask &user)
+bool KviIrcMask::operator==(const KviIrcMask & user)
 {
 	if(KviQString::equalCI(m_szNick,user.m_szNick))
 	{
 		if(KviQString::equalCI(m_szUser,user.m_szUser))
 		{
-			if(KviQString::equalCI(m_szHost,user.m_szHost))return true;
+			if(KviQString::equalCI(m_szHost,user.m_szHost))
+				return true;
 		}
 	}
 	return false;
@@ -717,13 +460,15 @@ bool KviIrcMask::operator==(const KviIrcMask &user)
 
 bool KviIrcMask::hasWildNick()
 {
-	const QChar * aux = KviQString::nullTerminatedArray(m_szNick);
-	if(!aux)return false;
+	const QChar * pAux = KviQString::nullTerminatedArray(m_szNick);
+	if(!pAux)
+		return false;
 	unsigned short uc;
-	while((uc = aux->unicode()))
+	while((uc = pAux->unicode()))
 	{
-		if((uc == '*') || (uc == '?'))return true;
-		aux++;
+		if((uc == '*') || (uc == '?'))
+			return true;
+		pAux++;
 	}
 	return false;
 }
@@ -731,28 +476,32 @@ bool KviIrcMask::hasWildNick()
 int KviIrcMask::nonWildChars()
 {
 	int iCnt = 0;
-	const QChar * aux = KviQString::nullTerminatedArray(m_szNick);
-	if(!aux)return 0;
+	const QChar * pAux = KviQString::nullTerminatedArray(m_szNick);
+	if(!pAux)
+		return 0;
 	unsigned short uc;
 
-	while((uc = aux->unicode()))
+	while((uc = pAux->unicode()))
 	{
-		if((uc != '*') && (uc != '?'))iCnt++;
-		aux++;
+		if((uc != '*') && (uc != '?'))
+			iCnt++;
+		pAux++;
 	}
 
-	aux = KviQString::nullTerminatedArray(m_szUser);
-	while((uc = aux->unicode()))
+	pAux = KviQString::nullTerminatedArray(m_szUser);
+	while((uc = pAux->unicode()))
 	{
-		if((uc != '*') && (uc != '?'))iCnt++;
-		aux++;
+		if((uc != '*') && (uc != '?'))
+			iCnt++;
+		pAux++;
 	}
 
-	aux = KviQString::nullTerminatedArray(m_szHost);
-	while((uc = aux->unicode()))
+	pAux = KviQString::nullTerminatedArray(m_szHost);
+	while((uc = pAux->unicode()))
 	{
-		if((uc != '*') && (uc != '?'))iCnt++;
-		aux++;
+		if((uc != '*') && (uc != '?'))
+			iCnt++;
+		pAux++;
 	}
 	return iCnt;
 }

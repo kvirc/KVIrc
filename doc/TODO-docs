@@ -12,6 +12,8 @@
 # The first column refers to step 1, the second one to step 2    #
 # + -> the file is documented                                    #
 # - -> the file is partially documented                          #
+# Please note that .cpp files haven't any doxygen documentation, #
+# so tag them as documented.                                     #
 #                                                                #
 # PLEASE KEEP IT UPDATED!                                        #
 #                                                                #
@@ -164,12 +166,14 @@ videoinput.h
   KviAvatar.h
   KviAvatarCache.cpp
   KviAvatarCache.h
-  KviIdentityProfile.cpp
-  KviIdentityProfile.h
-  KviIrcMask.cpp
-  KviIrcMask.h
+++KviIdentityProfile.cpp
+++KviIdentityProfile.h
+++KviIdentityProfileSet.cpp
+++KviIdentityProfileSet.h
+++KviIrcMask.cpp
+++KviIrcMask.h
   KviIrcNetwork.cpp
-  KviIrcNetwork.h
+++KviIrcNetwork.h
   KviIrcServer.cpp
   KviIrcServer.h
   KviIrcServerDataBase.cpp
@@ -204,9 +208,9 @@ videoinput.h
   KviSSL.h
   KviUrl.cpp
   KviUrl.h
-kvi_socket.cpp
-kvi_socket.h
-kvi_sockettype.h
+  kvi_socket.cpp
+  kvi_socket.h
+  kvi_sockettype.h
 
 
 #################
@@ -222,7 +226,7 @@ kvi_sockettype.h
   KviThread.h
   KviTimeUtils.cpp
   KviTimeUtils.h
-kvi_stdarg.h
+  kvi_stdarg.h
 
 
 ##############

@@ -85,10 +85,11 @@ public:
 
 	/**
 	* \enum MaskType
+	* \brief Defines the type of the masks
 	*/
 	enum MaskType
 	{
-		NickUserHost = 0,           /**< nick!~user@machine.host.top (default) */
+		NickUserHost = 0,           /**<  0 : nick!~user@machine.host.top (default) */
 		NickUserNet = 1,            /**<  1 : nick!~user@*.abc.host.top */
 		NickUser = 2,               /**<  2 : nick!~user@* */
 		NickHost = 3,               /**<  3 : nick!*@machine.host.top */
@@ -143,7 +144,7 @@ public:
 	* \param szUser The username of the user
 	* \return void
 	*/
-	void setUser(const QString &szUser){ m_szUser = szUser.isEmpty() ? m_szWild : szUser; };
+	void setUser(const QString & szUser){ m_szUser = szUser.isEmpty() ? m_szWild : szUser; };
 
 	/**
 	* \brief Sets the host for this user.
@@ -152,21 +153,7 @@ public:
 	* \param szHost The hostname of the user
 	* \return void
 	*/
-	void setHost(const QString &szHost){ m_szHost = szHost.isEmpty() ? m_szWild : szHost; };
-
-	// Sets the host, nick and username extracting it from an irc mask:
-	// nick!user@host
-	// The mask is terminated by end-of string null character or a character equal to c in the string.
-	// Returns the pointer to the end of the mask in the szMask string.(c or null-terminator)
-	//const char * setMask(const QString &szMask,char c=' ');
-
-	// Sets the host, nick and username extracting it from an userhost mask:
-	// nick[*]=<+|->user@host
-	// The mask is terminated by end-of string null char or a space character.
-	// Returns the pointer to the next non-space char in the szMask string or to the null-terminator
-	// If there are no more masks avaiable.
-	// WARNING : the szMask pointer can NOT be NULL
-	//const char *setUserhostMask(const QString &szMask);
+	void setHost(const QString & szHost){ m_szHost = szHost.isEmpty() ? m_szWild : szHost; };
 
 	/**
 	* \brief Returns the nickname of this user.
@@ -215,8 +202,51 @@ public:
 	*
 	* If the host or username are not known, the mask may contain less
 	* information than requested.
+	* 
+	* Mask types:
+	*  0: nick!user@machine.host.top  (nick!user@XXX.XXX.XXX.XXX) (default)
+	*  1: nick!user@*.host.top        (nick!user@XXX.XXX.XXX.*)
+	*  2: nick!user@*
+	*  3: nick!*@machine.host.top     (nick!user@XXX.XXX.XXX.XXX)
+	*  4: nick!*@*.host.top           (nick!user@XXX.XXX.XXX.*)
+	*  5: nick!*@*
+	*  6: *!user@machine.host.top     (*!user@XXX.XXX.XXX.XX)
+	*  7: *!user@*.host.top           (*!user@XXX.XXX.XXX.*)
+	*  8: *!user@*
+	*  9: *!*@machine.host.top        (*!*@XXX.XXX.XXX.XXX)
+	* 10: *!*@*.host.top              (*!*@XXX.XXX.XXX.*)
+	* 11: nick!*user@machine.host.top (nick!*user@machine.host.top)
+	* 12: nick!*user@*.host.top       (nick!*user@*.host.top)
+	* 13: nick!*user@*
+	* 14: *!*user@machine.host.top    (*!*user@machine.host.top)
+	* 15: *!*user@*.host.top          (*!*user@*.host.top)
+	* 16: *!*user@*
+	* 17: nick!~user@*.host.top       (nick!~user@XXX.XXX.*)
+	* 18: nick!*@*.host.top          (nick!*@XXX.XXX.*)
+	* 19: *!~user@*.host.top          (*!~user@XXX.XXX.*)
+	* 20: nick!*user@*.host.top          (nick!*user@XXX.XXX.*)
+	* 21: *!*user@*.host.top          (*!user@*XXX.XXX.*)
+	* smart versions of the masks 17-21 that try take care of masked ip addresses
+	* in the form xxx.xxx.INVALID-TOP-MASK
+	* 22: nick!~user@*.host.top       (nick!~user@XXX.XXX.*)
+	* 23: nick!*@*.host.top          (nick!*@XXX.XXX.*)
+	* 24: *!~user@*.host.top          (*!~user@XXX.XXX.*)
+	* 25: nick!*user@*.host.top          (nick!*user@XXX.XXX.*)
+	* 26: *!*user@*.host.top          (*!user@*XXX.XXX.*)
+	* If some data is missing, these types may change:
+	* For example, if hostname is missing, the mask type 3 or 4 may be reduced to type 5
+	* 
+	* ident is fun.. ahem
+	* prefixes used:
+	* none   I line with ident
+	* ^      I line with OTHER type ident
+	* ~      I line, no ident
+	* +      i line with ident
+	* =      i line with OTHER type ident
+	* -      i line, no ident
 	* \param szMask The mask of the user
 	* \param eMaskType The mask type
+	* \return void
 	*/
 	void mask(QString & szMask, MaskType eMaskType = NickCleanUserHost) const;
 
@@ -231,9 +261,6 @@ public:
 	* \param mask The mask of the user
 	* \return bool
 	*/
-	//bool matches(const char *szMask);
-	// passing 0 as one of params here means that it is a match by default
-	//bool matches(const char *nick,const char *user,const char *host);
 	bool matches(const KviIrcMask & mask) const;
 
 	/**
@@ -243,8 +270,7 @@ public:
 	* \param host The hostname of the user
 	* \return bool
 	*/
-	bool matchesFixed(const QString & nick, const QString & user, const QString & host) const;
-	//bool matchesFixed(const QString &szMask) const;
+	bool matchesFixed(const QString & szNick, const QString & szUser, const QString & szHost) const;
 
 	/**
 	* \brief Fixed external matches (this is wild, external is fixed)
@@ -258,7 +284,6 @@ public:
 	* \param mask The mask of the user
 	* \return bool
 	*/
-	//bool matchedBy(const QString &szMask) const;
 	bool matchedBy(const KviIrcMask & mask) const { return mask.matchesFixed(*this); };
 
 	/**

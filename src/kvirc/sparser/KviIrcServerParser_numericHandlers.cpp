@@ -54,7 +54,7 @@
 #include "KviKvsEventTriggers.h"
 #include "KviKvsScript.h"
 #include "KviKvsVariantList.h"
-#include "KviIdentityProfile.h"
+#include "KviIdentityProfileSet.h"
 
 #include <QPixmap>
 #include <QDateTime>

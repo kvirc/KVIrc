@@ -26,6 +26,7 @@
 
 #include "kvi_defaults.h"
 #include "kvi_settings.h"
+#include "kvi_fileextensions.h"
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviApplication.h"
@@ -33,14 +34,13 @@
 #include "KviConsoleWindow.h"
 #include "KviOptionsWidget.h"
 #include "KviFileDialog.h"
-#include "kvi_fileextensions.h"
 #include "KviIconManager.h"
 #include "KviHttpRequest.h"
-#include "KviIdentityProfile.h"
+#include "KviIdentityProfileSet.h"
 #include "KviTalToolTip.h"
 #include "KviTalHBox.h"
-#include <QTreeWidget>
 
+#include <QTreeWidget>
 #include <QCheckBox>
 #include <QLineEdit>
 #include <QPushButton>

@@ -1,5 +1,5 @@
-#ifndef _KviNickServRule_h_
-#define _KviNickServRule_h_
+#ifndef _KVI_NICKSERV_RULE_H_
+#define _KVI_NICKSERV_RULE_H_
 //=============================================================================
 //
 //   File : KviNickServRule.h
@@ -81,4 +81,4 @@ public:
 };
 
 
-#endif // _KviNickServRule_h_
+#endif // _KVI_NICKSERV_RULE_H_

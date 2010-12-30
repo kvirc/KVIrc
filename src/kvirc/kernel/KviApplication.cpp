@@ -52,7 +52,7 @@
 #include "kvi_out.h"
 #include "KviSplashScreen.h"
 #include "KviNickServRuleSet.h"
-#include "KviIdentityProfile.h"
+#include "KviIdentityProfileSet.h"
 #include "KviDefaultScript.h"
 #include "KviXlib.h"
 #include "KviTextIconManager.h"
