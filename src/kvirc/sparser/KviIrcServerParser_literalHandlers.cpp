@@ -1454,7 +1454,7 @@ void KviIrcServerParser::parseLiteralTopic(KviIrcMessage *msg)
 	{
 		chan->output(KVI_OUT_TOPIC,
 			__tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""),
-			&szNick,&szUser,&szHost,&szTopic,KVI_TEXT_RESET);
+			&szNick,&szUser,&szHost,&szTopic,KviMircCntrl::Reset);
 	}
 }
 

@@ -795,7 +795,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KVSCF_pRetBuffer->setString(QString(QChar(KVI_TEXT_UNDERLINE)));
+		KVSCF_pRetBuffer->setString(QString(QChar(KviMircCntrl::Underline)));
 		return true;
 	}
 

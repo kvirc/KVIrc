@@ -183,7 +183,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 	line_ptr->uChunkCount = 1;
 	line_ptr->pChunks = (KviIrcViewLineChunk *)KviMemory::allocate(sizeof(KviIrcViewLineChunk));
 	//And fill it up
-	line_ptr->pChunks[0].type = KVI_TEXT_COLOR;
+	line_ptr->pChunks[0].type = KviMircCntrl::Color;
 	line_ptr->pChunks[0].iTextStart = 0;
 	line_ptr->pChunks[0].colors.back = KVI_OPTION_MSGTYPE(iMsgType).back();
 	line_ptr->pChunks[0].colors.fore = KVI_OPTION_MSGTYPE(iMsgType).fore();
@@ -208,13 +208,13 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 			line_ptr->uChunkCount=3;
 			line_ptr->pChunks=(KviIrcViewLineChunk *)KviMemory::reallocate((void *)line_ptr->pChunks,3 * sizeof(KviIrcViewLineChunk));
 
-			line_ptr->pChunks[1].type = KVI_TEXT_COLOR;
+			line_ptr->pChunks[1].type = KviMircCntrl::Color;
 			line_ptr->pChunks[1].iTextStart = 0;
 			line_ptr->pChunks[1].iTextLen = iTimeStampLength-1;
 			line_ptr->pChunks[1].colors.back = KVI_OPTION_UINT(KviOption_uintTimeStampBackground);
 			line_ptr->pChunks[1].colors.fore = KVI_OPTION_UINT(KviOption_uintTimeStampForeground);
 
-			line_ptr->pChunks[2].type = KVI_TEXT_COLOR;
+			line_ptr->pChunks[2].type = KviMircCntrl::Color;
 			line_ptr->pChunks[2].iTextStart = iTimeStampLength-1;
 			line_ptr->pChunks[2].iTextLen = 1;
 			line_ptr->pChunks[2].colors.back = KVI_OPTION_MSGTYPE(iMsgType).back();
@@ -515,7 +515,7 @@ found_end_of_buffer:
 			if(pUnEscapeAt)
 			{
 				// empty unescape block needed
-				NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE);
+				NEW_LINE_CHUNK(KviMircCntrl::UnEscape);
 				// no need to append more data
 			}
 			return p;
@@ -529,7 +529,7 @@ found_end_of_line:
 			if(pUnEscapeAt)
 			{
 				// empty unescape block needed
-				NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE);
+				NEW_LINE_CHUNK(KviMircCntrl::UnEscape);
 				// no need to append more data
 			}
 			// terminate the string
@@ -547,7 +547,7 @@ found_command_escape:
 			{
 				// This is the terminator of an escape
 				APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr);
-				NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE);
+				NEW_LINE_CHUNK(KviMircCntrl::UnEscape);
 				pUnEscapeAt = 0;
 				p++;
 				data_ptr=p;
@@ -580,7 +580,7 @@ found_command_escape:
 						//  \r!    ... \r ...    \r
 						//   ^p         ^next_cr  ^term_cr
 						APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
-						NEW_LINE_CHUNK(KVI_TEXT_ESCAPE)
+						NEW_LINE_CHUNK(KviMircCntrl::Escape)
 
 						p+=2; //point after \r!
 
@@ -618,7 +618,7 @@ found_command_escape:
 							}
 						}
 						if(!bColorSet)
-							line_ptr->pChunks[iCurChunk].colors.fore=KVI_NOCHANGE;
+							line_ptr->pChunks[iCurChunk].colors.fore=KviMircCntrl::NoChange;
 
 #if 0
 						APPEND_LAST_TEXT_BLOCK(next_cr,term_cr - next_cr)
@@ -638,7 +638,7 @@ found_command_escape:
 				}
 			}
 			break;
-		case KVI_TEXT_COLOR:
+		case KviMircCntrl::Color:
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 found_color_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
@@ -650,7 +650,7 @@ found_color_escape:
 							&(line_ptr->pChunks[iCurChunk].colors.back));
 			data_ptr=p;
 			break;
-		case KVI_TEXT_ICON:
+		case KviMircCntrl::Icon:
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 found_icon_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
@@ -677,7 +677,7 @@ found_icon_escape:
 					if(icon)
 					{
 						APPEND_LAST_TEXT_BLOCK(data_ptr,beginPtr - data_ptr)
-						NEW_LINE_CHUNK(KVI_TEXT_ICON)
+						NEW_LINE_CHUNK(KviMircCntrl::Icon)
 						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((datalen + 1) * sizeof(kvi_wchar_t));
 						KviMemory::copy((void *)(line_ptr->pChunks[iCurChunk].szPayload),icon_name,datalen * sizeof(kvi_wchar_t));
 						line_ptr->pChunks[iCurChunk].szPayload[datalen] = 0;
@@ -693,15 +693,15 @@ found_icon_escape:
 							m_hAnimatedSmiles.insert(line_ptr,icon->animatedPixmap());
 						}
 						data_ptr = p;
-						NEW_LINE_CHUNK(KVI_TEXT_UNICON)
+						NEW_LINE_CHUNK(KviMircCntrl::UnIcon)
 					}
 				}
 			}
 			break;
-		case KVI_TEXT_BOLD:
-		case KVI_TEXT_UNDERLINE:
-		case KVI_TEXT_REVERSE:
-		case KVI_TEXT_RESET:
+		case KviMircCntrl::Bold:
+		case KviMircCntrl::Underline:
+		case KviMircCntrl::Reverse:
+		case KviMircCntrl::Reset:
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 found_mirc_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
@@ -962,7 +962,7 @@ got_url:
 		//valid: append all the text before the start of the url tag
 		APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
 		//create a new chunk
-		NEW_LINE_CHUNK(KVI_TEXT_ESCAPE)
+		NEW_LINE_CHUNK(KviMircCntrl::Escape)
 // FIXME: #warning "Option for the URL escape...double click and right button!!!"
 
 		//	int urlLen = KVI_OPTION_STRING(KviOption_stringUrlLinkCommand).len() + 1;
@@ -988,7 +988,7 @@ got_url:
 
 		//add all the text till the end of the url, then create a new "clean" chunk for the next cycle loop
 		APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
-		NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE)
+		NEW_LINE_CHUNK(KviMircCntrl::UnEscape)
 
 	}
 	//update the value of the main counter, then restart the loop
@@ -1090,7 +1090,7 @@ check_emoticon_char:
 						// we got an icon for this emoticon
 						// the tooltip will carry the original emoticon source text
 						APPEND_LAST_TEXT_BLOCK(data_ptr,begin - data_ptr)
-						NEW_LINE_CHUNK(KVI_TEXT_ICON)
+						NEW_LINE_CHUNK(KviMircCntrl::Icon)
 
 						int emolen = p - begin;
 						int reallen=item2 ? 3 : 2;
@@ -1109,7 +1109,7 @@ check_emoticon_char:
 						item++;
 						while(count > 0)
 						{
-							NEW_LINE_CHUNK(KVI_TEXT_ICON)
+							NEW_LINE_CHUNK(KviMircCntrl::Icon)
 							line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((emolen + 1) * sizeof(kvi_wchar_t));
 							KviMemory::copy(line_ptr->pChunks[iCurChunk].szPayload,begin,emolen * sizeof(kvi_wchar_t));
 							line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
@@ -1121,7 +1121,7 @@ check_emoticon_char:
 							APPEND_ZERO_LENGTH_BLOCK(data_ptr)
 							count--;
 						}
-						NEW_LINE_CHUNK(KVI_TEXT_UNICON)
+						NEW_LINE_CHUNK(KviMircCntrl::UnIcon)
 					} // we don't even need to skip back... the text eventually parsed is ok to be in a single block for sure
 				} // we don't even need to skip back... the text eventually parsed is ok to be in a single block for sure
 			} // we don't even need to skip back... the text eventually parsed is ok to be in a single block for sure

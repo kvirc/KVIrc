@@ -164,7 +164,7 @@ void KviTextIconWindow::cellSelected(int row, int column)
 		szItem.append(' ');
 
 		if(m_bAltMode)
-			szItem.prepend(KVI_TEXT_ICON);
+			szItem.prepend(KviMircCntrl::Icon);
 
 		if(m_pOwner->inherits("KviInputEditor"))
 			((KviInputEditor *)m_pOwner)->insertText(szItem);

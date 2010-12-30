@@ -54,12 +54,12 @@ namespace KviHtmlGenerator
 			unsigned int uStart = uIdx;
 
 			while(
-					(c != KVI_TEXT_COLOR) &&
-					(c != KVI_TEXT_BOLD) &&
-					(c != KVI_TEXT_UNDERLINE) &&
-					(c != KVI_TEXT_REVERSE) &&
-					(c != KVI_TEXT_RESET) &&
-					(c != KVI_TEXT_ICON) &&
+					(c != KviMircCntrl::Color) &&
+					(c != KviMircCntrl::Bold) &&
+					(c != KviMircCntrl::Underline) &&
+					(c != KviMircCntrl::Reverse) &&
+					(c != KviMircCntrl::Reset) &&
+					(c != KviMircCntrl::Icon) &&
 					((c != ':') || bIgnoreIcons) &&
 					((c != ';') || bIgnoreIcons) &&
 					((c != '=') || bIgnoreIcons)
@@ -148,9 +148,13 @@ namespace KviHtmlGenerator
 
 			switch(c)
 			{
-				case KVI_TEXT_BOLD: bCurBold = !bCurBold; ++uIdx; break;
-				case KVI_TEXT_UNDERLINE: bCurUnderline = !bCurUnderline; ++uIdx; break;
-				case KVI_TEXT_REVERSE:
+				case KviMircCntrl::Bold:
+					bCurBold = !bCurBold; ++uIdx;
+				break;
+				case KviMircCntrl::Underline:
+					bCurUnderline = !bCurUnderline; ++uIdx;
+				break;
+				case KviMircCntrl::Reverse:
 					{
 						char auxBack = uCurBack;
 						uCurBack = uCurFore;
@@ -158,23 +162,24 @@ namespace KviHtmlGenerator
 					}
 					++uIdx;
 				break;
-				case KVI_TEXT_RESET:
+				case KviMircCntrl::Reset:
 					uCurFore = KVI_LABEL_DEF_FORE;
 					uCurBack = KVI_LABEL_DEF_BACK;
 					bCurBold = false;
 					bCurUnderline = false;
 					++uIdx;
 				break;
-				case KVI_TEXT_COLOR:
+				case KviMircCntrl::Color:
 				{
 					++uIdx;
 					unsigned char fore;
 					unsigned char back;
 					uIdx = getUnicodeColorBytes(szText,uIdx,&fore,&back);
-					if(fore != KVI_NOCHANGE)
+					if(fore != KviMircCntrl::NoChange)
 					{
 						uCurFore = fore;
-						if(back != KVI_NOCHANGE)uCurBack = back;
+						if(back != KviMircCntrl::NoChange)
+							uCurBack = back;
 					} else {
 						// only a CTRL+K
 						uCurBack = KVI_LABEL_DEF_BACK;
@@ -268,7 +273,7 @@ namespace KviHtmlGenerator
 					}
 				}
 				break;
-				case KVI_TEXT_ICON:
+				case KviMircCntrl::Icon:
 				{
 					++uIdx;
 					if(bShowIcons)

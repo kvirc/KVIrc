@@ -71,7 +71,7 @@
 #include "KviFileUtils.h"
 #include "KviTimeUtils.h"
 #include "KviStringConversion.h"
-#include "KviUserIdentity.h"
+#include "KviUserIdentityManager.h"
 #include "KviIrcView.h"
 #include "KviEnvironment.h"
 #include "KviAnimatedPixmapCache.h"

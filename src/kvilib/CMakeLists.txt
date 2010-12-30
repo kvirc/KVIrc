@@ -105,6 +105,7 @@ SET(kvilib_SRCS
 	irc/KviNickServRule.cpp
 	irc/KviNickServRuleSet.cpp
 	irc/KviUserIdentity.cpp
+	irc/KviUserIdentityManager.cpp
 	net/KviDnsResolver.cpp
 	net/KviHttpRequest.cpp
 	net/KviNetUtils.cpp

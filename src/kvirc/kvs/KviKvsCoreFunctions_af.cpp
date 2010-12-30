@@ -369,7 +369,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KVSCF_pRetBuffer->setString(QString(QChar(KVI_TEXT_BOLD)));
+		KVSCF_pRetBuffer->setString(QString(QChar(KviMircCntrl::Bold)));
 		return true;
 	}
 

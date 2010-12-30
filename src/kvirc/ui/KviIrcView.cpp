@@ -343,15 +343,16 @@ static inline void delete_text_line(KviIrcViewLine * line,QHash<KviIrcViewLine*,
 	}
 	for(unsigned int i=0;i<line->uChunkCount;i++)
 	{
-		if((line->pChunks[i].type == KVI_TEXT_ESCAPE) || (line->pChunks[i].type == KVI_TEXT_ICON))
+		if((line->pChunks[i].type == KviMircCntrl::Escape) || (line->pChunks[i].type == KviMircCntrl::Icon))
 		{
-			if( (line->pChunks[i].type == KVI_TEXT_ICON) && (line->pChunks[i].szPayload!=line->pChunks[i].szSmileId) )
+			if((line->pChunks[i].type == KviMircCntrl::Icon) && (line->pChunks[i].szPayload!=line->pChunks[i].szSmileId))
 				KviMemory::free(line->pChunks[i].szSmileId);
 			KviMemory::free(line->pChunks[i].szPayload);
 		}
 	}
 	KviMemory::free(line->pChunks);                        //free attributes data
-	if(line->iBlockCount)KviMemory::free(line->pBlocks);
+	if(line->iBlockCount)
+		KviMemory::free(line->pBlocks);
 	delete line;
 }
 
@@ -1151,7 +1152,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		char defaultFore  = pCurTextLine->pBlocks->pChunk->colors.fore;
 		bool curBold      = false;
 		bool curUnderline = false;
-		char foreBeforeEscape= KVI_BLACK;
+		char foreBeforeEscape = KviMircCntrl::Black;
 		bool curLink      = false;
 		bool bacWasTransp = false;
 		char curFore      = defaultFore;
@@ -1174,11 +1175,11 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 				//normal block
 				switch(block->pChunk->type)
 				{
-					case KVI_TEXT_COLOR:
-						if(block->pChunk->colors.fore != KVI_NOCHANGE)
+					case KviMircCntrl::Color:
+						if(block->pChunk->colors.fore != KviMircCntrl::NoChange)
 						{
 							curFore = block->pChunk->colors.fore;
-							if(block->pChunk->colors.back != KVI_NOCHANGE)
+							if(block->pChunk->colors.back != KviMircCntrl::NoChange)
 								curBack = block->pChunk->colors.back;
 						} else {
 							/*
@@ -1189,47 +1190,47 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 							curBack = defaultBack;
 						}
 						break;
-					case KVI_TEXT_ESCAPE:
+					case KviMircCntrl::Escape:
 						foreBeforeEscape      = curFore;
-						if(block->pChunk->colors.fore != KVI_NOCHANGE)
+						if(block->pChunk->colors.fore != KviMircCntrl::NoChange)
 							curFore = block->pChunk->colors.fore;
 						if(m_pLastLinkUnderMouse == block)curLink = true;
 						break;
-					case KVI_TEXT_UNESCAPE:
+					case KviMircCntrl::UnEscape:
 						curLink            = false;
 						curFore            = foreBeforeEscape;
 						break;
-					case KVI_TEXT_BOLD:
+					case KviMircCntrl::Bold:
 						curBold            = !curBold;
 						break;
-					case KVI_TEXT_UNDERLINE:
+					case KviMircCntrl::Underline:
 						curUnderline       = !curUnderline;
 						break;
-					case KVI_TEXT_RESET:
+					case KviMircCntrl::Reset:
 						curBold            = false;
 						curUnderline       = false;
 						curFore            = defaultFore;
 						curBack            = defaultBack;
 						break;
-					case KVI_TEXT_REVERSE:
+					case KviMircCntrl::Reverse:
 						//this should be "reversed colors"
 						char aux       = curBack;
 						if(bacWasTransp == true)
 						{
-							curBack = KVI_TRANSPARENT;
+							curBack = KviMircCntrl::Transparent;
 						} else {
 							curBack = curFore;
 						}
-						if(aux == KVI_TRANSPARENT)
+						if(aux == KviMircCntrl::Transparent)
 						{
 							curFore = (char)KVI_DEF_BACK;
 						} else {
 							curFore = aux;
 						}
-						bacWasTransp = (aux == KVI_TRANSPARENT);
+						bacWasTransp = (aux == KviMircCntrl::Transparent);
 						break;
-					//case KVI_TEXT_ICON:
-					//case KVI_TEXT_UNICON:
+					//case KviMircCntrl::Icon:
+					//case KviMircCntrl::UnIcon:
 						// does nothing
 						//qDebug("Have a block with ICON/UNICON attr");
 						//break;
@@ -1304,7 +1305,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 
 #define DRAW_NORMAL_TEXT(_text_str,_text_idx,_text_len,_text_width) \
 	SET_PEN(curFore,block->pChunk ? block->pChunk->customFore : QColor()); \
-	if(curBack != KVI_TRANSPARENT){ \
+	if(curBack != KviMircCntrl::Transparent){ \
 		int theWdth = _text_width; \
 		if(theWdth < 0) \
 			theWdth=width()-(curLeftCoord+KVI_IRCVIEW_HORIZONTAL_BORDER+scrollbarWidth); \
@@ -1378,7 +1379,8 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 						break;
 					}
 				} else {
-					if(block->pChunk && block->pChunk->type == KVI_TEXT_ICON)goto no_selection_paint;
+					if(block->pChunk && block->pChunk->type == KviMircCntrl::Icon)
+						goto no_selection_paint;
 					int wdth = block->block_width;
 					if(wdth == 0)
 					{
@@ -1387,7 +1389,8 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 						{
 							// There is another block...
 							// Check if it is a wrap...
-							if(pCurTextLine->pBlocks[i+1].pChunk == 0)wdth = widgetWidth-(curLeftCoord+KVI_IRCVIEW_HORIZONTAL_BORDER);
+							if(pCurTextLine->pBlocks[i+1].pChunk == 0)
+								wdth = widgetWidth-(curLeftCoord+KVI_IRCVIEW_HORIZONTAL_BORDER);
 							// else simply a zero characters block
 						}
 						// else simply a zero characters block
@@ -1397,13 +1400,14 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 			} else {
 				//No selection ...go fast!
 no_selection_paint:
-				if(block->pChunk && block->pChunk->type == KVI_TEXT_ICON)
+				if(block->pChunk && block->pChunk->type == KviMircCntrl::Icon)
 				{
 					int wdth = block->block_width;
-					if(wdth < 0)wdth = widgetWidth - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER);
+					if(wdth < 0)
+						wdth = widgetWidth - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER);
 					int imageYPos = curBottomCoord - m_iRelativePixmapY;
 					//Set the mask if needed
-					if(curBack != KVI_TRANSPARENT && curBack < 16)
+					if(curBack != KviMircCntrl::Transparent && curBack < 16)
 					{
 						pa.fillRect(curLeftCoord,curBottomCoord - m_iFontLineSpacing + m_iFontDescent,wdth,m_iFontLineSpacing,KVI_OPTION_MIRCCOLOR((unsigned char)curBack));
 					}
@@ -1438,7 +1442,7 @@ no_selection_paint:
 
 					SET_PEN(curFore,block->pChunk ? block->pChunk->customFore : QColor());
 
-					if(curBack != KVI_TRANSPARENT && curBack < 16 )
+					if(curBack != KviMircCntrl::Transparent && curBack < 16 )
 					{
 						pa.fillRect(curLeftCoord,curBottomCoord - m_iFontLineSpacing + m_iFontDescent,wdth,m_iFontLineSpacing,KVI_OPTION_MIRCCOLOR((unsigned char)curBack));
 					}
@@ -1634,7 +1638,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 		int curBlockLen   = 0;
 		int curBlockWidth = 0;
 
-		if(ptr->pChunks[curAttrBlock].type == KVI_TEXT_ICON)
+		if(ptr->pChunks[curAttrBlock].type == KviMircCntrl::Icon)
 		{
 			curBlockWidth = m_iIconWidth;
 		} else {
@@ -1694,7 +1698,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 		if(curBlockLen == 0)
 		{
 			// ran up to the beginning of the block....
-			if(ptr->pChunks[curAttrBlock].type == KVI_TEXT_ICON)
+			if(ptr->pChunks[curAttrBlock].type == KviMircCntrl::Icon)
 			{
 				// FIXME what if the icon curBlockWidth is > maxWidth ? => endless loop
 				// This is an icon block: needs to be wrapped differently:
@@ -1792,7 +1796,7 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line,int bufIndex)
 	//line is between the first selected line and the last selected one
 	if(line->uIndex > init->uIndex && line->uIndex < end->uIndex)
 	{
-		if(line->pBlocks[bufIndex].pChunk && line->pBlocks[bufIndex].pChunk->type == KVI_TEXT_ICON)
+		if(line->pBlocks[bufIndex].pChunk && line->pBlocks[bufIndex].pChunk->type == KviMircCntrl::Icon)
 			m_pWrappedBlockSelectionInfo->selection_type = KVI_IRCVIEW_BLOCK_SELECTION_ICON;
 		else
 			m_pWrappedBlockSelectionInfo->selection_type = KVI_IRCVIEW_BLOCK_SELECTION_TOTAL;
@@ -1819,7 +1823,7 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line,int bufIndex)
 		if(line->pBlocks[bufIndex].block_start + line->pBlocks[bufIndex].block_len < initChar) return false;
 
 		//checks if this is an icon block
-		if(line->pBlocks[bufIndex].pChunk && line->pBlocks[bufIndex].pChunk->type == KVI_TEXT_ICON)
+		if(line->pBlocks[bufIndex].pChunk && line->pBlocks[bufIndex].pChunk->type == KviMircCntrl::Icon)
 		{
 			m_pWrappedBlockSelectionInfo->selection_type = KVI_IRCVIEW_BLOCK_SELECTION_ICON;
 			return true;
@@ -1904,7 +1908,7 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line,int bufIndex)
 			initChar=m_iSelectionEndCharIndex;
 		}
 		//icon chunk
-		if(line->pBlocks[bufIndex].pChunk && line->pBlocks[bufIndex].pChunk->type == KVI_TEXT_ICON)
+		if(line->pBlocks[bufIndex].pChunk && line->pBlocks[bufIndex].pChunk->type == KviMircCntrl::Icon)
 		{
 			m_pWrappedBlockSelectionInfo->selection_type = KVI_IRCVIEW_BLOCK_SELECTION_ICON;
 			return true;
@@ -1949,7 +1953,7 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line,int bufIndex)
 		}
 
 		//icon chunk
-		if(line->pBlocks[bufIndex].pChunk && line->pBlocks[bufIndex].pChunk->type == KVI_TEXT_ICON)
+		if(line->pBlocks[bufIndex].pChunk && line->pBlocks[bufIndex].pChunk->type == KviMircCntrl::Icon)
 		{
 			m_pWrappedBlockSelectionInfo->selection_type = KVI_IRCVIEW_BLOCK_SELECTION_ICON;
 			return true;
@@ -2550,14 +2554,14 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 						if(i >= l->iBlockCount) break;
 						//we try to save the position of the last "text escape" tag we find
 						if(l->pBlocks[i].pChunk)
-							if(l->pBlocks[i].pChunk->type == KVI_TEXT_ESCAPE)
+							if(l->pBlocks[i].pChunk->type == KviMircCntrl::Escape)
 							{
 								iLastEscapeBlock=i;
 								iLastEscapeBlockTop=iTop;
 							}
 						//we reset the position of the last "text escape" tag if we find a "unescape"
 						if(l->pBlocks[i].pChunk)
-							if(l->pBlocks[i].pChunk->type == KVI_TEXT_UNESCAPE) iLastEscapeBlock=-1;
+							if(l->pBlocks[i].pChunk->type == KviMircCntrl::UnEscape) iLastEscapeBlock=-1;
 
 						i++;
 					}
@@ -2587,14 +2591,14 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 						return 0;
 					//we try to save the position of the last "text escape" tag we find
 					if(l->pBlocks[i].pChunk)
-						if(l->pBlocks[i].pChunk->type == KVI_TEXT_ESCAPE)
+						if(l->pBlocks[i].pChunk->type == KviMircCntrl::Escape)
 						{
 							iLastEscapeBlock=i;
 							iLastEscapeBlockTop=iTop;
 						}
 					//we reset the position of the last "text escape" tag if we find a "unescape"
 					if(l->pBlocks[i].pChunk)
-						if(l->pBlocks[i].pChunk->type == KVI_TEXT_UNESCAPE) iLastEscapeBlock=-1;
+						if(l->pBlocks[i].pChunk->type == KviMircCntrl::UnEscape) iLastEscapeBlock=-1;
 					// if the block width is > 0, update iLeft
 					if(l->pBlocks[i].block_width > 0)
 					{
@@ -2640,7 +2644,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 							for(k = iLastEscapeBlock;; k++)
 							{
 								if(l->pBlocks[k].pChunk)
-									if(l->pBlocks[k].pChunk->type != KVI_TEXT_UNESCAPE)
+									if(l->pBlocks[k].pChunk->type != KviMircCntrl::UnEscape)
 										iRightBorder+=l->pBlocks[k].block_width;
 									else
 										break;
@@ -2671,23 +2675,23 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 								{
 									if(l->pBlocks[iEndOfLInk].pChunk)
 									{
-										if(l->pBlocks[iEndOfLInk].pChunk->type != KVI_TEXT_UNESCAPE)
+										if(l->pBlocks[iEndOfLInk].pChunk->type != KviMircCntrl::UnEscape)
 										{
 											switch(l->pBlocks[iEndOfLInk].pChunk->type)
 											{
-												case KVI_TEXT_BOLD:
-												case KVI_TEXT_UNDERLINE:
-												case KVI_TEXT_REVERSE:
-												case KVI_TEXT_RESET:
+												case KviMircCntrl::Bold:
+												case KviMircCntrl::Underline:
+												case KviMircCntrl::Reverse:
+												case KviMircCntrl::Reset:
 													szLink.append(QChar(l->pBlocks[iEndOfLInk].pChunk->type));
 												break;
-												case KVI_TEXT_COLOR:
-													szLink.append(QChar(KVI_TEXT_COLOR));
-													if(l->pBlocks[iEndOfLInk].pChunk->colors.fore != KVI_NOCHANGE)
+												case KviMircCntrl::Color:
+													szLink.append(QChar(KviMircCntrl::Color));
+													if(l->pBlocks[iEndOfLInk].pChunk->colors.fore != KviMircCntrl::NoChange)
 													{
 														szLink.append(QString("%1").arg((int)(l->pBlocks[iEndOfLInk].pChunk->colors.fore)));
 													}
-													if(l->pBlocks[iEndOfLInk].pChunk->colors.back != KVI_NOCHANGE)
+													if(l->pBlocks[iEndOfLInk].pChunk->colors.back != KviMircCntrl::NoChange)
 													{
 														szLink.append(QChar(','));
 														szLink.append(QString("%1").arg((int)(l->pBlocks[iEndOfLInk].pChunk->colors.back)));
@@ -2714,7 +2718,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 							}
 							return &(l->pBlocks[iLastEscapeBlock]);
 						}
-						if(l->pBlocks[i].pChunk->type == KVI_TEXT_ICON)
+						if(l->pBlocks[i].pChunk->type == KviMircCntrl::Icon)
 						{
 							if(pRect)
 							{

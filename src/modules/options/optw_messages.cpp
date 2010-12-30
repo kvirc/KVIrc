@@ -366,7 +366,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	m_pBackListWidgetDelegate = new KviMessageColorListWidgetItemDelegate(m_pBackListWidget);
 	m_pBackListWidget->setItemDelegate(m_pBackListWidgetDelegate);
 
-	m_pBackItems[16] = new KviMessageColorListWidgetItem(m_pBackListWidget,KVI_TRANSPARENT);
+	m_pBackItems[16] = new KviMessageColorListWidgetItem(m_pBackListWidget,KviMircCntrl::Transparent);
 	for(i=0;i<16;i++)
 	{
 		m_pBackItems[i] = new KviMessageColorListWidgetItem(m_pBackListWidget,i);
@@ -630,7 +630,7 @@ void KviMessageColorsOptionsWidget::load()
 
 			tmp.sprintf("Back%d",it->optionId());
 			int back = cfg.readIntEntry(tmp,it->msgType()->back());
-			if(back < 0 || back > 15)back = KVI_TRANSPARENT;
+			if(back < 0 || back > 15)back = KviMircCntrl::Transparent;
 			it->msgType()->setBack(back);
 
 			tmp.sprintf("Icon%d",it->optionId());

@@ -283,7 +283,7 @@ void KviLinksWindow::endOfLinks()
 	if(root)
 	{
 		m_szRootServer = root->text(0);
-		output(KVI_OUT_LINKS,__tr2qs("%c%cLinks for %Q"),KVI_TEXT_BOLD,KVI_TEXT_UNDERLINE,&m_szRootServer);
+		output(KVI_OUT_LINKS,__tr2qs("%c%cLinks for %Q"),KviMircCntrl::Bold,KviMircCntrl::Underline,&m_szRootServer);
 		outputNoFmt(KVI_OUT_LINKS,"======================");
 		QString tmpo = wildServers ? __tr2qs("Total hosts listed") : __tr2qs("Total hosts in the network");
 		output(KVI_OUT_LINKS,"%Q: %d",&tmpo,totalHosts);

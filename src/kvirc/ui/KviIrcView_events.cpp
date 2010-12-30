@@ -421,20 +421,20 @@ void KviIrcView::addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelect
 {
 	switch(pC->type)
 	{
-		case KVI_TEXT_BOLD:
-		case KVI_TEXT_UNDERLINE:
-		case KVI_TEXT_REVERSE:
-		case KVI_TEXT_RESET:
+		case KviMircCntrl::Bold:
+		case KviMircCntrl::Underline:
+		case KviMircCntrl::Reverse:
+		case KviMircCntrl::Reset:
 			szSelectionText.append(QChar(pC->type));
 		break;
-		case KVI_TEXT_COLOR:
+		case KviMircCntrl::Color:
 			szSelectionText.append(QChar(pC->type));
-			if((pC->colors.fore != KVI_NOCHANGE) && (pC->colors.fore != KVI_TRANSPARENT))
+			if((pC->colors.fore != KviMircCntrl::NoChange) && (pC->colors.fore != KviMircCntrl::Transparent))
 			{
 				if(pC->colors.fore > 9)szSelectionText.append(QChar('1'));
 				szSelectionText.append(QChar((pC->colors.fore%10)+'0'));
 			}
-			if((pC->colors.back != KVI_NOCHANGE) && (pC->colors.back != KVI_TRANSPARENT) )
+			if((pC->colors.back != KviMircCntrl::NoChange) && (pC->colors.back != KviMircCntrl::Transparent) )
 			{
 				szSelectionText.append(QChar(','));
 				if(pC->colors.back > 9)szSelectionText.append(QChar('1'));

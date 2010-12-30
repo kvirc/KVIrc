@@ -56,19 +56,19 @@ KVILIB_API const char * getColorBytes(const char *data_ptr,unsigned char *byte_1
 					data_ptr++;
 				} else {
 					//Senseless return
-					(*byte_2)=KVI_NOCHANGE;
+					(*byte_2)=KviMircCntrl::NoChange;
 					return data_ptr;
 				}
 			}
 		} else {
 			//Senseless character control code OK and return
-			(*byte_2)=KVI_NOCHANGE;
+			(*byte_2)=KviMircCntrl::NoChange;
 			return data_ptr;
 		}
 	} else {
 		//Senseless character : only a CTRL+K code
-		(*byte_1)=KVI_NOCHANGE;
-		(*byte_2)=KVI_NOCHANGE;
+		(*byte_1)=KviMircCntrl::NoChange;
+		(*byte_2)=KviMircCntrl::NoChange;
 		return data_ptr;
 	}
 
@@ -84,7 +84,7 @@ KVILIB_API const char * getColorBytes(const char *data_ptr,unsigned char *byte_1
 		}
 		return data_ptr;
 	} else {
-		(*byte_2)=KVI_NOCHANGE;
+		(*byte_2)=KviMircCntrl::NoChange;
 		return data_ptr-1;
 	}
 }
@@ -121,19 +121,19 @@ KVILIB_API const kvi_wchar_t * getColorBytesW(const kvi_wchar_t *data_ptr,unsign
 					data_ptr++;
 				} else {
 					//Senseless return
-					(*byte_2)=KVI_NOCHANGE;
+					(*byte_2)=KviMircCntrl::NoChange;
 					return data_ptr;
 				}
 			}
 		} else {
 			//Senseless character control code OK and return
-			(*byte_2)=KVI_NOCHANGE;
+			(*byte_2)=KviMircCntrl::NoChange;
 			return data_ptr;
 		}
 	} else {
 		//Senseless character : only a CTRL+K code
-		(*byte_1)=KVI_NOCHANGE;
-		(*byte_2)=KVI_NOCHANGE;
+		(*byte_1)=KviMircCntrl::NoChange;
+		(*byte_2)=KviMircCntrl::NoChange;
 		return data_ptr;
 	}
 
@@ -150,7 +150,7 @@ KVILIB_API const kvi_wchar_t * getColorBytesW(const kvi_wchar_t *data_ptr,unsign
 		}
 		return data_ptr;
 	} else {
-		(*byte_2)=KVI_NOCHANGE;
+		(*byte_2)=KviMircCntrl::NoChange;
 		return data_ptr-1;
 	}
 }
@@ -164,8 +164,8 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 
 	if(charIdx >= (unsigned int) szData.length())
 	{
-		(*byte_1)=KVI_NOCHANGE;
-		(*byte_2)=KVI_NOCHANGE;
+		(*byte_1)=KviMircCntrl::NoChange;
+		(*byte_2)=KviMircCntrl::NoChange;
 		return charIdx;
 	}
 
@@ -175,8 +175,8 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 	if(((c < '0') || (c > '9')))
 	{
 		// senseless : only a CTRL+K code
-		(*byte_1)=KVI_NOCHANGE;
-		(*byte_2)=KVI_NOCHANGE;
+		(*byte_1)=KviMircCntrl::NoChange;
+		(*byte_2)=KviMircCntrl::NoChange;
 		return charIdx;
 	}
 
@@ -185,7 +185,7 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 	charIdx++;
 	if(charIdx >= (unsigned int) szData.length())
 	{
-		(*byte_2)=KVI_NOCHANGE;
+		(*byte_2)=KviMircCntrl::NoChange;
 		return charIdx;
 	}
 
@@ -193,7 +193,7 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 
 	if(((c < '0') || (c > '9')) && (c != ','))
 	{
-		(*byte_2)=KVI_NOCHANGE;
+		(*byte_2)=KviMircCntrl::NoChange;
 		return charIdx;
 	}
 
@@ -204,7 +204,7 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 		charIdx++;
 		if(charIdx >= (unsigned int) szData.length())
 		{
-			(*byte_2)=KVI_NOCHANGE;
+			(*byte_2)=KviMircCntrl::NoChange;
 			return charIdx;
 		}
 		c = szData[(int)charIdx].unicode();
@@ -215,18 +215,18 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 		charIdx++;
 		if(charIdx >= (unsigned int) szData.length())
 		{
-			(*byte_2)=KVI_NOCHANGE;
+			(*byte_2)=KviMircCntrl::NoChange;
 			return charIdx;
 		}
 		c = szData[(int)charIdx].unicode();
 	} else {
-		(*byte_2)=KVI_NOCHANGE;
+		(*byte_2)=KviMircCntrl::NoChange;
 		return charIdx;
 	}
 
 	if((c < '0') || (c > '9'))
 	{
-		(*byte_2)=KVI_NOCHANGE;
+		(*byte_2)=KviMircCntrl::NoChange;
 		if(szData[(int)(charIdx-1)].unicode()==',')
 			return charIdx-1;
 		else
@@ -264,25 +264,25 @@ namespace KviMircCntrl
 		{
 			switch(szData[i].unicode())
 			{
-				case KVI_TEXT_UNDERLINE:
-				case KVI_TEXT_BOLD:
-				case KVI_TEXT_RESET:
-				case KVI_TEXT_REVERSE:
-				case KVI_TEXT_CRYPTESCAPE:
-				case KVI_TEXT_CTCP:
+				case KviMircCntrl::Underline:
+				case KviMircCntrl::Bold:
+				case KviMircCntrl::Reset:
+				case KviMircCntrl::Reverse:
+				case KviMircCntrl::CryptEscape:
+				case KviMircCntrl::CTCP:
 					if(i != begin)
 						ret += szData.mid(begin,i - begin);
 					i++;
 					begin = i;
 				break;
-				case KVI_TEXT_COLOR:
+				case KviMircCntrl::Color:
 					if(i != begin)
 						ret += szData.mid(begin,i - begin);
 					i++;
 					i = getUnicodeColorBytes(szData,i,&b1,&b2);
 					begin = i;
 				break;
-				case KVI_TEXT_ICON:
+				case KviMircCntrl::Icon:
 					if(i != begin)
 						ret += szData.mid(begin,i - begin);
 					i++;

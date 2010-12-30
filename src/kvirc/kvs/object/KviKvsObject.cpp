@@ -1153,7 +1153,7 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 				if(bArray)
 					KviQString::sprintf(szOut,"%Q, %Q",&szName,&szType);
 				else {
-					KviQString::sprintf(szOut,__tr2qs_ctx("Property: %c%Q%c, type %Q","kvs"),KVI_TEXT_BOLD,&szName,KVI_TEXT_BOLD,&szType);
+					KviQString::sprintf(szOut,__tr2qs_ctx("Property: %c%Q%c, type %Q","kvs"),KviMircCntrl::Bold,&szName,KviMircCntrl::Bold,&szType);
 					szOut.prepend(" ");
 				}
 

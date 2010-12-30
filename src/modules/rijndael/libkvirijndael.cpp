@@ -206,7 +206,7 @@
 				return KviCryptEngine::EncryptError;
 			}
 		}
-		outBuffer.prepend(KVI_TEXT_CRYPTESCAPE);
+		outBuffer.prepend(KviMircCntrl::CryptEscape);
 		return KviCryptEngine::Encrypted;
 	}
 
@@ -218,7 +218,7 @@
 			return KviCryptEngine::DecryptError;
 		}
 
-		if(*inBuffer != KVI_TEXT_CRYPTESCAPE)
+		if(*inBuffer != KviMircCntrl::CryptEscape)
 		{
 			plainText = inBuffer;
 			return KviCryptEngine::DecryptOkWasPlainText;

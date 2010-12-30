@@ -1329,10 +1329,10 @@ void KviIrcConnection::loginToIrcServer()
 	{
 		QString szTags;
 		szTags.sprintf("%c%d,%d%c",
-				KVI_TEXT_COLOR,
+				KviMircCntrl::Color,
 				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground),
 				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground),
-				KVI_TEXT_RESET);
+				KviMircCntrl::Reset);
 		szReal.prepend(KviQString::toUtf8(szTags));
 	}
 
@@ -1340,9 +1340,9 @@ void KviIrcConnection::loginToIrcServer()
 	{
 		QString szTags;
 		szTags.sprintf("%c%d%c",
-			       KVI_TEXT_COLOR,
+			       KviMircCntrl::Color,
 			       iGenderAvatarTag,
-			       KVI_TEXT_RESET);
+			       KviMircCntrl::Reset);
 		szReal.prepend(KviQString::toUtf8(szTags));
 	}
 

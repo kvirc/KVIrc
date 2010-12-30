@@ -753,7 +753,7 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("background",KVS_PT_UINT,KVS_PF_OPTIONAL,iBack)
 		KVSCF_PARAMETERS_END
 
-		QString szRet = QChar(KVI_TEXT_COLOR);
+		QString szRet = QChar(KviMircCntrl::Color);
 		if(KVSCF_pParams->count() > 0)
 		{
 			KviQString::appendFormatted(szRet,"%u",iFore);

@@ -152,7 +152,7 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 
 static void options_kvs_module_print_pages(KviKvsModuleCommandCall * c,KviOptionsWidgetInstanceEntry * e,const char * prefix)
 {
-	c->window()->output(KVI_OUT_SYSTEMMESSAGE,"%s%c%s%c  (%Q)",prefix,KVI_TEXT_BOLD,e->szClassName,KVI_TEXT_BOLD,&(e->szName));
+	c->window()->output(KVI_OUT_SYSTEMMESSAGE,"%s%c%s%c  (%Q)",prefix,KviMircCntrl::Bold,e->szClassName,KviMircCntrl::Bold,&(e->szName));
 	KviCString szPre = prefix;
 	szPre.append("  ");
 	if(e->pChildList)

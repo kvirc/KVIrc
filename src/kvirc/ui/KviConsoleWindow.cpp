@@ -778,8 +778,8 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 				szNick.prepend(KviNickColors::getSmartColor(sum));
 			}
 		}
-		szNick.prepend(KVI_TEXT_COLOR);
-		szNick.append(KVI_TEXT_COLOR);
+		szNick.prepend(KviMircCntrl::Color);
+		szNick.append(KviMircCntrl::Color);
 	}
 /*	if(KVI_OPTION_BOOL(KviOption_boolUseUserListColorsAsNickColors) && bIsChan)
 	{
@@ -818,8 +818,8 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 	}*/
 	if(KVI_OPTION_BOOL(KviOption_boolBoldedNicks))
 	{
-		szNick.prepend(KVI_TEXT_BOLD);
-		szNick.append(KVI_TEXT_BOLD);
+		szNick.prepend(KviMircCntrl::Bold);
+		szNick.append(KviMircCntrl::Bold);
 	}
 
 	QString szMessage;
@@ -1081,7 +1081,7 @@ void KviConsoleWindow::applyOptions()
 	if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
 	{
 		int back = KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground);
-		if(back==KVI_TRANSPARENT)
+		if(back == KviMircCntrl::Transparent)
 		{
 			KviQString::sprintf(m_szOwnSmartColor,"%d", \
 				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground));

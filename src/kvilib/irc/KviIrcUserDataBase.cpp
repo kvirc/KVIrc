@@ -56,7 +56,7 @@ void KviIrcUserEntry::setRealName(const QString &rn)
 	m_szRealName = rn.trimmed();
 	if(m_szRealName.length()>=3)
 	{
-		if( (m_szRealName[0].unicode()==KVI_TEXT_COLOR) && (m_szRealName[2].unicode()==KVI_TEXT_RESET) )
+		if((m_szRealName[0].unicode() == KviMircCntrl::Color) && (m_szRealName[2].unicode() == KviMircCntrl::Reset))
 		{
 			// hum.. encoded as hidden color code eh ? publish is somewhere, so others might implement this...
 			// for backwards compatibily, 3=bot
@@ -84,12 +84,12 @@ void KviIrcUserEntry::setRealName(const QString &rn)
 	 */
 	if(m_szRealName.length()>=5)
 	{
-		if((m_szRealName[0].unicode()==KVI_TEXT_COLOR))
+		if((m_szRealName[0].unicode() == KviMircCntrl::Color))
 		{
 			unsigned char iFore, iBack;
 			int iPos=getUnicodeColorBytes(m_szRealName, 1, &iFore, &iBack);
 			// extract smart nick color code
-			if(iPos > 1 && m_szRealName[iPos]==KVI_TEXT_RESET)
+			if(iPos > 1 && m_szRealName[iPos] == KviMircCntrl::Reset)
 			{
 				m_szRealName.truncate(iPos);
 				int color = KviNickColors::getSmartColorIntByMircColor(iFore, iBack);

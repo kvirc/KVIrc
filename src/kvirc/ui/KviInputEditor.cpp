@@ -490,25 +490,25 @@ QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
 {
 	switch(uControlCode)
 	{
-		case KVI_TEXT_COLOR:
+		case KviMircCntrl::Color:
 			return QChar('K');
 			break;
-		case KVI_TEXT_BOLD:
+		case KviMircCntrl::Bold:
 			return QChar('B');
 			break;
-		case KVI_TEXT_RESET:
+		case KviMircCntrl::Reset:
 			return QChar('O');
 			break;
-		case KVI_TEXT_REVERSE:
+		case KviMircCntrl::Reverse:
 			return QChar('R');
 			break;
-		case KVI_TEXT_UNDERLINE:
+		case KviMircCntrl::Underline:
 			return QChar('U');
 			break;
-		case KVI_TEXT_CRYPTESCAPE:
+		case KviMircCntrl::CryptEscape:
 			return QChar('P');
 			break;
-		case KVI_TEXT_ICON:
+		case KviMircCntrl::Icon:
 			return QChar('I');
 			break;
 		default:
@@ -525,13 +525,13 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 	QChar c = m_szTextBuffer[iIdx];
 
 	if((c.unicode() > 32) ||
-		((c != QChar(KVI_TEXT_COLOR)) &&
-		(c != QChar(KVI_TEXT_BOLD)) &&
-		(c != QChar(KVI_TEXT_UNDERLINE)) &&
-		(c != QChar(KVI_TEXT_RESET)) &&
-		(c != QChar(KVI_TEXT_REVERSE)) &&
-		(c != QChar(KVI_TEXT_CRYPTESCAPE)) &&
-		(c != QChar(KVI_TEXT_ICON))))
+		((c != QChar(KviMircCntrl::Color)) &&
+		(c != QChar(KviMircCntrl::Bold)) &&
+		(c != QChar(KviMircCntrl::Underline)) &&
+		(c != QChar(KviMircCntrl::Reset)) &&
+		(c != QChar(KviMircCntrl::Reverse)) &&
+		(c != QChar(KviMircCntrl::CryptEscape)) &&
+		(c != QChar(KviMircCntrl::Icon))))
 	{
 		m_bControlBlock = false;
 		//Not a control code...run..
@@ -539,13 +539,13 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 		{
 			c = m_szTextBuffer[iIdx];
 			if((c.unicode() > 32) ||
-				((c != QChar(KVI_TEXT_COLOR)) &&
-				(c != QChar(KVI_TEXT_BOLD)) &&
-				(c != QChar(KVI_TEXT_UNDERLINE)) &&
-				(c != QChar(KVI_TEXT_RESET)) &&
-				(c != QChar(KVI_TEXT_REVERSE)) &&
-				(c != QChar(KVI_TEXT_CRYPTESCAPE)) &&
-				(c != QChar(KVI_TEXT_ICON))))
+				((c != QChar(KviMircCntrl::Color)) &&
+				(c != QChar(KviMircCntrl::Bold)) &&
+				(c != QChar(KviMircCntrl::Underline)) &&
+				(c != QChar(KviMircCntrl::Reset)) &&
+				(c != QChar(KviMircCntrl::Reverse)) &&
+				(c != QChar(KviMircCntrl::CryptEscape)) &&
+				(c != QChar(KviMircCntrl::Icon))))
 			{
 				m_iBlockLen++;
 				int iXxx = (c.unicode() < 256) ? KviInputEditor::g_iInputFontCharWidth[c.unicode()] : fm->width(c);
@@ -562,30 +562,30 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 		//Control code
 		switch(c.unicode())
 		{
-			case KVI_TEXT_BOLD:
+			case KviMircCntrl::Bold:
 				m_bCurBold = ! m_bCurBold;
 				break;
-			case KVI_TEXT_UNDERLINE:
+			case KviMircCntrl::Underline:
 				m_bCurUnderline = ! m_bCurUnderline;
 				break;
-			case KVI_TEXT_RESET:
+			case KviMircCntrl::Reset:
 				m_iCurFore = KVI_INPUT_DEF_FORE;
 				m_iCurBack = KVI_INPUT_DEF_BACK;
 				m_bCurBold = false;
 				m_bCurUnderline = false;
 				break;
-			case KVI_TEXT_REVERSE:
+			case KviMircCntrl::Reverse:
 			{
 				char cAuxClr = m_iCurFore;
 				m_iCurFore  = m_iCurBack;
 				m_iCurBack  = cAuxClr;
 			}
 			break;
-			case KVI_TEXT_CRYPTESCAPE:
-			case KVI_TEXT_ICON:
+			case KviMircCntrl::CryptEscape:
+			case KviMircCntrl::Icon:
 				// makes a single block
 				break;
-			case KVI_TEXT_COLOR:
+			case KviMircCntrl::Color:
 			{
 				iIdx++;
 				if(iIdx >= ((int)(m_szTextBuffer.length())))
@@ -594,10 +594,10 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, 
 				unsigned char uFore;
 				unsigned char uBack;
 				iIdx = getUnicodeColorBytes(m_szTextBuffer,iIdx,&uFore,&uBack);
-				if(uFore != KVI_NOCHANGE)
+				if(uFore != KviMircCntrl::NoChange)
 				{
 					m_iCurFore = uFore;
-					if(uBack != KVI_NOCHANGE)
+					if(uBack != KviMircCntrl::NoChange)
 						m_iCurBack = uBack;
 				} else {
 					// ONLY a CTRL+K
@@ -624,26 +624,26 @@ void KviInputEditor::runUpToTheFirstVisibleChar()
 		{
 			switch(uChar)
 			{
-				case KVI_TEXT_BOLD:
+				case KviMircCntrl::Bold:
 					m_bCurBold = ! m_bCurBold;
 					break;
-				case KVI_TEXT_UNDERLINE:
+				case KviMircCntrl::Underline:
 					m_bCurUnderline = ! m_bCurUnderline;
 					break;
-				case KVI_TEXT_RESET:
+				case KviMircCntrl::Reset:
 					m_iCurFore = KVI_INPUT_DEF_FORE;
 					m_iCurBack = KVI_INPUT_DEF_BACK;
 					m_bCurBold = false;
 					m_bCurUnderline = false;
 					break;
-				case KVI_TEXT_REVERSE:
+				case KviMircCntrl::Reverse:
 				{
 					char cAuxClr = m_iCurFore;
 					m_iCurFore = m_iCurBack;
 					m_iCurBack = cAuxClr;
 				}
 				break;
-				case KVI_TEXT_COLOR:
+				case KviMircCntrl::Color:
 				{
 					iIdx++;
 					if(iIdx >= ((int)(m_szTextBuffer.length())))return;
@@ -651,9 +651,9 @@ void KviInputEditor::runUpToTheFirstVisibleChar()
 					unsigned char uBack;
 					iIdx = getUnicodeColorBytes(m_szTextBuffer,iIdx,&uFore,&uBack);
 					iIdx--;
-					if(uFore != KVI_NOCHANGE) m_iCurFore = uFore;
+					if(uFore != KviMircCntrl::NoChange) m_iCurFore = uFore;
 					else m_iCurFore = KVI_INPUT_DEF_FORE;
-					if(uBack != KVI_NOCHANGE) m_iCurBack = uBack;
+					if(uBack != KviMircCntrl::NoChange) m_iCurBack = uBack;
 					else m_iCurBack = KVI_INPUT_DEF_BACK;
 				}
 				break;
@@ -853,7 +853,7 @@ void KviInputEditor::iconPopupActivated(int iId)
 		QString szText = m_pIconMenu->text(iId);
 		if(!szText.isEmpty())
 		{
-			szText.prepend(KVI_TEXT_ICON);
+			szText.prepend(KviMircCntrl::Icon);
 			szText.append(' ');
 			insertText(szText);
 		}
@@ -964,7 +964,7 @@ void KviInputEditor::insertText(const QString & szTxt)
 			if(iIdx != -1)
 			{
 				szBlock = szText.left(iIdx);
-				//else szBlock = QChar(KVI_TEXT_RESET);
+				//else szBlock = QChar(KviMircCntrl::Reset);
 				szText.remove(0,iIdx+1);
 			} else {
 				szBlock = szText;
@@ -2181,34 +2181,34 @@ void KviInputEditor::nextWordSelection()
 
 void KviInputEditor::insertBold()
 {
-	if(!m_bReadOnly) insertChar(KVI_TEXT_BOLD);
+	if(!m_bReadOnly) insertChar(KviMircCntrl::Bold);
 }
 
 void KviInputEditor::insertReset()
 {
-	if(!m_bReadOnly) insertChar(KVI_TEXT_RESET);
+	if(!m_bReadOnly) insertChar(KviMircCntrl::Reset);
 }
 
 void KviInputEditor::insertUnderline()
 {
-	if(!m_bReadOnly) insertChar(KVI_TEXT_UNDERLINE);
+	if(!m_bReadOnly) insertChar(KviMircCntrl::Underline);
 }
 
 void KviInputEditor::insertReverse()
 {
-	if(!m_bReadOnly) insertChar(KVI_TEXT_REVERSE);
+	if(!m_bReadOnly) insertChar(KviMircCntrl::Reverse);
 }
 
 void KviInputEditor::insertPlainText()
 {
-	if(!m_bReadOnly) insertChar(KVI_TEXT_CRYPTESCAPE); // DO NOT CRYPT THIS STUFF
+	if(!m_bReadOnly) insertChar(KviMircCntrl::CryptEscape); // DO NOT CRYPT THIS STUFF
 }
 
 void KviInputEditor::insertIcon()
 {
 	if(!m_bReadOnly)
 	{
-		insertChar(KVI_TEXT_ICON); // THE NEXT WORD IS AN ICON NAME
+		insertChar(KviMircCntrl::Icon); // THE NEXT WORD IS AN ICON NAME
 		int iXPos = xPositionFromCharIndex(m_iCursorPosition);
 		if(iXPos > 24)
 			iXPos-=24;
@@ -2226,7 +2226,7 @@ void KviInputEditor::insertColor()
 {
 	if(!m_bReadOnly)
 	{
-		insertChar(KVI_TEXT_COLOR);
+		insertChar(KviMircCntrl::Color);
 		int xPos = xPositionFromCharIndex(m_iCursorPosition);
 		if(xPos > 24)xPos-=24;
 		if(!g_pColorWindow)g_pColorWindow = new KviColorWindow();

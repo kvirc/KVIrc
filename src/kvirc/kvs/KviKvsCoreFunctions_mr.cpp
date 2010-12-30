@@ -399,7 +399,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KVSCF_pRetBuffer->setString(QString(QChar(KVI_TEXT_RESET)));
+		KVSCF_pRetBuffer->setString(QString(QChar(KviMircCntrl::Reset)));
 		return true;
 	}
 
@@ -535,7 +535,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KVSCF_pRetBuffer->setString(QString(QChar(KVI_TEXT_REVERSE)));
+		KVSCF_pRetBuffer->setString(QString(QChar(KviMircCntrl::Reverse)));
 		return true;
 	}
 

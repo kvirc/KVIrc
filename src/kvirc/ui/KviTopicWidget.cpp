@@ -193,12 +193,12 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 		unsigned int start = idx;
 
 		while((idx < (unsigned int)text.length()) &&
-				(c != KVI_TEXT_COLOR) &&
-				(c != KVI_TEXT_BOLD) &&
-				(c != KVI_TEXT_UNDERLINE) &&
-				(c != KVI_TEXT_REVERSE) &&
-				(c != KVI_TEXT_RESET) &&
-				(c != KVI_TEXT_ICON)
+				(c != KviMircCntrl::Color) &&
+				(c != KviMircCntrl::Bold) &&
+				(c != KviMircCntrl::Underline) &&
+				(c != KviMircCntrl::Reverse) &&
+				(c != KviMircCntrl::Reset) &&
+				(c != KviMircCntrl::Icon)
 			)
 		{
 			idx++;
@@ -250,9 +250,9 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 
 		switch(c)
 		{
-			case KVI_TEXT_BOLD: curBold = !curBold; ++idx; break;
-			case KVI_TEXT_UNDERLINE: curUnderline = !curUnderline; ++idx; break;
-			case KVI_TEXT_REVERSE:
+			case KviMircCntrl::Bold: curBold = !curBold; ++idx; break;
+			case KviMircCntrl::Underline: curUnderline = !curUnderline; ++idx; break;
+			case KviMircCntrl::Reverse:
 				{
 					char auxBack = curBack;
 					curBack = curFore;
@@ -260,23 +260,24 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 				}
 				++idx;
 			break;
-			case KVI_TEXT_RESET:
+			case KviMircCntrl::Reset:
 				curFore = KVI_LABEL_DEF_FORE;
 				curBack = KVI_LABEL_DEF_BACK;
 				curBold = false;
 				curUnderline = false;
 				++idx;
 			break;
-			case KVI_TEXT_COLOR:
+			case KviMircCntrl::Color:
 			{
 				++idx;
 				unsigned char fore;
 				unsigned char back;
 				idx = getUnicodeColorBytes(text,idx,&fore,&back);
-				if(fore != KVI_NOCHANGE)
+				if(fore != KviMircCntrl::NoChange)
 				{
 					curFore = fore;
-					if(back != KVI_NOCHANGE)curBack = back;
+					if(back != KviMircCntrl::NoChange)
+						curBack = back;
 				} else {
 					// only a CTRL+K
 					curBack = KVI_LABEL_DEF_BACK;
@@ -284,7 +285,7 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 				}
 			}
 			break;
-			case KVI_TEXT_ICON:
+			case KviMircCntrl::Icon:
 			{
 				++idx;
 
@@ -671,22 +672,22 @@ QChar KviTopicWidget::getSubstituteChar(unsigned short control_code)
 {
 	switch(control_code)
 	{
-		case KVI_TEXT_COLOR:
+		case KviMircCntrl::Color:
 			return QChar('K');
 			break;
-		case KVI_TEXT_BOLD:
+		case KviMircCntrl::Bold:
 			return QChar('B');
 			break;
-		case KVI_TEXT_RESET:
+		case KviMircCntrl::Reset:
 			return QChar('O');
 			break;
-		case KVI_TEXT_REVERSE:
+		case KviMircCntrl::Reverse:
 			return QChar('R');
 			break;
-		case KVI_TEXT_UNDERLINE:
+		case KviMircCntrl::Underline:
 			return QChar('U');
 			break;
-		case KVI_TEXT_ICON:
+		case KviMircCntrl::Icon:
 			return QChar('I');
 			break;
 		default:

@@ -59,9 +59,9 @@ static bool action_kvs_cmd_list(KviKvsModuleCommandCall * c)
 	while(KviAction * a = it.current())
 	{
 		if(a->isKviUserActionNeverOverrideThis())
-			pOut->output(KVI_OUT_VERBOSE,__tr2qs("%cCore action: %Q"),KVI_TEXT_BOLD,&(a->name()));
+			pOut->output(KVI_OUT_VERBOSE,__tr2qs("%cCore action: %Q"),KviMircCntrl::Bold,&(a->name()));
 		else
-			pOut->output(KVI_OUT_VERBOSE,__tr2qs("%cUser action: %Q"),KVI_TEXT_BOLD,&(a->name()));
+			pOut->output(KVI_OUT_VERBOSE,__tr2qs("%cUser action: %Q"),KviMircCntrl::Bold,&(a->name()));
 		pOut->output(KVI_OUT_VERBOSE,__tr2qs("Label: %Q"),&(a->visibleName()));
 		pOut->output(KVI_OUT_VERBOSE,__tr2qs("Category: %Q"),&(a->category()->visibleName()));
 		pOut->output(KVI_OUT_VERBOSE,__tr2qs("Description: %Q"),&(a->description()));

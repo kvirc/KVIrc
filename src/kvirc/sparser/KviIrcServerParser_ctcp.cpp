@@ -1037,7 +1037,7 @@ void KviIrcServerParser::echoCtcpRequest(KviCtcpMessage *msg)
 			if(!KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCTCPFlood,pOut,msg->pSource->nick(),msg->pSource->user(),msg->pSource->host(),msg->szTarget,msg->szTag,szData))
 				pOut->output(KVI_OUT_CTCPREQUESTFLOOD,
 					__tr2qs("%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignored (flood limit exceeded)"),
-					&szWhat,&szTag,KVI_TEXT_RESET,&(msg->pSource->nick()),
+					&szWhat,&szTag,KviMircCntrl::Reset,&(msg->pSource->nick()),
 					&(msg->pSource->user()),&(msg->pSource->host()),&szRequest);
 		} else {
 			QString szAction = msg->bUnknown ? __tr2qs("ignored (unrecognized)") :
@@ -1046,7 +1046,7 @@ void KviIrcServerParser::echoCtcpRequest(KviCtcpMessage *msg)
 				msg->bUnknown ? KVI_OUT_CTCPREQUESTUNKNOWN :
 					(msg->bIgnored ? KVI_OUT_CTCPREQUESTIGNORED : KVI_OUT_CTCPREQUESTREPLIED),
 				__tr2qs("%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"),
-				&szWhat,&szTag,KVI_TEXT_RESET,&(msg->pSource->nick()),
+				&szWhat,&szTag,KviMircCntrl::Reset,&(msg->pSource->nick()),
 				&(msg->pSource->user()),&(msg->pSource->host()),&szRequest,&szAction);
 		}
 	}

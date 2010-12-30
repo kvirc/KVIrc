@@ -217,7 +217,7 @@ static bool sharedfile_kvs_cmd_list(KviKvsModuleCommandCall * c)
 		for(KviSharedFile * o = l->first();o;o = l->next())
 		{
 			c->window()->output(KVI_OUT_NONE,"%c%d. %s",
-				KVI_TEXT_BOLD,idx + 1,it.currentKey().toUtf8().data());
+				KviMircCntrl::Bold,idx + 1,it.currentKey().toUtf8().data());
 			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    File: %s (%u bytes)","sharedfileswindow"),
 				o->absFilePath().toUtf8().data(),o->fileSize());
 			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    Mask: %s","sharedfileswindow"),

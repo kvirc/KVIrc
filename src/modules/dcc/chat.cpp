@@ -308,7 +308,7 @@ void KviDccChat::ownMessage(const QString &text, bool bUserFeedback)
 	{
 		if(cryptSessionInfo()->m_bDoEncrypt)
 		{
-			if(*d != KVI_TEXT_CRYPTESCAPE)
+			if(*d != KviMircCntrl::CryptEscape)
 			{
 				KviCString encrypted;
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(-1);

@@ -722,7 +722,7 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 	m_pBackPopup = new KviTalPopupMenu(this);
 	connect(m_pBackPopup,SIGNAL(activated(int)),this,SLOT(backSelected(int)));
 	i = m_pBackPopup->insertItem(__tr2qs("Transparent"));
-	m_pBackPopup->setItemParameter(i,KVI_TRANSPARENT);
+	m_pBackPopup->setItemParameter(i,KviMircCntrl::Transparent);
 	for(i=0;i<KVI_MIRCCOLOR_MAX_BACKGROUND;i++)
 	{
 		QPixmap tmp(120,16);
@@ -756,13 +756,15 @@ void KviMircTextColorSelector::setButtonPalette()
 
 	if(m_uBack > KVI_MIRCCOLOR_MAX_BACKGROUND)
 	{
-		if(m_uBack != KVI_TRANSPARENT)m_uBack = KVI_TRANSPARENT;
+		if(m_uBack != KviMircCntrl::Transparent)
+			m_uBack = KviMircCntrl::Transparent;
 		pal = palette();
 	} else {
 		pal = QPalette(KVI_OPTION_MIRCCOLOR(m_uBack));
 	}
 
-	if(m_uFore > KVI_MIRCCOLOR_MAX_FOREGROUND)m_uFore = KVI_MIRCCOLOR_MAX_FOREGROUND;
+	if(m_uFore > KVI_MIRCCOLOR_MAX_FOREGROUND)
+		m_uFore = KVI_MIRCCOLOR_MAX_FOREGROUND;
 
 	pal.setColor(QPalette::ButtonText,KVI_OPTION_MIRCCOLOR(m_uFore));
 	pal.setColor(QPalette::Text,KVI_OPTION_MIRCCOLOR(m_uFore));

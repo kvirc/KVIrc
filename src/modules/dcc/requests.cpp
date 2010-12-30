@@ -719,12 +719,12 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 #endif
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
 			__tr2qs_ctx("Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c to send the file (or double-click on the socket)","dcc"),
-			KVI_TEXT_BOLD,
+			KviMircCntrl::Bold,
 			szSwitches.ptr(),
 			dcc->szParam2.ptr(),dcc->szParam3.ptr(),&(dcc->ctcpMsg->pSource->nick()),
 			szSwitches.ptr(),
 			dcc->szParam2.ptr(),dcc->szParam3.ptr(),&(dcc->ctcpMsg->pSource->nick()),
-			KVI_TEXT_BOLD);
+			KviMircCntrl::Bold);
 	}
 }
 

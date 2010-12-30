@@ -38,7 +38,7 @@ KviUserIdentity::~KviUserIdentity()
 {
 }
 
-bool KviUserIdentity::load(KviConfigurationFile &cfg)
+bool KviUserIdentity::load(KviConfigurationFile & cfg)
 {
 	m_szId = cfg.group();
 	m_szNickName = cfg.readEntry("NickName");
@@ -63,7 +63,7 @@ bool KviUserIdentity::load(KviConfigurationFile &cfg)
 	return !(m_szId.isEmpty() || m_szNickName.isEmpty());
 }
 
-bool KviUserIdentity::save(KviConfigurationFile &cfg)
+bool KviUserIdentity::save(KviConfigurationFile & cfg)
 {
 	cfg.setGroup(m_szId);
 	cfg.writeEntry("NickName",m_szNickName);
@@ -87,7 +87,7 @@ bool KviUserIdentity::save(KviConfigurationFile &cfg)
 	return true;
 }
 
-void KviUserIdentity::copyFrom(const KviUserIdentity &src)
+void KviUserIdentity::copyFrom(const KviUserIdentity & src)
 {
 	m_szId = src.m_szId;
 	m_szNickName = src.m_szNickName;
@@ -121,139 +121,4 @@ void KviUserIdentity::copyFrom(const KviUserIdentity &src)
 
 	m_szOnConnectCommand = src.m_szOnConnectCommand;
 	m_szOnLoginCommand = src.m_szOnLoginCommand;
-}
-
-
-KviUserIdentityManager * KviUserIdentityManager::m_pInstance = 0;
-
-KviUserIdentityManager::KviUserIdentityManager()
-: KviHeapObject()
-{
-	m_pIdentityDict = new KviPointerHashTable<QString,KviUserIdentity>();
-	m_pIdentityDict->setAutoDelete(true);
-}
-
-KviUserIdentityManager::~KviUserIdentityManager()
-{
-	delete m_pIdentityDict;
-}
-
-void KviUserIdentityManager::init()
-{
-	if(m_pInstance)return;
-	m_pInstance = new KviUserIdentityManager();
-}
-
-void KviUserIdentityManager::done()
-{
-	if(!m_pInstance)return;
-	delete m_pInstance;
-	m_pInstance = 0;
-}
-
-const KviUserIdentity * KviUserIdentityManager::defaultIdentity()
-{
-	KviUserIdentity * ret;
-	if(!m_szDefaultIdentity.isEmpty())
-	{
-		ret = m_pIdentityDict->find(m_szDefaultIdentity);
-		if(ret)return ret;
-	}
-
-	// the default identity is borken :/
-	// grab the first one
-	KviPointerHashTableIterator<QString,KviUserIdentity> it(*m_pIdentityDict);
-	ret = it.current();
-	if(ret)
-	{
-		m_szDefaultIdentity = ret->id();
-		return ret;
-	}
-	// no identities available: create the default
-	ret = new KviUserIdentity();
-
-	ret->setId(__tr2qs("Default"));
-	ret->setNickName(KVI_DEFAULT_NICKNAME1);
-
-	ret->setAltNickName1(QString(KVI_DEFAULT_NICKNAME2).replace(KVI_DEFAULT_NICKNAME_TOKEN, KVI_DEFAULT_NICKNAME1));
-	ret->setAltNickName2(QString(KVI_DEFAULT_NICKNAME3).replace(KVI_DEFAULT_NICKNAME_TOKEN, KVI_DEFAULT_NICKNAME1));
-	ret->setAltNickName3(QString(KVI_DEFAULT_NICKNAME4).replace(KVI_DEFAULT_NICKNAME_TOKEN, KVI_DEFAULT_NICKNAME1));
-	ret->setUserName(KVI_DEFAULT_USERNAME);
-	ret->setRealName(KVI_DEFAULT_REALNAME);
-	ret->setPartMessage(KVI_DEFAULT_PART_MESSAGE);
-	ret->setQuitMessage(KVI_DEFAULT_QUIT_MESSAGE);
-
-	m_pIdentityDict->replace(ret->id(),ret);
-
-	return ret;
-}
-
-void KviUserIdentityManager::load(const QString &szFileName)
-{
-	m_pIdentityDict->clear();
-
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
-
-	cfg.setGroup("KVIrc");
-
-	m_szDefaultIdentity = cfg.readEntry("DefaultIdentity","");
-
-	KviConfigurationFileIterator it(*(cfg.dict()));
-	while( (it.current()) )
-	{
-		if(!KviQString::equalCI(it.currentKey(),"KVIrc"))
-		{
-			cfg.setGroup(it.currentKey());
-
-			KviUserIdentity * id = new KviUserIdentity();
-			if(id->load(cfg))
-				m_pIdentityDict->replace(id->id(),id);
-			else
-				delete id;
-		}
-		++it;
-	}
-}
-
-void KviUserIdentityManager::save(const QString &szFileName)
-{
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
-	cfg.clear();
-
-	cfg.setGroup("KVIrc");
-
-	cfg.writeEntry("DefaultIdentity",m_szDefaultIdentity);
-
-	KviPointerHashTableIterator<QString,KviUserIdentity> it(*m_pIdentityDict);
-	while(KviUserIdentity * id = it.current())
-	{
-		id->save(cfg);
-		++it;
-	}
-}
-
-void KviUserIdentityManager::copyFrom(KviUserIdentityManager * pWorkingCopy)
-{
-	m_pIdentityDict->clear();
-	m_szDefaultIdentity = pWorkingCopy->m_szDefaultIdentity;
-	KviPointerHashTableIterator<QString,KviUserIdentity> it(*(pWorkingCopy->m_pIdentityDict));
-	while(KviUserIdentity * id = it.current())
-	{
-		KviUserIdentity * pNew = new KviUserIdentity();
-		pNew->copyFrom(*id);
-		m_pIdentityDict->replace(pNew->id(),pNew);
-		++it;
-	}
-}
-
-KviUserIdentityManager * KviUserIdentityManager::createWorkingCopy()
-{
-	KviUserIdentityManager * pCopy = new KviUserIdentityManager();
-	pCopy->copyFrom(this);
-	return pCopy;
-}
-
-void KviUserIdentityManager::releaseWorkingCopy(KviUserIdentityManager * pWorkingCopy)
-{
-	if(pWorkingCopy)delete pWorkingCopy;
 }

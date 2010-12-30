@@ -34,43 +34,10 @@
 #include "kvi_settings.h"
 #include "KviCString.h"
 
-//
-// mIrc color codes
-//
-
-#define KVI_WHITE 0
-#define KVI_BLACK 1
-#define KVI_DARKBLUE 2
-#define KVI_DARKGREEN 3
-#define KVI_RED 4
-#define KVI_DARKRED 5
-#define KVI_DARKVIOLET 6
-#define KVI_ORANGE 7
-#define KVI_YELLOW 8
-#define KVI_LIGHTGREEN 9
-#define KVI_BLUEMARINE 10
-#define KVI_LIGHTBLUE 11
-#define KVI_BLUE 12
-#define KVI_LIGHTVIOLET 13
-#define KVI_DARKGRAY 14
-#define KVI_LIGHTGRAY 15
-
 #define KVI_MIRCCOLOR_MAX_FOREGROUND 15
 #define KVI_MIRCCOLOR_MAX_BACKGROUND 15
 
-//
-// Non-standard color codes for KviIrcView
-//
-#define KVI_TRANSPARENT 100
-#define KVI_NOCHANGE 101
-//
-// Internal control codes for KviIrcView
-//
-// (Totally artificial and internal to KviIrcView)
-#define KVI_TEXT_ESCAPE 0x04
-#define KVI_TEXT_UNESCAPE 0x05
-#define KVI_TEXT_UNICON 0x06
-//#define KVI_TEXT_EMOTICON 0x07
+
 
 // ASCII Stuff: the following defines are meant to be escape sequences
 //              that can go thru an IRC connection
@@ -119,31 +86,23 @@
 //
 // mIrc control codes
 //
-
 //31 (0001 1111) US (Unit separator)
-#define KVI_TEXT_UNDERLINE 0x1f
 //2  (0000 0010) STX (Start of text)
-#define KVI_TEXT_BOLD 0x02
 //15 (0000 1111) SI (Shift in)
-#define KVI_TEXT_RESET 0x0f
 //22 (0001 0110) SYN (Synchronous idle)
-#define KVI_TEXT_REVERSE 0x16
 //3  (0000 0011) ETX (End of text)
-#define KVI_TEXT_COLOR 0x03
 
 //
 // Irc control codes
 //
 //1 (0000 0001) SOH (Start of heading)
-#define KVI_TEXT_CTCP 0x01
 
 //
 // KVirc added control codes
 //
 //30 (0001 1110) RS (Record separator)
-#define KVI_TEXT_CRYPTESCAPE 0x1e
 //29 (0001 1101) GS (Group separator)
-#define KVI_TEXT_ICON 0x1d
+
 
 #ifndef _KVI_MIRCCNTRL_CPP_
 	extern KVILIB_API const char * getColorBytes(const char *data_ptr,unsigned char *byte_1,unsigned char *byte_2);
@@ -151,13 +110,59 @@
 	extern KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int charIdx,unsigned char *byte_1,unsigned char *byte_2);
 	inline const QChar * getUnicodeColorBytes(const QChar *pData,unsigned char *byte_1,unsigned char *byte_2)
 		{ return (QChar *)getColorBytesW((const kvi_wchar_t *)pData,byte_1,byte_2); }
-
 #endif
 
 namespace KviMircCntrl
 {
-	KVILIB_API QString stripControlBytes(const QString &szData);
-}
+	/**
+	* \enum Color
+	* \brief Contains mIRC color codes
+	*/
+	enum Color {
+		White       =   0,   /**< White */
+		Black       =   1,   /**< Black */
+		DarkBlue    =   2,   /**< Dark blue */
+		DarkGreen   =   3,   /**< Dark green */
+		Red         =   4,   /**< Red */
+		DarkRed     =   5,   /**< Dark red */
+		DarkViolet  =   6,   /**< Dark violet */
+		Orange      =   7,   /**< Orange */
+		Yellow      =   8,   /**< Yellow */
+		LightGreen  =   9,   /**< Light green */
+		BlueMarine  =  10,   /**< Blue marine */
+		LightBlue   =  11,   /**< Light blue */
+		Blue        =  12,   /**< Blue */
+		LightViolet =  13,   /**< Light violet */
+		DarkGray    =  14,   /**< Dark gray */
+		LightGray   =  15,   /**< Light gray */
+		Transparent = 100,   /**< Transparent, non standard color code for KviIrcView */
+		NoChange    = 101    /**< No change, non standard color code for KviIrcView */
+	};
 
+	/**
+	* \enum Control
+	* \brief Contains mIRC control codes
+	*/
+	enum Control {
+		CTCP        = 0x01,   /**< CTCP, IRC control code */
+		Bold        = 0x02,   /**< Bold */
+		Color       = 0x03,   /**< Color */
+		Escape      = 0x04,   /**< Escape, totally artificial and internal to KviIrcView */
+		UnEscape    = 0x05,   /**< Unescape, totally artificial and internal to KviIrcView */
+		UnIcon      = 0x06,   /**< Unicon, totally artificial and internal to KviIrcView */
+		Reset       = 0x0f,   /**< Reset */
+		Reverse     = 0x16,   /**< Reverse */
+		Icon        = 0x1d,   /**< Icon, KVIrc control code */
+		CryptEscape = 0x1e,   /**< Crypt escape, KVIrc control code */
+		Underline   = 0x1f    /**< Underline */
+	};
+
+	/**
+	* \brief Removes control bytes from the given string
+	* \param szData The stringe to clean
+	* \return QString
+	*/
+	KVILIB_API QString stripControlBytes(const QString & szData);
+}
 
 #endif //_KVI_MIRCCNTRL_H_

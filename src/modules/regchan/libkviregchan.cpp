@@ -217,7 +217,7 @@ static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 			c->window()->outputNoFmt(
 					KVI_OUT_SYSTEMMESSAGE,
 					__tr2qs_ctx("Channel: %1%2@%3","register")
-						.arg(QChar(KVI_TEXT_BOLD))
+						.arg(QChar(KviMircCntrl::Bold))
 						.arg(ch->name())
 						.arg(ch->netMask())
 				);

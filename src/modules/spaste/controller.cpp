@@ -105,7 +105,7 @@ void SPasteController::pasteFile(void)
 	{
 		line = data;
 		if(line.isEmpty())
-			line = QChar(KVI_TEXT_RESET);
+			line = QChar(KviMircCntrl::Reset);
 
 		line.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
 

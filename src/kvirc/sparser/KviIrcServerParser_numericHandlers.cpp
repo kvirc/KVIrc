@@ -429,8 +429,8 @@ void KviIrcServerParser::parseNumeric020(KviIrcMessage *msg)
 	{
 		QString szWText = msg->console()->decodeText(msg->safeTrailing());
 		msg->console()->output(
-			KVI_OUT_CONNECTION,"%c\r!s\r%s\r%c: %Q",KVI_TEXT_BOLD,
-			msg->safePrefix(),KVI_TEXT_BOLD,&szWText);
+			KVI_OUT_CONNECTION,"%c\r!s\r%s\r%c: %Q",KviMircCntrl::Bold,
+			msg->safePrefix(),KviMircCntrl::Bold,&szWText);
 	}
 }
 
@@ -850,7 +850,7 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 			//still no avatar? check if the user is exposing the fact that he's got one
 			if(!e->avatar())
 			{
-				if( (szReal[0].unicode()==KVI_TEXT_COLOR) && (szReal[1].unicode() & 4) && (szReal[2].unicode()==KVI_TEXT_RESET) )
+				if((szReal[0].unicode() == KviMircCntrl::Color) && (szReal[1].unicode() & 4) && (szReal[2].unicode() == KviMircCntrl::Reset))
 				{
 					if(KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
 					{
@@ -892,14 +892,14 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 
 		pOut->output(KVI_OUT_WHO,
 			__tr2qs("WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name%c: %Q"),
-			KVI_TEXT_BOLD,&szNick, KVI_TEXT_BOLD,
-			&szUser,&szHost,KVI_TEXT_UNDERLINE,
-			KVI_TEXT_UNDERLINE,&szChan,KVI_TEXT_UNDERLINE,
-			KVI_TEXT_UNDERLINE,&szServ,KVI_TEXT_UNDERLINE,
-			KVI_TEXT_UNDERLINE,iHops, KVI_TEXT_UNDERLINE, KVI_TEXT_UNDERLINE,
-			&szFlag, KVI_TEXT_UNDERLINE, KVI_TEXT_UNDERLINE,
-			&szAway, KVI_TEXT_UNDERLINE,
-			KVI_TEXT_UNDERLINE, &szReal);
+			KviMircCntrl::Bold,&szNick, KviMircCntrl::Bold,
+			&szUser,&szHost,KviMircCntrl::Underline,
+			KviMircCntrl::Underline,&szChan,KviMircCntrl::Underline,
+			KviMircCntrl::Underline,&szServ,KviMircCntrl::Underline,
+			KviMircCntrl::Underline,iHops, KviMircCntrl::Underline, KviMircCntrl::Underline,
+			&szFlag, KviMircCntrl::Underline, KviMircCntrl::Underline,
+			&szAway, KviMircCntrl::Underline,
+			KviMircCntrl::Underline, &szReal);
 	}
 
 
@@ -1212,7 +1212,7 @@ void KviIrcServerParser::parseNumericWhoisAway(KviIrcMessage * msg)
 		if(!pOut)pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
 		pOut->output(KVI_OUT_WHOISUSER,__tr2qs("%c\r!n\r%Q\r%c is away: %Q"),
-			KVI_TEXT_BOLD,&szNk,KVI_TEXT_BOLD,&szWText);
+			KviMircCntrl::Bold,&szNk,KviMircCntrl::Bold,&szWText);
 	}
 }
 
@@ -1272,13 +1272,13 @@ void KviIrcServerParser::parseNumericWhoisUser(KviIrcMessage *msg)
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
 		pOut->output(
-			KVI_OUT_WHOISUSER,__tr2qs("%c\r!n\r%Q\r%c is %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"),KVI_TEXT_BOLD,
-				&szNick,KVI_TEXT_BOLD,KVI_TEXT_UNDERLINE,&szNick,
-				&szUser,&szHost,KVI_TEXT_UNDERLINE);
+			KVI_OUT_WHOISUSER,__tr2qs("%c\r!n\r%Q\r%c is %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"),KviMircCntrl::Bold,
+				&szNick,KviMircCntrl::Bold,KviMircCntrl::Underline,&szNick,
+				&szUser,&szHost,KviMircCntrl::Underline);
 
 		pOut->output(
-			KVI_OUT_WHOISUSER,__tr2qs("%c\r!n\r%Q\r%c's real name: %Q"),KVI_TEXT_BOLD,
-				&szNick,KVI_TEXT_BOLD,&szReal);
+			KVI_OUT_WHOISUSER,__tr2qs("%c\r!n\r%Q\r%c's real name: %Q"),KviMircCntrl::Bold,
+				&szNick,KviMircCntrl::Bold,&szReal);
 	}
 }
 
@@ -1297,12 +1297,12 @@ void KviIrcServerParser::parseNumericWhowasUser(KviIrcMessage * msg)
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
 		pOut->output(
-			KVI_OUT_WHOISUSER,__tr2qs("%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"),KVI_TEXT_BOLD,
-			&szNick,KVI_TEXT_BOLD,KVI_TEXT_UNDERLINE,&szNick,
-			&szUser,&szHost,KVI_TEXT_UNDERLINE);
+			KVI_OUT_WHOISUSER,__tr2qs("%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"),KviMircCntrl::Bold,
+			&szNick,KviMircCntrl::Bold,KviMircCntrl::Underline,&szNick,
+			&szUser,&szHost,KviMircCntrl::Underline);
 		pOut->output(
-			KVI_OUT_WHOISUSER,__tr2qs("%c\r!n\r%Q\r%c's real name was: %Q"),KVI_TEXT_BOLD,
-			&szNick,KVI_TEXT_BOLD,&szReal);
+			KVI_OUT_WHOISUSER,__tr2qs("%c\r!n\r%Q\r%c's real name was: %Q"),KviMircCntrl::Bold,
+			&szNick,KviMircCntrl::Bold,&szReal);
 	}
 }
 
@@ -1365,8 +1365,8 @@ void KviIrcServerParser::parseNumericWhoisChannels(KviIrcMessage *msg)
 		}
 
 		pOut->output(
-			KVI_OUT_WHOISCHANNELS,__tr2qs("%c\r!n\r%Q\r%c's channels: %Q"),KVI_TEXT_BOLD,
-				&szNick,KVI_TEXT_BOLD,&szChanList);
+			KVI_OUT_WHOISCHANNELS,__tr2qs("%c\r!n\r%Q\r%c's channels: %Q"),KviMircCntrl::Bold,
+				&szNick,KviMircCntrl::Bold,&szChanList);
 	}
 }
 
@@ -1412,8 +1412,8 @@ void KviIrcServerParser::parseNumericWhoisIdle(KviIrcMessage *msg)
 		unsigned int uMins = uTime / 60;
 		uTime = uTime % 60;
 		pOut->output(
-			KVI_OUT_WHOISIDLE,__tr2qs("%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"),KVI_TEXT_BOLD,
-			&szNick,KVI_TEXT_BOLD,uDays,uHours,uMins,uTime);
+			KVI_OUT_WHOISIDLE,__tr2qs("%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"),KviMircCntrl::Bold,
+			&szNick,KviMircCntrl::Bold,uDays,uHours,uMins,uTime);
 
 		uTime = sign.toUInt(&bOk);
 		if(bOk)
@@ -1436,8 +1436,8 @@ void KviIrcServerParser::parseNumericWhoisIdle(KviIrcMessage *msg)
 			}
 
 			pOut->output(
-				KVI_OUT_WHOISIDLE,__tr2qs("%c\r!n\r%Q\r%c's signon time: %Q"),KVI_TEXT_BOLD,
-				&szNick,KVI_TEXT_BOLD,&szTmp);
+				KVI_OUT_WHOISIDLE,__tr2qs("%c\r!n\r%Q\r%c's signon time: %Q"),KviMircCntrl::Bold,
+				&szNick,KviMircCntrl::Bold,&szTmp);
 		}
 	}
 }
@@ -1474,8 +1474,8 @@ void KviIrcServerParser::parseNumericWhoisServer(KviIrcMessage *msg)
 		msg->console()->activeWindow() : (KviWindow *)(msg->console());
 		QString szWText = pOut->decodeText(msg->safeTrailing());
 		pOut->output(
-			KVI_OUT_WHOISSERVER,__tr2qs("%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"),KVI_TEXT_BOLD,
-			&szNick,KVI_TEXT_BOLD,&szServ,&szWText);
+			KVI_OUT_WHOISSERVER,__tr2qs("%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"),KviMircCntrl::Bold,
+			&szNick,KviMircCntrl::Bold,&szServ,&szWText);
 	}
 }
 
@@ -1503,8 +1503,8 @@ void KviIrcServerParser::parseNumericWhoisAuth(KviIrcMessage *msg)
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
 		pOut->output(
-			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c is authenticated as %Q"),KVI_TEXT_BOLD,
-			&szNick,KVI_TEXT_BOLD,&szAuth);
+			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c is authenticated as %Q"),KviMircCntrl::Bold,
+			&szNick,KviMircCntrl::Bold,&szAuth);
 	}
 }
 
@@ -1540,12 +1540,12 @@ void KviIrcServerParser::parseNumericWhoisActually(KviIrcMessage *msg)
 		if(szOth.contains(QChar(',')))
 		{
 			pOut->output(
-				KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c's actual user@host: %Q, actual ip: %Q"),KVI_TEXT_BOLD,
-				&szNick,KVI_TEXT_BOLD, &szUserHost, &szIpAddr);
+				KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c's actual user@host: %Q, actual ip: %Q"),KviMircCntrl::Bold,
+				&szNick,KviMircCntrl::Bold, &szUserHost, &szIpAddr);
 		} else {
 			pOut->output(
-				KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c's actual host: %Q"),KVI_TEXT_BOLD,
-				&szNick,KVI_TEXT_BOLD, &szUserHost);
+				KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c's actual host: %Q"),KviMircCntrl::Bold,
+				&szNick,KviMircCntrl::Bold, &szUserHost);
 		}
 	}
 }
@@ -1578,8 +1578,8 @@ void KviIrcServerParser::parseNumericWhoisOther(KviIrcMessage *msg)
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
 		pOut->output(
-			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c's info: %Q"),KVI_TEXT_BOLD,
-			&szNick,KVI_TEXT_BOLD,&szOth);
+			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c's info: %Q"),KviMircCntrl::Bold,
+			&szNick,KviMircCntrl::Bold,&szOth);
 	}
 }
 
@@ -1627,8 +1627,8 @@ void KviIrcServerParser::parseNumericEndOfWhois(KviIrcMessage *msg)
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
 		QString pref = msg->connection()->decodeText(msg->safePrefix());
 		pOut->output(
-			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"),KVI_TEXT_BOLD,
-			&szNick,KVI_TEXT_BOLD,&pref);
+			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"),KviMircCntrl::Bold,
+			&szNick,KviMircCntrl::Bold,&pref);
 	}
 }
 
@@ -1644,8 +1644,8 @@ void KviIrcServerParser::parseNumericEndOfWhowas(KviIrcMessage *msg)
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
 		QString pref = msg->connection()->decodeText(msg->safePrefix());
 		pOut->output(
-			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c WHOWAS info from \r!s\r%Q\r"),KVI_TEXT_BOLD,
-			&szNick,KVI_TEXT_BOLD,&pref);
+			KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c WHOWAS info from \r!s\r%Q\r"),KviMircCntrl::Bold,
+			&szNick,KviMircCntrl::Bold,&pref);
 	}
 }
 
@@ -2031,7 +2031,7 @@ void KviIrcServerParser::parseNumericServerAdminInfoServerName(KviIrcMessage * m
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 			QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
-			pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's server info: %s"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD,szInfo.toUtf8().data());
+			pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's server info: %s"),KviMircCntrl::Bold,msg->prefix(),KviMircCntrl::Bold,szInfo.toUtf8().data());
 	}
 }
 
@@ -2042,7 +2042,7 @@ void KviIrcServerParser::parseNumericServerAdminInfoAdminName(KviIrcMessage * ms
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 		QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
-		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's administrator is %s"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD,szInfo.toUtf8().data());
+		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's administrator is %s"),KviMircCntrl::Bold,msg->prefix(),KviMircCntrl::Bold,szInfo.toUtf8().data());
 	}
 }
 
@@ -2053,7 +2053,7 @@ void KviIrcServerParser::parseNumericServerAdminInfoAdminContact(KviIrcMessage *
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 			QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
-			pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's contact address is %s"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD,szInfo.toUtf8().data());
+			pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's contact address is %s"),KviMircCntrl::Bold,msg->prefix(),KviMircCntrl::Bold,szInfo.toUtf8().data());
 	}
 }
 
@@ -2103,7 +2103,7 @@ void KviIrcServerParser::parseNumericInfoStart(KviIrcMessage * msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
-		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's information:"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD);
+		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's information:"),KviMircCntrl::Bold,msg->prefix(),KviMircCntrl::Bold);
 	}
 }
 
@@ -2113,7 +2113,7 @@ void KviIrcServerParser::parseNumericInfoEnd(KviIrcMessage * msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
-		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("End of %c\r!s\r%s\r%c's information"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD);
+		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("End of %c\r!s\r%s\r%c's information"),KviMircCntrl::Bold,msg->prefix(),KviMircCntrl::Bold);
 	}
 }
 
@@ -2124,7 +2124,7 @@ void KviIrcServerParser::parseNumericTime(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 		QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
-		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's time is %Q"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD,&szInfo);
+		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's time is %Q"),KviMircCntrl::Bold,msg->prefix(),KviMircCntrl::Bold,&szInfo);
 	}
 }
 
@@ -2262,8 +2262,8 @@ void KviIrcServerParser::parseNumericCodePageScheme(KviIrcMessage *msg)
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
 			QString szWText = pOut->decodeText(msg->safeTrailing());
 			pOut->output(
-				KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c's codepage is %Q: %Q"),KVI_TEXT_BOLD,
-				&szNick,KVI_TEXT_BOLD,&szCodepage,&szWText);
+				KVI_OUT_WHOISOTHER,__tr2qs("%c\r!n\r%Q\r%c's codepage is %Q: %Q"),KviMircCntrl::Bold,
+				&szNick,KviMircCntrl::Bold,&szCodepage,&szWText);
 		}
 	} else {
 		// simply unhandled
