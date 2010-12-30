@@ -67,7 +67,7 @@ void KviUrl::parse()
 	if(m_szPath.isEmpty()) m_szPath=QString("/");
 	m_szUser = url.userName();
 	m_szPass = url.password();
-	m_uPort = url.port() > 0 ? url.port() : 80 ;
+	m_uPort = url.port(0);
 }
 
 

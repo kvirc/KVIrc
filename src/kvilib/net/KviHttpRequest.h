@@ -31,15 +31,15 @@
 #include "KviCString.h"
 #include "KviUrl.h"
 #include "KviPointerHashTable.h"
-#include "KviFile.h"
 
 #include <QObject>
 #include <QStringList>
 
+#include <QAbstractSocket>
+
 class KviDnsResolver;
 class KviDataBuffer;
-class KviSSL;
-class KviHttpRequestThread;
+
 
 //
 // This class implements a HTTP protocol client.
@@ -48,6 +48,8 @@ class KviHttpRequestThread;
 //
 
 // FIXME: Document and hide internals.
+
+class KviHttpRequestPrivate;
 
 class KVILIB_API KviHttpRequest : public QObject, public KviHeapObject
 {
@@ -86,20 +88,16 @@ protected:
 	unsigned int           m_uTotalSize;
 	unsigned int           m_uReceivedSize;
 	// internal status
-	QString                m_szIp;
-	KviDnsResolver               * m_pDns;
-	KviHttpRequestThread * m_pThread;
-	KviDataBuffer        * m_pBuffer;
 	bool                   m_bHeaderProcessed;
 	bool                   m_bChunkedTransferEncoding;
 	bool                   m_bGzip;
 	unsigned int           m_uRemainingChunkSize;
 	bool                   m_bIgnoreRemainingData; // used in chunked transfer after the last chunk has been seen
-	KviFile              * m_pFile;
 	unsigned int           m_uConnectionTimeout; // in seconds, 60 secs by default
+private:
+	KviHttpRequestPrivate * m_p;
 protected:
-	bool startDnsLookup();
-	virtual bool event(QEvent *e);
+
 	void processData(KviDataBuffer * data);
 	bool processHeader(KviCString &szHeader);
 	bool openFile();
@@ -108,9 +106,6 @@ protected:
 	void resetStatus();
 	void resetData();
 	void resetInternalStatus();
-protected slots:
-	void dnsLookupDone(KviDnsResolver *d);
-	void haveServerIp();
 public:
 	void setConnectionTimeout(unsigned int uConnectionTimeout)
 	{
@@ -163,6 +158,17 @@ signals:
 	void binaryData(const KviDataBuffer &data);
 	void header(KviPointerHashTable<const char *,KviCString> * hdr);
 	void requestSent(const QStringList &request);
+
+private:
+	void closeSocket();
+	bool doConnect();
+
+private slots:
+	void slotSocketReadDataReady();
+	void slotSocketDisconnected();
+	void slotSocketConnected();
+	void slotSocketError(QAbstractSocket::SocketError socketError);
+	void slotConnectionTimedOut();
 };
 
 

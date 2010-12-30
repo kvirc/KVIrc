@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#include <QDir>
-#include <QTimer>
 //#include <zlib.h>
 
 #include "KviHttpRequest.h"
@@ -35,17 +33,38 @@
 #include "kvi_debug.h"
 #include "KviTimeUtils.h"
 #include "KviDataBuffer.h"
+#include "KviFile.h"
+
+#include <QTcpSocket>
+#include <QSslSocket>
+#include <QTimer>
+#include <QDir>
+#include <QHostAddress>
+
+class KviHttpRequestPrivate
+{
+public:
+	QTcpSocket * pSocket;
+	bool bIsSSL;
+	KviDataBuffer * pBuffer;
+	QTimer * pConnectTimeoutTimer;
+	KviFile * pFile;
+};
+
 
 
 KviHttpRequest::KviHttpRequest()
 : QObject()
 {
-	m_pDns = 0;
-	m_pThread = 0;
-	m_pFile = 0;
+	m_p = new KviHttpRequestPrivate();
+	m_p->pSocket = NULL;
+	m_p->bIsSSL = false;
+	m_p->pConnectTimeoutTimer = NULL;
+	m_p->pBuffer = new KviDataBuffer();
+	m_p->pFile = NULL;
+
 	m_pPrivateData = 0;
 	m_bHeaderProcessed = false;
-	m_pBuffer = new KviDataBuffer();
 	m_uConnectionTimeout = 60;
 
 	resetStatus();
@@ -55,7 +74,14 @@ KviHttpRequest::KviHttpRequest()
 KviHttpRequest::~KviHttpRequest()
 {
 	resetInternalStatus();
-	delete m_pBuffer;
+	
+	KVI_ASSERT(!(m_p->pSocket));
+	KVI_ASSERT(!(m_p->pFile));
+
+	if(m_p->pBuffer)
+		delete m_p->pBuffer;
+
+	delete m_p;
 }
 
 void KviHttpRequest::abort()
@@ -67,18 +93,23 @@ void KviHttpRequest::abort()
 
 void KviHttpRequest::resetInternalStatus()
 {
-	if(m_pThread)delete m_pThread;
-	if(m_pDns)delete m_pDns;
+	if(m_p->pConnectTimeoutTimer)
+	{
+		delete m_p->pConnectTimeoutTimer;
+		m_p->pConnectTimeoutTimer = NULL;
+	}
 
-	m_pDns = 0;
-	m_pThread = 0;
+	if(m_p->pSocket)
+		closeSocket();
 
-	if(!m_pFile)return;
-	m_pFile->close();
-	delete m_pFile;
-	m_pFile = 0;
+	if(m_p->pFile)
+	{
+		m_p->pFile->close();
+		delete m_p->pFile;
+		m_p->pFile = NULL;
+	}
 
-	m_pBuffer->clear();
+	m_p->pBuffer->clear();
 	m_bHeaderProcessed = false;
 
 	KviThreadManager::killPendingEvents(this);
@@ -154,73 +185,249 @@ bool KviHttpRequest::start()
 		return false;
 	}
 
-        if(!KviQString::equalCI(m_url.protocol(),"http") && !KviQString::equalCI(m_url.protocol(),"https"))
+	m_p->bIsSSL = KviQString::equalCI(m_url.protocol(),"https");
+
+	if(!KviQString::equalCI(m_url.protocol(),"http") && !m_p->bIsSSL)
 	{
 		resetInternalStatus();
 		m_szLastError=__tr2qs("Unsupported protocol %1").arg(m_url.protocol());
 		return false;
 	}
 
-	if(KviNetUtils::isValidStringIp(m_url.host()))
-	{
-		m_szIp = m_url.host();
-		QTimer::singleShot(10,this,SLOT(haveServerIp()));
-		return true;
-	}
-
-	return startDnsLookup();
+	return doConnect();
 }
 
-bool KviHttpRequest::startDnsLookup()
+void KviHttpRequest::closeSocket()
 {
-	m_pDns = new KviDnsResolver();
-	connect(m_pDns,SIGNAL(lookupDone(KviDnsResolver *)),this,SLOT(dnsLookupDone(KviDnsResolver *)));
+	if(!m_p->pSocket)
+		return;
 
-	if(!m_pDns->lookup(m_url.host(),KviDnsResolver::IPv4))
-	{
-		resetInternalStatus();
-		m_szLastError = __tr2qs("Unable to start the DNS lookup");
-		return false;
-	}
+	QObject::disconnect(m_p->pSocket,SIGNAL(connected()),this,SLOT(slotSocketConnected()));
+	QObject::disconnect(m_p->pSocket,SIGNAL(disconnected()),this,SLOT(slotSocketDisconnected()));
+	QObject::disconnect(m_p->pSocket,SIGNAL(error(QAbstractSocket::SocketError)),this,SLOT(slotSocketError(QAbstractSocket::SocketError)));
 
-	QString tmp;
-	KviQString::sprintf(tmp,__tr2qs("Looking up host %Q"),&(m_url.host()));
-	emit status(tmp); // FIXME
-
-	emit resolvingHost(m_url.host());
-
-	return true;
+	m_p->pSocket->abort();
+	m_p->pSocket->close();
+	
+	// This can be called from a socket handler slot
+	m_p->pSocket->deleteLater();
+	
+	//delete m_p->pSocket;
+	
+	m_p->pSocket = NULL;
 }
 
-void KviHttpRequest::dnsLookupDone(KviDnsResolver *d)
+void KviHttpRequest::slotSocketDisconnected()
 {
-	if(d->state() == KviDnsResolver::Success)
+	switch(m_eProcessingType)
 	{
-		m_szIp = d->firstIpAddress();
-		delete m_pDns;
-		m_pDns = 0;
-		QString tmp;
-		KviQString::sprintf(tmp,__tr2qs("Host %Q resolved to %Q"),&(m_url.host()),&m_szIp);
-		emit status(tmp);
-		haveServerIp();
-	} else {
+		case WholeFile:
+			// happens always
+			emit binaryData(*m_p->pBuffer);
+		break;
+		case Blocks:
+			// an unprocessed block ?.. should never happend.. but well :D
+			if(m_p->pBuffer->size() > 0)
+				emit binaryData(*m_p->pBuffer);
+		break;
+		case Lines:
+			if(m_p->pBuffer->size() > 0)
+			{
+				// something left in the buffer and has no trailing LF
+				KviCString tmp((const char *)(m_p->pBuffer->data()),m_p->pBuffer->size());
+				emit data(tmp);
+			}
+		break;
+		case StoreToFile:
+			// same as above... should never happen.. but well :D
+			if(m_p->pFile && m_p->pBuffer->size() > 0)
+				m_p->pFile->write((const char *)(m_p->pBuffer->data()),m_p->pBuffer->size());
+		break;
+		default:
+			// nothing... just make gcc happy
+		break;
+	}
+	resetInternalStatus();
+	m_szLastError = __tr2qs("Success");
+	emit terminated(true);
+}
+
+void KviHttpRequest::slotSocketConnected()
+{
+	if(m_p->pConnectTimeoutTimer)
+	{
+		delete m_p->pConnectTimeoutTimer;
+		m_p->pConnectTimeoutTimer = NULL;
+	}
+
+	emit connectionEstabilished();
+	emit status(
+			__tr2qs("Connected to %1:%2: sending request")
+					.arg(m_p->pSocket->peerAddress().toString())
+					.arg(m_p->pSocket->peerPort())
+		);
+
+	KviCString szMethod;
+	
+	bool bIsPost = false;
+	
+	if(m_eProcessingType == HeadersOnly)
+		szMethod = "HEAD";
+	else if(m_szPostData.isEmpty())
+		szMethod = "GET";
+	else {
+		szMethod = "POST";
+		bIsPost = true;
+	}
+
+	KviCString szRequest(
+			KviCString::Format,
+			"%s %s HTTP/1.1\r\n" \
+			"Host: %s\r\n" \
+			"Connection: Close\r\n" \
+			"User-Agent: KVIrc-http-slave/1.0.0\r\n" \
+			"Accept: */*\r\n",
+			szMethod.ptr(),
+			KviQString::toUtf8(m_url.path()).data(),
+			KviQString::toUtf8(m_url.host()).data()
+		);
+
+	if(m_uContentOffset > 0)
+		szRequest.append(KviCString::Format,"Range: bytes=%u-\r\n",m_uContentOffset);
+
+	if(bIsPost)
+	{
+		szRequest.append(KviCString::Format,"Content-Type: application/x-www-form-urlencoded\r\n" \
+				"Content-Length: %u\r\n" \
+				"Cache-control: no-cache\r\n" \
+				"Pragma: no-cache\r\n",m_szPostData.length());
+	}
+
+	szRequest += "\r\n";
+
+	if(bIsPost)
+	{
+		if(!m_szPostData.isEmpty())
+			szRequest.append(m_szPostData);
+		szRequest += "\r\n";
+	}
+
+	// FIXME: Handle this better!
+	int written = m_p->pSocket->write(szRequest.ptr(),szRequest.len());
+	if(written < szRequest.len())
+	{
+		m_szLastError = __tr2qs("Socket write error");
 		resetInternalStatus();
-		m_szLastError = KviError::getDescription(d->error());
 		emit terminated(false);
 	}
+
+	// FIXME: Handle this better
+	QString req = QString::fromAscii(szRequest.ptr());
+	QStringList sl = req.split("\r\n");
+	emit requestSent(sl);
+
+	// now wait for the response
+
+	// FIXME: Handle read timeouts!
 }
 
-void KviHttpRequest::haveServerIp()
+void KviHttpRequest::slotSocketReadDataReady()
+{
+	KVI_ASSERT(m_p->pSocket);
+
+	int iBytes = m_p->pSocket->bytesAvailable();
+
+	if(iBytes <= 0)
+	{
+		// assume connection closed ?
+		slotSocketDisconnected();
+		return;
+	}
+
+	// FIXME: Avoid double-buffering here!
+	
+	KviDataBuffer oBuffer(iBytes);
+
+	int iRead = m_p->pSocket->read((char *)(oBuffer.data()),iBytes);
+	if(iRead < iBytes)
+	{
+		// hum.... what here ?
+		if(iRead < 1)
+		{
+			slotSocketDisconnected();
+			return;
+		}
+		
+		// FIXME
+		// well... otherwise just wait.
+		// FIXME ?
+		oBuffer.resize(iRead);
+	}
+
+	processData(&oBuffer);
+}
+
+void KviHttpRequest::slotSocketError(QAbstractSocket::SocketError eError)
+{
+	KVI_ASSERT(m_p->pSocket);
+
+	if(eError == QAbstractSocket::RemoteHostClosedError)
+	{
+		slotSocketDisconnected();
+		return;
+	}
+
+	m_szLastError = m_p->pSocket->errorString();
+	resetInternalStatus();
+	emit terminated(false);
+}
+
+void KviHttpRequest::slotConnectionTimedOut()
+{
+	resetInternalStatus();
+	m_szLastError = __tr2qs("Connection timed out");
+	emit terminated(false);
+}
+
+bool KviHttpRequest::doConnect()
 {
 	unsigned short uPort = m_url.port();
-	if(uPort == 0)uPort = 80;
+	if(uPort == 0)
+		uPort = m_p->bIsSSL ? 443 : 80;
 
-	QString tmp;
-	KviQString::sprintf(tmp,"%Q:%u",&m_szIp,uPort);
-	emit contactingHost(tmp);
+	emit contactingHost(QString::fromAscii("%1:%2").arg(m_url.host()).arg(uPort));
 
-	if(m_pThread)delete m_pThread;
+	if(m_p->pSocket)
+		closeSocket();
 
+	m_p->pSocket = m_p->bIsSSL ? new QSslSocket() : new QTcpSocket();
+
+	QObject::connect(m_p->pSocket,SIGNAL(connected()),this,SLOT(slotSocketConnected()));
+	QObject::connect(m_p->pSocket,SIGNAL(disconnected()),this,SLOT(slotSocketDisconnected()));
+	QObject::connect(m_p->pSocket,SIGNAL(error(QAbstractSocket::SocketError)),this,SLOT(slotSocketError(QAbstractSocket::SocketError)));
+	QObject::connect(m_p->pSocket,SIGNAL(readyRead()),this,SLOT(slotSocketReadDataReady()));
+
+	if(m_p->bIsSSL)
+	{
+		static_cast<QSslSocket *>(m_p->pSocket)->setProtocol(QSsl::AnyProtocol);
+		static_cast<QSslSocket *>(m_p->pSocket)->connectToHostEncrypted(m_url.host(),uPort);
+	} else {
+		m_p->pSocket->connectToHost(m_url.host(),uPort);
+	}
+
+	if(m_p->pConnectTimeoutTimer)
+	{
+		delete m_p->pConnectTimeoutTimer;
+		m_p->pConnectTimeoutTimer = NULL;
+	}
+	
+	m_p->pConnectTimeoutTimer = new QTimer();
+	m_p->pConnectTimeoutTimer->setSingleShot(true);
+	QObject::connect(m_p->pConnectTimeoutTimer,SIGNAL(timeout()),this,SLOT(slotConnectionTimedOut()));
+
+	m_p->pConnectTimeoutTimer->start(m_uConnectionTimeout * 1000);
+
+	/*
 	m_pThread = new KviHttpRequestThread(
 			this,
 			m_url.host(),
@@ -232,109 +439,11 @@ void KviHttpRequest::haveServerIp()
 			m_szPostData,
 			m_url.protocol()=="https"
 		);
+	*/
 
-	m_pThread->setConnectionTimeout(m_uConnectionTimeout);
-
-	if(!m_pThread->start())
-	{
-		resetInternalStatus();
-		m_szLastError = __tr2qs("Unable to start the request slave thread");
-		emit terminated(false);
-		return;
-	}
-
-	KviQString::sprintf(tmp,__tr2qs("Contacting host %Q on port %u"),&m_szIp,uPort);
-	emit status(tmp);
-}
-
-bool KviHttpRequest::event(QEvent *e)
-{
-	if(e->type() == KVI_THREAD_EVENT)
-	{
-		switch(((KviThreadEvent *)e)->id())
-		{
-			case KVI_THREAD_EVENT_BINARYDATA:
-			{
-				KviDataBuffer * b = ((KviThreadDataEvent<KviDataBuffer> *)e)->getData();
-				processData(b);
-				delete b;
-				return true;
-			}
-			break;
-			case KVI_HTTP_REQUEST_THREAD_EVENT_CONNECTED:
-				emit connectionEstabilished();
-				emit status(__tr2qs("Connection established, sending request"));
-				return true;
-			break;
-			case KVI_HTTP_REQUEST_THREAD_EVENT_REQUESTSENT:
-			{
-				QString * req = ((KviThreadDataEvent<QString> *)e)->getData();
-				QStringList sl = req->split("\r\n");
-				emit requestSent(sl);
-				delete req;
-				return true;
-			}
-			break;
-			case KVI_THREAD_EVENT_SUCCESS:
-				if(!m_pThread && !m_bHeaderProcessed)
-				{
-					// the thread has already been deleted
-					// probably because the response was something like a 404
-					// just ignore the event
-					return true;
-				}
-				switch(m_eProcessingType)
-				{
-					case WholeFile:
-						// happens always
-						emit binaryData(*m_pBuffer);
-					break;
-					case Blocks:
-						// an unprocessed block ?.. should never happend.. but well :D
-						if(m_pBuffer->size() > 0)emit binaryData(*m_pBuffer);
-					break;
-					case Lines:
-						if(m_pBuffer->size() > 0)
-						{
-							// something left in the buffer and has no trailing LF
-							KviCString tmp((const char *)(m_pBuffer->data()),m_pBuffer->size());
-							emit data(tmp);
-						}
-					break;
-					case StoreToFile:
-						// same as above... should never happen.. but well :D
-						if(m_pFile && m_pBuffer->size() > 0)m_pFile->write((const char *)(m_pBuffer->data()),m_pBuffer->size());
-					break;
-					default:
-						// nothing... just make gcc happy
-					break;
-				}
-				resetInternalStatus();
-				m_szLastError = __tr2qs("Success");
-				emit terminated(true);
-				return true;
-			break;
-			case KVI_THREAD_EVENT_ERROR:
-			{
-				KviCString * err = ((KviThreadDataEvent<KviCString> *)e)->getData();
-				m_szLastError = __tr2qs_no_xgettext(err->ptr());
-				delete err;
-				resetInternalStatus();
-				emit terminated(false);
-				return true;
-			}
-			break;
-			case KVI_THREAD_EVENT_MESSAGE:
-			{
-				KviCString * msg = ((KviThreadDataEvent<KviCString> *)e)->getData();
-				emit status(__tr2qs_no_xgettext(msg->ptr()));
-				delete msg;
-				return true;
-			}
-			break;
-		}
-	}
-	return QObject::event(e);
+	emit status(__tr2qs("Contacting host %1 on port %2").arg(m_url.host()).arg(uPort));
+	
+	return true;
 }
 
 void KviHttpRequest::emitLines(KviDataBuffer * pDataBuffer)
@@ -342,7 +451,7 @@ void KviHttpRequest::emitLines(KviDataBuffer * pDataBuffer)
 	int idx = pDataBuffer->find((const unsigned char *)"\n",1);
 	while(idx != -1)
 	{
-		KviCString tmp((const char *)(m_pBuffer->data()),idx);
+		KviCString tmp((const char *)(m_p->pBuffer->data()),idx);
 		tmp.stripRight('\r');
 		pDataBuffer->remove(idx + 1);
 		idx = pDataBuffer->find((const unsigned char *)"\n",1);
@@ -430,9 +539,9 @@ bool KviHttpRequest::openFile()
 		}
 	}
 
-	m_pFile = new KviFile(m_szFileName);
+	m_p->pFile = new KviFile(m_szFileName);
 
-	if(!m_pFile->open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
+	if(!m_p->pFile->open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 	{
 		resetInternalStatus();
 		KviQString::sprintf(m_szLastError,__tr2qs("Can't open file \"%Q\" for writing"),&m_szFileName);
@@ -641,13 +750,13 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 	if(!m_bHeaderProcessed)
 	{
 		// time to process the header
-		m_pBuffer->append(*data);
+		m_p->pBuffer->append(*data);
 
-		int idx = m_pBuffer->find((const unsigned char *)"\r\n\r\n",4);
+		int idx = m_p->pBuffer->find((const unsigned char *)"\r\n\r\n",4);
 		if(idx == -1)
 		{
 			// header not complete
-			if(m_pBuffer->size() > 4096)
+			if(m_p->pBuffer->size() > 4096)
 			{
 				resetInternalStatus();
 				m_szLastError = __tr2qs("Header too long: exceeded 4096 bytes");
@@ -655,8 +764,8 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 			}
 			return;
 		}
-		KviCString szHeader((const char *)(m_pBuffer->data()),idx);
-		m_pBuffer->remove(idx + 4);
+		KviCString szHeader((const char *)(m_p->pBuffer->data()),idx);
+		m_p->pBuffer->remove(idx + 4);
 
 		if(!processHeader(szHeader))return;
 		m_bHeaderProcessed = true;
@@ -666,20 +775,20 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 			if(!openFile())return;
 		}
 
-		m_uReceivedSize = m_pBuffer->size();
+		m_uReceivedSize = m_p->pBuffer->size();
 
 
-		// here the header is complete and the eventual remaining data is in m_pBuffer. data has been already used.
+		// here the header is complete and the eventual remaining data is in m_p->pBuffer. data has been already used.
 
 	} else {
 		// header already processed
 		m_uReceivedSize += data->size();
 
-		// here the header is complete and some data *might* be already in m_pBuffer. data is unused yet.
+		// here the header is complete and some data *might* be already in m_p->pBuffer. data is unused yet.
 
 		// Optimisation: If the transfer is NOT chunked (so we don't have to parse it)
 		// and the requested processing type is either Blocks or StoreToFile
-		// then we just can avoid to copy the data to m_pBuffer.
+		// then we just can avoid to copy the data to m_p->pBuffer.
 		// This is a good optimisation since for large files we can save allocating
 		// space for and moving megabytes of data...
 
@@ -692,7 +801,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 					emit binaryData(*data);
 				break;
 				case StoreToFile:
-					m_pFile->write((const char *)(data->data()),data->size());
+					m_p->pFile->write((const char *)(data->data()),data->size());
 				break;
 				default:
 				break;
@@ -708,11 +817,11 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 			return;
 		}
 
-		// need to append to m_pBuffer and process it
-		m_pBuffer->append(*data);
+		// need to append to m_p->pBuffer and process it
+		m_p->pBuffer->append(*data);
 	}
 
-	// we're processing data in m_pBuffer here
+	// we're processing data in m_p->pBuffer here
 	if(m_bChunkedTransferEncoding)
 	{
 		// The transfer encoding is chunked: the buffer contains
@@ -721,45 +830,45 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 		// The transfer terminates when we read a last chunk of size 0
 		// that may be followed by optional headers...
 		// This sux :)
-		while(m_pBuffer->size() > 0) // <-- note that we may exit from this loop also for other conditions (there is a goto below)
+		while(m_p->pBuffer->size() > 0) // <-- note that we may exit from this loop also for other conditions (there is a goto below)
 		{
 			// we process chunks of parts of chunks at a time.
 			if(m_uRemainingChunkSize > 0)
 			{
 				// process the current chunk data
 				unsigned int uProcessSize = m_uRemainingChunkSize;
-				if(uProcessSize > (unsigned int)m_pBuffer->size())uProcessSize = m_pBuffer->size();
+				if(uProcessSize > (unsigned int)m_p->pBuffer->size())uProcessSize = m_p->pBuffer->size();
 				m_uRemainingChunkSize -= uProcessSize;
 
 				switch(m_eProcessingType)
 				{
 					case Blocks:
-						if((unsigned int)m_pBuffer->size() == uProcessSize)
+						if((unsigned int)m_p->pBuffer->size() == uProcessSize)
 						{
 							// avoid copying to a new buffer
-							emit binaryData(*m_pBuffer);
+							emit binaryData(*m_p->pBuffer);
 						} else {
 							// must copy
-							KviDataBuffer tmp(uProcessSize,m_pBuffer->data());
+							KviDataBuffer tmp(uProcessSize,m_p->pBuffer->data());
 							emit binaryData(tmp);
-							m_pBuffer->remove(uProcessSize);
+							m_p->pBuffer->remove(uProcessSize);
 						}
 					break;
 					case Lines:
-						if((unsigned int)m_pBuffer->size() == uProcessSize)
+						if((unsigned int)m_p->pBuffer->size() == uProcessSize)
 						{
 							// avoid copying to a new buffer
-							emitLines(m_pBuffer);
+							emitLines(m_p->pBuffer);
 						} else {
 							// must copy
-							KviDataBuffer tmp(uProcessSize,m_pBuffer->data());
+							KviDataBuffer tmp(uProcessSize,m_p->pBuffer->data());
 							emitLines(&tmp);
-							m_pBuffer->remove(uProcessSize);
+							m_p->pBuffer->remove(uProcessSize);
 						}
 					break;
 					case StoreToFile:
-						m_pFile->write((const char *)(m_pBuffer->data()),uProcessSize);
-						m_pBuffer->remove(uProcessSize);
+						m_p->pFile->write((const char *)(m_p->pBuffer->data()),uProcessSize);
+						m_p->pBuffer->remove(uProcessSize);
 					break;
 					default:
 						// nothing.. just make gcc happy
@@ -770,17 +879,17 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 				// We're looking for the beginning of a chunk now.
 				// Note that we might be at the end of a previous chunk that has a CRLF terminator
 				// we need to skip it.
-				int crlf = m_pBuffer->find((const unsigned char *)"\r\n",2);
+				int crlf = m_p->pBuffer->find((const unsigned char *)"\r\n",2);
 				if(crlf != -1)
 				{
 					if(crlf == 0)
 					{
 						// This is a plain CRLF at the beginning of the buffer BEFORE a chunk header.
 						// It comes from the previous chunk terminator. Skip it.
-						m_pBuffer->remove(2);
+						m_p->pBuffer->remove(2);
 					} else {
 						// got a chunk header
-						KviCString szHeader((const char *)(m_pBuffer->data()),crlf);
+						KviCString szHeader((const char *)(m_p->pBuffer->data()),crlf);
 						szHeader.cutFromFirst(' ');
 						// now szHeader should contain a hexadecimal chunk length... (why the hell it is hex and not decimal ????)
 						QString szHexHeader = szHeader.ptr();
@@ -793,20 +902,20 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 							emit terminated(false);
 							return;
 						}
-						m_pBuffer->remove(crlf+2);
+						m_p->pBuffer->remove(crlf+2);
 						if(m_uRemainingChunkSize == 0)
 						{
 							// this is the last chunk of data. It may be followed by optional headers
 							// but we actually don't need them (since we're surely not in HEAD mode)
 							m_bIgnoreRemainingData = true;
-							m_pBuffer->clear();
+							m_p->pBuffer->clear();
 							goto check_stream_length;
 						}
 					}
 					// the rest is valid data of a non-zero chunk: continue looping
 				} else {
 					// chunk header not complete
-					if(m_pBuffer->size() > 4096)
+					if(m_p->pBuffer->size() > 4096)
 					{
 						resetInternalStatus();
 						m_szLastError = __tr2qs("Chunk header too long: exceeded 4096 bytes");
@@ -818,19 +927,19 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 			}
 		}
 	} else {
-		// the transfer encoding is not chunked: m_pBuffer contains only valid data
+		// the transfer encoding is not chunked: m_p->pBuffer contains only valid data
 		switch(m_eProcessingType)
 		{
 			case Blocks:
-				if(m_pBuffer->size() > 0)emit binaryData(*m_pBuffer);
-				m_pBuffer->clear();
+				if(m_p->pBuffer->size() > 0)emit binaryData(*m_p->pBuffer);
+				m_p->pBuffer->clear();
 			break;
 			case Lines:
-				if(m_pBuffer->size() > 0)emitLines(m_pBuffer);
+				if(m_p->pBuffer->size() > 0)emitLines(m_p->pBuffer);
 			break;
 			case StoreToFile:
-				m_pFile->write((const char *)(m_pBuffer->data()),m_pBuffer->size());
-				m_pBuffer->clear();
+				m_p->pFile->write((const char *)(m_p->pBuffer->data()),m_p->pBuffer->size());
+				m_p->pBuffer->clear();
 			break;
 			default:
 				// nothing.. just make gcc happy
@@ -849,3 +958,48 @@ check_stream_length:
 	return;
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#if 0
+
+bool KviHttpRequest::startDnsLookup()
+{
+	m_pDns = new KviDnsResolver();
+	connect(m_pDns,SIGNAL(lookupDone(KviDnsResolver *)),this,SLOT(dnsLookupDone(KviDnsResolver *)));
+
+	if(!m_pDns->lookup(m_url.host(),KviDnsResolver::IPv4))
+	{
+		resetInternalStatus();
+		m_szLastError = __tr2qs("Unable to start the DNS lookup");
+		return false;
+	}
+
+	QString tmp;
+	KviQString::sprintf(tmp,__tr2qs("Looking up host %Q"),&(m_url.host()));
+	emit status(tmp); // FIXME
+
+	emit resolvingHost(m_url.host());
+
+	return true;
+}
+
+void KviHttpRequest::dnsLookupDone(KviDnsResolver *d)
+{
+	if(d->state() == KviDnsResolver::Success)
+	{
+		m_szIp = d->firstIpAddress();
+		delete m_pDns;
+		m_pDns = 0;
+		QString tmp;
+		KviQString::sprintf(tmp,__tr2qs("Host %Q resolved to %Q"),&(m_url.host()),&m_szIp);
+		emit status(tmp);
+		haveServerIp();
+	} else {
+		int iErr = d->error();
+		resetInternalStatus();
+		m_szLastError = KviError::getDescription(iErr);
+		emit terminated(false);
+	}
+}
+#endif

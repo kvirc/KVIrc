@@ -23,8 +23,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviStatusBarApplet.h"
 #include "KviMainWindow.h"
 #include "KviIconManager.h"
