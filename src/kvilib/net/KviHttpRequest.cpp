@@ -22,10 +22,7 @@
 //
 //=============================================================================
 
-//#include <zlib.h>
-
 #include "KviHttpRequest.h"
-#include "KviHttpRequestThread.h"
 #include "KviLocale.h"
 #include "KviNetUtils.h"
 #include "KviDnsResolver.h"
@@ -40,6 +37,9 @@
 #include <QTimer>
 #include <QDir>
 #include <QHostAddress>
+#include <QStringList>
+
+//#include <zlib.h>
 
 class KviHttpRequestPrivate
 {
@@ -49,6 +49,7 @@ public:
 	KviDataBuffer * pBuffer;
 	QTimer * pConnectTimeoutTimer;
 	KviFile * pFile;
+	unsigned short uPort;
 };
 
 
@@ -389,13 +390,17 @@ void KviHttpRequest::slotConnectionTimedOut()
 	emit terminated(false);
 }
 
+void KviHttpRequest::slotSocketHostResolved()
+{
+	emit contactingHost(QString::fromAscii("%1:%2").arg(m_url.host()).arg(m_p->uPort));
+	emit status(__tr2qs("Contacting host %1 on port %2").arg(m_url.host()).arg(m_p->uPort));
+}
+
 bool KviHttpRequest::doConnect()
 {
-	unsigned short uPort = m_url.port();
-	if(uPort == 0)
-		uPort = m_p->bIsSSL ? 443 : 80;
-
-	emit contactingHost(QString::fromAscii("%1:%2").arg(m_url.host()).arg(uPort));
+	m_p->uPort = m_url.port();
+	if(m_p->uPort == 0)
+		m_p->uPort = m_p->bIsSSL ? 443 : 80;
 
 	if(m_p->pSocket)
 		closeSocket();
@@ -406,14 +411,18 @@ bool KviHttpRequest::doConnect()
 	QObject::connect(m_p->pSocket,SIGNAL(disconnected()),this,SLOT(slotSocketDisconnected()));
 	QObject::connect(m_p->pSocket,SIGNAL(error(QAbstractSocket::SocketError)),this,SLOT(slotSocketError(QAbstractSocket::SocketError)));
 	QObject::connect(m_p->pSocket,SIGNAL(readyRead()),this,SLOT(slotSocketReadDataReady()));
+	QObject::connect(m_p->pSocket,SIGNAL(hostFound()),this,SLOT(slotSocketHostResolved()));
+
+	emit resolvingHost(m_url.host());
 
 	if(m_p->bIsSSL)
 	{
 		static_cast<QSslSocket *>(m_p->pSocket)->setProtocol(QSsl::AnyProtocol);
-		static_cast<QSslSocket *>(m_p->pSocket)->connectToHostEncrypted(m_url.host(),uPort);
+		static_cast<QSslSocket *>(m_p->pSocket)->connectToHostEncrypted(m_url.host(),m_p->uPort);
 	} else {
-		m_p->pSocket->connectToHost(m_url.host(),uPort);
+		m_p->pSocket->connectToHost(m_url.host(),m_p->uPort);
 	}
+
 
 	if(m_p->pConnectTimeoutTimer)
 	{
@@ -441,7 +450,6 @@ bool KviHttpRequest::doConnect()
 		);
 	*/
 
-	emit status(__tr2qs("Contacting host %1 on port %2").arg(m_url.host()).arg(uPort));
 	
 	return true;
 }
@@ -979,7 +987,6 @@ bool KviHttpRequest::startDnsLookup()
 	KviQString::sprintf(tmp,__tr2qs("Looking up host %Q"),&(m_url.host()));
 	emit status(tmp); // FIXME
 
-	emit resolvingHost(m_url.host());
 
 	return true;
 }

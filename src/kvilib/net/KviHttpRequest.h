@@ -33,8 +33,6 @@
 #include "KviPointerHashTable.h"
 
 #include <QObject>
-#include <QStringList>
-
 #include <QAbstractSocket>
 
 class KviDnsResolver;
@@ -55,6 +53,7 @@ class KVILIB_API KviHttpRequest : public QObject, public KviHeapObject
 {
 	Q_OBJECT
 public:
+
 	enum ProcessingType
 	{
 		HeadersOnly,    // Download headers only (HEAD request)
@@ -63,6 +62,7 @@ public:
 		Lines,          // Emit the data as ASCII text lines (the client must take care of decoding the data)
 		StoreToFile     // Store the data to a file
 	};
+
 	enum ExistingFileAction
 	{
 		Overwrite,      // Overwrite existing file
@@ -70,9 +70,13 @@ public:
 		RenameExisting, // Automatically rename the existing file
 		Resume          // Attempt to resume the file (get partial content)
 	};
+
 public:
+
 	KviHttpRequest();
-	~KviHttpRequest();
+
+	virtual ~KviHttpRequest();
+
 protected:
 	// data
 	KviUrl                 m_url;
@@ -94,19 +98,13 @@ protected:
 	unsigned int           m_uRemainingChunkSize;
 	bool                   m_bIgnoreRemainingData; // used in chunked transfer after the last chunk has been seen
 	unsigned int           m_uConnectionTimeout; // in seconds, 60 secs by default
+
 private:
+
 	KviHttpRequestPrivate * m_p;
-protected:
 
-	void processData(KviDataBuffer * data);
-	bool processHeader(KviCString &szHeader);
-	bool openFile();
-	void emitLines(KviDataBuffer * pDataBuffer);
-
-	void resetStatus();
-	void resetData();
-	void resetInternalStatus();
 public:
+
 	void setConnectionTimeout(unsigned int uConnectionTimeout)
 	{
 		m_uConnectionTimeout = uConnectionTimeout;
@@ -152,7 +150,6 @@ signals:
 
 	void terminated(bool bSuccess);
 
-
 	void status(const QString &message);
 	void data(const KviCString &data);
 	void binaryData(const KviDataBuffer &data);
@@ -163,12 +160,22 @@ private:
 	void closeSocket();
 	bool doConnect();
 
+	void processData(KviDataBuffer * data);
+	bool processHeader(KviCString &szHeader);
+	bool openFile();
+	void emitLines(KviDataBuffer * pDataBuffer);
+
+	void resetStatus();
+	void resetData();
+	void resetInternalStatus();
+
 private slots:
 	void slotSocketReadDataReady();
 	void slotSocketDisconnected();
 	void slotSocketConnected();
 	void slotSocketError(QAbstractSocket::SocketError socketError);
 	void slotConnectionTimedOut();
+	void slotSocketHostResolved();
 };
 
 

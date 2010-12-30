@@ -107,7 +107,6 @@ SET(kvilib_SRCS
 	irc/KviUserIdentity.cpp
 	net/KviDnsResolver.cpp
 	net/KviHttpRequest.cpp
-	net/KviHttpRequestThread.cpp
 	net/KviNetUtils.cpp
 	net/KviSASL.cpp
 	net/kvi_socket.cpp
