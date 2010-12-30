@@ -33,7 +33,6 @@
 #include "KviKvsEventTriggers.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
-#include "KviError.h"
 #include "KviNetUtils.h"
 #include "KviOptions.h"
 #include "KviConsoleWindow.h"
@@ -588,13 +587,15 @@ void KviDccVideo::startConnection()
 	{
 		// PASSIVE CONNECTION
 		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Attempting a passive DCC VIDEO connection","dcc"));
-		int ret = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
-		if(ret != KviError_success)handleMarshalError(ret);
+		KviError::Code eError = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
+		if(eError != KviError::Success)
+			handleMarshalError(eError);
 	} else {
 		// ACTIVE CONNECTION
 		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Attempting an active DCC VIDEO connection","dcc"));
-		int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
-		if(ret != KviError_success)handleMarshalError(ret);
+		KviError::Code eError = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
+		if(eError != KviError::Success)
+			handleMarshalError(eError);
 	}
 }
 
@@ -674,7 +675,7 @@ void KviDccVideo::ownMessage(const QString &text, bool bUserFeedback)
 	{
 		if(cryptSessionInfo()->m_bDoEncrypt)
 		{
-			if(*d != KVI_TEXT_CRYPTESCAPE)
+			if(*d != KviMircCntrl::CryptEscape)
 			{
 				KviCString encrypted;
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(-1);
@@ -776,10 +777,10 @@ bool KviDccVideo::event(QEvent *e)
 		{
 			case KVI_DCC_THREAD_EVENT_ERROR:
 			{
-				int * err = ((KviThreadDataEvent<int> *)e)->getData();
-				QString ssss = KviError::getDescription(*err);
+				KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
+				QString ssss = KviError::getDescription(*pError);
 				output(KVI_OUT_DCCERROR,__tr2qs_ctx("ERROR: %Q","dcc"),&(ssss));
-				delete err;
+				delete pError;
 				return true;
 			}
 			break;
@@ -790,8 +791,10 @@ bool KviDccVideo::event(QEvent *e)
 				if(d.firstCharIs(0x01))
 				{
 					d.cutLeft(1);
-					if(d.lastCharIs(0x01))d.cutRight(1);
-					if(kvi_strEqualCIN("ACTION",d.ptr(),6))d.cutLeft(6);
+					if(d.lastCharIs(0x01))
+						d.cutRight(1);
+					if(kvi_strEqualCIN("ACTION",d.ptr(),6))
+						d.cutLeft(6);
 					d.stripLeftWhiteSpace();
 					output(KVI_OUT_ACTION,"%Q %s",&(m_pDescriptor->szNick),d.ptr());
 					if(!hasAttention())
@@ -912,9 +915,9 @@ bool KviDccVideo::event(QEvent *e)
 	return KviWindow::event(e);
 }
 
-void KviDccVideo::handleMarshalError(int err)
+void KviDccVideo::handleMarshalError(KviError::Code eError)
 {
-	QString ssss = KviError::getDescription(err);
+	QString ssss = KviError::getDescription(eError);
 	output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC Failed: %Q","dcc"),&ssss);
 }
 

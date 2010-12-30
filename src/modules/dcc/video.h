@@ -34,6 +34,7 @@
 #include "kvi_sockettype.h"
 #include "KviTalHBox.h"
 #include "KviThemedLabel.h"
+#include "KviError.h"
 
 #include <QLabel>
 #include <QToolButton>
@@ -142,7 +143,7 @@ protected:
 	virtual void ownMessage(const QString &text, bool bUserFeedback = true);
 	virtual void ownAction(const QString &text);
 protected slots:
-	void handleMarshalError(int err);
+	void handleMarshalError(KviError::Code eError);
 	void connected();
 	void startOrStopTalking(bool bStart);
 	void connectionInProgress();
