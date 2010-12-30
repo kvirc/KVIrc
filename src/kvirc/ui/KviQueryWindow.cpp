@@ -106,7 +106,7 @@ KviQueryWindow::KviQueryWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConso
 	// FIXME: #warning "Maybe tell the user all that we know about the remote szEnd(s)....channels..."
 
 	m_pIrcView->enableDnd(TRUE);
-        connect(m_pIrcView,SIGNAL(fileDropped(const QString &)),this,SLOT(slotDndEvents(const QString &)));
+	connect(m_pIrcView,SIGNAL(fileDropped(const QString &)),this,SLOT(slotDndEvents(const QString &)));
 
 	updateCaption();
 }
@@ -390,6 +390,7 @@ void KviQueryWindow::userAction(KviIrcMask * user, unsigned int uActionType)
 KviUserListEntry * KviQueryWindow::setTarget(const QString & szNick, const QString & szUser, const QString & szHost)
 {
 	KviUserListEntry * e = m_pUserListView->join(szNick,szUser,szHost);
+
 	if((!e->globalData()->avatar()) && (!szUser.isEmpty()) && (szUser != "*"))
 		m_pConsole->checkDefaultAvatar(e->globalData(),szNick,szUser,szHost);
 
@@ -499,20 +500,43 @@ void KviQueryWindow::setDeadQuery()
 void KviQueryWindow::setAliveQuery()
 {
 	m_iFlags &= ~KVI_QUERY_FLAG_DEAD;
-	m_pUserListView->setUserDataBase(connection()->userDataBase());
+
+	KviIrcUserDataBase * pUserDataBase = connection()->userDataBase();
+
+	m_pUserListView->setUserDataBase(pUserDataBase);
+
 	setType(KVI_WINDOW_TYPE_QUERY);
+
 	if(context())
 		context()->unregisterDeadQuery(this);
 	if(connection())
 		connection()->registerQuery(this);
+
+	QString szNick = target();
+	
+	if(!szNick.isEmpty())
+	{
+		QString szUser;
+		QString szHost;
+	
+		if(pUserDataBase)
+		{
+			KviIrcUserEntry * e = pUserDataBase->find(szNick);
+			if(e)
+			{
+				szUser = e->user();
+				szHost = e->host();
+			}
+		}
+	
+		setTarget(szNick,szUser,szHost);
+	}
 
 	// Update log file name
 	if(m_pIrcView->isLogging())
 		m_pIrcView->startLogging();
 
 	updateIcon();
-	updateCaption();
-	updateLabelText();
 }
 
 void KviQueryWindow::applyOptions()
