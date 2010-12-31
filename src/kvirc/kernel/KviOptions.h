@@ -344,8 +344,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolEnableChannelLinkToolTip 250                       /* ircview output */
 #define KviOption_boolEnableEscapeLinkToolTip 251                        /* ircview output */
 #define KviOption_boolUseDBusNotifier 252                                /* notifier */
+#define KviOption_boolUseKDENotifier 253                                 /* notifier */
 
-#define KVI_NUM_BOOL_OPTIONS 253
+#define KVI_NUM_BOOL_OPTIONS 254
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

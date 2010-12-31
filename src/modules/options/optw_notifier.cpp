@@ -142,64 +142,86 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 	int iRow = 0;
 
 	KviBoolSelector * b = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable the notifier","options"),KviOption_boolEnableNotifier);
-	QString tip = "<center>";
-	tip += __tr2qs_ctx("This is an option for the impatient: it allows to forcibly and permanently disable " \
+	QString szTip = "<center>";
+	szTip += __tr2qs_ctx("This is an option for the impatient: it allows to forcibly and permanently disable " \
 		"the notifier window. Please note that if this option is not activated then " \
 		"the notifier will NOT popup even if all the other options around specify " \
 		"to use it in response to particular events. Also note that this option " \
 		"will make all the /notifier.* commands fail silently.","options");
-	tip += "</center>";
-	mergeTip(b,tip);
+	szTip += "</center>";
+	mergeTip(b,szTip);
 
 	iRow++;
 
 	KviBoolSelector * b2;
+	KviBoolSelector * b3;
 
-#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_DBUS_SUPPORT)
-	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Use the DBus-based notifiers","options"),KviOption_boolUseDBusNotifier);
-	tip = "<center>";
-	tip += __tr2qs_ctx("This option uses the DBus-based notifier (like KDE KNotify) " \
+#ifdef COMPILE_KDE_SUPPORT
+	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Use the KDE notifier","options"),KviOption_boolUseKDENotifier);
+	szTip += __tr2qs_ctx("This option uses the KDE notification system " \
 		"instead of KVIrc one.<br>" \
 		"This is cool if you want to better integrate KVIrc inside KDE. " \
 		"Note that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's","options");
-	tip += "</center>";
-	mergeTip(b2,tip);
+	szTip += "</center>";
+	mergeTip(b2,szTip);
 	
 	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
 	connect(b,SIGNAL(toggled(bool)),b2,SLOT(setEnabled(bool)));
 	
 	iRow++;
-#endif //COMPILE_KDE_SUPPORT || COMPILE_DBUS_SUPPORT
+#endif // COMPILE_KDE_SUPPORT
+
+#ifdef COMPILE_DBUS_SUPPORT
+	b3 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Use the DBus-based notifiers","options"),KviOption_boolUseDBusNotifier);
+	szTip = "<center>";
+	szTip += __tr2qs_ctx("This option uses the DBus-based notifier instead of " \
+		"KVIrc one.<br>" \
+		"This is cool if you want to better integrate KVIrc inside your " \
+		"desktop environment. " \
+		"Note that this notifier isn't flexible and \"tabbed\" like KVIrc's","options");
+	szTip += "</center>";
+	mergeTip(b3,szTip);
+
+	b3->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
+	connect(b,SIGNAL(toggled(bool)),b3,SLOT(setEnabled(bool)));
+
+#ifdef COMPILE_KDE_SUPPORT
+	b3->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseKDENotifier));
+	connect(b2,SIGNAL(toggled(bool)),b3,SLOT(setEnabled(bool)));
+#endif
+	
+	iRow++;
+#endif // COMPILE_DBUS_SUPPORT
 
 #if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
-	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Don't show notifier when there is an active fullscreen window","options"),KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen);
+	b3 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Don't show notifier when there is an active fullscreen window","options"),KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen);
 
-	tip = "<center>";
-	tip += __tr2qs_ctx("This option stops the notifier from being displayed when there is an active fullscreen window. " \
+	szTip = "<center>";
+	szTip += __tr2qs_ctx("This option stops the notifier from being displayed when there is an active fullscreen window. " \
 		"This is useful for gaming sessions where you may be distracted by the notifier or it may even switch " \
 		"your game from fullscreen to window mode.","options");
-	tip += "</center>";
-	mergeTip(b2,tip);
+	szTip += "</center>";
+	mergeTip(b3,szTip);
 	
-	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
-	QObject::connect(b,SIGNAL(toggled(bool)),b2,SLOT(setEnabled(bool)));
+	b3->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
+	QObject::connect(b,SIGNAL(toggled(bool)),b3,SLOT(setEnabled(bool)));
 
 	iRow++;
 
 #endif //COMPILE_KDE_SUPPORT || COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
-	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable notifier window flashing","options"),KviOption_boolNotifierFlashing);
+	b3 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable notifier window flashing","options"),KviOption_boolNotifierFlashing);
 
-	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
-	QObject::connect(b,SIGNAL(toggled(bool)),b2,SLOT(setEnabled(bool)));
+	b3->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
+	QObject::connect(b,SIGNAL(toggled(bool)),b3,SLOT(setEnabled(bool)));
 
 	iRow++;
 	
-	b2 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable notifier window fade effect","options"),KviOption_boolNotifierFading);
+	b3 = addBoolSelector(0,iRow,0,iRow,__tr2qs_ctx("Enable notifier window fade effect","options"),KviOption_boolNotifierFading);
 
-	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
-	QObject::connect(b,SIGNAL(toggled(bool)),b2,SLOT(setEnabled(bool)));
+	b3->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
+	QObject::connect(b,SIGNAL(toggled(bool)),b3,SLOT(setEnabled(bool)));
 
 	iRow++;
 
@@ -213,14 +235,14 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 				0,86400,30,KVI_OPTION_BOOL(KviOption_boolEnableNotifier)),
 		SLOT(setEnabled(bool)));
 
-	connect(b2,
+	connect(b3,
 		SIGNAL(toggled(bool)),
 		addUIntSelector(g,__tr2qs_ctx("Notifier window opacity while active (mouseover)","options"),
 				KviOption_uintNotifierActiveTransparency,
 				0,100,90,KVI_OPTION_BOOL(KviOption_boolNotifierFading)),
 		SLOT(setEnabled(bool)));
 
-	connect(b2,
+	connect(b3,
 		SIGNAL(toggled(bool)),
 		addUIntSelector(g,__tr2qs_ctx("Notifier window opacity while inactive","options"),
 				KviOption_uintNotifierInactiveTransparency,

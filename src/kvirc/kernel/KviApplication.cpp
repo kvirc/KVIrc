@@ -105,8 +105,12 @@
 	#include <QPluginLoader>
 #endif
 
-#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_DBUS_SUPPORT)
+#ifdef COMPILE_DBUS_SUPPORT
 	#include <QDBusInterface>
+#endif
+
+#ifdef COMPILE_KDE_SUPPORT
+	#include <KNotification>
 #endif
 
 /*
@@ -697,49 +701,121 @@ int KviApplication::getGloballyUniqueId()
 
 void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QString & szMsg, unsigned int uMessageLifetime)
 {
-#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_DBUS_SUPPORT)
-	if(KVI_OPTION_BOOL(KviOption_boolUseDBusNotifier))
+/*
+We have different behaviour depending on support enabled at compile time (env)
+and options enabled by the user (opt).
+Let's see the scheme to understand which is choosen:
+
+1: env: DBus, KDE
+   opt: a: enabled, enabled   -> KDE
+        b: enabled, disabled  -> DBus
+        c: disabled, disabled -> KVIrc
+
+2: env: DBus, no KDE
+   opt: a: enabled  -> DBus
+        b: disabled -> KVIrc
+
+3: env: no DBus, no KDE -> KVIrc
+ ______           __________           ______________
+|      |         | Want KDE |         |  Scheme 1a   |
+| KDE  |---YES-->| Notifier |---YES-->| KDE Notifier |
+|______|         |__________|         |______________|
+   |                  |
+   NO                 NO
+   |                  |
+ __V___          _____V_____           _______________
+|      |        | Want DBus |         | Schemes 1b-2a |
+| DBus |--YES-->| Notifier  |---YES-->| DBus Notifier |
+|______|        |___________|         |_______________|
+   |                  |
+   NO                 NO
+   |                  |
+ __V__________________V_____
+|    Schemes 1c - 2b - 3    |
+|           KVIrc           |
+|___________________________|
+
+:)
+*/
+
+#ifdef COMPILE_KDE_SUPPORT
+	if(KVI_OPTION_BOOL(KviOption_boolUseKDENotifier))
 	{
+		// Scheme 1a: KDE
 		if(!pWnd)
 			return;
-
+		
 		QString szText = __tr2qs("Message arriving from %1:\n\n").arg(pWnd->target());
 		szText += KviMircCntrl::stripControlBytes(szMsg);
+		
+		QStringList actions;
+		actions << __tr2qs("View");
+		actions << __tr2qs("Ignore");
+		
+		QPixmap * pIcon = g_pIconManager->getSmallIcon(16);
+		
+		KNotification * pNotify = new KNotification("kvirc");
+		pNotify->setFlags(KNotification::Persistent);
+		pNotify->setText(szText);
+		pNotify->setActions(actions);
+		pNotify->setPixmap(*pIcon);
+		
+		connect(pNotify,SIGNAL(activated()),this,SLOT(slotOpenInbox()));
+		connect(pNotify,SIGNAL(action1Activated()),this,SLOT(slotOpenInbox()));
+		connect(pNotify,SIGNAL(action2Activated()),pNotify,SLOT(close()));
+		connect(pNotify,SIGNAL(ignored()),pNotify,SLOT(close()));
 
-		// org.freedesktop.Notifications.Notify
-		QVariantList args;
-		args << QString("KVIrc");                                // application name
-		args << QVariant(QVariant::UInt);                        // notification id
-		args << QString(g_pIconManager->getSmallIconName(16));   // application icon
-		args << __tr2qs("KVIrc messaging system");               // summary text
-		args << szText;                                          // detailed text
-		args << QStringList();                                   // actions, optional
-		args << QVariantMap();                                   // hints, optional
-		args << (int)uMessageLifetime*1000;                      // timeout in msecs
-
-		QDBusInterface * pNotify = new QDBusInterface("org.freedesktop.Notifications","/org/freedesktop/Notifications","org.freedesktop.Notifications",QDBusConnection::sessionBus(),this);
-		QDBusMessage reply = pNotify->callWithArgumentList(QDBus::Block,"Notify",args);
-		if(reply.type() == QDBusMessage::ErrorMessage)
-		{
-			QDBusError err = reply;
-			qDebug("DBus notify error\nID: %u\nName: %s\nMessage: %s\n",reply.arguments().first().toUInt(),qPrintable(err.name()),qPrintable(err.message()));
-		}
+		pNotify->sendEvent();
 	} else {
-#endif
-		KviModule * m = g_pModuleManager->getModule("notifier");
-		if(!m)
-			return;
+#endif // COMPILE_KDE_SUPPORT
+#ifdef COMPILE_DBUS_SUPPORT
+		if(KVI_OPTION_BOOL(KviOption_boolUseDBusNotifier))
+		{
+			// Scheme 1b-2a: DBus
+			if(!pWnd)
+				return;
 
-		KviNotifierMessageParam s;
-		s.pWindow = pWnd;
-		s.szIcon.sprintf("%d",iIconId);
-		s.szMessage = szMsg;
-		s.uMessageLifetime = uMessageLifetime;
+			QString szText = __tr2qs("Message arriving from %1:\n\n").arg(pWnd->target());
+			szText += KviMircCntrl::stripControlBytes(szMsg);
 
-		m->ctrl("notifier::message",(void *)&s);
-#if defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_DBUS_SUPPORT)
+			// org.freedesktop.Notifications.Notify
+			QVariantList args;
+			args << QString("KVIrc");                                // application name
+			args << QVariant(QVariant::UInt);                        // notification id
+			args << QString(g_pIconManager->getSmallIconName(16));   // application icon
+			args << __tr2qs("KVIrc messaging system");               // summary text
+			args << szText;                                          // detailed text
+			args << QStringList();                                   // actions, optional
+			args << QVariantMap();                                   // hints, optional
+			args << (int)uMessageLifetime*1000;                      // timeout in msecs
+
+			QDBusInterface * pNotify = new QDBusInterface("org.freedesktop.Notifications","/org/freedesktop/Notifications","org.freedesktop.Notifications",QDBusConnection::sessionBus(),this);
+			QDBusMessage reply = pNotify->callWithArgumentList(QDBus::Block,"Notify",args);
+			if(reply.type() == QDBusMessage::ErrorMessage)
+			{
+				QDBusError err = reply;
+				qDebug("DBus notify error\nID: %u\nName: %s\nMessage: %s\n",reply.arguments().first().toUInt(),qPrintable(err.name()),qPrintable(err.message()));
+			}
+		} else {
+#endif // COMPILE_DBUS_SUPPORT
+			// Scheme 1c-2b-3: KVIrc
+			KviModule * m = g_pModuleManager->getModule("notifier");
+			if(!m)
+				return;
+
+			KviNotifierMessageParam s;
+			s.pWindow = pWnd;
+			s.szIcon.sprintf("%d",iIconId);
+			s.szMessage = szMsg;
+			s.uMessageLifetime = uMessageLifetime;
+
+			m->ctrl("notifier::message",(void *)&s);
+#ifdef COMPILE_DBUS_SUPPORT
+		}
+#endif // COMPILE_DBUS_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	}
-#endif
+#endif // COMPILE_KDE_SUPPORT
 }
 
 QTextCodec * KviApplication::defaultTextCodec()
