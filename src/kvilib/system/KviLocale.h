@@ -27,14 +27,13 @@
 
 
 #include "kvi_settings.h"
-#include "KviQString.h"
 #include "KviCString.h"
-#include "KviPointerHashTable.h"
 
-#include <QApplication>
-
+class QApplication;
+class QString;
 class QTextCodec;
 class KviMessageCatalogue;
+template<typename Key,typename T> class KviPointerHashTable;
 
 namespace KviLocale
 {
@@ -97,7 +96,6 @@ public:
 	KviMessageCatalogue();
 	~KviMessageCatalogue();
 protected:
-	//KviPointerHashTable<const char *,KviTranslationEntry> * m_pMessages;
 	KviPointerHashTable<const char *,KviTranslationEntry> * m_pMessages;
 	QTextCodec                                            * m_pTextCodec;
 public:

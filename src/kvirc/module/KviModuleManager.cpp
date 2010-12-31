@@ -35,6 +35,7 @@
 #include "kvi_out.h"
 
 #include <QDir>
+#include <QLibrary>
 
 KviModuleManager * g_pModuleManager = 0;
 

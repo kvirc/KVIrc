@@ -26,19 +26,16 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviCString.h"
-#include "KviParameterList.h"
-#include <QLibrary>
-#include "KviPointerList.h"
+
 #include "KviModuleExtension.h"
 #include "KviKvsModuleInterface.h"
 
-#include "KviPointerHashTable.h"
+template<typename Key,typename T> class KviPointerHashTable;
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "KviCryptEngine.h"
-	#include "KviCryptEngineDescription.h"
-	#include "KviCryptEngineManager.h"
+	class KviCryptEngine;
+	class KviCryptEngineDescription;
+	class KviCryptEngineManager;
 #endif
 
 
@@ -57,7 +54,8 @@
 #endif
 
 class KviModule;
-
+class KviCString;
+class QLibrary;
 
 typedef bool (*KviModuleSystemRoutine)(KviModule *);
 typedef bool (*KviModuleCtrlRoutine)(KviModule *,const char *,void *);

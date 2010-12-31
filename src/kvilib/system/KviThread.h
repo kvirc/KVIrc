@@ -26,13 +26,12 @@
 
 #include "kvi_settings.h"
 #include "KviHeapObject.h"
-#include "KviCString.h"
+#include "KviPointerList.h"
 
 #include <QObject>
-#include <QSocketNotifier>
-#include "KviPointerList.h"
 #include <QEvent>
 
+class QSocketNotifier;
 
 //
 // Simple thread implementation

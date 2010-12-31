@@ -25,6 +25,7 @@
 #include "KviPackageIOEngine.h"
 #include "KviLocale.h"
 
+#include <QApplication>
 #include <QProgressDialog>
 #include <QLabel>
 

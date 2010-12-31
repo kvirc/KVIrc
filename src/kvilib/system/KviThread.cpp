@@ -40,12 +40,12 @@
 
 #include <errno.h>
 
-
 #include "KviCString.h"
+#include "KviQString.h"
 #include "kvi_settings.h"
 #include "KviError.h"
 
-
+#include <QSocketNotifier>
 #include <QApplication>
 
 

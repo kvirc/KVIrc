@@ -48,9 +48,8 @@
 #ifdef COMPILE_CRYPT_SUPPORT
 	
 	#include "KviMemory.h"
-	#include "KviMemory.h"
-
 	#include "KviPointerList.h"
+	#include "KviCryptEngineDescription.h"
 
 	static KviPointerList<KviCryptEngine> * g_pEngineList = 0;
 

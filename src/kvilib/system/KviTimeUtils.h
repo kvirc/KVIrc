@@ -32,10 +32,9 @@
 
 #include "kvi_settings.h"
 
-#include <QString>
-
 #include <time.h> // for time()
 
+class QString;
 
 #define kvi_unixTime() time(0)
 #define kvi_timeSpan(_time_now,_time_before) ((_time_now) - (_time_before))

@@ -706,10 +706,10 @@ static bool popup_kvs_fnc_isEmpty(KviKvsModuleFunctionCall * c)
 	@syntax:
 		$popup.currentItemId()
 	@short:
-		Returns the current id popup
+		Returns the popup item id that owns the executing code
 	@description:
-		When called inside a popup item's callback, this functions returns the id of that popup item.
-		This function returns $null when called outside a popup item's callback.
+		When called inside a popup item's callback, this function returns the id of the popup item.
+		Outside of callback code, $null is returned. 
 	@examples:
 		[example]
 			#clean any previous popup by the same name

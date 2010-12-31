@@ -31,7 +31,8 @@
 */
 
 #include "kvi_settings.h"
-#include "KviQString.h"
+
+class QString;
 
 /**
 * \namespace KviError

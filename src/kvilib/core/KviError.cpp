@@ -28,7 +28,7 @@
 #include "KviLocale.h"
 #include "KviError.h"
 #include "kvi_settings.h"
-
+#include "KviQString.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <winsock2.h> // for the WSAE* error codes

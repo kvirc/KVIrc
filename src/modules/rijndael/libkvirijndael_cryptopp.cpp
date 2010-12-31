@@ -30,6 +30,7 @@
 #include "KviLocale.h"
 #include "KviMircCntrl.h"
 #include "KviPointerList.h"
+#include "KviCryptEngineDescription.h"
 
 #include <cryptopp/aes.h>
 #include <cryptopp/blowfish.h>

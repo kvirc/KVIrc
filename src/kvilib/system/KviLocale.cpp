@@ -29,16 +29,18 @@
 #define _KVI_LOCALE_CPP_
 #include "KviLocale.h"
 
+#include <QApplication>
 #include <QtGlobal>
 #include <QTextCodec>
 #include <QDir>
 #include <QLocale>
 #include <QByteArray>
 
-#include "KviCString.h"
+#include "KviQString.h"
 #include "KviEnvironment.h"
 #include "KviFileUtils.h"
 #include "KviFile.h"
+#include "KviPointerHashTable.h"
 
 
 KVILIB_API KviMessageCatalogue           * g_pMainCatalogue       = 0;
@@ -1009,7 +1011,7 @@ namespace KviLocale
 		{
 			app->removeTranslator(g_pTranslator);
 			delete g_pTranslator;
-            g_pTranslator = 0;
+			g_pTranslator = 0;
 		}
 	}
 

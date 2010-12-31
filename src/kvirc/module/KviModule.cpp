@@ -30,10 +30,18 @@
 #include "KviKvsEventManager.h"
 #include "KviKvsEventHandler.h"
 #include "KviModuleManager.h"
+#include "KviCString.h"
+#include "KviPointerHashTable.h"
+
+#include <QLibrary>
 
 #include <time.h>
 
 #ifdef COMPILE_CRYPT_SUPPORT
+	#include "KviCryptEngine.h"
+	#include "KviCryptEngineDescription.h"
+	#include "KviCryptEngineManager.h"
+
 	extern KviCryptEngineManager * g_pCryptEngineManager;
 #endif
 

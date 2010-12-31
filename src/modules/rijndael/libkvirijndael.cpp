@@ -64,6 +64,7 @@
 #if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
 	#include "KviMemory.h"
 	#include "KviPointerList.h"
+	#include "KviCryptEngineDescription.h"
 
 	static KviPointerList<KviCryptEngine> * g_pEngineList = 0;
 

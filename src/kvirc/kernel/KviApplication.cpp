@@ -89,6 +89,10 @@
 	#include "KviIpcSentinel.h"
 #endif
 
+#ifdef COMPILE_CRYPT_SUPPORT
+	#include "KviCryptEngineManager.h"
+#endif
+
 #ifdef COMPILE_SSL_SUPPORT
 	#include "KviSSL.h"
 #endif

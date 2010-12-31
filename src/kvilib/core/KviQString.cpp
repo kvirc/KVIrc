@@ -1356,11 +1356,10 @@ namespace KviQString
 		if(uFlags & EscapeSpace)
 			szData->replace(" ","\\ ");
 
-		/*
-		szData->replace("(","\\(");
-		szData->replace(")","\\)");
-		szData->replace("-","\\-");
-		szData->replace("+","\\+");
-		*/
+		if(uFlags & EscapeParenthesis)
+		{
+			szData->replace("(","\\(");
+			szData->replace(")","\\)");
+		}
 	}
 }
