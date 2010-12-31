@@ -51,7 +51,8 @@ namespace KviQString
 		EscapeSpace = 0x1,
 		PermitVariables = 0x2,
 		PermitFunctions = 0x4,
-		PermitMultiLine = 0x8
+		PermitMultiLine = 0x8,
+		EscapeParenthesis = 0x16,
 	};
 
 	/**

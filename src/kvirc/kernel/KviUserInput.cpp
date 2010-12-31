@@ -83,7 +83,7 @@ namespace KviUserInput
 			static QString szUserFriendlyCommandlineContext(__tr2qs("commandline::userfriendly"));
 
 			QString szCmd = szData;
-			KviQString::escapeKvs(&szCmd);
+			KviQString::escapeKvs(&szCmd, KviQString::EscapeParenthesis);
 
 			KviKvsScript kvs(szContext.isEmpty() ? szUserFriendlyCommandlineContext : szContext,szCmd);
 			return (kvs.run(pWindow,0,0) != KviKvsScript::Error);
