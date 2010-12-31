@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviIrcMessage.h"
 #include "KviIrcConnection.h"
 #include "KviConsoleWindow.h"
