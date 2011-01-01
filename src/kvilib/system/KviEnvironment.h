@@ -35,6 +35,10 @@
 
 #include <stdlib.h>
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	#include <windows.h>
+#endif
+
 namespace KviEnvironment
 {
 
@@ -49,7 +53,7 @@ namespace KviEnvironment
 	}
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#include <windows.h>
+
 	inline void setVariable(const char * szName,const char * szValue)
 	{
 		SetEnvironmentVariable(szName,szValue);
