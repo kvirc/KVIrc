@@ -183,7 +183,7 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * pcPlainTex
 	}
 	
 	szOutBuffer = szCipher.c_str();
-	szOutBuffer.prepend(KVI_TEXT_CRYPTESCAPE);
+	szOutBuffer.prepend(KviMircCntrl::CryptEscape);
 	return KviCryptEngine::Encrypted;
 }
 
@@ -201,7 +201,7 @@ KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * pcInBuffer
 	for(unsigned int u=0;u<sizeof(iv);u++)
 		iv[u] = 0x00;
 
-	if(static_cast<int>(szIn[0]) != KVI_TEXT_CRYPTESCAPE)
+	if(static_cast<int>(szIn[0]) != KviMircCntrl::CryptEscape)
 	{
 		szPlainText = pcInBuffer;
 		return KviCryptEngine::DecryptOkWasPlainText;
@@ -501,8 +501,8 @@ static bool rijndael_module_init(KviModule * m)
 	d->m_szName = "Rijndael128Hex";
 	d->m_szAuthor = "Kai Wasserbäch";
 	d->m_szDescription = QString(szFormat).arg(__tr2qs("hexadecimal")).arg(128);
-	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+	d->m_iFlags = KviCryptEngine::CanEncrypt | KviCryptEngine::CanDecrypt |
+		KviCryptEngine::WantEncryptKey | KviCryptEngine::WantDecryptKey;
 	d->m_allocFunc = allocRijndael128HexEngine;
 	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -511,8 +511,8 @@ static bool rijndael_module_init(KviModule * m)
 	d->m_szName = "Rijndael192Hex";
 	d->m_szAuthor = "Kai Wasserbäch";
 	d->m_szDescription = QString(szFormat).arg(__tr2qs("hexadecimal")).arg(192);
-	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+	d->m_iFlags = KviCryptEngine::CanEncrypt | KviCryptEngine::CanDecrypt |
+		KviCryptEngine::WantEncryptKey | KviCryptEngine::WantDecryptKey;
 	d->m_allocFunc = allocRijndael192HexEngine;
 	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -521,8 +521,8 @@ static bool rijndael_module_init(KviModule * m)
 	d->m_szName = "Rijndael256Hex";
 	d->m_szAuthor = "Kai Wasserbäch";
 	d->m_szDescription = QString(szFormat).arg(__tr2qs("hexadecimal")).arg(256);
-	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+	d->m_iFlags = KviCryptEngine::CanEncrypt | KviCryptEngine::CanDecrypt |
+		KviCryptEngine::WantEncryptKey | KviCryptEngine::WantDecryptKey;
 	d->m_allocFunc = allocRijndael256HexEngine;
 	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -531,8 +531,8 @@ static bool rijndael_module_init(KviModule * m)
 	d->m_szName = "Rijndael128Base64";
 	d->m_szAuthor = "Kai Wasserbäch";
 	d->m_szDescription = QString(szFormat).arg(__tr2qs("base64")).arg(128);
-	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+	d->m_iFlags = KviCryptEngine::CanEncrypt | KviCryptEngine::CanDecrypt |
+		KviCryptEngine::WantEncryptKey | KviCryptEngine::WantDecryptKey;
 	d->m_allocFunc = allocRijndael128Base64Engine;
 	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -541,8 +541,8 @@ static bool rijndael_module_init(KviModule * m)
 	d->m_szName = "Rijndael192Base64";
 	d->m_szAuthor = "Kai Wasserbäch";
 	d->m_szDescription = QString(szFormat).arg(__tr2qs("base64")).arg(192);
-	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+	d->m_iFlags = KviCryptEngine::CanEncrypt | KviCryptEngine::CanDecrypt |
+		KviCryptEngine::WantEncryptKey | KviCryptEngine::WantDecryptKey;
 	d->m_allocFunc = allocRijndael192Base64Engine;
 	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -551,8 +551,8 @@ static bool rijndael_module_init(KviModule * m)
 	d->m_szName = "Rijndael256Base64";
 	d->m_szAuthor = "Kai Wasserbäch";
 	d->m_szDescription = QString(szFormat).arg(__tr2qs("base64")).arg(256);
-	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+	d->m_iFlags = KviCryptEngine::CanEncrypt | KviCryptEngine::CanDecrypt |
+		KviCryptEngine::WantEncryptKey | KviCryptEngine::WantDecryptKey;
 	d->m_allocFunc = allocRijndael256Base64Engine;
 	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
@@ -573,8 +573,8 @@ static bool rijndael_module_init(KviModule * m)
 		"if you want to use CBC mode you must prefix\n" \
 		"your key(s) with \"cbc:\".\n\n" \
 		"This is the Crypto++ based version, not relying on embedded code\n");
-	d->m_iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
-	KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
+	d->m_iFlags = KviCryptEngine::CanEncrypt | KviCryptEngine::CanDecrypt |
+		KviCryptEngine::WantEncryptKey | KviCryptEngine::WantDecryptKey;
 	d->m_allocFunc = allocMircryptionEngine;
 	d->m_deallocFunc = deallocRijndaelCryptEngine;
 	m->registerCryptEngine(d);
