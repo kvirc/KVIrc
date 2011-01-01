@@ -22,14 +22,14 @@
 //
 //=============================================================================
 
-#include "aliaseditor.h"
+#include "AliasEditorWindow.h"
 
 #include "KviModule.h"
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
 
-KviAliasEditorWindow * g_pAliasEditorWindow = 0;
+AliasEditorWindow * g_pAliasEditorWindow = 0;
 KviModule * g_pAliasEditorModule = 0;
 
 
@@ -51,7 +51,7 @@ static bool aliaseditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	if(!g_pAliasEditorWindow)
 	{
-		g_pAliasEditorWindow = new KviAliasEditorWindow(c->window()->frame());
+		g_pAliasEditorWindow = new AliasEditorWindow(c->window()->frame());
 		c->window()->frame()->addWindow(g_pAliasEditorWindow);
 	}
 

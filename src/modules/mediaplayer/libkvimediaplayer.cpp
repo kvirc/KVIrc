@@ -24,11 +24,11 @@
 //
 //=============================================================================
 
-#include "mp_interface.h"
-#include "mp_amipinterface.h"
-#include "mp_mprisinterface.h"
-#include "mp_winampinterface.h"
-#include "mp_xmmsinterface.h"
+#include "MpInterface.h"
+#include "MpAmipInterface.h"
+#include "MpMprisInterface.h"
+#include "MpWinampInterface.h"
+#include "MpXmmsInterface.h"
 
 #include "KviModule.h"
 #include "KviOptions.h"
@@ -36,19 +36,19 @@
 #include "kvi_out.h"
 #include <QUrl>
 
-static KviPointerList<KviMediaPlayerInterfaceDescriptor> * g_pDescriptorList = 0;
+static KviPointerList<MpInterfaceDescriptor> * g_pDescriptorList = 0;
 
-static KviMediaPlayerInterface * g_pMPInterface = 0;
+static MpInterface * g_pMPInterface = 0;
 
-static KviMediaPlayerInterface * auto_detect_player(KviWindow * pOut = 0)
+static MpInterface * auto_detect_player(KviWindow * pOut = 0)
 {
 	int iBest = 0;
-	KviMediaPlayerInterface * pBest = 0;
-	KviMediaPlayerInterfaceDescriptor * d;
-	KviMediaPlayerInterfaceDescriptor * pDBest = 0;
+	MpInterface * pBest = 0;
+	MpInterfaceDescriptor * d;
+	MpInterfaceDescriptor * pDBest = 0;
 	for(d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
 	{
-		KviMediaPlayerInterface * i = d->instance();
+		MpInterface * i = d->instance();
 		if(i)
 		{
 			int iScore = i->detect(false);
@@ -74,7 +74,7 @@ static KviMediaPlayerInterface * auto_detect_player(KviWindow * pOut = 0)
 		// no sure player found... try again with a destructive test
 		for(d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
 		{
-			KviMediaPlayerInterface * i = d->instance();
+			MpInterface * i = d->instance();
 			if(i)
 			{
 				int iScore = i->detect(true);
@@ -460,7 +460,7 @@ MP_KVS_COMMAND(setPlayer)
 		KVSM_PARAMETER("player",KVS_PT_STRING,0,szPlayer)
 	KVSM_PARAMETERS_END(c)
 
-	for(KviMediaPlayerInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
+	for(MpInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
 	{
 		if(d->name() == szPlayer)
 		{
@@ -523,7 +523,7 @@ MP_KVS_FUNCTION(playerList)
 	KviKvsArray* pArray = new KviKvsArray();
 	int id=0;
 
-	for(KviMediaPlayerInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
+	for(MpInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
 	{
 		pArray->set(id++,new KviKvsVariant(d->name()));
 	}
@@ -1456,16 +1456,16 @@ MP_KVS_FUNCTION(status)
 // 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
-	KviMediaPlayerInterface::PlayerStatus eStat = g_pMPInterface->status();
+	MpInterface::PlayerStatus eStat = g_pMPInterface->status();
 	switch(eStat)
 	{
-		case KviMediaPlayerInterface::Stopped:
+		case MpInterface::Stopped:
 			c->returnValue()->setString("stopped");
 		break;
-		case KviMediaPlayerInterface::Playing:
+		case MpInterface::Playing:
 			c->returnValue()->setString("playing");
 		break;
-		case KviMediaPlayerInterface::Paused:
+		case MpInterface::Paused:
 			c->returnValue()->setString("paused");
 		break;
 		default:
@@ -1606,24 +1606,24 @@ MP_KVS_COMMAND(setShuffle)
 
 static bool mediaplayer_module_init( KviModule * m )
 {
-	g_pDescriptorList = new KviPointerList<KviMediaPlayerInterfaceDescriptor>;
+	g_pDescriptorList = new KviPointerList<MpInterfaceDescriptor>;
 	g_pDescriptorList->setAutoDelete(true);
 
 #if (defined(COMPILE_DBUS_SUPPORT) && !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC) && !defined(COMPILE_ON_MINGW))
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpAudaciousInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousClassicInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmmsInterface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmms2Interface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviBmpxInterface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAmarok2Interface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviQmmpInterface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviSongbirdInterface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviTotemInterface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviVlcInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpXmms2Interface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpBmpxInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpAmarok2Interface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpQmmpInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpSongbirdInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpTotemInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpVlcInterface));
 #endif
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAmipInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpAmipInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviWinampInterface));
 #endif
 	g_pMPInterface = 0;
@@ -1632,7 +1632,7 @@ static bool mediaplayer_module_init( KviModule * m )
 	{
 		g_pMPInterface = auto_detect_player();
 	} else {
-		for(KviMediaPlayerInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
+		for(MpInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
 		{
 			if(d->name() == KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer))
 			{
@@ -1724,7 +1724,7 @@ static bool mediaplayer_module_ctrl(KviModule *,const char * operation,void * pa
 	{
 		// we expect param to be a pointer to QStringList
 		QStringList * l = (QStringList *)param;
-		for(KviMediaPlayerInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
+		for(MpInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
 		{
 			l->append(d->name());
 		}

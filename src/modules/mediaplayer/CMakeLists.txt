@@ -2,12 +2,12 @@
 
 SET(kvimediaplayer_SRCS
 	libkvimediaplayer.cpp
-	mp_interface.cpp
-	mp_mp3.cpp
-	mp_winampinterface.cpp
-	mp_xmmsinterface.cpp
-	mp_amipinterface.cpp
-	mp_mprisinterface.cpp
+	MpInterface.cpp
+	MpMp3.cpp
+	MpWinampInterface.cpp
+	MpXmmsInterface.cpp
+	MpAmipInterface.cpp
+	MpMprisInterface.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

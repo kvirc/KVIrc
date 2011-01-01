@@ -22,9 +22,9 @@
 //
 //=============================================================================
 
-#include "helpwidget.h"
-#include "helpwindow.h"
-#include "index.h"
+#include "HelpWidget.h"
+#include "HelpWindow.h"
+#include "HelpIndex.h"
 #include "KviLocale.h"
 #include "KviModule.h"
 #include "KviFileUtils.h"
@@ -36,9 +36,9 @@
 #include <QFileInfo>
 #include <QSplitter>
 
-Index        * g_pDocIndex = 0;
-KviPointerList<KviHelpWidget> * g_pHelpWidgetList = 0;
-KviPointerList<KviHelpWindow> * g_pHelpWindowList = 0;
+HelpIndex        * g_pDocIndex = 0;
+KviPointerList<HelpWidget> * g_pHelpWidgetList = 0;
+KviPointerList<HelpWindow> * g_pHelpWindowList = 0;
 
 /*
 	@doc: help.open
@@ -177,7 +177,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	if(!c->switches()->find('n',"new"))
 	{
-		KviHelpWidget * w = (KviHelpWidget *)c->window()->frame()->findChild<KviHelpWidget *>("help_widget");
+		HelpWidget * w = (HelpWidget *)c->window()->frame()->findChild<HelpWidget *>("help_widget");
 
 		if(w)
 		{
@@ -187,11 +187,11 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	}
 	if(c->switches()->find('m',"mdi"))
 	{
-		KviHelpWindow *w = new KviHelpWindow(c->window()->frame(),"Help browser");
+		HelpWindow *w = new HelpWindow(c->window()->frame(),"Help browser");
 		w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
 		c->window()->frame()->addWindow(w);
 	} else {
-		KviHelpWidget *w = new KviHelpWidget(c->window()->frame()->splitter(),
+		HelpWidget *w = new HelpWidget(c->window()->frame()->splitter(),
 			c->window()->frame(),true);
 		w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
 		w->show();
@@ -207,15 +207,15 @@ static bool help_module_init(KviModule * m)
 	g_pApp->getLocalKvircDirectory(szDocList,KviApplication::Help,"help.doclist." KVI_SOURCES_DATE);
 	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApplication::Help);
 
-	g_pDocIndex = new Index(szHelpDir,szDocList);
+	g_pDocIndex = new HelpIndex(szHelpDir,szDocList);
 	g_pDocIndex->setDocListFile(szDocList);
 
 	g_pApp->getLocalKvircDirectory(szHelpDir,KviApplication::Help,"help.dict." KVI_SOURCES_DATE);
 	g_pDocIndex->setDictionaryFile(szHelpDir);
 
-	g_pHelpWidgetList = new KviPointerList<KviHelpWidget>;
+	g_pHelpWidgetList = new KviPointerList<HelpWidget>;
 	g_pHelpWidgetList->setAutoDelete(false);
-	g_pHelpWindowList = new KviPointerList<KviHelpWindow>;
+	g_pHelpWindowList = new KviPointerList<HelpWindow>;
 	g_pHelpWindowList->setAutoDelete(false);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",help_kvs_cmd_open);

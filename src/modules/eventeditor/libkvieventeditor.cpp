@@ -22,13 +22,13 @@
 //
 //=============================================================================
 
-#include "eventeditor.h"
+#include "EventEditorWindow.h"
 
 #include "KviModule.h"
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
-KviEventEditorWindow * g_pEventEditorWindow = 0;
+EventEditorWindow * g_pEventEditorWindow = 0;
 
 
 /*
@@ -49,7 +49,7 @@ static bool eventeditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	if(!g_pEventEditorWindow)
 	{
-		g_pEventEditorWindow = new KviEventEditorWindow(c->window()->frame());
+		g_pEventEditorWindow = new EventEditorWindow(c->window()->frame());
 		c->window()->frame()->addWindow(g_pEventEditorWindow);
 	}
 

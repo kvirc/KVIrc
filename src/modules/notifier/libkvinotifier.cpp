@@ -23,8 +23,8 @@
 //
 //=============================================================================
 
-#include "notifierwindow.h"
-#include "notifiermessage.h"
+#include "NotifierWindow.h"
+#include "NotifierMessage.h"
 
 #include "KviModule.h"
 #include "KviKvsVariant.h"
@@ -38,7 +38,7 @@
 
 #include <QSplitter>
 
-KviNotifierWindow * g_pNotifierWindow = 0;
+NotifierWindow * g_pNotifierWindow = 0;
 kvi_time_t g_tNotifierDisabledUntil = 0;
 
 /*
@@ -119,7 +119,7 @@ static bool notifier_kvs_cmd_message(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	if(!g_pNotifierWindow)
-		g_pNotifierWindow = new KviNotifierWindow();
+		g_pNotifierWindow = new NotifierWindow();
 
 	QString szIco="";
 	QString szWnd="";
@@ -293,7 +293,7 @@ static bool notifier_module_ctrl(KviModule *, const char * pcOperation, void * p
 		return false;
 
 	if(!g_pNotifierWindow)
-		g_pNotifierWindow = new KviNotifierWindow();
+		g_pNotifierWindow = new NotifierWindow();
 
 	g_pNotifierWindow->addMessage(p->pWindow,p->szIcon,p->szMessage,p->uMessageLifetime);
 	g_pNotifierWindow->doShow(KVI_OPTION_BOOL(KviOption_boolNotifierFading) ? true : false);

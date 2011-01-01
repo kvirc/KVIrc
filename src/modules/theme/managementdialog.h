@@ -45,11 +45,11 @@ class QLabel;
 class KviDynamicToolTip;
 
 
-class KviThemeListWidgetItem : public KviTalListWidgetItem
+class ThemeListWidgetItem : public KviTalListWidgetItem
 {
 public:
-	KviThemeListWidgetItem(KviTalListWidget * box,KviThemeInfo * inf);
-	virtual ~KviThemeListWidgetItem();
+	ThemeListWidgetItem(KviTalListWidget * box,KviThemeInfo * inf);
+	virtual ~ThemeListWidgetItem();
 public:
 	KviThemeInfo   * m_pThemeInfo;
 public:
@@ -57,21 +57,21 @@ public:
 };
 
 
-class KviThemeManagementDialog : public QWidget
+class ThemeManagementDialog : public QWidget
 {
 	Q_OBJECT
 public:
-	KviThemeManagementDialog(QWidget * parent);
-	virtual ~KviThemeManagementDialog();
+	ThemeManagementDialog(QWidget * parent);
+	virtual ~ThemeManagementDialog();
 protected:
-	static KviThemeManagementDialog   * m_pInstance;
+	static ThemeManagementDialog   * m_pInstance;
 	KviTalIconAndRichTextItemDelegate * m_pItemDelegate;
 	KviTalListWidget    * m_pListWidget;
 	KviTalPopupMenu     * m_pContextPopup;
 	QToolButton         * m_pDeleteThemeButton;
 	QToolButton         * m_pPackThemeButton;
 public:
-	static KviThemeManagementDialog * instance(){ return m_pInstance; };
+	static ThemeManagementDialog * instance(){ return m_pInstance; };
 	static void display(bool bTopLevel);
 	static void cleanup();
 protected:

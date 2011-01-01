@@ -3,12 +3,12 @@
 SUBDIRS(caps)
 
 SET(kvifiletransferwindow_MOC_HDRS
-	filetransferwindow.h
+	FileTransferWindow.h
 )
 
 SET(kvifiletransferwindow_SRCS
 	libkvifiletransferwindow.cpp
-	filetransferwindow.cpp
+	FileTransferWindow.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

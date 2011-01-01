@@ -22,8 +22,8 @@
 //
 //=============================================================================
 
-#include "logviewwidget.h"
-#include "logviewmdiwindow.h"
+#include "LogViewWidget.h"
+#include "LogViewWindow.h"
 
 #include "KviConfigurationFile.h"
 #include "KviModule.h"
@@ -33,7 +33,7 @@
 #include "KviApplication.h"
 
 static QRect                 g_rectLogViewGeometry;
-KviLogViewMDIWindow        * g_pLogViewWindow = 0;
+LogViewWindow        * g_pLogViewWindow = 0;
 
 #define LOGVIEW_MODULE_EXTENSION_NAME "Log viewer extension"
 
@@ -100,7 +100,7 @@ static KviModuleExtension * logview_extension_alloc(KviModuleExtensionAllocStruc
 			}
 		}
 
-		g_pLogViewWindow = new KviLogViewMDIWindow(s->pDescriptor,g_pFrame);
+		g_pLogViewWindow = new LogViewWindow(s->pDescriptor,g_pFrame);
 		g_pFrame->addWindow(g_pLogViewWindow,!bCreateMinimized);
 		if(bCreateMinimized)g_pLogViewWindow->minimize();
 		return g_pLogViewWindow;

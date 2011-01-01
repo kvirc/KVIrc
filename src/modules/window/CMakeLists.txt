@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/window
 
 SET(kviwindow_MOC_HDRS
-	userwindow.h
+	UserWindow.h
 )
 
 SET(kviwindow_SRCS
 	libkviwindow.cpp
-	userwindow.cpp
+	UserWindow.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

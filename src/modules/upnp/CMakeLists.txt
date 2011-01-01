@@ -3,19 +3,19 @@
 SET(kviupnp_SRCS
 	igdcontrolpoint.cpp
 	libkviupnp.cpp
-	manager.cpp
-	rootservice.cpp
-	service.cpp
-	ssdpconnection.cpp
-	wanconnectionservice.cpp
-	xmlfunctions.cpp
+	Manager.cpp
+	RootService.cpp
+	Service.cpp
+	SsdpConnection.cpp
+	WanConnectionService.cpp
+	XmlFunctions.cpp
 )
 
 SET(kviupnp_MOC_HDRS
 	igdcontrolpoint.h
-	manager.h
-	service.h
-	ssdpconnection.h
+	Manager.h
+	Service.h
+	SsdpConnection.h
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

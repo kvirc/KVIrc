@@ -31,7 +31,7 @@
 #ifdef COMPILE_CRYPT_SUPPORT
 
 	#include "KviCryptEngine.h"
-	#include "rijndael.h"
+	#include "Rijndael.h"
 
 	class KviRijndaelEngine : public KviCryptEngine
 	{

@@ -24,7 +24,7 @@
 //
 //=============================================================================
 
-#include "broker.h"
+#include "DccBroker.h"
 
 #ifdef COMPILE_DCC_CANVAS
 	#include <QCanvas>
@@ -35,7 +35,7 @@
 	#include <QTable>
 	#include <QSplitter>
 
-	class KviCanvasWidget;
+	class DccCanvasWidget;
 
 	#define KVI_CANVAS_RTTI_CONTROL_TYPE_RECTANGLE 1
 	#define KVI_CANVAS_RTTI_CONTROL_TYPE_LINE 2
@@ -191,7 +191,7 @@
 	{
 		Q_OBJECT
 	public:
-		KviCanvasView(QCanvas * c,KviCanvasWidget * cw,QWidget * par);
+		KviCanvasView(QCanvas * c,DccCanvasWidget * cw,QWidget * par);
 		~KviCanvasView();
 	public:
 		enum State { Idle, SelectOrigin };
@@ -205,7 +205,7 @@
 			LeftBottom, RightBottom, Scale, SinglePoint, Rotate
 		};
 	protected:
-		KviCanvasWidget * m_pCanvasWidget;
+		DccCanvasWidget * m_pCanvasWidget;
 
 		// Insertion of objects
 		State             m_state;
@@ -280,13 +280,13 @@
 	};
 
 
-	class KviCanvasWidget : public QWidget
+	class DccCanvasWidget : public QWidget
 	{
 		friend class KviCanvasView;
 		Q_OBJECT
 	public:
-		KviCanvasWidget(QWidget * par);
-		~KviCanvasWidget();
+		DccCanvasWidget(QWidget * par);
+		~DccCanvasWidget();
 	protected:
 		QSplitter     * m_pSplitter;
 		QCanvas       * m_pCanvas;

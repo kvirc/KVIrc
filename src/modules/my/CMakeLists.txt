@@ -1,14 +1,14 @@
 # CMakeLists for src/modules/my
 
 SET(kvimy_MOC_HDRS
-	idle.h
+	Idle.h
 )
 
 SET(kvimy_SRCS
 	libkvimy.cpp
-	idle_x11.cpp
-	idle_mac.cpp
-	idle.cpp
+	Idle_x11.cpp
+	Idle_mac.cpp
+	Idle.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

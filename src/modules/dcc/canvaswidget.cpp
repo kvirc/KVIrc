@@ -457,7 +457,7 @@
 	//
 	// KviCanvasView
 	//
-	KviCanvasView::KviCanvasView(QCanvas * c,KviCanvasWidget * cw,QWidget * par)
+	KviCanvasView::KviCanvasView(QCanvas * c,DccCanvasWidget * cw,QWidget * par)
 	: QCanvasView(c,par)
 	{
 		m_pCanvasWidget = cw;
@@ -1451,9 +1451,9 @@
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
-	// KviCanvasWidget
+	// DccCanvasWidget
 	//
-	KviCanvasWidget::KviCanvasWidget(QWidget * par)
+	DccCanvasWidget::DccCanvasWidget(QWidget * par)
 	: QWidget(par,"canvas_widget")
 	{
 		m_pCanvas = new QCanvas(this);
@@ -1495,11 +1495,11 @@
 		m_pMenuBar->insertItem(__tr2qs_ctx("&Insert","dcc"),add);
 	}
 
-	KviCanvasWidget::~KviCanvasWidget()
+	DccCanvasWidget::~DccCanvasWidget()
 	{
 	}
 
-	void KviCanvasWidget::resizeEvent(QResizeEvent *)
+	void DccCanvasWidget::resizeEvent(QResizeEvent *)
 	{
 		int h = m_pMenuBar->sizeHint().height();
 		m_pMenuBar->setGeometry(0,0,width(),h);

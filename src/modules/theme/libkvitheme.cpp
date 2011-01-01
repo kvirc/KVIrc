@@ -23,7 +23,7 @@
 //=============================================================================
 
 #include "managementdialog.h"
-#include "themefunctions.h"
+#include "ThemeFunctions.h"
 
 #include "KviMessageBox.h"
 #include "KviModule.h"
@@ -70,7 +70,7 @@ static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	QString szError;
-	if(!KviThemeFunctions::installThemePackage(szThemePackFile,szError))
+	if(!ThemeFunctions::installThemePackage(szThemePackFile,szError))
 	{
 		c->error(__tr2qs_ctx("Error installing theme package: %Q","theme"),&szError);
 		return false;
@@ -245,7 +245,7 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 		szFileName+=".png";
 
 	QString szError;
-	if(!KviThemeFunctions::makeKVIrcScreenshot(szFileName))
+	if(!ThemeFunctions::makeKVIrcScreenshot(szFileName))
 	{
 		c->error(__tr2qs_ctx("Error making screenshot","theme")); // FIXME: a nicer error ?
 		return false;
@@ -273,7 +273,7 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall *c)
 {
 
-	KviThemeManagementDialog::display(c->hasSwitch('t',"toplevel"));
+	ThemeManagementDialog::display(c->hasSwitch('t',"toplevel"));
 	return true;
 }
 
@@ -297,7 +297,7 @@ static bool theme_module_init(KviModule *m)
 
 static bool theme_module_cleanup(KviModule *m)
 {
-	KviThemeManagementDialog::cleanup();
+	ThemeManagementDialog::cleanup();
 
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);
@@ -309,7 +309,7 @@ static bool theme_module_cleanup(KviModule *m)
 
 static bool theme_module_can_unload(KviModule *)
 {
-	return (!KviThemeManagementDialog::instance());
+	return (!ThemeManagementDialog::instance());
 }
 
 

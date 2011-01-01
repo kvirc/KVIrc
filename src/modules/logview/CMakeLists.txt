@@ -3,13 +3,13 @@
 SUBDIRS(caps)
 
 SET(kvilogview_MOC_HDRS
-	logviewmdiwindow.h
+	LogViewWindow.h
 )
 
 SET(kvilogview_SRCS
 	libkvilogview.cpp
-	logviewwidget.cpp
-	logviewmdiwindow.cpp
+	LogViewWidget.cpp
+	LogViewWindow.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

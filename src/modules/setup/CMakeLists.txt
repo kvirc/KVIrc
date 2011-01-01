@@ -5,12 +5,12 @@ IF(WIN32)
 ENDIF()
 
 SET(kvisetup_MOC_HDRS
-	setupwizard.h
+	SetupWizard.h
 )
 
 SET(kvisetup_SRCS
 	libkvisetup.cpp
-	setupwizard.cpp
+	SetupWizard.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

@@ -25,12 +25,12 @@
 //
 //=============================================================================
 
-#include "aboutdialog.h"
+#include "AboutDialog.h"
 
 #include "KviModule.h"
 #include "KviLocale.h"
 
-KviAboutDialog * g_pAboutDialog = 0;
+AboutDialog * g_pAboutDialog = 0;
 
 /*
 	@doc: about.kvirc
@@ -52,7 +52,7 @@ static bool about_kvs_command_kvirc(KviKvsModuleCommandCall *)
 {
  	if(!g_pAboutDialog)
 	{
-		g_pAboutDialog = new KviAboutDialog();
+		g_pAboutDialog = new AboutDialog();
 		g_pAboutDialog->show();
 	} else {
 		g_pAboutDialog->raise();

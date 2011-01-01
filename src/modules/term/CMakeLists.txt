@@ -1,14 +1,14 @@
 # CMakeLists for src/modules/term
 
 SET(kviterm_MOC_HDRS
-	termwidget.h
-	termwindow.h
+	TermWidget.h
+	TermWindow.h
 )
 
 SET(kviterm_SRCS
 	libkviterm.cpp
-	termwidget.cpp
-	termwindow.cpp
+	TermWidget.cpp
+	TermWindow.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

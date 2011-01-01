@@ -23,8 +23,8 @@
 //=============================================================================
 
 #include "managementdialog.h"
-#include "packaddondialog.h"
-#include "addonfunctions.h"
+#include "PackAddonDialog.h"
+#include "AddonFunctions.h"
 
 #include "KviApplication.h"
 #include "KviLocale.h"
@@ -56,10 +56,10 @@
 #include <QAbstractTextDocumentLayout>
 
 
-KviScriptManagementDialog * KviScriptManagementDialog::m_pInstance = 0;
+AddonManagementDialog * AddonManagementDialog::m_pInstance = 0;
 extern QRect g_rectManagementDialogGeometry;
 
-KviScriptAddonListViewItem::KviScriptAddonListViewItem(KviTalListWidget *v,KviKvsScriptAddon * a)
+AddonListViewItem::AddonListViewItem(KviTalListWidget *v,KviKvsScriptAddon * a)
 : KviTalListWidgetItem(v)
 {
 	m_pAddon = new KviKvsScriptAddon(*a);
@@ -81,12 +81,12 @@ KviScriptAddonListViewItem::KviScriptAddonListViewItem(KviTalListWidget *v,KviKv
 	if (p) setIcon(*p);
 }
 
-KviScriptAddonListViewItem::~KviScriptAddonListViewItem()
+AddonListViewItem::~AddonListViewItem()
 {
 	delete m_pAddon;
 }
 
-KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
+AddonManagementDialog::AddonManagementDialog(QWidget * p)
 : QWidget(p)
 {
 	setWindowTitle(__tr2qs_ctx("Manage Script-Based Addons","addon"));
@@ -186,13 +186,13 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 		g_rectManagementDialogGeometry.y());
 }
 
-KviScriptManagementDialog::~KviScriptManagementDialog()
+AddonManagementDialog::~AddonManagementDialog()
 {
 	g_rectManagementDialogGeometry = QRect(pos().x(),pos().y(),size().width(),size().height());
 	m_pInstance = 0;
 }
 
-void KviScriptManagementDialog::fillListView()
+void AddonManagementDialog::fillListView()
 {
 	m_pListWidget->clear();
 	KviPointerHashTable<QString,KviKvsScriptAddon> * d = KviKvsScriptAddonManager::instance()->addonDict();
@@ -201,14 +201,14 @@ void KviScriptManagementDialog::fillListView()
 
 	while(KviKvsScriptAddon * a = it.current())
 	{
-		new KviScriptAddonListViewItem(m_pListWidget,a);
+		new AddonListViewItem(m_pListWidget,a);
 		++it;
 	}
 }
 
-void KviScriptManagementDialog::currentChanged(QListWidgetItem *item,QListWidgetItem *)
+void AddonManagementDialog::currentChanged(QListWidgetItem *item,QListWidgetItem *)
 {
-	KviScriptAddonListViewItem * it = (KviScriptAddonListViewItem *)item;
+	AddonListViewItem * it = (AddonListViewItem *)item;
 	if(!it)
 	{
 		m_pConfigureButton->setEnabled(false);
@@ -221,32 +221,32 @@ void KviScriptManagementDialog::currentChanged(QListWidgetItem *item,QListWidget
 	}
 }
 
-void KviScriptManagementDialog::showScriptHelp()
+void AddonManagementDialog::showScriptHelp()
 {
-	KviScriptAddonListViewItem * it = (KviScriptAddonListViewItem *)m_pListWidget->currentItem();
+	AddonListViewItem * it = (AddonListViewItem *)m_pListWidget->currentItem();
 	if(!it)return;
 	if(it->addon()->helpCallbackCode().isEmpty())return;
 	it->addon()->executeHelpCallback(g_pActiveWindow);
 }
 
-void KviScriptManagementDialog::configureScript()
+void AddonManagementDialog::configureScript()
 {
-	KviScriptAddonListViewItem * it = (KviScriptAddonListViewItem *)m_pListWidget->currentItem();
+	AddonListViewItem * it = (AddonListViewItem *)m_pListWidget->currentItem();
 	if(!it)return;
 	if(it->addon()->configureCallbackCode().isEmpty())return;
 	it->addon()->executeConfigureCallback(g_pActiveWindow);
 }
 
-void KviScriptManagementDialog::packScript()
+void AddonManagementDialog::packScript()
 {
-	KviPackAddonDialog * pDialog = new KviPackAddonDialog(this);
+	PackAddonDialog * pDialog = new PackAddonDialog(this);
 	pDialog->exec();
 	delete pDialog;
 }
 
-void KviScriptManagementDialog::uninstallScript()
+void AddonManagementDialog::uninstallScript()
 {
-	KviScriptAddonListViewItem * it = (KviScriptAddonListViewItem *)m_pListWidget->currentItem();
+	AddonListViewItem * it = (AddonListViewItem *)m_pListWidget->currentItem();
 	if(!it)return;
 
 	QString txt = "<p>";
@@ -265,13 +265,13 @@ void KviScriptManagementDialog::uninstallScript()
 	currentChanged(0,0);
 }
 
-void KviScriptManagementDialog::getMoreScripts()
+void AddonManagementDialog::getMoreScripts()
 {
 	// If change this introducing not-fixed text, remember to escape this using KviQString::escapeKvs()!
 	KviKvsScript::run("openurl http://www.kvirc.net/?id=addons&version=" KVI_VERSION "." KVI_SOURCES_DATE,g_pActiveWindow);
 }
 
-void KviScriptManagementDialog::installScript()
+void AddonManagementDialog::installScript()
 {
 	QString szFileName, szError;
 
@@ -286,7 +286,7 @@ void KviScriptManagementDialog::installScript()
 	// Sanity check
 	if(szFileName.endsWith(".kva"))
 	{
-		if(!KviAddonFunctions::installAddonPackage(szFileName,szError,this))
+		if(!AddonFunctions::installAddonPackage(szFileName,szError,this))
 		{
 			QMessageBox::critical(
 				this,
@@ -301,7 +301,7 @@ void KviScriptManagementDialog::installScript()
 	} else {
 		// Just for sanity check. We should NEVER enter here
 		qDebug("Entered sanity check");
-		KviAddonFunctions::notAValidAddonPackage(szError);
+		AddonFunctions::notAValidAddonPackage(szError);
 		QMessageBox::critical(
 			this,
 			__tr2qs_ctx("Install Addon - KVIrc","addon"),
@@ -319,7 +319,7 @@ void KviScriptManagementDialog::installScript()
 	//m_pListWidget->triggerUpdate();
 }
 
-void KviScriptManagementDialog::showEvent(QShowEvent * e)
+void AddonManagementDialog::showEvent(QShowEvent * e)
 {
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
 	move((rect.width() - width())/2,(rect.height() - height())/2);
@@ -327,19 +327,19 @@ void KviScriptManagementDialog::showEvent(QShowEvent * e)
 	QWidget::showEvent(e);
 }
 
-void KviScriptManagementDialog::closeClicked()
+void AddonManagementDialog::closeClicked()
 {
 	delete this;
 }
 
-void KviScriptManagementDialog::cleanup()
+void AddonManagementDialog::cleanup()
 {
 	if(!m_pInstance)return;
 	delete m_pInstance;
 	m_pInstance = 0;
 }
 
-void KviScriptManagementDialog::display(bool bTopLevel)
+void AddonManagementDialog::display(bool bTopLevel)
 {
 	if(m_pInstance)
 	{
@@ -358,9 +358,9 @@ void KviScriptManagementDialog::display(bool bTopLevel)
 	} else {
 		if(bTopLevel)
 		{
-			m_pInstance = new KviScriptManagementDialog(0);
+			m_pInstance = new AddonManagementDialog(0);
 		} else {
-			m_pInstance = new KviScriptManagementDialog(g_pFrame->splitter());
+			m_pInstance = new AddonManagementDialog(g_pFrame->splitter());
 		}
 	}
 	m_pInstance->show();
@@ -368,13 +368,13 @@ void KviScriptManagementDialog::display(bool bTopLevel)
 	m_pInstance->setFocus();
 }
 
-void KviScriptManagementDialog::closeEvent(QCloseEvent * e)
+void AddonManagementDialog::closeEvent(QCloseEvent * e)
 {
 	e->ignore();
 	delete this;
 }
 
-void KviScriptManagementDialog::reject()
+void AddonManagementDialog::reject()
 {
 	cleanup();
 }

@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/editor
 
 SET(kvieditor_MOC_HDRS
-	scripteditor.h
+	ScriptEditorImplementation.h
 )
 
 SET(kvieditor_SRCS
 	libkvieditor.cpp
-	scripteditor.cpp
+	ScriptEditorImplementation.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

@@ -32,9 +32,9 @@
 #include "KviConsoleWindow.h"
 //#include "KviModule.h"
 
-extern KviPointerList<KviSocketSpyWindow> * g_pSocketSpyWindowList;
+extern KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList;
 
-KviSocketSpyWindow::KviSocketSpyWindow(KviMainWindow * lpFrm,KviConsoleWindow * lpConsole)
+SocketSpyWindow::SocketSpyWindow(KviMainWindow * lpFrm,KviConsoleWindow * lpConsole)
 : KviWindow(KVI_WINDOW_TYPE_SOCKETSPY,lpFrm,"socket_spy",lpConsole), KviIrcDataStreamMonitor(lpConsole->context())
 {
 	g_pSocketSpyWindowList->append(this);
@@ -45,65 +45,65 @@ KviSocketSpyWindow::KviSocketSpyWindow(KviMainWindow * lpFrm,KviConsoleWindow * 
 	//setFocusHandler(m_pIrcView,this);
 }
 
-KviSocketSpyWindow::~KviSocketSpyWindow()
+SocketSpyWindow::~SocketSpyWindow()
 {
 	g_pSocketSpyWindowList->removeRef(this);
 }
 
-void KviSocketSpyWindow::die()
+void SocketSpyWindow::die()
 {
 	close();
 }
 
-QPixmap * KviSocketSpyWindow::myIconPtr()
+QPixmap * SocketSpyWindow::myIconPtr()
 {
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_SPY);
 }
 
-void KviSocketSpyWindow::resizeEvent(QResizeEvent *)
+void SocketSpyWindow::resizeEvent(QResizeEvent *)
 {
 	m_pSplitter->setGeometry(0,0,width(),height());
 }
 
-QSize KviSocketSpyWindow::sizeHint() const
+QSize SocketSpyWindow::sizeHint() const
 {
 	return m_pIrcView->sizeHint();
 }
 
-void KviSocketSpyWindow::getBaseLogFileName(QString &buffer)
+void SocketSpyWindow::getBaseLogFileName(QString &buffer)
 {
 	buffer.sprintf("SOCKETSPY_%d",context()->id());
 }
 
-void KviSocketSpyWindow::fillCaptionBuffers()
+void SocketSpyWindow::fillCaptionBuffers()
 {
 	KviQString::sprintf(m_szPlainTextCaption,__tr2qs("Socket Spy [IRC Context %u]"),m_pConsole->context()->id());
 }
 
-bool KviSocketSpyWindow::incomingMessage(const char * message)
+bool SocketSpyWindow::incomingMessage(const char * message)
 {
 	outputNoFmt(KVI_OUT_SOCKETMESSAGE,console()->decodeText(message));
 	return false;
 }
 
-bool KviSocketSpyWindow::outgoingMessage(const char * message)
+bool SocketSpyWindow::outgoingMessage(const char * message)
 {
 	outputNoFmt(KVI_OUT_RAW,console()->decodeText(message));
 	return false;
 
 }
 
-void KviSocketSpyWindow::connectionInitiated()
+void SocketSpyWindow::connectionInitiated()
 {
 	output(KVI_OUT_SOCKETWARNING,__tr2qs("Socket open"));
 }
 
-void KviSocketSpyWindow::connectionTerminated()
+void SocketSpyWindow::connectionTerminated()
 {
 	output(KVI_OUT_SOCKETWARNING,__tr2qs("Socket closed"));
 }
 
-void KviSocketSpyWindow::applyOptions()
+void SocketSpyWindow::applyOptions()
 {
 	m_pIrcView->applyOptions();
 	KviWindow::applyOptions();

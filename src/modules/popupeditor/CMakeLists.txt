@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/popupeditor
 
 SET(kvipopupeditor_MOC_HDRS
-	popupeditor.h
+	PopupEditorWindow.h
 )
 
 SET(kvipopupeditor_SRCS
 	libkvipopupeditor.cpp
-	popupeditor.cpp
+	PopupEditorWindow.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

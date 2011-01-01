@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/links
 
 SET(kvilinks_MOC_HDRS
-	linkswindow.h
+	LinksWindow.h
 )
 
 SET(kvilinks_SRCS
 	libkvilinks.cpp
-	linkswindow.cpp
+	LinksWindow.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

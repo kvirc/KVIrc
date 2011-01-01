@@ -21,7 +21,7 @@
 //
 //=============================================================================
 
-#include "linkswindow.h"
+#include "LinksWindow.h"
 
 #include "KviModule.h"
 #include "KviMainWindow.h"
@@ -30,7 +30,7 @@
 
 #include <QSplitter>
 
-KviPointerList<KviLinksWindow> * g_pLinksWindowList = 0;
+KviPointerList<LinksWindow> * g_pLinksWindowList = 0;
 
 
 /*
@@ -66,7 +66,7 @@ static bool links_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	if(!(c->window()->context()->linksWindow()))
 	{
-		KviLinksWindow *w = new KviLinksWindow(c->window()->frame(),c->window()->console());
+		LinksWindow *w = new LinksWindow(c->window()->frame(),c->window()->console());
 		c->window()->frame()->addWindow(w);
 	} else {
 		c->warning(__tr2qs("Links window alread open for this IRC context"));
@@ -77,7 +77,7 @@ static bool links_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 static bool links_module_init(KviModule * m)
 {
-	g_pLinksWindowList = new KviPointerList<KviLinksWindow>;
+	g_pLinksWindowList = new KviPointerList<LinksWindow>;
 	g_pLinksWindowList->setAutoDelete(false);
 
 

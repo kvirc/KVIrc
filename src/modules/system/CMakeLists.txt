@@ -2,7 +2,7 @@
 
 SET(kvisystem_SRCS
 	libkvisystem.cpp
-	plugin.cpp
+	Plugin.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

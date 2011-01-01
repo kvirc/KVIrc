@@ -91,7 +91,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_SERVEROPTIONS,
-		"options.edit -t KviIrcServerOptionsWidget",
+		"options.edit -t OptionsWidget_servers",
 		__tr2qs("Configure Servers..."),
 		__tr2qs("Allows you to configure the servers and eventually to connect to them"),
 		KviActionManager::categorySettings(),
@@ -124,7 +124,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_IDENTITYOPTIONS,
-		"options.edit -t KviIdentityOptionsWidget",
+		"options.edit -t OptionsWidget_identity",
 		__tr2qs("Configure Identity..."),
 		__tr2qs("Allows you to configure nickname, username, avatar etc..."),
 		KviActionManager::categorySettings(),
@@ -857,7 +857,7 @@ KviConnectToServerAction::KviConnectToServerAction(QObject * pParent)
 : KviSubmenuAction(
 	pParent,
 	QString(KVI_COREACTION_SERVERMENU),
-	QString("options.edit KviIrcServerOptionsWidget"),
+	QString("options.edit OptionsWidget_servers"),
 	__tr2qs("Connect To"),
 	__tr2qs("Shows a popup menu that allows quickly connecting to a server"),
 	KviActionManager::categoryIrc(),

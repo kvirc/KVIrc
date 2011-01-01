@@ -30,7 +30,7 @@
 
 #include <QSplitter>
 
-KviPointerList<KviSocketSpyWindow> * g_pSocketSpyWindowList = 0;
+KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList = 0;
 
 
 /*
@@ -52,14 +52,14 @@ KviPointerList<KviSocketSpyWindow> * g_pSocketSpyWindowList = 0;
 static bool socketspy_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	if(!c->window()->console())return c->context()->errorNoIrcContext();
-	KviSocketSpyWindow *w = new KviSocketSpyWindow(c->window()->frame(),c->window()->console());
+	SocketSpyWindow *w = new SocketSpyWindow(c->window()->frame(),c->window()->console());
 	c->window()->frame()->addWindow(w);
 	return true;
 }
 
 static bool socketspy_module_init(KviModule * m)
 {
-	g_pSocketSpyWindowList = new KviPointerList<KviSocketSpyWindow>;
+	g_pSocketSpyWindowList = new KviPointerList<SocketSpyWindow>;
 	g_pSocketSpyWindowList->setAutoDelete(false);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",socketspy_kvs_cmd_open);

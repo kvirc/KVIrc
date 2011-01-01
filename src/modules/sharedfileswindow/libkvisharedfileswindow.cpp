@@ -21,7 +21,7 @@
 //
 //=============================================================================
 
-#include "sharedfileswindow.h"
+#include "SharedFilesWindow.h"
 
 #include "KviModule.h"
 #include "KviApplication.h"
@@ -34,7 +34,7 @@
 
 #define KVI_SHARED_FILES_WINDOW_EXTENSION_NAME "Shared files window extension"
 
-KviSharedFilesWindow * g_pSharedFilesWindow = 0;
+SharedFilesWindow * g_pSharedFilesWindow = 0;
 
 static KviModuleExtension * sharedfileswindow_extension_alloc(KviModuleExtensionAllocStruct * s)
 {
@@ -57,7 +57,7 @@ static KviModuleExtension * sharedfileswindow_extension_alloc(KviModuleExtension
 			}
 		}
 
-		g_pSharedFilesWindow = new KviSharedFilesWindow(s->pDescriptor,g_pFrame);
+		g_pSharedFilesWindow = new SharedFilesWindow(s->pDescriptor,g_pFrame);
 		g_pFrame->addWindow(g_pSharedFilesWindow,!bCreateMinimized);
 		if(bCreateMinimized)g_pSharedFilesWindow->minimize();
 		return g_pSharedFilesWindow;

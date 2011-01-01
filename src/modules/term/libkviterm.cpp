@@ -31,11 +31,11 @@
 #include <QSplitter>
 
 #ifdef COMPILE_KDE_SUPPORT
-	#include "termwidget.h"
-	#include "termwindow.h"
+	#include "TermWidget.h"
+	#include "TermWindow.h"
 
-	KviPointerList<KviTermWidget> * g_pTermWidgetList      = 0;
-	KviPointerList<KviTermWindow> * g_pTermWindowList      = 0;
+	KviPointerList<TermWidget> * g_pTermWidgetList      = 0;
+	KviPointerList<TermWindow> * g_pTermWindowList      = 0;
 #endif
 
 KviModule * g_pTermModule = 0;
@@ -69,10 +69,10 @@ static bool term_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	c->module()->lock(); // multiple locks are allowed
 	if(c->hasSwitch('m',"mdi"))
 	{
-		KviTermWindow *w = new KviTermWindow(c->window()->frame(),"Terminal emulator");
+		TermWindow *w = new TermWindow(c->window()->frame(),"Terminal emulator");
 		c->window()->frame()->addWindow(w);
 	} else {
-		KviTermWidget *w = new KviTermWidget(c->window()->frame()->splitter(), c->window()->frame(),true);
+		TermWidget *w = new TermWidget(c->window()->frame()->splitter(), c->window()->frame(),true);
 		w->show();
 	}
 #else
@@ -86,9 +86,9 @@ static bool term_module_init(KviModule * m)
 	g_pTermModule = m;
 
 #ifdef COMPILE_KDE_SUPPORT
-	g_pTermWidgetList = new KviPointerList<KviTermWidget>;
+	g_pTermWidgetList = new KviPointerList<TermWidget>;
 	g_pTermWidgetList->setAutoDelete(false);
-	g_pTermWindowList = new KviPointerList<KviTermWindow>;
+	g_pTermWindowList = new KviPointerList<TermWindow>;
 	g_pTermWindowList->setAutoDelete(false);
 #endif
 

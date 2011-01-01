@@ -24,7 +24,7 @@
 //=============================================================================
 
 #include "libkvirijndael.h"
-#include "rijndael.h"
+#include "Rijndael.h"
 
 #include "KviModule.h"
 #include "kvi_debug.h"
@@ -348,7 +348,7 @@
 
 	// Mircryption stuff
 
-	#include "ablowfish.h"
+	#include "BlowFish.h"
 
 	KviMircryptionEngine::KviMircryptionEngine()
 	: KviCryptEngine()

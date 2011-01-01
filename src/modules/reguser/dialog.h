@@ -2,7 +2,7 @@
 #define _DIALOG_H_
 //=============================================================================
 //
-//   File : edituser.h
+//   File : RegisteredUserEntryDialog.h
 //   Creation date : Sun Dec 24 2000 15:16:17 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc irc client distribution
@@ -51,77 +51,77 @@ signals:
 	void rightButtonPressed(QTreeWidgetItem *,QPoint);
 };
 
-class KviRegisteredUsersDialogItemDelegate : public QStyledItemDelegate
+class RegisteredUsersDialogItemDelegate : public QStyledItemDelegate
 {
 public:
-	KviRegisteredUsersDialogItemDelegate(KviRegisteredUsersListView * pWidget=0)
+	RegisteredUsersDialogItemDelegate(KviRegisteredUsersListView * pWidget=0)
 		: QStyledItemDelegate(pWidget) {};
-	~KviRegisteredUsersDialogItemDelegate(){};
+	~RegisteredUsersDialogItemDelegate(){};
 	QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
 	void paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
 
 };
 
-class KviRegisteredUsersDialogItemBase : public QTreeWidgetItem
+class RegisteredUsersDialogItemBase : public QTreeWidgetItem
 {
 public:
 	enum Types { User,Group };
 protected:
-	KviRegisteredUsersDialogItemBase(Types type,KviRegisteredUsersListView * par)
+	RegisteredUsersDialogItemBase(Types type,KviRegisteredUsersListView * par)
 	:QTreeWidgetItem(par),m_iType(type)
 	{
 	};
-	KviRegisteredUsersDialogItemBase(Types type,QTreeWidgetItem * par)
+	RegisteredUsersDialogItemBase(Types type,QTreeWidgetItem * par)
 	:QTreeWidgetItem(par),m_iType(type)
 	{
 	};
-	~KviRegisteredUsersDialogItemBase()
+	~RegisteredUsersDialogItemBase()
 	{
 	};
 
 private:
-	KviRegisteredUsersDialogItemBase::Types m_iType;
+	RegisteredUsersDialogItemBase::Types m_iType;
 public:
-	KviRegisteredUsersDialogItemBase::Types type() { return m_iType; };
+	RegisteredUsersDialogItemBase::Types type() { return m_iType; };
 };
 
-class KviRegisteredUsersGroupItem : public KviRegisteredUsersDialogItemBase
+class RegisteredUsersGroupItem : public RegisteredUsersDialogItemBase
 {
 protected:
 	KviRegisteredUserGroup * m_pGroup;
 public:
-	KviRegisteredUsersGroupItem(KviRegisteredUsersListView * par,KviRegisteredUserGroup * g)
-	:KviRegisteredUsersDialogItemBase(Group,par), m_pGroup(g)
+	RegisteredUsersGroupItem(KviRegisteredUsersListView * par,KviRegisteredUserGroup * g)
+	:RegisteredUsersDialogItemBase(Group,par), m_pGroup(g)
 	{
 		setText(0,m_pGroup->name());
 	}
-	~KviRegisteredUsersGroupItem()
+	~RegisteredUsersGroupItem()
 	{
 	}
 	KviRegisteredUserGroup * group() { return m_pGroup; };
 };
 
-class KviRegisteredUsersDialogItem : public KviRegisteredUsersDialogItemBase
+class RegisteredUsersDialogItem : public RegisteredUsersDialogItemBase
 {
-	friend class KviRegisteredUsersDialogItemDelegate;
+	friend class RegisteredUsersDialogItemDelegate;
 protected:
 	KviRegisteredUser * m_pUser;
 	QTextDocument       m_pText;
 public:
-	KviRegisteredUsersDialogItem(QTreeWidgetItem * par,KviRegisteredUser * u);
-	~KviRegisteredUsersDialogItem();
+	RegisteredUsersDialogItem(QTreeWidgetItem * par,KviRegisteredUser * u);
+	~RegisteredUsersDialogItem();
 public:
 	KviRegisteredUser * user(){ return m_pUser; };
 	void setUser(KviRegisteredUser * u){ m_pUser = u; };
 	virtual QString key(int,bool) const;
 };
 
-class KviRegisteredUsersDialog : public QWidget
+class RegisteredUsersDialog : public QWidget
 {
 	Q_OBJECT
 public:
-	KviRegisteredUsersDialog(QWidget * par = 0);
-	~KviRegisteredUsersDialog();
+	RegisteredUsersDialog(QWidget * par = 0);
+	~RegisteredUsersDialog();
 public:
 	KviRegisteredUsersListView   * m_pListView;
 	QPushButton * m_pAddButton;
@@ -135,7 +135,7 @@ public:
 	QMultiHash<int, KviRegisteredUserGroup*> m_TmpDict;
 protected:
 	void fillList();
-	void editItem(KviRegisteredUsersDialogItem * i);
+	void editItem(RegisteredUsersDialogItem * i);
 	void editGroup(KviRegisteredUserGroup* group);
 	virtual void closeEvent(QCloseEvent *);
 protected slots:

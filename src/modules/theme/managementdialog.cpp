@@ -23,9 +23,9 @@
 //=============================================================================
 
 #include "managementdialog.h"
-#include "packthemedialog.h"
-#include "savethemedialog.h"
-#include "themefunctions.h"
+#include "PackThemeDialog.h"
+#include "SaveThemeDialog.h"
+#include "ThemeFunctions.h"
 
 #include "KviOptions.h"
 #include "KviLocale.h"
@@ -67,7 +67,7 @@
 extern QRect g_rectManagementDialogGeometry;
 
 
-KviThemeListWidgetItem::KviThemeListWidgetItem(KviTalListWidget * box,KviThemeInfo * inf)
+ThemeListWidgetItem::ThemeListWidgetItem(KviTalListWidget * box,KviThemeInfo * inf)
 : KviTalListWidgetItem(box)
 {
 	m_pThemeInfo = inf;
@@ -97,16 +97,16 @@ KviThemeListWidgetItem::KviThemeListWidgetItem(KviTalListWidget * box,KviThemeIn
 	setText(t);
 }
 
-KviThemeListWidgetItem::~KviThemeListWidgetItem()
+ThemeListWidgetItem::~ThemeListWidgetItem()
 {
 	delete m_pThemeInfo;
 
 }
 
-KviThemeManagementDialog * KviThemeManagementDialog::m_pInstance = 0;
+ThemeManagementDialog * ThemeManagementDialog::m_pInstance = 0;
 
 
-KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
+ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 : QWidget(parent)
 {
 	m_pItemDelegate=0;
@@ -211,20 +211,20 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 		g_rectManagementDialogGeometry.y());
 }
 
-KviThemeManagementDialog::~KviThemeManagementDialog()
+ThemeManagementDialog::~ThemeManagementDialog()
 {
 	if (m_pItemDelegate) delete m_pItemDelegate;
 	g_rectManagementDialogGeometry = QRect(pos().x(),pos().y(),size().width(),size().height());
 	m_pInstance = 0;
 }
 
-void KviThemeManagementDialog::closeClicked()
+void ThemeManagementDialog::closeClicked()
 {
 	delete this;
 	m_pInstance = 0;
 }
 
-void KviThemeManagementDialog::display(bool bTopLevel)
+void ThemeManagementDialog::display(bool bTopLevel)
 {
 	if(m_pInstance)
 	{
@@ -243,9 +243,9 @@ void KviThemeManagementDialog::display(bool bTopLevel)
 	} else {
 		if(bTopLevel)
 		{
-			m_pInstance = new KviThemeManagementDialog(0);
+			m_pInstance = new ThemeManagementDialog(0);
 		} else {
-			m_pInstance = new KviThemeManagementDialog(g_pFrame->splitter());
+			m_pInstance = new ThemeManagementDialog(g_pFrame->splitter());
 		}
 	}
 	m_pInstance->show();
@@ -253,28 +253,28 @@ void KviThemeManagementDialog::display(bool bTopLevel)
 	m_pInstance->setFocus();
 }
 
-void KviThemeManagementDialog::cleanup()
+void ThemeManagementDialog::cleanup()
 {
 	if(!m_pInstance)return;
 	delete m_pInstance;
 	m_pInstance = 0;
 }
 
-void KviThemeManagementDialog::packTheme()
+void ThemeManagementDialog::packTheme()
 {
 	KviPointerList<KviThemeInfo> dl;
 	dl.setAutoDelete(false);
 	QList<QListWidgetItem*> itemsSelected = m_pListWidget->selectedItems ();
 	for(int i=0;i<itemsSelected.count();i++)
-		dl.append(((KviThemeListWidgetItem *)itemsSelected.at(i))->themeInfo());
+		dl.append(((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo());
 	if(dl.isEmpty())return;
 
-	KviPackThemeDialog * pDialog = new KviPackThemeDialog(this,&dl);
+	PackThemeDialog * pDialog = new PackThemeDialog(this,&dl);
 	pDialog->exec();
 	delete pDialog;
 }
 
-void KviThemeManagementDialog::contextMenuRequested(const QPoint & pos)
+void ThemeManagementDialog::contextMenuRequested(const QPoint & pos)
 {
 	if(m_pListWidget->itemAt(pos)!=0)
 	{
@@ -286,15 +286,15 @@ void KviThemeManagementDialog::contextMenuRequested(const QPoint & pos)
 	}
 }
 
-void KviThemeManagementDialog::applyTheme ( QListWidgetItem * it)
+void ThemeManagementDialog::applyTheme ( QListWidgetItem * it)
 {
 	if(it)m_pListWidget->setCurrentItem(it);
 	applyCurrentTheme();
 }
 
-void KviThemeManagementDialog::applyCurrentTheme()
+void ThemeManagementDialog::applyCurrentTheme()
 {
-	KviThemeListWidgetItem * it = (KviThemeListWidgetItem *)m_pListWidget->currentItem();
+	ThemeListWidgetItem * it = (ThemeListWidgetItem *)m_pListWidget->currentItem();
 	if(!it)return;
 
 	if(KviMessageBox::yesNo(__tr2qs_ctx("Apply theme - KVIrc","theme"),
@@ -318,28 +318,28 @@ void KviThemeManagementDialog::applyCurrentTheme()
 	}
 }
 
-void KviThemeManagementDialog::deleteTheme()
+void ThemeManagementDialog::deleteTheme()
 {
 	QList<QListWidgetItem*> itemsSelected = m_pListWidget->selectedItems ();
 	for(int i=0;i<itemsSelected.count();i++)
 	{
 			if(!KviMessageBox::yesNo(__tr2qs_ctx("Delete Theme - KVIrc","theme"),
 				__tr2qs_ctx("Do you really wish to delete theme \"%Q\" (version %Q)?","theme"),
-					&(((KviThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->name()),&(((KviThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->version())))goto jump_out;
-			KviFileUtils::deleteDir(((KviThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->absoluteDirectory());
+					&(((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->name()),&(((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->version())))goto jump_out;
+			KviFileUtils::deleteDir(((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->absoluteDirectory());
 	}
 jump_out:
 	fillThemeBox();
 }
 
-void KviThemeManagementDialog::installFromFile()
+void ThemeManagementDialog::installFromFile()
 {
 	QString szFileName;
 	QString szError;
 
 	if(!KviFileDialog::askForOpenFileName(szFileName,__tr2qs_ctx("Open Theme - KVIrc","theme"),QString(),KVI_FILTER_THEME))
 		return;
-	if(!KviThemeFunctions::installThemePackage(szFileName,szError,this))
+	if(!ThemeFunctions::installThemePackage(szFileName,szError,this))
 	{
 		KviMessageBox::information(szError);
 		return;
@@ -347,21 +347,21 @@ void KviThemeManagementDialog::installFromFile()
 	fillThemeBox();
 }
 
-void KviThemeManagementDialog::getMoreThemes()
+void ThemeManagementDialog::getMoreThemes()
 {
 	if(!g_pFrame)return;
 	g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_OPENURL_KVIRC_THEMES);
 }
 
-void KviThemeManagementDialog::saveCurrentTheme()
+void ThemeManagementDialog::saveCurrentTheme()
 {
-	KviSaveThemeDialog * pSaveThemeDialog = new KviSaveThemeDialog(this);
+	SaveThemeDialog * pSaveThemeDialog = new SaveThemeDialog(this);
 	pSaveThemeDialog->exec();
 	delete pSaveThemeDialog;
 	fillThemeBox();
 }
 
-void KviThemeManagementDialog::fillThemeBox(const QString &szDir)
+void ThemeManagementDialog::fillThemeBox(const QString &szDir)
 {
 	QDir d(szDir);
 
@@ -380,14 +380,14 @@ void KviThemeManagementDialog::fillThemeBox(const QString &szDir)
 		if(inf->loadFromDirectory(szTest))
 		{
 			inf->setSubdirectory(*it);
-			new KviThemeListWidgetItem(m_pListWidget,inf);
+			new ThemeListWidgetItem(m_pListWidget,inf);
 		} else {
 			delete inf;
 		}
 	}
 }
 
-void KviThemeManagementDialog::fillThemeBox()
+void ThemeManagementDialog::fillThemeBox()
 {
 	m_pListWidget->clear();
 
@@ -400,39 +400,39 @@ void KviThemeManagementDialog::fillThemeBox()
 	enableDisableButtons();
 }
 
-bool KviThemeManagementDialog::hasSelectedItems()
+bool ThemeManagementDialog::hasSelectedItems()
 {
 	QList<QListWidgetItem*> itemsSelected = m_pListWidget->selectedItems ();
 	return itemsSelected.count()?true:false;
 
 }
 
-void KviThemeManagementDialog::enableDisableButtons()
+void ThemeManagementDialog::enableDisableButtons()
 {
 	bool b = hasSelectedItems();
 	m_pPackThemeButton->setEnabled(b);
 	m_pDeleteThemeButton->setEnabled(b);
 }
 
-void KviThemeManagementDialog::closeEvent(QCloseEvent * e)
+void ThemeManagementDialog::closeEvent(QCloseEvent * e)
 {
 	e->ignore();
 	delete this;
 }
 
-void KviThemeManagementDialog::tipRequest(QListWidgetItem *,const QPoint &)
+void ThemeManagementDialog::tipRequest(QListWidgetItem *,const QPoint &)
 {
 	// FIXME
 	/*
-	//KviThemeListWidgetItem * it = (KviThemeListWidgetItem *)(m_pListWidget->itemAt(pnt));
+	//ThemeListWidgetItem * it = (ThemeListWidgetItem *)(m_pListWidget->itemAt(pnt));
 
 	//if(!it)return;
 
-	KviThemeInfo * pThemeInfo = ((KviThemeListWidgetItem *)it)->themeInfo();
+	KviThemeInfo * pThemeInfo = ((ThemeListWidgetItem *)it)->themeInfo();
 
 	QString szThemeDescription;
 
-	KviThemeFunctions::getThemeHtmlDescription(
+	ThemeFunctions::getThemeHtmlDescription(
 		szThemeDescription,
 		pThemeInfo->name(),
 		pThemeInfo->version(),

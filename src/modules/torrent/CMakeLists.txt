@@ -1,15 +1,15 @@
 # CMakeLists for src/modules/torrent
 
 SET(kvitorrent_MOC_HDRS
-	tc_ktorrentdbusinterface.h
-	tc_statusbarapplet.h
+	KTorrentDbusInterface.h
+	StatusBarApplet.h
 )
 
 SET(kvitorrent_SRCS
 	libkvitorrent.cpp
-	tc_statusbarapplet.cpp
-	tc_ktorrentdbusinterface.cpp
-	tc_interface.cpp
+	StatusBarApplet.cpp
+	KTorrentDbusInterface.cpp
+	TorrentInterface.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

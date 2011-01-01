@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/spaste
 
 SET(kvispaste_MOC_HDRS
-	controller.h
+	SlowPasteController.h
 )
 
 SET(kvispaste_SRCS
 	libkvispaste.cpp
-	controller.cpp
+	SlowPasteController.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

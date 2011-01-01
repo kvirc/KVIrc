@@ -37,9 +37,9 @@
 #include <QDesktopWidget>
 #include <QCloseEvent>
 
-KviTipWindow * g_pTipWindow = 0;
+TipWindow * g_pTipWindow = 0;
 
-KviTipFrame::KviTipFrame(QWidget * par)
+TipFrame::TipFrame(QWidget * par)
 : QFrame(par)
 {
 	QString buffer;
@@ -60,11 +60,11 @@ KviTipFrame::KviTipFrame(QWidget * par)
 	setLayout(layout);
 }
 
-KviTipFrame::~KviTipFrame()
+TipFrame::~TipFrame()
 {
 }
 
-void KviTipFrame::setText(const QString &text)
+void TipFrame::setText(const QString &text)
 {
 	QString szText= "<center>";
 	szText += text;
@@ -73,12 +73,12 @@ void KviTipFrame::setText(const QString &text)
 	update();
 }
 
-KviTipWindow::KviTipWindow()
+TipWindow::TipWindow()
 {
 	setObjectName("kvirc_tip_window");
 	m_pConfig = 0;
 
-	m_pTipFrame = new KviTipFrame(this);
+	m_pTipFrame = new TipFrame(this);
 	QPushButton * pb = new QPushButton("<<",this);
 	connect(pb,SIGNAL(clicked()),this,SLOT(prevTip()));
 
@@ -108,19 +108,19 @@ KviTipWindow::KviTipWindow()
 
 }
 
-KviTipWindow::~KviTipWindow()
+TipWindow::~TipWindow()
 {
 	KVI_OPTION_BOOL(KviOption_boolShowTipAtStartup) = m_pShowAtStartupCheck->isChecked();
 	if(m_pConfig)closeConfig();
 }
 
-void KviTipWindow::showEvent(QShowEvent *)
+void TipWindow::showEvent(QShowEvent *)
 {
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
 	move((rect.width() - width())/2,(rect.height() - height())/2);
 }
 
-bool KviTipWindow::openConfig(QString filename,bool bEnsureExists)
+bool TipWindow::openConfig(QString filename,bool bEnsureExists)
 {
 	if(m_pConfig)closeConfig();
 
@@ -140,7 +140,7 @@ bool KviTipWindow::openConfig(QString filename,bool bEnsureExists)
 	return true;
 }
 
-void KviTipWindow::closeConfig()
+void TipWindow::closeConfig()
 {
 	QString buffer;
 	g_pApp->getLocalKvircDirectory(buffer,KviApplication::ConfigPlugins,m_szConfigFileName);
@@ -149,7 +149,7 @@ void KviTipWindow::closeConfig()
 	m_pConfig = 0;
 }
 
-void KviTipWindow::nextTip()
+void TipWindow::nextTip()
 {
 	if(!m_pConfig)
 	{
@@ -185,7 +185,7 @@ void KviTipWindow::nextTip()
 	m_pTipFrame->setText(szTip);
 }
 
-void KviTipWindow::prevTip()
+void TipWindow::prevTip()
 {
 	if(!m_pConfig)
 	{
@@ -222,7 +222,7 @@ void KviTipWindow::prevTip()
 	m_pTipFrame->setText(szTip);
 }
 
-void KviTipWindow::closeEvent(QCloseEvent *e)
+void TipWindow::closeEvent(QCloseEvent *e)
 {
 	e->ignore();
 	delete this;
@@ -257,7 +257,7 @@ static bool tip_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("filename",KVS_PT_STRING,KVS_PF_OPTIONAL,szTipfilename)
 	KVSM_PARAMETERS_END(c)
 
-	if(!g_pTipWindow)g_pTipWindow = new KviTipWindow();
+	if(!g_pTipWindow)g_pTipWindow = new TipWindow();
 	if (!szTipfilename.isEmpty())
 		g_pTipWindow->openConfig(szTipfilename);
 	g_pTipWindow->nextTip();

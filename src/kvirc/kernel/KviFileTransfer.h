@@ -44,7 +44,7 @@ class KVIRC_API KviFileTransferManager : public QObject
 {
 	friend class KviApplication;
 	friend class KviFileTransfer;
-	friend class KviFileTransferWindow;
+	friend class FileTransferWindow; // FIXME: This is in a module!
 	Q_OBJECT
 public:
 	KviFileTransferManager();

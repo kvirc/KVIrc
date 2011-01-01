@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/toolbareditor
 
 SET(kvitoolbareditor_MOC_HDRS
-	toolbareditor.h
+	CustomizeToolBarsDialog.h
 )
 
 SET(kvitoolbareditor_SRCS
 	libkvitoolbareditor.cpp
-	toolbareditor.cpp
+	CustomizeToolBarsDialog.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

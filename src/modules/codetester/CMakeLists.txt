@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/codetester
 
 SET(kvicodetester_MOC_HDRS
-	codetester.h
+	CodeTesterWindow.h
 )
 
 SET(kvicodetester_SRCS
 	libkvicodetester.cpp
-	codetester.cpp
+	CodeTesterWindow.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

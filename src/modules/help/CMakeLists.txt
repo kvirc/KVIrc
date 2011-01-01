@@ -1,16 +1,16 @@
 # CMakeLists for src/modules/help
 
 SET(kvihelp_MOC_HDRS
-	helpwidget.h
-	helpwindow.h
-	index.h
+	HelpWidget.h
+	HelpWindow.h
+	HelpIndex.h
 )
 
 SET(kvihelp_SRCS
 	libkvihelp.cpp
-	helpwidget.cpp
-	helpwindow.cpp
-	index.cpp
+	HelpWidget.cpp
+	HelpWindow.cpp
+	HelpIndex.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

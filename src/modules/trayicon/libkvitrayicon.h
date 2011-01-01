@@ -38,12 +38,12 @@ class KviTalPopupMenu;
 class KviDynamicToolTip;
 //class KviMainWindow;
 
-class KviTrayIcon : public QSystemTrayIcon, public KviDockExtension
+class TrayIcon : public QSystemTrayIcon, public KviDockExtension
 {
 	Q_OBJECT
 public:
-	KviTrayIcon(KviMainWindow * win);
-	~KviTrayIcon();
+	TrayIcon(KviMainWindow * win);
+	~TrayIcon();
 protected:
 	KviMainWindow               * m_pFrm;
 	KviDynamicToolTip      * m_pTip;

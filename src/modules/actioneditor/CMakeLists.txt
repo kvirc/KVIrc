@@ -1,11 +1,11 @@
 # CMakeLists for src/modules/actioneditor
 
 SET(kviactioneditor_MOC_HDRS
-	actioneditor.h
+	ActionEditor.h
 )
 
 SET(kviactioneditor_SRCS
-	actioneditor.cpp
+	ActionEditor.cpp
 	libkviactioneditor.cpp
 )
 

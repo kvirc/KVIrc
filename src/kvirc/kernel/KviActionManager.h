@@ -36,7 +36,7 @@ class KviCustomToolBar;
 class KVIRC_API KviActionManager : public QObject
 {
 	friend class KviActionDrawer;
-	friend class KviCustomizeToolBarsDialog;
+	friend class CustomizeToolBarsDialog; // this resides in a module!
 	friend class KviCustomToolBar;
 	friend class KviMainWindow;
 	Q_OBJECT

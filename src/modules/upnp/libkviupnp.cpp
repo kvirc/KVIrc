@@ -27,7 +27,7 @@
 #include "KviCString.h"
 #include "KviNetUtils.h"
 
-#include "manager.h"
+#include "Manager.h"
 
 // Please use our common variable naming conventions and coding style :)
 // Let's be so:)

@@ -22,13 +22,13 @@
 //
 //=============================================================================
 
-#include "actioneditor.h"
+#include "ActionEditor.h"
 
 #include "KviModule.h"
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
-KviActionEditorWindow * g_pActionEditorWindow = 0;
+ActionEditorWindow * g_pActionEditorWindow = 0;
 
 
 /*
@@ -49,7 +49,7 @@ static bool actioneditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	if(!g_pActionEditorWindow)
 	{
-		g_pActionEditorWindow = new KviActionEditorWindow(c->window()->frame());
+		g_pActionEditorWindow = new ActionEditorWindow(c->window()->frame());
 		c->window()->frame()->addWindow(g_pActionEditorWindow);
 	}
 

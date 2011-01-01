@@ -32,7 +32,7 @@
 #include "KviIrcConnectionServerInfo.h"
 #include "KviIrcServer.h"
 
-#include "idle.h"
+#include "Idle.h"
 Idle* g_pIdle;
 
 #define GET_KVS_CONSOLE \

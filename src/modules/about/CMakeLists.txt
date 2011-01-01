@@ -1,10 +1,10 @@
 # CMakeLists for src/modules/about
 SET(kviabout_MOC_HDRS
-	aboutdialog.h
+	AboutDialog.h
 )
 
 SET(kviabout_SRCS
-	aboutdialog.cpp
+	AboutDialog.cpp
 	libkviabout.cpp
 )
 

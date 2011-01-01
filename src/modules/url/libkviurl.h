@@ -53,12 +53,12 @@ typedef struct _KviUrl
 	QString timestamp;
 } KviUrl;
 
-class KviUrlDialogTreeWidget : public QTreeWidget
+class UrlDialogTreeWidget : public QTreeWidget
 {
 	Q_OBJECT
 public:
-	KviUrlDialogTreeWidget(QWidget*);
-	~KviUrlDialogTreeWidget(){};
+	UrlDialogTreeWidget(QWidget*);
+	~UrlDialogTreeWidget(){};
 protected:
 	void mousePressEvent (QMouseEvent *e);
 	void paintEvent(QPaintEvent * event);
@@ -81,7 +81,7 @@ protected:
 	QPixmap *myIconPtr();
 	void resizeEvent(QResizeEvent *);
 public:
-	KviUrlDialogTreeWidget *m_pUrlList;
+	UrlDialogTreeWidget *m_pUrlList;
 	void addUrl(QString url, QString window, QString count, QString timestamp);
 //	void saveProperties();
 protected slots:

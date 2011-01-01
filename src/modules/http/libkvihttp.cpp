@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#include "httpfiletransfer.h"
+#include "HttpFileTransfer.h"
 
 #include "KviModule.h"
 #include "KviCString.h"
@@ -63,7 +63,7 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		}
 	}
 
-	KviHttpFileTransfer * hft = new KviHttpFileTransfer();
+	HttpFileTransfer * hft = new HttpFileTransfer();
 
 	bool bHead = c->switches()->find('h',"head");
 
@@ -303,7 +303,7 @@ static bool http_kvs_cmd_asyncGet(KviKvsModuleCallbackCommandCall * c)
 
 static bool http_module_init(KviModule * m)
 {
-	KviHttpFileTransfer::init();
+	HttpFileTransfer::init();
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"get",http_kvs_cmd_get);
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"asyncGet",http_kvs_cmd_asyncGet);
@@ -313,13 +313,13 @@ static bool http_module_init(KviModule * m)
 
 static bool http_module_cleanup(KviModule *)
 {
-	KviHttpFileTransfer::done();
+	HttpFileTransfer::done();
 	return true;
 }
 
 static bool http_module_can_unload(KviModule *)
 {
-	return (KviHttpFileTransfer::runningTransfers() == 0);
+	return (HttpFileTransfer::runningTransfers() == 0);
 }
 
 KVIRC_MODULE(

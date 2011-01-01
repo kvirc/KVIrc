@@ -1,16 +1,16 @@
 # CMakeLists for src/modules/notifier
 
 SET(kvinotifier_MOC_HDRS
-	notifierwindow.h
-	notifierwindowtab.h
+	NotifierWindow.h
+	NotifierWindowTab.h
 )
 
 SET(kvinotifier_SRCS
 	libkvinotifier.cpp
-	notifierwindow.cpp
-	notifiermessage.cpp
-	notifierwindowtab.cpp
-	notifierwindowborder.cpp
+	NotifierWindow.cpp
+	NotifierMessage.cpp
+	NotifierWindowTab.cpp
+	NotifierWindowBorder.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

@@ -22,7 +22,7 @@
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
 //=============================================================================
-#include "channelsjoinwindow.h"
+#include "ChannelsJoinDialog.h"
 
 #include "KviModule.h"
 #include "KviWindow.h"
@@ -32,7 +32,7 @@
 
 #include <QSplitter>
 
-KviChannelsJoinWindow * g_pChannelsWindow = 0;
+ChannelsJoinDialog * g_pChannelsWindow = 0;
 QRect                   g_rectChannelsJoinGeometry;
 
 /*
@@ -53,7 +53,7 @@ QRect                   g_rectChannelsJoinGeometry;
 
 static bool channelsjoin_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	if(!g_pChannelsWindow)g_pChannelsWindow = new KviChannelsJoinWindow(c->window()->frame(),"channelsjoin");
+	if(!g_pChannelsWindow)g_pChannelsWindow = new ChannelsJoinDialog(c->window()->frame(),"channelsjoin");
 
 	g_pChannelsWindow->setConsole(c->window()->console());
 

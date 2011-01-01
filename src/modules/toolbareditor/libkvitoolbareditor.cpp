@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#include "toolbareditor.h"
+#include "CustomizeToolBarsDialog.h"
 
 #include "KviModule.h"
 #include "KviLocale.h"
@@ -52,7 +52,7 @@ QRect g_rectToolBarEditorDialogGeometry(0,0,0,0);
 
 static bool toolbareditor_kvs_cmd_open(KviKvsModuleCommandCall *c)
 {
-	KviCustomizeToolBarsDialog::display(c->hasSwitch('t',"toplevel"));
+	CustomizeToolBarsDialog::display(c->hasSwitch('t',"toplevel"));
 	return true;
 }
 
@@ -69,12 +69,12 @@ static bool toolbareditor_module_init(KviModule * m)
 
 static bool toolbareditor_module_can_unload(KviModule *)
 {
-	return (!KviCustomizeToolBarsDialog::instance());
+	return (!CustomizeToolBarsDialog::instance());
 }
 
 static bool toolbareditor_module_cleanup(KviModule *m)
 {
-	KviCustomizeToolBarsDialog::cleanup();
+	CustomizeToolBarsDialog::cleanup();
 
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);

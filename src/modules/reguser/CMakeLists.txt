@@ -1,15 +1,15 @@
 # CMakeLists for src/modules/reguser
 
 SET(kvireguser_MOC_HDRS
-	edituser.h
-	wizard.h
+	RegisteredUserEntryDialog.h
+	RegistrationWizard.h
 	dialog.h
 )
 
 SET(kvireguser_SRCS
 	libkvireguser.cpp
-	edituser.cpp
-	wizard.cpp
+	RegisteredUserEntryDialog.cpp
+	RegistrationWizard.cpp
 	dialog.cpp
 )
 

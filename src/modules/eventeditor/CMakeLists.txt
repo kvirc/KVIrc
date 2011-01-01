@@ -1,11 +1,11 @@
 # CMakeLists for src/modules/eventeditor
 
 SET(kvieventeditor_MOC_HDRS
-	eventeditor.h
+	EventEditorWindow.h
 )
 
 SET(kvieventeditor_SRCS
-	eventeditor.cpp
+	EventEditorWindow.cpp
 	libkvieventeditor.cpp
 )
 

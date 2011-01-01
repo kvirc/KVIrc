@@ -21,7 +21,7 @@
 //
 //=============================================================================
 
-#include "filetransferwindow.h"
+#include "FileTransferWindow.h"
 
 #include "KviModule.h"
 #include "KviApplication.h"
@@ -32,7 +32,7 @@
 
 #include <QSplitter>
 
-KviFileTransferWindow * g_pFileTransferWindow = 0;
+FileTransferWindow * g_pFileTransferWindow = 0;
 
 static KviModuleExtension * filetransferwindow_extension_alloc(KviModuleExtensionAllocStruct * s)
 {
@@ -55,7 +55,7 @@ static KviModuleExtension * filetransferwindow_extension_alloc(KviModuleExtensio
 			}
 		}
 
-		g_pFileTransferWindow = new KviFileTransferWindow(s->pDescriptor,g_pFrame);
+		g_pFileTransferWindow = new FileTransferWindow(s->pDescriptor,g_pFrame);
 		g_pFrame->addWindow(g_pFileTransferWindow,!bCreateMinimized);
 		if(bCreateMinimized)g_pFileTransferWindow->minimize();
 		return g_pFileTransferWindow;

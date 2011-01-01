@@ -22,14 +22,14 @@
 //
 //=============================================================================
 
-#include "classeditor.h"
+#include "ClassEditorWindow.h"
 
 #include "KviModule.h"
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
 
-KviClassEditorWindow * g_pClassEditorWindow = 0;
+ClassEditorWindow * g_pClassEditorWindow = 0;
 KviModule * g_pClassEditorModule = 0;
 
 
@@ -50,7 +50,7 @@ static bool classeditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	if(!g_pClassEditorWindow)
 	{
-		g_pClassEditorWindow = new KviClassEditorWindow(c->window()->frame());
+		g_pClassEditorWindow = new ClassEditorWindow(c->window()->frame());
 		c->window()->frame()->addWindow(g_pClassEditorWindow);
 	}
 

@@ -255,6 +255,7 @@ public:
 	void copyFrom(const KviKvsPopupMenu * src);
 	KviKvsPopupMenuTopLevelData * topLevelData();
 	KviKvsPopupMenu * topLevelPopup();
+	KviPointerList<KviKvsPopupMenuItem> * itemList(){ return m_pItemList; };
 	bool isSoftLocked();
 	bool isHardLocked();
 	void lock(KviKvsPopupMenuTopLevelData::LockStatus eLock);

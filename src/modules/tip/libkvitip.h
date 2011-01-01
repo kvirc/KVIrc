@@ -32,12 +32,12 @@
 #include <QLabel>
 #include <QCheckBox>
 
-class KviTipFrame : public QFrame
+class TipFrame : public QFrame
 {
 	Q_OBJECT
 public:
-	KviTipFrame(QWidget * par);
-	~KviTipFrame();
+	TipFrame(QWidget * par);
+	~TipFrame();
 private:
 	QLabel *m_pLabel1;
 	QLabel *m_pLabel2;
@@ -45,14 +45,14 @@ public:
 	void setText(const QString &text);
 };
 
-class KviTipWindow : public QWidget
+class TipWindow : public QWidget
 {
 	Q_OBJECT
 public:
-	KviTipWindow();
-	~KviTipWindow();
+	TipWindow();
+	~TipWindow();
 protected:
-	KviTipFrame * m_pTipFrame;
+	TipFrame * m_pTipFrame;
 	QCheckBox   * m_pShowAtStartupCheck;
 	KviConfigurationFile   * m_pConfig;
 	QString        m_szConfigFileName; // no path!

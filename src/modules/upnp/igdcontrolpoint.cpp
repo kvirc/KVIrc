@@ -35,8 +35,8 @@
 
 #include "igdcontrolpoint.h"
 
-#include "rootservice.h"
-#include "wanconnectionservice.h"
+#include "RootService.h"
+#include "WanConnectionService.h"
 
 namespace UPnP
 {

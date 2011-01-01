@@ -1,44 +1,44 @@
 # CMakeLists for src/modules/dcc
 
 SET(kvidcc_MOC_HDRS
-	broker.h
-	chat.h
-	dialogs.h
-	marshal.h
-	send.h
-	voice.h
-	window.h
+	DccBroker.h
+	DccChatWindow.h
+	DccDialog.h
+	DccMarshal.h
+	DccFileTransfer.h
+	DccVoiceWindow.h
+	DccWindow.h
 )
 
 IF(NOT DEFINED COMPILE_DISABLE_DCC_VIDEO) 
         LIST(APPEND kvidcc_MOC_HDRS 
-                video.h 
+                DccVideoWindow.h 
         ) 
 ENDIF() 
 
 SET(kvidcc_SRCS
-	adpcmcodec.cpp
-	broker.cpp
-	canvas.cpp
+	DccVoiceAdpcmCodec.cpp
+	DccBroker.cpp
+	DccCanvasWindow.cpp
 	canvaswidget.cpp
-	chat.cpp
-	codec.cpp
-	descriptor.cpp
-	dialogs.cpp
-	gsmcodec.cpp
+	DccChatWindow.cpp
+	DccVoiceCodec.cpp
+	DccDescriptor.cpp
+	DccDialog.cpp
+	DccVoiceGsmCodec.cpp
 	libkvidcc.cpp
-	marshal.cpp
+	DccMarshal.cpp
 	requests.cpp
-	send.cpp
-	thread.cpp
-	utils.cpp
-	voice.cpp
-	window.cpp
+	DccFileTransfer.cpp
+	DccThread.cpp
+	DccUtils.cpp
+	DccVoiceWindow.cpp
+	DccWindow.cpp
 )
 
 IF(NOT DEFINED COMPILE_DISABLE_DCC_VIDEO) 
         LIST(APPEND kvidcc_SRCS 
-                video.cpp 
+                DccVideoWindow.cpp 
         ) 
 ENDIF()
 

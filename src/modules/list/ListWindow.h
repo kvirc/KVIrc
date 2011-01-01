@@ -1,0 +1,124 @@
+#ifndef _LISTWINDOW_H_
+#define _LISTWINDOW_H_
+//=============================================================================
+//
+//   File : ListWindow.h
+//   Creation date : Thu Oct 7 2001 13:27:55 CEST by Szymon Stefanek
+//
+//   This file is part of the KVIrc irc client distribution
+//   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the lists of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+//
+//=============================================================================
+
+#include "KviWindow.h"
+#include "KviCString.h"
+#include "KviIrcSocket.h"
+#include "KviPointerList.h"
+#include "KviIrcServerParser.h"
+#include "KviConsoleWindow.h"
+#include "KviIrcContext.h"
+#include "KviTalPopupMenu.h"
+#include "KviThemedTreeWidget.h"
+
+#include <QToolButton>
+#include <QLineEdit>
+#include <QItemDelegate>
+
+class KviThemedLabel;
+class KviThemedLineEdit;
+
+class ChannelTreeWidgetItemDelegate : public QItemDelegate
+{
+public:
+	ChannelTreeWidgetItemDelegate(QTreeWidget * pWidget = 0);
+	~ChannelTreeWidgetItemDelegate();
+	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+};
+
+class ChannelTreeWidgetItemData
+{
+	friend class ChannelTreeWidgetItem;
+	friend class ListWindow;
+	friend class ChannelTreeWidgetItemDelegate;
+public:
+	ChannelTreeWidgetItemData(const QString & szChan, const QString & szUsers, const QString & szTopic);
+	~ChannelTreeWidgetItemData();
+protected:
+	QString m_szChan;
+	QString m_szUsers;
+	QString m_szTopic;
+};
+
+class ChannelTreeWidgetItem : public QTreeWidgetItem
+{
+	friend class ListWindow;
+public:
+	ChannelTreeWidgetItem(QTreeWidget * pWidget, ChannelTreeWidgetItemData * pData);
+	~ChannelTreeWidgetItem();
+private:
+	ChannelTreeWidgetItemData * m_pData;
+public:
+	int width (const QFontMetrics & fm, const QTreeWidget * pWidget, int iColumn) const;
+	bool operator<(const QTreeWidgetItem & other) const;
+	inline ChannelTreeWidgetItemData * itemData() { return m_pData; }; 
+};
+
+class ListWindow : public KviWindow, public KviExternalServerDataParser
+{
+	Q_OBJECT
+public:
+	ListWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole);
+	~ListWindow();
+protected:
+	QSplitter                                    * m_pVertSplitter;
+	QSplitter                                    * m_pTopSplitter;
+	KviThemedTreeWidget                          * m_pTreeWidget;
+	KviThemedLineEdit                            * m_pParamsEdit;
+	QToolButton                                  * m_pRequestButton;
+	QToolButton                                  * m_pStopListDownloadButton;
+	QToolButton                                  * m_pOpenButton;
+	QToolButton                                  * m_pSaveButton;
+	KviThemedLabel                               * m_pInfoLabel;
+	QTimer                                       * m_pFlushTimer;
+	KviPointerList<ChannelTreeWidgetItemData> * m_pItemList;
+public: // Methods
+	virtual void control(int iMsg);
+	virtual void processData(KviIrcMessage * pMsg);
+	virtual void die();
+	virtual QSize sizeHint() const;
+protected:
+	virtual QPixmap * myIconPtr();
+	virtual void fillCaptionBuffers();
+	virtual void applyOptions();
+	virtual void resizeEvent(QResizeEvent * e);
+	virtual void getBaseLogFileName(QString & szBuffer);
+protected slots:
+	void flush();
+	void itemDoubleClicked(QTreeWidgetItem * it, int);
+	void requestList();
+	void stoplistdownload();
+	void connectionStateChange();
+	void exportList();
+	void importList();
+	void liveSearch(const QString & szText);
+private:
+	void reset();
+	void endOfList();
+	void startOfList();
+};
+
+#endif //_KVI_LISTWINDOW_H_

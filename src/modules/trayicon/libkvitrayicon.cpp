@@ -59,13 +59,13 @@
 #endif
 
 extern KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;
-static KviPointerList<KviTrayIcon> * g_pTrayIconList = 0;
+static KviPointerList<TrayIcon> * g_pTrayIconList = 0;
 
 static QPixmap * g_pDock1 = 0;
 static QPixmap * g_pDock2 = 0;
 static QPixmap * g_pDock3 = 0;
 
-KviTrayIcon::KviTrayIcon(KviMainWindow * frm)
+TrayIcon::TrayIcon(KviMainWindow * frm)
 : QSystemTrayIcon(frm), m_CurrentPixmap(ICON_SIZE,ICON_SIZE)
 {
 	m_pContextPopup = new KviTalPopupMenu(0);
@@ -120,7 +120,7 @@ KviTrayIcon::KviTrayIcon(KviMainWindow * frm)
 }
 
 
-KviTrayIcon::~KviTrayIcon()
+TrayIcon::~TrayIcon()
 {
 	m_pFrm->setDockExtension(0);
 	g_pTrayIconList->removeRef(this);
@@ -132,7 +132,7 @@ KviTrayIcon::~KviTrayIcon()
 }
 
 
-void KviTrayIcon::executeInternalCommand(bool)
+void TrayIcon::executeInternalCommand(bool)
 {
 	int iCmd;
 	bool bOk;
@@ -140,12 +140,12 @@ void KviTrayIcon::executeInternalCommand(bool)
 	if(m_pFrm && bOk)
 		m_pFrm->executeInternalCommand(iCmd);
 }
-void KviTrayIcon::die()
+void TrayIcon::die()
 {
 	delete this;
 }
 
-void KviTrayIcon::flashingTimerShot()
+void TrayIcon::flashingTimerShot()
 {
 	m_bFlashed=!m_bFlashed;
 	refresh();
@@ -175,7 +175,7 @@ static const char * idlemsgs[NIDLEMSGS]=
 	__tr("idle idle idle idle!")
 };
 
-bool KviTrayIcon::event(QEvent *e)
+bool TrayIcon::event(QEvent *e)
 {
 	if(e->type()==QEvent::ToolTip)
 	{
@@ -222,14 +222,14 @@ bool KviTrayIcon::event(QEvent *e)
 	return false;
 }
 
-//int KviTrayIcon::message(int,void *)
+//int TrayIcon::message(int,void *)
 //{
 //	qDebug("Message");
 //	update();
 //	return 0;
 //}
 
-void KviTrayIcon::doAway(bool)
+void TrayIcon::doAway(bool)
 {
 	int id;
 	bool ok;
@@ -285,7 +285,7 @@ void KviTrayIcon::doAway(bool)
 	}
 }
 
-void KviTrayIcon::fillContextPopup()
+void TrayIcon::fillContextPopup()
 {
 	m_pToggleFrame->setText(m_pFrm->isVisible() ? __tr2qs("Hide Window") : __tr2qs("Show Window"));
 	if(g_pApp->topmostConnectedConsole())
@@ -343,9 +343,9 @@ void KviTrayIcon::fillContextPopup()
 	}
 }
 
-void KviTrayIcon::toggleParentFrame()
+void TrayIcon::toggleParentFrame()
 {
-	qDebug("KviTrayIcon::toggleParentFrame()");
+	qDebug("TrayIcon::toggleParentFrame()");
 	if(m_pFrm->isMinimized())
 	{
 		qDebug("- frame is minimized");
@@ -378,7 +378,7 @@ void KviTrayIcon::toggleParentFrame()
 	}
 }
 
-void KviTrayIcon::refresh()
+void TrayIcon::refresh()
 {
 	grabActivityInfo();
 
@@ -425,7 +425,7 @@ void KviTrayIcon::refresh()
 	updateIcon();
 }
 
-void KviTrayIcon::activatedSlot( QSystemTrayIcon::ActivationReason reason )
+void TrayIcon::activatedSlot( QSystemTrayIcon::ActivationReason reason )
 {
 	switch(reason)
 	{
@@ -448,7 +448,7 @@ void KviTrayIcon::activatedSlot( QSystemTrayIcon::ActivationReason reason )
 	}
 }
 
-void KviTrayIcon::grabActivityInfo()
+void TrayIcon::grabActivityInfo()
 {
 	KviWindowListBase * t = m_pFrm->windowListWidget();
 
@@ -540,15 +540,15 @@ void KviTrayIcon::grabActivityInfo()
 	}
 }
 
-void KviTrayIcon::updateIcon()
+void TrayIcon::updateIcon()
 {
 	setIcon(QIcon(m_CurrentPixmap));
 }
 
-static KviTrayIcon * trayicon_find(KviMainWindow *f)
+static TrayIcon * trayicon_find(KviMainWindow *f)
 {
 	if(!g_pTrayIconList)return 0;
-	for(KviTrayIcon * w = g_pTrayIconList->first();w;w = g_pTrayIconList->next())
+	for(TrayIcon * w = g_pTrayIconList->first();w;w = g_pTrayIconList->next())
 	{
 		if(w->frame() == f)return w;
 	}
@@ -593,7 +593,7 @@ static bool trayicon_kvs_cmd_show(KviKvsModuleCommandCall * c)
 {
 	if(!(trayicon_find(c->window()->frame())))
 	{
-		KviTrayIcon * w = new KviTrayIcon(c->window()->frame());
+		TrayIcon * w = new TrayIcon(c->window()->frame());
 		w->show();
 	}
 	return true;
@@ -617,7 +617,7 @@ static bool trayicon_kvs_cmd_show(KviKvsModuleCommandCall * c)
 
 static bool trayicon_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 {
-	KviTrayIcon * w= trayicon_find(c->window()->frame());
+	TrayIcon * w= trayicon_find(c->window()->frame());
 	if(w)delete w;
 	// show the parent frame.. otherwise there will be no way to get it back
 	if(!c->window()->frame()->isVisible())
@@ -645,7 +645,7 @@ static bool trayicon_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 
 static bool trayicon_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
 {
-	KviTrayIcon * w= trayicon_find(c->window()->frame());
+	TrayIcon * w= trayicon_find(c->window()->frame());
 	if(w)
 	{
 		c->window()->frame()->hide();
@@ -702,7 +702,7 @@ static bool trayicon_module_init(KviModule * m)
 #endif
 	g_pDock3 = new QPixmap(buffer);
 
-	g_pTrayIconList = new KviPointerList<KviTrayIcon>;
+	g_pTrayIconList = new KviPointerList<TrayIcon>;
 	g_pTrayIconList->setAutoDelete(false);
 
 

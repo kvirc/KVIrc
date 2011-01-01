@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/aliaseditor
 
 SET(kvialiaseditor_MOC_HDRS
-	aliaseditor.h
+	AliasEditorWindow.h
 )
 
 SET(kvialiaseditor_SRCS
 	libkvialiaseditor.cpp
-	aliaseditor.cpp
+	AliasEditorWindow.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

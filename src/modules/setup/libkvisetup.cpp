@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#include "setupwizard.h"
+#include "SetupWizard.h"
 
 #include "KviModule.h"
 #include "KviOptions.h"
@@ -58,7 +58,7 @@ KVIMODULEEXPORTFUNC bool setup_begin()
 	// FIXME: try to guess the user's .kvirc directory
 	//        and the preferred nickname from a previous installation
 
-	KviSetupWizard * w = new KviSetupWizard();
+	SetupWizard * w = new SetupWizard();
 	int retcode = w->exec();
 	delete w;
 	return (retcode == QDialog::Accepted);

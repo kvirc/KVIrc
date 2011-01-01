@@ -22,14 +22,14 @@
 //
 //=============================================================================
 
-#include "raweditor.h"
+#include "RawEditorWindow.h"
 
 #include "KviModule.h"
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
 
-KviRawEditorWindow * g_pRawEditorWindow = 0;
+RawEditorWindow * g_pRawEditorWindow = 0;
 
 
 /*
@@ -50,7 +50,7 @@ static bool raweditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	if(!g_pRawEditorWindow)
 	{
-		g_pRawEditorWindow = new KviRawEditorWindow(c->window()->frame());
+		g_pRawEditorWindow = new RawEditorWindow(c->window()->frame());
 		c->window()->frame()->addWindow(g_pRawEditorWindow);
 	}
 	g_pRawEditorWindow->setFocus();

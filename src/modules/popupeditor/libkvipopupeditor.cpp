@@ -22,14 +22,14 @@
 //
 //=============================================================================
 
-#include "popupeditor.h"
+#include "PopupEditorWindow.h"
 
 #include "KviModule.h"
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
 
-KviPopupEditorWindow * g_pPopupEditorWindow = 0;
+PopupEditorWindow * g_pPopupEditorWindow = 0;
 
 
 /*
@@ -50,7 +50,7 @@ static bool popupeditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	if(!g_pPopupEditorWindow)
 	{
-		g_pPopupEditorWindow = new KviPopupEditorWindow(c->window()->frame());
+		g_pPopupEditorWindow = new PopupEditorWindow(c->window()->frame());
 		c->window()->frame()->addWindow(g_pPopupEditorWindow);
 	}
 

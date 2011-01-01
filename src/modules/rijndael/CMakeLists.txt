@@ -16,8 +16,8 @@ IF(WANT_NO_EMBEDDED_CODE)
 ELSE(WANT_NO_EMBEDDED_CODE)
     SET(kvirijndael_SRCS
 	    libkvirijndael.cpp
-	    rijndael.cpp
-	    ablowfish.cpp
+	    Rijndael.cpp
+	    BlowFish.cpp
     )
 
     SET(kvirijndael_MOC_HDRS

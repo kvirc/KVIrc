@@ -3,12 +3,12 @@
 SUBDIRS(caps)
 
 SET(kvisharedfileswindow_MOC_HDRS
-	sharedfileswindow.h
+	SharedFilesWindow.h
 )
 
 SET(kvisharedfileswindow_SRCS
 	libkvisharedfileswindow.cpp
-	sharedfileswindow.cpp
+	SharedFilesWindow.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

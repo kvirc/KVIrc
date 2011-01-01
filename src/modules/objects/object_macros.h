@@ -96,7 +96,7 @@ g_pKvs##__className##Class->registerFunctionHandler(#__szName,(KviKvsObjectFunct
 	}
 
 #define KVSO_CLASS_FUNCTION(__className,__functionName)\
-	bool KviKvsObject_##__className::__functionName(KviKvsObjectFunctionCall * c)
+	bool KvsObject_##__className::__functionName(KviKvsObjectFunctionCall * c)
 
 #define CHECK_INTERNAL_POINTER(__pointer)\
 	if(!__pointer) \

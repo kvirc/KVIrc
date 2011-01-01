@@ -21,7 +21,7 @@
 //
 //=============================================================================
 
-#include "listwindow.h"
+#include "ListWindow.h"
 
 #include "KviModule.h"
 #include "KviMainWindow.h"
@@ -30,7 +30,7 @@
 
 #include <QSplitter>
 
-KviPointerList<KviListWindow> * g_pListWindowList = 0;
+KviPointerList<ListWindow> * g_pListWindowList = 0;
 
 
 /*
@@ -55,7 +55,7 @@ static bool list_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	if(!(c->window()->context()->listWindow()))
 	{
-		KviListWindow * w = new KviListWindow(c->window()->frame(),c->window()->console());
+		ListWindow * w = new ListWindow(c->window()->frame(),c->window()->console());
 		c->window()->frame()->addWindow(w);
 	} else {
 		c->warning(__tr2qs("List window already open for this IRC context"));
@@ -66,7 +66,7 @@ static bool list_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 static bool list_module_init(KviModule * m)
 {
-	g_pListWindowList = new KviPointerList<KviListWindow>;
+	g_pListWindowList = new KviPointerList<ListWindow>;
 	g_pListWindowList->setAutoDelete(false);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",list_kvs_cmd_open);

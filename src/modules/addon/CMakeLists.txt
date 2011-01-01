@@ -2,14 +2,14 @@
 
 SET(kviaddon_MOC_HDRS
 	managementdialog.h
-	packaddondialog.h
+	PackAddonDialog.h
 )
 
 SET(kviaddon_SRCS
 	libkviaddon.cpp
 	managementdialog.cpp
-	packaddondialog.cpp
-	addonfunctions.cpp
+	PackAddonDialog.cpp
+	AddonFunctions.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

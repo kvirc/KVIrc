@@ -90,12 +90,12 @@ static KviModuleExtension * url_extension_alloc(KviModuleExtensionAllocStruct *)
 	return 0;
 }
 
-KviUrlDialogTreeWidget::KviUrlDialogTreeWidget(QWidget * par)
+UrlDialogTreeWidget::UrlDialogTreeWidget(QWidget * par)
 : QTreeWidget(par)
 {
 }
 
-void KviUrlDialogTreeWidget::mousePressEvent (QMouseEvent *e)
+void UrlDialogTreeWidget::mousePressEvent (QMouseEvent *e)
 {
 	if (e->button() == Qt::RightButton)
 	{
@@ -106,7 +106,7 @@ void KviUrlDialogTreeWidget::mousePressEvent (QMouseEvent *e)
 	QTreeWidget::mousePressEvent(e);
 }
 
-void KviUrlDialogTreeWidget::paintEvent(QPaintEvent * event)
+void UrlDialogTreeWidget::paintEvent(QPaintEvent * event)
 {
 	QPainter *p = new QPainter(viewport());
 	QStyleOptionViewItem option = viewOptions();
@@ -164,7 +164,7 @@ UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
 {
 	setAutoFillBackground(false);
 	
-	m_pUrlList = new KviUrlDialogTreeWidget(this);
+	m_pUrlList = new UrlDialogTreeWidget(this);
 
 	m_pMenuBar = new KviTalMenuBar(this,"url menu");
 	//m_pUrlList = new KviListView(this,"list");

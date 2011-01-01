@@ -22,8 +22,8 @@
 //
 //=============================================================================
 
-#include "edituser.h"
-#include "wizard.h"
+#include "RegisteredUserEntryDialog.h"
+#include "RegistrationWizard.h"
 #include "KviIrcConnection.h"
 #include "dialog.h"
 
@@ -51,9 +51,9 @@
 
 extern KVIRC_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
 
-KviPointerList<KviRegistrationWizard> * g_pRegistrationWizardList = 0;
+KviPointerList<RegistrationWizard> * g_pRegistrationWizardList = 0;
 
-KviRegisteredUsersDialog * g_pRegisteredUsersDialog = 0;
+RegisteredUsersDialog * g_pRegisteredUsersDialog = 0;
 
 /*
 	@doc: reguser
@@ -127,9 +127,9 @@ static bool reguser_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 	} else {
 		if(c->hasSwitch('t',"toplevel"))
 		{
-			g_pRegisteredUsersDialog = new KviRegisteredUsersDialog(0);
+			g_pRegisteredUsersDialog = new RegisteredUsersDialog(0);
 		} else {
-			g_pRegisteredUsersDialog = new KviRegisteredUsersDialog(c->window()->frame()->splitter());
+			g_pRegisteredUsersDialog = new RegisteredUsersDialog(c->window()->frame()->splitter());
 		}
 	}
 	g_pRegisteredUsersDialog->show();
@@ -1170,7 +1170,7 @@ static bool reguser_kvs_cmd_wizard(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("mask",KVS_PT_STRING,KVS_PF_OPTIONAL,szMask)
 	KVSM_PARAMETERS_END(c)
 
-	KviRegistrationWizard * w = new KviRegistrationWizard(szMask);
+	RegistrationWizard * w = new RegistrationWizard(szMask);
 	w->show();
 	return true;
 }
@@ -1178,7 +1178,7 @@ static bool reguser_kvs_cmd_wizard(KviKvsModuleCommandCall * c)
 static bool reguser_module_init(KviModule * m)
 {
 	g_pLocalRegisteredUserDataBase = 0;
-	g_pRegistrationWizardList = new KviPointerList<KviRegistrationWizard>;
+	g_pRegistrationWizardList = new KviPointerList<RegistrationWizard>;
 	g_pRegistrationWizardList->setAutoDelete(true);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"add",reguser_kvs_cmd_add);
@@ -1209,7 +1209,7 @@ static bool reguser_module_cleanup(KviModule *)
 	if(g_pRegisteredUsersDialog)delete g_pRegisteredUsersDialog;
 	g_pRegisteredUsersDialog = 0;
 
-	while(KviRegistrationWizard * w = g_pRegistrationWizardList->first())delete w;
+	while(RegistrationWizard * w = g_pRegistrationWizardList->first())delete w;
 	delete g_pRegistrationWizardList;
 	g_pRegistrationWizardList = 0;
 

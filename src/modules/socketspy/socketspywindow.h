@@ -30,12 +30,12 @@
 
 class KviConsoleWindow;
 
-class KviSocketSpyWindow : public KviWindow, public KviIrcDataStreamMonitor
+class SocketSpyWindow : public KviWindow, public KviIrcDataStreamMonitor
 {
 	Q_OBJECT
 public:
-	KviSocketSpyWindow(KviMainWindow * lpFrm,KviConsoleWindow * lpConsole);
-	~KviSocketSpyWindow();
+	SocketSpyWindow(KviMainWindow * lpFrm,KviConsoleWindow * lpConsole);
+	~SocketSpyWindow();
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();

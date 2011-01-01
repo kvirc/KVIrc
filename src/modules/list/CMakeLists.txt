@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/list
 
 SET(kvilist_MOC_HDRS
-	listwindow.h
+	ListWindow.h
 )
 
 SET(kvilist_SRCS
 	libkvilist.cpp
-	listwindow.cpp
+	ListWindow.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

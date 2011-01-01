@@ -25,7 +25,7 @@
 //
 //=============================================================================
 
-#include "instances.h"
+#include "OptionsInstanceManager.h"
 
 #include "KviOptionsWidget.h"
 #include <QTreeWidget>
@@ -41,44 +41,44 @@ class QPushButton;
 class QLineEdit;
 class QStackedWidget;
 
-class KviGeneralOptionsFrontWidget : public KviOptionsWidget
+class OptionsDialogFrontWidget : public KviOptionsWidget
 {
 	Q_OBJECT
 public:
-	KviGeneralOptionsFrontWidget(QWidget *parent,const QString &szText);
-	~KviGeneralOptionsFrontWidget();
+	OptionsDialogFrontWidget(QWidget *parent,const QString &szText);
+	~OptionsDialogFrontWidget();
 };
 
-class KviOptionsTreeWidgetItem : public QTreeWidgetItem
+class OptionsDialogTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviOptionsTreeWidgetItem(QTreeWidget *parent,KviOptionsWidgetInstanceEntry * e);
-	KviOptionsTreeWidgetItem(QTreeWidgetItem *parent,KviOptionsWidgetInstanceEntry * e);
-	~KviOptionsTreeWidgetItem();
+	OptionsDialogTreeWidgetItem(QTreeWidget *parent,OptionsWidgetInstanceEntry * e);
+	OptionsDialogTreeWidgetItem(QTreeWidgetItem *parent,OptionsWidgetInstanceEntry * e);
+	~OptionsDialogTreeWidgetItem();
 public:
-	KviOptionsWidgetInstanceEntry * m_pInstanceEntry;
+	OptionsWidgetInstanceEntry * m_pInstanceEntry;
 	KviOptionsWidget              * m_pOptionsWidget;
 };
 
-class KviOptionsDialog : public QWidget
+class OptionsDialog : public QWidget
 {
 	Q_OBJECT
 public:
-	KviOptionsDialog(QWidget * par,const QString &szGroup);
-	~KviOptionsDialog();
+	OptionsDialog(QWidget * par,const QString &szGroup);
+	~OptionsDialog();
 private:
 	QTreeWidget                  * m_pTreeWidget;
 	QLabel                       * m_pCategoryLabel;
 	QStackedWidget               * m_pWidgetStack;
-	KviGeneralOptionsFrontWidget * m_pFrontWidget;
+	OptionsDialogFrontWidget * m_pFrontWidget;
 	QString                        m_szGroup;
 	QLineEdit                    * m_pSearchLineEdit;
 	QToolButton                  * m_pSearchButton;
 private:
-	void recursiveCommit(KviOptionsTreeWidgetItem *it);
-	void fillTreeWidget(QTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);
-	//KviOptionsTreeWidgetItem * showHiddenChildren(QTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l);
-	//KviOptionsTreeWidgetItem * findItemByPage(KviOptionsTreeWidgetItem *it,KviOptionsWidget * pPage);
+	void recursiveCommit(OptionsDialogTreeWidgetItem *it);
+	void fillTreeWidget(QTreeWidgetItem * p,KviPointerList<OptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);
+	//OptionsDialogTreeWidgetItem * showHiddenChildren(QTreeWidgetItem * p,KviPointerList<OptionsWidgetInstanceEntry> * l);
+	//OptionsDialogTreeWidgetItem * findItemByPage(OptionsDialogTreeWidgetItem *it,KviOptionsWidget * pPage);
 private slots:
 	void treeWidgetItemSelectionChanged(QTreeWidgetItem* it, QTreeWidgetItem *prev);
 	void applyClicked();
@@ -92,7 +92,7 @@ protected:
 	virtual void closeEvent(QCloseEvent *e);
 	virtual void keyPressEvent( QKeyEvent * e );
 	virtual void showEvent(QShowEvent *e);
-	bool recursiveSearch(KviOptionsTreeWidgetItem * pItem,const QStringList &lKeywords);
+	bool recursiveSearch(OptionsDialogTreeWidgetItem * pItem,const QStringList &lKeywords);
 	bool searchInSelectors(KviOptionsWidget *pWidget,const QStringList &lKeywords);
 
 public:

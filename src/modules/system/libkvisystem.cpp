@@ -23,7 +23,7 @@
 //
 //=============================================================================
 
-#include "plugin.h"
+#include "Plugin.h"
 
 #include "kvi_settings.h"
 #include "KviModule.h"
@@ -53,7 +53,7 @@
 	#include <QStringList>
 #endif
 
-KviPluginManager * g_pPluginManager;
+PluginManager * g_pPluginManager;
 
 /*
 	@doc: system.ostype
@@ -777,7 +777,7 @@ static bool system_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setSelection",system_kvs_cmd_setSelection);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"runcmd",system_kvs_cmd_runcmd);
 
-	g_pPluginManager = new(KviPluginManager);
+	g_pPluginManager = new(PluginManager);
 
 	return true;
 }

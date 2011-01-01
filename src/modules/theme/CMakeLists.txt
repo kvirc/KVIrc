@@ -2,16 +2,16 @@
 
 SET(kvitheme_MOC_HDRS
 	managementdialog.h
-	packthemedialog.h
-	savethemedialog.h
+	PackThemeDialog.h
+	SaveThemeDialog.h
 )
 
 SET(kvitheme_SRCS
 	libkvitheme.cpp
 	managementdialog.cpp
-	packthemedialog.cpp
-	savethemedialog.cpp
-	themefunctions.cpp
+	PackThemeDialog.cpp
+	SaveThemeDialog.cpp
+	ThemeFunctions.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

@@ -104,7 +104,7 @@ class KVIRC_API KviApplication : public KviTalApplication
 {
 	friend class KviMainWindow;
 	friend class KviWindow;
-	friend class KviSetupWizard; // this resides in a module!
+	friend class SetupWizard; // this resides in a module!
 	Q_OBJECT
 public:
 	KviApplication(int &argc,char ** argv);

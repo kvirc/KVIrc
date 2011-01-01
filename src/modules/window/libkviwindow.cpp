@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#include "userwindow.h"
+#include "UserWindow.h"
 
 #include "KviModule.h"
 #include "KviConsoleWindow.h"
@@ -55,7 +55,7 @@
 
 // KviApplication.cpp
 extern KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;
-KviPointerList<KviUserWindow> * g_pUserWindowList = 0;
+KviPointerList<UserWindow> * g_pUserWindowList = 0;
 
 // $window.caption $window.x $window.y $window.width $window.height $window.isActive $window.type
 // $window.input.text $window.input.cursorpos $window.input.textlen
@@ -1154,7 +1154,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	iIcon = iIcon % KVI_NUM_SMALL_ICONS;
 
 	int iFlags = 0;
-	if(szFlags.contains('i'))iFlags |= KviUserWindow::HasInput;
+	if(szFlags.contains('i'))iFlags |= UserWindow::HasInput;
 
 	KviConsoleWindow * pConsole = 0;
 	if(c->parameterList()->count() >= 3)
@@ -1166,7 +1166,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 		}
 	}
 
-	KviUserWindow * wnd = new KviUserWindow(
+	UserWindow * wnd = new UserWindow(
 		c->window()->frame(),
 		szCaption.toUtf8().data(),
 		iIcon,
@@ -1220,7 +1220,7 @@ static bool window_kvs_cmd_setWindowTitle(KviKvsModuleCommandCall * c)
 
 	if(pWnd->type() == KVI_WINDOW_TYPE_USERWINDOW)
 	{
-		((KviUserWindow *)pWnd)->setWindowTitleStrings(szPlain);
+		((UserWindow *)pWnd)->setWindowTitleStrings(szPlain);
 	} else {
 		//store the window title (needed for functions that search windows by their captions)
 		((KviWindow *)pWnd)->setFixedCaption(szPlain);
@@ -1599,7 +1599,7 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 
 static bool window_module_init(KviModule *m)
 {
-	g_pUserWindowList = new KviPointerList<KviUserWindow>();
+	g_pUserWindowList = new KviPointerList<UserWindow>();
 	g_pUserWindowList->setAutoDelete(false);
 
 	KVSM_REGISTER_FUNCTION(m,"activityTemperature",window_kvs_fnc_activityTemperature);
@@ -1665,7 +1665,7 @@ static bool window_module_init(KviModule *m)
 
 static bool window_module_cleanup(KviModule *)
 {
-	while(KviUserWindow * w = g_pUserWindowList->first())
+	while(UserWindow * w = g_pUserWindowList->first())
 		w->close();
 	delete g_pUserWindowList;
 	return true;

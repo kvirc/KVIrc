@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/http
 
 SET(kvihttp_MOC_HDRS
-	httpfiletransfer.h
+	HttpFileTransfer.h
 )
 
 SET(kvihttp_SRCS
 	libkvihttp.cpp
-	httpfiletransfer.cpp
+	HttpFileTransfer.cpp
 )
 
 SET(files

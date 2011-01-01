@@ -23,7 +23,7 @@
 //=============================================================================
 
 #include "managementdialog.h"
-#include "addonfunctions.h"
+#include "AddonFunctions.h"
 
 #include "KviModule.h"
 #include "KviKvsScriptAddonManager.h"
@@ -776,7 +776,7 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 static bool addon_kvs_cmd_dialog(KviKvsModuleCommandCall *c)
 {
 
-	KviScriptManagementDialog::display(c->hasSwitch('t',"toplevel"));
+	AddonManagementDialog::display(c->hasSwitch('t',"toplevel"));
 	return true;
 }
 
@@ -803,7 +803,7 @@ static bool addon_kvs_cmd_install(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	QString szError;
-	if(!KviAddonFunctions::installAddonPackage(szAddonPackFile,szError))
+	if(!AddonFunctions::installAddonPackage(szAddonPackFile,szError))
 	{
 		c->error(__tr2qs_ctx("Error installing addon package: %Q","addon"),&szError);
 		return false;
@@ -839,7 +839,7 @@ static bool addon_module_init(KviModule *m)
 
 static bool addon_module_cleanup(KviModule *m)
 {
-	KviScriptManagementDialog::cleanup();
+	AddonManagementDialog::cleanup();
 
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);
@@ -851,7 +851,7 @@ static bool addon_module_cleanup(KviModule *m)
 
 static bool addon_module_can_unload(KviModule *)
 {
-	return (!KviScriptManagementDialog::instance());
+	return (!AddonManagementDialog::instance());
 }
 
 

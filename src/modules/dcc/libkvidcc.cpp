@@ -22,13 +22,13 @@
 //
 //=============================================================================
 
-#include "gsmcodec.h"
-#include "broker.h"
-#include "voice.h"
-#include "video.h"
-#include "utils.h"
-#include "send.h"
-#include "window.h"
+#include "DccVoiceGsmCodec.h"
+#include "DccBroker.h"
+#include "DccVoiceWindow.h"
+#include "DccVideoWindow.h"
+#include "DccUtils.h"
+#include "DccFileTransfer.h"
+#include "DccWindow.h"
 
 #include "kvi_debug.h"
 #include "kvi_settings.h"
@@ -53,17 +53,17 @@
 
 #ifdef COMPILE_ON_WINDOWS
 	// Ugly Windoze compiler...
-	#include "dialogs.h"
+	#include "DccDialog.h"
 #endif
 
 //#warning "KviOption_boolIgnoreDccChat and other types too"
 
 //extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 
-KviDccBroker * g_pDccBroker = 0;
+DccBroker * g_pDccBroker = 0;
 
 
-static void dcc_module_set_dcc_type(KviDccDescriptor * d,const char * szBaseType)
+static void dcc_module_set_dcc_type(DccDescriptor * d,const char * szBaseType)
 {
 	d->szType = szBaseType;
 #ifdef COMPILE_SSL_SUPPORT
@@ -72,7 +72,7 @@ static void dcc_module_set_dcc_type(KviDccDescriptor * d,const char * szBaseType
 	if(d->bIsTdcc)d->szType.prepend('T');
 }
 
-static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCommandCall *c)
+static bool dcc_kvs_parse_default_parameters(DccDescriptor * d,KviKvsModuleCommandCall *c)
 {
 	d->bIsTdcc = c->switches()->find('t',"tdcc");
 
@@ -401,7 +401,7 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("target",KVS_PT_NONEMPTYSTRING,0,szTarget)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * d = new KviDccDescriptor(c->window()->console());
+	DccDescriptor * d = new DccDescriptor(c->window()->console());
 
 	d->szNick       = szTarget;    // we always specify the nickname
 	d->szUser       = __tr2qs_ctx("unknown","dcc"); // username is always unknown
@@ -610,7 +610,7 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("file name",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szFileName)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * d = new KviDccDescriptor(c->window()->console());
+	DccDescriptor * d = new DccDescriptor(c->window()->console());
 
 	d->szNick            = szTarget;    // we always specify the nickname
 
@@ -797,7 +797,7 @@ static bool dcc_kvs_cmd_recv(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("size",KVS_PT_UINT,0,uSize)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * d = new KviDccDescriptor(c->window()->console());
+	DccDescriptor * d = new DccDescriptor(c->window()->console());
 	d->szNick            = szTarget;
 	d->szUser            = __tr2qs_ctx("unknown","dcc");
 	d->szHost            = d->szUser;
@@ -879,7 +879,7 @@ static bool dcc_kvs_cmd_rsend(KviKvsModuleCommandCall * c)
 
 	KVSM_REQUIRE_CONNECTION(c)
 
-	KviDccDescriptor * d = new KviDccDescriptor(c->window()->console());
+	DccDescriptor * d = new DccDescriptor(c->window()->console());
 	d->szNick            = szTarget;
 	d->szLocalFileName   = szFileName;
 	d->bIsTdcc           = c->switches()->find('t',"tdcc");
@@ -1114,7 +1114,7 @@ static bool dcc_kvs_cmd_voice(KviKvsModuleCommandCall * c)
 	return true;
 #endif
 
-	KviDccDescriptor * d = new KviDccDescriptor(c->window()->console());
+	DccDescriptor * d = new DccDescriptor(c->window()->console());
 
 	d->szNick       = szTarget;              // we always specify the nickname
 	d->szUser       = __tr2qs_ctx("unknown","dcc"); // username is always unknown
@@ -1192,7 +1192,7 @@ static bool dcc_kvs_cmd_video(KviKvsModuleCommandCall * c)
 	return true;
 #else
 
-	KviDccDescriptor * d = new KviDccDescriptor(c->window()->console());
+	DccDescriptor * d = new DccDescriptor(c->window()->console());
 
 	d->szNick       = szTarget;              // we always specify the nickname
 	d->szUser       = __tr2qs_ctx("unknown","dcc"); // username is always unknown
@@ -1258,7 +1258,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 
 	if(target.isEmpty())return c->error(KviError_notEnoughParameters,"%s",__tr_ctx("Missing target nickname","dcc"));
 
-	KviDccDescriptor * d = new KviDccDescriptor(c->window()->console());
+	DccDescriptor * d = new DccDescriptor(c->window()->console());
 
 	d->szNick       = target.ptr();              // we always specify the nickname
 	d->szUser       = __tr2qs_ctx("unknown","dcc"); // username is always unknown
@@ -1628,20 +1628,20 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		"XDCC" has exactly the same meaning as "DCC" (at least in KVIrc).[br]
 */
 
-static KviDccDescriptor * dcc_kvs_find_dcc_descriptor(const kvs_uint_t &uId,KviKvsModuleRunTimeCall * c,bool bWarn = true)
+static DccDescriptor * dcc_kvs_find_dcc_descriptor(const kvs_uint_t &uId,KviKvsModuleRunTimeCall * c,bool bWarn = true)
 {
-	KviDccDescriptor * dcc = 0;
+	DccDescriptor * dcc = 0;
 	if(uId == 0)
 	{
-		if(c->window()->inherits("KviDccWindow"))
+		if(c->window()->inherits("DccWindow"))
 		{
-			dcc = ((KviDccWindow *)(c->window()))->descriptor();
+			dcc = ((DccWindow *)(c->window()))->descriptor();
 		}
 		if((!dcc) && bWarn)
 			c->warning(__tr2qs_ctx("The current window has no associated DCC session","dcc"));
 		return dcc;
 	}
-	dcc = KviDccDescriptor::find(uId);
+	dcc = DccDescriptor::find(uId);
 	if((!dcc) && bWarn)
 		c->warning(__tr2qs_ctx("The specified parameter is not a valid DCC identifier","dcc"));
 	return dcc;
@@ -1679,7 +1679,7 @@ static bool dcc_kvs_cmd_abort(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c,!c->switches()->find('q',"quiet"));
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c,!c->switches()->find('q',"quiet"));
 
 	if(dcc)
 	{
@@ -1719,7 +1719,7 @@ static bool dcc_kvs_cmd_setBandwidthLimit(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c,!c->switches()->find('q',"quiet"));
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c,!c->switches()->find('q',"quiet"));
 	if(dcc)
 	{
 		if (dcc->transfer())dcc->transfer()->setBandwidthLimit(uVal);
@@ -1757,7 +1757,7 @@ static bool dcc_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->protocol());
 	return true;
@@ -1794,7 +1794,7 @@ static bool dcc_kvs_fnc_connectionType(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->isActive() ? "ACTIVE" : "PASSIVE");
 	return true;
@@ -1830,7 +1830,7 @@ static bool dcc_kvs_fnc_isFileTransfer(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c,false);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c,false);
 
 	if(dcc)c->returnValue()->setBoolean(dcc->isFileTransfer());
 	return true;
@@ -1866,7 +1866,7 @@ static bool dcc_kvs_fnc_isFileUpload(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setBoolean(dcc->isFileUpload());
 	return true;
@@ -1902,7 +1902,7 @@ static bool dcc_kvs_fnc_isFileDownload(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setBoolean(dcc->isFileDownload());
 	return true;
@@ -1937,7 +1937,7 @@ static bool dcc_kvs_fnc_localNick(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->localNick());
 	return true;
@@ -1972,7 +1972,7 @@ static bool dcc_kvs_fnc_localUser(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->localUser());
 	return true;
@@ -2006,7 +2006,7 @@ static bool dcc_kvs_fnc_localHost(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->localHost());
 	return true;
@@ -2041,7 +2041,7 @@ static bool dcc_kvs_fnc_localIp(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->localIp());
 	return true;
@@ -2075,7 +2075,7 @@ static bool dcc_kvs_fnc_localPort(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->localPort());
 	return true;
@@ -2107,7 +2107,7 @@ static bool dcc_kvs_fnc_localFileName(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->localFileName());
 	return true;
@@ -2144,7 +2144,7 @@ static bool dcc_kvs_fnc_localFileSize(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->localFileSize().isEmpty() ? QString("0") : dcc->localFileSize());
 	return true;
@@ -2179,7 +2179,7 @@ static bool dcc_kvs_fnc_remoteNick(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->remoteNick());
 	return true;
@@ -2214,7 +2214,7 @@ static bool dcc_kvs_fnc_remoteUser(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->remoteUser());
 	return true;
@@ -2248,7 +2248,7 @@ static bool dcc_kvs_fnc_remoteHost(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->remoteHost());
 	return true;
@@ -2282,7 +2282,7 @@ static bool dcc_kvs_fnc_remoteIp(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->remoteIp());
 	return true;
@@ -2317,7 +2317,7 @@ static bool dcc_kvs_fnc_remotePort(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->remotePort());
 	return true;
@@ -2349,7 +2349,7 @@ static bool dcc_kvs_fnc_remoteFileName(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->remoteFileName());
 	return true;
@@ -2386,7 +2386,7 @@ static bool dcc_kvs_fnc_remoteFileSize(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setString(dcc->remoteFileSize().isEmpty() ? QString("0") : dcc->remoteFileSize());
 	return true;
@@ -2424,7 +2424,7 @@ static bool dcc_kvs_fnc_ircContext(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)c->returnValue()->setInteger(dcc->console()->context()->id());
 	return true;
@@ -2464,7 +2464,7 @@ static bool dcc_kvs_fnc_transferStatus(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)
 	{
@@ -2509,7 +2509,7 @@ static bool dcc_kvs_fnc_transferredBytes(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)
 	{
@@ -2555,7 +2555,7 @@ static bool dcc_kvs_fnc_averageSpeed(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)
 	{
@@ -2596,11 +2596,11 @@ static bool dcc_kvs_fnc_session(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("window_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
 	KVSM_PARAMETERS_END(c)
 
-	KviDccDescriptor * dcc = 0;
+	DccDescriptor * dcc = 0;
 	if(szWinId.isEmpty())
 	{
-		if(c->window()->inherits("KviDccWindow"))
-			dcc = ((KviDccWindow *)(c->window()))->descriptor();
+		if(c->window()->inherits("DccWindow"))
+			dcc = ((DccWindow *)(c->window()))->descriptor();
 		if(!dcc)
 		{
 			c->warning(__tr2qs_ctx("The current window has no associated DCC session","dcc"));
@@ -2619,8 +2619,8 @@ static bool dcc_kvs_fnc_session(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	if(pWnd->inherits("KviDccWindow"))
-		dcc = ((KviDccWindow *)pWnd)->descriptor();
+	if(pWnd->inherits("DccWindow"))
+		dcc = ((DccWindow *)pWnd)->descriptor();
 	if(!dcc)
 	{
 		c->warning(__tr2qs_ctx("The current window has no associated DCC session","dcc"));
@@ -2662,17 +2662,17 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 	KviKvsArray * a = new KviKvsArray();
 	c->returnValue()->setArray(a);
 
-	KviPointerHashTable<int,KviDccDescriptor> * dict = KviDccDescriptor::descriptorDict();
+	KviPointerHashTable<int,DccDescriptor> * dict = DccDescriptor::descriptorDict();
 	if(!dict)return true;
 
-	KviPointerHashTableIterator<int,KviDccDescriptor> it(*dict);
+	KviPointerHashTableIterator<int,DccDescriptor> it(*dict);
 
 	int idx = 0;
 
 	if(szFlags.isEmpty())
 	{
 		// all
-		while(KviDccDescriptor * dcc = it.current())
+		while(DccDescriptor * dcc = it.current())
 		{
 			a->set(idx++,new KviKvsVariant((kvs_int_t)(dcc->id())));
 			++it;
@@ -2682,7 +2682,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		bool bWantFileDownloads = szFlags.contains('d',Qt::CaseInsensitive) != -1;
 		bool bWantChats = szFlags.contains('c',Qt::CaseInsensitive) != -1;
 
-		while(KviDccDescriptor * dcc = it.current())
+		while(DccDescriptor * dcc = it.current())
 		{
 			if((dcc->isFileUpload() && bWantFileUploads) ||
 				(dcc->isFileDownload() && bWantFileDownloads) ||
@@ -2787,7 +2787,7 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 			return true;
 		}
 	}
-	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
+	DccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c);
 
 	if(dcc)
 	{
@@ -2798,7 +2798,7 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 			return true;
 		}
 
-		KviDccThread * pSlaveThread = 0;
+		DccThread * pSlaveThread = 0;
 		if(dcc->window())
 			pSlaveThread = dcc->window()->getSlaveThread();
 		else if(dcc->transfer())
@@ -2901,7 +2901,7 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 
 static bool dcc_module_init(KviModule * m)
 {
-	g_pDccBroker = new KviDccBroker();
+	g_pDccBroker = new DccBroker();
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"send",dcc_kvs_cmd_send);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"chat",dcc_kvs_cmd_chat);

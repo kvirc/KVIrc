@@ -24,7 +24,7 @@
 //=============================================================================
 
 #include "libkvispaste.h"
-#include "controller.h"
+#include "SlowPasteController.h"
 
 #include "KviModule.h"
 #include "KviFileUtils.h"
@@ -42,12 +42,12 @@
     #include <unistd.h>
 #endif
 
-KviPointerList<SPasteController> * g_pControllerList = 0;
+KviPointerList<SlowPasteController> * g_pControllerList = 0;
 int ctrlId = 0;
 
-static SPasteController * spaste_find_controller(KviWindow * w)
+static SlowPasteController * spaste_find_controller(KviWindow * w)
 {
-	for(SPasteController * spc = g_pControllerList->first();spc;spc = g_pControllerList->next())
+	for(SlowPasteController * spc = g_pControllerList->first();spc;spc = g_pControllerList->next())
 	{
 		if(spc->window() == w)return spc;
 	}
@@ -116,8 +116,8 @@ static bool spaste_kvs_cmd_file(KviKvsModuleCommandCall * c)
 	}
 	tmp.close();
 
-	SPasteController * controller = spaste_find_controller(window);
-	if(!controller)controller = new SPasteController(window,++ctrlId);
+	SlowPasteController * controller = spaste_find_controller(window);
+	if(!controller)controller = new SlowPasteController(window,++ctrlId);
 	if(!controller->pasteFileInit(szFile)) {
 		c->warning(__tr2qs("Could not paste file"));
 		return false;
@@ -159,8 +159,8 @@ static bool spaste_kvs_cmd_clipboard(KviKvsModuleCommandCall * c)
 	KviWindow * window = spaste_kvs_find_window(szWindow,c);
 	if(!window)return false;
 
-	SPasteController * controller = spaste_find_controller(window);
-	if(!controller)controller = new SPasteController(window,++ctrlId);
+	SlowPasteController * controller = spaste_find_controller(window);
+	if(!controller)controller = new SlowPasteController(window,++ctrlId);
 	controller->pasteClipboardInit();
 	return true;
 }
@@ -208,8 +208,8 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	KviPointerListIterator<SPasteController> it(*g_pControllerList);
-	SPasteController *item;
+	KviPointerListIterator<SlowPasteController> it(*g_pControllerList);
+	SlowPasteController *item;
 
 	if(!iId) //Delete all spaste's from the current window
 	{
@@ -259,8 +259,8 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 
 static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
 {
-	KviPointerListIterator<SPasteController> it(*g_pControllerList);
-	SPasteController *item;
+	KviPointerListIterator<SlowPasteController> it(*g_pControllerList);
+	SlowPasteController *item;
 
 	while( (item = it.current()) != 0)
 	{
@@ -301,7 +301,7 @@ static bool spaste_kvs_cmd_setdelay(KviKvsModuleCommandCall * c)
 
 static bool spaste_module_init(KviModule * m)
 {
-	g_pControllerList = new KviPointerList<SPasteController>;
+	g_pControllerList = new KviPointerList<SlowPasteController>;
 	g_pControllerList->setAutoDelete(false);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"file",spaste_kvs_cmd_file);

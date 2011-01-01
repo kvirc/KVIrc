@@ -24,16 +24,16 @@
 
 #define _KVI_DEBUG_CHECK_RANGE_
 
-#include "gsmcodec.h"
-#include "broker.h"
+#include "DccVoiceGsmCodec.h"
+#include "DccBroker.h"
 
 #ifndef COMPILE_DISABLE_DCC_VIDEO
-	#include "video.h"
+	#include "DccVideoWindow.h"
 #endif
 
-#include "voice.h"
-#include "utils.h"
-#include "send.h"
+#include "DccVoiceWindow.h"
+#include "DccUtils.h"
+#include "DccFileTransfer.h"
 
 #include "kvi_debug.h"
 #include "kvi_settings.h"
@@ -59,13 +59,13 @@
 
 #ifdef COMPILE_ON_WINDOWS
 	// Ugly Windoze compiler...
-	#include "dialogs.h"
+	#include "DccDialog.h"
 #endif
 
 //#warning "KviOption_boolIgnoreDccChat and other types too"
 
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
-extern KviDccBroker * g_pDccBroker;
+extern DccBroker * g_pDccBroker;
 
 static void dcc_module_reply_errmsg(KviDccRequest * dcc,const QString& errText)
 {
@@ -95,7 +95,7 @@ static bool dcc_module_check_concurrent_transfers_limit(KviDccRequest * dcc)
 {
 	if(KVI_OPTION_UINT(KviOption_uintMaxDccSendTransfers) > 0)
 	{
-		unsigned int uTransfers = KviDccFileTransfer::runningTransfersCount();
+		unsigned int uTransfers = DccFileTransfer::runningTransfersCount();
 		if(uTransfers >= KVI_OPTION_UINT(KviOption_uintMaxDccSendTransfers))
 		{
 			QString szError;
@@ -131,7 +131,7 @@ static bool dcc_module_check_limits(KviDccRequest * dcc)
 	return true;
 }
 
-static void dcc_fill_local_nick_user_host(KviDccDescriptor * d,KviDccRequest * dcc)
+static void dcc_fill_local_nick_user_host(DccDescriptor * d,KviDccRequest * dcc)
 {
 	if(dcc->pConsole->connection())
 	{
@@ -145,7 +145,7 @@ static void dcc_fill_local_nick_user_host(KviDccDescriptor * d,KviDccRequest * d
 	}
 }
 
-static void dcc_module_set_dcc_type(KviDccDescriptor * d,const char * szBaseType)
+static void dcc_module_set_dcc_type(DccDescriptor * d,const char * szBaseType)
 {
 	d->szType = szBaseType;
 #ifdef COMPILE_SSL_SUPPORT
@@ -283,7 +283,7 @@ static void dccModuleParseDccChat(KviDccRequest *dcc)
 	}
 #endif //!COMPILE_SSL_SUPPORT
 
-	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
+	DccDescriptor * d = new DccDescriptor(dcc->pConsole);
 
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
 	d->szUser            = dcc->ctcpMsg->pSource->user();
@@ -489,7 +489,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 	}
 #endif //!COMPILE_SSL_SUPPORT
 
-	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
+	DccDescriptor * d = new DccDescriptor(dcc->pConsole);
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
 	d->szUser            = dcc->ctcpMsg->pSource->user();
 	d->szHost            = dcc->ctcpMsg->pSource->host();
@@ -658,7 +658,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 
 		// ok...we have requested this send
 //		#warning "Maybe remove this file offer now ?"
-		KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
+		DccDescriptor * d = new DccDescriptor(dcc->pConsole);
 
 		d->szNick            = dcc->ctcpMsg->pSource->nick();
 		d->szUser            = dcc->ctcpMsg->pSource->user();
@@ -781,7 +781,7 @@ static void dccModuleParseDccRSend(KviDccRequest *dcc)
 
 	//#warning "When behind a firewall, we should reply an error message and avoid setting up the listening connection"
 
-	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
+	DccDescriptor * d = new DccDescriptor(dcc->pConsole);
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
 	d->szUser            = dcc->ctcpMsg->pSource->user();
 	d->szHost            = dcc->ctcpMsg->pSource->host();
@@ -929,7 +929,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 	}
 
 
-	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
+	DccDescriptor * d = new DccDescriptor(dcc->pConsole);
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
 	d->szLocalFileName   = o->absFilePath();
 	d->szUser            = dcc->ctcpMsg->pSource->user();
@@ -1034,7 +1034,7 @@ static void dccModuleParseDccVoice(KviDccRequest *dcc)
 	}
 
 
-	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
+	DccDescriptor * d = new DccDescriptor(dcc->pConsole);
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
 	d->szUser            = dcc->ctcpMsg->pSource->user();
 	d->szHost            = dcc->ctcpMsg->pSource->host();
@@ -1108,7 +1108,7 @@ static void dccModuleParseDccVideo(KviDccRequest *dcc)
 // 	}
 
 
-	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
+	DccDescriptor * d = new DccDescriptor(dcc->pConsole);
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
 	d->szUser            = dcc->ctcpMsg->pSource->user();
 	d->szHost            = dcc->ctcpMsg->pSource->host();
@@ -1158,7 +1158,7 @@ static void dccModuleParseDccCanvas(KviDccRequest *dcc)
 //		}
 //	}
 #ifdef COMPILE_DCC_CANVAS
-	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
+	DccDescriptor * d = new DccDescriptor(dcc->pConsole);
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
 	d->szUser            = dcc->ctcpMsg->pSource->username();
 	d->szHost            = dcc->ctcpMsg->pSource->host();

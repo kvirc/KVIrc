@@ -38,11 +38,11 @@
 class QPixmap;
 class KviKvsScriptAddon;
 
-class KviScriptAddonListViewItem : public KviTalListWidgetItem
+class AddonListViewItem : public KviTalListWidgetItem
 {
 public:
-	KviScriptAddonListViewItem(KviTalListWidget * v,KviKvsScriptAddon * a);
-	~KviScriptAddonListViewItem();
+	AddonListViewItem(KviTalListWidget * v,KviKvsScriptAddon * a);
+	~AddonListViewItem();
 protected:
 	KviKvsScriptAddon * m_pAddon;
 	QTextDocument     * m_pText;
@@ -54,22 +54,22 @@ public:
 };
 
 
-class KviScriptManagementDialog : public QWidget
+class AddonManagementDialog : public QWidget
 {
 	Q_OBJECT
 protected:
-	KviScriptManagementDialog(QWidget * p);
+	AddonManagementDialog(QWidget * p);
 public:
-	~KviScriptManagementDialog();
+	~AddonManagementDialog();
 protected:
 	KviTalListWidget                 * m_pListWidget;
-	static KviScriptManagementDialog * m_pInstance;
+	static AddonManagementDialog * m_pInstance;
 	QToolButton                      * m_pConfigureButton;
 	QToolButton                      * m_pHelpButton;
 	QToolButton                      * m_pPackButton;
 	QToolButton                      * m_pUninstallButton;
 public:
-	static KviScriptManagementDialog * instance(){ return m_pInstance; };
+	static AddonManagementDialog * instance(){ return m_pInstance; };
 	static void display(bool bTopLevel);
 	static void cleanup();
 protected:

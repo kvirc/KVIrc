@@ -22,8 +22,8 @@
 //
 //=============================================================================
 
-#include "container.h"
-#include "instances.h"
+#include "OptionsWidgetContainer.h"
+#include "OptionsInstanceManager.h"
 #include "dialog.h"
 
 #include "KviModule.h"
@@ -39,9 +39,9 @@
 
 #include <QSplitter>
 
-KviPointerHashTable<QString,KviOptionsDialog> * g_pOptionsDialogDict = 0;
+KviPointerHashTable<QString,OptionsDialog> * g_pOptionsDialogDict = 0;
 
-KviOptionsInstanceManager * g_pOptionsInstanceManager = 0;
+OptionsInstanceManager * g_pOptionsInstanceManager = 0;
 
 extern int g_iOptionWidgetInstances;
 
@@ -101,7 +101,7 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("options_group",KVS_PT_STRING,KVS_PF_OPTIONAL,szGroup)
 	KVSM_PARAMETERS_END(c)
 	if(szGroup.isEmpty())szGroup = "general";
-	KviOptionsDialog * d = g_pOptionsDialogDict->find(szGroup);
+	OptionsDialog * d = g_pOptionsDialogDict->find(szGroup);
 	if(d)
 	{
 		if(c->hasSwitch('t',"toplevel"))
@@ -122,9 +122,9 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 	} else {
 		if(c->hasSwitch('t',"toplevel"))
 		{
-			d = new KviOptionsDialog(0,szGroup);
+			d = new OptionsDialog(0,szGroup);
 		} else {
-			d = new KviOptionsDialog(c->window()->frame()->splitter(),szGroup);
+			d = new OptionsDialog(c->window()->frame()->splitter(),szGroup);
 		}
 		g_pOptionsDialogDict->insert(szGroup,d);
 	}
@@ -150,14 +150,14 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 */
 
 
-static void options_kvs_module_print_pages(KviKvsModuleCommandCall * c,KviOptionsWidgetInstanceEntry * e,const char * prefix)
+static void options_kvs_module_print_pages(KviKvsModuleCommandCall * c,OptionsWidgetInstanceEntry * e,const char * prefix)
 {
 	c->window()->output(KVI_OUT_SYSTEMMESSAGE,"%s%c%s%c  (%Q)",prefix,KviMircCntrl::Bold,e->szClassName,KviMircCntrl::Bold,&(e->szName));
 	KviCString szPre = prefix;
 	szPre.append("  ");
 	if(e->pChildList)
 	{
-		for(KviOptionsWidgetInstanceEntry * ex = e->pChildList->first();ex;ex = e->pChildList->next())
+		for(OptionsWidgetInstanceEntry * ex = e->pChildList->first();ex;ex = e->pChildList->next())
 		{
 			options_kvs_module_print_pages(c,ex,szPre.ptr());
 		}
@@ -166,9 +166,9 @@ static void options_kvs_module_print_pages(KviKvsModuleCommandCall * c,KviOption
 
 static bool options_kvs_cmd_pages(KviKvsModuleCommandCall * c)
 {
-	KviPointerList<KviOptionsWidgetInstanceEntry> * l = g_pOptionsInstanceManager->instanceEntryTree();
+	KviPointerList<OptionsWidgetInstanceEntry> * l = g_pOptionsInstanceManager->instanceEntryTree();
 
-	for(KviOptionsWidgetInstanceEntry * e = l->first();e;e = l->next())
+	for(OptionsWidgetInstanceEntry * e = l->first();e;e = l->next())
 	{
 		options_kvs_module_print_pages(c,e,"");
 	}
@@ -200,7 +200,7 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("option",KVS_PT_STRING,0,szOption)
 	KVSM_PARAMETERS_END(c)
-	KviOptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(szOption.toUtf8().data());
+	OptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(szOption.toUtf8().data());
 	if(!e)
 	{
 		c->warning(__tr2qs_ctx("No such options page class name %Q","options"),&szOption);
@@ -215,7 +215,7 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	KviOptionsWidgetContainer * wc = new KviOptionsWidgetContainer(0,c->hasSwitch('m',"modal"));
+	OptionsWidgetContainer * wc = new OptionsWidgetContainer(0,c->hasSwitch('m',"modal"));
 
 	wc->setup(g_pOptionsInstanceManager->getInstance(e,wc));
 
@@ -266,7 +266,7 @@ static bool options_kvs_fnc_isdialog(KviKvsModuleFunctionCall * c)
 
 static bool options_module_init(KviModule * m)
 {
-	g_pOptionsInstanceManager = new KviOptionsInstanceManager();
+	g_pOptionsInstanceManager = new OptionsInstanceManager();
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"dialog",options_kvs_cmd_dialog);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"save",options_kvs_cmd_save);
@@ -274,7 +274,7 @@ static bool options_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"edit",options_kvs_cmd_edit);
 	KVSM_REGISTER_FUNCTION(m,"isDialog",options_kvs_fnc_isdialog);
 
-	g_pOptionsDialogDict = new KviPointerHashTable<QString,KviOptionsDialog>;
+	g_pOptionsDialogDict = new KviPointerHashTable<QString,OptionsDialog>;
 	g_pOptionsDialogDict->setAutoDelete(false);
 
 	return true;
@@ -282,10 +282,10 @@ static bool options_module_init(KviModule * m)
 
 static bool options_module_cleanup(KviModule *m)
 {
-	KviPointerHashTableIterator<QString,KviOptionsDialog> it(*g_pOptionsDialogDict);
-	KviPointerList<KviOptionsDialog> l;
+	KviPointerHashTableIterator<QString,OptionsDialog> it(*g_pOptionsDialogDict);
+	KviPointerList<OptionsDialog> l;
 	l.setAutoDelete(false);
-	KviOptionsDialog * d;
+	OptionsDialog * d;
 	while( (d = it.current()) )
 	{
 		l.append(d);

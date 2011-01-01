@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/classeditor
 
 SET(kviclasseditor_MOC_HDRS
-	classeditor.h
+	ClassEditorWindow.h
 )
 
 SET(kviclasseditor_SRCS
 	libkviclasseditor.cpp
-	classeditor.cpp
+	ClassEditorWindow.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

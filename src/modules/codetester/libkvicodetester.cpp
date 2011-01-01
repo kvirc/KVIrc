@@ -22,7 +22,7 @@
 //
 //===============================================================================
 
-#include "codetester.h"
+#include "CodeTesterWindow.h"
 
 #include "KviModule.h"
 #include "KviLocale.h"
@@ -30,7 +30,7 @@
 #include "KviPointerList.h"
 
 
-KviPointerList<KviCodeTesterWindow> * g_pCodeTesterWindowList = 0;
+KviPointerList<CodeTesterWindow> * g_pCodeTesterWindowList = 0;
 
 
 /*
@@ -49,7 +49,7 @@ KviPointerList<KviCodeTesterWindow> * g_pCodeTesterWindowList = 0;
 
 static bool codetester_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	KviCodeTesterWindow * w = new KviCodeTesterWindow(c->window()->frame());
+	CodeTesterWindow * w = new CodeTesterWindow(c->window()->frame());
 	c->window()->frame()->addWindow(w);
 	w->setFocus();
 	return true;
@@ -59,7 +59,7 @@ static bool codetester_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",codetester_kvs_cmd_open);
 
-	g_pCodeTesterWindowList = new KviPointerList<KviCodeTesterWindow>();
+	g_pCodeTesterWindowList = new KviPointerList<CodeTesterWindow>();
 	g_pCodeTesterWindowList->setAutoDelete(false);
 	return true;
 }
@@ -71,7 +71,7 @@ static bool codetester_module_can_unload(KviModule *)
 
 static bool codetester_module_cleanup(KviModule *)
 {
-	while(KviCodeTesterWindow * w = g_pCodeTesterWindowList->first())
+	while(CodeTesterWindow * w = g_pCodeTesterWindowList->first())
 	{
 		w->close(); // deleted path!
 	}
