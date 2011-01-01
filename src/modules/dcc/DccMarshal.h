@@ -109,7 +109,7 @@ signals:
 	void sslError(const char * msg);
 	void connected();
 	void inProgress();
-	void error(int);
+	void error(KviError::Code);
 };
 
 

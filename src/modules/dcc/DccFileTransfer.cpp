@@ -1010,7 +1010,7 @@ DccFileTransfer::DccFileTransfer(DccDescriptor * dcc)
 
 	m_pMarshal = new DccMarshal(this);
 
-	connect(m_pMarshal,SIGNAL(error(int)),this,SLOT(handleMarshalError(int)));
+	connect(m_pMarshal,SIGNAL(error(KviError::Code)),this,SLOT(handleMarshalError(KviError::Code)));
 	connect(m_pMarshal,SIGNAL(connected()),this,SLOT(connected()));
 	connect(m_pMarshal,SIGNAL(inProgress()),this,SLOT(connectionInProgress()));
 #ifdef COMPILE_SSL_SUPPORT

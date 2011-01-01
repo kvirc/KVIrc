@@ -477,10 +477,11 @@ void DccMarshal::snActivated(int)
 		if(sockError != 0)
 		{
 			//failed
-			if(sockError > 0)sockError = KviError::translateSystemError(sockError);
-			else sockError = KviError::UnknownError; //Error 0 ?
+			KviError::Code eError;
+			if(sockError > 0)eError = KviError::translateSystemError(sockError);
+			else eError = KviError::UnknownError; //Error 0 ?
 			reset();
-			emit error(sockError);
+			emit error(eError);
 			return;
 		}
 		//Succesfully connected...
