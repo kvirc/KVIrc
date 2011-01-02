@@ -27,7 +27,6 @@
 #include "KviEnvironment.h"
 #include "KviCString.h"
 #include "KviMemory.h"
-#include "KviMemory.h"
 
 namespace KviEnvironment
 {
@@ -98,6 +97,7 @@ void unsetVariable(const char *)
 #endif
 }
 
+#endif //COMPILE_ON_WINDOWS
+
 }
 
-#endif //COMPILE_ON_WINDOWS
