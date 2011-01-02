@@ -744,436 +744,852 @@ videoinput.h
   KviWindowToolWidget.h
 
 
+#################
+# modules/about #
+#################
 
-./modules/my/idle_x11.cpp
-./modules/my/idle_mac.cpp
-./modules/my/idle.cpp
-./modules/my/libkvimy.cpp
-./modules/my/idle_win.cpp
-./modules/dcc/video.cpp
-./modules/dcc/descriptor.cpp
-./modules/dcc/broker.cpp
-./modules/dcc/chat.cpp
-./modules/dcc/voice.cpp
-./modules/dcc/adpcmcodec.cpp
-./modules/dcc/libkvidcc.cpp
-./modules/dcc/gsmcodec.cpp
-./modules/dcc/marshal.cpp
-./modules/dcc/send.cpp
-./modules/dcc/canvas.cpp
-./modules/dcc/canvaswidget.cpp
-./modules/dcc/codec.cpp
-./modules/dcc/window.cpp
-./modules/dcc/requests.cpp
-./modules/dcc/dialogs.cpp
-./modules/dcc/thread.cpp
-./modules/dcc/utils.cpp
-./modules/log/libkvilog.cpp
-./modules/snd/libkvisnd.cpp
-./modules/tip/libkvitip.cpp
-./modules/str/libkvistr.cpp
-./modules/url/libkviurl.cpp
-./modules/chan/libkvichan.cpp
-./modules/file/libkvifile.cpp
-./modules/help/helpwidget.cpp
-./modules/help/libkvihelp.cpp
-./modules/help/index.cpp
-./modules/help/helpwindow.cpp
-./modules/http/libkvihttp.cpp
-./modules/http/httpfiletransfer.cpp
-./modules/list/listwindow.cpp
-./modules/list/libkvilist.cpp
-./modules/mask/libkvimask.cpp
-./modules/math/libkvimath.cpp
-./modules/perl/libkviperl.cpp
-./modules/term/termwindow.cpp
-./modules/term/libkviterm.cpp
-./modules/term/termwidget.cpp
-./modules/upnp/wanconnectionservice.cpp
-./modules/upnp/xmlfunctions.cpp
-./modules/upnp/manager.cpp
-./modules/upnp/ssdpconnection.cpp
-./modules/upnp/igdcontrolpoint.cpp
-./modules/upnp/rootservice.cpp
-./modules/upnp/service.cpp
-./modules/upnp/libkviupnp.cpp
-./modules/trayicon/libkvitrayicon.cpp
-./modules/aliaseditor/libkvialiaseditor.cpp
-./modules/aliaseditor/aliaseditor.cpp
-./modules/channelsjoin/libkvichannelsjoin.cpp
-./modules/channelsjoin/channelsjoinwindow.cpp
-./modules/context/libkvicontext.cpp
-./modules/sharedfileswindow/libkvisharedfileswindow.cpp
-./modules/sharedfileswindow/sharedfileswindow.cpp
-./modules/regchan/libkviregchan.cpp
-./modules/reguser/edituser.cpp
-./modules/reguser/dialog.cpp
-./modules/reguser/wizard.cpp
-./modules/reguser/libkvireguser.cpp
-./modules/notifier/notifierwindow.cpp
-./modules/notifier/notifiermessage.cpp
-./modules/notifier/notifierwindowtab.cpp
-./modules/notifier/libkvinotifier.cpp
-./modules/notifier/notifierwindowborder.cpp
-./modules/about/libkviabout.cpp
-./modules/about/aboutdialog.cpp
-./modules/addon/managementdialog.cpp
-./modules/addon/addonfunctions.cpp
-./modules/addon/libkviaddon.cpp
-./modules/addon/packaddondialog.cpp
-./modules/ident/libkviident.cpp
-./modules/links/libkvilinks.cpp
-./modules/links/linkswindow.cpp
-./modules/popup/libkvipopup.cpp
-./modules/rot13/libkvirot13.cpp
-./modules/setup/libkvisetup.cpp
-./modules/setup/setupwizard.cpp
-./modules/theme/themefunctions.cpp
-./modules/theme/packthemedialog.cpp
-./modules/theme/libkvitheme.cpp
-./modules/theme/managementdialog.cpp
-./modules/theme/savethemedialog.cpp
-./modules/eventeditor/libkvieventeditor.cpp
-./modules/eventeditor/eventeditor.cpp
-./modules/logview/libkvilogview.cpp
-./modules/logview/logviewmdiwindow.cpp
-./modules/logview/logviewwidget.cpp
-./modules/popupeditor/libkvipopupeditor.cpp
-./modules/popupeditor/popupeditor.cpp
-./modules/action/libkviaction.cpp
-./modules/filetransferwindow/filetransferwindow.cpp
-./modules/filetransferwindow/libkvifiletransferwindow.cpp
-./modules/sharedfile/libkvisharedfile.cpp
-./modules/avatar/libkviavatar.cpp
-./modules/codetester/codetester.cpp
-./modules/codetester/libkvicodetester.cpp
-./modules/config/libkviconfig.cpp
-./modules/dialog/libkvidialog.cpp
-./modules/editor/libkvieditor.cpp
-./modules/editor/scripteditor.cpp
-./modules/toolbar/libkvitoolbar.cpp
-./modules/torrent/tc_interface.cpp
-./modules/torrent/tc_statusbarapplet.cpp
-./modules/torrent/libkvitorrent.cpp
-./modules/torrent/tc_ktorrentdbusinterface.cpp
-./modules/mircimport/libkvimircimport.cpp
-./modules/pythoncore/libkvipythoncore.cpp
-./modules/pythoncore/kvircmodule.cpp
-./modules/mediaplayer/mp_mprisinterface.cpp
-./modules/mediaplayer/mp_winampinterface.cpp
-./modules/mediaplayer/winamp.cpp
-./modules/mediaplayer/mp_interface.cpp
-./modules/mediaplayer/mp_mp3.cpp
-./modules/mediaplayer/mp_xmmsinterface.cpp
-./modules/mediaplayer/mp_amipinterface.cpp
-./modules/mediaplayer/libkvimediaplayer.cpp
-./modules/objects/class_lineedit.cpp
-./modules/objects/class_mainwindow.cpp
-./modules/objects/class_label.cpp
-./modules/objects/class_toolbar.cpp
-./modules/objects/class_painter.cpp
-./modules/objects/class_widget.cpp
-./modules/objects/class_multilineedit.cpp
-./modules/objects/class_popupmenu.cpp
-./modules/objects/class_pixmap.cpp
-./modules/objects/class_hbox.cpp
-./modules/objects/class_combobox.cpp
-./modules/objects/class_lcd.cpp
-./modules/objects/class_process.cpp
-./modules/objects/class_checkbox.cpp
-./modules/objects/class_datetimeedit.cpp
-./modules/objects/class_toolbutton.cpp
-./modules/objects/class_dialog.cpp
-./modules/objects/class_slider.cpp
-./modules/objects/class_treewidget.cpp
-./modules/objects/class_tablewidget.cpp
-./modules/objects/class_button.cpp
-./modules/objects/class_trayicon.cpp
-./modules/objects/class_sql.cpp
-./modules/objects/class_listwidget.cpp
-./modules/objects/class_menubar.cpp
-./modules/objects/class_socket.cpp
-./modules/objects/class_ftp.cpp
-./modules/objects/class_wizard.cpp
-./modules/objects/class_spinbox.cpp
-./modules/objects/class_xmlreader.cpp
-./modules/objects/class_tabwidget.cpp
-./modules/objects/class_list.cpp
-./modules/objects/class_vbox.cpp
-./modules/objects/class_workspace.cpp
-./modules/objects/class_wrapper.cpp
-./modules/objects/class_layout.cpp
-./modules/objects/class_progressbar.cpp
-./modules/objects/class_window.cpp
-./modules/objects/class_treewidgetitem.cpp
-./modules/objects/class_groupbox.cpp
-./modules/objects/class_buttongroup.cpp
-./modules/objects/class_radiobutton.cpp
-./modules/objects/class_http.cpp
-./modules/objects/class_tbrowser.cpp
-./modules/objects/class_dockwindow.cpp
-./modules/objects/libkviobjects.cpp
-./modules/objects/class_memorybuffer.cpp
-./modules/objects/class_file.cpp
-./modules/rijndael/libkvirijndael.cpp
-./modules/rijndael/rijndael.cpp
-./modules/rijndael/libkvirijndael_cryptopp.cpp
-./modules/rijndael/ablowfish.cpp
-./modules/python/libkvipython.cpp
-./modules/texticons/libkvitexticons.cpp
-./modules/toolbareditor/libkvitoolbareditor.cpp
-./modules/toolbareditor/toolbareditor.cpp
-./modules/spaste/libkvispaste.cpp
-./modules/spaste/controller.cpp
-./modules/system/plugin.cpp
-./modules/system/libkvisystem.cpp
-./modules/window/userwindow.cpp
-./modules/window/libkviwindow.cpp
-./modules/tmphighlight/libkvitmphighlight.cpp
-./modules/serverdb/libkviserverdb.cpp
-./modules/raweditor/libkviraweditor.cpp
-./modules/raweditor/raweditor.cpp
-./modules/options/optw_ircview.cpp
-./modules/options/optw_nickserv.cpp
-./modules/options/optw_topiclabel.cpp
-./modules/options/optw_tray.cpp
-./modules/options/optw_protection.cpp
-./modules/options/optw_ctcp.cpp
-./modules/options/optw_servers.cpp
-./modules/options/optw_uparser.cpp
-./modules/options/optw_notifier.cpp
-./modules/options/optw_identity.cpp
-./modules/options/optw_query.cpp
-./modules/options/optw_interfacelookglobal.cpp
-./modules/options/optw_avatar.cpp
-./modules/options/optw_notify.cpp
-./modules/options/optw_away.cpp
-./modules/options/libkvioptions.cpp
-./modules/options/optw_urlhandlers.cpp
-./modules/options/optw_proxy.cpp
-./modules/options/optw_mediatypes.cpp
-./modules/options/optw_userlist.cpp
-./modules/options/optw_ctcpfloodprotection.cpp
-./modules/options/dialog.cpp
-./modules/options/optw_texticons.cpp
-./modules/options/optw_highlighting.cpp
-./modules/options/optw_ircoutput.cpp
-./modules/options/optw_interfacefeatures.cpp
-./modules/options/container.cpp
-./modules/options/optw_windowlist.cpp
-./modules/options/optw_tools.cpp
-./modules/options/optw_connection.cpp
-./modules/options/optw_generalopt.cpp
-./modules/options/optw_logging.cpp
-./modules/options/optw_channel.cpp
-./modules/options/optw_irc.cpp
-./modules/options/optw_textencoding.cpp
-./modules/options/optw_antispam.cpp
-./modules/options/instances.cpp
-./modules/options/optw_dcc.cpp
-./modules/options/optw_ignore.cpp
-./modules/options/optw_sound.cpp
-./modules/options/optw_input.cpp
-./modules/options/optw_messages.cpp
-./modules/options/optw_lag.cpp
-./modules/userlist/libkviuserlist.cpp
-./modules/classeditor/libkviclasseditor.cpp
-./modules/classeditor/classeditor.cpp
-./modules/language/detector.cpp
-./modules/language/libkvilanguage.cpp
-./modules/lamerizer/libkvilamerizer.cpp
-./modules/socketspy/libkvisocketspy.cpp
-./modules/socketspy/socketspywindow.cpp
-./modules/actioneditor/libkviactioneditor.cpp
-./modules/actioneditor/actioneditor.cpp
-./modules/iograph/libkviiograph.cpp
-./modules/perlcore/libkviperlcore.cpp
-./modules/proxydb/libkviproxydb.cpp
-./modules/my/idle.h
-./modules/dcc/codec.h
-./modules/dcc/canvaswidget.h
-./modules/dcc/marshal.h
-./modules/dcc/broker.h
-./modules/dcc/descriptor.h
-./modules/dcc/dialogs.h
-./modules/dcc/chat.h
-./modules/dcc/canvas.h
-./modules/dcc/adpcmcodec.h
-./modules/dcc/window.h
-./modules/dcc/send.h
-./modules/dcc/video.h
-./modules/dcc/utils.h
-./modules/dcc/thread.h
-./modules/dcc/voice.h
-./modules/dcc/gsmcodec.h
-./modules/snd/libkvisnd.h
-./modules/tip/libkvitip.h
-./modules/url/libkviurl.h
-./modules/help/helpwidget.h
-./modules/help/helpwindow.h
-./modules/help/index.h
-./modules/http/httpfiletransfer.h
-./modules/list/listwindow.h
-./modules/term/termwindow.h
-./modules/term/termwidget.h
-./modules/upnp/ssdpconnection.h
-./modules/upnp/wanconnectionservice.h
-./modules/upnp/service.h
-./modules/upnp/igdcontrolpoint.h
-./modules/upnp/xmlfunctions.h
-./modules/upnp/manager.h
-./modules/upnp/rootservice.h
-./modules/trayicon/libkvitrayicon.h
-./modules/aliaseditor/aliaseditor.h
-./modules/channelsjoin/channelsjoinwindow.h
-./modules/sharedfileswindow/sharedfileswindow.h
-./modules/reguser/dialog.h
-./modules/reguser/wizard.h
-./modules/reguser/edituser.h
-./modules/notifier/notifiermessage.h
-./modules/notifier/notifierwindowtab.h
-./modules/notifier/notifiersettings.h
-./modules/notifier/notifierwindowborder.h
-./modules/notifier/notifierwindow.h
-./modules/about/aboutdialog.h
-./modules/about/libkviabout.h
-./modules/addon/managementdialog.h
-./modules/addon/addonfunctions.h
-./modules/addon/packaddondialog.h
-./modules/ident/libkviident.h
-./modules/links/linkswindow.h
-./modules/rot13/libkvirot13.h
-./modules/setup/setupwizard.h
-./modules/theme/packthemedialog.h
-./modules/theme/managementdialog.h
-./modules/theme/savethemedialog.h
-./modules/theme/themefunctions.h
-./modules/eventeditor/eventeditor.h
-./modules/logview/logviewwidget.h
-./modules/logview/logviewmdiwindow.h
-./modules/popupeditor/popupeditor.h
-./modules/filetransferwindow/filetransferwindow.h
-./modules/avatar/libkviavatar.h
-./modules/codetester/codetester.h
-./modules/dialog/libkvidialog.h
-./modules/editor/scripteditor.h
-./modules/torrent/tc_statusbarapplet.h
-./modules/torrent/tc_ktorrentdbusinterface.h
-./modules/torrent/tc_interface.h
-./modules/mircimport/libkvimircimport.h
-./modules/pythoncore/kvircmodule.h
-./modules/pythoncore/pythoncoreinterface.h
-./modules/mediaplayer/mp_xmmsinterface.h
-./modules/mediaplayer/mp_winampinterface.h
-./modules/mediaplayer/mp_amipinterface.h
-./modules/mediaplayer/mp_mp3.h
-./modules/mediaplayer/mp_mprisinterface.h
-./modules/mediaplayer/mp_interface.h
-./modules/objects/class_toolbar.h
-./modules/objects/class_file.h
-./modules/objects/class_datetimeedit.h
-./modules/objects/class_hbox.h
-./modules/objects/class_http.h
-./modules/objects/class_treewidget.h
-./modules/objects/class_list.h
-./modules/objects/class_widget.h
-./modules/objects/class_workspace.h
-./modules/objects/class_label.h
-./modules/objects/class_pixmap.h
-./modules/objects/class_combobox.h
-./modules/objects/class_slider.h
-./modules/objects/class_vbox.h
-./modules/objects/class_tbrowser.h
-./modules/objects/class_window.h
-./modules/objects/class_tablewidget.h
-./modules/objects/class_spinbox.h
-./modules/objects/class_progressbar.h
-./modules/objects/class_memorybuffer.h
-./modules/objects/class_wizard.h
-./modules/objects/class_trayicon.h
-./modules/objects/class_listwidget.h
-./modules/objects/class_popupmenu.h
-./modules/objects/class_button.h
-./modules/objects/class_process.h
-./modules/objects/class_radiobutton.h
-./modules/objects/class_painter.h
-./modules/objects/class_checkbox.h
-./modules/objects/class_layout.h
-./modules/objects/class_socket.h
-./modules/objects/class_wrapper.h
-./modules/objects/class_dialog.h
-./modules/objects/class_mainwindow.h
-./modules/objects/class_ftp.h
-./modules/objects/class_lcd.h
-./modules/objects/class_sql.h
-./modules/objects/class_multilineedit.h
-./modules/objects/class_dockwindow.h
-./modules/objects/class_toolbutton.h
-./modules/objects/class_treewidgetitem.h
-./modules/objects/class_tabwidget.h
-./modules/objects/class_menubar.h
-./modules/objects/class_xmlreader.h
-./modules/objects/class_buttongroup.h
-./modules/objects/class_lineedit.h
-./modules/objects/object_macros.h
-./modules/objects/class_groupbox.h
-./modules/rijndael/libkvirijndael.h
-./modules/rijndael/ablowfish.h
-./modules/rijndael/rijndael.h
-./modules/rijndael/libkvirijndael_cryptopp.h
-./modules/toolbareditor/toolbareditor.h
-./modules/spaste/libkvispaste.h
-./modules/spaste/controller.h
-./modules/system/plugin.h
-./modules/window/userwindow.h
-./modules/raweditor/raweditor.h
-./modules/options/dialog.h
-./modules/options/optw_away.h
-./modules/options/optw_ctcp.h
-./modules/options/optw_dcc.h
-./modules/options/optw_irc.h
-./modules/options/optw_lag.h
-./modules/options/optw_nickserv.h
-./modules/options/optw_textencoding.h
-./modules/options/instances.h
-./modules/options/optw_notify.h
-./modules/options/optw_messages.h
-./modules/options/optw_avatar.h
-./modules/options/optw_sound.h
-./modules/options/optw_urlhandlers.h
-./modules/options/optw_windowlist.h
-./modules/options/optw_tray.h
-./modules/options/optw_notifier.h
-./modules/options/optw_tools.h
-./modules/options/optw_generalopt.h
-./modules/options/optw_interfacefeatures.h
-./modules/options/optw_texticons.h
-./modules/options/optw_ircview.h
-./modules/options/optw_mediatypes.h
-./modules/options/optw_interfacelookglobal.h
-./modules/options/optw_servers.h
-./modules/options/optw_channel.h
-./modules/options/optw_protection.h
-./modules/options/optw_identity.h
-./modules/options/optw_antispam.h
-./modules/options/optw_ircoutput.h
-./modules/options/optw_logging.h
-./modules/options/optw_input.h
-./modules/options/optw_proxy.h
-./modules/options/optw_highlighting.h
-./modules/options/optw_ctcpfloodprotection.h
-./modules/options/optw_userlist.h
-./modules/options/optw_topiclabel.h
-./modules/options/optw_uparser.h
-./modules/options/optw_connection.h
-./modules/options/optw_ignore.h
-./modules/options/optw_query.h
-./modules/options/container.h
-./modules/classeditor/classeditor.h
-./modules/language/detector.h
-./modules/lamerizer/libkvilamerizer.h
-./modules/socketspy/socketspywindow.h
-./modules/actioneditor/actioneditor.h
-./modules/iograph/libkviiograph.h
-./modules/perlcore/ppport.h
-./modules/perlcore/perlcoreinterface.h
+  AboutDialog.cpp
+  AboutDialog.h
+  libkviabout.cpp
+  libkviabout.h
+
+
+##################
+# modules/action #
+##################
+
+  libkviaction.cpp
+
+
+########################
+# modules/actioneditor #
+########################
+
+  libkviactioneditor.cpp
+  ActionEditor.cpp
+  ActionEditor.h
+
+#################
+# modules/addon #
+#################
+
+  AddonFunctions.cpp
+  AddonFunctions.h
+  PackAddonDialog.cpp
+  PackAddonDialog.h
+  libkviaddon.cpp
+  managementdialog.cpp
+  managementdialog.h
+
+
+#######################
+# modules/aliaseditor #
+#######################
+
+  AliasEditorWindow.cpp
+  AliasEditorWindow.h
+  libkvialiaseditor.cpp
+
+
+##################
+# modules/avatar #
+##################
+
+  libkviavatar.cpp
+  libkviavatar.h
+
+
+################
+# modules/chan #
+################
+
+  libkvichan.cpp
+
+
+########################
+# modules/channelsjoin #
+########################
+
+  ChannelsJoinDialog.cpp
+  ChannelsJoinDialog.h
+  libkvichannelsjoin.cpp
+
+
+#######################
+# modules/classeditor #
+#######################
+
+  ClassEditorWindow.cpp
+  ClassEditorWindow.h
+  libkviclasseditor.cpp
+
+
+######################
+# modules/codetester #
+######################
+
+  CodeTesterWindow.cpp
+  CodeTesterWindow.h
+  libkvicodetester.cpp
+
+
+##################
+# modules/config #
+##################
+
+  libkviconfig.cpp
+
+
+###################
+# modules/context #
+###################
+
+  libkvicontext.cpp
+
+
+###############
+# modules/dcc #
+###############
+
+  DccBroker.cpp
+  DccBroker.h
+  DccCanvasWindow.cpp
+  DccCanvasWindow.h
+  DccChatWindow.cpp
+  DccChatWindow.h
+  DccDescriptor.cpp
+  DccDescriptor.h
+  DccDialog.cpp
+  DccDialog.h
+  DccFileTransfer.cpp
+  DccFileTransfer.h
+  DccMarshal.cpp
+  DccMarshal.h
+  DccThread.cpp
+  DccThread.h
+  DccUtils.cpp
+  DccUtils.h
+  DccVideoWindow.cpp
+  DccVideoWindow.h
+  DccVoiceAdpcmCodec.cpp
+  DccVoiceAdpcmCodec.h
+  DccVoiceCodec.cpp
+  DccVoiceCodec.h
+  DccVoiceGsmCodec.cpp
+  DccVoiceGsmCodec.h
+  DccVoiceWindow.cpp
+  DccVoiceWindow.h
+  DccWindow.cpp
+  DccWindow.h
+  canvaswidget.cpp
+  canvaswidget.h
+  libkvidcc.cpp
+  requests.cpp
+
+
+##################
+# modules/dialog #
+##################
+
+  libkvidialog.cpp
+  libkvidialog.h
+
+
+##################
+# modules/editor #
+##################
+
+  ScriptEditorImplementation.cpp
+  ScriptEditorImplementation.h
+  libkvieditor.cpp
+
+
+#######################
+# modules/eventeditor #
+#######################
+
+  EventEditorWindow.cpp
+  EventEditorWindow.h
+  libkvieventeditor.cpp
+
+
+################
+# modules/file #
+################
+
+  libkvifile.cpp
+
+
+##############################
+# modules/filetransferwindow #
+##############################
+
+  FileTransferWindow.cpp
+  FileTransferWindow.h
+  libkvifiletransferwindow.cpp
+
+
+################
+# modules/help #
+################
+
+  HelpIndex.cpp
+  HelpIndex.h
+  HelpWidget.cpp
+  HelpWidget.h
+  HelpWindow.cpp
+  HelpWindow.h
+  libkvihelp.cpp
+
+
+################
+# modules/http #
+################
+
+  HttpFileTransfer.cpp
+  HttpFileTransfer.h
+  libkvihttp.cpp
+
+
+#################
+# modules/ident #
+#################
+
+  libkviident.cpp
+  libkviident.h
+
+
+###################
+# modules/iograph #
+###################
+
+  libkviiograph.cpp
+  libkviiograph.h
+
+
+####################
+# modules/language #
+####################
+
+  detector.cpp
+  detector.h
+  libkvilanguage.cpp
+
+
+#####################
+# modules/lamerizer #
+#####################
+
+  libkvilamerizer.cpp
+  libkvilamerizer.h
+
+
+#################
+# modules/links #
+#################
+
+  LinksWindow.cpp
+  LinksWindow.h
+  libkvilinks.cpp
+
+
+################
+# modules/list #
+################
+
+  ListWindow.cpp
+  ListWindow.h
+  libkvilist.cpp
+
+
+###############
+# modules/log #
+###############
+
+  libkvilog.cpp
+
+
+###################
+# modules/logview #
+###################
+
+  LogViewWidget.cpp
+  LogViewWidget.h
+  LogViewWindow.cpp
+  LogViewWindow.h
+  libkvilogview.cpp
+
+
+################
+# modules/mask #
+################
+
+  libkvimask.cpp
+
+
+################
+# modules/math #
+################
+
+  libkvimath.cpp
+
+
+#######################
+# modules/mediaplayer #
+#######################
+
+  MpAmipInterface.cpp
+  MpAmipInterface.h
+  MpInterface.cpp
+  MpInterface.h
+  MpMp3.cpp
+  MpMp3.h
+  MpMprisInterface.cpp
+  MpMprisInterface.h
+  MpWinampInterface.cpp
+  MpWinampInterface.h
+  MpXmmsInterface.cpp
+  MpXmmsInterface.h
+  libkvimediaplayer.cpp
+  winamp.cpp
+
+
+######################
+# modules/mircimport #
+######################
+
+  libkvimircimport.cpp
+  libkvimircimport.h
+
+
+##############
+# modules/my #
+##############
+
+  Idle.cpp
+  Idle.h
+  Idle_mac.cpp
+  Idle_win.cpp
+  Idle_x11.cpp
+  libkvimy.cpp
+
+
+####################
+# modules/notifier #
+####################
+
+  NotifierMessage.cpp
+  NotifierMessage.h
+  NotifierSettings.h
+  NotifierWindow.cpp
+  NotifierWindow.h
+  NotifierWindowBorder.cpp
+  NotifierWindowBorder.h
+  NotifierWindowTab.cpp
+  NotifierWindowTab.h
+  libkvinotifier.cpp
+
+
+###################
+# modules/objects #
+###################
+
+  KvsObject_button.cpp
+  KvsObject_button.h
+  KvsObject_buttonGroup.cpp
+  KvsObject_buttonGroup.h
+  KvsObject_checkBox.cpp
+  KvsObject_checkBox.h
+  KvsObject_comboBox.cpp
+  KvsObject_comboBox.h
+  KvsObject_dateTimeEdit.cpp
+  KvsObject_dateTimeEdit.h
+  KvsObject_dialog.cpp
+  KvsObject_dialog.h
+  KvsObject_dockWindow.cpp
+  KvsObject_dockWindow.h
+  KvsObject_file.cpp
+  KvsObject_file.h
+  KvsObject_ftp.cpp
+  KvsObject_ftp.h
+  KvsObject_groupBox.cpp
+  KvsObject_groupBox.h
+  KvsObject_hBox.cpp
+  KvsObject_hBox.h
+  KvsObject_http.cpp
+  KvsObject_http.h
+  KvsObject_label.cpp
+  KvsObject_label.h
+  KvsObject_layout.cpp
+  KvsObject_layout.h
+  KvsObject_lcd.cpp
+  KvsObject_lcd.h
+  KvsObject_lineEdit.cpp
+  KvsObject_lineEdit.h
+  KvsObject_list.cpp
+  KvsObject_list.h
+  KvsObject_listWidget.cpp
+  KvsObject_listWidget.h
+  KvsObject_mainWindow.cpp
+  KvsObject_mainWindow.h
+  KvsObject_memoryBuffer.cpp
+  KvsObject_memoryBuffer.h
+  KvsObject_menuBar.cpp
+  KvsObject_menuBar.h
+  KvsObject_multiLineEdit.cpp
+  KvsObject_multiLineEdit.h
+  KvsObject_painter.cpp
+  KvsObject_painter.h
+  KvsObject_pixmap.cpp
+  KvsObject_pixmap.h
+  KvsObject_popupMenu.cpp
+  KvsObject_popupMenu.h
+  KvsObject_process.cpp
+  KvsObject_process.h
+  KvsObject_progressBar.cpp
+  KvsObject_progressBar.h
+  KvsObject_radioButton.cpp
+  KvsObject_radioButton.h
+  KvsObject_slider.cpp
+  KvsObject_slider.h
+  KvsObject_socket.cpp
+  KvsObject_socket.h
+  KvsObject_spinbox.cpp
+  KvsObject_spinbox.h
+  KvsObject_sql.cpp
+  KvsObject_sql.h
+  KvsObject_tabWidget.cpp
+  KvsObject_tabWidget.h
+  KvsObject_tableWidget.cpp
+  KvsObject_tableWidget.h
+  KvsObject_textBrowser.cpp
+  KvsObject_textBrowser.h
+  KvsObject_toolBar.cpp
+  KvsObject_toolBar.h
+  KvsObject_toolButton.cpp
+  KvsObject_toolButton.h
+  KvsObject_trayIcon.cpp
+  KvsObject_trayIcon.h
+  KvsObject_treeWidget.cpp
+  KvsObject_treeWidget.h
+  KvsObject_treeWidgetItem.cpp
+  KvsObject_treeWidgetItem.h
+  KvsObject_vBox.cpp
+  KvsObject_vBox.h
+  KvsObject_widget.cpp
+  KvsObject_widget.h
+  KvsObject_window.cpp
+  KvsObject_window.h
+  KvsObject_wizard.cpp
+  KvsObject_wizard.h
+  KvsObject_workspace.cpp
+  KvsObject_workspace.h
+  KvsObject_wrapper.cpp
+  KvsObject_wrapper.h
+  KvsObject_xmlreader.cpp
+  KvsObject_xmlreader.h
+  libkviobjects.cpp
+  object_macros.h
+
+
+###################
+# modules/options #
+###################
+
+  OptionsInstanceManager.cpp
+  OptionsInstanceManager.h
+  OptionsWidgetContainer.cpp
+  OptionsWidgetContainer.h
+  OptionsWidget_alertsAndHighlighting.cpp
+  OptionsWidget_alertsAndHighlighting.h
+  OptionsWidget_antiSpam.cpp
+  OptionsWidget_antiSpam.h
+  OptionsWidget_avatar.cpp
+  OptionsWidget_avatar.h
+  OptionsWidget_away.cpp
+  OptionsWidget_away.h
+  OptionsWidget_channel.cpp
+  OptionsWidget_channel.h
+  OptionsWidget_connection.cpp
+  OptionsWidget_connection.h
+  OptionsWidget_ctcp.cpp
+  OptionsWidget_ctcp.h
+  OptionsWidget_ctcpFloodProtection.cpp
+  OptionsWidget_ctcpFloodProtection.h
+  OptionsWidget_dcc.cpp
+  OptionsWidget_dcc.h
+  OptionsWidget_general.cpp
+  OptionsWidget_general.h
+  OptionsWidget_identity.cpp
+  OptionsWidget_identity.h
+  OptionsWidget_ignore.cpp
+  OptionsWidget_ignore.h
+  OptionsWidget_input.cpp
+  OptionsWidget_input.h
+  OptionsWidget_interfaceFeatures.cpp
+  OptionsWidget_interfaceFeatures.h
+  OptionsWidget_irc.cpp
+  OptionsWidget_irc.h
+  OptionsWidget_ircOutput.cpp
+  OptionsWidget_ircOutput.h
+  OptionsWidget_ircView.cpp
+  OptionsWidget_ircView.h
+  OptionsWidget_lag.cpp
+  OptionsWidget_lag.h
+  OptionsWidget_logging.cpp
+  OptionsWidget_logging.h
+  OptionsWidget_mediaTypes.cpp
+  OptionsWidget_mediaTypes.h
+  OptionsWidget_message.cpp
+  OptionsWidget_message.h
+  OptionsWidget_nickserv.cpp
+  OptionsWidget_nickserv.h
+  OptionsWidget_notifier.cpp
+  OptionsWidget_notifier.h
+  OptionsWidget_notify.cpp
+  OptionsWidget_notify.h
+  OptionsWidget_protection.cpp
+  OptionsWidget_protection.h
+  OptionsWidget_proxy.cpp
+  OptionsWidget_proxy.h
+  OptionsWidget_query.cpp
+  OptionsWidget_query.h
+  OptionsWidget_servers.cpp
+  OptionsWidget_servers.h
+  OptionsWidget_sound.cpp
+  OptionsWidget_sound.h
+  OptionsWidget_textEncoding.cpp
+  OptionsWidget_textEncoding.h
+  OptionsWidget_textIcons.cpp
+  OptionsWidget_textIcons.h
+  OptionsWidget_theme.cpp
+  OptionsWidget_theme.h
+  OptionsWidget_tools.cpp
+  OptionsWidget_tools.h
+  OptionsWidget_topicLabel.cpp
+  OptionsWidget_topicLabel.h
+  OptionsWidget_tray.cpp
+  OptionsWidget_tray.h
+  OptionsWidget_uparser.cpp
+  OptionsWidget_uparser.h
+  OptionsWidget_urlHandlers.cpp
+  OptionsWidget_urlHandlers.h
+  OptionsWidget_userList.cpp
+  OptionsWidget_userList.h
+  OptionsWidget_windowList.cpp
+  OptionsWidget_windowList.h
+  dialog.cpp
+  dialog.h
+  libkvioptions.cpp
+
+
+################
+# modules/perl #
+################
+
+  libkviperl.cpp
+
+
+####################
+# modules/perlcore #
+####################
+
+  libkviperlcore.cpp
+  perlcoreinterface.h
+  ppport.h
+
+
+#################
+# modules/popup #
+#################
+
+  libkvipopup.cpp
+
+
+#######################
+# modules/popupeditor #
+#######################
+
+  PopupEditorWindow.cpp
+  PopupEditorWindow.h
+  libkvipopupeditor.cpp
+
+
+###################
+# modules/proxydb #
+###################
+
+  libkviproxydb.cpp
+
+
+##################
+# modules/python #
+##################
+
+  libkvipython.cpp
+
+
+######################
+# modules/pythoncore #
+######################
+
+  libkvipythoncore.cpp
+  kvircmodule.cpp
+  kvircmodule.h
+  pythoncoreinterface.h
+
+
+#####################
+# modules/raweditor #
+#####################
+
+  RawEditorWindow.cpp
+  RawEditorWindow.h
+  libkviraweditor.cpp
+
+
+###################
+# modules/regchan #
+###################
+
+  libkviregchan.cpp
+
+
+###################
+# modules/reguser #
+###################
+
+  RegisteredUserEntryDialog.cpp
+  RegisteredUserEntryDialog.h
+  RegistrationWizard.cpp
+  RegistrationWizard.h
+  dialog.cpp
+  dialog.h
+  libkvireguser.cpp
+
+
+####################
+# modules/rijndael #
+####################
+
+  BlowFish.cpp
+  BlowFish.h
+  Rijndael.cpp
+  Rijndael.h
+  libkvirijndael.cpp
+  libkvirijndael.h
+  libkvirijndael_cryptopp.cpp
+  libkvirijndael_cryptopp.h
+
+
+#################
+# modules/rot13 #
+#################
+
+  libkvirot13.cpp
+  libkvirot13.h
+
+
+####################
+# modules/serverdb #
+####################
+
+  libkviserverdb.cpp
+
+
+#################
+# modules/setup #
+#################
+
+  SetupWizard.cpp
+  SetupWizard.h
+  libkvisetup.cpp
+
+
+######################
+# modules/sharedfile #
+######################
+
+  libkvisharedfile.cpp
+
+
+#############################
+# modules/sharedfileswindow #
+#############################
+
+  SharedFilesWindow.cpp
+  SharedFilesWindow.h
+  libkvisharedfileswindow.cpp
+
+
+###############
+# modules/snd #
+###############
+
+  libkvisnd.cpp
+  libkvisnd.h
+
+
+#####################
+# modules/socketspy #
+#####################
+
+  libkvisocketspy.cpp
+  socketspywindow.cpp
+  socketspywindow.h
+
+
+##################
+# modules/spaste #
+##################
+
+  SlowPasteController.cpp
+  SlowPasteController.h
+  libkvispaste.cpp
+  libkvispaste.h
+
+
+###############
+# modules/str #
+###############
+
+  libkvistr.cpp
+
+
+##################
+# modules/system #
+##################
+
+  Plugin.cpp
+  Plugin.h
+  libkvisystem.cpp
+
+
+################
+# modules/term #
+################
+
+  TermWidget.cpp
+  TermWidget.h
+  TermWindow.cpp
+  TermWindow.h
+  libkviterm.cpp
+
+
+#####################
+# modules/texticons #
+#####################
+
+  libkvitexticons.cpp
+
+
+#################
+# modules/theme #
+#################
+
+  PackThemeDialog.cpp
+  PackThemeDialog.h
+  SaveThemeDialog.cpp
+  SaveThemeDialog.h
+  ThemeFunctions.cpp
+  ThemeFunctions.h
+  libkvitheme.cpp
+  managementdialog.cpp
+  managementdialog.h
+
+
+###############
+# modules/tip #
+###############
+
+  libkvitip.cpp
+  libkvitip.h
+
+
+########################
+# modules/tmphighlight #
+########################
+
+  libkvitmphighlight.cpp
+
+
+###################
+# modules/toolbar #
+###################
+
+  libkvitoolbar.cpp
+
+
+#########################
+# modules/toolbareditor #
+#########################
+
+  CustomizeToolBarsDialog.cpp
+  CustomizeToolBarsDialog.h
+  libkvitoolbareditor.cpp
+
+
+###################
+# modules/torrent #
+###################
+
+  KTorrentDbusInterface.cpp
+  KTorrentDbusInterface.h
+  StatusBarApplet.cpp
+  StatusBarApplet.h
+  TorrentInterface.cpp
+  TorrentInterface.h
+  libkvitorrent.cpp
+
+
+####################
+# modules/trayicon #
+####################
+
+  libkvitrayicon.cpp
+  libkvitrayicon.h
+
+
+################
+# modules/upnp #
+################
+
+  Manager.cpp
+  Manager.h
+  RootService.cpp
+  RootService.h
+  Service.cpp
+  Service.h
+  SsdpConnection.cpp
+  SsdpConnection.h
+  WanConnectionService.cpp
+  WanConnectionService.h
+  XmlFunctions.cpp
+  XmlFunctions.h
+  igdcontrolpoint.cpp
+  igdcontrolpoint.h
+  libkviupnp.cpp
+
+
+###############
+# modules/url #
+###############
+
+  libkviurl.cpp
+  libkviurl.h
+
+
+####################
+# modules/userlist #
+####################
+
+  libkviuserlist.cpp
+
+
+##################
+# modules/window #
+##################
+
+  UserWindow.cpp
+  UserWindow.h
+  libkviwindow.cpp
