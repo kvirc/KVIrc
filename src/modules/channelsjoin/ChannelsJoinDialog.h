@@ -47,7 +47,7 @@ class KviTalGroupBox;
 * \class ChannelsJoinDialogTreeWidget
 * \brief Channels join window tree widget
 */
-class KVIRC_API ChannelsJoinDialogTreeWidget : public QTreeWidget
+class ChannelsJoinDialogTreeWidget : public QTreeWidget
 {
 	Q_OBJECT
 public:
