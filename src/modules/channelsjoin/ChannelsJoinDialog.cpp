@@ -37,18 +37,18 @@
 #include "KviKvsScript.h"
 #include "KviTalGroupBox.h"
 
-#include <QTreeWidget>
 #include <QLabel>
 #include <QLineEdit>
 #include <QLayout>
 #include <QPushButton>
 #include <QEvent>
 #include <QCloseEvent>
+#include <QMouseEvent>
 #include <QHeaderView>
 #include <QCheckBox>
 
 
-extern ChannelsJoinDialog * g_pChannelsWindow;
+extern ChannelsJoinDialog    * g_pChannelsWindow;
 extern QRect                   g_rectChannelsJoinGeometry;
 // KviApplication.cpp
 extern KVIRC_API KviRegisteredChannelDataBase * g_pRegisteredChannelDataBase;
@@ -65,12 +65,11 @@ ChannelsJoinDialog::ChannelsJoinDialog(QWidget * par, const char * name)
 
 	QGridLayout * g = new QGridLayout(this);
 
-	m_pTreeWidget = new QTreeWidget(this);
+	m_pTreeWidget = new ChannelsJoinDialogTreeWidget(this);
 	m_pTreeWidget->setHeaderLabel(__tr2qs("Channel"));
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	g->addWidget(m_pTreeWidget,0,0,1,2);
-	connect(m_pTreeWidget,SIGNAL(itemClicked(QTreeWidgetItem *,int)),this,SLOT(itemClicked(QTreeWidgetItem *,int)));
 	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *,int)));
 
 
@@ -167,7 +166,7 @@ void ChannelsJoinDialog::fillListView()
 
 	// Registered channels go first
 
-	QTreeWidgetItem * par = new QTreeWidgetItem(m_pTreeWidget);
+	QTreeWidgetItem * par = new QTreeWidgetItem(m_pTreeWidget, HeaderItem);
 	par->setText(0,__tr2qs("Registered Channels"));
 	par->setExpanded(true);
 
@@ -176,13 +175,13 @@ void ChannelsJoinDialog::fillListView()
 	{
 		for(QHash<QString,KviRegisteredChannelList *>::Iterator it = d->begin();it != d->end();++it)
 		{
-			QTreeWidgetItem * chld = new QTreeWidgetItem(par);
+			QTreeWidgetItem * chld = new QTreeWidgetItem(par, RegisteredChannelItem);
 			chld->setText(0,it.key());
 			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 		}
 	}
 
-	par = new QTreeWidgetItem(m_pTreeWidget);
+	par = new QTreeWidgetItem(m_pTreeWidget, HeaderItem);
 	par->setText(0,__tr2qs("Recent Channels"));
 	par->setExpanded(true);
 
@@ -199,13 +198,13 @@ void ChannelsJoinDialog::fillListView()
 			{
 				bGotChanOnCurrentNetwork = true;
 
-				par = new QTreeWidgetItem(par);
+				par = new QTreeWidgetItem(par, HeaderItem);
 				par->setText(0,__tr2qs("Current Network"));
 				par->setExpanded(true);
 
 				for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
 				{
-					chld = new QTreeWidgetItem(par);
+					chld = new QTreeWidgetItem(par, RecentChannelItem);
 					chld->setText(0,*it);
 					chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 				}
@@ -217,7 +216,7 @@ void ChannelsJoinDialog::fillListView()
 	if(!pDict)
 		return;
 
-	par = new QTreeWidgetItem(par);
+	par = new QTreeWidgetItem(par, HeaderItem);
 	par->setText(0,__tr2qs("All Networks"));
 
 	if(!bGotChanOnCurrentNetwork)
@@ -233,36 +232,66 @@ void ChannelsJoinDialog::fillListView()
 			if(hNoDuplicates.contains(chan.toLower()))
 				continue;
 			hNoDuplicates.insert(chan.toLower(),1);
-			chld = new QTreeWidgetItem(par);
+			chld = new QTreeWidgetItem(par, RecentChannelItem);
 			chld->setText(0,chan);
 			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 		}
 	}
 }
 
-void ChannelsJoinDialog::itemClicked(QTreeWidgetItem * it, int)
+void ChannelsJoinDialogTreeWidget::mousePressEvent(QMouseEvent *e)
 {
-	if(!it)
-		return;
-	if(it->childCount())
+	QTreeWidgetItem * it = itemAt(e->pos());
+	ChannelsJoinDialog *pDialog = (ChannelsJoinDialog*) parentWidget();
+	if(!it || !pDialog)
 		return;
 
-	QString szTmp = it->text(0);
-	m_pChannelEdit->setText(szTmp);
-	enableJoin();
+	setCurrentItem(it);
+
+	if(it->type() == ChannelsJoinDialog::HeaderItem)
+		return;
+
+	if(e->button() & Qt::RightButton)
+	{
+		if(!m_pJoinPopup)
+		{
+			m_pJoinPopup = new KviTalPopupMenu(this);
+			m_pJoinPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_JOIN)),__tr2qs("Join"),pDialog,SLOT(joinClicked()));
+			m_pJoinPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)),__tr2qs("Delete"),pDialog,SLOT(deleteClicked()));
+		}
+
+		m_pJoinPopup->popup(QCursor::pos());
+	} else {
+		pDialog->itemSelected();
+	}
 }
 
-void ChannelsJoinDialog::itemDoubleClicked(QTreeWidgetItem * it, int)
+void ChannelsJoinDialogTreeWidget::mouseDoubleClickEvent(QMouseEvent *e)
 {
+	QTreeWidgetItem * it = itemAt(e->pos());
+	ChannelsJoinDialog *pDialog = (ChannelsJoinDialog*) parentWidget();
+	if(!it || !pDialog || !(e->button() & Qt::LeftButton))
+		return;
+
+	if(it->type() == ChannelsJoinDialog::HeaderItem)
+		return;
+
+	setCurrentItem(it);
+	pDialog->itemSelected();
+	pDialog->joinClicked();
+}
+
+void ChannelsJoinDialog::itemSelected()
+{
+	QTreeWidgetItem * it = m_pTreeWidget->currentItem();
 	if(!it)
 		return;
-	if(it->childCount())
+	if(it->type() == HeaderItem)
 		return;
 
 	QString szTmp = it->text(0);
 	m_pChannelEdit->setText(szTmp);
 	enableJoin();
-	joinClicked();
 }
 
 void ChannelsJoinDialog::editTextChanged(const QString &)
@@ -294,6 +323,49 @@ void ChannelsJoinDialog::enableJoin()
 void ChannelsJoinDialog::cancelClicked()
 {
 	delete this;
+}
+
+void ChannelsJoinDialog::deleteClicked()
+{
+	//FIXME this actually removes channel without matching their network,
+	// since the whole ChannelsJoinDialog does not consider networks
+	QTreeWidgetItem * it = m_pTreeWidget->currentItem();
+	if(!it)
+		return;
+	if(it->type() == HeaderItem)
+		return;
+
+	QString szChan = it->text(0);
+	switch(it->type())
+	{
+		case RegisteredChannelItem:
+		{
+			KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan,QString("*"));
+			if(ch)
+				g_pRegisteredChannelDataBase->remove(ch);
+			delete it;
+			break;
+		}
+		case RecentChannelItem:
+		{
+			KviPointerHashTable<QString,QStringList> * pDict = g_pApp->recentChannels();
+			if(!pDict)
+				return;
+			for(QStringList * pChans = pDict->first();pChans;pChans = pDict->next())
+			{
+				for(QStringList::Iterator item = pChans->begin(); item != pChans->end(); ++item)
+				{
+					if(*item==szChan)
+					{
+						pChans->removeAll(szChan);
+						delete it;
+						return;
+					}
+				}
+			}
+			break;
+		}
+	}
 }
 
 void ChannelsJoinDialog::joinClicked()
@@ -387,14 +459,6 @@ void ChannelsJoinDialog::namesClicked()
 	if(!tmp.isEmpty())doCmd("raw names", tmp.ptr());
 }
 
-void ChannelsJoinDialog::itemDoubleClicked(KviTalListBoxItem * it)
-{
-	if (it == 0)return;
-	KviCString tmp = it->text();
-	doCmd("join", tmp.ptr());
-//	if(KVI_OPTION_BOOL(KviOption_boolCloseChannelsJoinAfterJoin))
-//		g_pApp->collectGarbage(this);
-}
 */
 
 void ChannelsJoinDialog::editReturnPressed()
