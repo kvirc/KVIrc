@@ -139,17 +139,17 @@ void KviIrcConnectionServerInfo::buildModePrefixTable()
 		m_pModePrefixTable[i+1]=uFlag;
 		switch(uFlag)
 		{
-			case 'o': m_pModePrefixTable[i+2] = KVI_USERFLAG_OP;
+			case 'o': m_pModePrefixTable[i+2] = KviIrcUserEntry::Op;
 				break;
-			case 'v': m_pModePrefixTable[i+2] = KVI_USERFLAG_VOICE;
+			case 'v': m_pModePrefixTable[i+2] = KviIrcUserEntry::Voice;
 				break;
-			case 'h': m_pModePrefixTable[i+2] = KVI_USERFLAG_HALFOP;
+			case 'h': m_pModePrefixTable[i+2] = KviIrcUserEntry::HalfOp;
 				break;
-			case 'a': m_pModePrefixTable[i+2] = KVI_USERFLAG_CHANADMIN;
+			case 'a': m_pModePrefixTable[i+2] = KviIrcUserEntry::ChanAdmin;
 				break;
-			case 'u': m_pModePrefixTable[i+2] = KVI_USERFLAG_USEROP;
+			case 'u': m_pModePrefixTable[i+2] = KviIrcUserEntry::UserOp;
 				break;
-			case 'q': m_pModePrefixTable[i+2] = KVI_USERFLAG_CHANOWNER;
+			case 'q': m_pModePrefixTable[i+2] = KviIrcUserEntry::ChanOwner;
 				break;
 			default:
 				m_pModePrefixTable[i+2]=0;

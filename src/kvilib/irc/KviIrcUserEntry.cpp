@@ -1,0 +1,114 @@
+//=============================================================================
+//
+//   File : KviIrcUserEntry.h
+//   Creation date : Tue Jan 04 2010 22:45:12 by Elvio Basello
+//
+//   This file is part of the KVIrc irc client distribution
+//   Copyright (C) 2010 Elvio Basello (hellvis69 at gmail dot com)
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+//
+//=============================================================================
+
+#include "KviIrcUserEntry.h"
+#include "KviMircCntrl.h"
+#include "KviNickColors.h"
+
+KviIrcUserEntry::KviIrcUserEntry(const QString & szUser, const QString & szHost)
+{
+	m_szUser                  = szUser;
+	m_szHost                  = szHost;
+	m_pAvatar                 = 0;
+	m_nRefs                   = 1;
+	m_iHops                   = -1;
+	m_bAway                   = false;
+	m_bIrcOp                  = false;
+	m_eGender                 = Unknown;
+	m_bBot                    = false;
+	m_bNotFoundRegUserLoockup = false;
+	m_bUseCustomColor         = false;
+	m_bAvatarRequested        = false;
+	m_iSmartNickColor         = -1;
+}
+
+KviIrcUserEntry::~KviIrcUserEntry()
+{
+	if(m_pAvatar)
+		delete m_pAvatar;
+}
+
+void KviIrcUserEntry::setRealName(const QString & szReal)
+{
+	m_szRealName = szReal.trimmed();
+	if(m_szRealName.length() >= 3)
+	{
+		if((m_szRealName[0].unicode() == KviMircCntrl::Color) && (m_szRealName[2].unicode() == KviMircCntrl::Reset))
+		{
+			// hum.. encoded as hidden color code eh ? publish is somewhere, so others might implement this...
+			// for backwards compatibily, 3=bot
+			if(m_szRealName[1].unicode() & 1 && m_szRealName[1].unicode() & 2)
+			{
+				setBot(true); //3
+			} else {
+				if(m_szRealName[1].unicode() & 1)
+				{
+					setGender(Male); //1
+				} else {
+					if(m_szRealName[1].unicode() & 2)
+					{
+						setGender(Female); //2
+					}
+				}
+			}
+			m_szRealName.remove(0,3);
+		}
+	}
+	
+	/*
+	 * smart nick color code: min length=5, max length=7
+	 * 1 - ^K, 2 - digit, 3 - coma, 4 - digit, 5 - KVI_TEXT_RESET, 6 - start of realname.
+	 */
+	if(m_szRealName.length() >= 5)
+	{
+		if((m_szRealName[0].unicode() == KviMircCntrl::Color))
+		{
+			unsigned char cFore, cBack;
+			int iPos = getUnicodeColorBytes(m_szRealName, 1, &cFore, &cBack);
+			// extract smart nick color code
+			if(iPos > 1 && m_szRealName[iPos] == KviMircCntrl::Reset)
+			{
+				m_szRealName.truncate(iPos);
+				int iColor = KviNickColors::getSmartColorIntByMircColor(cFore, cBack);
+				if(iColor >= 0)
+					setSmartNickColor(iColor);
+				m_szRealName.remove(0,iPos+1);
+			}
+		}
+	}
+}
+
+void KviIrcUserEntry::setAvatar(KviAvatar * pAvatar)
+{
+	if(m_pAvatar)
+		delete m_pAvatar;
+	m_pAvatar = pAvatar;
+}
+
+KviAvatar * KviIrcUserEntry::forgetAvatar()
+{
+	KviAvatar * pAvatar = m_pAvatar;
+	m_pAvatar = 0;
+	return pAvatar;
+}

@@ -152,34 +152,34 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * pDef, QStr
 	KviIrcServer * pServer = 0;
 
 	KviPointerHashTableIterator<QString,KviIrcNetwork> it(*m_pRecords);
-	KviIrcNetwork * r = 0;
-	KviIrcServer * srv;
+	KviIrcNetwork * pNet = 0;
+	KviIrcServer * pServ;
 
 	if(KviQString::equalCIN(pDef->szServer,"net:",4))
 	{
 		// net:networkname form
 		QString szNet = pDef->szServer;
 		szNet.remove(0,4);
-		KviIrcNetwork * r = m_pRecords->find(szNet);
-		if(r)
-			return makeCurrentBestServerInNetwork(szNet,r,szError);
+		KviIrcNetwork * pNet = m_pRecords->find(szNet);
+		if(pNet)
+			return makeCurrentBestServerInNetwork(szNet,pNet,szError);
 		szError = __tr2qs("The server specification seems to be in the net:<string> but the network couln't be found in the database");
 		return false;
 	}
 
-	if(KviQString::equalCIN(d->szServer,"id:",3))
+	if(KviQString::equalCIN(pDef->szServer,"id:",3))
 	{
 		// id:serverid form
-		QString szId = d->szServer;
+		QString szId = pDef->szServer;
 		szId.remove(0,3);
 
-		while((r = it.current()))
+		while((pNet = it.current()))
 		{
-			for(srv = r->serverList()->first();srv && (!pServer);srv = r->serverList()->next())
+			for(pServ = pNet->serverList()->first(); pServ && (!pServer); pServ = pNet->serverList()->next())
 			{
-				if(KviQString::equalCI(srv->id(),szId))
+				if(KviQString::equalCI(pServ->id(),szId))
 				{
-					pServer = srv;
+					pServer = pServ;
 					goto search_finished;
 				}
 			}
@@ -191,36 +191,36 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * pDef, QStr
 
 	it.toFirst();
 
-	while((r = it.current()))
+	while((pNet = it.current()))
 	{
-		for(srv = r->serverList()->first(); srv && (!pServer); srv = r->serverList()->next())
+		for(pServ = pNet->serverList()->first(); pServ && (!pServer); pServ = pNet->serverList()->next())
 		{
-			if(KviQString::equalCI(srv->hostName(),pDef->szServer))
+			if(KviQString::equalCI(pServ->hostName(),pDef->szServer))
 			{
-				if(pDef->szId.isEmpty() || KviQString::equalCI(srv->id(),pDef->szId))
+				if(pDef->szId.isEmpty() || KviQString::equalCI(pServ->id(),pDef->szId))
 				{
-					if(pDef->bIPv6 == srv->isIPv6())
+					if(pDef->bIPv6 == pServ->isIPv6())
 					{
-						if(pDef->bSSL == srv->useSSL())
+						if(pDef->bSSL == pServ->useSSL())
 						{
 							if(pDef->bPortIsValid)
 							{
 								// must match the port
-								if(pDef->uPort == srv->port())
+								if(pDef->uPort == pServ->port())
 								{
 									// port matches
 									if(!pDef->szLinkFilter.isEmpty())
 									{
 										// must match the link filter
-										if(KviQString::equalCI(pDef->szLinkFilter,srv->linkFilter()))
+										if(KviQString::equalCI(pDef->szLinkFilter,pServ->linkFilter()))
 										{
 											// link filter matches
-											pServer = srv;
+											pServer = pServ;
 											goto search_finished;
 										} // else link filter doesn't match
 									} else {
 										// no need to match the link filter
-										pServer = srv;
+										pServer = pServ;
 										goto search_finished;
 									}
 								} // else port doesn't match
@@ -229,15 +229,15 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * pDef, QStr
 								if(!pDef->szLinkFilter.isEmpty())
 								{
 									// must match the link filter
-									if(KviQString::equalCI(pDef->szLinkFilter,srv->linkFilter()))
+									if(KviQString::equalCI(pDef->szLinkFilter,pServ->linkFilter()))
 									{
 										// link filter matches
-										pServer = srv;
+										pServer = pServ;
 										goto search_finished;
 									} // else link filter doesn't match
 								} else {
 									// no need to match the link filter
-									pServer = srv;
+									pServer = pServ;
 									goto search_finished;
 								}
 							}
@@ -251,10 +251,10 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * pDef, QStr
 
 search_finished:
 
-	if(r && pServer)
+	if(pNet && pServer)
 	{
-		m_szCurrentNetwork = r->name();
-		r->setCurrentServer(pServer);
+		m_szCurrentNetwork = pNet->name();
+		pNet->setCurrentServer(pServer);
 		return true;
 	}
 
@@ -272,73 +272,73 @@ search_finished:
 		if(!pDef->szServer.contains('.'))
 		{
 			// assume it is a network name!
-			KviIrcNetwork * r = m_pRecords->find(pDef->szServer);
-			if(r)
-				return makeCurrentBestServerInNetwork(pDef->szServer,r,szError);
+			KviIrcNetwork * pNet = m_pRecords->find(pDef->szServer);
+			if(pNet)
+				return makeCurrentBestServerInNetwork(pDef->szServer,pNet,szError);
 			// else probably not a network name
 		}
 	}
 
 	// a valid hostname or ip address, not found in list : add it and make it current
 
-	r = m_pRecords->find(__tr2qs("Standalone Servers"));
-	if(!r)
+	pNet = m_pRecords->find(__tr2qs("Standalone Servers"));
+	if(!pNet)
 	{
-		r = new KviIrcNetwork(__tr2qs("Standalone Servers"));
-		m_pRecords->replace(r->name(),r);
+		pNet = new KviIrcNetwork(__tr2qs("Standalone Servers"));
+		m_pRecords->replace(pNet->name(),pNet);
 	}
 
-	KviIrcServer * s = new KviIrcServer();
-	s->m_szHostname = pDef->szServer;
+	KviIrcServer * pSrv = new KviIrcServer();
+	pSrv->m_szHostname = pDef->szServer;
 	if(bIsValidIPv4)
 	{
-		s->m_szIp = d->szServer;
-		s->setCacheIp(true);
+		pSrv->m_szIp = pDef->szServer;
+		pSrv->setCacheIp(true);
 #ifdef COMPILE_IPV6_SUPPORT
 	} else {
 		if(bIsValidIPv6)
 		{
-			s->m_szIp = pDef->szServer;
-			s->setCacheIp(true);
+			pSrv->m_szIp = pDef->szServer;
+			pSrv->setCacheIp(true);
 			pDef->bIPv6 = true;
 		}
 	}
 #else
 	}
 #endif
-	s->m_uPort = pDef->bPortIsValid ? pDef->uPort : 6667;
-	s->setLinkFilter(pDef->szLinkFilter);
-	s->m_szPass = pDef->szPass;
-	s->m_szNick = pDef->szNick;
-	s->m_szInitUMode = d->szInitUMode;
-	s->setIPv6(pDef->bIPv6);
-	s->setUseSSL(pDef->bSSL);
-	s->setEnabledSTARTTLS(pDef->bSTARTTLS);
-	r->insertServer(s);
-	m_szCurrentNetwork = r->name();
-	r->setCurrentServer(s);
+	pSrv->m_uPort = pDef->bPortIsValid ? pDef->uPort : 6667;
+	pSrv->setLinkFilter(pDef->szLinkFilter);
+	pSrv->m_szPass = pDef->szPass;
+	pSrv->m_szNick = pDef->szNick;
+	pSrv->m_szInitUMode = pDef->szInitUMode;
+	pSrv->setIPv6(pDef->bIPv6);
+	pSrv->setUseSSL(pDef->bSSL);
+	pSrv->setEnabledSTARTTLS(pDef->bSTARTTLS);
+	pNet->insertServer(pSrv);
+	m_szCurrentNetwork = pNet->name();
+	pNet->setCurrentServer(pSrv);
 
 	return true;
 }
 
-void parseMircServerRecord(QString entry,QString & szNet,
-QString & szDescription,QString & szHost,QString & szPort,bool & bSsl,kvi_u32_t & uPort)
+void parseMircServerRecord(QString szEntry, QString & szNet,
+QString & szDescription, QString & szHost, QString & szPort, bool & bSsl, kvi_u32_t & uPort)
 {
 	bSsl = false;
-	int idx = KviQString::find(entry,"SERVER:");
-	if(idx != -1)
+	int iIdx = KviQString::find(szEntry,"SERVER:");
+	if(iIdx != -1)
 	{
-		szDescription = entry.left(idx);
-		szNet=szDescription.section(':',0,0);
-		szDescription=szDescription.section(':',1,1);
+		szDescription = szEntry.left(iIdx);
+		szNet = szDescription.section(':',0,0);
+		szDescription = szDescription.section(':',1,1);
 
-		entry.remove(0,idx + 7);
-		idx = KviQString::find(entry,"GROUP:");
-		if(idx != -1)
+		szEntry.remove(0,iIdx + 7);
+		iIdx = KviQString::find(szEntry,"GROUP:");
+		if(iIdx != -1)
 		{
-			szHost = entry.left(idx);
+			szHost = szEntry.left(iIdx);
 		} else {
-			szHost = entry;
+			szHost = szEntry;
 		}
 
 		szPort = szHost.section(':',1,1);
@@ -351,11 +351,12 @@ QString & szDescription,QString & szHost,QString & szPort,bool & bSsl,kvi_u32_t 
 
 		bool bOk;
 		uPort = szPort.toUInt(&bOk);
-		if(!bOk)uPort = 6667;
+		if(!bOk)
+			uPort = 6667;
 	}
 }
 
-void KviIrcServerDataBase::importFromMircIni(const QString & filename, const QString & szMircIni, QStringList & recentServers)
+void KviIrcServerDataBase::importFromMircIni(const QString & szFilename, const QString & szMircIni, QStringList & recentServers)
 {
 	clear();
 	recentServers.clear();
@@ -367,18 +368,18 @@ void KviIrcServerDataBase::importFromMircIni(const QString & filename, const QSt
 		szDefaultServer = mircCfg.readEntry("host");
 	}
 
-	KviConfigurationFile cfg(filename,KviConfigurationFile::Read,true);
+	KviConfigurationFile cfg(szFilename,KviConfigurationFile::Read,true);
 	int i = 0;
 
-	QString entry;
-	QString key;
+	QString szEntry;
+	QString szKey;
 	if(cfg.hasGroup("recent"))
 	{
 		cfg.setGroup("recent");
 		do {
-			KviQString::sprintf(key,"n%d",i);
-			entry = cfg.readEntry(key);
-			if(!entry.isEmpty())
+			KviQString::sprintf(szKey,"n%d",i);
+			szEntry = cfg.readEntry(szKey);
+			if(!szEntry.isEmpty())
 			{
 				QString szNet;
 				QString szDescription;
@@ -387,13 +388,13 @@ void KviIrcServerDataBase::importFromMircIni(const QString & filename, const QSt
 				bool bSsl = false;
 				kvi_u32_t uPort = 0;
 
-				parseMircServerRecord(entry,szNet,
+				parseMircServerRecord(szEntry,szNet,
 					   szDescription,szHost,szPort,bSsl,uPort);
 
-				recentServers << (bSsl ? "ircs://" : "irc://" ) +szHost+":"+szPort;
+				recentServers << (bSsl ? "ircs://" : "irc://" ) + szHost + ":" + szPort;
 			}
 			i++;
-		} while(!entry.isEmpty());
+		} while(!szEntry.isEmpty());
 	}
 
 	i = 0;
@@ -401,9 +402,9 @@ void KviIrcServerDataBase::importFromMircIni(const QString & filename, const QSt
 	{
 		cfg.setGroup("servers");
 		do {
-			KviQString::sprintf(key,"n%d",i);
-			entry = cfg.readEntry(key);
-			if(!entry.isEmpty())
+			KviQString::sprintf(szKey,"n%d",i);
+			szEntry = cfg.readEntry(szKey);
+			if(!szEntry.isEmpty())
 			{
 				bool bDefault = false;
 				QString szNet;
@@ -413,44 +414,45 @@ void KviIrcServerDataBase::importFromMircIni(const QString & filename, const QSt
 				bool bSsl = false;
 				kvi_u32_t uPort = 0;
 				// <net>:<description>SERVER:<server:port>GROUP:<group???>
-				if(entry==szDefaultServer)
+				if(szEntry == szDefaultServer)
 					bDefault = true;
 
-				parseMircServerRecord(entry,szNet,
+				parseMircServerRecord(szEntry,szNet,
 						   szDescription,szHost,szPort,bSsl,uPort);
 
-				KviIrcNetwork * r = findNetwork(szNet);
+				KviIrcNetwork * pNet = findNetwork(szNet);
 
-				if(!r) {
-					r = new KviIrcNetwork(szNet);
-					addNetwork(r);
+				if(!pNet)
+				{
+					pNet = new KviIrcNetwork(szNet);
+					addNetwork(pNet);
 				}
 
-				KviIrcServer *s = new KviIrcServer();
-				s->m_szHostname = szHost;
-				s->m_szDescription = szDescription;
-				s->m_uPort = uPort;
+				KviIrcServer * pServ = new KviIrcServer();
+				pServ->m_szHostname = szHost;
+				pServ->m_szDescription = szDescription;
+				pServ->m_uPort = uPort;
 
 
-				r->m_pServerList->append(s);
+				pNet->m_pServerList->append(pServ);
 				if(bDefault)
 				{
 					m_szCurrentNetwork = szNet;
 				}
 			}
 			i++;
-		} while(!entry.isEmpty());
+		} while(!szEntry.isEmpty());
 	}
 }
 
-void KviIrcServerDataBase::load(const QString & filename)
+void KviIrcServerDataBase::load(const QString & szFilename)
 {
 	clear();
-	KviConfigurationFile cfg(filename,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szFilename,KviConfigurationFile::Read);
 
 	KviConfigurationFileIterator it(*(cfg.dict()));
 
-	QString tmp;
+	QString szTmp;
 
 	while(it.current())
 	{
@@ -481,46 +483,50 @@ void KviIrcServerDataBase::load(const QString & filename)
 				m_pAutoConnectOnStartupNetworks->append(pNewNet);
 			}
 			QStringList l = cfg.readStringListEntry("AutoJoinChannels",QStringList());
-			if(l.count() > 0)pNewNet->setAutoJoinChannelList(new QStringList(l));
+			if(l.count() > 0)
+				pNewNet->setAutoJoinChannelList(new QStringList(l));
 
-			if(cfg.readBoolEntry("Current",false))m_szCurrentNetwork = it.currentKey();
+			if(cfg.readBoolEntry("Current",false))
+				m_szCurrentNetwork = it.currentKey();
 
 			int nServers = cfg.readIntEntry("NServers",0);
-			for(int i=0;i < nServers;i++)
+			for(int i=0; i < nServers; i++)
 			{
-				KviIrcServer *s = new KviIrcServer();
-				KviQString::sprintf(tmp,"%d_",i);
-				if(s->load(&cfg,tmp))
+				KviIrcServer * pServ = new KviIrcServer();
+				KviQString::sprintf(szTmp,"%d_",i);
+				if(pServ->load(&cfg,szTmp))
 				{
-					pNewNet->m_pServerList->append(s);
-					KviQString::sprintf(tmp,"%d_Current",i);
-					if(cfg.readBoolEntry(tmp,false))pNewNet->m_pCurrentServer = s;
-					if(s->autoConnect())
+					pNewNet->m_pServerList->append(pServ);
+					KviQString::sprintf(szTmp,"%d_Current",i);
+					if(cfg.readBoolEntry(szTmp,false))
+						pNewNet->m_pCurrentServer = pServ;
+					if(pServ->autoConnect())
 					{
 						if(!m_pAutoConnectOnStartupServers)
 						{
 							m_pAutoConnectOnStartupServers = new KviPointerList<KviIrcServer>;
 							m_pAutoConnectOnStartupServers->setAutoDelete(false);
 						}
-						m_pAutoConnectOnStartupServers->append(s);
+						m_pAutoConnectOnStartupServers->append(pServ);
 					}
-				} else delete s;
+				} else delete pServ;
 			}
-			if(!pNewNet->m_pCurrentServer)pNewNet->m_pCurrentServer = pNewNet->m_pServerList->first();
+			if(!pNewNet->m_pCurrentServer)
+				pNewNet->m_pCurrentServer = pNewNet->m_pServerList->first();
 		}
 		++it;
 	}
 }
 
-void KviIrcServerDataBase::save(const QString &filename)
+void KviIrcServerDataBase::save(const QString & szFilename)
 {
-	KviConfigurationFile cfg(filename,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szFilename,KviConfigurationFile::Write);
 
 	cfg.clear(); // clear any old entry
 
 	KviPointerHashTableIterator<QString,KviIrcNetwork> it(*m_pRecords);
 
-	QString tmp;
+	QString szTmp;
 
 	while(KviIrcNetwork * pNetwork = it.current())
 	{
@@ -553,15 +559,15 @@ void KviIrcServerDataBase::save(const QString &filename)
 		if(!pNetwork->m_szUserIdentityId.isEmpty())
 			cfg.writeEntry("UserIdentityId",pNetwork->m_szUserIdentityId);
 		int i=0;
-		for(KviIrcServer *s = pNetwork->m_pServerList->first();s;s = pNetwork->m_pServerList->next())
+		for(KviIrcServer * pServ = pNetwork->m_pServerList->first(); pServ; pServ = pNetwork->m_pServerList->next())
 		{
-			KviQString::sprintf(tmp,"%d_",i);
-			s->save(&cfg,tmp);
+			KviQString::sprintf(szTmp,"%d_",i);
+			pServ->save(&cfg,szTmp);
 
-			if(s == pNetwork->m_pCurrentServer)
+			if(pServ == pNetwork->m_pCurrentServer)
 			{
-				KviQString::sprintf(tmp,"%d_Current",i);
-				cfg.writeEntry(tmp,true);
+				KviQString::sprintf(szTmp,"%d_Current",i);
+				cfg.writeEntry(szTmp,true);
 			}
 
 			i++;

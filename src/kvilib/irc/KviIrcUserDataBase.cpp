@@ -26,97 +26,9 @@
 
 #include "kvi_debug.h"
 #include "KviIrcUserDataBase.h"
-#include "KviMircCntrl.h"
 #include "KviQString.h"
 #include "KviStringConversion.h"
-#include "KviNickColors.h"
 
-//static int cacheHit = 0;
-//static int cacheMiss = 0;
-
-KviIrcUserEntry::KviIrcUserEntry(const QString &user,const QString &host)
-{
-	m_szUser = user;
-	m_szHost = host;
-	m_pAvatar = 0;
-	m_nRefs = 1;
-	m_iHops = -1;
-	m_bAway = false;
-	m_bIrcOp = false;
-	m_eGender = Unknown;
-	m_bBot = false;
-	m_bNotFoundRegUserLoockup = false;
-	m_bUseCustomColor = false;
-	m_bAvatarRequested = false;
-	m_iSmartNickColor = -1;
-}
-
-void KviIrcUserEntry::setRealName(const QString &rn)
-{
-	m_szRealName = rn.trimmed();
-	if(m_szRealName.length()>=3)
-	{
-		if((m_szRealName[0].unicode() == KviMircCntrl::Color) && (m_szRealName[2].unicode() == KviMircCntrl::Reset))
-		{
-			// hum.. encoded as hidden color code eh ? publish is somewhere, so others might implement this...
-			// for backwards compatibily, 3=bot
-			if(m_szRealName[1].unicode() & 1 && m_szRealName[1].unicode() & 2)
-			{
-				setBot(true); //3
-			} else {
-				if(m_szRealName[1].unicode() & 1)
-				{
-					setGender(Male); //1
-				} else {
-					if(m_szRealName[1].unicode() & 2)
-					{
-						setGender(Female); //2
-					}
-				}
-			}
-			m_szRealName.remove(0,3);
-		}
-	}
-	
-	/*
-	 * smart nick color code: min length=5, max length=7
-	 * 1 - ^K, 2 - digit, 3 - coma, 4 - digit, 5 - KVI_TEXT_RESET, 6 - start of realname.
-	 */
-	if(m_szRealName.length()>=5)
-	{
-		if((m_szRealName[0].unicode() == KviMircCntrl::Color))
-		{
-			unsigned char iFore, iBack;
-			int iPos=getUnicodeColorBytes(m_szRealName, 1, &iFore, &iBack);
-			// extract smart nick color code
-			if(iPos > 1 && m_szRealName[iPos] == KviMircCntrl::Reset)
-			{
-				m_szRealName.truncate(iPos);
-				int color = KviNickColors::getSmartColorIntByMircColor(iFore, iBack);
-				if(color>=0) setSmartNickColor(color);
-				m_szRealName.remove(0,iPos+1);
-			}
-		}
-	}
-}
-
-KviIrcUserEntry::~KviIrcUserEntry()
-{
-	if(m_pAvatar)delete m_pAvatar;
-}
-
-void KviIrcUserEntry::setAvatar(KviAvatar * av)
-{
-	if(m_pAvatar)delete m_pAvatar;
-	m_pAvatar = av;
-}
-
-KviAvatar * KviIrcUserEntry::forgetAvatar()
-{
-	KviAvatar * ret = m_pAvatar;
-	m_pAvatar = 0;
-	return ret;
-}
 
 KviIrcUserDataBase::KviIrcUserDataBase()
 : QObject()
@@ -139,86 +51,84 @@ KviIrcUserDataBase::~KviIrcUserDataBase()
 	delete m_pDict;
 }
 
-bool KviIrcUserDataBase::haveCustomColor(const QString & nick)
+bool KviIrcUserDataBase::haveCustomColor(const QString & szNick)
 {
-	KviIrcUserEntry *u = find(nick);
-	if(!u) return false;
-	if( u->m_szLastRegisteredMatchNick!=nick)
-		registeredUser(nick);
-	if(!u->m_bNotFoundRegUserLoockup)
-	{
-		return u->m_bUseCustomColor;
-	}
+	KviIrcUserEntry * pEntry = find(szNick);
+	if(!pEntry)
+		return false;
+	if(pEntry->m_szLastRegisteredMatchNick != szNick)
+		registeredUser(szNick);
+	if(!pEntry->m_bNotFoundRegUserLoockup)
+		return pEntry->m_bUseCustomColor;
+
 	return false;
 }
 
-QColor* KviIrcUserDataBase::customColor(const QString & nick)
+QColor * KviIrcUserDataBase::customColor(const QString & szNick)
 {
-	KviIrcUserEntry *u = find(nick);
-	if(!u) return 0;
-	if( u->m_szLastRegisteredMatchNick!=nick)
-		registeredUser(nick);
+	KviIrcUserEntry * pEntry = find(szNick);
+	if(!pEntry)
+		return 0;
+	if(pEntry->m_szLastRegisteredMatchNick != szNick)
+		registeredUser(szNick);
 
-	if(!u->m_bNotFoundRegUserLoockup)
-	{
-		return &(u->m_cachedColor);
-	}
+	if(!pEntry->m_bNotFoundRegUserLoockup)
+		return &(pEntry->m_cachedColor);
+
 	return 0;
 }
 
 
-KviRegisteredUser* KviIrcUserDataBase::registeredUser(const QString & nick,const QString & user,const QString & host)
+KviRegisteredUser * KviIrcUserDataBase::registeredUser(const QString & szNick, const QString & szUser, const QString & szHost)
 {
-	if(nick.isEmpty()) return 0;
-	KviIrcUserEntry *u = find(nick);
-	if(!u) return g_pRegisteredUserDataBase->findMatchingUser(nick,user,host);
-	KviRegisteredUser* pUser=0;
-
-	if(u->m_bNotFoundRegUserLoockup && u->m_szLastRegisteredMatchNick==nick)
-	{
-		//cacheHit++;
-		//qDebug("cache hits/miss = %i/%i",cacheHit,cacheMiss);
+	if(szNick.isEmpty())
 		return 0;
-	}
+	KviIrcUserEntry * pEntry = find(szNick);
+	if(!pEntry)
+		return g_pRegisteredUserDataBase->findMatchingUser(szNick,szUser,szHost);
 
-	if(!u->m_szRegisteredUserName.isEmpty() && u->m_szLastRegisteredMatchNick==nick)
+	KviRegisteredUser * pUser = 0;
+
+	if(pEntry->m_bNotFoundRegUserLoockup && pEntry->m_szLastRegisteredMatchNick == szNick)
+		return 0;
+
+	if(!pEntry->m_szRegisteredUserName.isEmpty() && pEntry->m_szLastRegisteredMatchNick == szNick)
+		pUser = g_pRegisteredUserDataBase->getUser(pEntry->m_szRegisteredUserName);
+
+	if(!pUser)
 	{
-		pUser = g_pRegisteredUserDataBase->getUser(u->m_szRegisteredUserName);
-		//if(pUser) cacheHit++;
-	}
-
-	if(!pUser) {
 		//user renamed or it is a first loockup
-		if(u->hasHost() && u->hasUser())
+		if(pEntry->hasHost() && pEntry->hasUser())
 		{
-			pUser=g_pRegisteredUserDataBase->findMatchingUser(nick,u->user(),u->host());
-			//cacheMiss++;
-			if(pUser) {
-				u->m_szLastRegisteredMatchNick=nick;
-				u->m_szRegisteredUserName=pUser->name();
+			pUser = g_pRegisteredUserDataBase->findMatchingUser(szNick,pEntry->user(),pEntry->host());
+			if(pUser)
+			{
+				pEntry->m_szLastRegisteredMatchNick = szNick;
+				pEntry->m_szRegisteredUserName = pUser->name();
 
-				u->m_bUseCustomColor=pUser->getBoolProperty("useCustomColor");
-				QString szTmp=pUser->getProperty("customColor");
-				KviStringConversion::fromString(szTmp,u->m_cachedColor);
+				pEntry->m_bUseCustomColor = pUser->getBoolProperty("useCustomColor");
+				QString szTmp = pUser->getProperty("customColor");
+				KviStringConversion::fromString(szTmp,pEntry->m_cachedColor);
 
-				u->m_bNotFoundRegUserLoockup=false; //to be shure
+				pEntry->m_bNotFoundRegUserLoockup = false; //to be sure
 			} else {
-				u->m_szLastRegisteredMatchNick=nick;
-				u->m_bNotFoundRegUserLoockup=true;
+				pEntry->m_szLastRegisteredMatchNick = szNick;
+				pEntry->m_bNotFoundRegUserLoockup = true;
 			}
 		}
 	}
 
-//	qDebug("cache hits/miss = %i/%i",cacheHit,cacheMiss);
 	return pUser;
 }
 
-KviRegisteredUser* KviIrcUserDataBase::registeredUser(const QString & nick)
+KviRegisteredUser * KviIrcUserDataBase::registeredUser(const QString & szNick)
 {
-	if(nick.isEmpty()) return 0;
-	KviIrcUserEntry *u = find(nick);
-	if(!u) return 0;
-	return registeredUser(nick,u->user(),u->host());
+	if(szNick.isEmpty())
+		return 0;
+	KviIrcUserEntry * pEntry = find(szNick);
+	if(!pEntry)
+		return 0;
+	return registeredUser(szNick,pEntry->user(),pEntry->host());
 }
 
 void KviIrcUserDataBase::clear()
@@ -228,30 +138,30 @@ void KviIrcUserDataBase::clear()
 	m_pDict->setAutoDelete(true);
 }
 
-KviIrcUserEntry * KviIrcUserDataBase::insertUser(const QString &nick,const QString &user,const QString &hostname)
+KviIrcUserEntry * KviIrcUserDataBase::insertUser(const QString & szNick, const QString & szUser, const QString & szHost)
 {
-	KviIrcUserEntry * e = m_pDict->find(nick);
-	if(e)
+	KviIrcUserEntry * pEntry = m_pDict->find(szNick);
+	if(pEntry)
 	{
-		e->m_nRefs++;
-		if(e->m_szUser.isEmpty())
+		pEntry->m_nRefs++;
+		if(pEntry->m_szUser.isEmpty())
 		{
-			e->m_szUser = user;
-			e->m_szHost = hostname;
+			pEntry->m_szUser = szUser;
+			pEntry->m_szHost = szHost;
 		}
 	} else {
-		e = new KviIrcUserEntry(user,hostname);
-		m_pDict->insert(nick,e);
+		pEntry = new KviIrcUserEntry(szUser,szHost);
+		m_pDict->insert(szNick,pEntry);
 	}
-	return e;
+	return pEntry;
 }
 
-bool KviIrcUserDataBase::removeUser(const QString &nick,KviIrcUserEntry * e)
+bool KviIrcUserDataBase::removeUser(const QString & szNick, KviIrcUserEntry * pEntry)
 {
-	e->m_nRefs--;
-	if(e->m_nRefs == 0)
+	pEntry->m_nRefs--;
+	if(pEntry->m_nRefs == 0)
 	{
-		m_pDict->remove(nick);
+		m_pDict->remove(szNick);
 		return true;
 	}
 	return false;
@@ -259,57 +169,43 @@ bool KviIrcUserDataBase::removeUser(const QString &nick,KviIrcUserEntry * e)
 
 void KviIrcUserDataBase::setupConnectionWithReguserDb()
 {
-	connect(g_pRegisteredUserDataBase,SIGNAL(userRemoved(const QString&)),this,SLOT(registeredUserRemoved(const QString&)));
+	connect(g_pRegisteredUserDataBase,SIGNAL(userRemoved(const QString&)),this,SLOT(registeredUserChanged(const QString&)));
 	connect(g_pRegisteredUserDataBase,SIGNAL(userChanged(const QString&)),this,SLOT(registeredUserChanged(const QString&)));
 	connect(g_pRegisteredUserDataBase,SIGNAL(userAdded(const QString&)),this,SLOT(registeredUserAdded(const QString&)));
 	connect(g_pRegisteredUserDataBase,SIGNAL(databaseCleared()),this,SLOT(registeredDatabaseCleared()));
 }
 
-void KviIrcUserDataBase::registeredUserRemoved(const QString & user)
+void KviIrcUserDataBase::registeredUserChanged(const QString & szUser)
 {
-	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
+	KviPointerHashTableIterator<QString,KviIrcUserEntry> it(*m_pDict);
 	for( ; it.current(); ++it )
 	{
-		if(it.current()->m_szRegisteredUserName==user)
+		if(it.current()->m_szRegisteredUserName == szUser)
 		{
-			it.current()->m_szRegisteredUserName="";
-			it.current()->m_bNotFoundRegUserLoockup=false;
-		}
-	}
-}
-
-void KviIrcUserDataBase::registeredUserChanged(const QString & user)
-{
-	//the same as above
-	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
-	for( ; it.current(); ++it )
-	{
-		if(it.current()->m_szRegisteredUserName==user)
-		{
-			it.current()->m_szRegisteredUserName="";
-			it.current()->m_bNotFoundRegUserLoockup=false;
+			it.current()->m_szRegisteredUserName = "";
+			it.current()->m_bNotFoundRegUserLoockup = false;
 		}
 	}
 }
 
 void KviIrcUserDataBase::registeredUserAdded(const QString &)
 {
-	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
+	KviPointerHashTableIterator<QString,KviIrcUserEntry> it(*m_pDict);
 	for( ; it.current(); ++it )
 	{
 		if(it.current()->m_szRegisteredUserName.isEmpty())
 		{
-			it.current()->m_bNotFoundRegUserLoockup=false;
+			it.current()->m_bNotFoundRegUserLoockup = false;
 		}
 	}
 }
 
 void KviIrcUserDataBase::registeredDatabaseCleared()
 {
-	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
+	KviPointerHashTableIterator<QString,KviIrcUserEntry> it(*m_pDict);
 	for( ; it.current(); ++it )
 	{
-		it.current()->m_szRegisteredUserName="";
-		it.current()->m_bNotFoundRegUserLoockup=false;
+		it.current()->m_szRegisteredUserName = "";
+		it.current()->m_bNotFoundRegUserLoockup = false;
 	}
 }

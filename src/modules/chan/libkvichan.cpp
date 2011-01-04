@@ -1155,34 +1155,41 @@ static bool chan_kvs_fnc_users(KviKvsModuleFunctionCall * c)
 			{
 				if(bChanAdmins)
 				{
-					if(e->flags() & KVI_USERFLAG_CHANADMIN)goto check_mask;
+					if(e->flags() & KviIrcUserEntry::ChanAdmin)
+						goto check_mask;
 				}
 				if(bOp)
 				{
-					if(e->flags() & KVI_USERFLAG_OP)goto check_mask;
+					if(e->flags() & KviIrcUserEntry::Op)
+						goto check_mask;
 				}
 				if(bVoice)
 				{
-					if(e->flags() & KVI_USERFLAG_VOICE)goto check_mask;
+					if(e->flags() & KviIrcUserEntry::Voice)
+						goto check_mask;
 				}
 				if(bHalfOp)
 				{
-					if(e->flags() & KVI_USERFLAG_HALFOP)goto check_mask;
+					if(e->flags() & KviIrcUserEntry::HalfOp)
+						goto check_mask;
 				}
 				if(bUserOp)
 				{
-					if(e->flags() & KVI_USERFLAG_USEROP)goto check_mask;
+					if(e->flags() & KviIrcUserEntry::UserOp)
+						goto check_mask;
 				}
 				if(bNone)
 				{
-					if(!(e->flags() & KVI_USERFLAG_MODEMASK))goto check_mask;
+					if(!(e->flags() & KviIrcUserEntry::ModeMask))
+						goto check_mask;
 				}
 				goto next_item;
 			}
 check_mask:
 			if(bCheckMask)
 			{
-				if(mask.matchesFixed(e->nick(),e->globalData()->user(),e->globalData()->host()) == bMaskMustMatch)goto add_item;
+				if(mask.matchesFixed(e->nick(),e->globalData()->user(),e->globalData()->host()) == bMaskMustMatch)
+					goto add_item;
 				goto next_item;
 			}
 add_item:

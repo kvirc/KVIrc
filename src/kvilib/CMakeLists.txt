@@ -98,12 +98,13 @@ SET(kvilib_SRCS
 	irc/KviIdentityProfile.cpp
 	irc/KviIdentityProfileSet.cpp
 	irc/KviIrcMask.cpp
+	irc/KviIrcNetwork.cpp
 	irc/KviIrcServer.cpp
 	irc/KviIrcServerDataBase.cpp
 	irc/KviIrcServerReconnectInfo.cpp
 	irc/KviIrcUserDataBase.cpp
+	irc/KviIrcUserEntry.cpp
 	irc/KviMircCntrl.cpp
-	irc/KviIrcNetwork.cpp
 	irc/KviNickServRule.cpp
 	irc/KviNickServRuleSet.cpp
 	irc/KviUserIdentity.cpp
