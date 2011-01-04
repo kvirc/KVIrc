@@ -410,7 +410,11 @@ public:
 	inline void setOnLoginCommand(const QString & szCmd){ m_szOnLoginCommand = szCmd; };
 
 	/**
-	* \brief Sets the filter
+	* \brief Applies the filter to the server
+	* 
+	* A link filter resides between the low-level socket, which send/receive blocks
+	* of bytes, and the connection which talk using IRC messages.
+	* The filter can remap blocks of bytes in any direction
 	* \param szFilter
 	* \return void
 	*/

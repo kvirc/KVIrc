@@ -75,15 +75,15 @@ void KviIrcServerDataBase::clear()
 	m_szCurrentNetwork = "";
 }
 
-void KviIrcServerDataBase::addNetwork(KviIrcNetwork * n)
+void KviIrcServerDataBase::addNetwork(KviIrcNetwork * pNet)
 {
-	m_pRecords->replace(n->name(),n);
+	m_pRecords->replace(pNet->name(),pNet);
 }
 
 KviIrcNetwork * KviIrcServerDataBase::findNetwork(const QString & szName)
 {
-	KviIrcNetwork * r = m_pRecords->find(szName);
-	return r;
+	KviIrcNetwork * pNet = m_pRecords->find(szName);
+	return pNet;
 }
 
 unsigned int KviIrcServerDataBase::networkCount() const
@@ -91,36 +91,35 @@ unsigned int KviIrcServerDataBase::networkCount() const
 	return m_pRecords->count();
 }
 
-
 KviIrcNetwork * KviIrcServerDataBase::currentNetwork()
 {
-	KviIrcNetwork * r = 0;
+	KviIrcNetwork * pNet = 0;
 	if(!m_szCurrentNetwork.isEmpty())
-		r = m_pRecords->find(m_szCurrentNetwork);
-	if(r)
-		return r;
+		pNet = m_pRecords->find(m_szCurrentNetwork);
+	if(pNet)
+		return pNet;
 
 	return 0;
 }
 
-bool KviIrcServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetName, KviIrcNetwork * r, QString & szError)
+bool KviIrcServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetName, KviIrcNetwork * pNet, QString & szError)
 {
 	m_szCurrentNetwork = szNetName;
 	// find a round-robin server in that network
 
-	if(r->m_pServerList->isEmpty())
+	if(pNet->m_pServerList->isEmpty())
 	{
 		szError = __tr2qs("The specified network has no server entries");
 		return false;
 	}
 
-	for(KviIrcServer * s = r->m_pServerList->first(); s; s = r->m_pServerList->next())
+	for(KviIrcServer * pServ = pNet->m_pServerList->first(); pServ; pServ = pNet->m_pServerList->next())
 	{
-		if(s->m_szDescription.contains("random",Qt::CaseInsensitive) ||
-			(s->m_szDescription.contains("round",Qt::CaseInsensitive) &&
-			 s->m_szDescription.contains("robin",Qt::CaseInsensitive)))
+		if(pServ->m_szDescription.contains("random",Qt::CaseInsensitive) ||
+			(pServ->m_szDescription.contains("round",Qt::CaseInsensitive) &&
+			(pServ->m_szDescription.contains("robin",Qt::CaseInsensitive))))
 		{
-			r->setCurrentServer(s);
+			pNet->setCurrentServer(pServ);
 			return true;
 		}
 	}
@@ -133,13 +132,13 @@ bool KviIrcServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetN
 	KviQString::sprintf(szTryAlso2,"irc.%Q.net",&szNetName);
 	KviQString::sprintf(szTryAlso3,"irc.%Q.com",&szNetName);
 
-	for(KviIrcServer * ss = r->m_pServerList->first(); ss; ss = r->m_pServerList->next())
+	for(KviIrcServer * pServer = pNet->m_pServerList->first(); pServer; pServer = pNet->m_pServerList->next())
 	{
-		if(KviQString::equalCI(ss->m_szHostname,szTryAlso1) ||
-			KviQString::equalCI(ss->m_szHostname,szTryAlso2) ||
-			KviQString::equalCI(ss->m_szHostname,szTryAlso3))
+		if(KviQString::equalCI(pServer->m_szHostname,szTryAlso1) ||
+			KviQString::equalCI(pServer->m_szHostname,szTryAlso2) ||
+			KviQString::equalCI(pServer->m_szHostname,szTryAlso3))
 		{
-			r->setCurrentServer(ss);
+			pNet->setCurrentServer(pServer);
 			return true;
 		}
 	}
@@ -148,7 +147,7 @@ bool KviIrcServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetN
 	return true;
 }
 
-bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * d, QString & szError)
+bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * pDef, QString & szError)
 {
 	KviIrcServer * pServer = 0;
 
@@ -156,13 +155,14 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * d, QString
 	KviIrcNetwork * r = 0;
 	KviIrcServer * srv;
 
-	if(KviQString::equalCIN(d->szServer,"net:",4))
+	if(KviQString::equalCIN(pDef->szServer,"net:",4))
 	{
 		// net:networkname form
-		QString szNet = d->szServer;
+		QString szNet = pDef->szServer;
 		szNet.remove(0,4);
 		KviIrcNetwork * r = m_pRecords->find(szNet);
-		if(r)return makeCurrentBestServerInNetwork(szNet,r,szError);
+		if(r)
+			return makeCurrentBestServerInNetwork(szNet,r,szError);
 		szError = __tr2qs("The server specification seems to be in the net:<string> but the network couln't be found in the database");
 		return false;
 	}
@@ -195,24 +195,24 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * d, QString
 	{
 		for(srv = r->serverList()->first(); srv && (!pServer); srv = r->serverList()->next())
 		{
-			if(KviQString::equalCI(srv->hostName(),d->szServer))
+			if(KviQString::equalCI(srv->hostName(),pDef->szServer))
 			{
-				if(d->szId.isEmpty() || KviQString::equalCI(srv->id(),d->szId))
+				if(pDef->szId.isEmpty() || KviQString::equalCI(srv->id(),pDef->szId))
 				{
-					if(d->bIPv6 == srv->isIPv6())
+					if(pDef->bIPv6 == srv->isIPv6())
 					{
-						if(d->bSSL == srv->useSSL())
+						if(pDef->bSSL == srv->useSSL())
 						{
-							if(d->bPortIsValid)
+							if(pDef->bPortIsValid)
 							{
 								// must match the port
-								if(d->uPort == srv->port())
+								if(pDef->uPort == srv->port())
 								{
 									// port matches
-									if(!d->szLinkFilter.isEmpty())
+									if(!pDef->szLinkFilter.isEmpty())
 									{
 										// must match the link filter
-										if(KviQString::equalCI(d->szLinkFilter,srv->linkFilter()))
+										if(KviQString::equalCI(pDef->szLinkFilter,srv->linkFilter()))
 										{
 											// link filter matches
 											pServer = srv;
@@ -226,10 +226,10 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * d, QString
 								} // else port doesn't match
 							} else {
 								// no need to match the port
-								if(!d->szLinkFilter.isEmpty())
+								if(!pDef->szLinkFilter.isEmpty())
 								{
 									// must match the link filter
-									if(KviQString::equalCI(d->szLinkFilter,srv->linkFilter()))
+									if(KviQString::equalCI(pDef->szLinkFilter,srv->linkFilter()))
 									{
 										// link filter matches
 										pServer = srv;
@@ -259,9 +259,9 @@ search_finished:
 	}
 
 	// no such server: is it a valid ip address or hostname ?
-	bool bIsValidIPv4 = KviNetUtils::isValidStringIp(d->szServer);
+	bool bIsValidIPv4 = KviNetUtils::isValidStringIp(pDef->szServer);
 #ifdef COMPILE_IPV6_SUPPORT
-	bool bIsValidIPv6 = KviNetUtils::isValidStringIPv6(d->szServer);
+	bool bIsValidIPv6 = KviNetUtils::isValidStringIPv6(pDef->szServer);
 #else
 	bool bIsValidIPv6 = false;
 #endif
@@ -269,11 +269,12 @@ search_finished:
 	if(!(bIsValidIPv4 || bIsValidIPv6))
 	{
 		// is it a valid hostname ? (must contain at least one dot)
-		if(!d->szServer.contains('.'))
+		if(!pDef->szServer.contains('.'))
 		{
 			// assume it is a network name!
-			KviIrcNetwork * r = m_pRecords->find(d->szServer);
-			if(r)return makeCurrentBestServerInNetwork(d->szServer,r,szError);
+			KviIrcNetwork * r = m_pRecords->find(pDef->szServer);
+			if(r)
+				return makeCurrentBestServerInNetwork(pDef->szServer,r,szError);
 			// else probably not a network name
 		}
 	}
@@ -288,7 +289,7 @@ search_finished:
 	}
 
 	KviIrcServer * s = new KviIrcServer();
-	s->m_szHostname = d->szServer;
+	s->m_szHostname = pDef->szServer;
 	if(bIsValidIPv4)
 	{
 		s->m_szIp = d->szServer;
@@ -297,22 +298,22 @@ search_finished:
 	} else {
 		if(bIsValidIPv6)
 		{
-			s->m_szIp = d->szServer;
+			s->m_szIp = pDef->szServer;
 			s->setCacheIp(true);
-			d->bIPv6 = true;
+			pDef->bIPv6 = true;
 		}
 	}
 #else
 	}
 #endif
-	s->m_uPort = d->bPortIsValid ? d->uPort : 6667;
-	s->setLinkFilter(d->szLinkFilter);
-	s->m_szPass= d->szPass;
-	s->m_szNick= d->szNick;
+	s->m_uPort = pDef->bPortIsValid ? pDef->uPort : 6667;
+	s->setLinkFilter(pDef->szLinkFilter);
+	s->m_szPass = pDef->szPass;
+	s->m_szNick = pDef->szNick;
 	s->m_szInitUMode = d->szInitUMode;
-	s->setIPv6(d->bIPv6);
-	s->setUseSSL(d->bSSL);
-	s->setEnabledSTARTTLS(d->bSTARTTLS);
+	s->setIPv6(pDef->bIPv6);
+	s->setUseSSL(pDef->bSSL);
+	s->setEnabledSTARTTLS(pDef->bSTARTTLS);
 	r->insertServer(s);
 	m_szCurrentNetwork = r->name();
 	r->setCurrentServer(s);

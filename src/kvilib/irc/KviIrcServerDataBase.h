@@ -43,17 +43,17 @@
 */
 typedef struct _KviIrcServerDefinition
 {
-	QString            szServer;
-	kvi_u32_t          uPort;
-	bool               bPortIsValid;
-	bool               bIPv6;
-	bool               bSSL;
-	bool               bSTARTTLS;
-	QString            szLinkFilter;
-	QString            szPass;
-	QString            szNick;
-	QString            szInitUMode;
-	QString            szId;
+	QString   szServer;
+	kvi_u32_t uPort;
+	bool      bPortIsValid;
+	bool      bIPv6;
+	bool      bSSL;
+	bool      bSTARTTLS;
+	QString   szLinkFilter;
+	QString   szPass;
+	QString   szNick;
+	QString   szInitUMode;
+	QString   szId;
 } KviIrcServerDefinition;
 
 /**
@@ -75,7 +75,7 @@ public:
 	~KviIrcServerDataBase();
 private:
 	KviPointerHashTable<QString,KviIrcNetwork> * m_pRecords;
-	QString                                   m_szCurrentNetwork;
+	QString                                      m_szCurrentNetwork;
 	KviPointerList<KviIrcServer>               * m_pAutoConnectOnStartupServers;
 	KviPointerList<KviIrcNetwork>              * m_pAutoConnectOnStartupNetworks;
 public:
@@ -148,17 +148,17 @@ public:
 
 	/**
 	* \brief Adds a network to the database
-	* \param n The source network
+	* \param pNet The source network
 	* \return void
 	*/
-	void addNetwork(KviIrcNetwork * n);
+	void addNetwork(KviIrcNetwork * pNet);
 
 	/**
 	* \brief Searches for a network
-	* \param name The name of the network to find
+	* \param szName The name of the network to find
 	* \return KviIrcNetwork
 	*/
-	KviIrcNetwork * findNetwork(const QString & name);
+	KviIrcNetwork * findNetwork(const QString & szName);
 
 	/**
 	* \brief Returns the number of networks
@@ -168,17 +168,17 @@ public:
 
 	/**
 	* \brief Loads the database data
-	* \param filename The filename of the database data to load
+	* \param szFilename The filename of the database data to load
 	* \return void
 	*/
-	void load(const QString & filename);
+	void load(const QString & szFilename);
 
 	/**
 	* \brief Saves the database data
-	* \param filename The filename of the database data to save
+	* \param szFilename The filename of the database data to save
 	* \return void
 	*/
-	void save(const QString & filename);
+	void save(const QString & szFilename);
 
 	/**
 	* \brief Import servers and networks from a mirc ini file
@@ -191,20 +191,20 @@ public:
 
 	/**
 	* \brief Marks a server as current
-	* \param d The server definition
+	* \param pDef The server definition
 	* \param szError The container for a possible error
 	* \return bool
 	*/
-	bool makeCurrentServer(KviIrcServerDefinition * d, QString  & szError);
+	bool makeCurrentServer(KviIrcServerDefinition * pDef, QString & szError);
 
 	/**
 	* \brief Marks the current servers as the best in the network
 	* \param szNetName The name of the network
-	* \param d The source network
+	* \param pNet The source network
 	* \param szError The container for a possible error
 	* \return bool
 	*/
-	bool makeCurrentBestServerInNetwork(const QString & szNetName, KviIrcNetwork * d, QString & szError);
+	bool makeCurrentBestServerInNetwork(const QString & szNetName, KviIrcNetwork * pNet, QString & szError);
 };
 
 #endif //_KVI_IRCSERVERDB_H_
