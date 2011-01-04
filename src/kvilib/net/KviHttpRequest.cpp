@@ -113,7 +113,8 @@ void KviHttpRequest::resetInternalStatus()
 	m_p->pBuffer->clear();
 	m_bHeaderProcessed = false;
 
-	KviThreadManager::killPendingEvents(this);
+	//KviThreadManager::killPendingEvents(this);
+	//QApplication::removePostedEvents(this);
 }
 
 void KviHttpRequest::resetStatus()

@@ -27,9 +27,10 @@
 
 #include "kvi_settings.h"
 #include "KviHeapObject.h"
-#include "KviThread.h"
 #include "KviQString.h"
 #include "KviError.h"
+#include "KviPointerList.h"
+
 
 class KviDnsResolverThread;
 
@@ -84,6 +85,8 @@ protected:
 	void appendAddress(const QString & szAddr);
 };
 
+
+#include <QObject>
 
 
 class KVILIB_API KviDnsResolver : public QObject, public KviHeapObject
@@ -141,9 +144,37 @@ signals:
 // INTERNAL CLASSES
 //
 
-#define KVI_DNS_THREAD_EVENT_DATA (KVI_THREAD_USER_EVENT_BASE + 7432)
+#include <QThread>
+#include <QEvent>
 
-class KviDnsResolverThread : public KviThread
+#include "kvi_debug.h"
+
+class KviDnsResolverThreadEvent : public QEvent
+{
+private:
+	KviDnsResolverResult * m_pResult;
+public:
+	KviDnsResolverThreadEvent(KviDnsResolverResult * pResult)
+		: QEvent(QEvent::User), m_pResult(pResult)
+	{
+		KVI_ASSERT(pResult);
+	}
+	
+	virtual ~KviDnsResolverThreadEvent()
+	{
+		if(m_pResult)
+			delete m_pResult;
+	}
+public:
+	KviDnsResolverResult * releaseResult()
+	{
+		KviDnsResolverResult * pResult = m_pResult;
+		m_pResult = NULL;
+		return pResult;
+	}
+};
+
+class KviDnsResolverThread : public QThread
 {
 	friend class KviDnsResolver;
 protected:

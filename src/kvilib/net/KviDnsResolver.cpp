@@ -26,6 +26,8 @@
 #include "KviError.h"
 #include "KviNetUtils.h"
 
+#include <QApplication>
+
 #include <errno.h>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -86,6 +88,7 @@ void KviDnsResolverResult::appendAddress(const QString &addr)
 
 
 KviDnsResolverThread::KviDnsResolverThread(KviDnsResolver * pDns)
+	: QThread()
 {
 	m_pParentDns = pDns;
 }
@@ -133,9 +136,9 @@ KviError::Code KviDnsResolverThread::translateDnsError(int iErr)
 void KviDnsResolverThread::postDnsError(KviDnsResolverResult * pDns, KviError::Code error)
 {
 	pDns->setError(error);
-	KviThreadDataEvent<KviDnsResolverResult> * e = new KviThreadDataEvent<KviDnsResolverResult>(KVI_DNS_THREAD_EVENT_DATA);
-	e->setData(pDns);
-	postEvent(m_pParentDns,e);
+
+	KviDnsResolverThreadEvent * pEvent = new KviDnsResolverThreadEvent(pDns);
+	QApplication::postEvent(m_pParentDns,pEvent);
 }
 
 void KviDnsResolverThread::run()
@@ -339,10 +342,8 @@ void KviDnsResolverThread::run()
 
 #endif // !COMPILE_ON_WINDOWS
 
-
-	KviThreadDataEvent<KviDnsResolverResult> * e = new KviThreadDataEvent<KviDnsResolverResult>(KVI_DNS_THREAD_EVENT_DATA);
-	e->setData(dns);
-	postEvent(m_pParentDns,e);
+	KviDnsResolverThreadEvent * pEvent = new KviDnsResolverThreadEvent(dns);
+	QApplication::postEvent(m_pParentDns,pEvent);
 }
 
 
@@ -357,10 +358,15 @@ KviDnsResolver::KviDnsResolver()
 
 KviDnsResolver::~KviDnsResolver()
 {
-	if(m_pSlaveThread)delete m_pSlaveThread; // will eventually terminate it (but it will also block us!!!)
-	KviThreadManager::killPendingEvents(this);
-	if(m_pDnsResult)delete m_pDnsResult;
-	if(m_pAuxData)qDebug("You're leaking memory man! m_pAuxData is non 0!");
+	if(m_pSlaveThread)
+		delete m_pSlaveThread; // will eventually terminate it (but it will also block us!!!)
+		
+	//QApplication::removePostedEvents(this); // the Qt doc says that we shouldn't need this
+		
+	if(m_pDnsResult)
+		delete m_pDnsResult;
+	if(m_pAuxData)
+		qDebug("You're leaking memory man! m_pAuxData is non 0!");
 }
 
 bool KviDnsResolver::isRunning() const
@@ -373,9 +379,10 @@ bool KviDnsResolver::lookup(const QString &query,QueryType type)
 	if(m_state == Busy)
 		return false;
 	m_pSlaveThread->setQuery(KviQString::trimmed(query),type);
-	bool bStarted = m_pSlaveThread->start();
-	m_state = bStarted ? Busy : Failure;
-	return bStarted;
+	m_pSlaveThread->start();
+	m_state = Busy;
+	//m_state = bStarted ? Busy : Failure;
+	return true;
 }
 
 KviError::Code KviDnsResolver::error()
@@ -433,12 +440,13 @@ const QString & KviDnsResolver::query()
 
 bool KviDnsResolver::event(QEvent *e)
 {
-	if(e->type() == KVI_THREAD_EVENT)
+	if(e->type() == QEvent::User)
 	{
-		if(((KviThreadEvent *)e)->id() == KVI_DNS_THREAD_EVENT_DATA)
+		KviDnsResolverThreadEvent * pEvent = dynamic_cast<KviDnsResolverThreadEvent *>(e);
+		if(pEvent)
 		{
 			if(m_pDnsResult)delete m_pDnsResult;
-			m_pDnsResult = ((KviThreadDataEvent<KviDnsResolverResult> *)e)->getData();
+			m_pDnsResult = pEvent->releaseResult();
 			m_state = (m_pDnsResult->error() == KviError::Success) ? Success : Failure;
 			emit lookupDone(this);
 			return true;
