@@ -392,6 +392,12 @@ KviError::Code KviDnsResolver::error()
 	return m_pDnsResult->error();
 }
 
+const QString & KviDnsResolver::errorString()
+{
+	return KviError::getDescription(error());
+}
+
+
 KviDnsResolverResult * KviDnsResolver::result()
 {
 	if(!m_pDnsResult)

@@ -118,7 +118,12 @@ public:
 
 	// Results (return always non null-data..but valid results only if state() == Success or Failure)
 	KviError::Code error();
+	const QString & errorString();
 	const QString & firstHostname();
+	const QString & hostName()
+	{
+		return firstHostname();
+	}
 	const QString & firstIpAddress();
 	int hostnameCount();
 	int ipAddressCount();

@@ -259,7 +259,7 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDnsResolver *)
 {
 	if(m_pProxyDns->state() != KviDnsResolver::Success)
 	{
-		QString szErr = KviError::getDescription(m_pProxyDns->error());
+		QString szErr = m_pProxyDns->errorString();
 		m_pConsole->output(KVI_OUT_SYSTEMERROR,
 			__tr2qs("Can't find the proxy IP address: %Q"),
 				&szErr);
@@ -275,18 +275,6 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDnsResolver *)
 
 		m_pTarget->proxy()->m_szIp = m_pProxyDns->firstIpAddress();
 		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->m_szIp.toUtf8().data(),szFirstIpAddress.toUtf8().data());
-
-		if(m_pProxyDns->hostnameCount() > 1)
-		{
-			QString szFirstHostname = m_pProxyDns->firstHostname();
-
-			for(QString * addr = m_pProxyDns->hostnameList()->next();addr;addr = m_pProxyDns->hostnameList()->next())
-			{
-				if(!_OUTPUT_QUIET)
-					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-						__tr2qs("Proxy %Q has a nickname: %Q"),&szFirstHostname,addr);
-			}
-		}
 	}
 
 	delete m_pProxyDns;
@@ -371,7 +359,7 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 {
 	if(m_pServerDns->state() != KviDnsResolver::Success)
 	{
-		QString szErr = KviError::getDescription(m_pServerDns->error());
+		QString szErr = m_pServerDns->errorString();
 		m_pConsole->output(KVI_OUT_SYSTEMERROR,
 			__tr2qs("Can't find the server IP address: %Q"),
 				&szErr);
@@ -420,9 +408,9 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 			&szIpAddress);
 	m_pTarget->server()->setIp(szIpAddress);
 
-	QString szFirstHostname = m_pServerDns->firstHostname();
+	QString szFirstHostname = m_pServerDns->hostName();
 
-	if(!KviQString::equalCI(m_pTarget->server()->m_szHostname,m_pServerDns->firstHostname()))
+	if(!KviQString::equalCI(m_pTarget->server()->m_szHostname,m_pServerDns->hostName()))
 	{
 		if(!_OUTPUT_QUIET)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
@@ -433,17 +421,6 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 	}
 
 	m_pTarget->server()->m_szIp = szIpAddress;
-
-	if(m_pServerDns->hostnameCount() > 1)
-	{
-		for(QString * addr = m_pServerDns->hostnameList()->next();addr;addr = m_pServerDns->hostnameList()->next())
-		{
-			if(!_OUTPUT_QUIET)
-				m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-					__tr2qs("Server %Q has a nickname: %Q"),
-					&szFirstHostname,addr);
-		}
-	}
 
 	delete m_pServerDns;
 	m_pServerDns = 0;
