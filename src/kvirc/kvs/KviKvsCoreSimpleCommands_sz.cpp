@@ -23,10 +23,9 @@
 //=============================================================================
 
 #include "KviKvsCoreSimpleCommands.h"
-
 #include "KviKvsPopupManager.h"
 #include "KviKvsScript.h"
-
+#include "KviIrcServerReconnectInfo.h"
 #include "KviIrcConnection.h"
 #include "KviConsoleWindow.h"
 #include "KviLocale.h"
@@ -36,9 +35,10 @@
 #include "KviNetUtils.h"
 #include "KviMenuBar.h"
 #include "KviUserInput.h"
-#include "kvi_out.h"
 #include "KviChannelWindow.h"
 #include "KviQueryWindow.h"
+#include "kvi_out.h"
+
 #include <cstdlib>
 
 namespace KviKvsCoreSimpleCommands

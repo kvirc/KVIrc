@@ -29,11 +29,6 @@
 * \file KviIrcServer.h
 * \author Szymon Stefanek
 * \brief Irc server handling
-* \def KVI_IRCSERVER_FLAG_IPV6 Defines if the server uses IPv6
-* \def KVI_IRCSERVER_FLAG_CACHEIP Defines if the server caches the IP
-* \def KVI_IRCSERVER_FLAG_SSL Defines if the server uses SSL
-* \def KVI_IRCSERVER_FLAG_STARTTLS Defines if the server can use STARTTLS
-* \def KVI_IRCSERVER_FLAG_SASL Defines if the server can use SASL
 */
 
 #include "kvi_settings.h"
@@ -47,47 +42,7 @@ class KviConfigurationFile;
 class KviNickServRuleSet;
 class KviProxy;
 class KviProxyDataBase;
-class KviIrcServer;
-
-#define KVI_IRCSERVER_FLAG_IPV6 1
-#define KVI_IRCSERVER_FLAG_CACHEIP 2
-#define KVI_IRCSERVER_FLAG_SSL 4
-#define KVI_IRCSERVER_FLAG_STARTTLS 8
-#define KVI_IRCSERVER_FLAG_SASL 16
-#define KVI_IRCSERVER_FLAG_CAP 32
-
-/**
-* \class KviIrcServerReconnectInfo
-* \brief A class for reconnecting purposes
-*/
-class KVILIB_API KviIrcServerReconnectInfo
-{
-public:
-	/**
-	* \brief Constructs the server reconnect info object
-	* \return KviIrcServerReconnectInfo
-	*/
-	KviIrcServerReconnectInfo();
-
-	/**
-	* \brief Carbon copy
-	* \param info The object to copy the info from
-	* \return KviIrcServerReconnectInfo
-	*/
-	KviIrcServerReconnectInfo(const KviIrcServerReconnectInfo & info);
-
-	/**
-	* \brief Destroys the server reconnect info object
-	*/
-	~KviIrcServerReconnectInfo();
-public:
-	QString               m_szNick;
-	QString               m_szPass;
-	QString               m_szAwayReason;
-	QString               m_szJoinChannels;
-	QStringList           m_szOpenQueryes;
-	bool                  m_bIsAway;
-};
+class KviIrcServerReconnectInfo;
 
 /**
 * \class KviIrcServer
@@ -96,6 +51,19 @@ public:
 class KVILIB_API KviIrcServer : public KviHeapObject
 {
 public:
+	/**
+	* \enum Flags
+	* \brief Contains the features supported by the server
+	*/
+	enum Flags {
+		IPv6     =  1,   /**< IPv6 support */
+		CacheIP  =  2,   /**< whether we cache the server's IP */
+		SSL      =  4,   /**< SSL support */
+		STARTTLS =  8,   /**< STARTTLS support */
+		SASL     = 16,   /**< SASL support */
+		CAP      = 32    /**< CAP support */
+	};
+
 	/**
 	* \brief Constructs the server object
 	* \return KviIrcServer
@@ -115,33 +83,30 @@ public:
 	~KviIrcServer();
 public:
 	KviIrcServerReconnectInfo * m_pReconnectInfo;
-	QString            m_szHostname;          // the server hostname (or ip eventually)
-	QString            m_szIp;                // the server's cached ip (if we're caching)
-	QString            m_szDescription;       // the server description
-	kvi_u32_t          m_uPort;               // the server's port
-	unsigned short int m_uFlags;              // flags
+	QString                     m_szHostname;      /**< the server hostname (or IP eventually) */
+	QString                     m_szIp;            /**< the server's cached ip (if we're caching) */
+	QString                     m_szDescription;   /**< the server description */
+	kvi_u32_t                   m_uPort;           /**< the server's port */
+	unsigned short int          m_uFlags;          /**< flags */
 
 	// Extended data
-	QString            m_szUserIdentityId;    // The user identity to use for this server: if empty
-	                                          // Then use the network identity instead
-
-	QString            m_szUser;              // special username
-	QString            m_szPass;              // special password
-	QString            m_szNick;              // special nickname
-	QString            m_szRealName;          // special real name
-	QString            m_szInitUMode;         // special user mode
-	QString            m_szOnConnectCommand;  // the command to run on connect
-	QString            m_szOnLoginCommand;    // the command to run after login
-	QString            m_szLinkFilter;        // the link filter object
-	QString            m_szEncoding;          // if empty, use network encoding
-	QString            m_szTextEncoding;      // if empty, use network encoding
-	QStringList      * m_pAutoJoinChannelList;        // Channels to auto join
-	bool               m_bAutoConnect;        // autoconnect
-	QString            m_szId;                // the server's may-be-unique id, may be auto-generated
-	int                m_iProxy;              // proxy server's id
-	QString            m_szSaslNick;          // nickname for sasl auth
-	QString            m_szSaslPass;          // password for sasl auth
-
+	QString                     m_szUserIdentityId;       /**< the user identity to use for this server: if empty, then use the network identity instead */
+	QString                     m_szUser;                 /**< special username */
+	QString                     m_szPass;                 /**< special password */
+	QString                     m_szNick;                 /**< special nickname */
+	QString                     m_szRealName;             /**< special real name */
+	QString                     m_szInitUMode;            /**< special user mode */
+	QString                     m_szOnConnectCommand;     /**< the command to run on connect */
+	QString                     m_szOnLoginCommand;       /**< the command to run after login */
+	QString                     m_szLinkFilter;           /**< the link filter object */
+	QString                     m_szEncoding;             /**< if empty, use network encoding */
+	QString                     m_szTextEncoding;         /**< if empty, use network encoding */
+	QStringList               * m_pAutoJoinChannelList;   /**< Channels to auto join */
+	bool                        m_bAutoConnect;           /**< autoconnect */
+	QString                     m_szId;                   /**< the server's may-be-unique id, may be auto-generated */
+	int                         m_iProxy;                 /**< proxy server's id */
+	QString                     m_szSaslNick;             /**< nickname for sasl auth */
+	QString                     m_szSaslPass;             /**< password for sasl auth */
 public:
 	/**
 	* \brief Returns the proxy server's id
@@ -229,7 +194,7 @@ public:
 	inline const QString & realName() const { return m_szRealName; };
 
 	/**
-	* \brief
+	* \brief Returns the filter applied on the server
 	* \return const QString &
 	*/
 	inline const QString & linkFilter() const { return m_szLinkFilter; };
@@ -289,37 +254,37 @@ public:
 	* \brief Returns true if the server uses IPv6
 	* \return bool
 	*/
-	inline bool isIPv6() const { return (m_uFlags & KVI_IRCSERVER_FLAG_IPV6); };
+	inline bool isIPv6() const { return (m_uFlags & KviIrcServer::IPv6); };
 
 	/**
 	* \brief Returns true if the server uses SSL
 	* \return bool
 	*/
-	inline bool useSSL() const { return (m_uFlags & KVI_IRCSERVER_FLAG_SSL); };
+	inline bool useSSL() const { return (m_uFlags & KviIrcServer::SSL); };
 
 	/**
 	* \brief Returns true if the CAP protocol is enabled for this server
 	* \return bool
 	*/
-	inline bool enabledCAP() const { return (m_uFlags & KVI_IRCSERVER_FLAG_CAP); };
+	inline bool enabledCAP() const { return (m_uFlags & KviIrcServer::CAP); };
 
 	/**
 	* \brief Returns true if the STARTTLS protocol is enabled for this server
 	* \return bool
 	*/
-	inline bool enabledSTARTTLS() const { return (m_uFlags & KVI_IRCSERVER_FLAG_STARTTLS); };
+	inline bool enabledSTARTTLS() const { return (m_uFlags & KviIrcServer::STARTTLS); };
 
 	/**
 	* \brief Returns true if the SASL protocol is enabled for this server
 	* \return bool
 	*/
-	inline bool enabledSASL() const { return (m_uFlags & KVI_IRCSERVER_FLAG_SASL); };
+	inline bool enabledSASL() const { return (m_uFlags & KviIrcServer::SASL); };
 
 	/**
 	* \brief Returns true if the server caches the IP
 	* \return bool
 	*/
-	inline bool cacheIp() const { return (m_uFlags & KVI_IRCSERVER_FLAG_CACHEIP); };
+	inline bool cacheIp() const { return (m_uFlags & KviIrcServer::CacheIP); };
 
 	/**
 	* \brief Returns the irc URI for the server
@@ -445,7 +410,7 @@ public:
 	inline void setOnLoginCommand(const QString & szCmd){ m_szOnLoginCommand = szCmd; };
 
 	/**
-	* \brief
+	* \brief Sets the filter
 	* \param szFilter
 	* \return void
 	*/
@@ -471,7 +436,7 @@ public:
 	* \param bAutoConnect Whether to set the autoconnection
 	* \return void
 	*/
-	inline void setAutoConnect(bool bAutoConnect) { m_bAutoConnect = bAutoConnect; };
+	inline void setAutoConnect(bool bAutoConnect){ m_bAutoConnect = bAutoConnect; };
 
 	/**
 	* \brief Sets the id of the user associated to the server
@@ -487,8 +452,10 @@ public:
 	*/
 	inline void setIPv6(bool bSet)
 	{
-		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_IPV6;
-		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_IPV6);
+		if(bSet)
+			m_uFlags |= KviIrcServer::IPv6;
+		else
+			m_uFlags &= ((unsigned short)~KviIrcServer::IPv6);
 	};
 
 	/**
@@ -498,8 +465,10 @@ public:
 	*/
 	inline void setUseSSL(bool bSet)
 	{
-		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_SSL;
-		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_SSL);
+		if(bSet)
+			m_uFlags |= KviIrcServer::SSL;
+		else
+			m_uFlags &= ((unsigned short)~KviIrcServer::SSL);
 	};
 
 	/**
@@ -509,8 +478,10 @@ public:
 	*/
 	inline void setEnabledSTARTTLS(bool bSet)
 	{
-		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_STARTTLS;
-		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_STARTTLS);
+		if(bSet)
+			m_uFlags |= KviIrcServer::STARTTLS;
+		else
+			m_uFlags &= ((unsigned short)~KviIrcServer::STARTTLS);
 	};
 
 	/**
@@ -520,8 +491,10 @@ public:
 	*/
 	inline void setEnabledCAP(bool bSet)
 	{
-		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_CAP;
-		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_CAP);
+		if(bSet)
+			m_uFlags |= KviIrcServer::CAP;
+		else
+			m_uFlags &= ((unsigned short)~KviIrcServer::CAP);
 	};
 
 	/**
@@ -531,8 +504,10 @@ public:
 	*/
 	inline void setEnabledSASL(bool bSet)
 	{
-		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_SASL;
-		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_SASL);
+		if(bSet)
+			m_uFlags |= KviIrcServer::SASL;
+		else
+			m_uFlags &= ((unsigned short)~KviIrcServer::SASL);
 	};
 
 	/**
@@ -542,8 +517,10 @@ public:
 	*/
 	inline void setCacheIp(bool bSet)
 	{
-		if(bSet) m_uFlags |= KVI_IRCSERVER_FLAG_CACHEIP;
-		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_CACHEIP);
+		if(bSet)
+			m_uFlags |= KviIrcServer::CacheIP;
+		else
+			m_uFlags &= ((unsigned short)~KviIrcServer::CacheIP);
 	};
 
 	/**
@@ -561,26 +538,26 @@ public:
 
 	/**
 	* \brief Loads the information from the configuration file
-	* \param cfg The configuration file
+	* \param pCfg The configuration file
 	* \param szPrefix The prefix of the server
 	* \return bool
 	*/
-	bool load(KviConfigurationFile * cfg, const QString & szPrefix);
+	bool load(KviConfigurationFile * pCfg, const QString & szPrefix);
 
 	/**
 	* \brief Saves the information to the configuration file
-	* \param cfg The configuration file
+	* \param pCfg The configuration file
 	* \param szPrefix The prefix of the server
 	* \return void
 	*/
-	void save(KviConfigurationFile * cfg, const QString & szPrefix);
+	void save(KviConfigurationFile * pCfg, const QString & szPrefix);
 
 	/**
 	* \brief Carbon copy
-	* \param s The server to copy
+	* \param serv The server to copy
 	* \return void
 	*/
-	void operator=(const KviIrcServer & s);
+	void operator=(const KviIrcServer & serv);
 };
 
 #endif //_KVI_IRCSERVER_H_

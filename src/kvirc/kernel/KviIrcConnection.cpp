@@ -40,6 +40,7 @@
 #include "KviIrcSocket.h"
 #include "KviLocale.h"
 #include "KviIrcServerDataBase.h"
+#include "KviIrcServerReconnectInfo.h"
 #include "KviProxyDataBase.h"
 #include "KviError.h"
 #include "kvi_out.h"

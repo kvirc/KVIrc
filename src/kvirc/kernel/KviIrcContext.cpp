@@ -23,14 +23,13 @@
 //=============================================================================
 
 
-
+#include "kvi_debug.h"
+#include "kvi_out.h"
 #include "KviIrcContext.h"
 #include "KviConsoleWindow.h"
 #include "KviChannelWindow.h"
 #include "KviQueryWindow.h"
 #include "KviMainWindow.h"
-#include "kvi_debug.h"
-#include "KviIrcServerParser.h"
 #include "KviIrcLink.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionTarget.h"
@@ -39,8 +38,9 @@
 #include "KviIrcConnectionUserInfo.h"
 #include "KviIrcConnectionRequestQueue.h"
 #include "KviIrcToolBar.h"
-#include "kvi_out.h"
 #include "KviIrcServerDataBase.h"
+#include "KviIrcServerReconnectInfo.h"
+#include "KviIrcServerParser.h"
 #include "KviProxyDataBase.h"
 #include "KviOptions.h"
 #include "KviLocale.h"

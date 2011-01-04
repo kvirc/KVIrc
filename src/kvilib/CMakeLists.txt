@@ -100,6 +100,7 @@ SET(kvilib_SRCS
 	irc/KviIrcMask.cpp
 	irc/KviIrcServer.cpp
 	irc/KviIrcServerDataBase.cpp
+	irc/KviIrcServerReconnectInfo.cpp
 	irc/KviIrcUserDataBase.cpp
 	irc/KviMircCntrl.cpp
 	irc/KviIrcNetwork.cpp

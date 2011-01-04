@@ -1,10 +1,10 @@
 //=============================================================================
 //
-//   File : KviAsynchronousConnectionData.cpp
-//   Creation date : Sun 04 Jul 2004 16:22:25 by Szymon Stefanek
+//   File : KviIrcServerReconnectInfo.h
+//   Creation date : Tue Jan 04 2010 21:44:11 by Elvio Basello
 //
-//   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2010 Szymon Stefanek <pragma at kvirc dot net>
+//   This file is part of the KVIrc irc client distribution
+//   Copyright (C) 2010 Elvio Basello (hellvis69 at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,19 +22,23 @@
 //
 //=============================================================================
 
-#include "KviAsynchronousConnectionData.h"
 #include "KviIrcServerReconnectInfo.h"
 
-KviAsynchronousConnectionData::KviAsynchronousConnectionData()
-: KviHeapObject()
+KviIrcServerReconnectInfo::KviIrcServerReconnectInfo()
 {
-	m_pReconnectInfo=0;
-	bUseLastServerInContext = false;
+	m_bIsAway = false;
 }
 
-KviAsynchronousConnectionData::~KviAsynchronousConnectionData()
+KviIrcServerReconnectInfo::~KviIrcServerReconnectInfo()
 {
-	if(m_pReconnectInfo)
-		delete m_pReconnectInfo;
 }
 
+KviIrcServerReconnectInfo::KviIrcServerReconnectInfo(const KviIrcServerReconnectInfo & info)
+{
+	m_szNick         = info.m_szNick;
+	m_szPass         = info.m_szPass;
+	m_szAwayReason   = info.m_szAwayReason;
+	m_szJoinChannels = info.m_szJoinChannels;
+	m_szOpenQueryes  = info.m_szOpenQueryes;
+	m_bIsAway        = info.m_bIsAway;
+}
