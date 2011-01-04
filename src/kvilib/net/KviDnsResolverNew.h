@@ -32,7 +32,7 @@
 
 // However at present time (04.01.2010) QHostInfo doesn't seem to support
 // IPv6. Despite the documentation saying that IPv6 addresses are supported
-// the query performed by QHostInfo::lookupHost() ask only for the A record.
+// the query performed by QHostInfo::lookupHost() asks only for the A record.
 //
 // Check it again with newer Qt versions and verify.
 

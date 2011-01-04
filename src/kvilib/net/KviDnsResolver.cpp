@@ -392,7 +392,7 @@ KviError::Code KviDnsResolver::error()
 	return m_pDnsResult->error();
 }
 
-const QString & KviDnsResolver::errorString()
+QString KviDnsResolver::errorString()
 {
 	return KviError::getDescription(error());
 }
