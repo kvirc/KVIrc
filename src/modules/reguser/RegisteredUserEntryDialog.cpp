@@ -76,7 +76,7 @@ RegisteredUserPropertiesDialog::RegisteredUserPropertiesDialog(QWidget * p,KviPo
 	m_pPropertyDict = dict;
 
 	setWindowTitle(__tr2qs_ctx("Property Editor","register"));
-	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Linux)));
 
 	QGridLayout * g = new QGridLayout(this);
 
@@ -101,11 +101,11 @@ RegisteredUserPropertiesDialog::RegisteredUserPropertiesDialog(QWidget * p,KviPo
 
 	m_pAddButton = new QPushButton(__tr2qs_ctx("&New","register"),vb);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
-	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
+	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItem)));
 
 	m_pDelButton = new QPushButton(__tr2qs_ctx("&Remove","register"),vb);
 	connect(m_pDelButton,SIGNAL(clicked()),this,SLOT(delClicked()));
-	m_pDelButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
+	m_pDelButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::DeleteItem)));
 
 	KviTalHBox * b = new KviTalHBox(this);
 	b->setSpacing(4);
@@ -113,11 +113,11 @@ RegisteredUserPropertiesDialog::RegisteredUserPropertiesDialog(QWidget * p,KviPo
 	g->addWidget(b,1,1);
 	QPushButton * pb = new QPushButton(__tr2qs_ctx("&OK","register"),b);
 	connect(pb,SIGNAL(clicked()),this,SLOT(okClicked()));
-	pb->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	pb->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 
 	pb = new QPushButton(__tr2qs_ctx("Cancel","register"),b);
 	connect(pb,SIGNAL(clicked()),this,SLOT(reject()));
-	pb->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	pb->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)));
 
 	g->setRowStretch(1,1);
 	g->setColumnStretch(0,1);
@@ -316,7 +316,7 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 
 	//setMinimumSize(400,450);
 
-	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Linux)));
 	setWindowTitle(__tr2qs_ctx("Registered User Entry","register"));
 
 	QWidget * p1 = new QWidget(this);
@@ -354,17 +354,17 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget *p,KviRegisteredUse
 
 	m_pAddMaskButton = new QPushButton(__tr2qs_ctx("&Add...","register"),b);
 	connect(m_pAddMaskButton,SIGNAL(clicked()),this,SLOT(addMaskClicked()));
-	m_pAddMaskButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
+	m_pAddMaskButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItem)));
 
 	m_pDelMaskButton = new QPushButton(__tr2qs_ctx("Re&move","register"),b);
 	m_pDelMaskButton->setEnabled(false);
 	connect(m_pDelMaskButton,SIGNAL(clicked()),this,SLOT(delMaskClicked()));
-	m_pDelMaskButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
+	m_pDelMaskButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::DeleteItem)));
 
 	m_pEditMaskButton = new QPushButton(__tr2qs_ctx("&Edit","register"),b);
 	m_pEditMaskButton->setEnabled(false);
 	connect(m_pEditMaskButton,SIGNAL(clicked()),this,SLOT(editMaskClicked()));
-	m_pEditMaskButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EDITITEM)));
+	m_pEditMaskButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::EditItem)));
 
 	g->setRowStretch(4,1);
 	g->setColumnStretch(1,1);

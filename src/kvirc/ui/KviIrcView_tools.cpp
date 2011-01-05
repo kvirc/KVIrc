@@ -100,7 +100,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 	gl->addWidget(l,0,0);
 
 	QPushButton *tb = new QPushButton(this);
-	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE))));
+	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Close))));
 	tb->setObjectName("down_arrow");
 	tb->setFixedSize(16,16);
 	tb->setAutoRepeat(false);

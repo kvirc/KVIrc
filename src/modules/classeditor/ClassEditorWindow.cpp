@@ -104,9 +104,9 @@ ClassEditorTreeWidgetItem::ClassEditorTreeWidgetItem(QTreeWidget * pTreeWidget, 
 	QPixmap * pIcon       = 0;
 	
 	if(eType == ClassEditorTreeWidgetItem::Namespace)
-		pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE);
+		pIcon = g_pIconManager->getSmallIcon(KviIconManager::NameSpace);
 	else
-		pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS);
+		pIcon = g_pIconManager->getSmallIcon(KviIconManager::Class);
 
 	setIcon(0,QIcon(*pIcon));
 }
@@ -123,11 +123,11 @@ ClassEditorTreeWidgetItem::ClassEditorTreeWidgetItem(ClassEditorTreeWidgetItem *
 	QPixmap * pIcon       = 0;
 	
 	if(eType == ClassEditorTreeWidgetItem::Namespace)
-		pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE);
+		pIcon = g_pIconManager->getSmallIcon(KviIconManager::NameSpace);
 	else if(eType == ClassEditorTreeWidgetItem::Class)
-		pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS);
+		pIcon = g_pIconManager->getSmallIcon(KviIconManager::Class);
 	else
-		pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_FUNCTION);
+		pIcon = g_pIconManager->getSmallIcon(KviIconManager::Function);
 	
 	setIcon(0,QIcon(*pIcon));
 }
@@ -138,9 +138,9 @@ void ClassEditorTreeWidgetItem::setClassNotBuilt(bool bModified)
 	QPixmap * pIcon = 0;
 	
 	if(bModified)
-		pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASSNOTBUILT);
+		pIcon = g_pIconManager->getSmallIcon(KviIconManager::ClassNotBuilt);
 	else
-		pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS);
+		pIcon = g_pIconManager->getSmallIcon(KviIconManager::Class);
 	
 	setIcon(0,QIcon(*pIcon));
 }
@@ -157,11 +157,11 @@ void ClassEditorTreeWidgetItem::setType(Type eType)
 	QPixmap * pIcon = 0;
 	
 	if(eType == ClassEditorTreeWidgetItem::Namespace)
-		pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE);
+		pIcon = g_pIconManager->getSmallIcon(KviIconManager::NameSpace);
 	else if(eType == ClassEditorTreeWidgetItem::Class)
-		pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS);
+		pIcon = g_pIconManager->getSmallIcon(KviIconManager::Class);
 	else
-		pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_FUNCTION);
+		pIcon = g_pIconManager->getSmallIcon(KviIconManager::Function);
 	
 	setIcon(0,QIcon(*pIcon));
 }
@@ -881,7 +881,7 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
 
 	int iId;
 	iId = m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::NameSpace)),
 		__tr2qs_ctx("Add Namespace","editor"),
 		this,SLOT(newNamespace()));
 	if(!m_pLastClickedItem)
@@ -890,7 +890,7 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
 		m_pContextPopup->setItemEnabled(iId,m_pLastClickedItem->isNamespace());
 
 	iId = m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASS)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Class)),
 		__tr2qs_ctx("Add Class","editor"),
 		this,SLOT(newClass()));
 	if(!m_pLastClickedItem)
@@ -899,7 +899,7 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
 		m_pContextPopup->setItemEnabled(iId,m_pLastClickedItem->isNamespace());
 
 	iId = m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FUNCTION)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Function)),
 		__tr2qs_ctx("Add Member Function","editor"),
 		this,SLOT(newMemberFunction()));
 	if(!m_pLastClickedItem)
@@ -913,7 +913,7 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
 	m_pContextPopup->insertSeparator();
 
 	iId = m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),
 		__tr2qs_ctx("Remove Selected","editor"),
 		this,SLOT(removeSelectedItems()));
 	m_pContextPopup->setItemEnabled(iId,bHasSelected);
@@ -921,20 +921,20 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
 	m_pContextPopup->insertSeparator();
 
 	m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 		__tr2qs_ctx("Export Selected...","editor"),
 		this,SLOT(exportSelected()));
 	m_pContextPopup->setItemEnabled(iId,bHasSelected);
 
 	m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 		__tr2qs_ctx("Export Selected in singles files...","editor"),
 		this,SLOT(exportSelectedSepFiles()));
 
 	m_pContextPopup->setItemEnabled(iId,bHasSelected);
 
 	m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 			__tr2qs_ctx("Export All...","editor"),
 			this,SLOT(exportAll()));
 	m_pContextPopup->setItemEnabled(iId,bHasItems);
@@ -942,13 +942,13 @@ void ClassEditorWidget::customContextMenuRequested(QPoint pnt)
 	m_pContextPopup->insertSeparator();
 
 	m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Search)),
 			__tr2qs_ctx("Find In Classes...","editor"),
 			this,SLOT(slotFind()));
 	m_pContextPopup->setItemEnabled(iId,bHasItems);
 
 	m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::NameSpace)),
 			__tr2qs_ctx("Collapse All Items","editor"),
 			this,SLOT(slotCollapseItems()));
 
@@ -1828,17 +1828,17 @@ ClassEditorWindow::ClassEditorWindow(KviMainWindow * pFrm)
 	pLayout->addWidget(m_pEditor,0,0,1,4);
 
 	QPushButton * pBtn = new QPushButton(__tr2qs_ctx("&Build","editor"),this);
-	pBtn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	pBtn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 	pLayout->addWidget(pBtn,1,1);
 	connect(pBtn,SIGNAL(clicked()),this,SLOT(buildClicked()));
 
 	pBtn = new QPushButton(__tr2qs_ctx("&Save","editor"),this);
-	pBtn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	pBtn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 	pLayout->addWidget(pBtn,1,2);
 	connect(pBtn,SIGNAL(clicked()),this,SLOT(saveClicked()));
 
 	pBtn = new QPushButton(__tr2qs_ctx("Close","editor"),this);
-	pBtn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	pBtn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)));
 	pLayout->addWidget(pBtn,1,3);
 	connect(pBtn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 
@@ -1869,7 +1869,7 @@ void ClassEditorWindow::cancelClicked()
 
 QPixmap * ClassEditorWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_CLASSEDITOR);
+	return g_pIconManager->getSmallIcon(KviIconManager::ClassEditor);
 }
 
 void ClassEditorWindow::configGroupName(QString &szName)

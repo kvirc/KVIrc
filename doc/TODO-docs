@@ -364,7 +364,7 @@ videoinput.h
   KviKvs.cpp
   KviKvs.h
   KviKvsAction.cpp
-  KviKvsAction.h
+++KviKvsAction.h
   KviKvsAliasManager.cpp
   KviKvsAliasManager.h
   KviKvsArray.cpp
@@ -744,8 +744,8 @@ videoinput.h
   KviWindow.h
   KviWindowListBase.cpp
   KviWindowListBase.h
-  KviWindowToolWidget.cpp
-  KviWindowToolWidget.h
+++KviWindowToolWidget.cpp
++ KviWindowToolWidget.h
 
 
 #################
@@ -1200,8 +1200,8 @@ videoinput.h
 # modules/options #
 ###################
 
-  OptionsInstanceManager.cpp
-  OptionsInstanceManager.h
+++OptionsInstanceManager.cpp
++ OptionsInstanceManager.h
   OptionsWidgetContainer.cpp
   OptionsWidgetContainer.h
   OptionsWidget_alertsAndHighlighting.cpp
@@ -1438,9 +1438,9 @@ videoinput.h
 # modules/socketspy #
 #####################
 
+  SocketSpyWindow.cpp
+  SocketSpyWindow.h
   libkvisocketspy.cpp
-  socketspywindow.cpp
-  socketspywindow.h
 
 
 ##################

@@ -54,7 +54,7 @@
 
 	QPixmap * TermWindow::myIconPtr()
 	{
-		return g_pIconManager->getSmallIcon(KVI_SMALLICON_RAW);
+		return g_pIconManager->getSmallIcon(KviIconManager::Raw);
 	}
 
 	void TermWindow::resizeEvent(QResizeEvent *)

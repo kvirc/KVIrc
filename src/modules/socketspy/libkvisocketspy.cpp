@@ -21,7 +21,7 @@
 //
 //=============================================================================
 
-#include "socketspywindow.h"
+#include "SocketSpyWindow.h"
 
 #include "KviModule.h"
 #include "KviMainWindow.h"

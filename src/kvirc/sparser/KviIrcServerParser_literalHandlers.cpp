@@ -926,7 +926,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 						iFlags |= KviConsoleWindow::NoNotifier;
 						QString szMsg = Qt::escape(szMsgText);
 						//qDebug("KviIrcServerParser_literalHandlers.cpp:908 debug: %s",szMsgText.data());
-						g_pApp->notifierMessage(query,KVI_SMALLICON_QUERYPRIVMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+						g_pApp->notifierMessage(query,KviIconManager::QueryPrivMsg,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 					}
 				}
 
@@ -1291,7 +1291,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 						iFlags |= KviConsoleWindow::NoNotifier;
 						QString szMsg = Qt::escape(szMsgText);
 						//qDebug("KviIrcServerParser_literalHandlers.cpp:1262 debug: %s",szMsgText.data());
-						g_pApp->notifierMessage(query,KVI_SMALLICON_QUERYNOTICE,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+						g_pApp->notifierMessage(query,KviIconManager::QueryNotice,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 					}
 				}
 

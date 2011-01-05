@@ -26,7 +26,7 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_antispam KVI_SMALLICON_SPAM
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_antispam KviIconManager::Spam
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_antispam __tr2qs_no_lookup("Anti-spam")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_antispam OptionsWidget_protection
 

@@ -73,7 +73,7 @@
 		QGridLayout * pLayout = new QGridLayout(this);
 
 		QLabel * pLabel = new QLabel(this);
-		pLabel->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LOCKED)));
+		pLabel->setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Locked)));
 		pLayout->addWidget(pLabel,0,0);
 		pLabel = new QLabel(__tr2qs("Cryptography/text transformation"),this);
 		pLayout->addWidget(pLabel,0,1,1,3);

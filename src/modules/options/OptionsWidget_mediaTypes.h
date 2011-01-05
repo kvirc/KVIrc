@@ -26,8 +26,8 @@
 
 #include "KviOptionsWidget.h"
 #include "KviMediaManager.h"
-#include <QTreeWidget>
 
+#include <QTreeWidget>
 #include <QLineEdit>
 #include <QPushButton>
 
@@ -44,7 +44,7 @@ public:
 	const KviMediaType * mydata(){ return &m_data; };
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_mediaTypes KVI_SMALLICON_FILE
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_mediaTypes KviIconManager::File
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_mediaTypes __tr2qs_no_lookup("Media Types")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_mediaTypes OptionsWidget_general
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_mediaTypes __tr2qs_no_lookup("file,audio,video,programs")

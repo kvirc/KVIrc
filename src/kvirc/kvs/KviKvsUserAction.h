@@ -55,26 +55,26 @@ public:
 	// instead of the new operator.
 	// See KviHeapObject.cpp for an explaination.
 	static KviKvsUserAction * createInstance(
-			QObject * pParent,
-			const QString &szName,
-			const QString &szScriptCode,
-			const QString &szVisibleNameCode,
-			const QString &szDescriptionCode,
-			const QString &szCategory,
-			const QString &szBigIconId,
-			const QString &szSmallIconId,
-			unsigned int uFlags,
-			const QString &szKeySequence = QString()
-		);
+		QObject * pParent,
+		const QString & szName,
+		const QString & szScriptCode,
+		const QString & szVisibleNameCode,
+		const QString & szDescriptionCode,
+		const QString & szCategory,
+		const QString & szBigIconId,
+		const QString & szSmallIcon,
+		unsigned int uFlags,
+		const QString & szKeySequence = QString()
+	);
 	void suicide() { delete this; };
 protected:
-	QString m_szCategory;
+	QString        m_szCategory;
 	KviKvsScript * m_pDescriptionScript;
 	KviKvsScript * m_pVisibleNameScript;
 protected:
 	virtual bool isKviUserActionNeverOverrideThis();
-	bool load(KviConfigurationFile * cfg);
-	void save(KviConfigurationFile * cfg);
+	bool load(KviConfigurationFile * pCfg);
+	void save(KviConfigurationFile * pCfg);
 public:
 	virtual const QString & visibleName();
 	virtual const QString & description();
@@ -82,19 +82,18 @@ public:
 	const QString & descriptionCode();
 	const QString & category(){ return m_szCategory; };
 	static void exportToKvs(
-			QString &szBuffer,
-			const QString &szName,
-			const QString &szScriptCode,
-			const QString &szVisibleName,
-			const QString &szDescription,
-			const QString &szCategory,
-			const QString &szBigIcon,
-			const QString &szSmallIcon,
-			unsigned int uFlags,
-			const QString &szKeySequence
-		);
-	void exportToKvs(QString &szBuffer);
+		QString & szBuffer,
+		const QString & szName,
+		const QString & szScriptCode,
+		const QString & szVisibleName,
+		const QString & szDescription,
+		const QString & szCategory,
+		const QString & szBigIcon,
+		const QString & szSmallIcon,
+		unsigned int uFlags,
+		const QString & szKeySequence
+	);
+	void exportToKvs(QString & szBuffer);
 };
 
-
-#endif //!_KVI_KVS_USERACTION_H_
+#endif // _KVI_KVS_USERACTION_H_

@@ -57,8 +57,8 @@ public:
 public:
 	void setEnabled(bool bEnabled)
 	{
-		if (bEnabled) setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENT)));
-			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENTNOHANDLERS)));
+		if (bEnabled) setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KviIconManager::RawEvent)));
+			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KviIconManager::RawEventNoHandlers)));
 			((RawTreeWidget*)treeWidget())->updateItem(this);
 	};
 };
@@ -76,8 +76,8 @@ public:
 public:
 	void setEnabled(bool bEnabled)
 	{
-		if (bEnabled) setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLER)));
-			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLERDISABLED)));
+		if (bEnabled) setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Handler)));
+			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)));
 			((RawTreeWidget*)treeWidget())->updateItem(this);
 	};
 	QString m_szBuffer;

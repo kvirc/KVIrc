@@ -1,12 +1,12 @@
 # CMakeLists for src/modules/socketspy
 
 SET(kvisocketspy_MOC_HDRS
-	socketspywindow.h
+	SocketSpyWindow.h
 )
 
 SET(kvisocketspy_SRCS
 	libkvisocketspy.cpp
-	socketspywindow.cpp
+	SocketSpyWindow.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

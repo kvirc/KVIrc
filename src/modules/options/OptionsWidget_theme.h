@@ -29,7 +29,7 @@
 #include "KviSelectors.h"
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_theme KVI_SMALLICON_GUI
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_theme KviIconManager::Gui
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_theme __tr2qs_no_lookup("General")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_theme __tr2qs_no_lookup("theme")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_theme "theme"
@@ -44,7 +44,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeTransparency KVI_SMALLICON_TRANSPARENT
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeTransparency KviIconManager::Transparent
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeTransparency __tr2qs_no_lookup("Transparency")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeTransparency __tr2qs_no_lookup("theme,background")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeTransparency "theme"
@@ -70,7 +70,7 @@ protected slots:
 	void enableGlobalBackgroundPixmapSelector(bool);
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeMdiArea KVI_SMALLICON_APPLET
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeMdiArea KviIconManager::Applet
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeMdiArea __tr2qs_no_lookup("Workspace")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeMdiArea __tr2qs_no_lookup("theme,mdi")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeMdiArea "theme"
@@ -83,7 +83,7 @@ public:
 	~OptionsWidget_themeMdiArea();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeToolBarApplets KVI_SMALLICON_APPLET
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeToolBarApplets KviIconManager::Applet
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeToolBarApplets __tr2qs_no_lookup("ToolBar Applets")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeToolBarApplets __tr2qs_no_lookup("theme,toolbar")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeToolBarApplets "theme"

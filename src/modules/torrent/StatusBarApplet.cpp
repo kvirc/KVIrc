@@ -61,7 +61,7 @@ void StatusBarApplet::selfRegister(KviStatusBar *bar)
 		__tr2qs_ctx("Torrent Client","torrent"),
 			"torrentapplet",
 			CreateTorrentClientApplet,
-			"torrent", *(g_pIconManager->getSmallIcon(KVI_SMALLICON_AWAY)));
+			"torrent", *(g_pIconManager->getSmallIcon(KviIconManager::Away)));
 
 	bar->registerAppletDescriptor(d);
 }

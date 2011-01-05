@@ -60,7 +60,7 @@ KviIOGraphWindow::~KviIOGraphWindow()
 
 QPixmap * KviIOGraphWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYICON);
+	return g_pIconManager->getSmallIcon(KviIconManager::SayIcon);
 }
 
 void KviIOGraphWindow::resizeEvent(QResizeEvent *)
@@ -335,7 +335,7 @@ static bool iograph_module_init(KviModule *m)
 							__tr2qs("Show I/O &Traffic graph"),
 							iograph_extension_alloc);
 
-	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYICON)));
+	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::SayIcon)));
 
 	return true;
 }

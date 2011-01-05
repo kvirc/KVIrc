@@ -22,10 +22,7 @@
 //
 //=============================================================================
 
-
-
 #include "KviWindowToolWidget.h"
-#include "KviIconManager.h"
 #include "KviTalVBox.h"
 
 #include <QPainter>
@@ -35,27 +32,28 @@
 #include <QIcon>
 
 
-KviWindowToolWidget::KviWindowToolWidget(QWidget * parent, KviWindowToolPageButton* button)
-:QWidget(parent)
+KviWindowToolWidget::KviWindowToolWidget(QWidget * pParent, KviWindowToolPageButton * pButton)
+:QWidget(pParent)
 {
-	m_pButton=button;
-	if(m_pButton) m_pButton->setChecked(!isHidden());
+	m_pButton = pButton;
+	if(m_pButton)
+		m_pButton->setChecked(!isHidden());
 }
 
 KviWindowToolWidget::~KviWindowToolWidget()
 {
 }
 
-KviWindowToolPageButton::KviWindowToolPageButton ( int pixoff,int pixon, const QString & text, QWidget * parent,bool bOn, const char *)
-:QToolButton(parent)
+KviWindowToolPageButton::KviWindowToolPageButton(KviIconManager::SmallIcon eIconOff, KviIconManager::SmallIcon eIconOn, const QString & szText, QWidget * pParent, bool bOn)
+:QToolButton(pParent)
 {
 	setAutoRaise(true);
-	setToolTip(text);
+	setToolTip(szText);
 	setObjectName("kvi_window_tool_button");
 	QIcon icon;
-	icon.addPixmap(*(g_pIconManager->getSmallIcon(pixoff)),QIcon::Normal,QIcon::Off);
-	icon.addPixmap(*(g_pIconManager->getSmallIcon(pixon)),QIcon::Active,QIcon::On);
-	icon.addPixmap(*(g_pIconManager->getSmallIcon(pixon)),QIcon::Active);
+	icon.addPixmap(*(g_pIconManager->getSmallIcon(eIconOff)),QIcon::Normal,QIcon::Off);
+	icon.addPixmap(*(g_pIconManager->getSmallIcon(eIconOn)),QIcon::Active,QIcon::On);
+	icon.addPixmap(*(g_pIconManager->getSmallIcon(eIconOn)),QIcon::Active);
 	setIcon(icon);
 	setCheckable(true);
 	setChecked(bOn);
@@ -64,4 +62,3 @@ KviWindowToolPageButton::KviWindowToolPageButton ( int pixoff,int pixon, const Q
 KviWindowToolPageButton::~KviWindowToolPageButton()
 {
 }
-

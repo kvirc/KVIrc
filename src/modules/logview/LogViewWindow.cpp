@@ -207,7 +207,7 @@ void LogViewWindow::applyFilter()
 
 QPixmap * LogViewWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_LOG);
+	return g_pIconManager->getSmallIcon(KviIconManager::Log);
 }
 
 void LogViewWindow::resizeEvent(QResizeEvent *)
@@ -386,8 +386,8 @@ void LogViewWindow::rightButtonClicked ( QTreeWidgetItem * it, const QPoint &)
 
 	KviTalPopupMenu* popup = new KviTalPopupMenu(this);
 	if(((LogListViewItem *)it)->childCount())
-		popup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),__tr2qs_ctx("Remove all these channel/query log files","logview"),this,SLOT(deleteCurrent()));
-	else popup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),__tr2qs_ctx("Remove file","logview"),this,SLOT(deleteCurrent()));
+		popup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove all these channel/query log files","logview"),this,SLOT(deleteCurrent()));
+	else popup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs_ctx("Remove file","logview"),this,SLOT(deleteCurrent()));
 
 	popup->exec( QCursor::pos() );
 }

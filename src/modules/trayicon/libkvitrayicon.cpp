@@ -93,24 +93,24 @@ TrayIcon::TrayIcon(KviMainWindow * frm)
 	m_pContextPopup->insertItem(m_pTitleLabel);
 	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
 	m_pAwayMenuId = m_pContextPopup->addMenu(m_pAwayPopup);
-	m_pAwayMenuId->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_AWAY)));
+	m_pAwayMenuId->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Away)));
 	m_pAwayMenuId->setText(__tr2qs("Away"));
 
-	QAction* id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_OPTIONS)),__tr2qs("&Configure KVIrc..."),this,SLOT(executeInternalCommand(bool)));
+	QAction* id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Options)),__tr2qs("&Configure KVIrc..."),this,SLOT(executeInternalCommand(bool)));
 	id->setData(KVI_INTERNALCOMMAND_OPTIONS_DIALOG);
 
-	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)),__tr2qs("&About KVIrc"),this,SLOT(executeInternalCommand(bool)));
+	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)),__tr2qs("&About KVIrc"),this,SLOT(executeInternalCommand(bool)));
 	id->setData(KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
 
 	m_pContextPopup->insertSeparator();
-	m_pToggleFrame = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RAW)),__tr2qs("Hide/Show"),this,SLOT(toggleParentFrame()));
+	m_pToggleFrame = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Raw)),__tr2qs("Hide/Show"),this,SLOT(toggleParentFrame()));
 
 	m_pContextPopup->insertSeparator();
 
-	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TRAYICON)),__tr2qs("Un&dock"),this,SLOT(executeInternalCommand(bool)));
+	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TrayIcon)),__tr2qs("Un&dock"),this,SLOT(executeInternalCommand(bool)));
 	id->setData(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
 
-	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITAPP)),__tr2qs("&Quit"),g_pFrame,SLOT(close()),QKeySequence(Qt::CTRL + Qt::Key_Q));
+	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),__tr2qs("&Quit"),g_pFrame,SLOT(close()),QKeySequence(Qt::CTRL + Qt::Key_Q));
 
 	connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(fillContextPopup()));
 
@@ -293,10 +293,10 @@ void TrayIcon::fillContextPopup()
 		m_pAwayMenuId->setVisible(true);
 		m_pAwayPopup->clear();
 
-		QAction* pAllAway=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Away on all"),this,SLOT(doAway(bool)));
+		QAction * pAllAway = m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Console)),__tr2qs("Away on all"),this,SLOT(doAway(bool)));
 		pAllAway->setData(-1);
 
-		QAction* pAllUnaway=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Back on all"),this,SLOT(doAway(bool)));
+		QAction * pAllUnaway = m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Console)),__tr2qs("Back on all"),this,SLOT(doAway(bool)));
 		pAllUnaway->setData(-2);
 
 		QAction* pSeparator=m_pAwayPopup->addSeparator();
@@ -315,11 +315,11 @@ void TrayIcon::fillContextPopup()
 					QAction* id;
 					if(pConsole->connection()->userInfo()->isAway())
 					{
-						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Back on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
+						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Console)),__tr2qs("Back on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
 						id->setData(pConsole->context()->id());
 						bAllUnaway=0;
 					} else {
-						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Away on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
+						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Console)),__tr2qs("Away on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
 						id->setData(pConsole->context()->id());
 						bAllAway=0;
 					}
@@ -397,7 +397,7 @@ void TrayIcon::refresh()
 
 	if(m_bFlashed)
 	{
-		thisRestrictionOfQt4IsNotNice.drawPixmap((ICON_SIZE-16)/2,(ICON_SIZE-16)/2,16,16,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MESSAGE)),0,0,16,16);
+		thisRestrictionOfQt4IsNotNice.drawPixmap((ICON_SIZE-16)/2,(ICON_SIZE-16)/2,16,16,*(g_pIconManager->getSmallIcon(KviIconManager::Message)),0,0,16,16);
 	} else {
 		thisRestrictionOfQt4IsNotNice.drawPixmap(0,0,ICON_SIZE/2,ICON_SIZE/2,
 			m_iOther ?

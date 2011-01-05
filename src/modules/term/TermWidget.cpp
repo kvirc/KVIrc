@@ -62,7 +62,7 @@
 			m_pTitleLabel = new QLabel(__tr2qs("Terminal emulator"),m_pHBox);
 			m_pTitleLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 			m_pCloseButton = new QPushButton("",m_pHBox);
-			m_pCloseButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)));
+			m_pCloseButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Close)));
 			m_pCloseButton->setToolTip(__tr2qs("Close this window"));
 			m_pHBox->setStretchFactor(m_pTitleLabel,2);
 			connect(m_pCloseButton,SIGNAL(clicked()),this,SLOT(closeClicked()));

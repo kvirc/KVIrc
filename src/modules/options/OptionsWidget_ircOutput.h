@@ -29,7 +29,7 @@
 
 class QComboBox;
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircOutput KVI_SMALLICON_RAW
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircOutput KviIconManager::Raw
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircOutput __tr2qs_no_lookup("Verbosity And Output")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_ircOutput OptionsWidget_irc
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircOutput __tr2qs_no_lookup("debug")

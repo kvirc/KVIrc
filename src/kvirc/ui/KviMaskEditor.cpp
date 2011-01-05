@@ -25,7 +25,6 @@
 
 #include "KviMaskEditor.h"
 #include "KviLocale.h"
-#include "KviIconManager.h"
 #include "KviQString.h"
 #include "KviChannelWindow.h"
 #include "KviIrcConnectionServerInfo.h"
@@ -86,12 +85,12 @@ KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEdi
 	m_pOkButton= new QPushButton(__tr2qs("Ok"),this);
 	connect(m_pOkButton,SIGNAL(clicked()), this, SLOT(accept()));
 	g->addWidget(m_pOkButton,2,1);
-	m_pOkButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	m_pOkButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 
 	m_pChancelButton= new QPushButton(__tr2qs("Cancel"),this);
 	connect(m_pChancelButton,SIGNAL(clicked()), this, SLOT(reject()));
 	g->addWidget(m_pChancelButton,2,2);
-	m_pChancelButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	m_pChancelButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)));
 }
 
 KviMaskInputDialog::~KviMaskInputDialog()
@@ -142,28 +141,28 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannelWindow * pChannel,KviWindow
 	switch(cMode)
 	{
 		case 'b':
-			m_iIconId = KVI_SMALLICON_BAN;
+			m_eIcon = KviIconManager::Ban;
 			break;
 		case 'e':
-			m_iIconId = KVI_SMALLICON_BANEXCEPT;
+			m_eIcon = KviIconManager::BanExcept;
 			break;
 		case 'I':
-			m_iIconId = KVI_SMALLICON_INVITEEXCEPT;
+			m_eIcon = KviIconManager::InviteExcept;
 			break;
 		case 'a':
-			m_iIconId = KVI_SMALLICON_CHANADMIN;
+			m_eIcon = KviIconManager::ChanAdmin;
 			break;
 		case 'q':
 			// this could also be quiet bans..
-			m_iIconId = KVI_SMALLICON_CHANOWNER;
+			m_eIcon = KviIconManager::ChanOwner;
 			break;
 		default:
-			m_iIconId = KVI_SMALLICON_BAN;
+			m_eIcon = KviIconManager::Ban;
 			break;
 	}
 
 	QLabel * l = new QLabel("",this);
-	l->setPixmap(*(g_pIconManager->getSmallIcon(m_iIconId)));
+	l->setPixmap(*(g_pIconManager->getSmallIcon(m_eIcon)));
 	g->addWidget(l,0,0);
 
 	l = new QLabel(szDescription,this);
@@ -204,12 +203,12 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviChannelWindow * pChannel,KviWindow
 	m_pRemoveMask->setFocusProxy(this);
 	g->addWidget(m_pRemoveMask,4,1);
 	connect(m_pRemoveMask,SIGNAL(clicked()),this,SLOT(removeClicked()));
-	m_pRemoveMask->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
+	m_pRemoveMask->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::DeleteItem)));
 
 	m_pAddButton = new QPushButton(__tr2qs("&Add"),this);
 	g->addWidget(m_pAddButton,4,0);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
-	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
+	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItem)));
 
 	g->setColumnStretch(1,1);
 
@@ -306,7 +305,7 @@ void KviMaskEditor::addMask(KviMaskEntry *e)
 {
 	KviMaskItem *it;
 	it = new KviMaskItem(m_pMaskBox,e);
-	it->setIcon(0,*(g_pIconManager->getSmallIcon(m_iIconId)));
+	it->setIcon(0,*(g_pIconManager->getSmallIcon(m_eIcon)));
 }
 
 void KviMaskEditor::removeMask(KviMaskEntry *e)

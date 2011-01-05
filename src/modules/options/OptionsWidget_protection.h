@@ -28,7 +28,7 @@
 #include "KviOptionsWidget.h"
 #include "KviSelectors.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_protection KVI_SMALLICON_SPY
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_protection KviIconManager::Spy
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_protection __tr2qs_no_lookup("Protection")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_protection OptionsWidget_irc
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_protection 60000

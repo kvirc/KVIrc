@@ -32,6 +32,7 @@
 
 #include "kvi_settings.h"
 #include "KviPointerList.h"
+#include "KviIconManager.h"
 
 #include <QObject>
 
@@ -39,6 +40,8 @@ class QShortcut;
 class QPixmap;
 class KviTalPopupMenu;
 class KviCustomToolBar;
+
+#undef None
 
 /**
 * \class KviActionCategory
@@ -119,7 +122,7 @@ public:
 		EnableAtLogin             = 64,   /**< the action is enabled at login; implies NeedsConnection */
 		WindowOnlyIfUsersSelected = 128   /**< the action is bound to a window only if it's selected by the user; implies at least one of WindowConsole | WindowChannel | WindowQuery */
 	};
-public:
+
 	/**
 	* \brief Constructs the action object
 	* \param pParent The parent object
@@ -141,6 +144,8 @@ public:
 	*/
 	KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory = NULL, const QString & szBigIconId = QString(), const QString & szSmallIconId = QString(), unsigned int uFlags = 0, const QString & szKeySequence = QString());
 
+	KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory = NULL, const QString & szBigIconId = QString(), const KviIconManager::SmallIcon eIcon = KviIconManager::None, unsigned int uFlags = 0, const QString & szKeySequence = QString());
+
 	/**
 	* \brief Destroys the action object
 	*/
@@ -152,6 +157,7 @@ protected:
 	KviActionCategory       * m_pCategory;
 	QString                   m_szBigIconId;
 	QString                   m_szSmallIconId;
+	QString                   m_eIcon;
 	KviPointerList<QWidget> * m_pWidgetList;
 	unsigned short int        m_uInternalFlags;
 	unsigned int              m_uFlags;
@@ -235,13 +241,13 @@ public:
 
 	/**
 	* \brief Returns the small icon associated to the action
-	* \return const QString &
+	* \return QPixmap *
 	*/
 	QPixmap * smallIcon();
 
 	/**
 	* \brief Returns the big icon associated to the action
-	* \return const QString &
+	* \return QPixmap *
 	*/
 	QPixmap * bigIcon();
 

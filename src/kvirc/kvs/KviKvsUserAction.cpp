@@ -32,28 +32,28 @@
 #include "KviCommandFormatter.h"
 
 KviKvsUserAction::KviKvsUserAction(QObject * pParent,
-		const QString &szName,
-		const QString &szScriptCode,
-		const QString &szVisibleNameCode,
-		const QString &szDescriptionCode,
-		const QString &szCategory,
-		const QString &szBigIconId,
-		const QString &szSmallIconId,
-		unsigned int uFlags,
-		const QString &szKeySequence
-	)
-	: KviKvsAction(
-		pParent,
-		szName,
-		szScriptCode,
-		szVisibleNameCode,
-		szDescriptionCode,
-		NULL,
-		szBigIconId,
-		szSmallIconId,
-		uFlags,
-		szKeySequence
-	)
+	const QString &szName,
+	const QString &szScriptCode,
+	const QString &szVisibleNameCode,
+	const QString &szDescriptionCode,
+	const QString &szCategory,
+	const QString &szBigIconId,
+	const QString &szSmallIconId,
+	unsigned int uFlags,
+	const QString &szKeySequence
+)
+: KviKvsAction(
+	pParent,
+	szName,
+	szScriptCode,
+	szVisibleNameCode,
+	szDescriptionCode,
+	NULL,
+	szBigIconId,
+	szSmallIconId,
+	uFlags,
+	szKeySequence
+)
 {
 	QString szKvsName = "action::";
 	szKvsName += szName;
@@ -89,15 +89,15 @@ KviKvsUserAction::~KviKvsUserAction()
 
 KviKvsUserAction * KviKvsUserAction::createInstance(
 		QObject * pParent,
-		const QString &szName,
-		const QString &szScriptCode,
-		const QString &szVisibleNameCode,
-		const QString &szDescriptionCode,
-		const QString &szCategory,
-		const QString &szBigIconId,
-		const QString &szSmallIconId,
+		const QString & szName,
+		const QString & szScriptCode,
+		const QString & szVisibleNameCode,
+		const QString & szDescriptionCode,
+		const QString & szCategory,
+		const QString & szBigIconId,
+		const QString & szSmallIconId,
 		unsigned int uFlags,
-		const QString &szKeySequence
+		const QString & szKeySequence
 	)
 {
 	return new KviKvsUserAction(
@@ -114,34 +114,34 @@ KviKvsUserAction * KviKvsUserAction::createInstance(
 		);
 }
 
-void KviKvsUserAction::exportToKvs(QString &szBuffer)
+void KviKvsUserAction::exportToKvs(QString & szBuffer)
 {
 	exportToKvs(
-			szBuffer,
-			m_szName,
-			scriptCode(),
-			visibleNameCode(),
-			descriptionCode(),
-			m_szCategory,
-			m_szBigIconId,
-			m_szSmallIconId,
-			m_uFlags,
-			m_szKeySequence
-		);
+		szBuffer,
+		m_szName,
+		scriptCode(),
+		visibleNameCode(),
+		descriptionCode(),
+		m_szCategory,
+		m_szBigIconId,
+		m_szSmallIconId,
+		m_uFlags,
+		m_szKeySequence
+	);
 }
 
 void KviKvsUserAction::exportToKvs(
-		QString &szBuffer,
-		const QString &szName,
-		const QString &szScriptCode,
-		const QString &szVisibleName,
-		const QString &szDescription,
-		const QString &szCategory,
-		const QString &szBigIconId,
-		const QString &szSmallIconId,
-		unsigned int uFlags,
-		const QString &szKeySequence
-	)
+	QString & szBuffer,
+	const QString & szName,
+	const QString & szScriptCode,
+	const QString & szVisibleName,
+	const QString & szDescription,
+	const QString & szCategory,
+	const QString & szBigIconId,
+	const QString & szSmallIconId,
+	unsigned int uFlags,
+	const QString & szKeySequence
+)
 {
 	szBuffer += "action.create";
 	if(uFlags & NeedsContext)
@@ -150,16 +150,21 @@ void KviKvsUserAction::exportToKvs(
 		if(uFlags & NeedsConnection)
 		{
 			szBuffer += " -c";
-			if(uFlags & EnableAtLogin)szBuffer += " -l";
+			if(uFlags & EnableAtLogin)
+				szBuffer += " -l";
 		}
 	}
 	if(uFlags & InternalWindowMask)
 	{
 		QString szWins;
-		if(uFlags & WindowConsole)szWins += "x";
-		if(uFlags & WindowChannel)szWins += "c";
-		if(uFlags & WindowQuery)szWins += "q";
-		if(uFlags & WindowDccChat)szWins += "d";
+		if(uFlags & WindowConsole)
+			szWins += "x";
+		if(uFlags & WindowChannel)
+			szWins += "c";
+		if(uFlags & WindowQuery)
+			szWins += "q";
+		if(uFlags & WindowDccChat)
+			szWins += "d";
 		szBuffer += " -w=";
 		szBuffer += szWins;
 		if(uFlags & (WindowConsole | WindowChannel | WindowQuery))
@@ -186,21 +191,21 @@ void KviKvsUserAction::exportToKvs(
 	szBuffer += szName;
 	szBuffer += "\",";
 	
-	QString tmp;
+	QString szTmp;
 	if(szVisibleName.contains('$'))
 	{
 		szBuffer += szVisibleName;
 		szBuffer += ",";
 	} else {
-		tmp = szVisibleName.trimmed();
-		if(tmp.startsWith(QChar('\"')) && tmp.endsWith(QChar('\"')))
+		szTmp = szVisibleName.trimmed();
+		if(szTmp.startsWith(QChar('\"')) && szTmp.endsWith(QChar('\"')))
 		{
-			szBuffer += tmp;
+			szBuffer += szTmp;
 			szBuffer += ",";
 		} else {
-			tmp.replace("\"","\\\"");
+			szTmp.replace("\"","\\\"");
 			szBuffer += "\"";
-			szBuffer += tmp;
+			szBuffer += szTmp;
 			szBuffer += "\",";
 		}
 	}
@@ -210,15 +215,15 @@ void KviKvsUserAction::exportToKvs(
 		szBuffer += szDescription;
 		szBuffer += ",";
 	} else {
-		tmp = szDescription.trimmed();
-		if(tmp.startsWith(QChar('\"')) && tmp.endsWith(QChar('\"')))
+		szTmp = szDescription.trimmed();
+		if(szTmp.startsWith(QChar('\"')) && szTmp.endsWith(QChar('\"')))
 		{
-			szBuffer += tmp;
+			szBuffer += szTmp;
 			szBuffer += ",";
 		} else {
-			tmp.replace("\"","\\\"");
+			szTmp.replace("\"","\\\"");
 			szBuffer += "\"";
-			szBuffer += tmp;
+			szBuffer += szTmp;
 			szBuffer += "\",";
 		}
 	}
@@ -228,15 +233,15 @@ void KviKvsUserAction::exportToKvs(
 		szBuffer += szBigIconId;
 		szBuffer += ",";
 	} else {
-		tmp = szBigIconId.trimmed();
-		if(tmp.startsWith(QChar('\"')) && tmp.endsWith(QChar('\"')))
+		szTmp = szBigIconId.trimmed();
+		if(szTmp.startsWith(QChar('\"')) && szTmp.endsWith(QChar('\"')))
 		{
-			szBuffer += tmp;
+			szBuffer += szTmp;
 			szBuffer += ",";
 		} else {
-			tmp.replace("\"","\\\"");
+			szTmp.replace("\"","\\\"");
 			szBuffer += "\"";
-			szBuffer += tmp;
+			szBuffer += szTmp;
 			szBuffer += "\",";
 		}
 	}
@@ -246,22 +251,22 @@ void KviKvsUserAction::exportToKvs(
 		szBuffer += szSmallIconId;
 		szBuffer += ")\n";
 	} else {
-		tmp = szSmallIconId.trimmed();
-		if(tmp.startsWith(QChar('\"')) && tmp.endsWith(QChar('\"')))
+		szTmp = szSmallIconId.trimmed();
+		if(szTmp.startsWith(QChar('\"')) && szTmp.endsWith(QChar('\"')))
 		{
-			szBuffer += tmp;
+			szBuffer += szTmp;
 			szBuffer += ")\n";
 		} else {
-			tmp.replace("\"","\\\"");
+			szTmp.replace("\"","\\\"");
 			szBuffer += "\"";
-			szBuffer += tmp;
+			szBuffer += szTmp;
 			szBuffer += "\")\n";
 		}
 	}
 
-	tmp = szScriptCode;
-	KviCommandFormatter::blockFromBuffer(tmp);
-	szBuffer += tmp;
+	szTmp = szScriptCode;
+	KviCommandFormatter::blockFromBuffer(szTmp);
+	szBuffer += szTmp;
 	szBuffer += "\n";
 }
 

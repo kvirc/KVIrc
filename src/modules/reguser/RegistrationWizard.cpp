@@ -75,7 +75,7 @@ RegistrationWizard::RegistrationWizard(const QString &startMask,KviRegisteredUse
 
 //    resize( 490, 456 );
 	setWindowTitle(__tr2qs_ctx("User Registration Wizard - KVIrc","register"));
-	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Linux)));
 
 	setSizeGripEnabled( TRUE );
 

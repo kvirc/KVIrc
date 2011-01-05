@@ -28,7 +28,7 @@
 
 #include <QComboBox>
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_textEncoding KVI_SMALLICON_TEXTENCODING
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_textEncoding KviIconManager::TextEncoding
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_textEncoding __tr2qs_no_lookup("Language")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_textEncoding 50000
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_textEncoding OptionsWidget_general

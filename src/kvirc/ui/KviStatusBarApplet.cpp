@@ -130,7 +130,7 @@ KviStatusBarAwayIndicator::KviStatusBarAwayIndicator(KviStatusBar * pParent, Kvi
 	updateDisplay();
 
 	if(!pixmap())
-		setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTAWAY)));
+		setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)));
 }
 
 KviStatusBarAwayIndicator::~KviStatusBarAwayIndicator()
@@ -144,11 +144,11 @@ void KviStatusBarAwayIndicator::updateDisplay()
 	if(c && c->isConnected())
 	{
 		setPixmap(c->connection()->userInfo()->isAway() ?
-				*(g_pIconManager->getSmallIcon(KVI_SMALLICON_AWAY)) : *(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTAWAY)));
+				*(g_pIconManager->getSmallIcon(KviIconManager::Away)) : *(g_pIconManager->getSmallIcon(KviIconManager::NotAway)));
 	} else {
 		// FIXME: We'd like to appear disabled here... but then we
 		//        no longer get mouse events :/
-		setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTAWAY)));
+		setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)));
 	}
 }
 
@@ -186,7 +186,7 @@ KviStatusBarApplet * CreateStatusBarAwayIndicator(KviStatusBar * pBar, KviStatus
 void KviStatusBarAwayIndicator::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-		__tr2qs("Away Indicator"),"awayindicator",CreateStatusBarAwayIndicator,"",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_AWAY)));
+		__tr2qs("Away Indicator"),"awayindicator",CreateStatusBarAwayIndicator,"",*(g_pIconManager->getSmallIcon(KviIconManager::Away)));
 	pBar->registerAppletDescriptor(d);
 }
 
@@ -349,7 +349,7 @@ KviStatusBarApplet * CreateStatusBarLagIndicator(KviStatusBar * pBar, KviStatusB
 void KviStatusBarLagIndicator::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-		__tr2qs("Lag Indicator"),"lagindicator",CreateStatusBarLagIndicator,"",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVERPING)));
+		__tr2qs("Lag Indicator"),"lagindicator",CreateStatusBarLagIndicator,"",*(g_pIconManager->getSmallIcon(KviIconManager::ServerPing)));
 	pBar->registerAppletDescriptor(d);
 }
 
@@ -520,7 +520,7 @@ KviStatusBarApplet * CreateStatusBarClock(KviStatusBar * pBar, KviStatusBarApple
 void KviStatusBarClock::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-		__tr2qs("Simple Clock"),"clock",CreateStatusBarClock,"",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
+		__tr2qs("Simple Clock"),"clock",CreateStatusBarClock,"",*(g_pIconManager->getSmallIcon(KviIconManager::Time)));
 	pBar->registerAppletDescriptor(d);
 }
 
@@ -601,7 +601,7 @@ KviStatusBarApplet * CreateStatusBarConnectionTimer(KviStatusBar * pBar,KviStatu
 void KviStatusBarConnectionTimer::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-		__tr2qs("Connection Timer"),"connectiontimer",CreateStatusBarConnectionTimer,"",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
+		__tr2qs("Connection Timer"),"connectiontimer",CreateStatusBarConnectionTimer,"",*(g_pIconManager->getSmallIcon(KviIconManager::Time)));
 	pBar->registerAppletDescriptor(d);
 }
 
@@ -646,7 +646,7 @@ KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,
 	updateDisplay();
 
 	if(!pixmap())
-		setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTUPDATE)));
+		setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::NotUpdate)));
 }
 
 KviStatusBarUpdateIndicator::~KviStatusBarUpdateIndicator()
@@ -656,9 +656,9 @@ KviStatusBarUpdateIndicator::~KviStatusBarUpdateIndicator()
 void KviStatusBarUpdateIndicator::updateDisplay()
 {
 	if(m_bCheckFailed)
-		setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FAILUPDATE)));
+		setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::FailUpdate)));
 	else
-		setPixmap(m_bUpdateStatus ? *(g_pIconManager->getSmallIcon(KVI_SMALLICON_UPDATE)) : *(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTUPDATE)));
+		setPixmap(m_bUpdateStatus ? *(g_pIconManager->getSmallIcon(KviIconManager::Update)) : *(g_pIconManager->getSmallIcon(KviIconManager::NotUpdate)));
 }
 
 void KviStatusBarUpdateIndicator::toggleStartup()
@@ -709,7 +709,7 @@ KviStatusBarApplet * CreateStatusBarUpdateIndicator(KviStatusBar * pBar, KviStat
 void KviStatusBarUpdateIndicator::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-		__tr2qs("Update Indicator"),"updateindicator",CreateStatusBarUpdateIndicator,"",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_UPDATE)));
+		__tr2qs("Update Indicator"),"updateindicator",CreateStatusBarUpdateIndicator,"",*(g_pIconManager->getSmallIcon(KviIconManager::Update)));
 	pBar->registerAppletDescriptor(d);
 }
 

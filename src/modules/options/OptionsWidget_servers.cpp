@@ -102,7 +102,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	QGridLayout * g = new QGridLayout(this);
 
 	setWindowTitle(__tr2qs_ctx("Network Details","options"));
-	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD))));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::World))));
 
 	QString szTmp = "<font size=\"+1\"><b>";
 	szTmp += n->name();
@@ -508,7 +508,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	QGridLayout * g = new QGridLayout(this);
 
 	setWindowTitle(__tr2qs_ctx("Server Details","options"));
-	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER))));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Server))));
 
 	m_pHeaderLabel = new QLabel("",this); // the text will be set later
 	m_pHeaderLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
@@ -614,7 +614,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	gl->setRowStretch(2,1);
 
-	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WHO)),__tr2qs_ctx("Identity","options"));
+	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KviIconManager::Who)),__tr2qs_ctx("Identity","options"));
 
 	// Connection tab
 
@@ -797,7 +797,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	gl->setRowStretch(iRow,1);
 
-	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SOCKETWARNING)),__tr2qs_ctx("Connection","options"));
+	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KviIconManager::SocketWarning)),__tr2qs_ctx("Connection","options"));
 
 	// after login join channels
 	tab = new QWidget(tw);
@@ -813,7 +813,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		"text input below and click \"<b>Add</b>\".</center>","options"));
 	gl->addWidget(m_pChannelListSelector,0,0);
 
-	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs_ctx("Join Channels","options"));
+	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs_ctx("Join Channels","options"));
 
 	// after connect execute
 	tab = new QWidget(tw);
@@ -1269,19 +1269,19 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	addWidgetToLayout(vbox,1,0,1,0);
 
 	m_pNewNetworkButton = new QToolButton(vbox);
-	m_pNewNetworkButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD))));
+	m_pNewNetworkButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::World))));
 	m_pNewNetworkButton->setAutoRaise(true);
 	connect(m_pNewNetworkButton,SIGNAL(clicked()),this,SLOT(newNetwork()));
 	KviTalToolTip::add(m_pNewNetworkButton,__tr2qs_ctx("New Network","options"));
 
 	m_pNewServerButton = new QToolButton(vbox);
-	m_pNewServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER))));
+	m_pNewServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Server))));
 	m_pNewServerButton->setAutoRaise(true);
 	connect(m_pNewServerButton,SIGNAL(clicked()),this,SLOT(newServer()));
 	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New Server","options"));
 
 	m_pRemoveButton = new QToolButton(vbox);
-	m_pRemoveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT))));
+	m_pRemoveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Cut))));
 	m_pRemoveButton->setEnabled(false);
 	m_pRemoveButton->setAutoRaise(true);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeCurrent()));
@@ -1291,14 +1291,14 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
 
 	m_pCopyServerButton = new QToolButton(vbox);
-	m_pCopyServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_COPY))));
+	m_pCopyServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Copy))));
 	m_pCopyServerButton->setEnabled(false);
 	m_pCopyServerButton->setAutoRaise(true);
 	connect(m_pCopyServerButton,SIGNAL(clicked()),this,SLOT(copyServer()));
 	KviTalToolTip::add(m_pCopyServerButton,__tr2qs_ctx("Copy Server","options"));
 
 	m_pPasteServerButton = new QToolButton(vbox);
-	m_pPasteServerButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)));
+	m_pPasteServerButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)));
 	m_pPasteServerButton->setEnabled(false);
 	m_pPasteServerButton->setAutoRaise(true);
 	connect(m_pPasteServerButton,SIGNAL(clicked()),this,SLOT(pasteServer()));
@@ -1308,7 +1308,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
 
 	m_pImportButton = new QToolButton(vbox);
-	m_pImportButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER))));
+	m_pImportButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Folder))));
 	m_pImportButton->setAutoRaise(true);
 	m_pImportButton->setMenu(m_pImportPopup);
 	m_pImportButton->setPopupMode(QToolButton::InstantPopup);
@@ -1334,7 +1334,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	connect(m_pRecentPopup,SIGNAL(activated(int)),this,SLOT(recentServersPopupClicked(int)));
 
 	QToolButton * tb = new QToolButton(gbox);
-	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME))));
+	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Time))));
 	tb->setMenu(m_pRecentPopup);
 	tb->setAutoRaise(true);
 	tb->setPopupMode(QToolButton::InstantPopup);
@@ -1537,13 +1537,13 @@ void OptionsWidget_servers::fillServerList()
 
 	while(KviIrcNetwork * r = it.current())
 	{
-		net = new IrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),r);
+		net = new IrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::World)),r);
 		KviPointerList<KviIrcServer> * sl = r->serverList();
 		bool bCurrent = r->name() == g_pServerDataBase->currentNetworkName().toUtf8().data();
 		net->setExpanded(bCurrent);
 		for(KviIrcServer * s = sl->first();s;s = sl->next())
 		{
-			srv = new IrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),s);
+			srv = new IrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KviIconManager::Server)),s);
 
 			if((s == r->currentServer()) && bCurrent)
 			{
@@ -1700,16 +1700,16 @@ void OptionsWidget_servers::customContextMenuRequested(const QPoint &pnt)
 	QTreeWidgetItem *it=(QTreeWidgetItem *) m_pTreeWidget->itemAt(pnt);
 	bool bServer = (it && ((IrcServerOptionsTreeWidgetItem *)it)->m_pServerData);
 	m_pContextPopup->clear();
-	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
-	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()));
+	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
+	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()));
 	m_pContextPopup->setItemEnabled(id,!bServer);
 	m_pContextPopup->insertSeparator();
-	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),__tr2qs_ctx("&New Server","options"),this,SLOT(newServer()));
-	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)),__tr2qs_ctx("Re&move Server","options"),this,SLOT(removeCurrent()));
+	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs_ctx("&New Server","options"),this,SLOT(newServer()));
+	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Re&move Server","options"),this,SLOT(removeCurrent()));
 	m_pContextPopup->setItemEnabled(id,bServer);
-	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_COPY)),__tr2qs_ctx("&Copy Server","options"),this,SLOT(copyServer()));
+	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs_ctx("&Copy Server","options"),this,SLOT(copyServer()));
 	m_pContextPopup->setItemEnabled(id,bServer);
-	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)),__tr2qs_ctx("&Paste Server","options"),this,SLOT(pasteServer()));
+	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),__tr2qs_ctx("&Paste Server","options"),this,SLOT(pasteServer()));
 	m_pContextPopup->setItemEnabled(id,m_pClipboard);
 
 	m_pContextPopup->insertSeparator();
@@ -1791,7 +1791,7 @@ void OptionsWidget_servers::importServer(const KviIrcServer &s,const QString &ne
 	if(!net)
 	{
 		KviIrcNetwork d(network);
-		net = new IrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),&d);
+		net = new IrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::World)),&d);
 		net->setExpanded(true);
 	}
 
@@ -1819,7 +1819,7 @@ void OptionsWidget_servers::importServer(const KviIrcServer &s,const QString &ne
 	}
 
 	// not found : add it!
-	IrcServerOptionsTreeWidgetItem * newServer = new IrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),&s);
+	IrcServerOptionsTreeWidgetItem * newServer = new IrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KviIconManager::Server)),&s);
 	m_pTreeWidget->setCurrentItem(newServer);
 	m_pTreeWidget->scrollToItem(newServer);
 }
@@ -1827,7 +1827,7 @@ void OptionsWidget_servers::importServer(const KviIrcServer &s,const QString &ne
 void OptionsWidget_servers::newNetwork()
 {
 	KviIrcNetwork d(__tr2qs_ctx("New Network","options"));
-	IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),&d);
+	IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::World)),&d);
 	it->setExpanded(true);
 	it->setSelected(true);
 	m_pTreeWidget->setCurrentItem(it);
@@ -1851,7 +1851,7 @@ void OptionsWidget_servers::newServer()
 		tmp.setCacheIp(false);
 		tmp.generateUniqueId();
 
-		IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),&tmp);
+		IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KviIconManager::Server)),&tmp);
 
 		net->setExpanded(true);
 
@@ -1889,7 +1889,7 @@ void OptionsWidget_servers::pasteServer()
 			else net = m_pLastEditedItem;
 
 			IrcServerOptionsTreeWidgetItem * it = new IrcServerOptionsTreeWidgetItem(net,
-							*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),m_pClipboard);
+							*(g_pIconManager->getSmallIcon(KviIconManager::Server)),m_pClipboard);
 
 			net->setExpanded(true);
 

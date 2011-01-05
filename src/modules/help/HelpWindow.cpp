@@ -303,7 +303,7 @@ void HelpWindow::searchSelected ( QListWidgetItem *item )
 
 QPixmap * HelpWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_MDIHELP);
+	return g_pIconManager->getSmallIcon(KviIconManager::MdiHelp);
 }
 
 void HelpWindow::resizeEvent(QResizeEvent *)

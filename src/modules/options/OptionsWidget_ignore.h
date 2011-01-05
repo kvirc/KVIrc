@@ -28,7 +28,7 @@
 #include "KviOptionsWidget.h"
 #include "KviSelectors.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ignore KVI_SMALLICON_IGNORE
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ignore KviIconManager::Ignore
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ignore __tr2qs_no_lookup("Ignore")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_ignore OptionsWidget_protection
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ignore __tr2qs_no_lookup("protection")

@@ -801,7 +801,7 @@ void FileTransferWindow::getBaseLogFileName(QString &buffer)
 
 QPixmap * FileTransferWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_FILETRANSFER);
+	return g_pIconManager->getSmallIcon(KviIconManager::FileTransfer);
 }
 
 void FileTransferWindow::resizeEvent(QResizeEvent *)

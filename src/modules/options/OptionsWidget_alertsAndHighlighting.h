@@ -29,7 +29,7 @@
 class QRadioButton;
 class QLineEdit;
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_alertsAndHighlighting KVI_SMALLICON_RAW
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_alertsAndHighlighting KviIconManager::Raw
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_alertsAndHighlighting __tr2qs_no_lookup("Alert/Highlight")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_alertsAndHighlighting OptionsWidget_tools
 #define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_alertsAndHighlighting true
@@ -43,7 +43,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_highlighting KVI_SMALLICON_RAW
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_highlighting KviIconManager::Raw
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_highlighting __tr2qs_no_lookup("Highlight")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_highlighting OptionsWidget_alertsAndHighlighting
 
@@ -64,7 +64,7 @@ protected:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_alerts KVI_SMALLICON_RAW
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_alerts KviIconManager::Raw
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_alerts __tr2qs_no_lookup("Window List Alert")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_alerts OptionsWidget_alertsAndHighlighting
 

@@ -27,6 +27,7 @@
 #include "kvi_settings.h"
 #include "KviDynamicToolTip.h"
 #include "KviTalListWidget.h"
+#include "KviIconManager.h"
 
 #include <QDialog>
 #include <QComboBox>
@@ -82,7 +83,7 @@ protected:
 	QString           m_szJobPath;
 	QStringList       m_lJobFileList;
 
-	int               m_iJobIndexHelper;
+	int             m_iJobIndexHelper;
 
 	QString           m_szSelectedImage;
 

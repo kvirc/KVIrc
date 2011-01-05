@@ -28,7 +28,7 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_topicLabel KVI_SMALLICON_TOPIC
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_topicLabel KviIconManager::Topic
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_topicLabel __tr2qs_no_lookup("Labels")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_topicLabel __tr2qs_no_lookup("theme,topic")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_topicLabel "theme"

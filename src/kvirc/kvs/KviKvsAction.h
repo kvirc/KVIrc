@@ -32,6 +32,7 @@
 
 #include "kvi_settings.h"
 #include "KviAction.h"
+#include "KviIconManager.h"
 
 class KviKvsScript;
 

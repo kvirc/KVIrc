@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : socketspywindow.cpp
+//   File : SocketSpyWindow.cpp
 //   Creation date : Thu Aug 31 2000 15:02:22 by Szymon Stefanek
 //
 //   This file is part of the KVIrc irc client distribution
@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#include "socketspywindow.h"
+#include "SocketSpyWindow.h"
 
 #include "KviIconManager.h"
 #include "KviIrcView.h"
@@ -57,7 +57,7 @@ void SocketSpyWindow::die()
 
 QPixmap * SocketSpyWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_SPY);
+	return g_pIconManager->getSmallIcon(KviIconManager::Spy);
 }
 
 void SocketSpyWindow::resizeEvent(QResizeEvent *)

@@ -28,7 +28,7 @@
 
 #include <QComboBox>
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_tray KVI_SMALLICON_TRAYICON
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_tray KviIconManager::TrayIcon
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_tray __tr2qs_no_lookup("Tray icon")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_tray OptionsWidget_interfaceFeatures
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_tray __tr2qs_no_lookup("tray,TRAYICON")

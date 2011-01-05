@@ -27,6 +27,7 @@
 #include "KviOptionsWidget.h"
 #include "KviMessageTypeSettings.h"
 #include "KviTalPopupMenu.h"
+#include "KviIconManager.h"
 
 #include <QTreeWidget>
 #include <QItemDelegate>
@@ -35,7 +36,7 @@
 #include <QPainter>
 #include <QColorGroup>
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_message KVI_SMALLICON_MESSAGES
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_message KviIconManager::Messages
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_message __tr2qs_no_lookup("Text")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_message __tr2qs_no_lookup("theme,colors,output")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_message "theme"
@@ -50,7 +51,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_privmsg KVI_SMALLICON_RAW
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_privmsg KviIconManager::Raw
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_privmsg __tr2qs_no_lookup("Message Style")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_privmsg OptionsWidget_message
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_privmsg 40
@@ -71,7 +72,7 @@ protected slots:
 	void enableDisableSmartColorSelector(bool);
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_timestamp KVI_SMALLICON_TIME
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_timestamp KviIconManager::Time
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_timestamp __tr2qs_no_lookup("Timestamp")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_timestamp OptionsWidget_message
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_timestamp 20
@@ -92,7 +93,7 @@ protected slots:
 	void enableDisableTimestampSelector(bool);
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_messageColors KVI_SMALLICON_MESSAGES
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_messageColors KviIconManager::Messages
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_messageColors __tr2qs_no_lookup("Message Colors")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_messageColors __tr2qs_no_lookup("theme,colors,messages,output")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_messageColors "theme"
@@ -179,13 +180,13 @@ protected slots:
 	void itemChanged();
 	void colorChanged();
 	void iconButtonClicked();
-	void newIconSelected(int iconId);
+	void newIconSelected(KviIconManager::SmallIcon eIcon);
 	virtual void commit();
 	virtual void save();
 	virtual void load();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_standardColors KVI_SMALLICON_COLORS
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_standardColors KviIconManager::Colors
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_standardColors __tr2qs_no_lookup("Color Set")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_standardColors __tr2qs_no_lookup("theme,colors,messages,output")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_standardColors "theme"

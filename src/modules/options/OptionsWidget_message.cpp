@@ -30,7 +30,6 @@
 #include "KviOptions.h"
 #include "KviApplication.h"
 #include "KviLocale.h"
-#include "KviIconManager.h"
 #include "KviMircCntrl.h"
 #include "KviConfigurationFile.h"
 #include "KviFileDialog.h"
@@ -449,18 +448,20 @@ OptionsWidget_messageColors::~OptionsWidget_messageColors()
 	delete m_pIconPopup;
 }
 
-void OptionsWidget_messageColors::newIconSelected(int iconId)
+void OptionsWidget_messageColors::newIconSelected(KviIconManager::SmallIcon eIcon)
 {
 	if(!m_pLastItem)return;
-	if(iconId >= KVI_NUM_SMALL_ICONS)return;
-	m_pLastItem->msgType()->setPixId(iconId);
-	m_pIconButton->setIcon(*(g_pIconManager->getSmallIcon(iconId)));
+	if(eIcon >= KviIconManager::IconCount)
+		return;
+	m_pLastItem->msgType()->setPixId(eIcon);
+	m_pIconButton->setIcon(*(g_pIconManager->getSmallIcon(eIcon)));
 	m_pListView->repaint(m_pListView->visualItemRect(m_pLastItem));
 }
 
 void OptionsWidget_messageColors::saveLastItem()
 {
-	if(!m_pLastItem)return;
+	if(!m_pLastItem)
+		return;
 
 	int curIt = m_pForeListWidget->currentRow();
 	if(curIt >= 0) //quite useless
@@ -625,17 +626,20 @@ void OptionsWidget_messageColors::load()
 
 			tmp.sprintf("Fore%d",it->optionId());
 			int fore = cfg.readIntEntry(tmp,it->msgType()->fore());
-			if(fore < 0 || fore > 15)fore = 0;
+			if(fore < 0 || fore > 15)
+				fore = 0;
 			it->msgType()->setFore(fore);
 
 			tmp.sprintf("Back%d",it->optionId());
 			int back = cfg.readIntEntry(tmp,it->msgType()->back());
-			if(back < 0 || back > 15)back = KviMircCntrl::Transparent;
+			if(back < 0 || back > 15)
+				back = KviMircCntrl::Transparent;
 			it->msgType()->setBack(back);
 
 			tmp.sprintf("Icon%d",it->optionId());
 			int ico = cfg.readIntEntry(tmp,it->msgType()->pixId());
-			if(ico < 0 || ico >= KVI_NUM_SMALL_ICONS)ico = 0;
+			if(ico < 0 || ico >= KviIconManager::IconCount)
+				ico = 0;
 			it->msgType()->setPixId(ico);
 
 			tmp.sprintf("Log%d",it->optionId());

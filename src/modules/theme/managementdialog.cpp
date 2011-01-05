@@ -112,7 +112,7 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	m_pItemDelegate=0;
 	setObjectName("theme_options_widget");
 	setWindowTitle(__tr2qs_ctx("Manage Themes - KVIrc","theme"));
-	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_THEME)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Theme)));
 
 	m_pInstance = this;
 
@@ -280,8 +280,8 @@ void ThemeManagementDialog::contextMenuRequested(const QPoint & pos)
 	{
 		m_pListWidget->setCurrentItem(m_pListWidget->itemAt(pos));
 		m_pContextPopup->clear();
-		m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINUS)),__tr2qs_ctx("&Remove Theme","theme"),this,SLOT(deleteTheme()));
-		m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)),__tr2qs_ctx("&Apply Theme","theme"),this,SLOT(applyCurrentTheme()));
+		m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs_ctx("&Remove Theme","theme"),this,SLOT(deleteTheme()));
+		m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)),__tr2qs_ctx("&Apply Theme","theme"),this,SLOT(applyCurrentTheme()));
 		m_pContextPopup->popup(m_pListWidget->viewport()->mapToGlobal(pos));
 	}
 }

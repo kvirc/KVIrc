@@ -936,7 +936,7 @@ void KviMainWindow::fillToolBarsPopup(KviTalPopupMenu * p)
 		p->insertSeparator();
 
 	p->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::ToolBar)),
 			__tr2qs("Customize..."),
 			this,
 			SLOT(customizeToolBars())

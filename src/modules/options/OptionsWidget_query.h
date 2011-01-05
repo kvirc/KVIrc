@@ -26,7 +26,7 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_query KVI_SMALLICON_QUERY
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_query KviIconManager::Query
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_query __tr2qs_no_lookup("Query")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_query OptionsWidget_irc
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_query __tr2qs_no_lookup("chat")

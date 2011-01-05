@@ -88,13 +88,13 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 	addWidgetToLayout(vbox,1,1,1,1);
 
 	QToolButton * tb = new QToolButton(vbox);
-	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY))));
+	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Proxy))));
 	tb->setAutoRaise(true);
 	connect(tb,SIGNAL(clicked()),this,SLOT(newProxy()));
 	mergeTip(tb,__tr2qs_ctx("New Proxy","options"));
 
 	tb = new QToolButton(vbox);
-	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT))));
+	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Cut))));
 	//tb->setEnabled(false);
 	tb->setAutoRaise(true);
 	connect(tb,SIGNAL(clicked()),this,SLOT(removeCurrent()));
@@ -160,7 +160,7 @@ void OptionsWidget_proxy::fillProxyList()
 
 	for(KviProxy * p = l->first();p;p = l->next())
 	{
-		prx = new ProxyOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)),p);
+		prx = new ProxyOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::Proxy)),p);
 		if(p == g_pProxyDataBase->currentProxy())
 		{
 			prx->setSelected(true);
@@ -323,15 +323,15 @@ void OptionsWidget_proxy::customContextMenuRequested(const QPoint &pos)
 {
 	QTreeWidgetItem *it=(QTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
 	m_pContextPopup->clear();
-	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)),__tr2qs_ctx("&New Proxy","options"),this,SLOT(newProxy()));
-	m_pContextPopup->setItemEnabled(m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)),__tr2qs_ctx("Re&move Proxy","options"),this,SLOT(removeCurrent())),it);
+	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Proxy)),__tr2qs_ctx("&New Proxy","options"),this,SLOT(newProxy()));
+	m_pContextPopup->setItemEnabled(m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),__tr2qs_ctx("Re&move Proxy","options"),this,SLOT(removeCurrent())),it);
 	m_pContextPopup->popup(QCursor::pos());
 }
 
 void OptionsWidget_proxy::newProxy()
 {
 	KviProxy prx;
-	ProxyOptionsTreeWidgetItem * it = new ProxyOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)),&prx);
+	ProxyOptionsTreeWidgetItem * it = new ProxyOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::Proxy)),&prx);
 	it->setSelected(true);
 	m_pTreeWidget->setCurrentItem(it);
 	m_pTreeWidget->scrollToItem(it);

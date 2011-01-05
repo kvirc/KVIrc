@@ -39,7 +39,6 @@
 #include "KviWindow.h"
 #include "KviMainWindow.h"
 #include "KviWindowListBase.h"
-#include "KviIconManager.h"
 #include "KviMdiChild.h"
 #include "KviLocale.h"
 #include "KviIrcView.h"
@@ -393,13 +392,13 @@ void KviWindow::destroyWindowListItem()
 	}
 }
 
-QToolButton * KviWindow::createToolButton(QWidget * par,const char * nam,int pixon,int,const QString & tooltip,bool bOn)
+QToolButton * KviWindow::createToolButton(QWidget * pPar, const char * pcName, KviIconManager::SmallIcon eIcon, const QString & szToolTip, bool bOn)
 {
-	QToolButton * b = new QToolButton(par);
-	b->setObjectName(nam);
-	b->setIcon(QIcon(*(g_pIconManager->getSmallIcon(pixon))));
+	QToolButton * b = new QToolButton(pPar);
+	b->setObjectName(pcName);
+	b->setIcon(QIcon(*(g_pIconManager->getSmallIcon(eIcon))));
 	b->setAutoRaise(true);
-	KviTalToolTip::add(b,tooltip);
+	KviTalToolTip::add(b,szToolTip);
 	b->setChecked(bOn);
 	return b;
 }
@@ -408,15 +407,17 @@ QToolButton * KviWindow::createToolButton(QWidget * par,const char * nam,int pix
 void KviWindow::createCryptControllerButton(QWidget *)
 {
 #ifdef COMPILE_CRYPT_SUPPORT
-	m_pCryptControllerButton = new KviWindowToolPageButton(KVI_SMALLICON_UNLOCKEDOFF,KVI_SMALLICON_UNLOCKED,__tr2qs("Crypting"),buttonContainer(),false,"crypt_controller_button");
+	m_pCryptControllerButton = new KviWindowToolPageButton(KviIconManager::UnLockedOff,KviIconManager::UnLocked,__tr2qs("Crypting"),buttonContainer(),false);
+	m_pCryptControllerButton->setObjectName("crypt_controller_button");
 	connect(m_pCryptControllerButton,SIGNAL(clicked()),this,SLOT(toggleCryptController()));
 #endif // COMPILE_CRYPT_SUPPORT
 }
 
 void KviWindow::createTextEncodingButton(QWidget * par)
 {
-	if(m_pTextEncodingButton)delete m_pTextEncodingButton;
-	m_pTextEncodingButton = createToolButton(par,"text_encoding_button",KVI_SMALLICON_TEXTENCODING,KVI_SMALLICON_TEXTENCODING,__tr2qs("Text Encoding"),false);
+	if(m_pTextEncodingButton)
+		delete m_pTextEncodingButton;
+	m_pTextEncodingButton = createToolButton(par,"text_encoding_button",KviIconManager::TextEncoding,__tr2qs("Text Encoding"),false);
 	connect(m_pTextEncodingButton,SIGNAL(clicked()),this,SLOT(textEncodingButtonClicked()));
 }
 
@@ -485,8 +486,8 @@ void KviWindow::setCryptSessionInfo(KviCryptSessionInfo * inf)
 	if(m_pCryptControllerButton)
 	{
 		QIcon is;
-		is.addPixmap(*(g_pIconManager->getSmallIcon(m_pCryptSessionInfo ? KVI_SMALLICON_LOCKEDOFF : KVI_SMALLICON_UNLOCKEDOFF)),QIcon::Normal,QIcon::Off);
-		is.addPixmap(*(g_pIconManager->getSmallIcon(m_pCryptSessionInfo ? KVI_SMALLICON_LOCKED : KVI_SMALLICON_UNLOCKED)),QIcon::Normal,QIcon::On);
+		is.addPixmap(*(g_pIconManager->getSmallIcon(m_pCryptSessionInfo ? KviIconManager::LockedOff : KviIconManager::UnLockedOff)),QIcon::Normal,QIcon::Off);
+		is.addPixmap(*(g_pIconManager->getSmallIcon(m_pCryptSessionInfo ? KviIconManager::Locked : KviIconManager::UnLocked)),QIcon::Normal,QIcon::On);
 		m_pCryptControllerButton->setIcon(is);
 
 		if(m_pCryptControllerButton->isChecked())
@@ -622,7 +623,7 @@ void KviWindow::loadProperties(KviConfigurationFile *cfg)
 
 QPixmap * KviWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_DEFAULTICON);
+	return g_pIconManager->getSmallIcon(KviIconManager::DefaultIcon);
 }
 
 void KviWindow::getWindowListTipText(QString &buffer)

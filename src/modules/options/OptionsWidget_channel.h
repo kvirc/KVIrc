@@ -32,7 +32,7 @@
 
 class QComboBox;
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channel KVI_SMALLICON_CHANNEL
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channel KviIconManager::Channel
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channel __tr2qs_no_lookup("Channel")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_channel OptionsWidget_irc
 #define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_channel true
@@ -48,7 +48,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelGeneral KVI_SMALLICON_CHANNEL
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelGeneral KviIconManager::Channel
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelGeneral __tr2qs_no_lookup("General")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_channelGeneral OptionsWidget_channel
 
@@ -60,7 +60,7 @@ public:
 	~OptionsWidget_channelGeneral();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelAdvanced KVI_SMALLICON_CHANNEL
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelAdvanced KviIconManager::Channel
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelAdvanced __tr2qs_no_lookup("Advanced")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_channelAdvanced OptionsWidget_channel
 

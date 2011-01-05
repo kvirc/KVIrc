@@ -123,7 +123,7 @@ static bool sharedfileswindow_module_init(KviModule * m)
 		__tr2qs_ctx("Manage S&hared Files","sharedfileswindow"),
 		sharedfileswindow_extension_alloc);
 
-	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SHAREDFILES)));
+	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::SharedFiles)));
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",sharedfileswindow_kvs_cmd_open);
 	return true;

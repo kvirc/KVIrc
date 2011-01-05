@@ -103,13 +103,13 @@ void OptionsWidgetContainer::setup(KviOptionsWidget * w)
 	m_pLayout->addWidget(b,1,1);
 	b->setDefault(true);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
-	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	b->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 
 	m_pCancel = new QPushButton(__tr2qs_ctx("Cancel","options"),this);
 	KviTalToolTip::add(m_pCancel,__tr2qs_ctx("Close this dialog, discarding all changes.","options"));
 	m_pLayout->addWidget(m_pCancel,1,2);
 	connect(m_pCancel,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-	m_pCancel->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	m_pCancel->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)));
 
 
 	m_pLayout->setRowStretch(0,1);
@@ -118,7 +118,7 @@ void OptionsWidgetContainer::setup(KviOptionsWidget * w)
 	OptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(w->metaObject()->className());
 	if(e)
 	{
-		setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(e->iIcon))));
+		setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(e->eIcon))));
 		setWindowTitle(e->szName);
 	}
 

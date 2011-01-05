@@ -95,7 +95,7 @@ void KviDebugWindow::fillCaptionBuffers()
 
 QPixmap * KviDebugWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_BUG);
+	return g_pIconManager->getSmallIcon(KviIconManager::Bug);
 }
 
 void KviDebugWindow::resizeEvent(QResizeEvent *)

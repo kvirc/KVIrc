@@ -116,7 +116,7 @@ KviConsoleWindow::KviConsoleWindow(KviMainWindow * lpFrm,int iFlags)
 	m_pAddressEdit->setAutoCompletion(true);
 	m_pAddressEdit->setDuplicatesEnabled(false);
 	m_pAddressEdit->setEditable(true);
-	m_pAddressEdit->addItem(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL))),"");
+	m_pAddressEdit->addItem(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Url))),"");
 	recentUrlsChanged();
 	m_pAddressEdit->setInsertPolicy(QComboBox::NoInsert);
 	m_pAddressEdit->setMinimumHeight(24); //icon is 16px, + margins
@@ -138,7 +138,7 @@ KviConsoleWindow::KviConsoleWindow(KviMainWindow * lpFrm,int iFlags)
 	// FIXME: #warning "Button to show/hide the notifyListView (NOT DELETE RE_CREATE!)"
 	// The userlist on the right
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
-	m_pNotifyViewButton = new KviWindowToolPageButton(KVI_SMALLICON_HIDELISTVIEW,KVI_SMALLICON_SHOWLISTVIEW,__tr2qs("Notify List"),buttonContainer(),true,"list_view_button");
+	m_pNotifyViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Notify List"),buttonContainer(),true);
 	connect(m_pNotifyViewButton,SIGNAL(clicked()),this,SLOT(toggleNotifyView()));
 
 	m_pNotifyListView  = new KviUserListView(m_pSplitter,m_pNotifyViewButton,0,this,19,__tr2qs("Notify List"),"notify_list_view");
@@ -161,7 +161,7 @@ void KviConsoleWindow::recentUrlsChanged()
 		it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls).end();
 		++it
 			) {
-		m_pAddressEdit->addItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)),*it);
+		m_pAddressEdit->addItem(*(g_pIconManager->getSmallIcon(KviIconManager::Url)),*it);
 	}
 //	m_pAddressEdit->setCurrentText(cur);
 	int i = m_pAddressEdit->findText(cur);
@@ -1161,7 +1161,7 @@ void KviConsoleWindow::fillCaptionBuffers()
 
 QPixmap * KviConsoleWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(isConnected() ? KVI_SMALLICON_LINKS : KVI_SMALLICON_CONSOLE);
+	return g_pIconManager->getSmallIcon(isConnected() ? KviIconManager::Links : KviIconManager::Console);
 }
 
 void KviConsoleWindow::getWindowListTipText(QString &buffer)

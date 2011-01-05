@@ -33,16 +33,16 @@ class UserWindow : public KviWindow
 public:
 	enum CreationFlags { HasInput = 1 };
 public:
-	UserWindow(KviMainWindow * pFrm,const char * name,int iIcon,KviConsoleWindow * pConsole = 0,int iCreationFlags = 0);
+	UserWindow(KviMainWindow * pFrm, const char * pcName, int iIcon, KviConsoleWindow * pConsole = 0, int iCreationFlags = 0);
 	~UserWindow();
 protected:
 	int m_iIcon;
 protected:
-	virtual void resizeEvent(QResizeEvent *e);
+	virtual void resizeEvent(QResizeEvent *);
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 public:
-	void setWindowTitleStrings(const QString &szPlainText);
+	void setWindowTitleStrings(const QString & szPlainText);
 };
 
-#endif //!_USERWINDOW_H_
+#endif // _USERWINDOW_H_

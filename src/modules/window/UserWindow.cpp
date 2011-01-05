@@ -23,8 +23,6 @@
 //=============================================================================
 
 #include "UserWindow.h"
-
-#include "KviIconManager.h"
 #include "KviInput.h"
 #include "KviIrcView.h"
 #include "KviMainWindow.h"
@@ -33,14 +31,14 @@
 extern KviPointerList<UserWindow> * g_pUserWindowList;
 
 
-UserWindow::UserWindow(KviMainWindow * pFrm,const char * name,int iIcon,KviConsoleWindow * pConsole,int iCreationFlags)
-: KviWindow(KVI_WINDOW_TYPE_USERWINDOW,pFrm,name,pConsole)
+UserWindow::UserWindow(KviMainWindow * pFrm, const char * pcName, int iIcon, KviConsoleWindow * pConsole, int iCreationFlags)
+: KviWindow(KVI_WINDOW_TYPE_USERWINDOW,pFrm,pcName,pConsole)
 {
 	g_pUserWindowList->append(this);
 
 	m_iIcon = iIcon;
 
-	m_szPlainTextCaption = name;
+	m_szPlainTextCaption = pcName;
 	fillSingleColorCaptionBuffers(m_szPlainTextCaption);
 
 	// Register ourselves
@@ -63,12 +61,14 @@ UserWindow::UserWindow(KviMainWindow * pFrm,const char * name,int iIcon,KviConso
 		m_pInput = 0;
 	//	applyOptions();
 
-	if(context())context()->registerContextWindow(this);
+	if(context())
+		context()->registerContextWindow(this);
 }
 
 UserWindow::~UserWindow()
 {
-	if(context())context()->unregisterContextWindow(this);
+	if(context())
+		context()->unregisterContextWindow(this);
 	g_pUserWindowList->removeRef(this);
 }
 
@@ -94,7 +94,7 @@ void UserWindow::fillCaptionBuffers()
 	// nothing here
 }
 
-void UserWindow::setWindowTitleStrings(const QString &szPlainText)
+void UserWindow::setWindowTitleStrings(const QString & szPlainText)
 {
 	m_szPlainTextCaption = szPlainText;
 	updateCaption();

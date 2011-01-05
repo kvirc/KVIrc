@@ -788,7 +788,7 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	g->setRowStretch(0,1);
 
 	QToolButton * b = new QToolButton(this);
-	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_OPTIONS)));
+	b->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Options)));
 
 	b->setObjectName("ToolButtonEditor");
 	b->setMinimumWidth(24);

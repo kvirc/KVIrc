@@ -71,7 +71,6 @@
 #include "OptionsWidget_windowList.h"
 
 #include "KviLocale.h"
-#include "KviIconManager.h"
 #include "OptionsInstanceManager.h"
 
 int g_iOptionWidgetInstances = 0;
@@ -675,7 +674,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_connection_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_connection;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connection;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connection;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connection
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connection;
 	#else
@@ -712,7 +711,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_connectionAdvanced_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_connectionAdvanced;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionAdvanced;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionAdvanced;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionAdvanced
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionAdvanced;
 		#else
@@ -749,7 +748,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_connectionSsl_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_connectionSsl;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSsl;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSsl;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSsl
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSsl;
 			#else
@@ -783,7 +782,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_connectionSocket_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_connectionSocket;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSocket;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSocket;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSocket
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSocket;
 			#else
@@ -817,7 +816,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_identService_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_identService;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identService;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identService;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identService
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identService;
 			#else
@@ -851,7 +850,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_proxy_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_proxy;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_proxy;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_proxy;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_proxy
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_proxy;
 		#else
@@ -885,7 +884,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_dcc_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_dcc;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dcc;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dcc;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dcc
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dcc;
 	#else
@@ -921,7 +920,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_dccGeneral_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_dccGeneral;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccGeneral;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccGeneral;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccGeneral
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccGeneral;
 		#else
@@ -955,7 +954,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_dccAdvanced_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_dccAdvanced;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccAdvanced;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccAdvanced;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccAdvanced
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccAdvanced;
 		#else
@@ -989,7 +988,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_dccSend_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_dccSend;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSend;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSend;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccSend
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccSend;
 		#else
@@ -1025,7 +1024,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_dccSendGeneral_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_dccSendGeneral;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendGeneral;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendGeneral;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccSendGeneral
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccSendGeneral;
 			#else
@@ -1059,7 +1058,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_dccSendAdvanced_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_dccSendAdvanced;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendAdvanced;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendAdvanced;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccSendAdvanced
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccSendAdvanced;
 			#else
@@ -1093,7 +1092,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_dccChat_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_dccChat;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccChat;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccChat;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccChat
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccChat;
 		#else
@@ -1127,7 +1126,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_dccVoice_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_dccVoice;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccVoice;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccVoice;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccVoice
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccVoice;
 		#else
@@ -1161,7 +1160,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_general_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_general;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_general;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_general;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_general
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_general;
 	#else
@@ -1197,7 +1196,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_mediaTypes_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_mediaTypes;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_mediaTypes;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_mediaTypes;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_mediaTypes
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_mediaTypes;
 		#else
@@ -1231,7 +1230,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_sound_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_sound;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_sound;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_sound;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_sound
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_sound;
 		#else
@@ -1267,7 +1266,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_soundGeneral_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_soundGeneral;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_soundGeneral;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_soundGeneral;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_soundGeneral
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_soundGeneral;
 			#else
@@ -1301,7 +1300,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_sounds_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_sounds;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_sounds;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_sounds;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_sounds
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_sounds;
 			#else
@@ -1335,7 +1334,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_textEncoding_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_textEncoding;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_textEncoding;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_textEncoding;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_textEncoding
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_textEncoding;
 		#else
@@ -1369,7 +1368,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_uparser_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_uparser;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_uparser;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_uparser;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_uparser
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_uparser;
 		#else
@@ -1403,7 +1402,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_urlHandlers_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_urlHandlers;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_urlHandlers;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_urlHandlers;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_urlHandlers
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_urlHandlers;
 		#else
@@ -1437,7 +1436,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_identity_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_identity;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identity;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identity;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identity
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identity;
 	#else
@@ -1473,7 +1472,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classKviIdentityGeneralOptionsWidget_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_KviIdentityGeneralOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIdentityGeneralOptionsWidget;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_KviIdentityGeneralOptionsWidget;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityGeneralOptionsWidget
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityGeneralOptionsWidget;
 		#else
@@ -1507,7 +1506,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_identityAvatar_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_identityAvatar;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAvatar;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAvatar;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAvatar
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAvatar;
 		#else
@@ -1541,7 +1540,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_identityAdvanced_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_identityAdvanced;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAdvanced;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAdvanced;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAdvanced
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAdvanced;
 		#else
@@ -1575,7 +1574,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_identityProfile_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_identityProfile;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityProfile;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityProfile;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityProfile
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityProfile;
 		#else
@@ -1609,7 +1608,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_inputLook_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_inputLook;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_inputLook;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_inputLook;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_inputLook
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_inputLook;
 	#else
@@ -1643,7 +1642,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_interfaceFeatures_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_interfaceFeatures;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_interfaceFeatures;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_interfaceFeatures;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_interfaceFeatures
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_interfaceFeatures;
 	#else
@@ -1679,7 +1678,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_inputFeatures_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_inputFeatures;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_inputFeatures;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_inputFeatures;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_inputFeatures
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_inputFeatures;
 		#else
@@ -1713,7 +1712,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_notifier_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_notifier;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notifier;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notifier;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_notifier
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_notifier;
 		#else
@@ -1747,7 +1746,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_tray_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_tray;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_tray;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_tray;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_tray
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_tray;
 		#else
@@ -1781,7 +1780,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_irc_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_irc;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_irc;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_irc;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_irc
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_irc;
 	#else
@@ -1817,7 +1816,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_channel_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_channel;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channel;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channel;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channel
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channel;
 		#else
@@ -1853,7 +1852,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_channelGeneral_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_channelGeneral;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelGeneral;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelGeneral;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channelGeneral
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channelGeneral;
 			#else
@@ -1887,7 +1886,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_channelAdvanced_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_channelAdvanced;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelAdvanced;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelAdvanced;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channelAdvanced
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channelAdvanced;
 			#else
@@ -1921,7 +1920,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_ircGeneral_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_ircGeneral;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircGeneral;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircGeneral;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircGeneral
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircGeneral;
 		#else
@@ -1955,7 +1954,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_ircAdvanced_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_ircAdvanced;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircAdvanced;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircAdvanced;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircAdvanced
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircAdvanced;
 		#else
@@ -1989,7 +1988,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_ircOutput_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_ircOutput;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircOutput;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircOutput;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircOutput
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircOutput;
 		#else
@@ -2023,7 +2022,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_protection_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_protection;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_protection;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_protection;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_protection
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_protection;
 		#else
@@ -2059,7 +2058,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_antispam_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_antispam;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_antispam;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_antispam;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_antispam
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_antispam;
 			#else
@@ -2093,7 +2092,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_ctcpFloodProtection_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_ctcpFloodProtection;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ctcpFloodProtection;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ctcpFloodProtection;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ctcpFloodProtection
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ctcpFloodProtection;
 			#else
@@ -2127,7 +2126,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_ignore_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_ignore;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ignore;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ignore;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ignore
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ignore;
 			#else
@@ -2161,7 +2160,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_query_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_query;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_query;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_query;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_query
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_query;
 		#else
@@ -2195,7 +2194,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_tools_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_tools;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_tools;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_tools;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_tools
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_tools;
 		#else
@@ -2231,7 +2230,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_alertsAndHighlighting_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_alertsAndHighlighting;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_alertsAndHighlighting;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_alertsAndHighlighting;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_alertsAndHighlighting
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_alertsAndHighlighting;
 			#else
@@ -2268,7 +2267,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 				e3->createProc = &classOptionsWidget_highlighting_createInstanceProc;
 				e3->pWidget = 0;
 				e3->szClassName = g_szClassName_OptionsWidget_highlighting;
-				e3->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_highlighting;
+				e3->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_highlighting;
 				#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_highlighting
 				e3->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_highlighting;
 				#else
@@ -2302,7 +2301,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 				e3->createProc = &classOptionsWidget_alerts_createInstanceProc;
 				e3->pWidget = 0;
 				e3->szClassName = g_szClassName_OptionsWidget_alerts;
-				e3->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_alerts;
+				e3->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_alerts;
 				#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_alerts
 				e3->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_alerts;
 				#else
@@ -2336,7 +2335,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_avatar_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_avatar;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_avatar;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_avatar;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_avatar
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_avatar;
 			#else
@@ -2370,7 +2369,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_away_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_away;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_away;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_away;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_away
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_away;
 			#else
@@ -2404,7 +2403,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_ctcp_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_ctcp;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ctcp;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ctcp;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ctcp
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ctcp;
 			#else
@@ -2438,7 +2437,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_lag_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_lag;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_lag;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_lag;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_lag
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_lag;
 			#else
@@ -2472,7 +2471,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_logging_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_logging;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_logging;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_logging;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_logging
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_logging;
 			#else
@@ -2506,7 +2505,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_nickServ_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_nickServ;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_nickServ;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_nickServ;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_nickServ
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_nickServ;
 			#else
@@ -2540,7 +2539,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_notify_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_notify;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notify;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notify;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_notify
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_notify;
 			#else
@@ -2574,7 +2573,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_textIcons_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_textIcons;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_textIcons;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_textIcons;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_textIcons
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_textIcons;
 			#else
@@ -2608,7 +2607,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_ircViewTheme_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_ircViewTheme;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewTheme;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewTheme;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewTheme
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewTheme;
 	#else
@@ -2644,7 +2643,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_ircViewLook_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_ircViewLook;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewLook;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewLook;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewLook
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewLook;
 		#else
@@ -2678,7 +2677,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_ircViewFeatures_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_ircViewFeatures;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewFeatures;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewFeatures;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewFeatures
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewFeatures;
 		#else
@@ -2712,7 +2711,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_ircViewMarker_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_ircViewMarker;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewMarker;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewMarker;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewMarker
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewMarker;
 		#else
@@ -2746,7 +2745,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_message_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_message;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_message;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_message;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_message
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_message;
 	#else
@@ -2782,7 +2781,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_privmsg_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_privmsg;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_privmsg;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_privmsg;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_privmsg
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_privmsg;
 		#else
@@ -2816,7 +2815,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_timestamp_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_timestamp;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_timestamp;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_timestamp;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_timestamp
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_timestamp;
 		#else
@@ -2850,7 +2849,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_messageColors_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_messageColors;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_messageColors;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_messageColors;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_messageColors
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_messageColors;
 		#else
@@ -2884,7 +2883,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_standardColors_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_standardColors;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_standardColors;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_standardColors;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_standardColors
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_standardColors;
 		#else
@@ -2918,7 +2917,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_notifierLook_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_notifierLook;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notifierLook;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notifierLook;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_notifierLook
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_notifierLook;
 	#else
@@ -2952,7 +2951,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_servers_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_servers;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_servers;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_servers;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_servers
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_servers;
 	#else
@@ -2986,7 +2985,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_theme_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_theme;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_theme;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_theme;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_theme
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_theme;
 	#else
@@ -3020,7 +3019,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_themeTransparency_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_themeTransparency;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeTransparency;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeTransparency;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeTransparency
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeTransparency;
 	#else
@@ -3054,7 +3053,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_themeMdiArea_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_themeMdiArea;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeMdiArea;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeMdiArea;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeMdiArea
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeMdiArea;
 	#else
@@ -3088,7 +3087,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_themeToolBarApplets_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_themeToolBarApplets;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeToolBarApplets;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeToolBarApplets;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeToolBarApplets
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeToolBarApplets;
 	#else
@@ -3122,7 +3121,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_topicLabel_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_topicLabel;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_topicLabel;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_topicLabel;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_topicLabel
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_topicLabel;
 	#else
@@ -3156,7 +3155,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_userList_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_userList;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userList;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userList;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userList
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userList;
 	#else
@@ -3192,7 +3191,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_userListBackground_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_userListBackground;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListBackground;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListBackground;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListBackground
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListBackground;
 		#else
@@ -3226,7 +3225,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_userListForeground_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_userListForeground;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListForeground;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListForeground;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListForeground
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListForeground;
 		#else
@@ -3260,7 +3259,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_userListGrid_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_userListGrid;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListGrid;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListGrid;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListGrid
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListGrid;
 		#else
@@ -3294,7 +3293,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_userListFeatures_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_userListFeatures;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListFeatures;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListFeatures;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListFeatures
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListFeatures;
 		#else
@@ -3328,7 +3327,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e0->createProc = &classOptionsWidget_windowList_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_OptionsWidget_windowList;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowList;
+	e0->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowList;
 	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowList
 	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowList;
 	#else
@@ -3364,7 +3363,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_windowListTree_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_windowListTree;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTree;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTree;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTree
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTree;
 		#else
@@ -3400,7 +3399,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_windowListTreeForeground_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_windowListTreeForeground;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeForeground;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeForeground;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTreeForeground
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTreeForeground;
 			#else
@@ -3434,7 +3433,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_windowListTreeBackground_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_windowListTreeBackground;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeBackground;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeBackground;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTreeBackground
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTreeBackground;
 			#else
@@ -3468,7 +3467,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 			e2->createProc = &classOptionsWidget_windowListTreeFeatures_createInstanceProc;
 			e2->pWidget = 0;
 			e2->szClassName = g_szClassName_OptionsWidget_windowListTreeFeatures;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeFeatures;
+			e2->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeFeatures;
 			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTreeFeatures
 			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTreeFeatures;
 			#else
@@ -3502,7 +3501,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e1->createProc = &classOptionsWidget_windowListClassic_createInstanceProc;
 		e1->pWidget = 0;
 		e1->szClassName = g_szClassName_OptionsWidget_windowListClassic;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListClassic;
+		e1->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListClassic;
 		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListClassic
 		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListClassic;
 		#else
@@ -3534,29 +3533,29 @@ OptionsInstanceManager::OptionsInstanceManager()
 
 }
 
-void OptionsInstanceManager::deleteInstanceTree(KviPointerList<OptionsWidgetInstanceEntry> * l)
+void OptionsInstanceManager::deleteInstanceTree(KviPointerList<OptionsWidgetInstanceEntry> * pList)
 {
-	if(l)
+	if(pList)
 	{
-		for(OptionsWidgetInstanceEntry * e = l->first();e;e = l->next())
+		for(OptionsWidgetInstanceEntry * pEntry = pList->first(); pEntry; pEntry = pList->next())
 		{
-			if(e->pWidget)
+			if(pEntry->pWidget)
 			{
-				if(e->pWidget->parent()->inherits("OptionsWidgetContainer"))
+				if(pEntry->pWidget->parent()->inherits("OptionsWidgetContainer"))
 				{
-					disconnect(e->pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
-					delete e->pWidget->parent();
-					e->pWidget =  0;
+					disconnect(pEntry->pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
+					delete pEntry->pWidget->parent();
+					pEntry->pWidget =  0;
 				} else {
 					qDebug("Ops...i have deleted the options dialog ?");
 				}
 			} //else qDebug("Clas %s has no widget",e->szName);
-			if(e->pChildList)deleteInstanceTree(e->pChildList);
+			if(pEntry->pChildList)
+				deleteInstanceTree(pEntry->pChildList);
 		}
-		delete l;
+		delete pList;
 	}
 }
-
 
 OptionsInstanceManager::~OptionsInstanceManager()
 {
@@ -3572,121 +3571,126 @@ void OptionsInstanceManager::cleanup(KviModule *)
 
 void OptionsInstanceManager::widgetDestroyed()
 {
-	OptionsWidgetInstanceEntry * e = findInstanceEntry(sender(),m_pInstanceTree);
-	if(e)
-		e->pWidget = 0;
+	OptionsWidgetInstanceEntry * pEntry = findInstanceEntry(sender(),m_pInstanceTree);
+	if(pEntry)
+		pEntry->pWidget = 0;
 	if(g_iOptionWidgetInstances > 0)
 		g_iOptionWidgetInstances--;
 
 }
 
-KviOptionsWidget * OptionsInstanceManager::getInstance(OptionsWidgetInstanceEntry * e,QWidget * par)
+KviOptionsWidget * OptionsInstanceManager::getInstance(OptionsWidgetInstanceEntry * pEntry, QWidget * pPar)
 {
-	if(!e)
+	if(!pEntry)
 		return NULL;
 
 #if 0
-	if(e->pWidget)
+	if(pEntry->pWidget)
 	{
-		if(e->pWidget->parent() != par)
+		if(pEntry->pWidget->parent() != pPar)
 		{
-			QWidget * oldPar = (QWidget *)e->pWidget->parent();
-			e->pWidget->setParent(par);
-			oldPar->deleteLater();
-			e->pWidget=0;
+			QWidget * pOldPar = (QWidget *)pEntry->pWidget->parent();
+			pEntry->pWidget->setParent(pPar);
+			pOldPar->deleteLater();
+			pEntry->pWidget = 0;
 		}
 	}
 #endif
 
-	if(!(e->pWidget))
+	if(!(pEntry->pWidget))
 	{
-		e->pWidget = e->createProc(par);
+		pEntry->pWidget = pEntry->createProc(pPar);
 		g_iOptionWidgetInstances++;
-		connect(e->pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
+		connect(pEntry->pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
 	}
 
-	if(e->pWidget->parent() != par)
+	if(pEntry->pWidget->parent() != pPar)
 	{
-		QWidget * oldPar = (QWidget *)e->pWidget->parent();
-		e->pWidget->setParent(par); //reparent(par,QPoint(0,0));
-		if(oldPar->inherits("OptionsWidgetContainer"))
-			delete oldPar;
+		QWidget * pOldPar = (QWidget *)pEntry->pWidget->parent();
+		pEntry->pWidget->setParent(pPar); //reparent(pPar,QPoint(0,0));
+		if(pOldPar->inherits("OptionsWidgetContainer"))
+			delete pOldPar;
 		// else it's very likely a QStackedWidget, child of a KviOptionsWidget: don't delete
 	}
 
-	if(e->bIsContainer)
+	if(pEntry->bIsContainer)
 	{
 		// need to create the container structure!
-		e->pWidget->createTabbedPage();
-		if(e->pChildList)
+		pEntry->pWidget->createTabbedPage();
+		if(pEntry->pChildList)
 		{
-			KviPointerList<OptionsWidgetInstanceEntry> tmp;
-			tmp.setAutoDelete(false);
+			KviPointerList<OptionsWidgetInstanceEntry> tmpList;
+			tmpList.setAutoDelete(false);
 
-			for(OptionsWidgetInstanceEntry * e2 = e->pChildList->first();e2;e2 = e->pChildList->next())
+			for(OptionsWidgetInstanceEntry * pEntry2 = pEntry->pChildList->first(); pEntry2; pEntry2 = pEntry->pChildList->next())
 			{
 				// add only non containers and widgets not explicitly marked as noncontained
-				if((!e2->bIsContainer) && (!e2->bIsNotContained))
+				if((!pEntry2->bIsContainer) && (!pEntry2->bIsNotContained))
 				{
-					OptionsWidgetInstanceEntry * ee = tmp.first();
-					int idx = 0;
-					while(ee)
+					OptionsWidgetInstanceEntry * pEntry3 = tmpList.first();
+					int iIdx = 0;
+					while(pEntry3)
 					{
-						if(ee->iPriority >= e2->iPriority)break;
-						idx++;
-						ee = tmp.next();
+						if(pEntry3->iPriority >= pEntry2->iPriority)
+							break;
+						iIdx++;
+						pEntry3 = tmpList.next();
 					}
-					tmp.insert(idx,e2);
+					tmpList.insert(iIdx,pEntry2);
 				}
 			}
 
-			for(OptionsWidgetInstanceEntry * e3 = tmp.last();e3;e3 = tmp.prev())
+			for(OptionsWidgetInstanceEntry * pEntry4 = tmpList.last(); pEntry4; pEntry4 = tmpList.prev())
 			{
-				KviOptionsWidget * ow = getInstance(e3,e->pWidget->tabWidget());
-				e->pWidget->addOptionsWidget(e3->szName,*(g_pIconManager->getSmallIcon(e3->iIcon)),ow);
+				KviOptionsWidget * pOpt = getInstance(pEntry4,pEntry->pWidget->tabWidget());
+				pEntry->pWidget->addOptionsWidget(pEntry4->szName,*(g_pIconManager->getSmallIcon(pEntry4->eIcon)),pOpt);
 			}
 		}
 	}
-	return e->pWidget;
+	return pEntry->pWidget;
 }
 
-OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const QObject * ptr,KviPointerList<OptionsWidgetInstanceEntry> * l)
+OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const QObject * pObj, KviPointerList<OptionsWidgetInstanceEntry> * pList)
 {
-	if(l)
+	if(pList)
 	{
-		for(OptionsWidgetInstanceEntry * e = l->first();e;e = l->next())
+		for(OptionsWidgetInstanceEntry * pEntry = pList->first(); pEntry; pEntry = pList->next())
 		{
-			if(ptr == e->pWidget)return e;
-			if(e->pChildList)
+			if(pObj == pEntry->pWidget)
+				return pEntry;
+			if(pEntry->pChildList)
 			{
-				OptionsWidgetInstanceEntry * e2 = findInstanceEntry(ptr,e->pChildList);
-				if(e2)return e2;
+				OptionsWidgetInstanceEntry * pEntry2 = findInstanceEntry(pObj,pEntry->pChildList);
+				if(pEntry2)
+					return pEntry2;
 			}
 		}
 	}
 	return 0;
 }
 
-OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const char * clName,KviPointerList<OptionsWidgetInstanceEntry> * l)
+OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const char * pcName, KviPointerList<OptionsWidgetInstanceEntry> * pList)
 {
-	if(l)
+	if(pList)
 	{
-		for(OptionsWidgetInstanceEntry * e = l->first();e;e = l->next())
+		for(OptionsWidgetInstanceEntry * pEntry = pList->first(); pEntry; pEntry = pList->next())
 		{
-			if(kvi_strEqualCI(e->szClassName,clName))return e;
-			if(e->pChildList)
+			if(kvi_strEqualCI(pEntry->szClassName,pcName))
+				return pEntry;
+			if(pEntry->pChildList)
 			{
-				OptionsWidgetInstanceEntry * e2 = findInstanceEntry(clName,e->pChildList);
-				if(e2)return e2;
+				OptionsWidgetInstanceEntry * pEntry2 = findInstanceEntry(pcName,pEntry->pChildList);
+				if(pEntry2)
+					return pEntry2;
 			}
 		}
 	}
 	return 0;
 }
 
-OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const char * clName)
+OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const char * pcName)
 {
-	return findInstanceEntry(clName,m_pInstanceTree);
+	return findInstanceEntry(pcName,m_pInstanceTree);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

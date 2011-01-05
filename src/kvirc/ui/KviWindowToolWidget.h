@@ -26,6 +26,7 @@
 //=============================================================================
 
 #include "KviHeapObject.h"
+#include "KviIconManager.h"
 
 #include <QToolButton>
 
@@ -36,17 +37,17 @@ class KVIRC_API KviWindowToolWidget : public QWidget
 {
 	Q_OBJECT
 public:
-	KviWindowToolWidget( QWidget * parent,KviWindowToolPageButton* button);
+	KviWindowToolWidget(QWidget * pParent, KviWindowToolPageButton * pButton);
 	~KviWindowToolWidget();
 protected:
-	KviWindowToolPageButton		*m_pButton;
+	KviWindowToolPageButton * m_pButton;
 };
 
 class KVIRC_API KviWindowToolPageButton : public QToolButton
 {
 	Q_OBJECT
 public:
-	KviWindowToolPageButton ( int pixoff,int pixon, const QString & text, QWidget * parent,bool bOn=0,const char * name = 0 );
+	KviWindowToolPageButton(KviIconManager::SmallIcon eIconOff, KviIconManager::SmallIcon eIconOn, const QString & szText, QWidget * pParent, bool bOn = false);
 	~KviWindowToolPageButton();
 };
 

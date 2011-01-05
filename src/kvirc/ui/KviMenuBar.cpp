@@ -103,53 +103,53 @@ void KviMenuBar::setupHelpPopup()
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_HELPINDEX,help)
 
-	int id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HELP)),__tr2qs("&Help Browser (Panel)"));
+	int id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Help)),__tr2qs("&Help Browser (Panel)"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_HELP_NEWSTATICWINDOW);
 
 
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IDEA)),__tr2qs("&Tip of the Day"));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)),__tr2qs("&Tip of the Day"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_TIP_OPEN);
 	help->insertSeparator();
 
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)),__tr2qs("About &KVIrc"));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)),__tr2qs("About &KVIrc"));
 
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
 	help->insertSeparator();
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc Home&page"));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc Home&page"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE);
 	if(kvi_strEqualCIN(KviLocale::localeName(),"ru",2))
 	{
-		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc Russian Home&page"));
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc Russian Home&page"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_RU);
 	}
 	if(kvi_strEqualCIN(KviLocale::localeName(),"fr",2))
 	{
-		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc French Home&page"));
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)),__tr2qs("KVIrc French Home&page"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_FR);
 	}
 	help->insertSeparator();
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MESSAGE)),__tr2qs("Subscribe to the Mailing List"));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Message)),__tr2qs("Subscribe to the Mailing List"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_MAILINGLIST);
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BOMB)),__tr2qs("Report a Bug / Propose Improvements"));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Bomb)),__tr2qs("Report a Bug / Propose Improvements"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_BUGTRACK);
 	help->insertSeparator();
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc International Channel on Freenode"));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc International Channel on Freenode"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_ON_FREENODE);
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc International Channel on IRCNet"));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc International Channel on IRCNet"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_ON_IRCNET);
 	if(kvi_strEqualCIN(KviLocale::localeName(),"it",2))
 	{
 		// join #kvirc.net on azzurra
-		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc Italian Channel on AzzurraNet"));
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc Italian Channel on AzzurraNet"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_IT_ON_AZZURRA);
 	}
 	if(kvi_strEqualCIN(KviLocale::localeName(),"fr",2))
 	{
 		// join #kvirc-fr on freenode
-		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc French Channel on Freenode"));
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French Channel on Freenode"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_FR_ON_FREENODE);
 		// join #kvirc on europnet
-		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc French Channel on EuropNet"));
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Join KVIrc French Channel on EuropNet"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_FR_ON_EUROPNET);
 	}
 }
@@ -168,7 +168,7 @@ void KviMenuBar::setupSettingsPopup()
 
 	opt->insertItem(__tr2qs("Toolbars"),m_pToolbarsPopup);
 
-	int id = opt->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_STATUSBAR)),__tr2qs("Show StatusBar"),m_pFrm,SLOT(toggleStatusBar()));
+	int id = opt->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)),__tr2qs("Show StatusBar"),m_pFrm,SLOT(toggleStatusBar()));
 	opt->setItemChecked(id,m_pFrm->mainStatusBar());
 
 
@@ -211,7 +211,7 @@ void KviMenuBar::setupScriptingPopup()
 	ACTION_POPUP_ITEM(KVI_COREACTION_EXECUTEKVS,script)
 
 	script->insertSeparator();
-	script->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TEXTEXCLAMATIVE)),__tr2qs("Restore &Default Script"),g_pApp,SLOT(restoreDefaultScript()));
+	script->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::TextExclamative)),__tr2qs("Restore &Default Script"),g_pApp,SLOT(restoreDefaultScript()));
 }
 
 void KviMenuBar::setupMainPopup()
@@ -223,10 +223,10 @@ void KviMenuBar::setupMainPopup()
 	if(m_pFrm->activeContext())
 		if(m_pFrm->activeContext()->state()==KviIrcContext::Connected)
 		{
-			int id = main->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),__tr2qs("Disconnect"),m_pFrm,SLOT(executeInternalCommand(int)));
+			int id = main->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),__tr2qs("Disconnect"),m_pFrm,SLOT(executeInternalCommand(int)));
 			main->setItemParameter(id,KVI_INTERNALCOMMAND_QUIT);
 		}
-	main->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),__tr2qs("New &Connection To"),m_pRecentServersPopup);
+	main->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::World)),__tr2qs("New &Connection To"),m_pRecentServersPopup);
 
 	main->insertSeparator();
 
@@ -234,7 +234,7 @@ void KviMenuBar::setupMainPopup()
 #ifndef COMPILE_ON_MAC
 	main->insertSeparator();
 
-	main->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITAPP)),__tr2qs("&Quit"),g_pFrame,SLOT(close()));
+	main->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),__tr2qs("&Quit"),g_pFrame,SLOT(close()));
 #endif //COMPILE_ON_MAC
 }
 
@@ -243,7 +243,7 @@ void KviMenuBar::setupRecentServersPopup()
 	KviTalPopupMenu * m = (KviTalPopupMenu *)sender();
 	g_pApp->fillRecentServersPopup(m);
 	m->insertSeparator();
-	m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),__tr2qs("&Other..."));
+	m->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs("&Other..."));
 }
 
 void KviMenuBar::newConnectionToServer(int id)
@@ -300,10 +300,10 @@ void KviMenuBar::setupToolsPopup()
 	ACTION_POPUP_ITEM(KVI_COREACTION_SCREENSHOT,m)
 
 	// moved the old tools here
-	m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ICONMANAGER)),__tr2qs("Show &Icon Table"),g_pIconManager,SLOT(showIconWidget()));
+	m->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager)),__tr2qs("Show &Icon Table"),g_pIconManager,SLOT(showIconWidget()));
 #ifdef COMPILE_KDE_SUPPORT
 	int id;
-	id = m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),__tr2qs("Open &Terminal"),m_pFrm,SLOT(executeInternalCommand(int)));
+	id = m->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)),__tr2qs("Open &Terminal"),m_pFrm,SLOT(executeInternalCommand(int)));
 	m->setItemParameter(id,KVI_INTERNALCOMMAND_TERM_OPEN);
 #endif
 

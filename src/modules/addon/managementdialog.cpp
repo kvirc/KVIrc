@@ -91,7 +91,7 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 {
 	setWindowTitle(__tr2qs_ctx("Manage Script-Based Addons","addon"));
 	setObjectName("Addon manager");
-	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ADDONS)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Addons)));
 
 	m_pInstance = this;
 	QGridLayout * g = new QGridLayout(this);

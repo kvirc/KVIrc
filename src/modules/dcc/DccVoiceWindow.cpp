@@ -660,12 +660,12 @@ DccVoiceWindow::DccVoiceWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const cha
 	KviTalVBox * vbox2 = new KviTalVBox(m_pHBox);
 
 	m_pRecordingLabel = new QLabel(vbox2);
-	m_pRecordingLabel->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RECORD)));
+	m_pRecordingLabel->setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Record)));
 	m_pRecordingLabel->setEnabled(false);
 	m_pRecordingLabel->setFrameStyle(QFrame::Raised | QFrame::Panel);
 
 	m_pPlayingLabel = new QLabel(vbox2);
-	m_pPlayingLabel->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PLAY)));
+	m_pPlayingLabel->setPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Play)));
 	m_pPlayingLabel->setEnabled(false);
 	m_pPlayingLabel->setFrameStyle(QFrame::Raised | QFrame::Panel);
 
@@ -803,7 +803,7 @@ void DccVoiceWindow::fillCaptionBuffers()
 
 QPixmap * DccVoiceWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCVOICE);
+	return g_pIconManager->getSmallIcon(KviIconManager::DccVoice);
 }
 
 bool DccVoiceWindow::event(QEvent *e)

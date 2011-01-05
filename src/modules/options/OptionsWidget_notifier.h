@@ -29,7 +29,7 @@
 
 #include <QComboBox>
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notifierLook KVI_SMALLICON_ALERT
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notifierLook KviIconManager::Alert
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_notifierLook __tr2qs_no_lookup("Notifier")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_notifierLook __tr2qs_no_lookup("theme,colors,text")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_notifierLook "theme"
@@ -47,7 +47,7 @@ public:
 	virtual void commit();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notifier KVI_SMALLICON_ALERT
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notifier KviIconManager::Alert
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_notifier __tr2qs_no_lookup("Notifier")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_notifier __tr2qs_no_lookup("popup")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_notifier OptionsWidget_interfaceFeatures

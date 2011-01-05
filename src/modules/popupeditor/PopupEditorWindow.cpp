@@ -422,26 +422,26 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint &pos)
 
 	m_pContextPopup->setItemEnabled(
 	m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),
 		__tr2qs_ctx("Cu&t","editor"),
 		this,SLOT(contextCut())),it);
 	m_pContextPopup->setItemEnabled(
 	m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_COPY)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),
 		__tr2qs_ctx("&Copy","editor"),
 		this,SLOT(contextCopy())),it);
 	m_pContextPopup->setItemEnabled(
 	m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
 		__tr2qs_ctx("&Paste Below","editor"),this,SLOT(contextPasteBelow())),
 		m_pClipboard);
 	m_pContextPopup->setItemEnabled(
 	m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
 		__tr2qs_ctx("Paste Above","editor"),this,SLOT(contextPasteAbove())),it && m_pClipboard);
 	m_pContextPopup->setItemEnabled(
 	m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)),
+		*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
 		__tr2qs_ctx("Paste Inside","editor"),this,SLOT(contextPasteInside())),it && bIsMenu && m_pClipboard);
 
 	bool bSeparatorInserted = false;
@@ -451,7 +451,7 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint &pos)
 		m_pContextPopup->insertSeparator();
 		bSeparatorInserted = true;
 		m_pContextPopup->insertItem(
-				*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROLOGUE)),
+				*(g_pIconManager->getSmallIcon(KviIconManager::Prologue)),
 				__tr2qs_ctx("New Menu Prologue","editor"),this,SLOT(contextNewPrologue()));
 //	}
 
@@ -459,7 +459,7 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint &pos)
 //	{
 		if(!bSeparatorInserted)m_pContextPopup->insertSeparator();
 		m_pContextPopup->insertItem(
-				*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EPILOGUE)),
+				*(g_pIconManager->getSmallIcon(KviIconManager::Epilogue)),
 				__tr2qs_ctx("New Menu Epilogue","editor"),this,SLOT(contextNewEpilogue()));
 //	}
 
@@ -1010,7 +1010,7 @@ void SinglePopupEditor::edit(MenuTreeWidgetItem * it)
 MenuTreeWidgetItem::MenuTreeWidgetItem(QTreeWidget * par,KviKvsPopupMenu * popup)
 : QTreeWidgetItem(par)
 {
-	setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP)));
+	setIcon(0,*(g_pIconManager->getSmallIcon(KviIconManager::Popup)));
 	setText(0,popup->popupName());
 	m_pPopup = popup;
 }
@@ -1144,19 +1144,19 @@ void PopupEditorWidget::customContextMenuRequested(const QPoint &pos)
 		m_pContextPopup->clear();
 
 		m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Popup)),
 			__tr2qs_ctx("&New Popup","editor"),
 			this,SLOT(newPopup()));
 
 		m_pContextPopup->setItemEnabled(
 		m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),
 			__tr2qs_ctx("Re&move Popup","editor"),
 			this,SLOT(removeCurrentPopup())),it);
 
 		m_pContextPopup->setItemEnabled(
 		m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 			__tr2qs_ctx("&Export Popup To...","editor"),
 			this,SLOT(exportCurrentPopup())),it);
 
@@ -1165,7 +1165,7 @@ void PopupEditorWidget::customContextMenuRequested(const QPoint &pos)
 		m_pEmptyContextPopup->clear();
 
 		m_pEmptyContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Popup)),
 			__tr2qs_ctx("&New Popup","editor"),
 			this,SLOT(newPopup()));
 		m_pEmptyContextPopup->popup(QCursor::pos());
@@ -1379,17 +1379,17 @@ PopupEditorWindow::PopupEditorWindow(KviMainWindow * lpFrm)
 
 	QPushButton * btn = new QPushButton(__tr2qs_ctx("&OK","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));
-	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 	g->addWidget(btn,1,1);
 
 	btn = new QPushButton(__tr2qs_ctx("&Apply","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(applyClicked()));
-	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 	g->addWidget(btn,1,2);
 
 	btn = new QPushButton(__tr2qs_ctx("Cancel","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)));
 	g->addWidget(btn,1,3);
 
 	g->setRowStretch(0,1);
@@ -1420,7 +1420,7 @@ void PopupEditorWindow::cancelClicked()
 
 QPixmap * PopupEditorWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP);
+	return g_pIconManager->getSmallIcon(KviIconManager::Popup);
 }
 
 void PopupEditorWindow::fillCaptionBuffers()

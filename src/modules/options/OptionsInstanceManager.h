@@ -37,26 +37,27 @@
 #include "KviModule.h"
 #include "KviPointerList.h"
 #include "KviQString.h"
+#include "KviIconManager.h"
 
 typedef struct _OptionsWidgetInstanceEntry OptionsWidgetInstanceEntry;
 
 
 typedef struct _OptionsWidgetInstanceEntry
 {
-	KviOptionsWidget                          * (*createProc)(QWidget *);
-	KviOptionsWidget                          * pWidget;   // singleton
-	int                                         iIcon;
-	QString                                     szName;
-	QString                                     szNameNoLocale;
-	const char                                * szClassName;
-	int                                         iPriority;
-	QString                                     szKeywords;
-	QString                                     szKeywordsNoLocale;
-	QString                                     szGroup;
-	bool                                        bIsContainer;
-	bool                                        bIsNotContained;
+	KviOptionsWidget                           * (*createProc)(QWidget *);
+	KviOptionsWidget                           * pWidget;   // singleton
+	KviIconManager::SmallIcon                    eIcon;
+	QString                                      szName;
+	QString                                      szNameNoLocale;
+	const char                                 * szClassName;
+	int                                          iPriority;
+	QString                                      szKeywords;
+	QString                                      szKeywordsNoLocale;
+	QString                                      szGroup;
+	bool                                         bIsContainer;
+	bool                                         bIsNotContained;
 	KviPointerList<OptionsWidgetInstanceEntry> * pChildList;
-	bool                                        bDoInsert; // a helper for OptionsDialog::fillListView()
+	bool                                         bDoInsert; // a helper for OptionsDialog::fillListView()
 } OptionsWidgetInstanceEntry;
 
 
@@ -67,16 +68,16 @@ public:
 	OptionsInstanceManager();
 	virtual ~OptionsInstanceManager();
 protected:
-	KviPointerList<OptionsWidgetInstanceEntry> *  m_pInstanceTree;
+	KviPointerList<OptionsWidgetInstanceEntry> * m_pInstanceTree;
 public:
 	KviPointerList<OptionsWidgetInstanceEntry> * instanceEntryTree(){ return m_pInstanceTree; };
-	KviOptionsWidget * getInstance(OptionsWidgetInstanceEntry * e,QWidget * par);
-	OptionsWidgetInstanceEntry * findInstanceEntry(const char * clName);
-	void cleanup(KviModule * m);
+	KviOptionsWidget * getInstance(OptionsWidgetInstanceEntry * pEntry, QWidget * pPar);
+	OptionsWidgetInstanceEntry * findInstanceEntry(const char * pcName);
+	void cleanup(KviModule *);
 protected:
-	OptionsWidgetInstanceEntry * findInstanceEntry(const char * clName,KviPointerList<OptionsWidgetInstanceEntry> * l);
-	OptionsWidgetInstanceEntry * findInstanceEntry(const QObject * ptr,KviPointerList<OptionsWidgetInstanceEntry> * l);
-	void deleteInstanceTree(KviPointerList<OptionsWidgetInstanceEntry> * l);
+	OptionsWidgetInstanceEntry * findInstanceEntry(const char * pcName, KviPointerList<OptionsWidgetInstanceEntry> * pList);
+	OptionsWidgetInstanceEntry * findInstanceEntry(const QObject * pObj, KviPointerList<OptionsWidgetInstanceEntry> * pList);
+	void deleteInstanceTree(KviPointerList<OptionsWidgetInstanceEntry> * pList);
 protected slots:
 	void widgetDestroyed();
 };

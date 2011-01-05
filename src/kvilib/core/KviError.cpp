@@ -173,7 +173,7 @@ namespace KviError
 {
 	const char * getUntranslatedDescription(KviError::Code eError)
 	{
-		if((eError < KviError::ErrorCount) && (eError >= 0))
+		if((eError < ErrorCount) && (eError >= 0))
 			return g_errorTable[eError];
 #ifdef HAVE_STRERROR
 		if(eError < 0)

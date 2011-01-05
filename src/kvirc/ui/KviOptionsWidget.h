@@ -29,6 +29,7 @@
 #include "KviSelectors.h"
 #include "KviPointerList.h"
 #include "KviTalGroupBox.h"
+#include "KviIconManager.h"
 
 #include <QFrame>
 #include <QLayout>

@@ -59,7 +59,7 @@ ChannelsJoinDialog::ChannelsJoinDialog(QWidget * par, const char * name)
 {
 	setObjectName(name);
 	setWindowTitle(__tr2qs("Join Channels"));
-	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 
 	m_pConsole = 0;
 
@@ -177,7 +177,7 @@ void ChannelsJoinDialog::fillListView()
 		{
 			QTreeWidgetItem * chld = new QTreeWidgetItem(par, RegisteredChannelItem);
 			chld->setText(0,it.key());
-			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
+			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 		}
 	}
 
@@ -206,7 +206,7 @@ void ChannelsJoinDialog::fillListView()
 				{
 					chld = new QTreeWidgetItem(par, RecentChannelItem);
 					chld->setText(0,*it);
-					chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
+					chld->setIcon(0,*(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 				}
 			}
 		}
@@ -234,7 +234,7 @@ void ChannelsJoinDialog::fillListView()
 			hNoDuplicates.insert(chan.toLower(),1);
 			chld = new QTreeWidgetItem(par, RecentChannelItem);
 			chld->setText(0,chan);
-			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
+			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 		}
 	}
 }
@@ -256,8 +256,8 @@ void ChannelsJoinDialogTreeWidget::mousePressEvent(QMouseEvent *e)
 		if(!m_pJoinPopup)
 		{
 			m_pJoinPopup = new KviTalPopupMenu(this);
-			m_pJoinPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_JOIN)),__tr2qs("Join"),pDialog,SLOT(joinClicked()));
-			m_pJoinPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)),__tr2qs("Delete"),pDialog,SLOT(deleteClicked()));
+			m_pJoinPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Join)),__tr2qs("Join"),pDialog,SLOT(joinClicked()));
+			m_pJoinPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),__tr2qs("Delete"),pDialog,SLOT(deleteClicked()));
 		}
 
 		m_pJoinPopup->popup(QCursor::pos());

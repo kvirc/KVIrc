@@ -304,7 +304,7 @@ KviIrcView::KviIrcView(QWidget *parent,KviMainWindow *pFrm,KviWindow *pWnd)
 	m_pToolsButton->setObjectName("btntools");
 	m_pToolsButton->setAutoFillBackground(true);
 
-	QIcon is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
+	QIcon is1(*(g_pIconManager->getSmallIcon(KviIconManager::PopupMenu)));
 	m_pToolsButton->setAutoRaise(true);
 	m_pToolsButton->setIcon(is1);
 
@@ -1425,7 +1425,7 @@ no_selection_paint:
 						// when building the text icon block, but.. better safe than sorry:
 						// so... we lost some icons ? wrong associations ?
 						// recover it by displaying the "question mark" icon
-						daIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_HELP); // must be there, eventually null pixmap :D
+						daIcon = g_pIconManager->getSmallIcon(KviIconManager::Help); // must be there, eventually null pixmap :D
 					}
 					int moredown = 1; //used to center imager vertically (pixels which the image is moved more down)
 					moredown += ((m_iFontLineSpacing - daIcon->height()) / 2);
@@ -1574,7 +1574,7 @@ no_selection_paint:
 				* y++; pa.drawLine(x-3,y,x+3,y);
 				* y++; pa.drawLine(x-4,y,x+4,y);
 				*/
-				QPixmap * pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_UNREADTEXT);
+				QPixmap * pIcon = g_pIconManager->getSmallIcon(KviIconManager::UnreadText);
 				m_lineMarkArea = QRect(x,y,16,16);
 				pa.drawPixmap(x,y,16,16,*pIcon);
 				//pa.setRasterOp(CopyROP);
@@ -2065,13 +2065,13 @@ void KviIrcView::showToolsPopup()
 	m_pToolsPopup->clear();
 
 	if(m_pToolWidget)
-		m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)),__tr2qs("Hide Find Window"),this,SLOT(toggleToolWidget()));
+		m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Hide Find Window"),this,SLOT(toggleToolWidget()));
 	else
-		m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)),__tr2qs("Show Find Window"),this,SLOT(toggleToolWidget()));
+		m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Search)),__tr2qs("Show Find Window"),this,SLOT(toggleToolWidget()));
 
 	m_pToolsPopup->insertSeparator();
-	m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PLUS)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));
-	m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINUS)),__tr2qs("Zoom Out"),this,SLOT(decreaseFontSize()));
+	m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)),__tr2qs("Zoom In"),this,SLOT(increaseFontSize()));
+	m_pToolsPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)),__tr2qs("Zoom Out"),this,SLOT(decreaseFontSize()));
 	m_pToolsPopup->insertItem(__tr2qs("Choose Temporary Font..."),this,SLOT(chooseFont()));
 	m_pToolsPopup->insertItem(__tr2qs("Choose Temporary Background..."),this,SLOT(chooseBackground()));
 	int id = m_pToolsPopup->insertItem(__tr2qs("Reset Temporary Background"),this,SLOT(resetBackground()));

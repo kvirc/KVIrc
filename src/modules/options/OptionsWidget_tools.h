@@ -29,7 +29,7 @@
 #include "KviOptionsWidget.h"
 #include "KviSelectors.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_tools KVI_SMALLICON_ADDONS
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_tools KviIconManager::Addons
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_tools __tr2qs_no_lookup("Tools")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_tools OptionsWidget_irc
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_tools 50000

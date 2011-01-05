@@ -193,7 +193,7 @@ namespace AddonFunctions
 		hd.szButton2Text = __tr2qs_ctx("Yes, Proceed","addon");
 		hd.iDefaultButton = 2;
 		hd.iCancelButton = 1;
-		hd.pixIcon = *(g_pIconManager->getSmallIcon(KVI_SMALLICON_ADDONS));
+		hd.pixIcon = *(g_pIconManager->getSmallIcon(KviIconManager::Addons));
 		hd.iMinimumWidth = 350;
 		hd.iMinimumHeight = 420;
 		hd.iFlags = KviHtmlDialogData::ForceMinimumSize;

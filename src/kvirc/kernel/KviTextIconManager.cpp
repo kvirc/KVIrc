@@ -24,7 +24,6 @@
 
 #define _KVI_TEXTICONMANAGER_CPP_
 
-#include "KviIconManager.h"
 #include "KviTextIconManager.h"
 #include "KviCString.h"
 #include "KviPointerList.h"
@@ -39,31 +38,31 @@
 
 static KviTextIconAssocEntry default_associations[]=
 {
-	{ ":)"    , KVI_SMALLICON_SMILE       },
-	{ ":*"    , KVI_SMALLICON_KISS        },
-	{ ":D"    , KVI_SMALLICON_BIGGRIN     },
-	{ ":("    , KVI_SMALLICON_UGLY        },
-	{ ":/"    , KVI_SMALLICON_ANGRY       },
-	{ ":O"    , KVI_SMALLICON_SURPRISED2  },
-	{ ":P"    , KVI_SMALLICON_TONGUE      },
-	{ ";)"    , KVI_SMALLICON_EYE         },
-	{ ":°)"   , KVI_SMALLICON_TEARSMILE   },
-	{ ":°"    , KVI_SMALLICON_CRY         },
-	{ ":S"    , KVI_SMALLICON_AFRAID      },
-	{ ":|"    , KVI_SMALLICON_DEMORALIZED },
-	{ ":P°"   , KVI_SMALLICON_SLURP       },
+	{ ":)"    , KviIconManager::Smile       },
+	{ ":*"    , KviIconManager::Kiss        },
+	{ ":D"    , KviIconManager::BigGrin     },
+	{ ":("    , KviIconManager::Ugly        },
+	{ ":/"    , KviIconManager::Angry       },
+	{ ":O"    , KviIconManager::Surprised2  },
+	{ ":P"    , KviIconManager::Tongue      },
+	{ ";)"    , KviIconManager::Eye         },
+	{ ":°)"   , KviIconManager::TearSmile   },
+	{ ":°"    , KviIconManager::Cry         },
+	{ ":S"    , KviIconManager::Afraid      },
+	{ ":|"    , KviIconManager::Demoralized },
+	{ ":P°"   , KviIconManager::Slurp       },
 	{ 0       , 0                         }
 };
 
 KVIRC_API KviTextIconManager * g_pTextIconManager = 0;
 
-KviTextIcon::KviTextIcon(int iId)
-: m_iId(iId),m_pAnimatedPixmap(0)
+KviTextIcon::KviTextIcon(KviIconManager::SmallIcon eIcon)
+: m_eIcon(eIcon),m_pAnimatedPixmap(0)
 {
 }
 
 KviTextIcon::KviTextIcon(QString szFile)
-: m_iId(-1), m_szFileName(szFile)
+: m_eIcon(KviIconManager::None), m_szFileName(szFile)
 {
 	QString szRetPath;
 
@@ -85,7 +84,7 @@ KviTextIcon::KviTextIcon(QString szFile)
 
 KviTextIcon::KviTextIcon(KviTextIcon * pIcon)
 {
-	m_iId = pIcon->id();
+	m_eIcon = pIcon->id();
 	m_szFileName = pIcon->m_szFileName;
 	if(pIcon->m_pAnimatedPixmap)
 	{
@@ -101,22 +100,28 @@ KviTextIcon::~KviTextIcon()
 		delete m_pAnimatedPixmap;
 }
 
-void KviTextIcon::setId(int iId)
+void KviTextIcon::setId(KviIconManager::SmallIcon eIcon)
 {
-	m_iId = iId;
-	m_szFileName=QString();
+	m_eIcon = eIcon;
+	m_szFileName = QString();
+}
+
+void KviTextIcon::setId(int iIcon)
+{
+	m_eIcon = g_pIconManager->iconName(iIcon);
+	m_szFileName = QString();
 }
 
 void KviTextIcon::setFilename(QString szFileName)
 {
-	m_iId = -1;
+	m_eIcon = KviIconManager::None;
 	m_szFileName = szFileName;
 }
 
 QPixmap * KviTextIcon::pixmap()
 {
-	if(m_iId >= 0)
-		return g_pIconManager->getSmallIcon(m_iId);
+	if(m_eIcon >= 0)
+		return g_pIconManager->getSmallIcon(m_eIcon);
 
 	// This is actually wrong (at least for the current implementation).
 	// Users of this class expect the pointer to be permanent while
@@ -144,11 +149,11 @@ void KviTextIconManager::clear()
 
 void KviTextIconManager::insert(const QString & szName, int iId)
 {
-	m_pTextIconDict->replace(szName, new KviTextIcon(iId));
+	m_pTextIconDict->replace(szName, new KviTextIcon(g_pIconManager->iconName(iId)));
 	emit changed();
 }
 
-void KviTextIconManager::insert(const QString & szName,KviTextIcon & icon)
+void KviTextIconManager::insert(const QString & szName, KviTextIcon & icon)
 {
 	m_pTextIconDict->replace(szName, new KviTextIcon(&icon));
 	emit changed();
@@ -249,7 +254,7 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 				pix=g_pIconManager->getPixmap(szTmp);
 				if(!pix)
 				{
-					iId = KVI_SMALLICON_HELP;
+					iId = KviIconManager::Help;
 					pix = g_pIconManager->getSmallIcon(iId);
 				}
 			}
@@ -262,7 +267,7 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 					{
 						if(iId != -1)
 						{
-							m_pTextIconDict->replace(*s,new KviTextIcon(iId));
+							m_pTextIconDict->replace(*s,new KviTextIcon(g_pIconManager->iconName(iId)));
 						} else {
 							m_pTextIconDict->replace(*s,new KviTextIcon(szTmp));
 						}
@@ -270,7 +275,7 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 				} else {
 					if(iId != -1)
 					{
-						m_pTextIconDict->replace(*s,new KviTextIcon(iId));
+						m_pTextIconDict->replace(*s,new KviTextIcon(g_pIconManager->iconName(iId)));
 					} else {
 						m_pTextIconDict->replace(*s,new KviTextIcon(szTmp));
 					}

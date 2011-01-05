@@ -26,7 +26,6 @@
 #include "KviCustomToolBar.h"
 #include "KviMainWindow.h"
 #include "KviIrcContext.h"
-#include "KviIconManager.h"
 #include "KviApplication.h"
 #include "KviWindow.h"
 #include "KviChannelWindow.h"
@@ -47,6 +46,11 @@ KviActionCategory::~KviActionCategory()
 
 KviAction::KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, const QString & szSmallIconId, unsigned int uFlags, const QString & szKeySequence)
 : QObject(pParent),m_szName(szName),m_szVisibleName(szVisibleName),m_szDescription(szDescription),m_pCategory(pCategory),m_szBigIconId(szBigIconId),m_szSmallIconId(szSmallIconId),m_pWidgetList(NULL),m_uInternalFlags(KviAction::Enabled),m_uFlags(uFlags),m_szKeySequence(szKeySequence),m_pAccel(NULL)
+{
+}
+
+KviAction::KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, const KviIconManager::SmallIcon eIcon, unsigned int uFlags, const QString & szKeySequence)
+: QObject(pParent),m_szName(szName),m_szVisibleName(szVisibleName),m_szDescription(szDescription),m_pCategory(pCategory),m_szBigIconId(szBigIconId),m_eIcon(eIcon),m_pWidgetList(NULL),m_uInternalFlags(KviAction::Enabled),m_uFlags(uFlags),m_szKeySequence(szKeySequence),m_pAccel(NULL)
 {
 }
 

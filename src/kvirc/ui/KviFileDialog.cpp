@@ -43,7 +43,7 @@ extern KviMediaManager * g_pMediaManager;
 KviFileDialog::KviFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char * name, bool bModal)
 : KviTalFileDialog(szDirName,szFilter,pParent,name,bModal)
 {
-	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER))));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Folder))));
 }
 
 KviFileDialog::~KviFileDialog()

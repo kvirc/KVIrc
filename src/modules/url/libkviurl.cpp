@@ -148,7 +148,7 @@ KviUrlAction::KviUrlAction(QObject * pParent)
 		__tr2qs("Shows the URL list window"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_www.png",
-		QString("%1").arg(KVI_SMALLICON_URL)
+		QString("%1").arg(KviIconManager::Url)
 	)
 {
 }
@@ -363,7 +363,7 @@ void UrlDialog::sayToWin(QAction * act)
 
 QPixmap *UrlDialog::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_URL);
+	return g_pIconManager->getSmallIcon(KviIconManager::Url);
 }
 
 void UrlDialog::addUrl(QString url, QString window, QString count, QString timestamp)
@@ -877,7 +877,7 @@ static bool url_module_init(KviModule *m)
 							KVI_URL_EXTENSION_NAME,
 							__tr2qs("View URL list"),
 							url_extension_alloc);
-	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)));
+	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Url)));
 
 	g_pList = new KviPointerList<KviUrl>;
 	g_pList->setAutoDelete(true);

@@ -756,7 +756,7 @@ Let's see the scheme to understand which is choosen:
 		actions << __tr2qs("View");
 		actions << __tr2qs("Ignore");
 		
-		QPixmap * pIcon = g_pIconManager->getSmallIcon(16);
+		QPixmap * pIcon = g_pIconManager->getSmallIcon(KviIconManager::KVIrc);
 		
 		KNotification * pNotify = new KNotification("kvirc");
 		pNotify->setFlags(KNotification::Persistent);
@@ -779,19 +779,20 @@ Let's see the scheme to understand which is choosen:
 			if(!pWnd)
 				return;
 
+			QString szIcon = g_pIconManager->getSmallIconName(KviIconManager::KVIrc);
 			QString szText = __tr2qs("Message arriving from %1:\n\n").arg(pWnd->target());
 			szText += KviMircCntrl::stripControlBytes(szMsg);
 
 			// org.freedesktop.Notifications.Notify
 			QVariantList args;
-			args << QString("KVIrc");                                // application name
-			args << QVariant(QVariant::UInt);                        // notification id
-			args << QString(g_pIconManager->getSmallIconName(16));   // application icon
-			args << __tr2qs("KVIrc messaging system");               // summary text
-			args << szText;                                          // detailed text
-			args << QStringList();                                   // actions, optional
-			args << QVariantMap();                                   // hints, optional
-			args << (int)uMessageLifetime*1000;                      // timeout in msecs
+			args << QString("KVIrc");                    // application name
+			args << QVariant(QVariant::UInt);            // notification id
+			args << szIcon;                              // application icon
+			args << __tr2qs("KVIrc messaging system");   // summary text
+			args << szText;                              // detailed text
+			args << QStringList();                       // actions, optional
+			args << QVariantMap();                       // hints, optional
+			args << (int)uMessageLifetime*1000;          // timeout in msecs
 
 			QDBusInterface * pNotify = new QDBusInterface("org.freedesktop.Notifications","/org/freedesktop/Notifications","org.freedesktop.Notifications",QDBusConnection::sessionBus(),this);
 			QDBusMessage reply = pNotify->callWithArgumentList(QDBus::Block,"Notify",args);
@@ -1118,7 +1119,7 @@ void KviApplication::fileDownloadTerminated(bool bSuccess, const QString & szRem
 			int iIconId;
 			if(!bSuccess)
 			{
-				iIconId = KVI_SMALLICON_DCCERROR;
+				iIconId = KviIconManager::DccError;
 				if(szNick.isEmpty())
 					szMsg = __tr2qs("File download failed");
 				else
@@ -1129,7 +1130,7 @@ void KviApplication::fileDownloadTerminated(bool bSuccess, const QString & szRem
 				szMsg += szLocalFileName;
 				szMsg += ")";
 			} else {
-				iIconId = KVI_SMALLICON_DCCMSG;
+				iIconId = KviIconManager::DccMsg;
 				if(szNick.isEmpty())
 					szMsg = __tr2qs("File download successfully complete");
 				else
@@ -1969,7 +1970,7 @@ void KviApplication::fillRecentServersPopup(KviTalPopupMenu * pMenu)
 	{
 		if(*it == "")
 			continue;
-		pMenu->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),*it);
+		pMenu->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),*it);
 	}
 }
 
@@ -1982,7 +1983,7 @@ void KviApplication::fillRecentNicknamesPopup(KviTalPopupMenu * pMenu, KviConsol
 	{
 		if(*it == "")
 			continue;
-		iId = pMenu->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NICK)),*it);
+		iId = pMenu->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Nick)),*it);
 		if(!pConsole->isConnected())
 			pMenu->setItemEnabled(iId,false);
 		else {
@@ -2007,7 +2008,7 @@ void KviApplication::fillRecentChannelsPopup(KviTalPopupMenu * pMenu, KviConsole
 		{
 			if(*it == "")
 				continue; // ?
-			int iId = pMenu->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),*it);
+			int iId = pMenu->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),*it);
 			if(!pConsole->isConnected())
 				pMenu->setItemEnabled(iId,false);
 			else

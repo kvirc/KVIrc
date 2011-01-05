@@ -198,14 +198,14 @@ ListWindow::ListWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole)
 	m_pRequestButton = new QToolButton(pBox);
 	m_pRequestButton->setObjectName("request_button");
 	m_pRequestButton->setIconSize(QSize(16,16));
-	m_pRequestButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LIST))));
+	m_pRequestButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::List))));
 	KviTalToolTip::add(m_pRequestButton,__tr2qs("Request List"));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestList()));
 
 	m_pStopListDownloadButton = new QToolButton(pBox);
 	m_pStopListDownloadButton->setObjectName("stoplistdownload_button");
 	m_pStopListDownloadButton->setIconSize(QSize(16,16));
-	m_pStopListDownloadButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NICKNAMEPROBLEM))));
+	m_pStopListDownloadButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NickNameProblem))));
 	KviTalToolTip::add(m_pStopListDownloadButton,__tr2qs("Stop list download"));
 	connect(m_pStopListDownloadButton,SIGNAL(clicked()),this,SLOT(stoplistdownload()));
 
@@ -306,7 +306,7 @@ void ListWindow::connectionStateChange()
 
 QPixmap * ListWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_LIST);
+	return g_pIconManager->getSmallIcon(KviIconManager::List);
 }
 
 void ListWindow::resizeEvent(QResizeEvent *)

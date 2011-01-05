@@ -47,7 +47,7 @@ extern QPixmap * g_pActivityMeterPixmap;
 
 KviIconManager * g_pIconManager = 0;
 
-static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
+static const char * g_szIconNames[KviIconManager::IconCount] =
 {
 	"none", // 0
 	"close", // 1
@@ -384,10 +384,11 @@ KviIconWidget::KviIconWidget(QWidget * par)
 void KviIconWidget::init()
 {
 	setWindowTitle(__tr2qs("Icon Table"));
-	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ICONMANAGER))));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager))));
 
-	int rows = KVI_NUM_SMALL_ICONS / 20;
-	if((rows * 20) < KVI_NUM_SMALL_ICONS)rows++;
+	int rows = KviIconManager::IconCount / 20;
+	if((rows * 20) < KviIconManager::IconCount)
+		rows++;
 	QGridLayout * g = new QGridLayout(this);
 	int i;
 	for(i = 0;i < 20;i++)
@@ -402,7 +403,7 @@ void KviIconWidget::init()
 		QLabel * l = new QLabel(tmp.ptr(),this);
 		g->addWidget(l,i + 1,0);
 	}
-	for(i = 0;i < KVI_NUM_SMALL_ICONS;i++)
+	for(i = 0;i < KviIconManager::IconCount; i++)
 	{
 		KviCString tmp(KviCString::Format,"%d",i);
 		QLabel * l = new QLabel(this);
@@ -483,7 +484,8 @@ void KviCachedPixmap::updateLastAccessTime()
 KviIconManager::KviIconManager()
 {
 	int i=0;
-	for(i=0;i<KVI_NUM_SMALL_ICONS;i++)m_smallIcons[i] = 0;
+	for(i=0; i < IconCount; i++)
+		m_smallIcons[i] = 0;
 
 	initQResourceBackend();
 	//loadSmallIcons();
@@ -516,12 +518,14 @@ KviIconManager::~KviIconManager()
 	if(m_pIconWidget)delete m_pIconWidget;
 	int i;
 
-	for(i=0;i<KVI_NUM_SMALL_ICONS;i++)
+	for(i=0; i < KviIconManager::IconCount; i++)
 	{
-		if(m_smallIcons[i])delete m_smallIcons[i];
+		if(m_smallIcons[i])
+			delete m_smallIcons[i];
 	}
 	delete m_pCachedImages;
-	if(m_pIconNames)delete m_pIconNames;
+	if(m_pIconNames)
+		delete m_pIconNames;
 }
 
 void KviIconManager::initQResourceBackend()
@@ -542,27 +546,357 @@ void KviIconManager::initQResourceBackend()
 
 }
 
-QString KviIconManager::getSmallIconResourceName(int idx)
+QString KviIconManager::getSmallIconResourceName(SmallIcon eIcon)
 {
 	QString szName("smallicons:kcs_");
-	szName.append(g_szIconNames[idx]);
+	szName.append(g_szIconNames[eIcon]);
 	szName.append(".png");
 	return szName;
 }
 
-const char * KviIconManager::getSmallIconName(int idx)
+KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 {
-	return g_szIconNames[idx];
+	switch(iIcon)
+	{
+		case   1: return KviIconManager::Close;                break;
+		case   2: return KviIconManager::Maximize;             break;
+		case   3: return KviIconManager::Minimize;             break;
+		case   4: return KviIconManager::Restore;              break;
+		case   5: return KviIconManager::DefaultIcon;          break;
+		case   6: return KviIconManager::Dock;                 break;
+		case   7: return KviIconManager::UnDock;               break;
+		case   8: return KviIconManager::QuitApp;              break;
+		case   9: return KviIconManager::Console;              break;
+		case  10: return KviIconManager::Floppy;               break;
+		case  11: return KviIconManager::ParserError;          break;
+		case  12: return KviIconManager::ParserWarning;        break;
+		case  13: return KviIconManager::Server;               break;
+		case  14: return KviIconManager::World;                break;
+		case  15: return KviIconManager::Proxy;                break;
+		case  16: return KviIconManager::KVIrc;                break;
+		case  17: return KviIconManager::Cut;                  break;
+		case  18: return KviIconManager::Copy;                 break;
+		case  19: return KviIconManager::Paste;                break;
+		case  20: return KviIconManager::Options;              break;
+		case  21: return KviIconManager::SocketMessage;        break;
+		case  22: return KviIconManager::SocketWarning;        break;
+		case  23: return KviIconManager::SocketError;          break;
+		case  24: return KviIconManager::SystemError;          break;
+		case  25: return KviIconManager::Raw;                  break;
+		case  26: return KviIconManager::SystemWarning;        break;
+		case  27: return KviIconManager::SystemMessage;        break;
+		case  28: return KviIconManager::UnHandled;            break;
+		case  29: return KviIconManager::ServerInfo;           break;
+		case  30: return KviIconManager::Motd;                 break;
+		case  31: return KviIconManager::Channel;              break;
+		case  32: return KviIconManager::HideDoubleView;       break;
+		case  33: return KviIconManager::ShowDoubleView;       break;
+		case  34: return KviIconManager::Op;                   break;
+		case  35: return KviIconManager::Voice;                break;
+		case  36: return KviIconManager::ServerPing;           break;
+		case  37: return KviIconManager::ShowListView;         break;
+		case  38: return KviIconManager::HideListView;         break;
+		case  39: return KviIconManager::Join;                 break;
+		case  40: return KviIconManager::Part;                 break;
+		case  41: return KviIconManager::Unrecognized;         break;
+		case  42: return KviIconManager::Topic;                break;
+		case  43: return KviIconManager::Accept;               break;
+		case  44: return KviIconManager::Discard;              break;
+		case  45: return KviIconManager::OwnPrivMsg;           break;
+		case  46: return KviIconManager::ChanPrivMsg;          break;
+		case  47: return KviIconManager::Query;                break;
+		case  48: return KviIconManager::QueryPrivMsg;         break;
+		case  49: return KviIconManager::Help;                 break;
+		case  50: return KviIconManager::MdiHelp;              break;
+		case  51: return KviIconManager::CtcpReply;            break;
+		case  52: return KviIconManager::CtcpRequestReplied;   break;
+		case  53: return KviIconManager::CtcpRequestIgnored;   break;
+		case  54: return KviIconManager::CtcpRequestFlood;     break;
+		case  55: return KviIconManager::CtcpRequestUnknown;   break;
+		case  56: return KviIconManager::Action;               break;
+		case  57: return KviIconManager::Avatar;               break;
+		case  58: return KviIconManager::Quit;                 break;
+		case  59: return KviIconManager::Split;                break;
+		case  60: return KviIconManager::QuitSplit;            break;
+		case  61: return KviIconManager::Nick;                 break;
+		case  62: return KviIconManager::DeOp;                 break;
+		case  63: return KviIconManager::DeVoice;              break;
+		case  64: return KviIconManager::Mode;                 break;
+		case  65: return KviIconManager::Key;                  break;
+		case  66: return KviIconManager::Limit;                break;
+		case  67: return KviIconManager::Ban;                  break;
+		case  68: return KviIconManager::UnBan;                break;
+		case  69: return KviIconManager::BanExcept;            break;
+		case  70: return KviIconManager::BanUnExcept;          break;
+		case  71: return KviIconManager::InviteExcept;         break;
+		case  72: return KviIconManager::InviteUnExcept;       break;
+		case  73: return KviIconManager::ChanMode;             break;
+		case  74: return KviIconManager::ChanModeHide;         break;
+		case  75: return KviIconManager::Who;                  break;
+		case  76: return KviIconManager::Editor;               break;
+		case  77: return KviIconManager::DccRequest;           break;
+		case  78: return KviIconManager::DccMsg;               break;
+		case  79: return KviIconManager::DccError;             break;
+		case  80: return KviIconManager::IconManager;          break;
+		case  81: return KviIconManager::ScriptCenter;         break;
+		case  82: return KviIconManager::Bomb;                 break;
+		case  83: return KviIconManager::Event;                break;
+		case  84: return KviIconManager::EventNoHandlers;      break;
+		case  85: return KviIconManager::Handler;              break;
+		case  86: return KviIconManager::HandlerDisabled;      break;
+		case  87: return KviIconManager::NickNameProblem;      break;
+		case  88: return KviIconManager::WhoisUser;            break;
+		case  89: return KviIconManager::WhoisChannels;        break;
+		case  90: return KviIconManager::WhoisIdle;            break;
+		case  91: return KviIconManager::WhoisServer;          break;
+		case  92: return KviIconManager::WhoisOther;           break;
+		case  93: return KviIconManager::Time;                 break;
+		case  94: return KviIconManager::NotifyOnLine;         break;
+		case  95: return KviIconManager::NotifyOffLine;        break;
+		case  96: return KviIconManager::Locked;               break;
+		case  97: return KviIconManager::UnLocked;             break;
+		case  98: return KviIconManager::LockedOff;            break;
+		case  99: return KviIconManager::UnLockedOff;          break;
+		case 100: return KviIconManager::OwnPrivMsgCrypted;    break;
+		case 101: return KviIconManager::ChanPrivMsgCrypted;   break;
+		case 102: return KviIconManager::QueryPrivMsgCrypted;  break;
+		case 103: return KviIconManager::DccChatMsg;           break;
+		case 104: return KviIconManager::DccChatMsgCrypted;    break;
+		case 105: return KviIconManager::Irc;                  break;
+		case 106: return KviIconManager::Folder;               break;
+		case 107: return KviIconManager::Home;                 break;
+		case 108: return KviIconManager::BookMarks;            break;
+		case 109: return KviIconManager::Spy;                  break;
+		case 110: return KviIconManager::Kick;                 break;
+		case 111: return KviIconManager::Linux;                break;
+		case 112: return KviIconManager::Links;                break;
+		case 113: return KviIconManager::RegUsers;             break;
+		case 114: return KviIconManager::TrayIcon;             break;
+		case 115: return KviIconManager::CascadeWindows;       break;
+		case 116: return KviIconManager::MaxVertical;          break;
+		case 117: return KviIconManager::MaxHorizontal;        break;
+		case 118: return KviIconManager::TileWindows;          break;
+		case 119: return KviIconManager::Log;                  break;
+		case 120: return KviIconManager::Spam;                 break;
+		case 121: return KviIconManager::File;                 break;
+		case 122: return KviIconManager::Icq;                  break;
+		case 123: return KviIconManager::IcqYellow;            break;
+		case 124: return KviIconManager::IcqRed;               break;
+		case 125: return KviIconManager::IcqBlue;              break;
+		case 126: return KviIconManager::IcqLightGreen;        break;
+		case 127: return KviIconManager::IcqLightYellow;       break;
+		case 128: return KviIconManager::Message;              break;
+		case 129: return KviIconManager::MessageSent;          break;
+		case 130: return KviIconManager::BlueSquare;           break;
+		case 131: return KviIconManager::VioletSquare;         break;
+		case 132: return KviIconManager::YellowSquare;         break;
+		case 133: return KviIconManager::GreenSquare;          break;
+		case 134: return KviIconManager::BlackSquare;          break;
+		case 135: return KviIconManager::RedSquare;            break;
+		case 136: return KviIconManager::CyanSquare;           break;
+		case 137: return KviIconManager::DarkGreenSquare;      break;
+		case 138: return KviIconManager::Terminal;             break;
+		case 139: return KviIconManager::WallOps;              break;
+		case 140: return KviIconManager::Invisible;            break;
+		case 141: return KviIconManager::ServerNotice;         break;
+		case 142: return KviIconManager::Gnutella;             break;
+		case 143: return KviIconManager::Search;               break;
+		case 144: return KviIconManager::Files;                break;
+		case 145: return KviIconManager::Transfer;             break;
+		case 146: return KviIconManager::Package;              break;
+		case 147: return KviIconManager::Retry;                break;
+		case 148: return KviIconManager::Idea;                 break;
+		case 149: return KviIconManager::Colors;               break;
+		case 150: return KviIconManager::Gui;                  break;
+		case 151: return KviIconManager::IrcView;              break;
+		case 152: return KviIconManager::Alias;                break;
+		case 153: return KviIconManager::ChannelNotice;        break;
+		case 154: return KviIconManager::ChannelNoticeCrypted; break;
+		case 155: return KviIconManager::QueryNotice;          break;
+		case 156: return KviIconManager::QueryNoticeCrypted;   break;
+		case 157: return KviIconManager::ServNotice;           break;
+		case 158: return KviIconManager::Popup;                break;
+		case 159: return KviIconManager::Prologue;             break;
+		case 160: return KviIconManager::Epilogue;             break;
+		case 161: return KviIconManager::SharedFiles;          break;
+		case 162: return KviIconManager::CtcpReplyUnknown;     break;
+		case 163: return KviIconManager::Canvas;               break;
+		case 164: return KviIconManager::NickServ;             break;
+		case 165: return KviIconManager::ChanServ;             break;
+		case 166: return KviIconManager::DccVoice;             break;
+		case 167: return KviIconManager::Play;                 break;
+		case 168: return KviIconManager::Record;               break;
+		case 169: return KviIconManager::AutoTileWindows;      break;
+		case 170: return KviIconManager::Away;                 break;
+		case 171: return KviIconManager::Ident;                break;
+		case 172: return KviIconManager::HomePage;             break;
+		case 173: return KviIconManager::List;                 break;
+		case 174: return KviIconManager::HalfOp;               break;
+		case 175: return KviIconManager::HalfDeOp;             break;
+		case 176: return KviIconManager::Invite;               break;
+		case 177: return KviIconManager::MultiMedia;           break;
+		case 178: return KviIconManager::Look;                 break;
+		case 179: return KviIconManager::Input;                break;
+		case 180: return KviIconManager::Messages;             break;
+		case 181: return KviIconManager::QueryTrace;           break;
+		case 182: return KviIconManager::NoChannel;            break;
+		case 183: return KviIconManager::BroadcastPrivMsg;     break;
+		case 184: return KviIconManager::BroadcastNotice;      break;
+		case 185: return KviIconManager::Url;                  break;
+		case 186: return KviIconManager::RawEvent;             break;
+		case 187: return KviIconManager::RawEventNoHandlers;   break;
+		case 188: return KviIconManager::MeKick;               break;
+		case 189: return KviIconManager::MeOp;                 break;
+		case 190: return KviIconManager::MeVoice;              break;
+		case 191: return KviIconManager::MeDeOp;               break;
+		case 192: return KviIconManager::MeDeVoice;            break;
+		case 193: return KviIconManager::MeHalfOp;             break;
+		case 194: return KviIconManager::MeDeHalfOp;           break;
+		case 195: return KviIconManager::MeBan;                break;
+		case 196: return KviIconManager::MeUnBan;              break;
+		case 197: return KviIconManager::MeBanExcept;          break;
+		case 198: return KviIconManager::MeBanUnExcept;        break;
+		case 199: return KviIconManager::MeInviteExcept;       break;
+		case 200: return KviIconManager::MeInviteUnExcept;     break;
+		case 201: return KviIconManager::ClassicWindowList;    break;
+		case 202: return KviIconManager::TreeWindowList;       break;
+		case 203: return KviIconManager::Ignore;               break;
+		case 204: return KviIconManager::UserList;             break;
+		case 205: return KviIconManager::Stats;                break;
+		case 206: return KviIconManager::PopupMenu;            break;
+		case 207: return KviIconManager::Xy;                   break;
+		case 208: return KviIconManager::Irc0;                 break;
+		case 209: return KviIconManager::Irc1;                 break;
+		case 210: return KviIconManager::Irc2;                 break;
+		case 211: return KviIconManager::Irc3;                 break;
+		case 212: return KviIconManager::Irc4;                 break;
+		case 213: return KviIconManager::Irc5;                 break;
+		case 214: return KviIconManager::Heart;                break;
+		case 215: return KviIconManager::HeartBroken;          break;
+		case 216: return KviIconManager::Rose;                 break;
+		case 217: return KviIconManager::BigGrin;              break;
+		case 218: return KviIconManager::BigGrinGlasses;       break;
+		case 219: return KviIconManager::BigGrinEyes;          break;
+		case 220: return KviIconManager::TextExclamative;      break;
+		case 221: return KviIconManager::TextPoints;           break;
+		case 222: return KviIconManager::Kiss;                 break;
+		case 223: return KviIconManager::Surprised1;           break;
+		case 224: return KviIconManager::Ugly;                 break;
+		case 225: return KviIconManager::Angry;                break;
+		case 226: return KviIconManager::Surprised2;           break;
+		case 227: return KviIconManager::Smile;                break;
+		case 228: return KviIconManager::Tongue;               break;
+		case 229: return KviIconManager::Ssl;                  break;
+		case 230: return KviIconManager::Cry;                  break;
+		case 231: return KviIconManager::Eye;                  break;
+		case 232: return KviIconManager::DeadChannel;          break;
+		case 233: return KviIconManager::DeadQuery;            break;
+		case 234: return KviIconManager::Sound;                break;
+		case 235: return KviIconManager::ToolBar;              break;
+		case 236: return KviIconManager::TextEncoding;         break;
+		case 237: return KviIconManager::NewItem;              break;
+		case 238: return KviIconManager::NewItemByWizard;      break;
+		case 239: return KviIconManager::DeleteItem;           break;
+		case 240: return KviIconManager::EditItem;             break;
+		case 241: return KviIconManager::FileTransfer;         break;
+		case 242: return KviIconManager::ChanAdmin;            break;
+		case 243: return KviIconManager::ChanUnAdmin;          break;
+		case 244: return KviIconManager::MeChanAdmin;          break;
+		case 245: return KviIconManager::MeChanUnAdmin;        break;
+		case 246: return KviIconManager::UserOp;               break;
+		case 247: return KviIconManager::DeUserOp;             break;
+		case 248: return KviIconManager::MeUserOp;             break;
+		case 249: return KviIconManager::MeDeUserOp;           break;
+		case 250: return KviIconManager::Applet;               break;
+		case 251: return KviIconManager::Caption;              break;
+		case 252: return KviIconManager::Transparent;          break;
+		case 253: return KviIconManager::Alert;                break;
+		case 254: return KviIconManager::UserWindow;           break;
+		case 255: return KviIconManager::StatusBar;            break;
+		case 256: return KviIconManager::NotAway;              break;
+		case 257: return KviIconManager::Plus;                 break;
+		case 258: return KviIconManager::Minus;                break;
+		case 259: return KviIconManager::BinaryText;           break;
+		case 260: return KviIconManager::ChanOwner;            break;
+		case 261: return KviIconManager::ChanUnOwner;          break;
+		case 262: return KviIconManager::MeChanOwner;          break;
+		case 263: return KviIconManager::MeChanUnOwner;        break;
+		case 264: return KviIconManager::Afraid;               break;
+		case 265: return KviIconManager::Tongue2;              break;
+		case 266: return KviIconManager::SayIcon;              break;
+		case 267: return KviIconManager::SayColors;            break;
+		case 268: return KviIconManager::Finger;               break;
+		case 269: return KviIconManager::ScriptAction;         break;
+		case 270: return KviIconManager::TearSmile;            break;
+		case 271: return KviIconManager::Shy;                  break;
+		case 272: return KviIconManager::ServerError;          break;
+		case 273: return KviIconManager::Cafe;                 break;
+		case 274: return KviIconManager::Addons;               break;
+		case 275: return KviIconManager::ChanOwnerAway;        break;
+		case 276: return KviIconManager::OpAway;               break;
+		case 277: return KviIconManager::VoiceAway;            break;
+		case 278: return KviIconManager::ChanAdminAway;        break;
+		case 279: return KviIconManager::UserOpAway;           break;
+		case 280: return KviIconManager::HalfOpAway;           break;
+		case 281: return KviIconManager::ClassEditor;          break;
+		case 282: return KviIconManager::Demoralized;          break;
+		case 283: return KviIconManager::Slurp;                break;
+		case 284: return KviIconManager::NameSpace;            break;
+		case 285: return KviIconManager::SaySmile;             break;
+		case 286: return KviIconManager::SayKvs;               break;
+		case 287: return KviIconManager::ThemeOptions;         break;
+		case 288: return KviIconManager::Bug;                  break;
+		case 289: return KviIconManager::Refresh;              break;
+		case 290: return KviIconManager::Theme;                break;
+		case 291: return KviIconManager::ScreenShot;           break;
+		case 292: return KviIconManager::Update;               break;
+		case 293: return KviIconManager::NotUpdate;            break;
+		case 294: return KviIconManager::FailUpdate;           break;
+		case 295: return KviIconManager::UnreadText;           break;
+		case 296: return KviIconManager::IrcOp;                break;
+		case 297: return KviIconManager::IrcOpAway;            break;
+		case 298: return KviIconManager::DeIrcOp;              break;
+		case 299: return KviIconManager::MeIrcOp;              break;
+		case 300: return KviIconManager::MeDeIrcOp;            break;
+		case 301: return KviIconManager::Angel;                break;
+		case 302: return KviIconManager::Clown;                break;
+		case 303: return KviIconManager::Devil;                break;
+		case 304: return KviIconManager::InLove;               break;
+		case 305: return KviIconManager::Ninja;                break;
+		case 306: return KviIconManager::Pirate;               break;
+		case 307: return KviIconManager::Puke;                 break;
+		case 308: return KviIconManager::Rage;                 break;
+		case 309: return KviIconManager::Class;                break;
+		case 310: return KviIconManager::ClassNotBuilt;        break;
+		case 311: return KviIconManager::Function;             break;
+		case 312: return KviIconManager::SexMale;              break;
+		case 313: return KviIconManager::SexFemale;            break;
+		case 314: return KviIconManager::SexBot;               break;
+		case 315: return KviIconManager::SexIrcOp;             break;
+		case   0:
+		case KviIconManager::IconCount:
+		default: return KviIconManager::None;                  break;
+	}
 }
 
-int KviIconManager::getSmallIconIdFromName(const QString &szName)
+const char * KviIconManager::getSmallIconName(SmallIcon eIcon)
+{
+	return g_szIconNames[eIcon];
+}
+
+const char * KviIconManager::getSmallIconName(int iIcon)
+{
+	return g_szIconNames[iIcon];
+}
+
+int KviIconManager::getSmallIconIdFromName(const QString & szName)
 {
 	if(!m_pIconNames)
 	{
 		m_pIconNames = new KviPointerHashTable<QString,int>(257,false);
 		m_pIconNames->setAutoDelete(true);
 
-		for(int i=0;i<KVI_NUM_SMALL_ICONS;i++)
+		for(int i=0; i< IconCount; i++)
 		{
 			int * pInt = new int;
 			*pInt = i;
@@ -570,7 +904,8 @@ int KviIconManager::getSmallIconIdFromName(const QString &szName)
 		}
 	}
 	int * pInt = m_pIconNames->find(szName);
-	if(!pInt)return 0;
+	if(!pInt)
+		return 0;
 	return *pInt;
 }
 
@@ -730,7 +1065,7 @@ QPixmap * KviIconManager::getImage(const QString &id,bool bCanBeNumber,QString* 
 		{
 			// was a number : this is not a filename
 			if(idx >= 0)
-				return getSmallIcon(idx % KVI_NUM_SMALL_ICONS);
+				return getSmallIcon(idx % KviIconManager::IconCount);
 		} else {
 			if(id.startsWith("$icon"))
 			{
@@ -741,7 +1076,7 @@ QPixmap * KviIconManager::getImage(const QString &id,bool bCanBeNumber,QString* 
 				szTmp.replace("\"","");
 				idx = getSmallIconIdFromName(szTmp.trimmed());
 				if(idx >= 0)
-					return getSmallIcon(idx % KVI_NUM_SMALL_ICONS);
+					return getSmallIcon(idx % KviIconManager::IconCount);
 				
 			}
 		}
@@ -773,7 +1108,7 @@ QPixmap * KviIconManager::getBigIcon(const QString &szName)
 		tmpName += ".scaled16to32";
 		p = getPixmap(tmpName);
 		if(p)return p;
-		p = getSmallIcon(idx % KVI_NUM_SMALL_ICONS);
+		p = getSmallIcon(idx % KviIconManager::IconCount);
 		if(p)
 		{
 			QImage tmpi = p->toImage();
@@ -888,18 +1223,19 @@ void KviIconManager::clearCache()
 void KviIconManager::reloadImages()
 {
 	clearCache();
-	for(int i=0;i<KVI_NUM_SMALL_ICONS;i++)
+	for(int i=0; i < KviIconManager::IconCount; i++)
 	{
 		if(m_smallIcons[i])delete m_smallIcons[i];
 		m_smallIcons[i] = 0;
 	}
 }
 
-
 QPixmap * KviIconManager::loadSmallIcon(int idx)
 {
-	if(idx >= KVI_NUM_SMALL_ICONS)return 0;
-	if(idx < 0)return 0;
+	if(idx >= KviIconManager::IconCount)
+		return 0;
+	if(idx < 0)
+		return 0;
 
 	QString szPath;
 	QString buffer;

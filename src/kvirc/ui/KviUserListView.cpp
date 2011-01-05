@@ -1883,13 +1883,13 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			{
 				if(pEntry->globalData()->isIrcOp())
 				{
-					QPixmap * pIco = g_pIconManager->getSmallIcon(KVI_SMALLICON_SEXIRCOP);
+					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::SexIrcOp);
 					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
 				} else if(pEntry->globalData()->gender()!=KviIrcUserEntry::Unknown) {
-					QPixmap * pIco = g_pIconManager->getSmallIcon((pEntry->globalData()->gender()==KviIrcUserEntry::Male) ? KVI_SMALLICON_SEXMALE : KVI_SMALLICON_SEXFEMALE);
+					QPixmap * pIco = g_pIconManager->getSmallIcon((pEntry->globalData()->gender()==KviIrcUserEntry::Male) ? KviIconManager::SexMale : KviIconManager::SexFemale);
 					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
 				} else if(pEntry->globalData()->isBot()) {
-					QPixmap * pIco = g_pIconManager->getSmallIcon(KVI_SMALLICON_SEXBOT);
+					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::SexBot);
 					p.drawPixmap(iTheX,iTheY+(m_pListView->m_iFontHeight-11)/2,*pIco);
 				}
 				iTheX +=11;
@@ -1971,20 +1971,20 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 											pEntry->globalData()->isAway() ? \
 												( \
 													(pEntry->m_iFlags & KviIrcUserEntry::ChanOwner) ? \
-													KVI_SMALLICON_CHANOWNERAWAY : ((pEntry->m_iFlags & KviIrcUserEntry::ChanAdmin) ? \
-													KVI_SMALLICON_CHANADMINAWAY : ((pEntry->m_iFlags & KviIrcUserEntry::Op) ? \
-													KVI_SMALLICON_OPAWAY : ((pEntry->m_iFlags & KviIrcUserEntry::HalfOp) ? \
-													KVI_SMALLICON_HALFOPAWAY : ((pEntry->m_iFlags & KviIrcUserEntry::Voice) ? \
-													KVI_SMALLICON_VOICEAWAY : KVI_SMALLICON_USEROPAWAY))))
+													KviIconManager::ChanOwnerAway : ((pEntry->m_iFlags & KviIrcUserEntry::ChanAdmin) ? \
+													KviIconManager::ChanAdminAway : ((pEntry->m_iFlags & KviIrcUserEntry::Op) ? \
+													KviIconManager::OpAway : ((pEntry->m_iFlags & KviIrcUserEntry::HalfOp) ? \
+													KviIconManager::HalfOpAway : ((pEntry->m_iFlags & KviIrcUserEntry::Voice) ? \
+													KviIconManager::VoiceAway : KviIconManager::UserOpAway))))
 												) \
 											: \
 												( \
 													(pEntry->m_iFlags & KviIrcUserEntry::ChanOwner) ? \
-													KVI_SMALLICON_CHANOWNER : ((pEntry->m_iFlags & KviIrcUserEntry::ChanAdmin) ? \
-													KVI_SMALLICON_CHANADMIN : ((pEntry->m_iFlags & KviIrcUserEntry::Op) ? \
-													KVI_SMALLICON_OP : ((pEntry->m_iFlags & KviIrcUserEntry::HalfOp) ? \
-													KVI_SMALLICON_HALFOP : ((pEntry->m_iFlags & KviIrcUserEntry::Voice) ? \
-													KVI_SMALLICON_VOICE : KVI_SMALLICON_USEROP)))) \
+													KviIconManager::ChanOwner : ((pEntry->m_iFlags & KviIrcUserEntry::ChanAdmin) ? \
+													KviIconManager::ChanAdmin : ((pEntry->m_iFlags & KviIrcUserEntry::Op) ? \
+													KviIconManager::Op : ((pEntry->m_iFlags & KviIrcUserEntry::HalfOp) ? \
+													KviIconManager::HalfOp : ((pEntry->m_iFlags & KviIrcUserEntry::Voice) ? \
+													KviIconManager::Voice : KviIconManager::UserOp)))) \
 												) \
 										);
 					p.drawPixmap(iTheX,iTheY+(fm.lineSpacing()-16/*size of small icon*/)/2,*pIco);

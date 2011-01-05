@@ -96,7 +96,7 @@ CodeTesterWindow::~CodeTesterWindow()
 
 QPixmap * CodeTesterWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_BOMB);
+	return g_pIconManager->getSmallIcon(KviIconManager::Bomb);
 }
 
 void CodeTesterWindow::resizeEvent(QResizeEvent *)

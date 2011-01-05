@@ -28,8 +28,9 @@
 #include "KviPointerList.h"
 #include "KviCString.h"
 #include "KviWindowToolWidget.h"
-#include <QTreeWidget>
+#include "KviIconManager.h"
 
+#include <QTreeWidget>
 #include <QPushButton>
 #include <QDialog>
 #include <QLineEdit>
@@ -99,13 +100,13 @@ public:
 		char cMode,const char * name);
 	~KviMaskEditor();
 protected:
-	KviChannelWindow            * m_pChannel;
-	QTreeWidget           * m_pMaskBox;
-	QPushButton           * m_pRemoveMask;
-	QPushButton           * m_pAddButton;
-	QLineEdit             * m_pSearch;
-	char                    m_cFlag;
-	int                     m_iIconId;
+	KviChannelWindow          * m_pChannel;
+	QTreeWidget               * m_pMaskBox;
+	QPushButton               * m_pRemoveMask;
+	QPushButton               * m_pAddButton;
+	QLineEdit                 * m_pSearch;
+	char                        m_cFlag;
+	KviIconManager::SmallIcon   m_eIcon;
 public:
 	char flag(){ return m_cFlag; };
 	void addMask(KviMaskEntry *e);

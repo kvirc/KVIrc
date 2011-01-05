@@ -223,7 +223,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 {
 	setObjectName("dialog_textinput");
 	g_pDialogModuleDialogList->append(this);
-	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)));
 	setModal(modal);
 	setWindowTitle(szCaption);
 

@@ -283,7 +283,7 @@ void DccChatWindow::fillCaptionBuffers()
 
 QPixmap * DccChatWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG);
+	return g_pIconManager->getSmallIcon(KviIconManager::DccMsg);
 }
 
 void DccChatWindow::getBaseLogFileName(QString &buffer)
@@ -497,7 +497,7 @@ bool DccChatWindow::event(QEvent *e)
 								if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
 								{
 									QString szMsg = Qt::escape(QString(d.ptr()));
-									g_pApp->notifierMessage(this,KVI_SMALLICON_DCCCHATMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+									g_pApp->notifierMessage(this,KviIconManager::DccChatMsg,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 								}
 							}
 						}

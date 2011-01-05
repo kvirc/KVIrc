@@ -39,6 +39,7 @@
 #include "KviInput.h"
 #include "KviTalHBox.h"
 #include "KviTalSplitter.h"
+#include "KviIconManager.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	// The brain-damaged MSVC compiler can't instantiate QList templates without a destructor definition
@@ -358,7 +359,7 @@ protected:
 	void createTextEncodingButton(QWidget * par);
 	void createSystemTextEncodingPopup();
 
-	QToolButton * createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn);
+	QToolButton * createToolButton(QWidget * pPar, const char * pcName, KviIconManager::SmallIcon eIcon, const QString & szToolTip, bool bOn);
 	// This is called by KviInput: actually it links the widgetAdded
 	virtual void childrenTreeChanged(QWidget * widgetAdded);
 

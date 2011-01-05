@@ -28,7 +28,7 @@
 
 class QRadioButton;
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_urlHandlers KVI_SMALLICON_WORLD
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_urlHandlers KviIconManager::World
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_urlHandlers __tr2qs_no_lookup("URL handlers")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_urlHandlers OptionsWidget_general
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_urlHandlers 70000

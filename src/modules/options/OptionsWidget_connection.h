@@ -25,10 +25,11 @@
 //=============================================================================
 
 #include "KviOptionsWidget.h"
+#include "KviIconManager.h"
 
 class QRadioButton;
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connection KVI_SMALLICON_WORLD
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connection KviIconManager::World
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connection __tr2qs_no_lookup("Connection")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connection 98000
 
@@ -41,7 +42,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionAdvanced KVI_SMALLICON_WORLD
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionAdvanced KviIconManager::World
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionAdvanced __tr2qs_no_lookup("Advanced")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_connectionAdvanced OptionsWidget_connection
 #define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_connectionAdvanced true
@@ -55,7 +56,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSsl KVI_SMALLICON_SSL
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSsl KviIconManager::Ssl
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSsl __tr2qs_no_lookup("SSL")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_connectionSsl OptionsWidget_connectionAdvanced
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSsl 30
@@ -72,7 +73,7 @@ public:
 
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSocket KVI_SMALLICON_SOCKETERROR
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSocket KviIconManager::SocketError
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSocket __tr2qs_no_lookup("Socket")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_connectionSocket OptionsWidget_connectionAdvanced
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSocket 20
@@ -87,7 +88,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identService KVI_SMALLICON_IDENT
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identService KviIconManager::Ident
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identService __tr2qs_no_lookup("Ident Service")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_identService OptionsWidget_connectionAdvanced
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identService 10

@@ -37,7 +37,7 @@ class QPushButton;
 class KviNickServRule;
 class QTreeWidget;
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_nickServ KVI_SMALLICON_NICKSERV
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_nickServ KviIconManager::NickServ
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_nickServ __tr2qs_no_lookup("NickServ")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_nickServ OptionsWidget_tools
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_nickServ __tr2qs_no_lookup("authentication,identify")

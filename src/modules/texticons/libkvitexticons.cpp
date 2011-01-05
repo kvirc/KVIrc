@@ -23,6 +23,7 @@
 //=============================================================================
 
 #include "KviModule.h"
+#include "KviIconManager.h"
 #include "KviTextIconManager.h"
 
 /*
@@ -114,7 +115,7 @@ static bool texticons_kvs_cmd_set(KviKvsModuleCommandCall * c)
 		pIcon = g_pTextIconManager->lookupTextIcon(szName);
 		if(!pIcon)
 		{
-			KviTextIcon * pTmpIcon = new KviTextIcon(-1);
+			KviTextIcon * pTmpIcon = new KviTextIcon(KviIconManager::None);
 			g_pTextIconManager->insert(szName,*pTmpIcon);
 			delete pTmpIcon;
 			pIcon = g_pTextIconManager->lookupTextIcon(szName);

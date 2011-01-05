@@ -143,10 +143,12 @@ KviChannelWindow::KviChannelWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpC
 
 
 	// and the related buttons
-	m_pDoubleViewButton = new KviWindowToolPageButton(KVI_SMALLICON_HIDEDOUBLEVIEW,KVI_SMALLICON_SHOWDOUBLEVIEW,__tr2qs("Split View"),buttonContainer(),false,"double_view_button");
+	m_pDoubleViewButton = new KviWindowToolPageButton(KviIconManager::HideDoubleView,KviIconManager::ShowDoubleView,__tr2qs("Split View"),buttonContainer(),false);
+	m_pDoubleViewButton->setObjectName("double_view_button");
 	connect(m_pDoubleViewButton,SIGNAL(clicked()),this,SLOT(toggleDoubleView()));
 
-	m_pListViewButton = new KviWindowToolPageButton(KVI_SMALLICON_HIDELISTVIEW,KVI_SMALLICON_SHOWLISTVIEW,__tr2qs("User List"),buttonContainer(),true,"list_view_button");
+	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("User List"),buttonContainer(),true);
+	m_pListViewButton->setObjectName("list_view_button");
 	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
 
 	//list modes (bans, bans exceptions, etc)
@@ -162,7 +164,8 @@ KviChannelWindow::KviChannelWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpC
 	if(szDescription.isEmpty())
 		szDescription = __tr2qs("Mode \"%1\" Masks").arg(cMode);
 
-	pButton = new KviWindowToolPageButton(KVI_SMALLICON_UNBAN,KVI_SMALLICON_BAN,szDescription,buttonContainer(),false,"ban_editor_button");
+	pButton = new KviWindowToolPageButton(KviIconManager::UnBan,KviIconManager::Ban,szDescription,buttonContainer(),false);
+	pButton->setObjectName("ban_editor_button");
 	connect(pButton,SIGNAL(clicked()),this,SLOT(toggleListModeEditor()));
 	m_pListEditorButtons.insert(cMode, pButton);
 
@@ -179,39 +182,41 @@ KviChannelWindow::KviChannelWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpC
 			QString szDescription = pServerInfo->getChannelModeDescription(cMode);
 			if(szDescription.isEmpty())
 				szDescription = __tr2qs("Mode \"%1\" Masks").arg(cMode);
-			int iIconOn, iIconOff;
+			KviIconManager::SmallIcon eIconOn, eIconOff;
 			switch(cMode)
 			{
 				case 'e':
-					iIconOn = KVI_SMALLICON_BANUNEXCEPT;
-					iIconOff = KVI_SMALLICON_BANEXCEPT;
+					eIconOn = KviIconManager::BanUnExcept;
+					eIconOff = KviIconManager::BanExcept;
 					break;
 				case 'I':
-					iIconOn = KVI_SMALLICON_INVITEUNEXCEPT;
-					iIconOff = KVI_SMALLICON_INVITEEXCEPT;
+					eIconOn = KviIconManager::InviteUnExcept;
+					eIconOff = KviIconManager::InviteExcept;
 					break;
 				case 'a':
-					iIconOn = KVI_SMALLICON_CHANUNADMIN;
-					iIconOff = KVI_SMALLICON_CHANADMIN;
+					eIconOn = KviIconManager::ChanUnAdmin;
+					eIconOff = KviIconManager::ChanAdmin;
 					break;
 				case 'q':
 					// this could also be quiet bans..
-					iIconOn = KVI_SMALLICON_CHANUNOWNER;
-					iIconOff = KVI_SMALLICON_CHANOWNER;
+					eIconOn = KviIconManager::ChanUnOwner;
+					eIconOff = KviIconManager::ChanOwner;
 					break;
 				default:
-					iIconOn = KVI_SMALLICON_UNBAN;
-					iIconOff = KVI_SMALLICON_BAN;
+					eIconOn = KviIconManager::UnBan;
+					eIconOff = KviIconManager::Ban;
 					break;
 			}
 
-			pButton = new KviWindowToolPageButton(iIconOn,iIconOff,szDescription,buttonContainer(),false,"list_mode_editor_button");
+			pButton = new KviWindowToolPageButton(eIconOn,eIconOff,szDescription,buttonContainer(),false);
+			pButton->setObjectName("list_mode_editor_button");
 			connect(pButton,SIGNAL(clicked()),this,SLOT(toggleListModeEditor()));
 			m_pListEditorButtons.insert(cMode, pButton);
 		}
 	}
 
-	m_pModeEditorButton = new KviWindowToolPageButton(KVI_SMALLICON_CHANMODEHIDE,KVI_SMALLICON_CHANMODE,__tr2qs("Mode Editor"),buttonContainer(),false,"mode_editor_button");
+	m_pModeEditorButton = new KviWindowToolPageButton(KviIconManager::ChanModeHide,KviIconManager::ChanMode,__tr2qs("Mode Editor"),buttonContainer(),false);
+	m_pModeEditorButton->setObjectName("mode_editor_button");
 	connect(m_pModeEditorButton,SIGNAL(clicked()),this,SLOT(toggleModeEditor()));
 	m_pModeEditor = 0;
 
@@ -604,7 +609,7 @@ void KviChannelWindow::removeMasks(KviMaskEditor * ed, KviPointerList<KviMaskEnt
 
 QPixmap * KviChannelWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon((m_iStateFlags & KVI_CHANNEL_STATE_DEADCHAN) ? KVI_SMALLICON_DEADCHANNEL : KVI_SMALLICON_CHANNEL);
+	return g_pIconManager->getSmallIcon((m_iStateFlags & KVI_CHANNEL_STATE_DEADCHAN) ? KviIconManager::DeadChannel : KviIconManager::Channel);
 }
 
 void KviChannelWindow::resizeEvent(QResizeEvent *)

@@ -461,7 +461,7 @@ void KviTopicWidget::switchMode()
 
 		m_pHistory = new QPushButton(this);
 		m_pHistory->setObjectName("topicw_historybutton");
-		m_pHistory->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME))));
+		m_pHistory->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Time))));
 		m_pHistory->setGeometry(width() - (height() << 2)+height(),0,height(),height());
 		KviTalToolTip::add(m_pHistory,__tr2qs("History"));
 		m_pHistory->show();
@@ -469,7 +469,7 @@ void KviTopicWidget::switchMode()
 
 		m_pAccept = new QPushButton(this);
 		m_pAccept->setObjectName("topicw_acceptbutton");
-		m_pAccept->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT))));
+		m_pAccept->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept))));
 		m_pAccept->setGeometry(width() - (height() << 1),0,height(),height());
 		m_pAccept->setEnabled(bCanEdit);
 		m_pAccept->show();
@@ -478,7 +478,7 @@ void KviTopicWidget::switchMode()
 
 		m_pDiscard = new QPushButton(this);
 		m_pDiscard->setObjectName("topicw_discardbutton");
-		m_pDiscard->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD))));
+		m_pDiscard->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard))));
 		m_pDiscard->setGeometry(width() - height(),0,height(),height());
 		KviTalToolTip::add(m_pDiscard,__tr2qs("Discard Changes"));
 		m_pDiscard->show();
@@ -497,7 +497,8 @@ void KviTopicWidget::switchMode()
 void KviTopicWidget::mousePressEvent(QMouseEvent * e)
 {
 
-	if(!(e->button() & Qt::RightButton))return;
+	if(!(e->button() & Qt::RightButton))
+		return;
 	if(!m_pContextPopup)
 	{
 		m_pContextPopup = new KviTalPopupMenu(this);
@@ -508,16 +509,19 @@ void KviTopicWidget::mousePressEvent(QMouseEvent * e)
 
 void KviTopicWidget::contextPopupAboutToShow()
 {
-	if(!m_pContextPopup)return; // hm ?
+	if(!m_pContextPopup)
+		return; // hm ?
 	m_pContextPopup->clear();
-	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_COPY)),__tr2qs("Copy to clipboard"),this,SLOT(copy()));
+	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),__tr2qs("Copy to clipboard"),this,SLOT(copy()));
 }
 
 void KviTopicWidget::copy()
 {
 	QClipboard * c = QApplication::clipboard();
-	if(!c)return;
-	if(c->supportsSelection())c->setText(m_szTopic,QClipboard::Selection);
+	if(!c)
+		return;
+	if(c->supportsSelection())
+		c->setText(m_szTopic,QClipboard::Selection);
 	c->setText(m_szTopic,QClipboard::Clipboard);
 }
 

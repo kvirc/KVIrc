@@ -26,7 +26,7 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ctcp KVI_SMALLICON_CTCPREQUESTREPLIED
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ctcp KviIconManager::CtcpRequestReplied
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ctcp __tr2qs_no_lookup("CTCP")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_ctcp OptionsWidget_tools
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ctcp 70000

@@ -185,11 +185,11 @@ void RegisteredUsersDialogItemDelegate::paint( QPainter * p, const QStyleOptionV
 			if(it->user())
 			{
 				if(!it->user()->getProperty("notify").isEmpty())
-					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+LVI_BORDER,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTIFYONLINE)));
+					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+LVI_BORDER,*(g_pIconManager->getSmallIcon(KviIconManager::NotifyOnLine)));
 				else
-					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+LVI_BORDER,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTIFYOFFLINE)));
+					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+LVI_BORDER,*(g_pIconManager->getSmallIcon(KviIconManager::NotifyOffLine)));
 				if(it->user()->ignoreEnagled())
-					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+2*LVI_BORDER+16,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IGNORE)));
+					p->drawPixmap(opt.rect.topLeft().x()+LVI_BORDER,opt.rect.topLeft().y()+2*LVI_BORDER+16,*(g_pIconManager->getSmallIcon(KviIconManager::Ignore)));
 			}
 		}
 	}
@@ -219,7 +219,7 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 	g_pLocalRegisteredUserDataBase = new KviRegisteredUserDataBase();
 	g_pLocalRegisteredUserDataBase->copyFrom(g_pRegisteredUserDataBase);
 
-	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_REGUSERS)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::RegUsers)));
 	setWindowTitle(__tr2qs_ctx("Registered Users - KVIrc","register"));
 
 	QGridLayout * g = new QGridLayout(this);
@@ -240,31 +240,31 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 	m_pWizardAddButton = new QPushButton(__tr2qs_ctx("Add (Wizard)...","register"),vbox);
 	connect(m_pWizardAddButton,SIGNAL(clicked()),this,SLOT(addWizardClicked()));
 	m_pWizardAddButton->setToolTip(__tr2qs_ctx("Add a registered user by means of a user-friendly wizard.","register"));
-	m_pWizardAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEMBYWIZARD)));
+	m_pWizardAddButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItemByWizard)));
 
 
 	m_pAddButton = new QPushButton(__tr2qs_ctx("&Add...","register"),vbox);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	m_pAddButton->setToolTip(__tr2qs_ctx("Open the edit dialog to create a new user entry.","register"));
-	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
+	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItem)));
 
 	m_pAddGroupButton = new QPushButton(__tr2qs_ctx("&Add Group...","register"),vbox);
 	connect(m_pAddGroupButton,SIGNAL(clicked()),this,SLOT(addGroupClicked()));
 	m_pAddGroupButton->setToolTip(__tr2qs_ctx("Adds a new group","register"));
-	m_pAddGroupButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
+	m_pAddGroupButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewItem)));
 
 	m_pRemoveButton = new QPushButton(__tr2qs_ctx("Re&move","register"),vbox);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pRemoveButton->setEnabled(false);
 	m_pRemoveButton->setToolTip(__tr2qs_ctx("Remove the currently selected entries.","register"));
-	m_pRemoveButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
+	m_pRemoveButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::DeleteItem)));
 
 
 	m_pEditButton = new QPushButton(__tr2qs_ctx("&Edit...","register"),vbox);
 	connect(m_pEditButton,SIGNAL(clicked()),this,SLOT(editClicked()));
 	m_pEditButton->setEnabled(false);
 	m_pEditButton->setToolTip(__tr2qs_ctx("Edit the first selected entry.","register"));
-	m_pEditButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EDITITEM)));
+	m_pEditButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::EditItem)));
 
 	QFrame * f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
@@ -272,19 +272,19 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 	m_pSelectAllButton = new QPushButton(__tr2qs_ctx("Select all","register"),vbox);
 	connect(m_pSelectAllButton,SIGNAL(clicked()),this,SLOT(selectAllClicked()));
 	m_pSelectAllButton->setToolTip(__tr2qs_ctx("Select all the entries","register"));
-	m_pSelectAllButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PLUS)));
+	m_pSelectAllButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)));
 
 	m_pExportButton = new QPushButton(__tr2qs_ctx("Export To...","register"),vbox);
 	m_pExportButton->setEnabled(false);
 	connect(m_pExportButton,SIGNAL(clicked()),this,SLOT(exportClicked()));
 	m_pExportButton->setToolTip(__tr2qs_ctx("Export the selected entries to a file.<br>All the data associated with the selected registered users will be exported.<br>You (or anyone else) can later import the entries by using the \"Import\" button.","register"));
-	m_pExportButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)));
+	m_pExportButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Floppy)));
 
 
 	m_pImportButton = new QPushButton(__tr2qs_ctx("Import From...","register"),vbox);
 	connect(m_pImportButton,SIGNAL(clicked()),this,SLOT(importClicked()));
 	m_pImportButton->setToolTip(__tr2qs_ctx("Import entries from a file exported earlier by the \"export\" function of this dialog.","register"));
-	m_pImportButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)));
+	m_pImportButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Folder)));
 
 
 	KviTalHBox * hbox = new KviTalHBox(this);
@@ -296,12 +296,12 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 
 	b = new QPushButton(__tr2qs_ctx("&OK","register"),hbox);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
-	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	b->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 	//b->setMinimumWidth(120);
 
 	b = new QPushButton(__tr2qs_ctx("Cancel","register"),hbox);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	b->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)));
 	//b->setMinimumWidth(120);
 
 	g->addItem(new QSpacerItem(0, 15), 2, 0);

@@ -35,324 +35,6 @@
 #include <QObject>
 #include <QWidget>
 
-#define KVI_SMALLICON_NONE 0
-#define KVI_SMALLICON_CLOSE 1
-#define KVI_SMALLICON_MAXIMIZE 2
-#define KVI_SMALLICON_MINIMIZE 3
-#define KVI_SMALLICON_RESTORE 4
-#define KVI_SMALLICON_DEFAULTICON 5
-#define KVI_SMALLICON_DOCK 6
-#define KVI_SMALLICON_UNDOCK 7
-#define KVI_SMALLICON_QUITAPP 8
-#define KVI_SMALLICON_CONSOLE 9
-#define KVI_SMALLICON_FLOPPY 10
-#define KVI_SMALLICON_PARSERERROR 11
-#define KVI_SMALLICON_PARSERWARNING 12
-#define KVI_SMALLICON_SERVER 13
-#define KVI_SMALLICON_WORLD 14
-#define KVI_SMALLICON_PROXY 15
-#define KVI_SMALLICON_KVIRC 16
-#define KVI_SMALLICON_CUT 17
-#define KVI_SMALLICON_COPY 18
-#define KVI_SMALLICON_PASTE 19
-#define KVI_SMALLICON_OPTIONS 20
-#define KVI_SMALLICON_SOCKETMESSAGE 21
-#define KVI_SMALLICON_SOCKETWARNING 22
-#define KVI_SMALLICON_SOCKETERROR 23
-#define KVI_SMALLICON_SYSTEMERROR 24
-#define KVI_SMALLICON_RAW 25
-#define KVI_SMALLICON_SYSTEMWARNING 26
-#define KVI_SMALLICON_SYSTEMMESSAGE 27
-#define KVI_SMALLICON_UNHANDLED 28
-#define KVI_SMALLICON_SERVERINFO 29
-#define KVI_SMALLICON_MOTD 30
-#define KVI_SMALLICON_CHANNEL 31
-#define KVI_SMALLICON_HIDEDOUBLEVIEW 32
-#define KVI_SMALLICON_SHOWDOUBLEVIEW 33
-#define KVI_SMALLICON_OP 34
-#define KVI_SMALLICON_VOICE 35
-#define KVI_SMALLICON_SERVERPING 36
-#define KVI_SMALLICON_SHOWLISTVIEW 37
-#define KVI_SMALLICON_HIDELISTVIEW 38
-#define KVI_SMALLICON_JOIN 39
-#define KVI_SMALLICON_PART 40
-#define KVI_SMALLICON_UNRECOGNIZED 41
-#define KVI_SMALLICON_TOPIC 42
-#define KVI_SMALLICON_ACCEPT 43
-#define KVI_SMALLICON_DISCARD 44
-#define KVI_SMALLICON_OWNPRIVMSG 45
-#define KVI_SMALLICON_CHANPRIVMSG 46
-#define KVI_SMALLICON_QUERY 47
-#define KVI_SMALLICON_QUERYPRIVMSG 48
-#define KVI_SMALLICON_HELP 49
-#define KVI_SMALLICON_MDIHELP 50
-#define KVI_SMALLICON_CTCPREPLY 51
-#define KVI_SMALLICON_CTCPREQUESTREPLIED 52
-#define KVI_SMALLICON_CTCPREQUESTIGNORED 53
-#define KVI_SMALLICON_CTCPREQUESTFLOOD 54
-#define KVI_SMALLICON_CTCPREQUESTUNKNOWN 55
-#define KVI_SMALLICON_ACTION 56
-#define KVI_SMALLICON_AVATAR 57
-#define KVI_SMALLICON_QUIT 58
-#define KVI_SMALLICON_SPLIT 59
-#define KVI_SMALLICON_QUITSPLIT 60
-#define KVI_SMALLICON_NICK 61
-#define KVI_SMALLICON_DEOP 62
-#define KVI_SMALLICON_DEVOICE 63
-#define KVI_SMALLICON_MODE 64
-#define KVI_SMALLICON_KEY 65
-#define KVI_SMALLICON_LIMIT 66
-#define KVI_SMALLICON_BAN 67
-#define KVI_SMALLICON_UNBAN 68
-#define KVI_SMALLICON_BANEXCEPT 69
-#define KVI_SMALLICON_BANUNEXCEPT 70
-#define KVI_SMALLICON_INVITEEXCEPT 71
-#define KVI_SMALLICON_INVITEUNEXCEPT 72
-#define KVI_SMALLICON_CHANMODE 73
-#define KVI_SMALLICON_CHANMODEHIDE 74
-#define KVI_SMALLICON_WHO 75
-#define KVI_SMALLICON_EDITOR 76
-#define KVI_SMALLICON_DCCREQUEST 77
-#define KVI_SMALLICON_DCCMSG 78
-#define KVI_SMALLICON_DCCERROR 79
-#define KVI_SMALLICON_ICONMANAGER 80
-#define KVI_SMALLICON_SCRIPTCENTER 81
-#define KVI_SMALLICON_BOMB 82
-#define KVI_SMALLICON_EVENT 83
-#define KVI_SMALLICON_EVENTNOHANDLERS 84
-#define KVI_SMALLICON_HANDLER 85
-#define KVI_SMALLICON_HANDLERDISABLED 86
-#define KVI_SMALLICON_NICKNAMEPROBLEM 87
-#define KVI_SMALLICON_WHOISUSER 88
-#define KVI_SMALLICON_WHOISCHANNELS 89
-#define KVI_SMALLICON_WHOISIDLE 90
-#define KVI_SMALLICON_WHOISSERVER 91
-#define KVI_SMALLICON_WHOISOTHER 92
-#define KVI_SMALLICON_TIME 93
-#define KVI_SMALLICON_NOTIFYONLINE 94
-#define KVI_SMALLICON_NOTIFYOFFLINE 95
-#define KVI_SMALLICON_LOCKED 96
-#define KVI_SMALLICON_UNLOCKED 97
-#define KVI_SMALLICON_LOCKEDOFF 98
-#define KVI_SMALLICON_UNLOCKEDOFF 99
-#define KVI_SMALLICON_OWNPRIVMSGCRYPTED 100
-#define KVI_SMALLICON_CHANPRIVMSGCRYPTED 101
-#define KVI_SMALLICON_QUERYPRIVMSGCRYPTED 102
-#define KVI_SMALLICON_DCCCHATMSG 103
-#define KVI_SMALLICON_DCCCHATMSGCRYPTED 104
-#define KVI_SMALLICON_IRC 105
-#define KVI_SMALLICON_FOLDER 106
-#define KVI_SMALLICON_HOME 107
-#define KVI_SMALLICON_BOOKMARKS 108
-#define KVI_SMALLICON_SPY 109
-#define KVI_SMALLICON_KICK 110
-#define KVI_SMALLICON_LINUX 111
-#define KVI_SMALLICON_LINKS 112
-#define KVI_SMALLICON_REGUSERS 113
-#define KVI_SMALLICON_TRAYICON 114
-#define KVI_SMALLICON_CASCADEWINDOWS 115
-#define KVI_SMALLICON_MAXVERTICAL 116
-#define KVI_SMALLICON_MAXHORIZONTAL 117
-#define KVI_SMALLICON_TILEWINDOWS 118
-#define KVI_SMALLICON_LOG 119
-#define KVI_SMALLICON_SPAM 120
-#define KVI_SMALLICON_FILE 121
-#define KVI_SMALLICON_ICQ 122
-#define KVI_SMALLICON_ICQYELLOW 123
-#define KVI_SMALLICON_ICQRED 124
-#define KVI_SMALLICON_ICQBLUE 125
-#define KVI_SMALLICON_ICQLIGHTGREEN 126
-#define KVI_SMALLICON_ICQLIGHTYELLOW 127
-#define KVI_SMALLICON_MESSAGE 128
-#define KVI_SMALLICON_MESSAGESENT 129
-#define KVI_SMALLICON_BLUESQUARE 130
-#define KVI_SMALLICON_VIOLETSQUARE 131
-#define KVI_SMALLICON_YELLOWSQUARE 132
-#define KVI_SMALLICON_GREENSQUARE 133
-#define KVI_SMALLICON_BLACKSQUARE 134
-#define KVI_SMALLICON_REDSQUARE 135
-#define KVI_SMALLICON_CYANSQUARE 136
-#define KVI_SMALLICON_DKGREENSQUARE 137
-#define KVI_SMALLICON_TERMINAL 138
-#define KVI_SMALLICON_WALLOPS 139
-#define KVI_SMALLICON_INVISIBLE 140
-#define KVI_SMALLICON_SERVERNOTICE 141
-#define KVI_SMALLICON_GNUTELLA 142
-#define KVI_SMALLICON_SEARCH 143
-#define KVI_SMALLICON_FILES 144
-#define KVI_SMALLICON_TRANSFER 145
-#define KVI_SMALLICON_PACKAGE 146
-#define KVI_SMALLICON_RETRY 147
-#define KVI_SMALLICON_IDEA 148
-#define KVI_SMALLICON_COLORS 149
-#define KVI_SMALLICON_GUI 150
-#define KVI_SMALLICON_IRCVIEW 151
-#define KVI_SMALLICON_ALIAS 152
-#define KVI_SMALLICON_CHANNELNOTICE 153
-#define KVI_SMALLICON_CHANNELNOTICECRYPTED 154
-#define KVI_SMALLICON_QUERYNOTICE 155
-#define KVI_SMALLICON_QUERYNOTICECRYPTED 156
-#define KVI_SMALLICON_SERVNOTICE 157
-#define KVI_SMALLICON_POPUP 158
-#define KVI_SMALLICON_PROLOGUE 159
-#define KVI_SMALLICON_EPILOGUE 160
-#define KVI_SMALLICON_SHAREDFILES 161
-#define KVI_SMALLICON_CTCPREPLYUNKNOWN 162
-#define KVI_SMALLICON_CANVAS 163
-#define KVI_SMALLICON_NICKSERV 164
-#define KVI_SMALLICON_CHANSERV 165
-#define KVI_SMALLICON_DCCVOICE 166
-#define KVI_SMALLICON_PLAY 167
-#define KVI_SMALLICON_RECORD 168
-#define KVI_SMALLICON_AUTOTILEWINDOWS 169
-#define KVI_SMALLICON_AWAY 170
-#define KVI_SMALLICON_IDENT 171
-#define KVI_SMALLICON_HOMEPAGE 172
-#define KVI_SMALLICON_LIST 173
-#define KVI_SMALLICON_HALFOP 174
-#define KVI_SMALLICON_HALFDEOP 175
-#define KVI_SMALLICON_INVITE 176
-#define KVI_SMALLICON_MULTIMEDIA 177
-#define KVI_SMALLICON_LOOK 178
-#define KVI_SMALLICON_INPUT 179
-#define KVI_SMALLICON_MESSAGES 180
-#define KVI_SMALLICON_QUERYTRACE 181
-#define KVI_SMALLICON_NOCHANNEL 182
-#define KVI_SMALLICON_BROADCASTPRIVMSG 183
-#define KVI_SMALLICON_BROADCASTNOTICE 184
-#define KVI_SMALLICON_URL 185
-#define KVI_SMALLICON_RAWEVENT 186
-#define KVI_SMALLICON_RAWEVENTNOHANDLERS 187
-#define KVI_SMALLICON_MEKICK 188
-#define KVI_SMALLICON_MEOP 189
-#define KVI_SMALLICON_MEVOICE 190
-#define KVI_SMALLICON_MEDEOP 191
-#define KVI_SMALLICON_MEDEVOICE 192
-#define KVI_SMALLICON_MEHALFOP 193
-#define KVI_SMALLICON_MEDEHALFOP 194
-#define KVI_SMALLICON_MEBAN 195
-#define KVI_SMALLICON_MEUNBAN 196
-#define KVI_SMALLICON_MEBANEXCEPT 197
-#define KVI_SMALLICON_MEBANUNEXCEPT 198
-#define KVI_SMALLICON_MEINVITEEXCEPT 199
-#define KVI_SMALLICON_MEINVITEUNEXCEPT 200
-#define KVI_SMALLICON_CLASSICWINDOWLIST 201
-#define KVI_SMALLICON_TREEWINDOWLIST 202
-#define KVI_SMALLICON_IGNORE 203
-#define KVI_SMALLICON_USERLIST 204
-#define KVI_SMALLICON_STATS 205
-#define KVI_SMALLICON_POPUPMENU 206
-#define KVI_SMALLICON_XY 207
-#define KVI_SMALLICON_IRC0 208
-#define KVI_SMALLICON_IRC1 209
-#define KVI_SMALLICON_IRC2 210
-#define KVI_SMALLICON_IRC3 211
-#define KVI_SMALLICON_IRC4 212
-#define KVI_SMALLICON_IRC5 213
-#define KVI_SMALLICON_HEART 214
-#define KVI_SMALLICON_HEARTBROKEN 215
-#define KVI_SMALLICON_ROSE 216
-#define KVI_SMALLICON_BIGGRIN 217
-#define KVI_SMALLICON_BIGGRINGLASSES 218
-#define KVI_SMALLICON_BIGGRINEYES 219
-#define KVI_SMALLICON_TEXTEXCLAMATIVE 220
-#define KVI_SMALLICON_TEXTPOINTS 221
-#define KVI_SMALLICON_KISS 222
-#define KVI_SMALLICON_SURPRISED1 223
-#define KVI_SMALLICON_UGLY 224
-#define KVI_SMALLICON_ANGRY 225
-#define KVI_SMALLICON_SURPRISED2 226
-#define KVI_SMALLICON_SMILE 227
-#define KVI_SMALLICON_TONGUE 228
-#define KVI_SMALLICON_SSL 229
-#define KVI_SMALLICON_CRY 230
-#define KVI_SMALLICON_EYE 231
-#define KVI_SMALLICON_DEADCHANNEL 232
-#define KVI_SMALLICON_DEADQUERY 233
-#define KVI_SMALLICON_SOUND 234
-#define KVI_SMALLICON_TOOLBAR 235
-#define KVI_SMALLICON_TEXTENCODING 236
-#define KVI_SMALLICON_NEWITEM 237
-#define KVI_SMALLICON_NEWITEMBYWIZARD 238
-#define KVI_SMALLICON_DELETEITEM 239
-#define KVI_SMALLICON_EDITITEM 240
-#define KVI_SMALLICON_FILETRANSFER 241
-#define KVI_SMALLICON_CHANADMIN 242
-#define KVI_SMALLICON_CHANUNADMIN 243
-#define KVI_SMALLICON_MECHANADMIN 244
-#define KVI_SMALLICON_MECHANUNADMIN 245
-#define KVI_SMALLICON_USEROP 246
-#define KVI_SMALLICON_DEUSEROP 247
-#define KVI_SMALLICON_MEUSEROP 248
-#define KVI_SMALLICON_MEDEUSEROP 249
-#define KVI_SMALLICON_APPLET 250
-#define KVI_SMALLICON_CAPTION 251
-#define KVI_SMALLICON_TRANSPARENT 252
-#define KVI_SMALLICON_ALERT 253
-#define KVI_SMALLICON_USERWINDOW 254
-#define KVI_SMALLICON_STATUSBAR 255
-#define KVI_SMALLICON_NOTAWAY 256
-#define KVI_SMALLICON_PLUS 257
-#define KVI_SMALLICON_MINUS 258
-#define KVI_SMALLICON_BINARYTEXT 259
-#define KVI_SMALLICON_CHANOWNER 260
-#define KVI_SMALLICON_CHANUNOWNER 261
-#define KVI_SMALLICON_MECHANOWNER 262
-#define KVI_SMALLICON_MECHANUNOWNER 263
-#define KVI_SMALLICON_AFRAID 264
-#define KVI_SMALLICON_TONGUE2 265
-#define KVI_SMALLICON_SAYICON 266
-#define KVI_SMALLICON_SAYCOLORS 267
-#define KVI_SMALLICON_FINGER 268
-#define KVI_SMALLICON_SCRIPTACTION 269
-#define KVI_SMALLICON_TEARSMILE 270
-#define KVI_SMALLICON_SHY 271
-#define KVI_SMALLICON_SERVERERROR 272
-#define KVI_SMALLICON_CAFE 273
-#define KVI_SMALLICON_ADDONS 274
-#define KVI_SMALLICON_CHANOWNERAWAY 275
-#define KVI_SMALLICON_OPAWAY 276
-#define KVI_SMALLICON_VOICEAWAY 277
-#define KVI_SMALLICON_CHANADMINAWAY 278
-#define KVI_SMALLICON_USEROPAWAY 279
-#define KVI_SMALLICON_HALFOPAWAY 280
-#define KVI_SMALLICON_CLASSEDITOR 281
-#define KVI_SMALLICON_DEMORALIZED 282
-#define KVI_SMALLICON_SLURP 283
-#define KVI_SMALLICON_NAMESPACE 284
-#define KVI_SMALLICON_SAYSMILE 285
-#define KVI_SMALLICON_SAYKVS 286
-#define KVI_SMALLICON_THEMEOPTIONS 287
-#define KVI_SMALLICON_BUG 288
-#define KVI_SMALLICON_REFRESH 289
-#define KVI_SMALLICON_THEME 290
-#define KVI_SMALLICON_SCREENSHOT 291
-#define KVI_SMALLICON_UPDATE 292
-#define KVI_SMALLICON_NOTUPDATE 293
-#define KVI_SMALLICON_FAILUPDATE 294
-#define KVI_SMALLICON_UNREADTEXT 295
-#define KVI_SMALLICON_IRCOP 296
-#define KVI_SMALLICON_IRCOPAWAY 297
-#define KVI_SMALLICON_DEIRCOP 298
-#define KVI_SMALLICON_MEIRCOP 299
-#define KVI_SMALLICON_MEDEIRCOP 300
-#define KVI_SMALLICON_ANGEL 301
-#define KVI_SMALLICON_CLOWN 302
-#define KVI_SMALLICON_DEVIL 303
-#define KVI_SMALLICON_INLOVE 304
-#define KVI_SMALLICON_NINJA 305
-#define KVI_SMALLICON_PIRATE 306
-#define KVI_SMALLICON_PUKE 307
-#define KVI_SMALLICON_RAGE 308
-#define KVI_SMALLICON_CLASS 309
-#define KVI_SMALLICON_CLASSNOTBUILT 310
-#define KVI_SMALLICON_FUNCTION 311
-#define KVI_SMALLICON_SEXMALE 312
-#define KVI_SMALLICON_SEXFEMALE 313
-#define KVI_SMALLICON_SEXBOT 314
-#define KVI_SMALLICON_SEXIRCOP 315
-
-#define KVI_NUM_SMALL_ICONS 316
 
 
 #define KVI_BIGICON_DISCONNECTED "kvi_bigicon_disconnected.png"
@@ -456,55 +138,386 @@ class KVIRC_API KviIconManager : public QObject
 {
 	Q_OBJECT
 public:
+	/**
+	* \enum SmallIcon
+	* \brief Contains all KVIrc's small icons
+	*/
+	enum SmallIcon {
+		None                 =   0,
+		Close                =   1,
+		Maximize             =   2,
+		Minimize             =   3,
+		Restore              =   4,
+		DefaultIcon          =   5,
+		Dock                 =   6,
+		UnDock               =   7,
+		QuitApp              =   8,
+		Console              =   9,
+		Floppy               =  10,
+		ParserError          =  11,
+		ParserWarning        =  12,
+		Server               =  13,
+		World                =  14,
+		Proxy                =  15,
+		KVIrc                =  16,
+		Cut                  =  17,
+		Copy                 =  18,
+		Paste                =  19,
+		Options              =  20,
+		SocketMessage        =  21,
+		SocketWarning        =  22,
+		SocketError          =  23,
+		SystemError          =  24,
+		Raw                  =  25,
+		SystemWarning        =  26,
+		SystemMessage        =  27,
+		UnHandled            =  28,
+		ServerInfo           =  29,
+		Motd                 =  30,
+		Channel              =  31,
+		HideDoubleView       =  32,
+		ShowDoubleView       =  33,
+		Op                   =  34,
+		Voice                =  35,
+		ServerPing           =  36,
+		ShowListView         =  37,
+		HideListView         =  38,
+		Join                 =  39,
+		Part                 =  40,
+		Unrecognized         =  41,
+		Topic                =  42,
+		Accept               =  43,
+		Discard              =  44,
+		OwnPrivMsg           =  45,
+		ChanPrivMsg          =  46,
+		Query                =  47,
+		QueryPrivMsg         =  48,
+		Help                 =  49,
+		MdiHelp              =  50,
+		CtcpReply            =  51,
+		CtcpRequestReplied   =  52,
+		CtcpRequestIgnored   =  53,
+		CtcpRequestFlood     =  54,
+		CtcpRequestUnknown   =  55,
+		Action               =  56,
+		Avatar               =  57,
+		Quit                 =  58,
+		Split                =  59,
+		QuitSplit            =  60,
+		Nick                 =  61,
+		DeOp                 =  62,
+		DeVoice              =  63,
+		Mode                 =  64,
+		Key                  =  65,
+		Limit                =  66,
+		Ban                  =  67,
+		UnBan                =  68,
+		BanExcept            =  69,
+		BanUnExcept          =  70,
+		InviteExcept         =  71,
+		InviteUnExcept       =  72,
+		ChanMode             =  73,
+		ChanModeHide         =  74,
+		Who                  =  75,
+		Editor               =  76,
+		DccRequest           =  77,
+		DccMsg               =  78,
+		DccError             =  79,
+		IconManager          =  80,
+		ScriptCenter         =  81,
+		Bomb                 =  82,
+		Event                =  83,
+		EventNoHandlers      =  84,
+		Handler              =  85,
+		HandlerDisabled      =  86,
+		NickNameProblem      =  87,
+		WhoisUser            =  88,
+		WhoisChannels        =  89,
+		WhoisIdle            =  90,
+		WhoisServer          =  91,
+		WhoisOther           =  92,
+		Time                 =  93,
+		NotifyOnLine         =  94,
+		NotifyOffLine        =  95,
+		Locked               =  96,
+		UnLocked             =  97,
+		LockedOff            =  98,
+		UnLockedOff          =  99,
+		OwnPrivMsgCrypted    = 100,
+		ChanPrivMsgCrypted   = 101,
+		QueryPrivMsgCrypted  = 102,
+		DccChatMsg           = 103,
+		DccChatMsgCrypted    = 104,
+		Irc                  = 105,
+		Folder               = 106,
+		Home                 = 107,
+		BookMarks            = 108,
+		Spy                  = 109,
+		Kick                 = 110,
+		Linux                = 111,
+		Links                = 112,
+		RegUsers             = 113,
+		TrayIcon             = 114,
+		CascadeWindows       = 115,
+		MaxVertical          = 116,
+		MaxHorizontal        = 117,
+		TileWindows          = 118,
+		Log                  = 119,
+		Spam                 = 120,
+		File                 = 121,
+		Icq                  = 122,
+		IcqYellow            = 123,
+		IcqRed               = 124,
+		IcqBlue              = 125,
+		IcqLightGreen        = 126,
+		IcqLightYellow       = 127,
+		Message              = 128,
+		MessageSent          = 129,
+		BlueSquare           = 130,
+		VioletSquare         = 131,
+		YellowSquare         = 132,
+		GreenSquare          = 133,
+		BlackSquare          = 134,
+		RedSquare            = 135,
+		CyanSquare           = 136,
+		DarkGreenSquare      = 137,
+		Terminal             = 138,
+		WallOps              = 139,
+		Invisible            = 140,
+		ServerNotice         = 141,
+		Gnutella             = 142,
+		Search               = 143,
+		Files                = 144,
+		Transfer             = 145,
+		Package              = 146,
+		Retry                = 147,
+		Idea                 = 148,
+		Colors               = 149,
+		Gui                  = 150,
+		IrcView              = 151,
+		Alias                = 152,
+		ChannelNotice        = 153,
+		ChannelNoticeCrypted = 154,
+		QueryNotice          = 155,
+		QueryNoticeCrypted   = 156,
+		ServNotice           = 157,
+		Popup                = 158,
+		Prologue             = 159,
+		Epilogue             = 160,
+		SharedFiles          = 161,
+		CtcpReplyUnknown     = 162,
+		Canvas               = 163,
+		NickServ             = 164,
+		ChanServ             = 165,
+		DccVoice             = 166,
+		Play                 = 167,
+		Record               = 168,
+		AutoTileWindows      = 169,
+		Away                 = 170,
+		Ident                = 171,
+		HomePage             = 172,
+		List                 = 173,
+		HalfOp               = 174,
+		HalfDeOp             = 175,
+		Invite               = 176,
+		MultiMedia           = 177,
+		Look                 = 178,
+		Input                = 179,
+		Messages             = 180,
+		QueryTrace           = 181,
+		NoChannel            = 182,
+		BroadcastPrivMsg     = 183,
+		BroadcastNotice      = 184,
+		Url                  = 185,
+		RawEvent             = 186,
+		RawEventNoHandlers   = 187,
+		MeKick               = 188,
+		MeOp                 = 189,
+		MeVoice              = 190,
+		MeDeOp               = 191,
+		MeDeVoice            = 192,
+		MeHalfOp             = 193,
+		MeDeHalfOp           = 194,
+		MeBan                = 195,
+		MeUnBan              = 196,
+		MeBanExcept          = 197,
+		MeBanUnExcept        = 198,
+		MeInviteExcept       = 199,
+		MeInviteUnExcept     = 200,
+		ClassicWindowList    = 201,
+		TreeWindowList       = 202,
+		Ignore               = 203,
+		UserList             = 204,
+		Stats                = 205,
+		PopupMenu            = 206,
+		Xy                   = 207,
+		Irc0                 = 208,
+		Irc1                 = 209,
+		Irc2                 = 210,
+		Irc3                 = 211,
+		Irc4                 = 212,
+		Irc5                 = 213,
+		Heart                = 214,
+		HeartBroken          = 215,
+		Rose                 = 216,
+		BigGrin              = 217,
+		BigGrinGlasses       = 218,
+		BigGrinEyes          = 219,
+		TextExclamative      = 220,
+		TextPoints           = 221,
+		Kiss                 = 222,
+		Surprised1           = 223,
+		Ugly                 = 224,
+		Angry                = 225,
+		Surprised2           = 226,
+		Smile                = 227,
+		Tongue               = 228,
+		Ssl                  = 229,
+		Cry                  = 230,
+		Eye                  = 231,
+		DeadChannel          = 232,
+		DeadQuery            = 233,
+		Sound                = 234,
+		ToolBar              = 235,
+		TextEncoding         = 236,
+		NewItem              = 237,
+		NewItemByWizard      = 238,
+		DeleteItem           = 239,
+		EditItem             = 240,
+		FileTransfer         = 241,
+		ChanAdmin            = 242,
+		ChanUnAdmin          = 243,
+		MeChanAdmin          = 244,
+		MeChanUnAdmin        = 245,
+		UserOp               = 246,
+		DeUserOp             = 247,
+		MeUserOp             = 248,
+		MeDeUserOp           = 249,
+		Applet               = 250,
+		Caption              = 251,
+		Transparent          = 252,
+		Alert                = 253,
+		UserWindow           = 254,
+		StatusBar            = 255,
+		NotAway              = 256,
+		Plus                 = 257,
+		Minus                = 258,
+		BinaryText           = 259,
+		ChanOwner            = 260,
+		ChanUnOwner          = 261,
+		MeChanOwner          = 262,
+		MeChanUnOwner        = 263,
+		Afraid               = 264,
+		Tongue2              = 265,
+		SayIcon              = 266,
+		SayColors            = 267,
+		Finger               = 268,
+		ScriptAction         = 269,
+		TearSmile            = 270,
+		Shy                  = 271,
+		ServerError          = 272,
+		Cafe                 = 273,
+		Addons               = 274,
+		ChanOwnerAway        = 275,
+		OpAway               = 276,
+		VoiceAway            = 277,
+		ChanAdminAway        = 278,
+		UserOpAway           = 279,
+		HalfOpAway           = 280,
+		ClassEditor          = 281,
+		Demoralized          = 282,
+		Slurp                = 283,
+		NameSpace            = 284,
+		SaySmile             = 285,
+		SayKvs               = 286,
+		ThemeOptions         = 287,
+		Bug                  = 288,
+		Refresh              = 289,
+		Theme                = 290,
+		ScreenShot           = 291,
+		Update               = 292,
+		NotUpdate            = 293,
+		FailUpdate           = 294,
+		UnreadText           = 295,
+		IrcOp                = 296,
+		IrcOpAway            = 297,
+		DeIrcOp              = 298,
+		MeIrcOp              = 299,
+		MeDeIrcOp            = 300,
+		Angel                = 301,
+		Clown                = 302,
+		Devil                = 303,
+		InLove               = 304,
+		Ninja                = 305,
+		Pirate               = 306,
+		Puke                 = 307,
+		Rage                 = 308,
+		Class                = 309,
+		ClassNotBuilt        = 310,
+		Function             = 311,
+		SexMale              = 312,
+		SexFemale            = 313,
+		SexBot               = 314,
+		SexIrcOp             = 315,
+		IconCount            = 316
+	};
+
 	KviIconManager();
 	~KviIconManager();
 private:
-	QPixmap                     * m_smallIcons[KVI_NUM_SMALL_ICONS];
-	KviIconWidget               * m_pIconWidget;
-
-	KviPointerHashTable<QString,KviCachedPixmap>      * m_pCachedImages;
-	KviPointerHashTable<QString,int>                  * m_pIconNames;
-	unsigned int                  m_uCacheTotalSize;
-	unsigned int                  m_uCacheMaxSize;
+	QPixmap                                      * m_smallIcons[IconCount];
+	KviIconWidget                                * m_pIconWidget;
+	KviPointerHashTable<QString,KviCachedPixmap> * m_pCachedImages;
+	KviPointerHashTable<QString,int>             * m_pIconNames;
+	unsigned int                                   m_uCacheTotalSize;
+	unsigned int                                   m_uCacheMaxSize;
 public:
 	// WARNING: Don't store this pointer!
 	// id == filename | number that indicates an internal pixmap
 	// 0 stands for "any"
-	QPixmap * getImage(const QString &id,bool bCanBeNumber = true,QString* pRetPath = 0);
+	QPixmap * getImage(const QString & szId, bool bCanBeNumber = true, QString * pRetPath = 0);
 
 	// The returned pointer is owned by the icon manager
 	// and can be deleted at any time : so don't store it
-	KviCachedPixmap * getPixmapWithCache(const QString &szName);
+	KviCachedPixmap * getPixmapWithCache(const QString & szName);
 
 	// The returned pointer is owned by the icon manager
 	// and can be deleted at any time : so don't store it
-	KviCachedPixmap * getPixmapWithCacheScaleOnLoad(const QString &szName,int iMaxWidth,int iMaxHeight);
+	KviCachedPixmap * getPixmapWithCacheScaleOnLoad(const QString & szName, int iMaxWidth, int iMaxHeight);
 
 	// The returned pointer is owned by the icon manager
 	// and can be deleted at any time : so don't store it
-	QPixmap * getPixmap(const QString &szName)
-		{ KviCachedPixmap * p = getPixmapWithCache(szName); return p ? p->pixmap() : 0; };
+	QPixmap * getPixmap(const QString & szName)
+		{ KviCachedPixmap * pPix = getPixmapWithCache(szName); return pPix ? pPix->pixmap() : 0; };
 
 	// this one never fails... if the image can't be found
 	// a default 32x32 image is returned
-	QPixmap * getBigIcon(const QString &szName);
+	QPixmap * getBigIcon(const QString & szName);
 
 	// this one never fails... if the icon isn't there
 	// then a default 16x16 image is returned
-	QPixmap * getSmallIcon(int idx){ return idx < KVI_NUM_SMALL_ICONS ? (m_smallIcons[idx] ? m_smallIcons[idx] : loadSmallIcon(idx) ) : 0; };
+	QPixmap * getSmallIcon(SmallIcon eIcon){ return eIcon < IconCount ? (m_smallIcons[eIcon] ? m_smallIcons[eIcon] : loadSmallIcon(eIcon) ) : 0; };
 
-	const char * getSmallIconName(int idx);
+	// provided for convenience
+	QPixmap * getSmallIcon(int iIcon){ return iIcon < IconCount ? (m_smallIcons[iIcon] ? m_smallIcons[iIcon] : loadSmallIcon(iIcon)) : 0; };
 
-	QString getSmallIconResourceName(int idx);
+	KviIconManager::SmallIcon iconName(int iIcon);
 
-	int getSmallIconIdFromName(const QString &szName);
+	const char * getSmallIconName(SmallIcon eIcon);
+
+	// provided for convenience
+	const char * getSmallIconName(int iIcon);
+
+	QString getSmallIconResourceName(SmallIcon eIcon);
+
+	int getSmallIconIdFromName(const QString & szName);
 
 	// if szLocalPath is empty then szName can be the identification
 	// string for the avatar
 	// if szName is empty then it is found from szLocalPath
-	KviAvatar * getAvatar(const QString &szLocalPath,const QString &szName);
+	KviAvatar * getAvatar(const QString & szLocalPath, const QString & szName);
 
-	void urlToCachedFileName(QString &szFName);
+	void urlToCachedFileName(QString & szFName);
 
 	void clearCache();
 	void reloadImages();
@@ -512,9 +525,9 @@ public:
 	void cacheCleanup();
 
 protected:
-	void addToCache(const QString &szName,KviCachedPixmap * p);
+	void addToCache(const QString & szName, KviCachedPixmap * pPix);
 	//void loadSmallIcons();
-	QPixmap * loadSmallIcon(int idx);
+	QPixmap * loadSmallIcon(int iIdx);
 
 	void initQResourceBackend();
 public slots:

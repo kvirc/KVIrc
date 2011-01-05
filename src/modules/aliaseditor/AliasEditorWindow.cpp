@@ -67,8 +67,8 @@ AliasEditorTreeWidgetItem::AliasEditorTreeWidgetItem(QTreeWidget * pTreeWidget,T
 {
 	setName(szName);
 	m_cPos=0;
-	if(eType==AliasEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
-	else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
+	if(eType==AliasEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NameSpace))));
+	else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Alias))));
 }
 
 AliasEditorTreeWidgetItem::AliasEditorTreeWidgetItem(AliasEditorTreeWidgetItem * pParentItem,Type eType,const QString &szName)
@@ -77,8 +77,8 @@ AliasEditorTreeWidgetItem::AliasEditorTreeWidgetItem(AliasEditorTreeWidgetItem *
 	setName(szName);
 	m_cPos=0;
 	setFlags(Qt::ItemIsEditable|Qt::ItemIsEnabled|Qt::ItemIsSelectable);
-	if(eType==AliasEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
-	else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
+	if(eType==AliasEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NameSpace))));
+	else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Alias))));
 }
 
 void AliasEditorTreeWidgetItem::setName(const QString &szName)
@@ -89,8 +89,8 @@ void AliasEditorTreeWidgetItem::setName(const QString &szName)
 void AliasEditorTreeWidgetItem::setType(Type t)
 {
 	m_eType=t;
-	if(t==AliasEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
-		else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
+	if(t==AliasEditorTreeWidgetItem::Namespace) setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NameSpace))));
+		else setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Alias))));
 }
 
 AliasEditorTreeWidget::AliasEditorTreeWidget(QWidget * par)
@@ -558,12 +558,12 @@ void AliasEditorWidget::customContextMenuRequested(const QPoint pnt)
 	int id;
 
 	m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Alias)),
 			__tr2qs_ctx("Add Alias","editor"),
 			this,SLOT(newAlias()));
 
 	m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Alias)),
 			__tr2qs_ctx("Add Namespace","editor"),
 			this,SLOT(newNamespace()));
 
@@ -573,7 +573,7 @@ void AliasEditorWidget::customContextMenuRequested(const QPoint pnt)
 	m_pContextPopup->insertSeparator();
 
 	id = m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),
 			__tr2qs_ctx("Remove Selected","editor"),
 			this,SLOT(removeSelectedItems()));
 	m_pContextPopup->setItemEnabled(id,bHasSelected);
@@ -581,20 +581,20 @@ void AliasEditorWidget::customContextMenuRequested(const QPoint pnt)
 	m_pContextPopup->insertSeparator();
 
 	m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 			__tr2qs_ctx("Export Selected...","editor"),
 			this,SLOT(exportSelected()));
 	m_pContextPopup->setItemEnabled(id,bHasSelected);
 
 	m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 			__tr2qs_ctx("Export Selected in singles files...","editor"),
 			this,SLOT(exportSelectedSepFiles()));
 
 	m_pContextPopup->setItemEnabled(id,bHasSelected);
 
 	m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 			__tr2qs_ctx("Export All...","editor"),
 			this,SLOT(exportAll()));
 	m_pContextPopup->setItemEnabled(id,bHasItems);
@@ -602,13 +602,13 @@ void AliasEditorWidget::customContextMenuRequested(const QPoint pnt)
 	m_pContextPopup->insertSeparator();
 
 	m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::Search)),
 			__tr2qs_ctx("Find In Aliases...","editor"),
 			this,SLOT(slotFind()));
 	m_pContextPopup->setItemEnabled(id,bHasItems);
 
 	m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::NameSpace)),
 			__tr2qs_ctx("Collapse All Namespaces","editor"),
 			this,SLOT(slotCollapseNamespaces()));
 
@@ -1187,17 +1187,17 @@ AliasEditorWindow::AliasEditorWindow(KviMainWindow * lpFrm)
 	
 	QPushButton * btn = new QPushButton(__tr2qs_ctx("&OK","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));
-	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 	g->addWidget(btn,1,1);
 
 	btn = new QPushButton(__tr2qs_ctx("&Apply","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(applyClicked()));
-	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 	g->addWidget(btn,1,2);
 
 	btn = new QPushButton(__tr2qs_ctx("Cancel","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)));
 	g->addWidget(btn,1,3);
 
 	g->setRowStretch(0,1);
@@ -1228,7 +1228,7 @@ void AliasEditorWindow::cancelClicked()
 
 QPixmap * AliasEditorWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS);
+	return g_pIconManager->getSmallIcon(KviIconManager::Alias);
 }
 
 void AliasEditorWindow::getConfigGroupName(QString &szName)

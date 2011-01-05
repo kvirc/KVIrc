@@ -152,24 +152,24 @@ void RawEditorWidget::customContextMenuRequested(const QPoint &pos)
 		{
 			if(!(((RawHandlerTreeWidgetItem *)it)->m_bEnabled))
 				m_pContextPopup->insertItem(
-					*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLER)),
+					*(g_pIconManager->getSmallIcon(KviIconManager::Handler)),
 					__tr2qs_ctx("&Enable Handler","editor"),this,SLOT(toggleCurrentHandlerEnabled()));
 			else
 				m_pContextPopup->insertItem(
-					*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLERDISABLED)),
+					*(g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)),
 					__tr2qs_ctx("&Disable Handler","editor"),this,SLOT(toggleCurrentHandlerEnabled()));
 
 			m_pContextPopup->insertItem(
-					*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
+					*(g_pIconManager->getSmallIcon(KviIconManager::Quit)),
 					__tr2qs_ctx("Re&move Handler","editor"),
 					this,SLOT(removeCurrentHandler()));
 			m_pContextPopup->insertItem(
-					*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+					*(g_pIconManager->getSmallIcon(KviIconManager::Folder)),
 					__tr2qs_ctx("&Export Handler To...","editor"),
 					this,SLOT(exportCurrentHandler()));
 		} else {
 			m_pContextPopup->insertItem(
-				*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLER)),
+				*(g_pIconManager->getSmallIcon(KviIconManager::Handler)),
 				__tr2qs_ctx("&New Handler","editor"),
 				this,SLOT(addHandlerForCurrentRaw()));
 		}
@@ -177,7 +177,7 @@ void RawEditorWidget::customContextMenuRequested(const QPoint &pos)
 
 	m_pContextPopup->insertSeparator();
 	m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENT)),
+			*(g_pIconManager->getSmallIcon(KviIconManager::RawEvent)),
 			__tr2qs_ctx("&Add Raw Event...","editor"),
 			this,SLOT(addRaw()));
         m_pContextPopup->popup(mapToGlobal(QPoint(pos.x()+15,pos.y())));
@@ -477,17 +477,17 @@ RawEditorWindow::RawEditorWindow(KviMainWindow * lpFrm)
 
 	QPushButton * btn = new QPushButton(__tr2qs_ctx("&OK","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));
-	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 	g->addWidget(btn,1,1);
 
 	btn = new QPushButton(__tr2qs_ctx("&Apply","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(applyClicked()));
-	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 	g->addWidget(btn,1,2);
 
 	btn = new QPushButton(__tr2qs_ctx("Cancel","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)));
 	g->addWidget(btn,1,3);
 
 	g->setRowStretch(0,1);
@@ -518,7 +518,7 @@ void RawEditorWindow::cancelClicked()
 
 QPixmap * RawEditorWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENT);
+	return g_pIconManager->getSmallIcon(KviIconManager::RawEvent);
 }
 
 void RawEditorWindow::fillCaptionBuffers()

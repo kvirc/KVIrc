@@ -60,7 +60,7 @@ LinksWindow::LinksWindow(KviMainWindow * lpFrm,KviConsoleWindow * lpConsole)
 	m_pRequestButton = new QToolButton(box);
 	m_pRequestButton->setObjectName("request_button");
 	m_pRequestButton->setIconSize(QSize(16,16));
-	m_pRequestButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINKS)));
+	m_pRequestButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Links)));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestLinks()));
 	m_pRequestButton->setToolTip(__tr2qs("Request Links"));
 
@@ -140,7 +140,7 @@ void LinksWindow::connectionStateChange()
 
 QPixmap * LinksWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_LINKS);
+	return g_pIconManager->getSmallIcon(KviIconManager::Links);
 }
 
 void LinksWindow::resizeEvent(QResizeEvent *)
@@ -363,18 +363,18 @@ void LinksWindow::showHostPopup(QTreeWidgetItem *i,const QPoint &p)
 	if(host.isEmpty())return;
 	m_pHostPopup->clear();
 	KviCString tmp(KviCString::Format,"LINKS %s *",host.ptr());
-	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINKS)),tmp.ptr());
+	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Links)),tmp.ptr());
 	m_pHostPopup->insertSeparator();
 	tmp.sprintf("TIME %s",host.ptr());
-	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)),tmp.ptr());
+	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Time)),tmp.ptr());
 	tmp.sprintf("ADMIN %s",host.ptr());
 	m_pHostPopup->insertItem(tmp.ptr());
 	tmp.sprintf("INFO %s",host.ptr());
-	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVERINFO)),tmp.ptr());
+	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::ServerInfo)),tmp.ptr());
 	tmp.sprintf("MOTD %s",host.ptr());
-	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MOTD)),tmp.ptr());
+	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::Motd)),tmp.ptr());
 	tmp.sprintf("VERSION %s",host.ptr());
-	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)),tmp.ptr());
+	m_pHostPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::KVIrc)),tmp.ptr());
 	tmp.sprintf("TRACE %s",host.ptr());
 	m_pHostPopup->insertItem(tmp.ptr());
 	tmp.sprintf("USERS %s",host.ptr());

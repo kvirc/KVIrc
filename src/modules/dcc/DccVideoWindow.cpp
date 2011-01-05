@@ -655,7 +655,7 @@ void DccVideoWindow::fillCaptionBuffers()
 
 QPixmap * DccVideoWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCVOICE);
+	return g_pIconManager->getSmallIcon(KviIconManager::DccVoice);
 }
 
 void DccVideoWindow::ownMessage(const QString &text, bool bUserFeedback)
@@ -863,7 +863,7 @@ bool DccVideoWindow::event(QEvent *e)
 								if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
 								{
 									QString szMsg = Qt::escape(QString(d.ptr()));
-									g_pApp->notifierMessage(this,KVI_SMALLICON_DCCCHATMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+									g_pApp->notifierMessage(this,KviIconManager::DccChatMsg,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 								}
 							}
 						}

@@ -66,23 +66,23 @@ LogListViewItemType::LogListViewItemType(QTreeWidget * par, LogFile::KviLogTypes
 	switch(m_type)
 	{
 		case LogFile::Channel:
-			icon= QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL));
+			icon= QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Channel));
 			text = __tr2qs_ctx("Channel","logview");
 			break;
 		case LogFile::Query:
-			icon= QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_QUERY));
+			icon= QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Query));
 			text = __tr2qs_ctx("Query","logview");
 			break;
 		case LogFile::DccChat:
-			icon= QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG));
+			icon= QIcon(*g_pIconManager->getSmallIcon(KviIconManager::DccMsg));
 			text = __tr2qs_ctx("DCC Chat","logview");
 			break;
 		case LogFile::Console:
-			icon= QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE));
+			icon= QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Console));
 			text = __tr2qs_ctx("Console","logview");
 			break;
 		default:
-			icon= QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_HELP));
+			icon= QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Help));
 			text = __tr2qs_ctx("Other","logview");
 			break;
 	}

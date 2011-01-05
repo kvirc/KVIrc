@@ -26,7 +26,7 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_logging KVI_SMALLICON_LOG
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_logging KviIconManager::Log
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_logging __tr2qs_no_lookup("Logging")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_logging __tr2qs_no_lookup("save,output")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_logging OptionsWidget_tools

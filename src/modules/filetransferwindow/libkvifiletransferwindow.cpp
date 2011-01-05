@@ -123,7 +123,7 @@ static bool filetransferwindow_module_init(KviModule * m)
 		__tr2qs("Manage File &Transfers"),
 		filetransferwindow_extension_alloc);
 
-	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FILETRANSFER)));
+	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::FileTransfer)));
 
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",filetransferwindow_kvs_cmd_open);

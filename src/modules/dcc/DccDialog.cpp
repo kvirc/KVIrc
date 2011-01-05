@@ -81,7 +81,7 @@ DccAcceptDialog::DccAcceptDialog(DccBroker * br,DccDescriptor * dcc,const QStrin
 	connect(btn,SIGNAL(clicked()),this,SLOT(rejectClicked()));
 	hb->addWidget(btn);
 
-	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG))));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::DccMsg))));
 	setWindowTitle(capt);
 
 	l->activateWindow();
@@ -161,7 +161,7 @@ DccRenameDialog::DccRenameDialog(DccBroker * br,DccDescriptor * dcc,const QStrin
 	btn->setDefault(true);
 	//btn->setFocus();
 
-	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG))));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::DccMsg))));
 	setWindowTitle(__tr2qs_ctx("File Already Exists - KVIrc","dcc"));
 }
 

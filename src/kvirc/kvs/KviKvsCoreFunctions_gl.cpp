@@ -372,7 +372,7 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("iconid",KVS_PT_UINT,0,uIco)
 		KVSCF_PARAMETERS_END
 
-		if(uIco < KVI_NUM_SMALL_ICONS)
+		if(uIco < KviIconManager::IconCount)
 		{
 			KVSCF_pRetBuffer->setString(g_pIconManager->getSmallIconName(uIco));
 		} else {

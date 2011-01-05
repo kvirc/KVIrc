@@ -135,7 +135,7 @@ static bool logview_module_init(KviModule * m)
 							__tr2qs_ctx("Browse &Log Files","logview"),
 							logview_extension_alloc);
 
-	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LOG)));
+	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Log)));
 
 	return true;
 }

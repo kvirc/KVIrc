@@ -831,7 +831,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 			}
 		}
 
-		g_pInputPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BIGGRIN)),__tr2qs("Insert Icon"),m_pIconMenu);
+		g_pInputPopup->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)),__tr2qs("Insert Icon"),m_pIconMenu);
 
 		QInputContext *qic = g_pApp->inputContext();
 		if (qic) {

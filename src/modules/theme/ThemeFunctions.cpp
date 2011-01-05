@@ -282,7 +282,7 @@ namespace ThemeFunctions
 		hd.szButton2Text = __tr2qs_ctx("Yes, Proceed","theme");
 		hd.iDefaultButton = 2;
 		hd.iCancelButton = 1;
-		hd.pixIcon = *(g_pIconManager->getSmallIcon(KVI_SMALLICON_THEME));
+		hd.pixIcon = *(g_pIconManager->getSmallIcon(KviIconManager::Theme));
 		hd.iMinimumWidth = 350;
 		hd.iMinimumHeight = 420;
 		hd.iFlags = KviHtmlDialogData::ForceMinimumSize;

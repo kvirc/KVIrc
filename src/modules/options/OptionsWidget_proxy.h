@@ -25,8 +25,9 @@
 //=============================================================================
 
 #include "KviOptionsWidget.h"
-#include <QTreeWidget>
+#include "KviIconManager.h"
 
+#include <QTreeWidget>
 #include <QCheckBox>
 
 class QLabel;
@@ -49,7 +50,7 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_proxy KVI_SMALLICON_PROXY
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_proxy KviIconManager::Proxy
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_proxy __tr2qs_no_lookup("Proxy Hosts")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_proxy OptionsWidget_connection
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_proxy __tr2qs_no_lookup("connection,servers")

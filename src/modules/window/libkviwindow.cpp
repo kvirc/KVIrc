@@ -1151,10 +1151,11 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("irc_context",KVS_PT_UINT,KVS_PF_OPTIONAL,uCtx)
 		KVSM_PARAMETER("icon",KVS_PT_INT,KVS_PF_OPTIONAL,iIcon)
 	KVSM_PARAMETERS_END(c)
-	iIcon = iIcon % KVI_NUM_SMALL_ICONS;
+	iIcon = iIcon % KviIconManager::IconCount;
 
 	int iFlags = 0;
-	if(szFlags.contains('i'))iFlags |= UserWindow::HasInput;
+	if(szFlags.contains('i'))
+		iFlags |= UserWindow::HasInput;
 
 	KviConsoleWindow * pConsole = 0;
 	if(c->parameterList()->count() >= 3)
@@ -1166,17 +1167,18 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 		}
 	}
 
-	UserWindow * wnd = new UserWindow(
+	UserWindow * pWnd = new UserWindow(
 		c->window()->frame(),
 		szCaption.toUtf8().data(),
 		iIcon,
 		pConsole,
 		iFlags);
 
-	c->window()->frame()->addWindow(wnd,!szFlags.contains('m'));
-	if(szFlags.contains('m'))wnd->minimize();
+	c->window()->frame()->addWindow(pWnd,!szFlags.contains('m'));
+	if(szFlags.contains('m'))
+		pWnd->minimize();
 
-	c->returnValue()->setInteger(QString(wnd->id()).toUInt());
+	c->returnValue()->setInteger(QString(pWnd->id()).toUInt());
 	return true;
 }
 

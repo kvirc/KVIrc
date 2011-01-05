@@ -91,7 +91,8 @@ KviQueryWindow::KviQueryWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConso
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
 
-	m_pListViewButton = new KviWindowToolPageButton(KVI_SMALLICON_HIDELISTVIEW,KVI_SMALLICON_SHOWLISTVIEW,__tr2qs("Show User List"),buttonContainer(),true,"list_view_button");
+	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Show User List"),buttonContainer(),true);
+	m_pListViewButton->setObjectName("list_view_button");
 	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
 
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -549,7 +550,7 @@ void KviQueryWindow::applyOptions()
 
 QPixmap * KviQueryWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(isDeadQuery() ? KVI_SMALLICON_DEADQUERY : KVI_SMALLICON_QUERY);
+	return g_pIconManager->getSmallIcon(isDeadQuery() ? KviIconManager::DeadQuery : KviIconManager::Query);
 }
 
 void KviQueryWindow::resizeEvent(QResizeEvent *)

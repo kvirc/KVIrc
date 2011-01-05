@@ -35,7 +35,7 @@
 
 class TextIconTableItem;
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_textIcons KVI_SMALLICON_BIGGRIN
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_textIcons KviIconManager::BigGrin
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_textIcons __tr2qs_no_lookup("Text icons")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_textIcons OptionsWidget_tools
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_textIcons __tr2qs_no_lookup("smileys,emoticons")

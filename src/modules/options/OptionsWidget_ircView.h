@@ -32,7 +32,7 @@
 #include <QComboBox>
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewTheme KVI_SMALLICON_IRCVIEW
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewTheme KviIconManager::IrcView
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewTheme __tr2qs_no_lookup("Output")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewTheme __tr2qs_no_lookup("theme,colors,output")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircViewTheme "theme"
@@ -46,7 +46,7 @@ public:
 	~OptionsWidget_ircViewTheme();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewLook KVI_SMALLICON_IRCVIEW
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewLook KviIconManager::IrcView
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewLook __tr2qs_no_lookup("Look")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewLook __tr2qs_no_lookup("theme,colors,output")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircViewLook "theme"
@@ -66,7 +66,7 @@ public:
 	virtual void commit();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewFeatures KVI_SMALLICON_IRCVIEW
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewFeatures KviIconManager::IrcView
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewFeatures __tr2qs_no_lookup("Features")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircViewFeatures "theme"
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_ircViewFeatures OptionsWidget_ircViewTheme
@@ -80,7 +80,7 @@ public:
 	~OptionsWidget_ircViewFeatures();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewMarker KVI_SMALLICON_IRCVIEW
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewMarker KviIconManager::IrcView
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewMarker __tr2qs_no_lookup("Marker")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircViewMarker "theme"
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_ircViewMarker OptionsWidget_ircViewTheme

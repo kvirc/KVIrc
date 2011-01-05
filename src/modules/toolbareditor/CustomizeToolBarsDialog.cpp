@@ -134,7 +134,7 @@ CustomToolBarPropertiesDialog::CustomToolBarPropertiesDialog(QWidget * p,const Q
 	m_szLabel = szLabel;
 
 	setWindowTitle(__tr2qs_ctx("ToolBar Properties","editor"));
-	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR))));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::ToolBar))));
 	setModal(true);
 
 	QGridLayout * g = new QGridLayout(this);
@@ -292,7 +292,7 @@ CustomizeToolBarsDialog::CustomizeToolBarsDialog(QWidget * p)
 {
 	setObjectName("Toolbar_editor");
 	setWindowTitle(__tr2qs_ctx("Customize Toolbars","editor"));
-	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::ToolBar)));
 
 	m_pInstance = this;
 

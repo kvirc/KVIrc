@@ -2,7 +2,7 @@
 #define _SOCKETSPYWINDOW_H_
 //=============================================================================
 //
-//   File : socketspywindow.h
+//   File : SocketSpyWindow.h
 //   Creation date : Sun Nov 26 2000 13:13:00 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc irc client distribution

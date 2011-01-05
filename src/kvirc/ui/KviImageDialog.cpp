@@ -218,20 +218,21 @@ void KviImageDialog::jobTerminated()
 
 void KviImageDialog::heartbeat()
 {
-	if(m_iJobIndexHelper == 0)m_pListBox->clear();
-
+	if(m_iJobIndexHelper == 0)
+		m_pListBox->clear();
 
 	switch(m_iJobType)
 	{
 		case KID_TYPE_BUILTIN_IMAGES_SMALL:
 		{
-			if(m_iJobIndexHelper >= KVI_NUM_SMALL_ICONS)
+			if(m_iJobIndexHelper >= KviIconManager::IconCount)
 			{
 				jobTerminated();
 				return;
 			}
 			int max = m_iJobIndexHelper + 15;
-			if(max > KVI_NUM_SMALL_ICONS)max = KVI_NUM_SMALL_ICONS;
+			if(max > KviIconManager::IconCount)
+				max = KviIconManager::IconCount;
 			while(m_iJobIndexHelper < max)
 			{
 				QString id = g_pIconManager->getSmallIconName(m_iJobIndexHelper);

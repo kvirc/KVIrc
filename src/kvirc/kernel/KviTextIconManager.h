@@ -36,6 +36,7 @@
 #include "kvi_settings.h"
 #include "KviPointerHashTable.h"
 #include "KviAnimatedPixmap.h"
+#include "KviIconManager.h"
 
 #include <QPixmap>
 
@@ -59,16 +60,16 @@ typedef struct _KviTextIconAssocEntry
 class KVIRC_API KviTextIcon
 {
 protected:
-	int                 m_iId;
-	QString             m_szFileName;
-	KviAnimatedPixmap * m_pAnimatedPixmap;
+	KviIconManager::SmallIcon   m_eIcon;
+	QString                     m_szFileName;
+	KviAnimatedPixmap         * m_pAnimatedPixmap;
 public:
 	/**
 	* \brief Constructs the icon object
-	* \param iId The id of the icon
+	* \param eIcon The id of the icon
 	* \return KviTextIcon
 	*/
-	KviTextIcon(int iId);
+	KviTextIcon(KviIconManager::SmallIcon eIcon);
 
 	/**
 	* \brief Constructs the icon object
@@ -91,16 +92,24 @@ public:
 public:
 	/**
 	* \brief Returns the id of the icon
-	* \return int
+	* \return KviIconManager::SmallIcon
 	*/
-	inline int id(){ return m_iId; };
+	inline KviIconManager::SmallIcon id(){ return m_eIcon; };
 
 	/**
 	* \brief Sets the id of the icon
-	* \param iId The id of the icon
+	* \param eIcon The id of the icon
 	* \return void
 	*/
-	void setId(int iId);
+	void setId(KviIconManager::SmallIcon eIcon);
+
+	/**
+	* \brief Sets the id of the icon
+	* \param iIcon The id of the icon
+	* \note This function is provided for convenience
+	* \return void
+	*/
+	void setId(int iIcon);
 
 	/**
 	* \brief Sets the filename of the icon

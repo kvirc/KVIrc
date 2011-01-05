@@ -97,11 +97,11 @@ SharedFileEditDialog::SharedFileEditDialog(QWidget * par,KviSharedFile * f)
 
 	pb = new QPushButton(__tr2qs_ctx("&OK","sharedfileswindow"),this);
 	connect(pb,SIGNAL(clicked()),this,SLOT(okClicked()));
-	pb->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	pb->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 	g->addWidget(pb,5,2);
 	pb = new QPushButton(__tr2qs_ctx("Cancel","sharedfileswindow"),this);
 	connect(pb,SIGNAL(clicked()),this,SLOT(reject()));
-	pb->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	pb->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)));
 	g->addWidget(pb,5,3);
 
 	g->setRowStretch(4,1);
@@ -676,7 +676,7 @@ void SharedFilesWindow::getBaseLogFileName(QString &buffer)
 
 QPixmap * SharedFilesWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_SHAREDFILES);
+	return g_pIconManager->getSmallIcon(KviIconManager::SharedFiles);
 }
 
 void SharedFilesWindow::resizeEvent(QResizeEvent *)

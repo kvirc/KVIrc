@@ -133,7 +133,7 @@ protected slots:
 
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identity KVI_SMALLICON_WHO
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identity KviIconManager::Who
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identity __tr2qs_no_lookup("Identity")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identity 99998
 #define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identity true
@@ -149,7 +149,7 @@ public:
 
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIdentityGeneralOptionsWidget KVI_SMALLICON_WHO
+#define KVI_OPTIONS_WIDGET_ICON_KviIdentityGeneralOptionsWidget KviIconManager::Who
 #define KVI_OPTIONS_WIDGET_NAME_KviIdentityGeneralOptionsWidget __tr2qs_no_lookup("General")
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityGeneralOptionsWidget 90000
 #define KVI_OPTIONS_WIDGET_PARENT_KviIdentityGeneralOptionsWidget OptionsWidget_identity
@@ -173,7 +173,7 @@ protected:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAvatar KVI_SMALLICON_AVATAR
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAvatar KviIconManager::Avatar
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAvatar __tr2qs_no_lookup("Avatar")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAvatar 80000
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_identityAvatar OptionsWidget_identity
@@ -198,7 +198,7 @@ protected:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAdvanced KVI_SMALLICON_SPY
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAdvanced KviIconManager::Spy
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAdvanced __tr2qs_no_lookup("Advanced")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAdvanced 70000
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_identityAdvanced OptionsWidget_identity
@@ -223,7 +223,7 @@ protected:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityProfile KVI_SMALLICON_REGUSERS
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityProfile KviIconManager::RegUsers
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityProfile __tr2qs_no_lookup("Profiles")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityProfile 60000
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_identityProfile OptionsWidget_identity

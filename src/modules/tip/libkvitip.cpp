@@ -92,7 +92,7 @@ TipWindow::TipWindow()
 	m_pShowAtStartupCheck = new QCheckBox(__tr2qs("Show at startup"),this);
 	m_pShowAtStartupCheck->setChecked(KVI_OPTION_BOOL(KviOption_boolShowTipAtStartup));
 
-	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IDEA)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)));
 
 	setWindowTitle(__tr2qs("Did you know..."));
 

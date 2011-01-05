@@ -26,9 +26,10 @@
 //=============================================================================
 
 #include "KviOptionsWidget.h"
+
 #include <QCheckBox>
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_interfaceFeatures KVI_SMALLICON_IDEA
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_interfaceFeatures KviIconManager::Idea
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_interfaceFeatures __tr2qs_no_lookup("Interface")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_interfaceFeatures 50000
 

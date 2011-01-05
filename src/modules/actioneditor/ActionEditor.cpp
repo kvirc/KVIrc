@@ -873,17 +873,17 @@ ActionEditorWindow::ActionEditorWindow(KviMainWindow * lpFrm)
 
 	QPushButton * btn = new QPushButton(__tr2qs_ctx("OK","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));
-	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 	g->addWidget(btn,1,1);
 
 	btn = new QPushButton(__tr2qs_ctx("Apply","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(applyClicked()));
-	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 	g->addWidget(btn,1,2);
 
 	btn = new QPushButton(__tr2qs_ctx("Cancel","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)));
 	g->addWidget(btn,1,3);
 
 	g->setRowStretch(0,1);
@@ -914,7 +914,7 @@ void ActionEditorWindow::cancelClicked()
 
 QPixmap * ActionEditorWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_SCRIPTACTION);
+	return g_pIconManager->getSmallIcon(KviIconManager::ScriptAction);
 }
 
 void ActionEditorWindow::getConfigGroupName(QString &szName)

@@ -28,7 +28,7 @@
 #include "KviOptionsWidget.h"
 
 
-#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_avatar KVI_SMALLICON_AVATAR
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_avatar KviIconManager::Avatar
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatar __tr2qs_no_lookup("Avatars")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_avatar OptionsWidget_tools
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_avatar 9
