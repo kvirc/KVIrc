@@ -26,12 +26,12 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_KviLoggingOptionsWidget KVI_SMALLICON_LOG
-#define KVI_OPTIONS_WIDGET_NAME_KviLoggingOptionsWidget __tr2qs_no_lookup("Logging")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviLoggingOptionsWidget __tr2qs_no_lookup("save,output")
-#define KVI_OPTIONS_WIDGET_PARENT_KviLoggingOptionsWidget OptionsWidget_tools
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_logging KVI_SMALLICON_LOG
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_logging __tr2qs_no_lookup("Logging")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_logging __tr2qs_no_lookup("save,output")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_logging OptionsWidget_tools
 
-//noway #define KVI_OPTIONS_WIDGET_NO_PARENT_KviLoggingOptionsWidget OptionsWidget_irc
+//noway #define KVI_OPTIONS_WIDGET_NO_PARENT_OptionsWidget_logging OptionsWidget_irc
 
 class OptionsWidget_logging : public KviOptionsWidget
 {

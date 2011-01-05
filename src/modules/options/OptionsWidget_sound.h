@@ -29,10 +29,10 @@
 #include <QComboBox>
 #include <QPushButton>
 
-#define KVI_OPTIONS_WIDGET_ICON_KviSoundOptionsWidget KVI_SMALLICON_SOUND
-#define KVI_OPTIONS_WIDGET_NAME_KviSoundOptionsWidget __tr2qs_no_lookup("Sound")
-#define KVI_OPTIONS_WIDGET_PARENT_KviSoundOptionsWidget OptionsWidget_general
-#define KVI_OPTIONS_WIDGET_CONTAINER_KviSoundOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_sound KVI_SMALLICON_SOUND
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_sound __tr2qs_no_lookup("Sound")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_sound OptionsWidget_general
+#define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_sound true
 
 
 class OptionsWidget_sound : public KviOptionsWidget
@@ -43,11 +43,11 @@ public:
 	~OptionsWidget_sound();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviSoundGeneralOptionsWidget KVI_SMALLICON_SOUND
-#define KVI_OPTIONS_WIDGET_NAME_KviSoundGeneralOptionsWidget __tr2qs_no_lookup("Sound System")
-#define KVI_OPTIONS_WIDGET_PARENT_KviSoundGeneralOptionsWidget OptionsWidget_sound
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundGeneralOptionsWidget __tr2qs_no_lookup("sound,xmms,audio,play,amarok")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviSoundGeneralOptionsWidget 70000
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_soundGeneral KVI_SMALLICON_SOUND
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_soundGeneral __tr2qs_no_lookup("Sound System")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_soundGeneral OptionsWidget_sound
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_soundGeneral __tr2qs_no_lookup("sound,xmms,audio,play,amarok")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_soundGeneral 70000
 
 class OptionsWidget_soundGeneral : public KviOptionsWidget
 {
@@ -80,11 +80,11 @@ protected slots:
 	void mediaAutoDetect();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviSoundsOptionsWidget KVI_SMALLICON_SOUND
-#define KVI_OPTIONS_WIDGET_NAME_KviSoundsOptionsWidget __tr2qs_no_lookup("Sounds")
-#define KVI_OPTIONS_WIDGET_PARENT_KviSoundsOptionsWidget OptionsWidget_sound
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundsOptionsWidget __tr2qs_no_lookup("sound,events")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviSoundsOptionsWidget 80000
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_sounds KVI_SMALLICON_SOUND
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_sounds __tr2qs_no_lookup("Sounds")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_sounds OptionsWidget_sound
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_sounds __tr2qs_no_lookup("sound,events")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_sounds 80000
 
 class OptionsWidget_sounds : public KviOptionsWidget
 {

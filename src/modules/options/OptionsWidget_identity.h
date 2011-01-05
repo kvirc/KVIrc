@@ -133,10 +133,10 @@ protected slots:
 
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIdentityOptionsWidget KVI_SMALLICON_WHO
-#define KVI_OPTIONS_WIDGET_NAME_KviIdentityOptionsWidget __tr2qs_no_lookup("Identity")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityOptionsWidget 99998
-#define KVI_OPTIONS_WIDGET_CONTAINER_KviIdentityOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identity KVI_SMALLICON_WHO
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identity __tr2qs_no_lookup("Identity")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identity 99998
+#define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identity true
 
 
 class OptionsWidget_identity : public KviOptionsWidget
@@ -173,10 +173,10 @@ protected:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIdentityAvatarOptionsWidget KVI_SMALLICON_AVATAR
-#define KVI_OPTIONS_WIDGET_NAME_KviIdentityAvatarOptionsWidget __tr2qs_no_lookup("Avatar")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityAvatarOptionsWidget 80000
-#define KVI_OPTIONS_WIDGET_PARENT_KviIdentityAvatarOptionsWidget OptionsWidget_identity
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAvatar KVI_SMALLICON_AVATAR
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAvatar __tr2qs_no_lookup("Avatar")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAvatar 80000
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_identityAvatar OptionsWidget_identity
 
 
 class OptionsWidget_identityAvatar : public KviOptionsWidget
@@ -198,10 +198,10 @@ protected:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIdentityAdvancedOptionsWidget KVI_SMALLICON_SPY
-#define KVI_OPTIONS_WIDGET_NAME_KviIdentityAdvancedOptionsWidget __tr2qs_no_lookup("Advanced")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityAdvancedOptionsWidget 70000
-#define KVI_OPTIONS_WIDGET_PARENT_KviIdentityAdvancedOptionsWidget OptionsWidget_identity
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAdvanced KVI_SMALLICON_SPY
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAdvanced __tr2qs_no_lookup("Advanced")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAdvanced 70000
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_identityAdvanced OptionsWidget_identity
 
 
 class OptionsWidget_identityAdvanced : public KviOptionsWidget
@@ -223,10 +223,10 @@ protected:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIdentityProfileOptionsWidget KVI_SMALLICON_REGUSERS
-#define KVI_OPTIONS_WIDGET_NAME_KviIdentityProfileOptionsWidget __tr2qs_no_lookup("Profiles")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityProfileOptionsWidget 60000
-#define KVI_OPTIONS_WIDGET_PARENT_KviIdentityProfileOptionsWidget OptionsWidget_identity
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityProfile KVI_SMALLICON_REGUSERS
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityProfile __tr2qs_no_lookup("Profiles")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityProfile 60000
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_identityProfile OptionsWidget_identity
 
 class OptionsWidget_identityProfile : public KviOptionsWidget
 {

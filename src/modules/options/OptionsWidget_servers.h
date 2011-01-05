@@ -161,11 +161,11 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIrcServerOptionsWidget KVI_SMALLICON_SERVER
-#define KVI_OPTIONS_WIDGET_NAME_KviIrcServerOptionsWidget __tr2qs_no_lookup("Servers")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcServerOptionsWidget __tr2qs_no_lookup("connection")
-//#define KVI_OPTIONS_WIDGET_NOPARENT_KviIrcServerOptionsWidget OptionsWidget_connection
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviIrcServerOptionsWidget 99000
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_servers KVI_SMALLICON_SERVER
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_servers __tr2qs_no_lookup("Servers")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_servers __tr2qs_no_lookup("connection")
+//#define KVI_OPTIONS_WIDGET_NOPARENT_OptionsWidget_servers OptionsWidget_connection
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_servers 99000
 
 class OptionsWidget_servers : public KviOptionsWidget
 {

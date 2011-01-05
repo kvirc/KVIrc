@@ -30,11 +30,11 @@
 
 #include <QComboBox>
 
-#define KVI_OPTIONS_WIDGET_ICON_KviWindowListOptionsWidget KVI_SMALLICON_CLASSICWINDOWLIST
-#define KVI_OPTIONS_WIDGET_NAME_KviWindowListOptionsWidget __tr2qs_no_lookup("Window List")
-#define KVI_OPTIONS_WIDGET_MINIMAL_USER_EXPERIENCE_LEVEL_KviWindowListOptionsWidget 2
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviWindowListOptionsWidget __tr2qs_no_lookup("theme")
-#define KVI_OPTIONS_WIDGET_GROUP_KviWindowListOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowList KVI_SMALLICON_CLASSICWINDOWLIST
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowList __tr2qs_no_lookup("Window List")
+#define KVI_OPTIONS_WIDGET_MINIMAL_USER_EXPERIENCE_LEVEL_OptionsWidget_windowList 2
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowList __tr2qs_no_lookup("theme")
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowList "theme"
 
 class OptionsWidget_windowList : public KviOptionsWidget
 {
@@ -44,12 +44,12 @@ public:
 	~OptionsWidget_windowList();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviTreeWindowListOptionsWidget KVI_SMALLICON_TREEWINDOWLIST
-#define KVI_OPTIONS_WIDGET_NAME_KviTreeWindowListOptionsWidget __tr2qs_no_lookup("Tree Window List")
-#define KVI_OPTIONS_WIDGET_PARENT_KviTreeWindowListOptionsWidget OptionsWidget_windowList
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListOptionsWidget __tr2qs_no_lookup("theme")
-#define KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListOptionsWidget "theme"
-#define KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTree KVI_SMALLICON_TREEWINDOWLIST
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTree __tr2qs_no_lookup("Tree Window List")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_windowListTree OptionsWidget_windowList
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTree __tr2qs_no_lookup("theme")
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListTree "theme"
+#define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowListTree true
 
 class OptionsWidget_windowListTree : public KviOptionsWidget
 {
@@ -60,11 +60,11 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviTreeWindowListForegroundOptionsWidget KVI_SMALLICON_TREEWINDOWLIST
-#define KVI_OPTIONS_WIDGET_NAME_KviTreeWindowListForegroundOptionsWidget __tr2qs_no_lookup("Foreground")
-#define KVI_OPTIONS_WIDGET_PARENT_KviTreeWindowListForegroundOptionsWidget OptionsWidget_windowListTree
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeForeground KVI_SMALLICON_TREEWINDOWLIST
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeForeground __tr2qs_no_lookup("Foreground")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_windowListTreeForeground OptionsWidget_windowListTree
 #define KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskForegroundBarOptionsWidget __tr2qs_no_lookup("theme")
-#define KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListForegroundOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListTreeForeground "theme"
 
 class OptionsWidget_windowListTreeForeground : public KviOptionsWidget
 {
@@ -75,11 +75,11 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviTreeWindowListBackgroundOptionsWidget KVI_SMALLICON_TREEWINDOWLIST
-#define KVI_OPTIONS_WIDGET_NAME_KviTreeWindowListBackgroundOptionsWidget __tr2qs_no_lookup("Background")
-#define KVI_OPTIONS_WIDGET_PARENT_KviTreeWindowListBackgroundOptionsWidget OptionsWidget_windowListTree
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeBackground KVI_SMALLICON_TREEWINDOWLIST
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeBackground __tr2qs_no_lookup("Background")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_windowListTreeBackground OptionsWidget_windowListTree
 #define KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBackgroundBarOptionsWidget __tr2qs_no_lookup("theme")
-#define KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListBackgroundOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListTreeBackground "theme"
 
 class OptionsWidget_windowListTreeBackground : public KviOptionsWidget
 {
@@ -94,11 +94,11 @@ public:
 	virtual void commit();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviTreeWindowListFeaturesOptionsWidget KVI_SMALLICON_TREEWINDOWLIST
-#define KVI_OPTIONS_WIDGET_NAME_KviTreeWindowListFeaturesOptionsWidget __tr2qs_no_lookup("Features")
-#define KVI_OPTIONS_WIDGET_PARENT_KviTreeWindowListFeaturesOptionsWidget OptionsWidget_windowListTree
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeFeatures KVI_SMALLICON_TREEWINDOWLIST
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeFeatures __tr2qs_no_lookup("Features")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_windowListTreeFeatures OptionsWidget_windowListTree
 #define KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskFeaturesBarOptionsWidget __tr2qs_no_lookup("theme")
-#define KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListFeaturesOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListTreeFeatures "theme"
 
 class OptionsWidget_windowListTreeFeatures : public KviOptionsWidget
 {
@@ -108,12 +108,12 @@ public:
 	~OptionsWidget_windowListTreeFeatures();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviClassicWindowListOptionsWidget KVI_SMALLICON_CLASSICWINDOWLIST
-#define KVI_OPTIONS_WIDGET_NAME_KviClassicWindowListOptionsWidget __tr2qs_no_lookup("Classic Window List")
-#define KVI_OPTIONS_WIDGET_PARENT_KviClassicWindowListOptionsWidget OptionsWidget_windowList
-#define KVI_OPTIONS_WIDGET_MINIMAL_USER_EXPERIENCE_LEVEL_KviClassicWindowListOptionsWidget 2
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviClassicWindowListOptionsWidget __tr2qs_no_lookup("theme")
-#define KVI_OPTIONS_WIDGET_GROUP_KviClassicWindowListOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListClassic KVI_SMALLICON_CLASSICWINDOWLIST
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListClassic __tr2qs_no_lookup("Classic Window List")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_windowListClassic OptionsWidget_windowList
+#define KVI_OPTIONS_WIDGET_MINIMAL_USER_EXPERIENCE_LEVEL_OptionsWidget_windowListClassic 2
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListClassic __tr2qs_no_lookup("theme")
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListClassic "theme"
 
 class OptionsWidget_windowListClassic : public KviOptionsWidget
 {

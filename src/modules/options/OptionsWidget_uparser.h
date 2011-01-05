@@ -26,10 +26,10 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_KviUParserOptionsWidget KVI_SMALLICON_PARSERWARNING
-#define KVI_OPTIONS_WIDGET_NAME_KviUParserOptionsWidget __tr2qs_no_lookup("Scripting Engine")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviUParserOptionsWidget __tr2qs_no_lookup("scripting,kvs,debug")
-#define KVI_OPTIONS_WIDGET_PARENT_KviUParserOptionsWidget OptionsWidget_general
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_uparser KVI_SMALLICON_PARSERWARNING
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_uparser __tr2qs_no_lookup("Scripting Engine")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_uparser __tr2qs_no_lookup("scripting,kvs,debug")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_uparser OptionsWidget_general
 
 class OptionsWidget_uparser : public KviOptionsWidget
 {

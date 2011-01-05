@@ -28,9 +28,9 @@
 
 class QRadioButton;
 
-#define KVI_OPTIONS_WIDGET_ICON_KviConnectionOptionsWidget KVI_SMALLICON_WORLD
-#define KVI_OPTIONS_WIDGET_NAME_KviConnectionOptionsWidget __tr2qs_no_lookup("Connection")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviConnectionOptionsWidget 98000
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connection KVI_SMALLICON_WORLD
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connection __tr2qs_no_lookup("Connection")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connection 98000
 
 class OptionsWidget_connection : public KviOptionsWidget
 {
@@ -41,10 +41,10 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviConnectionAdvancedOptionsWidget KVI_SMALLICON_WORLD
-#define KVI_OPTIONS_WIDGET_NAME_KviConnectionAdvancedOptionsWidget __tr2qs_no_lookup("Advanced")
-#define KVI_OPTIONS_WIDGET_PARENT_KviConnectionAdvancedOptionsWidget OptionsWidget_connection
-#define KVI_OPTIONS_WIDGET_CONTAINER_KviConnectionAdvancedOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionAdvanced KVI_SMALLICON_WORLD
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionAdvanced __tr2qs_no_lookup("Advanced")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_connectionAdvanced OptionsWidget_connection
+#define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_connectionAdvanced true
 
 class OptionsWidget_connectionAdvanced : public KviOptionsWidget
 {
@@ -55,10 +55,10 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviSSLOptionsWidget KVI_SMALLICON_SSL
-#define KVI_OPTIONS_WIDGET_NAME_KviSSLOptionsWidget __tr2qs_no_lookup("SSL")
-#define KVI_OPTIONS_WIDGET_PARENT_KviSSLOptionsWidget OptionsWidget_connectionAdvanced
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviSSLOptionsWidget 30
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSsl KVI_SMALLICON_SSL
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSsl __tr2qs_no_lookup("SSL")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_connectionSsl OptionsWidget_connectionAdvanced
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSsl 30
 
 
 
@@ -72,10 +72,10 @@ public:
 
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviTransportOptionsWidget KVI_SMALLICON_SOCKETERROR
-#define KVI_OPTIONS_WIDGET_NAME_KviTransportOptionsWidget __tr2qs_no_lookup("Socket")
-#define KVI_OPTIONS_WIDGET_PARENT_KviTransportOptionsWidget OptionsWidget_connectionAdvanced
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviTransportOptionsWidget 20
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSocket KVI_SMALLICON_SOCKETERROR
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSocket __tr2qs_no_lookup("Socket")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_connectionSocket OptionsWidget_connectionAdvanced
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSocket 20
 
 
 class OptionsWidget_connectionSocket : public KviOptionsWidget
@@ -87,10 +87,10 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIdentOptionsWidget KVI_SMALLICON_IDENT
-#define KVI_OPTIONS_WIDGET_NAME_KviIdentOptionsWidget __tr2qs_no_lookup("Ident Service")
-#define KVI_OPTIONS_WIDGET_PARENT_KviIdentOptionsWidget OptionsWidget_connectionAdvanced
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviIdentOptionsWidget 10
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identService KVI_SMALLICON_IDENT
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identService __tr2qs_no_lookup("Ident Service")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_identService OptionsWidget_connectionAdvanced
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identService 10
 
 
 class OptionsWidget_identService : public KviOptionsWidget

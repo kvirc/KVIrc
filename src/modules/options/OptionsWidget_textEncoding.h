@@ -28,11 +28,11 @@
 
 #include <QComboBox>
 
-#define KVI_OPTIONS_WIDGET_ICON_KviTextEncodingOptionsWidget KVI_SMALLICON_TEXTENCODING
-#define KVI_OPTIONS_WIDGET_NAME_KviTextEncodingOptionsWidget __tr2qs_no_lookup("Language")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviTextEncodingOptionsWidget 50000
-#define KVI_OPTIONS_WIDGET_PARENT_KviTextEncodingOptionsWidget OptionsWidget_general
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviTextEncodingOptionsWidget __tr2qs_no_lookup("language,encoding,charset,codepage")
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_textEncoding KVI_SMALLICON_TEXTENCODING
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_textEncoding __tr2qs_no_lookup("Language")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_textEncoding 50000
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_textEncoding OptionsWidget_general
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_textEncoding __tr2qs_no_lookup("language,encoding,charset,codepage")
 
 class OptionsWidget_textEncoding : public KviOptionsWidget
 {

@@ -49,11 +49,11 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviProxyOptionsWidget KVI_SMALLICON_PROXY
-#define KVI_OPTIONS_WIDGET_NAME_KviProxyOptionsWidget __tr2qs_no_lookup("Proxy Hosts")
-#define KVI_OPTIONS_WIDGET_PARENT_KviProxyOptionsWidget OptionsWidget_connection
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviProxyOptionsWidget __tr2qs_no_lookup("connection,servers")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviProxyOptionsWidget 70000
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_proxy KVI_SMALLICON_PROXY
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_proxy __tr2qs_no_lookup("Proxy Hosts")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_proxy OptionsWidget_connection
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_proxy __tr2qs_no_lookup("connection,servers")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_proxy 70000
 
 class OptionsWidget_proxy : public KviOptionsWidget
 {

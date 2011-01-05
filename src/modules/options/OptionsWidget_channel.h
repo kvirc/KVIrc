@@ -32,12 +32,12 @@
 
 class QComboBox;
 
-#define KVI_OPTIONS_WIDGET_ICON_KviChannelOptionsWidget KVI_SMALLICON_CHANNEL
-#define KVI_OPTIONS_WIDGET_NAME_KviChannelOptionsWidget __tr2qs_no_lookup("Channel")
-#define KVI_OPTIONS_WIDGET_PARENT_KviChannelOptionsWidget OptionsWidget_irc
-#define KVI_OPTIONS_WIDGET_CONTAINER_KviChannelOptionsWidget true
-#define KVI_OPTIONS_WIDGET_NOTCONTAINED_KviChannelOptionsWidget true
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviChannelOptionsWidget 90000
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channel KVI_SMALLICON_CHANNEL
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channel __tr2qs_no_lookup("Channel")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_channel OptionsWidget_irc
+#define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_channel true
+#define KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_channel true
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channel 90000
 
 class OptionsWidget_channel : public KviOptionsWidget
 {
@@ -48,9 +48,9 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviChannelGeneralOptionsWidget KVI_SMALLICON_CHANNEL
-#define KVI_OPTIONS_WIDGET_NAME_KviChannelGeneralOptionsWidget __tr2qs_no_lookup("General")
-#define KVI_OPTIONS_WIDGET_PARENT_KviChannelGeneralOptionsWidget OptionsWidget_channel
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelGeneral KVI_SMALLICON_CHANNEL
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelGeneral __tr2qs_no_lookup("General")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_channelGeneral OptionsWidget_channel
 
 class OptionsWidget_channelGeneral : public KviOptionsWidget
 {
@@ -60,9 +60,9 @@ public:
 	~OptionsWidget_channelGeneral();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviChannelAdvancedOptionsWidget KVI_SMALLICON_CHANNEL
-#define KVI_OPTIONS_WIDGET_NAME_KviChannelAdvancedOptionsWidget __tr2qs_no_lookup("Advanced")
-#define KVI_OPTIONS_WIDGET_PARENT_KviChannelAdvancedOptionsWidget OptionsWidget_channel
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelAdvanced KVI_SMALLICON_CHANNEL
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelAdvanced __tr2qs_no_lookup("Advanced")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_channelAdvanced OptionsWidget_channel
 
 class OptionsWidget_channelAdvanced : public KviOptionsWidget
 {

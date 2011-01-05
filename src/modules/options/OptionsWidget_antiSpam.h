@@ -26,9 +26,9 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_KviAntispamOptionsWidget KVI_SMALLICON_SPAM
-#define KVI_OPTIONS_WIDGET_NAME_KviAntispamOptionsWidget __tr2qs_no_lookup("Anti-spam")
-#define KVI_OPTIONS_WIDGET_PARENT_KviAntispamOptionsWidget OptionsWidget_protection
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_antispam KVI_SMALLICON_SPAM
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_antispam __tr2qs_no_lookup("Anti-spam")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_antispam OptionsWidget_protection
 
 class OptionsWidget_antispam : public KviOptionsWidget
 {

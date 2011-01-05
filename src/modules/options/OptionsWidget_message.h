@@ -35,11 +35,11 @@
 #include <QPainter>
 #include <QColorGroup>
 
-#define KVI_OPTIONS_WIDGET_ICON_KviMessageOptionsWidget KVI_SMALLICON_MESSAGES
-#define KVI_OPTIONS_WIDGET_NAME_KviMessageOptionsWidget __tr2qs_no_lookup("Text")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviMessageOptionsWidget __tr2qs_no_lookup("theme,colors,output")
-#define KVI_OPTIONS_WIDGET_GROUP_KviMessageOptionsWidget "theme"
-#define KVI_OPTIONS_WIDGET_CONTAINER_KviMessageOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_message KVI_SMALLICON_MESSAGES
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_message __tr2qs_no_lookup("Text")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_message __tr2qs_no_lookup("theme,colors,output")
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_message "theme"
+#define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_message true
 
 class OptionsWidget_message : public KviOptionsWidget
 {
@@ -50,12 +50,12 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviPrivmsgOptionsWidget KVI_SMALLICON_RAW
-#define KVI_OPTIONS_WIDGET_NAME_KviPrivmsgOptionsWidget __tr2qs_no_lookup("Message Style")
-#define KVI_OPTIONS_WIDGET_PARENT_KviPrivmsgOptionsWidget OptionsWidget_message
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviPrivmsgOptionsWidget 40
-#define KVI_OPTIONS_WIDGET_GROUP_KviPrivmsgOptionsWidget "theme"
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviPrivmsgOptionsWidget __tr2qs_no_lookup("theme,privmsg,output,format")
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_privmsg KVI_SMALLICON_RAW
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_privmsg __tr2qs_no_lookup("Message Style")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_privmsg OptionsWidget_message
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_privmsg 40
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_privmsg "theme"
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_privmsg __tr2qs_no_lookup("theme,privmsg,output,format")
 
 class OptionsWidget_privmsg : public KviOptionsWidget
 {
@@ -71,12 +71,12 @@ protected slots:
 	void enableDisableSmartColorSelector(bool);
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviTimestampOptionsWidget KVI_SMALLICON_TIME
-#define KVI_OPTIONS_WIDGET_NAME_KviTimestampOptionsWidget __tr2qs_no_lookup("Timestamp")
-#define KVI_OPTIONS_WIDGET_PARENT_KviTimestampOptionsWidget OptionsWidget_message
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviTimestampOptionsWidget 20
-#define KVI_OPTIONS_WIDGET_GROUP_KviTimestampOptionsWidget "theme"
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviTimestampOptionsWidget __tr2qs_no_lookup("time,timestamp")
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_timestamp KVI_SMALLICON_TIME
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_timestamp __tr2qs_no_lookup("Timestamp")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_timestamp OptionsWidget_message
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_timestamp 20
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_timestamp "theme"
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_timestamp __tr2qs_no_lookup("time,timestamp")
 
 class OptionsWidget_timestamp : public KviOptionsWidget
 {
@@ -92,12 +92,12 @@ protected slots:
 	void enableDisableTimestampSelector(bool);
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviMessageColorsOptionsWidget KVI_SMALLICON_MESSAGES
-#define KVI_OPTIONS_WIDGET_NAME_KviMessageColorsOptionsWidget __tr2qs_no_lookup("Message Colors")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviMessageColorsOptionsWidget __tr2qs_no_lookup("theme,colors,messages,output")
-#define KVI_OPTIONS_WIDGET_GROUP_KviMessageColorsOptionsWidget "theme"
-#define KVI_OPTIONS_WIDGET_PARENT_KviMessageColorsOptionsWidget OptionsWidget_message
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviMessageColorsOptionsWidget 30
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_messageColors KVI_SMALLICON_MESSAGES
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_messageColors __tr2qs_no_lookup("Message Colors")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_messageColors __tr2qs_no_lookup("theme,colors,messages,output")
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_messageColors "theme"
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_messageColors OptionsWidget_message
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_messageColors 30
 
 class MessageListWidget : public KviTalListWidget
 {
@@ -185,12 +185,12 @@ protected slots:
 	virtual void load();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviStandardColorsOptionsWidget KVI_SMALLICON_COLORS
-#define KVI_OPTIONS_WIDGET_NAME_KviStandardColorsOptionsWidget __tr2qs_no_lookup("Color Set")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviStandardColorsOptionsWidget __tr2qs_no_lookup("theme,colors,messages,output")
-#define KVI_OPTIONS_WIDGET_GROUP_KviStandardColorsOptionsWidget "theme"
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviStandardColorsOptionsWidget 20
-#define KVI_OPTIONS_WIDGET_PARENT_KviStandardColorsOptionsWidget OptionsWidget_message
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_standardColors KVI_SMALLICON_COLORS
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_standardColors __tr2qs_no_lookup("Color Set")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_standardColors __tr2qs_no_lookup("theme,colors,messages,output")
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_standardColors "theme"
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_standardColors 20
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_standardColors OptionsWidget_message
 
 class OptionsWidget_standardColors : public KviOptionsWidget
 {

@@ -28,10 +28,10 @@
 #include "KviOptionsWidget.h"
 #include "KviSelectors.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIgnoreOptionsWidget KVI_SMALLICON_IGNORE
-#define KVI_OPTIONS_WIDGET_NAME_KviIgnoreOptionsWidget __tr2qs_no_lookup("Ignore")
-#define KVI_OPTIONS_WIDGET_PARENT_KviIgnoreOptionsWidget OptionsWidget_protection
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviIgnoreOptionsWidget __tr2qs_no_lookup("protection")
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ignore KVI_SMALLICON_IGNORE
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ignore __tr2qs_no_lookup("Ignore")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_ignore OptionsWidget_protection
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ignore __tr2qs_no_lookup("protection")
 
 class OptionsWidget_ignore : public KviOptionsWidget
 {

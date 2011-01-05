@@ -26,12 +26,12 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_KviQueryOptionsWidget KVI_SMALLICON_QUERY
-#define KVI_OPTIONS_WIDGET_NAME_KviQueryOptionsWidget __tr2qs_no_lookup("Query")
-#define KVI_OPTIONS_WIDGET_PARENT_KviQueryOptionsWidget OptionsWidget_irc
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviQueryOptionsWidget __tr2qs_no_lookup("chat")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviQueryOptionsWidget 80000
-#define KVI_OPTIONS_WIDGET_NOTCONTAINED_KviQueryOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_query KVI_SMALLICON_QUERY
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_query __tr2qs_no_lookup("Query")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_query OptionsWidget_irc
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_query __tr2qs_no_lookup("chat")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_query 80000
+#define KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_query true
 
 class OptionsWidget_query : public KviOptionsWidget
 {

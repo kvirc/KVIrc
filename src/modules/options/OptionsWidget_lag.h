@@ -27,10 +27,10 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_KviLagOptionsWidget KVI_SMALLICON_STATS
-#define KVI_OPTIONS_WIDGET_NAME_KviLagOptionsWidget __tr2qs_no_lookup("Lag")
-#define KVI_OPTIONS_WIDGET_PARENT_KviLagOptionsWidget OptionsWidget_tools
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviLagOptionsWidget __tr2qs_no_lookup("time,ping")
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_lag KVI_SMALLICON_STATS
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_lag __tr2qs_no_lookup("Lag")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_lag OptionsWidget_tools
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_lag __tr2qs_no_lookup("time,ping")
 
 class OptionsWidget_lag : public KviOptionsWidget
 {

@@ -4,7 +4,7 @@
 //
 //   File : OptionsInstanceManager.cpp
 //
-//   This file is part of the KVIrc irc client distribution
+//   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2001-2008 Szymon Stefanek (stefanek@tin.it)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -30,6 +30,7 @@
 // so any change should go in that script
 //
 
+#include "OptionsWidget_alertsAndHighlighting.h"
 #include "OptionsWidget_antiSpam.h"
 #include "OptionsWidget_avatar.h"
 #include "OptionsWidget_away.h"
@@ -39,12 +40,10 @@
 #include "OptionsWidget_ctcpFloodProtection.h"
 #include "OptionsWidget_dcc.h"
 #include "OptionsWidget_general.h"
-#include "OptionsWidget_alertsAndHighlighting.h"
 #include "OptionsWidget_identity.h"
 #include "OptionsWidget_ignore.h"
 #include "OptionsWidget_input.h"
 #include "OptionsWidget_interfaceFeatures.h"
-#include "OptionsWidget_theme.h"
 #include "OptionsWidget_irc.h"
 #include "OptionsWidget_ircOutput.h"
 #include "OptionsWidget_ircView.h"
@@ -62,6 +61,7 @@
 #include "OptionsWidget_sound.h"
 #include "OptionsWidget_textEncoding.h"
 #include "OptionsWidget_textIcons.h"
+#include "OptionsWidget_theme.h"
 #include "OptionsWidget_tools.h"
 #include "OptionsWidget_topicLabel.h"
 #include "OptionsWidget_tray.h"
@@ -76,132 +76,132 @@
 
 int g_iOptionWidgetInstances = 0;
 
-KviOptionsWidget * classKviAntispamOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_antispam(parent);
-}
-
-KviOptionsWidget * classKviAvatarAdvancedOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_avatar(parent);
-}
-
-KviOptionsWidget * classKviAwayOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_away(parent);
-}
-
-KviOptionsWidget * classKviChannelOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_channel(parent);
-}
-
-KviOptionsWidget * classKviChannelGeneralOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_channelGeneral(parent);
-}
-
-KviOptionsWidget * classKviChannelAdvancedOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_channelAdvanced(parent);
-}
-
-KviOptionsWidget * classKviConnectionOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_connection(parent);
-}
-
-KviOptionsWidget * classKviConnectionAdvancedOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_connectionAdvanced(parent);
-}
-
-KviOptionsWidget * classKviSSLOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_connectionSsl(parent);
-}
-
-KviOptionsWidget * classKviTransportOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_connectionSocket(parent);
-}
-
-KviOptionsWidget * classKviIdentOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_identService(parent);
-}
-
-KviOptionsWidget * classKviCtcpOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_ctcp(parent);
-}
-
-KviOptionsWidget * classKviCtcpFloodProtectionOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_ctcpFloodProtection(parent);
-}
-
-KviOptionsWidget * classKviDccOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_dcc(parent);
-}
-
-KviOptionsWidget * classKviDccGeneralOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_dccGeneral(parent);
-}
-
-KviOptionsWidget * classKviDccAdvancedOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_dccAdvanced(parent);
-}
-
-KviOptionsWidget * classKviDccSendOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_dccSend(parent);
-}
-
-KviOptionsWidget * classKviDccSendGeneralOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_dccSendGeneral(parent);
-}
-
-KviOptionsWidget * classKviDccSendAdvancedOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_dccSendAdvanced(parent);
-}
-
-KviOptionsWidget * classKviDccChatOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_dccChat(parent);
-}
-
-KviOptionsWidget * classKviDccVoiceOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_dccVoice(parent);
-}
-
-KviOptionsWidget * classKviGeneralOptOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_general(parent);
-}
-
-KviOptionsWidget * classKviAlertHighlightingOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_alertsAndHighlighting_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_alertsAndHighlighting(parent);
 }
 
-KviOptionsWidget * classKviHighlightingOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_highlighting_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_highlighting(parent);
 }
 
-KviOptionsWidget * classKviAlertOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_alerts_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_alerts(parent);
 }
 
-KviOptionsWidget * classKviIdentityOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_antispam_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_antispam(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_avatar_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_avatar(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_away_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_away(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_channel_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_channel(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_channelGeneral_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_channelGeneral(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_channelAdvanced_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_channelAdvanced(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_connection_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_connection(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_connectionAdvanced_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_connectionAdvanced(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_connectionSsl_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_connectionSsl(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_connectionSocket_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_connectionSocket(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_identService_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_identService(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_ctcp_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_ctcp(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_ctcpFloodProtection_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_ctcpFloodProtection(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_dcc_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_dcc(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_dccGeneral_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_dccGeneral(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_dccAdvanced_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_dccAdvanced(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_dccSend_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_dccSend(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_dccSendGeneral_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_dccSendGeneral(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_dccSendAdvanced_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_dccSendAdvanced(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_dccChat_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_dccChat(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_dccVoice_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_dccVoice(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_general_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_general(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_identity_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_identity(parent);
 }
@@ -211,454 +211,454 @@ KviOptionsWidget * classKviIdentityGeneralOptionsWidget_createInstanceProc(QWidg
 	return new KviIdentityGeneralOptionsWidget(parent);
 }
 
-KviOptionsWidget * classKviIdentityAvatarOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_identityAvatar_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_identityAvatar(parent);
 }
 
-KviOptionsWidget * classKviIdentityAdvancedOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_identityAdvanced_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_identityAdvanced(parent);
 }
 
-KviOptionsWidget * classKviIdentityProfileOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_identityProfile_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_identityProfile(parent);
 }
 
-KviOptionsWidget * classKviIgnoreOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_ignore_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_ignore(parent);
 }
 
-KviOptionsWidget * classKviInputLookOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_inputLook_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_inputLook(parent);
 }
 
-KviOptionsWidget * classKviInputFeaturesOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_inputFeatures_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_inputFeatures(parent);
 }
 
-KviOptionsWidget * classKviInterfaceFeaturesOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_interfaceFeatures_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_interfaceFeatures(parent);
 }
 
-KviOptionsWidget * classKviThemeGeneralOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_theme(parent);
-}
-
-KviOptionsWidget * classKviThemeTransparencyOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_themeTransparency(parent);
-}
-
-KviOptionsWidget * classKviThemeMdiAreaOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_themeMdiArea(parent);
-}
-
-KviOptionsWidget * classKviThemeToolBarAppletsOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new OptionsWidget_themeToolBarApplets(parent);
-}
-
-KviOptionsWidget * classKviIrcOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_irc_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_irc(parent);
 }
 
-KviOptionsWidget * classKviIrcGeneralOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_ircGeneral_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_ircGeneral(parent);
 }
 
-KviOptionsWidget * classKviIrcAdvancedOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_ircAdvanced_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_ircAdvanced(parent);
 }
 
-KviOptionsWidget * classKviIrcOutputOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_ircOutput_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_ircOutput(parent);
 }
 
-KviOptionsWidget * classKviIrcViewThemeOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_ircViewTheme_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_ircViewTheme(parent);
 }
 
-KviOptionsWidget * classKviIrcViewLookOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_ircViewLook_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_ircViewLook(parent);
 }
 
-KviOptionsWidget * classKviIrcViewFeaturesOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_ircViewFeatures_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_ircViewFeatures(parent);
 }
 
-KviOptionsWidget * classKviIrcViewMarkerOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_ircViewMarker_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_ircViewMarker(parent);
 }
 
-KviOptionsWidget * classKviLagOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_lag_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_lag(parent);
 }
 
-KviOptionsWidget * classKviLoggingOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_logging_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_logging(parent);
 }
 
-KviOptionsWidget * classKviMediaTypesOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_mediaTypes_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_mediaTypes(parent);
 }
 
-KviOptionsWidget * classKviMessageOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_message_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_message(parent);
 }
 
-KviOptionsWidget * classKviPrivmsgOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_privmsg_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_privmsg(parent);
 }
 
-KviOptionsWidget * classKviTimestampOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_timestamp_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_timestamp(parent);
 }
 
-KviOptionsWidget * classKviMessageColorsOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_messageColors_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_messageColors(parent);
 }
 
-KviOptionsWidget * classKviStandardColorsOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_standardColors_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_standardColors(parent);
 }
 
-KviOptionsWidget * classKviNickServOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_nickServ_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_nickServ(parent);
 }
 
-KviOptionsWidget * classKviNotifierLookOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_notifierLook_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_notifierLook(parent);
 }
 
-KviOptionsWidget * classKviNotifierOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_notifier_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_notifier(parent);
 }
 
-KviOptionsWidget * classKviNotifyOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_notify_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_notify(parent);
 }
 
-KviOptionsWidget * classKviProtectionOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_protection_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_protection(parent);
 }
 
-KviOptionsWidget * classKviProxyOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_proxy_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_proxy(parent);
 }
 
-KviOptionsWidget * classKviQueryOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_query_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_query(parent);
 }
 
-KviOptionsWidget * classKviIrcServerOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_servers_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_servers(parent);
 }
 
-KviOptionsWidget * classKviSoundOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_sound_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_sound(parent);
 }
 
-KviOptionsWidget * classKviSoundGeneralOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_soundGeneral_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_soundGeneral(parent);
 }
 
-KviOptionsWidget * classKviSoundsOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_sounds_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_sounds(parent);
 }
 
-KviOptionsWidget * classKviTextEncodingOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_textEncoding_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_textEncoding(parent);
 }
 
-KviOptionsWidget * classKviTextIconsOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_textIcons_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_textIcons(parent);
 }
 
-KviOptionsWidget * classKviToolsOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_theme_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_theme(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_themeTransparency_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_themeTransparency(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_themeMdiArea_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_themeMdiArea(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_themeToolBarApplets_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_themeToolBarApplets(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_tools_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_tools(parent);
 }
 
-KviOptionsWidget * classKviTopicLabelLookOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_topicLabel_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_topicLabel(parent);
 }
 
-KviOptionsWidget * classKviTrayOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_tray_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_tray(parent);
 }
 
-KviOptionsWidget * classKviUParserOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_uparser_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_uparser(parent);
 }
 
-KviOptionsWidget * classKviUrlHandlersOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_urlHandlers_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_urlHandlers(parent);
 }
 
-KviOptionsWidget * classKviUserListLookOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_userList_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_userList(parent);
 }
 
-KviOptionsWidget * classKviUserListLookBackgroundOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_userListBackground_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_userListBackground(parent);
 }
 
-KviOptionsWidget * classKviUserListLookForegroundOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_userListForeground_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_userListForeground(parent);
 }
 
-KviOptionsWidget * classKviUserListGridOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_userListGrid_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_userListGrid(parent);
 }
 
-KviOptionsWidget * classKviUserListFeaturesOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_userListFeatures_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_userListFeatures(parent);
 }
 
-KviOptionsWidget * classKviWindowListOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_windowList_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_windowList(parent);
 }
 
-KviOptionsWidget * classKviTreeWindowListOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_windowListTree_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_windowListTree(parent);
 }
 
-KviOptionsWidget * classKviTreeWindowListForegroundOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_windowListTreeForeground_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_windowListTreeForeground(parent);
 }
 
-KviOptionsWidget * classKviTreeWindowListBackgroundOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_windowListTreeBackground_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_windowListTreeBackground(parent);
 }
 
-KviOptionsWidget * classKviTreeWindowListFeaturesOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_windowListTreeFeatures_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_windowListTreeFeatures(parent);
 }
 
-KviOptionsWidget * classKviClassicWindowListOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classOptionsWidget_windowListClassic_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_windowListClassic(parent);
 }
 
 
 
-static const char * g_szName_KviAntispamOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviAntispamOptionsWidget;
-static const char * g_szClassName_KviAntispamOptionsWidget = "OptionsWidget_antispam";
-static const char * g_szName_KviAvatarAdvancedOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviAvatarAdvancedOptionsWidget;
-static const char * g_szClassName_KviAvatarAdvancedOptionsWidget = "OptionsWidget_avatar";
-static const char * g_szName_KviAwayOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviAwayOptionsWidget;
-static const char * g_szClassName_KviAwayOptionsWidget = "OptionsWidget_away";
-static const char * g_szName_KviChannelOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviChannelOptionsWidget;
-static const char * g_szClassName_KviChannelOptionsWidget = "OptionsWidget_channel";
-static const char * g_szName_KviChannelGeneralOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviChannelGeneralOptionsWidget;
-static const char * g_szClassName_KviChannelGeneralOptionsWidget = "OptionsWidget_channelGeneral";
-static const char * g_szName_KviChannelAdvancedOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviChannelAdvancedOptionsWidget;
-static const char * g_szClassName_KviChannelAdvancedOptionsWidget = "OptionsWidget_channelAdvanced";
-static const char * g_szName_KviConnectionOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviConnectionOptionsWidget;
-static const char * g_szClassName_KviConnectionOptionsWidget = "OptionsWidget_connection";
-static const char * g_szName_KviConnectionAdvancedOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviConnectionAdvancedOptionsWidget;
-static const char * g_szClassName_KviConnectionAdvancedOptionsWidget = "OptionsWidget_connectionAdvanced";
-static const char * g_szName_KviSSLOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviSSLOptionsWidget;
-static const char * g_szClassName_KviSSLOptionsWidget = "OptionsWidget_connectionSsl";
-static const char * g_szName_KviTransportOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTransportOptionsWidget;
-static const char * g_szClassName_KviTransportOptionsWidget = "OptionsWidget_connectionSocket";
-static const char * g_szName_KviIdentOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIdentOptionsWidget;
-static const char * g_szClassName_KviIdentOptionsWidget = "OptionsWidget_identService";
-static const char * g_szName_KviCtcpOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviCtcpOptionsWidget;
-static const char * g_szClassName_KviCtcpOptionsWidget = "OptionsWidget_ctcp";
-static const char * g_szName_KviCtcpFloodProtectionOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviCtcpFloodProtectionOptionsWidget;
-static const char * g_szClassName_KviCtcpFloodProtectionOptionsWidget = "OptionsWidget_ctcpFloodProtection";
-static const char * g_szName_KviDccOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviDccOptionsWidget;
-static const char * g_szClassName_KviDccOptionsWidget = "OptionsWidget_dcc";
-static const char * g_szName_KviDccGeneralOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviDccGeneralOptionsWidget;
-static const char * g_szClassName_KviDccGeneralOptionsWidget = "OptionsWidget_dccGeneral";
-static const char * g_szName_KviDccAdvancedOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviDccAdvancedOptionsWidget;
-static const char * g_szClassName_KviDccAdvancedOptionsWidget = "OptionsWidget_dccAdvanced";
-static const char * g_szName_KviDccSendOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviDccSendOptionsWidget;
-static const char * g_szClassName_KviDccSendOptionsWidget = "OptionsWidget_dccSend";
-static const char * g_szName_KviDccSendGeneralOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviDccSendGeneralOptionsWidget;
-static const char * g_szClassName_KviDccSendGeneralOptionsWidget = "OptionsWidget_dccSendGeneral";
-static const char * g_szName_KviDccSendAdvancedOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviDccSendAdvancedOptionsWidget;
-static const char * g_szClassName_KviDccSendAdvancedOptionsWidget = "OptionsWidget_dccSendAdvanced";
-static const char * g_szName_KviDccChatOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviDccChatOptionsWidget;
-static const char * g_szClassName_KviDccChatOptionsWidget = "OptionsWidget_dccChat";
-static const char * g_szName_KviDccVoiceOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviDccVoiceOptionsWidget;
-static const char * g_szClassName_KviDccVoiceOptionsWidget = "OptionsWidget_dccVoice";
-static const char * g_szName_KviGeneralOptOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviGeneralOptOptionsWidget;
-static const char * g_szClassName_KviGeneralOptOptionsWidget = "OptionsWidget_general";
-static const char * g_szName_KviAlertHighlightingOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviAlertHighlightingOptionsWidget;
-static const char * g_szClassName_KviAlertHighlightingOptionsWidget = "OptionsWidget_alertsAndHighlighting";
-static const char * g_szName_KviHighlightingOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviHighlightingOptionsWidget;
-static const char * g_szClassName_KviHighlightingOptionsWidget = "OptionsWidget_highlighting";
-static const char * g_szName_KviAlertOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviAlertOptionsWidget;
-static const char * g_szClassName_KviAlertOptionsWidget = "OptionsWidget_alerts";
-static const char * g_szName_KviIdentityOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIdentityOptionsWidget;
-static const char * g_szClassName_KviIdentityOptionsWidget = "OptionsWidget_identity";
+static const char * g_szName_OptionsWidget_alertsAndHighlighting = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_alertsAndHighlighting;
+static const char * g_szClassName_OptionsWidget_alertsAndHighlighting = "OptionsWidget_alertsAndHighlighting";
+static const char * g_szName_OptionsWidget_highlighting = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_highlighting;
+static const char * g_szClassName_OptionsWidget_highlighting = "OptionsWidget_highlighting";
+static const char * g_szName_OptionsWidget_alerts = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_alerts;
+static const char * g_szClassName_OptionsWidget_alerts = "OptionsWidget_alerts";
+static const char * g_szName_OptionsWidget_antispam = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_antispam;
+static const char * g_szClassName_OptionsWidget_antispam = "OptionsWidget_antispam";
+static const char * g_szName_OptionsWidget_avatar = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatar;
+static const char * g_szClassName_OptionsWidget_avatar = "OptionsWidget_avatar";
+static const char * g_szName_OptionsWidget_away = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_away;
+static const char * g_szClassName_OptionsWidget_away = "OptionsWidget_away";
+static const char * g_szName_OptionsWidget_channel = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channel;
+static const char * g_szClassName_OptionsWidget_channel = "OptionsWidget_channel";
+static const char * g_szName_OptionsWidget_channelGeneral = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelGeneral;
+static const char * g_szClassName_OptionsWidget_channelGeneral = "OptionsWidget_channelGeneral";
+static const char * g_szName_OptionsWidget_channelAdvanced = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelAdvanced;
+static const char * g_szClassName_OptionsWidget_channelAdvanced = "OptionsWidget_channelAdvanced";
+static const char * g_szName_OptionsWidget_connection = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connection;
+static const char * g_szClassName_OptionsWidget_connection = "OptionsWidget_connection";
+static const char * g_szName_OptionsWidget_connectionAdvanced = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionAdvanced;
+static const char * g_szClassName_OptionsWidget_connectionAdvanced = "OptionsWidget_connectionAdvanced";
+static const char * g_szName_OptionsWidget_connectionSsl = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSsl;
+static const char * g_szClassName_OptionsWidget_connectionSsl = "OptionsWidget_connectionSsl";
+static const char * g_szName_OptionsWidget_connectionSocket = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSocket;
+static const char * g_szClassName_OptionsWidget_connectionSocket = "OptionsWidget_connectionSocket";
+static const char * g_szName_OptionsWidget_identService = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identService;
+static const char * g_szClassName_OptionsWidget_identService = "OptionsWidget_identService";
+static const char * g_szName_OptionsWidget_ctcp = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ctcp;
+static const char * g_szClassName_OptionsWidget_ctcp = "OptionsWidget_ctcp";
+static const char * g_szName_OptionsWidget_ctcpFloodProtection = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ctcpFloodProtection;
+static const char * g_szClassName_OptionsWidget_ctcpFloodProtection = "OptionsWidget_ctcpFloodProtection";
+static const char * g_szName_OptionsWidget_dcc = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dcc;
+static const char * g_szClassName_OptionsWidget_dcc = "OptionsWidget_dcc";
+static const char * g_szName_OptionsWidget_dccGeneral = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccGeneral;
+static const char * g_szClassName_OptionsWidget_dccGeneral = "OptionsWidget_dccGeneral";
+static const char * g_szName_OptionsWidget_dccAdvanced = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccAdvanced;
+static const char * g_szClassName_OptionsWidget_dccAdvanced = "OptionsWidget_dccAdvanced";
+static const char * g_szName_OptionsWidget_dccSend = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSend;
+static const char * g_szClassName_OptionsWidget_dccSend = "OptionsWidget_dccSend";
+static const char * g_szName_OptionsWidget_dccSendGeneral = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendGeneral;
+static const char * g_szClassName_OptionsWidget_dccSendGeneral = "OptionsWidget_dccSendGeneral";
+static const char * g_szName_OptionsWidget_dccSendAdvanced = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendAdvanced;
+static const char * g_szClassName_OptionsWidget_dccSendAdvanced = "OptionsWidget_dccSendAdvanced";
+static const char * g_szName_OptionsWidget_dccChat = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccChat;
+static const char * g_szClassName_OptionsWidget_dccChat = "OptionsWidget_dccChat";
+static const char * g_szName_OptionsWidget_dccVoice = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccVoice;
+static const char * g_szClassName_OptionsWidget_dccVoice = "OptionsWidget_dccVoice";
+static const char * g_szName_OptionsWidget_general = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_general;
+static const char * g_szClassName_OptionsWidget_general = "OptionsWidget_general";
+static const char * g_szName_OptionsWidget_identity = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identity;
+static const char * g_szClassName_OptionsWidget_identity = "OptionsWidget_identity";
 static const char * g_szName_KviIdentityGeneralOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIdentityGeneralOptionsWidget;
 static const char * g_szClassName_KviIdentityGeneralOptionsWidget = "KviIdentityGeneralOptionsWidget";
-static const char * g_szName_KviIdentityAvatarOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIdentityAvatarOptionsWidget;
-static const char * g_szClassName_KviIdentityAvatarOptionsWidget = "OptionsWidget_identityAvatar";
-static const char * g_szName_KviIdentityAdvancedOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIdentityAdvancedOptionsWidget;
-static const char * g_szClassName_KviIdentityAdvancedOptionsWidget = "OptionsWidget_identityAdvanced";
-static const char * g_szName_KviIdentityProfileOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIdentityProfileOptionsWidget;
-static const char * g_szClassName_KviIdentityProfileOptionsWidget = "OptionsWidget_identityProfile";
-static const char * g_szName_KviIgnoreOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIgnoreOptionsWidget;
-static const char * g_szClassName_KviIgnoreOptionsWidget = "OptionsWidget_ignore";
-static const char * g_szName_KviInputLookOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviInputLookOptionsWidget;
-static const char * g_szClassName_KviInputLookOptionsWidget = "OptionsWidget_inputLook";
-static const char * g_szName_KviInputFeaturesOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviInputFeaturesOptionsWidget;
-static const char * g_szClassName_KviInputFeaturesOptionsWidget = "OptionsWidget_inputFeatures";
-static const char * g_szName_KviInterfaceFeaturesOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviInterfaceFeaturesOptionsWidget;
-static const char * g_szClassName_KviInterfaceFeaturesOptionsWidget = "OptionsWidget_interfaceFeatures";
-static const char * g_szName_KviThemeGeneralOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeGeneralOptionsWidget;
-static const char * g_szClassName_KviThemeGeneralOptionsWidget = "OptionsWidget_theme";
-static const char * g_szName_KviThemeTransparencyOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeTransparencyOptionsWidget;
-static const char * g_szClassName_KviThemeTransparencyOptionsWidget = "OptionsWidget_themeTransparency";
-static const char * g_szName_KviThemeMdiAreaOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeMdiAreaOptionsWidget;
-static const char * g_szClassName_KviThemeMdiAreaOptionsWidget = "OptionsWidget_themeMdiArea";
-static const char * g_szName_KviThemeToolBarAppletsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeToolBarAppletsOptionsWidget;
-static const char * g_szClassName_KviThemeToolBarAppletsOptionsWidget = "OptionsWidget_themeToolBarApplets";
-static const char * g_szName_KviIrcOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIrcOptionsWidget;
-static const char * g_szClassName_KviIrcOptionsWidget = "OptionsWidget_irc";
-static const char * g_szName_KviIrcGeneralOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIrcGeneralOptionsWidget;
-static const char * g_szClassName_KviIrcGeneralOptionsWidget = "OptionsWidget_ircGeneral";
-static const char * g_szName_KviIrcAdvancedOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIrcAdvancedOptionsWidget;
-static const char * g_szClassName_KviIrcAdvancedOptionsWidget = "OptionsWidget_ircAdvanced";
-static const char * g_szName_KviIrcOutputOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIrcOutputOptionsWidget;
-static const char * g_szClassName_KviIrcOutputOptionsWidget = "OptionsWidget_ircOutput";
-static const char * g_szName_KviIrcViewThemeOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIrcViewThemeOptionsWidget;
-static const char * g_szClassName_KviIrcViewThemeOptionsWidget = "OptionsWidget_ircViewTheme";
-static const char * g_szName_KviIrcViewLookOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIrcViewLookOptionsWidget;
-static const char * g_szClassName_KviIrcViewLookOptionsWidget = "OptionsWidget_ircViewLook";
-static const char * g_szName_KviIrcViewFeaturesOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIrcViewFeaturesOptionsWidget;
-static const char * g_szClassName_KviIrcViewFeaturesOptionsWidget = "OptionsWidget_ircViewFeatures";
-static const char * g_szName_KviIrcViewMarkerOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIrcViewMarkerOptionsWidget;
-static const char * g_szClassName_KviIrcViewMarkerOptionsWidget = "OptionsWidget_ircViewMarker";
-static const char * g_szName_KviLagOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviLagOptionsWidget;
-static const char * g_szClassName_KviLagOptionsWidget = "OptionsWidget_lag";
-static const char * g_szName_KviLoggingOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviLoggingOptionsWidget;
-static const char * g_szClassName_KviLoggingOptionsWidget = "OptionsWidget_logging";
-static const char * g_szName_KviMediaTypesOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviMediaTypesOptionsWidget;
-static const char * g_szClassName_KviMediaTypesOptionsWidget = "OptionsWidget_mediaTypes";
-static const char * g_szName_KviMessageOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviMessageOptionsWidget;
-static const char * g_szClassName_KviMessageOptionsWidget = "OptionsWidget_message";
-static const char * g_szName_KviPrivmsgOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviPrivmsgOptionsWidget;
-static const char * g_szClassName_KviPrivmsgOptionsWidget = "OptionsWidget_privmsg";
-static const char * g_szName_KviTimestampOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTimestampOptionsWidget;
-static const char * g_szClassName_KviTimestampOptionsWidget = "OptionsWidget_timestamp";
-static const char * g_szName_KviMessageColorsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviMessageColorsOptionsWidget;
-static const char * g_szClassName_KviMessageColorsOptionsWidget = "OptionsWidget_messageColors";
-static const char * g_szName_KviStandardColorsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviStandardColorsOptionsWidget;
-static const char * g_szClassName_KviStandardColorsOptionsWidget = "OptionsWidget_standardColors";
-static const char * g_szName_KviNickServOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNickServOptionsWidget;
-static const char * g_szClassName_KviNickServOptionsWidget = "OptionsWidget_nickServ";
-static const char * g_szName_KviNotifierLookOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNotifierLookOptionsWidget;
-static const char * g_szClassName_KviNotifierLookOptionsWidget = "OptionsWidget_notifierLook";
-static const char * g_szName_KviNotifierOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNotifierOptionsWidget;
-static const char * g_szClassName_KviNotifierOptionsWidget = "OptionsWidget_notifier";
-static const char * g_szName_KviNotifyOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNotifyOptionsWidget;
-static const char * g_szClassName_KviNotifyOptionsWidget = "OptionsWidget_notify";
-static const char * g_szName_KviProtectionOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviProtectionOptionsWidget;
-static const char * g_szClassName_KviProtectionOptionsWidget = "OptionsWidget_protection";
-static const char * g_szName_KviProxyOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviProxyOptionsWidget;
-static const char * g_szClassName_KviProxyOptionsWidget = "OptionsWidget_proxy";
-static const char * g_szName_KviQueryOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviQueryOptionsWidget;
-static const char * g_szClassName_KviQueryOptionsWidget = "OptionsWidget_query";
-static const char * g_szName_KviIrcServerOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIrcServerOptionsWidget;
-static const char * g_szClassName_KviIrcServerOptionsWidget = "OptionsWidget_servers";
-static const char * g_szName_KviSoundOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviSoundOptionsWidget;
-static const char * g_szClassName_KviSoundOptionsWidget = "OptionsWidget_sound";
-static const char * g_szName_KviSoundGeneralOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviSoundGeneralOptionsWidget;
-static const char * g_szClassName_KviSoundGeneralOptionsWidget = "OptionsWidget_soundGeneral";
-static const char * g_szName_KviSoundsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviSoundsOptionsWidget;
-static const char * g_szClassName_KviSoundsOptionsWidget = "OptionsWidget_sounds";
-static const char * g_szName_KviTextEncodingOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTextEncodingOptionsWidget;
-static const char * g_szClassName_KviTextEncodingOptionsWidget = "OptionsWidget_textEncoding";
-static const char * g_szName_KviTextIconsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTextIconsOptionsWidget;
-static const char * g_szClassName_KviTextIconsOptionsWidget = "OptionsWidget_textIcons";
-static const char * g_szName_KviToolsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviToolsOptionsWidget;
-static const char * g_szClassName_KviToolsOptionsWidget = "OptionsWidget_tools";
-static const char * g_szName_KviTopicLabelLookOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTopicLabelLookOptionsWidget;
-static const char * g_szClassName_KviTopicLabelLookOptionsWidget = "OptionsWidget_topicLabel";
-static const char * g_szName_KviTrayOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTrayOptionsWidget;
-static const char * g_szClassName_KviTrayOptionsWidget = "OptionsWidget_tray";
-static const char * g_szName_KviUParserOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviUParserOptionsWidget;
-static const char * g_szClassName_KviUParserOptionsWidget = "OptionsWidget_uparser";
-static const char * g_szName_KviUrlHandlersOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviUrlHandlersOptionsWidget;
-static const char * g_szClassName_KviUrlHandlersOptionsWidget = "OptionsWidget_urlHandlers";
-static const char * g_szName_KviUserListLookOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviUserListLookOptionsWidget;
-static const char * g_szClassName_KviUserListLookOptionsWidget = "OptionsWidget_userList";
-static const char * g_szName_KviUserListLookBackgroundOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviUserListLookBackgroundOptionsWidget;
-static const char * g_szClassName_KviUserListLookBackgroundOptionsWidget = "OptionsWidget_userListBackground";
-static const char * g_szName_KviUserListLookForegroundOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviUserListLookForegroundOptionsWidget;
-static const char * g_szClassName_KviUserListLookForegroundOptionsWidget = "OptionsWidget_userListForeground";
-static const char * g_szName_KviUserListGridOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviUserListGridOptionsWidget;
-static const char * g_szClassName_KviUserListGridOptionsWidget = "OptionsWidget_userListGrid";
-static const char * g_szName_KviUserListFeaturesOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviUserListFeaturesOptionsWidget;
-static const char * g_szClassName_KviUserListFeaturesOptionsWidget = "OptionsWidget_userListFeatures";
-static const char * g_szName_KviWindowListOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviWindowListOptionsWidget;
-static const char * g_szClassName_KviWindowListOptionsWidget = "OptionsWidget_windowList";
-static const char * g_szName_KviTreeWindowListOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTreeWindowListOptionsWidget;
-static const char * g_szClassName_KviTreeWindowListOptionsWidget = "OptionsWidget_windowListTree";
-static const char * g_szName_KviTreeWindowListForegroundOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTreeWindowListForegroundOptionsWidget;
-static const char * g_szClassName_KviTreeWindowListForegroundOptionsWidget = "OptionsWidget_windowListTreeForeground";
-static const char * g_szName_KviTreeWindowListBackgroundOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTreeWindowListBackgroundOptionsWidget;
-static const char * g_szClassName_KviTreeWindowListBackgroundOptionsWidget = "OptionsWidget_windowListTreeBackground";
-static const char * g_szName_KviTreeWindowListFeaturesOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTreeWindowListFeaturesOptionsWidget;
-static const char * g_szClassName_KviTreeWindowListFeaturesOptionsWidget = "OptionsWidget_windowListTreeFeatures";
-static const char * g_szName_KviClassicWindowListOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviClassicWindowListOptionsWidget;
-static const char * g_szClassName_KviClassicWindowListOptionsWidget = "OptionsWidget_windowListClassic";
+static const char * g_szName_OptionsWidget_identityAvatar = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAvatar;
+static const char * g_szClassName_OptionsWidget_identityAvatar = "OptionsWidget_identityAvatar";
+static const char * g_szName_OptionsWidget_identityAdvanced = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAdvanced;
+static const char * g_szClassName_OptionsWidget_identityAdvanced = "OptionsWidget_identityAdvanced";
+static const char * g_szName_OptionsWidget_identityProfile = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityProfile;
+static const char * g_szClassName_OptionsWidget_identityProfile = "OptionsWidget_identityProfile";
+static const char * g_szName_OptionsWidget_ignore = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ignore;
+static const char * g_szClassName_OptionsWidget_ignore = "OptionsWidget_ignore";
+static const char * g_szName_OptionsWidget_inputLook = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_inputLook;
+static const char * g_szClassName_OptionsWidget_inputLook = "OptionsWidget_inputLook";
+static const char * g_szName_OptionsWidget_inputFeatures = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_inputFeatures;
+static const char * g_szClassName_OptionsWidget_inputFeatures = "OptionsWidget_inputFeatures";
+static const char * g_szName_OptionsWidget_interfaceFeatures = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_interfaceFeatures;
+static const char * g_szClassName_OptionsWidget_interfaceFeatures = "OptionsWidget_interfaceFeatures";
+static const char * g_szName_OptionsWidget_irc = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_irc;
+static const char * g_szClassName_OptionsWidget_irc = "OptionsWidget_irc";
+static const char * g_szName_OptionsWidget_ircGeneral = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircGeneral;
+static const char * g_szClassName_OptionsWidget_ircGeneral = "OptionsWidget_ircGeneral";
+static const char * g_szName_OptionsWidget_ircAdvanced = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircAdvanced;
+static const char * g_szClassName_OptionsWidget_ircAdvanced = "OptionsWidget_ircAdvanced";
+static const char * g_szName_OptionsWidget_ircOutput = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircOutput;
+static const char * g_szClassName_OptionsWidget_ircOutput = "OptionsWidget_ircOutput";
+static const char * g_szName_OptionsWidget_ircViewTheme = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewTheme;
+static const char * g_szClassName_OptionsWidget_ircViewTheme = "OptionsWidget_ircViewTheme";
+static const char * g_szName_OptionsWidget_ircViewLook = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewLook;
+static const char * g_szClassName_OptionsWidget_ircViewLook = "OptionsWidget_ircViewLook";
+static const char * g_szName_OptionsWidget_ircViewFeatures = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewFeatures;
+static const char * g_szClassName_OptionsWidget_ircViewFeatures = "OptionsWidget_ircViewFeatures";
+static const char * g_szName_OptionsWidget_ircViewMarker = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewMarker;
+static const char * g_szClassName_OptionsWidget_ircViewMarker = "OptionsWidget_ircViewMarker";
+static const char * g_szName_OptionsWidget_lag = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_lag;
+static const char * g_szClassName_OptionsWidget_lag = "OptionsWidget_lag";
+static const char * g_szName_OptionsWidget_logging = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_logging;
+static const char * g_szClassName_OptionsWidget_logging = "OptionsWidget_logging";
+static const char * g_szName_OptionsWidget_mediaTypes = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_mediaTypes;
+static const char * g_szClassName_OptionsWidget_mediaTypes = "OptionsWidget_mediaTypes";
+static const char * g_szName_OptionsWidget_message = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_message;
+static const char * g_szClassName_OptionsWidget_message = "OptionsWidget_message";
+static const char * g_szName_OptionsWidget_privmsg = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_privmsg;
+static const char * g_szClassName_OptionsWidget_privmsg = "OptionsWidget_privmsg";
+static const char * g_szName_OptionsWidget_timestamp = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_timestamp;
+static const char * g_szClassName_OptionsWidget_timestamp = "OptionsWidget_timestamp";
+static const char * g_szName_OptionsWidget_messageColors = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_messageColors;
+static const char * g_szClassName_OptionsWidget_messageColors = "OptionsWidget_messageColors";
+static const char * g_szName_OptionsWidget_standardColors = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_standardColors;
+static const char * g_szClassName_OptionsWidget_standardColors = "OptionsWidget_standardColors";
+static const char * g_szName_OptionsWidget_nickServ = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_nickServ;
+static const char * g_szClassName_OptionsWidget_nickServ = "OptionsWidget_nickServ";
+static const char * g_szName_OptionsWidget_notifierLook = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_notifierLook;
+static const char * g_szClassName_OptionsWidget_notifierLook = "OptionsWidget_notifierLook";
+static const char * g_szName_OptionsWidget_notifier = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_notifier;
+static const char * g_szClassName_OptionsWidget_notifier = "OptionsWidget_notifier";
+static const char * g_szName_OptionsWidget_notify = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_notify;
+static const char * g_szClassName_OptionsWidget_notify = "OptionsWidget_notify";
+static const char * g_szName_OptionsWidget_protection = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_protection;
+static const char * g_szClassName_OptionsWidget_protection = "OptionsWidget_protection";
+static const char * g_szName_OptionsWidget_proxy = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_proxy;
+static const char * g_szClassName_OptionsWidget_proxy = "OptionsWidget_proxy";
+static const char * g_szName_OptionsWidget_query = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_query;
+static const char * g_szClassName_OptionsWidget_query = "OptionsWidget_query";
+static const char * g_szName_OptionsWidget_servers = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_servers;
+static const char * g_szClassName_OptionsWidget_servers = "OptionsWidget_servers";
+static const char * g_szName_OptionsWidget_sound = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_sound;
+static const char * g_szClassName_OptionsWidget_sound = "OptionsWidget_sound";
+static const char * g_szName_OptionsWidget_soundGeneral = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_soundGeneral;
+static const char * g_szClassName_OptionsWidget_soundGeneral = "OptionsWidget_soundGeneral";
+static const char * g_szName_OptionsWidget_sounds = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_sounds;
+static const char * g_szClassName_OptionsWidget_sounds = "OptionsWidget_sounds";
+static const char * g_szName_OptionsWidget_textEncoding = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_textEncoding;
+static const char * g_szClassName_OptionsWidget_textEncoding = "OptionsWidget_textEncoding";
+static const char * g_szName_OptionsWidget_textIcons = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_textIcons;
+static const char * g_szClassName_OptionsWidget_textIcons = "OptionsWidget_textIcons";
+static const char * g_szName_OptionsWidget_theme = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_theme;
+static const char * g_szClassName_OptionsWidget_theme = "OptionsWidget_theme";
+static const char * g_szName_OptionsWidget_themeTransparency = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeTransparency;
+static const char * g_szClassName_OptionsWidget_themeTransparency = "OptionsWidget_themeTransparency";
+static const char * g_szName_OptionsWidget_themeMdiArea = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeMdiArea;
+static const char * g_szClassName_OptionsWidget_themeMdiArea = "OptionsWidget_themeMdiArea";
+static const char * g_szName_OptionsWidget_themeToolBarApplets = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeToolBarApplets;
+static const char * g_szClassName_OptionsWidget_themeToolBarApplets = "OptionsWidget_themeToolBarApplets";
+static const char * g_szName_OptionsWidget_tools = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_tools;
+static const char * g_szClassName_OptionsWidget_tools = "OptionsWidget_tools";
+static const char * g_szName_OptionsWidget_topicLabel = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_topicLabel;
+static const char * g_szClassName_OptionsWidget_topicLabel = "OptionsWidget_topicLabel";
+static const char * g_szName_OptionsWidget_tray = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_tray;
+static const char * g_szClassName_OptionsWidget_tray = "OptionsWidget_tray";
+static const char * g_szName_OptionsWidget_uparser = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_uparser;
+static const char * g_szClassName_OptionsWidget_uparser = "OptionsWidget_uparser";
+static const char * g_szName_OptionsWidget_urlHandlers = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_urlHandlers;
+static const char * g_szClassName_OptionsWidget_urlHandlers = "OptionsWidget_urlHandlers";
+static const char * g_szName_OptionsWidget_userList = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_userList;
+static const char * g_szClassName_OptionsWidget_userList = "OptionsWidget_userList";
+static const char * g_szName_OptionsWidget_userListBackground = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_userListBackground;
+static const char * g_szClassName_OptionsWidget_userListBackground = "OptionsWidget_userListBackground";
+static const char * g_szName_OptionsWidget_userListForeground = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_userListForeground;
+static const char * g_szClassName_OptionsWidget_userListForeground = "OptionsWidget_userListForeground";
+static const char * g_szName_OptionsWidget_userListGrid = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_userListGrid;
+static const char * g_szClassName_OptionsWidget_userListGrid = "OptionsWidget_userListGrid";
+static const char * g_szName_OptionsWidget_userListFeatures = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_userListFeatures;
+static const char * g_szClassName_OptionsWidget_userListFeatures = "OptionsWidget_userListFeatures";
+static const char * g_szName_OptionsWidget_windowList = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowList;
+static const char * g_szClassName_OptionsWidget_windowList = "OptionsWidget_windowList";
+static const char * g_szName_OptionsWidget_windowListTree = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTree;
+static const char * g_szClassName_OptionsWidget_windowListTree = "OptionsWidget_windowListTree";
+static const char * g_szName_OptionsWidget_windowListTreeForeground = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeForeground;
+static const char * g_szClassName_OptionsWidget_windowListTreeForeground = "OptionsWidget_windowListTreeForeground";
+static const char * g_szName_OptionsWidget_windowListTreeBackground = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeBackground;
+static const char * g_szClassName_OptionsWidget_windowListTreeBackground = "OptionsWidget_windowListTreeBackground";
+static const char * g_szName_OptionsWidget_windowListTreeFeatures = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeFeatures;
+static const char * g_szClassName_OptionsWidget_windowListTreeFeatures = "OptionsWidget_windowListTreeFeatures";
+static const char * g_szName_OptionsWidget_windowListClassic = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListClassic;
+static const char * g_szClassName_OptionsWidget_windowListClassic = "OptionsWidget_windowListClassic";
 
 OptionsInstanceManager::OptionsInstanceManager()
 : QObject(0)
@@ -672,803 +672,892 @@ OptionsInstanceManager::OptionsInstanceManager()
 
 	OptionsWidgetInstanceEntry * e0;
 	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviConnectionOptionsWidget_createInstanceProc;
+	e0->createProc = &classOptionsWidget_alertsAndHighlighting_createInstanceProc;
 	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviConnectionOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviConnectionOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviConnectionOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviConnectionOptionsWidget;
+	e0->szClassName = g_szClassName_OptionsWidget_alertsAndHighlighting;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_alertsAndHighlighting;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_alertsAndHighlighting
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_alertsAndHighlighting;
 	#else
 	e0->iPriority = 0;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviConnectionOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviConnectionOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_alertsAndHighlighting
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_alertsAndHighlighting;
 	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviConnectionOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviConnectionOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_alertsAndHighlighting
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_alertsAndHighlighting;
 	#else
 	e0->szGroup = "general";
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviConnectionOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviConnectionOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_alertsAndHighlighting
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_alertsAndHighlighting;
 	#else
 	e0->bIsContainer = false;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviConnectionOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviConnectionOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_alertsAndHighlighting
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_alertsAndHighlighting;
 	#else
 	e0->bIsNotContained = false;
 	#endif
-	e0->szNameNoLocale = g_szName_KviConnectionOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviConnectionOptionsWidget,"options");
+	e0->szNameNoLocale = g_szName_OptionsWidget_alertsAndHighlighting;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_alertsAndHighlighting,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_highlighting_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_highlighting;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_highlighting;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_highlighting
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_highlighting;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_highlighting
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_highlighting;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_highlighting
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_highlighting;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_highlighting
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_highlighting;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_highlighting
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_highlighting;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_highlighting;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_highlighting,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_alerts_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_alerts;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_alerts;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_alerts
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_alerts;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_alerts
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_alerts;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_alerts
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_alerts;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_alerts
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_alerts;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_alerts
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_alerts;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_alerts;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_alerts,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_antispam_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_antispam;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_antispam;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_antispam
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_antispam;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_antispam
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_antispam;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_antispam
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_antispam;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_antispam
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_antispam;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_antispam
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_antispam;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_antispam;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_antispam,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_avatar_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_avatar;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_avatar;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_avatar
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_avatar;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_avatar
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_avatar;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_avatar
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_avatar;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_avatar
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_avatar;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_avatar
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_avatar;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_avatar;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_avatar,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_away_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_away;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_away;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_away
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_away;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_away
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_away;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_away
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_away;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_away
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_away;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_away
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_away;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_away;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_away,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_channel_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_channel;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channel;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channel
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channel;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channel
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channel;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_channel
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_channel;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_channel
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_channel;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_channel
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_channel;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_channel;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_channel,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_channelGeneral_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_channelGeneral;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelGeneral;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channelGeneral
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channelGeneral;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channelGeneral
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channelGeneral;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_channelGeneral
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_channelGeneral;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_channelGeneral
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_channelGeneral;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_channelGeneral
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_channelGeneral;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_channelGeneral;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_channelGeneral,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_channelAdvanced_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_channelAdvanced;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelAdvanced;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channelAdvanced
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_channelAdvanced;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channelAdvanced
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_channelAdvanced;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_channelAdvanced
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_channelAdvanced;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_channelAdvanced
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_channelAdvanced;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_channelAdvanced
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_channelAdvanced;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_channelAdvanced;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_channelAdvanced,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_connection_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_connection;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connection;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connection
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connection;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connection
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connection;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_connection
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_connection;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_connection
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_connection;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_connection
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_connection;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_connection;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_connection,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_connectionAdvanced_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_connectionAdvanced;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionAdvanced;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionAdvanced
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionAdvanced;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionAdvanced
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionAdvanced;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_connectionAdvanced
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_connectionAdvanced;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_connectionAdvanced
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_connectionAdvanced;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_connectionAdvanced
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_connectionAdvanced;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_connectionAdvanced;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_connectionAdvanced,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_connectionSsl_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_connectionSsl;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSsl;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSsl
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSsl;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionSsl
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionSsl;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_connectionSsl
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_connectionSsl;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_connectionSsl
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_connectionSsl;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_connectionSsl
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_connectionSsl;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_connectionSsl;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_connectionSsl,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_connectionSocket_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_connectionSocket;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSocket;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSocket
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSocket;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionSocket
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_connectionSocket;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_connectionSocket
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_connectionSocket;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_connectionSocket
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_connectionSocket;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_connectionSocket
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_connectionSocket;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_connectionSocket;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_connectionSocket,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_identService_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_identService;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identService;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identService
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identService;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identService
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identService;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_identService
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_identService;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identService
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identService;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_identService
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_identService;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_identService;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_identService,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_ctcp_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_ctcp;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ctcp;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ctcp
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ctcp;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ctcp
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ctcp;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ctcp
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ctcp;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ctcp
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ctcp;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ctcp
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ctcp;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_ctcp;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_ctcp,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_ctcpFloodProtection_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_ctcpFloodProtection;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ctcpFloodProtection;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ctcpFloodProtection
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ctcpFloodProtection;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ctcpFloodProtection
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ctcpFloodProtection;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ctcpFloodProtection
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ctcpFloodProtection;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ctcpFloodProtection
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ctcpFloodProtection;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ctcpFloodProtection
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ctcpFloodProtection;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_ctcpFloodProtection;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_ctcpFloodProtection,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_dcc_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_dcc;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dcc;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dcc
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dcc;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dcc
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dcc;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dcc
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dcc;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dcc
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dcc;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dcc
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dcc;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_dcc;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_dcc,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_dccGeneral_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_dccGeneral;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccGeneral;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccGeneral
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccGeneral;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccGeneral
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccGeneral;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccGeneral
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccGeneral;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccGeneral
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccGeneral;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccGeneral
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccGeneral;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_dccGeneral;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_dccGeneral,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_dccAdvanced_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_dccAdvanced;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccAdvanced;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccAdvanced
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccAdvanced;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccAdvanced
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccAdvanced;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccAdvanced
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccAdvanced;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccAdvanced
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccAdvanced;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccAdvanced
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccAdvanced;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_dccAdvanced;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_dccAdvanced,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_dccSend_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_dccSend;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSend;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccSend
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccSend;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSend
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSend;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccSend
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccSend;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccSend
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccSend;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccSend
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccSend;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_dccSend;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_dccSend,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_dccSendGeneral_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_dccSendGeneral;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendGeneral;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccSendGeneral
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccSendGeneral;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSendGeneral
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSendGeneral;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccSendGeneral
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccSendGeneral;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccSendGeneral
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccSendGeneral;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccSendGeneral
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccSendGeneral;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_dccSendGeneral;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_dccSendGeneral,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_dccSendAdvanced_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_dccSendAdvanced;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendAdvanced;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccSendAdvanced
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccSendAdvanced;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSendAdvanced
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccSendAdvanced;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccSendAdvanced
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccSendAdvanced;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccSendAdvanced
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccSendAdvanced;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccSendAdvanced
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccSendAdvanced;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_dccSendAdvanced;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_dccSendAdvanced,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_dccChat_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_dccChat;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccChat;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccChat
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccChat;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccChat
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccChat;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccChat
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccChat;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccChat
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccChat;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccChat
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccChat;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_dccChat;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_dccChat,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_dccVoice_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_dccVoice;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccVoice;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccVoice
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccVoice;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccVoice
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_dccVoice;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccVoice
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_dccVoice;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccVoice
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccVoice;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccVoice
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccVoice;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_dccVoice;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_dccVoice,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_general_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_general;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_general;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_general
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_general;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_general
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_general;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_general
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_general;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_general
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_general;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_general
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_general;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_general;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_general,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_identity_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_identity;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identity;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identity
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identity;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identity
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identity;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_identity
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_identity;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identity
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identity;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_identity
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_identity;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_identity;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_identity,"options");
 	m_pInstanceTree->append(e0);
 
 	e0->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
 	e0->pChildList->setAutoDelete(true);
 
 		OptionsWidgetInstanceEntry * e1;
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviConnectionAdvancedOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviConnectionAdvancedOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviConnectionAdvancedOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviConnectionAdvancedOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviConnectionAdvancedOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviConnectionAdvancedOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviConnectionAdvancedOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviConnectionAdvancedOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviConnectionAdvancedOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviConnectionAdvancedOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviConnectionAdvancedOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviConnectionAdvancedOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviConnectionAdvancedOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviConnectionAdvancedOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviConnectionAdvancedOptionsWidget,"options");
-		e0->pChildList->append(e1);
-
-		e1->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-		e1->pChildList->setAutoDelete(true);
-
-			OptionsWidgetInstanceEntry * e2;
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviSSLOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviSSLOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviSSLOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviSSLOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviSSLOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviSSLOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviSSLOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviSSLOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviSSLOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviSSLOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviSSLOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviSSLOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviSSLOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviSSLOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviSSLOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviTransportOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviTransportOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTransportOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTransportOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTransportOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTransportOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTransportOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTransportOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTransportOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTransportOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTransportOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTransportOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTransportOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviTransportOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTransportOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviIdentOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviIdentOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIdentOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIdentOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIdentOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIdentOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIdentOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIdentOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIdentOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIdentOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIdentOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviIdentOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIdentOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviProxyOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviProxyOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviProxyOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviProxyOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviProxyOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviProxyOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviProxyOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviProxyOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviProxyOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviProxyOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviProxyOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviProxyOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviProxyOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviProxyOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviProxyOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviDccOptionsWidget_createInstanceProc;
-	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviDccOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviDccOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviDccOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviDccOptionsWidget;
-	#else
-	e0->iPriority = 0;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccOptionsWidget;
-	#else
-	e0->szGroup = "general";
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviDccOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviDccOptionsWidget;
-	#else
-	e0->bIsContainer = false;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccOptionsWidget;
-	#else
-	e0->bIsNotContained = false;
-	#endif
-	e0->szNameNoLocale = g_szName_KviDccOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviDccOptionsWidget,"options");
-	m_pInstanceTree->append(e0);
-
-	e0->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-	e0->pChildList->setAutoDelete(true);
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviDccGeneralOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviDccGeneralOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviDccGeneralOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviDccGeneralOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviDccGeneralOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccGeneralOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccGeneralOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccGeneralOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccGeneralOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviDccGeneralOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviDccGeneralOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccGeneralOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccGeneralOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviDccGeneralOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviDccGeneralOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviDccAdvancedOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviDccAdvancedOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviDccAdvancedOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviDccAdvancedOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviDccAdvancedOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccAdvancedOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccAdvancedOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccAdvancedOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccAdvancedOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviDccAdvancedOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviDccAdvancedOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccAdvancedOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccAdvancedOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviDccAdvancedOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviDccAdvancedOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviDccSendOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviDccSendOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviDccSendOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviDccSendOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviDccSendOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccSendOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccSendOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccSendOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccSendOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviDccSendOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviDccSendOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccSendOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccSendOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviDccSendOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviDccSendOptionsWidget,"options");
-		e0->pChildList->append(e1);
-
-		e1->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-		e1->pChildList->setAutoDelete(true);
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviDccSendGeneralOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviDccSendGeneralOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviDccSendGeneralOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviDccSendGeneralOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviDccSendGeneralOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccSendGeneralOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccSendGeneralOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccSendGeneralOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccSendGeneralOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviDccSendGeneralOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviDccSendGeneralOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccSendGeneralOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccSendGeneralOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviDccSendGeneralOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviDccSendGeneralOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviDccSendAdvancedOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviDccSendAdvancedOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviDccSendAdvancedOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviDccSendAdvancedOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviDccSendAdvancedOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccSendAdvancedOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccSendAdvancedOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccSendAdvancedOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccSendAdvancedOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviDccSendAdvancedOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviDccSendAdvancedOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccSendAdvancedOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccSendAdvancedOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviDccSendAdvancedOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviDccSendAdvancedOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviDccChatOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviDccChatOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviDccChatOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviDccChatOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviDccChatOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccChatOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccChatOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccChatOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccChatOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviDccChatOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviDccChatOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccChatOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccChatOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviDccChatOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviDccChatOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviDccVoiceOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviDccVoiceOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviDccVoiceOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviDccVoiceOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviDccVoiceOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccVoiceOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccVoiceOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccVoiceOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccVoiceOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviDccVoiceOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviDccVoiceOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccVoiceOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccVoiceOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviDccVoiceOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviDccVoiceOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviGeneralOptOptionsWidget_createInstanceProc;
-	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviGeneralOptOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviGeneralOptOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviGeneralOptOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviGeneralOptOptionsWidget;
-	#else
-	e0->iPriority = 0;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviGeneralOptOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviGeneralOptOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviGeneralOptOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviGeneralOptOptionsWidget;
-	#else
-	e0->szGroup = "general";
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviGeneralOptOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviGeneralOptOptionsWidget;
-	#else
-	e0->bIsContainer = false;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviGeneralOptOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviGeneralOptOptionsWidget;
-	#else
-	e0->bIsNotContained = false;
-	#endif
-	e0->szNameNoLocale = g_szName_KviGeneralOptOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviGeneralOptOptionsWidget,"options");
-	m_pInstanceTree->append(e0);
-
-	e0->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-	e0->pChildList->setAutoDelete(true);
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviMediaTypesOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviMediaTypesOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviMediaTypesOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviMediaTypesOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviMediaTypesOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviMediaTypesOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviMediaTypesOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviMediaTypesOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviMediaTypesOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviMediaTypesOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviMediaTypesOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviMediaTypesOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviMediaTypesOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviMediaTypesOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviMediaTypesOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviSoundOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviSoundOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviSoundOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviSoundOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviSoundOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviSoundOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviSoundOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviSoundOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviSoundOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviSoundOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviSoundOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviSoundOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviSoundOptionsWidget,"options");
-		e0->pChildList->append(e1);
-
-		e1->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-		e1->pChildList->setAutoDelete(true);
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviSoundGeneralOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviSoundGeneralOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviSoundGeneralOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviSoundGeneralOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviSoundGeneralOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundGeneralOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundGeneralOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviSoundGeneralOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviSoundGeneralOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviSoundGeneralOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviSoundGeneralOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviSoundGeneralOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviSoundGeneralOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviSoundGeneralOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviSoundGeneralOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviSoundsOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviSoundsOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviSoundsOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviSoundsOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviSoundsOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundsOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundsOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviSoundsOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviSoundsOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviSoundsOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviSoundsOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviSoundsOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviSoundsOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviSoundsOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviSoundsOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviTextEncodingOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviTextEncodingOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTextEncodingOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTextEncodingOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTextEncodingOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTextEncodingOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTextEncodingOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTextEncodingOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTextEncodingOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTextEncodingOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTextEncodingOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTextEncodingOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTextEncodingOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviTextEncodingOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTextEncodingOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviUParserOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviUParserOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviUParserOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviUParserOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviUParserOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUParserOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUParserOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUParserOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUParserOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviUParserOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviUParserOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUParserOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUParserOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviUParserOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviUParserOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviUrlHandlersOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviUrlHandlersOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviUrlHandlersOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviUrlHandlersOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviUrlHandlersOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUrlHandlersOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUrlHandlersOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUrlHandlersOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUrlHandlersOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviUrlHandlersOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviUrlHandlersOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUrlHandlersOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUrlHandlersOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviUrlHandlersOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviUrlHandlersOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviIdentityOptionsWidget_createInstanceProc;
-	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviIdentityOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIdentityOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityOptionsWidget;
-	#else
-	e0->iPriority = 0;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIdentityOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIdentityOptionsWidget;
-	#else
-	e0->szGroup = "general";
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIdentityOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIdentityOptionsWidget;
-	#else
-	e0->bIsContainer = false;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIdentityOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIdentityOptionsWidget;
-	#else
-	e0->bIsNotContained = false;
-	#endif
-	e0->szNameNoLocale = g_szName_KviIdentityOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIdentityOptionsWidget,"options");
-	m_pInstanceTree->append(e0);
-
-	e0->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-	e0->pChildList->setAutoDelete(true);
-
 		e1 = new OptionsWidgetInstanceEntry;
 		e1->createProc = &classKviIdentityGeneralOptionsWidget_createInstanceProc;
 		e1->pWidget = 0;
@@ -1503,2034 +1592,1909 @@ OptionsInstanceManager::OptionsInstanceManager()
 		e0->pChildList->append(e1);
 		e1->pChildList = 0;
 
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviIdentityAvatarOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviIdentityAvatarOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIdentityAvatarOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityAvatarOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityAvatarOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityAvatarOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityAvatarOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIdentityAvatarOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIdentityAvatarOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIdentityAvatarOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIdentityAvatarOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIdentityAvatarOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIdentityAvatarOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviIdentityAvatarOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIdentityAvatarOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviIdentityAdvancedOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviIdentityAdvancedOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIdentityAdvancedOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityAdvancedOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityAdvancedOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityAdvancedOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityAdvancedOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIdentityAdvancedOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIdentityAdvancedOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIdentityAdvancedOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIdentityAdvancedOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIdentityAdvancedOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIdentityAdvancedOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviIdentityAdvancedOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIdentityAdvancedOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviIdentityProfileOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviIdentityProfileOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIdentityProfileOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityProfileOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityProfileOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityProfileOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityProfileOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIdentityProfileOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIdentityProfileOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIdentityProfileOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIdentityProfileOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIdentityProfileOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIdentityProfileOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviIdentityProfileOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIdentityProfileOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
 	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviInputLookOptionsWidget_createInstanceProc;
+	e0->createProc = &classOptionsWidget_identityAvatar_createInstanceProc;
 	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviInputLookOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviInputLookOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviInputLookOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviInputLookOptionsWidget;
+	e0->szClassName = g_szClassName_OptionsWidget_identityAvatar;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAvatar;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAvatar
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAvatar;
 	#else
 	e0->iPriority = 0;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviInputLookOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviInputLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityAvatar
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityAvatar;
 	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviInputLookOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviInputLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_identityAvatar
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_identityAvatar;
 	#else
 	e0->szGroup = "general";
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviInputLookOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviInputLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identityAvatar
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identityAvatar;
 	#else
 	e0->bIsContainer = false;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviInputLookOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviInputLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_identityAvatar
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_identityAvatar;
 	#else
 	e0->bIsNotContained = false;
 	#endif
-	e0->szNameNoLocale = g_szName_KviInputLookOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviInputLookOptionsWidget,"options");
+	e0->szNameNoLocale = g_szName_OptionsWidget_identityAvatar;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_identityAvatar,"options");
 	m_pInstanceTree->append(e0);
 	e0->pChildList = 0;
 
 	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviInterfaceFeaturesOptionsWidget_createInstanceProc;
+	e0->createProc = &classOptionsWidget_identityAdvanced_createInstanceProc;
 	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviInterfaceFeaturesOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviInterfaceFeaturesOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviInterfaceFeaturesOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviInterfaceFeaturesOptionsWidget;
+	e0->szClassName = g_szClassName_OptionsWidget_identityAdvanced;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAdvanced;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAdvanced
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAdvanced;
 	#else
 	e0->iPriority = 0;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviInterfaceFeaturesOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviInterfaceFeaturesOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityAdvanced
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityAdvanced;
 	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviInterfaceFeaturesOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviInterfaceFeaturesOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_identityAdvanced
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_identityAdvanced;
 	#else
 	e0->szGroup = "general";
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviInterfaceFeaturesOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviInterfaceFeaturesOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identityAdvanced
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identityAdvanced;
 	#else
 	e0->bIsContainer = false;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviInterfaceFeaturesOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviInterfaceFeaturesOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_identityAdvanced
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_identityAdvanced;
 	#else
 	e0->bIsNotContained = false;
 	#endif
-	e0->szNameNoLocale = g_szName_KviInterfaceFeaturesOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviInterfaceFeaturesOptionsWidget,"options");
-	m_pInstanceTree->append(e0);
-
-	e0->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-	e0->pChildList->setAutoDelete(true);
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviInputFeaturesOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviInputFeaturesOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviInputFeaturesOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviInputFeaturesOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviInputFeaturesOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviInputFeaturesOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviInputFeaturesOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviInputFeaturesOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviInputFeaturesOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviInputFeaturesOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviInputFeaturesOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviInputFeaturesOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviInputFeaturesOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviInputFeaturesOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviInputFeaturesOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviNotifierOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviNotifierOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviNotifierOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviNotifierOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviNotifierOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviNotifierOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviNotifierOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviNotifierOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviNotifierOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviNotifierOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviNotifierOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviNotifierOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviNotifierOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviTrayOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviTrayOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTrayOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTrayOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTrayOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTrayOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTrayOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTrayOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTrayOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTrayOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTrayOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTrayOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTrayOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviTrayOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTrayOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviThemeGeneralOptionsWidget_createInstanceProc;
-	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviThemeGeneralOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviThemeGeneralOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviThemeGeneralOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviThemeGeneralOptionsWidget;
-	#else
-	e0->iPriority = 0;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeGeneralOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeGeneralOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviThemeGeneralOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviThemeGeneralOptionsWidget;
-	#else
-	e0->szGroup = "general";
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviThemeGeneralOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviThemeGeneralOptionsWidget;
-	#else
-	e0->bIsContainer = false;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeGeneralOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeGeneralOptionsWidget;
-	#else
-	e0->bIsNotContained = false;
-	#endif
-	e0->szNameNoLocale = g_szName_KviThemeGeneralOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviThemeGeneralOptionsWidget,"options");
+	e0->szNameNoLocale = g_szName_OptionsWidget_identityAdvanced;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_identityAdvanced,"options");
 	m_pInstanceTree->append(e0);
 	e0->pChildList = 0;
 
 	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviThemeTransparencyOptionsWidget_createInstanceProc;
+	e0->createProc = &classOptionsWidget_identityProfile_createInstanceProc;
 	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviThemeTransparencyOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviThemeTransparencyOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviThemeTransparencyOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviThemeTransparencyOptionsWidget;
+	e0->szClassName = g_szClassName_OptionsWidget_identityProfile;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityProfile;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityProfile
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityProfile;
 	#else
 	e0->iPriority = 0;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeTransparencyOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeTransparencyOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityProfile
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_identityProfile;
 	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviThemeTransparencyOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviThemeTransparencyOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_identityProfile
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_identityProfile;
 	#else
 	e0->szGroup = "general";
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviThemeTransparencyOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviThemeTransparencyOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identityProfile
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identityProfile;
 	#else
 	e0->bIsContainer = false;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeTransparencyOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeTransparencyOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_identityProfile
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_identityProfile;
 	#else
 	e0->bIsNotContained = false;
 	#endif
-	e0->szNameNoLocale = g_szName_KviThemeTransparencyOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviThemeTransparencyOptionsWidget,"options");
+	e0->szNameNoLocale = g_szName_OptionsWidget_identityProfile;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_identityProfile,"options");
 	m_pInstanceTree->append(e0);
 	e0->pChildList = 0;
 
 	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviThemeMdiAreaOptionsWidget_createInstanceProc;
+	e0->createProc = &classOptionsWidget_ignore_createInstanceProc;
 	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviThemeMdiAreaOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviThemeMdiAreaOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviThemeMdiAreaOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviThemeMdiAreaOptionsWidget;
+	e0->szClassName = g_szClassName_OptionsWidget_ignore;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ignore;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ignore
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ignore;
 	#else
 	e0->iPriority = 0;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiAreaOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiAreaOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ignore
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ignore;
 	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviThemeMdiAreaOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviThemeMdiAreaOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ignore
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ignore;
 	#else
 	e0->szGroup = "general";
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviThemeMdiAreaOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviThemeMdiAreaOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ignore
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ignore;
 	#else
 	e0->bIsContainer = false;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeMdiAreaOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeMdiAreaOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ignore
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ignore;
 	#else
 	e0->bIsNotContained = false;
 	#endif
-	e0->szNameNoLocale = g_szName_KviThemeMdiAreaOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviThemeMdiAreaOptionsWidget,"options");
+	e0->szNameNoLocale = g_szName_OptionsWidget_ignore;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_ignore,"options");
 	m_pInstanceTree->append(e0);
 	e0->pChildList = 0;
 
 	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviThemeToolBarAppletsOptionsWidget_createInstanceProc;
+	e0->createProc = &classOptionsWidget_inputLook_createInstanceProc;
 	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviThemeToolBarAppletsOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviThemeToolBarAppletsOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviThemeToolBarAppletsOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviThemeToolBarAppletsOptionsWidget;
+	e0->szClassName = g_szClassName_OptionsWidget_inputLook;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_inputLook;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_inputLook
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_inputLook;
 	#else
 	e0->iPriority = 0;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeToolBarAppletsOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeToolBarAppletsOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_inputLook
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_inputLook;
 	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviThemeToolBarAppletsOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviThemeToolBarAppletsOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_inputLook
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_inputLook;
 	#else
 	e0->szGroup = "general";
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviThemeToolBarAppletsOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviThemeToolBarAppletsOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_inputLook
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_inputLook;
 	#else
 	e0->bIsContainer = false;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeToolBarAppletsOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeToolBarAppletsOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_inputLook
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_inputLook;
 	#else
 	e0->bIsNotContained = false;
 	#endif
-	e0->szNameNoLocale = g_szName_KviThemeToolBarAppletsOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviThemeToolBarAppletsOptionsWidget,"options");
+	e0->szNameNoLocale = g_szName_OptionsWidget_inputLook;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_inputLook,"options");
 	m_pInstanceTree->append(e0);
 	e0->pChildList = 0;
 
 	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviIrcOptionsWidget_createInstanceProc;
+	e0->createProc = &classOptionsWidget_inputFeatures_createInstanceProc;
 	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviIrcOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIrcOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIrcOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIrcOptionsWidget;
+	e0->szClassName = g_szClassName_OptionsWidget_inputFeatures;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_inputFeatures;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_inputFeatures
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_inputFeatures;
 	#else
 	e0->iPriority = 0;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_inputFeatures
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_inputFeatures;
 	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_inputFeatures
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_inputFeatures;
 	#else
 	e0->szGroup = "general";
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIrcOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIrcOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_inputFeatures
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_inputFeatures;
 	#else
 	e0->bIsContainer = false;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_inputFeatures
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_inputFeatures;
 	#else
 	e0->bIsNotContained = false;
 	#endif
-	e0->szNameNoLocale = g_szName_KviIrcOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcOptionsWidget,"options");
-	m_pInstanceTree->append(e0);
-
-	e0->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-	e0->pChildList->setAutoDelete(true);
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviChannelOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviChannelOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviChannelOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviChannelOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviChannelOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviChannelOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviChannelOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviChannelOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviChannelOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviChannelOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviChannelOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviChannelOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviChannelOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviChannelOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviChannelOptionsWidget,"options");
-		e0->pChildList->append(e1);
-
-		e1->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-		e1->pChildList->setAutoDelete(true);
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviChannelGeneralOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviChannelGeneralOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviChannelGeneralOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviChannelGeneralOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviChannelGeneralOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviChannelGeneralOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviChannelGeneralOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviChannelGeneralOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviChannelGeneralOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviChannelGeneralOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviChannelGeneralOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviChannelGeneralOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviChannelGeneralOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviChannelGeneralOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviChannelGeneralOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviChannelAdvancedOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviChannelAdvancedOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviChannelAdvancedOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviChannelAdvancedOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviChannelAdvancedOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviChannelAdvancedOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviChannelAdvancedOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviChannelAdvancedOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviChannelAdvancedOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviChannelAdvancedOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviChannelAdvancedOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviChannelAdvancedOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviChannelAdvancedOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviChannelAdvancedOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviChannelAdvancedOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviIrcGeneralOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviIrcGeneralOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIrcGeneralOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIrcGeneralOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIrcGeneralOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcGeneralOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcGeneralOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcGeneralOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcGeneralOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIrcGeneralOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIrcGeneralOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcGeneralOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcGeneralOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviIrcGeneralOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcGeneralOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviIrcAdvancedOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviIrcAdvancedOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIrcAdvancedOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIrcAdvancedOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIrcAdvancedOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcAdvancedOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcAdvancedOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcAdvancedOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcAdvancedOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIrcAdvancedOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIrcAdvancedOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcAdvancedOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcAdvancedOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviIrcAdvancedOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcAdvancedOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviIrcOutputOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviIrcOutputOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIrcOutputOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIrcOutputOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIrcOutputOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcOutputOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcOutputOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcOutputOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcOutputOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIrcOutputOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIrcOutputOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcOutputOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcOutputOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviIrcOutputOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcOutputOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviProtectionOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviProtectionOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviProtectionOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviProtectionOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviProtectionOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviProtectionOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviProtectionOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviProtectionOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviProtectionOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviProtectionOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviProtectionOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviProtectionOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviProtectionOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviProtectionOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviProtectionOptionsWidget,"options");
-		e0->pChildList->append(e1);
-
-		e1->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-		e1->pChildList->setAutoDelete(true);
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviAntispamOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviAntispamOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviAntispamOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviAntispamOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviAntispamOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviAntispamOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviAntispamOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviAntispamOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviAntispamOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviAntispamOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviAntispamOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviAntispamOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviAntispamOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviAntispamOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviAntispamOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviCtcpFloodProtectionOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviCtcpFloodProtectionOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviCtcpFloodProtectionOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviCtcpFloodProtectionOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviCtcpFloodProtectionOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviCtcpFloodProtectionOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviCtcpFloodProtectionOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviCtcpFloodProtectionOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviCtcpFloodProtectionOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviCtcpFloodProtectionOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviCtcpFloodProtectionOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviCtcpFloodProtectionOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviCtcpFloodProtectionOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviCtcpFloodProtectionOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviCtcpFloodProtectionOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviIgnoreOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviIgnoreOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIgnoreOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIgnoreOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIgnoreOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIgnoreOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIgnoreOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIgnoreOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIgnoreOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIgnoreOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIgnoreOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIgnoreOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIgnoreOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviIgnoreOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIgnoreOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviQueryOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviQueryOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviQueryOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviQueryOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviQueryOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviQueryOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviQueryOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviQueryOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviQueryOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviQueryOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviQueryOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviQueryOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviQueryOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviQueryOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviQueryOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviToolsOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviToolsOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviToolsOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviToolsOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviToolsOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviToolsOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviToolsOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviToolsOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviToolsOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviToolsOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviToolsOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviToolsOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviToolsOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviToolsOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviToolsOptionsWidget,"options");
-		e0->pChildList->append(e1);
-
-		e1->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-		e1->pChildList->setAutoDelete(true);
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviAvatarAdvancedOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviAvatarAdvancedOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviAvatarAdvancedOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviAvatarAdvancedOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviAvatarAdvancedOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviAvatarAdvancedOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviAvatarAdvancedOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviAvatarAdvancedOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviAvatarAdvancedOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviAvatarAdvancedOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviAvatarAdvancedOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviAvatarAdvancedOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviAvatarAdvancedOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviAvatarAdvancedOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviAvatarAdvancedOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviAwayOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviAwayOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviAwayOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviAwayOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviAwayOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviAwayOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviAwayOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviAwayOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviAwayOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviAwayOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviAwayOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviAwayOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviAwayOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviAwayOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviAwayOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviCtcpOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviCtcpOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviCtcpOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviCtcpOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviCtcpOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviCtcpOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviCtcpOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviCtcpOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviCtcpOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviCtcpOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviCtcpOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviCtcpOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviCtcpOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviCtcpOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviCtcpOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviAlertHighlightingOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviAlertHighlightingOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviAlertHighlightingOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviAlertHighlightingOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviAlertHighlightingOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviAlertHighlightingOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviAlertHighlightingOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviAlertHighlightingOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviAlertHighlightingOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviAlertHighlightingOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviAlertHighlightingOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviAlertHighlightingOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviAlertHighlightingOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviAlertHighlightingOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviAlertHighlightingOptionsWidget,"options");
-			e1->pChildList->append(e2);
-
-			e2->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-			e2->pChildList->setAutoDelete(true);
-
-				OptionsWidgetInstanceEntry * e3;
-				e3 = new OptionsWidgetInstanceEntry;
-				e3->createProc = &classKviHighlightingOptionsWidget_createInstanceProc;
-				e3->pWidget = 0;
-				e3->szClassName = g_szClassName_KviHighlightingOptionsWidget;
-				e3->iIcon = KVI_OPTIONS_WIDGET_ICON_KviHighlightingOptionsWidget;
-				#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviHighlightingOptionsWidget
-				e3->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviHighlightingOptionsWidget;
-				#else
-				e3->iPriority = 0;
-				#endif
-				#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviHighlightingOptionsWidget
-				e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviHighlightingOptionsWidget;
-				e3->szKeywords = __tr2qs_ctx_no_xgettext(e3->szKeywordsNoLocale.toUtf8().data(),"options");;
-				#endif
-				#ifdef KVI_OPTIONS_WIDGET_GROUP_KviHighlightingOptionsWidget
-				e3->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviHighlightingOptionsWidget;
-				#else
-				e3->szGroup = "general";
-				#endif
-				#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviHighlightingOptionsWidget
-				e3->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviHighlightingOptionsWidget;
-				#else
-				e3->bIsContainer = false;
-				#endif
-				#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviHighlightingOptionsWidget
-				e3->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviHighlightingOptionsWidget;
-				#else
-				e3->bIsNotContained = false;
-				#endif
-				e3->szNameNoLocale = g_szName_KviHighlightingOptionsWidget;
-				e3->szName = __tr2qs_ctx_no_xgettext(g_szName_KviHighlightingOptionsWidget,"options");
-				e2->pChildList->append(e3);
-				e3->pChildList = 0;
-
-				e3 = new OptionsWidgetInstanceEntry;
-				e3->createProc = &classKviAlertOptionsWidget_createInstanceProc;
-				e3->pWidget = 0;
-				e3->szClassName = g_szClassName_KviAlertOptionsWidget;
-				e3->iIcon = KVI_OPTIONS_WIDGET_ICON_KviAlertOptionsWidget;
-				#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviAlertOptionsWidget
-				e3->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviAlertOptionsWidget;
-				#else
-				e3->iPriority = 0;
-				#endif
-				#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviAlertOptionsWidget
-				e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviAlertOptionsWidget;
-				e3->szKeywords = __tr2qs_ctx_no_xgettext(e3->szKeywordsNoLocale.toUtf8().data(),"options");;
-				#endif
-				#ifdef KVI_OPTIONS_WIDGET_GROUP_KviAlertOptionsWidget
-				e3->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviAlertOptionsWidget;
-				#else
-				e3->szGroup = "general";
-				#endif
-				#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviAlertOptionsWidget
-				e3->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviAlertOptionsWidget;
-				#else
-				e3->bIsContainer = false;
-				#endif
-				#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviAlertOptionsWidget
-				e3->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviAlertOptionsWidget;
-				#else
-				e3->bIsNotContained = false;
-				#endif
-				e3->szNameNoLocale = g_szName_KviAlertOptionsWidget;
-				e3->szName = __tr2qs_ctx_no_xgettext(g_szName_KviAlertOptionsWidget,"options");
-				e2->pChildList->append(e3);
-				e3->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviLagOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviLagOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviLagOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviLagOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviLagOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviLagOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviLagOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviLagOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviLagOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviLagOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviLagOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviLagOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviLagOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviLagOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviLagOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviLoggingOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviLoggingOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviLoggingOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviLoggingOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviLoggingOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviLoggingOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviLoggingOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviLoggingOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviLoggingOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviLoggingOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviLoggingOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviLoggingOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviLoggingOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviLoggingOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviLoggingOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviNickServOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviNickServOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviNickServOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviNickServOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviNickServOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviNickServOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviNickServOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviNickServOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviNickServOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviNickServOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviNickServOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviNickServOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviNickServOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviNickServOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviNickServOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviNotifyOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviNotifyOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviNotifyOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviNotifyOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviNotifyOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifyOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifyOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviNotifyOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviNotifyOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviNotifyOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviNotifyOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviNotifyOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviNotifyOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviNotifyOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviNotifyOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviTextIconsOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviTextIconsOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTextIconsOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTextIconsOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTextIconsOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTextIconsOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTextIconsOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTextIconsOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTextIconsOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTextIconsOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTextIconsOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTextIconsOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTextIconsOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviTextIconsOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTextIconsOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviIrcViewThemeOptionsWidget_createInstanceProc;
-	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviIrcViewThemeOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIrcViewThemeOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIrcViewThemeOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIrcViewThemeOptionsWidget;
-	#else
-	e0->iPriority = 0;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewThemeOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewThemeOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcViewThemeOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcViewThemeOptionsWidget;
-	#else
-	e0->szGroup = "general";
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIrcViewThemeOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIrcViewThemeOptionsWidget;
-	#else
-	e0->bIsContainer = false;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcViewThemeOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcViewThemeOptionsWidget;
-	#else
-	e0->bIsNotContained = false;
-	#endif
-	e0->szNameNoLocale = g_szName_KviIrcViewThemeOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcViewThemeOptionsWidget,"options");
-	m_pInstanceTree->append(e0);
-
-	e0->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-	e0->pChildList->setAutoDelete(true);
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviIrcViewLookOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviIrcViewLookOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIrcViewLookOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIrcViewLookOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIrcViewLookOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewLookOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewLookOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcViewLookOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcViewLookOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIrcViewLookOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIrcViewLookOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcViewLookOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcViewLookOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviIrcViewLookOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcViewLookOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviIrcViewFeaturesOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviIrcViewFeaturesOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIrcViewFeaturesOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIrcViewFeaturesOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIrcViewFeaturesOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewFeaturesOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewFeaturesOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcViewFeaturesOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcViewFeaturesOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIrcViewFeaturesOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIrcViewFeaturesOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcViewFeaturesOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcViewFeaturesOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviIrcViewFeaturesOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcViewFeaturesOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviIrcViewMarkerOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviIrcViewMarkerOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIrcViewMarkerOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIrcViewMarkerOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIrcViewMarkerOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewMarkerOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewMarkerOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcViewMarkerOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcViewMarkerOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIrcViewMarkerOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIrcViewMarkerOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcViewMarkerOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcViewMarkerOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviIrcViewMarkerOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcViewMarkerOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviMessageOptionsWidget_createInstanceProc;
-	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviMessageOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviMessageOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviMessageOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviMessageOptionsWidget;
-	#else
-	e0->iPriority = 0;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviMessageOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviMessageOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviMessageOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviMessageOptionsWidget;
-	#else
-	e0->szGroup = "general";
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviMessageOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviMessageOptionsWidget;
-	#else
-	e0->bIsContainer = false;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviMessageOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviMessageOptionsWidget;
-	#else
-	e0->bIsNotContained = false;
-	#endif
-	e0->szNameNoLocale = g_szName_KviMessageOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviMessageOptionsWidget,"options");
-	m_pInstanceTree->append(e0);
-
-	e0->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-	e0->pChildList->setAutoDelete(true);
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviPrivmsgOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviPrivmsgOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviPrivmsgOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviPrivmsgOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviPrivmsgOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviPrivmsgOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviPrivmsgOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviPrivmsgOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviPrivmsgOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviPrivmsgOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviPrivmsgOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviPrivmsgOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviPrivmsgOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviPrivmsgOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviPrivmsgOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviTimestampOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviTimestampOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTimestampOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTimestampOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTimestampOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTimestampOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTimestampOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTimestampOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTimestampOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTimestampOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTimestampOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTimestampOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTimestampOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviTimestampOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTimestampOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviMessageColorsOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviMessageColorsOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviMessageColorsOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviMessageColorsOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviMessageColorsOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviMessageColorsOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviMessageColorsOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviMessageColorsOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviMessageColorsOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviMessageColorsOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviMessageColorsOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviMessageColorsOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviMessageColorsOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviMessageColorsOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviMessageColorsOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviStandardColorsOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviStandardColorsOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviStandardColorsOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviStandardColorsOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviStandardColorsOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviStandardColorsOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviStandardColorsOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviStandardColorsOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviStandardColorsOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviStandardColorsOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviStandardColorsOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviStandardColorsOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviStandardColorsOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviStandardColorsOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviStandardColorsOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviNotifierLookOptionsWidget_createInstanceProc;
-	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviNotifierLookOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviNotifierLookOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviNotifierLookOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviNotifierLookOptionsWidget;
-	#else
-	e0->iPriority = 0;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierLookOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierLookOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviNotifierLookOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviNotifierLookOptionsWidget;
-	#else
-	e0->szGroup = "general";
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviNotifierLookOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviNotifierLookOptionsWidget;
-	#else
-	e0->bIsContainer = false;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviNotifierLookOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviNotifierLookOptionsWidget;
-	#else
-	e0->bIsNotContained = false;
-	#endif
-	e0->szNameNoLocale = g_szName_KviNotifierLookOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviNotifierLookOptionsWidget,"options");
+	e0->szNameNoLocale = g_szName_OptionsWidget_inputFeatures;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_inputFeatures,"options");
 	m_pInstanceTree->append(e0);
 	e0->pChildList = 0;
 
 	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviIrcServerOptionsWidget_createInstanceProc;
+	e0->createProc = &classOptionsWidget_interfaceFeatures_createInstanceProc;
 	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviIrcServerOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIrcServerOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIrcServerOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIrcServerOptionsWidget;
+	e0->szClassName = g_szClassName_OptionsWidget_interfaceFeatures;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_interfaceFeatures;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_interfaceFeatures
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_interfaceFeatures;
 	#else
 	e0->iPriority = 0;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcServerOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcServerOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_interfaceFeatures
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_interfaceFeatures;
 	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcServerOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcServerOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_interfaceFeatures
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_interfaceFeatures;
 	#else
 	e0->szGroup = "general";
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIrcServerOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIrcServerOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_interfaceFeatures
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_interfaceFeatures;
 	#else
 	e0->bIsContainer = false;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcServerOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcServerOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_interfaceFeatures
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_interfaceFeatures;
 	#else
 	e0->bIsNotContained = false;
 	#endif
-	e0->szNameNoLocale = g_szName_KviIrcServerOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcServerOptionsWidget,"options");
+	e0->szNameNoLocale = g_szName_OptionsWidget_interfaceFeatures;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_interfaceFeatures,"options");
 	m_pInstanceTree->append(e0);
 	e0->pChildList = 0;
 
 	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviTopicLabelLookOptionsWidget_createInstanceProc;
+	e0->createProc = &classOptionsWidget_irc_createInstanceProc;
 	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviTopicLabelLookOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTopicLabelLookOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTopicLabelLookOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTopicLabelLookOptionsWidget;
+	e0->szClassName = g_szClassName_OptionsWidget_irc;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_irc;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_irc
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_irc;
 	#else
 	e0->iPriority = 0;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTopicLabelLookOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTopicLabelLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_irc
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_irc;
 	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTopicLabelLookOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTopicLabelLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_irc
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_irc;
 	#else
 	e0->szGroup = "general";
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTopicLabelLookOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTopicLabelLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_irc
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_irc;
 	#else
 	e0->bIsContainer = false;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTopicLabelLookOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTopicLabelLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_irc
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_irc;
 	#else
 	e0->bIsNotContained = false;
 	#endif
-	e0->szNameNoLocale = g_szName_KviTopicLabelLookOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTopicLabelLookOptionsWidget,"options");
+	e0->szNameNoLocale = g_szName_OptionsWidget_irc;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_irc,"options");
 	m_pInstanceTree->append(e0);
 	e0->pChildList = 0;
 
 	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviUserListLookOptionsWidget_createInstanceProc;
+	e0->createProc = &classOptionsWidget_ircGeneral_createInstanceProc;
 	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviUserListLookOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviUserListLookOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviUserListLookOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviUserListLookOptionsWidget;
+	e0->szClassName = g_szClassName_OptionsWidget_ircGeneral;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircGeneral;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircGeneral
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircGeneral;
 	#else
 	e0->iPriority = 0;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListLookOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircGeneral
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircGeneral;
 	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUserListLookOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUserListLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircGeneral
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircGeneral;
 	#else
 	e0->szGroup = "general";
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviUserListLookOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviUserListLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircGeneral
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircGeneral;
 	#else
 	e0->bIsContainer = false;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUserListLookOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUserListLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircGeneral
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircGeneral;
 	#else
 	e0->bIsNotContained = false;
 	#endif
-	e0->szNameNoLocale = g_szName_KviUserListLookOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviUserListLookOptionsWidget,"options");
+	e0->szNameNoLocale = g_szName_OptionsWidget_ircGeneral;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_ircGeneral,"options");
 	m_pInstanceTree->append(e0);
-
-	e0->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-	e0->pChildList->setAutoDelete(true);
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviUserListLookBackgroundOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviUserListLookBackgroundOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviUserListLookBackgroundOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviUserListLookBackgroundOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviUserListLookBackgroundOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListLookBackgroundOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListLookBackgroundOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUserListLookBackgroundOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUserListLookBackgroundOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviUserListLookBackgroundOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviUserListLookBackgroundOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUserListLookBackgroundOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUserListLookBackgroundOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviUserListLookBackgroundOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviUserListLookBackgroundOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviUserListLookForegroundOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviUserListLookForegroundOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviUserListLookForegroundOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviUserListLookForegroundOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviUserListLookForegroundOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListLookForegroundOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListLookForegroundOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUserListLookForegroundOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUserListLookForegroundOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviUserListLookForegroundOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviUserListLookForegroundOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUserListLookForegroundOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUserListLookForegroundOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviUserListLookForegroundOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviUserListLookForegroundOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviUserListGridOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviUserListGridOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviUserListGridOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviUserListGridOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviUserListGridOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListGridOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListGridOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUserListGridOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUserListGridOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviUserListGridOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviUserListGridOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUserListGridOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUserListGridOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviUserListGridOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviUserListGridOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviUserListFeaturesOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviUserListFeaturesOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviUserListFeaturesOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviUserListFeaturesOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviUserListFeaturesOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListFeaturesOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListFeaturesOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUserListFeaturesOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUserListFeaturesOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviUserListFeaturesOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviUserListFeaturesOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUserListFeaturesOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUserListFeaturesOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviUserListFeaturesOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviUserListFeaturesOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
+	e0->pChildList = 0;
 
 	e0 = new OptionsWidgetInstanceEntry;
-	e0->createProc = &classKviWindowListOptionsWidget_createInstanceProc;
+	e0->createProc = &classOptionsWidget_ircAdvanced_createInstanceProc;
 	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviWindowListOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviWindowListOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviWindowListOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviWindowListOptionsWidget;
+	e0->szClassName = g_szClassName_OptionsWidget_ircAdvanced;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircAdvanced;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircAdvanced
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircAdvanced;
 	#else
 	e0->iPriority = 0;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviWindowListOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviWindowListOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircAdvanced
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircAdvanced;
 	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviWindowListOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviWindowListOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircAdvanced
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircAdvanced;
 	#else
 	e0->szGroup = "general";
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviWindowListOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviWindowListOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircAdvanced
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircAdvanced;
 	#else
 	e0->bIsContainer = false;
 	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviWindowListOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviWindowListOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircAdvanced
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircAdvanced;
 	#else
 	e0->bIsNotContained = false;
 	#endif
-	e0->szNameNoLocale = g_szName_KviWindowListOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviWindowListOptionsWidget,"options");
+	e0->szNameNoLocale = g_szName_OptionsWidget_ircAdvanced;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_ircAdvanced,"options");
 	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
 
-	e0->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-	e0->pChildList->setAutoDelete(true);
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_ircOutput_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_ircOutput;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircOutput;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircOutput
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircOutput;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircOutput
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircOutput;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircOutput
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircOutput;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircOutput
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircOutput;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircOutput
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircOutput;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_ircOutput;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_ircOutput,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
 
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviTreeWindowListOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviTreeWindowListOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTreeWindowListOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviTreeWindowListOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeWindowListOptionsWidget,"options");
-		e0->pChildList->append(e1);
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_ircViewTheme_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_ircViewTheme;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewTheme;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewTheme
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewTheme;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewTheme
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewTheme;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircViewTheme
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircViewTheme;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircViewTheme
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircViewTheme;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircViewTheme
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircViewTheme;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_ircViewTheme;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_ircViewTheme,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
 
-		e1->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
-		e1->pChildList->setAutoDelete(true);
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_ircViewLook_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_ircViewLook;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewLook;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewLook
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewLook;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewLook
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewLook;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircViewLook
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircViewLook;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircViewLook
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircViewLook;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircViewLook
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircViewLook;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_ircViewLook;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_ircViewLook,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
 
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviTreeWindowListForegroundOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviTreeWindowListForegroundOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTreeWindowListForegroundOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListForegroundOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListForegroundOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListForegroundOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListForegroundOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListForegroundOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListForegroundOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListForegroundOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListForegroundOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListForegroundOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListForegroundOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviTreeWindowListForegroundOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeWindowListForegroundOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_ircViewFeatures_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_ircViewFeatures;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewFeatures;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewFeatures
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewFeatures;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewFeatures
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewFeatures;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircViewFeatures
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircViewFeatures;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircViewFeatures
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircViewFeatures;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircViewFeatures
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircViewFeatures;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_ircViewFeatures;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_ircViewFeatures,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
 
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviTreeWindowListBackgroundOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviTreeWindowListBackgroundOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTreeWindowListBackgroundOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListBackgroundOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListBackgroundOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListBackgroundOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListBackgroundOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListBackgroundOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListBackgroundOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListBackgroundOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListBackgroundOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListBackgroundOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListBackgroundOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviTreeWindowListBackgroundOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeWindowListBackgroundOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_ircViewMarker_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_ircViewMarker;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewMarker;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewMarker
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircViewMarker;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewMarker
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewMarker;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircViewMarker
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_ircViewMarker;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircViewMarker
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_ircViewMarker;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircViewMarker
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_ircViewMarker;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_ircViewMarker;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_ircViewMarker,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
 
-			e2 = new OptionsWidgetInstanceEntry;
-			e2->createProc = &classKviTreeWindowListFeaturesOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviTreeWindowListFeaturesOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTreeWindowListFeaturesOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListFeaturesOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListFeaturesOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListFeaturesOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListFeaturesOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListFeaturesOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListFeaturesOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListFeaturesOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListFeaturesOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListFeaturesOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListFeaturesOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviTreeWindowListFeaturesOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeWindowListFeaturesOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_lag_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_lag;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_lag;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_lag
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_lag;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_lag
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_lag;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_lag
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_lag;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_lag
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_lag;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_lag
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_lag;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_lag;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_lag,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
 
-		e1 = new OptionsWidgetInstanceEntry;
-		e1->createProc = &classKviClassicWindowListOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviClassicWindowListOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviClassicWindowListOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviClassicWindowListOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviClassicWindowListOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviClassicWindowListOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviClassicWindowListOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviClassicWindowListOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviClassicWindowListOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviClassicWindowListOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviClassicWindowListOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviClassicWindowListOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviClassicWindowListOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviClassicWindowListOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviClassicWindowListOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_logging_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_logging;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_logging;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_logging
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_logging;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_logging
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_logging;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_logging
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_logging;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_logging
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_logging;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_logging
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_logging;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_logging;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_logging,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_mediaTypes_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_mediaTypes;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_mediaTypes;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_mediaTypes
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_mediaTypes;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_mediaTypes
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_mediaTypes;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_mediaTypes
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_mediaTypes;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_mediaTypes
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_mediaTypes;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_mediaTypes
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_mediaTypes;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_mediaTypes;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_mediaTypes,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_message_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_message;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_message;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_message
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_message;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_message
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_message;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_message
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_message;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_message
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_message;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_message
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_message;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_message;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_message,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_privmsg_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_privmsg;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_privmsg;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_privmsg
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_privmsg;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_privmsg
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_privmsg;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_privmsg
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_privmsg;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_privmsg
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_privmsg;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_privmsg
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_privmsg;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_privmsg;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_privmsg,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_timestamp_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_timestamp;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_timestamp;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_timestamp
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_timestamp;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_timestamp
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_timestamp;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_timestamp
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_timestamp;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_timestamp
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_timestamp;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_timestamp
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_timestamp;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_timestamp;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_timestamp,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_messageColors_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_messageColors;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_messageColors;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_messageColors
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_messageColors;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_messageColors
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_messageColors;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_messageColors
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_messageColors;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_messageColors
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_messageColors;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_messageColors
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_messageColors;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_messageColors;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_messageColors,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_standardColors_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_standardColors;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_standardColors;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_standardColors
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_standardColors;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_standardColors
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_standardColors;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_standardColors
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_standardColors;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_standardColors
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_standardColors;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_standardColors
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_standardColors;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_standardColors;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_standardColors,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_nickServ_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_nickServ;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_nickServ;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_nickServ
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_nickServ;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_nickServ
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_nickServ;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_nickServ
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_nickServ;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_nickServ
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_nickServ;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_nickServ
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_nickServ;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_nickServ;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_nickServ,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_notifierLook_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_notifierLook;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notifierLook;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_notifierLook
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_notifierLook;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_notifierLook
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_notifierLook;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_notifierLook
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_notifierLook;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_notifierLook
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_notifierLook;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_notifierLook
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_notifierLook;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_notifierLook;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_notifierLook,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_notifier_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_notifier;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notifier;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_notifier
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_notifier;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_notifier
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_notifier;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_notifier
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_notifier;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_notifier
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_notifier;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_notifier
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_notifier;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_notifier;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_notifier,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_notify_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_notify;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notify;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_notify
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_notify;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_notify
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_notify;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_notify
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_notify;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_notify
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_notify;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_notify
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_notify;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_notify;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_notify,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_protection_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_protection;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_protection;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_protection
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_protection;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_protection
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_protection;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_protection
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_protection;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_protection
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_protection;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_protection
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_protection;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_protection;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_protection,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_proxy_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_proxy;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_proxy;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_proxy
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_proxy;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_proxy
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_proxy;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_proxy
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_proxy;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_proxy
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_proxy;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_proxy
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_proxy;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_proxy;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_proxy,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_query_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_query;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_query;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_query
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_query;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_query
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_query;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_query
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_query;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_query
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_query;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_query
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_query;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_query;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_query,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_servers_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_servers;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_servers;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_servers
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_servers;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_servers
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_servers;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_servers
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_servers;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_servers
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_servers;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_servers
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_servers;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_servers;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_servers,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_sound_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_sound;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_sound;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_sound
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_sound;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_sound
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_sound;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_sound
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_sound;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_sound
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_sound;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_sound
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_sound;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_sound;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_sound,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_soundGeneral_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_soundGeneral;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_soundGeneral;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_soundGeneral
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_soundGeneral;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_soundGeneral
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_soundGeneral;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_soundGeneral
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_soundGeneral;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_soundGeneral
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_soundGeneral;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_soundGeneral
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_soundGeneral;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_soundGeneral;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_soundGeneral,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_sounds_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_sounds;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_sounds;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_sounds
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_sounds;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_sounds
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_sounds;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_sounds
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_sounds;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_sounds
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_sounds;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_sounds
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_sounds;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_sounds;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_sounds,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_textEncoding_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_textEncoding;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_textEncoding;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_textEncoding
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_textEncoding;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_textEncoding
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_textEncoding;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_textEncoding
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_textEncoding;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_textEncoding
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_textEncoding;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_textEncoding
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_textEncoding;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_textEncoding;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_textEncoding,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_textIcons_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_textIcons;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_textIcons;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_textIcons
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_textIcons;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_textIcons
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_textIcons;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_textIcons
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_textIcons;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_textIcons
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_textIcons;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_textIcons
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_textIcons;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_textIcons;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_textIcons,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_theme_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_theme;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_theme;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_theme
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_theme;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_theme
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_theme;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_theme
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_theme;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_theme
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_theme;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_theme
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_theme;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_theme;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_theme,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_themeTransparency_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_themeTransparency;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeTransparency;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeTransparency
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeTransparency;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeTransparency
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeTransparency;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeTransparency
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeTransparency;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_themeTransparency
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_themeTransparency;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_themeTransparency
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_themeTransparency;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_themeTransparency;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_themeTransparency,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_themeMdiArea_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_themeMdiArea;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeMdiArea;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeMdiArea
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeMdiArea;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeMdiArea
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeMdiArea;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeMdiArea
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeMdiArea;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_themeMdiArea
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_themeMdiArea;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_themeMdiArea
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_themeMdiArea;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_themeMdiArea;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_themeMdiArea,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_themeToolBarApplets_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_themeToolBarApplets;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeToolBarApplets;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeToolBarApplets
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_themeToolBarApplets;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeToolBarApplets
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeToolBarApplets;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeToolBarApplets
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeToolBarApplets;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_themeToolBarApplets
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_themeToolBarApplets;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_themeToolBarApplets
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_themeToolBarApplets;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_themeToolBarApplets;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_themeToolBarApplets,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_tools_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_tools;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_tools;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_tools
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_tools;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_tools
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_tools;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_tools
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_tools;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_tools
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_tools;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_tools
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_tools;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_tools;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_tools,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_topicLabel_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_topicLabel;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_topicLabel;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_topicLabel
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_topicLabel;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_topicLabel
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_topicLabel;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_topicLabel
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_topicLabel;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_topicLabel
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_topicLabel;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_topicLabel
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_topicLabel;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_topicLabel;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_topicLabel,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_tray_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_tray;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_tray;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_tray
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_tray;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_tray
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_tray;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_tray
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_tray;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_tray
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_tray;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_tray
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_tray;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_tray;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_tray,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_uparser_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_uparser;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_uparser;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_uparser
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_uparser;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_uparser
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_uparser;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_uparser
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_uparser;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_uparser
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_uparser;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_uparser
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_uparser;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_uparser;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_uparser,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_urlHandlers_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_urlHandlers;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_urlHandlers;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_urlHandlers
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_urlHandlers;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_urlHandlers
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_urlHandlers;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_urlHandlers
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_urlHandlers;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_urlHandlers
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_urlHandlers;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_urlHandlers
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_urlHandlers;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_urlHandlers;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_urlHandlers,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_userList_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_userList;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userList;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userList
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userList;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userList
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userList;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userList
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userList;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_userList
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_userList;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_userList
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_userList;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_userList;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_userList,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_userListBackground_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_userListBackground;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListBackground;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListBackground
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListBackground;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userListBackground
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userListBackground;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userListBackground
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userListBackground;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_userListBackground
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_userListBackground;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_userListBackground
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_userListBackground;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_userListBackground;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_userListBackground,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_userListForeground_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_userListForeground;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListForeground;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListForeground
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListForeground;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userListForeground
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userListForeground;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userListForeground
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userListForeground;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_userListForeground
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_userListForeground;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_userListForeground
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_userListForeground;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_userListForeground;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_userListForeground,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_userListGrid_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_userListGrid;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListGrid;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListGrid
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListGrid;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userListGrid
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userListGrid;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userListGrid
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userListGrid;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_userListGrid
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_userListGrid;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_userListGrid
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_userListGrid;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_userListGrid;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_userListGrid,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_userListFeatures_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_userListFeatures;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_userListFeatures;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListFeatures
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListFeatures;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userListFeatures
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_userListFeatures;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userListFeatures
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userListFeatures;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_userListFeatures
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_userListFeatures;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_userListFeatures
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_userListFeatures;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_userListFeatures;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_userListFeatures,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_windowList_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_windowList;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowList;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowList
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowList;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowList
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowList;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowList
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowList;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowList
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowList;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_windowList
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_windowList;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_windowList;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_windowList,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_windowListTree_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_windowListTree;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTree;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTree
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTree;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTree
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTree;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListTree
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListTree;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowListTree
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowListTree;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_windowListTree
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_windowListTree;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_windowListTree;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_windowListTree,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_windowListTreeForeground_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_windowListTreeForeground;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeForeground;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTreeForeground
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTreeForeground;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeForeground
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeForeground;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListTreeForeground
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListTreeForeground;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowListTreeForeground
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowListTreeForeground;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_windowListTreeForeground
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_windowListTreeForeground;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_windowListTreeForeground;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_windowListTreeForeground,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_windowListTreeBackground_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_windowListTreeBackground;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeBackground;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTreeBackground
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTreeBackground;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeBackground
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeBackground;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListTreeBackground
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListTreeBackground;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowListTreeBackground
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowListTreeBackground;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_windowListTreeBackground
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_windowListTreeBackground;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_windowListTreeBackground;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_windowListTreeBackground,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_windowListTreeFeatures_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_windowListTreeFeatures;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeFeatures;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTreeFeatures
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListTreeFeatures;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeFeatures
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListTreeFeatures;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListTreeFeatures
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListTreeFeatures;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowListTreeFeatures
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowListTreeFeatures;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_windowListTreeFeatures
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_windowListTreeFeatures;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_windowListTreeFeatures;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_windowListTreeFeatures,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
+
+	e0 = new OptionsWidgetInstanceEntry;
+	e0->createProc = &classOptionsWidget_windowListClassic_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_OptionsWidget_windowListClassic;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListClassic;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListClassic
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_windowListClassic;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListClassic
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_windowListClassic;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListClassic
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_windowListClassic;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowListClassic
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_windowListClassic;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_windowListClassic
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_windowListClassic;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_OptionsWidget_windowListClassic;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_windowListClassic,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
 
 }
 

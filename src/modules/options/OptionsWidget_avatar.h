@@ -28,11 +28,11 @@
 #include "KviOptionsWidget.h"
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviAvatarAdvancedOptionsWidget KVI_SMALLICON_AVATAR
-#define KVI_OPTIONS_WIDGET_NAME_KviAvatarAdvancedOptionsWidget __tr2qs_no_lookup("Avatars")
-#define KVI_OPTIONS_WIDGET_PARENT_KviAvatarAdvancedOptionsWidget OptionsWidget_tools
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviAvatarAdvancedOptionsWidget 9
-#define KVI_OPTIONS_WIDGET_MINIMAL_USER_EXPERIENCE_LEVEL_KviAvatarAdvancedOptionsWidget 2
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_avatar KVI_SMALLICON_AVATAR
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatar __tr2qs_no_lookup("Avatars")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_avatar OptionsWidget_tools
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_avatar 9
+#define KVI_OPTIONS_WIDGET_MINIMAL_USER_EXPERIENCE_LEVEL_OptionsWidget_avatar 2
 
 class OptionsWidget_avatar : public KviOptionsWidget
 {

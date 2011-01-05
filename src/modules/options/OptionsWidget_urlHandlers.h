@@ -28,11 +28,11 @@
 
 class QRadioButton;
 
-#define KVI_OPTIONS_WIDGET_ICON_KviUrlHandlersOptionsWidget KVI_SMALLICON_WORLD
-#define KVI_OPTIONS_WIDGET_NAME_KviUrlHandlersOptionsWidget __tr2qs_no_lookup("URL handlers")
-#define KVI_OPTIONS_WIDGET_PARENT_KviUrlHandlersOptionsWidget OptionsWidget_general
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviUrlHandlersOptionsWidget 70000
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviUrlHandlersOptionsWidget __tr2qs_no_lookup("url,programs")
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_urlHandlers KVI_SMALLICON_WORLD
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_urlHandlers __tr2qs_no_lookup("URL handlers")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_urlHandlers OptionsWidget_general
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_urlHandlers 70000
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_urlHandlers __tr2qs_no_lookup("url,programs")
 
 class OptionsWidget_urlHandlers : public KviOptionsWidget
 {

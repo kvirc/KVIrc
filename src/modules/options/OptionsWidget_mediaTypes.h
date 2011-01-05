@@ -44,12 +44,12 @@ public:
 	const KviMediaType * mydata(){ return &m_data; };
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviMediaTypesOptionsWidget KVI_SMALLICON_FILE
-#define KVI_OPTIONS_WIDGET_NAME_KviMediaTypesOptionsWidget __tr2qs_no_lookup("Media Types")
-#define KVI_OPTIONS_WIDGET_PARENT_KviMediaTypesOptionsWidget OptionsWidget_general
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviMediaTypesOptionsWidget __tr2qs_no_lookup("file,audio,video,programs")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviMediaTypesOptionsWidget 60000
-//#define KVI_OPTIONS_WIDGET_HIDDEN_KviMediaTypesOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_mediaTypes KVI_SMALLICON_FILE
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_mediaTypes __tr2qs_no_lookup("Media Types")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_mediaTypes OptionsWidget_general
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_mediaTypes __tr2qs_no_lookup("file,audio,video,programs")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_mediaTypes 60000
+//#define KVI_OPTIONS_WIDGET_HIDDEN_OptionsWidget_mediaTypes true
 
 class OptionsWidget_mediaTypes : public KviOptionsWidget
 {

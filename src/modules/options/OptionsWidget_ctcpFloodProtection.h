@@ -26,9 +26,9 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_KviCtcpFloodProtectionOptionsWidget KVI_SMALLICON_CTCPREQUESTFLOOD
-#define KVI_OPTIONS_WIDGET_NAME_KviCtcpFloodProtectionOptionsWidget __tr2qs_no_lookup("Flood Protection")
-#define KVI_OPTIONS_WIDGET_PARENT_KviCtcpFloodProtectionOptionsWidget OptionsWidget_protection
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ctcpFloodProtection KVI_SMALLICON_CTCPREQUESTFLOOD
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ctcpFloodProtection __tr2qs_no_lookup("Flood Protection")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_ctcpFloodProtection OptionsWidget_protection
 
 class OptionsWidget_ctcpFloodProtection : public KviOptionsWidget
 {

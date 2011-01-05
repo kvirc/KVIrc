@@ -29,10 +29,10 @@
 #include "KviSelectors.h"
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviThemeGeneralOptionsWidget KVI_SMALLICON_GUI
-#define KVI_OPTIONS_WIDGET_NAME_KviThemeGeneralOptionsWidget __tr2qs_no_lookup("General")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeGeneralOptionsWidget __tr2qs_no_lookup("theme")
-#define KVI_OPTIONS_WIDGET_GROUP_KviThemeGeneralOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_theme KVI_SMALLICON_GUI
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_theme __tr2qs_no_lookup("General")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_theme __tr2qs_no_lookup("theme")
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_theme "theme"
 
 
 class OptionsWidget_theme : public KviOptionsWidget
@@ -44,10 +44,10 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviThemeTransparencyOptionsWidget KVI_SMALLICON_TRANSPARENT
-#define KVI_OPTIONS_WIDGET_NAME_KviThemeTransparencyOptionsWidget __tr2qs_no_lookup("Transparency")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeTransparencyOptionsWidget __tr2qs_no_lookup("theme,background")
-#define KVI_OPTIONS_WIDGET_GROUP_KviThemeTransparencyOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeTransparency KVI_SMALLICON_TRANSPARENT
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeTransparency __tr2qs_no_lookup("Transparency")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeTransparency __tr2qs_no_lookup("theme,background")
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeTransparency "theme"
 
 
 class OptionsWidget_themeTransparency : public KviOptionsWidget
@@ -70,10 +70,10 @@ protected slots:
 	void enableGlobalBackgroundPixmapSelector(bool);
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviThemeMdiAreaOptionsWidget KVI_SMALLICON_APPLET
-#define KVI_OPTIONS_WIDGET_NAME_KviThemeMdiAreaOptionsWidget __tr2qs_no_lookup("Workspace")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiAreaOptionsWidget __tr2qs_no_lookup("theme,mdi")
-#define KVI_OPTIONS_WIDGET_GROUP_KviThemeMdiAreaOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeMdiArea KVI_SMALLICON_APPLET
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeMdiArea __tr2qs_no_lookup("Workspace")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeMdiArea __tr2qs_no_lookup("theme,mdi")
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeMdiArea "theme"
 
 class OptionsWidget_themeMdiArea : public KviOptionsWidget
 {
@@ -83,10 +83,10 @@ public:
 	~OptionsWidget_themeMdiArea();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviThemeToolBarAppletsOptionsWidget KVI_SMALLICON_APPLET
-#define KVI_OPTIONS_WIDGET_NAME_KviThemeToolBarAppletsOptionsWidget __tr2qs_no_lookup("ToolBar Applets")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeToolBarAppletsOptionsWidget __tr2qs_no_lookup("theme,toolbar")
-#define KVI_OPTIONS_WIDGET_GROUP_KviThemeToolBarAppletsOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeToolBarApplets KVI_SMALLICON_APPLET
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeToolBarApplets __tr2qs_no_lookup("ToolBar Applets")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeToolBarApplets __tr2qs_no_lookup("theme,toolbar")
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeToolBarApplets "theme"
 
 
 class OptionsWidget_themeToolBarApplets : public KviOptionsWidget

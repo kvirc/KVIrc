@@ -26,9 +26,9 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_KviAwayOptionsWidget KVI_SMALLICON_AWAY
-#define KVI_OPTIONS_WIDGET_NAME_KviAwayOptionsWidget __tr2qs_no_lookup("Away")
-#define KVI_OPTIONS_WIDGET_PARENT_KviAwayOptionsWidget OptionsWidget_tools
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_away KVI_SMALLICON_AWAY
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_away __tr2qs_no_lookup("Away")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_away OptionsWidget_tools
 
 class OptionsWidget_away : public KviOptionsWidget
 {

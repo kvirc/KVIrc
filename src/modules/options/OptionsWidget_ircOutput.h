@@ -29,11 +29,11 @@
 
 class QComboBox;
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIrcOutputOptionsWidget KVI_SMALLICON_RAW
-#define KVI_OPTIONS_WIDGET_NAME_KviIrcOutputOptionsWidget __tr2qs_no_lookup("Verbosity And Output")
-#define KVI_OPTIONS_WIDGET_PARENT_KviIrcOutputOptionsWidget OptionsWidget_irc
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcOutputOptionsWidget __tr2qs_no_lookup("debug")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviIrcOutputOptionsWidget 75000
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircOutput KVI_SMALLICON_RAW
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircOutput __tr2qs_no_lookup("Verbosity And Output")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_ircOutput OptionsWidget_irc
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircOutput __tr2qs_no_lookup("debug")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircOutput 75000
 
 class OptionsWidget_ircOutput : public KviOptionsWidget
 {

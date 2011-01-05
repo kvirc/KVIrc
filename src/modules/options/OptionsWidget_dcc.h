@@ -26,10 +26,10 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_KviDccOptionsWidget KVI_SMALLICON_DCCERROR
-#define KVI_OPTIONS_WIDGET_NAME_KviDccOptionsWidget __tr2qs_no_lookup("DCC")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviDccOptionsWidget 70000
-#define KVI_OPTIONS_WIDGET_CONTAINER_KviDccOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dcc KVI_SMALLICON_DCCERROR
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dcc __tr2qs_no_lookup("DCC")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dcc 70000
+#define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dcc true
 
 class OptionsWidget_dcc : public KviOptionsWidget
 {
@@ -41,10 +41,10 @@ public:
 
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviDccGeneralOptionsWidget KVI_SMALLICON_DCCERROR
-#define KVI_OPTIONS_WIDGET_NAME_KviDccGeneralOptionsWidget __tr2qs_no_lookup("General")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviDccGeneralOptionsWidget 70000
-#define KVI_OPTIONS_WIDGET_PARENT_KviDccGeneralOptionsWidget OptionsWidget_dcc
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccGeneral KVI_SMALLICON_DCCERROR
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccGeneral __tr2qs_no_lookup("General")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccGeneral 70000
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccGeneral OptionsWidget_dcc
 
 class OptionsWidget_dccGeneral : public KviOptionsWidget
 {
@@ -54,10 +54,10 @@ public:
 	~OptionsWidget_dccGeneral();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviDccAdvancedOptionsWidget KVI_SMALLICON_DCCERROR
-#define KVI_OPTIONS_WIDGET_NAME_KviDccAdvancedOptionsWidget __tr2qs_no_lookup("Advanced")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviDccAdvancedOptionsWidget 70000
-#define KVI_OPTIONS_WIDGET_PARENT_KviDccAdvancedOptionsWidget OptionsWidget_dcc
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccAdvanced KVI_SMALLICON_DCCERROR
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccAdvanced __tr2qs_no_lookup("Advanced")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_dccAdvanced 70000
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccAdvanced OptionsWidget_dcc
 
 class OptionsWidget_dccAdvanced : public KviOptionsWidget
 {
@@ -70,10 +70,10 @@ public:
 
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviDccSendOptionsWidget KVI_SMALLICON_DCCMSG
-#define KVI_OPTIONS_WIDGET_NAME_KviDccSendOptionsWidget __tr2qs_no_lookup("File Transfer")
-#define KVI_OPTIONS_WIDGET_PARENT_KviDccSendOptionsWidget OptionsWidget_dcc
-#define KVI_OPTIONS_WIDGET_CONTAINER_KviDccSendOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSend KVI_SMALLICON_DCCMSG
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSend __tr2qs_no_lookup("File Transfer")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccSend OptionsWidget_dcc
+#define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_dccSend true
 
 
 class OptionsWidget_dccSend : public KviOptionsWidget
@@ -84,9 +84,9 @@ public:
 	~OptionsWidget_dccSend();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviDccSendGeneralOptionsWidget KVI_SMALLICON_DCCMSG
-#define KVI_OPTIONS_WIDGET_NAME_KviDccSendGeneralOptionsWidget __tr2qs_no_lookup("General")
-#define KVI_OPTIONS_WIDGET_PARENT_KviDccSendGeneralOptionsWidget OptionsWidget_dccSend
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendGeneral KVI_SMALLICON_DCCMSG
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendGeneral __tr2qs_no_lookup("General")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccSendGeneral OptionsWidget_dccSend
 
 
 class OptionsWidget_dccSendGeneral : public KviOptionsWidget
@@ -98,9 +98,9 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviDccSendAdvancedOptionsWidget KVI_SMALLICON_DCCMSG
-#define KVI_OPTIONS_WIDGET_NAME_KviDccSendAdvancedOptionsWidget __tr2qs_no_lookup("Advanced")
-#define KVI_OPTIONS_WIDGET_PARENT_KviDccSendAdvancedOptionsWidget OptionsWidget_dccSend
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccSendAdvanced KVI_SMALLICON_DCCMSG
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccSendAdvanced __tr2qs_no_lookup("Advanced")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccSendAdvanced OptionsWidget_dccSend
 
 class OptionsWidget_dccSendAdvanced : public KviOptionsWidget
 {
@@ -111,10 +111,10 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviDccChatOptionsWidget KVI_SMALLICON_DCCREQUEST
-#define KVI_OPTIONS_WIDGET_NAME_KviDccChatOptionsWidget __tr2qs_no_lookup("Chat")
-#define KVI_OPTIONS_WIDGET_PARENT_KviDccChatOptionsWidget OptionsWidget_dcc
-#define KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccChatOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccChat KVI_SMALLICON_DCCREQUEST
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccChat __tr2qs_no_lookup("Chat")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccChat OptionsWidget_dcc
+#define KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccChat true
 
 class OptionsWidget_dccChat : public KviOptionsWidget
 {
@@ -124,10 +124,10 @@ public:
 	~OptionsWidget_dccChat();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviDccVoiceOptionsWidget KVI_SMALLICON_DCCVOICE
-#define KVI_OPTIONS_WIDGET_NAME_KviDccVoiceOptionsWidget __tr2qs_no_lookup("Voice")
-#define KVI_OPTIONS_WIDGET_PARENT_KviDccVoiceOptionsWidget OptionsWidget_dcc
-#define KVI_OPTIONS_WIDGET_NOTCONTAINED_KviDccVoiceOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_dccVoice KVI_SMALLICON_DCCVOICE
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_dccVoice __tr2qs_no_lookup("Voice")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_dccVoice OptionsWidget_dcc
+#define KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_dccVoice true
 
 class OptionsWidget_dccVoice : public KviOptionsWidget
 {

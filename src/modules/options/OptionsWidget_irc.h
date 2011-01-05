@@ -26,10 +26,10 @@
 
 #include "KviOptionsWidget.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIrcOptionsWidget KVI_SMALLICON_IRC
-#define KVI_OPTIONS_WIDGET_NAME_KviIrcOptionsWidget __tr2qs_no_lookup("IRC")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviIrcOptionsWidget 80000
-#define KVI_OPTIONS_WIDGET_CONTAINER_KviIrcOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_irc KVI_SMALLICON_IRC
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_irc __tr2qs_no_lookup("IRC")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_irc 80000
+#define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_irc true
 
 class OptionsWidget_irc : public KviOptionsWidget
 {
@@ -39,10 +39,10 @@ public:
 	~OptionsWidget_irc();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIrcGeneralOptionsWidget KVI_SMALLICON_IRC
-#define KVI_OPTIONS_WIDGET_NAME_KviIrcGeneralOptionsWidget __tr2qs_no_lookup("General")
-#define KVI_OPTIONS_WIDGET_PARENT_KviIrcGeneralOptionsWidget OptionsWidget_irc
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviIrcGeneralOptionsWidget 80000
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircGeneral KVI_SMALLICON_IRC
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircGeneral __tr2qs_no_lookup("General")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_ircGeneral OptionsWidget_irc
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircGeneral 80000
 
 class OptionsWidget_ircGeneral : public KviOptionsWidget
 {
@@ -53,10 +53,10 @@ public:
 };
 
 
-#define KVI_OPTIONS_WIDGET_ICON_KviIrcAdvancedOptionsWidget KVI_SMALLICON_IRC
-#define KVI_OPTIONS_WIDGET_NAME_KviIrcAdvancedOptionsWidget __tr2qs_no_lookup("Advanced")
-#define KVI_OPTIONS_WIDGET_PARENT_KviIrcAdvancedOptionsWidget OptionsWidget_irc
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviIrcAdvancedOptionsWidget 50000
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircAdvanced KVI_SMALLICON_IRC
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircAdvanced __tr2qs_no_lookup("Advanced")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_ircAdvanced OptionsWidget_irc
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_ircAdvanced 50000
 
 class OptionsWidget_ircAdvanced : public KviOptionsWidget
 {

@@ -29,10 +29,10 @@
 
 #include <QComboBox>
 
-#define KVI_OPTIONS_WIDGET_ICON_KviNotifierLookOptionsWidget KVI_SMALLICON_ALERT
-#define KVI_OPTIONS_WIDGET_NAME_KviNotifierLookOptionsWidget __tr2qs_no_lookup("Notifier")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierLookOptionsWidget __tr2qs_no_lookup("theme,colors,text")
-#define KVI_OPTIONS_WIDGET_GROUP_KviNotifierLookOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notifierLook KVI_SMALLICON_ALERT
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_notifierLook __tr2qs_no_lookup("Notifier")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_notifierLook __tr2qs_no_lookup("theme,colors,text")
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_notifierLook "theme"
 
 class OptionsWidget_notifierLook : public KviOptionsWidget
 {
@@ -47,10 +47,10 @@ public:
 	virtual void commit();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviNotifierOptionsWidget KVI_SMALLICON_ALERT
-#define KVI_OPTIONS_WIDGET_NAME_KviNotifierOptionsWidget __tr2qs_no_lookup("Notifier")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierOptionsWidget __tr2qs_no_lookup("popup")
-#define KVI_OPTIONS_WIDGET_PARENT_KviNotifierOptionsWidget OptionsWidget_interfaceFeatures
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notifier KVI_SMALLICON_ALERT
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_notifier __tr2qs_no_lookup("Notifier")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_notifier __tr2qs_no_lookup("popup")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_notifier OptionsWidget_interfaceFeatures
 
 class OptionsWidget_notifier : public KviOptionsWidget
 {

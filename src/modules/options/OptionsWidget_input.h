@@ -29,10 +29,10 @@
 
 #include <QComboBox>
 
-#define KVI_OPTIONS_WIDGET_ICON_KviInputLookOptionsWidget KVI_SMALLICON_INPUT
-#define KVI_OPTIONS_WIDGET_NAME_KviInputLookOptionsWidget __tr2qs_no_lookup("Input")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviInputLookOptionsWidget __tr2qs_no_lookup("theme,colors,text")
-#define KVI_OPTIONS_WIDGET_GROUP_KviInputLookOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_inputLook KVI_SMALLICON_INPUT
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_inputLook __tr2qs_no_lookup("Input")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_inputLook __tr2qs_no_lookup("theme,colors,text")
+#define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_inputLook "theme"
 
 class OptionsWidget_inputLook : public KviOptionsWidget
 {
@@ -47,9 +47,9 @@ public:
 	virtual void commit();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviInputFeaturesOptionsWidget KVI_SMALLICON_INPUT
-#define KVI_OPTIONS_WIDGET_NAME_KviInputFeaturesOptionsWidget __tr2qs_no_lookup("Input")
-#define KVI_OPTIONS_WIDGET_PARENT_KviInputFeaturesOptionsWidget OptionsWidget_interfaceFeatures
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_inputFeatures KVI_SMALLICON_INPUT
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_inputFeatures __tr2qs_no_lookup("Input")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_inputFeatures OptionsWidget_interfaceFeatures
 
 class OptionsWidget_inputFeatures : public KviOptionsWidget
 {

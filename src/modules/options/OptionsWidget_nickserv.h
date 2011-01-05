@@ -37,12 +37,12 @@ class QPushButton;
 class KviNickServRule;
 class QTreeWidget;
 
-#define KVI_OPTIONS_WIDGET_ICON_KviNickServOptionsWidget KVI_SMALLICON_NICKSERV
-#define KVI_OPTIONS_WIDGET_NAME_KviNickServOptionsWidget __tr2qs_no_lookup("NickServ")
-#define KVI_OPTIONS_WIDGET_PARENT_KviNickServOptionsWidget OptionsWidget_tools
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviNickServOptionsWidget __tr2qs_no_lookup("authentication,identify")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviNickServOptionsWidget 10000
-//#define KVI_OPTIONS_WIDGET_HIDDEN_KviNickServOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_nickServ KVI_SMALLICON_NICKSERV
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_nickServ __tr2qs_no_lookup("NickServ")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_nickServ OptionsWidget_tools
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_nickServ __tr2qs_no_lookup("authentication,identify")
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_nickServ 10000
+//#define KVI_OPTIONS_WIDGET_HIDDEN_OptionsWidget_nickServ true
 
 class NickServRuleEditor : public QDialog
 {

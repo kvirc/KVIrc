@@ -28,13 +28,13 @@
 #include "KviOptionsWidget.h"
 #include "KviSelectors.h"
 
-#define KVI_OPTIONS_WIDGET_ICON_KviProtectionOptionsWidget KVI_SMALLICON_SPY
-#define KVI_OPTIONS_WIDGET_NAME_KviProtectionOptionsWidget __tr2qs_no_lookup("Protection")
-#define KVI_OPTIONS_WIDGET_PARENT_KviProtectionOptionsWidget OptionsWidget_irc
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviProtectionOptionsWidget 60000
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviProtectionOptionsWidget __tr2qs_no_lookup("ctcp,flood")
-#define KVI_OPTIONS_WIDGET_CONTAINER_KviProtectionOptionsWidget true
-#define KVI_OPTIONS_WIDGET_NOTCONTAINED_KviProtectionOptionsWidget true
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_protection KVI_SMALLICON_SPY
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_protection __tr2qs_no_lookup("Protection")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_protection OptionsWidget_irc
+#define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_protection 60000
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_protection __tr2qs_no_lookup("ctcp,flood")
+#define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_protection true
+#define KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_protection true
 
 class OptionsWidget_protection : public KviOptionsWidget
 {
