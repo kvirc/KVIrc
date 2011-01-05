@@ -205,7 +205,7 @@ mkdir -p $CLASSDIR
 rm -f $CLASSDIR/*
 
 for aclass in $CLASS_LIST; do
-	PARENT=`grep -h "KVI_OPTIONS_WIDGET_PARENT_$aclass" OptionsWidget_*.h | sed -e 's/#define//g' | sed -e s/KVI_OPTIONS_WIDGET_PARENT_$aclass//g | sed -e 's/[ ]*//g'`
+	PARENT=`grep -h "KVI_OPTIONS_WIDGET_PARENT_$aclass " OptionsWidget_*.h | sed -e 's/#define//g' | sed -e s/KVI_OPTIONS_WIDGET_PARENT_$aclass//g | sed -e 's/[ ]*//g'`
 	if [ -z "$PARENT" ]; then
 		PARENT="NOPARENT"
 	fi
