@@ -58,6 +58,17 @@ class OptionsWidget_notifier : public KviOptionsWidget
 public:
 	OptionsWidget_notifier(QWidget * parent);
 	~OptionsWidget_notifier();
+private:
+#ifdef COMPILE_KDE_SUPPORT
+	KviBoolSelector * m_pKdeNotifier;
+#endif
+#ifdef COMPILE_DBUS_SUPPORT
+	KviBoolSelector * m_pDBusNotifier;
+#endif
+#ifdef COMPILE_KDE_SUPPORT
+private slots:
+	void toggleNotifierProtocol(bool);
+#endif
 };
 
 #endif //!_OPTW_NOTIFIER_H_
