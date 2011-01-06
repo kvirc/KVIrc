@@ -1,0 +1,19 @@
+[Global]
+IconName=kvirc
+Comment=The K-Visual IRC Client
+Name=kvirc
+
+#[Context/group]
+#Name=Group name
+#Comment=The name of the group for contacts
+
+#[Context/folder]
+#Name=Group name
+
+[Event/incomingMessage]
+Name=KVIrc messaging system
+Comment=Someone sent us a message
+Contexts=              # Contexts=contact,group,class
+Sound=                 # Sound=KDE-Im-Message-In.ogg
+Action=Popup|Taskbar   # Action=Sound|Popup|Taskbar
+Persistant=true
