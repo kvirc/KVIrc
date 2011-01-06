@@ -41,7 +41,7 @@
 #include "KviIrcUrl.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionUserInfo.h"
-#include "kvi_coreactionnames.h"
+#include "KviCoreActionNames.h"
 #include "KviIrcConnectionServerInfo.h"
 #include "KviKvsScript.h"
 #include "KviTalPopupMenu.h"

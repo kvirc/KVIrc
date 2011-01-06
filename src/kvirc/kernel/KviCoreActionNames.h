@@ -2,7 +2,7 @@
 #define _KVI_COREACTIONNAMES_H_
 //=============================================================================
 //
-//   File : kvi_coreactionnames.h
+//   File : KviCoreActionNames.h
 //   Creation date : Mon 22 Nov 2004 02:30:47 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution

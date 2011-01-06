@@ -37,7 +37,7 @@
 #include "KviMemory.h"
 #include "KviModuleExtension.h"
 #include "KviActionManager.h"
-#include "kvi_coreactionnames.h"
+#include "KviCoreActionNames.h"
 #include "KviKvsScript.h"
 #include "KviTalPopupMenu.h"
 
