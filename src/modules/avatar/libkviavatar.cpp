@@ -202,7 +202,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 
 	if(szAvatar.isEmpty())
 	{
-		KviAsyncAvatarSelectionDialog * d = new KviAsyncAvatarSelectionDialog(g_pFrame,QString(),c->window()->connection());
+		KviAsyncAvatarSelectionDialog * d = new KviAsyncAvatarSelectionDialog(g_pMainWindow,QString(),c->window()->connection());
 		d->show();
 		return true;
 	}

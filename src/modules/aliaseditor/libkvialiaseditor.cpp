@@ -75,8 +75,8 @@ static bool aliaseditor_module_can_unload(KviModule * )
 
 static bool aliaseditor_module_cleanup(KviModule *)
 {
-	if(g_pAliasEditorWindow && g_pFrame)
-		g_pFrame->closeWindow(g_pAliasEditorWindow);
+	if(g_pAliasEditorWindow && g_pMainWindow)
+		g_pMainWindow->closeWindow(g_pAliasEditorWindow);
 	g_pAliasEditorWindow = 0;
 	return true;
 }

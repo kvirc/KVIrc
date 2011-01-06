@@ -159,7 +159,7 @@ LogViewWindow::LogViewWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lp
 	w->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored);
 	layout->addWidget(w,11,1);
 
-	m_pIrcView = new KviIrcView(m_pSplitter,g_pFrame,this);
+	m_pIrcView = new KviIrcView(m_pSplitter,g_pMainWindow,this);
 	m_pIrcView->setMaxBufferSize(INT_MAX);
 	m_pIrcView->setFocusPolicy(Qt::ClickFocus);
 

@@ -123,7 +123,7 @@ void UrlDialogTreeWidget::paintEvent(QPaintEvent * event)
 		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = ((KviWindow*)parent())->mdiParent() ? viewport()->mapTo(g_pFrame, rect.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : viewport()->mapTo((KviWindow*)parent(), rect.topLeft());
+		QPoint pnt = ((KviWindow*)parent())->mdiParent() ? viewport()->mapTo(g_pMainWindow, rect.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : viewport()->mapTo((KviWindow*)parent(), rect.topLeft());
 		p->drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
@@ -160,7 +160,7 @@ KviUrlAction::~KviUrlAction()
 // ---------------------------- CLASS URLDIALOG ------------------------begin //
 
 UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
-	:KviWindow(KVI_WINDOW_TYPE_TOOL,g_pFrame,"URL List")
+	:KviWindow(KVI_WINDOW_TYPE_TOOL,g_pMainWindow,"URL List")
 {
 	setAutoFillBackground(false);
 	
@@ -323,7 +323,7 @@ void UrlDialog::popup(QTreeWidgetItem *item, const QPoint &point)
 	p.insertSeparator();
 	m_pListPopup = new KviTalPopupMenu(0,"list");
 
-	for(KviWindow *w=g_pFrame->windowList()->first();w;w=g_pFrame->windowList()->next())
+	for(KviWindow *w=g_pMainWindow->windowList()->first();w;w=g_pMainWindow->windowList()->next())
 	{
 		if ((w->type() == KVI_WINDOW_TYPE_CHANNEL) ||
 			(w->type() == KVI_WINDOW_TYPE_QUERY) ||
@@ -355,7 +355,7 @@ void UrlDialog::sayToWin(QAction * act)
 		KviQString::escapeKvs(&szWindow);
 		QString say=QString("PRIVMSG %1 %2").arg(szWindow, szUrl);
 		KviKvsScript::run(say,wnd);
-		g_pFrame->setActiveWindow(wnd);
+		g_pMainWindow->setActiveWindow(wnd);
 	} else {
 		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),__tr2qs("Window not found."),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 	}
@@ -743,7 +743,7 @@ bool urllist()
 	if (tmpitem->dlg) return false;
 
 	tmpitem->dlg = new UrlDialog(g_pList);
-	g_pFrame->addWindow(tmpitem->dlg);
+	g_pMainWindow->addWindow(tmpitem->dlg);
 
 	for(KviUrl *tmp=g_pList->first();tmp;tmp=g_pList->next())
 	{

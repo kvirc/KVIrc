@@ -550,7 +550,7 @@ void KviApplication::setup()
 	//KVI_SPLASH_SET_TEXT(__tr2qs("Have fun! :)"))
 
 	if(KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart))
-		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_SERVERSJOIN_OPEN);
+		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_SERVERSJOIN_OPEN);
 
 	destroySplashScreen();
 
@@ -563,7 +563,7 @@ void KviApplication::setup()
 
 void KviApplication::frameDestructorCallback()
 {
-	// here we should kill anything that depends on g_pFrame, g_pActiveWindow and related being non zero...
+	// here we should kill anything that depends on g_pMainWindow, g_pActiveWindow and related being non zero...
 
 	// kill all the objects, while we have windows...
 	if(KviKvsKernel::instance())
@@ -592,8 +592,8 @@ KviApplication::~KviApplication()
 		delete g_pCtcpPageDialog;
 
 	// if we still have a frame: kill it
-	if(g_pFrame)
-		delete g_pFrame;
+	if(g_pMainWindow)
+		delete g_pMainWindow;
 	g_pActiveWindow = 0; // .. but it should be already 0 anyway
 
 	// execute pending deletes (this may still contain some UI elements)
@@ -749,6 +749,7 @@ Let's see the scheme to understand which is choosen:
 		if(!pWnd)
 			return;
 		
+		QString szEvent = "incomingMessage";
 		QString szText = __tr2qs("Message arriving from %1:\n\n").arg(pWnd->target());
 		szText += KviMircCntrl::stripControlBytes(szMsg);
 		
@@ -758,14 +759,15 @@ Let's see the scheme to understand which is choosen:
 		
 		QPixmap * pIcon = g_pIconManager->getSmallIcon(KviIconManager::KVIrc);
 		
-		KNotification * pNotify = new KNotification("kvirc");
+		KNotification * pNotify = new KNotification(szEvent,KNotification::CloseWhenWidgetActivated,this);
 		pNotify->setFlags(KNotification::Persistent);
+		pNotify->setTitle(__tr2qs("KVIrc messaging system"));
 		pNotify->setText(szText);
 		pNotify->setActions(actions);
 		pNotify->setPixmap(*pIcon);
 		
-		connect(pNotify,SIGNAL(activated()),this,SLOT(slotOpenInbox()));
-		connect(pNotify,SIGNAL(action1Activated()),this,SLOT(slotOpenInbox()));
+		connect(pNotify,SIGNAL(activated()),this,SLOT(showParentFrame()));
+		connect(pNotify,SIGNAL(action1Activated()),this,SLOT(showParentFrame()));
 		connect(pNotify,SIGNAL(action2Activated()),pNotify,SLOT(close()));
 		connect(pNotify,SIGNAL(ignored()),pNotify,SLOT(close()));
 
@@ -823,6 +825,33 @@ Let's see the scheme to understand which is choosen:
 #endif // COMPILE_KDE_SUPPORT
 }
 
+void KviApplication::showParentFrame()
+{
+	if(!g_pMainWindow)
+		return;
+
+	if(g_pMainWindow->isMinimized())
+	{
+		g_pMainWindow->setWindowState(g_pMainWindow->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
+
+		if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
+			g_pMainWindow->showMaximized();
+		else
+			g_pMainWindow->show();
+	} else if(!g_pMainWindow->isVisible())
+	{
+		//restore mainwindow
+		if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
+			g_pMainWindow->showMaximized();
+		else
+			g_pMainWindow->show();
+	} else {
+		qDebug("- frame is visible: maximized state=%d, hiding",g_pMainWindow->isMaximized());
+		KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = g_pMainWindow->isMaximized();
+		g_pMainWindow->hide();
+	}
+}
+
 QTextCodec * KviApplication::defaultTextCodec()
 {
 	QTextCodec * pCodec = 0;
@@ -872,7 +901,7 @@ void KviApplication::loadDefaultScript(QString szItem)
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	szCmd.replace("\\","\\\\");
 #endif
-	KviKvsScript::run(szCmd,g_pFrame->firstConsole());
+	KviKvsScript::run(szCmd,g_pMainWindow->firstConsole());
 }
 
 void KviApplication::checkSuggestRestoreDefaultScript()
@@ -1004,9 +1033,9 @@ void KviApplication::destroyIpcSentinel()
 
 void KviApplication::ipcMessage(char * pcMessage)
 {
-	if(!g_pFrame)
+	if(!g_pMainWindow)
 		return;
-	KviConsoleWindow * pConsole = g_pFrame->firstConsole();
+	KviConsoleWindow * pConsole = g_pMainWindow->firstConsole();
 	if(!pConsole)
 		return;
 	if(_OUTPUT_VERBOSE)
@@ -1283,8 +1312,8 @@ void KviApplication::createGlobalBackgrounds(QPixmap * pix)
 				(float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100),
 				KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)));
 	}
-	if(g_pFrame
-		)g_pFrame->updatePseudoTransparency();
+	if(g_pMainWindow)
+		g_pMainWindow->updatePseudoTransparency();
 }
 #endif //COMPILE_PSEUDO_TRANSPARENCY
 
@@ -1349,8 +1378,8 @@ void KviApplication::updatePseudoTransparency()
 		KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) = false;
 
 		//update widgets
-		if(g_pFrame)
-			g_pFrame->updatePseudoTransparency();
+		if(g_pMainWindow)
+			g_pMainWindow->updatePseudoTransparency();
 	}
 #endif //COMPILE_PSEUDO_TRANSPARENCY
 }
@@ -1366,7 +1395,7 @@ void KviApplication::triggerUpdateGui()
 void KviApplication::updateGui()
 {
 	m_bUpdateGuiPending = false;
-	g_pFrame->applyOptions();
+	g_pMainWindow->applyOptions();
 }
 
 void KviApplication::updateApplicationFont()
@@ -1374,12 +1403,12 @@ void KviApplication::updateApplicationFont()
 	if(KVI_OPTION_BOOL(KviOption_boolUseGlobalApplicationFont))
 	{
 			setFont(KVI_OPTION_FONT(KviOption_fontApplication));
-			if(g_pFrame)
-				g_pFrame->setFont(font());
+			if(g_pMainWindow)
+				g_pMainWindow->setFont(font());
 	} else {
 			setFont(m_fntDefaultFont);
-			if(g_pFrame)
-				g_pFrame->setFont(m_fntDefaultFont);
+			if(g_pMainWindow)
+				g_pMainWindow->setFont(m_fntDefaultFont);
 	}
 }
 
@@ -1607,15 +1636,15 @@ void KviApplication::autoConnectToServers()
 
 void KviApplication::createFrame()
 {
-	if(g_pFrame)
+	if(g_pMainWindow)
 		qDebug("WARNING: Creating the main frame twice!");
-	g_pFrame = new KviMainWindow();
-	g_pFrame->createNewConsole(true);
+	g_pMainWindow = new KviMainWindow();
+	g_pMainWindow->createNewConsole(true);
 
 	if(m_szExecAfterStartup.hasData())
 	{
 		// FIXME, this should be a QString
-		KviKvsScript::run(m_szExecAfterStartup.ptr(),g_pFrame->firstConsole());
+		KviKvsScript::run(m_szExecAfterStartup.ptr(),g_pMainWindow->firstConsole());
 		m_szExecAfterStartup = "";
 	}
 
@@ -1626,19 +1655,19 @@ void KviApplication::createFrame()
 	}
 
 	if(KVI_OPTION_BOOL(KviOption_boolShowDockExtension))
-		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
+		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
 
 	if(KVI_OPTION_BOOL(KviOption_boolStartupMinimized))
-		g_pFrame->showMinimized();
+		g_pMainWindow->showMinimized();
 	else
-		g_pFrame->show();
+		g_pMainWindow->show();
 }
 
 void KviApplication::destroyFrame()
 {
 	m_bClosingDown=true;
-	if(g_pFrame)
-		g_pFrame->deleteLater();
+	if(g_pMainWindow)
+		g_pMainWindow->deleteLater();
 	g_pActiveWindow = 0;
 }
 
@@ -1828,14 +1857,14 @@ void KviApplication::unregisterWindow(KviWindow * pWnd)
 
 KviConsoleWindow * KviApplication::activeConsole()
 {
-	if(!g_pFrame)
+	if(!g_pMainWindow)
 		return 0;
 	if(g_pActiveWindow)
 	{
 		if(g_pActiveWindow->console())
 			return g_pActiveWindow->console();
 	}
-	return g_pFrame->firstConsole();
+	return g_pMainWindow->firstConsole();
 }
 
 

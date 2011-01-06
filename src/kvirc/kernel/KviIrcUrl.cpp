@@ -285,15 +285,15 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsoleWindow* pConsol
 		if(pConsole) {
 			if(pConsole->connectionInProgress())
 			{
-				pConsole = g_pFrame->firstNotConnectedConsole();
+				pConsole = g_pMainWindow->firstNotConnectedConsole();
 				if(!pConsole) {
-					pConsole = g_pFrame->createNewConsole();
+					pConsole = g_pMainWindow->createNewConsole();
 				}
 			}
 		} else {
-			pConsole = g_pFrame->firstNotConnectedConsole();
+			pConsole = g_pMainWindow->firstNotConnectedConsole();
 			if(!pConsole) {
-				pConsole = g_pFrame->createNewConsole();
+				pConsole = g_pMainWindow->createNewConsole();
 			}
 		}
 	}
@@ -321,7 +321,7 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsoleWindow* pConsol
 				( server->useSSL() != parts.bSsl ) ||
 				( server->isIPv6() != parts.bIPv6) )
 			{ // New server, try to reconnect
-				KviKvsScript::run(szCommand,(contextSpec & TryCurrentContext) ? g_pFrame->createNewConsole() : pConsole);
+				KviKvsScript::run(szCommand,(contextSpec & TryCurrentContext) ? g_pMainWindow->createNewConsole() : pConsole);
 				return parts.iError;
 			} else {
 				// the same server, but probably new chanlist

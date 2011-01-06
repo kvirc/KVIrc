@@ -537,9 +537,9 @@ void CustomizeToolBarsDialog::display(bool bTopLevel)
 				m_pInstance->setParent(0);
 			}
 		} else {
-			if(m_pInstance->parent() != g_pFrame->splitter())
+			if(m_pInstance->parent() != g_pMainWindow->splitter())
 			{
-				m_pInstance->setParent(g_pFrame->splitter());
+				m_pInstance->setParent(g_pMainWindow->splitter());
 			}
 		}
 	} else {
@@ -547,7 +547,7 @@ void CustomizeToolBarsDialog::display(bool bTopLevel)
 		{
 			m_pInstance = new CustomizeToolBarsDialog(0);
 		} else {
-			m_pInstance = new CustomizeToolBarsDialog(g_pFrame->splitter());
+			m_pInstance = new CustomizeToolBarsDialog(g_pMainWindow->splitter());
 		}
 	}
 	m_pInstance->show();

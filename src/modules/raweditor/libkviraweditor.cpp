@@ -71,8 +71,8 @@ static bool raweditor_module_can_unload(KviModule *)
 
 static bool raweditor_module_cleanup(KviModule *)
 {
-	if(g_pRawEditorWindow && g_pFrame)
-		g_pFrame->closeWindow(g_pRawEditorWindow);
+	if(g_pRawEditorWindow && g_pMainWindow)
+		g_pMainWindow->closeWindow(g_pRawEditorWindow);
 	g_pRawEditorWindow = 0;
 	return true;
 }

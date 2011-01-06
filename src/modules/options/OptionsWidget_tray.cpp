@@ -79,7 +79,7 @@ void OptionsWidget_tray::setEnabled(bool)
 		else
 			m_pLevelsGroup->setEnabled(false);
 
-		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
+		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
 	} else {
 		m_pCloseInTray->setEnabled(false);
 		m_pEnableFlashing->setEnabled(false);
@@ -91,7 +91,7 @@ void OptionsWidget_tray::setEnabled(bool)
 		m_pLevelBasedNotify->setChecked(false);
 		m_pLevelsGroup->setChecked(false);
 
-		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
+		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
 	}
 }
 

@@ -110,7 +110,7 @@ TrayIcon::TrayIcon(KviMainWindow * frm)
 	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TrayIcon)),__tr2qs("Un&dock"),this,SLOT(executeInternalCommand(bool)));
 	id->setData(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
 
-	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),__tr2qs("&Quit"),g_pFrame,SLOT(close()),QKeySequence(Qt::CTRL + Qt::Key_Q));
+	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),__tr2qs("&Quit"),g_pMainWindow,SLOT(close()),QKeySequence(Qt::CTRL + Qt::Key_Q));
 
 	connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(fillContextPopup()));
 

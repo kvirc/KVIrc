@@ -110,18 +110,18 @@ void KviTreeWindowListItem::unhighlight()
 	m_iHighlightLevel = 0;
 	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
 
-	if(g_pFrame->dockExtension())g_pFrame->dockExtension()->refresh();
+	if(g_pMainWindow->dockExtension())g_pMainWindow->dockExtension()->refresh();
 }
 
 void KviTreeWindowListItem::highlight(int iLevel)
 {
 	if(iLevel <= m_iHighlightLevel)return;
-	if(treeWidget()->currentItem() == this && g_pFrame->isActiveWindow())return;
+	if(treeWidget()->currentItem() == this && g_pMainWindow->isActiveWindow())return;
 	m_iHighlightLevel = iLevel;
 	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
 
-	if(g_pFrame->dockExtension())
-		g_pFrame->dockExtension()->refresh();
+	if(g_pMainWindow->dockExtension())
+		g_pMainWindow->dockExtension()->refresh();
 }
 
 void KviTreeWindowListItem::setProgress(int progress)
@@ -246,7 +246,7 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 				//left click activate/deactivate window
 				if((g_pActiveWindow != wnd) || (wnd->isMinimized()))
 				{
-					g_pFrame->setActiveWindow(wnd);
+					g_pMainWindow->setActiveWindow(wnd);
 				} else wnd->minimize();
 			}
 
@@ -311,7 +311,7 @@ void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapTo(g_pFrame, rect.topLeft());
+		QPoint pnt = mapTo(g_pMainWindow, rect.topLeft());
 		p->drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
@@ -440,7 +440,7 @@ void KviTreeWindowList::setActiveItem(KviWindowListItem * it)
 		}
 
 		((KviTreeWindowListItem *)it)->setActive(true);
-		if(g_pFrame->dockExtension())g_pFrame->dockExtension()->refresh();
+		if(g_pMainWindow->dockExtension())g_pMainWindow->dockExtension()->refresh();
 	}
 }
 

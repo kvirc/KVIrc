@@ -107,14 +107,14 @@ void KviMdiManager::paintEvent(QPaintEvent * e)
 		return;
 	} else if(g_pShadedParentGlobalDesktopBackground)
 	{
-		QPoint pnt = viewport()->mapTo(g_pFrame, e->rect().topLeft() + scrollBarsOffset());
+		QPoint pnt = viewport()->mapTo(g_pMainWindow, e->rect().topLeft() + scrollBarsOffset());
 		p.drawTiledPixmap(e->rect(),*(g_pShadedParentGlobalDesktopBackground), pnt);
 		return;
 	}
 #endif
 	if(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap())
 	{
-		QPoint pnt = viewport()->mapTo(g_pFrame, e->rect().topLeft() + scrollBarsOffset());
+		QPoint pnt = viewport()->mapTo(g_pMainWindow, e->rect().topLeft() + scrollBarsOffset());
 		p.drawTiledPixmap(e->rect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap()), pnt);
 	} else {
 		p.fillRect(e->rect(),KVI_OPTION_COLOR(KviOption_colorMdiBackground));
@@ -621,10 +621,10 @@ void KviMdiManager::slotSubWindowActivated(QMdiSubWindow * pMdiChild)
 {
 	if(pMdiChild)
 	{
-		if(((KviMdiChild*)pMdiChild)->client() && g_pFrame->isActiveWindow())
+		if(((KviMdiChild*)pMdiChild)->client() && g_pMainWindow->isActiveWindow())
 		{
 			//qDebug("subwindowactivated %p %s",pMdiChild, ((KviMdiChild*)pMdiChild)->plainCaption().toUtf8().data());
-			g_pFrame->childWindowActivated((KviWindow *)((KviMdiChild*)pMdiChild)->client());
+			g_pMainWindow->childWindowActivated((KviWindow *)((KviMdiChild*)pMdiChild)->client());
 		} else {
 			//qDebug("(inactive) subwindowactivated %p %s",pMdiChild, ((KviMdiChild*)pMdiChild)->plainCaption().toUtf8().data());
 		}
@@ -652,12 +652,12 @@ bool KviMdiManager::eventFilter(QObject *obj, QEvent *event)
 			// While in sdi mode, avoid qt4's internal window switching
 			if(keyEvent->key() == Qt::Key_Tab)
 			{
-				if(event->type() == QEvent::KeyRelease) g_pFrame->switchToNextWindow();
+				if(event->type() == QEvent::KeyRelease) g_pMainWindow->switchToNextWindow();
 				return true;
 			}
 			if(keyEvent->key() == Qt::Key_Backtab)
 			{
-				if(event->type() == QEvent::KeyRelease) g_pFrame->switchToPrevWindow();
+				if(event->type() == QEvent::KeyRelease) g_pMainWindow->switchToPrevWindow();
 				return true;
 			}
 		}

@@ -1335,10 +1335,10 @@ void KviApplication::optionResetUpdate(int flags)
 	if(flags & KviOption_resetRestartIdentd)
 	{
 		if(g_iIdentDaemonRunningUsers)
-			g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
+			g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
 
 		if(KVI_OPTION_BOOL(KviOption_boolUseIdentService) && !KVI_OPTION_BOOL(KviOption_boolUseIdentServiceOnlyOnConnect))
-			g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_START);
+			g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_START);
 	}
 
 	if(flags & KviOption_resetUpdateGui)
@@ -1348,7 +1348,7 @@ void KviApplication::optionResetUpdate(int flags)
 
 	if(flags & KviOption_resetUpdateWindowList)
 	{
-		g_pFrame->recreateWindowList();
+		g_pMainWindow->recreateWindowList();
 	}
 
 	if(flags & KviOption_resetRestartNotifyList)

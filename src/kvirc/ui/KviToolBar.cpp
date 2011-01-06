@@ -39,7 +39,7 @@ static KviTalPopupMenu * g_pToolBarPositionsPopup = 0;
 
 
 KviToolBar::KviToolBar(const QString & szLabel, Qt::ToolBarArea type, bool bNewLine, const char * pcName)
-: KviTalToolBar(szLabel,g_pFrame,type,bNewLine,pcName)
+: KviTalToolBar(szLabel,g_pMainWindow,type,bNewLine,pcName)
 {
 }
 
@@ -82,7 +82,7 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 	g_pToolBarPositionsPopup->clear();
 	g_pToolBarWindowsPopup->clear();
 
-	g_pFrame->fillToolBarsPopup(g_pToolBarWindowsPopup);
+	g_pMainWindow->fillToolBarsPopup(g_pToolBarWindowsPopup);
 	g_pToolBarContextPopup->insertItem(__tr2qs("Toolbars"),g_pToolBarWindowsPopup);
 
 	g_pToolBarContextPopup->insertItem(__tr2qs("Icon Size"),g_pToolBarIconSizesPopup);
@@ -95,12 +95,12 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 
 void KviToolBar::setBigIcons()
 {
-	g_pFrame->setUsesBigPixmaps(true);
+	g_pMainWindow->setUsesBigPixmaps(true);
 }
 
 void KviToolBar::setSmallIcons()
 {
-	g_pFrame->setUsesBigPixmaps(false);
+	g_pMainWindow->setUsesBigPixmaps(false);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

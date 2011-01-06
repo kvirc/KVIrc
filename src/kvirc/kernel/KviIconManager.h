@@ -35,8 +35,6 @@
 #include <QObject>
 #include <QWidget>
 
-
-
 #define KVI_BIGICON_DISCONNECTED "kvi_bigicon_disconnected.png"
 #define KVI_BIGICON_CONNECTING "kvi_bigicon_connecting.png"
 #define KVI_BIGICON_CONNECTED "kvi_bigicon_connected.png"
@@ -75,65 +73,119 @@
 
 #define KVI_REFRESH_IMAGE_NAME "kvi_icon_refresh.png"
 
-class KviIconManager;
-
 class KVIRC_API KviCachedPixmap
 {
 public:
-	// the pixmap MUST be allocated with new QPixmap()
-	// this calss takes the ownership
-	KviCachedPixmap(QPixmap * ptr,const QString &szPath);
+	/**
+	* \brief Constructs the KviCachedPixmap object
+	* \param pPix The image object
+	* \param szPath The path of the image
+	* \warning The pixmap MUST be allocated with new QPixmap(). This calss takes the ownership
+	* \return KviCachedPixmap
+	*/
+	KviCachedPixmap(QPixmap * pPix, const QString & szPath);
+
+	/**
+	* \brief Destroys the KviCachedPixmap object
+	*/
 	~KviCachedPixmap();
 private:
-	QString      m_szPath;
-	kvi_time_t   m_tLastAccess;
-	QPixmap    * m_pPixmap;
-	unsigned int m_uSize;
+	QString        m_szPath;
+	kvi_time_t     m_tLastAccess;
+	QPixmap      * m_pPixmap;
+	unsigned int   m_uSize;
 public:
-	QPixmap       * pixmap(){ return m_pPixmap; };
+	/**
+	* \brief Returns the image
+	* \return QPixmap *
+	*/
+	QPixmap * pixmap(){ return m_pPixmap; };
+
+	/**
+	* \brief Returns the path of the image
+	* \return const QString &
+	*/
 	const QString & path(){ return m_szPath; };
-	unsigned int    size(){ return m_uSize; };
-	kvi_time_t      lastAccessTime(){ return m_tLastAccess; };
-	void            updateLastAccessTime();
+
+	/**
+	* \brief Returns the size of the image
+	* \return unsigned int
+	*/
+	unsigned int size(){ return m_uSize; };
+
+	/**
+	* \brief Returns the time the image was last accessed
+	* \return kvi_time_t
+	*/
+	kvi_time_t lastAccessTime(){ return m_tLastAccess; };
+
+	/**
+	* \brief Updates the time the image was last accessed
+	* \return void
+	*/
+	void updateLastAccessTime();
 };
 
 class KVIRC_API KviIconWidget : public QWidget
 {
 	Q_OBJECT
 public:
+	/**
+	* \brief Constructs the icon table widget
+	* \return KviIconWidget
+	*/
 	KviIconWidget();
-	KviIconWidget(QWidget * par);
+
+	/**
+	* \brief Constructs the icon table widget
+	* \param pPar The parent object
+	* \return KviIconWidget
+	*/
+	KviIconWidget(QWidget * pPar);
+
+	/**
+	* \brief Destroys the icon table widget
+	*/
 	~KviIconWidget();
 protected:
+	/**
+	* \brief Initializes the table containing the icons
+	* \return void
+	*/
 	void init();
-	virtual void closeEvent(QCloseEvent *e);
-	virtual bool eventFilter(QObject * o,QEvent *e);
+	virtual void closeEvent(QCloseEvent * pEvent);
+	virtual bool eventFilter(QObject * pObject, QEvent * pEvent);
 signals:
+	/**
+	* \brief Emitted when we close the table widget
+	* \return void
+	*/
 	void closed();
+
+	/**
+	* \brief Emitted when we select an icon from the table
+	* \param iIcon The index of the icon selected
+	* \return void
+	*/
 	void selected(int iIcon);
 };
 
 
-
-//
-// This class manages the images used by KVIrc.
-//
-// We handle three types of images: builtin small icons, builtin big icons and generic images.
-//
-// The builtin small icons are in the pics/coresmall directory (this is to optimize the directory size
-//      since it's a linear search...), are 16x16 in size and are indexed by numbers in a way that their
-//      access is really fast. The icons used here are used mostly in KviIrcView (but not exclusively).
-//
-// The generic images are just "any" image that the underlying Qt engine
-//      is able to load. They are loaded by (relative) path and
-//      cached by name.
-//
-// The builtin big icons are (actually) just generic images
-//      that are eventually scaled to 32x32 if needed. One can request
-//      a builtin small icon indexed by number to be scaled
-//      to the size of 32x32 as a big icon too.
-//
-
+/**
+* \class KviIconManager
+* \brief This class manages the images used by KVIrc.
+* 
+* We handle three types of images: builtin small icons, builtin big icons and generic images.
+* The builtin small icons are in the pics/coresmall directory (this is to optimize the directory
+* size since it's a linear search...), are 16x16 in size and are indexed by numbers in a way that
+* their access is really fast. The icons used here are used mostly in KviIrcView (but not
+* exclusively).
+* The builtin big icons are (actually) just generic images that are eventually scaled to 32x32
+* if needed. One can request a builtin small icon indexed by number to be scaled to the size of
+* 32x32 as a big icon too.
+* The generic images are just "any" image that the underlying Qt engine is able to load. They are
+* loaded by (relative) path and cached by name.
+*/
 class KVIRC_API KviIconManager : public QObject
 {
 	Q_OBJECT
@@ -494,22 +546,53 @@ public:
 	// a default 32x32 image is returned
 	QPixmap * getBigIcon(const QString & szName);
 
-	// this one never fails... if the icon isn't there
-	// then a default 16x16 image is returned
+	/**
+	* \brief Returns the small icon
+	* \param eIcon The icon to get
+	* \note This one never fails... if the icon isn't there, then a default 16x16 image
+	* is returned
+	* \return QPixmap *
+	*/
 	QPixmap * getSmallIcon(SmallIcon eIcon){ return eIcon < IconCount ? (m_smallIcons[eIcon] ? m_smallIcons[eIcon] : loadSmallIcon(eIcon) ) : 0; };
 
-	// provided for convenience
+	/**
+	* \brief Returns the small icon
+	* \param iIcon The icon to get
+	* \note This one never fails... if the icon isn't there, then a default 16x16 image
+	* is returned. This is provided for convenience
+	* \return QPixmap *
+	*/
 	QPixmap * getSmallIcon(int iIcon){ return iIcon < IconCount ? (m_smallIcons[iIcon] ? m_smallIcons[iIcon] : loadSmallIcon(iIcon)) : 0; };
 
-	KviIconManager::SmallIcon iconName(int iIcon);
-
+	/**
+	* \brief Returns the name of the small icon
+	* \param eIcon The icon to get
+	* \return const char *
+	*/
 	const char * getSmallIconName(SmallIcon eIcon);
 
-	// provided for convenience
+	/**
+	* \brief Returns the name of the small icon
+	* \param iIcon The icon to get
+	* \note This is provided for convenience
+	* \return const char *
+	*/
 	const char * getSmallIconName(int iIcon);
+
+	/**
+	* \brief Returns the name of the small icon
+	* \param iIcon The icon to get
+	* \return KviIconManager::SmallIcon
+	*/
+	KviIconManager::SmallIcon iconName(int iIcon);
 
 	QString getSmallIconResourceName(SmallIcon eIcon);
 
+	/**
+	* \brief Returns the index of the small icon
+	* \param szName The name of the icon
+	* \return int
+	*/
 	int getSmallIconIdFromName(const QString & szName);
 
 	// if szLocalPath is empty then szName can be the identification

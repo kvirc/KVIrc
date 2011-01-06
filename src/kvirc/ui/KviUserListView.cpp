@@ -761,7 +761,7 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 	{
 		m_iSelectedCount++;
 		if(m_iSelectedCount == 1)
-			g_pFrame->childWindowSelectionStateChange(m_pKviWindow,true);
+			g_pMainWindow->childWindowSelectionStateChange(m_pKviWindow,true);
 	}
 }
 
@@ -1150,7 +1150,7 @@ void KviUserListView::select(const QString & szNick)
 		m_iSelectedCount = 0;
 	}
 
-	g_pFrame->childWindowSelectionStateChange(m_pKviWindow,true);
+	g_pMainWindow->childWindowSelectionStateChange(m_pKviWindow,true);
 	m_pViewArea->update();
 }
 
@@ -1252,7 +1252,7 @@ bool KviUserListView::partInternal(const QString & szNick, bool bRemoveDefinitiv
 	{
 		m_iSelectedCount--;
 		if(m_iSelectedCount == 0)
-			g_pFrame->childWindowSelectionStateChange(m_pKviWindow,false);
+			g_pMainWindow->childWindowSelectionStateChange(m_pKviWindow,false);
 	}
 	if(pUserEntry->m_pPrev)
 		pUserEntry->m_pPrev->m_pNext = pUserEntry->m_pNext;
@@ -1400,7 +1400,7 @@ void KviUserListView::removeAllEntries()
 	if(m_iSelectedCount != 0)
 	{
 		m_iSelectedCount = 0;
-		g_pFrame->childWindowSelectionStateChange(m_pKviWindow,false);
+		g_pMainWindow->childWindowSelectionStateChange(m_pKviWindow,false);
 	}
 
 	m_pViewArea->m_iTopItemOffset = 0;
@@ -1727,7 +1727,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pListView->window()->mdiParent() ? mapTo(g_pFrame, r.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pListView->window(), r.topLeft());
+		QPoint pnt = m_pListView->window()->mdiParent() ? mapTo(g_pMainWindow, r.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pListView->window(), r.topLeft());
 		p.drawTiledPixmap(r,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
@@ -2035,7 +2035,7 @@ void KviUserListViewArea::mousePressEvent(QMouseEvent * e)
 				pEntry->m_bSelected = true;
 
 				if(m_pListView->m_iSelectedCount == 1)
-					g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+					g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 				update();
 			} else if(e->modifiers() & Qt::ControlModifier)
 			{
@@ -2046,9 +2046,9 @@ void KviUserListViewArea::mousePressEvent(QMouseEvent * e)
 
 				pEntry->m_bSelected = !pEntry->m_bSelected;
 				if(m_pListView->m_iSelectedCount == 0)
-					g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,false);
+					g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,false);
 				else if(m_pListView->m_iSelectedCount == 1)
-					g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+					g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 				update();
 			} else {
 				// Single select mode
@@ -2067,7 +2067,7 @@ void KviUserListViewArea::mousePressEvent(QMouseEvent * e)
 				m_pListView->m_iSelectedCount = 1;
 
 				if(!bThereWasSelection)
-					g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+					g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 				update();
 			}
 		}
@@ -2090,7 +2090,7 @@ void KviUserListViewArea::mousePressEvent(QMouseEvent * e)
 				}
 			}
 			if(m_pListView->m_iSelectedCount == 1)
-				g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+				g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 			update();
 		}
 		m_pListView->emitRightClick();
@@ -2149,7 +2149,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 				m_pListView->ensureVisible(pNick->nick());
 			}
 		}
-		g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+		g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 		update();
 	} else if(e->key() == Qt::Key_Down)
 	{
@@ -2197,7 +2197,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 				m_pListView->ensureVisible(pNick->nick());
 			}
 		}
-		g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+		g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 		update();
 	} else if(e->key() == Qt::Key_PageUp)
 	{
@@ -2257,7 +2257,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 			if(pNick)
 				m_pListView->ensureVisible(pNick->nick());
 		}
-		g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+		g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 		update();
 	} else if(e->key() == Qt::Key_PageDown)
 	{
@@ -2317,7 +2317,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 			if(pNick)
 				m_pListView->ensureVisible(pNick->nick());
 		}
-		g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+		g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 		update();
 	} else if(e->matches(QKeySequence::SelectAll)) {
 		KviUserListEntry * pAux = m_pListView->m_pHeadItem;
@@ -2327,7 +2327,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 			pAux = pAux->m_pNext;
 		}
 
-		g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+		g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 		update();
 	} else {
 		QString szKey = e->text();
@@ -2434,9 +2434,9 @@ void KviUserListViewArea::mouseMoveEvent(QMouseEvent * e)
 		else m_pListView->m_iSelectedCount++;
 			pEntry->m_bSelected = ! pEntry->m_bSelected;
 		if(m_pListView->m_iSelectedCount == 0)
-			g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,false);
+			g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,false);
 		else if(m_pListView->m_iSelectedCount == 1)
-				g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+				g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 
 		m_pLastEntryUnderMouse=pEntry;
 	} else {
@@ -2452,7 +2452,7 @@ void KviUserListViewArea::mouseMoveEvent(QMouseEvent * e)
 					m_pListView->m_iSelectedCount++;
 					pCurEntry->m_bSelected = true;
 					if(m_pListView->m_iSelectedCount == 1)
-					g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+					g_pMainWindow->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 				}
 			}
 		}

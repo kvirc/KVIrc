@@ -29,10 +29,10 @@
 KviMexToolBar::KviMexToolBar(KviModuleExtensionDescriptor * pDesc, const QString & szName)
 : KviToolBar(szName,Qt::TopToolBarArea), KviModuleExtension(pDesc)
 {
-	g_pFrame->registerModuleExtensionToolBar(this);
+	g_pMainWindow->registerModuleExtensionToolBar(this);
 }
 
 KviMexToolBar::~KviMexToolBar()
 {
-	g_pFrame->unregisterModuleExtensionToolBar(this);
+	g_pMainWindow->unregisterModuleExtensionToolBar(this);
 }

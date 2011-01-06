@@ -249,7 +249,7 @@ bool KviActionManager::registerAction(KviAction * a)
 	if(m_pActions->find(a->name()))return false;
 	connect(a,SIGNAL(destroyed()),this,SLOT(actionDestroyed()));
 	m_pActions->insert(a->name(),a);
-	if(g_pFrame)a->registerAccelerator(); // otherwise it is delayed!
+	if(g_pMainWindow)a->registerAccelerator(); // otherwise it is delayed!
 	return true;
 }
 

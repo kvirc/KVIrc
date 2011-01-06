@@ -205,7 +205,7 @@ void KviConsoleWindow::triggerCreationEvents()
 		KVS_TRIGGER_EVENT_0(KviEvent_OnKVIrcStartup,this);
 
 		if(KVI_OPTION_BOOL(KviOption_boolShowTipAtStartup))
-			g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_TIP_OPEN);
+			g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_TIP_OPEN);
 	}
 
 	if(m_iFlags & KVI_CONSOLE_FLAG_FIRSTINFRAME)
@@ -476,7 +476,7 @@ void KviConsoleWindow::connectionDetached()
 
 void KviConsoleWindow::closeEvent(QCloseEvent *e)
 {
-	if(g_pFrame->consoleCount() > 1)
+	if(g_pMainWindow->consoleCount() > 1)
 	{
 		// there are other consoles beside this one
 		if(context()->state() == KviIrcContext::Connected)

@@ -1050,7 +1050,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		pa.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, r.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, r.topLeft());
+		QPoint pnt = m_pKviWindow->mdiParent() ? mapTo(g_pMainWindow, r.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, r.topLeft());
 		pa.drawTiledPixmap(r,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif

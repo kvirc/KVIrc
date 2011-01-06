@@ -109,7 +109,7 @@ void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 	{
 		QPoint pnt;
 		if(m_pKviWindow)
-			pnt = m_pKviWindow->mdiParent() ? mapTo(g_pFrame, contentsRect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
+			pnt = m_pKviWindow->mdiParent() ? mapTo(g_pMainWindow, contentsRect().topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : mapTo(m_pKviWindow, contentsRect().topLeft());
 		else
 			pnt = mapToGlobal(event->rect().topLeft());
 		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);

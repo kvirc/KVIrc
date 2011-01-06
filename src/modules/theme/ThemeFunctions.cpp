@@ -380,14 +380,14 @@ namespace ThemeFunctions
 	{
 		if(bMaximizeFrame)
 		{
-			if(g_pFrame->isMaximized())
+			if(g_pMainWindow->isMaximized())
 				bMaximizeFrame = false;
 		}
 
 		if(bMaximizeFrame)
-			g_pFrame->showMaximized();
+			g_pMainWindow->showMaximized();
 
-		QPixmap pix = QPixmap::grabWidget(g_pFrame);
+		QPixmap pix = QPixmap::grabWidget(g_pMainWindow);
 		bool bResult = true;
 
 		if(pix.isNull())
@@ -398,7 +398,7 @@ namespace ThemeFunctions
 		}
 
 		if(bMaximizeFrame)
-			g_pFrame->showNormal();
+			g_pMainWindow->showNormal();
 		return bResult;
 	}
 }

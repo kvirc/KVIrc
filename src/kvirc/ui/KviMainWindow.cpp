@@ -87,12 +87,12 @@
 
 // Declared and managed by KviApplication (KviApplication.cpp)
 extern KviConfigurationFile * g_pWinPropertiesConfig;
-KVIRC_API KviMainWindow * g_pFrame = 0; // the one and only frame object
+KVIRC_API KviMainWindow * g_pMainWindow = 0; // the one and only frame object
 
 KviMainWindow::KviMainWindow()
 : KviTalMainWindow(0,"kvirc_frame")
 {
-	g_pFrame = this;
+	g_pMainWindow = this;
 	setAutoFillBackground(false);
 	setAttribute(Qt::WA_TranslucentBackground);
 	//disable this flag that gets enabled by qt when using Qt::WA_TranslucentBackground
@@ -129,7 +129,7 @@ KviMainWindow::KviMainWindow()
 		setStatusBar(m_pStatusBar);
 		// torque: moved out of status bar constructor
 		// because module init functions exectued in load()
-		// couldn't access the status bar via g_pFrame->mainStatusBar()
+		// couldn't access the status bar via g_pMainWindow->mainStatusBar()
 		// (assignment of m_pStatusBar happened after load() and
 		// the init function)
 		m_pStatusBar->load();
@@ -234,7 +234,7 @@ KviMainWindow::~KviMainWindow()
 
 	delete m_pWinList;
 
-	g_pFrame = 0;
+	g_pMainWindow = 0;
 
 	g_pApp->quit();
 }

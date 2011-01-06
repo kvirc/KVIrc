@@ -74,8 +74,8 @@ static bool classeditor_module_can_unload(KviModule *)
 
 static bool classeditor_module_cleanup(KviModule *)
 {
-	if(g_pClassEditorWindow && g_pFrame)
-		g_pFrame->closeWindow(g_pClassEditorWindow);
+	if(g_pClassEditorWindow && g_pMainWindow)
+		g_pMainWindow->closeWindow(g_pClassEditorWindow);
 	g_pClassEditorWindow = 0;
 	return true;
 }

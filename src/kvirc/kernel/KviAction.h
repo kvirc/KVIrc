@@ -129,10 +129,6 @@ public:
 	* 
 	* It can be 0, but using a QObject will help in deleting this action :)
 	* \param szName Internal name of this action, in form [module.]name
-	* 
-	* The action name is INTERNAL: it should be never shown to the user. If it contains a dot
-	* then the part before the dot is considered to be a module name to be loaded when the
-	* module is loaded.
 	* \param szVisibleName Permanent visible name, visible at least in the action drawer
 	* \param szDescription What this action does
 	* \param pCategory One of KviActionManager::category*() or 0 (default category), not owned!
@@ -140,10 +136,31 @@ public:
 	* \param szSmallIconId The small icon associated to the action (16x16)
 	* \param uFlags The flags of the action, like needs and configuration
 	* \param szKeySequence The shortcut to activate the action
+	* \note The action name is INTERNAL: it should be never shown to the user. If it
+	* contains a dot then the part before the dot is considered to be a module name to be
+	* loaded when the module is loaded.
 	* \return KviAction
 	*/
 	KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory = NULL, const QString & szBigIconId = QString(), const QString & szSmallIconId = QString(), unsigned int uFlags = 0, const QString & szKeySequence = QString());
 
+	/**
+	* \brief Constructs the action object
+	* \param pParent The parent object
+	* 
+	* It can be 0, but using a QObject will help in deleting this action :)
+	* \param szName Internal name of this action, in form [module.]name
+	* \param szVisibleName Permanent visible name, visible at least in the action drawer
+	* \param szDescription What this action does
+	* \param pCategory One of KviActionManager::category*() or 0 (default category), not owned!
+	* \param szBigIconId The big icon associated to the action (32x32)
+	* \param eIcon The small icon associated to the action (16x16)
+	* \param uFlags The flags of the action, like needs and configuration
+	* \param szKeySequence The shortcut to activate the action
+	* \note The action name is INTERNAL: it should be never shown to the user. If it
+	* contains a dot then the part before the dot is considered to be a module name to be
+	* loaded when the module is loaded.
+	* \return KviAction
+	*/
 	KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory = NULL, const QString & szBigIconId = QString(), const KviIconManager::SmallIcon eIcon = KviIconManager::None, unsigned int uFlags = 0, const QString & szKeySequence = QString());
 
 	/**

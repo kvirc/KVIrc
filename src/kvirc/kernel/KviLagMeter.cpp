@@ -85,7 +85,7 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 	if((m_uLag / 10) != (m_uLastEmittedLag / 10))
 	{
 		m_uLastEmittedLag = m_uLag;
-		g_pFrame->childConnectionLagChange(m_pConnection);
+		g_pMainWindow->childConnectionLagChange(m_pConnection);
 
 		KviCString szLag(KviCString::Format,"%u",m_uLag);
 		

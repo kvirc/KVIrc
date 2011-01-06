@@ -108,7 +108,7 @@ void KviIOGraphWindow::paintEvent(QPaintEvent * e)
 		p.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mdiParent() ? mapTo(g_pFrame, rect.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : rect.topLeft();
+		QPoint pnt = mdiParent() ? mapTo(g_pMainWindow, rect.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : rect.topLeft();
 		p.drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
@@ -300,8 +300,8 @@ static KviModuleExtension * iograph_extension_alloc(KviModuleExtensionAllocStruc
 			}
 		}
 
-		g_pIOGraphWindow = new KviIOGraphWindow(s->pDescriptor,g_pFrame,"IOGraph Window");
-		g_pFrame->addWindow(g_pIOGraphWindow,!bCreateMinimized);
+		g_pIOGraphWindow = new KviIOGraphWindow(s->pDescriptor,g_pMainWindow,"IOGraph Window");
+		g_pMainWindow->addWindow(g_pIOGraphWindow,!bCreateMinimized);
 
 		if(bCreateMinimized)g_pIOGraphWindow->minimize();
 		return g_pIOGraphWindow;
@@ -342,8 +342,8 @@ static bool iograph_module_init(KviModule *m)
 
 static bool iograph_module_cleanup(KviModule *)
 {
-	if(g_pIOGraphWindow && g_pFrame)
-		g_pFrame->closeWindow(g_pIOGraphWindow);
+	if(g_pIOGraphWindow && g_pMainWindow)
+		g_pMainWindow->closeWindow(g_pIOGraphWindow);
 	g_pIOGraphWindow = 0;
 	return true;
 }

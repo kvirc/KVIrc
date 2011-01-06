@@ -235,9 +235,9 @@ void ThemeManagementDialog::display(bool bTopLevel)
 				m_pInstance->setParent(0);
 			}
 		} else {
-			if(m_pInstance->parent() != g_pFrame->splitter())
+			if(m_pInstance->parent() != g_pMainWindow->splitter())
 			{
-				m_pInstance->setParent(g_pFrame->splitter());
+				m_pInstance->setParent(g_pMainWindow->splitter());
 			}
 		}
 	} else {
@@ -245,7 +245,7 @@ void ThemeManagementDialog::display(bool bTopLevel)
 		{
 			m_pInstance = new ThemeManagementDialog(0);
 		} else {
-			m_pInstance = new ThemeManagementDialog(g_pFrame->splitter());
+			m_pInstance = new ThemeManagementDialog(g_pMainWindow->splitter());
 		}
 	}
 	m_pInstance->show();
@@ -349,8 +349,8 @@ void ThemeManagementDialog::installFromFile()
 
 void ThemeManagementDialog::getMoreThemes()
 {
-	if(!g_pFrame)return;
-	g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_OPENURL_KVIRC_THEMES);
+	if(!g_pMainWindow)return;
+	g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_OPENURL_KVIRC_THEMES);
 }
 
 void ThemeManagementDialog::saveCurrentTheme()

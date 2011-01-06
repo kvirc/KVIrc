@@ -77,7 +77,7 @@ KVSO_END_DESTRUCTOR(KvsObject_dockWindow)
 
 bool KvsObject_dockWindow::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
-	QDockWidget * pWidget = new QDockWidget(g_pFrame);
+	QDockWidget * pWidget = new QDockWidget(g_pMainWindow);
 	pWidget->setObjectName(getName());
 	setObject(pWidget);
 	return true;
@@ -163,12 +163,12 @@ KVSO_CLASS_FUNCTION(dockWindow,dock)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("dock",KVS_PT_STRING,0,szDock)
 	KVSO_PARAMETERS_END(c)
-	g_pFrame->removeDockWidget(_pDockWindow);
+	g_pMainWindow->removeDockWidget(_pDockWindow);
 	if(szDock.indexOf('m',Qt::CaseInsensitive) == -1)_pDockWindow->setFloating(false);
-	if(szDock.indexOf('t',Qt::CaseInsensitive) != -1)g_pFrame->addDockWidget(Qt::TopDockWidgetArea,_pDockWindow);
-	else if(szDock.indexOf('l',Qt::CaseInsensitive) != -1)g_pFrame->addDockWidget(Qt::LeftDockWidgetArea,_pDockWindow);
-	else if(szDock.indexOf('r',Qt::CaseInsensitive) != -1)g_pFrame->addDockWidget(Qt::RightDockWidgetArea,_pDockWindow);
-	else if(szDock.indexOf('b',Qt::CaseInsensitive) != -1)g_pFrame->addDockWidget(Qt::BottomDockWidgetArea,_pDockWindow);
+	if(szDock.indexOf('t',Qt::CaseInsensitive) != -1)g_pMainWindow->addDockWidget(Qt::TopDockWidgetArea,_pDockWindow);
+	else if(szDock.indexOf('l',Qt::CaseInsensitive) != -1)g_pMainWindow->addDockWidget(Qt::LeftDockWidgetArea,_pDockWindow);
+	else if(szDock.indexOf('r',Qt::CaseInsensitive) != -1)g_pMainWindow->addDockWidget(Qt::RightDockWidgetArea,_pDockWindow);
+	else if(szDock.indexOf('b',Qt::CaseInsensitive) != -1)g_pMainWindow->addDockWidget(Qt::BottomDockWidgetArea,_pDockWindow);
 	else if(szDock.indexOf('f',Qt::CaseInsensitive) != -1)_pDockWindow->setFloating(true);
 	else if(szDock.indexOf('m',Qt::CaseInsensitive) != -1)qDebug("Sorry: no support for minimized dock widgets in Qt4");
 	else c->warning(__tr2qs_ctx("Invalid dock area specified","objects"));

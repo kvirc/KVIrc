@@ -1228,7 +1228,7 @@ void DccFileTransfer::fillContextPopup(KviTalPopupMenu * m)
 void DccFileTransfer::configureBandwidth()
 {
 	if(m_pBandwidthDialog)return;
-	m_pBandwidthDialog = new DccFileTransferBandwidthDialog(g_pFrame,this);
+	m_pBandwidthDialog = new DccFileTransferBandwidthDialog(g_pMainWindow,this);
 	connect(m_pBandwidthDialog,SIGNAL(destroyed()),this,SLOT(bandwidthDialogDestroyed()));
 	m_pBandwidthDialog->setModal(true);
 	m_pBandwidthDialog->show();

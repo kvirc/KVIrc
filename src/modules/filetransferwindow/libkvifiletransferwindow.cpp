@@ -55,8 +55,8 @@ static KviModuleExtension * filetransferwindow_extension_alloc(KviModuleExtensio
 			}
 		}
 
-		g_pFileTransferWindow = new FileTransferWindow(s->pDescriptor,g_pFrame);
-		g_pFrame->addWindow(g_pFileTransferWindow,!bCreateMinimized);
+		g_pFileTransferWindow = new FileTransferWindow(s->pDescriptor,g_pMainWindow);
+		g_pMainWindow->addWindow(g_pFileTransferWindow,!bCreateMinimized);
 		if(bCreateMinimized)g_pFileTransferWindow->minimize();
 		return g_pFileTransferWindow;
 	}
@@ -133,8 +133,8 @@ static bool filetransferwindow_module_init(KviModule * m)
 
 static bool filetransferwindow_module_cleanup(KviModule *)
 {
-	if(g_pFileTransferWindow && g_pFrame)
-		g_pFrame->closeWindow(g_pFileTransferWindow);
+	if(g_pFileTransferWindow && g_pMainWindow)
+		g_pMainWindow->closeWindow(g_pFileTransferWindow);
 	g_pFileTransferWindow = 0;
 	return true;
 }

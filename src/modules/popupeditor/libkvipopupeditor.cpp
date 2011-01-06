@@ -72,8 +72,8 @@ static bool popupeditor_module_can_unload(KviModule *)
 
 static bool popupeditor_module_cleanup(KviModule *)
 {
-	if(g_pPopupEditorWindow && g_pFrame)
-		g_pFrame->closeWindow(g_pPopupEditorWindow);
+	if(g_pPopupEditorWindow && g_pMainWindow)
+		g_pMainWindow->closeWindow(g_pPopupEditorWindow);
 	g_pPopupEditorWindow = 0;
 	return true;
 }

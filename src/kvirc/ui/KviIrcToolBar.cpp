@@ -196,7 +196,7 @@ void KviToolBarGraphicalApplet::paintEvent(QPaintEvent *e)
 		pa.restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = mapTo(g_pFrame, rect().topLeft() + g_pFrame->mdiManager()->scrollBarsOffset());
+		QPoint pnt = mapTo(g_pMainWindow, rect().topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset());
 		pa.drawTiledPixmap(rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif

@@ -467,7 +467,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KVSCF_pRetBuffer->setBoolean(g_pFrame->isActiveWindow());
+		KVSCF_pRetBuffer->setBoolean(g_pMainWindow->isActiveWindow());
 		return true;
 	}
 
@@ -492,7 +492,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KVSCF_pRetBuffer->setBoolean(g_pFrame->isMinimized());
+		KVSCF_pRetBuffer->setBoolean(g_pMainWindow->isMinimized());
 		return true;
 	}
 

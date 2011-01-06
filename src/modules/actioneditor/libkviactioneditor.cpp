@@ -71,8 +71,8 @@ static bool actioneditor_module_can_unload(KviModule *)
 
 static bool actioneditor_module_cleanup(KviModule *)
 {
-	if(g_pActionEditorWindow && g_pFrame)
-		g_pFrame->closeWindow(g_pActionEditorWindow);
+	if(g_pActionEditorWindow && g_pMainWindow)
+		g_pMainWindow->closeWindow(g_pActionEditorWindow);
 	g_pActionEditorWindow = 0;
 	return true;
 }

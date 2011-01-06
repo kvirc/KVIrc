@@ -57,8 +57,8 @@ static KviModuleExtension * sharedfileswindow_extension_alloc(KviModuleExtension
 			}
 		}
 
-		g_pSharedFilesWindow = new SharedFilesWindow(s->pDescriptor,g_pFrame);
-		g_pFrame->addWindow(g_pSharedFilesWindow,!bCreateMinimized);
+		g_pSharedFilesWindow = new SharedFilesWindow(s->pDescriptor,g_pMainWindow);
+		g_pMainWindow->addWindow(g_pSharedFilesWindow,!bCreateMinimized);
 		if(bCreateMinimized)g_pSharedFilesWindow->minimize();
 		return g_pSharedFilesWindow;
 	}
@@ -131,8 +131,8 @@ static bool sharedfileswindow_module_init(KviModule * m)
 
 static bool sharedfileswindow_module_cleanup(KviModule *)
 {
-	if(g_pSharedFilesWindow && g_pFrame)
-		g_pFrame->closeWindow(g_pSharedFilesWindow);
+	if(g_pSharedFilesWindow && g_pMainWindow)
+		g_pMainWindow->closeWindow(g_pSharedFilesWindow);
 	g_pSharedFilesWindow = 0;
 	return true;
 }

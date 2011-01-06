@@ -112,7 +112,7 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarg
 KviIrcConnection::~KviIrcConnection()
 {
 	if(m_bIdentdAttached)
-		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
+		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
 
 	m_bIdentdAttached = false;
 	if(m_pLocalhostDns)
@@ -300,7 +300,7 @@ void KviIrcConnection::start()
 	m_eState = Connecting;
 	if(KVI_OPTION_BOOL(KviOption_boolUseIdentService) && KVI_OPTION_BOOL(KviOption_boolUseIdentServiceOnlyOnConnect))
 	{
-		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_START);
+		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_START);
 		m_bIdentdAttached=true;
 	}
 	m_pLink->start();
@@ -502,7 +502,7 @@ void KviIrcConnection::linkTerminated()
 {
 	if(m_bIdentdAttached)
 	{
-		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
+		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
 		m_bIdentdAttached=false;
 	}
 	m_eState = Idle;
@@ -533,7 +533,7 @@ void KviIrcConnection::linkAttemptFailed(int iError)
 {
 	if(m_bIdentdAttached)
 	{
-		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
+		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
 		m_bIdentdAttached=false;
 	}
 	m_eState = Idle;
@@ -1453,7 +1453,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 
 	if(m_bIdentdAttached)
 	{
-		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
+		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
 		m_bIdentdAttached = false;
 	}
 

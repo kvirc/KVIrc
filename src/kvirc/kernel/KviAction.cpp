@@ -84,7 +84,7 @@ void KviAction::registerAccelerator()
 {
 	if(!m_szKeySequence.isEmpty())
 	{
-		m_pAccel = new QShortcut(m_szKeySequence,g_pFrame,0,0,Qt::ApplicationShortcut);
+		m_pAccel = new QShortcut(m_szKeySequence,g_pMainWindow,0,0,Qt::ApplicationShortcut);
 		connect(m_pAccel,SIGNAL(activated()),this,SLOT(activate()));
 		//no way to have Ctrl+Alt+Key events fired as no-ambiguous, probably qt bug
 		connect(m_pAccel,SIGNAL(activatedAmbiguously()),this,SLOT(activate()));
@@ -95,8 +95,8 @@ void KviAction::unregisterAccelerator()
 {
 	if(m_pAccel != 0)
 	{
-		if(g_pFrame)
-			g_pFrame->releaseShortcut(m_pAccel->id());
+		if(g_pMainWindow)
+			g_pMainWindow->releaseShortcut(m_pAccel->id());
 		m_pAccel = 0;
 	}
 }
@@ -160,16 +160,16 @@ void KviAction::setup()
 	connect(g_pApp,SIGNAL(reloadImages()),this,SLOT(reloadImages()));
 	if(m_uFlags & InternalWindowMask)
 	{
-		connect(g_pFrame,SIGNAL(activeWindowChanged()),this,SLOT(activeWindowChanged()));
+		connect(g_pMainWindow,SIGNAL(activeWindowChanged()),this,SLOT(activeWindowChanged()));
 		if((m_uFlags & WindowOnlyIfUsersSelected) && (m_uFlags & (WindowChannel | WindowConsole | WindowQuery)))
-			connect(g_pFrame,SIGNAL(activeWindowSelectionStateChanged(bool)),this,SLOT(activeWindowSelectionStateChanged(bool)));
+			connect(g_pMainWindow,SIGNAL(activeWindowSelectionStateChanged(bool)),this,SLOT(activeWindowSelectionStateChanged(bool)));
 		activeWindowChanged();
 	} else {
 		if(m_uFlags & NeedsConnection)
 		{
-			connect(g_pFrame,SIGNAL(activeContextChanged()),this,SLOT(activeContextChanged()));
-			connect(g_pFrame,SIGNAL(activeContextStateChanged()),this,SLOT(activeContextStateChanged()));
-			KviIrcContext * pContext = g_pFrame->activeContext();
+			connect(g_pMainWindow,SIGNAL(activeContextChanged()),this,SLOT(activeContextChanged()));
+			connect(g_pMainWindow,SIGNAL(activeContextStateChanged()),this,SLOT(activeContextStateChanged()));
+			KviIrcContext * pContext = g_pMainWindow->activeContext();
 			if(!pContext)
 				setEnabled(false);
 			else {
@@ -189,8 +189,8 @@ void KviAction::setup()
 		} else {
 			if(m_uFlags & NeedsContext)
 			{
-				connect(g_pFrame,SIGNAL(activeContextChanged()),this,SLOT(activeContextChanged()));
-				if(!g_pFrame->activeContext())
+				connect(g_pMainWindow,SIGNAL(activeContextChanged()),this,SLOT(activeContextChanged()));
+				if(!g_pMainWindow->activeContext())
 					setEnabled(false);
 				else
 					setEnabled(true);
@@ -218,7 +218,7 @@ void KviAction::activeWindowChanged()
 {
 	if(m_uFlags & NeedsContext)
 	{
-		if(!g_pFrame->activeContext())
+		if(!g_pMainWindow->activeContext())
 		{
 			if(isEnabled())
 				setEnabled(false);
@@ -228,7 +228,7 @@ void KviAction::activeWindowChanged()
 
 	if(m_uFlags & NeedsConnection)
 	{
-		switch(g_pFrame->activeContext()->state())
+		switch(g_pMainWindow->activeContext()->state())
 		{
 			case KviIrcContext::LoggingIn:
 				if(!(m_uFlags & EnableAtLogin))
@@ -388,7 +388,7 @@ void KviAction::activeWindowSelectionStateChanged(bool bSelectedNow)
 void KviAction::activeContextChanged()
 {
 	// works only if NeedsContext is specified!
-	KviIrcContext * pContext = g_pFrame->activeContext();
+	KviIrcContext * pContext = g_pMainWindow->activeContext();
 	if(pContext)
 	{
 		if(m_uFlags & NeedsConnection)
@@ -404,7 +404,7 @@ void KviAction::activeContextChanged()
 
 void KviAction::activeContextStateChanged()
 {
-	KviIrcContext * pContext = g_pFrame->activeContext();
+	KviIrcContext * pContext = g_pMainWindow->activeContext();
 	if(pContext)
 	{
 		switch(pContext->state())

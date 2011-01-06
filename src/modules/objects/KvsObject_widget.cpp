@@ -1995,15 +1995,15 @@ KVSO_CLASS_FUNCTION(widget,insertIntoStatusBar)
 {
 	CHECK_INTERNAL_POINTER(widget())
              qDebug("instertinto");
-        if (g_pFrame->mainStatusBar())
-                g_pFrame->mainStatusBar()->insertPermanentWidgetAtTheEnd(widget(),0);
+        if (g_pMainWindow->mainStatusBar())
+                g_pMainWindow->mainStatusBar()->insertPermanentWidgetAtTheEnd(widget(),0);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget,removeFromStatusBar)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	g_pFrame->statusBar()->removeWidget(widget());
+	g_pMainWindow->statusBar()->removeWidget(widget());
 	return true;
 }
 
@@ -2020,7 +2020,7 @@ KVSO_CLASS_FUNCTION(widget,setWebView)
 	m_pWebview = new QWebView(widget());
 	m_pWebview->load(QUrl(szUrl));
 	m_pWebview->show();
-	//if (widget()) g_pFrame->statusBar()->removeWidget(widget());
+	//if (widget()) g_pMainWindow->statusBar()->removeWidget(widget());
 	return true;
 }
 #endif //COMPILE_WEBKIT_SUPPORT

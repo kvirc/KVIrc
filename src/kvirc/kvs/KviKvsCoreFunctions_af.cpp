@@ -826,9 +826,9 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-                if (g_pFrame->mainStatusBar())
+                if (g_pMainWindow->mainStatusBar())
                 {
-                    QList<QWidget *> widgets = g_pFrame->mainStatusBar()->findChildren<QWidget *>();
+                    QList<QWidget *> widgets = g_pMainWindow->mainStatusBar()->findChildren<QWidget *>();
                     KVSCF_pRetBuffer->setInteger(widgets.count());
                 }
                 else KVSCF_pRetBuffer->setInteger(0);

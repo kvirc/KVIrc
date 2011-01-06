@@ -193,7 +193,7 @@ void FileTransferWidget::paintEvent(QPaintEvent * event)
 		p->restore();
 	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = g_pFileTransferWindow->mdiParent() ? viewport()->mapTo(g_pFrame, rect.topLeft() + g_pFrame->mdiManager()->scrollBarsOffset()) : viewport()->mapTo(g_pFileTransferWindow, rect.topLeft());
+		QPoint pnt = g_pFileTransferWindow->mdiParent() ? viewport()->mapTo(g_pMainWindow, rect.topLeft() + g_pMainWindow->mdiManager()->scrollBarsOffset()) : viewport()->mapTo(g_pFileTransferWindow, rect.topLeft());
 		p->drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
 	} else {
 #endif
@@ -561,7 +561,7 @@ void FileTransferWindow::openFilePopupActivated(int id)
 			KUrl url;
 			url.setPath(tmp);
 			lst.append(url);
-			KRun::run(*((*itOffers).data()),lst,g_pFrame);
+			KRun::run(*((*itOffers).data()),lst,g_pMainWindow);
 			break;
 		}
 		idx++;
@@ -599,7 +599,7 @@ void FileTransferWindow::openLocalFileTerminal()
 		tmp.prepend("konsole --workdir=\"");
 		tmp.append("\"");
 
-		KRun::runCommand(tmp,g_pFrame);
+		KRun::runCommand(tmp,g_pMainWindow);
 	#endif //COMPILE_KDE_SUPPORT
 #endif
 }
@@ -656,7 +656,7 @@ void FileTransferWindow::openLocalFile()
 		url.setPath(tmp);
 		lst.append(url);
 
-		KRun::run(*offer, lst, g_pFrame);
+		KRun::run(*offer, lst, g_pMainWindow);
 	#endif //COMPILE_KDE_SUPPORT
 #endif
 }
@@ -684,7 +684,7 @@ void FileTransferWindow::openLocalFileWith()
 		KUrl url;
 		url.setPath(tmp);
 		lst.append(url);
-		KRun::displayOpenWithDialog(lst,g_pFrame);
+		KRun::displayOpenWithDialog(lst,g_pMainWindow);
 	#endif //COMPILE_KDE_SUPPORT
 #endif
 }
@@ -730,7 +730,7 @@ void FileTransferWindow::openLocalFileFolder()
 		KUrl url;
 		url.setPath(tmp);
 		lst.append(url);
-		KRun::run(*offer,lst,g_pFrame);
+		KRun::run(*offer,lst,g_pMainWindow);
 	#endif //COMPILE_KDE_SUPPORT
 #endif
 }

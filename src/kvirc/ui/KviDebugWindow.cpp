@@ -42,12 +42,12 @@ KviDebugWindow * KviDebugWindow::m_pInstance = 0;
 
 
 KviDebugWindow::KviDebugWindow()
-: KviWindow(KVI_WINDOW_TYPE_DEBUG,g_pFrame,__tr2qs("Debug Messages"),0)
+: KviWindow(KVI_WINDOW_TYPE_DEBUG,g_pMainWindow,__tr2qs("Debug Messages"),0)
 {
 	m_pInstance = this;
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
-	m_pIrcView = new KviIrcView(m_pSplitter,g_pFrame,this);
+	m_pIrcView = new KviIrcView(m_pSplitter,g_pMainWindow,this);
 	m_pInput   = new KviInput(this,0);
 	updateCaption();
 }
@@ -61,7 +61,7 @@ KviDebugWindow * KviDebugWindow::getInstance()
 {
 	if(m_pInstance)return m_pInstance;
 	m_pInstance = new KviDebugWindow();
-	g_pFrame->addWindow(m_pInstance,!KVI_OPTION_BOOL(KviOption_boolShowMinimizedDebugWindow));
+	g_pMainWindow->addWindow(m_pInstance,!KVI_OPTION_BOOL(KviOption_boolShowMinimizedDebugWindow));
 	if(KVI_OPTION_BOOL(KviOption_boolShowMinimizedDebugWindow))
 		m_pInstance->minimize();
 	return m_pInstance;

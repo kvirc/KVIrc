@@ -63,7 +63,7 @@ extern QPixmap * g_pActivityMeterPixmap;
 //
 
 KviWindowListBase::KviWindowListBase()
-: QDockWidget(__tr2qs("Window List"),g_pFrame)
+: QDockWidget(__tr2qs("Window List"),g_pMainWindow)
 {
 	// FIXME: this timer should be started only if KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)
 	setObjectName(__tr2qs("windowlist"));
@@ -147,7 +147,7 @@ void KviWindowListBase::switchWindow(bool bNext,bool bInContextOnly,bool bHighli
 				continue;
 			if(bInContextOnly && it->kviWindow()->console() != cons)
 				continue;
-			g_pFrame->setActiveWindow(it->kviWindow());
+			g_pMainWindow->setActiveWindow(it->kviWindow());
 			return;
 		}
 	}
@@ -236,7 +236,7 @@ void KviWindowListButton::mousePressEvent(QMouseEvent *e)
 		{
 			m_pWindow->delayedClose();
 		} else {
-			if((g_pActiveWindow != m_pWindow)  || (m_pWindow->isMinimized()))g_pFrame->setActiveWindow(m_pWindow);
+			if((g_pActiveWindow != m_pWindow)  || (m_pWindow->isMinimized()))g_pMainWindow->setActiveWindow(m_pWindow);
 			else m_pWindow->minimize();
 		}
 	} else m_pWindow->contextPopup();
@@ -446,8 +446,8 @@ void KviWindowListButton::unhighlight()
 	if(m_iHighlightLevel < 1)
 		return;
 	m_iHighlightLevel = 0;
-	if(g_pFrame->dockExtension())
-		g_pFrame->dockExtension()->refresh();
+	if(g_pMainWindow->dockExtension())
+		g_pMainWindow->dockExtension()->refresh();
 	update();
 }
 
@@ -455,11 +455,11 @@ void KviWindowListButton::highlight(int iLevel)
 {
 	if(iLevel <= m_iHighlightLevel)
 		return;
-	if(m_bActive && g_pFrame->isActiveWindow())
+	if(m_bActive && g_pMainWindow->isActiveWindow())
 		return;
 	m_iHighlightLevel = iLevel;
-	if(g_pFrame->dockExtension())
-		g_pFrame->dockExtension()->refresh();
+	if(g_pMainWindow->dockExtension())
+		g_pMainWindow->dockExtension()->refresh();
 	update();
 	if(m_bActive)
 		return;
@@ -583,8 +583,8 @@ KviWindowListItem * KviClassicWindowList::addItem(KviWindow * wnd)
 	insertButton(b);
 	b->show();
 	doLayout();
-	if(g_pFrame->dockExtension())
-		g_pFrame->dockExtension()->refresh();
+	if(g_pMainWindow->dockExtension())
+		g_pMainWindow->dockExtension()->refresh();
 /*	if(b->width() < m_pBase->width()) m_pBase->setMinimumWidth(b->width());
 	if(b->height() < m_pBase->height()) m_pBase->setMinimumWidth(b->height());*/
 	return b;
@@ -596,8 +596,8 @@ bool KviClassicWindowList::removeItem(KviWindowListItem * it)
 	{
 		m_pButtonList->removeRef((KviWindowListButton *)it);
 		doLayout();
-		if(g_pFrame->dockExtension())
-			g_pFrame->dockExtension()->refresh();
+		if(g_pMainWindow->dockExtension())
+			g_pMainWindow->dockExtension()->refresh();
 	}
 	return true;
 }
@@ -610,8 +610,8 @@ void KviClassicWindowList::setActiveItem(KviWindowListItem * it)
 		{
 			b->setActive(((KviWindowListButton *)it) == b);
 		}
-		if(g_pFrame->dockExtension())
-			g_pFrame->dockExtension()->refresh();
+		if(g_pMainWindow->dockExtension())
+			g_pMainWindow->dockExtension()->refresh();
 	}
 }
 
@@ -640,7 +640,7 @@ void KviClassicWindowList::doLayout()
 		totCount -= btnsInRow;
 	}
 
-	if(isFloating() || ((g_pFrame->dockWidgetArea(this) != Qt::BottomDockWidgetArea) && (g_pFrame->dockWidgetArea(this) != Qt::TopDockWidgetArea)))
+	if(isFloating() || ((g_pMainWindow->dockWidgetArea(this) != Qt::BottomDockWidgetArea) && (g_pMainWindow->dockWidgetArea(this) != Qt::TopDockWidgetArea)))
 	{
 		QDockWidget::DockWidgetFeatures f = features();
 		if(f & QDockWidget::DockWidgetVerticalTitleBar)

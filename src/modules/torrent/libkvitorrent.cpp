@@ -878,8 +878,8 @@ static bool torrent_module_init(KviModule *m)
 
 	TorrentInterface::select(0);
 
-	if (g_pFrame->mainStatusBar())
-		StatusBarApplet::selfRegister(g_pFrame->mainStatusBar());
+	if (g_pMainWindow->mainStatusBar())
+		StatusBarApplet::selfRegister(g_pMainWindow->mainStatusBar());
 
 
 	if(KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) == "auto")

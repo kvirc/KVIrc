@@ -70,7 +70,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_dialog)
 bool KvsObject_dialog::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	QWidget * w = g_pApp->activeModalWidget();
-	if(!w)w = g_pFrame;
+	if(!w)w = g_pMainWindow;
 	QDialog * d = new QDialog(parentScriptWidget() ? parentScriptWidget() : w);
 	d->setObjectName(getName());
 	//d->setModal(true);

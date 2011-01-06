@@ -328,13 +328,6 @@ protected:
 	void frameDestructorCallback();
 	void heartbeat(kvi_time_t tNow);
 	virtual void timerEvent(QTimerEvent *e);
-public slots:
-	// KviApplication.cpp : Slots
-	void saveConfiguration();
-	void updateGui();
-	void updatePseudoTransparency();
-	void restoreDefaultScript();
-	void addRecentUrl(const QString& text);
 private:
 	void createSplashScreen();
 	void destroySplashScreen();
@@ -357,18 +350,26 @@ private:
 	// KviApplication.cpp : GUI stuff
 	void updateApplicationFont();
 
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	void createGlobalBackgrounds(QPixmap * pix);
-	void destroyPseudoTransparency();
-#endif //COMPILE_PSEUDO_TRANSPARENCY
-private:
 	// KviApplication.cpp : parts of setup()
 	void loadRecentEntries();
 #ifndef COMPILE_NO_IPC
 	void createIpcSentinel();
 	void destroyIpcSentinel();
-#endif //!COMPILE_NO_IPC
+#endif // COMPILE_NO_IPC
 	void createFrame();
+
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	void createGlobalBackgrounds(QPixmap * pix);
+	void destroyPseudoTransparency();
+#endif //COMPILE_PSEUDO_TRANSPARENCY
+public slots:
+	// KviApplication.cpp : Slots
+	void saveConfiguration();
+	void updateGui();
+	void updatePseudoTransparency();
+	void restoreDefaultScript();
+	void addRecentUrl(const QString& text);
+	void showParentFrame();
 signals:
 	void reloadImages();
 	void updateNotifier();

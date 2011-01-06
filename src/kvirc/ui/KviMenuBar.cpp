@@ -234,7 +234,7 @@ void KviMenuBar::setupMainPopup()
 #ifndef COMPILE_ON_MAC
 	main->insertSeparator();
 
-	main->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),__tr2qs("&Quit"),g_pFrame,SLOT(close()));
+	main->insertItem(*(g_pIconManager->getSmallIcon(KviIconManager::QuitApp)),__tr2qs("&Quit"),g_pMainWindow,SLOT(close()));
 #endif //COMPILE_ON_MAC
 }
 

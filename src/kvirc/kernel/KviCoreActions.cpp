@@ -367,7 +367,7 @@ void register_core_actions(KviActionManager * m)
 
 	SLOT_ACTION(
 		KVI_COREACTION_CASCADEWINDOWS,
-		g_pFrame->mdiManager(),
+		g_pMainWindow->mdiManager(),
 		SLOT(cascadeMaximized()),
 		__tr2qs("Cascade windows"),
 		__tr2qs("Arranges the MDI windows in a maximized-cascade fashion"),
@@ -379,7 +379,7 @@ void register_core_actions(KviActionManager * m)
 
 	SLOT_ACTION(
 		KVI_COREACTION_TILEWINDOWS,
-		g_pFrame->mdiManager(),
+		g_pMainWindow->mdiManager(),
 		SLOT(tile()),
 		__tr2qs("Tile windows"),
 		__tr2qs("Tiles the MDI windows with the currently selected tile method"),
@@ -391,7 +391,7 @@ void register_core_actions(KviActionManager * m)
 
 	SLOT_ACTION(
 		KVI_COREACTION_MINIMIZEALLWINDOWS,
-		g_pFrame->mdiManager(),
+		g_pMainWindow->mdiManager(),
 		SLOT(minimizeAll()),
 		__tr2qs("Minimize all windows"),
 		__tr2qs("Minimized all the currently visible MDI windows"),
@@ -403,7 +403,7 @@ void register_core_actions(KviActionManager * m)
 
 	SLOT_ACTION(
 		KVI_COREACTION_NEWIRCCONTEXT,
-		g_pFrame,
+		g_pMainWindow,
 		SLOT(newConsole()),
 		__tr2qs("New IRC Context"),
 		__tr2qs("Creates a new IRC context console"),
@@ -442,11 +442,11 @@ KviIrcContextDisplayAction::KviIrcContextDisplayAction(QObject * pParent)
 void KviIrcContextDisplayAction::setup()
 {
 	KviAction::setup();
-	connect(g_pFrame,SIGNAL(activeConnectionServerInfoChanged()),this,SLOT(activeContextStateChanged()));
-	connect(g_pFrame,SIGNAL(activeConnectionNickNameChanged()),this,SLOT(activeContextStateChanged()));
-	connect(g_pFrame,SIGNAL(activeConnectionUserModeChanged()),this,SLOT(activeContextStateChanged()));
-	connect(g_pFrame,SIGNAL(activeConnectionAwayStateChanged()),this,SLOT(activeContextStateChanged()));
-	connect(g_pFrame,SIGNAL(activeConnectionLagChanged()),this,SLOT(activeContextStateChanged()));
+	connect(g_pMainWindow,SIGNAL(activeConnectionServerInfoChanged()),this,SLOT(activeContextStateChanged()));
+	connect(g_pMainWindow,SIGNAL(activeConnectionNickNameChanged()),this,SLOT(activeContextStateChanged()));
+	connect(g_pMainWindow,SIGNAL(activeConnectionUserModeChanged()),this,SLOT(activeContextStateChanged()));
+	connect(g_pMainWindow,SIGNAL(activeConnectionAwayStateChanged()),this,SLOT(activeContextStateChanged()));
+	connect(g_pMainWindow,SIGNAL(activeConnectionLagChanged()),this,SLOT(activeContextStateChanged()));
 }
 
 bool KviIrcContextDisplayAction::addToPopupMenu(KviTalPopupMenu *)
@@ -552,7 +552,7 @@ void KviConnectAction::activeContextStateChanged()
 
 	QPixmap * p;
 	QString txt;
-	KviIrcContext * c = g_pFrame->activeContext();
+	KviIrcContext * c = g_pMainWindow->activeContext();
 	if(c)
 	{
 		switch(c->state())
@@ -604,7 +604,7 @@ void KviConnectAction::setup()
 
 void KviConnectAction::activate()
 {
-	KviIrcContext * c = g_pFrame->activeContext();
+	KviIrcContext * c = g_pMainWindow->activeContext();
 	if(c)
 		c->connectOrDisconnect();
 }
@@ -612,7 +612,7 @@ void KviConnectAction::activate()
 bool KviConnectAction::addToPopupMenu(KviTalPopupMenu *p)
 {
 	if(!setupDone())setup();
-	KviIrcContext * c = g_pFrame->activeContext();
+	KviIrcContext * c = g_pMainWindow->activeContext();
 	int id;
 
 
@@ -1007,7 +1007,7 @@ void KviGoAwayAction::activeContextStateChanged()
 
 	QPixmap * p;
 	QString txt;
-	KviIrcContext * c = g_pFrame->activeContext();
+	KviIrcContext * c = g_pMainWindow->activeContext();
 	if(c)
 	{
 		if(c->state() == KviIrcContext::Connected)
@@ -1052,13 +1052,13 @@ void KviGoAwayAction::setup()
 	KviKvsAction::setup();
 	m_szAwayString = __tr2qs("Enter Away Mode");
 	m_szBackString = __tr2qs("Leave Away Mode");
-	connect(g_pFrame,SIGNAL(activeConnectionAwayStateChanged()),this,SLOT(activeContextStateChanged()));
+	connect(g_pMainWindow,SIGNAL(activeConnectionAwayStateChanged()),this,SLOT(activeContextStateChanged()));
 }
 
 bool KviGoAwayAction::addToPopupMenu(KviTalPopupMenu *p)
 {
 	if(!setupDone())setup();
-	KviIrcContext * c = g_pFrame->activeContext();
+	KviIrcContext * c = g_pMainWindow->activeContext();
 	int id;
 	QString t;
 	if(c)

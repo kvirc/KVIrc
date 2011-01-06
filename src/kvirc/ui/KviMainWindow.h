@@ -238,7 +238,7 @@ private:
 };
 
 #ifndef _KVI_FRAME_CPP_
-	extern KVIRC_API KviMainWindow * g_pFrame;
+	extern KVIRC_API KviMainWindow * g_pMainWindow;
 #endif
 
 #endif //_KVI_FRAME_H_

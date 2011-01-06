@@ -380,14 +380,14 @@ void KviWindow::createWindowListItem()
 {
 	if(m_pWindowListItem)
 		return;
-	m_pWindowListItem = g_pFrame->m_pWindowList->addItem(this);
+	m_pWindowListItem = g_pMainWindow->m_pWindowList->addItem(this);
 }
 
 void KviWindow::destroyWindowListItem()
 {
 	if(m_pWindowListItem)
 	{
-		g_pFrame->m_pWindowList->removeItem(m_pWindowListItem);
+		g_pMainWindow->m_pWindowList->removeItem(m_pWindowListItem);
 		m_pWindowListItem = 0;
 	}
 }
@@ -822,10 +822,10 @@ void KviWindow::savePropertiesAsDefault()
 	if(!KviQString::equalCI(group,typeString()))
 	{
 		// save also the settings for THIS specialized window
-		g_pFrame->saveWindowProperties(this,group);
+		g_pMainWindow->saveWindowProperties(this,group);
 	}
 
-	g_pFrame->saveWindowProperties(this,typeString());
+	g_pMainWindow->saveWindowProperties(this,typeString());
 }
 
 void KviWindow::contextPopup()
@@ -835,13 +835,13 @@ void KviWindow::contextPopup()
 
 void KviWindow::undock()
 {
-	g_pFrame->undockWindow(this);
+	g_pMainWindow->undockWindow(this);
 }
 
 void KviWindow::dock()
 {
-	g_pFrame->dockWindow(this);
-	g_pFrame->setActiveWindow(this);
+	g_pMainWindow->dockWindow(this);
+	g_pMainWindow->setActiveWindow(this);
 }
 
 void KviWindow::delayedAutoRaise()
@@ -870,13 +870,13 @@ void KviWindow::delayedClose()
 void KviWindow::closeEvent(QCloseEvent *e)
 {
 	e->ignore();
-	if(g_pFrame)
+	if(g_pMainWindow)
 	{
-		g_pFrame->childWindowCloseRequest(this);
+		g_pMainWindow->childWindowCloseRequest(this);
 	} else {
-		/* In kvi_app destructor, g_pFrame gets deleted before modules gets unloaded.
+		/* In kvi_app destructor, g_pMainWindow gets deleted before modules gets unloaded.
 		 * So if a module tries to destroy a kviwindow while it gets unloaded, we end up here,
-		 * having to delete this window without the help of g_pFrame.
+		 * having to delete this window without the help of g_pMainWindow.
 		 * So we have 3 choices:
 		 * 1) delete this => will just print a qt warning "don't delete things on their event handler"
 		 * 2) deleteLater() => will tipically create an infinite recursion in the module unload routine
@@ -920,7 +920,7 @@ void KviWindow::activateSelf()
 	if(mdiParent())
 		mdiParent()->activate();
 
-	g_pFrame->childWindowActivated(this);
+	g_pMainWindow->childWindowActivated(this);
 }
 
 void KviWindow::setFocus()
