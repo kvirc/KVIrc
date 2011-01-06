@@ -39,20 +39,70 @@
 // assume CMake build system for all systems
 #include "kvi_sysconfig.h"
 
-// FIXME: Once we have a stable CMake build system, this section needs a cleanup.
-#if (defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)) && !defined(MINGW)
+/**
+ * \def KVILIB_API This prefix before a class name or function enables the export of its symbols outside kvilib; needed for win32/visual studio, win32/mingw, linux/gcc.
+ * \def KVILIB_API_TYPEDEF This prefix before a typedef enables the export of its symbol outside kvilib; needed for win32/visual studio, win32/mingw
+ */
+
+/**
+ * \def KVIRC_API This prefix before a class name or function enables the export of its symbols outside kvirc; needed for win32/visual studio, win32/mingw, linux/gcc.
+ * \def KVIRC_API_TYPEDEF This prefix before a typedef enables the export of its symbol outside kvirc; needed for win32/visual studio, win32/mingw
+ */
+// note: MINGW is a cmake-set variable
+#ifdef MINGW
 
 	/**
-	 * \def COMPILE_WITH_SYSTEM_MEMMOVE This flag will disable kvirc's internal optimized memmove functions
+	 * \def COMPILE_ON_MINGW This flag will enable specific code for windows/mingw (cross)compilation
+	 */
+	#define COMPILE_ON_MINGW
+
+	#ifdef __KVILIB__
+		#define KVILIB_API __declspec(dllexport) __attribute__((visibility("default")))
+		#define KVILIB_API_TYPEDEF __declspec(dllexport)
+	#else
+		#define KVILIB_API __declspec(dllimport) __attribute__((visibility("default")))
+		#define KVILIB_API_TYPEDEF __declspec(dllimport)
+	#endif
+
+	#ifdef __KVIRC__
+		#define KVIRC_API __declspec(dllexport) __attribute__((visibility("default")))
+		#define KVIRC_API_TYPEDEF __declspec(dllexport)
+	#else
+		#define KVIRC_API __declspec(dllimport) __attribute__((visibility("default")))
+		#define KVIRC_API_TYPEDEF __declspec(dllimport)
+	#endif
+	
+// note: unofficial cmake ports defines OS2
+#elif defined(OS2)
+
+	// os2 ports still uses mingw/gcc
+	#define COMPILE_ON_MINGW
+
+	// visibility attribute is not supported by gcc/os2
+	#ifdef __KVILIB__
+		#define KVILIB_API __declspec(dllexport)
+		#define KVILIB_API_TYPEDEF __declspec(dllexport)
+	#else
+		#define KVILIB_API __declspec(dllimport)
+		#define KVILIB_API_TYPEDEF __declspec(dllimport)
+	#endif
+
+	#ifdef __KVIRC__
+		#define KVIRC_API __declspec(dllexport)
+		#define KVIRC_API_TYPEDEF __declspec(dllexport)
+	#else
+		#define KVIRC_API __declspec(dllimport)
+		#define KVIRC_API_TYPEDEF __declspec(dllimport)
+	#endif
+
+// note: cmake defines "WIN32" but we're not using it since it includes cygwin, too
+// we use qt's Q_OS_WIN32 instead (and its variants)
+#elif (defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_))
+
+	/**
 	 * \def COMPILE_ON_WINDOWS This flag will enable specific code for windows/visual studio compilation
 	 */
-
 	#define COMPILE_ON_WINDOWS
-
-	/**
-	 * \def KVILIB_API This prefix before a class name or function enables the export of its symbols outside kvilib; needed for win32/visual studio, win32/mingw, linux/gcc.
-	 * \def KVILIB_API_TYPEDEF This prefix before a typedef enables the export of its symbol outside kvilib; needed for win32/visual studio, win32/mingw
-	 */
 
 	#ifdef __KVILIB__
 		#define KVILIB_API __declspec(dllexport)
@@ -62,11 +112,6 @@
 		#define KVILIB_API_TYPEDEF __declspec(dllimport)
 	#endif
 
-	/**
-	 * \def KVIRC_API This prefix before a class name or function enables the export of its symbols outside kvirc; needed for win32/visual studio, win32/mingw, linux/gcc.
-	 * \def KVIRC_API_TYPEDEF This prefix before a typedef enables the export of its symbol outside kvirc; needed for win32/visual studio, win32/mingw
-	 */
-
 	#ifdef __KVIRC__
 		#define KVIRC_API __declspec(dllexport)
 		#define KVIRC_API_TYPEDEF __declspec(dllexport)
@@ -74,41 +119,17 @@
 		#define KVIRC_API __declspec(dllimport)
 		#define KVIRC_API_TYPEDEF __declspec(dllimport)
 	#endif
+
 #else
-	#ifdef MINGW
-
-	/**
-	 * \def COMPILE_ON_MINGW This flag will enable specific code for windows/mingw compilation
-	 * \def COMPILE_NO_X This flag forces X11 support to be disabled
-	 */
-		#define COMPILE_ON_MINGW
-		#define COMPILE_NO_X
-		#define COMPILE_WITH_SYSTEM_MEMMOVE
-
-		#ifdef __KVILIB__
-			#define KVILIB_API __declspec(dllexport) __attribute__((visibility("default")))
-			#define KVILIB_API_TYPEDEF __declspec(dllexport)
-		#else
-			#define KVILIB_API __declspec(dllimport) __attribute__((visibility("default")))
-			#define KVILIB_API_TYPEDEF __declspec(dllimport)
-		#endif
-
-		#ifdef __KVIRC__
-			#define KVIRC_API __declspec(dllexport) __attribute__((visibility("default")))
-			#define KVIRC_API_TYPEDEF __declspec(dllexport)
-		#else
-			#define KVIRC_API __declspec(dllimport) __attribute__((visibility("default")))
-			#define KVIRC_API_TYPEDEF __declspec(dllimport)
-		#endif
-	#else
-
-		#define KVILIB_API __attribute__((visibility("default")))
-		#define KVILIB_API_TYPEDEF
+	// we failback on unix/linux variants
+	#define KVILIB_API __attribute__((visibility("default")))
+	#define KVILIB_API_TYPEDEF
 		
-		#define KVIRC_API __attribute__((visibility("default")))
-		#define KVIRC_API_TYPEDEF
-	#endif
+	#define KVIRC_API __attribute__((visibility("default")))
+	#define KVIRC_API_TYPEDEF
 
+	// note: cmake defines "APPLE" but we're not using it since it includes legacy mac os version (pre-X)
+	// we use qt's Q_OS_MACX instead
 	#ifdef Q_OS_MACX
 		/**
 		* \def COMPILE_ON_MAC This flag will enable specific code for mac compilation
@@ -126,7 +147,6 @@
 * \def KVI_RELEASE_NAME Defines the codename for the current kvirc release
 * \def _GNU_SOURCE Enables _GNU_SOURCE features
 * \def KVI_PTR2MEMBER Cross-platform macro that returns a member from its pointer
-* \def COMPILE_NO_X_BELL Enasures X bell is disabled if X is disabled
 * \def KVI_DEPRECATED Prefix for deprecated objects inside kvirc code (currently unused)
 * \def BIG_ENDIAN_MACHINE_BYTE_ORDER If defined, the current target processor is big endian, little endian otherwise
 */
@@ -164,12 +184,6 @@
 #else
 	// default
 	#define KVI_PTR2MEMBER(__x) &(__x)
-#endif
-
-#ifdef COMPILE_NO_X
-	#ifndef COMPILE_NO_X_BELL
-		#define COMPILE_NO_X_BELL
-	#endif
 #endif
 
 #define KVI_DEPRECATED

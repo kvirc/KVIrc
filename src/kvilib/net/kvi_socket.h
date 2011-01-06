@@ -42,7 +42,7 @@
 
 
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if defined(COMPILE_ON_WINDOWS) || (defined(COMPILE_ON_MINGW) && !defined(OS2))
 
 	#define KVI_INVALID_SOCKET INVALID_SOCKET
 
@@ -62,7 +62,7 @@
 	#define KVI_PROTECTION_LEVEL_UNRESTRICTED  PROTECTION_LEVEL_UNRESTRICTED
 	#define KVI_IPPROTO_IPV6                   IPPROTO_IPV6
 	
-#else //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
+#else //!(defined(COMPILE_ON_WINDOWS) || (defined(COMPILE_ON_MINGW) && !defined(OS2))
 
 	#include <sys/time.h>
 	#include <sys/types.h>
@@ -73,7 +73,7 @@
 	#include <unistd.h>
 
 	#define KVI_INVALID_SOCKET (-1)
-#endif //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
+#endif //!(defined(COMPILE_ON_WINDOWS) || (defined(COMPILE_ON_MINGW) && !defined(OS2))
 
 #ifndef MSG_NOSIGNAL
 	// At least solaris seems to not have it
