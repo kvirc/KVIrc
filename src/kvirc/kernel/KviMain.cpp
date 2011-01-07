@@ -355,7 +355,6 @@ int main(int argc, char ** argv)
 	}
 
 #ifdef COMPILE_KDE_SUPPORT
-
 	KAboutData * pAboutData = new KAboutData(
 		"kvirc", // internal program name
 		"kvirc", // message catalogue name
@@ -372,11 +371,12 @@ int main(int argc, char ** argv)
 	//fake argc/argv initialization: kde will use argv[0] as out appName in some dialogs
 	// (eg: kdebase/workspace/kwin/killer/killer.cpp)
 	KCmdLineArgs::init(1, &argv[0], pAboutData);
-
 #endif
 
 	KviApplication * pTheApp = new KviApplication(argc,argv);
+#ifdef COMPILE_KDE_SUPPORT
 	pTheApp->setAboutData(pAboutData);
+#endif
 
 #ifdef COMPILE_DBUS_SUPPORT
 	#ifndef COMPILE_KDE_SUPPORT
