@@ -1,21 +1,21 @@
 # translation of kvirc_pt.po to Português
 # Zé <mmodem00@netvisao.pt>, 2003, 2004, 2005.
 # Zé <mmodem00@gmail.com>, 2006, 2007, 2008, 2010.
-# Zé <ze@mandriva.org>, 2008, 2010.
+# Zé <ze@mandriva.org>, 2008, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-12-22 09:55+0100\n"
-"PO-Revision-Date: 2010-12-06 01:23+0000\n"
+"PO-Revision-Date: 2011-01-07 00:12+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
-"Language-Team: Portuguese <>\n"
+"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.2\n"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:643
 msgid ""
@@ -303,14 +303,12 @@ msgid "%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 msgstr "%c\r!n\r%Q\r%c era %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1544
-#, fuzzy
 msgid "%c\r!n\r%Q\r%c's actual host: %Q"
-msgstr "%c\r!n\r%Q\r%c canais: %Q"
+msgstr "%c\r!n\r%Q\r%c endereço actual: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1540
-#, fuzzy
 msgid "%c\r!n\r%Q\r%c's actual user@host: %Q, actual ip: %Q"
-msgstr "%c\r!n\r%Q\ro código de página de %c é %Q: %Q"
+msgstr "%c\r!n\r%Q\r%c endereço actual utilizador@endereço: %Q, ip actual: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1365
 msgid "%c\r!n\r%Q\r%c's channels: %Q"
@@ -1617,7 +1615,7 @@ msgstr "&Diferenciar maiúsculas"
 #: src/kvirc/ui/kvi_console.cpp:97
 #: src/kvirc/ui/kvi_console.cpp:99
 msgid "CONSOLE"
-msgstr ""
+msgstr "CONSOLA"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1498
 msgid "CTCP ACTION from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -2602,9 +2600,8 @@ msgstr "A janela actual não é um canal"
 #: src/kvirc/ui/kvi_window.cpp:701
 #: src/kvirc/ui/kvi_window.cpp:741
 #: src/kvirc/ui/kvi_window.cpp:788
-#, fuzzy
 msgid "Current: "
-msgstr "Actual IRC URI"
+msgstr "Actual: "
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:2229
 msgid "Currently enabled capabilities: %Q"
@@ -6630,9 +6627,8 @@ msgid "Text"
 msgstr "Texto"
 
 #: src/kvirc/ui/kvi_window.cpp:419
-#, fuzzy
 msgid "Text Encoding"
-msgstr "&Codificação de Texto"
+msgstr "Codificação de Texto"
 
 #: src/kvirc/kernel/kvi_options.cpp:860
 msgid "Text Encoding Server message"
@@ -7695,14 +7691,12 @@ msgid "Using cached server IP address (%s)"
 msgstr "A usar o endereço IP em caixa do servidor (%s)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1184
-#, fuzzy
 msgid "Using connection specific nickname (%Q)"
-msgstr "A usar alcunha específica de conexão (%Q)"
+msgstr "A usar alcunha específica da conexão (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1243
-#, fuzzy
 msgid "Using connection specific password (%Q)"
-msgstr "A usar senha especifica da rede (%s)"
+msgstr "A usar senha especifica da conexão (%Q)"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:137
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
@@ -7713,9 +7707,8 @@ msgid "Using network specific nickname (%Q)"
 msgstr "A usar alcunha específica da rede (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1261
-#, fuzzy
 msgid "Using network specific password (%Q)"
-msgstr "A usar senha especifica da rede (%s)"
+msgstr "A usar senha especifica da rede (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1224
 msgid "Using network specific real name (%Q)"
@@ -7734,9 +7727,8 @@ msgid "Using server specific nickname (%Q)"
 msgstr "A usar alcunha específica do servidor (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1252
-#, fuzzy
 msgid "Using server specific password (%Q)"
-msgstr "A usar senha especifica do servidor (%s)"
+msgstr "A usar senha especifica do servidor (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1218
 msgid "Using server specific real name (%Q)"

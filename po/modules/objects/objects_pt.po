@@ -3,20 +3,20 @@
 # This file is distributed under the same license as the KVIrc package.
 #
 # Zé <mmodem00@gmail.com>, 2010.
-# Zé <ze@mandriva.org>, 2010.
+# Zé <ze@mandriva.org>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_objects \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-12-22 09:55+0100\n"
-"PO-Revision-Date: 2010-12-06 01:19+0000\n"
+"PO-Revision-Date: 2011-01-07 17:53+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/objects/class_painter.cpp:649
@@ -313,34 +313,28 @@ msgid "Image parameter missing"
 msgstr "Parâmetro de imagem em falta"
 
 #: src/modules/objects/libkviobjects.cpp:561
-#, fuzzy
 msgid "Inexistant class object for objects.name"
-msgstr "O objecto classe para objectos.nome não existe"
+msgstr "Objecto classe inexistente para objects.name"
 
 #: src/modules/objects/libkviobjects.cpp:270
-#, fuzzy
 msgid "Inexistant source object for objects.connect"
-msgstr "O objecto fonte para objectos.ligar não existe"
+msgstr "Objecto fonte inexistente para objects.connect"
 
 #: src/modules/objects/libkviobjects.cpp:609
-#, fuzzy
 msgid "Inexistant source object for objects.disconnect"
-msgstr "O objecto fonte para objectos.desligar não existe"
+msgstr "Objecto fonte inexistente para objects.disconnect"
 
 #: src/modules/objects/libkviobjects.cpp:265
-#, fuzzy
 msgid "Inexistant target object for objects.connect"
-msgstr "O objecto destino para objectos.ligar não existe"
+msgstr "Objecto de destino inexistente para objects.connect"
 
 #: src/modules/objects/libkviobjects.cpp:604
-#, fuzzy
 msgid "Inexistant target object for objects.disconnect"
-msgstr "O objecto destino para objectos.desligar não existe"
+msgstr "Objecto de destino inexistente para objects.disconnect"
 
 #: src/modules/objects/libkviobjects.cpp:275
-#, fuzzy
 msgid "Inexistant target slot '%Q' for objects.connect"
-msgstr "O encaixe de destino '%Q' para objectos.ligar não existe"
+msgstr "Ranhura de encaixe inexistente '%Q' para objects.connect"
 
 #: src/modules/objects/object_macros.h:104
 msgid "Internal error: no valid pointer for this object"
