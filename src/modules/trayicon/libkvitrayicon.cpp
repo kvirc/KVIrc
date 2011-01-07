@@ -249,7 +249,7 @@ void TrayIcon::doAway(bool)
 		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 		while(KviWindow * wnd = it.current())
 		{
-			if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
+			if(wnd->type()==KviWindow::Console)
 			{
 				KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
 				if(pConsole->isConnected())
@@ -307,7 +307,7 @@ void TrayIcon::fillContextPopup()
 		int iNetCount=0;
 		while(KviWindow * wnd = it.current())
 		{
-			if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
+			if(wnd->type()==KviWindow::Console)
 			{
 				KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
 				if(pConsole->isConnected())
@@ -476,13 +476,13 @@ void TrayIcon::grabActivityInfo()
 			unsigned int iLevel = b->highlightLevel();
 			switch(b->kviWindow()->type())
 			{
-				case KVI_WINDOW_TYPE_CONSOLE:
+				case KviWindow::Console:
 					if(m_iConsoles < iLevel) m_iConsoles = iLevel;
 				break;
-				case KVI_WINDOW_TYPE_CHANNEL:
+				case KviWindow::Channel:
 					if(m_iChannels < iLevel) m_iChannels = iLevel;
 				break;
-				case KVI_WINDOW_TYPE_QUERY:
+				case KviWindow::Query:
 					if(m_iQueries < iLevel) m_iQueries = iLevel;
 				break;
 				default:
@@ -503,13 +503,13 @@ void TrayIcon::grabActivityInfo()
 				if(iLevel>0)
 				switch(b->kviWindow()->type())
 				{
-					case KVI_WINDOW_TYPE_CONSOLE:
+					case KviWindow::Console:
 						if(m_iConsoles < iLevel) m_iConsoles = iLevel;
 					break;
-					case KVI_WINDOW_TYPE_CHANNEL:
+					case KviWindow::Channel:
 						if(m_iChannels < iLevel) m_iChannels = iLevel;
 					break;
-					case KVI_WINDOW_TYPE_QUERY:
+					case KviWindow::Query:
 						if(m_iQueries < iLevel) m_iQueries = iLevel;
 					break;
 					default:

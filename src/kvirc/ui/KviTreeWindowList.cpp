@@ -77,17 +77,17 @@ void KviTreeWindowListItem::captionChanged()
 
 	switch(m_pWindow->type())
 	{
-		case KVI_WINDOW_TYPE_CONSOLE:
+		case KviWindow::Console:
 		{
 			KviWindowListBase::getTextForConsole(szText,(KviConsoleWindow *)m_pWindow);
 		}
 		break;
-		case KVI_WINDOW_TYPE_CHANNEL:
-		case KVI_WINDOW_TYPE_DEADCHANNEL:
+		case KviWindow::Channel:
+		case KviWindow::DeadChannel:
 			szText = ((KviChannelWindow *)m_pWindow)->nameWithUserFlag();
 		break;
-		case KVI_WINDOW_TYPE_QUERY:
-		case KVI_WINDOW_TYPE_DEADQUERY:
+		case KviWindow::Query:
+		case KviWindow::DeadQuery:
 			szText = m_pWindow->windowName();
 		break;
 		default:
@@ -149,21 +149,21 @@ QString KviTreeWindowListItem::key() const
 	int iType = m_pWindow->type();
 
 	// ensure dead/alive channels and queries stay in the same position
-	if(iType == KVI_WINDOW_TYPE_DEADCHANNEL)
-		iType = KVI_WINDOW_TYPE_CHANNEL;
-	if(iType == KVI_WINDOW_TYPE_DEADQUERY)
-		iType = KVI_WINDOW_TYPE_QUERY;
+	if(iType == KviWindow::DeadChannel)
+		iType = KviWindow::Channel;
+	if(iType == KviWindow::DeadQuery)
+		iType = KviWindow::Query;
 
 	if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName))
 	{
-		if(iType==KVI_WINDOW_TYPE_CONSOLE)
+		if(iType==KviWindow::Console)
 		{
 			ret.sprintf("%2d%4u",iType,((KviConsoleWindow*)m_pWindow)->context() ? ((KviConsoleWindow*)m_pWindow)->context()->id() : 9999);
 		} else {
 			ret.sprintf("%2d%s",iType,m_pWindow->windowName().toLower().toUtf8().data());
 		}
 	} else {
-		if(iType==KVI_WINDOW_TYPE_CONSOLE)
+		if(iType==KviWindow::Console)
 		{
 			ret.sprintf("%2d%4u",iType,((KviConsoleWindow*)m_pWindow)->context() ? ((KviConsoleWindow*)m_pWindow)->context()->id() : 9999);
 		} else {
@@ -398,7 +398,7 @@ KviWindowListItem * KviTreeWindowList::addItem(KviWindow * wnd)
 	// complex insertion task
 	if(wnd->console())
 	{
-		if(wnd->type() != KVI_WINDOW_TYPE_CONSOLE)
+		if(wnd->type() != KviWindow::Console)
 		{
 			((KviTreeWindowListItem *)(wnd->console()->m_pWindowListItem))->setExpanded(true);
 			return new KviTreeWindowListItem(((KviTreeWindowListItem *)(wnd->console()->m_pWindowListItem)),wnd);
@@ -537,7 +537,7 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 
 	switch(pWindow->type())
 	{
-		case KVI_WINDOW_TYPE_CONSOLE:
+		case KviWindow::Console:
 		{
 			if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIrcContextIndicator))
 			{
@@ -566,10 +566,10 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			p->setFont(f);
 		}
 		break;
-		case KVI_WINDOW_TYPE_CHANNEL:
-		case KVI_WINDOW_TYPE_DEADCHANNEL:
-		case KVI_WINDOW_TYPE_QUERY:
-		case KVI_WINDOW_TYPE_DEADQUERY:
+		case KviWindow::Channel:
+		case KviWindow::DeadChannel:
+		case KviWindow::Query:
+		case KviWindow::DeadQuery:
 		default:
 			if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
 			{

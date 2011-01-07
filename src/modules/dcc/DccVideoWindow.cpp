@@ -416,7 +416,7 @@ exit_dcc:
 }
 
 DccVideoWindow::DccVideoWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const char * name)
-: DccWindow(KVI_WINDOW_TYPE_DCCVIDEO,pFrm,name,dcc)
+: DccWindow(KviWindow::DccVideo,pFrm,name,dcc)
 {
 	m_pDescriptor = dcc;
 	m_pSlaveThread = 0;

@@ -861,7 +861,7 @@ void ActionEditor::commit()
 
 
 ActionEditorWindow::ActionEditorWindow(KviMainWindow * lpFrm)
-: KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,lpFrm,"actioneditor",0)
+: KviWindow(KviWindow::ScriptEditor,lpFrm,"actioneditor",0)
 {
 	g_pActionEditorWindow = this;
 	setFixedCaption(__tr2qs_ctx("Action Editor","editor"));

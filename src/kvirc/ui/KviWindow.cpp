@@ -101,18 +101,18 @@ static QAction         * g_pMdiWindowSystemTextEncodingDefaultAction = 0;
 
 unsigned long int g_uUniqueWindowId = 1;
 
-KviWindow::KviWindow(int type,KviMainWindow * lpFrm,const QString &name,KviConsoleWindow * lpConsole)
-		: QWidget(0)
+KviWindow::KviWindow(Type eType, KviMainWindow * lpFrm, const QString & szName, KviConsoleWindow * lpConsole)
+: QWidget(0)
 {
 	m_uId = g_uUniqueWindowId;
 	g_uUniqueWindowId++;
 
-	m_szName = name;
-	setObjectName(name);
+	m_szName = szName;
+	setObjectName(szName);
 
 	g_pApp->registerWindow(this);
 
-	m_iType                 = type;
+	m_eType                 = eType;
 	m_pFocusHandler         = 0;
 
 	m_pFrm = lpFrm; // FIXME: Should disappear!
@@ -332,48 +332,44 @@ bool KviWindow::highlightMe(unsigned int v)
 	return true;
 }
 
-const char * KviWindow::m_typeTable[KVI_WINDOW_NUM_TYPES + 1]=
+const char * KviWindow::m_typeTable[TypeCount]=
 {
-	"console",
-	"channel",
-	"query",
-	"help",
-	"terminal",
-	"editor",
-	"dccchat",
-	"dccsend",
-	"socketspy",
-	"links",
-	"tool",
-	"gnutella",
-	"dirbrowser",
-	"dcccanvas",
-	"dccvoice",
-	"list",
-	"offer",
-	"logview",
-	"deadchannel",
-	"deadquery",
-	"scripteditor",
-	"scriptobject",
-	"userwindow",
-	"debug",
+	"console",  // 0
+	"channel",  // 1
+	"query",  // 2
+	"deadchannel",  // 3
+	"deadquery",  // 4
+	"editor",  // 5
+	"help",  // 6
+	"terminal",  // 7
+	"socketspy",  // 8
+	"links",  // 9
+	"list",  // 10
+	"dccchat",  // 11
+	"dcctransfer",  // 12
+	"dcccanvas",  // 13
+	"dccvoice",  // 14
+	"dccvideo",  // 15
+	"userwindow",  // 16
+	"tool",  // 17
+	"iograph",  // 18
+	"dirbrowser",  // 19
+	"scripteditor",  // 20
+	"scriptobject",  // 21
+	"logview",  // 22
+	"offer",  // 23
+	"debug",  // 24
 	// <------ NEW TYPES GO HERE!
-	"unknown"
+	"unknown"  // 25
 };
 
 const char * KviWindow::typeString()
 {
-	if(m_iType < KVI_WINDOW_NUM_TYPES)
+	if(m_eType < TypeCount)
 	{
-		return m_typeTable[m_iType];
+		return m_typeTable[m_eType];
 	}
-	return m_typeTable[KVI_WINDOW_NUM_TYPES];
-}
-
-void KviWindow::setType(int iType)
-{
-	m_iType = iType;
+	return m_typeTable[Unknown];
 }
 
 void KviWindow::createWindowListItem()
@@ -524,7 +520,7 @@ void KviWindow::setProgress(int progress)
 void KviWindow::listWindowTypes()
 {
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("List of window types available in this release of KVIrc:"));
-	for(int i=0;i< KVI_WINDOW_NUM_TYPES;i++)
+	for(int i=0;i< KviWindow::TypeCount;i++)
 		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,m_typeTable[i]);
 }
 
@@ -591,7 +587,7 @@ void KviWindow::saveProperties(KviConfigurationFile *cfg)
 	}
 
 	/*
-	if(m_pIrcView && m_iType==KVI_WINDOW_TYPE_CHANNEL)
+	if(m_pIrcView && m_eType==KviWindow::Channel)
 	if(m_pIrcView->isLogging())
 		cfg->writeEntry("LoggingEnabled",m_pIrcView->isLogging());
 	*/
@@ -608,7 +604,7 @@ void KviWindow::loadProperties(KviConfigurationFile *cfg)
 		m_pInput->setUserFriendly(cfg->readBoolEntry("commandLineIsUserFriendly",KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault)));
 	}
 	/*
-	if(m_pIrcView && m_iType==KVI_WINDOW_TYPE_CHANNEL)
+	if(m_pIrcView && m_eType==KviWindow::Channel)
 	{
 		bool bEnableLogs=cfg->readBoolEntry("LoggingEnabled",0);
 		if(!m_pIrcView->isLogging() && bEnableLogs)
@@ -948,7 +944,8 @@ void KviWindow::focusInEvent(QFocusEvent *)
 		// must find one NOW
 		// we probably have no KviInput since it would have been grabbed anyway
 
-		if(m_pIrcView)m_pFocusHandler = m_pIrcView;
+		if(m_pIrcView)
+			m_pFocusHandler = m_pIrcView;
 		else {
 			QList<QObject *> list = children();
 			for(QList<QObject *>::Iterator it = list.begin();it != list.end();++it)
@@ -961,7 +958,8 @@ void KviWindow::focusInEvent(QFocusEvent *)
 				}
 			}
 		}
-		if(m_pFocusHandler)m_pFocusHandler->setFocus();
+		if(m_pFocusHandler)
+			m_pFocusHandler->setFocus();
 		else {
 			// else too bad :/
 			qDebug("No widget able to handle focus for window %s",objectName().toUtf8().data());
@@ -976,18 +974,20 @@ void KviWindow::focusInEvent(QFocusEvent *)
 	// This should call activateSelf() and thus
 	// we should be already the active window at this point.
 	// If we're not, then run activateSelf() to fix this.
-	if(g_pActiveWindow != this)activateSelf();
+	if(g_pActiveWindow != this)
+		activateSelf();
 	//else qDebug("ACTIVE WINDOW IS ALREADY THIS");
 	updateCaption();
 }
 
-bool KviWindow::eventFilter(QObject *o,QEvent *e)
+bool KviWindow::eventFilter(QObject * pObject, QEvent * pEvent)
 {
-	switch(e->type())
+	switch(pEvent->type())
 	{
 		case QEvent::FocusIn:
-			m_pLastFocusedChild = (QWidget *)o;
-			if(g_pActiveWindow != this)activateSelf();
+			m_pLastFocusedChild = (QWidget *)pObject;
+			if(g_pActiveWindow != this)
+				activateSelf();
 			break;
 		case QEvent::Enter:
 			// this is a handler moved here from KviMdiChild::eventFilter
@@ -995,8 +995,8 @@ bool KviWindow::eventFilter(QObject *o,QEvent *e)
 				QApplication::restoreOverrideCursor();
 			break;
 		case QEvent::MouseButtonPress:
-			if( (((QWidget *)o)->focusPolicy() == Qt::NoFocus) ||
-				(((QWidget *)o)->focusPolicy() == Qt::TabFocus))
+			if((((QWidget *)pObject)->focusPolicy() == Qt::NoFocus) ||
+				(((QWidget *)pObject)->focusPolicy() == Qt::TabFocus))
 			{
 				// this will not focus our window
 				// set the focus to the focus handler
@@ -1007,20 +1007,18 @@ bool KviWindow::eventFilter(QObject *o,QEvent *e)
 				}
 
 				if(m_pFocusHandler)
-				{
 					m_pFocusHandler->setFocus();
-				} else {
+				else
 					setFocus(); // we grab the focus (someone must do it, damn :D)
-				}
 			}
 			break;
 		case QEvent::ChildAdded:
-			if(((QChildEvent *)e)->child()->isWidgetType())
-				childInserted((QWidget *)((QChildEvent *)e)->child());
+			if(((QChildEvent *)pEvent)->child()->isWidgetType())
+				childInserted((QWidget *)((QChildEvent *)pEvent)->child());
 			break;
 		case QEvent::ChildRemoved:
-			if(((QChildEvent *)e)->child()->isWidgetType())
-				childRemoved((QWidget *)((QChildEvent *)e)->child());
+			if(((QChildEvent *)pEvent)->child()->isWidgetType())
+				childRemoved((QWidget *)((QChildEvent *)pEvent)->child());
 			break;
 		default: /* make gcc happy */ break;
 	}
@@ -1033,7 +1031,7 @@ void KviWindow::childInserted(QWidget * o)
 	o->installEventFilter(this); // we filter its events
 	connect(o,SIGNAL(destroyed()),this,SLOT(childDestroyed()));
 
-	if(o->inherits("KviInput") || (m_iType==KVI_WINDOW_TYPE_LOGVIEW && o->inherits("KviIrcView")))
+	if(o->inherits("KviInput") || (m_eType==KviWindow::LogView && o->inherits("KviIrcView")))
 		m_pFocusHandler = o;
 	else
 	{
@@ -1119,12 +1117,12 @@ void KviWindow::updateBackgrounds(QObject * obj)
 	}
 }
 
-void KviWindow::moveEvent(QMoveEvent *e)
+void KviWindow::moveEvent(QMoveEvent * pEvent)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	updateBackgrounds();
 #endif
-	QWidget::moveEvent(e);
+	QWidget::moveEvent(pEvent);
 }
 
 void KviWindow::minimize()

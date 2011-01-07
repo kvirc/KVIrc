@@ -638,7 +638,7 @@ exit_dcc:
 
 
 DccVoiceWindow::DccVoiceWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const char * name)
-: DccWindow(KVI_WINDOW_TYPE_DCCVOICE,pFrm,name,dcc)
+: DccWindow(KviWindow::DccVoice,pFrm,name,dcc)
 {
 	m_pDescriptor = dcc;
 	m_pSlaveThread = 0;

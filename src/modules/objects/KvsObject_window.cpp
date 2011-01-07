@@ -34,7 +34,7 @@
 
 
 KviKvsScriptWindowWindow::KviKvsScriptWindowWindow(KviMainWindow * pParent,const QString &szName)
-: KviWindow(KVI_WINDOW_TYPE_SCRIPTOBJECT,pParent,szName)
+: KviWindow(KviWindow::ScriptObject,pParent,szName)
 {
 	m_pCentralWidget = 0;
 

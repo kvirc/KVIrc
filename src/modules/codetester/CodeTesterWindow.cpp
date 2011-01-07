@@ -82,7 +82,7 @@ void CodeTesterWidget::execute()
 }
 
 CodeTesterWindow::CodeTesterWindow(KviMainWindow * lpFrm)
-: KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,lpFrm,"codetester",0)
+: KviWindow(KviWindow::ScriptEditor,lpFrm,"codetester",0)
 {
 	g_pCodeTesterWindowList->append(this);
 

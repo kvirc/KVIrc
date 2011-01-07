@@ -40,8 +40,8 @@ static KviChannelWindow * chan_kvs_find_channel(KviKvsModuleFunctionCall * c, QS
 {
 	if(szChan.isEmpty())
 	{
-		if(c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)return (KviChannelWindow *)(c->window());
-		if(c->window()->type() == KVI_WINDOW_TYPE_DEADCHANNEL)return (KviChannelWindow *)(c->window());
+		if(c->window()->type() == KviWindow::Channel)return (KviChannelWindow *)(c->window());
+		if(c->window()->type() == KviWindow::DeadChannel)return (KviChannelWindow *)(c->window());
 		if(!bNoWarnings) c->warning(__tr2qs("The current window is not a channel"));
 	} else {
 		KviWindow * w = g_pApp->findWindow(szChan);
@@ -50,7 +50,7 @@ static KviChannelWindow * chan_kvs_find_channel(KviKvsModuleFunctionCall * c, QS
 			if(!bNoWarnings) c->warning(__tr2qs("Can't find the window with id '%Q'"),&szChan);
 			return 0;
 		}
-		if(w->type() == KVI_WINDOW_TYPE_CHANNEL)return (KviChannelWindow *)w;
+		if(w->type() == KviWindow::Channel)return (KviChannelWindow *)w;
 		if(!bNoWarnings) c->warning(__tr2qs("The specified window (%Q) is not a channel"),&szChan);
 	}
 	return 0;
@@ -151,7 +151,7 @@ static bool chan_kvs_fnc_isdead(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
 	KVSM_PARAMETERS_END(c)
 	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setBoolean((ch->type() == KVI_WINDOW_TYPE_DEADCHANNEL));
+	if (ch) c->returnValue()->setBoolean((ch->type() == KviWindow::DeadChannel));
 	return true;
 }
 

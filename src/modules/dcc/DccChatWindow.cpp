@@ -82,7 +82,7 @@ extern DccBroker * g_pDccBroker;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 DccChatWindow::DccChatWindow(KviMainWindow *pFrm,DccDescriptor * dcc,const char * name)
-: DccWindow(KVI_WINDOW_TYPE_DCCCHAT,pFrm,name,dcc)
+: DccWindow(KviWindow::DccChat,pFrm,name,dcc)
 {
 	m_pButtonBox = new KviTalHBox(this);
 

@@ -224,7 +224,7 @@ KviMainWindow::~KviMainWindow()
 	for(int i= m_pWinList->count()-1;i>=0;--i)
 	{
 		KviWindow* wnd=m_pWinList->at(i);
-		if(wnd->type() != KVI_WINDOW_TYPE_CONSOLE)
+		if(wnd->type() != KviWindow::Console)
 			closeWindow(wnd);
 	}
 
@@ -416,7 +416,7 @@ void KviMainWindow::closeWindow(KviWindow *wnd)
 	wnd->triggerDestructionEvents();
 
 	// save it's properties
-	if(KVI_OPTION_BOOL(KviOption_boolWindowsRememberProperties)) // && (wnd->type() == KVI_WINDOW_TYPE_CHANNEL))
+	if(KVI_OPTION_BOOL(KviOption_boolWindowsRememberProperties)) // && (wnd->type() == KviWindow::Channel))
 	{
 		QString group;
 		wnd->getConfigGroupName(group);
@@ -605,7 +605,7 @@ unsigned int KviMainWindow::consoleCount()
 	unsigned int count = 0;
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
 	{
-		if (wnd) if(wnd->type() == KVI_WINDOW_TYPE_CONSOLE) count++;
+		if (wnd) if(wnd->type() == KviWindow::Console) count++;
 	}
 	return count;
 }
@@ -614,7 +614,7 @@ KviConsoleWindow * KviMainWindow::firstConsole()
 {
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
 	{
-		if(wnd->type() == KVI_WINDOW_TYPE_CONSOLE)return (KviConsoleWindow *)wnd;
+		if(wnd->type() == KviWindow::Console)return (KviConsoleWindow *)wnd;
 	}
 	KVI_ASSERT(false);
 	return 0; //should newer be here!.. but sometimes we are ?
@@ -624,7 +624,7 @@ KviConsoleWindow * KviMainWindow::firstNotConnectedConsole()
 {
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
 	{
-		if(wnd->type() == KVI_WINDOW_TYPE_CONSOLE)
+		if(wnd->type() == KviWindow::Console)
 		{
 			if(!((KviConsoleWindow *)wnd)->connectionInProgress())
 				return (KviConsoleWindow *)wnd;
@@ -777,7 +777,7 @@ void KviMainWindow::closeEvent(QCloseEvent *e)
 		bool bGotRunningConnection = false;
 		for(KviWindow * w = m_pWinList->first();w;w = m_pWinList->next())
 		{
-			if(w->type() == KVI_WINDOW_TYPE_CONSOLE)
+			if(w->type() == KviWindow::Console)
 			{
 				if(((KviConsoleWindow *)w)->connectionInProgress())
 				{

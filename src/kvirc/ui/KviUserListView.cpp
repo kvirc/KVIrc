@@ -283,9 +283,9 @@ void KviUserListView::emitRightClick()
 	int iEv = -1;
 	switch(m_pKviWindow->type())
 	{
-		case KVI_WINDOW_TYPE_CHANNEL: iEv = KviEvent_OnChannelNickPopupRequest;  break;
-		case KVI_WINDOW_TYPE_QUERY:   iEv = KviEvent_OnQueryNickPopupRequest;    break;
-		case KVI_WINDOW_TYPE_CONSOLE: iEv = KviEvent_OnNotifyListPopupRequest;   break;
+		case KviWindow::Channel: iEv = KviEvent_OnChannelNickPopupRequest;  break;
+		case KviWindow::Query:   iEv = KviEvent_OnQueryNickPopupRequest;    break;
+		case KviWindow::Console: iEv = KviEvent_OnNotifyListPopupRequest;   break;
 		default:                      iEv = KviEvent_OnNickLinkPopupRequest;     break; // this should actually never happen
 	}
 
@@ -309,9 +309,9 @@ void KviUserListView::emitDoubleClick()
 	int iEv = -1;
 	switch(m_pKviWindow->type())
 	{
-		case KVI_WINDOW_TYPE_CHANNEL: iEv = KviEvent_OnChannelNickDefaultActionRequest;  break;
-		case KVI_WINDOW_TYPE_QUERY:   iEv = KviEvent_OnQueryNickDefaultActionRequest;    break;
-		case KVI_WINDOW_TYPE_CONSOLE: iEv = KviEvent_OnNotifyListDefaultActionRequest;   break;
+		case KviWindow::Channel: iEv = KviEvent_OnChannelNickDefaultActionRequest;  break;
+		case KviWindow::Query:   iEv = KviEvent_OnQueryNickDefaultActionRequest;    break;
+		case KviWindow::Console: iEv = KviEvent_OnNotifyListDefaultActionRequest;   break;
 		default:                      iEv = KviEvent_OnNickLinkDefaultActionRequest;     break; // this should actually never happen
 	}
 

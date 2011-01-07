@@ -118,7 +118,7 @@ namespace KviUserInput
 
 			switch(pWindow->type())
 			{
-				case KVI_WINDOW_TYPE_CONSOLE:
+				case KviWindow::Console:
 					if(pWindow->connection())
 					{
 						QByteArray data = pWindow->connection()->encodeText(buf);
@@ -131,8 +131,8 @@ namespace KviUserInput
 					}
 					pWindow->output(KVI_OUT_PARSERERROR,__tr2qs("You are not connected to a server"));
 				break;
-				case KVI_WINDOW_TYPE_CHANNEL:
-				case KVI_WINDOW_TYPE_QUERY:
+				case KviWindow::Channel:
+				case KviWindow::Query:
 					if(pWindow->connection())
 					{
 						if(KVI_OPTION_BOOL(KviOption_boolExitAwayOnInput))
@@ -143,8 +143,8 @@ namespace KviUserInput
 					}
 					pWindow->ownMessage(buf);
 				break;
-				case KVI_WINDOW_TYPE_DCCCHAT:
-				case KVI_WINDOW_TYPE_DCCVIDEO:
+				case KviWindow::DccChat:
+				case KviWindow::DccVideo:
 					pWindow->ownMessage(buf);
 				break;
 				default:

@@ -85,11 +85,11 @@ namespace KviKvsCoreSimpleCommands
 
 		switch(KVSCSC_pWindow->type())
 		{
-			case KVI_WINDOW_TYPE_CHANNEL:
-			case KVI_WINDOW_TYPE_QUERY:
+			case KviWindow::Channel:
+			case KviWindow::Query:
 				KVSCSC_REQUIRE_CONNECTION
-			case KVI_WINDOW_TYPE_DCCCHAT:
-			case KVI_WINDOW_TYPE_DCCVIDEO:
+			case KviWindow::DccChat:
+			case KviWindow::DccVideo:
 				KVSCSC_pWindow->ownAction(szText);
 			break;
 			default:
@@ -718,7 +718,7 @@ namespace KviKvsCoreSimpleCommands
 
 		if(szChans.isEmpty())
 		{
-			if(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CHANNEL)
+			if(KVSCSC_pWindow->type() == KviWindow::Channel)
 				szChans = KVSCSC_pWindow->target();
 			else {
 				if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs_ctx("Missing channel list","kvs"));

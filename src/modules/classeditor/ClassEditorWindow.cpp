@@ -1816,7 +1816,7 @@ void ClassEditorWidget::searchInheritedClasses(const QString szClass, KviPointer
 }
 
 ClassEditorWindow::ClassEditorWindow(KviMainWindow * pFrm)
-: KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,pFrm,"classeditor",0)
+: KviWindow(KviWindow::ScriptEditor,pFrm,"classeditor",0)
 {
 	g_pClassEditorWindow = this;
 

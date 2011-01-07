@@ -269,68 +269,6 @@ protected:
 	int                                             m_ieEntries;
 	int                                             m_iIEntries;
 	KviWindow                                     * m_pKviWindow;
-protected:
-	/**
-	* \brief Checks if user activated tooltips over the userlist
-	* \param pTip The source tooltip to show
-	* \param pnt The point where the mouse is
-	* \return void
-	*/
-	void maybeTip(KviUserListToolTip * pTip, const QPoint & pnt);
-
-	/**
-	* \brief Updates the view list
-	*
-	* This function will updates the scrollbar range, the users label, and the
-	* view area
-	* \return void
-	*/
-	void triggerUpdate();
-
-	/**
-	* \brief Updates the users label
-	* \return void
-	*/
-	void updateUsersLabel();
-
-	/**
-	* \brief Inserts a user into the users list
-	* \param szNick The nickname of the user
-	* \param pEntry The entry in the users list
-	* \return void
-	*/
-	void insertUserEntry(const QString & szNick, KviUserListEntry * pEntry);
-
-	/**
-	* \brief Clears all channels entries
-	*
-	* All counters will be reset
-	* \return void
-	*/
-	void removeAllEntries();
-
-	/**
-	* \brief Called when a user parts a channel
-	* \param szNick The nickname of the user
-	* \param bRemove Whether to remove the user from the irc user db
-	* \return bool
-	*/
-	bool partInternal(const QString & szNick, bool bRemove = true);
-
-	/**
-	* \brief Sets the user database
-	* \param pDb The source user database
-	* \return void
-	*/
-	void setUserDataBase(KviIrcUserDataBase * pDb){ m_pIrcUserDataBase = pDb; };
-
-	/**
-	* \brief Updates the scrollbar range
-	* \return void
-	*/
-	void updateScrollBarRange();
-
-	virtual void resizeEvent(QResizeEvent * e);
 public:
 	/**
 	* \brief Updates the list view area
@@ -794,6 +732,68 @@ public:
 	* \return void
 	*/
 	void completeNickBashLike(const QString & szBegin, KviPointerList<QString> * pList, bool bAppendMask);
+protected:
+	/**
+	* \brief Checks if user activated tooltips over the userlist
+	* \param pTip The source tooltip to show
+	* \param pnt The point where the mouse is
+	* \return void
+	*/
+	void maybeTip(KviUserListToolTip * pTip, const QPoint & pnt);
+
+	/**
+	* \brief Updates the view list
+	*
+	* This function will updates the scrollbar range, the users label, and the
+	* view area
+	* \return void
+	*/
+	void triggerUpdate();
+
+	/**
+	* \brief Updates the users label
+	* \return void
+	*/
+	void updateUsersLabel();
+
+	/**
+	* \brief Inserts a user into the users list
+	* \param szNick The nickname of the user
+	* \param pEntry The entry in the users list
+	* \return void
+	*/
+	void insertUserEntry(const QString & szNick, KviUserListEntry * pEntry);
+
+	/**
+	* \brief Clears all channels entries
+	*
+	* All counters will be reset
+	* \return void
+	*/
+	void removeAllEntries();
+
+	/**
+	* \brief Called when a user parts a channel
+	* \param szNick The nickname of the user
+	* \param bRemove Whether to remove the user from the irc user db
+	* \return bool
+	*/
+	bool partInternal(const QString & szNick, bool bRemove = true);
+
+	/**
+	* \brief Sets the user database
+	* \param pDb The source user database
+	* \return void
+	*/
+	void setUserDataBase(KviIrcUserDataBase * pDb){ m_pIrcUserDataBase = pDb; };
+
+	/**
+	* \brief Updates the scrollbar range
+	* \return void
+	*/
+	void updateScrollBarRange();
+
+	virtual void resizeEvent(QResizeEvent * e);
 public slots:
 	/**
 	* \brief Called when an animated avatar is updated (every frame)

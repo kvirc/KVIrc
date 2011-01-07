@@ -965,7 +965,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 				if(KviIrcConnection * pConnection = console->connection())
 				{
 					KviWindow * aWin = console->activeWindow();
-					if((aWin->type() == KVI_WINDOW_TYPE_CHANNEL) && ((KviChannelWindow *)aWin)->isOn(szNick))
+					if((aWin->type() == KviWindow::Channel) && ((KviChannelWindow *)aWin)->isOn(szNick))
 						pOut = aWin;
 					else {
 						for(KviChannelWindow * c = pConnection->channelList()->first();c;c = pConnection->channelList()->next())
@@ -1312,7 +1312,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage *msg)
 				if(KviIrcConnection * pConnection = console->connection())
 				{
 					KviWindow * aWin = console->activeWindow();
-					if((aWin->type() == KVI_WINDOW_TYPE_CHANNEL) && ((KviChannelWindow *)aWin)->isOn(szNick))
+					if((aWin->type() == KviWindow::Channel) && ((KviChannelWindow *)aWin)->isOn(szNick))
 						pOut = aWin;
 					else {
 						for(KviChannelWindow * c = pConnection->channelList()->first();c;c = pConnection->channelList()->next())

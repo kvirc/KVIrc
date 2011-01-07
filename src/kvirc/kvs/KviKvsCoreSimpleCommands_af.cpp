@@ -129,7 +129,7 @@ namespace KviKvsCoreSimpleCommands
 					KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 					while(KviWindow * wnd = it.current())
 					{
-						if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
+						if(wnd->type()==KviWindow::Console)
 						{
 							KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
 							if(pConsole->isConnected())
@@ -152,7 +152,7 @@ namespace KviKvsCoreSimpleCommands
 			KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 			while(KviWindow * wnd = it.current())
 			{
-				if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
+				if(wnd->type()==KviWindow::Console)
 				{
 					KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
 					if(pConsole->isConnected())
@@ -207,7 +207,7 @@ namespace KviKvsCoreSimpleCommands
 			KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 			while(KviWindow * wnd = it.current())
 			{
-				if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
+				if(wnd->type()==KviWindow::Console)
 				{
 					KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
 					if(pConsole->isConnected())

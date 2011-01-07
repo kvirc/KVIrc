@@ -188,7 +188,7 @@ namespace KviKvsCoreFunctions
 				else
 					KVSCF_pRetBuffer->setNothing();
 			} else {
-				if(KVSCF_pContext->window()->type() == KVI_WINDOW_TYPE_DCCCHAT)
+				if(KVSCF_pContext->window()->type() == KviWindow::DccChat)
 				{
 					KVSCF_pRetBuffer->setString(KVSCF_pContext->window()->localNick());
 				} else {
@@ -505,7 +505,7 @@ namespace KviKvsCoreFunctions
 				}
 			}
 		} else {
-			if(KVSCF_pContext->window()->type() == KVI_WINDOW_TYPE_QUERY)wnd = KVSCF_pContext->window();
+			if(KVSCF_pContext->window()->type() == KviWindow::Query)wnd = KVSCF_pContext->window();
 		}
 
 		KVSCF_pRetBuffer->setInteger((kvs_int_t)(wnd ? wnd->numericId() : 0));

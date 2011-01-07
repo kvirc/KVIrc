@@ -32,7 +32,7 @@ extern KviPointerList<UserWindow> * g_pUserWindowList;
 
 
 UserWindow::UserWindow(KviMainWindow * pFrm, const char * pcName, int iIcon, KviConsoleWindow * pConsole, int iCreationFlags)
-: KviWindow(KVI_WINDOW_TYPE_USERWINDOW,pFrm,pcName,pConsole)
+: KviWindow(KviWindow::UserWindow,pFrm,pcName,pConsole)
 {
 	g_pUserWindowList->append(this);
 

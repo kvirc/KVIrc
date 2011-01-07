@@ -134,14 +134,14 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 		{
 			switch(m_pKviWindow->type())
 			{
-				case KVI_WINDOW_TYPE_CHANNEL:
+				case KviWindow::Channel:
 					if(((KviChannelWindow *)m_pKviWindow)->isOn(szLinkTextPart))
 					{
 						KVS_TRIGGER_EVENT(KviEvent_OnChannelNickDefaultActionRequest,m_pKviWindow,&lParams);
 						return;
 					}
 				break;
-				case KVI_WINDOW_TYPE_QUERY:
+				case KviWindow::Query:
 					if(KviQString::equalCI(((KviQueryWindow *)m_pKviWindow)->windowName(),szLinkTextPart))
 					{
 						KVS_TRIGGER_EVENT(KviEvent_OnQueryNickDefaultActionRequest,m_pKviWindow,&lParams);
@@ -161,7 +161,7 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 		{
 			if(szLinkCommandPart.length() < 3)
 				return; // malformed
-			if(m_pKviWindow->type() != KVI_WINDOW_TYPE_CHANNEL)
+			if(m_pKviWindow->type() != KviWindow::Channel)
 				return; // must be on a channel to apply it
 			if(!(((KviChannelWindow *)m_pKviWindow)->isMeOp()))
 				return; // i'm not op, can't do mode changes
@@ -328,7 +328,7 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 						bool bTrigger = false;
 						switch(m_pKviWindow->type())
 						{
-							case KVI_WINDOW_TYPE_CHANNEL:
+							case KviWindow::Channel:
 								if(((KviChannelWindow *)m_pKviWindow)->isOn(linkText))
 								{
 									if(e->button() & Qt::RightButton)
@@ -338,7 +338,7 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 									}
 								} else bTrigger = true;
 							break;
-							case KVI_WINDOW_TYPE_QUERY:
+							case KviWindow::Query:
 								if(KviQString::equalCI(((KviQueryWindow *)m_pKviWindow)->windowName(),linkText))
 								{
 									if(e->button() & Qt::RightButton)
@@ -899,7 +899,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		{
 			if(!KVI_OPTION_BOOL(KviOption_boolEnableModeLinkToolTip))
 				return;
-			if((linkCmd.length() > 2) && (m_pKviWindow->type() == KVI_WINDOW_TYPE_CHANNEL))
+			if((linkCmd.length() > 2) && (m_pKviWindow->type() == KviWindow::Channel))
 			{
 				if(((KviChannelWindow *)m_pKviWindow)->isMeOp())
 				{

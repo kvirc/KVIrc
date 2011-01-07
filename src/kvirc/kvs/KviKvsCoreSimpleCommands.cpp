@@ -157,7 +157,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		if(KVSCSC_pWindow->type() != KVI_WINDOW_TYPE_CHANNEL)
+		if(KVSCSC_pWindow->type() != KviWindow::Channel)
 		{
 			KVSCSC_pContext->warning(__tr2qs_ctx("This is not a channel","kvs"));
 			return true;

@@ -64,7 +64,7 @@ static KviWindow * spaste_kvs_find_window(QString &win, KviKvsModuleCommandCall 
 		c->warning(__tr("Window with ID '%Q' not found"),&win);
 		return 0;
 	}
-	if((w->type() == KVI_WINDOW_TYPE_CHANNEL) || (w->type() == KVI_WINDOW_TYPE_QUERY) || (w->type() == KVI_WINDOW_TYPE_DCCCHAT))return w;
+	if((w->type() == KviWindow::Channel) || (w->type() == KviWindow::Query) || (w->type() == KviWindow::DccChat))return w;
 	c->warning(__tr2qs("The specified window (%Q) is not a channel/query/DCC chat"),&win);
 	return 0;
 }
@@ -213,7 +213,7 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 
 	if(!iId) //Delete all spaste's from the current window
 	{
-		if((c->window()->type() != KVI_WINDOW_TYPE_CHANNEL) && (c->window()->type() != KVI_WINDOW_TYPE_QUERY) && (c->window()->type() != KVI_WINDOW_TYPE_DCCCHAT))
+		if((c->window()->type() != KviWindow::Channel) && (c->window()->type() != KviWindow::Query) && (c->window()->type() != KviWindow::DccChat))
 		{
 			QString szWinId = c->window()->id();
 			c->warning(__tr2qs("The specified window (%Q) is not a channel/query/dcc"),&szWinId);

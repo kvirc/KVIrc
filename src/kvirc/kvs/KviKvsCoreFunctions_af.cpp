@@ -632,7 +632,7 @@ namespace KviKvsCoreFunctions
 				}
 			}
 		} else {
-			if(KVSCF_pContext->window()->type() == KVI_WINDOW_TYPE_CHANNEL)wnd = KVSCF_pContext->window();
+			if(KVSCF_pContext->window()->type() == KviWindow::Channel)wnd = KVSCF_pContext->window();
 		}
 
 		KVSCF_pRetBuffer->setInteger((kvs_int_t)(wnd ? wnd->numericId() : 0));

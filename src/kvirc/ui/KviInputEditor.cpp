@@ -785,12 +785,12 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 		iId = g_pInputPopup->insertItem(__tr2qs("&Paste") + ACCEL_KEY(V),this,SLOT(pasteClipboardWithConfirmation()));
 		g_pInputPopup->setItemEnabled(iId,!szClip.isEmpty() && !m_bReadOnly);
 		iId = g_pInputPopup->insertItem(__tr2qs("Paste (Slowly)"),this,SLOT(pasteSlow()));
-		if ((iType == KVI_WINDOW_TYPE_CHANNEL) || (iType == KVI_WINDOW_TYPE_QUERY) || (iType == KVI_WINDOW_TYPE_DCCCHAT))
+		if ((iType == KviWindow::Channel) || (iType == KviWindow::Query) || (iType == KviWindow::DccChat))
 			g_pInputPopup->setItemEnabled(iId,!szClip.isEmpty() && !m_bReadOnly);
 		else
 			g_pInputPopup->setItemEnabled(iId,false);
 		iId = g_pInputPopup->insertItem(__tr2qs("Paste &File") + ACCEL_KEY(L),this,SLOT(pasteFile()));
-		if ((iType != KVI_WINDOW_TYPE_CHANNEL) && (iType != KVI_WINDOW_TYPE_QUERY) && (iType != KVI_WINDOW_TYPE_DCCCHAT))
+		if ((iType != KviWindow::Channel) && (iType != KviWindow::Query) && (iType != KviWindow::DccChat))
 			g_pInputPopup->setItemEnabled(iId,false);
 		else
 			g_pInputPopup->setItemEnabled(iId,!m_bReadOnly);

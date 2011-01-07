@@ -669,7 +669,7 @@ namespace KviKvsCoreSimpleCommands
 
 		if(szChannel.isEmpty())
 		{
-			if(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CHANNEL)
+			if(KVSCSC_pWindow->type() == KviWindow::Channel)
 				szChannel = KVSCSC_pWindow->target();
 			else {
 				KVSCSC_pContext->error(__tr2qs_ctx("No target channel specified and the current window is not a channel","kvs"));
@@ -1015,7 +1015,7 @@ namespace KviKvsCoreSimpleCommands
 
 		if(szChannel.isEmpty())
 		{
-			if(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CHANNEL)
+			if(KVSCSC_pWindow->type() == KviWindow::Channel)
 				szChannel = KVSCSC_pWindow->target();
 			else {
 				KVSCSC_pContext->error(__tr2qs_ctx("No target mask/channel specified and the current window is not a channel","kvs"));

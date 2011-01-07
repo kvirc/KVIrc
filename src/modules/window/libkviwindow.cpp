@@ -123,7 +123,7 @@ static bool window_kvs_cmd_clearOutput(KviKvsModuleCommandCall * c)
 	if(pWnd)
 	{
 		if(pWnd->view())pWnd->view()->clearBuffer();
-		if(pWnd->type() == KVI_WINDOW_TYPE_CHANNEL)
+		if(pWnd->type() == KviWindow::Channel)
 		{
 			KviChannelWindow *chan = (KviChannelWindow *)pWnd;
 			if(chan->messageView()) chan->messageView()->clearBuffer();
@@ -924,7 +924,7 @@ static bool window_kvs_cmd_listtypes(KviKvsModuleCommandCall * c)
 			[comment]# List all the windows in all irc contexts[/comment]
 			[cmd]echo[/cmd] $window.list(all,all)
 			[comment]# List all the DCC Send windows: They don't belong to any irc context[/comment]
-			[cmd]echo[/cmd] $window.list(dccsend,none)
+			[cmd]echo[/cmd] $window.list(dcctransfer,none)
 			[comment]# List all the user windows created with $window.open[/comment]
 			[comment]# They may either belong to an irc context or not[/comment]
 			[cmd]echo[/cmd] $window.list(userwnd,any)
@@ -1220,7 +1220,7 @@ static bool window_kvs_cmd_setWindowTitle(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	if(pWnd->type() == KVI_WINDOW_TYPE_USERWINDOW)
+	if(pWnd->type() == KviWindow::UserWindow)
 	{
 		((UserWindow *)pWnd)->setWindowTitleStrings(szPlain);
 	} else {

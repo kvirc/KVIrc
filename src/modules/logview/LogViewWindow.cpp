@@ -66,7 +66,7 @@
 extern LogViewWindow * g_pLogViewWindow;
 
 LogViewWindow::LogViewWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm)
-: KviWindow(KVI_WINDOW_TYPE_LOGVIEW,lpFrm,"logview"), KviModuleExtension(d)
+: KviWindow(KviWindow::LogView,lpFrm,"logview"), KviModuleExtension(d)
 {
 	g_pLogViewWindow = this;
 //	m_pLogViewWidget = new KviLogViewWidget(this);

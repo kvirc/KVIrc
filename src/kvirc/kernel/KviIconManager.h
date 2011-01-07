@@ -584,7 +584,7 @@ public:
 	* \param iIcon The icon to get
 	* \return KviIconManager::SmallIcon
 	*/
-	KviIconManager::SmallIcon iconName(int iIcon);
+	SmallIcon iconName(int iIcon);
 
 	QString getSmallIconResourceName(SmallIcon eIcon);
 

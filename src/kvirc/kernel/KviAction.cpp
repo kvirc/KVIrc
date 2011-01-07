@@ -258,7 +258,7 @@ void KviAction::activeWindowChanged()
 
 	switch(g_pActiveWindow->type())
 	{
-		case KVI_WINDOW_TYPE_CONSOLE:
+		case KviWindow::Console:
 			if(m_uFlags & WindowConsole)
 			{
 				if(m_uFlags & WindowOnlyIfUsersSelected)
@@ -275,7 +275,7 @@ void KviAction::activeWindowChanged()
 					setEnabled(false);
 			}
 			break;
-		case KVI_WINDOW_TYPE_CHANNEL:
+		case KviWindow::Channel:
 			if(m_uFlags & WindowChannel)
 			{
 				if(m_uFlags & WindowOnlyIfUsersSelected)
@@ -292,7 +292,7 @@ void KviAction::activeWindowChanged()
 					setEnabled(false);
 			}
 			break;
-		case KVI_WINDOW_TYPE_QUERY:
+		case KviWindow::Query:
 			if(m_uFlags & WindowQuery)
 			{
 				if(m_uFlags & WindowOnlyIfUsersSelected)
@@ -309,7 +309,7 @@ void KviAction::activeWindowChanged()
 					setEnabled(false);
 			}
 			break;
-		case KVI_WINDOW_TYPE_DCCCHAT:
+		case KviWindow::DccChat:
 			if(m_uFlags & WindowDccChat)
 			{
 				if(!isEnabled())
@@ -338,7 +338,7 @@ void KviAction::activeWindowSelectionStateChanged(bool bSelectedNow)
 	// and thus also m_uFlags & InternalWindowMask
 	switch(g_pActiveWindow->type())
 	{
-		case KVI_WINDOW_TYPE_CONSOLE:
+		case KviWindow::Console:
 			if(m_uFlags & WindowConsole)
 			{
 				if(bSelectedNow != isEnabled())
@@ -348,7 +348,7 @@ void KviAction::activeWindowSelectionStateChanged(bool bSelectedNow)
 					setEnabled(false);
 			}
 			break;
-		case KVI_WINDOW_TYPE_CHANNEL:
+		case KviWindow::Channel:
 			if(m_uFlags & WindowChannel)
 			{
 				if(bSelectedNow != isEnabled())
@@ -358,7 +358,7 @@ void KviAction::activeWindowSelectionStateChanged(bool bSelectedNow)
 					setEnabled(false);
 			}
 			break;
-		case KVI_WINDOW_TYPE_QUERY:
+		case KviWindow::Query:
 			if(m_uFlags & WindowQuery)
 			{
 				if(bSelectedNow != isEnabled())
@@ -368,7 +368,7 @@ void KviAction::activeWindowSelectionStateChanged(bool bSelectedNow)
 					setEnabled(false);
 			}
 			break;
-		case KVI_WINDOW_TYPE_DCCCHAT:
+		case KviWindow::DccChat:
 			if(m_uFlags & WindowDccChat)
 			{
 				if(!isEnabled())

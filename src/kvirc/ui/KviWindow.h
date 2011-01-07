@@ -29,11 +29,10 @@
 * \brief Contains the KviWindow class
 */
 
-
+#include "kvi_settings.h"
 #include "KviApplication.h"
 #include "KviCString.h"
 #include "KviQString.h"
-#include "kvi_settings.h"
 #include "KviIrcContext.h"
 #include "KviIrcConnection.h"
 #include "KviInput.h"
@@ -72,64 +71,12 @@ class KviTalHBox;
 	class KviCryptSessionInfo;
 #endif
 
-//
-// Window types
-//
-// There are KVI_WINDOW_NUM_TYPES predefined
-// window types: these are used by the KVIrc core and distributed modules
-// If you add a new def, increase KVI_WINDOW_NUM_TYPES
-//
-
-#define KVI_WINDOW_TYPE_CONSOLE 0
-#define KVI_WINDOW_TYPE_CHANNEL 1
-#define KVI_WINDOW_TYPE_QUERY 2
-#define KVI_WINDOW_TYPE_HELP 3
-#define KVI_WINDOW_TYPE_TERM 4
-#define KVI_WINDOW_TYPE_EDITOR 5
-#define KVI_WINDOW_TYPE_DCCCHAT 6
-#define KVI_WINDOW_TYPE_DCCSEND 7
-#define KVI_WINDOW_TYPE_SOCKETSPY 8
-#define KVI_WINDOW_TYPE_LINKS 9
-#define KVI_WINDOW_TYPE_TOOL 10
-#define KVI_WINDOW_TYPE_IOGRAPH 11
-#define KVI_WINDOW_TYPE_DIRBROWSER 12
-#define KVI_WINDOW_TYPE_DCCCANVAS 13
-#define KVI_WINDOW_TYPE_DCCVOICE 14
-#define KVI_WINDOW_TYPE_LIST 15
-#define KVI_WINDOW_TYPE_OFFER 16
-#define KVI_WINDOW_TYPE_LOGVIEW 17
-#define KVI_WINDOW_TYPE_DEADCHANNEL 18
-#define KVI_WINDOW_TYPE_DEADQUERY 19
-#define KVI_WINDOW_TYPE_SCRIPTEDITOR 20
-#define KVI_WINDOW_TYPE_SCRIPTOBJECT 21
-#define KVI_WINDOW_TYPE_USERWINDOW 22
-#define KVI_WINDOW_TYPE_DEBUG 23
-#define KVI_WINDOW_TYPE_DCCVIDEO 24
-
-#define KVI_WINDOW_NUM_TYPES 25
-
 #define KVI_WINDOW_TYPE_USER 10000
-
-#define KVI_ACTIVITY_NONE 0
-#define KVI_ACTIVITY_VERYLOW 1
-#define KVI_ACTIVITY_LOW 2
-#define KVI_ACTIVITY_MEDIUM 3
-#define KVI_ACTIVITY_HIGH 4
-#define KVI_ACTIVITY_VERYHIGH 5
-
-#define KVI_ACTIVITY_ICE 0
-#define KVI_ACTIVITY_VERYCOLD 1
-#define KVI_ACTIVITY_COLD 2
-#define KVI_ACTIVITY_UNDEFINED 3
-#define KVI_ACTIVITY_HOT 4
-#define KVI_ACTIVITY_VERYHOT 5
-#define KVI_ACTIVITY_FIRE 6
 
 /**
 * \class KviWindow
 * \brief Base class for all windows in KVIrc
 */
-
 class KVIRC_API KviWindow : public QWidget
 {
 	friend class KviInput;
@@ -142,85 +89,236 @@ class KVIRC_API KviWindow : public QWidget
 	Q_PROPERTY(int KviProperty_ChildFocusOwner READ type)
 	Q_OBJECT
 public:
-	KviWindow(int type,KviMainWindow * lpFrm,const QString &name,KviConsoleWindow * pConsole = 0);
+	/**
+	* \enum ActivityValue
+	* \brief Holds the activity meter in value scale
+	*/
+	enum ActivityValue {
+		None     = 0,   /**< None */
+		VeryLow  = 1,   /**< Very low */
+		Low      = 2,   /**< Low */
+		Medium   = 3,   /**< Medium */
+		High     = 4,   /**< High */
+		VeryHigh = 5    /**< Very high */
+	};
+
+	/**
+	* \enum ActivityTemperature
+	* \brief Holds the activity meter in temperature scale
+	*/
+	enum ActivityTemperature {
+		Ice       = 0,   /**< Ice */
+		VeryCold  = 1,   /**< Very cold */
+		Cold      = 2,   /**< Cold */
+		Undefined = 3,   /**< Undefined */
+		Hot       = 4,   /**< Hot */
+		VeryHot   = 5,   /**< Very hot */
+		Fire      = 6    /**< Fire */
+	};
+
+	/**
+	* \enum Type
+	* \brief Holds the types of a window; these are used by the KVIrc core and distributed modules
+	* \note If you add a new type, insert it just before Unknown
+	*/
+	enum Type {
+		Console      =  0,
+		Channel      =  1,
+		Query        =  2,
+		DeadChannel  =  3,
+		DeadQuery    =  4,
+		Editor       =  5,
+		Help         =  6,
+		Terminal     =  7,
+		SocketSpy    =  8,
+		Links        =  9,
+		List         = 10,
+		DccChat      = 11,
+		DccTransfer  = 12,
+		DccCanvas    = 13,
+		DccVoice     = 14,
+		DccVideo     = 15,
+		UserWindow   = 16,
+		Tool         = 17,
+		IOGraph      = 18,
+		DirBrowser   = 19,
+		ScriptEditor = 20,
+		ScriptObject = 21,
+		LogView      = 22,
+		Offer        = 23,
+		Debug        = 24,
+		Unknown      = 25,
+		TypeCount    = 26
+	};
+
+	/**
+	* \brief Constructs the window object
+	* \param eType The type of the window
+	* \param lpFrm The main window
+	* \param szName The name of the window
+	* \param pConsole The parent console
+	* \return KviWindow
+	*/
+	KviWindow(Type eType, KviMainWindow * lpFrm, const QString & szName, KviConsoleWindow * pConsole = 0);
+
+	/**
+	* \brief Destroys the window object
+	*/
 	virtual ~KviWindow();
 protected: // almost private: don't touch :D
-	QString                               m_szName;                  // the current window name (usually also the target)
-	KviMainWindow                            * m_pFrm;
-	KviConsoleWindow                          * m_pConsole;
-
-	int                                   m_iType;
-
-	KviWindowListItem                   * m_pWindowListItem;
-	QWidget                             * m_pFocusHandler;
-	QString                               m_szPlainTextCaption;
-	KviIrcView                          * m_pIrcView;
-	KviInput                            * m_pInput;
-	KviTalSplitter                      * m_pSplitter;
-	KviTalHBox                          * m_pButtonBox;
-	unsigned long int                     m_uId;
-	QString                               m_szTextEncoding;
+	QString                   m_szName;     // the current window name (usually also the target)
+	KviMainWindow           * m_pFrm;
+	KviConsoleWindow        * m_pConsole;
+	Type                      m_eType;
+	KviWindowListItem       * m_pWindowListItem;
+	QWidget                 * m_pFocusHandler;
+	QString                   m_szPlainTextCaption;
+	KviIrcView              * m_pIrcView;
+	KviInput                * m_pInput;
+	KviTalSplitter          * m_pSplitter;
+	KviTalHBox              * m_pButtonBox;
+	unsigned long int         m_uId;
+	QString                   m_szTextEncoding;
 #ifdef COMPILE_CRYPT_SUPPORT
-	KviWindowToolPageButton             * m_pCryptControllerButton;
-	KviCryptController                  * m_pCryptController;
-	KviCryptSessionInfo                 * m_pCryptSessionInfo;
+	KviWindowToolPageButton * m_pCryptControllerButton;
+	KviCryptController      * m_pCryptController;
+	KviCryptSessionInfo     * m_pCryptSessionInfo;
 #endif
-	QToolButton                         * m_pTextEncodingButton;
-	QToolButton                         * m_pHideToolsButton;
-	QWidget                             * m_pLastFocusedChild;
-	static const char                   * m_typeTable[KVI_WINDOW_NUM_TYPES + 1];
+	QToolButton             * m_pTextEncodingButton;
+	QToolButton             * m_pHideToolsButton;
+	QWidget                 * m_pLastFocusedChild;
+	static const char       * m_typeTable[TypeCount];
 	// text encoding and decoding
-	//unsigned int                          m_uTextEncoding;
-	QTextCodec                          * m_pTextCodec;
-//	KviToolWindowsContainer             * m_pEditorsContainer;
-	bool                                m_bIsDocked;
+	//unsigned int              m_uTextEncoding;
+	QTextCodec              * m_pTextCodec;
+	//KviToolWindowsContainer * m_pEditorsContainer;
+	bool                      m_bIsDocked;
 public:
-	inline bool isDocked() { return m_bIsDocked; }
-	// The global ID of this window: unique in the application
+	inline bool isDocked(){ return m_bIsDocked; }
+
+	/**
+	* \brief Returns the global ID of this window
+	* 
+	* This is unique in the application
+	* \return QString
+	*/
 	inline QString id(){ return QString("%1").arg(m_uId); };
+
+	/**
+	* \brief Returns the global ID of this window
+	* 
+	* This is unique in the application
+	* \return QString
+	*/
 	inline unsigned long int numericId(){ return m_uId; };
 
-	// THIS is the function that should be used
+	/**
+	* \brief Returns the name of this window
+	* \return const QString &
+	*/
 	inline const QString & windowName(){ return m_szName; };
-	void setWindowName(const QString &szName);
-	// Sets the progress for the WindowList item: if "progress" makes sense in your window, well, use this
-	void setProgress(int progress);
-	// Window type management
-	inline int type() const { return m_iType; };
-	// This returns a descriptive name of the window type
-	// if the window is an user window, the typeString returned
-	// by THIS implementation is "unknown"
+
+	/**
+	* \brief Sets the name of the window
+	* \param szName The name of the window
+	* \return void
+	*/
+	void setWindowName(const QString & szName);
+
+	/**
+	* \brief Sets the progress for the WindowList item
+	* 
+	* If "progress" makes sense in your window, well, use this
+	* \param iProgress The progress to set
+	* \return void
+	*/
+	void setProgress(int iProgress);
+
+	/**
+	* \brief Returns the type of the window
+	* \return Type
+	*/
+	inline Type type() const { return m_eType; };
+
+	/**
+	* \brief Returns a descriptive name of the window type
+	* \return const char *
+	*/
 	virtual const char * typeString();
 
 	inline QTextCodec * textCodec(){ return m_pTextCodec ? m_pTextCodec : defaultTextCodec(); };
-	void forceTextCodec(QTextCodec * c);
+	void forceTextCodec(QTextCodec * pCodec);
 
-	// The frame that this window belongs to
-	// It is always non-null and never changes
+	/**
+	* \brief Returns the main window that this window belongs to
+	* 
+	* It is always non-null and never changes
+	* \return KviMainWindow *
+	*/
 	inline KviMainWindow * frame() const { return m_pFrm; };
-	// The KviIrcView of this window: may be NULL if the window has no KviIrcView (and thus supports no direct output)
+
+	/**
+	* \brief Returns the KviIrcView of this window
+	* 
+	* May be NULL if the window has no KviIrcView (and thus supports no direct output)
+	* \return KviIrcView *
+	*/
 	inline KviIrcView * view() const { return m_pIrcView; };
-	// The mdiParent widget: may be nulll if the window is undocked
+
+	/**
+	* \brief Returns the mdiParent widget
+	* 
+	* May be nulll if the window is undocked
+	* \return KviMdiChild *
+	*/
 	inline KviMdiChild * mdiParent(){ return (KviMdiChild *)parent(); };
-	// The console that this window belongs to: may be null for windows that aren't bound to irc contexts
+
+	/**
+	* \brief Returns the console that this window belongs to
+	* 
+	* May be null for windows that aren't bound to irc contexts
+	* \return KviConsoleWindow *
+	*/
 	inline KviConsoleWindow * console(){ return m_pConsole; };
+
+
 	KviIrcContext * context();
-	// the current IRC connection (if any)
+
+	/**
+	* \brief Returns the current IRC connection (if any)
+	* \return KviIrcConnection *
+	*/
 	KviIrcConnection * connection();
-	// The splitter of this window: it *shouldn't* be null... but ... well.. who knows ? :D ...better check it
+
+	/**
+	* \brief Returns the splitter of this window
+	* 
+	* It *shouldn't* be null... but... well... who knows ? :D ...better check it
+	* \return KviTalSplitter *
+	*/
 	inline KviTalSplitter * splitter(){ return m_pSplitter; };
-	// The window has ALWAYS a WindowList item
+
+	/**
+	* \brief Returns the windowList item
+	* 
+	* The window has ALWAYS a WindowList item
+	* \return KviWindowListItem *
+	*/
 	inline KviWindowListItem * windowListItem(){ return m_pWindowListItem; };
+
 	// The window *might* have a button container
 	virtual QFrame * buttonContainer(){ return (QFrame*)m_pButtonBox; };
 	virtual void toggleButtonContainer();
+
 	// The window *might* have an output proxy: if it has no view() for example
 	virtual KviWindow * outputProxy();
+
 	// The window input widget
 	inline KviInput * input(){ return m_pInput; };
 
 	// The target of this window: empty when it makes no sense :D
 	virtual const QString & target(){ return KviQString::Empty; };
+
 	// The local nickname bound to this window: might be empty when a local nickname makes no sense
 	virtual const QString & localNick(){ return KviQString::Empty; };
 
@@ -229,13 +327,13 @@ public:
 	void setCryptSessionInfo(KviCryptSessionInfo * i);
 #endif
 
-	virtual bool activityMeter(unsigned int * puActivityValue,unsigned int * puActivityTemperature);
+	virtual bool activityMeter(unsigned int * puActivityValue, unsigned int * puActivityTemperature);
 	virtual bool highlightMeter(unsigned int * puHighlightValue);
 	virtual bool highlightMe(unsigned int v);
 
 	void unhighlight();
 
-	virtual void getWindowListTipText(QString &buffer);
+	virtual void getWindowListTipText(QString & szBuffer);
 
 	// This is meaningful only if view() is non NULL
 	const QString & lastLineOfText();
@@ -243,12 +341,12 @@ public:
 
 	inline const QString &textEncoding(){ return m_szTextEncoding; };
 	// returns true if the encoding could be successfully set
-	bool setTextEncoding(const QString &szTextEncoding);
+	bool setTextEncoding(const QString & szTextEncoding);
 	// this must return a default text codec suitable for this window
 	virtual QTextCodec * defaultTextCodec();
 	// encode the text from szSource by using m_uTextEncoding
-	inline QByteArray encodeText(const QString &szText);
-	inline QString decodeText(const char * szText);
+	inline QByteArray encodeText(const QString & szText);
+	inline QString decodeText(const char * pcText);
 	//return a text encoder
 	QTextEncoder * makeEncoder();
 
@@ -259,15 +357,15 @@ public:
 	bool isMinimized();
 	bool isMaximized();
 	// Retrieves the default log file name: this is pre-build
-	void getDefaultLogFileName(QString &buffer);
+	void getDefaultLogFileName(QString & szBuffer);
 	// Well...the external geometry :)
 	QRect externalGeometry();
 
 	void delayedClose(); // close that jumps out of the current event loop
 
 	// Interesting overridables:
-	virtual void getConfigGroupName(QString &buf);
-	virtual void getBaseLogFileName(QString &buffer);
+	virtual void getConfigGroupName(QString & szBuffer);
+	virtual void getBaseLogFileName(QString & szBuffer);
 	virtual void updateCaption();
 	virtual void applyOptions();
 	virtual void updateIcon();
@@ -276,16 +374,16 @@ public:
 	virtual const QString & plainTextCaption(){ return m_szPlainTextCaption; };
 	virtual void setFocus();
 
-	void internalOutput(KviIrcView * pView,int msg_type,const kvi_wchar_t * text,int iFlags=0);
+	void internalOutput(KviIrcView * pView, int iMsgType, const kvi_wchar_t * pwText, int iFlags = 0);
 	// You *might* want to override these too.. but better don't touch them :D
-	virtual void output(int msg_type,const char * format,...);
-	virtual void outputNoFmt(int msg_type,const char * text,int iFlags=0);
-	virtual void output(int msg_type,const kvi_wchar_t * format,...);
-	virtual void outputNoFmt(int msg_type,const kvi_wchar_t * text,int iFlags=0){ internalOutput(m_pIrcView,msg_type,text,iFlags); };
-	virtual void output(int msg_type,const QString &szFmt,...);
-	virtual void outputNoFmt(int msg_type,const QString &szText,int iFlags=0); // <-- these are KviIrcView::AppendTextFlags
+	virtual void output(int iMsgType, const char * pcFormat, ...);
+	virtual void outputNoFmt(int iMsgType, const char * pcText, int iFlags = 0);
+	virtual void output(int iMsgType, const kvi_wchar_t * pwFormat, ...);
+	virtual void outputNoFmt(int iMsgType, const kvi_wchar_t * pwText, int iFlags = 0){ internalOutput(m_pIrcView,iMsgType,pwText,iFlags); };
+	virtual void output(int iMsgType, const QString & szFmt, ...);
+	virtual void outputNoFmt(int iMsgType, const QString & szText, int iFlags = 0); // <-- these are KviIrcView::AppendTextFlags
 	// Just helpers.. FIXME: might be redesigned in some other way
-	void updateBackgrounds(QObject * obj = 0);
+	void updateBackgrounds(QObject * pObj = 0);
 
 	void demandAttention();
 	bool hasAttention();
@@ -298,7 +396,56 @@ public:
 	// call this in the constructor if your caption is fixed:
 	// it will set m_szPlainTextCaption to szCaption and it will
 	// automatically use it without the need of overriding fillCaptionBuffers
-	void setFixedCaption(const QString &szCaption);
+	void setFixedCaption(const QString & szCaption);
+protected:
+	// Loading and saving of properties
+	// Protected: only KviMainWindow can call these
+	virtual void saveProperties(KviConfigurationFile * pCfg);
+	virtual void loadProperties(KviConfigurationFile * pCfg);
+	// Creation and destruction events: overridden in windows that have script events bound to creation and destruction
+	virtual void triggerCreationEvents(){};
+	virtual void triggerDestructionEvents(){};
+	// Internal: do not touch :D (KviMainWindow)
+	virtual void createWindowListItem();
+	virtual void destroyWindowListItem();
+	// called by KviMainWindow
+	// either lost the active window status or the frame is no longer active (but we're still the active kvirc's subwindow)
+	virtual void lostUserFocus();
+	// this by default calls fillSingleColorCaptionBuffer(plainTextCaption());
+	virtual void fillCaptionBuffers();
+	// protected helper
+	void fillSingleColorCaptionBuffers(const QString & szName);
+	// Virtual events that signal dock state change
+	virtual void youAreDocked();
+	virtual void youAreUndocked();
+	// Reimplement to show a special icon in the WindowList items and captions
+	virtual QPixmap * myIconPtr();
+	// Sets the type of this window: be careful with this
+	void setType(Type eType){ m_eType = eType; };
+
+	bool eventFilter(QObject * pObject, QEvent * pEvent);
+
+	// Virtuals overridden to manage the internal layouts...
+	virtual void moveEvent(QMoveEvent * pEvent);
+	virtual void closeEvent(QCloseEvent * pEvent);
+	virtual void childEvent(QChildEvent * pEvent);
+	virtual void focusInEvent(QFocusEvent *);
+
+	void childInserted(QWidget * pObject);
+	void childRemoved(QWidget * pObject);
+
+	// Internal helpers
+	void createCryptControllerButton(QWidget * pPar);
+	void createTextEncodingButton(QWidget * pPar);
+	void createSystemTextEncodingPopup();
+
+	QToolButton * createToolButton(QWidget * pPar, const char * pcName, KviIconManager::SmallIcon eIcon, const QString & szToolTip, bool bOn);
+	// This is called by KviInput: actually it links the widgetAdded
+	virtual void childrenTreeChanged(QWidget * pAdded);
+
+	virtual bool focusNextPrevChild(bool bNext);
+
+	virtual void preprocessMessage(QString & szMessage);
 public slots:
 	void dock();
 	void undock();
@@ -313,59 +460,10 @@ protected slots:
 	void cryptControllerFinished();   // same as above
 	void cryptSessionInfoDestroyed(); //  same as above
 	void textEncodingButtonClicked();
-	void systemTextEncodingPopupActivated(QAction *pAction);
+	void systemTextEncodingPopupActivated(QAction * pAction);
 	void childDestroyed();
 signals:
 	void windowNameChanged();
-protected:
-	// Loading and saving of properties
-	// Protected: only KviMainWindow can call these
-	virtual void saveProperties(KviConfigurationFile *cfg);
-	virtual void loadProperties(KviConfigurationFile *cfg);
-	// Creation and destruction events: overridden in windows that have script events bound to creation and destruction
-	virtual void triggerCreationEvents(){};
-	virtual void triggerDestructionEvents(){};
-	// Internal: do not touch :D (KviMainWindow)
-	virtual void createWindowListItem();
-	virtual void destroyWindowListItem();
-	// called by KviMainWindow
-	// either lost the active window status or the frame is no longer active (but we're still the active kvirc's subwindow)
-	virtual void lostUserFocus();
-	// this by default calls fillSingleColorCaptionBuffer(plainTextCaption());
-	virtual void fillCaptionBuffers();
-	// protected helper
-	void fillSingleColorCaptionBuffers(const QString &szName);
-	// Virtual events that signal dock state change
-	virtual void youAreDocked();
-	virtual void youAreUndocked();
-	// Reimplement to show a special icon in the WindowList items and captions
-	virtual QPixmap * myIconPtr();
-	// Sets the type of this window: be careful with this
-	void setType(int iType);
-
-	bool eventFilter(QObject *o,QEvent *e);
-
-	// Virtuals overridden to manage the internal layouts...
-	virtual void moveEvent(QMoveEvent *e);
-	virtual void closeEvent(QCloseEvent *e);
-	virtual void childEvent(QChildEvent *e);
-	virtual void focusInEvent(QFocusEvent *e);
-
-	void childInserted(QWidget * o);
-	void childRemoved(QWidget * o);
-
-	// Internal helpers
-	void createCryptControllerButton(QWidget * par);
-	void createTextEncodingButton(QWidget * par);
-	void createSystemTextEncodingPopup();
-
-	QToolButton * createToolButton(QWidget * pPar, const char * pcName, KviIconManager::SmallIcon eIcon, const QString & szToolTip, bool bOn);
-	// This is called by KviInput: actually it links the widgetAdded
-	virtual void childrenTreeChanged(QWidget * widgetAdded);
-
-	virtual bool focusNextPrevChild(bool bNext);
-
-	virtual void preprocessMessage(QString & szMessage);
 };
 
 #ifndef _KVI_WINDOW_CPP_
@@ -378,22 +476,20 @@ protected:
 	extern KVIRC_API KviWindow * g_pActiveWindow;
 #endif
 
-inline QByteArray KviWindow::encodeText(const QString &szText)
+inline QByteArray KviWindow::encodeText(const QString & szText)
 {
-	if(m_pTextCodec) {
+	if(m_pTextCodec)
 		return m_pTextCodec->fromUnicode(szText);
-	} else {
+	else
 		return defaultTextCodec()->fromUnicode(szText);
-	}
 }
 
-inline QString KviWindow::decodeText(const char * szText)
+inline QString KviWindow::decodeText(const char * pcText)
 {
-	if(m_pTextCodec) {
-		return m_pTextCodec->toUnicode(szText);
-	} else {
-		return defaultTextCodec()->toUnicode(szText);
-	}
+	if(m_pTextCodec)
+		return m_pTextCodec->toUnicode(pcText);
+	else
+		return defaultTextCodec()->toUnicode(pcText);
 }
 
 #endif //_KVI_WINDOW_H_

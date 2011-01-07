@@ -293,9 +293,9 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		if(!((KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CHANNEL) ||
-			(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_QUERY) ||
-			(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CONSOLE)))
+		if(!((KVSCSC_pWindow->type() == KviWindow::Channel) ||
+			(KVSCSC_pWindow->type() == KviWindow::Query) ||
+			(KVSCSC_pWindow->type() == KviWindow::Console)))
 		{
 			KVSCSC_pContext->warning(__tr2qs_ctx("The current window is not a channel, a query or a console","kvs"));
 			return false;
@@ -312,7 +312,7 @@ namespace KviKvsCoreSimpleCommands
 		{
 			// Search for the right socketspy
 			if(
-					(pWnd->type() == KVI_WINDOW_TYPE_SOCKETSPY) &&
+					(pWnd->type() == KviWindow::SocketSpy) &&
 					(pWnd->context() == pActive->context())
 				)
 			{
@@ -324,7 +324,7 @@ namespace KviKvsCoreSimpleCommands
 
 		// Send the warning to the right console
 		if(!KVSCSC_pSwitches->find('q',"quiet"))
-			pActive->console()->output(KVI_WINDOW_TYPE_SOCKETSPY,__tr2qs_ctx("Injected incoming data: %1","kvs").arg(szText));
+			pActive->console()->output(KviWindow::SocketSpy,__tr2qs_ctx("Injected incoming data: %1","kvs").arg(szText));
 
 		// Encode the text for the socket
 		QByteArray szT = KVSCSC_pConnection->encodeText(szText);
@@ -461,7 +461,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		if(KVSCSC_pWindow->type() != KVI_WINDOW_TYPE_CHANNEL)
+		if(KVSCSC_pWindow->type() != KviWindow::Channel)
 		{
 			KVSCSC_pContext->warning(__tr2qs_ctx("The current window is not a channel","kvs"));
 			return false;

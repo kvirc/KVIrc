@@ -160,7 +160,7 @@ KviUrlAction::~KviUrlAction()
 // ---------------------------- CLASS URLDIALOG ------------------------begin //
 
 UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
-	:KviWindow(KVI_WINDOW_TYPE_TOOL,g_pMainWindow,"URL List")
+	:KviWindow(KviWindow::Tool,g_pMainWindow,"URL List")
 {
 	setAutoFillBackground(false);
 	
@@ -325,9 +325,9 @@ void UrlDialog::popup(QTreeWidgetItem *item, const QPoint &point)
 
 	for(KviWindow *w=g_pMainWindow->windowList()->first();w;w=g_pMainWindow->windowList()->next())
 	{
-		if ((w->type() == KVI_WINDOW_TYPE_CHANNEL) ||
-			(w->type() == KVI_WINDOW_TYPE_QUERY) ||
-			 (w->type() == KVI_WINDOW_TYPE_DCCCHAT))
+		if ((w->type() == KviWindow::Channel) ||
+			(w->type() == KviWindow::Query) ||
+			 (w->type() == KviWindow::DccChat))
 		{
 			m_pListPopup->addAction(w->plainTextCaption());
 		}

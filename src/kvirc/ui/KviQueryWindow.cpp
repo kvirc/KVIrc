@@ -66,7 +66,7 @@
 #include <QByteArray>
 
 KviQueryWindow::KviQueryWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole, const QString & szNick)
-: KviWindow(KVI_WINDOW_TYPE_QUERY,lpFrm,szNick,lpConsole)
+: KviWindow(KviWindow::Query,lpFrm,szNick,lpConsole)
 {
 	m_iFlags = 0;
 	connection()->registerQuery(this);
@@ -103,10 +103,11 @@ KviQueryWindow::KviQueryWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConso
 
 	m_pInput = new KviInput(this,m_pUserListView);
 
-	if(KVI_OPTION_BOOL(KviOption_boolAutoLogQueries)) m_pIrcView->startLogging();
+	if(KVI_OPTION_BOOL(KviOption_boolAutoLogQueries))
+		m_pIrcView->startLogging();
 	// FIXME: #warning "Maybe tell the user all that we know about the remote szEnd(s)....channels..."
 
-	m_pIrcView->enableDnd(TRUE);
+	m_pIrcView->enableDnd(true);
 	connect(m_pIrcView,SIGNAL(fileDropped(const QString &)),this,SLOT(slotDndEvents(const QString &)));
 
 	updateCaption();
@@ -115,7 +116,7 @@ KviQueryWindow::KviQueryWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConso
 KviQueryWindow::~KviQueryWindow()
 {
 	m_pUserListView->partAll();
-	if(type() == KVI_WINDOW_TYPE_DEADQUERY)
+	if(type() == KviWindow::DeadQuery)
 	{
 		if(context())
 			context()->unregisterDeadQuery(this);
@@ -127,7 +128,7 @@ KviQueryWindow::~KviQueryWindow()
 
 void KviQueryWindow::updateLabelText()
 {
-	QString szText=getInfoLabelText();
+	QString szText = getInfoLabelText();
 	if(szText != m_pLabel->text())
 	{
 		m_pLabel->setText(szText);
@@ -141,21 +142,21 @@ QString KviQueryWindow::getInfoLabelTipText()
 	if(!connection())
 		return szText;
 
-	KviIrcUserEntry * e = connection()->userDataBase()->find(m_szName);
-	if(e)
+	KviIrcUserEntry * pEntry = connection()->userDataBase()->find(m_szName);
+	if(pEntry)
 	{
 		QString szTmp;
 		QString szMask;
 
-		if(e->hasUser())
-			szMask += e->user();
+		if(pEntry->hasUser())
+			szMask += pEntry->user();
 		else
 			szMask += "*";
 
 		szMask += "@";
 
-		if(e->hasHost())
-			szMask += e->host();
+		if(pEntry->hasHost())
+			szMask += pEntry->host();
 		else
 			szMask += "*";
 
@@ -175,8 +176,8 @@ QString KviQueryWindow::getInfoLabelTipText()
 			szText +=              END_TABLE_BOLD_ROW;
 			szText +=          "<tr><td>";
 
-			if(e->hasRealName())
-				szTmp = __tr2qs("%1 is %2 (%3)").arg(m_szName, szMask, KviMircCntrl::stripControlBytes(e->realName()));
+			if(pEntry->hasRealName())
+				szTmp = __tr2qs("%1 is %2 (%3)").arg(m_szName, szMask, KviMircCntrl::stripControlBytes(pEntry->realName()));
 			else
 				szTmp = __tr2qs("%1 is %2").arg(m_szName, szMask);
 
@@ -188,17 +189,17 @@ QString KviQueryWindow::getInfoLabelTipText()
 
 			szText += "</td></tr>";
 
-			if(e->hasServer())
+			if(pEntry->hasServer())
 			{
 				szText += "<tr><td>";
-				if(e->hasHops())
-					szText += __tr2qs("%1 is using irc server: %2 (%3 hops)").arg(m_szName, e->server()).arg(e->hops());
+				if(pEntry->hasHops())
+					szText += __tr2qs("%1 is using irc server: %2 (%3 hops)").arg(m_szName, pEntry->server()).arg(pEntry->hops());
 				else
-					szText += __tr2qs("%1 is using irc server: %2").arg(m_szName, e->server());
+					szText += __tr2qs("%1 is using irc server: %2").arg(m_szName, pEntry->server());
 				szText += "</td></tr>";
 			}
 
-			if(e->isAway())
+			if(pEntry->isAway())
 			{
 				szText += "<tr><td>";
 				szText += __tr2qs("%1 is probably away").arg(m_szName);
@@ -230,36 +231,36 @@ QString KviQueryWindow::getInfoLabelText()
 	QString szTmp;
 	if(KVI_OPTION_BOOL(KviOption_boolShowExtendedInfoInQueryLabel) && connection())
 	{
-		KviIrcUserEntry * e = connection()->userDataBase()->find(m_szName);
-		if(e)
+		KviIrcUserEntry * pEntry = connection()->userDataBase()->find(m_szName);
+		if(pEntry)
 		{
 			QString szMask;
 			QString szChans;
 			if(connection())
 			{
-				if(e->hasUser())
-					szMask += e->user();
+				if(pEntry->hasUser())
+					szMask += pEntry->user();
 				else
 					szMask += "*";
 
 				szMask += "@";
-				if(e->hasHost())
-					szMask += e->host();
+				if(pEntry->hasHost())
+					szMask += pEntry->host();
 				else
 					szMask += "*";
 
-				if(e->hasRealName())
-					szTmp = __tr2qs("Query with %1!%2 (%3)").arg(m_szName, szMask, KviMircCntrl::stripControlBytes(e->realName()));
+				if(pEntry->hasRealName())
+					szTmp = __tr2qs("Query with %1!%2 (%3)").arg(m_szName, szMask, KviMircCntrl::stripControlBytes(pEntry->realName()));
 				else
 					szTmp = __tr2qs("Query with %1!%2").arg(m_szName, szMask);
 
-				if(e->hasServer())
-					szTmp += __tr2qs(", using server %1").arg(e->server());
+				if(pEntry->hasServer())
+					szTmp += __tr2qs(", using server %1").arg(pEntry->server());
 
-				if(e->hasHops())
-					szTmp += __tr2qs(" (%1 hops)").arg(e->hops());
+				if(pEntry->hasHops())
+					szTmp += __tr2qs(" (%1 hops)").arg(pEntry->hops());
 
-				if(e->isAway())
+				if(pEntry->isAway())
 					szTmp += __tr2qs(", probably away");
 
 				szTmp += "\n";
@@ -274,9 +275,9 @@ QString KviQueryWindow::getInfoLabelText()
 	return szTmp;
 }
 
-void KviQueryWindow::slotDndEvents(const QString &pcFile)
+void KviQueryWindow::slotDndEvents(const QString & szFile)
 {
-        KVS_TRIGGER_EVENT_1(KviEvent_OnQueryFileDropped,this,pcFile);
+        KVS_TRIGGER_EVENT_1(KviEvent_OnQueryFileDropped,this,szFile);
 }
 
 void KviQueryWindow::triggerCreationEvents()
@@ -293,7 +294,7 @@ void KviQueryWindow::getBaseLogFileName(QString & szBuffer)
 		szBuffer += console()->currentNetworkName();
 	} else {
 		szBuffer = windowName();
-		szBuffer+=".";
+		szBuffer += ".";
 		if(context())
 			szBuffer += console()->context()->id();
 		else
@@ -301,9 +302,9 @@ void KviQueryWindow::getBaseLogFileName(QString & szBuffer)
 	}
 }
 
-void KviQueryWindow::mergeQuery(KviQueryWindow * q)
+void KviQueryWindow::mergeQuery(KviQueryWindow * pQuery)
 {
-	m_pIrcView->appendMessagesFrom(q->m_pIrcView);
+	m_pIrcView->appendMessagesFrom(pQuery->m_pIrcView);
 	updateLabelText();
 }
 
@@ -312,30 +313,30 @@ void KviQueryWindow::textViewRightClicked()
 	KVS_TRIGGER_EVENT_0(KviEvent_OnQueryPopupRequest,this);
 }
 
-void KviQueryWindow::saveProperties(KviConfigurationFile * cfg)
+void KviQueryWindow::saveProperties(KviConfigurationFile * pCfg)
 {
-	KviWindow::saveProperties(cfg);
+	KviWindow::saveProperties(pCfg);
 	QList<int> sizes;
 	sizes << m_pIrcView->width() << m_pUserListView->width();
-	cfg->writeEntry("Splitter",sizes);
-	cfg->writeEntry("UserListViewVisible",m_pUserListView->isVisible());
+	pCfg->writeEntry("Splitter",sizes);
+	pCfg->writeEntry("UserListViewVisible",m_pUserListView->isVisible());
 }
 
-void KviQueryWindow::loadProperties(KviConfigurationFile * cfg)
+void KviQueryWindow::loadProperties(KviConfigurationFile * pCfg)
 {
 	int iWidth = width();
-	KviWindow::loadProperties(cfg);
+	KviWindow::loadProperties(pCfg);
 	QList<int> def;
 	def.append((iWidth * 75) / 100);
 	def.append((iWidth * 25) / 100);
-	QList<int> sizes=cfg->readIntListEntry("Splitter",def);
+	QList<int> sizes = pCfg->readIntListEntry("Splitter",def);
 	m_pSplitter->setSizes(sizes);
 	m_pIrcView->resize(sizes.at(0), m_pIrcView->height());
 	m_pUserListView->resize(sizes.at(1), m_pUserListView->height());
 	m_pSplitter->setStretchFactor(0,0);
 	m_pSplitter->setStretchFactor(0,1);
 
-	showListView(cfg->readBoolEntry("UserListViewVisible",false));
+	showListView(pCfg->readBoolEntry("UserListViewVisible",false));
 }
 
 void KviQueryWindow::notifyTargetChange(const QString & szOldNick, const QString & szOldUser, const QString & szOldHost, const QString & szNick, const QString & szUser, const QString & szHost)
@@ -374,26 +375,26 @@ void KviQueryWindow::userAction(const QString & szNick, unsigned int uActionType
 	updateLabelText();
 }
 
-void KviQueryWindow::userAction(KviIrcMask * user, unsigned int uActionType)
+void KviQueryWindow::userAction(KviIrcMask * pUser, unsigned int uActionType)
 {
 	int iTemperature = kvi_getUserActionTemperature(uActionType);
 	if(KVI_OPTION_BOOL(KviOption_boolEnableQueryTracing))
 	{
 		QString szOldUser, szOldHost;
-		if(!m_pUserListView->userActionVerifyMask(user->nick(),user->user(),user->host(),iTemperature,szOldUser,szOldHost))
-			notifyTargetChange(user->nick(),szOldUser,szOldHost,user->nick(),user->user(),user->host());
+		if(!m_pUserListView->userActionVerifyMask(pUser->nick(),pUser->user(),pUser->host(),iTemperature,szOldUser,szOldHost))
+			notifyTargetChange(pUser->nick(),szOldUser,szOldHost,pUser->nick(),pUser->user(),pUser->host());
 	} else {
-		m_pUserListView->userAction(user,iTemperature);
+		m_pUserListView->userAction(pUser,iTemperature);
 	}
 	updateLabelText();
 }
 
 KviUserListEntry * KviQueryWindow::setTarget(const QString & szNick, const QString & szUser, const QString & szHost)
 {
-	KviUserListEntry * e = m_pUserListView->join(szNick,szUser,szHost);
+	KviUserListEntry * pEntry = m_pUserListView->join(szNick,szUser,szHost);
 
-	if((!e->globalData()->avatar()) && (!szUser.isEmpty()) && (szUser != "*"))
-		m_pConsole->checkDefaultAvatar(e->globalData(),szNick,szUser,szHost);
+	if((!pEntry->globalData()->avatar()) && (!szUser.isEmpty()) && (szUser != "*"))
+		m_pConsole->checkDefaultAvatar(pEntry->globalData(),szNick,szUser,szHost);
 
 	setWindowName(szNick);
 	updateCaption();
@@ -408,7 +409,7 @@ KviUserListEntry * KviQueryWindow::setTarget(const QString & szNick, const QStri
 	KVS_TRIGGER_EVENT_3(KviEvent_OnQueryTargetAdded,this,szNick,szUser,szHost);
 	updateLabelText();
 
-	return e;
+	return pEntry;
 }
 
 void KviQueryWindow::notifyCommonChannels(const QString & szNick, const QString & szUser, const QString & szHost, int iChans, const QString & szChans)
@@ -467,10 +468,12 @@ void KviQueryWindow::showListView(bool bShow)
 	if(!bShow)
 	{
 		m_pUserListView->hide();
-		if(m_pListViewButton->isChecked())m_pListViewButton->setChecked(false);
+		if(m_pListViewButton->isChecked())
+			m_pListViewButton->setChecked(false);
 	} else {
 		m_pUserListView->show();
-		if(!(m_pListViewButton->isChecked()))m_pListViewButton->setChecked(true);
+		if(!(m_pListViewButton->isChecked()))
+			m_pListViewButton->setChecked(true);
 	}
 }
 
@@ -481,7 +484,7 @@ void KviQueryWindow::toggleListView()
 
 void KviQueryWindow::setDeadQuery()
 {
-	m_iFlags |= KVI_QUERY_FLAG_DEAD;
+	m_iFlags |= Dead;
 
 	m_pUserListView->enableUpdates(false);
 	m_pUserListView->partAll();
@@ -491,7 +494,7 @@ void KviQueryWindow::setDeadQuery()
 		connection()->unregisterQuery(this);
 	if(context())
 		context()->registerDeadQuery(this);
-	setType(KVI_WINDOW_TYPE_DEADQUERY);
+	setType(KviWindow::DeadQuery);
 
 	updateIcon();
 	updateCaption();
@@ -500,13 +503,13 @@ void KviQueryWindow::setDeadQuery()
 
 void KviQueryWindow::setAliveQuery()
 {
-	m_iFlags &= ~KVI_QUERY_FLAG_DEAD;
+	m_iFlags &= ~Dead;
 
 	KviIrcUserDataBase * pUserDataBase = connection()->userDataBase();
 
 	m_pUserListView->setUserDataBase(pUserDataBase);
 
-	setType(KVI_WINDOW_TYPE_QUERY);
+	setType(KviWindow::Query);
 
 	if(context())
 		context()->unregisterDeadQuery(this);
@@ -522,11 +525,11 @@ void KviQueryWindow::setAliveQuery()
 	
 		if(pUserDataBase)
 		{
-			KviIrcUserEntry * e = pUserDataBase->find(szNick);
-			if(e)
+			KviIrcUserEntry * pEntry = pUserDataBase->find(szNick);
+			if(pEntry)
 			{
-				szUser = e->user();
-				szHost = e->host();
+				szUser = pEntry->user();
+				szHost = pEntry->host();
 			}
 		}
 	
@@ -578,12 +581,11 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 
 	//my full mask as seen by other users
 	QString szTmpMask = connection()->userInfo()->nickName() + "!" + connection()->userInfo()->userName() + "@" + connection()->userInfo()->hostName();
-	QByteArray szMyFullMask = connection()->encodeText(szTmpMask);
-	//target name
-	QByteArray szName = connection()->encodeText(windowName());
-	//message
+	QByteArray szMyFullMask = connection()->encodeText(szTmpMask); //target name
+	QByteArray szName = connection()->encodeText(windowName()); //message
 	QByteArray szData = encodeText(szBuffer);
-	const char * d = szData.data();
+	const char * pcData = szData.data();
+
 	/* max length of a PRIVMSG text. Max buffer length for our sszEnd is 512 byte, but we have to
 	* remember that the server will prepszEnd to the message our full mask and truncate the resulting
 	* at 512 bytes again..
@@ -598,7 +600,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 	// our copy of the message
 	QString szTmpBuffer(szBuffer);
 
-	if(!d)
+	if(!pcData)
 		return;
 
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -606,14 +608,14 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 	{
 		if(cryptSessionInfo()->m_bDoEncrypt)
 		{
-			if(*d != KviMircCntrl::CryptEscape)
+			if(*pcData != KviMircCntrl::CryptEscape)
 			{
-				KviCString encrypted;
+				KviCString szEncrypted;
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(500 - szName.length());
-				switch(cryptSessionInfo()->m_pEngine->encrypt(d,encrypted))
+				switch(cryptSessionInfo()->m_pEngine->encrypt(pcData,szEncrypted))
 				{
 					case KviCryptEngine::Encrypted:
-						if(!connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),encrypted.ptr()))
+						if(!connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),szEncrypted.ptr()))
 							return;
 						if(bUserFeedback)
 							m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
@@ -621,12 +623,12 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 					break;
 					case KviCryptEngine::Encoded:
 					{
-						if(!connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),encrypted.ptr()))
+						if(!connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),szEncrypted.ptr()))
 							return;
 						if(bUserFeedback)
 						{
 							// ugly,but we must redecode here
-							QString szRedecoded = decodeText(encrypted.ptr());
+							QString szRedecoded = decodeText(szEncrypted.ptr());
 							m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 								QString(),QString(),QString(),szRedecoded,KviConsoleWindow::NoNotifications);
 						}
@@ -645,7 +647,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 				return;
 			} else {
 				//eat the escape code
-				d++;
+				pcData++;
 				szTmpBuffer.remove(0,1);
 				//let the normal function do it
 			}
@@ -659,12 +661,12 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 		 * and sszEnd each message part as a different PRIVMSG
 		 * Due to encoding stuff, this is frikin'time eater
 		 */
-		QTextEncoder * p_Encoder = makeEncoder(); // our temp encoder
-		QByteArray szTmp;		// used to calculate the length of an encoded message
-		int iPos;			// contains the index where to truncate szTmpBuffer
-		int iC;				// cycles counter (debugging/profiling purpose)
-		float fPosDiff;			// optimization internal; aggressivity factor
-		QString szCurSubString;		// truncated parts as reported to the user
+		QTextEncoder * pEncoder = makeEncoder(); // our temp encoder
+		QByteArray szTmp;       // used to calculate the length of an encoded message
+		int iPos;               // contains the index where to truncate szTmpBuffer
+		int iC;                 // cycles counter (debugging/profiling purpose)
+		float fPosDiff;         // optimization internal; aggressivity factor
+		QString szCurSubString; // truncated parts as reported to the user
 
 		// run until we've something remaining in the message
 		while(szTmpBuffer.length())
@@ -678,7 +680,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 			while(1)
 			{
 				iC++;
-				szTmp = p_Encoder->fromUnicode(szTmpBuffer.left(iPos));
+				szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
 
 				if(szTmp.length() <= iMaxMsgLen)
 					break;
@@ -697,16 +699,17 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 			{
 				iC++;
 
-				szTmp = p_Encoder->fromUnicode(szTmpBuffer.left(iPos));
+				szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
 
 				// perfect match
-				if(iPos == szTmpBuffer.length()) break;
+				if(iPos == szTmpBuffer.length())
+					break;
 
 				if(szTmp.length() > iMaxMsgLen)
 				{
 					// overflowed.. last one was the good one
 					iPos--;
-					szTmp = p_Encoder->fromUnicode(szTmpBuffer.left(iPos));
+					szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
 					break;
 				} else {
 					//there's still free space.. add another char
@@ -737,7 +740,7 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 		}
 
 	} else {
-		if(connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),d))
+		if(connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),pcData))
 		{
 			if(bUserFeedback)
 				m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szTmpBuffer,KviConsoleWindow::NoNotifications);
@@ -759,11 +762,9 @@ void KviQueryWindow::ownAction(const QString & szBuffer)
 		QString szTmpBuffer;
 		//see bug ticket #220
 		if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
-		{
 			szTmpBuffer = KviMircCntrl::stripControlBytes(szBuffer);
-		} else {
+		else
 			szTmpBuffer = szBuffer;
-		}
 
 		QByteArray szBuffer = encodeText(szTmpBuffer);
 

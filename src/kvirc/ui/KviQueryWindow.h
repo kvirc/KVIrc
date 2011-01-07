@@ -43,11 +43,6 @@ class KviConfigurationFile;
 class KviWindowToolPageButton;
 
 /**
-* \def KVI_QUERY_FLAG_DEAD When the query is dead
-*/
-#define KVI_QUERY_FLAG_DEAD 1
-
-/**
 * \class KviQueryWindow
 * \brief The class which manages a query
 */
@@ -55,6 +50,14 @@ class KVIRC_API KviQueryWindow : public KviWindow
 {
 	Q_OBJECT
 public:
+	/**
+	* \enum Flag
+	* \brief Holds the flags of a query
+	*/
+	enum Flag {
+		Dead = 1
+	};
+
 	/**
 	* \brief Constructs the query object
 	* \param lpFrm The parent frame
@@ -76,6 +79,12 @@ protected:
 	QFrame                              * m_pButtonGrid;
 public:
 	/**
+	* \brief Returns the userlist of the query (the remote peer)
+	* \return KviUserListView *
+	*/
+	KviUserListView * userListView(){ return m_pUserListView; };
+
+	/**
 	* \brief Sets the status of the query as dead
 	* \return void
 	*/
@@ -91,7 +100,7 @@ public:
 	* \brief Returns true if the query is dead
 	* \return bool
 	*/
-	bool isDeadQuery(){ return m_iFlags & KVI_QUERY_FLAG_DEAD; };
+	bool isDeadQuery(){ return m_iFlags & Dead; };
 
 	/**
 	* \brief Returns the size of the query object
@@ -208,10 +217,10 @@ public:
 
 	/**
 	* \brief Merges a query into the one we're using
-	* \param q The source query
+	* \param pQuery The source query
 	* \return void
 	*/
-	void mergeQuery(KviQueryWindow * q);
+	void mergeQuery(KviQueryWindow * pQuery);
 
 	/**
 	* \brief Updates the text of the tooltip
@@ -277,17 +286,17 @@ protected:
 
 	/**
 	* \brief Loads the properties from file
-	* \param cfg The configuration file
+	* \param pCfg The configuration file
 	* \return void
 	*/
-	virtual void loadProperties(KviConfigurationFile * cfg);
+	virtual void loadProperties(KviConfigurationFile * pCfg);
 
 	/**
 	* \brief Saves the properties to file
-	* \param cfg The configuration file
+	* \param pCfg The configuration file
 	* \return void
 	*/
-	virtual void saveProperties(KviConfigurationFile * cfg);
+	virtual void saveProperties(KviConfigurationFile * pCfg);
 
 	/**
 	* \brief Gets the base of the log file name
@@ -302,7 +311,7 @@ protected:
 	*/
 	virtual void triggerCreationEvents();
 
-	virtual void resizeEvent(QResizeEvent * e);
+	virtual void resizeEvent(QResizeEvent *);
 protected slots:
 	/**
 	* \brief Triggers the OnQueryPopupRequest event
@@ -321,7 +330,7 @@ protected slots:
 	* \param pcFile The file dropped in the query
 	* \return void
 	*/
-        void slotDndEvents(const QString &pcFile);
+        void slotDndEvents(const QString & szFile);
 };
 
 #endif //_KVI_CHANNEL_H_

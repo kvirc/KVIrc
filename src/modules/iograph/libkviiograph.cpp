@@ -43,7 +43,7 @@
 KviIOGraphWindow* g_pIOGraphWindow = 0;
 
 KviIOGraphWindow::KviIOGraphWindow(KviModuleExtensionDescriptor * d,KviMainWindow * lpFrm,const char * name)
-: KviWindow(KVI_WINDOW_TYPE_IOGRAPH,lpFrm,name), KviModuleExtension(d)
+: KviWindow(KviWindow::IOGraph,lpFrm,name), KviModuleExtension(d)
 {
 	m_pIOGraph = new KviIOGraphWidget(this);
 	setAutoFillBackground(false);

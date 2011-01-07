@@ -36,6 +36,10 @@
 #include <QFont>
 #include <QStringList>
 
+#ifdef COMPILE_KDE_SUPPORT
+	#include <KAboutData>
+#endif
+
 #ifdef COMPILE_ON_WINDOWS
 	// The brain damaged MSVC compiler can't instantiate templates without this
 	#include "KviMainWindow.h"
@@ -107,10 +111,32 @@ class KVIRC_API KviApplication : public KviTalApplication
 	friend class SetupWizard; // this resides in a module!
 	Q_OBJECT
 public:
+	// FIXME: "Plugins" and "ConfigPlugins" should become "Modules" and "ConfigModules"
+	enum KvircSubdir
+	{
+		None,         Pics,          Config,
+		Help,         HelpEN,        HelpNoIntl,
+		Log,          Incoming,      Audio,
+		Scripts,      Plugins,       ConfigPlugins,
+		Trash,        MsgColors,     Charmaps,
+		Avatars,      DefScript,     License,
+		Modules,      ConfigScripts, Filters,
+		Tmp,          Locale,        Themes,
+		Classes,      SmallIcons,    EasyPlugins
+	};
+
 	KviApplication(int &argc,char ** argv);
 	~KviApplication();
-
+public:
+	// setup stuff (accessed from KviMain.cpp: consider private othwerise)
+	QString	                                   m_szConfigFile;        // setup
+	bool                                       m_bCreateConfig;      // setup
+	KviCString                                     m_szExecAfterStartup;
+	bool                                       m_bShowSplashScreen;
 protected:
+#ifdef COMPILE_KDE_SUPPORT
+	KAboutData                               * m_pAboutData;
+#endif
 	// directories
 	QString                                    m_szGlobalKvircDir;
 	QString                                    m_szLocalKvircDir;
@@ -133,29 +159,13 @@ protected:
 #endif
 	QFont                                      m_fntDefaultFont;
 public:
-	// setup stuff (accessed from KviMain.cpp: consider private othwerise)
-	QString	                                   m_szConfigFile;        // setup
-	bool                                       m_bCreateConfig;      // setup
-	KviCString                                     m_szExecAfterStartup;
-	bool                                       m_bShowSplashScreen;
-public:
-	// FIXME: "Plugins" and "ConfigPlugins" should become "Modules" and "ConfigModules"
-	enum KvircSubdir
-	{
-		None,         Pics,          Config,
-		Help,         HelpEN,        HelpNoIntl,
-		Log,          Incoming,      Audio,
-		Scripts,      Plugins,       ConfigPlugins,
-		Trash,        MsgColors,     Charmaps,
-		Avatars,      DefScript,     License,
-		Modules,      ConfigScripts, Filters,
-		Tmp,          Locale,        Themes,
-		Classes,      SmallIcons,    EasyPlugins
-	};
-
-public:
 	void destroyFrame();
 	void setup();                                  // THIS SHOULD BE PRIVATE! (but is accessed from KviMain.cpp)
+
+#ifdef COMPILE_KDE_SUPPORT
+	void setAboutData(KAboutData * pAboutData){ m_pAboutData = pAboutData; };
+	KAboutData * aboutData(){ return m_pAboutData; };
+#endif
 
 #ifndef COMPILE_NO_IPC
 	void ipcMessage(char * message);

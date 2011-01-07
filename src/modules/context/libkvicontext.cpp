@@ -476,7 +476,7 @@ static bool context_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	int idx = 0;
 	for(KviWindow * pWnd = pWinList->first();pWnd;pWnd = pWinList->next())
 	{
-		if(pWnd->type() == KVI_WINDOW_TYPE_CONSOLE)
+		if(pWnd->type() == KviWindow::Console)
 		{
 			pArray->set(idx,new KviKvsVariant((kvs_int_t)((KviConsoleWindow *)pWnd)->context()->id()));
 			idx++;

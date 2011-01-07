@@ -158,7 +158,7 @@ void ChannelTreeWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 }
 
 ListWindow::ListWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole)
-: KviWindow(KVI_WINDOW_TYPE_LIST,lpFrm,"list",lpConsole), KviExternalServerDataParser()
+: KviWindow(KviWindow::List,lpFrm,"list",lpConsole), KviExternalServerDataParser()
 {
 	g_pListWindowList->append(this);
 

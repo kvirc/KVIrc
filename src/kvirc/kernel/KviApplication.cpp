@@ -84,6 +84,7 @@
 #include "kvi_sourcesdate.h"
 #include "KviPointerHashTable.h"
 #include "KviTalPopupMenu.h"
+#include "KviQueryWindow.h"
 
 #ifndef COMPILE_NO_IPC
 	#include "KviIpcSentinel.h"
@@ -748,24 +749,74 @@ Let's see the scheme to understand which is choosen:
 		// Scheme 1a: KDE
 		if(!pWnd)
 			return;
-		
-		QString szEvent = "incomingMessage";
+
 		QString szText = __tr2qs("Message arriving from %1:\n\n").arg(pWnd->target());
 		szText += KviMircCntrl::stripControlBytes(szMsg);
-		
+
 		QStringList actions;
 		actions << __tr2qs("View");
 		actions << __tr2qs("Ignore");
-		
-		QPixmap * pIcon = g_pIconManager->getSmallIcon(KviIconManager::KVIrc);
-		
-		KNotification * pNotify = new KNotification(szEvent,KNotification::CloseWhenWidgetActivated,this);
+
+		QPixmap * pIcon = 0;
+		KviIconManager::SmallIcon eIcon = KviIconManager::None;
+		switch(pWnd->type())
+		{
+			case KviWindow::Console: eIcon = KviIconManager::Links; break;
+			case KviWindow::Channel: eIcon = KviIconManager::Channel; break;
+			case KviWindow::Query:
+			{
+				KviUserListEntry * pEntry = ((KviQueryWindow *)pWnd)->userListView()->findEntry(pWnd->target());
+				if(!pEntry)
+					break;
+
+				KviAvatar * pAvatar = pEntry->globalData()->avatar();
+				if(!pAvatar)
+					break;
+
+				pIcon = pAvatar->pixmap();
+				if(!pIcon)
+					eIcon = KviIconManager::Query;
+			}
+			break;
+			case KviWindow::SocketSpy: eIcon = KviIconManager::Spy; break;
+			case KviWindow::DccChat: eIcon = KviIconManager::DccMsg; break;
+			case KviWindow::DccTransfer: eIcon = KviIconManager::ServerPing; break;
+			case KviWindow::UserWindow: eIcon = KviIconManager::UserWindow; break;
+			case KviWindow::Debug: eIcon = KviIconManager::Bomb; break;
+			//KviWindow::DeadChannel
+			//KviWindow::DeadQuery
+			//KviWindow::Editor
+			//KviWindow::Help
+			//KviWindow::Terminal
+			//KviWindow::Links
+			//KviWindow::List
+			//KviWindow::DccCanvas
+			//KviWindow::DccVoice
+			//KviWindow::DccVideo
+			//KviWindow::Tool
+			//KviWindow::IOGraph
+			//KviWindow::DirBrowser
+			//KviWindow::ScriptEditor
+			//KviWindow::ScriptObject
+			//KviWindow::LogView
+			//KviWindow::Offer
+			case KviWindow::Unknown:
+			default: eIcon = KviIconManager::KVIrc; break;
+		}
+
+		if(!pIcon)
+			pIcon = g_pIconManager->getSmallIcon(eIcon);
+
+		KComponentData * pData = new KComponentData(aboutData());
+
+		KNotification * pNotify = new KNotification("incomingMessage",KNotification::CloseWhenWidgetActivated,this);
 		pNotify->setFlags(KNotification::Persistent);
 		pNotify->setTitle(__tr2qs("KVIrc messaging system"));
 		pNotify->setText(szText);
 		pNotify->setActions(actions);
 		pNotify->setPixmap(*pIcon);
-		
+		pNotify->setComponentData(*pData); 
+
 		connect(pNotify,SIGNAL(activated()),this,SLOT(showParentFrame()));
 		connect(pNotify,SIGNAL(action1Activated()),this,SLOT(showParentFrame()));
 		connect(pNotify,SIGNAL(action2Activated()),pNotify,SLOT(close()));
@@ -1070,7 +1121,7 @@ void KviApplication::setAvatarFromOptions()
 
 	while(it.current())
 	{
-		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
+		if(it.current()->type() == KviWindow::Console)
 		{
 			((KviConsoleWindow *)it.current())->setAvatarFromOptions();
 		}
@@ -1708,7 +1759,7 @@ KviConsoleWindow * KviApplication::findConsole(QString & szServer, QString & szN
 
 	while(it.current())
 	{
-		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
+		if(it.current()->type() == KviWindow::Console)
 		{
 			if(((KviConsoleWindow *)it.current())->isConnected())
 			{
@@ -1745,7 +1796,7 @@ void KviApplication::restartLagMeters()
 
 	while(it.current())
 	{
-		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
+		if(it.current()->type() == KviWindow::Console)
 		{
 			if(((KviConsoleWindow *)it.current())->connection())
 				((KviConsoleWindow *)it.current())->connection()->restartLagMeter();
@@ -1760,7 +1811,7 @@ void KviApplication::restartNotifyLists()
 
 	while(it.current())
 	{
-		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
+		if(it.current()->type() == KviWindow::Console)
 		{
 			if(((KviConsoleWindow *)it.current())->connection())
 				((KviConsoleWindow *)it.current())->connection()->restartNotifyList();
@@ -1775,7 +1826,7 @@ void KviApplication::resetAvatarForMatchingUsers(KviRegisteredUser * pUser)
 
 	while(it.current())
 	{
-		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
+		if(it.current()->type() == KviWindow::Console)
 		{
 			((KviConsoleWindow *)it.current())->resetAvatarForMatchingUsers(pUser);
 		}
@@ -1789,7 +1840,7 @@ KviConsoleWindow * KviApplication::findConsole(unsigned int uIrcContextId)
 
 	while(it.current())
 	{
-		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
+		if(it.current()->type() == KviWindow::Console)
 		{
 			if(((KviConsoleWindow *)it.current())->context()->id() == uIrcContextId)
 				return ((KviConsoleWindow *)it.current());
@@ -1815,7 +1866,7 @@ KviConsoleWindow * KviApplication::topmostConnectedConsole()
 
 	while(it.current())
 	{
-		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
+		if(it.current()->type() == KviWindow::Console)
 		{
 			if(((KviConsoleWindow *)it.current())->isConnected())
 				return (KviConsoleWindow *)(it.current());

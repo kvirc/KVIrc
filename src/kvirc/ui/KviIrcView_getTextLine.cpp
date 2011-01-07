@@ -595,7 +595,7 @@ found_command_escape:
 						bool bColorSet=false;
 						if((line_ptr->pChunks[iCurChunk].szPayload[0]=='n') && KVI_OPTION_BOOL(KviOption_boolUseUserListColorsAsNickColors) && (!KVI_OPTION_BOOL(KviOption_boolColorNicks)))
 						{
-							if(m_pKviWindow->type()==KVI_WINDOW_TYPE_CHANNEL && m_pKviWindow)
+							if(m_pKviWindow->type()==KviWindow::Channel && m_pKviWindow)
 							{
 								if(line_ptr->pChunks[iCurChunk].szPayload[1]=='c' && ((KviChannelWindow*)m_pKviWindow)->userListView())
 								{
@@ -607,7 +607,7 @@ found_command_escape:
 									}
 								}
 							}
-							else if(m_pKviWindow->type()==KVI_WINDOW_TYPE_QUERY && m_pKviWindow && line_ptr->pChunks[iCurChunk].szPayload[1]=='c')
+							else if(m_pKviWindow->type()==KviWindow::Query && m_pKviWindow && line_ptr->pChunks[iCurChunk].szPayload[1]=='c')
 							{
 								QString m_szNick = QString((QChar*)next_cr,term_cr-next_cr);
 								if(m_szNick==m_pKviWindow->connection()->currentNickName())

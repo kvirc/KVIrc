@@ -84,7 +84,7 @@
 
 
 KviChannelWindow::KviChannelWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole, const QString & szName)
-: KviWindow(KVI_WINDOW_TYPE_CHANNEL,lpFrm,szName,lpConsole)
+: KviWindow(KviWindow::Channel,lpFrm,szName,lpConsole)
 {
 	// Init some member variables
 	m_pInput               = 0;
@@ -255,7 +255,7 @@ KviChannelWindow::KviChannelWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpC
 KviChannelWindow::~KviChannelWindow()
 {
 	// Unregister ourself
-	if(type() == KVI_WINDOW_TYPE_DEADCHANNEL)
+	if(type() == KviWindow::DeadChannel)
 	{
 		if(context())
 			context()->unregisterDeadChannel(this);
@@ -747,7 +747,7 @@ void KviChannelWindow::setDeadChan()
 	if(context())
 		context()->registerDeadChannel(this);
 
-	setType(KVI_WINDOW_TYPE_DEADCHANNEL);
+	setType(KviWindow::DeadChannel);
 
 	updateIcon();
 	updateModeLabel();
@@ -758,7 +758,7 @@ void KviChannelWindow::setAliveChan()
 {
 	// Rise like phoenix!
 	m_iStateFlags = 0;
-	setType(KVI_WINDOW_TYPE_CHANNEL);
+	setType(KviWindow::Channel);
 	m_pUserListView->setUserDataBase(connection()->userDataBase());
 	m_joinTime = QDateTime::currentDateTime();
 	if(context())
@@ -1422,32 +1422,32 @@ bool KviChannelWindow::activityMeter(unsigned int * puActivityValue, unsigned in
 
 
 	if(dActionsPerMinute < 0.3)
-		*puActivityValue = KVI_ACTIVITY_NONE;
+		*puActivityValue = KviWindow::None;
 	else if(dActionsPerMinute < 1.0)
-		*puActivityValue = KVI_ACTIVITY_VERYLOW;
+		*puActivityValue = KviWindow::VeryLow;
 	else if(dActionsPerMinute < 4.0)
-		*puActivityValue = KVI_ACTIVITY_LOW;
+		*puActivityValue = KviWindow::Low;
 	else if(dActionsPerMinute < 10.0)
-		*puActivityValue = KVI_ACTIVITY_MEDIUM;
+		*puActivityValue = KviWindow::Medium;
 	else if(dActionsPerMinute < 30.0)
-		*puActivityValue = KVI_ACTIVITY_HIGH;
+		*puActivityValue = KviWindow::High;
 	else
-		*puActivityValue = KVI_ACTIVITY_VERYHIGH;
+		*puActivityValue = KviWindow::VeryHigh;
 
 	if(uHotActionPercent < KVI_CHANACTIVITY_LIMIT_ICE)
-		*puActivityTemperature = KVI_ACTIVITY_ICE;
+		*puActivityTemperature = KviWindow::Ice;
 	else if(uHotActionPercent < KVI_CHANACTIVITY_LIMIT_VERYCOLD)
-		*puActivityTemperature = KVI_ACTIVITY_VERYCOLD;
+		*puActivityTemperature = KviWindow::VeryCold;
 	else if(uHotActionPercent < KVI_CHANACTIVITY_LIMIT_COLD)
-		*puActivityTemperature = KVI_ACTIVITY_COLD;
+		*puActivityTemperature = KviWindow::Cold;
 	else if(uHotActionPercent < KVI_CHANACTIVITY_LIMIT_UNDEFINED)
-		*puActivityTemperature = KVI_ACTIVITY_UNDEFINED;
+		*puActivityTemperature = KviWindow::Undefined;
 	else if(uHotActionPercent < KVI_CHANACTIVITY_LIMIT_HOT)
-		*puActivityTemperature = KVI_ACTIVITY_HOT;
+		*puActivityTemperature = KviWindow::Hot;
 	else if(uHotActionPercent < KVI_CHANACTIVITY_LIMIT_VERYHOT)
-		*puActivityTemperature = KVI_ACTIVITY_VERYHOT;
+		*puActivityTemperature = KviWindow::VeryHot;
 	else
-		*puActivityTemperature = KVI_ACTIVITY_FIRE;
+		*puActivityTemperature = KviWindow::Fire;
 
 	return true;
 }

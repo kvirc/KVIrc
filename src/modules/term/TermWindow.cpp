@@ -37,7 +37,7 @@
 	extern KviIconManager * g_pIconManager;
 
 	TermWindow::TermWindow(KviMainWindow * lpFrm,const char * name)
-	: KviWindow(KVI_WINDOW_TYPE_TERM,lpFrm,name)
+	: KviWindow(KviWindow::Terminal,lpFrm,name)
 	{
 		g_pTermWindowList->append(this);
 		m_pTermWidget = 0;

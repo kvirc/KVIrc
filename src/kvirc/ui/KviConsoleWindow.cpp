@@ -94,9 +94,9 @@ extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
 
 KviConsoleWindow::KviConsoleWindow(KviMainWindow * lpFrm,int iFlags)
 #ifdef COMPILE_ON_WINDOWS
-: KviWindow(KVI_WINDOW_TYPE_CONSOLE,lpFrm,__tr2qs("CONSOLE"),0)
+: KviWindow(KviWindow::Console,lpFrm,__tr2qs("CONSOLE"),0)
 #else
-: KviWindow(KVI_WINDOW_TYPE_CONSOLE,lpFrm,__tr2qs("CONSOLE"),this)
+: KviWindow(KviWindow::Console,lpFrm,__tr2qs("CONSOLE"),this)
 #endif
 {
 	m_pConsole = this;
@@ -637,7 +637,7 @@ int KviConsoleWindow::applyHighlighting(KviWindow *wnd,int type,const QString &n
 		}
 	}
 
-	if(wnd->type() == KVI_WINDOW_TYPE_CHANNEL)
+	if(wnd->type() == KviWindow::Channel)
 	{
 		if(((KviChannelWindow *)wnd)->isHighlightedUser(nick) || isHighlightedChannel(wnd->windowName()) )
 			return triggerOnHighlight(wnd,type,nick,user,host,szMsg,nick);
@@ -674,7 +674,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 	// FIXME: #warning "REMEMBER IT IN ESCAPE COMMANDS"
 	// KVI_ASSERT(wnd);
 
-	bool bIsChan = (wnd->type() == KVI_WINDOW_TYPE_CHANNEL);
+	bool bIsChan = (wnd->type() == KviWindow::Channel);
 	bool bIsNotice = ((type == KVI_OUT_CHANNELNOTICE)||(type == KVI_OUT_CHANNELNOTICECRYPTED) \
 		   ||(type == KVI_OUT_QUERYNOTICE)||(type == KVI_OUT_QUERYNOTICECRYPTED));
 

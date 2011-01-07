@@ -385,7 +385,7 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 
 	switch(m_pWindow->type())
 	{
-		case KVI_WINDOW_TYPE_CONSOLE:
+		case KviWindow::Console:
 		{
 			QFont f = QFont(KVI_OPTION_FONT(KviOption_fontWindowList));
 			f.setBold(true);
@@ -393,12 +393,12 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 			KviWindowListBase::getTextForConsole(szText,(KviConsoleWindow *)m_pWindow);
 		}
 		break;
-		case KVI_WINDOW_TYPE_CHANNEL:
-		case KVI_WINDOW_TYPE_DEADCHANNEL:
+		case KviWindow::Channel:
+		case KviWindow::DeadChannel:
 			szText = ((KviChannelWindow *)m_pWindow)->nameWithUserFlag();
 		break;
-		case KVI_WINDOW_TYPE_QUERY:
-		case KVI_WINDOW_TYPE_DEADQUERY:
+		case KviWindow::Query:
+		case KviWindow::DeadQuery:
 			szText = m_pWindow->windowName();
 		break;
 		default:
