@@ -297,12 +297,18 @@ void KviDnsResolverThread::run()
 
 		retVal = getaddrinfo(KviQString::toUtf8(m_szQuery).data(),0,&hints,&pRet);
 
-		if(retVal != 0)dns->setError(translateDnsError(retVal));
-		else {
+		if(retVal != 0)
+		{
+			dns->setError(translateDnsError(retVal));
+		} else if(!pRet)
+		{
+			dns->setError(KviError::DNSQueryFailed);
+		} else {
 			dns->appendHostname(pRet->ai_canonname ? QString::fromUtf8(pRet->ai_canonname) : m_szQuery);
 			QString szIp;
 #ifdef COMPILE_IPV6_SUPPORT
-			if(pRet->ai_family == PF_INET6)KviNetUtils::binaryIpToStringIp_V6(((sockaddr_in6 *)(pRet->ai_addr))->sin6_addr,szIp);
+			if(pRet->ai_family == PF_INET6)
+				KviNetUtils::binaryIpToStringIp_V6(((sockaddr_in6 *)(pRet->ai_addr))->sin6_addr,szIp);
 			else {
 #endif
 				KviNetUtils::binaryIpToStringIp(((sockaddr_in *)(pRet->ai_addr))->sin_addr,szIp);
@@ -316,14 +322,16 @@ void KviDnsResolverThread::run()
 			{
 				QString tmp;
 #ifdef COMPILE_IPV6_SUPPORT
-				if(pNext->ai_family == PF_INET6)KviNetUtils::binaryIpToStringIp_V6(((sockaddr_in6 *)(pNext->ai_addr))->sin6_addr,tmp);
+				if(pNext->ai_family == PF_INET6)
+					KviNetUtils::binaryIpToStringIp_V6(((sockaddr_in6 *)(pNext->ai_addr))->sin6_addr,tmp);
 				else {
 #endif
 					KviNetUtils::binaryIpToStringIp(((sockaddr_in *)(pNext->ai_addr))->sin_addr,tmp);
 #ifdef COMPILE_IPV6_SUPPORT
 				}
 #endif
-				if(!tmp.isEmpty())dns->appendAddress(tmp);
+				if(!tmp.isEmpty())
+					dns->appendAddress(tmp);
 
 				if(pNext->ai_canonname)
 				{
@@ -335,7 +343,8 @@ void KviDnsResolverThread::run()
 
 			}
 		}
-		if(pRet)freeaddrinfo(pRet);
+		if(pRet)
+			freeaddrinfo(pRet);
 //#ifdef HAVE_GETNAMEINFO
 	}
 //#endif //HAVE_GETNAMEINFO
@@ -359,7 +368,11 @@ KviDnsResolver::KviDnsResolver()
 KviDnsResolver::~KviDnsResolver()
 {
 	if(m_pSlaveThread)
+	{
+		if(!m_pSlaveThread->wait(30000))
+			qDebug("Failed to wait for the slave dns thread: we're probably going to crash!");
 		delete m_pSlaveThread; // will eventually terminate it (but it will also block us!!!)
+	}
 		
 	//QApplication::removePostedEvents(this); // the Qt doc says that we shouldn't need this
 		

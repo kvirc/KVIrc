@@ -70,7 +70,7 @@ ChannelsJoinDialog::ChannelsJoinDialog(QWidget * par, const char * name)
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	g->addWidget(m_pTreeWidget,0,0,1,2);
-	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *,int)));
+	//connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *,int)));
 
 
 	m_pGroupBox = new KviTalGroupBox(Qt::Horizontal,__tr2qs("Channel" ),this);
