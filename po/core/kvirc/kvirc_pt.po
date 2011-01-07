@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-07 19:15+0100\n"
-"PO-Revision-Date: 2011-01-07 00:12+0000\n"
+"PO-Revision-Date: 2011-01-07 21:18+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "Language: pt\n"
@@ -2360,9 +2360,8 @@ msgid "Connected since"
 msgstr "Conectado desde"
 
 #: src/kvilib/net/KviHttpRequest.cpp:267
-#, fuzzy
 msgid "Connected to %1:%2: sending request"
-msgstr "Conexão estabelecida: a enviar pedido"
+msgstr "Conectado a %1:%2: a enviar pedido"
 
 #: src/modules/list/ListWindow.cpp:298
 #: src/modules/links/LinksWindow.cpp:134
@@ -2428,9 +2427,8 @@ msgid "Contacting %Q %s (%s) on port %u"
 msgstr "A contactar %Q %s (%s) no porto %u"
 
 #: src/kvilib/net/KviHttpRequest.cpp:397
-#, fuzzy
 msgid "Contacting host %1 on port %2"
-msgstr "A contactar endereço %Q no porto %u"
+msgstr "A contactar a máquina %1 no porto %2"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:450
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:464
@@ -2642,10 +2640,11 @@ msgstr "Pedido DCC"
 #: src/kvilib/net/KviDnsResolverNew.cpp:158
 msgid "DNS query returned no IP address results of the requested type"
 msgstr ""
+"A pesquisa de DNS não retornou nenhum resultado de endereço IP do tipo pedido"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:74
 msgid "DNS resolver busy"
-msgstr ""
+msgstr "Resolução de DNS ocupado"
 
 #: src/modules/rijndael/libkvirijndael.cpp:206
 #: src/modules/rijndael/libkvirijndael.cpp:414
@@ -3150,9 +3149,8 @@ msgid "Failed to start the connection: %Q"
 msgstr "Falha ao iniciar a conexão: %Q"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:87
-#, fuzzy
 msgid "Failed to start the host lookup"
-msgstr "Não é possível iniciar a procura DNS"
+msgstr "Falha ao iniciar a procura da máquina"
 
 #: src/modules/mircimport/libkvimircimport.cpp:226
 msgid "Failed to start the server list transfer :("
@@ -3423,7 +3421,6 @@ msgid "Help Index"
 msgstr "Índice de Ajuda"
 
 #: src/modules/help/HelpWindow.cpp:71
-#, fuzzy
 msgid "HelpIndex"
 msgstr "Índice de Ajuda"
 
@@ -3636,9 +3633,8 @@ msgstr ""
 "prefixo CTRL+P"
 
 #: src/kvirc/kernel/KviApplication.cpp:758
-#, fuzzy
 msgid "Ignore"
-msgstr "ignorado"
+msgstr "ignorar"
 
 #: src/kvirc/kernel/KviOptions.cpp:836
 msgid "Ignored user message"
@@ -3759,9 +3755,8 @@ msgid "Internal error: call a head-shrinker"
 msgstr "Erro interno: chame um psiquiatra"
 
 #: src/kvilib/net/KviDnsResolverNew.cpp:147
-#, fuzzy
 msgid "Internal error: unhandled DNS query type"
-msgstr "Erro interno: chame um psiquiatra"
+msgstr "Erro interno: tipo de pesquisa DNS impossível"
 
 #: src/modules/system/libkvisystem.cpp:487
 msgid "Invalid DBus interface"
@@ -3905,9 +3900,8 @@ msgid "It's so cold here..."
 msgstr "Está tanto frio aqui..."
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:259
-#, fuzzy
 msgid "Join"
-msgstr "&Entrar"
+msgstr "Entrar"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:755
 msgid "Join Channel"
@@ -6443,9 +6437,8 @@ msgid "Socket warning"
 msgstr "Aviso do 'socket'"
 
 #: src/kvilib/net/KviHttpRequest.cpp:321
-#, fuzzy
 msgid "Socket write error"
-msgstr "Erro do 'socket'"
+msgstr "Erro da escrita 'socket'"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:1025
 msgid ""
@@ -7754,7 +7747,7 @@ msgstr "Actividade muito baixa"
 
 #: src/kvirc/kernel/KviApplication.cpp:757
 msgid "View"
-msgstr ""
+msgstr "Ver"
 
 #: src/modules/url/libkviurl.cpp:878
 msgid "View URL list"
