@@ -774,7 +774,7 @@ Let's see the scheme to understand which is choosen:
 						"Name=kvirc\n" \
 						"\n" \
 						"[Event/incomingMessage]\n" \
-						"Name=IRC message\n" \
+						"Name=KVIrc\n" \
 						"Comment=Someone sent us a message\n" \
 						"Action=Popup|Taskbar\n" \
 						"Persistant=true\n" \
