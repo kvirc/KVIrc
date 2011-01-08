@@ -22,7 +22,8 @@
 //
 //=============================================================================
 
-
+#include "kvi_settings.h"
+#include "kvi_out.h"
 #include "KviQueryWindow.h"
 #include "KviConsoleWindow.h"
 #include "KviIconManager.h"
@@ -30,9 +31,7 @@
 #include "KviInput.h"
 #include "KviOptions.h"
 #include "KviLocale.h"
-#include "kvi_settings.h"
 #include "KviIrcSocket.h"
-#include "kvi_out.h"
 #include "KviConfigurationFile.h"
 #include "KviMircCntrl.h"
 #include "kvi_settings.h"

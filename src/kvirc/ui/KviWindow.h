@@ -324,16 +324,18 @@ public:
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	KviCryptSessionInfo * cryptSessionInfo(){ return m_pCryptSessionInfo; };
-	void setCryptSessionInfo(KviCryptSessionInfo * i);
+	void setCryptSessionInfo(KviCryptSessionInfo * pInfo);
 #endif
 
 	virtual bool activityMeter(unsigned int * puActivityValue, unsigned int * puActivityTemperature);
-	virtual bool highlightMeter(unsigned int * puHighlightValue);
-	virtual bool highlightMe(unsigned int v);
+
+	//* \param puValue Highlight level
+	virtual bool highlightMeter(unsigned int * puValue);
+	virtual bool highlightMe(unsigned int uValue);
 
 	void unhighlight();
 
-	virtual void getWindowListTipText(QString & szBuffer);
+	virtual inline void getWindowListTipText(QString & szBuffer){ szBuffer = m_szPlainTextCaption; };
 
 	// This is meaningful only if view() is non NULL
 	const QString & lastLineOfText();
@@ -396,7 +398,7 @@ public:
 	// call this in the constructor if your caption is fixed:
 	// it will set m_szPlainTextCaption to szCaption and it will
 	// automatically use it without the need of overriding fillCaptionBuffers
-	void setFixedCaption(const QString & szCaption);
+	inline void setFixedCaption(const QString & szCaption){ m_szPlainTextCaption = szCaption; };
 protected:
 	// Loading and saving of properties
 	// Protected: only KviMainWindow can call these
@@ -414,7 +416,7 @@ protected:
 	// this by default calls fillSingleColorCaptionBuffer(plainTextCaption());
 	virtual void fillCaptionBuffers();
 	// protected helper
-	void fillSingleColorCaptionBuffers(const QString & szName);
+	inline void fillSingleColorCaptionBuffers(const QString & szName){ m_szPlainTextCaption = szName; };
 	// Virtual events that signal dock state change
 	virtual void youAreDocked();
 	virtual void youAreUndocked();

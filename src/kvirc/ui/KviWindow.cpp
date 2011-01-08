@@ -31,7 +31,6 @@
 #define KVI_WINDOW_MIN_HEIGHT 100
 
 #define _KVI_WINDOW_CPP_
-
 #define _KVI_DEBUG_CHECK_RANGE_
 
 #include "kvi_debug.h"
@@ -84,7 +83,7 @@
 	#include <KWindowSystem>
 #endif
 
-#if defined(COMPILE_ON_WINDOWS)
+#ifdef COMPILE_ON_WINDOWS
 	#include <windows.h>
 #endif
 
@@ -166,7 +165,7 @@ KviWindow::~KviWindow()
 #endif
 }
 
-void KviWindow::setWindowName(const QString &szName)
+void KviWindow::setWindowName(const QString & szName)
 {
 	m_szName = szName;
 	setObjectName(szName);
@@ -175,11 +174,9 @@ void KviWindow::setWindowName(const QString &szName)
 
 void KviWindow::toggleButtonContainer()
 {
-	QFrame *pContainer=buttonContainer();
+	QFrame * pContainer = buttonContainer();
 	if(pContainer)
-	{
 		pContainer->setHidden(!pContainer->isHidden());
-	}
 }
 
 void KviWindow::reloadImages()
@@ -189,11 +186,11 @@ void KviWindow::reloadImages()
 
 bool KviWindow::hasAttention()
 {
-	if(((QApplication *)g_pApp)->activeWindow() == 0)return false; // no application window has the focus atm
+	if(((QApplication *)g_pApp)->activeWindow() == 0)
+		return false; // no application window has the focus atm
 
 	if(mdiParent())
 	{
-		if(frame()->isActiveWindow())return true;
 		// This frame is not the active window but the
 		// active window still belongs to KVIrc.
 		// When the active window is derived from QDialog
@@ -201,20 +198,24 @@ bool KviWindow::hasAttention()
 		// or something similar.
 		// In this case we assume that the user has the
 		// KVIrc window just below and can see it.
+		if(frame()->isActiveWindow())
+			return true;
 
 		// Handle the special case of the dialogs then
-		QWidget * w = ((QApplication *)g_pApp)->activeWindow();
-		if(w->inherits("QDialog"))
+		QWidget * pWidget = ((QApplication *)g_pApp)->activeWindow();
+		if(pWidget->inherits("QDialog"))
 		{
 			// but make sure that the frame is visible at all!
-			if(!frame()->isVisible())return false;
+			if(!frame()->isVisible())
+				return false;
 			return true;
 		}
 		// any other class is so unfrequent that we ignore it
 	} else {
 		// when the window is undocked, instead
 		// it is likely to be covered by KVIrc or other windows...
-		if(isActiveWindow())return true;
+		if(isActiveWindow())
+			return true;
 	}
 	return false;
 }
@@ -223,7 +224,8 @@ void KviWindow::demandAttention()
 {
 	if(mdiParent())
 	{
-		if(frame()->isActiveWindow())return;
+		if(frame()->isActiveWindow())
+			return;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		FLASHWINFO fwi;
 		fwi.cbSize = sizeof(fwi);
@@ -238,7 +240,8 @@ void KviWindow::demandAttention()
 	#endif
 #endif
 	} else {
-		if(isActiveWindow())return;
+		if(isActiveWindow())
+			return;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		FLASHWINFO fwi;
 		fwi.cbSize = sizeof(fwi);
@@ -255,34 +258,36 @@ void KviWindow::demandAttention()
 	}
 }
 
-bool KviWindow::focusNextPrevChild(bool next)
+bool KviWindow::focusNextPrevChild(bool bNext)
 {
-	QWidget * w = focusWidget();
-	if(w)
+	QWidget * pWidget = focusWidget();
+	if(pWidget)
 	{
-		if(w->focusPolicy() == Qt::StrongFocus)return false;
-		if(w->parent())
+		if(pWidget->focusPolicy() == Qt::StrongFocus)
+			return false;
+		if(pWidget->parent())
 		{
-			if(w->parent()->metaObject()->indexOfProperty("KviProperty_ChildFocusOwner") == -1)
+			if(pWidget->parent()->metaObject()->indexOfProperty("KviProperty_ChildFocusOwner") == -1)
 				return false; // Do NOT change the focus widget!
 		}
 	}
 
-	return QWidget::focusNextPrevChild(next);
+	return QWidget::focusNextPrevChild(bNext);
 }
 
-void KviWindow::forceTextCodec(QTextCodec * c)
+void KviWindow::forceTextCodec(QTextCodec * pCodec)
 {
-	if(!c)return;
-	m_pTextCodec = c;
-	QTextCodec * dc = defaultTextCodec();
-	if(dc != c)
-		m_szTextEncoding = c->name();
+	if(!pCodec)
+		return;
+	m_pTextCodec = pCodec;
+	QTextCodec * pDefault = defaultTextCodec();
+	if(pDefault != pCodec)
+		m_szTextEncoding = pCodec->name();
 	else
 		m_szTextEncoding = ""; // this is the default anyway
 }
 
-bool KviWindow::setTextEncoding(const QString &szTextEncoding)
+bool KviWindow::setTextEncoding(const QString & szTextEncoding)
 {
 	if(!szTextEncoding.isEmpty())
 	{
@@ -303,36 +308,37 @@ bool KviWindow::setTextEncoding(const QString &szTextEncoding)
 
 QTextEncoder * KviWindow::makeEncoder()
 {
-	if(!m_pTextCodec)return defaultTextCodec()->makeEncoder();
+	if(!m_pTextCodec)
+		return defaultTextCodec()->makeEncoder();
 	return m_pTextCodec->makeEncoder();
 }
 
-bool KviWindow::activityMeter(unsigned int *,unsigned int *)
+bool KviWindow::activityMeter(unsigned int *, unsigned int *)
 {
 	return false;
 }
 
-bool KviWindow::highlightMeter(unsigned int *v)
+bool KviWindow::highlightMeter(unsigned int * puValue)
 {
 	if(!m_pWindowListItem)
 	{
-		*v=0;
+		*puValue = 0;
 		return false;
 	}
-	*v= m_pWindowListItem->highlightLevel();
+	*puValue = m_pWindowListItem->highlightLevel();
 	return true;
 }
 
-
-bool KviWindow::highlightMe(unsigned int v)
+bool KviWindow::highlightMe(unsigned int uValue)
 {
-	if(v>5) v=5;
+	if(uValue > 5)
+		uValue = 5;
 	if(m_pWindowListItem)
-		m_pWindowListItem->highlight(v);
+		m_pWindowListItem->highlight(uValue);
 	return true;
 }
 
-const char * KviWindow::m_typeTable[TypeCount]=
+const char * KviWindow::m_typeTable[TypeCount] =
 {
 	"console",  // 0
 	"channel",  // 1
@@ -390,13 +396,13 @@ void KviWindow::destroyWindowListItem()
 
 QToolButton * KviWindow::createToolButton(QWidget * pPar, const char * pcName, KviIconManager::SmallIcon eIcon, const QString & szToolTip, bool bOn)
 {
-	QToolButton * b = new QToolButton(pPar);
-	b->setObjectName(pcName);
-	b->setIcon(QIcon(*(g_pIconManager->getSmallIcon(eIcon))));
-	b->setAutoRaise(true);
-	KviTalToolTip::add(b,szToolTip);
-	b->setChecked(bOn);
-	return b;
+	QToolButton * pTool = new QToolButton(pPar);
+	pTool->setObjectName(pcName);
+	pTool->setIcon(QIcon(*(g_pIconManager->getSmallIcon(eIcon))));
+	pTool->setAutoRaise(true);
+	pTool->setChecked(bOn);
+	KviTalToolTip::add(pTool,szToolTip);
+	return pTool;
 }
 
 // This is always defined...
@@ -409,11 +415,11 @@ void KviWindow::createCryptControllerButton(QWidget *)
 #endif // COMPILE_CRYPT_SUPPORT
 }
 
-void KviWindow::createTextEncodingButton(QWidget * par)
+void KviWindow::createTextEncodingButton(QWidget * pPar)
 {
 	if(m_pTextEncodingButton)
 		delete m_pTextEncodingButton;
-	m_pTextEncodingButton = createToolButton(par,"text_encoding_button",KviIconManager::TextEncoding,__tr2qs("Text Encoding"),false);
+	m_pTextEncodingButton = createToolButton(pPar,"text_encoding_button",KviIconManager::TextEncoding,__tr2qs("Text Encoding"),false);
 	connect(m_pTextEncodingButton,SIGNAL(clicked()),this,SLOT(textEncodingButtonClicked()));
 }
 
@@ -470,11 +476,11 @@ void KviWindow::toggleCryptController()
 }
 
 #ifdef COMPILE_CRYPT_SUPPORT
-void KviWindow::setCryptSessionInfo(KviCryptSessionInfo * inf)
+void KviWindow::setCryptSessionInfo(KviCryptSessionInfo * pInfo)
 {
 	if(m_pCryptSessionInfo)
 		KviCryptController::destroyCryptSessionInfo(&m_pCryptSessionInfo);
-	m_pCryptSessionInfo = inf;
+	m_pCryptSessionInfo = pInfo;
 	if(m_pCryptSessionInfo)
 	{
 		connect(m_pCryptSessionInfo->m_pEngine,SIGNAL(destroyed()),this,SLOT(cryptSessionInfoDestroyed()));
@@ -495,8 +501,8 @@ void KviWindow::setCryptSessionInfo(KviCryptSessionInfo * inf)
 void KviWindow::cryptControllerFinished()
 {
 #ifdef COMPILE_CRYPT_SUPPORT
-	KviCryptSessionInfo * inf = m_pCryptController->getNewSessionInfo();
-	setCryptSessionInfo(inf);
+	KviCryptSessionInfo * pInfo = m_pCryptController->getNewSessionInfo();
+	setCryptSessionInfo(pInfo);
 	delete m_pCryptController;
 	m_pCryptController = 0;
 #endif
@@ -512,9 +518,9 @@ void KviWindow::cryptSessionInfoDestroyed()
 #endif
 }
 
-void KviWindow::setProgress(int progress)
+void KviWindow::setProgress(int iProgress)
 {
-	m_pWindowListItem->setProgress(progress);
+	m_pWindowListItem->setProgress(iProgress);
 }
 
 void KviWindow::listWindowTypes()
@@ -524,12 +530,12 @@ void KviWindow::listWindowTypes()
 		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,m_typeTable[i]);
 }
 
-void KviWindow::getConfigGroupName(QString &buf)
+void KviWindow::getConfigGroupName(QString & szBuffer)
 {
-	buf = typeString();
+	szBuffer = typeString();
 }
 
-void KviWindow::getDefaultLogFileName(QString &buffer)
+void KviWindow::getDefaultLogFileName(QString & szBuffer)
 {
 	// FIXME: #warning "Make it configurable ?"
 	QString szDate;
@@ -537,76 +543,80 @@ void KviWindow::getDefaultLogFileName(QString &buffer)
 
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
-		case 0:
-			szDate = date.toString("yyyy.MM.dd");
-			break;
 		case 1:
 			szDate = date.toString(Qt::ISODate);
 			break;
 		case 2:
 			szDate = date.toString(Qt::SystemLocaleDate);
 			break;
+		case 0:
+		default:
+			szDate = date.toString("yyyy.MM.dd");
+			break;
 	}
 
-	QString base;
-	getBaseLogFileName(base);
-	KviFileUtils::encodeFileName(base);
-	base.replace("%%2e","%2e");
-	base=base.toLower();
-	QString tmp;
+	QString szBase;
+	getBaseLogFileName(szBase);
+	KviFileUtils::encodeFileName(szBase);
+	szBase.replace("%%2e","%2e");
+	szBase = szBase.toLower();
+
+	QString szTmp, szLog;
 	if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
-	{
-		KviQString::sprintf(tmp,"%s_%s_%s.log.gz",typeString(),base.toUtf8().data(),szDate.toUtf8().data());
-	} else {
-		KviQString::sprintf(tmp,"%s_%s_%s.log",typeString(),base.toUtf8().data(),szDate.toUtf8().data());
-	}
-	g_pApp->getLocalKvircDirectory(buffer,KviApplication::Log,tmp);
+		szTmp = "%1_%2_%3.log.gz";
+	else
+		szTmp = "%1_%2_%3.log";
+
+	szLog = QString(szTmp).arg(typeString(),szBase,szDate);
+	g_pApp->getLocalKvircDirectory(szBuffer,KviApplication::Log,szTmp);
 }
 
-void KviWindow::getBaseLogFileName(QString &buffer)
+void KviWindow::getBaseLogFileName(QString & szBuffer)
 {
-	buffer = m_szName;
+	szBuffer = m_szName;
 }
 
-void KviWindow::saveProperties(KviConfigurationFile *cfg)
+void KviWindow::saveProperties(KviConfigurationFile * pCfg)
 {
 	// store only the non-default text encoding.
 	QString szCodec = m_szTextEncoding;
-	QTextCodec * c = defaultTextCodec();
-	if(c && m_pTextCodec)
+	QTextCodec * pCodec = defaultTextCodec();
+	if(pCodec && m_pTextCodec)
 	{
-		if(KviQString::equalCI(szCodec,c->name().data()))szCodec = KviQString::Empty; // store "default"
+		if(KviQString::equalCI(szCodec,pCodec->name().data()))
+			szCodec = KviQString::Empty; // store "default"
 	}
+
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
-	cfg->writeEntry(szKey,szCodec);
+	pCfg->writeEntry(szKey,szCodec);
 	if(m_pInput)
 	{
-		cfg->writeEntry("inputToolButtonsHidden",m_pInput->isButtonsHidden());
-		cfg->writeEntry("commandLineIsUserFriendly",m_pInput->isUserFriendly());
+		pCfg->writeEntry("inputToolButtonsHidden",m_pInput->isButtonsHidden());
+		pCfg->writeEntry("commandLineIsUserFriendly",m_pInput->isUserFriendly());
 	}
 
 	/*
-	if(m_pIrcView && m_eType==KviWindow::Channel)
+	if(m_pIrcView && m_eType == KviWindow::Channel)
 	if(m_pIrcView->isLogging())
-		cfg->writeEntry("LoggingEnabled",m_pIrcView->isLogging());
+		pCfg->writeEntry("LoggingEnabled",m_pIrcView->isLogging());
 	*/
 }
 
-void KviWindow::loadProperties(KviConfigurationFile *cfg)
+void KviWindow::loadProperties(KviConfigurationFile * pCfg)
 {
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
-	setTextEncoding(cfg->readEntry(szKey,KviQString::Empty).toUtf8().data());
+	setTextEncoding(pCfg->readEntry(szKey,KviQString::Empty).toUtf8().data());
 	if(m_pInput)
 	{
-		m_pInput->setButtonsHidden(cfg->readBoolEntry("inputToolButtonsHidden",KVI_OPTION_BOOL(KviOption_boolHideInputToolButtons)));
-		m_pInput->setUserFriendly(cfg->readBoolEntry("commandLineIsUserFriendly",KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault)));
+		m_pInput->setButtonsHidden(pCfg->readBoolEntry("inputToolButtonsHidden",KVI_OPTION_BOOL(KviOption_boolHideInputToolButtons)));
+		m_pInput->setUserFriendly(pCfg->readBoolEntry("commandLineIsUserFriendly",KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault)));
 	}
 	/*
-	if(m_pIrcView && m_eType==KviWindow::Channel)
+	if(m_pIrcView && m_eType == KviWindow::Channel)
 	{
-		bool bEnableLogs=cfg->readBoolEntry("LoggingEnabled",0);
+		bool bEnableLogs = pCfg->readBoolEntry("LoggingEnabled",0);
 		if(!m_pIrcView->isLogging() && bEnableLogs)
 		{
 			QString szTmp;
@@ -622,16 +632,6 @@ QPixmap * KviWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KviIconManager::DefaultIcon);
 }
 
-void KviWindow::getWindowListTipText(QString &buffer)
-{
-	buffer = m_szPlainTextCaption;
-}
-
-void KviWindow::setFixedCaption(const QString &szCaption)
-{
-	m_szPlainTextCaption = szCaption;
-}
-
 void KviWindow::fillCaptionBuffers()
 {
 	QString szCaption = m_szPlainTextCaption;
@@ -639,11 +639,6 @@ void KviWindow::fillCaptionBuffers()
 		szCaption = m_szName;
 
 	fillSingleColorCaptionBuffers(szCaption);
-}
-
-void KviWindow::fillSingleColorCaptionBuffers(const QString &szName)
-{
-	m_szPlainTextCaption = szName;
 }
 
 void KviWindow::updateCaption()
@@ -673,19 +668,19 @@ void KviWindow::createSystemTextEncodingPopup()
 		g_pMdiWindowSystemTextEncodingPopupSmart = new KviTalPopupMenu();
 		g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = new KviTalPopupMenu();
 		g_pMdiWindowSystemTextEncodingActionGroup = new QActionGroup(g_pMdiWindowSystemTextEncodingPopup);
-		connect(g_pMdiWindowSystemTextEncodingActionGroup, SIGNAL(triggered(QAction*)), this, SLOT(systemTextEncodingPopupActivated(QAction*)));
+		connect(g_pMdiWindowSystemTextEncodingActionGroup,SIGNAL(triggered(QAction*)),this,SLOT(systemTextEncodingPopupActivated(QAction*)));
 
 		//default action
-		QTextCodec * c = defaultTextCodec();
-		QString tmp = __tr2qs("Use Default Encoding");
-		if(c)
+		QTextCodec * pCodec = defaultTextCodec();
+		QString szTmp = __tr2qs("Use Default Encoding");
+		if(pCodec)
 		{
-			tmp += " (";
-			tmp += c->name();
-			tmp += ")";
+			szTmp += " (";
+			szTmp += pCodec->name();
+			szTmp += ")";
 		}
 
-		g_pMdiWindowSystemTextEncodingDefaultAction = g_pMdiWindowSystemTextEncodingPopup->addAction(tmp);
+		g_pMdiWindowSystemTextEncodingDefaultAction = g_pMdiWindowSystemTextEncodingPopup->addAction(szTmp);
 		g_pMdiWindowSystemTextEncodingActionGroup->addAction(g_pMdiWindowSystemTextEncodingDefaultAction);
 		g_pMdiWindowSystemTextEncodingDefaultAction->setData(-1);
 		if(m_szTextEncoding.isEmpty())
@@ -708,81 +703,80 @@ void KviWindow::createSystemTextEncodingPopup()
 
 		// second level menus (encoding groups)
 		uint uGroups = KviLocale::encodingGroups();
-		QMenu * aPopupStandard[uGroups];
-		QMenu * aPopupSmart[uGroups];
-		QMenu * aPopupSmartUtf8[uGroups];
+		QMenu * pPopupStandard[uGroups];
+		QMenu * pPopupSmart[uGroups];
+		QMenu * pPopupSmartUtf8[uGroups];
 
-		uint j = 0;	
-		const char * szEncodingGroup = KviLocale::encodingGroup(j);
+		uint u = 0;
+		const char * pcEncodingGroup = KviLocale::encodingGroup(u);
 
-		while(szEncodingGroup)
+		while(pcEncodingGroup)
 		{
-			aPopupStandard[j] = g_pMdiWindowSystemTextEncodingPopupStandard->addMenu(szEncodingGroup);
-			if(j) //only standard popup contains unicode menu
+			pPopupStandard[u] = g_pMdiWindowSystemTextEncodingPopupStandard->addMenu(pcEncodingGroup);
+			if(u) //only standard popup contains unicode menu
 			{
-				aPopupSmart[j] = g_pMdiWindowSystemTextEncodingPopupSmart->addMenu(szEncodingGroup);
-				aPopupSmartUtf8[j] = g_pMdiWindowSystemTextEncodingPopupSmartUtf8->addMenu(szEncodingGroup);
+				pPopupSmart[u] = g_pMdiWindowSystemTextEncodingPopupSmart->addMenu(pcEncodingGroup);
+				pPopupSmartUtf8[u] = g_pMdiWindowSystemTextEncodingPopupSmartUtf8->addMenu(pcEncodingGroup);
 			}
 			
-			szEncodingGroup = KviLocale::encodingGroup(++j);
+			pcEncodingGroup = KviLocale::encodingGroup(++u);
 		}
 
 		// third level menus (encodings)
-		uint i=0;
-		KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
-		while(d->szName)
+		uint i = 0;
+		KviLocale::EncodingDescription * pDesc = KviLocale::encodingDescription(i);
+		while(pDesc->szName)
 		{
-			KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
-			if(KviQString::equalCI(m_szTextEncoding,d->szName))
+			szTmp = QString("%1 (%2)").arg(pDesc->szName,pDesc->szDescription);
+			if(KviQString::equalCI(m_szTextEncoding,pDesc->szName))
 			{
-				g_pMdiWindowSystemTextEncodingCurrentAction->setText(__tr2qs("Current: ") + tmp);
+				g_pMdiWindowSystemTextEncodingCurrentAction->setText(__tr2qs("Current: ") + szTmp);
 				g_pMdiWindowSystemTextEncodingCurrentAction->setCheckable(true);
 				g_pMdiWindowSystemTextEncodingCurrentAction->setChecked(true);
 				g_pMdiWindowSystemTextEncodingCurrentAction->setVisible(true);
 				g_pMdiWindowSystemTextEncodingCurrentAction->setData(i);
 			} else {
-				QMenu * ppp = d->bSmart ? (d->bSendUtf8 ? 
-								aPopupSmartUtf8[d->uGroup] : 
-								aPopupSmart[d->uGroup]
-							) : aPopupStandard[d->uGroup];
+				QMenu * pMenu = pDesc->bSmart ? (pDesc->bSendUtf8 ? 
+					pPopupSmartUtf8[pDesc->uGroup] : 
+					pPopupSmart[pDesc->uGroup]
+				) : pPopupStandard[pDesc->uGroup];
 			
-				QAction * pAction = ppp->addAction(tmp);
+				QAction * pAction = pMenu->addAction(szTmp);
 				pAction->setData(i);
 				g_pMdiWindowSystemTextEncodingActionGroup->addAction(pAction);
 			}
 
-			d = KviLocale::encodingDescription(++i);
+			pDesc = KviLocale::encodingDescription(++i);
 		}
 	} else {
 		//default action: refresh the name
-		QTextCodec * c = defaultTextCodec();
-		QString tmp = __tr2qs("Use Default Encoding");
-		if(c)
+		QTextCodec * pCodec = defaultTextCodec();
+		QString szTmp = __tr2qs("Use Default Encoding");
+		if(pCodec)
 		{
-			tmp += " (";
-			tmp += c->name();
-			tmp += ")";
+			szTmp += " (";
+			szTmp += pCodec->name();
+			szTmp += ")";
 		}
 
-		g_pMdiWindowSystemTextEncodingDefaultAction->setText(tmp);
+		g_pMdiWindowSystemTextEncodingDefaultAction->setText(szTmp);
 
 		//menu already exists, choose the right item
 		if(m_szTextEncoding.isEmpty())
 		{
 			//default action; hide the current action
 			g_pMdiWindowSystemTextEncodingCurrentAction->setVisible(false);
-
 			g_pMdiWindowSystemTextEncodingDefaultAction->setCheckable(true);
 			g_pMdiWindowSystemTextEncodingDefaultAction->setChecked(true);
 		} else {
-			int i=0;
-			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
-			while(d->szName)
+			int i = 0;
+			KviLocale::EncodingDescription * pDesc = KviLocale::encodingDescription(i);
+			while(pDesc->szName)
 			{
-				if(KviQString::equalCI(m_szTextEncoding,d->szName))
+				if(KviQString::equalCI(m_szTextEncoding,pDesc->szName))
 				{
-					KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
-					g_pMdiWindowSystemTextEncodingCurrentAction->setText(__tr2qs("Current: ") + tmp);
+					szTmp = QString("%1 (%2)").arg(pDesc->szName,pDesc->szDescription);
+					g_pMdiWindowSystemTextEncodingCurrentAction->setText(__tr2qs("Current: ") + szTmp);
 					g_pMdiWindowSystemTextEncodingCurrentAction->setCheckable(true);
 					g_pMdiWindowSystemTextEncodingCurrentAction->setChecked(true);
 					g_pMdiWindowSystemTextEncodingCurrentAction->setVisible(true);
@@ -790,7 +784,7 @@ void KviWindow::createSystemTextEncodingPopup()
 					break;
 				}
 
-				d = KviLocale::encodingDescription(++i);
+				pDesc = KviLocale::encodingDescription(++i);
 			}
 		}
 	}
@@ -804,21 +798,21 @@ void KviWindow::systemTextEncodingPopupActivated(QAction * pAction)
 	{
 		setTextEncoding("");
 	} else {
-		QString tmp = pAction->text();
-		KviQString::cutFromFirst(tmp," (");
-		setTextEncoding(tmp);
+		QString szTmp = pAction->text();
+		KviQString::cutFromFirst(szTmp," (");
+		setTextEncoding(szTmp);
 	}
 }
 
 void KviWindow::savePropertiesAsDefault()
 {
-	QString group;
-	getConfigGroupName(group);
+	QString szGroup;
+	getConfigGroupName(szGroup);
 
-	if(!KviQString::equalCI(group,typeString()))
+	if(!KviQString::equalCI(szGroup,typeString()))
 	{
 		// save also the settings for THIS specialized window
-		g_pMainWindow->saveWindowProperties(this,group);
+		g_pMainWindow->saveWindowProperties(this,szGroup);
 	}
 
 	g_pMainWindow->saveWindowProperties(this,typeString());
@@ -852,6 +846,7 @@ void KviWindow::autoRaise()
 		raise();
 		activateWindow();
 	}
+
 	if(m_pFocusHandler)
 		m_pFocusHandler->setFocus();
 	else
@@ -863,9 +858,9 @@ void KviWindow::delayedClose()
 	QTimer::singleShot(0,this,SLOT(close()));
 }
 
-void KviWindow::closeEvent(QCloseEvent *e)
+void KviWindow::closeEvent(QCloseEvent * pEvent)
 {
-	e->ignore();
+	pEvent->ignore();
 	if(g_pMainWindow)
 	{
 		g_pMainWindow->childWindowCloseRequest(this);
@@ -894,14 +889,14 @@ void KviWindow::updateIcon()
 
 void KviWindow::youAreDocked()
 {
-	m_bIsDocked=true;
+	m_bIsDocked = true;
 	((KviMdiChild *)parent())->setIcon(*myIconPtr());
 	updateCaption();
 }
 
 void KviWindow::youAreUndocked()
 {
-	m_bIsDocked=false;
+	m_bIsDocked = false;
 	setWindowIcon(QIcon(*myIconPtr()));
 	updateCaption();
 }
@@ -934,7 +929,8 @@ void KviWindow::focusInEvent(QFocusEvent *)
 		if(m_pLastFocusedChild->hasFocus() && m_pLastFocusedChild->isVisible())
 		{
 			// the last focused child still has focus (ehm ???)
-			if(g_pActiveWindow != this)activateSelf();
+			if(g_pActiveWindow != this)
+				activateSelf();
 			return;
 		}
 	}
@@ -948,12 +944,12 @@ void KviWindow::focusInEvent(QFocusEvent *)
 			m_pFocusHandler = m_pIrcView;
 		else {
 			QList<QObject *> list = children();
-			for(QList<QObject *>::Iterator it = list.begin();it != list.end();++it)
+			for(QList<QObject *>::Iterator it = list.begin(); it != list.end(); ++it)
 			{
-				QObject * c = *it;
-				if(c->isWidgetType())
+				QObject * pObj = *it;
+				if(pObj->isWidgetType())
 				{
-					m_pFocusHandler = (QWidget *)c;
+					m_pFocusHandler = (QWidget *)pObj;
 					break;
 				}
 			}
@@ -1025,94 +1021,96 @@ bool KviWindow::eventFilter(QObject * pObject, QEvent * pEvent)
 	return false;
 }
 
-void KviWindow::childInserted(QWidget * o)
+void KviWindow::childInserted(QWidget * pObject)
 {
-	o->removeEventFilter(this); // ensure that we don't filter twice
-	o->installEventFilter(this); // we filter its events
-	connect(o,SIGNAL(destroyed()),this,SLOT(childDestroyed()));
+	pObject->removeEventFilter(this); // ensure that we don't filter twice
+	pObject->installEventFilter(this); // we filter its events
+	connect(pObject,SIGNAL(destroyed()),this,SLOT(childDestroyed()));
 
-	if(o->inherits("KviInput") || (m_eType==KviWindow::LogView && o->inherits("KviIrcView")))
-		m_pFocusHandler = o;
+	if(pObject->inherits("KviInput") || (m_eType==KviWindow::LogView && pObject->inherits("KviIrcView")))
+		m_pFocusHandler = pObject;
 	else
 	{
-		if(!m_pFocusHandler && (o->focusPolicy() == Qt::StrongFocus))
+		if(!m_pFocusHandler && (pObject->focusPolicy() == Qt::StrongFocus))
 		{
-			m_pFocusHandler = o;
+			m_pFocusHandler = pObject;
 		}
 	}
 
-	QList<QObject *> list = o->children();
-	for(QList<QObject *>::Iterator it = list.begin();it != list.end();++it)
+	QList<QObject *> list = pObject->children();
+	for(QList<QObject *>::Iterator it = list.begin(); it != list.end(); ++it)
 	{
-		QObject * c = *it;
-		if(c->isWidgetType())
+		QObject * pObj = *it;
+		if(pObj->isWidgetType())
 		{
-			childInserted((QWidget *)c);
+			childInserted((QWidget *)pObj);
 		}
 	}
 }
 
 void KviWindow::childDestroyed()
 {
-	QWidget * s = (QWidget *)sender();
-	childRemoved(s);
+	QWidget * pWidget = (QWidget *)sender();
+	childRemoved(pWidget);
 }
 
-void KviWindow::childRemoved(QWidget * o)
+void KviWindow::childRemoved(QWidget * pObject)
 {
 	//qDebug("CHILD REMOVED %d",o);
-	o->removeEventFilter(this);
-	if(o == m_pFocusHandler)
+	pObject->removeEventFilter(this);
+	if(pObject == m_pFocusHandler)
 		m_pFocusHandler = 0;
-	if(o == m_pLastFocusedChild)
+	if(pObject == m_pLastFocusedChild)
 		m_pLastFocusedChild = 0;
 
-	QList<QObject *> list = o->children();
+	QList<QObject *> list = pObject->children();
 	for(QList<QObject *>::Iterator it = list.begin();it != list.end();++it)
 	{
-		QObject * c = *it;
-		if(c->isWidgetType())
+		QObject * pObj = *it;
+		if(pObj->isWidgetType())
 		{
-			childRemoved((QWidget *)c);
+			childRemoved((QWidget *)pObj);
 		}
 	}
 }
 
-void KviWindow::childEvent(QChildEvent *e)
+void KviWindow::childEvent(QChildEvent * pEvent)
 {
-	if(e->child()->isWidgetType())
+	if(pEvent->child()->isWidgetType())
 	{
-		if(e->removed())
-			childRemoved((QWidget *)(e->child()));
+		if(pEvent->removed())
+			childRemoved((QWidget *)(pEvent->child()));
 		else
-			childInserted((QWidget *)(e->child()));
+			childInserted((QWidget *)(pEvent->child()));
 	}
-	QWidget::childEvent(e);
+	QWidget::childEvent(pEvent);
 }
 
 void KviWindow::childrenTreeChanged(QWidget *)
 {
 	//	if(widgetAdded && m_pFocusHandler)setFocusHandler(m_pFocusHandler,widgetAdded);
 	// FIXME: This might be useless
-	QResizeEvent * e = new QResizeEvent(size(),size());
-	resizeEvent(e);
-	delete e;
+	QResizeEvent * pEvent = new QResizeEvent(size(),size());
+	resizeEvent(pEvent);
+	delete pEvent;
 }
 
-void KviWindow::updateBackgrounds(QObject * obj)
+void KviWindow::updateBackgrounds(QObject * pObject)
 {
-	if(!obj) obj = this;
-	QList<QObject *> list = obj->children();
-	if (list.count())
+	if(!pObject)
+		pObject = this;
+	QList<QObject *> list = pObject->children();
+	if(list.count())
 	{
-		for(QList<QObject *>::Iterator it = list.begin();it != list.end();++it)
+		for(QList<QObject *>::Iterator it = list.begin(); it != list.end(); ++it)
 		{
-			QObject * child = *it;
-			if(child->metaObject()->indexOfProperty("TransparencyCapable") != -1){
-			//	if (child->isWidgetType())
-				((QWidget *)child)->update();
+			QObject * pChild = *it;
+			if(pChild->metaObject()->indexOfProperty("TransparencyCapable") != -1)
+			{
+				//if (child->isWidgetType())
+				((QWidget *)pChild)->update();
 			}
-			updateBackgrounds(child);
+			updateBackgrounds(pChild);
 		}
 	}
 }
@@ -1175,7 +1173,6 @@ void KviWindow::restore()
 
 QRect KviWindow::externalGeometry()
 {
-
 #ifndef COMPILE_ON_MAC
 	return mdiParent() ? mdiParent()->restoredGeometry() : frameGeometry();
 #else
@@ -1186,8 +1183,10 @@ QRect KviWindow::externalGeometry()
 void KviWindow::applyOptions()
 {
 	updateCaption();
-	if(m_pIrcView)m_pIrcView->applyOptions();
-	if(m_pInput)m_pInput->applyOptions();
+	if(m_pIrcView)
+		m_pIrcView->applyOptions();
+	if(m_pInput)
+		m_pInput->applyOptions();
 
 	// trick: relayout
 	resize(width() - 1,height() - 1);
@@ -1201,11 +1200,13 @@ KviWindow * KviWindow::outputProxy()
 
 void KviWindow::lostUserFocus()
 {
-	if(!m_pIrcView)return;
-	if(m_pIrcView->hasLineMark())m_pIrcView->clearLineMark(true);
+	if(!m_pIrcView)
+		return;
+	if(m_pIrcView->hasLineMark())
+		m_pIrcView->clearLineMark(true);
 }
 
-void KviWindow::internalOutput(KviIrcView * pView,int msg_type,const kvi_wchar_t * pText,int iFlags)
+void KviWindow::internalOutput(KviIrcView * pView, int iMsgType, const kvi_wchar_t * pwText, int iFlags)
 {
 	// all roads lead to Rome :)
 
@@ -1219,31 +1220,33 @@ void KviWindow::internalOutput(KviIrcView * pView,int msg_type,const kvi_wchar_t
 				iFlags |= KviIrcView::SetLineMark;
 			}
 		}
-		pView->appendText(msg_type,pText,iFlags);
+		pView->appendText(iMsgType,pwText,iFlags);
 	} else {
 		// Redirect to the output proxy
-		KviWindow *wnd = outputProxy();
-		if(wnd)wnd->outputNoFmt(msg_type,pText,iFlags);
+		KviWindow * pWnd = outputProxy();
+		if(pWnd)
+			pWnd->outputNoFmt(iMsgType,pwText,iFlags);
 	}
 
-	if(!m_pWindowListItem) return;
+	if(!m_pWindowListItem)
+		return;
 
 	// if this option is checked we don't highlight other than channel msg
 	if(KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsg))
 	{
-		if((msg_type != KVI_OUT_CHANPRIVMSG) && (msg_type != KVI_OUT_CHANPRIVMSGCRYPTED))
+		if((iMsgType != KVI_OUT_CHANPRIVMSG) && (iMsgType != KVI_OUT_CHANPRIVMSGCRYPTED))
 		{
 			if(!(
 					(
 						KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsgQueryToo) &&
 						(
-							(msg_type == KVI_OUT_QUERYPRIVMSG) || (msg_type == KVI_OUT_QUERYTRACE) ||
-							(msg_type == KVI_OUT_QUERYPRIVMSGCRYPTED) || (msg_type == KVI_OUT_QUERYNOTICE) || (msg_type == KVI_OUT_QUERYNOTICECRYPTED)
+							(iMsgType == KVI_OUT_QUERYPRIVMSG) || (iMsgType == KVI_OUT_QUERYTRACE) ||
+							(iMsgType == KVI_OUT_QUERYPRIVMSGCRYPTED) || (iMsgType == KVI_OUT_QUERYNOTICE) || (iMsgType == KVI_OUT_QUERYNOTICECRYPTED)
 						)
 					)
 					||
 					(
-						KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsgHighlightInChanToo) && (msg_type == KVI_OUT_HIGHLIGHT)
+						KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsgHighlightInChanToo) && (iMsgType == KVI_OUT_HIGHLIGHT)
 					)
 				)
 			)
@@ -1252,29 +1255,30 @@ void KviWindow::internalOutput(KviIrcView * pView,int msg_type,const kvi_wchar_t
 	}
 
 	if(KVI_OPTION_BOOL(KviOption_boolHighlightOnlyAtCostumHighlightLevel) &&
-			(KVI_OPTION_MSGTYPE(msg_type).level() < ((int)(KVI_OPTION_UINT(KviOption_uintMinHighlightLevel)))))
+			(KVI_OPTION_MSGTYPE(iMsgType).level() < ((int)(KVI_OPTION_UINT(KviOption_uintMinHighlightLevel)))))
 	{
 		return;
 	}
 
-	m_pWindowListItem->highlight(KVI_OPTION_MSGTYPE(msg_type).level());
+	m_pWindowListItem->highlight(KVI_OPTION_MSGTYPE(iMsgType).level());
 }
 
-void KviWindow::output(int msg_type,const char *format,...)
+void KviWindow::output(int iMsgType, const char * pcFormat, ...)
 {
-	QString szFmt(format);
+	QString szFmt(pcFormat);
 	kvi_va_list l;
-	kvi_va_start(l,format);
+	kvi_va_start(l,pcFormat);
 	QString szBuf;
 	KviQString::vsprintf(szBuf,szFmt,l);
 	kvi_va_end(l);
 	preprocessMessage(szBuf);
 	const QChar * pC = KviQString::nullTerminatedArray(szBuf);
-	if(!pC)return;
-	internalOutput(m_pIrcView,msg_type,(kvi_wchar_t *)pC);
+	if(!pC)
+		return;
+	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC);
 }
 
-void KviWindow::output(int msg_type,const QString &szFmt,...)
+void KviWindow::output(int iMsgType, const QString & szFmt, ...)
 {
 	kvi_va_list l;
 	kvi_va_start_by_reference(l,szFmt);
@@ -1283,45 +1287,50 @@ void KviWindow::output(int msg_type,const QString &szFmt,...)
 	kvi_va_end(l);
 	preprocessMessage(szBuf);
 	const QChar * pC = KviQString::nullTerminatedArray(szBuf);
-	if(!pC)return;
-	internalOutput(m_pIrcView,msg_type,(kvi_wchar_t *)pC);
+	if(!pC)
+		return;
+	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC);
 }
 
-void KviWindow::output(int msg_type,const kvi_wchar_t *format,...)
+void KviWindow::output(int iMsgType, const kvi_wchar_t * pwFormat, ...)
 {
-	QString szFmt=QString::fromUtf8(KviCString(format).ptr());
+	QString szFmt = QString::fromUtf8(KviCString(pwFormat).ptr());
 	kvi_va_list l;
-	kvi_va_start(l,format);
+	kvi_va_start(l,pwFormat);
 	QString szBuf;
 	KviQString::vsprintf(szBuf,szFmt,l);
 	kvi_va_end(l);
 	preprocessMessage(szBuf);
 	const QChar * pC = KviQString::nullTerminatedArray(szBuf);
-	if(!pC)return;
-	internalOutput(m_pIrcView,msg_type,(kvi_wchar_t *)pC);
+	if(!pC)
+		return;
+	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC);
 }
 
-void KviWindow::outputNoFmt(int msg_type,const char * text,int iFlags)
+void KviWindow::outputNoFmt(int iMsgType, const char * pcText, int iFlags)
 {
-	QString szText(text);
+	QString szText(pcText);
 	preprocessMessage(szText);
 	const QChar * pC = KviQString::nullTerminatedArray(szText);
-	if(!pC)return;
-	internalOutput(m_pIrcView,msg_type,(kvi_wchar_t *)pC,iFlags);
+	if(!pC)
+		return;
+	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC,iFlags);
 }
 
-void KviWindow::outputNoFmt(int msg_type,const QString &szText,int iFlags)
+void KviWindow::outputNoFmt(int iMsgType, const QString & szText, int iFlags)
 {
 	QString szBuf(szText);
 	preprocessMessage(szBuf);
 	const QChar * pC = KviQString::nullTerminatedArray(szBuf);
-	if(!pC)return;
-	internalOutput(m_pIrcView,msg_type,(kvi_wchar_t *)pC,iFlags);
+	if(!pC)
+		return;
+	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC,iFlags);
 }
 
 void KviWindow::unhighlight()
 {
-	if(!m_pWindowListItem)return;
+	if(!m_pWindowListItem)
+		return;
 	m_pWindowListItem->unhighlight();
 }
 
@@ -1342,23 +1351,23 @@ void KviWindow::preprocessMessage(QString & szMessage)
 	// FIXME: This STILL breaks $fmtlink() in certain configurations
 
 	QStringList strings = szMessage.split(" ");
-	for ( QStringList::Iterator it = strings.begin(); it != strings.end(); ++it )
+	for(QStringList::Iterator it = strings.begin(); it != strings.end(); ++it )
 	{
 		if(it->contains('\r'))
 			continue;
-		QString tmp(*it);
-		tmp = KviMircCntrl::stripControlBytes(tmp).trimmed();
-		if(tmp.length() < 1)
+		QString szTmp(*it);
+		szTmp = KviMircCntrl::stripControlBytes(szTmp).trimmed();
+		if(szTmp.length() < 1)
 			continue;
-		if(m_pConsole->connection()->serverInfo()->supportedChannelTypes().contains(tmp[0]))
+		if(m_pConsole->connection()->serverInfo()->supportedChannelTypes().contains(szTmp[0]))
 		{
-			if((*it)==tmp)
-				*it=QString("\r!c\r%1\r").arg(*it);
+			if((*it) == szTmp)
+				*it = QString("\r!c\r%1\r").arg(*it);
 			else
-				*it=QString("\r!c%1\r%2\r").arg(tmp, *it);
+				*it = QString("\r!c%1\r%2\r").arg(szTmp,*it);
 		}
 	}
-	szMessage=strings.join(" ");
+	szMessage = strings.join(" ");
 }
 
 QTextCodec * KviWindow::defaultTextCodec()
@@ -1366,8 +1375,9 @@ QTextCodec * KviWindow::defaultTextCodec()
 	// if we have a connection try to inherit from there...
 	if(connection())
 	{
-		QTextCodec * c = connection()->textCodec();
-		if(c)return c;
+		QTextCodec * pCodec = connection()->textCodec();
+		if(pCodec)
+			return pCodec;
 	}
 	return KviApplication::defaultTextCodec();
 }
@@ -1385,11 +1395,9 @@ KviIrcContext * KviWindow::context()
 	if(console())
 	{
 		if(console() == this)
-		{
 			return ((KviConsoleWindow*)this)->context();
-		} else {
+		else
 			return console()->context();
-		}
 	}
 	return 0;
 }

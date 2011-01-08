@@ -917,6 +917,12 @@ void KviApplication::showParentFrame()
 		return;
 
 	if(g_pMainWindow->isMinimized())
+		g_pMainWindow->setWindowState(g_pMainWindow->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
+
+	g_pMainWindow->showMaximized();
+
+	/*
+	if(g_pMainWindow->isMinimized())
 	{
 		g_pMainWindow->setWindowState(g_pMainWindow->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
 
@@ -935,7 +941,7 @@ void KviApplication::showParentFrame()
 		qDebug("- frame is visible: maximized state=%d, hiding",g_pMainWindow->isMaximized());
 		KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = g_pMainWindow->isMaximized();
 		g_pMainWindow->hide();
-	}
+	}*/
 }
 
 QTextCodec * KviApplication::defaultTextCodec()

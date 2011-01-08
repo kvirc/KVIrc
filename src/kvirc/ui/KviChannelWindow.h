@@ -6,7 +6,7 @@
 //   Creation date : Tue Aug  1 2000 01:42:00 by Szymon Stefanek
 //
 //   This file is part of the KVIrc irc client distribution
-//   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2011 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -46,7 +46,6 @@
 #include <QStringList>
 #include <QToolButton>
 
-
 class KviConsoleWindow;
 class KviTopicWidget;
 class KviIrcMask;
@@ -62,57 +61,18 @@ class KviModeEditor;
 	typedef struct _KviMaskEntry KviMaskEntry; // KviMaskEditor.h
 #endif
 
-/**
-* \def KVI_CHANNEL_STATE_HAVEALLNAMES Flag for "have all names"
-* \def KVI_CHANNEL_STATE_HAVEWHOLIST Flag for "have WHO list"
-* \def KVI_CHANNEL_STATE_DEADCHAN Flag for "dead channel"
-* \def KVI_CHANNEL_STATE_SENTWHOREQUEST Flag to set WHO request
-* \def KVI_CHANNEL_STATE_SENTPART Flag to set PART request
-* \def KVI_CHANNEL_STATE_SYNCHRONIZED Flag to set SYNC request
-* \def KVI_CHANNEL_STATE_NOCLOSEONPART Flag to set no close on part
-* \def KVI_CHANNEL_STATE_SENTSYNCWHOREQUEST Flag for SYNC request
-*/
-#define KVI_CHANNEL_STATE_HAVEALLNAMES 1
-#define KVI_CHANNEL_STATE_HAVEWHOLIST (1 << 2)
-#define KVI_CHANNEL_STATE_DEADCHAN (1 << 3)
-#define KVI_CHANNEL_STATE_SENTWHOREQUEST (1 << 4)
-#define KVI_CHANNEL_STATE_SENTPART (1 << 5)
-#define KVI_CHANNEL_STATE_SYNCHRONIZED (1 << 6)
-#define KVI_CHANNEL_STATE_NOCLOSEONPART (1 << 7)
-#define KVI_CHANNEL_STATE_SENTSYNCWHOREQUEST (1 << 8)
-
-#define KVI_CHANNEL_STATE_MODELIST_NONE 0
-#define KVI_CHANNEL_STATE_MODELIST_REQUEST 1
-#define KVI_CHANNEL_STATE_MODELIST_GOTIT 2
 
 /**
-* \def KVI_CHANACTIVITY_LIMIT_ICE The limit to be "ice"
-* \def KVI_CHANACTIVITY_LIMIT_VERYCOLD The limit to be "very cold"
-* \def KVI_CHANACTIVITY_LIMIT_COLD The limit to be "cold"
-* \def KVI_CHANACTIVITY_LIMIT_UNDEFINED The limit to be "undefined"
-* \def KVI_CHANACTIVITY_LIMIT_HOT The limit to be "hot"
-* \def KVI_CHANACTIVITY_LIMIT_VERYHOT The limit to be "very hot"
-*/
-#define KVI_CHANACTIVITY_LIMIT_ICE 5
-#define KVI_CHANACTIVITY_LIMIT_VERYCOLD 10
-#define KVI_CHANACTIVITY_LIMIT_COLD 20
-#define KVI_CHANACTIVITY_LIMIT_UNDEFINED 30
-#define KVI_CHANACTIVITY_LIMIT_HOT 50
-#define KVI_CHANACTIVITY_LIMIT_VERYHOT 70
-
-/**
-* \def AVERAGE_CHANNEL_USERS The average channel users of a channel
-*/
-#ifndef AVERAGE_CHANNEL_USERS
-	#define AVERAGE_CHANNEL_USERS 101
-#endif
-
-/**
+* \def KVI_CHANNEL_AVERAGE_USERS The average channel users of a channel
 * \def KVI_CHANNEL_ACTION_HISTORY_MAX_COUNT Maximum actions count we keep in memory
 * \def KVI_CHANNEL_ACTION_HISTORY_MAX_TIMESPAN Timespan of the oldest action we keep in memory (600 secs = 10 mins)
 */
 #define KVI_CHANNEL_ACTION_HISTORY_MAX_COUNT 40
 #define KVI_CHANNEL_ACTION_HISTORY_MAX_TIMESPAN 600
+
+#ifndef KVI_CHANNEL_AVERAGE_USERS
+	#define KVI_CHANNEL_AVERAGE_USERS 101
+#endif
 
 /**
 * \typedef KviChannelAction
@@ -156,6 +116,34 @@ class KVIRC_API KviChannelWindow : public KviWindow
 	Q_OBJECT
 public:
 	/**
+	* \def StateFlag
+	* \brief Holds the state flags of the channel
+	*/
+	enum StateFlag {
+		HaveAllNames       =        1,   /**< Flag for "have all names" */
+		HaveWhoList        = (1 << 2),   /**< Flag for "have WHO list" */
+		DeadChan           = (1 << 3),   /**< Flag for "dead channel" */
+		SentWhoRequest     = (1 << 4),   /**< Flag to set WHO request */
+		SentPart           = (1 << 5),   /**< Flag to set PART request */
+		Synchronized       = (1 << 6),   /**< Flag to set SYNC request */
+		NoCloseOnPart      = (1 << 7),   /**< Flag to set no close on part */
+		SentSyncWhoRequest = (1 << 8)    /**< Flag for SYNC request */
+	};
+
+	/**
+	* \enum ActivityLimit
+	* \brief Holds the limits of the activity in a channel
+	*/
+	enum ActivityLimit {
+		Ice       =  5,   /**< The limit to be "ice" */
+		VeryCold  = 10,   /**< The limit to be "very cold" */
+		Cold      = 20,   /**< The limit to be "cold" */
+		Undefined = 30,   /**< The limit to be "undefined" */
+		Hot       = 50,   /**< The limit to be "hot" */
+		VeryHot   = 70    /**< The limit to be "very hot" */
+	};
+
+	/**
 	* \brief Constructs the channel object
 	* \param lpFrm The parent frame object
 	* \param lpConsole The console of the context
@@ -169,32 +157,32 @@ public:
 	*/
 	~KviChannelWindow();
 protected:
-	KviTalSplitter                       * m_pTopSplitter;
-	KviTalSplitter                       * m_pVertSplitter;
-	QToolButton                          * m_pDoubleViewButton;
-	KviWindowToolPageButton              * m_pListViewButton;
-	KviWindowToolPageButton              * m_pModeEditorButton;
-	QMap<char, KviWindowToolPageButton*>   m_pListEditorButtons;
-	QMap<char, KviMaskEditor*>             m_pListEditors;
-	KviModeEditor                        * m_pModeEditor;
-	KviIrcView                           * m_pMessageView;
-	KviTopicWidget                       * m_pTopicWidget;
-	KviUserListView                      * m_pUserListView;
-	KviModeWidget                        * m_pModeWidget;
-	int                                    m_iStateFlags;
-	QString                                m_szSentModeRequests;
-	QString                                m_szChannelMode;
-	QMap<char, QString>                    m_szChannelParameterModes;
-	QMap<char, KviPointerList<KviMaskEntry>*> m_pModeLists;
-	KviPixmap                              m_privateBackground;
-	QDateTime                              m_joinTime;
-	QString                                m_szNameWithUserFlag;
-	QStringList                          * m_pTmpHighLighted;
-	unsigned int                           m_uActionHistoryHotActionCount;
-	KviPointerList<KviChannelAction>     * m_pActionHistory;
-	kvi_time_t                             m_tLastReceivedWhoReply;
-	QList<int>                             m_VertSplitterSizesList;
-	KviTalHBox                           * m_pButtonContainer;
+	KviTalSplitter                           * m_pTopSplitter;
+	KviTalSplitter                           * m_pVertSplitter;
+	QToolButton                              * m_pDoubleViewButton;
+	KviWindowToolPageButton                  * m_pListViewButton;
+	KviWindowToolPageButton                  * m_pModeEditorButton;
+	QMap<char, KviWindowToolPageButton *>      m_pListEditorButtons;
+	QMap<char, KviMaskEditor *>                m_pListEditors;
+	KviModeEditor                            * m_pModeEditor;
+	KviIrcView                               * m_pMessageView;
+	KviTopicWidget                           * m_pTopicWidget;
+	KviUserListView                          * m_pUserListView;
+	KviModeWidget                            * m_pModeWidget;
+	int                                        m_iStateFlags;
+	QString                                    m_szSentModeRequests;
+	QString                                    m_szChannelMode;
+	QMap<char, QString>                        m_szChannelParameterModes;
+	QMap<char, KviPointerList<KviMaskEntry> *> m_pModeLists;
+	KviPixmap                                  m_privateBackground;
+	QDateTime                                  m_joinTime;
+	QString                                    m_szNameWithUserFlag;
+	QStringList                              * m_pTmpHighLighted;
+	unsigned int                               m_uActionHistoryHotActionCount;
+	KviPointerList<KviChannelAction>         * m_pActionHistory;
+	kvi_time_t                                 m_tLastReceivedWhoReply;
+	QList<int>                                 m_VertSplitterSizesList;
+	KviTalHBox                               * m_pButtonContainer;
 public:
 	/**
 	* \brief Returns the user listview object
@@ -252,10 +240,10 @@ public:
 
 	/**
 	* \brief Gets the channel activity stats and put them in the buffer
-	* \param s The buffer where to store the data
+	* \param pStats The buffer where to store the data
 	* \return void
 	*/
-	void getChannelActivityStats(KviChannelActivityStats * s);
+	void getChannelActivityStats(KviChannelActivityStats * pStats);
 
 	/**
 	* \brief Returns the number of selected users
@@ -346,31 +334,31 @@ public:
 	* \brief Returns true if we have sent the sync WHO request
 	* \return bool
 	*/
-	bool sentSyncWhoRequest(){ return (m_iStateFlags & KVI_CHANNEL_STATE_SENTSYNCWHOREQUEST); };
+	bool sentSyncWhoRequest(){ return (m_iStateFlags & SentSyncWhoRequest); };
 
 	/**
 	* \brief Sets the sync WHO request flag
 	* \return void
 	*/
-	void setSentSyncWhoRequest(){ m_iStateFlags |= KVI_CHANNEL_STATE_SENTSYNCWHOREQUEST; };
+	void setSentSyncWhoRequest(){ m_iStateFlags |= SentSyncWhoRequest; };
 
 	/**
 	* \brief Clears the sync WHO request flag
 	* \return void
 	*/
-	void clearSentSyncWhoRequest(){ m_iStateFlags ^= KVI_CHANNEL_STATE_SENTSYNCWHOREQUEST; };
+	void clearSentSyncWhoRequest(){ m_iStateFlags ^= SentSyncWhoRequest; };
 
 	/**
 	* \brief Returns true if we have sent the WHO request
 	* \return bool
 	*/
-	bool sentWhoRequest(){ return (m_iStateFlags & KVI_CHANNEL_STATE_SENTWHOREQUEST); };
+	bool sentWhoRequest(){ return (m_iStateFlags & SentWhoRequest); };
 
 	/**
 	* \brief Sets the WHO request flag
 	* \return void
 	*/
-	void setSentWhoRequest(){ m_iStateFlags |= KVI_CHANNEL_STATE_SENTWHOREQUEST; };
+	void setSentWhoRequest(){ m_iStateFlags |= SentWhoRequest; };
 
 	/**
 	* \brief Returns true if we have sent a list request for a specific channel mode
@@ -394,13 +382,13 @@ public:
 	* \brief Returns true if the channel has all names
 	* \return bool
 	*/
-	bool hasAllNames(){ return (m_iStateFlags & KVI_CHANNEL_STATE_HAVEALLNAMES); };
+	bool hasAllNames(){ return (m_iStateFlags & HaveAllNames); };
 
 	/**
 	* \brief Sets the existance of all names
 	* \return void
 	*/
-	void setHasAllNames(){ m_iStateFlags |= KVI_CHANNEL_STATE_HAVEALLNAMES; checkChannelSync(); };
+	void setHasAllNames(){ m_iStateFlags |= HaveAllNames; checkChannelSync(); };
 
 	/**
 	* \brief Returns true if the channel has an invite list
@@ -412,13 +400,13 @@ public:
 	* \brief Returns true if the channel has a WHO list
 	* \return bool
 	*/
-	bool hasWhoList(){ return (m_iStateFlags & KVI_CHANNEL_STATE_HAVEWHOLIST); };
+	bool hasWhoList(){ return (m_iStateFlags & HaveWhoList); };
 
 	/**
 	* \brief Sets the existance of the WHO list
 	* \return void
 	*/
-	void setHasWhoList(){ m_iStateFlags |= KVI_CHANNEL_STATE_HAVEWHOLIST; checkChannelSync(); };
+	void setHasWhoList(){ m_iStateFlags |= HaveWhoList; checkChannelSync(); };
 
 	/**
 	* \brief Returns true if the channel has a ban list
@@ -442,7 +430,7 @@ public:
 	* \brief Returns true if the channel has to be closed on part
 	* \return bool
 	*/
-	bool closeOnPart(){ return !(m_iStateFlags & KVI_CHANNEL_STATE_NOCLOSEONPART); };
+	bool closeOnPart(){ return !(m_iStateFlags & NoCloseOnPart); };
 
 	/**
 	* \brief Called when we want to part a channel
@@ -470,7 +458,7 @@ public:
 	* \brief Returns true if the channel is dead
 	* \return bool
 	*/
-	bool isDeadChan(){ return (m_iStateFlags & KVI_CHANNEL_STATE_DEADCHAN); };
+	bool isDeadChan(){ return (m_iStateFlags & DeadChan); };
 
 	/**
 	* \brief Sets the channel as alive
@@ -553,7 +541,7 @@ public:
 	* \param bHalfOp Whether to set or unset the mode on the user
 	* \return bool
 	*/
-	bool setHalfOp(const QString & szNick, bool bHalfOp, bool ){ return m_pUserListView->setHalfOp(szNick,bHalfOp); };
+	bool setHalfOp(const QString & szNick, bool bHalfOp, bool){ return m_pUserListView->setHalfOp(szNick,bHalfOp); };
 
 	/**
 	* \brief Sets the voice mode
@@ -561,7 +549,7 @@ public:
 	* \param bVoice Whether to set or unset the mode on the user
 	* \return bool
 	*/
-	bool setVoice(const QString & szNick, bool bVoice, bool ){ return m_pUserListView->setVoice(szNick,bVoice); };
+	bool setVoice(const QString & szNick, bool bVoice, bool){ return m_pUserListView->setVoice(szNick,bVoice); };
 
 	/**
 	* \brief Sets the user operator mode
@@ -569,7 +557,7 @@ public:
 	* \param bUserOp Whether to set or unset the mode on the user
 	* \return bool
 	*/
-	bool setUserOp(const QString & szNick, bool bUserOp, bool ){ return m_pUserListView->setUserOp(szNick,bUserOp); };
+	bool setUserOp(const QString & szNick, bool bUserOp, bool){ return m_pUserListView->setUserOp(szNick,bUserOp); };
 
 	/**
 	* \brief Returns true if the user is a chan owner
@@ -779,7 +767,7 @@ public:
 	* \brief Returns only the plain (parameter-less) channel modes (eg: mi)
 	* \return QString
 	*/
-	QString plainChannelMode() { return m_szChannelMode; };
+	QString plainChannelMode(){ return m_szChannelMode; };
 
 	/**
 	* \brief Fills szBuffer with all set channel modes, but without any parameters (eg: lkmi)
@@ -808,7 +796,7 @@ public:
 	* \param cMode The mode
 	* \return bool
 	*/
-	bool hasChannelMode(char cMode) { return m_szChannelParameterModes.contains(cMode); };
+	bool hasChannelMode(char cMode){ return m_szChannelParameterModes.contains(cMode); };
 
 	/**
 	* \brief Returns the value (parameter) for a channel mode (eg. the password for mode k)
@@ -836,7 +824,7 @@ public:
 	* \param szNick The nickname of the user
 	* \return bool
 	*/
-	bool isHighlightedUser(const QString & szNick) { return m_pTmpHighLighted->contains(szNick,Qt::CaseInsensitive); };
+	bool isHighlightedUser(const QString & szNick){ return m_pTmpHighLighted->contains(szNick,Qt::CaseInsensitive); };
 
 	/**
 	* \brief Called when the channel losts the focus by the user
@@ -891,11 +879,11 @@ public:
 protected:
 	/**
 	* \brief Filters the events
-	* \param o The object
-	* \param e The event
+	* \param pObject The object
+	* \param pEvent The event
 	* \return bool
 	*/
-	bool eventFilter(QObject * o, QEvent * e);
+	bool eventFilter(QObject * pObject, QEvent * pEvent);
 
 	/**
 	* \brief Returns the correct icon for the channel
@@ -918,17 +906,17 @@ protected:
 
 	/**
 	* \brief Saves the properties to file
-	* \param cfg The config file
+	* \param pCfg The config file
 	* \return void
 	*/
-	virtual void saveProperties(KviConfigurationFile * cfg);
+	virtual void saveProperties(KviConfigurationFile * pCfg);
 
 	/**
 	* \brief Loads the properties from file
-	* \param cfg The config file
+	* \param pCfg The config file
 	* \return void
 	*/
-	virtual void loadProperties(KviConfigurationFile * cfg);
+	virtual void loadProperties(KviConfigurationFile * pCfg);
 
 	/**
 	* \brief Applies the options
@@ -995,8 +983,8 @@ protected:
 	*/
 	virtual void preprocessMessage(QString & szMessage);
 
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void closeEvent(QCloseEvent * e);
+	virtual void resizeEvent(QResizeEvent *);
+	virtual void closeEvent(QCloseEvent * pEvent);
 private slots:
 	/**
 	* \brief Toggles the double view mode
