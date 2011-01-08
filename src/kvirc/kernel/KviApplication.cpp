@@ -774,7 +774,7 @@ Let's see the scheme to understand which is choosen:
 						"Name=kvirc\n" \
 						"\n" \
 						"[Event/incomingMessage]\n" \
-						"Name=KVIrc messaging system\n" \
+						"Name=IRC message\n" \
 						"Comment=Someone sent us a message\n" \
 						"Action=Popup|Taskbar\n" \
 						"Persistant=true\n" \
@@ -786,7 +786,7 @@ Let's see the scheme to understand which is choosen:
 			bKNotifyConfigFileChecked = true;
 		}
 
-		QString szText = __tr2qs("Message arriving from %1:\n\n").arg(pWnd->target());
+		QString szText = __tr2qs("Message from %1:\n\n").arg(pWnd->target());
 		szText += KviMircCntrl::stripControlBytes(szMsg);
 
 		QStringList actions;
