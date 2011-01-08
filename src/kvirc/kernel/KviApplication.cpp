@@ -846,7 +846,7 @@ Let's see the scheme to understand which is choosen:
 
 		KNotification * pNotify = new KNotification("incomingMessage",KNotification::CloseWhenWidgetActivated,this);
 		pNotify->setFlags(KNotification::Persistent);
-		pNotify->setTitle(__tr2qs("KVIrc messaging system"));
+		pNotify->setTitle(__tr2qs("KVIrc"));
 		pNotify->setText(szText);
 		pNotify->setActions(actions);
 		pNotify->setPixmap(*pIcon);
