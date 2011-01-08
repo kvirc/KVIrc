@@ -98,6 +98,7 @@
 	#include "KviSSL.h"
 #endif
 
+#include <QFileInfo>
 #include <QSplitter>
 #include <QClipboard>
 #include <QMessageBox>
@@ -115,6 +116,7 @@
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT
+	#include <KStandardDirs>
 	#include <KNotification>
 #endif
 
@@ -750,6 +752,40 @@ Let's see the scheme to understand which is choosen:
 		if(!pWnd)
 			return;
 
+
+		static bool bKNotifyConfigFileChecked = false;
+
+		if(!bKNotifyConfigFileChecked)
+		{
+			QString szFileName = KStandardDirs::locateLocal("data",QString::fromAscii("kvirc/kvirc.notifyrc"));
+			if(szFileName.isEmpty())
+				szFileName = QString::fromAscii("%1/.kde/share/apps/kvirc/kvirc.notifyrc").arg(QDir::homePath());
+
+			QFileInfo inf(szFileName);
+
+			if(!inf.exists())
+			{
+				KviFileUtils::makeDir(inf.absolutePath());
+
+				QString szKNotifyConfig = QString::fromUtf8(
+						"[Global]\n" \
+						"IconName=kvirc\n" \
+						"Comment=The K-Visual IRC Client\n" \
+						"Name=kvirc\n" \
+						"\n" \
+						"[Event/incomingMessage]\n" \
+						"Name=KVIrc messaging system\n" \
+						"Comment=Someone sent us a message\n" \
+						"Action=Popup|Taskbar\n" \
+						"Persistant=true\n" \
+					);
+
+				KviFileUtils::writeFile(szFileName,szKNotifyConfig);
+			}
+		
+			bKNotifyConfigFileChecked = true;
+		}
+
 		QString szText = __tr2qs("Message arriving from %1:\n\n").arg(pWnd->target());
 		szText += KviMircCntrl::stripControlBytes(szMsg);
 
@@ -807,7 +843,6 @@ Let's see the scheme to understand which is choosen:
 		if(!pIcon)
 			pIcon = g_pIconManager->getSmallIcon(eIcon);
 
-		KComponentData * pData = new KComponentData(aboutData());
 
 		KNotification * pNotify = new KNotification("incomingMessage",KNotification::CloseWhenWidgetActivated,this);
 		pNotify->setFlags(KNotification::Persistent);
@@ -815,7 +850,7 @@ Let's see the scheme to understand which is choosen:
 		pNotify->setText(szText);
 		pNotify->setActions(actions);
 		pNotify->setPixmap(*pIcon);
-		pNotify->setComponentData(*pData); 
+		pNotify->setComponentData(KComponentData(aboutData())); 
 
 		connect(pNotify,SIGNAL(activated()),this,SLOT(showParentFrame()));
 		connect(pNotify,SIGNAL(action1Activated()),this,SLOT(showParentFrame()));
