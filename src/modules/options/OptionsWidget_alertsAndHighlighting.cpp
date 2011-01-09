@@ -61,8 +61,10 @@ OptionsWidget_highlighting::OptionsWidget_highlighting(QWidget * parent)
 	b = addBoolSelector(0,2,0,2,__tr2qs_ctx("Highlight messages containing my nickname","options"),KviOption_boolAlwaysHighlightNick);
 	mergeTip(b,__tr2qs_ctx("<center>If this option is enabled, KVIrc will highlight any user message containing your current nickname</center>","options"));
 
+	b = addBoolSelector(0,3,0,3,__tr2qs_ctx("Words/Nick matching is case sensitive ","options"),KviOption_boolCaseSensitiveHighlighting);
+	mergeTip(b,__tr2qs_ctx("<center>If this option is enabled, KVIrc will match your nick and/or the words you specified in a case sensitive manner</center>","options"));
 
-	KviTalGroupBox * gbox = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Highlighting Method","options"));
+	KviTalGroupBox * gbox = addGroupBox(0,4,0,4,Qt::Horizontal,__tr2qs_ctx("Highlighting Method","options"));
 
 	QGridLayout * g = new QGridLayout(gbox);
 	gbox->setLayout(g);
@@ -84,14 +86,14 @@ OptionsWidget_highlighting::OptionsWidget_highlighting(QWidget * parent)
 
 	connect(m_pHighlightWholeWordsOnlyRadioButton,SIGNAL(toggled(bool)),m_pWordSplitterCharactersEdit,SLOT(setEnabled(bool)));
 
-	gbox = addGroupBox(0,4,0,4,Qt::Horizontal,__tr2qs_ctx("Alert Options","options"));
+	gbox = addGroupBox(0,5,0,5,Qt::Horizontal,__tr2qs_ctx("Alert Options","options"));
 
 	b = addBoolSelector(gbox,__tr2qs_ctx("Flash the system taskbar entry on highlighted messages","options"),KviOption_boolFlashWindowOnHighlightedMessages);
 	mergeTip(b,__tr2qs_ctx("<center>If this option is enabled, KVIrc will (attempt to) flash the system taskbar entry when a highlighted message is printed and KVIrc is not the active window</center>","options"));
 	b = addBoolSelector(gbox,__tr2qs_ctx("Popup the notifier window on highlighted messages","options"),KviOption_boolPopupNotifierOnHighlightedMessages);
 	mergeTip(b,__tr2qs_ctx("<center>If this option is enabled, KVIrc will popup a little notifier window in the low right corner of your desktop when a highlighted message is printed and KVIrc is not the active window</center>","options"));
 
-	addRowSpacer(0,5,0,5);
+	addRowSpacer(0,6,0,6);
 }
 
 OptionsWidget_highlighting::~OptionsWidget_highlighting()

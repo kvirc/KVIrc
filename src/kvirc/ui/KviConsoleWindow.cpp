@@ -580,11 +580,13 @@ int KviConsoleWindow::applyHighlighting(KviWindow *wnd,int type,const QString &n
 	QString szSource;
 	QString szStripMsg=KviMircCntrl::stripControlBytes(szMsg);
 	QRegExp rgxHlite;
+	Qt::CaseSensitivity cs = KVI_OPTION_BOOL(KviOption_boolCaseSensitiveHighlighting) ? Qt::CaseSensitive : Qt::CaseInsensitive;
+
 	if(KVI_OPTION_BOOL(KviOption_boolAlwaysHighlightNick) && connection())
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting))
 		{
-			if(szStripMsg.contains(connection()->userInfo()->nickName()))
+			if(szStripMsg.contains(connection()->userInfo()->nickName()), cs)
 				return triggerOnHighlight(wnd,type,nick,user,host,szMsg,connection()->userInfo()->nickName());
 		} else {
 			if(!szPattern.isEmpty())
@@ -599,7 +601,7 @@ int KviConsoleWindow::applyHighlighting(KviWindow *wnd,int type,const QString &n
 						QRegExp::escape(connection()->userInfo()->nickName())
 					)
 				);
-			rgxHlite.setCaseSensitivity(Qt::CaseInsensitive);
+			rgxHlite.setCaseSensitivity(cs);
 			if(szStripMsg.contains(rgxHlite))
 				return triggerOnHighlight(wnd,type,nick,user,host,szMsg,connection()->userInfo()->nickName());
 		}
@@ -615,7 +617,7 @@ int KviConsoleWindow::applyHighlighting(KviWindow *wnd,int type,const QString &n
 
 			if(KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting))
 			{
-				if(szStripMsg.contains(*it))
+				if(szStripMsg.contains(*it), cs)
 					return triggerOnHighlight(wnd,type,nick,user,host,szMsg,*it);
 			} else {
 				if(!szPattern.isEmpty())
@@ -630,7 +632,7 @@ int KviConsoleWindow::applyHighlighting(KviWindow *wnd,int type,const QString &n
 						QRegExp::escape(*it)
 						)
 					);
-				rgxHlite.setCaseSensitivity(Qt::CaseInsensitive);
+				rgxHlite.setCaseSensitivity(cs);
 				if(szStripMsg.contains(rgxHlite))
 					return triggerOnHighlight(wnd,type,nick,user,host,szMsg,*it);
 			}
