@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: defscript_ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-07-25 01:51+0900\n"
 "Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
 "Language-Team: Japanese <elf@elf.no-ip.org>\n"
@@ -153,6 +153,10 @@ msgstr "通知へ追加"
 msgid "Always Highlight"
 msgstr ""
 
+#: data/defscript/popups.kvs:1404
+msgid "Automatically Join Channel"
+msgstr ""
+
 #: data/defscript/popups.kvs:405
 msgid "Avatar"
 msgstr "アバター"
@@ -213,19 +217,19 @@ msgstr "バッファの消去"
 msgid "Clear Default"
 msgstr "標準の消去"
 
-#: data/defscript/popups.kvs:1343
+#: data/defscript/popups.kvs:1392
 msgid "Close"
 msgstr ""
 
-#: data/defscript/popups.kvs:1367
+#: data/defscript/popups.kvs:1464
 msgid "Close All Dead Channels"
 msgstr ""
 
-#: data/defscript/popups.kvs:1373
+#: data/defscript/popups.kvs:1470
 msgid "Close All Dead Queries"
 msgstr ""
 
-#: data/defscript/popups.kvs:1361
+#: data/defscript/popups.kvs:1458
 msgid "Close All Queries"
 msgstr ""
 
@@ -258,7 +262,7 @@ msgstr ""
 msgid "Default"
 msgstr "標準"
 
-#: data/defscript/popups.kvs:1332
+#: data/defscript/popups.kvs:1381
 msgid "Dock"
 msgstr ""
 
@@ -401,11 +405,11 @@ msgstr ""
 msgid "Mask for"
 msgstr ""
 
-#: data/defscript/popups.kvs:1338
+#: data/defscript/popups.kvs:1387
 msgid "Maximize"
 msgstr ""
 
-#: data/defscript/popups.kvs:1337
+#: data/defscript/popups.kvs:1386
 msgid "Minimize"
 msgstr ""
 
@@ -447,7 +451,7 @@ msgstr ""
 msgid "O&wner"
 msgstr "所有者(&W)"
 
-#: data/defscript/popups.kvs:1413
+#: data/defscript/popups.kvs:1510
 msgid "Open "
 msgstr ""
 
@@ -459,7 +463,7 @@ msgstr "オプション"
 msgid "Parameter message missing"
 msgstr ""
 
-#: data/defscript/popups.kvs:1355
+#: data/defscript/popups.kvs:1452
 #, fuzzy
 msgid "Part All Channels"
 msgstr "チャンネル"
@@ -485,7 +489,7 @@ msgstr "登録..."
 msgid "Remove from Notify"
 msgstr "通知から削除"
 
-#: data/defscript/popups.kvs:1339
+#: data/defscript/popups.kvs:1388
 msgid "Restore"
 msgstr ""
 
@@ -525,7 +529,7 @@ msgstr ""
 msgid "Set as Default"
 msgstr "標準として設定"
 
-#: data/defscript/popups.kvs:1349
+#: data/defscript/popups.kvs:1398
 #, fuzzy
 msgid "Set window props as default"
 msgstr "標準として設定"
@@ -533,6 +537,14 @@ msgstr "標準として設定"
 #: data/defscript/popups.kvs:24
 #: data/defscript/popups.kvs:88
 msgid "Start Highlighting (Local)"
+msgstr ""
+
+#: data/defscript/popups.kvs:1435
+msgid "Stop Auto-Joining Channel on Network '?s'"
+msgstr ""
+
+#: data/defscript/popups.kvs:1422
+msgid "Stop Auto-Joining Channel on Server '?s'"
 msgstr ""
 
 #: data/defscript/popups.kvs:67
@@ -556,7 +568,7 @@ msgstr ""
 msgid "TDCC Send to"
 msgstr ""
 
-#: data/defscript/popups.kvs:1418
+#: data/defscript/popups.kvs:1515
 msgid "Telnet to "
 msgstr ""
 
@@ -573,11 +585,11 @@ msgstr "これはチャンネルウィンドウではありません。"
 msgid "To connect to a server, type /server <server name>"
 msgstr ""
 
-#: data/defscript/popups.kvs:1425
+#: data/defscript/popups.kvs:1522
 msgid "Traceroute to "
 msgstr ""
 
-#: data/defscript/popups.kvs:1431
+#: data/defscript/popups.kvs:1528
 msgid "Traceroute6 to "
 msgstr ""
 
@@ -585,19 +597,19 @@ msgstr ""
 msgid "Type /gnotice for help"
 msgstr ""
 
-#: data/defscript/popups.kvs:1333
+#: data/defscript/popups.kvs:1382
 msgid "Undock"
 msgstr ""
 
-#: data/defscript/popups.kvs:1387
+#: data/defscript/popups.kvs:1484
 msgid "Unhighlight All Channels"
 msgstr ""
 
-#: data/defscript/popups.kvs:1393
+#: data/defscript/popups.kvs:1490
 msgid "Unhighlight All Queries"
 msgstr ""
 
-#: data/defscript/popups.kvs:1381
+#: data/defscript/popups.kvs:1478
 msgid "Unhighlight All Windows"
 msgstr ""
 
@@ -641,6 +653,14 @@ msgstr "ボイス"
 #: data/defscript/popups.kvs:984
 msgid "Voice Chat"
 msgstr "ボイス チャット"
+
+#: data/defscript/popups.kvs:1414
+msgid "When Connecting to Network '?s'"
+msgstr ""
+
+#: data/defscript/popups.kvs:1407
+msgid "When Connecting to Server '?s'"
+msgstr ""
 
 #: data/defscript/toolbars.kvs:40
 msgid "Window operations"

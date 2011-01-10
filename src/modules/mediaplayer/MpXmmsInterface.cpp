@@ -132,18 +132,16 @@ void * KviXmmsInterface::lookupSymbol(const char * szSymbolName)
 	{
 		if(!loadPlayerLibrary())
 		{
-			QString tmp;
-			KviQString::sprintf(tmp,__tr2qs_ctx("Can't load the player library (%Q)","mediaplayer"),&m_szPlayerLibraryName);
-			setLastError(tmp);
+			QString szTmp = QString(__tr2qs_ctx("Can't load the player library (%1)","mediaplayer")).arg(m_szPlayerLibraryName);
+			setLastError(szTmp);
 			return 0;
 		}
 	}
 	void * symptr =m_pPlayerLibrary->resolve(szSymbolName);
 	if(!symptr)
 	{
-		QString tmp;
-		KviQString::sprintf(tmp,__tr2qs_ctx("Can't find symbol %s in %Q","mediaplayer"),szSymbolName,&m_szPlayerLibraryName);
-		setLastError(tmp);
+		QString szTmp = QString(__tr2qs_ctx("Can't find symbol %1 in %2","mediaplayer")).arg(szSymbolName,m_szPlayerLibraryName);
+		setLastError(szTmp);
 	}
 	return symptr;
 }

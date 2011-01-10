@@ -151,47 +151,48 @@ bool KviNotifyListManager::handleWatchReply(KviIrcMessage *)
 	return false;
 }
 
-void KviNotifyListManager::notifyOnLine(const QString &nick,const QString &user,const QString &host,const QString &szReason,bool bJoin)
+void KviNotifyListManager::notifyOnLine(const QString & szNick, const QString & szUser, const QString & szHost, const QString & szReason, bool bJoin)
 {
 	if(bJoin)
-		m_pConsole->notifyListView()->join(nick,user,host);
+		m_pConsole->notifyListView()->join(szNick,szUser,szHost);
 
-	KviWindow * out = KVI_OPTION_BOOL(KviOption_boolNotifyListChangesToActiveWindow) ? m_pConsole->activeWindow() : m_pConsole;
-	if(KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnNotifyOnLine,out,nick))return;
+	KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolNotifyListChangesToActiveWindow) ? m_pConsole->activeWindow() : m_pConsole;
+	if(KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnNotifyOnLine,pOut,szNick))
+		return;
 
 	QString szWho;
 	QString szMsg;
 
-	if(!(user.isEmpty() || host.isEmpty()))
-		KviQString::sprintf(szWho,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]",&nick,&user,&host);
+	if(!(szUser.isEmpty() || szHost.isEmpty()))
+		szWho = QString("\r!n\r%1\r [%2@\r!h\r%3\r]").arg(szNick,szUser,szHost);
 	else
-		KviQString::sprintf(szWho,"\r!n\r%Q\r",&nick);
+		szWho = QString("\r!n\r%1\r").arg(szNick);
 
 	KviPointerHashTable<QString,KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
 	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
-	QString szNotify;
 
-	while(KviRegisteredUser * u = it.current())
+	while(KviRegisteredUser * pUser = it.current())
 	{
-		QString prop=u->getProperty("notify");
-		if (!prop.isEmpty())
+		QString szProp = pUser->getProperty("notify");
+		if(!szProp.isEmpty())
 		{
-			if(prop.split(",",QString::SkipEmptyParts).indexOf(nick)!=-1)
+			if(szProp.split(",",QString::SkipEmptyParts).indexOf(szNick) != -1)
 			{
-				QString szComment=u->getProperty("comment");
+				QString szComment = pUser->getProperty("comment");
 				if(!szComment.isEmpty())
-					KviQString::sprintf(szMsg,"%Q (%Q), Group \"%Q\" is on IRC as (%Q)",&(u->name()),&szComment,&(u->group()),&szWho);
+					szMsg = QString("%1 (%2), Group \"%3\" is on IRC as (%4)").arg(pUser->name(),szComment,pUser->group(),szWho);
 				else
-					KviQString::sprintf(szMsg,"%Q, Group \"%Q\" is on IRC as (%Q)",&(u->name()),&(u->group()),&szWho);
+					szMsg = QString("%1, Group \"%2\" is on IRC as (%3)").arg(pUser->name(),pUser->group(),szWho);
 				break;
 			}
 		}
 		++it;
 	}
-	QString szFmt = __tr2qs("%Q is on IRC");
+	
+	QString szFmt = __tr2qs("%1 is on IRC");
 
 	if(szMsg.isEmpty())
-		KviQString::sprintf(szMsg,szFmt,&szWho);
+		szMsg = QString(szFmt).arg(szWho);
 
 	if((!szReason.isEmpty()) && (_OUTPUT_VERBOSE))
 	{
@@ -200,53 +201,52 @@ void KviNotifyListManager::notifyOnLine(const QString &nick,const QString &user,
 		szMsg += ")";
 	}
 
-	out->outputNoFmt(KVI_OUT_NOTIFYONLINE,szMsg);
+	pOut->outputNoFmt(KVI_OUT_NOTIFYONLINE,szMsg);
 
-	if(!(out->hasAttention()))
+	if(!(pOut->hasAttention()))
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolFlashWindowOnNotifyOnLine))
-			out->demandAttention();
+			pOut->demandAttention();
 		if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNotifyOnLine))
 		{
 			szWho = "<b>";
-			szWho += nick;
+			szWho += szNick;
 			szWho += "</b>";
-			KviQString::sprintf(szMsg,szFmt,&szWho);
+			szMsg = QString(szFmt).arg(szWho);
 			g_pApp->notifierMessage(0,KVI_OPTION_MSGTYPE(KVI_OUT_NOTIFYONLINE).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 		}
 	}
 }
 
-void KviNotifyListManager::notifyOffLine(const QString &nick,const QString &user,const QString &host,const QString &szReason)
+void KviNotifyListManager::notifyOffLine(const QString & szNick, const QString & szUser, const QString & szHost, const QString & szReason)
 {
-	KviWindow * out = KVI_OPTION_BOOL(KviOption_boolNotifyListChangesToActiveWindow) ? m_pConsole->activeWindow() : m_pConsole;
-	if(!KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnNotifyOffLine,out,nick))
+	KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolNotifyListChangesToActiveWindow) ? m_pConsole->activeWindow() : m_pConsole;
+	if(!KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnNotifyOffLine,pOut,szNick))
 	{
 		QString szWho;
 
-		if(!(user.isEmpty() || host.isEmpty()))
-			KviQString::sprintf(szWho,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]",&nick,&user,&host);
+		if(!(szUser.isEmpty() || szHost.isEmpty()))
+			szWho = QString("\r!n\r%1\r [%2@\r!h\r%3\r]").arg(szNick,szUser,szHost);
 		else
-			KviQString::sprintf(szWho,"\r!n\r%Q\r",&nick);
+			szWho = QString("\r!n\r%1\r").arg(szNick);
 
 		QString szMsg;
 
 		KviPointerHashTable<QString,KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
 		KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
-		QString szNotify;
 
-		while(KviRegisteredUser * u = it.current())
+		while(KviRegisteredUser * pUser = it.current())
 		{
-			QString prop=u->getProperty("notify");
-			if (!prop.isEmpty())
+			QString szProp = pUser->getProperty("notify");
+			if(!szProp.isEmpty())
 			{
-				if(prop.split(",",QString::SkipEmptyParts).indexOf(nick)!=-1)
+				if(szProp.split(",",QString::SkipEmptyParts).indexOf(szNick) != -1)
 				{
-					QString szComment=u->getProperty("comment");
+					QString szComment = pUser->getProperty("comment");
 					if(!szComment.isEmpty())
-						KviQString::sprintf(szMsg,"%Q (%Q), Group \"%Q\" has left IRC as (%Q)",&(u->name()),&szComment,&(u->group()),&szWho);
+						szMsg = QString("%1 (%2), Group \"%3\" has left IRC as (%4)").arg(pUser->name(),szComment,pUser->group(),szWho);
 					else
-						KviQString::sprintf(szMsg,"%Q, Group \"%Q\" has left IRC as (%Q)",&(u->name()),&(u->group()),&szWho);
+						szMsg = QString("%1, Group \"%2\" has left IRC as (%3)").arg(pUser->name(),pUser->group(),szWho);
 					break;
 				}
 			}
@@ -254,7 +254,7 @@ void KviNotifyListManager::notifyOffLine(const QString &nick,const QString &user
 		}
 
 		if(szMsg.isEmpty())
-			KviQString::sprintf(szMsg,__tr2qs("%Q has left IRC"),&szWho);
+			szMsg = QString(__tr2qs("%1 has left IRC")).arg(szWho);
 
 		if((!szReason.isEmpty()) && (_OUTPUT_VERBOSE))
 		{
@@ -263,10 +263,10 @@ void KviNotifyListManager::notifyOffLine(const QString &nick,const QString &user
 			szMsg += ")";
 		}
 
-		out->outputNoFmt(KVI_OUT_NOTIFYOFFLINE,szMsg);
+		pOut->outputNoFmt(KVI_OUT_NOTIFYOFFLINE,szMsg);
 	}
 
-	m_pConsole->notifyListView()->part(nick);
+	m_pConsole->notifyListView()->part(szNick);
 }
 
 

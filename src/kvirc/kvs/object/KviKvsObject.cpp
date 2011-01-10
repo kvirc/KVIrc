@@ -1151,9 +1151,9 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 				QString szName = p->name();
 				QString szType = p->typeName();
 				if(bArray)
-					KviQString::sprintf(szOut,"%Q, %Q",&szName,&szType);
+					szOut = QString("%1, %2").arg(szName,szType);
 				else {
-					KviQString::sprintf(szOut,__tr2qs_ctx("Property: %c%Q%c, type %Q","kvs"),KviMircCntrl::Bold,&szName,KviMircCntrl::Bold,&szType);
+					szOut = QString(__tr2qs_ctx("Property: %1%2%3, type %4","kvs")).arg(KviMircCntrl::Bold).arg(szName).arg(KviMircCntrl::Bold).arg(szType);
 					szOut.prepend(" ");
 				}
 

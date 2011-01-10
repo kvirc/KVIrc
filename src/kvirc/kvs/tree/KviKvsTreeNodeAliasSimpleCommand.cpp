@@ -47,7 +47,7 @@ KviKvsTreeNodeAliasSimpleCommand::~KviKvsTreeNodeAliasSimpleCommand()
 
 void KviKvsTreeNodeAliasSimpleCommand::contextDescription(QString & szBuffer)
 {
-	KviQString::sprintf(szBuffer,"Alias Simple Command \"%Q\"",&m_szCmdName);
+	szBuffer = QString("Alias Simple Command \"%1\"").arg(m_szCmdName);
 }
 
 void KviKvsTreeNodeAliasSimpleCommand::dump(const char * prefix)

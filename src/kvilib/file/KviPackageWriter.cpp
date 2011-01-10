@@ -164,8 +164,7 @@ bool KviPackageWriter::addDirectory(const QString &szLocalDirectoryName,const QS
 
 bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDataField)
 {
-	QString szProgressText;
-	KviQString::sprintf(szProgressText,__tr2qs("Packaging file %Q"),&(pDataField->m_szFileLocalName));
+	QString szProgressText = QString(__tr2qs("Packaging file %1")).arg(pDataField->m_szFileLocalName);
 	if(!updateProgress(m_p->iCurrentProgress,szProgressText))
 		return false; // aborted
 
@@ -273,8 +272,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 
 				if((zstr.total_in % 2000000) == 0)
 				{
-					QString szTmp;
-					KviQString::sprintf(szTmp,QString(" (%d of %d bytes)"),zstr.total_in,uSize);
+					QString szTmp = QString(" (%1 of %2 bytes)").arg(zstr.total_in,uSize);
 					QString szPrg = szProgressText + szTmp;
 					if(!updateProgress(m_p->iCurrentProgress,szPrg))
 						return false; // aborted
@@ -341,8 +339,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 			iTotalFileSize += iReaded;
 			if((iTotalFileSize % 1000000) == 0)
 			{
-				QString szTmp;
-				KviQString::sprintf(szTmp,QString(" (%d of %d bytes)"),iTotalFileSize,uSize);
+				QString szTmp = QString(" (%1 of %2 bytes)").arg(iTotalFileSize,uSize);
 				QString szPrg = szProgressText + szTmp;
 				if(!updateProgress(m_p->iCurrentProgress,szPrg))
 					return false; // aborted

@@ -259,7 +259,7 @@ void EventEditor::getUniqueHandlerName(EventEditorEventTreeWidgetItem *it,QStrin
 			if(KviQString::equalCI(newName,((EventEditorHandlerTreeWidgetItem *)it->child(i))->m_szName))
 			{
 				bFound = true;
-				KviQString::sprintf(newName,"%Q_%d",&buffer,idx);
+				newName = QString("%1_%2").arg(buffer).arg(idx);
 				idx++;
 				break;
 			}
@@ -342,7 +342,7 @@ void EventEditor::commit()
 			for(int j=0;j<ccount;j++)
 			{
 				QTreeWidgetItem * ch = it->child(j);
-				KviQString::sprintf(szContext,"%Q::%Q",&(((EventEditorEventTreeWidgetItem *)it)->m_szName),&(((EventEditorHandlerTreeWidgetItem *)ch)->m_szName));
+				szContext = QString("%1::%2").arg(((EventEditorEventTreeWidgetItem *)it)->m_szName,((EventEditorHandlerTreeWidgetItem *)ch)->m_szName);
 				KviKvsScriptEventHandler * s = KviKvsScriptEventHandler::createInstance( // msvc workaround
 						((EventEditorHandlerTreeWidgetItem *)ch)->m_szName,
 						szContext,
@@ -409,10 +409,8 @@ void EventEditor::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *)
 		if(parms.isEmpty())parms = __tr2qs_ctx("none","editor");
 		KviCommandFormatter::indent(parms);
 		KviCommandFormatter::indent(parms);
-		QString tmp;
-		KviQString::sprintf(tmp,__tr2qs_ctx("\n\nEvent:\n%s\n\nParameters:\n%s","editor"),
-			((EventEditorEventTreeWidgetItem *)it)->m_szName.toUtf8().data(),parms.toUtf8().data());
-		m_pEditor->setText(tmp);
+		QString szTmp = QString(__tr2qs_ctx("\n\nEvent:\n%1\n\nParameters:\n%2","editor")).arg(((EventEditorEventTreeWidgetItem *)it)->m_szName,parms);
+		m_pEditor->setText(szTmp);
 	}
 }
 

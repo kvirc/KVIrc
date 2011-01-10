@@ -1247,9 +1247,9 @@ QPixmap * KviIconManager::loadSmallIcon(int iIdx)
 	if(iIdx < 0)
 		return 0;
 
-	QString szPath;
+	QString szPath = QString(KVI_SMALLICONS_PREFIX "%1.png").arg(g_szIconNames[iIdx]);
+	//KviQString::sprintf(szPath,KVI_SMALLICONS_PREFIX "%s.png",g_szIconNames[iIdx]);
 	QString szBuffer;
-	KviQString::sprintf(szPath,KVI_SMALLICONS_PREFIX "%s.png",g_szIconNames[iIdx]);
 
 	g_pApp->findSmallIcon(szBuffer,szPath);
 	m_smallIcons[iIdx] = new QPixmap(szBuffer);

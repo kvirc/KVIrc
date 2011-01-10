@@ -36,7 +36,6 @@
 #include "KviOptions.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnection.h"
-#include "KviQString.h"
 #include "KviTopicWidget.h"
 #include "KviConfigurationFile.h"
 #include "KviFileDialog.h"
@@ -293,11 +292,9 @@ void ListWindow::connectionStateChange()
 	m_pRequestButton->setEnabled(st == KviIrcContext::Connected);
 	if(st == KviIrcContext::Connected)
 	{
-		QString szTmp;
-		KviQString::sprintf(szTmp,
-				__tr2qs("Connected to %s (%s)"),
-				m_pConsole->connection()->currentServerName().toUtf8().data(),
-				m_pConsole->currentNetworkName().toUtf8().data());
+		QString szTmp = QString(__tr2qs("Connected to %1 (%2)")).arg(
+			m_pConsole->connection()->currentServerName(),
+			m_pConsole->currentNetworkName());
 		m_pInfoLabel->setText(szTmp);
 	} else {
 		m_pInfoLabel->setText(__tr2qs("List cannot be requested: Not connected to a server"));
@@ -323,7 +320,7 @@ QSize ListWindow::sizeHint() const
 
 void ListWindow::fillCaptionBuffers()
 {
-	KviQString::sprintf(m_szPlainTextCaption,__tr2qs("Channel List [IRC Context %u]"),m_pConsole->context()->id());
+	m_szPlainTextCaption = QString(__tr2qs("Channel List [IRC Context %1]")).arg(m_pConsole->context()->id());
 }
 
 void ListWindow::die()
@@ -357,8 +354,7 @@ void ListWindow::exportList()
 				szDate = date.toString(Qt::SystemLocaleDate);
 				break;
 		}
-		KviQString::sprintf(szFile,__tr2qs("Channel list for %Q - %Q"),
-			&(connection()->currentNetworkName()),&(szDate));
+		szFile = QString(__tr2qs("Channel list for %1 - %2")).arg(connection()->currentNetworkName(),szDate);
 	} else {
 		szFile = __tr2qs("Channel list");
 	}

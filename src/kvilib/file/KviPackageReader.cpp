@@ -193,15 +193,14 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 		return false;
 	}
 
-	QString szProgressText;
-	KviQString::sprintf(szProgressText,__tr2qs("Unpacking file %Q"),&szFileName);
+	QString szProgressText = QString(__tr2qs("Unpacking file %1")).arg(szFileName);
 	if(!updateProgress(pFile->pos(),szProgressText))
 		return false; // aborted
 
 	// Size
 	kvi_u32_t uSize;
-	if(!pFile->load(uSize))return readError();
-
+	if(!pFile->load(uSize))
+		return readError();
 
 	// FilePayload
 #ifdef COMPILE_ZLIB_SUPPORT
@@ -281,8 +280,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 				if((zstr.total_in % 2000000) == 0)
 				{
-					QString szTmp;
-					KviQString::sprintf(szTmp,QString(" (%d of %d bytes)"),zstr.total_in,uSize);
+					QString szTmp = QString(" (%1 of %2 bytes)").arg(zstr.total_in,uSize);
 					QString szPrg = szProgressText + szTmp;
 					if(!updateProgress(pFile->pos(),szPrg))
 						return false; // aborted
@@ -350,8 +348,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 				if((iTotalFileSize % 3000000) == 0)
 				{
-					QString szTmp;
-					KviQString::sprintf(szTmp,QString(" (%d of %d bytes)"),iTotalFileSize,uSize);
+					QString szTmp = QString(" (%1 of %2 bytes)").arg(iTotalFileSize,uSize);
 					QString szPrg = szProgressText + szTmp;
 					if(!updateProgress(pFile->pos(),szPrg))
 						return false; // aborted

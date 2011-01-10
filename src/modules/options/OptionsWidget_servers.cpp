@@ -228,7 +228,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pTextEncodingEditor->addItem(__tr2qs_ctx("Use System Encoding","options"));
 	while(d->szName)
 	{
-		KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
+		tmp = QString("%1 (%2)").arg(d->szName,d->szDescription);
 		m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
 		m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
 		if(KviQString::equalCI(d->szName,n->encoding()))srvcurrent = i + 1;
@@ -782,7 +782,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pTextEncodingEditor->addItem(__tr2qs_ctx("Use Network Encoding","options"));
 	while(d->szName)
 	{
-		KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
+		tmp = QString("%1 (%2)").arg(d->szName,d->szDescription);
 		m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
 		m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
 		if(KviQString::equalCI(d->szName,s->encoding()))srvcurrent = i + 1;

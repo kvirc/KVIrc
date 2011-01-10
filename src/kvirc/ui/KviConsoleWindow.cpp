@@ -543,19 +543,17 @@ void KviConsoleWindow::closeEvent(QCloseEvent *e)
 }
 
 // internal helper for applyHighlighting
-int KviConsoleWindow::triggerOnHighlight(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg,const QString &trigger)
+int KviConsoleWindow::triggerOnHighlight(KviWindow * pWnd, int iType, const QString & szNick, const QString & szUser, const QString & szHost, const QString & szMsg, const QString & szTrigger)
 {
-	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && wnd!=g_pActiveWindow)
+	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && pWnd != g_pActiveWindow)
 		KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound))));
 
-	QString szMessageType;
-
-	KviQString::sprintf(szMessageType,"%d",type);
+	QString szMessageType = QString("%1").arg(iType);
 
 	if(KVS_TRIGGER_EVENT_7_HALTED(KviEvent_OnHighlight,
-					wnd,nick,user,host,
-					szMsg,trigger,
-					szMessageType,(type == KVI_OUT_ACTION)))
+					pWnd,szNick,szUser,szHost,
+					szMsg,szTrigger,
+					szMessageType,(iType == KVI_OUT_ACTION)))
 		return -1;
 	return KVI_OUT_HIGHLIGHT;
 }
@@ -727,8 +725,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 
 	// <PREFIX>nick[!user@host]<POSTFIX>This is a test message
 
-	QString szNick;
-	KviQString::sprintf(szNick,"\r!nc\r%Q\r",&nick);
+	QString szNick = QString("\r!nc\r%1\r").arg(nick);
 
 	if(KVI_OPTION_BOOL(KviOption_boolShowUserAndHostInPrivmsgView))
 		KviQString::appendFormatted(szNick,"!%Q@\r!h\r%Q\r",&user,&host);
@@ -1082,15 +1079,12 @@ void KviConsoleWindow::applyOptions()
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
 	{
-		int back = KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground);
-		if(back == KviMircCntrl::Transparent)
+		int iBack = KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground);
+		if(iBack == KviMircCntrl::Transparent)
 		{
-			KviQString::sprintf(m_szOwnSmartColor,"%d", \
-				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground));
+			m_szOwnSmartColor = QString("%1").arg(KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground));
 		} else {
-			KviQString::sprintf(m_szOwnSmartColor,"%d,%d", \
-				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground), \
-				back);
+			m_szOwnSmartColor = QString("%1,%2").arg(KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground)).arg(iBack);
 		}
 	}
 }

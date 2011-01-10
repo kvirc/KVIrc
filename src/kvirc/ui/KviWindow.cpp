@@ -1272,7 +1272,7 @@ void KviWindow::output(int iMsgType, const char * pcFormat, ...)
 	KviQString::vsprintf(szBuf,szFmt,l);
 	kvi_va_end(l);
 	preprocessMessage(szBuf);
-	const QChar * pC = KviQString::nullTerminatedArray(szBuf);
+	const QChar * pC = szBuf.constData();
 	if(!pC)
 		return;
 	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC);
@@ -1286,7 +1286,7 @@ void KviWindow::output(int iMsgType, const QString & szFmt, ...)
 	KviQString::vsprintf(szBuf,szFmt,l);
 	kvi_va_end(l);
 	preprocessMessage(szBuf);
-	const QChar * pC = KviQString::nullTerminatedArray(szBuf);
+	const QChar * pC = szBuf.constData();
 	if(!pC)
 		return;
 	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC);
@@ -1301,7 +1301,7 @@ void KviWindow::output(int iMsgType, const kvi_wchar_t * pwFormat, ...)
 	KviQString::vsprintf(szBuf,szFmt,l);
 	kvi_va_end(l);
 	preprocessMessage(szBuf);
-	const QChar * pC = KviQString::nullTerminatedArray(szBuf);
+	const QChar * pC = szBuf.constData();
 	if(!pC)
 		return;
 	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC);
@@ -1311,7 +1311,7 @@ void KviWindow::outputNoFmt(int iMsgType, const char * pcText, int iFlags)
 {
 	QString szText(pcText);
 	preprocessMessage(szText);
-	const QChar * pC = KviQString::nullTerminatedArray(szText);
+	const QChar * pC = szText.constData();
 	if(!pC)
 		return;
 	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC,iFlags);
@@ -1321,7 +1321,7 @@ void KviWindow::outputNoFmt(int iMsgType, const QString & szText, int iFlags)
 {
 	QString szBuf(szText);
 	preprocessMessage(szBuf);
-	const QChar * pC = KviQString::nullTerminatedArray(szBuf);
+	const QChar * pC = szBuf.constData();
 	if(!pC)
 		return;
 	internalOutput(m_pIrcView,iMsgType,(kvi_wchar_t *)pC,iFlags);

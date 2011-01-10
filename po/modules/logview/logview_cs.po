@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2007-12-05 18:02+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -18,11 +18,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/logview/logviewmdiwindow.cpp:304
-msgid "%Q on %Q"
+#: src/modules/logview/LogViewWindow.cpp:304
+#, fuzzy
+msgid "%1 on %2"
 msgstr "%Q na %Q"
 
-#: src/modules/logview/logviewmdiwindow.cpp:154
+#: src/modules/logview/LogViewWindow.cpp:154
 msgid "Apply filter"
 msgstr "Použít filtr"
 
@@ -30,92 +31,93 @@ msgstr "Použít filtr"
 msgid "Browse &Log Files"
 msgstr "Prohlížet soubory &logů"
 
-#: src/modules/logview/logviewmdiwindow.cpp:84
+#: src/modules/logview/LogViewWindow.cpp:84
 #, fuzzy
 msgid "Cancel"
 msgstr "Kanál"
 
-#: src/modules/logview/logviewwidget.cpp:70
+#: src/modules/logview/LogViewWidget.cpp:70
 msgid "Channel"
 msgstr "Kanál"
 
-#: src/modules/logview/logviewwidget.cpp:82
+#: src/modules/logview/LogViewWidget.cpp:82
 msgid "Console"
 msgstr "Konzole"
 
-#: src/modules/logview/logviewmdiwindow.cpp:123
+#: src/modules/logview/LogViewWindow.cpp:123
 msgid "Contents filter"
 msgstr "Filtr obsahu"
 
-#: src/modules/logview/logviewwidget.cpp:78
+#: src/modules/logview/LogViewWidget.cpp:78
 msgid "DCC Chat"
 msgstr "DCC Chat"
 
-#: src/modules/logview/logviewmdiwindow.cpp:98
+#: src/modules/logview/LogViewWindow.cpp:98
 msgid "Filter"
 msgstr "Filtr"
 
-#: src/modules/logview/logviewmdiwindow.cpp:89
-msgid "Index"
+#: src/modules/logview/LogViewWindow.cpp:89
+#, fuzzy
+msgid "HelpIndex"
 msgstr "Obsah"
 
-#: src/modules/logview/logviewmdiwindow.cpp:548
+#: src/modules/logview/LogViewWindow.cpp:548
 msgid "Log File"
 msgstr "Soubor logů"
 
-#: src/modules/logview/logviewmdiwindow.cpp:220
+#: src/modules/logview/LogViewWindow.cpp:220
 msgid "Log Viewer"
 msgstr "Prohlížeč logů"
 
-#: src/modules/logview/logviewmdiwindow.cpp:132
+#: src/modules/logview/LogViewWindow.cpp:132
 msgid "Log contents mask:"
 msgstr "Maska logu obsahu:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:126
+#: src/modules/logview/LogViewWindow.cpp:126
 msgid "Log name mask:"
 msgstr "Maska názvu logu:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:146
+#: src/modules/logview/LogViewWindow.cpp:146
 msgid "Only newier than"
 msgstr "Pouze novější než"
 
-#: src/modules/logview/logviewmdiwindow.cpp:138
+#: src/modules/logview/LogViewWindow.cpp:138
 msgid "Only older than"
 msgstr "Pouze starší než"
 
-#: src/modules/logview/logviewwidget.cpp:86
+#: src/modules/logview/LogViewWidget.cpp:86
 msgid "Other"
 msgstr "Ostatní"
 
-#: src/modules/logview/logviewwidget.cpp:74
+#: src/modules/logview/LogViewWidget.cpp:74
 msgid "Query"
 msgstr "Query"
 
-#: src/modules/logview/logviewmdiwindow.cpp:389
+#: src/modules/logview/LogViewWindow.cpp:389
 msgid "Remove all these channel/query log files"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:390
+#: src/modules/logview/LogViewWindow.cpp:390
 msgid "Remove file"
 msgstr "Smazat soubor"
 
-#: src/modules/logview/logviewmdiwindow.cpp:114
+#: src/modules/logview/LogViewWindow.cpp:114
 msgid "Show DCC chat logs"
 msgstr "Zobrazit logy DCC chatu"
 
-#: src/modules/logview/logviewmdiwindow.cpp:102
+#: src/modules/logview/LogViewWindow.cpp:102
 msgid "Show channel logs"
 msgstr "Zobrazit logy kanálu"
 
-#: src/modules/logview/logviewmdiwindow.cpp:110
+#: src/modules/logview/LogViewWindow.cpp:110
 msgid "Show console logs"
 msgstr "Zobrazit logy konzole"
 
-#: src/modules/logview/logviewmdiwindow.cpp:118
+#: src/modules/logview/LogViewWindow.cpp:118
 msgid "Show other logs"
 msgstr "Zobrazit ostatní logy"
 
-#: src/modules/logview/logviewmdiwindow.cpp:106
+#: src/modules/logview/LogViewWindow.cpp:106
 msgid "Show query logs"
 msgstr "Zobrazit query logy"
 

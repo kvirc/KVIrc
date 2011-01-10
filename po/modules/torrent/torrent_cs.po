@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2007-12-05 18:20+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
+#: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Vybírám interface torrent klienta \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:719
+#: src/modules/torrent/libkvitorrent.cpp:722
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Neplatný interface klienta \"%Q\"!"
 
@@ -36,7 +36,7 @@ msgstr "Neplatný interface klienta \"%Q\"!"
 msgid "Last interface error: "
 msgstr "POslední chyba interfacu:"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:92
+#: src/modules/torrent/StatusBarApplet.cpp:92
 msgid "No client selected!"
 msgstr "Nebyl zvolen klient!"
 
@@ -54,8 +54,8 @@ msgid ""
 "function"
 msgstr "Zvolený interface torrent klienta selhal ve spuštění požadované funkce"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:44
-#: src/modules/torrent/tc_statusbarapplet.cpp:61
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:61
 msgid "Torrent Client"
 msgstr ""
 
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr "Zkouším interface torrent klienta \"%Q\": skóre %d"
 
-#: src/modules/torrent/libkvitorrent.cpp:711
+#: src/modules/torrent/libkvitorrent.cpp:714
 msgid "Using client interface \"%Q\"."
 msgstr "Používám interface klienta \"%Q\"."
 

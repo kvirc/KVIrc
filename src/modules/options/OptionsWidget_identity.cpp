@@ -559,10 +559,9 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 				} // else loaded!
 			} else {
 				// unloadable
-				QString tmp;
-				KviQString::sprintf(tmp,__tr2qs_ctx("Failed to download the avatar image.<br>" \
-					"<b>%Q</b>","options"),&(dlg.errorMessage()));
-				QMessageBox::warning(this,__tr2qs_ctx("Avatar Download Failed - KVIrc","options"),tmp,QMessageBox::Ok,QMessageBox::NoButton);
+				QString szTmp = QString(__tr2qs_ctx("Failed to download the avatar image.<br>" \
+					"<b>%1</b>","options")).arg(dlg.errorMessage());
+				QMessageBox::warning(this,__tr2qs_ctx("Avatar Download Failed - KVIrc","options"),szTmp,QMessageBox::Ok,QMessageBox::NoButton);
 				szCurrent = "";
 				m_pLocalAvatar->setNull();
 			}

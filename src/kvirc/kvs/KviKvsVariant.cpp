@@ -51,7 +51,7 @@ int KviKvsVariantComparison::compareIntString(const KviKvsVariant * pV1, const K
 	// compare as strings instead
 	QString szString;
 	pV1->asString(szString);
-	return -1 * KviQString::cmpCI(szString,*(pV2->m_pData->m_u.pString));
+	return -1 * szString.compare(*(pV2->m_pData->m_u.pString),Qt::CaseInsensitive);
 }
 
 int KviKvsVariantComparison::compareIntReal(const KviKvsVariant * pV1, const KviKvsVariant * pV2)
@@ -120,7 +120,7 @@ int KviKvsVariantComparison::compareRealString(const KviKvsVariant * pV1, const 
 	// compare as strings instead
 	QString szString;
 	pV1->asString(szString);
-	return -1 * KviQString::cmpCI(szString,*(pV2->m_pData->m_u.pString));
+	return -1 * szString.compare(*(pV2->m_pData->m_u.pString),Qt::CaseInsensitive);
 }
 
 int KviKvsVariantComparison::compareRealBool(const KviKvsVariant * pV1, const KviKvsVariant * pV2)
@@ -862,7 +862,7 @@ void KviKvsVariant::asString(QString & szBuffer) const
 			szBuffer.setNum(m_pData->m_u.bBoolean ? 1 : 0); break;
 		case KviKvsVariantData::HObject:
 			if(m_pData->m_u.hObject)
-				KviQString::sprintf(szBuffer,"object[%lx]",m_pData->m_u.hObject);
+				szBuffer = QString("object[%1]").arg((long int)m_pData->m_u.hObject,0,16);
 			else
 				szBuffer = "null-object";
 		break;
@@ -1174,7 +1174,7 @@ int KviKvsVariant::compare(const KviKvsVariant * pOther, bool bPreferNumeric) co
 							}
 						}
 					}
-					return -1 * KviQString::cmpCI(*(m_pData->m_u.pString),*(pOther->m_pData->m_u.pString));
+					return -1 * m_pData->m_u.pString->compare(*(pOther->m_pData->m_u.pString),Qt::CaseInsensitive);
 				case KviKvsVariantData::Real:
 					return -1 * KviKvsVariantComparison::compareRealString(pOther,this);
 				case KviKvsVariantData::Integer:

@@ -98,9 +98,7 @@ static bool dcc_module_check_concurrent_transfers_limit(KviDccRequest * dcc)
 		unsigned int uTransfers = DccFileTransfer::runningTransfersCount();
 		if(uTransfers >= KVI_OPTION_UINT(KviOption_uintMaxDccSendTransfers))
 		{
-			QString szError;
-			KviQString::sprintf(szError,__tr2qs_ctx("Concurrent transfer limit reached (%u of %u transfers running)","dcc"),
-				uTransfers,KVI_OPTION_UINT(KviOption_uintMaxDccSendTransfers));
+			QString szError = QString(__tr2qs_ctx("Concurrent transfer limit reached (%1 of %2 transfers running)","dcc")).arg(uTransfers).arg(KVI_OPTION_UINT(KviOption_uintMaxDccSendTransfers));
 			dcc_module_request_error(dcc,szError);
 			return false;
 		}
@@ -115,9 +113,7 @@ static bool dcc_module_check_limits(KviDccRequest * dcc)
 		unsigned int uWindows = g_pDccBroker->dccWindowsCount();
 		if(uWindows >= KVI_OPTION_UINT(KviOption_uintMaxDccSlots))
 		{
-			QString szError;
-			KviQString::sprintf(szError,__tr2qs_ctx("Slot limit reached (%u slots of %u)","dcc"),
-				uWindows,KVI_OPTION_UINT(KviOption_uintMaxDccSlots));
+			QString szError = QString(__tr2qs_ctx("Slot limit reached (%1 slots of %2)","dcc")).arg(uWindows).arg(KVI_OPTION_UINT(KviOption_uintMaxDccSlots));
 			dcc_module_request_error(dcc,szError);
 			return false;
 		}
@@ -160,8 +156,7 @@ static bool dcc_module_normalize_target_data(KviDccRequest * dcc,KviCString &ipa
 	{
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
-			QString szError;
-			KviQString::sprintf(szError,__tr2qs_ctx("Invalid port number %s","dcc"),port.ptr());
+			QString szError = QString(__tr2qs_ctx("Invalid port number %1","dcc")).arg(port.ptr());
 			dcc_module_request_error(dcc,szError);
 		}
 		return false;
@@ -177,8 +172,7 @@ static bool dcc_module_normalize_target_data(KviDccRequest * dcc,KviCString &ipa
 		{
 			if(!dcc->ctcpMsg->msg->haltOutput())
 			{
-				QString szError;
-				KviQString::sprintf(szError,__tr2qs_ctx("Invalid IP address in old format %s","dcc"),ipaddr.ptr());
+				QString szError = QString(__tr2qs_ctx("Invalid IP address in old format %1","dcc")).arg(ipaddr.ptr());
 				dcc_module_request_error(dcc,szError);
 			}
 			return false;
@@ -198,8 +192,7 @@ static bool dcc_module_normalize_target_data(KviDccRequest * dcc,KviCString &ipa
 #endif
 			if(!dcc->ctcpMsg->msg->haltOutput())
 			{
-				QString szError;
-				KviQString::sprintf(szError,__tr2qs_ctx("Invalid IP address %s","dcc"),ipaddr.ptr());
+				QString szError = QString(__tr2qs_ctx("Invalid IP address %1","dcc")).arg(ipaddr.ptr());
 				dcc_module_request_error(dcc,szError);
 			}
 			return false;
@@ -546,8 +539,7 @@ static void dccModuleParseDccAccept(KviDccRequest *dcc)
 		//#warning "IF KviOption_boolReplyCtcpErrmsgOnInvalidAccept..."
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
-			QString szError;
-			KviQString::sprintf(szError,__tr2qs_ctx("Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s","dcc"),dcc->szParam1.ptr(),dcc->szParam2.ptr());
+			QString szError = QString(__tr2qs_ctx("Can't proceed with DCC RECV: Transfer not initiated for file %1 on port %2","dcc")).arg(dcc->szParam1.ptr()).arg(dcc->szParam2.ptr());
 			dcc_module_request_error(dcc,szError);
 		}
 	}
@@ -572,8 +564,7 @@ static void dccModuleParseDccResume(KviDccRequest *dcc)
 	{
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
-			QString szError;
-			KviQString::sprintf(szError,__tr2qs_ctx("Invalid resume position argument '%s'","dcc"),dcc->szParam3.ptr());
+			QString szError = QString(__tr2qs_ctx("Invalid resume position argument '%1'","dcc")).arg(dcc->szParam3.ptr());
 			dcc_module_request_error(dcc,szError);
 		}
 		return;
@@ -584,10 +575,7 @@ static void dccModuleParseDccResume(KviDccRequest *dcc)
 		//#warning "IF KviOption_boolReplyCtcpErrmsgOnInvalidResume..."
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
-			QString szError;
-			KviQString::sprintf(szError,
-					__tr2qs_ctx("Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, or invalid resume size","dcc"),
-					dcc->szParam1.ptr(),dcc->szParam2.ptr());
+			QString szError = QString(__tr2qs_ctx("Can't proceed with DCC SEND: Transfer not initiated for file %1 on port %2, or invalid resume size","dcc")).arg(dcc->szParam1.ptr()).arg(dcc->szParam2.ptr());
 			dcc_module_request_error(dcc,szError);
 		}
 	}
@@ -649,9 +637,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 		if(uResumeSize >= o->fileSize())
 		{
 			// senseless request
-			QString szError;
-			KviQString::sprintf(szError,
-					__tr2qs_ctx("Invalid RECV request: Position %u is is larger than file size","dcc"),uResumeSize);
+			QString szError = QString(__tr2qs_ctx("Invalid RECV request: Position %1 is is larger than file size","dcc")).arg(uResumeSize);
 			dcc_module_request_error(dcc,szError);
 			return;
 		}
@@ -867,13 +853,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 	{
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
-			QString szError;
-			KviQString::sprintf(szError,
-					__tr2qs_ctx("No file offer named '%s' (with size %s) available for %Q [%Q@%Q]","dcc"),
-					dcc->szParam1.ptr(),uSize > 0 ? dcc->szParam2.ptr() : __tr_ctx("\"any\"","dcc"),
-					&(dcc->ctcpMsg->pSource->nick()),
-					&(dcc->ctcpMsg->pSource->user()),
-					&(dcc->ctcpMsg->pSource->host()));
+			QString szError = QString(__tr2qs_ctx("No file offer named '%1' (with size %2) available for %3 [%4@%5]","dcc")).arg(dcc->szParam1.ptr()).arg(uSize > 0 ? dcc->szParam2.ptr() : __tr_ctx("\"any\"","dcc")).arg(dcc->ctcpMsg->pSource->nick(),dcc->ctcpMsg->pSource->user(),dcc->ctcpMsg->pSource->host());
 			dcc_module_request_error(dcc,szError);
 		}
 		return;
@@ -1245,9 +1225,7 @@ KVIMODULEEXPORTFUNC void dccModuleCtcpDccParseRoutine(KviDccRequest *dcc)
 	// ops...we don't know this dcc type
 	if(!dcc->ctcpMsg->msg->haltOutput())
 	{
-		QString szError;
-		KviQString::sprintf(szError,
-				__tr2qs_ctx("Unknown DCC type '%s'","dcc"),dcc->szType.ptr());
+		QString szError = QString(__tr2qs_ctx("Unknown DCC type '%1'","dcc")).arg(dcc->szType.ptr());
 		dcc_module_request_error(dcc,szError);
 	}
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_logview \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2011-01-07 18:00+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -19,11 +19,12 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/logview/logviewmdiwindow.cpp:304
-msgid "%Q on %Q"
+#: src/modules/logview/LogViewWindow.cpp:304
+#, fuzzy
+msgid "%1 on %2"
 msgstr "%Q em %Q"
 
-#: src/modules/logview/logviewmdiwindow.cpp:154
+#: src/modules/logview/LogViewWindow.cpp:154
 msgid "Apply filter"
 msgstr "Aplicar filtro"
 
@@ -31,91 +32,92 @@ msgstr "Aplicar filtro"
 msgid "Browse &Log Files"
 msgstr "Procurar Ficheiros de &Registo"
 
-#: src/modules/logview/logviewmdiwindow.cpp:84
+#: src/modules/logview/LogViewWindow.cpp:84
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/modules/logview/logviewwidget.cpp:70
+#: src/modules/logview/LogViewWidget.cpp:70
 msgid "Channel"
 msgstr "Canal"
 
-#: src/modules/logview/logviewwidget.cpp:82
+#: src/modules/logview/LogViewWidget.cpp:82
 msgid "Console"
 msgstr "Consola"
 
-#: src/modules/logview/logviewmdiwindow.cpp:123
+#: src/modules/logview/LogViewWindow.cpp:123
 msgid "Contents filter"
 msgstr "Filtro de conteúdos"
 
-#: src/modules/logview/logviewwidget.cpp:78
+#: src/modules/logview/LogViewWidget.cpp:78
 msgid "DCC Chat"
 msgstr "Conversa DCC"
 
-#: src/modules/logview/logviewmdiwindow.cpp:98
+#: src/modules/logview/LogViewWindow.cpp:98
 msgid "Filter"
 msgstr "Filtro"
 
-#: src/modules/logview/logviewmdiwindow.cpp:89
-msgid "Index"
+#: src/modules/logview/LogViewWindow.cpp:89
+#, fuzzy
+msgid "HelpIndex"
 msgstr "Índice"
 
-#: src/modules/logview/logviewmdiwindow.cpp:548
+#: src/modules/logview/LogViewWindow.cpp:548
 msgid "Log File"
 msgstr "Ficheiro de Registo"
 
-#: src/modules/logview/logviewmdiwindow.cpp:220
+#: src/modules/logview/LogViewWindow.cpp:220
 msgid "Log Viewer"
 msgstr "Visualizador de Registos"
 
-#: src/modules/logview/logviewmdiwindow.cpp:132
+#: src/modules/logview/LogViewWindow.cpp:132
 msgid "Log contents mask:"
 msgstr "Máscara de conteúdos do registo:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:126
+#: src/modules/logview/LogViewWindow.cpp:126
 msgid "Log name mask:"
 msgstr "Máscara de nome do registo:"
 
-#: src/modules/logview/logviewmdiwindow.cpp:146
+#: src/modules/logview/LogViewWindow.cpp:146
 msgid "Only newier than"
 msgstr "Apenas mais recente que"
 
-#: src/modules/logview/logviewmdiwindow.cpp:138
+#: src/modules/logview/LogViewWindow.cpp:138
 msgid "Only older than"
 msgstr "Apenas mais antigo que"
 
-#: src/modules/logview/logviewwidget.cpp:86
+#: src/modules/logview/LogViewWidget.cpp:86
 msgid "Other"
 msgstr "Outro"
 
-#: src/modules/logview/logviewwidget.cpp:74
+#: src/modules/logview/LogViewWidget.cpp:74
 msgid "Query"
 msgstr "Pesquisar"
 
-#: src/modules/logview/logviewmdiwindow.cpp:389
+#: src/modules/logview/LogViewWindow.cpp:389
 msgid "Remove all these channel/query log files"
 msgstr "Remover todos estes registos de canais/privados"
 
-#: src/modules/logview/logviewmdiwindow.cpp:390
+#: src/modules/logview/LogViewWindow.cpp:390
 msgid "Remove file"
 msgstr "Remover ficheiro"
 
-#: src/modules/logview/logviewmdiwindow.cpp:114
+#: src/modules/logview/LogViewWindow.cpp:114
 msgid "Show DCC chat logs"
 msgstr "Mostrar registos de conversas DCC"
 
-#: src/modules/logview/logviewmdiwindow.cpp:102
+#: src/modules/logview/LogViewWindow.cpp:102
 msgid "Show channel logs"
 msgstr "Mostrar registos de canal"
 
-#: src/modules/logview/logviewmdiwindow.cpp:110
+#: src/modules/logview/LogViewWindow.cpp:110
 msgid "Show console logs"
 msgstr "Mostrar registos de consola"
 
-#: src/modules/logview/logviewmdiwindow.cpp:118
+#: src/modules/logview/LogViewWindow.cpp:118
 msgid "Show other logs"
 msgstr "Mostrar outros registos"
 
-#: src/modules/logview/logviewmdiwindow.cpp:106
+#: src/modules/logview/LogViewWindow.cpp:106
 msgid "Show query logs"
 msgstr "Mostrar registos de privado"
 

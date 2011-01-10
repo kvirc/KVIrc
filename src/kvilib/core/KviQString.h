@@ -260,6 +260,7 @@ namespace KviQString
 	* \return int
 	*/
 	extern KVILIB_API int cmpCI(const QString & sz1, const QString & sz2, bool bNonAlphaGreater = false);
+	// sz1.compare(sz2,Qt::CaseInsensitive)
 	
 	/**
 	* \brief Compares two strings with case insensitive up to N chars
@@ -276,43 +277,11 @@ namespace KviQString
 	extern KVILIB_API int cmpCIN(const QString & sz1, const QString & sz2, unsigned int uLen);
 	
 	/**
-	* \brief Compares two strings with case sensitive
-	*
-	* Note that greater here means that come AFTER in the alphabetic order
-	* return < 0 ---> str1 < str2
-	* return = 0 ---> str1 = str2
-	* return > 0 ---> str1 > str2
-	* \param sz1 The first string
-	* \param sz2 The second string
-	* \return int
-	*/
-	extern KVILIB_API int cmpCS(const QString & sz1, const QString & sz2);
-
-	/**
 	* \brief Resets the size of the string
 	* \param szSrc The source string
 	* \return void
 	*/
 	extern KVILIB_API void detach(QString & szSrc);
-
-	/**
-	* \brief Returns a pointer to the data stored in the string.
-	*
-	* This makes the string szSrc appear as a null terminated array.
-	* It MAY RETURN 0 when the string is null!
-	* \param szSrc The source string
-	* \return QChar *
-	*/
-	extern KVILIB_API const QChar * nullTerminatedArray(const QString & szSrc);
-
-	/**
-	* \brief Returns true if the string ends with the given character
-	* \param szSrc The source string
-	* \param c The char to check
-	* \return bool
-	*/
-	inline bool lastCharIs(QString & szSrc, const QChar & c)
-		{ return szSrc.endsWith(c); }
 
 	/**
 	* \brief Ensures the last char of a string is the given char
@@ -351,15 +320,6 @@ namespace KviQString
 	* \return void
 	*/
 	extern KVILIB_API void vsprintf(QString & szSrc, const QString & szFmt, kvi_va_list list);
-	
-	/**
-	* \brief Writes to the character string
-	* \param szSrc The source string
-	* \param szFmt The format string
-	* \param ... The list of format parameters
-	* \return QString
-	*/
-	extern KVILIB_API QString & sprintf(QString & szSrc, const QString & szFmt, ...);
 	
 	/**
 	* \brief Trims all the whitespaces at the end of the given string
@@ -767,18 +727,6 @@ namespace KviQString
 	inline int findRev(const QString & szSrc, const QRegExp & rx, int iIndex = -1)
 	{
 		return szSrc.lastIndexOf(rx,iIndex);
-	}
-
-	/**
-	* \brief Return a whitespace-trimmed string
-	*
-	* Spaces are trimmed at start and end of the string
-	* \param szSrc The source string
-	* \return QString
-	*/
-	inline QString trimmed(const QString & szSrc)
-	{
-		return szSrc.trimmed();
 	}
 
 	/**

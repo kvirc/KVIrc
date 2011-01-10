@@ -387,11 +387,11 @@ bool KviDnsResolver::isRunning() const
 	return (m_state == Busy);
 }
 
-bool KviDnsResolver::lookup(const QString &query,QueryType type)
+bool KviDnsResolver::lookup(const QString & szQuery, QueryType type)
 {
 	if(m_state == Busy)
 		return false;
-	m_pSlaveThread->setQuery(KviQString::trimmed(query),type);
+	m_pSlaveThread->setQuery(szQuery.trimmed(),type);
 	m_pSlaveThread->start();
 	m_state = Busy;
 	//m_state = bStarted ? Busy : Failure;

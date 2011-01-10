@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-08-22 17:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:470
+#: src/modules/mediaplayer/MpMprisInterface.cpp:470
 msgid ""
 "An interface to Amarok2.\n"
 "Download it from http://amarok.kde.org\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Une interface pour Amarok2.\n"
 "Téléchargez-le depuis http://amarok.kde.org\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:446
+#: src/modules/mediaplayer/MpMprisInterface.cpp:446
 msgid ""
 "An interface to BMPx.\n"
 "Download it from http://sourceforge.net/projects/beepmp\n"
@@ -36,7 +36,7 @@ msgstr ""
 "Une interface pour BMPx.\n"
 "Téléchargez-le depuis http://sourceforge.net/projects/beepmp\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:488
+#: src/modules/mediaplayer/MpMprisInterface.cpp:488
 msgid ""
 "An interface to Qmmp.\n"
 "Download it from http://qmmp.ylsoftware.com\n"
@@ -44,7 +44,7 @@ msgstr ""
 "Une interface pour Qmmp.\n"
 "Téléchargez-le depuis http://qmmp.ylsoftware.com\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:547
+#: src/modules/mediaplayer/MpMprisInterface.cpp:547
 #, fuzzy
 msgid ""
 "An interface to Totem.\n"
@@ -53,7 +53,7 @@ msgstr ""
 "Une interface pour Amarok2.\n"
 "Téléchargez-le depuis http://amarok.kde.org\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:565
+#: src/modules/mediaplayer/MpMprisInterface.cpp:565
 msgid ""
 "An interface to Vlc.\n"
 "Download it from http://www.videolan.org/\n"
@@ -61,7 +61,7 @@ msgid ""
 "interface in the Vlc preferences\n"
 msgstr ""
 
-#: src/modules/mediaplayer/mp_amipinterface.cpp:108
+#: src/modules/mediaplayer/MpAmipInterface.cpp:108
 msgid ""
 "An interface to the AMIP plug-in.\n"
 "You can download it from http://amip.tools-for.net\n"
@@ -72,7 +72,7 @@ msgstr ""
 "Pour utiliser cette interface, téléchargez et installer le plugin AMIP pour "
 "votre lecteur."
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:523
+#: src/modules/mediaplayer/MpMprisInterface.cpp:523
 msgid ""
 "An interface to the Mozilla Songbird media player.\n"
 "Download it from http://www.getsongbird.com.\n"
@@ -84,7 +84,7 @@ msgstr ""
 "Pour l'utiliser vous devez avoir installé l'extension MPRIS disponible ici : "
 "http://addons.songbirdnest.com/addon/1626.\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:506
+#: src/modules/mediaplayer/MpMprisInterface.cpp:506
 msgid ""
 "An interface to the Xmms2 media player.\n"
 "Download it from http://xmms2.org\n"
@@ -92,7 +92,7 @@ msgstr ""
 "Une interface pour Xmms2, le lecteur multimédia populaire UNIX.\n"
 "Téléchargez-le depuis http://xmms2.org\n"
 
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:49
 msgid ""
 "An interface to the popular UNIX audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
@@ -100,7 +100,7 @@ msgstr ""
 "Une interface pour audacious, le lecteur multimédia populaire UNIX.\n"
 "Téléchargez-le depuis http://audacious-media-player.org\n"
 
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
 msgid ""
 "An interface to the popular UNIX xmms media player.\n"
 "Download it from http://legacy.xmms2.org\n"
@@ -108,7 +108,7 @@ msgstr ""
 "Une interface pour xmms, le lecteur multimédia populaire UNIX.\n"
 "Téléchargez-le depuis http://legacy.xmms2.org\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:320
+#: src/modules/mediaplayer/MpMprisInterface.cpp:320
 msgid ""
 "An interface to the popular audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
@@ -116,7 +116,7 @@ msgstr ""
 "Une interface pour audacious, le lecteur multimédia populaire.\n"
 "Téléchargez-le depuis http://audacious-media-player.org\n"
 
-#: src/modules/mediaplayer/mp_winampinterface.cpp:194
+#: src/modules/mediaplayer/MpWinampInterface.cpp:194
 msgid ""
 "An interface to the popupar Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
@@ -130,23 +130,25 @@ msgstr ""
 "copier le module externe gen_kvirc.dll situé dans le dossier de KVIrc vers "
 "le répertoire des modules externes de Winamp et redémarrer Winamp."
 
-#: src/modules/mediaplayer/mp_winampinterface.cpp:184
+#: src/modules/mediaplayer/MpWinampInterface.cpp:184
 msgid "Can't find a running winamp window"
 msgstr "Impossible de trouver une fenêtre winamp"
 
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:145
-msgid "Can't find symbol %s in %Q"
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:143
+#, fuzzy
+msgid "Can't find symbol %1 in %2"
 msgstr "Impossible de trouver le symbole %s dans %Q"
 
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:136
-msgid "Can't load the player library (%Q)"
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:135
+#, fuzzy
+msgid "Can't load the player library (%1)"
 msgstr "Impossible de charger la bibliothèque (%Q)"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:101
 msgid "Choosing media player interface \"%Q\""
 msgstr "Choix de l'interface du lecteur multimédia \"%Q\""
 
-#: src/modules/mediaplayer/mp_interface.cpp:43
+#: src/modules/mediaplayer/MpInterface.cpp:43
 msgid "Function not implemented"
 msgstr "Fonction non implémentée"
 
@@ -198,8 +200,8 @@ msgstr ""
 "Le lecteur multimédia choisie à échouer lors de l'exécution de la fonction "
 "demandée"
 
-#: src/modules/mediaplayer/mp_winampinterface.cpp:316
-#: src/modules/mediaplayer/mp_winampinterface.cpp:350
+#: src/modules/mediaplayer/MpWinampInterface.cpp:316
+#: src/modules/mediaplayer/MpWinampInterface.cpp:350
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
@@ -209,5 +211,6 @@ msgstr ""
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:65
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:91
-msgid "Trying media player interface \"%Q\": score %d"
+#, fuzzy
+msgid "Trying media player interface \"%1\": score %2"
 msgstr "Essai de l'interface du lecteur multimédia \"%Q\" : score %d"

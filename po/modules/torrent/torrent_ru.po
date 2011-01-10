@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-01-24 11:05+0400\n"
 "Last-Translator: Govorov Igor <govorov.igor at-sign gmail.com>\n"
 "Language-Team:  Russian\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
+#: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -30,7 +30,7 @@ msgstr ""
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Выбран интерфейс torrent-клиента \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:719
+#: src/modules/torrent/libkvitorrent.cpp:722
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Неверный интерфейс клиента \"%Q\"!"
 
@@ -38,7 +38,7 @@ msgstr "Неверный интерфейс клиента \"%Q\"!"
 msgid "Last interface error: "
 msgstr "Последняя ошибка интерфейса: "
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:92
+#: src/modules/torrent/StatusBarApplet.cpp:92
 msgid "No client selected!"
 msgstr "Не выбран клиент!"
 
@@ -59,8 +59,8 @@ msgid ""
 msgstr ""
 "Выбранный интерфейс torrent-клиента не смог выполнить запрошенную функцию"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:44
-#: src/modules/torrent/tc_statusbarapplet.cpp:61
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:61
 msgid "Torrent Client"
 msgstr "Клиент torrent"
 
@@ -68,6 +68,6 @@ msgstr "Клиент torrent"
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr "Пробую интерфейс torrent-клиента \"%Q\": score %d"
 
-#: src/modules/torrent/libkvitorrent.cpp:711
+#: src/modules/torrent/libkvitorrent.cpp:714
 msgid "Using client interface \"%Q\"."
 msgstr "Выбран интерфейс torrent-клиента \"%Q\"."

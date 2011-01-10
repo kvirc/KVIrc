@@ -235,13 +235,13 @@ void KviImageDialog::heartbeat()
 				max = KviIconManager::IconCount;
 			while(m_iJobIndexHelper < max)
 			{
-				QString id = g_pIconManager->getSmallIconName(m_iJobIndexHelper);
-				QString tip;
-				KviQString::sprintf(tip,__tr2qs("Builtin $icon(%Q) [index %d]"),&id,m_iJobIndexHelper);
-				QString image_id = "$icon(";
-				image_id += id;
-				image_id += ")";
-				new KviImageDialogItem(m_pListBox,*(g_pIconManager->getSmallIcon(m_iJobIndexHelper)),id,image_id,tip);
+				QString szId = g_pIconManager->getSmallIconName(m_iJobIndexHelper);
+				QString szTip;
+				szTip = QString(__tr2qs("Builtin $icon(%1) [index %2]")).arg(szId).arg(m_iJobIndexHelper);
+				QString szImageId = "$icon(";
+				szImageId += szId;
+				szImageId += ")";
+				new KviImageDialogItem(m_pListBox,*(g_pIconManager->getSmallIcon(m_iJobIndexHelper)),szId,szImageId,szTip);
 				m_iJobIndexHelper++;
 			}
 		}

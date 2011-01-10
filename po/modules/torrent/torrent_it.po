@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2008-07-10 01:44+0200\n"
 "Last-Translator: Elvio Basello <hellvis69@netsons.org>\n"
 "Language-Team:  <it@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
+#: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Scelgo l'interfaccia al client torrent \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:719
+#: src/modules/torrent/libkvitorrent.cpp:722
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Interfaccia al client torrent \"%Q\" invalida!"
 
@@ -39,7 +39,7 @@ msgstr "Interfaccia al client torrent \"%Q\" invalida!"
 msgid "Last interface error: "
 msgstr "Ultimo errore: "
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:92
+#: src/modules/torrent/StatusBarApplet.cpp:92
 msgid "No client selected!"
 msgstr "Nessun client selezionato!"
 
@@ -58,8 +58,8 @@ msgid ""
 msgstr ""
 "L'interfaccia selezionata ha fallito nell'eseguire la funzione richiesta"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:44
-#: src/modules/torrent/tc_statusbarapplet.cpp:61
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:61
 msgid "Torrent Client"
 msgstr "Client Torrent"
 
@@ -67,7 +67,7 @@ msgstr "Client Torrent"
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr "Provo l'interfaccia al client torrent \"%Q\": punteggio %d"
 
-#: src/modules/torrent/libkvitorrent.cpp:711
+#: src/modules/torrent/libkvitorrent.cpp:714
 msgid "Using client interface \"%Q\"."
 msgstr "Scelgo l'interfaccia al client torrent \"%Q\"."
 

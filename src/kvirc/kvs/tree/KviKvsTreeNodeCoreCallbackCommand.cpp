@@ -41,7 +41,7 @@ KviKvsTreeNodeCoreCallbackCommand::~KviKvsTreeNodeCoreCallbackCommand()
 
 void KviKvsTreeNodeCoreCallbackCommand::contextDescription(QString &szBuffer)
 {
-	KviQString::sprintf(szBuffer,"Core Callback Command \"%Q\"",&m_szCmdName);
+	szBuffer = QString("Core Callback Command \"%1\"").arg(m_szCmdName);
 }
 
 void KviKvsTreeNodeCoreCallbackCommand::dump(const char * prefix)

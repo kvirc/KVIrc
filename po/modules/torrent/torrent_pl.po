@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-04-09 14:19+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 
-#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
+#: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -30,7 +30,7 @@ msgstr ""
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Wybieram interfejs klienta torrent \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:719
+#: src/modules/torrent/libkvitorrent.cpp:722
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Niepoprawny interfejs klienta \"%Q\"!"
 
@@ -38,7 +38,7 @@ msgstr "Niepoprawny interfejs klienta \"%Q\"!"
 msgid "Last interface error: "
 msgstr "Ostatni błąd interfejsu:"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:92
+#: src/modules/torrent/StatusBarApplet.cpp:92
 msgid "No client selected!"
 msgstr "Nie wybrano klienta!"
 
@@ -58,8 +58,8 @@ msgstr ""
 "Wybranemu interfejsowi klienta torrent nie powiodło się wykonanie żądanej "
 "funkcji"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:44
-#: src/modules/torrent/tc_statusbarapplet.cpp:61
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:61
 msgid "Torrent Client"
 msgstr "Klient torrent"
 
@@ -67,6 +67,6 @@ msgstr "Klient torrent"
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr "Próbuję interfejsu klienta torrent \"%Q\": wynik %d"
 
-#: src/modules/torrent/libkvitorrent.cpp:711
+#: src/modules/torrent/libkvitorrent.cpp:714
 msgid "Using client interface \"%Q\"."
 msgstr "Używam interfejsu klienta \"%Q\"."

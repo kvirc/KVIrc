@@ -383,55 +383,6 @@ namespace KviQString
 		return ((pC1 == pC1e) && (*pc2 == '\0'));
 	}
 
-	int cmpCS(const QString & sz1, const QString & sz2)
-	{
-		const QChar * pC1 = sz1.unicode();
-		const QChar * pC2 = sz2.unicode();
-		const QChar * pC1e = pC1 + sz1.length();
-		const QChar * pC2e = pC2 + sz2.length();
-
-		if(!pC1)
-		{
-			if(!pC2)
-			{
-				return 0;
-			}
-			return -1;
-		}
-		if(!pC2)
-		{
-			return 1;
-		}
-
-
-		for(;;)
-		{
-			if(pC1 >= pC1e)
-			{
-				if(pC2 < pC2e)
-				{
-					return /* 0 */ - (pC2->unicode());
-				}
-				return 0;
-			}
-			if(pC2 >= pC2e)
-			{
-				return pC1->unicode() /* - 0 */;
-			}
-
-			int iDiff = pC1->unicode() - pC2->unicode();
-			if(iDiff)
-			{
-				return iDiff;
-			}
-
-			pC1++;
-			pC2++;
-		}
-
-		return 0; // never here
-	}
-
 	int cmpCI(const QString & sz1, const QString & sz2, bool bNonAlphaGreater)
 	{
 		const QChar * pC1 = sz1.unicode();
@@ -533,7 +484,7 @@ namespace KviQString
 
 	void ensureLastCharIs(QString & szSrc, const QChar & c)
 	{
-		if(!lastCharIs(szSrc,c))
+		if(!szSrc.endsWith(c))
 		{
 			szSrc.append(c);
 		}
@@ -634,12 +585,6 @@ namespace KviQString
 		szSrc.resize(szSrc.length());
 	}
 
-	const QChar * nullTerminatedArray(const QString & szSrc)
-	{
-		//szSrc.resize(szSrc.length()); // detach!
-		return szSrc.constData();
-	}
-
 	void appendNumber(QString & szSrc, double dReal)
 	{
 #ifdef COMPILE_ON_MINGW
@@ -690,7 +635,7 @@ namespace KviQString
 
 		//szSrc.resize(allocsize);
 
-		const QChar * pFmt = nullTerminatedArray(szFmt);
+		const QChar * pFmt = szFmt.constData();
 		if(!pFmt)
 		{
 			szSrc = QString();
@@ -969,16 +914,6 @@ namespace KviQString
 		//szSrc.squeeze();
 	}
 
-	QString & sprintf(QString & szSrc, const QString & szFmt, ...)
-	{
-		kvi_va_list list;
-		kvi_va_start_by_reference(list,szFmt);
-		//print...with max 256 chars
-		KviQString::vsprintf(szSrc,szFmt,list);
-		kvi_va_end(list);
-		return szSrc;
-	}
-
 	void appendFormatted(QString & szSrc, const QString & szFmt, ...)
 	{
 		QString szTmp;
@@ -1253,7 +1188,7 @@ namespace KviQString
 
 	QString upperISO88591(const QString & szSrc)
 	{
-		const QChar * pC = nullTerminatedArray(szSrc);
+		const QChar * pC = szSrc.constData();
 		if(!pC)
 		{
 			QString szRet;
@@ -1279,7 +1214,7 @@ namespace KviQString
 
 	QString lowerISO88591(const QString & szSrc)
 	{
-		const QChar * pC = nullTerminatedArray(szSrc);
+		const QChar * pC = szSrc.constData();
 		if(!pC)
 		{
 			QString szRet;

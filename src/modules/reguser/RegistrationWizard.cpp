@@ -309,7 +309,7 @@ void RegistrationWizard::accept()
 			u = m_pDb->findUserByName(szNameOk);
 			if(u)
 			{
-				KviQString::sprintf(szNameOk,"%Q%d",&szNameOk,idx);
+				szNameOk = QString("%1%2").arg(szNameOk).arg(idx);
 				idx++;
 			}
 		} while(u);

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2007-11-27 18:16+0200\n"
 "Last-Translator: Santeri Piippo <aleksanteri4028@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
+#: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Valitaan torrenttiasiakasohjelman käyttöliittymä \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:719
+#: src/modules/torrent/libkvitorrent.cpp:722
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Viallinen asiakasohjelman käyttöliittymä \"%Q\"!"
 
@@ -37,7 +37,7 @@ msgstr "Viallinen asiakasohjelman käyttöliittymä \"%Q\"!"
 msgid "Last interface error: "
 msgstr "Viimeisin käyttöliittymävirhe: "
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:92
+#: src/modules/torrent/StatusBarApplet.cpp:92
 msgid "No client selected!"
 msgstr "Ei asiakasohjelmaa valittu!"
 
@@ -59,8 +59,8 @@ msgstr ""
 "Valittu torrenttiasiakasohjelman käyttöliittymä ei onnistunut ajamaan "
 "pyydettyä tehtävää"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:44
-#: src/modules/torrent/tc_statusbarapplet.cpp:61
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:61
 msgid "Torrent Client"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr "Yritetään torrenttiasiakasohjelman käyttöliittymää \"%Q\": tulos %d"
 
-#: src/modules/torrent/libkvitorrent.cpp:711
+#: src/modules/torrent/libkvitorrent.cpp:714
 msgid "Using client interface \"%Q\"."
 msgstr "Käytetään asiakasohjelman käyttöliittymää \"%Q\"."
 

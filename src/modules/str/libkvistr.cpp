@@ -487,7 +487,7 @@ static bool str_kvs_fnc_cmp(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("tocompare",KVS_PT_STRING,0,szString2)
 		KVSM_PARAMETER("case",KVS_PT_BOOL,KVS_PF_OPTIONAL,bCase)
 	KVSM_PARAMETERS_END(c)
-	iCmp = bCase ? KviQString::cmpCS(szString,szString2) : KviQString::cmpCI(szString,szString2);
+	iCmp = bCase ? szString.compare(szString2,Qt::CaseSensitive) : szString.compare(szString2,Qt::CaseInsensitive);
 	c->returnValue()->setInteger(iCmp);
 	return true;
 }
@@ -1884,7 +1884,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 
 	//s.setLength(allocsize);
 
-	const QChar * fmt = KviQString::nullTerminatedArray(szFormat);
+	const QChar * fmt = szFormat.constData();
 
 	if(fmt)
 	{

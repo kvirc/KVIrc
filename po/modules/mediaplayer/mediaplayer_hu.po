@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-08-20 15:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:470
+#: src/modules/mediaplayer/MpMprisInterface.cpp:470
 msgid ""
 "An interface to Amarok2.\n"
 "Download it from http://amarok.kde.org\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Kezelőfelület az Amarok2-höz.\n"
 "Letölthető a http://amarok.kde.org címen.\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:446
+#: src/modules/mediaplayer/MpMprisInterface.cpp:446
 msgid ""
 "An interface to BMPx.\n"
 "Download it from http://sourceforge.net/projects/beepmp\n"
@@ -34,7 +34,7 @@ msgstr ""
 "Kezelőfelület a BMPx-hez.\n"
 "Letölthető a http://sourceforge.net/projects/beepmp címen.\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:488
+#: src/modules/mediaplayer/MpMprisInterface.cpp:488
 msgid ""
 "An interface to Qmmp.\n"
 "Download it from http://qmmp.ylsoftware.com\n"
@@ -42,7 +42,7 @@ msgstr ""
 "Kezelőfelület a Qmmp-hez\n"
 "Letölthető a http://qmmp.ylsoftware.com címen.\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:547
+#: src/modules/mediaplayer/MpMprisInterface.cpp:547
 #, fuzzy
 msgid ""
 "An interface to Totem.\n"
@@ -51,7 +51,7 @@ msgstr ""
 "Kezelőfelület az Amarok2-höz.\n"
 "Letölthető a http://amarok.kde.org címen.\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:565
+#: src/modules/mediaplayer/MpMprisInterface.cpp:565
 msgid ""
 "An interface to Vlc.\n"
 "Download it from http://www.videolan.org/\n"
@@ -59,7 +59,7 @@ msgid ""
 "interface in the Vlc preferences\n"
 msgstr ""
 
-#: src/modules/mediaplayer/mp_amipinterface.cpp:108
+#: src/modules/mediaplayer/MpAmipInterface.cpp:108
 msgid ""
 "An interface to the AMIP plug-in.\n"
 "You can download it from http://amip.tools-for.net\n"
@@ -70,7 +70,7 @@ msgstr ""
 "Ahhoz, hogy ezt használni tudd telepítened kell az AMIP plugint a "
 "lejátszódba."
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:523
+#: src/modules/mediaplayer/MpMprisInterface.cpp:523
 msgid ""
 "An interface to the Mozilla Songbird media player.\n"
 "Download it from http://www.getsongbird.com.\n"
@@ -82,7 +82,7 @@ msgstr ""
 "A használatához az MPRIS addon szükséges, ami letölthető a http://addons."
 "songbirdnest.com/addon/1626 címről.\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:506
+#: src/modules/mediaplayer/MpMprisInterface.cpp:506
 msgid ""
 "An interface to the Xmms2 media player.\n"
 "Download it from http://xmms2.org\n"
@@ -90,7 +90,7 @@ msgstr ""
 "Kezelőfelület az Xmms2 médialejátszóhoz.\n"
 "Letöthető a http://xmms2.org címen.\n"
 
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:49
 msgid ""
 "An interface to the popular UNIX audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
@@ -98,7 +98,7 @@ msgstr ""
 "Kezelőfelület a népszerő UNIX audacious médialejátszóhoz.\n"
 "Letölthető a http://audacious-media-player.org címről\n"
 
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
 msgid ""
 "An interface to the popular UNIX xmms media player.\n"
 "Download it from http://legacy.xmms2.org\n"
@@ -106,7 +106,7 @@ msgstr ""
 "Kezelőfelület a népszerő UNIX xmms médialejátszóhoz.\n"
 "Letölthető a http:/legacy.xmms2.org címről\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:320
+#: src/modules/mediaplayer/MpMprisInterface.cpp:320
 msgid ""
 "An interface to the popular audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
@@ -114,7 +114,7 @@ msgstr ""
 "Kezelőfelület a népszerő UNIX audacious médialejátszóhoz.\n"
 "Letölthető a http://audacious-media-player.org címről\n"
 
-#: src/modules/mediaplayer/mp_winampinterface.cpp:194
+#: src/modules/mediaplayer/MpWinampInterface.cpp:194
 msgid ""
 "An interface to the popupar Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
@@ -128,23 +128,25 @@ msgstr ""
 "plugint a KVIrc modulok könyvtárából a Winamp pluginok mappájába és indítsd "
 "újra a Winampot."
 
-#: src/modules/mediaplayer/mp_winampinterface.cpp:184
+#: src/modules/mediaplayer/MpWinampInterface.cpp:184
 msgid "Can't find a running winamp window"
 msgstr "Nem találok éppen futó winampot"
 
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:145
-msgid "Can't find symbol %s in %Q"
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:143
+#, fuzzy
+msgid "Can't find symbol %1 in %2"
 msgstr "Nem található %s szimbólum -> %Q"
 
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:136
-msgid "Can't load the player library (%Q)"
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:135
+#, fuzzy
+msgid "Can't load the player library (%1)"
 msgstr "Lejátszó függvénytár nem betölthető (%Q)"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:101
 msgid "Choosing media player interface \"%Q\""
 msgstr "Médialejátszó eszköz kiválasztva \"%Q\""
 
-#: src/modules/mediaplayer/mp_interface.cpp:43
+#: src/modules/mediaplayer/MpInterface.cpp:43
 msgid "Function not implemented"
 msgstr "Művelet nem támogatott"
 
@@ -190,8 +192,8 @@ msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr "A kiválasztott lejátszóeszköz nem tudta lefuttatni a kért függvényt"
 
-#: src/modules/mediaplayer/mp_winampinterface.cpp:316
-#: src/modules/mediaplayer/mp_winampinterface.cpp:350
+#: src/modules/mediaplayer/MpWinampInterface.cpp:316
+#: src/modules/mediaplayer/MpWinampInterface.cpp:350
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
@@ -201,7 +203,8 @@ msgstr ""
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:65
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:91
-msgid "Trying media player interface \"%Q\": score %d"
+#, fuzzy
+msgid "Trying media player interface \"%1\": score %2"
 msgstr "\"%Q\" médialejátszó eszköz próbája, eredmény: %d"
 
 #~ msgid "An interface to the AmaroK KDE media player."

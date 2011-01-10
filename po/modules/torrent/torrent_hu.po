@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-08-20 15:44+0200\n"
 "Last-Translator: Adam Fibinger <vfiber[at]gmaildotcom>\n"
 "Language-Team: Hungarian <kde-i18n-doc@kde.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
+#: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Torrent kliens interfészének kiválasztása: \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:719
+#: src/modules/torrent/libkvitorrent.cpp:722
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Helytelen kliens interfész: \"%Q\""
 
@@ -39,7 +39,7 @@ msgstr "Helytelen kliens interfész: \"%Q\""
 msgid "Last interface error: "
 msgstr "Utolsó interfész hiba:"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:92
+#: src/modules/torrent/StatusBarApplet.cpp:92
 msgid "No client selected!"
 msgstr "Nincs kliens kiválasztva!"
 
@@ -59,8 +59,8 @@ msgstr ""
 "A kiválasztott torrent kliens interfész nem tudta végrehajtani a kért "
 "műveletet"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:44
-#: src/modules/torrent/tc_statusbarapplet.cpp:61
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:61
 msgid "Torrent Client"
 msgstr "Torrent Kliens"
 
@@ -68,7 +68,7 @@ msgstr "Torrent Kliens"
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr " \"%Q\" tesztelése: %d pont"
 
-#: src/modules/torrent/libkvitorrent.cpp:711
+#: src/modules/torrent/libkvitorrent.cpp:714
 msgid "Using client interface \"%Q\"."
 msgstr "Kliens interfészének kiválasztása: \"%Q\""
 

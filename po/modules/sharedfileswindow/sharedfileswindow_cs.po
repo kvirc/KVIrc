@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2004-06-22 19:09+0200\n"
 "Last-Translator: Dušan Hokův <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -33,55 +33,55 @@ msgstr ""
 msgid "    Mask: %s"
 msgstr ""
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:243
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:243
 msgid "&Add..."
 msgstr "&Přidat..."
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:76
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:76
 msgid "&Browse..."
 msgstr "&Procházet..."
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:247
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:247
 msgid "&Edit"
 msgstr "&Upravit"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:98
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:98
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:178
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:178
 msgid "Can't open the file"
 msgstr "Nelze otevřít soubor"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:102
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:102
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:60
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:60
 msgid "Edit Shared File - KVIrc"
 msgstr "Upravit sdílený soubor - KVIrc"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:87
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:87
 msgid "Expire at:"
 msgstr "Vyprší v:"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:227
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:227
 msgid "Expires"
 msgstr "Vyprší"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:69
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:69
 msgid "File path:"
 msgstr "Cesta k souboru:"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:224
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:224
 msgid "Filename"
 msgstr "Soubor"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:160
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:160
 msgid "Invalid expire time"
 msgstr "Neplatný čas vypršení"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:169
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:169
 msgid "Invalid share name"
 msgstr "Neplatný název sdílení"
 
@@ -97,15 +97,15 @@ msgstr ""
 msgid "Manage S&hared Files"
 msgstr "Spravovat S&dílené soubory"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:225
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:225
 msgid "Mask"
 msgstr "Maska"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:223
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:223
 msgid "Name"
 msgstr "Jméno"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:200
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:200
 msgid "Never"
 msgstr "Nikdy"
 
@@ -117,9 +117,9 @@ msgstr ""
 msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
 msgstr ""
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:163
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:171
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:180
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:163
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:171
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:180
 msgid "OK"
 msgstr "OK"
 
@@ -127,19 +127,19 @@ msgstr "OK"
 msgid "Ops..failed to add the sharedfile..."
 msgstr ""
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:245
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:245
 msgid "Re&move"
 msgstr "Od&ebrat"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:62
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:62
 msgid "Share name:"
 msgstr "Název sdílení:"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:696
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:696
 msgid "Shared Files"
 msgstr "Sdílené soubory"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:161
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:161
 msgid ""
 "The expire date/time is in the past: please either remove the \"expires"
 "\"check mark or specify a expire date/time in the future"
@@ -151,11 +151,11 @@ msgstr ""
 msgid "The file '%Q' is not readable"
 msgstr ""
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:179
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:179
 msgid "The file doesn't exist or it is not readable, please check the path"
 msgstr "Soubor neexistuje nebo není čitelný, prosím zkontrolujte cestu"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:170
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:170
 msgid "The share name can't be empty, please correct it"
 msgstr "Název sdílení nemůže být prázdný, prosím upravte jej"
 
@@ -164,6 +164,6 @@ msgstr "Název sdílení nemůže být prázdný, prosím upravte jej"
 msgid "Total: %d sharedfile"
 msgstr ""
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:80
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:80
 msgid "User mask:"
 msgstr "Uživ. maska:"

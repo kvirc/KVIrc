@@ -203,7 +203,7 @@ void RawEditorWidget::getUniqueHandlerName(RawTreeWidgetItem *it,QString &buffer
 			if(KviQString::equalCI(newName,ch->text(0)))
 			{
 				bFound = true;
-				KviQString::sprintf(newName,"%Q_%d",&buffer,idx);
+				newName = QString("%1_%2").arg(buffer).arg(idx);
 				idx++;
 				break;
 			}
@@ -311,7 +311,7 @@ void RawEditorWidget::commit()
 				ch=(QTreeWidgetItem *)it->child(j);
 				qDebug("Commit handler %s",((RawHandlerTreeWidgetItem *)ch)->text(0).toUtf8().data());
 				//int a=(RawTreeWidgetItem *)it)->m_iIdx;
-				KviQString::sprintf(szContext,"RawEvent%d::%s",&(((RawTreeWidgetItem *)it)->m_iIdx),(((RawHandlerTreeWidgetItem *)ch)->text(0)).toUtf8().data());
+				szContext = QString("RawEvent%1::%2").arg(((RawTreeWidgetItem *)it)->m_iIdx).arg(((RawHandlerTreeWidgetItem *)ch)->text(0));
 				KviKvsScriptEventHandler * s = new KviKvsScriptEventHandler(
 						((RawHandlerTreeWidgetItem *)ch)->text(0),
 						szContext,
@@ -363,10 +363,8 @@ void RawEditorWidget::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *)
 		m_pNameEditor->setEnabled(false);
 		m_pNameEditor->setText("");
 		m_pEditor->setEnabled(false);
-		QString tmp;
-		KviQString::sprintf(tmp,__tr2qs_ctx("\n\nRaw Event:\n%s","editor"),
-			((RawHandlerTreeWidgetItem *)it)->text(0).toUtf8().data());
-		m_pEditor->setText(tmp);
+		QString szTmp = QString(__tr2qs_ctx("\n\nRaw Event:\n%1","editor")).arg(((RawHandlerTreeWidgetItem *)it)->text(0));
+		m_pEditor->setText(szTmp);
 	}
 }
 

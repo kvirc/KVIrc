@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-08-20 10:47+0100\n"
 "Last-Translator: Fibinger Ádám <vfiber@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -154,6 +154,10 @@ msgstr "Értesítésekhez adás"
 msgid "Always Highlight"
 msgstr "Mindig Kiemel"
 
+#: data/defscript/popups.kvs:1404
+msgid "Automatically Join Channel"
+msgstr ""
+
 #: data/defscript/popups.kvs:405
 msgid "Avatar"
 msgstr "Avatar"
@@ -214,19 +218,19 @@ msgstr "Puffer Ürítése"
 msgid "Clear Default"
 msgstr "Alapértelmezés törlése"
 
-#: data/defscript/popups.kvs:1343
+#: data/defscript/popups.kvs:1392
 msgid "Close"
 msgstr ""
 
-#: data/defscript/popups.kvs:1367
+#: data/defscript/popups.kvs:1464
 msgid "Close All Dead Channels"
 msgstr ""
 
-#: data/defscript/popups.kvs:1373
+#: data/defscript/popups.kvs:1470
 msgid "Close All Dead Queries"
 msgstr ""
 
-#: data/defscript/popups.kvs:1361
+#: data/defscript/popups.kvs:1458
 msgid "Close All Queries"
 msgstr ""
 
@@ -259,7 +263,7 @@ msgstr "DNS:"
 msgid "Default"
 msgstr "Alapértelmezett"
 
-#: data/defscript/popups.kvs:1332
+#: data/defscript/popups.kvs:1381
 msgid "Dock"
 msgstr ""
 
@@ -402,11 +406,11 @@ msgstr "Naplózás:"
 msgid "Mask for"
 msgstr "Maszk:"
 
-#: data/defscript/popups.kvs:1338
+#: data/defscript/popups.kvs:1387
 msgid "Maximize"
 msgstr ""
 
-#: data/defscript/popups.kvs:1337
+#: data/defscript/popups.kvs:1386
 msgid "Minimize"
 msgstr ""
 
@@ -448,7 +452,7 @@ msgstr "Értesítés avatarról"
 msgid "O&wner"
 msgstr "Tulajdonos"
 
-#: data/defscript/popups.kvs:1413
+#: data/defscript/popups.kvs:1510
 msgid "Open "
 msgstr "Megnyitás "
 
@@ -460,7 +464,7 @@ msgstr "Opciók"
 msgid "Parameter message missing"
 msgstr "Paraméter üzenet hiányzik"
 
-#: data/defscript/popups.kvs:1355
+#: data/defscript/popups.kvs:1452
 #, fuzzy
 msgid "Part All Channels"
 msgstr "Csatornák"
@@ -486,7 +490,7 @@ msgstr "Regisztráció..."
 msgid "Remove from Notify"
 msgstr "Eltávolítás az Értesítésekből "
 
-#: data/defscript/popups.kvs:1339
+#: data/defscript/popups.kvs:1388
 msgid "Restore"
 msgstr ""
 
@@ -526,7 +530,7 @@ msgstr "Wallop küldése"
 msgid "Set as Default"
 msgstr "Beállítás alapértelmezettként"
 
-#: data/defscript/popups.kvs:1349
+#: data/defscript/popups.kvs:1398
 #, fuzzy
 msgid "Set window props as default"
 msgstr "Beállítás alapértelmezettként"
@@ -535,6 +539,14 @@ msgstr "Beállítás alapértelmezettként"
 #: data/defscript/popups.kvs:88
 msgid "Start Highlighting (Local)"
 msgstr "Kiemelés Indítása (Helyi)"
+
+#: data/defscript/popups.kvs:1435
+msgid "Stop Auto-Joining Channel on Network '?s'"
+msgstr ""
+
+#: data/defscript/popups.kvs:1422
+msgid "Stop Auto-Joining Channel on Server '?s'"
+msgstr ""
 
 #: data/defscript/popups.kvs:67
 msgid "Stop Highlighting"
@@ -557,7 +569,7 @@ msgstr "TDCC Fordított küldés"
 msgid "TDCC Send to"
 msgstr "TDCC Küldés"
 
-#: data/defscript/popups.kvs:1418
+#: data/defscript/popups.kvs:1515
 msgid "Telnet to "
 msgstr "Telnet: "
 
@@ -575,11 +587,11 @@ msgid "To connect to a server, type /server <server name>"
 msgstr ""
 "Szerverhez kapcsolódáshoz add ki a \" /server <szerver neve>\" parancsot"
 
-#: data/defscript/popups.kvs:1425
+#: data/defscript/popups.kvs:1522
 msgid "Traceroute to "
 msgstr "Traceroute: "
 
-#: data/defscript/popups.kvs:1431
+#: data/defscript/popups.kvs:1528
 msgid "Traceroute6 to "
 msgstr "Traceroute6: "
 
@@ -587,20 +599,20 @@ msgstr "Traceroute6: "
 msgid "Type /gnotice for help"
 msgstr "/gnotice további információkért"
 
-#: data/defscript/popups.kvs:1333
+#: data/defscript/popups.kvs:1382
 msgid "Undock"
 msgstr ""
 
-#: data/defscript/popups.kvs:1387
+#: data/defscript/popups.kvs:1484
 #, fuzzy
 msgid "Unhighlight All Channels"
 msgstr "Kiemel mint "
 
-#: data/defscript/popups.kvs:1393
+#: data/defscript/popups.kvs:1490
 msgid "Unhighlight All Queries"
 msgstr ""
 
-#: data/defscript/popups.kvs:1381
+#: data/defscript/popups.kvs:1478
 msgid "Unhighlight All Windows"
 msgstr ""
 
@@ -644,6 +656,14 @@ msgstr "Hang"
 #: data/defscript/popups.kvs:984
 msgid "Voice Chat"
 msgstr "Élőhangos Beszélgetés"
+
+#: data/defscript/popups.kvs:1414
+msgid "When Connecting to Network '?s'"
+msgstr ""
+
+#: data/defscript/popups.kvs:1407
+msgid "When Connecting to Server '?s'"
+msgstr ""
 
 #: data/defscript/toolbars.kvs:40
 msgid "Window operations"

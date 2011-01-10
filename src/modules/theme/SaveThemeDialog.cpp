@@ -276,9 +276,8 @@ bool SaveThemeDialog::saveTheme()
 
 	if(!KviTheme::save(sto))
 	{
-		QString szMsg2;
 		QString szErr = sto.lastError();
-		KviQString::sprintf(szMsg2,__tr2qs_ctx("Unable to save theme: %Q","theme"),&szErr);
+		QString szMsg2 = QString(__tr2qs_ctx("Unable to save theme: %1","theme")).arg(szErr);
 		QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme - KVIrc","theme"),szMsg2,
 			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return false;

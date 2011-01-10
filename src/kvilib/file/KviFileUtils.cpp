@@ -100,7 +100,7 @@ namespace KviFileUtils
 	bool makeDir(const QString & szPath)
 	{
 		QDir d;
-		QString szDir = KviQString::trimmed(szPath);
+		QString szDir = szPath.trimmed();
 		adjustFilePath(szDir);
 		QString szCreatedDir;
 

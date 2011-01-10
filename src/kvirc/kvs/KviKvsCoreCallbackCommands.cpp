@@ -566,16 +566,14 @@ namespace KviKvsCoreCallbackCommands
 			{
 				// remove the old handler
 				KviKvsEventManager::instance()->removeScriptRawHandler(iNumber,szHandlerName);
-				QString contextName;
-				KviQString::sprintf(contextName,"RawEvent%d::%Q",iNumber,&szHandlerName);
-				KviKvsScriptEventHandler * pHandler = new KviKvsScriptEventHandler(szHandlerName,contextName,KVSCCC_pCallback->code());
+				QString szContext = QString("RawEvent%1::%2").arg(iNumber).arg(szHandlerName);
+				KviKvsScriptEventHandler * pHandler = new KviKvsScriptEventHandler(szHandlerName,szContext,KVSCCC_pCallback->code());
 				KviKvsEventManager::instance()->addRawHandler(iNumber,pHandler);
 			} else {
 				// remove the old handler
 				KviKvsEventManager::instance()->removeScriptAppHandler(iNumber,szHandlerName);
-				QString contextName;
-				KviQString::sprintf(contextName,"%Q::%Q",&szEventName,&szHandlerName);
-				KviKvsScriptEventHandler * pHandler = new KviKvsScriptEventHandler(szHandlerName,contextName,KVSCCC_pCallback->code());
+				QString szContext = QString("%1::%2").arg(szEventName,szHandlerName);
+				KviKvsScriptEventHandler * pHandler = new KviKvsScriptEventHandler(szHandlerName,szContext,KVSCCC_pCallback->code());
 				KviKvsEventManager::instance()->addAppHandler(iNumber,pHandler);
 			}
 		}

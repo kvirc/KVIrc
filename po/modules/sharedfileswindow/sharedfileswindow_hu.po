@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sharedfileswindow_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2008-03-03 10:03+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -32,55 +32,55 @@ msgstr ""
 msgid "    Mask: %s"
 msgstr ""
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:243
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:243
 msgid "&Add..."
 msgstr "Hozzáadás"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:76
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:76
 msgid "&Browse..."
 msgstr "&Böngészés..."
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:247
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:247
 msgid "&Edit"
 msgstr "Szerkesztés"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:98
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:98
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:178
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:178
 msgid "Can't open the file"
 msgstr "Fájl nem nyitható meg"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:102
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:102
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:60
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:60
 msgid "Edit Shared File - KVIrc"
 msgstr "Megosztott fájl szerkesztése - KVIrc"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:87
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:87
 msgid "Expire at:"
 msgstr "Lejár:"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:227
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:227
 msgid "Expires"
 msgstr "Lejárat"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:69
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:69
 msgid "File path:"
 msgstr "Fájl útvonala:"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:224
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:224
 msgid "Filename"
 msgstr "Fájlnév"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:160
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:160
 msgid "Invalid expire time"
 msgstr "Helytelen lejárati idő"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:169
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:169
 msgid "Invalid share name"
 msgstr "Helytelen megosztási név"
 
@@ -96,15 +96,15 @@ msgstr ""
 msgid "Manage S&hared Files"
 msgstr "Megosztott fájlok kezelése"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:225
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:225
 msgid "Mask"
 msgstr "Maszk"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:223
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:223
 msgid "Name"
 msgstr "Név"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:200
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:200
 msgid "Never"
 msgstr "Soha"
 
@@ -116,9 +116,9 @@ msgstr ""
 msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
 msgstr ""
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:163
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:171
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:180
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:163
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:171
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:180
 msgid "OK"
 msgstr "OK"
 
@@ -126,19 +126,19 @@ msgstr "OK"
 msgid "Ops..failed to add the sharedfile..."
 msgstr ""
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:245
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:245
 msgid "Re&move"
 msgstr "Eltávolítás"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:62
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:62
 msgid "Share name:"
 msgstr "Megosztási név:"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:696
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:696
 msgid "Shared Files"
 msgstr "Megosztott Fájlok"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:161
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:161
 msgid ""
 "The expire date/time is in the past: please either remove the \"expires"
 "\"check mark or specify a expire date/time in the future"
@@ -150,12 +150,12 @@ msgstr ""
 msgid "The file '%Q' is not readable"
 msgstr ""
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:179
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:179
 msgid "The file doesn't exist or it is not readable, please check the path"
 msgstr ""
 "A fájl nem létezik, vagy nem olvasható: kérlek ellenőrízd az elérési utat"
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:170
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:170
 msgid "The share name can't be empty, please correct it"
 msgstr "A megosztási név nem lehet üres, kérlek javítsd"
 
@@ -164,6 +164,6 @@ msgstr "A megosztási név nem lehet üres, kérlek javítsd"
 msgid "Total: %d sharedfile"
 msgstr ""
 
-#: src/modules/sharedfileswindow/sharedfileswindow.cpp:80
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:80
 msgid "User mask:"
 msgstr "Felhasználó maszk:"

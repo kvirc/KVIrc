@@ -48,17 +48,17 @@ void KviIdentityProfile::save(KviConfigurationFile * pCfg, const QString & szPre
 {
 	QString szTmp;
 
-	KviQString::sprintf(szTmp,"%QName",&szPrefix);
+	szTmp = QString("%1Name").arg(szPrefix);
 	pCfg->writeEntry(szTmp,m_szName);
-	KviQString::sprintf(szTmp,"%QNetwork",&szPrefix);
+	szTmp = QString("%1Network").arg(szPrefix);
 	pCfg->writeEntry(szTmp,m_szNetwork);
-	KviQString::sprintf(szTmp,"%QNick",&szPrefix);
+	szTmp = QString("%1Nick").arg(szPrefix);
 	pCfg->writeEntry(szTmp,m_szNick);
-	KviQString::sprintf(szTmp,"%QAltNick",&szPrefix);
+	szTmp = QString("%1AltNick").arg(szPrefix);
 	pCfg->writeEntry(szTmp,m_szAltNick);
-	KviQString::sprintf(szTmp,"%QUserName",&szPrefix);
+	szTmp = QString("%1UserName").arg(szPrefix);
 	pCfg->writeEntry(szTmp,m_szUserName);
-	KviQString::sprintf(szTmp,"%QRealName",&szPrefix);
+	szTmp = QString("%1RealName").arg(szPrefix);
 	pCfg->writeEntry(szTmp,m_szRealName);
 }
 
@@ -66,28 +66,28 @@ bool KviIdentityProfile::load(KviConfigurationFile * pCfg, const QString & szPre
 {
 	QString szTmp;
 
-	KviQString::sprintf(szTmp,"%QName",&szPrefix);
-	m_szName = KviQString::trimmed(pCfg->readEntry(szTmp));
+	szTmp = QString("%1Name").arg(szPrefix);
+	m_szName = pCfg->readEntry(szTmp).trimmed();
 	if(m_szName.isEmpty())
 		return false;
 
-	KviQString::sprintf(szTmp,"%QNetwork",&szPrefix);
+	szTmp = QString("%1Network").arg(szPrefix);
 	m_szNetwork = pCfg->readEntry(szTmp);
 	if(m_szNetwork.isEmpty())
 		return false;
 
-	KviQString::sprintf(szTmp,"%QNick",&szPrefix);
+	szTmp = QString("%1Nick").arg(szPrefix);
 	m_szNick = pCfg->readEntry(szTmp);
 	if(m_szNick.isEmpty())
 		return false;
 
-	KviQString::sprintf(szTmp,"%QAltNick",&szPrefix);
+	szTmp = QString("%1AltNick").arg(szPrefix);
 	m_szAltNick = pCfg->readEntry(szTmp);
 
-	KviQString::sprintf(szTmp,"%QUserName",&szPrefix);
+	szTmp = QString("%1UserName").arg(szPrefix);
 	m_szUserName = pCfg->readEntry(szTmp);
 
-	KviQString::sprintf(szTmp,"%QRealName",&szPrefix);
+	szTmp = QString("%1RealName").arg(szPrefix);
 	m_szRealName = pCfg->readEntry(szTmp);
 	
 	return true;

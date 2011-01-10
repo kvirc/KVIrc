@@ -41,7 +41,7 @@ KviKvsTreeNodeCommand::~KviKvsTreeNodeCommand()
 
 void KviKvsTreeNodeCommand::contextDescription(QString &szBuffer)
 {
-	KviQString::sprintf(szBuffer,"Command \"%s\"",&m_szCmdName);
+	szBuffer = QString("Command \"%1\"").arg(m_szCmdName);
 }
 
 void KviKvsTreeNodeCommand::dump(const char * prefix)

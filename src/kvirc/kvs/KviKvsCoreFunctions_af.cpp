@@ -1515,11 +1515,10 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("tooltip_text",KVS_PT_STRING,KVS_PF_OPTIONAL,szToolTip)
 		KVSCF_PARAMETERS_END
 
-		QString szPart;
-		KviQString::sprintf(szPart,"[!dbl]%Q",&szCmd);
-		if(!szToolTip.isEmpty())KviQString::appendFormatted(szPart,"[!txt]%Q",&szToolTip);
-		QString szLink;
-		KviQString::sprintf(szLink,"\r!%Q\r%Q\r",&szPart,&szLinkText);
+		QString szPart = QString("[!dbl]%1").arg(szCmd);
+		if(!szToolTip.isEmpty())
+			KviQString::appendFormatted(szPart,"[!txt]%Q",&szToolTip);
+		QString szLink = QString("\r!%1\r%2\r").arg(szPart,szLinkText);
 		
 		KVSCF_pRetBuffer->setString(szLink);
 		return true;

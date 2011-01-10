@@ -92,7 +92,7 @@ void KviKvsParser::report(bool bError,const QChar * pLocation,const QString &szM
 
 		KviKvsReport::findLineColAndListing(m_pBuffer,pLocation,iLine,iCol,pCodeListing);
 
-		KviQString::sprintf(szLocation,__tr2qs_ctx("line %d, near character %d","kvs"),iLine,iCol);
+		szLocation = QString(__tr2qs_ctx("line %1, near character %2","kvs")).arg(iLine).arg(iCol);
 	} else {
 		szLocation = __tr2qs_ctx("beginning of input","kvs");
 	}

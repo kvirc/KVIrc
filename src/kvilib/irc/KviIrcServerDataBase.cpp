@@ -128,9 +128,9 @@ bool KviIrcServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetN
 
 	QString szTryAlso1, szTryAlso2, szTryAlso3;
 
-	KviQString::sprintf(szTryAlso1,"irc.%Q.org",&szNetName);
-	KviQString::sprintf(szTryAlso2,"irc.%Q.net",&szNetName);
-	KviQString::sprintf(szTryAlso3,"irc.%Q.com",&szNetName);
+	szTryAlso1 = QString("irc.%1.org").arg(szNetName);
+	szTryAlso2 = QString("irc.%1.net").arg(szNetName);
+	szTryAlso3 = QString("irc.%1.com").arg(szNetName);
 
 	for(KviIrcServer * pServer = pNet->m_pServerList->first(); pServer; pServer = pNet->m_pServerList->next())
 	{
@@ -377,7 +377,7 @@ void KviIrcServerDataBase::importFromMircIni(const QString & szFilename, const Q
 	{
 		cfg.setGroup("recent");
 		do {
-			KviQString::sprintf(szKey,"n%d",i);
+			szKey = QString("n%1").arg(i);
 			szEntry = cfg.readEntry(szKey);
 			if(!szEntry.isEmpty())
 			{
@@ -402,7 +402,7 @@ void KviIrcServerDataBase::importFromMircIni(const QString & szFilename, const Q
 	{
 		cfg.setGroup("servers");
 		do {
-			KviQString::sprintf(szKey,"n%d",i);
+			szKey = QString("n%1").arg(i);
 			szEntry = cfg.readEntry(szKey);
 			if(!szEntry.isEmpty())
 			{
@@ -493,11 +493,11 @@ void KviIrcServerDataBase::load(const QString & szFilename)
 			for(int i=0; i < nServers; i++)
 			{
 				KviIrcServer * pServ = new KviIrcServer();
-				KviQString::sprintf(szTmp,"%d_",i);
+				szTmp = QString("%1_").arg(i);
 				if(pServ->load(&cfg,szTmp))
 				{
 					pNewNet->m_pServerList->append(pServ);
-					KviQString::sprintf(szTmp,"%d_Current",i);
+					szTmp = QString("%1_Current").arg(i);
 					if(cfg.readBoolEntry(szTmp,false))
 						pNewNet->m_pCurrentServer = pServ;
 					if(pServ->autoConnect())
@@ -561,12 +561,12 @@ void KviIrcServerDataBase::save(const QString & szFilename)
 		int i=0;
 		for(KviIrcServer * pServ = pNetwork->m_pServerList->first(); pServ; pServ = pNetwork->m_pServerList->next())
 		{
-			KviQString::sprintf(szTmp,"%d_",i);
+			szTmp = QString("%1_").arg(i);
 			pServ->save(&cfg,szTmp);
 
 			if(pServ == pNetwork->m_pCurrentServer)
 			{
-				KviQString::sprintf(szTmp,"%d_Current",i);
+				szTmp = QString("%1_Current").arg(i);
 				cfg.writeEntry(szTmp,true);
 			}
 

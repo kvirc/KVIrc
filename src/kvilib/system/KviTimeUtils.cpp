@@ -25,7 +25,6 @@
 
 
 #include "KviTimeUtils.h"
-#include "KviQString.h"
 #include "KviLocale.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -104,39 +103,38 @@ namespace KviTimeUtils
 	{
 		unsigned int d,h,m,s;
 		secondsToDaysHoursMinsSecs(uSeconds,&d,&h,&m,&s);
-		QString ret;
+		QString szRet;
 		// the following tricks maybe will help translators a bit...
 		if(iFlags & FillWithHypens)
 		{
-			ret = __tr2qs("- d -- h -- m -- s");
+			szRet = __tr2qs("- d -- h -- m -- s");
 		} else {
 			if((iFlags & NoLeadingEmptyIntervals) && (d == 0))
 			{
 				if(h > 0)
 				{
 					if(iFlags & NoLeadingZeroes)
-						KviQString::sprintf(ret,__tr2qs("%u h %u m %u s"),h,m,s);
+						szRet = QString(__tr2qs("%1 h %2 m %3 s")).arg(h,m,s);
 					else
-						KviQString::sprintf(ret,__tr2qs("%u h %u%u m %u%u s"),h,m / 10,m % 10,s / 10,s % 10);
+						szRet = QString(__tr2qs("%1 h %2%3 m %4%5 s")).arg(h,m / 10,m % 10,s / 10,s % 10);
 				} else {
 					if(m > 0)
 					{
 						if(iFlags & NoLeadingZeroes)
-							KviQString::sprintf(ret,__tr2qs("%u m %u s"),m,s);
+							szRet = QString(__tr2qs("%1 m %2 s")).arg(m,s);
 						else
-							KviQString::sprintf(ret,__tr2qs("%u m %u%u s"),m,s / 10,s % 10);
+							szRet = QString(__tr2qs("%1 m %2%3 s")).arg(m,s / 10,s % 10);
 					} else {
-						KviQString::sprintf(ret,__tr2qs("%u s"),s);
+						szRet = QString(__tr2qs("%1 s")).arg(s);
 					}
 				}
 			} else {
 				if(iFlags & NoLeadingZeroes)
-					KviQString::sprintf(ret,__tr2qs("%u d %u h %u m %u s"),d,h,m,s);
+					szRet = QString(__tr2qs("%1 d %2 h %3 m %4 s")).arg(d).arg(h).arg(m).arg(s);
 				else
-					KviQString::sprintf(ret,__tr2qs("%u d %u%u h %u%u m %u%u s"),d,h / 10,h % 10,m / 10,m % 10,s / 10,s % 10);
+					szRet = QString(__tr2qs("%1 d %2%3 h %4%5 m %6%7 s")).arg(d).arg(h / 10).arg(h % 10).arg(m / 10).arg(m % 10).arg(s / 10).arg(s % 10);
 			}
 		}
-		return ret;
+		return szRet;
 	}
-
 }

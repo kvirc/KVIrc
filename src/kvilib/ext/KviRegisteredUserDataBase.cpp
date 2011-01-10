@@ -511,9 +511,9 @@ void KviRegisteredUserDataBase::load(const QString & filename)
 		addGroup(__tr("Default"));
 }
 
-void KviRegisteredUserDataBase::save(const QString & filename)
+void KviRegisteredUserDataBase::save(const QString & szFilename)
 {
-	KviConfigurationFile cfg(filename,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szFilename,KviConfigurationFile::Write);
 	cfg.clear();
 	cfg.preserveEmptyGroups(true);
 
@@ -537,15 +537,14 @@ void KviRegisteredUserDataBase::save(const QString & filename)
 			}
 		}
 		// Write masks
-		int idx = 0;
-		for(KviIrcMask * m = it.current()->maskList()->first();m;m = it.current()->maskList()->next())
+		int i = 0;
+		for(KviIrcMask * pMask = it.current()->maskList()->first(); pMask; pMask = it.current()->maskList()->next())
 		{
-			QString tmp;
-			KviQString::sprintf(tmp,"mask_%d",idx);
-			QString mask;
-			m->mask(mask,KviIrcMask::NickUserHost);
-			cfg.writeEntry(tmp,mask);
-			++idx;
+			QString szTmp = QString("mask_%1").arg(i);
+			QString szMask;
+			pMask->mask(szMask,KviIrcMask::NickUserHost);
+			cfg.writeEntry(szTmp,szMask);
+			++i;
 		}
 		cfg.writeEntry("Group",it.current()->group());
 		++it;
@@ -555,7 +554,7 @@ void KviRegisteredUserDataBase::save(const QString & filename)
 	QString szTmp;
 	while(git.current())
 	{
-		KviQString::sprintf(szTmp,"#Group %Q",&(git.current()->name()));
+		szTmp = QString("#Group %1").arg(git.current()->name());
 		cfg.setGroup(szTmp);
 		++git;
 	}

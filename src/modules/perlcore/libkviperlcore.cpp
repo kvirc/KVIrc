@@ -179,15 +179,14 @@ bool KviPerlInterpreter::init()
 	// declaration could be dropped as well...
 	// I just haven't tried :D
 
-	KviQString::sprintf(
-		szInitCode,
+	szInitCode = QString(
 		"{\n" \
 			"package KVIrc;\n" \
 			"require Exporter;\n" \
 			"our @ISA = qw(Exporter);\n" \
 			"1;\n" \
 		"}\n" \
-		"$g_szContext = \"%Q\";\n" \
+		"$g_szContext = \"%1\";\n" \
 		"$g_bExecuteQuiet = 0;\n" \
 		"$SIG{__WARN__} = sub\n" \
 		"{\n" \
@@ -195,8 +194,7 @@ bool KviPerlInterpreter::init()
 		"	($p,$f,$l) = caller;\n" \
 		"	KVIrc::internalWarning(\"At line \".$l.\" of perl code: \");\n" \
 		"	KVIrc::internalWarning(join(' ',@_));\n" \
-		"}\n",
-		&m_szContextName);
+		"}\n").arg(m_szContextName);
 
 	eval_pv(szInitCode.toUtf8().data(),false);
 	return true;

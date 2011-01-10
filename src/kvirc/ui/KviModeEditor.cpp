@@ -92,7 +92,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		cMode = szModes[0].unicode();
 		szModes.remove(0,1);
 
-		KviQString::sprintf(szTmp,"%c: %Q",cMode, getModeDescription(cMode));
+		szTmp = QString("%1: %2").arg(cMode).arg(*(getModeDescription(cMode)));
 		pCheckBox = new QCheckBox(szTmp,pBackground);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		if(pChan)
@@ -109,7 +109,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		cMode = szModes[0].unicode();
 		szModes.remove(0,1);
 
-		KviQString::sprintf(szTmp,"%c: %Q",cMode, getModeDescription(cMode));
+		szTmp = QString("%1: %2").arg(cMode).arg(*(getModeDescription(cMode)));
 		pCheckBox = new QCheckBox(szTmp,pBackground);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		iRow++;
@@ -160,7 +160,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		cMode = szModes[0].unicode();
 		szModes.remove(0,1);
 
-		KviQString::sprintf(szTmp,"%c: %Q",cMode, getModeDescription(cMode));
+		szTmp = QString("%1: %2").arg(cMode).arg(*(getModeDescription(cMode)));
 		pCheckBox = new QCheckBox(szTmp,pBackground);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		if(pChan)
@@ -185,7 +185,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		cMode = szModes[0].unicode();
 		szModes.remove(0,1);
 
-		KviQString::sprintf(szTmp,"%c: %Q",cMode, getModeDescription(cMode));
+		szTmp = QString("%1: %2").arg(cMode).arg(*(getModeDescription(cMode)));
 		pCheckBox = new QCheckBox(szTmp,pBackground);
 		m_pCheckBoxes.insert(cMode,pCheckBox);
 		iRow++;
@@ -424,7 +424,7 @@ inline const QString * KviModeEditor::getModeDescription(char cMode)
 	KviIrcConnectionServerInfo * pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)
 		return &(pServerInfo->getChannelModeDescription(cMode));
-	return 0; //safe, as will be used with KviQString::sprintf("%Q", ..);
+	return 0;
 }
 
 inline bool KviModeEditor::modeNeedsParameterOnlyWhenSet(char cMode)

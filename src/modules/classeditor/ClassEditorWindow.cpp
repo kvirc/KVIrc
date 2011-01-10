@@ -1334,15 +1334,15 @@ bool ClassEditorWidget::removeItem(ClassEditorTreeWidgetItem * pItem, KviPointer
 		saveLastEditedItem();
 		if(pItem->isClass())
 		{
-			KviQString::sprintf(szMsg,__tr2qs_ctx("Do you really want to remove the class \"%Q\" ?","editor"),&szName);
+			szMsg = QString(__tr2qs_ctx("Do you really want to remove the class \"%1\"?","editor")).arg(szName);
 		} else if(pItem->isNamespace())
 		{
-			KviQString::sprintf(szMsg,__tr2qs_ctx("Do you really want to remove the namespace \"%Q\" ?","editor"),&szName);
+			szMsg = QString(__tr2qs_ctx("Do you really want to remove the namespace \"%1\"?","editor")).arg(szName);
 			szMsg += "<br>";
 			szMsg += __tr2qs_ctx("Please note that all the children classes/functions will be deleted too.","editor");
 		} else if(pItem->isMethod())
 		{
-			KviQString::sprintf(szMsg,__tr2qs_ctx("Do you really want to remove the function \"%Q\" ?","editor"),&szName);
+			szMsg = QString(__tr2qs_ctx("Do you really want to remove the function \"%1\"?","editor")).arg(szName);
 		}
 		
 		g_pClassEditorModule->lock();
@@ -1372,7 +1372,7 @@ bool ClassEditorWidget::removeItem(ClassEditorTreeWidgetItem * pItem, KviPointer
 	{
 		m_pClasses->removeRef(pItem);
 		KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(buildFullClassName(pItem));
-		qDebug("rimuovo class %s %p",buildFullClassName(pItem).toUtf8().data(), pClass);
+		qDebug("removing class %s %p",buildFullClassName(pItem).toUtf8().data(), pClass);
 		if(pClass)
 			KviKvsKernel::instance()->objectController()->deleteClass(pClass);
 		else

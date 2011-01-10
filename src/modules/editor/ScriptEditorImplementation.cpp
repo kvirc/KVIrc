@@ -503,8 +503,7 @@ bool ScriptEditorWidget::contextSensitiveHelp() const
 	g_pUserParser->freeCompletionResult(pList);
 	if(!bOk)return false;
 
-	QString szParse;
-	KviQString::sprintf(szParse,"timer -s (help,0){ help -s %Q; }",&szBuffer);
+	QString szParse = QString("timer -s (help,0){ help -s %Q; }").arg(szBuffer);
 	qDebug("parsing %s",szParse.toLatin1());
 	KviKvsScript::run(szParse,(KviWindow*)g_pApp->activeConsole());
 	*/
@@ -932,7 +931,7 @@ void ScriptEditorImplementation::saveToFile()
 			QString szTmp;
 			QMessageBox::warning(this,
 				__tr2qs_ctx("Save Failed - KVIrc","editor"),
-				KviQString::sprintf(szTmp,__tr2qs_ctx("Can't open the file %s for writing.","editor"),&szFileName));
+				szTmp = QString(__tr2qs_ctx("Can't open the file %1 for writing.","editor")).arg(szFileName));
 		}
 	}
 }
@@ -989,8 +988,7 @@ void ScriptEditorImplementation::updateRowColLabel()
 		return;
 	int iRow = m_pEditor->textCursor().blockNumber();
 	int iCol = m_pEditor->textCursor().columnNumber();
-	QString szTmp;
-	KviQString::sprintf(szTmp,__tr2qs_ctx("Row: %d Col: %d","editor"),iRow,iCol);
+	QString szTmp = QString(__tr2qs_ctx("Row: %1 Col: %2","editor")).arg(iRow).arg(iCol);
 	m_pRowColLabel->setText(szTmp);
 	m_lastCursorPos = m_pEditor->textCursor().position();
 }
@@ -1021,7 +1019,7 @@ void ScriptEditorImplementation::loadFromFile()
 			QString szTmp;
 			QMessageBox::warning(this,
 				__tr2qs_ctx("Open Failed - KVIrc","editor"),
-				KviQString::sprintf(szTmp,__tr2qs_ctx("Can't open the file %s for reading.","editor"),&szFileName));
+				szTmp = QString(__tr2qs_ctx("Can't open the file %1 for reading.","editor")).arg(szFileName));
 		}
 	}
 }

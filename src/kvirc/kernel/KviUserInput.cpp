@@ -37,7 +37,7 @@ namespace KviUserInput
 {
 	bool parse(QString & szData, KviWindow * pWindow, const QString & szContext, bool bUserFriendlyCommandline)
 	{
-		const QChar * b = KviQString::nullTerminatedArray(szData);
+		const QChar * b = szData.constData();
 		const QChar * c = b;
 		if(!c)return true; // empty
 
@@ -97,7 +97,7 @@ namespace KviUserInput
 
 	void parseNonCommand(QString & szData, KviWindow * pWindow)
 	{
-		const QChar * aux = KviQString::nullTerminatedArray(szData);
+		const QChar * aux = szData.constData();
 		const QChar * beg = aux;
 
 		if(!beg)

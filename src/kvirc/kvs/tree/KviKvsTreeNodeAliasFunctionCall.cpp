@@ -26,7 +26,6 @@
 #include "KviKvsVariantList.h"
 #include "KviKvsAliasManager.h"
 #include "KviLocale.h"
-#include "KviQString.h"
 
 KviKvsTreeNodeAliasFunctionCall::KviKvsTreeNodeAliasFunctionCall(const QChar * pLocation, const QString & szAliasName, KviKvsTreeNodeDataList * pParams)
 : KviKvsTreeNodeFunctionCall(pLocation,szAliasName,pParams)
@@ -39,7 +38,7 @@ KviKvsTreeNodeAliasFunctionCall::~KviKvsTreeNodeAliasFunctionCall()
 
 void KviKvsTreeNodeAliasFunctionCall::contextDescription(QString & szBuffer)
 {
-	KviQString::sprintf(szBuffer,"Alias Function Call \"%Q\"",&m_szFunctionName);
+	szBuffer = QString("Alias Function Call \"%1\"").arg(m_szFunctionName);
 }
 
 void KviKvsTreeNodeAliasFunctionCall::dump(const char * prefix)

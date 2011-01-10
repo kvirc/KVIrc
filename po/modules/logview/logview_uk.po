@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1:2);\n"
 
-#: src/modules/logview/logviewmdiwindow.cpp:304
-msgid "%Q on %Q"
+#: src/modules/logview/LogViewWindow.cpp:304
+msgid "%1 on %2"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:154
+#: src/modules/logview/LogViewWindow.cpp:154
 msgid "Apply filter"
 msgstr ""
 
@@ -34,90 +34,90 @@ msgstr ""
 msgid "Browse &Log Files"
 msgstr "Перегляд файлів &журналів"
 
-#: src/modules/logview/logviewmdiwindow.cpp:84
+#: src/modules/logview/LogViewWindow.cpp:84
 msgid "Cancel"
 msgstr ""
 
-#: src/modules/logview/logviewwidget.cpp:70
+#: src/modules/logview/LogViewWidget.cpp:70
 msgid "Channel"
 msgstr ""
 
-#: src/modules/logview/logviewwidget.cpp:82
+#: src/modules/logview/LogViewWidget.cpp:82
 msgid "Console"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:123
+#: src/modules/logview/LogViewWindow.cpp:123
 msgid "Contents filter"
 msgstr ""
 
-#: src/modules/logview/logviewwidget.cpp:78
+#: src/modules/logview/LogViewWidget.cpp:78
 msgid "DCC Chat"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:98
+#: src/modules/logview/LogViewWindow.cpp:98
 msgid "Filter"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:89
-msgid "Index"
+#: src/modules/logview/LogViewWindow.cpp:89
+msgid "HelpIndex"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:548
+#: src/modules/logview/LogViewWindow.cpp:548
 msgid "Log File"
 msgstr "Файл журналу"
 
-#: src/modules/logview/logviewmdiwindow.cpp:220
+#: src/modules/logview/LogViewWindow.cpp:220
 msgid "Log Viewer"
 msgstr "Переглядач журналу"
 
-#: src/modules/logview/logviewmdiwindow.cpp:132
+#: src/modules/logview/LogViewWindow.cpp:132
 msgid "Log contents mask:"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:126
+#: src/modules/logview/LogViewWindow.cpp:126
 msgid "Log name mask:"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:146
+#: src/modules/logview/LogViewWindow.cpp:146
 msgid "Only newier than"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:138
+#: src/modules/logview/LogViewWindow.cpp:138
 msgid "Only older than"
 msgstr ""
 
-#: src/modules/logview/logviewwidget.cpp:86
+#: src/modules/logview/LogViewWidget.cpp:86
 msgid "Other"
 msgstr ""
 
-#: src/modules/logview/logviewwidget.cpp:74
+#: src/modules/logview/LogViewWidget.cpp:74
 msgid "Query"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:389
+#: src/modules/logview/LogViewWindow.cpp:389
 msgid "Remove all these channel/query log files"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:390
+#: src/modules/logview/LogViewWindow.cpp:390
 msgid "Remove file"
 msgstr "Видалити Логфайл"
 
-#: src/modules/logview/logviewmdiwindow.cpp:114
+#: src/modules/logview/LogViewWindow.cpp:114
 msgid "Show DCC chat logs"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:102
+#: src/modules/logview/LogViewWindow.cpp:102
 msgid "Show channel logs"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:110
+#: src/modules/logview/LogViewWindow.cpp:110
 msgid "Show console logs"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:118
+#: src/modules/logview/LogViewWindow.cpp:118
 msgid "Show other logs"
 msgstr ""
 
-#: src/modules/logview/logviewmdiwindow.cpp:106
+#: src/modules/logview/LogViewWindow.cpp:106
 msgid "Show query logs"
 msgstr ""

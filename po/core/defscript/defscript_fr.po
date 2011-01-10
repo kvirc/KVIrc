@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: defscript_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-11-21 16:08+0100\n"
 "Last-Translator: ealexp <ealexp@ealexp.eu>\n"
 "Language-Team: Français <LL@li.org>\n"
@@ -163,6 +163,10 @@ msgstr ""
 msgid "Always Highlight"
 msgstr ""
 
+#: data/defscript/popups.kvs:1404
+msgid "Automatically Join Channel"
+msgstr ""
+
 #: data/defscript/popups.kvs:405
 msgid "Avatar"
 msgstr "Avatar"
@@ -224,19 +228,19 @@ msgstr "Vider le tampon"
 msgid "Clear Default"
 msgstr "Mettre par défaut"
 
-#: data/defscript/popups.kvs:1343
+#: data/defscript/popups.kvs:1392
 msgid "Close"
 msgstr ""
 
-#: data/defscript/popups.kvs:1367
+#: data/defscript/popups.kvs:1464
 msgid "Close All Dead Channels"
 msgstr ""
 
-#: data/defscript/popups.kvs:1373
+#: data/defscript/popups.kvs:1470
 msgid "Close All Dead Queries"
 msgstr ""
 
-#: data/defscript/popups.kvs:1361
+#: data/defscript/popups.kvs:1458
 msgid "Close All Queries"
 msgstr ""
 
@@ -269,7 +273,7 @@ msgstr "DNS pour"
 msgid "Default"
 msgstr "Défaut"
 
-#: data/defscript/popups.kvs:1332
+#: data/defscript/popups.kvs:1381
 msgid "Dock"
 msgstr ""
 
@@ -417,11 +421,11 @@ msgstr "Connexion à"
 msgid "Mask for"
 msgstr "Masque pour"
 
-#: data/defscript/popups.kvs:1338
+#: data/defscript/popups.kvs:1387
 msgid "Maximize"
 msgstr ""
 
-#: data/defscript/popups.kvs:1337
+#: data/defscript/popups.kvs:1386
 msgid "Minimize"
 msgstr ""
 
@@ -464,7 +468,7 @@ msgstr ""
 msgid "O&wner"
 msgstr ""
 
-#: data/defscript/popups.kvs:1413
+#: data/defscript/popups.kvs:1510
 msgid "Open "
 msgstr "Ouvrir"
 
@@ -476,7 +480,7 @@ msgstr "Options"
 msgid "Parameter message missing"
 msgstr "Paramètres du message manquant"
 
-#: data/defscript/popups.kvs:1355
+#: data/defscript/popups.kvs:1452
 #, fuzzy
 msgid "Part All Channels"
 msgstr "Salons"
@@ -502,7 +506,7 @@ msgstr "Enregistrer..."
 msgid "Remove from Notify"
 msgstr ""
 
-#: data/defscript/popups.kvs:1339
+#: data/defscript/popups.kvs:1388
 msgid "Restore"
 msgstr ""
 
@@ -544,7 +548,7 @@ msgstr "Envoyer un wallop à"
 msgid "Set as Default"
 msgstr "Mettre par défaut"
 
-#: data/defscript/popups.kvs:1349
+#: data/defscript/popups.kvs:1398
 #, fuzzy
 msgid "Set window props as default"
 msgstr "Mettre par défaut"
@@ -552,6 +556,14 @@ msgstr "Mettre par défaut"
 #: data/defscript/popups.kvs:24
 #: data/defscript/popups.kvs:88
 msgid "Start Highlighting (Local)"
+msgstr ""
+
+#: data/defscript/popups.kvs:1435
+msgid "Stop Auto-Joining Channel on Network '?s'"
+msgstr ""
+
+#: data/defscript/popups.kvs:1422
+msgid "Stop Auto-Joining Channel on Server '?s'"
 msgstr ""
 
 #: data/defscript/popups.kvs:67
@@ -575,7 +587,7 @@ msgstr ""
 msgid "TDCC Send to"
 msgstr ""
 
-#: data/defscript/popups.kvs:1418
+#: data/defscript/popups.kvs:1515
 msgid "Telnet to "
 msgstr "Connexion telnet à"
 
@@ -594,11 +606,11 @@ msgstr ""
 "Pour vous connecter à un serveur, tapez /server <nom du serveur> ou /s <nom "
 "du serveur>"
 
-#: data/defscript/popups.kvs:1425
+#: data/defscript/popups.kvs:1522
 msgid "Traceroute to "
 msgstr "Traceroute à "
 
-#: data/defscript/popups.kvs:1431
+#: data/defscript/popups.kvs:1528
 msgid "Traceroute6 to "
 msgstr "Traceroute6 à "
 
@@ -606,19 +618,19 @@ msgstr "Traceroute6 à "
 msgid "Type /gnotice for help"
 msgstr "Taper /gnotice pour de l'aide"
 
-#: data/defscript/popups.kvs:1333
+#: data/defscript/popups.kvs:1382
 msgid "Undock"
 msgstr ""
 
-#: data/defscript/popups.kvs:1387
+#: data/defscript/popups.kvs:1484
 msgid "Unhighlight All Channels"
 msgstr ""
 
-#: data/defscript/popups.kvs:1393
+#: data/defscript/popups.kvs:1490
 msgid "Unhighlight All Queries"
 msgstr ""
 
-#: data/defscript/popups.kvs:1381
+#: data/defscript/popups.kvs:1478
 msgid "Unhighlight All Windows"
 msgstr ""
 
@@ -662,6 +674,14 @@ msgstr "Voix"
 #: data/defscript/popups.kvs:984
 msgid "Voice Chat"
 msgstr "Conversation vocale"
+
+#: data/defscript/popups.kvs:1414
+msgid "When Connecting to Network '?s'"
+msgstr ""
+
+#: data/defscript/popups.kvs:1407
+msgid "When Connecting to Server '?s'"
+msgstr ""
 
 #: data/defscript/toolbars.kvs:40
 #, fuzzy

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: notifier_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-01-24 11:05+0400\n"
 "Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: russian\n"
@@ -22,39 +22,39 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/modules/notifier/notifierwindow.cpp:973
+#: src/modules/notifier/NotifierWindow.cpp:973
 msgid "1 Hour"
 msgstr "1 Час"
 
-#: src/modules/notifier/notifierwindow.cpp:969
+#: src/modules/notifier/NotifierWindow.cpp:969
 msgid "1 Minute"
 msgstr "1 Минута"
 
-#: src/modules/notifier/notifierwindow.cpp:971
+#: src/modules/notifier/NotifierWindow.cpp:971
 msgid "15 Minutes"
 msgstr "15 Минут"
 
-#: src/modules/notifier/notifierwindow.cpp:972
+#: src/modules/notifier/NotifierWindow.cpp:972
 msgid "30 Minutes"
 msgstr "30 Минут"
 
-#: src/modules/notifier/notifierwindow.cpp:970
+#: src/modules/notifier/NotifierWindow.cpp:970
 msgid "5 Minutes"
 msgstr "5 Минут"
 
-#: src/modules/notifier/notifierwindow.cpp:978
+#: src/modules/notifier/NotifierWindow.cpp:978
 msgid "Disable"
 msgstr "Выключить"
 
-#: src/modules/notifier/notifierwindow.cpp:966
+#: src/modules/notifier/NotifierWindow.cpp:966
 msgid "Hide"
 msgstr "Скрыть"
 
-#: src/modules/notifier/notifierwindow.cpp:976
+#: src/modules/notifier/NotifierWindow.cpp:976
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr "Навсегда (До явного включения)"
 
-#: src/modules/notifier/notifierwindow.cpp:965
+#: src/modules/notifier/NotifierWindow.cpp:965
 msgid "Show/Hide input line"
 msgstr "Показать/Скрыть поле ввода"
 
@@ -70,10 +70,10 @@ msgstr "Заданный таймаут недействителен, прини
 msgid "The specified window does not exist"
 msgstr "Заданное окно не существует"
 
-#: src/modules/notifier/notifierwindow.cpp:975
+#: src/modules/notifier/NotifierWindow.cpp:975
 msgid "Until KVIrc is Restarted"
 msgstr "Пока KVIrc не будет перезапущен"
 
-#: src/modules/notifier/notifierwindow.cpp:1053
+#: src/modules/notifier/NotifierWindow.cpp:1053
 msgid "Write text or commands to window"
 msgstr "Напишите текст или команду в окне"

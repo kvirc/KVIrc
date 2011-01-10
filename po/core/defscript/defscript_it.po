@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_defscript_it 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-12-20 17:56+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -154,6 +154,10 @@ msgstr "Aggiungi alla Notify"
 msgid "Always Highlight"
 msgstr "Evidenzia Sempre"
 
+#: data/defscript/popups.kvs:1404
+msgid "Automatically Join Channel"
+msgstr ""
+
 #: data/defscript/popups.kvs:405
 msgid "Avatar"
 msgstr "Avatar"
@@ -214,19 +218,19 @@ msgstr "Pulisci Buffer"
 msgid "Clear Default"
 msgstr "Rimuovi predefinito"
 
-#: data/defscript/popups.kvs:1343
+#: data/defscript/popups.kvs:1392
 msgid "Close"
 msgstr "Chiudi"
 
-#: data/defscript/popups.kvs:1367
+#: data/defscript/popups.kvs:1464
 msgid "Close All Dead Channels"
 msgstr "Chiudi Tutti I Canali Morti"
 
-#: data/defscript/popups.kvs:1373
+#: data/defscript/popups.kvs:1470
 msgid "Close All Dead Queries"
 msgstr "Chiudi Tutti Le Query Morte"
 
-#: data/defscript/popups.kvs:1361
+#: data/defscript/popups.kvs:1458
 msgid "Close All Queries"
 msgstr "Chiudi Tutte Le Query"
 
@@ -259,7 +263,7 @@ msgstr "DNS per"
 msgid "Default"
 msgstr "Predefinito"
 
-#: data/defscript/popups.kvs:1332
+#: data/defscript/popups.kvs:1381
 msgid "Dock"
 msgstr "Aggancia"
 
@@ -401,11 +405,11 @@ msgstr "Log su"
 msgid "Mask for"
 msgstr "Maschera per"
 
-#: data/defscript/popups.kvs:1338
+#: data/defscript/popups.kvs:1387
 msgid "Maximize"
 msgstr "Massimizza"
 
-#: data/defscript/popups.kvs:1337
+#: data/defscript/popups.kvs:1386
 msgid "Minimize"
 msgstr "Minimizza"
 
@@ -447,7 +451,7 @@ msgstr "Notifica avatar"
 msgid "O&wner"
 msgstr "Owner"
 
-#: data/defscript/popups.kvs:1413
+#: data/defscript/popups.kvs:1510
 msgid "Open "
 msgstr "Apri"
 
@@ -459,7 +463,7 @@ msgstr "Opzioni"
 msgid "Parameter message missing"
 msgstr "Parametro del messaggio mancante"
 
-#: data/defscript/popups.kvs:1355
+#: data/defscript/popups.kvs:1452
 msgid "Part All Channels"
 msgstr "Esci Da Tutti I Canali"
 
@@ -484,7 +488,7 @@ msgstr "Registra..."
 msgid "Remove from Notify"
 msgstr "Rimuovi dalla Notifica"
 
-#: data/defscript/popups.kvs:1339
+#: data/defscript/popups.kvs:1388
 msgid "Restore"
 msgstr "Ripristina"
 
@@ -524,7 +528,7 @@ msgstr "Invio wallop a"
 msgid "Set as Default"
 msgstr "Imposta come Predefinito"
 
-#: data/defscript/popups.kvs:1349
+#: data/defscript/popups.kvs:1398
 msgid "Set window props as default"
 msgstr "Imposta le proprietà della finestra come predefinite"
 
@@ -532,6 +536,14 @@ msgstr "Imposta le proprietà della finestra come predefinite"
 #: data/defscript/popups.kvs:88
 msgid "Start Highlighting (Local)"
 msgstr "Attiva Evidenzia (Locale)"
+
+#: data/defscript/popups.kvs:1435
+msgid "Stop Auto-Joining Channel on Network '?s'"
+msgstr ""
+
+#: data/defscript/popups.kvs:1422
+msgid "Stop Auto-Joining Channel on Server '?s'"
+msgstr ""
 
 #: data/defscript/popups.kvs:67
 msgid "Stop Highlighting"
@@ -554,7 +566,7 @@ msgstr "Invio invertito TDCC a"
 msgid "TDCC Send to"
 msgstr "Invio TDCC a"
 
-#: data/defscript/popups.kvs:1418
+#: data/defscript/popups.kvs:1515
 msgid "Telnet to "
 msgstr "Telnet su"
 
@@ -571,11 +583,11 @@ msgstr "Questa finestra non è un canale"
 msgid "To connect to a server, type /server <server name>"
 msgstr "Per connetterti ad un server, scrivi /server <nome server>"
 
-#: data/defscript/popups.kvs:1425
+#: data/defscript/popups.kvs:1522
 msgid "Traceroute to "
 msgstr "Traceroute su"
 
-#: data/defscript/popups.kvs:1431
+#: data/defscript/popups.kvs:1528
 msgid "Traceroute6 to "
 msgstr "Traceroute6 su"
 
@@ -583,19 +595,19 @@ msgstr "Traceroute6 su"
 msgid "Type /gnotice for help"
 msgstr "Sctivi /gnotice per aiuto"
 
-#: data/defscript/popups.kvs:1333
+#: data/defscript/popups.kvs:1382
 msgid "Undock"
 msgstr "Sgancia"
 
-#: data/defscript/popups.kvs:1387
+#: data/defscript/popups.kvs:1484
 msgid "Unhighlight All Channels"
 msgstr "Deseleziona Tutti I Canali"
 
-#: data/defscript/popups.kvs:1393
+#: data/defscript/popups.kvs:1490
 msgid "Unhighlight All Queries"
 msgstr "Deseleziona Tutte Le Query"
 
-#: data/defscript/popups.kvs:1381
+#: data/defscript/popups.kvs:1478
 msgid "Unhighlight All Windows"
 msgstr "Deseleziona Tutte Le Finestre"
 
@@ -639,6 +651,14 @@ msgstr "Voice"
 #: data/defscript/popups.kvs:984
 msgid "Voice Chat"
 msgstr "Chat vocale"
+
+#: data/defscript/popups.kvs:1414
+msgid "When Connecting to Network '?s'"
+msgstr ""
+
+#: data/defscript/popups.kvs:1407
+msgid "When Connecting to Server '?s'"
+msgstr ""
 
 #: data/defscript/toolbars.kvs:40
 msgid "Window operations"

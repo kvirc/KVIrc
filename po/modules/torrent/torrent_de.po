@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2008-07-10 01:14+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
+#: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Benutze Torrent-Client Schnittstelle »%Q«."
 
-#: src/modules/torrent/libkvitorrent.cpp:719
+#: src/modules/torrent/libkvitorrent.cpp:722
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Ungültige Client-Schnittstelle »%Q«!"
 
@@ -40,7 +40,7 @@ msgstr "Ungültige Client-Schnittstelle »%Q«!"
 msgid "Last interface error: "
 msgstr "Letzter Schnittstellen-Fehler: "
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:92
+#: src/modules/torrent/StatusBarApplet.cpp:92
 msgid "No client selected!"
 msgstr "Keine Schnittstelle ausgewählt!"
 
@@ -64,8 +64,8 @@ msgstr ""
 "Die ausgewählte Torrent-Client Schnittstelle konnte die Funktion nicht "
 "ausführen."
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:44
-#: src/modules/torrent/tc_statusbarapplet.cpp:61
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:61
 msgid "Torrent Client"
 msgstr "Torrent Client"
 
@@ -73,7 +73,7 @@ msgstr "Torrent Client"
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr "Versuche Torrent-Client Schnittstelle »%Q«: %d Punkte."
 
-#: src/modules/torrent/libkvitorrent.cpp:711
+#: src/modules/torrent/libkvitorrent.cpp:714
 msgid "Using client interface \"%Q\"."
 msgstr "Benutze Client Schnittstelle »%Q«."
 

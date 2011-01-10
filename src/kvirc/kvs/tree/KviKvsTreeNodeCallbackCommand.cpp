@@ -40,9 +40,9 @@ KviKvsTreeNodeCallbackCommand::~KviKvsTreeNodeCallbackCommand()
 	delete m_pCallback;
 }
 
-void KviKvsTreeNodeCallbackCommand::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeCallbackCommand::contextDescription(QString & szBuffer)
 {
-	KviQString::sprintf(szBuffer,"Callback Command \"%s\"",&m_szCmdName);
+	szBuffer = QString("Callback Command \"%1\"").arg(m_szCmdName);
 }
 
 void KviKvsTreeNodeCallbackCommand::dump(const char * prefix)

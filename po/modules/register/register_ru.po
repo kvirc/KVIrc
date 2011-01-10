@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-01-30 19:43+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -47,12 +47,12 @@ msgstr " Пользователь: %c%Q"
 msgid "&Add Group..."
 msgstr "&Добавить группу..."
 
-#: src/modules/reguser/edituser.cpp:355
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:355
 #: src/modules/reguser/dialog.cpp:246
 msgid "&Add..."
 msgstr "&Добавить..."
 
-#: src/modules/reguser/edituser.cpp:364
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:364
 msgid "&Edit"
 msgstr "&Редактировать"
 
@@ -60,22 +60,22 @@ msgstr "&Редактировать"
 msgid "&Edit..."
 msgstr "&Редактировать..."
 
-#: src/modules/reguser/edituser.cpp:102
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:102
 msgid "&New"
 msgstr "&Новый"
 
-#: src/modules/reguser/edituser.cpp:114
-#: src/modules/reguser/edituser.cpp:258
-#: src/modules/reguser/edituser.cpp:470
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:114
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:258
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:470
 #: src/modules/reguser/dialog.cpp:297
 msgid "&OK"
 msgstr "&Ok"
 
-#: src/modules/reguser/edituser.cpp:106
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:106
 msgid "&Remove"
 msgstr "&Удалить"
 
-#: src/modules/reguser/edituser.cpp:244
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:244
 msgid ""
 "<center>This is the <b>hostname</b> that will match this user. <b>*</b> will "
 "match any hostname.</center>"
@@ -83,7 +83,7 @@ msgstr ""
 "<center>Это <b>хост</b> соответствующий этому пользователю. <b>*</b> будет "
 "соответствовать любому хосту.</center>"
 
-#: src/modules/reguser/edituser.cpp:226
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:226
 msgid ""
 "<center>This is the <b>nickname</b> that will match this user, default value "
 "is the registered name.</center>"
@@ -91,7 +91,7 @@ msgstr ""
 "<center>Это <b>ник</b> соответствующий этому пользователю, является "
 "зарегистрированным и используется по умолчанию.</center>"
 
-#: src/modules/reguser/edituser.cpp:235
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:235
 msgid ""
 "<center>This is the <b>username</b> that will match this user. <b>*</b> will "
 "match any username.</center>"
@@ -114,11 +114,11 @@ msgstr ""
 "уведомлений. Тонкая настройка списка выполняется при редактировании свойств."
 "</center>"
 
-#: src/modules/reguser/edituser.cpp:384
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:384
 msgid "<center>You can enter a space separated list of nicknames.</center>"
 msgstr "<center>Вы можете ввести через пробел список ников.</center>"
 
-#: src/modules/reguser/wizard.cpp:112
+#: src/modules/reguser/RegistrationWizard.cpp:112
 msgid ""
 "<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
 "mask must be in the following form:<br><b>nickname!username@hostname</"
@@ -137,7 +137,7 @@ msgstr ""
 "\" в диалоге регистрации пользователей. Вы должны определить хотя бы одну "
 "маску.</p>"
 
-#: src/modules/reguser/wizard.cpp:208
+#: src/modules/reguser/RegistrationWizard.cpp:208
 msgid ""
 "<p>If you want to be notified when this user is online or goes offline, you "
 "must specify the list of nicknames that KVIrc will look for.<br><br>You can "
@@ -150,7 +150,7 @@ msgstr ""
 "ников, если вам нужно больше используйте кнопку \"<b>Редактировать</b>\" в "
 "диалоге регистрации пользователей.</p>"
 
-#: src/modules/reguser/wizard.cpp:183
+#: src/modules/reguser/RegistrationWizard.cpp:183
 msgid ""
 "<p>If you want to store an avatar image for this user, you can set it here. "
 "KVIrc will show the avatar in the userlist next to the user's nickname."
@@ -166,7 +166,7 @@ msgstr ""
 "там их масштабирует чтобы поместить в список пользователей, поэтому лучше "
 "выбирать картинки небольших размеров с низким разрешением.</p>"
 
-#: src/modules/reguser/wizard.cpp:254
+#: src/modules/reguser/RegistrationWizard.cpp:254
 msgid ""
 "<p>That's it. The user registration has been completed.<br><br>Click "
 "\"<b>Finish</b>\" to close this dialog.</p>"
@@ -174,7 +174,7 @@ msgstr ""
 "<p>Регистрация пользователя завершена.<br><br>Щёлкните на \"<b>Готово</b>\" "
 "для закрытия этого диалога.</p>"
 
-#: src/modules/reguser/wizard.cpp:88
+#: src/modules/reguser/RegistrationWizard.cpp:88
 msgid ""
 "<p>Welcome to the user registration wizard.<br>This process allows you to "
 "add an IRC user to the database and set properties for that user. KVIrc will "
@@ -205,7 +205,7 @@ msgstr "Добавить (Мастер)..."
 msgid "Add a registered user by means of a user-friendly wizard."
 msgstr "Добавьте регистрацию пользователя при помощи дружественного мастера."
 
-#: src/modules/reguser/wizard.cpp:218
+#: src/modules/reguser/RegistrationWizard.cpp:218
 msgid "Add this user to the notify list"
 msgstr "Добавить этого пользователя в список уведомлений"
 
@@ -213,11 +213,11 @@ msgstr "Добавить этого пользователя в список у�
 msgid "Adds a new group"
 msgstr "Добавить новую групу"
 
-#: src/modules/reguser/edituser.cpp:424
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:424
 msgid "All Properties..."
 msgstr "Все свойства..."
 
-#: src/modules/reguser/edituser.cpp:409
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:409
 msgid "Avatar"
 msgstr "Аватар"
 
@@ -240,9 +240,9 @@ msgstr "Невозможно открыть файл %Q на запись."
 msgid "Can't open file %s for reading."
 msgstr "Невозможно открыть файл %s на чтение."
 
-#: src/modules/reguser/edituser.cpp:118
-#: src/modules/reguser/edituser.cpp:262
-#: src/modules/reguser/edituser.cpp:469
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:118
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:262
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
 #: src/modules/reguser/dialog.cpp:302
 msgid "Cancel"
 msgstr "Отмена"
@@ -257,7 +257,7 @@ msgstr "Канал: %c%s@%s"
 msgid "Choose a Filename - KVIrc"
 msgstr "Выберите имя файла - KVIrc"
 
-#: src/modules/reguser/edituser.cpp:332
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:332
 #: src/modules/reguser/dialog.cpp:134
 msgid "Comment:"
 msgstr "Комментарий:"
@@ -274,7 +274,7 @@ msgstr "По умолчанию"
 msgid "Edit the first selected entry."
 msgstr "Редактировать первый выбранный пункт."
 
-#: src/modules/reguser/edituser.cpp:437
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:437
 msgid "Enable ignore for this user"
 msgstr "Игнорировать этого пользователя"
 
@@ -301,39 +301,39 @@ msgstr "Флаги"
 msgid "Group name:"
 msgstr "Имя группы:"
 
-#: src/modules/reguser/edituser.cpp:372
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:372
 msgid "Identity"
 msgstr "Идентификация"
 
-#: src/modules/reguser/edituser.cpp:467
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:467
 msgid "Ignore"
 msgstr "Игнор"
 
-#: src/modules/reguser/edituser.cpp:455
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:455
 msgid "Ignore CTCP messages"
 msgstr "Игнорировать CTCP"
 
-#: src/modules/reguser/edituser.cpp:461
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:461
 msgid "Ignore DCCs"
 msgstr "Игнорировать DCC"
 
-#: src/modules/reguser/edituser.cpp:449
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:449
 msgid "Ignore channel messages"
 msgstr "Игнорировать сообщения в канале"
 
-#: src/modules/reguser/edituser.cpp:439
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:439
 msgid "Ignore features"
 msgstr "Игнорировать возможности"
 
-#: src/modules/reguser/edituser.cpp:458
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:458
 msgid "Ignore invites"
 msgstr "Игнорировать приглашения"
 
-#: src/modules/reguser/edituser.cpp:452
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:452
 msgid "Ignore notice messages"
 msgstr "Игнорировать уведомления"
 
-#: src/modules/reguser/edituser.cpp:446
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:446
 msgid "Ignore query messages"
 msgstr "Игнорировать приватные сообщения"
 
@@ -349,7 +349,7 @@ msgstr ""
 "Импортировать данные из файла которые были ранее экспортированы функцией "
 "\"Экспорт\" этого диалога."
 
-#: src/modules/reguser/edituser.cpp:216
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:216
 msgid ""
 "Insert a mask for this user.<br>It can contain the wildcard characters '*' "
 "and '?'."
@@ -369,11 +369,11 @@ msgstr "Маска %Q уже имеется у пользователя %s"
 msgid "Mask %Q not found"
 msgstr "Маска %Q не найдена"
 
-#: src/modules/reguser/edituser.cpp:212
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:212
 msgid "Mask Editor"
 msgstr "Редактор маски"
 
-#: src/modules/reguser/edituser.cpp:342
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:342
 msgid "Masks:"
 msgstr "Маска:"
 
@@ -385,15 +385,15 @@ msgstr "Переместить в группу"
 msgid "Name"
 msgstr "Имя"
 
-#: src/modules/reguser/edituser.cpp:326
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:326
 msgid "Name:"
 msgstr "Имя:"
 
-#: src/modules/reguser/wizard.cpp:228
+#: src/modules/reguser/RegistrationWizard.cpp:228
 msgid "Nickname 2:"
 msgstr "Ник 2:"
 
-#: src/modules/reguser/wizard.cpp:224
+#: src/modules/reguser/RegistrationWizard.cpp:224
 msgid "Nickname:"
 msgstr "Ник:"
 
@@ -436,11 +436,11 @@ msgstr "Уведомить как:"
 msgid "Notify disabled"
 msgstr "Уведомление отключено"
 
-#: src/modules/reguser/edituser.cpp:381
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:381
 msgid "Notify nicknames:"
 msgstr "Уведомление ников:"
 
-#: src/modules/reguser/edituser.cpp:378
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:378
 msgid "Notify when user is online"
 msgstr "Уведомлять когда пользователь в онлайне"
 
@@ -448,24 +448,24 @@ msgstr "Уведомлять когда пользователь в онлайн
 msgid "Open the edit dialog to create a new user entry."
 msgstr "Откройте диалог редактирования чтобы создать нового пользователя."
 
-#: src/modules/reguser/edituser.cpp:431
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:431
 msgid "Properties"
 msgstr "Свойства"
 
-#: src/modules/reguser/edituser.cpp:91
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:91
 msgid "Property"
 msgstr "Свойство"
 
-#: src/modules/reguser/edituser.cpp:78
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:78
 msgid "Property Editor"
 msgstr "Редактор свойств"
 
-#: src/modules/reguser/edituser.cpp:359
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:359
 #: src/modules/reguser/dialog.cpp:256
 msgid "Re&move"
 msgstr "&Удалить"
 
-#: src/modules/reguser/edituser.cpp:320
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:320
 msgid "Registered User Entry"
 msgstr "Регистрация пользователя"
 
@@ -481,7 +481,7 @@ msgstr "Зарегистрированный список каналов:"
 msgid "Registered users database dump:"
 msgstr "Дамп базы зарегистрированных пользователей:"
 
-#: src/modules/reguser/wizard.cpp:258
+#: src/modules/reguser/RegistrationWizard.cpp:258
 msgid "Registration Complete"
 msgstr "Регистрация завершена"
 
@@ -497,23 +497,23 @@ msgstr ""
 msgid "Select all the entries"
 msgstr ""
 
-#: src/modules/reguser/wizard.cpp:97
+#: src/modules/reguser/RegistrationWizard.cpp:97
 msgid "Step 1: Entry Name"
 msgstr "Шаг 1: Выберите имя"
 
-#: src/modules/reguser/wizard.cpp:171
+#: src/modules/reguser/RegistrationWizard.cpp:171
 msgid "Step 2: Mask Selection"
 msgstr "Шаг 2: Выбор маски"
 
-#: src/modules/reguser/wizard.cpp:197
+#: src/modules/reguser/RegistrationWizard.cpp:197
 msgid "Step 3: Avatar Selection"
 msgstr "Шаг 3: Выбор аватара"
 
-#: src/modules/reguser/wizard.cpp:242
+#: src/modules/reguser/RegistrationWizard.cpp:242
 msgid "Step 4: Notify List"
 msgstr "Шаг 4: Список уведомлений"
 
-#: src/modules/reguser/wizard.cpp:192
+#: src/modules/reguser/RegistrationWizard.cpp:192
 msgid "Store an avatar for this user"
 msgstr "Использовать аватар для этого пользователя"
 
@@ -537,7 +537,7 @@ msgstr "Всего %d каналов"
 msgid "Total: %d matching users (of %d in the database)"
 msgstr "Итого: %d пользователей (%d в базе данных)"
 
-#: src/modules/reguser/edituser.cpp:416
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:416
 msgid "Use custom color in userlist"
 msgstr "Использовать другой цвет в списке пользователей"
 
@@ -548,7 +548,7 @@ msgstr "Использовать другой цвет в списке поль�
 msgid "User %Q not found"
 msgstr "Пользователь %Q не найден"
 
-#: src/modules/reguser/wizard.cpp:77
+#: src/modules/reguser/RegistrationWizard.cpp:77
 msgid "User Registration Wizard - KVIrc"
 msgstr "Мастер регистрации пользователя - KVIrc"
 
@@ -560,7 +560,7 @@ msgstr "Пользователь уже зарегистрирован: обна
 msgid "User not found (%Q)"
 msgstr "Пользователь не найден (%Q)"
 
-#: src/modules/reguser/edituser.cpp:92
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:92
 msgid "Value"
 msgstr "Значение"
 

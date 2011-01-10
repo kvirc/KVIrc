@@ -104,8 +104,7 @@ namespace KviKvsParameterProcessor
 			}
 		}
 
-		QString szError;
-		KviQString::sprintf(szError,__tr2qs_ctx("Invalid data type for parameter \"%s\"","kvs"),pFmtArray->szName);
+		QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\"","kvs")).arg(pFmtArray->szName);
 		szError += ": ";
 
 		if(v->isString())
@@ -144,8 +143,7 @@ namespace KviKvsParameterProcessor
 				if(!(pFmtArray->uFlags & KVS_PF_OPTIONAL))
 				{
 					// bad luck
-					QString szError;
-					KviQString::sprintf(szError,__tr2qs_ctx("Missing non-optional parameter \"%s\"","kvs"),pFmtArray->szName);
+					QString szError = QString(__tr2qs_ctx("Missing non-optional parameter \"%1\"","kvs")).arg(pFmtArray->szName);
 					pContext->error(szError);
 					return false;
 				}
@@ -221,10 +219,7 @@ namespace KviKvsParameterProcessor
 					}
 					if(((QString *)(pFmtArray->pContainer))->isEmpty())
 					{
-						QString szError;
-						KviQString::sprintf(szError,__tr2qs_ctx("Invalid data type for parameter \"%s\"","kvs"),pFmtArray->szName);
-						szError += ": ";
-						KviQString::sprintf(szError,__tr2qs_ctx("found empty string while a non empty one was expected","kvs"));
+						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": found empty string while a non empty one was expected","kvs")).arg(pFmtArray->szName);
 						pContext->error(szError);
 						return false;
 					}
@@ -270,10 +265,7 @@ namespace KviKvsParameterProcessor
 					*((QByteArray *)(pFmtArray->pContainer)) = tmp.toUtf8();
 					if(((QByteArray *)(pFmtArray->pContainer))->isEmpty())
 					{
-						QString szError;
-						KviQString::sprintf(szError,__tr2qs_ctx("Invalid data type for parameter \"%s\"","kvs"),pFmtArray->szName);
-						szError += ": ";
-						KviQString::sprintf(szError,__tr2qs_ctx("found empty string while a non empty one was expected","kvs"));
+						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": found empty string while a non empty one was expected","kvs")).arg(pFmtArray->szName);
 						pContext->error(szError);
 						return false;
 					}
@@ -297,10 +289,7 @@ namespace KviKvsParameterProcessor
 					}
 					if(iTmp < 0)
 					{
-						QString szError;
-						KviQString::sprintf(szError,__tr2qs_ctx("Invalid data type for parameter \"%s\"","kvs"),pFmtArray->szName);
-						szError += ": ";
-						KviQString::sprintf(szError,__tr2qs_ctx("found signed integer \"%d\" where type 'unsigned integer' was expected","kvs"),iTmp);
+						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": found signed integer \"%2\" where type 'unsigned integer' was expected","kvs")).arg(pFmtArray->szName).arg(iTmp);
 						pContext->error(szError);
 						return false;
 					}

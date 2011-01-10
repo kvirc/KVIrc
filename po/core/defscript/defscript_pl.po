@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-06-23 01:45+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -155,6 +155,10 @@ msgstr "Dodaj do powiadomień"
 msgid "Always Highlight"
 msgstr "Zawsze podświetlaj"
 
+#: data/defscript/popups.kvs:1404
+msgid "Automatically Join Channel"
+msgstr ""
+
 #: data/defscript/popups.kvs:405
 msgid "Avatar"
 msgstr "Awatar"
@@ -215,19 +219,19 @@ msgstr "Wyczyść bufor"
 msgid "Clear Default"
 msgstr "Wyczyść domyślny"
 
-#: data/defscript/popups.kvs:1343
+#: data/defscript/popups.kvs:1392
 msgid "Close"
 msgstr ""
 
-#: data/defscript/popups.kvs:1367
+#: data/defscript/popups.kvs:1464
 msgid "Close All Dead Channels"
 msgstr ""
 
-#: data/defscript/popups.kvs:1373
+#: data/defscript/popups.kvs:1470
 msgid "Close All Dead Queries"
 msgstr ""
 
-#: data/defscript/popups.kvs:1361
+#: data/defscript/popups.kvs:1458
 msgid "Close All Queries"
 msgstr ""
 
@@ -260,7 +264,7 @@ msgstr "DNS dla"
 msgid "Default"
 msgstr "Domyślne"
 
-#: data/defscript/popups.kvs:1332
+#: data/defscript/popups.kvs:1381
 msgid "Dock"
 msgstr ""
 
@@ -403,11 +407,11 @@ msgstr "Zapisywanie dziennika w"
 msgid "Mask for"
 msgstr "Maska dla"
 
-#: data/defscript/popups.kvs:1338
+#: data/defscript/popups.kvs:1387
 msgid "Maximize"
 msgstr ""
 
-#: data/defscript/popups.kvs:1337
+#: data/defscript/popups.kvs:1386
 msgid "Minimize"
 msgstr ""
 
@@ -449,7 +453,7 @@ msgstr "Ogłoś awatar"
 msgid "O&wner"
 msgstr "U&czyń właścicielem"
 
-#: data/defscript/popups.kvs:1413
+#: data/defscript/popups.kvs:1510
 msgid "Open "
 msgstr "Otwórz"
 
@@ -461,7 +465,7 @@ msgstr "Opcje"
 msgid "Parameter message missing"
 msgstr "Brakujący parametr wiadomości"
 
-#: data/defscript/popups.kvs:1355
+#: data/defscript/popups.kvs:1452
 #, fuzzy
 msgid "Part All Channels"
 msgstr "Kanały"
@@ -487,7 +491,7 @@ msgstr "Rejestruj..."
 msgid "Remove from Notify"
 msgstr "Usuń z powiadomień"
 
-#: data/defscript/popups.kvs:1339
+#: data/defscript/popups.kvs:1388
 msgid "Restore"
 msgstr ""
 
@@ -527,7 +531,7 @@ msgstr "Wysyłanie wallop do"
 msgid "Set as Default"
 msgstr "Ustaw jako domyślne"
 
-#: data/defscript/popups.kvs:1349
+#: data/defscript/popups.kvs:1398
 #, fuzzy
 msgid "Set window props as default"
 msgstr "Ustaw jako domyślne"
@@ -536,6 +540,14 @@ msgstr "Ustaw jako domyślne"
 #: data/defscript/popups.kvs:88
 msgid "Start Highlighting (Local)"
 msgstr "Rozpocznij podświetlanie (lokalne)"
+
+#: data/defscript/popups.kvs:1435
+msgid "Stop Auto-Joining Channel on Network '?s'"
+msgstr ""
+
+#: data/defscript/popups.kvs:1422
+msgid "Stop Auto-Joining Channel on Server '?s'"
+msgstr ""
 
 #: data/defscript/popups.kvs:67
 msgid "Stop Highlighting"
@@ -558,7 +570,7 @@ msgstr "Wyślij odwrotnie TDCC do"
 msgid "TDCC Send to"
 msgstr "Wyślij TDCC do"
 
-#: data/defscript/popups.kvs:1418
+#: data/defscript/popups.kvs:1515
 msgid "Telnet to "
 msgstr "Telnet do "
 
@@ -575,11 +587,11 @@ msgstr "To nie jest okno kanału"
 msgid "To connect to a server, type /server <server name>"
 msgstr "Aby połączyć się z serwerem, wpisz /server <nazwa serwera>"
 
-#: data/defscript/popups.kvs:1425
+#: data/defscript/popups.kvs:1522
 msgid "Traceroute to "
 msgstr "Traceroute do "
 
-#: data/defscript/popups.kvs:1431
+#: data/defscript/popups.kvs:1528
 msgid "Traceroute6 to "
 msgstr "Traceroute6 do "
 
@@ -587,20 +599,20 @@ msgstr "Traceroute6 do "
 msgid "Type /gnotice for help"
 msgstr "Wpisz /gnotice dla uzyskania pomocy"
 
-#: data/defscript/popups.kvs:1333
+#: data/defscript/popups.kvs:1382
 msgid "Undock"
 msgstr ""
 
-#: data/defscript/popups.kvs:1387
+#: data/defscript/popups.kvs:1484
 #, fuzzy
 msgid "Unhighlight All Channels"
 msgstr "Podświetlaj jako"
 
-#: data/defscript/popups.kvs:1393
+#: data/defscript/popups.kvs:1490
 msgid "Unhighlight All Queries"
 msgstr ""
 
-#: data/defscript/popups.kvs:1381
+#: data/defscript/popups.kvs:1478
 msgid "Unhighlight All Windows"
 msgstr ""
 
@@ -644,6 +656,14 @@ msgstr "Głos"
 #: data/defscript/popups.kvs:984
 msgid "Voice Chat"
 msgstr "Czat głosowy"
+
+#: data/defscript/popups.kvs:1414
+msgid "When Connecting to Network '?s'"
+msgstr ""
+
+#: data/defscript/popups.kvs:1407
+msgid "When Connecting to Server '?s'"
+msgstr ""
 
 #: data/defscript/toolbars.kvs:40
 msgid "Window operations"

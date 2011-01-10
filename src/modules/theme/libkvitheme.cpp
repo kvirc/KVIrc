@@ -28,7 +28,6 @@
 #include "KviMessageBox.h"
 #include "KviModule.h"
 #include "KviLocale.h"
-#include "KviQString.h"
 #include "KviParameterList.h"
 #include "KviCommandFormatter.h"
 #include "KviError.h"
@@ -118,8 +117,7 @@ static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 			if(!KviTheme::load(szPath,out))
 			{
 				QString szErr = out.lastError();
-				QString szMsg;
-				KviQString::sprintf(szMsg,__tr2qs_ctx("Failed to apply the specified theme: %Q","theme"),&szErr);
+				QString szMsg = QString(__tr2qs_ctx("Failed to apply the specified theme: %1","theme")).arg(szErr);
 				QMessageBox::critical(0,__tr2qs_ctx("Apply theme - KVIrc","theme"),szMsg,
 				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 			}

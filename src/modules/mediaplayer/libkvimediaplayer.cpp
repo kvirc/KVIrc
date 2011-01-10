@@ -62,7 +62,7 @@ static MpInterface * auto_detect_player(KviWindow * pOut = 0)
 			{
 				QString szOut;
 				QString szNam = d->name();
-				KviQString::sprintf(szOut,__tr2qs_ctx("Trying media player interface \"%Q\": score %d","mediaplayer"),&(szNam),iScore);
+				szOut = QString(__tr2qs_ctx("Trying media player interface \"%1\": score %2","mediaplayer")).arg(szNam).arg(iScore);
 				pOut->output(KVI_OUT_MULTIMEDIA,szOut);
 			}
 		}
@@ -88,7 +88,7 @@ static MpInterface * auto_detect_player(KviWindow * pOut = 0)
 				{
 					QString szOut;
 					QString szNam = d->name();
-					KviQString::sprintf(szOut,__tr2qs_ctx("Trying media player interface \"%Q\": score %d","mediaplayer"),&(szNam),iScore);
+					szOut = QString(__tr2qs_ctx("Trying media player interface \"%1\": score %2","mediaplayer")).arg(szNam).arg(iScore);
 					pOut->output(KVI_OUT_MULTIMEDIA,szOut);
 				}
 			}

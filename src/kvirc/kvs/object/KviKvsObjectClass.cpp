@@ -173,20 +173,14 @@ void KviKvsObjectClass::unregisterChildClass(KviKvsObjectClass *pClass)
 	m_pChildClasses->removeRef(pClass);
 }
 
-bool KviKvsObjectClass::save(const QString &szFileName)
+bool KviKvsObjectClass::save(const QString & szFileName)
 {
-	if(!m_pParentClass)return false;
-	if(isBuiltin())return false;
+	if(!m_pParentClass)
+		return false;
+	if(isBuiltin())
+		return false;
 
-
-	QString szBuffer;
-	QString szParentName = m_pParentClass->name();
-
-	KviQString::sprintf(szBuffer,
-					"# Automatically generated KVS class dump\n\n" \
-					"class(\"%Q\",\"%Q\")\n" \
-					"{\n",
-					&m_szName,&szParentName);
+	QString szBuffer = QString("# Automatically generated KVS class dump\n\nclass(\"%1\",\"%2\")\n{\n").arg(m_szName,m_pParentClass->name());
 
 	KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler> it(*m_pFunctionHandlers);
 

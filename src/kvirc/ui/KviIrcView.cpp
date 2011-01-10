@@ -2287,9 +2287,8 @@ void KviIrcView::findNext(const QString& szText,bool bCaseS,bool bRegExp,bool bE
 				setCursorLine(l);
 				if(m_pToolWidget)
 				{
-					QString tmp;
-					KviQString::sprintf(tmp,__tr2qs("Pos %d"),idx);
-					m_pToolWidget->setFindResult(tmp);
+					QString szTmp = QString(__tr2qs("Pos %1")).arg(idx);
+					m_pToolWidget->setFindResult(szTmp);
 				}
 				return;
 			}
@@ -2341,9 +2340,8 @@ void KviIrcView::findPrev(const QString& szText,bool bCaseS,bool bRegExp,bool bE
 				setCursorLine(l);
 				if(m_pToolWidget)
 				{
-					QString tmp;
-					KviQString::sprintf(tmp,__tr2qs("Pos %d"),idx);
-					m_pToolWidget->setFindResult(tmp);
+					QString szTmp = QString(__tr2qs("Pos %1")).arg(idx);
+					m_pToolWidget->setFindResult(szTmp);
 				}
 				return;
 			}

@@ -1243,7 +1243,7 @@ bool KviKvsTreeNodeOperationStringSubstitution::execute(KviKvsRunTimeContext * c
 			str.remove(idx,len);
 
 			QString szReplaced;
-			const QChar * p2 = KviQString::nullTerminatedArray(szR);
+			const QChar * p2 = szR.constData();
 			const QChar * begin = p2;
 			if(p2)  //see bug #228, second example
 			{

@@ -81,77 +81,83 @@ KviNickServRuleSet::~KviNickServRuleSet()
 	if(m_pRules)delete m_pRules;
 }
 
-void KviNickServRuleSet::save(KviConfigurationFile * cfg,const QString &prefix)
+void KviNickServRuleSet::save(KviConfigurationFile * pCfg, const QString & szPrefix)
 {
-	if(!m_pRules)return; // nothing to save
-	if(m_pRules->isEmpty())return; // should never happen anyway
-	QString tmp;
+	if(!m_pRules)
+		return; // nothing to save
+	if(m_pRules->isEmpty())
+		return; // should never happen anyway
+	QString szTmp;
 	if(m_bEnabled)
 	{
-		KviQString::sprintf(tmp,"%QNSEnabled",&prefix);
-		cfg->writeEntry(tmp,m_bEnabled);
+		szTmp = QString("%1NSEnabled").arg(szPrefix);
+		pCfg->writeEntry(szTmp,m_bEnabled);
 	}
-	KviQString::sprintf(tmp,"%QNSRules",&prefix);
-	cfg->writeEntry(tmp,m_pRules->count());
-	int idx = 0;
-	for(KviNickServRule * r = m_pRules->first();r;r = m_pRules->next())
+	szTmp = QString("%1NSRules").arg(szPrefix);
+	pCfg->writeEntry(szTmp,m_pRules->count());
+	int i = 0;
+	for(KviNickServRule * pRule = m_pRules->first(); pRule; pRule = m_pRules->next())
 	{
-		KviQString::sprintf(tmp,"%QNSRule%d_",&prefix,idx);
-		r->save(cfg,tmp);
-		idx++;
+		szTmp = QString("%1NSRule%2_").arg(szPrefix).arg(i);
+		pRule->save(pCfg,szTmp);
+		i++;
 	}
 }
 
-KviNickServRuleSet * KviNickServRuleSet::load(KviConfigurationFile * cfg,const QString &prefix)
+KviNickServRuleSet * KviNickServRuleSet::load(KviConfigurationFile * pCfg, const QString & szPrefix)
 {
-	QString tmp;
-	KviQString::sprintf(tmp,"%QNSRules",&prefix);
-	unsigned int cnt = cfg->readUIntEntry(tmp,0);
-	if(cnt == 0)return 0;
-	KviNickServRuleSet * s = new KviNickServRuleSet();
-	if(s->loadPrivate(cfg,prefix,cnt))return s;
-	delete s;
+	QString szTmp;
+	szTmp = QString("%1NSRules").arg(szPrefix);
+	unsigned int uCount = pCfg->readUIntEntry(szTmp,0);
+	if(uCount == 0)
+		return 0;
+	KviNickServRuleSet * pSet = new KviNickServRuleSet();
+	if(pSet->loadPrivate(pCfg,szPrefix,uCount))
+		return pSet;
+	delete pSet;
 	return 0;
 }
 
-void KviNickServRuleSet::load(const QString &szConfigFile)
+void KviNickServRuleSet::load(const QString & szConfigFile)
 {
 	clear();
 	KviConfigurationFile cfg(szConfigFile,KviConfigurationFile::Read);
 
-	QString tmp;
-	KviQString::sprintf(tmp,"NSRules");
-	unsigned int cnt = cfg.readUIntEntry(tmp,0);
-	if(cnt == 0)return;
-	loadPrivate(&cfg,QString(""),cnt);
+	QString szTmp = "NSRules";
+	unsigned int uCount = cfg.readUIntEntry(szTmp,0);
+	if(uCount == 0)
+		return;
+	loadPrivate(&cfg,QString(""),uCount);
 }
 
-void KviNickServRuleSet::save(const QString &szConfigFile)
+void KviNickServRuleSet::save(const QString & szConfigFile)
 {
 	KviConfigurationFile cfg(szConfigFile,KviConfigurationFile::Write);
 	cfg.clear();
 	save(&cfg,QString(""));
 }
 
-bool KviNickServRuleSet::loadPrivate(KviConfigurationFile * cfg,const QString &prefix,unsigned int nEntries)
+bool KviNickServRuleSet::loadPrivate(KviConfigurationFile * pCfg, const QString & szPrefix, unsigned int uEntries)
 {
-	if(m_pRules)m_pRules->clear();
+	if(m_pRules)
+		m_pRules->clear();
 	else {
 		m_pRules = new KviPointerList<KviNickServRule>;
 		m_pRules->setAutoDelete(true);
 	}
 
-	if(nEntries != 0)
+	if(uEntries != 0)
 	{
-		QString tmp;
-		KviQString::sprintf(tmp,"%QNSEnabled",&prefix);
-		m_bEnabled = cfg->readBoolEntry(tmp,false);
-		for(unsigned int u=0;u<nEntries;u++)
+		QString szTmp;
+		szTmp = QString("%1NSEnabled").arg(szPrefix);
+		m_bEnabled = pCfg->readBoolEntry(szTmp,false);
+		for(unsigned int u=0; u < uEntries; u++)
 		{
-			KviQString::sprintf(tmp,"%QNSRule%u_",&prefix,u);
-			KviNickServRule * r = new KviNickServRule();
-			if(!r->load(cfg,tmp))delete r;
-			else m_pRules->append(r);
+			szTmp = QString("%1NSRule%2_").arg(szPrefix).arg(u);
+			KviNickServRule * pRule = new KviNickServRule();
+			if(!pRule->load(pCfg,szTmp))
+				delete pRule;
+			else m_pRules->append(pRule);
 		}
 	}
 

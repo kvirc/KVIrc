@@ -484,8 +484,7 @@ void KviKvsPopupMenuItemExtMenu::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTop
 			pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Recursive definition detected for popup '%Q': ignoring","kvs"),&(pMenu->popupName()));
 			return;
 		}
-		QString tmp;
-		KviQString::sprintf(tmp,"%Q.%Q",&(pMenu->popupName()),&m_szMenuName);
+		QString tmp = QString("%1.%2").arg(pMenu->popupName(),m_szMenuName);
 		if(m_pMenu)delete m_pMenu;
 		m_pMenu = new KviKvsPopupMenu(tmp);
 		m_pMenu->copyFrom(source);
@@ -572,7 +571,7 @@ void KviKvsPopupMenu::addPrologue(const QString &szItemName,const QString &szCod
 	// FIXME: translate this or not ?
 	QString szName = szItemName;
 	if(szName.isEmpty())
-		KviQString::sprintf(szName,"prologue_%u_for_%Q",m_pPrologues->count(),&m_szName);
+		szName = QString("prologue_%1_for_%2").arg(m_pPrologues->count()).arg(m_szName);
 	m_pPrologues->append(new KviKvsScript(szName,szCode));
 }
 
@@ -581,7 +580,7 @@ void KviKvsPopupMenu::addEpilogue(const QString &szItemName,const QString &szCod
 	// FIXME: translate this or not ?
 	QString szName = szItemName;
 	if(szName.isEmpty())
-		KviQString::sprintf(szName,"epilogue_%u_for_%Q",m_pPrologues->count(),&m_szName);
+		szName = QString("epilogue_%1_for_%2").arg(m_pPrologues->count()).arg(m_szName);
 	m_pEpilogues->append(new KviKvsScript(szName,szCode));
 }
 
@@ -681,7 +680,7 @@ KviKvsPopupMenu * KviKvsPopupMenu::addPopup(const QString &szItemName,const QStr
 {
 	QString szName = szItemName;
 	if(szName.isEmpty())
-		KviQString::sprintf(szName,"%Q.subpopup%d",&m_szName,m_pItemList->count());
+		szName = QString("%1.subpopup%2").arg(m_szName).arg(m_pItemList->count());
 	KviKvsPopupMenu * pNew = new KviKvsPopupMenu(szName);
 	pNew->setParentPopup(this);
 	addItemInternal(new KviKvsPopupMenuItemMenu(szName,pNew,szText,szIcon,szCondition));
@@ -692,7 +691,7 @@ void KviKvsPopupMenu::addSeparator(const QString &szItemName,const QString &szCo
 {
 	QString szName = szItemName;
 	if(szName.isEmpty())
-		KviQString::sprintf(szName,"%Q.separator%d",&m_szName,m_pItemList->count());
+		szName = QString("%1.separator%2").arg(m_szName).arg(m_pItemList->count());
 	addItemInternal(new KviKvsPopupMenuItemSeparator(szName,szCondition));
 }
 
@@ -700,7 +699,7 @@ void KviKvsPopupMenu::addLabel(const QString &szItemName,const QString &szText,c
 {
 	QString szName = szItemName;
 	if(szName.isEmpty())
-		KviQString::sprintf(szName,"%Q.label%d",&m_szName,m_pItemList->count());
+		szName = QString("%1.label%2").arg(m_szName).arg(m_pItemList->count());
 	addItemInternal(new KviKvsPopupMenuItemLabel(szName,szText,szIcon,szCondition));
 }
 
@@ -708,7 +707,7 @@ void KviKvsPopupMenu::addItem(const QString &szItemName,const QString &szCode,co
 {
 	QString szName = szItemName;
 	if(szName.isEmpty())
-		KviQString::sprintf(szName,"%Q.item%d",&m_szName,m_pItemList->count());
+		szName = QString("%1.item%2").arg(m_szName).arg(m_pItemList->count());
 	addItemInternal(new KviKvsPopupMenuItemItem(szName,szCode,szText,szIcon,szCondition));
 
 }
@@ -717,7 +716,7 @@ void KviKvsPopupMenu::addExtPopup(const QString &szItemName,const QString &szPop
 {
 	QString szName = szItemName;
 	if(szName.isEmpty())
-		KviQString::sprintf(szName,"%Q.%Q",&m_szName,&szName);
+		szName = QString("%1.%1").arg(m_szName,szName);
 	addItemInternal(new KviKvsPopupMenuItemExtMenu(szName,szPopupName,szText,szIcon,szCondition));
 
 }
@@ -936,52 +935,51 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfigurationFile * cfg)
 	{
 		for(idx = 0;idx < cnt;idx++)
 		{
-			KviQString::sprintf(tmp,"%Q_Prologue%d",&(prefix),idx);
+			tmp = QString("%1_Prologue%2").arg(prefix).arg(idx);
 			QString pr = cfg->readEntry(tmp,"");
-			KviQString::sprintf(tmp,"%Q_PrologueId%d",&(prefix),idx);
+			tmp = QString("%1_PrologueId%2").arg(prefix).arg(idx);
 			QString itemName = cfg->readEntry(tmp,"");
 			if(!pr.isEmpty())addPrologue(itemName,pr);
 		}
 	} else {
 		// Might be old version!
-		KviQString::sprintf(tmp,"%Q_Prologue",&(prefix));
+		tmp = QString("%1_Prologue").arg(prefix);
 		QString pr = cfg->readEntry(tmp,"");
 		if(!pr.isEmpty())addPrologue(QString(),pr);
 	}
 
-	KviQString::sprintf(tmp,"%Q_EpilogueCount",&prefix);
+	tmp = QString("%1_EpilogueCount").arg(prefix);
 	cnt = cfg->readIntEntry(tmp,0);
 
 	if(cnt > 0)
 	{
 		for(idx = 0;idx < cnt;idx++)
 		{
-			KviQString::sprintf(tmp,"%Q_Epilogue%d",&prefix,idx);
+			tmp = QString("%1_Epilogue%2").arg(prefix).arg(idx);
 			QString ep = cfg->readEntry(tmp,"");
-			KviQString::sprintf(tmp,"%Q_PrologueId%d",&(prefix),idx);
+			tmp = QString("%1_EpilogueId%2").arg(prefix).arg(idx);
 			QString itemName = cfg->readEntry(tmp,"");
 			if(!ep.isEmpty())addEpilogue(itemName,ep);
 		}
 	} else {
 		// Might be old version!
-		KviQString::sprintf(tmp,"%Q_Epilogue",&prefix);
+		tmp = QString("%1_Epilogue").arg(prefix);
 		QString ep = cfg->readEntry(tmp,"");
 		if(!ep.isEmpty())addEpilogue(QString(),ep);
 	}
 
 
-	KviQString::sprintf(tmp,"%Q_Count",&prefix);
+	tmp = QString("%1_Count").arg(prefix);
 
 	cnt = cfg->readIntEntry(tmp,0);
 
 	for(idx = 0;idx < cnt;idx++)
 	{
-		QString pre;
-		KviQString::sprintf(pre,"%Q_%d",&prefix,idx);
+		QString pre = QString("%1_%2").arg(prefix).arg(idx);
 
-		KviQString::sprintf(tmp,"%Q_Id",&pre);
+		tmp = QString("%1_Id").arg(pre);
 		QString itemName = cfg->readEntry(tmp,QString());
-		KviQString::sprintf(tmp,"%Q_Type",&pre);
+		tmp = QString("%1_Type").arg(pre);
 
 		int type = cfg->readIntEntry(tmp,3);
 		switch(type)
@@ -989,7 +987,7 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfigurationFile * cfg)
 			case 0: // separator
 			{
 				QString expr;
-				KviQString::sprintf(tmp,"%Q_Expr",&pre);
+				tmp = QString("%1_Expr").arg(pre);
 				expr = cfg->readEntry(tmp,"");
 				addSeparator(itemName,expr);
 			}
@@ -997,13 +995,13 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfigurationFile * cfg)
 			case 1: // item
 			{
 				QString text,icon,code,expr;
-				KviQString::sprintf(tmp,"%Q_Text",&pre);
+				tmp = QString("%1_Text").arg(pre);
 				text = cfg->readEntry(tmp,"Unnamed");
-				KviQString::sprintf(tmp,"%Q_Icon",&pre);
+				tmp = QString("%1_Icon").arg(pre);
 				icon = cfg->readEntry(tmp,"");
-				KviQString::sprintf(tmp,"%Q_Code",&pre);
+				tmp = QString("%1_Code").arg(pre);
 				code = cfg->readEntry(tmp,"");
-				KviQString::sprintf(tmp,"%Q_Expr",&pre);
+				tmp = QString("%1_Expr").arg(pre);
 				expr = cfg->readEntry(tmp,"");
 				addItem(itemName,code,text,icon,expr);
 			}
@@ -1011,11 +1009,11 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfigurationFile * cfg)
 			case 2: // menu
 			{
 				QString text,icon,expr;
-				KviQString::sprintf(tmp,"%Q_Text",&pre);
+				tmp = QString("%1_Text").arg(pre);
 				text = cfg->readEntry(tmp,"Unnamed");
-				KviQString::sprintf(tmp,"%Q_Icon",&pre);
+				tmp = QString("%1_Icon").arg(pre);
 				icon = cfg->readEntry(tmp,"");
-				KviQString::sprintf(tmp,"%Q_Expr",&pre);
+				tmp = QString("%1_Expr").arg(pre);
 				expr = cfg->readEntry(tmp,"");
 				KviKvsPopupMenu * pop = addPopup(itemName,text,icon,expr);
 				pop->load(pre,cfg);
@@ -1024,11 +1022,11 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfigurationFile * cfg)
 			case 3: // label
 			{
 				QString text,icon,expr;
-				KviQString::sprintf(tmp,"%Q_Text",&pre);
+				tmp = QString("%1_Text").arg(pre);
 				text = cfg->readEntry(tmp,"Unnamed");
-				KviQString::sprintf(tmp,"%Q_Icon",&pre);
+				tmp = QString("%1_Icon").arg(pre);
 				icon = cfg->readEntry(tmp,"");
-				KviQString::sprintf(tmp,"%Q_Expr",&pre);
+				tmp = QString("%1_Expr").arg(pre);
 				expr = cfg->readEntry(tmp,"");
 				addLabel(itemName,text,icon,expr);
 			}
@@ -1036,13 +1034,13 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfigurationFile * cfg)
 			case 4: // extmenu
 			{
 				QString text,icon,code,expr;
-				KviQString::sprintf(tmp,"%Q_Text",&pre);
+				tmp = QString("%Q_Text").arg(pre);
 				text = cfg->readEntry(tmp,"Unnamed");
-				KviQString::sprintf(tmp,"%Q_Icon",&pre);
+				tmp = QString("%Q_Icon").arg(pre);
 				icon = cfg->readEntry(tmp,"");
-				KviQString::sprintf(tmp,"%Q_ExtName",&pre);
+				tmp = QString("%Q_ExtName").arg(pre);
 				code = cfg->readEntry(tmp,"");
-				KviQString::sprintf(tmp,"%Q_Expr",&pre);
+				tmp = QString("%Q_Expr").arg(pre);
 				expr = cfg->readEntry(tmp,"");
 				addExtPopup(itemName,code,text,icon,expr);
 			}
@@ -1063,33 +1061,33 @@ void KviKvsPopupMenu::save(const QString & prefix,KviConfigurationFile * cfg)
 	KviKvsScript * s;
 	QString tmp;
 
-	KviQString::sprintf(tmp,"%Q_PrologueCount",&prefix);
+	tmp = QString("%1_PrologueCount").arg(prefix);
 	cfg->writeEntry(tmp,m_pPrologues->count());
 
 	idx = 0;
 	for(s = m_pPrologues->first();s;s = m_pPrologues->next())
 	{
-		KviQString::sprintf(tmp,"%Q_Prologue%d",&prefix,idx);
+		tmp = QString("%1_Prologue%2").arg(prefix).arg(idx);
 		cfg->writeEntry(tmp,s->code());
-		KviQString::sprintf(tmp,"%Q_PrologueId%d",&prefix,idx);
+		tmp = QString("%1_PrologueId%2").arg(prefix).arg(idx);
 		cfg->writeEntry(tmp,s->name());
 		idx++;
 	}
 
-	KviQString::sprintf(tmp,"%Q_EpilogueCount",&prefix);
+	tmp = QString("%1_EpilogueCount").arg(prefix);
 	cfg->writeEntry(tmp,m_pEpilogues->count());
 
 	idx = 0;
 	for(s = m_pEpilogues->first();s;s = m_pEpilogues->next())
 	{
-		KviQString::sprintf(tmp,"%Q_Epilogue%d",&prefix,idx);
+		tmp = QString("%1_Epilogue%2").arg(prefix).arg(idx);
 		cfg->writeEntry(tmp,s->code());
-		KviQString::sprintf(tmp,"%Q_EpilogueId%d",&prefix,idx);
+		tmp = QString("%1_EpilogueId%2").arg(prefix).arg(idx);
 		cfg->writeEntry(tmp,s->name());
 		idx++;
 	}
 
-	KviQString::sprintf(tmp,"%Q_Count",&prefix);
+	tmp = QString("%1_Count").arg(prefix);
 	cfg->writeEntry(tmp,m_pItemList->count());
 	idx = 0;
 
@@ -1097,8 +1095,8 @@ void KviKvsPopupMenu::save(const QString & prefix,KviConfigurationFile * cfg)
 	for(KviKvsPopupMenuItem * it = m_pItemList->first();it;it = m_pItemList->next())
 	{
 		QString pre;
-		KviQString::sprintf(pre,"%Q_%d",&prefix,idx);
-		KviQString::sprintf(tmp,"%Q_Type",&pre);
+		tmp = QString("%1_%d").arg(prefix).arg(idx);
+		tmp = QString("%1_Type").arg(pre);
 		int typeCode = 0;
 		switch(it->type())
 		{
@@ -1111,34 +1109,34 @@ void KviKvsPopupMenu::save(const QString & prefix,KviConfigurationFile * cfg)
 
 		cfg->writeEntry(tmp,typeCode);
 
-		KviQString::sprintf(tmp,"%Q_Id",&pre);
+		tmp = QString("%1_Id").arg(pre);
 		cfg->writeEntry(tmp,it->name());
 
 		s = it->kvsCondition();
 		if(s)
 		{
-			KviQString::sprintf(tmp,"%Q_Expr",&pre);
+			tmp = QString("%1_Expr").arg(pre);
 			cfg->writeEntry(tmp,s->code());
 		}
 
 		s = it->kvsIcon();
 		if(s)
 		{
-			KviQString::sprintf(tmp,"%Q_Icon",&pre);
+			tmp = QString("%1_Icon").arg(pre);
 			cfg->writeEntry(tmp,s->code());
 		}
 
 		s = it->kvsText();
 		if(s)
 		{
-			KviQString::sprintf(tmp,"%Q_Text",&pre);
+			tmp = QString("%1_Text").arg(pre);
 			cfg->writeEntry(tmp,s->code());
 		}
 
 		s = it->kvsCode();
 		if(s)
 		{
-			KviQString::sprintf(tmp,"%Q_Code",&pre);
+			tmp = QString("%1_Code").arg(pre);
 			cfg->writeEntry(tmp,s->code());
 		}
 
@@ -1147,7 +1145,7 @@ void KviKvsPopupMenu::save(const QString & prefix,KviConfigurationFile * cfg)
 			((KviKvsPopupMenuItemMenu *)it)->menu()->save(pre,cfg);
 		} else if(it->isExtMenu())
 		{
-			KviQString::sprintf(tmp,"%Q_ExtName",&pre);
+			tmp = QString("%1_ExtName").arg(pre);
 			cfg->writeEntry(tmp,((KviKvsPopupMenuItemExtMenu *)it)->extName());
 		}
 
@@ -1231,7 +1229,7 @@ void KviKvsPopupMenu::generateDefPopupCore(QString &buffer)
 
 void KviKvsPopupMenu::generateDefPopup(QString &buffer)
 {
-	KviQString::sprintf(buffer,"defpopup(%s)\n",objectName().toLatin1().data());
+	buffer = QString("defpopup(%1)\n").arg(objectName().toLatin1().data());
 	QString core;
 
 	generateDefPopupCore(core);

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2010-10-31 00:18+0100\n"
 "Last-Translator: ealexp <ealexp@ealexp.eu>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
@@ -20,11 +20,12 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/modules/logview/logviewmdiwindow.cpp:304
-msgid "%Q on %Q"
+#: src/modules/logview/LogViewWindow.cpp:304
+#, fuzzy
+msgid "%1 on %2"
 msgstr "%Q sur %Q"
 
-#: src/modules/logview/logviewmdiwindow.cpp:154
+#: src/modules/logview/LogViewWindow.cpp:154
 msgid "Apply filter"
 msgstr "Appliquer le filtre"
 
@@ -32,91 +33,92 @@ msgstr "Appliquer le filtre"
 msgid "Browse &Log Files"
 msgstr "Naviguer dans les &journaux"
 
-#: src/modules/logview/logviewmdiwindow.cpp:84
+#: src/modules/logview/LogViewWindow.cpp:84
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/modules/logview/logviewwidget.cpp:70
+#: src/modules/logview/LogViewWidget.cpp:70
 msgid "Channel"
 msgstr "Salon"
 
-#: src/modules/logview/logviewwidget.cpp:82
+#: src/modules/logview/LogViewWidget.cpp:82
 msgid "Console"
 msgstr "Console"
 
-#: src/modules/logview/logviewmdiwindow.cpp:123
+#: src/modules/logview/LogViewWindow.cpp:123
 msgid "Contents filter"
 msgstr "Filtre de contenu"
 
-#: src/modules/logview/logviewwidget.cpp:78
+#: src/modules/logview/LogViewWidget.cpp:78
 msgid "DCC Chat"
 msgstr "DCC Chat"
 
-#: src/modules/logview/logviewmdiwindow.cpp:98
+#: src/modules/logview/LogViewWindow.cpp:98
 msgid "Filter"
 msgstr "Filtre"
 
-#: src/modules/logview/logviewmdiwindow.cpp:89
-msgid "Index"
+#: src/modules/logview/LogViewWindow.cpp:89
+#, fuzzy
+msgid "HelpIndex"
 msgstr "Index"
 
-#: src/modules/logview/logviewmdiwindow.cpp:548
+#: src/modules/logview/LogViewWindow.cpp:548
 msgid "Log File"
 msgstr "Journal"
 
-#: src/modules/logview/logviewmdiwindow.cpp:220
+#: src/modules/logview/LogViewWindow.cpp:220
 msgid "Log Viewer"
 msgstr "Visualiseur de journaux"
 
-#: src/modules/logview/logviewmdiwindow.cpp:132
+#: src/modules/logview/LogViewWindow.cpp:132
 msgid "Log contents mask:"
 msgstr "Masque de contenu :"
 
-#: src/modules/logview/logviewmdiwindow.cpp:126
+#: src/modules/logview/LogViewWindow.cpp:126
 msgid "Log name mask:"
 msgstr "Masque de nom :"
 
-#: src/modules/logview/logviewmdiwindow.cpp:146
+#: src/modules/logview/LogViewWindow.cpp:146
 msgid "Only newier than"
 msgstr "Seulement plus récents que"
 
-#: src/modules/logview/logviewmdiwindow.cpp:138
+#: src/modules/logview/LogViewWindow.cpp:138
 msgid "Only older than"
 msgstr "Seulement plus anciens que"
 
-#: src/modules/logview/logviewwidget.cpp:86
+#: src/modules/logview/LogViewWidget.cpp:86
 msgid "Other"
 msgstr "Autre"
 
-#: src/modules/logview/logviewwidget.cpp:74
+#: src/modules/logview/LogViewWidget.cpp:74
 msgid "Query"
 msgstr "Conversation privée"
 
-#: src/modules/logview/logviewmdiwindow.cpp:389
+#: src/modules/logview/LogViewWindow.cpp:389
 msgid "Remove all these channel/query log files"
 msgstr "Supprimer tous ces journaux des salons/conversations privés"
 
-#: src/modules/logview/logviewmdiwindow.cpp:390
+#: src/modules/logview/LogViewWindow.cpp:390
 msgid "Remove file"
 msgstr "Supprimer le fichier"
 
-#: src/modules/logview/logviewmdiwindow.cpp:114
+#: src/modules/logview/LogViewWindow.cpp:114
 msgid "Show DCC chat logs"
 msgstr "Afficher les journaux de DCC chat"
 
-#: src/modules/logview/logviewmdiwindow.cpp:102
+#: src/modules/logview/LogViewWindow.cpp:102
 msgid "Show channel logs"
 msgstr "Afficher les journaux des salons"
 
-#: src/modules/logview/logviewmdiwindow.cpp:110
+#: src/modules/logview/LogViewWindow.cpp:110
 msgid "Show console logs"
 msgstr "Afficher les journaux de console"
 
-#: src/modules/logview/logviewmdiwindow.cpp:118
+#: src/modules/logview/LogViewWindow.cpp:118
 msgid "Show other logs"
 msgstr "Afficher les autres journaux"
 
-#: src/modules/logview/logviewmdiwindow.cpp:106
+#: src/modules/logview/LogViewWindow.cpp:106
 msgid "Show query logs"
 msgstr "Afficher les journaux des conversations privés"
 

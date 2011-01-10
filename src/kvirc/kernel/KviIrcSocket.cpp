@@ -358,11 +358,11 @@ KviError::Code KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * 
 		if(bBindOk)
 		{
 			if(_OUTPUT_VERBOSE)
-				KviQString::sprintf(szTmp,__tr2qs("Binding to local address %s"),pcBindAddress);
+				szTmp = QString(__tr2qs("Binding to local address %1")).arg(pcBindAddress);
 			outputSocketMessage(szTmp);
 		} else {
 			if(_OUTPUT_VERBOSE)
-				KviQString::sprintf(szTmp,__tr2qs("Binding to local address %s failed: the kernel will choose the correct interface"),pcBindAddress);
+				szTmp = QString(__tr2qs("Binding to local address %1 failed: the kernel will choose the correct interface")).arg(pcBindAddress);
 			outputSocketWarning(szTmp);
 		}
 	}

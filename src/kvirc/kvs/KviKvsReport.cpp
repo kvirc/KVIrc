@@ -102,13 +102,11 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 		// there would be yet another line before
 		if(pPrevLine > pBufferBegin)
 		{
-			QString * pListingStrZ = new QString();
-			KviQString::sprintf(*pListingStrZ,"%d ...",iLine - 2);
+			QString * pListingStrZ = new QString(QString("%1 ...").arg(iLine - 2));
 			pListing->append(pListingStrZ);
 		}
 
-		QString * pListingStr = new QString();
-		KviQString::sprintf(*pListingStr,"%d ",iLine - 1);
+		QString * pListingStr = new QString(QString("%1 ").arg(iLine - 1));
 		*pListingStr += QString(pPrevLine,pLineBegin - pPrevLine);
 		pListingStr->replace("\n","");
 		pListing->append(pListingStr);
@@ -126,8 +124,7 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 	if(us)pBegin++;
 
 	{
-		QString * pListingStr = new QString();
-		KviQString::sprintf(*pListingStr,"%c%d ",KviMircCntrl::Bold,iLine);
+		QString * pListingStr = new QString(QString("%1%2 ").arg(KviMircCntrl::Bold).arg(iLine));
 		*pListingStr += QString(pLineBegin,pBegin - pLineBegin);
 		pListingStr->replace("\n","");
 		pListing->append(pListingStr);
@@ -147,8 +144,7 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 		if(us)pBegin++;
 
 		{
-			QString * pListingStr = new QString();
-			KviQString::sprintf(*pListingStr,"%d ",iLine + 1);
+			QString * pListingStr = new QString(QString("%1 ").arg(iLine + 1));
 			*pListingStr += QString(pLineBegin,pBegin - pLineBegin);
 			pListingStr->replace("\n","");
 			pListing->append(pListingStr);
@@ -157,8 +153,7 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 		// there would be yet another line
 		if(us)
 		{
-			QString * pListingStr = new QString();
-			KviQString::sprintf(*pListingStr,"%d ...",iLine + 2);
+			QString * pListingStr = new QString(QString("%1 ...").arg(iLine + 2));
 			pListing->append(pListingStr);
 		}
 	}

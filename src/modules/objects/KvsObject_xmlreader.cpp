@@ -159,15 +159,16 @@ private:
 	void decodeException(QString &szMsg,bool bError,const QXmlParseException &exception)
 	{
 		if(bError)
-			KviQString::sprintf(szMsg,__tr2qs_ctx("Error near line %d, column %d","objects"),exception.lineNumber(),exception.columnNumber());
+			szMsg = QString(__tr2qs_ctx("Error near line %1, column %2","objects")).arg(exception.lineNumber()).arg(exception.columnNumber());
 		else
-			KviQString::sprintf(szMsg,__tr2qs_ctx("Warning near line %d, column %d","objects"),exception.lineNumber(),exception.columnNumber());
+			szMsg = QString(__tr2qs_ctx("Warning near line %1, column %2","objects")).arg(exception.lineNumber()).arg(exception.columnNumber());
 		szMsg += ": ";
 		szMsg += exception.message();
 	}
 	bool handleKvsCallReturnValue(KviKvsVariant * pRetVal)
 	{
-		if(!pRetVal->asBoolean())return kvsCodeAbort();
+		if(!pRetVal->asBoolean())
+			return kvsCodeAbort();
 		return true;
 	}
 public:

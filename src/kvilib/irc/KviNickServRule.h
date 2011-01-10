@@ -25,9 +25,9 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
-#include "KviQString.h"
 #include "KviHeapObject.h"
+
+#include <QString>
 
 class KviConfigurationFile;
 class KviIrcMask;

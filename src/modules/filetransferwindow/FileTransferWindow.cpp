@@ -606,19 +606,18 @@ void FileTransferWindow::openLocalFileTerminal()
 
 void FileTransferWindow::deleteLocalFile()
 {
-	KviFileTransfer * t = selectedTransfer();
-	if(!t)return;
-
-	QString fName = t->localFileName();
-	QString tmp;
-
-	KviQString::sprintf(tmp,__tr2qs_ctx("Do you really want to delete the file %Q?","filetransferwindow"),&fName);
-
-	if(QMessageBox::warning(this,__tr2qs_ctx("Confirm delete","filetransferwindow"),
-			tmp,__tr2qs_ctx("Yes","filetransferwindow"),__tr2qs_ctx("No","filetransferwindow")) != 0)
+	KviFileTransfer * pTransfer = selectedTransfer();
+	if(!pTransfer)
 		return;
 
-	if(!QFile::remove(fName))
+	QString szName = pTransfer->localFileName();
+	QString szTmp = QString(__tr2qs_ctx("Do you really want to delete the file %1?","filetransferwindow")).arg(szName);
+
+	if(QMessageBox::warning(this,__tr2qs_ctx("Confirm delete","filetransferwindow"),
+			szTmp,__tr2qs_ctx("Yes","filetransferwindow"),__tr2qs_ctx("No","filetransferwindow")) != 0)
+		return;
+
+	if(!QFile::remove(szName))
 		QMessageBox::warning(this,__tr2qs_ctx("Delete failed","filetransferwindow"),
 			__tr2qs_ctx("Failed to remove the file","filetransferwindow"),
 			__tr2qs_ctx("OK","filetransferwindow"));
@@ -760,30 +759,28 @@ void FileTransferWindow::heartbeat()
 
 void FileTransferWindow::clearAll()
 {
-	QString tmp;
-
 	bool bHaveAllTerminated = true;
 	int i;
-	FileTransferItem * item;
+	FileTransferItem * pItem;
 
-	for(i=0;i<m_pTableWidget->rowCount();i++)
+	for(i=0; i < m_pTableWidget->rowCount(); i++)
 	{
-		item = (FileTransferItem *)m_pTableWidget->item(i,0);
-		if(!item)
+		pItem = (FileTransferItem *)m_pTableWidget->item(i,0);
+		if(!pItem)
 			continue;
 
-		if(!item->transfer()->terminated())
+		if(!pItem->transfer()->terminated())
 		{
 			bHaveAllTerminated = false;
 			break;
 		}
 	}
 
-	KviQString::sprintf(tmp,__tr2qs_ctx("Clear all transfers, including any in progress?","filetransferwindow"));
+	QString szTmp = __tr2qs_ctx("Clear all transfers, including any in progress?","filetransferwindow");
 
 	// If any transfer is active asks for confirm
 	if(!bHaveAllTerminated)
-		if(QMessageBox::warning(this,__tr2qs_ctx("Clear All Transfers? - KVIrc","filetransferwindow"), tmp,__tr2qs_ctx("Yes","filetransferwindow"),__tr2qs_ctx("No","filetransferwindow")) != 0)
+		if(QMessageBox::warning(this,__tr2qs_ctx("Clear All Transfers? - KVIrc","filetransferwindow"), szTmp,__tr2qs_ctx("Yes","filetransferwindow"),__tr2qs_ctx("No","filetransferwindow")) != 0)
 			return;
 
 	KviFileTransferManager::instance()->killAllTransfers();

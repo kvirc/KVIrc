@@ -151,11 +151,11 @@ void KviIdentityProfileSet::load(const QString & szConfigFile)
 	clear();
 	KviConfigurationFile cfg(szConfigFile,KviConfigurationFile::Read);
 
-	QString szTmp;
-	KviQString::sprintf(szTmp,"ProfilesNumber");
+	QString szTmp = "ProfilesNumber";
 
 	unsigned int uCount = cfg.readUIntEntry(szTmp,0);
-	if(uCount == 0) return;
+	if(uCount == 0)
+		return;
 	loadPrivate(&cfg,QString(""),uCount);
 }
 
@@ -176,17 +176,17 @@ void KviIdentityProfileSet::save(KviConfigurationFile * pCfg, const QString & sz
 	QString szTmp;
 	if(m_bEnabled)
 	{
-		KviQString::sprintf(szTmp,"%QProfilesEnabled",&szPrefix);
+		szTmp = QString("%1ProfilesEnabled").arg(szPrefix);
 		pCfg->writeEntry(szTmp,m_bEnabled);
 	}
 
-	KviQString::sprintf(szTmp,"%QProfilesNumber",&szPrefix);
+	szTmp = QString("%1ProfilesNumber").arg(szPrefix);
 	pCfg->writeEntry(szTmp,m_pProfiles->count());
 
 	int iIdx = 0;
 	for(KviIdentityProfile * pProfile = m_pProfiles->first(); pProfile; pProfile = m_pProfiles->next())
 	{
-		KviQString::sprintf(szTmp,"%QProfile%d_",&szPrefix,iIdx);
+		szTmp = QString("%1Profile%2_").arg(szPrefix).arg(iIdx);
 		pProfile->save(pCfg,szTmp);
 		iIdx++;
 	}
@@ -202,13 +202,12 @@ bool KviIdentityProfileSet::loadPrivate(KviConfigurationFile * pCfg, const QStri
 
 	if(uEntries != 0)
 	{
-		QString szTmp;
-		KviQString::sprintf(szTmp,"%QProfilesEnabled",&szPrefix);
+		QString szTmp = QString("%1ProfilesEnabled").arg(szPrefix);
 		m_bEnabled = pCfg->readBoolEntry(szTmp,false);
 
 		for(unsigned int u = 0; u < uEntries; u++)
 		{
-			KviQString::sprintf(szTmp,"%QProfile%u_",&szPrefix,u);
+			szTmp = QString("%1Profile%2_").arg(szPrefix,u);
 			KviIdentityProfile * pProfile = new KviIdentityProfile();
 			if(!pProfile->load(pCfg,szTmp))
 				delete pProfile;

@@ -169,7 +169,7 @@ void KviIrcServerParser::parseNumeric004(KviIrcMessage *msg)
 			if(tmp.isEmpty())
 			{
 				QString tmp2 = __tr2qs(": Unknown user mode");
-				KviQString::sprintf(tmp,"%c: %Q",*aux,&tmp2);
+				tmp = QString("%1: %2").arg(*aux).arg(tmp2);
 			}
 
 			msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,tmp);
@@ -182,7 +182,7 @@ void KviIrcServerParser::parseNumeric004(KviIrcMessage *msg)
 
 		while(*aux)
 		{
-			KviQString::sprintf(tmp,"%c: %Q",*aux,&(msg->connection()->serverInfo()->getChannelModeDescription(*aux)));
+			tmp = QString("%1: %2").arg(*aux).arg(msg->connection()->serverInfo()->getChannelModeDescription(*aux));
 			msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,tmp);
 			aux++;
 		}
@@ -602,7 +602,7 @@ void KviIrcServerParser::parseNumericTopicWhoTime(KviIrcMessage *msg)
 	{
 		szDisplayableWho="\r!n\r"+szWho+"\r";
 	} else {
-		KviQString::sprintf(szDisplayableWho,"\r!n\r%Q\r!%Q@\r!h\r%Q\r",&(who.nick()),&(who.user()),&(who.host()));
+		szDisplayableWho = QString("\r!n\r%1\r!%2@\r!h\r%3\r").arg(who.nick(),who.user(),who.host());
 	}
 	if(chan)
 	{
@@ -1850,8 +1850,7 @@ void KviIrcServerParser::parseNumericBackFromAway(KviIrcMessage * msg)
 	msg->connection()->changeAwayState(false);
 
 	// trigger the event
-	QString tmp;
-	KviQString::sprintf(tmp,"%u",bWasAway ? (unsigned int)(msg->connection()->userInfo()->awayTime()) : 0);
+	QString tmp = QString("%1").arg(bWasAway ? (unsigned int)(msg->connection()->userInfo()->awayTime()) : 0);
 	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeBack,msg->console(),tmp,szWText))
 		msg->setHaltOutput();
 	if(!msg->haltOutput())

@@ -65,7 +65,7 @@ namespace ThemeFunctions
 		if(!r.readHeader(szThemePackageFileName))
 		{
 			QString szErr = r.lastError();
-			KviQString::sprintf(szError,__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %Q","theme"),&szErr);
+			szError = QString(__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %1","theme")).arg(szErr);
 			return false;
 		}
 
@@ -154,23 +154,23 @@ namespace ThemeFunctions
 			QString szThemeEngineVersion;
 			QString szThemeApplication;
 
-			KviQString::sprintf(szTmp,"Theme%dName",iIdx);
+			szTmp = QString("Theme%1Name").arg(iIdx);
 			r.getStringInfoField(szTmp,szThemeName);
-			KviQString::sprintf(szTmp,"Theme%dVersion",iIdx);
+			szTmp = QString("Theme%1Version").arg(iIdx);
 			r.getStringInfoField(szTmp,szThemeVersion);
-			KviQString::sprintf(szTmp,"Theme%dApplication",iIdx);
+			szTmp = QString("Theme%1Application").arg(iIdx);
 			r.getStringInfoField(szTmp,szThemeApplication);
-			KviQString::sprintf(szTmp,"Theme%dDescription",iIdx);
+			szTmp = QString("Theme%1Description").arg(iIdx);
 			r.getStringInfoField(szTmp,szThemeDescription);
-			KviQString::sprintf(szTmp,"Theme%dDate",iIdx);
+			szTmp = QString("Theme%1Date").arg(iIdx);
 			r.getStringInfoField(szTmp,szThemeDate);
-			KviQString::sprintf(szTmp,"Theme%dSubdirectory",iIdx);
+			szTmp = QString("Theme%1Subdirectory").arg(iIdx);
 			r.getStringInfoField(szTmp,szThemeSubdirectory);
-			KviQString::sprintf(szTmp,"Theme%dAuthor",iIdx);
+			szTmp = QString("Theme%1Author").arg(iIdx);
 			r.getStringInfoField(szTmp,szThemeAuthor);
-			KviQString::sprintf(szTmp,"Theme%dThemeEngineVersion",iIdx);
+			szTmp = QString("Theme%1ThemeEngineVersion").arg(iIdx);
 			r.getStringInfoField(szTmp,szThemeEngineVersion);
-			KviQString::sprintf(szTmp,"Theme%dScreenshot",iIdx);
+			szTmp = QString("Theme%1Screenshot").arg(iIdx);
 			QPixmap pixScreenshot;
 			pByteArray = r.binaryInfoFields()->find(szTmp);
 			if(pByteArray)
@@ -227,46 +227,34 @@ namespace ThemeFunctions
 
 		QString szShowDetails = __tr2qs_ctx("Show Details","theme");
 
-		KviQString::sprintf(hd.szHtmlText,
+		hd.szHtmlText = QString(
 			"<html bgcolor=\"#ffffff\">" \
 				"<body bgcolor=\"#ffffff\">" \
 					"<p><center>" \
-						"<h2>%Q %Q</h2>" \
+						"<h2>%1 %2</h2>" \
 					"</center></p>" \
 					"<p><center>" \
 						"<img src=\"theme_dialog_pack_image\">" \
 					"</center></p>" \
 					"<p><center>" \
-						"<i>%Q</i>" \
+						"<i>%3</i>" \
 					"</center></p>" \
 					"<p><center>" \
-						"%Q: <b>%Q</b><br>" \
-						"%Q: <b>%Q</b><br>" \
+						"%4: <b>%5</b><br>" \
+						"%6: <b>%7</b><br>" \
 					"</center></p>" \
 					"<p><center>" \
 						"<font color=\"#808080\">" \
-							"%Q: %Q<br>" \
+							"%8: %9<br>" \
 						"</font>" \
 					"</center></p>" \
-					"%Q" \
+					"%10" \
 					"<br>" \
 					"<p><center>" \
-						"<a href=\"theme_dialog_details\">%Q</a>" \
+						"<a href=\"theme_dialog_details\">%11</a>" \
 					"</center></p>" \
 				"</body>" \
-			"</html>",
-			&szPackageName,
-			&szPackageVersion,
-			&szPackageDescription,
-			&szAuthor,
-			&szPackageAuthor,
-			&szCreatedAt,
-			&szPackageDate,
-			&szCreatedOn,
-			&szPackageApplication,
-			&szWarnings,
-			&szShowDetails
-		);
+			"</html>").arg(szPackageName,szPackageVersion,szPackageDescription,szAuthor,szPackageAuthor,szCreatedAt,szPackageDate,szCreatedOn,szPackageApplication).arg(szWarnings,szShowDetails);
 
 		hd.addImageResource("theme_dialog_pack_image",pix);
 		hd.addHtmlResource("theme_dialog_details",szDetails);
@@ -295,7 +283,7 @@ namespace ThemeFunctions
 			if(!r.unpack(szThemePackageFileName,szUnpackPath))
 			{
 				QString szErr2 = r.lastError();
-				KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","theme"),&szErr2);
+				szError = QString(__tr2qs_ctx("Failed to unpack the selected file: %1","theme")).arg(szErr2);
 				return false;
 			}
 		}
@@ -328,9 +316,9 @@ namespace ThemeFunctions
 		QString szScreenshot;
 		if(!pixScreenshot.isNull())
 		{
-			KviQString::sprintf(szScreenshot,"<p><center><img src=\"theme_shot%d\"></center></p>",iUniqueIndexInDocument);
+			szScreenshot = QString("<p><center><img src=\"theme_shot%1\"></center></p>").arg(iUniqueIndexInDocument);
 			QString szTmp;
-			KviQString::sprintf(szTmp,"theme_shot%d",iUniqueIndexInDocument);
+			szTmp = QString("theme_shot%1").arg(iUniqueIndexInDocument);
 			//FIXME in tooltip
 			if (hd)
 				hd->addImageResource(szTmp,pixScreenshot);
@@ -339,41 +327,25 @@ namespace ThemeFunctions
 			szScreenshot = "";
 		}
 
-		KviQString::sprintf(
-			szBuffer,
+		szBuffer = QString(
 			"<p><center>" \
-				"<h2>%Q %Q</h2>" \
+				"<h2>%1 %2</h2>" \
 			"</center></p>" \
-			"%Q" \
+			"%3" \
 			"<p><center>" \
-				"<i>%Q</i>" \
+				"<i>%4</i>" \
 			"</center></p>" \
 			"<p><center>" \
-				"%Q: <b>%Q</b><br>" \
-				"%Q: <b>%Q</b><br>" \
+				"%5: <b>%6</b><br>" \
+				"%7: <b>%8</b><br>" \
 			"</center></p>" \
 			"<p><center>" \
 				"<font color=\"#808080\">" \
-					"%Q: %Q<br>" \
-					"%Q: %Q<br>" \
-					"%Q: %Q<br>" \
+					"%9: %10<br>" \
+					"%11: %12<br>" \
+					"%13: %14<br>" \
 				"</font>" \
-			"</center></p>",
-			&szThemeName,
-			&szThemeVersion,
-			&szScreenshot,
-			&szThemeDescription,
-			&szAuthor,
-			&szThemeAuthor,
-			&szCreatedAt,
-			&szThemeDate,
-			&szCreatedOn,
-			&szThemeApplication,
-			&szThemeEngineVersion,
-			&szThemeThemeEngineVersion,
-			&szSubdirectory,
-			&szThemeSubdirectory
-		);
+			"</center></p>").arg(szThemeName,szThemeVersion,szScreenshot,szThemeDescription,szAuthor,szThemeAuthor,szCreatedAt,szThemeDate,szCreatedOn).arg(szThemeApplication,szThemeEngineVersion,szThemeThemeEngineVersion,szSubdirectory,szThemeSubdirectory);
 	}
 
 	bool makeKVIrcScreenshot(const QString &szSavePngFilePath,bool bMaximizeFrame)

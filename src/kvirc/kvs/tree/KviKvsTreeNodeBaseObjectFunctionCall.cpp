@@ -23,7 +23,6 @@
 //=============================================================================
 
 #include "KviKvsTreeNodeBaseObjectFunctionCall.h"
-#include "KviQString.h"
 #include "KviKvsObject.h"
 #include "KviKvsVariant.h"
 
@@ -39,7 +38,7 @@ KviKvsTreeNodeBaseObjectFunctionCall::~KviKvsTreeNodeBaseObjectFunctionCall()
 
 void KviKvsTreeNodeBaseObjectFunctionCall::contextDescription(QString &szBuffer)
 {
-	KviQString::sprintf(szBuffer,"Base Object Function Call \"%s::%s\"",&m_szBaseClass,&m_szFunctionName);
+	szBuffer = QString("Base Object Function Call \"%1::%2\"").arg(m_szBaseClass,m_szFunctionName);
 }
 
 void KviKvsTreeNodeBaseObjectFunctionCall::dump(const char * prefix)

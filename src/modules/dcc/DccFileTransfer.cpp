@@ -1003,7 +1003,7 @@ DccFileTransfer::DccFileTransfer(DccDescriptor * dcc)
 	m_pResumeTimer = 0;
 	m_pBandwidthDialog = 0;
 
-	KviQString::sprintf(m_szTransferIdString,__tr2qs_ctx("TRANSFER %d","dcc"),id());
+	m_szTransferIdString = QString(__tr2qs_ctx("TRANSFER %1","dcc")).arg(id());
 
 	m_pDescriptor = dcc;
 	m_pDescriptor->setTransfer(this);
@@ -1911,8 +1911,7 @@ bool DccFileTransfer::event(QEvent *e)
 				// Also add an optional message to the notifier, unless it is an AVATAR download!
 				if(KVI_OPTION_BOOL(KviOption_boolNotifiDccDownloadSuccessInNotifier))
 				{
-					QString szMsg;
-					KviQString::sprintf(szMsg,__tr2qs_ctx(""));
+					QString szMsg = __tr2qs_ctx("");
 					g_pApp->notifierMessage(0,KVI_SMALLICON_DCCMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 				}
 				*/

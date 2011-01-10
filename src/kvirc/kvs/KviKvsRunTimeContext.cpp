@@ -113,7 +113,7 @@ void KviKvsRunTimeContext::report(bool bError,KviKvsTreeNode * pNode,const QStri
 
 			KviKvsReport::findLineColAndListing(m_pScript->buffer(),pNode->location(),iLine,iCol,pCodeListing);
 
-			KviQString::sprintf(szLocation,__tr2qs_ctx("line %d, near character %d","kvs"),iLine,iCol);
+			szLocation = QString(__tr2qs_ctx("line %1, near character %2","kvs")).arg(iLine).arg(iCol);
 		}
 
 		// create the call stack
@@ -127,13 +127,12 @@ void KviKvsRunTimeContext::report(bool bError,KviKvsTreeNode * pNode,const QStri
 			QString * pString = new QString();
 			QString szTmp;
 			pNode->contextDescription(szTmp);
-			KviQString::sprintf(*pString,"#%d %Q",iFrame,&szTmp);
+			*pString = QString("#%1 %2").arg(iFrame).arg(szTmp);
 			if(pNode->location())
 			{
 				int iLine,iCol;
 				KviKvsReport::findLineAndCol(m_pScript->buffer(),pNode->location(),iLine,iCol);
-				QString tmpi;
-				KviQString::sprintf(tmpi," [line %d, near character %d]",iLine,iCol);
+				QString tmpi = QString(" [line %1, near character %2]").arg(iLine).arg(iCol);
 				*pString += tmpi;
 			}
 			pCallStack->append(pString);

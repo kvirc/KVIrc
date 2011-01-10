@@ -32,7 +32,6 @@
 #include "KviScriptEditor.h"
 #include "kvi_debug.h"
 #include "KviApplication.h"
-#include "KviQString.h"
 #include "KviKvsAliasManager.h"
 #include "KviFileDialog.h"
 #include "KviActionManager.h"
@@ -755,18 +754,18 @@ void ActionEditor::deleteActions()
 
 QString ActionEditor::nameForAutomaticAction(const QString &szTemplate)
 {
-	QString ret;
+	QString szRet;
 	QString szT = szTemplate;
 	szT.replace(" ","");
 	szT.replace(".","_");
 
 	int i = 1;
 	do {
-		KviQString::sprintf(ret,"%Q%d",&szT,i);
+		szRet = QString("%1%2").arg(szT).arg(i);
 		i++;
-	} while(actionExists(ret));
+	} while(actionExists(szRet));
 
-	return ret;
+	return szRet;
 }
 
 void ActionEditor::newAction()

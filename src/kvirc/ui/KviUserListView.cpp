@@ -477,8 +477,7 @@ void KviUserListView::completeNickBashLike(const QString & szBegin, KviPointerLi
 		{
 			if(bAppendMask)
 			{
-				QString * szTmp = new QString();
-				KviQString::sprintf(*szTmp,"%Q!%Q@%Q",&(pEntry->m_szNick),&(pEntry->m_pGlobalData->user()),&(pEntry->m_pGlobalData->host()));
+				QString * szTmp = new QString(QString("%1!%2@%3").arg(pEntry->m_szNick,pEntry->m_pGlobalData->user(),pEntry->m_pGlobalData->host()));
 				pList->append(szTmp);
 			} else
 				pList->append(new QString(pEntry->m_szNick));

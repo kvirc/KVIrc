@@ -317,51 +317,50 @@ bool KviSharedFilesManager::removeSharedFile(const QString &szName,KviSharedFile
 }
 
 
-void KviSharedFilesManager::load(const QString &filename)
+void KviSharedFilesManager::load(const QString & szFilename)
 {
-	KviConfigurationFile cfg(filename,KviConfigurationFile::Read);
-	//cfg.clear();
+	KviConfigurationFile cfg(szFilename,KviConfigurationFile::Read);
 	cfg.setGroup("PermanentFileOffers");
-	int num = cfg.readIntEntry("NEntries",0);
-	for(int idx=0;idx<num;idx++)
+	int iNum = cfg.readIntEntry("NEntries",0);
+	for(int i=0; i < iNum; i++)
 	{
-		QString tmp;
-		KviQString::sprintf(tmp,"%dFName",idx);
-		QString szName = cfg.readEntry(tmp,"");
-		KviQString::sprintf(tmp,"%dFilePath",idx);
-		QString szPath = cfg.readEntry(tmp,"");
-		KviQString::sprintf(tmp,"%dUserMask",idx);
-		QString szMask = cfg.readEntry(tmp,"");
+		QString szTmp;
+		szTmp = QString("%1FName").arg(i);
+		QString szName = cfg.readEntry(szTmp,"");
+		szTmp = QString("%1FilePath").arg(i);
+		QString szPath = cfg.readEntry(szTmp,"");
+		szTmp = QString("%1UserMask").arg(i);
+		QString szMask = cfg.readEntry(szTmp,"");
 		if(!szMask.isEmpty() && !szPath.isEmpty() && !szName.isEmpty())
 			addSharedFile(szName,szPath,szMask,0);
 	}
 }
 
-void KviSharedFilesManager::save(const QString &filename)
+void KviSharedFilesManager::save(const QString & szFilename)
 {
-	KviConfigurationFile cfg(filename,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szFilename,KviConfigurationFile::Write);
 	cfg.clear();
 	cfg.setGroup("PermanentFileOffers");
 
 	KviPointerHashTableIterator<QString,KviSharedFileList> it(*m_pSharedListDict);
-	int idx = 0;
-	while(KviSharedFileList * l = it.current())
+	int i = 0;
+	while(KviSharedFileList * pList = it.current())
 	{
-		for(KviSharedFile * o = l->first();o;o = l->next())
+		for(KviSharedFile * pFile = pList->first(); pFile; pFile = pList->next())
 		{
-			if(((int)(o->expireTime())) == 0)
+			if(((int)(pFile->expireTime())) == 0)
 			{
-				QString tmp;
-				KviQString::sprintf(tmp,"%dFName",idx);
-				cfg.writeEntry(tmp,it.currentKey());
-				KviQString::sprintf(tmp,"%dFilePath",idx);
-				cfg.writeEntry(tmp,o->absFilePath());
-				KviQString::sprintf(tmp,"%dUserMask",idx);
-				cfg.writeEntry(tmp,o->userMask());
-				++idx;
+				QString szTmp;
+				szTmp = QString("%1FName").arg(i);
+				cfg.writeEntry(szTmp,it.currentKey());
+				szTmp = QString("%1FilePath").arg(i);
+				cfg.writeEntry(szTmp,pFile->absFilePath());
+				szTmp = QString("%1UserMask").arg(i);
+				cfg.writeEntry(szTmp,pFile->userMask());
+				++i;
 			}
 		}
 		++it;
 	}
-	cfg.writeEntry("NEntries",idx);
+	cfg.writeEntry("NEntries",i);
 }

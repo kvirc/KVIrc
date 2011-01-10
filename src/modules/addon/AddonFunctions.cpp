@@ -65,7 +65,7 @@ namespace AddonFunctions
 		if(!r.readHeader(szAddonPackageFileName))
 		{
 			szErr = r.lastError();
-			KviQString::sprintf(szError,__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %Q","addon"),&szErr);
+			szError = QString(__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %Q","addon")).arg(szErr);
 			return false;
 		}
 
@@ -143,42 +143,31 @@ namespace AddonFunctions
 			szWarnings += "</b></font></center></p>";
 		}
 
-		KviQString::sprintf(hd.szHtmlText,
+		hd.szHtmlText = QString(
 			"<html bgcolor=\"#ffffff\">" \
 				"<body bgcolor=\"#ffffff\">" \
 					"<p><center>" \
-						"<h2>%Q %Q</h2>" \
+						"<h2>%1 %2</h2>" \
 					"</center></p>" \
 					"<p><center>" \
 						"<img src=\"addon_dialog_pack_image\">" \
 					"</center></p>" \
 					"<p><center>" \
-						"<i>%Q</i>" \
+						"<i>%3</i>" \
 					"</center></p>" \
 					"<p><center>" \
-						"%Q: <b>%Q</b><br>" \
-						"%Q: <b>%Q</b><br>" \
+						"%4: <b>%5</b><br>" \
+						"%6: <b>%7</b><br>" \
 					"</center></p>" \
 					"<p><center>" \
 						"<font color=\"#808080\">" \
-							"%Q: %Q<br>" \
+							"%8: %9<br>" \
 						"</font>" \
 					"</center></p>" \
-					"%Q" \
+					"%10" \
 					"<br>" \
 				"</body>" \
-			"</html>",
-			&szPackageName,
-			&szPackageVersion,
-			&szPackageDescription,
-			&szAuthor,
-			&szPackageAuthor,
-			&szCreatedAt,
-			&szPackageDate,
-			&szCreatedWith,
-			&szPackageApplication,
-			&szWarnings
-		);
+			"</html>").arg(szPackageName,szPackageVersion,szPackageDescription,szAuthor,szPackageAuthor,szCreatedAt,szPackageDate,szCreatedWith,szPackageApplication).arg(szWarnings);
 
 		hd.addImageResource("addon_dialog_pack_image",pix);
 		hd.addHtmlResource("addon_dialog_main",hd.szHtmlText);
@@ -224,7 +213,7 @@ namespace AddonFunctions
 		if(!r.unpack(szAddonPackageFileName,szUnpackPath))
 		{
 			szErr = r.lastError();
-			KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","addon"),&szErr);
+			szError = QString(__tr2qs_ctx("Failed to unpack the selected file: %1","addon")).arg(szErr);
 			return false;
 		}
 
@@ -240,7 +229,7 @@ namespace AddonFunctions
 		{
 			// FIXME: Just warn the user and assume success?
 			szErr = __tr2qs_ctx("One or more files can't be deleted","addon");
-			KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","addon"),&szErr);
+			szError = QString(__tr2qs_ctx("Failed to unpack the selected file: %1","addon")).arg(szErr);
 			return false;
 		}
 

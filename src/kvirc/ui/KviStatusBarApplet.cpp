@@ -321,8 +321,7 @@ void KviStatusBarLagIndicator::updateDisplay()
 				int llls = lll / 1000;
 				int llld = (lll % 1000) / 100;
 				int lllc = (lll % 100) / 10;
-				QString szTmp;
-				KviQString::sprintf(szTmp,__tr2qs("Lag: %d.%d%d"),llls,llld,lllc);
+				QString szTmp = QString(__tr2qs("Lag: %1.%2%3")).arg(llls).arg(llld).arg(lllc);
 				if(lll > 60000)
 				{
 					// one minute lag!
@@ -404,22 +403,10 @@ void KviStatusBarClock::timerEvent(QTimerEvent *)
 		switch(m_iType)
 		{
 			case KviStatusBarClock::HMS:
-				KviQString::sprintf(szTmp,"%d%d:%d%d:%d%d %s",
-					t->tm_hour / 10,
-					t->tm_hour % 10,
-					t->tm_min / 10,
-					t->tm_min % 10,
-					t->tm_sec / 10,
-					t->tm_sec % 10,
-					szDay.toUtf8().data());
+				szTmp = QString("%1%2:%3%4:%5%6 %7").arg(t->tm_hour / 10).arg(t->tm_hour % 10).arg(t->tm_min / 10).arg(t->tm_min % 10).arg(t->tm_sec / 10).arg(t->tm_sec % 10).arg(szDay);
 				break;
 			case KviStatusBarClock::HM:
-				KviQString::sprintf(szTmp,"%d%d:%d%d %s",
-					t->tm_hour / 10,
-					t->tm_hour % 10,
-					t->tm_min / 10,
-					t->tm_min % 10,
-					szDay.toUtf8().data());
+				szTmp = QString("%1%2:%3%4 %5").arg(t->tm_hour / 10).arg(t->tm_hour % 10).arg(t->tm_min / 10).arg(t->tm_min % 10).arg(szDay);
 				break;
 		}
 	} else {
@@ -427,20 +414,10 @@ void KviStatusBarClock::timerEvent(QTimerEvent *)
 		switch(m_iType)
 		{
 			case KviStatusBarClock::HMS:
-				KviQString::sprintf(szTmp,"%d%d:%d%d:%d%d",
-					t->tm_hour / 10,
-					t->tm_hour % 10,
-					t->tm_min / 10,
-					t->tm_min % 10,
-					t->tm_sec / 10,
-					t->tm_sec % 10);
+				szTmp = QString("%1%2:%3%4:%5%6").arg(t->tm_hour / 10).arg(t->tm_hour % 10).arg(t->tm_min / 10).arg(t->tm_min % 10).arg(t->tm_sec / 10).arg(t->tm_sec % 10);
 				break;
 			case KviStatusBarClock::HM:
-				KviQString::sprintf(szTmp,"%d%d:%d%d",
-					t->tm_hour / 10,
-					t->tm_hour % 10,
-					t->tm_min / 10,
-					t->tm_min % 10);
+				szTmp = QString("%1%2:%3%4").arg(t->tm_hour / 10).arg(t->tm_hour % 10).arg(t->tm_min / 10).arg(t->tm_min % 10);
 				break;
 		}
 	}

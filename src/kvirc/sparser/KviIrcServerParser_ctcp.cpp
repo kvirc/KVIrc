@@ -1584,9 +1584,7 @@ void KviIrcServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 
 	bool bResetAvatar = true;
 
-	QString nickLink;
-
-	KviQString::sprintf(nickLink,"\r!n\r%Q\r",&(msg->pSource->nick()));
+	QString nickLink = QString("\r!n\r%1\r").arg(msg->pSource->nick());
 
 	KviIrcUserEntry * e = msg->msg->connection()->userDataBase()->find(msg->pSource->nick());
 	if(e){
@@ -1605,17 +1603,15 @@ void KviIrcServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 	if(szRemoteFile.isEmpty())
 	{
 		// avatar unset
-		KviQString::sprintf(textLine,__tr2qs("%Q unsets avatar"),
-			&nickLink);
+		textLine = QString(__tr2qs("%1 unsets avatar")).arg(nickLink);
 		if(_OUTPUT_VERBOSE)
 			KviQString::appendFormatted(textLine," (%Q %Q)",&szWhere,&szWhat);
 	} else {
 
 		// FIXME: #warning "The avatar should be the one with the requested size!!"
-		KviQString::sprintf(textLine,__tr2qs("%Q changes avatar to %s"),
-			&nickLink,szRemoteFile.toUtf8().data(),&szWhere,&szWhat);
+		textLine = QString(__tr2qs("%1 changes avatar to %2")).arg(nickLink,szRemoteFile);
 		if(_OUTPUT_VERBOSE)
-			KviQString::appendFormatted(textLine," (%Q %Q)",&szWhere,&szWhat);
+			KviQString::appendFormatted(textLine," (%1 %2)",&szWhere,&szWhat);
 
 		bool bIsUrl = KviQString::equalCIN("http://",szRemoteFile,7) && (szRemoteFile.length() > 7);
 		if(!bIsUrl)

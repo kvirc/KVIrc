@@ -282,23 +282,22 @@ void KviApplication::completeDirectory(const QString &word,KviPointerList<QStrin
 // Returns a valid filename for the channel dump log
 //
 
-void KviApplication::getChannelDumpLogFileName(QString &str)
+void KviApplication::getChannelDumpLogFileName(QString & szStr)
 {
-	unsigned int logN = 0;
-	QString fPrefix="kick_";
+	unsigned int uLogN = 0;
+	QString szPrefix = "kick_";
 	do{
-		QString fName;
-		KviQString::sprintf(fName,"%Q%u.log",&fPrefix,logN);
-		getLocalKvircDirectory(str,Log,fName);
-		logN++;
-		if(logN > 9999)
+		QString szName = QString("%1%2.log").arg(szPrefix).arg(uLogN);
+		getLocalKvircDirectory(szStr,Log,szName);
+		uLogN++;
+		if(uLogN > 9999)
 		{
 			// Time to clear logs! :)
-			fPrefix+="x";
-			logN = 0;
+			szPrefix += "x";
+			uLogN = 0;
 		}
-	} while(KviFileUtils::fileExists(str));
-	KviFileUtils::adjustFilePath(str);
+	} while(KviFileUtils::fileExists(szStr));
+	KviFileUtils::adjustFilePath(szStr);
 }
 
 //========================= findImage ===========================//

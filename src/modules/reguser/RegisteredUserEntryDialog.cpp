@@ -599,7 +599,7 @@ void RegisteredUserEntryDialog::okClicked()
 		u = g_pLocalRegisteredUserDataBase->findUserByName(szNameOk);
 		if(u)
 		{
-			KviQString::sprintf(szNameOk,"%Q%d",&name,idx);
+			szNameOk = QString("%1%2").arg(name).arg(idx);
 			idx++;
 		}
 	} while(u);

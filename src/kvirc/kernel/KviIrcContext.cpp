@@ -614,17 +614,15 @@ void KviIrcContext::connectionFailed(int iError)
 			//FIXME: Multiply the delay by (m_uConnectAttemptCount / 2) so later connects are less frequent.
 			if(!_OUTPUT_MUTE)
 			{
-				QString tmp;
-				KviQString::sprintf(tmp,__tr2qs("Will attempt to reconnect in %d seconds"),KVI_OPTION_UINT(KviOption_uintAutoReconnectDelay));
-				QString num;
+				QString szTmp = QString(__tr2qs("Will attempt to reconnect in %1 seconds")).arg(KVI_OPTION_UINT(KviOption_uintAutoReconnectDelay));
+				QString szNum;
 
 				if(!KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts))
-				    KviQString::sprintf(num,__tr2qs("%d"),m_uConnectAttemptCount);
+				    szNum = QString(__tr2qs("%1")).arg(m_uConnectAttemptCount);
 				else
-				    KviQString::sprintf(num,__tr2qs("%d of %d"),
-						m_uConnectAttemptCount,KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts));
-				tmp += " [" + num + "]";
-				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,tmp);
+				    szNum = QString(__tr2qs("%1 of %2")).arg(m_uConnectAttemptCount).arg(KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts));
+				szTmp += " [" + szNum + "]";
+				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,szTmp);
 			}
 
 			KviIrcServer oldServer(*(connection()->target()->server()));

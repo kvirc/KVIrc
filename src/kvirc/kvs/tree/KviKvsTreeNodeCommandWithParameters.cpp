@@ -39,7 +39,7 @@ KviKvsTreeNodeCommandWithParameters::~KviKvsTreeNodeCommandWithParameters()
 
 void KviKvsTreeNodeCommandWithParameters::contextDescription(QString &szBuffer)
 {
-	KviQString::sprintf(szBuffer,"Command With Parameters \"%s\"",&m_szCmdName);
+	szBuffer = QString("Command With Parameters \"%1\"").arg(m_szCmdName);
 }
 
 

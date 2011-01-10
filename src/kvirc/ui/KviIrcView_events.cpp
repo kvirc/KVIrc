@@ -184,10 +184,8 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 				case 'q':
 				case 'f':
 				case 'k':
-					KviQString::sprintf(szKvsCommand,"mode $chan.name %c%c $0",cPlusOrMinus.toLatin1(),cFlag.toLatin1());
-				break;
 				default:
-					KviQString::sprintf(szKvsCommand,"mode $chan.name %c%c",cPlusOrMinus.toLatin1(),cFlag.toLatin1());
+					szKvsCommand = QString("mode $chan.name %1%2 $0").arg(cPlusOrMinus.toLatin1()).arg(cFlag.toLatin1());
 				break;
 			}
 		}
@@ -949,8 +947,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 						QString buffer;
 						console()->getUserTipText(linkText,e,buffer);
 						tip = buffer;
-					} else KviQString::sprintf(tip,__tr2qs("Nothing known about %Q"),&linkText);
-				} else KviQString::sprintf(tip,__tr2qs("Nothing known about %Q (no connection)"),&linkText);
+					} else tip = QString(__tr2qs("Nothing known about %1")).arg(linkText);
+				} else tip = QString(__tr2qs("Nothing known about %1 (no connection)")).arg(linkText);
 			}
 		}
 		break;
@@ -976,14 +974,13 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 					topic.replace(">","&gt;");
 					KviIrcUrl::join(szUrl,console()->connection()->target()->server());
 					szUrl.append(szChan);
-					KviQString::sprintf(buf,__tr2qs("<b>%Q</b> (<u><font color=\"blue\"><nowrap>"
-						"%Q</nowrap></font></u>): <br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"),&szChan,&szUrl,&chanMode,
-						c->count(),&topic);
+					buf = QString(__tr2qs("<b>%1</b> (<u><font color=\"blue\"><nowrap>"
+						"%2</nowrap></font></u>): <br><nowrap>+%3 (%4 users)<hr>%5</nowrap>")).arg(szChan,szUrl,chanMode).arg(c->count()).arg(topic);
 				} else {
 					KviIrcUrl::join(szUrl,console()->connection()->target()->server());
 					szUrl.append(szChan);
-					KviQString::sprintf(buf,__tr2qs("<b>%Q</b> (<u><font color=\"blue\"><nowrap>"
-						"%Q</nowrap></font></u>)<hr>Double-click to join %Q<br>Right click to view other options"),&szChan,&szUrl,&szChan);
+					buf = QString(__tr2qs("<b>%1</b> (<u><font color=\"blue\"><nowrap>"
+						"%2</nowrap></font></u>)<hr>Double-click to join %3<br>Right click to view other options")).arg(szChan,szUrl,szChan);
 				}
 
 				tip += buf;

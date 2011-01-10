@@ -64,7 +64,7 @@ int KviMircServersIniImport::doImport(const QString& filename)
 		QString key;
 		QString entry;
 		do {
-			KviQString::sprintf(key,"n%d",i);
+			key = QString("n%1").arg(i);
 			entry = cfg.readEntry(key,"");
 			if(!entry.isEmpty())
 			{
@@ -111,9 +111,8 @@ int KviMircServersIniImport::doImport(const QString& filename)
 			}
 		} while(!entry.isEmpty());
 	} else {
-		QString tmp;
-		KviQString::sprintf(tmp,__tr2qs("%Q doesn't look like a servers.ini file.\nImport failed."),&filename);
-		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),tmp);
+		QString szTmp = QString(__tr2qs("%1 doesn't look like a servers.ini file.\nImport failed.")).arg(filename);
+		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),szTmp);
 	}
 	return iCount;
 }

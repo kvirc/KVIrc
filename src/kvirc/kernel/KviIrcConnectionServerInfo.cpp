@@ -120,8 +120,8 @@ void KviIrcConnectionServerInfo::setSupportedModePrefixes(const QString &szSuppo
 void KviIrcConnectionServerInfo::buildModePrefixTable()
 {
 	if(m_pModePrefixTable) KviMemory::free(m_pModePrefixTable);
-	const QChar * cPrefix = KviQString::nullTerminatedArray(m_szSupportedModePrefixes);
-	const QChar * cFlag = KviQString::nullTerminatedArray(m_szSupportedModeFlags);
+	const QChar * cPrefix = m_szSupportedModePrefixes.constData();
+	const QChar * cFlag = m_szSupportedModeFlags.constData();
 	if(!cPrefix || !cFlag)return; // eh ?
 
 	m_uPrefixes=qMin(m_szSupportedModePrefixes.length(),m_szSupportedModePrefixes.length());

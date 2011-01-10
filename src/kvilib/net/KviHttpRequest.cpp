@@ -553,7 +553,7 @@ bool KviHttpRequest::openFile()
 	if(!m_p->pFile->open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 	{
 		resetInternalStatus();
-		KviQString::sprintf(m_szLastError,__tr2qs("Can't open file \"%Q\" for writing"),&m_szFileName);
+		m_szLastError = QString(__tr2qs("Can't open file \"%1\" for writing")).arg(m_szFileName);
 		emit terminated(false);
 		return false;
 	}
@@ -985,7 +985,7 @@ bool KviHttpRequest::startDnsLookup()
 	}
 
 	QString tmp;
-	KviQString::sprintf(tmp,__tr2qs("Looking up host %Q"),&(m_url.host()));
+	tmp = QString(__tr2qs("Looking up host %1")).arg(m_url.host());
 	emit status(tmp); // FIXME
 
 
@@ -1000,7 +1000,7 @@ void KviHttpRequest::dnsLookupDone(KviDnsResolver *d)
 		delete m_pDns;
 		m_pDns = 0;
 		QString tmp;
-		KviQString::sprintf(tmp,__tr2qs("Host %Q resolved to %Q"),&(m_url.host()),&m_szIp);
+		tmp = QString(__tr2qs("Host %1 resolved to %2")).arg(m_url.host(),m_szIp);
 		emit status(tmp);
 		haveServerIp();
 	} else {

@@ -1786,7 +1786,7 @@ void KviChannelWindow::outputMessage(int iMsgType, const QString & szMsg)
 	QString szBuf(szMsg);
 	preprocessMessage(szBuf);
 
-	const QChar * pC = KviQString::nullTerminatedArray(szBuf);
+	const QChar * pC = szBuf.constData();
 	if(!pC)
 		return;
 

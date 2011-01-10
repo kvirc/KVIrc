@@ -46,7 +46,7 @@ void KviKvsTreeNodeSpecialCommandClassFunctionDefinition::dump(const char * pref
 
 void KviKvsTreeNodeSpecialCommandClassFunctionDefinition::contextDescription(QString &szBuffer)
 {
-	KviQString::sprintf(szBuffer,"Object Member Function Definition '%Q'",&m_szName);
+	szBuffer = QString("Object Member Function Definition '%1'").arg(m_szName);
 }
 
 KviKvsTreeNodeSpecialCommandClass::KviKvsTreeNodeSpecialCommandClass(const QChar * pLocation,KviKvsTreeNodeDataList * pParams)

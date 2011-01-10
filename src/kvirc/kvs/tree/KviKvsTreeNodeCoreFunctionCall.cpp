@@ -37,7 +37,7 @@ KviKvsTreeNodeCoreFunctionCall::~KviKvsTreeNodeCoreFunctionCall()
 
 void KviKvsTreeNodeCoreFunctionCall::contextDescription(QString &szBuffer)
 {
-	KviQString::sprintf(szBuffer,"Core Function Call \"%Q\"",&m_szFunctionName);
+	szBuffer = QString("Core Function Call \"%1\"").arg(m_szFunctionName);
 }
 
 

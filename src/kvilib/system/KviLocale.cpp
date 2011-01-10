@@ -878,16 +878,17 @@ namespace KviLocale
 		return g_pCatalogueDict->remove(KviQString::toUtf8(name).data());
 	}
 
-	bool findCatalogue(QString &szBuffer,const QString& name,const QString& szLocaleDir)
+	bool findCatalogue(QString & szBuffer, const QString & szName,const QString & szLocaleDir)
 	{
 		KviCString szLocale = g_szLang;
 
 		QString szLocDir = szLocaleDir;
 		KviQString::ensureLastCharIs(szLocDir,KVI_PATH_SEPARATOR_CHAR);
 
-		KviQString::sprintf(szBuffer,"%Q%Q_%s.mo",&szLocDir,&name,szLocale.ptr());
+		szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
 
-		if(KviFileUtils::fileExists(szBuffer))return true;
+		if(KviFileUtils::fileExists(szBuffer))
+			return true;
 
 		if(szLocale.findFirstIdx('.') != -1)
 		{
@@ -895,8 +896,9 @@ namespace KviLocale
 			// kill them
 			szLocale.cutFromFirst('.');
 
-			KviQString::sprintf(szBuffer,"%Q%Q_%s.mo",&szLocDir,&name,szLocale.ptr());
-			if(KviFileUtils::fileExists(szBuffer))return true;
+			szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+			if(KviFileUtils::fileExists(szBuffer))
+				return true;
 		}
 
 		if(szLocale.findFirstIdx('@') != -1)
@@ -904,8 +906,9 @@ namespace KviLocale
 			// things like @euro ?
 			// kill them
 			szLocale.cutFromFirst('@');
-			KviQString::sprintf(szBuffer,"%Q%Q_%s.mo",&szLocDir,&name,szLocale.ptr());
-			if(KviFileUtils::fileExists(szBuffer))return true;
+			szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+			if(KviFileUtils::fileExists(szBuffer))
+				return true;
 		}
 
 		if(szLocale.findFirstIdx('_') != -1)
@@ -913,14 +916,16 @@ namespace KviLocale
 			// things like en_GB
 			// kill them
 			szLocale.cutFromFirst('_');
-			KviQString::sprintf(szBuffer,"%Q%Q_%s.mo",&szLocDir,&name,szLocale.ptr());
-			if(KviFileUtils::fileExists(szBuffer))return true;
+			szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+			if(KviFileUtils::fileExists(szBuffer))
+				return true;
 		}
 
 		// try the lower case version too
 		szLocale.toLower();
-		KviQString::sprintf(szBuffer,"%Q%Q_%s.mo",&szLocDir,&name,szLocale.ptr());
-		if(KviFileUtils::fileExists(szBuffer))return true;
+		szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+		if(KviFileUtils::fileExists(szBuffer))
+			return true;
 
 		return false;
 	}

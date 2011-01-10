@@ -325,7 +325,7 @@ inline void * & kvi_hash_key_default(void *)
 inline unsigned int kvi_hash_hash(const QString &szKey,bool bCaseSensitive)
 {
 	unsigned int uResult = 0;
-	const QChar * p = KviQString::nullTerminatedArray(szKey);
+	const QChar * p = szKey.constData();
 	if(!p)return 0;
 	if(bCaseSensitive)
 	{

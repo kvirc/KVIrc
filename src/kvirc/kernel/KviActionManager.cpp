@@ -31,7 +31,6 @@
 #include "KviLocale.h"
 #include "KviKvsUserAction.h"
 #include "KviConfigurationFile.h"
-#include "KviQString.h"
 #include "KviMainWindow.h"
 
 KviActionManager * KviActionManager::m_pInstance = 0;
@@ -149,17 +148,17 @@ bool KviActionManager::coreActionExists(const QString &szName)
 	return false;
 }
 
-QString KviActionManager::nameForAutomaticAction(const QString &szTemplate)
+QString KviActionManager::nameForAutomaticAction(const QString & szTemplate)
 {
-	QString ret;
+	QString szRet;
 
 	int i = 1;
 	do {
-		KviQString::sprintf(ret,"%Q%d",&szTemplate,i);
+		szRet = QString("%1%2").arg(szTemplate).arg(i);
 		i++;
-	} while(m_pActions->find(ret));
+	} while(m_pActions->find(szRet));
 
-	return ret;
+	return szRet;
 }
 
 void KviActionManager::emitRemoveActionsHintRequest()

@@ -129,7 +129,7 @@ KviIrcMask::KviIrcMask()
 KviIrcMask::KviIrcMask(const QString & szMask)
 {
 	static QString szWild("*");
-	const QChar * pChar = KviQString::nullTerminatedArray(szMask);
+	const QChar * pChar = szMask.constData();
 	if(pChar)
 	{
 		const QChar * pChar2 = pChar;
@@ -188,7 +188,7 @@ QString KviIrcMask::m_szWild("*");
 
 bool KviIrcMask::hasNumericHost() const
 {
-	const QChar * pChar = KviQString::nullTerminatedArray(m_szHost);
+	const QChar * pChar = m_szHost.constData();
 	if(!pChar)
 		return false;
 	int iPoints = 0;
@@ -392,7 +392,7 @@ int KviIrcMask::getLargeIpDomainMaskLen() const
 QString KviIrcMask::getHostDomainMask() const
 {
 	int iLen = m_szHost.length();
-	const QChar * pChar = KviQString::nullTerminatedArray(m_szHost);
+	const QChar * pChar = m_szHost.constData();
 	if(!pChar)
 		return QString();
 	const QChar * pChar2 = pChar;
@@ -460,7 +460,7 @@ bool KviIrcMask::operator==(const KviIrcMask & user)
 
 bool KviIrcMask::hasWildNick()
 {
-	const QChar * pAux = KviQString::nullTerminatedArray(m_szNick);
+	const QChar * pAux = m_szNick.constData();
 	if(!pAux)
 		return false;
 	unsigned short uc;
@@ -476,7 +476,7 @@ bool KviIrcMask::hasWildNick()
 int KviIrcMask::nonWildChars()
 {
 	int iCnt = 0;
-	const QChar * pAux = KviQString::nullTerminatedArray(m_szNick);
+	const QChar * pAux = m_szNick.constData();
 	if(!pAux)
 		return 0;
 	unsigned short uc;
@@ -488,7 +488,7 @@ int KviIrcMask::nonWildChars()
 		pAux++;
 	}
 
-	pAux = KviQString::nullTerminatedArray(m_szUser);
+	pAux = m_szUser.constData();
 	while((uc = pAux->unicode()))
 	{
 		if((uc != '*') && (uc != '?'))
@@ -496,7 +496,7 @@ int KviIrcMask::nonWildChars()
 		pAux++;
 	}
 
-	pAux = KviQString::nullTerminatedArray(m_szHost);
+	pAux = m_szHost.constData();
 	while((uc = pAux->unicode()))
 	{
 		if((uc != '*') && (uc != '?'))

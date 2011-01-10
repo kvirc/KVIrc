@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: notifier_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2009-12-30 15:58+0100\n"
 "Last-Translator: HelLViS69\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -24,39 +24,39 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/notifier/notifierwindow.cpp:973
+#: src/modules/notifier/NotifierWindow.cpp:973
 msgid "1 Hour"
 msgstr "1 ora"
 
-#: src/modules/notifier/notifierwindow.cpp:969
+#: src/modules/notifier/NotifierWindow.cpp:969
 msgid "1 Minute"
 msgstr "1 minuto"
 
-#: src/modules/notifier/notifierwindow.cpp:971
+#: src/modules/notifier/NotifierWindow.cpp:971
 msgid "15 Minutes"
 msgstr "15 minuti"
 
-#: src/modules/notifier/notifierwindow.cpp:972
+#: src/modules/notifier/NotifierWindow.cpp:972
 msgid "30 Minutes"
 msgstr "30 minuti"
 
-#: src/modules/notifier/notifierwindow.cpp:970
+#: src/modules/notifier/NotifierWindow.cpp:970
 msgid "5 Minutes"
 msgstr "5 minuti"
 
-#: src/modules/notifier/notifierwindow.cpp:978
+#: src/modules/notifier/NotifierWindow.cpp:978
 msgid "Disable"
 msgstr "Disabilita"
 
-#: src/modules/notifier/notifierwindow.cpp:966
+#: src/modules/notifier/NotifierWindow.cpp:966
 msgid "Hide"
 msgstr "Nascondi"
 
-#: src/modules/notifier/notifierwindow.cpp:976
+#: src/modules/notifier/NotifierWindow.cpp:976
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr "Permanentemente (Finché non sia Abilitato)"
 
-#: src/modules/notifier/notifierwindow.cpp:965
+#: src/modules/notifier/NotifierWindow.cpp:965
 msgid "Show/Hide input line"
 msgstr "Mostra/Nascondi l'inserimento del testo"
 
@@ -72,11 +72,11 @@ msgstr "Il timeout specificato non è valido, assumo 0"
 msgid "The specified window does not exist"
 msgstr "La finestra specificata non esiste"
 
-#: src/modules/notifier/notifierwindow.cpp:975
+#: src/modules/notifier/NotifierWindow.cpp:975
 msgid "Until KVIrc is Restarted"
 msgstr "Fino al prossimo riavvio di KVIrc"
 
-#: src/modules/notifier/notifierwindow.cpp:1053
+#: src/modules/notifier/NotifierWindow.cpp:1053
 msgid "Write text or commands to window"
 msgstr "Spedisci testo o comandi alla finestra"
 

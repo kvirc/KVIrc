@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: notifier_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2007-11-21 18:00+0200\n"
 "Last-Translator: Santeri Piippo <aleksanteri4028@gmail.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,39 +17,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/notifier/notifierwindow.cpp:973
+#: src/modules/notifier/NotifierWindow.cpp:973
 msgid "1 Hour"
 msgstr "Tunti"
 
-#: src/modules/notifier/notifierwindow.cpp:969
+#: src/modules/notifier/NotifierWindow.cpp:969
 msgid "1 Minute"
 msgstr "Minuutti"
 
-#: src/modules/notifier/notifierwindow.cpp:971
+#: src/modules/notifier/NotifierWindow.cpp:971
 msgid "15 Minutes"
 msgstr "15 minuuttia"
 
-#: src/modules/notifier/notifierwindow.cpp:972
+#: src/modules/notifier/NotifierWindow.cpp:972
 msgid "30 Minutes"
 msgstr "Puoli tuntia"
 
-#: src/modules/notifier/notifierwindow.cpp:970
+#: src/modules/notifier/NotifierWindow.cpp:970
 msgid "5 Minutes"
 msgstr "Viisi minuuttia"
 
-#: src/modules/notifier/notifierwindow.cpp:978
+#: src/modules/notifier/NotifierWindow.cpp:978
 msgid "Disable"
 msgstr "Ota pois päältä"
 
-#: src/modules/notifier/notifierwindow.cpp:966
+#: src/modules/notifier/NotifierWindow.cpp:966
 msgid "Hide"
 msgstr "Piilota"
 
-#: src/modules/notifier/notifierwindow.cpp:976
+#: src/modules/notifier/NotifierWindow.cpp:976
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr "Vakituisesti (ellei toisin säädetä)"
 
-#: src/modules/notifier/notifierwindow.cpp:965
+#: src/modules/notifier/NotifierWindow.cpp:965
 msgid "Show/Hide input line"
 msgstr ""
 
@@ -65,10 +65,10 @@ msgstr "Asetettu aikakatkaisu ei ole oikein muotoiltu, oletetaan 0:ksi"
 msgid "The specified window does not exist"
 msgstr "Tämä ikkuna ei ole olemassa"
 
-#: src/modules/notifier/notifierwindow.cpp:975
+#: src/modules/notifier/NotifierWindow.cpp:975
 msgid "Until KVIrc is Restarted"
 msgstr "Kunnes KVIrc aloitetaan uudestaan"
 
-#: src/modules/notifier/notifierwindow.cpp:1053
+#: src/modules/notifier/NotifierWindow.cpp:1053
 msgid "Write text or commands to window"
 msgstr "Kirjoita tekstiä tai komentoja ikkunaan"

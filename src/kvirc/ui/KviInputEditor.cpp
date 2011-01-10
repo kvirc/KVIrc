@@ -1661,8 +1661,8 @@ void KviInputEditor::completion(bool bShift)
 				if(szTmp->length() < szMatch.length())
 					szMatch.remove(szTmp->length(),szMatch.length() - szTmp->length());
 				// All the matches here have length >= word.len()!!!
-				const QChar * b1 = KviQString::nullTerminatedArray(*szTmp) + iWLen;
-				const QChar * b2 = KviQString::nullTerminatedArray(szMatch) + iWLen;
+				const QChar * b1 = (*szTmp).constData() + iWLen;
+				const QChar * b2 = szMatch.constData() + iWLen;
 				const QChar * c1 = b1;
 				const QChar * c2 = b2;
 				if(bIsDir)while(c1->unicode() && (c1->unicode() == c2->unicode()))c1++,c2++;

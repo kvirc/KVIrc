@@ -1356,7 +1356,7 @@ void PopupEditorWidget::getUniquePopupName(MenuTreeWidgetItem *item,QString &buf
 			if(KviQString::equalCI(newName,ch->m_pPopup->popupName()) && (ch != item))
 			{
 				bFound = true;
-				KviQString::sprintf(newName,"%Q.%d",&buffer,idx);
+				newName = QString("%1.%2").arg(buffer).arg(idx);
 				idx++;
 				break;
 			}

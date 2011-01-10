@@ -505,26 +505,26 @@ bool PackThemeDialog::packTheme()
 	int iIdx = 0;
 	for(KviThemeInfo * pInfo = m_pThemeInfoList->first(); pInfo; pInfo = m_pThemeInfoList->next())
 	{
-		KviQString::sprintf(szTmp,"Theme%dName",iIdx);
+		szTmp = QString("Theme%1Name").arg(iIdx);
 		f.addInfoField(szTmp,pInfo->name());
-		KviQString::sprintf(szTmp,"Theme%dVersion",iIdx);
+		szTmp = QString("Theme%1Version").arg(iIdx);
 		f.addInfoField(szTmp,pInfo->version());
-		KviQString::sprintf(szTmp,"Theme%dDescription",iIdx);
+		szTmp = QString("Theme%1Description").arg(iIdx);
 		f.addInfoField(szTmp,pInfo->description());
-		KviQString::sprintf(szTmp,"Theme%dDate",iIdx);
+		szTmp = QString("Theme%1Date").arg(iIdx);
 		f.addInfoField(szTmp,pInfo->date());
-		KviQString::sprintf(szTmp,"Theme%dSubdirectory",iIdx);
+		szTmp = QString("Theme%1Subdirectory").arg(iIdx);
 		f.addInfoField(szTmp,pInfo->subdirectory());
-		KviQString::sprintf(szTmp,"Theme%dAuthor",iIdx);
+		szTmp = QString("Theme%1Author").arg(iIdx);
 		f.addInfoField(szTmp,pInfo->author());
-		KviQString::sprintf(szTmp,"Theme%dApplication",iIdx);
+		szTmp = QString("Theme%1Application").arg(iIdx);
 		f.addInfoField(szTmp,pInfo->application());
-		KviQString::sprintf(szTmp,"Theme%dThemeEngineVersion",iIdx);
+		szTmp = QString("Theme%1ThemeEngineVersion").arg(iIdx);
 		f.addInfoField(szTmp,pInfo->themeEngineVersion());
 		QPixmap pixScreenshot = pInfo->smallScreenshot();
 		if(!pixScreenshot.isNull())
 		{
-			KviQString::sprintf(szTmp,"Theme%dScreenshot",iIdx);
+			szTmp = QString("Theme%1Screenshot").arg(iIdx);
 			QByteArray * pba = new QByteArray();
 
 			QBuffer bufferz(pba,0);

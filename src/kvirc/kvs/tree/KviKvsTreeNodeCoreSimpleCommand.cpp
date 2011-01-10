@@ -40,7 +40,7 @@ KviKvsTreeNodeCoreSimpleCommand::~KviKvsTreeNodeCoreSimpleCommand()
 
 void KviKvsTreeNodeCoreSimpleCommand::contextDescription(QString &szBuffer)
 {
-	KviQString::sprintf(szBuffer,"Core Simple Command \"%Q\"",&m_szCmdName);
+	szBuffer = QString("Core Simple Command \"%1\"").arg(m_szCmdName);
 }
 
 void KviKvsTreeNodeCoreSimpleCommand::dump(const char * prefix)

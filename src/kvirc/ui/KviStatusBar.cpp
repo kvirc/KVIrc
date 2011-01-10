@@ -362,8 +362,7 @@ void KviStatusBar::contextPopupAboutToShow()
 	{
 		QString szApp = m_pClickedApplet->descriptor()->visibleName();
 
-		QString szTmp;
-		KviQString::sprintf(szTmp,"<center><b>%Q</b></center>",&szApp);
+		QString szTmp = QString("<center><b>%1</b></center>").arg(szApp);
 
 		QLabel * pLabel = new QLabel(szTmp,m_pContextPopup);
 		QPalette p;
@@ -372,7 +371,7 @@ void KviStatusBar::contextPopupAboutToShow()
 
 		m_pClickedApplet->fillContextPopup(m_pContextPopup);
 
-		KviQString::sprintf(szTmp,__tr2qs("Remove %Q"),&szApp);
+		szTmp = QString(__tr2qs("Remove %1")).arg(szApp);
 		m_pContextPopup->insertSeparator();
 		m_pContextPopup->insertItem(szTmp,this,SLOT(removeClickedApplet()));
 	}

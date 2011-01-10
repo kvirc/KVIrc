@@ -301,7 +301,7 @@ void LogViewWindow::filterNext()
 		m_pLastCategory = new LogListViewItemType(m_pListView,pFile->type());
 	}
 
-	KviQString::sprintf(szCurGroup, __tr2qs_ctx("%Q on %Q","logview"), &(pFile->name()), &(pFile->network()));
+	szCurGroup = QString(__tr2qs_ctx("%1 on %2","logview")).arg(pFile->name(),pFile->network());
 
 	if(m_szLastGroup!=szCurGroup)
 	{

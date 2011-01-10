@@ -29,7 +29,6 @@
 #include "KviApplication.h"
 #include "KviFileUtils.h"
 #include "KviMainWindow.h"
-#include "KviQString.h"
 #include "KviTalToolTip.h"
 
 #include <QDir>
@@ -116,8 +115,7 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 			if(!KviFileUtils::fileExists(szBuffer))
 				return true;
 
-			QString szTmp;
-			KviQString::sprintf(szTmp,__tr2qs("The file %s already exists.<br>Do you wish to overwrite it?"),szBuffer.toUtf8().data());
+			QString szTmp = QString(__tr2qs("The file %1 already exists.<br>Do you wish to overwrite it?")).arg(szBuffer);
 
 			switch(QMessageBox::information(pParent,__tr2qs("File Exists - KVIrc"),szTmp,QMessageBox::Yes,QMessageBox::No | QMessageBox::Default,QMessageBox::Cancel | QMessageBox::Escape))
 			{
@@ -161,8 +159,7 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 			// Check for the file existence
 			if(KviFileUtils::fileExists(szBuffer))
 			{
-				QString szTmp;
-				KviQString::sprintf(szTmp,__tr2qs("The file %s already exists.<br>Do you wish to overwrite it?"),szBuffer.toUtf8().data());
+				QString szTmp = QString(__tr2qs("The file %1 already exists.<br>Do you wish to overwrite it?")).arg(szBuffer);
 
 				switch(QMessageBox::information(pDialog,__tr2qs("File Exists - KVIrc"),szTmp,QMessageBox::Yes,QMessageBox::No | QMessageBox::Default,QMessageBox::Cancel | QMessageBox::Escape))
 				{

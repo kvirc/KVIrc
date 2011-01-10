@@ -77,7 +77,7 @@ void SocketSpyWindow::getBaseLogFileName(QString &buffer)
 
 void SocketSpyWindow::fillCaptionBuffers()
 {
-	KviQString::sprintf(m_szPlainTextCaption,__tr2qs("Socket Spy [IRC Context %u]"),m_pConsole->context()->id());
+	m_szPlainTextCaption = QString(__tr2qs("Socket Spy [IRC Context %1]")).arg(m_pConsole->context()->id());
 }
 
 bool SocketSpyWindow::incomingMessage(const char * message)

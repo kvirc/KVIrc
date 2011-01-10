@@ -30,7 +30,6 @@
 #include "kvi_out.h"
 #include "KviOptions.h"
 #include "KviLocale.h"
-#include "KviQString.h"
 #include "kvi_out.h"
 #include "KviMircCntrl.h"
 #include "KviThemedLabel.h"
@@ -130,9 +129,8 @@ void LinksWindow::connectionStateChange()
 	m_pRequestButton->setEnabled(st == KviIrcContext::Connected);
 	if(st == KviIrcContext::Connected)
 	{
-		QString tmp;
-		KviQString::sprintf(tmp,__tr2qs("Connected to %s (%s)"),m_pConsole->connection()->currentServerName().toUtf8().data(),m_pConsole->currentNetworkName().toUtf8().data());
-		m_pInfoLabel->setText(tmp);
+		QString szTmp = QString(__tr2qs("Connected to %1 (%2)")).arg(m_pConsole->connection()->currentServerName(),m_pConsole->currentNetworkName());
+		m_pInfoLabel->setText(szTmp);
 	} else {
 		m_pInfoLabel->setText(__tr2qs("Links cannot be requested: Not connected to a server"));
 	}
@@ -159,7 +157,7 @@ QSize LinksWindow::sizeHint() const
 
 void LinksWindow::fillCaptionBuffers()
 {
-	KviQString::sprintf(m_szPlainTextCaption,__tr2qs("Links for %Q [IRC Context %u]"),&m_szRootServer,m_pConsole->context()->id());
+	m_szPlainTextCaption = QString(__tr2qs("Links for %1 [IRC Context %2]")).arg(m_szRootServer).arg(m_pConsole->context()->id());
 }
 
 void LinksWindow::die()
@@ -234,21 +232,20 @@ void LinksWindow::endOfLinks()
 				output(KVI_OUT_SYSTEMERROR,__tr2qs("Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"),
 					l->parent.ptr(),l->host.ptr(),l->hops,l->description.ptr());
 				brokenLinks++;
-				QString tmp;
-				KviQString::sprintf(tmp,__tr2qs("%s: Parent link %s"),l->description.ptr(),l->parent.ptr());
+				QString szTmp = QString(__tr2qs("%1: Parent link %2")).arg(l->description.ptr(),l->parent.ptr());
 				KviCString tmp2(KviCString::Format,"%d",l->hops);
 				if(root)
 				{
 					it = new QTreeWidgetItem(root);
 					it->setText(0,QString(l->host.ptr()));
 					it->setText(1,QString(tmp2.ptr()));
-					it->setText(2,tmp);
+					it->setText(2,szTmp);
 				} else {
 					outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Warning: No root link was sent by the server, the stats may be invalid."));
 					it = new QTreeWidgetItem(m_pListView);
 					it->setText(0,QString(l->host.ptr()));
 					it->setText(1,QString(tmp2.ptr()));
-					it->setText(2,tmp);
+					it->setText(2,szTmp);
 				}
 			} else {
 				it = (QTreeWidgetItem*) it->parent();

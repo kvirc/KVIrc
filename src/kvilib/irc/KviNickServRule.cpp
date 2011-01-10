@@ -35,37 +35,40 @@ void KviNickServRule::copyFrom(const KviNickServRule &src)
 	m_szServerMask = src.m_szServerMask;
 }
 
-void KviNickServRule::save(KviConfigurationFile * cfg,const QString &prefix)
+void KviNickServRule::save(KviConfigurationFile * cfg, const QString & szPrefix)
 {
-	QString tmp;
-	KviQString::sprintf(tmp,"%QRegisteredNick",&prefix);
-	cfg->writeEntry(tmp,m_szRegisteredNick);
-	KviQString::sprintf(tmp,"%QNickServMask",&prefix);
-	cfg->writeEntry(tmp,m_szNickServMask);
-	KviQString::sprintf(tmp,"%QMessageRegexp",&prefix);
-	cfg->writeEntry(tmp,m_szMessageRegexp);
-	KviQString::sprintf(tmp,"%QIdentifyCommand",&prefix);
-	cfg->writeEntry(tmp,m_szIdentifyCommand);
-	KviQString::sprintf(tmp,"%QServerMask",&prefix);
-	cfg->writeEntry(tmp,m_szServerMask);
+	QString szTmp;
+	szTmp = QString("%1RegisteredNick").arg(szPrefix);
+	cfg->writeEntry(szTmp,m_szRegisteredNick);
+	szTmp = QString("%1NickServMask").arg(szPrefix);
+	cfg->writeEntry(szTmp,m_szNickServMask);
+	szTmp = QString("%1MessageRegexp").arg(szPrefix);
+	cfg->writeEntry(szTmp,m_szMessageRegexp);
+	szTmp = QString("%1IdentifyCommand").arg(szPrefix);
+	cfg->writeEntry(szTmp,m_szIdentifyCommand);
+	szTmp = QString("%1ServerMask").arg(szPrefix);
+	cfg->writeEntry(szTmp,m_szServerMask);
 }
 
-bool KviNickServRule::load(KviConfigurationFile * cfg,const QString &prefix)
+bool KviNickServRule::load(KviConfigurationFile * cfg,const QString & szPrefix)
 {
-	QString tmp;
-	KviQString::sprintf(tmp,"%QRegisteredNick",&prefix);
-	m_szRegisteredNick = KviQString::trimmed(cfg->readEntry(tmp));
-	if(m_szRegisteredNick.isEmpty())return false;
-	KviQString::sprintf(tmp,"%QNickServMask",&prefix);
-	m_szNickServMask = cfg->readEntry(tmp);
-	if(m_szNickServMask.isEmpty())return false;
-	KviQString::sprintf(tmp,"%QServerMask",&prefix);
-	m_szServerMask = cfg->readEntry(tmp,QString());
-	KviQString::sprintf(tmp,"%QMessageRegexp",&prefix);
-	m_szMessageRegexp = cfg->readEntry(tmp);
-	if(m_szMessageRegexp.isEmpty())return false;
-	KviQString::sprintf(tmp,"%QIdentifyCommand",&prefix);
-	m_szIdentifyCommand = cfg->readEntry(tmp);
+	QString szTmp;
+	szTmp = QString("%1RegisteredNick").arg(szPrefix);
+	m_szRegisteredNick = cfg->readEntry(szTmp).trimmed();
+	if(m_szRegisteredNick.isEmpty())
+		return false;
+	szTmp = QString("%1NickServMask").arg(szPrefix);
+	m_szNickServMask = cfg->readEntry(szTmp);
+	if(m_szNickServMask.isEmpty())
+		return false;
+	szTmp = QString("%1ServerMask").arg(szPrefix);
+	m_szServerMask = cfg->readEntry(szTmp,QString());
+	szTmp = QString("%1MessageRegexp").arg(szPrefix);
+	m_szMessageRegexp = cfg->readEntry(szTmp);
+	if(m_szMessageRegexp.isEmpty())
+		return false;
+	szTmp = QString("%1IdentifyCommand").arg(szPrefix);
+	m_szIdentifyCommand = cfg->readEntry(szTmp);
 	return !m_szIdentifyCommand.isEmpty();
 }
 
@@ -77,4 +80,3 @@ KviNickServRule * KviNickServRule::createInstance(const QString &szRegisteredNic
 {
 	return new KviNickServRule(szRegisteredNick,szNickServMask,szMessageRegexp,szIdentifyCommand,szServerMask);
 }
-

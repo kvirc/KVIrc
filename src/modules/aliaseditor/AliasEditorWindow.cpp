@@ -747,7 +747,7 @@ void AliasEditorWidget::exportSelectionInSinglesFiles(KviPointerList<AliasEditor
 		if (KviFileUtils::fileExists(szCompletePath) && !bReplaceAll)
 		{
 			QString szMsg;
-			KviQString::sprintf(szMsg,__tr2qs_ctx("The file \"%Q\" exists. Do you want to replace it ?","editor"),&szFileName);
+			szMsg = QString(__tr2qs_ctx("The file \"%1\" exists. Do you want to replace it?","editor")).arg(szFileName);
 			int ret = QMessageBox::question(this,__tr2qs_ctx("Replace file","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
 			if (ret!=2)
 			{
@@ -923,9 +923,9 @@ bool AliasEditorWidget::removeItem(AliasEditorTreeWidgetItem *it,bool * pbYesToA
 	if(!*pbYesToAll)
 	{
 		if(it->isAlias())
-			KviQString::sprintf(szMsg,__tr2qs_ctx("Do you really want to remove the alias \"%Q\" ?","editor"),&szName);
+			szMsg = QString(__tr2qs_ctx("Do you really want to remove the alias \"%1\"?","editor")).arg(szName);
 		else {
-			KviQString::sprintf(szMsg,__tr2qs_ctx("Do you really want to remove the namespace \"%Q\" ?","editor"),&szName);
+			szMsg = QString(__tr2qs_ctx("Do you really want to remove the namespace \"%1\"?","editor")).arg(szName);
 			szMsg += "<br>";
 			szMsg += __tr2qs_ctx("Please note that all the children items will be deleted too.","editor");
 		}

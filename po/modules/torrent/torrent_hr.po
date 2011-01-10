@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-22 09:55+0100\n"
+"POT-Creation-Date: 2011-01-10 18:59+0100\n"
 "PO-Revision-Date: 2008-01-12 03:57+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Hrvatski <en@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
+#: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Odabiranje sučelja za torrent klijent \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:719
+#: src/modules/torrent/libkvitorrent.cpp:722
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Neispravno klijent sučelje \"%Q\"!"
 
@@ -37,7 +37,7 @@ msgstr "Neispravno klijent sučelje \"%Q\"!"
 msgid "Last interface error: "
 msgstr "Posljednja greška sučelja. "
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:92
+#: src/modules/torrent/StatusBarApplet.cpp:92
 msgid "No client selected!"
 msgstr "Nema odabranog klijenta!"
 
@@ -55,8 +55,8 @@ msgid ""
 "function"
 msgstr "Odabrani torrent klijent nije uspio izvršiti zatraženu funkciju"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:44
-#: src/modules/torrent/tc_statusbarapplet.cpp:61
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:61
 msgid "Torrent Client"
 msgstr ""
 
@@ -64,7 +64,7 @@ msgstr ""
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr "Pokušavam torrent sučelje za klijenta \"%Q\": score %d "
 
-#: src/modules/torrent/libkvitorrent.cpp:711
+#: src/modules/torrent/libkvitorrent.cpp:714
 msgid "Using client interface \"%Q\"."
 msgstr "Koristim klijent sućelje \"%Q\"."
 
