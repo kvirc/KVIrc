@@ -58,8 +58,8 @@ const char * const sockstate_tbl[] = {
         "Connecting",
         "Connected",
         "Bound",
-        "Closing",
-        "Listening"
+	"Listening",
+	"Closing"
 };
 
 const char * const sockerrors_tbl[] = {
@@ -214,20 +214,20 @@ const char * const sockerrors_tbl[] = {
 @examples:
 		[example]
 		// Server socket: listen 8080 port and answer to requests (multi-threaded)
-		class (webserver,socket)
+		class("webserver","socket")
 		{
-			constructor ()
+			function incomingConnectionEvent()
 			{
-				@$listen(8080, "127.0.0.1")
+			    // incoming connection socket passed by the framework
+			    %socket = $0
+			    debug "Webserver incoming Conection from: %socket->$remoteIp : %socket->$remotePort"
+			    %socket->$write("HTTP/1.0 200 OK\n\n<html><head></head><body><h1>KVIrc Webserver</h1></body></html>\n")
+			    // tells KVIrc no need this socket anymore
+			    return $true()
 			}
-			incomingConnectionEvent()
+			function constructor()
 			{
-				%tmp = $new(socket)
-				@$accept(%tmp)
-				echo "Webserver incoming Conection from: %tmp->$remoteIp : %tmp->$remotePort"
-				%tmp->$write("HTTP/1.1 200 OK\n\n<html><head></head><body><h1>KVIrc Webserver</h1></body></html>\n")
-				%tmp->$close()
-				delete %tmp
+			    debug listen @$listen(8080, "127.0.0.1")
 			}
 		}
 		// finally start webserver
@@ -235,44 +235,50 @@ const char * const sockerrors_tbl[] = {
 		[/example]
 		[example]
 		// Client socket - go to google and grab request header[br]
-		class (httprequest,socket)
+		class("httprequest","socket")
 		{
-			constructor ()
-			{
-				// connect to the server
-				@$connect("www.google.com",80)
-			}
-			destructor()
-			{
-				// if the socket is still open close it
-				if(@$status() == 4) @$close()
-			}
-			connectFailedEvent()
+			function errorEvent()
 			{
 				// the connection to the server failed
 				debug  "Connection failed: "$0
 				delete $$
 			}
-			connectEvent()
+			function disconnectedEvent()
 			{
-				// connection is complete
-				// send a request to receive the headers only from http://www.google.com/
-				@$write("HEAD / HTTP/1.1\r\nHost: www.google.de\r\nConnction: Close\r\nUser-Agent: KVIrc socket\r\n\r\n");
+				// connection has been closed
+				debug  "Connection is closed"
+				delete $$
 			}
-			dataAvailableEvent()
+			function destructor()
+			{
+				// if the socket is still open close it
+				if(@$status() == "Connected") @$close()
+			}
+			function stateChangedEvent()
+			{
+				debug socket state $0
+			}
+			function dataAvailableEvent()
 			{
 				// reading the received data
+				debug reading $0 bytes
 				%newdata  = @$read($0)
-				echo %newdata
-				#close and delete the socket
+				debug data:  %newdata
+				// close and delete the socket
 				@$close()
 				delete $$
 			}
-			disconnectEvent()
+			function constructor()
 			{
-				// connection has been closed
-				echo "Connection closed"
-				delete $$
+				// connect to the server
+				@$connect("www.google.com",80)
+			}
+			function connectedEvent()
+			{
+				// connection is complete
+				// send a request to receive the headers only from http://www.google.com/
+				debug connected
+				debug written bytes @$write("HEAD / HTTP/1.1\r\nHost: www.google.de\r\nConnection: Close\r\nUser-Agent: KVIrc socket\r\n\r\n") on socket;
 			}
 		}
 		%Temp = $new(httprequest)
@@ -327,8 +333,8 @@ KVSO_END_DESTRUCTOR(KvsObject_socket)
 
 KVSO_CLASS_FUNCTION(socket,status)
 {
-	int state=m_pSocket->state();
-	c->returnValue()->setString(sockstate_tbl[state]);
+
+	c->returnValue()->setString(getStateString(m_pSocket->state()));
 	return true;
 }
 
@@ -507,7 +513,6 @@ KVSO_CLASS_FUNCTION(socket,write)
 				qDebug("write on socket %s",szData8.data());
 				kvs_int_t bytes=m_pSocket->write((const char*)szData8.data(),szData8.length());
 				c->returnValue()->setInteger(bytes);
-				m_pSocket->flush();
 			}
 		} else {
 			KviFile f(szData);
@@ -580,6 +585,53 @@ void KvsObject_socket::makeConnections()
 	connect(m_pSocket,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(slotStateChanged(QAbstractSocket::SocketState)));
 	//proxyAuthenticationRequired ( const QNetworkProxy & proxy, QAuthenticator * authenticator )
 }
+const char * KvsObject_socket::getStateString(QAbstractSocket::SocketState state)
+{
+	int idx=0;
+	switch(state)
+	{
+		case QAbstractSocket::UnconnectedState:
+		{
+			idx=0;
+			break;
+		}
+		case QAbstractSocket::HostLookupState:
+		{
+			idx=1;
+			break;
+		}
+		case QAbstractSocket::ConnectingState:
+		{
+			idx=2;
+			break;
+		}
+		case QAbstractSocket::ConnectedState:
+		{
+			idx=3;
+			break;
+		}
+		case QAbstractSocket::BoundState:
+		{
+			idx=4;
+			break;
+		}
+		case QAbstractSocket::ListeningState:
+		{
+			idx=5;
+			break;
+		}
+		case QAbstractSocket::ClosingState:
+		{
+			idx=6;
+			break;
+		}
+		default:
+		{
+			// internal state?
+		}
+	    }
+	    return sockstate_tbl[idx];
+}
 
 // slots
 void KvsObject_socket::slotReadyRead()
@@ -617,7 +669,7 @@ void KvsObject_socket::slotHostFound()
 void KvsObject_socket::slotStateChanged( QAbstractSocket::SocketState socketState )
 {
 	KviKvsVariantList lParams;
-	QString szState = sockstate_tbl[socketState];
+	QString szState = getStateString(socketState);
 	lParams.append(new KviKvsVariant(szState));
 	callFunction(this,"stateChangedEvent",&lParams);
 }

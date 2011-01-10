@@ -41,6 +41,7 @@ protected:
             KviKvsRunTimeContext *m_pContext;
 protected:
         virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	const char * getStateString(QAbstractSocket::SocketState);
 
         void setInternalSocket(QAbstractSocket *pSocket)
         {
