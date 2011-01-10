@@ -24,6 +24,8 @@
 
 MODULE = KVIrc		PACKAGE = KVIrc
 
+PROTOTYPES: ENABLE
+
 void echo(text,colorset = 0,windowid = 0)
 	char * text
 	int colorset
