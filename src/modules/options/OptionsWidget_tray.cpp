@@ -50,11 +50,11 @@ OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
 
 	addUIntSelector(m_pLevelsGroup,__tr2qs_ctx("Minimum level for low-priority messages","options"),
 				KviOption_uintMinTrayLowLevelMessage,
-				1,4,1,true);
+				1,5,1,true);
 
 	addUIntSelector(m_pLevelsGroup,__tr2qs_ctx("Minimum level for high-priority message","options"),
 				KviOption_uintMinTrayHighLevelMessage,
-				1,4,4,true);
+				1,5,4,true);
 
 	addRowSpacer(0,5,0,5);
 
