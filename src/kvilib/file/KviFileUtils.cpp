@@ -122,7 +122,7 @@ namespace KviFileUtils
 			{
 				if(!d.mkdir(szCreatedDir))
 				{
-					qDebug("Can't create directory %s",KviQString::toUtf8(szCreatedDir).data());
+					qDebug("Can't create directory %s",szCreatedDir.toUtf8().data());
 					return false;
 				}
 			}
@@ -285,7 +285,7 @@ namespace KviFileUtils
 		KviFile f(szPath);
 		if(!f.open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate)))
 			return false;
-		QByteArray szTmp = KviQString::toUtf8(szData);
+		QByteArray szTmp = szData.toUtf8();
 		if(!szTmp.data())
 			return true;
 		if(f.write(szTmp.data(),szTmp.length()) != ((unsigned int)(szTmp.length())))

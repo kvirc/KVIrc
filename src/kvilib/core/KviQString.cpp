@@ -580,11 +580,6 @@ namespace KviQString
 		}
 	}
 
-	void detach(QString & szSrc)
-	{
-		szSrc.resize(szSrc.length());
-	}
-
 	void appendNumber(QString & szSrc, double dReal)
 	{
 #ifdef COMPILE_ON_MINGW

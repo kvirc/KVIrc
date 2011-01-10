@@ -247,7 +247,7 @@ KviSharedFile * KviSharedFilesManager::addSharedFile(const QString &szName,const
 
 		return o;
 	} else {
-		qDebug("File %s unreadable: can't add offer",KviQString::toUtf8(szAbsPath).data());
+		qDebug("File %s unreadable: can't add offer",szAbsPath.toUtf8().data());
 		return 0;
 	}
 }

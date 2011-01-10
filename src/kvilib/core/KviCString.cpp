@@ -25,12 +25,9 @@
 #include "kvi_debug.h"
 
 #define _KVI_STRING_CPP_
+
 #include "KviCString.h"
-
 #include "KviMemory.h"
-
-#include "KviMemory.h"
-#include "KviQString.h"
 
 static char hexdigits[16] = { '0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f' };
 
@@ -761,7 +758,7 @@ int kvi_vsnprintf(char *buffer,int len,const char *fmt,kvi_va_list list)
 			case 'Q': // QString! (this should almost never happen)
 			{
 				QString * s = kvi_va_arg(list,QString *);
-				QByteArray cs = KviQString::toUtf8(*s);
+				QByteArray cs = (*s).toUtf8();
 				const char * t = cs.data();
 				if(!t)continue; // nothing to do
 				//check for space...
@@ -826,7 +823,7 @@ int kvi_irc_vsnprintf(char *buffer,const char *fmt,kvi_va_list list,bool *bTrunc
 			case 'Q': // QString! (this should almost never happen)
 			{
 				QString * s = kvi_va_arg(list,QString *);
-				QByteArray cs = KviQString::toUtf8(*s);
+				QByteArray cs = (*s).toUtf8();
 				const char * t = cs.data();
 				if(!t)continue; // nothing to do
 				while(*t)
@@ -1130,7 +1127,7 @@ KviCString::KviCString(const KviCString &str)
 
 KviCString::KviCString(const QString &str)
 {
-	QByteArray sz = KviQString::toUtf8(str);
+	QByteArray sz = str.toUtf8();
 	if(sz.length() > 0)
 	{
 		m_len = sz.length();
@@ -1503,7 +1500,7 @@ KviCString & KviCString::setStr(const char *str,int len)
 
 KviCString & KviCString::operator=(const QString &str)
 {
-	QByteArray sz = KviQString::toUtf8(str);
+	QByteArray sz = str.toUtf8();
 	if(sz.length() > 0){
 		m_len = sz.length();
 		m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
@@ -1552,7 +1549,7 @@ void KviCString::append(const char *str)
 
 void KviCString::append(const QString &str)
 {
-	QByteArray sz = KviQString::toUtf8(str);
+	QByteArray sz = str.toUtf8();
 	if(sz.length() < 1)return;
 	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+sz.length()+1);
 	KviMemory::copy((m_ptr+m_len),sz.data(),sz.length()+1);

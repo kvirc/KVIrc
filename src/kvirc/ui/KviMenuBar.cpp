@@ -350,7 +350,8 @@ KviScriptMenuBarItem * KviMenuBar::findMenu(const QString &text)
 		return 0;
 	for(KviScriptMenuBarItem * i = m_pScriptItemList->first();i;i = m_pScriptItemList->next())
 	{
-		if(KviQString::equalCI(i->szText,text))return i;
+		if(KviQString::equalCI(text,i->szText))
+			return i;
 	}
 	return 0;
 }

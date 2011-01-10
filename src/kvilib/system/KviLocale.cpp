@@ -419,7 +419,7 @@ bool KviMessageCatalogue::load(const QString& name)
 	KviFile f(szCatalogueFile);
 	if(!f.open(QFile::ReadOnly))
 	{
-		qDebug("[KviLocale]: Failed to open the messages file %s: probably doesn't exist",KviQString::toUtf8(szCatalogueFile).data());
+		qDebug("[KviLocale]: Failed to open the messages file %s: probably doesn't exist",szCatalogueFile.toUtf8().data());
 		return false;
 	}
 
@@ -427,7 +427,7 @@ bool KviMessageCatalogue::load(const QString& name)
 
 	if(f.read((char *)&hdr,sizeof(GnuMoFileHeader)) < (int)sizeof(GnuMoFileHeader))
 	{
-		qDebug("KviLocale: Failed to read header of %s",KviQString::toUtf8(szCatalogueFile).data());
+		qDebug("KviLocale: Failed to read header of %s",szCatalogueFile.toUtf8().data());
 		f.close();
 		return false;
 	}
@@ -438,10 +438,10 @@ bool KviMessageCatalogue::load(const QString& name)
 	{
 		if(hdr.magic == KVI_LOCALE_MAGIC_SWAPPED)
 		{
-			qDebug("KviLocale: Swapped magic for file %s: swapping data too",KviQString::toUtf8(szCatalogueFile).data());
+			qDebug("KviLocale: Swapped magic for file %s: swapping data too",szCatalogueFile.toUtf8().data());
 			bMustSwap = true;
 		} else {
-			qDebug("KviLocale: Bad locale magic for file %s: not a *.mo file ?",KviQString::toUtf8(szCatalogueFile).data());
+			qDebug("KviLocale: Bad locale magic for file %s: not a *.mo file ?",szCatalogueFile.toUtf8().data());
 			f.close();
 			return false;
 		}
@@ -449,7 +449,7 @@ bool KviMessageCatalogue::load(const QString& name)
 
 	if(KVI_SWAP_IF_NEEDED(bMustSwap,hdr.revision) != MO_REVISION_NUMBER)
 	{
-		qDebug("KviLocale: Invalid *.mo file revision number for file %s",KviQString::toUtf8(szCatalogueFile).data());
+		qDebug("KviLocale: Invalid *.mo file revision number for file %s",szCatalogueFile.toUtf8().data());
 		f.close();
 		return false;
 	}
@@ -458,7 +458,7 @@ bool KviMessageCatalogue::load(const QString& name)
 
 	if(numberOfStrings <= 0)
 	{
-		qDebug("KviLocale: No translated messages found in file %s",KviQString::toUtf8(szCatalogueFile).data());
+		qDebug("KviLocale: No translated messages found in file %s",szCatalogueFile.toUtf8().data());
 		f.close();
 		return false;
 	}
@@ -478,7 +478,7 @@ bool KviMessageCatalogue::load(const QString& name)
 	// FIXME: maybe read it in blocks eh ?
 	if(f.read(buffer,fSize) < (int)fSize)
 	{
-		qDebug("KviLocale: Error while reading the translation file %s",KviQString::toUtf8(szCatalogueFile).data());
+		qDebug("KviLocale: Error while reading the translation file %s",szCatalogueFile.toUtf8().data());
 		KviMemory::free(buffer);
 		f.close();
 		return false;
@@ -487,7 +487,7 @@ bool KviMessageCatalogue::load(const QString& name)
 	// Check for broken *.mo files
 	if(fSize < (24 + (sizeof(GnuMoStringDescriptor) * numberOfStrings)))
 	{
-		qDebug("KviLocale: Broken translation file %s (too small for all descriptors)",KviQString::toUtf8(szCatalogueFile).data());
+		qDebug("KviLocale: Broken translation file %s (too small for all descriptors)",szCatalogueFile.toUtf8().data());
 		KviMemory::free(buffer);
 		f.close();
 		return false;
@@ -502,7 +502,7 @@ bool KviMessageCatalogue::load(const QString& name)
 
 	if(fSize < (unsigned int)expectedFileSize)
 	{
-		qDebug("KviLocale: Broken translation file %s (too small for all the message strings)",KviQString::toUtf8(szCatalogueFile).data());
+		qDebug("KviLocale: Broken translation file %s (too small for all the message strings)",szCatalogueFile.toUtf8().data());
 		KviMemory::free(buffer);
 		f.close();
 		return false;
@@ -853,7 +853,7 @@ namespace KviLocale
 	bool loadCatalogue(const QString &name,const QString &szLocaleDir)
 	{
 		//qDebug("Looking up catalogue %s",name);
-		if(g_pCatalogueDict->find(KviQString::toUtf8(name).data()))
+		if(g_pCatalogueDict->find(name.toUtf8().data()))
 			return true; // already loaded
 
 		QString szBuffer;
@@ -863,7 +863,7 @@ namespace KviLocale
 			KviMessageCatalogue * c = new KviMessageCatalogue();
 			if(c->load(szBuffer))
 			{
-				g_pCatalogueDict->insert(KviQString::toUtf8(name).data(),c);
+				g_pCatalogueDict->insert(name.toUtf8().data(),c);
 				return true;
 			}
 			delete c;
@@ -875,7 +875,7 @@ namespace KviLocale
 	bool unloadCatalogue(const QString &name)
 	{
 		//qDebug("Unloading catalogue : %s",name);
-		return g_pCatalogueDict->remove(KviQString::toUtf8(name).data());
+		return g_pCatalogueDict->remove(name.toUtf8().data());
 	}
 
 	bool findCatalogue(QString & szBuffer, const QString & szName,const QString & szLocaleDir)
@@ -1022,7 +1022,7 @@ namespace KviLocale
 
 	KviMessageCatalogue * getLoadedCatalogue(const QString& name)
 	{
-		return g_pCatalogueDict->find(KviQString::toUtf8(name).data());
+		return g_pCatalogueDict->find(name.toUtf8().data());
 	}
 
 

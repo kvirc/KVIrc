@@ -1542,7 +1542,7 @@ void KviIrcConnection::loginToIrcServer()
 				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground),
 				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground),
 				KviMircCntrl::Reset);
-		szReal.prepend(KviQString::toUtf8(szTags));
+		szReal.prepend(szTags.toUtf8());
 	}
 
 	if(iGenderAvatarTag!=0)
@@ -1552,11 +1552,10 @@ void KviIrcConnection::loginToIrcServer()
 			       KviMircCntrl::Color,
 			       iGenderAvatarTag,
 			       KviMircCntrl::Reset);
-		szReal.prepend(KviQString::toUtf8(szTags));
+		szReal.prepend(szTags.toUtf8());
 	}
 
-	if(!sendFmtData("USER %s 0 %s :%s",szUser.data(),
-			KviQString::toUtf8(pServer->hostName()).data(),szReal.data()))
+	if(!sendFmtData("USER %s 0 %s :%s",szUser.data(),pServer->hostName().toUtf8().data(),szReal.data()))
 	{
 		// disconnected in the meantime!
 		return;

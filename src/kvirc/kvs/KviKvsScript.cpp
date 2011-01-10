@@ -48,7 +48,6 @@ KviKvsScript::KviKvsScript(const QString & szName, const QString & szBuffer, Scr
 	if(m_pData->m_szBuffer.isNull())
 		m_pData->m_szBuffer = "";
 
-	//KviQString::detach(*(m_pData->m_pszBuffer));
 	m_pData->m_pBuffer = m_pData->m_szBuffer.constData(); // never 0
 	m_pData->m_uLock = 0;
 	m_pData->m_pTree = 0;
@@ -64,7 +63,6 @@ KviKvsScript::KviKvsScript(const QString & szName, const QString & szBuffer, Kvi
 	if(m_pData->m_szBuffer.isNull())
 		m_pData->m_szBuffer = "";
 
-	//KviQString::detach(*(m_pData->m_pszBuffer));
 	m_pData->m_pBuffer = m_pData->m_szBuffer.constData(); // never 0
 	m_pData->m_uLock = 0;
 	m_pData->m_pTree = pPreparsedTree;
@@ -130,7 +128,7 @@ void KviKvsScript::detach()
 	if(d->m_szBuffer.isNull())
 		d->m_szBuffer = "";
 
-	KviQString::detach(d->m_szBuffer);
+	d->m_szBuffer.resize(d->m_szBuffer.length());
 	d->m_pBuffer = d->m_szBuffer.constData(); // never 0
 	d->m_uLock = 0;
 	d->m_pTree = 0;

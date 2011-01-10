@@ -295,7 +295,7 @@ void KviDnsResolverThread::run()
 		hints.ai_addr      = 0;
 		hints.ai_next      = 0;
 
-		retVal = getaddrinfo(KviQString::toUtf8(m_szQuery).data(),0,&hints,&pRet);
+		retVal = getaddrinfo(m_szQuery.toUtf8().data(),0,&hints,&pRet);
 
 		if(retVal != 0)
 		{

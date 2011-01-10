@@ -812,9 +812,9 @@ void KviIrcServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 		if (KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpDcc))
 		{
 			msg->msg->console()->output(KVI_OUT_IGNORE,__tr2qs("Ignoring DCC from \r!nc\r%s\r [%s@\r!h\r%s\r]"),
-				KviQString::toUtf8(msg->pSource->nick()).data(),
-				KviQString::toUtf8(msg->pSource->user()).data(),
-				KviQString::toUtf8(msg->pSource->host()).data()
+				msg->pSource->nick().toUtf8().data(),
+				msg->pSource->user().toUtf8().data(),
+				msg->pSource->host().toUtf8().data()
 				);
 			return;
 		}
@@ -835,9 +835,9 @@ void KviIrcServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 				if (KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
 				{
 					msg->msg->console()->output(KVI_OUT_IGNORE,__tr2qs("Ignoring CTCP from \r!nc\r%s\r [%s@\r!h\r%s\r]"),
-						KviQString::toUtf8(msg->pSource->nick()).data(),
-						KviQString::toUtf8(msg->pSource->user()).data(),
-						KviQString::toUtf8(msg->pSource->host()).data()
+						msg->pSource->nick().toUtf8().data(),
+						msg->pSource->user().toUtf8().data(),
+						msg->pSource->host().toUtf8().data()
 						);
 				}
 				return;

@@ -311,7 +311,7 @@ bool KviRegisteredUserDataBase::removeUser(const QString & name)
 	while(KviIrcMask * mask = u->maskList()->first())
 	{
 		if(!removeMaskByPointer(mask))
-			qDebug("Ops... removeMaskByPointer(%s) failed ?",KviQString::toUtf8(name).data());
+			qDebug("Ops... removeMaskByPointer(%s) failed ?",name.toUtf8().data());
 	}
 	emit(userRemoved(name));
 	m_pUserDict->remove(name);

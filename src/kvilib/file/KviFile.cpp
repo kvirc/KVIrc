@@ -25,7 +25,6 @@
 
 #include "KviFile.h"
 #include "KviByteOrder.h"
-#include "KviQString.h"
 
 #include <QByteArray>
 
@@ -80,7 +79,7 @@ bool KviFile::save(const QByteArray & data)
 
 bool KviFile::save(const QString & szData)
 {
-	QByteArray c = KviQString::toUtf8(szData);
+	QByteArray c = szData.toUtf8();
 	if(!save((kvi_u32_t)(c.length())))return false;
 	return (write(c.data(),c.length()) == ((unsigned int)(c.length())));
 }

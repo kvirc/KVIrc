@@ -25,11 +25,8 @@
 #include "KvsObject_xmlreader.h"
 #include "KvsObject_memoryBuffer.h"
 #include "KviLocale.h"
-
 #include "KviKvsVariantList.h"
 #include "KviKvsHash.h"
-
-#include "KviQString.h"
 
 
 /*
@@ -348,7 +345,7 @@ KVSO_CLASS_FUNCTION(xmlReader,parse)
 		// We have a problem here.. most kvirc functions already interpret the data
 		// read from files. We should have binary data handling features to get this to work correctly.
 		// The following snippet of code tries to provide a best-effort workaround.
-		QByteArray utf8data = KviQString::toUtf8(szString);
+		QByteArray utf8data = szString.toUtf8();
 		QByteArray data = utf8data;
 		data.truncate(utf8data.length()); // don't include the null terminator in data
 		source.setData(data);

@@ -146,7 +146,7 @@ namespace KviStringConversion
 
 	bool fromString(const QString & szValue,QRect &buffer)
 	{
-		QByteArray tmp = KviQString::toUtf8(szValue);
+		QByteArray tmp = szValue.toUtf8();
 		const char * c = tmp.data();
 		if(!c)return false;
 		int l,t,w,h;
@@ -193,7 +193,7 @@ namespace KviStringConversion
 	{
 		int iId,iLog,iLevel;
 		unsigned int uFore,uBack;
-		QByteArray tmp = KviQString::toUtf8(szValue);
+		QByteArray tmp = szValue.toUtf8();
 		char * cx = tmp.data();
 		if(!cx)return false;
 		if(sscanf(cx,"%d,%u,%u,%d,%d",&iId,&uFore,&uBack,&iLog,&iLevel) != 5)return false;
@@ -214,7 +214,7 @@ namespace KviStringConversion
 	void toString(const QFont &fValue,QString &buffer)
 	{
 		QString family(fValue.family());
-		buffer.sprintf("%s,%d,%d,%d",KviQString::toUtf8(family).data(),fValue.pointSize(),fValue.styleHint(),fValue.weight());
+		buffer.sprintf("%s,%d,%d,%d",family.toUtf8().data(),fValue.pointSize(),fValue.styleHint(),fValue.weight());
 		QString options;
 		if(fValue.bold())options.append('b');
 		if(fValue.italic())options.append('i');

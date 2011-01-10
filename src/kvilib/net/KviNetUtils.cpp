@@ -46,7 +46,6 @@
 #endif
 
 #include <sys/types.h>
-#include "KviQString.h"
 
 #ifdef COMPILE_GET_INTERFACE_ADDRESS
 	#include <sys/ioctl.h>
@@ -500,7 +499,7 @@ namespace KviNetUtils
 		return FALSE;
 #else //HAVE_INET_ATON
 		if(szStringIp.isEmpty())return false;
-		return (inet_aton(KviQString::toUtf8(szStringIp).data(),address) != 0);
+		return (inet_aton(szStringIp.toUtf8().data(),address) != 0);
 #endif //HAVE_INET_ATON
 	}
 
@@ -517,7 +516,7 @@ namespace KviNetUtils
 #ifdef COMPILE_IPV6_SUPPORT
 	bool stringIpToBinaryIp_V6(const QString &szStringIp,struct in6_addr * address)
 	{
-		return (inet_pton(AF_INET6,KviQString::toUtf8(szStringIp).data(),(void *)address) == 1);
+		return (inet_pton(AF_INET6,szStringIp.toUtf8().data(),(void *)address) == 1);
 	}
 
 	bool isValidStringIPv6(const QString &szIp)
@@ -582,7 +581,7 @@ namespace KviNetUtils
 		int len = szInterfaceName.length();
 		if(len > (IFNAMSIZ - 1))return false; // invalid interface anyway
 
-		KviMemory::move(ifr.ifr_name,KviQString::toUtf8(szInterfaceName).data(),len + 1);
+		KviMemory::move(ifr.ifr_name,szInterfaceName.toUtf8().data(),len + 1);
 
 		int fd = socket(AF_INET,SOCK_STREAM,0);
 		if(fd < 0)return false;

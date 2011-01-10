@@ -189,7 +189,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 
 	if(!pFile->save(uFlags))return writeError();
 
-	QByteArray szTargetFileName = KviQString::toUtf8(pDataField->m_szFileTargetName);
+	QByteArray szTargetFileName = pDataField->m_szFileTargetName.toUtf8();
 
 	// Path
 	if(!pFile->save(szTargetFileName))return writeError();

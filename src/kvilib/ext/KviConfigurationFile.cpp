@@ -513,7 +513,7 @@ bool KviConfigurationFile::save()
 	{
 		if((it.current()->count() != 0) || (m_bPreserveEmptyGroups))
 		{
-			KviCString group(m_bLocal8Bit ? KviQString::toLocal8Bit(it.currentKey()) : KviQString::toUtf8(it.currentKey()));
+			KviCString group(m_bLocal8Bit ? it.currentKey().toLocal8Bit() : it.currentKey().toUtf8());
 			group.hexEncodeWithTable(encode_table);
 
 			if(!f.putChar('['))return false;
@@ -526,8 +526,8 @@ bool KviConfigurationFile::save()
 			KviCString szName,szValue;
 			while(QString * p_str = it2.current())
 			{
-				szName = m_bLocal8Bit ? KviQString::toLocal8Bit(it2.currentKey()) : KviQString::toUtf8(it2.currentKey());
-				szValue = m_bLocal8Bit ? KviQString::toLocal8Bit(*p_str) : KviQString::toUtf8(*p_str);
+				szName = m_bLocal8Bit ? it2.currentKey().toLocal8Bit() : it2.currentKey().toUtf8();
+				szValue = m_bLocal8Bit ? (*p_str).toLocal8Bit() : (*p_str).toUtf8();
 				szName.hexEncodeWithTable(encode_table);
 				szValue.hexEncodeWhiteSpace();
 

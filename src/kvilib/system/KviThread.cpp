@@ -40,9 +40,8 @@
 
 #include <errno.h>
 
-#include "KviCString.h"
-#include "KviQString.h"
 #include "kvi_settings.h"
+#include "KviCString.h"
 #include "KviError.h"
 
 #include <QSocketNotifier>
@@ -187,17 +186,17 @@ KviThreadManager::KviThreadManager()
 
 	if(pipe(m_fd) != 0)
 	{
-		qDebug("Ops...thread manager pipe creation failed (%s)",KviQString::toUtf8(KviError::getDescription(KviError::translateSystemError(errno))).data());
+		qDebug("Ops...thread manager pipe creation failed (%s)",KviError::getDescription(KviError::translateSystemError(errno)).toUtf8().data());
 	}
 
 	if(fcntl(m_fd[KVI_THREAD_PIPE_SIDE_SLAVE],F_SETFL,O_NONBLOCK) == -1)
 	{
-		qDebug("Ops...thread manager slave pipe initialisation failed (%s)",KviQString::toUtf8(KviError::getDescription(KviError::translateSystemError(errno))).data());
+		qDebug("Ops...thread manager slave pipe initialisation failed (%s)",KviError::getDescription(KviError::translateSystemError(errno)).toUtf8().data());
 	}
 
 	if(fcntl(m_fd[KVI_THREAD_PIPE_SIDE_MASTER],F_SETFL,O_NONBLOCK) == -1)
 	{
-		qDebug("Ops...thread manager master pipe initialisation failed (%s)",KviQString::toUtf8(KviError::getDescription(KviError::translateSystemError(errno))).data());
+		qDebug("Ops...thread manager master pipe initialisation failed (%s)",KviError::getDescription(KviError::translateSystemError(errno)).toUtf8().data());
 	}
 
 	m_pSn = new QSocketNotifier(m_fd[KVI_THREAD_PIPE_SIDE_MASTER],QSocketNotifier::Read);

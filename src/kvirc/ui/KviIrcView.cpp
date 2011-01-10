@@ -454,14 +454,14 @@ void KviIrcView::clearBuffer()
 	m_pScrollBar->setRange(0,m_iNumLines);
 }
 
-bool KviIrcView::saveBuffer(const char *filename)
+bool KviIrcView::saveBuffer(const char * pcFilename)
 {
-	QFile f(QString::fromUtf8(filename));
+	QFile f(QString::fromUtf8(pcFilename));
 	if(!f.open(QIODevice::WriteOnly|QIODevice::Truncate))
 		return false;
-	QString tmp;
-	getTextBuffer(tmp);
-	QByteArray tmpx = KviQString::toUtf8(tmp);
+	QString szTmp;
+	getTextBuffer(szTmp);
+	QByteArray tmpx = szTmp.toUtf8();
 	f.write(tmpx.data(),tmpx.length());
 	f.close();
 	return true;

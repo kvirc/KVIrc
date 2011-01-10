@@ -249,15 +249,15 @@ bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 
 void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 {
-	QByteArray szTmp;
+	QByteArray tmp;
 
 	if(!KVI_OPTION_BOOL(KviOption_boolStripMsgTypeInLogs))
 	{
 		QString szMessageType = QString("%1 ").arg(iMsgType);
 
-		szTmp = KviQString::toUtf8(szMessageType);
+		tmp = szMessageType.toUtf8();
 
-		if(m_pLogFile->write(szTmp.data(),szTmp.length())==-1)
+		if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
 			qDebug("WARNING : Can not write to the log file.");
 	}
 	
@@ -278,16 +278,16 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 			break;
 		}
 
-		szTmp = KviQString::toUtf8(szDate);
+		tmp = szDate.toUtf8();
 
-		if(m_pLogFile->write(szTmp.data(),szTmp.length())==-1)
+		if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
 			qDebug("WARNING : Can not write to the log file.");
 	}
 	
-	szTmp = KviQString::toUtf8(szBuffer);
-	szTmp.append('\n');
+	tmp = szBuffer.toUtf8();
+	tmp.append('\n');
 
-	if(m_pLogFile->write(szTmp.data(),szTmp.length())==-1)
+	if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
 		qDebug("WARNING : Can not write to the log file.");
 }
 

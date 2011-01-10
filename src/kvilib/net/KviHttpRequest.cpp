@@ -290,8 +290,8 @@ void KviHttpRequest::slotSocketConnected()
 			"User-Agent: KVIrc-http-slave/1.0.0\r\n" \
 			"Accept: */*\r\n",
 			szMethod.ptr(),
-			KviQString::toUtf8(m_url.path()).data(),
-			KviQString::toUtf8(m_url.host()).data()
+			m_url.path().toUtf8().data(),
+			m_url.host().toUtf8().data()
 		);
 
 	if(m_uContentOffset > 0)
