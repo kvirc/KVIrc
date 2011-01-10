@@ -73,6 +73,8 @@
 
 #define KVI_REFRESH_IMAGE_NAME "kvi_icon_refresh.png"
 
+class KVIRC_API KviIconWidget;
+
 class KVIRC_API KviCachedPixmap
 {
 public:
@@ -124,50 +126,6 @@ public:
 	* \return void
 	*/
 	void updateLastAccessTime();
-};
-
-class KVIRC_API KviIconWidget : public QWidget
-{
-	Q_OBJECT
-public:
-	/**
-	* \brief Constructs the icon table widget
-	* \return KviIconWidget
-	*/
-	KviIconWidget();
-
-	/**
-	* \brief Constructs the icon table widget
-	* \param pPar The parent object
-	* \return KviIconWidget
-	*/
-	KviIconWidget(QWidget * pPar);
-
-	/**
-	* \brief Destroys the icon table widget
-	*/
-	~KviIconWidget();
-protected:
-	/**
-	* \brief Initializes the table containing the icons
-	* \return void
-	*/
-	void init();
-	virtual void closeEvent(QCloseEvent * pEvent);
-	virtual bool eventFilter(QObject * pObject, QEvent * pEvent);
-signals:
-	/**
-	* \brief Emitted when we close the table widget
-	* \return void
-	*/
-	void closed();
-
-	/**
-	* \brief Emitted when we select an icon from the table
-	* \param iIcon The index of the icon selected
-	* \return void
-	*/
-	void selected(int iIcon);
 };
 
 
@@ -617,6 +575,50 @@ public slots:
 	void showIconWidget();
 protected slots:
 	void iconWidgetClosed();
+};
+
+class KVIRC_API KviIconWidget : public QWidget
+{
+	Q_OBJECT
+public:
+	/**
+	* \brief Constructs the icon table widget
+	* \return KviIconWidget
+	*/
+	KviIconWidget();
+
+	/**
+	* \brief Constructs the icon table widget
+	* \param pPar The parent object
+	* \return KviIconWidget
+	*/
+	KviIconWidget(QWidget * pPar);
+
+	/**
+	* \brief Destroys the icon table widget
+	*/
+	~KviIconWidget();
+protected:
+	/**
+	* \brief Initializes the table containing the icons
+	* \return void
+	*/
+	void init();
+	virtual void closeEvent(QCloseEvent * pEvent);
+	virtual bool eventFilter(QObject * pObject, QEvent * pEvent);
+signals:
+	/**
+	* \brief Emitted when we close the table widget
+	* \return void
+	*/
+	void closed();
+
+	/**
+	* \brief Emitted when we select an icon from the table
+	* \param iIcon The index of the icon selected
+	* \return void
+	*/
+	void selected(KviIconManager::SmallIcon eIcon);
 };
 
 extern KVIRC_API KviIconManager * g_pIconManager;

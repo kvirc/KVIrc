@@ -82,7 +82,7 @@ protected slots:
 	void delClicked();
 	void restoreClicked();
 
-	void iconSelected(int);
+	void iconSelected(KviIconManager::SmallIcon);
 	void doPopup();
 	void chooseFromFile();
 };

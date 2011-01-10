@@ -400,7 +400,7 @@ OptionsWidget_messageColors::OptionsWidget_messageColors(QWidget * parent)
 
 	m_pIconPopup = new KviTalPopupMenu(this);
 	KviIconWidget * iw = new KviIconWidget(m_pIconPopup);
-	connect(iw,SIGNAL(selected(int)),this,SLOT(newIconSelected(int)));
+	connect(iw,SIGNAL(selected(KviIconManager::SmallIcon)),this,SLOT(newIconSelected(KviIconManager::SmallIcon)));
 	m_pIconPopup->insertItem(iw);
 
 

@@ -157,15 +157,15 @@ void OptionsWidget_textIcons::doPopup()
 	{
 		m_pPopup = new KviTalPopupMenu(this);
 		KviIconWidget * iw = new KviIconWidget(m_pPopup);
-		connect(iw,SIGNAL(selected(int)),this,SLOT(iconSelected(int)));
+		connect(iw,SIGNAL(selected(KviIconManager::SmallIcon)),this,SLOT(iconSelected(KviIconManager::SmallIcon)));
 		m_pPopup->insertItem(iw);
 	}
 	m_pPopup->popup(QCursor::pos());
 }
 
-void OptionsWidget_textIcons::iconSelected(int id)
+void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 {
-	m_pItem->icon()->setId(id);
+	m_pItem->icon()->setId(eIcon);
 	m_pItem->setIcon(QIcon(*m_pItem->icon()->pixmap()));
 	m_pIconButton->setIcon(QIcon(*m_pItem->icon()->pixmap()));
 }

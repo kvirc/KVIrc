@@ -466,9 +466,9 @@ bool KviIconWidget::eventFilter(QObject * pObject, QEvent * pEvent)
 		{
 			KviCString szName = ((QLabel *)pObject)->objectName();
 			bool bOk;
-			int iVal = szName.toInt(&bOk);
+			KviIconManager::SmallIcon eIcon = (KviIconManager::SmallIcon) szName.toInt(&bOk);
 			if(bOk)
-				emit selected(iVal);
+				emit selected(eIcon);
 
 			if(parentWidget() && isVisible() && parentWidget()->inherits("KviTalPopupMenu"))
 			{
