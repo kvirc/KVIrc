@@ -24,20 +24,9 @@
 //
 //=============================================================================
 
-#include "kvi_socket.h"
-#include "KviPointerList.h"
+#include <QAbstractSocket>
+#include <QTcpServer>
 
-#include <QSocketNotifier>
-#include <QTimer>
-
-#define KVI_SCRIPT_SOCKET_STATUS_DISCONNECTED 0
-#define KVI_SCRIPT_SOCKET_STATUS_DNS 1
-#define KVI_SCRIPT_SOCKET_STATUS_CONNECTING 2
-#define KVI_SCRIPT_SOCKET_STATUS_LISTENING 3
-#define KVI_SCRIPT_SOCKET_STATUS_CONNECTED 4
-
-class KviDnsResolver;
-class KviDataBuffer;
 #include "object_macros.h"
 
 
@@ -47,67 +36,48 @@ class KvsObject_socket : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_socket)
 protected:
-	bool               m_bUdp;
-	kvi_socket_t       m_sock;
-	int                m_iStatus;
-	QString             m_szRemoteIp;
-//	unsigned short int m_uRemotePort;
-	QString             m_szLocalIp;
-	kvi_u32_t          m_uLocalPort;
-	unsigned int       m_uConnectTimeout;
-	QSocketNotifier  * m_pSn;
-	KviDnsResolver           * m_pDns;
-	QTimer           * m_pDelayTimer;
-	char				* m_pInBuffer;
-	unsigned int       m_uInBufferLen;
-	unsigned int       m_uInDataLen;
-	bool               m_bIPv6;
-	unsigned int       m_uConnectionId;
-	kvs_uint_t m_uRemotePort;
-	KviDataBuffer    * m_pOutBuffer;
-	QTimer           * m_pFlushTimer;
-
-	kvi_socket_t       m_secondarySock;
-	kvi_u32_t          m_uSecondaryPort;
-	QString             m_szSecondaryIp;
+            QAbstractSocket *m_pSocket;
+            QTcpServer *m_pServer;
+            KviKvsRunTimeContext *m_pContext;
 protected:
+        virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+
+        void setInternalSocket(QAbstractSocket *pSocket)
+        {
+            delete m_pSocket;
+            m_pSocket=pSocket;
+        }
+
 	bool status(KviKvsObjectFunctionCall *c);
-	bool remotePort(KviKvsObjectFunctionCall *c);
+        bool remotePort(KviKvsObjectFunctionCall *c);
 	bool remoteIp(KviKvsObjectFunctionCall *c);
 	bool localPort(KviKvsObjectFunctionCall *c);
 	bool localIp(KviKvsObjectFunctionCall *c);
-	bool functionConnect(KviKvsObjectFunctionCall *c);
-	bool setConnectTimeout(KviKvsObjectFunctionCall *c);
-	bool connectTimeout(KviKvsObjectFunctionCall *c);
+        bool functionConnect(KviKvsObjectFunctionCall *c);
 
 	bool close(KviKvsObjectFunctionCall *c);
 	bool read(KviKvsObjectFunctionCall *c);
 	bool write(KviKvsObjectFunctionCall *c);
+        bool setProtocol(KviKvsObjectFunctionCall *c);
+        bool listen(KviKvsObjectFunctionCall *c);
 
 
-	bool setProtocol(KviKvsObjectFunctionCall *c);
+        bool dataAvailableEvent(KviKvsObjectFunctionCall *c);
+        bool incomingConnectionEvent(KviKvsObjectFunctionCall *c);
+        bool connectedEvent(KviKvsObjectFunctionCall *c);
+        bool disconnectedEvent(KviKvsObjectFunctionCall *c);
+        bool errorEvent(KviKvsObjectFunctionCall *c);
+        bool hostFoundEvent(KviKvsObjectFunctionCall *c);
+        bool stateChangedEvent(KviKvsObjectFunctionCall *c);
 
-	bool listen(KviKvsObjectFunctionCall *c);
-	bool accept(KviKvsObjectFunctionCall *c);
-
-	void delayedConnect();
-	void delayedLookupRemoteIp();
-	void delayedFlush(unsigned int uTimeout);
-
-	void eatInData(unsigned int uLen);
-	unsigned int readGetLength(KviKvsObjectFunctionCall * params);
-
-	void acceptConnection(kvi_socket_t s,kvi_u32_t uPort,const char * szIp);
-
-	void reset();
+        void makeConnections();
 protected slots:
-	void doConnect();
-	void lookupRemoteIp();
-	void lookupDone(KviDnsResolver * pDns);
-	void connectTimeoutSlot();
-	void writeNotifierFired(int);
-	void readNotifierFired(int);
-	void tryFlush();
-	void incomingConnection(int);
+        void slotReadyRead();
+	void slotNewConnection();
+        void slotConnected();
+        void slotDisconnected();
+        void slotError( QAbstractSocket::SocketError socketError );
+        void slotHostFound();
+	void slotStateChanged( QAbstractSocket::SocketState socketState );
 };
 #endif //_CLASS_SOCKET_H_
