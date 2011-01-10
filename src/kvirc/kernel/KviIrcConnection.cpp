@@ -1140,9 +1140,225 @@ void KviIrcConnection::useProfileData(KviIdentityProfileSet * pSet, const QStrin
 	if(!pProfile) return;
 
 	// Update connection data
-	m_pUserInfo->setNickName(pProfile->nick());
+	//m_pUserInfo->setNickName(pProfile->nick());
 	m_pUserInfo->setUserName(pProfile->userName());
 	useRealName(pProfile->realName());
+}
+
+QString KviIrcConnection::pickNextLoginNickName(bool bForceDefaultIfPrimaryNicknamesEmpty,const QString & szBaseNickForRandomChoices,QString &szChoiceDescriptionBuffer)
+{
+	QString szNick;
+
+	KVI_ASSERT(target());
+
+	// try profiles first
+
+	if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedProfileSpecificNickName))
+	{
+		KviIrcNetwork * pNetwork = target()->network();
+		KVI_ASSERT(pNetwork);
+
+		KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();
+		bool bProfilesEnabled = pSet ? (pSet->isEnabled() && !pSet->isEmpty()) : false;
+		if(bProfilesEnabled)
+		{
+			KviIdentityProfile * pProfile = pSet->findNetwork(pNetwork->name());
+			if(pProfile)
+			{
+				szNick = pProfile->nick().trimmed();
+				if(!szNick.isEmpty())
+				{
+					szChoiceDescriptionBuffer = __tr2qs("profile specific option");
+					m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedProfileSpecificNickName);
+					return szNick;
+				}
+			}
+		}
+	}
+
+	if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedAlternativeProfileSpecificNickName))
+	{
+		KviIrcNetwork * pNetwork = target()->network();
+		KVI_ASSERT(pNetwork);
+
+		KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();
+		bool bProfilesEnabled = pSet ? (pSet->isEnabled() && !pSet->isEmpty()) : false;
+		if(bProfilesEnabled)
+		{
+			KviIdentityProfile * pProfile = pSet->findNetwork(pNetwork->name());
+			if(pProfile)
+			{
+				szNick = pProfile->nick().trimmed();
+				if(!szNick.isEmpty())
+				{
+					szChoiceDescriptionBuffer = __tr2qs("profile specific alternative option");
+					m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedAlternativeProfileSpecificNickName);
+					return szNick;
+				}
+			}
+		}
+	}
+
+	// try server specific choices
+
+	if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedServerSpecificNickName))
+	{
+		KviIrcServer * pServer = target()->server();
+		KVI_ASSERT(pServer);
+
+		szNick = pServer->nickName().trimmed();
+		if(!szNick.isEmpty())
+		{
+			szChoiceDescriptionBuffer = __tr2qs("server specific");
+			m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedServerSpecificNickName);
+			return szNick;
+		}
+	}
+
+	if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedAlternativeServerSpecificNickName))
+	{
+		KviIrcServer * pServer = target()->server();
+		KVI_ASSERT(pServer);
+
+		szNick = pServer->alternativeNickName().trimmed();
+		if(!szNick.isEmpty())
+		{
+			szChoiceDescriptionBuffer = __tr2qs("server specific alternative option");
+			m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedAlternativeServerSpecificNickName);
+			return szNick;
+		}
+	}
+
+	// then try network specific ones
+
+	if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedNetworkSpecificNickName))
+	{
+		KviIrcNetwork * pNetwork = target()->network();
+		KVI_ASSERT(pNetwork);
+
+		szNick = pNetwork->nickName().trimmed();
+		if(!szNick.isEmpty())
+		{
+			szChoiceDescriptionBuffer = __tr2qs("network specific option");
+			m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedNetworkSpecificNickName);
+			return szNick;
+		}
+	}
+
+	if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedAlternativeNetworkSpecificNickName))
+	{
+		KviIrcNetwork * pNetwork = target()->network();
+		KVI_ASSERT(pNetwork);
+
+		szNick = pNetwork->alternativeNickName().trimmed();
+		if(!szNick.isEmpty())
+		{
+			szChoiceDescriptionBuffer = __tr2qs("network specific alternative option");
+			m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedAlternativeNetworkSpecificNickName);
+			return szNick;
+		}
+	}
+
+	// look in global options
+
+	if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedGlobalNickName1))
+	{
+		szNick = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
+		if(bForceDefaultIfPrimaryNicknamesEmpty && szNick.isEmpty())
+		{
+			KVI_OPTION_STRING(KviOption_stringNickname1) = QString::fromUtf8(KVI_DEFAULT_NICKNAME1);
+			szNick = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
+		}
+		if(!szNick.isEmpty())
+		{
+			szChoiceDescriptionBuffer = __tr2qs("primary nickname specified in options");
+			m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedGlobalNickName1);
+			return szNick;
+		}
+	}
+
+	if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedGlobalNickName2))
+	{
+		szNick = KVI_OPTION_STRING(KviOption_stringNickname2).trimmed();
+		if(!szNick.isEmpty())
+		{
+			szChoiceDescriptionBuffer = __tr2qs("alternative nickname specified in options");
+			m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedGlobalNickName2);
+			return szNick;
+		}
+	}
+
+	if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedGlobalNickName3))
+	{
+		szNick = KVI_OPTION_STRING(KviOption_stringNickname3).trimmed();
+		if(!szNick.isEmpty())
+		{
+			szChoiceDescriptionBuffer = __tr2qs("second alternative nickname specified in options");
+			m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedGlobalNickName3);
+			return szNick;
+		}
+	}
+
+	if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedGlobalNickName4))
+	{
+		szNick = KVI_OPTION_STRING(KviOption_stringNickname4).trimmed();
+		if(!szNick.isEmpty())
+		{
+			szChoiceDescriptionBuffer = __tr2qs("third alternative nickname specified in options");
+			m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedGlobalNickName4);
+			return szNick;
+		}
+	}
+
+	// fallback to 4 random alternatives
+
+	if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedRandomNickName4))
+	{
+		szNick = szBaseNickForRandomChoices.trimmed();
+		if(szNick.isEmpty())
+		{
+			szNick = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
+			if(szNick.isEmpty())
+			{
+				szNick = KVI_OPTION_STRING(KviOption_stringNickname2).trimmed();
+				if(szNick.isEmpty())
+				{
+					szNick = KVI_OPTION_STRING(KviOption_stringNickname3).trimmed();
+					if(szNick.isEmpty())
+					{
+						szNick = KVI_OPTION_STRING(KviOption_stringNickname4).trimmed();
+						if(szNick.isEmpty())
+							szNick = QString::fromUtf8(KVI_DEFAULT_NICKNAME1);
+					}
+				}
+			}
+		}
+
+		szNick = szNick.left(7);
+		while(szNick.length() < 8)
+		{
+			QString num;
+			num.setNum(rand() % 10);
+			szNick.append(num);
+		}
+
+		szChoiceDescriptionBuffer = __tr2qs("random nickname");
+
+		if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedRandomNickName1))
+			m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedRandomNickName1);
+		else if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedRandomNickName2))
+			m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedRandomNickName2);
+		else if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedRandomNickName3))
+			m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedRandomNickName3);
+		else
+			m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedRandomNickName4);
+		return szNick;
+	}
+
+	// give up
+
+	m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedManualNickname);
+	return szNick; // empty
 }
 
 void KviIrcConnection::loginToIrcServer()
@@ -1151,11 +1367,11 @@ void KviIrcConnection::loginToIrcServer()
 	KviIrcNetwork * pNet = target()->network();
 
 	// For now this is the only we know
-	m_pServerInfo->setName(pServer->m_szHostname);
+	m_pServerInfo->setName(pServer->hostName());
 
 	QString szTmpNick, szTmpUser, szTmpPass, szTmpName;
 	// Username
-	szTmpUser = pServer->m_szUser.trimmed();
+	szTmpUser = pServer->userName().trimmed();
 	if(!szTmpUser.isEmpty())
 	{
 		if(!_OUTPUT_MUTE)
@@ -1176,45 +1392,35 @@ void KviIrcConnection::loginToIrcServer()
 	m_pUserInfo->setUserName(szTmpUser);
 	
 	// Nick
-	if(pServer->m_pReconnectInfo)
-	{
-		szTmpNick=pServer->m_pReconnectInfo->m_szNick;
-	}
+	if(pServer->reconnectInfo())
+		szTmpNick=pServer->reconnectInfo()->m_szNick;
+
+	// set this one as default (also for pickNextLoginNickName() below)
+	m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedConnectionSpecificNickName);
+
+	QString szChoiceDescription;
 	
 	if(!szTmpNick.isEmpty())
 	{
-		if(!_OUTPUT_MUTE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using connection specific nickname (%Q)"),&(szTmpNick));
-		m_pStateData->setLoginNickIndex(0);
+		szChoiceDescription = __tr2qs("connection specific");
 	} else {
-		szTmpNick = pServer->m_szNick.trimmed();
-		if(!szTmpNick.isEmpty())
-		{
-			if(!_OUTPUT_MUTE)
-				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific nickname (%Q)"),&(szTmpNick));
-			m_pStateData->setLoginNickIndex(0);
-		} else {
-			szTmpNick = pNet->nickName().trimmed();
-			if(!szTmpNick.isEmpty())
-			{
-				if(!_OUTPUT_MUTE)
-					m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific nickname (%Q)"),&(szTmpNick));
-				m_pStateData->setLoginNickIndex(0);
-			} else {
-				szTmpNick = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
-				if(szTmpNick.isEmpty())
-				{
-					szTmpNick = KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
-				}
-				m_pStateData->setLoginNickIndex(1);
-			}
-		}
+		szTmpNick = pickNextLoginNickName(true,QString(),szChoiceDescription);
+		KVI_ASSERT(!szTmpNick.isEmpty());
+	}
+
+	if(!_OUTPUT_MUTE)
+	{
+		QString szOut = __tr2qs("Using '%1' as nickname").arg(szTmpNick);
+		if(_OUTPUT_VERBOSE)
+			szOut += QString::fromAscii(" (%1)").arg(szChoiceDescription);
+			
+		m_pConsole->outputNoFmt(KVI_OUT_VERBOSE,szOut);
 	}
 	
 	m_pUserInfo->setNickName(szTmpNick);
 
 	// Real name
-	szTmpName=pServer->m_szRealName.trimmed();
+	szTmpName=pServer->realName().trimmed();
 	if(!szTmpName.isEmpty())
 	{
 		if(!_OUTPUT_MUTE)
@@ -1233,9 +1439,9 @@ void KviIrcConnection::loginToIrcServer()
 	useRealName(szTmpName);
 
 	// Pass
-	if(pServer->m_pReconnectInfo)
+	if(pServer->reconnectInfo())
 	{
-		szTmpPass=pServer->m_pReconnectInfo->m_szPass;
+		szTmpPass=pServer->reconnectInfo()->m_szPass;
 	}
 	
 	if(!szTmpPass.isEmpty())
@@ -1246,7 +1452,7 @@ void KviIrcConnection::loginToIrcServer()
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using connection specific password (%Q)"),&(szHidden));
 		}
 	} else {
-		szTmpPass = pServer->m_szPass.trimmed();
+		szTmpPass = pServer->password().trimmed();
 		if(!szTmpPass.isEmpty())
 		{
 			if(!_OUTPUT_MUTE)
@@ -1270,6 +1476,8 @@ void KviIrcConnection::loginToIrcServer()
 	m_pUserInfo->setPassword(szTmpPass);
 
 	// Check for identity profiles
+
+	// FIXME: Shouldn't this be inside the code above ?
 	KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();
 	bool bProfilesEnabled = pSet ? (pSet->isEnabled() && !pSet->isEmpty()) : false;
 	if(bProfilesEnabled) useProfileData(pSet,pNet->name());
@@ -1348,7 +1556,7 @@ void KviIrcConnection::loginToIrcServer()
 	}
 
 	if(!sendFmtData("USER %s 0 %s :%s",szUser.data(),
-			KviQString::toUtf8(pServer->m_szHostname).data(),szReal.data()))
+			KviQString::toUtf8(pServer->hostName()).data(),szReal.data()))
 	{
 		// disconnected in the meantime!
 		return;
@@ -1532,18 +1740,18 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 
 	bool bJoinStdChannels=true;
 	
-	if(target()->server()->m_pReconnectInfo)
+	if(target()->server()->reconnectInfo())
 	{
-		if(!target()->server()->m_pReconnectInfo->m_szJoinChannels.isEmpty())
+		if(!target()->server()->reconnectInfo()->m_szJoinChannels.isEmpty())
 		{
 			bJoinStdChannels=false;
-			sendFmtData("JOIN %s",encodeText(target()->server()->m_pReconnectInfo->m_szJoinChannels).data());
+			sendFmtData("JOIN %s",encodeText(target()->server()->reconnectInfo()->m_szJoinChannels).data());
 		}
 
 		KviQueryWindow * pQuery;
 
-		for(QStringList::Iterator it = target()->server()->m_pReconnectInfo->m_szOpenQueryes.begin();
-			it != target()->server()->m_pReconnectInfo->m_szOpenQueryes.end();it++)
+		for(QStringList::Iterator it = target()->server()->reconnectInfo()->m_szOpenQueryes.begin();
+			it != target()->server()->reconnectInfo()->m_szOpenQueryes.end();it++)
 		{
 			QString szNick = *it;
 			pQuery = findQuery(szNick);
@@ -1568,8 +1776,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 			pQuery->autoRaise();
 			pQuery->setFocus();
 		}
-		delete target()->server()->m_pReconnectInfo;
-		target()->server()->m_pReconnectInfo=0;
+		target()->server()->clearReconnectInfo();
 	}
 	
 	if(bJoinStdChannels)

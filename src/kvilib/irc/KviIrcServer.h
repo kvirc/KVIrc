@@ -81,7 +81,8 @@ public:
 	* \brief Destroys the server object
 	*/
 	~KviIrcServer();
-public:
+private:
+
 	KviIrcServerReconnectInfo * m_pReconnectInfo;
 	QString                     m_szHostname;      /**< the server hostname (or IP eventually) */
 	QString                     m_szIp;            /**< the server's cached ip (if we're caching) */
@@ -94,6 +95,7 @@ public:
 	QString                     m_szUser;                 /**< special username */
 	QString                     m_szPass;                 /**< special password */
 	QString                     m_szNick;                 /**< special nickname */
+	QString                     m_szAlternativeNick;      /**< alternate special nickname */
 	QString                     m_szRealName;             /**< special real name */
 	QString                     m_szInitUMode;            /**< special user mode */
 	QString                     m_szOnConnectCommand;     /**< the command to run on connect */
@@ -107,7 +109,18 @@ public:
 	int                         m_iProxy;                 /**< proxy server's id */
 	QString                     m_szSaslNick;             /**< nickname for sasl auth */
 	QString                     m_szSaslPass;             /**< password for sasl auth */
+
 public:
+
+	KviIrcServerReconnectInfo * reconnectInfo()
+	{
+		return m_pReconnectInfo;
+	}
+
+	void clearReconnectInfo();
+
+	void setReconnectInfo(KviIrcServerReconnectInfo * pInfo);
+
 	/**
 	* \brief Returns the proxy server's id
 	* \return int
@@ -150,6 +163,12 @@ public:
 	* \return const QString &
 	*/
 	inline const QString & nickName() const { return m_szNick; };
+
+	/**
+	* \brief Returns the alternative nickname of the user associated to the server
+	* \return const QString &
+	*/
+	inline const QString & alternativeNickName() const { return m_szAlternativeNick; };
 
 	/**
 	* \brief Returns the user modes of the user associated to the server
@@ -348,6 +367,13 @@ public:
 	* \return void
 	*/
 	inline void setNickName(const QString & szNick){ m_szNick = szNick; };
+
+	/**
+	* \brief Sets the alternative nickname of the user associated to the server
+	* \param szNick The nick name of the user
+	* \return void
+	*/
+	inline void setAlternativeNickName(const QString & szNick){ m_szAlternativeNick = szNick; };
 
 	/**
 	* \brief Sets the password used for sasl auth

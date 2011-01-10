@@ -83,6 +83,7 @@ void KviIrcNetwork::copyFrom(const KviIrcNetwork &src)
 	m_szTextEncoding = src.m_szTextEncoding;
 	m_szDescription = src.m_szDescription;
 	m_szNickName = src.m_szNickName;
+	m_szAlternativeNickName = src.m_szAlternativeNickName;
 	m_szRealName = src.m_szRealName;
 	m_szUserName = src.m_szUserName;
 	m_szPass = src.m_szPass;
@@ -116,7 +117,7 @@ KviIrcServer * KviIrcNetwork::findServer(const QString & szHostname)
 {
 	for (KviIrcServer *s = m_pServerList->first(); s; s = m_pServerList->next())
 	{
-		if (KviQString::equalCI(s->m_szHostname, szHostname))
+		if (KviQString::equalCI(s->hostName(), szHostname))
 			return s;
 	}
 	return 0;
@@ -127,16 +128,16 @@ KviIrcServer * KviIrcNetwork::findServer(const KviIrcServer * pServer)
 	for (KviIrcServer *s = m_pServerList->first(); s; s = m_pServerList->next())
 	{
 		// we better go with the unique id first
-		if(!s->m_szId.isEmpty())
+		if(!s->id().isEmpty())
 		{
 			// at least one of the 2 id is not empty, so if they match we're done
-			if(KviQString::equalCI(s->m_szId, pServer->m_szId))
+			if(KviQString::equalCI(s->id(), pServer->id()))
 				return s;
 		} else {
 			// failback on the "check everything" method
 
-			if (KviQString::equalCI(s->m_szHostname, pServer->m_szHostname)
-					&& (s->m_uPort == pServer->m_uPort) && (s->useSSL()
+			if (KviQString::equalCI(s->hostName(), pServer->hostName())
+					&& (s->port() == pServer->port()) && (s->useSSL()
 					== pServer->useSSL()) && (s->isIPv6() == pServer->isIPv6()))
 				return s;
 		}
@@ -155,3 +156,4 @@ KviIrcServer * KviIrcNetwork::currentServer()
 	m_pCurrentServer = m_pServerList->first();
 	return m_pCurrentServer;
 }
+

@@ -101,9 +101,9 @@ int KviMircServersIniImport::doImport(const QString& filename)
 				if(!serv.isEmpty())
 				{
 					KviIrcServer s;
-					s.m_szHostname = serv;
-					s.m_szDescription = description;
-					s.m_uPort = uPort;
+					s.setHostName(serv);
+					s.setDescription(description);
+					s.setPort(uPort);
 					iCount++;
 					emit server(s,entry);
 				}

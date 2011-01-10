@@ -43,7 +43,7 @@ public:
 	KviProxy();
 	KviProxy(const KviProxy &prx);
 	~KviProxy();
-public:
+public: // FIXME: make it private!!!!!
 	QString             m_szHostname;
 	QString             m_szIp;
 	QString             m_szPass;
@@ -60,7 +60,7 @@ public:
 	const QString & user() const       { return m_szUser; };
 	const QString & pass() const       { return m_szPass; };
 	const QString & ip() const         { return m_szIp; };
-	const QString & hostname() const   { return m_szHostname; };
+	const QString & hostName() const   { return m_szHostname; };
 	void normalizeUserAndPass();
 	bool hasPass() const         { return !m_szPass.isEmpty(); };
 	bool hasUser() const         { return !m_szUser.isEmpty(); };

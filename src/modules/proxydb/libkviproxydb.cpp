@@ -135,7 +135,7 @@ static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_hostname,hostname,setString)
+PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_hostname,hostName,setString)
 
 /*
 	@doc: proxydb.ip

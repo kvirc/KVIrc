@@ -385,23 +385,23 @@ void KviIrcLink::socketStateChange()
 		case KviIrcSocket::Connecting:
 			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("Contacting %Q %s (%s) on port %u"),
 				connection()->target()->proxy() ? &(__tr2qs("proxy host")) : &(__tr2qs("IRC server")),
-				connection()->target()->proxy() ? connection()->target()->proxy()->m_szHostname.toUtf8().data() : connection()->target()->server()->m_szHostname.toUtf8().data(),
-				connection()->target()->proxy() ? connection()->target()->proxy()->m_szIp.toUtf8().data() : connection()->target()->server()->m_szIp.toUtf8().data(),
-				connection()->target()->proxy() ? connection()->target()->proxy()->m_uPort : connection()->target()->server()->m_uPort);
+				connection()->target()->proxy() ? connection()->target()->proxy()->hostName().toUtf8().data() : connection()->target()->server()->hostName().toUtf8().data(),
+				connection()->target()->proxy() ? connection()->target()->proxy()->ip().toUtf8().data() : connection()->target()->server()->ip().toUtf8().data(),
+				connection()->target()->proxy() ? connection()->target()->proxy()->port() : connection()->target()->server()->port());
 		break;
 		case KviIrcSocket::SSLHandshake:
 			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("Low-level transport connection established [%s (%s:%u)]"),
-				connection()->target()->proxy() ? connection()->target()->proxy()->m_szHostname.toUtf8().data() : connection()->target()->server()->m_szHostname.toUtf8().data(),
-				connection()->target()->proxy() ? connection()->target()->proxy()->m_szIp.toUtf8().data() : connection()->target()->server()->m_szIp.toUtf8().data(),
-				connection()->target()->proxy() ? connection()->target()->proxy()->m_uPort : connection()->target()->server()->m_uPort);
+				connection()->target()->proxy() ? connection()->target()->proxy()->hostName().toUtf8().data() : connection()->target()->server()->hostName().toUtf8().data(),
+				connection()->target()->proxy() ? connection()->target()->proxy()->ip().toUtf8().data() : connection()->target()->server()->ip().toUtf8().data(),
+				connection()->target()->proxy() ? connection()->target()->proxy()->port() : connection()->target()->server()->port());
 			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Starting Secure Socket Layer handshake"));
 		break;
 		case KviIrcSocket::ProxyLogin:
 			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("%Q established [%s (%s:%u)]"),
 				connection()->link()->socket()->usingSSL() ? &(__tr2qs("Secure proxy connection")) : &(__tr2qs("Proxy connection")),
-				connection()->target()->proxy()->m_szHostname.toUtf8().data(),
-				connection()->target()->proxy()->m_szIp.toUtf8().data(),
-				connection()->target()->proxy()->m_uPort);
+				connection()->target()->proxy()->hostName().toUtf8().data(),
+				connection()->target()->proxy()->ip().toUtf8().data(),
+				connection()->target()->proxy()->port());
 			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Negotiating relay information"));
 		break;
 		case KviIrcSocket::ProxyFinalV4:

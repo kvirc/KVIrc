@@ -46,10 +46,10 @@
 
 KviIrcServer::KviIrcServer()
 {
-	m_pReconnectInfo       = 0;
+	m_pReconnectInfo       = NULL;
 	m_uFlags               = 0;
 	m_uPort                = 6667;
-	m_pAutoJoinChannelList = 0;
+	m_pAutoJoinChannelList = NULL;
 	m_bAutoConnect         = false;
 	m_iProxy               = -1;
 }
@@ -78,6 +78,7 @@ KviIrcServer::KviIrcServer(const KviIrcServer & serv)
 	m_szPass             = serv.m_szPass;
 	m_uPort              = serv.m_uPort;
 	m_szNick             = serv.m_szNick;
+	m_szAlternativeNick  = serv.m_szAlternativeNick;
 	m_szRealName         = serv.m_szRealName;
 	m_szEncoding         = serv.m_szEncoding;
 	m_szTextEncoding     = serv.m_szTextEncoding;
@@ -96,12 +97,12 @@ KviIrcServer::KviIrcServer(const KviIrcServer & serv)
 	if(serv.m_pAutoJoinChannelList)
 		m_pAutoJoinChannelList = new QStringList(*(serv.m_pAutoJoinChannelList));
 	else
-		m_pAutoJoinChannelList = 0;
+		m_pAutoJoinChannelList = NULL;
 
 	if(serv.m_pReconnectInfo)
 		m_pReconnectInfo = new KviIrcServerReconnectInfo(*(serv.m_pReconnectInfo));
 	else
-		m_pReconnectInfo = 0;
+		m_pReconnectInfo = NULL;
 }
 
 void KviIrcServer::operator=(const KviIrcServer & serv)
@@ -113,6 +114,7 @@ void KviIrcServer::operator=(const KviIrcServer & serv)
 	m_szPass             = serv.m_szPass;
 	m_uPort              = serv.m_uPort;
 	m_szNick             = serv.m_szNick;
+	m_szAlternativeNick  = serv.m_szAlternativeNick;
 	m_szRealName         = serv.m_szRealName;
 	m_szEncoding         = serv.m_szEncoding;
 	m_szTextEncoding     = serv.m_szTextEncoding;
@@ -133,14 +135,14 @@ void KviIrcServer::operator=(const KviIrcServer & serv)
 	if(serv.m_pAutoJoinChannelList)
 		m_pAutoJoinChannelList = new QStringList(*(serv.m_pAutoJoinChannelList));
 	else
-		m_pAutoJoinChannelList = 0;
+		m_pAutoJoinChannelList = NULL;
 
 	if(m_pReconnectInfo)
 		delete m_pReconnectInfo;
 	if(serv.m_pReconnectInfo)
 		m_pReconnectInfo = new KviIrcServerReconnectInfo(*(serv.m_pReconnectInfo));
 	else
-		m_pReconnectInfo = 0;
+		m_pReconnectInfo = NULL;
 }
 
 KviIrcServer::~KviIrcServer()
@@ -148,13 +150,28 @@ KviIrcServer::~KviIrcServer()
 	if(m_pAutoJoinChannelList)
 	{
 		delete m_pAutoJoinChannelList;
-		m_pAutoJoinChannelList = 0;
+		m_pAutoJoinChannelList = NULL;
 	}
 	if(m_pReconnectInfo)
 	{
 		delete m_pReconnectInfo;
-		m_pReconnectInfo = 0;
+		m_pReconnectInfo = NULL;
 	}
+}
+
+void KviIrcServer::setReconnectInfo(KviIrcServerReconnectInfo * pInfo)
+{
+	if(m_pReconnectInfo)
+		delete m_pReconnectInfo;
+	m_pReconnectInfo = pInfo;
+}
+
+void KviIrcServer::clearReconnectInfo()
+{
+	if(!m_pReconnectInfo)
+		return;
+	delete m_pReconnectInfo;
+	m_pReconnectInfo = NULL;
 }
 
 void KviIrcServer::generateUniqueId()
@@ -220,6 +237,8 @@ bool KviIrcServer::load(KviConfigurationFile * pCfg, const QString & szPrefix)
 	m_szPass = pCfg->readEntry(szTmp);
 	KviQString::sprintf(szTmp,"%QNick",&szPrefix);
 	m_szNick = pCfg->readEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QAlternativeNick",&szPrefix);
+	m_szAlternativeNick = pCfg->readEntry(szTmp);
 	KviQString::sprintf(szTmp,"%QSaslPass",&szPrefix);
 	m_szSaslPass = pCfg->readEntry(szTmp);
 	KviQString::sprintf(szTmp,"%QSaslNick",&szPrefix);
@@ -302,6 +321,11 @@ void KviIrcServer::save(KviConfigurationFile * pCfg, const QString & szPrefix)
 	{
 		KviQString::sprintf(szTmp,"%QNick",&szPrefix);
 		pCfg->writeEntry(szTmp,m_szNick);
+	}
+	if(!m_szAlternativeNick.isEmpty())
+	{
+		KviQString::sprintf(szTmp,"%QAlternativeNick",&szPrefix);
+		pCfg->writeEntry(szTmp,m_szAlternativeNick);
 	}
 	if(!m_szSaslPass.isEmpty())
 	{

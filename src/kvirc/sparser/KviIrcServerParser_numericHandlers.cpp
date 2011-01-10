@@ -955,90 +955,42 @@ void KviIrcServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
 void KviIrcServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 {
 	// ops...not logged in yet...
-	QString szNextNick;
-	unsigned int uNickCnt = 0;
-
-	// Check for identity profiles
-	KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();
-	bool bProfilesEnabled = pSet ? (pSet->isEnabled() && !pSet->isEmpty()) : false;
-	KviIdentityProfile * pProfile = 0;
-	if(bProfilesEnabled)
-	{
-		pProfile = pSet->findNetwork(msg->connection()->currentNetworkName());
-		if(pProfile)
-		{
-			szNextNick = pProfile->altNick();
-			uNickCnt = 1;
-		}
-	}
 	
-	if(!pProfile)
+	QString szChoiceDescriptionBuffer;
+	
+	QString szNextNick = msg->connection()->pickNextLoginNickName(
+			false, // false = fallback to random choices, then give up with an empty string
+			msg->connection()->decodeText(msg->safeParam(1)),
+			szChoiceDescriptionBuffer
+		);
+
+	if(szNextNick.isEmpty())
 	{
-		switch(msg->connection()->stateData()->loginNickIndex())
-		{
-			case 0:
-				// used a server specific nickname
-				if(KVI_OPTION_STRING(KviOption_stringNickname1).trimmed().isEmpty())
-					KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
-				szNextNick = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
-				uNickCnt = 1;
-				break;
-			case 1:
-				// used the first nickname of the identity
-				uNickCnt = 2;
-				if(!KVI_OPTION_STRING(KviOption_stringNickname2).trimmed().isEmpty())
-				{
-					szNextNick = KVI_OPTION_STRING(KviOption_stringNickname2).trimmed();
-					break;
-				}
-			case 2:
-				uNickCnt = 3;
-				// used the second nickname of the identity
-				if(!KVI_OPTION_STRING(KviOption_stringNickname3).trimmed().isEmpty())
-				{
-					szNextNick = KVI_OPTION_STRING(KviOption_stringNickname3).trimmed();
-					break;
-				}
-			default:
-				// used all the nicknames of the identity
-				// fall back to a random string...
-				szNextNick = msg->safeParam(1);
-				if(szNextNick.trimmed().isEmpty()) szNextNick = KVI_DEFAULT_NICKNAME1;
-				szNextNick = szNextNick.trimmed().left(7);
-				QString num;
-				num.setNum(msg->connection()->stateData()->loginNickIndex());
-				szNextNick.append(num);
-				uNickCnt = msg->connection()->stateData()->loginNickIndex() + 1;
-				break;
-		}
+		msg->console()->output(KVI_OUT_NICKNAMEPROBLEM,
+			__tr2qs("The server is refusing all the login nicknames: giving up, you must send the nickname manually"));
+		return;
 	}
 
 	QString szOldNick = msg->connection()->userInfo()->nickName();
 	msg->console()->notifyListView()->nickChange(szOldNick,szNextNick);
 
 	msg->connection()->userInfo()->setNickName(szNextNick);
-	msg->connection()->stateData()->setLoginNickIndex(uNickCnt);
-
-	if(uNickCnt > 7)
-	{
-		msg->console()->output(KVI_OUT_NICKNAMEPROBLEM,
-			__tr2qs("Something really weird is happening: the server is refusing all the login nicknames..."));
-
-		if(msg->connection()->stateData()->loginNickIndex() > 10)
-		{
-			msg->console()->output(KVI_OUT_NICKNAMEPROBLEM,
-				__tr2qs("The server is refusing all the login nicknames: giving up, you must send the nickname manually"));
-			return;
-		}
-	}
 
 	if(!msg->haltOutput())
 	{
-		QString szActual = msg->connection()->decodeText(msg->safeParam(1));
-		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
-		msg->console()->output(KVI_OUT_NICKNAMEPROBLEM,
-			__tr2qs("No way to login as '\r!n\r%Q\r' (%d: %Q), trying '%Q'..."),
-				&szActual,msg->numeric(),&szWText,&szNextNick);
+		msg->console()->output(
+				KVI_OUT_NICKNAMEPROBLEM,
+				__tr2qs("No way to login as '\r!n\r%1\r': the server said '%2: %3'")
+						.arg(msg->connection()->decodeText(msg->safeParam(1)))
+						.arg(msg->numeric())
+						.arg(msg->connection()->decodeText(msg->safeTrailing()))
+			);
+
+		QString szOut = __tr2qs("Trying to use '%1' as nickname").arg(szNextNick);
+		if(_OUTPUT_VERBOSE)
+			szOut += QString::fromAscii(" (%1)").arg(szChoiceDescriptionBuffer);
+		
+		msg->console()->outputNoFmt(KVI_OUT_NICKNAMEPROBLEM,szOut);
 	}
 
 	QByteArray d = msg->connection()->encodeText(szNextNick);

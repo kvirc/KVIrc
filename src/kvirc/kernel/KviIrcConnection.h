@@ -722,6 +722,18 @@ protected:
 	*/
 	void loginToIrcServer();
 
+	/**
+	* Picks the next login nickname to be tried. If bForceDefaultIfPrimaryNicknamesEmpty is true then the algorithm
+	* will return a default nickname in case the primary setting in the options is empty. If bForceDefaultIfPrimaryNicknamesEmpty
+	* is false then the algorithm will try the alternative nicknames instead, then try some random options and finally
+	* return an empty string signaling that no suitable choice could be made. bForceDefaultIfPrimaryNicknamesEmpty should
+	* be set to true only in loginToIrcServer(), that is, the first time this function is called (otherwise there exists
+	* a possibility of infinite nickname loop because of the repeated fallback choice). szBaseNickForRandomChoices will be
+	* used for the random alternatives as the first left 7 characters. Upon return szChoiceDescriptionBuffer will contain
+	* the textual description of the choice made (network specific, alternative, server specific, global etc...).
+	*/
+	QString pickNextLoginNickName(bool bForceDefaultIfPrimaryNicknamesEmpty,const QString & szBaseNickForRandomChoices,QString &szChoiceDescriptionBuffer);
+
 	//
 	// KviIrcServerParser interface
 	//

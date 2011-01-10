@@ -115,9 +115,9 @@ bool KviIrcServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetN
 
 	for(KviIrcServer * pServ = pNet->m_pServerList->first(); pServ; pServ = pNet->m_pServerList->next())
 	{
-		if(pServ->m_szDescription.contains("random",Qt::CaseInsensitive) ||
-			(pServ->m_szDescription.contains("round",Qt::CaseInsensitive) &&
-			(pServ->m_szDescription.contains("robin",Qt::CaseInsensitive))))
+		if(pServ->description().contains("random",Qt::CaseInsensitive) ||
+			(pServ->description().contains("round",Qt::CaseInsensitive) &&
+			(pServ->description().contains("robin",Qt::CaseInsensitive))))
 		{
 			pNet->setCurrentServer(pServ);
 			return true;
@@ -134,9 +134,9 @@ bool KviIrcServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetN
 
 	for(KviIrcServer * pServer = pNet->m_pServerList->first(); pServer; pServer = pNet->m_pServerList->next())
 	{
-		if(KviQString::equalCI(pServer->m_szHostname,szTryAlso1) ||
-			KviQString::equalCI(pServer->m_szHostname,szTryAlso2) ||
-			KviQString::equalCI(pServer->m_szHostname,szTryAlso3))
+		if(KviQString::equalCI(pServer->hostName(),szTryAlso1) ||
+			KviQString::equalCI(pServer->hostName(),szTryAlso2) ||
+			KviQString::equalCI(pServer->hostName(),szTryAlso3))
 		{
 			pNet->setCurrentServer(pServer);
 			return true;
@@ -289,16 +289,16 @@ search_finished:
 	}
 
 	KviIrcServer * pSrv = new KviIrcServer();
-	pSrv->m_szHostname = pDef->szServer;
+	pSrv->setHostName(pDef->szServer);
 	if(bIsValidIPv4)
 	{
-		pSrv->m_szIp = pDef->szServer;
+		pSrv->setIp(pDef->szServer);
 		pSrv->setCacheIp(true);
 #ifdef COMPILE_IPV6_SUPPORT
 	} else {
 		if(bIsValidIPv6)
 		{
-			pSrv->m_szIp = pDef->szServer;
+			pSrv->setIp(pDef->szServer);
 			pSrv->setCacheIp(true);
 			pDef->bIPv6 = true;
 		}
@@ -306,11 +306,11 @@ search_finished:
 #else
 	}
 #endif
-	pSrv->m_uPort = pDef->bPortIsValid ? pDef->uPort : 6667;
+	pSrv->setPort(pDef->bPortIsValid ? pDef->uPort : 6667);
 	pSrv->setLinkFilter(pDef->szLinkFilter);
-	pSrv->m_szPass = pDef->szPass;
-	pSrv->m_szNick = pDef->szNick;
-	pSrv->m_szInitUMode = pDef->szInitUMode;
+	pSrv->setPassword(pDef->szPass);
+	pSrv->setNickName(pDef->szNick);
+	pSrv->setInitUMode(pDef->szInitUMode);
 	pSrv->setIPv6(pDef->bIPv6);
 	pSrv->setUseSSL(pDef->bSSL);
 	pSrv->setEnabledSTARTTLS(pDef->bSTARTTLS);
@@ -429,9 +429,9 @@ void KviIrcServerDataBase::importFromMircIni(const QString & szFilename, const Q
 				}
 
 				KviIrcServer * pServ = new KviIrcServer();
-				pServ->m_szHostname = szHost;
-				pServ->m_szDescription = szDescription;
-				pServ->m_uPort = uPort;
+				pServ->setHostName(szHost);
+				pServ->setDescription(szDescription);
+				pServ->setPort(uPort);
 
 
 				pNet->m_pServerList->append(pServ);

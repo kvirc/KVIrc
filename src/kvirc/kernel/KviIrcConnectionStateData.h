@@ -46,13 +46,42 @@ public:
 	KviIrcConnectionStateData();
 	~KviIrcConnectionStateData();
 protected:
+
+	// The members of this enum must be in the correct
+	// order since the nickname selection algorithm
+	// uses their numeric values for comparisons.
+	enum LoginNickNameState
+	{
+		UsedConnectionSpecificNickName,
+		UsedProfileSpecificNickName,
+		UsedAlternativeProfileSpecificNickName,
+		UsedServerSpecificNickName,
+		UsedAlternativeServerSpecificNickName,
+		UsedNetworkSpecificNickName,
+		UsedAlternativeNetworkSpecificNickName,
+		UsedGlobalNickName1,
+		UsedGlobalNickName2,
+		UsedGlobalNickName3,
+		UsedGlobalNickName4,
+		UsedRandomNickName1,
+		UsedRandomNickName2,
+		UsedRandomNickName3,
+		UsedRandomNickName4,
+		UsedManualNickname // Given up assigning it automatically
+	};
+
+	///
+	/// the current login nickname state
+	///
+	LoginNickNameState m_eLoginNickNameState;
+
+
 	bool         m_bInsideInitialCapLs;                  // true if there's a CAP LS request pending
 	bool         m_bIgnoreOneYouHaveNotRegisteredError; // true if we have sent a CAP LS request followed by a PING which will generate an error (and we need to ignore it)
 	bool         m_bInsideInitialCapReq;                 // true if there's a CAP REQ request pending
 	bool         m_bInsideAuthenticate;           // true if there's a AUTHENTICATE request pending
 	bool         m_bSentStartTls;                 // the state of STARTTLS protocol
 	bool         m_bSentQuit;                     // have we sent the quit message for this connection ?
-	unsigned int m_uLoginNickIndex;               // the index of the identity nicknames used until now (see KviIrcConnection::loginToIrcServer())
 	QString      m_szCommandToExecAfterConnect;   // yes.. this is a special command to execute after connection
 	bool         m_bSimulateUnexpectedDisconnect; // this is set to true if we have to simulate an unexpected disconnect even if we have sent a normal quit message
 	kvi_time_t   m_tLastReceivedChannelWhoReply;  // the time that we have received our last channel who reply
@@ -61,6 +90,23 @@ protected:
 	QStringList  m_lEnabledCaps;                  // the CAPs currently enabled
 	bool         m_bIdentifyMsgCapabilityEnabled; // do we have the msg-identity CAP enabled ?
 public:
+
+	///
+	/// Sets the current login nickname state
+	///
+	void setLoginNickNameState(const LoginNickNameState &eLoginNickNameState)
+	{
+		m_eLoginNickNameState = eLoginNickNameState;
+	}
+
+	///
+	/// Returns the current login nickname state
+	///
+	const LoginNickNameState & loginNickNameState() const
+	{
+		return m_eLoginNickNameState;
+	}
+
 	const QStringList & enabledCaps(){ return m_lEnabledCaps; };
 	void changeEnabledCapList(const QString &szCapList);
 
@@ -98,9 +144,6 @@ public:
 
 	bool simulateUnexpectedDisconnect(){ return m_bSimulateUnexpectedDisconnect; };
 	void setSimulateUnexpectedDisconnect(bool bSimulate){ m_bSimulateUnexpectedDisconnect = bSimulate; };
-
-	unsigned int loginNickIndex(){ return m_uLoginNickIndex; };
-	void setLoginNickIndex(unsigned int uNickIdx){ m_uLoginNickIndex = uNickIdx; };
 
 	const QString & commandToExecAfterConnect(){ return m_szCommandToExecAfterConnect; };
 	void setCommandToExecAfterConnect(const QString &szCmd){ m_szCommandToExecAfterConnect = szCmd; };

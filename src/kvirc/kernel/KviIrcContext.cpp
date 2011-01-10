@@ -437,7 +437,8 @@ void KviIrcContext::connectToCurrentServer()
 				m_pAsynchronousConnectionData->bSTARTTLS = m_pSavedAsynchronousConnectionData->bSTARTTLS;
 				if(m_pSavedAsynchronousConnectionData->m_pReconnectInfo)
 					m_pAsynchronousConnectionData->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(m_pSavedAsynchronousConnectionData->m_pReconnectInfo));
-				else m_pAsynchronousConnectionData->m_pReconnectInfo = 0;
+				else
+					m_pAsynchronousConnectionData->m_pReconnectInfo = 0;
 
 				// and the other info, only if not overridden by the user
 				if(m_pAsynchronousConnectionData->szBindAddress.isEmpty())
@@ -518,12 +519,12 @@ void KviIrcContext::connectToCurrentServer()
 
 	QString szBindAddress;
 
-	srv->m_pReconnectInfo = 0;
+	srv->clearReconnectInfo();
 	if(m_pAsynchronousConnectionData)
 	{
 		szBindAddress = m_pAsynchronousConnectionData->szBindAddress;
 		if(m_pAsynchronousConnectionData->m_pReconnectInfo)
-			srv->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(m_pAsynchronousConnectionData->m_pReconnectInfo));
+			srv->setReconnectInfo(new KviIrcServerReconnectInfo(*(m_pAsynchronousConnectionData->m_pReconnectInfo)));
 	}
 
 	// Find out the identity we'll be using in this connection
@@ -545,7 +546,8 @@ void KviIrcContext::connectToCurrentServer()
 	// If not found, get the default identity (this is GRANTED to be never null, eventually filled up with defaults)
 	pIdentity = KviUserIdentityManager::instance()->defaultIdentity();
 
-	if(m_pConnection) delete m_pConnection;
+	if(m_pConnection)
+		delete m_pConnection;
 	m_pConnection = new KviIrcConnection(
 		this,
 		new KviIrcConnectionTarget(
@@ -572,7 +574,7 @@ void KviIrcContext::connectToCurrentServer()
 	// FIXME: this management of "next" connection should be reviewed a bit anyway
 	if(m_pSavedAsynchronousConnectionData) delete m_pSavedAsynchronousConnectionData;
 	m_pSavedAsynchronousConnectionData = new KviAsynchronousConnectionData();
-	m_pSavedAsynchronousConnectionData->szServer = srv->m_szHostname;
+	m_pSavedAsynchronousConnectionData->szServer = srv->hostName();
 	m_pSavedAsynchronousConnectionData->uPort = srv->port();
 	m_pSavedAsynchronousConnectionData->bPortIsOk = true;
 	m_pSavedAsynchronousConnectionData->bUseIPv6 = srv->isIPv6();
@@ -580,10 +582,11 @@ void KviIrcContext::connectToCurrentServer()
 	m_pSavedAsynchronousConnectionData->bSTARTTLS = srv->enabledSTARTTLS();
 	m_pSavedAsynchronousConnectionData->szPass = srv->password();
 	m_pSavedAsynchronousConnectionData->szServerId = srv->id();
-	m_pSavedAsynchronousConnectionData->szInitUMode = srv->m_szInitUMode;
-	if(srv->m_pReconnectInfo)
-		m_pSavedAsynchronousConnectionData->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(srv->m_pReconnectInfo));
-	else m_pSavedAsynchronousConnectionData->m_pReconnectInfo = 0;
+	m_pSavedAsynchronousConnectionData->szInitUMode = srv->initUMode();
+	if(srv->reconnectInfo())
+		m_pSavedAsynchronousConnectionData->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(srv->reconnectInfo()));
+	else
+		m_pSavedAsynchronousConnectionData->m_pReconnectInfo = 0;
 
 	// this never fails!
 	m_pConnection->start();
@@ -595,7 +598,7 @@ void KviIrcContext::connectionFailed(int iError)
 
 	m_pConsole->output(KVI_OUT_SYSTEMERROR,
 		__tr2qs("Connection attempt failed [%s]"),
-		m_pConnection->target()->server()->m_szHostname.toUtf8().data());
+		m_pConnection->target()->server()->hostName().toUtf8().data());
 
 	// if the connection has been aborted by the user then just go idle
 	if(iError == KviError::OperationAborted)
@@ -628,7 +631,7 @@ void KviIrcContext::connectionFailed(int iError)
 			QString oldNickname = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
 
 			KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
-			d->szServer = oldServer.m_szHostname;
+			d->szServer = oldServer.hostName();
 			d->szServerId = oldServer.id();
 			d->uPort = oldServer.port();
 			d->bPortIsOk = true;
@@ -637,7 +640,7 @@ void KviIrcContext::connectionFailed(int iError)
 			d->bSTARTTLS = oldServer.enabledSTARTTLS();
 			d->szPass = oldServer.password();
 			d->szNick = oldNickname;
-			d->szInitUMode = oldServer.m_szInitUMode;
+			d->szInitUMode = oldServer.initUMode();
 			d->szCommandToExecAfterConnect = "";
 			setAsynchronousConnectionData(d);
 			beginAsynchronousConnect(1000 * KVI_OPTION_UINT(KviOption_uintAutoReconnectDelay));
@@ -690,9 +693,9 @@ void KviIrcContext::connectionEstabilished()
 	{
 		m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("%Q established [%s (%s:%u)]"),
 			connection()->link()->socket()->usingSSL() ? &(__tr2qs("Secure connection")) : &(__tr2qs("Connection")),
-			connection()->target()->server()->m_szHostname.toUtf8().data(),
-			connection()->target()->server()->m_szIp.toUtf8().data(),
-			connection()->target()->server()->m_uPort);
+			connection()->target()->server()->hostName().toUtf8().data(),
+			connection()->target()->server()->ip().toUtf8().data(),
+			connection()->target()->server()->port());
 	}
 
 	// Add to recent server list (build the url of type irc[6]://<server>:<port>
@@ -710,18 +713,15 @@ void KviIrcContext::connectionTerminated()
 	if(!m_pConnection)return; // this may happen in the destructor!
 
 	KviIrcServer oldServer(*(connection()->target()->server()));
-	if(oldServer.m_pReconnectInfo)
-	{
-		KviIrcServerReconnectInfo *pOldInfo = oldServer.m_pReconnectInfo;
-		oldServer.m_pReconnectInfo = 0;
-		delete pOldInfo;
-	}
 
-	KviIrcServerReconnectInfo info, *pInfo(&info);
-	pInfo->m_szNick = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
-	pInfo->m_szPass = connection()->userInfo()->password();
-	pInfo->m_bIsAway = connection()->userInfo()->isAway();
-	pInfo->m_szAwayReason = connection()->userInfo()->awayReason();
+	oldServer.clearReconnectInfo();
+
+	KviIrcServerReconnectInfo info;
+
+	info.m_szNick = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
+	info.m_szPass = connection()->userInfo()->password();
+	info.m_bIsAway = connection()->userInfo()->isAway();
+	info.m_szAwayReason = connection()->userInfo()->awayReason();
 
 	connection()->requestQueue()->clearAll();
 
@@ -759,12 +759,12 @@ void KviIrcContext::connectionTerminated()
 				}
 				if((!szChannels.isEmpty()) || (!szProtectedChannels.isEmpty()))
 				{
-					pInfo->m_szJoinChannels.append(szProtectedChannels);
+					info.m_szJoinChannels.append(szProtectedChannels);
 					if(!szProtectedChannels.isEmpty() && !szChannels.isEmpty())
-						pInfo->m_szJoinChannels.append(',');
-					pInfo->m_szJoinChannels.append(szChannels);
-					pInfo->m_szJoinChannels.append(" ");
-					pInfo->m_szJoinChannels.append(szPasswords);
+						info.m_szJoinChannels.append(',');
+					info.m_szJoinChannels.append(szChannels);
+					info.m_szJoinChannels.append(" ");
+					info.m_szJoinChannels.append(szPasswords);
 				}
 			}
 
@@ -773,7 +773,7 @@ void KviIrcContext::connectionTerminated()
 			{
 				for(KviQueryWindow * q = connection()->queryList()->first(); q; q = connection()->queryList()->next())
 				{
-					pInfo->m_szOpenQueryes.append(q->target());
+					info.m_szOpenQueryes.append(q->target());
 				}
 			}
 		}
@@ -814,15 +814,15 @@ void KviIrcContext::connectionTerminated()
 			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("The connection terminated unexpectedly. Trying to reconnect..."));
 		KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
 		d->szServerId = oldServer.id();
-		d->szServer = oldServer.m_szHostname;
+		d->szServer = oldServer.hostName();
 		d->uPort = oldServer.port();
 		d->bPortIsOk = true;
 		d->bUseIPv6 = oldServer.isIPv6();
 		d->bUseSSL = oldServer.useSSL();
 		d->bSTARTTLS = oldServer.enabledSTARTTLS();
 		d->szPass = oldServer.password();
-		d->szInitUMode = oldServer.m_szInitUMode;
-		d->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(pInfo));
+		d->szInitUMode = oldServer.initUMode();
+		d->m_pReconnectInfo = new KviIrcServerReconnectInfo(info);
 		setAsynchronousConnectionData(d);
 
 		beginAsynchronousConnect(1000 * KVI_OPTION_UINT(KviOption_uintAutoReconnectDelay));

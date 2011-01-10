@@ -87,6 +87,7 @@ protected:
 	QLineEdit             * m_pUserEditor;
 	KviPasswordLineEdit   * m_pPassEditor;
 	QLineEdit             * m_pNickEditor;
+	QLineEdit             * m_pAlternativeNickEditor;
 	QLineEdit             * m_pRealEditor;
 	QLineEdit             * m_pDescEditor;
 
@@ -127,6 +128,7 @@ protected:
 	KviPasswordLineEdit   * m_pPassEditor;
 	KviPasswordLineEdit   * m_pSaslPassEditor;
 	QLineEdit             * m_pNickEditor;
+	QLineEdit             * m_pAlternativeNickEditor;
 	QLineEdit             * m_pSaslNickEditor;
 	QLineEdit             * m_pRealEditor;
 	QLineEdit             * m_pDescEditor;
@@ -177,14 +179,11 @@ protected:
 	QTreeWidget                  * m_pTreeWidget;
 	QLabel                       * m_pSrvNetLabel;
 	QLineEdit                    * m_pSrvNetEdit;
-	//QLabel                     * m_pPortLabel;
-	//QLineEdit                  * m_pPortEdit;
 	QPushButton                  * m_pDetailsButton;
 	KviTalPopupMenu              * m_pRecentPopup;
 	KviTalPopupMenu              * m_pContextPopup;
 	KviTalPopupMenu              * m_pImportPopup;
-	KviIrcServer                    * m_pClipboard;
-	//QCheckBox                  * m_pIPv6Check;
+	KviIrcServer                 * m_pClipboard;
 	QPushButton                  * m_pConnectCurrent;
 	QPushButton                  * m_pConnectNew;
 	IrcServerOptionsTreeWidgetItem * m_pLastEditedItem;

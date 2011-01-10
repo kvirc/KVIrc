@@ -158,16 +158,16 @@ void KviIrcConnectionTargetResolver::asyncStartResolve()
 	m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 		__tr2qs("Attempting %Q to %Q (%Q) on port %u"),
 		m_pTarget->server()->useSSL() ? &(__tr2qs("secure connection")) : &(__tr2qs("connection")),
-		&(m_pTarget->server()->m_szHostname),
+		&(m_pTarget->server()->hostName()),
 		&(m_pTarget->network()->name()),
-		m_pTarget->server()->m_uPort);
+		m_pTarget->server()->port());
 
 	if(m_pTarget->proxy())
 	{
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 			__tr2qs("Attempting to 'bounce' on proxy %s on port %u (protocol %s)"),
-			m_pTarget->proxy()->m_szHostname.toUtf8().data(),
-			m_pTarget->proxy()->m_uPort,
+			m_pTarget->proxy()->hostName().toUtf8().data(),
+			m_pTarget->proxy()->port(),
 			m_pTarget->proxy()->protocolName().toUtf8().data());
 
 		lookupProxyHostname();
@@ -182,10 +182,10 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 #ifdef COMPILE_IPV6_SUPPORT
 	if(m_pTarget->proxy()->isIPv6())
 	{
-		bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->proxy()->m_szIp);
+		bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->proxy()->ip());
 	} else {
 #endif
-		bValidIp = KviNetUtils::isValidStringIp(m_pTarget->proxy()->m_szIp);
+		bValidIp = KviNetUtils::isValidStringIp(m_pTarget->proxy()->ip());
 #ifdef COMPILE_IPV6_SUPPORT
 	}
 #endif
@@ -195,7 +195,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 		if(!_OUTPUT_QUIET)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 				__tr2qs("Using cached proxy IP address (%s)"),
-				m_pTarget->proxy()->m_szIp.toUtf8().data());
+				m_pTarget->proxy()->ip().toUtf8().data());
 		if(m_pTarget->proxy()->protocol() != KviProxy::Http
 			&& m_pTarget->proxy()->protocol() != KviProxy::Socks5)
 				lookupServerHostname();
@@ -204,16 +204,16 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 #ifdef COMPILE_IPV6_SUPPORT
 		if(m_pTarget->proxy()->isIPv6())
 		{
-			bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->proxy()->m_szHostname);
+			bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->proxy()->hostName());
 		} else {
 #endif
-			bValidIp = KviNetUtils::isValidStringIp(m_pTarget->proxy()->m_szHostname);
+			bValidIp = KviNetUtils::isValidStringIp(m_pTarget->proxy()->hostName());
 #ifdef COMPILE_IPV6_SUPPORT
 		}
 #endif
 		if(bValidIp)
 		{
-			m_pTarget->proxy()->m_szIp=m_pTarget->proxy()->m_szHostname;
+			m_pTarget->proxy()->setIp(m_pTarget->proxy()->hostName());
 			if(m_pTarget->proxy()->protocol() != KviProxy::Http &&
 				m_pTarget->proxy()->protocol() != KviProxy::Socks5)
 			{
@@ -233,7 +233,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 			m_pProxyDns = new KviDnsResolver();
 			connect(m_pProxyDns,SIGNAL(lookupDone(KviDnsResolver *)),this,SLOT(proxyLookupTerminated(KviDnsResolver *)));
 
-			if(!m_pProxyDns->lookup(m_pTarget->proxy()->m_szHostname,
+			if(!m_pProxyDns->lookup(m_pTarget->proxy()->hostName(),
 				m_pTarget->proxy()->isIPv6() ? KviDnsResolver::IPv6 : KviDnsResolver::IPv4))
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,
@@ -249,7 +249,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 				if(!_OUTPUT_MUTE)
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 							__tr2qs("Looking up the proxy hostname (%s)..."),
-							m_pTarget->proxy()->m_szHostname.toUtf8().data());
+							m_pTarget->proxy()->hostName().toUtf8().data());
 			}
 		}
 	}
@@ -273,8 +273,8 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDnsResolver *)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 				__tr2qs("Proxy hostname resolved to %Q"),&szFirstIpAddress);
 
-		m_pTarget->proxy()->m_szIp = m_pProxyDns->firstIpAddress();
-		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->m_szIp.toUtf8().data(),szFirstIpAddress.toUtf8().data());
+		m_pTarget->proxy()->setIp(m_pProxyDns->firstIpAddress());
+		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->ip().toUtf8().data(),szFirstIpAddress.toUtf8().data());
 	}
 
 	delete m_pProxyDns;
@@ -298,10 +298,10 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 #ifdef COMPILE_IPV6_SUPPORT
 	if(m_pTarget->server()->isIPv6())
 	{
-		bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->server()->m_szIp);
+		bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->server()->ip());
 	} else {
 #endif
-		bValidIp = KviNetUtils::isValidStringIp(m_pTarget->server()->m_szIp);
+		bValidIp = KviNetUtils::isValidStringIp(m_pTarget->server()->ip());
 #ifdef COMPILE_IPV6_SUPPORT
 	}
 #endif
@@ -311,22 +311,22 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 		if(!_OUTPUT_QUIET)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 				__tr2qs("Using cached server IP address (%s)"),
-				m_pTarget->server()->m_szIp.toUtf8().data());
+				m_pTarget->server()->ip().toUtf8().data());
 		haveServerIp();
 	} else {
 #ifdef COMPILE_IPV6_SUPPORT
 		if(m_pTarget->server()->isIPv6())
 		{
-			bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->server()->m_szHostname);
+			bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->server()->hostName());
 		} else {
 #endif
-			bValidIp = KviNetUtils::isValidStringIp(m_pTarget->server()->m_szHostname);
+			bValidIp = KviNetUtils::isValidStringIp(m_pTarget->server()->hostName());
 #ifdef COMPILE_IPV6_SUPPORT
 		}
 #endif
 		if(bValidIp)
 		{
-			m_pTarget->server()->m_szIp=m_pTarget->server()->m_szHostname;
+			m_pTarget->server()->setIp(m_pTarget->server()->hostName());
 			haveServerIp();
 		} else {
 			if(m_pServerDns)
@@ -338,7 +338,7 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 			m_pServerDns = new KviDnsResolver();
 			connect(m_pServerDns,SIGNAL(lookupDone(KviDnsResolver *)),this,
 				SLOT(serverLookupTerminated(KviDnsResolver *)));
-			if(!m_pServerDns->lookup(m_pTarget->server()->m_szHostname,
+			if(!m_pServerDns->lookup(m_pTarget->server()->hostName(),
 				m_pTarget->server()->isIPv6() ? KviDnsResolver::IPv6 : KviDnsResolver::IPv4))
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
@@ -348,7 +348,7 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 				if(!_OUTPUT_MUTE)
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 						__tr2qs("Looking up the server hostname (%s)..."),
-						m_pTarget->server()->m_szHostname.toUtf8().data());
+						m_pTarget->server()->hostName().toUtf8().data());
 			}
 		}
 	}
@@ -369,7 +369,7 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 		{
 			m_pConsole->output(KVI_OUT_SYSTEMERROR,
 				__tr2qs("If this server is an IPv6 one, try /server -i %Q"),
-				&(m_pTarget->server()->m_szHostname));
+				&(m_pTarget->server()->hostName()));
 		}
 #endif
 		terminate(Error,m_pServerDns->error());
@@ -410,17 +410,17 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 
 	QString szFirstHostname = m_pServerDns->hostName();
 
-	if(!KviQString::equalCI(m_pTarget->server()->m_szHostname,m_pServerDns->hostName()))
+	if(!KviQString::equalCI(m_pTarget->server()->hostName(),m_pServerDns->hostName()))
 	{
 		if(!_OUTPUT_QUIET)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 				__tr2qs("Real hostname for %Q is %Q"),
-				&(m_pTarget->server()->m_szHostname),
+				&(m_pTarget->server()->hostName()),
 				&szFirstHostname);
-		m_pTarget->server()->m_szHostname = szFirstHostname;
+		m_pTarget->server()->setHostName(szFirstHostname);
 	}
 
-	m_pTarget->server()->m_szIp = szIpAddress;
+	m_pTarget->server()->setIp(szIpAddress);
 
 	delete m_pServerDns;
 	m_pServerDns = 0;

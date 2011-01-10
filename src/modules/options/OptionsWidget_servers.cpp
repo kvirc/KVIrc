@@ -77,27 +77,28 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	setModal(true);
 	setObjectName("network_details");
 
-	m_pOnConnectEditor=0;
-	m_pOnLoginEditor=0;
+	m_pOnConnectEditor = NULL;
+	m_pOnLoginEditor = NULL;
 
-	m_pUserEditor=0;
-	m_pPassEditor=0;
-	m_pNickEditor=0;
-	m_pRealEditor=0;
-	m_pDescEditor=0;
+	m_pUserEditor = NULL;
+	m_pPassEditor = NULL;
+	m_pNickEditor = NULL;
+	m_pAlternativeNickEditor = NULL;
+	m_pRealEditor = NULL;
+	m_pDescEditor = NULL;
 
-	m_pEncodingEditor=0;
-	m_pTextEncodingEditor=0;
+	m_pEncodingEditor = NULL;
+	m_pTextEncodingEditor = NULL;
 
-	m_pAutoConnectCheck=0;
+	m_pAutoConnectCheck = NULL;
 
-	m_pNickServTreeWidget=0;
-	m_pNickServCheck=0;
-	m_pAddRuleButton=0;
-	m_pDelRuleButton=0;
-	m_pEditRuleButton=0;
+	m_pNickServTreeWidget = NULL;
+	m_pNickServCheck = NULL;
+	m_pAddRuleButton = NULL;
+	m_pDelRuleButton = NULL;
+	m_pEditRuleButton = NULL;
 
-	m_pChannelListSelector=0;
+	m_pChannelListSelector = NULL;
 
 	QGridLayout * g = new QGridLayout(this);
 
@@ -170,12 +171,25 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to the servers on this network.<br>" \
 		"If this field is left empty (most common case), the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
 
-	l = new QLabel(__tr2qs_ctx("Real name:","options"),gbox);
+	l = new QLabel(__tr2qs_ctx("Alt.Nickname:","options"),gbox);
 	pPropertiesBoxLayout->addWidget(l,3,0);
+
+	m_pAlternativeNickEditor = new QLineEdit(gbox);
+	v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*",Qt::CaseSensitive),gbox);
+	m_pAlternativeNickEditor->setValidator(v);
+	m_pAlternativeNickEditor->setText(n->alternativeNickName());
+	pPropertiesBoxLayout->addWidget(m_pAlternativeNickEditor,3,1);
+
+	KviTalToolTip::add(m_pAlternativeNickEditor,__tr2qs_ctx("<center>This nickname will be tried if the primary nickname for this network is already in use.<br>" \
+			"If you leave it empty then the default nicknames specified in the identity options will be tried instead.</center>","options"));
+
+
+	l = new QLabel(__tr2qs_ctx("Real name:","options"),gbox);
+	pPropertiesBoxLayout->addWidget(l,4,0);
 
 	m_pRealEditor = new QLineEdit(gbox);
 	m_pRealEditor->setText(n->realName());
-	pPropertiesBoxLayout->addWidget(m_pRealEditor,3,1);
+	pPropertiesBoxLayout->addWidget(m_pRealEditor,4,1);
 
 	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with the servers on this network.<br>" \
 		"If you leave this field empty (most common case), the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
@@ -440,6 +454,7 @@ void IrcNetworkDetailsWidget::fillData(KviIrcNetwork * n)
 	n->setUserName(m_pUserEditor->text());
 	n->setPassword(m_pPassEditor->text());
 	n->setNickName(m_pNickEditor->text());
+	n->setAlternativeNickName(m_pAlternativeNickEditor->text());
 	n->setRealName(m_pRealEditor->text());
 	n->setDescription(m_pDescEditor->text());
 	if(m_pAutoConnectCheck)
@@ -573,12 +588,25 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		"If this field is left empty (most common case), KVIrc will first look if a nickname is specified " \
 		"for the network that this server belongs to, and if that is empty then the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
 
-	l = new QLabel(__tr2qs_ctx("Real name:","options"),gbox);
+	l = new QLabel(__tr2qs_ctx("Alt.Nickname:","options"),gbox);
 	pPropertiesBoxLayout->addWidget(l,3,0);
+
+	m_pAlternativeNickEditor = new QLineEdit(gbox);
+	v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"),gbox);
+	m_pAlternativeNickEditor->setValidator(v);
+	m_pAlternativeNickEditor->setText(s->alternativeNickName());
+	pPropertiesBoxLayout->addWidget(m_pAlternativeNickEditor,3,1);
+
+	KviTalToolTip::add(m_pAlternativeNickEditor,__tr2qs_ctx("<center>This nickname will be tried if the primary nickname for this server is already in use.<br>" \
+			"If you leave it empty then the default nicknames specified in the identity options will be tried instead.</center>","options"));
+
+
+	l = new QLabel(__tr2qs_ctx("Real name:","options"),gbox);
+	pPropertiesBoxLayout->addWidget(l,4,0);
 
 	m_pRealEditor = new QLineEdit(gbox);
 	m_pRealEditor->setText(s->realName());
-	pPropertiesBoxLayout->addWidget(m_pRealEditor,3,1);
+	pPropertiesBoxLayout->addWidget(m_pRealEditor,4,1);
 
 	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with this server.<br>" \
 		"If you leave this field empty (most common case), KVIrc will first look if a real name is specified " \
@@ -651,7 +679,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pIpEditor->setAddressType(KviIpEditor::IPv4);
 #endif
 
-	if(!m_pIpEditor->setAddress(s->m_szIp))
+	if(!m_pIpEditor->setAddress(s->ip()))
 	{
 #ifdef COMPILE_IPV6_SUPPORT
 		m_pIpEditor->setAddress(s->isIPv6() ? "0:0:0:0:0:0:0:0" : "0.0.0.0");
@@ -782,7 +810,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	KviPointerList<KviProxy> * proxylist = g_pProxyDataBase->proxyList();
 	for(KviProxy * p = proxylist->first();p;p = proxylist->next())
 	{
-		m_pProxyEditor->insertItem(m_pProxyEditor->count(),QString("%1:%2").arg(p->hostname()).arg(p->port()));
+		m_pProxyEditor->insertItem(m_pProxyEditor->count(),QString("%1:%2").arg(p->hostName()).arg(p->port()));
 	}
 	if(m_pProxyEditor->count() > (s->proxy()+2))
 		m_pProxyEditor->setCurrentIndex(s->proxy()+2);
@@ -1040,6 +1068,7 @@ void IrcServerDetailsWidget::fillData(KviIrcServer * s)
 	s->setUserName(m_pUserEditor->text());
 	s->setPassword(m_pPassEditor->text());
 	s->setNickName(m_pNickEditor->text());
+	s->setAlternativeNickName(m_pAlternativeNickEditor->text());
 	s->setRealName(m_pRealEditor->text());
 	if(m_pDescEditor)
 		s->setDescription(m_pDescEditor->text());
@@ -1049,20 +1078,20 @@ void IrcServerDetailsWidget::fillData(KviIrcServer * s)
 	{
 		if(m_pEncodingEditor->currentIndex() <= 0)
 		{
-			s->m_szEncoding = "";
+			s->setEncoding(QString());
 		} else {
 			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentIndex() - 1);
-			s->m_szEncoding = d->szName;
+			s->setEncoding(d->szName);
 		}
 	}
 	if(m_pTextEncodingEditor)
 	{
 		if(m_pTextEncodingEditor->currentIndex() <= 0)
 		{
-			s->m_szTextEncoding = "";
+			s->setTextEncoding(QString());
 		} else {
 			KviLocale::EncodingDescription * dd = KviLocale::encodingDescription(m_pTextEncodingEditor->currentIndex() - 1);
-			s->m_szTextEncoding = dd->szName;
+			s->setTextEncoding(dd->szName);
 		}
 	}
 	s->setIp("");
@@ -1103,7 +1132,7 @@ void IrcServerDetailsWidget::fillData(KviIrcServer * s)
 	bool bOk;
 	kvi_u32_t uPort = tmp.toUInt(&bOk);
 	if(!bOk)uPort = 6667;
-	s->m_uPort = uPort;
+	s->setPort(uPort);
 #ifdef COMPILE_IPV6_SUPPORT
 	s->setIPv6(m_pUseIPV6Check->isChecked());
 #else
@@ -1587,7 +1616,7 @@ void OptionsWidget_servers::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetIt
 		if(m_pLastEditedItem->m_pServerData)
 		{
 			m_pSrvNetLabel->setText(__tr2qs_ctx("Server:","options"));
-			m_pSrvNetEdit->setText(m_pLastEditedItem->m_pServerData->m_szHostname);
+			m_pSrvNetEdit->setText(m_pLastEditedItem->m_pServerData->hostName());
 		} else {
 			m_pSrvNetLabel->setText(__tr2qs_ctx("Network:","options"));
 			m_pSrvNetEdit->setText(it->text(0));
@@ -1625,10 +1654,10 @@ void OptionsWidget_servers::saveLastItem()
 
 	if(m_pLastEditedItem->m_pServerData)
 	{
-		KviCString tmp = m_pSrvNetEdit->text();
+		QString tmp = m_pSrvNetEdit->text();
 		if(tmp.isEmpty())
-			tmp = "irc.unknown.net";
-		m_pLastEditedItem->m_pServerData->m_szHostname = tmp;
+			tmp = QString::fromAscii("irc.unknown.net");
+		m_pLastEditedItem->m_pServerData->setHostName(tmp);
 		m_pLastEditedItem->updateVisibleStrings();
 	} else if(m_pLastEditedItem->m_pNetworkData)
 	{
@@ -1668,7 +1697,7 @@ void OptionsWidget_servers::commit()
 			ch=(IrcServerOptionsTreeWidgetItem *)network->child(j);
 			if(ch->m_pServerData)
 			{
-				if(!ch->m_pServerData->m_szHostname.isEmpty())
+				if(!ch->m_pServerData->hostName().isEmpty())
 				{
 					srv = pNetwork->findServer(ch->m_pServerData);
 					if(!srv)
@@ -1847,7 +1876,7 @@ void OptionsWidget_servers::newServer()
 		else net = m_pLastEditedItem;
 
 		KviIrcServer tmp;
-		tmp.m_szHostname = __tr2qs_ctx("irc.unknown.net","options");
+		tmp.setHostName(__tr2qs_ctx("irc.unknown.net","options"));
 		tmp.setCacheIp(false);
 		tmp.generateUniqueId();
 

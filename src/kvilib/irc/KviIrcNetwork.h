@@ -73,6 +73,7 @@ protected:
 	QString              m_szEncoding;                /**< if empty, use system default */
 	QString              m_szTextEncoding;            /**< if empty, use system default */
 	QString              m_szNickName;                /**< preferred nick name */
+	QString              m_szAlternativeNickName;     /**< alternative nick name */
 	QString              m_szUserName;                /**< preferred user name */
 	QString              m_szRealName;                /**< preferred real name */
 	QString              m_szPass;                    /**< special password */
@@ -119,6 +120,12 @@ public:
 	* \return const QString &
 	*/
 	inline const QString & nickName() const { return m_szNickName; };
+
+	/**
+	* \brief Returns the alternative nickname of the user associated to the network
+	* \return const QString &
+	*/
+	inline const QString & alternativeNickName() const { return m_szAlternativeNickName; };
 
 	/**
 	* \brief Returns the realname of the user associated to the network
@@ -247,6 +254,13 @@ public:
 	* \return void
 	*/
 	inline void setNickName(const QString & szNick){ m_szNickName = szNick; };
+
+	/**
+	* \brief Sets the alternative nickname of the user associated to the network
+	* \param szNick The nickname
+	* \return void
+	*/
+	inline void setAlternativeNickName(const QString & szNick){ m_szAlternativeNickName = szNick; };
 
 	/**
 	* \brief Sets the realname of the user associated to the network
