@@ -1989,7 +1989,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 					p.drawPixmap(iTheX,iTheY+(fm.lineSpacing()-16/*size of small icon*/)/2,*pIco);
 				}
 				iTheX +=18;
-				p.drawText(iAvatarAndTextX,iTheY,iWidth - iTheX,fm.lineSpacing(),Qt::AlignLeft|Qt::AlignVCenter,pEntry->m_szNick);
+				p.drawText(iAvatarAndTextX,iTheY+fm.lineSpacing()-1,pEntry->m_szNick);
 			} else {
 
 				char cFlag = m_pListView->getUserFlag(pEntry);
@@ -1997,9 +1997,9 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 				{
 					QString szTmp = QChar(cFlag);
 					szTmp += pEntry->m_szNick;
-					p.drawText(iAvatarAndTextX,iTheY,iWidth - iTheX,fm.lineSpacing(),Qt::AlignLeft|Qt::AlignVCenter,szTmp);
+					p.drawText(iAvatarAndTextX,iTheY+fm.lineSpacing()-1,szTmp);
 				} else {
-					p.drawText(iAvatarAndTextX,iTheY,iWidth - iTheX,fm.lineSpacing(),Qt::AlignLeft|Qt::AlignVCenter,pEntry->m_szNick);
+					p.drawText(iAvatarAndTextX,iTheY+fm.lineSpacing()-1,pEntry->m_szNick);
 				}
 			}
 		}
