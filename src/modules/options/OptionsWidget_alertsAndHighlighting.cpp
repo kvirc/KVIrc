@@ -66,7 +66,9 @@ OptionsWidget_highlighting::OptionsWidget_highlighting(QWidget * parent)
 
 	KviTalGroupBox * gbox = addGroupBox(0,4,0,4,Qt::Horizontal,__tr2qs_ctx("Highlighting Method","options"));
 
-	QGridLayout * g = new QGridLayout(gbox);
+	// note: KviTalGroupBox automatically deletes its previous layout on setLayout()
+	// note2: every QWidget will take ownership of its layout.
+	QGridLayout * g = new QGridLayout();
 	gbox->setLayout(g);
 
 	m_pHighlightAllOccurencesRadioButton = new QRadioButton(__tr2qs_ctx("Highlight every occurence of a word inside text","options"),gbox);
