@@ -311,7 +311,7 @@ bool FileTransferWindow::eventFilter( QObject *obj, QEvent *ev )
 					if(m_pTableWidget->currentItem())
 					{
 						delete m_pTableWidget->currentItem();
-						return TRUE;
+						return true;
 					}
 					break;
 			}

@@ -637,7 +637,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 		if(uResumeSize >= o->fileSize())
 		{
 			// senseless request
-			QString szError = QString(__tr2qs_ctx("Invalid RECV request: Position %1 is is larger than file size","dcc")).arg(uResumeSize);
+			QString szError = QString(__tr2qs_ctx("Invalid RECV request: Position %1 is larger than file size","dcc")).arg(uResumeSize);
 			dcc_module_request_error(dcc,szError);
 			return;
 		}

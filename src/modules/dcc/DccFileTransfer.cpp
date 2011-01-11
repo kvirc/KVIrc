@@ -1522,14 +1522,14 @@ void DccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 					if(iW2 > 0)p->fillRect(rect.left() + 5 + iL2,rect.top() + 5,iW2,10,bIsTerminated ? QColor(150,130,110) : QColor(220,170,100));
 					p->fillRect(rect.left() + 5,rect.top() + 5,iL2,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
 
-					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)","dcc")).arg(KviQString::makeSizeReadable(uAckedBytes), KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc2,0,'f',2);
+					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)","dcc")).arg(KviQString::makeSizeReadable(uAckedBytes)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc2,0,'f',2);
 				} else {
 					// we are receiving a file or not sending acks
 					double dPerc = (double)(((double)uTransferred) * 100.0) / (double)m_uTotalFileSize;
 					int iL = (int) ((((double)iW) * dPerc) / 100.0);
 					p->fillRect(rect.left() + 5,rect.top() + 5,iL,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
 
-					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)","dcc")).arg(KviQString::makeSizeReadable(uTransferred), KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc,0,'f',2);
+					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)","dcc")).arg(KviQString::makeSizeReadable(uTransferred)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc,0,'f',2);
 				}
 
 			} else {

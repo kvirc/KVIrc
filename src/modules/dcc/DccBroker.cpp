@@ -591,9 +591,9 @@ void DccBroker::recvFileManage(DccDescriptor * dcc)
 						"<b>%5</b> large.<br>" \
 						"The connection target will be host <b>%6</b> on port <b>%7</b><br>" \
 					,"dcc" \
-				).arg(dcc->szNick, dcc->szUser, dcc->szHost, dcc->szFileName,
-					KviQString::makeSizeReadable(dcc->szFileSize.toULongLong()),
-					dcc->szIp, dcc->szPort);
+				).arg(dcc->szNick, dcc->szUser, dcc->szHost, dcc->szFileName)
+				.arg(KviQString::makeSizeReadable(dcc->szFileSize.toULongLong()))
+				.arg(dcc->szIp, dcc->szPort);
 
 		} else {
 			// passive: we will be listening!
@@ -604,8 +604,8 @@ void DccBroker::recvFileManage(DccDescriptor * dcc)
 						"<b>%5</b> large.<br>" \
 						"You will be the passive side of the connection.<br>" \
 					,"dcc" \
-				).arg(dcc->szNick, dcc->szUser, dcc->szHost, dcc->szFileName,
-				      KviQString::makeSizeReadable(dcc->szFileSize.toULongLong()));
+				).arg(dcc->szNick, dcc->szUser, dcc->szHost, dcc->szFileName)
+				.arg(KviQString::makeSizeReadable(dcc->szFileSize.toULongLong()));
 		}
 
 		if(dcc->bIsIncomingAvatar)
@@ -762,7 +762,7 @@ void DccBroker::renameOverwriteResume(DccDialog *box,DccDescriptor * dcc)
 							"<b>overwrite</b> the existing file, or<br> " \
 							"<b>resume</b> an incomplete download?" \
 						,"dcc" \
-					).arg(dcc->szLocalFileName, KviQString::makeSizeReadable(fi.size()));
+					).arg(dcc->szLocalFileName).arg(KviQString::makeSizeReadable(fi.size()));
 			} else {
 				bDisableResume = true;
 				// the file on disk is larger or equal to the remote one

@@ -114,16 +114,16 @@ namespace KviTimeUtils
 				if(h > 0)
 				{
 					if(iFlags & NoLeadingZeroes)
-						szRet = QString(__tr2qs("%1 h %2 m %3 s")).arg(h,m,s);
+						szRet = QString(__tr2qs("%1 h %2 m %3 s")).arg(h).arg(m).arg(s);
 					else
-						szRet = QString(__tr2qs("%1 h %2%3 m %4%5 s")).arg(h,m / 10,m % 10,s / 10,s % 10);
+						szRet = QString(__tr2qs("%1 h %2%3 m %4%5 s")).arg(h).arg(m / 10).arg(m % 10).arg(s / 10).arg(s % 10);
 				} else {
 					if(m > 0)
 					{
 						if(iFlags & NoLeadingZeroes)
-							szRet = QString(__tr2qs("%1 m %2 s")).arg(m,s);
+							szRet = QString(__tr2qs("%1 m %2 s")).arg(m).arg(s);
 						else
-							szRet = QString(__tr2qs("%1 m %2%3 s")).arg(m,s / 10,s % 10);
+							szRet = QString(__tr2qs("%1 m %2%3 s")).arg(m).arg(s / 10).arg(s % 10);
 					} else {
 						szRet = QString(__tr2qs("%1 s")).arg(s);
 					}
