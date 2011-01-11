@@ -2243,7 +2243,7 @@ msgstr "Nie udało się załadowac awataru - KVIrc"
 #: src/modules/options/OptionsWidget_identity.cpp:562
 #, fuzzy
 msgid "Failed to download the avatar image.<br><b>%1</b>"
-msgstr "Pobieranie obrazka awataru nie powiodło się.<br><b>%Q</b>"
+msgstr "Pobieranie obrazka awataru nie powiodło się.<br><b>%1</b>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:556
 #: src/modules/options/OptionsWidget_identity.cpp:594
@@ -3042,9 +3042,8 @@ msgid "No selection"
 msgstr "Brak wyboru"
 
 #: src/modules/options/libkvioptions.cpp:206
-#, fuzzy
 msgid "No such options page class name %Q"
-msgstr "Nie ma takiej klasy"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:49
 msgid "Normal"
@@ -4776,50 +4775,14 @@ msgstr "w:"
 #~ msgstr "Ostatnie &nicki"
 
 #, fuzzy
-#~ msgid " I can't find the specified file %s."
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid " I can't find the specified file '%Q'."
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
 #~ msgid " I can't find the specified file."
 #~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid " I cannot read the file %Q'."
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid " on "
-#~ msgstr "%s na %s"
 
 #~ msgid "### Log session started at %s ###"
 #~ msgstr "### Logowanie rozpoczęte %s ###"
 
 #~ msgid "### Log session terminated at %s ###"
 #~ msgstr "### Logowanie przerwane %s ###"
-
-#, fuzzy
-#~ msgid "%Q established [%s (%s:%u)]"
-#~ msgstr "Połączenie przerwane"
-
-#, fuzzy
-#~ msgid "%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
-#~ msgid "%Q unsets avatar"
-#~ msgstr "Obraz Avatar"
-
-#, fuzzy
-#~ msgid "%cListing Qt Properties for widget object %s (%s)"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "%cUser action: %Q"
-#~ msgstr "Brak połączenia"
 
 #, fuzzy
 #~ msgid "%s (module %s)"
@@ -5082,10 +5045,6 @@ msgstr "w:"
 #~ "secs</b></center>"
 
 #, fuzzy
-#~ msgid "<p>Theme: %1</p>"
-#~ msgstr "Użytkownik:"
-
-#, fuzzy
 #~ msgid "<unknown size>"
 #~ msgstr "nieznany"
 
@@ -5184,18 +5143,6 @@ msgstr "w:"
 #~ msgstr "Lewy operand nie jest liczbą"
 
 #, fuzzy
-#~ msgid "Attempting %Q to %Q (%Q) on port %u"
-#~ msgstr "Próba nawiązania połączenia z %w (%s) na porcie %s"
-
-#, fuzzy
-#~ msgid "Auto-joining network specific channels"
-#~ msgstr "Znajdowanie hosta %s..."
-
-#, fuzzy
-#~ msgid "Auto-joining server specific channels"
-#~ msgstr "Znajdowanie hosta %s..."
-
-#, fuzzy
 #~ msgid "Avatar Handling"
 #~ msgstr "Obraz Avatar"
 
@@ -5213,10 +5160,6 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "B&rowse..."
 #~ msgstr "Przeglądaj"
-
-#, fuzzy
-#~ msgid "Background not found %s "
-#~ msgstr "Brak połączenia"
 
 #, fuzzy
 #~ msgid "Ban"
@@ -5255,24 +5198,8 @@ msgstr "w:"
 #~ msgstr "Wybierz katalog..."
 
 #, fuzzy
-#~ msgid "Call to undefined command '%Q'"
-#~ msgstr "Brak takiej komendy w module"
-
-#, fuzzy
-#~ msgid "Can't add a non - popupmenu  object"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
-#~ msgid "Can't add a null object"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
 #~ msgid "Can't delete a null object reference"
 #~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't delete an inexisting object"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
 
 #, fuzzy
 #~ msgid "Can't fill non-widget object"
@@ -5280,39 +5207,19 @@ msgstr "w:"
 
 #, fuzzy
 #~ msgid "Can't find the  object to add (%s)"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
-#~ msgid "Can't find the destination widget/pixmap (%s)"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't find the icon \"%Q\": ignoring"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't find the icon '%Q'"
-#~ msgstr "Wybierz pliki do wysłania"
+#~ msgstr "Nieprawidłowy indeks (%s)"
 
 #, fuzzy
 #~ msgid "Can't find the listviewitem object to add (%s)"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
-#~ msgid "Can't find the multimedia file %s"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't find the object "
-#~ msgstr "Nieprawidłowy indeks (%Q)"
+#~ msgstr "Nieprawidłowy indeks (%s)"
 
 #, fuzzy
 #~ msgid "Can't find the object to add (%s)"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
+#~ msgstr "Nieprawidłowy indeks (%s)"
 
 #, fuzzy
 #~ msgid "Can't find the popupmenu object to add (%s)"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
+#~ msgstr "Nieprawidłowy indeks (%s)"
 
 #~ msgid "Can't find the proxy IP address: %Q"
 #~ msgstr "Nieprawidłowy indeks (%Q)"
@@ -5325,14 +5232,6 @@ msgstr "w:"
 #~ msgstr "Nieprawidłowy indeks (%Q)"
 
 #, fuzzy
-#~ msgid "Can't find the source widget/pixmap (%s)"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't find the specified file '%s'."
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
 #~ msgid "Can't find the tab "
 #~ msgstr "Wybierz pliki do wysłania"
 
@@ -5341,64 +5240,8 @@ msgstr "w:"
 #~ msgstr "Wybierz pliki do wysłania"
 
 #, fuzzy
-#~ msgid "Can't find the widget (%s)"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't find the widget object (%s)"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
 #~ msgid "Can't find the widget object assuming 0"
 #~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't find the widget object to remove (%s)"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't find the widget(%s)"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't find the widget/pixmap (%s)"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't find the window with id '%Q'"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't open file \"%s\" for writing"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't open file %s for reading."
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't open file %s for writing."
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't open the file \"%Q\" for reading"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't open the file \"%Q\" for writing"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't open the file \"%s\" for reading"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't open the filter file %s for reading."
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't remove a non-widget object"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
 
 #, fuzzy
 #~ msgid "Cannot open install.kvs for reading."
@@ -5409,16 +5252,8 @@ msgstr "w:"
 #~ msgstr "Wybierz pliki do wysłania"
 
 #, fuzzy
-#~ msgid "Cannot sent text to channel %Q"
-#~ msgstr "Brak wartości do wstawienia"
-
-#, fuzzy
 #~ msgid "Cannot sent to channel"
 #~ msgstr "Pokazuj skrócone zmiany trybów"
-
-#, fuzzy
-#~ msgid "Cannot sent to channel: %Q"
-#~ msgstr "Brak wartości do wstawienia"
 
 #, fuzzy
 #~ msgid "Cascade"
@@ -5436,10 +5271,6 @@ msgstr "w:"
 #~ msgstr "Kategoria"
 
 #, fuzzy
-#~ msgid "Category: %Q"
-#~ msgstr "Kategoria"
-
-#, fuzzy
 #~ msgid "Change Nickname"
 #~ msgstr "Ostatnie &nicki"
 
@@ -5452,16 +5283,8 @@ msgstr "w:"
 #~ msgstr "Pokazuj pingi od serwera"
 
 #, fuzzy
-#~ msgid "Changed text encoding to %Q"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
 #~ msgid "Channel Administrator"
 #~ msgstr "Anuluj"
-
-#, fuzzy
-#~ msgid "Channel List [IRC Context %u]"
-#~ msgstr "&Nowy kontekst irc"
 
 #, fuzzy
 #~ msgid "Channel Modes"
@@ -5484,10 +5307,6 @@ msgstr "w:"
 #~ msgstr "Pokazuj skrócone zmiany trybów"
 
 #, fuzzy
-#~ msgid "Channel mode for \r!c\r%Q\r is %s"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
 #~ msgid "Channel notice"
 #~ msgstr "Anuluj"
 
@@ -5497,10 +5316,6 @@ msgstr "w:"
 
 #~ msgid "Channel synchronized in %d.%d seconds"
 #~ msgstr "Kanał zsynchronizowany w %d.%d sekund"
-
-#, fuzzy
-#~ msgid "Channel topic is: %Q"
-#~ msgstr "Anuluj"
 
 #, fuzzy
 #~ msgid "Channel topic:"
@@ -5588,10 +5403,6 @@ msgstr "w:"
 #~ msgid "Commit Changes"
 #~ msgstr "Ostatnie &kanały"
 
-#, fuzzy
-#~ msgid "Common channels: %2"
-#~ msgstr "Ostatnie &kanały"
-
 #~ msgid "Components"
 #~ msgstr "Komponenty"
 
@@ -5641,20 +5452,8 @@ msgstr "w:"
 #~ msgstr "Połączenie"
 
 #, fuzzy
-#~ msgid "Connected to %s (%s)"
-#~ msgstr "Połączenie przerwane"
-
-#, fuzzy
 #~ msgid "Connection Timer"
 #~ msgstr "Połączenie"
-
-#, fuzzy
-#~ msgid "Connection attempt failed (%s): %s"
-#~ msgstr "Połączenie przerwane"
-
-#, fuzzy
-#~ msgid "Connection attempt failed [%s]"
-#~ msgstr "Połączenie przerwane"
 
 #, fuzzy
 #~ msgid "Connection established, sending request"
@@ -5677,24 +5476,12 @@ msgstr "w:"
 #~ msgstr "Połączenie przerwane"
 
 #, fuzzy
-#~ msgid "Connection terminated [%s (%s:%u)]"
-#~ msgstr "Połączenie przerwane"
-
-#, fuzzy
 #~ msgid "Connection to server established"
 #~ msgstr "Połączenie przerwane"
 
 #, fuzzy
 #~ msgid "Connections in progress"
 #~ msgstr "łączenie..."
-
-#, fuzzy
-#~ msgid "Contacting %Q %s (%s) on port %u"
-#~ msgstr "Próba nawiązania połączenia z %w (%s) na porcie %s"
-
-#, fuzzy
-#~ msgid "Contacting host %s on port %u"
-#~ msgstr "Próba nawiązania połączenia z %s (%u) na porcie %u"
 
 #, fuzzy
 #~ msgid "Context"
@@ -5772,10 +5559,6 @@ msgstr "w:"
 #~ msgstr "Dzielenie przez zero"
 
 #, fuzzy
-#~ msgid "Doesn't a widget object"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
 #~ msgid "Double click to enter away mode"
 #~ msgstr ""
 #~ "Kliknij podwójnie by otworzyć link<br>Kliknij prawym przyciskiem aby "
@@ -5789,12 +5572,6 @@ msgstr "w:"
 
 #, fuzzy
 #~ msgid "Double-click to edit..."
-#~ msgstr ""
-#~ "Kliknij podwójnie by otworzyć link<br>Kliknij prawym przyciskiem aby "
-#~ "zobaczyć inne opcje"
-
-#, fuzzy
-#~ msgid "Double-click to join %Q<br>Right click to view other options"
 #~ msgstr ""
 #~ "Kliknij podwójnie by otworzyć link<br>Kliknij prawym przyciskiem aby "
 #~ "zobaczyć inne opcje"
@@ -5862,10 +5639,6 @@ msgstr "w:"
 #~ msgstr "Wygląd tekstu"
 
 #, fuzzy
-#~ msgid "End of channel %Q for \r!c\r%Q\r"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
 #~ msgid "Expand &Horizontally"
 #~ msgstr "Rozszeż po&ziomo"
 
@@ -5902,15 +5675,7 @@ msgstr "w:"
 #~ msgstr "Wybierz pliki do wysłania"
 
 #, fuzzy
-#~ msgid "Failed to execute command '%Q'"
-#~ msgstr "Brak takiej komendy w module"
-
-#, fuzzy
 #~ msgid "Failed to find the widget to wrap"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Failed to load the file '%Q' for parsing"
 #~ msgstr "Wybierz pliki do wysłania"
 
 #, fuzzy
@@ -5918,28 +5683,8 @@ msgstr "w:"
 #~ msgstr "Wybierz pliki do wysłania"
 
 #, fuzzy
-#~ msgid "Failed to make the directory %Q"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Failed to remove the directory %Q"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Failed to remove the file %Q"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
 #~ msgid "Failed to send an unknown command as /raw"
 #~ msgstr "Nieznana komenda"
-
-#, fuzzy
-#~ msgid "Failed to start the get request: %Q"
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Failed to start the get request: %s"
-#~ msgstr "Wybierz pliki do wysłania"
 
 #~ msgid "File is not open !"
 #~ msgstr "Plik nie jest otwarty !"
@@ -5974,53 +5719,6 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "Flush Log File"
 #~ msgstr "Wybierz nazwę zapisywanego pliku"
-
-#, fuzzy
-#~ msgid ""
-#~ "Found character %q (unicode %x) where a 'case','match','regexp','default' "
-#~ "or 'break' label was expected"
-#~ msgstr "Niespodziewany znak"
-
-#, fuzzy
-#~ msgid ""
-#~ "Found character %q (unicode %x) where a "
-#~ "'prologue','separator','label','popup','item','extpopup' or 'epilogue' "
-#~ "label was expected"
-#~ msgstr "Niespodziewany znak"
-
-#, fuzzy
-#~ msgid "Found character %q (unicode %x) where a 'while' keyword was expected"
-#~ msgstr "Niespodziewany znak"
-
-#, fuzzy
-#~ msgid "Found character %q (unicode %x) where a function name was expected"
-#~ msgstr "Niespodziewany znak"
-
-#, fuzzy
-#~ msgid "Found character %q (unicode %x) where a variable was expected"
-#~ msgstr "Niespodziewany znak"
-
-#, fuzzy
-#~ msgid ""
-#~ "Found character '%q' (unicode %x) where '%' or '$' was expected: see /"
-#~ "help foreach for the command syntax"
-#~ msgstr "Niespodziewany znak"
-
-#, fuzzy
-#~ msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
-#~ msgstr "Niespodziewany znak"
-
-#, fuzzy
-#~ msgid ""
-#~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help "
-#~ "%s\" for the command syntax"
-#~ msgstr "Niespodziewany znak"
-
-#, fuzzy
-#~ msgid ""
-#~ "Found end of input where character '%c' was expected: see \"/help %s\" "
-#~ "for the command syntax"
-#~ msgstr "Niespodziewany znak"
 
 #, fuzzy
 #~ msgid "Generic"
@@ -6105,20 +5803,8 @@ msgstr "w:"
 #~ msgstr "Katalog domowy"
 
 #, fuzzy
-#~ msgid "Host %s resolved to %s"
-#~ msgstr "Brak nazwy hosta do odszukania"
-
-#, fuzzy
 #~ msgid "Hostname resolution aborted"
 #~ msgstr "Połączenie przerwane"
-
-#, fuzzy
-#~ msgid "I can't find the specified file %Q."
-#~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "IP address %d: %s"
-#~ msgstr "Adres Ip:"
 
 #~ msgid "IRC Channel related actions"
 #~ msgstr "Nowy kontekst irc"
@@ -6200,11 +5886,11 @@ msgstr "w:"
 
 #, fuzzy
 #~ msgid "Invalid IRC context id '%Q'"
-#~ msgstr "Nieprawidłowy indeks (%s)"
+#~ msgstr "Nieprawidłowy indeks (%Q)"
 
 #, fuzzy
 #~ msgid "Invalid IRC url (%Q)"
-#~ msgstr "Nieprawidłowy indeks (%s)"
+#~ msgstr "Nieprawidłowy indeks (%Q)"
 
 #, fuzzy
 #~ msgid "Invalid Parameters"
@@ -6219,47 +5905,19 @@ msgstr "w:"
 #~ msgstr "Nieprawidłowy indeks (%s)"
 
 #, fuzzy
-#~ msgid "Invalid column parameter (%s)"
-#~ msgstr "Błędny margines"
-
-#, fuzzy
 #~ msgid "Invalid columns value (%s)"
 #~ msgstr "Nieprawidłowy indeks (%s)"
-
-#, fuzzy
-#~ msgid "Invalid data type for parameter \"%s\""
-#~ msgstr "Błędny parametr"
 
 #, fuzzy
 #~ msgid "Invalid depth value (%s)"
 #~ msgstr "Nieprawidłowy indeks (%s)"
 
 #, fuzzy
-#~ msgid "Invalid duration value: using default"
-#~ msgstr "Nieprawidłowy indeks (%s)"
-
-#, fuzzy
-#~ msgid "Invalid from_column parameter (%s)"
-#~ msgstr "Błędny margines"
-
-#, fuzzy
-#~ msgid "Invalid from_row parameter (%s)"
-#~ msgstr "Błędny margines"
-
-#, fuzzy
 #~ msgid "Invalid icon identifier"
 #~ msgstr "Błędny margines"
 
-#, fuzzy
-#~ msgid "Invalid image"
-#~ msgstr "Nieprawidłowy indeks (%s)"
-
 #~ msgid "Invalid index (%s)"
 #~ msgstr "Nieprawidłowy indeks (%s)"
-
-#, fuzzy
-#~ msgid "Invalid index parameter (%s)"
-#~ msgstr "Błędny parametr"
 
 #, fuzzy
 #~ msgid "Invalid index specified: ignored"
@@ -6285,7 +5943,7 @@ msgstr "w:"
 
 #, fuzzy
 #~ msgid "Invalid mode '%Q'"
-#~ msgstr "Nieprawidłowy indeks (%s)"
+#~ msgstr "Nieprawidłowy indeks (%Q)"
 
 #, fuzzy
 #~ msgid "Invalid object"
@@ -6303,16 +5961,8 @@ msgstr "w:"
 #~ msgstr "Błędny parametr"
 
 #, fuzzy
-#~ msgid "Invalid parameter (%s)"
-#~ msgstr "Błędny parametr"
-
-#, fuzzy
 #~ msgid "Invalid parameters"
 #~ msgstr "Błędny parametr"
-
-#, fuzzy
-#~ msgid "Invalid pitch value: using default"
-#~ msgstr "Nieprawidłowy indeks (%s)"
 
 #, fuzzy
 #~ msgid "Invalid port (%s)"
@@ -6323,16 +5973,8 @@ msgstr "w:"
 #~ msgstr "Nieprawidłowy indeks (%s)"
 
 #, fuzzy
-#~ msgid "Invalid row parameter (%s)"
-#~ msgstr "Błędny parametr"
-
-#, fuzzy
 #~ msgid "Invalid screen coordinates"
 #~ msgstr "Błędny margines"
-
-#, fuzzy
-#~ msgid "Invalid size parameter (%s)"
-#~ msgstr "Błędny parametr"
 
 #, fuzzy
 #~ msgid "Invalid size value (%s)"
@@ -6353,38 +5995,6 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "Invalid timeout (%s)"
 #~ msgstr "Nieprawidłowy indeks (%s)"
-
-#, fuzzy
-#~ msgid "Invalid timeout, ignoring"
-#~ msgstr "Nieprawidłowy indeks (%s)"
-
-#, fuzzy
-#~ msgid "Invalid to_column parameter (%s)"
-#~ msgstr "Błędny margines"
-
-#, fuzzy
-#~ msgid "Invalid to_row parameter (%s)"
-#~ msgstr "Błędny parametr"
-
-#, fuzzy
-#~ msgid "Invalid visible name: using default"
-#~ msgstr "Nieprawidłowy indeks (%s)"
-
-#, fuzzy
-#~ msgid "Invalid x offset parameter (%s)"
-#~ msgstr "Błędny parametr"
-
-#, fuzzy
-#~ msgid "Invalid x parameter (%s)"
-#~ msgstr "Błędny parametr"
-
-#, fuzzy
-#~ msgid "Invalid y offset parameter (%s)"
-#~ msgstr "Błędny parametr"
-
-#, fuzzy
-#~ msgid "Invalid y parameter (%s)"
-#~ msgstr "Błędny parametr"
 
 #, fuzzy
 #~ msgid "Invalid zoom value (%s)"
@@ -6454,20 +6064,8 @@ msgstr "w:"
 #~ msgstr "Nie jesteś połączony z serwerem"
 
 #, fuzzy
-#~ msgid "Links for %Q [IRC Context %u]"
-#~ msgstr "&Nowy kontekst irc"
-
-#, fuzzy
 #~ msgid "List cannot be requested: Not connected to a server"
 #~ msgstr "Nie jesteś połączony z serwerem"
-
-#, fuzzy
-#~ msgid "List: %Q"
-#~ msgstr "&Połączenia"
-
-#, fuzzy
-#~ msgid "Listing Qt properties for object named \"%Q\" of KVS class %Q"
-#~ msgstr "Wybierz pliki do wysłania"
 
 #~ msgid "Loaded module '%s' (%s)"
 #~ msgstr "Załadowano moduł '%s' (%s)"
@@ -6496,7 +6094,7 @@ msgstr "w:"
 
 #, fuzzy
 #~ msgid "Looking up the local hostname as seen by the IRC server (%Q)"
-#~ msgstr "Znajdowanie hosta %s..."
+#~ msgstr "Znajdowanie hosta %Q..."
 
 #, fuzzy
 #~ msgid "Looking up the proxy hostname (%s)..."
@@ -6507,20 +6105,12 @@ msgstr "w:"
 #~ msgstr "Znajdowanie hosta %s..."
 
 #, fuzzy
-#~ msgid "Low-level transport connection established [%s (%s:%u)]"
-#~ msgstr "Połączenie przerwane"
-
-#, fuzzy
 #~ msgid "MDI Captions"
 #~ msgstr "Akcje"
 
 #, fuzzy
 #~ msgid "Ma&ximize"
 #~ msgstr "&Maksymalizuj"
-
-#, fuzzy
-#~ msgid "Mask %Q not found"
-#~ msgstr "Tekst nie odnaleziony"
 
 #, fuzzy
 #~ msgid "Mask Editor"
@@ -6592,10 +6182,6 @@ msgstr "w:"
 #~ msgstr "Brak nazwy zmiennej"
 
 #, fuzzy
-#~ msgid "Missing non-optional parameter \"%s\""
-#~ msgstr "Brak nazwy zmiennej"
-
-#, fuzzy
 #~ msgid "Missing parameter"
 #~ msgstr "Brak nazwy zmiennej"
 
@@ -6652,14 +6238,6 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "My ToolBar"
 #~ msgstr "&Narzędzia"
-
-#, fuzzy
-#~ msgid "Name: %Q"
-#~ msgstr "Zmień nazwę"
-
-#, fuzzy
-#~ msgid "Names for \r!c\r%Q\r: %Q"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
 
 #, fuzzy
 #~ msgid "Namespace"
@@ -6816,24 +6394,8 @@ msgstr "w:"
 #~ msgid "No source specified"
 #~ msgstr "Nie podano indeksu"
 
-#, fuzzy
-#~ msgid "No such IRC context (%u)"
-#~ msgstr "&Nowy kontekst irc"
-
-#, fuzzy
-#~ msgid "No such QT property (%s)"
-#~ msgstr "&Nowy kontekst irc"
-
-#, fuzzy
-#~ msgid "No such event (%Q)"
-#~ msgstr "&Nowy kontekst irc"
-
 #~ msgid "No such file"
 #~ msgstr "Plik nie istnieje"
-
-#, fuzzy
-#~ msgid "No such irc context (%d)"
-#~ msgstr "&Nowy kontekst irc"
 
 #, fuzzy
 #~ msgid "No such line number"
@@ -6859,7 +6421,7 @@ msgstr "w:"
 
 #, fuzzy
 #~ msgid "No such open mode: '%Q'"
-#~ msgstr "Tryb otwarcia '%s' nie istnieje"
+#~ msgstr "Tryb otwarcia '%Q' nie istnieje"
 
 #, fuzzy
 #~ msgid "No such options page class name"
@@ -6877,10 +6439,6 @@ msgstr "w:"
 #~ msgid "No topic is set"
 #~ msgstr "Brak wartości do wstawienia"
 
-#, fuzzy
-#~ msgid "No topic is set for channel \r!c\r%Q\r"
-#~ msgstr "Brak wartości do wstawienia"
-
 #~ msgid "No value to insert"
 #~ msgstr "Brak wartości do wstawienia"
 
@@ -6894,10 +6452,6 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "Not Logging"
 #~ msgstr "Tekst nie odnaleziony"
-
-#, fuzzy
-#~ msgid "Not a widget object"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
 
 #, fuzzy
 #~ msgid "Not connected"
@@ -6918,10 +6472,6 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "Notify nicknames:"
 #~ msgstr "Ostatnie &nicki"
-
-#, fuzzy
-#~ msgid "Notifying avatar '%Q' to %Q"
-#~ msgstr "Obraz Avatar"
 
 #, fuzzy
 #~ msgid "Offer list window"
@@ -6969,10 +6519,6 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "Parent Directory"
 #~ msgstr "Katalog domowy"
-
-#, fuzzy
-#~ msgid "Parent must be a widget object"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
 
 #, fuzzy
 #~ msgid "Parser error"
@@ -7047,10 +6593,6 @@ msgstr "w:"
 #~ msgstr "Brak połączenia"
 
 #, fuzzy
-#~ msgid "Proxy hostname resolved to %s"
-#~ msgstr "Brak nazwy hosta do odszukania"
-
-#, fuzzy
 #~ msgid "Query notice"
 #~ msgstr "Serwery"
 
@@ -7082,20 +6624,8 @@ msgstr "w:"
 #~ msgid "Re&move Rule"
 #~ msgstr "Usuń"
 
-#, fuzzy
-#~ msgid "Read error for file %Q"
-#~ msgstr "Nastąpił błąd odczytu"
-
-#, fuzzy
-#~ msgid "Read error for file %s"
-#~ msgstr "Nastąpił błąd odczytu"
-
 #~ msgid "Read error occured !"
 #~ msgstr "Nastąpił błąd odczytu"
-
-#, fuzzy
-#~ msgid "Real hostname for %s is %s"
-#~ msgstr "Nieprawidłowy indeks (%s)"
 
 #, fuzzy
 #~ msgid "Recent Channels"
@@ -7151,10 +6681,6 @@ msgstr "w:"
 
 #~ msgid "Reject"
 #~ msgstr "Odrzuć"
-
-#, fuzzy
-#~ msgid "Remove %Q"
-#~ msgstr "Usuń"
 
 #, fuzzy
 #~ msgid "Remove all"
@@ -7303,14 +6829,6 @@ msgstr "w:"
 #~ msgstr "Wysłano QUIT... oczekiwanie na zamknięcie połączenia przez serwer"
 
 #, fuzzy
-#~ msgid "Server %s has a nickname: %s"
-#~ msgstr "Znajdowanie hosta %s..."
-
-#, fuzzy
-#~ msgid "Server ERROR: %Q"
-#~ msgstr "Serwer:"
-
-#, fuzzy
 #~ msgid "Server Notices"
 #~ msgstr "Serwery"
 
@@ -7325,10 +6843,6 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "Server error"
 #~ msgstr "Wewnętrzny błąd"
-
-#, fuzzy
-#~ msgid "Server hostname resolved to %s"
-#~ msgstr "Brak nazwy hosta do odszukania"
 
 #, fuzzy
 #~ msgid "Server idle for"
@@ -7473,10 +6987,6 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "Sorting"
 #~ msgstr "Centrum &skryptów"
-
-#, fuzzy
-#~ msgid "Sound file '%Q' not found"
-#~ msgstr "Tekst nie odnaleziony"
 
 #, fuzzy
 #~ msgid "Spam report"
@@ -7675,36 +7185,8 @@ msgstr "w:"
 #~ msgstr "&Narzędzia"
 
 #, fuzzy
-#~ msgid "Topic for \r!c\r%Q\r is: %Q"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
-#~ msgid "Topic for \r!c\r%Q\r was set by \r!n\r%Q\r!%Q@\r!h\r%Q\r"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
-#~ msgid "Topic for \r!c\r%Q\r was set by \r!n\r%Q\r!%Q@\r!h\r%Q\r on %Q"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
-#~ msgid "Topic was set by \r!n\r%Q\r!%Q@\r!h\r%Q\r"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
-#~ msgid "Topic was set by \r!n\r%Q\r!%Q@\r!h\r%Q\r on %Q"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
-#~ msgid "Total %d channels"
-#~ msgstr "Ostatnie &kanały"
-
-#, fuzzy
-#~ msgid "Total hosts listed"
-#~ msgstr "Nieprawidłowy indeks (%s)"
-
-#, fuzzy
 #~ msgid "Total: %d addons installed"
-#~ msgstr "Nieprawidłowy indeks (%s)"
+#~ msgstr "Nieprawidłowy indeks (%d)"
 
 #~ msgid "Transport"
 #~ msgstr "Transport"
@@ -7728,21 +7210,7 @@ msgstr "w:"
 #~ msgid "Unable to resolve the local hostname as seen by the IRC server: %Q"
 #~ msgstr "Znajdowanie hosta %Q..."
 
-#, fuzzy
-#~ msgid ""
-#~ "Unable to resolve the local hostname as seen by the IRC server: %Q, using "
-#~ "previously resolved %Q"
-#~ msgstr "Znajdowanie hosta %s..."
-
 #~ msgid "Unexpected character"
-#~ msgstr "Niespodziewany znak"
-
-#, fuzzy
-#~ msgid "Unexpected character '%q' (unicode %x)"
-#~ msgstr "Niespodziewany znak"
-
-#, fuzzy
-#~ msgid "Unexpected character '%q' (unicode %x) after a switch dash"
 #~ msgstr "Niespodziewany znak"
 
 #, fuzzy
@@ -7877,39 +7345,15 @@ msgstr "w:"
 #~ msgstr "nieznany"
 
 #, fuzzy
-#~ msgid "Unknown alignment"
-#~ msgstr "Nieznane wyrównanie: %s"
-
-#, fuzzy
 #~ msgid "Unknown alignment '%Q'"
-#~ msgstr "Nieznane wyrównanie: %s"
+#~ msgstr "Nieznane wyrównanie: %Q"
 
 #~ msgid "Unknown alignment: %s"
 #~ msgstr "Nieznane wyrównanie: %s"
 
 #, fuzzy
 #~ msgid "Unknown alignment: '%Q'"
-#~ msgstr "Nieznane wyrównanie: %s"
-
-#, fuzzy
-#~ msgid "Unknown auto formatting mode '%Q'"
-#~ msgstr "Nieznany operator"
-
-#, fuzzy
-#~ msgid "Unknown binary operator '%q'"
-#~ msgstr "Nieznany operator"
-
-#, fuzzy
-#~ msgid "Unknown binary operator '=%q': did you mean '==' ?"
-#~ msgstr "Nieznany operator"
-
-#, fuzzy
-#~ msgid "Unknown binding operation '%Q'"
-#~ msgstr "Nieznany operator"
-
-#, fuzzy
-#~ msgid "Unknown callback command \"%Q\""
-#~ msgstr "Nieznana komenda"
+#~ msgstr "Nieznane wyrównanie: %Q"
 
 #, fuzzy
 #~ msgid "Unknown channel mode"
@@ -7918,25 +7362,13 @@ msgstr "w:"
 #~ msgid "Unknown command"
 #~ msgstr "Nieznana komenda"
 
-#, fuzzy
-#~ msgid "Unknown dock area '%Q'"
-#~ msgstr "Nieznany operator"
-
 #~ msgid "Unknown echo mode"
-#~ msgstr "Nieznany tryb wyświetlania"
-
-#, fuzzy
-#~ msgid "Unknown echo mode %Q"
 #~ msgstr "Nieznany tryb wyświetlania"
 
 #~ msgid "Unknown error"
 #~ msgstr "Nieznany błąd"
 
 #~ msgid "Unknown frame / shadow style: %s"
-#~ msgstr "Nieznany styl ramki/cienia: %s"
-
-#, fuzzy
-#~ msgid "Unknown frame style"
 #~ msgstr "Nieznany styl ramki/cienia: %s"
 
 #~ msgid "Unknown function"
@@ -7958,10 +7390,6 @@ msgstr "w:"
 #~ msgstr "Nieznana funkcja"
 
 #, fuzzy
-#~ msgid "Unknown orientation '%Q'"
-#~ msgstr "Nieznana funkcja"
-
-#, fuzzy
 #~ msgid "Unknown orientation: "
 #~ msgstr "Nieznana funkcja"
 
@@ -7970,40 +7398,20 @@ msgstr "w:"
 #~ msgstr "Nieznana funkcja"
 
 #, fuzzy
-#~ msgid "Unknown segment style "
-#~ msgstr "Nieznane wyrównanie: %s"
-
-#, fuzzy
 #~ msgid "Unknown server<br>"
 #~ msgstr "Nieznany błąd"
 
 #, fuzzy
 #~ msgid "Unknown style '%Q'"
-#~ msgstr "Nieznany styl ramki/cienia: %s"
-
-#, fuzzy
-#~ msgid "Unknown text format '%Q'"
-#~ msgstr "Nieznana funkcja"
-
-#, fuzzy
-#~ msgid "Unknown text position '%Q'"
-#~ msgstr "Nieznana funkcja"
-
-#, fuzzy
-#~ msgid "Unknown tickmark '%Q'"
-#~ msgstr "Nieznana komenda"
+#~ msgstr "Nieznany styl ramki/cienia: %Q"
 
 #, fuzzy
 #~ msgid "Unknown widget flag '%Q'"
-#~ msgstr "Nieznane wyrównanie: %s"
+#~ msgstr "Nieznane wyrównanie: %Q"
 
 #, fuzzy
 #~ msgid "Unknown widget type: %s"
 #~ msgstr "Nieznane wyrównanie: %s"
-
-#, fuzzy
-#~ msgid "Unknown word wrap '%Q'"
-#~ msgstr "Nieznany operator"
 
 #, fuzzy
 #~ msgid "Unloadable: %s"
@@ -8017,18 +7425,6 @@ msgstr "w:"
 #~ msgstr "Za&rejestrowani użytkownicy"
 
 #, fuzzy
-#~ msgid "Unsupported DCOP parameter type %s"
-#~ msgstr "Używaj IpV6"
-
-#, fuzzy
-#~ msgid "Unsupported QT property (%s)"
-#~ msgstr "Używaj IpV6"
-
-#, fuzzy
-#~ msgid "Unsupported protocol %1"
-#~ msgstr "Używaj IpV6"
-
-#, fuzzy
 #~ msgid "Unsupported type: $0"
 #~ msgstr "Używaj IpV6"
 
@@ -8038,10 +7434,6 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "Unterminated instruction block"
 #~ msgstr "Niespodziewany koniec komendy w łańcuchu"
-
-#, fuzzy
-#~ msgid "Updating away state for channel %Q"
-#~ msgstr "Brak wartości do wstawienia"
 
 #, fuzzy
 #~ msgid "Usage"
@@ -8066,10 +7458,6 @@ msgstr "w:"
 #~ msgstr "Tryb &użytkownika"
 
 #, fuzzy
-#~ msgid "User %Q not found"
-#~ msgstr "Tekst nie odnaleziony"
-
-#, fuzzy
 #~ msgid "User Messages"
 #~ msgstr "Użytkownik:"
 
@@ -8084,14 +7472,6 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "User mask"
 #~ msgstr "Tryb &użytkownika"
-
-#, fuzzy
-#~ msgid "User mode for \r!n\r%Q\r is %s"
-#~ msgstr "Nieprawidłowy indeks (%Q)"
-
-#, fuzzy
-#~ msgid "User not found (%Q)"
-#~ msgstr "Brak połączenia"
 
 #, fuzzy
 #~ msgid "User-deop mode change"
@@ -8158,39 +7538,11 @@ msgstr "w:"
 #~ msgstr "Wygląd elementów"
 
 #, fuzzy
-#~ msgid "Window %Q not found"
-#~ msgstr "Tekst nie odnaleziony"
-
-#, fuzzy
 #~ msgid "Window Captions"
 #~ msgstr "Nieznany operator"
 
 #, fuzzy
-#~ msgid "Window button '%Q' not found"
-#~ msgstr "Tekst nie odnaleziony"
-
-#, fuzzy
 #~ msgid "Window not found."
-#~ msgstr "Tekst nie odnaleziony"
-
-#, fuzzy
-#~ msgid "Window with ID '%Q' not found"
-#~ msgstr "Tekst nie odnaleziony"
-
-#, fuzzy
-#~ msgid "Window with ID '%s' not found"
-#~ msgstr "Tekst nie odnaleziony"
-
-#, fuzzy
-#~ msgid "Window with caption %Q not found"
-#~ msgstr "Tekst nie odnaleziony"
-
-#, fuzzy
-#~ msgid "Window with id %Q not found: no rebinding performed"
-#~ msgstr "Tekst nie odnaleziony"
-
-#, fuzzy
-#~ msgid "Window with id '%Q' not found, returning empty string"
 #~ msgstr "Tekst nie odnaleziony"
 
 #, fuzzy
@@ -8271,14 +7623,6 @@ msgstr "w:"
 #~ msgstr "Katalog domowy"
 
 #, fuzzy
-#~ msgid "found string value \"%Q\" where type '%s' was expected"
-#~ msgstr "Niespodziewany znak"
-
-#, fuzzy
-#~ msgid "found type %Q where type '%s' was expected"
-#~ msgstr "Niespodziewany znak"
-
-#, fuzzy
 #~ msgid "has a default avatar"
 #~ msgstr "Obraz Avatar"
 
@@ -8298,14 +7642,6 @@ msgstr "w:"
 #, fuzzy
 #~ msgid "invalid ip address in old format %s"
 #~ msgstr "Nieprawidłowy indeks (%s)"
-
-#, fuzzy
-#~ msgid "invalid port number %s"
-#~ msgstr "Błędny parametr"
-
-#, fuzzy
-#~ msgid "invalid resume position argument '%s'"
-#~ msgstr "Błędny parametr"
 
 #, fuzzy
 #~ msgid "is not being ignored"

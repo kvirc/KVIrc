@@ -29,8 +29,7 @@ msgstr "&Retirer le thème"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Acquérir une capture d'écran - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:108
-#: src/modules/theme/libkvitheme.cpp:121
+#: src/modules/theme/libkvitheme.cpp:108 src/modules/theme/libkvitheme.cpp:121
 #: src/modules/theme/managementdialog.cpp:300
 #: src/modules/theme/managementdialog.cpp:312
 msgid "Apply theme - KVIrc"
@@ -111,7 +110,7 @@ msgstr "Exporter thème - KVIrc"
 #: src/modules/theme/managementdialog.cpp:311
 #, fuzzy
 msgid "Failed to apply the specified theme: %1"
-msgstr "L'application du thème choisi a échoué : %Q"
+msgstr "L'application du thème choisi a échoué : %1"
 
 #: src/modules/theme/SaveThemeDialog.cpp:198
 #: src/modules/theme/PackThemeDialog.cpp:369
@@ -136,7 +135,7 @@ msgstr "Échec de la capture d'écran"
 #: src/modules/theme/ThemeFunctions.cpp:286
 #, fuzzy
 msgid "Failed to unpack the selected file: %1"
-msgstr "Échec de la décompression du fichier sélectionné : %Q"
+msgstr "Échec de la décompression du fichier sélectionné : %1"
 
 #: src/modules/theme/PackThemeDialog.cpp:392
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
@@ -284,15 +283,14 @@ msgstr "Sous-répertoire"
 #: src/modules/theme/ThemeFunctions.cpp:68
 #, fuzzy
 msgid "The selected file does not seem to be a valid KVIrc package: %1"
-msgstr "Le fichier sélectionné ne semble pas être un paquet KVIrc valide : %Q"
+msgstr "Le fichier sélectionné ne semble pas être un paquet KVIrc valide : %1"
 
 #: src/modules/theme/ThemeFunctions.cpp:47
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr ""
 "Le fichier sélectionné ne semble pas être un paquet de thème KVIrc valide"
 
-#: src/modules/theme/libkvitheme.cpp:126
-#: src/modules/theme/libkvitheme.cpp:169
+#: src/modules/theme/libkvitheme.cpp:126 src/modules/theme/libkvitheme.cpp:169
 msgid "The theme package '%Q' does not exists"
 msgstr "Le paquetage pour le thème '%Q', n'existe pas."
 
@@ -359,7 +357,7 @@ msgstr "Impossible de créer le repertoire du thème."
 #: src/modules/theme/SaveThemeDialog.cpp:280
 #, fuzzy
 msgid "Unable to save theme: %1"
-msgstr "Impossible d'enregistrer le thème : %Q"
+msgstr "Impossible d'enregistrer le thème : %1"
 
 #: src/modules/theme/SaveThemeDialog.cpp:111
 #: src/modules/theme/PackThemeDialog.cpp:272

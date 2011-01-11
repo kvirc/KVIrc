@@ -462,9 +462,8 @@ msgstr "Ошибочная ссылка на хеш: переменная опр
 
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:164
-#, fuzzy
 msgid "Hostname: %Q"
-msgstr "Адрес %d: %Q"
+msgstr ""
 
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:168
@@ -506,22 +505,20 @@ msgstr "Недействительна оценка команды в облас
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:107
 #, fuzzy
 msgid "Invalid data type for parameter \"%1\""
-msgstr "Недействительный тип даты для параметра \"%s\""
+msgstr "Недействительный тип даты для параметра \"%1\""
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:222
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:268
-#, fuzzy
 msgid ""
 "Invalid data type for parameter \"%1\": found empty string while a non empty "
 "one was expected"
-msgstr "найдена пустая строка там где ожидается непустая"
+msgstr ""
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:292
-#, fuzzy
 msgid ""
 "Invalid data type for parameter \"%1\": found signed integer \"%2\" where "
 "type 'unsigned integer' was expected"
-msgstr "найдено знаковое целое \"%d\" там где ожидается беззнаковое целое"
+msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:341
 msgid "Invalid duration value: using default"
@@ -582,7 +579,7 @@ msgstr "Отсутствует класс объекта"
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:146
 #, fuzzy
 msgid "Missing non-optional parameter \"%1\""
-msgstr "Отсутствует обязательный параметр \"%s\""
+msgstr "Отсутствует обязательный параметр \"%1\""
 
 #: src/kvirc/kvs/KviKvsRunTimeContext.cpp:204
 msgid "Missing parameter"
@@ -796,7 +793,7 @@ msgstr ""
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1156
 #, fuzzy
 msgid "Property: %1%2%3, type %4"
-msgstr "Свойство: %c%Q%c, тип %Q"
+msgstr "Свойство: %1%2%3, тип %4"
 
 #: src/kvirc/kvs/KviKvsPopupMenu.cpp:484
 msgid "Recursive definition detected for popup '%Q': ignoring"
@@ -1641,8 +1638,7 @@ msgstr "[KVS]%c Ошибка при компиляции: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Ошибка при выполнении: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:186
-#: src/kvirc/kvs/KviKvsReport.cpp:194
+#: src/kvirc/kvs/KviKvsReport.cpp:186 src/kvirc/kvs/KviKvsReport.cpp:194
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Предупреждение: %Q"
 
@@ -1672,7 +1668,7 @@ msgstr "найден тип %Q там где ожидается тип '%s'"
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:95
 #, fuzzy
 msgid "line %1, near character %2"
-msgstr "Строка %d, около символа %d"
+msgstr "Строка %1, около символа %2"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:99
 msgid "say: injected commandline"

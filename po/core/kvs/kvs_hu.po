@@ -84,8 +84,6 @@ msgid ""
 "Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from "
 "object '%Q::%Q': disconnecting"
 msgstr ""
-"Hibás foglalat '%Q' a cél objektumban '%Q::Q' '%Q' szignál küldésekor '%Q::"
-"%Q' objektumtól: szétkapcsolás."
 
 #: src/kvirc/kvs/KviKvsPopupMenu.cpp:242
 msgid "Broken text parameter: assuming empty string"
@@ -410,9 +408,8 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:164
-#, fuzzy
 msgid "Hostname: %Q"
-msgstr "Hosztnév %d: %Q"
+msgstr ""
 
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:168
@@ -1495,8 +1492,7 @@ msgstr ""
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsReport.cpp:186
-#: src/kvirc/kvs/KviKvsReport.cpp:194
+#: src/kvirc/kvs/KviKvsReport.cpp:186 src/kvirc/kvs/KviKvsReport.cpp:194
 msgid "[KVS]%c Warning: %Q"
 msgstr ""
 

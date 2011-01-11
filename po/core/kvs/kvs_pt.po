@@ -468,9 +468,8 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:164
-#, fuzzy
 msgid "Hostname: %Q"
-msgstr "Endereço %d: %Q"
+msgstr ""
 
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:168
@@ -512,24 +511,20 @@ msgstr "Avaliação de comando inválida no âmbito do objecto"
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:107
 #, fuzzy
 msgid "Invalid data type for parameter \"%1\""
-msgstr "Tipo de dados inválido para o parâmetro \"%s\""
+msgstr "Tipo de dados inválido para o parâmetro \"%1\""
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:222
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:268
-#, fuzzy
 msgid ""
 "Invalid data type for parameter \"%1\": found empty string while a non empty "
 "one was expected"
-msgstr "encontrado texto vazio enquanto não era esperado um vazio"
+msgstr ""
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:292
-#, fuzzy
 msgid ""
 "Invalid data type for parameter \"%1\": found signed integer \"%2\" where "
 "type 'unsigned integer' was expected"
 msgstr ""
-"encontrado um inteiro 'signed'  \"%d\" onde era esperado um 'unsigned "
-"integer'"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:341
 msgid "Invalid duration value: using default"
@@ -589,7 +584,7 @@ msgstr "Nome de classe em falta"
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:146
 #, fuzzy
 msgid "Missing non-optional parameter \"%1\""
-msgstr "Parâmetro não.opcional \"%s\" em falta"
+msgstr "Parâmetro não.opcional \"%1\" em falta"
 
 #: src/kvirc/kvs/KviKvsRunTimeContext.cpp:204
 msgid "Missing parameter"
@@ -790,7 +785,7 @@ msgstr ""
 #: src/kvirc/kvs/object/KviKvsObject.cpp:1156
 #, fuzzy
 msgid "Property: %1%2%3, type %4"
-msgstr "Propriedade: %c%Q%c, tipo %Q"
+msgstr "Propriedade: %1%2%3, tipo %4"
 
 #: src/kvirc/kvs/KviKvsPopupMenu.cpp:484
 msgid "Recursive definition detected for popup '%Q': ignoring"
@@ -1561,7 +1556,7 @@ msgstr "Janela com ID '%s' não encontrada, a devolver string vazia"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1211
 msgid "Window with id %Q not found: no rebinding performed"
-msgstr "Janela com id '%s' não encontrada: nenhuma re-ligação realizada"
+msgstr "Janela com id '%Q' não encontrada: nenhuma re-ligação realizada"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:644
 msgid "WindowLifetime"
@@ -1609,8 +1604,7 @@ msgstr "[KVS]%c Erro de Compilação: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Erro na Execução: %Q"
 
-#: src/kvirc/kvs/KviKvsReport.cpp:186
-#: src/kvirc/kvs/KviKvsReport.cpp:194
+#: src/kvirc/kvs/KviKvsReport.cpp:186 src/kvirc/kvs/KviKvsReport.cpp:194
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Aviso: %Q"
 
@@ -1640,7 +1634,7 @@ msgstr "encontrado o tipo %Q onde era esperado o tipo '%s'"
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:95
 #, fuzzy
 msgid "line %1, near character %2"
-msgstr "linha %d, perto do caracter %d"
+msgstr "linha %1, perto do caracter %2"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:99
 msgid "say: injected commandline"

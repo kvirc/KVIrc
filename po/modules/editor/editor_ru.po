@@ -36,10 +36,10 @@ msgstr ""
 "\n"
 "\n"
 "Событие:\n"
-"%s\n"
+"%1\n"
 "\n"
 "Параметры:\n"
-"%s"
+"%2"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:366
 #, fuzzy
@@ -52,7 +52,7 @@ msgstr ""
 "\n"
 "\n"
 "Низкоуровневое событие:\n"
-"%s"
+"%1"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:96
 msgid "### Epilogue ###"
@@ -347,12 +347,12 @@ msgstr "Скобки:"
 #: src/modules/editor/ScriptEditorImplementation.cpp:1022
 #, fuzzy
 msgid "Can't open the file %1 for reading."
-msgstr "Невозможно открыть файл %s на чтение."
+msgstr "Невозможно открыть файл %1 на чтение."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:934
 #, fuzzy
 msgid "Can't open the file %1 for writing."
-msgstr "Невозможно открыть файл %s на запись."
+msgstr "Невозможно открыть файл %1 на запись."
 
 #: src/modules/actioneditor/ActionEditor.cpp:883
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1198
@@ -546,23 +546,23 @@ msgstr "Вы действительно хотите удалить панель
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:926
 #, fuzzy
 msgid "Do you really want to remove the alias \"%1\"?"
-msgstr "Вы действительно хотите удалить алиас \"%Q\"?"
+msgstr "Вы действительно хотите удалить алиас \"%1\"?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1337
 #, fuzzy
 msgid "Do you really want to remove the class \"%1\"?"
-msgstr "Вы действительно хотите удалить класс \"%Q\"?"
+msgstr "Вы действительно хотите удалить класс \"%1\"?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1345
 #, fuzzy
 msgid "Do you really want to remove the function \"%1\"?"
-msgstr "Вы действительно хотите удалить функцию \"%Q\"?"
+msgstr "Вы действительно хотите удалить функцию \"%1\"?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:928
 #: src/modules/classeditor/ClassEditorWindow.cpp:1340
 #, fuzzy
 msgid "Do you really want to remove the namespace \"%1\"?"
-msgstr "Вы действительно хотите удалить пространство имён \"%Q\"?"
+msgstr "Вы действительно хотите удалить пространство имён \"%1\"?"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:403
 msgid "Do you want the associated actions to be exported with the toolbar ?"
@@ -1201,7 +1201,7 @@ msgstr "Заменить на"
 #: src/modules/editor/ScriptEditorImplementation.cpp:991
 #, fuzzy
 msgid "Row: %1 Col: %2"
-msgstr "Строк: %d Столбцов:%d"
+msgstr "Строк: %1 Столбцов:%2"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:933
 msgid "Save Failed - KVIrc"
@@ -1267,7 +1267,7 @@ msgstr "Экспортируемый файл будет пустым: отме�
 #: src/modules/classeditor/ClassEditorWindow.cpp:1136
 #, fuzzy
 msgid "The file \"%1\" exists. Do you want to replace it?"
-msgstr "Файл \"%Q\" существует. Хотите переписать его?"
+msgstr "Файл \"%1\" существует. Хотите переписать его?"
 
 #: src/modules/actioneditor/ActionEditor.cpp:155
 msgid ""

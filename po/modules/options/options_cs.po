@@ -2562,7 +2562,7 @@ msgstr "Selhalo načtení avataru - KVIrc"
 #: src/modules/options/OptionsWidget_identity.cpp:562
 #, fuzzy
 msgid "Failed to download the avatar image.<br><b>%1</b>"
-msgstr "Selhalo stažení avatar obrázku.<br><b>%Q</b>"
+msgstr "Selhalo stažení avatar obrázku.<br><b>%1</b>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:556
 #: src/modules/options/OptionsWidget_identity.cpp:594
@@ -2788,9 +2788,8 @@ msgid "Horizontal align:"
 msgstr "Horizontální zarovnání:"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:164
-#, fuzzy
 msgid "Host links"
-msgstr "Celkem linků: %d"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:51
 #, fuzzy
@@ -3364,9 +3363,8 @@ msgid "No selection"
 msgstr "Žádný výběr"
 
 #: src/modules/options/libkvioptions.cpp:206
-#, fuzzy
 msgid "No such options page class name %Q"
-msgstr "Neznámý název pro volbu"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:49
 msgid "Normal"
@@ -3945,9 +3943,8 @@ msgid "Save Location"
 msgstr "Místo uložení"
 
 #: src/modules/options/OptionsWidget_logging.cpp:46
-#, fuzzy
 msgid "Save logs to folder:"
-msgstr "Nelze logovat do souboru %Q"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:107
 msgid "Save path:"
@@ -5175,10 +5172,6 @@ msgstr "během:"
 #~ msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"
 #~ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] je nyní znám jako \r!n\r%Q\r"
 
-#, fuzzy
-#~ msgid "\r!n\r%Q\r invited %Q into channel %Q"
-#~ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] tě zve do kanálu \r!c\r%Q\r (%Q)"
-
 #~ msgid "    Mask: %Q!%Q@%Q"
 #~ msgstr "    Maska: %Q!%Q@%Q"
 
@@ -5295,14 +5288,6 @@ msgstr "během:"
 #~ msgid "%1 is probably away"
 #~ msgstr "%1 je pravděpodobně pryč"
 
-#, fuzzy
-#~ msgid "%1 is using irc server: %2"
-#~ msgstr "Používá server <b>%1</b>"
-
-#, fuzzy
-#~ msgid "%1 is using irc server: %2 (%3 hops)"
-#~ msgstr "Používá server <b>%1</b>"
-
 #~ msgid "%1 servers imported successfully"
 #~ msgstr "%1 serverů úspěšně importováno"
 
@@ -5414,19 +5399,11 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c's administrator is %s"
-#~ msgstr "%c\r!n\r%Q\r%c info: %Q"
-
-#, fuzzy
-#~ msgid "%c\r!s\r%s\r%c's contact address is %s"
-#~ msgstr "%c\r!n\r%Q\r%c používá kódovou stránku %Q: %Q"
-
-#, fuzzy
-#~ msgid "%c\r!s\r%s\r%c's information:"
-#~ msgstr "%c\r!n\r%Q\r%c info: %Q"
+#~ msgstr "%c\r!n\r%s\r%c info: %s"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c's server info: %s"
-#~ msgstr "%c\r!n\r%Q\r%c info: %Q"
+#~ msgstr "%c\r!n\r%s\r%c info: %s"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c's time is %Q"
@@ -6451,7 +6428,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
-#~ msgstr "Přidána %d sek nabídka pro soubor %s (%s) a příjemce %s"
+#~ msgstr "Přidána %d sek nabídka pro soubor %Q (%Q) a příjemce %Q"
 
 #~ msgid "Added %d secs file offer for file %s (%s) and receiver %s"
 #~ msgstr "Přidána %d sek nabídka pro soubor %s (%s) a příjemce %s"
@@ -6640,7 +6617,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "Background not found %s "
-#~ msgstr "Pozadí nenalezeno %Q "
+#~ msgstr "Pozadí nenalezeno %s "
 
 #~ msgid "Backward compatibility action for toolbar.define"
 #~ msgstr "Zpětná kompatibilita akcí pro toolbar.define"
@@ -6817,7 +6794,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "Can't add a file offer for file %Q (huh ? file not readable ?)"
-#~ msgstr "Nelze přidat ke sdílení soubor %s (huh ? soubor je nečitelný ?)"
+#~ msgstr "Nelze přidat ke sdílení soubor %Q (huh ? soubor je nečitelný ?)"
 
 #~ msgid "Can't add a file offer for file %s (huh ? file not readable ?)"
 #~ msgstr "Nelze přidat ke sdílení soubor %s (huh ? soubor je nečitelný ?)"
@@ -6930,10 +6907,6 @@ msgstr "během:"
 #~ msgid "Can't find the widget object (%s)"
 #~ msgstr "Nelze najít widget objekt (%s)"
 
-#, fuzzy
-#~ msgid "Can't find the widget object assuming 0"
-#~ msgstr "Nelze najít widget objekt (%s)"
-
 #~ msgid "Can't find the widget object to add (%s)"
 #~ msgstr "Nelze najít widget objekt pro přidání (%s)"
 
@@ -7038,13 +7011,13 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "Can't set the current avatar to '%Q': can't load the image"
-#~ msgstr "Nelze nastavit současný avatar na '%s': nelze načíst obrázek"
+#~ msgstr "Nelze nastavit současný avatar na '%Q': nelze načíst obrázek"
 
 #, fuzzy
 #~ msgid ""
 #~ "Can't set the current avatar to '%Q': failed to start the http transfer"
 #~ msgstr ""
-#~ "Nelze nastavit současný avatar na '%s': selhalo spuštění http přenosu"
+#~ "Nelze nastavit současný avatar na '%Q': selhalo spuštění http přenosu"
 
 #~ msgid ""
 #~ "Can't set the current avatar to '%s' (can't load the image): no message "
@@ -7102,14 +7075,6 @@ msgstr "během:"
 #~ "Cannot find object function $%Q::%Q for object named \"%Q\" of class %Q"
 #~ msgstr ""
 #~ "Nelze nalézt objektovou funkci $%Q::%Q pro objekt \"%Q\" ze třídy %Q"
-
-#, fuzzy
-#~ msgid "Cannot open install.kvs for reading."
-#~ msgstr "Nelze otevřít soubor %s pro čtení."
-
-#, fuzzy
-#~ msgid "Cannot open install.kvs for writing."
-#~ msgstr "Nelze otevřít soubor %s pro zápis."
 
 #~ msgid "Cannot request links: No active connection"
 #~ msgstr "Nelze požadovat linky: Není aktivní spojení"
@@ -7752,11 +7717,11 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "Do you really want to remove the alias \"%Q\" ?"
-#~ msgstr "Opravdu chcete smazat nástrojovou lištu \"%1\" ?"
+#~ msgstr "Opravdu chcete smazat nástrojovou lištu \"%Q\" ?"
 
 #, fuzzy
 #~ msgid "Do you really want to remove the namespace \"%Q\" ?"
-#~ msgstr "Opravdu chcete smazat nástrojovou lištu \"%1\" ?"
+#~ msgstr "Opravdu chcete smazat nástrojovou lištu \"%Q\" ?"
 
 #~ msgid "Do you really want to uninstall the addon \"%1\" ?"
 #~ msgstr "Opravdu chcete odinstalovat rozšíření \"%1\" ?"
@@ -8000,7 +7965,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "Error token: %c%Q"
-#~ msgstr "Chybný token: %c%s"
+#~ msgstr "Chybný token: %c%Q"
 
 #~ msgid "Error triggered from event handler %c%Q::%Q"
 #~ msgstr "Chyba vzniklá spuštěním událostního handleru %c%Q::%Q"
@@ -8179,14 +8144,6 @@ msgstr "během:"
 #~ msgid "Failed to start the connection: %Q"
 #~ msgstr "Selhalo navázání spojení: %Q"
 
-#, fuzzy
-#~ msgid "Failed to start the get request: %Q"
-#~ msgstr "Selhalo spuštení procesu"
-
-#, fuzzy
-#~ msgid "Failed to start the get request: %s"
-#~ msgstr "Selhalo spuštení procesu"
-
 #~ msgid "Failed to start the process"
 #~ msgstr "Selhalo spuštení procesu"
 
@@ -8208,7 +8165,7 @@ msgstr "během:"
 #~ "You will need to do it manually , otherwise KVirc will restart with\n"
 #~ "the setup!"
 #~ msgstr ""
-#~ "Nelze zapisovat domovský adresář kvirc do %s.\n"
+#~ "Nelze zapisovat domovský adresář kvirc do %Q.\n"
 #~ "Musíte to udělat ručně , jinak KVirc bude restartovat\n"
 #~ "setup!"
 
@@ -8385,14 +8342,6 @@ msgstr "během:"
 #, fuzzy
 #~ msgid "Found empty prologue block: maybe you need to fix the script?"
 #~ msgstr "Nesmyslný prázdný blok úvodu: opravte skript"
-
-#, fuzzy
-#~ msgid ""
-#~ "Found end of input where character '%c' was expected: see \"/help %s\" "
-#~ "for the command syntax"
-#~ msgstr ""
-#~ "Nalezen znak '%q' (unicode 0x%x), kde se předpokládá '%c' : koukněte na "
-#~ "\"/help %s\" pro syntaxi příkazu"
 
 #~ msgid ""
 #~ "Found token '%Q' where a 'case','match','regexp','default' or 'break' "
@@ -8694,7 +8643,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "Inexisting popup \"%Q\""
-#~ msgstr "Neexistující popup \"%s\""
+#~ msgstr "Neexistující popup \"%Q\""
 
 #, fuzzy
 #~ msgid "Initializing scripting engine..."
@@ -9620,10 +9569,6 @@ msgstr "během:"
 #~ msgid "Module command call failed: can't load the module '%Q'"
 #~ msgstr "Volání příkazu modulu selhalo: nelze načíst modul '%Q'"
 
-#, fuzzy
-#~ msgid "Module command call failed: can't load the module '%Q': %Q"
-#~ msgstr "Volání příkazu modulu selhalo: nelze načíst modul '%Q'"
-
 #~ msgid ""
 #~ "Module command call failed: the module '%Q' doesn't export a callback "
 #~ "command named '%Q'"
@@ -9840,7 +9785,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "No button with type %Q named %Q"
-#~ msgstr "Žádné tlačítko s typem %s pojmenované %s"
+#~ msgstr "Žádné tlačítko s typem %Q pojmenované %Q"
 
 #~ msgid "No catalogue %Q for the current language found"
 #~ msgstr "Žádný katalog %Q pro zvolený jazyk nebyl nalezen"
@@ -9895,7 +9840,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "No handler '%Q' for raw numeric event '%d'"
-#~ msgstr "Není handler '%s' pro číselnou raw událost '%d'"
+#~ msgstr "Není handler '%Q' pro číselnou raw událost '%d'"
 
 #~ msgid "No handler '%s' for event '%s'"
 #~ msgstr "Není handler '%s' pro událost '%s'"
@@ -9927,7 +9872,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "No menu bar item with text '%Q'"
-#~ msgstr "Žádná položka menu s textem '%s'"
+#~ msgstr "Žádná položka menu s textem '%Q'"
 
 #~ msgid "No netmask specified"
 #~ msgstr "Nebyla určena maska sítě"
@@ -10281,7 +10226,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "Notifying avatar '%Q' to %Q"
-#~ msgstr "Oznamuji avatar '%s' pro %s"
+#~ msgstr "Oznamuji avatar '%Q' pro %Q"
 
 #, fuzzy
 #~ msgid "Novice"
@@ -10706,10 +10651,6 @@ msgstr "během:"
 #~ msgstr ""
 #~ "Zpracovává se DCC %Q požadavek od \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%S %S)"
 
-#, fuzzy
-#~ msgid "Processing aborted"
-#~ msgstr "Zpracovává se seznam: %Q"
-
 #~ msgid "Processing link: %s"
 #~ msgstr "Zpracovávám link: %s"
 
@@ -10931,7 +10872,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "Received ping from \r!s\r%Q\r (PING %Q), replied pong"
-#~ msgstr "Obdržen ping od \r!s\r%s\r (PING %s), odezva pong"
+#~ msgstr "Obdržen ping od \r!s\r%Q\r (PING %Q), odezva pong"
 
 #~ msgid "Received pong from \r!s\r%s\r (PONG %s)"
 #~ msgstr "Obdržen pong od \r!s\r%s\r (PONG %s)"
@@ -11005,10 +10946,6 @@ msgstr "během:"
 
 #~ msgid "Remove from Notify"
 #~ msgstr "Odebrat z Oznamování"
-
-#, fuzzy
-#~ msgid "Remove item"
-#~ msgstr "Odebrat %Q"
 
 #~ msgid "Remove the currently selected entries."
 #~ msgstr "Odebere právě vybrané záznamy."
@@ -11428,10 +11365,6 @@ msgstr "během:"
 
 #~ msgid "Silence speaking"
 #~ msgstr "Šeptání"
-
-#, fuzzy
-#~ msgid "Skipping nested terminator character %q"
-#~ msgstr "řádek %d, poblíž znaku %d"
 
 #~ msgid "Skipping the substitution"
 #~ msgstr "Vynechání substituce"
@@ -11877,7 +11810,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "The commandline for this url type seems to be broken (%Q)"
-#~ msgstr "Příkazový řádek pro tento typ url vypadá jako poškozený (%s)"
+#~ msgstr "Příkazový řádek pro tento typ url vypadá jako poškozený (%Q)"
 
 #~ msgid "The commandline for this url type seems to be broken (%s)"
 #~ msgstr "Příkazový řádek pro tento typ url vypadá jako poškozený (%s)"
@@ -11891,11 +11824,11 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "The config file with id '%Q' is not open"
-#~ msgstr "Konfigurační soubor s id '%s' není otevřen"
+#~ msgstr "Konfigurační soubor s id '%Q' není otevřen"
 
 #, fuzzy
 #~ msgid "The config file with id '%Q' is read only"
-#~ msgstr "Konfigurační soubor s id '%s' je jen pro čtení"
+#~ msgstr "Konfigurační soubor s id '%Q' je jen pro čtení"
 
 #~ msgid "The config file with id '%s' is not open"
 #~ msgstr "Konfigurační soubor s id '%s' není otevřen"
@@ -12063,7 +11996,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
-#~ msgstr "Položka menu s id \"%s\" neexistuje v popupu \"%s\""
+#~ msgstr "Položka menu s id \"%Q\" neexistuje v popupu \"%Q\""
 
 #~ msgid "The message doesn't seem to be encoded with CBC Mircryption"
 #~ msgstr "Zpráva nevypadá jako zašifrovaná s CBC Mircryption"
@@ -12094,7 +12027,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "The popup '%Q' is not defined"
-#~ msgstr "Popup '%s' není definován"
+#~ msgstr "Popup '%Q' není definován"
 
 #~ msgid ""
 #~ "The popup '%s' is actually locked: 'self-modifications' are not allowed"
@@ -12264,10 +12197,6 @@ msgstr "během:"
 #~ msgid "The specified directory does not exist '%s'"
 #~ msgstr "Určený adresář neexistuje '%s'"
 
-#, fuzzy
-#~ msgid "The specified file size is invalid"
-#~ msgstr "Zadaný UNIXový čas je neplatný (%s)"
-
 #~ msgid ""
 #~ "The specified format string wasn't accepted by the underlying system time "
 #~ "formatting function"
@@ -12304,10 +12233,6 @@ msgstr "během:"
 #~ msgid "The specified time format is not valid (%s)"
 #~ msgstr "Zadaný formát času je neplatný (%s)"
 
-#, fuzzy
-#~ msgid "The specified timeout is not valid, assuming 0"
-#~ msgstr "Zadaný formát času je neplatný (%s)"
-
 #~ msgid "The specified toolbar doesn't exist"
 #~ msgstr "Určená lišta neexistuje"
 
@@ -12338,10 +12263,6 @@ msgstr "během:"
 
 #~ msgid "The specified window has no button containers"
 #~ msgstr "Zvolené okno nemá tlačítkové kontejnery"
-
-#, fuzzy
-#~ msgid "The specified window identifier is not valid"
-#~ msgstr "Zadaná vázací adresa (%Q) je neplatná"
 
 #~ msgid "The specified window is not a channel"
 #~ msgstr "Určené okno není kanálem"
@@ -12704,10 +12625,6 @@ msgstr "během:"
 #~ msgid "Unable to determine the current cipher"
 #~ msgstr "Nelze rozpoznat současnou šifru"
 
-#, fuzzy
-#~ msgid "Unable to get address of interface %Q"
-#~ msgstr "Naslouchat na adrese/rozhraní:"
-
 #~ msgid "Unable to look it up hostname: Hostname appears to be masked"
 #~ msgstr "Nelze zjistit hostitele: Hostitel vypadá, že je maskován"
 
@@ -12733,13 +12650,6 @@ msgstr "během:"
 #~ msgstr "Nelze zpracovat předchozí požadavek: DCC modul je možná poškozen"
 
 #~ msgid "Unable to resolve the local hostname as seen by the IRC server: %Q"
-#~ msgstr ""
-#~ "Nelze zjistit jméno lokálního hostitele, tak jak jej vidí IRC server: %Q"
-
-#, fuzzy
-#~ msgid ""
-#~ "Unable to resolve the local hostname as seen by the IRC server: %Q, using "
-#~ "previously resolved %Q"
 #~ msgstr ""
 #~ "Nelze zjistit jméno lokálního hostitele, tak jak jej vidí IRC server: %Q"
 
@@ -13073,9 +12983,6 @@ msgstr "během:"
 #~ msgid "Unknown orientation: "
 #~ msgstr "Neznámá orientace: "
 
-#~ msgid "Unknown position 'Q%'"
-#~ msgstr "Neznámá pozice '%Q'"
-
 #~ msgid "Unknown segment style "
 #~ msgstr "Neznámý styl segmentu "
 
@@ -13093,10 +13000,6 @@ msgstr "během:"
 
 #~ msgid "Unknown text position '%Q'"
 #~ msgstr "Neznámá pozice textu '%Q'"
-
-#, fuzzy
-#~ msgid "Unknown tickmark '%Q'"
-#~ msgstr "Neznámá značka"
 
 #~ msgid "Unknown vertical alignment '%Q'"
 #~ msgstr "Neznámé vertikální zarovnání: '%Q'"
@@ -13158,7 +13061,7 @@ msgstr "během:"
 
 #, fuzzy
 #~ msgid "Unsupported protocol %1"
-#~ msgstr "Nepodporovaný protokol %s"
+#~ msgstr "Nepodporovaný protokol %1"
 
 #~ msgid "Unsupported type: $0"
 #~ msgstr "Nepodporovaný typ: $0"

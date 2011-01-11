@@ -215,8 +215,8 @@ msgstr "Non posso costruire l'oggetto QDateTime."
 msgid ""
 "Couldn't find a suitable IRC context for the connection, try using -n or -u"
 msgstr ""
-"Non trovo un contesto IRC appropriato per la connessione, prova usando -n o "
-"-u"
+"Non trovo un contesto IRC appropriato per la connessione, prova usando -n o -"
+"u"
 
 #: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:134
 msgid "Couln't find base class named '%Q'"
@@ -387,8 +387,8 @@ msgid ""
 "Found character '%q' (unicode %x) where '%' or '$' was expected: see /help "
 "foreach for the command syntax"
 msgstr ""
-"Trovato carattere %q (unicode %x) mentre mi aspettavo '%' o '$': digita "
-"/help foreach per la sintassi del comando"
+"Trovato carattere %q (unicode %x) mentre mi aspettavo '%' o '$': digita /"
+"help foreach per la sintassi del comando"
 
 #: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:593
 #: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:611
@@ -826,8 +826,6 @@ msgstr ""
 msgid ""
 "Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
 msgstr ""
-"Slot di destinazione distrutto '%Q::%Q' mentre emettevo il segnale '%Q' "
-"dall'oggetto '%Q::%Q'"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:262
 msgid ""
@@ -1573,8 +1571,7 @@ msgstr ""
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsReport.cpp:186
-#: src/kvirc/kvs/KviKvsReport.cpp:194
+#: src/kvirc/kvs/KviKvsReport.cpp:186 src/kvirc/kvs/KviKvsReport.cpp:194
 msgid "[KVS]%c Warning: %Q"
 msgstr ""
 
@@ -1608,4 +1605,3 @@ msgstr ""
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:99
 msgid "say: injected commandline"
 msgstr ""
-

@@ -2634,7 +2634,7 @@ msgstr "Falhou ao carregar o avatar - KVIrc"
 #: src/modules/options/OptionsWidget_identity.cpp:562
 #, fuzzy
 msgid "Failed to download the avatar image.<br><b>%1</b>"
-msgstr "Falhou o download da imagem de avatar.<br><b>%Q</b>"
+msgstr "Falhou o download da imagem de avatar.<br><b>%1</b>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:556
 #: src/modules/options/OptionsWidget_identity.cpp:594
@@ -2867,9 +2867,8 @@ msgid "Horizontal align:"
 msgstr "Local do certificado:"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:164
-#, fuzzy
 msgid "Host links"
-msgstr "Total de links : %d"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:51
 #, fuzzy
@@ -3455,9 +3454,8 @@ msgid "No selection"
 msgstr "Sem SeleÃ§Ã£o"
 
 #: src/modules/options/libkvioptions.cpp:206
-#, fuzzy
 msgid "No such options page class name %Q"
-msgstr "Sem opÃ§Ãµes de nome de classe na pÃ¡gina"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:49
 msgid "Normal"
@@ -4050,9 +4048,8 @@ msgid "Save Location"
 msgstr "&LocalizaÃ§Ã£o:"
 
 #: src/modules/options/OptionsWidget_logging.cpp:46
-#, fuzzy
 msgid "Save logs to folder:"
-msgstr "NÃ£o foi possÃ­vel registar no arquivo %s"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:107
 msgid "Save path:"
@@ -5321,11 +5318,6 @@ msgstr "dentro de:"
 #~ msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"
 #~ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] Ã© agora conhecido como \r!n\r%Q\r"
 
-#, fuzzy
-#~ msgid "\r!n\r%Q\r invited %Q into channel %Q"
-#~ msgstr ""
-#~ "\r!n\r%Q\r [%Q@\r!h\r%Q\r] convidou vocÃª para o canal \r!c\r%Q\r (%Q)"
-
 #~ msgid "    Mask: %Q!%Q@%Q"
 #~ msgstr "    MÃ¡scara: %Q!%Q@%Q"
 
@@ -5357,20 +5349,8 @@ msgstr "dentro de:"
 #~ msgid " (%1 hops)"
 #~ msgstr "%1 saltos"
 
-#, fuzzy
-#~ msgid " I can't find the specified file %s."
-#~ msgstr "Eu nÃ£o posso encontrar o arquivo especificado."
-
-#, fuzzy
-#~ msgid " I can't find the specified file '%Q'."
-#~ msgstr "Eu nÃ£o posso encontrar o arquivo especificado."
-
 #~ msgid " I can't find the specified file."
 #~ msgstr "Eu nÃ£o posso encontrar o arquivo especificado."
-
-#, fuzzy
-#~ msgid " I cannot read the file %Q'."
-#~ msgstr " Eu nÃ£o posso ler o arquivo."
 
 #~ msgid " I cannot read the file."
 #~ msgstr " Eu nÃ£o posso ler o arquivo."
@@ -5413,14 +5393,6 @@ msgstr "dentro de:"
 
 #~ msgid "%1 hops"
 #~ msgstr "%1 saltos"
-
-#, fuzzy
-#~ msgid "%1 is using irc server: %2"
-#~ msgstr "Usando servidor <b>%1</b>"
-
-#, fuzzy
-#~ msgid "%1 is using irc server: %2 (%3 hops)"
-#~ msgstr "Usando servidor <b>%1</b>"
 
 #~ msgid "%1 servers imported successfully"
 #~ msgstr "%1 servidor(es) importado(s) com sucesso"
@@ -5511,10 +5483,6 @@ msgstr "dentro de:"
 #~ msgid "%c\r!n\r%Q\r%c's channels: %Q"
 #~ msgstr "%c\r!n\r%Q\r%c estÃ¡ nos canais: %Q"
 
-#, fuzzy
-#~ msgid "%c\r!n\r%Q\r%c's codepage is %Q: %Q"
-#~ msgstr "%c\r!n\r%Q\r%c estÃ¡ nos canais: %Q"
-
 #~ msgid "%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"
 #~ msgstr "Tempo inativo de %c\r!n\r%Q\r%c : %ud %uh %um %us"
 
@@ -5535,33 +5503,26 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c's administrator is %s"
-#~ msgstr "InformaÃ§Ãµes de %c\r!n\r%Q\r%c : %Q"
+#~ msgstr "InformaÃ§Ãµes de %c\r!n\r%s\r%c : %s"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c's contact address is %s"
-#~ msgstr "%c\r!n\r%Q\r%c estÃ¡ nos canais: %Q"
-
-#, fuzzy
-#~ msgid "%c\r!s\r%s\r%c's information:"
-#~ msgstr "InformaÃ§Ãµes de %c\r!n\r%Q\r%c : %Q"
+#~ msgstr "%c\r!n\r%s\r%c estÃ¡ nos canais: %s"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c's server info: %s"
-#~ msgstr "InformaÃ§Ãµes de %c\r!n\r%Q\r%c : %Q"
+#~ msgstr "InformaÃ§Ãµes de %c\r!n\r%s\r%c : %s"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c's time is %Q"
-#~ msgstr "InformaÃ§Ãµes de %c\r!n\r%Q\r%c : %Q"
+#~ msgstr "InformaÃ§Ãµes de %c\r!n\r%s\r%c : %Q"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c: %Q"
-#~ msgstr "InformaÃ§Ãµes de %c\r!n\r%Q\r%c : %Q"
+#~ msgstr "InformaÃ§Ãµes de %c\r!n\r%s\r%c : %Q"
 
 #~ msgid "%c%cLinks for %Q"
 #~ msgstr "%c%cLinks para %Q"
-
-#~ msgid "%cAddon id %Q, version %Q%c"
-#~ msgstr "%cAddon id %Q, versÃ£o %Q%"
 
 #~ msgid "%cCore action: %Q"
 #~ msgstr "%cAÃ§Ã£o do nÃºcleo: %Q"
@@ -6589,7 +6550,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
-#~ msgstr "Adicionado %d seg ao envÃ­o do arquivo %s (%s) e receptor %s"
+#~ msgstr "Adicionado %d seg ao envÃ­o do arquivo %Q (%Q) e receptor %Q"
 
 #~ msgid "Added %d secs file offer for file %s (%s) and receiver %s"
 #~ msgstr "Adicionado %d seg ao envÃ­o do arquivo %s (%s) e receptor %s"
@@ -6781,14 +6742,6 @@ msgstr "dentro de:"
 #~ msgid "Back"
 #~ msgstr "Voltar"
 
-#, fuzzy
-#~ msgid "Background not found %Q "
-#~ msgstr "Cor de fundo"
-
-#, fuzzy
-#~ msgid "Background not found %s "
-#~ msgstr "Cor de fundo"
-
 #~ msgid "Backward compatibility action for toolbar.define"
 #~ msgstr "AÃ§Ã£o de compatibilidade inversa para toolbar.define"
 
@@ -6970,7 +6923,7 @@ msgstr "dentro de:"
 #, fuzzy
 #~ msgid "Can't add a file offer for file %Q (huh ? file not readable ?)"
 #~ msgstr ""
-#~ "NÃ£o foi possÃ­vel adicionar o compartilhamento do arquivo %s (huh? "
+#~ "NÃ£o foi possÃ­vel adicionar o compartilhamento do arquivo %Q (huh? "
 #~ "arquivo nÃ£o legÃ­vel?)"
 
 #~ msgid "Can't add a file offer for file %s (huh ? file not readable ?)"
@@ -7041,7 +6994,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Can't find the icon '%Q'"
-#~ msgstr "NÃ£o foi possÃ­vel encontrar o icone '%s'"
+#~ msgstr "NÃ£o foi possÃ­vel encontrar o icone '%Q'"
 
 #~ msgid "Can't find the icon '%s'"
 #~ msgstr "NÃ£o foi possÃ­vel encontrar o icone '%s'"
@@ -7074,10 +7027,6 @@ msgstr "dentro de:"
 #~ msgid "Can't find the source widget/pixmap (%s)"
 #~ msgstr "NÃ£o foi possÃ­vel encontrar a origem widget/pixmap (%s)"
 
-#, fuzzy
-#~ msgid "Can't find the specified file '%s'."
-#~ msgstr "Eu nÃ£o posso encontrar o arquivo especificado."
-
 #~ msgid "Can't find the tab "
 #~ msgstr "NÃ£o foi possÃ­vel encontrar a tab "
 
@@ -7088,10 +7037,6 @@ msgstr "dentro de:"
 #~ msgstr "NÃ£o foi possÃ­vel encontrar o widget (%s)"
 
 #~ msgid "Can't find the widget object (%s)"
-#~ msgstr "NÃ£o foi possÃ­vel encontrar o objeto widget (%s)"
-
-#, fuzzy
-#~ msgid "Can't find the widget object assuming 0"
 #~ msgstr "NÃ£o foi possÃ­vel encontrar o objeto widget (%s)"
 
 #~ msgid "Can't find the widget object to add (%s)"
@@ -7108,7 +7053,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Can't find the window with id '%Q'"
-#~ msgstr "A janela com id '%s' nÃ£o foi encontrada."
+#~ msgstr "A janela com id '%Q' nÃ£o foi encontrada."
 
 #~ msgid "Can't find the window with id '%s'"
 #~ msgstr "A janela com id '%s' nÃ£o foi encontrada."
@@ -7163,10 +7108,6 @@ msgstr "dentro de:"
 #~ msgid "Can't open the filter file %s for writing"
 #~ msgstr "ImpossÃ­vel abrir o arquivo de filtro %s para escrita"
 
-#, fuzzy
-#~ msgid "Can't override the builtin class \"%Q\""
-#~ msgstr "NÃ£o pode matar uma classe interna "
-
 #~ msgid "Can't rebind the command sequence: missing window identifier"
 #~ msgstr ""
 #~ "NÃ£o posso religar a sequÃªncia de comandos: faltando o identificador da "
@@ -7212,14 +7153,14 @@ msgstr "dentro de:"
 #, fuzzy
 #~ msgid "Can't set the current avatar to '%Q': can't load the image"
 #~ msgstr ""
-#~ "NÃ£o foi possivel colocar o avatar atual para '%s': nÃ£o foi possivel "
+#~ "NÃ£o foi possivel colocar o avatar atual para '%Q': nÃ£o foi possivel "
 #~ "carregar a imagem"
 
 #, fuzzy
 #~ msgid ""
 #~ "Can't set the current avatar to '%Q': failed to start the http transfer"
 #~ msgstr ""
-#~ "NÃ£o foi possivel colocar o avatar atual para '%s': falha ao iniciar a "
+#~ "NÃ£o foi possivel colocar o avatar atual para '%Q': falha ao iniciar a "
 #~ "transferÃªncia http"
 
 #~ msgid ""
@@ -7283,14 +7224,6 @@ msgstr "dentro de:"
 #~ msgstr ""
 #~ "NÃ£o foi possÃ­vel encontra a funÃ§Ã£o de obejto $%Q::%Q para o objeto \"%Q"
 #~ "\" da classe %Q"
-
-#, fuzzy
-#~ msgid "Cannot open install.kvs for reading."
-#~ msgstr "NÃ£o foi possÃ­vel abrir o arquivo %s para leitura."
-
-#, fuzzy
-#~ msgid "Cannot open install.kvs for writing."
-#~ msgstr "NÃ£o foi possÃ­vel abrir o arquivo \"%s\" em modo de escrita."
 
 #~ msgid "Cannot request links: No active connection"
 #~ msgstr "NÃ£o foi possÃ­vel pedir links: Nenhuma conexÃ£o ativa"
@@ -7552,10 +7485,6 @@ msgstr "dentro de:"
 #~ msgid "Class %s is undefined"
 #~ msgstr "Classe %s Ã© indefinida"
 
-#, fuzzy
-#~ msgid "Class is undefined"
-#~ msgstr "Classe %s Ã© indefinida"
-
 #~ msgid "Clear"
 #~ msgstr "Limpar"
 
@@ -7594,10 +7523,6 @@ msgstr "dentro de:"
 
 #~ msgid "Common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 #~ msgstr "Canais em comum com \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-
-#, fuzzy
-#~ msgid "Common channels: %2"
-#~ msgstr "Entrar nos Canais"
 
 #~ msgid "Condition:"
 #~ msgstr "CondiÃ§Ã£o:"
@@ -7927,11 +7852,11 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Do you really want to remove the alias \"%Q\" ?"
-#~ msgstr "VocÃª deseja realmente deletar a barra de ferramentas \"%1\" ?"
+#~ msgstr "VocÃª deseja realmente deletar a barra de ferramentas \"%Q\" ?"
 
 #, fuzzy
 #~ msgid "Do you really want to remove the namespace \"%Q\" ?"
-#~ msgstr "VocÃª deseja realmente deletar a barra de ferramentas \"%1\" ?"
+#~ msgstr "VocÃª deseja realmente deletar a barra de ferramentas \"%Q\" ?"
 
 #~ msgid "Do you really want to uninstall the addon \"%1\" ?"
 #~ msgstr "VocÃª deseja realmente desinstalar o addon \"%1\" ?"
@@ -8180,7 +8105,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Error token: %c%Q"
-#~ msgstr "SÃ­mbolo do erro: %c%s"
+#~ msgstr "SÃ­mbolo do erro: %c%Q"
 
 #~ msgid "Error triggered from event handler %c%Q::%Q"
 #~ msgstr "Erro provocado pelo manipulador do evento %c%Q::%Q"
@@ -8296,17 +8221,13 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Failed to execute command '%Q'"
-#~ msgstr "Falhou ao executar o comando '%s'"
+#~ msgstr "Falhou ao executar o comando '%Q'"
 
 #~ msgid "Failed to execute command '%s'"
 #~ msgstr "Falhou ao executar o comando '%s'"
 
 #~ msgid "Failed to execute the init routine"
 #~ msgstr "Falha ao executar a rotina de inicializaÃ§Ã£o"
-
-#, fuzzy
-#~ msgid "Failed to find the widget to wrap"
-#~ msgstr "NÃ£o foi possÃ­vel encontrar o widget (%s)"
 
 #~ msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
 #~ msgstr "Falha ao carregar avatar com o nome \"%Q\" e caminho local \"%Q\""
@@ -8366,14 +8287,6 @@ msgstr "dentro de:"
 #~ msgid "Failed to start the connection: %Q"
 #~ msgstr "Falha ao iniciar a conexÃ£o: %Q"
 
-#, fuzzy
-#~ msgid "Failed to start the get request: %Q"
-#~ msgstr "Falhou ao iniciar o processo"
-
-#, fuzzy
-#~ msgid "Failed to start the get request: %s"
-#~ msgstr "Falhou ao iniciar o processo"
-
 #~ msgid "Failed to start the process"
 #~ msgstr "Falhou ao iniciar o processo"
 
@@ -8395,7 +8308,7 @@ msgstr "dentro de:"
 #~ "You will need to do it manually , otherwise KVirc will restart with\n"
 #~ "the setup!"
 #~ msgstr ""
-#~ "Falha ao escrever no diretÃ³rio do kvirc %s.\n"
+#~ "Falha ao escrever no diretÃ³rio do kvirc %Q.\n"
 #~ " VocÃª precisarÃ¡ fazÃª-lo manualmente, se nÃ£o o KVirc reiniciarÃ¡ o "
 #~ "com\n"
 #~ "o processo de configuraÃ§Ã£o!"
@@ -8581,14 +8494,6 @@ msgstr "dentro de:"
 #~ msgid "Found empty prologue block: maybe you need to fix the script?"
 #~ msgstr "Bloco prÃ³logo vazio sem sentido: reparar o script"
 
-#, fuzzy
-#~ msgid ""
-#~ "Found end of input where character '%c' was expected: see \"/help %s\" "
-#~ "for the command syntax"
-#~ msgstr ""
-#~ "Caracter '%q' (unicode 0x%x) encontrado onde '%c' era esperado: ver \"/"
-#~ "help %s\" para a sintax de comando"
-
 #~ msgid ""
 #~ "Found token '%Q' where a 'case','match','regexp','default' or 'break' "
 #~ "label was expected"
@@ -8761,10 +8666,6 @@ msgstr "dentro de:"
 #~ msgid "Hostname resolution aborted"
 #~ msgstr "ResoluÃ§Ã£o do nome do host abortada"
 
-#, fuzzy
-#~ msgid "I can't find the specified file %Q."
-#~ msgstr "Eu nÃ£o posso encontrar o arquivo especificado."
-
 #~ msgid "I can't open that file"
 #~ msgstr "NÃ£o foi possÃ­vel abrir este arquivo"
 
@@ -8883,7 +8784,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Inexisting popup \"%Q\""
-#~ msgstr "popup \"%s\" inexistente"
+#~ msgstr "popup \"%Q\" inexistente"
 
 #, fuzzy
 #~ msgid "Initializing scripting engine..."
@@ -8970,14 +8871,14 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Invalid IRC context id '%Q'"
-#~ msgstr "Id '%s' de contexto de IRC invÃ¡lido"
+#~ msgstr "Id '%Q' de contexto de IRC invÃ¡lido"
 
 #~ msgid "Invalid IRC context id '%s'"
 #~ msgstr "Id '%s' de contexto de IRC invÃ¡lido"
 
 #, fuzzy
 #~ msgid "Invalid IRC url (%Q)"
-#~ msgstr "url de IRC (%s) InvÃ¡lida"
+#~ msgstr "url de IRC (%Q) InvÃ¡lida"
 
 #~ msgid "Invalid IRC url (%s)"
 #~ msgstr "url de IRC (%s) InvÃ¡lida"
@@ -8996,10 +8897,6 @@ msgstr "dentro de:"
 
 #~ msgid "Invalid array index: positive integer expected"
 #~ msgstr "Ãndice invÃ¡lido do array: inteiro positivo esperado"
-
-#, fuzzy
-#~ msgid "Invalid color-set specification, using default"
-#~ msgstr "EspecificaÃ§Ã£o do Ã­cone invÃ¡lida ' %s', usando o padrÃ£o"
 
 #~ msgid "Invalid column (%s)"
 #~ msgstr "Coluna invÃ¡lida (%s)"
@@ -9026,10 +8923,6 @@ msgstr "dentro de:"
 #~ msgstr "DireÃ§Ã£o invÃ¡lida para este motor"
 
 #~ msgid "Invalid duration (%s): using default"
-#~ msgstr "DuraÃ§Ã£o (%s)  invÃ¡lida: usando padrÃ£o"
-
-#, fuzzy
-#~ msgid "Invalid duration value: using default"
 #~ msgstr "DuraÃ§Ã£o (%s)  invÃ¡lida: usando padrÃ£o"
 
 #~ msgid "Invalid expression evaluation in object scope"
@@ -9088,10 +8981,6 @@ msgstr "dentro de:"
 #~ msgid "Invalid marging value (%s)"
 #~ msgstr "Valor de margem invÃ¡lido (%s)"
 
-#, fuzzy
-#~ msgid "Invalid mode '%Q'"
-#~ msgstr "imagem invÃ¡lida"
-
 #~ msgid "Invalid object"
 #~ msgstr "Objeto invÃ¡lido"
 
@@ -9113,10 +9002,6 @@ msgstr "dentro de:"
 #~ msgid "Invalid pitch (%s): using default"
 #~ msgstr "Caminho (%s) invÃ¡lido: usando padrÃ£o"
 
-#, fuzzy
-#~ msgid "Invalid pitch value: using default"
-#~ msgstr "Caminho (%s) invÃ¡lido: usando padrÃ£o"
-
 #~ msgid "Invalid port (%s)"
 #~ msgstr "Porta (%s) invÃ¡lida"
 
@@ -9136,11 +9021,6 @@ msgstr "dentro de:"
 #~ msgstr ""
 #~ "Modo de redimensionamento invalido (%s): usando padrÃ£o automaticamente"
 
-#, fuzzy
-#~ msgid "Invalid resize mode defaulting to Auto"
-#~ msgstr ""
-#~ "Modo de redimensionamento invalido (%s): usando padrÃ£o automaticamente"
-
 #~ msgid "Invalid row parameter (%s)"
 #~ msgstr "Linha de parÃ¢metro invÃ¡lida (%s)"
 
@@ -9151,10 +9031,6 @@ msgstr "dentro de:"
 
 #~ msgid "Invalid screen coordinates"
 #~ msgstr "Coordenadas invÃ¡lidas da tela"
-
-#, fuzzy
-#~ msgid "Invalid selection mode '%Q' assuming single"
-#~ msgstr "DireÃ§Ã£o invÃ¡lida para este motor"
 
 #~ msgid "Invalid size parameter (%s)"
 #~ msgstr "Tamanho de parÃ¢metro invÃ¡lido (%s)"
@@ -9212,10 +9088,6 @@ msgstr "dentro de:"
 
 #~ msgid "Invalid to_row parameter (%s)"
 #~ msgstr "ParÃ¢metro para_linha invÃ¡lido (%s)"
-
-#, fuzzy
-#~ msgid "Invalid visible name: using default"
-#~ msgstr "Caminho (%s) invÃ¡lido: usando padrÃ£o"
 
 #~ msgid "Invalid width parameter"
 #~ msgstr "Comprimento de parÃ¢metro invÃ¡lido"
@@ -9587,15 +9459,15 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Mask %Q already used to identify user %Q"
-#~ msgstr "MÃ¡scara %s jÃ¡ estÃ¡ sendo usada para identificar o usuÃ¡rio %s"
+#~ msgstr "MÃ¡scara %Q jÃ¡ estÃ¡ sendo usada para identificar o usuÃ¡rio %Q"
 
 #, fuzzy
 #~ msgid "Mask %Q is already used to identify user %s"
-#~ msgstr "A mÃ¡scara %s jÃ¡ esta em uso para identificar o usuÃ¡rio %s"
+#~ msgstr "A mÃ¡scara %Q jÃ¡ esta em uso para identificar o usuÃ¡rio %s"
 
 #, fuzzy
 #~ msgid "Mask %Q not found"
-#~ msgstr "MÃ¡scara %s nÃ£o encontrada"
+#~ msgstr "MÃ¡scara %Q nÃ£o encontrada"
 
 #~ msgid "Mask %s already used to identify user %s"
 #~ msgstr "MÃ¡scara %s jÃ¡ estÃ¡ sendo usada para identificar o usuÃ¡rio %s"
@@ -9828,12 +9700,6 @@ msgstr "dentro de:"
 #~ "Chamada de comando do mÃ³dulo falhou: nÃ£o foi possÃ­vel carregar o "
 #~ "mÃ³dulo '%Q'"
 
-#, fuzzy
-#~ msgid "Module command call failed: can't load the module '%Q': %Q"
-#~ msgstr ""
-#~ "Chamada de comando do mÃ³dulo falhou: nÃ£o foi possÃ­vel carregar o "
-#~ "mÃ³dulo '%Q'"
-
 #~ msgid ""
 #~ "Module command call failed: the module '%Q' doesn't export a callback "
 #~ "command named '%Q'"
@@ -9853,23 +9719,9 @@ msgstr "dentro de:"
 #~ "A chamada da funÃ§Ã£o mÃ³dulo falhou: nÃ£o foi possÃ­vel carregar o "
 #~ "mÃ³dulo '%Q'"
 
-#, fuzzy
-#~ msgid "Module function call failed: can't load the module 'str'"
-#~ msgstr ""
-#~ "A chamada da funÃ§Ã£o mÃ³dulo falhou: nÃ£o foi possÃ­vel carregar o "
-#~ "mÃ³dulo '%Q'"
-
 #~ msgid ""
 #~ "Module function call failed: the module '%Q' doesn't export a function "
 #~ "named '%Q'"
-#~ msgstr ""
-#~ "A chamada da funÃ§Ã£o mÃ³dulo falhou: o mÃ³dulo '%Q' nÃ£o exporta a funÃ§Ã"
-#~ "£o chamada '%Q'"
-
-#, fuzzy
-#~ msgid ""
-#~ "Module function call failed: the module 'str' doesn't export a function "
-#~ "named 'split'"
 #~ msgstr ""
 #~ "A chamada da funÃ§Ã£o mÃ³dulo falhou: o mÃ³dulo '%Q' nÃ£o exporta a funÃ§Ã"
 #~ "£o chamada '%Q'"
@@ -10061,11 +9913,11 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "No button with type %Q named %Q"
-#~ msgstr "Nenhum botÃ£o com tipo %s chamado %s"
+#~ msgstr "Nenhum botÃ£o com tipo %Q chamado %Q"
 
 #, fuzzy
 #~ msgid "No catalogue %Q for the current language found"
-#~ msgstr "NÃ£o foi possÃ­vel encontrar o catÃ¡logo %s para a lÃ­nguagem atual"
+#~ msgstr "NÃ£o foi possÃ­vel encontrar o catÃ¡logo %Q para a lÃ­nguagem atual"
 
 #~ msgid "No catalogue %s for the current language found"
 #~ msgstr "NÃ£o foi possÃ­vel encontrar o catÃ¡logo %s para a lÃ­nguagem atual"
@@ -10078,7 +9930,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "No commandline specified for this type of url (%Q)"
-#~ msgstr "Nenhuma linha de comando especificada para este tipo de URL (%s)"
+#~ msgstr "Nenhuma linha de comando especificada para este tipo de URL (%Q)"
 
 #~ msgid "No commandline specified for this type of url (%s)"
 #~ msgstr "Nenhuma linha de comando especificada para este tipo de URL (%s)"
@@ -10114,11 +9966,11 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "No handler '%Q' for event '%Q'"
-#~ msgstr "Sem manipulador '%s' para o evento '%s'"
+#~ msgstr "Sem manipulador '%Q' para o evento '%Q'"
 
 #, fuzzy
 #~ msgid "No handler '%Q' for raw numeric event '%d'"
-#~ msgstr "Sem manipulador '%s' para o evento nÃºmerico raw '%d'"
+#~ msgstr "Sem manipulador '%Q' para o evento nÃºmerico raw '%d'"
 
 #~ msgid "No handler '%s' for event '%s'"
 #~ msgstr "Sem manipulador '%s' para o evento '%s'"
@@ -10152,7 +10004,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "No menu bar item with text '%Q'"
-#~ msgstr "Nenhum Ã­tem da barra de menu com texto ' %s'"
+#~ msgstr "Nenhum Ã­tem da barra de menu com texto ' %Q'"
 
 #~ msgid "No netmask specified"
 #~ msgstr "Nenhuma mÃ¡scara de rede especificada"
@@ -10226,7 +10078,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "No such event (%Q)"
-#~ msgstr "Nenhum evento (%s)"
+#~ msgstr "Nenhum evento (%Q)"
 
 #~ msgid "No such event (%s)"
 #~ msgstr "Nenhum evento (%s)"
@@ -10236,10 +10088,6 @@ msgstr "dentro de:"
 
 #~ msgid "No such irc context (%d)"
 #~ msgstr "Sem contexto de irc (%d)"
-
-#, fuzzy
-#~ msgid "No such line number"
-#~ msgstr "Nenhum timer (%s)"
 
 #~ msgid "No such module command"
 #~ msgstr "NÃ£o existe tal comando de mÃ³dulo"
@@ -10264,7 +10112,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "No such open mode: '%Q'"
-#~ msgstr "Sem modo aberto: %s"
+#~ msgstr "Sem modo aberto: %Q"
 
 #~ msgid "No such options page class name"
 #~ msgstr "Sem opÃ§Ãµes de nome de classe na pÃ¡gina"
@@ -10517,7 +10365,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Notifying avatar '%Q' to %Q"
-#~ msgstr "Notificando avatar ' %s' para %s"
+#~ msgstr "Notificando avatar ' %Q' para %Q"
 
 #, fuzzy
 #~ msgid "Novice"
@@ -10924,11 +10772,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Processing DCC %Q request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%S %S)"
-#~ msgstr "Processando o pedido DCC %S de \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%S %S)"
-
-#, fuzzy
-#~ msgid "Processing aborted"
-#~ msgstr "Processando a lista: %Q"
+#~ msgstr "Processando o pedido DCC %Q de \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%S %S)"
 
 #~ msgid "Processing link: %s"
 #~ msgstr "Processando link: %s"
@@ -11161,7 +11005,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Received ping from \r!s\r%Q\r (PING %Q), replied pong"
-#~ msgstr "Ping recebido de \r!s\r%s\r (PING %s), respondendo com pong"
+#~ msgstr "Ping recebido de \r!s\r%Q\r (PING %Q), respondendo com pong"
 
 #~ msgid "Received pong from \r!s\r%s\r (PONG %s)"
 #~ msgstr "Pong recebido de \r!s\r%s\r (PONG %s)"
@@ -11235,10 +11079,6 @@ msgstr "dentro de:"
 
 #~ msgid "Remove from Notify"
 #~ msgstr "Remover da NotificaÃ§Ã£o"
-
-#, fuzzy
-#~ msgid "Remove item"
-#~ msgstr "Remover %Q"
 
 #~ msgid "Remove the currently selected entries."
 #~ msgstr "Remover Ã s entradas atualmente selecionadas."
@@ -11669,10 +11509,6 @@ msgstr "dentro de:"
 #~ msgid "Silence speaking"
 #~ msgstr "Falando em silÃªncio"
 
-#, fuzzy
-#~ msgid "Skipping nested terminator character %q"
-#~ msgstr "linha %d, caracter aproximando %d"
-
 #~ msgid "Skipping the substitution"
 #~ msgstr "Pulando a substituiÃ§Ã£o"
 
@@ -11748,7 +11584,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Sound file '%Q' not found"
-#~ msgstr "Arquivo de som '%s' nÃ£o encontrado"
+#~ msgstr "Arquivo de som '%Q' nÃ£o encontrado"
 
 #~ msgid "Sound file '%s' not found"
 #~ msgstr "Arquivo de som '%s' nÃ£o encontrado"
@@ -11760,7 +11596,7 @@ msgstr "dentro de:"
 #~ "Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
 #~ msgstr ""
 #~ "Noticia spam de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (palavra spam coincidente "
-#~ "\"%s\")"
+#~ "\"%Q\")"
 
 #~ msgid ""
 #~ "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s"
@@ -12029,7 +11865,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "The action \"%Q\" doesn't exist"
-#~ msgstr "A aÃ§Ã£o \"%s\" nÃ£o existe"
+#~ msgstr "A aÃ§Ã£o \"%Q\" nÃ£o existe"
 
 #~ msgid "The action \"%s\" doesn't exist"
 #~ msgstr "A aÃ§Ã£o \"%s\" nÃ£o existe"
@@ -12116,7 +11952,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "The catalogue %Q was not loaded"
-#~ msgstr "O catÃ¡logo '%s' nÃ£o foi carregado"
+#~ msgstr "O catÃ¡logo '%Q' nÃ£o foi carregado"
 
 #~ msgid "The catalogue %s was not loaded"
 #~ msgstr "O catÃ¡logo '%s' nÃ£o foi carregado"
@@ -12126,7 +11962,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "The commandline for this url type seems to be broken (%Q)"
-#~ msgstr "A linha de comando para este tipo de URL parece estar quebrado (%s)"
+#~ msgstr "A linha de comando para este tipo de URL parece estar quebrado (%Q)"
 
 #~ msgid "The commandline for this url type seems to be broken (%s)"
 #~ msgstr "A linha de comando para este tipo de URL parece estar quebrado (%s)"
@@ -12140,11 +11976,11 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "The config file with id '%Q' is not open"
-#~ msgstr "O arquivo de configuraÃ§Ã£o com id '%s' nÃ£o estÃ¡ aberto"
+#~ msgstr "O arquivo de configuraÃ§Ã£o com id '%Q' nÃ£o estÃ¡ aberto"
 
 #, fuzzy
 #~ msgid "The config file with id '%Q' is read only"
-#~ msgstr "O arquivo de configuraÃ§Ã£o com id '%s' Ã© somente leitura"
+#~ msgstr "O arquivo de configuraÃ§Ã£o com id '%Q' Ã© somente leitura"
 
 #~ msgid "The config file with id '%s' is not open"
 #~ msgstr "O arquivo de configuraÃ§Ã£o com id '%s' nÃ£o estÃ¡ aberto"
@@ -12326,7 +12162,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
-#~ msgstr "O itÃ©m de menu com id \"%s\" nÃ£o existe no popup \"%s\""
+#~ msgstr "O itÃ©m de menu com id \"%Q\" nÃ£o existe no popup \"%Q\""
 
 #~ msgid "The message doesn't seem to be encoded with CBC Mircryption"
 #~ msgstr "A mensagem nÃ£o parece estar codificada com CBC Mircryption"
@@ -12354,7 +12190,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "The popup '%Q' is not defined"
-#~ msgstr "O popup '%s' nÃ£o estÃ¡ definido"
+#~ msgstr "O popup '%Q' nÃ£o estÃ¡ definido"
 
 #~ msgid ""
 #~ "The popup '%s' is actually locked: 'self-modifications' are not allowed"
@@ -12484,7 +12320,7 @@ msgstr "dentro de:"
 #, fuzzy
 #~ msgid "The specified KVIrc version \"%Q\" is not a valid version string"
 #~ msgstr ""
-#~ "A versÃ£o \"%s\" do KVIrc especificada nÃ£o Ã© uma string de versÃ£o vÃ"
+#~ "A versÃ£o \"%Q\" do KVIrc especificada nÃ£o Ã© uma string de versÃ£o vÃ"
 #~ "¡lida"
 
 #~ msgid "The specified KVIrc version \"%s\" is not a valid version string"
@@ -12523,10 +12359,6 @@ msgstr "dentro de:"
 #~ msgid "The specified directory does not exist '%s'"
 #~ msgstr "O directÃ³rio especificado nÃ£o existe '%s'"
 
-#, fuzzy
-#~ msgid "The specified file size is invalid"
-#~ msgstr "O tempo UNIX especificado nÃ£o Ã© vÃ¡lido (%s)"
-
 #~ msgid "The specified maximum run time is invalid: assuming zero (infinite)"
 #~ msgstr ""
 #~ "O tempo mÃ¡ximo de execuÃ§Ã£o especificado Ã© invÃ¡lido: assumindo zero "
@@ -12560,10 +12392,6 @@ msgstr "dentro de:"
 #~ msgid "The specified time format is not valid (%s)"
 #~ msgstr "O formato de tempo especificado nÃ£o Ã© valido (%s)"
 
-#, fuzzy
-#~ msgid "The specified timeout is not valid, assuming 0"
-#~ msgstr "O formato de tempo especificado nÃ£o Ã© valido (%s)"
-
 #~ msgid "The specified toolbar doesn't exist"
 #~ msgstr "A barra de ferramentas especificada nÃ£o existe"
 
@@ -12575,11 +12403,11 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "The specified window (%Q) is not a channel"
-#~ msgstr "A janela (%s) especificada nÃ£o Ã© um canal"
+#~ msgstr "A janela (%Q) especificada nÃ£o Ã© um canal"
 
 #, fuzzy
 #~ msgid "The specified window (%Q) is not a channel/query/DCC chat"
-#~ msgstr "A Janela especificada (%s) nÃ£o Ã© um canal/privado/DCC de chat"
+#~ msgstr "A Janela especificada (%Q) nÃ£o Ã© um canal/privado/DCC de chat"
 
 #~ msgid "The specified window (%s) is not a channel"
 #~ msgstr "A janela (%s) especificada nÃ£o Ã© um canal"
@@ -12596,10 +12424,6 @@ msgstr "dentro de:"
 
 #~ msgid "The specified window has no button containers"
 #~ msgstr "A janela especificada nÃ£o tem recepiente de botÃµes"
-
-#, fuzzy
-#~ msgid "The specified window identifier is not valid"
-#~ msgstr "O endereÃ§o (%Q) especificado para fazer conexÃµes nÃ£o Ã© vÃ¡lido."
 
 #~ msgid "The specified window is not a channel"
 #~ msgstr "A janela especificada nÃ£o Ã© um canal"
@@ -12695,7 +12519,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "There is no option named '%Q'"
-#~ msgstr "Nenhuma opÃ§Ã£o chamada '%s'"
+#~ msgstr "Nenhuma opÃ§Ã£o chamada '%Q'"
 
 #~ msgid "There is no widget"
 #~ msgstr "NÃ£o hÃ¡ nenhum widget"
@@ -12709,7 +12533,7 @@ msgstr "dentro de:"
 #~ "required is %Q)"
 #~ msgstr ""
 #~ "O executÃ¡vel do KVirc Ã© muito antigo para executar este script (a versÃ"
-#~ "£o mÃ­nima requerida Ã© %s)"
+#~ "£o mÃ­nima requerida Ã© %Q)"
 
 #~ msgid ""
 #~ "This KVIrc executable is too old to run this addon (minimum version "
@@ -12967,10 +12791,6 @@ msgstr "dentro de:"
 #~ msgid "Unable to determine the current cipher"
 #~ msgstr "ImpossÃ­vel de determinar a cifra atual"
 
-#, fuzzy
-#~ msgid "Unable to get address of interface %Q"
-#~ msgstr "Escutar em um endereÃ§o/interface:"
-
 #~ msgid "Unable to look it up hostname: Hostname appears to be masked"
 #~ msgstr ""
 #~ "NÃ£o foi possÃ­vel encontrar o nome da mÃ¡quina: o nome da mÃ¡quina parece "
@@ -12993,7 +12813,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Unable to play sound '%Q'"
-#~ msgstr "NÃ£o foi possÃ­vel tocar o som '%s'"
+#~ msgstr "NÃ£o foi possÃ­vel tocar o som '%Q'"
 
 #~ msgid "Unable to play sound '%s'"
 #~ msgstr "NÃ£o foi possÃ­vel tocar o som '%s'"
@@ -13008,14 +12828,6 @@ msgstr "dentro de:"
 #~ "ImpossÃ­vel processar o pedido anterior: O mÃ³dulo DCC pode estar quebrado"
 
 #~ msgid "Unable to resolve the local hostname as seen by the IRC server: %Q"
-#~ msgstr ""
-#~ "NÃ£o foi possÃ­vel resolver o nome da mÃ¡quina local como foi visto pelo "
-#~ "servidor de IRC: %Q"
-
-#, fuzzy
-#~ msgid ""
-#~ "Unable to resolve the local hostname as seen by the IRC server: %Q, using "
-#~ "previously resolved %Q"
 #~ msgstr ""
 #~ "NÃ£o foi possÃ­vel resolver o nome da mÃ¡quina local como foi visto pelo "
 #~ "servidor de IRC: %Q"
@@ -13297,19 +13109,15 @@ msgstr "dentro de:"
 #~ msgstr "Resposta CTCP desconhecida"
 
 #, fuzzy
-#~ msgid "Unknown alignment"
-#~ msgstr "Alinhamento desconhecido: %s"
-
-#, fuzzy
 #~ msgid "Unknown alignment '%Q'"
-#~ msgstr "Alinhamento desconhecido: %s"
+#~ msgstr "Alinhamento desconhecido: %Q"
 
 #~ msgid "Unknown alignment: %s"
 #~ msgstr "Alinhamento desconhecido: %s"
 
 #, fuzzy
 #~ msgid "Unknown alignment: '%Q'"
-#~ msgstr "Alinhamento desconhecido: %s"
+#~ msgstr "Alinhamento desconhecido: %Q"
 
 #, fuzzy
 #~ msgid "Unknown auto formatting mode '%Q'"
@@ -13333,25 +13141,13 @@ msgstr "dentro de:"
 #~ msgid "Unknown command"
 #~ msgstr "Comando desconhecido"
 
-#, fuzzy
-#~ msgid "Unknown dock area '%Q'"
-#~ msgstr "Operador desconhecido"
-
 #~ msgid "Unknown echo mode"
-#~ msgstr "Modo eco desconhecido"
-
-#, fuzzy
-#~ msgid "Unknown echo mode %Q"
 #~ msgstr "Modo eco desconhecido"
 
 #~ msgid "Unknown error"
 #~ msgstr "Erro desconhecido"
 
 #~ msgid "Unknown frame / shadow style: %s"
-#~ msgstr "Frame desconhecido / estilo sombra: %s"
-
-#, fuzzy
-#~ msgid "Unknown frame style"
 #~ msgstr "Frame desconhecido / estilo sombra: %s"
 
 #~ msgid "Unknown function"
@@ -13372,20 +13168,12 @@ msgstr "dentro de:"
 #~ msgstr "FunÃ§Ã£o desconhecida"
 
 #, fuzzy
-#~ msgid "Unknown orientation '%Q'"
-#~ msgstr "FunÃ§Ã£o desconhecida"
-
-#, fuzzy
 #~ msgid "Unknown orientation: "
 #~ msgstr "FunÃ§Ã£o desconhecida"
 
 #, fuzzy
 #~ msgid "Unknown position 'Q%'"
 #~ msgstr "FunÃ§Ã£o desconhecida"
-
-#, fuzzy
-#~ msgid "Unknown segment style "
-#~ msgstr "Tipo de widget desconhecido: %s"
 
 #~ msgid "Unknown server<br>"
 #~ msgstr "Servidor desconhecido<br>"
@@ -13395,27 +13183,15 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Unknown style '%Q'"
-#~ msgstr "Frame desconhecido / estilo sombra: %s"
-
-#, fuzzy
-#~ msgid "Unknown text format '%Q'"
-#~ msgstr "FunÃ§Ã£o desconhecida"
-
-#, fuzzy
-#~ msgid "Unknown text position '%Q'"
-#~ msgstr "FunÃ§Ã£o desconhecida"
-
-#, fuzzy
-#~ msgid "Unknown tickmark '%Q'"
-#~ msgstr "Comando desconhecido"
+#~ msgstr "Frame desconhecido / estilo sombra: %Q"
 
 #, fuzzy
 #~ msgid "Unknown vertical alignment '%Q'"
-#~ msgstr "Alinhamento desconhecido: %s"
+#~ msgstr "Alinhamento desconhecido: %Q"
 
 #, fuzzy
 #~ msgid "Unknown widget flag '%Q'"
-#~ msgstr "Tipo de widget desconhecido: %s"
+#~ msgstr "Tipo de widget desconhecido: %Q"
 
 #~ msgid "Unknown widget type: %s"
 #~ msgstr "Tipo de widget desconhecido: %s"
@@ -13471,7 +13247,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Unsupported protocol %1"
-#~ msgstr "Protocolo %s nÃ£o suportado"
+#~ msgstr "Protocolo %1 nÃ£o suportado"
 
 #~ msgid "Unsupported type: $0"
 #~ msgstr "Tipo nÃ£o suportado: $0"
@@ -13520,7 +13296,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "User %Q not found"
-#~ msgstr "UsuÃ¡rio %s nÃ£o encontrado"
+#~ msgstr "UsuÃ¡rio %Q nÃ£o encontrado"
 
 #~ msgid "User %s not found"
 #~ msgstr "UsuÃ¡rio %s nÃ£o encontrado"
@@ -13549,7 +13325,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "User not found (%Q)"
-#~ msgstr "UsuÃ¡rio nÃ£o encontrado (%s)"
+#~ msgstr "UsuÃ¡rio nÃ£o encontrado (%Q)"
 
 #~ msgid "User not found (%s)"
 #~ msgstr "UsuÃ¡rio nÃ£o encontrado (%s)"
@@ -13722,14 +13498,6 @@ msgstr "dentro de:"
 #~ msgid "Widget object required"
 #~ msgstr "Objeto widget requerido"
 
-#, fuzzy
-#~ msgid "Widget or Pixmap required"
-#~ msgstr "Widget ou Pixmap requerido (%s)"
-
-#, fuzzy
-#~ msgid "Widget or Pixmap required "
-#~ msgstr "Widget ou Pixmap requerido (%s)"
-
 #~ msgid "Widget or Pixmap required (%s)"
 #~ msgstr "Widget ou Pixmap requerido (%s)"
 
@@ -13747,7 +13515,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Window %Q not found"
-#~ msgstr "Janela %s nÃ£o encontrada"
+#~ msgstr "Janela %Q nÃ£o encontrada"
 
 #~ msgid "Window %s not found"
 #~ msgstr "Janela %s nÃ£o encontrada"
@@ -13761,7 +13529,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Window button '%Q' not found"
-#~ msgstr "BotÃ£o de janela '%s' nÃ£o encontrado"
+#~ msgstr "BotÃ£o de janela '%Q' nÃ£o encontrado"
 
 #~ msgid "Window button '%s' not found"
 #~ msgstr "BotÃ£o de janela '%s' nÃ£o encontrado"
@@ -13774,7 +13542,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Window with ID '%Q' not found"
-#~ msgstr "Janela com ID '%s' nÃ£o encontrada"
+#~ msgstr "Janela com ID '%Q' nÃ£o encontrada"
 
 #~ msgid "Window with ID '%s' not found"
 #~ msgstr "Janela com ID '%s' nÃ£o encontrada"
@@ -13793,7 +13561,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "Window with id '%Q' not found, returning empty string"
-#~ msgstr "Janela com id '%s' nÃ£o encontrada, retornar string vazia"
+#~ msgstr "Janela com id '%Q' nÃ£o encontrada, retornar string vazia"
 
 #~ msgid "Window with id '%s' not found, returning empty string"
 #~ msgstr "Janela com id '%s' nÃ£o encontrada, retornar string vazia"
@@ -14331,7 +14099,7 @@ msgstr "dentro de:"
 
 #, fuzzy
 #~ msgid "pix '%Q' doesn't exists"
-#~ msgstr "A aÃ§Ã£o \"%s\" nÃ£o existe"
+#~ msgstr "A aÃ§Ã£o \"%Q\" nÃ£o existe"
 
 #~ msgid "possible watch list desync"
 #~ msgstr "possÃ­vel dessincronizaÃ§Ã£o da lista de watch"

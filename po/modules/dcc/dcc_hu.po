@@ -29,7 +29,7 @@ msgstr "%1"
 #: src/modules/dcc/DccFileTransfer.cpp:1525
 #: src/modules/dcc/DccFileTransfer.cpp:1532
 msgid "%1 of %2 (%3%)"
-msgstr "%2 van hátra %1 bájtból (%3%)"
+msgstr "%1 van hátra %2 bájtból (%3%)"
 
 #: src/modules/dcc/requests.cpp:694
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
@@ -75,8 +75,7 @@ msgstr "Pite"
 msgid "&Polygons"
 msgstr "Poligonok"
 
-#: src/modules/dcc/canvaswidget.cpp:1479
-#: src/modules/dcc/canvaswidget.cpp:1487
+#: src/modules/dcc/canvaswidget.cpp:1479 src/modules/dcc/canvaswidget.cpp:1487
 msgid "&Rectangle"
 msgstr "Téglalap"
 
@@ -100,15 +99,12 @@ msgstr "Körvonal"
 msgid "&Triangle"
 msgstr "Háromszög"
 
-#: src/modules/dcc/requests.cpp:774
-#: src/modules/dcc/requests.cpp:938
+#: src/modules/dcc/requests.cpp:774 src/modules/dcc/requests.cpp:938
 msgid "(unknown)"
 msgstr "(ismeretlen)"
 
-#: src/modules/dcc/libkvidcc.cpp:433
-#: src/modules/dcc/libkvidcc.cpp:656
-#: src/modules/dcc/libkvidcc.cpp:1158
-#: src/modules/dcc/libkvidcc.cpp:1225
+#: src/modules/dcc/libkvidcc.cpp:433 src/modules/dcc/libkvidcc.cpp:656
+#: src/modules/dcc/libkvidcc.cpp:1158 src/modules/dcc/libkvidcc.cpp:1225
 msgid "-c requires -i and -p"
 msgstr "a '-c' igényli '-i' és '-p' -t"
 
@@ -184,8 +180,7 @@ msgstr ""
 "a KVIrcet, hogy elfogadja és elhelyezze a bejövő avatarokat, automatikusan "
 "a /<tt>boolAutoAcceptIncomingAvatars</tt> true -ra állításával.<br>"
 
-#: src/modules/dcc/libkvidcc.cpp:633
-#: src/modules/dcc/requests.cpp:448
+#: src/modules/dcc/libkvidcc.cpp:633 src/modules/dcc/requests.cpp:448
 #: src/modules/dcc/requests.cpp:741
 msgid "<unknown size>"
 msgstr "<ismeretlen méret>"
@@ -289,8 +284,7 @@ msgstr ""
 "Nem tudok hallgatózni az alapértelmezett '%s' eszközön, javítsd tiltással az "
 "opciókban (a következő DCC már működni fog)"
 
-#: src/modules/dcc/DccBroker.cpp:207
-#: src/modules/dcc/DccBroker.cpp:919
+#: src/modules/dcc/DccBroker.cpp:207 src/modules/dcc/DccBroker.cpp:919
 msgid "Can't open file %Q for reading"
 msgstr "Nem lehet megnyitni %Q fájlt olvasásra"
 
@@ -299,7 +293,7 @@ msgstr "Nem lehet megnyitni %Q fájlt olvasásra"
 msgid ""
 "Can't proceed with DCC RECV: Transfer not initiated for file %1 on port %2"
 msgstr ""
-"Sikertelen DCC RECV folyamat: Adatátvitel nincs inicializálva %s fájlnak, %s "
+"Sikertelen DCC RECV folyamat: Adatátvitel nincs inicializálva %1 fájlnak, %2 "
 "porton keresztül"
 
 #: src/modules/dcc/requests.cpp:578
@@ -308,7 +302,7 @@ msgid ""
 "Can't proceed with DCC SEND: Transfer not initiated for file %1 on port %2, "
 "or invalid resume size"
 msgstr ""
-"Sikertelen DCC SEND folyamat: Adatátvitel nincs inicializálva %s fájlnak, %s "
+"Sikertelen DCC SEND folyamat: Adatátvitel nincs inicializálva %1 fájlnak, %2 "
 "porton keresztül, vagy hibás a folytatás mérete"
 
 #: src/modules/dcc/DccUtils.cpp:124
@@ -319,13 +313,11 @@ msgstr "Nincs megfelelő helyi IPv4 cím"
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Nem lehet DCC %Q kérést küldeni %Q: felé, IRC kapcsolat megszakadt"
 
-#: src/modules/dcc/DccFileTransfer.cpp:2207
-#: src/modules/dcc/DccDialog.cpp:158
+#: src/modules/dcc/DccFileTransfer.cpp:2207 src/modules/dcc/DccDialog.cpp:158
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: src/modules/dcc/DccChatWindow.cpp:298
-#: src/modules/dcc/DccChatWindow.cpp:402
+#: src/modules/dcc/DccChatWindow.cpp:298 src/modules/dcc/DccChatWindow.cpp:402
 #: src/modules/dcc/DccVideoWindow.cpp:665
 #: src/modules/dcc/DccVideoWindow.cpp:768
 msgid "Cannot send data: No active connection"
@@ -335,15 +327,14 @@ msgstr "Nem lehet adatot küldeni: Nincs aktív kapcsolat"
 msgid "Choose Files to Save - KVIrc"
 msgstr "Fájlnév megadása mentéshez - KVIrc"
 
-#: src/modules/dcc/DccBroker.cpp:167
-#: src/modules/dcc/DccBroker.cpp:882
+#: src/modules/dcc/DccBroker.cpp:167 src/modules/dcc/DccBroker.cpp:882
 msgid "Choose Files to Send - KVIrc"
 msgstr "Küldendő Fájl Kiválaszása - KVIrc"
 
 #: src/modules/dcc/requests.cpp:101
 #, fuzzy
 msgid "Concurrent transfer limit reached (%1 of %2 transfers running)"
-msgstr "Konkurens átviteli korlát elérve (%u -ból/ből %u átvitel fut)"
+msgstr "Konkurens átviteli korlát elérve (%1 -ból/ből %2 átvitel fut)"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1219
 msgid "Configure Bandwidth..."
@@ -375,8 +366,7 @@ msgstr "Kapcsolódás a %1 hosthoz %2 porton keresztül"
 msgid "Contacting host %Q on port %Q"
 msgstr "Kapcsolódás %Q -ra/re %Q porton keresztül"
 
-#: src/modules/dcc/DccBroker.cpp:296
-#: src/modules/dcc/DccBroker.cpp:629
+#: src/modules/dcc/DccBroker.cpp:296 src/modules/dcc/DccBroker.cpp:629
 msgid "DCC %1 Request - KVIrc"
 msgstr "DCC %1 Kérés - KVIrc"
 
@@ -501,17 +491,17 @@ msgstr "Belső hiba RESUME (folytatás) kérésnél"
 #: src/modules/dcc/requests.cpp:195
 #, fuzzy
 msgid "Invalid IP address %1"
-msgstr "Helytelen IP address %s"
+msgstr "Helytelen IP address %1"
 
 #: src/modules/dcc/requests.cpp:175
 #, fuzzy
 msgid "Invalid IP address in old format %1"
-msgstr "Érvénytelen IP cím, régi formátumban %s"
+msgstr "Érvénytelen IP cím, régi formátumban %1"
 
 #: src/modules/dcc/requests.cpp:640
 #, fuzzy
 msgid "Invalid RECV request: Position %1 is is larger than file size"
-msgstr "Helytelen RECV kérés, Pozíció: %u nagyobb mint a fájlméret"
+msgstr "Helytelen RECV kérés, Pozíció: %1 nagyobb mint a fájlméret"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2115
 msgid "Invalid RESUME request: Invalid file name (got '%1' but should be '%2')"
@@ -535,12 +525,12 @@ msgstr "Helytelen kodek meghatározása, váltás 'adpcm'-re"
 #: src/modules/dcc/requests.cpp:159
 #, fuzzy
 msgid "Invalid port number %1"
-msgstr "Helytelen port szám %s"
+msgstr "Helytelen port szám %1"
 
 #: src/modules/dcc/requests.cpp:567
 #, fuzzy
 msgid "Invalid resume position argument '%1'"
-msgstr "Helytelen folytatási kifejezés: '%s'"
+msgstr "Helytelen folytatási kifejezés: '%1'"
 
 #: src/modules/dcc/libkvidcc.cpp:1131
 msgid "Invalid sample rate specified, defaulting to 8000"
@@ -588,10 +578,9 @@ msgstr "Alacsony szintű adatátviteli kapcsolat létrejött"
 #: src/modules/dcc/requests.cpp:856
 #, fuzzy
 msgid "No file offer named '%1' (with size %2) available for %3 [%4@%5]"
-msgstr "Nincs felajánlott '%s' fájl (%s méretben) ami elérhető %Q [%Q@%Q]"
+msgstr "Nincs felajánlott '%1' fájl (%2 méretben) ami elérhető %3 [%4@%5]"
 
-#: src/modules/dcc/requests.cpp:780
-#: src/modules/dcc/requests.cpp:924
+#: src/modules/dcc/requests.cpp:780 src/modules/dcc/requests.cpp:924
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr "Nincs megfelelő eszköz, amin hallgatóznék, további próbálkozások..."
 
@@ -695,7 +684,7 @@ msgstr "Kapcsolat beállítása"
 #: src/modules/dcc/requests.cpp:116
 #, fuzzy
 msgid "Slot limit reached (%1 slots of %2)"
-msgstr "Slot korlát elérve (%u slot a %u -ból/ből)"
+msgstr "Slot korlát elérve (%1 slot a %2 -ból/ből)"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1549
 msgid "Spd:"
@@ -713,7 +702,7 @@ msgstr "SSL kézfogás megkezdése"
 #: src/modules/dcc/DccFileTransfer.cpp:1006
 #, fuzzy
 msgid "TRANSFER %1"
-msgstr "ADATÁTVITEL: %d"
+msgstr "ADATÁTVITEL: %1"
 
 #: src/modules/dcc/requests.cpp:1011
 #, c-format
@@ -740,8 +729,7 @@ msgstr ""
 "A következő kérést nem tudom teljesíteni: DCC VOICE támogatás nem volt "
 "engedélyezve fodításkor"
 
-#: src/modules/dcc/requests.cpp:998
-#: src/modules/dcc/requests.cpp:1072
+#: src/modules/dcc/requests.cpp:998 src/modules/dcc/requests.cpp:1072
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
 msgstr "A következő kérést nem tudom teljesíteni: Nem támogatott codec'%s'"
@@ -753,10 +741,8 @@ msgid ""
 msgstr ""
 "Az alábbi folytatási kérés mérete hiányzik, a fájl 0-tól lesz folytatva"
 
-#: src/modules/dcc/requests.cpp:456
-#: src/modules/dcc/requests.cpp:466
-#: src/modules/dcc/requests.cpp:612
-#: src/modules/dcc/requests.cpp:749
+#: src/modules/dcc/requests.cpp:456 src/modules/dcc/requests.cpp:466
+#: src/modules/dcc/requests.cpp:612 src/modules/dcc/requests.cpp:749
 msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
@@ -764,8 +750,7 @@ msgstr ""
 "Az alábbi kérés hibás. A fájlnév tartalmaz elérési út elemeket, a fő rész "
 "kivágása, és folytatási próbálkozás"
 
-#: src/modules/dcc/requests.cpp:446
-#: src/modules/dcc/requests.cpp:739
+#: src/modules/dcc/requests.cpp:446 src/modules/dcc/requests.cpp:739
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -805,8 +790,7 @@ msgstr ""
 "A titkosító motor nem képes titkosítani az aktuális üzenetet (%Q): %Q, adat "
 "nem lett elküldve."
 
-#: src/modules/dcc/libkvidcc.cpp:1641
-#: src/modules/dcc/libkvidcc.cpp:2606
+#: src/modules/dcc/libkvidcc.cpp:1641 src/modules/dcc/libkvidcc.cpp:2606
 #: src/modules/dcc/libkvidcc.cpp:2626
 msgid "The current window has no associated DCC session"
 msgstr "Az aktuális ablaknak nincs hozzárendelt DCC 'session'-ja"
@@ -1009,7 +993,7 @@ msgstr "Az alábbi folyamat teljesítése sikertelen: %Q, %Q"
 #: src/modules/dcc/requests.cpp:1228
 #, fuzzy
 msgid "Unknown DCC type '%1'"
-msgstr "Ismeretlen DCC típus: %s"
+msgstr "Ismeretlen DCC típus: %1"
 
 #: src/modules/dcc/requests.cpp:707
 msgid ""
@@ -1093,24 +1077,15 @@ msgstr "[SSL HIBA]: %s"
 msgid "bytes/sec"
 msgstr "bájt/másodperc "
 
-#: src/modules/dcc/libkvidcc.cpp:111
-#: src/modules/dcc/libkvidcc.cpp:407
-#: src/modules/dcc/libkvidcc.cpp:442
-#: src/modules/dcc/libkvidcc.cpp:641
-#: src/modules/dcc/libkvidcc.cpp:665
-#: src/modules/dcc/libkvidcc.cpp:802
-#: src/modules/dcc/libkvidcc.cpp:804
-#: src/modules/dcc/libkvidcc.cpp:1120
-#: src/modules/dcc/libkvidcc.cpp:1170
-#: src/modules/dcc/libkvidcc.cpp:1198
-#: src/modules/dcc/libkvidcc.cpp:1237
-#: src/modules/dcc/DccMarshal.cpp:494
-#: src/modules/dcc/DccMarshal.cpp:524
-#: src/modules/dcc/DccMarshal.cpp:529
-#: src/modules/dcc/requests.cpp:138
-#: src/modules/dcc/requests.cpp:139
-#: src/modules/dcc/requests.cpp:140
-#: src/modules/dcc/DccDescriptor.cpp:65
+#: src/modules/dcc/libkvidcc.cpp:111 src/modules/dcc/libkvidcc.cpp:407
+#: src/modules/dcc/libkvidcc.cpp:442 src/modules/dcc/libkvidcc.cpp:641
+#: src/modules/dcc/libkvidcc.cpp:665 src/modules/dcc/libkvidcc.cpp:802
+#: src/modules/dcc/libkvidcc.cpp:804 src/modules/dcc/libkvidcc.cpp:1120
+#: src/modules/dcc/libkvidcc.cpp:1170 src/modules/dcc/libkvidcc.cpp:1198
+#: src/modules/dcc/libkvidcc.cpp:1237 src/modules/dcc/DccMarshal.cpp:494
+#: src/modules/dcc/DccMarshal.cpp:524 src/modules/dcc/DccMarshal.cpp:529
+#: src/modules/dcc/requests.cpp:138 src/modules/dcc/requests.cpp:139
+#: src/modules/dcc/requests.cpp:140 src/modules/dcc/DccDescriptor.cpp:65
 msgid "unknown"
 msgstr "ismertelen"
 

@@ -2106,9 +2106,8 @@ msgid "Failed to Load Avatar - KVIrc"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:562
-#, fuzzy
 msgid "Failed to download the avatar image.<br><b>%1</b>"
-msgstr "Създаването на сокет пропадна"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:556
 #: src/modules/options/OptionsWidget_identity.cpp:594
@@ -4559,23 +4558,7 @@ msgid "within:"
 msgstr ""
 
 #, fuzzy
-#~ msgid " I can't find the specified file %s."
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid " I can't find the specified file '%Q'."
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
 #~ msgid " I can't find the specified file."
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid " I cannot read the file %Q'."
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "%cListing Qt Properties for widget object %s (%s)"
 #~ msgstr "Не може да определи исканият адрес"
 
 #~ msgid "(DNS Internal) Bad flags"
@@ -4621,14 +4604,6 @@ msgstr ""
 #~ "Another connection is already in progress in the selected IRC context"
 #~ msgstr "Друга връзка е в ход"
 
-#, fuzzy
-#~ msgid "Attempting %Q to %Q (%Q) on port %u"
-#~ msgstr "Свързване с компютър %s на порт %u"
-
-#, fuzzy
-#~ msgid "Background not found %s "
-#~ msgstr "Хоста не е намерен"
-
 #~ msgid "Bad file descriptor"
 #~ msgstr "Лош дескриптор на файл"
 
@@ -4658,35 +4633,7 @@ msgstr ""
 #~ msgstr "Не може да изпрати файл с нулева големина"
 
 #, fuzzy
-#~ msgid "Can't find the  object to add (%s)"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the destination widget/pixmap (%s)"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the icon '%Q'"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the listviewitem object to add (%s)"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
 #~ msgid "Can't find the object "
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the object to add (%s)"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the popupmenu object to add (%s)"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the proxy IP address: %Q"
 #~ msgstr "Не може да определи исканият адрес"
 
 #, fuzzy
@@ -4694,47 +4641,11 @@ msgstr ""
 #~ msgstr "Не може да определи исканият адрес"
 
 #, fuzzy
-#~ msgid "Can't find the server IP address: %Q"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the source widget/pixmap (%s)"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the specified file '%s'."
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
 #~ msgid "Can't find the tab "
 #~ msgstr "Не може да определи исканият адрес"
 
 #, fuzzy
-#~ msgid "Can't find the widget (%s)"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the widget object (%s)"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
 #~ msgid "Can't find the widget object assuming 0"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the widget object to remove (%s)"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the widget(%s)"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the widget/pixmap (%s)"
-#~ msgstr "Не може да определи исканият адрес"
-
-#, fuzzy
-#~ msgid "Can't find the window with id '%Q'"
 #~ msgstr "Не може да определи исканият адрес"
 
 #~ msgid "Can't open file \"%s\" for writing"
@@ -4750,12 +4661,8 @@ msgstr ""
 #~ msgstr "Не може да отвори файл за запис"
 
 #, fuzzy
-#~ msgid "Can't open the file \"%Q\" for reading"
-#~ msgstr "Не може да отвори файл за четене"
-
-#, fuzzy
 #~ msgid "Can't open the file \"%Q\" for writing"
-#~ msgstr "Не може да отвори файл \"%s\" за запис"
+#~ msgstr "Не може да отвори файл \"%Q\" за запис"
 
 #, fuzzy
 #~ msgid "Can't remove a non-widget object"
@@ -4818,10 +4725,6 @@ msgstr ""
 #~ msgid "Connection timed out"
 #~ msgstr "Изтичане на време за връзка"
 
-#, fuzzy
-#~ msgid "Contacting %Q %s (%s) on port %u"
-#~ msgstr "Свързване с компютър %s на порт %u"
-
 #~ msgid "Contacting host %s on port %u"
 #~ msgstr "Свързване с компютър %s на порт %u"
 
@@ -4845,10 +4748,6 @@ msgstr ""
 #~ msgid "Doesn't a widget object"
 #~ msgstr "Не може да изпрати файл с нулева големина"
 
-#, fuzzy
-#~ msgid "Enable STARTTLS protocol"
-#~ msgstr "Неподдържан протокол %s"
-
 #~ msgid "Error in loading module"
 #~ msgstr "Грешка при зареждане на модула"
 
@@ -4870,41 +4769,13 @@ msgstr ""
 #~ msgid "Failed to find the widget to wrap"
 #~ msgstr "Не може да определи исканият адрес"
 
-#, fuzzy
-#~ msgid "Failed to make the directory %Q"
-#~ msgstr "Създаването на сокет пропадна"
-
 #~ msgid "Failed to put the socket in non blocking mode"
 #~ msgstr "Неуспех при поставянето на сокета в неблокиращ режим"
-
-#, fuzzy
-#~ msgid "Failed to remove the directory %Q"
-#~ msgstr "Създаването на сокет пропадна"
-
-#, fuzzy
-#~ msgid "Failed to remove the file %Q"
-#~ msgstr "Създаването на сокет пропадна"
-
-#, fuzzy
-#~ msgid "Failed to rename %Q to %Q"
-#~ msgstr "Създаването на сокет пропадна"
 
 #~ msgid "Failed to rename the existing file, please rename manually and retry"
 #~ msgstr ""
 #~ "Невъзможно е преименоването на съществуващ файл, моля преименовайте го "
 #~ "ръчно и повторете"
-
-#, fuzzy
-#~ msgid "Failed to start the connection: %Q"
-#~ msgstr "Създаването на сокет пропадна"
-
-#, fuzzy
-#~ msgid "Failed to start the get request: %Q"
-#~ msgstr "Създаването на сокет пропадна"
-
-#, fuzzy
-#~ msgid "Failed to start the get request: %s"
-#~ msgstr "Създаването на сокет пропадна"
 
 #~ msgid "Feature not available"
 #~ msgstr "Възможността не е на разположение"
@@ -4929,10 +4800,6 @@ msgstr ""
 #~ msgid "Host unreachable (no route to host)"
 #~ msgstr "Компютъра е недостъпен (няма път до хоста)"
 
-#, fuzzy
-#~ msgid "I can't find the specified file %Q."
-#~ msgstr "Не може да определи исканият адрес"
-
 #~ msgid "Integer parameter expected"
 #~ msgstr "Очкване на цял параметър"
 
@@ -4942,10 +4809,6 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Invalid  parameters"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
-#~ msgid "Invalid  value (%s)"
 #~ msgstr "Неправилен параметър"
 
 #, fuzzy
@@ -4959,14 +4822,6 @@ msgstr ""
 #~ msgstr "Неправилен IP адрес"
 
 #, fuzzy
-#~ msgid "Invalid IRC context id '%Q'"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
-#~ msgid "Invalid IRC url (%Q)"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
 #~ msgid "Invalid Parameters"
 #~ msgstr "Неправилен параметър"
 
@@ -4978,31 +4833,11 @@ msgstr ""
 #~ msgstr "Неправилен УРЛ: Липсва име"
 
 #, fuzzy
-#~ msgid "Invalid column (%s)"
-#~ msgstr "Грешен прокси адрес"
-
-#, fuzzy
-#~ msgid "Invalid columns value (%s)"
-#~ msgstr "Грешен прокси адрес"
-
-#, fuzzy
-#~ msgid "Invalid data type for parameter \"%s\""
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
-#~ msgid "Invalid depth value (%s)"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
 #~ msgid "Invalid duration value: using default"
 #~ msgstr "Грешен прокси адрес"
 
 #, fuzzy
 #~ msgid "Invalid image"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
-#~ msgid "Invalid index parameter (%s)"
 #~ msgstr "Неправилен параметър"
 
 #, fuzzy
@@ -5013,26 +4848,10 @@ msgstr ""
 #~ msgstr "Левия операнд е грешен"
 
 #, fuzzy
-#~ msgid "Invalid marging value (%s)"
-#~ msgstr "Грешен прокси адрес"
-
-#, fuzzy
-#~ msgid "Invalid mode '%Q'"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
 #~ msgid "Invalid object."
 #~ msgstr "Неправилен порт"
 
-#, fuzzy
-#~ msgid "Invalid paragraph value (%s)"
-#~ msgstr "Грешен прокси адрес"
-
 #~ msgid "Invalid parameter"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
-#~ msgid "Invalid parameter (%s)"
 #~ msgstr "Неправилен параметър"
 
 #, fuzzy
@@ -5046,20 +4865,8 @@ msgstr ""
 #~ msgid "Invalid port number"
 #~ msgstr "Неправилен порт"
 
-#, fuzzy
-#~ msgid "Invalid progress value (%s)"
-#~ msgstr "Грешен прокси адрес"
-
 #~ msgid "Invalid proxy address"
 #~ msgstr "Грешен прокси адрес"
-
-#, fuzzy
-#~ msgid "Invalid size parameter (%s)"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
-#~ msgid "Invalid size value (%s)"
-#~ msgstr "Неправилен параметър"
 
 #~ msgid "Invalid target address"
 #~ msgstr "Неправилен адрес на целта"
@@ -5073,26 +4880,6 @@ msgstr ""
 #~ msgstr "Неправилен параметър"
 
 #, fuzzy
-#~ msgid "Invalid x offset parameter (%s)"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
-#~ msgid "Invalid x parameter (%s)"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
-#~ msgid "Invalid y offset parameter (%s)"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
-#~ msgid "Invalid y parameter (%s)"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
-#~ msgid "Invalid zoom value (%s)"
-#~ msgstr "Неправилен параметър"
-
-#, fuzzy
 #~ msgid "Lag measure not available yet"
 #~ msgstr "Възможността не е на разположение"
 
@@ -5102,19 +4889,11 @@ msgstr ""
 #~ msgid "Left operand is not a number"
 #~ msgstr "Левия операнд не е число"
 
-#, fuzzy
-#~ msgid "Listing Qt properties for object named \"%Q\" of KVS class %Q"
-#~ msgstr "Не може да определи исканият адрес"
-
 #~ msgid "Looking up host %Q..."
 #~ msgstr "Търсене на хост %Q"
 
 #~ msgid "Looking up host %s"
 #~ msgstr "Търсене на хост %s"
-
-#, fuzzy
-#~ msgid "Mask %Q not found"
-#~ msgstr "Хоста не е намерен"
 
 #, fuzzy
 #~ msgid "Missing Alias Name"
@@ -5189,10 +4968,6 @@ msgstr ""
 #~ msgid "No source specified"
 #~ msgstr "Няма такъв файл"
 
-#, fuzzy
-#~ msgid "No such event (%Q)"
-#~ msgstr "Няма такъв обект"
-
 #~ msgid "No such file"
 #~ msgstr "Няма такъв файл"
 
@@ -5214,10 +4989,6 @@ msgstr ""
 
 #~ msgid "No such object function"
 #~ msgstr "Няма таква функция на обект"
-
-#, fuzzy
-#~ msgid "No such open mode: '%Q'"
-#~ msgstr "Няма такъв обект"
 
 #, fuzzy
 #~ msgid "No such user: $0"
@@ -5417,23 +5188,7 @@ msgstr ""
 #~ msgid "Unknown alignment"
 #~ msgstr "Неизвестна команда"
 
-#, fuzzy
-#~ msgid "Unknown alignment '%Q'"
-#~ msgstr "Неизвестна команда"
-
-#, fuzzy
-#~ msgid "Unknown alignment: '%Q'"
-#~ msgstr "Неизвестна команда"
-
 #~ msgid "Unknown command"
-#~ msgstr "Неизвестна команда"
-
-#, fuzzy
-#~ msgid "Unknown dock area '%Q'"
-#~ msgstr "Неизвестен оператор"
-
-#, fuzzy
-#~ msgid "Unknown echo mode %Q"
 #~ msgstr "Неизвестна команда"
 
 #~ msgid "Unknown error"
@@ -5461,10 +5216,6 @@ msgstr ""
 #~ msgstr "Неизвестна функция"
 
 #, fuzzy
-#~ msgid "Unknown orientation '%Q'"
-#~ msgstr "Неизвестна функция"
-
-#, fuzzy
 #~ msgid "Unknown orientation: "
 #~ msgstr "Неизвестна функция"
 
@@ -5474,26 +5225,6 @@ msgstr ""
 
 #~ msgid "Unknown string manipulation operation"
 #~ msgstr "Неизвестна операция за обработка на стринг"
-
-#, fuzzy
-#~ msgid "Unknown style '%Q'"
-#~ msgstr "Неизвестен оператор"
-
-#, fuzzy
-#~ msgid "Unknown text format '%Q'"
-#~ msgstr "Неизвестна функция"
-
-#, fuzzy
-#~ msgid "Unknown text position '%Q'"
-#~ msgstr "Неизвестна функция"
-
-#, fuzzy
-#~ msgid "Unknown tickmark '%Q'"
-#~ msgstr "Неизвестна команда"
-
-#, fuzzy
-#~ msgid "Unknown word wrap '%Q'"
-#~ msgstr "Неизвестен оператор"
 
 #~ msgid "Unrecognized proxy reply"
 #~ msgstr "Непознат отговор от прокси"
@@ -5509,24 +5240,12 @@ msgstr ""
 #~ msgid "Unsupported QT property (%s)"
 #~ msgstr "Неподдържан протокол %s"
 
-#, fuzzy
-#~ msgid "Unsupported type: $0"
-#~ msgstr "Неподдържан протокол %s"
-
 #~ msgid "Unterminated expression (missing ')' ?)"
 #~ msgstr "Незавършен израз (липсва ')'?)"
 
 #, fuzzy
-#~ msgid "User %Q not found"
-#~ msgstr "Хоста не е намерен"
-
-#, fuzzy
 #~ msgid "User Operator"
 #~ msgstr "Неизвестен оператор"
-
-#, fuzzy
-#~ msgid "User not found (%Q)"
-#~ msgstr "Хоста не е намерен"
 
 #~ msgid "Valid name but the host has no IP address"
 #~ msgstr "Валидно име но машината няма IPадрес"
@@ -5536,10 +5255,6 @@ msgstr ""
 
 #~ msgid "Variable or identifier expected"
 #~ msgstr "Очакване на променлива или идентификатор"
-
-#, fuzzy
-#~ msgid "Window %Q not found"
-#~ msgstr "Хоста не е намерен"
 
 #, fuzzy
 #~ msgid "Window Captions"

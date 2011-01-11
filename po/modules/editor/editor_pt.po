@@ -37,10 +37,10 @@ msgstr ""
 "\n"
 "\n"
 "Evento:\n"
-"%s\n"
+"%1\n"
 "\n"
 "Parâmetros:\n"
-"%s"
+"%2"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:366
 #, fuzzy
@@ -53,7 +53,7 @@ msgstr ""
 "\n"
 "\n"
 "Evento Bruto:\n"
-"%s"
+"%1"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:96
 msgid "### Epilogue ###"
@@ -347,12 +347,12 @@ msgstr "Chavetas:"
 #: src/modules/editor/ScriptEditorImplementation.cpp:1022
 #, fuzzy
 msgid "Can't open the file %1 for reading."
-msgstr "Não é possível abrir o ficheiro %s para leitura."
+msgstr "Não é possível abrir o ficheiro %1 para leitura."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:934
 #, fuzzy
 msgid "Can't open the file %1 for writing."
-msgstr "Não é possível abrir o ficheiro %s para escrita."
+msgstr "Não é possível abrir o ficheiro %1 para escrita."
 
 #: src/modules/actioneditor/ActionEditor.cpp:883
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1198
@@ -547,23 +547,23 @@ msgstr "Deseja realmente apagar a barra de ferramentas \"%1\"?"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:926
 #, fuzzy
 msgid "Do you really want to remove the alias \"%1\"?"
-msgstr "Deseja realmente remover a alias \"%Q\" ?"
+msgstr "Deseja realmente remover a alias \"%1\" ?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1337
 #, fuzzy
 msgid "Do you really want to remove the class \"%1\"?"
-msgstr "Deseja realmente remover a classe \"%Q\" ?"
+msgstr "Deseja realmente remover a classe \"%1\" ?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1345
 #, fuzzy
 msgid "Do you really want to remove the function \"%1\"?"
-msgstr "Deseja realmente remover a função \"%Q\" ?"
+msgstr "Deseja realmente remover a função \"%1\" ?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:928
 #: src/modules/classeditor/ClassEditorWindow.cpp:1340
 #, fuzzy
 msgid "Do you really want to remove the namespace \"%1\"?"
-msgstr "Deseja realmente remover o nomedeespaço \"%Q\" ?"
+msgstr "Deseja realmente remover o nomedeespaço \"%1\" ?"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:403
 msgid "Do you want the associated actions to be exported with the toolbar ?"
@@ -1199,7 +1199,7 @@ msgstr "Substituir por"
 #: src/modules/editor/ScriptEditorImplementation.cpp:991
 #, fuzzy
 msgid "Row: %1 Col: %2"
-msgstr "Linha: %d Coluna: %d"
+msgstr "Linha: %1 Coluna: %2"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:933
 msgid "Save Failed - KVIrc"

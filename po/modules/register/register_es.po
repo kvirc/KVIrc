@@ -23,7 +23,7 @@ msgstr "    Sin propiedades"
 #: src/modules/regchan/libkviregchan.cpp:229
 #, fuzzy
 msgid "    Property: %1=%2"
-msgstr "    Propiedad: %Q=%Q"
+msgstr "    Propiedad: %1=%2"
 
 #: src/modules/reguser/libkvireguser.cpp:831
 msgid "    Property: %Q=%Q"
@@ -246,10 +246,9 @@ msgstr "Cancelar"
 #: src/modules/regchan/libkviregchan.cpp:219
 #, fuzzy
 msgid "Channel: %1%2@%3"
-msgstr "Canal: %c%s@%s"
+msgstr "Canal: %1%2@%3"
 
-#: src/modules/reguser/dialog.cpp:719
-#: src/modules/reguser/dialog.cpp:823
+#: src/modules/reguser/dialog.cpp:719 src/modules/reguser/dialog.cpp:823
 msgid "Choose a Filename - KVIrc"
 msgstr "Elige un nombre de archivo - KVIrc"
 
@@ -258,10 +257,8 @@ msgstr "Elige un nombre de archivo - KVIrc"
 msgid "Comment:"
 msgstr "Comentario:"
 
-#: src/modules/reguser/dialog.cpp:520
-#: src/modules/reguser/dialog.cpp:523
-#: src/modules/reguser/dialog.cpp:524
-#: src/modules/reguser/dialog.cpp:526
+#: src/modules/reguser/dialog.cpp:520 src/modules/reguser/dialog.cpp:523
+#: src/modules/reguser/dialog.cpp:524 src/modules/reguser/dialog.cpp:526
 #: src/modules/reguser/dialog.cpp:528
 msgid "Default"
 msgstr "Por defecto"
@@ -293,8 +290,7 @@ msgstr ""
 msgid "Flags"
 msgstr "Opciones"
 
-#: src/modules/reguser/dialog.cpp:411
-#: src/modules/reguser/dialog.cpp:424
+#: src/modules/reguser/dialog.cpp:411 src/modules/reguser/dialog.cpp:424
 msgid "Group name:"
 msgstr "Nombre del grupo:"
 

@@ -32,10 +32,10 @@ msgstr ""
 "\n"
 "\n"
 "Événement : \n"
-"%s\n"
+"%1\n"
 "\n"
 "Paramètres : \n"
-"%s"
+"%2"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:366
 #, fuzzy
@@ -48,7 +48,7 @@ msgstr ""
 "\n"
 "\n"
 "Événement brute : \n"
-"%s"
+"%1"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:96
 msgid "### Epilogue ###"
@@ -333,12 +333,12 @@ msgstr "Crochets :"
 #: src/modules/editor/ScriptEditorImplementation.cpp:1022
 #, fuzzy
 msgid "Can't open the file %1 for reading."
-msgstr "Impossible d'ouvrir le fichier %s en lecture."
+msgstr "Impossible d'ouvrir le fichier %1 en lecture."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:934
 #, fuzzy
 msgid "Can't open the file %1 for writing."
-msgstr "Impossible d'ouvrir le fichier %s en écriture."
+msgstr "Impossible d'ouvrir le fichier %1 en écriture."
 
 #: src/modules/actioneditor/ActionEditor.cpp:883
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1198
@@ -1173,7 +1173,7 @@ msgstr "Remplacer par"
 #: src/modules/editor/ScriptEditorImplementation.cpp:991
 #, fuzzy
 msgid "Row: %1 Col: %2"
-msgstr "Ligne : %d Col : %d"
+msgstr "Ligne : %1 Col : %2"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:933
 msgid "Save Failed - KVIrc"
@@ -1237,7 +1237,7 @@ msgstr "Le fichier exporter serait vide : on a lachement refuser de l'écrire"
 #: src/modules/classeditor/ClassEditorWindow.cpp:1136
 #, fuzzy
 msgid "The file \"%1\" exists. Do you want to replace it?"
-msgstr "Le fichier \"%Q\" existe déjà. Voulez-vous le remplcer ?"
+msgstr "Le fichier \"%1\" existe déjà. Voulez-vous le remplcer ?"
 
 #: src/modules/actioneditor/ActionEditor.cpp:155
 #, fuzzy

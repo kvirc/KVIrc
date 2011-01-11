@@ -2615,7 +2615,7 @@ msgstr "Ha fallat la càrrega de l'Avatar - KVIrc"
 #: src/modules/options/OptionsWidget_identity.cpp:562
 #, fuzzy
 msgid "Failed to download the avatar image.<br><b>%1</b>"
-msgstr "Ha fallat la descàrrega de la imatge de l'avatar.<br><b>%Q</b>"
+msgstr "Ha fallat la descàrrega de la imatge de l'avatar.<br><b>%1</b>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:556
 #: src/modules/options/OptionsWidget_identity.cpp:594
@@ -2847,9 +2847,8 @@ msgid "Horizontal align:"
 msgstr "Localitzar el certificat:"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:164
-#, fuzzy
 msgid "Host links"
-msgstr "Enllaços totals: %d"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:51
 #, fuzzy
@@ -3436,9 +3435,8 @@ msgid "No selection"
 msgstr "Sense selecció"
 
 #: src/modules/options/libkvioptions.cpp:206
-#, fuzzy
 msgid "No such options page class name %Q"
-msgstr "No existeixen aquestes opcions a la pàgina del nom de la classe"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:49
 msgid "Normal"
@@ -4031,9 +4029,8 @@ msgid "Save Location"
 msgstr "&Localització:"
 
 #: src/modules/options/OptionsWidget_logging.cpp:46
-#, fuzzy
 msgid "Save logs to folder:"
-msgstr "No puc grabar el registre a l'arxiu %s"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:107
 msgid "Save path:"
@@ -5299,10 +5296,6 @@ msgstr "cada:"
 #~ msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"
 #~ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] es coneix ara com a \r!n\r%Q\r"
 
-#, fuzzy
-#~ msgid "\r!n\r%Q\r invited %Q into channel %Q"
-#~ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] t'invita al canal \r!c\r%Q\r (%Q)"
-
 #~ msgid "    Mask: %Q!%Q@%Q"
 #~ msgstr "    Màscara: %Q!%Q@%Q"
 
@@ -5340,15 +5333,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid " I can't find the specified file '%Q'."
-#~ msgstr "No es pot trobar l'arxiu multimèdia %s"
-
-#, fuzzy
-#~ msgid " I can't find the specified file."
-#~ msgstr "No es pot trobar l'arxiu multimèdia %s"
-
-#, fuzzy
-#~ msgid " I cannot read the file %Q'."
-#~ msgstr "No puc obrir aquest arxiu"
+#~ msgstr "No es pot trobar l'arxiu multimèdia %Q"
 
 #, fuzzy
 #~ msgid " I cannot read the file."
@@ -5394,14 +5379,6 @@ msgstr "cada:"
 
 #~ msgid "%1 hops"
 #~ msgstr "%1 salts"
-
-#, fuzzy
-#~ msgid "%1 is using irc server: %2"
-#~ msgstr "Emprant servidor <b>%1</b>"
-
-#, fuzzy
-#~ msgid "%1 is using irc server: %2 (%3 hops)"
-#~ msgstr "Emprant servidor <b>%1</b>"
 
 #~ msgid "%1 servers imported successfully"
 #~ msgstr "%1 servidores s'han importat correctament"
@@ -5451,10 +5428,6 @@ msgstr "cada:"
 #~ msgid "%Q [%Q@%Q] unsets avatar (%Q %Q)"
 #~ msgstr "%Q [%Q@%Q] treu el avatar (%Q %Q)"
 
-#, fuzzy
-#~ msgid "%Q changes avatar to %s"
-#~ msgstr "%Q [%Q@%Q] canvia el avatar a %s (%Q %Q)"
-
 #~ msgid "%Q established [%s (%s:%u)]"
 #~ msgstr "%Q establerta [%s (%s:%u)]"
 
@@ -5470,10 +5443,6 @@ msgstr "cada:"
 
 #~ msgid "%Q is on IRC"
 #~ msgstr "%Q està a l'IRC"
-
-#, fuzzy
-#~ msgid "%Q unsets avatar"
-#~ msgstr "Emprar avatar"
 
 #~ msgid "%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"
 #~ msgstr "%c\r!n\r%Q\r%c info WHOIS de \r!s\r%Q\r"
@@ -5497,10 +5466,6 @@ msgstr "cada:"
 #~ msgid "%c\r!n\r%Q\r%c's channels: %Q"
 #~ msgstr "El canals de %c\r!n\r%Q\r%c: %Q"
 
-#, fuzzy
-#~ msgid "%c\r!n\r%Q\r%c's codepage is %Q: %Q"
-#~ msgstr "El canals de %c\r!n\r%Q\r%c: %Q"
-
 #~ msgid "%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"
 #~ msgstr "Temps d'espera de %c\r!n\r%Q\r%c : %ud %uh %um %us"
 
@@ -5521,27 +5486,23 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c's administrator is %s"
-#~ msgstr "Informació de %c\r!n\r%Q\r%c: %Q"
+#~ msgstr "Informació de %c\r!n\r%s\r%c: %s"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c's contact address is %s"
-#~ msgstr "El canals de %c\r!n\r%Q\r%c: %Q"
-
-#, fuzzy
-#~ msgid "%c\r!s\r%s\r%c's information:"
-#~ msgstr "Informació de %c\r!n\r%Q\r%c: %Q"
+#~ msgstr "El canals de %c\r!n\r%s\r%c: %s"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c's server info: %s"
-#~ msgstr "Informació de %c\r!n\r%Q\r%c: %Q"
+#~ msgstr "Informació de %c\r!n\r%s\r%c: %s"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c's time is %Q"
-#~ msgstr "Informació de %c\r!n\r%Q\r%c: %Q"
+#~ msgstr "Informació de %c\r!n\r%s\r%c: %Q"
 
 #, fuzzy
 #~ msgid "%c\r!s\r%s\r%c: %Q"
-#~ msgstr "Informació de %c\r!n\r%Q\r%c: %Q"
+#~ msgstr "Informació de %c\r!n\r%s\r%c: %Q"
 
 #~ msgid "%c%cLinks for %Q"
 #~ msgstr "%c%cEnllaços per a %Q"
@@ -6618,7 +6579,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
-#~ msgstr "Afegida l'oferta de %d segs de l'arxiu  %s (%s) i receptor %s"
+#~ msgstr "Afegida l'oferta de %d segs de l'arxiu  %Q (%Q) i receptor %Q"
 
 #~ msgid "Added %d secs file offer for file %s (%s) and receiver %s"
 #~ msgstr "Afegida l'oferta de %d segs de l'arxiu  %s (%s) i receptor %s"
@@ -6803,14 +6764,6 @@ msgstr "cada:"
 #~ msgid "Back"
 #~ msgstr "Enrere"
 
-#, fuzzy
-#~ msgid "Background not found %Q "
-#~ msgstr "Color de fons"
-
-#, fuzzy
-#~ msgid "Background not found %s "
-#~ msgstr "Color de fons"
-
 #~ msgid "Backward compatibility action for toolbar.define"
 #~ msgstr "Compatibilitat cap enrere per a toolbar.define"
 
@@ -6927,14 +6880,6 @@ msgstr "cada:"
 #~ msgid "Broken prologue in popup menu '%Q': ignoring"
 #~ msgstr "Pròleg erroni en menú emergent '%Q': ignorant"
 
-#, fuzzy
-#~ msgid ""
-#~ "Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' "
-#~ "from object '%Q::%Q': disconnecting"
-#~ msgstr ""
-#~ "Slot '%s' erroni en l'objecte de destí '%s' mentres s'emetia la senyal "
-#~ "'%s' des de l'objecte '%s': desconectant"
-
 #~ msgid ""
 #~ "Broken slot '%s' in target object '%s' while emitting signal '%s' from "
 #~ "object '%s': disconnecting"
@@ -6989,7 +6934,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Can't add a file offer for file %Q (huh ? file not readable ?)"
-#~ msgstr "No puc afegir una oferta d'arxiu per a %s (¿arxiu no llegible?)"
+#~ msgstr "No puc afegir una oferta d'arxiu per a %Q (¿arxiu no llegible?)"
 
 #~ msgid "Can't add a file offer for file %s (huh ? file not readable ?)"
 #~ msgstr "No puc afegir una oferta d'arxiu per a %s (¿arxiu no llegible?)"
@@ -7010,10 +6955,6 @@ msgstr "cada:"
 
 #~ msgid "Can't create the terminal emulation part"
 #~ msgstr "No puc crear la part d'emulació de terminal"
-
-#, fuzzy
-#~ msgid "Can't delete a null object reference"
-#~ msgstr "No he pogut trobar l'objecte widget per a afegir (%s)"
 
 #, fuzzy
 #~ msgid "Can't delete an inexisting object"
@@ -7056,7 +6997,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Can't find the icon '%Q'"
-#~ msgstr "No es pot trobar la icona '%s'"
+#~ msgstr "No es pot trobar la icona '%Q'"
 
 #~ msgid "Can't find the icon '%s'"
 #~ msgstr "No es pot trobar la icona '%s'"
@@ -7067,10 +7008,6 @@ msgstr "cada:"
 
 #~ msgid "Can't find the multimedia file %s"
 #~ msgstr "No es pot trobar l'arxiu multimèdia %s"
-
-#, fuzzy
-#~ msgid "Can't find the object "
-#~ msgstr "No es pot trobar la icona '%s'"
 
 #, fuzzy
 #~ msgid "Can't find the object to add (%s)"
@@ -7099,23 +7036,11 @@ msgstr "cada:"
 #~ msgstr "No es pot trobar l'arxiu multimèdia %s"
 
 #, fuzzy
-#~ msgid "Can't find the tab "
-#~ msgstr "No es pot trobar la icona '%s'"
-
-#, fuzzy
-#~ msgid "Can't find the tab object "
-#~ msgstr "No he pogut trobar l'objecte widget per a afegir (%s)"
-
-#, fuzzy
 #~ msgid "Can't find the widget (%s)"
 #~ msgstr "No he pogut trobar l'objecte widget per a afegir (%s)"
 
 #, fuzzy
 #~ msgid "Can't find the widget object (%s)"
-#~ msgstr "No he pogut trobar l'objecte widget per a afegir (%s)"
-
-#, fuzzy
-#~ msgid "Can't find the widget object assuming 0"
 #~ msgstr "No he pogut trobar l'objecte widget per a afegir (%s)"
 
 #~ msgid "Can't find the widget object to add (%s)"
@@ -7135,7 +7060,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Can't find the window with id '%Q'"
-#~ msgstr "No he pogut trobar la finestra amb id '%s'"
+#~ msgstr "No he pogut trobar la finestra amb id '%Q'"
 
 #~ msgid "Can't find the window with id '%s'"
 #~ msgstr "No he pogut trobar la finestra amb id '%s'"
@@ -7177,11 +7102,11 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Can't open the file \"%Q\" for reading"
-#~ msgstr "No puc obrir l'arxiu \"%s\" per a lectura"
+#~ msgstr "No puc obrir l'arxiu \"%Q\" per a lectura"
 
 #, fuzzy
 #~ msgid "Can't open the file \"%Q\" for writing"
-#~ msgstr "No puc obrir l'arxiu \"%s\" en mode escriptura"
+#~ msgstr "No puc obrir l'arxiu \"%Q\" en mode escriptura"
 
 #~ msgid "Can't open the file \"%s\" for reading"
 #~ msgstr "No puc obrir l'arxiu \"%s\" per a lectura"
@@ -7191,10 +7116,6 @@ msgstr "cada:"
 
 #~ msgid "Can't open the filter file %s for writing"
 #~ msgstr "No puc obrir l'arxiu de filtre %s per a escriptura"
-
-#, fuzzy
-#~ msgid "Can't override the builtin class \"%Q\""
-#~ msgstr "No es pot matar una classe interna"
 
 #~ msgid "Can't rebind the command sequence: missing window identifier"
 #~ msgstr ""
@@ -7244,13 +7165,13 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Can't set the current avatar to '%Q': can't load the image"
-#~ msgstr "No puc posar el avatar actual a '%s': no puc carregar la imatge"
+#~ msgstr "No puc posar el avatar actual a '%Q': no puc carregar la imatge"
 
 #, fuzzy
 #~ msgid ""
 #~ "Can't set the current avatar to '%Q': failed to start the http transfer"
 #~ msgstr ""
-#~ "No puc posar l'avatar actual a '%s': ha fallat l'inic de la transferència "
+#~ "No puc posar l'avatar actual a '%Q': ha fallat l'inic de la transferència "
 #~ "http"
 
 #~ msgid ""
@@ -7298,14 +7219,6 @@ msgstr "cada:"
 #~ "Es possible que no tingui permís d'escriptura per a aquesta ruta. Si us "
 #~ "plau, retrocedeixi i trii un altre directori."
 
-#, fuzzy
-#~ msgid "Cannot open install.kvs for reading."
-#~ msgstr "No puc obrir l'arxiu %s per a lectura."
-
-#, fuzzy
-#~ msgid "Cannot open install.kvs for writing."
-#~ msgstr "No puc obrir l'arxiu \"%s\" en mode escriptura"
-
 #~ msgid "Cannot request links: No active connection"
 #~ msgstr "No puc demanar enllaços: No hi ha una connexió activa"
 
@@ -7343,10 +7256,6 @@ msgstr "cada:"
 
 #~ msgid "Case Insensitive"
 #~ msgstr "No distingeix majús/minús"
-
-#, fuzzy
-#~ msgid "Category:"
-#~ msgstr "Categoria: %Q"
 
 #~ msgid "Category: %Q"
 #~ msgstr "Categoria: %Q"
@@ -7499,13 +7408,9 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Class \"%Q\" is not defined"
-#~ msgstr "La classe %s no està definida"
+#~ msgstr "La classe %Q no està definida"
 
 #~ msgid "Class %s is undefined"
-#~ msgstr "La classe %s no està definida"
-
-#, fuzzy
-#~ msgid "Class is undefined"
 #~ msgstr "La classe %s no està definida"
 
 #~ msgid "Clear"
@@ -7547,10 +7452,6 @@ msgstr "cada:"
 
 #~ msgid "Common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 #~ msgstr "Canals comuns per a \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-
-#, fuzzy
-#~ msgid "Common channels: %2"
-#~ msgstr "Unir-se a Canals"
 
 #~ msgid "Condition:"
 #~ msgstr "Condició:"
@@ -7698,31 +7599,6 @@ msgstr "cada:"
 #, fuzzy
 #~ msgid "Crypting"
 #~ msgstr "Criptografia"
-
-#~ msgid ""
-#~ "Cryptographic engine based on the\n"
-#~ "Advanced Encryption Standard (AES)\n"
-#~ "algorithm called Rijndael.\n"
-#~ "The text is first encrypted with rijndael\n"
-#~ "and then converted to %s notation.\n"
-#~ "The keys used are %d bit long and will be padded\n"
-#~ "with zeros if you provide shorter ones.\n"
-#~ "If only one key is provided, this engine\n"
-#~ "will use it for both encrypting and decrypting.\n"
-#~ "See the rijndael module documentation\n"
-#~ "for more info on the algorithm used.\n"
-#~ msgstr ""
-#~ "Motor criptogràfic basat en el\n"
-#~ "Advanced Encryption Standard (AES)\n"
-#~ "algoritme anomenat Rijndael.\n"
-#~ "El text és xifrat primer amb rijndael\n"
-#~ "i després convertit a notació %s.\n"
-#~ "Les claus emprades són de longitud % bits i seran reomplerts\n"
-#~ "amb zeros si es proporciona una més curta.\n"
-#~ "Si només es proporciona una clau, aquest motor\n"
-#~ "l'emprarà per al xifrat i desxifrat.\n"
-#~ "Llegeixis la documentació del mòdul rijndael\n"
-#~ "per a obtenir més informació sobre l'algoritme emprat.\n"
 
 #~ msgid "Cryptography/text transformation"
 #~ msgstr "Transformació Criptogràfica/textual"
@@ -7883,11 +7759,11 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Do you really want to remove the alias \"%Q\" ?"
-#~ msgstr "¿Realment vol borra la barra d'eines \"%1\" ?"
+#~ msgstr "¿Realment vol borra la barra d'eines \"%Q\" ?"
 
 #, fuzzy
 #~ msgid "Do you really want to remove the namespace \"%Q\" ?"
-#~ msgstr "¿Realment vol borra la barra d'eines \"%1\" ?"
+#~ msgstr "¿Realment vol borra la barra d'eines \"%Q\" ?"
 
 #, fuzzy
 #~ msgid "Do you really want to uninstall the addon \"%1\" ?"
@@ -8124,7 +8000,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Error token: %c%Q"
-#~ msgstr "Error en paraula clau: %c%s"
+#~ msgstr "Error en paraula clau: %c%Q"
 
 #~ msgid "Error triggered from event handler %c%Q::%Q"
 #~ msgstr "Error disparat des del manipulador d'events %c%Q::%Q"
@@ -8236,7 +8112,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Failed to copy from %Q to %Q"
-#~ msgstr "Errada al copiar %s a %s"
+#~ msgstr "Errada al copiar %Q a %Q"
 
 #~ msgid "Failed to create the socket"
 #~ msgstr "Fallida al crear el socket"
@@ -8246,17 +8122,13 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Failed to execute command '%Q'"
-#~ msgstr "Errada a l'executar la comanda '%s'"
+#~ msgstr "Errada a l'executar la comanda '%Q'"
 
 #~ msgid "Failed to execute command '%s'"
 #~ msgstr "Errada a l'executar la comanda '%s'"
 
 #~ msgid "Failed to execute the init routine"
 #~ msgstr "Errada al executar la ruta d'inici"
-
-#, fuzzy
-#~ msgid "Failed to find the widget to wrap"
-#~ msgstr "No he pogut trobar l'objecte widget per a afegir (%s)"
 
 #~ msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
 #~ msgstr "Ha fallat la càrrega del avatar amb nom \"%Q\"i ruta local \"%Q\""
@@ -8269,7 +8141,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Failed to make the directory %Q"
-#~ msgstr "Errada al crear el directori %s"
+#~ msgstr "Errada al crear el directori %Q"
 
 #~ msgid "Failed to make the directory %s"
 #~ msgstr "Errada al crear el directori %s"
@@ -8279,21 +8151,21 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Failed to remove the directory %Q"
-#~ msgstr "Errada al borrar el directori %s"
+#~ msgstr "Errada al borrar el directori %Q"
 
 #~ msgid "Failed to remove the directory %s"
 #~ msgstr "Errada al borrar el directori %s"
 
 #, fuzzy
 #~ msgid "Failed to remove the file %Q"
-#~ msgstr "Errada al borrar l'arxiu %s"
+#~ msgstr "Errada al borrar l'arxiu %Q"
 
 #~ msgid "Failed to remove the file %s"
 #~ msgstr "Errada al borrar l'arxiu %s"
 
 #, fuzzy
 #~ msgid "Failed to rename %Q to %Q"
-#~ msgstr "Errada al renombrar %s a %s"
+#~ msgstr "Errada al renombrar %Q a %Q"
 
 #~ msgid "Failed to rename %s to %s"
 #~ msgstr "Errada al renombrar %s a %s"
@@ -8321,14 +8193,6 @@ msgstr "cada:"
 #~ msgid "Failed to start the connection: %Q"
 #~ msgstr "Fallida al començar la connexió: %Q"
 
-#, fuzzy
-#~ msgid "Failed to start the get request: %Q"
-#~ msgstr "Errada al començar el procés"
-
-#, fuzzy
-#~ msgid "Failed to start the get request: %s"
-#~ msgstr "Errada al començar el procés"
-
 #~ msgid "Failed to start the process"
 #~ msgstr "Errada al començar el procés"
 
@@ -8347,7 +8211,7 @@ msgstr "cada:"
 #~ "You will need to do it manually , otherwise KVirc will restart with\n"
 #~ "the setup!"
 #~ msgstr ""
-#~ "Fallida a l'escriptura en el directori de kvirc %s.\n"
+#~ "Fallida a l'escriptura en el directori de kvirc %Q.\n"
 #~ "Necessita configurar-lo manualment, o KVirc reiniciarà amb \n"
 #~ " el procés de configuració!"
 
@@ -8363,10 +8227,6 @@ msgstr "cada:"
 #, fuzzy
 #~ msgid "File download failed"
 #~ msgstr "Directori d'arxius descarregats:"
-
-#, fuzzy
-#~ msgid "File download from %1 terminated"
-#~ msgstr "Arxiu descarregat: procesant..."
 
 #, fuzzy
 #~ msgid "File download terminated"
@@ -8532,14 +8392,6 @@ msgstr "cada:"
 #, fuzzy
 #~ msgid "Found empty prologue block: maybe you need to fix the script?"
 #~ msgstr "Pròleg de bloc buit sense sentit: arregla l'script"
-
-#, fuzzy
-#~ msgid ""
-#~ "Found end of input where character '%c' was expected: see \"/help %s\" "
-#~ "for the command syntax"
-#~ msgstr ""
-#~ "Trobat el caràcter '%q' (unicode 0x%x) on s'esperava '%c': mira \"/help %s"
-#~ "\" per a la sintaxis de les comandes"
 
 #~ msgid ""
 #~ "Found token '%Q' where a 'case','match','regexp','default' or 'break' "
@@ -8714,7 +8566,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "I can't find the specified file %Q."
-#~ msgstr "No es pot trobar l'arxiu multimèdia %s"
+#~ msgstr "No es pot trobar l'arxiu multimèdia %Q"
 
 #~ msgid "I can't open that file"
 #~ msgstr "No puc obrir aquest arxiu"
@@ -8834,7 +8686,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Inexisting popup \"%Q\""
-#~ msgstr "Menú emergent \"%s\" inexistent"
+#~ msgstr "Menú emergent \"%Q\" inexistent"
 
 #, fuzzy
 #~ msgid "Initializing scripting engine..."
@@ -8911,14 +8763,14 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Invalid IRC context id '%Q'"
-#~ msgstr "Id '%s' de context d'IRC no vàlid"
+#~ msgstr "Id '%Q' de context d'IRC no vàlid"
 
 #~ msgid "Invalid IRC context id '%s'"
 #~ msgstr "Id '%s' de context d'IRC no vàlid"
 
 #, fuzzy
 #~ msgid "Invalid IRC url (%Q)"
-#~ msgstr "url IRC no vàlida (%s)"
+#~ msgstr "url IRC no vàlida (%Q)"
 
 #~ msgid "Invalid IRC url (%s)"
 #~ msgstr "url IRC no vàlida (%s)"
@@ -8935,10 +8787,6 @@ msgstr "cada:"
 
 #~ msgid "Invalid array index: positive integer expected"
 #~ msgstr "Índex de la matriu no vàlid: s'esperava un enter positiu"
-
-#, fuzzy
-#~ msgid "Invalid color-set specification, using default"
-#~ msgstr "Especificació d'icona '%s' no vàlida, emprant el valor per defecte"
 
 #, fuzzy
 #~ msgid "Invalid column (%s)"
@@ -8969,10 +8817,6 @@ msgstr "cada:"
 #~ msgstr "Adreça no vàlida per a aquest motor"
 
 #~ msgid "Invalid duration (%s): using default"
-#~ msgstr "Duració no vàlida (%s): emprant la duració per defecte"
-
-#, fuzzy
-#~ msgid "Invalid duration value: using default"
 #~ msgstr "Duració no vàlida (%s): emprant la duració per defecte"
 
 #~ msgid "Invalid expression evaluation in object scope"
@@ -9035,10 +8879,6 @@ msgstr "cada:"
 #~ msgid "Invalid marging value (%s)"
 #~ msgstr "Marge no vàlid (%s)"
 
-#, fuzzy
-#~ msgid "Invalid mode '%Q'"
-#~ msgstr "Imatge no vàlida"
-
 #~ msgid "Invalid object"
 #~ msgstr "Objecte no vàlid"
 
@@ -9064,10 +8904,6 @@ msgstr "cada:"
 #~ msgid "Invalid pitch (%s): using default"
 #~ msgstr "To no vàlid (%s): emprant el to per defecte"
 
-#, fuzzy
-#~ msgid "Invalid pitch value: using default"
-#~ msgstr "To no vàlid (%s): emprant el to per defecte"
-
 #~ msgid "Invalid port (%s)"
 #~ msgstr "Port no vàlid (%s)"
 
@@ -9088,10 +8924,6 @@ msgstr "cada:"
 #~ msgid "Invalid resize mode (%s): defaulting to Auto"
 #~ msgstr "Duració no vàlida (%s): emprant la duració per defecte"
 
-#, fuzzy
-#~ msgid "Invalid resize mode defaulting to Auto"
-#~ msgstr "Duració no vàlida (%s): emprant la duració per defecte"
-
 #~ msgid "Invalid row parameter (%s)"
 #~ msgstr "Paràmetre fila no vàlid (%s)"
 
@@ -9101,10 +8933,6 @@ msgstr "cada:"
 
 #~ msgid "Invalid screen coordinates"
 #~ msgstr "Coordenades de pantalla no vàlides"
-
-#, fuzzy
-#~ msgid "Invalid selection mode '%Q' assuming single"
-#~ msgstr "Adreça no vàlida per a aquest motor"
 
 #, fuzzy
 #~ msgid "Invalid size parameter (%s)"
@@ -9167,10 +8995,6 @@ msgstr "cada:"
 
 #~ msgid "Invalid to_row parameter (%s)"
 #~ msgstr "Paràmetre fins_fila no vàlid (%s)"
-
-#, fuzzy
-#~ msgid "Invalid visible name: using default"
-#~ msgstr "To no vàlid (%s): emprant el to per defecte"
 
 #~ msgid "Invalid width parameter"
 #~ msgstr "Valor d'amplada no vàlid"
@@ -9548,15 +9372,15 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Mask %Q already used to identify user %Q"
-#~ msgstr "Màscara %s ja emprada per a identificar a l'usuari %s"
+#~ msgstr "Màscara %Q ja emprada per a identificar a l'usuari %Q"
 
 #, fuzzy
 #~ msgid "Mask %Q is already used to identify user %s"
-#~ msgstr "La màscara %s ja s'empra per a identificar a l'usuari %s"
+#~ msgstr "La màscara %Q ja s'empra per a identificar a l'usuari %s"
 
 #, fuzzy
 #~ msgid "Mask %Q not found"
-#~ msgstr "Màscara %s no trobada"
+#~ msgstr "Màscara %Q no trobada"
 
 #~ msgid "Mask %s already used to identify user %s"
 #~ msgstr "Màscara %s ja emprada per a identificar a l'usuari %s"
@@ -9703,10 +9527,6 @@ msgstr "cada:"
 #~ msgid "Missing new nickname"
 #~ msgstr "Falta nou nick"
 
-#, fuzzy
-#~ msgid "Missing non-optional parameter \"%s\""
-#~ msgstr "Falta paràmetre"
-
 #~ msgid "Missing object class name"
 #~ msgstr "Falta el nom de la classe de l'objecte"
 
@@ -9796,11 +9616,6 @@ msgstr "cada:"
 #~ "Ha fallat la crida a la comanda del mòdul: no puc carregar el mòdul '%Q'"
 
 #, fuzzy
-#~ msgid "Module command call failed: can't load the module '%Q': %Q"
-#~ msgstr ""
-#~ "Ha fallat la crida a la comanda del mòdul: no puc carregar el mòdul '%Q'"
-
-#, fuzzy
 #~ msgid ""
 #~ "Module command call failed: the module '%Q' doesn't export a callback "
 #~ "command named '%Q'"
@@ -9819,22 +9634,9 @@ msgstr "cada:"
 #~ msgstr ""
 #~ "Ha fallat la crida a la funció del mòdul: no puc carregar el mòdul '%Q'"
 
-#, fuzzy
-#~ msgid "Module function call failed: can't load the module 'str'"
-#~ msgstr ""
-#~ "Ha fallat la crida a la funció del mòdul: no puc carregar el mòdul '%Q'"
-
 #~ msgid ""
 #~ "Module function call failed: the module '%Q' doesn't export a function "
 #~ "named '%Q'"
-#~ msgstr ""
-#~ "Ha fallat la crida a la funció del mòdul: el mòdul '%Q' no exporta una "
-#~ "funció cridada '%Q'"
-
-#, fuzzy
-#~ msgid ""
-#~ "Module function call failed: the module 'str' doesn't export a function "
-#~ "named 'split'"
 #~ msgstr ""
 #~ "Ha fallat la crida a la funció del mòdul: el mòdul '%Q' no exporta una "
 #~ "funció cridada '%Q'"
@@ -9868,10 +9670,6 @@ msgstr "cada:"
 #~ msgstr "La meva Barra d'Eines"
 
 #~ msgid "Name:"
-#~ msgstr "Nom:"
-
-#, fuzzy
-#~ msgid "Name: %Q"
 #~ msgstr "Nom:"
 
 #~ msgid "Names for \r!c\r%Q\r: %Q"
@@ -10027,11 +9825,11 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "No button with type %Q named %Q"
-#~ msgstr "No hi ha un botó del tipus %s anomenat %s"
+#~ msgstr "No hi ha un botó del tipus %Q anomenat %Q"
 
 #, fuzzy
 #~ msgid "No catalogue %Q for the current language found"
-#~ msgstr "No s'ha trobat el catàleg%ss per al llenguatge actual"
+#~ msgstr "No s'ha trobat el catàleg%Qs per al llenguatge actual"
 
 #~ msgid "No catalogue %s for the current language found"
 #~ msgstr "No s'ha trobat el catàleg%ss per al llenguatge actual"
@@ -10044,7 +9842,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "No commandline specified for this type of url (%Q)"
-#~ msgstr "No s'ha especificat línia de comandes per a aquest tipus d'url (%s)"
+#~ msgstr "No s'ha especificat línia de comandes per a aquest tipus d'url (%Q)"
 
 #~ msgid "No commandline specified for this type of url (%s)"
 #~ msgstr "No s'ha especificat línia de comandes per a aquest tipus d'url (%s)"
@@ -10082,11 +9880,11 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "No handler '%Q' for event '%Q'"
-#~ msgstr "No hi ha manipulador '%s' per a l'event '%s'"
+#~ msgstr "No hi ha manipulador '%Q' per a l'event '%Q'"
 
 #, fuzzy
 #~ msgid "No handler '%Q' for raw numeric event '%d'"
-#~ msgstr "No hi ha un manipulador %s' per a l'event numèric raw '%d'"
+#~ msgstr "No hi ha un manipulador %Q' per a l'event numèric raw '%d'"
 
 #~ msgid "No handler '%s' for event '%s'"
 #~ msgstr "No hi ha manipulador '%s' per a l'event '%s'"
@@ -10119,7 +9917,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "No menu bar item with text '%Q'"
-#~ msgstr "No existeix l'element de menú amb el text '%s'"
+#~ msgstr "No existeix l'element de menú amb el text '%Q'"
 
 #~ msgid "No netmask specified"
 #~ msgstr "Màscara no especificada"
@@ -10195,7 +9993,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "No such event (%Q)"
-#~ msgstr "No existeix l'event (%s)"
+#~ msgstr "No existeix l'event (%Q)"
 
 #~ msgid "No such event (%s)"
 #~ msgstr "No existeix l'event (%s)"
@@ -10205,10 +10003,6 @@ msgstr "cada:"
 
 #~ msgid "No such irc context (%d)"
 #~ msgstr "No existeix el context irc (%d)"
-
-#, fuzzy
-#~ msgid "No such line number"
-#~ msgstr "No existeix el cronòmetre (%s)"
 
 #~ msgid "No such module command"
 #~ msgstr "No hi ha tal comanda de mòdul"
@@ -10233,7 +10027,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "No such open mode: '%Q'"
-#~ msgstr "No existeix el mode d'obertura: %s"
+#~ msgstr "No existeix el mode d'obertura: %Q"
 
 #~ msgid "No such options page class name"
 #~ msgstr "No existeixen aquestes opcions a la pàgina del nom de la classe"
@@ -10480,7 +10274,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Notifying avatar '%Q' to %Q"
-#~ msgstr "Notificant avatar '%s' a %s"
+#~ msgstr "Notificant avatar '%Q' a %Q"
 
 #, fuzzy
 #~ msgid "Novice"
@@ -10555,10 +10349,6 @@ msgstr "cada:"
 #~ "Ups... no puc trobar l'arxiu de llicència.\n"
 #~ "Ha d'estar inclòs a la distribució...\n"
 #~ "Si us plau, informi d'això a <pragma at kvirc dot net>"
-
-#, fuzzy
-#~ msgid "Oops... no such property: %s"
-#~ msgstr "   Propietat: %s=%s"
 
 #~ msgid "Open &Terminal"
 #~ msgstr "Obrir &Terminal"
@@ -10787,33 +10577,6 @@ msgstr "cada:"
 #~ msgid "Please wait while the list is being downloaded"
 #~ msgstr "Per favor, espera mentres es descarrega la llista"
 
-#, fuzzy
-#~ msgid ""
-#~ "Popular cryptographic engine based on the\n"
-#~ "old Blowfish encryption algorithm.\n"
-#~ "The text is first encrypted with Blowfish \n"
-#~ "and then converted to base64 notation.\n"
-#~ "The keys used have variable length and\n"
-#~ "are specified as character strings.\n"
-#~ "You can specify keys long up to 56 bytes (448 bits).\n"
-#~ "If only one key is provided, this engine\n"
-#~ "will use it for both encrypting and decrypting.\n"
-#~ "This engine works in ECB mode by default:\n"
-#~ "if you want to use CBC mode you must prefix\n"
-#~ "your key(s) with \"cbc:\".\n"
-#~ msgstr ""
-#~ "Motor criptogràfic basat en el\n"
-#~ "Advanced Encryption Standard (AES)\n"
-#~ "algoritme anomenat Rijndael.\n"
-#~ "El text és xifrat primer amb rijndael\n"
-#~ "i després convertit a notació %s.\n"
-#~ "Les claus emprades són de longitud % bits i seran reomplerts\n"
-#~ "amb zeros si es proporciona una més curta.\n"
-#~ "Si només es proporciona una clau, aquest motor\n"
-#~ "l'emprarà per al xifrat i desxifrat.\n"
-#~ "Llegeixis la documentació del mòdul rijndael\n"
-#~ "per a obtenir més informació sobre l'algoritme emprat.\n"
-
 #~ msgid "Popup %Q is not defined"
 #~ msgstr "El menú emergent %Q no està definit"
 
@@ -10856,12 +10619,8 @@ msgstr "cada:"
 #, fuzzy
 #~ msgid "Processing DCC %Q request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%S %S)"
 #~ msgstr ""
-#~ "Processant petició DCC %S solicitada des de \r!n\r%Q\r [%Q@\r!h\r%Q\r] "
+#~ "Processant petició DCC %Q solicitada des de \r!n\r%Q\r [%Q@\r!h\r%Q\r] "
 #~ "(%S %S)"
-
-#, fuzzy
-#~ msgid "Processing aborted"
-#~ msgstr "Processant llista: %Q"
 
 #~ msgid "Processing link: %s"
 #~ msgstr "Processant enllaç: %s"
@@ -10877,14 +10636,6 @@ msgstr "cada:"
 
 #~ msgid "Property Editor"
 #~ msgstr "Editor de Propietats"
-
-#, fuzzy
-#~ msgid "Property: %c%Q%c, type %s"
-#~ msgstr "   Propietat: %s=%s"
-
-#, fuzzy
-#~ msgid "Property: %c%s%c, type: %s"
-#~ msgstr "   Propietat: %s=%s"
 
 #~ msgid "Proxy %s has a nickname: %s"
 #~ msgstr "El proxy %s té un nick: %s"
@@ -11020,14 +10771,14 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Read error for file %Q"
-#~ msgstr "Error de lectura per a l'arxiu %s"
+#~ msgstr "Error de lectura per a l'arxiu %Q"
 
 #, fuzzy
 #~ msgid ""
 #~ "Read error for file %Q (have been unable to read the requested size in "
 #~ "1000 retries)"
 #~ msgstr ""
-#~ "Error de lectura de l'arxiu %s (no s'ha pogut llegir la mida solicitada "
+#~ "Error de lectura de l'arxiu %Q (no s'ha pogut llegir la mida solicitada "
 #~ "en 1000 reintents)"
 
 #~ msgid "Read error for file %s"
@@ -11079,7 +10830,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Received ping from \r!s\r%Q\r (PING %Q), replied pong"
-#~ msgstr "Ping rebut de \r!s\r%s\r (PING %s), respost pong"
+#~ msgstr "Ping rebut de \r!s\r%Q\r (PING %Q), respost pong"
 
 #~ msgid "Received pong from \r!s\r%s\r (PONG %s)"
 #~ msgstr "Rebut pong de \r!s\r%s\r (PONG %s)"
@@ -11153,10 +10904,6 @@ msgstr "cada:"
 
 #~ msgid "Remove from Notify"
 #~ msgstr "Treure de Notificar"
-
-#, fuzzy
-#~ msgid "Remove item"
-#~ msgstr "Treure %Q"
 
 #~ msgid "Remove the currently selected entries."
 #~ msgstr "Borrar les entrades actualment triades."
@@ -11477,10 +11224,6 @@ msgstr "cada:"
 #~ msgid "Show Find Window"
 #~ msgstr "Mostrar Finestra de Cerca"
 
-#, fuzzy
-#~ msgid "Show Help"
-#~ msgstr "Mostrar %1"
-
 #~ msgid "Show Hidden Files"
 #~ msgstr "Mostrar Arxius Amagats"
 
@@ -11610,20 +11353,8 @@ msgstr "cada:"
 #~ msgid "Silence speaking"
 #~ msgstr "Parlant en silenci"
 
-#, fuzzy
-#~ msgid "Skipping nested terminator character %q"
-#~ msgstr "Anàlisis aturat en %clínia %d , caràcter %d"
-
 #~ msgid "Slash (/) character expected"
 #~ msgstr "S'esperava un caràcter barra (/)"
-
-#, fuzzy
-#~ msgid ""
-#~ "Slot target object destroyed while emitting signal '%Q' from object '%Q::"
-#~ "%Q'"
-#~ msgstr ""
-#~ "Slot '%s' erroni en l'objecte de destí '%s' mentres s'emetia la senyal "
-#~ "'%s' des de l'objecte '%s': desconectant"
 
 #~ msgid "Slow-paste ID:%d Window:%s"
 #~ msgstr "Enganxat lent ID:%d Finestra:%s"
@@ -11687,7 +11418,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Sound file '%Q' not found"
-#~ msgstr "Arxiu de so '%s' no trobat"
+#~ msgstr "Arxiu de so '%Q' no trobat"
 
 #~ msgid "Sound file '%s' not found"
 #~ msgstr "Arxiu de so '%s' no trobat"
@@ -11969,7 +11700,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "The action \"%Q\" doesn't exist"
-#~ msgstr "L'acció \"%s\" no existeix"
+#~ msgstr "L'acció \"%Q\" no existeix"
 
 #~ msgid "The action \"%s\" doesn't exist"
 #~ msgstr "L'acció \"%s\" no existeix"
@@ -12048,7 +11779,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "The catalogue %Q was not loaded"
-#~ msgstr "El catàleg %s no ha sigut carregat"
+#~ msgstr "El catàleg %Q no ha sigut carregat"
 
 #~ msgid "The catalogue %s was not loaded"
 #~ msgstr "El catàleg %s no ha sigut carregat"
@@ -12060,7 +11791,7 @@ msgstr "cada:"
 #, fuzzy
 #~ msgid "The commandline for this url type seems to be broken (%Q)"
 #~ msgstr ""
-#~ "La línia de comandes per aquest tipus d'url sembla estar malament (%s)"
+#~ "La línia de comandes per aquest tipus d'url sembla estar malament (%Q)"
 
 #~ msgid "The commandline for this url type seems to be broken (%s)"
 #~ msgstr ""
@@ -12075,11 +11806,11 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "The config file with id '%Q' is not open"
-#~ msgstr "L'arxiu de configuració '%s' no està obert"
+#~ msgstr "L'arxiu de configuració '%Q' no està obert"
 
 #, fuzzy
 #~ msgid "The config file with id '%Q' is read only"
-#~ msgstr "L'arxiu de configuració amb id '%s' és de només lectura"
+#~ msgstr "L'arxiu de configuració amb id '%Q' és de només lectura"
 
 #~ msgid "The config file with id '%s' is not open"
 #~ msgstr "L'arxiu de configuració '%s' no està obert"
@@ -12251,7 +11982,7 @@ msgstr "cada:"
 #, fuzzy
 #~ msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
 #~ msgstr ""
-#~ "L'element amb id \"%s\" no existeix en el menú emergent amb id \"%s\""
+#~ "L'element amb id \"%Q\" no existeix en el menú emergent amb id \"%Q\""
 
 #~ msgid "The message is not a base64 string: this is not my stuff"
 #~ msgstr "El missatge no és una cadena base64: això no és meu"
@@ -12277,7 +12008,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "The popup '%Q' is not defined"
-#~ msgstr "El menú emergent '%s' no està definit"
+#~ msgstr "El menú emergent '%Q' no està definit"
 
 #~ msgid ""
 #~ "The popup '%s' is actually locked: 'self-modifications' are not allowed"
@@ -12375,7 +12106,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "The specified KVIrc version \"%Q\" is not a valid version string"
-#~ msgstr "El temps UNIX especificat no és vàlid (%s)"
+#~ msgstr "El temps UNIX especificat no és vàlid (%Q)"
 
 #, fuzzy
 #~ msgid "The specified KVIrc version \"%s\" is not a valid version string"
@@ -12409,14 +12140,10 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "The specified directory does not exist '%Q'"
-#~ msgstr "El directori especificat no existeix '%s'"
+#~ msgstr "El directori especificat no existeix '%Q'"
 
 #~ msgid "The specified directory does not exist '%s'"
 #~ msgstr "El directori especificat no existeix '%s'"
-
-#, fuzzy
-#~ msgid "The specified file size is invalid"
-#~ msgstr "El temps UNIX especificat no és vàlid (%s)"
 
 #~ msgid "The specified maximum run time is invalid: assuming zero (infinite)"
 #~ msgstr "El temps màxim d'execució no és vàlid: assumint zero (infinit)"
@@ -12452,10 +12179,6 @@ msgstr "cada:"
 #~ msgid "The specified time format is not valid (%s)"
 #~ msgstr "El format de temps especificat no és vàlid (%s)"
 
-#, fuzzy
-#~ msgid "The specified timeout is not valid, assuming 0"
-#~ msgstr "El format de temps especificat no és vàlid (%s)"
-
 #~ msgid "The specified toolbar doesn't exist"
 #~ msgstr "No existeix la barra d'eines especificada"
 
@@ -12465,11 +12188,11 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "The specified window (%Q) is not a channel"
-#~ msgstr "La finestra especificada (%s) no és un canal"
+#~ msgstr "La finestra especificada (%Q) no és un canal"
 
 #, fuzzy
 #~ msgid "The specified window (%Q) is not a channel/query/DCC chat"
-#~ msgstr "La finestra especificada (%s) no és un canal/privat/DCC de xat"
+#~ msgstr "La finestra especificada (%Q) no és un canal/privat/DCC de xat"
 
 #~ msgid "The specified window (%s) is not a channel"
 #~ msgstr "La finestra especificada (%s) no és un canal"
@@ -12486,10 +12209,6 @@ msgstr "cada:"
 
 #~ msgid "The specified window has no button containers"
 #~ msgstr "La finestra especificada no té contenidor per a botons"
-
-#, fuzzy
-#~ msgid "The specified window identifier is not valid"
-#~ msgstr "L'adreça d'enllaç (bind) especificada (%Q) no és vàlida"
 
 #~ msgid "The specified window is not a channel"
 #~ msgstr "La finestra especificada no és un canal"
@@ -12580,7 +12299,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "There is no option named '%Q'"
-#~ msgstr "No existeix l'opció anomenada '%s'"
+#~ msgstr "No existeix l'opció anomenada '%Q'"
 
 #~ msgid "This KVIrc executable has no IPV6 support"
 #~ msgstr "Aquest executable de KVirc no té suport IPv6"
@@ -12602,10 +12321,6 @@ msgstr "cada:"
 
 #~ msgid "This is not a channel window"
 #~ msgstr "Això no és una finestra del canal"
-
-#, fuzzy
-#~ msgid "This object is not a toolbutton item!"
-#~ msgstr "L'objecte origen '%s' no existeix"
 
 #~ msgid "This option is also available as"
 #~ msgstr "Aquesta opció també està disponible com a"
@@ -12733,10 +12448,6 @@ msgstr "cada:"
 #~ msgid "Total hosts listed"
 #~ msgstr "Total màquines llistades"
 
-#, fuzzy
-#~ msgid "Total: %d addons installed"
-#~ msgstr "Total màquines llistades"
-
 #~ msgid "Total: %d matching users (of %d in the database)"
 #~ msgstr "Total: %d usuaris coincidents (de %d a la base de dades)"
 
@@ -12815,10 +12526,6 @@ msgstr "cada:"
 #~ msgid "Unable to determine the current cipher"
 #~ msgstr "Incapaç de determinar el xifrat actual"
 
-#, fuzzy
-#~ msgid "Unable to get address of interface %Q"
-#~ msgstr "Escoltar en adreça/interfície:"
-
 #~ msgid "Unable to look it up hostname: Hostname appears to be masked"
 #~ msgstr ""
 #~ "Incapaç d'extreure el nom de màquina: sembla que el nom de la màquina "
@@ -12839,7 +12546,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Unable to play sound '%Q'"
-#~ msgstr "No és possible reproduir el so '%s'"
+#~ msgstr "No és possible reproduir el so '%Q'"
 
 #~ msgid "Unable to play sound '%s'"
 #~ msgstr "No és possible reproduir el so '%s'"
@@ -12854,14 +12561,6 @@ msgstr "cada:"
 #~ "Incapaç de processar la petició anterior: el mòdul DCC pot estar trencat"
 
 #~ msgid "Unable to resolve the local hostname as seen by the IRC server: %Q"
-#~ msgstr ""
-#~ "No és possible resoldre el nom de la màquina local tal i com la veu el "
-#~ "servidor d'IRC: %Q"
-
-#, fuzzy
-#~ msgid ""
-#~ "Unable to resolve the local hostname as seen by the IRC server: %Q, using "
-#~ "previously resolved %Q"
 #~ msgstr ""
 #~ "No és possible resoldre el nom de la màquina local tal i com la veu el "
 #~ "servidor d'IRC: %Q"
@@ -13133,19 +12832,15 @@ msgstr "cada:"
 #~ msgstr "Resposta CTCP desconoeguda"
 
 #, fuzzy
-#~ msgid "Unknown alignment"
-#~ msgstr "Alineació desconeguda: %s"
-
-#, fuzzy
 #~ msgid "Unknown alignment '%Q'"
-#~ msgstr "Alineació desconeguda: %s"
+#~ msgstr "Alineació desconeguda: %Q"
 
 #~ msgid "Unknown alignment: %s"
 #~ msgstr "Alineació desconeguda: %s"
 
 #, fuzzy
 #~ msgid "Unknown alignment: '%Q'"
-#~ msgstr "Alineació desconeguda: %s"
+#~ msgstr "Alineació desconeguda: %Q"
 
 #, fuzzy
 #~ msgid "Unknown auto formatting mode '%Q'"
@@ -13169,25 +12864,13 @@ msgstr "cada:"
 #~ msgid "Unknown command"
 #~ msgstr "Comanda desconeguda"
 
-#, fuzzy
-#~ msgid "Unknown dock area '%Q'"
-#~ msgstr "Operador desconegut"
-
 #~ msgid "Unknown echo mode"
-#~ msgstr "Mode d'eco desconegut"
-
-#, fuzzy
-#~ msgid "Unknown echo mode %Q"
 #~ msgstr "Mode d'eco desconegut"
 
 #~ msgid "Unknown error"
 #~ msgstr "Error desconegut"
 
 #~ msgid "Unknown frame / shadow style: %s"
-#~ msgstr "Marc desconegut / estil d'ombra: %s"
-
-#, fuzzy
-#~ msgid "Unknown frame style"
 #~ msgstr "Marc desconegut / estil d'ombra: %s"
 
 #~ msgid "Unknown function"
@@ -13208,20 +12891,12 @@ msgstr "cada:"
 #~ msgstr "Funció desconeguda"
 
 #, fuzzy
-#~ msgid "Unknown orientation '%Q'"
-#~ msgstr "Funció desconeguda"
-
-#, fuzzy
 #~ msgid "Unknown orientation: "
 #~ msgstr "Funció desconeguda"
 
 #, fuzzy
 #~ msgid "Unknown position 'Q%'"
 #~ msgstr "Funció desconeguda"
-
-#, fuzzy
-#~ msgid "Unknown segment style "
-#~ msgstr "Alineació desconeguda: %s"
 
 #~ msgid "Unknown server<br>"
 #~ msgstr "Servidor desconegut<br>"
@@ -13231,27 +12906,15 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Unknown style '%Q'"
-#~ msgstr "Marc desconegut / estil d'ombra: %s"
-
-#, fuzzy
-#~ msgid "Unknown text format '%Q'"
-#~ msgstr "Funció desconeguda"
-
-#, fuzzy
-#~ msgid "Unknown text position '%Q'"
-#~ msgstr "Funció desconeguda"
-
-#, fuzzy
-#~ msgid "Unknown tickmark '%Q'"
-#~ msgstr "Comanda desconeguda"
+#~ msgstr "Marc desconegut / estil d'ombra: %Q"
 
 #, fuzzy
 #~ msgid "Unknown vertical alignment '%Q'"
-#~ msgstr "Alineació desconeguda: %s"
+#~ msgstr "Alineació desconeguda: %Q"
 
 #, fuzzy
 #~ msgid "Unknown widget flag '%Q'"
-#~ msgstr "Alineació desconeguda: %s"
+#~ msgstr "Alineació desconeguda: %Q"
 
 #, fuzzy
 #~ msgid "Unknown widget type: %s"
@@ -13311,7 +12974,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Unsupported protocol %1"
-#~ msgstr "Protocol %s no suportat"
+#~ msgstr "Protocol %1 no suportat"
 
 #~ msgid "Unsupported type: $0"
 #~ msgstr "Tipus no suportat: $0"
@@ -13360,7 +13023,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "User %Q not found"
-#~ msgstr "Usuari %s no trobat"
+#~ msgstr "Usuari %Q no trobat"
 
 #~ msgid "User %s not found"
 #~ msgstr "Usuari %s no trobat"
@@ -13389,7 +13052,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "User not found (%Q)"
-#~ msgstr "Usuari no trobat (%s)"
+#~ msgstr "Usuari no trobat (%Q)"
 
 #~ msgid "User not found (%s)"
 #~ msgstr "Usuari no trobat (%s)"
@@ -13555,7 +13218,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Window %Q not found"
-#~ msgstr "Finestra %s no trobada"
+#~ msgstr "Finestra %Q no trobada"
 
 #~ msgid "Window %s not found"
 #~ msgstr "Finestra %s no trobada"
@@ -13569,7 +13232,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Window button '%Q' not found"
-#~ msgstr "Botó de finestra '%s' no trobat"
+#~ msgstr "Botó de finestra '%Q' no trobat"
 
 #~ msgid "Window button '%s' not found"
 #~ msgstr "Botó de finestra '%s' no trobat"
@@ -13582,7 +13245,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Window with ID '%Q' not found"
-#~ msgstr "Finestra amb ID '%s' no trobada"
+#~ msgstr "Finestra amb ID '%Q' no trobada"
 
 #~ msgid "Window with ID '%s' not found"
 #~ msgstr "Finestra amb ID '%s' no trobada"
@@ -13601,7 +13264,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "Window with id '%Q' not found, returning empty string"
-#~ msgstr "Finestra amb id '%s' no trobada, retornant la cadena buida"
+#~ msgstr "Finestra amb id '%Q' no trobada, retornant la cadena buida"
 
 #~ msgid "Window with id '%s' not found, returning empty string"
 #~ msgstr "Finestra amb id '%s' no trobada, retornant la cadena buida"
@@ -13779,16 +13442,8 @@ msgstr "cada:"
 #~ msgstr "En el context de l'script '%Q':"
 
 #, fuzzy
-#~ msgid "[KVS]   in script context \"%Q\", %Q"
-#~ msgstr "En el context de l'script '%Q':"
-
-#, fuzzy
 #~ msgid "[KVS] Window:"
 #~ msgstr "Mostrar Finestra"
-
-#, fuzzy
-#~ msgid "[KVS]%c Compilation Error: %Q"
-#~ msgstr "error de compilació"
 
 #~ msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
 #~ msgstr "[Alerta d'enllaç]: Missatge de socket truncat a 512 bytes."
@@ -13978,19 +13633,14 @@ msgstr "cada:"
 #~ msgstr "f: Destinatari de full server notices"
 
 #, fuzzy
-#~ msgid ""
-#~ "found signed integer \"%d\" where type 'unsigned integer' was expected"
-#~ msgstr "Opcions d'enters sense signe (constant unsigned integer)"
-
-#, fuzzy
 #~ msgid "found string value \"%Q\" where type '%s' was expected"
 #~ msgstr ""
-#~ "S'ha trobat el caràcter '%q' (unicode %x) on s'esperava una barra '/'"
+#~ "S'ha trobat el caràcter '%Q' (unicode %s) on s'esperava una barra '/'"
 
 #, fuzzy
 #~ msgid "found type %Q where type '%s' was expected"
 #~ msgstr ""
-#~ "S'ha trobat el caràcter '%q' (unicode %x) on s'esperava una barra '/'"
+#~ "S'ha trobat el caràcter '%Q' (unicode %s) on s'esperava una barra '/'"
 
 #~ msgid "half-operator"
 #~ msgstr "semioperador"
@@ -14061,10 +13711,6 @@ msgstr "cada:"
 #~ msgid "l (Connections)"
 #~ msgstr "l (Connexions)"
 
-#, fuzzy
-#~ msgid "line %d, near character %d"
-#~ msgstr "Anàlisis aturat en %clínia %d , caràcter %d"
-
 #~ msgid "line break"
 #~ msgstr "salt de línia"
 
@@ -14111,7 +13757,7 @@ msgstr "cada:"
 
 #, fuzzy
 #~ msgid "pix '%Q' doesn't exists"
-#~ msgstr "L'acció \"%s\" no existeix"
+#~ msgstr "L'acció \"%Q\" no existeix"
 
 #~ msgid "possible watch list desync"
 #~ msgstr "possible desync de la llista de vigilància"

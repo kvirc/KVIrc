@@ -198,9 +198,8 @@ msgid "Data parameter is not an object"
 msgstr "El dato no es un objeto"
 
 #: src/modules/objects/KvsObject_socket.cpp:499
-#, fuzzy
 msgid "Datatype not supported"
-msgstr "Valor de tipo %Q no soportado"
+msgstr ""
 
 #: src/modules/objects/KvsObject_sql.cpp:212
 msgid "Duplicate connection name '%Q', old query connection removed"
@@ -218,7 +217,7 @@ msgstr "Error en la implementación de la clase KVS: procesado cancelado"
 #: src/modules/objects/KvsObject_xmlreader.cpp:162
 #, fuzzy
 msgid "Error near line %1, column %2"
-msgstr "Error cerca de la línea %d, columna %d"
+msgstr "Error cerca de la línea %1, columna %2"
 
 #: src/modules/objects/KvsObject_treeWidgeteItem.cpp:422
 #: src/modules/objects/KvsObject_listWidget.cpp:355
@@ -814,7 +813,7 @@ msgstr ""
 #: src/modules/objects/KvsObject_xmlreader.cpp:164
 #, fuzzy
 msgid "Warning near line %1, column %2"
-msgstr "Atención cerca de la línea %d, columna %d"
+msgstr "Atención cerca de la línea %1, columna %2"
 
 #: src/modules/objects/KvsObject_mainWindow.cpp:95
 #: src/modules/objects/KvsObject_wizard.cpp:189

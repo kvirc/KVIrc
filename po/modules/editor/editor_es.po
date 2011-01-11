@@ -26,10 +26,10 @@ msgstr ""
 "\n"
 "\n"
 "Evento:\n"
-"%s\n"
+"%1\n"
 "\n"
 "Parámetros:\n"
-"%s"
+"%2"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:366
 #, fuzzy
@@ -42,7 +42,7 @@ msgstr ""
 "\n"
 "\n"
 "Evento en bruto:\n"
-"%s"
+"%1"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:96
 msgid "### Epilogue ###"
@@ -338,12 +338,12 @@ msgstr "Llaves:"
 #: src/modules/editor/ScriptEditorImplementation.cpp:1022
 #, fuzzy
 msgid "Can't open the file %1 for reading."
-msgstr "No pude abrir el archivo %s para lectura."
+msgstr "No pude abrir el archivo %1 para lectura."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:934
 #, fuzzy
 msgid "Can't open the file %1 for writing."
-msgstr "No pude abrir el archivo %s para escritura."
+msgstr "No pude abrir el archivo %1 para escritura."
 
 #: src/modules/actioneditor/ActionEditor.cpp:883
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1198
@@ -539,23 +539,23 @@ msgstr "¿Realmente quieres eliminar la barra de herramientas \"%1\"?"
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:926
 #, fuzzy
 msgid "Do you really want to remove the alias \"%1\"?"
-msgstr "¿Realmente quieres eliminar el alias \"%Q\"?"
+msgstr "¿Realmente quieres eliminar el alias \"%1\"?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1337
 #, fuzzy
 msgid "Do you really want to remove the class \"%1\"?"
-msgstr "¿Realmente quieres eliminar la clase \"%Q\"?"
+msgstr "¿Realmente quieres eliminar la clase \"%1\"?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1345
 #, fuzzy
 msgid "Do you really want to remove the function \"%1\"?"
-msgstr "¿Realmente quieres eliminar la función \"%Q\"?"
+msgstr "¿Realmente quieres eliminar la función \"%1\"?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:928
 #: src/modules/classeditor/ClassEditorWindow.cpp:1340
 #, fuzzy
 msgid "Do you really want to remove the namespace \"%1\"?"
-msgstr "¿Realmente quieres eliminar el espacio de nombres \"%Q\"?"
+msgstr "¿Realmente quieres eliminar el espacio de nombres \"%1\"?"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:403
 msgid "Do you want the associated actions to be exported with the toolbar ?"
@@ -1202,7 +1202,7 @@ msgstr "Reemplazar con"
 #: src/modules/editor/ScriptEditorImplementation.cpp:991
 #, fuzzy
 msgid "Row: %1 Col: %2"
-msgstr "Fila: %d Col: %d"
+msgstr "Fila: %1 Col: %2"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:933
 msgid "Save Failed - KVIrc"
@@ -1270,7 +1270,7 @@ msgstr ""
 #: src/modules/classeditor/ClassEditorWindow.cpp:1136
 #, fuzzy
 msgid "The file \"%1\" exists. Do you want to replace it?"
-msgstr "El archivo \"%Q\" ya existe. ¿Quieres reemplazarlo?"
+msgstr "El archivo \"%1\" ya existe. ¿Quieres reemplazarlo?"
 
 #: src/modules/actioneditor/ActionEditor.cpp:155
 msgid ""

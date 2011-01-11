@@ -126,7 +126,7 @@ msgstr "Экспорт дополнения - KVIrc"
 #: src/modules/addon/AddonFunctions.cpp:232
 #, fuzzy
 msgid "Failed to unpack the selected file: %1"
-msgstr "Не могу распаковать выбранный файл: %Q"
+msgstr "Не могу распаковать выбранный файл: %1"
 
 #: src/modules/addon/PackAddonDialog.cpp:607
 msgid "File Summary"
@@ -310,8 +310,7 @@ msgstr "Выберите исходную директорию:"
 msgid "Show Help"
 msgstr "Показать помощь"
 
-#: src/modules/addon/libkviaddon.cpp:692
-#: src/modules/addon/libkviaddon.cpp:715
+#: src/modules/addon/libkviaddon.cpp:692 src/modules/addon/libkviaddon.cpp:715
 msgid "Skipping inexistant entry '%1'"
 msgstr ""
 
@@ -323,12 +322,9 @@ msgstr ""
 msgid "Source Directory"
 msgstr "Исходная директория"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:648
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:648
 msgid "The addon \"%1\" does not exist"
 msgstr "Дополнение \"%1\" не существует"
 
@@ -345,9 +341,8 @@ msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
 msgstr "Дополнение \"%Q\" уже установлено версии %Q, которая новее чем %Q"
 
 #: src/modules/addon/libkviaddon.cpp:690
-#, fuzzy
 msgid "The directory '%1' doesn't exist"
-msgstr "Заданный каталог не существует."
+msgstr ""
 
 #: src/modules/addon/libkviaddon.cpp:722
 msgid "The entry '%1' is not a file"
@@ -421,8 +416,7 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr "Всего установлено %d дополнений"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Удаление имеющегося дополнения версии %Q"
 

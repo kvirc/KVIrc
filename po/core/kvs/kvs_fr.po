@@ -1392,7 +1392,7 @@ msgstr "Inconue"
 
 #: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:214
 msgid "Unknown binary operator '%q'"
-msgstr "Opérateur binaire '%Q' inconue"
+msgstr "Opérateur binaire '%q' inconue"
 
 #: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:116
 msgid "Unknown binary operator '=%q': did you mean '==' ?"
@@ -1491,8 +1491,7 @@ msgstr "[KVS]%c Erreur de compilation: %Q"
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsReport.cpp:186
-#: src/kvirc/kvs/KviKvsReport.cpp:194
+#: src/kvirc/kvs/KviKvsReport.cpp:186 src/kvirc/kvs/KviKvsReport.cpp:194
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Attention : %Q"
 

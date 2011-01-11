@@ -1979,9 +1979,9 @@ msgid "Cursor color"
 msgstr "Cursor kleur"
 
 #: src/modules/options/OptionsWidget_away.cpp:53
-#, fuzzy, c-format
+#, c-format
 msgid "Custom nickname (%nick% means a current nick):"
-msgstr "Standaard bijnaam (%%bijnaam%%betekend een huidige bijnaam);"
+msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.h:31
 msgid "DCC"
@@ -2307,7 +2307,7 @@ msgstr "Kan avatar niet laden - KVirc"
 #: src/modules/options/OptionsWidget_identity.cpp:562
 #, fuzzy
 msgid "Failed to download the avatar image.<br><b>%1</b>"
-msgstr "Kan de avatar niet ophalen.<br><b>%Q</b>"
+msgstr "Kan de avatar niet ophalen.<br><b>%1</b>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:556
 #: src/modules/options/OptionsWidget_identity.cpp:594
