@@ -163,6 +163,23 @@ static int print_error(po_message_t m,const char * msgid,const char * msgstr,con
 	return 0;
 }
 
+inline int is_valid_fmtstr(const char * p)
+{
+	if(!*p) return 0;
+	if(*p != '%') return 0;
+	p++;
+	if(!*p) return 0;
+	if((*p >= '1' && *p <= '9') ||
+		(*p >= 'a' && *p <= 'z') ||
+		(*p >= 'A' && *p <= 'Z'))
+	{
+		p--;
+		return 1;
+	}
+	p--;
+	return 0;
+}
+
 static void process_message(po_message_t m)
 {
 	const char * msgstr = po_message_msgstr(m);
@@ -183,8 +200,8 @@ static void process_message(po_message_t m)
 
 	while(*p && *q)
 	{
-		while(*p && (*p != '%'))p++;
-		while(*q && (*q != '%'))q++;
+		while(*p && !is_valid_fmtstr(p))p++;
+		while(*q && !is_valid_fmtstr(q))q++;
 		if(*q && *p)
 		{
 			q++;
