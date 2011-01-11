@@ -568,7 +568,7 @@ void KviWindow::getDefaultLogFileName(QString & szBuffer)
 		szTmp = "%1_%2_%3.log";
 
 	szLog = QString(szTmp).arg(typeString(),szBase,szDate);
-	g_pApp->getLocalKvircDirectory(szBuffer,KviApplication::Log,szTmp);
+	g_pApp->getLocalKvircDirectory(szBuffer,KviApplication::Log,szLog);
 }
 
 void KviWindow::getBaseLogFileName(QString & szBuffer)
