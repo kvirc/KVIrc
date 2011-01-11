@@ -1229,7 +1229,7 @@ void KviKvsPopupMenu::generateDefPopupCore(QString &buffer)
 
 void KviKvsPopupMenu::generateDefPopup(QString &buffer)
 {
-	buffer = QString("defpopup(%1)\n").arg(objectName().toLatin1().data());
+	buffer = QString("defpopup(%1)\n").arg(objectName());
 	QString core;
 
 	generateDefPopupCore(core);
