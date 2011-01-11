@@ -1034,13 +1034,13 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfigurationFile * cfg)
 			case 4: // extmenu
 			{
 				QString text,icon,code,expr;
-				tmp = QString("%Q_Text").arg(pre);
+				tmp = QString("%1_Text").arg(pre);
 				text = cfg->readEntry(tmp,"Unnamed");
-				tmp = QString("%Q_Icon").arg(pre);
+				tmp = QString("%1_Icon").arg(pre);
 				icon = cfg->readEntry(tmp,"");
-				tmp = QString("%Q_ExtName").arg(pre);
+				tmp = QString("%1_ExtName").arg(pre);
 				code = cfg->readEntry(tmp,"");
-				tmp = QString("%Q_Expr").arg(pre);
+				tmp = QString("%1_Expr").arg(pre);
 				expr = cfg->readEntry(tmp,"");
 				addExtPopup(itemName,code,text,icon,expr);
 			}

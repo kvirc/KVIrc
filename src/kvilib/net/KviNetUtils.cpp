@@ -611,7 +611,7 @@ namespace KviNetUtils
 			unsigned int uMB = uBytesPerSec / (1024 * 1024);
 			unsigned int uRem = ((uBytesPerSec % (1024 * 1024)) * 100) / (1024 * 1024);
 
-			szBuffer = QString("%1.%2%3 MiB/s").arg(uMB,uRem / 10,uRem % 10);
+			szBuffer = QString("%1.%2%3 MiB/s").arg(uMB).arg(uRem / 10).arg(uRem % 10);
 
 			return;
 		}
@@ -621,7 +621,7 @@ namespace KviNetUtils
 			unsigned int uKB = uBytesPerSec / 1024;
 			unsigned int uRem = ((uBytesPerSec % 1024) * 100) / 1024;
 
-			szBuffer = QString("%1.%2%3 KiB/s").arg(uKB,uRem / 10,uRem % 10);
+			szBuffer = QString("%1.%2%3 KiB/s").arg(uKB).arg(uRem / 10).arg(uRem % 10);
 
 			return;
 		}
