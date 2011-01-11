@@ -1094,8 +1094,7 @@ void KviKvsPopupMenu::save(const QString & prefix,KviConfigurationFile * cfg)
 
 	for(KviKvsPopupMenuItem * it = m_pItemList->first();it;it = m_pItemList->next())
 	{
-		QString pre;
-		tmp = QString("%1_%2").arg(prefix).arg(idx);
+		QString pre = QString("%1_%2").arg(prefix).arg(idx);
 		tmp = QString("%1_Type").arg(pre);
 		int typeCode = 0;
 		switch(it->type())
