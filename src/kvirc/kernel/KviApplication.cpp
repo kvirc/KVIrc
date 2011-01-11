@@ -843,10 +843,13 @@ Let's see the scheme to understand which is choosen:
 		if(!pIcon)
 			pIcon = g_pIconManager->getSmallIcon(eIcon);
 
-		// This is to prevent compilation errors under KDE 4.3
-		QString szEvent = "incomingMessage";
-
-		KNotification * pNotify = new KNotification(szEvent,KNotification::CloseWhenWidgetActivated,this);
+		
+		KNotification * pNotify = 0;
+#if KDE_IS_VERSION(4,4,0)
+		pNotify = new KNotification("incomingMessage",KNotification::CloseWhenWidgetActivated,this);
+#else
+		pNotify = new KNotification("incomingMessage",this,KNotification::CloseWhenWidgetActivated);
+#endif
 		pNotify->setFlags(KNotification::Persistent);
 		pNotify->setTitle(__tr2qs("KVIrc messaging system"));
 		pNotify->setText(szText);
