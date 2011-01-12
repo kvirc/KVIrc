@@ -296,6 +296,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_socket,"socket","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_socket,close)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_socket,read)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_socket,write)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_socket,bytesAvailable)
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_socket,setProtocol)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_socket,listen)
@@ -362,7 +363,11 @@ KVSO_CLASS_FUNCTION(socket,localPort)
 	c->returnValue()->setInteger(m_pSocket->localPort());
 	return true;
 }
-
+KVSO_CLASS_FUNCTION(socket,bytesAvailable)
+{
+	c->returnValue()->setInteger(m_pSocket->bytesAvailable());
+	return true;
+}
 KVSO_CLASS_FUNCTION(socket,localIp)
 {
 	c->returnValue()->setString(m_pSocket->localAddress().toString());

@@ -59,6 +59,7 @@ protected:
 	bool close(KviKvsObjectFunctionCall *c);
 	bool read(KviKvsObjectFunctionCall *c);
 	bool write(KviKvsObjectFunctionCall *c);
+	bool bytesAvailable(KviKvsObjectFunctionCall *c);
         bool setProtocol(KviKvsObjectFunctionCall *c);
         bool listen(KviKvsObjectFunctionCall *c);
 
