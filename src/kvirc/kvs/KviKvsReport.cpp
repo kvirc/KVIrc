@@ -124,7 +124,7 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 	if(us)pBegin++;
 
 	{
-		QString * pListingStr = new QString(QString("%1%2 ").arg(KviMircCntrl::Bold).arg(iLine));
+		QString * pListingStr = new QString(QString("%1%2 ").arg(QChar(KviMircCntrl::Bold)).arg(iLine));
 		*pListingStr += QString(pLineBegin,pBegin - pLineBegin);
 		pListingStr->replace("\n","");
 		pListing->append(pListingStr);
