@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
+"POT-Creation-Date: 2011-01-13 16:53+0100\n"
 "PO-Revision-Date: 2011-01-13 02:47+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: pt <a>\n"
@@ -36,8 +36,8 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] entrou no \r!c\r%Q\r"
 msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
 msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] entrou no \r!c\r%Q\r [alteração implícita umode +%"
-"c]"
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] entrou no \r!c\r%Q\r [alteração implícita umode +"
+"%c]"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:655
 msgid ""
@@ -843,7 +843,7 @@ msgstr "<b>Duplo clique:</b><br>%Q"
 msgid "<b>Double-click</b> to get network information"
 msgstr "<b>Duplo clique</b> para obter informação da rede"
 
-#: src/kvirc/kernel/KviApplication.cpp:1012
+#: src/kvirc/kernel/KviApplication.cpp:1017
 msgid ""
 "<b>Hi!</b><br><br><b>It seems that you have just upgraded KVirc from a "
 "previous version.</b><br><br>The KVIrc default scripts needs to be updated "
@@ -871,7 +871,7 @@ msgstr "<b>KVIrc</b>"
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Clique com o botão do meio:</b><br>%Q"
 
-#: src/kvirc/kernel/KviApplication.cpp:1078
+#: src/kvirc/kernel/KviApplication.cpp:1083
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -1316,11 +1316,11 @@ msgstr "Auditório: /NAMES e /WHO mostram apenas os ops"
 msgid "Authenticated as %Q"
 msgstr "Autenticado como %Q"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1787
+#: src/kvirc/kernel/KviIrcConnection.cpp:1786
 msgid "Auto-joining network specific channels"
 msgstr "Auto-entrar nos canais específicos da rede"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1819
+#: src/kvirc/kernel/KviIrcConnection.cpp:1818
 msgid "Auto-joining server specific channels"
 msgstr "Auto-entrar nos canais específicos do servidor"
 
@@ -1356,7 +1356,7 @@ msgstr "Modos de utilizador disponíveis:"
 msgid "Avatar change"
 msgstr "Mudança de imagem"
 
-#: src/kvirc/kernel/KviApplication.cpp:1277
+#: src/kvirc/kernel/KviApplication.cpp:1282
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr "Transferência do Avatar falhada para %Q!%Q@%Q e url %Q: %Q"
 
@@ -2960,33 +2960,33 @@ msgstr "Está tudo bem"
 msgid "Execute Script..."
 msgstr "Executar 'Script'..."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1611
+#: src/kvirc/kernel/KviIrcConnection.cpp:1610
 msgid "Executing scheduled identity specific \"on connect\" commands"
 msgstr ""
 "A executar os comandos agendados em \"ao conectar\" específicos da identidade"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1706
+#: src/kvirc/kernel/KviIrcConnection.cpp:1705
 msgid "Executing scheduled identity specific \"on login\" commands"
 msgstr ""
 "A executar os comandos agendados em \"ao autenticar\" específicos da "
 "identidade"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1595
+#: src/kvirc/kernel/KviIrcConnection.cpp:1594
 msgid "Executing scheduled network specific \"on connect\" commands"
 msgstr ""
 "A executar os comandos agendados em \"ao conectar\" específicos da rede"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1690
+#: src/kvirc/kernel/KviIrcConnection.cpp:1689
 msgid "Executing scheduled network specific \"on login\" commands"
 msgstr ""
 "A executar os comandos agendados em \"ao autenticar\" específicos da rede"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1603
+#: src/kvirc/kernel/KviIrcConnection.cpp:1602
 msgid "Executing scheduled server specific \"on connect\" commands"
 msgstr ""
 "A executar os comandos agendados em \"ao conectar\" específicos do servidor"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1698
+#: src/kvirc/kernel/KviIrcConnection.cpp:1697
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr ""
 "A executar os comandos agendados em \"ao autenticar\" específicos do servidor"
@@ -3150,19 +3150,19 @@ msgid "File I/O error while trying to use the public key file %s"
 msgstr ""
 "Erro de E/S do ficheiro enquanto tentava usar o ficheiro de chave pública %s"
 
-#: src/kvirc/kernel/KviApplication.cpp:1245
+#: src/kvirc/kernel/KviApplication.cpp:1250
 msgid "File download failed"
 msgstr "Transferência do ficheiro falhada"
 
-#: src/kvirc/kernel/KviApplication.cpp:1247
+#: src/kvirc/kernel/KviApplication.cpp:1252
 msgid "File download from %1 failed"
 msgstr "Transferência do ficheiro de %1 falhada"
 
-#: src/kvirc/kernel/KviApplication.cpp:1258
+#: src/kvirc/kernel/KviApplication.cpp:1263
 msgid "File download from %1 successfully complete"
 msgstr "Ficheiro transferido com sucesso de %1"
 
-#: src/kvirc/kernel/KviApplication.cpp:1256
+#: src/kvirc/kernel/KviApplication.cpp:1261
 msgid "File download successfully complete"
 msgstr "Ficheiro transferido com sucesso"
 
@@ -3672,7 +3672,7 @@ msgstr "Instalar Pacote"
 msgid "Install Theme Package"
 msgstr "Instalar Pacote de Tema"
 
-#: src/kvirc/kernel/KviApplication.cpp:1077
+#: src/kvirc/kernel/KviApplication.cpp:1082
 msgid "Installation problems?"
 msgstr "Problemas de instalação?"
 
@@ -3975,8 +3975,8 @@ msgstr ""
 msgid "KVIrc is compiled without OpenSSL support."
 msgstr "O KVIrc está compilado sem o suporte SSL."
 
-#: src/kvirc/kernel/KviApplication.cpp:849
-#: src/kvirc/kernel/KviApplication.cpp:879
+#: src/kvirc/kernel/KviApplication.cpp:854
+#: src/kvirc/kernel/KviApplication.cpp:884
 msgid "KVIrc messaging system"
 msgstr "Sistema de mensagens KVIrc"
 
@@ -4160,7 +4160,7 @@ msgstr "A entrar como %Q!%Q :%Q"
 msgid "Login in progress..."
 msgstr "Autenticação em progresso..."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1681
+#: src/kvirc/kernel/KviIrcConnection.cpp:1680
 msgid "Login operations complete, happy ircing!"
 msgstr "Operações de autenticação terminadas: boas conversas!"
 
@@ -4251,7 +4251,7 @@ msgstr ""
 msgid "Medium activity"
 msgstr "Actividade média"
 
-#: src/kvirc/kernel/KviApplication.cpp:871
+#: src/kvirc/kernel/KviApplication.cpp:876
 msgid ""
 "Message arriving from %1:\n"
 "\n"
@@ -4543,8 +4543,8 @@ msgstr "Alcunha:"
 
 #: src/kvirc/ui/KviStatusBar.cpp:553 src/kvirc/ui/KviInput.cpp:255
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:891
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092
+#: src/kvirc/kernel/KviApplication.cpp:1024
+#: src/kvirc/kernel/KviApplication.cpp:1097
 msgid "No"
 msgstr "Não"
 
@@ -4568,8 +4568,8 @@ msgstr "Nenhum nome/índice de acção indicado"
 msgid "No activity"
 msgstr "Nenhuma actividade"
 
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092
+#: src/kvirc/kernel/KviApplication.cpp:1024
+#: src/kvirc/kernel/KviApplication.cpp:1097
 msgid "No and Don't Ask Me Again"
 msgstr "Não e Não Me Pergunte Novamente"
 
@@ -4948,8 +4948,8 @@ msgstr ""
 "servidor.\n"
 "Isto é causado por um serviço IRC compatível RFC1459 ou uma resposta\n"
 "do servidor danificada.\n"
-"Os umodes do servidor parecem ser '%s' e os modos do canal parecem ser '%"
-"s'.\n"
+"Os umodes do servidor parecem ser '%s' e os modos do canal parecem ser "
+"'%s'.\n"
 "Ignorar esta resposta e assumir que a definição de modos básico está "
 "disponível.\n"
 "Se ocorrerem alguns problemas estranhos, tente mudar de servidor."
@@ -5699,7 +5699,7 @@ msgstr "Verificação de 'lag' registada com confiabilidade %u (%s)"
 msgid "Reload"
 msgstr "Recarregar"
 
-#: src/kvirc/kernel/KviApplication.cpp:1141
+#: src/kvirc/kernel/KviApplication.cpp:1146
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "Comando remoto recebido (%s ...)"
@@ -6097,7 +6097,7 @@ msgstr "Definido no"
 msgid "Setting away nickname (%Q)"
 msgstr "A definir alcunha de ausência (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1717
+#: src/kvirc/kernel/KviIrcConnection.cpp:1716
 msgid "Setting configured user mode"
 msgstr "A definir o modo de utilizador configurado"
 
@@ -6635,16 +6635,16 @@ msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %Q, no "
 "data sent to the server"
 msgstr ""
-"O mecanismo de encriptação não foi capaz de encriptar a mensagem actual (%"
-"Q): %Q, nenhuns dados enviados para o servidor"
+"O mecanismo de encriptação não foi capaz de encriptar a mensagem actual "
+"(%Q): %Q, nenhuns dados enviados para o servidor"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:640
 msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %s, no "
 "data sent to the server"
 msgstr ""
-"O mecanismo de encriptação não foi capaz de encriptar a mensagem actual (%"
-"Q): %s, nenhuns dados enviados para o servidor"
+"O mecanismo de encriptação não foi capaz de encriptar a mensagem actual "
+"(%Q): %s, nenhuns dados enviados para o servidor"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:305
 msgid "The current network is %Q"
@@ -6786,7 +6786,7 @@ msgstr ""
 "O servidor está a recusar a autenticação de todos as alcunhas: a desistir, "
 "tem que enviar a alcunha manualmente"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1670
+#: src/kvirc/kernel/KviIrcConnection.cpp:1669
 #, c-format
 msgid "The server refused the suggested nickname (%s) and named you %s instead"
 msgstr "O servidor recusou a alcunha indicada (%s) e mudou para %s"
@@ -6935,8 +6935,8 @@ msgid ""
 "The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!h"
 "\r%Q\r] changed his nickname to \r!n\r%Q\r"
 msgstr ""
-"O alvo deste query perdeu-se e foi encontrado quando o \r!n\r%Q\r [%Q@\r!h\r%"
-"Q\r] mudou a sua alcunha para \r!n\r%Q\r"
+"O alvo deste query perdeu-se e foi encontrado quando o \r!n\r%Q\r [%Q@\r!h\r"
+"%Q\r] mudou a sua alcunha para \r!n\r%Q\r"
 
 #: src/kvirc/kernel/KviTheme.cpp:57
 msgid "The theme information file does not exist"
@@ -7268,8 +7268,8 @@ msgstr "Não é possível reproduzir o som '%Q'"
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1789
 msgid "Unable to process the above request: Cannot load DCC module (%Q)"
 msgstr ""
-"Não é possível processar o pedido seguinte: Não pode carregar o módulo DCC (%"
-"Q)"
+"Não é possível processar o pedido seguinte: Não pode carregar o módulo DCC "
+"(%Q)"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1795
 msgid "Unable to process the above request: DCC module may be broken"
@@ -7469,7 +7469,7 @@ msgstr "Sem título"
 msgid "Update Indicator"
 msgstr "Indicador de actualização"
 
-#: src/kvirc/kernel/KviApplication.cpp:1011
+#: src/kvirc/kernel/KviApplication.cpp:1016
 msgid "Update default scripts"
 msgstr "Actualizar 'scripts' predefinidos"
 
@@ -7481,7 +7481,7 @@ msgstr "Actualização falhada"
 msgid "Update missing"
 msgstr "Actualização em falta"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1924
+#: src/kvirc/kernel/KviIrcConnection.cpp:1923
 msgid "Updating away state for channel %Q"
 msgstr "A actualizar o estado ausente para o canal %Q"
 
@@ -7648,7 +7648,7 @@ msgstr "Actividade muito baixa"
 msgid "View"
 msgstr "Ver"
 
-#: src/modules/url/libkviurl.cpp:878
+#: src/modules/url/libkviurl.cpp:877
 msgid "View URL list"
 msgstr "Ver lista URL"
 
@@ -7666,13 +7666,13 @@ msgstr "WALLOPS de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:894
 msgid ""
-"WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %"
-"cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name"
-"%c: %Q"
+"WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, "
+"%cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal "
+"name%c: %Q"
 msgstr ""
-"Entrada WHO para %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cCanal%c: \r!c\r%Q\r, %"
-"cServidor%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAusente%c: %Q, %"
-"cNome Real %c: %Q"
+"Entrada WHO para %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cCanal%c: \r!c\r%Q\r, "
+"%cServidor%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAusente%c: %Q, "
+"%cNome Real %c: %Q"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:929
 msgid "Wallops (+w)"
@@ -7796,8 +7796,8 @@ msgstr "A escrever cabeçalho do pacote"
 
 #: src/kvirc/ui/KviStatusBar.cpp:551 src/kvirc/ui/KviInput.cpp:254
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:891
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092
+#: src/kvirc/kernel/KviApplication.cpp:1024
+#: src/kvirc/kernel/KviApplication.cpp:1097
 msgid "Yes"
 msgstr "Sim"
 
@@ -7845,7 +7845,7 @@ msgid "You have been paged by"
 msgstr "Foi-lhe enviado um sinal para o pager por"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1514
-#: src/kvirc/kernel/KviIrcConnection.cpp:1623
+#: src/kvirc/kernel/KviIrcConnection.cpp:1622
 msgid "You have changed your nickname to %Q"
 msgstr "Mudou a sua alcunha para %Q"
 
@@ -8790,8 +8790,8 @@ msgstr "z: Recipiente para mensagens 'wallop' do operador"
 #~ "Cannot call internal object function $%Q (for object named \"%Q\" of "
 #~ "class %Q) from this context"
 #~ msgstr ""
-#~ "Não é possível chamar a funções de objecto $%Q (para o objecto chamado \"%"
-#~ "Q\" da classe %Q) a partir deste contexto"
+#~ "Não é possível chamar a funções de objecto $%Q (para o objecto chamado "
+#~ "\"%Q\" da classe %Q) a partir deste contexto"
 
 #~ msgid "Cannot find object function $%Q for object named \"%Q\" of class %Q"
 #~ msgstr ""
@@ -9053,8 +9053,8 @@ msgstr "z: Recipiente para mensagens 'wallop' do operador"
 #~ "Encontrou-se o caracter '%q' (unicode %x) onde era esperada uma instrução"
 
 #~ msgid ""
-#~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help %"
-#~ "s\" for the command syntax"
+#~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help "
+#~ "%s\" for the command syntax"
 #~ msgstr ""
 #~ "Caracter encontrado '%q' (unicode 0x%x) onde '%c' era esperado: ver \"/"
 #~ "help %s\" para a sintaxe de comando"
@@ -9332,8 +9332,8 @@ msgstr "z: Recipiente para mensagens 'wallop' do operador"
 
 #~ msgid "Module command call failed: can't load the module '%Q': %Q"
 #~ msgstr ""
-#~ "Chamada de comando do módulo falhada: não é possível carregar o módulo '%"
-#~ "Q': %Q"
+#~ "Chamada de comando do módulo falhada: não é possível carregar o módulo "
+#~ "'%Q': %Q"
 
 #~ msgid "Module command call failed: can't load the module 'snd'"
 #~ msgstr ""
@@ -9363,8 +9363,8 @@ msgstr "z: Recipiente para mensagens 'wallop' do operador"
 
 #~ msgid "Module function call failed: can't load the module '%Q': %Q"
 #~ msgstr ""
-#~ "Chamada da função módulo falhada: não é possível carregar o módulo '%Q': %"
-#~ "Q"
+#~ "Chamada da função módulo falhada: não é possível carregar o módulo '%Q': "
+#~ "%Q"
 
 #~ msgid ""
 #~ "Module function call failed: the module '%Q' doesn't export a function "
@@ -9681,8 +9681,8 @@ msgstr "z: Recipiente para mensagens 'wallop' do operador"
 #~ msgstr "A ignorar caracter terminador aproximando %q"
 
 #~ msgid ""
-#~ "Slot target object destroyed while emitting signal '%Q' from object '%Q::%"
-#~ "Q'"
+#~ "Slot target object destroyed while emitting signal '%Q' from object '%Q::"
+#~ "%Q'"
 #~ msgstr ""
 #~ "Slot de destino destruído enquanto emitia o sinal '%Q' do objecto '%Q::%Q'"
 

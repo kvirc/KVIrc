@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
+"POT-Creation-Date: 2011-01-13 16:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -854,7 +854,7 @@ msgstr "<b>Kaksoisnapauta:</b><br>%Q"
 msgid "<b>Double-click</b> to get network information"
 msgstr "Kaksoisnapauta avataksesi tämän linkin"
 
-#: src/kvirc/kernel/KviApplication.cpp:1012
+#: src/kvirc/kernel/KviApplication.cpp:1017
 msgid ""
 "<b>Hi!</b><br><br><b>It seems that you have just upgraded KVirc from a "
 "previous version.</b><br><br>The KVIrc default scripts needs to be updated "
@@ -874,7 +874,7 @@ msgstr ""
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Keski-napauta:</b><br>%Q"
 
-#: src/kvirc/kernel/KviApplication.cpp:1078
+#: src/kvirc/kernel/KviApplication.cpp:1083
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -1267,11 +1267,11 @@ msgstr ""
 msgid "Authenticated as %Q"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1787
+#: src/kvirc/kernel/KviIrcConnection.cpp:1786
 msgid "Auto-joining network specific channels"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1819
+#: src/kvirc/kernel/KviIrcConnection.cpp:1818
 msgid "Auto-joining server specific channels"
 msgstr ""
 
@@ -1307,7 +1307,7 @@ msgstr "Saatavilla olevat käyttäjämoodit:"
 msgid "Avatar change"
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:1277
+#: src/kvirc/kernel/KviApplication.cpp:1282
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr ""
 
@@ -2900,27 +2900,27 @@ msgstr ""
 msgid "Execute Script..."
 msgstr "Suorita skripti..."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1611
+#: src/kvirc/kernel/KviIrcConnection.cpp:1610
 msgid "Executing scheduled identity specific \"on connect\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1706
+#: src/kvirc/kernel/KviIrcConnection.cpp:1705
 msgid "Executing scheduled identity specific \"on login\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1595
+#: src/kvirc/kernel/KviIrcConnection.cpp:1594
 msgid "Executing scheduled network specific \"on connect\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1690
+#: src/kvirc/kernel/KviIrcConnection.cpp:1689
 msgid "Executing scheduled network specific \"on login\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1603
+#: src/kvirc/kernel/KviIrcConnection.cpp:1602
 msgid "Executing scheduled server specific \"on connect\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1698
+#: src/kvirc/kernel/KviIrcConnection.cpp:1697
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr ""
 
@@ -3083,19 +3083,19 @@ msgstr ""
 msgid "File I/O error while trying to use the public key file %s"
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:1245
+#: src/kvirc/kernel/KviApplication.cpp:1250
 msgid "File download failed"
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:1247
+#: src/kvirc/kernel/KviApplication.cpp:1252
 msgid "File download from %1 failed"
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:1258
+#: src/kvirc/kernel/KviApplication.cpp:1263
 msgid "File download from %1 successfully complete"
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:1256
+#: src/kvirc/kernel/KviApplication.cpp:1261
 msgid "File download successfully complete"
 msgstr ""
 
@@ -3606,7 +3606,7 @@ msgstr "Asenna paketti"
 msgid "Install Theme Package"
 msgstr "Asenna teemapaketti"
 
-#: src/kvirc/kernel/KviApplication.cpp:1077
+#: src/kvirc/kernel/KviApplication.cpp:1082
 msgid "Installation problems?"
 msgstr ""
 
@@ -3910,8 +3910,8 @@ msgstr ""
 msgid "KVIrc is compiled without OpenSSL support."
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:849
-#: src/kvirc/kernel/KviApplication.cpp:879
+#: src/kvirc/kernel/KviApplication.cpp:854
+#: src/kvirc/kernel/KviApplication.cpp:884
 msgid "KVIrc messaging system"
 msgstr ""
 
@@ -4098,7 +4098,7 @@ msgstr ""
 msgid "Login in progress..."
 msgstr "Kirjaudutaan sisään..."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1681
+#: src/kvirc/kernel/KviIrcConnection.cpp:1680
 msgid "Login operations complete, happy ircing!"
 msgstr ""
 
@@ -4189,7 +4189,7 @@ msgstr ""
 msgid "Medium activity"
 msgstr "Keskitason aktiivisuutta"
 
-#: src/kvirc/kernel/KviApplication.cpp:871
+#: src/kvirc/kernel/KviApplication.cpp:876
 msgid ""
 "Message arriving from %1:\n"
 "\n"
@@ -4478,8 +4478,8 @@ msgstr "Vaihda tunnusta"
 
 #: src/kvirc/ui/KviStatusBar.cpp:553 src/kvirc/ui/KviInput.cpp:255
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:891
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092
+#: src/kvirc/kernel/KviApplication.cpp:1024
+#: src/kvirc/kernel/KviApplication.cpp:1097
 msgid "No"
 msgstr "Ei"
 
@@ -4504,8 +4504,8 @@ msgstr ""
 msgid "No activity"
 msgstr "Ei aktiivisuutta"
 
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092
+#: src/kvirc/kernel/KviApplication.cpp:1024
+#: src/kvirc/kernel/KviApplication.cpp:1097
 msgid "No and Don't Ask Me Again"
 msgstr ""
 
@@ -5541,7 +5541,7 @@ msgstr ""
 msgid "Reload"
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:1141
+#: src/kvirc/kernel/KviApplication.cpp:1146
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr ""
@@ -5952,7 +5952,7 @@ msgstr "Asetettu:"
 msgid "Setting away nickname (%Q)"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1717
+#: src/kvirc/kernel/KviIrcConnection.cpp:1716
 msgid "Setting configured user mode"
 msgstr ""
 
@@ -6639,7 +6639,7 @@ msgid ""
 "nickname manually"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1670
+#: src/kvirc/kernel/KviIrcConnection.cpp:1669
 #, c-format
 msgid "The server refused the suggested nickname (%s) and named you %s instead"
 msgstr ""
@@ -7288,7 +7288,7 @@ msgstr ""
 msgid "Update Indicator"
 msgstr "Viiveilmaisin"
 
-#: src/kvirc/kernel/KviApplication.cpp:1011
+#: src/kvirc/kernel/KviApplication.cpp:1016
 #, fuzzy
 msgid "Update default scripts"
 msgstr "Palauta &oletusskripti"
@@ -7301,7 +7301,7 @@ msgstr ""
 msgid "Update missing"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1924
+#: src/kvirc/kernel/KviIrcConnection.cpp:1923
 msgid "Updating away state for channel %Q"
 msgstr ""
 
@@ -7471,7 +7471,7 @@ msgstr "Hyvin matalaa aktiivisuutta"
 msgid "View"
 msgstr ""
 
-#: src/modules/url/libkviurl.cpp:878
+#: src/modules/url/libkviurl.cpp:877
 msgid "View URL list"
 msgstr ""
 
@@ -7622,8 +7622,8 @@ msgstr ""
 
 #: src/kvirc/ui/KviStatusBar.cpp:551 src/kvirc/ui/KviInput.cpp:254
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:891
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092
+#: src/kvirc/kernel/KviApplication.cpp:1024
+#: src/kvirc/kernel/KviApplication.cpp:1097
 msgid "Yes"
 msgstr "Kyllä"
 
@@ -7666,7 +7666,7 @@ msgid "You have been paged by"
 msgstr "Sinut pagesi käyttäjä"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1514
-#: src/kvirc/kernel/KviIrcConnection.cpp:1623
+#: src/kvirc/kernel/KviIrcConnection.cpp:1622
 msgid "You have changed your nickname to %Q"
 msgstr "Olet vaihtanut tunnukseksesi \"%Q\""
 

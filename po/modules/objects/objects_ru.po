@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
+"POT-Creation-Date: 2011-01-13 16:53+0100\n"
 "PO-Revision-Date: 2010-12-13 01:56+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
@@ -97,19 +97,19 @@ msgstr "Аргумент слишком длинный, используется
 msgid "Block parameter must be a string or a memorybuffer object"
 msgstr "Параметр block должен быть строкой или объектом memorybuffer"
 
-#: src/modules/objects/KvsObject_socket.cpp:410
+#: src/modules/objects/KvsObject_socket.cpp:415
 #: src/modules/objects/KvsObject_file.cpp:400
 #: src/modules/objects/KvsObject_file.cpp:534
 #: src/modules/objects/KvsObject_pixmap.cpp:279
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr "Параметр Buffer не является объектом буфера памяти"
 
-#: src/modules/objects/KvsObject_socket.cpp:470
+#: src/modules/objects/KvsObject_socket.cpp:475
 msgid "Buffer parameter is not a memorybuffer or file object"
 msgstr "Параметр Buffer не является объектом memorybuffer или файлом"
 
-#: src/modules/objects/KvsObject_socket.cpp:388
-#: src/modules/objects/KvsObject_socket.cpp:448
+#: src/modules/objects/KvsObject_socket.cpp:393
+#: src/modules/objects/KvsObject_socket.cpp:453
 #: src/modules/objects/KvsObject_file.cpp:395
 #: src/modules/objects/KvsObject_file.cpp:515
 #: src/modules/objects/KvsObject_pixmap.cpp:274
@@ -196,19 +196,19 @@ msgstr "Соединение %Q не открыто!"
 msgid "Connection query %Q does not exists"
 msgstr "Запрос соединения %Q не существует"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:359
+#: src/modules/objects/KvsObject_xmlreader.cpp:356
 msgid "Data is not a memorybuffer object or string"
 msgstr "Data не является объектом memorybuffer или строкой"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:340
+#: src/modules/objects/KvsObject_xmlreader.cpp:337
 msgid "Data parameter is not a memorybuffer object"
 msgstr "Параметр Data не является объектом memorybuffer"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:331
+#: src/modules/objects/KvsObject_xmlreader.cpp:328
 msgid "Data parameter is not an object"
 msgstr "Параметр Data не является объектом"
 
-#: src/modules/objects/KvsObject_socket.cpp:499
+#: src/modules/objects/KvsObject_socket.cpp:504
 msgid "Datatype not supported"
 msgstr "Тип данных не поддерживается"
 
@@ -220,11 +220,11 @@ msgstr "Дублирующееся имя соединения '%Q', старо�
 msgid "Empty filename string"
 msgstr "Пустое имя файла"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:151
+#: src/modules/objects/KvsObject_xmlreader.cpp:148
 msgid "Error in KVS class implementation: processing aborted"
 msgstr "Ошибка в KVS классе реализации: обработка прервана."
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:162
+#: src/modules/objects/KvsObject_xmlreader.cpp:159
 #, fuzzy
 msgid "Error near line %1, column %2"
 msgstr "Ошибка в строке %1, символ %2"
@@ -247,8 +247,8 @@ msgstr "Не один из путей до виджетов ('%Q::%Q') неве�
 msgid "Failed to find the widget to wrap"
 msgstr "Виджет не найден"
 
-#: src/modules/objects/KvsObject_socket.cpp:403
-#: src/modules/objects/KvsObject_socket.cpp:461
+#: src/modules/objects/KvsObject_socket.cpp:408
+#: src/modules/objects/KvsObject_socket.cpp:466
 #: src/modules/objects/KvsObject_file.cpp:40
 #: src/modules/objects/KvsObject_file.cpp:506
 msgid "File is not open!"
@@ -492,7 +492,7 @@ msgstr "Один из параметров тройки не является ц
 msgid "Only memorybuffer class object is supported"
 msgstr "Поддерживается только класс объекта memorybuffer"
 
-#: src/modules/objects/KvsObject_socket.cpp:488
+#: src/modules/objects/KvsObject_socket.cpp:493
 #, c-format
 msgid ""
 "Only values in the range of 0-255 are allowed: integer %d is out of range"
@@ -546,7 +546,7 @@ msgstr "Требуется Pixmap обьект"
 msgid "Process could not be started."
 msgstr "Процесс не мог быть запущен."
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:156
+#: src/modules/objects/KvsObject_xmlreader.cpp:153
 msgid "Processing aborted"
 msgstr "Обработка прервана"
 
@@ -804,13 +804,13 @@ msgstr ""
 msgid "Unsupported datatype '%Q'"
 msgstr "Неподдерживаемый тип данных '%Q'"
 
-#: src/modules/objects/KvsObject_socket.cpp:549
+#: src/modules/objects/KvsObject_socket.cpp:554
 #, c-format
 msgid "Value %d for port is out of range (values allowed are from 0 to 65535)"
 msgstr ""
 "Значение %d для порта выходит за рамки (значения могут быть от 0 до 65535)"
 
-#: src/modules/objects/KvsObject_socket.cpp:567
+#: src/modules/objects/KvsObject_socket.cpp:572
 #, fuzzy, c-format
 msgid ""
 "Value %d for port is out of range (values allowed are from 0 to 65535): "
@@ -818,7 +818,7 @@ msgid ""
 msgstr ""
 "Значение %d для порта выходит за рамки (значения могут быть от 0 до 65535)"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:164
+#: src/modules/objects/KvsObject_xmlreader.cpp:161
 #, fuzzy
 msgid "Warning near line %1, column %2"
 msgstr "Предупреждение в строке %1, символ %2"
@@ -857,7 +857,7 @@ msgstr "Параметр Widget не является объектом"
 msgid "Write error occured!"
 msgstr "Произошла ошибка записи!"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:316
+#: src/modules/objects/KvsObject_xmlreader.cpp:313
 msgid "XML support not available in the Qt library"
 msgstr "XML поддержка не возможна в библиотеке Qt"
 

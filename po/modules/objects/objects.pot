@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
+"POT-Creation-Date: 2011-01-13 16:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -150,48 +150,48 @@ msgstr ""
 msgid "Invalid dock area specified"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:388
-#: src/modules/objects/KvsObject_socket.cpp:448
+#: src/modules/objects/KvsObject_socket.cpp:393
+#: src/modules/objects/KvsObject_socket.cpp:453
 #: src/modules/objects/KvsObject_file.cpp:395
 #: src/modules/objects/KvsObject_file.cpp:515
 #: src/modules/objects/KvsObject_pixmap.cpp:274
 msgid "Buffer parameter is not an object"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:403
-#: src/modules/objects/KvsObject_socket.cpp:461
+#: src/modules/objects/KvsObject_socket.cpp:408
+#: src/modules/objects/KvsObject_socket.cpp:466
 #: src/modules/objects/KvsObject_file.cpp:40
 #: src/modules/objects/KvsObject_file.cpp:506
 msgid "File is not open!"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:410
+#: src/modules/objects/KvsObject_socket.cpp:415
 #: src/modules/objects/KvsObject_file.cpp:400
 #: src/modules/objects/KvsObject_file.cpp:534
 #: src/modules/objects/KvsObject_pixmap.cpp:279
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:470
+#: src/modules/objects/KvsObject_socket.cpp:475
 msgid "Buffer parameter is not a memorybuffer or file object"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:488
+#: src/modules/objects/KvsObject_socket.cpp:493
 #, c-format
 msgid ""
 "Only values in the range of 0-255 are allowed: integer %d is out of range"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:499
+#: src/modules/objects/KvsObject_socket.cpp:504
 msgid "Datatype not supported"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:549
+#: src/modules/objects/KvsObject_socket.cpp:554
 #, c-format
 msgid "Value %d for port is out of range (values allowed are from 0 to 65535)"
 msgstr ""
 
-#: src/modules/objects/KvsObject_socket.cpp:567
+#: src/modules/objects/KvsObject_socket.cpp:572
 #, c-format
 msgid ""
 "Value %d for port is out of range (values allowed are from 0 to 65535): "
@@ -653,35 +653,35 @@ msgstr ""
 msgid "The parent-widget isn't a MainWindow."
 msgstr ""
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:151
+#: src/modules/objects/KvsObject_xmlreader.cpp:148
 msgid "Error in KVS class implementation: processing aborted"
 msgstr ""
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:156
+#: src/modules/objects/KvsObject_xmlreader.cpp:153
 msgid "Processing aborted"
 msgstr ""
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:162
+#: src/modules/objects/KvsObject_xmlreader.cpp:159
 msgid "Error near line %1, column %2"
 msgstr ""
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:164
+#: src/modules/objects/KvsObject_xmlreader.cpp:161
 msgid "Warning near line %1, column %2"
 msgstr ""
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:316
+#: src/modules/objects/KvsObject_xmlreader.cpp:313
 msgid "XML support not available in the Qt library"
 msgstr ""
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:331
+#: src/modules/objects/KvsObject_xmlreader.cpp:328
 msgid "Data parameter is not an object"
 msgstr ""
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:340
+#: src/modules/objects/KvsObject_xmlreader.cpp:337
 msgid "Data parameter is not a memorybuffer object"
 msgstr ""
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:359
+#: src/modules/objects/KvsObject_xmlreader.cpp:356
 msgid "Data is not a memorybuffer object or string"
 msgstr ""
 

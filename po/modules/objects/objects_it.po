@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
+"POT-Creation-Date: 2011-01-13 16:53+0100\n"
 "PO-Revision-Date: 2011-01-10 19:23+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -97,19 +97,19 @@ msgid "Block parameter must be a string or a memorybuffer object"
 msgstr ""
 "Il parametro di blocco deve essere una stringa o un oggetto memorybuffer"
 
-#: src/modules/objects/KvsObject_socket.cpp:410
+#: src/modules/objects/KvsObject_socket.cpp:415
 #: src/modules/objects/KvsObject_file.cpp:400
 #: src/modules/objects/KvsObject_file.cpp:534
 #: src/modules/objects/KvsObject_pixmap.cpp:279
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr "Il parametro buffer non è un oggetto memorybuffer"
 
-#: src/modules/objects/KvsObject_socket.cpp:470
+#: src/modules/objects/KvsObject_socket.cpp:475
 msgid "Buffer parameter is not a memorybuffer or file object"
 msgstr "Il parametro buffer non è un oggetto memorybuffer o file"
 
-#: src/modules/objects/KvsObject_socket.cpp:388
-#: src/modules/objects/KvsObject_socket.cpp:448
+#: src/modules/objects/KvsObject_socket.cpp:393
+#: src/modules/objects/KvsObject_socket.cpp:453
 #: src/modules/objects/KvsObject_file.cpp:395
 #: src/modules/objects/KvsObject_file.cpp:515
 #: src/modules/objects/KvsObject_pixmap.cpp:274
@@ -196,19 +196,19 @@ msgstr "La connessione %Q non è aperta!"
 msgid "Connection query %Q does not exists"
 msgstr "La query della connessione %Q non esiste"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:359
+#: src/modules/objects/KvsObject_xmlreader.cpp:356
 msgid "Data is not a memorybuffer object or string"
 msgstr "I dati non sono un oggetto memorybuffer o una stringa"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:340
+#: src/modules/objects/KvsObject_xmlreader.cpp:337
 msgid "Data parameter is not a memorybuffer object"
 msgstr "I dati non sono un oggetto memorybuffer"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:331
+#: src/modules/objects/KvsObject_xmlreader.cpp:328
 msgid "Data parameter is not an object"
 msgstr "I dati non sono un oggetto"
 
-#: src/modules/objects/KvsObject_socket.cpp:499
+#: src/modules/objects/KvsObject_socket.cpp:504
 msgid "Datatype not supported"
 msgstr "Tipo di dato non supportato"
 
@@ -220,11 +220,11 @@ msgstr "Nome della connessione '%Q' duplicato, vecchia query rimossa"
 msgid "Empty filename string"
 msgstr "Nome del file vuoto"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:151
+#: src/modules/objects/KvsObject_xmlreader.cpp:148
 msgid "Error in KVS class implementation: processing aborted"
 msgstr "Errore nell'implementazione della classe KVS: processo annullato"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:162
+#: src/modules/objects/KvsObject_xmlreader.cpp:159
 msgid "Error near line %1, column %2"
 msgstr "Errore vicino alla riga %1, colonna %2"
 
@@ -246,8 +246,8 @@ msgstr "Una delle widget del percorso ('%Q::%Q') non è stata trovata"
 msgid "Failed to find the widget to wrap"
 msgstr "La widget da agganciare non è stata trovata"
 
-#: src/modules/objects/KvsObject_socket.cpp:403
-#: src/modules/objects/KvsObject_socket.cpp:461
+#: src/modules/objects/KvsObject_socket.cpp:408
+#: src/modules/objects/KvsObject_socket.cpp:466
 #: src/modules/objects/KvsObject_file.cpp:40
 #: src/modules/objects/KvsObject_file.cpp:506
 msgid "File is not open!"
@@ -485,7 +485,7 @@ msgstr "Uno dei parametri della tripletta non viene valutato come intero"
 msgid "Only memorybuffer class object is supported"
 msgstr "Solo la classe memorybuffer è supportata"
 
-#: src/modules/objects/KvsObject_socket.cpp:488
+#: src/modules/objects/KvsObject_socket.cpp:493
 #, c-format
 msgid ""
 "Only values in the range of 0-255 are allowed: integer %d is out of range"
@@ -537,7 +537,7 @@ msgstr "Oggetto popupmenu richiesto"
 msgid "Process could not be started."
 msgstr "Il processo potrebbe non essere avviato."
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:156
+#: src/modules/objects/KvsObject_xmlreader.cpp:153
 msgid "Processing aborted"
 msgstr "Processo annullato"
 
@@ -793,14 +793,14 @@ msgstr ""
 msgid "Unsupported datatype '%Q'"
 msgstr "Tipo di dato '%Q' non supportato"
 
-#: src/modules/objects/KvsObject_socket.cpp:549
+#: src/modules/objects/KvsObject_socket.cpp:554
 #, c-format
 msgid "Value %d for port is out of range (values allowed are from 0 to 65535)"
 msgstr ""
 "Il valore %d per la porta è fuori dal range (i valori permessi sono da 0 a "
 "65535)"
 
-#: src/modules/objects/KvsObject_socket.cpp:567
+#: src/modules/objects/KvsObject_socket.cpp:572
 #, c-format
 msgid ""
 "Value %d for port is out of range (values allowed are from 0 to 65535): "
@@ -809,7 +809,7 @@ msgstr ""
 "Il valore %d per la porta è fuori dal range (i valori permessi sono da 0 a "
 "65535): metto un valore casuale"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:164
+#: src/modules/objects/KvsObject_xmlreader.cpp:161
 msgid "Warning near line %1, column %2"
 msgstr "Warning vicino alla linea %1, colonna %2"
 
@@ -847,7 +847,7 @@ msgstr "Il parametro widget non è un oggetto"
 msgid "Write error occured!"
 msgstr "Errore in scrittura!"
 
-#: src/modules/objects/KvsObject_xmlreader.cpp:316
+#: src/modules/objects/KvsObject_xmlreader.cpp:313
 msgid "XML support not available in the Qt library"
 msgstr "Il supporto XML non è disponibile nella libreria Qt"
 

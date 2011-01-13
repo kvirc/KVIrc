@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
+"POT-Creation-Date: 2011-01-13 16:53+0100\n"
 "PO-Revision-Date: 2010-12-19 21:06+0600\n"
 "Last-Translator: Alexey \"DarthGandalf\" Sokolov <somebody shift-2 shellium "
 "org>\n"
@@ -887,7 +887,7 @@ msgstr "<b>Двойной клик:</b><br>%Q"
 msgid "<b>Double-click</b> to get network information"
 msgstr "<b>Двойной клик</b> для получения информации о сети"
 
-#: src/kvirc/kernel/KviApplication.cpp:1012
+#: src/kvirc/kernel/KviApplication.cpp:1017
 msgid ""
 "<b>Hi!</b><br><br><b>It seems that you have just upgraded KVirc from a "
 "previous version.</b><br><br>The KVIrc default scripts needs to be updated "
@@ -914,7 +914,7 @@ msgstr "<b>KVIrc</b>"
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Клик на средней кнопке:</b><br>%Q"
 
-#: src/kvirc/kernel/KviApplication.cpp:1078
+#: src/kvirc/kernel/KviApplication.cpp:1083
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -1349,11 +1349,11 @@ msgstr "Операторам или аудиторам: /NAMES и /WHO пока�
 msgid "Authenticated as %Q"
 msgstr ""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1787
+#: src/kvirc/kernel/KviIrcConnection.cpp:1786
 msgid "Auto-joining network specific channels"
 msgstr "Автовход на специфичные для сети каналы"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1819
+#: src/kvirc/kernel/KviIrcConnection.cpp:1818
 msgid "Auto-joining server specific channels"
 msgstr "Автовход на специфичные для сервера каналы"
 
@@ -1390,7 +1390,7 @@ msgstr "Доступные пользовательские режимы:"
 msgid "Avatar change"
 msgstr "Смена аватара"
 
-#: src/kvirc/kernel/KviApplication.cpp:1277
+#: src/kvirc/kernel/KviApplication.cpp:1282
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr "Ошибка загрузки аватара для %Q!%Q@%Q и url %Q: %Q"
 
@@ -2989,27 +2989,27 @@ msgstr "Всё хорошо"
 msgid "Execute Script..."
 msgstr "Выполнить сценарий..."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1611
+#: src/kvirc/kernel/KviIrcConnection.cpp:1610
 msgid "Executing scheduled identity specific \"on connect\" commands"
 msgstr "Выполнение запланированной идентификации для команд \"on connect\""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1706
+#: src/kvirc/kernel/KviIrcConnection.cpp:1705
 msgid "Executing scheduled identity specific \"on login\" commands"
 msgstr "Выполнение запланированной идентификации для команд \"on login\""
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1595
+#: src/kvirc/kernel/KviIrcConnection.cpp:1594
 msgid "Executing scheduled network specific \"on connect\" commands"
 msgstr "Выполнение запланированной \"при соединении\" с сетью команды"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1690
+#: src/kvirc/kernel/KviIrcConnection.cpp:1689
 msgid "Executing scheduled network specific \"on login\" commands"
 msgstr "Запуск команды \"при входе\" в сеть"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1603
+#: src/kvirc/kernel/KviIrcConnection.cpp:1602
 msgid "Executing scheduled server specific \"on connect\" commands"
 msgstr "Выполнение запланированной \"при соединении\" с сервером команды"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1698
+#: src/kvirc/kernel/KviIrcConnection.cpp:1697
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr "Запуск команды \"при входе\" на сервер"
 
@@ -3171,19 +3171,19 @@ msgstr ""
 msgid "File I/O error while trying to use the public key file %s"
 msgstr ""
 
-#: src/kvirc/kernel/KviApplication.cpp:1245
+#: src/kvirc/kernel/KviApplication.cpp:1250
 msgid "File download failed"
 msgstr "Ошибка загрузки файла"
 
-#: src/kvirc/kernel/KviApplication.cpp:1247
+#: src/kvirc/kernel/KviApplication.cpp:1252
 msgid "File download from %1 failed"
 msgstr "Скачивание файла от %1 завершилось ошибкой"
 
-#: src/kvirc/kernel/KviApplication.cpp:1258
+#: src/kvirc/kernel/KviApplication.cpp:1263
 msgid "File download from %1 successfully complete"
 msgstr "Скачивание файла от %1 успешно завершено"
 
-#: src/kvirc/kernel/KviApplication.cpp:1256
+#: src/kvirc/kernel/KviApplication.cpp:1261
 msgid "File download successfully complete"
 msgstr "Скачивание файла успешно завершено"
 
@@ -3692,7 +3692,7 @@ msgstr "Установить пакет"
 msgid "Install Theme Package"
 msgstr "Установить пакет темы"
 
-#: src/kvirc/kernel/KviApplication.cpp:1077
+#: src/kvirc/kernel/KviApplication.cpp:1082
 msgid "Installation problems?"
 msgstr "Проблемы с инсталляцией?"
 
@@ -4005,8 +4005,8 @@ msgstr ""
 msgid "KVIrc is compiled without OpenSSL support."
 msgstr "Эта сборка KVIrc не поддерживает OpenSSL"
 
-#: src/kvirc/kernel/KviApplication.cpp:849
-#: src/kvirc/kernel/KviApplication.cpp:879
+#: src/kvirc/kernel/KviApplication.cpp:854
+#: src/kvirc/kernel/KviApplication.cpp:884
 msgid "KVIrc messaging system"
 msgstr ""
 
@@ -4194,7 +4194,7 @@ msgstr "Вошел как %Q!%Q :%Q"
 msgid "Login in progress..."
 msgstr "Вход в сеть..."
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1681
+#: src/kvirc/kernel/KviIrcConnection.cpp:1680
 msgid "Login operations complete, happy ircing!"
 msgstr "Подключение прошло успешно, добро пожаловать в IRC!"
 
@@ -4289,7 +4289,7 @@ msgstr ""
 msgid "Medium activity"
 msgstr "Средняя активность"
 
-#: src/kvirc/kernel/KviApplication.cpp:871
+#: src/kvirc/kernel/KviApplication.cpp:876
 msgid ""
 "Message arriving from %1:\n"
 "\n"
@@ -4577,8 +4577,8 @@ msgstr "Ник:"
 
 #: src/kvirc/ui/KviStatusBar.cpp:553 src/kvirc/ui/KviInput.cpp:255
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:891
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092
+#: src/kvirc/kernel/KviApplication.cpp:1024
+#: src/kvirc/kernel/KviApplication.cpp:1097
 msgid "No"
 msgstr "Нет"
 
@@ -4603,8 +4603,8 @@ msgstr "Не задано имя/номер действия"
 msgid "No activity"
 msgstr "Нет активности"
 
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092
+#: src/kvirc/kernel/KviApplication.cpp:1024
+#: src/kvirc/kernel/KviApplication.cpp:1097
 msgid "No and Don't Ask Me Again"
 msgstr "Нет и больше меня не спрашивать"
 
@@ -5720,7 +5720,7 @@ msgstr "Определена гарантированная задержка %u 
 msgid "Reload"
 msgstr "Обновить"
 
-#: src/kvirc/kernel/KviApplication.cpp:1141
+#: src/kvirc/kernel/KviApplication.cpp:1146
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "Дистанционная команда получила (%s ...)"
@@ -6125,7 +6125,7 @@ msgstr "Дата установки"
 msgid "Setting away nickname (%Q)"
 msgstr "Установка ника в режиме Отошёл (%Q)"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1717
+#: src/kvirc/kernel/KviIrcConnection.cpp:1716
 msgid "Setting configured user mode"
 msgstr "Настройка конфигурации пользовательского режима"
 
@@ -6817,7 +6817,7 @@ msgid ""
 "nickname manually"
 msgstr "Сервер отклоняет вход по всем никам, вы должны послать ник вручную"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1670
+#: src/kvirc/kernel/KviIrcConnection.cpp:1669
 #, c-format
 msgid "The server refused the suggested nickname (%s) and named you %s instead"
 msgstr "Сервер отклонил предложенный вами ник (%s) и назвал вас %s"
@@ -7481,7 +7481,7 @@ msgstr "Без названия"
 msgid "Update Indicator"
 msgstr "Индикатор обновления"
 
-#: src/kvirc/kernel/KviApplication.cpp:1011
+#: src/kvirc/kernel/KviApplication.cpp:1016
 #, fuzzy
 msgid "Update default scripts"
 msgstr "Восстановить сценарии по &умолчанию"
@@ -7494,7 +7494,7 @@ msgstr "Ошибка обновления"
 msgid "Update missing"
 msgstr "Обновления не найдено"
 
-#: src/kvirc/kernel/KviIrcConnection.cpp:1924
+#: src/kvirc/kernel/KviIrcConnection.cpp:1923
 msgid "Updating away state for channel %Q"
 msgstr "Обновляю away списки для канала %Q"
 
@@ -7666,7 +7666,7 @@ msgstr "Очень низкая активность"
 msgid "View"
 msgstr ""
 
-#: src/modules/url/libkviurl.cpp:878
+#: src/modules/url/libkviurl.cpp:877
 msgid "View URL list"
 msgstr "Показать список URL"
 
@@ -7817,8 +7817,8 @@ msgstr "Записываю заголовок пакета"
 
 #: src/kvirc/ui/KviStatusBar.cpp:551 src/kvirc/ui/KviInput.cpp:254
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:891
-#: src/kvirc/kernel/KviApplication.cpp:1019
-#: src/kvirc/kernel/KviApplication.cpp:1092
+#: src/kvirc/kernel/KviApplication.cpp:1024
+#: src/kvirc/kernel/KviApplication.cpp:1097
 msgid "Yes"
 msgstr "Да"
 
@@ -7865,7 +7865,7 @@ msgid "You have been paged by"
 msgstr "Вы получили сообщение по пейджеру"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1514
-#: src/kvirc/kernel/KviIrcConnection.cpp:1623
+#: src/kvirc/kernel/KviIrcConnection.cpp:1622
 msgid "You have changed your nickname to %Q"
 msgstr "Вы изменили свой ник на %Q"
 

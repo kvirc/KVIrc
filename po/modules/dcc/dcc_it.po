@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
+"POT-Creation-Date: 2011-01-13 16:53+0100\n"
 "PO-Revision-Date: 2011-01-10 19:20+0100\n"
 "Last-Translator: Elvio Basello <hell at hellvis69 dot netsons dot org>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -507,7 +507,8 @@ msgid "Invalid IP address in old format %1"
 msgstr "Vecchio formato dell'indirizzo IP %1 non valido"
 
 #: src/modules/dcc/requests.cpp:640
-msgid "Invalid RECV request: Position %1 is is larger than file size"
+#, fuzzy
+msgid "Invalid RECV request: Position %1 is larger than file size"
 msgstr ""
 "Richiesta di RECV non valida: la posizione %1 è più grande della dimensione "
 "del file"
