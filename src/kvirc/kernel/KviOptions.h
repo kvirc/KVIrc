@@ -360,7 +360,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_stringNickname4 4                                  /* identity */
 #define KviOption_stringUsername 5                                   /* identity */
 #define KviOption_stringRealname 6                                   /* identity */
-#define KviOption_stringLocalHostIp 7                   /* ?????? This is a fallback one */
+#define KviOption_stringLocalHostIp 7                                /* ?????? This is a fallback one */
 #define KviOption_stringPartMessage 8                                /* ircengine::defaultmessages */
 #define KviOption_stringQuitMessage 9                                /* ircengine::defaultmessages */
 #define KviOption_stringUrlHttpCommand 10                            /* urlhandlers */
@@ -372,14 +372,14 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_stringUrlFtpCommand 16                             /* urlhandlers */
 #define KviOption_stringUrlHttpsCommand 17                           /* urlhandlers */
 #define KviOption_stringUrlMailtoCommand 18                          /* urlhandlers */
-#define KviOption_stringPreferredMediaPlayer 19          /* still missing in options ! */
+#define KviOption_stringPreferredMediaPlayer 19                      /* still missing in options ! */
 #define KviOption_stringUrlFileCommand 20                            /* urlhandlers */
 #define KviOption_stringNickCompletionPostfix 21
 #define KviOption_stringUrlUnknownCommand 22                         /* urlhandlers */
 #define KviOption_stringIPv4ConnectionBindAddress 23                 /* connection::transport */
 #define KviOption_stringIPv6ConnectionBindAddress 24                 /* connection::transport */
-#define KviOption_stringDccVoiceSoundDevice	25                       /* dcc::voice */
-#define KviOption_stringDccVoiceMixerDevice	26                       /* dcc::voice */
+#define KviOption_stringDccVoiceSoundDevice 25                       /* dcc::voice */
+#define KviOption_stringDccVoiceMixerDevice 26                       /* dcc::voice */
 #define KviOption_stringAwayMessage 27                               /* irc::away */
 #define KviOption_stringIdentdUser 28                                /* connection::ident */
 #define KviOption_stringDccListenDefaultInterface 29                 /* dcc::general */
@@ -402,22 +402,23 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_stringWinampTextEncoding 44
 #define KviOption_stringMp3TagsEncoding 45
 
-#define KviOption_stringCtcpUserInfoAge 46                                /* identity */
-#define KviOption_stringCtcpUserInfoGender 47                             /* identity */
-#define KviOption_stringCtcpUserInfoLocation 48                           /* identity */
-#define KviOption_stringCtcpUserInfoLanguages 49                          /* identity */
-#define KviOption_stringWordSplitters 50				/* highlight */
-#define KviOption_stringOnNewQueryOpenedSound 51				/* sounds */
-#define KviOption_stringOnHighlightedMessageSound 52				/* sounds */
-#define KviOption_stringOnMeKickedSound 53				/* sounds */
-#define KviOption_stringOnQueryMessageSound 54				/* sounds */
+#define KviOption_stringCtcpUserInfoAge 46                           /* identity */
+#define KviOption_stringCtcpUserInfoGender 47                        /* identity */
+#define KviOption_stringCtcpUserInfoLocation 48                      /* identity */
+#define KviOption_stringCtcpUserInfoLanguages 49                     /* identity */
+#define KviOption_stringWordSplitters 50                             /* highlight */
+#define KviOption_stringOnNewQueryOpenedSound 51                     /* sounds */
+#define KviOption_stringOnHighlightedMessageSound 52                 /* sounds */
+#define KviOption_stringOnMeKickedSound 53                           /* sounds */
+#define KviOption_stringOnQueryMessageSound 54                       /* sounds */
 #define KviOption_stringIrcViewTimestampFormat 55
-#define KviOption_stringPreferredTorrentClient 56          /* still missing in options ! */
+#define KviOption_stringPreferredTorrentClient 56                    /* still missing in options ! */
 // empty string means guess from locale
-#define KviOption_stringDefaultSrvEncoding 57                       /* server encoding */
-#define KviOption_stringLogsPath 58                              /* logfolder */
+#define KviOption_stringDefaultSrvEncoding 57                        /* server encoding */
+#define KviOption_stringLogsPath 58                                  /* logfolder */
+#define KviOption_stringLogsDynamicPath 59                           /* logfolder */
 
-#define KVI_NUM_STRING_OPTIONS 59
+#define KVI_NUM_STRING_OPTIONS 60
 
 
 

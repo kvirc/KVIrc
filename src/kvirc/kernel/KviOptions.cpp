@@ -418,7 +418,8 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS]=
 	STRING_OPTION("IrcViewTimestampFormat","[hh:mm:ss]",KviOption_sectFlagIrcView),
 	STRING_OPTION("PreferredTorrentClient","auto",KviOption_sectFlagFrame),
 	STRING_OPTION("DefaultSrvEncoding","",KviOption_sectFlagFrame),
-	STRING_OPTION("LogsPath","",KviOption_sectFlagUser | KviOption_encodePath)
+	STRING_OPTION("LogsPath","",KviOption_sectFlagUser | KviOption_encodePath),
+	STRING_OPTION("LogsDynamicPath","",KviOption_sectFlagUser | KviOption_encodePath)
 };
 
 #define STRINGLIST_OPTION(_txt,_flags) \

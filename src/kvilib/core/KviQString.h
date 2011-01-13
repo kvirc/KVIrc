@@ -48,11 +48,11 @@ namespace KviQString
 {
 	enum EscapeKvsFlags
 	{
-		EscapeSpace = 0x1,
-		PermitVariables = 0x2,
-		PermitFunctions = 0x4,
-		PermitMultiLine = 0x8,
-		EscapeParenthesis = 0x16,
+		EscapeSpace = 1,
+		PermitVariables = 2,
+		PermitFunctions = 4,
+		PermitMultiLine = 8,
+		EscapeParenthesis = 16,
 	};
 
 	/**

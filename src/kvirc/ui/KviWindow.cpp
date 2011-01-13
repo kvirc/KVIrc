@@ -537,7 +537,25 @@ void KviWindow::getConfigGroupName(QString & szBuffer)
 
 void KviWindow::getDefaultLogFileName(QString & szBuffer)
 {
-	// FIXME: #warning "Make it configurable ?"
+	QString szLog;
+
+	// dynamic log path
+	QString szDynamicPath=KVI_OPTION_STRING(KviOption_stringLogsDynamicPath).trimmed();
+	if(!szDynamicPath.isEmpty())
+	{
+		KviQString::escapeKvs(&szDynamicPath, KviQString::PermitVariables | KviQString::PermitFunctions );
+
+		KviKvsVariant vRet;
+		if(KviKvsScript::evaluate(szDynamicPath,this,0,&vRet))
+			vRet.asString(szDynamicPath);
+	}
+
+	g_pApp->getLocalKvircDirectory(szLog, KviApplication::Log, szDynamicPath);
+	KviQString::ensureLastCharIs(szLog,KVI_PATH_SEPARATOR_CHAR);
+
+	//ensure the directory exists
+	KviFileUtils::makeDir(szLog);
+
 	QString szDate;
 	QDate date(QDate::currentDate());
 
@@ -558,17 +576,18 @@ void KviWindow::getDefaultLogFileName(QString & szBuffer)
 	QString szBase;
 	getBaseLogFileName(szBase);
 	KviFileUtils::encodeFileName(szBase);
-	szBase.replace("%%2e","%2e");
 	szBase = szBase.toLower();
+	szBase.replace("%%2e","%2e");
 
-	QString szTmp, szLog;
+	QString szTmp;
 	if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
 		szTmp = "%1_%2_%3.log.gz";
 	else
 		szTmp = "%1_%2_%3.log";
 
-	szLog = QString(szTmp).arg(typeString(),szBase,szDate);
-	g_pApp->getLocalKvircDirectory(szBuffer,KviApplication::Log,szLog);
+	szLog.append(QString(szTmp).arg(typeString(),szBase,szDate));
+	
+	szBuffer=szLog;
 }
 
 void KviWindow::getBaseLogFileName(QString & szBuffer)
