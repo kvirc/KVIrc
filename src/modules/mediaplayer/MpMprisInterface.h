@@ -122,6 +122,12 @@
 		MpVlcInterface();
 	};
 
+	class MpClementineInterface : public MpMprisInterface
+	{
+	public:
+		MpClementineInterface();
+	};
+
 	MP_DECLARE_DESCRIPTOR(MpAudaciousInterface)
 	MP_DECLARE_DESCRIPTOR(MpBmpxInterface)
 	MP_DECLARE_DESCRIPTOR(MpAmarok2Interface)
@@ -130,6 +136,7 @@
 	MP_DECLARE_DESCRIPTOR(MpSongbirdInterface)
 	MP_DECLARE_DESCRIPTOR(MpTotemInterface)
 	MP_DECLARE_DESCRIPTOR(MpVlcInterface)
+	MP_DECLARE_DESCRIPTOR(MpClementineInterface)
 #endif //COMPILE_ON_WINDOWS
 
 #endif //_MP_AUDACIOUSINTERFACE_H_

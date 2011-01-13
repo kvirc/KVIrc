@@ -576,4 +576,22 @@ MpVlcInterface::MpVlcInterface()
 {
 	m_szServiceName = "org.mpris.vlc";
 }
+
+/* Clementine interface */
+MP_IMPLEMENT_DESCRIPTOR(
+	MpClementineInterface,
+	"clementine",
+	__tr2qs_ctx(
+		"An interface to Clementine.\n" \
+		"Download it from http://www.clementine-player.org/\n" \
+		,
+		"mediaplayer"
+	)
+)
+
+MpClementineInterface::MpClementineInterface()
+: MpMprisInterface()
+{
+	m_szServiceName = "org.mpris.clementine";
+}
 #endif //COMPILE_ON_WINDOWS
