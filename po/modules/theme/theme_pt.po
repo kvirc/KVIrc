@@ -1,24 +1,22 @@
 # Translation of KVIrc theme messages to Portuguese
 # Copyright (C) 2007 the KVIrc's copyright holder
 # This file is distributed under the same license as the KVIrc package.
+# Zé <ze@mandriva.org>, 2007-2008, 2010, 2011.
 #
-# Zé <ze@mandriva.org>, 2007-2008.
-# Zé <mmodem00@gmail.com>, 2010.
-# Zé <mmodem00@gmal.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_theme \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-10 18:59+0100\n"
-"PO-Revision-Date: 2010-05-25 00:28+0100\n"
-"Last-Translator: Zé <mmodem00@gmal.com>\n"
-"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2011-01-13 03:12+0000\n"
+"Last-Translator: Zé <ze@mandriva.org>\n"
+"Language-Team: pt <a>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: utf-8\n"
 "X-Generator: Lokalize 1.0\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: 2\n"
 
 #: src/modules/theme/managementdialog.cpp:284
 msgid "&Apply Theme"
@@ -110,7 +108,6 @@ msgstr "Exportar Tema - KVIrc"
 
 #: src/modules/theme/libkvitheme.cpp:120
 #: src/modules/theme/managementdialog.cpp:311
-#, fuzzy
 msgid "Failed to apply the specified theme: %1"
 msgstr "Falha ao aplicar o tema especificado: %1"
 
@@ -132,7 +129,6 @@ msgid "Failed to make screenshot"
 msgstr "Falha ao capturar ecrã"
 
 #: src/modules/theme/ThemeFunctions.cpp:286
-#, fuzzy
 msgid "Failed to unpack the selected file: %1"
 msgstr "Falhou ao desempacotar o ficheiro seleccionado: %1"
 
@@ -176,8 +172,8 @@ msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:381
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *"
-"%1 extension."
+"Here you must choose the file name for the theme package. It should have a *%"
+"1 extension."
 msgstr ""
 "Aqui deve escolher o nome do ficheiro para o pacote do tema. Deve ter uma "
 "extensão *%1."
@@ -282,7 +278,6 @@ msgid "Subdirectory"
 msgstr "Subdirectório"
 
 #: src/modules/theme/ThemeFunctions.cpp:68
-#, fuzzy
 msgid "The selected file does not seem to be a valid KVIrc package: %1"
 msgstr "O ficheiro seleccionado não parece ser um pacote KVIrc válido: %1"
 
@@ -357,7 +352,6 @@ msgid "Unable to create theme directory."
 msgstr "Não é possível criar o directório do tema."
 
 #: src/modules/theme/SaveThemeDialog.cpp:280
-#, fuzzy
 msgid "Unable to save theme: %1"
 msgstr "Não é possível gravar o tema: %1"
 

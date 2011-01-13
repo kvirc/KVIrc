@@ -2,23 +2,22 @@
 #
 # Copyright (C) 2002,2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
 # Ze <mmodem00@netvisao.pt>, 2003, 2004, 2005, 2006.
-# Zé <mmodem@netcabo.pt>, 2005.
-# Zé <mmodem00@gmail.com>, 2006, 2007, 2008, 2010.
-# Zé <ze@mandriva.org>, 2010.
+# Zé <ze@mandriva.org>, 2005, 2006, 2007, 2008, 2010, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-10 18:59+0100\n"
-"PO-Revision-Date: 2010-10-14 00:26+0100\n"
-"Last-Translator: Zé <mmodem00@gmail.com>\n"
-"Language-Team: Portuguese <>\n"
+"PO-Revision-Date: 2011-01-13 03:11+0000\n"
+"Last-Translator: Zé <ze@mandriva.org>\n"
+"Language-Team: pt <a>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: utf-8\n"
 "X-Generator: Lokalize 1.1\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: 2\n"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:285
 #: src/modules/options/OptionsWidget_avatar.cpp:72
@@ -313,13 +312,13 @@ msgstr ""
 "mensagem de utilizador que tenha a sua alcunha actual</center>"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:65
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, KVIrc will match your nick and/or the "
 "words you specified in a case sensitive manner</center>"
 msgstr ""
-"<center>Se esta opção estiver activada, o KVirc irá alertar na lista da "
-"janela apenas se se chegar ao nível do alerta indicado.</center>"
+"<center>Se esta opção estiver activada, o KVirc irá corresponder à sua "
+"alcunha e/ou às palavras que especificou em letras maiúsculas ou minúsculas."
+"</center>"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:96
 msgid ""
@@ -1012,28 +1011,24 @@ msgstr ""
 "'lag' actual após a alcunha do utilizador (em segundos)</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:183
-#, fuzzy
 msgid ""
 "<center>This nickname will be tried if the primary nickname for this network "
 "is already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead.</center>"
 msgstr ""
-"<center>Pode indicar uma <b>Alcunha</b> \"especial\" que será usada para "
-"autenticar nos servidores desta rede.<br>Se este campo for deixado vazio "
-"(caso mais comum), a alcunha predefinida (indicada nas configurações de "
-"\"Identidade\") será usada.</center>"
+"<center>Tentará usar-se esta alcunha se a primeira alcunha para esta rede já "
+"estiver em uso.<br>Se deixar o campo em branco, então tentará usar as "
+"alcunhas especificadas nas opções de identidade.</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:600
-#, fuzzy
 msgid ""
 "<center>This nickname will be tried if the primary nickname for this server "
 "is already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead.</center>"
 msgstr ""
-"<center>Pode indicar uma <b>Alcunha</b> \"especial\" que será usada para "
-"autenticar nos servidores desta rede.<br>Se este campo for deixado vazio "
-"(caso mais comum), a alcunha predefinida (indicada nas configurações de "
-"\"Identidade\") será usada.</center>"
+"<center>Tentará usar-se esta alcunha se a primeira alcunha para este "
+"servidor já estiver em uso.<br>Se deixar o campo, então tentará usar as "
+"alcunhas predefinidas nas opções de identidade.</center>"
 
 #: src/modules/options/OptionsWidget_lag.cpp:47
 msgid ""
@@ -1529,6 +1524,10 @@ msgid ""
 "or nicknames inside the whole text. This will also highlight parts of words "
 "(eg. if your nickname is Mark then Markus will be highlighted too).</center>"
 msgstr ""
+"<center>Esta selecção fará com que o KVIrc procure pelas palavras ou "
+"alcunhas destacadas dentro do texto. Isto também destacará partes das "
+"palavras (ex: se a sua alcunha for Jo, então João também será destacado).</"
+"center>"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:82
 msgid ""
@@ -1536,6 +1535,9 @@ msgid ""
 "boundaries (including space) and then will compare all the parts with the "
 "highlighted words.</center>"
 msgstr ""
+"<center>Esta selecção irá primeiro separar a palavra pelas divisões "
+"especificadas (incluindo espaços) e depois irá comparar todas as partes com "
+"as palavras destacadas"
 
 #: src/modules/options/OptionsWidget_identity.cpp:327
 msgid ""
@@ -1820,9 +1822,8 @@ msgid "Alert Level 5:"
 msgstr "Nível de Alerta 5:"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:91
-#, fuzzy
 msgid "Alert Options"
-msgstr "Restrições de Alerta"
+msgstr "Opções de Alerta"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:122
 msgid "Alert Restrictions"
@@ -1866,9 +1867,8 @@ msgstr "Alcunha Alt. 3:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:174
 #: src/modules/options/OptionsWidget_servers.cpp:591
-#, fuzzy
 msgid "Alt.Nickname:"
-msgstr "Alcunha Alt. 1:"
+msgstr "Alcunha Alt.:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:924
 msgid "Alternative Nickname:"
@@ -2614,9 +2614,8 @@ msgid "Failed to Load Avatar - KVIrc"
 msgstr "Falha ao Carregar Avatar - KVirc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:562
-#, fuzzy
 msgid "Failed to download the avatar image.<br><b>%1</b>"
-msgstr "Falha na transferência da imagem avatar.<br><b>%1</b>"
+msgstr "Falha ao transferir a imagem avatar.<br><b>%1</b>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:556
 #: src/modules/options/OptionsWidget_identity.cpp:594
@@ -2819,19 +2818,16 @@ msgid "Highlight messages containing my nickname"
 msgstr "Destacar mensagens que contenham a minha alcunha"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:79
-#, fuzzy
 msgid "Highlight only whole words splitting on space and on:"
-msgstr ""
-"Destacar apenas palavras inteiras usando estes separadores de palavras:"
+msgstr "Destacar apenas palavras inteiras separando em espaços:"
 
 #: src/modules/options/OptionsWidget_sound.cpp:340
 msgid "Highlighted message in inactive window"
 msgstr "Mensagem destacada em janela inactiva"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:67
-#, fuzzy
 msgid "Highlighting Method"
-msgstr "Destaque"
+msgstr "Método de Destaque"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:121
 msgid "Hint: Move the mouse cursor over the fields to get help"
@@ -4476,28 +4472,24 @@ msgstr ""
 "modo de janela em ecrã completo."
 
 #: src/modules/options/OptionsWidget_notifier.cpp:177
-#, fuzzy
 msgid ""
 "This option uses the DBus-based notifier instead of KVIrc one.<br>This is "
 "cool if you want to better integrate KVIrc inside your desktop environment. "
 "Note that this notifier isn't flexible and \"tabbed\" like KVIrc's"
 msgstr ""
-"Esta opção usa o notificador baseado no DBus (como o KNotify  do KDE) em vez "
-"do notificador do KVIrc.<br>Isto é bom se quiser integrar melhor o KVIrc com "
-"o KDE. Note que o notificador do KDE não é flexivel e não tem separadores "
-"como o do KVIrc."
+"Esta opção usa o notificador baseado no DBus em vez o do KVIrc.<br>Isto é "
+"bom se quiser integrar melhor o KVIrc no seu ambiente de ecrã. Note que este "
+"notificador não é flexível e não tem separadores como o do KVIrc."
 
 #: src/modules/options/OptionsWidget_notifier.cpp:160
-#, fuzzy
 msgid ""
 "This option uses the KDE notification system instead of KVIrc one.<br>This "
 "is cool if you want to better integrate KVIrc inside KDE. Note that KDE's "
 "notifier isn't flexible and \"tabbed\" like KVIrc's"
 msgstr ""
-"Esta opção usa o notificador baseado no DBus (como o KNotify  do KDE) em vez "
-"do notificador do KVIrc.<br>Isto é bom se quiser integrar melhor o KVIrc com "
-"o KDE. Note que o notificador do KDE não é flexivel e não tem separadores "
-"como o do KVIrc."
+"Esta opção usa sistema de notificação do KDE em vez o do KVIrc.<br>Isto é "
+"bom se quiser integrar melhor o KVIrc dentro KDE. Note que o notificador do "
+"KDE não é flexivel e não tem separadores como o do KVIrc."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:107
 msgid ""
@@ -4784,9 +4776,8 @@ msgid "Use the DBus-based notifiers"
 msgstr "Usar os notificadores baseados no DBus"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:159
-#, fuzzy
 msgid "Use the KDE notifier"
-msgstr "Usar os notificadores baseados no DBus"
+msgstr "Usar notificador KDE"
 
 #: src/modules/options/OptionsWidget_connection.cpp:89
 msgid "Use the SASL authentication protocol if available"
@@ -4941,7 +4932,7 @@ msgstr "Palavras a destacar:"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:64
 msgid "Words/Nick matching is case sensitive "
-msgstr ""
+msgstr "Palavras/Alcunha correspondente em Maiúsculas/Minúsculas"
 
 #: src/modules/options/OptionsWidget_theme.h:74
 msgid "Workspace"

@@ -2,29 +2,26 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
-# Zé <mmodem00@netvisao.pt>, 2004.
 # José Melo <mmodem00@netvisao.pt>, 2005, 2006.
 # José Melo <mmodem00@gmail.com>, 2005.
-# Zé <ze@mandriva.org>, 2008, 2010.
-# Zé <mmodem00@gmail.com>, 2010.
-# Zé <mmodem00@gmal.com>, 2010.
+# Zé <ze@mandriva.org>, 2004, 2008, 2010, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: editor_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-10 18:59+0100\n"
-"PO-Revision-Date: 2010-09-03 21:31+0100\n"
+"PO-Revision-Date: 2011-01-13 02:53+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
-"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
+"Language-Team: pt <a>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: utf-8\n"
 "X-Generator: Lokalize 1.1\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: 2\n"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:412
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -43,7 +40,6 @@ msgstr ""
 "%2"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:366
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -345,12 +341,10 @@ msgid "Brackets:"
 msgstr "Chavetas:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1022
-#, fuzzy
 msgid "Can't open the file %1 for reading."
 msgstr "Não é possível abrir o ficheiro %1 para leitura."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:934
-#, fuzzy
 msgid "Can't open the file %1 for writing."
 msgstr "Não é possível abrir o ficheiro %1 para escrita."
 
@@ -545,23 +539,19 @@ msgid "Do you really want to delete toolbar \"%1\" ?"
 msgstr "Deseja realmente apagar a barra de ferramentas \"%1\"?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:926
-#, fuzzy
 msgid "Do you really want to remove the alias \"%1\"?"
 msgstr "Deseja realmente remover a alias \"%1\" ?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1337
-#, fuzzy
 msgid "Do you really want to remove the class \"%1\"?"
 msgstr "Deseja realmente remover a classe \"%1\" ?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1345
-#, fuzzy
 msgid "Do you really want to remove the function \"%1\"?"
 msgstr "Deseja realmente remover a função \"%1\" ?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:928
 #: src/modules/classeditor/ClassEditorWindow.cpp:1340
-#, fuzzy
 msgid "Do you really want to remove the namespace \"%1\"?"
 msgstr "Deseja realmente remover o nomedeespaço \"%1\" ?"
 
@@ -1197,7 +1187,6 @@ msgid "Replace with"
 msgstr "Substituir por"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:991
-#, fuzzy
 msgid "Row: %1 Col: %2"
 msgstr "Linha: %1 Coluna: %2"
 
