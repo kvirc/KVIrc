@@ -296,7 +296,20 @@ void LogViewWindow::filterNext()
 	if(m_pLastCategory)
 	{
 		if(m_pLastCategory->m_type!=pFile->type())
-			m_pLastCategory = new LogListViewItemType(m_pListView,pFile->type());
+		{
+			m_pLastCategory=0;
+			for(int i=0;i<m_pListView->topLevelItemCount(); ++i)
+			{
+				LogListViewItemType * pTmp = (LogListViewItemType*) m_pListView->topLevelItem(i);
+				if(pTmp->m_type == pFile->type())
+				{
+					m_pLastCategory=pTmp;
+					break;
+				}
+			}
+			if(!m_pLastCategory)
+				m_pLastCategory = new LogListViewItemType(m_pListView,pFile->type());
+		}
 	} else {
 		m_pLastCategory = new LogListViewItemType(m_pListView,pFile->type());
 	}
@@ -329,19 +342,31 @@ filter_last:
 
 void LogViewWindow::cacheFileList()
 {
-	QStringList m_pFileNames = getFileNames();
-	m_pFileNames.sort();
-	QString szFname;
-
-	for(QStringList::Iterator it = m_pFileNames.begin(); it != m_pFileNames.end(); ++it)
-	{
-		szFname=(*it);
-		QFileInfo fi(szFname);
-		if(fi.suffix()=="gz" || fi.suffix()=="log")
-			m_logList.append(new LogFile(szFname));
-	}
+	QString logPath;
+	g_pApp->getLocalKvircDirectory(logPath,KviApplication::Log);
+	recurseDirectory(logPath);
 
 	setupItemList();
+}
+
+void LogViewWindow::recurseDirectory(const QString& sDir)
+{
+	QDir dir(sDir);
+	QFileInfoList list = dir.entryInfoList();
+	for (int iList=0;iList<list.count();iList++)
+	{
+		QFileInfo info = list[iList];
+		if (info.isDir())
+		{
+			// recursive
+			if (info.fileName()!=".." && info.fileName()!=".")
+			{
+				recurseDirectory(info.filePath());
+			}
+		} else if(info.suffix()=="gz" || info.suffix()=="log") {
+			m_logList.append(new LogFile(info.fileName()));
+		}
+	}
 }
 
 void LogViewWindow::itemSelected(QTreeWidgetItem * it,QTreeWidgetItem *)
@@ -368,15 +393,6 @@ void LogViewWindow::itemSelected(QTreeWidgetItem * it,QTreeWidgetItem *)
 			outputNoFmt(0,*it,KviIrcView::NoRepaint | KviIrcView::NoTimestamp);
 	}
 	m_pIrcView->repaint();
-}
-
-QStringList LogViewWindow::getFileNames()
-{
-	QString logPath;
-	g_pApp->getLocalKvircDirectory(logPath,KviApplication::Log);
-	QString qPath(logPath);
-	QDir logDir(qPath);
-	return logDir.entryList();
 }
 
 void LogViewWindow::rightButtonClicked ( QTreeWidgetItem * it, const QPoint &)

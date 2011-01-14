@@ -131,7 +131,7 @@ protected:
 	bool                 m_bAborted;
 	QTimer             * m_pTimer;
 protected:
-	QStringList getFileNames();
+	void recurseDirectory(const QString& sDir);
 
 	void setupItemList();
 	virtual QPixmap * myIconPtr();
