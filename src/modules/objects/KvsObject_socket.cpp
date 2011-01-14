@@ -42,7 +42,6 @@
 #include "KviError.h"
 #include "kvi_socket.h"
 #include "KviMemory.h"
-#include "KviMemory.h"
 #include "KviDataBuffer.h"
 
 #include <QByteArray>
@@ -420,7 +419,7 @@ KVSO_CLASS_FUNCTION(socket,read)
 	if(iLen > 0)
 	{
 		// convert NULLS to char 255
-		char buffer[iLen];
+		char * buffer = (char*) KviMemory::allocate(iLen);
 		m_pSocket->read(buffer,iLen);
 		for(unsigned int i = 0;i < iLen;i++)
 		{
@@ -428,6 +427,7 @@ KVSO_CLASS_FUNCTION(socket,read)
 		}
 		QString tmpBuffer = QString::fromUtf8(buffer,iLen);
 		c->returnValue()->setString(tmpBuffer);
+		KviMemory::free(buffer);
 	}
 	return true;
 }
