@@ -35,6 +35,14 @@ class QTextCodec;
 class KviMessageCatalogue;
 template<typename Key,typename T> class KviPointerHashTable;
 
+#ifndef QT_NO_BIG_CODECS
+	#define KVI_NUM_ENCODINGS 109
+	#define KVI_NUM_ENCODING_GROUPS 8
+#else
+	#define KVI_NUM_ENCODINGS 85
+	#define KVI_NUM_ENCODING_GROUPS 5
+#endif
+
 namespace KviLocale
 {
 	typedef struct _EncodingDescription
@@ -49,7 +57,6 @@ namespace KviLocale
 	// you MUST start iterating from 0 and terminate when
 	// you get an entry with a NULL szName
 	KVILIB_API EncodingDescription * encodingDescription(int iIdx);
-	KVILIB_API uint encodingGroups();
 	KVILIB_API const char * encodingGroup(int iIdx);
 	KVILIB_API QTextCodec * codecForName(const char * szName);
 	KVILIB_API const KviCString & localeName();

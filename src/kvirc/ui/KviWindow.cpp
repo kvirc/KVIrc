@@ -721,10 +721,9 @@ void KviWindow::createSystemTextEncodingPopup()
 		g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart (Send UTF-8)"),g_pMdiWindowSystemTextEncodingPopupSmartUtf8);
 
 		// second level menus (encoding groups)
-		uint uGroups = KviLocale::encodingGroups();
-		QMenu * pPopupStandard[uGroups];
-		QMenu * pPopupSmart[uGroups];
-		QMenu * pPopupSmartUtf8[uGroups];
+		QMenu * pPopupStandard[KVI_NUM_ENCODING_GROUPS];
+		QMenu * pPopupSmart[KVI_NUM_ENCODING_GROUPS];
+		QMenu * pPopupSmartUtf8[KVI_NUM_ENCODING_GROUPS];
 
 		uint u = 0;
 		const char * pcEncodingGroup = KviLocale::encodingGroup(u);

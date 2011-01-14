@@ -605,14 +605,6 @@ const QString & KviMessageCatalogue::translateToQString(const char *text)
 
 namespace KviLocale
 {
-#ifndef QT_NO_BIG_CODECS
-	#define NUM_ENCODINGS 109
-	#define NUM_ENCODING_GROUPS 8
-#else
-	#define NUM_ENCODINGS 85
-	#define NUM_ENCODING_GROUPS 5
-#endif
-
 	static const char * encoding_groups[] = 
 	{
 		"Unicode",
@@ -777,22 +769,17 @@ namespace KviLocale
 		{ 0                      , 0 , 0 , 0 , 0 }
 	};
 
-	uint encodingGroups()
-	{
-		return NUM_ENCODING_GROUPS;
-	}
-
 	const char * encodingGroup(int iIdx)
 	{
-		if(iIdx > NUM_ENCODING_GROUPS)
-			return encoding_groups[NUM_ENCODING_GROUPS];
+		if(iIdx > KVI_NUM_ENCODING_GROUPS)
+			return encoding_groups[KVI_NUM_ENCODING_GROUPS];
 		return encoding_groups[iIdx];
 	}
 
 	EncodingDescription * encodingDescription(int iIdx)
 	{
-		if(iIdx > NUM_ENCODINGS)
-			return &(supported_encodings[NUM_ENCODINGS]);
+		if(iIdx > KVI_NUM_ENCODINGS)
+			return &(supported_encodings[KVI_NUM_ENCODINGS]);
 		return &(supported_encodings[iIdx]);
 	}
 
