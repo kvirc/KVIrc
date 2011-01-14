@@ -179,7 +179,7 @@ bool kvi_binaryIpToStringIp(struct in_addr in,QString &szBuffer)
 	c = (int)*s++;
 	d = (int)*s;
 
-	szBuffer = QString("%1.%2.%3.%4").arg(a,b,c,d);
+	szBuffer = QString("%1.%2.%3.%4").arg(a).arg(b).arg(c).arg(d);
 	return true;
 }
 
