@@ -242,9 +242,9 @@ static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 		thus it is equivalent to calling $log.file([fnc]$window[/fnc])
 	@examples:
 		[example]
-		[cmd]log[/cmd] mylogfilename.log
-		[cmd]echo[/cmd] $log
-		[cmd]echo[/cmd] $log([fnc]$console[/fnc])
+		[cmd]log.start[/cmd] mylogfilename.log
+		[cmd]echo[/cmd] $log.file
+		[cmd]echo[/cmd] $log.file([fnc]$channel[/fnc](#kvirc))
 		[/example]
 	@seealso:
 		[fnc]$window[/fnc],
