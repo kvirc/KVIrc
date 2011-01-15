@@ -584,7 +584,7 @@ int KviConsoleWindow::applyHighlighting(KviWindow *wnd,int type,const QString &n
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting))
 		{
-			if(szStripMsg.contains(connection()->userInfo()->nickName()), cs)
+			if(szStripMsg.contains(connection()->userInfo()->nickName(), cs))
 				return triggerOnHighlight(wnd,type,nick,user,host,szMsg,connection()->userInfo()->nickName());
 		} else {
 			if(!szPattern.isEmpty())
@@ -615,7 +615,7 @@ int KviConsoleWindow::applyHighlighting(KviWindow *wnd,int type,const QString &n
 
 			if(KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting))
 			{
-				if(szStripMsg.contains(*it), cs)
+				if(szStripMsg.contains(*it, cs))
 					return triggerOnHighlight(wnd,type,nick,user,host,szMsg,*it);
 			} else {
 				if(!szPattern.isEmpty())
