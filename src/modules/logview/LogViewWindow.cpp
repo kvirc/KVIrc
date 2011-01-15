@@ -364,7 +364,7 @@ void LogViewWindow::recurseDirectory(const QString& sDir)
 				recurseDirectory(info.filePath());
 			}
 		} else if(info.suffix()=="gz" || info.suffix()=="log") {
-			m_logList.append(new LogFile(info.fileName()));
+			m_logList.append(new LogFile(info.filePath()));
 		}
 	}
 }
@@ -475,10 +475,11 @@ LogFile::LogFile(const QString & szName)
 	channel_#slackware.azzurra_2009.11.03.log
 	*/
 
-	QString szTmpName = szName;
 	m_szFilename = szName;
 
 	QFileInfo fi(m_szFilename);
+	QString szTmpName = fi.fileName();
+
 	m_bCompressed = (fi.suffix() == "gz");
 	if(m_bCompressed)
 	{
@@ -514,10 +515,10 @@ LogFile::LogFile(const QString & szName)
 	//qDebug("type=%i, name=%s, net=%s, date=%i %i %i",m_type,m_szName.ascii(),m_szNetwork.ascii(),iYear,iMonth,iDay);
 }
 
-void LogFile::getText(QString & text,const QString& logDir){
-	QString logName = logDir;
+void LogFile::getText(QString & text,const QString&)
+{
+	QString logName = fileName();
 	QFile logFile;
-	logName.append(fileName());
 #ifdef COMPILE_ZLIB_SUPPORT
 	if(m_bCompressed)
 	{
