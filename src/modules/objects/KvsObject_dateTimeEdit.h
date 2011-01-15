@@ -44,13 +44,14 @@ protected:
         bool time(KviKvsObjectFunctionCall *c);
         bool setTime(KviKvsObjectFunctionCall *c);
 
-        /*	bool text(KviKvsObjectFunctionCall *c);
+	bool timeChangedEvent(KviKvsObjectFunctionCall *c);
+	bool dateTimeChangedEvent(KviKvsObjectFunctionCall *c);
+	bool dateChangedEvent(KviKvsObjectFunctionCall *c);
 
-	bool setImage(KviKvsObjectFunctionCall *c);
-	bool clickEvent(KviKvsObjectFunctionCall *c);
-*/
 protected slots:
-        //void slotClicked();
+	void slotDateTimeChanged(const QDateTime &);
+	void slotDateChanged(const QDate &);
+	void slotTimeChanged(const QTime &);
 };
 
 #endif	// !_CLASS_datetimeedit_H_

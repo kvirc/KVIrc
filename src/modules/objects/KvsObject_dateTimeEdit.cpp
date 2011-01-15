@@ -84,6 +84,10 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_dateTimeEdit,"datetimeedit","widget")
         KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,setTime)
         KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,time)
 
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,timeChangedEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,dateTimeChangedEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,dateChangedEvent)
+
 KVSO_END_REGISTERCLASS(KvsObject_dateTimeEdit)
 
 KVSO_BEGIN_CONSTRUCTOR(KvsObject_dateTimeEdit,KvsObject_widget)
@@ -99,7 +103,11 @@ bool KvsObject_dateTimeEdit::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
         QDateTimeEdit *obj=new QDateTimeEdit(QDate::currentDate(),parentScriptWidget());
         obj->setObjectName(getName());
-        setObject(obj,true);
+	connect(obj,SIGNAL(dateChanged(const QDate &)),this,SLOT(slotDateChanged(const QDate &)));
+	connect(obj,SIGNAL(dateTimeChanged(const QDateTime & )),this,SLOT(slotDateTimeChanged(const QDateTime &)));
+	connect(obj,SIGNAL(timeChanged(const QTime &)),this,SLOT(slotTimeChanged(const QTime &)));
+
+	setObject(obj,true);
 	return true;
 }
 
@@ -157,6 +165,49 @@ KVSO_CLASS_FUNCTION(dateTimeEdit,setTime)
         ((QDateTimeEdit *)widget())->setTime(time);
         return true;
 }
+
+// slots
+void KvsObject_dateTimeEdit::slotDateTimeChanged(const QDateTime &)
+{
+	KviKvsVariantList *params=0;
+	callFunction(this,"dateTimeChangedEvent",params);
+}
+
+
+KVSO_CLASS_FUNCTION(dateTimeEdit,dateTimeChangedEvent)
+{
+	emitSignal("dateTimeChanged",c);
+	return true;
+}
+
+
+
+KVSO_CLASS_FUNCTION(dateTimeEdit,timeChangedEvent)
+{
+	emitSignal("timeChanged",c);
+	return true;
+}
+
+// slots
+void KvsObject_dateTimeEdit::slotTimeChanged(const QTime &)
+{
+	KviKvsVariantList *params=0;
+	callFunction(this,"timeChangedEvent",params);
+}
+
+KVSO_CLASS_FUNCTION(dateTimeEdit,dateChangedEvent)
+{
+	emitSignal("dateChanged",c);
+	return true;
+}
+
+// slots
+void KvsObject_dateTimeEdit::slotDateChanged(const QDate &)
+{
+	KviKvsVariantList *params=0;
+	callFunction(this,"dateChangedEvent",params);
+}
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_KvsObject_dateTimeEdit.moc"
 #endif //COMPILE_USE_STANDALONE_MOC_SOURCES
