@@ -384,6 +384,15 @@ bool OptionsDialog::recursiveSearch(OptionsDialogTreeWidgetItem * pItem,const QS
 			bFoundSomethingHere = true;
 	}
 
+	QStringList szInstanceKeywords = pItem->m_pInstanceEntry->szKeywords.split(QChar(','));
+	// debug all the "search keywords" for each entry in the options tree
+	// qDebug("OPT %s",pItem->m_pInstanceEntry->szKeywords.toUtf8().data());
+
+	for(int i=0;i<szInstanceKeywords.count() && !bFoundSomethingHere;i++)
+		for(int j=0;j<lKeywords.count() && !bFoundSomethingHere;j++)
+			if(szInstanceKeywords.at(i).contains(lKeywords.at(j),Qt::CaseInsensitive))
+				bFoundSomethingHere = true;
+	
 	if(bFoundSomethingHere)
 	{
 		pItem->setForeground(0, Qt::yellow);

@@ -242,9 +242,11 @@ printclass()
 	echo "$3	#endif" >> $TARGET
 
 	echo "$3	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_$2" >> $TARGET
-	echo "$3	e$1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_$2;" >> $TARGET
-	echo "$3	e$1->szKeywords = __tr2qs_ctx_no_xgettext(e$1->szKeywordsNoLocale.toUtf8().data(),\"options\");;" >> $TARGET
+	echo "$3	e$1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_$2\",\"KVI_OPTIONS_WIDGET_KEYWORDS_$2;" >> $TARGET
+	echo "$3	#else" >> $TARGET
+	echo "$3	e$1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_$2;" >> $TARGET
 	echo "$3	#endif" >> $TARGET
+	echo "$3	e$1->szKeywords = __tr2qs_ctx_no_xgettext(e$1->szKeywordsNoLocale.toUtf8().data(),\"options\");;" >> $TARGET
 
 	echo "$3	#ifdef KVI_OPTIONS_WIDGET_GROUP_$2" >> $TARGET
 	echo "$3	e$1->szGroup = KVI_OPTIONS_WIDGET_GROUP_$2;" >> $TARGET
