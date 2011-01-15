@@ -625,7 +625,7 @@ defpopup(channel)
 
 		item($tr("Configure ban mask...","defscript"),20)
 		{
-			options.edit KviChannelAdvancedOptionsWidget
+			options.edit OptionsWidget_channelAdvanced
 		}
 	}
 
