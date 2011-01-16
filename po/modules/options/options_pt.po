@@ -1,23 +1,23 @@
 # translation of options_pt.po to Português
 #
 # Copyright (C) 2002,2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+#
 # Ze <mmodem00@netvisao.pt>, 2003, 2004, 2005, 2006.
 # Zé <ze@mandriva.org>, 2005, 2006, 2007, 2008, 2010, 2011.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-10 18:59+0100\n"
-"PO-Revision-Date: 2011-01-13 03:11+0000\n"
+"PO-Revision-Date: 2011-01-16 02:07+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
-"Language-Team: pt <a>\n"
+"Language-Team: Portuguese <>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: utf-8\n"
-"X-Generator: Lokalize 1.1\n"
-"Plural-Forms: 2\n"
+"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:285
 #: src/modules/options/OptionsWidget_avatar.cpp:72
@@ -1198,10 +1198,9 @@ msgid ""
 "known information about query target at the top of the window.<br>Uncheck if "
 "you think,that it wastes your query space/</center>"
 msgstr ""
-"<center>Esta opção permite a etiqueta de informação na janela privada. Pode "
-"mostrar a sua informação acerca do privado de destino no topo da janela."
-"<br>Desmarque esta opção se acha que ocupa demasiado espaço na janela "
-"privada</center>"
+"<center>Esta opção permite um rótulo de informação na janela privada. "
+"Pode mostrar informação acerca do endereço do utilizador no topo da janela."
+"<br>Desmarque esta opção se acha que ocupa demasiado espaço na janela</center>"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:43
 msgid ""
@@ -2738,7 +2737,7 @@ msgstr "Opções gerais"
 
 #: src/modules/options/OptionsWidget_theme.cpp:45
 msgid "Global application font:"
-msgstr "Tipo de letra global na aplicação:"
+msgstr "Tipo de letra de aplicação global"
 
 #: src/modules/options/OptionsWidget_theme.cpp:67
 msgid "Global window opacity percent:"
@@ -2758,7 +2757,7 @@ msgstr "Adivinhar o endereço do servidor IRC se fora de alcance"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:182
 msgid "Guess save path from media type"
-msgstr "Adivinhar localização de gravação pelo tipo de média"
+msgstr "Adivinhar localização da gravação pelo tipo de média"
 
 #: src/modules/options/OptionsWidget_logging.cpp:56
 msgid "Gzip logs"
@@ -2777,13 +2776,13 @@ msgid ""
 "of avatars being downloaded.<br>The image also should be smaller than "
 "800x600 pixels since<br>it will have to be viewable in everyone's monitor."
 msgstr ""
-"Aqui pode escolher a sua imagem avatar. Será visivel<br>para outras pessoas "
+"Aqui pode escolher a sua imagem avatar. Será visível<br>para outras pessoas "
 "que a pedirem, Escolha uma boa imagem de si próprio,<br>geralmente evitando "
-"obscinidades e imagens ofensivas. é uma boa ideia escolher<br>uma "
-"relativamente pquena (tipo 150 Kb máximo) porque<br>muitos clientes têm "
+"obscenidades e imagens ofensivas. é uma boa ideia escolher<br>uma "
+"relativamente pequena (tipo 150 Kb máximo) porque<br>muitos clientes têm "
 "limite no tamanho das avatares a ser transferidas.<br>A imagem deve também "
 "ser mais pequena que 800x600 pontos já que<br>irá ter que ser vista nos "
-"monitores de todaa as pessoas."
+"monitores de toda as pessoas."
 
 #: src/modules/options/OptionsWidget_identity.cpp:345
 msgid "Here you can specify your age."
@@ -2795,11 +2794,11 @@ msgstr "Aqui pode indicar o seu género."
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.cpp:56
 msgid "Hide Channel window tool buttons by default"
-msgstr "Esconder botões da barra da janela do canal por predefinição"
+msgstr "Por predefinição esconder os botões da barra de janela do canal"
 
 #: src/modules/options/OptionsWidget_input.cpp:145
 msgid "Hide input toolbuttons by default"
-msgstr "Esconder entrada de botões na barra por predefinição"
+msgstr "Por predefinição esconder os botões de entrada da barra"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:98
 msgid "Highest port:"
@@ -3018,7 +3017,7 @@ msgstr "Matar/Kill temporizadores danificados"
 
 #: src/modules/options/OptionsWidget_topicLabel.h:32
 msgid "Labels"
-msgstr "Rótulos"
+msgstr "Tópicos"
 
 #: src/modules/options/OptionsWidget_lag.h:31
 msgid "Lag"
@@ -3086,7 +3085,7 @@ msgstr "Carregar De..."
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:112
 msgid "Local open command:"
-msgstr "Comando de abrir local:"
+msgstr "Comando local de abrir:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:389
 msgid "Location:"
@@ -3345,11 +3344,11 @@ msgstr "Completação de alcunha"
 
 #: src/modules/options/OptionsWidget_input.cpp:156
 msgid "Nick completion postfix string"
-msgstr "Texto de sufixo de completação de alcunha"
+msgstr "Texto de completação do sufixo da alcunha"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:167
 msgid "Nick links"
-msgstr "Ligações de alcunha"
+msgstr "Ligações da alcunha"
 
 #: src/modules/options/OptionsWidget_servers.cpp:379
 #: src/modules/options/OptionsWidget_nickserv.h:41
@@ -3973,7 +3972,7 @@ msgstr "Gravar Localização"
 
 #: src/modules/options/OptionsWidget_logging.cpp:46
 msgid "Save logs to folder:"
-msgstr "Gravar registos para a pasta:"
+msgstr "Gravar registos na pasta:"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:107
 msgid "Save path:"
@@ -4128,7 +4127,7 @@ msgstr "Mostrar cabeçalho"
 
 #: src/modules/options/OptionsWidget_theme.cpp:44
 msgid "Show icons in popup menus"
-msgstr "Mostrar ícones nos menus que saltam"
+msgstr "Mostrar ícones nos menus que aparecem"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:69
 msgid "Show in active window"
@@ -4136,11 +4135,11 @@ msgstr "Mostrar na janela activa"
 
 #: src/modules/options/OptionsWidget_query.cpp:85
 msgid "Show information about query target at the top of the query"
-msgstr "Mostrar informação acerca do destino do privado no topo da janela"
+msgstr "Mostrar informação acerca do endereço do utilizador no topo da janela"
 
 #: src/modules/options/OptionsWidget_userList.cpp:235
 msgid "Show label with userlist stats"
-msgstr "Mostrar etiqueta com estatísticas na lista de utilizadores"
+msgstr "Mostrar rótulo com estatísticas da lista de utilizadores"
 
 #: src/modules/options/OptionsWidget_lag.cpp:63
 msgid "Show lag in IRC context display"
@@ -4216,7 +4215,7 @@ msgstr "LinhaSólida"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:181
 msgid "Sort saved files by nicknames (create subfolders)"
-msgstr "Ordenar ficheiros gravados por alcunhas (criar subpastas)"
+msgstr "Ordenar ficheiros gravados por alcunha (criar sub-pastas)"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:40
 msgid "Sort windows by name"
@@ -4245,7 +4244,7 @@ msgstr "Remover cores dos registos"
 
 #: src/modules/options/OptionsWidget_logging.cpp:47
 msgid "Strip message type numbers in logs"
-msgstr "Faixa de números de tipo de mensagem nos registos"
+msgstr "Remover números de tipo de mensagem nos registos"
 
 #: src/modules/options/OptionsWidget_servers.cpp:905
 msgid "Switch to SSL/TLS by using the STARTTLS extension"
@@ -4257,7 +4256,7 @@ msgstr "Formato do sistema local"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:103
 msgid "TIME"
-msgstr "TIME"
+msgstr "HORA"
 
 #: src/modules/options/OptionsWidget_sound.cpp:74
 #: src/modules/options/OptionsWidget_sound.cpp:89
@@ -4295,11 +4294,11 @@ msgstr ""
 #: src/modules/options/OptionsWidget_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
 msgstr ""
-"A mascara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
+"A máscara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
-msgstr "O campo da alcunha não pode estar vazio!"
+msgstr "O campo da Alcunha não pode estar vazio!"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:164
 msgid "The Nickname field can't contain spaces!"
@@ -4313,10 +4312,10 @@ msgid ""
 "performance. You *should* scale it manually<br>to a sane size (like 800x600) "
 "or choose a different image."
 msgstr ""
-"A imagem avatar que escolheu é maior que1024x76 pontos.<br>Uma imagem tão "
-"grande não será vista por todos os monitores<br>e provavelmente irá ser "
-"redimensionada pelos clientes remotos com algoritmos de pouca "
-"qualidade<br>para melhorar a performance. Deve escalá-la manualmente<br>para "
+"A avatar que escolheu tem mais que 1024x76 pontos.<br>Uma imagem tão "
+"grande não será vista por todos os monitores<br>e provavelmente será "
+"redimensionada pelos clientes remotos com algoritmos de pouca qualidade<br>"
+"para melhorar o seu desempenho. Deve escalá-la manualmente<br>para "
 "um bom tamanho (tipo 800x600) ou escolher uma imagem diferente."
 
 #: src/modules/options/OptionsWidget_identity.cpp:625
@@ -4325,8 +4324,8 @@ msgid ""
 "refuse to download it.<br>You *should* either scale it, use a different "
 "storage<br>format or choose a different image."
 msgstr ""
-"A imagem avatar que escolheu é maior que 500 KiB<br>e a maioria dos clientes "
-"irá recusar a sua transferência.<br>*Deve* escalar a imagem, usar um formato "
+"A avatar que escolheu é tem mais de 500 KiB<br>e a maioria dos clientes "
+"recusará a sua transferência.<br>*Deve* escalar a imagem, usar um formato "
 "de gravação diferente<br> ou escolher uma imagem diferente."
 
 #: src/modules/options/dialog.cpp:117
@@ -4725,7 +4724,7 @@ msgstr "Usar ecrã de fundo para transparência"
 
 #: src/modules/options/OptionsWidget_userList.cpp:68
 msgid "Use different color for own nick:"
-msgstr "Usar cor diferente para alcunha própria:"
+msgstr "Usar cor diferente para a própria alcunha:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:259
 msgid "Use fast send (send ahead)"
@@ -4741,7 +4740,7 @@ msgstr "Usar protecção de fluxo ('flood') para pedidos CTCP (recomendado)"
 
 #: src/modules/options/OptionsWidget_theme.cpp:42
 msgid "Use global application font"
-msgstr "Usar tipo de letra global na aplicação"
+msgstr "Usar tipo de letra de aplicação global"
 
 #: src/modules/options/OptionsWidget_ircView.cpp:153
 msgid "Use line wrap margin"
@@ -4773,7 +4772,7 @@ msgstr "Usar manipuladores URL do sistema"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:175
 msgid "Use the DBus-based notifiers"
-msgstr "Usar os notificadores baseados no DBus"
+msgstr "Usar notificadores baseados no DBus"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:159
 msgid "Use the KDE notifier"
@@ -4793,7 +4792,7 @@ msgstr "Usar método WATCH se disponível"
 
 #: src/modules/options/OptionsWidget_input.cpp:157
 msgid "Use the completion postfix string for the first word only"
-msgstr "Usar texto de sufixo para completar apenas para a primeira palavra"
+msgstr "Usar a o texto de completação de sufixo apenas para a primeira palavra"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:39
 msgid "Use tree window list"
@@ -4903,7 +4902,7 @@ msgid ""
 "your changes without closing the window."
 msgstr ""
 "Quando tiver terminado, clique em \"<b>OK</b>\" para aceitar as suas "
-"alterações ou clique em \"<b>Cancelar</b>\" para as perder. Ao clicar em "
+"alterações ou clique em \"<b>Cancelar</b>\" para as rejeitar. Ao clicar em "
 "\"<b>Aplicar</b>\" irá aplicar as suas alterações sem fechar a janela."
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:72

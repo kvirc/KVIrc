@@ -1,17 +1,17 @@
 # translation of kvirc_pt.po to Português
-# Zé <ze@mandriva.org>, 2003, 2004, 2005, 2006, 2007, 2008, 2010, 2011.
 #
+# Zé <ze@mandriva.org>, 2003, 2004, 2005, 2006, 2007, 2008, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-13 16:53+0100\n"
-"PO-Revision-Date: 2011-01-13 02:47+0000\n"
+"PO-Revision-Date: 2011-01-16 02:11+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
-"Language-Team: pt <a>\n"
+"Language-Team: Portuguese <>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: utf-8\n"
 "Plural-Forms: 2\n"
 "X-Generator: Lokalize 1.2\n"
@@ -598,7 +598,7 @@ msgstr "Volta&r"
 
 #: src/modules/channelsjoin/ChannelsJoinDialog.cpp:105
 msgid "&Register"
-msgstr "&Registado"
+msgstr "&Registar"
 
 #: src/kvirc/ui/KviIrcView_tools.cpp:122
 msgid "&Regular expression"
@@ -2963,33 +2963,30 @@ msgstr "Executar 'Script'..."
 #: src/kvirc/kernel/KviIrcConnection.cpp:1610
 msgid "Executing scheduled identity specific \"on connect\" commands"
 msgstr ""
-"A executar os comandos agendados em \"ao conectar\" específicos da identidade"
+"A executar os comandos específicos da identidade agendados \"ao conectar\""
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1705
 msgid "Executing scheduled identity specific \"on login\" commands"
 msgstr ""
-"A executar os comandos agendados em \"ao autenticar\" específicos da "
-"identidade"
+"A executar os comandos específicos da identidade agendados \"ao autenticar\""
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1594
 msgid "Executing scheduled network specific \"on connect\" commands"
-msgstr ""
-"A executar os comandos agendados em \"ao conectar\" específicos da rede"
+msgstr "A executar os comandos específicos da rede agendados \"ao conectar\""
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1689
 msgid "Executing scheduled network specific \"on login\" commands"
-msgstr ""
-"A executar os comandos agendados em \"ao autenticar\" específicos da rede"
+msgstr "A executar os comandos específicos da rede agendados \"ao autenticar\""
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1602
 msgid "Executing scheduled server specific \"on connect\" commands"
 msgstr ""
-"A executar os comandos agendados em \"ao conectar\" específicos do servidor"
+"A executar os comandos específicos do servidor agendados \"ao conectar\""
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1697
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr ""
-"A executar os comandos agendados em \"ao autenticar\" específicos do servidor"
+"A executar os comandos específicos do servidor agendados \"ao autenticar\""
 
 #: src/kvirc/ui/KviMdiManager.cpp:272
 msgid "Expand &Horizontally"
@@ -4578,16 +4575,16 @@ msgid ""
 "No certificate specified and no private key certificate defined in KVIrc "
 "options."
 msgstr ""
-"Nenhum certificado especificado e nenhum certificado de chave privada "
-"definido nas opções do KVIrc."
+"Nenhum certificado especificado e nenhum certificado de chave "
+"privada definido nas opções do KVIrc."
 
 #: src/modules/str/libkvistr.cpp:2385
 msgid ""
 "No certificate specified and no public key certificate defined in KVIrc "
 "options."
 msgstr ""
-"Nenhum certificado especificado e nenhum certificado de chave pública "
-"definido nas opções do KVIrc."
+"Nenhum certificado especificado e nenhum certificado de chave "
+"pública definido nas opções do KVIrc."
 
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:558
 msgid "No channel topic is set"
@@ -7551,15 +7548,15 @@ msgstr "A usar '%1' como alcunha"
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:678
 msgid "Using HTTP protocol."
-msgstr "A usar protocolo HTTP."
+msgstr "A usar o protocolo HTTP."
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:727
 msgid "Using SOCKSv4 protocol."
-msgstr "A usar protocolo SOCKSv4."
+msgstr "A usar o protocolo SOCKSv4."
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:807
 msgid "Using SOCKSv5 protocol."
-msgstr "A usar protocolo SOCKSv5."
+msgstr "A usar o protocolo SOCKSv5."
 
 #: src/modules/help/HelpWindow.cpp:217
 msgid "Using a wildcard within phrases is not allowed."
@@ -7577,23 +7574,23 @@ msgstr "A usar o endereço IP em caixa do servidor (%s)"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1452
 msgid "Using connection specific password (%Q)"
-msgstr "A usar senha específica da conexão (%Q)"
+msgstr "A usar a senha específica da conexão (%Q)"
 
 #: src/kvirc/kernel/KviIrcLink.cpp:138
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
-msgstr "A usar protocolo IRC filtrado: o filtro de ligação é \"%Q\""
+msgstr "A usar o protocolo IRC filtrado: o filtro de ligação é \"%Q\""
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1470
 msgid "Using network specific password (%Q)"
-msgstr "A usar senha específica da rede (%Q)"
+msgstr "A usar a senha específica da rede (%Q)"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1433
 msgid "Using network specific real name (%Q)"
-msgstr "A usar nome real específico da rede (%Q)"
+msgstr "A usar o nome real específico da rede (%Q)"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1384
 msgid "Using network specific username (%Q)"
-msgstr "A usar nome de utilizador específico da rede (%Q)"
+msgstr "A usar o nome de utilizador específico da rede (%Q)"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:335
 msgid "Using server <b>%1</b>"
@@ -7601,19 +7598,19 @@ msgstr "A usar o servidor <b>%1</b>"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1461
 msgid "Using server specific password (%Q)"
-msgstr "A usar senha específica do servidor (%Q)"
+msgstr "A usar a senha específica do servidor (%Q)"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1427
 msgid "Using server specific real name (%Q)"
-msgstr "A usar nome real específico do servidor (%Q)"
+msgstr "A usar o nome real específico do servidor (%Q)"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1378
 msgid "Using server specific username (%Q)"
-msgstr "A usar nome de utilizador específico do servidor (%Q)"
+msgstr "A usar o nome de utilizador específico do servidor (%Q)"
 
 #: src/kvilib/core/KviError.cpp:74
 msgid "Valid name but the host has no IP address"
-msgstr "Nome válido mas a máquina não tem um endereço IP"
+msgstr "O nome é válido mas a máquina não tem endereço IP"
 
 #: src/kvilib/core/KviError.cpp:159
 msgid "Variable expected"
@@ -7670,8 +7667,12 @@ msgid ""
 "%cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal "
 "name%c: %Q"
 msgstr ""
-"Entrada WHO para %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cCanal%c: \r!c\r%Q\r, "
-"%cServidor%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAusente%c: %Q, "
+"Entrada WHO para %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]\n"
+"%cCanal%c: \r!c\r%Q\r\n"
+"%cServidor%c: \r!s\r%Q\r\n"
+"%cHops%c: %d\n"
+"%cFlags%c: %Q\n"
+"%cAusente%c: %Q, \n"
 "%cNome Real %c: %Q"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:929
@@ -7691,8 +7692,8 @@ msgstr "Aviso - KVirc"
 #: src/modules/links/LinksWindow.cpp:244
 msgid "Warning: No root link was sent by the server, the stats may be invalid."
 msgstr ""
-"Aviso: Não foi enviada nenhuma ligação de raíz pelo servidor, as "
-"estatísticas podem ser inválidas."
+"Aviso: Não foi enviada nenhuma ligação de raíz pelo servidor, "
+"as estatísticas podem ser inválidas."
 
 #: src/kvirc/kernel/KviIrcSocket.cpp:823
 msgid "We can accept auth method 0 (no auth)"
@@ -7724,7 +7725,7 @@ msgstr "Resposta whois dos canais"
 
 #: src/kvirc/kernel/KviOptions.cpp:786
 msgid "Whois idle reply"
-msgstr "Resposta whois de actividade"
+msgstr "Resposta whois com inactividade"
 
 #: src/kvirc/kernel/KviOptions.cpp:788
 msgid "Whois other reply"
@@ -7741,11 +7742,11 @@ msgstr "Resposta whois do utilizador"
 #: src/modules/links/LinksWindow.cpp:287
 #, c-format
 msgid "Wildcard servers (hubs?): %d"
-msgstr "Servidores asterisco (hubs?): %d"
+msgstr "Servidores hub com asterisco (hubs?): %d"
 
 #: src/kvirc/kernel/KviIrcContext.cpp:617
 msgid "Will attempt to reconnect in %1 seconds"
-msgstr "Irá tentar reconectar em %1 segundos"
+msgstr "Tentará reconectar em %1 segundos"
 
 #: src/modules/url/libkviurl.cpp:193
 msgid "Window"
@@ -7772,7 +7773,7 @@ msgstr "Janela não encontrada"
 
 #: src/modules/window/libkviwindow.cpp:971
 msgid "Window type or 'all' expected as first parameter"
-msgstr "Tipo de janela ou 'tudo' esperado como primeiro parametro"
+msgstr "Tipo de janela ou 'tudo' esperado como primeiro parâmetro"
 
 #: src/modules/spaste/libkvispaste.cpp:64
 msgid "Window with ID '%Q' not found"
@@ -7780,7 +7781,7 @@ msgstr "Janela com ID '%Q' não encontrada"
 
 #: src/modules/log/libkvilog.cpp:271
 msgid "Window with id '%Q' not found, returning empty string"
-msgstr "Janela com id '%Q' não encontrado, retornar 'string' vazia"
+msgstr "Janela com id '%Q' não encontrado, a devolver 'string' vazia"
 
 #: src/kvilib/file/KviPackageWriter.cpp:414
 msgid "Writing informational fields"
@@ -7792,7 +7793,7 @@ msgstr "A escrever os dados do pacote"
 
 #: src/kvilib/file/KviPackageWriter.cpp:366
 msgid "Writing package header"
-msgstr "A escrever cabeçalho do pacote"
+msgstr "A escrever o cabeçalho do pacote"
 
 #: src/kvirc/ui/KviStatusBar.cpp:551 src/kvirc/ui/KviInput.cpp:254
 #: src/kvirc/sparser/KviIrcServerParser_numericHandlers.cpp:891
@@ -7803,7 +7804,7 @@ msgstr "Sim"
 
 #: src/kvirc/ui/KviInput.cpp:253
 msgid "Yes, always"
-msgstr "Sim, sempre"
+msgstr "Sempre"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:377
 msgid ""
@@ -7832,7 +7833,7 @@ msgid ""
 "You didn't check yet.\n"
 "Should I check it?"
 msgstr ""
-"Ainda não verificou.\n"
+"Ainda não o verificou.\n"
 "Devo-o verificar?"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:589
@@ -7842,7 +7843,7 @@ msgstr "Foi expulso de \r!c\r%Q\r por \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/ui/KviCtcpPageDialog.cpp:105
 msgid "You have been paged by"
-msgstr "Foi-lhe enviado um sinal para o pager por"
+msgstr "Ainda não o verificou"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1514
 #: src/kvirc/kernel/KviIrcConnection.cpp:1622
@@ -7896,10 +7897,10 @@ msgid ""
 "message to be sent?"
 msgstr ""
 "Está prestes a enviar uma mensagem com %1 linhas de texto.<br><br>Não há "
-"nenhum problema, este aviso <br>está aqui para o prevenir de acidentalmente "
+"nenhum problema, este aviso é apenas<br>para o prevenir de acidentalmente "
 "enviar<br>uma mensagem demasiado comprida só porque não a editou<br> "
-"devidamente depois de ter colado o texto da área de transferência."
-"<br><br>Deseja que a mensagem seja enviada?"
+"devidamente após ter colado o texto da área de transferência.<br><br>Deseja "
+"que a mensagem seja enviada?"
 
 #: src/kvirc/ui/KviIrcView_events.cpp:931
 msgid "You're not an operator: You may not change channel modes"
