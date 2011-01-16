@@ -2,23 +2,23 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
+#
 # José Melo <mmodem00@netvisao.pt>, 2005, 2006.
 # José Melo <mmodem00@gmail.com>, 2005.
 # Zé <ze@mandriva.org>, 2004, 2008, 2010, 2011.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: editor_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-10 18:59+0100\n"
-"PO-Revision-Date: 2011-01-13 02:53+0000\n"
+"PO-Revision-Date: 2011-01-16 02:54+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
-"Language-Team: pt <a>\n"
+"Language-Team: Portuguese <>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: utf-8\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: 2\n"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:412
@@ -48,7 +48,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Evento Bruto:\n"
+"Evento Directo:\n"
 "%1"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:96
@@ -222,7 +222,7 @@ msgid ""
 "limited HTML tags.</center>"
 msgstr ""
 "<center><b>Texto visível</b><br>Pode conter identificadores que serão "
-"avaliados na hora de chamada do 'popup'.<br>Para etiquetas, este texto pode "
+"avaliados na hora de chamada do 'popup'.<br>Para os rótulos, este texto pode "
 "conter também marcas HTML.</center>"
 
 #: src/modules/actioneditor/ActionEditor.cpp:591
@@ -590,7 +590,7 @@ msgstr "Editar o nome da função membro"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:105
 msgid "Edit the raw event handler name."
-msgstr "Editar o nome do manipulador do evento bruto"
+msgstr "Editar o nome do manipulador do evento directo"
 
 #: src/modules/actioneditor/ActionEditor.cpp:232
 msgid "Enable Only in Specified Windows"
@@ -754,7 +754,7 @@ msgstr "Nome único interno para a acção"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
 msgid "Invalid ToolBar Label"
-msgstr "Etiqueta da Barra de Ferramentas inválida"
+msgstr "Rótulo da Barra de Ferramentas inválido"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:80
 #: src/modules/popupeditor/PopupEditorWindow.cpp:211
@@ -776,11 +776,11 @@ msgstr "Identificadores:"
 #: src/modules/popupeditor/PopupEditorWindow.cpp:93
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:145
 msgid "Label"
-msgstr "Etiqueta"
+msgstr "Rótulo"
 
 #: src/modules/actioneditor/ActionEditor.cpp:108
 msgid "Label:"
-msgstr "Etiqueta"
+msgstr "Rótulo:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1008
 msgid "Load Script File - KVIrc"
@@ -879,15 +879,15 @@ msgstr "Novo Item Dentro"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:393
 msgid "New Label Above"
-msgstr "Nova Etiqueta em Cima"
+msgstr "Nova Rótulo Acima"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:391
 msgid "New Label Below"
-msgstr "Nova Etiqueta em Baixo"
+msgstr "Novo Rótulo Abaixo"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:395
 msgid "New Label Inside"
-msgstr "Nova Etiqueta Dentro"
+msgstr "Novo Rótulo Dentro"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:409
 msgid "New Menu Above"
@@ -1133,11 +1133,11 @@ msgstr "Indique aqui um breve descrição da sua acção"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:524
 msgid "Raw Editor"
-msgstr "Editor Bruto"
+msgstr "Editor Directo"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:88
 msgid "Raw Event"
-msgstr "Evento Bruto"
+msgstr "Evento Directo"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:225
 #: src/modules/raweditor/RawEditorWindow.cpp:164
@@ -1235,7 +1235,7 @@ msgstr "Texto:"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:249
 msgid "The ToolBar Label can't be empty!"
-msgstr "A etiqueta da barra de ferramentas não pode estar vazia!"
+msgstr "O rótulo da barra de ferramentas não pode estar vazio!"
 
 #: src/modules/actioneditor/ActionEditor.cpp:171
 msgid ""
@@ -1349,11 +1349,11 @@ msgstr "Não é possível escrever para o ficheiro de 'popup'."
 
 #: src/modules/raweditor/RawEditorWindow.cpp:426
 msgid "Unable to write to the raw event file."
-msgstr "Não é possível escrever para o ficheiro de evento bruto."
+msgstr "Não é possível escrever para o ficheiro de evento directo."
 
 #: src/modules/raweditor/RawEditorWindow.cpp:461
 msgid "Unable to write to the raw events file."
-msgstr "Não é possível escrever para o ficheiro de eventos bruto."
+msgstr "Não é possível escrever para o ficheiro de eventos directos."
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:459
 msgid "Unable to write to the toolbar file."
