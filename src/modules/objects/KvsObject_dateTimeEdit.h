@@ -29,6 +29,10 @@
 #include "KvsObject_widget.h"
 #include "object_macros.h"
 
+class QDateTime;
+class QDate;
+class QTime;
+
 class KvsObject_dateTimeEdit : public KvsObject_widget
 {
 	Q_OBJECT
