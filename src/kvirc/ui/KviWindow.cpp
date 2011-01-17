@@ -777,6 +777,8 @@ void KviWindow::createSystemTextEncodingPopup()
 			szTmp += ")";
 		}
 
+		disconnect(g_pMdiWindowSystemTextEncodingActionGroup,SIGNAL(triggered(QAction*)), 0, 0);
+		connect(g_pMdiWindowSystemTextEncodingActionGroup,SIGNAL(triggered(QAction*)),this,SLOT(systemTextEncodingPopupActivated(QAction*)));
 		g_pMdiWindowSystemTextEncodingDefaultAction->setText(szTmp);
 
 		//menu already exists, choose the right item
