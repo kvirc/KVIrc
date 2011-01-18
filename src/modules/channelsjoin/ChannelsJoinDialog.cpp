@@ -181,6 +181,8 @@ void ChannelsJoinDialog::fillListView()
 		}
 	}
 
+	par->sortChildren(0, Qt::AscendingOrder);
+
 	par = new QTreeWidgetItem(m_pTreeWidget, HeaderItem);
 	par->setText(0,__tr2qs("Recent Channels"));
 	par->setExpanded(true);
@@ -208,6 +210,7 @@ void ChannelsJoinDialog::fillListView()
 					chld->setText(0,*it);
 					chld->setIcon(0,*(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 				}
+				par->sortChildren(0, Qt::AscendingOrder);
 			}
 		}
 	}
@@ -237,6 +240,7 @@ void ChannelsJoinDialog::fillListView()
 			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 		}
 	}
+	par->sortChildren(0, Qt::AscendingOrder);
 }
 
 void ChannelsJoinDialogTreeWidget::mousePressEvent(QMouseEvent *e)
