@@ -1017,6 +1017,7 @@ namespace KviKvsCoreFunctions
 			Returns information about the version of the currently running KVIrc.[br]
 			Type can be one of:[br]
 			[ul]
+			[li]a: return the application name[/li]
 			[li]b: return the build date in human readable form[/li]
 			[li]n: return the release name[/li]
 			[li]r: return the revision number[/li]
@@ -1033,29 +1034,39 @@ namespace KviKvsCoreFunctions
 			[fnc]$features[/fnc]
 	*/
 
-	KVSCF(version)
+	static QString full_version_helper()
 	{
-		QString szType;
 		QString szVersion;
-		QString szRetValue;
-
-		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("type",KVS_PT_STRING,KVS_PF_OPTIONAL,szType)
-		KVSCF_PARAMETERS_END
-
-		szVersion = KVI_RELEASE_NAME " " KVI_VERSION;
+		
+		szVersion = "KVIrc";
+		szVersion += " " KVI_RELEASE_NAME " " KVI_VERSION;
 		szVersion += ", revision: ";
 		szVersion += KviBuildInfo::buildRevision();
 		szVersion += ", sources date: ";
 		szVersion += KviBuildInfo::buildSourcesDate();
 		szVersion += ", built on: ";
 		szVersion += KviBuildInfo::buildDate();
+		
+		return szVersion;
+	}
+
+	KVSCF(version)
+	{
+		QString szType;
+		QString szRetValue;
+
+		KVSCF_PARAMETERS_BEGIN
+			KVSCF_PARAMETER("type",KVS_PT_STRING,KVS_PF_OPTIONAL,szType)
+		KVSCF_PARAMETERS_END
 
 		if(szType.isEmpty())
-			KVSCF_pRetBuffer->setString(szVersion);
+			KVSCF_pRetBuffer->setString(full_version_helper());
 		else {
+
 			if(szType.indexOf('b') != -1)
 				szRetValue = KviBuildInfo::buildDate();
+			else if(szType.indexOf('a') != -1)
+				szRetValue = "KVIrc";
 			else if(szType.indexOf('n') != -1)
 				szRetValue = KVI_RELEASE_NAME;
 			else if(szType.indexOf('r') != -1)
@@ -1064,7 +1075,7 @@ namespace KviKvsCoreFunctions
 				szRetValue = KviBuildInfo::buildSourcesDate();
 			else if(szType.indexOf('v') != -1)
 				szRetValue = KVI_VERSION;
-			else szRetValue = szVersion;
+			else szRetValue = full_version_helper();
 
 			KVSCF_pRetBuffer->setString(szRetValue);
 		}
