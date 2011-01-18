@@ -46,6 +46,7 @@
 #include "KviThemedLineEdit.h"
 
 #include <QTimer>
+#include <QHeaderView>
 #include <QPainter>
 #include <QFontMetrics>
 #include <QToolTip>
@@ -79,26 +80,6 @@ ChannelTreeWidgetItem::~ChannelTreeWidgetItem()
 {
 }
 
-int ChannelTreeWidgetItem::width(const QFontMetrics & fm, const QTreeWidget *, int iColumn) const
-{
-	switch(iColumn)
-	{
-		case 0:
-			//channel
-			return fm.width(m_pData->m_szChan);
-			break;
-		case 1:
-			//users
-			return fm.width(m_pData->m_szUsers.toInt());
-			break;
-		case 2:
-		default:
-			//topic
-			return fm.width(KviMircCntrl::stripControlBytes(m_pData->m_szTopic));
-			break;
-	}
-}
-
 bool ChannelTreeWidgetItem::operator<(const QTreeWidgetItem & other) const
 {
 	switch(treeWidget()->sortColumn())
@@ -126,6 +107,33 @@ ChannelTreeWidgetItemDelegate::ChannelTreeWidgetItemDelegate(QTreeWidget * pWidg
 
 ChannelTreeWidgetItemDelegate::~ChannelTreeWidgetItemDelegate()
 {
+}
+
+QSize ChannelTreeWidgetItemDelegate::sizeHint( const QStyleOptionViewItem &sovItem, const QModelIndex &index) const
+{
+	ChannelTreeWidget* treeWidget = (ChannelTreeWidget*)parent();
+	ChannelTreeWidgetItem * item = (ChannelTreeWidgetItem*)treeWidget->itemFromIndex(index);
+	int iHeight=treeWidget->fontMetrics().lineSpacing();
+
+	QFontMetrics fm(sovItem.font);
+	switch(index.column())
+	{
+		case 0:
+			//channel
+			return QSize(fm.width(item->itemData()->m_szChan), iHeight);
+			break;
+		case 1:
+			//users
+			return QSize(fm.width(item->itemData()->m_szUsers.toInt()), iHeight);
+			break;
+		case 2:
+		default:
+			//topic
+			return QSize(fm.width(KviMircCntrl::stripControlBytes(item->itemData()->m_szTopic)), iHeight);
+			break;
+	}
+	//make gcc happy
+	return QSize();
 }
 
 void ChannelTreeWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
@@ -219,7 +227,7 @@ ListWindow::ListWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole)
 
 	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter, this, "info_label");
 
-	m_pTreeWidget  = new KviThemedTreeWidget(m_pVertSplitter, this, "list_treewidget");
+	m_pTreeWidget  = new ChannelTreeWidget(m_pVertSplitter, this, "list_treewidget");
 	m_pTreeWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pTreeWidget->setItemDelegate(new ChannelTreeWidgetItemDelegate(m_pTreeWidget));
@@ -232,6 +240,12 @@ ListWindow::ListWindow(KviMainWindow * lpFrm, KviConsoleWindow * lpConsole)
 	m_pTreeWidget->setAllColumnsShowFocus(TRUE);
 	m_pTreeWidget->setSortingEnabled(TRUE);
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
+	
+	m_pTreeWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+	m_pTreeWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+	m_pTreeWidget->header()->setStretchLastSection(false);
+	m_pTreeWidget->header()->setResizeMode(QHeaderView::ResizeToContents);
+
 	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *, int)));
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);

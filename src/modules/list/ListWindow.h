@@ -47,6 +47,7 @@ public:
 	ChannelTreeWidgetItemDelegate(QTreeWidget * pWidget = 0);
 	~ChannelTreeWidgetItemDelegate();
 	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+	QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
 };
 
 class ChannelTreeWidgetItemData
@@ -72,9 +73,19 @@ public:
 private:
 	ChannelTreeWidgetItemData * m_pData;
 public:
-	int width (const QFontMetrics & fm, const QTreeWidget * pWidget, int iColumn) const;
 	bool operator<(const QTreeWidgetItem & other) const;
 	inline ChannelTreeWidgetItemData * itemData() { return m_pData; }; 
+};
+
+class ChannelTreeWidget: public KviThemedTreeWidget
+{
+	friend class ChannelTreeWidgetItem;
+	friend class ChannelTreeWidgetItemData;
+	Q_OBJECT
+public:
+	ChannelTreeWidget(QWidget * par, KviWindow * pWindow, const char * name) : KviThemedTreeWidget(par, pWindow, name) {};
+	~ChannelTreeWidget() {};
+	ChannelTreeWidgetItem* itemFromIndex(const QModelIndex & index) const { return (ChannelTreeWidgetItem*) KviThemedTreeWidget::itemFromIndex(index); };
 };
 
 class ListWindow : public KviWindow, public KviExternalServerDataParser
@@ -86,7 +97,7 @@ public:
 protected:
 	QSplitter                                    * m_pVertSplitter;
 	QSplitter                                    * m_pTopSplitter;
-	KviThemedTreeWidget                          * m_pTreeWidget;
+	ChannelTreeWidget                            * m_pTreeWidget;
 	KviThemedLineEdit                            * m_pParamsEdit;
 	QToolButton                                  * m_pRequestButton;
 	QToolButton                                  * m_pStopListDownloadButton;
