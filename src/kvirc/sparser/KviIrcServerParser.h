@@ -171,6 +171,7 @@ private:
 	void parseNumericEndOfWhois(KviIrcMessage *msg);
 	void parseNumericEndOfWhowas(KviIrcMessage *msg);
 	void parseNumericNoSuchNick(KviIrcMessage *msg);
+	void parseNumericChanUrl(KviIrcMessage *msg);
 	void parseNumericCreationTime(KviIrcMessage *msg);
 	void parseNumericIsOn(KviIrcMessage *msg);
 	void parseNumericUnavailResource(KviIrcMessage *msg);

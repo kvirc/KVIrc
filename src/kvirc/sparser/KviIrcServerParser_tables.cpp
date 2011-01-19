@@ -416,7 +416,7 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 325
 	0,                                               // 326
 	0,                                               // 327
-	0,                                               // 328
+	PTM(parseNumericChanUrl)                       , // 328 RPL_CHANURL
 	PTM(parseNumericCreationTime)                  , // 329 RPL_CREATIONTIME
 	PTM(parseNumericWhoisAuth)                     , // 330 RPL_WHOISAUTH
 	PTM(parseNumericNoTopic)                       , // 331 RPL_NOTOPIC

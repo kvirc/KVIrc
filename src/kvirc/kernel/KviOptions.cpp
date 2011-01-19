@@ -871,7 +871,8 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	MSGTYPE_OPTION("DeIrcOp",__tr_no_lookup("IRC Op status unset"),KviIconManager::DeIrcOp,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION("MeIrcOp",__tr_no_lookup("Own IRC Op status set"),KviIconManager::MeIrcOp,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION("MeDeIrcOp",__tr_no_lookup("Own IRC Op status unset"),KviIconManager::MeDeIrcOp,KVI_MSGTYPE_LEVEL_5),
-	MSGTYPE_OPTION("Cap",__tr_no_lookup("Extended capability message"),KviIconManager::ServerInfo,KVI_MSGTYPE_LEVEL_1)
+	MSGTYPE_OPTION("Cap",__tr_no_lookup("Extended capability message"),KviIconManager::ServerInfo,KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION("ChanUrl",__tr_no_lookup("Channel URL"),KviIconManager::Url,KVI_MSGTYPE_LEVEL_3)
 };
 
 static const char * options_section_table[KVI_NUM_OPTION_SECT_FLAGS] =

@@ -1652,6 +1652,29 @@ void KviIrcServerParser::parseNumericNoSuchNick(KviIrcMessage *msg)
 	}
 }
 
+void KviIrcServerParser::parseNumericChanUrl(KviIrcMessage *msg)
+{
+	// 328: RPL_CHANURL
+	// :prefix 328 target <channel> :<url>
+	
+	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
+	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
+	
+	QString szUrl = chan->decodeText(msg->safeTrailing());
+	
+	if(chan)
+	{
+		if(!msg->haltOutput())
+		{
+			chan->output(KVI_OUT_CHANURL,__tr2qs("Channel web site is %Q"),&szUrl);
+		}
+	} else {
+		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ?
+			msg->console()->activeWindow() : (KviWindow *)(msg->console());
+		pOut->output(KVI_OUT_CHANURL,__tr2qs("Channel web site is %Q"),&szUrl);
+	}
+}
+
 void KviIrcServerParser::parseNumericCreationTime(KviIrcMessage *msg)
 {
 	// 329: RPL_CREATIONTIME
