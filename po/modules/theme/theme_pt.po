@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_theme \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
+"POT-Creation-Date: 2011-01-20 16:46+0100\n"
 "PO-Revision-Date: 2011-01-13 03:12+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: pt <a>\n"
@@ -30,9 +30,10 @@ msgstr "&Remover Tema"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Adquirir Captura de Ecrã - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:108 src/modules/theme/libkvitheme.cpp:121
 #: src/modules/theme/managementdialog.cpp:300
 #: src/modules/theme/managementdialog.cpp:312
+#: src/modules/theme/libkvitheme.cpp:108
+#: src/modules/theme/libkvitheme.cpp:121
 msgid "Apply theme - KVIrc"
 msgstr "Aplicar tema - KVIrc"
 
@@ -63,8 +64,8 @@ msgstr "Apagar Temas Seleccionados"
 msgid "Delete Theme - KVIrc"
 msgstr "Apagar Tema - KVIrc"
 
-#: src/modules/theme/SaveThemeDialog.cpp:119
 #: src/modules/theme/PackThemeDialog.cpp:281
+#: src/modules/theme/SaveThemeDialog.cpp:119
 msgid "Description:"
 msgstr "Descrição:"
 
@@ -80,8 +81,8 @@ msgstr "Deseja realmente apagar o tema \"%Q\" (versão %Q)?"
 msgid "Do you want to proceed with the installation ?"
 msgstr "Deseja prosseguir com a instalação ?"
 
-#: src/modules/theme/libkvitheme.cpp:109
 #: src/modules/theme/managementdialog.cpp:301
+#: src/modules/theme/libkvitheme.cpp:109
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Deseja aplicar o tema \"%Q\" (versão %Q)?"
 
@@ -106,13 +107,13 @@ msgstr "Exportar Temas Seleccionados para um Pacote de Distribuição"
 msgid "Export Theme - KVIrc"
 msgstr "Exportar Tema - KVIrc"
 
-#: src/modules/theme/libkvitheme.cpp:120
 #: src/modules/theme/managementdialog.cpp:311
+#: src/modules/theme/libkvitheme.cpp:120
 msgid "Failed to apply the specified theme: %1"
 msgstr "Falha ao aplicar o tema especificado: %1"
 
-#: src/modules/theme/SaveThemeDialog.cpp:198
 #: src/modules/theme/PackThemeDialog.cpp:369
+#: src/modules/theme/SaveThemeDialog.cpp:198
 msgid "Failed to load the selected image"
 msgstr "Falha ao carregar a imagem seleccionada"
 
@@ -172,8 +173,8 @@ msgstr ""
 
 #: src/modules/theme/PackThemeDialog.cpp:381
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *%"
-"1 extension."
+"Here you must choose the file name for the theme package. It should have a *"
+"%1 extension."
 msgstr ""
 "Aqui deve escolher o nome do ficheiro para o pacote do tema. Deve ter uma "
 "extensão *%1."
@@ -194,8 +195,8 @@ msgstr ""
 "Aqui precisa fornecer informação acerca de si (o empacotador) e uma breve "
 "descrição do pacote que está a criar."
 
-#: src/modules/theme/SaveThemeDialog.cpp:78
 #: src/modules/theme/PackThemeDialog.cpp:108
+#: src/modules/theme/SaveThemeDialog.cpp:78
 msgid "Hit the \"Next\" button to begin."
 msgstr "Clique no botão \"Próximo\" para começar."
 
@@ -285,8 +286,10 @@ msgstr "O ficheiro seleccionado não parece ser um pacote KVIrc válido: %1"
 msgid "The selected file does not seem to be a valid KVIrc theme package"
 msgstr "O ficheiro seleccionado não parece ser um pacote de tema KVIrc válido"
 
-#: src/modules/theme/libkvitheme.cpp:126 src/modules/theme/libkvitheme.cpp:169
-msgid "The theme package '%Q' does not exists"
+#: src/modules/theme/libkvitheme.cpp:126
+#: src/modules/theme/libkvitheme.cpp:169
+#, fuzzy
+msgid "The theme package '%Q' does not exist"
 msgstr "O pacote do tema '%Q' não existe"
 
 #: src/modules/theme/SaveThemeDialog.cpp:127
@@ -355,8 +358,8 @@ msgstr "Não é possível criar o directório do tema."
 msgid "Unable to save theme: %1"
 msgstr "Não é possível gravar o tema: %1"
 
-#: src/modules/theme/SaveThemeDialog.cpp:111
 #: src/modules/theme/PackThemeDialog.cpp:272
+#: src/modules/theme/SaveThemeDialog.cpp:111
 msgid "Version:"
 msgstr "Versão:"
 
@@ -372,8 +375,8 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Aviso: O tema pode ser incompatível com esta versão do KVIrc"
 
-#: src/modules/theme/SaveThemeDialog.cpp:85
 #: src/modules/theme/PackThemeDialog.cpp:101
+#: src/modules/theme/SaveThemeDialog.cpp:85
 msgid "Welcome"
 msgstr "Bem vindo"
 

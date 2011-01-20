@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-13 16:53+0100\n"
+"POT-Creation-Date: 2011-01-20 16:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,63 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/addon/managementdialog.cpp:92
+msgid "Manage Script-Based Addons"
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:110
+msgid "Configure Addon..."
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:116
+msgid "Show Help"
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:122
+msgid "Delete Selected Addons"
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:132
+msgid "Create an Addon as a Distributable Package"
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:142
+msgid "Install Addon Package From Disk"
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:148
+msgid "Get More Addons..."
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:170
+msgid "Close"
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:253
+msgid "Do you really want to uninstall the addon \"%1\" ?"
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:258
+msgid "Confirm addon uninstallation"
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:259
+msgid "Yes"
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:259
+msgid "No"
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:280
+msgid "Please select the addon installation file"
+msgstr ""
+
+#: src/modules/addon/managementdialog.cpp:293
+#: src/modules/addon/managementdialog.cpp:307
+msgid "Install Addon - KVIrc"
+msgstr ""
 
 #: src/modules/addon/AddonFunctions.cpp:47
 msgid "The selected file does not seem to be a valid KVIrc addon package"
@@ -271,63 +328,6 @@ msgstr ""
 
 #: src/modules/addon/PackAddonDialog.cpp:627
 msgid "Finish"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:92
-msgid "Manage Script-Based Addons"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:110
-msgid "Configure Addon..."
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:116
-msgid "Show Help"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:122
-msgid "Delete Selected Addons"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:132
-msgid "Create an Addon as a Distributable Package"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:142
-msgid "Install Addon Package From Disk"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:148
-msgid "Get More Addons..."
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:170
-msgid "Close"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:253
-msgid "Do you really want to uninstall the addon \"%1\" ?"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:258
-msgid "Confirm addon uninstallation"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:259
-msgid "Yes"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:259
-msgid "No"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:280
-msgid "Please select the addon installation file"
-msgstr ""
-
-#: src/modules/addon/managementdialog.cpp:293
-#: src/modules/addon/managementdialog.cpp:307
-msgid "Install Addon - KVIrc"
 msgstr ""
 
 #: src/modules/addon/libkviaddon.cpp:146

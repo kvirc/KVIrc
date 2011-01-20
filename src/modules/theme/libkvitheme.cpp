@@ -123,7 +123,7 @@ static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 			}
 		}
 	}
-	c->warning(__tr2qs_ctx("The theme package '%Q' does not exists","theme"),&szThemePackFile);
+	c->warning(__tr2qs_ctx("The theme package '%Q' does not exist","theme"),&szThemePackFile);
 	return true;
 }
 /*
@@ -166,7 +166,7 @@ static bool theme_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 		c->returnValue()->setHash(pHash);
 		return true;
 	}
-	c->warning(__tr2qs_ctx("The theme package '%Q' does not exists","theme"),&szThemePackFile);
+	c->warning(__tr2qs_ctx("The theme package '%Q' does not exist","theme"),&szThemePackFile);
 	return true;
 }
 

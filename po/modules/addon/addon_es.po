@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
+"POT-Creation-Date: 2011-01-20 16:46+0100\n"
 "PO-Revision-Date: 2010-05-18 12:21+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -101,7 +101,7 @@ msgstr "¿Quieres proceder con la instalación?"
 
 #: src/modules/addon/libkviaddon.cpp:661
 msgid "Empty file list"
-msgstr ""
+msgstr "Lista de archivos vacía"
 
 #: src/modules/addon/libkviaddon.cpp:808
 msgid "Error installing addon package: %Q"
@@ -117,7 +117,6 @@ msgstr "Exportar addon - KVIrc"
 
 #: src/modules/addon/AddonFunctions.cpp:216
 #: src/modules/addon/AddonFunctions.cpp:232
-#, fuzzy
 msgid "Failed to unpack the selected file: %1"
 msgstr "No se pudo desempaquetar el archivo seleccionado: %1"
 
@@ -198,7 +197,7 @@ msgstr "Instalar un paquete de addon desde el disco"
 
 #: src/modules/addon/libkviaddon.cpp:750
 msgid "Installing file '%1' into '%2'"
-msgstr ""
+msgstr "Instalando el archivo '%1' en '%2'"
 
 #: src/modules/addon/libkviaddon.cpp:529
 msgid "Internal error: call a head-shrinker"
@@ -307,21 +306,25 @@ msgstr "Seleccionar el directorio fuente:"
 msgid "Show Help"
 msgstr "Mostrar ayuda"
 
-#: src/modules/addon/libkviaddon.cpp:692 src/modules/addon/libkviaddon.cpp:715
+#: src/modules/addon/libkviaddon.cpp:692
+#: src/modules/addon/libkviaddon.cpp:715
 msgid "Skipping inexistant entry '%1'"
-msgstr ""
+msgstr "Saltando la entrada no existente '%1'"
 
 #: src/modules/addon/libkviaddon.cpp:724
 msgid "Skipping invalid entry '%1'"
-msgstr ""
+msgstr "Saltando la entrada no válida '%1'"
 
 #: src/modules/addon/PackAddonDialog.cpp:591
 msgid "Source Directory"
 msgstr "Directorio de fuente"
 
-#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:648
+#: src/modules/addon/libkviaddon.cpp:200
+#: src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293
+#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386
+#: src/modules/addon/libkviaddon.cpp:648
 msgid "The addon \"%1\" does not exist"
 msgstr "El addon \"%1\" no existe"
 
@@ -339,25 +342,23 @@ msgstr "El addon \"%Q\" ya existe con la versión %Q la cual es mayor que %Q"
 
 #: src/modules/addon/libkviaddon.cpp:690
 msgid "The directory '%1' doesn't exist"
-msgstr ""
+msgstr "El directorio '%1' no existe"
 
 #: src/modules/addon/libkviaddon.cpp:722
 msgid "The entry '%1' is not a file"
-msgstr ""
+msgstr "La entrada '%1' no es un archivo"
 
 #: src/modules/addon/libkviaddon.cpp:713
-#, fuzzy
 msgid "The file '%1' doesn't exist"
-msgstr "El addon \"%1\" no existe"
+msgstr "El archivo \"%1\" no existe"
 
 #: src/modules/addon/PackAddonDialog.cpp:151
-#, fuzzy
 msgid "The initialization script (install.kvs) does not exist."
-msgstr "El script de inicialización (init.kvs) no existe."
+msgstr "El script de inicialización (install.kvs) no existe."
 
 #: src/modules/addon/PackAddonDialog.cpp:336
 msgid "The package file list is empty"
-msgstr ""
+msgstr "La lista de archivos del paquete está vacía"
 
 #: src/modules/addon/PackAddonDialog.cpp:144
 msgid "The selected directory does not exist."
@@ -381,11 +382,11 @@ msgstr "La versión especificada \"%Q\" no es una versión válida"
 
 #: src/modules/addon/libkviaddon.cpp:653
 msgid "The target path can't be empty"
-msgstr ""
+msgstr "La ruta de destino no puede estar vacía"
 
 #: src/modules/addon/libkviaddon.cpp:656
 msgid "The target path can't contain .."
-msgstr ""
+msgstr "La ruta de destino no puede contener .."
 
 #: src/modules/addon/libkviaddon.cpp:550
 msgid ""
@@ -404,13 +405,16 @@ msgid ""
 "This procedure allows you to export the selected addon to a single package. "
 "It is useful when you want to distribute your addon to the public."
 msgstr ""
+"Este procedimiento te permite exportar el addon seleccionado a un paquete. "
+"Esto es útil cuando quieres distribuir el addon al público."
 
 #: src/modules/addon/libkviaddon.cpp:154
 #, c-format
 msgid "Total: %d addons installed"
 msgstr "Total: %d addons instalados"
 
-#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Desinstalando el addon existente con la versión %Q"
 

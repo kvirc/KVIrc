@@ -1,22 +1,21 @@
 # Translation of logview_es.po to spanish
 #
 # José Luis Sánchez <jsanchezv@teleline.es>, 2004, 2009.
-# egns <grannost@gmail.com>, 2009-2010
+# egns <grannost@gmail.com>, 2009-2011
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
-"PO-Revision-Date: 2010-05-18 12:40+0200\n"
+"POT-Creation-Date: 2011-01-20 16:46+0100\n"
+"PO-Revision-Date: 2011-01-20 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
 
-#: src/modules/logview/LogViewWindow.cpp:304
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:317
 msgid "%1 on %2"
-msgstr "%1 en %2"
+msgstr "%1 el %2"
 
 #: src/modules/logview/LogViewWindow.cpp:154
 msgid "Apply filter"
@@ -27,9 +26,8 @@ msgid "Browse &Log Files"
 msgstr "&Navegar por los archivos de registro"
 
 #: src/modules/logview/LogViewWindow.cpp:84
-#, fuzzy
 msgid "Cancel"
-msgstr "Canal"
+msgstr "Cancelar"
 
 #: src/modules/logview/LogViewWidget.cpp:70
 msgid "Channel"
@@ -52,11 +50,10 @@ msgid "Filter"
 msgstr "Filtro"
 
 #: src/modules/logview/LogViewWindow.cpp:89
-#, fuzzy
 msgid "HelpIndex"
-msgstr "Índice"
+msgstr "Índice de la ayuda"
 
-#: src/modules/logview/LogViewWindow.cpp:548
+#: src/modules/logview/LogViewWindow.cpp:565
 msgid "Log File"
 msgstr "Archivo de registro"
 
@@ -88,11 +85,11 @@ msgstr "Otro"
 msgid "Query"
 msgstr "Privado"
 
-#: src/modules/logview/LogViewWindow.cpp:389
+#: src/modules/logview/LogViewWindow.cpp:405
 msgid "Remove all these channel/query log files"
 msgstr "Eliminar todos esos archivos de log de canal/privado"
 
-#: src/modules/logview/LogViewWindow.cpp:390
+#: src/modules/logview/LogViewWindow.cpp:406
 msgid "Remove file"
 msgstr "Eliminar archivo"
 

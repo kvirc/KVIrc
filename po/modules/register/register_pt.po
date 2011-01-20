@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
+"POT-Creation-Date: 2011-01-20 16:46+0100\n"
 "PO-Revision-Date: 2011-01-16 00:36+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
@@ -108,9 +108,9 @@ msgstr ""
 "<center>Esta é a lista de utilizadores registados. O KVIrc pode reconhecer "
 "automaticamente e associar propriedades aos utilizadores.<br>Use os botões à "
 "direita para adicionar, editar e remover entradas. A coluna \"notificar\" "
-"permite rapidamente adicionar utilizadores à lista de notificação. O "
-"ajuste na lista de notificação pode ser feito ao editar as propriedades "
-"da entrada.</center>"
+"permite rapidamente adicionar utilizadores à lista de notificação. O ajuste "
+"na lista de notificação pode ser feito ao editar as propriedades da entrada."
+"</center>"
 
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:384
 msgid "<center>You can enter a space separated list of nicknames.</center>"
@@ -186,13 +186,13 @@ msgid ""
 msgstr ""
 "<p>Bem-vindo ao assistente de registo de utilizadores.<br>Este processo "
 "permite-lhe adicionar um utilizador IRC à base de dados e definir as "
-"propriedades do utilizador. O KVIrc poderá reconhecer o utilizador, "
-"adicioná-lo à lista de notificação, e mostrar o avatar associado."
-"<br><br>Primeiro, deve inserir um <b>nome de entrada ou um nome "
-"real</b> para o utilizador que está a registar. O nome será "
-"usado para identificar a entrada na base de dados e não tem requerimentos "
-"específicos, pode ser um nome qualquer, uma alcunha, ou apenas um texto "
-"para se lembrar da pessoa real.<br>Exemplos: \"George W Bush\", \"Macaco\".\n"
+"propriedades do utilizador. O KVIrc poderá reconhecer o utilizador, adicioná-"
+"lo à lista de notificação, e mostrar o avatar associado.<br><br>Primeiro, "
+"deve inserir um <b>nome de entrada ou um nome real</b> para o utilizador que "
+"está a registar. O nome será usado para identificar a entrada na base de "
+"dados e não tem requerimentos específicos, pode ser um nome qualquer, uma "
+"alcunha, ou apenas um texto para se lembrar da pessoa real.<br>Exemplos: "
+"\"George W Bush\", \"Macaco\".\n"
 "</p>"
 
 #: src/modules/reguser/dialog.cpp:240
@@ -251,7 +251,8 @@ msgstr "Cancelar"
 msgid "Channel: %1%2@%3"
 msgstr "Canal: %1%2@%3"
 
-#: src/modules/reguser/dialog.cpp:719 src/modules/reguser/dialog.cpp:823
+#: src/modules/reguser/dialog.cpp:719
+#: src/modules/reguser/dialog.cpp:823
 msgid "Choose a Filename - KVIrc"
 msgstr "Escolher um Ficheiro - KVIrc"
 
@@ -260,8 +261,10 @@ msgstr "Escolher um Ficheiro - KVIrc"
 msgid "Comment:"
 msgstr "Comentário:"
 
-#: src/modules/reguser/dialog.cpp:520 src/modules/reguser/dialog.cpp:523
-#: src/modules/reguser/dialog.cpp:524 src/modules/reguser/dialog.cpp:526
+#: src/modules/reguser/dialog.cpp:520
+#: src/modules/reguser/dialog.cpp:523
+#: src/modules/reguser/dialog.cpp:524
+#: src/modules/reguser/dialog.cpp:526
 #: src/modules/reguser/dialog.cpp:528
 msgid "Default"
 msgstr "Predefinido"
@@ -293,7 +296,8 @@ msgstr ""
 msgid "Flags"
 msgstr "Opções"
 
-#: src/modules/reguser/dialog.cpp:411 src/modules/reguser/dialog.cpp:424
+#: src/modules/reguser/dialog.cpp:411
+#: src/modules/reguser/dialog.cpp:424
 msgid "Group name:"
 msgstr "Nome do grupo..."
 

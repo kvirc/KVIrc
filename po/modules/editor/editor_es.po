@@ -1,11 +1,11 @@
 # translation of editor_es.po to spanish
 #
-# egns <grannost@gmail.com>, 2009-2010.
+# egns <grannost@gmail.com>, 2009-2011.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
-"PO-Revision-Date: 2010-05-18 12:40+0200\n"
+"POT-Creation-Date: 2011-01-20 16:46+0100\n"
+"PO-Revision-Date: 2011-01-20 12:40+0200\n"
 "Last-Translator: egns <grannost@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,7 +13,6 @@ msgstr ""
 "First-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:412
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -32,7 +31,6 @@ msgstr ""
 "%2"
 
 #: src/modules/raweditor/RawEditorWindow.cpp:366
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -159,9 +157,8 @@ msgid "&Replace"
 msgstr "&Reemplazar"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1084
-#, fuzzy
 msgid "&Replace in all editor's items"
-msgstr "&Reemplazar en todos los aliases"
+msgstr "&Reemplazar en todos los alias"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1835
 msgid "&Save"
@@ -292,13 +289,12 @@ msgstr ""
 "¿Quieres aceptar los cambios externos?"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1117
-#, fuzzy
 msgid ""
 "An external script has changed the popup you are currently editing. Do you "
 "want to accept the external changes?"
 msgstr ""
-"Un script externo ha cambiado el alias que estás editando actualmente. "
-"¿Quieres aceptar los cambios externos?"
+"Un script externo ha cambiado el menú emergente que estás editando "
+"actualmente. ¿Quieres aceptar los cambios externos?"
 
 #: src/modules/actioneditor/ActionEditor.cpp:878
 msgid "Apply"
@@ -336,12 +332,10 @@ msgid "Brackets:"
 msgstr "Llaves:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1022
-#, fuzzy
 msgid "Can't open the file %1 for reading."
 msgstr "No pude abrir el archivo %1 para lectura."
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:934
-#, fuzzy
 msgid "Can't open the file %1 for writing."
 msgstr "No pude abrir el archivo %1 para escritura."
 
@@ -537,23 +531,19 @@ msgid "Do you really want to delete toolbar \"%1\" ?"
 msgstr "¿Realmente quieres eliminar la barra de herramientas \"%1\"?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:926
-#, fuzzy
 msgid "Do you really want to remove the alias \"%1\"?"
 msgstr "¿Realmente quieres eliminar el alias \"%1\"?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1337
-#, fuzzy
 msgid "Do you really want to remove the class \"%1\"?"
 msgstr "¿Realmente quieres eliminar la clase \"%1\"?"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1345
-#, fuzzy
 msgid "Do you really want to remove the function \"%1\"?"
 msgstr "¿Realmente quieres eliminar la función \"%1\"?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:928
 #: src/modules/classeditor/ClassEditorWindow.cpp:1340
-#, fuzzy
 msgid "Do you really want to remove the namespace \"%1\"?"
 msgstr "¿Realmente quieres eliminar el espacio de nombres \"%1\"?"
 
@@ -790,14 +780,13 @@ msgstr "Etiqueta:"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:1008
 msgid "Load Script File - KVIrc"
-msgstr "Cargar Archivo de Script - KVIrc"
+msgstr "Cargar archivo de script - KVIrc"
 
 #: src/modules/toolbareditor/CustomizeToolBarsDialog.cpp:266
 msgid "Manually"
 msgstr "Manualmente"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:812
-#, fuzzy
 msgid "Member Function"
 msgstr "Funciones miembro:"
 
@@ -1027,7 +1016,6 @@ msgid "OverWrite Current Alias"
 msgstr "Sobreescribir el alias actual"
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:1116
-#, fuzzy
 msgid "OverWrite Current Popup"
 msgstr "Sobreescribir el alias actual"
 
@@ -1070,9 +1058,9 @@ msgid "Please enter the new name for the namespace"
 msgstr "Por favor introduce el nuevo nombre para el espacio de nombres"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:2045
-#, fuzzy
 msgid "Please enter the optional reminder string for the member function:"
-msgstr "Por favor introduce el nombre para la nueva función:"
+msgstr ""
+"Por favor introduce la cadena opcional de recordatorio para la nueva función:"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:643
 msgid ""
@@ -1163,7 +1151,7 @@ msgstr "Eli&minar menú emergente"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:822
 msgid "Reminder text."
-msgstr ""
+msgstr "Texto de recordatorio."
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:577
 #: src/modules/classeditor/ClassEditorWindow.cpp:917
@@ -1200,7 +1188,6 @@ msgid "Replace with"
 msgstr "Reemplazar con"
 
 #: src/modules/editor/ScriptEditorImplementation.cpp:991
-#, fuzzy
 msgid "Row: %1 Col: %2"
 msgstr "Fila: %1 Col: %2"
 
@@ -1268,7 +1255,6 @@ msgstr ""
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:750
 #: src/modules/classeditor/ClassEditorWindow.cpp:1136
-#, fuzzy
 msgid "The file \"%1\" exists. Do you want to replace it?"
 msgstr "El archivo \"%1\" ya existe. ¿Quieres reemplazarlo?"
 
@@ -1297,7 +1283,6 @@ msgid "There is no selection!"
 msgstr "¡No hay nada seleccionado!"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:1681
-#, fuzzy
 msgid "These inherited classes will be not compiled too:"
 msgstr "Estas clases heredadas no serán compiladas tampoco:"
 
@@ -1444,9 +1429,8 @@ msgid "default"
 msgstr "por defecto"
 
 #: src/modules/classeditor/ClassEditorWindow.cpp:806
-#, fuzzy
 msgid "inherits from class "
-msgstr "Hereda la clase"
+msgstr "hereda de la clase "
 
 #: src/modules/eventeditor/EventEditorWindow.cpp:409
 msgid "none"
@@ -1457,9 +1441,3 @@ msgstr "ninguno"
 #: src/modules/raweditor/RawEditorWindow.cpp:191
 msgid "unnamed"
 msgstr "sin nombre"
-
-#~ msgid "Ok"
-#~ msgstr "Aceptar"
-
-#~ msgid "The file \"%Q\" exists. Do you want to replace it ?"
-#~ msgstr "El archivo \"%Q\" ya existe. ¿Quieres reemplazarlo?"

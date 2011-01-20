@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-13 16:53+0100\n"
+"POT-Creation-Date: 2011-01-20 16:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -200,153 +200,6 @@ msgstr ""
 msgid "Ignore"
 msgstr ""
 
-#: src/modules/reguser/dialog.cpp:81
-msgid "Name"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:81
-msgid "Flags"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:93
-msgid ""
-"<center>This is the list of registered users. KVIrc can automatically "
-"recognize and associate properties to them.<br>Use the buttons on the right "
-"to add, edit and remove entries. The \"notify\" column allows you to quickly "
-"add users to the notify list. Notify list fine-tuning can be performed by "
-"editing the entry properties.</center>"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:120
-msgid "Notify disabled"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:122
-msgid "Notify as:"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:132
-msgid "No comment set"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:223
-msgid "Registered Users - KVIrc"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:240
-msgid "Add (Wizard)..."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:242
-msgid "Add a registered user by means of a user-friendly wizard."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:248
-msgid "Open the edit dialog to create a new user entry."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:251
-msgid "&Add Group..."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:253
-msgid "Adds a new group"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:259
-msgid "Remove the currently selected entries."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:263
-msgid "&Edit..."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:266
-msgid "Edit the first selected entry."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:272
-msgid "Select all"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:274
-msgid "Select all the entries"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:277
-msgid "Export To..."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:280
-msgid ""
-"Export the selected entries to a file.<br>All the data associated with the "
-"selected registered users will be exported.<br>You (or anyone else) can "
-"later import the entries by using the \"Import\" button."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:284
-msgid "Import From..."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:286
-msgid ""
-"Import entries from a file exported earlier by the \"export\" function of "
-"this dialog."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:411
-#: src/modules/reguser/dialog.cpp:424
-msgid "Group name:"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:479
-msgid "Move to group"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:520
-#: src/modules/reguser/dialog.cpp:523
-#: src/modules/reguser/dialog.cpp:524
-#: src/modules/reguser/dialog.cpp:526
-#: src/modules/reguser/dialog.cpp:528
-msgid "Default"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:713
-msgid "No entries selected."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:719
-#: src/modules/reguser/dialog.cpp:823
-msgid "Choose a Filename - KVIrc"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:726
-msgid "Can't open file %Q for writing."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:804
-msgid "Can't export the registered users database: Write error."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:830
-#, c-format
-msgid "Can't open file %s for reading."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:841
-#, c-format
-msgid "The file %s doesn't appear to be a valid registered users database."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:848
-#, c-format
-msgid "The file %s contains an invalid registered users database version."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:917
-msgid "Can't import the registered users database: Read error."
-msgstr ""
-
 #: src/modules/reguser/libkvireguser.cpp:188
 #: src/modules/reguser/libkvireguser.cpp:268
 #: src/modules/reguser/libkvireguser.cpp:331
@@ -507,4 +360,151 @@ msgstr ""
 
 #: src/modules/reguser/RegistrationWizard.cpp:258
 msgid "Registration Complete"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:81
+msgid "Name"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:81
+msgid "Flags"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:93
+msgid ""
+"<center>This is the list of registered users. KVIrc can automatically "
+"recognize and associate properties to them.<br>Use the buttons on the right "
+"to add, edit and remove entries. The \"notify\" column allows you to quickly "
+"add users to the notify list. Notify list fine-tuning can be performed by "
+"editing the entry properties.</center>"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:120
+msgid "Notify disabled"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:122
+msgid "Notify as:"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:132
+msgid "No comment set"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:223
+msgid "Registered Users - KVIrc"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:240
+msgid "Add (Wizard)..."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:242
+msgid "Add a registered user by means of a user-friendly wizard."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:248
+msgid "Open the edit dialog to create a new user entry."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:251
+msgid "&Add Group..."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:253
+msgid "Adds a new group"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:259
+msgid "Remove the currently selected entries."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:263
+msgid "&Edit..."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:266
+msgid "Edit the first selected entry."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:272
+msgid "Select all"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:274
+msgid "Select all the entries"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:277
+msgid "Export To..."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:280
+msgid ""
+"Export the selected entries to a file.<br>All the data associated with the "
+"selected registered users will be exported.<br>You (or anyone else) can "
+"later import the entries by using the \"Import\" button."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:284
+msgid "Import From..."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:286
+msgid ""
+"Import entries from a file exported earlier by the \"export\" function of "
+"this dialog."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:411
+#: src/modules/reguser/dialog.cpp:424
+msgid "Group name:"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:479
+msgid "Move to group"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:520
+#: src/modules/reguser/dialog.cpp:523
+#: src/modules/reguser/dialog.cpp:524
+#: src/modules/reguser/dialog.cpp:526
+#: src/modules/reguser/dialog.cpp:528
+msgid "Default"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:713
+msgid "No entries selected."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:719
+#: src/modules/reguser/dialog.cpp:823
+msgid "Choose a Filename - KVIrc"
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:726
+msgid "Can't open file %Q for writing."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:804
+msgid "Can't export the registered users database: Write error."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:830
+#, c-format
+msgid "Can't open file %s for reading."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:841
+#, c-format
+msgid "The file %s doesn't appear to be a valid registered users database."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:848
+#, c-format
+msgid "The file %s contains an invalid registered users database version."
+msgstr ""
+
+#: src/modules/reguser/dialog.cpp:917
+msgid "Can't import the registered users database: Read error."
 msgstr ""

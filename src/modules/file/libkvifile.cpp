@@ -1401,7 +1401,7 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("data",KVS_PT_NONEMPTYSTRING,0,szFile)
-		KVSM_PARAMETER("algorythm",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szAlgo)
+		KVSM_PARAMETER("algorithm",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szAlgo)
 	KVSM_PARAMETERS_END(c)
 
 	KviFileUtils::adjustFilePath(szFile);
@@ -1433,7 +1433,7 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	pMD = EVP_get_digestbyname(szAlgo.toUtf8().data());
 	if(!pMD)
 	{
-		c->warning(__tr2qs("%Q algorytm is not supported"),&szAlgo);
+		c->warning(__tr2qs("%Q algorithm is not supported"),&szAlgo);
 		return true;
 	}
 

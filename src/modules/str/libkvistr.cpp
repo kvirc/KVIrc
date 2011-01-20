@@ -1368,7 +1368,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	QString szString,szType,szResult;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("data",KVS_PT_NONEMPTYSTRING,0,szString)
-		KVSM_PARAMETER("algorythm",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szType)
+		KVSM_PARAMETER("algorithm",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szType)
 	KVSM_PARAMETERS_END(c)
 
 #if defined(COMPILE_SSL_SUPPORT) && !defined(COMPILE_NO_EMBEDDED_CODE)
@@ -1384,7 +1384,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	md = EVP_get_digestbyname(szType.toUtf8().data());
 	if(!md)
 	{
-		c->warning(__tr2qs("%Q algorytm is not supported"),&szType);
+		c->warning(__tr2qs("%Q algorithm is not supported"),&szType);
 		return true;
 	}
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-13 16:53+0100\n"
+"POT-Creation-Date: 2011-01-20 16:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,310 +17,151 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandDefpopup.cpp:323
-#, c-format
-msgid "The popup '%s' is actually locked: 'self-modifications' are not allowed"
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:156
+msgid "DNS Lookup result for query \"%Q\""
 msgstr ""
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExtendedScopeVariable.cpp:54
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExtendedScopeVariable.cpp:72
-msgid "There are no extended scope variables in this scope"
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:161
+msgid "Error: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasFunctionCall.cpp:63
-msgid "Call to undefined function '%Q'"
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:164
+msgid "Hostname: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasFunctionCall.cpp:71
-msgid "Error in inner alias function call '%Q', called from this context"
+#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
+#: src/kvirc/kvs/KviKvsDnsManager.cpp:168
+msgid "IP address %d: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeRebindingSwitch.cpp:78
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:111
+msgid "Broken condition in menu setup: assuming false"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:218
+msgid "Broken icon parameter: ignoring"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:226
+msgid "Can't find the icon '%Q': ignoring"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:242
+msgid "Broken text parameter: assuming empty string"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:484
+msgid "Recursive definition detected for popup '%Q': ignoring"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:497
+msgid "Can't find the external popup '%Q': ignoring"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:866
+msgid "Broken prologue in popup menu '%Q': ignoring"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsPopupMenu.cpp:881
+msgid "Broken epilogue in popup menu '%Q': ignoring"
+msgstr ""
+
+#: src/kvirc/kvs/event/KviKvsEventManager.cpp:501
+msgid "Event handler %Q is broken: disabling"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:242
+msgid "Missing alias name"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:253
 msgid ""
-"Empty window identifier specified in the standard rebinding switch: no "
-"rebinding performed"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeRebindingSwitch.cpp:89
-msgid ""
-"Invalid window specified in the standard rebinding switch: no rebinding "
-"performed"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:67
-#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleCallbackCommand.cpp:68
-msgid "Module command call failed: can't load the module '%Q': %Q"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:74
-msgid ""
-"Module command call failed: the module '%Q' doesn't export a command named "
-"'%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleCallbackCommand.cpp:75
-msgid ""
-"Module command call failed: the module '%Q' doesn't export a callback "
-"command named '%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:83
-msgid "Internal error: pure virtual evaluateReadOnly called"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:89
-#: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:102
-msgid ""
-"Internal error: trying to evaluate as read-write a read-only data location"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:96
-msgid "Internal error: pure virtual evaluateReadOnlyInObjectScope called"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:153
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:204
-msgid "The target variable didn't evaluate to an integer or real value"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:248
-msgid "The right side of operator '&=' didn't evaluate to an integer"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:259
-msgid "The left side of operator '&=' didn't evaluate to an integer"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:308
-msgid "The right side of operator '/=' didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:319
-msgid "The left side of operator '/=' didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
-msgid "Division by zero"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:391
-msgid "The right side of operator '%=' didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:402
-msgid "The left side of operator '%=' didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:473
-msgid "The right side of operator '*=' didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:484
-msgid "The left side of operator '*=' didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:540
-msgid "The right side of operator '|=' didn't evaluate to an integer"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:551
-msgid "The left side of operator '|=' didn't evaluate to an integer"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:599
-msgid "The right side of operator '<<=' didn't evaluate to an integer"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:610
-msgid "The left side of operator '<<=' didn't evaluate to an integer"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:658
-msgid "The right side of operator '>>=' didn't evaluate to an integer"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:669
-msgid "The left side of operator '>>=' didn't evaluate to an integer"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:717
-msgid "The right side of operator '-=' didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:728
-msgid "The left side of operator '-=' didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:789
-msgid "The right side of operator '+=' didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:800
-msgid "The left side of operator '+=' didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:860
-msgid "The right side of operator '^=' didn't evaluate to an integer"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:871
-msgid "The left side of operator '^=' didn't evaluate to an integer"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:1240
-msgid ""
-"The regular expression matched a zero-length substring: this is not valid in "
-"the s/// operator, skipping"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:69
-#: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:115
-msgid "Hash key evaluated to empty string: fix the script"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:88
-msgid ""
-"The argument of the {} subscript didn't evaluate to a hash: automatic "
-"conversion from type '%Q' supplied"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:131
-msgid ""
-"The argument of the {} subscript didn't evaluate to a hash automatic "
-"conversion from %Q supplied"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeHashCount.cpp:67
-msgid ""
-"The argument of the hash count '#' operator didn't evaluate to a hash: "
-"automatic conversion from type '%Q' supplied"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeHashReferenceAssert.cpp:70
-msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:218
-msgid "Operand of unary operator didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:367
-msgid "Left operand didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:374
-msgid "Right operand didn't evaluate to a number"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeArrayCount.cpp:69
-msgid ""
-"The argument of the array count '#' operator didn't evaluate to an array: "
-"automatic conversion from type '%Q' supplied"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeScopeOperator.cpp:91
-msgid ""
-"The left side of the scope operator didn't evaluate as an object reference"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeScopeOperator.cpp:97
-msgid ""
-"The left side of the scope operator evaluated to a null object reference"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeScopeOperator.cpp:104
-msgid ""
-"The left side of the scope operator evaluated to an invalid object reference "
-"(object doesn't exist)"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeArrayReferenceAssert.cpp:71
-msgid "Array reference assert failed: the variable evaluated to type '%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:99
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1161
-msgid "[RAW]: %Q"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:102
-msgid "Failed to send an unknown command as /raw"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:103
-#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:106
-msgid "Call to undefined command '%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:118
-msgid "Error in inner alias command call '%Q', called from this context"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeArrayElement.cpp:65
-msgid "Array index didn't evaluate to an integer"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeArrayElement.cpp:71
-msgid ""
-"Array index evaluated to a negative integer (non negative integer expected)"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeArrayElement.cpp:99
-msgid ""
-"The argument of the [] subscript didn't evaluate to an array: automatic "
-"conversion from %Q supplied"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeArrayElement.cpp:137
-msgid ""
-"The argument of the [] subscript didn't evaluate to an array: automatic "
-"conversion from type '%Q' supplied"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleFunctionCall.cpp:67
-msgid "Module function call failed: can't load the module '%Q': %Q"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleFunctionCall.cpp:74
-msgid ""
-"Module function call failed: the module '%Q' doesn't export a function named "
-"'%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:97
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:118
-msgid "Missing class name"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:110
-msgid ""
-"Class names can contain only letters, digits, underscores and '::' namespace "
+"Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
 msgstr ""
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:127
-msgid "A class can't be a subclass of itself"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:134
-msgid "Couln't find base class named '%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:144
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:262
 msgid ""
-"Detected a loop in the inheritance tree of the base class '%Q': redefine "
-"that class first"
+"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 
-#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:153
-msgid "Can't override the builtin class '%Q'"
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:268
+msgid "Found an empty namespace in alias name"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:277
+msgid "The alias '%Q' does not exist"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:438
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:439
+msgid "The specified window has no button containers"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:450
+msgid "Window button '%Q' not found"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:478
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:472
+msgid "Can't find the icon '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:567
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:575
+msgid "No such event (%Q)"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:555
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1489
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1502
+msgid "No handler '%Q' for raw numeric event '%d'"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:561
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1493
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1506
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1528
+msgid "No handler '%Q' for event '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:937
+msgid "The specified ping time is invalid: assuming zero (no ping)"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:947
+msgid "The specified maximum run time is invalid: assuming zero (infinite)"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:966
+msgid "Failed to start the process"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1013
+msgid "The specified object does not exist"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1133
+msgid "Missing timer name"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1142
+msgid "Missing timeout delay"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1149
+msgid "The timeout delay didn't evaluate to an integer"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1172
+msgid "Unable to add the timer: insufficient system resources"
 msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_sz.cpp:99
@@ -369,69 +210,8 @@ msgid ""
 "No target mask/channel specified and the current window is not a channel"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:342
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:209
-msgid "This window has no associated IRC context"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:525
-msgid "This executable was built without SSL support"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:563
-msgid "Error retrieving information from the local certificate"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:571
-msgid "Unable to get certificate information: query not recognized"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:619
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
-#, c-format
-msgid "No such IRC context (%u)"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:630
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:745
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
-msgid "This window is not associated to an IRC context"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:969
-msgid "Couldn't construct QDateTime object."
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:111
-msgid "Broken condition in menu setup: assuming false"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:218
-msgid "Broken icon parameter: ignoring"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:226
-msgid "Can't find the icon '%Q': ignoring"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:242
-msgid "Broken text parameter: assuming empty string"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:484
-msgid "Recursive definition detected for popup '%Q': ignoring"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:497
-msgid "Can't find the external popup '%Q': ignoring"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:866
-msgid "Broken prologue in popup menu '%Q': ignoring"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsPopupMenu.cpp:881
-msgid "Broken epilogue in popup menu '%Q': ignoring"
+#: src/kvirc/kvs/KviKvsTimerManager.cpp:237
+msgid "Timer '%Q' has a broken callback handler: killing the timer"
 msgstr ""
 
 #: src/kvirc/kvs/KviKvsParameterProcessor.cpp:107
@@ -466,361 +246,6 @@ msgstr ""
 msgid ""
 "Invalid data type for parameter \"%1\": found signed integer \"%2\" where "
 "type 'unsigned integer' was expected"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:249
-msgid "Lag meter was not enabled"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:567
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:575
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:535
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:543
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1469
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1477
-msgid "No such event (%Q)"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:583
-msgid "No such event handler (%Q) for event %Q"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsTimerManager.cpp:237
-msgid "Timer '%Q' has a broken callback handler: killing the timer"
-msgstr ""
-
-#: src/kvirc/kvs/event/KviKvsEventManager.cpp:501
-msgid "Event handler %Q is broken: disabling"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsModuleInterface.cpp:164
-msgid "Can't unload the module: it has locked itself in memory"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:195
-msgid "This window has no associated IRC context and is not a DCC chat"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:293
-msgid "Class '%Q' is not defined"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:303
-msgid "The specified parent object does not exist"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:439
-msgid "There is no option named '%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:348
-msgid "The $sw() function can be used only in aliases"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:420
-#, c-format
-msgid "Window with ID '%s' not found, returning empty string"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands.cpp:162
-msgid "This is not a channel"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:116
-#: src/kvirc/kvs/parser/KviKvsParser.cpp:95
-msgid "line %1, near character %2"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:192
-msgid "This command can be used only in windows bound to an IRC context"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:198
-msgid "You're not connected to an IRC server"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:204
-msgid "Missing parameter"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsProcessManager.cpp:220
-msgid "Error triggered from process callback handler: killing process"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:100
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:156
-msgid "DNS Lookup result for query \"%Q\""
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:105
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:161
-msgid "Error: %Q"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:108
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:164
-msgid "Hostname: %Q"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:112
-#: src/kvirc/kvs/KviKvsDnsManager.cpp:168
-msgid "IP address %d: %Q"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObjectClass.cpp:161
-msgid "It's not allowed to return values in the constructor"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:976
-msgid ""
-"Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from "
-"object '%Q::%Q': disconnecting"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:994
-msgid ""
-"Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1138
-msgid "Listing Qt properties for object named '%Q' of KVS class %Q"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1144
-#, c-format
-msgid "Properties for Qt class %s"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1156
-msgid "Property: %1%2%3, type %4"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1188
-#, c-format
-msgid "%d properties listed"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1206
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1428
-msgid "The object named '%Q' of class '%Q' has no Qt properties"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1213
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1441
-msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1220
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1450
-msgid ""
-"Can't find property named '%Q' for object named '%Q' of class '%Q': the "
-"property is indexed but it doesn't really exist"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1227
-msgid ""
-"Can't find property named '%Q' for object named '%Q'of class '%Q': the "
-"property is indexed and defined but the returned variant is not valid"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1243
-#, c-format
-msgid ""
-"The property is of type %s but the supplied argument can't be converted to "
-"that type (expecting '%s')"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1378
-msgid ""
-"A pixmap object, an image_id or an image file path is required for this "
-"property"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1399
-msgid "Can't find the requested image"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1406
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1549
-msgid ""
-"Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
-"type"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1458
-msgid ""
-"Can't find property named '%Q' for object named '%Q' of class '%Q': the "
-"property is indexed and defined but the returned variant is not valid"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1736
-msgid "Cannot find object function $%Q for object named '%Q' of class '%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1738
-msgid "Cannot find object function $%Q::%Q for object named '%Q' of class '%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/object/KviKvsObject.cpp:1746
-msgid ""
-"Cannot call internal object function $%Q (for object named '%Q' of class "
-"'%Q') from this context"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:593
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:611
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:634
-msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:604
-msgid ""
-"Unexpected end of command in binding operation, at least two slashes are "
-"missing"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:627
-msgid ""
-"Unexpected end of command in binding operation, at least one slash is missing"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:667
-msgid "Unknown binding operation '%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:688
-msgid "Missing right side operand for the binding operator '=~'"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:710
-msgid "Trailing garbage ignored after operator '++'"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:722
-msgid "Missing right operand for operator '+='"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:741
-msgid "Trailing garbage ignored after operator '--'"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:748
-msgid ""
-"This looks a lot like an object handle dereferencing operator '->' but in "
-"fact it isn't. Maybe you forgot a '$' just after?"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:756
-msgid "Missing right operand for operator '-='"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:777
-msgid "Missing right operand for operator '<<='"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:787
-msgid "Missing right operand for operator '<<'"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:801
-msgid "Missing right operand for operator '<,'"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:815
-msgid "Missing right operand for operator '<+'"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:837
-msgid "Missing right operand for operator '>>='"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:856
-msgid "Missing right operand for operator '.='"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:875
-msgid "Missing right operand for operator '"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:892
-msgid "Unknown operator"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:919
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:940
-msgid "Unexpected (and senseless) read-only data evaluation"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:920
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:942
-msgid "Syntax error: confused by earlier errors: bailing out"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:922
-msgid "Unexpected end of script after a variable reference: expected operator"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:938
-msgid ""
-"Unexpected character '%q' (unicode %x) after a void function call: end of "
-"instruction expected"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:941
-msgid "Unexpected character '%q' (unicode %x)"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:60
-msgid "Stray dot ('.') character or invalid following module command name"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:61
-msgid "Syntax error: malformed module command identifier"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:179
-msgid "Stray '::' sequence or invalid following alias name"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:86
-msgid "Syntax error: malformed alias identifier"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
-#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:187
-msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:94
-msgid "Syntax error: malformed (alias?) command identifier"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:291
-msgid "Unknown callback command \"%Q\""
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:116
-msgid "Unknown binary operator '=%q': did you mean '==' ?"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:214
-msgid "Unknown binary operator '%q'"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:298
-#: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:364
-msgid "Unexpected end of script in expression"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:444
-msgid ""
-"Unexpected character %q (unicode %h) in expression. If it meant to be a "
-"string use the quotes."
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:459
-msgid "Unexpected empty expression operand"
 msgstr ""
 
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:44
@@ -864,12 +289,41 @@ msgstr ""
 msgid "Syntax error: invalid $$ ($this) function call in object scope"
 msgstr ""
 
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:179
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:85
+msgid "Stray '::' sequence or invalid following alias name"
+msgstr ""
+
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:180
 msgid "Syntax error: malformed alias function call identifier"
 msgstr ""
 
+#: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:187
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:93
+msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
+msgstr ""
+
 #: src/kvirc/kvs/parser/KviKvsParser_dollar.cpp:188
 msgid "Syntax error: malformed (alias?) function call identifier"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_comment.cpp:59
+msgid "Unterminated c-style multiline comment"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_comment.cpp:60
+msgid "Unexpected end of script in multiline comment"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_comment.cpp:78
+msgid ""
+"Unexpected character '%q' (unicode %x) after a slash (is it a typo or a "
+"malformed comment begin?)"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser.cpp:95
+#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:116
+msgid "line %1, near character %2"
 msgstr ""
 
 #: src/kvirc/kvs/parser/KviKvsParser.cpp:97
@@ -991,18 +445,130 @@ msgid ""
 "newline)"
 msgstr ""
 
-#: src/kvirc/kvs/parser/KviKvsParser_comment.cpp:59
-msgid "Unterminated c-style multiline comment"
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:593
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:611
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:634
+msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
 msgstr ""
 
-#: src/kvirc/kvs/parser/KviKvsParser_comment.cpp:60
-msgid "Unexpected end of script in multiline comment"
-msgstr ""
-
-#: src/kvirc/kvs/parser/KviKvsParser_comment.cpp:78
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:604
 msgid ""
-"Unexpected character '%q' (unicode %x) after a slash (is it a typo or a "
-"malformed comment begin?)"
+"Unexpected end of command in binding operation, at least two slashes are "
+"missing"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:627
+msgid ""
+"Unexpected end of command in binding operation, at least one slash is missing"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:667
+msgid "Unknown binding operation '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:688
+msgid "Missing right side operand for the binding operator '=~'"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:710
+msgid "Trailing garbage ignored after operator '++'"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:722
+msgid "Missing right operand for operator '+='"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:741
+msgid "Trailing garbage ignored after operator '--'"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:748
+msgid ""
+"This looks a lot like an object handle dereferencing operator '->' but in "
+"fact it isn't. Maybe you forgot a '$' just after?"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:756
+msgid "Missing right operand for operator '-='"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:777
+msgid "Missing right operand for operator '<<='"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:787
+msgid "Missing right operand for operator '<<'"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:801
+msgid "Missing right operand for operator '<,'"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:815
+msgid "Missing right operand for operator '<+'"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:837
+msgid "Missing right operand for operator '>>='"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:856
+msgid "Missing right operand for operator '.='"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:875
+msgid "Missing right operand for operator '"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:892
+msgid "Unknown operator"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:919
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:940
+msgid "Unexpected (and senseless) read-only data evaluation"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:920
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:942
+msgid "Syntax error: confused by earlier errors: bailing out"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:922
+msgid "Unexpected end of script after a variable reference: expected operator"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:938
+msgid ""
+"Unexpected character '%q' (unicode %x) after a void function call: end of "
+"instruction expected"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_lside.cpp:941
+msgid "Unexpected character '%q' (unicode %x)"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:116
+msgid "Unknown binary operator '=%q': did you mean '==' ?"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:214
+msgid "Unknown binary operator '%q'"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:298
+#: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:364
+msgid "Unexpected end of script in expression"
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:444
+msgid ""
+"Unexpected character %q (unicode %h) in expression. If it meant to be a "
+"string use the quotes."
+msgstr ""
+
+#: src/kvirc/kvs/parser/KviKvsParser_expression.cpp:459
+msgid "Unexpected empty expression operand"
 msgstr ""
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:152
@@ -1250,124 +816,24 @@ msgstr ""
 msgid "The 'defpopup' command needs an expression enclosed in parenthesis"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsReport.cpp:186
-#: src/kvirc/kvs/KviKvsReport.cpp:194
-msgid "[KVS]%c Warning: %Q"
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:60
+msgid "Stray dot ('.') character or invalid following module command name"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsReport.cpp:190
-msgid "[KVS]%c Compilation Error: %Q"
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:61
+msgid "Syntax error: malformed module command identifier"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsReport.cpp:198
-msgid "[KVS]%c Runtime Error: %Q"
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:86
+msgid "Syntax error: malformed alias identifier"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsReport.cpp:203
-msgid "[KVS]   in script context \"%Q\""
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:94
+msgid "Syntax error: malformed (alias?) command identifier"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsReport.cpp:205
-msgid "[KVS]   in script context \"%Q\", %Q"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsReport.cpp:212
-msgid "[KVS] Code listing:"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsReport.cpp:217
-msgid "[KVS] Window:"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsReport.cpp:221
-#, c-format
-msgid "[KVS]   Destroyed window with pointer %x"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsReport.cpp:225
-msgid "[KVS] Call stack:"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:242
-msgid "Missing alias name"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:253
-msgid ""
-"Alias names can contain only letters, digits, underscores and '::' namespace "
-"separators"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:262
-msgid ""
-"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:268
-msgid "Found an empty namespace in alias name"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:277
-msgid "The alias '%Q' does not exist"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:438
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:439
-msgid "The specified window has no button containers"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:450
-msgid "Window button '%Q' not found"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:478
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:472
-msgid "Can't find the icon '%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:555
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1489
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1502
-msgid "No handler '%Q' for raw numeric event '%d'"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:561
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1493
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1506
-#: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1528
-msgid "No handler '%Q' for event '%Q'"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:937
-msgid "The specified ping time is invalid: assuming zero (no ping)"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:947
-msgid "The specified maximum run time is invalid: assuming zero (infinite)"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:966
-msgid "Failed to start the process"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1013
-msgid "The specified object does not exist"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1133
-msgid "Missing timer name"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1142
-msgid "Missing timeout delay"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1149
-msgid "The timeout delay didn't evaluate to an integer"
-msgstr ""
-
-#: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1172
-msgid "Unable to add the timer: insufficient system resources"
+#: src/kvirc/kvs/parser/KviKvsParser_command.cpp:291
+msgid "Unknown callback command \"%Q\""
 msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:331
@@ -1407,6 +873,72 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1261
 msgid "Window '%Q' not found, using current one"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:195
+msgid "This window has no associated IRC context and is not a DCC chat"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:293
+msgid "Class '%Q' is not defined"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:303
+msgid "The specified parent object does not exist"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:439
+msgid "There is no option named '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:492
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:619
+#, c-format
+msgid "No such IRC context (%u)"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:503
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:630
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:745
+msgid "This window is not associated to an IRC context"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsReport.cpp:186
+#: src/kvirc/kvs/KviKvsReport.cpp:194
+msgid "[KVS]%c Warning: %Q"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsReport.cpp:190
+msgid "[KVS]%c Compilation Error: %Q"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsReport.cpp:198
+msgid "[KVS]%c Runtime Error: %Q"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsReport.cpp:203
+msgid "[KVS]   in script context \"%Q\""
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsReport.cpp:205
+msgid "[KVS]   in script context \"%Q\", %Q"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsReport.cpp:212
+msgid "[KVS] Code listing:"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsReport.cpp:217
+msgid "[KVS] Window:"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsReport.cpp:221
+#, c-format
+msgid "[KVS]   Destroyed window with pointer %x"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsReport.cpp:225
+msgid "[KVS] Call stack:"
 msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:300
@@ -1462,6 +994,353 @@ msgstr ""
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:667
 #, c-format
 msgid "Total: %u timers running"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsProcessManager.cpp:220
+msgid "Error triggered from process callback handler: killing process"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:342
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:209
+msgid "This window has no associated IRC context"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:525
+msgid "This executable was built without SSL support"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:563
+msgid "Error retrieving information from the local certificate"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:571
+msgid "Unable to get certificate information: query not recognized"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:969
+msgid "Couldn't construct QDateTime object."
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsModuleInterface.cpp:164
+msgid "Can't unload the module: it has locked itself in memory"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleFunctionCall.cpp:67
+msgid "Module function call failed: can't load the module '%Q': %Q"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleFunctionCall.cpp:74
+msgid ""
+"Module function call failed: the module '%Q' doesn't export a function named "
+"'%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:83
+msgid "Internal error: pure virtual evaluateReadOnly called"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:89
+#: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:102
+msgid ""
+"Internal error: trying to evaluate as read-write a read-only data location"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeData.cpp:96
+msgid "Internal error: pure virtual evaluateReadOnlyInObjectScope called"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:218
+msgid "Operand of unary operator didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:367
+msgid "Left operand didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:374
+msgid "Right operand didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:499
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:507
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:527
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExpression.cpp:535
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:329
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:341
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:412
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:424
+msgid "Division by zero"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:69
+#: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:115
+msgid "Hash key evaluated to empty string: fix the script"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:88
+msgid ""
+"The argument of the {} subscript didn't evaluate to a hash: automatic "
+"conversion from type '%Q' supplied"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeHashElement.cpp:131
+msgid ""
+"The argument of the {} subscript didn't evaluate to a hash automatic "
+"conversion from %Q supplied"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasFunctionCall.cpp:63
+msgid "Call to undefined function '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasFunctionCall.cpp:71
+msgid "Error in inner alias function call '%Q', called from this context"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:97
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:118
+msgid "Missing class name"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:110
+msgid ""
+"Class names can contain only letters, digits, underscores and '::' namespace "
+"separators"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:127
+msgid "A class can't be a subclass of itself"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:134
+msgid "Couln't find base class named '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:144
+msgid ""
+"Detected a loop in the inheritance tree of the base class '%Q': redefine "
+"that class first"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandClass.cpp:153
+msgid "Can't override the builtin class '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:67
+#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleCallbackCommand.cpp:68
+msgid "Module command call failed: can't load the module '%Q': %Q"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleSimpleCommand.cpp:74
+msgid ""
+"Module command call failed: the module '%Q' doesn't export a command named "
+"'%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeArrayReferenceAssert.cpp:71
+msgid "Array reference assert failed: the variable evaluated to type '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeArrayElement.cpp:65
+msgid "Array index didn't evaluate to an integer"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeArrayElement.cpp:71
+msgid ""
+"Array index evaluated to a negative integer (non negative integer expected)"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeArrayElement.cpp:99
+msgid ""
+"The argument of the [] subscript didn't evaluate to an array: automatic "
+"conversion from %Q supplied"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeArrayElement.cpp:137
+msgid ""
+"The argument of the [] subscript didn't evaluate to an array: automatic "
+"conversion from type '%Q' supplied"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeScopeOperator.cpp:91
+msgid ""
+"The left side of the scope operator didn't evaluate as an object reference"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeScopeOperator.cpp:97
+msgid ""
+"The left side of the scope operator evaluated to a null object reference"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeScopeOperator.cpp:104
+msgid ""
+"The left side of the scope operator evaluated to an invalid object reference "
+"(object doesn't exist)"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeArrayCount.cpp:69
+msgid ""
+"The argument of the array count '#' operator didn't evaluate to an array: "
+"automatic conversion from type '%Q' supplied"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:153
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:204
+msgid "The target variable didn't evaluate to an integer or real value"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:248
+msgid "The right side of operator '&=' didn't evaluate to an integer"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:259
+msgid "The left side of operator '&=' didn't evaluate to an integer"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:308
+msgid "The right side of operator '/=' didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:319
+msgid "The left side of operator '/=' didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:391
+msgid "The right side of operator '%=' didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:402
+msgid "The left side of operator '%=' didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:473
+msgid "The right side of operator '*=' didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:484
+msgid "The left side of operator '*=' didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:540
+msgid "The right side of operator '|=' didn't evaluate to an integer"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:551
+msgid "The left side of operator '|=' didn't evaluate to an integer"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:599
+msgid "The right side of operator '<<=' didn't evaluate to an integer"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:610
+msgid "The left side of operator '<<=' didn't evaluate to an integer"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:658
+msgid "The right side of operator '>>=' didn't evaluate to an integer"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:669
+msgid "The left side of operator '>>=' didn't evaluate to an integer"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:717
+msgid "The right side of operator '-=' didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:728
+msgid "The left side of operator '-=' didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:789
+msgid "The right side of operator '+=' didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:800
+msgid "The left side of operator '+=' didn't evaluate to a number"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:860
+msgid "The right side of operator '^=' didn't evaluate to an integer"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:871
+msgid "The left side of operator '^=' didn't evaluate to an integer"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeOperation.cpp:1240
+msgid ""
+"The regular expression matched a zero-length substring: this is not valid in "
+"the s/// operator, skipping"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeModuleCallbackCommand.cpp:75
+msgid ""
+"Module command call failed: the module '%Q' doesn't export a callback "
+"command named '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:99
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1161
+msgid "[RAW]: %Q"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:102
+msgid "Failed to send an unknown command as /raw"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:103
+#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:106
+msgid "Call to undefined command '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeAliasSimpleCommand.cpp:118
+msgid "Error in inner alias command call '%Q', called from this context"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeHashReferenceAssert.cpp:70
+msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeHashCount.cpp:67
+msgid ""
+"The argument of the hash count '#' operator didn't evaluate to a hash: "
+"automatic conversion from type '%Q' supplied"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExtendedScopeVariable.cpp:54
+#: src/kvirc/kvs/tree/KviKvsTreeNodeExtendedScopeVariable.cpp:72
+msgid "There are no extended scope variables in this scope"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeSpecialCommandDefpopup.cpp:323
+#, c-format
+msgid "The popup '%s' is actually locked: 'self-modifications' are not allowed"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeRebindingSwitch.cpp:78
+msgid ""
+"Empty window identifier specified in the standard rebinding switch: no "
+"rebinding performed"
+msgstr ""
+
+#: src/kvirc/kvs/tree/KviKvsTreeNodeRebindingSwitch.cpp:89
+msgid ""
+"Invalid window specified in the standard rebinding switch: no rebinding "
+"performed"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:192
+msgid "This command can be used only in windows bound to an IRC context"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:198
+msgid "You're not connected to an IRC server"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsRunTimeContext.cpp:204
+msgid "Missing parameter"
 msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:96
@@ -1522,4 +1401,125 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:1211
 msgid "Window with id %Q not found: no rebinding performed"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:348
+msgid "The $sw() function can be used only in aliases"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:420
+#, c-format
+msgid "Window with ID '%s' not found, returning empty string"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreSimpleCommands.cpp:162
+msgid "This is not a channel"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:249
+msgid "Lag meter was not enabled"
+msgstr ""
+
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:583
+msgid "No such event handler (%Q) for event %Q"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObjectClass.cpp:161
+msgid "It's not allowed to return values in the constructor"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:976
+msgid ""
+"Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from "
+"object '%Q::%Q': disconnecting"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:994
+msgid ""
+"Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1138
+msgid "Listing Qt properties for object named '%Q' of KVS class %Q"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1144
+#, c-format
+msgid "Properties for Qt class %s"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1156
+msgid "Property: %1%2%3, type %4"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1188
+#, c-format
+msgid "%d properties listed"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1206
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1428
+msgid "The object named '%Q' of class '%Q' has no Qt properties"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1213
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1441
+msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1220
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1450
+msgid ""
+"Can't find property named '%Q' for object named '%Q' of class '%Q': the "
+"property is indexed but it doesn't really exist"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1227
+msgid ""
+"Can't find property named '%Q' for object named '%Q'of class '%Q': the "
+"property is indexed and defined but the returned variant is not valid"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1243
+#, c-format
+msgid ""
+"The property is of type %s but the supplied argument can't be converted to "
+"that type (expecting '%s')"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1378
+msgid ""
+"A pixmap object, an image_id or an image file path is required for this "
+"property"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1399
+msgid "Can't find the requested image"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1406
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1549
+msgid ""
+"Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
+"type"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1458
+msgid ""
+"Can't find property named '%Q' for object named '%Q' of class '%Q': the "
+"property is indexed and defined but the returned variant is not valid"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1736
+msgid "Cannot find object function $%Q for object named '%Q' of class '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1738
+msgid "Cannot find object function $%Q::%Q for object named '%Q' of class '%Q'"
+msgstr ""
+
+#: src/kvirc/kvs/object/KviKvsObject.cpp:1746
+msgid ""
+"Cannot call internal object function $%Q (for object named '%Q' of class "
+"'%Q') from this context"
 msgstr ""

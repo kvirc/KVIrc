@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-13 16:53+0100\n"
+"POT-Creation-Date: 2011-01-20 16:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,15 @@ msgstr ""
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
+msgstr ""
+
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:61
+msgid "Torrent Client"
+msgstr ""
+
+#: src/modules/torrent/StatusBarApplet.cpp:92
+msgid "No client selected!"
 msgstr ""
 
 #: src/modules/torrent/libkvitorrent.cpp:62
@@ -55,13 +64,4 @@ msgstr ""
 
 #: src/modules/torrent/libkvitorrent.cpp:722
 msgid "Invalid client interface \"%Q\"!"
-msgstr ""
-
-#: src/modules/torrent/StatusBarApplet.cpp:44
-#: src/modules/torrent/StatusBarApplet.cpp:61
-msgid "Torrent Client"
-msgstr ""
-
-#: src/modules/torrent/StatusBarApplet.cpp:92
-msgid "No client selected!"
 msgstr ""

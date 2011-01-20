@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-19 15:59+0200\n"
+"POT-Creation-Date: 2011-01-20 16:46+0100\n"
 "PO-Revision-Date: 2011-01-18 13:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,128 +20,104 @@ msgstr ""
 "X-Poedit-Country: TURKEY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/libkvilogview.cpp:135
-msgid "Browse &Log Files"
-msgstr "Log Gösterici"
+#: src/modules/logview/LogViewWindow.cpp:317
+#, fuzzy
+msgid "%1 on %2"
+msgstr "%Q %Q için"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:84
-msgid "Cancel"
-msgstr "İptal Et"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:89
-msgid "Index"
-msgstr "Log Dizini"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:98
-msgid "Filter"
-msgstr "Filtre"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:102
-msgid "Show channel logs"
-msgstr "Kanal loglarını göster"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:106
-msgid "Show query logs"
-msgstr "Özel logları göster"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:110
-msgid "Show console logs"
-msgstr "Konsol logları göster"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:114
-msgid "Show DCC chat logs"
-msgstr "DCC chat logları göster"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:118
-msgid "Show other logs"
-msgstr "Diğer logları göster"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:123
-msgid "Contents filter"
-msgstr "Filtre içeriği"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:126
-msgid "Log name mask:"
-msgstr "Log adı arama:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:132
-msgid "Log contents mask:"
-msgstr "Log içeriği arama:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:138
-msgid "Only older than"
-msgstr "Bu tarihten eski:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:146
-msgid "Only newier than"
-msgstr "Bu tarihten yeni:"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:154
+#: src/modules/logview/LogViewWindow.cpp:154
 msgid "Apply filter"
 msgstr "Filtreyi uygula:"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:220
-msgid "Log Viewer"
+#: src/modules/logview/libkvilogview.cpp:135
+msgid "Browse &Log Files"
 msgstr "Log Gösterici"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:304
-msgid "%Q on %Q"
-msgstr "%Q %Q için"
+#: src/modules/logview/LogViewWindow.cpp:84
+msgid "Cancel"
+msgstr "İptal Et"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:389
-msgid "Remove all these channel/query log files"
-msgstr "Bu bölümdeki logların hepsini sil"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:390
-msgid "Remove file"
-msgstr "Dosyayı sil"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewmdiwindow.cpp:548
-msgid "Log File"
-msgstr "Kayıt Dosyası"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewwidget.cpp:70
+#: src/modules/logview/LogViewWidget.cpp:70
 msgid "Channel"
 msgstr "Kanal"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewwidget.cpp:74
-msgid "Query"
-msgstr "Özel"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewwidget.cpp:78
-msgid "DCC Chat"
-msgstr "DCC Sohbet"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewwidget.cpp:82
+#: src/modules/logview/LogViewWidget.cpp:82
 msgid "Console"
 msgstr "Konsol"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/logview/logviewwidget.cpp:86
+#: src/modules/logview/LogViewWindow.cpp:123
+msgid "Contents filter"
+msgstr "Filtre içeriği"
+
+#: src/modules/logview/LogViewWidget.cpp:78
+msgid "DCC Chat"
+msgstr "DCC Sohbet"
+
+#: src/modules/logview/LogViewWindow.cpp:98
+msgid "Filter"
+msgstr "Filtre"
+
+#: src/modules/logview/LogViewWindow.cpp:89
+#, fuzzy
+msgid "HelpIndex"
+msgstr "Log Dizini"
+
+#: src/modules/logview/LogViewWindow.cpp:565
+msgid "Log File"
+msgstr "Kayıt Dosyası"
+
+#: src/modules/logview/LogViewWindow.cpp:220
+msgid "Log Viewer"
+msgstr "Log Gösterici"
+
+#: src/modules/logview/LogViewWindow.cpp:132
+msgid "Log contents mask:"
+msgstr "Log içeriği arama:"
+
+#: src/modules/logview/LogViewWindow.cpp:126
+msgid "Log name mask:"
+msgstr "Log adı arama:"
+
+#: src/modules/logview/LogViewWindow.cpp:146
+msgid "Only newier than"
+msgstr "Bu tarihten yeni:"
+
+#: src/modules/logview/LogViewWindow.cpp:138
+msgid "Only older than"
+msgstr "Bu tarihten eski:"
+
+#: src/modules/logview/LogViewWidget.cpp:86
 msgid "Other"
 msgstr "Diğer"
 
+#: src/modules/logview/LogViewWidget.cpp:74
+msgid "Query"
+msgstr "Özel"
+
+#: src/modules/logview/LogViewWindow.cpp:405
+msgid "Remove all these channel/query log files"
+msgstr "Bu bölümdeki logların hepsini sil"
+
+#: src/modules/logview/LogViewWindow.cpp:406
+msgid "Remove file"
+msgstr "Dosyayı sil"
+
+#: src/modules/logview/LogViewWindow.cpp:114
+msgid "Show DCC chat logs"
+msgstr "DCC chat logları göster"
+
+#: src/modules/logview/LogViewWindow.cpp:102
+msgid "Show channel logs"
+msgstr "Kanal loglarını göster"
+
+#: src/modules/logview/LogViewWindow.cpp:110
+msgid "Show console logs"
+msgstr "Konsol logları göster"
+
+#: src/modules/logview/LogViewWindow.cpp:118
+msgid "Show other logs"
+msgstr "Diğer logları göster"
+
+#: src/modules/logview/LogViewWindow.cpp:106
+msgid "Show query logs"
+msgstr "Özel logları göster"

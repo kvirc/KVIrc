@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 18:59+0100\n"
+"POT-Creation-Date: 2011-01-20 16:46+0100\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -21,29 +21,29 @@ msgstr ""
 msgid " bytes"
 msgstr "0 bajtova"
 
-#: src/modules/options/OptionsWidget_channel.cpp:140
 #: src/modules/options/OptionsWidget_query.cpp:102
+#: src/modules/options/OptionsWidget_channel.cpp:140
 msgid " days"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_ircView.cpp:155
-#: src/modules/options/OptionsWidget_channel.cpp:136
 #: src/modules/options/OptionsWidget_query.cpp:98
+#: src/modules/options/OptionsWidget_channel.cpp:136
 #, fuzzy
 msgid " lines"
 msgstr "odgovoreno"
 
-#: src/modules/options/OptionsWidget_logging.cpp:50
+#: src/modules/options/OptionsWidget_logging.cpp:57
 #, fuzzy
 msgid " min"
 msgstr "odgovoreno"
 
-#: src/modules/options/OptionsWidget_lag.cpp:45
-#: src/modules/options/OptionsWidget_lag.cpp:56
+#: src/modules/options/OptionsWidget_connection.cpp:155
 #: src/modules/options/OptionsWidget_ircView.cpp:157
 #: src/modules/options/OptionsWidget_ircView.cpp:159
-#: src/modules/options/OptionsWidget_connection.cpp:155
 #: src/modules/options/OptionsWidget_dcc.cpp:276
+#: src/modules/options/OptionsWidget_lag.cpp:45
+#: src/modules/options/OptionsWidget_lag.cpp:56
 msgid " msec"
 msgstr ""
 
@@ -57,12 +57,12 @@ msgstr "Ističe"
 msgid " requests"
 msgstr "DCC zahtev"
 
-#: src/modules/options/OptionsWidget_channel.cpp:121
 #: src/modules/options/OptionsWidget_connection.cpp:85
 #: src/modules/options/OptionsWidget_connection.cpp:153
 #: src/modules/options/OptionsWidget_dcc.cpp:140
-#: src/modules/options/OptionsWidget_avatar.cpp:96
+#: src/modules/options/OptionsWidget_channel.cpp:121
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:92
+#: src/modules/options/OptionsWidget_avatar.cpp:96
 msgid " sec"
 msgstr ""
 
@@ -105,10 +105,10 @@ msgstr "Iskačući meni"
 msgid "&New Server"
 msgstr "Mreža/Server"
 
-#: src/modules/options/OptionsWidget_identity.cpp:234
-#: src/modules/options/dialog.cpp:229
 #: src/modules/options/OptionsWidget_servers.cpp:381
+#: src/modules/options/OptionsWidget_identity.cpp:234
 #: src/modules/options/OptionsWidgetContainer.cpp:100
+#: src/modules/options/dialog.cpp:229
 #, fuzzy
 msgid "&OK"
 msgstr "OK"
@@ -391,15 +391,15 @@ msgid ""
 "to save your IRC bandwidth.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_channel.cpp:141
 #: src/modules/options/OptionsWidget_query.cpp:103
+#: src/modules/options/OptionsWidget_channel.cpp:141
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
 "center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_channel.cpp:137
 #: src/modules/options/OptionsWidget_query.cpp:99
+#: src/modules/options/OptionsWidget_channel.cpp:137
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
 "center>"
@@ -439,7 +439,7 @@ msgid "<center>Put here a brief description of the network.</center>"
 msgstr ""
 "<center>Klikni ovde za editovanje naprednih opcija za ovaj server...</center>"
 
-#: src/modules/options/OptionsWidget_logging.cpp:52
+#: src/modules/options/OptionsWidget_logging.cpp:59
 msgid ""
 "<center>Save logs with the current interval<br>Set to 0 to disable this "
 "feature</center>"
@@ -827,6 +827,13 @@ msgid ""
 "requesting user.</center>"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_logging.cpp:47
+#, fuzzy
+msgid ""
+"<center>This is the base log directory:<br>all the log files will be saved "
+"inside this directory</center>"
+msgstr "<center>Ovo je <b>ime hosta</b> trenutno izabranog servera.</center>"
+
 #: src/modules/options/OptionsWidget_servers.cpp:663
 msgid ""
 "<center>This is the default <b>port</b> that this server will be contacted "
@@ -991,8 +998,8 @@ msgid ""
 "data.</center>"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_query.cpp:82
 #: src/modules/options/OptionsWidget_dcc.cpp:331
+#: src/modules/options/OptionsWidget_query.cpp:82
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -1504,6 +1511,12 @@ msgstr ""
 "(često korišćen slučaj), predefinisano \"stvarno ime\" (definisano u "
 "\"identity\" tab-u) će biti korišćeno.</center>"
 
+#: src/modules/options/OptionsWidget_logging.cpp:51
+msgid ""
+"<center>You can specify a subdirectory where log files will be saved:use kvs "
+"code to create dynamic subfolders.</center>"
+msgstr ""
+
 #: src/modules/options/OptionsWidget_identity.cpp:306
 msgid ""
 "<center>Your <b>nickname</b> is your primary form of identification on IRC."
@@ -1604,12 +1617,12 @@ msgid "Add Rule"
 msgstr "Dodaj zabranu (ban)"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1001
-#: src/modules/options/OptionsWidget_connection.h:46
+#: src/modules/options/OptionsWidget_identity.h:202
 #: src/modules/options/OptionsWidget_dcc.h:59
 #: src/modules/options/OptionsWidget_dcc.h:103
-#: src/modules/options/OptionsWidget_irc.h:57
 #: src/modules/options/OptionsWidget_channel.h:64
-#: src/modules/options/OptionsWidget_identity.h:202
+#: src/modules/options/OptionsWidget_connection.h:46
+#: src/modules/options/OptionsWidget_irc.h:57
 #, fuzzy
 msgid "Advanced"
 msgstr "Napredno ..."
@@ -1765,7 +1778,7 @@ msgstr ""
 msgid "Authenticate via SASL extension"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_logging.cpp:49
+#: src/modules/options/OptionsWidget_logging.cpp:56
 msgid "Auto flush logs every"
 msgstr ""
 
@@ -1866,14 +1879,14 @@ msgstr "&Odsutnost"
 
 #: src/modules/options/OptionsWidget_theme.cpp:164
 #: src/modules/options/OptionsWidget_theme.cpp:184
-#: src/modules/options/OptionsWidget_windowList.h:79
 #: src/modules/options/OptionsWidget_userList.h:46
+#: src/modules/options/OptionsWidget_windowList.h:79
 #, fuzzy
 msgid "Background"
 msgstr "Pozadina"
 
-#: src/modules/options/OptionsWidget_userList.cpp:126
 #: src/modules/options/OptionsWidget_windowList.cpp:119
+#: src/modules/options/OptionsWidget_userList.cpp:126
 #, fuzzy
 msgid "Background Colors"
 msgstr "Boja pozadine"
@@ -1884,8 +1897,8 @@ msgstr "Boja pozadine"
 msgid "Background Image"
 msgstr "Pozadinska slika"
 
-#: src/modules/options/OptionsWidget_notifier.cpp:39
 #: src/modules/options/OptionsWidget_input.cpp:39
+#: src/modules/options/OptionsWidget_notifier.cpp:39
 #: src/modules/options/OptionsWidget_topicLabel.cpp:38
 msgid "Background color"
 msgstr "Boja pozadine"
@@ -1895,15 +1908,15 @@ msgstr "Boja pozadine"
 msgid "Background color:"
 msgstr "Boja pozadine"
 
-#: src/modules/options/OptionsWidget_notifier.cpp:44
 #: src/modules/options/OptionsWidget_input.cpp:46
+#: src/modules/options/OptionsWidget_notifier.cpp:44
 #: src/modules/options/OptionsWidget_topicLabel.cpp:39
 msgid "Background image"
 msgstr "Pozadinska slika"
 
+#: src/modules/options/OptionsWidget_windowList.cpp:123
 #: src/modules/options/OptionsWidget_ircView.cpp:54
 #: src/modules/options/OptionsWidget_userList.cpp:131
-#: src/modules/options/OptionsWidget_windowList.cpp:123
 #, fuzzy
 msgid "Background image:"
 msgstr "Pozadinska slika"
@@ -1933,11 +1946,11 @@ msgstr "Poveži IRC IPv4 konekcije na prateći interfejs"
 msgid "Blend color:"
 msgstr "uske boje"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:71
-#: src/modules/options/OptionsWidget_userList.cpp:148
-#: src/modules/options/OptionsWidget_notifier.cpp:61
-#: src/modules/options/OptionsWidget_windowList.cpp:140
 #: src/modules/options/OptionsWidget_input.cpp:63
+#: src/modules/options/OptionsWidget_windowList.cpp:140
+#: src/modules/options/OptionsWidget_ircView.cpp:71
+#: src/modules/options/OptionsWidget_notifier.cpp:61
+#: src/modules/options/OptionsWidget_userList.cpp:148
 msgid "Bottom"
 msgstr ""
 
@@ -1969,26 +1982,26 @@ msgid "Cache IP address"
 msgstr "Keširaj IP adresu"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
+#: src/modules/options/OptionsWidget_servers.cpp:387
+#: src/modules/options/OptionsWidget_servers.cpp:1011
 #: src/modules/options/OptionsWidget_identity.cpp:96
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_identity.cpp:952
-#: src/modules/options/dialog.cpp:244
-#: src/modules/options/OptionsWidget_servers.cpp:387
-#: src/modules/options/OptionsWidget_servers.cpp:1011
 #: src/modules/options/OptionsWidgetContainer.cpp:108
+#: src/modules/options/dialog.cpp:244
 msgid "Cancel"
 msgstr "Poništi"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:67
-#: src/modules/options/OptionsWidget_ircView.cpp:72
-#: src/modules/options/OptionsWidget_userList.cpp:144
-#: src/modules/options/OptionsWidget_userList.cpp:149
-#: src/modules/options/OptionsWidget_notifier.cpp:57
-#: src/modules/options/OptionsWidget_notifier.cpp:62
-#: src/modules/options/OptionsWidget_windowList.cpp:136
-#: src/modules/options/OptionsWidget_windowList.cpp:141
 #: src/modules/options/OptionsWidget_input.cpp:59
 #: src/modules/options/OptionsWidget_input.cpp:64
+#: src/modules/options/OptionsWidget_windowList.cpp:136
+#: src/modules/options/OptionsWidget_windowList.cpp:141
+#: src/modules/options/OptionsWidget_ircView.cpp:67
+#: src/modules/options/OptionsWidget_ircView.cpp:72
+#: src/modules/options/OptionsWidget_notifier.cpp:57
+#: src/modules/options/OptionsWidget_notifier.cpp:62
+#: src/modules/options/OptionsWidget_userList.cpp:144
+#: src/modules/options/OptionsWidget_userList.cpp:149
 #, fuzzy
 msgid "Center"
 msgstr "Generalne opcije"
@@ -2109,13 +2122,13 @@ msgstr "Isprazni listu"
 msgid "Close in tray"
 msgstr "M&inimizuj"
 
-#: src/modules/options/dialog.cpp:231
 #: src/modules/options/OptionsWidgetContainer.cpp:101
+#: src/modules/options/dialog.cpp:231
 msgid "Close this dialog, accepting all changes."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:246
 #: src/modules/options/OptionsWidgetContainer.cpp:109
+#: src/modules/options/dialog.cpp:246
 msgid "Close this dialog, discarding all changes."
 msgstr ""
 
@@ -2133,9 +2146,9 @@ msgstr ""
 msgid "Commit all changes immediately."
 msgstr "Izvrši promene"
 
+#: src/modules/options/OptionsWidget_connection.cpp:221
 #: src/modules/options/OptionsWidget_notify.cpp:41
 #: src/modules/options/OptionsWidget_lag.cpp:43
-#: src/modules/options/OptionsWidget_connection.cpp:221
 #: src/modules/options/OptionsWidget_proxy.cpp:107
 #, fuzzy
 msgid "Configuration"
@@ -2298,14 +2311,14 @@ msgstr "Obriši ovo pravilo"
 msgid "Delete Rule"
 msgstr "Obriši ovo pravilo"
 
-#: src/modules/options/OptionsWidget_mediaTypes.cpp:79
 #: src/modules/options/OptionsWidget_servers.cpp:1271
+#: src/modules/options/OptionsWidget_mediaTypes.cpp:79
 msgid "Description"
 msgstr "Opis"
 
-#: src/modules/options/OptionsWidget_mediaTypes.cpp:87
 #: src/modules/options/OptionsWidget_servers.cpp:119
 #: src/modules/options/OptionsWidget_servers.cpp:534
+#: src/modules/options/OptionsWidget_mediaTypes.cpp:87
 msgid "Description:"
 msgstr "Opis:"
 
@@ -2401,6 +2414,11 @@ msgstr "Nije dat nadimak"
 #, fuzzy
 msgid "Draw some emoticons (smileys) as pictures"
 msgstr "Nacrtaj neke emocije kao stvarne ikone"
+
+#: src/modules/options/OptionsWidget_logging.cpp:50
+#, fuzzy
+msgid "Dynamic subfolder:"
+msgstr "Direktorijum za svlačenje"
 
 #: src/modules/options/OptionsWidget_channel.cpp:129
 #, fuzzy
@@ -2587,8 +2605,8 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Ne mogu da odredim lokalni port"
 
-#: src/modules/options/OptionsWidget_windowList.h:98
 #: src/modules/options/OptionsWidget_userList.h:103
+#: src/modules/options/OptionsWidget_windowList.h:98
 #: src/modules/options/OptionsWidget_ircView.h:70
 msgid "Features"
 msgstr ""
@@ -2629,17 +2647,17 @@ msgstr "lista obaveštenja ulasci"
 msgid "Flood Protection"
 msgstr "Koristi flood zaštitu"
 
-#: src/modules/options/OptionsWidget_notifier.cpp:38
 #: src/modules/options/OptionsWidget_input.cpp:38
 #: src/modules/options/OptionsWidget_theme.cpp:182
+#: src/modules/options/OptionsWidget_notifier.cpp:38
 #: src/modules/options/OptionsWidget_topicLabel.cpp:36
 msgid "Font"
 msgstr "Font"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:51
-#: src/modules/options/OptionsWidget_userList.cpp:52
 #: src/modules/options/OptionsWidget_windowList.cpp:85
 #: src/modules/options/OptionsWidget_windowList.cpp:244
+#: src/modules/options/OptionsWidget_ircView.cpp:51
+#: src/modules/options/OptionsWidget_userList.cpp:52
 #, fuzzy
 msgid "Font:"
 msgstr "Font"
@@ -2660,14 +2678,14 @@ msgstr ""
 msgid "Force language:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.h:64
 #: src/modules/options/OptionsWidget_userList.h:67
+#: src/modules/options/OptionsWidget_windowList.h:64
 #, fuzzy
 msgid "Foreground"
 msgstr "Boja ispisa"
 
-#: src/modules/options/OptionsWidget_notifier.cpp:40
 #: src/modules/options/OptionsWidget_input.cpp:40
+#: src/modules/options/OptionsWidget_notifier.cpp:40
 #: src/modules/options/OptionsWidget_topicLabel.cpp:37
 msgid "Foreground color"
 msgstr "Boja ispisa"
@@ -2682,14 +2700,14 @@ msgstr "Boja ispisa"
 msgid "Gender:"
 msgstr "Generalne opcije"
 
-#: src/modules/options/OptionsWidget_message.cpp:70
 #: src/modules/options/OptionsWidget_servers.cpp:257
+#: src/modules/options/OptionsWidget_message.cpp:70
+#: src/modules/options/OptionsWidget_identity.h:153
+#: src/modules/options/OptionsWidget_theme.h:33
 #: src/modules/options/OptionsWidget_dcc.h:46
 #: src/modules/options/OptionsWidget_dcc.h:89
-#: src/modules/options/OptionsWidget_irc.h:43
 #: src/modules/options/OptionsWidget_channel.h:52
-#: src/modules/options/OptionsWidget_theme.h:33
-#: src/modules/options/OptionsWidget_identity.h:153
+#: src/modules/options/OptionsWidget_irc.h:43
 #, fuzzy
 msgid "General"
 msgstr "Generalne opcije"
@@ -2732,7 +2750,7 @@ msgstr ""
 msgid "Guess save path from media type"
 msgstr "Smatrana vrsta medija"
 
-#: src/modules/options/OptionsWidget_logging.cpp:56
+#: src/modules/options/OptionsWidget_logging.cpp:63
 msgid "Gzip logs"
 msgstr ""
 
@@ -2808,10 +2826,10 @@ msgstr ""
 msgid "Horizontal Alignment:"
 msgstr ""
 
+#: src/modules/options/OptionsWidget_input.cpp:48
+#: src/modules/options/OptionsWidget_windowList.cpp:125
 #: src/modules/options/OptionsWidget_ircView.cpp:56
 #: src/modules/options/OptionsWidget_notifier.cpp:46
-#: src/modules/options/OptionsWidget_windowList.cpp:125
-#: src/modules/options/OptionsWidget_input.cpp:48
 #, fuzzy
 msgid "Horizontal align:"
 msgstr "Server X509 sertifikat"
@@ -2948,8 +2966,8 @@ msgstr "Indeks"
 msgid "Interface"
 msgstr "Adresa interfejsa (ili ime)"
 
-#: src/modules/options/OptionsWidget_channel.cpp:139
 #: src/modules/options/OptionsWidget_query.cpp:101
+#: src/modules/options/OptionsWidget_channel.cpp:139
 #, fuzzy
 msgid "Interval:"
 msgstr "Ident korisničko ime"
@@ -2964,8 +2982,8 @@ msgstr "Pogrešan ID tajmera"
 msgid "Invalid Profile Rule"
 msgstr "Pogrešan ID tajmera"
 
-#: src/modules/options/OptionsWidget_identity.cpp:657
 #: src/modules/options/OptionsWidget_servers.cpp:628
+#: src/modules/options/OptionsWidget_identity.cpp:657
 #, fuzzy
 msgid "Invisible (+i)"
 msgstr "i (nevidljivost)"
@@ -3033,11 +3051,11 @@ msgstr ""
 msgid "Languages:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_ircView.cpp:65
-#: src/modules/options/OptionsWidget_userList.cpp:142
-#: src/modules/options/OptionsWidget_notifier.cpp:55
-#: src/modules/options/OptionsWidget_windowList.cpp:134
 #: src/modules/options/OptionsWidget_input.cpp:57
+#: src/modules/options/OptionsWidget_windowList.cpp:134
+#: src/modules/options/OptionsWidget_ircView.cpp:65
+#: src/modules/options/OptionsWidget_notifier.cpp:55
+#: src/modules/options/OptionsWidget_userList.cpp:142
 msgid "Left"
 msgstr ""
 
@@ -3422,8 +3440,8 @@ msgid "NickServ Request Mask"
 msgstr "NickServ maska"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:243
-#: src/modules/options/OptionsWidget_identity.cpp:719
 #: src/modules/options/OptionsWidget_servers.cpp:331
+#: src/modules/options/OptionsWidget_identity.cpp:719
 msgid "Nickname"
 msgstr "Nadimak"
 
@@ -3442,10 +3460,10 @@ msgstr "Nadimak 1"
 msgid "Nickname alternatives"
 msgstr "Nadimak 4"
 
-#: src/modules/options/OptionsWidget_identity.cpp:304
-#: src/modules/options/OptionsWidget_identity.cpp:916
 #: src/modules/options/OptionsWidget_servers.cpp:161
 #: src/modules/options/OptionsWidget_servers.cpp:578
+#: src/modules/options/OptionsWidget_identity.cpp:304
+#: src/modules/options/OptionsWidget_identity.cpp:916
 msgid "Nickname:"
 msgstr "Nickname (nadimak):"
 
@@ -3467,11 +3485,11 @@ msgstr ""
 msgid "Normal"
 msgstr "Normalni mod"
 
-#: src/modules/options/OptionsWidget_userList.cpp:55
-#: src/modules/options/OptionsWidget_userList.cpp:127
 #: src/modules/options/OptionsWidget_windowList.cpp:89
 #: src/modules/options/OptionsWidget_windowList.cpp:120
 #: src/modules/options/OptionsWidget_windowList.cpp:246
+#: src/modules/options/OptionsWidget_userList.cpp:55
+#: src/modules/options/OptionsWidget_userList.cpp:127
 #, fuzzy
 msgid "Normal:"
 msgstr "Normalni mod"
@@ -3506,14 +3524,14 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:133
 #: src/modules/options/OptionsWidget_nickserv.cpp:154
+#: src/modules/options/OptionsWidget_servers.cpp:1005
 #: src/modules/options/OptionsWidget_identity.cpp:841
 #: src/modules/options/OptionsWidget_identity.cpp:956
-#: src/modules/options/OptionsWidget_servers.cpp:1005
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:160
 #: src/modules/options/OptionsWidget_identity.cpp:99
+#: src/modules/options/OptionsWidget_textEncoding.cpp:160
 msgid "Ok"
 msgstr "Ok"
 
@@ -3633,8 +3651,8 @@ msgstr "Izlazni bafer"
 msgid "Output identd messages to:"
 msgstr "poruka prekida"
 
-#: src/modules/options/OptionsWidget_ircOutput.cpp:43
 #: src/modules/options/OptionsWidget_connection.cpp:199
+#: src/modules/options/OptionsWidget_ircOutput.cpp:43
 #, fuzzy
 msgid "Output verbosity"
 msgstr "Izlazni bafer"
@@ -3693,8 +3711,8 @@ msgstr "Kanal"
 msgid "Paste last query log"
 msgstr "Kanal"
 
-#: src/modules/options/OptionsWidget_channel.cpp:135
 #: src/modules/options/OptionsWidget_query.cpp:97
+#: src/modules/options/OptionsWidget_channel.cpp:135
 #, fuzzy
 msgid "Paste up to:"
 msgstr "Prenesi iznad"
@@ -3797,14 +3815,14 @@ msgstr ""
 msgid "Private key password:"
 msgstr "Lozinka:"
 
-#: src/modules/options/OptionsWidget_antiSpam.cpp:40
 #: src/modules/options/OptionsWidget_query.cpp:43
+#: src/modules/options/OptionsWidget_antiSpam.cpp:40
 #, fuzzy
 msgid "Private messages"
 msgstr "lična privatna poruka"
 
-#: src/modules/options/OptionsWidget_antiSpam.cpp:42
 #: src/modules/options/OptionsWidget_query.cpp:50
+#: src/modules/options/OptionsWidget_antiSpam.cpp:42
 #, fuzzy
 msgid "Private notices"
 msgstr "obaveštenje servera"
@@ -3961,9 +3979,9 @@ msgstr "Ukloni proksi"
 msgid "Re&move Server"
 msgstr "Ukloni server"
 
-#: src/modules/options/OptionsWidget_identity.cpp:324
 #: src/modules/options/OptionsWidget_servers.cpp:187
 #: src/modules/options/OptionsWidget_servers.cpp:604
+#: src/modules/options/OptionsWidget_identity.cpp:324
 #, fuzzy
 msgid "Real name:"
 msgstr "Stvarno ime"
@@ -4058,11 +4076,11 @@ msgstr "&Obnovi"
 msgid "Restrict alert"
 msgstr "&Obnovi"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:66
-#: src/modules/options/OptionsWidget_userList.cpp:143
-#: src/modules/options/OptionsWidget_notifier.cpp:56
-#: src/modules/options/OptionsWidget_windowList.cpp:135
 #: src/modules/options/OptionsWidget_input.cpp:58
+#: src/modules/options/OptionsWidget_windowList.cpp:135
+#: src/modules/options/OptionsWidget_ircView.cpp:66
+#: src/modules/options/OptionsWidget_notifier.cpp:56
+#: src/modules/options/OptionsWidget_userList.cpp:143
 msgid "Right"
 msgstr ""
 
@@ -4138,10 +4156,10 @@ msgstr "Opis"
 msgid "Select message levels to notify"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_userList.cpp:56
-#: src/modules/options/OptionsWidget_userList.cpp:128
 #: src/modules/options/OptionsWidget_windowList.cpp:90
 #: src/modules/options/OptionsWidget_windowList.cpp:121
+#: src/modules/options/OptionsWidget_userList.cpp:56
+#: src/modules/options/OptionsWidget_userList.cpp:128
 #, fuzzy
 msgid "Selected:"
 msgstr "Sačuvaj selektovano"
@@ -4200,8 +4218,8 @@ msgstr "Server"
 msgid "Server notices"
 msgstr "obaveštenje servera"
 
-#: src/modules/options/OptionsWidget_identity.cpp:658
 #: src/modules/options/OptionsWidget_servers.cpp:632
+#: src/modules/options/OptionsWidget_identity.cpp:658
 #, fuzzy
 msgid "Server notices (+s)"
 msgstr "s (Obaveštenja servera)"
@@ -4406,12 +4424,12 @@ msgstr "Muzički uređaj"
 msgid "Sounds"
 msgstr "Pošalji"
 
-#: src/modules/options/OptionsWidget_logging.cpp:48
+#: src/modules/options/OptionsWidget_logging.cpp:55
 #, fuzzy
 msgid "Strip colors in logs"
 msgstr "uske boje"
 
-#: src/modules/options/OptionsWidget_logging.cpp:47
+#: src/modules/options/OptionsWidget_logging.cpp:54
 msgid "Strip message type numbers in logs"
 msgstr ""
 
@@ -4660,16 +4678,16 @@ msgstr ""
 "Ova tabla sadrži asocijacije teks\bt ikona.<br>KVIrc će ih koristiti za "
 "prikazivanja CTRL+I pomoćne sekvence i eventualno za emocije."
 
-#: src/modules/options/OptionsWidget_ircView.cpp:64
-#: src/modules/options/OptionsWidget_ircView.cpp:69
-#: src/modules/options/OptionsWidget_userList.cpp:141
-#: src/modules/options/OptionsWidget_userList.cpp:146
-#: src/modules/options/OptionsWidget_notifier.cpp:54
-#: src/modules/options/OptionsWidget_notifier.cpp:59
-#: src/modules/options/OptionsWidget_windowList.cpp:133
-#: src/modules/options/OptionsWidget_windowList.cpp:138
 #: src/modules/options/OptionsWidget_input.cpp:56
 #: src/modules/options/OptionsWidget_input.cpp:61
+#: src/modules/options/OptionsWidget_windowList.cpp:133
+#: src/modules/options/OptionsWidget_windowList.cpp:138
+#: src/modules/options/OptionsWidget_ircView.cpp:64
+#: src/modules/options/OptionsWidget_ircView.cpp:69
+#: src/modules/options/OptionsWidget_notifier.cpp:54
+#: src/modules/options/OptionsWidget_notifier.cpp:59
+#: src/modules/options/OptionsWidget_userList.cpp:141
+#: src/modules/options/OptionsWidget_userList.cpp:146
 #, fuzzy
 msgid "Tile"
 msgstr "&Parče"
@@ -4707,11 +4725,11 @@ msgstr "&Alati"
 msgid "Tools"
 msgstr "&Alati"
 
-#: src/modules/options/OptionsWidget_ircView.cpp:70
-#: src/modules/options/OptionsWidget_userList.cpp:147
-#: src/modules/options/OptionsWidget_notifier.cpp:60
-#: src/modules/options/OptionsWidget_windowList.cpp:139
 #: src/modules/options/OptionsWidget_input.cpp:62
+#: src/modules/options/OptionsWidget_windowList.cpp:139
+#: src/modules/options/OptionsWidget_ircView.cpp:70
+#: src/modules/options/OptionsWidget_notifier.cpp:60
+#: src/modules/options/OptionsWidget_userList.cpp:147
 #, fuzzy
 msgid "Top"
 msgstr "Naslov"
@@ -4806,10 +4824,10 @@ msgstr "Koristi \"inteligentan\" upravljač liste obaveštenja"
 msgid "Use IPv6 protocol"
 msgstr "Koristi IpV6 protokol"
 
-#: src/modules/options/OptionsWidget_textEncoding.cpp:50
-#: src/modules/options/OptionsWidget_textEncoding.cpp:58
 #: src/modules/options/OptionsWidget_sound.cpp:101
 #: src/modules/options/OptionsWidget_sound.cpp:125
+#: src/modules/options/OptionsWidget_textEncoding.cpp:50
+#: src/modules/options/OptionsWidget_textEncoding.cpp:58
 #, fuzzy
 msgid "Use Language Encoding"
 msgstr "Koristi mašinu za šifrovanje"
@@ -4990,8 +5008,8 @@ msgstr ""
 msgid "Use zsh-like nick completion"
 msgstr "akcija izbacivanja"
 
-#: src/modules/options/OptionsWidget_identity.cpp:656
 #: src/modules/options/OptionsWidget_servers.cpp:617
+#: src/modules/options/OptionsWidget_identity.cpp:656
 #, fuzzy
 msgid "User Mode"
 msgstr "&Mod korisnika"
@@ -5018,10 +5036,10 @@ msgstr "Lista korisnika"
 msgid "Username"
 msgstr "Korisničko ime"
 
-#: src/modules/options/OptionsWidget_identity.cpp:317
-#: src/modules/options/OptionsWidget_identity.cpp:932
 #: src/modules/options/OptionsWidget_servers.cpp:141
 #: src/modules/options/OptionsWidget_servers.cpp:557
+#: src/modules/options/OptionsWidget_identity.cpp:317
+#: src/modules/options/OptionsWidget_identity.cpp:932
 #: src/modules/options/OptionsWidget_proxy.cpp:118
 msgid "Username:"
 msgstr "Korisnik:"
@@ -5043,10 +5061,10 @@ msgstr ""
 msgid "Vertical Alignment:"
 msgstr "Server X509 sertifikat"
 
+#: src/modules/options/OptionsWidget_input.cpp:52
+#: src/modules/options/OptionsWidget_windowList.cpp:129
 #: src/modules/options/OptionsWidget_ircView.cpp:60
 #: src/modules/options/OptionsWidget_notifier.cpp:50
-#: src/modules/options/OptionsWidget_windowList.cpp:129
-#: src/modules/options/OptionsWidget_input.cpp:52
 #, fuzzy
 msgid "Vertical align:"
 msgstr "Server X509 sertifikat"
@@ -5066,8 +5084,8 @@ msgstr "Naslov"
 msgid "Volume slider controls PCM, not Master"
 msgstr "Klizač jačine tona kontroliše PCM, ne glavnu jačinu"
 
-#: src/modules/options/OptionsWidget_identity.cpp:659
 #: src/modules/options/OptionsWidget_servers.cpp:636
+#: src/modules/options/OptionsWidget_identity.cpp:659
 #, fuzzy
 msgid "Wallops (+w)"
 msgstr "w (Wallops)"
@@ -5259,8 +5277,8 @@ msgstr ""
 msgid "theme,colors,output"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_input.h:34
 #: src/modules/options/OptionsWidget_notifier.h:34
+#: src/modules/options/OptionsWidget_input.h:34
 msgid "theme,colors,text"
 msgstr ""
 
