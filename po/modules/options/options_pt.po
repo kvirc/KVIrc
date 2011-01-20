@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-20 16:46+0100\n"
-"PO-Revision-Date: 2011-01-16 02:43+0000\n"
+"PO-Revision-Date: 2011-01-20 23:53+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt\n"
@@ -917,12 +917,13 @@ msgstr ""
 "ficheiro para o ficheiro de imagem para o utilizador em questão.</center>"
 
 #: src/modules/options/OptionsWidget_logging.cpp:47
-#, fuzzy
 msgid ""
 "<center>This is the base log directory:<br>all the log files will be saved "
 "inside this directory</center>"
 msgstr ""
-"<center>Este é o nome do servidor ou rede actualmente seleccionado.</center>"
+"<center>Este é o directório base de registos:<br>todos os ficheiros de "
+"registo "
+"serão gravados neste directório</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:663
 msgid ""
@@ -1223,11 +1224,11 @@ msgid ""
 "automated activity causes the indicator to be shaded blue.</center>"
 msgstr ""
 "<center>Esta opção permite o uso do medidor de actividade de lista da "
-"janela. Cada entrada de janela terá um pequeno indicador da actividade que "
-"está haver nessa janela. O indicador é um pequeno quadrado que muda as "
-"cores, cores escuras indicam baixa actividade, enquanto cores brilhantes "
+"janela. Cada entrada da janela terá um pequeno indicador da actividade que "
+"está a haver nessa janela. O indicador é um pequeno quadrado que muda de "
+"cor, as cores escuras indicam baixa actividade, enquanto as cores brilhantes "
 "indicam grande actividade. O KVirc também usa algumas heurísticas para "
-"determinar se a actividade é de alguma maneira \"humana\" ou é gerada por "
+"determinar se a actividade é de algum modo \"humana\" ou é gerada por "
 "entidades automatizadas (tais como bots ou servidores IRC). A actividade "
 "\"humana\" faz com que o indicador seja sombreado a vermelho enquanto as "
 "actividades automatizadas fazem com que o indicador seja sombreado a azul.</"
@@ -1678,6 +1679,9 @@ msgid ""
 "<center>You can specify a subdirectory where log files will be saved:use kvs "
 "code to create dynamic subfolders.</center>"
 msgstr ""
+"<center>Pode especificar um sub-directório onde os ficheiros de registo serão "
+"gravados: "
+"use o código kvs para criar sub-directórios dinâmicos.</center>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:306
 msgid ""
@@ -2206,7 +2210,7 @@ msgstr "Escolher..."
 
 #: src/modules/options/OptionsWidget_windowList.h:112
 msgid "Classic Window List"
-msgstr "Lista de Janela Clássica"
+msgstr "Lista Clássica da Janela"
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:62
 msgid "Classic format"
@@ -2480,9 +2484,8 @@ msgid "Draw some emoticons (smileys) as pictures"
 msgstr "Desenhar algumas emoções (sorrisos) como imagens"
 
 #: src/modules/options/OptionsWidget_logging.cpp:50
-#, fuzzy
 msgid "Dynamic subfolder:"
-msgstr "Pasta de Transferências:"
+msgstr "Sub-directório dinâmico:"
 
 #: src/modules/options/OptionsWidget_channel.cpp:129
 msgid "Echo channel topic"
@@ -4416,11 +4419,13 @@ msgid ""
 "this option will make all the /notifier.* commands fail silently."
 msgstr ""
 "Esta é uma opção para o impaciente: permite forçosamente e permanentemente "
-"desactivar a janela de notificação. Por favor note que se esta opção não "
-"estiver activada, então o notificador NÃO irá ser mostrado, mesmo se todas "
-"as outras opções sobre como especificar para o usar como resposta para "
-"eventos particulares. Note também que esta opção irá fazer com que todos os "
-"comandos /notifier.* falhem silenciosamente."
+"desactivar a janela de notificação. Note que se esta opção não estiver "
+"activada "
+"o notificador NÃO será mostrado, mesmo que todas as outras opções sobre como "
+"especificar para o usar em resposta para eventos particulares. Note também "
+"que "
+"esta opção irá fazer com que todos os comandos /notifier.* falhem "
+"silenciosamente."
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:94
 msgid ""
@@ -4506,9 +4511,9 @@ msgid ""
 "is cool if you want to better integrate KVIrc inside KDE. Note that KDE's "
 "notifier isn't flexible and \"tabbed\" like KVIrc's"
 msgstr ""
-"Esta opção usa sistema de notificação do KDE em vez o do KVIrc.<br>Isto é "
+"Esta opção usa o sistema de notificação do KDE em vez o do KVIrc.<br>Isto é "
 "bom se quiser integrar melhor o KVIrc dentro KDE. Note que o notificador do "
-"KDE não é flexivel e não tem separadores como o do KVIrc."
+"KDE não é flexível e não tem separadores como o do KVIrc."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:107
 msgid ""
@@ -4525,8 +4530,8 @@ msgid ""
 "This option will force a static font for every widget that has no specific "
 "font setting"
 msgstr ""
-"Esta opção irá forçar uma letra estática para todos os elementos que não "
-"tenham um tipo de letra definido"
+"Esta opção irá forçar um tipo de letra estático para todos os elementos "
+"que não tenham um tipo de letra definido"
 
 #: src/modules/options/OptionsWidget_tools.cpp:39
 msgid ""
@@ -4571,7 +4576,7 @@ msgstr "Valores do Intervalo de Tempo"
 
 #: src/modules/options/OptionsWidget_message.h:76
 msgid "Timestamp"
-msgstr "Marcação horária"
+msgstr "Marca horária"
 
 #: src/modules/options/OptionsWidget_message.cpp:150
 msgid "Timestamp format:"
@@ -4587,7 +4592,7 @@ msgstr "Cor de Primeiro Plano do Título"
 
 #: src/modules/options/OptionsWidget_theme.h:87
 msgid "ToolBar Applets"
-msgstr "Barra de Componentes"
+msgstr "Barra de Extras"
 
 #: src/modules/options/OptionsWidget_tools.h:33
 msgid "Tools"
@@ -4625,7 +4630,7 @@ msgstr "Ícone da barra de tarefas"
 
 #: src/modules/options/OptionsWidget_windowList.h:48
 msgid "Tree Window List"
-msgstr "Lista de Janela em Árvore"
+msgstr "Lista em Árvore da Janela"
 
 #: src/modules/options/OptionsWidget_lag.cpp:55
 msgid "Trigger event if lag exceeds:"
@@ -4653,7 +4658,7 @@ msgstr "Não é possível escrever informação da língua para"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:77
 msgid "Unknown protocol handler command:"
-msgstr "Comando de manipulador de protocolo desconhecido:"
+msgstr "Comando de manipulador do protocolo desconhecido:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1666
 msgid "UnknownNet"
@@ -4816,7 +4821,7 @@ msgstr "Usar a o texto de completação de sufixo apenas para a primeira palavra
 
 #: src/modules/options/OptionsWidget_windowList.cpp:39
 msgid "Use tree window list"
-msgstr "Usar lista de janela em árvore"
+msgstr "Usar lista em árvore"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:74
 msgid "Use user-defined address or network interface"
@@ -4904,7 +4909,7 @@ msgstr "Voz:"
 
 #: src/modules/options/OptionsWidget_dcc.cpp:355
 msgid "Volume slider controls PCM, not Master"
-msgstr "Controlos de volume PCM, não Master"
+msgstr "Controlos de volume PCM, não 'Master'"
 
 #: src/modules/options/OptionsWidget_servers.cpp:636
 #: src/modules/options/OptionsWidget_identity.cpp:659
@@ -4913,7 +4918,7 @@ msgstr "Wallops (+w)"
 
 #: src/modules/options/OptionsWidget_input.cpp:143
 msgid "Warp cursor at the end of line when browsing history"
-msgstr "Mover cursor para o final da linha quando navegar pelo histórico"
+msgstr "Mover cursor para final da linha ao navegar pelo histórico"
 
 #: src/modules/options/dialog.cpp:132
 msgid ""
@@ -4921,9 +4926,10 @@ msgid ""
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
 "your changes without closing the window."
 msgstr ""
-"Quando tiver terminado, clique em \"<b>OK</b>\" para aceitar as suas "
-"alterações ou clique em \"<b>Cancelar</b>\" para as rejeitar. Ao clicar em "
-"\"<b>Aplicar</b>\" irá aplicar as suas alterações sem fechar a janela."
+"Quando terminar, clique em \"<b>OK</b>\" para aceitar as suas alterações "
+"ou clique em \"<b>Cancelar</b>\" para as rejeitar. Ao clicar em \"<b>Aplicar<"
+"/b>\" "
+"aplicará as suas alterações sem fechar a janela."
 
 #: src/modules/options/OptionsWidget_ircOutput.cpp:72
 msgid "Whois replies"
@@ -4935,11 +4941,11 @@ msgstr "Codificação de mensagens winamp"
 
 #: src/modules/options/OptionsWidget_windowList.h:34
 msgid "Window List"
-msgstr "Lista de Janela"
+msgstr "Lista da Janela"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.h:68
 msgid "Window List Alert"
-msgstr "Alerta da Lista de Janela"
+msgstr "Alerta de Lista da Janela"
 
 #: src/modules/options/OptionsWidget_antiSpam.cpp:46
 msgid "Words considered spam:"
@@ -4995,7 +5001,7 @@ msgstr "[PREFIXO]alcunha[!utilizador@endereço][SUFIXO] mensagem"
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:183
 msgid "[Unknown Media Type]"
-msgstr "[Tipo de Média Desconhecida}"
+msgstr "[Tipo de Média Desconhecido]"
 
 #: src/modules/options/OptionsWidget_nickserv.h:43
 msgid "authentication,identify"
@@ -5146,7 +5152,7 @@ msgstr "hora,marcação horária"
 
 #: src/modules/options/OptionsWidget_tray.h:34
 msgid "tray,TRAYICON"
-msgstr "tray,TRAYICON"
+msgstr "tray,TRAYICON,bandeja"
 
 #: src/modules/options/OptionsWidget_textIcons.cpp:226
 msgid "unnamed"
