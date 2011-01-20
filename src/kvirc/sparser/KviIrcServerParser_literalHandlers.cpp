@@ -1735,7 +1735,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 		szNickBuffer = QString("\r!n\r%1\r").arg(szNick);
 		szHostBuffer = QString("\r!h\r%1\r").arg(szHost);
 	} else {
-		if(szNickBuffer.indexOf('.') != -1)
+		if(szNick.indexOf('.') != -1)
 		{
 			// This looks a lot like a server!
 			szNickBuffer = QString("\r!s\r%1\r").arg(szNick);
