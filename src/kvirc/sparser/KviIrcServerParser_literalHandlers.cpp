@@ -1741,7 +1741,7 @@ void KviIrcServerParser::parseChannelMode(const QString &szNick,const QString &s
 			szNickBuffer = QString("\r!s\r%1\r").arg(szNick);
 		} else {
 			// Probably a service....whois should work
-			szHostBuffer = QString("\r!n\r%1\r").arg(szNick);
+			szNickBuffer = QString("\r!n\r%1\r").arg(szNick);
 		}
 		szHostBuffer = szHost;
 	}
