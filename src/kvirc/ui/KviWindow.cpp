@@ -687,7 +687,6 @@ void KviWindow::createSystemTextEncodingPopup()
 		g_pMdiWindowSystemTextEncodingPopupSmart = new KviTalPopupMenu();
 		g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = new KviTalPopupMenu();
 		g_pMdiWindowSystemTextEncodingActionGroup = new QActionGroup(g_pMdiWindowSystemTextEncodingPopup);
-		connect(g_pMdiWindowSystemTextEncodingActionGroup,SIGNAL(triggered(QAction*)),this,SLOT(systemTextEncodingPopupActivated(QAction*)));
 
 		//default action
 		QTextCodec * pCodec = defaultTextCodec();
@@ -808,6 +807,10 @@ void KviWindow::createSystemTextEncodingPopup()
 			}
 		}
 	}
+
+	disconnect(g_pMdiWindowSystemTextEncodingActionGroup,SIGNAL(triggered(QAction*)),NULL,NULL);
+	connect(g_pMdiWindowSystemTextEncodingActionGroup,SIGNAL(triggered(QAction*)),this,SLOT(systemTextEncodingPopupActivated(QAction*)));
+
 }
 
 void KviWindow::systemTextEncodingPopupActivated(QAction * pAction)
