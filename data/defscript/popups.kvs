@@ -1203,7 +1203,7 @@ defpopup(logging)
 
 	label($tr("Not Logging","defscript")) (!%:logfile)
 
-	item($tr("Log To Default File,"defscript""),119) (!%:logfile)
+	item($tr("Log To Default File","defscript"),119) (!%:logfile)
 	{
 		log.start
 	}

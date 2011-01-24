@@ -1011,7 +1011,7 @@ msgid ""
 "<br><br>The default settings are fine for most users so if you're in doubt "
 "just click \"<b>Next</b>\" and go to the next screen.</p>"
 msgstr ""
-"<p>Aquí puedes elegir qué nivel de integración tendra KVirc con tu sistema."
+"<p>Aquí puedes elegir qué nivel de integración tendrá KVIrc con tu sistema."
 "<br><br>La configuración por defecto es correcta para la mayoría de usuarios "
 "así que, ante la duda, simplemente haz clic en \"<b>Siguiente</b>\" para "
 "pasar a la siguiente pantalla.</p>"
@@ -1057,7 +1057,7 @@ msgid ""
 "A folder %1 seems to be not a valid KVIrc settings folder.Do you want to use "
 "it anyway?"
 msgstr ""
-"La carpeta %1 parece no ser una carpeta de configuración de KVirc válida. "
+"El directorio %1 parece no ser un directorio de configuración de KVIrc válido. "
 "¿Quieres usarla de todos modos?"
 
 #: src/modules/lamerizer/libkvilamerizer.cpp:218
@@ -1104,7 +1104,7 @@ msgstr "Capturar pantalla"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:360
 msgid "Acquires a Screenshot of the KVIrc main window"
-msgstr "Captura una imágen de la ventana principal de KVirc"
+msgstr "Captura una imagen de la ventana principal de KVIrc"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:401
 msgid "Actions"
@@ -1190,7 +1190,7 @@ msgstr "Todas las redes"
 
 #: src/modules/setup/SetupWizard.cpp:296
 msgid "All settings in shared program folder (portable)"
-msgstr "Toda la configuración en la carpeta del programa (portable)"
+msgstr "Toda la configuración en el directorio del programa (portable)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:352
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:399
@@ -2760,7 +2760,7 @@ msgstr "No molestar... estoy viendo la tele"
 
 #: src/modules/setup/SetupWizard.cpp:756
 msgid "Do not overwrite folder? - KVIrc"
-msgstr "¿No sobreescribir carpeta? - KVirc"
+msgstr "¿No sobreescribir directorio? - KVIrc"
 
 #: src/kvirc/ui/KviStatusBarApplet.cpp:814
 msgid "Double click to check"
@@ -3953,11 +3953,11 @@ msgstr "Toy vegetando"
 
 #: src/kvirc/kernel/KviApplication_setup.cpp:537
 msgid "KVIrc Addon Package"
-msgstr "Paquete de añadido de KVirc"
+msgstr "Paquete de añadido de KVIrc"
 
 #: src/kvirc/kernel/KviApplication_setup.cpp:499
 msgid "KVIrc Configuration File"
-msgstr "Fichero de configuración de KVirc"
+msgstr "Fichero de configuración de KVIrc"
 
 #: src/kvirc/ui/KviMenuBar.cpp:127
 msgid "KVIrc French Home&page"
@@ -3970,15 +3970,15 @@ msgstr "&Web de KVIrc"
 #: src/kvirc/kernel/KviApplication_setup.cpp:155
 #: src/kvirc/kernel/KviApplication_setup.cpp:476
 msgid "KVIrc KVS Script"
-msgstr "Script KVS de KVirc"
+msgstr "Script KVS de KVIrc"
 
 #: src/kvirc/ui/KviMenuBar.cpp:122
 msgid "KVIrc Russian Home&page"
-msgstr "&Pagina de KVIrc en ruso"
+msgstr "&Sitio web de KVIrc en ruso"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:348
 msgid "KVIrc Russian WWW"
-msgstr "&WWW de KVirc en ruso"
+msgstr "Web de KVIrc en ruso"
 
 #: src/modules/setup/SetupWizard.cpp:139
 msgid "KVIrc Setup"
@@ -3986,18 +3986,18 @@ msgstr "Configuración de KVIrc"
 
 #: src/kvirc/kernel/KviApplication_setup.cpp:514
 msgid "KVIrc Theme Package"
-msgstr "Paquete de tema visual de KVirc"
+msgstr "Paquete de tema visual de KVIrc"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:337
 msgid "KVIrc WWW"
-msgstr "KVIrc WWW"
+msgstr "Web de KVIrc"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:424
 msgid ""
 "KVIrc can accept only irc://, irc6://, ircs:// or irc6s:// URL's\n"
 "Your URL is invalid. Check spelling and try again"
 msgstr ""
-"KVirc sólo acepta URLs irc://, irc6://, ircs:// o irc6s://\n"
+"KVIrc sólo acepta URLs irc://, irc6://, ircs:// o irc6s://\n"
 "Tu URL no es válida. Compruébala y vuelve a intentarlo"
 
 #: src/modules/file/libkvifile.cpp:1517
@@ -4255,7 +4255,7 @@ msgstr "Establecida conexión de transporte de bajo nivel [%s (%s:%u)]"
 
 #: src/modules/setup/SetupWizard.cpp:505
 msgid "Make KVIrc default IRC client"
-msgstr "Hacer KVirc el cliente IRC por defecto"
+msgstr "Hacer de KVIrc el cliente IRC por defecto"
 
 #: src/modules/setup/SetupWizard.cpp:392
 #: src/kvirc/ui/KviConsoleWindow.cpp:299
@@ -4280,7 +4280,7 @@ msgstr "Máscara"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:75
 msgid "Mask editor - KVirc"
-msgstr "Editor de máscaras - KVirc"
+msgstr "Editor de máscaras - KVIrc"
 
 #: src/modules/links/LinksWindow.cpp:295
 #, c-format
@@ -5064,7 +5064,7 @@ msgstr "Se esperaba paréntesis de apertura"
 #: src/kvirc/kernel/KviApplication_setup.cpp:382
 #: src/kvirc/kernel/KviApplication_setup.cpp:446
 msgid "Open with KVIrc"
-msgstr "Abrir con KVirc"
+msgstr "Abrir con KVIrc"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:338
 msgid "Opens the KVIrc homepage"
@@ -6106,7 +6106,7 @@ msgstr "Nombre del servidor resuelto a: %Q"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:1269
 msgid "Server idle for"
-msgstr "Servidor esperando durante"
+msgstr "El servidor lleva inactivo"
 
 #: src/kvirc/kernel/KviOptions.cpp:745
 msgid "Server information"
@@ -6741,7 +6741,7 @@ msgstr "El archivo %1 ya existe.<br>¿Sobreescribirlo?"
 
 #: src/kvilib/file/KviPackageReader.cpp:63
 msgid "The file specified is not a valid KVIrc package"
-msgstr "El fichero especificado no es un paquete KVirc válido"
+msgstr "El fichero especificado no es un paquete KVIrc válido"
 
 #: src/kvirc/sparser/KviIrcServerParser_ctcp.cpp:1493
 msgid "The following CTCP ACTION has unrecognized target %Q"
@@ -6808,7 +6808,7 @@ msgid ""
 "newer KVIrc"
 msgstr ""
 "El paquete tiene un número de versión no válido, puede que haya sido creado "
-"con un KVirc más moderno"
+"con una versión KVIrc más actual"
 
 #: src/modules/system/Plugin.cpp:321
 msgid ""
@@ -7585,7 +7585,7 @@ msgstr "Usar nuevo directorio de configuración"
 
 #: src/modules/setup/SetupWizard.cpp:232
 msgid "Use settings folder from previous installation"
-msgstr "Usar carpeta de configuración de una instalación previa"
+msgstr "Usar directorio de configuración de una instalación anterior"
 
 #: src/kvirc/ui/KviCryptController.cpp:85
 msgid "Use the crypt engine"
@@ -7792,7 +7792,7 @@ msgstr "Podemos aceptar el método auth 0 (sin auth) o 2 (usuario/clave)"
 
 #: src/modules/setup/SetupWizard.cpp:172
 msgid "Welcome to KVIrc"
-msgstr "Bienvenido a KVirc"
+msgstr "Bienvenido a KVIrc"
 
 #: src/kvilib/ext/avdevice/videodevice.cpp:3063
 msgid "White Balance Temperature"
@@ -7945,7 +7945,7 @@ msgid ""
 "You have chosen to abort the setup.<br>KVIrc cannot run until you complete "
 "this procedure.<br><br>Do you really wish to abort?"
 msgstr ""
-"Has elegido abortar la instalación.<br>KVirc no puede funcionar hasta que no "
+"Has elegido abortar la instalación.<br>KVIrc no puede funcionar hasta que no "
 "completes este procedimiento.<br><br>¿De verdad quieres abortar?"
 
 #: src/kvirc/ui/KviConsoleWindow.cpp:488
@@ -8376,11 +8376,11 @@ msgstr "hexadecimal"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:939
 msgid "hot user"
-msgstr "usuario activo"
+msgstr "usuario muy activo"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:939
 msgid "hot users"
-msgstr "usuarios activos"
+msgstr "usuarios muy activos"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1096
 msgid "human"
@@ -8581,7 +8581,7 @@ msgstr "entrada de la lista de vigilancia no coincidente"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1041
 msgid "user total"
-msgstr "usuario total"
+msgstr "usuario en total"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1032
 msgid "user-operator"
@@ -8593,7 +8593,7 @@ msgstr "userops"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1041
 msgid "users total"
-msgstr "usuarios totales"
+msgstr "usuarios en total"
 
 #: src/kvirc/ui/KviChannelWindow.cpp:1021
 msgid "voiced user"
@@ -8635,6 +8635,3 @@ msgstr "y: Espía :)"
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:298
 msgid "z: Recipient for oper wallop messages"
 msgstr "z: Destinatario de mensajes oper wallop"
-
-#~ msgid "%Q algorytm is not supported"
-#~ msgstr "El algoritmo %Q no está soportado"
