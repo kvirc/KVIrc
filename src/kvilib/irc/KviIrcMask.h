@@ -89,21 +89,21 @@ public:
 	*/
 	enum MaskType
 	{
-		NickUserHost = 0,           /**<  0 : nick!~user@machine.host.top (default) */
+		NickUserHost = 0,           /**<  0 : nick!~user\@machine.host.top (default) */
 		NickUserNet = 1,            /**<  1 : nick!~user@*.abc.host.top */
 		NickUser = 2,               /**<  2 : nick!~user@* */
-		NickHost = 3,               /**<  3 : nick!*@machine.host.top */
+		NickHost = 3,               /**<  3 : nick!*\@machine.host.top */
 		NickNet = 4,                /**<  4 : nick!*@*.abc.host.top */
 		Nick = 5,                   /**<  5 : nick!*@* */
-		UserHost = 6,               /**<  6 : *!~user@machine.host.top */
+		UserHost = 6,               /**<  6 : *!~user\@machine.host.top */
 		UserNet = 7,                /**<  7 : *!~user@*.abc.host.top */
 		User = 8,                   /**<  8 : *!~user@* */
-		Host = 9,                   /**<  9 : *!*@machine.host.top */
+		Host = 9,                   /**<  9 : *!*\@machine.host.top */
 		Net = 10,                   /**< 10 : *!*@*.abc.host.top */
-		NickCleanUserHost = 11,     /**< 11 : nick!*user@machine.host.top */
+		NickCleanUserHost = 11,     /**< 11 : nick!*user\@machine.host.top */
 		NickCleanUserNet = 12,      /**< 12 : nick!*user@*.abc.host.top */
 		NickCleanUser = 13,         /**< 13 : nick!*user@* */
-		CleanUserHost = 14,         /**< 14 : *!*user@machine.host.top */
+		CleanUserHost = 14,         /**< 14 : *!*user\@machine.host.top */
 		CleanUserNet = 15,          /**< 15 : *!*user@*.abc.host.top */
 		CleanUser = 16,             /**< 16 : *!*user@* */
 		NickUserLargeNet = 17,      /**< 17 : nick!~user@*.host.top */
@@ -204,35 +204,37 @@ public:
 	* information than requested.
 	* 
 	* Mask types:
-	*  0: nick!user@machine.host.top  (nick!user@XXX.XXX.XXX.XXX) (default)
-	*  1: nick!user@*.host.top        (nick!user@XXX.XXX.XXX.*)
+	*  0: nick!user@\machine.host.top  (nick!user@\XXX.XXX.XXX.XXX) (default)
+	*  1: nick!user@*.host.top        (nick!user@\XXX.XXX.XXX.*)
 	*  2: nick!user@*
-	*  3: nick!*@machine.host.top     (nick!user@XXX.XXX.XXX.XXX)
-	*  4: nick!*@*.host.top           (nick!user@XXX.XXX.XXX.*)
+	*  3: nick!*@\machine.host.top     (nick!user@\XXX.XXX.XXX.XXX)
+	*  4: nick!*@*.host.top           (nick!user@\XXX.XXX.XXX.*)
 	*  5: nick!*@*
-	*  6: *!user@machine.host.top     (*!user@XXX.XXX.XXX.XX)
-	*  7: *!user@*.host.top           (*!user@XXX.XXX.XXX.*)
+	*  6: *!user@\machine.host.top     (*!user@\XXX.XXX.XXX.XX)
+	*  7: *!user@*.host.top           (*!user@\XXX.XXX.XXX.*)
 	*  8: *!user@*
-	*  9: *!*@machine.host.top        (*!*@XXX.XXX.XXX.XXX)
-	* 10: *!*@*.host.top              (*!*@XXX.XXX.XXX.*)
-	* 11: nick!*user@machine.host.top (nick!*user@machine.host.top)
+	*  9: *!*@\machine.host.top        (*!*@\XXX.XXX.XXX.XXX)
+	* 10: *!*@*.host.top              (*!*@\XXX.XXX.XXX.*)
+	* 11: nick!*user@\machine.host.top (nick!*user@\machine.host.top)
 	* 12: nick!*user@*.host.top       (nick!*user@*.host.top)
 	* 13: nick!*user@*
-	* 14: *!*user@machine.host.top    (*!*user@machine.host.top)
+	* 14: *!*user@\machine.host.top    (*!*user@\machine.host.top)
 	* 15: *!*user@*.host.top          (*!*user@*.host.top)
 	* 16: *!*user@*
-	* 17: nick!~user@*.host.top       (nick!~user@XXX.XXX.*)
-	* 18: nick!*@*.host.top          (nick!*@XXX.XXX.*)
-	* 19: *!~user@*.host.top          (*!~user@XXX.XXX.*)
-	* 20: nick!*user@*.host.top          (nick!*user@XXX.XXX.*)
+	* 17: nick!~user@*.host.top       (nick!~user@\XXX.XXX.*)
+	* 18: nick!*@*.host.top           (nick!*@\XXX.XXX.*)
+	* 19: *!~user@*.host.top          (*!~user@\XXX.XXX.*)
+	* 20: nick!*user@*.host.top       (nick!*user@\XXX.XXX.*)
 	* 21: *!*user@*.host.top          (*!user@*XXX.XXX.*)
-	* smart versions of the masks 17-21 that try take care of masked ip addresses
+	* 
+	* Smart versions of the masks 17-21 that try take care of masked ip addresses
 	* in the form xxx.xxx.INVALID-TOP-MASK
-	* 22: nick!~user@*.host.top       (nick!~user@XXX.XXX.*)
-	* 23: nick!*@*.host.top          (nick!*@XXX.XXX.*)
-	* 24: *!~user@*.host.top          (*!~user@XXX.XXX.*)
-	* 25: nick!*user@*.host.top          (nick!*user@XXX.XXX.*)
+	* 22: nick!~user@*.host.top       (nick!~user@\XXX.XXX.*)
+	* 23: nick!*@*.host.top          (nick!*@\XXX.XXX.*)
+	* 24: *!~user@*.host.top          (*!~user@\XXX.XXX.*)
+	* 25: nick!*user@*.host.top          (nick!*user@\XXX.XXX.*)
 	* 26: *!*user@*.host.top          (*!user@*XXX.XXX.*)
+	* 
 	* If some data is missing, these types may change:
 	* For example, if hostname is missing, the mask type 3 or 4 may be reduced to type 5
 	* 
@@ -265,9 +267,9 @@ public:
 
 	/**
 	* \brief Fixed external matches (this is wild, external is fixed)
-	* \param nick The nickname of the user
-	* \param user The username of the user
-	* \param host The hostname of the user
+	* \param szNick The nickname of the user
+	* \param szUser The username of the user
+	* \param szHost The hostname of the user
 	* \return bool
 	*/
 	bool matchesFixed(const QString & szNick, const QString & szUser, const QString & szHost) const;

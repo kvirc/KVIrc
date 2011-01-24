@@ -25,7 +25,7 @@
 //=============================================================================
 
 /**
-* \file kvi_qstring.h
+* \file KviQString.h
 * \author Szymon Stefanek
 * \brief Helper functions for the QString class
 */
@@ -655,6 +655,7 @@ namespace KviQString
 	/**
 	* \brief Escapes any kvs special character from a string
 	* \param szData The string to escape
+	* \param uFlags
 	* \return void
 	*/
 	extern KVILIB_API void escapeKvs(QString * szData, uint uFlags = 0);

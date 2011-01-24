@@ -438,7 +438,6 @@ protected slots:
 	
 	/**
 	* \brief Called when we collapse an item
-	* \param pItem The item to collapse
 	* \return void
 	*/
 	void slotCollapseItems();

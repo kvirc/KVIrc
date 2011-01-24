@@ -327,7 +327,7 @@ protected slots:
 
 	/**
 	* \brief Triggers the OnQueryFileDropped event
-	* \param pcFile The file dropped in the query
+	* \param szFile The file dropped in the query
 	* \return void
 	*/
         void slotDndEvents(const QString & szFile);

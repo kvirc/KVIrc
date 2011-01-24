@@ -189,7 +189,7 @@ public:
 	
 	/**
 	* \brief Sets the rules for NickServ
-	* \param s The rule set where to add rules
+	* \param pSet The rule set where to add rules
 	* \return void
 	*/
 	void setNickServRuleSet(KviNickServRuleSet * pSet);

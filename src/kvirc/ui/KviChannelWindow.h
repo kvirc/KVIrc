@@ -116,7 +116,7 @@ class KVIRC_API KviChannelWindow : public KviWindow
 	Q_OBJECT
 public:
 	/**
-	* \def StateFlag
+	* \enum StateFlag
 	* \brief Holds the state flags of the channel
 	*/
 	enum StateFlag {
@@ -531,6 +531,7 @@ public:
 	* \brief Sets the operator mode
 	* \param szNick The nick to set the mode on
 	* \param bOp Whether to set or unset the mode on the user
+	* \param bIsMe Whether the user opped is us
 	* \return bool
 	*/
 	bool setOp(const QString & szNick, bool bOp, bool bIsMe);

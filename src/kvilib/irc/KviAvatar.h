@@ -155,8 +155,8 @@ public:
 	*
 	* It is safe to connect returned KviAnimatedPixmap signals to external
 	* slots.
-	* \param w The width of the avatar
-	* \param h The height of the avatar
+	* \param uWidth The width of the avatar
+	* \param uHeight The height of the avatar
 	* \return KviAnimatedPixmap *
 	*/
 	inline KviAnimatedPixmap * forSize(unsigned int uWidth, unsigned int uHeight){ return forSize(QSize(uWidth,uHeight)); }

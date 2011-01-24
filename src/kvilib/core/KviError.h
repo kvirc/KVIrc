@@ -170,14 +170,14 @@ namespace KviError
 
 	/**
 	* \brief Returns the description of the error
-	* \param error The code number of the error
+	* \param eError The code number of the error
 	* \return QString
 	*/
 	KVILIB_API QString getDescription(KviError::Code eError);
 
 	/**
 	* \brief Returns an untranslated description of the error
-	* \param error The code number of the error
+	* \param eError The code number of the error
 	* \return const char *
 	*/
 	KVILIB_API const char * getUntranslatedDescription(KviError::Code eError);

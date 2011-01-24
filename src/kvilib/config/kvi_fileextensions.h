@@ -47,7 +47,7 @@
 /**
 * \brief File filters
 *
-* \def KVI_FILTER_CONFIG Configuration file *.kvs
+* \def KVI_FILTER_CONFIG Configuration file *.kvc
 * \def KVI_FILTER_SCRIPT Script file *.kvs
 * \def KVI_FILTER_THEME Theme package *.kvt
 * \def KVI_FILTER_ADDON Addon package *.kva

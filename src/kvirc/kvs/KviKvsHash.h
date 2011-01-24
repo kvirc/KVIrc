@@ -57,7 +57,7 @@ public:
 	* \brief Constructs the hash data
 	* 
 	* This is a carbon copy
-	* \param array The hash to copy from
+	* \param hash The hash to copy from
 	* \return KviKvsHash
 	*/
 	KviKvsHash(const KviKvsHash & hash);

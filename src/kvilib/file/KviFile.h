@@ -272,11 +272,11 @@ public:
 
 	/**
 	* \brief Skips the first occurrence of the given string for a given dimension
-	* \param t The string to find and skip
+	* \param szText The string to find and skip
 	* \param uMaxDist The dimension of the search field
 	* \return bool
 	*/
-	bool skipFirst(const KviCString & szT, unsigned int uMaxDist = 0xffffffff);
+	bool skipFirst(const KviCString & szText, unsigned int uMaxDist = 0xffffffff);
 };
 
 #endif //_KVI_FILE_H_

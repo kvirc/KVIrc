@@ -60,7 +60,7 @@ private:
 public:
 	/**
 	* \brief 
-	* \param szFmt The format list argument
+	* \param pcFmt The format list argument
 	* \param ... The succeding arguments
 	* \return void
 	*/

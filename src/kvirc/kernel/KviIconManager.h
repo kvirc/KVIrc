@@ -615,7 +615,7 @@ signals:
 
 	/**
 	* \brief Emitted when we select an icon from the table
-	* \param iIcon The index of the icon selected
+	* \param eIcon The index of the icon selected
 	* \return void
 	*/
 	void selected(KviIconManager::SmallIcon eIcon);

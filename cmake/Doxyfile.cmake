@@ -35,7 +35,7 @@ PROJECT_NUMBER         = @VERSION_RELEASE@
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description for a project that appears at the top of each page and should give viewer a quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = The K-Visual IRC Client APIs
+PROJECT_BRIEF          = Developer APIs
 
 # With the PROJECT_LOGO tag one can specify an logo or icon that is
 # included in the documentation. The maximum height of the logo should not
@@ -571,7 +571,7 @@ WARN_IF_DOC_ERROR      = YES
 # wrong or incomplete parameter documentation, but not about the absence of
 # documentation.
 
-WARN_NO_PARAMDOC       = NO
+WARN_NO_PARAMDOC       = YES
 
 # The WARN_FORMAT tag determines the format of the warning messages that
 # doxygen can produce. The string should contain the $file, $line, and $text
@@ -774,7 +774,7 @@ VERBATIM_HEADERS       = YES
 # of all compounds will be generated. Enable this if the project
 # contains a lot of classes, structs, unions or interfaces.
 
-ALPHABETICAL_INDEX     = NO
+ALPHABETICAL_INDEX     = YES
 
 # If the alphabetical index is enabled (see ALPHABETICAL_INDEX) then
 # the COLS_IN_ALPHA_INDEX tag can be used to specify the number of columns
@@ -839,7 +839,7 @@ HTML_STYLESHEET        =
 # 180 is cyan, 240 is blue, 300 purple, and 360 is red again.
 # The allowed range is 0 to 359.
 
-HTML_COLORSTYLE_HUE    = 220
+HTML_COLORSTYLE_HUE    = 150
 
 # The HTML_COLORSTYLE_SAT tag controls the purity (or saturation) of
 # the colors in the HTML output. For a value of 0 the output will use
@@ -874,7 +874,7 @@ HTML_ALIGN_MEMBERS     = YES
 # JavaScript and DHTML is required (for instance Mozilla 1.0+, Firefox 
 # Netscape 6.0+, Internet explorer 5.0+, Konqueror, or Safari).
 
-HTML_DYNAMIC_SECTIONS  = NO
+HTML_DYNAMIC_SECTIONS  = YES
 
 # If the GENERATE_DOCSET tag is set to YES, additional index files
 # will be generated that can be used as input for Apple's Xcode 3

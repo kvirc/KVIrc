@@ -266,7 +266,7 @@ protected:
 
 	/**
 	* \brief Raises an error
-	* \param iError The error to raise
+	* \param eError The error to raise
 	* \return void
 	*/
 	void raiseError(KviError::Code eError);
