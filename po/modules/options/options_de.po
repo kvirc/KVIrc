@@ -4,13 +4,13 @@
 #
 # Christoph Thielecke <crissi99@gmx.de>, 2004, 2005.
 # Christoph Thielecke <u15119@hs-harz.de>, 2005.
-# Markus Rennings <kvirc@mrmx.de>, 2007, 2008, 2009, 2010.
+# Markus Rennings <kvirc@mrmx.de>, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-26 13:15+0100\n"
-"PO-Revision-Date: 2010-10-17 20:24+0200\n"
+"PO-Revision-Date: 2011-01-26 15:04+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -320,13 +320,13 @@ msgstr ""
 "center>"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:65
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, KVIrc will match your nick and/or the "
 "words you specified in a case sensitive manner</center>"
 msgstr ""
-"<center>Wenn Sie diese Option aktiviert ist, wird KVIrc in der Fensterleiste "
-"nur alarmieren, wenn die benutzerdefinierte Alarmstufe erreicht ist.</center>"
+"<center>Wenn diese Option aktiviert ist, wird KVIrc bei Ihrem Nickname "
+"und/oder den"
+"angegebenen Wörtern die Groß- und Kleinschreibung beachten</center>"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:96
 msgid ""
@@ -942,13 +942,13 @@ msgstr ""
 "Bilddatei zu dem anfragenden Benutzer hinzugefügt.</center>"
 
 #: src/modules/options/OptionsWidget_logging.cpp:47
-#, fuzzy
 msgid ""
 "<center>This is the base log directory:<br>all the log files will be saved "
 "inside this directory</center>"
 msgstr ""
-"<center>Dies ist der  Name des aktuell ausgewählten Servers oder Netzwerkes."
-"</center>"
+"<center>Dies ist das Basisverzeichnis für die Logdateien:<br>Alle Logdateien "
+"werden "
+"in diesem Verzeichnis gespeichert</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:663
 msgid ""
@@ -1039,28 +1039,28 @@ msgstr ""
 "aktuellen Lag hinter dem Nick anzeigt (in Sekunden)</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:183
-#, fuzzy
 msgid ""
 "<center>This nickname will be tried if the primary nickname for this network "
 "is already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead.</center>"
 msgstr ""
-"<center>Hier kann ein \"spezieller\" <b>Nick</b> angegeben werden, der beim "
-"Einloggen in Server dieses Netzwerkes benutzt wird.<br>Wenn dieses Feld "
-"leergelassen wird (in den meisten Fällen), wird KVIrc den Standard-Nick "
-"(angegeben im \"Identität\"-Einstellungen) benutzen.</center>"
+"<center>Dieser Nickname wird versucht, wenn der erste Nickname für dieses "
+"Netzwerk "
+"bereits benutzt wird.<br>Wenn dieser leer gelassen wird, wird der "
+"Standard-Nickname "
+"aus den Identitätseinstellungen stattdessen versucht.</center>"
 
 #: src/modules/options/OptionsWidget_servers.cpp:600
-#, fuzzy
 msgid ""
 "<center>This nickname will be tried if the primary nickname for this server "
 "is already in use.<br>If you leave it empty then the default nicknames "
 "specified in the identity options will be tried instead.</center>"
 msgstr ""
-"<center>Hier kann ein \"spezieller\" <b>Nick</b> angegeben werden, der beim "
-"Einloggen in Server dieses Netzwerkes benutzt wird.<br>Wenn dieses Feld "
-"leergelassen wird (in den meisten Fällen), wird KVIrc den Standard-Nick "
-"(angegeben im \"Identität\"-Einstellungen) benutzen.</center>"
+"<center>Dieser Nickname wird versucht, wenn der erste Nickname für diesen "
+"Server "
+"bereits benutzt wird.<br>Wenn dieser leer gelassen wird, wird stattdessen "
+"der "
+"Standard-Nickname aus den Identitätseinstellungen versucht.</center>"
 
 #: src/modules/options/OptionsWidget_lag.cpp:47
 msgid ""
@@ -1561,6 +1561,11 @@ msgid ""
 "or nicknames inside the whole text. This will also highlight parts of words "
 "(eg. if your nickname is Mark then Markus will be highlighted too).</center>"
 msgstr ""
+"<center>Diese Auswahl wird KVIrc veranlassen, innerhalb des ganzen Textes "
+"nach den "
+"hervorzuhebenden Wörtern oder Nicknames zu suchen. Dies wird auch Wortteile "
+"hervorheben "
+"(z. B. wenn Ihr Nickname Mark ist, wird auch Markus hervorgehoben).</center>"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:82
 msgid ""
@@ -1568,6 +1573,11 @@ msgid ""
 "boundaries (including space) and then will compare all the parts with the "
 "highlighted words.</center>"
 msgstr ""
+"<center>Diese Auswahl wird die Zeichenkette erst an den angegebenen "
+"Begrenzern "
+"(inklusive Leerzeichen) aufsplitten und dann die Teile mit den "
+"hervorzuhebenden Wörtern "
+"vergleichen</center>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:327
 msgid ""
@@ -1701,6 +1711,10 @@ msgid ""
 "<center>You can specify a subdirectory where log files will be saved:use kvs "
 "code to create dynamic subfolders.</center>"
 msgstr ""
+"<center>Sie können ein Verzeichnis angeben, in das die Logdateien "
+"gespeichert "
+"werden: Mit KVS-Code können dynamische Unterverzeichnisse erstellt werden.<"
+"/center>"
 
 #: src/modules/options/OptionsWidget_identity.cpp:306
 msgid ""
@@ -1857,9 +1871,8 @@ msgid "Alert Level 5:"
 msgstr "Alarmstufe 5:"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:91
-#, fuzzy
 msgid "Alert Options"
-msgstr "Alarmbeschränkungen"
+msgstr "Alarmoptionen"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:122
 msgid "Alert Restrictions"
@@ -1903,9 +1916,8 @@ msgstr "Alt. Nick 3:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:174
 #: src/modules/options/OptionsWidget_servers.cpp:591
-#, fuzzy
 msgid "Alt.Nickname:"
-msgstr "Alt. Nick 1:"
+msgstr "Alt. Nickname:"
 
 #: src/modules/options/OptionsWidget_identity.cpp:924
 msgid "Alternative Nickname:"
@@ -2504,9 +2516,8 @@ msgid "Draw some emoticons (smileys) as pictures"
 msgstr "Einige Emoticons (Smilies) als Bilder darstellen"
 
 #: src/modules/options/OptionsWidget_logging.cpp:50
-#, fuzzy
 msgid "Dynamic subfolder:"
-msgstr "Herunterladen-Ordner:"
+msgstr "Dynamisches Unterverzeichnis:"
 
 #: src/modules/options/OptionsWidget_channel.cpp:129
 msgid "Echo channel topic"
@@ -2657,7 +2668,6 @@ msgid "Failed to Load Avatar - KVIrc"
 msgstr "Laden des Avatars fehlgeschlagen - KVIrc"
 
 #: src/modules/options/OptionsWidget_identity.cpp:562
-#, fuzzy
 msgid "Failed to download the avatar image.<br><b>%1</b>"
 msgstr "Herunterladen des Avatarbildes fehlgeschlagen.<br><b>%1</b>"
 
@@ -2862,18 +2872,18 @@ msgid "Highlight messages containing my nickname"
 msgstr "Nachrichten, die den eigenen Nick enthalten, hervorheben"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:79
-#, fuzzy
 msgid "Highlight only whole words splitting on space and on:"
-msgstr "Nur ganze Wörter hervorheben unter Verwenung dieser Trennzeichen:"
+msgstr ""
+"Nur ganze Wörter hervorheben unter Verwendung von Leerzeichen und dieser "
+"Trennzeichen:"
 
 #: src/modules/options/OptionsWidget_sound.cpp:340
 msgid "Highlighted message in inactive window"
 msgstr "Hervorgehobene Nachricht in inaktivem Fenster"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:67
-#, fuzzy
 msgid "Highlighting Method"
-msgstr "Hervorhebung"
+msgstr "Hervorhebungsmethode"
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:121
 msgid "Hint: Move the mouse cursor over the fields to get help"
@@ -4525,28 +4535,29 @@ msgstr ""
 "den Fenstermodus schaltet."
 
 #: src/modules/options/OptionsWidget_notifier.cpp:177
-#, fuzzy
 msgid ""
 "This option uses the DBus-based notifier instead of KVIrc one.<br>This is "
 "cool if you want to better integrate KVIrc inside your desktop environment. "
 "Note that this notifier isn't flexible and \"tabbed\" like KVIrc's"
 msgstr ""
-"Diese Option nutzt das DBus-basierte Benachrichtigungsfenster (wie das in "
-"KDE) anstelle des KVIrc eigenen.<br>Dies ist hilfreich, wenn eine bessere "
-"Integration von KVIrc in KDE gewünscht ist. Dieses Benachrichtigungsfenster "
+"Diese Option nutzt das DBus-basierte Benachrichtigungsfenster anstelle des "
+"KVIrc "
+"eigenen.<br>Dies ist hilfreich, wenn eine bessere Integration von KVIrc in "
+"die"
+"Arbeitsumgebung gewünscht ist. Dieses Benachrichtigungsfenster "
 "ist allerdings nicht so flexibel und Tab-basiert, wie das von KVIrc."
 
 #: src/modules/options/OptionsWidget_notifier.cpp:160
-#, fuzzy
 msgid ""
 "This option uses the KDE notification system instead of KVIrc one.<br>This "
 "is cool if you want to better integrate KVIrc inside KDE. Note that KDE's "
 "notifier isn't flexible and \"tabbed\" like KVIrc's"
 msgstr ""
-"Diese Option nutzt das DBus-basierte Benachrichtigungsfenster (wie das in "
-"KDE) anstelle des KVIrc eigenen.<br>Dies ist hilfreich, wenn eine bessere "
-"Integration von KVIrc in KDE gewünscht ist. Dieses Benachrichtigungsfenster "
-"ist allerdings nicht so flexibel und Tab-basiert, wie das von KVIrc."
+"Diese Option nutzt das KDE-basierte Benachrichtigungsfenster anstelle des "
+"KVIrc eigenen.<br>Dies "
+"ist hilfreich, wenn eine bessere Integration von KVIrc in KDE gewünscht ist. "
+"Dieses Benachrichtigungsfenster ist allerdings nicht so flexibel und "
+"Tab-basiert, wie das von KVIrc."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:107
 msgid ""
@@ -4835,9 +4846,8 @@ msgid "Use the DBus-based notifiers"
 msgstr "Benutze das DBus-basierte Benachrichtigungsfenster"
 
 #: src/modules/options/OptionsWidget_notifier.cpp:159
-#, fuzzy
 msgid "Use the KDE notifier"
-msgstr "Benutze das DBus-basierte Benachrichtigungsfenster"
+msgstr "Benutze das KDE-basierte Benachrichtigungsfenster"
 
 #: src/modules/options/OptionsWidget_connection.cpp:89
 msgid "Use the SASL authentication protocol if available"
@@ -4992,7 +5002,7 @@ msgstr "Wörter zum Hervorheben:"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:64
 msgid "Words/Nick matching is case sensitive "
-msgstr ""
+msgstr "Wörter/Nickname-Vergleich beachtet die Groß-/Kleinschreibung "
 
 #: src/modules/options/OptionsWidget_theme.h:74
 msgid "Workspace"

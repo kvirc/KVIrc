@@ -4,13 +4,13 @@
 #
 # Eva Schaller <eva at cyberbeat dot it>, 2003.
 # Christoph Thielecke <crissi99@gmx.de>, 2003, 2004.
-# Markus Rennings <kvirc@mrmx.de>, 2007, 2010.
+# Markus Rennings <kvirc@mrmx.de>, 2007, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: logview_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-26 13:15+0100\n"
-"PO-Revision-Date: 2010-10-17 20:09+0200\n"
+"PO-Revision-Date: 2011-01-26 14:30+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -21,7 +21,6 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/logview/LogViewWindow.cpp:317
-#, fuzzy
 msgid "%1 on %2"
 msgstr "%1 auf %2"
 
@@ -58,9 +57,8 @@ msgid "Filter"
 msgstr "Filter"
 
 #: src/modules/logview/LogViewWindow.cpp:89
-#, fuzzy
 msgid "HelpIndex"
-msgstr "Index"
+msgstr "Hilfe-Index"
 
 #: src/modules/logview/LogViewWindow.cpp:565
 msgid "Log File"

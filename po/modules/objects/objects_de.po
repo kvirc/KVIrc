@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Markus Rennings <kvirc@mrmx.de>, 2008, 2009, 2010.
+# Markus Rennings <kvirc@mrmx.de>, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: objects_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-26 13:15+0100\n"
-"PO-Revision-Date: 2010-10-17 20:17+0200\n"
+"PO-Revision-Date: 2011-01-26 14:37+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -226,7 +226,6 @@ msgid "Error in KVS class implementation: processing aborted"
 msgstr "Fehler in KVS-Klassenimplementation: Verarbeitung abgebrochen"
 
 #: src/modules/objects/KvsObject_xmlreader.cpp:159
-#, fuzzy
 msgid "Error near line %1, column %2"
 msgstr "Fehler bei Zeile %1, Spalte %2"
 
@@ -279,32 +278,26 @@ msgid "Image parameter missing"
 msgstr "Bild-Parameter fehlen"
 
 #: src/modules/objects/libkviobjects.cpp:561
-#, fuzzy
 msgid "Inexistant class object for objects.name"
 msgstr "Nichtexistierendes Klassenobjekt für objects.name"
 
 #: src/modules/objects/libkviobjects.cpp:270
-#, fuzzy
 msgid "Inexistant source object for objects.connect"
 msgstr "Nichtexistierendes Quellobjekt für objects.connect"
 
 #: src/modules/objects/libkviobjects.cpp:609
-#, fuzzy
 msgid "Inexistant source object for objects.disconnect"
 msgstr "Nichtexistiendes Quellobjekt für objects.disconnect"
 
 #: src/modules/objects/libkviobjects.cpp:265
-#, fuzzy
 msgid "Inexistant target object for objects.connect"
 msgstr "Nichtexistierendes Zielobjekt für object.connect"
 
 #: src/modules/objects/libkviobjects.cpp:604
-#, fuzzy
 msgid "Inexistant target object for objects.disconnect"
 msgstr "Nichtexistierendes Zielobjekt für objects.disconnect"
 
 #: src/modules/objects/libkviobjects.cpp:275
-#, fuzzy
 msgid "Inexistant target slot '%Q' for objects.connect"
 msgstr "Nichtexistierender Ziel-Slot ›%Q‹ für objects.connect"
 
@@ -540,19 +533,16 @@ msgid "Pixmap parameter is not an object!"
 msgstr "Pixmap-Parameter ist kein Objekt!"
 
 #: src/modules/objects/KvsObject_popupMenu.cpp:312
-#, fuzzy
 msgid "Popup menu parameter is not a valid object"
-msgstr "Widget-Parameter ist kein gültiges Objekt"
+msgstr "Popup-Menü-Parameter ist kein gültiges Objekt"
 
 #: src/modules/objects/KvsObject_popupMenu.cpp:307
-#, fuzzy
 msgid "Popup menu parameter is not an object"
-msgstr "Pufferparameter ist kein Objekt"
+msgstr "Popup-Menü-Parameter ist kein Objekt"
 
 #: src/modules/objects/KvsObject_popupMenu.cpp:317
-#, fuzzy
 msgid "Popupmenu object required"
-msgstr "Pixmap-Objekt benötigt"
+msgstr "Popup-Menü-Objekt benötigt"
 
 #: src/modules/objects/KvsObject_process.cpp:221
 msgid "Process could not be started."
@@ -831,16 +821,15 @@ msgstr ""
 "Bereich von 0 bis 65535)"
 
 #: src/modules/objects/KvsObject_socket.cpp:572
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Value %d for port is out of range (values allowed are from 0 to 65535): "
 "switch to random value"
 msgstr ""
 "Port-Wert %d ist außerhalb des zulässigen Bereichs (gültige Werte sind im "
-"Bereich von 0 bis 65535)"
+"Bereich von 0 bis 65535): Wechsle zu einem zufälligen Wert"
 
 #: src/modules/objects/KvsObject_xmlreader.cpp:161
-#, fuzzy
 msgid "Warning near line %1, column %2"
 msgstr "Warnung bei Zeile %1, Spalte %2"
 

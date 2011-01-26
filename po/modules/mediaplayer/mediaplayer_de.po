@@ -2,13 +2,13 @@
 # Copyright (C) 2005 THE KVIrc'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
 #
-# Markus Rennings <kvirc@mrmx.de>, 2007, 2008, 2009, 2010.
+# Markus Rennings <kvirc@mrmx.de>, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-26 13:15+0100\n"
-"PO-Revision-Date: 2010-08-12 23:49+0200\n"
+"PO-Revision-Date: 2011-01-26 14:34+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -35,13 +35,12 @@ msgstr ""
 "Sie können ihn unter http://sourceforge.net/projects/beepmp herunterladen.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:585
-#, fuzzy
 msgid ""
 "An interface to Clementine.\n"
 "Download it from http://www.clementine-player.org/\n"
 msgstr ""
-"Eine Schnittstelle zu Amarok2.\n"
-"Sie können ihn unter http://amarok.kde.org herunterladen.\n"
+"Eine Schnittstelle zu Clementine.\n"
+"Sie können es unter http://www.cementine-player.org/ herunterladen.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:488
 msgid ""
@@ -49,16 +48,15 @@ msgid ""
 "Download it from http://qmmp.ylsoftware.com\n"
 msgstr ""
 "Eine Schnittstelle für Qmmp.\n"
-"Sie können es unter http://qmmp.ylsoftware.com herunterladen.\n"
+"Sie können es unter http://qmmp.ylsoftware.com/ herunterladen.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:547
-#, fuzzy
 msgid ""
 "An interface to Totem.\n"
 "Download it from http://projects.gnome.org/totem/\n"
 msgstr ""
-"Eine Schnittstelle zu Amarok2.\n"
-"Sie können ihn unter http://amarok.kde.org herunterladen.\n"
+"Eine Schnittstelle zu Totem.\n"
+"Sie können es unter http://projects.gnome.org/totem/ herunterladen.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:565
 msgid ""
@@ -67,6 +65,10 @@ msgid ""
 "You need to manually enable the DBus control\n"
 "interface in the Vlc preferences\n"
 msgstr ""
+"Eine Schnittstelle zu Vlc.\n"
+"Sie können es unter http://www.videolan.org/ herunterladen\n"
+"Die DBus-Kontroll-Schnittstelle muss manuell in den Vlc-Einstellungen "
+"aktiviert werden."
 
 #: src/modules/mediaplayer/MpAmipInterface.cpp:108
 msgid ""
@@ -141,14 +143,12 @@ msgid "Can't find a running winamp window"
 msgstr "Keine Winamp-Instanz gefunden."
 
 #: src/modules/mediaplayer/MpXmmsInterface.cpp:143
-#, fuzzy
 msgid "Can't find symbol %1 in %2"
 msgstr "Kann das Symbol %1 nicht in %2 finden."
 
 #: src/modules/mediaplayer/MpXmmsInterface.cpp:135
-#, fuzzy
 msgid "Can't load the player library (%1)"
-msgstr "Kann die Abspieler- (player) -Bibliothek (%1) nicht laden"
+msgstr "Kann die Player-Bibliothek (%1) nicht laden"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:101
 msgid "Choosing media player interface \"%Q\""
@@ -215,7 +215,6 @@ msgstr ""
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:65
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:91
-#, fuzzy
 msgid "Trying media player interface \"%1\": score %2"
 msgstr "Probiere Schnittstelle »%1«: %2 Punkte."
 
