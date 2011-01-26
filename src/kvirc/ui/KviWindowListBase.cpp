@@ -55,6 +55,8 @@
 #include <QCursor>
 #include <QPaintEvent>
 #include <QEvent>
+#include <QLabel>
+#include <QSplitterHandle>
 
 extern QPixmap * g_pActivityMeterPixmap;
 
@@ -63,20 +65,18 @@ extern QPixmap * g_pActivityMeterPixmap;
 //
 
 KviWindowListBase::KviWindowListBase()
-: QDockWidget(__tr2qs("Window List"),g_pMainWindow)
+: QDockWidget(__tr2qs("Window List"),g_pMainWindow), m_pTitleWidget(0)
 {
 	// FIXME: this timer should be started only if KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)
 	setObjectName(__tr2qs("windowlist"));
 	setFeatures(QDockWidget::DockWidgetMovable);
 
-	// to hide the title bar completely must replace the default widget with a generic one
-	m_pTitleWidget = new KviWindowListTitleWidget();
-	setTitleBarWidget( m_pTitleWidget );
-
 	m_pActivityMeterTimer = new QTimer();
 	connect(m_pActivityMeterTimer,SIGNAL(timeout()),this,SLOT(updateActivityMeter()));
 	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),this, SLOT(updateDockLocation(Qt::DockWidgetArea)));
 	m_pActivityMeterTimer->start(5000);
+	
+	applyOptions();
 }
 
 KviWindowListBase::~KviWindowListBase()
@@ -164,20 +164,70 @@ void KviWindowListBase::wheelEvent(QWheelEvent *e)
 void KviWindowListBase::updateDockLocation(Qt::DockWidgetArea newArea)
 {
 	currentArea = newArea;
+	if(currentArea == Qt::TopDockWidgetArea || currentArea == Qt::BottomDockWidgetArea)
+		setFeatures(features() | QDockWidget::DockWidgetVerticalTitleBar);
+	else
+		setFeatures(features() & ~ QDockWidget::DockWidgetVerticalTitleBar);
 }
 
 void KviWindowListBase::applyOptions()
 {
+	// to hide the title bar completely must replace the default widget with a generic one
+	if(m_pTitleWidget)
+		delete m_pTitleWidget;
+
 	if(KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHeader))
 	{
-		m_pTitleWidget->setText(__tr2qs("Window List"));
-		m_pTitleWidget->setMargin(2);
-		m_pTitleWidget->setIndent(4);
+		m_pTitleWidget = new QLabel();
+		setTitleBarWidget( m_pTitleWidget );
+
+		((QLabel*)m_pTitleWidget)->setText(__tr2qs("Window List"));
+		((QLabel*)m_pTitleWidget)->setMargin(2);
+		((QLabel*)m_pTitleWidget)->setIndent(4);
 	} else {
-		m_pTitleWidget->setText("");
+		m_pTitleWidget = new KviWindowListTitleWidget(this);
 	}
+	
+	setTitleBarWidget(m_pTitleWidget);
+	
+// 	if(features() & QDockWidget::DockWidgetVerticalTitleBar)
+	
 }
 
+void KviWindowListTitleWidget::paintEvent(QPaintEvent *)
+{
+	QPainter p(this);
+	QStyleOption opt(0);
+	opt.rect = contentsRect();
+	opt.palette = palette();
+	if (m_pParent->features() & QDockWidget::DockWidgetVerticalTitleBar)
+	{
+		opt.state = QStyle::State_Horizontal | QStyle::State_Enabled;
+		opt.rect.adjust(2,0,2,0);
+	}else {
+		opt.state = QStyle::State_Enabled;
+		opt.rect.adjust(0,2,0,2);
+	}
+	m_pParent->style()->drawControl(QStyle::CE_Splitter, &opt, &p, m_pParent);
+}
+
+QSize KviWindowListTitleWidget::sizeHint() const
+{
+	int h, w;
+	if(m_pParent->features() & QDockWidget::DockWidgetVerticalTitleBar)
+	{
+		h=m_pParent->height();
+		w=6;
+	} else {
+		w=m_pParent->width();
+		h=6;
+	}
+	QStyleOption opt(0);
+	opt.init(m_pParent);
+	opt.state = QStyle::State_None;
+// 	
+	return m_pParent->style()->sizeFromContents(QStyle::CT_Splitter, &opt, QSize(w, h), m_pParent).expandedTo(QApplication::globalStrut());
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // KviWindowListItem
 //

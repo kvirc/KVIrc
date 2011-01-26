@@ -99,7 +99,6 @@ public:
 	virtual bool setIterationPointer(KviWindowListItem * it);
 	virtual void updatePseudoTransparency();
 	virtual void updateActivityMeter();
-	virtual void applyOptions();
 protected:
 	virtual void moveEvent(QMoveEvent *);
 protected slots:

@@ -496,11 +496,6 @@ bool KviTreeWindowList::setIterationPointer(KviWindowListItem * it)
 	return false;
 }
 
-void KviTreeWindowList::applyOptions()
-{
-	KviWindowListBase::applyOptions();
-}
-
 // KviTreeWindowListItemDelegate
 
 void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const

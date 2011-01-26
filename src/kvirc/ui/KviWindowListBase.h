@@ -31,7 +31,6 @@
 #include <QPushButton>
 #include <QFrame>
 #include <QDockWidget>
-#include <QLabel>
 
 class QPixmap;
 class KviWindow;
@@ -66,15 +65,6 @@ public:
 	int highlightLevel(){ return m_iHighlightLevel; };
 };
 
-class KVIRC_API KviWindowListTitleWidget : public QLabel
-{
-	Q_OBJECT
-public:
-	KviWindowListTitleWidget() {};
-	~KviWindowListTitleWidget() {};
-	QSize sizeHint() const { return text().isEmpty() ? QSize(4,4): QLabel::sizeHint(); };
-};
-
 //
 // KviWindowListBase
 //
@@ -91,7 +81,7 @@ public:
 protected:
 	KviMainWindow * m_pFrm;
 	QTimer   * m_pActivityMeterTimer;
-	KviWindowListTitleWidget  * m_pTitleWidget;
+	QWidget  * m_pTitleWidget;
 	Qt::DockWidgetArea currentArea;
 public:
 	virtual KviWindowListItem * addItem(KviWindow *){ return 0; };
@@ -180,6 +170,19 @@ public:
 protected slots:
 	void orientationChangedSlot(Qt::Orientation o);
 	void doLayout();
+};
+
+class KVIRC_API KviWindowListTitleWidget : public QWidget
+{
+	Q_OBJECT
+public:
+	KviWindowListTitleWidget(KviWindowListBase * parent) { m_pParent = parent; };
+	~KviWindowListTitleWidget() {};
+private:
+	KviWindowListBase* m_pParent;
+public:
+	QSize sizeHint() const;
+	void paintEvent(QPaintEvent *);
 };
 
 #endif //_KVI_WINDOWLIST_H_
