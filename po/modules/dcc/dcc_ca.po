@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-20 16:46+0100\n"
+"POT-Creation-Date: 2011-01-26 13:15+0100\n"
 "PO-Revision-Date: 2005-02-24 23:18+0100\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -1128,7 +1128,6 @@ msgstr "[ERROR SSL]: %s"
 msgid "bytes/sec"
 msgstr "Mitja: ? bytes/seg"
 
-#: src/modules/dcc/DccDescriptor.cpp:65
 #: src/modules/dcc/requests.cpp:138
 #: src/modules/dcc/requests.cpp:139
 #: src/modules/dcc/requests.cpp:140
@@ -1146,6 +1145,7 @@ msgstr "Mitja: ? bytes/seg"
 #: src/modules/dcc/DccMarshal.cpp:494
 #: src/modules/dcc/DccMarshal.cpp:524
 #: src/modules/dcc/DccMarshal.cpp:529
+#: src/modules/dcc/DccDescriptor.cpp:65
 msgid "unknown"
 msgstr "desconegut"
 

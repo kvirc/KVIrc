@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-20 16:46+0100\n"
+"POT-Creation-Date: 2011-01-26 13:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,8 +66,24 @@ msgstr ""
 msgid "Last interface error: "
 msgstr ""
 
-#: src/modules/mediaplayer/MpInterface.cpp:43
-msgid "Function not implemented"
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://legacy.xmms2.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:49
+msgid ""
+"An interface to the popular UNIX audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:135
+msgid "Can't load the player library (%1)"
+msgstr ""
+
+#: src/modules/mediaplayer/MpXmmsInterface.cpp:143
+msgid "Can't find symbol %1 in %2"
 msgstr ""
 
 #: src/modules/mediaplayer/MpAmipInterface.cpp:108
@@ -135,26 +151,6 @@ msgid ""
 "Download it from http://www.clementine-player.org/\n"
 msgstr ""
 
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:38
-msgid ""
-"An interface to the popular UNIX xmms media player.\n"
-"Download it from http://legacy.xmms2.org\n"
-msgstr ""
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:49
-msgid ""
-"An interface to the popular UNIX audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:135
-msgid "Can't load the player library (%1)"
-msgstr ""
-
-#: src/modules/mediaplayer/MpXmmsInterface.cpp:143
-msgid "Can't find symbol %1 in %2"
-msgstr ""
-
 #: src/modules/mediaplayer/MpWinampInterface.cpp:184
 msgid "Can't find a running winamp window"
 msgstr ""
@@ -173,4 +169,8 @@ msgstr ""
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
+msgstr ""
+
+#: src/modules/mediaplayer/MpInterface.cpp:43
+msgid "Function not implemented"
 msgstr ""

@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-19 15:59+0200\n"
+"POT-Creation-Date: 2011-01-26 13:15+0100\n"
 "PO-Revision-Date: 2011-01-25 20:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,104 +20,67 @@ msgstr ""
 "X-Poedit-Country: TURKEY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:79
-msgid "About KVIrc..."
-msgstr "KVIrc Hakkında"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:80
-msgid "Close"
-msgstr "Kapat"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:102
-msgid "Forged by the <b>KVIrc Development Team</b>"
-msgstr "<b>KVIrc Geliştirme Takımı</b> tarafından hazırlandı."
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:108
+#: src/modules/about/AboutDialog.cpp:108
 msgid "About"
 msgstr "Hakkında"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:122
-msgid "Runtime Info"
-msgstr "Sistem Bilgileri"
+#: src/modules/about/AboutDialog.cpp:79
+msgid "About KVIrc..."
+msgstr "KVIrc Hakkında"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:124
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:155
-msgid "System Name"
-msgstr "Sistem Adı"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:132
-msgid "System Version"
-msgstr "Sistem Sürümü"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:136
+#: src/modules/about/AboutDialog.cpp:136
 msgid "Architecture"
 msgstr "Mimarı"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:141
-msgid "Build Info"
-msgstr "Yapı Bilgileri"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:143
-msgid "Build Date"
-msgstr "Yapı Tarihi"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:147
-msgid "Sources Date"
-msgstr "Kaynakı Tarihi"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:151
-msgid "Revision Number"
-msgstr "Revizyon sayısı"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:159
-msgid "CPU Name"
-msgstr "CPU Adı"
-
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:163
+#: src/modules/about/AboutDialog.cpp:163
 msgid "Build Command"
 msgstr "Yapı Komutu"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:167
+#: src/modules/about/AboutDialog.cpp:143
+msgid "Build Date"
+msgstr "Yapı Tarihi"
+
+#: src/modules/about/AboutDialog.cpp:167
 msgid "Build Flags"
 msgstr "Yapı Bayrakları"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:172
-msgid "Compiler Name"
-msgstr "Derleyici Adı"
+#: src/modules/about/AboutDialog.cpp:141
+msgid "Build Info"
+msgstr "Yapı Bilgileri"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:176
+#: src/modules/about/AboutDialog.cpp:159
+msgid "CPU Name"
+msgstr "CPU Adı"
+
+#: src/modules/about/AboutDialog.cpp:80
+msgid "Close"
+msgstr "Kapat"
+
+#: src/modules/about/AboutDialog.cpp:176
 msgid "Compiler Flags"
 msgstr "Derleyici Etiketleri"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:182
+#: src/modules/about/AboutDialog.cpp:172
+msgid "Compiler Name"
+msgstr "Derleyici Adı"
+
+#: src/modules/about/AboutDialog.cpp:182
 msgid "Executable Information"
 msgstr "İşletim Bilgileri"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:195
+#: src/modules/about/AboutDialog.cpp:102
+msgid "Forged by the <b>KVIrc Development Team</b>"
+msgstr "<b>KVIrc Geliştirme Takımı</b> tarafından hazırlandı."
+
+#: src/modules/about/AboutDialog.cpp:195
 msgid "Honor && Glory"
 msgstr "Onur && Şeref"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:214
+#: src/modules/about/AboutDialog.cpp:221
+msgid "License"
+msgstr "Lisans"
+
+#: src/modules/about/AboutDialog.cpp:214
 msgid ""
 "Oops... Can't find the license file...\n"
 "It MUST be included in the distribution...\n"
@@ -126,8 +90,23 @@ msgstr ""
 "O dağıtım içinde olmalıdır...\n"
 "Lütfen rapor maili gönderiniz <pragma at kvirc dot net>"
 
-#: C:/Program
-#: Files/Subversion/bin/kvirc/src/modules/about/aboutdialog.cpp:221
-msgid "License"
-msgstr "Lisans"
+#: src/modules/about/AboutDialog.cpp:151
+msgid "Revision Number"
+msgstr "Revizyon sayısı"
 
+#: src/modules/about/AboutDialog.cpp:122
+msgid "Runtime Info"
+msgstr "Sistem Bilgileri"
+
+#: src/modules/about/AboutDialog.cpp:147
+msgid "Sources Date"
+msgstr "Kaynakı Tarihi"
+
+#: src/modules/about/AboutDialog.cpp:124
+#: src/modules/about/AboutDialog.cpp:155
+msgid "System Name"
+msgstr "Sistem Adı"
+
+#: src/modules/about/AboutDialog.cpp:132
+msgid "System Version"
+msgstr "Sistem Sürümü"

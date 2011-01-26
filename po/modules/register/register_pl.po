@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-20 16:46+0100\n"
+"POT-Creation-Date: 2011-01-26 13:15+0100\n"
 "PO-Revision-Date: 2010-06-17 15:22+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -47,8 +47,8 @@ msgstr " Użytkownik: %c%Q"
 msgid "&Add Group..."
 msgstr "&Dodaj grupę..."
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:355
 #: src/modules/reguser/dialog.cpp:246
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:355
 msgid "&Add..."
 msgstr "&Dodaj..."
 
@@ -64,10 +64,10 @@ msgstr "&Edytuj..."
 msgid "&New"
 msgstr "&Nowy"
 
+#: src/modules/reguser/dialog.cpp:297
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:114
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:258
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:470
-#: src/modules/reguser/dialog.cpp:297
 msgid "&OK"
 msgstr "&OK"
 
@@ -244,10 +244,10 @@ msgstr "Nie można otworzyć pliku %Q w celu zapisu."
 msgid "Can't open file %s for reading."
 msgstr "Nie można otworzyć pliku %s w celu odczytu."
 
+#: src/modules/reguser/dialog.cpp:302
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:118
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:262
 #: src/modules/reguser/RegisteredUserEntryDialog.cpp:469
-#: src/modules/reguser/dialog.cpp:302
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -261,8 +261,8 @@ msgstr "Kanał: %1%2@%3"
 msgid "Choose a Filename - KVIrc"
 msgstr "Wybierz nazwę pliku - KVIrc"
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:332
 #: src/modules/reguser/dialog.cpp:134
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:332
 msgid "Comment:"
 msgstr "Komentarz:"
 
@@ -466,8 +466,8 @@ msgstr "Właściwość"
 msgid "Property Editor"
 msgstr "Edytor właściwości"
 
-#: src/modules/reguser/RegisteredUserEntryDialog.cpp:359
 #: src/modules/reguser/dialog.cpp:256
+#: src/modules/reguser/RegisteredUserEntryDialog.cpp:359
 msgid "Re&move"
 msgstr "Us&uń"
 
