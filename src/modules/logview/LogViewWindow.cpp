@@ -319,7 +319,19 @@ void LogViewWindow::filterNext()
 	if(m_szLastGroup!=szCurGroup)
 	{
 		m_szLastGroup=szCurGroup;
-		m_pLastGroupItem=new LogListViewItemFolder(m_pLastCategory,m_szLastGroup);
+		m_pLastGroupItem=0;
+		for(int i=0;i<m_pLastCategory->childCount(); ++i)
+		{
+			LogListViewItemFolder * pTmp = (LogListViewItemFolder*) m_pLastCategory->child(i);
+			if(pTmp->text(0) == m_szLastGroup)
+			{
+				m_pLastGroupItem=pTmp;
+				break;
+			}
+		}
+		
+		if(!m_pLastGroupItem)
+			m_pLastGroupItem=new LogListViewItemFolder(m_pLastCategory,m_szLastGroup);
 	}
 
 	new LogListViewLog(m_pLastGroupItem,pFile->type(),pFile);
