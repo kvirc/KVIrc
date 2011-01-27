@@ -206,6 +206,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 #ifdef COMPILE_ZLIB_SUPPORT
 	if(uFlags & KVI_PACKAGE_DATAFIELD_FLAG_FILE_DEFLATE)
 	{
+	//	qDebug ("loading compressed data");
 		int iRemainingSize = uSize;
 		unsigned char ibuffer[BUFFER_SIZE];
 		unsigned char obuffer[BUFFER_SIZE];
@@ -331,13 +332,14 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 	} else {
 #endif
+	//	qDebug("Load uncompressed data");
 		unsigned char buffer[BUFFER_SIZE];
 		int iTotalFileSize = 0;
 		int iRemainingData = uSize;
 		int iToRead = iRemainingData;
 		if(iToRead > BUFFER_SIZE)iToRead = BUFFER_SIZE;
 		int iReaded = 1;
-
+	//	qDebug("iReaded %i and iToRead %i and index %i",iReaded,iToRead,pFile->pos());
 		while((iReaded > 0) && (iToRead > 0))
 		{
 			iReaded = pFile->read((char *)buffer,iToRead);
@@ -353,14 +355,15 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 					if(!updateProgress(pFile->pos(),szPrg))
 						return false; // aborted
 				}
-
+			//	qDebug("write file with size %i and name %s",iReaded,dest.fileName().toUtf8().data());
 				if(dest.write((char *)buffer,iReaded) != iReaded)
 					return writeError();
 			}
-
-			int iToRead = iRemainingData;
+			//qDebug("Remains %i", iRemainingData);
+			iToRead = iRemainingData;
 			if(iToRead > BUFFER_SIZE)iToRead = BUFFER_SIZE;
 		}
+	//	qDebug("finish to read %i and index %i",iReaded,pFile->pos());
 #ifdef COMPILE_ZLIB_SUPPORT
 	}
 #endif
