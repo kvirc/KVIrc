@@ -435,7 +435,8 @@ void TrayIcon::activatedSlot( QSystemTrayIcon::ActivationReason reason )
 			// On MacOSX one can only single-left-click the icon.
 			// This activates the context menu and is quite confusing if it *also* hides the kvirc window.
 			// So on mac we only _show_ the main window if it's hidden and the CloseInTray option is enabled.
-			if(KVI_OPTION_BOOL(KviOption_boolCloseInTray) && ((!m_pFrm->isVisible()) || m_pFrm->isMinimized()))
+			if((KVI_OPTION_BOOL(KviOption_boolCloseInTray) || KVI_OPTION_BOOL(KviOption_boolMinimizeInTray))
+				&& ((!m_pFrm->isVisible()) || m_pFrm->isMinimized()))
 				toggleParentFrame();
 #else //!COMPILE_ON_MAC
 			// on other platforms we always toggle the window

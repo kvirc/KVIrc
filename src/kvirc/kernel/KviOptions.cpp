@@ -338,6 +338,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("UseDBusNotifier",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("UseKDENotifier",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("CaseSensitiveHighlighting",false,KviOption_sectFlagIrcView),
+	BOOL_OPTION("MinimizeInTray",false,KviOption_sectFlagFrame | KviOption_resetUpdateGui)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)

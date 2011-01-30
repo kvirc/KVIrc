@@ -346,8 +346,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUseDBusNotifier 252                                /* notifier */
 #define KviOption_boolUseKDENotifier 253                                 /* notifier */
 #define KviOption_boolCaseSensitiveHighlighting 254                      /* highlight */
+#define KviOption_boolMinimizeInTray 255                                    /* interface */
 
-#define KVI_NUM_BOOL_OPTIONS 255
+#define KVI_NUM_BOOL_OPTIONS 256
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

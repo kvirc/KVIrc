@@ -817,6 +817,23 @@ void KviMainWindow::closeEvent(QCloseEvent *e)
 		g_pApp->destroyFrame();
 }
 
+void KviMainWindow::hideEvent(QHideEvent *e)
+{
+	if(KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && e->spontaneous())
+	{
+		if(!dockExtension())
+		{
+			executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
+		}
+		if(dockExtension())
+		{
+			KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = isMaximized();
+			QTimer::singleShot( 0, this, SLOT(hide()) );
+		}
+		return;
+	}
+}
+
 void KviMainWindow::resizeEvent(QResizeEvent *e)
 {
 	KVI_OPTION_RECT(KviOption_rectFrameGeometry) = QRect(pos().x(),pos().y(),

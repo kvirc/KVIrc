@@ -198,6 +198,7 @@ protected:
 	void childWindowSelectionStateChange(KviWindow * pWnd,bool bGotSelectionNow);
 
 	virtual void closeEvent(QCloseEvent *e);
+	virtual void hideEvent(QHideEvent *e);
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void moveEvent(QMoveEvent *e);
 	virtual bool focusNextPrevChild(bool next);

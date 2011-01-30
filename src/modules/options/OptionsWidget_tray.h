@@ -43,6 +43,7 @@ protected:
 	KviBoolSelector * m_pEnable;
 	KviBoolSelector * m_pEnableFlashing;
 	KviBoolSelector * m_pLevelBasedNotify;
+	KviBoolSelector * m_pMinimizeInTray;
 	KviBoolSelector * m_pCloseInTray;
 	KviTalGroupBox * m_pLevelsGroup;
 protected slots:
