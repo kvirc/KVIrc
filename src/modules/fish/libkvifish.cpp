@@ -75,7 +75,7 @@
 	// const char *g_fish_prime1080_dec="12745216229761186769575009943944198619149164746831579719941140425076456621824834322853258804883232842877311723249782818608677050956745409379781245497526069657222703636504651898833151008222772087491045206203033063108075098874712912417029101508315117935752962862335062591404043092163187352352197487303798807791605274487594646923";
 	const char *g_fish_generator="2";
 
-	static bool fish_DH1080_gen(KviCString * szPrivKey, KviCString * szPubKey)
+	static bool fish_DH1080_gen(unsigned char ** szPubKey, int * iLen)
 	{
 	#ifdef COMPILE_SSL_SUPPORT
 		if(!g_fish_dh)
@@ -97,15 +97,10 @@
 			DH_generate_key(g_fish_dh);
 		}
 
-		int iSize=BN_num_bytes(g_fish_dh->pub_key);
-		unsigned char * pPubKey = (unsigned char *) KviMemory::allocate(iSize);
-		BN_bn2bin(g_fish_dh->pub_key, pPubKey);
-		szPubKey->setStr((char *)pPubKey, iSize);
+		*iLen = BN_num_bytes(g_fish_dh->pub_key);
+		*szPubKey = (unsigned char *) KviMemory::allocate(*iLen);
+		BN_bn2bin(g_fish_dh->pub_key, *szPubKey);
 
-		iSize=BN_num_bytes(g_fish_dh->priv_key);
-		unsigned char * pPrivKey = (unsigned char *) KviMemory::allocate(iSize);
-		BN_bn2bin(g_fish_dh->priv_key, pPrivKey);
-		szPrivKey->setStr((char *)pPrivKey, iSize);
 		return true;
 	#else
 		c->warning(__tr2qs("FiSH has been compiled without ssl support, unable to proceed"));
@@ -139,8 +134,10 @@
 		if(!szMessage.startsWith("DH1080_", Qt::CaseSensitive))
 			return true;
 
-		KviCString szMyPrivkey, szMyPubkey, szHisPubKey, szTmp;
-		if(!fish_DH1080_gen(&szMyPrivkey, &szMyPubkey))
+		unsigned char * szMyPubKey = 0;
+		KviCString szHisPubKey, szTmp;
+		int iMyPubKeyLen, * pMyPubKeyLen = &iMyPubKeyLen;
+		if(!fish_DH1080_gen(&szMyPubKey, pMyPubKeyLen))
 			return false;
 
 		if(szMessage.startsWith("DH1080_INIT ", Qt::CaseSensitive))
@@ -154,7 +151,7 @@
 			if(len > 0)
 				szHisPubKey.setStr(tmpBuf, len);
 
-			szTmp.bufferToBase64(szMyPubkey.ptr(), szMyPubkey.len());
+			szTmp.bufferToBase64((char *) szMyPubKey, iMyPubKeyLen);
 			c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_FINISH %sA",
 				c->window()->console()->connection()->encodeText(szNick).data(),
 				szTmp.ptr()
@@ -234,8 +231,7 @@
 		KviCryptEngine * e = g_pCryptEngineManager->allocateEngine(szEngine);
 		if(e)
 		{
-			int iFinalKeyLen=sizeof(szFinalKey);
-			if(e->init(szFinalKey,iFinalKeyLen,szFinalKey,iFinalKeyLen))
+			if(e->init(szFinalKey.ptr(),szFinalKey.len(),szFinalKey.ptr(),szFinalKey.len()))
 			{
 				KviCryptSessionInfo * inf = KviCryptController::allocateCryptSessionInfo();
 				inf->m_pEngine = e;
@@ -263,11 +259,13 @@
 			KVSM_PARAMETER("target",KVS_PT_NONEMPTYSTRING,0,szTarget)
 		KVSM_PARAMETERS_END(c)
 
-		KviCString szMyPrivkey, szMyPubkey, szTmp;
-		if(!fish_DH1080_gen(&szMyPrivkey, &szMyPubkey))
+		unsigned char * szMyPubKey = 0;
+		KviCString szHisPubKey, szTmp;
+		int iMyPubKeyLen, * pMyPubKeyLen = &iMyPubKeyLen;
+		if(!fish_DH1080_gen(&szMyPubKey, pMyPubKeyLen))
 			return false;
 
-		szTmp.bufferToBase64(szMyPubkey.ptr(), szMyPubkey.len());
+		szTmp.bufferToBase64((char *) szMyPubKey, iMyPubKeyLen);
 		c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_INIT %sA",
 			c->window()->console()->connection()->encodeText(szTarget).data(),
 			szTmp.ptr()
