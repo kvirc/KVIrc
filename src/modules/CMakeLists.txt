@@ -28,7 +28,7 @@ SUBDIRS(
 	chan channelsjoin classeditor codetester config context
 	dcc dialog
 	editor eventeditor
-	file filetransferwindow
+	file filetransferwindow fish
 	help http
 	ident iograph
 	lamerizer language links list log logview
