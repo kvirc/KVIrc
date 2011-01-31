@@ -135,7 +135,7 @@
 			return true;
 
 		unsigned char * szMyPubKey = 0;
-		KviCString szHisPubKey, szTmp;
+		QByteArray szHisPubKey, szTmp;
 		int iMyPubKeyLen, * pMyPubKeyLen = &iMyPubKeyLen;
 		if(!fish_DH1080_gen(&szMyPubKey, pMyPubKeyLen))
 			return false;
@@ -144,29 +144,23 @@
 		{
 			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("FiSH: Received DH1080 public key from %1, sending mine...").arg(szNick));
 			// fish appends an 'A' to all base64 coded strings
-			char * tmpBuf;
-			int len;
-			szHisPubKey.setStr(szMessage.mid(12).toAscii().data(), FISH_KEYLEN);
-			len = szHisPubKey.base64ToBuffer(&tmpBuf,false);
-			if(len > 0)
-				szHisPubKey.setStr(tmpBuf, len);
+			szHisPubKey = szMessage.mid(12).toAscii();
+			szHisPubKey.truncate(FISH_KEYLEN);
+			szHisPubKey = QByteArray::fromBase64(szHisPubKey);
 
-			szTmp.bufferToBase64((char *) szMyPubKey, iMyPubKeyLen);
+			szTmp = QByteArray((char *)szMyPubKey, iMyPubKeyLen).toBase64();
 			c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_FINISH %sA",
 				c->window()->console()->connection()->encodeText(szNick).data(),
-				szTmp.ptr()
+				szTmp.data()
 				);
 		}
 		
 		if(szMessage.startsWith("DH1080_FINISH ", Qt::CaseSensitive))
 		{
 			// fish appends an 'A' to all base64 coded strings
-			char * tmpBuf;
-			int len;
-			szHisPubKey.setStr(szMessage.mid(14).toAscii().data(), FISH_KEYLEN);
-			len = szHisPubKey.base64ToBuffer(&tmpBuf,false);
-			if(len > 0)
-				szHisPubKey.setStr(tmpBuf, len);
+			szHisPubKey = szMessage.mid(14).toAscii();
+			szHisPubKey.truncate(FISH_KEYLEN);
+			szHisPubKey = QByteArray::fromBase64(szHisPubKey);
 		}
 
 		if(!c->window()->connection())
@@ -198,10 +192,10 @@
 
 		unsigned char * secret=(unsigned char *) KviMemory::allocate(DH_size(g_fish_dh));
 		int secretLen;
-		BIGNUM *bn = BN_bin2bn((unsigned char*) szHisPubKey.ptr(), szHisPubKey.len(),NULL);
+		BIGNUM *bn = BN_bin2bn((unsigned char *) szHisPubKey.data(), szHisPubKey.size(),NULL);
 		if(-1 == (secretLen = DH_compute_key(secret, bn, g_fish_dh)))
 		{
-			c->warning(__tr2qs("FiSH: error verificating peer public key (size=%1)").arg(szHisPubKey.len()));
+			c->warning(__tr2qs("FiSH: error verificating peer public key (size=%1)").arg(szHisPubKey.size()));
 			return false;
 		}
 		BN_zero(bn);
