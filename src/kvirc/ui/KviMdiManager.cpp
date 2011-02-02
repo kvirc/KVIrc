@@ -132,7 +132,6 @@ void KviMdiManager::manageChild(KviMdiChild * lpC, bool, QRect *)
 void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 {
 	setTopChild(lpC);
-
 	if(m_bInSDIMode)
 	{
 		lpC->showMaximized();
@@ -151,6 +150,12 @@ KviMdiChild * KviMdiManager::topChild()
 void KviMdiManager::setTopChild(KviMdiChild *lpC)
 {
 	setActiveSubWindow((QMdiSubWindow*) lpC);
+	if(!lpC->isVisible())
+		lpC->show();
+	lpC->raise();
+	if(!lpC->hasFocus())
+		lpC->setFocus();
+	//qDebug("Set top child %x: visible %d has focus %d geometry %d,%d,%d,%d",lpC,lpC->isVisible(),lpC->hasFocus(),lpC->geometry().x(),lpC->geometry().y(),lpC->geometry().width(),lpC->geometry().height());
 }
 
 void KviMdiManager::hideChild(KviMdiChild *lpC)

@@ -491,6 +491,7 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 				// when group settings are used, we always cascade the windows
 				// this means that windows that have no specialized config group name
 				// are always cascaded : this is true for consoles, queries (and other windows) but not channels (and some other windows)
+				// FIXME: Since the introduction of QMdiArea cascading (and positioning of windows in general) no longer works
 				KviMdiChild * lpC = dockWindow(wnd,bGroupSettings,&rect);
 				lpC->setRestoredGeometry(rect);
 				wnd->triggerCreationEvents();
@@ -529,7 +530,11 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 
 default_docking:
 	{
-		KviMdiChild * lpC = dockWindow(wnd); //cascade it
+		KviMdiChild * lpC = dockWindow(wnd);
+		// FIXME: Since the introduction of QMdiArea cascading (and positioning of windows in general) no longer works
+		// Emulate cascading in some way....
+		int offset = (m_pWinList->count() * 10) % 100;
+		lpC->setRestoredGeometry(QRect(offset,offset,500,400));
 		wnd->triggerCreationEvents();
 		if(bShow && (isActiveWindow() || m_pWinList->count()==1))
 		{
@@ -537,7 +542,8 @@ default_docking:
 			// Handle the special case of this top level widget not being the active one.
 			// In this situation the child will not get the focusInEvent
 			// and thus will not call out childWindowActivated() method
-			if(!isActiveWindow())childWindowActivated(wnd);
+			if(!isActiveWindow())
+				childWindowActivated(wnd);
 		}
 	}
 docking_done:
@@ -552,7 +558,7 @@ docking_done:
 KviMdiChild * KviMainWindow::dockWindow(KviWindow * wnd, bool bCascade, QRect * setGeom)
 {
 	if(wnd->mdiParent())return wnd->mdiParent();
-        KviMdiChild * lpC = new KviMdiChild(m_pMdi,"");
+	KviMdiChild * lpC = new KviMdiChild(m_pMdi,"");
 	lpC->setClient(wnd);
 	lpC->setGeometry(wnd->geometry());
 
