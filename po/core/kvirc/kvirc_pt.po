@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-26 13:15+0100\n"
-"PO-Revision-Date: 2011-01-20 21:25+0000\n"
+"PO-Revision-Date: 2011-02-02 02:45+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "Language: pt\n"
@@ -5565,31 +5565,31 @@ msgstr "Pesquisar noticia"
 
 #: src/kvirc/kernel/KviOptions.cpp:754
 msgid "Query private message"
-msgstr "Pesquisar da mensagem privada"
+msgstr "Pesquisar mensagem privada"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:174
 msgid "Query target:"
-msgstr "Destino de pesquisa:"
+msgstr "Pesquisar destino:"
 
 #: src/kvirc/kernel/KviOptions.cpp:820
 msgid "Query trace message"
-msgstr "Pesquisar do rastreio da mensagem"
+msgstr "Pesquisar rastreio da mensagem"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:254
 msgid "Query with %1!%2"
-msgstr "Consulta com %1!%2"
+msgstr "Pesquisa com %1!%2"
 
 #: src/kvirc/ui/KviQueryWindow.cpp:252
 msgid "Query with %1!%2 (%3)"
-msgstr "Consulta com %1!%2 (%3)"
+msgstr "Pesquisa com %1!%2 (%3)"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:277
 msgid "Quiet"
-msgstr "Quieto"
+msgstr "Inactivo"
 
 #: src/kvirc/kernel/KviIrcConnectionServerInfo.cpp:355
 msgid "Quiet Ban Editor"
-msgstr "Editor de Banimentos "
+msgstr "Editor de Banimentos Inactivo"
 
 #: src/kvirc/ui/KviUserListView.cpp:1606
 msgid "Quiet for <b>%1h %2m %3s</b>"
@@ -5601,7 +5601,7 @@ msgstr "Sair do KVIrc"
 
 #: src/kvirc/kernel/KviOptions.cpp:762
 msgid "Quit message"
-msgstr "Mensagem de Saída ('quit')"
+msgstr "Mensagem de saída"
 
 #: src/kvirc/kernel/KviOptions.cpp:764
 msgid "Quit on netsplit message"
@@ -5609,7 +5609,7 @@ msgstr "Sair em mensagem de separação de redes ('netsplit')"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:421
 msgid "Quits KVIrc closing all the current connections"
-msgstr "Sai do KVirc fechando todas as conexões actuais"
+msgstr "Sai do KVIrc fechando todas as conexões actuais"
 
 #: src/kvirc/kernel/KviDefaultScript.cpp:431
 msgid "Raw Events"
@@ -5628,7 +5628,7 @@ msgstr "Re&mover"
 #: src/modules/file/libkvifile.cpp:851
 #: src/modules/file/libkvifile.cpp:941
 msgid "Read error for file %Q"
-msgstr "Erro de leitura do ficheiro %Q"
+msgstr "Erro de leitura no ficheiro %Q"
 
 #: src/modules/file/libkvifile.cpp:842
 #: src/modules/file/libkvifile.cpp:932
@@ -5636,7 +5636,7 @@ msgid ""
 "Read error for file %Q (have been unable to read the requested size in 1000 "
 "retries)"
 msgstr ""
-"Erro de leitura do ficheiro %Q (tem sido incapaz de ler o ficheiro em 1000 "
+"Erro de leitura no ficheiro %Q (não foi capaz de o tamanho pedido em 1000 "
 "tentativas)"
 
 #: src/kvilib/file/KviPackageReader.cpp:409
@@ -5653,7 +5653,7 @@ msgstr "A ler pacote..."
 
 #: src/kvirc/kernel/KviIrcConnectionTargetResolver.cpp:417
 msgid "Real hostname for %Q is %Q"
-msgstr "O endereço real para %Q é %Q"
+msgstr "O endereço real de %Q é %Q"
 
 #: src/modules/setup/SetupWizard.cpp:350
 msgid "Real name:"
@@ -5671,38 +5671,38 @@ msgstr ""
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:212
 msgid "Received a join message for an unknown channel, possible desync"
 msgstr ""
-"Mensagem de entrada recebida para um canal desconhecido,possível "
-"dessincronização"
+"Mensagem de entrada recebida para um canal desconhecido, "
+"possível dessincronização"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:561
 msgid "Received a kick message for an unknown channel, possible desync"
 msgstr ""
-"Mensagem de expulsão recebida para um canal desconhecido, possível "
-"dessincronização"
+"Mensagem de expulsão recebida para um canal desconhecido, "
+"possível dessincronização"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1712
 msgid "Received a mode change for an unknown channel, possible desync"
 msgstr ""
-"Mudança de modo recebida para um canal desconhecido, possível "
-"dessincronização"
+"Mudança de modo recebida para um canal desconhecido, "
+"possível dessincronização"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:321
 msgid "Received a part message for an unknown channel, possible desync"
 msgstr ""
-"Mensagem de saída de canal recebida para um canal desconhecido, possível "
-"dessincronização"
+"Mensagem de saída de canal recebida para um canal desconhecido, "
+"possível dessincronização"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1420
 msgid "Received a topic message for an unknown channel, possible desync"
 msgstr ""
-"Mensagem de tópico recebida para um canal desconhecido, possível "
-"dessincronização"
+"Mensagem de tópico recebida para um canal desconhecido,"
+"possível dessincronização"
 
 #: src/kvirc/sparser/KviIrcServerParser_literalHandlers.cpp:1621
 msgid "Received an invite message directed to another nick, possible desync"
 msgstr ""
-"Recebeu uma mensagem de convite que era dirigida a outra alcunha, possível "
-"dessincronização"
+"Recebeu uma mensagem de convite que era dirigida a outra alcunha,"
+"possível dessincronização"
 
 #: src/modules/links/LinksWindow.cpp:185
 msgid "Received end of links."
