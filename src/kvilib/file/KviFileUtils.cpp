@@ -252,32 +252,36 @@ namespace KviFileUtils
 	bool deleteDir(const QString & szPath)
 	{
 		QDir d(szPath);
-		QStringList sl = d.entryList(QDir::Dirs);
-		QStringList::Iterator it;
-		for(it = sl.begin(); it != sl.end(); it++)
+
+		QFileInfoList lFileInfo = d.entryInfoList(QDir::Files | QDir::Dirs | QDir::Hidden | QDir::System | QDir::NoDotAndDotDot);
+
+		foreach(QFileInfo inf,lFileInfo)
 		{
-			QString szSubdir = *it;
-			if(!(KviQString::equalCS(szSubdir,"..") || KviQString::equalCS(szSubdir,".")))
+			// just to be sure check that we're not deleting ..
+			if(KviQString::equalCS(inf.fileName(),"..") || KviQString::equalCS(inf.fileName(),"."))
+				continue;
+		
+			if(inf.isDir())
 			{
-				QString szSubPath = szPath;
-				KviQString::ensureLastCharIs(szSubPath,QChar(KVI_PATH_SEPARATOR_CHAR));
-				szSubPath += szSubdir;
-				if(!KviFileUtils::deleteDir(szSubPath))
+				if(!deleteDir(inf.absoluteFilePath()))
 					return false;
+				continue;
+			}
+			
+			if(!KviFileUtils::removeFile(inf.absoluteFilePath()))
+			{
+				qDebug("Failed to remove file %s",inf.absoluteFilePath().toUtf8().data());
+				return false;
 			}
 		}
 
-		sl = d.entryList(QDir::Files);
-		for(it = sl.begin(); it != sl.end(); it++)
+		if(!KviFileUtils::removeDir(szPath))
 		{
-			QString szFilePath = szPath;
-			KviQString::ensureLastCharIs(szFilePath,QChar(KVI_PATH_SEPARATOR_CHAR));
-			szFilePath += *it;
-			if(!KviFileUtils::removeFile(szFilePath))
-				return false;
+			qDebug("Failed to remove directory %s",szPath.toUtf8().data());
+			return false;
 		}
 
-		return KviFileUtils::removeDir(szPath);
+		return true;
 	}
 
 	bool writeFile(const QString & szPath, const QString & szData, bool bAppend)

@@ -350,7 +350,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 				if((iTotalFileSize % 3000000) == 0)
 				{
-					QString szTmp = QString(" (%1 of %2 bytes)").arg(iTotalFileSize,uSize);
+					QString szTmp = QString(" (%1 of %2 bytes)").arg(iTotalFileSize).arg(uSize);
 					QString szPrg = szProgressText + szTmp;
 					if(!updateProgress(pFile->pos(),szPrg))
 						return false; // aborted
