@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-26 13:15+0100\n"
-"PO-Revision-Date: 2011-01-25 19:51+0200\n"
+"PO-Revision-Date: 2011-02-03 00:43+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Language: \n"
@@ -62,9 +62,8 @@ msgid "Delete failed"
 msgstr "Silme başarısız"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:614
-#, fuzzy
 msgid "Do you really want to delete the file %1?"
-msgstr "Gerçekten %Q dosyasını silmek istiyor musunuz?"
+msgstr "Gerçekten %1 dosyasını silmek istiyor musunuz?"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:622
 msgid "Failed to remove the file"
@@ -84,7 +83,7 @@ msgstr "Yerel d&osya"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:479
 msgid "MS-DOS Prompt at Location"
-msgstr ""
+msgstr "Yerinde MS-DOS komut istemi"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:617
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:783
@@ -115,7 +114,7 @@ msgstr "Boyut: %1"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:467
 msgid "Terminal at Location"
-msgstr ""
+msgstr "Yerinde Terminal"
 
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:135
 msgid "Type"
@@ -125,3 +124,4 @@ msgstr "Tür"
 #: src/modules/filetransferwindow/FileTransferWindow.cpp:783
 msgid "Yes"
 msgstr "Evet"
+
