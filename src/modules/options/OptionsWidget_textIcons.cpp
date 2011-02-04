@@ -41,7 +41,7 @@ TextIconTableItem::TextIconTableItem(QTableWidget *,KviTextIcon * icon)
 	if(icon)
 		m_pIcon=icon;
 	else
-		m_pIcon=new KviTextIcon(0);
+		m_pIcon=new KviTextIcon(KviIconManager::None);
 	QPixmap* pix=m_pIcon->pixmap();
 	if(pix) setIcon(QIcon(*pix));
 }
