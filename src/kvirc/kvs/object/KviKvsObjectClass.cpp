@@ -78,7 +78,10 @@ KviKvsObjectClass::~KviKvsObjectClass()
 	// order here is critical
 
 	// first of all kill our child classes
-	while(m_pChildClasses->first())delete m_pChildClasses->first();
+	while(m_pChildClasses->first())
+	{
+	    KviKvsKernel::instance()->objectController()->deleteClass(m_pChildClasses->first());
+	}
 	// then kill all objects that belong to our class
 	KviKvsKernel::instance()->objectController()->killAllObjectsWithClass(this);
 	// now we're quite clean: should have no object depending on us alive
