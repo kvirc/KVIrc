@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-26 13:15+0100\n"
-"PO-Revision-Date: 2011-02-02 02:45+0000\n"
+"PO-Revision-Date: 2011-02-05 05:21+0000\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
 "Language: pt\n"
@@ -3699,16 +3699,16 @@ msgstr "Em progresso..."
 
 #: src/modules/iograph/libkviiograph.cpp:140
 msgid "Incoming traffic"
-msgstr "Tráfego recebido"
+msgstr "Recebido"
 
 #: src/modules/links/LinksWindow.cpp:299
 msgid "Incomplete LINKS result, no stats available"
-msgstr "Resultado LINKS incompleto, nenhuma estatística disponível"
+msgstr "Resultado de LINKS incompleto, nenhuma estatística disponível"
 
 #: src/kvirc/ui/KviInput.cpp:118
 #: src/kvirc/ui/KviInput.cpp:407
 msgid "Input History Disabled"
-msgstr "Entrada de Histórico Desactivada"
+msgstr "Histórico Desactivado"
 
 #: src/kvirc/ui/KviInputEditor.cpp:834
 msgid "Insert Icon"
@@ -3716,7 +3716,7 @@ msgstr "Inserir Ícone"
 
 #: src/kvirc/ui/KviMaskEditor.cpp:79
 msgid "Insert a nickname or a mask matching *!*@*"
-msgstr "Insira uma alcunha ou uma máscara correspondente a *!*@*"
+msgstr "Indique uma alcunha ou uma máscara correspondente a *!*@*"
 
 #: src/kvirc/kernel/KviApplication_setup.cpp:545
 msgid "Install Package"
@@ -3747,7 +3747,7 @@ msgstr "Erro interno"
 #: src/modules/avatar/libkviavatar.cpp:293
 #: src/modules/avatar/libkviavatar.cpp:368
 msgid "Internal error: ain't I in the user database ?"
-msgstr "Erro interno: não estou na base de dados de utilizadores?"
+msgstr "Erro interno: não está na base de dados de utilizadores?"
 
 #: src/modules/action/libkviaction.cpp:377
 msgid "Internal error: call a head-shrinker"
@@ -3779,7 +3779,7 @@ msgstr "ID de contexto IRC inválido '%Q'"
 
 #: src/kvilib/net/KviHttpRequest.cpp:186
 msgid "Invalid URL: Missing hostname"
-msgstr "URL inválido: falta o nome do endereço"
+msgstr "URL inválido: falta o nome da máquina"
 
 #: src/modules/str/libkvistr.cpp:2055
 msgid "Invalid argument for ?X escape sequence, 0 assumed"
@@ -3852,7 +3852,7 @@ msgstr "Endereço 'proxy' inválido"
 
 #: src/modules/avatar/libkviavatar.cpp:361
 msgid "Invalid timeout specified, using default"
-msgstr "Tempo indicado inválido, usar predefinido"
+msgstr "Intervalo indicado inválido, a usar predefinido"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:933
 msgid "Invisible (+i)"
@@ -5165,7 +5165,7 @@ msgstr "Mensagem de saída do utilizador ICQ"
 
 #: src/modules/iograph/libkviiograph.cpp:138
 msgid "Outgoing traffic"
-msgstr "Tráfego de saída"
+msgstr "Enviado"
 
 #: src/kvirc/kernel/KviOptions.cpp:872
 msgid "Own IRC Op status set"
