@@ -86,11 +86,6 @@ void KviMdiChild::transparencyWorkaround()
 	setAutoFillBackground(true);
 }
 
-void KviMdiChild::setRestoredGeometry(const QRect &r)
-{
-	setGeometry(r);
-}
-
 void KviMdiChild::closeEvent(QCloseEvent * e)
 {
 	//we let kviwindow handle the process
@@ -102,10 +97,6 @@ void KviMdiChild::closeEvent(QCloseEvent * e)
 	}
 }
 
-QRect KviMdiChild::restoredGeometry()
-{
-	return geometry();
-}
 
 KviMdiChild::MdiChildState KviMdiChild::state()
 {
@@ -256,8 +247,9 @@ void KviMdiChild::unsetClient()
 
 void KviMdiChild::activate()
 {
-	if(m_pManager->topChild() != this)
-		m_pManager->setTopChild(this);
+	if(m_pManager->activeSubWindow() != (QMdiSubWindow *)this)
+		m_pManager->setActiveSubWindow(this);
+	setFocus(); // should propagate to the client
 }
 
 void KviMdiChild::updateSystemPopup()
@@ -270,3 +262,4 @@ void KviMdiChild::updateSystemPopup()
 			KVS_TRIGGER_EVENT_0(KviEvent_OnWindowPopupRequest, ((KviWindow*) m_pClient));
 		}
 }
+

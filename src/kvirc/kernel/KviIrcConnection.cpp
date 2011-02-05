@@ -626,7 +626,7 @@ KviChannelWindow * KviIrcConnection::createChannel(const QString & szName)
 	return c;
 }
 
-KviQueryWindow * KviIrcConnection::createQuery(const QString & szNick)
+KviQueryWindow * KviIrcConnection::createQuery(const QString & szNick,CreateQueryVisibilityMode eVisibilityMode)
 {
 	KviQueryWindow * q = m_pContext->findDeadQuery(szNick);
 	if(!q)
@@ -635,17 +635,36 @@ KviQueryWindow * KviIrcConnection::createQuery(const QString & szNick)
 		if(q)
 			return q; // hm ?
 	}
+
+	bool bShowIt;
+
+	// adjust visibility mode
+	switch(eVisibilityMode)
+	{
+		//case CreateQueryFollowGlobalVisibilitySetting:
+		case CreateQueryVisibilityMinimized:
+			bShowIt = false;
+		break;
+		case CreateQueryVisibilityVisible:
+			bShowIt = true;
+		break;
+		default:
+			bShowIt = !KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery);
+		break;
+	}
+
+
 	if(q)
 	{
 		q->setAliveQuery();
-		if(!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery))
+		if(bShowIt)
 		{
 			q->raise();
 			q->setFocus();
 		}
 	} else {
 		q = new KviQueryWindow(m_pConsole->frame(),m_pConsole,szNick);
-		m_pConsole->frame()->addWindow(q,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery));
+		m_pConsole->frame()->addWindow(q,bShowIt);
 	}
 	return q;
 }

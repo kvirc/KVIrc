@@ -1197,9 +1197,9 @@ void KviWindow::restore()
 QRect KviWindow::externalGeometry()
 {
 #ifndef COMPILE_ON_MAC
-	return mdiParent() ? mdiParent()->restoredGeometry() : frameGeometry();
+	return mdiParent() ? mdiParent()->geometry() : frameGeometry();
 #else
-	return mdiParent() ? mdiParent()->restoredGeometry() : geometry();
+	return mdiParent() ? mdiParent()->geometry() : geometry();
 #endif
 }
 

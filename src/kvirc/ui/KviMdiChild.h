@@ -90,18 +90,6 @@ private:
 	void updateCaption();
 
 public:
-	/**
-	* \brief Read the current geometry
-	* \return QRect
-	*/
-	QRect restoredGeometry();
-
-	/**
-	* \brief Sets the new geomentry
-	* \param r The geometry the window will take when it will be restored
-	* \return void
-	*/
-	void setRestoredGeometry(const QRect & r);
 
 	/**
 	* \brief Sets the client widget which is shown in the subwindow

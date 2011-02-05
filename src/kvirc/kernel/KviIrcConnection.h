@@ -483,15 +483,35 @@ public:
 	*/
 	inline KviPointerList<KviQueryWindow> * queryList(){ return m_pQueryList; };
 
+	///
+	/// Visibility mode for createQuery()
+	///
+	enum CreateQueryVisibilityMode
+	{
+		///
+		/// Create minimized query, overriding settings
+		///
+		CreateQueryVisibilityMinimized,
+		///
+		/// Create visible query, overriding settings
+		///
+		CreateQueryVisibilityVisible,
+		///
+		/// Follow global settings.
+		///
+		CreateQueryVisibilityFollowSettings
+	};
+
 	/**
 	* \brief Creates a query with the specified nick as target.
 	*
 	* This function assumes that such a query doesn't exist yet (or if it
 	* exists it's actually marked as dead and needs to be resurrected).
 	* \param szNick The nickname of the user
+	* \param eShowMode Specifies the show mode for the window
 	* \return KviQueryWindow *
 	*/
-	KviQueryWindow * createQuery(const QString & szNick);
+	KviQueryWindow * createQuery(const QString & szNick,CreateQueryVisibilityMode eVisibilityMode = CreateQueryVisibilityFollowSettings);
 
 	///
 	/// This is called by KviQueryWindow upon creation, you shouldn't need to use it.

@@ -100,13 +100,6 @@ public:
 	void manageChild(KviMdiChild * lpC, bool bCascade = true, QRect * setGeom = 0);
 
 	/**
-	* \brief Bring the KviMdiChild to the foreground
-	* \param lpC The KviMdiChild
-	* \return void
-	*/
-	void setTopChild(KviMdiChild * lpC);
-
-	/**
 	* \brief Show the KviMdiChild and bring it to the front
 	* \param lpC The KviMdiChild which will be shown.
 	* \return void

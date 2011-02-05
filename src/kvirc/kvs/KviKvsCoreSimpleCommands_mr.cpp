@@ -941,9 +941,14 @@ namespace KviKvsCoreSimpleCommands
 		@title:
 			query
 		@syntax:
-			query <nickname list> [text]
+			query [-m] <nickname list> [text]
 		@short:
 			Opens one or more query windows
+		@switches:
+			!sw: -m | --minimized
+			Create minimized queries
+			!sw: -f | --follow-visibility-settings
+			The initial visibility of the window is specified by global settings
 		@description:
 			Opens a query window for each user specified in <nickname list>
 			which is a [b]comma separated[/b] list of nicknames.[br]
@@ -952,6 +957,11 @@ namespace KviKvsCoreSimpleCommands
 			If a query with one of the specified targets already exists,
 			it is simply focused and the [text] is sent to the target.[br]
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].[br]
+			Normally the new query windows are created and immediately shown.
+			If the -f switch is specified then the windows are created either as minimized or as visible 
+			depending on the global visibility setting specified by the boolCreateMinimizedQuery option.
+			This switch should be used when automatically opening a query from a script without user
+			intervention. If -f is not present but -m is used then the windows are always created as minimized.
 		@examples:
 			[example]
 			[comment]# Open a single query to Pragma[/comment]
@@ -983,7 +993,12 @@ namespace KviKvsCoreSimpleCommands
 			else {
 				query = KVSCSC_pWindow->connection()->findQuery(szNick);
 				if(!query) {
-					query = KVSCSC_pWindow->connection()->createQuery(szNick);
+					query = KVSCSC_pWindow->connection()->createQuery(
+							szNick,
+							KVSCSC_pSwitches->find('f',"follow-visibility-settings") ?
+								KviIrcConnection::CreateQueryVisibilityFollowSettings :
+								(KVSCSC_pSwitches->find('m',"minimized") ? KviIrcConnection::CreateQueryVisibilityMinimized : KviIrcConnection::CreateQueryVisibilityVisible)
+						);
 					QString user;
 					QString host;
 					KviIrcUserDataBase * db = KVSCSC_pWindow->connection()->userDataBase();

@@ -126,30 +126,31 @@ void KviMdiManager::manageChild(KviMdiChild * lpC, bool, QRect *)
 	addSubWindow((QMdiSubWindow*)lpC);
 
 	if(!m_bInSDIMode)
-		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
+			tile();
 }
 
 void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 {
-	setTopChild(lpC);
 	if(m_bInSDIMode)
 	{
 		lpC->showMaximized();
 	} else {
+		//qDebug("Showing window %x->%x",lpC,lpC->client());
 		lpC->show();
-		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+		//qDebug("Window %x->%x is visible is %d",lpC,lpC->client(),lpC->isVisible());
+		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
+			tile();
 	}
-	lpC->activate();
+	setActiveSubWindow(lpC);
+	lpC->setFocus();
+
+	//qDebug("show and activate window %x->%x: geometry is %d,%d,%d,%d, visible is %d",lpC,lpC->client(),lpC->geometry().x(),lpC->geometry().y(),lpC->geometry().width(),lpC->geometry().height(),lpC->isVisible());
 }
 
 KviMdiChild * KviMdiManager::topChild()
 {
 	return (KviMdiChild*)activeSubWindow();
-}
-
-void KviMdiManager::setTopChild(KviMdiChild *lpC)
-{
-	setActiveSubWindow((QMdiSubWindow*) lpC);
 }
 
 void KviMdiManager::hideChild(KviMdiChild *lpC)
@@ -341,9 +342,10 @@ void KviMdiManager::menuActivated(int id)
 	KviMdiChild * lpC = (KviMdiChild *) tmp.at(id);
 
 	if(!lpC) return;
-	if(lpC->state() == KviMdiChild::Minimized) lpC->restore();
+	if(lpC->state() == KviMdiChild::Minimized)
+		lpC->restore();
 
-	setTopChild(lpC);
+	setActiveSubWindow(lpC);
 }
 
 void KviMdiManager::ensureNoMaximized()

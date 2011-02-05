@@ -493,7 +493,7 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 				// are always cascaded : this is true for consoles, queries (and other windows) but not channels (and some other windows)
 				// FIXME: Since the introduction of QMdiArea cascading (and positioning of windows in general) no longer works
 				KviMdiChild * lpC = dockWindow(wnd,bGroupSettings,&rect);
-				lpC->setRestoredGeometry(rect);
+				lpC->setGeometry(rect);
 				wnd->triggerCreationEvents();
 				if(bShow && (isActiveWindow() || m_pWinList->count()==1))
 				{
@@ -501,7 +501,8 @@ void KviMainWindow::addWindow(KviWindow *wnd,bool bShow)
 					// Handle the special case of this top level widget not being the active one.
 					// In this situation the child will not get the focusInEvent
 					// and thus will not call out childWindowActivated() method
-					if(!isActiveWindow()) childWindowActivated(wnd);
+					if(!isActiveWindow())
+						childWindowActivated(wnd);
 				}
 			} else {
 				wnd->setGeometry(rect);
@@ -534,7 +535,7 @@ default_docking:
 		// FIXME: Since the introduction of QMdiArea cascading (and positioning of windows in general) no longer works
 		// Emulate cascading in some way....
 		int offset = (m_pWinList->count() * 10) % 100;
-		lpC->setRestoredGeometry(QRect(offset,offset,500,400));
+		lpC->setGeometry(QRect(offset,offset,500,400));
 		wnd->triggerCreationEvents();
 		if(bShow && (isActiveWindow() || m_pWinList->count()==1))
 		{
@@ -711,7 +712,9 @@ void KviMainWindow::childWindowActivated(KviWindow *wnd, bool bForce)
 {
 	// ASSERT(m_pWinList->findRef(wnd))
 	// unless we want to bForce the active window to be re-activated
-	if(g_pActiveWindow == wnd && !bForce) return;
+	if(g_pActiveWindow == wnd && !bForce)
+		return;
+
 	if(g_pActiveWindow != wnd)
 	{
 		if(g_pActiveWindow)
