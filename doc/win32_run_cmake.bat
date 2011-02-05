@@ -1,4 +1,4 @@
-echo OFF
+@echo OFF
 
 REM =======================================================================
 REM Windows cmake launch helper script.
