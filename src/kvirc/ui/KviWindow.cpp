@@ -932,17 +932,13 @@ void KviWindow::youAreUndocked()
 void KviWindow::activateSelf()
 {
 	if(mdiParent())
+	{
+		// raise and set focus
 		mdiParent()->activate();
-
-	g_pMainWindow->childWindowActivated(this);
-}
-
-void KviWindow::setFocus()
-{
-	// don't trigger the whole Qt focus mechanism..
-	// just trigger directly our focusInEvent
-	// so we'll redirect the focus to the m_pFocusHandler
-	focusInEvent(0);
+	} else {
+		raise();
+		setFocus();
+	}
 }
 
 void KviWindow::focusInEvent(QFocusEvent *)
@@ -951,16 +947,18 @@ void KviWindow::focusInEvent(QFocusEvent *)
 	{
 		if(m_pLastFocusedChild->hasFocus() && m_pLastFocusedChild->isVisible())
 		{
-			// the last focused child still has focus (ehm ???)
+			// focus is still in this window.
+			// just make sure that we're the active one.
 			if(g_pActiveWindow != this)
-				activateSelf();
+				g_pMainWindow->childWindowActivated(this);
 			return;
 		}
 	}
 
+	// focus doesn't seem to be in this window
 	if(!m_pFocusHandler)
 	{
-		// must find one NOW
+		// figure out a child to give focus to.
 		// we probably have no KviInput since it would have been grabbed anyway
 
 		if(m_pIrcView)
@@ -977,6 +975,7 @@ void KviWindow::focusInEvent(QFocusEvent *)
 				}
 			}
 		}
+
 		if(m_pFocusHandler)
 			m_pFocusHandler->setFocus();
 		else {
@@ -989,13 +988,12 @@ void KviWindow::focusInEvent(QFocusEvent *)
 	}
 
 	// Setting the focus to the focus handler usually
-	// triggers our filter for the children's focusInEvent.
-	// This should call activateSelf() and thus
-	// we should be already the active window at this point.
-	// If we're not, then run activateSelf() to fix this.
+	// triggers our filter for the children's focusInEvent
+	// which in turn should invoke our filter and make this window the active one.
+	// So we should be already the active window at this point.
+	// If we're not, then fix this.
 	if(g_pActiveWindow != this)
-		activateSelf();
-	//else qDebug("ACTIVE WINDOW IS ALREADY THIS");
+		g_pMainWindow->childWindowActivated(this);
 	updateCaption();
 }
 
@@ -1004,15 +1002,17 @@ bool KviWindow::eventFilter(QObject * pObject, QEvent * pEvent)
 	switch(pEvent->type())
 	{
 		case QEvent::FocusIn:
+			// a child got focused
 			m_pLastFocusedChild = (QWidget *)pObject;
 			if(g_pActiveWindow != this)
-				activateSelf();
+				g_pMainWindow->childWindowActivated(this);
 			break;
 		case QEvent::Enter:
 			// this is a handler moved here from KviMdiChild::eventFilter
 			if(QApplication::overrideCursor())
 				QApplication::restoreOverrideCursor();
 			break;
+#if 0
 		case QEvent::MouseButtonPress:
 			if((((QWidget *)pObject)->focusPolicy() == Qt::NoFocus) ||
 				(((QWidget *)pObject)->focusPolicy() == Qt::TabFocus))
@@ -1031,6 +1031,7 @@ bool KviWindow::eventFilter(QObject * pObject, QEvent * pEvent)
 					setFocus(); // we grab the focus (someone must do it, damn :D)
 			}
 			break;
+#endif
 		case QEvent::ChildAdded:
 			if(((QChildEvent *)pEvent)->child()->isWidgetType())
 				childInserted((QWidget *)((QChildEvent *)pEvent)->child());
@@ -1048,14 +1049,20 @@ void KviWindow::childInserted(QWidget * pObject)
 {
 	pObject->removeEventFilter(this); // ensure that we don't filter twice
 	pObject->installEventFilter(this); // we filter its events
+
 	connect(pObject,SIGNAL(destroyed()),this,SLOT(childDestroyed()));
 
-	if(pObject->inherits("KviInput") || (m_eType==KviWindow::LogView && pObject->inherits("KviIrcView")))
-		m_pFocusHandler = pObject;
-	else
+	// attempt to grab a decent focus handler
+
+	if(pObject->inherits("KviInput"))
 	{
+		// KviInput is our preferential focus handler
+		m_pFocusHandler = pObject;
+	} else {
+		// not a KviInput
 		if(!m_pFocusHandler && (pObject->focusPolicy() == Qt::StrongFocus))
 		{
+			// still without a focus handler: take this widget (possibly only temporairly)
 			m_pFocusHandler = pObject;
 		}
 	}
@@ -1079,12 +1086,12 @@ void KviWindow::childDestroyed()
 
 void KviWindow::childRemoved(QWidget * pObject)
 {
-	//qDebug("CHILD REMOVED %d",o);
 	pObject->removeEventFilter(this);
+
 	if(pObject == m_pFocusHandler)
-		m_pFocusHandler = 0;
+		m_pFocusHandler = NULL;
 	if(pObject == m_pLastFocusedChild)
-		m_pLastFocusedChild = 0;
+		m_pLastFocusedChild = NULL;
 
 	QList<QObject *> list = pObject->children();
 	for(QList<QObject *>::Iterator it = list.begin();it != list.end();++it)

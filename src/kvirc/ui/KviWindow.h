@@ -374,7 +374,6 @@ public:
 	virtual void ownMessage(const QString &, bool = true){};
 	virtual void ownAction(const QString &){};
 	virtual const QString & plainTextCaption(){ return m_szPlainTextCaption; };
-	virtual void setFocus();
 
 	void internalOutput(KviIrcView * pView, int iMsgType, const kvi_wchar_t * pwText, int iFlags = 0);
 	// You *might* want to override these too.. but better don't touch them :D
